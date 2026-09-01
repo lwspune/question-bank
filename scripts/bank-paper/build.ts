@@ -182,6 +182,176 @@ type PaperSpec = {
 
 const PAPERS: PaperSpec[] = [
   {
+    // ── NDA GAT — LWS Mock 5 ────────────────────────────────────────────────
+    //
+    // THE FIRST GAT MOCK DRAWN ENTIRELY FROM THE NDA GAT PRACTICE POOL — both
+    // halves, no CDS and no Foundation Course. Blueprint §3 allocation unchanged:
+    // English 50 · Physics 25 · Geography 20 · Chemistry 15 · History 12 ·
+    // CA 11 · Biology 10 · Polity 6 · Economics 1.
+    //
+    // WHY THIS SOURCE. Mocks 1-4 took English from CDS and Physics/Chemistry/
+    // Biology from the Foundation Course. Both are now spent for practical
+    // purposes: confirmed CDS English is down to fragments, every legacy
+    // Foundation Chemistry and Biology chapter reads ZERO free, and the three
+    // chapters unblocked on 2026-08-30 still store a bare key with NO SOLUTION
+    // (they clear the review gate and fail the solution gate). The NDA GAT
+    // practice pool has 5,803 free, solved, well-formed rows and covers ALL NINE
+    // subjects at once — English 946 · Physics 414 · Geography 390 · History 234
+    // · Chemistry 196 · CA 183 · Biology 168 · Polity 143 · Economics 12. Its
+    // sources are whole GAT mock papers, so the questions were written for this
+    // paper's shape rather than borrowed from a sibling exam.
+    //
+    // ⚠ NO requireConfirmedReview ON ENGLISH — A DELIBERATE DIVERGENCE FROM
+    // MOCKS 3-4. Those set it because CDS ships NO answer key at all, so a CDS
+    // row is LLM-derived and an unreviewed one is genuinely unbacked. NDA
+    // practice comes from booklets that print their own key, and `audit:keys` —
+    // the structural probe for the vision-ingest option-scramble/duplicate class
+    // — reports 0 flagged of 667 on these sources. Stated plainly because it IS
+    // weaker than Mocks 3-4: these rows carry a printed key and pass the
+    // structural probe, but nobody has blind-re-derived them.
+    //
+    // ENGLISH PRINTS AS 9 BLOCKS (10/10/5/5/5/5/5/3/2) against the real GAT's
+    // 2/3/5/5/5/5/5/5/10. That is only possible because scripts/practice/
+    // link-english-sets.ts first gave 198 rows the `set_id` their printed
+    // directions block already implied: of 946 free English practice rows only 65
+    // carried one, and `audit-english` counts a set-less row as its OWN block, so
+    // an unlinked draw would have printed ~50 one-question blocks — the exact
+    // shape scripts/bank-paper/english.ts exists to make unbuildable.
+    //
+    // CURRENT AFFAIRS IS THE ONE SUBJECT NOT TAKEN FROM THE GAT MOCKS. Those
+    // include Oswaal papers of unknown vintage, and a stale CA question reads as
+    // well-formed while being wrong — so CA stays pinned to the curated Sep-2026
+    // pool via `sourceFile`, as Mocks 3-4 do (blueprint §8b). `National Events and
+    // India GK` is absent because Mock 4 took its last free row; that seat moved
+    // to Defence and Science and Technology.
+    slug: "nda-gat-lws-mock-5",
+    title: "NDA GAT — LWS Mock 5",
+    examId: EXAM_ID,
+    exclude: [],
+    sections: [
+      { key: "english", label: "Part A — English", ordering: "english-blocks" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["practice"],
+    requireSolution: true,
+    layout: "sequential",
+    chapters: [
+      // ── Part A — English 50, drawn as whole printed blocks ─────────────────
+      // ONE SET PER CHAPTER wherever possible: `orderEnglishBlocks` keys a
+      // non-stimulus row on chapter+subtopic+setId, so two sets of one chapter can
+      // interleave and scatter each other (R5, which cost Mock 4 its 2025-I
+      // Grammar block). Grammar is the only chapter taking two here, and both are
+      // single-subtopic, so neither can split the other.
+      {
+        chapterId: "9f71c4b6-0d14-4f2a-a329-82b8b90ed103", label: "Spotting Errors (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "f22e2d1c-ba11-54bb-b689-505ad0a32f27:S3", take: 10, note: "Weekly Mock T1" }],
+      },
+      {
+        chapterId: "35f02245-47f1-494d-a495-8fc178452856", label: "Vocabulary (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "0e8abffc-350b-5c87-9bfa-8b89cb16f662:S3", take: 10, note: "Weekly Mock T3" }],
+      },
+      {
+        chapterId: "1b8c129d-6f75-4769-9e19-2146ac2b7d2b", label: "Reading Comprehension (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "a21624ca-45ce-46f8-acd4-fd181d12a9d7:RC1", take: 5, note: "Weekly Mock T3" }],
+      },
+      {
+        chapterId: "e25c2f7b-2837-47ad-80af-ad18c211b9e8", label: "Cloze Test (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "2f2a1537-9c89-40a4-8652-8aee1b7c883b:M9-CLOZE1", take: 5, note: "Oswaal Mock 9" }],
+      },
+      {
+        chapterId: "296d3789-6f50-40a2-ba75-50f9da520112", label: "Grammar (NDA practice)",
+        sectionKey: "english",
+        blocks: [
+          { setId: "f22e2d1c-ba11-54bb-b689-505ad0a32f27:S5", take: 5, note: "Weekly Mock T1" },
+          { setId: "f22e2d1c-ba11-54bb-b689-505ad0a32f27:S2", take: 2, note: "Weekly Mock T1" },
+        ],
+      },
+      {
+        chapterId: "96cd1a07-850b-4cec-b136-a1bee0466200", label: "Sentence Rearrangement (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "f22e2d1c-ba11-54bb-b689-505ad0a32f27:S8", take: 5, note: "Weekly Mock T1" }],
+      },
+      {
+        chapterId: "e16371e1-cab2-41b7-bc3e-c3497723b949", label: "Idioms and Phrases (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "33271a2f-6b44-55c9-bd6e-db8eed389330:S8", take: 5, note: "Weekly Mock T2" }],
+      },
+      {
+        chapterId: "5f28d595-e0d6-4cd0-a484-6f27594a62e6", label: "Fill in the Blanks (NDA practice)",
+        sectionKey: "english",
+        blocks: [{ setId: "33271a2f-6b44-55c9-bd6e-db8eed389330:S6", take: 3, note: "Weekly Mock T2" }],
+      },
+
+      // ── Part B — Physics 25 (NDA practice) ─────────────────────────────────
+      { chapterId: "eeb6f496-35c7-4849-81c7-2e323abb3f2a", label: "PHY Electricity and Magnetism", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "477cbb6a-f22c-4449-b4b7-ba8abc5c3954", label: "PHY Light and Optics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "PHY Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "51f93cb7-95f0-4a12-af8b-6c894de8d17c", label: "PHY Modern Physics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "272515e4-c90a-4fc8-88d5-27dda51abdff", label: "PHY Laws of Motion and Forces", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "4a8ee181-4e57-4cdc-9b8f-697a88103c32", label: "PHY Kinematics and Motion", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "30a2a745-fcaf-444d-88f3-e91a2cbaf869", label: "PHY Fluid Mechanics and Properties of Matter", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "d3483671-fd5f-4f3a-9c3e-c83522a574a1", label: "PHY Units, Measurement and Dimensions", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "ecb87359-2f52-427b-ab5c-303a8cc5f36e", label: "PHY Sound", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "604e94ab-318e-4f64-8866-67bcbea3631d", label: "PHY Gravitation", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Chemistry 15 (NDA practice) ───────────────────────────────
+      { chapterId: "c4ab3261-6746-46b6-ad37-53b0e06b3c1d", label: "CHE Acids, Bases and Salts", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "78b65d36-3429-441a-83c1-45fcf49addca", label: "CHE Carbon and Its Compounds", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "7ad0bbff-e533-4e37-acb3-9f3e77db8b98", label: "CHE Chemical Reactions", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "cb0950ae-e3b1-450e-8bc1-e6bc3afbc096", label: "CHE Atomic Structure and Periodic Classification", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "1b00ad08-9409-423e-b049-eafa0c0662e4", label: "CHE Metals and Non-Metals", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "45b5a64b-f7ed-45d8-a369-202403ae2a08", label: "CHE Matter and Its States", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "da2d5b13-48ac-4bb0-a013-252543c55185", label: "CHE Industrial and Applied Chemistry", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c925bae8-b68a-46c3-954e-0fa86c69ca52", label: "CHE Chemical Bonding", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Biology 10 (NDA practice) ─────────────────────────────────
+      { chapterId: "c136f58f-c54f-4e78-83d7-049041d4ce36", label: "BIO Human Physiology", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "219cbf78-f3db-4f1d-a52e-c1d5aa2933f6", label: "BIO Cell Biology", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b3184272-3865-4725-81d3-c4902fe854e7", label: "BIO Microbiology and Disease", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "a83764fd-9d9d-4b1d-a800-24f47aa5e67c", label: "BIO Plant Biology", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "bea15bb4-1b34-48a2-8cad-f95898f5ecc6", label: "BIO Biodiversity and Classification", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "72cefdfa-771b-4e94-86e2-73713a45a71e", label: "BIO Ecology and Environment", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Geography 20 (NDA practice) ───────────────────────────────
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "GEO Climatology, Atmosphere and Weather", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "GEO Indian Geo - Physical Features", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "GEO Earth's Structure and Landforms", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "GEO World and Human Geography", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "GEO Earth in Space, Maps and Coordinates", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "GEO Indian Geo - Economy, Resources, Transport", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "GEO Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — History 12 (NDA practice) ─────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "HIS Modern India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "HIS Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 1 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "HIS Medieval India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      // Only 3 free rows here, all MODERATE — one seat, shaped to what exists.
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "HIS World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Polity 6 (NDA practice) ───────────────────────────────────
+      // World Polity and IR omitted: 3 free rows, and the 6 seats are better spent
+      // where the pool can actually shape difficulty.
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Economics 1 (NDA practice) ────────────────────────────────
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Current Affairs 11 (Sep-2026 pool, PINNED) ────────────────
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA Defence and Military Exercises", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 3 },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA Science and Technology", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 3 },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA Government Schemes and Policy", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 2 },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA Sports", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 1 },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA Awards, Honours and Culture", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 1 },
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA International Affairs", sectionKey: "gk", sourceFile: "Current Affairs_Sep26.docx", take: 1 },
+    ],
+  },
+  {
     // == NDA Maths -- State Board Class 11: Ch.1, 2, 14, 15 ===================
     //
     // A TOPIC-RESTRICTED practice paper: 120 questions drawn only from the NDA
