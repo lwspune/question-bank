@@ -198,3 +198,65 @@ export function orderPaperBySections(
     return ordered.map((cand) => ({ sectionKey: s.key, cand }));
   });
 }
+
+/**
+ * Per-chapter eligibility rules, added for TOPIC-RESTRICTED papers (a chapter
+ * test built from a few State Board chapters rather than a whole syllabus).
+ *
+ * All three are OPTIONAL and default to the behaviour that existed before them,
+ * so every spec written earlier selects byte-identically.
+ */
+export type ChapterFilters = {
+  /**
+   * Draw questions that already appear in another paper.
+   *
+   * OFF by default: a student may have seen them. The one case that needs it is
+   * a narrow topic whose HARD supply is exhausted — 23 of the 32 HARD questions
+   * across NDA Functions + Sets & Relations + Trigonometry-I are already in a
+   * paper, so refusing repeats caps such a paper near 7% HARD against an NDA
+   * norm of 26.5%. Per chapter, not per paper, so a chapter with fresh supply
+   * (a cross-exam fill) still gets unused rows.
+   */
+  allowUsed?: boolean;
+  /**
+   * Skip any question sharing a printed context with others.
+   *
+   * This is RULE 1 (a context is all-or-nothing) discharged the cheap way:
+   * `selectByQuota` picks per QUESTION by difficulty and is set-blind, and the
+   * docx exporter groups a shared context by ADJACENCY ("Common context for
+   * questions X-Y"), so a set-blind selector can both split a set and scatter
+   * whatever it does take. Never picking a set member cannot do either.
+   *
+   * Tests BOTH `setId` and `hasContext`: `set_id` alone is insufficient because
+   * some sources carry rows that share a context with `set_id = NULL`.
+   */
+  soloOnly?: boolean;
+  /**
+   * Restrict the chapter to exactly these question ids.
+   *
+   * For a chapter the bank's taxonomy cannot express — NDA "Trigonometric
+   * Identities" holds both State Board Trigonometry-I and Trigonometry-II, split
+   * across the SAME two subtopics, so the in-scope set is a hand-screened list
+   * rather than a filter.
+   *
+   * An ALLOW-list rather than an exclude-list on purpose: an exclude-list fails
+   * OPEN, silently admitting out-of-scope questions added by a later ingest.
+   */
+  includeIds?: string[];
+};
+
+/** Row shape the filters need. Structural, so build.ts's richer row satisfies it. */
+export type FilterRow = { id: string; setId: string | null; hasContext: boolean };
+
+export function passesChapterFilters(
+  row: FilterRow,
+  f: ChapterFilters,
+  used: Set<string>
+): boolean {
+  // `undefined` = unfiltered; an EMPTY list eliminates everything, so a mistyped
+  // screening list starves the chapter loudly instead of admitting all of it.
+  if (f.includeIds !== undefined && !f.includeIds.includes(row.id)) return false;
+  if (f.soloOnly === true && (row.setId !== null || row.hasContext)) return false;
+  if (f.allowUsed !== true && used.has(row.id)) return false;
+  return true;
+}

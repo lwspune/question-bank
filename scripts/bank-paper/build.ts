@@ -29,12 +29,13 @@ import { auditEnglishSection, orderEnglishBlocks, type EnglishRow } from "./engl
 import { auditPaperText, type PaperTextRow } from "./paper-text";
 import {
   selectByQuota, selectTotal, orderPaper, orderPaperBySections, DIFFICULTIES,
-  type Cand, type Quota, type Shape, type Layout,
+  passesChapterFilters,
+  type Cand, type Quota, type Shape, type Layout, type ChapterFilters,
 } from "./lib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-type ChapterPlan = {
+type ChapterPlan = ChapterFilters & {
   chapterId: string;
   label: string;
   /** Exact per-difficulty counts. A thin difficulty is REPORTED, never substituted. */
@@ -180,6 +181,161 @@ type PaperSpec = {
 };
 
 const PAPERS: PaperSpec[] = [
+  {
+    // == NDA Maths -- State Board Class 11: Ch.1, 2, 14, 15 ===================
+    //
+    // A TOPIC-RESTRICTED practice paper: 120 questions drawn only from the NDA
+    // material that maps onto four Balbharati Std XI chapters -- Angle and its
+    // Measurement (1), Trigonometry-I (2), Sets and Relations (14), Functions (15).
+    //
+    // SCOPE COMES FROM THE SYLLABUS MAP, NOT FROM CHAPTER NAMES. Every mapping
+    // below is `syllabus_concept_exams.covered_by` on the NDA bank spine, authored
+    // 2026-08-07, then verified against question text. Two findings shaped it:
+    //
+    //  1. 95 of the 138 NDA "Trigonometric Identities" PYQs are Trigonometry-II.
+    //     Compound Angle (38 -> XI:3.1/3.2), Multiple & Half-Angle (30 -> XI:3.3.x)
+    //     and Product-to-Sum (27 -> XI:3.4.x) are wholly Ch.3. The two remaining
+    //     subtopics -- Max/Min of Trig Expressions and Specific Values & Quadrants
+    //     -- cite BOTH XI:2.x and XI:3.x, so they straddle and no subtopic filter
+    //     can separate them. All 43 were read individually; 15 solo rows survive
+    //     strict Ch.2 scoping and are listed in `includeIds`. Out go tan 18 deg,
+    //     tan 22.5 deg, cos36-cos72, sqrt3.cosec20 - sec20, tan^2 165, and the
+    //     triple/compound/double-angle sets. Also out, per the user's strict call:
+    //     allied-angle reduction (Balbharati puts it at XI:3.2, not Ch.2).
+    //
+    //  2. Angle and its Measurement has ZERO NDA PYQs. Not thin -- zero. Across all
+    //     2,160 NDA Maths PYQs only 5 mention radian/arc/sector and NOT ONE is in a
+    //     trigonometry chapter (they are incidental mentions inside Optimisation,
+    //     Height & Distance, Lines and Statistics). UPSC does not set the topic.
+    //     Filled per RULE 2 from the Cadetprep Worksheets course, whose
+    //     "Angle and Measurement" chapter is a 1:1 match for the Balbharati chapter
+    //     (its two subtopics, Systems of Angle Measurement and Angle/Arc/Sector,
+    //     mirror XI:1.1 and XI:1.2). These 15 are the paper's only non-PYQ rows.
+    //
+    // RULE 2a CALIBRATION: Worksheets is a foundation course, so its tiers sit one
+    // below NDA. The Angle fill therefore takes Worksheets MODERATE for what is
+    // really an NDA-EASY slot and Worksheets HARD for an NDA-MODERATE one. They
+    // still PRINT in the tier their stored label names, so the paper's HARD tier
+    // carries 7 rows that are NDA-MODERATE in truth. Stated rather than hidden.
+    //
+    // allowUsed IS SET ON THE THREE PYQ CHAPTERS, DELIBERATELY. 23 of the 32 HARD
+    // questions in scope already appear in a paper (APJ Maths Mocks 5/7/8/9 and the
+    // Modulus/GIF paper). Refusing repeats would leave 9 HARD and cap the paper near
+    // 7%. Not set on the Angle chapter, whose 15 rows are all unused.
+    //
+    // soloOnly IS SET ON EVERY CHAPTER -- RULE 1 discharged the cheap way, the same
+    // call scripts/mocks/build-blueprint-mock.ts makes. `selectByQuota` is set-blind
+    // and the docx exporter groups a shared context by ADJACENCY, so picking set
+    // members risks both splitting a set and scattering it. Measured cost: 30% of
+    // the in-scope pool sits in sets, and 8 of Functions' 11 HARD rows are set
+    // members -- which is why HARD lands at 13 PYQ rows, not 23. Verified for this
+    // pool: 0 rows carry a context with a NULL set_id, so nothing is missed either.
+    //
+    // Also excluded by soloOnly, and worth knowing: 7 context-sets straddle the
+    // topic boundary with siblings in Differentiation / Definite & Indefinite
+    // Integration / Application of Derivatives. Taking those whole would import
+    // Class-12 calculus into a Class-11 paper.
+    //
+    // SUPPLY (solo, in-scope): Functions E31/M37/H3 . Sets E20/M27/H7 .
+    // Trig-I E6/M6/H3 . Angle (Worksheets) M33/H13 unused.
+    // Both PYQ HARD quotas below take 100% of what exists, so any audit exclusion
+    // surfaces as a reported SHORTFALL rather than a silent substitution.
+    slug: "nda-sb11-angle-trig1-sets-functions",
+    title: "NDA Maths - State Board XI: Angle, Trigonometry-I, Sets & Relations, Functions (120 Q)",
+    examId: EXAM_ID,
+    section: { key: "maths", label: "Mathematics" },
+    kinds: ["pyq"],
+    chapters: [
+      {
+        // NDA Functions -- the whole chapter maps to Balbharati XI Ch.15
+        // (Domain/Range -> 15.1.4/15.1.5/15.2, Composition & Inverse ->
+        // 15.2.1/15.2.2, Injectivity/Surjectivity -> 15.1.1, GIF and Functional
+        // Equations -> 15.1.5). Structurally the easiest chapter in scope: 44% of
+        // its PYQs are EASY and only 3 of its 11 HARD rows are set-free, hence H3.
+        chapterId: "968d1760-a754-454a-8fa9-de9111825ddd",
+        label: "Functions",
+        quota: { EASY: 14, MODERATE: 31, HARD: 3 },
+        allowUsed: true,
+        soloOnly: true,
+      },
+      {
+        // NDA Sets & Relations -- the whole chapter maps to Balbharati XI Ch.14
+        // (Counting/Inclusion-Exclusion -> 14.1.3/14.1.4, Set Operations ->
+        // 14.1.5/14.2.2/14.2.3, Relations -> 14.2.2/14.2.4/14.2.5/14.2.7).
+        // The best HARD source in the paper: 7 of its 9 HARD rows are set-free.
+        chapterId: "b17b1483-f613-46dc-9f93-7a7a4480a802",
+        label: "Sets & Relations",
+        quota: { EASY: 9, MODERATE: 26, HARD: 7 },
+        allowUsed: true,
+        soloOnly: true,
+      },
+      {
+        // NDA Trigonometric Identities, RESTRICTED to the 15 hand-screened rows
+        // that Balbharati XI Ch.2 actually equips a student for. See finding 1.
+        // An allow-list, not an exclude-list: an exclude-list fails OPEN and would
+        // silently admit Trigonometry-II rows added by a later ingest.
+        chapterId: "0f823463-e079-40d6-b121-3721553e306c",
+        label: "Trigonometry - I",
+        quota: { EASY: 6, MODERATE: 6, HARD: 3 },
+        allowUsed: true,
+        soloOnly: true,
+        includeIds: [
+          // EASY (6) -- quadrant signs, periodicity/negative angles, range of cos
+          "b063ee4c-709d-467e-8a4c-82aa6049af67", // min of 3cos(A + pi/3): range of cos alone
+          "a36b0b5a-0fbf-4b73-aab1-1fb82efd896a", // tan x = -3/4, 2nd quadrant -> sin x cos x
+          "9ce41d7d-6d9e-4ff6-8015-a78e94565c65", // csc(7pi/6).sec(5pi/3): quadrant signs
+          "577b9eba-4c60-480e-b5db-454e46abdb16", // tan th = -5/12 -> sin th
+          "e35b86f1-c0c1-45c3-8867-4c5b76a84a75", // csc(-73pi/3): periodicity + negative angle
+          "6c63a46c-a9ab-4c44-84e0-b10a5dd255d2", // sin th = -1/2, tan th = 1/sqrt3 -> quadrant
+          // MODERATE (6) -- fundamental identities + AM-GM
+          "b47a9d58-bcc8-43f1-adbc-eda5cf712d3a", // least value of 25cosec^2 x + 36sec^2 x
+          "167fd0a7-6dc0-4495-ad7e-30c437e26e90", // cos th + sec th / tan th + cot th bounds
+          "937b3aa1-caa9-4d99-abe7-9978b1453c2a", // A = sin^2 th + cos^4 th
+          "c2e01254-ab0a-4d5d-8a7c-6ed1610e241e", // min of a^2/cos^2 x + b^2/sin^2 x
+          "b815579a-7f6c-4256-907a-77626484cf08", // cosec th = 29/21 -> 4sec th + 4tan th
+          "c9a35306-fada-4a0d-9e96-bf6f2501c5d0", // sec x = 25/24, 4th quadrant -> tan x + sin x
+          // HARD (3)
+          "71e70f82-7d7b-4afc-a085-b718870eafec", // sin b is the harmonic mean of sin a, cos a
+          "d7a8dd65-6a03-4d6a-a1db-ea2cdf44be31", // max 3(sinx-cosx)+4(cos^3x-sin^3x); t=sinx-cosx
+          "79e82e2f-13cb-41de-9d0f-8b737fce1dfc", // sec th - cosec th = 4/3 -> sin th - cos th
+        ],
+      },
+      {
+        // Angle and its Measurement -- no NDA rows exist (finding 2), so this is a
+        // cross-exam fill from the Cadetprep worksheet course. `kinds` is overridden
+        // because that corpus is `practice` by construction, and `fromExam` keeps the
+        // cross-exam draw visible rather than hidden behind a bare uuid.
+        // Tiers are stepped up one per RULE 2a -- Worksheets MODERATE for NDA-EASY
+        // work, Worksheets HARD for NDA-MODERATE work.
+        chapterId: "771ab5cd-beeb-498b-97fd-7dab9f56d5fe",
+        label: "Angle and its Measurement",
+        fromExam: "Worksheets - 11th+12th",
+        kinds: ["practice"],
+        quota: { EASY: 0, MODERATE: 8, HARD: 7 },
+        soloOnly: true,
+        includeIds: [
+          // Worksheets MODERATE (8) -- degree/radian/gradian conversion + arc & sector
+          "02af5669-f351-480a-9a46-22d359a7246a", // radian measure of 240 deg
+          "562533f1-d834-44ef-bdcd-cf0b7744c683", // express 330 deg in radians
+          "55aef7e0-6a80-4c69-a75b-80acc3968d05", // express pi/5 radians in degrees
+          "bf825bbb-b996-4269-acc4-04f6bbf72d1f", // 100 gradians in degrees
+          "1bb73519-698f-459b-ba33-4ac75a844c54", // arc length, r = 5, angle 216 deg
+          "4d6f316b-15b3-4573-85c0-5031ec1665a1", // sector area, r = 10, 1.5 rad
+          "7e1d00d5-cfb4-4ef2-8211-4323a2936730", // perimeter of sector, r = 5, pi/3
+          "1fe26ea4-00e8-41da-9b0c-afa7efbff09d", // sector area 24pi, r = 6 -> angle
+          // Worksheets HARD (7) -- NDA-MODERATE in truth, per RULE 2a
+          "7ee66b80-f2b8-42a4-b824-fdf78150048d", // angle in radians twice its degree value
+          "f0ae99d8-ac9f-4854-b1d6-0e1436c1d296", // same numerical value in degrees and radians
+          "b61b2abb-6a62-4f57-b09b-1c87c3d86079", // wheel at 750 rpm -> radians travelled
+          "7e430b6f-24fb-40e3-bfe7-6f7ee909ed7f", // regular pentagon central angle in radians
+          "ece9f6d3-9b9f-4dc3-8c08-597943e825ca", // two sectors with equal arc lengths
+          "5f10bbb8-b890-4533-a953-fe74e6793408", // pi/5 -> pi/3, increase in degrees
+          "0132cde5-54ad-467c-950c-932820d682b8", // sector area 125, r = 10 -> central angle
+        ],
+      },
+    ],
+    exclude: [],
+  },
   {
     // ── NDA GAT — LWS Mock 4 ────────────────────────────────────────────────
     //
@@ -1514,12 +1670,17 @@ async function main() {
   const eligible = all.filter(
     (r) =>
       !excluded.has(r.id) &&
-      !used.has(r.id) &&
+      // `used` is applied PER CHAPTER now (ChapterFilters.allowUsed), not here.
       !hardFlagged.has(r.id) &&
       true
   );
-  const droppedUsed = all.filter((r) => used.has(r.id)).length;
-  console.log(`excluded: ${spec.exclude.length} listed defect(s), ${droppedUsed} already in a paper, ${hardFlagged.size} audit STRUCT/DUP`);
+  const alreadyUsed = all.filter((r) => used.has(r.id)).length;
+  const anyAllowUsed = spec.chapters.some((c) => c.allowUsed === true);
+  console.log(
+    `excluded: ${spec.exclude.length} listed defect(s), ${hardFlagged.size} audit STRUCT/DUP; ` +
+      `${alreadyUsed} candidate(s) already in a paper` +
+      (anyAllowUsed ? " (allowUsed is set on some chapters — see per-chapter lines)" : " — all dropped")
+  );
   for (const [id, reason] of excluded) console.log(`  - ${id}  ${reason}`);
   for (const f of flags.filter((x) => x.kind !== "SOLN≠KEY")) console.log(`  - ${f.id}  ${f.kind}: ${f.detail}`);
 
@@ -1535,6 +1696,14 @@ async function main() {
       .filter((r) => (ch.kinds ?? spec.kinds).includes(r.question_kind as "pyq" | "practice"))
       // Undefined = unfiltered, so specs predating this field are unaffected.
       .filter((r) => ch.sourceFile === undefined || r.source_file === ch.sourceFile)
+      // allowUsed / soloOnly / includeIds — see ChapterFilters in ./lib.
+      .filter((r) =>
+        passesChapterFilters(
+          { id: r.id, setId: r.set_id, hasContext: (r.context ?? null) !== null },
+          ch,
+          used
+        )
+      )
       .filter((r) => {
         const need = ch.requireConfirmedReview ?? spec.requireConfirmedReview ?? false;
         return !need || confirmed === null || confirmed.has(r.id);
