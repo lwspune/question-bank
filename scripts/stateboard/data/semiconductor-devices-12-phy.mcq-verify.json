@@ -1,0 +1,37 @@
+[
+  {
+    "id": "6f9e8925-052b-41d7-82c7-20b02f75f3ab",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "A",
+    "solution": "For a transistor the three terminal currents are related by \\(I_{E} = I_{C} + I_{B}\\), so the emitter current is the sum of the other two and is necessarily the largest of the three. The chapter puts numbers on this: the base current is only about 5% of \\(I_{E}\\) and the collector current is about 95% of \\(I_{E}\\). The current \"through the CB junction\" is the collector current, which is smaller than \\(I_{E}\\).\nHence the largest current flows in the emitter.",
+    "matches_current": true
+  },
+  {
+    "id": "6faddc99-dfdb-42d9-8322-7a63f81ce789",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "B",
+    "solution": "In a Zener voltage regulator the resistor \\(R_{S}\\) is placed in series between the unregulated supply and the Zener diode, and its job is to limit the current drawn through the diode. \\(R_{S}\\) is chosen so that the maximum power rating of the Zener is not exceeded even in the worst case (no load, when the whole circuit current passes through the diode). Without it the diode would draw a current large enough to destroy it.\nThe bias direction is set by the polarity of the supply, not by \\(R_{S}\\), so it neither reverse- nor forward-biases the diode; and the load sits in parallel with the Zener, not behind \\(R_{S}\\) alone.\nHence the series resistance is there to protect the Zener.",
+    "matches_current": true
+  },
+  {
+    "id": "e23c966f-732e-4d00-9db7-bf39371e320a",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "C",
+    "solution": "An LED is a diode that emits light when a large forward current passes through it. Under forward bias, electrons from the conduction band recombine with holes in the valence band across the junction, and the energy released in each recombination is given out as a photon. If the band gap is suitable, these photons lie in the visible range.\nUnder reverse bias the depletion region widens and no such recombination current flows, so no light is emitted; and heating of the junction is a loss, not the emission mechanism.\nHence an LED emits visible light when holes and electrons recombine.",
+    "matches_current": true
+  },
+  {
+    "id": "d51a9e60-42a2-4265-a9df-3b5292607c45",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "C",
+    "solution": "A solar cell is a photovoltaic cell: light incident on the p-n junction generates electron-hole pairs in the depletion region, the intrinsic field of the depletion region separates them, and the accumulated charge produces a voltage across the cell which drives current through an external load. Producing an e.m.f. directly from incident light in this way is called photovoltaic action.\nRecombination is what the cell must PREVENT (the photo-generated carriers are spatially separated precisely so that they do not recombine), and plain diffusion or carrier flow does not by itself generate a voltage.\nHence the solar cell operates on the principle of photovoltaic action.",
+    "matches_current": true
+  },
+  {
+    "id": "40b7135f-4922-4c07-902d-65411d6aa0b1",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "A",
+    "solution": "A logic gate is a digital circuit with one or more inputs and a single output, and it is a switching circuit whose output follows a definite logical relationship with its inputs. Given a set of input conditions it decides whether the output is high (1) or low (0) — that is, it makes a logical decision.\nAllowing current in only one direction describes a diode, not a gate, and a gate does not by itself alternate between 0 and 1: its output is fixed by its inputs.\nHence a logic gate is an electronic circuit which makes logical decisions.\n[Note: the alternative \"works using binary algebra\" is also a true statement about a logic gate, since its action is described by a Boolean (binary) expression. It is the runner-up here. (A) is preferred because the question asks what the circuit IS/does, and the defining property of a gate is the input-output logical decision, whereas Boolean algebra is the mathematics used to describe it.]",
+    "matches_current": true
+  }
+]

@@ -314,6 +314,20 @@ class Canvas:
             dx = p.get("dx", 8) * SS; dy = p.get("dy", -18) * SS
             self.d.text((x + dx, y + dy), p["label"], font=self.f, fill=(20, 20, 20))
 
+    def text_at(self, t):
+        """A bare text label at a data coordinate — no marker.
+
+        `point()` always draws a filled ellipse, so it cannot label a graph lane
+        or an axis without planting a spurious dot on it. Purely additive: no
+        pre-existing spec carries `texts`, so every shipped chapter renders
+        byte-identically (proven by an A/B against the unmodified file).
+        """
+        x, y = self.px(t["x"], t["y"])
+        dx = t.get("dx", 0) * SS
+        dy = t.get("dy", 0) * SS
+        font = self.fs if t.get("small") else self.f
+        self.d.text((x + dx, y + dy), t["text"], font=font, fill=t.get("color", (20, 20, 20)))
+
     def caption(self):
         cap = self.spec.get("caption", "")
         if not cap:
@@ -369,6 +383,8 @@ class Canvas:
             self.point(p)
         for ra in self.spec.get("rightangles", []):
             self.rightangle(ra)
+        for t in self.spec.get("texts", []):
+            self.text_at(t)
         self.caption()
         return self.img.resize((W, H), Image.LANCZOS).convert("RGB")
 
@@ -503,7 +519,10 @@ def build_pair_lines_specs():
     return S
 
 
-_COLORS = {"blue": BLUE, "red": RED, "green": GREEN, "purple": PURPLE, "gray": GRAY}
+_COLORS = {"blue": BLUE, "red": RED, "green": GREEN, "purple": PURPLE, "gray": GRAY,
+           "grey": GRAY, "black": (20, 20, 20)}
+# NOTE an unknown name falls back to BLUE SILENTLY — that is how a set of axis
+# segments specified as "black" rendered blue and merged into the curves.
 
 def build_linear_prog_specs():
     # Ch.7 Linear Programming diagrams are DATA-DRIVEN: the solving agents emit a
@@ -614,6 +633,77 @@ def build_app_derivatives_specs():
     return specs
 
 
+def build_generic_specs(chapter):
+    """Data-driven spec loader for ANY chapter, keyed by chapter id.
+
+    The three builders above are chapter-specific only in their FILENAME and in
+    which optional keys they forward; the Physics lane has ~30 chapters coming,
+    each with "draw the graph" questions, so one parameterised loader is the
+    alternative to thirty near-identical copies. Same call the NCERT pipeline
+    made when it collapsed its three loaders into one.
+
+    Supports the union of every feature the older builders expose:
+      {ref, xr, yr, caption, axes?, equal_aspect?,
+       curves:[{expr,dom,label,color}]        y = f(x), sampled
+       segments:[{x1,y1,x2,y2,label,color,dashed,dx,dy}]   FINITE
+       lines:[{A,B,C,label,color,dashed}]     INFINITE, clipped to the viewport
+       conics:[{cx,cy,r|a,b,t0,t1,label,color}]
+       polys:[{pts,color,close,dashed}]
+       shade:[{dom,hi,lo}] | shade_polys:[[[x,y],..]]
+       points:[{x,y,label,dx,dy}]
+       rightangles:[{x,y,u,v,size}]}
+
+    `equal_aspect` defaults OFF: a physics graph plots unlike quantities on the
+    two axes (displacement against phase angle), so forcing equal px/unit would
+    squash it for no gain. A PHYSICAL figure (a circuit, a ray diagram) should
+    set it true explicitly.
+
+    Globs part-files so parallel authoring agents can each own one, and refuses a
+    duplicate ref rather than letting readdir order decide which wins.
+    """
+    parts = sorted(glob.glob(os.path.join(HERE, "data", f"{chapter}.diagram-specs*.json")))
+    raw = []
+    seen = set()
+    for path in parts:
+        for r in json.load(open(path, encoding="utf-8")):
+            if r["ref"] in seen:
+                raise SystemExit(f"duplicate diagram spec for ref {r['ref']!r} (in {os.path.basename(path)})")
+            seen.add(r["ref"]); raw.append(r)
+    if not raw:
+        return []
+    col = lambda name: _COLORS.get(name, BLUE)
+    specs = []
+    for r in raw:
+        spec = {"ref": r["ref"], "xr": tuple(r["xr"]), "yr": tuple(r["yr"]),
+                "caption": r.get("caption", ""), "axes": r.get("axes", True),
+                "equal_aspect": r.get("equal_aspect", False)}
+        if r.get("curves"):
+            spec["curves"] = [dict(expr=c["expr"], dom=c["dom"], label=c.get("label", ""),
+                                   color=col(c.get("color", "blue"))) for c in r["curves"]]
+        if r.get("segments"):
+            spec["segments"] = [{**x, "color": col(x.get("color", "blue"))} for x in r["segments"]]
+        if r.get("polys"):
+            spec["polys"] = [{**x, "color": col(x.get("color", "blue"))} for x in r["polys"]]
+        if r.get("conics"):
+            spec["conics"] = [{**x, "color": col(x.get("color", "blue"))} for x in r["conics"]]
+        if r.get("lines"):
+            spec["lines"] = [ln(l["A"], l["B"], l["C"], l.get("label", ""),
+                                col(l.get("color", "blue")), l.get("dashed", False)) for l in r["lines"]]
+        if r.get("shade"):
+            spec["shade"] = r["shade"]
+        if r.get("shade_polys"):
+            spec["shade_polys"] = [[tuple(pt) for pt in pg] for pg in r["shade_polys"]]
+        if r.get("points"):
+            spec["points"] = [dict(x=pt["x"], y=pt["y"], label=pt.get("label", ""),
+                                   dx=pt.get("dx", 8), dy=pt.get("dy", -18)) for pt in r["points"]]
+        if r.get("rightangles"):
+            spec["rightangles"] = r["rightangles"]
+        if r.get("texts"):
+            spec["texts"] = [{**t, "color": col(t["color"]) if t.get("color") else (20, 20, 20)} for t in r["texts"]]
+        specs.append(spec)
+    return specs
+
+
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
 SPEC_BUILDERS = {
     "pair-lines-12": build_pair_lines_specs,
@@ -621,6 +711,31 @@ SPEC_BUILDERS = {
     "app-def-integration-12": build_app_integration_specs,
     "app-derivatives-12": build_app_derivatives_specs,
 }
+
+# PHYSICS (2026-09-02): every chapter of the Std XI/XII Physics lane routes to the
+# generic data-driven loader. Registered by id so `main()`'s unknown-chapter error
+# keeps naming what is available; a chapter with no spec file renders 0 diagrams
+# rather than failing, which is the right behaviour for a chapter that needs none.
+_PHYSICS_CHAPTERS = [
+    "oscillations-12-phy",
+    "rotational-dynamics-12-phy",
+    "fluids-12-phy",
+    "kinetic-theory-12-phy",
+    "thermodynamics-12-phy",
+    "superposition-waves-12-phy",
+    "wave-optics-12-phy",
+    "electrostatics-12-phy",
+    "current-electricity-12-phy",
+    "magnetic-fields-current-12-phy",
+    "magnetic-materials-12-phy",
+    "em-induction-12-phy",
+    "ac-circuits-12-phy",
+    "dual-nature-12-phy",
+    "atoms-nuclei-12-phy",
+    "semiconductor-devices-12-phy",
+]
+for _c in _PHYSICS_CHAPTERS:
+    SPEC_BUILDERS[_c] = (lambda c: (lambda: build_generic_specs(c)))(_c)
 
 
 def montage(paths):

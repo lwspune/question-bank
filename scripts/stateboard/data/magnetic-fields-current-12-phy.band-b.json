@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Solved Ex.10.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetic Field due to a Current",
+    "difficulty": "MODERATE",
+    "stem": "A wire has 2 straight sections and one arc as shown in the figure. Determine the direction and magnitude of the magnetic field produced at the centre O of the semicircle by the three sections individually and the total.",
+    "solution": "We apply the Biot-Savart law to the 3 sections of the wire.\n\nFor the section (i) and (iii) the angle between the current-length elements \\(I\\,\\mathrm{d}\\vec{l}\\) and \\(\\vec{R}\\) is \\(180^\\circ\\) and \\(0^\\circ\\), respectively.\n\n\\(\\therefore dB = \\dfrac{\\mu_0}{4\\pi}\\dfrac{Idl \\sin(180)^\\circ}{R^2} = 0 = \\dfrac{\\mu_0}{4\\pi}\\dfrac{Idl \\sin(0)^\\circ}{R^2}\\)\n\nFor section (ii), \\(\\mathrm{d}\\vec{l}\\) is always perpendicular to \\(\\vec{R}\\).\n\n\\(\\therefore dB = \\dfrac{\\mu_0}{4\\pi}\\dfrac{Idl \\sin (90^\\circ)}{R^2} = \\dfrac{\\mu_0}{4\\pi}\\dfrac{Idl}{R^2}\\)\n\nIntegrating, \\(B = \\dfrac{\\mu_0}{4\\pi}\\dfrac{I}{R^2}\\displaystyle\\int_0^{\\pi R} dl = \\dfrac{\\mu_0}{4\\pi}\\dfrac{I}{R^2}\\pi R\\)\n\n\\(\\therefore B = \\dfrac{\\mu_0}{4}\\dfrac{I}{R}\\)\n\n\\(\\therefore\\) For the sections (i), and (iii), \\(B = 0\\), for section (ii) \\(B = \\dfrac{\\mu_0 I}{4R}\\) at the point O.\n\nTotal \\(B = 0 + \\dfrac{\\mu_0 I}{4R} + 0 = \\dfrac{\\mu_0 I}{4R}\\).\n\nDirection of \\(B\\): the current runs left to right and so traverses the semicircle clockwise as seen on the page (from the left end, over the top, down to the right end). For an element at the top of the arc, \\(\\mathrm{d}\\vec{l}\\) is along \\(+\\hat{x}\\) while the unit vector from that element to O is \\(-\\hat{y}\\), so \\(\\mathrm{d}\\vec{l} \\times \\hat{r} = \\hat{x} \\times (-\\hat{y}) = -\\hat{z}\\). Every element of the arc gives the same sense, so \\(\\vec{B}\\) at O is directed INTO the plane of the paper."
+  },
+  {
+    "ref": "Solved Ex.10.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetic Field due to a Current",
+    "difficulty": "EASY",
+    "stem": "Consider a closely wound 1000 turn coil, having radius of 1 m. If a current of 10 A passes through the coil, what will be the magnitude of the magnetic field at the centre?",
+    "solution": "\\(N = 1000\\), \\(R = 100\\ \\mathrm{cm}\\), \\(I = 10\\ \\mathrm{A}\\). Using Eq. (10.50),\n\n\\(B = \\dfrac{\\mu_0 NI}{2R} = \\dfrac{4\\pi \\times 10^{-7} \\times 10^3 \\times 10}{2 \\times 1}\\)\n\n\\(= 2\\pi \\times 10^{-3} = 6.28 \\times 10^{-3}\\ \\mathrm{T}\\)"
+  },
+  {
+    "ref": "Solved Ex.10.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ampere's Law, Solenoid and Toroid",
+    "difficulty": "MODERATE",
+    "stem": "A coaxial cable consists of a central conducting core wire of radius \\(a\\) and a coaxial cylindrical outer conductor of radius \\(b\\) (see figure). The two conductors carry an equal current \\(I\\) in opposite directions in and out of the plane of the paper. What will be the magnitude of the magnetic field \\(B\\) for (i) \\(a < r < b\\) and (ii) \\(b < r\\)? What will be its direction?",
+    "solution": "By symmetry, \\(B\\) will be tangent to any circle centred on the central conductor. In order to apply the Ampere's law, consider a circle of radius \\(r\\) such that \\(a < r < b\\).\n\n\\(\\therefore \\displaystyle\\oint \\vec{B}.\\mathrm{d}\\vec{l} = \\mu_0 I\\)\n\n\\(\\therefore B.2\\pi r = \\mu_0 I\\)\n\n\\(\\therefore B = \\dfrac{\\mu_0}{2\\pi}\\dfrac{I}{r}\\), \\(a < r < b\\)\n\nFor \\(r > b\\),\n\n\\(\\therefore \\displaystyle\\oint \\vec{B}.\\mathrm{d}\\vec{l} = \\mu_0 (I - I) = 0\\) (\\(\\because\\) The two currents are equal and opposite)\n\n\\(\\therefore B.2\\pi r = 0\\), \\(r > b\\)\n\n(Try to solve this using Biot-Savart Law!)"
+  },
+  {
+    "ref": "Solved Ex.10.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ampere's Law, Solenoid and Toroid",
+    "difficulty": "EASY",
+    "stem": "A solenoid of length 25 cm has inner radius of 1 cm and is made up of 250 turns of copper wire. For a current of 3 A in it, what will be the magnitude of the magnetic field inside the solenoid?",
+    "solution": "We use Eq. (10.65)\n\n\\(B = \\mu_0\\, n\\, i\\)\n\n\\(B = 4\\pi \\times 10^{-7} \\times \\dfrac{250}{0.25} \\times 3\\)\n\n\\(B = 4\\pi \\times 10^{-7} \\times 10^{3} \\times 3\\)\n\n\\(\\therefore B = 3.77 \\times 10^{-3}\\ \\mathrm{T}\\)"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "ref": "Solved Ex.16.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "p-n Junction Diode as a Rectifier",
+    "difficulty": "EASY",
+    "stem": "If the frequency of the input voltage50 Hz is applied to a (a) half wave rectifier and (b) full wave rectifier, what is the output frequency in both cases?",
+    "solution": "(a) The output frequency is 50 Hz because for one AC input pulsating we get one cycle of DC.\n(b) The output frequency is 100 Hz because for one input ac cycle we get two cycles of pulsating DC."
+  },
+  {
+    "ref": "Solved Ex.16.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Zener Diode",
+    "difficulty": "MODERATE",
+    "stem": "A 5.0V stabilized power supply is required to be desinged using a 12V DC power supply as input source. The maximum power rating \\(P_{Z}\\) of the Zener diode is 2.0 W. Using the Zener regulator circuit described in Fig. 16.8, calculate,\na) The maximum current flowing through the Zener diode. b) The minimum value of the series resistor, \\(R_{S}\\). c) The load current \\(I_{L}\\) if a load resistor of 1k\\(\\Omega\\) is connected across the Zener diode. d) The Zener current \\(I_{Z}\\) at full load.",
+    "solution": "[Textbook misprint: the book's printed working for part (b) reads \\(R_{S} = (V_{s} - V_{Z})/I_{Z} = (12.0 - 5.0)\\,400 = 17.5\\ \\Omega\\). As printed that step is self-refuting twice over — the division bar before the current is lost, and the current is written as 400 (mA) instead of 0.400 A — so read literally it gives \\(7.0 \\times 400 = 2800\\) or \\(7.0/400 = 0.0175\\), neither of which is 17.5. The printed ANSWER 17.5 \\(\\Omega\\) is correct; only the substitution line is defective, so the working here is corrected to \\((12.0 - 5.0)/0.400 = 17.5\\ \\Omega\\). The stem's spelling 'desinged' is also as printed.]\n\na) Maximum current \\(I_{Z}\\) = Power/Voltage =\n\\(P_{Z}/V_{o} = 2.0/5.0 = 0.4\\) A = 400 mA.\nb) \\(R_{S} = (V_{s} - V_{Z})/I_{Z} = (12.0 - 5.0)/0.400\\)\n\\(= 17.5\\ \\Omega\\).\nc) \\(I_{L} = V_{Z}/R_{L} = 5.0/1000 = 0.005\\) A = 5.0 mA\nd) \\(I_{Z} = I_{S} - I_{L} = (400 - 5) = 395\\) mA."
+  }
+]

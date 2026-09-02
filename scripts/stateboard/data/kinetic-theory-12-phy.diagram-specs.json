@@ -1,0 +1,161 @@
+[
+  {
+    "ref": "Ex Q.23",
+    "xr": [
+      -6.0,
+      70.0
+    ],
+    "yr": [
+      -2.1,
+      10.0
+    ],
+    "axes": false,
+    "equal_aspect": false,
+    "caption": "Ex Q.23 - blackbody spectral distribution at T = 280 K. Peak at lambda_max = b/T = 1.035e-5 m = 10.35 micrometre (infrared); the visible band is the green sliver at the origin.",
+    "segments": [
+      {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 64.0,
+        "y2": 0.0,
+        "color": "black"
+      },
+      {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 0.0,
+        "y2": 10.0,
+        "color": "black"
+      },
+      {
+        "x1": 10.346428571428572,
+        "y1": 0.0,
+        "x2": 10.346428571428572,
+        "y2": 8.0,
+        "color": "red",
+        "dashed": true
+      },
+      {
+        "x1": 0.4,
+        "y1": -0.35,
+        "x2": 0.7,
+        "y2": -0.35,
+        "color": "green"
+      },
+      {
+        "x1": 10.0,
+        "y1": -0.18,
+        "x2": 10.0,
+        "y2": 0.18,
+        "color": "black"
+      },
+      {
+        "x1": 20.0,
+        "y1": -0.18,
+        "x2": 20.0,
+        "y2": 0.18,
+        "color": "black"
+      },
+      {
+        "x1": 40.0,
+        "y1": -0.18,
+        "x2": 40.0,
+        "y2": 0.18,
+        "color": "black"
+      },
+      {
+        "x1": 60.0,
+        "y1": -0.18,
+        "x2": 60.0,
+        "y2": 0.18,
+        "color": "black"
+      }
+    ],
+    "curves": [
+      {
+        "expr": "1.351768e+08 * x**-5 / (np.exp(51.384893/x) - 1)",
+        "dom": [
+          0.5,
+          64.0
+        ],
+        "color": "blue"
+      }
+    ],
+    "texts": [
+      {
+        "x": 22.0,
+        "y": -1.45,
+        "text": "wavelength (micrometre)"
+      },
+      {
+        "x": 2.0,
+        "y": 9.2,
+        "text": "R(lambda) - radiant power per unit wavelength",
+        "small": true
+      },
+      {
+        "x": 10.346428571428572,
+        "y": 8.0,
+        "text": "lambda_max = 10.35 micrometre",
+        "dx": 12,
+        "dy": -6,
+        "color": "red"
+      },
+      {
+        "x": 3.2,
+        "y": -0.35,
+        "text": "visible",
+        "dx": 0,
+        "dy": -9,
+        "color": "green",
+        "small": true
+      },
+      {
+        "x": 26.0,
+        "y": 3.4,
+        "text": "infrared tail",
+        "small": true
+      },
+      {
+        "x": 10.0,
+        "y": -0.25,
+        "text": "10",
+        "dx": -8,
+        "dy": 4,
+        "small": true
+      },
+      {
+        "x": 20.0,
+        "y": -0.25,
+        "text": "20",
+        "dx": -8,
+        "dy": 4,
+        "small": true
+      },
+      {
+        "x": 40.0,
+        "y": -0.25,
+        "text": "40",
+        "dx": -8,
+        "dy": 4,
+        "small": true
+      },
+      {
+        "x": 60.0,
+        "y": -0.25,
+        "text": "60",
+        "dx": -8,
+        "dy": 4,
+        "small": true
+      },
+      {
+        "x": 0.0,
+        "y": -0.25,
+        "text": "0",
+        "dx": -10,
+        "dy": 4,
+        "small": true
+      }
+    ]
+  }
+]

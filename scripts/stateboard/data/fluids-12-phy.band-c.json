@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Solved Ex.2.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "As shown in the given figure, a piston of cross sectional area 2 cm\\(^2\\) pushes the liquid out of a tube whose area at the outlet is 40 mm\\(^2\\). The piston is pushed at a rate of 2 cm/s. Determine the speed at which the fluid leaves the tube.",
+    "solution": "Given,\n\\(A_1 = 2\\) cm\\(^2 = 2 \\times 10^{-4}\\) m\\(^2\\)\n\\(v_1 = 2\\) cm/s \\(= 2 \\times 10^{-2}\\) m/s\n\\(A_2 = 40\\) mm\\(^2 = 40 \\times 10^{-6}\\) m\\(^2\\)\nFrom equation of continuity, \\(A_1 v_1 = A_2 v_2\\)\nTherefore,\n\\(v_2 = \\dfrac{A_1 v_1}{A_2} = \\dfrac{2 \\times 10^{-4} \\times 2 \\times 10^{-2}}{40 \\times 10^{-6}} = 0.1\\) m/s"
+  },
+  {
+    "ref": "Solved Ex.2.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "The given figure shows a streamline flow of a non-viscous liquid having density 1000 kg/m\\(^3\\). The cross sectional area at point A is 2 cm\\(^2\\) and at point B is 1 cm\\(^2\\). The speed of liquid at the point A is 5 cm/s. Both points A and B are at the same horizontal level. Calculate the difference in pressure at A and B.",
+    "solution": "[Textbook answer-key error: the book's last three lines read \\(= \\dfrac{1}{2} \\times 1000 \\times (100 - 25)\\), \\(= 500 \\times 75\\), \\(P_1 - P_2 = 37500\\) Pa \\(= 3.75 \\times 10^{4}\\) Pa. The speeds have been substituted in cm/s (10 and 5) while \\(\\rho\\) is in kg/m\\(^3\\), so the result is too large by a factor of \\(10^{4}\\). With \\(v_1 = 0.05\\) m/s and \\(v_2 = 0.1\\) m/s the correct value is \\(P_1 - P_2 = 3.75\\) Pa. The book's continuity line is also dimensionally inconsistent — it prints \\(\\dfrac{2 \\times 5 \\times 10^{-2}}{10^{-2}}\\), mixing an area in cm\\(^2\\) with a speed in m/s and writing \\(10^{-2}\\) where \\(A_2 = 10^{-4}\\) m\\(^2\\) — although it does reach the correct 10 cm/s. Both lines are corrected here.]\n\nGiven,\n\\(\\rho = 1000\\) kg/m\\(^3\\), \\(A_1 = 2\\) cm\\(^2 = 2 \\times 10^{-4}\\) m\\(^2\\), \\(A_2 = 1\\) cm\\(^2 = 10^{-4}\\) m\\(^2\\), \\(v_1 = 5\\) cm/s \\(= 5 \\times 10^{-2}\\) m/s and \\(h_1 = h_2\\)\nFrom the equation of continuity,\n\\(A_1 v_1 = A_2 v_2\\)\n\\(\\therefore v_2 = \\dfrac{A_1 v_1}{A_2} = \\dfrac{2 \\times 10^{-4} \\times 5 \\times 10^{-2}}{10^{-4}} = 0.1\\) m/s \\(= 10\\) cm/s\nBy Bernoulli's equation,\n\\((P_1 - P_2)\\,dV = \\dfrac{1}{2}\\rho\\,dV(v_2^2 - v_1^2) + \\rho\\,dV g(h_2 - h_1)\\)\n(since \\(h_2 - h_1 = 0\\))\n\\((P_1 - P_2)\\,dV = \\dfrac{1}{2}\\rho\\,dV(v_2^2 - v_1^2)\\)\n\\(P_1 - P_2 = \\dfrac{1}{2} \\times 1000 \\times \\left[(0.1)^2 - (0.05)^2\\right]\\)\n\\(= 500 \\times 0.0075\\)\n\\(P_1 - P_2 = 3.75\\) Pa\n(The speeds must be in m/s here, to match \\(\\rho\\) in kg/m\\(^3\\); A is the wider section, so the pressure at A is the greater of the two.)"
+  },
+  {
+    "ref": "Solved Ex.2.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "Doors of a dam are 20 m below the surface of water in the dam. If one door is opened, what will be the speed of the water that flows out of the door? (\\(g = 9.8\\) m/s\\(^2\\)), specific gravity of mercury \\(= (\\rho_{Hg}/\\rho_w) = 13.6\\)",
+    "solution": "[Textbook misprint: the question also prints a specific gravity of mercury, \\(\\rho_{Hg}/\\rho_w = 13.6\\), which has nothing to do with water escaping from a dam and is not used anywhere in the book's own solution. It appears to have been carried over from Example 2.13 on the next page, where the same datum is genuinely needed. The stem is preserved exactly as printed; the answer does not depend on it.]\n\nGiven, \\(h = 20\\) m\nFrom Torricelli's law,\n\\(v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 20} = \\sqrt{392} = 19.79\\) m/s"
+  },
+  {
+    "ref": "Solved Ex.2.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "HARD",
+    "stem": "Water flows through a tube as shown in the given figure. Find the difference in mercury level, if the speed of flow of water at point A is 2 m/s and at point B is 5 m/s. (\\(g = 9.8\\) m/s\\(^2\\), specific gravity of mercury \\(= 13.6\\))",
+    "solution": "Given, \\(v_1 = 2\\) m/s, \\(v_2 = 5\\) m/s\nWe have, Pressure difference in water generates level difference for the mercury in the manometer.\n\\(\\Delta P = \\dfrac{1}{2}\\rho_w(v_2^2 - v_1^2) = h\\rho_{Hg}g\\)\n\\(\\therefore h = \\dfrac{(v_2^2 - v_1^2)}{2g\\left(\\dfrac{\\rho_{Hg}}{\\rho_w}\\right)} = \\dfrac{25 - 4}{2 \\times 9.8 \\times 13.6} = 0.07878\\) m\n\\(= 7.878\\) cm"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "ref": "Solved Ex.9.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "In an experiment to determine the internal resistance of a cell of emf 1.5 V, the balance point in the open cell condition is at 76.3 cm. When a resistor of 9.5 ohm is used in the external circuit of the cell the balance point shifts to 64.8 cm of the potentiometer wire. Determine the internal resistance of the cell.",
+    "solution": "Open cell balancing length \\(l_1 = 76.3\\) cm\nClosed circuit balancing length \\(l_2 = 64.8\\) cm\nExternal resistance \\(R = 9.5\\ \\Omega\\)\nInternal resistance \\(r = \\left(\\dfrac{l_1 - l_2}{l_2}\\right) R\\)\n\\(= \\left(\\dfrac{76.3 - 64.8}{64.8}\\right) \\times 9.5\\)\n\\(= 1.686\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 100 \\(\\Omega\\) and its full scale deflection current is 100 \\(\\mu\\)A. What shunt resistance should be added so that the ammeter can have a range of 0 to 10 mA?",
+    "solution": "Given \\(I_g = 100\\ \\mu\\)A \\(= 0.1\\) mA\nThe upper limit gives the maximum current to be measured, which is \\(I = 10\\) mA.\nThe galvanometer resistance is \\(G = 100\\ \\Omega\\).\nNow\n\\(n = \\dfrac{10}{0.1} = 100\\)\n\\(\\therefore S = \\dfrac{G}{n-1} = \\dfrac{100}{100-1} = \\dfrac{100}{99}\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "What is the value of the shunt resistance that allows 20% of the main current through a galvanometer of 99 \\(\\Omega\\)?",
+    "solution": "Given \\(G = 99\\ \\Omega\\) and \\(I_g = (20/100) I = 0.2 I\\)\nNow\n\\(S = \\dfrac{I_g G}{I - I_g} = \\dfrac{0.2 I \\times 99}{(I - 0.2 I)} = \\dfrac{0.2 \\times 99}{0.8} = 24.75\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 25 \\(\\Omega\\) and its full scale deflection current is 25 \\(\\mu\\)A. What resistance should be added to it to have a range of 0 - 10 V?",
+    "solution": "[Textbook misprint: the first line of the printed solution reads \"Given \\(G = 25\\ \\mu\\)A\", assigning a CURRENT to the galvanometer resistance \\(G\\). The stem gives the resistance as \\(25\\ \\Omega\\) and the full scale deflection current as \\(25\\ \\mu\\)A, and the book's own third line correctly states \\(G = 25\\ \\Omega\\). The line has been corrected below to \\(I_g = 25\\ \\mu\\)A; the final answer is unaffected.]\n\nGiven \\(I_g = 25\\ \\mu\\)A.\nMaximum voltage to be measured is \\(V = 10\\) V.\nThe galvanometer resistance \\(G = 25\\ \\Omega\\).\nThe resistance to be added in series,\n\\(X = \\dfrac{V}{I_g} - G = \\dfrac{10}{25 \\times 10^{-6}} - 25\\)\n\\(= 399.975 \\times 10^{3}\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 40 \\(\\Omega\\) and a current of 4 mA is needed for a full scale deflection. What is the resistance and how is it to be connected to convert the galvanometer (a) into an ammeter of 0.4 A range and (b) into a voltmeter of 0.5 V range?",
+    "solution": "Given \\(G = 40\\ \\Omega\\) and \\(I_g = 4\\) mA\n(a) To convert the galvanometer into an ammeter of range 0.4 A,\n\\((I - I_g) S = I_g G\\)\n\\((0.4 - 0.004) S = 0.004 \\times 40\\)\n\\(\\therefore S = \\dfrac{0.004 \\times 40}{0.396} = \\dfrac{0.16}{0.396} = 0.4040\\ \\Omega\\)\n(b) To convert the galvanometer into a voltmeter of range of 0.5 V\n\\(V = I_g (G + X)\\)\n\\(0.5 = 0.004 (40 + X)\\)\n\\(\\therefore X = \\dfrac{0.5}{0.004} - 40 = 85\\ \\Omega\\)"
+  }
+]

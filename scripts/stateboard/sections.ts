@@ -398,6 +398,163 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
       ],
     },
   ],
+
+  // Ch.1 MCQ block is printed i) ii) iii) iv) v) X) — the book skips vi)-ix) and
+  // labels its sixth item "X)". `Ex Q.1 (` catches all six regardless.
+  "rotational-dynamics-12-phy": [
+    { group: "1. Rotational Dynamics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.1."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22",
+      ],
+    },
+  ],
+
+  "fluids-12-phy": [
+    { group: "2. Mechanical Properties of Fluids — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.2."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23",
+      ],
+    },
+  ],
+
+  "current-electricity-12-phy": [
+    { group: "9. Current Electricity — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.9."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20",
+      ],
+    },
+  ],
+  // Ch.10 prints NO "2. Answer in brief" block — the Exercises run
+  // "1. Choose the correct option" i)–v) and then flat items 2 … 21.
+  // Flat refs are enumerated individually: "Ex Q.2" is a prefix of "Ex Q.20"
+  // and "Ex Q.21", so they must all sit in the SAME block (they do).
+  "magnetic-fields-current-12-phy": [
+    { group: "10. Magnetic Fields due to Electric Current — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.10."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.2", "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8",
+        "Ex Q.9", "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14",
+        "Ex Q.15", "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20",
+        "Ex Q.21",
+      ],
+    },
+  ],
+  "semiconductor-devices-12-phy": [
+    { group: "16. Semiconductor Devices — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.16."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20",
+      ],
+    },
+  ],
+  "atoms-nuclei-12-phy": [
+    { group: "15. Structure of Atoms and Nuclei — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.15."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23", "Ex Q.24",
+      ],
+    },
+  ],
+  "dual-nature-12-phy": [
+    { group: "14. Dual Nature of Radiation and Matter — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.14."] },
+    { group: "Exercises", label: "Choose the correct answer", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18",
+      ],
+    },
+  ],
+  "wave-optics-12-phy": [
+    { group: "7. Wave Optics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.7."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23", "Ex Q.24", "Ex Q.25",
+      ],
+    },
+  ],
+
+  // ── Ch.3 Kinetic Theory of Gases and Radiation (12th Physics). 19pp;
+  //    Exercises open p-17 and end p-18 at Q.25 (the terminal ✻✻✻).
+  //    NINE worked examples, not the eight the config comment records: the first
+  //    is labelled `Example: 3.1` — a COLON after the word — on p-02, so an
+  //    `Example\s*3\.\d+` scan misses it while its `Solution:` marker is counted,
+  //    which is the "9 markers vs 8 examples" gap. Refs run Solved Ex.3.1-3.9.
+  //    Exercise shape: Q.1 five MCQs, Q.2 five short-answer, then flat Q.3-Q.25.
+  "kinetic-theory-12-phy": [
+    { group: "3. Kinetic Theory of Gases and Radiation — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.3."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23", "Ex Q.24", "Ex Q.25",
+      ],
+    },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

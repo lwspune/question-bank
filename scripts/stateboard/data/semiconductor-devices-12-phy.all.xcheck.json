@@ -1,0 +1,20 @@
+[
+  {
+    "ref": "Ex Q.18",
+    "verdict": "AGREE",
+    "my_derivation": "I_B = 0.33 mA",
+    "note": "Third ground truth, computed from the STEM with exact rational arithmetic and without reference to our stored answer. alpha = 967/1000, I_E = 10 mA. I_C = alpha*I_E = 967/100 = 9.67 mA exactly; I_B = I_E - I_C = 33/100 = 0.33 mA exactly. Book prints 0.33mA. No approximation and no assumed constant is involved."
+  },
+  {
+    "ref": "Ex Q.19",
+    "verdict": "AGREE",
+    "my_derivation": "I_B = 0.2 mA",
+    "note": "Third ground truth from the STEM: I_E = 10 mA, I_C = 9.8 mA, and I_E = I_C + I_B gives I_B = 1/5 = 0.2 mA exactly. Book prints 0.2mA. Note the stem misprints 'comman-base' for 'common-base'; the wording defect does not affect the quantity asked for."
+  },
+  {
+    "ref": "Ex Q.20",
+    "verdict": "AGREE",
+    "my_derivation": "alpha_DC = 155/157 = 0.987261... , i.e. 0.987 to three decimal places",
+    "note": "Third ground truth from the STEM: alpha = I_C/I_E = 6.20/6.28 = 155/157 = 0.9872611464968153 exactly. Rounded to three decimals this is 0.987, which is what the book prints. The quantity is a pure ratio and carries no unit."
+  }
+]

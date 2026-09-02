@@ -1,0 +1,496 @@
+[
+  {
+    "ref": "Solved Ex.2.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "EASY",
+    "stem": "Two different liquids of density \\(\\rho_1\\) and \\(\\rho_2\\) exert the same pressure at a certain point. What will be the ratio of the heights of the respective liquid columns?",
+    "solution": "Let \\(h_1\\) be the height of the liquid of density \\(\\rho_1\\). Then the pressure exerted by the liquid of density \\(\\rho_1\\) is \\(p_1 = h_1\\rho_1 g\\). Similarly, let \\(h_2\\) be the height of the liquid of density \\(\\rho_2\\). Then the pressure exerted by the liquid of density \\(\\rho_2\\) is \\(p_2 = h_2\\rho_2 g\\).\nBoth liquids exert the same pressure, therefore we write,\n\\(p_1 = p_2\\)\n\\(\\therefore h_1\\rho_1 g = h_2\\rho_2 g\\) or, \\(\\dfrac{h_1}{h_2} = \\dfrac{\\rho_2}{\\rho_1}\\)\n**Alternate method:**\nFor a given value of \\(p = h\\rho g = \\) constant, as \\(g\\) is constant. So the height is inversely proportional to the density of the fluid \\(\\rho\\). In this case, since pressure is constant, height is inversely proportional to density of the liquid."
+  },
+  {
+    "ref": "Solved Ex.2.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "EASY",
+    "stem": "A swimmer is swimming in a swimming pool at 6 m below the surface of the water. Calculate the pressure on the swimmer due to water above. (Density of water \\(= 1000\\) kg/m\\(^3\\), \\(g = 9.8\\) m/s\\(^2\\))",
+    "solution": "Given,\n\\(h = 6\\) m, \\(\\rho = 1000\\) kg/m\\(^3\\), \\(g = 9.8\\) m/s\\(^2\\)\n\\(p = h\\rho g = 6 \\times 1000 \\times 9.8 = 5.88 \\times 10^{4}\\) N/m\\(^2\\)\n(Which is nearly 0.6 times the atmospheric pressure!)"
+  },
+  {
+    "ref": "Solved Ex.2.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "HARD",
+    "stem": "A hydraulic brake system of a car of mass 1000 kg having speed of 50 km/h, has a cylindrical piston of radius of 0.5 cm. The slave cylinder has a radius of 2.5 cm. If a constant force of 100 N is applied on the brake what distance the car will travel before coming to stop?",
+    "solution": "Given,\n\\(F_1 = 100\\) N, \\(A_1 = \\pi(0.5 \\times 10^{-2})^2\\) m\\(^2\\), \\(A_2 = \\pi(2.5 \\times 10^{-2})^2\\) m\\(^2\\), \\(F_2 = ?\\)\nBy Pascal's Principle,\n\\(\\dfrac{F_2}{A_2} = \\dfrac{F_1}{A_1}\\)\n\\(F_2 = \\dfrac{100 \\times \\pi (2.5 \\times 10^{-2})^2}{\\pi (0.5 \\times 10^{-2})^2} = 2500\\) N\nAcceleration of the car \\(= a = F_2/m = 2500/1000 = 2.5\\) m/s\\(^2\\). Using Newton's equation of motion,\n\\(v^2 = u^2 - 2as\\) where final velocity \\(v = 0\\), \\(u = 50\\) km/h\n\\(s = \\left(\\dfrac{50 \\times 1000}{3600}\\right)^2 \\times \\dfrac{1}{(2 \\times 2.5)} = 38.58\\) m"
+  },
+  {
+    "ref": "Solved Ex.2.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "EASY",
+    "stem": "A beaker of radius 10 cm is filled with water. Calculate the force of surface tension on any diametrical line on its surface. Surface tension of water is 0.075 N/m.",
+    "solution": "Given,\n\\(L = 2 \\times 10 = 20\\) cm \\(= 0.2\\) m\n\\(T = 0.075\\) N/m\nWe have,\n\\(T = \\dfrac{F}{L}\\)\n\\(\\therefore F = TL = 0.075 \\times 0.2 = 0.015 = 1.5 \\times 10^{-2}\\) N"
+  },
+  {
+    "ref": "Solved Ex.2.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the work done in blowing a soap bubble to a radius of 1 cm. The surface tension of soap solution is \\(2.5 \\times 10^{-2}\\) N/m.",
+    "solution": "Given\n\\(T = 2.5 \\times 10^{-2}\\) N/m\nInitial radius of bubble \\(= 0\\) cm\nFinal radius of bubble, \\(r = 1\\) cm \\(= 0.01\\) m\nInitial surface area of soap bubble \\(= 0\\)\n(A soap bubble has two surfaces, outer surface and inner surface).\nFinal surface area of soap bubble is,\n\\(A = 2 \\times (4\\pi r^2) = 8\\pi r^2\\)\n\\(\\therefore\\) change in area \\(= dA = A - 0 = 8\\pi r^2 = 0.002514\\) m\\(^2\\)\n\\(\\therefore\\) work done \\(= T \\times dA = 2.5 \\times 10^{-2} \\times 0.251 \\times 10^{-2} = 6.284 \\times 10^{-5}\\) J"
+  },
+  {
+    "ref": "Solved Ex.2.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Excess Pressure, Drops and Bubbles",
+    "difficulty": "MODERATE",
+    "stem": "What should be the diameter of a water drop so that the excess pressure inside it is 80 N/m\\(^2\\)? (Surface tension of water \\(= 7.27 \\times 10^{-2}\\) N/m)",
+    "solution": "Given\n\\(p_{\\text{i}} - p_{\\text{o}} = 80\\) N/m\\(^2\\)\n\\(T = 7.27 \\times 10^{-2}\\) N/m\nWe have, for a **drop** (a single liquid-air surface),\n\\((p_{\\text{i}} - p_{\\text{o}}) = \\dfrac{2T}{r}\\)\n\\(\\therefore r = \\dfrac{2T}{p_{\\text{i}} - p_{\\text{o}}} = \\dfrac{2 \\times 7.27 \\times 10^{-2}}{80} = 1.818 \\times 10^{-3}\\) m\n\\(\\therefore d = 2r = 3.636 \\times 10^{-3}\\) m \\(= 3.636\\) mm"
+  },
+  {
+    "ref": "Solved Ex.2.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "difficulty": "HARD",
+    "stem": "A capillary tube of radius \\(5 \\times 10^{-4}\\) m is immersed in a beaker filled with mercury. The mercury level inside the tube is found to be \\(8 \\times 10^{-3}\\) m below the level of reservoir. Determine the angle of contact between mercury and glass. Surface tension of mercury is 0.465 N/m and its density is \\(13.6 \\times 10^{3}\\) kg/m\\(^3\\). (\\(g = 9.8\\) m/s\\(^2\\))",
+    "solution": "Given,\n\\(r = 5 \\times 10^{-4}\\) m\n\\(h = -8 \\times 10^{-3}\\) m\n\\(T = 0.465\\) N/m\n\\(g = 9.8\\) m/s\\(^2\\)\n\\(\\rho = 13.6 \\times 10^{3}\\) kg/m\\(^3\\)\nwe have,\n\\(T = \\dfrac{hr\\rho g}{2\\cos\\theta}\\)\n\\(\\therefore 0.465 = \\dfrac{-8 \\times 10^{-3} \\times 5 \\times 10^{-4} \\times 13.6 \\times 10^{3} \\times 9.8}{2\\cos\\theta}\\)\n\\(\\therefore \\cos\\theta = \\dfrac{-40 \\times 9.8 \\times 13.6 \\times 10^{-4}}{2 \\times 0.465}\\)\n\\(\\therefore -\\cos\\theta = 0.5732\\)\n\\(\\therefore \\cos(\\pi - \\theta) = 0.5732\\)\n\\(\\therefore 180^\\circ - \\theta = 55^\\circ\\,2'\\)\n\\(\\therefore \\theta = 124^\\circ\\,58'\\)"
+  },
+  {
+    "ref": "Solved Ex.2.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "difficulty": "EASY",
+    "stem": "A steel ball with radius 0.3 mm is falling with velocity of 2 m/s at a time \\(t\\), through a tube filled with glycerin, having coefficient of viscosity 0.833 N s/m\\(^2\\). Determine viscous force acting on the steel ball at that time.",
+    "solution": "Given\n\\(r = 0.3\\) mm \\(= 0.3 \\times 10^{-3}\\) m, \\(v = 2\\) m/s, \\(\\eta = 0.833\\) N s/m\\(^2\\).\nWe have, \\(F = 6\\pi\\eta r v\\)\n\\(F = 6 \\times 3.142 \\times 0.833 \\times 0.3 \\times 10^{-3} \\times 2\\)\nTherefore, \\(F = 9.422 \\times 10^{-3}\\) N"
+  },
+  {
+    "ref": "Solved Ex.2.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "difficulty": "HARD",
+    "stem": "A spherical drop of oil falls at a constant speed of 4 cm/s in steady air. Calculate the radius of the drop. The density of the oil is 0.9 g/cm\\(^3\\), density of air is 0.0013 g/cm\\(^3\\) and the coefficient of viscosity of air is \\(1.8 \\times 10^{-4}\\) poise, (\\(g = 980\\) cm/s\\(^2\\))",
+    "solution": "Given,\n\\(v = 4\\) cm/s\n\\(\\eta = 1.8 \\times 10^{-4}\\) Poise\n\\(\\rho = 0.9\\) g/cm\\(^3\\)\n\\(\\sigma = 0.0013\\) g/cm\\(^3\\)\nWe have,\n\\(\\eta = \\dfrac{2}{9}\\dfrac{r^2(\\rho - \\sigma)g}{v}\\)\n\\(r = \\sqrt{\\dfrac{9\\eta v}{2(\\rho - \\sigma)g}}\\)\n\\(r = \\sqrt{\\dfrac{9 \\times 1.8 \\times 10^{-4} \\times 4}{2 \\times (0.9 - 0.0013) \\times 980}}\\)\n\\(r = \\sqrt{\\dfrac{6.48 \\times 10^{-3}}{1761.4}} = \\sqrt{3.679 \\times 10^{-6}}\\)\n\\(\\therefore r = 1.918 \\times 10^{-3}\\) cm\n(Check: substituting \\(r = 1.918 \\times 10^{-3}\\) cm back into \\(v = \\dfrac{2}{9}\\dfrac{r^2(\\rho - \\sigma)g}{\\eta}\\) returns \\(v = 4\\) cm/s, the speed given in the question.)"
+  },
+  {
+    "ref": "Solved Ex.2.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "As shown in the given figure, a piston of cross sectional area 2 cm\\(^2\\) pushes the liquid out of a tube whose area at the outlet is 40 mm\\(^2\\). The piston is pushed at a rate of 2 cm/s. Determine the speed at which the fluid leaves the tube.",
+    "solution": "Given,\n\\(A_1 = 2\\) cm\\(^2 = 2 \\times 10^{-4}\\) m\\(^2\\)\n\\(v_1 = 2\\) cm/s \\(= 2 \\times 10^{-2}\\) m/s\n\\(A_2 = 40\\) mm\\(^2 = 40 \\times 10^{-6}\\) m\\(^2\\)\nFrom equation of continuity, \\(A_1 v_1 = A_2 v_2\\)\nTherefore,\n\\(v_2 = \\dfrac{A_1 v_1}{A_2} = \\dfrac{2 \\times 10^{-4} \\times 2 \\times 10^{-2}}{40 \\times 10^{-6}} = 0.1\\) m/s"
+  },
+  {
+    "ref": "Solved Ex.2.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "The given figure shows a streamline flow of a non-viscous liquid having density 1000 kg/m\\(^3\\). The cross sectional area at point A is 2 cm\\(^2\\) and at point B is 1 cm\\(^2\\). The speed of liquid at the point A is 5 cm/s. Both points A and B are at the same horizontal level. Calculate the difference in pressure at A and B.",
+    "solution": "Given,\n\\(\\rho = 1000\\) kg/m\\(^3\\), \\(A_1 = 2\\) cm\\(^2 = 2 \\times 10^{-4}\\) m\\(^2\\), \\(A_2 = 1\\) cm\\(^2 = 10^{-4}\\) m\\(^2\\), \\(v_1 = 5\\) cm/s \\(= 5 \\times 10^{-2}\\) m/s and \\(h_1 = h_2\\)\nFrom the equation of continuity,\n\\(A_1 v_1 = A_2 v_2\\)\n\\(\\therefore v_2 = \\dfrac{A_1 v_1}{A_2} = \\dfrac{2 \\times 10^{-4} \\times 5 \\times 10^{-2}}{10^{-4}} = 0.1\\) m/s \\(= 10\\) cm/s\nBy Bernoulli's equation,\n\\((P_1 - P_2)\\,dV = \\dfrac{1}{2}\\rho\\,dV(v_2^2 - v_1^2) + \\rho\\,dV g(h_2 - h_1)\\)\n(since \\(h_2 - h_1 = 0\\))\n\\((P_1 - P_2)\\,dV = \\dfrac{1}{2}\\rho\\,dV(v_2^2 - v_1^2)\\)\n\\(P_1 - P_2 = \\dfrac{1}{2} \\times 1000 \\times \\left[(0.1)^2 - (0.05)^2\\right]\\)\n\\(= 500 \\times 0.0075\\)\n\\(P_1 - P_2 = 3.75\\) Pa\n(The speeds must be in m/s here, to match \\(\\rho\\) in kg/m\\(^3\\); A is the wider section, so the pressure at A is the greater of the two.)"
+  },
+  {
+    "ref": "Solved Ex.2.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "Doors of a dam are 20 m below the surface of water in the dam. If one door is opened, what will be the speed of the water that flows out of the door? (\\(g = 9.8\\) m/s\\(^2\\)), specific gravity of mercury \\(= (\\rho_{Hg}/\\rho_w) = 13.6\\)",
+    "solution": "Given, \\(h = 20\\) m\nFrom Torricelli's law,\n\\(v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 20} = \\sqrt{392} = 19.79\\) m/s"
+  },
+  {
+    "ref": "Solved Ex.2.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "HARD",
+    "stem": "Water flows through a tube as shown in the given figure. Find the difference in mercury level, if the speed of flow of water at point A is 2 m/s and at point B is 5 m/s. (\\(g = 9.8\\) m/s\\(^2\\), specific gravity of mercury \\(= 13.6\\))",
+    "solution": "Given, \\(v_1 = 2\\) m/s, \\(v_2 = 5\\) m/s\nWe have, Pressure difference in water generates level difference for the mercury in the manometer.\n\\(\\Delta P = \\dfrac{1}{2}\\rho_w(v_2^2 - v_1^2) = h\\rho_{Hg}g\\)\n\\(\\therefore h = \\dfrac{(v_2^2 - v_1^2)}{2g\\left(\\dfrac{\\rho_{Hg}}{\\rho_w}\\right)} = \\dfrac{25 - 4}{2 \\times 9.8 \\times 13.6} = 0.07878\\) m\n\\(= 7.878\\) cm"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "MODERATE",
+    "context": "Multiple Choice Questions",
+    "setLabel": "Ex Q.1",
+    "stem": "A hydraulic lift is designed to lift heavy objects of maximum mass 2000 kg. The area of cross section of piston carrying the load is \\(2.25 \\times 10^{-2}\\) m\\(^2\\). What is the maximum pressure the piston would have to bear?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.8711 \\times 10^{6}\\) N/m\\(^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0.5862 \\times 10^{7}\\) N/m\\(^2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0.4869 \\times 10^{5}\\) N/m\\(^2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0.3271 \\times 10^{4}\\) N/m\\(^2\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Capillary Action",
+    "difficulty": "EASY",
+    "context": "Multiple Choice Questions",
+    "setLabel": "Ex Q.1",
+    "stem": "Two capillary tubes of radii 0.3 cm and 0.6 cm are dipped in the same liquid. The ratio of heights through which the liquid will rise in the tubes is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 : 2"
+      },
+      {
+        "label": "B",
+        "text": "2 : 1"
+      },
+      {
+        "label": "C",
+        "text": "1 : 4"
+      },
+      {
+        "label": "D",
+        "text": "4 : 1"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "context": "Multiple Choice Questions",
+    "setLabel": "Ex Q.1",
+    "stem": "The energy stored in a soap bubble of diameter 6 cm and \\(T = 0.04\\) N/m is nearly",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.9 \\times 10^{-3}\\) J"
+      },
+      {
+        "label": "B",
+        "text": "\\(0.4 \\times 10^{-3}\\) J"
+      },
+      {
+        "label": "C",
+        "text": "\\(0.7 \\times 10^{-3}\\) J"
+      },
+      {
+        "label": "D",
+        "text": "\\(0.5 \\times 10^{-3}\\) J"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "difficulty": "EASY",
+    "context": "Multiple Choice Questions",
+    "setLabel": "Ex Q.1",
+    "stem": "Two hail stones with radii in the ratio of 1 : 4 fall from a great height through the atmosphere. Then the ratio of their terminal velocities is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 : 2"
+      },
+      {
+        "label": "B",
+        "text": "1 : 12"
+      },
+      {
+        "label": "C",
+        "text": "1 : 16"
+      },
+      {
+        "label": "D",
+        "text": "1 : 8"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "context": "Multiple Choice Questions",
+    "setLabel": "Ex Q.1",
+    "stem": "In Bernoulli's theorem, which of the following is conserved?",
+    "options": [
+      {
+        "label": "A",
+        "text": "linear momentum"
+      },
+      {
+        "label": "B",
+        "text": "angular momentum"
+      },
+      {
+        "label": "C",
+        "text": "mass"
+      },
+      {
+        "label": "D",
+        "text": "energy"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why is the surface tension of paints and lubricating oils kept low?"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "How much amount of work is done in forming a soap bubble of radius \\(r\\)?"
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is the basis of the Bernoulli's principle?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why is a low density liquid used as a manometric liquid in a physics laboratory?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is an incompressible fluid?"
+  },
+  {
+    "ref": "Ex Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "stem": "Why two or more mercury drops form a single drop when brought in contact with each other?"
+  },
+  {
+    "ref": "Ex Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "Why does velocity increase when water flowing in broader pipe enters a narrow pipe?"
+  },
+  {
+    "ref": "Ex Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "Why does the speed of a liquid increase and its pressure decrease when a liquid passes through constriction in a horizontal pipe?"
+  },
+  {
+    "ref": "Ex Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Excess Pressure, Drops and Bubbles",
+    "difficulty": "HARD",
+    "stem": "Derive an expression of excess pressure inside a liquid drop."
+  },
+  {
+    "ref": "Ex Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression for conservation of mass starting from the equation of continuity."
+  },
+  {
+    "ref": "Ex Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "difficulty": "MODERATE",
+    "stem": "Explain the capillary action."
+  },
+  {
+    "ref": "Ex Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "difficulty": "HARD",
+    "stem": "Derive an expression for capillary rise for a liquid having a concave meniscus."
+  },
+  {
+    "ref": "Ex Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "MODERATE",
+    "stem": "Find the pressure 200 m below the surface of the ocean if pressure on the free surface of liquid is one atmosphere. (Density of sea water \\(= 1060\\) kg/m\\(^3\\))",
+    "bookAnswer": "21.789 \\(\\times 10^{5}\\) N/m\\(^2\\)"
+  },
+  {
+    "ref": "Ex Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "EASY",
+    "stem": "In a hydraulic lift, the input piston had surface area 30 cm\\(^2\\) and the output piston has surface area of 1500 cm\\(^2\\). If a force of 25 N is applied to the input piston, calculate weight on output piston.",
+    "bookAnswer": "1250 N"
+  },
+  {
+    "ref": "Ex Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "difficulty": "EASY",
+    "stem": "Calculate the viscous force acting on a rain drop of diameter 1 mm, falling with a uniform velocity 2 m/s through air. The coefficient of viscosity of air is \\(1.8 \\times 10^{-5}\\) Ns/m\\(^2\\).",
+    "bookAnswer": "3.393 \\(\\times 10^{-7}\\) N"
+  },
+  {
+    "ref": "Ex Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Viscosity, Critical Velocity and Reynolds Number",
+    "difficulty": "MODERATE",
+    "stem": "A horizontal force of 1 N is required to move a metal plate of area \\(10^{-2}\\) m\\(^2\\) with a velocity of \\(2 \\times 10^{-2}\\) m/s, when it rests on a layer of oil \\(1.5 \\times 10^{-3}\\) m thick. Find the coefficient of viscosity of oil.",
+    "bookAnswer": "7.5 Ns/m\\(^2\\)"
+  },
+  {
+    "ref": "Ex Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "difficulty": "HARD",
+    "stem": "With what terminal velocity will an air bubble 0.4 mm in diameter rise in a liquid of viscosity 0.1 Ns/m\\(^2\\) and specific gravity 0.9? Density of air is 1.29 kg/m\\(^3\\).",
+    "bookAnswer": "\\(-\\,0.782 \\times 10^{-3}\\) m/s, The negative sign indicates that the bubble rises up"
+  },
+  {
+    "ref": "Ex Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "The speed of water is 2 m/s through a pipe of internal diameter 10 cm. What should be the internal diameter of nozzle of the pipe if the speed of water at nozzle is 4 m/s?",
+    "bookAnswer": "7.07 \\(\\times 10^{-2}\\) m"
+  },
+  {
+    "ref": "Ex Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "EASY",
+    "stem": "With what velocity does water flow out of an orifice in a tank with gauge pressure \\(4 \\times 10^{5}\\) N/m\\(^2\\) before the flow starts? Density of water \\(= 1000\\) kg/m\\(^3\\).",
+    "bookAnswer": "28.28 m/s"
+  },
+  {
+    "ref": "Ex Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "difficulty": "MODERATE",
+    "stem": "The pressure of water inside the closed pipe is \\(3 \\times 10^{5}\\) N/m\\(^2\\). This pressure reduces to \\(2 \\times 10^{5}\\) N/m\\(^2\\) on opening the valve of the pipe. Calculate the speed of water flowing through the pipe. (Density of water \\(= 1000\\) kg/m\\(^3\\)).",
+    "bookAnswer": "14.14 m/s"
+  },
+  {
+    "ref": "Ex Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "difficulty": "EASY",
+    "stem": "Calculate the rise of water inside a clean glass capillary tube of radius 0.1 mm, when immersed in water of surface tension \\(7 \\times 10^{-2}\\) N/m. The angle of contact between water and glass is zero, density of water \\(= 1000\\) kg/m\\(^3\\), \\(g = 9.8\\) m/s\\(^2\\).",
+    "bookAnswer": "0.1429 m"
+  },
+  {
+    "ref": "Ex Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Excess Pressure, Drops and Bubbles",
+    "difficulty": "MODERATE",
+    "stem": "An air bubble of radius 0.2 mm is situated just below the water surface. Calculate the gauge pressure. Surface tension of water \\(= 7.2 \\times 10^{-2}\\) N/m.",
+    "bookAnswer": "720 N/m\\(^2\\)"
+  },
+  {
+    "ref": "Ex Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "stem": "Twenty seven droplets of water, each of radius 0.1 mm coalesce into a single drop. Find the change in surface energy. Surface tension of water is 0.072 N/m.",
+    "bookAnswer": "1.628 \\(\\times 10^{-7}\\) J = 1.628 erg"
+  },
+  {
+    "ref": "Ex Q.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "stem": "A drop of mercury of radius 0.2 cm is broken into 8 identical droplets. Find the work done if the surface tension of mercury is 435.5 dyne/cm.",
+    "bookAnswer": "2.189 \\(\\times 10^{-5}\\) J"
+  },
+  {
+    "ref": "Ex Q.22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "EASY",
+    "stem": "How much work is required to form a bubble of 2 cm radius from the soap solution having surface tension 0.07 N/m.",
+    "bookAnswer": "0.7038 \\(\\times 10^{-3}\\) J"
+  },
+  {
+    "ref": "Ex Q.23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "MODERATE",
+    "stem": "A rectangular wire frame of size 2 cm \\(\\times\\) 2 cm, is dipped in a soap solution and taken out. A soap film is formed, if the size of the film is changed to 3 cm \\(\\times\\) 3 cm, calculate the work done in the process. The surface tension of soap film is \\(3 \\times 10^{-2}\\) N/m.",
+    "bookAnswer": "3 \\(\\times 10^{-5}\\) J"
+  }
+]

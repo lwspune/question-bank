@@ -600,6 +600,349 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Angular S.H.M. and Magnet Vibrating in a Magnetic Field",
     ],
   },
+
+  // ── Ch.01 Rotational Dynamics (12th PHYSICS). 25pp; Exercises open at p-22.
+  //    9 solved examples (9 `Solution :` markers): 1.1->p01, 1.2->p04, 1.3->p06, 1.4->p08, 1.5->p08, 1.6->p11, 1.7->p15, 1.8->p17, 1.9->p18
+  //    11 exercise questions print an inline [Ans: ...].
+  //    ⚠ Q.1's SIXTH sub-item is labelled " X) " ON THE PRINTED PAGE (p-23), after
+  //    i) ii) iii) iv) v) — the book's own typo for vi). The ref `Ex Q.1 (X)` is
+  //    FAITHFUL; do not "correct" it to (vi), or the ref stops matching the page a
+  //    student is holding. Answer is unaffected (A: 1:1:2 for a hollow cylinder).
+  "rotational-dynamics-12-phy": {
+    id: "rotational-dynamics-12-phy",
+    chapterName: "Rotational Dynamics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Rotational_Dynamics.pdf",
+    pdf: phy12("01. Rotational Dynamics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Rotational Dynamics (Balbharati Physics textbook)",
+    subtopics: [
+      "Kinematics and Dynamics of Circular Motion",
+      "Applications of Uniform Circular Motion",
+      "Vertical Circular Motion",
+      "Moment of Inertia and Radius of Gyration",
+      "Theorems of Parallel and Perpendicular Axes",
+      "Angular Momentum and Torque",
+      "Conservation of Angular Momentum",
+      "Rolling Motion",
+    ],
+  },
+
+  // ── Ch.02 Mechanical Properties of Fluids (12th PHYSICS). 30pp; Exercises open at p-28.
+  //    13 solved examples (13 `Solution :` markers): 2.1->p02, 2.2->p02, 2.3->p06, 2.4->p09, 2.5->p10, 2.6->p15, 2.7->p17, 2.8->p21, 2.9->p22, 2.10->p23, 2.11->p25, 2.12->p26, 2.13->p27
+  //    14 exercise questions print an inline [Ans: ...].
+  "fluids-12-phy": {
+    id: "fluids-12-phy",
+    chapterName: "Mechanical Properties of Fluids",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Fluids.pdf",
+    pdf: phy12("02. Mechanical Properties of Fluids.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Mechanical Properties of Fluids (Balbharati Physics textbook)",
+    subtopics: [
+      "Fluid Pressure and Pascal's Law",
+      "Surface Tension and Surface Energy",
+      "Excess Pressure, Drops and Bubbles",
+      "Capillary Action",
+      "Viscosity, Critical Velocity and Reynolds Number",
+      "Stokes' Law and Terminal Velocity",
+      "Equation of Continuity and Bernoulli's Equation",
+    ],
+  },
+
+  // ── Ch.03 Kinetic Theory of Gases and Radiation (12th PHYSICS). 19pp; Exercises open at p-17.
+  //    8 solved examples (9 `Solution :` markers): 3.2->p05, 3.3->p07, 3.4->p07, 3.5->p14, 3.6->p15, 3.7->p15, 3.8->p16, 3.9->p16
+  //    14 exercise questions print an inline [Ans: ...].
+  "kinetic-theory-12-phy": {
+    id: "kinetic-theory-12-phy",
+    chapterName: "Kinetic Theory of Gases and Radiation",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Kinetic_Theory.pdf",
+    pdf: phy12("03. Kinetic Theory of Gases and Radiation.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Kinetic Theory of Gases and Radiation (Balbharati Physics textbook)",
+    subtopics: [
+      "Behaviour of Gases, Ideal and Real Gas",
+      "Mean Free Path and Pressure of an Ideal Gas",
+      "RMS Speed and Interpretation of Temperature",
+      "Law of Equipartition of Energy and Degrees of Freedom",
+      "Specific Heat Capacity and Mayer's Relation",
+      "Absorption, Reflection and Transmission of Heat Radiation",
+      "Perfect Blackbody and Emissivity",
+      "Kirchhoff's Law of Heat Radiation",
+      "Spectral Distribution and Wien's Displacement Law",
+    ],
+  },
+
+  // ── Ch.04 Thermodynamics (12th PHYSICS). 34pp; Exercises open at p-32.
+  //    10 solved examples (10 `Solution :` markers): 4.1->p02, 4.2->p06, 4.3->p06, 4.4->p08, 4.5->p16, 4.6->p17, 4.7->p19, 4.8->p20, 4.9->p21, 4.10->p30
+  //    10 exercise questions print an inline [Ans: ...].
+  "thermodynamics-12-phy": {
+    id: "thermodynamics-12-phy",
+    chapterName: "Thermodynamics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Thermodynamics.pdf",
+    pdf: phy12("04. Thermodynamics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Thermodynamics (Balbharati Physics textbook)",
+    subtopics: [
+      "Thermal Equilibrium and the Zeroth Law",
+      "Heat, Internal Energy and Work",
+      "First Law of Thermodynamics",
+      "Thermodynamic State Variables and the p-V Diagram",
+      "Thermodynamic Processes",
+      "Heat Engines",
+      "Refrigerators and Heat Pumps",
+      "Second Law of Thermodynamics",
+      "Carnot Cycle and Carnot Engine",
+      "Stirling Cycle",
+    ],
+  },
+
+  // ── Ch.06 Superposition of Waves (12th PHYSICS). 27pp; Exercises open at p-25.
+  //    13 solved examples (13 `Solution :` markers): 6.1->p05, 6.2->p06, 6.3->p09, 6.4->p14, 6.5->p14, 6.6->p16, 6.7->p16, 6.8->p17, 6.9->p18, 6.10->p19, 6.11->p19, 6.12->p22, 6.13->p22
+  //    15 exercise questions print an inline [Ans: ...].
+  "superposition-waves-12-phy": {
+    id: "superposition-waves-12-phy",
+    chapterName: "Superposition of Waves",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Superposition_Waves.pdf",
+    pdf: phy12("06. Superposition of Waves.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Superposition of Waves (Balbharati Physics textbook)",
+    subtopics: [
+      "Progressive Waves",
+      "Reflection of Waves",
+      "Superposition of Waves",
+      "Stationary Waves",
+      "Free and Forced Vibrations",
+      "Harmonics, Overtones and End Correction",
+      "Vibrations of Air Columns",
+      "Vibrations of a Stretched String and Sonometer",
+      "Beats",
+      "Characteristics of Sound and Musical Instruments",
+    ],
+  },
+
+  // ── Ch.07 Wave Optics (12th PHYSICS). 28pp; Exercises open at p-26.
+  //    8 solved examples (8 `Solution :` markers): 7.1->p08, 7.2->p10, 7.3->p14, 7.4->p14, 7.5->p16, 7.6->p17, 7.7->p25, 7.8->p25
+  //    13 exercise questions print an inline [Ans: ...].
+  "wave-optics-12-phy": {
+    id: "wave-optics-12-phy",
+    chapterName: "Wave Optics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Wave_Optics.pdf",
+    pdf: phy12("07. Wave Optics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Wave Optics (Balbharati Physics textbook)",
+    subtopics: [
+      "Nature of Light and Huygens' Principle",
+      "Reflection and Refraction on Huygens' Theory",
+      "Polarization and Brewster's Law",
+      "Interference and Young's Double Slit Experiment",
+      "Diffraction at a Single Slit",
+      "Resolving Power",
+    ],
+  },
+
+  // ── Ch.08 Electrostatics (12th PHYSICS). 28pp; Exercises open at p-26.
+  //    17 solved examples (19 `Solution :` markers): 8.2->p02, 8.4->p04, 8.5->p04, 8.6->p06, 8.7->p07, 8.8->p08, 8.9->p09, 8.10->p10, 8.11->p11, 8.12->p12, 8.13->p12, 8.14->p13, 8.15->p19, 8.16->p19, 8.17->p23, 8.18->p23, 8.19->p24
+  //    6 exercise questions print an inline [Ans: ...].
+  "electrostatics-12-phy": {
+    id: "electrostatics-12-phy",
+    chapterName: "Electrostatics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Electrostatics.pdf",
+    pdf: phy12("08. Electrostatics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Electrostatics (Balbharati Physics textbook)",
+    subtopics: [
+      "Applications of Gauss' Law",
+      "Electric Potential and Potential Energy",
+      "Equipotential Surfaces",
+      "Potential Energy of Charges and Dipoles",
+      "Conductors, Insulators and Dielectrics",
+      "Capacitors and Combination of Capacitors",
+      "Parallel Plate Capacitor with a Dielectric",
+      "Energy Stored in a Capacitor",
+      "Van de Graaff Generator",
+    ],
+  },
+
+  // ── Ch.09 Current Electricity (12th PHYSICS). 16pp; Exercises open at p-14.
+  //    10 solved examples (7 `Solution :` markers): 9.1->p01, 9.2->p02, 9.3->p02, 9.4->p03, 9.5->p04, 9.6->p10, 9.7->p11, 9.8->p11, 9.9->p12, 9.10->p12
+  //    11 exercise questions print an inline [Ans: ...].
+  "current-electricity-12-phy": {
+    id: "current-electricity-12-phy",
+    chapterName: "Current Electricity",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Current_Electricity.pdf",
+    pdf: phy12("09. Current Electricity.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Current Electricity (Balbharati Physics textbook)",
+    subtopics: [
+      "Kirchhoff's Laws of Electrical Networks",
+      "Wheatstone Bridge and Metre Bridge",
+      "Potentiometer",
+      "Galvanometer, Ammeter and Voltmeter",
+    ],
+  },
+
+  // ── Ch.10 Magnetic Fields due to Electric Current (12th PHYSICS). 21pp; Exercises open at p-18.
+  //    8 solved examples (8 `Solution :` markers): 10.1->p02, 10.2->p05, 10.3->p06, 10.4->p09, 10.5->p12, 10.6->p15, 10.7->p16, 10.8->p18
+  //    19 exercise questions print an inline [Ans: ...].
+  "magnetic-fields-current-12-phy": {
+    id: "magnetic-fields-current-12-phy",
+    chapterName: "Magnetic Fields due to Electric Current",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Magnetic_Fields_Current.pdf",
+    pdf: phy12("10. Magnetic Fields due to Electric Current.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Magnetic Fields due to Electric Current (Balbharati Physics textbook)",
+    subtopics: [
+      "Magnetic Force on a Moving Charge",
+      "Cyclotron and Helical Motion",
+      "Force on a Current-Carrying Wire",
+      "Torque on a Current Loop and the Moving Coil Galvanometer",
+      "Magnetic Dipole Moment and Potential Energy",
+      "Magnetic Field due to a Current",
+      "Force Between Two Parallel Currents",
+      "Ampere's Law, Solenoid and Toroid",
+    ],
+  },
+
+  // ── Ch.11 Magnetic Materials (12th PHYSICS). 14pp; Exercises open at p-12.
+  //    2 solved examples (4 `Solution :` markers): 11.2->p03, 11.3->p09
+  //    9 exercise questions print an inline [Ans: ...].
+  "magnetic-materials-12-phy": {
+    id: "magnetic-materials-12-phy",
+    chapterName: "Magnetic Materials",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Magnetic_Materials.pdf",
+    pdf: phy12("11. Magnetic Materials.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Magnetic Materials (Balbharati Physics textbook)",
+    subtopics: [
+      "Torque on a Magnetic Dipole",
+      "Origin of Magnetism in Materials",
+      "Magnetization and Magnetic Intensity",
+      "Diamagnetism, Paramagnetism and Ferromagnetism",
+      "Hysteresis",
+      "Permanent Magnets, Electromagnets and Magnetic Shielding",
+    ],
+  },
+
+  // ── Ch.12 Electromagnetic Induction (12th PHYSICS). 23pp; Exercises open at p-21.
+  //    11 solved examples (10 `Solution :` markers): 12.1->p07, 12.2->p07, 12.3->p10, 12.4->p10, 12.5->p14, 12.6->p14, 12.7->p15, 12.8->p16, 12.9->p18, 12.10->p19, 12.11->p19
+  //    15 exercise questions print an inline [Ans: ...].
+  "em-induction-12-phy": {
+    id: "em-induction-12-phy",
+    chapterName: "Electromagnetic Induction",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Em_Induction.pdf",
+    pdf: phy12("12. Electromagnetic Induction.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Electromagnetic Induction (Balbharati Physics textbook)",
+    subtopics: [
+      "Faraday's Laws and Magnetic Flux",
+      "Lenz's Law",
+      "Motional Electromotive Force",
+      "Induced emf in a Stationary Coil",
+      "Generators, Back emf and Energy Transfer",
+      "Eddy Currents",
+      "Self-Inductance and Energy in a Magnetic Field",
+      "Mutual Inductance",
+      "Transformer",
+    ],
+  },
+
+  // ── Ch.13 AC Circuits (12th PHYSICS). 19pp; Exercises open at p-16.
+  //    8 solved examples (9 `Solution :` markers): 13.1->p01, 13.2->p03, 13.3->p05, 13.4->p06, 13.5->p08, 13.6->p08, 13.7->p09, 13.8->p11
+  //    12 exercise questions print an inline [Ans: ...].
+  "ac-circuits-12-phy": {
+    id: "ac-circuits-12-phy",
+    chapterName: "AC Circuits",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Ac_Circuits.pdf",
+    pdf: phy12("13. AC Circuits.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — AC Circuits (Balbharati Physics textbook)",
+    subtopics: [
+      "AC Generator",
+      "Average and RMS Values",
+      "Phasors and Types of AC Circuits",
+      "Power in an AC Circuit",
+      "LC Oscillations",
+      "Electrical Resonance and Q Factor",
+      "Choke Coil",
+    ],
+  },
+
+  // ── Ch.14 Dual Nature of Radiation and Matter (12th PHYSICS). 18pp; Exercises open at p-16.
+  //    6 solved examples (6 `Solution :` markers): 14.1->p03, 14.2->p05, 14.3->p07, 14.4->p11, 14.5->p13, 14.6->p14
+  //    13 exercise questions print an inline [Ans: ...].
+  "dual-nature-12-phy": {
+    id: "dual-nature-12-phy",
+    chapterName: "Dual Nature of Radiation and Matter",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Dual_Nature.pdf",
+    pdf: phy12("14. Dual Nature of Radiation and Matter.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Dual Nature of Radiation and Matter (Balbharati Physics textbook)",
+    subtopics: [
+      "Photoelectric Effect",
+      "Einstein's Photoelectric Equation",
+      "Wave-Particle Duality of Radiation",
+      "Photo Cell",
+      "De Broglie Hypothesis",
+      "Davisson-Germer Experiment and Duality of Matter",
+    ],
+  },
+
+  // ── Ch.15 Structure of Atoms and Nuclei (12th PHYSICS). 20pp; Exercises open at p-18.
+  //    13 solved examples (13 `Solution :` markers): 15.1->p03, 15.2->p04, 15.3->p05, 15.4->p05, 15.5->p08, 15.6->p09, 15.7->p11, 15.8->p11, 15.9->p13, 15.10->p13, 15.11->p13, 15.12->p15, 15.13->p17
+  //    15 exercise questions print an inline [Ans: ...].
+  "atoms-nuclei-12-phy": {
+    id: "atoms-nuclei-12-phy",
+    chapterName: "Structure of Atoms and Nuclei",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Atoms_Nuclei.pdf",
+    pdf: phy12("15. Structure of Atoms and Nuclei.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Structure of Atoms and Nuclei (Balbharati Physics textbook)",
+    subtopics: [
+      "Thomson's and Rutherford's Atomic Models",
+      "Atomic Spectra",
+      "Bohr's Atomic Model",
+      "Atomic Nucleus: Constituents, Size and Forces",
+      "Nuclear Binding Energy",
+      "Radioactive Decays",
+      "Law of Radioactive Decay, Half-Life and Average Life",
+      "Nuclear Fission and Fusion",
+    ],
+  },
+
+  // ── Ch.16 Semiconductor Devices (12th PHYSICS). 21pp; Exercises open at p-19.
+  //    1 solved examples (2 `Solution :` markers): 16.1->p02
+  //    3 exercise questions print an inline [Ans: ...].
+  "semiconductor-devices-12-phy": {
+    id: "semiconductor-devices-12-phy",
+    chapterName: "Semiconductor Devices",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Semiconductor_Devices.pdf",
+    pdf: phy12("16. Semiconductor Devices.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Semiconductor Devices (Balbharati Physics textbook)",
+    subtopics: [
+      "p-n Junction Diode as a Rectifier",
+      "Ripple Factor and Filter Circuits",
+      "Zener Diode",
+      "Photodiode, Solar Cell and LED",
+      "Bipolar Junction Transistor",
+      "Transistor as an Amplifier",
+      "Logic Gates",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
