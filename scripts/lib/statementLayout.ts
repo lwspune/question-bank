@@ -34,7 +34,7 @@
 import { parseTableBlocks } from "../../src/components/math/parseTableBlocks";
 import { maskMathZones } from "../../src/components/math/parseLatex";
 
-export type LabelStyle = "numeric" | "paren" | "roman";
+export type LabelStyle = "numeric" | "paren" | "roman" | "word";
 
 /** One statement label. `index` is an offset into the math-MASKED string. */
 export type StatementLabel = { token: string; index: number; style: LabelStyle };
@@ -53,6 +53,42 @@ const SEQUENCES: { style: LabelStyle; tokens: string[] }[] = [
   { style: "paren", tokens: ["(1)", "(2)", "(3)", "(4)", "(5)", "(6)"] },
   { style: "roman", tokens: ["I.", "II.", "III.", "IV.", "V.", "VI."] },
 ];
+
+/**
+ * The LITERAL-WORD label — "Statement I:", "Statement-2.", "Assertion (A):".
+ *
+ * THE SINGLE DEFINITION, shared with the P1 gate. `paper-text.ts` used to keep
+ * its own copy, and the two drifted in the way that matters: the gate could
+ * DETECT this shape while `SEQUENCES` — dot- and paren-delimited only — could
+ * not repair it. Measured 2026-09-02, that left 327 PUBLIC rows flagged by a
+ * BLOCKING rule with no automated way out. Exported as a SOURCE string rather
+ * than a RegExp so each caller builds its own object: a shared `g`-flagged
+ * regex carries `lastIndex` state between callers.
+ *
+ * The label and its delimiter are BOTH required, so the prose word "statements"
+ * ("which of the following statements") cannot match. The delimiter is also
+ * what stops "Statement I is true because..." matching mid-sentence.
+ */
+export const WORD_LABEL_SOURCE =
+  "(?:Statement\\s*[-–—]?\\s*(?:[IVX]+|\\d+)|Assertion\\s*\\((?:A)\\)|Reason\\s*\\((?:R)\\))\\s*[:.]";
+
+/**
+ * Word labels, in printed order.
+ *
+ * Deliberately NOT subject to `LEAD_IN_END`: that guard exists to separate a
+ * list from an enumeration embedded in a sentence, which is a hazard for bare
+ * numerals only. "Statement II:" cannot occur as ordinary prose, which is the
+ * same reason the 2026-09-02 exam allow-list was needed for the numeral styles
+ * and is not needed here. It is also why a stem may OPEN with the label.
+ */
+function scanWordLabels(masked: string): StatementLabel[] {
+  const re = new RegExp(WORD_LABEL_SOURCE, "gi");
+  const found: StatementLabel[] = [];
+  for (const m of masked.matchAll(re)) {
+    found.push({ token: m[0], index: m.index ?? 0, style: "word" });
+  }
+  return found;
+}
 
 /**
  * What may sit immediately before the FIRST label of a real list: a sentence
@@ -76,7 +112,7 @@ const LEAD_IN_END = /[:;.?\n]$/;
  * correct? 1. ... 2. ...") and breaking there would be wrong.
  */
 const CLOSER =
-  /(?:Which\s+(?:of\s+(?:the\s+above|these|the\s+statements|the\s+following)\b|are\s+correct\b|statements?\s+(?:is|are)\b)|(?:Select|Choose)\s+the\s+correct\s+answer)/i;
+  /(?:Which\s+(?:of\s+(?:the\s+above|these|the\s+statements|the\s+following)\b|are\s+correct\b|statements?\s+(?:is|are)\b)|In\s+the\s+light\s+of\s+the\s+above|(?:Select|Choose)\s+the\s+correct\s+answer)/i;
 
 /** A label needs whitespace (or a string edge) before it and whitespace after. */
 function boundedAt(s: string, token: string, i: number): boolean {
@@ -105,6 +141,11 @@ function labelsInMasked(masked: string): StatementLabel[] {
     const got = scanStyle(masked, tokens, style);
     if (got.length > best.length) best = got; // strict >, so ties keep the earlier style
   }
+  // The word style wins a TIE, unlike the numeral styles which tie to the
+  // earlier one: a word label is self-identifying, so where both scans find the
+  // same count the word reading is the safer of the two.
+  const words = scanWordLabels(masked);
+  if (words.length >= 2 && words.length >= best.length) return words;
   // One label is a numeral in a sentence, not a list.
   if (best.length < 2) return [];
   // The first label must be INTRODUCED; otherwise this is an enumeration inside
@@ -188,11 +229,19 @@ export function layoutStatements(input: string): LayoutResult {
   // Apply from the END so earlier offsets stay valid.
   let out = masked;
   for (const pos of [...breaks].sort((a, b) => b - a)) {
-    let start = pos;
+    // Where the label VISIBLY begins. A label match starts at the word itself,
+    // so for "**Statement I:**" it starts after the "**" — breaking there would
+    // split the markup AND would fail to notice a label that is already at the
+    // start of its line behind that markup. Found on a live row by the repair's
+    // hash guard: a whitespace-only check cannot see it, because stripping
+    // whitespace makes "**Statement" and "**\nStatement" identical.
+    let visible = pos;
+    while (visible > 0 && (out[visible - 1] === "*" || out[visible - 1] === "_")) visible -= 1;
+    let start = visible;
     while (start > 0 && (out[start - 1] === " " || out[start - 1] === "\t")) start -= 1;
     if (start === 0) continue; // already opens the stem
     if (out[start - 1] === "\n") continue; // already on its own line
-    out = out.slice(0, start) + "\n" + out.slice(pos);
+    out = out.slice(0, start) + "\n" + out.slice(visible);
   }
 
   const text = unmask(out);

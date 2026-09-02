@@ -39,7 +39,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../src/lib/text/normalizeNewlines";
 import { parseTableBlocks } from "../src/components/math/parseTableBlocks";
-import { hasDroppedSymbol, leakedOptionValues } from "./lib/textProbes";
+import { hasDroppedSymbol, leakedOptionValues, isFlattenedTable } from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
 
 const FIELDS = ["text", "context", "solution"] as const;
@@ -62,7 +62,7 @@ type Finding = {
   qnum: string;
   visibility: string;
   field: Field;
-  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK" | "PANDOC_ARTIFACT";
+  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK" | "PANDOC_ARTIFACT" | "FLATTENED_TABLE";
   sample: string;
 };
 
@@ -140,6 +140,9 @@ function inspect(r: Row): Finding[] {
     if (opts.length && leakedOptionValues(stem, opts)) {
       out.push({ ...base, kind: "OPTION_LEAK", sample: stem.slice(Math.max(0, stem.length - 110)) });
     }
+    if (isFlattenedTable(stem)) {
+      out.push({ ...base, kind: "FLATTENED_TABLE", sample: stem.slice(0, 160) });
+    }
   }
   return out;
 }
@@ -189,7 +192,7 @@ async function main() {
     return;
   }
 
-  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK", "PANDOC_ARTIFACT"] as const) {
+  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK", "PANDOC_ARTIFACT", "FLATTENED_TABLE"] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
     for (const f of hits.slice(0, 40)) {

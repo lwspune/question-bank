@@ -69,3 +69,33 @@ export function leakedOptionValues(text: string, optionTexts: string[]): boolean
   const echoed = values.filter((v) => masked.includes(v)).length;
   return echoed >= 3;
 }
+
+/**
+ * FLATTENED_TABLE — a printed data table stored as parallel runs of prose:
+ * `\(x\): 1, 2, 3, 4; \(f\): 4, 6, 9, 7` where the paper prints a bordered grid.
+ *
+ * Earned 2026-09-02. Four live NDA rows, ALL from `.xlsx` uploads, every one
+ * source-verified against the scanned paper. Nothing else could see them: the
+ * question stays answerable, `audit:text`'s other classes look for malformed
+ * text, and P2 fires only on match-lists. Two of the four stems even announce
+ * the missing structure ("The following table gives...") and still passed.
+ *
+ * THE DISCRIMINATOR IS "TWO PARALLEL RUNS", and the papers themselves justify
+ * it: a RAW DATA LIST is printed as prose, and our prose storage of one is
+ * FAITHFUL — verified on 2023-I Q110 ("a die is thrown 10 times..."), Q112 and
+ * 2021-I Q107, all of which must never fire. Only the two-row x/f shape is a
+ * table in print. A run also needs 4+ values, so a pair of coordinates and a
+ * two-item list stay out.
+ *
+ * Triage, not a gate: it says "this looks like a table that lost its grid", and
+ * the printed page settles it.
+ */
+const LABELLED_RUN = /(?:^|[:;.]|\))\s*[^:;\n]{0,30}?:\s*-?[0-9][0-9.,]*(?:\s*,\s*-?[0-9][0-9.,]*){3,}/g;
+
+export function isFlattenedTable(text: string): boolean {
+  // A stem that already carries a real GFM table is done, whatever else it says.
+  if (/^\s*\|.*\|\s*$/m.test(text) && /\|\s*-{3,}/.test(text)) return false;
+  LABELLED_RUN.lastIndex = 0;
+  const runs = text.match(LABELLED_RUN) ?? [];
+  return runs.length >= 2;
+}

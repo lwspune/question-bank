@@ -226,3 +226,151 @@ describe("layoutStatements — two-column match lists", () => {
     expect(layoutStatements(t).changed).toBe(true);
   });
 });
+
+/**
+ * THE LITERAL-WORD STYLE — "Statement I:", "Statement-2.", "Assertion (A):".
+ *
+ * This half of the defect was DETECTED but never REPAIRABLE. `paper-text.ts`
+ * says in its own comment that P1 has two halves, and its BLOCKING rule fires
+ * on either — but `SEQUENCES` carried only dot- and paren-delimited styles, so
+ * a colon-delimited word label matched no token, `labels.length < 2`, and
+ * `layoutStatements` returned `changed: false`. Measured 2026-09-02: the gate
+ * flagged 327 PUBLIC rows and the repair could fix ZERO of them, which is a
+ * deadlock — a BLOCKING rule with no automated way out.
+ *
+ * Unlike the numeral styles this one needs no lead-in guard: "Statement II:"
+ * cannot occur as an enumeration inside an ordinary sentence, which is exactly
+ * why the 2026-09-02 exam allow-list was needed for bare numerals and is not
+ * needed here.
+ */
+describe("layoutStatements — the literal-word style (Statement I: / Assertion (A):)", () => {
+  it("breaks a colon-delimited 'Statement I:' run onto separate lines", () => {
+    const t =
+      "Given below two statements : Statement I: 25 is divisible by 7. Statement II : The integral part is odd.";
+    expect(layoutStatements(t).text).toBe(
+      "Given below two statements :\n" +
+        "Statement I: 25 is divisible by 7.\n" +
+        "Statement II : The integral part is odd."
+    );
+  });
+
+  it("handles a stem that OPENS with the label, with no lead-in at all", () => {
+    const t =
+      "Statement I: Sodium hydride is an oxidising agent. Statement II: Pyridine is basic. Choose the CORRECT answer from the options given below:";
+    expect(layoutStatements(t).text).toBe(
+      "Statement I: Sodium hydride is an oxidising agent.\n" +
+        "Statement II: Pyridine is basic.\n" +
+        "Choose the CORRECT answer from the options given below:"
+    );
+  });
+
+  it("breaks before 'In the light of the above', not mid-sentence at 'choose'", () => {
+    const t =
+      "Statement I: Alpha. Statement II: Beta. In the light of the above statements, choose the correct answer from the options given below:";
+    expect(layoutStatements(t).text).toBe(
+      "Statement I: Alpha.\n" +
+        "Statement II: Beta.\n" +
+        "In the light of the above statements, choose the correct answer from the options given below:"
+    );
+  });
+
+  it("accepts a hyphen and a full stop: 'Statement-1.' / 'Statement-2.'", () => {
+    const t = "Let A be a matrix. Statement-1: A is invertible. Statement-2: A is symmetric.";
+    expect(layoutStatements(t).text).toBe(
+      "Let A be a matrix.\nStatement-1: A is invertible.\nStatement-2: A is symmetric."
+    );
+  });
+
+  it("handles Assertion / Reason", () => {
+    const t = "Assertion (A): Water boils at 100C. Reason (R): It is a liquid.";
+    expect(layoutStatements(t).text).toBe(
+      "Assertion (A): Water boils at 100C.\nReason (R): It is a liquid."
+    );
+  });
+
+  it("is IDEMPOTENT on the word style too", () => {
+    const t = "Statement I: One. Statement II: Two. Choose the correct answer:";
+    const once = layoutStatements(t).text;
+    expect(layoutStatements(once).text).toBe(once);
+  });
+
+  it("needs TWO labels — a lone 'Statement I:' is not a list", () => {
+    const t = "Statement I: The only claim here. What follows from it?";
+    expect(layoutStatements(t).changed).toBe(false);
+  });
+
+  it("does NOT match the bare prose word 'statements'", () => {
+    const t = "Which of the following statements about statements is correct?";
+    expect(layoutStatements(t).changed).toBe(false);
+  });
+
+  it("still refuses a stem carrying a real GFM table", () => {
+    const t =
+      "Statement I: see below. Statement II: also below.\n\n| x | 1 | 2 |\n|---|---|---|\n| f | 3 | 4 |";
+    const r = layoutStatements(t);
+    expect(r.changed).toBe(false);
+    expect(r.skipped).toBe("table");
+  });
+
+  it("never breaks INSIDE a math zone", () => {
+    const t =
+      "Statement I: \(A^2 - 5A + 7I = 0\). Statement II: \(A^{-1} = \dfrac{1}{7}(5I - A)\).";
+    const out = layoutStatements(t).text;
+    expect(out).toBe(
+      "Statement I: \(A^2 - 5A + 7I = 0\).\nStatement II: \(A^{-1} = \dfrac{1}{7}(5I - A)\)."
+    );
+  });
+
+  it("prefers the style yielding MORE labels — a numeral run inside worded statements", () => {
+    // Three numerals beat two words, so the numeral run wins and the word
+    // labels are not double-broken.
+    const t = "Consider: 1. One. 2. Two. 3. Three. Which of the above are correct?";
+    expect(layoutStatements(t).text.split("\n").length).toBe(5);
+  });
+});
+
+/**
+ * EMPHASIS MARKERS ATTACHED TO A LABEL — "**Statement I:**".
+ *
+ * Found by the hash guard during the 2026-09-02 bank-wide repair, on a live
+ * Pariksha row that was ALREADY correctly laid out. The label match starts at
+ * "Statement", i.e. AFTER the "**", so the break was being inserted inside the
+ * markup ("**\nStatement I:**"). Two things went wrong at once: the bold was
+ * split, and a row needing no repair was reported as changed.
+ *
+ * It is invisible to a whitespace-only check — stripping all whitespace makes
+ * "**Statement" and "**\nStatement" identical — and shows up only in the hash,
+ * because `norm()` turns the inserted newline into a SPACE that was not there
+ * before. That is why the repair carries both guards.
+ */
+describe("layoutStatements — labels wrapped in emphasis markers", () => {
+  it("treats a bolded label already at line start as DONE", () => {
+    const t = "**Statement I:** Alpha holds.\n**Statement II:** Beta holds.";
+    const r = layoutStatements(t);
+    expect(r.changed).toBe(false);
+    expect(r.text).toBe(t);
+  });
+
+  it("breaks BEFORE the '**', never inside it", () => {
+    const t = "**Statement I:** Alpha holds. **Statement II:** Beta holds.";
+    expect(layoutStatements(t).text).toBe(
+      "**Statement I:** Alpha holds.\n**Statement II:** Beta holds."
+    );
+  });
+
+  it("is idempotent on the bolded form", () => {
+    const t = "**Statement I:** One. **Statement II:** Two.";
+    const once = layoutStatements(t).text;
+    expect(layoutStatements(once).text).toBe(once);
+  });
+
+  it("handles underscore emphasis too", () => {
+    const t = "_Statement 1:_ One. _Statement 2:_ Two.";
+    expect(layoutStatements(t).text).toBe("_Statement 1:_ One.\n_Statement 2:_ Two.");
+  });
+
+  it("still breaks a plain unmarked run — the common case is unaffected", () => {
+    const t = "Statement I: One. Statement II: Two.";
+    expect(layoutStatements(t).text).toBe("Statement I: One.\nStatement II: Two.");
+  });
+});

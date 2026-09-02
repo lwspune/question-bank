@@ -36,7 +36,7 @@
  */
 import { parseTableBlocks } from "../../src/components/math/parseTableBlocks";
 import { maskMathZones } from "../../src/components/math/parseLatex";
-import { findStatementLabels } from "../lib/statementLayout";
+import { findStatementLabels, WORD_LABEL_SOURCE } from "../lib/statementLayout";
 
 export type PaperTextRow = {
   id: string;
@@ -75,8 +75,17 @@ export const BLOCKING_RULES = [
  *  that half is `findStatementLabels`, whose own guards (ascending run, both-
  *  side whitespace, math masked, GFM tables excluded) are what let it match a
  *  bare "1." without matching every numeral in the bank. Neither scan subsumes
- *  the other, so P1 fires on either. */
-const STATEMENT_LABEL = /(?:Statement\s*[-–—]?\s*(?:[IVX]+|\d+)|Assertion\s*\((?:A)\)|Reason\s*\((?:R)\))\s*[:.]/gi;
+ *  the other, so P1 fires on either.
+ *
+ *  THE PATTERN IS IMPORTED, NOT RESTATED. It used to be a second copy here, and
+ *  the two halves drifted in the way that matters: this gate DETECTED the word
+ *  shape while `layoutStatements` could not REPAIR it, because `SEQUENCES`
+ *  carried only dot- and paren-delimited styles. Measured 2026-09-02 that left
+ *  327 PUBLIC rows flagged by a BLOCKING rule with no automated way out — a
+ *  detector and a repairer must be built from ONE definition or they diverge
+ *  silently, and the divergence only shows up as an unfixable violation.
+ *  Constructed locally because a shared `g` regex carries `lastIndex` state. */
+const STATEMENT_LABEL = new RegExp(WORD_LABEL_SOURCE, "gi");
 /** A rearrangement part label. The boundary is a NON-CONSUMING lookbehind: a
  *  consuming `(?:^|[\s.])` swallows the preceding newline, which then makes the
  *  match offset point at the newline rather than the label and defeats the
