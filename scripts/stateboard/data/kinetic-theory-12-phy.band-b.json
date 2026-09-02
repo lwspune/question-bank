@@ -1,0 +1,47 @@
+[
+  {
+    "ref": "Solved Ex.3.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Spectral Distribution and Wien's Displacement Law",
+    "difficulty": "EASY",
+    "stem": "Calculate the value of \\( \\lambda_{\\max} \\) for solar radiation assuming that surface temperature of Sun is 5800 K \\( \\left( b = 2.897 \\times 10^{-3} \\text{ m K} \\right) \\). In which part of the electromagnetic spectrum, does this value lie?",
+    "solution": "Given \\( T = 5800 \\text{ K} \\) and \\( b = 2.897 \\times 10^{-3} \\text{ m K} \\).\n\nUsing Eq. (3.45),\n\n\\( \\lambda_{\\max} = \\dfrac{2.897 \\times 10^{-3} \\text{ m K}}{5800 \\text{ K}} \\)\n\n\\( = 4.995 \\times 10^{-7} \\text{ m} = 4995\\ \\mathring{\\mathrm{A}} \\)\n\nThis value lies in the visible region of the electromagnetic spectrum."
+  },
+  {
+    "ref": "Solved Ex.3.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "difficulty": "EASY",
+    "stem": "Calculate the energy radiated in one minute by a blackbody of surface area 200 \\( \\text{cm}^{2} \\) at \\( 127\\ ^\\circ \\text{C} \\) \\( \\left( \\sigma = 5.67 \\times 10^{-8} \\text{ J m}^{-2} \\text{s}^{-1} \\text{K}^{-4} \\right) \\).",
+    "solution": "Given\n\n\\( A = 200 \\text{ cm}^{2} = 200 \\times 10^{-4} \\text{ m}^{2} \\),\n\n\\( T = 127\\ ^\\circ \\text{C} = (127 + 273) \\text{ K} = 400 \\text{ K} \\),\n\n\\( t = 1 \\text{ min} = 60 \\text{ s} \\)\n\nWe know that energy radiated is given by\n\n\\( Q = \\sigma A t T^{4} \\)\n\n\\( = 5.67 \\times 10^{-8} \\times 200 \\times 10^{-4} \\times 60 \\times (400)^{4} \\)\n\n\\( = 5.67 \\times 1.2 \\times 256 \\)\n\n\\( = 1742 \\text{ J} \\)"
+  },
+  {
+    "ref": "Solved Ex.3.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "difficulty": "MODERATE",
+    "stem": "A 60 watt filament lamp loses all its energy by radiation from its surface. The emissivity of the surface is 0.5. The area of the surface is \\( 5 \\times 10^{-5} \\text{ m}^{2} \\). Find the temperature of the filament \\( \\left( \\sigma = 5.67 \\times 10^{-8} \\text{ J m}^{-2} \\text{s}^{-1} \\text{K}^{-4} \\right) \\).",
+    "solution": "Given, \\( e = 0.5 \\), \\( A = 5 \\times 10^{-5} \\text{ m}^{2} \\), \\( \\dfrac{dQ}{dt} = 60 \\text{ W} = 60 \\text{ J s}^{-1} \\)\n\nWe know that \\( \\dfrac{dQ}{dt} = e \\sigma A T^{4} \\)\n\n\\( \\therefore 60 = 0.5 \\times 5.67 \\times 10^{-8} \\times 5 \\times 10^{-5} \\times T^{4} \\)\n\n\\( \\therefore T^{4} = \\dfrac{60 \\times 10^{13}}{5.67 \\times 2.5} \\)\n\n\\( T^{4} = 4.23 \\times 10^{13} \\)\n\n\\( \\therefore T = \\left( 42.3 \\times 10^{12} \\right)^{\\frac{1}{4}} \\)\n\n\\( T = 2.55 \\times 10^{3} = 2550 \\text{ K} \\)"
+  },
+  {
+    "ref": "Solved Ex.3.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "difficulty": "MODERATE",
+    "stem": "Compare the rate of loss of heat from a metal sphere at \\( 827\\ ^\\circ \\text{C} \\) with the rate of loss of heat from the same sphere at \\( 427\\ ^\\circ \\text{C} \\), if the temperature of the surrounding is \\( 27\\ ^\\circ \\text{C} \\).",
+    "solution": "Given,\n\n\\( T_{1} = 827\\ ^\\circ \\text{C} = 827 + 273 = 1100 \\text{ K} \\),\n\n\\( T_{2} = 427\\ ^\\circ \\text{C} = 427 + 273 = 700 \\text{ K} \\) and\n\n\\( T_{0} = 27\\ ^\\circ \\text{C} = 27 + 273 = 300 \\text{ K} \\)\n\n\\( R_{1} = \\left( \\dfrac{dQ}{dt} \\right)_{1} = e \\sigma A \\left( T_{1}^{4} - T_{0}^{4} \\right) \\)\n\n\\( R_{2} = \\left( \\dfrac{dQ}{dt} \\right)_{2} = e \\sigma A \\left( T_{2}^{4} - T_{0}^{4} \\right) \\)\n\n\\( \\therefore \\dfrac{R_{1}}{R_{2}} = \\dfrac{\\left( T_{1}^{4} - T_{0}^{4} \\right)}{\\left( T_{2}^{4} - T_{0}^{4} \\right)} = \\dfrac{1100^{4} - 300^{4}}{700^{4} - 300^{4}} \\)\n\nor, \\( \\dfrac{R_{1}}{R_{2}} = \\dfrac{14560}{2320} = \\dfrac{182}{29} \\)\n\n\\( \\therefore R_{1} : R_{2} = 182 : 29 \\)"
+  },
+  {
+    "ref": "Solved Ex.3.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "difficulty": "HARD",
+    "stem": "Assuming that the temperature at the surface of the Sun is 6000 K, find out the size of a virtual star (in terms of the size of Sun) whose surface temperature is 3000 K and the power radiated by the virtual star is 25 times the power radiated by the Sun. Treat both, the Sun and virtual star as a blackbody.",
+    "solution": "Given,\n\n\\( T_{\\mathrm{Sun}} = 6000 \\text{ K} \\), \\( T_{\\mathrm{star}} = 3000 \\text{ K} \\), \\( P_{\\mathrm{star}} = 25 \\times P_{\\mathrm{Sun}} \\)\n\nPower radiated by the Sun\n\n\\( = P_{\\mathrm{Sun}} = \\left( \\dfrac{dQ}{dt} \\right)_{\\mathrm{Sun}} = \\sigma A_{\\mathrm{Sun}} T_{\\mathrm{Sun}}^{4} = \\sigma 4 \\pi r_{\\mathrm{Sun}}^{2} T_{\\mathrm{Sun}}^{4} \\)\n\nPower radiated by the virtual star\n\n\\( = P_{\\mathrm{star}} = \\left( \\dfrac{dQ}{dt} \\right)_{\\mathrm{star}} = \\sigma A_{\\mathrm{star}} T_{\\mathrm{star}}^{4} = \\sigma 4 \\pi r_{\\mathrm{star}}^{2} T_{\\mathrm{star}}^{4} \\)\n\n\\( \\therefore \\dfrac{P_{\\mathrm{star}}}{P_{\\mathrm{Sun}}} = \\dfrac{\\sigma 4 \\pi r_{\\mathrm{star}}^{2} T_{\\mathrm{star}}^{4}}{\\sigma 4 \\pi r_{\\mathrm{Sun}}^{2} T_{\\mathrm{Sun}}^{4}} = \\dfrac{r_{\\mathrm{star}}^{2}\\, 3000^{4}}{r_{\\mathrm{Sun}}^{2}\\, 6000^{4}} = 25 \\)\n\n\\( \\therefore \\dfrac{r_{\\mathrm{star}}^{2}}{r_{\\mathrm{Sun}}^{2}} = 25 \\times \\dfrac{6000^{4}}{3000^{4}} = 400 \\)\n\nor, \\( r_{\\mathrm{star}} = 20 \\times r_{\\mathrm{Sun}} \\)"
+  }
+]

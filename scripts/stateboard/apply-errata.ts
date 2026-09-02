@@ -54,9 +54,22 @@ async function main() {
   });
 
   // Source JSON files that may hold each ref's solution text.
-  const jsonFiles = readdirSync(DATA).filter(
-    (f) => f.startsWith(`${id}.`) && (f.endsWith(".solutions.json") || /\.s\d|\.misc\.json$/.test(f))
-  );
+  //
+  // ⚠ This list used to be `.solutions.json` / `.s<digit>` / `.misc.json` only —
+  // the Maths chapters' naming. A Physics band is called `.solved-a.json` /
+  // `.ex-mcq.json` / `.band-a.json`, so a bracket on a SOLVED EXAMPLE (whose
+  // solution is committed inline from the band fragment, never from a solutions
+  // file) mirrored NOWHERE and lived in the DB alone — to be silently reverted by
+  // the next re-commit. It failed quietly because nothing warned when a bracket
+  // matched no file. Confirmed live on Ch.9 Current Electricity, 4 brackets.
+  //
+  // Now: any non-scratch fragment, with SOLUTIONS FILES RANKED FIRST. The order
+  // is load-bearing — the loop takes the first file carrying the ref, and for an
+  // exercise row the authored solution is the one a re-commit reads back.
+  const SCRATCH = /\.(mcq-blind|mcq-verify|book-answers|review|topaper|xcheck|errata|anchors|solution-images|sections|diagram-specs|imgfig)\.json$|\.diagram-specs/;
+  const jsonFiles = readdirSync(DATA)
+    .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== `${id}.questions.json` && !SCRATCH.test(f))
+    .sort((a, b) => Number(b.endsWith(".solutions.json")) - Number(a.endsWith(".solutions.json")));
 
   let applied = 0;
   let skipped = 0;
@@ -102,17 +115,32 @@ async function main() {
     });
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
+    let mirrored = false;
     for (const f of jsonFiles) {
       const path = join(DATA, f);
       const arr = JSON.parse(readFileSync(path, "utf8")) as any[];
       const hit = arr.find((r) => r.ref === e.ref);
       if (!hit) continue;
-      if (typeof hit.solution === "string" && !hit.solution.trimStart().startsWith("[Textbook")) {
-        hit.solution = `${e.bracket}\n\n${hit.solution}`;
+      const cur = typeof hit.solution === "string" ? hit.solution : "";
+      if (!cur.trimStart().startsWith("[Textbook")) {
+        // CREATE the field when absent: an MCQ fragment row carries a key, not a
+        // solution, so `typeof hit.solution === "string"` was false and the
+        // bracket was dropped without a word (the mh-sb-11 bug, same shape).
+        hit.solution = cur ? `${e.bracket}\n\n${cur}` : e.bracket;
         writeFileSync(path, JSON.stringify(arr, null, 2), "utf-8");
         console.log(`      mirrored -> ${f}`);
       }
+      mirrored = true;
       break;
+    }
+    if (!mirrored) {
+      // LOUD, because the failure is otherwise invisible: the bracket is live in
+      // the DB and absent from the source, so the next re-commit reverts it and
+      // every gate still passes.
+      console.warn(
+        `      ⚠ ${e.ref}: bracket mirrored to NO source file — it exists only in the DB and ` +
+          `the next re-commit will silently revert it. Searched: ${jsonFiles.join(", ") || "(none)"}`
+      );
     }
   }
 

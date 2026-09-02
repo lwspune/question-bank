@@ -1,0 +1,551 @@
+[
+  {
+    "ref": "Solved Ex.9.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "EASY",
+    "stem": "Figure shows currents in a part of electrical circuit. Find the current \\(X\\)?",
+    "solution": "At junction B, current \\(I_1\\) is split into \\(I_2\\) and \\(I_3\\), therefore \\(I_1 = I_2 + I_3\\).\nSubstituting values we get \\(17 = 3 + I_3\\), so \\(I_3 = 14\\) A.\nAt junction C the branch current \\(I_4\\) leaves the junction, so \\(I_3 = I_4 + I_5\\), giving \\(I_5 = 14 - 2 = 12\\) A.\nAt junction D, \\(I_5 = I_6 + I_7\\), giving \\(I_6 = 12 - 9 = 3\\) A."
+  },
+  {
+    "ref": "Solved Ex.9.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "stem": "Two batteries of 7 volt and 13 volt and internal resistances 1 ohm and 2 ohm respectively are connected in parallel with a resistance of 12 ohm. Find the current through each branch of the circuit and the potential difference across 12-ohm resistance.",
+    "solution": "Let the currents passing through the two batteries be \\(I_1\\) and \\(I_2\\).\nApplying Kirchhoff second law to the loop AEFBA,\n\\(-12(I_1 + I_2) - 1 I_1 + 7 = 0\\)\n\\(12(I_1 + I_2) + 1 I_1 = 7\\) --- (1)\nFor the loop CEFDC\n\\(-12(I_1 + I_2) - 2 I_2 + 13 = 0\\)\n\\(12(I_1 + I_2) + 2 I_2 = 13\\) --- (2)\nFrom (1) and (2), \\(2 I_2 - I_1 = 13 - 7 = 6\\)\n\\(I_1 = 2 I_2 - 6\\)\nSubstituting \\(I_1\\) value in (2)\n\\(I_2 = \\dfrac{85}{38} = 2.237\\) A\n\\(I_1 = 2 I_2 - 6 = 2 \\times \\dfrac{85}{38} - 6 = -1.526\\) A\n\\(I = I_1 + I_2 = -1.526 + 2.237 = 0.711\\) A\nPotential difference across the 12 \\(\\Omega\\) resistance\n\\(V = IR = 0.711 \\times 12 = 8.532\\) V"
+  },
+  {
+    "ref": "Solved Ex.9.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "stem": "For the given network, find the current through 4 ohm and 3 ohm. Assume that the cells have negligible internal resistance.",
+    "solution": "Applying Kirchhoff's first law:\nAt junction F, \\(I_1 + I_2 = I_3\\) --- (1)\nApplying Kirchhoff second law,\n(i) loop EFCDE, \\(3 I_2 - 4 I_1 + 10 = 0\\)\n\\(4 I_1 - 3 I_2 = 10\\) --- (2)\n(ii) loop FABCF, \\(-4 I_3 - 3 I_2 + 5 = 0\\)\n\\(4 I_3 + 3 I_2 = 5\\) --- (3)\nFrom Eq. (1) and Eq. (2)\n\\(4(I_3 - I_2) - 3 I_2 = 10\\)\n\\(-3 I_2 + 4 I_3 - 4 I_2 = 10\\)\n\\(4 I_3 - 7 I_2 = 10\\) --- (4)\nFrom Eq. (3) and Eq. (4)\n\\(10 I_2 = -5\\)\n\\(I_2 = -0.5\\) A\nNegative sign indicates that \\(I_2\\) current flows from F to C.\nFrom Eq. (2) \\(4 I_1 - 3(-0.5) = 10\\)\n\\(I_1 = 2.125\\) A\n\\(\\therefore I_3 = I_1 + I_2 = 2.12 - 0.5 = 1.625\\) A"
+  },
+  {
+    "ref": "Solved Ex.9.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "HARD",
+    "stem": "At what value should the variable resistor Q be set in the circuit such that the bridge is balanced? If the source voltage is 30 V find the value of the output voltage across \\(XY\\), when the bridge is balanced.",
+    "solution": "When the bridge is balanced\n\\(P/Q = R/S\\)\n\\(Q = PS/R\\)\n\\(= \\dfrac{1.36 \\times 10^{3} \\times 4.4 \\times 10^{3}}{300} = 19946.66\\ \\Omega\\)\nTotal resistance of the arm ADC \\(= 19947 + 4400 = 24347\\ \\Omega\\)\nTo find output voltage across \\(XY\\):\nPotential difference across AC \\(= I_1 \\times 24340 = 30\\)\n\\(I_1 = \\dfrac{30}{24347}\\) A\nPotential difference across AD is \\(V_{AD} = I_1 \\times 19947 = (30 \\times 19947)/24347 = 24.58\\) V\n\\(I_2 = \\dfrac{30}{1360 + 300} = \\dfrac{30}{1660}\\) A\nHence, potential difference across AB is\n\\(V_{AB} = I_2 \\times 1360 = \\dfrac{30}{1660} \\times 1360 = 24.58\\) V\n\\(V_{out} = V_D - V_B = V_{AB} - V_{AD} = 24.58 - 24.58 = 0\\) V"
+  },
+  {
+    "ref": "Solved Ex.9.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "HARD",
+    "stem": "Two resistances 2 ohm and 3 ohm are connected across the two gaps of the metre bridge as shown in figure. Calculate the current through the cell when the bridge is balanced and the specific resistance of the material of the metre bridge wire. Given the resistance of the bridge wire is 1.49 ohm and its diameter is 0.12 cm.",
+    "solution": "When the bridge is balanced, the resistances 2 and 3 ohm are in series and the total resistance is 5 ohm.\nLet \\(R_1\\) be the resistance of the wire \\(= 1.49\\ \\Omega\\), and \\(R_2\\) be the total resistance \\((2+3) = 5\\ \\Omega\\).\n\\(R_p = \\dfrac{R_1 R_2}{R_1 + R_2} = \\dfrac{1.49 \\times 5}{1.49 + 5} = 1.15\\ \\Omega\\)\nThe current through the cell\n\\(= \\dfrac{\\varepsilon}{R_p} = \\dfrac{2}{1.15} = 1.739\\) A\nSpecific resistance of the wire \\(= \\rho = \\dfrac{R \\pi r^{2}}{l}\\)\n\\(l = 1\\) m, \\(r = \\dfrac{0.12}{2} = 0.06\\) cm, \\(R = 1.49\\ \\Omega\\)\n\\(\\rho = \\dfrac{R \\pi r^{2}}{l} = \\dfrac{1.49 \\times 3.14 \\times (0.06 \\times 10^{-2})^{2}}{1}\\)\n\\(= 1.686 \\times 10^{-6}\\ \\Omega\\) m \\((\\pi = 3.142)\\)"
+  },
+  {
+    "ref": "Solved Ex.9.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "In an experiment to determine the internal resistance of a cell of emf 1.5 V, the balance point in the open cell condition is at 76.3 cm. When a resistor of 9.5 ohm is used in the external circuit of the cell the balance point shifts to 64.8 cm of the potentiometer wire. Determine the internal resistance of the cell.",
+    "solution": "Open cell balancing length \\(l_1 = 76.3\\) cm\nClosed circuit balancing length \\(l_2 = 64.8\\) cm\nExternal resistance \\(R = 9.5\\ \\Omega\\)\nInternal resistance \\(r = \\left(\\dfrac{l_1 - l_2}{l_2}\\right) R\\)\n\\(= \\left(\\dfrac{76.3 - 64.8}{64.8}\\right) \\times 9.5\\)\n\\(= 1.686\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 100 \\(\\Omega\\) and its full scale deflection current is 100 \\(\\mu\\)A. What shunt resistance should be added so that the ammeter can have a range of 0 to 10 mA?",
+    "solution": "Given \\(I_g = 100\\ \\mu\\)A \\(= 0.1\\) mA\nThe upper limit gives the maximum current to be measured, which is \\(I = 10\\) mA.\nThe galvanometer resistance is \\(G = 100\\ \\Omega\\).\nNow\n\\(n = \\dfrac{10}{0.1} = 100\\)\n\\(\\therefore S = \\dfrac{G}{n-1} = \\dfrac{100}{100-1} = \\dfrac{100}{99}\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "What is the value of the shunt resistance that allows 20% of the main current through a galvanometer of 99 \\(\\Omega\\)?",
+    "solution": "Given \\(G = 99\\ \\Omega\\) and \\(I_g = (20/100) I = 0.2 I\\)\nNow\n\\(S = \\dfrac{I_g G}{I - I_g} = \\dfrac{0.2 I \\times 99}{(I - 0.2 I)} = \\dfrac{0.2 \\times 99}{0.8} = 24.75\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 25 \\(\\Omega\\) and its full scale deflection current is 25 \\(\\mu\\)A. What resistance should be added to it to have a range of 0 - 10 V?",
+    "solution": "Given \\(I_g = 25\\ \\mu\\)A.\nMaximum voltage to be measured is \\(V = 10\\) V.\nThe galvanometer resistance \\(G = 25\\ \\Omega\\).\nThe resistance to be added in series,\n\\(X = \\dfrac{V}{I_g} - G = \\dfrac{10}{25 \\times 10^{-6}} - 25\\)\n\\(= 399.975 \\times 10^{3}\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.9.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "MODERATE",
+    "stem": "A galvanometer has a resistance of 40 \\(\\Omega\\) and a current of 4 mA is needed for a full scale deflection. What is the resistance and how is it to be connected to convert the galvanometer (a) into an ammeter of 0.4 A range and (b) into a voltmeter of 0.5 V range?",
+    "solution": "Given \\(G = 40\\ \\Omega\\) and \\(I_g = 4\\) mA\n(a) To convert the galvanometer into an ammeter of range 0.4 A,\n\\((I - I_g) S = I_g G\\)\n\\((0.4 - 0.004) S = 0.004 \\times 40\\)\n\\(\\therefore S = \\dfrac{0.004 \\times 40}{0.396} = \\dfrac{0.16}{0.396} = 0.4040\\ \\Omega\\)\n(b) To convert the galvanometer into a voltmeter of range of 0.5 V\n\\(V = I_g (G + X)\\)\n\\(0.5 = 0.004 (40 + X)\\)\n\\(\\therefore X = \\dfrac{0.5}{0.004} - 40 = 85\\ \\Omega\\)"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "Kirchhoff's first law, i.e., \\(\\Sigma I = 0\\) at a junction, deals with the conservation of",
+    "options": [
+      {
+        "label": "A",
+        "text": "charge"
+      },
+      {
+        "label": "B",
+        "text": "energy"
+      },
+      {
+        "label": "C",
+        "text": "momentum"
+      },
+      {
+        "label": "D",
+        "text": "mass"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "When the balance point is obtained in the potentiometer, a current is drawn from",
+    "options": [
+      {
+        "label": "A",
+        "text": "both the cells and auxiliary battery"
+      },
+      {
+        "label": "B",
+        "text": "cell only"
+      },
+      {
+        "label": "C",
+        "text": "auxiliary battery only"
+      },
+      {
+        "label": "D",
+        "text": "neither cell nor auxiliary battery"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "HARD",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "In the following circuit diagram, an infinite series of resistances is shown. Equivalent resistance between points A and B is",
+    "options": [
+      {
+        "label": "A",
+        "text": "infinite"
+      },
+      {
+        "label": "B",
+        "text": "zero"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\ \\Omega\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1.5\\ \\Omega\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "Four resistances \\(10\\ \\Omega\\), \\(10\\ \\Omega\\), \\(10\\ \\Omega\\) and \\(15\\ \\Omega\\) form a Wheatstone's network. What shunt is required across \\(15\\ \\Omega\\) resistor to balance the bridge",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(10\\ \\Omega\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(15\\ \\Omega\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(20\\ \\Omega\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(30\\ \\Omega\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "A circular loop has a resistance of \\(40\\ \\Omega\\). Two points P and Q of the loop, which are one quarter of the circumference apart are connected to a 24 V battery, having an internal resistance of \\(0.5\\ \\Omega\\). What is the current flowing through the battery.",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.5 A"
+      },
+      {
+        "label": "B",
+        "text": "1A"
+      },
+      {
+        "label": "C",
+        "text": "2A"
+      },
+      {
+        "label": "D",
+        "text": "3A"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (vi)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "HARD",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "To find the resistance of a gold bangle, two diametrically opposite points of the bangle are connected to the two terminals of the left gap of a metre bridge. A resistance of \\(4\\ \\Omega\\) is introduced in the right gap. What is the resistance of the bangle if the null point is at 20 cm from the left end?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\ \\Omega\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4\\ \\Omega\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(8\\ \\Omega\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(16\\ \\Omega\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define or describe a Potentiometer."
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define Potential Gradient."
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why should not the jockey be slided along the potentiometer wire?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Are Kirchhoff's laws applicable for both AC and DC currents?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "In a Wheatstone's meter-bridge experiment, the null point is obtained in middle one third portion of wire. Why is it recommended?"
+  },
+  {
+    "ref": "Ex Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "State any two sources of errors in meter-bridge experiment. Explain how they can be minimized."
+  },
+  {
+    "ref": "Ex Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is potential gradient? How is it measured? Explain."
+  },
+  {
+    "ref": "Ex Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "On what factors does the potential gradient of the wire depend?"
+  },
+  {
+    "ref": "Ex Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why is potentiometer preferred over a voltmeter for measuring emf?"
+  },
+  {
+    "ref": "Ex Q.2 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "State the uses of a potentiometer."
+  },
+  {
+    "ref": "Ex Q.2 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What are the disadvantages of a potentiometer?"
+  },
+  {
+    "ref": "Ex Q.2 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "Distinguish between a potentiometer and a voltmeter."
+  },
+  {
+    "ref": "Ex Q.2 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What will be the effect on the position of zero deflection if only the current flowing through the potentiometer wire is (i) increased (ii) decreased."
+  },
+  {
+    "ref": "Ex Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "stem": "Obtain the balancing condition in case of a Wheatstone's network."
+  },
+  {
+    "ref": "Ex Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "stem": "Explain with neat circuit diagram, how you will determine the unknown resistance by using a meter-bridge."
+  },
+  {
+    "ref": "Ex Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "HARD",
+    "stem": "Describe Kelvin's method to determine the resistance of a galvanometer by using a meter bridge."
+  },
+  {
+    "ref": "Ex Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "Describe how a potentiometer is used to compare the emfs of two cells by connecting the cells individually."
+  },
+  {
+    "ref": "Ex Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "Describe how a potentiometer is used to compare the emfs of two cells by combination method."
+  },
+  {
+    "ref": "Ex Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "HARD",
+    "stem": "Describe with the help of a neat circuit diagram how you will determine the internal resistance of a cell by using a potentiometer. Derive the necessary formula."
+  },
+  {
+    "ref": "Ex Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "stem": "On what factors does the internal resistance of a cell depend?"
+  },
+  {
+    "ref": "Ex Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "stem": "A battery of emf 4 volt and internal resistance \\(1\\ \\Omega\\) is connected in parallel with another battery of emf 1 V and internal resistance \\(1\\ \\Omega\\) (with their like poles connected together). The combination is used to send current through an external resistance of \\(2\\ \\Omega\\). Calculate the current through the external resistance.",
+    "bookAnswer": "1 A"
+  },
+  {
+    "ref": "Ex Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "stem": "Two cells of emf 1.5 Volt and 2 Volt having respective internal resistances of \\(1\\ \\Omega\\) and \\(2\\ \\Omega\\) are connected in parallel so as to send current in same direction through an external resistance of \\(5\\ \\Omega\\). Find the current through the external resistance.",
+    "bookAnswer": "5/17 A"
+  },
+  {
+    "ref": "Ex Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "EASY",
+    "stem": "A voltmeter has a resistance \\(30\\ \\Omega\\). What will be its reading, when it is connected across a cell of emf 2 V having internal resistance \\(10\\ \\Omega\\)?",
+    "bookAnswer": "1.5 V"
+  },
+  {
+    "ref": "Ex Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "MODERATE",
+    "stem": "A set of three coils having resistances \\(10\\ \\Omega\\), \\(12\\ \\Omega\\) and \\(15\\ \\Omega\\) are connected in parallel. This combination is connected in series with series combination of three coils of the same resistances. Calculate the total resistance and current through the circuit, if a battery of emf 4.1 Volt is used for drawing current.",
+    "bookAnswer": "41 Ω, 0.1 A"
+  },
+  {
+    "ref": "Ex Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "A potentiometer wire has a length of 1.5 m and resistance of \\(10\\ \\Omega\\). It is connected in series with the cell of emf 4 Volt and internal resistance \\(5\\ \\Omega\\). Calculate the potential drop per centimeter of the wire.",
+    "bookAnswer": "0.0178 V/cm"
+  },
+  {
+    "ref": "Ex Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "When two cells of emfs. \\(\\varepsilon_1\\) and \\(\\varepsilon_2\\) are connected in series so as to assist each other, their balancing length on a potentiometer is found to be 2.7 m. When the cells are connected in series so as to oppose each other, the balancing length is found to be 0.3 m. Compare the emfs of the two cells.",
+    "bookAnswer": "1.25"
+  },
+  {
+    "ref": "Ex Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "MODERATE",
+    "stem": "The emf of a cell is balanced by a length of 120 cm of potentiometer wire. When the cell is shunted by a resistance of \\(10\\ \\Omega\\), the balancing length is reduced by 20 cm. Find the internal resistance of the cell.",
+    "bookAnswer": "r = 2 Ohm"
+  },
+  {
+    "ref": "Ex Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "stem": "A potential drop per unit length along a wire is \\(5 \\times 10^{-3}\\) V/m. If the emf of a cell balances against length 216 cm of this potentiometer wire, find the emf of the cell.",
+    "bookAnswer": "0.01080 V"
+  },
+  {
+    "ref": "Ex Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "difficulty": "HARD",
+    "stem": "The resistance of a potentiometer wire is \\(8\\ \\Omega\\) and its length is 8 m. A resistance box and a 2 V battery are connected in series with it. What should be the resistance in the box, if it is desired to have a potential drop of \\(1\\ \\mu\\)V/mm?",
+    "bookAnswer": "1992 ohm"
+  },
+  {
+    "ref": "Ex Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "HARD",
+    "stem": "Find the equivalent resistance between the terminals F and B in the network shown in the figure below given that the resistance of each resistor is 10 ohm.",
+    "bookAnswer": "14 Ohm"
+  },
+  {
+    "ref": "Ex Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "difficulty": "EASY",
+    "stem": "A voltmeter has a resistance of \\(100\\ \\Omega\\). What will be its reading when it is connected across a cell of emf 2 V and internal resistance \\(20\\ \\Omega\\)?",
+    "bookAnswer": "1.66 V"
+  }
+]

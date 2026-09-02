@@ -1,0 +1,47 @@
+[
+  {
+    "ref": "Solved Ex.15.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Law of Radioactive Decay, Half-Life and Average Life",
+    "difficulty": "MODERATE",
+    "stem": "The half-life of a nuclear species \\(^{N}\\text{X}\\) is 3.2 days. Calculate its (i) decay constant, (ii) average life and (iii) the activity of its sample of mass 1.5 mg.",
+    "solution": "The half-life \\((T_{1/2})\\) is related to the decay constant \\((\\lambda)\\) by\n\n\\(T_{1/2} = 0.693/\\lambda\\) giving,\n\n\\(\\lambda = 0.693/T_{1/2}\\)\n\n\\(= 0.693/3.2\\)\n\n\\(= 0.2166\\) per day\n\n\\(= 0.2166/(24 \\times 3600)\\ \\text{s}^{-1}\\)\n\n\\(= 2.507 \\times 10^{-6}\\ \\text{s}^{-1}\\).\n\nAverage life is related to decay constant by\n\n\\(\\tau = 1/\\lambda = 1/0.2166\\) per day \\(= 4.617\\) days\n\nThe activity is given by \\(A = \\lambda N(t)\\), where \\(N(t)\\) is the number of nuclei in the given sample. This is given by\n\n\\(N(t) = 6.02 \\times 10^{23} \\times 1.5 \\times 10^{-3}/Y = 9.03 \\times 10^{20}/Y\\)\n\nHere, \\(Y\\) is the atomic mass of nuclear species X in g per mol.\n\n\\(\\therefore A = 9.03 \\times 10^{20} \\times 2.5 \\times 10^{-6}/Y\\)\n\n\\(= 2.257 \\times 10^{15}/Y\\)\n\n\\(= 2.257 \\times 10^{15}/(Y \\times 3.7 \\times 10^{10})\\ \\text{Ci}\\)\n\n\\(= 6.1 \\times 10^{4}/Y\\ \\text{Ci}\\)."
+  },
+  {
+    "ref": "Solved Ex.15.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Law of Radioactive Decay, Half-Life and Average Life",
+    "difficulty": "MODERATE",
+    "stem": "The activity of a radioactive sample decreased from 350 \\(\\text{s}^{-1}\\) to 175 \\(\\text{s}^{-1}\\) in one hour. Determine the half-life of the species.",
+    "solution": "The time dependence of activity is given by \\(A(t) = A_0 e^{-\\lambda t}\\), where, \\(A(t)\\) and \\(A_0\\) are the activities at time \\(t\\) and 0 respectively.\n\n\\(175 = 350\\,e^{-\\lambda 3600}\\),\n\nor, \\(3600\\lambda = \\ln(350/175) = \\ln 2 = 0.6931\\)\n\n\\(\\lambda = 0.6931/3600 = 1.925 \\times 10^{-4}\\ \\text{s}^{-1}\\).\n\nThe half-life is given by \\(T_{1/2} = 0.693/\\lambda\\).\n\n\\(\\therefore T_{1/2} = \\dfrac{0.693}{1.925 \\times 10^{-4}} = 3.6 \\times 10^{3}\\ s\\)"
+  },
+  {
+    "ref": "Solved Ex.15.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Law of Radioactive Decay, Half-Life and Average Life",
+    "difficulty": "HARD",
+    "stem": "In an alpha decay, the daughter nucleus produced is itself unstable and undergoes further decay. If the number of parent and daughter nuclei at time \\(t\\) are \\(N_p\\) and \\(N_d\\) respectively and their decay constants are \\(\\lambda_p\\) and \\(\\lambda_d\\) respectively. What condition needs to be satisfied in order for \\(N_d\\) to remain constant?",
+    "solution": "The number of parent nuclei decaying between time 0 and \\(dt\\), for small values of \\(dt\\) is given by \\(N_p\\lambda_p dt\\). This is the number of daughter nuclei produced in time \\(dt\\). The number of daughter nuclei decaying in the same interval is \\(N_d\\lambda_d dt\\). For the number of daughter nuclei to remain constant, these two quantities, i.e., the number of daughter nuclei produced in time \\(dt\\) and the number decaying in time \\(dt\\) have to be equal. Thus, the required condition is given by\n\n\\(N_p\\lambda_p dt = N_d\\lambda_d dt\\),\n\nor, \\(N_p\\lambda_p = N_d\\lambda_d\\)"
+  },
+  {
+    "ref": "Solved Ex.15.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Nuclear Fission and Fusion",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the energy released in the reaction \\(^{236}_{92}\\text{U} \\rightarrow {}^{137}_{53}\\text{I} + {}^{97}_{39}\\text{Y} + 2n\\). The masses of \\(^{236}_{92}\\text{U}\\), \\(^{137}_{53}\\text{I}\\) and \\(^{97}_{39}\\text{Y}\\) are 236.04557, 136.91787 and 96.91827 respectively.",
+    "solution": "Energy released is given by\n\n\\(Q = [m_U - m_I - m_Y - 2m_n]c^2\\)\n\n\\(= [236.04557 - 136.91787 - 96.91827 - 2 \\times 1.00865]c^2\\)\n\n\\(= 0.19011 \\times 931.5\\ \\text{MeV}\\)\n\n\\(= 177.0875\\ \\text{MeV}\\)"
+  },
+  {
+    "ref": "Solved Ex.15.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Nuclear Fission and Fusion",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the energy released in the fusion reaction taking place inside the Sun, \\(4p \\rightarrow \\alpha + 2e^{+} +\\) neutrinos, neglecting the energy given to the neutrinos. Mass of alpha particle being 4.001506 u.",
+    "solution": "The energy released in the process, ignoring the energy taken by the neutrinos is given by\n\n\\(Q = \\left[4 \\times m_p - m_{\\alpha} - 2 \\times m_e\\right]c^2\\),\n\n\\(Q = \\left[4 \\times 1.00728 - 4.001506 - 2 \\times 0.00055\\right]c^2\\)\n\n\\(= 0.026514 \\times 931.5 = 24.70\\ \\text{MeV}\\)"
+  }
+]

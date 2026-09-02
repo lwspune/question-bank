@@ -1,0 +1,484 @@
+[
+  {
+    "ref": "Solved Ex.1.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kinematics and Dynamics of Circular Motion",
+    "difficulty": "EASY",
+    "stem": "A fan is rotating at 90 rpm. It is then switched OFF. It stops after 21 rotations. Calculate the time taken by it to stop assuming that the frictional torque is constant.",
+    "solution": "\\(n_0 = 90\\ \\text{rpm} = 1.5\\ \\text{rps}\\) \\(\\therefore \\omega_0 = 2\\pi n_0 = 3\\pi\\ \\text{rad/s}\\)\n\nThe angle through which the blades of the fan move while stopping is \\(\\theta = 2\\pi N = 2\\pi (21) = 42\\pi\\) rad, \\(\\omega = 0\\) (fan stops).\n\nUsing equations analogous to kinematical equations of motion\n\n\\(\\alpha = \\frac{\\omega - \\omega_0}{t} = \\frac{\\omega^2 - \\omega_0^2}{2\\theta}\\)\n\n\\(\\therefore \\frac{0 - 3\\pi}{t} = \\frac{0 - (3\\pi)^2}{2(42\\pi)}\\) \\(\\therefore t = 28\\ \\text{s}\\)\n\n**Remark:** One can also use the unit 'revolution' for angle and get rid of \\(\\pi\\) throughout (for such data). In this case, \\(\\omega_0 = 1.5\\) rps and \\(\\theta = 21\\) rev."
+  },
+  {
+    "ref": "Solved Ex.1.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "A motor cyclist (to be treated as a point mass) is to undertake horizontal circles inside the cylindrical wall of a well of inner radius 4 m. Coefficient of static friction between the tyres and the wall is 0.4. Calculate the minimum speed and frequency necessary to perform this stunt. (Use \\(g = 10\\ \\text{m/s}^2\\))",
+    "solution": "\\(\\text{v}_{\\min} = \\sqrt{\\frac{rg}{\\mu_s}} = \\sqrt{\\frac{4 \\times 10}{0.4}} = 10\\ \\text{m s}^{-1}\\) and\n\n\\(n_{\\min} = \\frac{\\text{v}_{\\min}}{2\\pi r} = \\frac{10}{2 \\times \\pi \\times 4} \\cong 0.4\\ \\text{rev s}^{-1}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "HARD",
+    "stem": "A racing track of radius of curvature 9.9 m is banked at \\(\\tan^{-1} 0.5\\). Coefficient of static friction between the track and the tyres of a vehicle is 0.2. Determine the speed limits with 10 % margin. (Take \\(g = 10\\ \\text{m/s}^2\\))",
+    "solution": "\\(\\text{v}_{\\min} = \\sqrt{rg\\left(\\frac{\\tan\\theta - \\mu_s}{1 + \\mu_s \\tan\\theta}\\right)}\\)\n\n\\(= \\sqrt{9.9 \\times 10 \\left(\\frac{0.5 - 0.2}{1 + (0.2 \\times 0.5)}\\right)} = \\sqrt{27} = 5.196\\ \\text{m/s}\\)\n\nAllowed \\(\\text{v}_{\\min}\\) should be 10% higher than this.\n\n\\(\\therefore (\\text{v}_{\\min})_{\\text{allowed}} = 5.196 \\times \\frac{110}{100} = 5.716\\ \\frac{\\text{m}}{\\text{s}}\\)\n\n\\(\\text{v}_{\\max} = \\sqrt{rg\\left(\\frac{\\tan\\theta + \\mu_s}{1 - \\mu_s \\tan\\theta}\\right)}\\)\n\n\\(= \\sqrt{9.9 \\times 10 \\left(\\frac{0.5 + 0.2}{1 - (0.2 \\times 0.5)}\\right)} = \\sqrt{77} = 8.775\\ \\text{m/s}\\)\n\nAllowed \\(\\text{v}_{\\max}\\) should be 10% lower than this.\n\n\\(\\therefore (\\text{v}_{\\max})_{\\text{allowed}} = 8.775 \\times \\frac{90}{100} = 7.896\\ \\text{m/s}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "HARD",
+    "stem": "A merry-go-round usually consists of a central vertical pillar. At the top of it there are horizontal rods which can rotate about vertical axis. At the end of this horizontal rod there is a vertical rod fitted like an elbow joint. At the lower end of each vertical rod, there is a horse on which the rider can sit. As the merry-go-round is set into rotation, these vertical rods move away from the axle by making some angle with the vertical.\n\nThe figure above shows vertical section of a merry-go-round in which the 'initially vertical' rods are inclined with the vertical at \\(\\theta = 37^\\circ\\), during rotation. Calculate the frequency of revolution of the merry-go-round. (Use \\(g = \\pi^2\\ \\text{m/s}^2\\) and \\(\\sin 37^\\circ = 0.6\\))",
+    "solution": "Length of the horizontal rod, \\(H = 2.1\\ \\text{m}\\)\n\nLength of the 'initially vertical' rod, \\(V = 1.5\\ \\text{m}\\), \\(\\theta = 37^\\circ\\)\n\n\\(\\therefore\\) Radius of the horizontal circular motion of the rider \\(= H + V \\sin 37^\\circ = 3.0\\ \\text{m}\\)\n\nIf \\(T\\) is the tension along the inclined rod,\n\n\\(T \\cos\\theta = mg\\) and \\(T \\sin\\theta = mr\\omega^2 = 4\\pi^2 mrn^2\\)\n\n\\(\\therefore \\tan\\theta = \\frac{4\\pi^2 r n^2}{g}\\)\n\n\\(\\therefore n = \\sqrt{\\frac{\\tan\\theta}{4r}} = \\frac{1}{4}\\ \\text{rev s}^{-1}\\) \\(\\ldots\\) as \\(g = \\pi^2\\)"
+  },
+  {
+    "ref": "Solved Ex.1.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "HARD",
+    "stem": "Semi-vertical angle of the conical section of a funnel is \\(37^\\circ\\). There is a small ball kept inside the funnel. On rotating the funnel, the maximum speed that the ball can have in order to remain in the funnel is 2 m/s. Calculate inner radius of the brim of the funnel. Is there any limit upon the frequency of rotation? How much is it? Is it lower or upper limit? Give a logical reasoning. (Use \\(g = 10\\ \\text{m/s}^2\\) and \\(\\sin 37^\\circ = 0.6\\))",
+    "solution": "\\(N \\sin\\theta = mg\\) and \\(N \\cos\\theta = \\frac{m\\text{v}^2}{r}\\)\n\n\\(\\therefore \\tan\\theta = \\frac{rg}{\\text{v}^2}\\) \\(\\therefore r = \\frac{\\text{v}^2 \\tan\\theta}{g}\\)\n\n\\(\\therefore r_{\\max} = \\frac{\\text{v}_{\\max}^2 \\tan\\theta}{g} = 0.3\\ \\text{m}\\)\n\n\\(\\text{v} = r\\omega = 2\\pi rn\\)\n\nIf we go for the lower limit of the speed (while rotating), \\(\\text{v} \\to 0\\) \\(\\therefore r \\to 0\\), but the frequency \\(n\\) increases. Hence a specific upper limit is not possible in the case of frequency. Thus, the practical limit on the frequency of rotation is its lower limit. It will be possible for \\(r = r_{\\max}\\)\n\n\\(\\therefore n_{\\min} = \\frac{\\text{v}_{\\max}}{2\\pi r_{\\max}} = \\frac{1}{0.3\\pi} \\cong 1\\ \\text{rev/s}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vertical Circular Motion",
+    "difficulty": "HARD",
+    "stem": "A tiny stone of mass 20 g is tied to a practically massless, inextensible, flexible string and whirled along vertical circles. Speed of the stone is 8 m/s when the centripetal force is exactly equal to the force due to the tension.\n\nCalculate minimum and maximum kinetic energies of the stone during the entire circle.\n\nLet \\(\\theta = 0\\) be the angular position of the string, when the stone is at the lowermost position. Determine the angular position of the string when the force due to tension is numerically equal to weight of the stone.\n\nUse \\(g = 10\\ \\text{m/s}^2\\) and length of the string \\(= 1.8\\ \\text{m}\\)",
+    "solution": "When the string is horizontal, the force due to the tension is the centripetal force. Thus, vertical displacements of the bob for minimum and maximum energy positions are radius \\(r\\) each.\n\nIf \\(\\text{K.E.}_{\\max}\\) and \\(\\text{K.E.}_{\\min}\\) are the respective kinetic energies at the uppermost and the lowermost points,\n\n\\(\\text{K.E.}_{\\max} - \\frac{1}{2}m(8)^2 = mgr\\) and\n\n\\(\\frac{1}{2}m(8)^2 - \\text{K.E.}_{\\min} = mgr\\)\n\n\\(\\therefore \\frac{1}{2}(0.02)(8)^2 - \\text{K.E.}_{\\min} = (0.02)(10)(1.8)\\)\n\n\\(\\therefore \\text{K.E.}_{\\min} = 0.28\\ \\text{J}\\)\n\n\\(\\text{K.E.}_{\\max} - \\frac{1}{2}(0.02)(8)^2 = (0.02)(10)(1.8)\\)\n\n\\(\\therefore \\text{K.E.}_{\\max} = \\frac{1}{2}m\\text{v}_{\\max}^2 = 1\\ \\text{J}\\)\n\n\\(\\therefore \\text{v}_{\\max} = \\sqrt{\\frac{2(\\text{K.E.})_{\\max}}{m}} = 10\\ \\text{m s}^{-1}\\) at the lowermost position, for which \\(\\theta = 0\\).\n\n\\(T - mg\\cos\\theta = \\frac{m\\text{v}^2}{r}\\) --- at any angle \\(\\theta\\), where the speed is v.\n\nThus, if \\(T = mg\\), we get,\n\n\\(mg - mg\\cos\\theta = \\frac{m\\text{v}^2}{r}\\)\n\n\\(\\therefore rg(1 - \\cos\\theta) = \\text{v}^2\\) --- (A)\n\nVertical displacement at the angular position \\(\\theta\\) is \\(r(1 - \\cos\\theta)\\). Thus, the energy equation at this position can be written as\n\n\\(\\frac{1}{2}m(10)^2 - \\frac{1}{2}m\\text{v}^2 = mg\\left[r(1 - \\cos\\theta)\\right]\\)\n\nBy using Eq. A, we get\n\n\\(50 - \\frac{1}{2}rg(1 - \\cos\\theta) = rg(1 - \\cos\\theta)\\)\n\n\\(\\therefore 50 = \\frac{3}{2}rg(1 - \\cos\\theta)\\)\n\n\\(\\therefore \\cos\\theta = \\frac{-23}{27}\\) \\(\\therefore \\theta = 148^\\circ 25'\\)"
+  },
+  {
+    "ref": "Solved Ex.1.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "MODERATE",
+    "stem": "A flywheel is a mechanical device specifically designed to efficiently store rotational energy. For a particular machine it is in the form of a uniform 20 kg disc of diameter 50 cm, able to rotate about its own axis. Calculate its kinetic energy when rotating at 1200 rpm. Use \\(\\pi^2 = 10\\). Calculate its moment of inertia, in case it is rotated about a tangent in its plane.",
+    "solution": "**(I)** As the flywheel is in the form of a uniform disc rotating about its own axis, \\(I_z = \\frac{1}{2}MR^2\\)\n\n\\(\\therefore\\) Rotational kinetic energy \\(= \\frac{1}{2}I\\omega^2 = \\frac{1}{2}\\left(\\frac{1}{2}MR^2\\right)4\\pi^2 n^2\\)\n\n\\(\\therefore\\) Rotational kinetic energy \\(= M\\pi^2 (Rn)^2 = 20 \\times 10 \\times (0.25 \\times 20)^2 = 5000\\ \\text{J}\\)\n\n**(II)** Consider any two mutually perpendicular diameters \\(x\\) and \\(y\\) of the flywheel. If the flywheel rotates about these diameters, these three axes (own axis and two diameters) will be mutually perpendicular and concurrent. Thus, perpendicular axes theorem is applicable. Let \\(I_d\\) be the moment of inertia of the flywheel, when rotating about its diameter. \\(\\therefore I_d = I_x = I_y\\)\n\nThus, according to the theorem of perpendicular axes,\n\n\\(I_z = \\frac{1}{2}MR^2 = I_x + I_y = 2I_d\\)\n\n\\(\\therefore I_d = \\frac{1}{4}MR^2\\)\n\nAs the diameter passes through the centre of mass of the (uniform) disc, \\(I_d = I_\\text{C}\\)\n\nConsider a tangent in the plane of the disc and parallel to this diameter. It is at the distance \\(h = R\\) from the diameter. Thus, parallel axes theorem is applicable about these two axes.\n\n\\(\\therefore I_{T,\\ \\text{parallel}} = I_o = I_c + Mh^2 = I_d + MR^2\\)\n\n\\(= \\frac{1}{4}MR^2 + MR^2 = \\frac{5}{4}MR^2\\)\n\n\\(\\therefore I_{T,\\ \\text{parallel}} = \\frac{5}{4}MR^2 = \\frac{5}{4} \\times 20 \\times 0.25^2 = 1.5625\\ \\text{kg m}^2\\)"
+  },
+  {
+    "ref": "Solved Ex.1.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conservation of Angular Momentum",
+    "difficulty": "HARD",
+    "stem": "A spherical water balloon is rotating at 60 rpm. In the course of time, 48.8 % of its water leaks out. With what frequency will the remaining balloon rotate now? Neglect all non-conservative forces.",
+    "solution": "\\(\\frac{m_1}{m_2} = \\frac{V_1}{V_2} = \\left(\\frac{R_1}{R_2}\\right)^3\\) \\(\\therefore \\frac{R_1}{R_2} = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{1}{3}}\\)\n\nAlso, \\(\\frac{m_1}{m_2} = \\frac{100}{100 - 48.8} = \\frac{100}{51.2} = \\frac{1}{0.512}\\)\n\n\\(\\therefore \\left(\\frac{m_1}{m_2}\\right)^{\\frac{1}{3}} = \\frac{1}{0.8} = 1.25\\)\n\n\\(n_1 = 60\\ \\text{rpm} = 1\\ \\text{rps}\\), \\(n_2 = ?\\)\n\nBeing sphere, moment of inertia\n\n\\(I = \\frac{2}{5}mR^2\\) \\(\\therefore \\frac{I_1}{I_2} = \\left(\\frac{m_1}{m_2}\\right)\\left(\\frac{R_1}{R_2}\\right)^2 = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{5}{3}}\\)\n\nAccording to principle of conservation of angular momentum, \\(I_1\\omega_1 = I_2\\omega_2\\)\n\n\\(\\therefore I_1 2\\pi n_1 = I_2 2\\pi n_2\\) \\(\\therefore n_2 = \\left(\\frac{I_1}{I_2}\\right)n_1 = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{5}{3}}\\)\n\n\\(n_1 = (1.25)^5 \\times 1 = 3.052\\ \\text{rps}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Angular Momentum and Torque",
+    "difficulty": "MODERATE",
+    "stem": "A ceiling fan having moment of inertia 2 kg-m\\(^2\\) attains its maximum frequency of 60 rpm in '\\(2\\pi\\)' seconds. Calculate its power rating.",
+    "solution": "\\(\\omega_0 = 0\\), \\(\\omega = 2\\pi n = 2\\pi \\times 1 = 2\\pi\\ \\text{rad/s}\\)\n\n\\(\\alpha = \\frac{\\omega - \\omega_0}{t} = \\frac{2\\pi - 0}{2\\pi} = 1\\ \\text{rad/s}^2\\)\n\n\\(\\therefore P = \\tau \\cdot \\omega = I\\alpha \\cdot \\omega = 2 \\times 1 \\times 2\\pi\\)\n\n\\(= 4\\pi\\ \\text{watt} \\cong 12.57\\ \\text{watt}\\)"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Kinematics and Dynamics of Circular Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "When seen from below, the blades of a ceiling fan are seen to be revolving anticlockwise and their speed is decreasing. Select correct statement about the directions of its angular velocity and angular acceleration.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Angular velocity upwards, angular acceleration downwards."
+      },
+      {
+        "label": "B",
+        "text": "Angular velocity downwards, angular acceleration upwards."
+      },
+      {
+        "label": "C",
+        "text": "Both, angular velocity and angular acceleration, upwards."
+      },
+      {
+        "label": "D",
+        "text": "Both, angular velocity and angular acceleration, downwards."
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vertical Circular Motion",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "A particle of mass 1 kg, tied to a 1.2 m long string is whirled to perform vertical circular motion, under gravity. Minimum speed of a particle is 5 m/s. Consider following statements.\n\nP) Maximum speed must be \\(5\\sqrt{5}\\) m/s.\n\nQ) Difference between maximum and minimum tensions along the string is 60 N.\n\nSelect correct option.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only the statement P is correct."
+      },
+      {
+        "label": "B",
+        "text": "Only the statement Q is correct."
+      },
+      {
+        "label": "C",
+        "text": "Both the statements are correct."
+      },
+      {
+        "label": "D",
+        "text": "Both the statements are incorrect."
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "Select correct statement about the formula (expression) of moment of inertia (M.I.) in terms of mass M of the object and some of its distance parameter/s, such as R, L, etc.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Different objects must have different expressions for their M.I."
+      },
+      {
+        "label": "B",
+        "text": "When rotating about their central axis, a hollow right circular cone and a disc have the same expression for the M.I."
+      },
+      {
+        "label": "C",
+        "text": "Expression for the M.I. for a parallelepiped rotating about the transverse axis passing through its centre includes its depth."
+      },
+      {
+        "label": "D",
+        "text": "Expression for M.I. of a rod and that of a plane sheet is the same about a transverse axis."
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "In a certain unit, the radius of gyration of a uniform disc about its central and transverse axis is \\(\\sqrt{2.5}\\). Its radius of gyration about a tangent in its plane (in the same unit) must be",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "2.5"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\sqrt{2.5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sqrt{12.5}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conservation of Angular Momentum",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "Consider following cases:\n\n(P) A planet revolving in an elliptical orbit.\n\n(Q) A planet revolving in a circular orbit.\n\nPrinciple of conservation of angular momentum comes in force in which of these?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only for (P)"
+      },
+      {
+        "label": "B",
+        "text": "Only for (Q)"
+      },
+      {
+        "label": "C",
+        "text": "For both, (P) and (Q)"
+      },
+      {
+        "label": "D",
+        "text": "Neither for (P), nor for (Q)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (X)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rolling Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.\n\n**Choose the correct option.**",
+    "stem": "A thin walled hollow cylinder is rolling down an incline, without slipping. At any instant, the ratio \"Rotational K.E.: Translational K.E.: Total K.E.\" is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1:1:2"
+      },
+      {
+        "label": "B",
+        "text": "1:2:3"
+      },
+      {
+        "label": "C",
+        "text": "1:1:1"
+      },
+      {
+        "label": "D",
+        "text": "2:1:3"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "**Answer in brief.**",
+    "stem": "Why are curved roads banked?"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "**Answer in brief.**",
+    "stem": "Do we need a banked road for a two-wheeler? Explain."
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "**Answer in brief.**",
+    "stem": "On what factors does the frequency of a conical pendulum depend? Is it independent of some factors?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "**Answer in brief.**",
+    "stem": "Why is it useful to define radius of gyration?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "**Answer in brief.**",
+    "stem": "A uniform disc and a hollow right circular cone have the same formula for their M.I., when rotating about their central axes. Why is it so?"
+  },
+  {
+    "ref": "Ex Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "While driving along an unbanked circular road, a two-wheeler rider has to lean with the vertical. Why is it so? With what angle the rider has to lean? Derive the relevant expression. Why such a leaning is not necessary for a four wheeler?"
+  },
+  {
+    "ref": "Ex Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vertical Circular Motion",
+    "difficulty": "HARD",
+    "stem": "Using the energy conservation, derive the expressions for the minimum speeds at different locations along a vertical circular motion controlled by gravity. Is zero speed possible at the uppermost point? Under what condition/s? Also prove that the difference between the extreme tensions (or normal forces) depends only upon the weight of the object."
+  },
+  {
+    "ref": "Ex Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the necessity of radius of gyration. Define it. On what factors does it depend and it does not depend? Can you locate some similarity between the centre of mass and radius of gyration? What can you infer if a uniform ring and a uniform disc have the same radius of gyration?"
+  },
+  {
+    "ref": "Ex Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "EASY",
+    "stem": "State the conditions under which the theorems of parallel axes and perpendicular axes are applicable. State the respective mathematical expressions."
+  },
+  {
+    "ref": "Ex Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Angular Momentum and Torque",
+    "difficulty": "MODERATE",
+    "stem": "Derive an expression that relates angular momentum with the angular velocity of a rigid body."
+  },
+  {
+    "ref": "Ex Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Angular Momentum and Torque",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression relating the torque with angular acceleration for a rigid body."
+  },
+  {
+    "ref": "Ex Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conservation of Angular Momentum",
+    "difficulty": "MODERATE",
+    "stem": "State and explain the principle of conservation of angular momentum. Use a suitable illustration. Do we use it in our daily life? When?"
+  },
+  {
+    "ref": "Ex Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rolling Motion",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the interlink between translational, rotational and total kinetic energies of a rigid object that rolls without slipping."
+  },
+  {
+    "ref": "Ex Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rolling Motion",
+    "difficulty": "HARD",
+    "stem": "A rigid object is rolling down an inclined plane. Derive expressions for the acceleration along the track and the speed after falling through a certain vertical distance."
+  },
+  {
+    "ref": "Ex Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kinematics and Dynamics of Circular Motion",
+    "difficulty": "HARD",
+    "stem": "Somehow, an ant is stuck to the rim of a bicycle wheel of diameter 1 m. While the bicycle is on a central stand, the wheel is set into rotation and it attains the frequency of 2 rev/s in 10 seconds, with uniform angular acceleration. Calculate (i) Number of revolutions completed by the ant in these 10 seconds. (ii) Time taken by it for first complete revolution and the last complete revolution.",
+    "bookAnswer": "10 rev., \\(t_{\\text{first}} = \\sqrt{10}\\) s, \\(t_{\\text{last}} = 0.5132\\) s"
+  },
+  {
+    "ref": "Ex Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "Coefficient of static friction between a coin and a gramophone disc is 0.5. Radius of the disc is 8 cm. Initially the centre of the coin is 2 cm away from the centre of the disc. At what minimum frequency will it start slipping from there? By what factor will the answer change if the coin is almost at the rim? (use \\(g = \\pi^2\\ \\text{m/s}^2\\))",
+    "bookAnswer": "2.5 rev/s, \\(n_2 = \\frac{1}{2} n_1\\)"
+  },
+  {
+    "ref": "Ex Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "Part of a racing track is to be designed for a radius of curvature of 72 m. We are not recommending the vehicles to drive faster than 216 kmph. With what angle should the road be tilted? At what height will its outer edge be, with respect to the inner edge if the track is 10 m wide?",
+    "bookAnswer": "\\(\\theta = \\tan^{-1}(5) = 78.69^\\circ\\), \\(h = 9.8\\ \\text{m}\\)"
+  },
+  {
+    "ref": "Ex Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "HARD",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "The road in the example 14 above is constructed as per the requirements. The coefficient of static friction between the tyres of a vehicle on this road is 0.8, will there be any lower speed limit? By how much can the upper speed limit exceed in this case?",
+    "bookAnswer": "\\(\\text{v}_{\\min} \\cong 88\\ \\text{kmph}\\), no upper limit as the road is banked for \\(\\theta > 45^\\circ\\)"
+  },
+  {
+    "ref": "Ex Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "During a stunt, a cyclist (considered to be a particle) is undertaking horizontal circles inside a cylindrical well of radius 6.05 m. If the necessary friction coefficient is 0.5, how much minimum speed should the stunt artist maintain? Mass of the artist is 50 kg. If she/he increases the speed by 20%, how much will the force of friction be?",
+    "bookAnswer": "\\(\\text{v}_{\\min} = 11\\) m/s, \\(f_s = mg = 500\\ \\text{N}\\)"
+  },
+  {
+    "ref": "Ex Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Applications of Uniform Circular Motion",
+    "difficulty": "HARD",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "A pendulum consisting of a massless string of length 20 cm and a tiny bob of mass 100 g is set up as a conical pendulum. Its bob now performs 75 rpm. Calculate kinetic energy and increase in the gravitational potential energy of the bob. (Use \\(\\pi^2 = 10\\))",
+    "bookAnswer": "\\(\\cos\\theta = 0.8\\), K.E. = 0.45 J, \\(\\Delta(\\text{P.E}) = 0.04\\) J"
+  },
+  {
+    "ref": "Ex Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vertical Circular Motion",
+    "difficulty": "MODERATE",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "A motorcyclist (as a particle) is undergoing vertical circles inside a sphere of death. The speed of the motorcycle varies between 6 m/s and 10 m/s. Calculate diameter of the sphere of death. What are the minimum values are possible for these two speeds?",
+    "bookAnswer": "Diameter = 3.2 m, \\((\\text{v}_1)_{\\min} = 4\\ \\text{m/s}\\), \\((\\text{v}_2)_{\\min} = 4\\sqrt{5}\\ \\text{m/s}\\)"
+  },
+  {
+    "ref": "Ex Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "stem": "A metallic ring of mass 1 kg has moment of inertia 1 kg m\\(^2\\) when rotating about one of its diameters. It is molten and remoulded into a thin uniform disc of the same radius. How much will its moment of inertia be, when rotated about its own axis.",
+    "bookAnswer": "1 kg m\\(^2\\)"
+  },
+  {
+    "ref": "Ex Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "MODERATE",
+    "stem": "A big dumb-bell is prepared by using a uniform rod of mass 60 g and length 20 cm. Two identical solid thermocol spheres of mass 25 g and radius 10 cm each are at the two ends of the rod. Calculate moment of inertia of the dumb-bell when rotated about an axis passing through its centre and perpendicular to the length.",
+    "bookAnswer": "24000 g cm\\(^{-2}\\)"
+  },
+  {
+    "ref": "Ex Q.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conservation of Angular Momentum",
+    "difficulty": "MODERATE",
+    "stem": "A flywheel used to prepare earthenware pots is set into rotation at 100 rpm. It is in the form of a disc of mass 10 kg and radius 0.4 m. A lump of clay (to be taken equivalent to a particle) of mass 1.6 kg falls on it and adheres to it at a certain distance x from the centre. Calculate \\(x\\) if the wheel now rotates at 80 rpm.",
+    "bookAnswer": "\\(x = \\frac{1}{\\sqrt{8}}\\ \\text{m} = 0.35\\ \\text{m}\\)"
+  },
+  {
+    "ref": "Ex Q.22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rolling Motion",
+    "difficulty": "MODERATE",
+    "context": "Use \\(g = 10\\ \\text{m/s}^2\\), unless, otherwise stated.",
+    "stem": "Starting from rest, an object rolls down along an incline that rises by 3 units in every 5 units (along it). The object gains a speed of \\(\\sqrt{10}\\) m/s as it travels a distance of \\(\\frac{5}{3}\\) m along the incline. What can be the possible shape/s of the object?",
+    "bookAnswer": "\\(\\frac{K^2}{R^2} = 1\\). Thus, a ring or a hollow cylinder"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Solved Ex.12.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "A coil consists of 400 turns of wire. Each turn is a square of side \\(d = 20\\) cm. A uniform magnetic field directed perpendicular to the plane of the coil is turned on. If the field changes linearly from 0 to 0.50 T in 0.8 s, what is the magnitude of induced emf in the coil while the field is changing?",
+    "solution": "The magnitude of induced emf in the coil is written as\n\n\\(|e| = \\left| \\dfrac{\\mathrm{d}(N\\phi)}{\\mathrm{d}t} \\right| = N \\dfrac{\\mathrm{d}\\phi}{\\mathrm{d}t}\\)\n\n\\(\\because \\phi = B \\cdot A\\)\n\n\\(\\therefore |e| = N \\cdot \\dfrac{\\mathrm{d}(BA)}{\\mathrm{d}t}\\)\n\n\\(= N \\cdot A \\cdot \\dfrac{\\mathrm{d}B}{\\mathrm{d}t}\\) (as \\(A\\) is constant and \\(B\\) is changing with time)\n\n\\(= N \\cdot A \\cdot \\dfrac{\\Delta B}{\\Delta t} = N \\cdot A \\cdot \\dfrac{B_{\\text{final}} - B_{\\text{initial}}}{\\Delta t}\\)\n\nInserting the given values of \\(N = 400\\), \\(A = (20\\ \\text{cm})^2 = (0.2\\ \\text{m})^2\\), \\(B_{\\text{final}} = 0.5\\) T, \\(B_{\\text{initial}} = 0\\), \\(\\Delta t = 0.8\\) s, we find the induced emf\n\n\\(|e| = \\dfrac{400 \\cdot (0.20\\ \\text{m})^2 (0.5\\ \\text{T})}{0.8\\ \\text{s}}\\)\n\n\\(= 10\\) Volt"
+  },
+  {
+    "ref": "Solved Ex.12.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Induced emf in a Stationary Coil",
+    "difficulty": "MODERATE",
+    "stem": "A long solenoid S, as shown in the figure has 200 turns/cm and carries a current \\(i\\) of 1.4 A. The diameter \\(D\\) of the solenoid is 3 cm. A coil C, having 100 turns and diameter \\(d\\) of 2 cm is kept coaxial to the solenoid. The current in the solenoid is decreased steadily to zero in 20 ms. Calculate the magnitude of emf induced in the coil C when the current in the solenoid is changing.",
+    "solution": "Part of magnetic flux (per turn) of the solenoid S that links with the coil C is\n\n\\(\\phi_{\\text{c}} = \\mu_0\\, n_{\\text{s}}\\, i\\, \\dfrac{\\pi\\, \\mathrm{d}_{\\text{c}}^{2}}{4}\\)\n\nThis flux reduces to zero in \\(\\mathrm{d}t = 20\\) ms. Thus, the emf induced in coil C of \\(N_{\\text{c}}\\) turns is\n\n\\(e_{\\text{s}} = -N_{\\text{c}} \\dfrac{\\mathrm{d}\\phi_{\\text{c}}}{\\mathrm{d}t} = \\dfrac{-(0 - \\phi_{\\text{c}})}{\\mathrm{d}t} = \\dfrac{\\mu_0 N_{\\text{c}} n_{\\text{s}} i \\pi\\, \\mathrm{d}_{\\text{c}}^{2}}{4\\,\\mathrm{d}t}\\)\n\n\\(= \\dfrac{4\\pi \\times 10^{-7} \\times 100 \\times 2 \\times 10^{4} \\times 1.4 \\times 3.14 \\times 4 \\times 10^{-4}}{4 \\times 20 \\times 10^{-3}}\\)\n\n\\(= 55.24\\) mV"
+  },
+  {
+    "ref": "Solved Ex.12.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Generators, Back emf and Energy Transfer",
+    "difficulty": "HARD",
+    "stem": "A rotating armature of a simple generator consists of rectangular section DABC of a conducting wire as shown in the figure, to which connections are made through sliding contacts. The armature is rotated at 1500 rpm in the magnetic field \\((\\vec{B})\\) of 0.5 N/A.m. Determine the induced emf between the terminals P and Q of the generator at the instant shown in the adjoining figure.",
+    "solution": "The wire AB (\\(l = 10\\) cm) is moving to the right with the tangential velocity v.\n\n\\(\\left| \\vec{\\mathrm{v}} \\right| = \\left| \\vec{\\omega} \\times \\vec{r} \\right|\\)\n\nv \\(= \\omega r\\) where \\(\\omega\\) is angular velocity and \\(r\\) is the radius.\n\n\\(\\mathrm{v} = \\dfrac{2\\pi}{T} \\cdot r\\)  \\(\\left[ \\because \\omega = \\dfrac{2\\pi}{T} \\right]\\)\n\n\\(= 2\\pi \\nu r\\)\n\n\\(= 2\\pi \\cdot \\left( \\dfrac{1500}{60\\,\\mathrm{s}} \\right) \\cdot \\left( \\dfrac{4}{100} \\right) \\mathrm{m}\\)  \\(\\left[ \\because r = AD = (4/100)\\,\\mathrm{m} \\right]\\)\n\n\\(= 2\\pi\\) m/s\n\n\\(= 6.284\\) m/s\n\nThe magnetic field is directed vertically upward from North to South pole. As the wire AB is cutting the magnetic lines of force perpendicularly, the induced emf is, therefore, maximum.\n\n\\(\\because e = Bl\\mathrm{v} \\sin\\theta\\) with \\(\\theta = 90^\\circ\\),\n\nThen, \\(e = e_{\\max} = Bl\\mathrm{v}\\)\n\n\\(= (0.5\\ \\text{N/A.m})\\,(10/100)\\,\\text{m} \\cdot (6.28\\ \\text{m/s})\\)\n\n\\(= \\dfrac{0.5}{10} \\times 6.28\\)\n\n\\(= 0.314\\) V\n\nor \\(e_{\\max} \\approx 314.2\\) mV.\n\nThe emf induced in the wires BC and DA is zero because the magnetic Lorentz force on free electrons in these wire \\(\\left[ \\vec{F} = q(\\vec{\\mathrm{v}} \\times \\vec{B}) \\right]\\) has no component parallel to the wires. Also there is no e.m.f. in the lead in wires, which are stationary and are not in motion \\((\\vec{\\mathrm{v}} = 0)\\). Therefore the total emf between the terminals P and Q is due the movement of segment AB. i.e., \\(e = 314\\) mV. The direction of induced emf is given by Lenz's law."
+  },
+  {
+    "ref": "Solved Ex.12.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "A conducting loop of area 1 m\\(^2\\) is placed normal to uniform magnetic field 3 Wb/m\\(^2\\). If the magnetic field is uniformly reduced to 1 Wb/m\\(^2\\) in a time of 0.5 s, calculate the induced emf produced in the loop.",
+    "solution": "Given,\n\nArea of the loop, \\(A = 1\\) m\\(^2\\)\n\n\\((B)_{\\text{initial}} = 3\\) Wb/m\\(^2\\)\n\n\\((B)_{\\text{final}} = 1\\) Wb/m\\(^2\\)\n\nduration of time, \\(\\Delta t = 0.5\\) s\n\n\\(\\therefore\\) Induced emf,\n\n\\(|e| = \\left| \\dfrac{\\mathrm{d}\\phi}{\\mathrm{d}t} \\right| = \\left| \\dfrac{\\phi_{\\text{final}} - \\phi_{\\text{initial}}}{\\text{Time interval}} \\right|\\)\n\n\\(= \\dfrac{(B_{\\text{final}} - B_{\\text{initial}})A}{\\Delta t}\\)\n\n\\(= \\left| \\left[ \\dfrac{(1-3)}{0.5} \\cdot 1 \\right] \\right|\\) volt\n\n\\(= \\left| -\\dfrac{2}{0.5} \\cdot 1 \\right|\\) volt\n\n\\(|e| = 4\\) volt"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "3e26b9df-34d1-4182-8346-5e51dc249838",
+    "ref": "Ex Q.18",
+    "solution": "**Given:** common base DC current gain \\(\\alpha = 0.967\\); emitter current \\(I_{E} = 10\\) mA.\n**To find:** base current \\(I_{B}\\).\n\nBy definition of the common base current gain,\n\n\\(\\alpha = \\dfrac{I_{C}}{I_{E}} \\Rightarrow I_{C} = \\alpha\\, I_{E}\\)\n\n\\(I_{C} = 0.967 \\times 10 = 9.67\\) mA\n\nThe three terminal currents satisfy \\(I_{E} = I_{C} + I_{B}\\), so\n\n\\(I_{B} = I_{E} - I_{C} = 10 - 9.67\\)\n\n\\(I_{B} = 0.33\\) mA\n\n**The base current is 0.33 mA**, i.e. \\(3.3 \\times 10^{-4}\\) A. As expected it is only about 3% of the emitter current."
+  },
+  {
+    "id": "ef64108e-a3fe-4e88-8b9e-5c90c6e43164",
+    "ref": "Ex Q.19",
+    "solution": "**Given:** emitter current \\(I_{E} = 10\\) mA; collector current \\(I_{C} = 9.8\\) mA.\n**To find:** base current \\(I_{B}\\).\n\nThe three terminal currents of a transistor are related by\n\n\\(I_{E} = I_{C} + I_{B}\\)\n\n\\(\\therefore\\ I_{B} = I_{E} - I_{C} = 10 - 9.8\\)\n\n\\(I_{B} = 0.2\\) mA\n\n**The base current is 0.2 mA**, i.e. \\(2 \\times 10^{-4}\\) A — only 2% of the emitter current, as it must be for a thin, lightly doped base."
+  },
+  {
+    "id": "28679d97-a11e-4341-992e-b6a7b898393e",
+    "ref": "Ex Q.20",
+    "solution": "**Given:** emitter current \\(I_{E} = 6.28\\) mA; collector current \\(I_{C} = 6.20\\) mA.\n**To find:** common base DC current gain \\(\\alpha_{DC}\\).\n\nBy definition,\n\n\\(\\alpha_{DC} = \\dfrac{I_{C}}{I_{E}}\\)\n\n\\(\\alpha_{DC} = \\dfrac{6.20}{6.28} = 0.98726\\)\n\n\\(\\alpha_{DC} \\approx 0.987\\)\n\n**The common base DC current gain is 0.987.** It has no unit, being a ratio of two currents, and it is less than 1 because \\(I_{C}\\) is always slightly smaller than \\(I_{E}\\)."
+  }
+]

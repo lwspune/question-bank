@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cec13b76-5b6e-4489-bb14-61524a73e84d",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "A",
+    "solution": "Kirchhoff's junction law states that the algebraic sum of currents at a junction is zero, i.e. the charge arriving per unit time equals the charge leaving per unit time. Charge can be neither created nor destroyed at a junction, so the law is a statement of conservation of charge. (Conservation of energy is what the loop law — Kirchhoff's second law — expresses, so the energy alternative belongs to that law and not to this one; momentum and mass are not conserved quantities in this context at all.)",
+    "matches_current": true
+  },
+  {
+    "id": "661086dd-73ad-4b99-97b7-fcf9886582cc",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "C",
+    "solution": "At the balance point the galvanometer shows no deflection, so no current is drawn from the cell whose emf is being balanced — that is the whole reason a potentiometer measures emf rather than terminal potential difference. The auxiliary (driver) battery, however, must keep supplying the steady current that sets up the potential gradient along the wire. Hence current is drawn from the auxiliary battery only.",
+    "matches_current": true
+  },
+  {
+    "id": "2c8d2764-66b2-4b3b-b985-877f743b19e7",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "C",
+    "solution": "The ladder is infinite, so removing the first rung leaves a network identical to the original. Let the resistance between A and B be \\(R\\). Then \\(R\\) equals the first series resistor plus the first shunt in parallel with the rest of the (identical) ladder:\n\\(R = 1 + \\dfrac{2R}{2 + R}\\)\n\\(R(2 + R) = (2 + R) + 2R\\)\n\\(R^{2} - R - 2 = 0\\)\n\\((R - 2)(R + 1) = 0\\)\nThe negative root is unphysical, so \\(R = 2\\ \\Omega\\). A numerical iteration of the ladder converges to the same value.",
+    "matches_current": true
+  },
+  {
+    "id": "5ead58bc-4046-4080-8da0-5f02c71d8fa9",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "D",
+    "solution": "For a balanced Wheatstone network the ratios of the two pairs of arms must be equal. Three arms are \\(10\\ \\Omega\\) each, so the fourth arm must also be \\(10\\ \\Omega\\). The fourth arm is \\(15\\ \\Omega\\), so a shunt \\(X\\) must be placed across it such that\n\\(\\dfrac{15 X}{15 + X} = 10\\)\n\\(15X = 150 + 10X\\)\n\\(5X = 150\\)\n\\(X = 30\\ \\Omega\\).\nChecking the other options: \\(10\\ \\Omega\\) gives \\(6\\ \\Omega\\), \\(15\\ \\Omega\\) gives \\(7.5\\ \\Omega\\) and \\(20\\ \\Omega\\) gives \\(60/7\\ \\Omega\\), none of which is \\(10\\ \\Omega\\).",
+    "matches_current": true
+  },
+  {
+    "id": "5b6a51bf-dc87-4ddd-a36d-3a20f38050b6",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "D",
+    "solution": "P and Q divide the loop into two arcs in the ratio 1 : 3, so the two arcs have resistances \\(\\dfrac{40}{4} = 10\\ \\Omega\\) and \\(40 - 10 = 30\\ \\Omega\\). Between P and Q these two arcs are in parallel:\n\\(R = \\dfrac{10 \\times 30}{10 + 30} = 7.5\\ \\Omega\\)\nAdding the internal resistance, the total resistance in the circuit is \\(7.5 + 0.5 = 8\\ \\Omega\\).\n\\(I = \\dfrac{24}{8} = 3\\) A.",
+    "matches_current": true
+  },
+  {
+    "id": "6139a77e-3d12-4117-ac2c-18a63896d6f1",
+    "ref": "Ex Q.1 (vi)",
+    "derived_answer": "B",
+    "solution": "Let the resistance of the whole bangle be \\(R\\). Two diametrically opposite points split it into two equal halves of \\(R/2\\) each, and between those points the halves are in parallel, so the resistance in the left gap is\n\\(\\dfrac{(R/2)(R/2)}{(R/2)+(R/2)} = \\dfrac{R}{4}\\)\nFor a metre bridge balanced at \\(l = 20\\) cm from the left end,\n\\(\\dfrac{\\text{left gap}}{\\text{right gap}} = \\dfrac{l}{100 - l} = \\dfrac{20}{80} = \\dfrac{1}{4}\\)\n\\(\\dfrac{R/4}{4} = \\dfrac{1}{4}\\)\n\\(\\dfrac{R}{4} = 1\\), so \\(R = 4\\ \\Omega\\).\nThe other options give \\(R/4 = 0.5,\\ 2,\\ 4\\ \\Omega\\), none of which satisfies the balance condition.",
+    "matches_current": true
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Solved Ex.1.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vertical Circular Motion",
+    "difficulty": "HARD",
+    "stem": "A tiny stone of mass 20 g is tied to a practically massless, inextensible, flexible string and whirled along vertical circles. Speed of the stone is 8 m/s when the centripetal force is exactly equal to the force due to the tension.\n\nCalculate minimum and maximum kinetic energies of the stone during the entire circle.\n\nLet \\(\\theta = 0\\) be the angular position of the string, when the stone is at the lowermost position. Determine the angular position of the string when the force due to tension is numerically equal to weight of the stone.\n\nUse \\(g = 10\\ \\text{m/s}^2\\) and length of the string \\(= 1.8\\ \\text{m}\\)",
+    "solution": "When the string is horizontal, the force due to the tension is the centripetal force. Thus, vertical displacements of the bob for minimum and maximum energy positions are radius \\(r\\) each.\n\nIf \\(\\text{K.E.}_{\\max}\\) and \\(\\text{K.E.}_{\\min}\\) are the respective kinetic energies at the uppermost and the lowermost points,\n\n\\(\\text{K.E.}_{\\max} - \\frac{1}{2}m(8)^2 = mgr\\) and\n\n\\(\\frac{1}{2}m(8)^2 - \\text{K.E.}_{\\min} = mgr\\)\n\n\\(\\therefore \\frac{1}{2}(0.02)(8)^2 - \\text{K.E.}_{\\min} = (0.02)(10)(1.8)\\)\n\n\\(\\therefore \\text{K.E.}_{\\min} = 0.28\\ \\text{J}\\)\n\n\\(\\text{K.E.}_{\\max} - \\frac{1}{2}(0.02)(8)^2 = (0.02)(10)(1.8)\\)\n\n\\(\\therefore \\text{K.E.}_{\\max} = \\frac{1}{2}m\\text{v}_{\\max}^2 = 1\\ \\text{J}\\)\n\n\\(\\therefore \\text{v}_{\\max} = \\sqrt{\\frac{2(\\text{K.E.})_{\\max}}{m}} = 10\\ \\text{m s}^{-1}\\) at the lowermost position, for which \\(\\theta = 0\\).\n\n\\(T - mg\\cos\\theta = \\frac{m\\text{v}^2}{r}\\) --- at any angle \\(\\theta\\), where the speed is v.\n\nThus, if \\(T = mg\\), we get,\n\n\\(mg - mg\\cos\\theta = \\frac{m\\text{v}^2}{r}\\)\n\n\\(\\therefore rg(1 - \\cos\\theta) = \\text{v}^2\\) --- (A)\n\nVertical displacement at the angular position \\(\\theta\\) is \\(r(1 - \\cos\\theta)\\). Thus, the energy equation at this position can be written as\n\n\\(\\frac{1}{2}m(10)^2 - \\frac{1}{2}m\\text{v}^2 = mg\\left[r(1 - \\cos\\theta)\\right]\\)\n\nBy using Eq. A, we get\n\n\\(50 - \\frac{1}{2}rg(1 - \\cos\\theta) = rg(1 - \\cos\\theta)\\)\n\n\\(\\therefore 50 = \\frac{3}{2}rg(1 - \\cos\\theta)\\)\n\n\\(\\therefore \\cos\\theta = \\frac{-23}{27}\\) \\(\\therefore \\theta = 148^\\circ 25'\\)"
+  },
+  {
+    "ref": "Solved Ex.1.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "MODERATE",
+    "stem": "A flywheel is a mechanical device specifically designed to efficiently store rotational energy. For a particular machine it is in the form of a uniform 20 kg disc of diameter 50 cm, able to rotate about its own axis. Calculate its kinetic energy when rotating at 1200 rpm. Use \\(\\pi^2 = 10\\). Calculate its moment of inertia, in case it is rotated about a tangent in its plane.",
+    "solution": "**(I)** As the flywheel is in the form of a uniform disc rotating about its own axis, \\(I_z = \\frac{1}{2}MR^2\\)\n\n\\(\\therefore\\) Rotational kinetic energy \\(= \\frac{1}{2}I\\omega^2 = \\frac{1}{2}\\left(\\frac{1}{2}MR^2\\right)4\\pi^2 n^2\\)\n\n\\(\\therefore\\) Rotational kinetic energy \\(= M\\pi^2 (Rn)^2 = 20 \\times 10 \\times (0.25 \\times 20)^2 = 5000\\ \\text{J}\\)\n\n**(II)** Consider any two mutually perpendicular diameters \\(x\\) and \\(y\\) of the flywheel. If the flywheel rotates about these diameters, these three axes (own axis and two diameters) will be mutually perpendicular and concurrent. Thus, perpendicular axes theorem is applicable. Let \\(I_d\\) be the moment of inertia of the flywheel, when rotating about its diameter. \\(\\therefore I_d = I_x = I_y\\)\n\nThus, according to the theorem of perpendicular axes,\n\n\\(I_z = \\frac{1}{2}MR^2 = I_x + I_y = 2I_d\\)\n\n\\(\\therefore I_d = \\frac{1}{4}MR^2\\)\n\nAs the diameter passes through the centre of mass of the (uniform) disc, \\(I_d = I_\\text{C}\\)\n\nConsider a tangent in the plane of the disc and parallel to this diameter. It is at the distance \\(h = R\\) from the diameter. Thus, parallel axes theorem is applicable about these two axes.\n\n\\(\\therefore I_{T,\\ \\text{parallel}} = I_o = I_c + Mh^2 = I_d + MR^2\\)\n\n\\(= \\frac{1}{4}MR^2 + MR^2 = \\frac{5}{4}MR^2\\)\n\n\\(\\therefore I_{T,\\ \\text{parallel}} = \\frac{5}{4}MR^2 = \\frac{5}{4} \\times 20 \\times 0.25^2 = 1.5625\\ \\text{kg m}^2\\)"
+  },
+  {
+    "ref": "Solved Ex.1.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conservation of Angular Momentum",
+    "difficulty": "HARD",
+    "stem": "A spherical water balloon is rotating at 60 rpm. In the course of time, 48.8 % of its water leaks out. With what frequency will the remaining balloon rotate now? Neglect all non-conservative forces.",
+    "solution": "\\(\\frac{m_1}{m_2} = \\frac{V_1}{V_2} = \\left(\\frac{R_1}{R_2}\\right)^3\\) \\(\\therefore \\frac{R_1}{R_2} = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{1}{3}}\\)\n\nAlso, \\(\\frac{m_1}{m_2} = \\frac{100}{100 - 48.8} = \\frac{100}{51.2} = \\frac{1}{0.512}\\)\n\n\\(\\therefore \\left(\\frac{m_1}{m_2}\\right)^{\\frac{1}{3}} = \\frac{1}{0.8} = 1.25\\)\n\n\\(n_1 = 60\\ \\text{rpm} = 1\\ \\text{rps}\\), \\(n_2 = ?\\)\n\nBeing sphere, moment of inertia\n\n\\(I = \\frac{2}{5}mR^2\\) \\(\\therefore \\frac{I_1}{I_2} = \\left(\\frac{m_1}{m_2}\\right)\\left(\\frac{R_1}{R_2}\\right)^2 = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{5}{3}}\\)\n\nAccording to principle of conservation of angular momentum, \\(I_1\\omega_1 = I_2\\omega_2\\)\n\n\\(\\therefore I_1 2\\pi n_1 = I_2 2\\pi n_2\\) \\(\\therefore n_2 = \\left(\\frac{I_1}{I_2}\\right)n_1 = \\left(\\frac{m_1}{m_2}\\right)^{\\frac{5}{3}}\\)\n\n\\(n_1 = (1.25)^5 \\times 1 = 3.052\\ \\text{rps}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Angular Momentum and Torque",
+    "difficulty": "MODERATE",
+    "stem": "A ceiling fan having moment of inertia 2 kg-m\\(^2\\) attains its maximum frequency of 60 rpm in '\\(2\\pi\\)' seconds. Calculate its power rating.",
+    "solution": "\\(\\omega_0 = 0\\), \\(\\omega = 2\\pi n = 2\\pi \\times 1 = 2\\pi\\ \\text{rad/s}\\)\n\n\\(\\alpha = \\frac{\\omega - \\omega_0}{t} = \\frac{2\\pi - 0}{2\\pi} = 1\\ \\text{rad/s}^2\\)\n\n\\(\\therefore P = \\tau \\cdot \\omega = I\\alpha \\cdot \\omega = 2 \\times 1 \\times 2\\pi\\)\n\n\\(= 4\\pi\\ \\text{watt} \\cong 12.57\\ \\text{watt}\\)"
+  }
+]

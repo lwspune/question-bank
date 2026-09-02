@@ -1,0 +1,37 @@
+[
+  {
+    "id": "0ee14fdb-cd1b-45e6-b1dc-be7be6fb4d97",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "D",
+    "solution": "Reflection, interference and diffraction are shown by longitudinal waves as well — sound is reflected, sound waves interfere, and sound diffracts around a doorway — so none of them can distinguish a transverse wave from a longitudinal one. Polarization restricts the oscillation to a single direction in the plane perpendicular to the direction of propagation. A longitudinal wave oscillates only along the direction of propagation, so there is nothing to restrict and it cannot be polarized. Light can be polarized, so light must be a transverse wave.",
+    "matches_current": true
+  },
+  {
+    "id": "0976e19a-eb92-4f9d-89bd-9aa7ebbdf50e",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "D",
+    "solution": "The frequency of a light wave is fixed by the source; the fields on the two sides of the boundary must stay matched at every instant, so the number of waves arriving per second equals the number leaving per second. The speed changes, \\(v = c/n\\); the wavelength therefore changes with it, \\(\\lambda_{\\text{medium}} = \\lambda/n\\) (this is exactly what Q.13 of this exercise computes); and the amplitude changes because part of the incident energy is reflected at the boundary. Only the frequency is unchanged.",
+    "matches_current": true
+  },
+  {
+    "id": "72fdbaab-997b-4c58-89b1-02b82594a8a3",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "solution": "For an unpolarized wave the electric field takes every direction \\(\\phi\\) in the plane perpendicular to the propagation direction, so only the component \\(E_0\\cos\\phi\\) is transmitted and the intensity must be averaged over \\(\\phi\\) from \\(0\\) to \\(180^\\circ\\). Since the average of \\(\\cos^2\\phi\\) is \\(1/2\\), the transmitted intensity is \\(I_0/2\\): the intensity is halved, so it decreases. It does not increase and it does not remain unchanged. Note that it also does not depend on the orientation of the polarizer — the averaging gives \\(1/2\\) whichever way the axis is turned — so that option is wrong; the orientation matters only for light that is already polarized (Malus' law).",
+    "matches_current": true
+  },
+  {
+    "id": "6a49d02d-5f84-4982-9d26-a2deb5eff612",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "D",
+    "solution": "With amplitudes \\(a_1 \\propto \\sqrt{I_1}\\) and \\(a_2 \\propto \\sqrt{I_2}\\), \\(I_{\\max} \\propto (a_1+a_2)^2\\) and \\(I_{\\min} \\propto (a_1-a_2)^2\\), so \\(\\dfrac{a_1+a_2}{a_1-a_2} = \\sqrt{25} = 5\\). This gives \\(a_1 + a_2 = 5a_1 - 5a_2\\), i.e. \\(6a_2 = 4a_1\\) and \\(a_1/a_2 = 3/2\\), hence \\(I_1/I_2 = 9/4\\).\nTesting every printed option by computing \\(I_{\\max}/I_{\\min}\\) from it discriminates cleanly: 5:1 gives 6.854, 25:1 gives 2.25, 3:2 gives 97.99, and only 9:4 gives exactly 25.",
+    "matches_current": true
+  },
+  {
+    "id": "fa17c2e6-f537-4797-9832-674e9ba90481",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "The sheet covers BOTH slits, so each of the two beams travels the same thickness \\(t\\) of the same glass and each gains the same extra optical path \\((n-1)t\\). The path DIFFERENCE between the two beams is therefore unchanged at every point of the screen, so the whole pattern stays exactly where it was.\nThe fringe width \\(W = \\lambda D/d\\) is fixed by the slit separation \\(d\\) and the slit-to-screen distance \\(D\\), neither of which the sheet alters (the light still travels through air over the distance \\(D\\)), so \\(W\\) neither decreases nor increases. A shift would need an ASYMMETRIC extra path — a film in front of only ONE slit, which is the situation of Example 7.6 and of Section 7.8.5. Here the extra paths cancel in the difference, so the pattern remains unchanged.",
+    "matches_current": true
+  }
+]

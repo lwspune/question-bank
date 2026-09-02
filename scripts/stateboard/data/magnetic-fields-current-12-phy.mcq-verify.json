@@ -1,0 +1,37 @@
+[
+  {
+    "id": "72a47749-d056-4c69-8e29-19f696d15117",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "C",
+    "solution": "Point P is the centre of the semicircular segment II, and it lies **on the line** containing the two straight segments I and III.\n\nStraight segments: for every element of a straight segment, \\(\\mathrm{d}\\vec{l}\\) is parallel (or antiparallel) to the vector joining that element to P, so \\(\\mathrm{d}\\vec{l} \\times \\hat{r} = 0\\). Segments I and III therefore contribute **nothing**, whatever their length \\(L\\).\n\nSemicircle: a circular arc of radius \\(R\\) subtending an angle \\(\\theta\\) at its centre gives \\(B = \\dfrac{\\mu_0 I}{4\\pi R}\\theta\\). Here \\(\\theta = \\pi\\), so\n\\(B = \\dfrac{\\mu_0 I}{4\\pi R}\\times\\pi = \\dfrac{\\mu_0}{4}\\dfrac{I}{R}\\)\n\nThis is the option printed third in the book's list.\n\nThe other three fail independently: \\(\\dfrac{\\mu_0}{4\\pi}\\dfrac{I}{R}\\) is the value for an arc of **one radian**, not a semicircle — short by a factor \\(\\pi\\); \\(\\dfrac{\\mu_0}{4\\pi}\\dfrac{I}{R^2}\\) and \\(\\dfrac{\\mu_0 I}{4\\pi}\\) are **dimensionally impossible** for a magnetic field, carrying units of T m\\(^{-1}\\) and T m respectively. A direct numerical Biot-Savart integration with \\(R = 0.5\\) m, \\(I = 3\\) A and \\(L = 2\\) m returns \\(1.88496 \\times 10^{-6}\\) T from the arc and exactly zero from each straight segment, matching \\(\\dfrac{\\mu_0}{4}\\dfrac{I}{R}\\) to nine significant figures.",
+    "matches_current": true
+  },
+  {
+    "id": "885a6ae6-7113-466d-aa86-d3fa9b7957d5",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "A",
+    "solution": "Ampere's circuital law states \\(\\displaystyle\\oint \\vec{B}\\cdot\\mathrm{d}\\vec{l} = \\mu_0 I_{enclosed}\\), where \\(I_{enclosed}\\) counts only current that **passes through** the Amperian loop, with a sign fixed by the right-hand rule applied to the loop's own sense of traversal.\n\nCase (b): the conductor runs past the loop without threading it, so no current passes through any surface bounded by the loop. Hence \\(I_{enclosed} = 0\\) and the integral is **zero**. That alone eliminates the two alternatives that give a non-zero value for case b.\n\nCase (a): the conductor does thread the loop, so the magnitude is \\(\\mu_0 I\\). The arrow drawn on the loop runs anticlockwise as seen by the reader, so by the right-hand rule the loop's positive normal points **out of the page**, towards the reader; the wire, however, is drawn passing in front of the loop on the left and behind it on the right, so the current threads the loop going **away from** the reader. Current and positive normal are antiparallel, so \\(I_{enclosed} = -I\\) and the integral is \\(-\\mu_0 I\\).\n\nThe pair is therefore \\(-\\mu_0 I\\), 0. The alternative \\(\\mu_0 I\\), 0 is the trap for a student who gets the enclosure right and drops the sign.",
+    "matches_current": true
+  },
+  {
+    "id": "c0121070-f57d-411b-b483-cd9d72f301d9",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "solution": "Take \\(\\hat{x}\\) along the axis, \\(\\hat{y}\\) upward in the plane of the page and \\(\\hat{z}\\) out of the page. The proton has \\(\\vec{v} = v\\hat{x}\\); the field is directed into the paper, so \\(\\vec{B} = -B\\hat{z}\\).\n\n\\(\\vec{F} = q\\,\\vec{v}\\times\\vec{B} = q(v\\hat{x})\\times(-B\\hat{z}) = -qvB\\,(\\hat{x}\\times\\hat{z}) = -qvB(-\\hat{y}) = +qvB\\,\\hat{y}\\)\n\nThe force on the (positively charged) proton is therefore along the **positive \\(y\\)** direction. It stays perpendicular to \\(\\vec{v}\\) at every instant, so the proton turns along a circular arc at constant speed, curving **upward, towards the positive \\(y\\) axis**.\n\nThe three alternatives fail outright. Continuing along the positive \\(x\\) axis requires zero force, but \\(\\vec{v}\\perp\\vec{B}\\) gives the maximum possible magnetic force. Bending towards the negative \\(y\\) axis has the deflection the wrong way round — that is the path of a negative charge, or of a proton in a field directed out of the page. A sinusoidal path needs a restoring force that reverses sign along the path, whereas a uniform magnetic field of constant magnitude produces a constant-speed circular arc.",
+    "matches_current": true
+  },
+  {
+    "id": "2e8bb2d1-f0b1-4c8d-841b-1ea7ccbfc91b",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "D",
+    "solution": "The force on a straight current-carrying rod in a uniform field is \\(\\vec{F} = I\\,\\vec{L}\\times\\vec{B}\\).\n\nMagnitude: at the equator the field is horizontal and points south to north, while the current flows west to east, so \\(\\vec{L}\\perp\\vec{B}\\) and\n\\(F = BIL = (1.3\\times10^{-4})(15)(1) = 1.95\\times10^{-3}\\) N \\(= 19.5\\times10^{-4}\\) N \\(\\approx 20\\times10^{-4}\\) N\n\nDirection: take \\(\\hat{x}\\) east, \\(\\hat{y}\\) north and \\(\\hat{z}\\) vertically up. Then \\(\\vec{F} = IL\\hat{x}\\times B\\hat{y} = ILB\\,(\\hat{x}\\times\\hat{y}) = ILB\\,\\hat{z}\\) — **vertically upward**.\n\nThe answer is \\(20\\times10^{-4}\\) N, upward.\n\nThe alternatives are each excluded: the value \\(14\\times10^{-4}\\) N follows from no combination of the given data (it would need \\(I \\approx 10.8\\) A or \\(B \\approx 0.93\\times10^{-4}\\) T), and \"downward\" reverses the cross product.",
+    "matches_current": true
+  },
+  {
+    "id": "d3959c11-6234-4c9a-afe8-074d584d4f01",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "The magnetic force \\(\\vec{F} = q\\,\\vec{v}\\times\\vec{B}\\) is by construction perpendicular to \\(\\vec{v}\\). The rate at which it does work on the particle is\n\\(P = \\vec{F}\\cdot\\vec{v} = q(\\vec{v}\\times\\vec{B})\\cdot\\vec{v} = 0\\)\nbecause \\(\\vec{v}\\times\\vec{B}\\) is orthogonal to \\(\\vec{v}\\).\n\nA magnetic field therefore **never does work** on a moving charge. It can change the direction of \\(\\vec{v}\\) — here bending the particle into a circle, since \\(\\vec{v}\\perp\\vec{B}\\) — but never its magnitude. The speed, and hence the kinetic energy \\(\\tfrac{1}{2}mv^2\\), stays **unchanged**.\n\nThe other options each require the magnetic force to do work: \"get reduced\" and \"increase\" both need \\(P \\ne 0\\), and \"be reduced to zero\" would require the particle to stop, which never happens — it circulates indefinitely at constant speed.",
+    "matches_current": true
+  }
+]
