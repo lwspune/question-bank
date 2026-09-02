@@ -173,9 +173,10 @@ export default function FilterBar({
     if (node?.kind === "family") update({ examId: familyDefaultValue(node, (e) => e.id) });
   }
 
-  // Sections keyed for ordered rendering. Mobile sheet leads with difficulty
-  // and PYQ year (the multi-pick filters teachers reach for most), pushing
-  // the long chapter/subtopic accordions below the fold.
+  // Sections keyed for ordered rendering. Both orders lead with the taxonomy
+  // cascade (exam -> class -> subject -> chapters -> subtopics) and put the
+  // global refinements below it; the mobile sheet differs only in ordering
+  // difficulty before PYQ year within that refinement block.
   const sections: Record<SectionKey, JSX.Element> = {
     kind: (
       <div className="space-y-1.5">
@@ -617,30 +618,30 @@ const FITS: { value: Filters["fit"]; label: string; title: string }[] = [
 ];
 
 const LIVE_ORDER: SectionKey[] = [
-  "kind",
-  "format",
-  "fit",
   "exam",
   "examClass",
   "subject",
   "chapters",
   "subtopics",
+  "kind",
+  "format",
+  "fit",
   "pyqYears",
   "difficulty",
   "search",
 ];
 
 const STAGED_ORDER: SectionKey[] = [
-  "kind",
-  "format",
-  "fit",
   "exam",
   "examClass",
   "subject",
-  "difficulty",
-  "pyqYears",
   "chapters",
   "subtopics",
+  "kind",
+  "format",
+  "fit",
+  "difficulty",
+  "pyqYears",
   "search",
 ];
 
