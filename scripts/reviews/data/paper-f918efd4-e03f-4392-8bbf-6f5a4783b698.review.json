@@ -1,0 +1,302 @@
+[
+  {
+    "questionId": "57e3afd7-1462-4674-9846-f4f2724544d6",
+    "questionNumber": "8",
+    "disposition": "review",
+    "text": "The number of real roots of the equation \\((x - 1)^{2} + (x - 3)^{2} + (x - 5)^{2} = 0\\) is :",
+    "options": [
+      {
+        "text": "0",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "3",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans. (a) :** Given expression is sum of non negative real numbers as \\(x^{2} \\geq 0\\), for \\(x \\in R\\) which must be positive Since not all terms of the sum are vanishing simultaneously. Therefore, the equation has no real root. OR\r\n\r\nGiven\r\n\r\n\\(\\begin{matrix}\r\n & \\ (x - 1)^{2} + (x - 3)^{2} + (x - 5)^{2} \\\\\r\n & \\  = 3x^{2} - 18x + 35\r\n\\end{matrix}\\)\r\n\r\nand \\(\\ D = (18)^{2} - 4 \\times 35 \\times 3 < 0\\)\\\r\nThus, no real roots.",
+    "verdict": ""
+  },
+  {
+    "questionId": "0cb320a4-ef23-46e3-86b5-a7aa42f25250",
+    "questionNumber": "11",
+    "disposition": "review",
+    "text": "If z and \\(\\omega\\) are two non-zero complex numbers such that \\(|z\\omega| = 1\\) and \\(Arg\\ (Z) - Arg\\ (\\omega) = \\frac{\\pi}{2},\\) then \\(\\overline{z}\\omega\\) is equal to",
+    "options": [
+      {
+        "text": "\\(–i\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "-1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(i\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Handle the modulus and the argument separately — that is the whole method for a question like this.\n\n**Modulus.** Conjugating does not change the modulus, so\n\n\\(\\left|\\overline{z}\\,\\omega\\right| = |\\overline{z}||\\omega| = |z||\\omega| = |z\\omega| = 1\\).\n\n**Argument.** Conjugating negates the argument, so\n\n\\(\\arg\\!\\left(\\overline{z}\\,\\omega\\right) = -\\arg(z) + \\arg(\\omega) = -\\left[\\arg(z) - \\arg(\\omega)\\right] = -\\dfrac{\\pi}{2}\\).\n\nSo \\(\\overline{z}\\,\\omega\\) is the complex number of modulus 1 at angle \\(-\\dfrac{\\pi}{2}\\):\n\n\\(\\overline{z}\\,\\omega = \\cos\\!\\left(-\\dfrac{\\pi}{2}\\right) + i\\sin\\!\\left(-\\dfrac{\\pi}{2}\\right) = 0 - i = -i\\).\n\nHence (A).\n\n(The trap is to stop at the angle. An angle of \\(-\\dfrac{\\pi}{2}\\) points down the imaginary axis, giving \\(-i\\); \\(-1\\) would need an angle of \\(\\pi\\), and it is a printed option.)",
+    "verdict": ""
+  },
+  {
+    "questionId": "194358fb-56d2-4038-8297-d6636de7fcda",
+    "questionNumber": "105",
+    "disposition": "review",
+    "text": "The probability of getting difference of number as 5 , when two dice are tossed together is-",
+    "options": [
+      {
+        "text": "\\(1/9\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1/18\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(1/12\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(5/36\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Two dice give \\(6 \\times 6 = 36\\) equally likely ordered outcomes.\n\nWe need the pairs whose numbers differ by 5. Since each die shows 1 to 6, the largest possible difference is \\(6 - 1 = 5\\), so a difference of 5 can only happen at the extremes — one die must show 1 and the other 6.\n\nThat leaves exactly two ordered outcomes: \\((1, 6)\\) and \\((6, 1)\\).\n\n\\(P = \\dfrac{2}{36} = \\dfrac{1}{18}\\). Hence (B).\n\n(Note the outcomes are ORDERED, so \\((1,6)\\) and \\((6,1)\\) count separately against the 36. Treating them as one would give \\(1/36\\), which is not offered.)",
+    "verdict": ""
+  },
+  {
+    "questionId": "548cc682-896b-4239-aad3-abf168453c38",
+    "questionNumber": "110",
+    "disposition": "review",
+    "text": "Consider the following discrete frequency distribution : \\(x\\): 1, 2, 3, 4, 5, 6, 7, 8; \\(f\\): 3, 15, 45, 57, 50, 36, 25, 9. What is the value of median of the distribution ?",
+    "options": [
+      {
+        "text": "4",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "5",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "6",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "7",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "First build the cumulative frequencies:\n\n| \\(x\\) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f\\) | 3 | 15 | 45 | 57 | 50 | 36 | 25 | 9 |\n| c.f. | 3 | 18 | 63 | 120 | 170 | 206 | 231 | 240 |\n\nSo \\(N = 240\\).\n\nFor a DISCRETE frequency distribution the median is the size of the \\(\\left(\\dfrac{N+1}{2}\\right)\\)th item — note \\(N+1\\), not \\(N\\). Here that is the \\(120.5\\)th item.\n\nRead down the cumulative frequency for the first entry that reaches \\(120.5\\): the c.f. is \\(120\\) at \\(x = 4\\), which is still short, and \\(170\\) at \\(x = 5\\), which passes it. The \\(120.5\\)th item therefore has value \\(5\\).\n\nHence (B).\n\n**Why the \\(N+1\\) matters here, and it is the whole point of this question.** The c.f. lands on exactly \\(120 = \\dfrac{N}{2}\\) at \\(x = 4\\) — the one case where the two rules can disagree. Using \\(\\dfrac{N}{2}\\) and taking the first c.f. that REACHES it would give 4; the \\(\\dfrac{N+1}{2}\\) rule gives 5. (Treated as raw ungrouped data the 120th and 121st observations are 4 and 5, averaging to 4.5, which is not offered — a sign that the discrete-series convention is the one intended.)\n\nNote also that \\(x = 4\\) carries the largest frequency, 57, so it is the MODE. That is what makes it the natural wrong answer here rather than filler.",
+    "verdict": ""
+  },
+  {
+    "questionId": "5a01ab19-bb01-4774-bc5f-df63761ade2e",
+    "questionNumber": "1195",
+    "disposition": "review",
+    "text": "The general solution of \\(\\tan x - \\sin x = 1 - \\tan x \\sin x\\) is",
+    "options": [
+      {
+        "text": "\\(x = n\\pi + \\frac{\\pi}{4}; x = n\\pi + (-1)^n\\left(-\\frac{\\pi}{2}\\right)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x = \\frac{n\\pi}{4} - \\frac{\\pi}{4}; x = n\\pi + (-1)^n\\left(-\\frac{\\pi}{2}\\right)\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x = n\\pi + \\frac{\\pi}{4}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(x = n\\pi + \\frac{\\pi}{6}; x = n\\pi + (-1)^n\\left(-\\frac{\\pi}{2}\\right)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Bring everything to one side and factor, rather than clearing the denominator:\n\n\\(\\tan x - \\sin x - 1 + \\tan x \\sin x = 0\\)\n\nGroup the terms in pairs: \\(\\tan x(1 + \\sin x) - (1 + \\sin x) = 0\\), so\n\n\\((1 + \\sin x)(\\tan x - 1) = 0\\).\n\nThat gives two candidate branches, and the second one has to be TESTED rather than accepted:\n\n**\\(\\tan x = 1\\)** gives \\(x = n\\pi + \\dfrac{\\pi}{4}\\). These are genuine solutions.\n\n**\\(\\sin x = -1\\)** forces \\(\\cos x = 0\\) — and \\(\\tan x\\) is UNDEFINED there. The original equation contains \\(\\tan x\\) on both sides, so such an \\(x\\) is not in its domain and cannot satisfy it. These are extraneous.\n\n(They look like solutions if you first multiply through by \\(\\cos x\\): the cleared equation \\(\\sin x - \\sin x\\cos x = \\cos x - \\sin^{2}x\\) does hold at \\(x = -\\dfrac{\\pi}{2}\\), both sides equalling \\(-1\\). Multiplying by a quantity that vanishes is what introduces them.)\n\nSo the solution set is exactly \\(x = n\\pi + \\dfrac{\\pi}{4}\\). Hence (C).\n\n[Textbook: the booklet's own answer key gives the option that also lists \\(x = n\\pi + (-1)^n\\left(-\\dfrac{\\pi}{2}\\right)\\). Those values make \\(\\tan x\\) undefined, so that option asserts solutions the equation does not have. The booklet prints the correct set separately, which is what this question is really testing.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "1d48a2f8-4e15-43b1-aa8c-f709eaba0bcb",
+    "questionNumber": "1829",
+    "disposition": "review",
+    "text": "If the points with position vectors \\(10\\hat{i} + 3\\hat{j}, 12\\hat{i} - 5\\hat{j}\\) and \\(\\lambda\\hat{i} + 11\\hat{j}\\) are collinear, then \\(\\lambda\\) is equal to",
+    "options": [
+      {
+        "text": "\\(4\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(8\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(12\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(22\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Points \\(10\\hat{i} + 3\\hat{j}, 12\\hat{i} - 5\\hat{j}, \\lambda\\hat{i} + 11\\hat{j}\\) are collinear, so the area of the triangle they form is zero: \\(\\begin{vmatrix} 10 & 3 & 1 \\\\ 12 & -5 & 1 \\\\ \\lambda & 11 & 1 \\end{vmatrix} = 0\\). Expanding: \\(10(-5 - 11) - 3(12 - \\lambda) + 1(132 + 5\\lambda) = 0 \\Rightarrow -160 - 36 + 3\\lambda + 132 + 5\\lambda = 0 \\Rightarrow 8\\lambda - 64 = 0 \\Rightarrow \\lambda = 8\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "b22cc6e5-fbee-4c26-9374-641eae42e90b",
+    "questionNumber": "1975",
+    "disposition": "review",
+    "text": "A line making angles \\( 45^\\circ \\) and \\( 60^\\circ \\) with the positive directions of the axis of \\( x \\) and \\( y \\), makes with the positive direction of \\( z \\)-axis, an angle of",
+    "options": [
+      {
+        "text": "\\( 60^\\circ \\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 120^\\circ \\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 60^\\circ \\) and \\( 120^\\circ \\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "For any line, the three direction cosines satisfy \\(l^{2} + m^{2} + n^{2} = 1\\), i.e.\n\n\\(\\cos^{2}\\alpha + \\cos^{2}\\beta + \\cos^{2}\\gamma = 1\\).\n\nHere \\(\\alpha = 45^\\circ\\) and \\(\\beta = 60^\\circ\\), so\n\n\\(\\left(\\dfrac{1}{\\sqrt{2}}\\right)^{2} + \\left(\\dfrac{1}{2}\\right)^{2} + \\cos^{2}\\gamma = 1\\)\n\n\\(\\dfrac{1}{2} + \\dfrac{1}{4} + \\cos^{2}\\gamma = 1 \\quad\\Rightarrow\\quad \\cos^{2}\\gamma = \\dfrac{1}{4}\\).\n\nNow take the square root — and keep BOTH signs, because nothing in the question rules either out:\n\n\\(\\cos\\gamma = \\pm\\dfrac{1}{2} \\quad\\Rightarrow\\quad \\gamma = 60^\\circ \\ \\text{or}\\ 120^\\circ\\).\n\nBoth are genuine: \\(\\left(\\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{2}, \\dfrac{1}{2}\\right)\\) and \\(\\left(\\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{2}, -\\dfrac{1}{2}\\right)\\) are both valid direction-cosine triples, describing two different lines that each make \\(45^\\circ\\) with the x-axis and \\(60^\\circ\\) with the y-axis — one sloping up out of the xy-plane, one sloping down.\n\nHence (C).\n\n[Textbook: the booklet's own answer key gives \\(60^\\circ\\) alone. That discards the negative root, which would only be justified if the line were restricted to the first octant — a condition the question never states. The booklet prints \"\\(60^\\circ\\) and \\(120^\\circ\\)\" as a separate option, which is what the question is really testing.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "57dda52c-4186-4971-a3bb-841fe5551efd",
+    "questionNumber": "2179",
+    "disposition": "review",
+    "text": "If \\(f : [0, \\infty) \\to [2, \\infty)\\) is given by \\(f(x) = x + \\dfrac{1}{x}\\), then \\(f^{-1}(x)\\) equals",
+    "options": [
+      {
+        "text": "\\(\\dfrac{x + \\sqrt{x^2 - 4}}{2}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{x}{1 + x^2}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{2x - \\sqrt{x^2 - 4}}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1 + \\sqrt{x^2 - 4}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Set \\(y = f(x) = x + \\dfrac{1}{x}\\) and solve for \\(x\\) in terms of \\(y\\).\n\nMultiplying by \\(x\\) gives the quadratic \\(x^{2} - yx + 1 = 0\\), so\n\n\\(x = \\dfrac{y \\pm \\sqrt{y^{2} - 4}}{2}\\).\n\nTwo roots, so one has to be chosen — and the choice is what the question is about. The two roots multiply to 1 (their product is the constant term), so one lies in \\((0, 1]\\) and the other in \\([1, \\infty)\\). The inverse must return the branch the function was defined on, which is the one at or above 1, and that is the PLUS root.\n\nReplacing \\(y\\) by \\(x\\) in the usual way, \\(f^{-1}(x) = \\dfrac{x + \\sqrt{x^{2} - 4}}{2}\\). Hence (A).\n\n(Check: at \\(x = \\dfrac{5}{2}\\) this gives 2, and \\(f(2) = 2 + \\dfrac{1}{2} = \\dfrac{5}{2}\\). The minus root gives \\(\\dfrac{1}{2}\\), whose image is also \\(\\dfrac{5}{2}\\) — which is precisely why the branch has to be pinned down. Note \\(y = 2\\) would NOT settle it: both roots equal 1 there.)\n\n[Textbook: the printed domain \\([0, \\infty)\\) cannot be right — \\(f\\) is undefined at \\(x = 0\\), and on \\((0,1) \\cup (1,\\infty)\\) it is not one-one, so no inverse exists. The intended domain is \\([1, \\infty)\\), which is exactly the branch that maps onto \\([2, \\infty)\\) and selects the plus root above.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "2d15302d-9b93-409c-8b40-40149335e1d3",
+    "questionNumber": "2507",
+    "disposition": "review",
+    "text": "The point of the ellipse \\(16x^2 + 9y^2 = 400\\) at which the ordinate decreases at the same rate at which the abscissa increases is/are given by",
+    "options": [
+      {
+        "text": "\\(\\left(3, -\\frac{16}{3}\\right)\\) and \\(\\left(-3, \\frac{16}{3}\\right)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\left(3, \\frac{16}{3}\\right)\\) and \\(\\left(-3, -\\frac{16}{3}\\right)\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\left(\\frac{1}{16}, \\frac{1}{9}\\right)\\) and \\(\\left(-\\frac{1}{16}, -\\frac{1}{9}\\right)\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\left(\\frac{1}{16}, -\\frac{1}{9}\\right)\\) and \\(\\left(-\\frac{1}{16}, \\frac{1}{9}\\right)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\"The ordinate decreases at the same rate at which the abscissa increases\" is a statement about time derivatives:\n\n\\(\\dfrac{dy}{dt} = -\\dfrac{dx}{dt}\\), and therefore \\(\\dfrac{dy}{dx} = -1\\).\n\nDifferentiate the ellipse \\(16x^{2} + 9y^{2} = 400\\) implicitly:\n\n\\(32x + 18y\\dfrac{dy}{dx} = 0 \\quad\\Rightarrow\\quad \\dfrac{dy}{dx} = -\\dfrac{16x}{9y}\\).\n\nSetting that equal to \\(-1\\) gives \\(16x = 9y\\), so \\(y = \\dfrac{16x}{9}\\).\n\nSubstitute back into the ellipse:\n\n\\(16x^{2} + 9\\left(\\dfrac{16x}{9}\\right)^{2} = 16x^{2} + \\dfrac{256x^{2}}{9} = \\dfrac{400x^{2}}{9} = 400\\),\n\nso \\(x^{2} = 9\\) and \\(x = \\pm 3\\). Then \\(y = \\dfrac{16x}{9}\\) gives \\(y = \\dfrac{16}{3}\\) at \\(x = 3\\), and \\(y = -\\dfrac{16}{3}\\) at \\(x = -3\\).\n\nThe points are \\(\\left(3, \\dfrac{16}{3}\\right)\\) and \\(\\left(-3, -\\dfrac{16}{3}\\right)\\). Hence (B).\n\n(The sign is the whole question. The other pair, \\(\\left(3, -\\dfrac{16}{3}\\right)\\) and \\(\\left(-3, \\dfrac{16}{3}\\right)\\), lies on the ellipse too — it satisfies \\(16x = -9y\\), which is where \\(\\dfrac{dy}{dx} = +1\\) and the ordinate INCREASES with the abscissa. Checking only that a point is on the curve does not separate them.)",
+    "verdict": ""
+  },
+  {
+    "questionId": "eef49939-b25f-4c63-882f-7d1dbcf975e7",
+    "questionNumber": "2973",
+    "disposition": "review",
+    "text": "The order and degree of the differential equation \\(y = \\frac{dp}{dx}x + \\sqrt{a^2p^2 + b^2}\\) where \\(p = \\frac{dy}{dx}\\) (here \\(a\\) and \\(b\\) are arbitrary constants) respectively are",
+    "options": [
+      {
+        "text": "1, 1",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "2, 2",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "2, 1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "1, 2",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Here \\(\\frac{dp}{dx} = \\frac{d}{dx}\\left(\\frac{dy}{dx}\\right) = \\frac{d^2y}{dx^2}\\), so the equation is \\(y = x\\frac{d^2y}{dx^2} + \\sqrt{a^2\\left(\\frac{dy}{dx}\\right)^2 + b^2}\\). The highest order derivative is \\(\\frac{d^2y}{dx^2}\\), so order is 2. Isolating and squaring: \\(\\left(y - x\\frac{d^2y}{dx^2}\\right)^2 = a^2\\left(\\frac{dy}{dx}\\right)^2 + b^2\\), so the power of \\(\\frac{d^2y}{dx^2}\\) is 2 (degree 2). Order and degree are 2, 2. Hence (B).",
+    "verdict": ""
+  }
+]

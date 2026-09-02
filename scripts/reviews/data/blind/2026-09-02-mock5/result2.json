@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "2a1f76ca-7296-4be1-b02a-d4632aa9a43c",
+  "qnum": "27",
+  "derived": "B",
+  "value": "A = A^T and A = -A^T force 2A = 0, so A is the n x n zero matrix; sympy solving both constraints on a general symbolic 3x3 matrix returns every entry = 0",
+  "confidence": "high",
+  "why": "Symmetric plus skew-symmetric gives A = -A, hence A = 0, i.e. the null matrix; the unit matrix is excluded since I is not skew-symmetric. Technical note for the reviewer: the zero matrix is also (vacuously) a diagonal matrix, so option A is a weaker true statement, but 'Null matrix' is the exact and complete characterisation of the solution set {0}, which is the standard key."
+ },
+ {
+  "questionId": "e302401c-2360-412d-a26f-0146724f149e",
+  "qnum": "28",
+  "derived": "D",
+  "value": "x = 1/5; the product evaluates to [[5x,0,0],[0,1,0],[0,10x-2,5x]], and 5x = 1 with 10x - 2 = 0 both hold only at x = 1/5",
+  "confidence": "high",
+  "why": "Symbolic multiplication gives a matrix whose off-diagonal entries all vanish identically except (3,2) = 10x - 2; requiring the diagonal 5x = 1 gives x = 1/5, which simultaneously kills 10x - 2. sympy solve on product - I returns the unique root 1/5, and 1/2, 1/3, 1/4 were each substituted and fail."
+ },
+ {
+  "questionId": "a4d7dfa6-c2ff-4d21-820b-0d2cac5d0e94",
+  "qnum": "29",
+  "derived": "B",
+  "value": "(1+i)/(1-i) = i, so i^x = 1, whose complete positive-integer solution set is x = 4n",
+  "confidence": "high",
+  "why": "sympy simplifies the base to exactly i; the cycle i, -1, -i, 1 shows i^x = 1 precisely when 4 divides x. Option B is the complete solution set; C (x = 2n) gives (-1)^n so it fails for odd n, and A and D give purely imaginary values."
+ },
+ {
+  "questionId": "ed385ba6-6083-4b98-96ec-654d49aff90e",
+  "qnum": "30",
+  "derived": "A",
+  "value": "A^2 = I identically in a and b, so A^2 + 2A^4 + 4A^6 = I + 2I + 4I = 7I; and 7A^8 = 7(A^2)^4 = 7I",
+  "confidence": "high",
+  "why": "Symbolic squaring collapses the bottom row to (a - a, b - b, 1), giving A^2 = I for every a, b, so the expression is 7I. Only 7A^8 equals 7I; at the discriminating point a = 3, b = -5 the option 7A^7 = 7A has bottom row (21, -35, -7) and is not 7I, while 8I and 6I are numerically wrong."
+ },
+ {
+  "questionId": "7eb5450a-6e67-444d-9a84-d5b4dd1ae448",
+  "qnum": "32",
+  "derived": "C",
+  "value": "Statement 1 true (f' = 3x^2 >= 0, vanishing only at the isolated point 0, and f is strictly increasing across [-1,1]); Statement 2 true (the only real root is x = 1, which lies outside the open interval (-1,1))",
+  "confidence": "high",
+  "why": "x^3 - 1 is strictly increasing on the whole real line, verified on an exact-rational grid over [-1,1], so 1 holds. Its unique real root is x = 1, an endpoint, so the open interval (-1,1) contains no root and 2 holds; both statements are correct."
+ },
+ {
+  "questionId": "6c6bd918-c367-42b1-812d-bad0f5ed7cc5",
+  "qnum": "33",
+  "derived": "C",
+  "value": "I is an exact identity: a_n - (a_{n+k} + a_{n-k})/2 simplifies to 0. II holds for m != n: S_m - S_n factors as (m-n)(2a + (m+n-1)d)/2, so m != n forces 2a + (m+n-1)d = 0 and hence S_{m+n} = 0",
+  "confidence": "high",
+  "why": "Both simplifications are exact in sympy, and a concrete AP (a = -9, d = 2) gives S_3 = S_7 = -21 with S_10 = 0. Caveat recorded for the reviewer: the word 'always' is loose because the degenerate case m = n makes the hypothesis vacuously true while S_2m need not vanish (a = 1, d = 1 gives S_3 = S_3 = 6 but S_6 = 21); the standard reading assumes m != n, under which II is the classical result, so Both I and II is the answer."
+ },
+ {
+  "questionId": "a0d97a18-3dc5-4146-bb05-3836d6c47bed",
+  "qnum": "36",
+  "derived": "C",
+  "value": "hT/hP = (3 + sqrt(3))/2 ~ 2.3660254; statements 1 and 2 have residual exactly 0, statement 3 is false because 2(hP + hT)/hP = 5 + sqrt(3) ~ 6.7320508, not 4 + sqrt(3) ~ 5.7320508",
+  "confidence": "high",
+  "why": "From the foot of the pole tan45 = hT/d gives d = hT; from the top of the pole tan30 = (hT - hP)/d gives hT - hP = hT/sqrt(3), so hT = hP(3 + sqrt(3))/2. Substituting exactly, statements 1 and 2 both reduce to 0 while statement 3's residual is exactly 1 (its true right-hand side is 5 + sqrt(3)), so only 1 and 2 are correct."
+ },
+ {
+  "questionId": "9352ea8b-4656-498f-a8be-8dadf2d15705",
+  "qnum": "38",
+  "derived": "C",
+  "value": "integral of f(cos x) over [0, pi] equals 2 * integral of f(cos x) over [0, pi/2], because the substitution x -> pi - x maps the second half onto the first using f(-cos x) = f(cos x)",
+  "confidence": "high",
+  "why": "g(x) = f(cos x) satisfies g(pi - x) = f(-cos x) = g(x) for even f, so the standard 0-to-2a property gives twice the half-range integral. Verified numerically on five different even f (t^2, t^4, |t|, cos t, 1/(1+t^2)); every case matched option C exactly and none matched 0, 1, or the un-doubled half-integral, so the test points are discriminating."
+ },
+ {
+  "questionId": "3747bdee-bc90-430c-a14a-7738c49f1499",
+  "qnum": "40",
+  "derived": "B",
+  "value": "limit = 1 (ratio of the equal leading coefficients of the two quadratics)",
+  "confidence": "high",
+  "why": "Dividing numerator and denominator by x^2 sends the bx, ax, 4 and 5 terms to zero, leaving 1/1; sympy returns 1 symbolically in a and b. mpmath at 30 digits with the discriminating pair a = 2, b = 7 (so b/a = 3.5, well away from 1 and from 4/5) gives 1.00000000000005 at x = 1e14, ruling out options A, C and D."
+ },
+ {
+  "questionId": "9b75f963-0f36-4f89-9c2b-9d9d2a86305b",
+  "qnum": "43",
+  "derived": "D",
+  "value": "the exponential function a^x (a > 0) has range (0, infinity) and therefore no real zero; solveset(exp(x) = 0) over the reals returns the EmptySet",
+  "confidence": "high",
+  "why": "Each of the other three classes contains a member that vanishes: the polynomial x is zero at 0, sin x is zero at every multiple of pi, and log x is zero at x = 1 (all confirmed by solveset over the reals). Only the exponential class is never zero for every member, so D is the class-wide true statement."
+ },
+ {
+  "questionId": "37786c04-ac4c-47e9-90c8-255b35aac678",
+  "qnum": "49",
+  "derived": "C",
+  "value": "4/5 = 0.8, the derivative f'(4) = 4/sqrt(4^2 + 9) = 4/5",
+  "confidence": "high",
+  "why": "The expression is the difference quotient defining f'(4) with f(4) = 5; sympy gives the two-sided limit as exactly 4/5 and the left and right limits agree. A 40-digit mpmath evaluation at h = +/-1e-8 and +/-1e-15 brackets 0.8, well clear of the distractors 5/4 = 1.25 and -4/5 = -0.8."
+ },
+ {
+  "questionId": "3bd0768f-7b46-417d-9151-a68655f494da",
+  "qnum": "51",
+  "derived": "B",
+  "value": "Statement I true: 25^13 + 20^13 + 8^13 + 3^13 = 1572036669142173836, exactly divisible by 7. Statement II true: the integral part of (7 + 4*sqrt(3))^25 is 39571031999226139563162735373, an odd number",
+  "confidence": "high",
+  "why": "For I, 25 + 3 = 28 and 20 + 8 = 28 are both multiples of 7 and a^n + b^n is divisible by a + b for odd n, so each pair contributes a multiple of 7; exact integer arithmetic gives remainder 0. For II, u_n = (7 + 4*sqrt(3))^n + (7 - 4*sqrt(3))^n satisfies u_n = 14u_(n-1) - u_(n-2) with u_0 = 2, so every u_n is even; since 0 < (7 - 4*sqrt(3))^25 ~ 2.5e-29 < 1 the integral part is the even u_25 minus 1, hence odd, confirmed independently by an exact symbolic expansion and an 80-digit mpmath floor."
+ },
+ {
+  "questionId": "3d3272b1-7b2c-4dfb-91b7-2de91d46fd32",
+  "qnum": "54",
+  "derived": "A",
+  "value": "m >= n, because reflexivity forces all n diagonal pairs (a,a) into R, so |R| is at least n (and at most n^2)",
+  "confidence": "high",
+  "why": "Exhaustive enumeration of every reflexive relation for n = 1, 2, 3 gives m ranging over n..n^2, so m >= n holds in every case. The n = 1 case is non-discriminating (m <= n and m = n also hold there), which is why n = 2 and n = 3 were enumerated: both admit m = 4 and m = 9 respectively, falsifying options B and C."
+ },
+ {
+  "questionId": "124bfbd7-5ed9-42e7-a78a-a63ad3e7059c",
+  "qnum": "58",
+  "derived": "C",
+  "value": "log G = (n1 log G1 + n2 log G2)/(n1 + n2), i.e. G = (G1^n1 * G2^n2)^(1/(n1+n2)) - the weighted arithmetic mean of the logs, weighted by each series' own size",
+  "confidence": "high",
+  "why": "The combined product is G1^n1 * G2^n2 over n1 + n2 observations, so taking logs gives the size-weighted mean of log G1 and log G2. Checked on two instances chosen with n1 != n2 and G1 != G2 so that the swapped-weight option B is discriminated: series {2} and {1,9} give true log G = 0.9634572526 which matches C exactly while B gives 0.8283022166, and option A is dimensionally wrong (it averages the G values, not their logs)."
+ },
+ {
+  "questionId": "6df1a6a5-27a6-416e-83b8-b09b15d8b148",
+  "qnum": "62",
+  "derived": "C",
+  "value": "sqrt(66) ~ 8.1240384 square units; |AB| = sqrt(11), |BC| = sqrt(6), and AB is perpendicular to BC",
+  "confidence": "high",
+  "why": "AB = (1,3,-1) and BC = (2,-1,-1) have dot product exactly 0, so the right angle is at B and these are adjacent sides, while AC = (3,2,-2) is the diagonal (11 + 6 = 17 = |AC|^2 confirms Pythagoras, and the dot products at A and C are 11 and 6, both nonzero). Area = sqrt(11)*sqrt(6) = sqrt(66), independently confirmed by |AB x BC| = |(-4,-1,-7)| = sqrt(66); the distractor sqrt(68) ~ 8.2462 is clearly separated."
+ }
+]

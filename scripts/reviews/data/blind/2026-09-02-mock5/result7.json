@@ -1,0 +1,137 @@
+[
+ {
+  "questionId": "ec624130-1500-4631-9e6f-0e10295aa49b",
+  "qnum": "1490",
+  "derived": "D",
+  "value": "The two lines through (1,1) at 45 deg to x+y=0 are x-1=0 and y-1=0",
+  "confidence": "high",
+  "why": "tan45=|(m+1)/(1-m)|=1 gives m=0 only; the second case m+1=-(1-m) is inconsistent, meaning the other line has undefined slope (vertical). Verified each option numerically: only D has BOTH of its lines at exactly 45 deg to x+y=0 (A and B contain x-y=0 at 90 deg; C contains x+y-2=0 at 0 deg, being parallel to the given line).",
+  "flag": null
+ },
+ {
+  "questionId": "e6326cdd-e5e2-4143-b787-ca9810e1220e",
+  "qnum": "1519",
+  "derived": "D",
+  "value": "|ab| / sqrt(a^2 sin^2(alpha) + b^2 cos^2(alpha))",
+  "confidence": "high",
+  "why": "Distance = |-1| / sqrt((sin a/b)^2 + (cos a/a)^2), and clearing the common denominator a^2 b^2 puts a^2 sin^2 with b^2 cos^2 under the radical. Discriminating check at a=2, b=3, alpha=pi/6 (so a!=b and sin!=cos): derived 2.155263624..., which matches D exactly; A gives 6.928, B gives 2.619, C is imaginary.",
+  "flag": null
+ },
+ {
+  "questionId": "4d1bece7-9794-44d0-b0cb-b47f957245f5",
+  "qnum": "1524",
+  "derived": "C",
+  "value": "The line y - x = 0 (intersection point is (ab/(a+b), ab/(a+b)))",
+  "confidence": "high",
+  "why": "Subtracting the two intercept forms gives (1/a - 1/b)(x - y) = 0, and a != b forces x = y; sympy confirms the intersection is (ab/(a+b), ab/(a+b)), which lies on y=x through the origin. At the discriminating point a=2,b=5 the intersection is (10/7,10/7): only option C evaluates to 0 there (A and B both give 10, D gives 20/7).",
+  "flag": null
+ },
+ {
+  "questionId": "90419b62-e42f-4140-a18e-681a4ecbd87a",
+  "qnum": "1637",
+  "derived": "A",
+  "value": "Common chord length = 12/sqrt(13) = 3.3282011773...",
+  "confidence": "high",
+  "why": "Orthogonality 2g1g2+2f1f2=c1+c2 gives -6=-7+k so k=1; the radical axis is 3x+2y+4=0. Computed the half-chord from BOTH circles independently (r1=3 at distance 9/sqrt13, r2=2 at distance 4/sqrt13) and they agree at 6/sqrt13, and the orthogonal-circle identity 2*r1*r2/d = 12/sqrt13 reproduces it a third way.",
+  "flag": null
+ },
+ {
+  "questionId": "aeba789b-650d-41e0-a16e-cba825b8889d",
+  "qnum": "1640",
+  "derived": "A",
+  "value": "c1 = 6, c2 = -8, so c1*c2 = -48",
+  "confidence": "high",
+  "why": "Dividing by 3 gives x^2+y^2-2x-6y-7/3=0; completing the square (residual verified exactly zero) puts the centre at (1,3). A diameter must pass through the centre, so c1 = 3(1)+3 = 6 and c2 = 1-3(3) = -8, giving -48.",
+  "flag": null
+ },
+ {
+  "questionId": "3ea3413a-3428-4ec5-969b-62d6b426dbc9",
+  "qnum": "1642",
+  "derived": "C",
+  "value": "The point (2, 1)",
+  "confidence": "high",
+  "why": "The given line has slope -2, so the tangent slope must be 1/2; dy/dx = 1/(2 sqrt(x-1)) = 1/2 gives x=2 and hence y = sqrt(1) = +1. Option A (2,-1) is the sign trap: it has the right slope at x=2 but is NOT on the curve, since the principal square root is non-negative.",
+  "flag": null
+ },
+ {
+  "questionId": "669dd204-4380-4e78-95f2-55816ad51e11",
+  "qnum": "1692",
+  "derived": "D",
+  "value": "Foci at (+/- sqrt(5)/6, 0); c = sqrt(5)/6 = 0.3726779962...",
+  "confidence": "high",
+  "why": "4x^2+9y^2=1 is x^2/(1/4) + y^2/(1/9) = 1, so a^2=1/4 > b^2=1/9 and the major axis is along x. Exact rational arithmetic: c^2 = 1/4 - 1/9 = 5/36, so c = sqrt(5)/6. The distractors come from mis-taking the denominators as 4 and 9 rather than 1/4 and 1/9.",
+  "flag": null
+ },
+ {
+  "questionId": "b2b45473-fa01-4a3a-b288-cf9183cacfc7",
+  "qnum": "1805",
+  "derived": "D",
+  "value": "|AB|^2 = |BC|^2 = |CA|^2 = 38, so all three sides are equal",
+  "confidence": "high",
+  "why": "AB=(-2,-3,5), BC=(-3,5,-2), CA=(5,-2,-3), each of squared length exactly 38, so the triangle is equilateral; the Pythagorean test fails (38+38 != 38), so it is not right angled. Under an inclusive definition of isosceles option C would also read true, but the presence of 'equilateral' as its own option forces the exclusive reading and D is the specific, intended answer.",
+  "flag": null
+ },
+ {
+  "questionId": "1d48a2f8-4e15-43b1-aa8c-f709eaba0bcb",
+  "qnum": "1829",
+  "derived": "B",
+  "value": "The unknown x-component is 8",
+  "confidence": "high",
+  "why": "Collinearity of (10,3),(12,-5),(t,11) needs the cross product of (2,-8) and (t-10,8) to vanish: 8t-64=0, so t=8. Note a STEM DEFECT that does not change the value: the third position vector is printed with component 'a' while the question asks for 'lambda' - the two names must denote the same unknown, and it is 8 either way.",
+  "flag": null
+ },
+ {
+  "questionId": "49a7ecd1-f156-4abd-b44d-3fa174cfc0fe",
+  "qnum": "1852",
+  "derived": "A",
+  "value": "a.b + b.c + c.a = -3/2",
+  "confidence": "high",
+  "why": "Squaring a+b+c=0 gives |a|^2+|b|^2+|c|^2 + 2S = 0, i.e. 3 + 2S = 0, so S = -3/2. Confirmed against a concrete realisation - three coplanar unit vectors at 120 degrees, whose sum is exactly the zero vector - which gives S = -3/2 exactly.",
+  "flag": null
+ },
+ {
+  "questionId": "2a382aff-7cfa-49ab-872f-1192ec57a6db",
+  "qnum": "1939",
+  "derived": "C",
+  "value": "8i - 4j + 8k (cross product is (14,-7,14) of magnitude 21; 12 * unit = (8,-4,8))",
+  "confidence": "high",
+  "why": "u x v = (14,-7,14), |u x v| = 21 exactly, so 12*(u x v)/21 = (8,-4,8). Tested every option against both defining conditions: all four have magnitude 12, but only C is orthogonal to BOTH given vectors (A, B and D give non-zero dot products). The opposite sense (-8,4,-8) is also valid geometrically but is not among the options.",
+  "flag": null
+ },
+ {
+  "questionId": "b22cc6e5-fbee-4c26-9374-641eae42e90b",
+  "qnum": "1975",
+  "derived": "C",
+  "value": "cos^2(gamma) = 1/4, so gamma = 60 deg or 120 deg",
+  "confidence": "high",
+  "why": "l^2+m^2+n^2=1 gives cos^2(gamma) = 1 - 1/2 - 1/4 = 1/4, so cos(gamma) = +/-1/2 and both 60 and 120 degrees satisfy the direction-cosine identity (verified: both give l^2+m^2+n^2 = 1 exactly). A and B are each only a PROPER SUBSET of the solution set; C is the complete set.",
+  "flag": null
+ },
+ {
+  "questionId": "3eef1836-e4b9-4332-a238-cda2c44c3297",
+  "qnum": "2163",
+  "derived": "C",
+  "value": "f(x)=x^3-1 is both injective and surjective on R, hence a bijection",
+  "confidence": "high",
+  "why": "x^3 is strictly increasing on R (the only stationary point x=0 is an inflection, not a turning point), so f is one-one; and every real y has the real preimage (y+1)^(1/3), so f is onto. Options A and B are each individually TRUE statements, but only C captures both, so C is the complete characterisation and the intended answer - worth noting since a key of A or B would be defensible-looking but incomplete.",
+  "flag": null
+ },
+ {
+  "questionId": "57dda52c-4186-4971-a3bb-841fe5551efd",
+  "qnum": "2179",
+  "derived": "A",
+  "value": "f^-1(x) = (x + sqrt(x^2-4))/2",
+  "confidence": "high",
+  "why": "Inverting y = x + 1/x gives x^2 - yx + 1 = 0 with roots (y +/- sqrt(y^2-4))/2; the branch on which f is increasing onto [2,infinity) is x >= 1, which is the PLUS root. Round-trip verified at the discriminating point y=5/2: A returns 2 and f(2)=5/2 exactly, whereas D returns 5/2 and f(5/2)=29/10. Note y=2 is a NON-discriminating test point - A and D both give 1 there. STEM DEFECT: the domain should read [1,infinity), since f is undefined at x=0 and is not injective on (0,1) union (1,infinity); the answer is unaffected.",
+  "flag": null
+ },
+ {
+  "questionId": "9137059e-b4a2-45ee-8f95-0ac1d55679fe",
+  "qnum": "2188",
+  "derived": "A",
+  "value": "f^-1(64) = {4, 4w, 4w^2} = {4, -2+2i*sqrt(3), -2-2i*sqrt(3)}",
+  "confidence": "high",
+  "why": "Over C the equation z^3 = 64 has exactly three roots, and sympy confirms the set {4, 4w, 4w^2} is EQUAL to the true root set (not merely contained in it). B and C are proper subsets of the preimage and D (the empty set) is wrong because 4 is plainly a preimage, so A is the only complete answer.",
+  "flag": null
+ }
+]

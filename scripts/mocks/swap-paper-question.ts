@@ -69,6 +69,28 @@ const PAPER: string = PAPER_ARG;
 type Swap = { out: string; in: string; why: string };
 
 const SWAP_SETS: Record<string, Swap[]> = {
+  // ── Blueprint Mock 5 ──────────────────────────────────────────────────────
+  "f918efd4-e03f-4392-8bbf-6f5a4783b698": [
+    {
+      // Q113, NDA_Maths_Mock_Test_01.docx -> Q110, NDA2_2019_Maths_PYQ.xlsx
+      out: "38a90f9a-4baa-47b4-8aa8-44cdcb79aae8",
+      in: "548cc682-896b-4239-aad3-abf168453c38",
+      why:
+        "UNANSWERABLE — A NEW DEFECT CLASS. The stem opens 'in respect of the ABOVE frequency distribution' and then asks whether the median lies in the modal class, but BOTH `set_id` and `context` are null, so the table it refers to is simply not there. Neither statement can be evaluated and all four options stay equally live. " +
+        "Worth recording because RULE 1 cannot see this: the builder excludes rows that HAVE a context, on the grounds that a set is all-or-nothing, but it has no guard against a row that NEEDS one and has lost it. The exclusion is one-directional. " +
+        "MEASURED, so nobody builds a probe for a problem that is not there: across all PUBLIC NDA Mathematics rows exactly TWO reference absent DATA ('above frequency distribution / data / table' with no table of their own), and this is one of them. A first pass counting every 'the above' matched 145 rows and was measuring the wrong thing — the overwhelming majority say 'which of the above statements', where the statements are listed in the stem itself and the row is perfectly self-contained. " +
+        "Unrepairable — the source .docx is not on disk, so the frequency table cannot be recovered, and inventing one would be fabrication. (Its second statement also reads 'The distribution is well-shaped', almost certainly a corruption of 'bell-shaped'.) Replaced by an NDA 2019-II PYQ in the SAME cell (Statistics / Central Tendency / MODERATE) which CARRIES ITS OWN frequency table in the stem — the property the outgoing row lacked.",
+    },
+    {
+      // Q166, Complex Numbers booklet -> Q13, NDA_Apr2025_QBank.xlsx
+      out: "f2d84cc0-3099-45fd-bd42-f1ef9748d71b",
+      in: "0f35c861-ec11-45b2-9439-87f3a0145f3a",
+      why:
+        "TWO OPTIONS DENOTE THE SAME DIRECTION, so the question turns on a convention rather than on mathematics. (1+i)^5 = 4*sqrt(2) cis(5pi/4); the booklet prints BOTH -3pi/4 (option b) and 5pi/4 (option d) and keys d. But 'amplitude' conventionally means the PRINCIPAL argument, in (-pi, pi], which -3pi/4 satisfies and 5pi/4 does not — so a student who reduces, as the standard definition requires, is marked wrong. Source-verified: our stem, all four options and the key are faithful to the printed page, so this is the book's defect, not ours. " +
+        "Not repaired by a key flip either: under a loose reading of 'amplitude' as any argument, BOTH letters are correct, so no single key makes the row sound. That is the same reason Mock 3's De Morgan pair was replaced rather than re-keyed. Replaced by an NDA Apr-2025 PYQ in the SAME cell (Complex Numbers / Modulus, Argument and Conjugate / MODERATE): ((sqrt3+i)/(sqrt3-i))^3, which is exactly cis(pi/3) cubed = -1 — a clean computation with no branch ambiguity.",
+    },
+  ],
+
   // ── Blueprint Mock 4 ──────────────────────────────────────────────────────
   "0232fca2-34bf-452b-96db-b41c17c8e52c": [
     {

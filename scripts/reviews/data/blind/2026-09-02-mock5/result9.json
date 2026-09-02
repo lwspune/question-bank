@@ -1,0 +1,47 @@
+[
+ {
+  "questionId": "57e3afd7-1462-4674-9846-f4f2724544d6",
+  "qnum": "8",
+  "derived": "A",
+  "value": "0 real roots. The sum expands to 3x^2 - 18x + 35, whose discriminant is -96 and whose minimum value is 8 (attained at x = 3); the roots are 3 +/- 2*sqrt(6)*i/3, both non-real.",
+  "confidence": "high",
+  "why": "A sum of squares of real numbers vanishes only if every term vanishes, and x = 1, x = 3, x = 5 have no common solution; confirmed independently by the negative discriminant and by the strictly positive vertex value 8.",
+  "flag": null
+ },
+ {
+  "questionId": "0f35c861-ec11-45b2-9439-87f3a0145f3a",
+  "qnum": "13",
+  "derived": "A",
+  "value": "-1 exactly. sqrt(3)+i = 2*exp(i*pi/6) and sqrt(3)-i = 2*exp(-i*pi/6), so the ratio is exp(i*pi/3) (modulus exactly 1, argument pi/3) and its cube is exp(i*pi) = -1 + 0i.",
+  "confidence": "high",
+  "why": "Modulus of the ratio is 1 and its argument is pi/3, so cubing triples the argument to pi and leaves the modulus at 1; sympy simplifies the cube to exactly -1, and the four options are pairwise distinct with only A matching.",
+  "flag": null
+ },
+ {
+  "questionId": "548cc682-896b-4239-aad3-abf168453c38",
+  "qnum": "110",
+  "derived": "B",
+  "value": "N = 240 with cumulative frequencies 3, 18, 63, 120, 170, 206, 231, 240. The 120th observation is 4 and the 121st is 5, so the strict median (mean of the two middle values) is 9/2 = 4.5, which is NOT among the options. The discrete-series rule 'size of the ((N+1)/2) = 120.5th item, located by cumulative frequency' gives 5. Mode = 4, mean = 1109/240 ~ 4.6208.",
+  "confidence": "low",
+  "why": "cf(4) = 120 falls exactly on N/2, so this is a knife-edge: checking the defining property (at least half the data on each side) shows BOTH 4 and 5 qualify while 6 and 7 do not, and the exact median is the interval [4,5] with midpoint 4.5. I pick B because the standard discrete-series tie-break (the ((N+1)/2)th item, i.e. the first cf >= 120.5, which is 170 at x = 5) gives 5, and because option A = 4 is exactly the mode, the classic distractor here; only the reading 'first cf >= N/2' yields 4.",
+  "flag": "MULTIPLE"
+ },
+ {
+  "questionId": "1d48a2f8-4e15-43b1-aa8c-f709eaba0bcb",
+  "qnum": "1829",
+  "derived": "B",
+  "value": "lambda = 8. With A = (10,3), B = (12,-5), C = (lambda,11): AB = (2,-8), AC = (lambda-10, 8), and the cross product AB x AC = 8*lambda - 64, which vanishes only at lambda = 8.",
+  "confidence": "high",
+  "why": "Confirmed three ways: the 2-D cross product 8*lambda-64 = 0; the line through the first two points is y = 43 - 4x, which reaches y = 11 at x = 8; and the 3x3 collinearity determinant is 0 only for option B (values -32, 0, 32, 112 for A-D).",
+  "flag": null
+ },
+ {
+  "questionId": "eef49939-b25f-4c63-882f-7d1dbcf975e7",
+  "qnum": "2973",
+  "derived": "B",
+  "value": "Order 2, degree 2, solving the equation EXACTLY AS PRINTED. Since p = dy/dx, the term dp/dx is d^2y/dx^2, so the highest-order derivative is y'' and the order is 2 (sympy ode_order agrees). Clearing the radical from y - x*y'' = sqrt(a^2*(y')^2 + b^2) gives x^2*(y'')^2 - 2*x*y*y'' + y^2 - a^2*(y')^2 - b^2 = 0, a polynomial in which y'' appears to the power 2 with leading coefficient x^2 (not identically zero); hence degree 2.",
+  "confidence": "high",
+  "why": "Degree is the power of the HIGHEST-ORDER derivative after the equation is made polynomial in the derivatives: that is y'', whose power is 2 (the power of y' is also 2 but is irrelevant, since y' is not the highest-order derivative). DISCREPANCY REPORTED SEPARATELY, NOT CORRECTED: the classic Clairaut form y = p*x + sqrt(a^2*p^2 + b^2) would give order 1, degree 2 = option D, so the printed dp/dx in place of p is exactly what moves the answer from D to B; I solved what is printed as instructed.",
+  "flag": null
+ }
+]

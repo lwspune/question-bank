@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "14ca2d3f-732e-402a-af61-db4cb4ffbae0",
+  "qnum": "2",
+  "derived": "A",
+  "value": "Foot of perpendicular = (5/3, 7/3, 17/3), reached at parameter t = 7/3 along B + t*(C-B)",
+  "confidence": "high",
+  "why": "Direction BC = (-1,-2,2); with P = (4-t, 7-2t, 1+2t), (P-A).BC = 9t-21 = 0 gives t = 7/3 exactly, so P = (5/3, 7/3, 17/3) and the perpendicularity residual is exactly 0. Options B, C, D are not even points of line BC (each was checked for membership), so only A is admissible."
+ },
+ {
+  "questionId": "f67b35c5-eddb-4952-8a98-8f137a8a3e32",
+  "qnum": "2",
+  "derived": "B",
+  "value": "1",
+  "confidence": "high",
+  "why": "1/log_k(n) = log_n(k), so the sum is log_n(2*3*...*2017) = log_n(2017!) = log_n(n) = 1. Verified numerically at 40 dps on the analogues n = m! for m = 5, 8, 12, 20, each returning exactly 1.000...; options C and D depend on n and are astronomically large, so no equivalence with B."
+ },
+ {
+  "questionId": "2a48dd75-4322-4b5a-8f28-6390ceebc5ed",
+  "qnum": "02-27",
+  "derived": "B",
+  "value": "sin B * sin C = 3/4",
+  "confidence": "high",
+  "why": "Area = (1/2)bc sin 60 = 4*sqrt(3) forces bc = 16, and the cosine rule a^2 = b^2+c^2-bc with a = 4 forces b^2+c^2 = 32, so (b-c)^2 = 0 and the triangle is equilateral with b = c = 4. Then sin B sin C = bc/(4R^2) with 2R = a/sin A = 8/sqrt(3), giving 16/(64/3) = 3/4 exactly (sympy solved the pair over positive reals and returned the single solution b=c=4)."
+ },
+ {
+  "questionId": "5acebec6-b214-460b-8fc6-163d2b33927f",
+  "qnum": "03-15",
+  "derived": "B",
+  "value": "(1101)_2 x (11)_2 = 13 x 3 = 39 = (100111)_2",
+  "confidence": "high",
+  "why": "Exact integer arithmetic: 13*3 = 39 and bin(39) = 100111. The other options decode to 37 (A), 61 (C) and 43 (D), all distinct from 39, so there is no ambiguity."
+ },
+ {
+  "questionId": "9e5a7dc6-81ed-4844-99b4-7ad3a1e669c5",
+  "qnum": "03-29",
+  "derived": "A",
+  "value": "angle A = 30 degrees (the triangle is 30-90-60)",
+  "confidence": "high",
+  "why": "A + B = 120 gives C = 60; the sine rule gives sin A = sin C * (a/c) = (sqrt(3)/2)/sqrt(3) = 1/2, so A = 30 or 150. A = 150 would force B = -30, so 30 is the unique admissible value; cross-checked that A=30, B=90, C=60 does reproduce a:c = sin30:sin60 = 1:sqrt(3) exactly."
+ },
+ {
+  "questionId": "923e5a62-5345-4b2a-8cf8-72a99661addc",
+  "qnum": "4",
+  "derived": "C",
+  "value": "736 committees",
+  "confidence": "high",
+  "why": "C(12,5) - C(8,5) = 792 - 56 = 736, confirmed independently by the direct sum over 1..4 ladies, C(4,L)*C(8,5-L), which also totals 736. No other option is within reach of a plausible alternative reading (720 = C(12,5)-C(8,5)-16 has no combinatorial meaning here)."
+ },
+ {
+  "questionId": "522d0359-f04e-482e-92a0-9683d45bdfa1",
+  "qnum": "6",
+  "derived": "A",
+  "value": "The plane by + cz + d = 0 has normal (0, b, c), which is orthogonal to (1,0,0), so it is parallel to the X-axis",
+  "confidence": "high",
+  "why": "The x-coefficient is zero, so the normal (0,b,c) dots to 0 with the X-axis direction and to b and c respectively with the Y- and Z-axis directions; only the X-axis dot product vanishes identically. (If d = 0 the plane contains the X-axis rather than being strictly parallel to it, but that degenerate case does not make any other option true.)"
+ },
+ {
+  "questionId": "57e3afd7-1462-4674-9846-f4f2724544d6",
+  "qnum": "8",
+  "derived": "A",
+  "value": "0 real roots (the quadratic is 3x^2 - 18x + 35 with discriminant -96 and minimum value 8)",
+  "confidence": "high",
+  "why": "A sum of three real squares vanishes only if all three vanish simultaneously, impossible for x = 1, 3, 5 at once. Expanding gives 3x^2 - 18x + 35, discriminant 324 - 420 = -96 < 0, minimum value 8 > 0, so both roots are non-real. The stem's LaTeX is slightly mis-zoned ('(x - 1) \\(\\ ^{2} + ...') but the expression is unambiguous."
+ },
+ {
+  "questionId": "c3d47fda-5f17-4743-a1a3-77f836de577e",
+  "qnum": "11",
+  "derived": "C",
+  "value": "30000 families",
+  "confidence": "high",
+  "why": "65% own neither, so 35% own at least one; inclusion-exclusion gives both% = 25 + 15 - 35 = 5%. Then 0.05N = 1500 gives N = 30000 exactly. Option D ('None of these') is not reached because 30000 is printed as option C."
+ },
+ {
+  "questionId": "0cb320a4-ef23-46e3-86b5-a7aa42f25250",
+  "qnum": "11",
+  "derived": "A",
+  "value": "conj(z)*omega = -i",
+  "confidence": "high",
+  "why": "Writing z = r1 e^{i t1}, w = r2 e^{i t2} with r1 r2 = |zw| = 1 and t1 - t2 = pi/2, conj(z)*w = r1 r2 e^{i(t2 - t1)} = e^{-i pi/2} = -i. Verified at 40 dps for four discriminating (r1, t2) pairs including r1 != 1 and negative t2: every one returned imaginary part exactly -1 with real part at rounding level (~1e-41)."
+ },
+ {
+  "questionId": "01d9b580-e5e3-46cd-a4a6-43cfd72b4174",
+  "qnum": "11",
+  "derived": "C",
+  "value": "A and B are disjoint: A intersection B = empty set",
+  "confidence": "high",
+  "why": "e^x = x has no real solution because g(x) = e^x - x has its unique critical point at x = 0 with g(0) = 1 > 0 and g'' > 0, so g >= 1 everywhere. (sympy returned a ConditionSet for e^x = x, i.e. 'I cannot solve it', which is not evidence either way - the minimum argument is the proof.) Neither inclusion option holds: (0,1) is in A but not B, and (0,0) is in B but not A, which also kills option D."
+ },
+ {
+  "questionId": "01a9d5a4-964b-46bd-b096-424935ad2a98",
+  "qnum": "14",
+  "derived": "C",
+  "value": "p = 3",
+  "confidence": "high",
+  "why": "With roots alpha and alpha^2, the product alpha^3 = 3/3 = 1, so alpha is a cube root of unity. alpha = 1 gives sum 2 and p = -6 (rejected, p > 0); alpha = omega or omega^2 gives sum -1 and p = 3. Verified in the other direction: of the four printed p-values only p = 3 yields roots (omega, omega^2) where one is the square of the other."
+ },
+ {
+  "questionId": "82b4742c-7d3f-41a1-b624-42b5cd5536d0",
+  "qnum": "24",
+  "derived": "C",
+  "value": "S_2n - S_n = n[2a + (3n-1)d]/2 = (1/3) S_3n",
+  "confidence": "high",
+  "why": "Symbolic expansion in a, d, n gives S_2n - S_n = n(2a + 3dn - d)/2, which sympy confirms is identically equal to (1/3)S_3n and identically different from 2S_n, S_3n and (1/2)S_n. Three discriminating numeric APs (a=1,d=1,n=2; a=5,d=-3,n=4; a=0,d=7,n=3) separate all four options, so there is no accidental coincidence."
+ },
+ {
+  "questionId": "3ddeae07-3b9b-4617-9f76-7b1038642fe7",
+  "qnum": "24",
+  "derived": "D",
+  "value": "S = {sqrt(2), -sqrt(2)}, exactly two elements",
+  "confidence": "high",
+  "why": "Solving the pair f(x) + 2f(1/x) = 3x and 2f(x) + f(1/x) = 3/x gives f(x) = 2/x - x (residual in the original equation is exactly 0). This f is odd, so f(x) = f(-x) forces f(x) = 0, i.e. x^2 = 2, giving exactly x = +/- sqrt(2); sympy's real solveset returns the finite set {-sqrt(2), sqrt(2)}."
+ },
+ {
+  "questionId": "576ae249-2f52-4b9c-be55-9057fe1b1ca7",
+  "qnum": "25",
+  "derived": "B",
+  "value": "512",
+  "confidence": "high",
+  "why": "The product of the 9 terms is a^9 r^(0+1+...+8) = a^9 r^36 = (a r^4)^9 = (T5)^9 = 2^9 = 512 (the exponent identity was confirmed symbolically). Three concrete GPs with T5 = 2 and very different ratios (3/2, 1/5, 7) all give product exactly 512, so 'None of these' is not in play."
+ }
+]

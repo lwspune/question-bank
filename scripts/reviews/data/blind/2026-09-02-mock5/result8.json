@@ -1,0 +1,137 @@
+[
+ {
+  "questionId": "b3bbf9d6-46d2-4ef0-92be-868cfbf4b8ea",
+  "qnum": "2273",
+  "derived": "C",
+  "value": "left-hand limit at pi/2 is 0, right-hand limit is 3, so the two-sided limit does not exist",
+  "confidence": "high",
+  "why": "As x -> pi/2 from below tan x -> +inf, so 3^(tan x) -> +inf and f -> 0; from above tan x -> -inf, so 3^(tan x) -> 0 and f -> 3/1 = 3 (sympy confirms limits 0 and 3). C is the only true statement: A and B swap the two sides and D is false because the one-sided limits differ. No two options assert the same thing.",
+  "flag": null
+ },
+ {
+  "questionId": "7decfe36-5fb3-448c-b41c-5708844ed5c3",
+  "qnum": "2294",
+  "derived": "C",
+  "value": "g'(x) = 1 + {g(x)}^5",
+  "confidence": "high",
+  "why": "Differentiating f(g(x)) = x gives f'(g(x)) g'(x) = 1, so g'(x) = 1/f'(g(x)) = 1 + {g(x)}^5. Option D (1 + x^5) is 1/f'(x), the reciprocal evaluated at the wrong argument, and equals C only in the special case g(x) = x, so the two options are not equivalent.",
+  "flag": null
+ },
+ {
+  "questionId": "7d42c39e-5e75-48cc-92b0-cbae6fef7895",
+  "qnum": "2375",
+  "derived": "D",
+  "value": "denominator 1 - cos 4x vanishes exactly on x = k*pi/2; of the four listed candidate points only 0 and pi/2 are discontinuities",
+  "confidence": "high",
+  "why": "solveset(1 - cos 4x = 0) = {k*pi/2}, and the numerator 1 + cos 5x is 2 at x=0 and 1 at x=pi/2, so both are genuine infinite discontinuities; at x=pi/4 the denominator is 1-cos(pi)=2 and at x=pi/6 it is 1-cos(2pi/3)=3/2, both non-zero, so A, B and C each contain a point where f is continuous. Note D is a PROPER SUBSET of the full discontinuity set {k*pi/2 : k in Z} (x=pi, 3pi/2, ... are also discontinuities); D is the complete set only if the domain is implicitly restricted to about [0, pi/2], but it is the only option containing no false member.",
+  "flag": null
+ },
+ {
+  "questionId": "768c84e9-cd57-4462-8d89-63eafe40268c",
+  "qnum": "2420",
+  "derived": "D",
+  "value": "y'(0) = (f'(0))^5 = 3^5 = 243",
+  "confidence": "high",
+  "why": "The stem nests f five times, and since f(0)=0 every inner argument is 0, so the chain rule gives y'(0) = f'(0)^5 = 243. Verified with two concrete functions satisfying f(0)=0, f'(0)=3 (f = 3x + 7x^2 and f = sin 3x); both give exactly 243, confirming the result depends only on f'(0). 3^4 = 81 (option C) is the four-fold-nesting distractor.",
+  "flag": null
+ },
+ {
+  "questionId": "623d3aa3-01f6-4c16-b518-e9cd5f7366ab",
+  "qnum": "2428",
+  "derived": "D",
+  "value": "dy/dx = -1/2 identically",
+  "confidence": "high",
+  "why": "cos x/(1 + sin x) = (cos(x/2) - sin(x/2))/(cos(x/2) + sin(x/2)) = tan(pi/4 - x/2), so y = pi/4 - x/2 on the principal branch and dy/dx = -1/2. sympy simplifies the derivative to the constant -1/2 and it evaluates to -1/2 at four discriminating points (x = 1/5, 1/2, -1/3, 9/10), and y - (pi/4 - x/2) is 0 to 166 digits at x = 3/7.",
+  "flag": null
+ },
+ {
+  "questionId": "97363d15-6413-4e41-9e54-b975ce941537",
+  "qnum": "2482",
+  "derived": "B",
+  "value": "(1-x^2)y2 - x*y1 = 2, a constant",
+  "confidence": "high",
+  "why": "From y1*sqrt(1-x^2) = 2*arcsin(x), differentiating and clearing the radical gives (1-x^2)y2 - x*y1 = 2. sympy simplifies the expression to exactly 2 and it evaluates to 2 at x = 1/3, -2/5 and 7/10. Since 2 is a printed option, the 'None of these' option D does not apply.",
+  "flag": null
+ },
+ {
+  "questionId": "900751af-2ebe-407f-a549-3d64c1d12288",
+  "qnum": "2490",
+  "derived": "B",
+  "value": "(1+x^2)y2 + (2x - m)y1 = 0",
+  "confidence": "high",
+  "why": "log y = m*arctan x gives (1+x^2)y1 = m*y; differentiating again gives (1+x^2)y2 + 2x*y1 = m*y1, i.e. (1+x^2)y2 + (2x-m)y1 = 0. Substituting y = exp(m*arctan x) into all four left-hand sides, only B simplifies to 0 (A gives 2m^2*y/(1+x^2), C gives -4mx*y/(1+x^2), D gives 2m(m-2x)*y/(1+x^2)), so the answer is unique.",
+  "flag": null
+ },
+ {
+  "questionId": "2d15302d-9b93-409c-8b40-40149335e1d3",
+  "qnum": "2507",
+  "derived": "B",
+  "value": "the points (3, 16/3) and (-3, -16/3)",
+  "confidence": "high",
+  "why": "Differentiating 16x^2 + 9y^2 = 400 with respect to t and imposing dy/dt = -dx/dt gives x'(32x - 18y) = 0, i.e. 16x = 9y; solving that simultaneously with the ellipse yields exactly {(3, 16/3), (-3, -16/3)}. Option A's points also lie on the ellipse but satisfy 16x = -9y, which is the condition for the ordinate to INCREASE at the abscissa's rate, so A is the sign distractor; C and D do not lie on the ellipse at all (16x^2+9y^2 = 25/144).",
+  "flag": null
+ },
+ {
+  "questionId": "a45c831f-1707-49fb-84bd-808aa711088a",
+  "qnum": "2669",
+  "derived": "D",
+  "value": "maximum distance = sqrt(23 + 8*sqrt 7) = 4 + sqrt 7 (about 6.6457513110646)",
+  "confidence": "high",
+  "why": "The curve is x^2/16 + y^2/9 = 1 with a=4, b=3, c=sqrt(16-9)=sqrt 7, so (sqrt 7, 0) is a focus and the farthest point is the far vertex (-4,0) at distance a+c. Exactly: with u = cos t, d^2 = 7u^2 - 8*sqrt(7)u + 16, whose only critical point u = 4*sqrt(7)/7 = 1.5119 lies outside [-1,1], so d^2 is decreasing on the range and maximal at u = -1, giving d^2 = 23 + 8*sqrt 7 = (4 + sqrt 7)^2 exactly.",
+  "flag": null
+ },
+ {
+  "questionId": "927363ef-f8db-495c-a375-98748e6673a6",
+  "qnum": "2688",
+  "derived": "D",
+  "value": "f(x) = sin 2x, so the integral of 4 f(x) is -2 cos 2x + c",
+  "confidence": "high",
+  "why": "The limit is the definition of the derivative of sin^2 x, which is 2 sin x cos x = sin 2x (sympy confirms the limit equals sin 2x), and integral of 4 sin 2x is -2 cos 2x + c; d/dx(-2cos 2x) = 4 sin 2x while d/dx(-cos 2x) = 2 sin 2x, so option C is the dropped-factor distractor. C and D differ by 4cos 2x, not by a constant, so they are not equivalent modulo c.",
+  "flag": null
+ },
+ {
+  "questionId": "93f9654e-ca0d-446e-9c10-2701feb16fad",
+  "qnum": "2720",
+  "derived": "A",
+  "value": "P = -2/15",
+  "confidence": "high",
+  "why": "Substituting t = 1-x gives -2t^(1/2) + (4/3)t^(3/2) - (2/5)t^(5/2) = (-2/15)sqrt(t)(15 - 10t + 3t^2), and 15 - 10(1-x) + 3(1-x)^2 = 3x^2 + 4x + 8, so P = -2/15. Differentiating each candidate: only P = -2/15 makes d/dx[P*sqrt(1-x)(3x^2+4x+8)] - x^2/sqrt(1-x) exactly 0; sympy's own antiderivative is 2*sqrt(1-x)*(-3x^2-4x-8)/15, the same thing.",
+  "flag": null
+ },
+ {
+  "questionId": "24b99f5c-da28-4673-b344-d1c58e2b5e5c",
+  "qnum": "2808",
+  "derived": "B",
+  "value": "the integral equals 0",
+  "confidence": "high",
+  "why": "log(1/x - 1) = log(1-x) - log x, and each of the integrals of log(1-x) and log x over [0,1] equals -1, so the difference is 0; equivalently the substitution x -> 1-x negates the integrand, forcing the value to 0. sympy returns exactly 0 and the numeric value is 0 to 108 digits. Since 0 is a printed option, 'None of these' does not apply.",
+  "flag": null
+ },
+ {
+  "questionId": "64b0a988-1e42-40b9-a639-6bc13f2487c6",
+  "qnum": "2904",
+  "derived": "C",
+  "value": "area = 2 square units",
+  "confidence": "high",
+  "why": "The curves meet where |x| = 2 - |x|, i.e. x = +/-1, and the region is the square with vertices (0,0), (1,1), (0,2), (-1,1) whose diagonals are both 2, giving area (1/2)(2)(2) = 2. Direct integration of (2 - 2|x|) over [-1,1] returns exactly 2.",
+  "flag": null
+ },
+ {
+  "questionId": "eef49939-b25f-4c63-882f-7d1dbcf975e7",
+  "qnum": "2973",
+  "derived": "B",
+  "value": "as printed the highest derivative is dp/dx = y'' (order 2) and squaring away the radical makes it appear to the second power (degree 2), so order 2, degree 2",
+  "confidence": "low",
+  "why": "Solved exactly as printed: isolating the radical and squaring gives x^2(y'')^2 - 2xy(y'') + y^2 - a^2(y')^2 - b^2 = 0, a polynomial of degree 2 in the highest derivative y'', so (order, degree) = (2, 2) = option B (sympy Poly degree in y'' = 2). STEM-CORRUPTION CAUTION: this is the classic Clairaut question y = p*x + sqrt(a^2 p^2 + b^2), which has order 1 and degree 2 = option D, and defining p = dy/dx and then writing dp/dx rather than p is exactly the shape of a transcription slip. Both readings have a printed option (B vs D) and neither can be eliminated structurally, so the letter turns entirely on whether 'dp/dx' is faithful to the source page - worth a source check.",
+  "flag": null
+ },
+ {
+  "questionId": "a3f70aed-36b2-480e-bf6b-b76bdeb79d41",
+  "qnum": "2992",
+  "derived": "A",
+  "value": "dy/dx = y/(2x)",
+  "confidence": "high",
+  "why": "Differentiating y^2 = 4ax gives 2y y' = 4a, so a = y y'/2; substituting back gives y^2 = 2xy y', i.e. y = 2x y' and dy/dx = y/(2x). Checked concretely on y = 2*sqrt(ax): y' = sqrt(a)/sqrt(x) = y/(2x) exactly, which distinguishes A from the sign and factor distractors B, C and D.",
+  "flag": null
+ }
+]

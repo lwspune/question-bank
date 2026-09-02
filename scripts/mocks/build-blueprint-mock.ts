@@ -211,6 +211,137 @@ const FILL_SETS: Record<string, Fill[]> = {
   //
   // Only two cells still need a cross-bank fill, and both are genuinely empty on
   // the NDA side rather than merely depleted.
+  // ── Mock 5 ────────────────────────────────────────────────────────────────
+  // Eleven cells short, twelve questions — the deepest shortfall yet, and every
+  // cell is one an earlier mock already drained. EIGHT come from NDA PYQs at the
+  // exact subtopic and difficulty (the Mock 4 finding, applied from the start).
+  //
+  // THE OTHER THREE CELLS WERE SEARCHED ACROSS EVERY BANK, and the measurement is
+  // worth keeping because it settles which board corpora can feed a printed mock
+  // at all. Free 4-option Maths MCQs, and how many carry NO worked solution:
+  //
+  //     CBSE Class 12              756 MCQs    0% unsolved
+  //     MH HSC Class 12            268 MCQs    0% unsolved
+  //     MH State Board Class 11    203 MCQs   65% unsolved
+  //     MH State Board Class 9      83 MCQs   71% unsolved
+  //     CBSE Class 11                0 MCQs   (that book contains none)
+  //
+  // MH Class 11 really does carry ~10 MCQs per chapter, but two thirds have no
+  // solution — including ALL THREE of its free HARD rows — and a printed mock
+  // needs an answer key with working, so those are unusable as they stand. Its
+  // two Trigonometry-II HARD rows are compound- and multiple-angle questions
+  // besides, not the sine/cosine rule this paper is short of. CBSE 12 and MH HSC
+  // 12 are fully solved and genuinely usable, but neither book teaches Binomial
+  // Theorem, Binary Numbers or Properties of Triangle, which are exactly the
+  // three cells still open. Hence Worksheets and JEE below.
+  "NDA Mathematics — Blueprint Mock 5 (120 Q)": [
+    {
+      chapter: "Probability",
+      subtopic: "Bounds on Probability",
+      difficulty: "HARD",
+      ids: ["0e9bc8db-5744-45aa-a450-a0cc6cb9c5b7"],
+      source: "NDA PYQ (2018 I, Q118)",
+      why:
+        "The LAST unused NDA PYQ at HARD in this subtopic — practice has had none for four papers running. Three probability laws to judge: P(A-B) = P(A)-P(B) when B is contained in A (true), P(exactly one of A, B) = P(A)+P(B)-P(A n B) (FALSE, it needs 2P(A n B)), and additivity for mutually exclusive events (true). A different attack again from Mocks 2-4, which used max-bound, min-bound and inclusion-exclusion.",
+    },
+    {
+      chapter: "Statistics",
+      subtopic: "Regression and Correlation",
+      difficulty: "HARD",
+      ids: ["aec23a99-c901-4c50-a672-211c0d8da55d"],
+      source: "NDA PYQ (2024 Sep, Q101)",
+      why:
+        "Practice still holds only 2 rows here, both MODERATE. This asks which of two given lines is the regression of y on x and which is x on y — a different skill from computing r, which Mocks 2 and 3 used, and from the acute angle, which Mock 4 used. The discriminator is that b_yx * b_xy = r^2 must not exceed 1: the naive pairing gives 7/6 and is impossible, the valid pairing gives 6/7, so b_xy + 7*b_yx = 3 + 2 = 5.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Sphere",
+      difficulty: "MODERATE",
+      ids: ["e2894b68-d7be-4e60-9f10-fd099f3ea067"],
+      source: "NDA PYQ (2021 II, Q64)",
+      why:
+        "Practice is exhausted for Sphere MODERATE. How many spheres of radius r touch all three coordinate axes: the centre (a,b,c) must satisfy b^2+c^2 = a^2+c^2 = a^2+b^2 = r^2, forcing a^2 = b^2 = c^2 = r^2/2 and leaving the eight sign choices. Distinct from Mock 4's sphere-touching-a-plane.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Distance, Section, and Collinearity in 3D",
+      difficulty: "HARD",
+      ids: ["6df1a6a5-27a6-416e-83b8-b09b15d8b148"],
+      source: "NDA PYQ (2025 Apr, Q62)",
+      why:
+        "Practice has 2 rows here and both are MODERATE — the same structural gap since Mock 2. Area of a rectangle from three vertices: AB = (1,3,-1) and BC = (2,-1,-1) have zero dot product, so they are adjacent sides and the area is sqrt(11)*sqrt(6) = sqrt(66). Purely distance-based, which is the subtopic's own topic, and distinct from Mock 4's collinearity count.",
+    },
+    {
+      chapter: "Differentiation",
+      subtopic:
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "EASY",
+      ids: ["6f6a1ee1-869e-4c41-b606-783a12efff57"],
+      source: "NDA PYQ (2021 I, Q84)",
+      why:
+        "The LAST unused NDA PYQ at EASY in this subtopic. The practice pool holds 24 free rows here but not one labelled EASY, the same gap Mock 4 met. f(x) = e^|x| has left derivative -1 and right derivative +1 at 0, so f'(0) does not exist — exactly the cell's concept at its level.",
+    },
+    {
+      chapter: "Applications of Integration",
+      subtopic: "Area Bounded by a Curve, Lines, and Axes",
+      difficulty: "EASY",
+      ids: ["ac86c5c3-edae-4635-b108-df74b538fa3a"],
+      source: "NDA PYQ (2017 II, Q77)",
+      why:
+        "NEW gap: the practice supply for this cell is used up across Mocks 1-4. The area enclosed by |x| + |y| = 1 is a square with diagonals of length 2 along the axes, so the area is 2. Chosen over the other four free PYQs here because the plain rectangle ones are trivial and this needs the student to recognise the locus first.",
+    },
+    {
+      chapter: "Properties of Triangle",
+      subtopic: "Sine and Cosine Rules — Solving Triangles",
+      difficulty: "HARD",
+      ids: [
+        "2a48dd75-4322-4b5a-8f28-6390ceebc5ed",
+        "9e5a7dc6-81ed-4844-99b4-7ad3a1e669c5",
+      ],
+      source: "Worksheets (its own 'Sine Rule' and 'Cosine Rule' subtopics)",
+      why:
+        "NOW EMPTY ON BOTH NDA AXES: Mock 2 took the last practice HARD rows and Mock 4 took the last two PYQs at HARD in this subtopic. Seven NDA PYQ HARD rows remain in the CHAPTER but all sit in Triangle Identities or In-circle Geometry, so using them would bend the subtopic rather than the source. Worksheets names the same two techniques as its own subtopics, and these are the computational ones rather than the definitional 'is this formula always true' rows that fill its Projection Rule subtopic. One of each: a = 4, Area = 4*sqrt(3), A = 60 deg gives sin B sin C = 3/4 (via bc = 16 and bc = 4R^2 sinB sinC); and A + B = 120 deg with a : c = 1 : sqrt(3) gives sin A = 1/2 hence A = 30 deg, the 150 deg root being excluded by the angle sum. Both verified by hand before selection.",
+    },
+    {
+      chapter: "Height & Distance",
+      subtopic: "Heights and Distances from Angles of Elevation",
+      difficulty: "HARD",
+      ids: ["a0d97a18-3dc5-4146-bb05-3836d6c47bed"],
+      source: "NDA PYQ (2017 II, Q36)",
+      why:
+        "Practice HARD has been empty here since Mock 3. A tower seen from the top and the foot of a pole at 30 and 45 degrees, with three printed relations between the two heights to judge — a multi-statement question, which is a shape this paper is otherwise thin on. Chosen over the spherical-balloon PYQ because that one's stored solution is 108 characters and would have needed rewriting under RULE 5 anyway.",
+    },
+    {
+      chapter: "Logarithms",
+      subtopic: "Logarithm Identities, Change of Base, and Sums",
+      difficulty: "MODERATE",
+      ids: ["f67b35c5-eddb-4952-8a98-8f137a8a3e32"],
+      source: "NDA PYQ (2018 I, Q2)",
+      why:
+        "NEW gap, and NO OTHER BANK CAN HELP: Logarithms is an NDA-only chapter — neither CBSE nor either State Board carries one, so the 14 free NDA rows in the chapter are the entire supply that exists. This is the change-of-base sum the subtopic is named for: 1/log_k(n) = log_n(k), so the sum telescopes to log_n(2*3*...*2017) = log_n(2017!) = log_n(n) = 1.",
+    },
+    {
+      chapter: "Binary Numbers",
+      subtopic: "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+      difficulty: "MODERATE",
+      ids: ["5acebec6-b214-460b-8fc6-163d2b33927f"],
+      source: "Worksheets",
+      why:
+        "Still genuinely empty on the NDA side — ZERO NDA PYQs in this subtopic at any difficulty, and no free practice row at MODERATE. Like Logarithms this is an NDA-only chapter, so no board bank can help either. Worksheets has a matching 'Binary Arithmetic' subtopic; this is MULTIPLICATION (1101 x 11 = 13 x 3 = 39 = 100111 in binary), where Mock 3 used addition-style and Mock 4 used division.",
+    },
+    {
+      chapter: "Binomial Theorem",
+      subtopic: "Integer and Fractional Parts of Binomial Expressions",
+      difficulty: "HARD",
+      ids: ["3bd0768f-7b46-417d-9151-a68655f494da"],
+      source: "JEE Mains 2026 (labelled MODERATE there — see the note)",
+      why:
+        "Empty on the NDA side for the third paper running. The one remaining NDA row in this subtopic is MODERATE and is also defective — 'k < (sqrt2+1)^3 < k+2 for natural k' has value 5*sqrt2 + 7 = 14.07, which BOTH k = 13 and k = 14 satisfy, so it is not used. MH State Board Class 11 has a free HARD Binomial MCQ but it is a general-term question, not integral parts, and carries no solution. " +
+        "The JEE row is the conjugate-surd argument that IS this subtopic's technique: (7+4*sqrt3)(7-4*sqrt3) = 1, so (7-4*sqrt3)^25 lies in (0,1) and the integral part of (7+4*sqrt3)^25 is one less than an even integer, hence odd. Its companion statement (25^13 + 20^13 + 8^13 + 3^13 divisible by 7) is true too, checked mod 7 as 4+6+1+3 = 14. " +
+        "LABELLED MODERATE IN JEE, so the recorded split is E30/M59/H31 rather than E30/M58/H32 — reported as BUILT, not as designed, exactly as in Mocks 3 and 4. RULE 2a says a JEE MODERATE sits nearer an NDA HARD.",
+    },
+  ],
+
   "NDA Mathematics — Blueprint Mock 4 (120 Q)": [
     {
       chapter: "Probability",

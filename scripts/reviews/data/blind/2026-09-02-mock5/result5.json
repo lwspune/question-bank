@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "59075f0b-017e-4113-bf04-35fe1c2cc1ba",
+  "qnum": "198",
+  "derived": "B",
+  "value": "alpha^2+beta^2 = (a-2)^2 + 2(a+1) = a^2 - 2a + 6 = (a-1)^2 + 5, minimised at a = 1 (least value 5)",
+  "confidence": "high",
+  "why": "Vieta gives alpha+beta = a-2 and alpha*beta = -(a+1), so alpha^2+beta^2 = (a-2)^2 - 2(-(a+1)) = a^2-2a+6, a upward parabola with vertex at a=1; sympy confirms values 9, 6, 5, 6 at a = -1, 0, 1, 2, and the discriminant a^2+8 > 0 keeps the roots real for every a so no option is excluded on realness."
+ },
+ {
+  "questionId": "860378c1-33f5-44bd-8157-67cb74e26d73",
+  "qnum": "226",
+  "derived": "A",
+  "value": "a_0 + a_3 + a_6 + ... = (f(1)+f(w)+f(w^2))/3 = (3^n + 0 + 0)/3 = 3^(n-1)",
+  "confidence": "high",
+  "why": "Cube-root-of-unity filter: 1+w+w^2 = 0 kills f(w) and f(w^2), leaving 3^n/3; brute-force expansion for n = 1..7 gives 1, 3, 9, 27, 81, 243, 729, matching 3^(n-1) exactly (option B, 3n, coincides only at the single point n=3 and fails everywhere else, so there is no ambiguity in the general formula)."
+ },
+ {
+  "questionId": "87bd59ef-a572-4fb8-ab10-760b964b217c",
+  "qnum": "240",
+  "derived": "B",
+  "value": "252 three-digit numbers contain at least one digit 2",
+  "confidence": "high",
+  "why": "Complement over the 900 numbers 100-999: no digit 2 gives 8*9*9 = 648 (hundreds digit excludes 0 and 2), so 900 - 648 = 252; an exhaustive loop over 100..999 counting '2' in the decimal string returns 252 independently."
+ },
+ {
+  "questionId": "dd7f6a55-30df-4243-9f9d-7d0cb21a9d90",
+  "qnum": "280",
+  "derived": "B",
+  "value": "720 arrangements of TRIANGLE begin with A and end with N",
+  "confidence": "high",
+  "why": "TRIANGLE has 8 letters, all distinct (T,R,I,A,N,G,L,E), so fixing A first and N last leaves 6 distinct letters free: 6! = 720; a brute-force count over all 8! permutations filtering first=='A' and last=='N' returns 720."
+ },
+ {
+  "questionId": "a4dda453-7b70-4404-baa3-d1a8658cdf47",
+  "qnum": "307",
+  "derived": "A",
+  "value": "T_(n+1) - T_n = C(n+1,3) - C(n,3) = C(n,2) = n(n-1)/2 = 10 gives n = 5",
+  "confidence": "high",
+  "why": "A regular polygon has no three vertices collinear, so T_n = C(n,3); Pascal's rule makes the difference C(n,2), and n(n-1)/2 = 10 gives n^2-n-20 = 0 with the positive root n = 5. Tabulating the difference for n = 4..11 gives 6, 10, 15, 21, 28, 36, 45, 55, so 10 occurs at n = 5 only and the other options (10, 8, 7) give 45, 28, 21."
+ },
+ {
+  "questionId": "2eabae93-573b-4381-9437-e9ac91547eb4",
+  "qnum": "324",
+  "derived": "B",
+  "value": "sum of C(15,k) for k = 3,5,...,15 equals 16369 = 2^14 - 15",
+  "confidence": "high",
+  "why": "The full odd-index sum for n = 15 is 2^14 = 16384; the series starts at k = 3, so it omits C(15,1) = 15, giving 16369. Exact integer summation confirms 16369, and the four options evaluate to 16384, 16369, 16399, 16383, so only B matches."
+ },
+ {
+  "questionId": "3a93cfac-b272-44e1-ab59-ab681283b65a",
+  "qnum": "384",
+  "derived": "C",
+  "value": "T2/T3 = 2a/((n-1)b) and T3/T4 of (a+b)^(n+3) = 3a/((n+1)b); equating gives 2(n+1) = 3(n-1), so n = 5",
+  "confidence": "high",
+  "why": "With T_(r+1) = C(n,r) a^(n-r) b^r, the two ratios reduce to 2a/((n-1)b) and 3a/((n+3-2)b) = 3a/((n+1)b), independent of a and b beyond the common factor a/b, so the equation is purely in n and gives n = 5. Sympy evaluated both ratios symbolically at n = 3, 4, 5, 6: only n = 5 makes them equal (both a/(2b))."
+ },
+ {
+  "questionId": "9f0e1f81-2f9a-421b-a15b-086f80e7c3cf",
+  "qnum": "478",
+  "derived": "D",
+  "value": "a_4 = 7/3 and h_7 = 18/7, so a_4*h_7 = 6",
+  "confidence": "high",
+  "why": "AP common difference is (3-2)/9 = 1/9 so a_4 = 2 + 3/9 = 7/3; the reciprocals of the HP are an AP with difference (1/3 - 1/2)/9 = -1/54, so 1/h_7 = 1/2 - 6/54 = 7/18 and h_7 = 18/7, giving exactly 6 in Fraction arithmetic. The standard identity a_r * h_(11-r) = a_1*a_10 = 6 holds for all r = 1..10 in the computed table, confirming the value."
+ },
+ {
+  "questionId": "a1e25059-1dce-4626-a2f0-2b6672b39030",
+  "qnum": "542",
+  "derived": "A",
+  "value": "x = -3 (the true inverse of [[2,1],[0,x]] is [[1/2, -1/(2x)],[0, 1/x]], and -1/(2x) = 1/6 forces x = -3)",
+  "confidence": "high",
+  "why": "The (1,1) and (2,2) entries of the printed inverse hold for every x, so the only discriminating entry is (1,2): -1/(2x) = 1/6 gives x = -3. Substituting each option back and inverting the full 2x2 matrix, only x = -3 reproduces the printed [[1/2, 1/6],[0, 1/x]] = [[1/2, 1/6],[0, -1/3]]; x = 3 gives -1/6 there, x = -2 gives 1/4, x = 6 gives -1/12."
+ },
+ {
+  "questionId": "213af383-9fbd-4db2-9407-8277a317d508",
+  "qnum": "574",
+  "derived": "A",
+  "value": "|A| = 25*alpha, so |A^2| = 625*alpha^2 = 25 gives alpha = +/- 1/5 and |alpha| = 1/5",
+  "confidence": "high",
+  "why": "A is upper triangular with diagonal 5, alpha, 5, so its determinant is the product 25*alpha (sympy agrees) and |A^2| = |A|^2 = 625*alpha^2; setting that to 25 gives alpha^2 = 1/25 and both roots +/-1/5 have modulus 1/5. The options 1/5, 5, 25, 1 are pairwise distinct, and alpha = 0 is excluded since it would make |A^2| = 0."
+ },
+ {
+  "questionId": "3a9929fe-eab5-4323-ab18-0c7d90ca686c",
+  "qnum": "575",
+  "derived": "B",
+  "value": "f(x) = cos x - 2x + (2 + cos x + 2 sin x - cos x log(1+x)) x^2 - 2x^3, whose Maclaurin coefficient of x is -2 (= f'(0))",
+  "confidence": "high",
+  "why": "Expanding along the third row gives f(x) = x^2[2(1+sin x) - cos x log(1+x)] - (1+x^2)(2x - cos x); every x^2-multiplied piece starts at x^2, so the only linear contribution is -2x from -(1)(2x) while cos x has no linear term. Sympy's series to x^3 is 1 - 2x + 5x^2/2 - x^3 and the direct derivative f'(0) = -2 agrees; -1, 0 and 1 are all excluded."
+ },
+ {
+  "questionId": "fa08abbb-e3a4-462c-93b8-c3497ec54b86",
+  "qnum": "587",
+  "derived": "A",
+  "value": "determinant = 0 (row2 - row3 = [4,4,4] = row1, so the rows are linearly dependent)",
+  "confidence": "high",
+  "why": "For every non-zero t, (t + 1/t)^2 - (t - 1/t)^2 = 4 identically, so R2 - R3 reproduces R1 exactly and the determinant vanishes for all a, b, c. Sympy simplifies the symbolic determinant to 0, and three unrelated numeric triples (2,3,5), (1/2,7,-3), (11,-2,3/4) all give 0 while 4abc there is 120, -42, -66 - so B, C, D are wrong for generic values and only the identically-zero option survives."
+ },
+ {
+  "questionId": "f5a246b7-9030-4c90-915a-c17d141538e0",
+  "qnum": "609",
+  "derived": "D",
+  "value": "first determinant = 6 - 3 = 3, second = 2 - 2/3 = 4/3, product = 4; option D log_3 5 * log_5 81 = 4 exactly",
+  "confidence": "high",
+  "why": "In natural logs the first determinant is (6L3/L5)(L5/L3) - (L5/L3)(3L3/L5) = 6 - 3 = 3 and the second is log_5 9 (log_3 5 - log_27 5) = (2L3/L5)(L5/L3)(1 - 1/3) = 4/3, so the product is exactly 4 (sympy simplifies it to the integer 4 at 30 digits). The bare number 4 is not printed, but option D equals log_3 5 * log_5 3^4 = 4 identically; the four options 1, 6, log_5 9 (= 1.3652...) and 4 are pairwise distinct, so there is a unique match."
+ },
+ {
+  "questionId": "6a61de96-6507-46d6-8025-8c4817b19368",
+  "qnum": "644",
+  "derived": "B",
+  "value": "A^2 = 19I, so A^-1 = A/19 and k = 1/19",
+  "confidence": "high",
+  "why": "Direct multiplication gives A^2 = [[19,0],[0,19]] = 19I (det A = -19), hence A^-1 = A/19; sympy's explicit inverse [[2/19, 3/19],[5/19, -2/19]] equals (1/19)A entrywise and solving A^-1 = kA returns the single solution k = 1/19. The options 19, 1/19, -19, -1/19 are distinct scalars, so the sign and reciprocal traps are both excluded."
+ },
+ {
+  "questionId": "5e364f29-fa2b-4385-b813-ca6891d23fe7",
+  "qnum": "755",
+  "derived": "B",
+  "value": "probability = 2*6!/7! = 1440/5040 = 2/7",
+  "confidence": "high",
+  "why": "Glue the two particular persons into one block: 6! orderings of the 6 units times 2 internal orders = 1440 favourable out of 7! = 5040, i.e. exactly 2/7. An exhaustive enumeration of all 5040 permutations counting those with the two persons adjacent returns 1440, matching the Fraction 2/7."
+ }
+]

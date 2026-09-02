@@ -1,0 +1,137 @@
+[
+ {
+  "questionId": "397465e2-e8b0-4c15-823c-8df4d11641c5",
+  "qnum": "772",
+  "derived": "A",
+  "value": "10/243 = C(5,4)(1/3)^4(2/3) ~ 0.041152",
+  "confidence": "high",
+  "why": "P(3)=2/6=1/3, P(blank=0)=4/6=2/3; a total of 12 in 5 throws requires exactly four 3s and one blank. Exhaustive enumeration of all 2^5 outcomes gives exactly 5 favourable patterns and total probability 10/243, which equals option A; B=80/243, C=5/243, D=25/486 are all distinct from it.",
+  "flag": null
+ },
+ {
+  "questionId": "7b91a230-1ea7-4eee-a56e-4787f0ea262c",
+  "qnum": "785",
+  "derived": "A",
+  "value": "5/8 = 0.625",
+  "confidence": "high",
+  "why": "P(2nd blue) = (3/8)(5/7) + (5/8)(4/7) = 15/56 + 20/56 = 35/56 = 5/8, matching the symmetry result that the unconditional draw probability is the same for every position. Option B (8/5) exceeds 1 and is impossible as a probability, so no ambiguity.",
+  "flag": null
+ },
+ {
+  "questionId": "2cfa8768-1c36-4f51-a68c-57ad2aa57964",
+  "qnum": "806",
+  "derived": "A",
+  "value": "89/180 ~ 0.494444",
+  "confidence": "high",
+  "why": "P(A n B) = P(B|A)P(A) = (1/15)(1/12) = 1/180, so P(A u B) = 1/12 + 5/12 - 1/180 = 90/180 - 1/180 = 89/180. The alternative misreading P(A|B)=1/15 would give 85/180, which is not among the options, confirming the printed conditioning.",
+  "flag": null
+ },
+ {
+  "questionId": "92133641-40be-40f6-8801-a220eb347c9d",
+  "qnum": "933",
+  "derived": "B",
+  "value": "new mean 11.25, new SD 2.5",
+  "confidence": "high",
+  "why": "y = (x-5)/4 is affine, so mean_y = (50-5)/4 = 45/4 = 11.25 and SD_y = |1/4| * 10 = 2.5 (the shift does not affect spread). Option A's 22.5 would correspond to dividing by 2 rather than 4, and C/D differ from 11.25 in the mean only.",
+  "flag": null
+ },
+ {
+  "questionId": "c0b92d83-620e-4c55-8c99-46628fa1f449",
+  "qnum": "950",
+  "derived": "C",
+  "value": "sqrt(24) = 2*sqrt(6) ~ 4.898979",
+  "confidence": "high",
+  "why": "31..47 is n=17 consecutive integers with mean 39; the sum of squared deviations is 408, so the population variance is 408/17 = 24 and the SD is 2*sqrt(6), agreeing exactly with sqrt((n^2-1)/12) = sqrt(288/12). Option B misuses 47 as n; the sample (n-1) SD sqrt(102)/2 ~ 5.05 matches no option, so the population convention is the intended one.",
+  "flag": null
+ },
+ {
+  "questionId": "164cf1a2-533a-4a2f-a57a-6f6162ebc6f1",
+  "qnum": "1034",
+  "derived": "B",
+  "value": "r = 110/pi ~ 35.014 m, exactly 35 m with pi = 22/7",
+  "confidence": "high",
+  "why": "arc = r*theta with theta = 72 deg = 2pi/5, so r = 44*5/(2pi) = 110/pi; with the paper's implied pi = 22/7 this is exactly 35 m. The other candidate radii give arcs of 56.57, 27.66 and 70.4 m, none close to 44.",
+  "flag": null
+ },
+ {
+  "questionId": "d3171edb-17a6-44ef-9e4d-0094eca6c2bb",
+  "qnum": "1052",
+  "derived": "D",
+  "value": "identically 8*cos(2*theta)",
+  "confidence": "high",
+  "why": "sin3t/sint = 2cos2t+1 and cos3t/cost = 2cos2t-1, so the expression is (2cos2t+1)^2 - (2cos2t-1)^2 = 8cos2t; sympy confirms simplify(expr - 8cos2t) = 0 exactly and mpmath agrees to 20 digits at five generic angles. No substantive option carries 8cos(2theta): option A reads 8cos(theta), which coincides with the true value ONLY at theta = +-2pi/3 (so a spot-check there would have falsely confirmed it), and option C reads (1/8)cos(2theta), equal only where cos2theta = 0. As printed, 'None of these' is therefore the correct letter, but option A is almost certainly a corrupted '8 cos 2(theta)' with the 2 dropped.",
+  "flag": "NO_OPTION"
+ },
+ {
+  "questionId": "d0b88db9-dac9-4770-b39b-0c9f54ed9b1b",
+  "qnum": "1075",
+  "derived": "B",
+  "value": "k = 2",
+  "confidence": "high",
+  "why": "With u = x/3, cot 2u + tan u = (cos2u cos u + 2 sin^2 u cos u)/(sin2u cos u) = cos u/(2 sin u cos^2 u) = 1/sin 2u = cosec 2u, so kx/3 = 2x/3 and k = 2. sympy gives simplify(LHS - cosec(2x/3)) = 0 exactly and a non-zero residue for k = 1, 3 and -1; numeric checks at four generic x agree only for k = 2.",
+  "flag": null
+ },
+ {
+  "questionId": "da3fc2d4-0085-43b3-aa8a-fd06ecc8a58f",
+  "qnum": "1123",
+  "derived": "A",
+  "value": "tan(alpha+beta) = 1 identically, so alpha+beta = pi/4",
+  "confidence": "high",
+  "why": "The numerator a/(a+1) + 1/(2a+1) and the denominator 1 - a/((a+1)(2a+1)) both reduce to (2a^2+2a+1)/((a+1)(2a+1)), so tan(alpha+beta) = 1 for every admissible a (sympy simplifies it to exactly 1, and a numeric sweep over positive and negative a returns pi/4). Among the options only pi/4 has tangent 1 (tan(pi/3)=sqrt3, tan(pi/2) undefined, tan(pi)=0), so the choice is unambiguous.",
+  "flag": null
+ },
+ {
+  "questionId": "bef9f876-f785-4aee-a999-08eecbd7614e",
+  "qnum": "1133",
+  "derived": "D",
+  "value": "alpha+beta = pi/4",
+  "confidence": "high",
+  "why": "tan(alpha+beta) = (5/6 + 1/11)/(1 - 5/66) = (61/66)/(61/66) = 1 exactly, and since both tangents are positive and less than 1 both angles lie in (0, pi/4), so the sum is pi/4 rather than 5pi/4; mpmath gives atan(5/6)+atan(1/11) - pi/4 = 0 to 25 digits.",
+  "flag": null
+ },
+ {
+  "questionId": "bba2ecf6-c8da-4da4-994e-0298d5e05b84",
+  "qnum": "1134",
+  "derived": "B",
+  "value": "1/2 exactly",
+  "confidence": "high",
+  "why": "Sum_{k=1..5} cos((2k-1)pi/11) = sin(10pi/11)/(2 sin(pi/11)) = sin(pi/11)/(2 sin(pi/11)) = 1/2, since sin(10pi/11) = sin(pi/11). mpmath at 50 dps returns exactly 0.5 and sympy's nsimplify gives 1/2; the other options (-1/2, 1, 0) are far away.",
+  "flag": null
+ },
+ {
+  "questionId": "5a01ab19-bb01-4774-bc5f-df63761ade2e",
+  "qnum": "1195",
+  "derived": "C",
+  "value": "solution set = {x = n*pi + pi/4}; the sin x = -1 family is extraneous",
+  "confidence": "low",
+  "why": "Multiplying through by cos x factors the equation as (1 + sin x)(tan x - 1)cos x = 0. The tan x = 1 branch gives x = n*pi + pi/4 and checks out numerically at pi/4 and 5pi/4. The sin x = -1 branch forces cos x = 0, where tan x is undefined, so those points lie OUTSIDE the domain of the printed equation and are extraneous roots introduced by that multiplication - sympy's solveset over the reals returns exactly {2n*pi + pi/4} U {2n*pi + 5pi/4} = {n*pi + pi/4} and explicitly excludes -pi/2. Option C is therefore the complete and correct solution set, while option A is a strict superset containing a domain-violating family. FLAGGED FOR HUMAN ADJUDICATION: the naive textbook factorisation yields option A, so the printed key is quite likely A; the disagreement is about whether the sin x = -1 branch is admissible, not about arithmetic. Options B and D are wrong on their first family (x = 0 and x = pi/6 both fail the equation numerically).",
+  "flag": null
+ },
+ {
+  "questionId": "3854401b-af4c-4147-81ae-a24ee595d78c",
+  "qnum": "1314",
+  "derived": "B",
+  "value": "[0, pi/2)",
+  "confidence": "high",
+  "why": "t = x^2/(1+x^2) attains 0 at x = 0 and tends to 1 as |x| -> infinity but never reaches it (t = 1 has no real solution), so t ranges over [0, 1); arcsin is increasing there, giving y in [0, pi/2) with 0 attained and pi/2 not. The four options are four genuinely different sets, and only B is closed at 0 and open at pi/2.",
+  "flag": null
+ },
+ {
+  "questionId": "740c86d5-a7ba-4df0-b109-fed02b627f30",
+  "qnum": "1387",
+  "derived": "C",
+  "value": "2*sqrt(126)/65 = 6*sqrt(14)/65 ~ 0.34538376",
+  "confidence": "high",
+  "why": "With sin(theta) = sqrt(63/65), cos(theta) = sqrt(2/65), so sin 2theta = 2 sqrt(63/65) sqrt(2/65) = 2 sqrt(126)/65 = 6 sqrt(14)/65 ~ 0.345384, matching mpmath to 30 digits. The other options evaluate to 0.9769, 0.1221 and 0.4961 and are pairwise distinct; the no-radical reading sin(2 arcsin(63/65)) = 2016/4225 matches no option, confirming the printed sqrt.",
+  "flag": null
+ },
+ {
+  "questionId": "6c4e10c4-bc08-4b9c-9bfe-2b8f13ab6305",
+  "qnum": "1416",
+  "derived": "D",
+  "value": "53",
+  "confidence": "high",
+  "why": "Testing all three ways of pairing the four points into diagonals, only {(0,0),(12,11)} with {(7,2),(5,9)} share a midpoint (6, 11/2), so the cyclic order is (0,0),(7,2),(12,11),(5,9); adjacent side vectors from the origin are u = (7,2) and v = (5,9) with u+v = (12,11). Area = |u x v| = |7*9 - 2*5| = 53, independently confirmed by the shoelace formula in exact rational arithmetic.",
+  "flag": null
+ }
+]
