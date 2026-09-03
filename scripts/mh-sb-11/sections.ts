@@ -623,6 +623,60 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
   ],
 
+  // Ch.4 Laws of Motion: the standard three-block shape, correctly numbered
+  // 1, 2, 3 — so unlike Ch.9 Optics and Ch.5 Gravitation it needs no
+  // disambiguator. Note the first block is printed "Choose the correct ANSWER",
+  // not the "correct option" its siblings print.
+  "laws-of-motion-11-phy": [
+    { group: "4. Laws of Motion — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.4."] },
+    { group: "Exercises", label: "Choose the correct answer", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.5 Gravitation: FOUR exercise blocks, and the book misnumbers them
+  // **1, 2, 2, 4** — it prints "2. Answer the following questions." and then
+  // "2. Answer the following questions in detail.", and the block after that is
+  // printed "4.".
+  //
+  // ⚠ This is the SAME printed defect as Ch.9 Optics and it gets the OPPOSITE
+  // treatment, for a reason worth keeping. Optics prints 1, 2, 2, 3 — there IS
+  // already a block numbered 3, so the duplicate cannot be renumbered without
+  // colliding, and it takes an `Ex Q.2b` disambiguator. Gravitation prints
+  // 1, 2, 2, 4 — there is NO block 3 and the sequence resumes at 4, so the
+  // intended numbering is unambiguously 1-2-3-4 and the second "2" is simply a
+  // typo for "3". Renumbering fills a real gap and collides with nothing, so the
+  // refs are the plain `Ex Q.3`. Check which case you have before copying either.
+  "gravitation-11-phy": [
+    { group: "5. Gravitation — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.5."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer the following questions in detail", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+  ],
+
+  // Ch.1 Units and Measurements: the standard three-block shape.
+  // ⚠ The book prints its third heading as "Solve numarical examples." — the
+  // typo is the book's. It is preserved verbatim in each row's `context`, which
+  // is what a student sees on /browse; the `label` here is our own navigation
+  // chrome and uses the correct spelling, matching every sibling chapter.
+  "units-measurements-11-phy": [
+    { group: "1. Units and Measurements — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.1."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve numerical examples", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.3 Motion in a Plane: the standard three-block shape, third block printed
+  // "Solve the following problems." rather than the "numerical examples" wording
+  // its siblings use.
+  "motion-in-a-plane-11-phy": [
+    { group: "3. Motion in a Plane — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.3."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
   // Ch.9 Optics: FOUR exercise blocks, and the book numbers them 1, 2, 2, 3 —
   // it prints "2. Answer the following questions." and then "2. Answer the
   // following questions in detail." as two separate blocks. Hence the `Ex Q.2b`

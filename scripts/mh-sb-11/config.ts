@@ -1274,6 +1274,106 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Thermistor",
     ],
   },
+
+  // ── WAVE 2 ────────────────────────────────────────────────────────────────
+  // Measured before dispatch (whole-file scans, 2026-09-03). The strict
+  // `Example\s*\d+\.\d+` and the loose `\bExample\s*\d` counts AGREE for all
+  // four, so none of these carries the dropped-prefix defect that made Optics
+  // read as 8 examples when it has 14 — but the reconciliation is still owed
+  // per chapter, because a stranded example is invisible downstream.
+  //
+  //   Gravitation             22pp   11 Ex / 11 Sol   12 [Ans:]   245 PYQ
+  //   Units and Measurements  15pp    7 Ex /  7 Sol   15 [Ans:]   241 PYQ
+  //   Motion in a Plane       17pp    9 Ex /  9 Sol   11 [Ans:]   240 PYQ
+  //   Laws of Motion          31pp   14 Ex / 13 Sol   17 [Ans:]   202 PYQ
+  //
+  // ⚠ Laws of Motion is the outlier twice over: it is the LARGEST chapter in
+  // the volume (31pp, 100.8k chars) and its 14-vs-13 gap means one worked
+  // example prints NO `Solution :` label, the working starting straight in.
+  // Units and Measurements has the best gate coverage of any Physics chapter
+  // so far at 15 printed answers in 15 pages.
+  "gravitation-11-phy": {
+    id: "gravitation-11-phy",
+    chapterName: "Gravitation",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Gravitation.pdf",
+    pdf: phy11("05. Gravitation.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Gravitation (Balbharati Physics textbook)",
+    subtopics: [
+      "Kepler's Laws",
+      "Universal Law of Gravitation",
+      "Measurement of the Gravitational Constant (G)",
+      "Acceleration due to Gravity",
+      "Variation in the Acceleration due to Gravity",
+      "Gravitational Potential and Potential Energy",
+      "Earth Satellites",
+    ],
+  },
+  "units-measurements-11-phy": {
+    id: "units-measurements-11-phy",
+    chapterName: "Units and Measurements",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Units_and_Measurements.pdf",
+    pdf: phy11("01. Units and Measurements.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Units and Measurements (Balbharati Physics textbook)",
+    subtopics: [
+      "System of Units",
+      "Measurement of Length",
+      "Measurement of Mass",
+      "Measurement of Time",
+      "Dimensions and Dimensional Analysis",
+      "Accuracy, Precision and Uncertainty in Measurement",
+      "Errors in Measurements",
+      "Significant Figures",
+    ],
+  },
+  "motion-in-a-plane-11-phy": {
+    id: "motion-in-a-plane-11-phy",
+    chapterName: "Motion in a Plane",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Motion_in_a_Plane.pdf",
+    pdf: phy11("03. Motion in a Plane.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Motion in a Plane (Balbharati Physics textbook)",
+    // Taken at SUB-section grain (3.3.x, 3.4.x): the three top-level headings
+    // alone would put a 17pp chapter into 3 buckets, with everything from
+    // projectiles to relative velocity in one of them.
+    subtopics: [
+      "Rectilinear Motion",
+      "Average and Instantaneous Velocities",
+      "Average and Instantaneous Acceleration",
+      "Equations of Motion in a Plane",
+      "Relative Velocity",
+      "Projectile Motion",
+      "Uniform Circular Motion",
+    ],
+  },
+  "laws-of-motion-11-phy": {
+    id: "laws-of-motion-11-phy",
+    chapterName: "Laws of Motion",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Laws_of_Motion.pdf",
+    pdf: phy11("04. Laws of Motion.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Laws of Motion (Balbharati Physics textbook)",
+    subtopics: [
+      "Aristotle's Fallacy",
+      "Newton's Laws of Motion",
+      "Inertial and Non-Inertial Frames of Reference",
+      "Types of Forces",
+      "Work Energy Theorem",
+      "Principle of Conservation of Linear Momentum",
+      "Collisions",
+      "Impulse of a Force",
+      "Moment of a Force and Torque",
+      "Couple and its Torque",
+      "Mechanical Equilibrium",
+      "Centre of Mass",
+      "Centre of Gravity",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

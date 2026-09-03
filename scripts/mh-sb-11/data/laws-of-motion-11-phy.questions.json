@@ -1,0 +1,808 @@
+[
+  {
+    "ref": "Solved Ex.4.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "stem": "A hose pipe used for gardening is ejecting water horizontally at the rate of \\(0.5\\) m/s. Area of the bore of the pipe is \\(10\\) cm\\(^2\\). Calculate the force to be applied by the gardener to hold the pipe horizontally stationary.",
+    "solution": "If ejecting water horizontally is considered as action force on the water, the water exerts a backward force (called recoil force) on the pipe as the reaction force.\n\n\\(\\vec{F} = \\frac{d\\vec{p}}{dt} = \\frac{d\\left(m\\vec{v}\\right)}{dt} = \\frac{dm}{dt}\\vec{v} + m\\frac{d\\vec{v}}{dt}\\)\n\nAs v, the velocity of ejected water is constant, \\(F = \\frac{dm}{dt}\\vec{v}\\), where \\(\\frac{dm}{dt}\\) is the rate at which mass of water is ejected by the pipe.\n\nAs the force is in the direction of velocity (horizontal), we can use scalars.\n\n\\(\\therefore F = \\frac{dm}{dt}v\\)\n\n\\(\\frac{dm}{dt} = \\frac{d\\left(V\\rho\\right)}{dt} = \\frac{d\\left(Al\\rho\\right)}{dt} = A\\rho\\frac{dl}{dt} = A\\rho v\\)\n\nwhere \\(V\\) = volume of water ejected\n\n\\(A\\) = area of cross section of bore = \\(10\\) cm\\(^2\\)\n\n\\(\\rho\\) = density of water = \\(1\\) g/cc\n\n\\(l\\) = length of the water ejected in time \\(t\\)\n\n\\(\\frac{dl}{dt} = v\\) = velocity of water ejected = \\(0.5\\) m/s = \\(50\\) cm/s\n\n\\(F = \\frac{dm}{dt}v = \\left(A\\rho v\\right)v = A\\rho v^2 = 10 \\times 1 \\times 50^2\\)\n\n\\(= 25000\\) dyne \\(= 0.25\\) N\n\nEqual and opposite force must be applied by the gardener.",
+    "_note": "Printed inconsistency (does NOT affect the answer): the line 'As v, the velocity of ejected water is constant' prints a scalar \\(F\\) equated to a vector \\(\\vec{v}\\) term, i.e. \\(F = \\frac{dm}{dt}\\vec{v}\\). The book itself resolves this on the very next line ('we can use scalars') where it writes \\(\\therefore F = \\frac{dm}{dt}v\\). Transcribed as printed. Arithmetic verified: \\(10 \\times 1 \\times 50^2 = 25000\\) dyne \\(= 0.25\\) N (cgs units throughout)."
+  },
+  {
+    "ref": "Solved Ex.4.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "stem": "Three identical point masses are fixed symmetrically on the periphery of a circle. Obtain the resultant gravitational force on any point mass \\(M\\) at the centre of the circle. Extend this idea to more than three identical masses symmetrically located on the periphery. How far can you extend this concept?",
+    "solution": "(i) Figure below shows three identical point masses \\(m\\) on the periphery of a circle of radius \\(r\\). Mass \\(M\\) is at the centre of the circle. Gravitational forces on \\(M\\) due to these masses are attractive and are directed as shown.\n\nIn magnitude, \\(F_{MA} = F_{MB} = F_{MC} = \\frac{GMm}{r^2}\\)\n\n[Figure: a circle of radius \\(r\\) with centre \\(M\\). Three equal point masses \\(m\\) sit on the circumference at \\(A\\) (top), \\(B\\) (lower left) and \\(C\\) (lower right), spaced \\(120^\\circ\\) apart. From \\(M\\) an arrow \\(F_{MA}\\) points up towards \\(A\\), an arrow \\(F_{MB}\\) points down-left towards \\(B\\) and an arrow \\(F_{MC}\\) points down-right towards \\(C\\). The resolved components are also drawn from \\(M\\): a horizontal arrow to the left labelled \\(F_{MB}\\cos 60^\\circ\\) and a horizontal arrow to the right labelled \\(F_{MC}\\sin 60^\\circ\\), together with two arrows pointing vertically downwards labelled \\(F_{MB}\\cos 60^\\circ\\) and \\(F_{MC}\\cos 60^\\circ\\).]\n\nForces \\(F_{MB}\\) and \\(F_{MC}\\) are resolved along \\(F_{MA}\\) and perpendicular to \\(F_{MA}\\) as shown. Components perpendicular to \\(F_{MA}\\) cancel each other. Components along \\(F_{MA}\\) are \\(F_{MB}\\cos 60^\\circ = F_{MC}\\cos 60^\\circ = \\frac{1}{2}F_{MA}\\) each. Magnitude of their resultant is \\(F_{MA}\\) and its direction is opposite to that of \\(F_{MA}\\). Thus, the resultant force on mass \\(M\\) is zero.\n\n(ii) For any even number of equal masses, the force due to any mass \\(m\\) is balanced (cancelled) by diametrically opposite mass. For any odd number of masses, as seen for 3, the components perpendicular to one of them cancel each other while the components parallel to one of these add up in such a way that the resultant is zero for any number of identical masses \\(m\\) located symmetrically on the periphery.\n\n(iii) As the number of masses tends to infinity, their collective shape approaches circumference of the circle, which is nothing but a ring. Thus, the gravitational force exerted by a ring mass on any other mass at its centre is zero.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Circle of radius r centred at M with three equal masses m at A (top), B (lower left), C (lower right), 120 degrees apart; attraction vectors F_MA (up), F_MB (down-left), F_MC (down-right) drawn from M, plus the two horizontal (perpendicular) components and the two downward components along the line opposite to F_MA.",
+    "_note": "Figure label misprint (does NOT affect the printed conclusion): the LEFT horizontal arrow is labelled \\(F_{MB}\\cos 60^\\circ\\) while the RIGHT horizontal arrow — the equal and opposite component of the same magnitude — is labelled \\(F_{MC}\\sin 60^\\circ\\). Verified at high magnification on the page image: the left label reads 'cos', not 'sin'. Both horizontal components are perpendicular to \\(F_{MA}\\) and equal \\(F\\sin 60^\\circ\\), so the left label should read \\(F_{MB}\\sin 60^\\circ\\); as printed it is also self-contradictory within the same figure, since the two DOWNWARD components are (correctly) labelled \\(F_{MB}\\cos 60^\\circ\\) and \\(F_{MC}\\cos 60^\\circ\\). Transcribed as printed. The prose derivation and the result (resultant on \\(M\\) is zero) are correct."
+  },
+  {
+    "ref": "Solved Ex.4.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "stem": "A car of mass \\(1.5\\) ton is running at \\(72\\) kmph on a straight horizontal road. On turning the engine off, it stops in \\(20\\) seconds. While running at the same speed, on the same road, the driver observes an accident \\(50\\) m in front of him. He immediately applies the brakes and just manages to stop the car at the accident spot. Calculate the braking force.",
+    "solution": "On turning the engine off,\n\n\\(u = 20\\,\\mathrm{m\\ s}^{-1}\\), \\(v = 0\\), \\(t = 20\\,s\\)\n\n\\(\\therefore a = \\frac{v - u}{t} = -1\\,\\mathrm{m\\ s}^{-2}\\)\n\nThis is frictional retardation (negative acceleration).\n\nAfter seeing the accident,\n\n\\(u = 20\\,\\mathrm{m\\ s}^{-1}\\), \\(v = 0\\), \\(s = 50\\,\\mathrm{m}\\)\n\n\\(\\therefore a_1 = \\frac{v^2 - u^2}{2s} = -4\\,\\mathrm{m\\ s}^{-2}\\)\n\nThis retardation is the combined effect of braking and friction. Thus, braking retardation \\(= 4 - 1 = 3\\,\\mathrm{m\\ s}^{-2}\\).\n\n\\(\\therefore\\) Braking force = mass \\(\\times\\) braking retardation \\(= 1500 \\times 3 = 4500\\) N",
+    "_note": "Derivation checked and internally consistent: \\(72\\) kmph \\(= 20\\) m s\\(^{-1}\\); \\(a = (0-20)/20 = -1\\) m s\\(^{-2}\\); \\(a_1 = (0-400)/(2\\times 50) = -4\\) m s\\(^{-2}\\); braking retardation \\(3\\) m s\\(^{-2}\\); \\(1.5\\) ton \\(= 1500\\) kg gives \\(4500\\) N."
+  },
+  {
+    "ref": "Solved Ex.4.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "EASY",
+    "stem": "Over a given region, a force (in newton) varies as \\(F = 3x^2 - 2x + 1\\). In this region, an object is displaced from \\(x_1 = 20\\) cm to \\(x_2 = 40\\) cm by the given force. Calculate the amount of work done.",
+    "solution": "\\(W = \\int_{s_1}^{s_2} F.ds = \\int_{0.2}^{0.4} \\left(3x^2 - 2x + 1\\right)dx\\)\n\n\\(= \\left[x^3 - x^2 + x\\right]_{0.2}^{0.4}\\)\n\n\\(= \\left[0.4^3 - 0.4^2 + 0.4\\right] - \\left[0.2^3 - 0.2^2 + 0.2\\right]\\)\n\n\\(= 0.304 - 0.168 = 0.136\\,\\mathrm{J}\\)",
+    "_note": "Derivation checked and internally consistent: \\(0.064 - 0.16 + 0.4 = 0.304\\); \\(0.008 - 0.04 + 0.2 = 0.168\\); difference \\(= 0.136\\) J. The displacement limits are correctly converted from cm to m (\\(20\\) cm \\(\\to 0.2\\), \\(40\\) cm \\(\\to 0.4\\)) even though the stem states them in cm."
+  },
+  {
+    "ref": "Solved Ex.4.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "stem": "Figure (a) shows a fixed pulley. A massless inextensible string with masses \\(m_1\\) and \\(m_2 > m_1\\) attached to its two ends is passing over the pulley. Such an arrangement is called an Atwood machine. Calculate accelerations of the masses and force due to the tension along the string assuming axle of the pulley to be frictionless.",
+    "solution": "[Fig. (a): a pulley fixed to a rigid support, with a string passing over it carrying the mass \\(m_1\\) hanging on the left and the mass \\(m_2\\) hanging on the right. The force due to tension \\(T\\) acts upwards along the string on each mass, while the weights \\(m_1 g\\) and \\(m_2 g\\) act vertically downwards.]\n\n**Method I:** Direct method: As \\(m_2 > m_1\\), mass \\(m_2\\) is moving downwards and mass \\(m_1\\) is moving upwards.\n\nNet downward force\n\n\\(= F = \\left(m_2\\right)g - \\left(m_1\\right)g = \\left(m_2 - m_1\\right)g\\)\n\nAs the string is inextensible, both the masses travel the same distance in the same time. Thus, their accelerations are numerically the same (one upward, other downward). Let it be \\(a\\).\n\nThus, total mass in motion, \\(M = m_2 + m_1\\)\n\n\\(\\therefore a = \\dfrac{F}{M} = \\left(\\dfrac{m_2 - m_1}{m_2 + m_1}\\right)g\\)\n\nFor mass \\(m_1\\), the upward force is the force due to tension \\(T\\) and downward force is \\(mg\\). It has upward acceleration \\(a\\). Thus, \\(T - m_1 g = ma\\)\n\n\\(\\therefore T = m_1(g + a)\\)\n\nUsing the expression for \\(a\\), we get\n\n\\(T = \\left(\\dfrac{2m_1 m_2}{m_1 + m_2}\\right)g\\)\n\n**Method II:** (Free body equations)\n\n[Fig. (b) and Fig. (c): free body diagram of \\(m_1\\) - the force due to tension \\(T\\) acting vertically upwards and the weight \\(m_1 g\\) acting vertically downwards; free body diagram of \\(m_2\\) - the force due to tension \\(T\\) acting vertically upwards and the weight \\(m_2 g\\) acting vertically downwards.]\n\nFree body diagrams of \\(m_1\\) and \\(m_2\\) are as shown in Figs. (b) and (c).\n\nThus, for the first body, \\(T - m_1 g = m_1 a\\) --- (I)\n\nFor the second body, \\(m_2 g - T = m_2 a\\) --- (II)\n\nAdding (I) and (II), and solving for \\(a\\),\n\nwe get, \\(a = \\left(\\dfrac{m_2 - m_1}{m_2 + m_1}\\right)g\\) --- (III)\n\nSolving Eqs. (II) and (III) for \\(T\\), we get,\n\n\\(T = m_2(g - a) = \\left(\\dfrac{2m_1 m_2}{m_1 + m_2}\\right)g\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. (a) is the Atwood-machine setup (fixed pulley, string over it, m1 hanging left and m2 hanging right, tension T up on each mass, weights m1g and m2g down). Method II additionally prints two separate free body diagrams, one per mass, each showing T upwards and the weight downwards. The stem states the arrangement fully in words, so no step is unanswerable without the figures; they are the setup, not the answer.",
+    "_note": "Two printed defects, neither answer-affecting. (1) In Method II BOTH figure captions are printed as \"Fig. (b)\" while the sentence immediately below them reads \"Free body diagrams of m1 and m2 are as shown in Figs. (b) and (c)\" - the second caption should read \"Fig. (c)\". (2) In Method I the book prints \"downward force is mg\" and \"T - m_1 g = ma\" using a bare m where m_1 is meant; the very next line correctly writes T = m_1(g + a). Both transcribed as printed. All three expressions for T were checked numerically and agree (m1(g+a) = m2(g-a) = 2m1m2 g/(m1+m2))."
+  },
+  {
+    "ref": "Solved Ex.4.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "stem": "One marble collides head-on with another identical marble at rest. If the collision is partially inelastic, determine the ratio of their final velocities in terms of coefficient of restitution \\(e\\).",
+    "solution": "According to conservation of momentum, \\(m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2\\)\n\nAs \\(m_1 = m_2\\), we get, \\(u_1 + u_2 = v_1 + v_2\\)\n\n\\(\\therefore\\) If \\(u_2 = 0\\), we get, \\(v_1 + v_2 = u_1\\) ... (I)\n\nCoefficient of restitution,\n\n\\(e = \\dfrac{v_2 - v_1}{u_1 - u_2}\\)  \\(\\therefore v_2 - v_1 = e u_1\\) ... (II)\n\nDividing Eq. (I) by Eq. (II),\n\n\\(\\dfrac{v_1 + v_2}{v_2 - v_1} = \\dfrac{1}{e}\\)\n\nUsing componendo and dividendo, we get,\n\n\\(\\dfrac{v_2}{v_1} = \\dfrac{1 + e}{1 - e}\\)"
+  },
+  {
+    "ref": "Solved Ex.4.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "stem": "A shell of mass 3 kg is dropped from some height. After falling freely for 2 seconds, it explodes into two fragments of masses 2 kg and 1 kg. Kinetic energy provided by the explosion is 300 J. Using \\(g = 10 \\text{ m/s}^{2}\\), calculate velocities of the fragments. Justify your answer if you have more than one options.",
+    "solution": "\\(m_1 + m_2 = 3\\) kg.\n\nAfter falling freely for 2 seconds,\n\n\\(v = u + at = 0 + 10(2) = 20 \\text{ m s}^{-1} = u_1 = u_2\\)\n\nAccording to conservation of linear momentum, \\(m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2\\)\n\n\\(\\therefore 3 \\times 20 = 2v_1 + 1v_2\\)  \\(\\therefore v_2 = 60 - 2v_1\\) --- (I)\n\nK.E. provided = Final K.E. \\(-\\) Initial K.E. \\(= \\dfrac{1}{2}m_1 v_1^2 + \\dfrac{1}{2}m_2 v_2^2 - \\dfrac{1}{2}\\left(m_1 + m_2\\right)u^2\\)\n\n\\(\\therefore \\dfrac{1}{2}2v_1^2 + \\dfrac{1}{2}v_2^2 - \\dfrac{1}{2}3(20)^2 = 300 \\text{ J}\\)\n\nor \\(2v_1^2 + v_2^2 = 1800\\)\n\nor \\(2v_1^2 + \\left(60 - 2v_1\\right)^2 = 1800\\) using Eq. (I)\n\n\\(\\therefore 3600 - 240v_1 + 6v_1^2 = 1800\\)\n\n\\(\\therefore v_1^2 - 40v_1 + 300 = 0\\)\n\n\\(\\therefore v_1 = 30 \\text{ m s}^{-1}\\) or \\(10 \\text{ m s}^{-1}\\) and\n\n\\(v_2 = 0\\) or \\(40 \\text{ m s}^{-1}\\)\n\nThere are two possible answers since the positions of two fragments can be different as explained below.\n\nIf \\(v_1 = 30 \\text{ m s}^{-1}\\) and \\(v_2 = 0\\), lighter fragment 2 should be above. On the other hand, if \\(v_1 = 10 \\text{ m s}^{-1}\\) and \\(v_2 = 40 \\text{ m s}^{-1}\\), lighter fragment 2 should be below, both moving downwards."
+  },
+  {
+    "ref": "Solved Ex.4.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "stem": "Bullets of mass 40 g each, are fired from a machine gun at a rate of 5 per second towards a firmly fixed hard surface of area \\(10 \\text{ cm}^{2}\\). Each bullet hits normal to the surface at 400 m/s and rebounds in such a way that the coefficient of restitution for the collision between bullet and the surface is 0.75. Calculate average force and average pressure experienced by the surface due to this firing.",
+    "solution": "For the collision,\n\n\\(u_1 = 400 \\text{ m s}^{-1}\\), \\(e = 0.75\\), \\(v_1 = ?\\)\n\nFor the firmly fixed hard surface, \\(u_2 = v_2 = 0\\)\n\n\\(e = 0.75 = \\dfrac{v_1 - v_2}{u_2 - u_1} = \\dfrac{v_1 - 0}{0 - 400}\\)  \\(\\therefore v_1 = -300\\) m/s.\n\n-ve sign indicates that the bullet rebounds in exactly opposite direction.\n\nChange in momentum of each bullet \\(= m\\left(v_1 - u_1\\right)\\)\n\nEqual and opposite will be the momentum transferred to the surface, per collision.\n\n\\(\\therefore\\) Momentum transferred to the surface, per collision\n\n\\(p = m\\left(u_1 - v_1\\right) = 0.04\\left(400 - \\left[-300\\right]\\right) = 28 \\text{ N s}\\)\n\nThe rate of collision is same as rate of firing.\n\n\\(\\therefore\\) Momentum received by the surface per second, \\(\\dfrac{dp}{dt} = 28 \\times 5 = 140 \\text{ N}\\)\n\nThis must be the average force experienced by the surface of area \\(A = 10 \\text{ cm}^{2} = 10^{-3} \\text{ m}^{2}\\)\n\n\\(\\therefore\\) Average pressure experienced,\n\n\\(P = \\dfrac{F}{A} = \\dfrac{140}{10^{-3}} = 1.4 \\times 10^{5} \\text{ N m}^{-2}\\)\n\n\\(\\approx 1.4\\) times the atmospheric pressure."
+  },
+  {
+    "ref": "Solved Ex.4.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Impulse of a Force",
+    "difficulty": "MODERATE",
+    "stem": "Mass of an Oxygen molecule is \\(5.35 \\times 10^{-26}\\) kg and that of a Nitrogen molecule is \\(4.65 \\times 10^{-26}\\) kg. During their Brownian motion (random motion) in air, an Oxygen molecule travelling with a velocity of 400 m/s collides elastically with a nitrogen molecule travelling with a velocity of 500 m/s in the exactly opposite direction. Calculate the impulse received by each of them during collision. Assuming that the collision lasts for 1 ms, how much is the average force experienced by each molecule?",
+    "solution": "Let\n\n\\(m_1 = m_{\\text{O}} = 5.35 \\times 10^{-26}\\ \\text{kg}\\),\n\n\\(m_2 = m_{\\text{N}} = 4.65 \\times 10^{-26}\\ \\text{kg}\\).\n\n\\(\\therefore u_1 = 400\\ \\text{m s}^{-1}\\ \\text{and}\\ u_2 = -500\\ \\text{m s}^{-1}\\)\n\ntaking direction of motion of Oxygen molecule as the positive direction.\n\nFor an elastic collision,\n\n\\(v_1 = \\left(\\dfrac{m_1 - m_2}{m_1 + m_2}\\right) u_1 + \\left(\\dfrac{2m_2}{m_1 + m_2}\\right) u_2\\)  and\n\n\\(v_2 = \\left(\\dfrac{m_2 - m_1}{m_1 + m_2}\\right) u_2 + \\left(\\dfrac{2m_1}{m_1 + m_2}\\right) u_1\\)\n\n\\(\\therefore v_1 = -437\\ \\text{m s}^{-1}\\ \\text{and}\\ v_2 = 463\\ \\text{m s}^{-1}\\)\n\n\\(\\therefore J_{\\text{O}} = m_{\\text{O}}\\left(v_1 - u_1\\right) = -4.478 \\times 10^{-23}\\ \\text{N s}\\),\n\n\\(J_{\\text{N}} = m_{\\text{N}}\\left(v_2 - u_2\\right) = +4.478 \\times 10^{-23}\\ \\text{N s}\\)\n\nAs expected, the net impulse or net change in momentum is zero.\n\n\\(F_{\\text{ON}} = \\dfrac{dp_{\\text{O}}}{dt} = \\dfrac{J_{\\text{O}}}{\\Delta t} = \\dfrac{-4.478 \\times 10^{-23}}{10^{-3}}\\)\n\n\\(= -4.478 \\times 10^{-20}\\ \\text{N}\\)\n\nand \\(F_{\\text{NO}} = -F_{\\text{ON}} = 4.478 \\times 10^{-20}\\ \\text{N}\\)",
+    "_note": "The book prints NO 'Solution' label for this example. The worked solution begins directly after the question with the word 'Let'. Every step of the printed derivation was checked and is internally consistent (v1 = -437, v2 = +463, J = 4.478e-23 N s, F = 4.478e-20 N)."
+  },
+  {
+    "ref": "Solved Ex.4.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "MODERATE",
+    "stem": "A uniform wooden plank of mass 30 kg is supported symmetrically by two light identical cables; each can sustain a tension up to 500 N. After tying, the cables are exactly vertical and are separated by 2 m. A boy of mass 50 kg, standing at the centre of the plank, is interested in walking on the plank. How far can he walk? \\((g = 10\\ \\text{m s}^{-2})\\)",
+    "solution": "Let \\(T_1\\) and \\(T_2\\) be the tensions along the cables, both acting vertically upwards.\n\n[Figure: the plank hangs from a ceiling by two vertical cables carrying tensions \\(T_1\\) (left) and \\(T_2\\) (right), whose points of attachment on the plank are 2 m apart. The centre of the plank is marked 1 m from the left cable; the 300 N weight of the plank acts downwards there, and the boy's 500 N weight acts downwards at the point where he stands.]\n\nWeight of the plank 300 N is acting vertically downwards through the centre, 1 m from either cable. Weight of the boy, 500 N is vertically downwards at the point where he is standing.\n\n\\(\\therefore T_1 + T_2 = 300 + 500 = 800\\ \\text{N}\\)\n\nSuppose that the boy is able to walk \\(x\\) m towards the right. Obviously, the tension in the right side cable goes on increasing as he walks towards the cable.\n\nMoments of 300 N and 500 N forces about left end A are clockwise, while that of \\(T_2\\) is anticlockwise.\n\nAs the cable can sustain 500 N, \\(\\left(T_2\\right)_{\\text{max}} = 500\\ \\text{N}\\)\n\nThus, for the equilibrium about A, we can write,\n\n\\(300 \\times 1 + 500 \\times \\left(1 + x\\right) = 500 \\times 2\\)  \\(\\therefore x = 0.4\\ \\text{m}\\)\n\nThus, the boy can walk up to 40 cm on either side of the centre.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Plank suspended from a ceiling by two vertical cables 2 m apart (tensions T1 and T2); 1 m mark from the left cable to the plank's centre; downward 300 N (plank) and 500 N (boy) arrows.",
+    "_note": "The printed solution takes moments 'about left end A', but the point A is NOT labelled anywhere in the accompanying figure (the figure labels only T1, T2, 2m, 1m, 300N, 500N). From the moment equation (the T2 arm is 2 m) A is evidently the attachment point of the LEFT CABLE, not the left end of the plank. The arithmetic is internally consistent: 300 + 500(1+x) = 1000 gives x = 0.4 m."
+  },
+  {
+    "ref": "Solved Ex.4.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "HARD",
+    "stem": "A ladder of negligible mass having a cross bar is resting on a frictionless horizontal floor with angle between its legs to be \\(40^\\circ\\). Each leg is 1 m long. Calculate the force experienced by the cross bar when a person of mass 50 kg is standing on the ladder. \\((g = 10\\ \\text{m s}^{-2})\\)",
+    "solution": "Tension \\(T\\) along the cross bar is horizontal. Let \\(L\\) be the length of each leg, which is 1 m.\n\n[Figure: the ladder is drawn as an inverted V (A-frame) standing on the floor, the two legs meeting at the apex with the \\(40^\\circ\\) angle between them. The weight \\(W\\) of the person acts vertically downwards at the apex. A horizontal cross bar joins the two legs part-way down and is shown pulling inwards on each leg with tension \\(T\\). Vertical normal reactions \\(N\\) act upwards at the two feet.]\n\nAs there is no friction, there is no horizontal reaction at the floor. Reaction \\(N\\) given by the floor at the base of the ladder will then be only vertical. Thus, along the vertical, two such reactions balance weight \\(W = mg\\) of the person.\n\n\\(\\therefore N = \\dfrac{mg}{2} = 250\\ \\text{N}\\)\n\nAt the left leg, about the upper end, the torque due to \\(N\\) is clockwise and that due to the tension \\(T\\) is anticlockwise. For equilibrium, these two torques should have same magnitude.\n\n\\(\\therefore N.L\\sin 20^\\circ = T.\\left(\\dfrac{L}{2}\\right)\\cos 20^\\circ\\)\n\n\\(\\therefore T = 2N\\tan 20^\\circ = 2 \\times 250 \\times 0.364 = 182\\ \\text{N}\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "A-frame ladder on a horizontal floor, 40 degrees between the legs; weight W down at the apex, horizontal cross bar with inward tensions T at the mid-points of the legs, vertical reactions N up at both feet.",
+    "_note": "Two things about the printed figure. (1) It marks the right leg in TWO segments, apex-to-cross-bar labelled '1m' and cross-bar-to-floor labelled '1m', which reads as a 2 m leg and contradicts the stem's 'Each leg is 1 m long' and the solution's L = 1 m with the cross bar at L/2. The final answer is unaffected because L cancels out of N.L.sin20 = T.(L/2).cos20, giving T = 2N tan20. (2) The book sets the degree sign as a superscript zero (20^0, 40^0); transcribed here as 20 degrees / 40 degrees. Arithmetic checked: tan 20 = 0.3640, so 2 x 250 x 0.364 = 182 N, consistent."
+  },
+  {
+    "ref": "Solved Ex.4.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass",
+    "difficulty": "MODERATE",
+    "stem": "A letter 'E' is prepared from a uniform cardboard with shape and dimensions as shown in the figure. Locate its centre of mass.\n\n[Figure: the letter E is 3 cm wide and 5 cm tall and is made up of ten 1 cm squares whose centres are marked with dots numbered 1 to 10. The top arm is the row of three squares 1, 2, 3; below it the single square 4 continues the vertical spine; the middle arm is the pair of squares 5 and 6 (two squares wide only); below that the single square 7 continues the spine; and the bottom arm is the row of three squares 8, 9, 10. A brace marks the 1 cm height of the middle arm.]",
+    "solution": "As the sheet is uniform, each square can be taken to be equivalent to mass \\(m\\) concentrated at its respective centre. These masses will then be at the points labelled with numbers 1 to 10, as shown in figure. Let us select the origin to be at the left central mass \\(m_5\\), as shown and all the co-ordinates to be in cm.\n\nBy symmetry, the centre of mass of \\(m_1\\), \\(m_2\\) and \\(m_3\\) will be at \\(m_2\\ \\left(1,\\ 2\\right)\\) having effective mass \\(3m\\). Similarly, effective mass \\(3m\\) due to \\(m_8\\), \\(m_9\\) and \\(m_{10}\\) will be at \\(m_9\\ \\left(1,\\ -2\\right)\\). Again, by symmetry, the centre of mass of these two (\\(3m\\) each) will have co-ordinates \\(\\left(1,\\ 0\\right)\\). Mass \\(m_6\\) is also having co-ordinates \\(\\left(1,\\ 0\\right)\\). Thus, the effective mass at \\(\\left(1,\\ 0\\right)\\) is \\(7m\\).\n\nUsing symmetry for \\(m_4\\), \\(m_5\\) and \\(m_7\\), there will be effective mass \\(3m\\) at the origin \\(\\left(0,\\ 0\\right)\\).\n\nThus, effectively, \\(3m\\) and \\(7m\\) are separated by 1 cm along \\(x\\)-direction. \\(y\\)-coordinate is not required.\n\n\\(x_c = \\dfrac{m_1x_1 + m_2x_2}{m_1 + m_2} = \\dfrac{3 \\times 0 + 7 \\times 1}{3 + 7} = 0.7\\ \\text{cm}\\)\n\nAlternately, for two point masses, the centre of mass divides the distance between them in the inverse ratio of their masses. Hence, 1 cm is divided in the ratio 7:3. \\(\\therefore x_c = \\dfrac{7}{7 + 3} \\times 1 = 0.7\\ \\text{cm}\\) from \\(3m\\), i.e., from the origin at \\(m_c\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "The letter E as a 3 cm x 5 cm grid of ten 1 cm squares with their centres dotted and numbered 1-10 (top arm 1,2,3; spine square 4; middle arm 5,6; spine square 7; bottom arm 8,9,10).",
+    "_note": "The stem gives no dimensions in words at all - the shape, the 3 cm x 5 cm envelope and the numbering 1..10 exist only in the figure, so the question is unanswerable without it; the figure is therefore described inside the stem. Also, the closing phrase prints 'from the origin at \\(m_c\\)' with a lowercase-c subscript, but the origin was defined at \\(m_5\\) and no mass \\(m_c\\) exists in this problem - transcribed as printed. All arithmetic checks out (3m at (0,0), 7m at (1,0), x_c = 0.7 cm)."
+  },
+  {
+    "ref": "Solved Ex.4.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass",
+    "difficulty": "MODERATE",
+    "stem": "Three thin walled uniform hollow spheres of radii 1cm, 2 cm and 3 cm are so located that their centres are on the three vertices of an equilateral triangle ABC having each side 10 cm. Determine centre of mass of the system.",
+    "solution": "Mass of a thin walled uniform hollow sphere is proportional to its surface area, (as density is constant) hence proportional to \\(r^2\\). Thus, if mass of the sphere at A is \\(m_{\\text{A}} = m\\), then \\(m_{\\text{B}} = 4m\\) and \\(m_{\\text{C}} = 9m\\). By symmetry of the spherical surface, their centres of mass are at their respective centres, i.e., at A, B and C.\n\n[Figure: the equilateral triangle ABC of side 10 cm, drawn with A at the top apex carrying the sphere of radius 1 cm and mass \\(m\\), B at the bottom-right vertex carrying the sphere of radius 2 cm and mass \\(4m\\), and C at the bottom-left vertex carrying the sphere of radius 3 cm and mass \\(9m\\). The 10 cm separation of the two lower centres is marked.]\n\nLet us choose the origin to be at C, where the largest mass \\(9m\\) is located and the point B with mass \\(4m\\) on the positive \\(x\\)-axis. With this, the co-ordinates of C are \\(\\left(0,\\ 0\\right)\\) and that of B are \\(\\left(10,\\ 0\\right)\\). (Locating the origin at the larger mass here save our efforts of calculations like multiplications with larger numbers). If A of mass \\(m\\) is taken in the first quadrant, its co-ordinates will be \\(\\left[5,\\ \\dfrac{10\\sqrt{3}}{2}\\right]\\)\n\n\\(x_c = \\dfrac{m_{\\text{A}}x_{\\text{A}} + m_{\\text{B}}x_{\\text{B}} + m_{\\text{C}}x_{\\text{C}}}{m_{\\text{A}} + m_{\\text{B}} + m_{\\text{C}}}\\)\n\n\\(= \\dfrac{m \\times 5 + 4m \\times 10 + 9m \\times 0}{m + 4m + 9m} = \\dfrac{45}{14}\\ \\text{cm}\\)\n\n\\(y_c = \\dfrac{m_{\\text{A}}y_{\\text{A}} + m_{\\text{B}}y_{\\text{B}} + m_{\\text{C}}y_{\\text{C}}}{m_{\\text{A}} + m_{\\text{B}} + m_{\\text{C}}}\\)\n\n\\(= \\dfrac{m \\times \\dfrac{10\\sqrt{3}}{2} + 4m \\times 0 + 9m \\times 0}{m + 4m + 9m} = \\dfrac{10\\sqrt{3}}{28}\\ \\text{cm}\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Equilateral triangle ABC of side 10 cm; hollow spheres of radii 1 cm at A (top), 2 cm at B (bottom right) and 3 cm at C (bottom left), labelled with masses m, 4m and 9m.",
+    "_note": "The stem does not say which radius sits on which vertex; that assignment (1 cm at A, 2 cm at B, 3 cm at C) comes only from the figure, and the solution depends on it. Arithmetic checked and consistent: the apex of an equilateral triangle of side 10 is at (5, 5*sqrt(3)) = (5, 10*sqrt(3)/2); x_c = 45/14 cm and y_c = 5*sqrt(3)/14 = 10*sqrt(3)/28 cm."
+  },
+  {
+    "ref": "Solved Ex.4.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass",
+    "difficulty": "HARD",
+    "stem": "A hole of radius \\(r\\) is cut from a uniform disc of radius \\(2r\\). Centre of the hole is at a distance \\(r\\) from centre of the disc. Locate centre of mass of the remaining part of the disc.",
+    "solution": "**Method I:** (Using entire disc): Before cutting the hole, c.m. of the full disc was at its centre. Let this be our origin O. Centre of mass of the cut portion is at its centre D. Thus, it is at a distance \\(x_1 = r\\) form the origin. Let C be the centre of mass of the remaining disc. Obviously, it should be on the extension of the line DO. Let it be at a distance \\(x_2 = x\\) from the origin. As the disc is uniform, mass of any of its part is proportional to the area of that part.\n\n[Figure: the full disc of radius \\(2r\\) is shaded, with its centre O; the circular hole of radius \\(r\\) is drawn inside it with its centre D at a distance \\(r\\) to the right of O (so the hole touches the rim). The remaining shaded portion is labelled mass \\(= 3m\\), and the point C, the centre of mass of the remaining part, is marked to the LEFT of O.]\n\nThus, if \\(m\\) is the mass of the cut disc, mass of the entire disc must be \\(4m\\) and mass of the remaining disc will be \\(3m\\).\n\n\\(x_c = \\dfrac{m_1x_1 + m_2x_2}{m_1 + m_2}\\)  As centre of mass of the full disc is at the origin, we can write,\n\n\\(0 = \\dfrac{m \\times r + 3m \\times \\left(x\\right)}{m + 3m}\\)  \\(\\therefore x = \\dfrac{-r}{3}\\)\n\n**Method II:** (Using negative mass): Let \\(\\vec{R}\\) be the position vector of the centre of mass of the uniform disc of mass \\(M\\). Mass \\(m\\) is with centre of mass at position vector \\(\\vec{r}\\) from the centre of the disc. Position vector of the centre of mass of the remaining disc is then given by\n\n\\(\\vec{r}_c = \\dfrac{M\\vec{R} - m\\vec{r}}{M - m}\\) ..... (as if there is a negative mass, i.e., \\(m_2 = -m\\))\n\nWith our description, \\(M = 4m\\), \\(m = m\\), \\(R = 0\\) and \\(r = r\\)  \\(\\therefore r_c = \\dfrac{-mr}{3m} = \\dfrac{-r}{3}\\) ... Same as method I.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Shaded disc of radius 2r centred at O with a circular hole of radius r centred at D, r to the right of O; the remaining shaded part labelled mass = 3m and its centre of mass C marked to the left of O.",
+    "_note": "The printed text has the misprint 'at a distance x1 = r form the origin' (form for from); transcribed as printed. Both methods are internally consistent and agree on x = -r/3."
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "Consider following pair of forces of equal magnitude and opposite directions:\n(P) Gravitational forces exerted on each other by two point masses separated by a distance.\n(Q) Couple of forces used to rotate a water tap.\n(R) Gravitational force and normal force experienced by an object kept on a table.\nFor which of these pair/pairs the two forces do NOT cancel each other's translational effect?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only P"
+      },
+      {
+        "label": "B",
+        "text": "Only P and Q"
+      },
+      {
+        "label": "C",
+        "text": "Only R"
+      },
+      {
+        "label": "D",
+        "text": "Only Q and R"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Forces",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "Consider following forces: (w) Force due to tension along a string, (x) Normal force given by a surface, (y) Force due to air resistance and (z) Buoyant force or upthrust given by a fluid.\nWhich of these are electromagnetic forces?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only w, y and z"
+      },
+      {
+        "label": "B",
+        "text": "Only w, x and y"
+      },
+      {
+        "label": "C",
+        "text": "Only x, y and z"
+      },
+      {
+        "label": "D",
+        "text": "All four."
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "At a given instant three point masses \\(m\\), \\(2m\\) and \\(3m\\) are equidistant from each other. Consider only the gravitational forces between them. Select correct statement/s for this instance only:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Mass \\(m\\) experiences maximum force."
+      },
+      {
+        "label": "B",
+        "text": "Mass \\(2m\\) experiences maximum force."
+      },
+      {
+        "label": "C",
+        "text": "Mass \\(3m\\) experiences maximum force."
+      },
+      {
+        "label": "D",
+        "text": "All masses experience force of same magnitude."
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "The rough surface of a horizontal table offers a definite maximum opposing force to initiate the motion of a block along the table, which is proportional to the resultant normal force given by the table. Forces \\(F_1\\) and \\(F_2\\) act at the same angle \\(\\theta\\) with the horizontal and both are just initiating the sliding motion of the block along the table. Force \\(F_1\\) is a pulling force while the force \\(F_2\\) is a pushing force. \\(F_2 > F_1\\), because",
+    "options": [
+      {
+        "label": "A",
+        "text": "Component of \\(F_2\\) adds up to weight to increase the normal reaction."
+      },
+      {
+        "label": "B",
+        "text": "Component of \\(F_1\\) adds up to weight to increase the normal reaction."
+      },
+      {
+        "label": "C",
+        "text": "Component of \\(F_2\\) adds up to the opposing force."
+      },
+      {
+        "label": "D",
+        "text": "Component of \\(F_1\\) adds up to the opposing force."
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "A mass \\(2m\\) moving with some speed is directly approaching another mass \\(m\\) moving with double speed. After some time, they collide with coefficient of restitution 0.5. Ratio of their respective speeds after collision is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2/3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3/2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (vi)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "A uniform rod of mass \\(2m\\) is held horizontal by two sturdy, practically inextensible vertical strings tied at its ends. A boy of mass \\(3m\\) hangs himself at one third length of the rod. Ratio of the tension in the string close to the boy to that in the other string is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1.5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4/3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(5/3\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (vii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Centre of Mass",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "Select WRONG statement about centre of mass:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Centre of mass of a 'C' shaped uniform rod can never be a point on that rod."
+      },
+      {
+        "label": "B",
+        "text": "If the line of action of a force passes through the centre of mass, the moment of that force is zero."
+      },
+      {
+        "label": "C",
+        "text": "Centre of mass of our Earth is not at its geometrical centre."
+      },
+      {
+        "label": "D",
+        "text": "While balancing an object on a pivot, the line of action of the gravitational force of the earth passes through the centre of mass of the object."
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived against the chapter's own 'Characteristics of centre of mass' list (section 4.13.4, p-25/p-26), which endorses the other three options almost verbatim and so isolates (C) as the WRONG statement: characteristic 16 plus the following text ('Centre of mass need not be within the body ... Other examples are a ring, a horse shoe, etc.') supports (A); characteristic 4 ('Centre of mass is the point at which, if a force is applied, it causes only linear acceleration and not angular acceleration') supports (B); characteristic 11 ('While balancing an object on a pivot, the line of action of weight must pass through the centre of mass and the pivot') supports (D) almost word for word. Against that, characteristics 14 and 15 (centre of mass lies on an axis of symmetry, and at the intersection of multiple axes of symmetry) put the Earth's centre of mass AT its geometrical centre, making (C) false. Recorded because (B) is a tempting alternative: strictly, the moment of a force is zero only about a point on its line of action, so (B) is unqualified and false about an arbitrary axis - but it is true about the centre of mass, which is the sense the book's own characteristic 4 states."
+  },
+  {
+    "ref": "Ex Q.1 (viii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Centre of Mass",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "1. Choose the correct answer.",
+    "stem": "For which of the following objects will the centre of mass NOT be at their geometrical centre?\n(I) An egg\n(II) a cylindrical box full of rice\n(III) a cubical box containing assorted sweets",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only (I)"
+      },
+      {
+        "label": "B",
+        "text": "Only (I) and (II)"
+      },
+      {
+        "label": "C",
+        "text": "Only (III)"
+      },
+      {
+        "label": "D",
+        "text": "All, (I), (II) and (III)."
+      }
+    ],
+    "answer": "D",
+    "_note": "Item (II) is the weak member and is recorded rather than smoothed over. (I) is certain - an egg is neither symmetric nor uniform, so its centre of mass is displaced towards the broader end. (III) is certain - 'assorted' sweets differ in size and density, so the filling is non-uniform. The only printed option containing BOTH of those certain members is (D), so (D) is the key; (A) drops (III) and (C) drops (I). That forces (II) to count as non-central too, which is defensible on the chapter's own criterion but not on a naive reading: characteristic 6 (section 4.13.4) says the centre of mass is at the geometrical centre only 'for a symmetric rigid body OF UNIFORM DENSITY' (the book's own emphasis), and a box of loose rice is neither a rigid body nor of strictly uniform density - discrete grains pack with random voids and compact slightly under their own weight, so the centre of mass sits marginally below the geometrical centre. If the rice is idealised as a uniform continuum filling a symmetric box, its centre of mass IS at the geometrical centre and the correct set would be (I) and (III) only, which no printed option carries."
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "In the following table, every entry on the left column can match with any number of entries on the right side. Pick up **all** those and write respectively against A, B, C and D.\n\n| Name of the force | | Type of the force | |\n|---|---|---|---|\n| A | Force due to tension in a string | P | EM force |\n| B | Normal force | Q | Reaction force |\n| C | Frictional force | R | Conservative force |\n| D | Resistive force offered by air or water for objects moving through it. | S | Non-conservative force |"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Aristotle's Fallacy",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "In real life objects, never travel with uniform velocity, even on a horizontal surface, unless something is done? Why is it so? What is to be done?",
+    "_note": "Printed as shown. The book's punctuation is defective twice in one sentence: the comma belongs after \"In real life\" (it is printed after \"objects\"), and the sentence is declarative yet terminated with a question mark. Transcribed verbatim; not repaired."
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "For the study of any kind of motion, we never use Newton's first law of motion directly. Why should it be studied?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inertial and Non-Inertial Frames of Reference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Are there any situations in which we cannot apply Newton's laws of motion? Is there any alternative for it?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inertial and Non-Inertial Frames of Reference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "You are inside a closed capsule from where you are not able to see anything about the outside world. Suddenly you feel that you are pushed towards your right. Can you explain the possible cause (s)? Is it a feeling or a reality? Give at least one more situation like this."
+  },
+  {
+    "ref": "Ex Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Among the four fundamental forces, only one force governs your daily life almost entirely. Justify the statement by stating that force."
+  },
+  {
+    "ref": "Ex Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Find the odd man out: (i) Force responsible for a string to become taut on stretching (ii) Weight of an object (iii) The force due to which we can hold an object in hand."
+  },
+  {
+    "ref": "Ex Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "You are sitting next to your friend on ground. Is there any gravitational force of attraction between you two? If so, why are you not coming together naturally? Is any force other than the gravitational force of the earth coming in picture?"
+  },
+  {
+    "ref": "Ex Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Distinguish between: (A) Real and pseudo forces, (B) Conservative and non-conservative forces, (C) Contact and non-contact forces, (C) Inertial and non-inertial frames of reference.",
+    "_note": "Printed as shown. The book labels FOUR sub-parts (A), (B), (C), (C) - the letter (C) is repeated and the fourth item should be labelled (D). Verified at 3x zoom on p-28 (both glyphs are an open C, distinct from the closed-loop D used elsewhere on the page). Transcribed verbatim; not repaired."
+  },
+  {
+    "ref": "Ex Q.2 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "State the formula for calculating work done by a force. Are there any conditions or limitations in using it directly? If so, state those clearly. Is there any mathematical way out for it? Explain."
+  },
+  {
+    "ref": "Ex Q.2 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Justify the statement, \"Work and energy are the two sides of a coin\"."
+  },
+  {
+    "ref": "Ex Q.2 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "From the terrace of a building of height \\(H\\), you dropped a ball of mass \\(m\\). It reached the ground with speed \\(v\\). Is the relation \\(mgH = \\frac{1}{2} m v^2\\) applicable exactly? If not, how can you account for the difference? Will the ball bounce to the same height from where it was dropped?"
+  },
+  {
+    "ref": "Ex Q.2 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Principle of Conservation of Linear Momentum",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "State the law of conservation of linear momentum. It is a consequence of which law? Given an example from our daily life for conservation of momentum. Does it hold good during burst of a cracker?",
+    "_note": "Printed as shown. The book prints \"Given an example\" where the imperative \"Give an example\" is intended. Transcribed verbatim; not repaired."
+  },
+  {
+    "ref": "Ex Q.2 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Define coefficient of restitution and obtain its value for an elastic collision and a perfectly inelastic collision."
+  },
+  {
+    "ref": "Ex Q.2 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Discuss the following as special cases of elastic collisions and obtain their exact or approximate final velocities in terms of their initial velocities.\n(i) Colliding bodies are identical.\n(ii) A veru heavy object collides on a lighter object, initially at rest.\n(iii) A very light object collides on a comparatively much massive object, initially at rest.",
+    "_note": "Printed as shown. Sub-item (ii) prints \"A veru heavy object\" - a typo for \"very\". Verified at 3x zoom on p-28; sub-item (iii) on the very next line spells \"very\" correctly, which is what identifies (ii) as a misprint. Transcribed verbatim; not repaired."
+  },
+  {
+    "ref": "Ex Q.2 (xvi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "A bullet of mass \\(m_1\\) travelling with a velocity \\(u\\) strikes a stationary wooden block of mass \\(m_2\\) and gets embedded into it. Determine the expression for loss in the kinetic energy of the system. Is this violating the principle of conservation of energy? If not, how can you account for this loss?"
+  },
+  {
+    "ref": "Ex Q.2 (xvii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Impulse of a Force",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "One of the effects of a force is to change the momentum. Define the quantity related to this and explain it for a variable force. Usually when do we define it instead of using the force?"
+  },
+  {
+    "ref": "Ex Q.2 (xviii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of a Force and Torque",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "While rotating an object or while opening a door or a water tap we apply a force or forces. Under which conditions is this process easy for us? Why? Define the vector quantity concerned. How does it differ for a single force and for two opposite forces with different lines of action?"
+  },
+  {
+    "ref": "Ex Q.2 (xix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Couple and its Torque",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Why is the moment of a couple independent of the axis of rotation even if the axis is fixed?"
+  },
+  {
+    "ref": "Ex Q.2 (xx)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Explain balancing or mechanical equilibrium. Linear velocity of a rotating fan as a whole is generally zero. Is it in mechanical equilibrium? Justify your answer."
+  },
+  {
+    "ref": "Ex Q.2 (xxi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Gravity",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "2. Answer the following questions.",
+    "stem": "Why do we need to know the centre of mass of an object? For which objects, its position may differ from that of the centre of gravity?"
+  },
+  {
+    "ref": "Ex Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A truck of mass 5 ton is travelling on a horizontal road with \\(36\\ \\text{km hr}^{-1}\\) stops on traveling 1 km after its engine fails suddenly. What fraction of its weight is the frictional force exerted by the road?\nIf we assume that the story repeats for a car of mass 1 ton i.e., can moving with same speed stops in similar distance same how much will the fraction be?",
+    "bookAnswer": "\\(\\frac{1}{200}\\) in the both",
+    "_note": "Printed as transcribed. The second sentence is garbled in the book: \"i.e., can moving with same speed stops in similar distance same how much will the fraction be?\" — \"can\" is evidently a misprint for \"car\", and \"same\" appears where \"then\" (or a comma) belongs. Left exactly as printed."
+  },
+  {
+    "ref": "Ex Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A lighter object \\(A\\) and a heavier object \\(B\\) are initially at rest. Both are imparted the same linear momentum. Which will start with greater kinetic energy: \\(A\\) or \\(B\\) or both will start with the same energy?",
+    "bookAnswer": "\\(A\\)"
+  },
+  {
+    "ref": "Ex Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inertial and Non-Inertial Frames of Reference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "As I was standing on a weighing machine inside a lift it recorded 50 kg wt. Suddenly for few seconds it recorded 45 kg wt. What must have happened during that time? Explain with complete numerical analysis.",
+    "bookAnswer": "Lift must be coming down with acceleration \\(\\frac{g}{10} = 1\\ \\text{m s}^{-2}\\)"
+  },
+  {
+    "ref": "Ex Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Figure below shows a block of mass 35 kg resting on a table. The table is so rough that it offers a self adjusting resistive force 10% of the weight of the block for its sliding motion along the table. A 20 kg wt load is attached to the block and is passed over a pulley to hang freely on the left side. On the right side there is a 2 kg wt pan attached to the block and hung freely. Weights of 1 kg wt each, can be added to the pan. Minimum how many and maximum how many such weights can be added into the pan so that the block does not slide along the table?\n\n[Figure: a horizontal table standing on two legs, with a small pulley fixed at each of the two top corners of the table. A block labelled \"35 kg wt on rough table\" rests at the centre of the table top. A string runs horizontally from the block, over the left pulley, and hangs vertically down to a load labelled \"20 kg wt load\". A second string runs horizontally from the block, over the right pulley, and hangs vertically down to a pan labelled \"2 kg wt pan\".]",
+    "bookAnswer": "Min 15, maximum 21",
+    "diagramWouldHelp": true,
+    "diagramNote": "Book figure on printed p.76: block on a rough table with a pulley at each top corner; a 20 kg wt load hanging on the left and a 2 kg wt pan hanging on the right. The figure fixes which side carries the load and which the pan; the stem alone already states both, so the row is answerable without it, but the diagram makes the two-sided tug-of-war immediate."
+  },
+  {
+    "ref": "Ex Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Power is rate of doing work or the rate at which energy is supplied to the system. A constant force \\(F\\) is applied to a body of mass \\(m\\). Power delivered by the force at time \\(t\\) from the start is proportional to\n(a) \\(t\\)\n(b) \\(t^{2}\\)\n(c) \\(\\sqrt{t}\\)\n(d) \\(t^{0}\\)\nDerive the expression for power in terms of \\(F\\), \\(m\\) and \\(t\\).",
+    "bookAnswer": "\\(p = \\frac{F^{2}t}{m}\\), \\(\\therefore p \\propto t\\)",
+    "_note": "The four lettered choices are printed inside this question and then a derivation is asked, so it is a subjective question with the choices in the stem, not an MCQ. In the printed answer the proportionality sign is set as an italic Greek alpha rather than the proportional-to sign, so the book literally prints p-alpha-t; transcribed here as \\(\\propto\\)."
+  },
+  {
+    "ref": "Ex Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "40000 litre of oil of density 0.9 g cc is pumped from an oil tanker ship into a storage tank at 10 m higher level than the ship in half an hour. What should be the power of the pump?",
+    "bookAnswer": "2 kW",
+    "_note": "The book writes the density unit as \"0.9 g cc\"; the intended unit is g/cc, i.e. \\(\\text{g cm}^{-3}\\). Transcribed as printed."
+  },
+  {
+    "ref": "Ex Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Ten identical masses (\\(m\\) each) are connected one below the other with 10 strings. Holding the topmost string, the system is accelerated upwards with acceleration \\(g/2\\). What is the tension in the 6th string from the top (Topmost string being the first string)?",
+    "bookAnswer": "6 \\(mg\\)",
+    "_note": "The printed answer looks inconsistent with the stem as worded. With the topmost held string counted as the first, the 6th string carries the five masses below it, so \\(T = 5m(g + g/2) = 7.5\\,mg\\). The printed 6 mg corresponds to FOUR masses below the string. Preserved exactly as printed; flagged for adjudication."
+  },
+  {
+    "ref": "Ex Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Two galaxies of masses 9 billion solar mass and 4 billion solar mass are 5 million light years apart. If, the Sun has to cross the line joining them, without being attracted by either of them, through what point it should pass?",
+    "bookAnswer": "3 million light years from the 9 billion solar mass"
+  },
+  {
+    "ref": "Ex Q.3 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "While decreasing linearly from 5 N to 3 N, a force displaces an object from 3 m to 5 m. Calculate the work done by this force during this displacement.",
+    "bookAnswer": "8 N",
+    "_note": "SUSPECT UNIT IN THE PRINTED ANSWER. The question asks for work done, so the unit must be the joule, not the newton. The magnitude is right: average force \\(= 4\\) N over a displacement of 2 m gives 8 J. Preserved as printed; the correct printed answer should read 8 J."
+  },
+  {
+    "ref": "Ex Q.3 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Variation of a force in a certain region is given by \\(F = 6x^{2} - 4x - 8\\). It displaces an object from \\(x = 1\\) m to \\(x = 2\\) m in this region. Calculate the amount of work done.",
+    "bookAnswer": "Zero"
+  },
+  {
+    "ref": "Ex Q.3 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A ball of mass 100 g dropped on the ground from 5 m bounces repeatedly. During every bounce 64% of the potential energy is converted into kinetic energy. Calculate the following:\n(a) Coefficient of restitution.\n(b) Speed with which the ball comes up from the ground after third bounce.\n(c) Impulse given by the ball to the ground during this bounce.\n(d) Average force exerted by the ground if this impact lasts for 250 ms.\n(e) Average pressure exerted by the ball on the ground during this impact if contact area of the ball is 0.5 cm\\(^{2}\\).",
+    "bookAnswer": "0.8, 5.12 m/s, 1.152N s, 4.608 N, \\(9.216 \\times 10^{4}\\) N/m\\(^{2}\\)"
+  },
+  {
+    "ref": "Ex Q.3 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Principle of Conservation of Linear Momentum",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A spring ball of mass 0.5 kg is dropped from some height. On falling freely for 10 s, it explodes into two fragments of mass ratio 1:2. The lighter fragment continues to travel downwards with speed of 60 m/s. Calculate the kinetic energy supplied during explosion.",
+    "bookAnswer": "200 J"
+  },
+  {
+    "ref": "Ex Q.3 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A marble of mass \\(2m\\) travelling at 6 cm/s is directly followed by another marble of mass \\(m\\) with double speed. After collision, the heavier one travels with the average initial speed of the two. Calculate the coefficient of restitution.",
+    "bookAnswer": "0.5"
+  },
+  {
+    "ref": "Ex Q.3 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A, 2 m long wooden plank of mass 20 kg is pivoted (supported from below) at 0.5 m from either end. A person of mass 40 kg starts walking from one of these pivots to the farther end. How far can the person walk before the plank topples?",
+    "bookAnswer": "1.25 m",
+    "_note": "The stem opens \"A, 2 m long wooden plank\" — a stray comma after the article, as printed. Transcribed faithfully."
+  },
+  {
+    "ref": "Ex Q.3 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mechanical Equilibrium",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A 2 m long ladder of mass 10 kg is kept against a wall such that its base is 1.2 m away from the wall. The wall is smooth but the ground is rough. Roughness of the ground is such that it offers a maximum horizontal resistive force (for sliding motion) half that of normal reaction at the point of contact. A monkey of mass 20 kg starts climbing the ladder. How far can it climb **along** the ladder? How much is the horizontal reaction at the wall?",
+    "bookAnswer": "1.5 m, 15 N",
+    "_note": "SUSPECT SECOND VALUE IN THE PRINTED ANSWER. Total weight is \\((10+20)g = 300\\) N, so the maximum ground friction — and hence the horizontal reaction at the wall — is 150 N, not 15 N. (150 N is 15 kg wt, so the printed figure is either the value in kg wt mislabelled as N, or a dropped zero.) The first value, 1.5 m along the ladder, is correct. Preserved as printed. The word \"along\" is set in bold italic in the book and is rendered here as bold."
+  },
+  {
+    "ref": "Ex Q.3 (xvi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "Four uniform solid cubes of edges 10 cm, 20 cm, 30 cm and 40 cm are kept on the ground, touching each other in order. Locate centre of mass of their system.",
+    "bookAnswer": "65 cm, 17.7 cm"
+  },
+  {
+    "ref": "Ex Q.3 (xvii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "A uniform solid sphere of radius \\(R\\) has a hole of radius \\(R/2\\) drilled inside it. One end of the hole is at the centre of the sphere while the other is at the boundary. Locate centre of mass of the remaining sphere.",
+    "bookAnswer": "\\(-R/14\\)"
+  },
+  {
+    "ref": "Ex Q.3 (xviii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.3",
+    "context": "3. Solve the following problems.\n\nUse \\(g = 10\\ \\text{m s}^{-2}\\), unless, otherwise stated.",
+    "stem": "In the following table, every item on the left side can match with any number of items on the right hand side. Select all those.\n\n| Types of collision | Illustrations |\n|---|---|\n| (a) Elastic collision | (i) A ball hit by a bat. |\n| (b) Inelastic collision | (ii) Molecular collisions responsible for pressure exerted by a gas. |\n| (c) Perfectly inelastic collision | (iii) A stationary marble A is hit by marble B and the marble B comes to rest. |\n| (d) Head on collision | (iv) A blob of clay dropped on the ground sticks to the ground. |\n|  | (v) Out of anger, giving a kick to a wall. |\n|  | (vi) A striker hits the boundary of a carrom board in a direction perpendicular to the boundary and rebounds. |",
+    "_note": "No printed answer for this sub-item. The book prints the table as a single two-column, one-row box (four items listed in the left cell, six in the right); it is rendered here as a GFM pipe-table with the four left-hand items on the first four rows and blank left cells on the last two. The table is typeset at the FOOT of printed p.77, well below the question text."
+  }
+]

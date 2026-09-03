@@ -1,0 +1,42 @@
+[
+  {
+    "ref": "Solved Ex.5.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "stem": "What will be the change in potential energy of a body of mass \\(m\\) when it is raised from height \\(R_{E}\\) above the Earth's surface to \\(\\dfrac{5}{2}R_{E}\\) above the Earth's surface? \\(R_{E}\\) and \\(M_{E}\\) are the radius and mass of the Earth respectively.",
+    "solution": "[Textbook misprint, corrected above: the printed final coefficient was \\(2.14\\), ten times too large and refuted by the example's own preceding line, which shows the factor as \\(\\dfrac{1.5}{2 \\times 3.5} = 0.2143\\). The setup is correct; the change in potential energy is \\(\\dfrac{0.214\\,GmM_{E}}{R_{E}}\\).]\n\n\\(\\Delta U = GmM_{E}\\left(\\dfrac{1}{r_{i}} - \\dfrac{1}{r_{f}}\\right)\\)\n\\(= GmM_{E}\\left(\\dfrac{1}{2R_{E}} - \\dfrac{1}{3.5R_{E}}\\right)\\)\n\\(= \\dfrac{GmM_{E}}{R_{E}} \\times \\dfrac{1.5}{2 \\times 3.5} = \\dfrac{0.214\\,GmM_{E}}{R_{E}}\\)",
+    "_note": "ANSWER-AFFECTING BOOK DEFECT, transcribed verbatim and NOT repaired. The printed final coefficient 2.14 is wrong by a factor of ten and is refuted by the book's OWN printed intermediate step on the same line: 1.5/(2 x 3.5) = 0.2143. The correct result is 0.214 GmM_E/R_E. The setup is right (r_i = R_E + R_E = 2R_E, r_f = R_E + 2.5R_E = 3.5R_E, both matching the stem). Needs apply-solved-fixes.ts + an errata bracket — a shipped solved example must not teach the error."
+  },
+  {
+    "ref": "Solved Ex.5.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Show that the critical velocity of a body revolving in a circular orbit very close to the surface of a planet of radius \\(R\\) and mean density \\(\\rho\\) is \\(2R\\sqrt{\\dfrac{G\\pi\\rho}{3}}\\).",
+    "solution": "Since the body is revolving very close to the planet, \\(h = 0\\)\ndensity \\(\\rho = \\dfrac{M}{V} = \\dfrac{M}{\\dfrac{4}{3}\\pi R^{3}}\\)\n\\(\\therefore M = \\dfrac{4}{3}\\pi R^{3}\\rho\\)\nCritical Velocity\n\\(\\mathrm{v}_{c} = \\sqrt{\\dfrac{GM}{R}} = \\sqrt{\\dfrac{G\\dfrac{4}{3}\\pi R^{3}\\rho}{R}}\\)\n\\(\\therefore \\mathrm{v}_{c} = 2R\\sqrt{\\dfrac{G\\pi\\rho}{3}}\\)",
+    "_note": "BOOK NUMBERING DEFECT: this example is printed \"Example 5.9\" on p-16 (printed page 94) and a DIFFERENT worked example is ALSO printed \"Example 5.9\" on p-18 (printed page 96). The chapter has 11 worked examples numbered 5.1-5.10 with 5.9 used twice and no 5.11. This one keeps the ref Solved Ex.5.9; the p-18 one is Solved Ex.5.9b. The derivation was independently re-verified and is correct."
+  },
+  {
+    "ref": "Solved Ex.5.9b",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "stem": "Calculate the period of revolution of a polar satellite orbiting close to the surface of the Earth. Given \\(R = 6400\\) km, \\(g = 9.8\\) m/s\\(^{2}\\).",
+    "solution": "[Textbook misprint: this worked example is printed as \"Example 5.9\" — the SECOND example in the chapter to carry that number, the first being the critical-velocity problem several pages earlier — and the chapter prints no Example 5.11. The reference is suffixed here so the two do not collide; the book's own number is 5.9.]\n\n\\(h\\) is negligible as satellite is close to the Earth surface.\n\\(\\therefore R + h \\approx R\\)\n\\(g_{h} \\approx g\\)\n\\(R = 6400\\) km \\(= 6.4 \\times 10^{6}\\) m.\n\\(T = 2\\pi\\sqrt{\\dfrac{R}{g}}\\)\n\\(= 2 \\times 3.14\\sqrt{\\dfrac{6.4 \\times 10^{6}}{9.8}}\\)\n\\(= 5.075 \\times 10^{3}\\) second\n\\(= 85\\) minute (approximately)",
+    "_note": "Printed as \"Example 5.9\" on p-18 (printed page 96) — the SECOND example in this chapter to carry that number (see Solved Ex.5.9). Ref suffixed 'b' so the two do not collide; the book's own number is preserved in this note. Derivation re-verified: 2 x 3.14 x sqrt(6.4e6/9.8) = 5075 s = 84.6 min."
+  },
+  {
+    "ref": "Solved Ex.5.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "An artificial satellite revolves around a planet in circular orbit close to its surface. Obtain the formula for period of the satellite in terms of density \\(\\rho\\) and radius \\(R\\) of planet.",
+    "solution": "Period of satellite is given by,\n\\(T = 2\\pi\\sqrt{\\dfrac{(R+h)^{3}}{GM}}\\) --- (1)\nHere, the satellite revolves close to the surface of planet, hence \\(h\\) is negligible, hence \\(R + h \\simeq R\\)\ndensity \\((\\rho) = \\dfrac{\\text{mass}\\,(M)}{\\text{volume}\\,(V)}\\)\n\\(\\therefore M = \\rho V\\) --- (2)\nAs planet is spherical in shape, volume of planet is given as\n\\(V = \\dfrac{4}{3}\\pi R^{3}\\)\n\\(\\therefore M = \\dfrac{4}{3}\\pi R^{3}\\rho\\) --- (3)\nSubstituting the values form eq. (2) and (3) in Eq. (1), we get\n\\(T = 2\\pi\\sqrt{\\dfrac{R^{3}}{G \\times \\dfrac{4}{3}\\pi R^{3}\\rho}}\\)\n\\(\\therefore T = \\sqrt{\\dfrac{3\\pi}{G\\rho}}\\)",
+    "_note": "The book prints \"Substituting the values form eq.\" for \"from eq.\" — transcribed verbatim. The result was re-verified independently and is correct."
+  }
+]

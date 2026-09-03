@@ -1,0 +1,67 @@
+[
+  {
+    "ref": "Solved Ex.5.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "What would be the average duration of year if the distance between the Sun and the Earth becomes\n(A) thrice the present distance.\n(B) twice the present distance.",
+    "solution": "(A) Let \\(r_{1}\\) = Present distance between the Earth and Sun\n\\(T\\) = 365 days.\nIf \\(r_{2} = 3r_{1}\\), \\(T_{2} = ?\\)\nAccording to Kepler's law of period\n\\(T_{1}^{2} \\propto r_{1}^{3}\\) and \\(T_{2}^{2} \\propto r_{2}^{3}\\)\n\\(\\therefore \\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\dfrac{r_{2}^{3}}{r_{1}^{3}}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\left(\\dfrac{r_{2}}{r_{1}}\\right)^{3/2} = \\left(\\dfrac{3r_{1}}{r_{1}}\\right)^{3/2}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\sqrt{27}\\)\n\\(T_{2} = T_{1} \\times \\sqrt{27} = 365 \\times \\sqrt{27} = 1897\\) days\n\n(B) If \\(r_{2} = 2r_{1}\\), \\(T_{2} = ?\\)\n\\(\\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\dfrac{r_{2}^{3}}{r_{1}^{3}}\\)\n\\(\\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\left(\\dfrac{2r_{1}}{r_{1}}\\right)^{3}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\sqrt{8}\\)\n\\(T_{2} = T_{1}\\sqrt{8} = 365\\sqrt{8} = 1032\\) days."
+  },
+  {
+    "ref": "Solved Ex.5.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "EASY",
+    "stem": "The gravitational force between two bodies is 1 N. If distance between them is doubled, what will be the gravitational force between them?",
+    "solution": "Let the masses of the two bodies be \\(m_{1}\\) and \\(m_{2}\\) and the distance between them be \\(r\\).\nThe force between them, \\(F_{1} = \\dfrac{Gm_{1}m_{2}}{r^{2}}\\)\nWhen the distance between them is doubled the force becomes, \\(F_{2} = \\dfrac{Gm_{1}m_{2}}{(2r)^{2}} = \\dfrac{Gm_{1}m_{2}}{4r^{2}}\\)\n\\(\\therefore \\dfrac{F_{1}}{F_{2}} = \\dfrac{Gm_{1}m_{2}}{r^{2}} \\times \\dfrac{4r^{2}}{Gm_{1}m_{2}}\\)\n\\(\\therefore \\dfrac{F_{1}}{F_{2}} = 4\\)\n\\(\\therefore F_{2} = \\dfrac{1}{4}\\) N \\(\\quad (\\because F_{1} = 1\\,\\text{N})\\)\n\\(F_{2} = 0.25\\) N\n\\(\\therefore\\) Force become one forth (0.25 N)",
+    "_note": "The book's closing line prints \"one forth\" for \"one fourth\". Transcribed verbatim; the numerical answer 0.25 N is correct."
+  },
+  {
+    "ref": "Solved Ex.5.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "Three particles A, B, and C each having mass \\(m\\) are kept along a straight line with AB = BC = \\(l\\). A fourth particle D is kept on the perpendicular bisecter of AC at a distance \\(l\\) from B. Determine the gravitational force on D.",
+    "solution": "CD = AD = \\(\\sqrt{\\text{AB}^{2} + \\text{BD}^{2}} = \\sqrt{2}\\,l\\)\nGravitational force on D = Vector sum of gravitational forces due to A, B and C.\nForce due to A \\(= \\dfrac{Gmm}{(\\text{AD})^{2}} = \\dfrac{Gm^{2}}{2l^{2}}\\). This will be along \\(\\overrightarrow{\\text{DA}}\\)\nForce due to C \\(= \\dfrac{Gmm}{(\\text{CD})^{2}} = \\dfrac{Gm^{2}}{2l^{2}}\\). This is along \\(\\overrightarrow{\\text{DC}}\\)\nForce due to B \\(= \\dfrac{Gmm}{(\\text{BD})^{2}} = \\dfrac{Gm^{2}}{l^{2}}\\). This is along \\(\\overrightarrow{\\text{DB}}\\)\nWe can resolve the forces along horizontal and vertical directions.\nLet the unit vector along horizontal direction \\(\\overrightarrow{\\text{AC}}\\) be \\(\\hat{i}\\) and along the vertical direction \\(\\overrightarrow{\\text{BD}}\\) be \\(\\hat{j}\\)\nNet horizontal force on D\n\\(= \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{i}) + \\dfrac{Gm^{2}}{l^{2}}\\cos 90^\\circ(\\hat{i}) + \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(\\hat{i})\\)\n\\(= \\dfrac{-Gm^{2}}{2\\sqrt{2}l^{2}} + \\dfrac{Gm^{2}}{2\\sqrt{2}l^{2}} = 0\\)\nNet vertical force on D\n\\(= \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{j}) + \\dfrac{Gm^{2}}{l^{2}}(-\\hat{j}) + \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{j})\\)\n\\(= \\dfrac{-Gm^{2}}{l^{2}}\\left(\\dfrac{1}{\\sqrt{2}} + 1\\right)(\\hat{j})\\)\n\\(= \\dfrac{Gm^{2}}{l^{2}}\\left(\\dfrac{1}{\\sqrt{2}} + 1\\right)(-\\hat{j})\\)\n\\((-\\hat{j})\\) shows that the net force is directed along DB",
+    "_note": "The book spells \"bisecter\" for \"bisector\" in the stem; transcribed verbatim. The stem is self-contained (Fig. on p-05 illustrates the solution, not data the question withholds); the printed derivation is internally consistent and was re-verified."
+  },
+  {
+    "ref": "Solved Ex.5.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Calculate mass of the Earth from given data,\nAcceleration due to gravity \\(g = 9.81\\) m/s\\(^{2}\\)\nRadius of the Earth \\(R_{E} = 6.37 \\times 10^{6}\\) m\n\\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\)",
+    "solution": "\\(g = \\dfrac{GM_{E}}{R_{E}^{2}}\\)\n\\(\\therefore M_{E} = \\dfrac{gR_{E}^{2}}{G}\\)\n\\(\\therefore M_{E} = \\dfrac{9.81 \\times (6.37 \\times 10^{6})^{2}}{6.67 \\times 10^{-11}}\\)\n\\(\\therefore M_{E} = 5.97 \\times 10^{24}\\) kg"
+  },
+  {
+    "ref": "Solved Ex.5.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the acceleration due to gravity on the surface of moon if mass of the moon is 1/80 times that of the Earth and diameter of the moon is 1/4 times that of the Earth (\\(g = 9.8\\) m/s\\(^{2}\\))",
+    "solution": "\\(M_{m}\\) = Mass of the moon = \\(M/80\\), where \\(M\\) is mass of the Earth.\n\\(R_{m}\\) = Radius of the moon = \\(R/4\\), where \\(R\\) is Radius of the Earth.\nAcceleration due to gravity on the surface of the Earth, \\(g = GM/R^{2}\\) --- (1)\nAcceleration due to gravity on the surface of the moon, \\(g_{m} = GM_{m}/R_{m}^{2}\\) --- (2)\n\\(\\therefore\\) From equation (1) and (2)\n\\(\\dfrac{g_{m}}{g} = \\dfrac{M_{m}}{M} \\times \\left[\\dfrac{R}{R_{m}}\\right]^{2}\\)\n\\(\\dfrac{g_{m}}{g} = \\dfrac{1}{80} \\times \\left[\\dfrac{4}{1}\\right]^{2}\\)\n\\(\\therefore \\dfrac{g_{m}}{g} = \\dfrac{1}{5}\\)\n\\(\\therefore g_{m} = \\dfrac{g}{5} = \\dfrac{9.8}{5}\\)\n\\(\\therefore g_{m} = 1.96\\) m/s\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.5.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "Find the acceleration due to gravity on a planet that is 10 times as massive as the Earth and with radius 20 times of the radius of the Earth (\\(g = 9.8\\) m/s\\(^{2}\\)).",
+    "solution": "Let mass of the planet be \\(M_{p}\\), radius of the Earth and that of the planet be \\(R_{E}\\) and \\(R_{P}\\) respectively. Let mass of the Earth be \\(M_{E}\\) and \\(g_{p}\\) be acceleration due to gravity on the planet.\n\\(M_{p} = 10\\,M_{E}\\)\n\\(R_{p} = 20\\,R_{E}\\), \\(g = 9.8\\) m/s\\(^{2}\\)\n\\(g_{p} = ?\\)\n\\(g = \\dfrac{GM_{E}}{R_{E}^{2}}\\), \\(g_{p} = \\dfrac{GM_{P}}{R_{P}^{2}}\\)\n\\(\\therefore g_{P} = \\dfrac{G(10M_{E})}{(20R_{E})^{2}}\\)\n\\(= \\dfrac{10GM_{E}}{400R_{E}^{2}}\\)\n\\(= \\dfrac{1}{40}g\\)\n\\(= 0.245\\) m/s\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.5.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "At what distance above the surface of Earth the acceleration due to gravity decreases by 10% of its value at the surface? (Radius of Earth = 6400 km). Assume the distance above the surface to be small compared to the radius of the Earth.",
+    "solution": "\\(g_{h}\\) = 90% of \\(g\\) (\\(g\\) decreases by 10% hence it becomes 90%)\nor, \\(\\dfrac{g_{h}}{g} = \\dfrac{90}{100} = 0.9\\)\nFrom Eq. (5.21)\n\\(g_{h} = g\\left[1 - \\dfrac{2h}{R}\\right]\\)\n\\(\\therefore \\dfrac{g_{h}}{g} = 1 - \\dfrac{2h}{R}\\)\n\\(\\therefore 0.9 = 1 - \\dfrac{2h}{R}\\)\n\\(h = \\dfrac{R}{20}\\)\n\\(h = 320\\) km"
+  }
+]

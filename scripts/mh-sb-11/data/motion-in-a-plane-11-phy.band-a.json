@@ -1,0 +1,30 @@
+[
+  {
+    "ref": "Solved Ex.3.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rectilinear Motion",
+    "difficulty": "EASY",
+    "stem": "A person walks from point P to point Q along a straight road in 10 minutes, then turns back and returns to point R which is midway between P and Q after further 4 minutes. If PQ is 1 km, find the average speed and velocity of the person in going from P to R.",
+    "solution": "The path length travelled by the person is 1.5 km while the displacement is the distance between R and P which is 0.5 km. The time taken for the motion is 14 min.\n\nThe average speed \\(= 1.5 / 14 = 0.107\\) km/min \\(= 6.42\\) km/hr.\n\nThe magnitude of the average velocity \\(= 0.5/14 = 0.0357\\) km/min \\(= 2.142\\) km/hr."
+  },
+  {
+    "ref": "Solved Ex.3.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rectilinear Motion",
+    "difficulty": "MODERATE",
+    "stem": "A stone is thrown vertically upwards from the ground with a velocity 15 m/s. At the same instant a ball is dropped from a point directly above the stone from a height of 30 m. At what height from the ground will the stone and the ball meet and after how much time? (Use \\(g = 10\\) m/s\\(^2\\) for ease of calculation).",
+    "solution": "[Textbook misprint, corrected above: the printed solution introduced its expression as \"the distances (not displacements) travelled\", while the expression itself, \\(15t_{0} - \\tfrac{1}{2}gt_{0}^{2}\\), is the DISPLACEMENT. At the meeting time \\(t_{0} = 2\\) s the stone has already passed its highest point at \\(t = 1.5\\) s, so it has travelled \\(11.25 + 1.25 = 12.5\\) m while its displacement is \\(10\\) m. The two words have been swapped so the sentence matches the mathematics; the meeting height and time are unaffected.]\n\nLet us assume that the stone and the ball meet after time \\(t_0\\). The displacements (not distances) of the stone and the ball in that time can be obtained from Eq. (3.8) as\n\n\\(s_{\\text{stone}} = 15\\, t_0 - \\dfrac{1}{2}\\, g\\, t_0^{\\,2}\\)\n\n\\(s_{\\text{ball}} = \\dfrac{1}{2}\\, g\\, t_0^{\\,2}\\)\n\nWhen they meet, \\(s_{\\text{stone}} + s_{\\text{ball}} = 30\\)\n\n\\(15\\, t_0 - \\dfrac{1}{2}\\, g\\, t_0^{\\,2} + \\dfrac{1}{2}\\, g\\, t_0^{\\,2} = 30\\)\n\n\\(t_0 = 30/15 = 2\\) s\n\n\\(\\therefore s_{\\text{stone}} = 15\\,(2) - \\dfrac{1}{2}\\,(10)\\,(2)^2 = 30 - 20 = 10\\) m\n\nThus the stone and the ball meet at a height of 10 m.",
+    "_note": "Internal-consistency observation, REPORTED NOT REPAIRED. The printed solution says the quantities are 'The distances (not displacements) travelled', but the expression it then uses, \\(s_{\\text{stone}} = 15 t_0 - \\tfrac{1}{2} g t_0^2\\), is the DISPLACEMENT (net rise), not the path length. With \\(u = 15\\) m/s and \\(g = 10\\) m/s\\(^2\\) the stone reaches its highest point at \\(t = 1.5\\) s (11.25 m) and is already falling at \\(t_0 = 2\\) s, so its actual distance travelled is \\(11.25 + 1.25 = 12.5\\) m, not 10 m. The arithmetic and the final answer (they meet at a height of 10 m after 2 s) are correct; only the parenthetical '(not displacements)' contradicts the formula used."
+  },
+  {
+    "ref": "Solved Ex.3.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relative Velocity",
+    "difficulty": "EASY",
+    "stem": "An aeroplane A, is travelling in a straight line with a velocity of 300 km/hr with respect to Earth. Another aeroplane B, is travelling in the opposite direction with a velocity of 350 km/hr with respect to Earth. What is the relative velocity of A with respect to B? What should be the velocity of a third aeroplane C moving parallel to A, relative to the Earth if it has a relative velocity of 100 km/hr with respect to A?",
+    "solution": "Let \\(v_A\\), \\(v_B\\) and \\(v_C\\) be the velocities of the three planes relative to the Earth. Relative velocity of A with respect to B \\(= v_{AB} = v_A - v_B = 300 - (-350) = 650\\) km/hr\n\nRelative velocity of C with respect to A \\(= v_{CA} = v_C - v_A = 100\\) km/hr.\n\nThus, \\(v_C = v_{CA} + v_A = 400\\) km/hr"
+  }
+]
