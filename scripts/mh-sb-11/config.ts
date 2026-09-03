@@ -1859,8 +1859,21 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   // ── Ch.16 Chemistry in Everyday Life. 10pp. Exercise opens p08 — one of the
-  //    largest exercises relative to chapter size (blocks 1-10).
-  //    One worked example, 16.1. Pure recall/explain chapter; no figures expected.
+  //    largest exercises relative to chapter size.
+  //    One worked example, 16.1, standard label form (1 Problem / 1 Solution).
+  //    ⚠ CORRECTED 2026-09-03, both halves of the original note were wrong:
+  //      - The exercise has **ELEVEN** blocks, not the ten listed. `11. Answer
+  //        the following` (2 questions) is printed on p09 and my text scan missed
+  //        it — the seventh chapter in this lane where my block list was short.
+  //        Block 10's printed heading is `Answer in one senetence` (book's typo).
+  //      - "~1 keyed row" was a FALSE POSITIVE of the bare-parenthesis heuristic,
+  //        the exact class the Redox note warns about: the only parentheticals are
+  //        `(4.8 % w/v)`, which is STEM DATA in Ex Q.2 (E), and the date `(1908)`
+  //        in prose. The real count is **0** and the gate cannot run here at all.
+  //    ⚠ Two printed letter gaps, kept as the book prints them: block 10 runs
+  //      A-G then I, J (H skipped), and Ex Q.11 (A)'s sub-items are a, c, d, e.
+  //    Figure load is EIGHT, not the ~0 originally expected — block 3 prints a
+  //    2-D structure per item and Ex Q.10 (J)'s structure IS the question.
   "everyday-chemistry-11-chem": {
     id: "everyday-chemistry-11-chem",
     chapterName: "Chemistry in Everyday Life",

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "80068613-a79f-43f0-aeac-72a48a4f8a04",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "A",
+    "solution": "Spontaneity at constant temperature and pressure is decided by \\(\\Delta G = \\Delta H - T\\Delta S\\), and the process is spontaneous when \\(\\Delta G < 0\\).\n\nIf \\(\\Delta H < 0\\) and \\(\\Delta S > 0\\), then \\(-T\\Delta S\\) is negative for every positive temperature, so \\(\\Delta G\\) is the sum of two negative terms and is negative at ALL temperatures.\n\nTesting the alternatives:\n- \\(\\Delta H > 0\\) and \\(\\Delta S < 0\\) makes both terms positive, so \\(\\Delta G > 0\\) at every temperature — nonspontaneous throughout.\n- \\(\\Delta H < 0\\) and \\(\\Delta S < 0\\) gives a negative \\(\\Delta H\\) but a positive \\(-T\\Delta S\\); the reaction is spontaneous only while \\(|\\Delta H| > T|\\Delta S|\\), i.e. at low temperatures only.\n- \\(\\Delta H < 0\\) and \\(\\Delta S = 0\\) gives \\(\\Delta G = \\Delta H < 0\\), which is indeed spontaneous at all temperatures, but \\(\\Delta S = 0\\) is an idealised special case rather than the general thermodynamic condition the question asks for; the standard condition covering all temperatures is the exothermic reaction with increasing entropy.\n\nHence the correct thermodynamic conditions are \\(\\Delta H < 0\\) and \\(\\Delta S > 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "285e6b32-0908-48c1-be20-9ab0edca0d64",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "A",
+    "solution": "The container is well insulated, so no heat is exchanged: \\(Q = 0\\). The first law then gives \\(\\Delta U = Q + W = W\\).\n\nThe expansion is against a constant external pressure, so\n\\(W = -P_{ext}\\,\\Delta V = -2.5\\ \\mathrm{bar} \\times (4.5\\ \\mathrm{L} - 2.5\\ \\mathrm{L}) = -5.0\\ \\mathrm{L\\ bar}\\)\n\nUsing the conversion this chapter itself states, \\(1\\ \\mathrm{dm^3\\ bar} = 100\\ \\mathrm{J}\\),\n\\(W = -5.0 \\times 100 = -500\\ \\mathrm{J}\\), so \\(\\Delta U = -500\\ \\mathrm{J}\\).\n\nTesting the alternatives: \\(+500\\ \\mathrm{J}\\) has the wrong sign — the gas expands, so it does work on the surroundings and its internal energy must fall. The pair \\(\\pm 1013\\ \\mathrm{J}\\) arises from taking \\(\\Delta V = 4.0\\ \\mathrm{L}\\) and the litre-atmosphere conversion (\\(1\\ \\mathrm{L\\ atm} = 101.3\\ \\mathrm{J}\\)); the stem states the pressure in bar and the volume change is 2.0 L, so neither applies.",
+    "matches_current": true
+  },
+  {
+    "id": "9db16cf8-f3e1-42d9-902f-c89ba4eb4fd4",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "A",
+    "solution": "Entropy measures molecular disorder, so it falls only when a system becomes more ordered.\n\nIn crystallization a liquid, in which the molecules move freely, becomes a solid in which they occupy fixed positions in a definite order. Disorder decreases, so \\(\\Delta S < 0\\).\n\nTesting the alternatives:\n- Raising a crystalline solid from 0 K to 115 K adds heat, which increases molecular motion and therefore disorder; \\(\\Delta S > 0\\).\n- \\(\\mathrm{H_2(g) \\longrightarrow 2H(g)}\\) converts one mole of gas into two moles of free atoms; the chapter states explicitly that larger disorder is associated with separated H atoms, so \\(\\Delta S > 0\\).\n- \\(\\mathrm{2\\,NaHCO_3(s) \\longrightarrow Na_2CO_3(s) + CO_2(g) + H_2O(g)}\\) produces two moles of gas from a solid, a large increase in disorder, so \\(\\Delta S > 0\\).\n\nOnly crystallization of a liquid into a solid lowers the entropy of the system.",
+    "matches_current": true
+  },
+  {
+    "id": "b3180f55-107e-4697-bba2-b971ab9daeb2",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "B",
+    "solution": "The standard enthalpy of formation is the enthalpy change when one mole of a substance in its standard state is formed from its elements in their standard states.\n\nFor an element already in its standard state there is no change at all — the \"reaction\" is the element becoming itself — so the enthalpy change is zero. The chapter states this directly as \\(\\Delta_f H^0(\\mathrm{H_2}) = \\Delta_f H^0(\\mathrm{Cl_2}) = \\Delta_f H^0(\\mathrm{C}) = 0\\), and it is why the \\(\\mathrm{O_2}\\) term is dropped from every combustion calculation in this chapter.\n\nTesting the alternatives: \"unity\" would be an arbitrary non-zero value with no thermodynamic meaning; \"less than zero\" would make the element unstable with respect to itself, which is self-contradictory; \"different elements\" is not a value at all. The convention is a single fixed number, and it is zero.",
+    "matches_current": true
+  },
+  {
+    "id": "807d11d0-488f-4ab0-be41-c726f1e8220c",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "C",
+    "solution": "Breaking a bond requires energy to be supplied (endothermic); forming a bond releases energy (exothermic). The same rule applies to any change that increases the order or the strength of the attractive forces.\n\nIn \\(\\mathrm{2\\,Cl(g) \\longrightarrow Cl_2(g)}\\) two free chlorine atoms combine and a Cl-Cl bond is FORMED, so energy is released and \\(\\Delta H < 0\\). This is the reverse of the bond-dissociation reaction, whose enthalpy the chapter gives as \\(+242.7\\ \\mathrm{kJ}\\), so this reaction is \\(-242.7\\ \\mathrm{kJ}\\).\n\nTesting the alternatives:\n- \\(\\mathrm{H_2(g) \\longrightarrow 2H(g)}\\) breaks the H-H bond; the chapter gives \\(\\Delta_r H^0 = +436.4\\ \\mathrm{kJ}\\), endothermic.\n- \\(\\mathrm{C(s) \\longrightarrow C(g)}\\) is sublimation of graphite, which requires energy, endothermic.\n- \\(\\mathrm{H_2O(s) \\longrightarrow H_2O(\\mathit{l})}\\) is fusion; the chapter gives \\(\\Delta_{fus}H = +6.01\\ \\mathrm{kJ\\ mol^{-1}}\\), endothermic.\n\nOnly the combination of two chlorine atoms is exothermic.",
+    "matches_current": true
+  },
+  {
+    "id": "056370df-9df3-4070-b8b8-0590f0ed0be9",
+    "ref": "Ex Q.1 (vi)",
+    "derived_answer": "A",
+    "solution": "The enthalpy of vaporization is the heat needed to vaporize ONE MOLE, so the supplied heat must be divided by the number of moles vaporized.\n\nEthanol is \\(\\mathrm{C_2H_5OH}\\), molar mass \\(= 2(12) + 6(1) + 16 = 46\\ \\mathrm{g\\ mol^{-1}}\\).\n\\(n = \\dfrac{6.24\\ \\mathrm{g}}{46\\ \\mathrm{g\\ mol^{-1}}} = 0.1357\\ \\mathrm{mol}\\)\n\n\\(\\Delta_{vap}H = \\dfrac{5.89\\ \\mathrm{kJ}}{0.1357\\ \\mathrm{mol}} = 43.4\\ \\mathrm{kJ\\ mol^{-1}}\\)\n\nTesting the alternatives: none of \\(60.2\\), \\(38.9\\) or \\(20.4\\ \\mathrm{kJ\\ mol^{-1}}\\) can be reached from these data. Dividing without converting to moles gives \\(0.944\\ \\mathrm{kJ\\ g^{-1}}\\), and multiplying rather than dividing gives \\(0.799\\), so no plausible slip produces them either. Only \\(43.4\\ \\mathrm{kJ\\ mol^{-1}}\\) is consistent.",
+    "matches_current": true
+  },
+  {
+    "id": "a8e9d8dc-3ca4-4fda-8b59-8c721b55b053",
+    "ref": "Ex Q.1 (vii)",
+    "derived_answer": "B",
+    "solution": "The entropy change of the surroundings is \\(\\Delta S_{surr} = -\\dfrac{\\Delta H}{T}\\), where \\(\\Delta H\\) is the enthalpy change of the system. Standard conditions mean \\(T = 298\\ \\mathrm{K}\\).\n\n\\(\\Delta S_{surr} = -\\dfrac{-238.9 \\times 10^3\\ \\mathrm{J\\ mol^{-1}}}{298\\ \\mathrm{K}} = +801.7\\ \\mathrm{J\\ K^{-1}}\\)\n\nThe sign is decided physically as well as algebraically: the formation of methanol is exothermic, so the surroundings RECEIVE that heat and their disorder increases, which requires \\(\\Delta S_{surr}\\) to be positive.\n\nTesting the alternatives: \\(-801.7\\ \\mathrm{J\\ K^{-1}}\\) has the right magnitude and the wrong sign (it omits the leading minus in the formula, or equivalently gives the entropy change of the system rather than of the surroundings). The pair \\(\\pm 0.8017\\ \\mathrm{J\\ K^{-1}}\\) is the answer in \\(\\mathrm{kJ\\ K^{-1}}\\) mislabelled as \\(\\mathrm{J\\ K^{-1}}\\) — a factor of 1000 out for the stated unit.",
+    "matches_current": true
+  },
+  {
+    "id": "db8c5710-446c-41a2-a8a2-15de8e234ffd",
+    "ref": "Ex Q.1 (viii)",
+    "derived_answer": "B",
+    "solution": "A state function depends only on the state of the system, not on the path taken to reach it. The chapter states plainly that work \\((W)\\) and heat \\((Q)\\) are PATH functions, so items 2 and 3 are not state functions.\n\nThe other two are:\n- \\(Q + W = \\Delta U\\) by the first law, and internal energy is a state function.\n- \\(H - TS = G\\), the Gibbs energy; since \\(H\\), \\(T\\) and \\(S\\) are all state functions, so is \\(G\\).\n\nSo exactly items 2 and 3 fail the test. Testing the alternatives: \"1, 2 and 3\" wrongly includes \\(\\Delta U\\); \"1 and 4\" names the two quantities that ARE state functions, i.e. the exact opposite of what is asked; \"2, 3 and 4\" wrongly includes the Gibbs energy.",
+    "matches_current": true
+  },
+  {
+    "id": "8c677b6b-fac5-424c-a9cd-98b70e307fce",
+    "ref": "Ex Q.1 (ix)",
+    "derived_answer": "C",
+    "solution": "At the temperature where \\(\\Delta G = 0\\) the system is at equilibrium, and \\(\\Delta G = \\Delta H - T\\Delta S\\) gives\n\\(T = \\dfrac{\\Delta H}{\\Delta S}\\)\n\nThe two quantities must be put in the same energy unit before dividing:\n\\(T = \\dfrac{40.63 \\times 10^3\\ \\mathrm{J\\ mol^{-1}}}{108.8\\ \\mathrm{J\\ K^{-1}\\ mol^{-1}}} = 373.4\\ \\mathrm{K}\\)\n\nThis is a physically reassuring result: at 1 bar, liquid water and its vapour are in equilibrium at the normal boiling point, close to 373 K.\n\nTesting the alternatives: 273.4 K and 293.4 K are far below the boiling point and are not returned by the division; 393.4 K differs from the computed value by exactly 20 K and corresponds to no consistent arithmetic on these data.",
+    "matches_current": true
+  },
+  {
+    "id": "31610c07-e8e3-42a4-a2c3-3f06f0e0fa99",
+    "ref": "Ex Q.1 (x)",
+    "derived_answer": "B",
+    "solution": "The enthalpy of formation refers to ONE mole of the compound formed from its elements in their standard states:\n\\(\\mathrm{\\tfrac{1}{2}\\,H_2(g) + \\tfrac{1}{2}\\,Cl_2(g) \\longrightarrow HCl(g)}\\)\n\nUsing \\(\\Delta_r H^0 = \\sum \\Delta H^0(\\text{bonds broken}) - \\sum \\Delta H^0(\\text{bonds formed})\\):\nhalf an H-H bond and half a Cl-Cl bond are broken, and one H-Cl bond is formed.\n\n\\(\\Delta_f H^0 = \\tfrac{1}{2}(434) + \\tfrac{1}{2}(242) - 431 = 217 + 121 - 431 = -93\\ \\mathrm{kJ\\ mol^{-1}}\\)\n\nThe negative sign is expected: the H-Cl bond formed (431 kJ) is stronger than the average of the two bonds broken (338 kJ), so energy is released.\n\nTesting the alternatives: \\(+93\\ \\mathrm{kJ\\ mol^{-1}}\\) is the same magnitude with the sign reversed, which would describe the DECOMPOSITION of HCl. The pair \\(\\pm 245\\ \\mathrm{kJ\\ mol^{-1}}\\) comes from writing the equation for TWO moles of HCl, \\(\\mathrm{H_2 + Cl_2 \\longrightarrow 2HCl}\\), which gives \\(434 + 242 - 2(431) = -186\\ \\mathrm{kJ}\\), and in any case a formation enthalpy is quoted per mole of product.",
+    "matches_current": true
+  }
+]

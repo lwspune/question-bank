@@ -1,0 +1,106 @@
+[
+  {
+    "id": "8bb44116-1420-43bf-a1e6-a90e196fc226",
+    "ref": "Ex Q.4 (A)",
+    "stem": "Half life of \\(^{18}\\mathrm{F}\\) is 110 minutes. What fraction of \\(^{18}\\mathrm{F}\\) sample decays in 20 minutes?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans. : 0.118)",
+    "our_solution": "Given: \\(t_{1/2} = 110\\) min, \\(t = 20\\) min.\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{110\\ \\mathrm{min}} = 6.30 \\times 10^{-3}\\ \\mathrm{min^{-1}}\\)\n\n**Step 2 — fraction remaining.** From Eq. (13.9), \\(\\log_{10}\\dfrac{N_0}{N} = \\dfrac{\\lambda t}{2.303}\\):\n\n\\(\\log_{10}\\dfrac{N_0}{N} = \\dfrac{6.30 \\times 10^{-3}\\ \\mathrm{min^{-1}} \\times 20\\ \\mathrm{min}}{2.303} = \\dfrac{0.126}{2.303} = 0.0547\\)\n\n\\(\\dfrac{N_0}{N} = \\mathrm{antilog}\\ (0.0547) = 1.1343\\)\n\n\\(\\dfrac{N}{N_0} = \\dfrac{1}{1.1343} = 0.8816\\)\n\n**Step 3 — fraction decayed.**\n\nfraction decayed \\(= 1 - \\dfrac{N}{N_0} = 1 - 0.8816 = 0.118\\)\n\n**About 0.118, that is 11.8 %, of the \\(^{18}\\mathrm{F}\\) sample decays in 20 minutes.** (The answer is a fraction and so has no unit.)"
+  },
+  {
+    "id": "0a6fc00c-b9b7-4c0b-a718-11ba94a19f38",
+    "ref": "Ex Q.4 (B)",
+    "stem": "Half life of \\(^{35}\\mathrm{S}\\) is 87.8 d. What percentage of \\(^{35}\\mathrm{S}\\) sample remains after 180 d?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans. : 24.2%)",
+    "our_solution": "Given: \\(t_{1/2} = 87.8\\) d, \\(t = 180\\) d. Take \\(N_0 = 100\\).\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{0.693}{87.8\\ \\mathrm{d}} = 7.893 \\times 10^{-3}\\ \\mathrm{d^{-1}}\\)\n\n**Step 2 — apply the rate law.**\n\n\\(\\log_{10}\\dfrac{N_0}{N} = \\dfrac{\\lambda t}{2.303} = \\dfrac{7.893 \\times 10^{-3}\\ \\mathrm{d^{-1}} \\times 180\\ \\mathrm{d}}{2.303} = \\dfrac{1.4207}{2.303} = 0.6169\\)\n\n\\(\\dfrac{N_0}{N} = \\mathrm{antilog}\\ (0.6169) = 4.139\\)\n\n**Step 3 — percentage remaining.**\n\n\\(N = \\dfrac{100}{4.139} = 24.2\\)\n\n**24.2 % of the \\(^{35}\\mathrm{S}\\) sample remains after 180 days.**\n\n(As a check, 180 d is a little over two half lives, and two half lives would leave 25 %.)"
+  },
+  {
+    "id": "9672d161-d92b-4380-8b1c-c5620089efd0",
+    "ref": "Ex Q.4 (C)",
+    "stem": "Half life \\(^{67}\\mathrm{Ga}\\) is 78 h. How long will it take to decay 12% of sample of Ga?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.14.44)",
+    "our_solution": "Given: \\(t_{1/2} = 78\\) h. 12 % of the sample decays, so 88 % remains: take \\(N_0 = 100\\) and \\(N = 88\\).\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{0.693}{78\\ \\mathrm{h}} = 8.885 \\times 10^{-3}\\ \\mathrm{h^{-1}}\\)\n\n**Step 2 — apply the rate law.** From \\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\dfrac{N_0}{N}\\),\n\n\\(t = \\dfrac{2.303}{\\lambda}\\ \\log_{10}\\dfrac{100}{88} = \\dfrac{2.303}{8.885 \\times 10^{-3}\\ \\mathrm{h^{-1}}} \\times \\log_{10}(1.1364)\\)\n\n\\(= 259.2\\ \\mathrm{h} \\times 0.05552 = 14.4\\ \\mathrm{h}\\)\n\n**It takes about 14.4 hours for 12 % of the \\(^{67}\\mathrm{Ga}\\) sample to decay.**\n\n(The unit is hours, since the half life was given in hours; the printed answer 14.44 omits the unit and differs only in the fourth figure, from rounding of the logarithm.)"
+  },
+  {
+    "id": "92a42409-84bb-4dd8-88dc-3e6afc9b5260",
+    "ref": "Ex Q.4 (D)",
+    "stem": "0.5 g Sample of \\(^{201}\\mathrm{Tl}\\) decays to 0.0788 g in 8 days. What is its half life?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.3.0 d)",
+    "our_solution": "Given: \\(N_0 = 0.5\\) g, \\(N = 0.0788\\) g, \\(t = 8\\) days. (Masses may be used in place of numbers of nuclei, since the two are proportional for one isotope.)\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\dfrac{N_0}{N} = \\dfrac{2.303}{8\\ \\mathrm{d}}\\ \\log_{10}\\dfrac{0.5}{0.0788}\\)\n\n\\(= 0.28788\\ \\mathrm{d^{-1}} \\times \\log_{10}(6.345) = 0.28788\\ \\mathrm{d^{-1}} \\times 0.80252 = 0.2310\\ \\mathrm{d^{-1}}\\)\n\n**Step 2 — half life.**\n\n\\(t_{1/2} = \\dfrac{0.693}{\\lambda} = \\dfrac{0.693}{0.2310\\ \\mathrm{d^{-1}}} = 3.0\\ \\mathrm{d}\\)\n\n**The half life of \\(^{201}\\mathrm{Tl}\\) is 3.0 days.**\n\n(Check: 8 days is close to \\(2\\tfrac{2}{3}\\) half lives, and \\(0.5/2^{8/3} = 0.0787\\) g, which is the mass given.)"
+  },
+  {
+    "id": "b9c889d7-2d39-412b-996f-3c1980ce975a",
+    "ref": "Ex Q.4 (E)",
+    "stem": "65% of \\(^{111}\\mathrm{In}\\) sample decays in 4.2 d. What is its half life?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans. : 2.77 d)",
+    "our_solution": "Given: 65 % of the sample decays in 4.2 d, so 35 % remains. Take \\(N_0 = 100\\), \\(N = 35\\), \\(t = 4.2\\) d.\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\dfrac{N_0}{N} = \\dfrac{2.303}{4.2\\ \\mathrm{d}}\\ \\log_{10}\\dfrac{100}{35}\\)\n\n\\(= 0.54833\\ \\mathrm{d^{-1}} \\times \\log_{10}(2.857) = 0.54833\\ \\mathrm{d^{-1}} \\times 0.45593 = 0.2500\\ \\mathrm{d^{-1}}\\)\n\n**Step 2 — half life.**\n\n\\(t_{1/2} = \\dfrac{0.693}{\\lambda} = \\dfrac{0.693}{0.2500\\ \\mathrm{d^{-1}}} = 2.77\\ \\mathrm{d}\\)\n\n**The half life of \\(^{111}\\mathrm{In}\\) is 2.77 days.**"
+  },
+  {
+    "id": "b0897a71-3385-48a7-b6a4-63fe3d619d2d",
+    "ref": "Ex Q.4 (F)",
+    "stem": "Calculate the binding energy per nucleon of \\(^{84}_{36}\\mathrm{Kr}\\) whose atomic mass is 83.913 u. (Mass of neutron is 1.0087 u and that of H atom is 1.0078 u).",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.: 8.7 MeV)",
+    "our_solution": "For \\(^{84}_{36}\\mathrm{Kr}\\): \\(Z = 36\\), \\(A = 84\\), so \\(A - Z = 48\\) neutrons. \\(m = 83.913\\) u.\n\n**Step 1 — mass defect,** using Eq. (13.2), \\(\\Delta m = [Z m_{\\mathrm{H}} + (A - Z) m_{\\mathrm{n}}] - m\\):\n\n\\(\\Delta m = [36 \\times 1.0078\\ \\mathrm{u} + 48 \\times 1.0087\\ \\mathrm{u}] - 83.913\\ \\mathrm{u}\\)\n\n\\(= [36.2808 + 48.4176]\\ \\mathrm{u} - 83.913\\ \\mathrm{u} = 84.6984\\ \\mathrm{u} - 83.913\\ \\mathrm{u} = 0.7854\\ \\mathrm{u}\\)\n\n**Step 2 — total binding energy,** using Eq. (13.3):\n\n\\(\\mathrm{B.E.} = \\Delta m\\ (\\mathrm{u}) \\times 931.4 = 0.7854 \\times 931.4 = 731.5\\ \\mathrm{MeV}\\)\n\n**Step 3 — binding energy per nucleon,** using Eq. (13.4):\n\n\\(\\overline{B} = \\dfrac{\\mathrm{B.E.}}{A} = \\dfrac{731.5\\ \\mathrm{MeV}}{84} = 8.71\\ \\mathrm{MeV\\ per\\ nucleon}\\)\n\n**The binding energy per nucleon of \\(^{84}\\mathrm{Kr}\\) is about 8.7 MeV.**"
+  },
+  {
+    "id": "9920d275-fa47-4df4-81fd-0b513f7d79e1",
+    "ref": "Ex Q.4 (G)",
+    "stem": "Calculate the energy in Mev released in the nuclear reaction\n\n\\(^{174}_{77}\\mathrm{Ir} \\longrightarrow {}^{170}_{75}\\mathrm{Re} + {}^{4}_{2}\\mathrm{He}\\)\n\nAtomic masses : Ir = 173.97 u, Re = 169.96 u and He = 4.0026 u",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.6.89 MeV)",
+    "our_solution": "**Step 1 — mass defect of the reaction.** The energy released comes from the mass lost in going from reactant to products:\n\n\\(\\Delta m = \\text{mass of } ^{174}\\mathrm{Ir} - (\\text{mass of } ^{170}\\mathrm{Re} + \\text{mass of } ^{4}\\mathrm{He})\\)\n\n\\(= 173.97\\ \\mathrm{u} - (169.96\\ \\mathrm{u} + 4.0026\\ \\mathrm{u})\\)\n\n\\(= 173.97\\ \\mathrm{u} - 173.9626\\ \\mathrm{u} = 0.0074\\ \\mathrm{u}\\)\n\n**Step 2 — convert the mass loss to energy,** using \\(1\\ \\mathrm{u} \\equiv 931.4\\) MeV:\n\n\\(E = \\Delta m\\ (\\mathrm{u}) \\times 931.4 = 0.0074 \\times 931.4 = 6.89\\ \\mathrm{MeV}\\)\n\n**The energy released in the reaction is 6.89 MeV.**\n\n(\\(\\Delta m\\) is positive, so mass is lost and energy is RELEASED, as it must be for a spontaneous \\(\\alpha\\)-decay.)"
+  },
+  {
+    "id": "d659f0ee-ea26-45a2-9e32-93c2f96f290e",
+    "ref": "Ex Q.4 (H)",
+    "stem": "A 3/4 of the original amount of radioisotope decays in 60 minutes. What is its half life?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.: 30 min)",
+    "our_solution": "If \\(3/4\\) of the original amount has decayed, then the amount REMAINING is\n\n\\(1 - \\dfrac{3}{4} = \\dfrac{1}{4}\\) of the original.\n\nBy the definition of half life, each half life halves the amount remaining:\n\n\\(N_0 \\xrightarrow{\\ t_{1/2}\\ } \\dfrac{N_0}{2} \\xrightarrow{\\ t_{1/2}\\ } \\dfrac{N_0}{4}\\)\n\nSo reaching one quarter takes **two** half lives, and those two half lives occupy 60 minutes:\n\n\\(2\\ t_{1/2} = 60\\ \\mathrm{min}\\), hence \\(t_{1/2} = 30\\ \\mathrm{min}\\)\n\n**The half life of the radioisotope is 30 minutes.**\n\n(The same result follows from the rate law: \\(\\lambda = \\dfrac{2.303}{60\\ \\mathrm{min}}\\log_{10} 4 = 0.0231\\ \\mathrm{min^{-1}}\\), and \\(t_{1/2} = 0.693/0.0231 = 30\\) min.)"
+  },
+  {
+    "id": "aa7098ac-50ab-4ea4-b302-d0f2e2f1e814",
+    "ref": "Ex Q.4 (I)",
+    "stem": "How many - particles are emitted by 0.1 g of \\(^{226}\\mathrm{Ra}\\) in one year?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans. : 1.154 × 10^17)",
+    "our_solution": "The number of particles emitted in a given time is the **activity** of the sample, \\(-\\dfrac{dN}{dt} = \\lambda N\\). Radium-226 is an \\(\\alpha\\)-emitter — section 13.6.1 gives its decay as \\(^{226}_{88}\\mathrm{Ra} \\longrightarrow {}^{222}_{86}\\mathrm{Rn} + {}^{4}_{2}\\mathrm{He}\\) — so the particles counted are \\(\\alpha\\)-particles.\n\n**Step 1 — decay constant.** The stem does not give the half life; Table 13.4 (b) of this chapter gives \\(t_{1/2} = 1620\\) y for radium-226.\n\n\\(\\lambda = \\dfrac{0.693}{1620\\ \\mathrm{y}} = 4.278 \\times 10^{-4}\\ \\mathrm{y^{-1}}\\)\n\n**Step 2 — number of nuclei in 0.1 g.**\n\n\\(N = \\dfrac{0.1\\ \\mathrm{g}}{226\\ \\mathrm{g\\ mol^{-1}}} \\times 6.022 \\times 10^{23}\\ \\mathrm{mol^{-1}} = 2.665 \\times 10^{20}\\) nuclei\n\n**Step 3 — activity.**\n\n\\(-\\dfrac{dN}{dt} = \\lambda N = 4.278 \\times 10^{-4}\\ \\mathrm{y^{-1}} \\times 2.665 \\times 10^{20} = 1.14 \\times 10^{17}\\ \\mathrm{y^{-1}}\\)\n\n**About \\(1.14 \\times 10^{17}\\) \\(\\alpha\\)-particles are emitted in one year.**\n\n[Note: the stem prints \"How many - particles\", with the particle symbol missing before the hyphen, and it does not state the half life. The printed answer \\(1.154 \\times 10^{17}\\) is what \\(t_{1/2} = 1600\\) y would give; the chapter's own Table 13.4 (b) says 1620 y, which gives the \\(1.14 \\times 10^{17}\\) above. The two differ only by the half life used.]"
+  },
+  {
+    "id": "b2106e0b-638a-4ddc-878b-118198ad2e74",
+    "ref": "Ex Q.4 (J)",
+    "stem": "A sample of \\(^{32}\\mathrm{P}\\) initially shows activity of one Curie. After 303 days the activity falls to \\(1.5 \\times 10^{4}\\) dps. What is the half life of \\(^{32}\\mathrm{P}\\)?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.14.27 d)",
+    "our_solution": "**Step 1 — put both activities in the same unit.** Section 13.5.6 gives \\(1\\ \\mathrm{Ci} = 3.7 \\times 10^{10}\\) dps, so the initial activity is\n\n\\(-\\dfrac{dN_0}{dt} = 3.7 \\times 10^{10}\\ \\mathrm{dps}\\), and after 303 days \\(-\\dfrac{dN}{dt} = 1.5 \\times 10^{4}\\ \\mathrm{dps}\\).\n\nSince activity is proportional to the number of nuclei, the ratio of activities equals \\(N_0/N\\).\n\n**Step 2 — decay constant.**\n\n\\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\dfrac{N_0}{N} = \\dfrac{2.303}{303\\ \\mathrm{d}}\\ \\log_{10}\\dfrac{3.7 \\times 10^{10}}{1.5 \\times 10^{4}}\\)\n\n\\(= 7.601 \\times 10^{-3}\\ \\mathrm{d^{-1}} \\times \\log_{10}(2.467 \\times 10^{6})\\)\n\n\\(= 7.601 \\times 10^{-3}\\ \\mathrm{d^{-1}} \\times 6.392 = 0.04858\\ \\mathrm{d^{-1}}\\)\n\n**Step 3 — half life.**\n\n\\(t_{1/2} = \\dfrac{0.693}{\\lambda} = \\dfrac{0.693}{0.04858\\ \\mathrm{d^{-1}}} = 14.27\\ \\mathrm{d}\\)\n\n**The half life of \\(^{32}\\mathrm{P}\\) is 14.27 days.**"
+  },
+  {
+    "id": "44ff342f-2deb-4535-8055-47a67314009e",
+    "ref": "Ex Q.4 (K)",
+    "stem": "Half life of radon is 3.82 d. By what time would 99.9 % of radon will be decayed.",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.38.05 d)",
+    "our_solution": "Given: \\(t_{1/2} = 3.82\\) d. If 99.9 % has decayed, 0.1 % remains: take \\(N_0 = 100\\) and \\(N = 100 - 99.9 = 0.1\\).\n\n**Step 1 — decay constant.**\n\n\\(\\lambda = \\dfrac{0.693}{3.82\\ \\mathrm{d}} = 0.18141\\ \\mathrm{d^{-1}}\\)\n\n**Step 2 — time required.**\n\n\\(t = \\dfrac{2.303}{\\lambda}\\ \\log_{10}\\dfrac{N_0}{N} = \\dfrac{2.303}{0.18141\\ \\mathrm{d^{-1}}}\\ \\log_{10}\\dfrac{100}{0.1}\\)\n\n\\(= 12.695\\ \\mathrm{d} \\times \\log_{10}(1000) = 12.695\\ \\mathrm{d} \\times 3 = 38.1\\ \\mathrm{d}\\)\n\n**Radon will be 99.9 % decayed after about 38.1 days**, that is roughly 10 half lives (\\(2^{10} = 1024 \\approx 1000\\))."
+  },
+  {
+    "id": "a739a873-8b0b-4c81-9885-57e5f91df248",
+    "ref": "Ex Q.4 (L)",
+    "stem": "It has been found that the Sun's mass loss is \\(4.34 \\times 10^{9}\\) kg per second. How much energy per second would be radiated into space by the Sun?",
+    "context": "Solve the problems",
+    "book_answer": "(Ans.: 3.9 × 10^23 kJ/s)",
+    "our_solution": "The Sun radiates energy because it loses mass, and the two are connected by Einstein's equation \\(E = mc^{2}\\) (section 13.3.5).\n\nGiven: \\(m = 4.34 \\times 10^{9}\\) kg lost per second, \\(c = 3 \\times 10^{8}\\ \\mathrm{m\\ s^{-1}}\\).\n\n\\(E = mc^{2} = 4.34 \\times 10^{9}\\ \\mathrm{kg} \\times (3 \\times 10^{8}\\ \\mathrm{m\\ s^{-1}})^{2}\\)\n\n\\(= 4.34 \\times 10^{9} \\times 9 \\times 10^{16}\\ \\mathrm{J}\\)\n\n\\(= 3.906 \\times 10^{26}\\ \\mathrm{J}\\)\n\nConverting to kilojoules,\n\n\\(E = \\dfrac{3.906 \\times 10^{26}}{10^{3}}\\ \\mathrm{kJ} = 3.9 \\times 10^{23}\\ \\mathrm{kJ}\\)\n\n**The Sun radiates about \\(3.9 \\times 10^{23}\\) kJ into space every second**, that is \\(3.9 \\times 10^{23}\\ \\mathrm{kJ\\ s^{-1}}\\). This energy is the result of the nuclear fusion reactions taking place in the Sun."
+  },
+  {
+    "id": "f9599ffd-5754-4358-ba2c-40f1634ffd49",
+    "ref": "Ex Q.4 (M)",
+    "stem": "A sample of old wood shows 7.0 dps/g. If the fresh sample of tree shows 16.0 dps/g, How old is the given sample of wood? Half life of \\(^{14}\\mathrm{C}\\) 5730 y.",
+    "context": "Solve the problems",
+    "book_answer": "(Ans. 6833 g)",
+    "our_solution": "This is radiocarbon dating (section 13.8.1). The fresh sample gives the activity the wood had at the moment the tree died, so \\(N_0 = 16.0\\) dps/g and \\(N = 7.0\\) dps/g.\n\n**Step 1 — decay constant of \\(^{14}\\mathrm{C}\\).**\n\n\\(\\lambda = \\dfrac{0.693}{5730\\ \\mathrm{y}} = 1.21 \\times 10^{-4}\\ \\mathrm{y^{-1}}\\)\n\n**Step 2 — age of the sample.**\n\n\\(t = \\dfrac{2.303}{\\lambda}\\ \\log_{10}\\dfrac{N_0}{N} = \\dfrac{2.303}{1.21 \\times 10^{-4}\\ \\mathrm{y^{-1}}}\\ \\log_{10}\\dfrac{16.0}{7.0}\\)\n\n\\(= 1.9033 \\times 10^{4}\\ \\mathrm{y} \\times \\log_{10}(2.2857)\\)\n\n\\(= 1.9033 \\times 10^{4}\\ \\mathrm{y} \\times 0.35908 = 6833\\ \\mathrm{y}\\)\n\n**The wood sample is about 6833 years old.**\n\n(The answer is an age, so the unit is YEARS; the chapter's own rounded value \\(\\lambda = 1.21 \\times 10^{-4}\\ \\mathrm{y^{-1}}\\) has been used, and carrying \\(0.693/5730\\) unrounded gives 6837 y.)"
+  }
+]

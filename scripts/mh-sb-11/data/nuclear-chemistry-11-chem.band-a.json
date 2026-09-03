@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "Solved Ex.13.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Nuclear Stability",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mean binding energy per nucleon for the formation of \\(^{16}_{8}\\mathrm{O}\\) nucleus. The mass of oxygen atom is 15.994 u. The masses of H atom and neutron are 1.0078 u and 1.0087 u, respectively.",
+    "solution": "[Textbook note (not an error): the stem gives the mass of the oxygen atom as 15.994 u, but the printed working's \\(\\Delta m = 0.137144\\ \\mathrm{u}\\) is what 15.99486 u gives. Carrying the stem's 15.994 u through instead gives \\(\\Delta m = 0.138\\ \\mathrm{u}\\), B.E. = 128.53 MeV and \\(\\overline{B} = 8.03\\) MeV per nucleon. The printed 7.98 MeV per nucleon is the physically accurate value; a student who works strictly from the rounded mass in the stem will get 8.03 and is not mistaken.]\n\ni. The mass defect, \\(\\Delta m = Z m_{\\mathrm{H}} + (A - Z) m_{\\mathrm{n}} - m\\)\n\n\\(m_{\\mathrm{H}} = 1.0078\\ \\mathrm{u}\\), \\(m_{\\mathrm{n}} = 1.0087\\ \\mathrm{u}\\) and \\(m = 15.994\\ \\mathrm{u}\\), \\(Z = 8\\), \\(A = 16\\)\n\n\\(\\Delta m = 8 \\times 1.0078\\ \\mathrm{u} + 8 \\times 1.0087\\ \\mathrm{u} - 15.994\\ \\mathrm{u} = 0.137144\\ \\mathrm{u}\\)\n\nii. Total binding energy, B.E. (MeV) \\(= \\Delta m\\ (\\mathrm{amu}) \\times 931.4\\)\n\nHence, B.E. \\(= 0.137144 \\times 931.4 = 127.73\\ \\mathrm{MeV}\\)\n\niii. Binding energy per nucleon, \\(\\overline{B} = \\dfrac{\\mathrm{B.E.}}{A}\\)\n\nHence, \\(\\overline{B} = \\dfrac{127.73\\ \\mathrm{MeV}}{16} = 7.98\\ \\mathrm{MeV/nucleon}\\)"
+  },
+  {
+    "ref": "Solved Ex.13.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Radioactive Decay",
+    "difficulty": "MODERATE",
+    "stem": "\\(^{41}\\mathrm{Ar}\\) decays initially at a rate of 575 Bq. The rate falls to 358 dps after 75 minutes. What is the half life of \\(^{41}\\mathrm{Ar}\\)?",
+    "solution": "\\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\left(\\dfrac{N_0}{N}\\right)\\)\n\nwhere \\(-\\dfrac{dN_0}{dt} = 575\\ \\mathrm{dps}\\), \\(-\\dfrac{dN}{dt} = 358\\ \\mathrm{dps}\\) and \\(t = 75\\ \\mathrm{min}\\).\n\nHence, \\(\\lambda = \\dfrac{2.303}{75\\ \\mathrm{min}}\\ \\log_{10}\\dfrac{575\\ \\mathrm{dps}}{358\\ \\mathrm{dps}} = 6.32 \\times 10^{-3}\\ \\mathrm{min^{-1}}\\)\n\n\\(t_{1/2} = \\dfrac{0.693}{\\lambda} = \\dfrac{0.693}{6.32 \\times 10^{-3}\\ \\mathrm{min^{-1}}} = 109.7\\ \\mathrm{min}\\)"
+  },
+  {
+    "ref": "Solved Ex.13.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Radioactive Decay",
+    "difficulty": "MODERATE",
+    "stem": "The half life of \\(^{32}\\mathrm{P}\\) is 14.26 d. What percentage of \\(^{32}\\mathrm{P}\\) sample will remain after 40 d?",
+    "solution": "[Textbook misprint: the first line of the printed solution reads \\(t_{1/2} = \\dfrac{0.693}{t_{1/2}}\\). The quantity being calculated there is the decay constant, so the left-hand side should be \\(\\lambda\\). The value obtained, \\(0.0486\\ \\mathrm{d^{-1}}\\), is correct and is used correctly as \\(\\lambda\\) in every later step, so the answer 14.32 % is unaffected.]\n\n\\(\\lambda = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{14.26\\ \\mathrm{d}} = 0.0486\\ \\mathrm{d^{-1}}\\)\n\nNow, \\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\left(\\dfrac{N_0}{N}\\right)\\)\n\n\\(N_0 = 100\\), \\(N = ?\\), \\(t = 40\\ \\mathrm{d}\\)\n\nHence, \\(\\log_{10}\\dfrac{N_0}{N} = \\dfrac{\\lambda t}{2.303} = \\dfrac{0.0486\\ \\mathrm{d^{-1}} \\times 40\\ \\mathrm{d}}{2.303} = 0.8441\\)\n\nTaking antilog of both sides we get\n\n\\(\\dfrac{N_0}{N} = \\mathrm{antilog}\\ (0.8441) = 6.984\\)\n\n\\(\\dfrac{100}{N} = 6.984\\) or \\(N = \\dfrac{100}{6.984} = 14.32\\)\n\n% \\(^{32}\\mathrm{P}\\) that remains after 40 d = 14.32 %"
+  },
+  {
+    "ref": "Solved Ex.13.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Radioactive Decay",
+    "difficulty": "MODERATE",
+    "stem": "The half life of \\(^{34}\\mathrm{Cl}\\) is 1.53 s. How long does it take for 99.9 % of sample of \\(^{34}\\mathrm{Cl}\\) to decay?",
+    "solution": "\\(\\lambda = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{1.53\\ \\mathrm{s}} = 0.453\\ \\mathrm{s^{-1}}\\)\n\nNow, \\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\left(\\dfrac{N_0}{N}\\right)\\)\n\n\\(N_0 = 100\\), \\(N = 100 - 99.9 = 0.1\\), \\(t = ?\\)\n\nHence, \\(0.453\\ \\mathrm{s^{-1}} = \\dfrac{2.303}{t}\\ \\log_{10}\\dfrac{100}{0.1}\\)\n\nor \\(t = \\dfrac{2.303}{0.453\\ \\mathrm{s^{-1}}} \\times \\log_{10}(1000) = \\dfrac{2.303}{0.453\\ \\mathrm{s^{-1}}} \\times 3 = 15.25\\ \\mathrm{s}\\)"
+  },
+  {
+    "ref": "Solved Ex.13.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Radioactive Decay",
+    "difficulty": "MODERATE",
+    "stem": "The half life of \\(^{209}\\mathrm{Po}\\) is 102 y. How much of 1 mg sample of polonium decays in 62 y?",
+    "solution": "\\(\\lambda = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{102\\ \\mathrm{y}} = 6.794 \\times 10^{-3}\\ \\mathrm{y^{-1}}\\)\n\n\\(\\lambda = \\dfrac{2.303}{t}\\ \\log_{10}\\left(\\dfrac{N_0}{N}\\right)\\)\n\nHence, \\(\\log_{10}\\left(\\dfrac{N_0}{N}\\right) = \\dfrac{\\lambda t}{2.303}\\)\n\nor, \\(\\log_{10}\\left(\\dfrac{N_0}{N}\\right) = \\dfrac{6.794 \\times 10^{-3}\\ \\mathrm{y^{-1}} \\times 62\\ \\mathrm{y}}{2.303} = 0.1829\\)\n\nIt then follows that \\(\\dfrac{N_0}{N} = \\mathrm{antilog}\\ (0.1829) = 1.524\\)\n\n\\(N = \\dfrac{N_0}{1.524} = \\dfrac{1\\ \\mathrm{mg}}{1.524} = 0.656\\ \\mathrm{mg}\\)\n\nN the amount that remains after 62 y. Hence, the amount decayed in 62 y \\(= 1\\ \\mathrm{mg} - 0.656\\ \\mathrm{mg} = 0.344\\ \\mathrm{mg}\\)"
+  },
+  {
+    "ref": "Solved Ex.13.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Modes of Decay",
+    "difficulty": "MODERATE",
+    "stem": "How many \\(\\alpha\\) and \\(\\beta\\)- particles are emitted in the following?\n\n\\(^{237}_{93}\\mathrm{Np} \\longrightarrow{} ^{209}_{83}\\mathrm{Bi}\\)",
+    "solution": "The emission of one \\(\\alpha\\) - particle decreases the mass number by 4 whereas the emission of \\(\\beta\\)- particles has no effect on mass number.\n\nNet decrease in mass number \\(= 237 - 209 = 28\\). This decrease is only due to \\(\\alpha\\)- particles.\n\nHence number of \\(\\alpha\\)- particles emitted \\(= \\dfrac{28}{4} = 7\\)\n\nNow the emission of one \\(\\alpha\\)-particle decreases the atomic number by 2 and \\(\\beta\\)-particle emission increases by 1.\n\nThe net decrease in atomic number \\(= 93 - 83 = 10\\)\n\nThe emission of 7 \\(\\alpha\\)-particles causes decrease in atomic number by 14. However the actual decrease is only 10. It means atomic number increses by 4. This increase is due to emission of \\(\\beta\\)-particles. Thus, 4 \\(\\beta\\)- particles are emitted."
+  },
+  {
+    "ref": "Solved Ex.13.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Nuclear Reactions",
+    "difficulty": "MODERATE",
+    "stem": "Estimate the energy released in the fusion reaction\n\n\\(^{2}_{1}\\mathrm{H} + {}^{3}_{2}\\mathrm{He} \\longrightarrow {}^{4}_{2}\\mathrm{He} + {}^{1}_{1}\\mathrm{H}\\)\n\nGiven atomic masses : \\(^{2}\\mathrm{H}\\) = 2.041 u, \\(^{3}\\mathrm{He}\\) = 3.0160 u, \\(^{4}\\mathrm{He}\\) = 4.0026 u, \\(^{1}\\mathrm{H}\\) = 1.0078 u",
+    "solution": "[Textbook misprint, two places, neither affecting the answer as corrected here. (i) The stem gives the atomic mass of \\(^{2}\\mathrm{H}\\) as 2.041 u, while the printed working uses 2.0141 u, which is the correct mass of deuterium; working from the stem's 2.041 u would give \\(\\Delta m = 0.0466\\ \\mathrm{u}\\) and 43.4 MeV. (ii) The printed last line reads \\(E = 0.197\\ \\mathrm{u} \\times 931.4 = 18.35\\ \\mathrm{MeV}\\), but \\(0.197 \\times 931.4 = 183.5\\); the mass defect the working itself obtains is 0.0197 u, and 18.35 MeV is the value that follows from it. The working above has been corrected to 0.0197 u.]\n\nMass defect \\(\\Delta m = (\\text{mass of } ^{2}\\mathrm{H} + \\text{mass of } ^{3}\\mathrm{He}) - (\\text{mass of } ^{4}\\mathrm{He} + \\text{mass of } ^{1}\\mathrm{H})\\)\n\n\\(= 2.0141\\ \\mathrm{u} + 3.0160\\ \\mathrm{u} - 4.0026\\ \\mathrm{u} - 1.0078\\ \\mathrm{u} = 0.0197\\ \\mathrm{u}\\)\n\n\\(E = \\Delta m\\ (\\mathrm{u}) \\times 931.4 = 0.0197\\ \\mathrm{u} \\times 931.4 = 18.35\\ \\mathrm{MeV}\\)"
+  },
+  {
+    "ref": "Solved Ex.13.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Radioactive Decay",
+    "difficulty": "HARD",
+    "stem": "Half life of \\(^{209}\\mathrm{Po}\\) is 102 y. How many \\(\\alpha\\)-particles are emitted in 1 s from 2 mg sample of Po?",
+    "solution": "[Textbook answer-key error: the printed last line reads \\(2.154 \\times 10^{-10}\\ \\mathrm{s^{-1}} \\times 5.763 \\times 10^{12}\\ \\text{atoms} = 1241\\ \\text{particles}\\ \\mathrm{s^{-1}}\\). The line immediately above it correctly obtains \\(N = 5.763 \\times 10^{18}\\) nuclei, so the exponent 12 is a misprint for 18 and the printed answer 1241 is a factor of \\(10^{6}\\) too small. The correct activity is \\(2.154 \\times 10^{-10} \\times 5.763 \\times 10^{18} = 1.241 \\times 10^{9}\\) particles per second, and the working above has been corrected to that.]\n\nActivity = number of \\(\\alpha\\) (or \\(\\beta\\)) particles emitted\n\n\\(= -\\dfrac{dN}{dt} = \\lambda N\\)\n\n\\(\\lambda = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{(102 \\times 365 \\times 24 \\times 3600)\\ \\mathrm{s}} = 2.154 \\times 10^{-10}\\ \\mathrm{s^{-1}}\\)\n\n\\(N = \\dfrac{2 \\times 10^{-3} \\times 6.022 \\times 10^{23}}{209} = 5.763 \\times 10^{18}\\) atoms of nuclei\n\n\\(-\\dfrac{dN}{dt} = \\lambda N = 2.154 \\times 10^{-10}\\ \\mathrm{s^{-1}} \\times 5.763 \\times 10^{18}\\ \\text{atoms} = 1.241 \\times 10^{9}\\ \\text{particles}\\ \\mathrm{s^{-1}}\\)"
+  }
+]

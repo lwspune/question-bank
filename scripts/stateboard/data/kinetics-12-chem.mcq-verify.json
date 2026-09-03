@@ -1,0 +1,72 @@
+[
+  {
+    "id": "8bf6b341-d5ac-45b4-bcd3-f6aed48dfe28",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "B",
+    "solution": "The rate law is rate \\(= k[\\mathrm{A}][\\mathrm{B}]\\), so the reaction is first order in each reactant and the rate is directly proportional to each concentration. Test each option by computing the factor by which the product \\([\\mathrm{A}][\\mathrm{B}]\\) changes.\n\nDoubling both concentrations gives \\(2 \\times 2 = 4\\), so the rate becomes four times, not twice.\n\nDoubling \\([\\mathrm{A}]\\) with \\([\\mathrm{B}]\\) unchanged gives \\(2 \\times 1 = 2\\): the rate exactly doubles.\n\nDoubling \\([\\mathrm{B}]\\) while halving \\([\\mathrm{A}]\\) gives \\(\\tfrac{1}{2} \\times 2 = 1\\), so the rate is unchanged.\n\nHalving \\([\\mathrm{B}]\\) with \\([\\mathrm{A}]\\) unchanged gives \\(1 \\times \\tfrac{1}{2}\\), so the rate is halved.\n\nOnly the second case doubles the rate.",
+    "matches_current": true
+  },
+  {
+    "id": "c04135ff-3ef2-47f8-abd9-020e7c8d6889",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "C",
+    "solution": "For a reaction of overall order \\(n\\) the rate law is rate \\(= k[\\mathrm{A}]^n\\), so \\(k = \\dfrac{\\text{rate}}{[\\mathrm{A}]^n}\\) and its units are \\(\\dfrac{\\mathrm{mol\\ dm^{-3}\\ s^{-1}}}{(\\mathrm{mol\\ dm^{-3}})^{n}} = \\mathrm{mol^{1-n}\\ dm^{3n-3}\\ s^{-1}}\\).\n\nMatching this against the given units \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) requires \\(1 - n = 1\\), i.e. \\(n = 0\\).\n\nChecking the other options confirms it: first order gives \\(\\mathrm{s^{-1}}\\), second order gives \\(\\mathrm{mol^{-1}\\ dm^{3}\\ s^{-1}}\\) and third order gives \\(\\mathrm{mol^{-2}\\ dm^{6}\\ s^{-1}}\\), none of which is \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\). Only a zero order reaction has a rate constant whose units are the same as those of the rate itself, which is the chapter's own statement in section 6.5.8.",
+    "matches_current": true
+  },
+  {
+    "id": "73e7bbed-f753-4de1-90fa-bc00714bda08",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "solution": "The order can be read straight off the units of the rate constant. Section 6.5.2 shows that because \\(\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\) is a unitless quantity, a first order rate constant has the dimensions of \\((\\text{time})^{-1}\\), that is \\(\\mathrm{s^{-1}}\\).\n\nThe given constant is \\(4.98 \\times 10^{-4}\\ \\mathrm{s^{-1}}\\), which carries exactly those units, so the reaction is first order.\n\nThe rejected alternatives each demand different units: zero order requires \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\), second order \\(\\mathrm{mol^{-1}\\ dm^{3}\\ s^{-1}}\\) and third order \\(\\mathrm{mol^{-2}\\ dm^{6}\\ s^{-1}}\\). Note that the balanced equation's coefficient of \\(2\\) is not the order — order is determined experimentally, not from stoichiometry.",
+    "matches_current": true
+  },
+  {
+    "id": "c8faee2e-7a26-44ae-873d-4cf4e9e5debb",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "D",
+    "solution": "For a first order reaction \\(t = \\dfrac{2.303}{k}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\), so the time is proportional to the logarithm of the fraction remaining.\n\nFor \\(90\\%\\) completion, \\(10\\%\\) of the reactant remains, so \\(\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\dfrac{100}{10} = 10\\) and \\(t = \\dfrac{2.303}{k}\\log_{10} 10 = \\dfrac{2.303}{k}\\).\n\nFor \\(99.9\\%\\) completion, \\(0.1\\%\\) remains, so \\(\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\dfrac{100}{0.1} = 1000\\) and \\(t' = \\dfrac{2.303}{k}\\log_{10} 1000 = \\dfrac{3 \\times 2.303}{k}\\).\n\nHence \\(t' = 3t\\). The alternatives \\(t\\), \\(2t\\) and \\(t/2\\) would require the logarithm ratio to be \\(1\\), \\(2\\) and \\(0.5\\) respectively, and none of these matches \\(\\log_{10}1000 / \\log_{10}10 = 3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "1d1645ba-8ee3-431b-a34c-c79717c4d927",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "Eq. (6.6) of the chapter gives \\(\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -kt\\), which rearranges to \\(\\ln[\\mathrm{A}]_t = -k\\,t + \\ln[\\mathrm{A}]_0\\).\n\nComparing with \\(y = mx + c\\), a plot of \\(\\ln[\\mathrm{A}]_t\\) against \\(t\\) is a straight line whose slope \\(m\\) is \\(-k\\) and whose intercept is \\(\\ln[\\mathrm{A}]_0\\).\n\nThe factor \\(2.303\\) appears only when natural logarithms are converted to base ten: the chapter's Fig. 6.4 plots \\(\\log_{10}[\\mathrm{A}]_t\\) against \\(t\\) and there the slope is \\(-k/2.303\\). Since this question specifies \\(\\ln[\\mathrm{A}]_t\\), the options carrying \\(2.303\\) do not apply, and the positive slope \\(k\\) is wrong because the reactant concentration falls with time, so the line must slope downwards.",
+    "matches_current": true
+  },
+  {
+    "id": "53aaf98b-edfb-4298-b584-1aff3fcb4f03",
+    "ref": "Ex Q.1 (vi)",
+    "derived_answer": "D",
+    "solution": "Going from \\(0.8\\ \\mathrm{M}\\) to \\(0.2\\ \\mathrm{M}\\) is a fall to one quarter of the initial concentration, and \\(\\tfrac{1}{4} = \\left(\\tfrac{1}{2}\\right)^2\\), so exactly two half lives have elapsed.\n\nSince the half life of a first order reaction does not depend on the initial concentration (Eq. 6.10), each of those halvings takes the same time. Hence \\(2\\,t_{1/2} = 12\\ \\mathrm{h}\\) and \\(t_{1/2} = 6\\ \\mathrm{h}\\).\n\nThis is confirmed by the integrated rate law: \\(k = \\dfrac{2.303}{12}\\log_{10}\\dfrac{0.8}{0.2} = \\dfrac{2.303 \\times 0.6021}{12} = 0.1155\\ \\mathrm{h^{-1}}\\), giving \\(t_{1/2} = \\dfrac{0.693}{0.1155} = 6\\ \\mathrm{h}\\).\n\nThe alternative \\(12\\ \\mathrm{h}\\) is the time for the whole change rather than for one halving, \\(3\\ \\mathrm{h}\\) would correspond to four half lives and \\(1.5\\ \\mathrm{h}\\) to eight, neither of which matches a fall to one quarter.",
+    "matches_current": true
+  },
+  {
+    "id": "83bfcfe8-6be7-4942-bbf9-fffbce262c87",
+    "ref": "Ex Q.1 (vii)",
+    "derived_answer": "B",
+    "solution": "[Textbook misprint: step (i) is printed as \\(\\mathrm{2\\,ClO^{-} \\longrightarrow ClO_2^{\\ominus}}\\), which is not balanced — two chlorine atoms enter and one leaves. The step intended is \\(\\mathrm{2\\,ClO^{\\ominus} \\longrightarrow ClO_2^{\\ominus} + Cl^{\\ominus}}\\), which balances and which, added to step (ii), reproduces the overall equation given. The answer is unaffected: \\(\\mathrm{ClO_2^{\\ominus}}\\) is the species formed in step (i) and consumed in step (ii) under either reading.]\n\nA reaction intermediate is a species that is produced in one step and consumed in a later step, so it appears on the right of one step and on the left of another and does not appear in the overall equation.\n\nTaking the two steps in turn: \\(\\mathrm{ClO_2^{\\ominus}}\\) is formed in step (i) and used up in step (ii), and it is absent from the overall equation \\(\\mathrm{3\\,ClO^{\\ominus} \\longrightarrow ClO_3^{\\ominus} + 2\\,Cl^{\\ominus}}\\). It is therefore the intermediate.\n\nThe other species fail this test. \\(\\mathrm{ClO^{\\ominus}}\\) is a reactant of the overall reaction, while \\(\\mathrm{Cl^{\\ominus}}\\) and \\(\\mathrm{ClO_3^{\\ominus}}\\) are its products; all three appear in the overall equation and none of them is both formed and then consumed.",
+    "matches_current": true
+  },
+  {
+    "id": "43d3bcaa-59fe-4207-9308-197c11d9069c",
+    "ref": "Ex Q.1 (viii)",
+    "derived_answer": "C",
+    "solution": "The question states that the reaction is elementary, so both parts of the answer follow from its equation directly.\n\nMolecularity is the number of reactant molecules taking part in an elementary reaction. Two species, one \\(\\mathrm{O_3}\\) molecule and one \\(\\mathrm{O}\\) atom, collide, so the reaction is bimolecular. That rules out both options describing it as unimolecular.\n\nFor an elementary reaction the rate law can be written from its stoichiometry, so rate \\(= k[\\mathrm{O_3}][\\mathrm{O}]\\) and the overall order is \\(1 + 1 = 2\\). The reaction is therefore second order, which rules out the option pairing bimolecular with first order.\n\nThis is the case the chapter describes in section 6.4.3, where order and molecularity coincide because the reaction occurs in a single step.",
+    "matches_current": true
+  },
+  {
+    "id": "50079648-cf48-4da1-b6fd-6b480807b8c9",
+    "ref": "Ex Q.1 (ix)",
+    "derived_answer": "A",
+    "solution": "[Textbook misprint: the rate law is printed as rate \\(= k[\\mathrm{NO_2}]^2[\\mathrm{Cl_2}]\\), but the reaction given contains no \\(\\mathrm{NO_2}\\) at all; the intended concentration term is \\([\\mathrm{NO}]^2\\). The answer is unaffected, since the question asks what \\(k\\) depends on and no concentration term appears in \\(k\\).]\n\nThe rate constant \\(k\\) is a constant of proportionality in the rate law, and section 6.3.1 states plainly that it is independent of concentration and varies with temperature.\n\nRaising the concentration of a reactant therefore raises the rate but leaves \\(k\\) unchanged, which disposes of all three options that propose increasing \\([\\mathrm{NO}]\\), \\([\\mathrm{Cl_2}]\\) or both.\n\nThe temperature dependence is given by the Arrhenius equation \\(k = \\mathrm{A}\\,e^{-E_a/RT}\\) (Eq. 6.18). As \\(T\\) rises the exponent \\(-E_a/RT\\) becomes less negative, so \\(k\\) increases. Only a rise in temperature increases \\(k\\).",
+    "matches_current": true
+  },
+  {
+    "id": "ce813f70-45aa-492f-a0f2-33b557cdd1b5",
+    "ref": "Ex Q.1 (x)",
+    "derived_answer": "C",
+    "solution": "For a reversible reaction the enthalpy change is the difference of the two activation energies, \\(\\Delta H = E_f - E_r\\), as the potential energy barrier diagram of Fig. 6.7 shows: the products sit higher or lower than the reactants by exactly that difference.\n\nThe reaction is stated to be endothermic, so \\(\\Delta H\\) is positive. Hence \\(E_f - E_r > 0\\), that is \\(E_f > E_r\\): the barrier climbed in the forward direction is the larger one.\n\nThe alternatives fail on the same relation. \\(E_f = E_r\\) would make \\(\\Delta H = 0\\), which is neither endothermic nor exothermic; \\(E_f < E_r\\) would make \\(\\Delta H\\) negative, describing an exothermic reaction; and the option asserting that \\(\\Delta H = E_f - E_r\\) is negative states that same exothermic case, so it contradicts the endothermic condition given in the question.",
+    "matches_current": true
+  }
+]

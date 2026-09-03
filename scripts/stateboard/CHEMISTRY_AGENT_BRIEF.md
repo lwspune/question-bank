@@ -112,10 +112,17 @@ every one below was found live in this lane by an agent who went to the page:
 | `Promblem 8.8` | the book MISSPELLS it | XI Ch.8 |
 | label split across three text-layer lines | `Problem` / `8.6` / `:` | XI Ch.8 |
 | no label at all | working starts straight in | XI Ch.1 (1.4), XI Ch.6 (6.4) |
+| `Problem :` with NO NUMBER | the anchor exists, the numbering does not | XII Ch.8 |
 | genuinely skipped | the publisher really did skip it | XII Ch.6 (no 6.11) |
 
 Only the last is a real gap, and only reading the page distinguishes it from the other
-six. `Solution` labels vary too — `Solution :`, `Solution -`, and bare `Solution`.
+seven. `Solution` labels vary too — `Solution :`, `Solution -`, bare `Solution` with no
+punctuation, and `Solution` with no number.
+
+**If the book supplies no number, do NOT invent one.** Anchor the ref to something real
+and checkable instead — XII Ch.8 shipped `Solved Problem (p.172)` / `(p.184)`, using the
+printed page. A fabricated `Solved Ex.8.1` reads as the book's own numbering and is a
+claim about the source that is simply false.
 
 ⚠ **The `Solution` count is a WEAK cross-check in this subject**, because "solution" is
 a chemical term. Measured on Electrochemistry: **139 bare `Solution` hits against 12
@@ -132,7 +139,12 @@ anything the config missed.** Seven questions vanish silently otherwise.
 ## 3. Transcribe
 
 One file per band: `<scriptsDir>/data/<chapterId>.<band>.json`. Rows carry
-`{ref, bucket, stem, options?, answer?, subtopic, context?, solution?, bookAnswer?}`.
+`{ref, bucket, stem, options?, answer?, subtopic, format, difficulty, context?,
+solution?, bookAnswer?}`.
+
+⚠ **`format` and `difficulty` are REQUIRED** — `buildRecords` reads both, and without
+them `commit.ts` dies with an unhelpful `Cannot read properties of undefined (reading
+'trim')` rather than naming the missing field.
 
 ### Refs
 

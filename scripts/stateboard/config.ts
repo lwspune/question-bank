@@ -1101,9 +1101,18 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   // ── Ch.11 Alcohols, Phenols and Ethers. 20pp. 246 PYQ. Exercise opens p18.
-  //    ⚠⚠ **THIS CHAPTER USES UPPERCASE ITEM LABELS, NOT ROMAN** — measured 37
-  //      UPPER vs 24 roman across its exercise, the opposite of the Std XII rule.
-  //      Confirm from the page and write refs accordingly (`Ex Q.1 (A)`).
+  //    ⚠ CORRECTED 2026-09-03 — THIS CHAPTER IS ROMAN LIKE EVERY OTHER Std XII
+  //      CHAPTER, and my "37 UPPER vs 24 roman, uses UPPERCASE items" claim was a
+  //      PROBE ERROR read backwards. The measurement was real; the reading was
+  //      not. In Std XII the MCQ OPTION labels are also `A. B. C. D.` at line
+  //      start, so a line-start-capital scan counts options as items: the ~37 are
+  //      10 MCQs x 4 options, and the 24 roman are the actual exercise items
+  //      (Q1 10 + Q2 4 + Q3 6 + Q6 4 = 24 exactly).
+  //      The same error very likely explains the "MIXED" readings recorded for
+  //      Ch.7 and Ch.15 — treat those as roman-with-uppercase-options until an
+  //      agent says otherwise from the page.
+  //      A THIRD style exists here that no probe caught: block 5 uses lowercase
+  //      `a. b. c. d. e.`, and Q3(iv) has inline `a./b.` sub-parts.
   //    Worked examples 11.1–11.9 contiguous (9 labels / 8 Solution labels).
   //    Blocks include two prose items numbered 1 and 2 mid-exercise ("Earlier
   //    diethyl ether was used as…", "Diethyl ether is used as a solvent for…") —
@@ -1171,9 +1180,28 @@ export const CHAPTERS: Record<string, Chapter> = {
     pdf: chem12("10. Halogen Derivatives.pdf"),
     derivedAnswers: true,
     note: "Maharashtra State Board (Class 12) — Halogen Derivatives (Balbharati Chemistry textbook)",
+    // RESOLVED 2026-09-03. The list originally had NO home for §10.3 "Methods of
+    // preparation of alkyl halides", so the ingest agent correctly filed every
+    // preparation question under Nucleophilic Substitution rather than invent a
+    // subtopic — leaving one bucket holding 35 of the chapter's 56 rows.
+    // "Methods of Preparation of Alkyl Halides" was added AND 10 rows moved in
+    // the same pass, in that order for a reason: adding the name without moving
+    // rows ships an EMPTY subtopic, i.e. a live /browse filter returning nothing
+    // (the Class-12 Linear Programming precedent). `subtopic_id` is not part of
+    // content_hash, so the move is a plain UPDATE and needs no re-commit.
+    //
+    // The 10 moved are the ones whose SUBJECT is how to make a halide: Solved
+    // Ex.10.1, Ex Q.1 (ii)/(iv), Ex Q.2 (ii-a..ii-e), Ex Q.3 (iv), Ex Q.6 (iv).
+    // Deliberately NOT moved: the Q.6/Q.7 multi-step conversions, which pass
+    // THROUGH a halide but ask for a different product, and Ex Q.6 (vi)
+    // (halide→halide, a substitution exercise). Those readings are arguable —
+    // the boundary is "is the product the halide?", not "does a halide appear".
+    // ⚠ STILL UNHOMED: §10.6.5 Elimination and Reactions of haloarenes. Same
+    // two-step rule applies if either is ever given its own subtopic.
     subtopics: [
       "Classification of Halogen Derivatives",
       "Nomenclature of Halogen Derivatives",
+      "Methods of Preparation of Alkyl Halides",
       "Nucleophilic Substitution Reactions of Alkyl Halides",
       "Physical Properties",
       "Optical Isomerism in Halogen Derivatives",

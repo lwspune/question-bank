@@ -92,7 +92,7 @@ async function main() {
   // fragments named anything else (this pipeline's are `.band-a.json` etc.) — the
   // bracket then lived only in the DB and the next re-commit would revert it.
   // Exclude the scratch/dump artifacts, which are regenerated and carry no truth.
-  const SCRATCH = /\.(errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images)\.json$/;
+  const SCRATCH = /\.(errata|topaper|mcq-blind|review|xcheck|diagram-specs|solution-images|sections|book-answers|solved-fixes)\.json$/;
   //
   // ORDER IS LOAD-BEARING: authored `*.solutions.json` files are searched FIRST.
   // The loop below stops at the first file it mirrors into, and for an
@@ -104,13 +104,23 @@ async function main() {
   // and never touched the real one. Two ways that bites: the authored solution
   // keeps no record of the bracket, and a later re-commit would read the band's
   // bracket-only field as that question's whole model answer.
-  // (An MCQ row is the legitimate create-the-field case — it has no
-  // `*.solutions.json` entry at all, so the band fragment IS its only home.)
-  // Same defect and same fix as `scripts/mh-sb-9`; this pipeline never took it.
-  const rank = (f: string) => (f.endsWith(".solutions.json") ? 0 : 1);
-  const jsonFiles = readdirSync(DATA)
-    .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && !SCRATCH.test(f))
-    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
+  // ⚠ CORRECTED 2026-09-03. This comment used to say "an MCQ row has no
+  // `*.solutions.json` entry at all, so the band fragment IS its only home".
+  // FALSE for any chapter using the MCQ re-derivation step: `apply-mcq-
+  // solutions.ts` reads an MCQ's solution from `<id>.blind.mcq-verify.json`, so
+  // a bracket mirrored to the band fragment is DROPPED the next time that script
+  // runs — while everything reports success. Measured across the Chemistry lane:
+  // 20 of 32 MCQ brackets were live in the DB and absent from their verify file.
+  // So `mcq-verify` leaves SCRATCH and the ordering becomes per-row by FORMAT.
+  const rankFor = (format: string | null) => (f: string) => {
+    const isVerify = f.includes(".mcq-verify.");
+    const isSolutions = f.endsWith(".solutions.json");
+    if (format === "mcq") return isVerify ? 0 : isSolutions ? 1 : 2;
+    return isSolutions ? 0 : isVerify ? 2 : 1; // a verify file never carries a subjective ref
+  };
+  const jsonFiles = readdirSync(DATA).filter(
+    (f) => f.startsWith(`${id}.`) && f.endsWith(".json") && !SCRATCH.test(f)
+  );
 
   let applied = 0;
   let skipped = 0;
@@ -120,7 +130,7 @@ async function main() {
   for (const e of errata) {
     const { data, error } = await db
       .from("questions")
-      .select("id, solution, content_hash")
+      .select("id, solution, content_hash, question_format")
       .eq("source_file", chapter.sourceFile)
       .eq("question_number", e.ref);
     if (error) throw error;
@@ -129,31 +139,38 @@ async function main() {
 
     const row = data[0];
     const current = row.solution ?? "";
-    if (current.trimStart().startsWith("[Textbook")) {
-      console.log(`  skip (already bracketed): ${e.ref}`);
+    // ⚠ THE DB WRITE IS SKIPPED WHEN ALREADY BRACKETED, BUT THE MIRROR BELOW
+    // STILL RUNS — `continue`-ing here would make drift PERMANENT, because the
+    // skip fires on exactly the rows that need healing (a previous run wrote the
+    // DB and mirrored nowhere, or into the wrong file).
+    const alreadyBracketed = current.trimStart().startsWith("[Textbook");
+    if (alreadyBracketed) {
+      console.log(`  skip DB write (already bracketed): ${e.ref} — still checking source mirror`);
       skipped++;
-      continue;
+    } else {
+      console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     }
-    const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
-    console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     if (!apply) continue;
 
-    const { error: uerr, count } = await db
-      .from("questions")
-      .update({ solution: next }, { count: "exact" })
-      .eq("id", row.id)
-      .eq("exam_id", EXAM_ID);
-    if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
-    if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
-    applied++;
-    // An erratum edits the solution only, which is not part of content_hash, so
-    // the stored hash is unchanged by the write above.
-    recorded.push({
-      questionId: row.id,
-      ref: e.ref,
-      bracket: e.bracket,
-      contentHash: row.content_hash as string,
-    });
+    if (!alreadyBracketed) {
+      const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
+      const { error: uerr, count } = await db
+        .from("questions")
+        .update({ solution: next }, { count: "exact" })
+        .eq("id", row.id)
+        .eq("exam_id", EXAM_ID);
+      if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
+      if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
+      applied++;
+      // An erratum edits the solution only, which is not part of content_hash, so
+      // the stored hash is unchanged by the write above.
+      recorded.push({
+        questionId: row.id,
+        ref: e.ref,
+        bracket: e.bracket,
+        contentHash: row.content_hash as string,
+      });
+    }
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
     //
@@ -164,7 +181,9 @@ async function main() {
     // field is absent we CREATE it, mirroring what the DB got (bracket alone, since `current`
     // was empty). Only stop searching once we have actually mirrored.
     let mirrored = false;
-    for (const f of jsonFiles) {
+    // Candidates ordered PER ROW by format — see `rankFor` above.
+    const order = rankFor(row.question_format as string | null);
+    for (const f of [...jsonFiles].sort((a, b) => order(a) - order(b) || a.localeCompare(b))) {
       const path = join(DATA, f);
       const arr = JSON.parse(readFileSync(path, "utf8")) as any[];
       const hit = arr.find((r) => r.ref === e.ref);

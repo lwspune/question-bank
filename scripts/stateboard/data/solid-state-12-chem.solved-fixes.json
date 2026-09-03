@@ -1,0 +1,26 @@
+[
+  {
+    "ref": "Solved Ex.1.5",
+    "why": "Part (ii) states the formula as x/(rho a^3) and prints the answer 1.62e21, but its printed substitution carries over the '× 2' from part (i). 0.5/(8.55 × (3.306e-8)^3) = 1.618e21 = the printed answer; with the × 2 the expression evaluates to 3.237e21, which is part (i)'s answer. The substitution as printed contradicts both the formula above it and the value below it.",
+    "find": "\\(= \\dfrac{0.5\\ \\mathrm{g} \\times 2}{8.55\\ \\mathrm{g\\ cm^{-3}} \\times (3.306 \\times 10^{-8}\\ \\mathrm{cm})^3} = 1.62 \\times 10^{21}\\)",
+    "replace": "\\(= \\dfrac{0.5\\ \\mathrm{g}}{8.55\\ \\mathrm{g\\ cm^{-3}} \\times (3.306 \\times 10^{-8}\\ \\mathrm{cm})^3} = 1.62 \\times 10^{21}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.6",
+    "why": "0.4 × 6.022e23 = 2.4088e23, not 2.4098e23 as printed. First occurrence, in the opening line.",
+    "find": "\\(= 0.4 \\times N_A = 0.4 \\times 6.022 \\times 10^{23} = 2.4098 \\times 10^{23}\\)",
+    "replace": "\\(= 0.4 \\times N_A = 0.4 \\times 6.022 \\times 10^{23} = 2.4088 \\times 10^{23}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.6",
+    "why": "Second occurrence of the same misprinted value, in part (a).",
+    "find": "\\(= 2.4098 \\times 10^{23}\\)",
+    "replace": "\\(= 2.4088 \\times 10^{23}\\)"
+  },
+  {
+    "ref": "Solved Ex.1.6",
+    "why": "Third occurrence, in part (b). The book's own printed 4.818e23 on this same line equals 2 × 2.4088e23, not 2 × 2.4098e23 (= 4.8196e23), so the example already contradicts its own misprinted value.",
+    "find": "\\(= 2 \\times 2.4098 \\times 10^{23} = 4.818 \\times 10^{23}\\)",
+    "replace": "\\(= 2 \\times 2.4088 \\times 10^{23} = 4.818 \\times 10^{23}\\)"
+  }
+]

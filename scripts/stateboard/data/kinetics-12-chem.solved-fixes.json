@@ -1,0 +1,16 @@
+[
+  {
+    "ref": "Solved Ex.6.3",
+    "why": "The printed final line gives the unit of the rate constant as mol^-1 L^-1 s^-1, which contradicts the substitution printed immediately above it: (mol L^-1 s^-1) / (mol L^-1)^2 = mol^-1 L s^-1. The exponent of L must be +1, not -1. Shipping the printed unit would teach a second order rate constant the wrong dimensions. The value 1.625 is correct.",
+    "find": "\\(= 1.625\\ \\mathrm{mol^{-1}\\ L^{-1}\\ s^{-1}}\\)",
+    "replace": "\\(= 1.625\\ \\mathrm{mol^{-1}\\ L\\ s^{-1}}\\)",
+    "solution": "[Textbook misprint: the book prints the final unit as \\(\\mathrm{mol^{-1}\\ L^{-1}\\ s^{-1}}\\), which contradicts its own substitution one line above — \\((\\mathrm{mol\\ L^{-1}\\ s^{-1}}) / (\\mathrm{mol\\ L^{-1}})^2\\) gives \\(\\mathrm{mol^{-1}\\ L\\ s^{-1}}\\), with \\(L\\) to the power \\(+1\\). The unit has been corrected here so the worked example does not teach the wrong dimensions for a second order rate constant; the value \\(1.625\\) is as printed and is correct.]"
+  },
+  {
+    "ref": "Solved Ex.6.14",
+    "why": "The printed working writes the temperature-dependence relation with 2.303 RT in the denominator, where 2.303 R belongs. The T is spurious: the chapter's own Eq. (6.23) on the previous page prints Ea/(2.303 R), and this example's own substitution two lines later divides by 2.303 x 8.314 J K^-1 mol^-1 with no T at all, which is what yields its printed 2.212. Preserving the formula as printed would ship a worked example whose stated equation contradicts its own next line and is dimensionally wrong.",
+    "find": "The equation, \\(\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,RT} \\times \\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{E_a}{2.303\\,RT}\\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)",
+    "replace": "The equation, \\(\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R} \\times \\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{E_a}{2.303\\,R}\\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)",
+    "solution": "[Textbook misprint: the book writes the temperature-dependence relation with \\(2.303\\,RT\\) in the denominator, where \\(2.303\\,R\\) belongs — the temperature is already carried by the bracket \\((T_2 - T_1)/T_1T_2\\). The chapter's own Eq. (6.23) prints \\(E_a/(2.303\\,R)\\), and this example's own substitution divides by \\(2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}\\) with no \\(T\\), which is what gives its printed \\(2.212\\). The formula has been corrected here; the printed answer \\(1.464 \\times 10^{5}\\) min is correct.]"
+  }
+]
