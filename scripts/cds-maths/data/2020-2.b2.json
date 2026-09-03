@@ -1,0 +1,207 @@
+{
+  "band": "b2",
+  "pages": [3, 4, 5],
+  "bandReport": {
+    "numbersFound": [19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Pages p03-p05 carry Q19-Q33 with no gaps and nothing straddling either seam. Layout: p03 = Q19, Q20 (left) then Q21, Q22, Q23 (right); p04 = Q24, Q25 (left) then Q26, Q27 (right); p05 = Q28, Q29, Q30 (left) then Q31, Q32, Q33 (right).\n\nSEAM BEFORE: p02 was opened and not transcribed. It ends with Q18 complete (stem plus all four options printed in its right column) and no Directions block left open, so Q19 starts cleanly and firstComplete is true.\n\nSEAM AFTER: p06 was opened and not transcribed. It opens with Q34 complete at the top of its left column, so nothing of this band is truncated overleaf and lastComplete is true. Band b3 starts at Q34.\n\nNO DIRECTIONS BLOCKS. The dispatch hypothesis was checked page by page across p02-p06 and holds: there is no 'Directions:' heading and no 'for the next N items' block anywhere in or adjacent to this band. Q19, Q20 and Q26 each print a numbered statement list followed by 'Select the correct answer using the code given below :' or 'Which of the above statements is/are correct ?', but each of those lists belongs to its own single question and is printed inside that question's own stem. They are therefore SELF-CONTAINED items: no 'context' and no 'setLabel' is set on any question in this band, and every statement list is carried in the stem of the one question that owns it.\n\nNO FIGURES. Verified across p02-p06 at full page and again at 6-7x on every question of this band: not one printed diagram, chart, table or geometric figure. 'hasFigure' is therefore not set anywhere in this band and no figureNote is emitted. The band contains no data-interpretation and no geometry item at all -- the range is arithmetic, commercial maths, variation, ages and polynomial algebra.\n\nPRINTED PAGE LABELS -- checked, NOT a gap. The footers read (7-A) on p02, (9-A) on p03, (11-A) on p04, (13-A) on p05 and (15-A) on p06, i.e. they advance by two while the PDF pages advance by one. This is a property of the booklet's own pagination, not a missing page: the question numbering runs continuously 18-19 across the p02/p03 seam, 23-24 across p03/p04, 27-28 across p04/p05 and 33-34 across p05/p06, so no question is unaccounted for.\n\nSOURCE CHARACTER. The dispatch described this booklet as a prep-house retypeset. What is actually on the page is a SCAN (heavy speckle, slight skew, broken glyph edges) of a typeset booklet carrying the UPSC-style header DZOL-T-LKM and (N-A) footers. This changes nothing about transcription, but it does mean glyph ambiguity is a real risk here rather than a theoretical one, so every numeral, exponent, radical index and sign in this band was re-read from the source PDF at 5-7x rather than off the 2.6x page image. Everything below is what those crops show.\n\nCURRENCY: Q23 and Q25 print the rupee glyph. Written as 'Rs.' per the brief's currency rule, matching the convention already used in the 2020-1 band files; no LaTeX macro invented.\n\nQ33 -- VERIFIED AS PRINTED, DELIBERATELY NOT FLAGGED. At 6x the two given equations are '(p + 2) (2q - 1) = 2pq - 10' and '(p - 2) (2q - 1) = 2pq - 10'. The identical right-hand side beside left-hand sides differing only in the sign of the 2 looks at first glance like a typesetting slip, so it was crossed-checked at high zoom before being accepted. It is what is printed, and expanding the two brackets shows the pair is a well-formed simultaneous system rather than a contradiction, so it is transcribed verbatim with no 'flags' entry -- flagging it would have invited a later pass to 'repair' a faithful transcription.\n\nOTHER HIGH-ZOOM CHECKS, all confirming the transcription: Q19 statements 2 and 3 are d(5).d(11) = d(55) and d(5) + d(11) = d(16) (the 55 and the 16 were read at 6x); Q20's subscripts are A_n and P_n throughout and statement 3 is 'A_n + 1', not 'A_n - 1'; Q22's four option magnitudes are 40,00,000 / 4,00,000 / 40,000 / 4,000 in that printed order; Q23's options are 41:9 / 31:9 / 23:9 / 14:9 (the leading 4 of option (a) was checked against a possible '4l'); Q25's ratio is 1/3 : 1/4 : 1/5 and the profit is 96,800; Q26 statement 3 carries radical INDICES n and 2n over x^2 y and x^4 y^2 respectively, read at 7x; Q30's conditions are 'ab + xy - xb = 0' and 'bc + yz - cy = 0' with the required expression x/a + c/z; Q31's polynomials are x^6 - 3x^4 + 3x^2 - 1 and x^3 + 3x^2 + 3x + 1; Q32's LCM is 30x^3 + 7x^2 - 10x - 3 and the given polynomial is 6x^2 + 5x + 1.\n\nOPTION LABELS were read off the page separately for each of (a)-(d) on all 15 questions, never inferred from a neighbour, per the brief's warning about the CDS English mis-slotting defect.\n\nNo misprints found and no 'flags' entry was needed anywhere in this band. Nothing was unreadable. No question could not be transcribed.\n\nSUBTOPICS: every chapter used is a catalog key and every subtopic used is one of that chapter's listed subtopics -- nothing was invented. Two classification calls worth recording, both a closest-fit rather than an exact one. Q22 (volume of water discharged by a river in a minute) is filed under 'Mensuration 3D' / 'Cube, Cuboid and Prism' because the quantity computed is the volume of a cuboidal column of water; it could equally be argued into 'Time, Speed and Distance', and the cuboid reading was preferred because the arithmetic is a volume. Q19 and Q20 are filed under 'Number System' / 'Prime Numbers and Factorisation'; Q19 is strictly about the divisor-counting function, for which the catalog has no dedicated subtopic, and the divisor count is a direct consequence of prime factorisation, so this is the nearest listed fit rather than a perfect one. Neither was forced to silence a warning and neither warranted an invented subtopic."
+  },
+  "questions": [
+    {
+      "number": 19,
+      "stem": "Let \\(d(n)\\) denote the number of positive divisors of a positive integer \\(n\\). Which of the following are correct ?\n1. \\(d(5) = d(11)\\)\n2. \\(d(5) \\cdot d(11) = d(55)\\)\n3. \\(d(5) + d(11) = d(16)\\)\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 3 only" },
+        { "label": "B", "text": "1 and 2 only" },
+        { "label": "C", "text": "2 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 20,
+      "stem": "If \\(A_n = P_n + 1\\), where \\(P_n\\) is the product of the first \\(n\\) prime numbers, then consider the following statements :\n1. \\(A_n\\) is always a composite number.\n2. \\(A_n + 2\\) is always an odd number.\n3. \\(A_n + 1\\) is always an even number.\nWhich of the above statements is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "2 and 3 only" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 21,
+      "stem": "A shopkeeper sells his articles at their cost price but uses a faulty balance which reads 1000 gm for 800 gm. What is the actual profit percentage ?",
+      "options": [
+        { "label": "A", "text": "20%" },
+        { "label": "B", "text": "25%" },
+        { "label": "C", "text": "30%" },
+        { "label": "D", "text": "40%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 22,
+      "stem": "A river 3 m deep and 40 m wide is flowing at the rate of 2 km/hr and falls into the sea. What is the amount of water in litres that will fall into the sea from this river in a minute ?",
+      "options": [
+        { "label": "A", "text": "40,00,000 litres" },
+        { "label": "B", "text": "4,00,000 litres" },
+        { "label": "C", "text": "40,000 litres" },
+        { "label": "D", "text": "4,000 litres" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Cube, Cuboid and Prism",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 23,
+      "stem": "If a television set is sold at Rs. \\(x\\), a loss of 28% would be incurred. If it is sold at Rs. \\(y\\), a profit of 12% would be incurred. What is the ratio of \\(y\\) to \\(x\\) ?",
+      "options": [
+        { "label": "A", "text": "41 : 9" },
+        { "label": "B", "text": "31 : 9" },
+        { "label": "C", "text": "23 : 9" },
+        { "label": "D", "text": "14 : 9" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 24,
+      "stem": "By increasing the speed of his car by 15 km/hr, a person covers a distance of 300 km by taking an hour less than before. What was the original speed of the car ?",
+      "options": [
+        { "label": "A", "text": "45 km/hr" },
+        { "label": "B", "text": "50 km/hr" },
+        { "label": "C", "text": "60 km/hr" },
+        { "label": "D", "text": "75 km/hr" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 25,
+      "stem": "Three persons start a business with capitals in the ratio \\(\\frac{1}{3} : \\frac{1}{4} : \\frac{1}{5}\\). The first person withdraws half his capital after 4 months. What is his share of profit if the business fetches an annual profit of Rs. 96,800 ?",
+      "options": [
+        { "label": "A", "text": "Rs. 32,000" },
+        { "label": "B", "text": "Rs. 34,500" },
+        { "label": "C", "text": "Rs. 36,000" },
+        { "label": "D", "text": "Rs. 36,800" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Partnership",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 26,
+      "stem": "If \\(x\\) varies as \\(y\\), then which of the following is/are correct ?\n1. \\(x^2 + y^2\\) varies as \\(x^2 - y^2\\)\n2. \\(\\frac{x}{y^2}\\) varies inversely as \\(y\\)\n3. \\(\\sqrt[n]{x^2 y}\\) varies as \\(\\sqrt[2n]{x^4 y^2}\\)\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "Ena was born 4 years after her parents marriage. Her mother is 3 years younger than her father and 24 years older than Ena, who is 13 years old. At what age did Ena's father get married ?",
+      "options": [
+        { "label": "A", "text": "25 years" },
+        { "label": "B", "text": "24 years" },
+        { "label": "C", "text": "23 years" },
+        { "label": "D", "text": "22 years" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 28,
+      "stem": "Mahesh is 60 years old. Ram is 5 years younger to Mahesh and 4 years elder to Raju. Babu is a younger brother of Raju and he is 6 years younger. What is the age difference between Mahesh and Babu ?",
+      "options": [
+        { "label": "A", "text": "18 years" },
+        { "label": "B", "text": "15 years" },
+        { "label": "C", "text": "13 years" },
+        { "label": "D", "text": "11 years" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 29,
+      "stem": "The number of items in a booklet is \\(N\\). In the first year there is an increase of \\(x\\)% in this number and in the subsequent year there is a decrease of \\(x\\)%. At the end of the two years, what will be the number of items in the booklet ?",
+      "options": [
+        { "label": "A", "text": "Less than \\(N\\)" },
+        { "label": "B", "text": "Equal to \\(N\\)" },
+        { "label": "C", "text": "More than \\(N\\)" },
+        { "label": "D", "text": "It depends on the value of \\(N\\)" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Percentage",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 30,
+      "stem": "If \\(ab + xy - xb = 0\\) and \\(bc + yz - cy = 0\\), then what is \\(\\frac{x}{a} + \\frac{c}{z}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{y}{b}\\)" },
+        { "label": "B", "text": "\\(\\frac{b}{y}\\)" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 31,
+      "stem": "What is the HCF of the polynomials \\(x^6 - 3x^4 + 3x^2 - 1\\) and \\(x^3 + 3x^2 + 3x + 1\\) ?",
+      "options": [
+        { "label": "A", "text": "\\((x + 1)\\)" },
+        { "label": "B", "text": "\\((x + 1)^2\\)" },
+        { "label": "C", "text": "\\(x^2 + 1\\)" },
+        { "label": "D", "text": "\\((x + 1)^3\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 32,
+      "stem": "The HCF and the LCM of two polynomials are \\(3x + 1\\) and \\(30x^3 + 7x^2 - 10x - 3\\) respectively. If one polynomial is \\(6x^2 + 5x + 1\\), then what is the other polynomial ?",
+      "options": [
+        { "label": "A", "text": "\\(15x^2 + 4x + 3\\)" },
+        { "label": "B", "text": "\\(15x^2 + 4x - 3\\)" },
+        { "label": "C", "text": "\\(15x^2 - 4x + 3\\)" },
+        { "label": "D", "text": "\\(15x^2 - 4x - 3\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 33,
+      "stem": "If \\((p + 2)(2q - 1) = 2pq - 10\\) and \\((p - 2)(2q - 1) = 2pq - 10\\), then what is \\(pq\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-10\\)" },
+        { "label": "B", "text": "\\(-5\\)" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "10" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Solving Linear Systems",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

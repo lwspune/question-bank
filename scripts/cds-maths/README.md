@@ -4,37 +4,64 @@ Scanned CDS "Elementary Mathematics" booklets (image PDFs, **no text layer**, **
 answer key**) → the bank, `question_kind='pyq'`, under the existing **CDS** exam in a
 new **Mathematics** subject.
 
-**Status: pilot COMPLETE — `2020-1` committed, 100 q, all PRIVATE, 10 figures attached.
-Nothing is PUBLIC; publishing is a separate decision (see below). 19 papers remain.**
+**Status: BOTH KEYED SITTINGS DONE — `2020-1` and `2020-2` committed, 200 q, all PRIVATE,
+10 figures attached. Nothing is PUBLIC; publishing is a separate decision. 18 papers remain,
+none of which has a key.**
 
-## What the pilot measured
+## What the two keyed papers measured
 
-| | |
-|---|---|
-| pass A (blind) | 100/100 derived — HIGH 96 · MED 4 · LOW 0 |
-| pass B (blind, independent) | 100/100 derived — HIGH 96 · MED 4 · LOW 0 |
-| crosstab | **AGREE 100 · DISPUTE 0 · TWIN 0 · MISSING 0** |
-| both passes vs the prep-house key | 99/100 |
-| after adjudicating the single difference | **both passes 100/100; the KEY is 99/100** |
+Both papers: two independent blind passes, 100/100 derived, **crosstab AGREE 100 /
+DISPUTE 0 / TWIN 0** on each. Every disagreement with a key was adjudicated by hand.
 
-**Q87 is the key's error, and it is provable rather than arguable.** Four identical balls of
-radius `r`: three on a plane, the fourth resting on them. The fourth centre sits
-`r(3 + 2*sqrt(6))/3 = 2.633r` above the plane. Printed option D is exactly that; the key's
-option A is exactly that MINUS `r` — the height above the plane of the three lower CENTRES,
-where the question asks for the distance from the plane the balls rest on. Both passes
-answered D at HIGH with the same derivation, and it was re-derived independently and checked
-symbolically before the key was overruled. The finding is recorded on the row itself.
+| | 2020-1 | 2020-2 |
+|---|---|---|
+| pass A | 100/100 — HIGH 96 · MED 4 | 100/100 — HIGH 99 · MED 1 |
+| pass B | 100/100 — HIGH 96 · MED 4 | 100/100 — HIGH 97 · MED 3 |
+| passes agreed | 100/100 | 100/100 |
+| rows disagreeing with the prep-house key | 1 | 4 |
+| of those, adjudicated as KEY errors | 1 | 3 |
+| adjudicated as genuinely ambiguous | 0 | 1 |
+| **adjudicated as OUR error** | **0** | **0** |
 
-**What this does NOT establish.** The pilot was expected to measure how far agreement
-overstates accuracy — the number CDS General Knowledge can only assert. With ZERO derivation
-errors there is nothing to measure: what this paper gives is an UPPER BOUND (correlated-error
-rate under 1% at n=100), which is weaker. UPSC's ~4-point overstatement came from a paper
-where the passes actually erred. **`2020-2` is the only other sitting that can add to this,
-and it should be run before the other 18 are trusted.**
+**Across 200 questions and two keyed papers there is not one confirmed correlated
+derivation error.** Four of the five key disagreements are the KEY's, three of them provable
+by computation:
 
-What the pilot does establish, strongly: **HIGH ran 96/96 and MED 4/4**, so on this corpus
-the confidence flag is well calibrated; and a prep-house key carries a real error in 100
-questions, which is why `commit.ts` never reads one and only `score.ts` does.
+- `2020-1 Q87` — option D is exactly `r(3+2sqrt6)/3`; the key's A is exactly that MINUS `r`,
+  i.e. the height above the plane of the three lower CENTRES rather than the ground plane
+  the question names.
+- `2020-2 Q57` — the key has the SIGN wrong. 47 degrees exceeds 45, so `cos47 - sin47` is
+  negative; B matches to 30 digits, and the remaining two options are imaginary because
+  `k` exceeds 1.
+- `2020-2 Q43` — `x = 1.76920`, verified by substituting back to exactly 8, so `1 < x < 2`.
+  The key says `2 < x < 3`.
+- `2020-2 Q93` — the modal shoe size is the canonical textbook case for the MODE; the key
+  says arithmetic mean.
+- `2020-2 Q26` is NOT a key error but a genuine ambiguity, and is recorded as such: statement
+  1 holds for every `k` except the degenerate `k = +/-1`, where `x^2 - y^2` is identically
+  zero. The derivation was retained at MED with the alternative named.
+
+### The number this was built to produce, and why the raw one is misleading
+
+`score.ts` computes agreement overstating accuracy by **4.0 points on 2020-2** — strikingly
+close to the ~4 points UPSC measured. **That figure is an artifact of scoring against a
+defective key, and it evaporates on adjudication.** Three of the four disagreements are the
+key's, so the passes were right on at least 99 of 100 and possibly all 100.
+
+This is exactly why `score.ts` prints that section as "AGREED, BUT DISAGREE WITH THE KEY"
+rather than "correlated errors" — it can only observe disagreement with a prep-house key,
+never that both passes were wrong. An earlier version of this script asserted the latter, and
+had it not been corrected this README would now be reporting a 4-point correlated-error rate
+that does not exist.
+
+**Honest limit.** Two papers, 200 questions, zero confirmed correlated errors gives an UPPER
+BOUND (under ~0.5% at n=200), not a measurement of the rate. What it does establish firmly:
+a prep-house key carries roughly **2 errors per 100** on this corpus (4 across 200), so a
+source key here is evidence and not ground truth; and confidence is well calibrated, with
+every adjudicated key-error sitting in HIGH where the derivation was right.
+
+**There is no third keyed sitting.** The remaining 18 papers cannot be scored at all, and
+this bound is the whole of the evidence they will ever rest on.
 
 ## The corpus is 20 papers, not 19
 
