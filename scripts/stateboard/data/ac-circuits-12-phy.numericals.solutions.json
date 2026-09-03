@@ -1,0 +1,62 @@
+[
+  {
+    "id": "763a4df1-7b5e-40da-97a2-27a23c5e762f",
+    "ref": "Ex Q.12",
+    "solution": "Given: effective (rms) current \\( i_{\\mathrm{rms}} = 5 \\) A, \\( f = 50 \\) Hz (a \"50 cycle\" supply).\nPeak value of current:\n\\( i_0 = \\sqrt{2}\\, i_{\\mathrm{rms}} = 1.414 \\times 5 = 7.07 \\) A\nCurrent \\( \\frac{1}{600} \\) s after it was zero: measuring t from the instant the current is zero and rising, \\( i = i_0 \\sin \\omega t \\) with \\( \\omega = 2\\pi f = 100\\pi \\) rad/s.\n\\( \\omega t = 100\\pi \\times \\frac{1}{600} = \\frac{\\pi}{6} \\)\n\\( i = 7.07 \\times \\sin \\frac{\\pi}{6} = 7.07 \\times 0.5 \\)\n\\( \\therefore i = 3.535 \\) A\nAnswer: peak current \\( = 7.07 \\) A; current after \\( \\frac{1}{600} \\) s \\( = 3.535 \\) A."
+  },
+  {
+    "id": "3d5dba01-3c5f-4f60-8bfa-ab874cc6c994",
+    "ref": "Ex Q.13",
+    "solution": "Given: \\( P = 100 \\) W, \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz. A filament bulb is a purely resistive load, so its power factor is 1 and \\( P = \\frac{e_{\\mathrm{rms}}^2}{R} \\).\n(a) Resistance of the bulb:\n\\( R = \\frac{e_{\\mathrm{rms}}^2}{P} = \\frac{(220)^2}{100} = \\frac{48400}{100} \\)\n\\( \\therefore R = 484\\ \\Omega \\)\n(b) rms current through the bulb:\n\\( i_{\\mathrm{rms}} = \\frac{P}{e_{\\mathrm{rms}}} = \\frac{100}{220} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 0.4545 \\) A\n(Cross-check: \\( \\frac{e_{\\mathrm{rms}}}{R} = \\frac{220}{484} = 0.4545 \\) A, the same value.)"
+  },
+  {
+    "id": "09ac6d86-fe0a-485e-b7c7-f1d21dc9cd1f",
+    "ref": "Ex Q.14",
+    "solution": "Given: \\( C = 15.0\\ \\mu\\mathrm{F} = 15 \\times 10^{-6} \\) F, \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz.\nCapacitive reactance:\n\\( X_C = \\frac{1}{2\\pi f C} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 15 \\times 10^{-6}} = \\frac{1}{4.713 \\times 10^{-3}} \\)\n\\( \\therefore X_C = 212.1\\ \\Omega \\)\nrms current:\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{X_C} = \\frac{220}{212.1} = 1.037 \\) A\nPeak current:\n\\( i_0 = \\sqrt{2}\\, i_{\\mathrm{rms}} = 1.414 \\times 1.037 \\)\n\\( \\therefore i_0 = 1.465 \\) A\nIf the frequency is doubled: \\( X_C = \\frac{1}{2\\pi f C} \\) is inversely proportional to f, so the capacitive reactance is HALVED, to \\( 106.1\\ \\Omega \\). The applied voltage is unchanged, so the current \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{X_C} \\) is DOUBLED, to \\( 2.074 \\) A."
+  },
+  {
+    "id": "b6b76621-32cc-4061-b1bd-868972e40b2c",
+    "ref": "Ex Q.15",
+    "solution": "Given: \\( L = 2 \\) H, current amplitude (peak value) \\( i_0 = 0.25 \\) A, \\( f = 60 \\) Hz, \\( \\pi = 3.142 \\).\nInductive reactance:\n\\( X_L = 2\\pi f L = 2 \\times 3.142 \\times 60 \\times 2 = 754.1\\ \\Omega \\)\nThe current is given as a sine wave of AMPLITUDE 0.25 A, so this is the peak value and the effective (rms) current is\n\\( i_{\\mathrm{rms}} = \\frac{i_0}{\\sqrt{2}} = \\frac{0.25}{1.414} = 0.1768 \\) A\nEffective potential difference across the inductor:\n\\( e_{\\mathrm{rms}} = i_{\\mathrm{rms}} X_L = 0.1768 \\times 754.1 \\)\n\\( \\therefore e_{\\mathrm{rms}} = 133.3 \\) V\n[Note: the textbook prints 133.4 V. The 0.07% difference is only rounding of the intermediate values; the method and the answer are the same.]"
+  },
+  {
+    "id": "2e14e9d2-c1f4-4532-a757-23d741e6facf",
+    "ref": "Ex Q.16",
+    "solution": "Given: \\( e = 220 \\sin 100\\pi t \\), so \\( e_0 = 220 \\) V and \\( \\omega = 100\\pi \\) rad/s; \\( L = \\frac{1}{\\pi} \\) H. The circuit contains inductance only.\nInductive reactance:\n\\( X_L = \\omega L = 100\\pi \\times \\frac{1}{\\pi} = 100\\ \\Omega \\)\nPeak current:\n\\( i_0 = \\frac{e_0}{X_L} = \\frac{220}{100} = 2.2 \\) A\nIn a purely inductive circuit the current LAGS the emf by \\( \\frac{\\pi}{2} \\), so the instantaneous current is\n\\( i = i_0 \\sin \\left( \\omega t - \\frac{\\pi}{2} \\right) \\)\n\\( \\therefore i = 2.2 \\sin \\left( 100\\pi t - \\frac{\\pi}{2} \\right) \\) A\nAn AC galvanometer (a hot-wire type meter) reads the rms value, not the peak value:\n\\( i_{\\mathrm{rms}} = \\frac{i_0}{\\sqrt{2}} = \\frac{2.2}{1.414} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 1.555 \\) A"
+  },
+  {
+    "id": "f0e977bc-c6c6-4143-ba68-d0d534f34e52",
+    "ref": "Ex Q.17",
+    "solution": "Given: \\( C = 25\\ \\mu\\mathrm{F} = 25 \\times 10^{-6} \\) F, \\( L = 0.10 \\) H, \\( R = 25\\ \\Omega \\), \\( e = 310 \\sin 314\\, t \\), so \\( e_0 = 310 \\) V and \\( \\omega = 314 \\) rad/s.\nFrequency:\n\\( f = \\frac{\\omega}{2\\pi} = \\frac{314}{2 \\times 3.142} = 50 \\) Hz\nReactances:\n\\( X_L = \\omega L = 314 \\times 0.10 = 31.4\\ \\Omega \\)\n\\( X_C = \\frac{1}{\\omega C} = \\frac{1}{314 \\times 25 \\times 10^{-6}} = \\frac{1}{7.85 \\times 10^{-3}} = 127.4\\ \\Omega \\)\nNet reactance (the circuit is capacitance dominated, since \\( X_C > X_L \\)):\n\\( X = X_C - X_L = 127.4 - 31.4 = 95.98\\ \\Omega \\)\nImpedance:\n\\( Z = \\sqrt{R^2 + X^2} = \\sqrt{(25)^2 + (95.98)^2} = \\sqrt{625 + 9212} = \\sqrt{9837} \\)\n\\( \\therefore Z = 99.19\\ \\Omega \\)\nCurrent:\n\\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{310}{1.414} = 219.2 \\) V\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{Z} = \\frac{219.2}{99.19} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 2.211 \\) A\nPhase angle:\n\\( \\tan\\phi = \\frac{X}{R} = \\frac{95.98}{25} = 3.839 \\)\n\\( \\therefore \\phi = \\tan^{-1}(3.839) = 75.4^\\circ = 1.316 \\) rad\nSince \\( X_C > X_L \\), the current LEADS the applied emf by 1.316 rad."
+  },
+  {
+    "id": "97cb68e6-5b64-461f-af97-78e6a1c3c971",
+    "ref": "Ex Q.18",
+    "solution": "Given: \\( C = 100\\ \\mu\\mathrm{F} = 100 \\times 10^{-6} \\) F, \\( R = 50\\ \\Omega \\), \\( L = 0.5 \\) H, \\( e_{\\mathrm{rms}} = 110 \\) V, \\( f = 50 \\) Hz.\nReactances:\n\\( X_L = 2\\pi f L = 2 \\times 3.142 \\times 50 \\times 0.5 = 157.1\\ \\Omega \\)\n\\( X_C = \\frac{1}{2\\pi f C} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 100 \\times 10^{-6}} = \\frac{1}{3.142 \\times 10^{-2}} = 31.83\\ \\Omega \\)\nNet reactance (inductance dominated, since \\( X_L > X_C \\)):\n\\( X_L - X_C = 157.1 - 31.83 = 125.3\\ \\Omega \\)\nImpedance:\n\\( Z = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} = \\sqrt{(50)^2 + (125.3)^2} = \\sqrt{2500 + 15700} = \\sqrt{18200} \\)\n\\( \\therefore Z = 134.9\\ \\Omega \\)\nrms current:\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{Z} = \\frac{110}{134.9} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 0.8153 \\) A"
+  },
+  {
+    "id": "13d41871-d593-4263-b195-67efdd567823",
+    "ref": "Ex Q.19",
+    "solution": "Given: \\( R = 10\\ \\Omega \\) in series with a capacitor, power factor \\( \\cos\\phi = 0.5 \\), \\( f = 100 \\) Hz. (The 80 V supply is not needed to find C.)\nThe power factor of a series RC circuit is \\( \\cos\\phi = \\frac{R}{Z} \\), so\n\\( Z = \\frac{R}{\\cos\\phi} = \\frac{10}{0.5} = 20\\ \\Omega \\)\nSince \\( Z = \\sqrt{R^2 + X_C^2} \\),\n\\( X_C = \\sqrt{Z^2 - R^2} = \\sqrt{(20)^2 - (10)^2} = \\sqrt{400 - 100} = \\sqrt{300} \\)\n\\( \\therefore X_C = 17.32\\ \\Omega \\)\nNow \\( X_C = \\frac{1}{2\\pi f C} \\), so\n\\( C = \\frac{1}{2\\pi f X_C} = \\frac{1}{2 \\times 3.142 \\times 100 \\times 17.32} = \\frac{1}{10884} \\)\n\\( \\therefore C = 9.187 \\times 10^{-5} \\) F \\( = 91.87\\ \\mu\\mathrm{F} \\)"
+  },
+  {
+    "id": "71cfb3f9-b0e2-41ad-85a3-888cc542f7cb",
+    "ref": "Ex Q.20",
+    "solution": "Given: \\( f = 50 \\) Hz, so \\( \\omega = 2\\pi f = 100\\pi \\) rad/s and the period is \\( T = \\frac{1}{f} = 0.02 \\) s.\nMeasuring time from the instant the current is zero and rising,\n\\( i = i_0 \\sin \\omega t \\)\nThe current reaches its rms value when \\( i = i_{\\mathrm{rms}} = \\frac{i_0}{\\sqrt{2}} \\):\n\\( \\frac{i_0}{\\sqrt{2}} = i_0 \\sin \\omega t \\)\n\\( \\therefore \\sin \\omega t = \\frac{1}{\\sqrt{2}} \\quad \\therefore \\omega t = \\frac{\\pi}{4} \\)\n\\( \\therefore t = \\frac{\\pi}{4\\omega} = \\frac{\\pi}{4 \\times 100\\pi} = \\frac{1}{400} \\)\n\\( \\therefore t = 2.5 \\times 10^{-3} \\) s\n(This is \\( \\frac{T}{8} = \\frac{0.02}{8} = 2.5 \\times 10^{-3} \\) s, i.e. one-eighth of a cycle, as expected since \\( \\frac{\\pi}{4} \\) is one-eighth of \\( 2\\pi \\).)"
+  },
+  {
+    "id": "8a0aa840-63a0-4f77-b4bb-63f361b2ada2",
+    "ref": "Ex Q.21",
+    "solution": "Given: \\( L = 101.4\\ \\mu\\mathrm{H} = 101.4 \\times 10^{-6} \\) H, \\( f = 1 \\) MHz \\( = 10^{6} \\) Hz.\nThe frequency of LC oscillations is\n\\( f = \\frac{1}{2\\pi\\sqrt{LC}} \\)\nSquaring and rearranging for C:\n\\( f^2 = \\frac{1}{4\\pi^2 LC} \\quad \\therefore C = \\frac{1}{4\\pi^2 f^2 L} \\)\n\\( C = \\frac{1}{4 \\times (3.142)^2 \\times \\left( 10^{6} \\right)^2 \\times 101.4 \\times 10^{-6}} \\)\n\\( = \\frac{1}{4 \\times 9.872 \\times 10^{12} \\times 101.4 \\times 10^{-6}} = \\frac{1}{4.004 \\times 10^{9}} \\)\n\\( \\therefore C = 2.497 \\times 10^{-10} \\) F\nConverting to picofarad \\( \\left( 1\\ \\mathrm{pF} = 10^{-12}\\ \\mathrm{F} \\right) \\):\n\\( \\therefore C = 249.7 \\) picofarad"
+  },
+  {
+    "id": "a1c464e6-3238-4d9d-a747-b399a63dd866",
+    "ref": "Ex Q.22",
+    "solution": "Given: \\( C = 10\\ \\mu\\mathrm{F} = 10 \\times 10^{-6} \\) F, \\( V = 25 \\) V, \\( L = 100 \\) mH \\( = 0.1 \\) H.\nOnce the battery is removed the circuit is an ideal LC loop, so the total energy is conserved. The energy is entirely electrostatic when the capacitor is fully charged and entirely magnetic when the current is maximum:\n\\( \\frac{1}{2} C V^2 = \\frac{1}{2} L i_0^2 \\)\n\\( \\therefore i_0 = V \\sqrt{\\frac{C}{L}} \\)\n\\( = 25 \\times \\sqrt{\\frac{10 \\times 10^{-6}}{0.1}} = 25 \\times \\sqrt{10^{-4}} = 25 \\times 10^{-2} \\)\n\\( \\therefore i_0 = 0.25 \\) A\nThe maximum current in the coil is 0.25 A."
+  },
+  {
+    "id": "93d98c3f-691e-47ae-912b-bd6b08d3a11e",
+    "ref": "Ex Q.23",
+    "solution": "Given: \\( C = 100\\ \\mu\\mathrm{F} = 100 \\times 10^{-6} \\) F, \\( V = 50 \\) V, maximum current \\( i_0 = 5 \\) A.\nWith the source removed the capacitor discharges through the inductance and LC oscillations are set up, so the total energy is conserved. All the electrostatic energy of the charged capacitor becomes magnetic energy of the inductor when the current is maximum:\n\\( \\frac{1}{2} C V^2 = \\frac{1}{2} L i_0^2 \\)\n\\( \\therefore L = \\frac{C V^2}{i_0^2} \\)\n\\( = \\frac{100 \\times 10^{-6} \\times (50)^2}{(5)^2} = \\frac{100 \\times 10^{-6} \\times 2500}{25} = \\frac{0.25}{25} \\)\n\\( \\therefore L = 0.01 \\) H\nThe value of the inductance is 0.01 H (10 mH)."
+  }
+]

@@ -1,0 +1,82 @@
+[
+ {
+  "id": "053cf1ca-a4d0-4e0a-8765-cb567d2e6912",
+  "ref": "Ex Q.2 (i)",
+  "solution": "Both A and B lie on the **equatorial plane** of the dipole, i.e. the plane through the centre of the dipole perpendicular to its axis.\n\nAt any point on the equatorial plane the two charges of the dipole are equidistant, so their potentials cancel exactly:\n\n\\( V = \\dfrac{1}{4\\pi\\varepsilon_0}\\left(\\dfrac{+q'}{r} + \\dfrac{-q'}{r}\\right) = 0 \\)\n\nHence \\( V_A = V_B = 0 \\), and the work done in carrying the charge \\( q \\) from A to B is\n\n\\( W = q\\,(V_B - V_A) = q\\,(0 - 0) = 0 \\)\n\n**The work done is zero.** Note this does not depend on the path taken (the electrostatic force is conservative), which is consistent with the charge being moved without acceleration."
+ },
+ {
+  "id": "63717461-f2dd-4e4e-8572-d1e05dccfa3b",
+  "ref": "Ex Q.2 (ii)",
+  "solution": "For a spherical capacitor with inner radius \\( a \\) and outer radius \\( b \\),\n\n\\( C = 4\\pi\\varepsilon_0\\,\\dfrac{ab}{b-a} \\)\n\nWriting the gap as \\( t = b - a \\) with the inner sphere fixed, \\( b = a + t \\) and\n\n\\( C = 4\\pi\\varepsilon_0\\,\\dfrac{a(a+t)}{t} = 4\\pi\\varepsilon_0\\left(\\dfrac{a^2}{t} + a\\right) \\)\n\nAs \\( t \\) increases the term \\( a^2/t \\) falls, so \\( C \\) falls monotonically.\n\n**The capacitance decreases.** (Physically, a larger gap means a smaller field-producing influence of one sphere on the other, so a given charge produces a larger potential difference and hence a smaller \\( C = Q/V \\).)"
+ },
+ {
+  "id": "6f96e42c-40d0-4529-9a1a-51b454789e24",
+  "ref": "Ex Q.2 (iii)",
+  "solution": "Let the plate separation be \\( d \\) and the metal plate introduced have thickness \\( t \\) (with \\( t < d \\)).\n\nThe field inside a conductor in electrostatic equilibrium is zero, so the metal plate contributes no potential difference. Only the remaining air gap of thickness \\( (d - t) \\) supports the field, so the capacitor behaves as one with separation \\( (d - t) \\):\n\n\\( C' = \\dfrac{\\varepsilon_0 A}{d - t} \\)\n\nSince \\( d - t < d \\), we get \\( C' > C_0 = \\dfrac{\\varepsilon_0 A}{d} \\).\n\n**The capacitance increases**, by the factor \\( \\dfrac{d}{d-t} \\). The effect is independent of where between the plates the metal plate is placed, and it grows as the plate is made thicker (as \\( t \\to d \\) the plates are short-circuited)."
+ },
+ {
+  "id": "5a5a176e-19ea-45af-8026-6354959117d2",
+  "ref": "Ex Q.2 (iv)",
+  "solution": "The metal body of a car is a **closed conductor**, and it therefore acts as an electrostatic shield (a Faraday cage).\n\nWhen a charged cloud is overhead, or when lightning actually strikes the car, the charge resides entirely on the **outer surface** of the metal shell. Inside the cavity enclosed by a conductor the electric field is **zero**, so no field and no potential difference is set up across the occupants.\n\nThe lightning current therefore flows through the metal shell around the passengers and down to the ground, rather than through them. This is why the interior of a car is safe, provided the occupants do not touch the metal body, and it is the same reason a hollow conducting shell protects anything placed inside it."
+ },
+ {
+  "id": "991eb524-dcce-4c2d-9467-9d1a1a155d69",
+  "ref": "Ex Q.2 (v)",
+  "solution": "The energy stored in a charged spherical shell of radius \\( R \\) carrying charge \\( Q \\) is\n\n\\( U = \\dfrac{Q^2}{8\\pi\\varepsilon_0 R} \\)\n\nThe charge is unchanged during the expansion, so with the shell going from radius \\( b \\) to radius \\( a \\):\n\n\\( U_i = \\dfrac{Q^2}{8\\pi\\varepsilon_0 b} \\qquad U_f = \\dfrac{Q^2}{8\\pi\\varepsilon_0 a} \\)\n\nThe work done **by the electrical forces** is the loss in stored energy:\n\n\\( W = U_i - U_f = \\dfrac{Q^2}{8\\pi\\varepsilon_0}\\left(\\dfrac{1}{b} - \\dfrac{1}{a}\\right) = \\dfrac{Q^2 (a-b)}{8\\pi\\varepsilon_0\\,ab} \\)\n\nSince the shell is *expanded*, \\( a > b \\) and \\( W \\) is **positive** — as expected, because the like charges on the shell repel one another and so the electrostatic force does positive work as the shell grows."
+ },
+ {
+  "id": "9305d125-f58f-423a-a8f6-f385b1d33487",
+  "ref": "Ex Q.3",
+  "solution": "**(a) Direction of the field.**\n\nThe electric field is always perpendicular to the equipotential surfaces. The equipotential surfaces here are planes parallel to the YZ plane, so \\( V \\) varies only with \\( x \\) and\n\n\\( \\vec{E} = -\\dfrac{dV}{dx}\\hat{i} \\)\n\n**\\( \\vec{E} \\) is directed along (parallel to) the X axis.**\n\n**(b) Torque on the dipole.**\n\nThe charges \\( -q \\) and \\( +q \\) sit at \\( (0,-b,0) \\) and \\( (0,+b,0) \\), so the separation is \\( 2b \\) along the Y axis and the dipole moment points from \\( -q \\) to \\( +q \\):\n\n\\( \\vec{p} = q(2b)\\,\\hat{j} \\qquad \\Rightarrow \\qquad p = 2bq \\)\n\nThe dipole moment is along \\( \\hat{j} \\) and the field along \\( \\hat{i} \\), so they are perpendicular: \\( \\theta = 90^\\circ \\).\n\n\\( \\tau = pE\\sin\\theta = (2bq)E\\sin 90^\\circ \\)\n\n**\\( \\tau = 2bqE \\)**, directed along \\( -\\hat{k} \\) (i.e. perpendicular to the plane containing \\( \\vec{p} \\) and \\( \\vec{E} \\)). This is the maximum possible torque for this dipole in this field."
+ },
+ {
+  "id": "537a4fa6-8d74-45b0-a6a3-4bbf2f5aa160",
+  "ref": "Ex Q.4",
+  "solution": "Let the equal spacing be \\( r \\), so the charges lie at \\( x = 0,\\, r,\\, 2r \\) as \\( -q,\\, +Q,\\, -q \\).\n\nThe potential energy of the system is the sum over the three distinct pairs:\n\n\\( U = \\dfrac{1}{4\\pi\\varepsilon_0}\\left[\\dfrac{(-q)(+Q)}{r} + \\dfrac{(+Q)(-q)}{r} + \\dfrac{(-q)(-q)}{2r}\\right] \\)\n\n\\( U = \\dfrac{1}{4\\pi\\varepsilon_0\\,r}\\left[-2qQ + \\dfrac{q^2}{2}\\right] \\)\n\nNote the two end charges are separated by \\( 2r \\), not \\( r \\) — that factor is what fixes the ratio.\n\nSetting \\( U = 0 \\):\n\n\\( \\dfrac{q^2}{2} = 2qQ \\qquad \\Rightarrow \\qquad Q = \\dfrac{q}{4} \\)\n\n**\\( Q : q = 1 : 4 \\)**"
+ },
+ {
+  "id": "02062770-2c21-4e20-b83a-9fd7b8c8ea30",
+  "ref": "Ex Q.5",
+  "solution": "The battery is disconnected **before** the dielectric is removed, so the **charge is trapped** on the plates and is the quantity that stays fixed. Let the dielectric constant be \\( k > 1 \\).\n\n| quantity | relation | effect |\n|---|---|---|\n| Charge \\( Q \\) | isolated plates | **remains constant** |\n| Capacitance \\( C \\) | \\( C = k\\varepsilon_0 A/d \\to \\varepsilon_0 A/d \\) | **decreases** (by factor \\( k \\)) |\n| Voltage \\( V \\) | \\( V = Q/C \\), \\( Q \\) fixed | **increases** (by factor \\( k \\)) |\n| Electric field \\( E \\) | \\( E = V/d \\) | **increases** (by factor \\( k \\)) |\n| Energy \\( U \\) | \\( U = Q^2/2C \\), \\( Q \\) fixed | **increases** (by factor \\( k \\)) |\n\nThe extra energy is supplied by the external agent: the slab is pulled *into* a capacitor by the fringing field, so work must be done against that attraction to withdraw it, and that work appears as the increase in \\( U \\)."
+ },
+ {
+  "id": "fdff17e1-dbb0-498e-b6cb-28c3945f8c1c",
+  "ref": "Ex Q.6",
+  "solution": "Let \\( C_1 = C \\) and \\( C_2 = 2C \\), so the ratio is 1:2.\n\n**Parallel:** \\( C_p = C_1 + C_2 = 3C \\)\n\n**Series:** \\( C_s = \\dfrac{C_1 C_2}{C_1 + C_2} = \\dfrac{C \\times 2C}{3C} = \\dfrac{2C}{3} \\)\n\nThe energy stored is \\( U = \\tfrac{1}{2}CV^2 \\). Requiring the two energies to be equal:\n\n\\( \\dfrac{1}{2}C_p V_p^2 = \\dfrac{1}{2}C_s V_s^2 \\)\n\n\\( \\dfrac{V_p^2}{V_s^2} = \\dfrac{C_s}{C_p} = \\dfrac{2C/3}{3C} = \\dfrac{2}{9} \\)\n\n\\( \\dfrac{V_p}{V_s} = \\sqrt{\\dfrac{2}{9}} = \\dfrac{\\sqrt{2}}{3} \\)\n\n**\\( V_p : V_s = \\sqrt{2} : 3 \\approx 0.471 \\)** — the smaller voltage is needed across the parallel combination, which is the larger capacitance."
+ },
+ {
+  "id": "fb8f3dad-667f-4f5a-b2a8-24139c825aba",
+  "ref": "Ex Q.7",
+  "solution": "By Gauss' law the flux through a closed surface depends **only on the charge enclosed by it**; charges outside contribute zero net flux.\n\nThe Gaussian surface is a sphere of radius \\( 4a \\) centred at the origin, so a charge is enclosed only if its distance from the origin is less than \\( 4a \\):\n\n- \\( -4Q \\) at \\( (2a, 0) \\): distance \\( = 2a < 4a \\) — **inside**\n- \\( +2Q \\) at \\( (5a, 0) \\): distance \\( = 5a > 4a \\) — **outside**\n\nSo the enclosed charge is \\( q_{enc} = -4Q \\) and\n\n\\( \\phi = \\dfrac{q_{enc}}{\\varepsilon_0} = \\dfrac{-4Q}{\\varepsilon_0} \\)\n\n**\\( \\phi = -\\dfrac{4Q}{\\varepsilon_0} \\)** (taking \\( Q \\) positive). The negative sign means the net flux is **inward**, i.e. the field lines enter the sphere. The \\( +2Q \\) charge does change the field at individual points on the surface, but its net contribution to the flux is zero."
+ },
+ {
+  "id": "439f838d-0a0f-4ba7-9e7e-d50d46e3fd9b",
+  "ref": "Ex Q.8",
+  "solution": "**Before connection**\n\n\\( U_i = \\tfrac{1}{2}C_1 V^2 = \\tfrac{1}{2}\\times 6\\times 10^{-6}\\times (300)^2 = 0.27 \\) J\n\nCharge on the first capacitor: \\( Q = C_1 V = 6\\times 10^{-6}\\times 300 = 1.8\\times 10^{-3} \\) C\n\n**After connection**\n\nThe supply is disconnected, so the total charge \\( Q \\) is conserved and is shared until both capacitors reach a common potential \\( V_f \\):\n\n\\( V_f = \\dfrac{Q}{C_1 + C_2} = \\dfrac{1.8\\times 10^{-3}}{9\\times 10^{-6}} = 200 \\) V\n\n\\( U_f = \\tfrac{1}{2}(C_1 + C_2)V_f^2 = \\tfrac{1}{2}\\times 9\\times 10^{-6}\\times (200)^2 = 0.18 \\) J\n\n**Energy lost**\n\n\\( \\Delta U = U_i - U_f = 0.27 - 0.18 = 0.09 \\) J\n\n**\\( \\Delta U = 9 \\times 10^{-2} \\) J** is dissipated as heat in the connecting wires and as electromagnetic radiation. This loss is independent of the resistance of the wires — a smaller resistance merely makes the transfer faster, not more efficient."
+ },
+ {
+  "id": "166991b5-7b32-4c03-8bcd-8c8bdc494b5d",
+  "ref": "Ex Q.9",
+  "solution": "**Radius of the big drop**\n\nEach small drop has diameter 0.1 m, so \\( r = 0.05 \\) m. Volume is conserved when the drops coalesce:\n\n\\( \\dfrac{4}{3}\\pi R^3 = 125 \\times \\dfrac{4}{3}\\pi r^3 \\qquad \\Rightarrow \\qquad R = (125)^{1/3} r = 5 \\times 0.05 = 0.25 \\) m\n\n**Charge on the big drop**\n\nCharge is conserved: \\( Q = 125 \\times 0.5\\times 10^{-6} = 6.25\\times 10^{-5} \\) C\n\n**Potential at the surface**\n\nFor a charged sphere the surface potential is \\( V = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{R} \\):\n\n\\( V = \\dfrac{9\\times 10^{9}\\times 6.25\\times 10^{-5}}{0.25} \\)\n\n**\\( V = 2.25 \\times 10^{6} \\) V**"
+ },
+ {
+  "id": "773b1db6-c13b-4fa7-88ee-d75946ba2053",
+  "ref": "Ex Q.10",
+  "solution": "The potential energy of a dipole making an angle \\( \\theta \\) with the field is \\( U = -pE\\cos\\theta \\), so the work needed to turn one dipole from \\( \\theta_1 \\) to \\( \\theta_2 \\) is\n\n\\( W_1 = pE(\\cos\\theta_1 - \\cos\\theta_2) \\)\n\nHere \\( \\theta_1 = 0 \\) and \\( \\theta_2 = 90^\\circ \\), so \\( \\cos\\theta_1 - \\cos\\theta_2 = 1 - 0 = 1 \\) and \\( W_1 = pE \\).\n\nFor \\( N = 10^{21} \\) molecules:\n\n\\( W = N\\,pE = 10^{21} \\times 6.3\\times 10^{-30} \\times 2.5\\times 10^{5} \\)\n\n\\( W = 10^{21} \\times 1.575 \\times 10^{-24} \\)\n\n**\\( W = 1.575 \\times 10^{-3} \\) J**\n\nThe work is positive because the dipoles start in the minimum-energy orientation (aligned with the field) and are turned to the zero-energy perpendicular orientation."
+ },
+ {
+  "id": "c13342ab-122b-4c0b-83be-35763fb25091",
+  "ref": "Ex Q.11",
+  "solution": "**(a) Potential at P**\n\nP is at \\( (8.0, 0) \\) m.\n\nDistance from the \\( 6\\,\\mu\\text{C} \\) charge at the origin: \\( r_1 = 8.0 \\) m\n\nDistance from the \\( -5\\,\\mu\\text{C} \\) charge at \\( A(0, 6.0) \\): \\( r_2 = \\sqrt{8.0^2 + 6.0^2} = 10.0 \\) m\n\nPotential is a scalar, so the two contributions add algebraically:\n\n\\( V_P = \\dfrac{1}{4\\pi\\varepsilon_0}\\left(\\dfrac{q_1}{r_1} + \\dfrac{q_2}{r_2}\\right) = 9\\times 10^{9}\\left(\\dfrac{6\\times 10^{-6}}{8.0} + \\dfrac{-5\\times 10^{-6}}{10.0}\\right) \\)\n\n\\( V_P = 9\\times 10^{9}\\,(7.5\\times 10^{-7} - 5.0\\times 10^{-7}) = 9\\times 10^{9}\\times 2.5\\times 10^{-7} \\)\n\n**\\( V_P = 2.25\\times 10^{3} \\) V**\n\n**(b) Work done on a proton**\n\nThe potential at infinity is zero, so the work done in bringing a charge \\( q \\) from infinity to P is \\( W = q\\,V_P \\). For a proton, \\( q = +1.6\\times 10^{-19} \\) C:\n\n\\( W = 1.6\\times 10^{-19} \\times 2.25\\times 10^{3} \\)\n\n**\\( W = 3.6\\times 10^{-16} \\) J**\n\n**Significance of the sign:** \\( W \\) is **positive**, so work has to be done *by an external agent* to bring the proton to P. The net potential at P is positive (the nearer \\( +6\\,\\mu\\text{C} \\) dominates), so the region repels a positive charge — the proton would not drift to P on its own, and if released at P it would be pushed back out to infinity."
+ },
+ {
+  "id": "62363426-ead3-460e-923c-d787b856cf91",
+  "ref": "Ex Q.12",
+  "solution": "**(a) Capacitance with air**\n\n\\( C = \\dfrac{\\varepsilon_0 A}{d} = \\dfrac{8.85\\times 10^{-12} \\times 6\\times 10^{-3}}{2\\times 10^{-3}} \\)\n\n**\\( C = 2.655 \\times 10^{-11} \\) F**\n\n**(b) Charge at 100 V**\n\n\\( Q = CV = 2.655\\times 10^{-11}\\times 100 \\)\n\n**\\( Q = 2.655 \\times 10^{-9} \\) C**\n\n**(c) With the mica sheet, supply still connected**\n\nThe 2 mm sheet fills the whole gap, so the capacitance rises by the factor \\( k = 6 \\):\n\n\\( C' = kC = 6 \\times 2.655\\times 10^{-11} = 1.593\\times 10^{-10} \\) F\n\nThe supply **remains connected**, so it is the *voltage* that is held at 100 V (not the charge), and the plates draw more charge from the supply:\n\n\\( Q' = C'V = 1.593\\times 10^{-10}\\times 100 \\)\n\n**\\( Q' = 1.593 \\times 10^{-8} \\) C \\( = 15.93 \\times 10^{-9} \\) C**\n\nThe charge increases six-fold, i.e. by \\( 13.275\\times 10^{-9} \\) C. (Had the supply been disconnected first, the charge would instead have stayed at \\( 2.655\\times 10^{-9} \\) C and the voltage would have fallen to 16.67 V.)"
+ },
+ {
+  "id": "3e739f01-f51d-449c-ae99-bcbc8653e9c0",
+  "ref": "Ex Q.13",
+  "solution": "Each arrangement uses plates of area \\( A \\) with total separation \\( d \\); the dielectric constants are those marked in the two figures.\n\n**(a) Three slabs stacked one above the other, each of thickness \\( d/3 \\), with \\( k = 1,\\,3,\\,6 \\)**\n\nThe same charge passes through all three layers, so they are in **series**. A layer of constant \\( k_i \\) and thickness \\( d/3 \\) has\n\n\\( C_i = \\dfrac{k_i \\varepsilon_0 A}{d/3} = \\dfrac{3k_i \\varepsilon_0 A}{d} \\)\n\n\\( \\dfrac{1}{C} = \\dfrac{d}{3\\varepsilon_0 A}\\left(\\dfrac{1}{1} + \\dfrac{1}{3} + \\dfrac{1}{6}\\right) = \\dfrac{d}{3\\varepsilon_0 A}\\times\\dfrac{9}{6} = \\dfrac{d}{2\\varepsilon_0 A} \\)\n\n**\\( C = \\dfrac{2A\\varepsilon_0}{d} \\)**\n\n**(b) Left half \\( k_1 = 4 \\) over the full gap; right half split into \\( k_2 = 3 \\) and \\( k_3 = 6 \\), each of thickness \\( d/2 \\)**\n\nThe two halves each have plate area \\( A/2 \\) and are connected between the same pair of terminals, so they are in **parallel**.\n\nLeft half: \\( C_L = \\dfrac{k_1\\varepsilon_0 (A/2)}{d} = \\dfrac{4\\varepsilon_0 A}{2d} = \\dfrac{2\\varepsilon_0 A}{d} \\)\n\nRight half, two layers in series:\n\n\\( C_{2} = \\dfrac{3\\varepsilon_0 (A/2)}{d/2} = \\dfrac{3\\varepsilon_0 A}{d} \\qquad C_{3} = \\dfrac{6\\varepsilon_0 (A/2)}{d/2} = \\dfrac{6\\varepsilon_0 A}{d} \\)\n\n\\( \\dfrac{1}{C_R} = \\dfrac{d}{3\\varepsilon_0 A} + \\dfrac{d}{6\\varepsilon_0 A} = \\dfrac{3d}{6\\varepsilon_0 A} \\qquad \\Rightarrow \\qquad C_R = \\dfrac{2\\varepsilon_0 A}{d} \\)\n\n\\( C = C_L + C_R = \\dfrac{2\\varepsilon_0 A}{d} + \\dfrac{2\\varepsilon_0 A}{d} \\)\n\n**\\( C = \\dfrac{4A\\varepsilon_0}{d} \\)**"
+ }
+]

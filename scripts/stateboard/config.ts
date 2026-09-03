@@ -746,8 +746,13 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   // ── Ch.08 Electrostatics (12th PHYSICS). 28pp; Exercises open at p-26.
-  //    17 solved examples (19 `Solution :` markers): 8.2->p02, 8.4->p04, 8.5->p04, 8.6->p06, 8.7->p07, 8.8->p08, 8.9->p09, 8.10->p10, 8.11->p11, 8.12->p12, 8.13->p12, 8.14->p13, 8.15->p19, 8.16->p19, 8.17->p23, 8.18->p23, 8.19->p24
-  //    6 exercise questions print an inline [Ans: ...].
+  //    NINETEEN solved examples, refs Solved Ex.8.1-8.19 (transcribed 2026-09-03).
+  //    The page map above previously listed only 17, omitting 8.1 and 8.3 while its own
+  //    text said 19 `Solution :` markers — the marker count was right and the map short.
+  //    Exercise shape: Q.1 five MCQs, Q.2 five short-answer, then flat Q.3-Q.13.
+  //    NINE exercise questions print an inline answer, not the 6 recorded before: six carry
+  //    the literal `[Ans:` label (Q.8-Q.13) — which is what the old count scanned for — and
+  //    three more print a bare bracket with no label (Q.3, Q.4, Q.6).
   "electrostatics-12-phy": {
     id: "electrostatics-12-phy",
     chapterName: "Electrostatics",
@@ -812,6 +817,11 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   // ── Ch.11 Magnetic Materials (12th PHYSICS). 14pp; Exercises open at p-12.
+  //    ⚠ p-13 of THIS chapter's PDF also carries an `Exercise : Chapter 10` box holding five
+  //    theory questions that belong to Ch.10 (Magnetic Fields due to Electric Current) —
+  //    Ch.10's own PDF has no `Answer in brief` block at all. They are NOT part of Ch.11 and
+  //    are correctly excluded here; they are also MISSING from the shipped Ch.10 (backfill
+  //    ledger, 2026-09-03). Do not ingest them into this chapter.
   //    2 solved examples (4 `Solution :` markers): 11.2->p03, 11.3->p09
   //    9 exercise questions print an inline [Ans: ...].
   "magnetic-materials-12-phy": {

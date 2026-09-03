@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "Solved Ex.13.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "difficulty": "EASY",
+    "stem": "An alternating voltage is given by \\( e = 6 \\sin (100\\pi t) \\). find (i) the peak value (ii) frequency (iii) time period and (iv) instantaneous value at time \\( t = 2 \\) ms",
+    "solution": "\\( e = e_0 \\sin \\omega t \\)\n\\( e = 6 \\sin (100\\pi t) \\)\n(i) Comparing the two equations, the peak value of the alternating voltage is \\( e_0 = 6 \\) V\n(ii) \\( \\omega t = 100\\pi t \\quad \\therefore 2\\pi f t = 100\\pi t \\)\nFrequency \\( f = \\frac{100\\pi}{2\\pi} = 50 \\) Hz\n(iii) Time period \\( T = \\frac{1}{f} = \\frac{1}{50} = 0.02 \\) s\n(iv) The instantaneous value of the voltage at \\( t = 2 \\times 10^{-3} \\) s is\n\\( e = 6 \\sin 100\\pi \\times 2 \\times 10^{-3} = 3.527 \\) V"
+  },
+  {
+    "ref": "Solved Ex.13.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "EASY",
+    "stem": "An alternating voltage given by \\( e = 140 \\sin 3142\\, t \\) is connected across a pure resistor of 50 \\( \\Omega \\). Find (i) the frequency of the source (ii) the rms current through the resistor.",
+    "solution": "Given\n\\( e = 140 \\sin 3142\\, t \\)\n\\( R = 50\\ \\Omega \\)\ni) On comparing with \\( e = e_0 \\sin \\omega t \\)\nWe get \\( \\omega = 3142 \\), \\( e_0 = 140 \\) V\n\\( \\omega = 2\\pi f \\quad \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{3142}{2 \\times 3.142} = 500 \\) Hz\n(ii) \\( e_0 = 140 \\) V\n\\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{140}{\\sqrt{2}} = 98.99 \\) V\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{99.29}{50} = 1.98 \\) A"
+  },
+  {
+    "ref": "Solved Ex.13.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "An inductor of inductance 200 mH is connected to an AC source of peak emf 210 V and frequency 50 Hz. Calculate the peak current. What is the instantaneous voltage of the source when the current is at its peak value?",
+    "solution": "Given\n\\( L = 200 \\) mH \\( = 0.2 \\) H\n\\( e_0 = 210 \\) V\n\\( f = 50 \\) Hz\nPeak Current \\( i_0 = \\frac{e_0}{X_L} = \\frac{e_0}{2\\pi f L} = \\frac{210}{2 \\times 3.142 \\times 50 \\times 0.2} \\)\n\\( \\therefore i_0 = 3.342 \\) A\nAs in an inductive AC circuit, current lags behind the emf by \\( \\frac{\\pi}{2} \\), so the voltage is zero when the current is at its peak value."
+  },
+  {
+    "ref": "Solved Ex.13.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "4. A Capacitor of 2 \\( \\mu \\)F is connected to an AC source of emf \\( e = 250 \\sin 100\\pi t \\). Write an equation for instantaneous current through the circuit and give reading of AC ammeter connected in the circuit.",
+    "solution": "Given\n\\( C = 2\\ \\mu\\mathrm{F} = 2 \\times 10^{-6} \\) F\n\\( e_0 = 250 \\) V\n\\( \\omega = 100\\pi \\) rad/sec\nThe instantaneous current through the circuit\n\\( i = i_0 \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\)\n\\( = \\omega C e_0 \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\)\n\\( = 3.142 \\times 2 \\times 10^{-4} \\times 250 \\sin \\left( 100\\pi t + \\frac{\\pi}{2} \\right) \\)\n\\( = 0.1571 \\sin \\left( 100\\pi t + \\frac{\\pi}{2} \\right) \\)\nReading of the AC ammeter is\n\\( i_{\\mathrm{rms}} = 0.707\\, i_0 = 0.707 \\times 0.1571 \\)\n\\( i_{\\mathrm{rms}} = 0.111 \\) A"
+  },
+  {
+    "ref": "Solved Ex.13.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Electrical Resonance and Q Factor",
+    "difficulty": "MODERATE",
+    "stem": "A 100 mH inductor, a 25 \\( \\mu \\)F capacitor and a 15 \\( \\Omega \\) resistor are connected in series to a 120 V, 50 Hz AC source. Calculate\n(i) impedance of the circuit at resonance\n(ii) current at resonance\n(iii) resonant frequency",
+    "solution": "Given\n\\( L = 100 \\) mH \\( = 10^{-1} \\) H\n\\( C = 25\\ \\mu\\mathrm{F} = 25 \\times 10^{-6} \\) F\n\\( R = 15\\ \\Omega \\)\n\\( e_{\\mathrm{rms}} = 120 \\) V\n\\( f = 50 \\) Hz\n(i) At resonance, \\( Z = R = 15\\ \\Omega \\)\n(ii) \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{120}{15} = 8 \\) A\n(iii) \\( f = \\frac{1}{2\\pi\\sqrt{LC}} = \\frac{1}{2 \\times 3.142\\sqrt{10^{-1} \\times 25 \\times 10^{-6}}} = \\frac{1}{9.9356 \\times 10^{-3}} \\)\n\\( \\therefore f = 100.6 \\) Hz"
+  },
+  {
+    "ref": "Solved Ex.13.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "stem": "A coil of 0.01 H inductance and 1 \\( \\Omega \\) resistance is connected to 200 V, 50 Hz AC supply. Find the impedance of the circuit and time lag between maximum alternating voltage and current.",
+    "solution": "[Textbook misprint: the book's printed working ends \\(\\Delta t = 4.019\\ \\text{s}\\), dropping a factor of \\(10^{-3}\\). Its OWN expression is correct — \\(\\dfrac{72.35 \\times \\pi}{180 \\times 2\\pi \\times 50} = \\dfrac{72.35}{18000} = 4.019 \\times 10^{-3}\\ \\text{s}\\) — so only the final numeral is wrong. It is self-refuting: on a 50 Hz supply one full cycle lasts \\(0.02\\) s, so a lag of 4.019 s would be 201 complete cycles. The derivation above has been corrected to \\(4.019 \\times 10^{-3}\\ \\text{s}\\).]\n\nGiven\nInductance \\( L = 0.01 \\) H\nResistance \\( R = 1\\ \\Omega \\)\n\\( e_0 = 200 \\) V\nFrequency \\( f = 50 \\) Hz\nImpedance of the circuit \\( Z = \\sqrt{R^2 + X_L^2} \\)\n\\( = \\sqrt{R^2 + \\left( 2\\pi f L \\right)^2} \\)\n\\( = \\sqrt{(1)^2 + (2 \\times 3.142 \\times 50 \\times 0.01)^2} \\)\n\\( = \\sqrt{10.872} = 3.297\\ \\Omega \\)\n\\( \\tan\\phi = \\frac{\\omega L}{R} = \\frac{2\\pi f L}{R} = \\frac{2 \\times 3.142 \\times 50 \\times 0.01}{1} = 3.142 \\)\n\\( \\phi = \\tan^{-1}(3.142) = 72.35^\\circ \\)\nPhase difference, \\( \\phi = \\frac{72.35 \\times \\pi}{180} \\) rad\nTime lag between maximum alternating voltage and current\n\\( \\Delta t = \\frac{\\phi}{\\omega} = \\frac{72.35 \\times \\pi}{180 \\times 2\\pi \\times 50} = 4.019 \\times 10^{-3}\\ \\text{s} \\)"
+  },
+  {
+    "ref": "Solved Ex.13.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "EASY",
+    "stem": "A 100 \\( \\Omega \\) resistor is connected to a 220 V rms, 50 Hz supply\n(i) What is the rms value of current in the circuit?\n(ii) What is the net power consumed over a full cycle?",
+    "solution": "Given\n\\( R = 100\\ \\Omega \\), \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz\n(i) \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{220}{100} = 2.2 \\) A\n(ii) Net Power Consumed\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}} \\cdot i_{\\mathrm{rms}} \\)\n\\( = 220 \\times 2.2 = 484 \\) W"
+  },
+  {
+    "ref": "Solved Ex.13.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "HARD",
+    "stem": "A sinusoidal voltage of peak value 283 V and frequency 50 Hz is applied to a series LCR circuit in which \\( R = 3\\ \\Omega \\), \\( L = 25.48 \\) mH and \\( C = 796\\ \\mu \\)f. Find\ni) The impedance of the circuit\nii) The phase difference between the voltage across source and the currents\niii) The power factor\niv) The power dissipated in the surface",
+    "solution": "[Textbook misprint: the book's printed working divides by the resistance where the impedance belongs. The rms current in a series LCR circuit is \\(i_{\\text{rms}} = e_{\\text{rms}}/Z\\), not \\(e_{\\text{rms}}/R\\); the book substitutes \\(\\dfrac{283}{\\sqrt{2} \\times 3}\\) using \\(R = 3\\ \\Omega\\) and prints \\(8008.9\\) W. With its own \\(Z = 5\\ \\Omega\\) the average power is \\(P = \\dfrac{e_0}{\\sqrt{2}}\\dfrac{e_0}{\\sqrt{2}Z}\\cos\\phi = 4805\\) W — the printed value is exactly \\(Z/R = 5/3\\) times too large, which is what identifies the mechanism. Cross-checked by \\(i_{\\text{rms}}^2 R\\), which returns the same 4805 W. The derivation above has been corrected. Two further printing slips in the same example do NOT affect its numbers and are preserved: it writes \\(X_C = 1/(2\\pi f L)\\) where \\(C\\) belongs (the substitution correctly uses \\(C\\)), and \\(Z = \\sqrt{R^2 + (X_c - Y_c)^2}\\) where \\(Y_c\\) should be \\(X_L\\).]\n\nGiven\n\\( e_0 = 283 \\) V, \\( f = 50 \\) Hz, \\( R = 3\\ \\Omega \\),\n\\( L = 25.48 \\times 10^{-3} \\) H, \\( C = 796 \\times 10^{-6} \\) F\n\\( X_L = 2\\pi f L = 2 \\times 3.142 \\times 50 \\times 25.48 \\times 10^{-3} = 8\\ \\Omega \\)\n\\( X_C = \\frac{1}{2\\pi f L} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 796 \\times 10^{-6}} = \\frac{1}{0.2501} = 4\\ \\Omega \\)\nTherefore \\( Z = \\sqrt{R^2 + (X_c - Y_c)^2} = \\sqrt{3^2 + (8-4)^2} = 5\\ \\Omega \\)\nPhase difference \\( \\phi \\) is given by\n\\( \\tan \\phi = \\frac{X_L - X_c}{R} = \\frac{8-4}{3} = \\frac{4}{3} \\)\nTherefore, \\( \\phi = \\tan^{-1}\\left( \\frac{4}{3} \\right) = 53.1^\\circ \\)\nThus the current lags behind the voltage across the source by a phase angle of \\( 53.1^\\circ \\)\nPower factor \\( = \\cos \\phi = 0.6 \\)\nPower dissipated in the circuit\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}}\\, i_{\\mathrm{rms}} \\cos \\phi \\)\n\\( = \\frac{e_0}{\\sqrt{2}}\\, \\frac{e_0}{\\sqrt{2}Z}\\, (0.6) \\)\n\\( = \\frac{283}{\\sqrt{2}}\\, \\frac{283}{\\sqrt{2} \\times 5}\\, 0.6 \\)\n\\( = 4805\\ \\text{W} \\)"
+  }
+]

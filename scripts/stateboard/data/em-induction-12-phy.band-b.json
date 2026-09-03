@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Solved Ex.12.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "HARD",
+    "stem": "Derive an expression for the self-inductance of a toroid of circular cross-section of radius \\(r\\) and major radius \\(R\\). Calculate the self inductance \\((L)\\) of toroid for major radius \\((R) = 15\\) cm, cross-section of toroid having radius \\((r) = 2.0\\) cm and the number of turns \\((n) = 1200\\).",
+    "solution": "The magnetic field inside a toroid,\n\n\\(B = \\dfrac{\\mu_0 N i}{2\\pi r_0}\\), where \\(N\\) is the number of turns and \\(r_0\\) is the distance from the toroidal axis. If \\(r << R\\), we can use \\(r_0 \\cong R\\). Hence,\n\n\\(B = \\dfrac{\\mu_0 N i}{2\\,u\\,R}\\)\n\nThe magnetic flux \\((\\phi)\\) passing through cavity is\n\n\\(\\phi = \\left( \\pi r^2 \\right) \\dfrac{\\mu_0}{2\\pi} \\dfrac{Ni}{R} = \\dfrac{\\mu_0 N i r^2}{2R}\\)\n\nThis is the flux that links each turn. When the current \\(i\\) varies with time, the induced emf \\(e\\) across the terminals of toroid is given by Faraday's law.\n\n\\(e = -\\dfrac{N \\mathrm{d}\\phi}{\\mathrm{d}t} = -N \\dfrac{\\mathrm{d}}{\\mathrm{d}t} \\left( \\dfrac{\\mu_0 N i r^2}{2R} \\right)\\)\n\n\\(e = -N \\left( \\dfrac{\\mu_0 N r^2}{2R} \\right) \\dfrac{\\mathrm{d}i}{\\mathrm{d}t}\\)\n\nComparing with \\(e = -L \\dfrac{\\mathrm{d}i}{\\mathrm{d}t}\\)\n\nWe get,\n\n\\(L = \\dfrac{\\mu_0}{2} \\dfrac{N^2 r^2}{R}\\)   \\((\\because r << R)\\)\n\nGiven,\n\n\\(N = 1200\\), \\(r = 2.0\\) cm, \\(R = 15\\) cm and \\(\\mu_0 = 4\\pi \\times 10^{-7}\\) T.m/A.\n\n\\(L = 2.414 \\times 10^{-3}\\) H"
+  },
+  {
+    "ref": "Solved Ex.12.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "MODERATE",
+    "stem": "Consider a uniformly wound solenoid having \\(N\\) turns and length \\(l\\). The core of the solenoid is air. Find the inductance of the solenoid of \\(N = 200\\), \\(l = 20\\) cm and cross-sectional area, \\(A = 5\\) cm\\(^2\\). Calculate the induced emf \\(e_{\\mathrm{L}}\\), if the current flowing through the solenoid decreases at a rate of 60 A/s.",
+    "solution": "The magnetic flux through each turn of area \\(A\\) in the solenoid is\n\n\\(\\phi_B = B \\cdot A = (\\mu_0 n i) \\cdot A\\)  \\((\\because\\) Magnetic field inside a solenoid is \\(B = \\mu_0 ni)\\)\n\n\\(= \\mu_0 (N/l) \\cdot i \\cdot A\\)  \\((\\because n\\) is the number of turns per unit length \\(= N/l)\\)\n\nWe know that the inductance \\((L)\\) of the solenoid can be written as\n\n\\(L = (N \\phi_B)/i\\)\n\nSubstituting the value of \\(\\phi_B\\), we get\n\n\\(L = (N/i) \\cdot \\{ \\mu_0 \\cdot (N/l) \\cdot i \\cdot A \\}\\)\n\n\\(L = \\mu_0 \\cdot (N^2/l) \\cdot A\\)\n\nInserting the given values of \\(N\\), \\(l\\) and \\(A\\), we find\n\n\\(L = (4\\pi \\cdot 10^{-7}\\,\\text{Tm}/A) \\cdot (200)^2 (5 \\cdot 10^{-4}\\,\\text{m}^2)/(20 \\cdot 10^{-4}\\,\\text{m})\\)\n\nor \\(L \\approx 0.1257\\) mH\n\nThe induced emf in the solenoid\n\n\\(e_{\\mathrm{L}} = -L\\,(\\mathrm{d}i/\\mathrm{d}t)\\)\n\n\\(e_{\\mathrm{L}} = -(0.126 \\cdot 10^{-3})\\,(-60\\ \\text{A/s}) = 7.543\\) mV"
+  },
+  {
+    "ref": "Solved Ex.12.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "EASY",
+    "stem": "The self-inductance of a closely wound coil of 200 turns is 10 mH. Determine the value of magnetic flux through the cross-section of the coil when the current passing through the coil is 4 mA.",
+    "solution": "Given :\n\nSelf-inductance of coil, \\(L = 10\\) mH,\n\nNumber of turns, \\(N = 200\\), and\n\nCurrent through the coil, \\(i = 4\\) mA\n\nThe total value of magnetic flux \\(\\phi\\) associated with the coil is,\n\n\\(\\phi = L\\,i\\)\n\n\\(= (10 \\times 10^{-3})\\ \\text{H} \\times (4 \\times 10^{-3})\\ \\text{A}\\)\n\n\\(= 4 \\times 10^{-5}\\) Wb\n\nThe flux per turn (or flux through the cross-section of the coil)\n\n\\(= \\dfrac{\\phi}{N}\\)\n\n\\(= \\left( \\dfrac{4 \\times 10^{-5}\\ \\text{Wb}}{200} \\right)\\)\n\n\\(= 2 \\times 10^{-7}\\) Wb"
+  },
+  {
+    "ref": "Solved Ex.12.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "HARD",
+    "stem": "Calculate the self-inductance of a coaxial cable of length \\(l\\) and carrying a current \\(I\\). The current flows down the inner cylinder with radius \\(a\\), and flows out of the outer cylinder with radius \\(b\\).",
+    "solution": "According to Ampere's law, the magnetic field \\((B)\\) between two cylinders at a distance \\(r\\) from the axis is given by\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi r}\\).\n\nThe magnetic field is zero elsewhere.\n\nWe also know that the magnetic energy density,\n\n\\(u_B = \\dfrac{B^2}{2\\mu_0} = \\dfrac{1}{2\\mu_0} \\left( \\dfrac{\\mu_0^2 I^2}{4\\pi^2 r^2} \\right) = \\dfrac{\\mu_0 I^2}{8\\pi^2 r^2}\\)\n\nEnergy stored in a cylindrical shell of length \\(l\\), radius \\(r\\) and thickness \\(\\mathrm{d}r\\) is given by\n\n\\(\\left( \\dfrac{\\mu_0 I^2}{8\\pi^2 r^2} \\right) \\times 2\\pi l r\\, \\mathrm{d}r = \\dfrac{\\mu_0 I^2 l}{4\\pi} \\left( \\dfrac{\\mathrm{d}r}{r} \\right)\\)\n\nIntegrating from \\(a\\) to \\(b\\), we get\n\n\\(W = \\dfrac{\\mu_0 I^2 l}{4\\pi} \\ln \\left( \\dfrac{b}{a} \\right)\\)\n\nMagnetic energy confined in an inductor \\((L)\\) carrying a current \\((I)\\) can also be written as \\(\\dfrac{1}{2} L I^2\\). Comparing the two expressions we find the inductance of coaxial cable as\n\n\\(L = \\dfrac{\\mu_0 l}{2\\pi} \\ln \\left( \\dfrac{b}{a} \\right)\\)"
+  }
+]

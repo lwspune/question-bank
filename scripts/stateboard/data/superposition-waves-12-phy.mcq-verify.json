@@ -1,0 +1,37 @@
+[
+  {
+    "id": "9910a463-946c-4458-b61c-59e3a693ffb5",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "A pipe closed at one end has a node at the closed end and an antinode at the open end, so its modes satisfy \\( L = (2p-1)\\dfrac{\\lambda}{4} \\) with \\( p = 1, 2, 3, \\ldots \\), i.e. only ODD harmonics are present.\n\nCount the nodes mode by mode, taking the closed end at \\( x = 0 \\):\n\n| mode | \\( L \\) | nodes in the pipe | frequency |\n|---|---|---|---|\n| fundamental | \\( \\lambda/4 \\) | 1 (at the closed end) | \\( n \\) |\n| next | \\( 3\\lambda/4 \\) | 2 | \\( 3n \\) |\n| next | \\( 5\\lambda/4 \\) | 3 | \\( 5n \\) |\n\nFor the third mode \\( \\lambda = \\dfrac{4L}{5} \\), and the displacement nodes lie at \\( x = 0,\\ \\dfrac{2L}{5},\\ \\dfrac{4L}{5} \\) — exactly THREE nodes, the next one at \\( \\dfrac{6L}{5} \\) falling outside the pipe.\n\nSo three nodes corresponds to the fifth harmonic, whose frequency is \\( 5 \\) times the fundamental.\n\nDiscrimination: (A) 2 and (C) 4 are even multiples, which a closed pipe cannot produce at all; (B) 3 is the mode with only TWO nodes. Only (D) survives.\n\n\\( \\therefore \\) the frequency is \\( 5 \\) times the fundamental frequency — option (D)."
+  },
+  {
+    "id": "49031513-8a4f-47d4-9ab6-60cca99d1f49",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "D",
+    "matches_current": true,
+    "solution": "For a pipe open at both ends the fundamental frequency is \\( n = \\dfrac{v}{2l} \\) (end correction neglected).\n\nWith \\( l_1 = 0.50 \\) m and \\( l_2 = 0.51 \\) m,\n\\( n_1 = \\dfrac{v}{2(0.50)} = \\dfrac{v}{1.00} \\) and \\( n_2 = \\dfrac{v}{2(0.51)} = \\dfrac{v}{1.02} \\).\n\nThe shorter pipe has the higher frequency, so the beat frequency is\n\\( \\Delta n = n_1 - n_2 = v\\left( \\dfrac{1}{1.00} - \\dfrac{1}{1.02} \\right) = v \\times \\dfrac{0.02}{1.02} \\).\n\nSetting \\( \\Delta n = 7 \\) Hz:\n\\( v = \\dfrac{7 \\times 1.02}{0.02} = 7 \\times 51 = 357 \\) m/s.\n\nDiscrimination — the beat frequency each option would give is \\( v \\times \\dfrac{0.02}{1.02} \\):\n(A) 307 m/s \\( \\to 6.02 \\) Hz, (B) 327 m/s \\( \\to 6.41 \\) Hz, (C) 350 m/s \\( \\to 6.86 \\) Hz, (D) 357 m/s \\( \\to 7.00 \\) Hz. Only (D) gives exactly 7 beats per second.\n\n\\( \\therefore \\) the speed of sound is \\( 357 \\) m/s — option (D)."
+  },
+  {
+    "id": "c0b2b73b-96f4-45ac-b16f-f5ead7916841",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "solution": "By the law of tension, the fundamental frequency of a stretched wire is \\( n = \\dfrac{1}{2l}\\sqrt{\\dfrac{T}{m}} \\), so with the vibrating length and the linear density unchanged \\( n \\propto \\sqrt{T} \\).\n\nThe tension is increased by 25%, so \\( T' = 1.25\\,T \\), and\n\\( \\dfrac{n'}{n} = \\sqrt{\\dfrac{T'}{T}} = \\sqrt{1.25} = 1.118 \\approx 1.12 \\).\n\nDiscrimination: (A) 0.8 is a DECREASE, whereas raising the tension must raise the frequency; (C) 1.25 is the tension ratio itself, which would require \\( n \\propto T \\); (D) 1.56 is \\( (1.25)^2 \\). Only (B) equals \\( \\sqrt{1.25} \\).\n\n\\( \\therefore \\) the frequency becomes \\( 1.12 \\) times the original — option (B)."
+  },
+  {
+    "id": "eb0538d6-aa5f-42b7-8f97-1dd7608dfcf0",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "A progressive (travelling) wave must have its phase in the combined form \\( (kq \\mp \\omega t) \\), where \\( q \\) is the coordinate ALONG WHICH the wave travels. For travel along the \\( y \\)-axis the phase must therefore contain \\( ky \\) together with \\( \\omega t \\) inside a single sine or cosine.\n\nOption (A) \\( x = A \\sin(ky - \\omega t) \\): the phase is \\( ky - \\omega t \\), so a point of constant phase moves with \\( y = \\dfrac{\\omega}{k}t + \\) constant — the wave advances along \\( +y \\). The displacement \\( x \\) is perpendicular to \\( y \\), so this is a transverse wave travelling along the \\( y \\)-axis.\n\nDiscrimination:\n- (B) \\( y = A \\sin(kx - \\omega t) \\) — the phase depends on \\( x \\), so this wave travels along the \\( x \\)-axis, not the \\( y \\)-axis.\n- (C) \\( y = A \\sin(ky)\\cos(\\omega t) \\) and (D) \\( y = A \\cos(ky)\\sin(\\omega t) \\) — in both, the space and time terms are SEPARATE factors. That is the form of a stationary wave (compare Eq. 6.12 of this chapter, \\( y = 2a\\cos\\dfrac{2\\pi x}{\\lambda}\\sin 2\\pi nt \\)): the profile does not advance, it only changes amplitude in place, and it has permanent nodes. Neither represents a travelling wave.\n\n\\( \\therefore \\) option (A) represents a wave travelling along the \\( y \\)-axis."
+  },
+  {
+    "id": "c324d669-9262-4d4e-9468-f521cf3fdf21",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "solution": "At a FIXED end the string cannot move, so a node forms there. At a FREE end the string is completely free to move, so an antinode forms there.\n\nThe distance between a node and the adjacent antinode is \\( \\dfrac{\\lambda}{4} \\), and successive nodes and antinodes then alternate every \\( \\dfrac{\\lambda}{2} \\). Hence the possible lengths are\n\\( L = \\dfrac{\\lambda}{4},\\ \\dfrac{3\\lambda}{4},\\ \\dfrac{5\\lambda}{4},\\ \\ldots \\)\ni.e. \\( L = (2p-1)\\dfrac{\\lambda}{4} \\), \\( p = 1, 2, 3, \\ldots \\) — an ODD integral multiple of \\( \\dfrac{\\lambda}{4} \\).\n\nDiscrimination: an odd multiple of \\( \\dfrac{\\lambda}{2} \\) (B), an odd multiple of \\( \\lambda \\) (C) and an even multiple of \\( \\lambda \\) (D) are all integral multiples of \\( \\dfrac{\\lambda}{2} \\), and every such length puts the SAME kind of point (node or antinode) at both ends. None of them can place a node at one end and an antinode at the other.\n\n\\( \\therefore \\) the length must be an odd integral multiple of \\( \\dfrac{\\lambda}{4} \\) — option (A)."
+  }
+]
