@@ -1,0 +1,31 @@
+[
+  {
+    "ref": "Solved Ex.13.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Propagation of EM Waves",
+    "difficulty": "EASY",
+    "stem": "A radar has a power of 10 kW and is operating at a frequency of 20 GHz. It is located on the top of a hill of height 500 m. Calculate the maximum distance upto which it can detect object located on the surface of the Earth. (Radius of Earth = \\( 6.4 \\times 10^{6} \\) m)",
+    "solution": "Maximum distance (range) \\( = \\)\n\\( d = \\sqrt{2Rh} \\)\n\\( = \\sqrt{2 \\times (6.4 \\times 10^{6}) \\times 500}\\ \\text{m} \\)\n\\( = 8 \\times 10^{4} = 80\\ \\text{km} \\),\nwhere \\( R \\) is radius of the Earth and \\( h \\) is the height of the radar above Earth's surface.",
+    "_note": "The stated power (10 kW) and frequency (20 GHz) are not used and are not needed — the range depends only on R and h. The book's own solution uses neither. Transcribed as printed."
+  },
+  {
+    "ref": "Solved Ex.13.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Propagation of EM Waves",
+    "difficulty": "MODERATE",
+    "stem": "If the height of a TV transmitting antenna is 128 m, how much square area can be covered by the transmitted signal if the receiving antenna is at the ground level? (Radius of the Earth = 6400 km)",
+    "solution": "[Textbook misprint: the substitution line prints \\(3.14 \\times (40)^{2}\\), which evaluates to \\(5024\\), while the very next line prints \\(5144.58\\) — the CORRECT value, which follows from \\(d^{2} = 2Rh = 1638.4\\) km\\(^{2}\\) rather than from a distance rounded to 40. The example's final answer is right; only the substitution was rounded. The same line also sets the unit as \"k4m\\(^{2}\\)\", a garbled km\\(^{2}\\), confirmed on the printed page rather than inferred from the text layer.]\n\nRange \\( = d = \\sqrt{2Rh} \\)\n\\( = \\sqrt{2(6400 \\times 10^{3})(128)} \\)\n\\( = \\sqrt{16.384 \\times 10^{5} \\times 10^{3}} \\)\n\\( = \\sqrt{16.384 \\times 10^{8}} \\)\n\\( = 4.047 \\times 10^{4} \\)\n\\( = 40.470\\ \\text{km} \\)\nArea covered \\( = \\pi d^{2} = 3.14 \\times (40)^{2} \\)\n\\( = 5144.58\\ \\text{k4m}^{2} \\)",
+    "_note": "TWO printed defects, both transcribed as printed rather than repaired. (1) INTERNAL INCONSISTENCY in the last two lines: the substitution 3.14 x (40)^2 evaluates to 5024, not the 5144.58 the book prints. The printed value 5144.58 is the CORRECT one and follows from d^2 = 2Rh = 1638.4 km^2 (3.14 x 1638.4 = 5144.58); the book rounded d to 40 in the substitution line only. (2) The unit is printed as 'k4m^2' — a garbled 'km^2' (verified on the rendered page at 9x zoom, it really is set as k4m2). The final answer 5144.58 km^2 is right; only the substitution line and the unit are wrong. Candidate for apply-solved-fixes.ts + an errata bracket."
+  },
+  {
+    "ref": "Solved Ex.13.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Propagation of EM Waves",
+    "difficulty": "MODERATE",
+    "stem": "The height of a transmitting antenna is 68 m and the receiving antenna is at the top of a tower of height 34 m. Calculate the maximum distance between them for satisfactory transmission in line of sight mode. (radius of Earth = 6400 km)",
+    "solution": "\\( h_{\\text{t}} = 68\\ \\text{m} \\), \\( h_{\\text{r}} = 34\\ \\text{m} \\), \\( R = 6400\\ \\text{km} = 6.4 \\times 10^{6}\\ \\text{m} \\)\n\n\\( d_{\\max} = \\sqrt{2Rh_{\\text{t}}} + \\sqrt{2Rh_{\\text{r}}} \\)\n\\( = \\sqrt{2 \\times 6.4 \\times 10^{6} \\times 68} + \\sqrt{2 \\times 6.4 \\times 10^{6} \\times 34} \\)\n\\( = \\sqrt{870} \\times 10^{3} + \\sqrt{435} \\times 10^{3} \\)\n\\( = 29.5 \\times 10^{3} + 20.9 \\times 10^{3} \\)\n\\( = 50.4 \\times 10^{3}\\ \\text{m} \\)\n\\( = 50.4\\ \\text{km} \\)"
+  }
+]

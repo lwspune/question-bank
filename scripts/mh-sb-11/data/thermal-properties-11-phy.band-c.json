@@ -1,0 +1,48 @@
+[
+  {
+    "ref": "Solved Ex.7.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "HARD",
+    "stem": "When 0.1 kg of ice at 0 \\(^\\circ\\)C is mixed with 0.32 kg of water at 35 \\(^\\circ\\)C in a container. The resulting temperature of the mixture is 7.8 \\(^\\circ\\)C. Calculate the heat of fusion of ice (\\(s_{water} = 4186\\) J kg\\(^{-1}\\) K\\(^{-1}\\)).",
+    "solution": "[Textbook misprint: three slips in one worked example, none of which changes its result. It prints \"Head lost\" for \"Heat lost\"; it gives the specific heat of water in units of kg K\\(^{-1}\\), which is missing its energy term; and its intermediate value is printed as \\(3316.9864\\) where the division gives \\(331698.64\\) — exactly one hundred times larger, and consistent with the example's own correct final answer of \\(3.31698 \\times 10^{5}\\) J/kg.]\n\nGiven\n\n\\(m_{\\text{ice}} = 0.1\\) kg\n\n\\(m_{\\text{water}} = 0.32\\) kg\n\n\\(T_{\\text{ice}} = 0\\ ^\\circ\\)C\n\n\\(T_{\\text{water}} = 35\\ ^\\circ\\)C\n\n\\(T_{F} = 7.8\\ ^\\circ\\)C\n\n\\(s_{\\text{water}} = 4186\\) J kg\\(^{-1}\\) K\\(^{-1}\\)\n\nHeat lost by water\n\n\\(= m_{\\text{water}}\\, s_{\\text{water}}(T_{F} - T_{\\text{water}})\\)\n\n\\(= 0.32\\ \\text{kg} \\times 4186\\ \\text{J} \\times (7.8 - 35)\\ ^\\circ\\text{C}\\)\n\n\\(= -36434.944\\) J (here negative sign indicates loss of heat energy)\n\nHeat required to melt ice \\(= m_{\\text{ice}}L_{f} = 0.1 \\times L_{f}\\)\n\nHeat required to raise temperature of water (from ice) to final temperature\n\n\\(= m_{\\text{ice}}\\, s\\,(T - T_{\\text{ice}})\\)\n\n\\(= 0.1\\ \\text{kg} \\times 4186\\ \\text{J} \\times (7.8 - 0)\\ ^\\circ\\text{C}\\)\n\n\\(= 3265.08\\) J\n\nHeat lost = Heat gained\n\n\\(36434.944 = 0.1L_{f} + 3265.08\\)\n\n\\(L_{f} = \\dfrac{36434.944 - 3265.08}{0.1} = 3316.9864\\)\n\n\\(= 3.31698 \\times 10^{5}\\) J kg\\(^{-1}\\)",
+    "_note": "Three printed slips in the book's own solution, none of which changes the answer: it writes 'Head lost = Heat gained' for 'Heat lost'; it states the units of s_water in the Given block as 'kg K^-1' instead of 'J kg^-1 K^-1'; and it prints the intermediate value as 3316.9864 where the division actually gives 331698.64, immediately before writing the correct final 3.31698 x 10^5 J/kg (the printed intermediate is the answer divided by 100). Arithmetic otherwise verified: 0.32 x 4186 x 27.2 = 36434.944 and 0.1 x 4186 x 7.8 = 3265.08."
+  },
+  {
+    "ref": "Solved Ex.7.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "What is the rate of energy loss in watt per square metre through a glass window 5 mm thick if outside temperature is \\(-20\\ ^\\circ\\)C and inside temperature is 25 \\(^\\circ\\)C? (\\(k_{\\text{glass}} = 1\\) W/m K)",
+    "solution": "Given\n\n\\(k_{\\text{glass}} = 1\\) W/m K\n\n\\(T_{1} = 25\\ ^\\circ\\)C\n\n\\(T_{2} = -20\\ ^\\circ\\)C\n\n\\(x = 5\\) mm \\(= 5 \\times 10^{-3}\\) m\n\n\\(\\therefore T_{1} - T_{2} = 25 - (-20)\\ ^\\circ\\text{C} = 45\\) K\n\nWe have \\(P_{\\text{cond}} = \\dfrac{Q}{t} = kA\\dfrac{T_{1} - T_{2}}{x}\\).\n\n\\(\\therefore\\) The rate of energy loss per square metre is\n\n\\(\\dfrac{P_{\\text{cond}}}{A} = k\\dfrac{T_{1} - T_{2}}{x}\\)\n\n\\(= 1\\ \\text{W m}^{-1}\\text{K}^{-1} \\times 45\\ \\text{K} / (5 \\times 10^{-3}\\ \\text{m})\\)\n\n\\(= 9 \\times 10^{3}\\) W/m\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.7.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "The temperature difference between two sides of an iron plate, 2 cm thick, is 10 \\(^\\circ\\)C. Heat is transmitted through the plate at the rate of 600 kcal per minute per square metre at steady state. Find the thermal conductivity of iron.",
+    "solution": "Given\n\n\\(\\dfrac{Q}{At} = 600\\ \\text{kcal/min m}^{2} = \\dfrac{600}{60} = 10\\ \\text{kcal/s m}^{2}\\)\n\n\\(x = 2\\ \\text{cm} = 2 \\times 10^{-2}\\) m\n\n\\(T_{1} - T_{2} = 10\\ ^\\circ\\)C\n\nFrom Eq. (7.34), we have\n\n\\(Q = \\dfrac{kA(T_{1} - T_{2})t}{x}\\)\n\n\\(\\therefore k = \\dfrac{Q}{At}\\dfrac{x}{T_{1} - T_{2}}\\)\n\n\\(= \\dfrac{10\\ \\text{kcal/s m}^{2} \\times 2 \\times 10^{-2}\\ \\text{m}}{10\\ ^\\circ\\text{C}}\\)\n\n\\(= 0.02\\) kcal/m s \\(^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "HARD",
+    "stem": "Calculate the rate of loss of heat through a glass window of area 1000 cm\\(^{2}\\) and thickness of 4 mm, when temperature inside is 27 \\(^\\circ\\)C and outside is \\(-5\\ ^\\circ\\)C. Coefficient of thermal conductivity of glass is 0.022 cal/ s cm \\(^\\circ\\)C.",
+    "solution": "Given\n\n\\(A = 1000\\ \\text{cm}^{2} = 1000 \\times 10^{-4}\\ \\text{m}^{2}\\)\n\n\\(k = 0.022\\ \\text{cal/ s cm}\\ ^\\circ\\text{C} = 0.022 \\times 10^{2}\\ \\text{cal/m}\\ ^\\circ\\text{C}\\)\n\n\\(x = 4\\ \\text{mm} = 0.4 \\times 10^{-2}\\) m\n\n\\(T_{1} = 27\\ ^\\circ\\)C, \\(T_{2} = -5\\ ^\\circ\\)C\n\nFrom Eq. (7.34), we have\n\n\\(Q = \\dfrac{kA(T_{1} - T_{2})t}{x}\\)\n\n\\(\\therefore \\dfrac{Q}{t} = \\dfrac{kA(T_{1} - T_{2})}{x}\\)\n\n\\(= \\dfrac{0.022 \\times 10^{2} \\times 1000 \\times 10^{-4} \\times (27 - (-5))}{0.4 \\times 10^{-2}}\\)\n\n\\(= 1.76 \\times 10^{3}\\ \\text{cal/s} = 1.76\\ \\text{kcal/s}\\)"
+  },
+  {
+    "ref": "Solved Ex.7.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "MODERATE",
+    "stem": "A metal sphere cools at the rate of 1.6 \\(^\\circ\\)C/min when its temperature is 70 \\(^\\circ\\)C. At what rate will it cool when its temperature is 40 \\(^\\circ\\)C. The temperature of surroundings is 30 \\(^\\circ\\)C.",
+    "solution": "Given\n\n\\(T_{1} = 70\\ ^\\circ\\)C\n\n\\(T_{2} = 40\\ ^\\circ\\)C\n\n\\(T_{0} = 30\\ ^\\circ\\)C\n\n\\(\\left(\\dfrac{dT}{dt}\\right)_{1} = 1.6\\ ^\\circ\\)C/min\n\nAccording to Newton's law of cooling, if C is the constant of proportionality\n\n\\(\\left(\\dfrac{dT}{dt}\\right)_{1} = C(T_{1} - T_{0})\\)\n\nor, \\(1.6 = C(70 - 30)\\)\n\n\\(\\therefore C = \\dfrac{1.6}{40} = 0.04\\) /min\n\nAlso \\(\\left(\\dfrac{dT}{dt}\\right)_{2} = C(T_{2} - T_{0})\\)\n\n\\(= 0.04(40 - 30) = 0.4\\ ^\\circ\\)C/min\n\nThus the rate of cooling drops by a factor of four when the difference in temperature of the metal sphere and its surroundings drops by a factor of four."
+  }
+]
