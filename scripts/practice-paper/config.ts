@@ -5086,6 +5086,54 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
     createPaper: false,
   },
+
+  // LWS "OCEANOGRAPHY - Test 1" — a 40-q single-topic Geography test, born-digital
+  // .docx with a clean text layer (no vision pass needed) and NO printed answer key,
+  // so every answer is DERIVED. Semantic dedup vs the 64-row Oceanography chapter:
+  // 21 new / 18 dup / 1 flawed. The 18 dups are a strong control rather than waste —
+  // all 18 stored bank keys independently AGREE with the fresh derivation (16 letter-
+  // for-letter; Q34 and Q37 confirmed on option CONTENT because the bank asks them in
+  // a different form, and Q2 confirms by inverting: the bank's statement 1 is the
+  // positive form keyed D=all-four, this paper prints it negated, so B=2,3,4 follows).
+  //
+  // Q19 (west-to-east sequence of the Mediterranean/Black/Caspian/Aral) is the one
+  // record that is NOT Oceanography — it is a water-bodies question and files under
+  // World and Human Geography, hence multi-chapter mode + a per-record `chapter`.
+  // Filing it under a sea-floor subtopic would pollute the chapter a teacher filters by.
+  //
+  // Salinity / density / temperature records go to "Tides and Ocean Movements": that is
+  // the established home for them in this chapter (the bank already files the seawater-
+  // density, thermocline and salinity-vs-density rows there), NOT a judgement call made
+  // here. Following it keeps each new row co-located with its own duplicate.
+  //
+  // Q8 is `flawed`: the printed paper gives that match-list NO options at all and prints
+  // its three rows already correctly paired. The four code options were AUTHORED during
+  // ingest (user's call) so the question is answerable and OMR Q-numbering is preserved.
+  // Being authored-by-us, it stays PRIVATE forever — it backs the paper, never the bank.
+  "ocean-test-1": {
+    slug: "ocean-test-1",
+    title: "NDA GAT — Oceanography Test 1 (40 Q)",
+    recordsFile: "ocean-test-1.records.json",
+    outName: "Tags_NDA_Oceanography_Test_1",
+    sourceFile: "OCEANOGRAPHY - Test 1.docx",
+    subjectName: "Geography",
+    chapters: {
+      Oceanography: [
+        "Marine Ecosystems — Coral Reefs",
+        "Ocean Currents",
+        "Ocean Waves and Sea-Floor Topography",
+        "Tides and Ocean Movements",
+      ],
+      "World and Human Geography": ["World — Rivers, Canals and Water Bodies"],
+    },
+    pyqNote:
+      "NDA GAT practice — LWS Oceanography Test 1 (40 Q; answers derived, this source prints no key)",
+    examName: "NDA",
+    section: { key: "ocean-test-1", label: "Oceanography Test 1" },
+    bankAdd: true,
+    createPaper: true,
+  },
+
   // --- NDA GAT MOCK L3 (LWS, Sep 2026) --------------------------------------
   // 150 q on the standard GAT shape: Section A English 1-50, Section B general
   // knowledge 51-100, Section C science 101-150. Born-digital DOCX with a clean
