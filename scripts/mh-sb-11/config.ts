@@ -119,6 +119,23 @@ const PHYSICS_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
 const phy11 = (p: string) => join(PHYSICS_ROOT, "11th_Topics", p);
 
+// ── CHEMISTRY (added 2026-09-03) ─────────────────────────────────────────────
+// A THIRD subject on this exam. 16 pre-split per-chapter PDFs (whole book 284pp);
+// chapter names match the `syllabus_concepts` MH-State-Board XI Chemistry spine
+// EXACTLY, all 16 — that spine was extracted from these very PDFs.
+// The volume-level facts (no ANSWERS section, the five printed answer forms, the
+// vision-only verdict) are IDENTICAL to Std XII and are documented in full in
+// scripts/stateboard/config.ts — read that comment before working a chapter here.
+//
+// The one thing that DIFFERS between the volumes, and it decides your refs:
+// ⚠ Std XI numbers its exercise items with UPPERCASE LETTERS (`A.` `B.` `C.`),
+//   unanimously across all 16 chapters, where Std XII uses roman numerals.
+//   Options within an MCQ are lowercase (`a.` `b.` `c.` `d.`).
+//   Worked examples are `Problem N.M` + `Solution :` (not Physics' `Example N.M`).
+const CHEMISTRY_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Book";
+const chem11 = (p: string) => join(CHEMISTRY_ROOT, "11th", p);
+
 /**
  * Model credited on an answer we derived, written to `questions.derived_model`
  * (with `derived_at`) for every AUTHORED row of a `derivedAnswers` chapter.
@@ -1534,6 +1551,62 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Mechanical Equilibrium",
       "Centre of Mass",
       "Centre of Gravity",
+    ],
+  },
+
+  // ══ CHEMISTRY ═══════════════════════════════════════════════════════════
+  // ── Ch.1 Some Basic Concepts of Chemistry. 12pp — the smallest chapter in the
+  //    volume. PILOT CHAPTER, chosen as the EASY half of the lane: it carries the
+  //    densest inline key in Std XI and so exercises the step-6 gate for real,
+  //    where its sibling pilot (Std XII Amines) has no gate at all.
+  //
+  //    MEASURED STRUCTURAL MAP (0-based page indices):
+  //      Worked examples: Problem 1.1 (p06), 1.2/1.3/1.4 (p07), 1.5 (p08),
+  //      1.6/1.7 (p09) — SEVEN, numbered 1.1–1.7 with no gaps.
+  //    ⚠ SEVEN `Problem` LABELS AGAINST SIX LINE-START `Solution :` LABELS, and
+  //      the gap is on p07, which carries three problems and two solution labels.
+  //      Establish what caused it from the page and say so. The Physics lane's
+  //      measured causes were a plural `Solutions:`, a worked example with no
+  //      label at all, and an `Example` hit that was only a prose cross-reference.
+  //      Treat the `Problem N.M` count as PRIMARY.
+  //      Note p08's `Ans : Number of moles = 0.0933 mol` sits INSIDE the
+  //      solved-example region — it belongs to Problem 1.5, and is NOT an
+  //      exercise answer. Do not let it inflate the keyed count.
+  //
+  //      Exercise opens p10 and runs to p11. Blocks:
+  //        `1. Choose the most correct option` (A–I, 9 MCQs)
+  //        `2. Answer the following questions` (A–I)
+  //        `3. Give one example of each`       (A–D)
+  //        `4. Solve problems :`               (A onward, spilling to p11)
+  //        `5. Explain`                        (p11)
+  //    ⚠ BLOCK 4 SPANS THE PAGE BREAK and is the chapter's whole numerical half.
+  //      Cut your bands at BLOCK boundaries, never at the page break.
+  //      ~17 exercise items carry an inline answer, in at least four of the five
+  //      printed forms — `(Ans. : 1:1)`, `(Ans : 6.022 x 1020)`, `(Ans. :10.81)`,
+  //      `(Ans. i. 2 mol ii. 0.25 mol)`. That is the real gate; report the KEYED
+  //      count, never the chapter total.
+  //
+  //    Subtopics are the book's own §1.x headings. §1.1 Introduction is
+  //    question-less prose and is deliberately NOT one — an empty subtopic ships
+  //    a /browse filter that returns nothing. 1.5 and 1.6 are merged because each
+  //    is a single thin section. Diff the committed `by subtopic` tally against
+  //    this list BEFORE --apply and report any that came out empty.
+  "basic-concepts-11-chem": {
+    id: "basic-concepts-11-chem",
+    chapterName: "Some Basic Concepts of Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Some_Basic_Concepts.pdf",
+    pdf: chem11("01. Some Basic Concepts of Chemistry.pdf"),
+    derivedAnswers: true, // no ANSWERS section in either Chemistry volume
+    note: "Maharashtra State Board (Class 11) — Some Basic Concepts of Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Nature of Matter and Its Classification",
+      "Properties of Matter and Measurement",
+      "Laws of Chemical Combination",
+      "Avogadro Law and Dalton's Atomic Theory",
+      "Atomic and Molecular Masses",
+      "Mole Concept and Molar Mass",
+      "Moles and Gases",
     ],
   },
 };

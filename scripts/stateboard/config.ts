@@ -122,6 +122,51 @@ const PHYSICS_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
 const phy12 = (p: string) => join(PHYSICS_ROOT, "12th_Topics", p);
 
+// ── CHEMISTRY (added 2026-09-03) ─────────────────────────────────────────────
+// A THIRD subject on this exam, again from its own publisher folder. 16 pre-split
+// per-chapter PDFs (whole book 364pp), chapter names matching the
+// `syllabus_concepts` MH-State-Board XII Chemistry spine EXACTLY, all 16 — that
+// spine was extracted from these very PDFs, so chapter naming is already settled.
+//
+// ⚠ NO ANSWERS SECTION IN EITHER CHEMISTRY VOLUME. Measured across all 648 pages
+// of both books: every "ANSWERS" hit is instruction prose ("Answer the
+// following"), and the volumes end on the periodic table (XI) and chapter-16
+// content (XII). Same verdict as Physics — do NOT hunt for a missing `answersPdf`.
+//
+// ⚠ THE INLINE KEY IS THIN, UNEVEN, AND PRINTED FIVE DIFFERENT WAYS. Roughly 124
+// of ~910 exercise items carry a printed answer (~14%, against Physics' ~38%),
+// and it is CONCENTRATED in the numerical chapters — Thermodynamics 24, Kinetics
+// 9, Solid State 4, Electrochemistry 4, Solutions 3. THE ORGANIC AND DESCRIPTIVE
+// CHAPTERS HAVE ESSENTIALLY ZERO, so for most of this volume the step-6 gate
+// cannot run at all and the mh-sb-9 humanities regime carries the weight.
+// The five printed forms, all seen live:
+//     (Ans. : x)    (Ans: x)    (Ans.: x)    bare `Ans. : x`
+//     ...and a BARE PARENTHESIS with no token at all — Chemical Kinetics prints
+//     `(28.7 min)`, `(54.66 kJ/mol)`. A scan for `[Ans` returns 0 for the whole
+//     book; a scan for `(Ans` returns 84 and still misses every bare-paren one.
+// Counting parenthesised values CHAPTER-WIDE instead of inside the exercise is
+// the opposite error and returns garbage — it matches `Fig. 1.1`, the date
+// `(1743-1794)` and the electron configuration `(2, 8, 8)`. Scope to the exercise.
+//
+// ⚠ VISION-ONLY, and for a STRONGER reason than any other book in this project.
+// Measured across both volumes: SUBSCRIPTS occur ZERO times, SUPERSCRIPTS ZERO,
+// charge signs ZERO — in a chemistry book. Reaction arrows: 34 in XI, 5 in XII.
+// So `H₂SO₄` extracts as `H2SO4`, `SO₄²⁻` silently loses its charge entirely, and
+// `6.022 × 10²⁰` extracts as `6.022 x 1020` — a well-formed, plausible, and
+// completely different number. In the organic chapters a reaction scheme extracts
+// as a bag of disconnected fragments (`NH2 / NO2 / Conc. HNO3 / 288 K`) with no
+// structure, no arrows and no ordering: there the text layer is not merely lossy,
+// it is actively misleading. dump-text.ts is for block boundaries ONLY.
+//
+// ⚠ ITEM LABELS DIFFER BY VOLUME. Std XII numbers its exercise items with ROMAN
+// numerals (i. ii. iii.) in 13 of 16 chapters, where Std XI uses UPPERCASE
+// letters (A. B. C.) in all 16. Ch.07, Ch.11 and Ch.15 measure MIXED and must be
+// confirmed per chapter rather than assumed. Worked examples are labelled
+// `Problem N.M` + `Solution :` (not Physics' `Example N.M`).
+const CHEMISTRY_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Book";
+const chem12 = (p: string) => join(CHEMISTRY_ROOT, "12th", p);
+
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.1 Mathematical Logic (12th, Part 1). The hardest
   //    case: dense logic symbols + truth-table solutions (vision → pipe-tables)
@@ -951,6 +996,52 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Bipolar Junction Transistor",
       "Transistor as an Amplifier",
       "Logic Gates",
+    ],
+  },
+
+  // ══ CHEMISTRY ═══════════════════════════════════════════════════════════
+  // ── Ch.13 Amines. 16pp. PILOT CHAPTER, and chosen precisely because it is the
+  //    HARD half of this lane rather than the easy one: scheme-heavy organic, and
+  //    ZERO printed answers anywhere in its exercise (measured, not assumed — the
+  //    two `answer` hits on p07/p13 are prose, "Are the pKb values…" and
+  //    "answer. Solution :"). So the step-6 gate CANNOT run on this chapter at
+  //    all and `dump-book-answers.ts` will correctly dump 0 keyed rows. Its point
+  //    is to measure what the no-gate, structure-heavy case actually costs before
+  //    ~14 more organic chapters are committed to.
+  //
+  //    MEASURED STRUCTURAL MAP (0-based page indices):
+  //      Exercise opens p14 and runs to p15 (the last two pages).
+  //      Blocks: `1. Choose the most correct option` (i–x, 40 options = 10×4),
+  //              `2. Answer in one sentence` (i–x), `3. Answer the following`
+  //              (i–xi), `4. Answer the following.` (i–viii).
+  //      Items are ROMAN here, not the uppercase letters Std XI uses.
+  //    ⚠ WORKED EXAMPLES NEED RECONCILING BEFORE YOU TRANSCRIBE. `Problem 13.1`
+  //      is printed on BOTH p03 and p13 — either the book numbers two problems
+  //      identically, or one hit is a prose cross-reference. A third worked item
+  //      sits on p04 carrying a `Solution :` label and NO `Problem` label at all.
+  //      So the honest count is somewhere in 2–3 and you must establish it from
+  //      the page. A missing solved example is invisible to every gate downstream.
+  //
+  //    Subtopics are the book's own §13.x headings, with the thin 13.8
+  //    (arenesulfonyl chloride / Hinsberg) folded into Chemical Properties since
+  //    it is a reaction OF amines. Diff the committed `by subtopic` tally against
+  //    this list BEFORE --apply and report any that came out empty.
+  "amines-12-chem": {
+    id: "amines-12-chem",
+    chapterName: "Amines",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Amines.pdf",
+    pdf: chem12("13. Amines.pdf"),
+    derivedAnswers: true, // no ANSWERS section in either Chemistry volume
+    note: "Maharashtra State Board (Class 12) — Amines (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification and Nomenclature of Amines",
+      "Preparation of Amines",
+      "Physical Properties of Amines",
+      "Basicity of Amines",
+      "Chemical Properties of Amines",
+      "Arene Diazonium Salts",
+      "Electrophilic Aromatic Substitution in Aromatic Amines",
     ],
   },
 };
