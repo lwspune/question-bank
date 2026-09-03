@@ -1,12 +1,17 @@
 /**
  * Write the MCQ `solution` text that this pipeline has no path for.
  *
- * `apply-solutions.ts` here reads only `*.solutions.json` and writes only
- * SUBJECTIVE rows — it has no MCQ branch at all (its stateboard sibling does).
- * So an MCQ row's solution is never populated: 132 of the 203 MCQ rows across the
- * 18 shipped Maths chapters are `solution IS NULL`. Editing `solution` alone is
- * content_hash-safe, and the README's own guidance for rows outside a solutions
- * file is a direct scoped UPDATE.
+ * `apply-solutions.ts` DOES have an MCQ branch, but until 2026-09-03 it read a
+ * `solution` field while `dump-mcq.ts`'s printed contract asked the verifier for
+ * `why` — so a file written to the contract updated nothing and reported
+ * "updated solution on 0 mcq row(s)", which reads like "there were none". That
+ * silent no-op is why 132 of the 203 MCQ rows across the 18 shipped Maths
+ * chapters are `solution IS NULL`. Both halves now agree, so that path works
+ * too; this script remains the explicit, guarded one to reach for, and is what
+ * `dump-mcq.ts` names.
+ *
+ * Editing `solution` alone is content_hash-safe, and the README's own guidance
+ * for rows outside a solutions file is a direct scoped UPDATE.
  *
  * Guards: update by PRIMARY KEY, require each to match exactly one row, verify
  * the row belongs to this chapter's source_file first, and refuse to overwrite a

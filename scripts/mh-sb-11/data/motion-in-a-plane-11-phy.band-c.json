@@ -1,0 +1,12 @@
+[
+  {
+    "ref": "Solved Ex.3.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Projectile Motion",
+    "difficulty": "MODERATE",
+    "stem": "A stone is thrown with an initial velocity components of 20 m/s along the vertical, and 15 m/s along the horizontal direction. Determine the position and velocity of the stone after 3 s. Determine the maximum height that it will reach and the total distance travelled along the horizontal on reaching the ground. (Assume \\(g = 10\\) m/s\\(^2\\))",
+    "solution": "The initial velocity of the stone in x-direction \\(= u \\cos\\theta = 15\\) m/s and in y-direction \\(= u \\sin\\theta = 20\\) m/s.\n\nAfter 3 s, \\(v_x = u \\cos\\theta = 15\\) m/s and \\(v_y = u \\sin\\theta - gt = 20 - 10(3) = -10\\) m/s \\(= 10\\) m/s downwards.\n\n\\(\\therefore v = \\sqrt{v_x^2 + v_y^2} = \\sqrt{15^2 + 10^2}\\)\n\n\\(= \\sqrt{225 + 100} = \\sqrt{325}\\)\n\n\\(= 18.03\\) m/s\n\n\\(\\tan\\alpha = v_y / v_x = 10/15 = 2/3\\)\n\n\\(\\therefore \\alpha = \\tan^{-1}(2/3) = 33^\\circ\\ 41'\\) with the horizontal.\n\n\\(s_x = (u \\cos\\theta)\\, t = 15 \\times 3 = 45\\) m,\n\n\\(s_y = (u \\sin\\theta)\\, t - \\frac{1}{2} gt^2 = 20 \\times 3 - 5(3)^2 = 15\\) m.\n\nThus the stone will be at a distance 45 m along horizontal and 15 m along vertical direction from the initial position after time 3 s. The velocity is 18.03 m/s making an angle \\(33^\\circ\\ 41'\\) with the horizontal.\n\nThe maximum vertical distance travelled is given by \\(H = (u \\sin\\theta)^2/(2g) = 20^2/(2 \\times 10) = 20\\) m\n\nMaximum horizontal distance travelled\n\n\\(R = 2.u_x.u_y/g = 2(15)(20)/10 = 60\\) m",
+    "_note": "Printed derivation checked for internal consistency and it is CLEAN — every printed value reproduces exactly: sqrt(325) = 18.0278 -> 18.03, tan^-1(2/3) = 33.690 deg = 33 deg 41.4 min -> 33 deg 41', s_x = 45, s_y = 60 - 45 = 15, H = 400/20 = 20, R = 600/10 = 60. Two NOTATIONAL observations only (not arithmetic errors, transcribed verbatim, not repaired): (1) the book writes 'v_y = ... = -10 m/s = 10 m/s downwards', equating a signed component to a magnitude-plus-direction; (2) the stem's grammar slip 'an initial velocity components' is the book's own. Layout note: the last line of this solution ('Maximum horizontal distance travelled / R = ...= 60 m') is printed at the TOP OF THE RIGHT COLUMN of p-11, not at the foot of the left column; a left-column-only read would truncate the solution before R."
+  }
+]

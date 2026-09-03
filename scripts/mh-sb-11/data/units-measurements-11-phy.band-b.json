@@ -1,0 +1,30 @@
+[
+  {
+    "ref": "Solved Ex.1.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Errors in Measurements",
+    "difficulty": "MODERATE",
+    "stem": "The radius of a sphere measured repeatedly yields values 5.63 m, 5.54 m, 5.44 m, 5.40 m and 5.35 m. Determine the most probable value of radius and the mean absolute, relative and percentage errors.",
+    "solution": "Most probable value of radius is its arithmetic mean\n\\(= \\dfrac{5.63 + 5.54 + 5.44 + 5.40 + 5.35}{5}\\) m\n\\(= 5.472\\) m\nMean absolute error\n\\(= \\dfrac{1}{5} \\left\\{ |5.63 - 5.472| + |5.54 - 5.472| + |5.44 - 5.472| + |5.40 - 5.472| + |5.35 - 5.472| \\right\\}\\) m\n\\(= \\dfrac{0.452}{5} = 0.0904\\) m\nRelative error \\(= \\dfrac{0.0904}{5.472} = 0.017\\)\n% error \\(= 1.7\\%\\)",
+    "_note": "Significant-figures observation, NOT asserted as a book defect: the five readings are each given to 2 decimal places, yet the mean is printed to 3 decimal places (5.472 m) and the mean absolute error to 4 (0.0904 m), both more precise than any input. The relative error (0.017) and percentage error (1.7%) are, by contrast, correctly rounded to 2 significant figures, so the example is internally inconsistent about precision. Section 1.9 of this chapter states rules for DETERMINING significant figures and for order of magnitude but prints NO rule for rounding the result of an arithmetic operation, so there is no stated rule for this to contradict. Arithmetic verified correct throughout (sum 27.36, mean 5.472; deviations 0.158, 0.068, 0.032, 0.072, 0.122 summing to 0.452). Transcribed as printed."
+  },
+  {
+    "ref": "Solved Ex.1.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Errors in Measurements",
+    "difficulty": "MODERATE",
+    "stem": "In an experiment to determine the volume of an object, mass and density are recorded as \\(m = (5 \\pm 0.15)\\) kg and \\(\\rho = (5 \\pm 0.2)\\) kg m\\(^{-3}\\) respectively. Calculate percentage error in the measurement of volume.",
+    "solution": "We know,\nDensity \\(= \\dfrac{\\text{Mass}}{\\text{Volume}}\\)\n\\(\\therefore\\) Volume \\(= \\dfrac{\\text{Mass}}{\\text{Density}} = \\dfrac{M}{\\rho}\\)\nMaximum percentage error in volume\n\\(= \\left( \\dfrac{\\Delta m}{m} + \\dfrac{\\Delta \\rho}{\\rho} \\right) \\times 100\\)\n\\(= \\left( \\dfrac{0.15}{5} + \\dfrac{0.2}{5} \\right) \\times 100\\)\n\\(= (0.03 + 0.04) \\times 100\\)\n\\(= (0.07) \\times 100 = 7\\%\\)"
+  },
+  {
+    "ref": "Solved Ex.1.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Errors in Measurements",
+    "difficulty": "MODERATE",
+    "stem": "The acceleration due to gravity is determined by using a simple pendulum of length \\(l = (100 \\pm 0.1)\\) cm. If its time period is \\(T = (2 \\pm 0.01)\\) s, find the maximum percentage error in the measurement of \\(g\\).",
+    "solution": "The time period of oscillation of a simple pendulum is given by\n\\(T = 2\\pi \\sqrt{\\dfrac{l}{g}}\\)\nSquaring both sides\n\\(T^{2} = 4\\pi^{2} l / g\\)\n\\(\\therefore g = 4\\pi^{2} \\dfrac{l}{T^{2}}\\)\nNow \\(\\Delta l = 0.1,\\ l = 100\\) cm, \\(\\Delta T = 0.01\\) s, \\(T = 2\\) s\nMaximum Percentage error \\(= \\dfrac{\\Delta g \\times 100}{g}\\)\n\\(= \\left( \\dfrac{\\Delta l}{l} + \\dfrac{2 \\Delta T}{T} \\right) \\times 100\\)\n\\(= \\left( \\dfrac{0.1}{100} + \\dfrac{2 \\times 0.01}{2} \\right) \\times 100\\)\n\\(= (0.001 + 0.01) \\times 100 = 1.1\\)\nMaximum percentage error in measurement of \\(g\\) is \\(1.1\\%\\)"
+  }
+]

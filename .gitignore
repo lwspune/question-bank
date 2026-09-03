@@ -98,6 +98,11 @@ scripts/reviews/data/audit-run/
 scripts/*/_tmp_*
 scripts/*/_validate*
 scripts/*/data/_*
+# `_kt_*` is the OTHER prefix agents actually use for the same purpose, and it
+# was NOT covered until 2026-09-03 — so scratch probes, page renders and their
+# PNGs were exposed to a broad `git add` for as long as the convention existed.
+# Flagged by an agent that had just written seven of them.
+scripts/*/_kt_*
 
 # Teaching-deck figures live in Supabase Storage, not git. One chapter is ~870 KB,
 # but Std XI PCM alone measures ~743 figures / ~37 MB (Physics 258 · Chemistry

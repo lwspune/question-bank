@@ -1,0 +1,44 @@
+[
+  {
+    "ref": "Solved Ex.4.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "stem": "A hose pipe used for gardening is ejecting water horizontally at the rate of \\(0.5\\) m/s. Area of the bore of the pipe is \\(10\\) cm\\(^2\\). Calculate the force to be applied by the gardener to hold the pipe horizontally stationary.",
+    "solution": "If ejecting water horizontally is considered as action force on the water, the water exerts a backward force (called recoil force) on the pipe as the reaction force.\n\n\\(\\vec{F} = \\frac{d\\vec{p}}{dt} = \\frac{d\\left(m\\vec{v}\\right)}{dt} = \\frac{dm}{dt}\\vec{v} + m\\frac{d\\vec{v}}{dt}\\)\n\nAs v, the velocity of ejected water is constant, \\(F = \\frac{dm}{dt}\\vec{v}\\), where \\(\\frac{dm}{dt}\\) is the rate at which mass of water is ejected by the pipe.\n\nAs the force is in the direction of velocity (horizontal), we can use scalars.\n\n\\(\\therefore F = \\frac{dm}{dt}v\\)\n\n\\(\\frac{dm}{dt} = \\frac{d\\left(V\\rho\\right)}{dt} = \\frac{d\\left(Al\\rho\\right)}{dt} = A\\rho\\frac{dl}{dt} = A\\rho v\\)\n\nwhere \\(V\\) = volume of water ejected\n\n\\(A\\) = area of cross section of bore = \\(10\\) cm\\(^2\\)\n\n\\(\\rho\\) = density of water = \\(1\\) g/cc\n\n\\(l\\) = length of the water ejected in time \\(t\\)\n\n\\(\\frac{dl}{dt} = v\\) = velocity of water ejected = \\(0.5\\) m/s = \\(50\\) cm/s\n\n\\(F = \\frac{dm}{dt}v = \\left(A\\rho v\\right)v = A\\rho v^2 = 10 \\times 1 \\times 50^2\\)\n\n\\(= 25000\\) dyne \\(= 0.25\\) N\n\nEqual and opposite force must be applied by the gardener.",
+    "_note": "Printed inconsistency (does NOT affect the answer): the line 'As v, the velocity of ejected water is constant' prints a scalar \\(F\\) equated to a vector \\(\\vec{v}\\) term, i.e. \\(F = \\frac{dm}{dt}\\vec{v}\\). The book itself resolves this on the very next line ('we can use scalars') where it writes \\(\\therefore F = \\frac{dm}{dt}v\\). Transcribed as printed. Arithmetic verified: \\(10 \\times 1 \\times 50^2 = 25000\\) dyne \\(= 0.25\\) N (cgs units throughout)."
+  },
+  {
+    "ref": "Solved Ex.4.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "stem": "Three identical point masses are fixed symmetrically on the periphery of a circle. Obtain the resultant gravitational force on any point mass \\(M\\) at the centre of the circle. Extend this idea to more than three identical masses symmetrically located on the periphery. How far can you extend this concept?",
+    "solution": "[Textbook misprint: in the figure the left horizontal arrow is labelled with a cosine where its partner on the right is labelled with a sine. These are the two equal and opposite components perpendicular to the third force, so both must be sines — and the figure is self-refuting, since it also (correctly) labels the two downward arrows with cosines, using the same function for two different components. The derivation and its conclusion, that the resultant force is zero, are unaffected.]\n\n(i) Figure below shows three identical point masses \\(m\\) on the periphery of a circle of radius \\(r\\). Mass \\(M\\) is at the centre of the circle. Gravitational forces on \\(M\\) due to these masses are attractive and are directed as shown.\n\nIn magnitude, \\(F_{MA} = F_{MB} = F_{MC} = \\frac{GMm}{r^2}\\)\n\n[Figure: a circle of radius \\(r\\) with centre \\(M\\). Three equal point masses \\(m\\) sit on the circumference at \\(A\\) (top), \\(B\\) (lower left) and \\(C\\) (lower right), spaced \\(120^\\circ\\) apart. From \\(M\\) an arrow \\(F_{MA}\\) points up towards \\(A\\), an arrow \\(F_{MB}\\) points down-left towards \\(B\\) and an arrow \\(F_{MC}\\) points down-right towards \\(C\\). The resolved components are also drawn from \\(M\\): a horizontal arrow to the left labelled \\(F_{MB}\\cos 60^\\circ\\) and a horizontal arrow to the right labelled \\(F_{MC}\\sin 60^\\circ\\), together with two arrows pointing vertically downwards labelled \\(F_{MB}\\cos 60^\\circ\\) and \\(F_{MC}\\cos 60^\\circ\\).]\n\nForces \\(F_{MB}\\) and \\(F_{MC}\\) are resolved along \\(F_{MA}\\) and perpendicular to \\(F_{MA}\\) as shown. Components perpendicular to \\(F_{MA}\\) cancel each other. Components along \\(F_{MA}\\) are \\(F_{MB}\\cos 60^\\circ = F_{MC}\\cos 60^\\circ = \\frac{1}{2}F_{MA}\\) each. Magnitude of their resultant is \\(F_{MA}\\) and its direction is opposite to that of \\(F_{MA}\\). Thus, the resultant force on mass \\(M\\) is zero.\n\n(ii) For any even number of equal masses, the force due to any mass \\(m\\) is balanced (cancelled) by diametrically opposite mass. For any odd number of masses, as seen for 3, the components perpendicular to one of them cancel each other while the components parallel to one of these add up in such a way that the resultant is zero for any number of identical masses \\(m\\) located symmetrically on the periphery.\n\n(iii) As the number of masses tends to infinity, their collective shape approaches circumference of the circle, which is nothing but a ring. Thus, the gravitational force exerted by a ring mass on any other mass at its centre is zero.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Circle of radius r centred at M with three equal masses m at A (top), B (lower left), C (lower right), 120 degrees apart; attraction vectors F_MA (up), F_MB (down-left), F_MC (down-right) drawn from M, plus the two horizontal (perpendicular) components and the two downward components along the line opposite to F_MA.",
+    "_note": "Figure label misprint (does NOT affect the printed conclusion): the LEFT horizontal arrow is labelled \\(F_{MB}\\cos 60^\\circ\\) while the RIGHT horizontal arrow — the equal and opposite component of the same magnitude — is labelled \\(F_{MC}\\sin 60^\\circ\\). Verified at high magnification on the page image: the left label reads 'cos', not 'sin'. Both horizontal components are perpendicular to \\(F_{MA}\\) and equal \\(F\\sin 60^\\circ\\), so the left label should read \\(F_{MB}\\sin 60^\\circ\\); as printed it is also self-contradictory within the same figure, since the two DOWNWARD components are (correctly) labelled \\(F_{MB}\\cos 60^\\circ\\) and \\(F_{MC}\\cos 60^\\circ\\). Transcribed as printed. The prose derivation and the result (resultant on \\(M\\) is zero) are correct."
+  },
+  {
+    "ref": "Solved Ex.4.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Forces",
+    "difficulty": "MODERATE",
+    "stem": "A car of mass \\(1.5\\) ton is running at \\(72\\) kmph on a straight horizontal road. On turning the engine off, it stops in \\(20\\) seconds. While running at the same speed, on the same road, the driver observes an accident \\(50\\) m in front of him. He immediately applies the brakes and just manages to stop the car at the accident spot. Calculate the braking force.",
+    "solution": "On turning the engine off,\n\n\\(u = 20\\,\\mathrm{m\\ s}^{-1}\\), \\(v = 0\\), \\(t = 20\\,s\\)\n\n\\(\\therefore a = \\frac{v - u}{t} = -1\\,\\mathrm{m\\ s}^{-2}\\)\n\nThis is frictional retardation (negative acceleration).\n\nAfter seeing the accident,\n\n\\(u = 20\\,\\mathrm{m\\ s}^{-1}\\), \\(v = 0\\), \\(s = 50\\,\\mathrm{m}\\)\n\n\\(\\therefore a_1 = \\frac{v^2 - u^2}{2s} = -4\\,\\mathrm{m\\ s}^{-2}\\)\n\nThis retardation is the combined effect of braking and friction. Thus, braking retardation \\(= 4 - 1 = 3\\,\\mathrm{m\\ s}^{-2}\\).\n\n\\(\\therefore\\) Braking force = mass \\(\\times\\) braking retardation \\(= 1500 \\times 3 = 4500\\) N",
+    "_note": "Derivation checked and internally consistent: \\(72\\) kmph \\(= 20\\) m s\\(^{-1}\\); \\(a = (0-20)/20 = -1\\) m s\\(^{-2}\\); \\(a_1 = (0-400)/(2\\times 50) = -4\\) m s\\(^{-2}\\); braking retardation \\(3\\) m s\\(^{-2}\\); \\(1.5\\) ton \\(= 1500\\) kg gives \\(4500\\) N."
+  },
+  {
+    "ref": "Solved Ex.4.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work Energy Theorem",
+    "difficulty": "EASY",
+    "stem": "Over a given region, a force (in newton) varies as \\(F = 3x^2 - 2x + 1\\). In this region, an object is displaced from \\(x_1 = 20\\) cm to \\(x_2 = 40\\) cm by the given force. Calculate the amount of work done.",
+    "solution": "\\(W = \\int_{s_1}^{s_2} F.ds = \\int_{0.2}^{0.4} \\left(3x^2 - 2x + 1\\right)dx\\)\n\n\\(= \\left[x^3 - x^2 + x\\right]_{0.2}^{0.4}\\)\n\n\\(= \\left[0.4^3 - 0.4^2 + 0.4\\right] - \\left[0.2^3 - 0.2^2 + 0.2\\right]\\)\n\n\\(= 0.304 - 0.168 = 0.136\\,\\mathrm{J}\\)",
+    "_note": "Derivation checked and internally consistent: \\(0.064 - 0.16 + 0.4 = 0.304\\); \\(0.008 - 0.04 + 0.2 = 0.168\\); difference \\(= 0.136\\) J. The displacement limits are correctly converted from cm to m (\\(20\\) cm \\(\\to 0.2\\), \\(40\\) cm \\(\\to 0.4\\)) even though the stem states them in cm."
+  }
+]

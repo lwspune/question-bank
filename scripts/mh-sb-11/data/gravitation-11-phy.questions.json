@@ -1,0 +1,677 @@
+[
+  {
+    "ref": "Solved Ex.5.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "What would be the average duration of year if the distance between the Sun and the Earth becomes\n(A) thrice the present distance.\n(B) twice the present distance.",
+    "solution": "(A) Let \\(r_{1}\\) = Present distance between the Earth and Sun\n\\(T\\) = 365 days.\nIf \\(r_{2} = 3r_{1}\\), \\(T_{2} = ?\\)\nAccording to Kepler's law of period\n\\(T_{1}^{2} \\propto r_{1}^{3}\\) and \\(T_{2}^{2} \\propto r_{2}^{3}\\)\n\\(\\therefore \\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\dfrac{r_{2}^{3}}{r_{1}^{3}}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\left(\\dfrac{r_{2}}{r_{1}}\\right)^{3/2} = \\left(\\dfrac{3r_{1}}{r_{1}}\\right)^{3/2}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\sqrt{27}\\)\n\\(T_{2} = T_{1} \\times \\sqrt{27} = 365 \\times \\sqrt{27} = 1897\\) days\n\n(B) If \\(r_{2} = 2r_{1}\\), \\(T_{2} = ?\\)\n\\(\\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\dfrac{r_{2}^{3}}{r_{1}^{3}}\\)\n\\(\\dfrac{T_{2}^{2}}{T_{1}^{2}} = \\left(\\dfrac{2r_{1}}{r_{1}}\\right)^{3}\\)\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\sqrt{8}\\)\n\\(T_{2} = T_{1}\\sqrt{8} = 365\\sqrt{8} = 1032\\) days."
+  },
+  {
+    "ref": "Solved Ex.5.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "EASY",
+    "stem": "The gravitational force between two bodies is 1 N. If distance between them is doubled, what will be the gravitational force between them?",
+    "solution": "Let the masses of the two bodies be \\(m_{1}\\) and \\(m_{2}\\) and the distance between them be \\(r\\).\nThe force between them, \\(F_{1} = \\dfrac{Gm_{1}m_{2}}{r^{2}}\\)\nWhen the distance between them is doubled the force becomes, \\(F_{2} = \\dfrac{Gm_{1}m_{2}}{(2r)^{2}} = \\dfrac{Gm_{1}m_{2}}{4r^{2}}\\)\n\\(\\therefore \\dfrac{F_{1}}{F_{2}} = \\dfrac{Gm_{1}m_{2}}{r^{2}} \\times \\dfrac{4r^{2}}{Gm_{1}m_{2}}\\)\n\\(\\therefore \\dfrac{F_{1}}{F_{2}} = 4\\)\n\\(\\therefore F_{2} = \\dfrac{1}{4}\\) N \\(\\quad (\\because F_{1} = 1\\,\\text{N})\\)\n\\(F_{2} = 0.25\\) N\n\\(\\therefore\\) Force become one forth (0.25 N)",
+    "_note": "The book's closing line prints \"one forth\" for \"one fourth\". Transcribed verbatim; the numerical answer 0.25 N is correct."
+  },
+  {
+    "ref": "Solved Ex.5.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "Three particles A, B, and C each having mass \\(m\\) are kept along a straight line with AB = BC = \\(l\\). A fourth particle D is kept on the perpendicular bisecter of AC at a distance \\(l\\) from B. Determine the gravitational force on D.",
+    "solution": "CD = AD = \\(\\sqrt{\\text{AB}^{2} + \\text{BD}^{2}} = \\sqrt{2}\\,l\\)\nGravitational force on D = Vector sum of gravitational forces due to A, B and C.\nForce due to A \\(= \\dfrac{Gmm}{(\\text{AD})^{2}} = \\dfrac{Gm^{2}}{2l^{2}}\\). This will be along \\(\\overrightarrow{\\text{DA}}\\)\nForce due to C \\(= \\dfrac{Gmm}{(\\text{CD})^{2}} = \\dfrac{Gm^{2}}{2l^{2}}\\). This is along \\(\\overrightarrow{\\text{DC}}\\)\nForce due to B \\(= \\dfrac{Gmm}{(\\text{BD})^{2}} = \\dfrac{Gm^{2}}{l^{2}}\\). This is along \\(\\overrightarrow{\\text{DB}}\\)\nWe can resolve the forces along horizontal and vertical directions.\nLet the unit vector along horizontal direction \\(\\overrightarrow{\\text{AC}}\\) be \\(\\hat{i}\\) and along the vertical direction \\(\\overrightarrow{\\text{BD}}\\) be \\(\\hat{j}\\)\nNet horizontal force on D\n\\(= \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{i}) + \\dfrac{Gm^{2}}{l^{2}}\\cos 90^\\circ(\\hat{i}) + \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(\\hat{i})\\)\n\\(= \\dfrac{-Gm^{2}}{2\\sqrt{2}l^{2}} + \\dfrac{Gm^{2}}{2\\sqrt{2}l^{2}} = 0\\)\nNet vertical force on D\n\\(= \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{j}) + \\dfrac{Gm^{2}}{l^{2}}(-\\hat{j}) + \\dfrac{Gm^{2}}{2l^{2}}\\cos 45^\\circ(-\\hat{j})\\)\n\\(= \\dfrac{-Gm^{2}}{l^{2}}\\left(\\dfrac{1}{\\sqrt{2}} + 1\\right)(\\hat{j})\\)\n\\(= \\dfrac{Gm^{2}}{l^{2}}\\left(\\dfrac{1}{\\sqrt{2}} + 1\\right)(-\\hat{j})\\)\n\\((-\\hat{j})\\) shows that the net force is directed along DB",
+    "_note": "The book spells \"bisecter\" for \"bisector\" in the stem; transcribed verbatim. The stem is self-contained (Fig. on p-05 illustrates the solution, not data the question withholds); the printed derivation is internally consistent and was re-verified."
+  },
+  {
+    "ref": "Solved Ex.5.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Calculate mass of the Earth from given data,\nAcceleration due to gravity \\(g = 9.81\\) m/s\\(^{2}\\)\nRadius of the Earth \\(R_{E} = 6.37 \\times 10^{6}\\) m\n\\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\)",
+    "solution": "\\(g = \\dfrac{GM_{E}}{R_{E}^{2}}\\)\n\\(\\therefore M_{E} = \\dfrac{gR_{E}^{2}}{G}\\)\n\\(\\therefore M_{E} = \\dfrac{9.81 \\times (6.37 \\times 10^{6})^{2}}{6.67 \\times 10^{-11}}\\)\n\\(\\therefore M_{E} = 5.97 \\times 10^{24}\\) kg"
+  },
+  {
+    "ref": "Solved Ex.5.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the acceleration due to gravity on the surface of moon if mass of the moon is 1/80 times that of the Earth and diameter of the moon is 1/4 times that of the Earth (\\(g = 9.8\\) m/s\\(^{2}\\))",
+    "solution": "\\(M_{m}\\) = Mass of the moon = \\(M/80\\), where \\(M\\) is mass of the Earth.\n\\(R_{m}\\) = Radius of the moon = \\(R/4\\), where \\(R\\) is Radius of the Earth.\nAcceleration due to gravity on the surface of the Earth, \\(g = GM/R^{2}\\) --- (1)\nAcceleration due to gravity on the surface of the moon, \\(g_{m} = GM_{m}/R_{m}^{2}\\) --- (2)\n\\(\\therefore\\) From equation (1) and (2)\n\\(\\dfrac{g_{m}}{g} = \\dfrac{M_{m}}{M} \\times \\left[\\dfrac{R}{R_{m}}\\right]^{2}\\)\n\\(\\dfrac{g_{m}}{g} = \\dfrac{1}{80} \\times \\left[\\dfrac{4}{1}\\right]^{2}\\)\n\\(\\therefore \\dfrac{g_{m}}{g} = \\dfrac{1}{5}\\)\n\\(\\therefore g_{m} = \\dfrac{g}{5} = \\dfrac{9.8}{5}\\)\n\\(\\therefore g_{m} = 1.96\\) m/s\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.5.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "Find the acceleration due to gravity on a planet that is 10 times as massive as the Earth and with radius 20 times of the radius of the Earth (\\(g = 9.8\\) m/s\\(^{2}\\)).",
+    "solution": "Let mass of the planet be \\(M_{p}\\), radius of the Earth and that of the planet be \\(R_{E}\\) and \\(R_{P}\\) respectively. Let mass of the Earth be \\(M_{E}\\) and \\(g_{p}\\) be acceleration due to gravity on the planet.\n\\(M_{p} = 10\\,M_{E}\\)\n\\(R_{p} = 20\\,R_{E}\\), \\(g = 9.8\\) m/s\\(^{2}\\)\n\\(g_{p} = ?\\)\n\\(g = \\dfrac{GM_{E}}{R_{E}^{2}}\\), \\(g_{p} = \\dfrac{GM_{P}}{R_{P}^{2}}\\)\n\\(\\therefore g_{P} = \\dfrac{G(10M_{E})}{(20R_{E})^{2}}\\)\n\\(= \\dfrac{10GM_{E}}{400R_{E}^{2}}\\)\n\\(= \\dfrac{1}{40}g\\)\n\\(= 0.245\\) m/s\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.5.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "stem": "At what distance above the surface of Earth the acceleration due to gravity decreases by 10% of its value at the surface? (Radius of Earth = 6400 km). Assume the distance above the surface to be small compared to the radius of the Earth.",
+    "solution": "\\(g_{h}\\) = 90% of \\(g\\) (\\(g\\) decreases by 10% hence it becomes 90%)\nor, \\(\\dfrac{g_{h}}{g} = \\dfrac{90}{100} = 0.9\\)\nFrom Eq. (5.21)\n\\(g_{h} = g\\left[1 - \\dfrac{2h}{R}\\right]\\)\n\\(\\therefore \\dfrac{g_{h}}{g} = 1 - \\dfrac{2h}{R}\\)\n\\(\\therefore 0.9 = 1 - \\dfrac{2h}{R}\\)\n\\(h = \\dfrac{R}{20}\\)\n\\(h = 320\\) km"
+  },
+  {
+    "ref": "Solved Ex.5.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "stem": "What will be the change in potential energy of a body of mass \\(m\\) when it is raised from height \\(R_{E}\\) above the Earth's surface to \\(\\dfrac{5}{2}R_{E}\\) above the Earth's surface? \\(R_{E}\\) and \\(M_{E}\\) are the radius and mass of the Earth respectively.",
+    "solution": "\\(\\Delta U = GmM_{E}\\left(\\dfrac{1}{r_{i}} - \\dfrac{1}{r_{f}}\\right)\\)\n\\(= GmM_{E}\\left(\\dfrac{1}{2R_{E}} - \\dfrac{1}{3.5R_{E}}\\right)\\)\n\\(= \\dfrac{GmM_{E}}{R_{E}} \\times \\dfrac{1.5}{2 \\times 3.5} = \\dfrac{2.14\\,GmM_{E}}{R_{E}}\\)",
+    "_note": "ANSWER-AFFECTING BOOK DEFECT, transcribed verbatim and NOT repaired. The printed final coefficient 2.14 is wrong by a factor of ten and is refuted by the book's OWN printed intermediate step on the same line: 1.5/(2 x 3.5) = 0.2143. The correct result is 0.214 GmM_E/R_E. The setup is right (r_i = R_E + R_E = 2R_E, r_f = R_E + 2.5R_E = 3.5R_E, both matching the stem). Needs apply-solved-fixes.ts + an errata bracket — a shipped solved example must not teach the error."
+  },
+  {
+    "ref": "Solved Ex.5.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Show that the critical velocity of a body revolving in a circular orbit very close to the surface of a planet of radius \\(R\\) and mean density \\(\\rho\\) is \\(2R\\sqrt{\\dfrac{G\\pi\\rho}{3}}\\).",
+    "solution": "Since the body is revolving very close to the planet, \\(h = 0\\)\ndensity \\(\\rho = \\dfrac{M}{V} = \\dfrac{M}{\\dfrac{4}{3}\\pi R^{3}}\\)\n\\(\\therefore M = \\dfrac{4}{3}\\pi R^{3}\\rho\\)\nCritical Velocity\n\\(\\mathrm{v}_{c} = \\sqrt{\\dfrac{GM}{R}} = \\sqrt{\\dfrac{G\\dfrac{4}{3}\\pi R^{3}\\rho}{R}}\\)\n\\(\\therefore \\mathrm{v}_{c} = 2R\\sqrt{\\dfrac{G\\pi\\rho}{3}}\\)",
+    "_note": "BOOK NUMBERING DEFECT: this example is printed \"Example 5.9\" on p-16 (printed page 94) and a DIFFERENT worked example is ALSO printed \"Example 5.9\" on p-18 (printed page 96). The chapter has 11 worked examples numbered 5.1-5.10 with 5.9 used twice and no 5.11. This one keeps the ref Solved Ex.5.9; the p-18 one is Solved Ex.5.9b. The derivation was independently re-verified and is correct."
+  },
+  {
+    "ref": "Solved Ex.5.9b",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "stem": "Calculate the period of revolution of a polar satellite orbiting close to the surface of the Earth. Given \\(R = 6400\\) km, \\(g = 9.8\\) m/s\\(^{2}\\).",
+    "solution": "\\(h\\) is negligible as satellite is close to the Earth surface.\n\\(\\therefore R + h \\approx R\\)\n\\(g_{h} \\approx g\\)\n\\(R = 6400\\) km \\(= 6.4 \\times 10^{6}\\) m.\n\\(T = 2\\pi\\sqrt{\\dfrac{R}{g}}\\)\n\\(= 2 \\times 3.14\\sqrt{\\dfrac{6.4 \\times 10^{6}}{9.8}}\\)\n\\(= 5.075 \\times 10^{3}\\) second\n\\(= 85\\) minute (approximately)",
+    "_note": "Printed as \"Example 5.9\" on p-18 (printed page 96) — the SECOND example in this chapter to carry that number (see Solved Ex.5.9). Ref suffixed 'b' so the two do not collide; the book's own number is preserved in this note. Derivation re-verified: 2 x 3.14 x sqrt(6.4e6/9.8) = 5075 s = 84.6 min."
+  },
+  {
+    "ref": "Solved Ex.5.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "An artificial satellite revolves around a planet in circular orbit close to its surface. Obtain the formula for period of the satellite in terms of density \\(\\rho\\) and radius \\(R\\) of planet.",
+    "solution": "Period of satellite is given by,\n\\(T = 2\\pi\\sqrt{\\dfrac{(R+h)^{3}}{GM}}\\) --- (1)\nHere, the satellite revolves close to the surface of planet, hence \\(h\\) is negligible, hence \\(R + h \\simeq R\\)\ndensity \\((\\rho) = \\dfrac{\\text{mass}\\,(M)}{\\text{volume}\\,(V)}\\)\n\\(\\therefore M = \\rho V\\) --- (2)\nAs planet is spherical in shape, volume of planet is given as\n\\(V = \\dfrac{4}{3}\\pi R^{3}\\)\n\\(\\therefore M = \\dfrac{4}{3}\\pi R^{3}\\rho\\) --- (3)\nSubstituting the values form eq. (2) and (3) in Eq. (1), we get\n\\(T = 2\\pi\\sqrt{\\dfrac{R^{3}}{G \\times \\dfrac{4}{3}\\pi R^{3}\\rho}}\\)\n\\(\\therefore T = \\sqrt{\\dfrac{3\\pi}{G\\rho}}\\)",
+    "_note": "The book prints \"Substituting the values form eq.\" for \"from eq.\" — transcribed verbatim. The result was re-verified independently and is correct."
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "The value of acceleration due to gravity is maximum at",
+    "options": [
+      {
+        "label": "A",
+        "text": "the equator of the Earth ."
+      },
+      {
+        "label": "B",
+        "text": "the centre of the Earth."
+      },
+      {
+        "label": "C",
+        "text": "the pole of the Earth."
+      },
+      {
+        "label": "D",
+        "text": "slightly above the surface of the Earth."
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "The weight of a particle at the centre of the Earth is",
+    "options": [
+      {
+        "label": "A",
+        "text": "infinite."
+      },
+      {
+        "label": "B",
+        "text": "zero."
+      },
+      {
+        "label": "C",
+        "text": "same as that at other places."
+      },
+      {
+        "label": "D",
+        "text": "greater than at the poles."
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "The gravitational potential due to the Earth is minimum at",
+    "options": [
+      {
+        "label": "A",
+        "text": "the centre of the Earth."
+      },
+      {
+        "label": "B",
+        "text": "the surface of the Earth."
+      },
+      {
+        "label": "C",
+        "text": "a points inside the Earth but not at its centre."
+      },
+      {
+        "label": "D",
+        "text": "infinite distance."
+      }
+    ],
+    "answer": "A",
+    "_note": "Option (C) is printed \"a points inside the Earth but not at its centre.\" — the book's own grammatical slip, transcribed verbatim."
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "The binding energy of a satellite revolving around planet in a circular orbit is \\(3 \\times 10^{9}\\) J. Its kinetic energy is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(6 \\times 10^{9}\\) J"
+      },
+      {
+        "label": "B",
+        "text": "\\(-3 \\times 10^{9}\\) J"
+      },
+      {
+        "label": "C",
+        "text": "\\(-6 \\times 10^{+9}\\) J"
+      },
+      {
+        "label": "D",
+        "text": "\\(3 \\times 10^{+9}\\) J"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State Kepler's law equal of area.",
+    "_note": "The book prints \"Kepler's law equal of area\" — its own word-order slip for \"law of equal areas\". Transcribed verbatim."
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State Kepler's law of period."
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of the Gravitational Constant (G)",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What are the dimensions of the universal gravitational constant?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define binding energy of a satellite."
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What do you mean by geostationary satellite?"
+  },
+  {
+    "ref": "Ex Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State Newton's law of gravitation."
+  },
+  {
+    "ref": "Ex Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define escape velocity of a satellite."
+  },
+  {
+    "ref": "Ex Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is the variation in acceleration due to gravity with altitude?"
+  },
+  {
+    "ref": "Ex Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "On which factors does the escape speed of a body from the surface of Earth depend?"
+  },
+  {
+    "ref": "Ex Q.2 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "As we go from one planet to another planet, how will the mass and weight of a body change?"
+  },
+  {
+    "ref": "Ex Q.2 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is periodic time of a geostationary satellite?"
+  },
+  {
+    "ref": "Ex Q.2 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State Newton's law of gravitation and express it in vector form."
+  },
+  {
+    "ref": "Ex Q.2 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of the Gravitational Constant (G)",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What do you mean by gravitational constant? State its SI units."
+  },
+  {
+    "ref": "Ex Q.2 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why is a minimum two stage rocket necessary for launching of a satellite?"
+  },
+  {
+    "ref": "Ex Q.2 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State the conditions for various possible orbits of a satellite depending upon the tangential speed of projection."
+  },
+  {
+    "ref": "Ex Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Derive an expression for critical velocity of a satellite.",
+    "_note": "BOOK NUMBERING DEFECT: this block is printed \"2. Answer the following questions in detail.\" on p-20 (printed page 98) — a duplicate of the preceding block's number. The block that follows it is printed \"4. Solve the following problems.\", so the intended sequence is 1, 2, 3, 4 and this block is the third. Refs use Ex Q.3 on that internally-contiguous reading."
+  },
+  {
+    "ref": "Ex Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "EASY",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "State any four applications of a communication satellite."
+  },
+  {
+    "ref": "Ex Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Show that acceleration due to gravity at height \\(h\\) above the Earth's surface is \\(g_{h} = g\\left(\\dfrac{R}{R+h}\\right)^{2}\\)"
+  },
+  {
+    "ref": "Ex Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Draw a labelled diagram to show different trajectories of a satellite depending upon the tangential projection speed.",
+    "diagramWouldHelp": true,
+    "diagramNote": "The ANSWER to this question is a drawing — the book's own Fig. 5.10 on p-15 (printed page 93) shows the possible orbits for increasing tangential projection speed. A solution_image candidate."
+  },
+  {
+    "ref": "Ex Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Derive an expression for binding energy of a body at rest on the Earth's surface."
+  },
+  {
+    "ref": "Ex Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Why do astronauts in an orbiting satellite have a feeling of weightlessness?"
+  },
+  {
+    "ref": "Ex Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Draw a graph showing the variation of gravitational acceleration due to the depth and altitude from the Earth's surface.",
+    "diagramWouldHelp": true,
+    "diagramNote": "The ANSWER to this question is a drawing — the book's own Fig. 5.8 on p-10 (printed page 88) plots g against depth and altitude. A solution_image candidate."
+  },
+  {
+    "ref": "Ex Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "At which place on the Earth's surface is the gravitational acceleration maximum? Why?"
+  },
+  {
+    "ref": "Ex Q.3 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "At which place on the Earth surface the gravitational acceleration minimum? Why?"
+  },
+  {
+    "ref": "Ex Q.3 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Define the binding energy of a satellite. Obtain an expression for binding energy of a satellite revolving around the Earth at certain attitude.",
+    "_note": "The book prints \"at certain attitude\" for \"at certain altitude\". Transcribed verbatim."
+  },
+  {
+    "ref": "Ex Q.3 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Obtain the formula for acceleration due to gravity at the depth 'd' below the Earth's surface."
+  },
+  {
+    "ref": "Ex Q.3 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "EASY",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "State Kepler's three laws of planetary motion."
+  },
+  {
+    "ref": "Ex Q.3 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "HARD",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "State the formula for acceleration due to gravity at depth 'd' and altitude 'h' Hence show that their ratio is equal to \\(\\left(\\dfrac{R-d}{R-2h}\\right)\\) by assuming that the altitude is very small as compared to the radius of the Earth."
+  },
+  {
+    "ref": "Ex Q.3 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "What is critical velocity? Obtain an expression for critical velocity of an orbiting satellite. On what factors does it depend?"
+  },
+  {
+    "ref": "Ex Q.3 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Define escape speed. Derive an expression for the escape speed of an object from the surface of the each.",
+    "_note": "The book prints \"from the surface of the each\" for \"of the Earth\". Transcribed verbatim."
+  },
+  {
+    "ref": "Ex Q.3 (xvi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions in detail.",
+    "setLabel": "Ex Q.3",
+    "stem": "Describe how an artificial satellite using two stage rocket is launched in an orbit around the Earth."
+  },
+  {
+    "ref": "Ex Q.4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "At what distance below the surface of the Earth, the acceleration due to gravity decreases by 10% of its value at the surface, given radius of Earth is 6400 km.",
+    "bookAnswer": "640 km"
+  },
+  {
+    "ref": "Ex Q.4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "If the Earth were made of wood, the mass of wooden Earth would have been 10% as much as it is now (without change in its diameter). Calculate escape speed from the surface of this Earth.",
+    "bookAnswer": "3.54 km/s"
+  },
+  {
+    "ref": "Ex Q.4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Calculate the kinetic energy, potential energy, total energy and binding energy of an artificial satellite of mass 2000 kg orbiting at a height of 3600 km above the surface of the Earth.\nGiven:- \\(G = 6.67 \\times 10^{-11}\\) Nm\\(^{2}\\)/kg\\(^{2}\\)\n\\(R = 6400\\) km\n\\(M = 6 \\times 10^{24}\\) kg",
+    "bookAnswer": "KE = 40.02×10^9 J, PE = -80.09 ×10^9 J, TE = -40.07 ×10^9 J, BE = 40.02×10^9 J",
+    "_note": "The printed answer set is INTERNALLY INCONSISTENT and PE is wrong. With r = R + h = 10^7 m and GMm = 8.004e17: KE = +40.02e9 J, PE = -80.04e9 J, TE = -40.02e9 J, BE = +40.02e9 J. The book prints PE = -80.09e9 (a digit slip for -80.04e9) which then propagates into its TE = -40.07e9; and its own TE and BE contradict each other, since BE = |TE| but it prints 40.07 and 40.02. Only PE and TE are wrong; KE and BE are right."
+  },
+  {
+    "ref": "Ex Q.4 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Two satellites A and B are revolving around a planet. Their periods of revolution are 1 hour and 8 hours respectively. The radius of orbit of satellite B is \\(4 \\times 10^{4}\\) km. find radius of orbit of satellite A .",
+    "bookAnswer": "1×10^4 km"
+  },
+  {
+    "ref": "Ex Q.4 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Find the gravitational force between the Sun and the Earth.\nGiven Mass of the Sun \\(= 1.99 \\times 10^{30}\\) kg\nMass of the Earth \\(= 5.98 \\times 10^{24}\\) kg\nThe average distance between the Earth and the Sun \\(= 1.5 \\times 10^{11}\\) m.",
+    "bookAnswer": "3.5×10^22 N"
+  },
+  {
+    "ref": "Ex Q.4 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variation in the Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Calculate the acceleration due to gravity at a height of 300 km from the surface of the Earth. (\\(M = 5.98 \\times 10^{24}\\) kg, \\(R = 6400\\) km).",
+    "bookAnswer": "8.889 m/s^2"
+  },
+  {
+    "ref": "Ex Q.4 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Calculate the speed of a satellite in an orbit at a height of 1000 km from the Earth's surface. \\(M_{E} = 5.98 \\times 10^{24}\\) kg, \\(R = 6.4 \\times 10^{6}\\) m.",
+    "bookAnswer": "7.34 ×10^3 m/s"
+  },
+  {
+    "ref": "Ex Q.4 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Calculate the value of acceleration due to gravity on the surface of Mars if the radius of Mars \\(= 3.4 \\times 10^{3}\\) km and its mass is \\(6.4 \\times 10^{23}\\) kg.",
+    "bookAnswer": "3.69 m/s^2"
+  },
+  {
+    "ref": "Ex Q.4 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "A planet has mass \\(6.4 \\times 10^{24}\\) kg and radius \\(3.4 \\times 10^{6}\\) m. Calculate energy required to remove on object of mass 800 kg from the surface of the planet to infinity.",
+    "bookAnswer": "5.02 ×10^10 J",
+    "_note": "SUSPECTED BOOK ANSWER-KEY ERROR. The energy needed to take a body AT REST ON THE SURFACE to infinity is GMm/R = 1.004e11 J. The printed 5.02e10 J is exactly GMm/2R — the binding energy of a satellite ORBITING close to the surface, which is not what this stem asks. The book's own Ex Q.3 (v) asks the student to derive the binding energy of a body AT REST on the surface, and that is GMm/R. Also, the stem prints \"remove on object\" for \"an object\"."
+  },
+  {
+    "ref": "Ex Q.4 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of the Gravitational Constant (G)",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "Calculate the value of the universal gravitational constant from the given data. Mass of the Earth \\(= 6 \\times 10^{24}\\) kg, Radius of the Earth \\(= 6400\\) km and the acceleration due to gravity on the surface \\(= 9.8\\) m/s\\(^{2}\\)",
+    "bookAnswer": "6.69×10^-11 N m^2/kg^2"
+  },
+  {
+    "ref": "Ex Q.4 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "A body weighs 5.6 kg wt on the surface of the Earth. How much will be its weight on a planet whose mass is 7 times the mass of the Earth and radius twice that of the Earth's radius.",
+    "bookAnswer": "9.8 kg-wt"
+  },
+  {
+    "ref": "Ex Q.4 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential and Potential Energy",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.\n\nWhere a value is not stated in the question, take \\(G = 6.67 \\times 10^{-11}\\) N m\\(^{2}\\)/kg\\(^{2}\\) and, for the Earth, escape speed \\(v_{e} = 11.2\\) km/s — the values stated in Sec. 5.3 and Sec. 5.7.4 of this chapter. (The book's Exercises print no constants preamble; these are supplied so that each question can be attempted on its own.)",
+    "setLabel": "Ex Q.4",
+    "stem": "What is the gravitational potential due to the Earth at a point which is at a height of \\(2R_{E}\\) above the surface of the Earth, Mass of the Earth is \\(6 \\times 10^{24}\\) kg, radius of the Earth \\(= 6400\\) km and \\(G = 6.67 \\times 10^{-11}\\) Nm\\(^{2}\\) kg\\(^{-2}\\).",
+    "bookAnswer": "2.08×10^7 J",
+    "_note": "The printed magnitude 2.08e7 is correct, but the printed answer drops the SIGN (gravitational potential is negative: -2.08e7) and states the unit as J when gravitational potential is J/kg. Both are defects in the key, not in the stem."
+  }
+]

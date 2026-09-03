@@ -1,0 +1,115 @@
+[
+  {
+    "id": "a69b60f3-1bfc-4006-897b-7f8b823d1975",
+    "ref": "Ex Q.2 (i)",
+    "solution": "For a distant object the parallax angle and the distance are related by \\(D = \\dfrac{b}{\\theta}\\), where \\(b\\) is the fixed baseline, so \\(\\theta = \\dfrac{b}{D}\\). With the same baseline, the angle is inversely proportional to the distance: the farther the object, the smaller the angle it subtends. Star A is farther, so it subtends the smaller parallax.\nStar B, being nearer, will have the larger parallax angle."
+  },
+  {
+    "id": "42d4ca66-bc5f-4a2f-bae5-779917727388",
+    "ref": "Ex Q.2 (ii)",
+    "solution": "Take dimensions term by term. \\([l] = [L^{1}]\\) and \\([g] = [L^{1}T^{-2}]\\), so\n\\(\\left[ \\dfrac{l}{g} \\right] = \\dfrac{[L^{1}]}{[L^{1}T^{-2}]} = [T^{2}]\\)\n\\(\\therefore \\left[ \\sqrt{l/g} \\right] = [T^{1}]\\)\nMultiplying by the leading \\(l\\),\n\\(\\left[ l\\sqrt{l/g} \\right] = [L^{1}] \\times [T^{1}]\\)\nThe dimensions are \\([L^{1}M^{0}T^{1}]\\)."
+  },
+  {
+    "id": "ef3c133a-1741-4dd4-af7d-3870b9df8911",
+    "ref": "Ex Q.2 (iii)",
+    "solution": "Let a quantity be measured \\(n\\) times giving \\(a_{1}, a_{2}, \\ldots, a_{n}\\), with mean (most probable) value \\(a_{\\text{mean}} = \\dfrac{1}{n}\\sum a_{i}\\).\nAbsolute error: the magnitude of the difference between the mean value and an individual measurement, \\(|\\Delta a_{i}| = |a_{\\text{mean}} - a_{i}|\\). It carries the same unit as the quantity.\nMean absolute error: the arithmetic mean of all the absolute errors, \\(\\Delta a_{\\text{mean}} = \\dfrac{1}{n} \\sum |\\Delta a_{i}|\\). It is the amount by which a single reading may typically be expected to differ from the mean.\nRelative error: the ratio of the mean absolute error to the mean value, \\(\\dfrac{\\Delta a_{\\text{mean}}}{a_{\\text{mean}}}\\). Being a ratio of two quantities with the same unit it is a pure number and has no unit.\nPercentage error: the relative error expressed as a percentage, \\(\\dfrac{\\Delta a_{\\text{mean}}}{a_{\\text{mean}}} \\times 100\\%\\)."
+  },
+  {
+    "id": "39d3551a-b206-435d-b621-fc7a981b92d3",
+    "ref": "Ex Q.2 (iv)",
+    "solution": "Significant figures: the accuracy of a measurement is limited by the least count of the instrument, so only some of the digits obtained are trustworthy. The digits about which we are certain, together with ONE further digit which is the first uncertain one, are the significant figures of the measurement. For example, a metre scale of least count 0.1 cm giving readings 15.4, 15.4 and 15.5 cm yields a mean of 15.43 cm, of which 1 and 5 are certain, so the value is quoted to 3 significant figures. Using an instrument of smaller least count increases the number of significant digits.\nOrder of magnitude: to avoid ambiguity a measurement is written in scientific notation as \\(A \\times 10^{n}\\), where the chapter's convention is \\(0.5 \\le A < 5\\) and \\(n\\) is an integer. That integer \\(n\\) is the order of magnitude, and it fixes the size of the quantity to the nearest power of ten. For example the radius of the Earth, 6400 km \\(= 0.64 \\times 10^{7}\\) m, has order of magnitude 7 and 2 significant figures."
+  },
+  {
+    "id": "39f8198d-d3fc-4aab-b8d6-1003fe001b2f",
+    "ref": "Ex Q.2 (v)",
+    "solution": "Maximum error in \\(A \\pm B\\): let \\(Z = A + B\\). Then\n\\(Z \\pm \\Delta Z = (A \\pm \\Delta A) + (B \\pm \\Delta B) = (A + B) \\pm \\Delta A \\pm \\Delta B\\)\n\\(\\therefore \\pm \\Delta Z = \\pm \\Delta A \\pm \\Delta B\\)\nThe four possible combinations give a largest magnitude of \\(\\Delta A + \\Delta B\\). Repeating with \\(Z = A - B\\) gives the same largest magnitude, so in both cases the maximum absolute error is\n\\(\\Delta Z = \\Delta A + \\Delta B\\)\nWhen two quantities are added or subtracted, the maximum absolute errors add.\nNow let \\(Z = \\dfrac{A}{B}\\). Then\n\\(Z \\pm \\Delta Z = \\dfrac{A \\pm \\Delta A}{B \\pm \\Delta B} = \\dfrac{A}{B} \\left( 1 \\pm \\dfrac{\\Delta A}{A} \\right) \\left( 1 \\pm \\dfrac{\\Delta B}{B} \\right)^{-1}\\)\nSince \\(\\dfrac{\\Delta B}{B}\\) is very small, \\(\\left( 1 \\pm \\dfrac{\\Delta B}{B} \\right)^{-1} \\approx 1 \\mp \\dfrac{\\Delta B}{B}\\), so\n\\(1 \\pm \\dfrac{\\Delta Z}{Z} = \\left( 1 \\pm \\dfrac{\\Delta A}{A} \\right)\\left( 1 \\mp \\dfrac{\\Delta B}{B} \\right) \\approx 1 \\pm \\dfrac{\\Delta A}{A} \\mp \\dfrac{\\Delta B}{B}\\)\nneglecting the product of two small terms. Taking the largest magnitude of the right-hand side,\n\\(\\dfrac{\\Delta Z}{Z} = \\dfrac{\\Delta A}{A} + \\dfrac{\\Delta B}{B}\\)"
+  },
+  {
+    "id": "d0bddcac-c664-4fc1-9148-f2f74fe1322f",
+    "ref": "Ex Q.2 (vi)",
+    "solution": "Assume the kinetic energy depends on the mass and the velocity alone:\n\\(\\text{K.E.} = k\\, m^{a} v^{b}\\), where \\(k\\) is a dimensionless constant.\nEnergy has the dimensions of work, \\([L^{2}M^{1}T^{-2}]\\), so equating dimensions,\n\\([L^{2}M^{1}T^{-2}] = [M^{1}]^{a} [L^{1}T^{-1}]^{b} = [L^{b} M^{a} T^{-b}]\\)\nComparing the corresponding powers on both sides,\nfor M: \\(a = 1\\)\nfor L: \\(b = 2\\)\nfor T: \\(-b = -2\\), which gives \\(b = 2\\) and is consistent.\n\\(\\therefore \\text{K.E.} = k\\, m v^{2}\\)\nDimensional analysis cannot fix a dimensionless constant; experiment shows \\(k = \\tfrac{1}{2}\\), giving \\(\\text{K.E.} = \\tfrac{1}{2} m v^{2}\\)."
+  },
+  {
+    "id": "05be1eb1-6e63-40c8-bb59-47b8c81ff2bf",
+    "ref": "Ex Q.3 (i)",
+    "solution": "[Textbook answer-key error: the printed key gives the total mass as \\(43\\) kg. Both measurements are stated to one decimal place, so the sum must be reported as \\(43.0\\) kg — dropping the trailing zero claims a coarser precision than the data supports. The error, \\(\\pm 0.5\\) kg, is correct. This matters more here than it would elsewhere, since significant figures are the subject of this very chapter.]\n\nFor a sum the values add and the maximum absolute errors add.\nTotal mass \\(= 15.7 + 27.3 = 43.0\\) kg\nMaximum error \\(= \\Delta A + \\Delta B = 0.2 + 0.3 = 0.5\\) kg\nBoth measurements are given to one decimal place, so the sum is retained to one decimal place.\nTotal mass \\(= (43.0 \\pm 0.5)\\) kg"
+  },
+  {
+    "id": "b9d773cc-2a65-4d59-a2ac-24430c69b3fa",
+    "ref": "Ex Q.3 (ii)",
+    "solution": "[Textbook answer-key error: the printed key gives the relative error as \\(\\pm 0.0292\\) m s\\(^{-1}\\). A relative error is a ratio of two quantities carrying the same unit, so it is a pure number and cannot have units — the value \\(0.0292\\) is correct, the unit is not. The same slip is made again at Q.3 (viii), which makes it systematic rather than a typo.]\n\nSpeed \\(= \\dfrac{\\text{distance}}{\\text{time}} = \\dfrac{5.2}{100} = 0.052\\) m s\\(^{-1}\\)\nSpeed is a quotient, so the relative errors of the two measurements add:\n\\(\\dfrac{\\Delta v}{v} = \\dfrac{\\Delta s}{s} + \\dfrac{\\Delta t}{t} = \\dfrac{0.1}{5.2} + \\dfrac{1}{100}\\)\n\\(= 0.0192 + 0.01 = 0.0292\\)\nA relative error is a ratio of two quantities carrying the same unit, so it is a pure number and has no unit.\nSpeed \\(= 0.052\\) m s\\(^{-1}\\) and its relative error \\(= 0.0292\\) (that is, 2.92%).",
+    "_note": "The printed key gives the relative error as '0.0292 m s^-1'. The number is right; the unit is not, since a relative error is dimensionless. An errata bracket is owed here (I was not permitted to run apply-errata.ts)."
+  },
+  {
+    "id": "974ba3f2-ce77-4d6b-a9cf-18bbe281dd43",
+    "ref": "Ex Q.3 (iii)",
+    "solution": "[Textbook misprint: the stem reads \"a uniform. magnetic field\", with a full stop inside the phrase.]\n\nFrom the given relation \\(|\\vec{F}| = Bev\\),\n\\(B = \\dfrac{F}{ev}\\)\nThe dimensions of the three quantities on the right are\n\\([F] = [L^{1}M^{1}T^{-2}]\\)\n\\([e] = \\text{current} \\times \\text{time} = [L^{0}M^{0}T^{1}I^{1}]\\)\n\\([v] = [L^{1}M^{0}T^{-1}]\\)\n\\(\\therefore [B] = \\dfrac{[L^{1}M^{1}T^{-2}]}{[T^{1}I^{1}][L^{1}T^{-1}]} = \\dfrac{[L^{1}M^{1}T^{-2}]}{[L^{1}T^{0}I^{1}]}\\)\nThe dimensions of the magnetic field are \\([L^{0}M^{1}T^{-2}I^{-1}]\\)."
+  },
+  {
+    "id": "2c0a9959-1253-4012-a15b-c4c063f5fb5c",
+    "ref": "Ex Q.3 (iv)",
+    "solution": "Neglecting the air gaps, the whole volume of the ball is rope.\nVolume of the ball \\(= \\dfrac{4}{3}\\pi r^{3} = \\dfrac{4}{3} \\times 3.142 \\times (2)^{3} = 33.51\\) m\\(^{3}\\)\nThe rope has a square cross section of edge \\(4\\) mm \\(= 4 \\times 10^{-3}\\) m, so\nArea of cross section \\(= (4 \\times 10^{-3})^{2} = 1.6 \\times 10^{-5}\\) m\\(^{2}\\)\nTreating the rope as a long prism, volume \\(=\\) area \\(\\times\\) length, so\nLength \\(= \\dfrac{33.51}{1.6 \\times 10^{-5}} = 2.094 \\times 10^{6}\\) m\nWriting this as \\(A \\times 10^{n}\\) with \\(0.5 \\le A < 5\\) gives \\(n = 6\\).\nThe total length of the rope is of the order of \\(10^{6}\\) m, that is \\(10^{3}\\) km."
+  },
+  {
+    "id": "c1a82df2-9c92-421b-bfb0-b6ceb7a7a357",
+    "ref": "Ex Q.3 (v)",
+    "solution": "[Textbook note (not an error): the stem's constant \\(1.3 \\times 10^{-16}\\) m is an order of magnitude below the accepted nuclear radius parameter of about \\(1.3\\) fm \\(= 1.3 \\times 10^{-15}\\) m. The printed answer \\(-15\\) is nevertheless consistent with the stem AS PRINTED, but only under this chapter's own convention of writing a value as \\(A \\times 10^{n}\\) with \\(0.5 \\le A < 5\\); the more common convention would give \\(-16\\). Both stem and answer are preserved as printed.]\n\nSubstitute \\(A = 125\\) into the given relation:\n\\(A^{1/3} = (125)^{1/3} = 5\\)\n\\(R = 1.3 \\times 10^{-16} \\times 5 = 6.5 \\times 10^{-16}\\) m\nTo read off the order of magnitude the value must be written as \\(A \\times 10^{n}\\) with \\(0.5 \\le A < 5\\), which is the convention stated in this chapter. Since \\(6.5\\) lies outside that range, rewrite it as\n\\(R = 0.65 \\times 10^{-15}\\) m\nHere \\(0.65\\) does lie in the range, so \\(n = -15\\).\nThe order of magnitude of \\(R\\) is \\(-15\\)."
+  },
+  {
+    "id": "d6c9d5f7-08f6-446f-97e6-7a4446bd1303",
+    "ref": "Ex Q.3 (vi)",
+    "solution": "Mean length \\(= \\dfrac{3.11 + 3.13 + 3.14 + 3.14}{4} = \\dfrac{12.52}{4} = 3.13\\) cm\nThe absolute errors are the magnitudes of the deviations from this mean:\n\\(|3.11 - 3.13| = 0.02\\), \\(|3.13 - 3.13| = 0.00\\), \\(|3.14 - 3.13| = 0.01\\), \\(|3.14 - 3.13| = 0.01\\) cm\nMean absolute error \\(= \\dfrac{0.02 + 0.00 + 0.01 + 0.01}{4} = \\dfrac{0.04}{4} = 0.01\\) cm\nThis equals the least count of the instrument, which is the best precision the callipers can give.\nPercentage error \\(= \\dfrac{0.01}{3.13} \\times 100 = 0.32\\%\\)\nMean length \\(= 3.13\\) cm, mean absolute error \\(= 0.01\\) cm, percentage error \\(= 0.32\\%\\)."
+  },
+  {
+    "id": "b7bc29f1-ad4b-46a7-bf18-c8be1304844b",
+    "ref": "Ex Q.3 (vii)",
+    "solution": "Kinetic energy is \\(\\text{K.E.} = \\tfrac{1}{2}mv^{2}\\). For a product of powers the percentage errors add, each weighted by its power, so the velocity term is counted twice:\n\\(\\dfrac{\\Delta(\\text{K.E.})}{\\text{K.E.}} \\times 100 = \\left( \\dfrac{\\Delta m}{m} + \\dfrac{2\\Delta v}{v} \\right) \\times 100\\)\n\\(= \\left( \\dfrac{0.3}{60.0} + \\dfrac{2 \\times 0.1}{25.0} \\right) \\times 100\\)\n\\(= (0.005 + 0.008) \\times 100\\)\n\\(= 0.013 \\times 100\\)\nThe percentage error in the kinetic energy is \\(1.3\\%\\)."
+  },
+  {
+    "id": "7715a76c-017f-4987-a0e4-faa38c6dfb32",
+    "ref": "Ex Q.3 (viii)",
+    "solution": "[Textbook answer-key error: the printed key gives the relative error as \\(0.0065\\ \\Omega\\). A relative error is a ratio of two resistances, so it is dimensionless — the value is correct, the unit is not. The same slip is made at Q.3 (ii). Note the mean absolute error \\(0.04\\ \\Omega\\) on the same line is correctly given a unit, since that quantity does have one.]\n\nMean value \\(= \\dfrac{6.12 + 6.09 + 6.22 + 6.15}{4} = \\dfrac{24.58}{4} = 6.145\\ \\Omega\\)\nThe absolute errors are the magnitudes of the deviations from the mean:\n\\(0.025,\\ 0.055,\\ 0.075,\\ 0.005\\ \\Omega\\)\nMean absolute error \\(= \\dfrac{0.025 + 0.055 + 0.075 + 0.005}{4} = \\dfrac{0.16}{4} = 0.04\\ \\Omega\\)\nRelative error \\(= \\dfrac{0.04}{6.145} = 0.0065\\), a pure number with no unit, since it is a ratio of two resistances.\nPercentage error \\(= 0.0065 \\times 100 = 0.65\\%\\)\nMean absolute error \\(= 0.04\\ \\Omega\\), relative error \\(= 0.0065\\), percentage error \\(= 0.65\\%\\).",
+    "_note": "The printed key gives the relative error as '0.0065 ohm'. The value is right; the unit is not. Same defect as Ex Q.3 (ii); an errata bracket is owed."
+  },
+  {
+    "id": "f0d2274c-f15c-4e87-9f5a-27b6007f1df9",
+    "ref": "Ex Q.3 (ix)",
+    "solution": "Assume the velocity depends only on the gravitational acceleration and the distance fallen:\n\\(v = k\\, g^{a} h^{b}\\), where \\(k\\) is a dimensionless constant.\nEquating dimensions, with \\([v] = [L^{1}T^{-1}]\\), \\([g] = [L^{1}T^{-2}]\\) and \\([h] = [L^{1}]\\),\n\\([L^{1}T^{-1}] = [L^{1}T^{-2}]^{a} [L^{1}]^{b} = [L^{a+b} T^{-2a}]\\)\nComparing the powers of T: \\(-2a = -1\\), so \\(a = \\tfrac{1}{2}\\)\nComparing the powers of L: \\(a + b = 1\\), so \\(b = 1 - \\tfrac{1}{2} = \\tfrac{1}{2}\\)\n\\(\\therefore v = k\\, g^{1/2} h^{1/2}\\)\nHence \\(v = k\\sqrt{gh}\\), which is the required result."
+  },
+  {
+    "id": "cddfb79c-02c3-43f7-8eaa-5d2765104809",
+    "ref": "Ex Q.3 (x)",
+    "solution": "[Textbook misprint: in the printed answer every zero exponent is set as a degree sign, six times over — so the dimensional formulae read \\(M^{\\circ}\\) and \\(T^{\\circ}\\) where \\(M^{0}\\) and \\(T^{0}\\) belong. Confirmed against the correctly-set zeros in \\(v_{0}\\) two lines above. The dimensions themselves are correct.]\n\nIn a dimensionally valid equation every term must have the dimensions of the left-hand side, here velocity, \\([L^{1}M^{0}T^{-1}]\\). Take the terms one at a time.\nFor the term \\(at\\): \\([a][T^{1}] = [L^{1}T^{-1}]\\), so \\([a] = [L^{1}T^{-2}]\\), that is \\([L^{1}M^{0}T^{-2}]\\).\nOnly quantities of the same kind may be added, so in \\(t + c\\) the constant \\(c\\) must have the dimensions of time: \\([c] = [L^{0}M^{0}T^{1}]\\).\nFor the term \\(\\dfrac{b}{t + c}\\): \\(\\dfrac{[b]}{[T^{1}]} = [L^{1}T^{-1}]\\), so \\([b] = [L^{1}T^{-1}][T^{1}] = [L^{1}T^{0}]\\), that is \\([L^{1}M^{0}T^{0}]\\).\n\\(a = [L^{1}M^{0}T^{-2}]\\), \\(b = [L^{1}M^{0}T^{0}]\\), \\(c = [L^{0}M^{0}T^{1}]\\)."
+  },
+  {
+    "id": "9cd7e7e6-2703-4343-996a-c087c711a33c",
+    "ref": "Ex Q.3 (xi)",
+    "solution": "[Textbook answer-key error, and the value is wrong by a factor of 100: the printed key gives the volume as \\(8.552\\) m\\(^{3}\\). The thickness is \\(2.01\\) cm \\(= 0.0201\\) m, so \\(V = 4.234 \\times 1.005 \\times 0.0201 = 8.553 \\times 10^{-2}\\) m\\(^{3}\\) — the printed figure is the correct digit string with the centimetre never converted. A metal sheet 4.2 m by 1.0 m and 2 cm thick cannot have a volume of 8.5 cubic metres. The key is ALSO quoted to four significant figures in a question that asks for the answer \"to correct significant figures\", where the 3-figure thickness allows only three; the printed area \\(4.255\\) m\\(^{2}\\) is correct on both counts.]\n\nThe thickness is given in centimetres and must first be converted:\n\\(2.01\\) cm \\(= 2.01 \\times 10^{-2}\\) m \\(= 0.0201\\) m\nArea \\(=\\) length \\(\\times\\) breadth \\(= 4.234 \\times 1.005 = 4.25517\\) m\\(^{2}\\)\nBoth factors carry 4 significant figures, so the area is quoted to 4:\nArea \\(= 4.255\\) m\\(^{2}\\)\nVolume \\(=\\) area \\(\\times\\) thickness \\(= 4.25517 \\times 0.0201 = 0.0855289\\) m\\(^{3}\\)\nThe thickness carries only 3 significant figures, which is the fewest of the three measurements, so the volume is quoted to 3:\nVolume \\(= 8.55 \\times 10^{-2}\\) m\\(^{3}\\)\nArea \\(= 4.255\\) m\\(^{2}\\) and volume \\(= 8.55 \\times 10^{-2}\\) m\\(^{3}\\) (that is, \\(0.0855\\) m\\(^{3}\\)).",
+    "_note": "The printed key gives '4.255 m^2, 8.552 m^3'. The area agrees. The volume does NOT: 8.552 is the bare product 4.234 x 1.005 x 2.01, i.e. the thickness used as though it were in metres, so the printed value is a factor of 100 too large. It is also quoted to 4 significant figures where the 3-significant-figure thickness allows only 3. An errata bracket is owed."
+  },
+  {
+    "id": "55992dfc-6673-4218-b74c-807357d839ac",
+    "ref": "Ex Q.3 (xii)",
+    "solution": "[Textbook misprint: the question's own data are internally inconsistent. The length is given as \\((4.00 \\pm 0.001)\\) cm, whose uncertainty is finer than the last digit of the value quoted, while the radius is \\((0.0250 \\pm 0.001)\\) cm, whose uncertainty is ten times COARSER than its last digit. The percentage error \\(8.185\\%\\) follows exactly from the numbers as printed and is retained; note it is quoted to four significant figures although the uncertainties carry one.]\n\nThe cylinder has volume \\(V = \\pi r^{2} l\\), so its density is\n\\(\\rho = \\dfrac{m}{\\pi r^{2} l}\\)\nFor a product of powers the percentage errors add, each weighted by its power, and the radius enters squared:\n\\(\\dfrac{\\Delta \\rho}{\\rho} \\times 100 = \\left( \\dfrac{\\Delta m}{m} + \\dfrac{2 \\Delta r}{r} + \\dfrac{\\Delta l}{l} \\right) \\times 100\\)\n\\(= \\left( \\dfrac{0.01}{6.25} + \\dfrac{2 \\times 0.001}{0.0250} + \\dfrac{0.001}{4.00} \\right) \\times 100\\)\n\\(= (0.0016 + 0.08 + 0.00025) \\times 100\\)\n\\(= 0.08185 \\times 100\\)\nThe percentage error in the density is \\(8.185\\%\\). Almost all of it comes from the radius, because that measurement is the least precise in relative terms and its error is doubled by the square."
+  },
+  {
+    "id": "2ccc215e-0e86-4339-a5d5-824dba20fadb",
+    "ref": "Ex Q.3 (xiii)",
+    "solution": "The angular diameter must first be converted from seconds of arc to radian, using \\(1'' = 4.847 \\times 10^{-6}\\) rad:\n\\(\\alpha = 35.72'' = 35.72 \\times 4.847 \\times 10^{-6} = 1.731 \\times 10^{-4}\\) rad\nThe distance is \\(D = 824.7\\) million km \\(= 8.247 \\times 10^{8}\\) km.\nFor a distant object the diameter is \\(d = \\alpha D\\), so\n\\(d = 1.731 \\times 10^{-4} \\times 8.247 \\times 10^{8}\\)\nThe diameter of Jupiter is \\(1.428 \\times 10^{5}\\) km."
+  },
+  {
+    "id": "46c1a43d-d715-4826-82f9-b757ae394e27",
+    "ref": "Ex Q.3 (xiv)",
+    "solution": "For a quantity built as a product of powers, each percentage error is multiplied by the magnitude of its power and the results are added. A power in the denominator contributes with the same positive sign, because errors accumulate whichever way the quantity enters.\n\\(\\dfrac{\\Delta X}{X} \\times 100 = 4 \\left( \\dfrac{\\Delta a}{a} \\right) + 3 \\left( \\dfrac{\\Delta b}{b} \\right) + \\dfrac{1}{3} \\left( \\dfrac{\\Delta c}{c} \\right) + \\dfrac{1}{2} \\left( \\dfrac{\\Delta d}{d} \\right)\\), each term in per cent\n\\(= 4(2) + 3(3) + \\dfrac{1}{3}(3) + \\dfrac{1}{2}(4)\\)\n\\(= 8 + 9 + 1 + 2\\)\nThe percentage error in \\(X\\) is \\(20\\%\\)."
+  },
+  {
+    "id": "a4d74b48-68a7-4763-8992-3ea9777e379e",
+    "ref": "Ex Q.3 (xv)",
+    "solution": "Apply the rules for counting significant figures to each value in turn.\n\\(0.003\\) m\\(^{2}\\): the number is less than 1, so the zeros to the right of the decimal point and to the left of the first non-zero digit are not significant. Only the 3 counts, giving 1.\n\\(0.1250\\) gm cm\\(^{-2}\\): the leading zero is not significant, but 1, 2 and 5 are, and the trailing zero after the decimal point is significant because it is written. That gives 4.\n\\(6.4 \\times 10^{6}\\) m: in scientific notation only the digits of the coefficient count, so 6 and 4 give 2.\n\\(1.6 \\times 10^{-19}\\) C: likewise 1 and 6 give 2.\n\\(9.1 \\times 10^{-31}\\) kg: likewise 9 and 1 give 2.\nThe numbers of significant figures are 1, 4, 2, 2 and 2."
+  },
+  {
+    "id": "56979ca0-ba3a-4b30-9448-afbf3e180498",
+    "ref": "Ex Q.3 (xvi)",
+    "solution": "Radius \\(= \\dfrac{\\text{diameter}}{2} = \\dfrac{2.14}{2} = 1.07\\) cm\n\\(V = \\dfrac{4}{3}\\pi r^{3} = \\dfrac{4}{3} \\times 3.142 \\times (1.07)^{3}\\)\n\\((1.07)^{3} = 1.225\\), so\n\\(V = \\dfrac{4}{3} \\times 3.142 \\times 1.225 = 5.132\\) cm\\(^{3}\\)\nThe diameter is given to 3 significant figures, so the volume is quoted to 3 as well. Dividing by the exact number 2 does not reduce the count.\nThe volume of the sphere is \\(5.13\\) cm\\(^{3}\\)."
+  }
+]

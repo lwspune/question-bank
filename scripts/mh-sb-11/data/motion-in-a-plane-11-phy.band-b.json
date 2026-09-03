@@ -1,0 +1,32 @@
+[
+  {
+    "ref": "Solved Ex.3.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Average and Instantaneous Acceleration",
+    "difficulty": "MODERATE",
+    "stem": "The position vectors of three particles are given by \\(\\vec{x}_{1} = (5\\hat{i} + 5\\hat{j})\\) m, \\(\\vec{x}_{2} = (5t\\,\\hat{i} + 5t\\,\\hat{j})\\) m and \\(\\vec{x}_{3} = (5t\\,\\hat{i} + 10t^{2}\\,\\hat{j})\\) m as a function of time \\(t\\). Determine the velocity and acceleration for each, in SI units.",
+    "solution": "\\(\\vec{v}_{1} = d\\vec{x}_{1}/dt = 0\\) as \\(\\vec{x}_{1}\\) does not depend on time t.\nThus, the particle is at rest.\n\\(\\vec{v}_{2} = d\\vec{x}_{2}/dt = 5\\hat{i} + 5\\hat{j}\\) m/s. \\(\\vec{v}_{2}\\) does not change with time. \\(\\therefore \\vec{a}_{2} = 0\\)\n\\(v_{2} = \\sqrt{5^{2} + 5^{2}} = 5\\sqrt{2}\\) m/s, \\(\\tan\\theta = 5/5 = 1\\) or \\(\\theta = 45^\\circ\\). Thus, the direction of \\(v_{2}\\) makes an angle of \\(45^\\circ\\) to the horizontal.\n\\(\\vec{v}_{3} = d\\vec{x}_{3}/dt = 5\\hat{i} + 20t\\,\\hat{j}\\).\n\\(\\therefore v_{3} = \\sqrt{5^{2} + (20t)^{2}}\\) m/s. Its direction is along \\(\\theta = \\tan^{-1}\\left(\\dfrac{20t}{5}\\right)\\) with the horizontal.\n\\(\\vec{a}_{3} = \\dfrac{d\\vec{v}_{3}}{dt} = 20\\hat{j}\\) m/s\\(^{2}\\)\nThus, the particle 3 is getting accelerated along the \\(y\\)-axis at 20 m/s\\(^{2}\\).",
+    "_note": "The book denotes the POSITION vectors by \\(\\vec{x}_{1}, \\vec{x}_{2}, \\vec{x}_{3}\\) (not the usual \\(\\vec{r}\\)); transcribed as printed - do not \"correct\" it. Printed derivation checked for internal consistency and NO discrepancy found: \\(d(5t\\hat{i}+10t^{2}\\hat{j})/dt = 5\\hat{i}+20t\\hat{j}\\), \\(\\sqrt{5^{2}+5^{2}} = 5\\sqrt{2}\\), \\(\\tan^{-1}1 = 45^\\circ\\), and \\(d(5\\hat{i}+20t\\hat{j})/dt = 20\\hat{j}\\) all hold. The book states particle 1 is at rest but never writes \\(\\vec{a}_{1} = 0\\) explicitly. Stem heading is on p-07; the whole Solution is on p-08 (band boundary crossed as briefed)."
+  },
+  {
+    "ref": "Solved Ex.3.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equations of Motion in a Plane",
+    "difficulty": "MODERATE",
+    "stem": "The initial velocity of an object is \\(\\vec{u} = 5\\hat{i} + 10\\hat{j}\\) m/s. Its constant acceleration is \\(\\vec{a} = 2\\hat{i} + 3\\hat{j}\\) m/s\\(^{2}\\). Determine the velocity and the displacement after 5 s.",
+    "solution": "\\(\\vec{v} = \\vec{u} + \\vec{a}\\,t\\)\n\\(= \\left(5\\hat{i} + 10\\hat{j}\\right) + \\left(2\\hat{i} + 3\\hat{j}\\right)(5) = 15\\hat{i} + 25\\hat{j}\\)\n\\(\\therefore v = \\sqrt{v_{x}^{2} + v_{y}^{2}}\\)\n\\(= \\sqrt{15^{2} + 25^{2}} = \\sqrt{225 + 625} = \\sqrt{850}\\)\n\\(= 29.15\\) m/s\nDirection of \\(\\vec{v}\\) with \\(x\\)-axis is \\(\\tan^{-1}\\left(\\dfrac{v_{y}}{v_{x}}\\right) = \\tan^{-1}\\left(\\dfrac{25}{15}\\right) = \\tan^{-1}(1.667) = 59^\\circ\\)\n\\(\\vec{s} = \\vec{u}\\,t + \\dfrac{1}{2}\\vec{a}\\,t^{2}\\)\n\\(= \\left(5\\hat{i} + 10\\hat{j}\\right)(5) + \\dfrac{1}{2}\\left(2\\hat{i} + 3\\hat{j}\\right)5^{2}\\)\n\\(= 50\\hat{i} + \\left(87.5\\right)\\hat{j}\\)\n\\(\\therefore s = \\sqrt{s_{x}^{2} + s_{y}^{2}} = \\sqrt{50^{2} + 87.5^{2}}\\)\n\\(= \\sqrt{2500 + 7656.25}\\)\n\\(= \\sqrt{10156.25} = 100.78\\) m\nat \\(\\tan^{-1}\\dfrac{87.5}{50} = 60^\\circ 15'\\) with \\(x\\)-axis.",
+    "_note": "Printed derivation checked for internal consistency and NO numerical discrepancy found: \\(\\sqrt{850} = 29.155\\), \\(\\tan^{-1}(25/15) = 59.04^\\circ\\), \\((5\\hat{i}+10\\hat{j})(5) + \\tfrac{1}{2}(2\\hat{i}+3\\hat{j})(25) = 50\\hat{i} + 87.5\\hat{j}\\), \\(\\sqrt{10156.25} = 100.778\\), \\(\\tan^{-1}(1.75) = 60.255^\\circ = 60^\\circ 15'\\). Typographic only: the book sets the 59 degrees with a raised ordinal 'o' while the very next line on p-09 uses a true degree sign; both transcribed as \\(^\\circ\\). Stem + first half of the Solution are on p-08, the remainder on p-09 (band-internal page break)."
+  },
+  {
+    "ref": "Solved Ex.3.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relative Velocity",
+    "difficulty": "EASY",
+    "stem": "An aeroplane is travelling northward with a speed of 300 km/hr with respect to the Earth, when the wind is blowing from east to west at a speed of 100 km/hr. What is the velocity of the aeroplane with respect to the wind?",
+    "solution": "Let the velocity of the aeroplane with respect to Earth be \\(\\vec{v}_{AE}\\), velocity of wind with respect to Earth be \\(\\vec{v}_{WE}\\). The velocity of aeroplane with respect to wind, \\(\\vec{v}_{AW}\\) can be determined by the following expression:\n\\(\\vec{v}_{AW} = \\vec{v}_{AE} + \\vec{v}_{EW} = \\vec{v}_{AE} - \\vec{v}_{WE} = 100\\hat{i} + 300\\hat{j}\\), considering north along \\(+y\\) axis.\nMagnitude of \\(\\vec{v}_{AW} = \\sqrt{\\left(10000 + 90000\\right)} = 100\\sqrt{10}\\) km/hr, and its direction, \\(\\theta = \\tan^{-1}\\left(\\dfrac{300}{100}\\right) = 71.6^\\circ\\) is towards north of east.",
+    "_note": "Printed derivation checked for internal consistency and NO discrepancy found: with \\(\\vec{v}_{AE} = 300\\hat{j}\\) and a wind blowing east-to-west \\(\\vec{v}_{WE} = -100\\hat{i}\\), so \\(\\vec{v}_{AE} - \\vec{v}_{WE} = 100\\hat{i} + 300\\hat{j}\\); \\(\\sqrt{10000+90000} = \\sqrt{100000} = 100\\sqrt{10}\\); \\(\\tan^{-1}3 = 71.57^\\circ\\). Stem is in the LEFT column of p-09, its Solution at the TOP of the RIGHT column of the same page - reading across the page would separate them."
+  }
+]

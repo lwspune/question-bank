@@ -1,0 +1,21 @@
+[
+  {
+    "ref": "Solved Ex.3.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Uniform Circular Motion",
+    "difficulty": "EASY",
+    "stem": "An object of mass 50 g moves uniformly along a circular orbit with an angular speed of 5 rad/s. If the linear speed of the particle is 25 m/s, what is the radius of the circle? Calculate the centripetal force acting on the particle.",
+    "solution": "The linear speed and angular speed are related by \\(v = \\omega r\\)\n\n\\(\\therefore r = v/\\omega = 25/5\\) m \\(= 5\\) m.\n\nCentripetal force acting on the object \\(= \\dfrac{mv^2}{r} = \\dfrac{0.05 \\times 25^2}{5} = 6.25\\) N."
+  },
+  {
+    "ref": "Solved Ex.3.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "An object is travelling in a horizontal circle with uniform speed. At \\(t = 0\\), the velocity is given by \\(\\vec{u} = 20\\hat{i} + 35\\hat{j}\\) km/s. After one minute the velocity becomes \\(\\vec{v} = -20\\hat{i} - 35\\hat{j}\\). What is the magnitude of the acceleration?",
+    "solution": "[Textbook misprint: the question states the initial velocity in \\(\\text{km/s}\\), but its own solution computes in \\(\\text{m/s}\\) throughout and reaches \\(2.11\\ \\text{m s}^{-2}\\) — which follows only from \\(\\text{m/s}\\). Honouring the printed \\(\\text{km/s}\\) would give \\(2.11\\ \\text{km s}^{-2}\\). The stem is preserved as printed and the working is left in \\(\\text{m/s}\\), consistent with the book's own answer. The final velocity \\(-20\\hat{i} - 35\\hat{j}\\) is also printed with no unit at all. A stray duplicated equals sign at the head of the working has been removed.]\n\nMagnitude of initial and final velocities =\n\n\\(u = \\sqrt{(20)^2 + (35)^2}\\) m/s\n\n\\(= \\sqrt{1625}\\) m/s\n\n\\(= 40.3\\) m/s\n\nAs the velocity reverses in 1 min, the time period of revolution is 2 min.\n\n\\(T = \\dfrac{2\\pi r}{u}\\), giving \\(r = \\dfrac{uT}{2\\pi}\\)\n\n\\(a = \\dfrac{u^2}{r} = \\dfrac{u^2\\,2\\pi}{uT} = \\dfrac{2\\pi u}{T} = \\dfrac{2 \\times 3.14 \\times 40.3}{2 \\times 60}\\)\n\n\\(= 2.11\\) m s\\(^{-2}\\)",
+    "_note": "UNIT INCONSISTENCY IN THE PRINTED QUESTION vs ITS OWN SOLUTION (reported, not repaired). The stem prints the initial velocity as \\(\\vec{u} = 20\\hat{i} + 35\\hat{j}\\) km/s, but the printed solution computes the magnitude as \\(\\sqrt{(20)^2+(35)^2}\\) m/s = \\(\\sqrt{1625}\\) m/s = 40.3 m/s and carries m/s through to the final 2.11 m s\\(^{-2}\\). If the stem's km/s were honoured the answer would be 2110 m s\\(^{-2}\\) (2.11 km s\\(^{-2}\\)). Also: the final velocity \\(\\vec{v} = -20\\hat{i} - 35\\hat{j}\\) is printed with NO unit at all. Separately, the solution's first equation line opens with a stray leading '=' ('= u = \\(\\sqrt{\\ldots}\\)') after the words 'Magnitude of initial and final velocities ='. ARITHMETIC ITSELF IS CONSISTENT: \\(\\sqrt{1625} = 40.31\\) (printed 40.3); with T = 2 min = 120 s, \\(2\\pi u/T = 2\\times3.14\\times40.3/120 = 2.109\\) (printed 2.11), and the book's own struck-through cancellation of the two 2's gives the same value."
+  }
+]

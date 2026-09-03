@@ -1,0 +1,41 @@
+[
+  {
+    "ref": "Solved Ex.4.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Laws of Motion",
+    "difficulty": "MODERATE",
+    "stem": "Figure (a) shows a fixed pulley. A massless inextensible string with masses \\(m_1\\) and \\(m_2 > m_1\\) attached to its two ends is passing over the pulley. Such an arrangement is called an Atwood machine. Calculate accelerations of the masses and force due to the tension along the string assuming axle of the pulley to be frictionless.",
+    "solution": "[Fig. (a): a pulley fixed to a rigid support, with a string passing over it carrying the mass \\(m_1\\) hanging on the left and the mass \\(m_2\\) hanging on the right. The force due to tension \\(T\\) acts upwards along the string on each mass, while the weights \\(m_1 g\\) and \\(m_2 g\\) act vertically downwards.]\n\n**Method I:** Direct method: As \\(m_2 > m_1\\), mass \\(m_2\\) is moving downwards and mass \\(m_1\\) is moving upwards.\n\nNet downward force\n\n\\(= F = \\left(m_2\\right)g - \\left(m_1\\right)g = \\left(m_2 - m_1\\right)g\\)\n\nAs the string is inextensible, both the masses travel the same distance in the same time. Thus, their accelerations are numerically the same (one upward, other downward). Let it be \\(a\\).\n\nThus, total mass in motion, \\(M = m_2 + m_1\\)\n\n\\(\\therefore a = \\dfrac{F}{M} = \\left(\\dfrac{m_2 - m_1}{m_2 + m_1}\\right)g\\)\n\nFor mass \\(m_1\\), the upward force is the force due to tension \\(T\\) and downward force is \\(mg\\). It has upward acceleration \\(a\\). Thus, \\(T - m_1 g = ma\\)\n\n\\(\\therefore T = m_1(g + a)\\)\n\nUsing the expression for \\(a\\), we get\n\n\\(T = \\left(\\dfrac{2m_1 m_2}{m_1 + m_2}\\right)g\\)\n\n**Method II:** (Free body equations)\n\n[Fig. (b) and Fig. (c): free body diagram of \\(m_1\\) - the force due to tension \\(T\\) acting vertically upwards and the weight \\(m_1 g\\) acting vertically downwards; free body diagram of \\(m_2\\) - the force due to tension \\(T\\) acting vertically upwards and the weight \\(m_2 g\\) acting vertically downwards.]\n\nFree body diagrams of \\(m_1\\) and \\(m_2\\) are as shown in Figs. (b) and (c).\n\nThus, for the first body, \\(T - m_1 g = m_1 a\\) --- (I)\n\nFor the second body, \\(m_2 g - T = m_2 a\\) --- (II)\n\nAdding (I) and (II), and solving for \\(a\\),\n\nwe get, \\(a = \\left(\\dfrac{m_2 - m_1}{m_2 + m_1}\\right)g\\) --- (III)\n\nSolving Eqs. (II) and (III) for \\(T\\), we get,\n\n\\(T = m_2(g - a) = \\left(\\dfrac{2m_1 m_2}{m_1 + m_2}\\right)g\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. (a) is the Atwood-machine setup (fixed pulley, string over it, m1 hanging left and m2 hanging right, tension T up on each mass, weights m1g and m2g down). Method II additionally prints two separate free body diagrams, one per mass, each showing T upwards and the weight downwards. The stem states the arrangement fully in words, so no step is unanswerable without the figures; they are the setup, not the answer.",
+    "_note": "Two printed defects, neither answer-affecting. (1) In Method II BOTH figure captions are printed as \"Fig. (b)\" while the sentence immediately below them reads \"Free body diagrams of m1 and m2 are as shown in Figs. (b) and (c)\" - the second caption should read \"Fig. (c)\". (2) In Method I the book prints \"downward force is mg\" and \"T - m_1 g = ma\" using a bare m where m_1 is meant; the very next line correctly writes T = m_1(g + a). Both transcribed as printed. All three expressions for T were checked numerically and agree (m1(g+a) = m2(g-a) = 2m1m2 g/(m1+m2))."
+  },
+  {
+    "ref": "Solved Ex.4.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "stem": "One marble collides head-on with another identical marble at rest. If the collision is partially inelastic, determine the ratio of their final velocities in terms of coefficient of restitution \\(e\\).",
+    "solution": "According to conservation of momentum, \\(m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2\\)\n\nAs \\(m_1 = m_2\\), we get, \\(u_1 + u_2 = v_1 + v_2\\)\n\n\\(\\therefore\\) If \\(u_2 = 0\\), we get, \\(v_1 + v_2 = u_1\\) ... (I)\n\nCoefficient of restitution,\n\n\\(e = \\dfrac{v_2 - v_1}{u_1 - u_2}\\)  \\(\\therefore v_2 - v_1 = e u_1\\) ... (II)\n\nDividing Eq. (I) by Eq. (II),\n\n\\(\\dfrac{v_1 + v_2}{v_2 - v_1} = \\dfrac{1}{e}\\)\n\nUsing componendo and dividendo, we get,\n\n\\(\\dfrac{v_2}{v_1} = \\dfrac{1 + e}{1 - e}\\)"
+  },
+  {
+    "ref": "Solved Ex.4.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "stem": "A shell of mass 3 kg is dropped from some height. After falling freely for 2 seconds, it explodes into two fragments of masses 2 kg and 1 kg. Kinetic energy provided by the explosion is 300 J. Using \\(g = 10 \\text{ m/s}^{2}\\), calculate velocities of the fragments. Justify your answer if you have more than one options.",
+    "solution": "\\(m_1 + m_2 = 3\\) kg.\n\nAfter falling freely for 2 seconds,\n\n\\(v = u + at = 0 + 10(2) = 20 \\text{ m s}^{-1} = u_1 = u_2\\)\n\nAccording to conservation of linear momentum, \\(m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2\\)\n\n\\(\\therefore 3 \\times 20 = 2v_1 + 1v_2\\)  \\(\\therefore v_2 = 60 - 2v_1\\) --- (I)\n\nK.E. provided = Final K.E. \\(-\\) Initial K.E. \\(= \\dfrac{1}{2}m_1 v_1^2 + \\dfrac{1}{2}m_2 v_2^2 - \\dfrac{1}{2}\\left(m_1 + m_2\\right)u^2\\)\n\n\\(\\therefore \\dfrac{1}{2}2v_1^2 + \\dfrac{1}{2}v_2^2 - \\dfrac{1}{2}3(20)^2 = 300 \\text{ J}\\)\n\nor \\(2v_1^2 + v_2^2 = 1800\\)\n\nor \\(2v_1^2 + \\left(60 - 2v_1\\right)^2 = 1800\\) using Eq. (I)\n\n\\(\\therefore 3600 - 240v_1 + 6v_1^2 = 1800\\)\n\n\\(\\therefore v_1^2 - 40v_1 + 300 = 0\\)\n\n\\(\\therefore v_1 = 30 \\text{ m s}^{-1}\\) or \\(10 \\text{ m s}^{-1}\\) and\n\n\\(v_2 = 0\\) or \\(40 \\text{ m s}^{-1}\\)\n\nThere are two possible answers since the positions of two fragments can be different as explained below.\n\nIf \\(v_1 = 30 \\text{ m s}^{-1}\\) and \\(v_2 = 0\\), lighter fragment 2 should be above. On the other hand, if \\(v_1 = 10 \\text{ m s}^{-1}\\) and \\(v_2 = 40 \\text{ m s}^{-1}\\), lighter fragment 2 should be below, both moving downwards."
+  },
+  {
+    "ref": "Solved Ex.4.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "MODERATE",
+    "stem": "Bullets of mass 40 g each, are fired from a machine gun at a rate of 5 per second towards a firmly fixed hard surface of area \\(10 \\text{ cm}^{2}\\). Each bullet hits normal to the surface at 400 m/s and rebounds in such a way that the coefficient of restitution for the collision between bullet and the surface is 0.75. Calculate average force and average pressure experienced by the surface due to this firing.",
+    "solution": "For the collision,\n\n\\(u_1 = 400 \\text{ m s}^{-1}\\), \\(e = 0.75\\), \\(v_1 = ?\\)\n\nFor the firmly fixed hard surface, \\(u_2 = v_2 = 0\\)\n\n\\(e = 0.75 = \\dfrac{v_1 - v_2}{u_2 - u_1} = \\dfrac{v_1 - 0}{0 - 400}\\)  \\(\\therefore v_1 = -300\\) m/s.\n\n-ve sign indicates that the bullet rebounds in exactly opposite direction.\n\nChange in momentum of each bullet \\(= m\\left(v_1 - u_1\\right)\\)\n\nEqual and opposite will be the momentum transferred to the surface, per collision.\n\n\\(\\therefore\\) Momentum transferred to the surface, per collision\n\n\\(p = m\\left(u_1 - v_1\\right) = 0.04\\left(400 - \\left[-300\\right]\\right) = 28 \\text{ N s}\\)\n\nThe rate of collision is same as rate of firing.\n\n\\(\\therefore\\) Momentum received by the surface per second, \\(\\dfrac{dp}{dt} = 28 \\times 5 = 140 \\text{ N}\\)\n\nThis must be the average force experienced by the surface of area \\(A = 10 \\text{ cm}^{2} = 10^{-3} \\text{ m}^{2}\\)\n\n\\(\\therefore\\) Average pressure experienced,\n\n\\(P = \\dfrac{F}{A} = \\dfrac{140}{10^{-3}} = 1.4 \\times 10^{5} \\text{ N m}^{-2}\\)\n\n\\(\\approx 1.4\\) times the atmospheric pressure."
+  }
+]
