@@ -1026,6 +1026,111 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    (arenesulfonyl chloride / Hinsberg) folded into Chemical Properties since
   //    it is a reaction OF amines. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ── Ch.4 Chemical Thermodynamics. 27pp. The strongest gate in Std XII: ~7
+  //    exercise rows print an answer, and this chapter introduces a SIXTH printed
+  //    form — `Ans. : (-873.4 J)`, with the token OUTSIDE the parentheses and the
+  //    value inside. Do not assume the five forms in the brief are exhaustive.
+  //
+  //    MEASURED (0-based): worked examples on p05 (4.1-4.3), p07 (4.4-4.6),
+  //    p10 (4.7-4.9), p14 (4.10), p15 (4.11), p22 (4.16-4.18), p23 (4.19-4.20).
+  //    ⚠ 4.12-4.15 ARE MISSING FROM THE TEXT LAYER, and p16/p17 carry THREE
+  //      `Solution :` labels with NO `Problem` label at all. Those are almost
+  //      certainly the missing four, whose labels the extractor drops. Establish
+  //      the true count from the PAGE — the honest expectation is 20, not 16.
+  //    Exercise opens p23 and runs to p25. Blocks: `1. Select the most apropriate
+  //    option` (i-x) — the book's own typo, transcribe the instruction as printed
+  //    — then `2. Answer the following in one or two sentences` (i-viii),
+  //    `3. Answer in brief.` (i-ix), `4. Answer the following questions` (i-xiv).
+  "thermodynamics-12-chem": {
+    id: "thermodynamics-12-chem",
+    chapterName: "Chemical Thermodynamics",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Chemical_Thermodynamics.pdf",
+    pdf: chem12("04. Chemical Thermodynamics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Chemical Thermodynamics (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Terms Used in Thermodynamics",
+      "Nature of Heat and Work",
+      "Pressure-Volume Work and Maximum Work",
+      "Internal Energy",
+      "First Law of Thermodynamics",
+      "Enthalpy and Enthalpies of Physical Transformations",
+      "Thermochemistry",
+      "Spontaneity and Entropy",
+    ],
+  },
+
+  // ── Ch.6 Chemical Kinetics. 18pp. 282 PYQ of downstream demand — the highest
+  //    of any Chemistry chapter in the bank.
+  //    This chapter is where the BARE-PARENTHESIS answer form was discovered:
+  //    its `4. Solve` block prints `(28.7 min)`, `(54.66 kJ/mol)`, `(9.72 × 10^6
+  //    M^-1 s^-1)` with no `Ans` token anywhere. NINE such rows — that is the gate.
+  //
+  //    MEASURED (0-based): worked examples p01-p14, numbered 6.1-6.14.
+  //    ⚠ 6.11 IS ABSENT from the text layer (p09 gives 6.8-6.10, p13 resumes at
+  //      6.12). Check the page before concluding the book skips it.
+  //    Exercise opens p15 and runs to p17. Blocks: `1. Choose the most correct
+  //    option` (i-x), `2. Answer the following in one or two sentences` (i-x),
+  //    `3. Answer the following in brief.` (i-x), `4. Solve` (i-ix).
+  //    p17 also carries two `Activity :` boxes — open-ended, NOT ingested.
+  "kinetics-12-chem": {
+    id: "kinetics-12-chem",
+    chapterName: "Chemical Kinetics",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Chemical_Kinetics.pdf",
+    pdf: chem12("06. Chemical Kinetics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Chemical Kinetics (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Rate of Reaction",
+      "Rate of Reaction and Reactant Concentration",
+      "Molecularity of Elementary Reactions",
+      "Integrated Rate Law",
+      "Collision Theory of Bimolecular Reactions",
+      "Temperature Dependence of Reaction Rates",
+      "Effect of a Catalyst on the Rate of Reaction",
+    ],
+  },
+
+  // ── Ch.5 Electrochemistry. 30pp — the largest Std XII Chemistry chapter.
+  //    270 PYQ of demand.
+  //    ⚠⚠ A `Solution` SCAN IS UNRELIABLE IN THIS CHAPTER, and the reason is
+  //      semantic rather than typographic: "solution" is a CHEMICAL term here, so
+  //      the word appears constantly in prose ("conductivity of the solution").
+  //      Measured: p01 carries FIVE `Solution` hits and ZERO of them is a worked
+  //      example's label; p00/p02/p04/p06/p10/p13/p19/p29 are the same story.
+  //      Anchor on `Problem N.M` ONLY. Those run 5.1-5.12 and are contiguous:
+  //      p03, p05, p07, p11, p12, p16, p18. The same warning applies to Ch.2
+  //      Solutions and Ch.3 Ionic Equilibria when they are worked.
+  //    Exercise opens p27 and runs to p29. Blocks: `1. Choose the most correct
+  //    option` (i-x), `2. Answer the following in one or two sentences` (i-x),
+  //    `3. Answer the following in brief` (i-xi), `4. Answer the following :`.
+  //    Only ~3 rows print an answer (`2.03 A`, `0.36 V`, `0.0327 V`), so the gate
+  //    is thin here — report the KEYED count, not the chapter total.
+  //    p29 also carries Activity boxes (prepare a salt bridge, collect
+  //    information) — open-ended, NOT ingested.
+  "electrochemistry-12-chem": {
+    id: "electrochemistry-12-chem",
+    chapterName: "Electrochemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Electrochemistry.pdf",
+    pdf: chem12("05. Electrochemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Electrochemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Electric Conduction and Conductance of Solutions",
+      "Electrochemical Cells",
+      "Electrolytic Cell",
+      "Galvanic or Voltaic Cell",
+      "Electrode Potential and Cell Potential",
+      "Thermodynamics of Galvanic Cells",
+      "Reference Electrodes",
+      "Galvanic Cells in Day-to-Day Life and Fuel Cells",
+      "Electrochemical Series",
+    ],
+  },
+
   "amines-12-chem": {
     id: "amines-12-chem",
     chapterName: "Amines",

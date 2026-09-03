@@ -1591,6 +1591,47 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    a /browse filter that returns nothing. 1.5 and 1.6 are merged because each
   //    is a single thin section. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ── Ch.2 Introduction to Analytical Chemistry. 14pp.
+  //    ⚠ THIS IS THE BEST-KEYED CHAPTER IN THE ENTIRE BOOK — ~46 candidate keyed
+  //      rows, against a book-wide average of ~14% coverage. If the step-6 gate is
+  //      ever going to earn its keep on Chemistry, it is here. Report the KEYED
+  //      count precisely; it is the headline result for this chapter.
+  //      Forms seen: `(Ans.: 249.5 g/mol)`, `(Ans. : 10.8 g)`, `(Ans.: Na2CO3)` —
+  //      note the last is a FORMULA, not a number, so a numeric-only scan misses it.
+  //
+  //    MEASURED (0-based): worked examples run 2.1-2.18 CONTIGUOUSLY across
+  //    p01-p09 (p01 4, p02, p03 2, p04 2, p05, p06 4, p07, p08 2, p09).
+  //    ⚠ p01 carries FOUR `Problem` labels and NO `Solution` label at all — those
+  //      four are significant-figures worked items whose working follows inline.
+  //      Do not read the missing label as a missing solution.
+  //    ⚠ p08 shows 3 line-start `Solution` labels against 8 loose hits: this
+  //      chapter teaches CONCENTRATION OF SOLUTIONS, so "solution" is a chemical
+  //      term in the prose. Anchor on `Problem N.M` only.
+  //    Exercise opens p10 and runs to p13. Blocks: `1. Choose correct option`
+  //    (A-L), `2. Answer the following questions` (A-J), `3. Solve the following
+  //    questions` (A-D), `4. Solve the following problems` (A-J, spilling to p13).
+  //    An atomic-mass preamble ("At. wt. : Ca = 40; C = 12; O = 16") is printed
+  //    for the p13 numericals — it MUST go into `context` on every row that needs
+  //    it, before commit.
+  "analytical-chemistry-11-chem": {
+    id: "analytical-chemistry-11-chem",
+    chapterName: "Introduction to Analytical Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Introduction_to_Analytical_Chemistry.pdf",
+    pdf: chem11("02. Introduction to Analytical Chemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Introduction to Analytical Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Analysis",
+      "Mathematical Operations and Error Analysis",
+      "Determination of Molecular Formula",
+      "Chemical Reactions and Stoichiometric Calculations",
+      "Limiting Reagent",
+      "Concentration of Solution",
+      "Use of Graph in Analysis",
+    ],
+  },
+
   "basic-concepts-11-chem": {
     id: "basic-concepts-11-chem",
     chapterName: "Some Basic Concepts of Chemistry",
