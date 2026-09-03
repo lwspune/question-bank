@@ -1,0 +1,62 @@
+[
+  {
+    "ref": "Solved Ex.9.1",
+    "why": "The refractive index is printed as 10.5 and then divided by on the very next line as 1.5, which is the true value for glass. A decimal point has moved. The answer (10 ps) follows from 1.5 and is unaffected.",
+    "find": "\\( n_{glass} = 10.5 \\)",
+    "replace": "\\( n_{glass} = 1.5 \\)"
+  },
+  {
+    "ref": "Solved Ex.9.7",
+    "why": "The solution states two lines above that R2 is NEGATIVE for a double convex lens, and its own working substitutes -(5R1), yet the final line prints R2 = 30 cm without the sign. With R1 = 6 cm and R2 = -5R1, the answer is -30 cm.",
+    "find": "\\therefore R_{1} = 6\\ \\text{cm} \\quad \\therefore R_{2} = 30\\ \\text{cm}",
+    "replace": "\\therefore R_{1} = 6\\ \\text{cm} \\quad \\therefore R_{2} = -30\\ \\text{cm}"
+  },
+  {
+    "ref": "Solved Ex.9.8",
+    "why": "Two defects on one line. The refraction angle for violet is printed with a CAPITAL R where the lower-case r for the angle inside the slab belongs (the capital is used for the red ray's point in the figure). And the angular-dispersion line loses its equals sign, printing 'delta_RV = r_R - r_V 32'' where 32' is the value of that difference: 35 deg - 34 deg 28' = 32'.",
+    "find": "\\( \\therefore r_{R} = 35^{0} \\) and \\( R_{V} = 34^{0}28' \\quad \\therefore \\delta_{RV} = r_{R} - r_{V}\\ 32' \\)",
+    "replace": "\\( \\therefore r_{R} = 35^{0} \\) and \\( r_{V} = 34^{0}28' \\quad \\therefore \\delta_{RV} = r_{R} - r_{V} = 32' \\)"
+  },
+  {
+    "ref": "Solved Ex.9.8",
+    "why": "SELF-REFUTING as printed: the lateral deviation for violet is given the same value 2.58 cm as for red, and the very next line then subtracts them to get 0.033 cm. Recomputing from the example's own figures, AV x sin(i - r_V) = 6.063 x sin 25 deg 32' = 2.61 cm. The printed dispersion 0.033 cm is correct and is exactly what 2.61 - 2.58 gives, so it is the 2.58 for violet that is wrong.",
+    "find": "\\( L_{V} = \\text{VM} = \\text{AV}\\left( \\sin[i - r_{V}] \\right) = 2.58\\ \\text{cm} \\)",
+    "replace": "\\( L_{V} = \\text{VM} = \\text{AV}\\left( \\sin[i - r_{V}] \\right) = 2.61\\ \\text{cm} \\)"
+  },
+  {
+    "ref": "Solved Ex.9.11",
+    "why": "The solution opens by naming the lens concavo-CONCAVE where the stem says concavo-CONVEX. The reasoning that follows is the correct one for a concavo-convex (meniscus) lens - both radii of the same sign - so only the word is wrong.",
+    "find": "For a concavo-concave lens",
+    "replace": "For a concavo-convex lens"
+  },
+  {
+    "ref": "Solved Ex.9.11",
+    "why": "The subtraction is written f_V - f_R while the two lines directly above it give f_R = 25.51 cm and f_V = 23.58 cm - so the expression names the quantities in the opposite order to the numbers it then substitutes. The value 1.93 cm is correct.",
+    "find": "\\( = f_{V} - f_{R} = 25.51 - 23.58 = 1.93\\ \\text{cm} \\)",
+    "replace": "\\( = f_{R} - f_{V} = 25.51 - 23.58 = 1.93\\ \\text{cm} \\)"
+  },
+  {
+    "ref": "Solved Ex.9.12",
+    "why": "A unit slip. The stem gives the letter thickness as 0.5 MM, and the magnification is 5, so the image is 2.5 mm - the printed 2.5 cm is ten times too large. The ratio line immediately above uses 0.5 without a unit, so only this line carries the error.",
+    "find": "\\( \\therefore h_{i} = 2.5\\ \\text{cm} \\)",
+    "replace": "\\( \\therefore h_{i} = 2.5\\ \\text{mm} \\)"
+  },
+  {
+    "ref": "Solved Ex.9.12",
+    "why": "The same unit slip repeated: 3.125 x 0.5 mm = 1.5625 mm, not cm.",
+    "find": "\\( 3.125 \\times 0.5 = 1.5625\\ \\text{cm} \\)",
+    "replace": "\\( 3.125 \\times 0.5 = 1.5625\\ \\text{mm} \\)"
+  },
+  {
+    "ref": "Solved Ex.9.12",
+    "why": "The Greek letter mu is printed where the object distance u belongs; the chapter uses mu for refractive index, so as printed the line reads as a refractive index of -5 cm.",
+    "find": "For \\( \\mu = -5\\ \\text{cm} \\)",
+    "replace": "For \\( u = -5\\ \\text{cm} \\)"
+  },
+  {
+    "ref": "Solved Ex.9.14",
+    "why": "The subscript is 0 (objective) where e (eye lens) belongs: the tube length is L = f_o + f_e = 1.05 m with f_o = 1 m, so the unknown being solved for is f_e, which the same line then correctly reports as 0.05 m.",
+    "find": "\\therefore 1.05 = 1 + f_{0} \\quad",
+    "replace": "\\therefore 1.05 = 1 + f_{e} \\quad"
+  }
+]

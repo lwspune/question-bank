@@ -77,6 +77,23 @@ export const DATA = join(__dirname, "data"); // committed: transcription (source
 // plus answers authored strictly from the chapter's own prose — with nothing to
 // diff against. Schedule them knowingly; do not treat a clean run there as gate
 // evidence.
+//
+// ⚠ COUNTING THE SOLVED EXAMPLES: `Example\s*\d+\.\d+` UNDER-COUNTS, and the
+// miss is silent — a stranded worked example simply never gets ingested, and no
+// downstream gate can see an absence. Optics is the worked case: the regex finds
+// 8, the `Solution :` markers imply 12, and the truth is 14. Three causes, all
+// of them the book's own typesetting:
+//   (a) it DROPS ITS OWN CHAPTER PREFIX on some examples — `Example 6:` where it
+//       prints `Example 9.6:` elsewhere in the same chapter (5 of Optics' 14);
+//   (b) it puts a SPACE INSIDE the number — `Example 9. 4:`;
+//   (c) some examples print NO `Solution` label at all, the working starting
+//       straight in (2 in Optics).
+// So: scan loosely for `[Ee]xample` (expect a few prose false positives such as
+// "For example"), reconcile against the `Solution :` count, and check the
+// numbering runs 1..N with no gaps — that contiguity is the evidence the set is
+// complete. Refs are then NORMALISED to `Solved Ex.<chapter>.<n>` so a prefix in
+// sections.ts can reach all of them; keeping the printed `Solved Ex.6` would
+// strand those rows outside the block.
 const PHYSICS_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
 const phy11 = (p: string) => join(PHYSICS_ROOT, "11th_Topics", p);
@@ -1175,6 +1192,86 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Electromotive Force",
       "Cells in Series and Parallel",
       "Types of Cells",
+    ],
+  },
+
+  // ── Ch.10 Electrostatics. 19pp. 9 `Example` and 9 `Solution :` markers — they
+  //    agree, so no reconciliation is owed. 9 exercise questions print an inline
+  //    [Ans: ...]. Highest-demand Std XI chapter: 431 PYQ across JEE/CET/NEET.
+  //    Subtopics merge the spine's thin §10.3.x / §10.4.x / §10.6.x sub-sections;
+  //    §10.1 Introduction is question-less prose and is not one.
+  "electrostatics-11-phy": {
+    id: "electrostatics-11-phy",
+    chapterName: "Electrostatics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Electrostatics.pdf",
+    pdf: phy11("10. Electrostatics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Electrostatics (Balbharati Physics textbook)",
+    subtopics: [
+      "Electric Charges and Their Basic Properties",
+      "Coulomb's Law",
+      "Principle of Superposition",
+      "Electric Field and Lines of Force",
+      "Electric Flux and Gauss' Law",
+      "Electric Dipole",
+      "Continuous Charge Distribution",
+    ],
+  },
+
+  // ── Ch.09 Optics. 29pp — the largest Std XI Physics chapter.
+  //    ⚠ 8 `Example` markers against 12 `Solution :` markers — the BIGGEST such
+  //    gap in either Physics volume. Reconcile it and say what caused it: the
+  //    measured causes are a `Solutions:` plural, a worked example printed with no
+  //    solution label at all, and an `Example` hit that is only a prose
+  //    cross-reference. Treat the Example count as PRIMARY.
+  //    13 exercise questions print an inline [Ans: ...]. 364 PYQ of demand.
+  "optics-11-phy": {
+    id: "optics-11-phy",
+    chapterName: "Optics",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Optics.pdf",
+    pdf: phy11("09. Optics.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Optics (Balbharati Physics textbook)",
+    subtopics: [
+      "Nature of Light",
+      "Cartesian Sign Convention",
+      "Reflection from Plane and Curved Mirrors",
+      "Refraction",
+      "Total Internal Reflection",
+      "Refraction at a Spherical Surface and Lenses",
+      "Dispersion of Light and Prisms",
+      "Natural Phenomena due to Sunlight",
+      "Defects of Lenses",
+      "Optical Instruments",
+    ],
+  },
+
+  // ── Ch.14 Semiconductors. 15pp. 3 `Example` and 3 `Solution :` markers.
+  //    ⚠⚠ THIS CHAPTER PRINTS **ZERO** INLINE ANSWERS — measured across the whole
+  //    file. The step-6 gate therefore CANNOT run on it at all; there is nothing
+  //    to diff against, so `dump-book-answers.ts` will dump 0 keyed rows and that
+  //    is CORRECT, not a bug. It runs the mh-sb-9 humanities regime instead:
+  //    blind MCQ re-derivation, answers authored strictly from the chapter's own
+  //    prose, derived-provenance stamped at COMMIT. Do NOT read a clean run here
+  //    as gate evidence — there is no gate. 299 PYQ of demand.
+  "semiconductors-11-phy": {
+    id: "semiconductors-11-phy",
+    chapterName: "Semiconductors",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Semiconductors.pdf",
+    pdf: phy11("14. Semiconductors.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Semiconductors (Balbharati Physics textbook)",
+    subtopics: [
+      "Electrical Conduction in Solids",
+      "Band Theory of Solids",
+      "Intrinsic Semiconductors",
+      "Extrinsic Semiconductors",
+      "p-n Junction and the Junction Diode",
+      "Semiconductor Devices and Their Applications",
+      "Thermistor",
     ],
   },
 };
