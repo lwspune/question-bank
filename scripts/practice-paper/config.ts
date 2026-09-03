@@ -4694,6 +4694,71 @@ export const PAPERS: Record<string, PaperSpec> = {
     createPaper: false, // Excel is the requested deliverable; no /dashboard/papers paper
   },
 
+  // LWS "Homonyms PK 11" — 120-q NDA English drill, PK #11 in the same teacher's series as
+  // eng-mock-pk1 above. Every item tests one set of confusable words, so the whole paper files
+  // under ONE chapter + ONE subtopic (Vocabulary / Confusable Word Pairs). Born-digital .docx
+  // with a clean text layer and ZERO images: all 120 stems and 480 options came straight from
+  // pandoc, no vision pass. Header reads "Homonyms PK 11"; created 2026-08-12.
+  //
+  // THREE printed formats, none of which changes the point tested (so one subtopic, per the
+  // eng-mock-pk1 precedent that subtopic follows the point TESTED, not the format):
+  //   67 USAGE      Q1-56, 58, 60-66, 79-81 — numbered sentences, "which are used correctly?"
+  //   45 DEFINITION Q57, 59, 67-70, 74-78, 82-105, 111-120 — no sentences at all; the stem IS
+  //                 the bare word pair, because the source prints no instruction line anywhere
+  //                 in those blocks (verified in the Word XML). That matches ~130 existing bank
+  //                 rows ("Appraise and Apprise", "Guarantee and Warranty"), so nothing invented.
+  //    8 S1/S2      Q71-73, 106-110 — judge two statements. Q106-110 are really GRAMMAR points
+  //                 (especially/specially, between/among, shall/will, since, any/some); kept here
+  //                 because the paper frames them as confusables.
+  //
+  // NO PRINTED KEY — not in the docx, not in footnotes/endnotes/comments, no companion file. So
+  // all 115 non-copied answers are DERIVED, and were derived TWICE by independent blind passes
+  // that could not see each other's output: **115/115 AGREE, 0 disagreements**, with identical
+  // answer distributions. Treat that as evidence, NOT proof — agreement bounds DISAGREEMENT risk,
+  // never correlated error, and two passes over English usage items can share a bias. The 9 items
+  // where BOTH passes recorded a caveat are the weakest rows and carry reviewNotes: Q19, Q34, Q51,
+  // Q61, Q71, Q77, Q84, Q95, Q113.
+  //
+  // Semantic dedup vs the FULL live NDA English bank (2,368 rows, all chapters, pyq + practice),
+  // run BEFORE any answer derivation: 8 DUP / 9 MAYBE / 103 NEW. MAYBE stays "new" per the standing
+  // precedent. 9 rows ship status:"dup" (paper-backing only, never PUBLIC):
+  //   Q101-105 — option text AND printed ORDER are byte-identical to the matched bank row, so the
+  //              bank's key and solution carry over UNCHANGED (order verified, not assumed — a
+  //              swapped option would silently mis-key).
+  //   Q67, Q78, Q119 — same word set and same task as a bank row, but the option TEXT differs, so
+  //              the key is derived here rather than copied.
+  //   Q111   — IN-FILE duplicate of Q70: both ask which option defines elicit/illicit. Both print,
+  //              so both commit and both sit in the paper; only Q70 is PUBLIC-eligible.
+  //
+  // FOUR SOURCE DEFECTS, none of which makes an item unanswerable (0 flawed):
+  //   * Q116 is PRINTED AS "16." between 115 and 117. Numbering is otherwise clean 1-120; the
+  //     records restore 116 so OMR Q-order matches the printed sequence.
+  //   * Q58 prints its four sentences with NO NUMBERS while its options cite "2 and 3 only"
+  //     (confirmed in the Word XML — not a pandoc loss). Numbered 1-4 in printed order, the only
+  //     available reading; both blind passes independently read it that way and agree on the key.
+  //   * Q13/Q118 ask the same pair (allusion/illusion) as USAGE and as DEFINITION — genuinely two
+  //     questions, both kept "new". Q63/Q112 (ensure/insure) are the same shape.
+  //   * Q65 INVERTS THE POLARITY — "used INCORRECTLY" where its neighbours ask "correctly". Both
+  //     passes handled it and it was re-checked by hand. Do not "fix" it to match the block.
+  //
+  // The source marks the word under test in BOLD; the records convert that to the bank convention
+  // \\(\\underline{\\text{...}}\\), which 808 NDA English stems use and zero use markdown bold.
+  // Same word marked, and it is the path audit:underlines polices.
+  "eng-homonyms-pk11": {
+    slug: "eng-homonyms-pk11",
+    title: "NDA English — Homonyms PK 11 (120 Q)",
+    recordsFile: "eng-homonyms-pk11.records.json",
+    outName: "Tags_NDA_English_Homonyms_PK11",
+    sourceFile: "Homonyms PK 11.docx",
+    subjectName: "English",
+    chapterName: "Vocabulary",
+    subtopics: ["Confusable Word Pairs"],
+    pyqNote: "NDA English (GAT) practice — LWS Homonyms PK 11 (answers derived; this source prints no key)",
+    examName: "NDA",
+    section: { key: "vocabulary", label: "Vocabulary" },
+    bankAdd: true,
+  },
+
   // LWS "NDA GAT MOCK W07" — a 150-q GAT mock: Q1-50 English, Q51-150 Chemistry (the
   // paper carries NO Physics/Biology/History/Geography/Polity/CA section, unlike W09).
   // Source `NDA GAT MOCK W07 (2).pdf` is BORN-DIGITAL with a clean text layer, so the
