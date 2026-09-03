@@ -623,6 +623,58 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
   ],
 
+  // Ch.6 Mechanical Properties of Solids: FIVE exercise blocks, the most of any
+  // chapter in this volume, correctly numbered 1-5 so no disambiguator. The book
+  // prints its fifth heading WITHOUT a colon, alone among the five.
+  "mech-props-solids-11-phy": [
+    { group: "6. Mechanical Properties of Solids — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.6."] },
+    { group: "Exercises", label: "Choose the correct answer", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in one sentence", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer in short", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "Long answer type questions", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+    { group: "Exercises", label: "Answer the following", kind: "exercise", refPrefixes: ["Ex Q.5 ("] },
+  ],
+
+  // Ch.13 Electromagnetic Waves and Communication System: the book prints TWO
+  // blocks both numbered "2." — "2. Answer briefly." and "2. Solve the numerical
+  // problem." — and prints no "3." anywhere. That is the OPTICS case, not the
+  // Gravitation one: with no free slot the duplicate cannot be renumbered, so it
+  // takes the `Ex Q.2b` disambiguator. See the Gravitation comment below for the
+  // discriminating test.
+  //
+  // ⚠ The trailing " (" on "Ex Q.2 (" is LOAD-BEARING here: without it that
+  // prefix also matches every "Ex Q.2b (…)" ref and swallows the whole numerical
+  // block into the wrong section.
+  "em-waves-comm-11-phy": [
+    { group: "13. Electromagnetic Waves and Communication System — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.13."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer briefly", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the numerical problem", kind: "exercise", refPrefixes: ["Ex Q.2b ("] },
+  ],
+
+  // Ch.7 Thermal Properties of Matter: the standard three-block shape,
+  // correctly numbered 1-3. 20 solved examples, the most of any chapter in
+  // this volume, all theory-embedded with no printed banner.
+  "thermal-properties-11-phy": [
+    { group: "7. Thermal Properties of Matter — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.7."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.12 Magnetism: FOUR exercise blocks, correctly numbered 1-4, so no
+  // disambiguator. Note the solved block has NO printed banner — all three
+  // worked examples sit inside the theory (12.1 under §12.3.2, 12.2 and 12.3
+  // under §12.5) — but all three precede the Exercises, so one block in book
+  // order is faithful. The book capitalises "Problems" in its fourth heading.
+  "magnetism-11-phy": [
+    { group: "12. Magnetism — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.12."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer the following questions in detail", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+  ],
+
   // Ch.4 Laws of Motion: the standard three-block shape, correctly numbered
   // 1, 2, 3 — so unlike Ch.9 Optics and Ch.5 Gravitation it needs no
   // disambiguator. Note the first block is printed "Choose the correct ANSWER",

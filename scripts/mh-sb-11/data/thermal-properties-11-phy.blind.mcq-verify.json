@@ -1,0 +1,44 @@
+[
+  {
+    "id": "076ca567-ccd0-436e-adcf-936dd006ca78",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "why": "A clinical thermometer is deliberately built with a NARROW range, so that the short stem can be divided finely enough to be read to a tenth of a degree. It only ever has to record human body temperature. Normal body temperature is about 37 \\(^\\circ\\)C — the chapter's own Example 7.2 converts the familiar 98.4 \\(^\\circ\\)F to 36.89 \\(^\\circ\\)C — a high fever rarely takes it past about 42 \\(^\\circ\\)C, and a reading much below 34 \\(^\\circ\\)C is already dangerous hypothermia. The range 34 \\(^\\circ\\)C to 42 \\(^\\circ\\)C brackets exactly that band, and is the correct choice.\n\nWhy the others fail: 70 \\(^\\circ\\)C to 100 \\(^\\circ\\)C lies far above any temperature a living body can reach, so such a thermometer would read nothing at all. Converting the two fahrenheit ranges with Eq. (7.1) settles them at once — 0 \\(^\\circ\\)F to 100 \\(^\\circ\\)F is \\(-17.8\\ ^\\circ\\)C to \\(37.8\\ ^\\circ\\)C, whose upper limit is barely above normal body temperature, so no fever could be recorded; and 34 \\(^\\circ\\)F to 80 \\(^\\circ\\)F is \\(1.1\\ ^\\circ\\)C to \\(26.7\\ ^\\circ\\)C, which lies entirely BELOW body temperature."
+  },
+  {
+    "id": "fa46f350-ceba-4045-96e2-bfa1e82170ee",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "C",
+    "matches_current": true,
+    "why": "Water is anomalous. Almost every substance contracts as it is cooled, but water EXPANDS as it cools from 4 \\(^\\circ\\)C to 0 \\(^\\circ\\)C and expands again as it turns to ice — the chapter states this twice, in \\(\\S\\)7.5.3 and in the 'Do you know?' box, which notes that only bismuth and antimony behave the same way and that this is why ice floats. The bottle is filled COMPLETELY, so there is no air space to absorb that increase in volume. The ice therefore presses outward on the walls, and glass is brittle and cannot yield, so it cracks. The reason is that water expands on freezing, which is the correct choice.\n\nWhy the others fail: the bottle does contract slightly as it cools, but contraction alone cannot burst a container — it only makes matters worse by reducing the space available to the ice, so it is not the cause. The bottle being expanded is simply not what happens; the bottle is being cooled, not heated. And water contracting on freezing is false for water — were it true, the ice would occupy LESS room than the water did, leaving space in the bottle and nothing would break."
+  },
+  {
+    "id": "4c8a376b-48c1-42bf-a334-fc93491e67e3",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "why": "Eq. (7.1) relates the two scales as \\(\\dfrac{T_{F} - 32}{180} = \\dfrac{T_{C}}{100}\\). Applying it to two temperatures and subtracting, the constant 32 cancels, because it only fixes where each scale puts its zero and says nothing about the size of a degree. What survives is a relation between INTERVALS:\n\n\\(\\Delta T_{F} = \\dfrac{180}{100}\\Delta T_{C} = \\dfrac{9}{5}\\Delta T_{C}\\)\n\nSo \\(\\Delta T_{F} = \\dfrac{9}{5} \\times 25 = 45\\) degrees, which is the correct choice. Physically, 100 celsius divisions and 180 fahrenheit divisions span the same interval between the ice point and the steam point, so a fahrenheit degree is the smaller unit and any temperature DIFFERENCE has a larger number attached to it on that scale.\n\nWhy the others fail: 25 would be right only if the two scales had degrees of equal size, which Fig. 7.1 shows they do not. The classic error is to treat 25 \\(^\\circ\\)C as a temperature rather than a difference and add the 32 offset, giving \\(\\frac{9}{5}(25) + 32 = 77\\) — note that this is not even among the choices. Neither 65 nor 38 follows from any correct manipulation of Eq. (7.1)."
+  },
+  {
+    "id": "b26f1c81-1f38-447d-aba3-a66c2668f178",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "B",
+    "matches_current": true,
+    "why": "Section 7.5.4 derives both relations. For a square plate of side \\(l_{0}\\), \\(A_{T} = l_{0}^{2}(1 + \\alpha T)^{2} = A_{0}(1 + 2\\alpha T + \\alpha^{2}T^{2})\\); since \\(\\alpha\\) is of order \\(10^{-5}\\), the \\(\\alpha^{2}T^{2}\\) term is negligible, and comparing with \\(A_{T} = A_{0}(1 + \\beta T)\\) gives \\(\\beta = 2\\alpha\\), Eq. (7.21). For a cube, \\(V_{T} = V_{0}(1 + \\alpha T)^{3} = V_{0}(1 + 3\\alpha T + 3\\alpha^{2}T^{2} + \\alpha^{3}T^{3})\\); dropping the higher powers of \\(\\alpha\\) and comparing with \\(V_{T} = V_{0}(1 + \\gamma T)\\) gives \\(\\gamma = 3\\alpha\\), Eq. (7.24). Dividing both by \\(\\alpha\\),\n\n\\(\\alpha : \\beta : \\gamma = 1 : 2 : 3\\)\n\nwhich is the correct choice, and is exactly what the chapter's Eq. (7.25), \\(\\alpha = \\dfrac{\\beta}{2} = \\dfrac{\\gamma}{3}\\), states.\n\nWhy the others fail: each of the remaining three orderings would make one coefficient larger than another in a way that contradicts Eq. (7.25). A quick physical check settles it — expansion happens in one direction for a rod, two for a plate and three for a solid, so the ratio must simply count dimensions and INCREASE from linear to areal to cubical. Any ordering that puts \\(\\gamma\\) below \\(\\beta\\), or \\(\\alpha\\) above either, is wrong on that ground alone."
+  },
+  {
+    "id": "443e5dd0-c27c-4061-bf78-186624da159e",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "matches_current": true,
+    "why": "Take each statement in turn, from the defining equations.\n\nStatement I: Eq. (7.10) gives \\(\\alpha = \\dfrac{\\Delta l}{l\\,\\Delta T}\\). Here \\(\\dfrac{\\Delta l}{l}\\) is a length divided by a length, so it is a pure number with no dimensions. What remains is one over a temperature, so \\(\\alpha\\) has dimension \\(\\text{K}^{-1}\\). Statement I is correct.\n\nStatement II: Eq. (7.16) gives \\(\\gamma = \\dfrac{\\Delta V}{V\\,\\Delta T}\\). Here \\(\\dfrac{\\Delta V}{V}\\) is a volume divided by a volume, again a pure number. So \\(\\gamma\\) is ALSO \\(\\text{K}^{-1}\\). Statement II is correct too.\n\nSince both statements hold, the correct choice is the one saying that I and II are both correct.\n\nThe trap the other three choices exploit is the assumption that because \\(\\gamma = 3\\alpha\\) the two quantities must have different dimensions. They do not: 3 is a pure number, and multiplying by a pure number cannot change a dimension. The same argument gives \\(\\beta = \\text{K}^{-1}\\) as well, so all three expansion coefficients share one unit — per kelvin, or equivalently per degree celsius — and differ only in numerical value."
+  },
+  {
+    "id": "445cc6e3-c2dc-4496-9faf-0ea57fb3d381",
+    "ref": "Ex Q.1 (vi)",
+    "derived_answer": "C",
+    "matches_current": true,
+    "why": "Assume all the gravitational potential energy the water loses in falling is converted into internal energy of the water itself, raising its temperature. For a mass \\(m\\) falling a height \\(h\\):\n\n\\(mgh = m\\,s\\,\\Delta T\\)\n\nThe mass cancels, which is why no mass is given in the question:\n\n\\(\\Delta T = \\dfrac{gh}{s} = \\dfrac{9.8 \\times 200}{4200} = \\dfrac{1960}{4200} = 0.4667\\ ^\\circ\\text{C}\\)\n\nThe nearest value offered is \\(0.46\\ ^\\circ\\)C, which is the correct choice. Taking \\(g = 10\\) m s\\(^{-2}\\) instead gives \\(0.476\\ ^\\circ\\)C, so the conclusion is unchanged.\n\nWhy the others fail: \\(0.96\\ ^\\circ\\)C is roughly twice the correct value and would follow from doubling the height or halving the specific heat capacity; \\(1.02\\ ^\\circ\\)C and \\(1.16\\ ^\\circ\\)C are larger still and match no correct substitution. Note also that the real temperature rise at the foot of a waterfall is smaller than this figure, because some of the energy goes into the spray, the sound and the surrounding air rather than into the water alone."
+  }
+]

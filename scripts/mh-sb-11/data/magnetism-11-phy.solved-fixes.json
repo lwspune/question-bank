@@ -1,0 +1,14 @@
+[
+  {
+    "ref": "Solved Ex.12.2",
+    "why": "The printed final exponent is wrong by a factor of 1000 and is refuted by the example's own preceding line: 4e-5 * (6.4e6)^3 * 1e7 = 1.0486e23, since (6.4e6)^3 = 2.62144e20. The mantissa 1.05 is correct; only the exponent (20 for 23) is a digit slip. 1.05e23 A m^2 is also the physically correct order for the Earth's dipole moment (~8e22), whereas 1.05e20 would make the Earth a thousand times weaker than it is. Corrected here; the defect is named by the errata bracket.",
+    "find": "1.05 \\times 10^{20}",
+    "replace": "1.05 \\times 10^{23}"
+  },
+  {
+    "ref": "Solved Ex.12.3",
+    "why": "Part (A)'s closing subtraction is wrong. theta = arctan(sqrt 2) = 54.7356 deg = 54 deg 44', which the book prints correctly; its supplement is 180 - 54.7356 = 125.2644 deg = 125 deg 16', not the printed 116 deg 4. The same line also sets a degree sign where a prime belongs (54 deg 44 deg). Part (B) is correct throughout (350/sqrt2 = 247.487 = 247.5 A m^2), so this is the only wrong value in the example. Corrected here; the defect is named by the errata bracket.",
+    "find": "180^{0} - 54^{0}44^{0} = 116^{0}4",
+    "replace": "180^{0} - 54^{0}44' = 125^{0}16'"
+  }
+]

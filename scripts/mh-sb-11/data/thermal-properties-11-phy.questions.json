@@ -1,0 +1,699 @@
+[
+  {
+    "ref": "Solved Ex.7.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "EASY",
+    "stem": "Average room temperature on a normal day is 27 \\(^\\circ\\)C. What is the room temperature in \\(^\\circ\\)F?",
+    "solution": "We have\n\n\\(\\dfrac{T_{F} - 32}{180} = \\dfrac{T_{C}}{100}\\)\n\n\\(\\therefore T_{F} = \\dfrac{180}{100}T_{C} + 32\\)\n\nGiven \\(T_{C} = 27\\ ^\\circ\\)C,\n\n\\(T_{F} = \\dfrac{180}{100} \\times 27 + 32\\)\n\n\\(= 48.6 + 32\\)\n\n\\(= 80.6\\ ^\\circ\\)F"
+  },
+  {
+    "ref": "Solved Ex.7.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "EASY",
+    "stem": "Normal human body temperature in feherenheit is 98.4 \\(^\\circ\\)F. What is the body temperature in \\(^\\circ\\)C?",
+    "solution": "We have\n\n\\(\\dfrac{T_{C}}{100} = \\dfrac{T_{F} - 32}{180}\\)\n\n\\(\\therefore T_{C} = \\dfrac{100}{180}(T_{F} - 32)\\)\n\nGiven \\(T_{F} = 98.4\\ ^\\circ\\)F,\n\n\\(T_{C} = \\dfrac{100}{180}(98.4 - 32)\\)\n\n\\(= \\dfrac{100}{180}(66.4)\\)\n\n\\(= 36.89\\ ^\\circ\\)C",
+    "_note": "The book misspells 'fahrenheit' as 'feherenheit' in the printed stem; transcribed verbatim. Working and answer are correct."
+  },
+  {
+    "ref": "Solved Ex.7.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "MODERATE",
+    "stem": "The length of a mercury column in a mercury-in-glass thermometer is 25 mm at the ice point and 180 mm at the steam point. What is the temperature when the length is 60 mm?",
+    "solution": "Here the thermometric property P is the length of the mercury column. Using Eq. (7.2), we get\n\n\\(T = \\dfrac{100(60 - 25)}{(180 - 25)} = 22.58\\ ^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "MODERATE",
+    "stem": "A resistance thermometer has resistance 95.2 \\(\\Omega\\) at the ice point and 138.6 \\(\\Omega\\) at the steam point. What resistance would be obtained if the actual temperature is 27 \\(^\\circ\\)C?",
+    "solution": "Here the thermometric property P is the resistance. Using Eq. (7.2), if R is the resistance at 27 \\(^\\circ\\)C, we have\n\n\\(27 = \\dfrac{100(R - 95.2)}{(138.6 - 95.2)}\\)\n\n\\(\\therefore R = \\dfrac{27 \\times (138.6 - 95.2)}{100} + 95.2\\)\n\n\\(= 11.72 + 95.2 = 106.92\\ \\Omega\\)"
+  },
+  {
+    "ref": "Solved Ex.7.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "MODERATE",
+    "stem": "Express \\(T = 24.57\\) K in celsius and fahrenheit.",
+    "solution": "We have\n\n\\(\\dfrac{T_{F} - 32}{180} = \\dfrac{T_{C}}{100} = \\dfrac{T_{K} - 273.15}{100}\\)\n\n\\(\\therefore T_{C} = T_{K} - 273.15\\)\n\n\\(= 24.57 - 273.15\\)\n\n\\(= -248.58\\ ^\\circ\\)C\n\n\\(\\dfrac{T_{F} - 32}{180} = \\dfrac{T_{K} - 273.15}{100}\\)\n\n\\(\\therefore T_{F} = \\dfrac{180}{100}(T_{K} - 273.15) + 32\\)\n\n\\(= \\dfrac{9}{5}(24.57 - 273.15) + 32\\)\n\n\\(= -447.44 + 32\\)\n\n\\(= -415.44\\ ^\\circ\\)F"
+  },
+  {
+    "ref": "Solved Ex.7.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the temperature which has the same value on fahernheit scale and kelvin scale.",
+    "solution": "Let the required temperature be \\(y\\). i.e., \\(T_{F} = T_{K} = y\\) then we have\n\n\\(\\dfrac{y - 32}{180} = \\dfrac{y - 273.15}{100}\\)\n\nor, \\(5y - 160 = 9y - 2458.35\\)\n\nor, \\(4y = -160 + 2458.35\\)\n\n\\(\\therefore y = 574.59\\)\n\nThus 574.59 \\(^\\circ\\)F and 574.59 K are equivalent temperatures.",
+    "_note": "The book misspells 'fahrenheit' as 'fahernheit' in the printed stem; transcribed verbatim. Working and answer are correct (4y = 2298.35, y = 574.5875)."
+  },
+  {
+    "ref": "Solved Ex.7.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "MODERATE",
+    "stem": "The pressure reading in a thermometer at steam point is \\(1.367 \\times 10^{3}\\) Pa. What is pressure reading at triple point knowing the linear relationship between temperature and pressure?",
+    "solution": "We have \\(P_{\\text{triple}} = 273.16 \\times \\left(\\dfrac{P}{T}\\right)\\) where \\(P_{\\text{triple}}\\) and \\(P\\) are the pressures at temperature of triple point (273.16 K) and \\(T\\) respectively. We are given that \\(P = 1.367 \\times 10^{3}\\) Pa at steam point i.e., at \\(273.15 + 100 = 373.15\\) K.\n\n\\(\\therefore P_{\\text{triple}} = 273.16 \\times \\left(\\dfrac{1.367 \\times 10^{3}}{373.15}\\right)\\)\n\n\\(= 1.000 \\times 10^{3}\\) Pa"
+  },
+  {
+    "ref": "Solved Ex.7.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "The length of a metal rod at 27 \\(^\\circ\\)C is 4 cm. The length increases to 4.02 cm when the metal rod is heated upto 387 \\(^\\circ\\)C. Determine the coefficient of linear expansion of the metal rod.",
+    "solution": "Given\n\n\\(T_{1} = 27\\ ^\\circ\\)C\n\n\\(T_{2} = 387\\ ^\\circ\\)C\n\n\\(l_{1} = 4\\) cm \\(= 4 \\times 10^{-2}\\) m\n\n\\(l_{2} = 4.02\\) cm \\(= 4.02 \\times 10^{-2}\\) m\n\nWe have\n\n\\(\\alpha = \\dfrac{l_{2} - l_{1}}{l_{1}(T_{2} - T_{1})}\\)\n\n\\(= \\dfrac{(4.02 - 4.0) \\times 10^{-2}}{4 \\times 10^{-2}(387 - 27)}\\)\n\n\\(= \\dfrac{0.02 \\times 10^{-2}}{4 \\times 10^{-2} \\times 360}\\)\n\n\\(= 1.39 \\times 10^{-5}\\) /\\(^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "HARD",
+    "stem": "Length of an iron rod at temperature 27 \\(^\\circ\\)C is 4.256 m. Find the temperature at which the length of the same rod increases to 4.268 m. (\\(\\alpha\\) for iron \\(= 1.2 \\times 10^{-5}\\) K\\(^{-1}\\))",
+    "solution": "Given\n\n\\(T_{1} = 27\\ ^\\circ\\)C, \\(l_{1} = 4.256\\) m,\n\n\\(l_{2} = 4.268\\) m, \\(\\alpha = 1.2 \\times 10^{-5}\\) K\\(^{-1}\\)\n\nWe have\n\n\\(\\alpha = \\dfrac{l_{2} - l_{1}}{l_{1}(T_{2} - T_{1})} = \\dfrac{l_{2} - l_{1}}{l_{1}T_{2} - l_{1}T_{1}}\\)\n\n\\(\\therefore l_{1}T_{2} = l_{1}T_{1} + \\dfrac{l_{2} - l_{1}}{\\alpha}\\)\n\n\\(T_{2} = \\dfrac{1}{l_{1}}\\left[l_{1}T_{1} + \\dfrac{l_{2} - l_{1}}{\\alpha}\\right]\\)\n\n\\(= \\dfrac{1}{4.256}\\left[(4.256 \\times 27) + \\dfrac{4.268 - 4.256}{1.2 \\times 10^{-5}}\\right]\\)\n\n\\(= \\dfrac{1}{4.256}\\left[114.912 + \\dfrac{0.012}{1.2 \\times 10^{-5}}\\right]\\)\n\n\\(= \\dfrac{1}{4.256}\\left[114.912 + 1000\\right]\\)\n\n\\(= 261.96\\ ^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A thin aluminium plate has an area 286 cm\\(^{2}\\) at 20 \\(^\\circ\\)C. Find its area when it is heated to 180 \\(^\\circ\\)C. (\\(\\beta\\) for aluminium \\(= 4.9 \\times 10^{-5}\\) /\\(^\\circ\\)C)",
+    "solution": "Given\n\n\\(T_{1} = 20\\ ^\\circ\\)C\n\n\\(T_{2} = 180\\ ^\\circ\\)C\n\n\\(A_{1} = 286\\) cm\\(^{2}\\)\n\n\\(\\beta = 4.9 \\times 10^{-5}\\) /\\(^\\circ\\)C\n\nWe have\n\n\\(\\beta = \\dfrac{A_{2} - A_{1}}{A_{1}(T_{2} - T_{1})}\\)\n\n\\(\\therefore A_{2} = A_{1}[1 + \\beta(T_{2} - T_{1})]\\)\n\n\\(= 286[1 + 4.9 \\times 10^{-5}(180 - 20)]\\)\n\n\\(= 286[1 + 4.9 \\times 10^{-5} \\times 160]\\)\n\n\\(= 286[1 + 784.0 \\times 10^{-5}]\\)\n\n\\(= 286[1 + 0.00784]\\)\n\n\\(= 286[1.00784]\\)\n\n\\(\\therefore A_{2} = 288.24\\) cm\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.7.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "HARD",
+    "stem": "A liquid at 0 \\(^\\circ\\)C is poured in a glass beaker of volume 600 cm\\(^{3}\\) to fill it completely. The beaker is then heated to 90 \\(^\\circ\\)C. How much liquid will overflow? (\\(\\gamma_{\\text{liquid}} = 1.75 \\times 10^{-4}\\) /\\(^\\circ\\)C, \\(\\gamma_{\\text{glass}} = 2.75 \\times 10^{-5}\\) /\\(^\\circ\\)C)",
+    "solution": "Given\n\n\\(V_{1} = 600\\) cm\\(^{3}\\)\n\n\\(T_{1} = 0\\ ^\\circ\\)C\n\n\\(T_{2} = 90\\ ^\\circ\\)C\n\nWe have \\(\\gamma = \\dfrac{V_{2} - V_{1}}{V_{1}(T_{2} - T_{1})}\\)\n\n\\(\\therefore\\) increase is volume \\(= V_{2} - V_{1} = \\gamma V_{1}(T_{2} - T_{1})\\)\n\nIncrease in volume of beaker\n\n\\(= \\gamma_{\\text{glass}} \\times V_{1}(T_{2} - T_{1})\\)\n\n\\(= 2.75 \\times 10^{-5} \\times 600 \\times (90 - 0)\\)\n\n\\(= 2.75 \\times 10^{-5} \\times 600 \\times 90\\)\n\n\\(= 148500 \\times 10^{-5}\\) cm\\(^{3}\\)\n\n\\(\\therefore\\) increase in volume of beaker \\(= 1.485\\) cm\\(^{3}\\)\n\nIncrease in volume of liquid\n\n\\(= \\gamma_{\\text{liquid}} \\times V_{1}(T_{2} - T_{1})\\)\n\n\\(= 1.75 \\times 10^{-4} \\times 600 \\times (90 - 0)\\)\n\n\\(= 1.75 \\times 10^{-4} \\times 600 \\times 90\\)\n\n\\(= 94500 \\times 10^{-4}\\) cm\\(^{3}\\)\n\n\\(\\therefore\\) increase in volume of liquid \\(= 9.45\\) cm\\(^{3}\\)\n\n\\(\\therefore\\) volume of liquid which overflows\n\n\\(= (9.45 - 1.485)\\) cm\\(^{3}\\)\n\n\\(= 7.965\\) cm\\(^{3}\\)",
+    "_note": "The book prints 'increase is volume' for 'increase in volume' in its own solution; kept verbatim. Arithmetic is correct."
+  },
+  {
+    "ref": "Solved Ex.7.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A sheet of brass is 50 cm long and 8 cm broad at 0 \\(^\\circ\\)C. If the surface area at 100 \\(^\\circ\\)C is 401.57 cm\\(^{2}\\), find the coefficient of linear expansion of brass.",
+    "solution": "Given\n\n\\(T_{1} = 0\\ ^\\circ\\)C\n\n\\(T_{2} = 100\\ ^\\circ\\)C\n\n\\(A_{1} = 50 \\times 8 = 400\\) cm\\(^{2}\\)\n\n\\(A_{2} = 401.57\\) cm\\(^{2}\\)\n\nWe have\n\n\\(\\beta = 2\\alpha = \\dfrac{A_{2} - A_{1}}{A_{1}(T_{2} - T_{1})}\\)\n\n\\(= \\dfrac{(401.57 - 400)\\ \\text{cm}^{2}}{400\\ \\text{cm}^{2} \\times (100 - 0)\\ ^\\circ\\text{C}}\\)\n\n\\(= \\dfrac{1.57}{400 \\times 100} = 0.3925 \\times 10^{-4}\\ ^\\circ\\text{C}^{-1}\\)\n\n\\(\\therefore \\alpha = 0.1962 \\times 10^{-4}\\ ^\\circ\\text{C}^{-1}\\)\n\n\\(= 1.962 \\times 10^{-5}\\ ^\\circ\\text{C}^{-1}\\)\n\n\\(\\therefore\\) Coefficient of linear expansion of brass is \\(1.962 \\times 10^{-5}\\) /\\(^\\circ\\)C."
+  },
+  {
+    "ref": "Solved Ex.7.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "EASY",
+    "stem": "If the temperature of 4 kg mass of a material of specific heat capacity 300 J/kg \\(^\\circ\\)C rises from 20 \\(^\\circ\\)C to 30 \\(^\\circ\\)C. Find the heat received.",
+    "solution": "\\(Q = 4\\ \\text{kg} \\times (30 - 20)\\ ^\\circ\\text{C} \\times 300\\ \\text{J/kg}\\ ^\\circ\\text{C}\\)\n\n\\(= 4 \\times 10 \\times 300\\) J\n\n\\(\\therefore Q = 12000\\) J"
+  },
+  {
+    "ref": "Solved Ex.7.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "EASY",
+    "stem": "Find thermal capacity for a copper block of mass 0.2 kg, if specific heat capacity of copper is 290 J/kg \\(^\\circ\\)C.",
+    "solution": "Given\n\n\\(m = 0.2\\) kg\n\n\\(s = 290\\) J/kg \\(^\\circ\\)C\n\nThermal capacity \\(= m \\times s = 0.2\\ \\text{kg} \\times 290\\ \\text{J/kg}\\ ^\\circ\\text{C}\\)\n\n\\(= 58\\) J/\\(^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Calorimetry",
+    "difficulty": "HARD",
+    "stem": "A sphere of aluminium of 0.06 kg is placed for sufficient time in a vessel containing boiling water so that the sphere is at 100 \\(^\\circ\\)C. It is then immediately transferred to 0.12 kg copper calorimeter containing 0.30 kg of water at 25 \\(^\\circ\\)C. The temperature of water rises and attains a steady state at 28 \\(^\\circ\\)C. Calculate the specific heat capacity of aluminium. (Specific heat capacity of water, \\(s_{w} = 4.18 \\times 10^{3}\\) J kg\\(^{-1}\\) K\\(^{-1}\\), specific heat capacity of copper \\(s_{Cu} = 0.387 \\times 10^{3}\\) J kg\\(^{-1}\\) K\\(^{-1}\\))",
+    "solution": "Given\n\nMass of aluminium sphere \\(= m_{1} = 0.06\\) kg\n\nMass of copper calorimeter \\(= m_{2} = 0.12\\) kg\n\nMass of water in calorimeter \\(= m_{3} = 0.30\\) kg\n\nSpecific heat capacity of copper \\(= s_{Cu} = s_{2} = 0.387 \\times 10^{3}\\) J kg\\(^{-1}\\) K\\(^{-1}\\)\n\nSpecific heat capacity of water \\(= s_{w} = s_{3} = 4.18 \\times 10^{3}\\) J kg\\(^{-1}\\) K\\(^{-1}\\)\n\nInitial temperature of aluminium sphere \\(= T_{1} = 100\\ ^\\circ\\)C\n\nInitial temperature of calorimeter and water \\(= T_{2} = 25\\ ^\\circ\\)C\n\nFinal temperature of the mixture \\(= T = 28\\ ^\\circ\\)C\n\nWe have\n\n\\(s_{1} = \\dfrac{(m_{2}s_{2} + m_{3}s_{3})(T - T_{2})}{m_{1}(T_{1} - T)}\\)\n\n\\(= \\dfrac{\\left[(0.12 \\times 387) + (0.30 \\times 4180)\\right](28 - 25)}{(0.06)(100 - 28)}\\)\n\n\\(= \\dfrac{(46.44 + 1254) \\times 3}{(0.06) \\times 72} = \\dfrac{3901.32}{4.32}\\)\n\n\\(= 903.08\\) J kg\\(^{-1}\\) K\\(^{-1}\\)\n\n\\(\\therefore\\) Specific heat capacity of aluminium is 903.08 J kg\\(^{-1}\\) K\\(^{-1}\\).",
+    "_note": "Solution spans the page break p-14 -> p-15; the printed working completes on p-15. Arithmetic verified correct."
+  },
+  {
+    "ref": "Solved Ex.7.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "HARD",
+    "stem": "When 0.1 kg of ice at 0 \\(^\\circ\\)C is mixed with 0.32 kg of water at 35 \\(^\\circ\\)C in a container. The resulting temperature of the mixture is 7.8 \\(^\\circ\\)C. Calculate the heat of fusion of ice (\\(s_{water} = 4186\\) J kg\\(^{-1}\\) K\\(^{-1}\\)).",
+    "solution": "Given\n\n\\(m_{\\text{ice}} = 0.1\\) kg\n\n\\(m_{\\text{water}} = 0.32\\) kg\n\n\\(T_{\\text{ice}} = 0\\ ^\\circ\\)C\n\n\\(T_{\\text{water}} = 35\\ ^\\circ\\)C\n\n\\(T_{F} = 7.8\\ ^\\circ\\)C\n\n\\(s_{\\text{water}} = 4186\\) J kg\\(^{-1}\\) K\\(^{-1}\\)\n\nHeat lost by water\n\n\\(= m_{\\text{water}}\\, s_{\\text{water}}(T_{F} - T_{\\text{water}})\\)\n\n\\(= 0.32\\ \\text{kg} \\times 4186\\ \\text{J} \\times (7.8 - 35)\\ ^\\circ\\text{C}\\)\n\n\\(= -36434.944\\) J (here negative sign indicates loss of heat energy)\n\nHeat required to melt ice \\(= m_{\\text{ice}}L_{f} = 0.1 \\times L_{f}\\)\n\nHeat required to raise temperature of water (from ice) to final temperature\n\n\\(= m_{\\text{ice}}\\, s\\,(T - T_{\\text{ice}})\\)\n\n\\(= 0.1\\ \\text{kg} \\times 4186\\ \\text{J} \\times (7.8 - 0)\\ ^\\circ\\text{C}\\)\n\n\\(= 3265.08\\) J\n\nHeat lost = Heat gained\n\n\\(36434.944 = 0.1L_{f} + 3265.08\\)\n\n\\(L_{f} = \\dfrac{36434.944 - 3265.08}{0.1} = 3316.9864\\)\n\n\\(= 3.31698 \\times 10^{5}\\) J kg\\(^{-1}\\)",
+    "_note": "Three printed slips in the book's own solution, none of which changes the answer: it writes 'Head lost = Heat gained' for 'Heat lost'; it states the units of s_water in the Given block as 'kg K^-1' instead of 'J kg^-1 K^-1'; and it prints the intermediate value as 3316.9864 where the division actually gives 331698.64, immediately before writing the correct final 3.31698 x 10^5 J/kg (the printed intermediate is the answer divided by 100). Arithmetic otherwise verified: 0.32 x 4186 x 27.2 = 36434.944 and 0.1 x 4186 x 7.8 = 3265.08."
+  },
+  {
+    "ref": "Solved Ex.7.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "What is the rate of energy loss in watt per square metre through a glass window 5 mm thick if outside temperature is \\(-20\\ ^\\circ\\)C and inside temperature is 25 \\(^\\circ\\)C? (\\(k_{\\text{glass}} = 1\\) W/m K)",
+    "solution": "Given\n\n\\(k_{\\text{glass}} = 1\\) W/m K\n\n\\(T_{1} = 25\\ ^\\circ\\)C\n\n\\(T_{2} = -20\\ ^\\circ\\)C\n\n\\(x = 5\\) mm \\(= 5 \\times 10^{-3}\\) m\n\n\\(\\therefore T_{1} - T_{2} = 25 - (-20)\\ ^\\circ\\text{C} = 45\\) K\n\nWe have \\(P_{\\text{cond}} = \\dfrac{Q}{t} = kA\\dfrac{T_{1} - T_{2}}{x}\\).\n\n\\(\\therefore\\) The rate of energy loss per square metre is\n\n\\(\\dfrac{P_{\\text{cond}}}{A} = k\\dfrac{T_{1} - T_{2}}{x}\\)\n\n\\(= 1\\ \\text{W m}^{-1}\\text{K}^{-1} \\times 45\\ \\text{K} / (5 \\times 10^{-3}\\ \\text{m})\\)\n\n\\(= 9 \\times 10^{3}\\) W/m\\(^{2}\\)"
+  },
+  {
+    "ref": "Solved Ex.7.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "The temperature difference between two sides of an iron plate, 2 cm thick, is 10 \\(^\\circ\\)C. Heat is transmitted through the plate at the rate of 600 kcal per minute per square metre at steady state. Find the thermal conductivity of iron.",
+    "solution": "Given\n\n\\(\\dfrac{Q}{At} = 600\\ \\text{kcal/min m}^{2} = \\dfrac{600}{60} = 10\\ \\text{kcal/s m}^{2}\\)\n\n\\(x = 2\\ \\text{cm} = 2 \\times 10^{-2}\\) m\n\n\\(T_{1} - T_{2} = 10\\ ^\\circ\\)C\n\nFrom Eq. (7.34), we have\n\n\\(Q = \\dfrac{kA(T_{1} - T_{2})t}{x}\\)\n\n\\(\\therefore k = \\dfrac{Q}{At}\\dfrac{x}{T_{1} - T_{2}}\\)\n\n\\(= \\dfrac{10\\ \\text{kcal/s m}^{2} \\times 2 \\times 10^{-2}\\ \\text{m}}{10\\ ^\\circ\\text{C}}\\)\n\n\\(= 0.02\\) kcal/m s \\(^\\circ\\)C"
+  },
+  {
+    "ref": "Solved Ex.7.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "HARD",
+    "stem": "Calculate the rate of loss of heat through a glass window of area 1000 cm\\(^{2}\\) and thickness of 4 mm, when temperature inside is 27 \\(^\\circ\\)C and outside is \\(-5\\ ^\\circ\\)C. Coefficient of thermal conductivity of glass is 0.022 cal/ s cm \\(^\\circ\\)C.",
+    "solution": "Given\n\n\\(A = 1000\\ \\text{cm}^{2} = 1000 \\times 10^{-4}\\ \\text{m}^{2}\\)\n\n\\(k = 0.022\\ \\text{cal/ s cm}\\ ^\\circ\\text{C} = 0.022 \\times 10^{2}\\ \\text{cal/m}\\ ^\\circ\\text{C}\\)\n\n\\(x = 4\\ \\text{mm} = 0.4 \\times 10^{-2}\\) m\n\n\\(T_{1} = 27\\ ^\\circ\\)C, \\(T_{2} = -5\\ ^\\circ\\)C\n\nFrom Eq. (7.34), we have\n\n\\(Q = \\dfrac{kA(T_{1} - T_{2})t}{x}\\)\n\n\\(\\therefore \\dfrac{Q}{t} = \\dfrac{kA(T_{1} - T_{2})}{x}\\)\n\n\\(= \\dfrac{0.022 \\times 10^{2} \\times 1000 \\times 10^{-4} \\times (27 - (-5))}{0.4 \\times 10^{-2}}\\)\n\n\\(= 1.76 \\times 10^{3}\\ \\text{cal/s} = 1.76\\ \\text{kcal/s}\\)"
+  },
+  {
+    "ref": "Solved Ex.7.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "MODERATE",
+    "stem": "A metal sphere cools at the rate of 1.6 \\(^\\circ\\)C/min when its temperature is 70 \\(^\\circ\\)C. At what rate will it cool when its temperature is 40 \\(^\\circ\\)C. The temperature of surroundings is 30 \\(^\\circ\\)C.",
+    "solution": "Given\n\n\\(T_{1} = 70\\ ^\\circ\\)C\n\n\\(T_{2} = 40\\ ^\\circ\\)C\n\n\\(T_{0} = 30\\ ^\\circ\\)C\n\n\\(\\left(\\dfrac{dT}{dt}\\right)_{1} = 1.6\\ ^\\circ\\)C/min\n\nAccording to Newton's law of cooling, if C is the constant of proportionality\n\n\\(\\left(\\dfrac{dT}{dt}\\right)_{1} = C(T_{1} - T_{0})\\)\n\nor, \\(1.6 = C(70 - 30)\\)\n\n\\(\\therefore C = \\dfrac{1.6}{40} = 0.04\\) /min\n\nAlso \\(\\left(\\dfrac{dT}{dt}\\right)_{2} = C(T_{2} - T_{0})\\)\n\n\\(= 0.04(40 - 30) = 0.4\\ ^\\circ\\)C/min\n\nThus the rate of cooling drops by a factor of four when the difference in temperature of the metal sphere and its surroundings drops by a factor of four."
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "Range of temperature in a clinical thermometer, which measures the temperature of human body, is",
+    "options": [
+      {
+        "label": "A",
+        "text": "70 \\(^\\circ\\)C to 100 \\(^\\circ\\)C"
+      },
+      {
+        "label": "B",
+        "text": "34 \\(^\\circ\\)C to 42 \\(^\\circ\\)C"
+      },
+      {
+        "label": "C",
+        "text": "0 \\(^\\circ\\)F to 100 \\(^\\circ\\)F"
+      },
+      {
+        "label": "D",
+        "text": "34 \\(^\\circ\\)F to 80 \\(^\\circ\\)F"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "A glass bottle completely filled with water is kept in the freezer. Why does it crack?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Bottle gets contracted"
+      },
+      {
+        "label": "B",
+        "text": "Bottle is expanded"
+      },
+      {
+        "label": "C",
+        "text": "Water expands on freezing"
+      },
+      {
+        "label": "D",
+        "text": "Water contracts on freezing"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "If two temperatures differ by 25 \\(^\\circ\\)C on Celsius scale, the difference in temperature on Fahrenheit scale is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(65^\\circ\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(45^\\circ\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(38^\\circ\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(25^\\circ\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "If \\(\\alpha\\), \\(\\beta\\) and \\(\\gamma\\) are coefficients of linear, area \\(l\\) and volume expansion of a solid then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\alpha : \\beta : \\gamma\\) 1:3:2"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\alpha : \\beta : \\gamma\\) 1:2:3"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\alpha : \\beta : \\gamma\\) 2:3:1"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\alpha : \\beta : \\gamma\\) 3:1:2"
+      }
+    ],
+    "answer": "B",
+    "_note": "The printed stem reads 'coefficients of linear, area l and volume expansion' - the italic 'l' is a stray character (the book means 'areal'). Transcribed verbatim; it does not affect the answer."
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "Consider the following statements-\n\n(I) The coefficient of linear expansion has dimension K\\(^{-1}\\)\n\n(II) The coefficient of volume expansion has dimension K\\(^{-1}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "I and II are both correct"
+      },
+      {
+        "label": "B",
+        "text": "I is correct but II is wrong"
+      },
+      {
+        "label": "C",
+        "text": "II is correct but I is wrong"
+      },
+      {
+        "label": "D",
+        "text": "I and II are both wrong"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (vi)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "Water falls from a height of 200 m. What is the difference in temperature between the water at the top and bottom of a water fall given that specific heat of water is 4200 J kg\\(^{-1}\\) \\(^\\circ\\)C\\(^{-1}\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.96\\ ^\\circ\\)C"
+      },
+      {
+        "label": "B",
+        "text": "\\(1.02\\ ^\\circ\\)C"
+      },
+      {
+        "label": "C",
+        "text": "\\(0.46\\ ^\\circ\\)C"
+      },
+      {
+        "label": "D",
+        "text": "\\(1.16\\ ^\\circ\\)C"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature and Heat",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Clearly state the difference between heat and temperature?"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "How a thermometer is calibrated ?"
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What are different scales of temperature? What is the relation between them?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is absolute zero?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "HARD",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Derive the relation between three coefficients of thermal expansion."
+  },
+  {
+    "ref": "Ex Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State applications of thermal expansion."
+  },
+  {
+    "ref": "Ex Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Why do we generally consider two specific heats for a gas?"
+  },
+  {
+    "ref": "Ex Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Are freezing point and melting point same with respect to change of state ? Comment."
+  },
+  {
+    "ref": "Ex Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define (i) Sublimation (ii) Triple point."
+  },
+  {
+    "ref": "Ex Q.2 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Explain the term 'steady state'."
+  },
+  {
+    "ref": "Ex Q.2 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "HARD",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Define coefficient of thermal conductivity. Derive its expression."
+  },
+  {
+    "ref": "Ex Q.2 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Give any four applications of thermal conductivity in every day life."
+  },
+  {
+    "ref": "Ex Q.2 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Explain the term thermal resistance. State its SI unit and dimensions."
+  },
+  {
+    "ref": "Ex Q.2 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "How heat transfer occurs through radiation in absence of a medium?"
+  },
+  {
+    "ref": "Ex Q.2 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "HARD",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "State Newton's law of cooling and explain how it can be experimentally verified."
+  },
+  {
+    "ref": "Ex Q.2 (xvi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is thermal stress? Give an example of disadvantages of thermal stress in practical use?",
+    "_note": "The term 'thermal stress' is NEVER defined anywhere in this chapter - measured, its only two occurrences in the whole 28-page chapter are in this question itself. The concept belongs to Ch.6 Mechanical Properties of Solids (stress) combined with this chapter's thermal expansion."
+  },
+  {
+    "ref": "Ex Q.2 (xvii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "EASY",
+    "context": "Answer the following questions.",
+    "setLabel": "Ex Q.2",
+    "stem": "Which materials can be used as thermal insulators and why?"
+  },
+  {
+    "ref": "Ex Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "A glass flask has volume \\(1 \\times 10^{-4}\\) m\\(^{3}\\). It is filled with a liquid at 30 \\(^\\circ\\)C. If the temperature of the system is raised to 100 \\(^\\circ\\)C, how much of the liquid will overflow. (Coefficient of volume expansion of glass is \\(1.2 \\times 10^{-5}\\) (\\(^\\circ\\)C)\\(^{-1}\\) while that of the liquid is \\(75 \\times 10^{-5}\\) (\\(^\\circ\\)C)\\(^{-1}\\)).",
+    "bookAnswer": "516.6 x 10^-8 m^3"
+  },
+  {
+    "ref": "Ex Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "Which will require more energy, heating a 2.0 kg block of lead by 30 K or heating a 4.0 kg block of copper by 5 K? (\\(s_{\\text{lead}} = 128\\) J kg\\(^{-1}\\) K\\(^{-1}\\), \\(s_{\\text{copper}} = 387\\) J kg\\(^{-1}\\) K\\(^{-1}\\))",
+    "bookAnswer": "copper"
+  },
+  {
+    "ref": "Ex Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "Specific latent heat of vaporization of water is \\(2.26 \\times 10^{6}\\) J/kg. Calculate the energy needed to change 5.0 g of water into steam at 100 \\(^\\circ\\)C.",
+    "bookAnswer": "11.3 x 10^3 J"
+  },
+  {
+    "ref": "Ex Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "HARD",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "A metal sphere cools at the rate of 0.05 \\(^\\circ\\)C/s when its temperature is 70 \\(^\\circ\\)C and at the rate of 0.025 \\(^\\circ\\)C/s when its temperature is 50 \\(^\\circ\\)C. Determine the temperature of the surroundings and find the rate of cooling when the temperature of the metal sphere is 40 \\(^\\circ\\)C.",
+    "bookAnswer": "30 degC, 0.0125 degC/s"
+  },
+  {
+    "ref": "Ex Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "The volume of a gas varied linearly with absolute temperature if its pressure is held constant. Suppose the gas does not liquefy even at very low temperatures, at what temperature the volume of the gas will be ideally zero?",
+    "bookAnswer": "-273.15 degC"
+  },
+  {
+    "ref": "Ex Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "In olden days, while laying the rails for trains, small gaps used to be left between the rail sections to allow for thermal expansion. Suppose the rails are laid at room temperature 27 \\(^\\circ\\)C. If maximum temperature in the region is 45 \\(^\\circ\\)C and the length of each rail section is 10 m, what should be the gap left given that \\(\\alpha = 1.2 \\times 10^{-5}\\) K\\(^{-1}\\) for the material of the rail section?",
+    "bookAnswer": "2.16 mm"
+  },
+  {
+    "ref": "Ex Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "A blacksmith fixes iron ring on the rim of the wooden wheel of a bullock cart. The diameter of the wooden rim and the iron ring are 1.5 m and 1.47 m respectively at room temperature of 27 \\(^\\circ\\)C. To what temperature the iron ring should be heated so that it can fit the rim of the wheel (\\(\\alpha_{\\text{iron}} = 1.2 \\times 10^{-5}\\) K\\(^{-1}\\)).",
+    "bookAnswer": "1727.7 degC"
+  },
+  {
+    "ref": "Ex Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Measurement of Temperature",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "In a random temperature scale X, water boils at 200 \\(^\\circ\\)X and freezes at 20 \\(^\\circ\\)X. Find the boiling point of a liquid in this scale if it boils at 62 \\(^\\circ\\)C.",
+    "bookAnswer": "131.6 degX"
+  },
+  {
+    "ref": "Ex Q.3 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Absolute Temperature and Ideal Gas Equation",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "A gas at 900 \\(^\\circ\\)C is cooled until both its pressure and volume are halved. Calculate its final temperature.",
+    "bookAnswer": "293.29 K"
+  },
+  {
+    "ref": "Ex Q.3 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "HARD",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "An aluminium rod and iron rod show 1.5 m difference in their lengths when heated at all temperature. What are their lengths at 0 \\(^\\circ\\)C if coefficient of linear expansion for aluminium is \\(24.5 \\times 10^{-6}\\) /\\(^\\circ\\)C and for iron is \\(11.9 \\times 10^{-6}\\) /\\(^\\circ\\)C",
+    "bookAnswer": "1.417 m, 2.917 m"
+  },
+  {
+    "ref": "Ex Q.3 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "What is the specific heat of a metal if 50 cal of heat is needed to raise 6 kg of the metal from 20 \\(^\\circ\\)C to 62 \\(^\\circ\\)C ?",
+    "bookAnswer": "s = 0.198 cal/kg degC"
+  },
+  {
+    "ref": "Ex Q.3 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "EASY",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "The rate of flow of heat through a copper rod with temperature difference 30 \\(^\\circ\\)C is 1500 cal/s. Find the thermal resistance of copper rod.",
+    "bookAnswer": "0.02 degC s cal"
+  },
+  {
+    "ref": "Ex Q.3 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State",
+    "difficulty": "HARD",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "An electric kettle takes 20 minutes to heat a certain quantity of water from 0 \\(^\\circ\\)C to its boiling point. It requires 90 minutes to turn all the water at 100 \\(^\\circ\\)C into steam. Find the latent heat of vaporisation. (Specific heat of water \\(= 1\\) cal/g \\(^\\circ\\)C)",
+    "bookAnswer": "450 cal/g"
+  },
+  {
+    "ref": "Ex Q.3 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "Find the temperature difference between two sides of a steel plate 4 cm thick, when heat is transmitted through the plate at the rate of 400 k cal per minute per square metre at steady state. Thermal conductivity of steel is 0.026 kcal/m s K.",
+    "bookAnswer": "10.26 degC or 10.26 K"
+  },
+  {
+    "ref": "Ex Q.3 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "HARD",
+    "context": "Solve the following problems.",
+    "setLabel": "Ex Q.3",
+    "stem": "A metal sphere cools from 80 \\(^\\circ\\)C to 60 \\(^\\circ\\)C in 6 min. How much time with it take to cool from 60 \\(^\\circ\\)C to 40 \\(^\\circ\\)C if the room temperature is 30 \\(^\\circ\\)C?",
+    "bookAnswer": "10 min",
+    "_note": "The printed stem writes 'How much time with it take' for 'will it take'; transcribed verbatim. The printed answer of 10 min is METHOD-DEPENDENT - see the ingestion report; evaluating Newton's law at each interval's INITIAL temperature gives exactly 10 min, while the mean-temperature method gives 12 min and exact integration 12.9 min."
+  }
+]

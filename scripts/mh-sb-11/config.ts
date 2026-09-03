@@ -71,9 +71,20 @@ export const DATA = join(__dirname, "data"); // committed: transcription (source
 // than a plausible-looking wrong equation — a narrower hazard, but still fatal
 // to a text-first pass.
 //
-// ⚠ GATE COVERAGE IS UNEVEN, and two chapters have effectively none:
-// Semiconductors prints ZERO inline answers and Mathematical Methods exactly
-// ONE. Those two run the mh-sb-9 humanities regime — blind MCQ re-derivation
+// ⚠ GATE COVERAGE IS UNEVEN, and one chapter has none at all:
+// Semiconductors prints ZERO inline answers (re-measured 2026-09-03 with a
+// deliberately wide census — `[Ans`, `Ans :`, `Ans.`, `Answer :`, bare `Ans`,
+// and every bracketed span containing a digit — all zero, so that one is real).
+//
+// ⚠ CORRECTION, 2026-09-03: this note previously said Mathematical Methods
+// prints "exactly ONE" inline answer. That came from counting `\[Ans` only.
+// The book ALSO prints unbracketed `Ans :`, and a wider census gives at least
+// FOUR (1 bracketed + 4 unbracketed, 8 bare `Ans` tokens in total). Same
+// under-count that made the sibling lane's census short by 15. Sound is
+// likewise ~10, not the 9 a bracketed-only scan returns. COUNT WIDE, then read
+// the hits — a narrow pattern silently shrinks the gate, which is the one
+// number a chapter's trustworthiness rests on.
+// Those chapters run the mh-sb-9 humanities regime — blind MCQ re-derivation
 // plus answers authored strictly from the chapter's own prose — with nothing to
 // diff against. Schedule them knowingly; do not treat a clean run there as gate
 // evidence.
@@ -1350,6 +1361,90 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Uniform Circular Motion",
     ],
   },
+  // ── WAVE 3 ────────────────────────────────────────────────────────────────
+  // Measured before dispatch (whole-file scans, 2026-09-03), strict and loose
+  // Example counts AGREEING for all four, so none carries Optics' dropped-prefix
+  // defect. Answer counts are from the WIDE census (see the correction above).
+  //
+  //   Thermal Properties of Matter  28pp  20 Ex / 20 Sol  15 [Ans:]  199 PYQ
+  //   EM Waves and Communication    13pp   9 Ex /  9 Sol   9 [Ans:]  186 PYQ
+  //   Magnetism                      8pp   3 Ex /  3 Sol   3 [Ans:]   89 PYQ
+  //   Mechanical Properties of Solids 14pp 5 Ex /  5 Sol  13 [Ans:]   89 PYQ
+  //
+  // Thermal is the second-largest chapter in the volume (91.5k chars); Magnetism
+  // is the smallest (8pp). Mechanical Properties has the best gate density of the
+  // four — 13 printed answers in 14 pages against only 5 worked examples.
+  "thermal-properties-11-phy": {
+    id: "thermal-properties-11-phy",
+    chapterName: "Thermal Properties of Matter",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Thermal_Properties.pdf",
+    pdf: phy11("07. Thermal Properties of Matter.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Thermal Properties of Matter (Balbharati Physics textbook)",
+    subtopics: [
+      "Temperature and Heat",
+      "Measurement of Temperature",
+      "Absolute Temperature and Ideal Gas Equation",
+      "Thermal Expansion",
+      "Specific Heat Capacity",
+      "Calorimetry",
+      "Change of State",
+      "Heat Transfer",
+      "Newton's Law of Cooling",
+    ],
+  },
+  "em-waves-comm-11-phy": {
+    id: "em-waves-comm-11-phy",
+    chapterName: "Electromagnetic Waves and Communication System",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__EM_Waves_and_Communication.pdf",
+    pdf: phy11("13. Electromagnetic Waves and Communication System.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Electromagnetic Waves and Communication System (Balbharati Physics textbook)",
+    subtopics: [
+      "EM Waves",
+      "Electromagnetic Spectrum",
+      "Propagation of EM Waves",
+      "Introduction to Communication System",
+      "Modulation",
+    ],
+  },
+  "magnetism-11-phy": {
+    id: "magnetism-11-phy",
+    chapterName: "Magnetism",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Magnetism.pdf",
+    pdf: phy11("12. Magnetism.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Magnetism (Balbharati Physics textbook)",
+    subtopics: [
+      "Magnetic Lines of Force and Magnetic Field",
+      "The Bar Magnet",
+      "Gauss' Law of Magnetism",
+      "Earth's Magnetism",
+    ],
+  },
+  "mech-props-solids-11-phy": {
+    id: "mech-props-solids-11-phy",
+    chapterName: "Mechanical Properties of Solids",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Mechanical_Properties_of_Solids.pdf",
+    pdf: phy11("06. Mechanical Properties of Solids.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Mechanical Properties of Solids (Balbharati Physics textbook)",
+    subtopics: [
+      "Elastic Behaviour of Solids",
+      "Stress and Strain",
+      "Hooke's Law",
+      "Elastic Modulus",
+      "Stress-Strain Curve",
+      "Strain Energy",
+      "Hardness",
+      "Friction in Solids",
+    ],
+  },
+
   "laws-of-motion-11-phy": {
     id: "laws-of-motion-11-phy",
     chapterName: "Laws of Motion",
