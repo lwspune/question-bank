@@ -1,0 +1,37 @@
+[
+  {
+    "id": "5915ece1-0177-4b08-8ba7-9386b39a5612",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "D",
+    "solution": "Emission requires \\(h\\nu \\ge \\phi_0\\), i.e. an incident wavelength no longer than the threshold \\(\\lambda_0 = hc/\\phi_0\\). Visible light runs from about \\(400\\) nm to \\(700\\) nm, so the available photon energies run only from \\(3.10\\) eV down to \\(1.77\\) eV. Reading the work functions off the chapter's own Table 14.1 and converting each to a threshold wavelength: potassium \\(\\phi_0 = 2.3\\) eV gives \\(\\lambda_0 = 539\\) nm, which lies inside the visible band, so green and all longer-energy visible light ejects electrons from it. Zinc \\(\\phi_0 = 3.6\\) eV gives \\(\\lambda_0 = 344\\) nm, aluminum \\(\\phi_0 = 4.3\\) eV gives \\(288\\) nm and nickel \\(\\phi_0 = 5.0\\) eV gives \\(248\\) nm; all three thresholds are in the ultraviolet, so under visible light not one of them emits a single photoelectron and none can work a street-light photocell. The chapter states the same conclusion in words on its opening page: \"For metals like zinc, cadmium, magnesium etc., ultraviolet radiation is necessary while for alkali metals, even visible radiation is sufficient.\" Potassium is the alkali metal here, and it is also the emitter the chapter's Example 14.1 uses for exactly this set-up.",
+    "matches_current": true
+  },
+  {
+    "id": "6b57ad88-dca2-4e06-b859-98b809b983e4",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "C",
+    "solution": "The stopping potential is fixed by \\(KE_{max} = eV_0\\) with \\(KE_{max} = h\\nu - \\phi_0\\) (Eq. 14.2), so \\(eV_0 = hc/\\lambda - \\phi_0\\). The photocurrent falls to zero only when even the MOST energetic photoelectron is turned back, and that electron is the one released by the highest-frequency, i.e. the shortest-wavelength, component of the beam. Take a potassium emitter (\\(\\phi_0 = 2.3\\) eV) lit simultaneously by \\(400\\), \\(450\\) and \\(520\\) nm. The longest component (\\(520\\) nm) alone would call for \\(V_0 = 0.085\\) V, but at that retarding potential the \\(400\\) nm electrons still carry \\(0.715\\) eV and reach the collector, so current still flows and the longest wavelength cannot set \\(V_0\\). A value built on the average wavelength (\\(450\\) nm) gives \\(0.456\\) V, and the \\(400\\) nm electrons still have \\(0.344\\) eV to spare, so an average-based value is excluded too. Only at \\(V_0 = 0.800\\) V, the value set by the shortest wavelength, is every photoelectron stopped. Finally \\(V_0 = (hc/\\lambda - \\phi_0)/e\\) contains \\(\\lambda\\) explicitly, so the claim that the stopping potential is independent of wavelength is excluded as well.",
+    "matches_current": true
+  },
+  {
+    "id": "734d464f-d473-45fc-8360-488639840870",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "A",
+    "solution": "The chapter derives \\(\\lambda = h/\\sqrt{2mE_K}\\) from \\(\\lambda = h/p\\) and \\(E_K = p^2/2m\\). With the kinetic energy the same for all four bodies, \\(\\lambda \\propto 1/\\sqrt{m}\\), so the longest wavelength belongs to the LIGHTEST particle. Masses: electron \\(9.11 \\times 10^{-31}\\) kg, proton \\(1.673 \\times 10^{-27}\\) kg, hydrogen atom \\(1.674 \\times 10^{-27}\\) kg (a proton plus an electron), \\(\\alpha\\)-particle \\(6.645 \\times 10^{-27}\\) kg. The electron is lighter than the proton by a factor \\(1837\\), so its wavelength is longer by \\(\\sqrt{1837} = 42.9\\) times; at a common \\(E_K = 100\\) eV that is \\(0.123\\) nm against \\(0.00286\\) nm. The proton is therefore excluded. The hydrogen atom is a proton with an electron added, hence marginally MORE massive than the proton and so marginally shorter in wavelength, which excludes it. The \\(\\alpha\\)-particle is about \\(3.97\\) times the proton mass, giving the shortest wavelength of the four (about half the proton's), which excludes it too. The ordering is independent of the common kinetic energy chosen, since that quantity cancels from every ratio.",
+    "matches_current": true
+  },
+  {
+    "id": "563aa8b8-200e-4541-8baa-d9e958c220bd",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "C",
+    "solution": "Each photon carries \\(E = h\\nu = hc/\\lambda\\), so a source radiating power \\(P\\) emits \\(N = P/E = P\\lambda/(hc)\\) photons in unit time. With the two sources at equal power, \\(N \\propto \\lambda\\). A red photon (\\(\\lambda \\approx 700\\) nm) carries \\(1.77\\) eV while a blue photon (\\(\\lambda \\approx 450\\) nm) carries \\(2.76\\) eV, so each red quantum is the smaller packet and more of them per second are needed to deliver the same power. At \\(1\\) W each this gives \\(3.52 \\times 10^{18}\\) red photons per second against \\(2.27 \\times 10^{18}\\) blue, a ratio \\(N_{Red}/N_{Blue} = \\lambda_{Red}/\\lambda_{Blue} = 1.56\\). The red count is thus the larger one, which excludes the reversed inequality. Equality would demand equal photon energies and hence the same wavelength, contradicting the premise that one source is red and the other blue, so that option fails. And a difference of about \\(56\\) per cent is far too large to call the two counts approximately equal, which excludes the last option. Note the equal dimensions of the sources matter only in fixing equal intensity; the count depends solely on the power and the wavelength.",
+    "matches_current": true
+  },
+  {
+    "id": "1b0e4cea-753d-4003-bf96-a765c3b4e533",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "C",
+    "solution": "Eq. (14.4) of the chapter gives \\(p = E/c\\), and the very same sentence states the condition on it: the relation \"is valid for a massless particle travelling with the speed of light \\(c\\) according to Einstein's special theory of relativity\". The Do-you-know box adds that a photon's \"rest mass is zero (in all frames of reference)\". Relativistically \\(E^2 = p^2c^2 + (m_0c^2)^2\\), so \\(E = pc\\) holds exactly only when \\(m_0 = 0\\). For a photon \\(E = h\\nu\\) and \\(p = h/\\lambda = h\\nu/c\\), hence \\(pc = h\\nu = E\\) identically, checked numerically at \\(500\\) nm where \\(E\\) and \\(pc\\) agree to every digit. An electron has \\(m_0c^2 = 0.511\\) MeV, so the relation fails badly for it: at \\(E_K = 1\\) eV the ratio \\(E/pc\\) is \\(505\\), at \\(100\\) eV it is \\(50.6\\), and even at \\(E_K = 10\\) keV it is still \\(5.13\\). That excludes the option asserting validity for both, and also the reversed option claiming validity for the electron but not the photon. Since every sub-atomic particle apart from the photon carries a non-zero rest mass, the sweeping option covering all sub-atomic particles fails for the same reason. The chapter itself poses precisely this discrimination in its \"Can you tell?\" box: \"The expression \\(p = E/c\\) defines the momentum of a photon. Can this expression be used for momentum of an electron or proton?\"",
+    "matches_current": true
+  }
+]

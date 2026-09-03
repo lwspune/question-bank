@@ -1,0 +1,14 @@
+[
+  {
+    "ref": "Solved Ex.13.6",
+    "why": "The book's own expression is right and its printed RESULT drops a factor of 10^-3. (72.35 x pi)/(180 x 2pi x 50) = 72.35/18000 = 4.019e-3 s. Self-refuting: at 50 Hz the period is 0.02 s, so a 4.019 s lag would be 201 complete cycles.",
+    "find": "\\( \\Delta t = \\frac{\\phi}{\\omega} = \\frac{72.35 \\times \\pi}{180 \\times 2\\pi \\times 50} = 4.019\\ s \\)",
+    "replace": "\\( \\Delta t = \\frac{\\phi}{\\omega} = \\frac{72.35 \\times \\pi}{180 \\times 2\\pi \\times 50} = 4.019 \\times 10^{-3}\\ \\text{s} \\)"
+  },
+  {
+    "ref": "Solved Ex.13.8",
+    "why": "The book divides by R where the impedance Z belongs: i_rms = e_rms/Z, not e_rms/R. With Z = 5 ohm the average power is 4805 W; the printed 8008.9 W is exactly Z/R = 5/3 times too large, which is what identifies the mechanism.",
+    "find": "\\( = \\frac{e_0}{\\sqrt{2}}\\, \\frac{e_0}{\\sqrt{2}R}\\, (0.6) \\)\n\\( = \\frac{283}{\\sqrt{2}}\\, \\frac{283}{\\sqrt{2} \\times 3}\\, 0.6 \\)\n\\( = 8008.9\\ W \\)",
+    "replace": "\\( = \\frac{e_0}{\\sqrt{2}}\\, \\frac{e_0}{\\sqrt{2}Z}\\, (0.6) \\)\n\\( = \\frac{283}{\\sqrt{2}}\\, \\frac{283}{\\sqrt{2} \\times 5}\\, 0.6 \\)\n\\( = 4805\\ \\text{W} \\)"
+  }
+]

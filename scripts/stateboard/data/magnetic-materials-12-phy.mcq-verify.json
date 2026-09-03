@@ -1,0 +1,37 @@
+[
+  {
+    "id": "62d71bd2-9940-4ddf-a81f-a3965cf3a98c",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "A",
+    "solution": "A hollow iron box is a closed shell of a soft ferromagnetic material, so it magnetically shields its interior (Sec. 11.8). Because the permeability of iron is very large, almost all of the earth's magnetic lines of force crowd into the iron walls and only a very small number pass through the enclosed space, so the field inside is REDUCED but not abolished.\n\nDiscriminating the four options: (C) 'same as that outside' is what would happen with no shell at all, and is contradicted by the crowding of lines into the iron; (B) 'more than that outside' describes the field inside the IRON WALL, not inside the cavity, and would mean the shell concentrates flux into the empty space it is diverting flux away from; (D) 'zero' overstates the effect — the chapter states that 'very few lines of force pass through the enclosed space', which is a small non-zero field (only a perfect diamagnet, \\(\\chi = -1\\), expels the flux completely). That leaves (A) less than that outside.",
+    "matches_current": true
+  },
+  {
+    "id": "92d32611-adb5-4430-b5ef-9b6afbe0430e",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "A",
+    "solution": "A transformer core is carried round a full hysteresis cycle by the alternating current, and the energy dissipated per cycle is the AREA of the \\(B\\)-\\(H\\) loop. The core must therefore have as NARROW a loop as possible, i.e. it must magnetise and demagnetise easily and retain almost nothing when the current reverses. Narrow loop \\(\\Rightarrow\\) small coercivity (little reverse \\(H\\) needed to bring \\(B\\) back to zero) AND small retentivity (little \\(B\\) left when \\(H = 0\\)). Soft iron is exactly such a soft magnetic material.\n\nDiscriminating the four options: any option carrying HIGH coercivity — (C) and (D) — widens the loop and increases the hysteresis loss per cycle, and high coercivity also means the core resists reversal fifty times a second; (B) low coercivity with HIGH retentivity would leave the core permanently magnetised after switch-off, which is the specification of a PERMANENT magnet, not a core. Only (A) low coercivity and low retentivity gives the narrow loop a core needs.",
+    "matches_current": true
+  },
+  {
+    "id": "28daf9b9-43a0-4633-bce5-9d2bb8b32989",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "D",
+    "solution": "Test each statement against the chapter.\n(A) For a diamagnetic material \\(\\chi\\) is negative, and \\(\\mu_{r} = 1 + \\chi\\) (Eq. 11.18), so \\(\\mu_{r} < 1\\). TRUE.\n(B) Table 11.2 gives \\(\\chi\\) between \\(-10^{-3}\\) and \\(-10^{-5}\\) for diamagnetic substances — negative, and small in magnitude. TRUE.\n(C) Diamagnetism arises from the field-induced current in a PAIRED electron orbit (Lenz's law), not from the alignment of pre-existing dipole moments against thermal agitation. There is therefore no competition with thermal energy and no \\(1/T\\) factor, unlike the Curie law \\(\\chi \\propto 1/T\\) which the chapter derives for PARAMAGNETIC material only. TRUE.\n\nAll three individual statements are correct, so the option that must be chosen is (D) All of above — and each of (A), (B), (C) is therefore incomplete as an answer rather than wrong.",
+    "matches_current": true
+  },
+  {
+    "id": "ae9ab20f-a20b-4c20-9eff-e8b897809865",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "B",
+    "solution": "For angular oscillations of a magnet in a field \\(B\\), Eq. (11.8) gives \\(T = 2\\pi\\sqrt{I/(mB)}\\), so \\(T \\propto \\sqrt{I/m}\\).\n\nLet the original magnet have mass \\(M\\), length \\(L\\) and pole strength \\(q_{m}\\). Then \\(I = ML^{2}/12\\) and \\(m = q_{m}L\\).\nBreaking it into two equal halves ACROSS its length gives each piece mass \\(M/2\\) and length \\(L/2\\), while the pole strength is unchanged (each piece keeps one original pole face).\n\\(I' = \\dfrac{(M/2)(L/2)^{2}}{12} = \\dfrac{I}{8}\\), and \\(m' = q_{m}(L/2) = \\dfrac{m}{2}\\).\n\\(\\dfrac{T'}{T} = \\sqrt{\\dfrac{I'/m'}{I/m}} = \\sqrt{\\dfrac{I/8}{m/2}\\cdot\\dfrac{m}{I}} = \\sqrt{\\dfrac{2}{8}} = \\dfrac{1}{2}\\).\n\nDiscriminating the four options numerically (taking \\(M = L = q_{m} = B = 1\\)): \\(I = 0.083333\\), \\(m = 1\\), \\(T = 1.81380\\); \\(I' = 0.010417\\), \\(m' = 0.5\\), \\(T' = 0.90690\\); ratio \\(= 0.5000000000\\) exactly. Option (A) \\(1/(2\\sqrt{2}) = 0.3535534\\) is \\(\\sqrt{1/8}\\) — the answer you get if you shrink the moment of inertia by 8 but FORGET that the magnetic moment also halves; (C) \\(2\\) has the ratio inverted; (D) \\(1/4\\) is \\((T'/T)^{2}\\), i.e. the ratio of \\(I'/m'\\) to \\(I/m\\) without taking the square root. Only (B) matches.",
+    "matches_current": true
+  },
+  {
+    "id": "dc366222-d70b-481c-80fe-bb07d642163c",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "C",
+    "solution": "From Eq. (11.18), \\(B = \\mu H\\), so the permeability is\n\\(\\mu = \\dfrac{B}{H} = \\dfrac{0.6\\ \\text{T}}{360\\ \\text{A m}^{-1}} = 1.6667 \\times 10^{-3} = \\dfrac{1}{600}\\) T m A\\(^{-1}\\).\n\nDiscriminating the four options: (D) \\(600\\) is \\(H/B\\), the RECIPROCAL — it answers a different question and carries the units A\\(^2\\) N\\(^{-1}\\), not T m A\\(^{-1}\\); (B) \\(300\\) is that reciprocal halved; (A) \\(1/300 = 3.333 \\times 10^{-3}\\) is twice the correct value. Only (C) \\(1/600\\) equals \\(B/H\\).\n\nSanity check on the magnitude: \\(\\mu_{r} = \\mu/\\mu_{0} = (1/600)/(4\\pi \\times 10^{-7}) \\approx 1326\\), which is the right order for a ferromagnetic material (the chapter notes \\(\\chi > 1000\\) for soft iron), so the value is self-consistent with the stem calling the material ferromagnetic.",
+    "matches_current": true
+  }
+]

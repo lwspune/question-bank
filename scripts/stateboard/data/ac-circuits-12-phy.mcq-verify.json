@@ -1,0 +1,32 @@
+[
+  {
+    "id": "8fe7737c-796a-4cf3-9722-eb8ec4b95463",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "B",
+    "solution": "\\( i_{\\mathrm{rms}} = 5 \\) A, so the peak current is \\( i_0 = \\sqrt{2}\\, i_{\\mathrm{rms}} = 5\\sqrt{2} \\) A. Measuring time from the instant the current is zero and rising, \\( i = i_0 \\sin \\omega t \\) with \\( \\omega = 2\\pi f = 100\\pi \\) rad/s.\nAt \\( t = \\frac{1}{300} \\) s, \\( \\omega t = \\frac{100\\pi}{300} = \\frac{\\pi}{3} \\), so \\( \\sin \\omega t = \\frac{\\sqrt{3}}{2} \\).\n\\( i = 5\\sqrt{2} \\times \\frac{\\sqrt{3}}{2} = 5\\sqrt{\\frac{3}{2}} = 6.124 \\) A.\nDiscrimination — each of the other three values fails a test of its own. The value \\( 5\\sqrt{2} = 7.071 \\) A is the PEAK current, which is reached only at \\( \\omega t = \\pi/2 \\), i.e. at \\( t = 1/200 \\) s, not at \\( t = 1/300 \\) s. The value \\( 5/\\sqrt{2} = 3.536 \\) A divides the rms current by \\( \\sqrt{2} \\) instead of multiplying by it. The value \\( 5/6 = 0.833 \\) A corresponds to nothing derivable from the given data. Only \\( 5\\sqrt{3/2} = 6.124 \\) A matches the computed instantaneous current, so the correct option is B."
+  },
+  {
+    "id": "51872534-a1e9-4267-957e-1bf3f4023f43",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "A",
+    "solution": "Comparing \\( V = 100\\sqrt{2} \\sin (1000\\, t) \\) with \\( V = V_0 \\sin \\omega t \\) gives \\( \\omega = 1000 \\) rad/s.\n\\( X_L = \\omega L = 1000 \\times 0.5 = 500\\ \\Omega \\), which equals \\( R = 500\\ \\Omega \\).\n\\( Z = \\sqrt{R^2 + X_L^2} = \\sqrt{500^2 + 500^2} = 500\\sqrt{2}\\ \\Omega \\).\nPower factor \\( \\cos\\phi = \\frac{R}{Z} = \\frac{500}{500\\sqrt{2}} = \\frac{1}{\\sqrt{2}} = 0.707 \\).\nDiscrimination — because \\( X_L = R \\) exactly, \\( \\phi = 45^\\circ \\) and the power factor can only be \\( 1/\\sqrt{2} \\). The value \\( 1/\\sqrt{3} = 0.577 \\) would require \\( X_L = \\sqrt{2}\\,R \\), the value \\( 0.5 \\) would require \\( X_L = \\sqrt{3}\\,R \\), and the value \\( 0.6 \\) would require \\( X_L = \\frac{4}{3}R \\); the given \\( \\omega L \\) produces none of these. Hence the power factor is \\( 1/\\sqrt{2} \\) and the correct option is A."
+  },
+  {
+    "id": "87e82aa9-a361-4f42-a1de-9d5fb3562cbb",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "D",
+    "solution": "The current LEADS the voltage, so the circuit is capacitance dominated and \\( X_C > X_L \\).\n\\( \\tan 45^\\circ = \\frac{X_C - X_L}{R} = 1 \\), so \\( X_C = X_L + R = 2\\pi f L + R \\).\nSince \\( X_C = \\frac{1}{2\\pi f C} \\),\n\\( C = \\frac{1}{2\\pi f X_C} = \\frac{1}{2\\pi f \\left( 2\\pi f L + R \\right)} \\).\nDiscrimination, in two independent steps. (1) The SIGN: the two expressions carrying \\( \\left( 2\\pi f L - R \\right) \\) are what you obtain when the current LAGS, so they answer the opposite question and are excluded by the word \"leads\" in the stem. (2) The COEFFICIENT: the two expressions carrying \\( \\pi f \\) rather than \\( 2\\pi f \\) drop the factor 2 in \\( X_C = 1/(2\\pi f C) \\) and are out by exactly a factor of 2. Only \\( \\frac{1}{2\\pi f \\left( 2\\pi f L + R \\right)} \\) survives both tests.\nChecked numerically with \\( f = 60 \\) Hz, \\( L = 0.30 \\) H, \\( R = 40\\ \\Omega \\): this expression gives \\( C = 1.7326 \\times 10^{-5} \\) F, and feeding that back gives \\( X_C - X_L = 40.00\\ \\Omega = R \\), i.e. a phase angle of exactly \\( 45^\\circ \\) with the current leading. The other three expressions give \\( 7.258 \\times 10^{-5} \\), \\( 3.629 \\times 10^{-5} \\) and \\( 3.465 \\times 10^{-5} \\) F, for which \\( X_C - X_L \\) comes out as \\( -76.55 \\), \\( -40.00 \\) and \\( -36.55\\ \\Omega \\) — every one of them a LAGGING current, so none reproduces the stated \\( 45^\\circ \\) lead. The correct option is D."
+  },
+  {
+    "id": "1d10d237-0b63-4034-a7bd-02379139e2e3",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "C",
+    "solution": "\\( e_0 = 150 \\) V and \\( i_0 = 150 \\) A, and the phase difference between them is \\( \\phi = \\frac{\\pi}{3} \\), so \\( \\cos\\phi = 0.5 \\).\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}}\\, i_{\\mathrm{rms}} \\cos\\phi = \\frac{e_0}{\\sqrt{2}} \\cdot \\frac{i_0}{\\sqrt{2}} \\cdot \\cos\\phi = \\frac{e_0 i_0}{2} \\cos\\phi \\)\n\\( = \\frac{150 \\times 150}{2} \\times 0.5 = 11250 \\times 0.5 = 5625 \\) W.\nDiscrimination — a value of zero would require \\( \\phi = 90^\\circ \\), i.e. a purely reactive circuit, whereas here \\( \\phi = 60^\\circ \\). The value 150 W is simply the amplitude carried over with no computation. The value 106 W is \\( 150/\\sqrt{2} = 106.07 \\), the rms of 150, which is a current or a voltage and not a power at all. Note that \\( e_0 i_0 = 22500 \\) W is the peak instantaneous product and \\( e_0 i_0 / 2 = 11250 \\) W would be the answer if the two were in phase; the factor \\( \\cos 60^\\circ = 0.5 \\) halves it again to 5625 W. Only 5625 W is consistent, so the correct option is C."
+  },
+  {
+    "id": "6b030140-468e-4ef2-a5e3-ae120f6741fc",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "B",
+    "solution": "Power factor is by definition \\( \\cos\\phi \\), where \\( \\phi \\) is the phase difference between the applied voltage and the current.\n\\( \\cos 45^\\circ = \\frac{1}{\\sqrt{2}} = 0.7071 \\).\nDiscrimination — a power factor of 1 belongs to resonance, where \\( \\phi = 0 \\), not \\( 45^\\circ \\). The values 0.607 and 0.808 correspond to \\( \\phi = 52.6^\\circ \\) and \\( \\phi = 36.1^\\circ \\) respectively, neither of which is the stated angle. Only 0.707 equals \\( \\cos 45^\\circ \\), so the correct option is B."
+  }
+]

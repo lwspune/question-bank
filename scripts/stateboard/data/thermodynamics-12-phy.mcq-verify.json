@@ -1,0 +1,37 @@
+[
+  {
+    "id": "2f993a14-6985-4cc6-a099-5b624ab92e54",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "B",
+    "solution": "The chapter states the first law as \\(\\Delta U = Q - W\\) (Eq. 4.3), where \\(Q\\) is the heat added to the system and \\(W\\) is the work done by the system on its surroundings. Here \\(Q = +10\\,\\text{J}\\), and the gas lifts the lid, so it does work \\(W = F \\times d = 3\\,\\text{N} \\times 2\\,\\text{m} = +6\\,\\text{J}\\) on it. Therefore \\(\\Delta U = 10 - 6 = +4\\,\\text{J}\\). Each of the other three values traces to one specific slip. The value \\(10\\,\\text{J}\\) drops the work term altogether, and would be right only if the lid had not moved. The value \\(-10\\,\\text{J}\\) drops the work term as well as treating the \\(10\\,\\text{J}\\) as heat removed from the gas rather than supplied to it. The value \\(-4\\,\\text{J}\\) is \\(W - Q\\), which is the first law written with its sign convention inverted.",
+    "matches_current": true
+  },
+  {
+    "id": "d84f38bc-ca41-4c83-9fea-e4dd1d7df762",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "D",
+    "solution": "The chapter says outright that the first law \"is thus a generalization of the law of conservation of energy\", extended from isolated systems to systems that can exchange energy as heat \\(Q\\) or as work \\(W\\), and it writes that balance as \\(Q = \\Delta U + W\\) (Eq. 4.4). The falling-ball statement is exactly that book-keeping: the initial potential energy reappears as kinetic energy plus the heat generated, with heat counted as one of the forms the energy takes and nothing left unaccounted for. Specific heat describes a material property, namely how much heat is needed to change a body's temperature, and asserts no energy balance at all. An ice cube holding its temperature while it melts is a latent-heat, phase-change observation; the first law does not predict that a change of state happens at fixed temperature. The unplugged refrigerator warming to room temperature is spontaneous heat flow from hot to cold, which is thermal equilibrium under the zeroth law and, as to its direction, the second law: the chapter's own \"Limitations of the First Law of Thermodynamics\" section says the first law would equally permit heat to flow the other way, so it cannot be what that example illustrates.",
+    "matches_current": true
+  },
+  {
+    "id": "347e938c-19b9-4369-9158-9f60e337a60b",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "C",
+    "solution": "The chapter derives the Carnot efficiency as \\(\\eta = 1 - \\frac{T_C}{T_H} = \\frac{T_H - T_C}{T_H}\\) (Eq. 4.29) and immediately adds the design rule that \"the source temperature \\(T_H\\) should be as high as possible and the sink temperature \\(T_C\\) should be as low as possible\". The quantity standing in the numerator is the temperature difference, so the efficiency is large when \\(T_H - T_C\\) is large, and with either reservoir temperature held fixed \\(\\eta\\) rises steadily as that gap widens: at \\(T_H = 600\\,\\text{K}\\), widening the gap from \\(50\\,\\text{K}\\) to \\(400\\,\\text{K}\\) takes \\(\\eta\\) from \\(0.083\\) to \\(0.667\\). A small \\(T_H - T_C\\) is the exact opposite and is plainly wrong, since \\(T_H = 400\\,\\text{K}\\) with \\(T_C = 399\\,\\text{K}\\) gives \\(\\eta = 0.0025\\). Raising \\(T_H\\) by itself is not sufficient, because \\(T_H = 10000\\,\\text{K}\\) with \\(T_C = 9999\\,\\text{K}\\) gives \\(\\eta = 0.0001\\); and lowering \\(T_C\\) by itself is not sufficient either, because \\(T_C = 1\\,\\text{K}\\) with \\(T_H = 1.01\\,\\text{K}\\) gives \\(\\eta = 0.0099\\). Those last two each name only one half of the book's two-part design rule, and the book gives no ground for preferring one half to the other, which is why the combined statement about the temperature difference is the one that stands.",
+    "matches_current": true
+  },
+  {
+    "id": "4282c503-01ce-4207-b862-fb2fe033fbf9",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "B",
+    "solution": "The chapter introduces the second law as \"a general principle which puts constraints upon the direction of heat transfer and the efficiencies that a heat engine can achieve\", and gives its Clausius form as \"energy will not flow spontaneously from an object at low temperature to an object at a higher temperature\", adding that \"in any spontaneous process, the net transfer of energy will be from the hot object to the cold object\". The quantity whose transfer the law governs is therefore energy, heat being energy in transit. Work is not what passes between the two reservoirs; it is what the law limits us to extracting from the heat, and the Clausius form describes a situation in which no work is done at all. Momentum is governed by Newton's laws and appears in neither statement of the second law. Mass is not transferred either, since the cyclic processes the law describes return the working substance to its initial state and no matter crosses the boundary.",
+    "matches_current": true
+  },
+  {
+    "id": "1dc7db99-f38a-4083-827c-2c7cd1a27819",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "In the chapter's refrigeration cycle the refrigerant takes heat in at the cooling coils inside the cold space, where \"heat is transferred to it from the contents of the fridge\", and gives that heat up after the compressor, where \"the hot liquid passes through coils on the outside of the fridge, and heat is transferred to the atmosphere\". The chapter names those outer coils explicitly: for an air conditioner \"the evaporator coils are inside the room that is to be cooled and the condenser is outside the room\", and for a heat pump \"the condenser coils are inside the building. They release the absorbed heat to the air inside the room\". So the heat is rejected in the condenser. The evaporator is where heat is absorbed, which is the exact reverse of what is asked. The cold chamber is the space the heat is drawn out of, not a place heat is delivered to. And a \"hot chamber\" is not a component of the refrigeration circuit at all: the surroundings do end up with the heat, but the part of the circuit in which the refrigerant surrenders it is the condenser coil.",
+    "matches_current": true
+  }
+]

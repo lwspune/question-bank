@@ -1,0 +1,431 @@
+[
+  {
+    "ref": "Solved Ex.12.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "A coil consists of 400 turns of wire. Each turn is a square of side \\(d = 20\\) cm. A uniform magnetic field directed perpendicular to the plane of the coil is turned on. If the field changes linearly from 0 to 0.50 T in 0.8 s, what is the magnitude of induced emf in the coil while the field is changing?",
+    "solution": "The magnitude of induced emf in the coil is written as\n\n\\(|e| = \\left| \\dfrac{\\mathrm{d}(N\\phi)}{\\mathrm{d}t} \\right| = N \\dfrac{\\mathrm{d}\\phi}{\\mathrm{d}t}\\)\n\n\\(\\because \\phi = B \\cdot A\\)\n\n\\(\\therefore |e| = N \\cdot \\dfrac{\\mathrm{d}(BA)}{\\mathrm{d}t}\\)\n\n\\(= N \\cdot A \\cdot \\dfrac{\\mathrm{d}B}{\\mathrm{d}t}\\) (as \\(A\\) is constant and \\(B\\) is changing with time)\n\n\\(= N \\cdot A \\cdot \\dfrac{\\Delta B}{\\Delta t} = N \\cdot A \\cdot \\dfrac{B_{\\text{final}} - B_{\\text{initial}}}{\\Delta t}\\)\n\nInserting the given values of \\(N = 400\\), \\(A = (20\\ \\text{cm})^2 = (0.2\\ \\text{m})^2\\), \\(B_{\\text{final}} = 0.5\\) T, \\(B_{\\text{initial}} = 0\\), \\(\\Delta t = 0.8\\) s, we find the induced emf\n\n\\(|e| = \\dfrac{400 \\cdot (0.20\\ \\text{m})^2 (0.5\\ \\text{T})}{0.8\\ \\text{s}}\\)\n\n\\(= 10\\) Volt"
+  },
+  {
+    "ref": "Solved Ex.12.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Induced emf in a Stationary Coil",
+    "difficulty": "MODERATE",
+    "stem": "A long solenoid S, as shown in the figure has 200 turns/cm and carries a current \\(i\\) of 1.4 A. The diameter \\(D\\) of the solenoid is 3 cm. A coil C, having 100 turns and diameter \\(d\\) of 2 cm is kept coaxial to the solenoid. The current in the solenoid is decreased steadily to zero in 20 ms. Calculate the magnitude of emf induced in the coil C when the current in the solenoid is changing.",
+    "solution": "Part of magnetic flux (per turn) of the solenoid S that links with the coil C is\n\n\\(\\phi_{\\text{c}} = \\mu_0\\, n_{\\text{s}}\\, i\\, \\dfrac{\\pi\\, \\mathrm{d}_{\\text{c}}^{2}}{4}\\)\n\nThis flux reduces to zero in \\(\\mathrm{d}t = 20\\) ms. Thus, the emf induced in coil C of \\(N_{\\text{c}}\\) turns is\n\n\\(e_{\\text{s}} = -N_{\\text{c}} \\dfrac{\\mathrm{d}\\phi_{\\text{c}}}{\\mathrm{d}t} = \\dfrac{-(0 - \\phi_{\\text{c}})}{\\mathrm{d}t} = \\dfrac{\\mu_0 N_{\\text{c}} n_{\\text{s}} i \\pi\\, \\mathrm{d}_{\\text{c}}^{2}}{4\\,\\mathrm{d}t}\\)\n\n\\(= \\dfrac{4\\pi \\times 10^{-7} \\times 100 \\times 2 \\times 10^{4} \\times 1.4 \\times 3.14 \\times 4 \\times 10^{-4}}{4 \\times 20 \\times 10^{-3}}\\)\n\n\\(= 55.24\\) mV"
+  },
+  {
+    "ref": "Solved Ex.12.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Generators, Back emf and Energy Transfer",
+    "difficulty": "HARD",
+    "stem": "A rotating armature of a simple generator consists of rectangular section DABC of a conducting wire as shown in the figure, to which connections are made through sliding contacts. The armature is rotated at 1500 rpm in the magnetic field \\((\\vec{B})\\) of 0.5 N/A.m. Determine the induced emf between the terminals P and Q of the generator at the instant shown in the adjoining figure.",
+    "solution": "The wire AB (\\(l = 10\\) cm) is moving to the right with the tangential velocity v.\n\n\\(\\left| \\vec{\\mathrm{v}} \\right| = \\left| \\vec{\\omega} \\times \\vec{r} \\right|\\)\n\nv \\(= \\omega r\\) where \\(\\omega\\) is angular velocity and \\(r\\) is the radius.\n\n\\(\\mathrm{v} = \\dfrac{2\\pi}{T} \\cdot r\\)  \\(\\left[ \\because \\omega = \\dfrac{2\\pi}{T} \\right]\\)\n\n\\(= 2\\pi \\nu r\\)\n\n\\(= 2\\pi \\cdot \\left( \\dfrac{1500}{60\\,\\mathrm{s}} \\right) \\cdot \\left( \\dfrac{4}{100} \\right) \\mathrm{m}\\)  \\(\\left[ \\because r = AD = (4/100)\\,\\mathrm{m} \\right]\\)\n\n\\(= 2\\pi\\) m/s\n\n\\(= 6.284\\) m/s\n\nThe magnetic field is directed vertically upward from North to South pole. As the wire AB is cutting the magnetic lines of force perpendicularly, the induced emf is, therefore, maximum.\n\n\\(\\because e = Bl\\mathrm{v} \\sin\\theta\\) with \\(\\theta = 90^\\circ\\),\n\nThen, \\(e = e_{\\max} = Bl\\mathrm{v}\\)\n\n\\(= (0.5\\ \\text{N/A.m})\\,(10/100)\\,\\text{m} \\cdot (6.28\\ \\text{m/s})\\)\n\n\\(= \\dfrac{0.5}{10} \\times 6.28\\)\n\n\\(= 0.314\\) V\n\nor \\(e_{\\max} \\approx 314.2\\) mV.\n\nThe emf induced in the wires BC and DA is zero because the magnetic Lorentz force on free electrons in these wire \\(\\left[ \\vec{F} = q(\\vec{\\mathrm{v}} \\times \\vec{B}) \\right]\\) has no component parallel to the wires. Also there is no e.m.f. in the lead in wires, which are stationary and are not in motion \\((\\vec{\\mathrm{v}} = 0)\\). Therefore the total emf between the terminals P and Q is due the movement of segment AB. i.e., \\(e = 314\\) mV. The direction of induced emf is given by Lenz's law."
+  },
+  {
+    "ref": "Solved Ex.12.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "A conducting loop of area 1 m\\(^2\\) is placed normal to uniform magnetic field 3 Wb/m\\(^2\\). If the magnetic field is uniformly reduced to 1 Wb/m\\(^2\\) in a time of 0.5 s, calculate the induced emf produced in the loop.",
+    "solution": "Given,\n\nArea of the loop, \\(A = 1\\) m\\(^2\\)\n\n\\((B)_{\\text{initial}} = 3\\) Wb/m\\(^2\\)\n\n\\((B)_{\\text{final}} = 1\\) Wb/m\\(^2\\)\n\nduration of time, \\(\\Delta t = 0.5\\) s\n\n\\(\\therefore\\) Induced emf,\n\n\\(|e| = \\left| \\dfrac{\\mathrm{d}\\phi}{\\mathrm{d}t} \\right| = \\left| \\dfrac{\\phi_{\\text{final}} - \\phi_{\\text{initial}}}{\\text{Time interval}} \\right|\\)\n\n\\(= \\dfrac{(B_{\\text{final}} - B_{\\text{initial}})A}{\\Delta t}\\)\n\n\\(= \\left| \\left[ \\dfrac{(1-3)}{0.5} \\cdot 1 \\right] \\right|\\) volt\n\n\\(= \\left| -\\dfrac{2}{0.5} \\cdot 1 \\right|\\) volt\n\n\\(|e| = 4\\) volt"
+  },
+  {
+    "ref": "Solved Ex.12.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "HARD",
+    "stem": "Derive an expression for the self-inductance of a toroid of circular cross-section of radius \\(r\\) and major radius \\(R\\). Calculate the self inductance \\((L)\\) of toroid for major radius \\((R) = 15\\) cm, cross-section of toroid having radius \\((r) = 2.0\\) cm and the number of turns \\((n) = 1200\\).",
+    "solution": "The magnetic field inside a toroid,\n\n\\(B = \\dfrac{\\mu_0 N i}{2\\pi r_0}\\), where \\(N\\) is the number of turns and \\(r_0\\) is the distance from the toroidal axis. If \\(r << R\\), we can use \\(r_0 \\cong R\\). Hence,\n\n\\(B = \\dfrac{\\mu_0 N i}{2\\,u\\,R}\\)\n\nThe magnetic flux \\((\\phi)\\) passing through cavity is\n\n\\(\\phi = \\left( \\pi r^2 \\right) \\dfrac{\\mu_0}{2\\pi} \\dfrac{Ni}{R} = \\dfrac{\\mu_0 N i r^2}{2R}\\)\n\nThis is the flux that links each turn. When the current \\(i\\) varies with time, the induced emf \\(e\\) across the terminals of toroid is given by Faraday's law.\n\n\\(e = -\\dfrac{N \\mathrm{d}\\phi}{\\mathrm{d}t} = -N \\dfrac{\\mathrm{d}}{\\mathrm{d}t} \\left( \\dfrac{\\mu_0 N i r^2}{2R} \\right)\\)\n\n\\(e = -N \\left( \\dfrac{\\mu_0 N r^2}{2R} \\right) \\dfrac{\\mathrm{d}i}{\\mathrm{d}t}\\)\n\nComparing with \\(e = -L \\dfrac{\\mathrm{d}i}{\\mathrm{d}t}\\)\n\nWe get,\n\n\\(L = \\dfrac{\\mu_0}{2} \\dfrac{N^2 r^2}{R}\\)   \\((\\because r << R)\\)\n\nGiven,\n\n\\(N = 1200\\), \\(r = 2.0\\) cm, \\(R = 15\\) cm and \\(\\mu_0 = 4\\pi \\times 10^{-7}\\) T.m/A.\n\n\\(L = 2.414 \\times 10^{-3}\\) H"
+  },
+  {
+    "ref": "Solved Ex.12.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "MODERATE",
+    "stem": "Consider a uniformly wound solenoid having \\(N\\) turns and length \\(l\\). The core of the solenoid is air. Find the inductance of the solenoid of \\(N = 200\\), \\(l = 20\\) cm and cross-sectional area, \\(A = 5\\) cm\\(^2\\). Calculate the induced emf \\(e_{\\mathrm{L}}\\), if the current flowing through the solenoid decreases at a rate of 60 A/s.",
+    "solution": "The magnetic flux through each turn of area \\(A\\) in the solenoid is\n\n\\(\\phi_B = B \\cdot A = (\\mu_0 n i) \\cdot A\\)  \\((\\because\\) Magnetic field inside a solenoid is \\(B = \\mu_0 ni)\\)\n\n\\(= \\mu_0 (N/l) \\cdot i \\cdot A\\)  \\((\\because n\\) is the number of turns per unit length \\(= N/l)\\)\n\nWe know that the inductance \\((L)\\) of the solenoid can be written as\n\n\\(L = (N \\phi_B)/i\\)\n\nSubstituting the value of \\(\\phi_B\\), we get\n\n\\(L = (N/i) \\cdot \\{ \\mu_0 \\cdot (N/l) \\cdot i \\cdot A \\}\\)\n\n\\(L = \\mu_0 \\cdot (N^2/l) \\cdot A\\)\n\nInserting the given values of \\(N\\), \\(l\\) and \\(A\\), we find\n\n\\(L = (4\\pi \\cdot 10^{-7}\\,\\text{Tm}/A) \\cdot (200)^2 (5 \\cdot 10^{-4}\\,\\text{m}^2)/(20 \\cdot 10^{-4}\\,\\text{m})\\)\n\nor \\(L \\approx 0.1257\\) mH\n\nThe induced emf in the solenoid\n\n\\(e_{\\mathrm{L}} = -L\\,(\\mathrm{d}i/\\mathrm{d}t)\\)\n\n\\(e_{\\mathrm{L}} = -(0.126 \\cdot 10^{-3})\\,(-60\\ \\text{A/s}) = 7.543\\) mV"
+  },
+  {
+    "ref": "Solved Ex.12.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "EASY",
+    "stem": "The self-inductance of a closely wound coil of 200 turns is 10 mH. Determine the value of magnetic flux through the cross-section of the coil when the current passing through the coil is 4 mA.",
+    "solution": "Given :\n\nSelf-inductance of coil, \\(L = 10\\) mH,\n\nNumber of turns, \\(N = 200\\), and\n\nCurrent through the coil, \\(i = 4\\) mA\n\nThe total value of magnetic flux \\(\\phi\\) associated with the coil is,\n\n\\(\\phi = L\\,i\\)\n\n\\(= (10 \\times 10^{-3})\\ \\text{H} \\times (4 \\times 10^{-3})\\ \\text{A}\\)\n\n\\(= 4 \\times 10^{-5}\\) Wb\n\nThe flux per turn (or flux through the cross-section of the coil)\n\n\\(= \\dfrac{\\phi}{N}\\)\n\n\\(= \\left( \\dfrac{4 \\times 10^{-5}\\ \\text{Wb}}{200} \\right)\\)\n\n\\(= 2 \\times 10^{-7}\\) Wb"
+  },
+  {
+    "ref": "Solved Ex.12.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "HARD",
+    "stem": "Calculate the self-inductance of a coaxial cable of length \\(l\\) and carrying a current \\(I\\). The current flows down the inner cylinder with radius \\(a\\), and flows out of the outer cylinder with radius \\(b\\).",
+    "solution": "According to Ampere's law, the magnetic field \\((B)\\) between two cylinders at a distance \\(r\\) from the axis is given by\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi r}\\).\n\nThe magnetic field is zero elsewhere.\n\nWe also know that the magnetic energy density,\n\n\\(u_B = \\dfrac{B^2}{2\\mu_0} = \\dfrac{1}{2\\mu_0} \\left( \\dfrac{\\mu_0^2 I^2}{4\\pi^2 r^2} \\right) = \\dfrac{\\mu_0 I^2}{8\\pi^2 r^2}\\)\n\nEnergy stored in a cylindrical shell of length \\(l\\), radius \\(r\\) and thickness \\(\\mathrm{d}r\\) is given by\n\n\\(\\left( \\dfrac{\\mu_0 I^2}{8\\pi^2 r^2} \\right) \\times 2\\pi l r\\, \\mathrm{d}r = \\dfrac{\\mu_0 I^2 l}{4\\pi} \\left( \\dfrac{\\mathrm{d}r}{r} \\right)\\)\n\nIntegrating from \\(a\\) to \\(b\\), we get\n\n\\(W = \\dfrac{\\mu_0 I^2 l}{4\\pi} \\ln \\left( \\dfrac{b}{a} \\right)\\)\n\nMagnetic energy confined in an inductor \\((L)\\) carrying a current \\((I)\\) can also be written as \\(\\dfrac{1}{2} L I^2\\). Comparing the two expressions we find the inductance of coaxial cable as\n\n\\(L = \\dfrac{\\mu_0 l}{2\\pi} \\ln \\left( \\dfrac{b}{a} \\right)\\)"
+  },
+  {
+    "ref": "Solved Ex.12.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "HARD",
+    "stem": "Mutual inductance of the wireless charging system.\n\nIn a wireless battery charger, the base unit can be imagined as a solenoid (coil B) of length \\(l\\) with \\(N_{\\mathrm{B}}\\) turns, carrying a current \\(i_{\\mathrm{B}}\\) and having a cross-section area \\(A\\). The handle coil (coil \\(H\\)) has \\(N_{\\mathrm{H}}\\) turns and surrounds the base solenoid (coil B) completely. The base unit is designed to hold the handle of the charging unit. The handle has a cylindrical hole so that it fits loosely over a matching cylinder on the base unit. When the handle is placed on the base, the current flowing in coil \\(B\\) induces a current in the coil \\(H\\). Thus, the induced current in the coil \\(H\\) is used to charge the battery housed in the handle.",
+    "solution": "The magnetic field due to a solenoid coil B,\n\n\\(B_{\\text{solenoid}} = \\mu_0\\, n\\, i = \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}}}{l} \\right) i\\)\n\nMagnetic flux through coil \\(H\\) caused by the magnetic field \\(B_{\\text{solenoid}}\\) due to solenoid coil B,\n\n\\(\\phi_{\\mathrm{H}} = B_{\\text{solenoid}}\\, A\\)\n\nFlux linkage \\(= N_{\\mathrm{H}} \\phi_{\\mathrm{H}}\\)\n\nThe mutual inductance \\((M)\\) of the wireless charging system,\n\n\\(M = \\dfrac{N_H B_{\\text{solenoid}} A}{i} = \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}}}{l} \\right) A . N_H\\)\n\n\\(= \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}} N_{\\mathrm{H}}}{l} \\right) A\\)"
+  },
+  {
+    "ref": "Solved Ex.12.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "Two coils having self inductances \\(L_1 = 75\\) mH and \\(L_2 = 55\\) mH are coupled with each other. The coefficient of coupling \\((K)\\) is 0.75 calculate the mutual inductance \\((M)\\) of the two coils.",
+    "solution": "Given :\n\n\\(L_1 = 75\\) mH, \\(L_2 = 55\\) mH, \\(K = 0.75\\).\n\nWe know that,\n\n\\(M = K \\sqrt{L_1 L_2}\\)\n\n\\(= 0.75 \\sqrt{75 \\times 55}\\) mH\n\n\\(M = 48.18\\) mH"
+  },
+  {
+    "ref": "Solved Ex.12.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "The mutual inductance \\((M)\\) of the two coils is given as 1.5 H. The self inductances of the coils are : \\(L_1 = 5\\) H, \\(L_2 = 4\\) H. Find the coefficient of coupling beween the coils.",
+    "solution": "Given  \\(L_1 = 5\\) H\n\n\\(L_2 = 4\\) H\n\n\\(M = 1.5\\) H.\n\n\\(K = \\dfrac{M}{\\sqrt{L_1 L_2}} = \\dfrac{1.5}{\\sqrt{5 \\times 4}}\\)\n\n\\(= 0.335 = 33.55\\%\\)"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the correct option.",
+    "stem": "A circular coil of 100 turns with a cross-sectional area (A) of 1 m\\(^2\\) is kept with its plane perpendicular to the magnetic field (B) of 1 T. What is the magnetic flux linkage with the coil?",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 Wb"
+      },
+      {
+        "label": "B",
+        "text": "100 Wb"
+      },
+      {
+        "label": "C",
+        "text": "50 Wb"
+      },
+      {
+        "label": "D",
+        "text": "200 Wb"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the correct option.",
+    "stem": "A conductor rod of length (l) is moving with velocity (v) in a direction normal to a uniform magnetic field (B). What will be the magnitude of induced emf produced between the ends of the moving conductor?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(BL\\mathrm{v}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(BL\\mathrm{v}^2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{2} Bl\\mathrm{v}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2Bl}{\\mathrm{v}}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the correct option.",
+    "stem": "Two inductor coils with inductance 10 mH and 20 mH are connected in series. What is the resultant inductance of the combination of the two coils?",
+    "options": [
+      {
+        "label": "A",
+        "text": "20 mH"
+      },
+      {
+        "label": "B",
+        "text": "30 mH"
+      },
+      {
+        "label": "C",
+        "text": "10 mH"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{20}{3}\\) mH"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the correct option.",
+    "stem": "A current through a coil of self inductance 10 mH increases from 0 to 1 A in 0.1 s. What is the induced emf in the coil?",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.1 V"
+      },
+      {
+        "label": "B",
+        "text": "1 V"
+      },
+      {
+        "label": "C",
+        "text": "10 V"
+      },
+      {
+        "label": "D",
+        "text": "0.01 V"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the correct option.",
+    "stem": "What is the energy required to build up a current of 1 A in an inductor of 20 mH?",
+    "options": [
+      {
+        "label": "A",
+        "text": "10 mJ"
+      },
+      {
+        "label": "B",
+        "text": "20 mJ"
+      },
+      {
+        "label": "C",
+        "text": "20 J"
+      },
+      {
+        "label": "D",
+        "text": "10 J"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer in brief.",
+    "stem": "What do you mean by electromagnetic induction? State Faraday's law of induction."
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Lenz's Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer in brief.",
+    "stem": "State and explain Lenz's law in the light of principle of conservation of energy."
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Eddy Currents",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer in brief.",
+    "stem": "What are eddy currents? State applications of eddy currents."
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Eddy Currents",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer in brief.",
+    "stem": "If the copper disc of a pendulum swings between the poles of a magnet, the pendulum comes to rest very quickly. Explain the reason. What happens to the mechanical energy of the pendulum?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer in brief.",
+    "stem": "Explain why the inductance of two coils connected in parallel is less than the inductance of either coil."
+  },
+  {
+    "ref": "Ex Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "HARD",
+    "stem": "In a Faraday disc dynamo, a metal disc of radius \\(R\\) rotates with an angular velocity \\(\\omega\\) about an axis perpendicular to the plane of the disc and passing through its centre. The disc is placed in a magnetic field \\(B\\) acting perpendicular to the plane of the disc. Determine the induced emf between the rim and the axis of the disc.",
+    "bookAnswer": "\\(\\dfrac{1}{2}(B \\omega R^2)\\)"
+  },
+  {
+    "ref": "Ex Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "EASY",
+    "stem": "A horizontal wire 20 m long extending from east to west is falling with a velocity of 10 m/s normal to the Earth's magnetic field of \\(0.5 \\times 10^{-4}\\) T. What is the value of induced emf in the wire?",
+    "bookAnswer": "10 mV"
+  },
+  {
+    "ref": "Ex Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "MODERATE",
+    "stem": "A metal disc is made to spin at 20 revolutions per second about an axis passing through its centre and normal to its plane. The disc has a radius of 30 cm and spins in a uniform magnetic field of 0.20 T, which is parallel to the axis of rotation. Calculate\n\n(a) The area swept out per second by the radius of the disc,\n\n(b) The flux cut per second by a radius of the disc,\n\n(c) The induced emf in the disc.",
+    "bookAnswer": "(a) 5.656 m\\(^2\\), (b) 1.130 Wb, (c) 1.130 V"
+  },
+  {
+    "ref": "Ex Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "MODERATE",
+    "stem": "A pair of adjacent coils has a mutual inductance of 1.5 H. If the current in one coil changes from 0 to 10 A in 0.2 s, what is the change of flux linkage with the other coil?",
+    "bookAnswer": "\\(\\mathrm{d}\\phi = 15\\) Wb, \\(e = 75\\) V"
+  },
+  {
+    "ref": "Ex Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Induced emf in a Stationary Coil",
+    "difficulty": "MODERATE",
+    "stem": "A long solenoid has 1500 turns/m. A coil C having cross sectional area 25 cm\\(^2\\) and 150 turns \\((N_{\\mathrm{c}})\\) is wound tightly around the centre of the solenoid. If a current of 3.0 A flows through the solenoid, calculate :\n\n(a) the magnetic flux density at the centre of the solenoid,\n\n(b) the flux linkage in the coil C,\n\n(c) the average emf induced in coil C if the direction of the current in the solenoid is reversed in a time of 0.5 s.\n\n\\((\\mu_0 = 4\\pi \\times 10^{-7}\\ T.m/A)\\)",
+    "bookAnswer": "(a) \\(5.66 \\times 10^{-3}\\) T, (b) \\(2.12 \\times 10^{-3}\\) Wb, (c) \\(8.48 \\times 10^{-3}\\) V"
+  },
+  {
+    "ref": "Ex Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "A search coil having 2000 turns with area 1.5 cm\\(^2\\) is placed in a magnetic field of 0.60 T. The coil is moved rapidly out of the field in a time of 0.2 second. Calculate the induced emf across the search coil.",
+    "bookAnswer": "0.9 V"
+  },
+  {
+    "ref": "Ex Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "EASY",
+    "stem": "An aircraft of wing span of 50 m flies horizontally in earth's magnetic field of \\(6 \\times 10^{-5}\\) T at a speed of 400 m/s. Calculate the emf generated between the tips of the wings of the aircraft.",
+    "bookAnswer": "1.2 V"
+  },
+  {
+    "ref": "Ex Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Generators, Back emf and Energy Transfer",
+    "difficulty": "HARD",
+    "stem": "A stiff semi-circular wire of radius \\(R\\) is rotated in a uniform magnetic field \\(B\\) about an axis passing through its ends. If the frequency of rotation of the wire is \\(f\\), calculate the amplitude of the alternating emf induced in the wire.",
+    "bookAnswer": "\\(e_0 = \\pi^2 B R^2 f\\)"
+  },
+  {
+    "ref": "Ex Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the value of induced emf between the ends of an axle of a railway carriage 1.75 m long traveling on level ground with a uniform velocity of 50 km per hour. The vertical component of Earth's magnetic field \\((B_{\\mathrm{v}})\\) is given to be \\(5 \\times 10^{-5}\\) T.",
+    "bookAnswer": "1.215 mV"
+  },
+  {
+    "ref": "Ex Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "The value of mutual inductance of two coils is 10 mH. If the current in one of the coil changes from 5 A to 1 A in 0.2 s, calculate the value of emf induced in the other coil.",
+    "bookAnswer": "\\(e = 2\\) V"
+  },
+  {
+    "ref": "Ex Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "An emf of 96.0 mV is induced in the windings of a coil when the current in a nearby coil is increasing at the rate of 1.20 A/s. What is the mutual inductance \\((M)\\) of the two coils?",
+    "bookAnswer": "80 mH"
+  },
+  {
+    "ref": "Ex Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "HARD",
+    "stem": "A long solenoid of length \\(l\\), cross-sectional area \\(A\\) and having \\(N_1\\) turns (primary coil), has a small coil of \\(N_2\\) turns (secondary coil) wound about its centre. Determine the Mutual inductance \\((M)\\) of the two coils.",
+    "bookAnswer": "\\(M = \\mu_0 N_1 N_2 A / l\\)"
+  },
+  {
+    "ref": "Ex Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "MODERATE",
+    "stem": "The primary and secondary coil of a transformer each have an inductance of \\(200 \\times 10^{-6}\\) H. The mutual inductance \\((M)\\) between the windings is \\(4 \\times 10^{-6}\\) H. What percentage of the flux from one coil reaches the other?",
+    "bookAnswer": "2%"
+  },
+  {
+    "ref": "Ex Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Self-Inductance and Energy in a Magnetic Field",
+    "difficulty": "MODERATE",
+    "stem": "A toroidal ring, having 100 turns per cm of a thin wire is wound on a non-magnetic metal rod of length 1 m and diameter 1 cm. If the permeability of bar is equal to that of free space \\((\\mu_0)\\), calculate the magnetic field inside the bar \\((B)\\) when the current \\((i)\\) circulating through the turns is 1 A. Also determine the self-inductance \\((L)\\) of the coil.",
+    "bookAnswer": "\\(1.256 \\times 10^{-2}\\) T, 9.872 mH"
+  },
+  {
+    "ref": "Ex Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "HARD",
+    "stem": "A uniform magnetic field \\(B(t)\\), pointing upward fills a circular region of radius, \\(s\\) in horizontal plane. If \\(B\\) is changing with time, find the induced electric field.\n\n[Hint : Part of Maxwell's equation, applied to a time varying magnetic flux, leads us to the equation \\(\\oint \\vec{E} \\cdot \\overrightarrow{\\mathrm{d}l} = \\dfrac{-\\mathrm{d}\\phi_m}{\\mathrm{d}t}\\), where \\(\\vec{E}\\) is the electric field induced when the magnetic flux changes at the rate of \\(\\dfrac{\\mathrm{d}\\phi_m}{\\mathrm{d}t}\\).]",
+    "bookAnswer": "\\(-\\pi s^2 \\dfrac{\\mathrm{d}B}{\\mathrm{d}t}\\)"
+  }
+]

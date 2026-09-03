@@ -418,6 +418,85 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     },
   ],
 
+  // Ch.4 has FOUR exercise blocks, not the usual three — the book prints a
+  // second short-answer block ("Answer the following questions.", Q.3 i-v)
+  // between "Answer in brief" and the flat numericals.
+  // `Ex Q.1 (` (with the space+paren) is what keeps the MCQ block from also
+  // swallowing Ex Q.10 / Q.11 / Q.12.
+  "thermodynamics-12-phy": [
+    { group: "4. Thermodynamics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.4."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12",
+      ],
+    },
+  ],
+
+  // Ch.13 runs to Ex Q.23, so the `" ("` on the two set blocks is load-bearing:
+  // simulated against the live refs, dropping it misroutes 14 rows (Q.10-Q.19
+  // into the MCQ block, Q.20-Q.23 into "Answer in brief").
+  "ac-circuits-12-phy": [
+    { group: "13. AC Circuits — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.13."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23",
+      ],
+    },
+  ],
+
+  // Ch.6 runs to Ex Q.24, so BOTH set blocks need the trailing `" ("` — a bare
+  // "Ex Q.2" would also swallow Q.20-Q.24.
+  "superposition-waves-12-phy": [
+    { group: "6. Superposition of Waves — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.6."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23", "Ex Q.24",
+      ],
+    },
+  ],
+
+  // Ch.8 has NINETEEN solved examples, not the 17 the config comment long
+  // claimed: the book prints two of them as `Example : 8.1` / `Example:  8.3`,
+  // with the colon BEFORE the number, which the old `Example 8.\d+` probe could
+  // not match. `Solved Ex.8.` catches all 19 regardless.
+  "electrostatics-12-phy": [
+    { group: "8. Electrostatics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.8."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13",
+      ],
+    },
+  ],
+
   "fluids-12-phy": [
     { group: "2. Mechanical Properties of Fluids — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.2."] },
     { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
@@ -552,6 +631,52 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
         "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
         "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
         "Ex Q.22", "Ex Q.23", "Ex Q.24", "Ex Q.25",
+      ],
+    },
+  ],
+
+  // ── Ch.11 Magnetic Materials (12th PHYSICS). 14pp; Exercises open at p-12.
+  //    FOUR worked examples, not the two the config comment records: the book
+  //    prints two examples under the SAME number 11.2 (hence the ref `Solved
+  //    Ex.11.2b`), and 11.1 sits in theory prose above the first numbered one.
+  //    Exercise shape (PDF-verified, p-12..p-13): `Exercises` -> `1. Choose the
+  //    correct option.` (i)-(v) -> `2. Answer in brief.` (i)-(vii) -> then flat
+  //    Q.3-Q.11 with NO third printed heading, so "Solve the following" is our
+  //    label, matching every other chapter of this book.
+  "magnetic-materials-12-phy": [
+    { group: "11. Magnetic Materials — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.11."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11",
+      ],
+    },
+  ],
+
+  // ── Ch.12 Electromagnetic Induction (12th PHYSICS). 23pp; Exercises open at
+  //    p-21. Eleven worked examples, refs Solved Ex.12.1-12.11.
+  //    Exercise shape (PDF-verified, p-21..p-22): `Exercises` -> `1. Choose the
+  //    correct option.` (i)-(v) -> `2. Answer in brief.` (i)-(v) -> then flat
+  //    Q.3-Q.17 with NO third printed heading.
+  //    NOTE the prefix `Ex Q.1 (` keeps its paren deliberately — a bare
+  //    "Ex Q.1" also prefix-matches Q.10-Q.17 and would swallow them.
+  "em-induction-12-phy": [
+    { group: "12. Electromagnetic Induction — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.12."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17",
       ],
     },
   ],

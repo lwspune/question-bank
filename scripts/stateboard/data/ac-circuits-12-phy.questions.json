@@ -1,0 +1,449 @@
+[
+  {
+    "ref": "Solved Ex.13.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "difficulty": "EASY",
+    "stem": "An alternating voltage is given by \\( e = 6 \\sin (100\\pi t) \\). find (i) the peak value (ii) frequency (iii) time period and (iv) instantaneous value at time \\( t = 2 \\) ms",
+    "solution": "\\( e = e_0 \\sin \\omega t \\)\n\\( e = 6 \\sin (100\\pi t) \\)\n(i) Comparing the two equations, the peak value of the alternating voltage is \\( e_0 = 6 \\) V\n(ii) \\( \\omega t = 100\\pi t \\quad \\therefore 2\\pi f t = 100\\pi t \\)\nFrequency \\( f = \\frac{100\\pi}{2\\pi} = 50 \\) Hz\n(iii) Time period \\( T = \\frac{1}{f} = \\frac{1}{50} = 0.02 \\) s\n(iv) The instantaneous value of the voltage at \\( t = 2 \\times 10^{-3} \\) s is\n\\( e = 6 \\sin 100\\pi \\times 2 \\times 10^{-3} = 3.527 \\) V"
+  },
+  {
+    "ref": "Solved Ex.13.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "EASY",
+    "stem": "An alternating voltage given by \\( e = 140 \\sin 3142\\, t \\) is connected across a pure resistor of 50 \\( \\Omega \\). Find (i) the frequency of the source (ii) the rms current through the resistor.",
+    "solution": "Given\n\\( e = 140 \\sin 3142\\, t \\)\n\\( R = 50\\ \\Omega \\)\ni) On comparing with \\( e = e_0 \\sin \\omega t \\)\nWe get \\( \\omega = 3142 \\), \\( e_0 = 140 \\) V\n\\( \\omega = 2\\pi f \\quad \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{3142}{2 \\times 3.142} = 500 \\) Hz\n(ii) \\( e_0 = 140 \\) V\n\\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{140}{\\sqrt{2}} = 98.99 \\) V\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{99.29}{50} = 1.98 \\) A"
+  },
+  {
+    "ref": "Solved Ex.13.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "An inductor of inductance 200 mH is connected to an AC source of peak emf 210 V and frequency 50 Hz. Calculate the peak current. What is the instantaneous voltage of the source when the current is at its peak value?",
+    "solution": "Given\n\\( L = 200 \\) mH \\( = 0.2 \\) H\n\\( e_0 = 210 \\) V\n\\( f = 50 \\) Hz\nPeak Current \\( i_0 = \\frac{e_0}{X_L} = \\frac{e_0}{2\\pi f L} = \\frac{210}{2 \\times 3.142 \\times 50 \\times 0.2} \\)\n\\( \\therefore i_0 = 3.342 \\) A\nAs in an inductive AC circuit, current lags behind the emf by \\( \\frac{\\pi}{2} \\), so the voltage is zero when the current is at its peak value."
+  },
+  {
+    "ref": "Solved Ex.13.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "4. A Capacitor of 2 \\( \\mu \\)F is connected to an AC source of emf \\( e = 250 \\sin 100\\pi t \\). Write an equation for instantaneous current through the circuit and give reading of AC ammeter connected in the circuit.",
+    "solution": "Given\n\\( C = 2\\ \\mu\\mathrm{F} = 2 \\times 10^{-6} \\) F\n\\( e_0 = 250 \\) V\n\\( \\omega = 100\\pi \\) rad/sec\nThe instantaneous current through the circuit\n\\( i = i_0 \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\)\n\\( = \\omega C e_0 \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\)\n\\( = 3.142 \\times 2 \\times 10^{-4} \\times 250 \\sin \\left( 100\\pi t + \\frac{\\pi}{2} \\right) \\)\n\\( = 0.1571 \\sin \\left( 100\\pi t + \\frac{\\pi}{2} \\right) \\)\nReading of the AC ammeter is\n\\( i_{\\mathrm{rms}} = 0.707\\, i_0 = 0.707 \\times 0.1571 \\)\n\\( i_{\\mathrm{rms}} = 0.111 \\) A"
+  },
+  {
+    "ref": "Solved Ex.13.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Electrical Resonance and Q Factor",
+    "difficulty": "MODERATE",
+    "stem": "A 100 mH inductor, a 25 \\( \\mu \\)F capacitor and a 15 \\( \\Omega \\) resistor are connected in series to a 120 V, 50 Hz AC source. Calculate\n(i) impedance of the circuit at resonance\n(ii) current at resonance\n(iii) resonant frequency",
+    "solution": "Given\n\\( L = 100 \\) mH \\( = 10^{-1} \\) H\n\\( C = 25\\ \\mu\\mathrm{F} = 25 \\times 10^{-6} \\) F\n\\( R = 15\\ \\Omega \\)\n\\( e_{\\mathrm{rms}} = 120 \\) V\n\\( f = 50 \\) Hz\n(i) At resonance, \\( Z = R = 15\\ \\Omega \\)\n(ii) \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{120}{15} = 8 \\) A\n(iii) \\( f = \\frac{1}{2\\pi\\sqrt{LC}} = \\frac{1}{2 \\times 3.142\\sqrt{10^{-1} \\times 25 \\times 10^{-6}}} = \\frac{1}{9.9356 \\times 10^{-3}} \\)\n\\( \\therefore f = 100.6 \\) Hz"
+  },
+  {
+    "ref": "Solved Ex.13.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "stem": "A coil of 0.01 H inductance and 1 \\( \\Omega \\) resistance is connected to 200 V, 50 Hz AC supply. Find the impedance of the circuit and time lag between maximum alternating voltage and current.",
+    "solution": "Given\nInductance \\( L = 0.01 \\) H\nResistance \\( R = 1\\ \\Omega \\)\n\\( e_0 = 200 \\) V\nFrequency \\( f = 50 \\) Hz\nImpedance of the circuit \\( Z = \\sqrt{R^2 + X_L^2} \\)\n\\( = \\sqrt{R^2 + \\left( 2\\pi f L \\right)^2} \\)\n\\( = \\sqrt{(1)^2 + (2 \\times 3.142 \\times 50 \\times 0.01)^2} \\)\n\\( = \\sqrt{10.872} = 3.297\\ \\Omega \\)\n\\( \\tan\\phi = \\frac{\\omega L}{R} = \\frac{2\\pi f L}{R} = \\frac{2 \\times 3.142 \\times 50 \\times 0.01}{1} = 3.142 \\)\n\\( \\phi = \\tan^{-1}(3.142) = 72.35^\\circ \\)\nPhase difference, \\( \\phi = \\frac{72.35 \\times \\pi}{180} \\) rad\nTime lag between maximum alternating voltage and current\n\\( \\Delta t = \\frac{\\phi}{\\omega} = \\frac{72.35 \\times \\pi}{180 \\times 2\\pi \\times 50} = 4.019\\ s \\)"
+  },
+  {
+    "ref": "Solved Ex.13.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "EASY",
+    "stem": "A 100 \\( \\Omega \\) resistor is connected to a 220 V rms, 50 Hz supply\n(i) What is the rms value of current in the circuit?\n(ii) What is the net power consumed over a full cycle?",
+    "solution": "Given\n\\( R = 100\\ \\Omega \\), \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz\n(i) \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{220}{100} = 2.2 \\) A\n(ii) Net Power Consumed\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}} \\cdot i_{\\mathrm{rms}} \\)\n\\( = 220 \\times 2.2 = 484 \\) W"
+  },
+  {
+    "ref": "Solved Ex.13.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "HARD",
+    "stem": "A sinusoidal voltage of peak value 283 V and frequency 50 Hz is applied to a series LCR circuit in which \\( R = 3\\ \\Omega \\), \\( L = 25.48 \\) mH and \\( C = 796\\ \\mu \\)f. Find\ni) The impedance of the circuit\nii) The phase difference between the voltage across source and the currents\niii) The power factor\niv) The power dissipated in the surface",
+    "solution": "Given\n\\( e_0 = 283 \\) V, \\( f = 50 \\) Hz, \\( R = 3\\ \\Omega \\),\n\\( L = 25.48 \\times 10^{-3} \\) H, \\( C = 796 \\times 10^{-6} \\) F\n\\( X_L = 2\\pi f L = 2 \\times 3.142 \\times 50 \\times 25.48 \\times 10^{-3} = 8\\ \\Omega \\)\n\\( X_C = \\frac{1}{2\\pi f L} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 796 \\times 10^{-6}} = \\frac{1}{0.2501} = 4\\ \\Omega \\)\nTherefore \\( Z = \\sqrt{R^2 + (X_c - Y_c)^2} = \\sqrt{3^2 + (8-4)^2} = 5\\ \\Omega \\)\nPhase difference \\( \\phi \\) is given by\n\\( \\tan \\phi = \\frac{X_L - X_c}{R} = \\frac{8-4}{3} = \\frac{4}{3} \\)\nTherefore, \\( \\phi = \\tan^{-1}\\left( \\frac{4}{3} \\right) = 53.1^\\circ \\)\nThus the current lags behind the voltage across the source by a phase angle of \\( 53.1^\\circ \\)\nPower factor \\( = \\cos \\phi = 0.6 \\)\nPower dissipated in the circuit\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}}\\, i_{\\mathrm{rms}} \\cos \\phi \\)\n\\( = \\frac{e_0}{\\sqrt{2}}\\, \\frac{e_0}{\\sqrt{2}R}\\, (0.6) \\)\n\\( = \\frac{283}{\\sqrt{2}}\\, \\frac{283}{\\sqrt{2} \\times 3}\\, 0.6 \\)\n\\( = 8008.9\\ W \\)"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Average and RMS Values",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "If the rms current in a 50 Hz AC circuit is 5A, the value of the current \\( 1/300 \\) seconds after its value becomes zero is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( 5\\sqrt{2} \\) A"
+      },
+      {
+        "label": "B",
+        "text": "\\( 5\\sqrt{\\frac{3}{2}} \\) A"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\frac{5}{6} \\) A"
+      },
+      {
+        "label": "D",
+        "text": "\\( \\frac{5}{\\sqrt{2}} \\) A"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "A resistor of 500 \\( \\Omega \\) and an inductance of 0.5 H are in series with an AC source which is given by \\( V = 100\\sqrt{2} \\sin (1000\\, t) \\). The power factor of the combination is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( \\frac{1}{\\sqrt{2}} \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( \\frac{1}{\\sqrt{3}} \\)"
+      },
+      {
+        "label": "C",
+        "text": "0.5"
+      },
+      {
+        "label": "D",
+        "text": "0.6"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "In a circuit L, C & R are connected in series with an alternating voltage of frequency f. the current leads the voltage by \\( 45^\\circ \\). The value of C is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( \\frac{1}{\\pi f \\left( 2\\pi f L - R \\right)} \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( \\frac{1}{2\\pi f \\left( 2\\pi f L - R \\right)} \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\frac{1}{\\pi f \\left( 2\\pi f L + R \\right)} \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( \\frac{1}{2\\pi f \\left( 2\\pi f L + R \\right)} \\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "MODERATE",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "In an AC circuit, e and i are given by \\( e = 150 \\sin (150 t) \\) V and \\( i = 150 \\sin \\left( 150\\, t + \\frac{\\pi}{3} \\right) \\) A. the power dissipated in the circuit is",
+    "options": [
+      {
+        "label": "A",
+        "text": "106W"
+      },
+      {
+        "label": "B",
+        "text": "150W"
+      },
+      {
+        "label": "C",
+        "text": "5625W"
+      },
+      {
+        "label": "D",
+        "text": "Zero"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "EASY",
+    "context": "Choose the correct option.",
+    "setLabel": "Ex Q.1",
+    "stem": "In a series LCR circuit the phase difference between the voltage and the current is \\( 45^\\circ \\). Then the power factor will be",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.607"
+      },
+      {
+        "label": "B",
+        "text": "0.707"
+      },
+      {
+        "label": "C",
+        "text": "0.808"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "An electric lamp is connected in series with a capacitor and an AC source is glowing with a certain brightness. How does the brightness of the lamp change on increasing the capacitance ?"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "The total impedance of a circuit decreases when a capacitor is added in series with L and R. Explain why ?"
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "For very high frequency AC supply, a capacitor behaves like a pure conductor. Why ?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "EASY",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is wattless current ?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "LC Oscillations",
+    "difficulty": "MODERATE",
+    "context": "Answer in brief.",
+    "setLabel": "Ex Q.2",
+    "stem": "What is the natural frequency of L C circuit ? What is the reactance of this circuit at this frequency"
+  },
+  {
+    "ref": "Ex Q.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "HARD",
+    "stem": "In a series LR circuit \\( X_L = R \\) and power factor of the circuit is \\( P_1 \\). When capacitor with capacitance C such that \\( X_L = X_C \\) is put in series, the power factor becomes \\( P_2 \\). Calculate \\( P_1 / P_2 \\)."
+  },
+  {
+    "ref": "Ex Q.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "MODERATE",
+    "stem": "When an AC source is connected to an ideal inductor show that the average power supplied by the source over a complete cycle is zero."
+  },
+  {
+    "ref": "Ex Q.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "MODERATE",
+    "stem": "Prove that an ideal capacitor in an AC circuit does not dissipate power"
+  },
+  {
+    "ref": "Ex Q.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "HARD",
+    "stem": "(a) An emf \\( e = e_0 \\sin \\omega t \\) applied to a series L - C - R circuit derives a current \\( I = I_0 \\sin \\omega t \\) in the circuit. Deduce the expression for the average power dissipated in the circuit.\n(b) For circuits used for transporting electric power, a low power factor implies large power loss in transmission. Explain"
+  },
+  {
+    "ref": "Ex Q.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "stem": "A device Y is connected across an AC source of emf \\( e = e_0 \\sin \\omega t \\). The current through Y is given as \\( i = i_0 \\sin \\left( \\omega t + \\pi/2 \\right) \\)\na) Identify the device Y and write the expression for its reactance.\nb) Draw graphs showing variation of emf and current with time over one cycle of AC for Y.\nc) How does the reactance of the device Y vary with the frequency of the AC ? Show graphically\nd) Draw the phasor diagram for the device Y."
+  },
+  {
+    "ref": "Ex Q.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "stem": "Derive an expression for the impedance of an LCR circuit connected to an AC power supply."
+  },
+  {
+    "ref": "Ex Q.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "EASY",
+    "stem": "Compare resistance and reactance."
+  },
+  {
+    "ref": "Ex Q.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "Show that in an AC circuit containing a pure inductor, the voltage is ahead of current by \\( \\pi/2 \\) in phase."
+  },
+  {
+    "ref": "Ex Q.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "An AC source generating a voltage \\( e = e_0 \\sin \\omega t \\) is connected to a capacitor of capacitance C. Find the expression for the current \\( i \\) flowing through it. Plot a graph of \\( e \\) and \\( i \\) versus \\( \\omega t \\)."
+  },
+  {
+    "ref": "Ex Q.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "difficulty": "MODERATE",
+    "stem": "If the effective current in a 50 cycle AC circuit is 5 A, what is the peak value of current? What is the current \\( 1/600 \\) sec. after if was zero ?",
+    "bookAnswer": "7.07A, 3.535 A"
+  },
+  {
+    "ref": "Ex Q.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "EASY",
+    "stem": "A light bulb is rated 100W for 220 V AC supply of 50 Hz. Calculate (a) resistance of the bulb. (b) the rms current through the bulb.",
+    "bookAnswer": "484\\( \\Omega \\), 0.4545A"
+  },
+  {
+    "ref": "Ex Q.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "A 15.0 \\( \\mu \\)F capacitor is connected to a 220 V, 50 Hz source. Find the capacitive reactance and the current (rms and peak) in the circuit. If the frequency is doubled, what will happen to the capacitive reactance and the current.",
+    "bookAnswer": "212.1\\( \\Omega \\), 1.037 A, 1.465A, halved, doubled"
+  },
+  {
+    "ref": "Ex Q.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "An AC circuit consists of only an inductor of inductance 2 H. If the current is represented by a sine wave of amplitude 0.25 A and frequency 60 Hz, calculate the effective potential difference across the inductor \\( ( \\pi = 3.142 ) \\)",
+    "bookAnswer": "133.4V"
+  },
+  {
+    "ref": "Ex Q.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "Alternating emf of \\( e = 220 \\sin 100\\pi t \\) is applied to a circuit containing an inductance of \\( (1/\\pi) \\) henry. Write an equation for instantaneous current through the circuit. What will be the reading of the AC galvanometer connected in the circuit?",
+    "bookAnswer": "i = 2.2 sin (100\\( \\pi \\) t-\\( \\pi \\)/2), 1.555A"
+  },
+  {
+    "ref": "Ex Q.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "HARD",
+    "stem": "A 25 \\( \\mu \\)F capacitor, a 0.10 H inductor and a 25 \\( \\Omega \\) resistor are connected in series with an AC source whose emf is given by \\( e = 310 \\sin 314\\, t \\) (volt). What is the frequency, reactance, impedance, current and phase angle of the circuit?",
+    "bookAnswer": "50Hz, 95.98\\( \\Omega \\), 99.19\\( \\Omega \\), 2.211A, 1.316 rad"
+  },
+  {
+    "ref": "Ex Q.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "A capacitor of 100 \\( \\mu \\)F, a coil of resistance 50 \\( \\Omega \\) and an inductance 0.5 H are connected in series with a 110 V-50Hz source. Calculate the rms value of current in the circuit.",
+    "bookAnswer": "0.8153A"
+  },
+  {
+    "ref": "Ex Q.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "difficulty": "HARD",
+    "stem": "Find the capacity of a capacitor which when put in series with a 10 \\( \\Omega \\) resistor makes the power factor equal to 0.5. Assume an 80V-100Hz AC supply.",
+    "bookAnswer": "9.187 \\( \\times \\) 10\\( ^{-5} \\) F"
+  },
+  {
+    "ref": "Ex Q.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "difficulty": "MODERATE",
+    "stem": "Find the time required for a 50 Hz alternating current to change its value from zero to the rms value.",
+    "bookAnswer": "2.5 \\( \\times \\) 10\\( ^{-3} \\) s"
+  },
+  {
+    "ref": "Ex Q.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "LC Oscillations",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the value of capacitance in picofarad, which will make 101.4 micro henry inductance to oscillate with frequency of one megahertz.",
+    "bookAnswer": "249.7 picofarad"
+  },
+  {
+    "ref": "Ex Q.22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "LC Oscillations",
+    "difficulty": "MODERATE",
+    "stem": "A 10 \\( \\mu \\)F capacitor is charged to a 25 volt of potential. The battery is disconnected and a pure 100 m H coil is connected across the capacitor so that LC oscillations are set up. Calculate the maximum current in the coil.",
+    "bookAnswer": "0.25 A"
+  },
+  {
+    "ref": "Ex Q.23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "LC Oscillations",
+    "difficulty": "MODERATE",
+    "stem": "A 100 \\( \\mu \\)F capacitor is charged with a 50 V source supply. Then source supply is removed and the capacitor is connected across an inductance, as a result of which 5A current flows through the inductance. Calculate the value of the inductance.",
+    "bookAnswer": "0.01 H"
+  }
+]

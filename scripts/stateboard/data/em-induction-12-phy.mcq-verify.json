@@ -1,0 +1,37 @@
+[
+  {
+    "id": "b97b9508-b73e-4945-af54-a1c1ebaf0840",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "B",
+    "solution": "Magnetic flux **linkage** is \\(N\\Phi\\), not the flux \\(\\Phi\\) through one turn — that distinction is the whole point of the question.\n\nFlux through a single turn, with the field normal to the coil face \\((\\theta = 0^\\circ)\\):\n\n\\(\\Phi = BA\\cos\\theta = (1\\ \\text{T})(1\\ \\text{m}^2)(1) = 1\\) Wb\n\nFlux linkage with all 100 turns:\n\n\\(N\\Phi = 100 \\times 1 = 100\\) Wb\n\nWhy the others fail: 1 Wb is the flux through **one** turn — the answer you get by forgetting that the coil has 100 turns. 50 Wb would need an extra factor of \\(\\tfrac{1}{2}\\) (or \\(\\cos 60^\\circ\\)), which nothing in the data supplies. 200 Wb is twice the linkage.\n\nA note on the wording: taken literally, \"plane perpendicular to the magnetic field\" would put \\(\\vec{B}\\) **in** the plane of the coil and give \\(\\Phi = 0\\), which is not among the options. The book uses this phrase throughout to mean the field is perpendicular to the plane, i.e. along the area vector — the same sense as in Example 12.1 of this chapter.",
+    "matches_current": true
+  },
+  {
+    "id": "7bb4dddf-93fa-4d89-8fc8-c0d230e2d84e",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "A",
+    "solution": "A rod of length \\(l\\) translating with velocity \\(\\vec{\\mathrm{v}}\\) sweeps out area at the rate \\(l\\mathrm{v}\\). With \\(\\vec{B}\\), \\(\\vec{l}\\) and \\(\\vec{\\mathrm{v}}\\) mutually perpendicular, the flux swept per second is \\(Bl\\mathrm{v}\\), so\n\n\\(|e| = \\left| \\dfrac{\\mathrm{d}\\phi}{\\mathrm{d}t} \\right| = Bl\\mathrm{v}\\)\n\nEquivalently, the magnetic force on a free electron in the rod is \\(q(\\vec{\\mathrm{v}} \\times \\vec{B})\\), of magnitude \\(q\\mathrm{v}B\\) since the two vectors are perpendicular; charge piles up at the ends until the electrostatic force \\(qE\\) balances it, giving \\(E = \\mathrm{v}B\\) and a potential difference \\(El = Bl\\mathrm{v}\\).\n\nWhy the others fail: \\(Bl\\mathrm{v}^2\\) and \\(2Bl/\\mathrm{v}\\) are not voltages at all — the first carries an extra factor of speed and the second divides by speed, so neither reduces to \\(\\text{T}\\cdot\\text{m}\\cdot\\text{m\\,s}^{-1} = \\text{V}\\). The option \\(\\tfrac{1}{2}Bl\\mathrm{v}\\) has the right dimensions but the wrong factor: the \\(\\tfrac{1}{2}\\) belongs to a rod **rotating** about one end, where the ends move at different speeds and only the mean speed \\(\\omega l/2\\) counts. Here the whole rod translates at the same \\(\\mathrm{v}\\).\n\nThe condition matters: had \\(\\vec{\\mathrm{v}}\\) not been normal to \\(\\vec{B}\\), the emf would be \\(Bl\\mathrm{v}\\sin\\theta\\). The stem supplies the perpendicularity explicitly.",
+    "matches_current": true
+  },
+  {
+    "id": "35ae5759-9a00-4f80-b88f-1c0f0eb93af2",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "B",
+    "solution": "Inductances in **series** add, exactly as resistances do (assuming no mutual coupling between the two coils):\n\n\\(L_{\\text{total}} = L_1 + L_2 = 10 + 20 = 30\\) mH\n\nWhy the others fail: \\(\\tfrac{20}{3}\\) mH is precisely the **parallel** combination, \\(\\dfrac{L_1 L_2}{L_1 + L_2} = \\dfrac{10 \\times 20}{30} = \\dfrac{20}{3}\\) mH — the trap this question is built around. The remaining two options, 20 mH and 10 mH, merely repeat one of the two given values, and in any case a series combination must exceed **both**, so neither can be right on inspection.",
+    "matches_current": true
+  },
+  {
+    "id": "ab10c053-12e6-44f3-b67b-4423f975aa5b",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "A",
+    "solution": "For a self-inductance \\(L\\), the magnitude of the induced (back) emf is\n\n\\(|e| = L \\left| \\dfrac{\\mathrm{d}i}{\\mathrm{d}t} \\right|\\)\n\n\\(\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} = \\dfrac{1 - 0}{0.1} = 10\\) A/s\n\n\\(|e| = (10 \\times 10^{-3}\\ \\text{H})(10\\ \\text{A/s}) = 0.1\\) V\n\nBy Lenz's law the emf **opposes** the increase, so it acts against the applied source; only its magnitude is asked for here.\n\nWhy the others fail: 1 V is what you get by reading the inductance as 10 H instead of 10 mH; 10 V is 100 times too large; and 0.01 V is \\(L \\times \\Delta i\\) with the division by \\(\\Delta t\\) omitted.",
+    "matches_current": true
+  },
+  {
+    "id": "ec286277-50b4-4dee-8335-b5072ac8b417",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "The energy stored in the magnetic field of an inductor carrying a steady current \\(i\\) is\n\n\\(U_B = \\dfrac{1}{2} L i^2\\)\n\n\\(= \\dfrac{1}{2} (20 \\times 10^{-3}\\ \\text{H})(1\\ \\text{A})^2 = 10 \\times 10^{-3}\\ \\text{J} = 10\\) mJ\n\nWhy the others fail: 20 mJ is \\(Li^2\\) with the factor \\(\\tfrac{1}{2}\\) dropped. The two joule-valued options, 20 J and 10 J, are the same two numbers with the milli- prefix lost — a factor of 1000 too large, which is what makes reading the unit on the answer as important as the arithmetic.",
+    "matches_current": true
+  }
+]

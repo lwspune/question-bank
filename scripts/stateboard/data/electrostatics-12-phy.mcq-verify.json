@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e8c94fdb-2645-4bb9-8820-bb21dad88058",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "D",
+    "solution": "The capacitor is charged and then isolated, so no charge can enter or leave the plates and \\(Q\\) stays constant. For a parallel plate capacitor \\(C = \\varepsilon_0 A / d\\), so increasing the separation \\(d\\) reduces the capacitance. With \\(Q\\) fixed and \\(C\\) falling, \\(V = Q/C\\) must rise, so the potential difference increases. The combination is therefore constant charge, increasing potential, decreasing capacitance. The other three fail: one requires the charge to increase, which is impossible on an isolated system with no conducting path to carry charge in; another has the capacitance increasing, contradicting \\(C \\propto 1/d\\); and the third claims the potential falls while the charge is constant and the capacitance falls, which is self-contradictory, since \\(V = Q/C\\) must then rise.",
+    "matches_current": true
+  },
+  {
+    "id": "ae6eafa6-f75e-408a-b293-bcb7fc82d229",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "D",
+    "solution": "For a slab of thickness \\(t\\) filling part of the gap, the chapter derives \\(V = \\dfrac{Q}{A\\varepsilon_0}\\left[d - t + \\dfrac{t}{k}\\right]\\), so that \\(C = \\dfrac{Q}{V} = \\dfrac{A\\varepsilon_0}{d - t + t/k}\\). Substituting \\(t = \\dfrac{3d}{4}\\) gives \\(d - \\dfrac{3d}{4} + \\dfrac{3d}{4k} = \\dfrac{d}{4}\\left(\\dfrac{k+3}{k}\\right)\\), and therefore \\(C = \\dfrac{A\\varepsilon_0}{d}\\left(\\dfrac{4k}{k+3}\\right)\\). Note that \\(k = 1\\) is a useless test point here, because \\(\\dfrac{k+3}{4k}\\) and \\(\\dfrac{4k}{k+3}\\) are reciprocals and both equal unity there; at \\(k = 2\\) all four expressions separate, and the derivation gives \\(\\dfrac{8}{5}\\) against \\(\\dfrac{5}{8}\\), \\(\\dfrac{4}{5}\\) and \\(\\dfrac{5}{4}\\) for the others. Physically, inserting a dielectric must raise the capacitance, yet \\(\\dfrac{k+3}{4k}\\) and \\(\\dfrac{k+3}{2k}\\) both drop below unity as \\(k\\) grows, and \\(\\dfrac{2k}{k+3}\\) returns one half at \\(k = 1\\), which would mean the capacitance halves when no dielectric is present at all.",
+    "matches_current": true
+  },
+  {
+    "id": "2a042b7c-bd8f-4400-a46e-696b68e248f1",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "A",
+    "solution": "Charging a capacitor \\(C\\) to a potential difference \\(V\\) transfers a charge \\(Q = CV\\), so the source supplies energy \\(QV = CV^2\\), while the energy that ends up stored in the field is \\(\\dfrac{1}{2}CV^2\\). The difference, \\(CV^2 - \\dfrac{1}{2}CV^2 = \\dfrac{1}{2}CV^2\\), is lost as heat in the connecting wires and the source itself, so the stored and dissipated amounts are equal and the ratio is one to one. The chapter states this outright, noting that the energy supplied by the battery is \\(QV\\), the energy stored in the electric field is \\(\\dfrac{1}{2}QV\\), and the remaining half is wasted as heat in the connecting wires and the battery. Ratios of one to two, two to one and one to three would each require an unequal split of \\(QV\\), contradicting the equal division just derived.",
+    "matches_current": true
+  },
+  {
+    "id": "0f31a0f0-73cb-4d57-ad1b-106d63fdd89d",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "A",
+    "solution": "Electrostatic work is path independent, so the semicircular route is irrelevant and only the end points matter. Placing \\(A\\) at the origin with \\(AB = 2L\\) and \\(C\\) at the midpoint puts \\(A\\) at \\(0\\), \\(C\\) at \\(L\\) and \\(B\\) at \\(2L\\); the figure draws the semicircle spanning \\(C\\) to \\(D\\) with its centre at \\(B\\), so \\(D\\) lies at \\(3L\\). At \\(C\\) the charges \\(+q\\) and \\(-q\\) are each a distance \\(L\\) away, so their contributions cancel and \\(V_C = 0\\). At \\(D\\) the charge \\(+q\\) is \\(3L\\) away while \\(-q\\) is only \\(L\\) away, giving \\(V_D = \\dfrac{1}{4\\pi\\varepsilon_0}\\left(\\dfrac{q}{3L} - \\dfrac{q}{L}\\right) = \\dfrac{-q}{6\\pi\\varepsilon_0 L}\\). The chapter defines the work done in moving a charge as the work done against the electrostatic force, \\(W = Q\\left(V_D - V_C\\right)\\), which evaluates to \\(\\dfrac{-qQ}{6\\pi\\varepsilon_0 L}\\). Among the rest, \\(\\dfrac{-qQ}{4\\pi\\varepsilon_0 L}\\) is what follows from counting only the nearby \\(-q\\) and forgetting the \\(+q\\) at distance \\(3L\\); \\(\\dfrac{qQ}{2\\pi\\varepsilon_0 L}\\) follows from adding the two contributions at \\(C\\) as magnitudes instead of letting them cancel; and \\(\\dfrac{qQ}{6\\pi\\varepsilon_0 L}\\) carries the right magnitude but the sign of the work done by the field, which is the opposite of the work done against it.",
+    "matches_current": true
+  },
+  {
+    "id": "50674769-63d9-4f54-b220-85268eeb9ed5",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "A",
+    "solution": "The plate area is \\(A = \\pi r^2 = \\pi (0.08)^2 = 2.01 \\times 10^{-2}\\,\\text{m}^2\\), and the separation is \\(d = 1\\,\\text{mm} = 10^{-3}\\,\\text{m}\\). Hence \\(C = \\dfrac{\\varepsilon_0 A}{d} = \\dfrac{\\left(8.854 \\times 10^{-12}\\right)\\left(2.01 \\times 10^{-2}\\right)}{10^{-3}} = 1.78 \\times 10^{-10}\\,\\text{F}\\), and the charge is \\(Q = CV = \\left(1.78 \\times 10^{-10}\\right)\\left(100\\right) = 1.78 \\times 10^{-8}\\,\\text{C}\\). Of the alternatives, \\(1.78 \\times 10^{-5}\\) is larger by a factor of \\(10^{3}\\), the value obtained if the separation is mistakenly taken as \\(1\\,\\mu\\text{m}\\) rather than \\(1\\,\\text{mm}\\); \\(4.3 \\times 10^{4}\\) exceeds the derived charge by about twelve orders of magnitude and is physically impossible for plates of this size; and \\(2 \\times 10^{-9}\\) is roughly nine times too small and does not follow from the stated data.",
+    "matches_current": true
+  }
+]

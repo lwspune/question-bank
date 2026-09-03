@@ -1,0 +1,29 @@
+[
+  {
+    "ref": "Solved Ex.12.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "HARD",
+    "stem": "Mutual inductance of the wireless charging system.\n\nIn a wireless battery charger, the base unit can be imagined as a solenoid (coil B) of length \\(l\\) with \\(N_{\\mathrm{B}}\\) turns, carrying a current \\(i_{\\mathrm{B}}\\) and having a cross-section area \\(A\\). The handle coil (coil \\(H\\)) has \\(N_{\\mathrm{H}}\\) turns and surrounds the base solenoid (coil B) completely. The base unit is designed to hold the handle of the charging unit. The handle has a cylindrical hole so that it fits loosely over a matching cylinder on the base unit. When the handle is placed on the base, the current flowing in coil \\(B\\) induces a current in the coil \\(H\\). Thus, the induced current in the coil \\(H\\) is used to charge the battery housed in the handle.",
+    "solution": "The magnetic field due to a solenoid coil B,\n\n\\(B_{\\text{solenoid}} = \\mu_0\\, n\\, i = \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}}}{l} \\right) i\\)\n\nMagnetic flux through coil \\(H\\) caused by the magnetic field \\(B_{\\text{solenoid}}\\) due to solenoid coil B,\n\n\\(\\phi_{\\mathrm{H}} = B_{\\text{solenoid}}\\, A\\)\n\nFlux linkage \\(= N_{\\mathrm{H}} \\phi_{\\mathrm{H}}\\)\n\nThe mutual inductance \\((M)\\) of the wireless charging system,\n\n\\(M = \\dfrac{N_H B_{\\text{solenoid}} A}{i} = \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}}}{l} \\right) A . N_H\\)\n\n\\(= \\mu_0 \\left( \\dfrac{N_{\\mathrm{B}} N_{\\mathrm{H}}}{l} \\right) A\\)"
+  },
+  {
+    "ref": "Solved Ex.12.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "Two coils having self inductances \\(L_1 = 75\\) mH and \\(L_2 = 55\\) mH are coupled with each other. The coefficient of coupling \\((K)\\) is 0.75 calculate the mutual inductance \\((M)\\) of the two coils.",
+    "solution": "Given :\n\n\\(L_1 = 75\\) mH, \\(L_2 = 55\\) mH, \\(K = 0.75\\).\n\nWe know that,\n\n\\(M = K \\sqrt{L_1 L_2}\\)\n\n\\(= 0.75 \\sqrt{75 \\times 55}\\) mH\n\n\\(M = 48.18\\) mH"
+  },
+  {
+    "ref": "Solved Ex.12.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "stem": "The mutual inductance \\((M)\\) of the two coils is given as 1.5 H. The self inductances of the coils are : \\(L_1 = 5\\) H, \\(L_2 = 4\\) H. Find the coefficient of coupling beween the coils.",
+    "solution": "Given  \\(L_1 = 5\\) H\n\n\\(L_2 = 4\\) H\n\n\\(M = 1.5\\) H.\n\n\\(K = \\dfrac{M}{\\sqrt{L_1 L_2}} = \\dfrac{1.5}{\\sqrt{5 \\times 4}}\\)\n\n\\(= 0.335 = 33.55\\%\\)"
+  }
+]
