@@ -304,11 +304,26 @@ Do **not** run `stamp-provenance.ts` or `flip-public.ts`. Do **not** run `npm te
 npm run audit:text -- <yourSourceFilePrefix>
 npm run audit:keys -- <yourSourceFilePrefix>
 npm run audit:omml -- <yourSourceFilePrefix>
-npm run audit:katex
 npm run board:lint
 ```
 Plus SQL for your `source_file`: row count, how many lack a `solution`, lack
 `section_seq`, lack a chapter or subtopic, and the bracket count vs your errata file.
+
+⚠ **`npm run audit:katex` CANNOT SEE YOUR WORK — do not run it and do not report
+it.** It scans PUBLIC rows only, and yours are PRIVATE until the maintainer
+publishes them, so it will report only pre-existing findings from other sources and
+say nothing about your chapter. Instead run the same three checks over YOUR stored
+DB text (every `text`, `context`, `solution` and option): count math zones, and
+assert zero KaTeX-broken zones, zero unbalanced `\(`/`\)`, and zero
+trailing-backslash zones. Report those numbers.
+
+⚠ **`Type not supported: mpadded` during `audit:omml` is KNOWN AND HARMLESS — do
+not investigate it.** It is a `console.warn` from `mathml2omml` about an element it
+skips, it produces **zero conversion failures**, and it is pre-existing bank-wide
+(a shipped Std-XI Physics chapter emits it; a Std-XII Maths chapter does not). It
+appears to track `\mathrm{}` usage, which this lane uses constantly. Two separate
+agents have now burned time trying to isolate it and neither could reproduce the
+trigger outside the corpus run. `0 failing zones` is the result that matters.
 
 ---
 
