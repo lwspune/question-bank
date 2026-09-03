@@ -34,7 +34,7 @@ async function main() {
 
   const { data: links, error } = await db
     .from("paper_questions")
-    .select("position, questions(id, text, visibility, question_kind, options(label, text, is_correct))")
+    .select("position, questions(id, text, visibility, question_kind, source_file, options(label, text, is_correct))")
     .eq("paper_id", PAPER_ID)
     .order("position");
   if (error) throw error;
@@ -64,10 +64,21 @@ async function main() {
     else if (correct[0] !== rec.answer) fails.push(`${at}: KEY is ${correct[0]}, records say ${rec.answer}`);
 
     if (q.question_kind !== "practice") fails.push(`${at}: question_kind=${q.question_kind}`);
-    // dup/flawed must never be PUBLIC *because of this ingest*; a pre-existing row that
-    // was already PUBLIC on its own merits is reported, not failed.
-    if (rec.status !== "new" && q.visibility === "PUBLIC") {
-      console.log(`  note  ${at}: pre-existing row already PUBLIC (status=${rec.status}) — not published by us`);
+
+    // A record's `status` is what the DEDUP PASS concluded; it is not evidence about the
+    // row the content_hash actually resolved to. Q19 is the worked example: the dedup pass
+    // called it "new", content_hash then matched a byte-identical PRE-EXISTING row, and an
+    // earlier version of this check keyed its note on `status !== "new"` and so said nothing
+    // at all about it. Key on the ROW instead, so a foreign row is always surfaced.
+    const foreign = q.source_file !== spec.sourceFile;
+    if (foreign) {
+      const why = rec.status === "new" ? "dedup pass said NEW — content_hash caught it" : `status=${rec.status}`;
+      console.log(
+        `  note  ${at}: reuses a pre-existing row from "${q.source_file}" [${q.visibility}] (${why})` +
+          ` — flip-public matches on source_file, so this row is NOT ours to publish`,
+      );
+    } else if (rec.status !== "new" && q.visibility === "PUBLIC") {
+      fails.push(`${at}: OUR ${rec.status} row is PUBLIC — the dedup gate has leaked`);
     }
   });
 
