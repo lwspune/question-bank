@@ -255,8 +255,16 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
     // NOT practiceOnly: Class 10 IS a board year → these are real past-year board
     // papers (question_kind='pyq'), so /browse defaults to the PYQ view.
-    // NOT boardExam: PYQ papers aren't textbook-structured, so they live on /browse
-    // (and /mock later), not the book-faithful /board reader.
+    boardExam: true, // FLIPPED 2026-09-03. This read false with the comment "PYQ
+    // papers aren't textbook-structured, so they live on /browse, not the
+    // book-faithful /board reader" — true of the PYQ corpus, and stale from
+    // 2026-08-28, when the Balbharati TEXTBOOK layer landed (scripts/mh-ssc-10-text,
+    // question_kind='practice'). That layer is 56 chapters / 1,766 questions, every
+    // row carrying section_seq and passing board:lint, i.e. fully built for this
+    // reader and unreachable behind a 404 for six days. Same shape as mh-hsc-12,
+    // which likewise carries both corpora and has always been a board exam: the
+    // flag tracks whether an exam has a TEXTBOOK-structured corpus, not whether it
+    // also has PYQs. /browse keeps its PYQ default; the two axes are orthogonal.
     board: "Maharashtra State Board",
     std: 10,
   },
