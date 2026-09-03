@@ -276,6 +276,21 @@ A stem that cannot be answered without a figure needs one, and so does an answer
 IS a drawing (a structure, a mechanism). Chemistry figures are **vector art** —
 `get_images` returns nothing useful, so crop the rendered page.
 
+**Expect FEW figures, even in scheme-heavy organic chapters — this is measured.** The
+Amines pilot (28 exercise rows of preparations, conversions and mechanisms) needed
+exactly **2 figures in 40 rows (5%)**: one question figure whose parts existed only as
+ring drawings, and one solution scheme. Everything else went into linear LaTeX, because
+`\xrightarrow[below]{above}` carries a reaction step losslessly and named intermediates
+carry the rest. **Reach for a figure only when the content genuinely needs 2-D layout**,
+not because the chapter is organic.
+
+But budget TIME for the ones you do take: those 2 figures cost ~20% of that agent's
+tool calls, roughly 4× their share of the rows, and both crops needed re-measuring.
+The expensive case is a scheme with sub-point gaps — one had **1.2 pt of clearance
+above and 0.3 pt below**, far too tight to eyeball, and was only cut correctly by
+pixel-measuring ink extents with `get_drawings()`. A first attempt leaked a caption
+word and clipped an arrowhead.
+
 ```
 npx tsx <scriptsDir>/snap-crop.ts <chapterId> --write
 npx tsx <scriptsDir>/attach-images.ts <chapterId>            # dry run — LOOK at the crop
@@ -309,13 +324,22 @@ npm run board:lint
 Plus SQL for your `source_file`: row count, how many lack a `solution`, lack
 `section_seq`, lack a chapter or subtopic, and the bracket count vs your errata file.
 
-⚠ **`npm run audit:katex` CANNOT SEE YOUR WORK — do not run it and do not report
-it.** It scans PUBLIC rows only, and yours are PRIVATE until the maintainer
-publishes them, so it will report only pre-existing findings from other sources and
-say nothing about your chapter. Instead run the same three checks over YOUR stored
-DB text (every `text`, `context`, `solution` and option): count math zones, and
-assert zero KaTeX-broken zones, zero unbalanced `\(`/`\)`, and zero
-trailing-backslash zones. Report those numbers.
+⚠ **TWO OF THESE CANNOT SEE YOUR WORK, because your rows are PRIVATE until the
+maintainer publishes them.** `npm run audit:katex` scans PUBLIC rows only — do not
+run it and do not report it; it will show pre-existing findings from other sources
+and say nothing about your chapter. **`board:lint` reports errors on PUBLIC rows
+only too**, so a green run is not evidence your sections are right.
+
+Close both gaps yourself rather than claiming coverage you do not have:
+
+- **Render check** — read all your rows back from the DB and run the project's own
+  renderers (`parseLatex` + `katex` with `throwOnError`, and `findOmmlFailures`)
+  over every `text`, `context`, `solution` **and option text**. Report the field
+  count and assert zero KaTeX-broken, zero unbalanced `\(`/`\)`, zero
+  trailing-backslash zones. Prove the checker fires first with a broken fixture.
+- **Section invariants** — assert by SQL instead: no row has a null
+  `section_kind`/`group`/`label`/`seq`, and `section_seq` is contiguous 1..N with
+  the per-block counts summing to your committed total.
 
 ⚠ **`Type not supported: mpadded` during `audit:omml` is KNOWN AND HARMLESS — do
 not investigate it.** It is a `console.warn` from `mathml2omml` about an element it

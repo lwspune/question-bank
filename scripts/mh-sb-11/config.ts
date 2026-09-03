@@ -1591,6 +1591,291 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    a /browse filter that returns nothing. 1.5 and 1.6 are merged because each
   //    is a single thin section. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ══ CHEMISTRY — waves 4-6 ═══════════════════════════════════════════════
+  // Registered 2026-09-03. EVERY chapter below measures keyed(est) ~= 0, i.e.
+  // the step-6 gate CANNOT run on any of them. That is the expected outcome, not
+  // a defect: this is the descriptive/organic half of the book. The compensating
+  // regime is the one the brief describes — answers grounded strictly in the
+  // chapter's own text, MCQ keys re-derived, derived-provenance stamped, and an
+  // explicit statement in the report that the gate could not run.
+  //
+  // ⚠ FIVE Std XI CHAPTERS PRINT **ZERO** `Problem N.M` LABELS — Ch.3, Ch.11 and
+  //   Ch.15 here, plus Ch.13 above (and Std XII Ch.8/Ch.16). The anchor the rest
+  //   of the lane relies on does not exist in them. Ch.15 Hydrocarbons has NO
+  //   worked examples at all (0 Problem labels AND 0 Solution labels across 28pp).
+  //   Establish the labelling from the page before planning bands.
+
+  // ── Ch.4 Structure of Atom. 20pp. 216 PYQ. Worked examples 4.1-4.12,
+  //    contiguous, 12 Problem labels against 12 Solution labels — they agree, so
+  //    no reconciliation is owed. Exercise opens p18.
+  //    Blocks: `1. Choose correct option.` · `2. Make the pairs:` ·
+  //    `3. Complete the following information` · `4. Match the following :` ·
+  //    `5. Answer in one sentence :` · `6. Answer the following questions.`
+  //    ⚠ 5,652 raster images — the second-heaviest image load in the book after
+  //      Std XII Solid State. Orbital shapes and spectra are the subject matter.
+  //      Match-the-pairs and complete-the-table blocks are GFM pipe tables, not
+  //      figures; only reach for a crop where the content needs 2-D layout.
+  "structure-of-atom-11-chem": {
+    id: "structure-of-atom-11-chem",
+    chapterName: "Structure of Atom",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Structure_of_Atom.pdf",
+    pdf: chem11("04. Structure of Atom.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Structure of Atom (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Subatomic Particles",
+      "Atomic Number and Atomic Mass Number",
+      "Isotopes, Isobars and Isotones",
+      "Drawbacks of Rutherford's Atomic Model",
+      "Developments Leading to the Bohr Model",
+      "Bohr's Model for the Hydrogen Atom",
+      "Quantum Mechanical Model of the Atom",
+    ],
+  },
+
+  // ── Ch.5 Chemical Bonding. 26pp. 261 PYQ. Worked examples 5.1-5.4 but only
+  //    TWO line-start `Solution :` labels — reconcile from the page.
+  //    Exercise opens p24. Blocks: `1. Select and write the most appropriate…` ·
+  //    `2. Draw` · `3. Answer the following questions` · `4. Using data from the
+  //    Table…` · `5. Complete the flow chart` · `6. Complete the following Table`
+  //    · `7. Answer in one sentence:`  — note 6 and 7 print OUT OF ORDER.
+  //    ⚠ `2. Draw` and `5. Complete the flow chart` are answer-is-a-drawing
+  //      blocks. Lewis structures and shapes are usually writable linearly; a
+  //      flow chart is not. Judge per question, per the brief's figure rule.
+  "chemical-bonding-11-chem": {
+    id: "chemical-bonding-11-chem",
+    chapterName: "Chemical Bonding",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemical_Bonding.pdf",
+    pdf: chem11("05. Chemical Bonding.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemical Bonding (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Kossel and Lewis Approach to Chemical Bonding",
+      "Valence Shell Electron Pair Repulsion Theory",
+      "Valence Bond Theory",
+      "Molecular Orbital Theory",
+      "Parameters of Covalent Bond",
+      "Dipole Moment",
+      "Resonance",
+    ],
+  },
+
+  // ── Ch.7 Modern Periodic Table. 17pp. 117 PYQ. Worked examples 7.1-7.9
+  //    contiguous, 9 labels against 7 Solution labels — reconcile from the page.
+  //    Exercise opens p15. ⚠ The MCQ block is NUMBERED 4, not 1: the printed
+  //    order is `1. Explain the following` · `2. Write the outer electronic
+  //    configuration…` · `3. Answer the following` · `4. Choose the correct
+  //    option` · `5. Answer the following questions`. Do not assume block 1.
+  "periodic-table-11-chem": {
+    id: "periodic-table-11-chem",
+    chapterName: "Modern Periodic Table",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Modern_Periodic_Table.pdf",
+    pdf: chem11("07. Modern Periodic Table.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Modern Periodic Table (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Structure of the Modern Periodic Table",
+      "Periodic Table and Electronic Configuration",
+      "Blockwise Characteristics of Elements",
+      "Periodic Trends in Elemental Properties",
+    ],
+  },
+
+  // ── Ch.14 Basic Principles of Organic Chemistry. 29pp — the largest Std XI
+  //    Chemistry chapter. 243 PYQ. Worked examples 14.1-14.11 contiguous
+  //    (11 labels / 9 Solution labels — reconcile). Exercise opens p26.
+  //    Blocks: `1. Answer the following :` · `2. Match the pairs` · `3. What is
+  //    meant by homologous series` · `4. Write IUPAC names of the following` ·
+  //    `6. Draw resonance structures…` (the book prints "srtuctures") ·
+  //    `7. Distinguish :` · `8. Write true or false…` · `9. Phytane…` ·
+  //    `10. Observe the following structures…`  — block 5 is not detected by a
+  //    text scan; find it on the page.
+  //    ⚠ IUPAC-naming answers are TEXT, not drawings — write them linearly.
+  //      Reserve figures for the resonance/structure-observation blocks.
+  "organic-basics-11-chem": {
+    id: "organic-basics-11-chem",
+    chapterName: "Basic Principles of Organic Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Basic_Principles_of_Organic_Chemistry.pdf",
+    pdf: chem11("14. Basic Principles of Organic Chemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Basic Principles of Organic Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Structural Representation of Organic Molecules",
+      "Classification of Organic Compounds",
+      "Nomenclature of Organic Compounds",
+      "Isomerism",
+      "Theoretical Basis of Organic Reactions",
+    ],
+  },
+
+  // ── Ch.15 Hydrocarbons. 28pp. 185 PYQ.
+  //    ⚠⚠ THIS CHAPTER HAS **NO WORKED EXAMPLES AT ALL** — zero `Problem`
+  //      labels AND zero `Solution` labels across all 28 pages. So it commits
+  //      with NO `solved` bucket, and its sections outline has no solved block.
+  //      That is correct, not an omission; say so rather than hunting for them.
+  //    Exercise opens p26. Blocks: `1. Choose correct options` · `2. Name the
+  //    following :` · `3. Identify the main product…` · `4. Read the following
+  //    reaction and…` · `5. Identify A, B, C in the following` · `6. Identify
+  //    giving reason…` · `7. Name two reagents…` · `8. Read the following…`
+  //    The spine's top-level sections for this chapter are unusually thin
+  //    (4 entries that read like sub-sections), so the subtopics below follow
+  //    the four hydrocarbon families the chapter actually teaches.
+  "hydrocarbons-11-chem": {
+    id: "hydrocarbons-11-chem",
+    chapterName: "Hydrocarbons",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Hydrocarbons.pdf",
+    pdf: chem11("15. Hydrocarbons.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Hydrocarbons (Balbharati Chemistry textbook)",
+    subtopics: ["Alkanes", "Alkenes", "Alkynes", "Aromatic Hydrocarbons"],
+  },
+
+  // ── Ch.3 Some Analytical Techniques. 8pp — the smallest chapter in the book.
+  //    ⚠ ZERO `Problem` labels (3 loose `Solution` hits, all prose — this
+  //      chapter teaches SOLVENT EXTRACTION, so "solution" is a chemical term).
+  //      Establish from the page whether it has worked examples at all.
+  //    Exercise opens p07. Blocks: `1. Choose the correct option` ·
+  //    `2. Answer the following` · `3. Label the diagram and explain the process`
+  //    ⚠ Block 3 is a LABEL-THE-DIAGRAM block — the question needs the apparatus
+  //      figure attached, and the answer is the labelling. A genuine figure case.
+  "analytical-techniques-11-chem": {
+    id: "analytical-techniques-11-chem",
+    chapterName: "Some Analytical Techniques",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Some_Analytical_Techniques.pdf",
+    pdf: chem11("03. Some Analytical Techniques.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Some Analytical Techniques (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Purification of Solids",
+      "Distillation",
+      "Solvent Extraction",
+      "Chromatographic Techniques",
+    ],
+  },
+
+  // ── Ch.8 Elements of Group 1 and 2. 13pp. Worked examples 8.1-8.7 contiguous.
+  //    Exercise opens p12. ⚠ The MCQ block is NUMBERED 5, not 1 — printed order
+  //    is `1. Explain the following` · `2. Write balanced chemical equations…` ·
+  //    `3. Answer the following questions` · `4. Name the following` ·
+  //    `5. Choose the correct option.` Two trailing `Activity`-style blocks
+  //    ("Collect the information…", "Find out the s block elements…") are
+  //    open-ended and NOT ingested.
+  "s-block-11-chem": {
+    id: "s-block-11-chem",
+    chapterName: "Elements of Group 1 and 2",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Elements_of_Group_1_and_2.pdf",
+    pdf: chem11("08. Elements of Group 1 and 2.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Elements of Group 1 and 2 (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Hydrogen",
+      "Alkali Metals and Alkaline Earth Metals",
+      "Some Important Compounds of s-Block Elements",
+    ],
+  },
+
+  // ── Ch.9 Elements of Group 13, 14 and 15. 12pp. Exercise opens p11.
+  //    ⚠ WORKED EXAMPLES ARE 9.1, 9.3, 9.4, 9.5, 9.6 — **9.2 IS MISSING** from
+  //      the text layer, and there are 7 Solution labels against 5 Problem
+  //      labels. Establish from the page whether the book skips 9.2 or the
+  //      extractor drops its label; do not assume either.
+  //    Blocks run 1-9 including `7. Draw the structure of the following` — a
+  //    genuine structure block; judge linear-vs-figure per question.
+  "p-block-11-chem": {
+    id: "p-block-11-chem",
+    chapterName: "Elements of Group 13, 14 and 15",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Elements_of_Group_13_14_and_15.pdf",
+    pdf: chem11("09. Elements of Group 13, 14 and 15.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Elements of Group 13, 14 and 15 (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Electronic Configuration of Groups 13, 14 and 15",
+      "Trends in Atomic and Physical Properties",
+      "Chemical Properties of the Elements",
+      "Catenation",
+      "Allotropy",
+      "Molecular Structures of Important Compounds",
+      "Chemistry of Notable Compounds",
+    ],
+  },
+
+  // ── Ch.11 Adsorption and Colloids. 14pp. Exercise opens p13.
+  //    ⚠ ZERO `Problem` labels against 3 line-start / 9 loose `Solution` hits —
+  //      and this chapter is about COLLOIDAL SOLUTIONS, so most loose hits are
+  //      the chemical term. Establish the worked-example labelling from the page.
+  //    Blocks run 1-9, mostly `Explain` / `Distinguish between`.
+  "adsorption-colloids-11-chem": {
+    id: "adsorption-colloids-11-chem",
+    chapterName: "Adsorption and Colloids",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Adsorption_and_Colloids.pdf",
+    pdf: chem11("11. Adsorption and Colloids.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Adsorption and Colloids (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Adsorption",
+      "Types of Adsorption",
+      "Factors Affecting Adsorption of Gases on Solids",
+      "Adsorption Isotherm",
+      "Applications of Adsorption",
+      "Catalysis",
+      "Adsorption Theory of Heterogeneous Catalysis",
+      "Colloids",
+    ],
+  },
+
+  // ── Ch.12 Chemical Equilibrium. 16pp. Worked examples 12.1-12.6 contiguous.
+  //    Exercise opens p15 — only three blocks: `1. Choose the correct option` ·
+  //    `2. Answer the following` · `3. Explain :`
+  //    ⚠ The book misspells its own stems repeatedly here ("equlilibrium",
+  //      "equlibrium", "concerntration"). Transcribe as printed and record them
+  //      as publisher-report items; they change no answer.
+  "chemical-equilibrium-11-chem": {
+    id: "chemical-equilibrium-11-chem",
+    chapterName: "Chemical Equilibrium",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemical_Equilibrium.pdf",
+    pdf: chem11("12. Chemical Equilibrium.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemical Equilibrium (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Equilibrium in Physical Processes",
+      "Equilibrium in Chemical Processes",
+      "Law of Mass Action and Equilibrium Constant",
+      "Homogeneous and Heterogeneous Equilibria",
+      "Characteristics of the Equilibrium Constant",
+      "Applications of the Equilibrium Constant",
+      "Le Chatelier's Principle",
+      "Industrial Application: The Haber Process",
+    ],
+  },
+
+  // ── Ch.16 Chemistry in Everyday Life. 10pp. Exercise opens p08 — one of the
+  //    largest exercises relative to chapter size (blocks 1-10).
+  //    One worked example, 16.1. Pure recall/explain chapter; no figures expected.
+  "everyday-chemistry-11-chem": {
+    id: "everyday-chemistry-11-chem",
+    chapterName: "Chemistry in Everyday Life",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemistry_in_Everyday_Life.pdf",
+    pdf: chem11("16. Chemistry in Everyday Life.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemistry in Everyday Life (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Basics of Food Chemistry",
+      "Compounds with Medicinal Properties",
+      "Cleansing Agents",
+    ],
+  },
+
   // ── Ch.6 Redox Reactions. 12pp. Worked examples 6.1-6.9, contiguous.
   //    Exercise opens p10, runs to p11. Blocks: `1. Choose the most correct
   //    option`, `2. Write the formula for the following`, `3. Answer the

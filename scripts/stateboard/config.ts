@@ -1009,23 +1009,280 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    is to measure what the no-gate, structure-heavy case actually costs before
   //    ~14 more organic chapters are committed to.
   //
-  //    MEASURED STRUCTURAL MAP (0-based page indices):
+  //    MEASURED STRUCTURAL MAP (0-based page indices) — CORRECTED 2026-09-03
+  //    against the ingesting agent's page reading; two claims below were wrong:
   //      Exercise opens p14 and runs to p15 (the last two pages).
   //      Blocks: `1. Choose the most correct option` (i–x, 40 options = 10×4),
   //              `2. Answer in one sentence` (i–x), `3. Answer the following`
-  //              (i–xi), `4. Answer the following.` (i–viii).
+  //              (i–xi), `4. Answer the following.` — which prints i, ii, iii,
+  //              iv, v, **vii**, viii and so holds SEVEN items, not eight. The
+  //              book skips the label `vi` entirely (confirmed at 400 dpi, no
+  //              text missing between v and vii). Numbering is kept as printed.
   //      Items are ROMAN here, not the uppercase letters Std XI uses.
-  //    ⚠ WORKED EXAMPLES NEED RECONCILING BEFORE YOU TRANSCRIBE. `Problem 13.1`
-  //      is printed on BOTH p03 and p13 — either the book numbers two problems
-  //      identically, or one hit is a prose cross-reference. A third worked item
-  //      sits on p04 carrying a `Solution :` label and NO `Problem` label at all.
-  //      So the honest count is somewhere in 2–3 and you must establish it from
-  //      the page. A missing solved example is invisible to every gate downstream.
+  //    ⚠ TWO worked examples, and the book genuinely MISNUMBERS the second:
+  //      `Problem 13.1` is printed on BOTH p03 (methyl bromide → ethylamine) and
+  //      p13 (p-bromoaniline from aniline), each with its own `Solution :` label.
+  //      They ship as `Solved Ex.13.1` and `Solved Ex.13.1b` with an erratum.
+  //      An earlier draft of this comment claimed a THIRD worked item on p04
+  //      carrying a `Solution :` label — THAT WAS WRONG. The p04 hit is the
+  //      lowercase word "solution" in prose ("…aqueous KOH solution"); a
+  //      case-SENSITIVE `Solution\s*:` scan over all 16 pages returns exactly
+  //      two hits. This is the same semantic trap flagged for Ch.2/Ch.3/Ch.5.
   //
   //    Subtopics are the book's own §13.x headings, with the thin 13.8
   //    (arenesulfonyl chloride / Hinsberg) folded into Chemical Properties since
   //    it is a reaction OF amines. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ══ CHEMISTRY — the descriptive/organic remainder ═══════════════════════
+  // Registered 2026-09-03. As in Std XI, EVERY chapter below measures
+  // keyed(est) ~= 0: the step-6 gate CANNOT run on any of them. Expected, not a
+  // defect. The compensating regime is the brief's — answers grounded strictly
+  // in the chapter's own text, MCQ keys re-derived, derived-provenance stamped,
+  // and an explicit statement in the report that the gate could not run.
+  //
+  // ⚠ THREE OF THESE BREAK THE Std XII ROMAN-LABEL RULE. Measured over the
+  //   exercise region: Ch.11 is UPPERCASE (37 vs 24), Ch.7 and Ch.15 read MIXED
+  //   (54/54 and 37/48). Confirm the label style from YOUR page before writing
+  //   refs; the volume-level rule in the header comment is a default, not a law.
+
+  // ── Ch.9 Coordination Compounds. 18pp. **332 PYQ — the highest-demand
+  //    Chemistry chapter in the entire bank.** Exercise opens p15.
+  //    ⚠ ONE worked example only (`Problem 9.1`, 1 Solution label). Confirm.
+  //    Blocks print OUT OF ORDER: `1. Choose the most correct option.` ·
+  //    `4. Answer the following questions.` · `2. Answer the following in one or
+  //    two…` · `3. Answer in brief.` — follow the PRINTED order for section_seq.
+  //    IUPAC nomenclature and isomerism answers are TEXT; write them linearly.
+  "coordination-compounds-12-chem": {
+    id: "coordination-compounds-12-chem",
+    chapterName: "Coordination Compounds",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Coordination_Compounds.pdf",
+    pdf: chem12("09. Coordination Compounds.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Coordination Compounds (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Types of Ligands",
+      "Terms Used in Coordination Chemistry",
+      "Classification of Complexes",
+      "IUPAC Nomenclature of Coordination Compounds",
+      "Effective Atomic Number Rule",
+      "Isomerism in Coordination Compounds",
+      "Stability of Coordination Compounds",
+      "Theories of Bonding in Complexes",
+      "Applications of Coordination Compounds",
+    ],
+  },
+
+  // ── Ch.12 Aldehydes, Ketones and Carboxylic Acids. 28pp. 300 PYQ.
+  //    Exercise opens p26. ⚠ ONE worked example (`Problem 12.1`) against 3 loose
+  //    Solution hits — confirm from the page.
+  //    Blocks: `1. Choose the most correct option.` · `2. Answer the following in
+  //    one sentence` · `3. Answer in brief.` · `4. Answer the following`
+  //    Scheme-heavy, but per the Amines pilot `\xrightarrow[below]{above}` carries
+  //    a reaction step losslessly — do not default to figures.
+  "aldehydes-ketones-12-chem": {
+    id: "aldehydes-ketones-12-chem",
+    chapterName: "Aldehydes, Ketones and Carboxylic Acids",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Aldehydes_Ketones_and_Carboxylic_Acids.pdf",
+    pdf: chem12("12. Aldehydes, Ketones and Carboxylic acids.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Aldehydes, Ketones and Carboxylic Acids (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Aldehydes, Ketones and Carboxylic Acids",
+      "Nomenclature",
+      "Preparation of Aldehydes and Ketones",
+      "Preparation of Carboxylic Acids",
+      "Physical Properties",
+      "Polarity of the Carbonyl Group",
+      "Chemical Properties of Aldehydes and Ketones",
+      "Chemical Properties of Carboxylic Acids",
+    ],
+  },
+
+  // ── Ch.11 Alcohols, Phenols and Ethers. 20pp. 246 PYQ. Exercise opens p18.
+  //    ⚠⚠ **THIS CHAPTER USES UPPERCASE ITEM LABELS, NOT ROMAN** — measured 37
+  //      UPPER vs 24 roman across its exercise, the opposite of the Std XII rule.
+  //      Confirm from the page and write refs accordingly (`Ex Q.1 (A)`).
+  //    Worked examples 11.1–11.9 contiguous (9 labels / 8 Solution labels).
+  //    Blocks include two prose items numbered 1 and 2 mid-exercise ("Earlier
+  //    diethyl ether was used as…", "Diethyl ether is used as a solvent for…") —
+  //    establish from the page whether those are questions or an activity box.
+  "alcohols-phenols-ethers-12-chem": {
+    id: "alcohols-phenols-ethers-12-chem",
+    chapterName: "Alcohols, Phenols and Ethers",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Alcohols_Phenols_and_Ethers.pdf",
+    pdf: chem12("11. Alcohols, Phenols and Ethers.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Alcohols, Phenols and Ethers (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Alcohols, Phenols and Ethers",
+      "Nomenclature",
+      "Alcohols and Phenols",
+      "Ethers",
+      "Uses of Alcohols, Phenols and Ethers",
+    ],
+  },
+
+  // ── Ch.8 Transition and Inner Transition Elements. 27pp. 235 PYQ.
+  //    ⚠⚠ **ZERO `Problem N.M` LABELS** across all 27 pages, against 2 line-start
+  //      / 6 loose `Solution` hits. The anchor the rest of this lane uses does
+  //      not exist here — establish the worked-example labelling FROM THE PAGE
+  //      before planning bands, and report what the book actually prints.
+  //    Exercise opens p25. Blocks: `1. Choose the most correct option.` ·
+  //    `2. Answer the following` · `3. Answer the following`. A `90. Is this
+  //    element diamagnetic or…` hit is a stray line, not a block opener.
+  "transition-elements-12-chem": {
+    id: "transition-elements-12-chem",
+    chapterName: "Transition and Inner Transition Elements",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Transition_and_Inner_Transition_Elements.pdf",
+    pdf: chem12("08. Transition and Inner transition Elements.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Transition and Inner Transition Elements (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Position in the Periodic Table and Electronic Configuration",
+      "Oxidation States of the First Transition Series",
+      "Physical Properties of the First Transition Series",
+      "Trends in Atomic Properties",
+      "Compounds of Mn and Cr",
+      "Common Properties of d-Block Elements",
+      "Extraction of Metals",
+      "Lanthanoids",
+      "Actinoids",
+    ],
+  },
+
+  // ── Ch.10 Halogen Derivatives. 24pp. 106 PYQ. Exercise opens p21.
+  //    ⚠ Worked examples are 10.1, 10.2, 10.4, 10.5 — **10.3 IS MISSING** from
+  //      the text layer (4 labels, 5 Solution labels). Establish from the page
+  //      whether the book skips it or the extractor drops the label.
+  //    Blocks: `1. Choose the most correct option.` · `2. Do as directed.` ·
+  //    `3. Give reasons` · `4. Distinguish between - SN1 and SN2` · `5. Explain` ·
+  //    `6. Convert the following.` · `7. Answer the following`. Two trailing
+  //    `Collect…` activity blocks are open-ended and NOT ingested.
+  //    3,732 raster images — optical-isomerism and mechanism art.
+  "halogen-derivatives-12-chem": {
+    id: "halogen-derivatives-12-chem",
+    chapterName: "Halogen Derivatives",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Halogen_Derivatives.pdf",
+    pdf: chem12("10. Halogen Derivatives.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Halogen Derivatives (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Halogen Derivatives",
+      "Nomenclature of Halogen Derivatives",
+      "Nucleophilic Substitution Reactions of Alkyl Halides",
+      "Physical Properties",
+      "Optical Isomerism in Halogen Derivatives",
+      "Reaction with Active Metals",
+      "Uses and Environmental Effects of Polyhalogen Compounds",
+    ],
+  },
+
+  // ── Ch.7 Elements of Groups 16, 17 and 18. 27pp. Exercise opens p25.
+  //    ⚠ **LABEL STYLE READS MIXED (54 UPPER / 54 roman)** — confirm from the
+  //      page which the exercise actually uses before writing refs.
+  //    ⚠ Worked examples 7.1–7.7, 7.9, 7.10 — **7.8 IS MISSING** from the text
+  //      layer (9 labels, 10 Solution labels). Establish from the page.
+  //    Several apparent "blocks" detected here are REACTION EQUATIONS numbered
+  //    inside a complete-the-reaction question (`3. BrCl + H2O`, `6. XeF4 + SiO2`)
+  //    — they are sub-items, not block openers. 9,027 vector drawings.
+  "p-block-16-17-18-12-chem": {
+    id: "p-block-16-17-18-12-chem",
+    chapterName: "Elements of Groups 16, 17 and 18",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Elements_of_Groups_16_17_and_18.pdf",
+    pdf: chem12("07. Elements of Groups 16, 17 and 18.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Elements of Groups 16, 17 and 18 (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Occurrence and Electronic Configuration",
+      "Atomic and Physical Properties",
+      "Anomalous Behaviour",
+      "Chemical Properties of the Elements",
+      "Allotropy",
+      "Oxoacids",
+      "Oxygen and Compounds of Oxygen",
+      "Compounds of Sulfur",
+      "Chlorine and Compounds of Chlorine",
+      "Interhalogen Compounds",
+      "Compounds of Xenon",
+    ],
+  },
+
+  // ── Ch.14 Biomolecules. 24pp. Worked examples 14.1–14.6 contiguous, 6 labels
+  //    against 6 Solution labels — they agree. Exercise opens p22.
+  //    Blocks: `1. Select the most correct choice.` · `2. Give scientific
+  //    reasons :` · `3. Answer the following` · **`4. Draw a neat diagram for the
+  //    following`** — that last is an answer-is-a-drawing block; judge per
+  //    question whether the structure writes linearly (many sugars do not).
+  "biomolecules-12-chem": {
+    id: "biomolecules-12-chem",
+    chapterName: "Biomolecules",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Biomolecules.pdf",
+    pdf: chem12("14. Biomolecules.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Biomolecules (Balbharati Chemistry textbook)",
+    subtopics: ["Carbohydrates", "Proteins", "Nucleic Acids"],
+  },
+
+  // ── Ch.15 Introduction to Polymer Chemistry. 18pp. Exercise opens p15.
+  //    ⚠ **LABEL STYLE READS MIXED (37 UPPER / 48 roman)** — confirm from the page.
+  //    Worked examples 15.1, 15.2. Several detected "blocks" are polymer NAMES
+  //    numbered inside a match/identify question (`1. Teflon`, `3. Polyester`,
+  //    `5. Bakelite`) — sub-items, not block openers. Read the page.
+  "polymers-12-chem": {
+    id: "polymers-12-chem",
+    chapterName: "Introduction to Polymer Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Introduction_to_Polymer_Chemistry.pdf",
+    pdf: chem12("15. Introduction to Polymer Chemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Introduction to Polymer Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Polymers",
+      "Some Important Polymers",
+      "Molecular Mass and Degree of Polymerization",
+      "Biodegradable Polymers",
+      "Commercially Important Polymers",
+    ],
+  },
+
+  // ── Ch.16 Green Chemistry and Nanochemistry. 13pp — the last chapter of the
+  //    book. Exercise opens p11.
+  //    ⚠ **ZERO `Problem` labels AND ZERO `Solution` labels** across all 13 pages
+  //      — like Std XI Hydrocarbons, this chapter appears to have NO worked
+  //      examples at all. Confirm from the page, then commit with no `solved`
+  //      bucket and no solved block in the outline. That is correct, not an
+  //      omission.
+  //    Three detected "blocks" on p11 (`1. Revolution in electronics…`,
+  //    `2. Energy sector…`, `3. Medical field :`) are APPLICATION BULLETS in the
+  //    §16.10 prose, not exercise blocks. The real exercise is
+  //    `1. Choose the most correct option.` + three `Answer the following` blocks.
+  //    Pure recall/explain chapter; 1,577 images are teaching illustrations.
+  "green-chemistry-12-chem": {
+    id: "green-chemistry-12-chem",
+    chapterName: "Green Chemistry and Nanochemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Green_Chemistry_and_Nanochemistry.pdf",
+    pdf: chem12("16. Green Chemistry and Nanochemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Green Chemistry and Nanochemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Sustainable Development",
+      "Principles of Green Chemistry",
+      "The Role of Green Chemistry",
+      "Introduction to Nanochemistry",
+      "Characteristic Features of Nanoparticles",
+      "Synthesis of Nanomaterials",
+      "Applications of Nanomaterials",
+    ],
+  },
+
   // ── Ch.1 Solid State. 27pp. 172 PYQ (MHT-CET 133 — one of its densest).
   //    Worked examples 1.1-1.6, contiguous. Exercise opens p24, runs to p26.
   //    ⚠ THE HEAVIEST FIGURE LOAD IN THE BOOK BY FAR — 101,156 vector drawings
