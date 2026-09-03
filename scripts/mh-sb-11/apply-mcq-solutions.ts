@@ -24,9 +24,22 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const ch = requireChapter(id);
 
-  const rows: { id: string; ref: string; solution: string }[] = JSON.parse(
-    readFileSync(join(DATA, `${id}.g3-mcq.solutions.json`), "utf8")
+  // Read the blind-verify file directly. `dump-mcq.ts` asks the verifier for a
+  // `why`, and nothing downstream ever writes it anywhere — which is the whole
+  // reason 132 of the 203 MCQ rows in the shipped Maths chapters have no
+  // solution. A `solution` field is accepted too, so a verifier that writes one
+  // (the stateboard convention) also works here.
+  const raw: { id: string; ref: string; why?: string; solution?: string }[] = JSON.parse(
+    readFileSync(join(DATA, `${id}.blind.mcq-verify.json`), "utf8")
   );
+  const rows = raw.map((r) => {
+    const text = (r.solution ?? r.why ?? "").trim();
+    if (!text) throw new Error(`${r.ref}: no \`why\` or \`solution\` — refusing to write an empty solution`);
+    if (text.length < 60) throw new Error(`${r.ref}: justification is only ${text.length} chars — too thin to ship`);
+    // The audit:keys trap: a trailing bare capital reads as a concluded option letter.
+    if (/\b[A-D]\.?$/.test(text.trim())) throw new Error(`${r.ref}: ends on a bare option letter`);
+    return { id: r.id, ref: r.ref, solution: text };
+  });
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },

@@ -622,6 +622,43 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
     { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
   ],
+
+  // Ch.9 Optics: FOUR exercise blocks, and the book numbers them 1, 2, 2, 3 —
+  // it prints "2. Answer the following questions." and then "2. Answer the
+  // following questions in detail." as two separate blocks. Hence the `Ex Q.2b`
+  // disambiguator, which exists only here.
+  //
+  // ⚠ The trailing " (" in "Ex Q.2 (" is LOAD-BEARING: without it the prefix
+  // "Ex Q.2" also matches every "Ex Q.2b (…)" ref and swallows that whole block
+  // into the wrong one. The space is what separates them.
+  "optics-11-phy": [
+    { group: "9. Optics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.9."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer the following questions in detail", kind: "exercise", refPrefixes: ["Ex Q.2b ("] },
+    { group: "Exercises", label: "Solve the following numerical examples", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.10 Electrostatics: THREE exercise blocks. Block 3 is printed "Answer the
+  // following questions.", NOT the "Answer in brief" of the Ch.11 shape — and
+  // `Ex Q.3` is a roman-numeral SET, so there are no flat `Ex Q.4`/`Ex Q.5` refs.
+  "electrostatics-11-phy": [
+    { group: "10. Electrostatics — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.10."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve numerical examples", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.14 Semiconductors has THREE exercise blocks, not the four of Ch.11, and
+  // `Ex Q.3` here is a SET of five roman sub-items ("Answer in detail."), not a
+  // run of flat questions — so the Ch.11 shape above would mis-route all five.
+  // Every ref in this chapter is roman-subscripted, so again no flat `Ex Q.N`.
+  "semiconductors-11-phy": [
+    { group: "14. Semiconductors — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.14."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer in detail", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

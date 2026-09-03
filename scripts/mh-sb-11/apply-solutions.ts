@@ -139,14 +139,30 @@ async function main() {
   const mismatches: string[] = [];
   for (const f of mcqFiles) {
     const frag = JSON.parse(readFileSync(join(DATA, f), "utf8")) as Array<{
-      id: string; ref: string; derived_answer?: string; matches_current?: boolean; solution?: string;
+      id: string; ref: string; derived_answer?: string; matches_current?: boolean; solution?: string; why?: string;
     }>;
     for (const m of frag) {
       if (m.matches_current === false) mismatches.push(`${m.ref}: verifier says ${m.derived_answer}, differs from current key — RE-KEY MANUALLY`);
-      if (!m.solution) continue;
+      // `why` is a FALLBACK because dump-mcq.ts's printed contract asks the
+      // verifier for exactly that field while this branch only ever read
+      // `solution` — so a file written to the contract updated NOTHING and said
+      // so as "updated solution on 0 mcq row(s)", which reads like "there were
+      // none". That silent no-op is why 132 of the 203 MCQ rows across the 18
+      // shipped Maths chapters are `solution IS NULL`. Found twice
+      // independently (an ingest agent hit it on Electrostatics 2026-09-03).
+      const text = (m.solution ?? m.why ?? "").trim();
+      if (!text) continue;
+      // A too-thin justification is SKIPPED WITH A WARNING rather than written:
+      // the old contract said "<one line>", so some existing verify files carry
+      // a fragment that would ship to students as the whole model answer.
+      // Refusing loudly beats silently publishing a one-liner.
+      if (text.length < 60) {
+        mismatches.push(`${m.ref}: justification is only ${text.length} chars — too thin to ship as a solution, SKIPPED`);
+        continue;
+      }
       const { error, count } = await client
         .from("questions")
-        .update({ solution: normalizeNewlines(m.solution) }, { count: "exact" })
+        .update({ solution: normalizeNewlines(text) }, { count: "exact" })
         .eq("id", m.id).eq("exam_id", EXAM_ID).eq("question_format", "mcq");
       if (error) throw new Error(`mcq update ${m.ref}: ${error.message}`);
       if (count === 1) mcqUpdated++;

@@ -70,8 +70,14 @@ async function main() {
   // wrong costs a whole agent run (mark-mcq-verify reports every row as NULL).
   console.log(
     `\nthe verifier must write data/<id>.blind.mcq-verify.json as:\n` +
-      `  [{ "id": "<verbatim>", "ref": "<verbatim>", "derived_answer": "A|B|C|D", "why": "<one line>" }]\n` +
-      `  ^ the field is derived_answer — NOT "answer".`
+      `  [{ "id": "<verbatim>", "ref": "<verbatim>", "derived_answer": "A|B|C|D", "why": "<full solution>" }]\n` +
+      `  ^ the field is derived_answer — NOT "answer".\n` +
+      `  ^ "why" is PUBLISHED VERBATIM as the row's student-facing solution, so write a\n` +
+      `    real one: the reasoning, and why each other option fails. This line used to\n` +
+      `    say "<one line>", and a one-line justification is what a student then reads\n` +
+      `    as the whole model answer. Never end it on a bare capital A-D — audit:keys\n` +
+      `    reads a trailing letter as a concluded option and flags the row.\n` +
+      `  apply it with: npx tsx scripts/mh-sb-11/apply-mcq-solutions.ts <id> --apply`
   );
 }
 

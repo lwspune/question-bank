@@ -1,0 +1,32 @@
+[
+  {
+    "ref": "Solved Ex.10.3",
+    "why": "The comparison line prints the electrostatic force as 2.30e-2 N, contradicting the book's OWN eq. (10.8.a) four lines above, which gives F_e = 2.3e2 N. As printed the equality is false: 2.30e-2 / 1.86e-34 = 1.24e32, not the 1.23e36 the same line concludes. The ratio and the closing sentence ('36 orders of magnitude') are both correct, so only the numerator's exponent is wrong.",
+    "find": "\\(\\dfrac{F_{e}}{F_{g}} = \\dfrac{2.30 \\times 10^{-2}\\ \\text{N}}{1.86 \\times 10^{-34}\\ \\text{N}} = 1.23 \\times 10^{36}\\)",
+    "replace": "\\(\\dfrac{F_{e}}{F_{g}} = \\dfrac{2.30 \\times 10^{2}\\ \\text{N}}{1.86 \\times 10^{-34}\\ \\text{N}} = 1.23 \\times 10^{36}\\)"
+  },
+  {
+    "ref": "Solved Ex.10.5",
+    "why": "The intermediate step prints 16e-3 where 16e3 belongs: 20 / 1.25e-3 = 16000. As printed the line asserts 16e-3 = 1.6e4, which is false by seven orders of magnitude. The final answer 1.6e4 V/m is correct.",
+    "find": "\\(E = \\dfrac{20V}{1.25 \\times 10^{-3}m} = 16 \\times 10^{-3} = 1.6 \\times 10^{4}\\dfrac{V}{m}\\)",
+    "replace": "\\(E = \\dfrac{20V}{1.25 \\times 10^{-3}m} = 16 \\times 10^{3} = 1.6 \\times 10^{4}\\dfrac{V}{m}\\)"
+  },
+  {
+    "ref": "Solved Ex.10.6",
+    "why": "The centimetre length BP is never converted to metres, so the whole chain is low by 1e4, and the printed final value is then not even what that chain gives. The book's own arithmetic reaches 1.44e3 while the printed answer is 1.44e15 - so the two disagree by twelve orders of magnitude and NEITHER is right. With BP = (5/sqrt 2) cm = 3.54e-2 m, E = 2e-6 x 9e9 / (3.54e-2)^2 = 1.44e7 N/C. The denominator is rewritten in metres so the factor of 1e4 is visible rather than assumed.",
+    "find": "\\(\\vec{E}_{p} = \\dfrac{2 \\times 10^{-6} \\times 9 \\times 10^{9}}{(5/\\sqrt{2})^{2}}\\)\n\\(= \\dfrac{2 \\times 9 \\times 10^{3} \\times 2}{25}\\)\n\\(= \\dfrac{36}{25} \\times 10^{3}\\)\n\\(= 1.44 \\times 10^{15}\\) NC\\(^{-1}\\) along \\(\\overrightarrow{BP}\\)",
+    "replace": "\\(\\vec{E}_{p} = \\dfrac{2 \\times 10^{-6} \\times 9 \\times 10^{9}}{\\left(\\dfrac{5}{\\sqrt{2}} \\times 10^{-2}\\right)^{2}}\\)\n\\(= \\dfrac{2 \\times 9 \\times 10^{3} \\times 2}{25} \\times 10^{4}\\)\n\\(= \\dfrac{36}{25} \\times 10^{7}\\)\n\\(= 1.44 \\times 10^{7}\\) NC\\(^{-1}\\) along \\(\\overrightarrow{BP}\\)"
+  },
+  {
+    "ref": "Solved Ex.10.7",
+    "why": "Both printed values of the electron-proton force carry the wrong SIGN on the exponent - a force of 8e8 N between two elementary charges is absurd, and the two routes should agree. F = qE = 1.6e-19 x 5.1e11 = 8.16e-8 N, and Coulomb's law gives 8.20e-8 N (the book prints 8.6, a mantissa slip on top of the exponent). The asked quantity, E = 5.1e11 N/C, is correct and is untouched.",
+    "find": "F \\(= -1.6 \\times 10^{-19}\\) C \\(\\times\\) \\(5.1 \\times 10^{11}\\) NC\\(^{-1}\\)\n\\(= -8.16 \\times 10^{8}\\) N.",
+    "replace": "F \\(= -1.6 \\times 10^{-19}\\) C \\(\\times\\) \\(5.1 \\times 10^{11}\\) NC\\(^{-1}\\)\n\\(= -8.16 \\times 10^{-8}\\) N."
+  },
+  {
+    "ref": "Solved Ex.10.7",
+    "why": "The Coulomb's-law route to the same force, printed with the exponent sign wrong and a mantissa slip. 9.0e9 x (1.6e-19)^2 / (5.3e-11)^2 = 8.20e-8 N, which agrees with the F = qE route above.",
+    "find": "\\(= -8.6 \\times 10^{8}N\\)",
+    "replace": "\\(= -8.20 \\times 10^{-8}N\\)"
+  }
+]
