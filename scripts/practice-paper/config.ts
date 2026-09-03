@@ -5086,6 +5086,125 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
     createPaper: false,
   },
+  // --- NDA GAT MOCK L3 (LWS, Sep 2026) --------------------------------------
+  // 150 q on the standard GAT shape: Section A English 1-50, Section B general
+  // knowledge 51-100, Section C science 101-150. Born-digital DOCX with a clean
+  // text layer, so this is the pandoc lane -- but see the two extraction traps
+  // below, because "clean text layer" was not the same as "safe to read".
+  //
+  // MOSTLY A REPRINT. 111 of the 150 already exist in the bank (107 exact +
+  // 4 reworded), 96 of them from NDA_GAT_Weekly_Mock_2026_T3.docx at the SAME
+  // question numbers, plus 12 from Oswaal_NDA_GAT_Mock_Test_2.pdf and 2 real
+  // PYQs (GAT_NDA2_2019 Q98, GAT_2017_NDA1 Q95). So only 39 questions are new;
+  // the duplicates carry their twin's subject/chapter/subtopic and solution
+  // rather than being re-derived, and stay PRIVATE.
+  //
+  // ANSWER POLICY. The source ships a complete 150-letter key and NO worked
+  // solutions, so there is no second printed source to diff it against. Every
+  // question not already in the bank was solved BLIND (the key withheld at
+  // export time, not by instruction) and the result crosstabbed against the
+  // key: 36 agree, 2 disagree, 4 unverifiable. Separately, the 111 duplicates
+  // were compared against their bank twin BY OPTION TEXT (never by letter --
+  // the two printings order their options differently): 104 agree, 5 disagree,
+  // 2 were false alarms caused by an option rewording.
+  //
+  // No key is ever moved. A disputed row keeps the PRINTED answer, is marked
+  // `flawed` so it can never publish, and its reviewNote states the derived
+  // answer and the reasoning (GAT_RULES answer-key policy).
+  //
+  // TWO EXTRACTION TRAPS, both of which produce text that reads fine and is
+  // wrong, and neither of which a count check can see:
+  //   * SYMBOL FONT. Greek is set in the Symbol font, so the stored character
+  //     is a Latin letter: "a resistance of 32 W" is really 32 ohm, and
+  //     "velocity of 2n" is really 2 nu. 12 glyphs across the paper. pandoc
+  //     maps these; a plain XML text walk does not.
+  //   * EIGHT option-marker styles -- (a), (A), a), A., [A], 1., two-per-line
+  //     two-column rows, and a trailing "Directions (46-50): ... namely (a),
+  //     (b), (c) and (d)" block whose letters look exactly like an option run.
+  //     Q45 took its options from that sentence and still passed a count check.
+  //
+  // Q46-50 print the P/Q/R/S label AFTER its segment ("... verdure (P) / and on
+  // the other there are (Q) / ..."), so a prefix-label parser shifts every
+  // label by one -- the mis-key GAT_RULES rule 0 exists to catch.
+  //
+  // Q6-10 share a comprehension passage that sits between its Directions line
+  // and Q6 and therefore belongs to no question block; it is attached as
+  // `context` on all five (setLabel RC1). Without it those stems are unanswerable.
+  "gat-mock-l3": {
+    slug: "gat-mock-l3",
+    title: "NDA GAT - LWS Mock L3 (English, GK, Science)",
+    recordsFile: "gat-mock-l3.records.json",
+    outName: "Tags_NDA_GAT_Mock_L3",
+    sourceFile: "NDA GAT MOCK L3 Final.docx",
+    subjects: {
+      Biology: {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Organelles and Functions", "Osmosis and Tonicity"],
+        "Genetics and Evolution": ["Heredity and DNA"],
+        "Human Physiology": ["Circulatory and Lymphatic System", "Connective and Epithelial Tissues", "Excretory and Reproductive Anatomy", "Nervous System and Sense Organs"],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        // Q135 was misprinted in the source (bare lead-in, no lists, no options)
+        // and was replaced with an existing bank question on this chapter.
+        "Reproduction": ["Animal and Human Reproduction"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": ["Common Acids: Names, Formulas and Uses", "Salts and Common Compounds"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Carbon and Its Compounds": ["Allotropes of Carbon"],
+        "Hydrogen and Water": ["Hardness and Purity of Water"],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials", "Fertilizers", "Industrial Gases, Manufacturing and Reactions"],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+        "Metals and Non-Metals": ["Corrosion and Its Prevention", "Extraction of Metals and Ores", "Reactivity Series and Reactions with Water"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Indian Art, Architecture and Cultural Practices"],
+        "Environment, Ecology and Energy": ["Ramsar Sites, Wetlands and Protected Areas", "Wildlife Conservation and Species"],
+        "Government Schemes, Policy and Governance": ["Government Events, Reports and Announcements", "Infrastructure, Transport and Cultural Schemes"],
+        "International Affairs and Relations": ["India's Foreign Policy and Bilateral Relations", "International Organizations and Multilateral Bodies"],
+        "Science and Technology": ["DRDO, Defence and Marine Technology"],
+      },
+      Economics: {
+        "Indian Economy": ["Five Year Plans and Indian Planning", "Government Schemes — Agriculture and Livestock"],
+      },
+      English: {
+        "Fill in the Blanks": ["Contextual Fill-in-Blank", "Contextual Word Selection (Phrasal Verbs and Collocations)"],
+        "Grammar": ["Direct and Indirect Speech", "Preposition Usage"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)", "Sentence Part Rearrangement (PQRS)"],
+        "Vocabulary": ["Confusable Word Pairs", "Synonyms"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": ["Cyclones, Fronts and Local Winds"],
+        "Earth in Space, Maps and Coordinates": ["Planets and Solar System"],
+        "Earth's Structure, Landforms and Geological Time": ["Volcanoes and Igneous Activity"],
+        "Indian Geography — Economy, Resources and Transport": ["Agriculture, Crops, Soils and Land Use"],
+        "Indian Geography — Physical Features": ["Indian Rivers, Lakes and Water Bodies", "Mountains, Plateaus and Plains of India"],
+        "World and Human Geography": ["Human Geography — Megacities and Population", "World — Coordinates, Time and Place", "World — Rivers, Canals and Water Bodies"],
+      },
+      History: {
+        "Ancient India": ["Ancient Indian Literature and Inscriptions", "Harappan and Indus Valley Civilization", "Mahajanapadas, Magadha and Mauryan Empire", "Post-Mauryan, Gupta and Sangam Period"],
+        "Medieval India": ["Medieval Literature and Texts", "Vijayanagara Empire"],
+        "Modern India": ["British Administration, Acts and Legislation", "British Economic Policy and Industrial India", "Freedom Movement — INC, Gandhi and Independence", "Freedom Movement — INC, Gandhi and Independence"],
+      },
+      Physics: {
+        "Electricity and Magnetism": ["Electrical Devices", "Electrical Power, Energy and Heating", "Magnetic Force and Fleming's Rules", "Magnetism and Magnetic Effects of Current", "Resistance and Resistivity"],
+        "Gravitation": ["Gravitational Field and Potential", "Orbits, Kepler and Escape"],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat", "Phase Change and Boiling", "Temperature and Thermometry"],
+        "Kinematics and Motion": ["Equations of Motion and Graphs"],
+        "Light and Optics": ["Human Eye and Optical Instruments", "Reflection and Mirrors", "Refraction, Speed of Light and TIR"],
+        "Modern Physics": ["Nuclear Physics"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation"],
+      },
+      Polity: {
+        "Fundamental Rights, DPSP and Local Governance": ["Fundamental Rights, DPSP and Duties"],
+      },
+    },
+    pyqNote: "NDA GAT practice - LWS Mock L3 (answers from the printed key; this source prints no worked solutions)",
+    examName: "NDA",
+    section: { key: "gat-mock-l3", label: "GAT Mock L3" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
