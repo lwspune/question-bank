@@ -39,7 +39,13 @@ function main() {
     // 2026-09-03. Keep adding names, but the durable guard is the shape check
     // below, which needs no maintenance.
     const SCRATCH =
-      /\.(solutions|errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images|book-answers|solved-fixes|fig)\.json$/;
+      // `sections` added 2026-09-03: the Chemistry brief mandates a per-chapter
+      // data/<id>.sections.json (it replaced editing the shared sections.ts, which
+      // was a read-modify-write race between concurrent agents). Without it here a
+      // bare re-merge threw for every chapter carrying one — the shape guard
+      // failing CLOSED, which is correct, but it made re-merge impossible.
+      // Reported independently by two ingest agents.
+      /\.(solutions|errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images|book-answers|solved-fixes|sections|fig)\.json$/;
     files = readdirSync(DATA)
       .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== outName && !SCRATCH.test(f))
       .sort();

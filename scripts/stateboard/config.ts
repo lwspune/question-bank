@@ -1185,8 +1185,13 @@ export const CHAPTERS: Record<string, Chapter> = {
   // ── Ch.7 Elements of Groups 16, 17 and 18. 27pp. Exercise opens p25.
   //    ⚠ **LABEL STYLE READS MIXED (54 UPPER / 54 roman)** — confirm from the
   //      page which the exercise actually uses before writing refs.
-  //    ⚠ Worked examples 7.1–7.7, 7.9, 7.10 — **7.8 IS MISSING** from the text
-  //      layer (9 labels, 10 Solution labels). Establish from the page.
+  //    ⚠ Worked examples 7.1–7.10, TEN of them. An earlier draft of this comment
+  //      said "7.8 IS MISSING from the text layer" — WRONG, and the cause is a
+  //      COLON: the book prints `Problem: 7.8` (or `Problem : 7.8`), which a
+  //      `Problem\s+\d` scan cannot match. Swept across all 32 chapters, exactly
+  //      three are affected — this one (hides 7.8), XI Ch.10 States of Matter
+  //      (hides 10.1) and XI Ch.13 Nuclear (hides all eight). The 10 Solution
+  //      labels were the tell all along. Do not go looking for a missing 7.8.
   //    Several apparent "blocks" detected here are REACTION EQUATIONS numbered
   //    inside a complete-the-reaction question (`3. BrCl + H2O`, `6. XeF4 + SiO2`)
   //    — they are sub-items, not block openers. 9,027 vector drawings.

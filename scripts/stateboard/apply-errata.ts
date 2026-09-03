@@ -66,7 +66,12 @@ async function main() {
   // Now: any non-scratch fragment, with SOLUTIONS FILES RANKED FIRST. The order
   // is load-bearing — the loop takes the first file carrying the ref, and for an
   // exercise row the authored solution is the one a re-commit reads back.
-  const SCRATCH = /\.(mcq-blind|mcq-verify|book-answers|review|topaper|xcheck|errata|anchors|solution-images|sections|diagram-specs|imgfig)\.json$|\.diagram-specs/;
+  // `solved-fixes` added 2026-09-03, and it was a real leak: that file sorts
+  // BEFORE `.solved.json`, so a bracket on a solved example landed in the
+  // repair-SPEC file — which `commit.ts` never reads — while the script logged
+  // "mirrored" and reported success. A later re-merge would then silently revert
+  // the bracket. Reported independently by three Chemistry ingest agents.
+  const SCRATCH = /\.(mcq-blind|mcq-verify|book-answers|review|topaper|xcheck|errata|anchors|solution-images|sections|solved-fixes|diagram-specs|imgfig)\.json$|\.diagram-specs/;
   const jsonFiles = readdirSync(DATA)
     .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== `${id}.questions.json` && !SCRATCH.test(f))
     .sort((a, b) => Number(b.endsWith(".solutions.json")) - Number(a.endsWith(".solutions.json")));

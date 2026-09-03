@@ -96,12 +96,36 @@ every `Solution :`, the exercise banner, and the numbered blocks inside it.
 
 **A page boundary is not a block boundary.** Cut bands at BLOCK boundaries.
 
-**Reconcile the `Problem` and `Solution` counts** — they often disagree, and your
-config comment tells you where. Measured causes on the sibling Physics lane: a plural
-`Solutions:`; a worked example carrying no label at all; and in the other direction a
-`Problem` hit that is only a prose cross-reference. **Treat the `Problem N.M` count as
-PRIMARY**, establish the real number from the page, and say what caused any gap. A
-missing worked example is invisible to every gate downstream.
+**Reconcile the `Problem` and `Solution` counts** — they very often disagree.
+**Treat the `Problem N.M` count as PRIMARY**, establish the real number from the PAGE,
+and say what caused any gap. A missing worked example is invisible to every gate.
+
+⚠ **A LABEL SCAN RETURNING ZERO — OR A GAP IN THE NUMBERING — IS A HYPOTHESIS, NOT A
+FINDING.** This book writes its worked-example label at least SEVEN different ways, and
+every one below was found live in this lane by an agent who went to the page:
+
+| printed | breaks a `Problem N.M` scan because | seen in |
+|---|---|---|
+| `Problem : 13.1 :` | colon BEFORE the number | XI Ch.13, Ch.10, XII Ch.7 |
+| `Problems 9.2` | PLURAL, no colon | XI Ch.9 |
+| `Example 4.13` / `Examples 4.12` | different WORD entirely | XII Ch.4 (hid four) |
+| `Promblem 8.8` | the book MISSPELLS it | XI Ch.8 |
+| label split across three text-layer lines | `Problem` / `8.6` / `:` | XI Ch.8 |
+| no label at all | working starts straight in | XI Ch.1 (1.4), XI Ch.6 (6.4) |
+| genuinely skipped | the publisher really did skip it | XII Ch.6 (no 6.11) |
+
+Only the last is a real gap, and only reading the page distinguishes it from the other
+six. `Solution` labels vary too — `Solution :`, `Solution -`, and bare `Solution`.
+
+⚠ **The `Solution` count is a WEAK cross-check in this subject**, because "solution" is
+a chemical term. Measured on Electrochemistry: **139 bare `Solution` hits against 12
+real labels — 11.6× noise.**
+
+⚠ **Do NOT trust your config comment's block list or item ranges.** Measured misses so
+far: Redox names 3 blocks and the book prints 5; p-Block names 9 and prints 18;
+Thermodynamics says block 4 is (i)–(xiv) and it runs to (xx); Kinetics says block 3 is
+(i)–(x) and it runs to (xvii). **Build your own block map from the page and report
+anything the config missed.** Seven questions vanish silently otherwise.
 
 ---
 

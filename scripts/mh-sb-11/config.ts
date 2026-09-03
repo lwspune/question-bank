@@ -1883,7 +1883,19 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    ⚠ THE MCQ BLOCK'S ITEM LETTERS SKIP H — printed A,B,C,D,E,F,G,I,J,K.
   //      Keep the book's own numbering so the gap stays visible; do not close it
   //      up. (Std XI Physics Sound had the same defect at item vi.)
-  //    ~8 keyed rows, all standard-electrode-potential values (E0 = 1.36 V).
+  //    ⚠ CORRECTED 2026-09-03: an earlier draft claimed "~8 keyed rows, all
+  //      standard-electrode-potential values (E0 = 1.36 V)". THAT WAS A FALSE
+  //      POSITIVE of my bare-parenthesis heuristic. Those `(E0 = 1.36 V)`
+  //      parentheticals are DATA SUPPLIED IN THE STEM of `Ex Q.3 (I)`/`(J)` —
+  //      the values the student is asked to compare — not printed answers.
+  //      **This chapter prints NO inline answer anywhere** (an `Ans` scan over
+  //      all 12 pages returns zero, and there is no bare-paren answer either),
+  //      so the gate CANNOT run and all 36 answers are derived.
+  //      General lesson for this lane: a parenthesised value inside a stem is
+  //      question data, not a key. Only count it if it answers the question.
+  //    Also corrected: the exercise has FIVE blocks, not the three named above —
+  //    `4. Balance the reactions/equations :` and `5. Complete the following
+  //    table :` are printed on p11.
   "redox-11-chem": {
     id: "redox-11-chem",
     chapterName: "Redox Reactions",
@@ -1903,9 +1915,17 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    Exercise opens p22, runs to p24. Blocks: `1. Select and write the most
   //    appropriate answer`, `2. Answer in one sentence.`, then further blocks.
   //    ~26 candidate keyed rows — the second-best gate in Std XI after Ch.2.
-  //    ⚠ WORKED EXAMPLES RUN 10.2-10.7 AND 10.1 IS ABSENT from the text layer
-  //      (7 labels, 6 unique). Establish from the page whether the book skips
-  //      10.1 or the extractor drops its label; do not assume either.
+  //    ⚠ EIGHT worked examples, and BOTH halves of the earlier note were wrong.
+  //      "10.1 IS ABSENT" was a COLON artefact — the book prints `Problem: 10.1 :`
+  //      and a `Problem\s+\d` scan cannot match it; the pink box is on p09, a
+  //      Boyle's-law calculation giving 20 mL. (Three chapters book-wide are hit
+  //      by this: here, XI Ch.13 and XII Ch.7.)
+  //      The REAL defect is at the other end: **the book prints `Problem 10.5`
+  //      TWICE** — the partial-pressure example and the water-Tc example — so the
+  //      run is 10.1, 10.2, 10.3, 10.4, 10.5, 10.5, 10.6, 10.7 and ships as
+  //      `Solved Ex.10.5` + `Solved Ex.10.5b`. That reconciles the "7 labels /
+  //      6 unique" count exactly: 7 matched labels + 10.1 hidden by its colon,
+  //      against 8 Solution labels.
   "states-of-matter-11-chem": {
     id: "states-of-matter-11-chem",
     chapterName: "States of Matter",
@@ -1928,12 +1948,29 @@ export const CHAPTERS: Record<string, Chapter> = {
   // ── Ch.13 Nuclear Chemistry and Radioactivity. 14pp. ~22 candidate keyed rows.
   //    Exercise opens p12, runs to p13. Blocks: `1. Choose correct option.`,
   //    `2. Explain`, `3. Answer the following questions`, `4. Solve the problems`.
-  //    ⚠⚠ THIS CHAPTER PRINTS **ZERO** `Problem N.M` LABELS, yet carries EIGHT
-  //      `Solution :` labels — so its worked examples are labelled some OTHER way
-  //      and the anchor used everywhere else in this lane does not exist here.
-  //      This is the one chapter where the `Solution` count is PRIMARY rather than
-  //      a cross-check. Establish the real labelling from the page BEFORE
-  //      planning bands, and report what the book actually prints.
+  //    ⚠ RESOLVED 2026-09-03 — AND THE CAUSE IS A COLON. An earlier draft said
+  //      this chapter prints ZERO `Problem` labels and that the `Solution` count
+  //      was therefore PRIMARY. Both claims came from a probe artefact: the book
+  //      prints **`Problem : 13.1 :`**, with a colon BEFORE the number, which a
+  //      `Problem\s+\d` scan cannot match. The real count is EIGHT worked
+  //      examples, 13.1-13.8, and the `Problem` and `Solution` counts reconcile
+  //      exactly (8 and 8). The `Problem` anchor works fine once the colon is
+  //      allowed for. This is the same failure as the shipped Electrostatics
+  //      `Example : 8.1` case — when a label scan returns zero, try the colon
+  //      form before concluding the labels are absent.
+  //      SCOPE OF THAT CLAIM, corrected the same day: I first wrote that the
+  //      colon form was "unique to this chapter, checked across the whole book".
+  //      It was not — I had probed only six chapters and stated it as if it
+  //      covered all 32. A proper sweep finds **THREE** affected:
+  //        XI Ch.10 States of Matter (`Problem: 10.1 :` — hides ONE example)
+  //        XI Ch.13 (this chapter, `Problem : 13.1 :` — hides ALL eight)
+  //        XII Ch.7 Elements of Groups 16/17/18 (hides 7.8)
+  //      XI Ch.3/11/15 and XII Ch.8/16 do return zero in BOTH forms, so those
+  //      zero counts are real. The lesson twice over: a label scan returning
+  //      zero is a hypothesis, and so is the SCOPE of any claim about it.
+  //      Its `Problem : 13.1` box ends with a SECOND, unsolved prompt carrying no
+  //      label and no printed solution — treated as an in-text practice prompt
+  //      (the Activity-box rule) rather than given an invented ref.
   "nuclear-chemistry-11-chem": {
     id: "nuclear-chemistry-11-chem",
     chapterName: "Nuclear Chemistry and Radioactivity",

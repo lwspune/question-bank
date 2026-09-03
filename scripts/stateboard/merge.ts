@@ -28,6 +28,12 @@ const SCRATCH_SUFFIXES = [
   ".anchors.json",
   ".solution-images.json",
   ".sections.json",
+  // {ref, why, find, replace} — applied by apply-solved-fixes.ts. Its absence
+  // here made a re-merge impossible for any chapter carrying one (flagged by the
+  // Electrochemistry ingest agent, 2026-09-03): the shape guard refused it, which
+  // is the CORRECT failure, but the chapter then could only be merged by naming
+  // every fragment explicitly.
+  ".solved-fixes.json",
   // A figure manifest for questions that are ALREADY committed — {ref,page,bbox}
   // only, no stem. It must still end in "fig.json" for attach-images.ts to glob
   // it, hence the doubled suffix. Distinct from `<sec>fig.json` fragments (e.g.
