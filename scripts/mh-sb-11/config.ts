@@ -46,6 +46,55 @@ export const SOURCE_ROOT = "C:\\tmp\\PYQPs\\MHT-CET\\State_Board\\11th\\Maths";
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs
 export const DATA = join(__dirname, "data"); // committed: transcription (source of truth)
 
+// ── PHYSICS (added 2026-09-03) ───────────────────────────────────────────────
+// A SECOND subject on this exam, from a DIFFERENT publisher folder — hence its
+// own root. Pre-split per-chapter PDFs, so `pdf` points at a whole chapter and
+// `pages` is omitted. Mirrors what `scripts/stateboard` did for Std XII.
+//
+// ⚠ NEITHER PHYSICS VOLUME HAS AN ANSWERS SECTION — do NOT go looking for a
+// missing `answersPdf`, and do not set `answerPages` on a Physics chapter. The
+// Maths chapters here DO have one, which is why those two fields stay optional.
+// What Physics has instead is a PARTIAL per-question key: the numericals print
+// their own answer inline as `[Ans: …]` — measured, 143 across the 14 Std XI
+// chapters. Those are transcribed into a `bookAnswer` field that deliberately
+// never reaches the DB, and diffed by dump-book-answers.ts. That makes the gate
+// REAL on the numerical half and ABSENT on the rest, so report the KEYED count,
+// never the chapter total.
+//
+// ⚠ VISION-ONLY, AND THE REASON DIFFERS FROM Std XII. Measured over 773k chars
+// of the 14 chapters: `√` occurs ZERO times and superscript `²` ZERO times, in a
+// physics book full of radicals and units; and 572 private-use glyphs (U+F072
+// ×449, U+F024 ×102) carry the vector arrow / unit-vector hat, so `B⃗` extracts
+// as `B ur`. UNLIKE Std XII, real Greek SURVIVES here (π 29, θ 175, ω 46, λ 13)
+// and `×` is a real ×, so this volume does NOT silently substitute Latin letters
+// for Greek. The failure is lost radicals, exponents and vector notation rather
+// than a plausible-looking wrong equation — a narrower hazard, but still fatal
+// to a text-first pass.
+//
+// ⚠ GATE COVERAGE IS UNEVEN, and two chapters have effectively none:
+// Semiconductors prints ZERO inline answers and Mathematical Methods exactly
+// ONE. Those two run the mh-sb-9 humanities regime — blind MCQ re-derivation
+// plus answers authored strictly from the chapter's own prose — with nothing to
+// diff against. Schedule them knowingly; do not treat a clean run there as gate
+// evidence.
+const PHYSICS_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
+const phy11 = (p: string) => join(PHYSICS_ROOT, "11th_Topics", p);
+
+/**
+ * Model credited on an answer we derived, written to `questions.derived_model`
+ * (with `derived_at`) for every AUTHORED row of a `derivedAnswers` chapter.
+ *
+ * ⚠ THE DISCLOSURE IS DELIBERATELY *NOT* PUT IN `pyq_note` — see the identical
+ * note in scripts/stateboard/config.ts for the full reasoning. In short:
+ * `pyq_note` has one consumer, the /browse source line, and a disclosure there
+ * is the wrong moment (the reader has not seen an answer yet) and the wrong
+ * premise (that is for EXAM PAPERS, where an official key is a real artifact;
+ * this is a TEXTBOOK). The fact lives in `derived_model`/`derived_at`, which is
+ * queryable and is what the flip-public gate keys on.
+ */
+export const DERIVED_MODEL = "claude-opus-5";
+
 // Pre-split per-chapter PDFs (the transcription source).
 const p1 = (f: string) => join(SOURCE_ROOT, "Part 1", "Part 1_Chapterwise", f);
 const p2 = (f: string) => join(SOURCE_ROOT, "Part 2", "Part 2_Chapterwise", f);
@@ -63,6 +112,24 @@ export type Chapter = {
   answersPdf?: string; // WHOLE-BOOK PDF holding the ANSWERS section
   answerPages?: number[]; // 0-based indices of this chapter's answer block (step-6)
   note: string; // questions.pyq_note
+  /**
+   * Set when the SOURCE BOOK PRINTS NO ANSWER KEY, so every MCQ key and every
+   * exercise answer is DERIVED or AUTHORED by us rather than checked against a
+   * printed one. The Physics volumes are the case; every Maths chapter here has
+   * an end-of-book ANSWERS section and leaves this unset.
+   *
+   * OFF is the default precisely so the 18 shipped Maths chapters keep their
+   * exact current behaviour. It turns on two things:
+   *   - `stamp-provenance.ts` writes `derived_model`/`derived_at`;
+   *   - `flip-public.ts` REFUSES to publish an authored row without that stamp.
+   * A published derived answer that does not announce itself reads as an
+   * official key — caught at the publish gate on CDS General Knowledge, one step
+   * too late, so here the stamp is a PRECONDITION of publishing.
+   *
+   * Solved examples are deliberately EXCLUDED: they carry the BOOK's own printed
+   * worked solution, so claiming them as ours would be the opposite error.
+   */
+  derivedAnswers?: boolean;
   // Canonical subtopics — transcription maps each question to exactly one.
   // Per the shipped mh-ssc-10-text decision, these are the TEXTBOOK's OWN section
   // headings (here: the `syllabus_concepts` MH-State-Board XI spine, which was
@@ -1069,6 +1136,45 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Derivatives of Algebraic Functions",
       "Derivatives of Trigonometric Functions",
       "Derivatives of Logarithmic and Exponential Functions",
+    ],
+  },
+
+  // ══ PHYSICS (Std XI) ═══════════════════════════════════════════════════════
+  // Pilot chapter for the Std XI Physics lane. Chosen on measurement, not book
+  // order: 14pp (2nd smallest of the 14), FIFTEEN inline `[Ans:]` (joint-best
+  // gate density in the volume), and it backs 353 PYQ across JEE/CET/NEET —
+  // 3rd-highest demand. A strong gate is the point: the pilot has to exercise
+  // the newly-ported dump-book-answers / stamp-provenance / flip-public chain
+  // rather than skate past it.
+  //
+  // ── Ch.11 Electric Current Through Conductors. 14pp.
+  //    8 `Example` markers and 8 `Solution :` markers — they agree, so no
+  //    reconciliation is owed here (unlike Optics 8-vs-12, Laws of Motion 14-vs-13
+  //    and Sound 7-vs-6, which do).
+  //    15 exercise questions print an inline [Ans: ...].
+  //    Subtopics are the spine's own §11.x headings, lightly merged where the
+  //    book splits one teaching unit (11.8/11.8.1/11.8.2 -> Resistors;
+  //    11.12/11.13 -> Cells). §11.1 Introduction is question-less prose and is
+  //    deliberately NOT a subtopic — an empty subtopic ships a /browse filter
+  //    that returns nothing. Diff the committed `by subtopic` tally against this
+  //    list BEFORE --apply and drop any that came out empty.
+  "electric-current-11-phy": {
+    id: "electric-current-11-phy",
+    chapterName: "Electric Current Through Conductors",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Electric_Current.pdf",
+    pdf: phy11("11. Electric Current Through Conductors.pdf"),
+    derivedAnswers: true, // no ANSWERS section in either Physics volume
+    note: "Maharashtra State Board (Class 11) — Electric Current Through Conductors (Balbharati Physics textbook)",
+    subtopics: [
+      "Electric Current and Drift Speed",
+      "Ohm's Law and its Limitations",
+      "Electrical Energy and Power",
+      "Resistors and Combination of Resistors",
+      "Resistivity and Variation with Temperature",
+      "Electromotive Force",
+      "Cells in Series and Parallel",
+      "Types of Cells",
     ],
   },
 };

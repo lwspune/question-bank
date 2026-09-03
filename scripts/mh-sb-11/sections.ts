@@ -602,6 +602,26 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 9", label: "(I) Select the appropriate option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
     { group: "Miscellaneous Exercise 9", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
   ],
+
+  // ══ PHYSICS (Std XI) ═══════════════════════════════════════════════════════
+  // ⚠ The Physics book's layout is NOT the Maths shape described at the top of
+  // this file. There is no "EXERCISE N.M" run and no Miscellaneous Exercise.
+  // Instead: solved examples interleaved in the theory, then ONE Exercises
+  // section holding FOUR numbered blocks — and four is itself unusual (the Std
+  // XII Physics chapters print three). All four use roman sub-items, so every
+  // block prefix ends in `(` and there are no flat `Ex Q.N` refs at all.
+  //
+  // That last fact removes the usual prefix trap: with no `Ex Q.10`+ in
+  // existence, `Ex Q.1 (` could not collide even without its trailing paren.
+  // The parens are kept anyway, so the shape stays uniform with every sibling
+  // chapter and stays correct if a later chapter does have flat items.
+  "electric-current-11-phy": [
+    { group: "11. Electric Current Through Conductors — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.11."] },
+    { group: "Exercises", label: "Choose correct alternative", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Give reasons / short answers", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

@@ -19,6 +19,51 @@ function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
+/**
+ * Gate for a chapter whose source book prints NO answer key
+ * (`Chapter.derivedAnswers`): every answer we authored must ANNOUNCE that it is
+ * derived before it can be published, or a student reads it as an official key.
+ * Caught on CDS General Knowledge at exactly this point, one step too late —
+ * hence a refusal here and a stamp at commit time (stamp-provenance.ts).
+ *
+ * Deliberately a NO-OP for every chapter that does not set the flag, so the 18
+ * shipped Maths chapters — whose book DOES carry an ANSWERS section, and whose
+ * rows predate this — flip exactly as they did before.
+ */
+async function assertProvenance(
+  // Loosely typed on purpose: the generated Database types make the concrete
+  // client and `ReturnType<typeof createClient>` mutually unassignable, and this
+  // helper only ever issues one narrow select.
+  client: any,
+  ch: ReturnType<typeof requireChapter>
+) {
+  if (!ch.derivedAnswers) return;
+  const { data, error } = await client
+    .from("questions")
+    .select("question_number, section_kind, derived_model")
+    .eq("exam_id", EXAM_ID)
+    .eq("source_file", ch.sourceFile);
+  if (error) throw new Error(`provenance check failed: ${error.message}`);
+
+  const authored = (data ?? []).filter((r: any) => r.section_kind !== "solved_example");
+  // Keys on the STRUCTURED column, not on a prose match. A string check breaks
+  // silently the moment the wording changes; `derived_model` is the fact itself.
+  const bad = authored.filter((r: any) => !r.derived_model);
+  if (bad.length) {
+    throw new Error(
+      `refusing to publish — ${bad.length} of ${authored.length} authored row(s) carry no ` +
+        `derived-answer provenance: ${bad.slice(0, 6).map((r: any) => r.question_number).join(", ")}` +
+        `${bad.length > 6 ? " …" : ""}\n` +
+        `  This book publishes no answer key, so an unannounced derived answer reads as an ` +
+        `official one. Run: npx tsx scripts/mh-sb-11/stamp-provenance.ts ${ch.id} --apply`
+    );
+  }
+  console.log(
+    `provenance OK: all ${authored.length} authored row(s) stamped ` +
+      `(${(data ?? []).length - authored.length} book-solution rows correctly unstamped).`
+  );
+}
+
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
@@ -29,6 +74,8 @@ async function main() {
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
+
+  await assertProvenance(client, ch);
 
   // Solved examples: subjective with a book solution.
   const { count: solvedCount } = await client
