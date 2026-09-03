@@ -11,6 +11,9 @@
 // transcription agents emit it natively (they read the headings at ingest).
 //
 // backfill-sections.ts consumes these to populate migration-0043 columns.
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
@@ -680,10 +683,86 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
       ],
     },
   ],
+
+  // ── Ch.13 Amines (12th CHEMISTRY). 16pp; the Exercises open on p-14 (printed
+  //    296) and run to p-15. PDF-verified via a get_text('blocks') (page, y) scan
+  //    2026-09-03.
+  //    TWO worked examples, and the book numbers BOTH of them `Problem 13.1`
+  //    (p-03 printed 285, and p-13 printed 295) — a printed misnumbering, not a
+  //    transcription slip. The second is refed `Solved Ex.13.1b` so the two stay
+  //    distinct; both route to the one solved block via the shared prefix.
+  //    Exercise shape: `1. Choose the most correct option.` (i)-(x) ->
+  //    `2. Answer in one sentence.` (i)-(x) -> `3. Answer the following` (i)-(xi)
+  //    -> `4. Answer the following.` (i)-(v), (vii), (viii) — the book SKIPS the
+  //    label `vi` entirely in block 4, so that block holds SEVEN items, not eight.
+  //    Blocks 3 and 4 carry near-identical printed headings, so each label is
+  //    prefixed with the book's own printed block number to keep the reader
+  //    unambiguous.
+  //    NOTE every `Ex Q.N (` prefix keeps its paren: a bare "Ex Q.1" would also
+  //    prefix-match a future Q.10-Q.19.
+  "amines-12-chem": [
+    { group: "13. Amines — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.13."] },
+    { group: "Exercises", label: "1. Choose the most correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "2. Answer in one sentence", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "3. Answer the following", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "4. Answer the following", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+  ],
 };
+
+/**
+ * Per-chapter outline file — `data/<id>.sections.json`, the same array shape as
+ * a `SECTIONS` entry.
+ *
+ * Why this exists: `SECTIONS` above is ONE SHARED FILE, and a lane is now run by
+ * many concurrent chapter agents. Two agents appending to it is a
+ * read-modify-write race, and it fails QUIETLY — the losing agent's outline
+ * simply vanishes, its rows commit unsectioned, and nothing says so until
+ * `board:lint` runs at the very end, long after the work. So an agent writes its
+ * own file and touches no shared state. `scripts/mh-ssc-10-text/` and
+ * `scripts/cds/` already work this way.
+ *
+ * `SECTIONS` WINS when a key exists in both. That keeps every already-shipped
+ * chapter byte-identical regardless of what lands in data/, which is the
+ * acceptance criterion for this change.
+ */
+function sectionsFromFile(id: string): SectionSpec[] | null {
+  const p = join(__dirname, "data", `${id}.sections.json`);
+  if (!existsSync(p)) return null;
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(readFileSync(p, "utf8"));
+  } catch (e) {
+    throw new Error(`${id}.sections.json is not valid JSON: ${(e as Error).message}`);
+  }
+  // Fail CLOSED. A malformed outline that returned [] would leave every row
+  // unsectioned — the exact silent failure this file exists to prevent.
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    throw new Error(`${id}.sections.json must be a non-empty array of section specs`);
+  }
+  parsed.forEach((s: unknown, i: number) => {
+    const o = s as Partial<SectionSpec>;
+    if (
+      !o || typeof o.group !== "string" || typeof o.label !== "string" ||
+      typeof o.kind !== "string" || !Array.isArray(o.refPrefixes) ||
+      o.refPrefixes.length === 0 || !o.refPrefixes.every((r) => typeof r === "string")
+    ) {
+      throw new Error(
+        `${id}.sections.json[${i}] is not a section spec ` +
+          `(needs string group/label/kind and a non-empty string[] refPrefixes)`
+      );
+    }
+  });
+  return parsed as SectionSpec[];
+}
 
 export function sectionsFor(id: string): SectionSpec[] {
   const s = SECTIONS[id];
-  if (!s) throw new Error(`no section outline for chapter "${id}" — author one in scripts/stateboard/sections.ts`);
-  return s;
+  if (s) return s;
+  const fromFile = sectionsFromFile(id);
+  if (fromFile) return fromFile;
+  throw new Error(
+    `no section outline for chapter "${id}" — author one in ` +
+      `scripts/stateboard/data/${id}.sections.json (preferred; no shared-file race) ` +
+      `or in scripts/stateboard/sections.ts`
+  );
 }

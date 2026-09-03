@@ -168,8 +168,23 @@ fix the file, never the guard.
 
 ## 5. Sections (`/board`)
 
-Append your chapter's outline to `SECTIONS[<chapterId>]` in `sections.ts`. **This is the
-one shared file you may edit** — append your own key and nothing else.
+**Write your outline to `<scriptsDir>/data/<chapterId>.sections.json` — a JSON array,
+same shape as a `SECTIONS` entry. Do NOT edit `sections.ts`.**
+
+```json
+[
+  { "group": "1. Some Basic Concepts — worked examples", "label": "Solved Examples",
+    "kind": "solved_example", "refPrefixes": ["Solved Ex.1."] },
+  { "group": "Exercise", "label": "Choose the most correct option",
+    "kind": "exercise", "refPrefixes": ["Ex Q.1 ("] }
+]
+```
+
+`sections.ts` is ONE SHARED FILE and this lane runs many chapter agents at once. Two
+agents appending to it is a read-modify-write race, and it fails **quietly** — the
+losing outline simply vanishes, those rows commit unsectioned, and nothing says so
+until `board:lint` runs at the very end, long after the work. Your own file touches no
+shared state. A malformed file fails CLOSED (loud error), never as an empty outline.
 
 ⚠ **Enumerate flat refs individually.** `Ex Q.2` is a prefix of `Ex Q.23`.
 
