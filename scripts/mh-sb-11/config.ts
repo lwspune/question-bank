@@ -76,14 +76,24 @@ export const DATA = join(__dirname, "data"); // committed: transcription (source
 // deliberately wide census — `[Ans`, `Ans :`, `Ans.`, `Answer :`, bare `Ans`,
 // and every bracketed span containing a digit — all zero, so that one is real).
 //
-// ⚠ CORRECTION, 2026-09-03: this note previously said Mathematical Methods
-// prints "exactly ONE" inline answer. That came from counting `\[Ans` only.
-// The book ALSO prints unbracketed `Ans :`, and a wider census gives at least
-// FOUR (1 bracketed + 4 unbracketed, 8 bare `Ans` tokens in total). Same
-// under-count that made the sibling lane's census short by 15. Sound is
-// likewise ~10, not the 9 a bracketed-only scan returns. COUNT WIDE, then read
-// the hits — a narrow pattern silently shrinks the gate, which is the one
-// number a chapter's trustworthiness rests on.
+// ⚠ CORRECTION, 2026-09-03 — and the MECHANISM is not what it first looked like.
+// This note once said Mathematical Methods prints "exactly ONE" inline answer,
+// counted with `\[Ans` alone. The true figure is EIGHT, every one of them read
+// and confirmed. The reason the narrow scan sees 1 of 8 is NOT that the book
+// omits the brackets: all eight ARE bracketed on the page, but only one uses
+// plain-text brackets — **the other seven use large stretchy delimiters that the
+// PDF draws as VECTOR ART**, invisible to any text scan. Exactly the same class
+// as the vanished `√` this file warns about above.
+//
+// So the reliable token is the bare word `Ans`, not `[Ans` and not `Ans :`.
+// Sound is a third variant again: it prints 10, of which nine carry `Ans :` and
+// one prints `[Ans a) …` with the colon simply missing. Three chapters, three
+// different reasons a narrow pattern under-counts.
+//
+// COUNT WIDE — `[Ans`, `Ans :`, `Ans.`, `Answer :`, bare `Ans`, and every
+// bracketed span containing a digit — then READ every hit. Gate coverage is the
+// one number a chapter's trustworthiness rests on, so an under-count silently
+// shrinks the only external check the chapter has.
 // Those chapters run the mh-sb-9 humanities regime — blind MCQ re-derivation
 // plus answers authored strictly from the chapter's own prose — with nothing to
 // diff against. Schedule them knowingly; do not treat a clean run there as gate
@@ -1442,6 +1452,63 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Strain Energy",
       "Hardness",
       "Friction in Solids",
+    ],
+  },
+
+  // ── WAVE 4 (the last two) ─────────────────────────────────────────────────
+  //   Sound                 17pp   7 Ex /  6 Sol   ~10 [Ans:]   85 PYQ
+  //   Mathematical Methods  14pp  11 Ex / 11 Sol    ~4 [Ans:]   (foundation)
+  //
+  // ⚠ Sound's 7-vs-6 gap means ONE worked example prints no `Solution` label —
+  // the Laws-of-Motion case, where the missing label was the whole explanation.
+  // ⚠ Mathematical Methods has the THINNEST gate in the volume, and the count
+  // above is the WIDE census: a `\[Ans` scan alone finds 1, which is what the
+  // stale "exactly ONE" note recorded. It also has no exam PYQ of its own — it
+  // is the foundation chapter the rest of the volume rests on (vectors,
+  // calculus), so its questions serve every later chapter rather than a
+  // weightage line.
+  "sound-11-phy": {
+    id: "sound-11-phy",
+    chapterName: "Sound",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Sound.pdf",
+    pdf: phy11("08. Sound.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Sound (Balbharati Physics textbook)",
+    subtopics: [
+      "Common Properties of all Waves",
+      "Transverse and Longitudinal Waves",
+      // NOTE: the book's §8.4 "Mathematical Expression of a Wave" was registered
+      // here and REMOVED after transcription — it is question-less theory (it
+      // derives y = a sin(kx - wt + phi) and defines the symbols, and no exercise
+      // item or worked example draws on it). An empty subtopic ships a /browse
+      // filter that returns nothing; the Class-12 Linear Programming precedent.
+      "The Speed of Travelling Waves",
+      "Newton's Formula and Laplace's Correction",
+      "Principle of Superposition of Waves",
+      "Echo, Reverberation and Acoustics",
+      "Qualities of Sound",
+      "Doppler Effect",
+    ],
+  },
+  "mathematical-methods-11-phy": {
+    id: "mathematical-methods-11-phy",
+    chapterName: "Mathematical Methods",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_11_Physics__Mathematical_Methods.pdf",
+    pdf: phy11("02. Mathematical Methods.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Mathematical Methods (Balbharati Physics textbook)",
+    subtopics: [
+      "Scalars and Vectors",
+      "Multiplication of a Vector by a Scalar",
+      "Addition and Subtraction of Vectors",
+      "Triangle Law and Parallelogram Law",
+      "Resolution of Vectors",
+      "Scalar Product (Dot Product)",
+      "Vector Product (Cross Product)",
+      "Differential Calculus",
+      "Integral Calculus",
     ],
   },
 

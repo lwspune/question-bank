@@ -1,0 +1,14 @@
+[
+  {
+    "ref": "Solved Ex.8.3",
+    "why": "The opening line carries the subscript from the reference pressure, making it character-for-character identical to the line beneath it and so asserting v_P = v_Po, which is what the example exists to disprove. The book contradicts itself two lines later, where its own working correctly writes sqrt(gamma P / rho) without the subscript. The final answer P = 2.25 P_o is right.",
+    "find": "\\(\\mathrm{v}_{P} = \\sqrt{\\dfrac{\\gamma P_o}{\\rho}}\\)",
+    "replace": "\\(\\mathrm{v}_{P} = \\sqrt{\\dfrac{\\gamma P}{\\rho}}\\)"
+  },
+  {
+    "ref": "Solved Ex.8.5",
+    "why": "The penultimate line prints a stray leading plus and an equals sign where the addition belongs: as printed it reads '+ 10 (0.3876 = 6)', which is not an expression at all. It must be '= 10 (0.3876 + 6)', which is exactly what yields the printed 63.876 db.",
+    "find": "\\(+ 10\\,(0.3876 = 6)\\)",
+    "replace": "\\(= 10\\,(0.3876 + 6)\\)"
+  }
+]

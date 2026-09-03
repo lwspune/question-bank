@@ -1,0 +1,40 @@
+[
+  {
+    "ref": "Solved Ex.2.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar Product (Dot Product)",
+    "difficulty": "EASY",
+    "stem": "Find the scalar product of the two vectors \\(\\vec{v_1} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) and \\(\\vec{v_2} = 3\\hat{i} + 4\\hat{j} - 5\\hat{k}\\)",
+    "solution": "\\(\\vec{v_1} \\cdot \\vec{v_2} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) \\cdot (3\\hat{i} + 4\\hat{j} - 5\\hat{k})\\)\n\\(= 1 \\times 3 + 2 \\times 4 + 3 \\times (-5)\\)\n\\(= -4\\)\nas \\(\\hat{i} \\cdot \\hat{i} = \\hat{j} \\cdot \\hat{j} = \\hat{k} \\cdot \\hat{k} = 1\\),\nand \\(\\hat{i} \\cdot \\hat{j} = \\hat{i} \\cdot \\hat{k} = \\hat{j} \\cdot \\hat{k} = \\hat{j} \\cdot \\hat{i} = \\hat{k} \\cdot \\hat{i} = \\hat{k} \\cdot \\hat{j} = 0\\)"
+  },
+  {
+    "ref": "Solved Ex.2.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vector Product (Cross Product)",
+    "difficulty": "MODERATE",
+    "stem": "The angular momentum \\(\\vec{L} = \\vec{r} \\times \\vec{p}\\), where \\(\\vec{r}\\) is a position vector and \\(\\vec{p}\\) is linear momentum of a body.\nIf \\(\\vec{r} = 4\\hat{i} \\times 6\\hat{j} - 3\\hat{k}\\) and \\(\\vec{p} = 2\\hat{i} + 4\\hat{j} - 5\\hat{k}\\), find \\(\\vec{L}\\)",
+    "solution": "[Textbook misprint: the stem prints the position vector as \\(\\vec{r} = 4\\hat{i} \\times 6\\hat{j} - 3\\hat{k}\\), with a multiplication sign where a plus belongs — the same line prints an unambiguous plus in the momentum vector, so the two glyphs are distinguishable on the page. Read literally, \\((4\\hat{i}) \\times (6\\hat{j}) = 24\\hat{k}\\) would give \\(\\vec{r} = 21\\hat{k}\\), which matches neither the determinant the book then writes (whose first row is 4, 6, −3) nor its printed answer. The stem is preserved as printed and solved as the book's own working intends. Its closing line also sets an arrow over \\(k\\) where the other unit vectors carry hats.]\n\n\\(\\vec{L} = \\vec{r} \\times \\vec{p} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & 6 & -3 \\\\ 2 & 4 & -5 \\end{vmatrix}\\)\n\\(\\therefore \\vec{L} = (-30 + 12)\\hat{i} + (-6 + 20)\\hat{j} + (16 - 12)\\hat{k}\\)\n\\(= -18\\hat{i} + 14\\hat{j} + 4\\hat{k}\\)",
+    "_note": "PRINTED-STEM DEFECT, transcribed verbatim. The book prints \\(\\vec{r} = 4\\hat{i} \\times 6\\hat{j} - 3\\hat{k}\\) with a MULTIPLICATION SIGN where a plus belongs; verified on the rendered page at 7x, where the same line prints an unambiguous '+' in \\(\\vec{p} = 2\\hat{i} + 4\\hat{j} - 5\\hat{k}\\), so the two glyphs are distinguishable and this is not a misreading. The book's own worked solution uses the determinant row (4, 6, -3), i.e. it treats \\(\\vec{r} = 4\\hat{i} + 6\\hat{j} - 3\\hat{k}\\). Taking the printed stem literally, \\((4\\hat{i}) \\times (6\\hat{j}) = 24\\hat{k}\\), so \\(\\vec{r} = 21\\hat{k}\\) and \\(\\vec{r} \\times \\vec{p} = -84\\hat{i} + 42\\hat{j}\\), which matches neither the book's working nor its answer - so the intended operator is '+'. Separately, the printed final line sets a VECTOR ARROW over the last k (\\(\\vec{k}\\)) while the i and j of the same line carry hats; transcribed with hats throughout, since an arrow on a unit vector would be a second, misleading claim. Neither defect changes the answer."
+  },
+  {
+    "ref": "Solved Ex.2.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar Product (Dot Product)",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{A} = 5\\hat{i} + 6\\hat{j} + 4\\hat{k}\\) and \\(\\vec{B} = 2\\hat{i} - 2\\hat{j} + 3\\hat{k}\\), determine the angle between \\(\\vec{A}\\) and \\(\\vec{B}\\).",
+    "solution": "[Textbook misprint: the working computes \\(\\cos\\theta = 0.2764\\) and then takes the inverse cosine of \\(0.2765\\) one line later. The true value \\(0.276395\\) gives \\(73^{\\circ}57'\\), where the book prints \\(73^{\\circ}58'\\).]\n\n\\(\\vec{A} \\cdot \\vec{B} = A B \\cos\\theta = A_x B_x + A_y B_y + A_z B_z\\)\n\\(\\cos\\theta = \\dfrac{A_x B_x + A_y B_y + A_z B_z}{A B}\\)\n\\(\\cos\\theta = \\dfrac{A_x B_x + A_y B_y + A_z B_z}{\\sqrt{A_x^{2} + A_y^{2} + A_z^{2}}\\,\\sqrt{B_x^{2} + B_y^{2} + B_z^{2}}}\\)\n\\(\\cos\\theta = \\dfrac{(5)(2) + (6)(-2) + (4)(3)}{\\sqrt{25 + 36 + 16}\\,\\sqrt{4 + 4 + 9}}\\)\n\\(= \\dfrac{10}{\\sqrt{77}\\cdot\\sqrt{17}} = 0.2764\\)\n\\(\\theta = \\cos^{-1} 0.2765 = 73^{\\circ}58'\\)",
+    "_note": "Printed-solution inconsistency, transcribed verbatim and NOT answer-affecting at the stated precision. The working evaluates \\(\\cos\\theta = 0.2764\\) and the very next line takes the inverse cosine of 0.2765 - the book disagreeing with itself one line apart. The exact value is \\(10/\\sqrt{1309} = 0.276395\\), whose inverse cosine is \\(73.9548^{\\circ} = 73^{\\circ}57'\\); the book prints \\(73^{\\circ}58'\\). (Even its own 0.2765 gives \\(73^{\\circ}57'\\), so the printed minutes are one arcminute high on either reading.)"
+  },
+  {
+    "ref": "Solved Ex.2.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication of a Vector by a Scalar",
+    "difficulty": "MODERATE",
+    "stem": "Given \\(\\vec{P} = 4\\hat{i} - \\hat{j} + 8\\hat{k}\\) and \\(\\vec{Q} = 2\\hat{i} - m\\hat{j} + 4\\hat{k}\\), find \\(m\\) if \\(\\vec{P}\\) and \\(\\vec{Q}\\) have the same direction.",
+    "solution": "Since \\(\\vec{P}\\) and \\(\\vec{Q}\\) have the same direction, their corresponding components must be in the same proportion, i.e.,\n\\(\\dfrac{P_x}{Q_x} = \\dfrac{P_y}{Q_y} = \\dfrac{P_z}{Q_z}\\)\n\\(\\dfrac{4}{2} = \\dfrac{-1}{-m} = \\dfrac{8}{4}\\)\n\\(\\therefore m = \\dfrac{1}{2}\\)"
+  }
+]

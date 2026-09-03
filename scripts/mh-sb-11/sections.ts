@@ -623,6 +623,26 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
   ],
 
+  // Ch.8 Sound: the standard three-block shape, numbered 1-3 contiguously.
+  // Note the first block is printed "Choose the correct alternatives" with no
+  // full stop, alone among its siblings.
+  "sound-11-phy": [
+    { group: "8. Sound — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.8."] },
+    { group: "Exercises", label: "Choose the correct alternatives", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer briefly", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
+  // Ch.2 Mathematical Methods: the standard three-block shape, numbered 1-3.
+  // The volume's foundation chapter — vectors and introductory calculus — and
+  // the only one with no exam weightage of its own.
+  "mathematical-methods-11-phy": [
+    { group: "2. Mathematical Methods — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.2."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Solve the following problems", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+  ],
+
   // Ch.6 Mechanical Properties of Solids: FIVE exercise blocks, the most of any
   // chapter in this volume, correctly numbered 1-5 so no disambiguator. The book
   // prints its fifth heading WITHOUT a colon, alone among the five.

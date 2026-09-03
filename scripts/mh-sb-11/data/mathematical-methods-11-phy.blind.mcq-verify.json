@@ -1,0 +1,32 @@
+[
+  {
+    "id": "bfd7b1b5-bf9b-4277-91df-8a22dc9a0627",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "D",
+    "why": "Both forces act along the same straight line, so they add algebraically once each is given a sign. Taking \\(+x\\) as positive, the 10 N force contributes \\(+10\\) N and the 15 N force contributes \\(-15\\) N:\n\\(F_{\\text{net}} = (+10) + (-15) = -5\\) N\nThe negative sign means the resultant points along the \\(-x\\)-axis, so it is a 5 N force along the \\(-x\\)-axis.\n\nWhy the others fail: the two 25 N alternatives come from ADDING the magnitudes, which is only valid for parallel forces pointing the same way. These two are anti-parallel, so their magnitudes SUBTRACT - the chapter states this for anti-parallel vectors as \\(|\\overrightarrow{AC}| = ||\\overrightarrow{AB}| - |\\overrightarrow{BC}||\\). The remaining alternative has the right magnitude but the wrong sense: the resultant of two anti-parallel forces always points along the LARGER of the two, and the larger force here (15 N) acts along \\(-x\\)."
+  },
+  {
+    "id": "4175bb5c-8493-4382-88ec-120a8d4842a1",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "C",
+    "why": "A vector is specified by a magnitude AND a direction, so two vectors can only be equal when BOTH agree. The chapter defines it in exactly those terms: two vectors representing the same physical quantity are equal if and only if they have the same magnitude and direction.\n\nWhy the others fail: equal magnitude alone leaves the direction free, so \\(3\\hat{i}\\) and \\(3\\hat{j}\\) would count as equal though they point along different axes. Equal direction alone leaves the length free, so \\(\\hat{i}\\) and \\(5\\hat{i}\\) would count as equal. Same magnitude with OPPOSITE direction is the definition of a negative vector \\(\\left(\\vec{B} = -\\vec{A}\\right)\\), which is the exact opposite of equality."
+  },
+  {
+    "id": "dfc856fe-83c1-461b-a646-52bcba94e2c4",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "A",
+    "why": "The scalar product is \\(\\vec{P} \\cdot \\vec{Q} = PQ\\cos\\theta\\). For two unit vectors \\(P = Q = 1\\), and perpendicular means \\(\\theta = 90^{\\circ}\\):\n\\(\\vec{P} \\cdot \\vec{Q} = (1)(1)\\cos 90^{\\circ} = 0\\)\nSo the magnitude of the scalar product is zero. This is the result the chapter uses to write \\(\\hat{i} \\cdot \\hat{j} = \\hat{j} \\cdot \\hat{k} = \\hat{k} \\cdot \\hat{i} = 0\\).\n\nWhy the others fail: a value of 1 requires \\(\\cos\\theta = 1\\), i.e. parallel unit vectors \\(\\left(\\theta = 0\\right)\\); a value of \\(-1\\) requires \\(\\cos\\theta = -1\\), i.e. anti-parallel unit vectors \\(\\left(\\theta = 180^{\\circ}\\right)\\); and 2 is impossible, since \\(|\\cos\\theta| \\le 1\\) caps the scalar product of two unit vectors at 1."
+  },
+  {
+    "id": "659917d7-7d9c-40a8-bd8c-902701f529e5",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "D",
+    "why": "The magnitude of the vector product is \\(|\\vec{P} \\times \\vec{Q}| = PQ\\sin\\theta\\). For two unit vectors \\(P = Q = 1\\), and \\(\\theta = 60^{\\circ}\\):\n\\(|\\vec{P} \\times \\vec{Q}| = (1)(1)\\sin 60^{\\circ} = \\dfrac{\\sqrt{3}}{2} \\approx 0.866\\)\n\nWhy the others fail: a value of 1 needs \\(\\sin\\theta = 1\\), i.e. \\(\\theta = 90^{\\circ}\\), not \\(60^{\\circ}\\). Both 2 and \\(3/2\\) exceed 1, and since \\(\\sin\\theta \\le 1\\) the vector product of two UNIT vectors can never have a magnitude greater than 1 - so those two are impossible for any angle whatever, not merely wrong for this one."
+  },
+  {
+    "id": "7aeb3750-eaaf-436b-ac0b-7dd86c2e6b86",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "C",
+    "why": "Take the four statements in turn.\n\nThe two statements about the SCALAR product are both true. The scalar product is distributive over addition, \\(\\vec{A} \\cdot \\left(\\vec{B} + \\vec{C}\\right) = \\vec{A} \\cdot \\vec{B} + \\vec{A} \\cdot \\vec{C}\\), and it is commutative, \\(\\vec{A} \\cdot \\vec{B} = \\vec{B} \\cdot \\vec{A}\\), because \\(PQ\\cos\\theta = QP\\cos\\theta\\). The chapter lists both among the characteristics of the scalar product.\n\nThe statement \\(\\vec{A} \\times \\vec{B} = \\vec{B} \\times \\vec{A}\\) is NOT correct, and that is what the question is asking for. The vector product does not obey the commutative law: by the right-hand screw rule, turning from \\(\\vec{A}\\) to \\(\\vec{B}\\) advances the screw one way and turning from \\(\\vec{B}\\) to \\(\\vec{A}\\) advances it the opposite way, so the two products have equal magnitudes and OPPOSITE directions:\n\\(\\vec{A} \\times \\vec{B} = -\\left(\\vec{B} \\times \\vec{A}\\right)\\)\nThe chapter states this as the first characteristic of the vector product, \\(\\vec{P} \\times \\vec{Q} \\ne \\vec{Q} \\times \\vec{P}\\), adding that \\(|\\vec{P} \\times \\vec{Q}| = |\\vec{Q} \\times \\vec{P}|\\) but their directions are opposite. The two sides are therefore equal only in the degenerate case where both products vanish (parallel or anti-parallel vectors), never in general.\n\nNote on the printed question: the fourth statement is ALSO not correct as it appears in the textbook. It is printed \\(\\vec{A} \\times \\left(\\vec{B} + \\vec{C}\\right) = \\vec{A} \\times \\vec{B} + \\vec{B} \\times \\vec{C}\\), whose second term should read \\(\\vec{A} \\times \\vec{C}\\) - the textbook itself prints the distributive law for the vector product correctly elsewhere in this chapter as \\(\\vec{A} \\times \\left(\\vec{B} + \\vec{C}\\right) = \\vec{A} \\times \\vec{B} + \\vec{A} \\times \\vec{C}\\). So the question as printed has two statements that are not correct rather than one. The key is kept on the anti-commutativity statement, which is false as a matter of physics rather than through a misprint; if you picked the distributive statement on the strength of its printed second term, you were reading the page correctly."
+  }
+]
