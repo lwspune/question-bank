@@ -51,6 +51,37 @@ export type BoardSectionGroup = {
   blocks: BoardBlock[];
 };
 
+/**
+ * Does this group draw any sub-headings of its own?
+ *
+ * A block whose label repeats its group's name gets NO heading in the reader —
+ * the group header already names it (e.g. "Exercise 8.1", one block, same
+ * string).
+ */
+export function groupHasSubHeaders(group: BoardSectionGroup): boolean {
+  return group.blocks.some((b) => b.label !== group.group);
+}
+
+/**
+ * Which groups the reader opens on load, in order.
+ *
+ * The reader opens as an OUTLINE, so a group is folded only when folding it
+ * actually uncovers something:
+ *   • has sub-headings → OPEN, revealing them (they are the outline).
+ *   • no sub-headings, but sibling groups exist → CLOSED. Open, it would draw an
+ *     expanded chevron above a heading-less run of questions, which reads as a
+ *     bug; closed, it is one line of a real table of contents.
+ *   • no sub-headings AND the chapter's only group → OPEN. Measured on the live
+ *     bank (2026-09-02): 71 of 168 board chapters are shaped this way — one
+ *     group called "Exercise" holding one identically-named block, the MH SSC 10
+ *     and MH SB 9 humanities shape. Folding those hides the WHOLE chapter behind
+ *     a click and shows no outline in return, because there are no siblings to
+ *     reveal. That is strictly worse than not folding at all.
+ */
+export function defaultOpenGroups(groups: BoardSectionGroup[]): boolean[] {
+  return groups.map((g) => groups.length === 1 || groupHasSubHeaders(g));
+}
+
 export type BoardChapter = {
   examName: string;
   subjectName: string;

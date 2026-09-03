@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
-import type { BoardBlock, BoardQuestion, BoardSectionGroup, SectionKind } from "@/lib/board/query";
+import { defaultOpenGroups, type BoardBlock, type BoardQuestion, type BoardSectionGroup, type SectionKind } from "@/lib/board/query";
 
 const KIND_TAG: Record<SectionKind, string> = {
   solved_example: "Worked",
@@ -23,6 +23,22 @@ function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
 }
 
+/**
+ * The chapter opens as an OUTLINE: section headings visible, questions folded
+ * away. Fully expanded, a chapter is unnavigable — MH HSC 12 Differentiation is
+ * 363 question cards on one page — while collapsed the worst case in the bank is
+ * ~19 groups / 23 blocks, i.e. a table of contents you can read.
+ *
+ * Collapsing uses native <details>, NOT React state, so the questions stay in
+ * the DOM: the page keeps rendering its content server-side (these pages are
+ * crawlable, and a stem is the only indexable text here — solutions are
+ * reveal-gated), and <summary> brings keyboard + screen-reader behaviour for
+ * free. The trade is honest: nothing is saved at render time, since every card
+ * still mounts. This buys navigability, not speed.
+ *
+ * ⚠ Ctrl-F: Chrome and Edge auto-expand a closed <details> when the browser's
+ * find lands inside it; Firefox and Safari do NOT. Same caveat as /books.
+ */
 export default function BoardReader({
   groups,
   supabaseUrl,
@@ -37,6 +53,10 @@ export default function BoardReader({
   const [blocked, setBlocked] = useState<Set<string>>(new Set());
   const meter = useRevealMeter();
   const mobilePrompt = useMobilePrompt();
+  // Which sections open on load. Decided HERE rather than inside GroupSection
+  // because it depends on a group's SIBLINGS: a lone group has no outline to
+  // reveal, so folding it would only cost a click. See defaultOpenGroups.
+  const openByDefault = defaultOpenGroups(groups);
 
   const toggleOne = (id: string) => {
     // Hiding an already-revealed answer is always free.
@@ -61,10 +81,11 @@ export default function BoardReader({
 
   return (
     <div className="space-y-8">
-      {groups.map((group) => (
+      {groups.map((group, i) => (
         <GroupSection
           key={group.group}
           group={group}
+          defaultOpen={openByDefault[i]}
           supabaseUrl={supabaseUrl}
           revealed={revealed}
           blocked={blocked}
@@ -77,49 +98,44 @@ export default function BoardReader({
 
 function GroupSection({
   group,
+  defaultOpen,
   supabaseUrl,
   revealed,
   blocked,
   onToggleReveal,
 }: {
   group: BoardSectionGroup;
+  defaultOpen: boolean;
   supabaseUrl: string;
   revealed: Set<string>;
   blocked: Set<string>;
   onToggleReveal: (id: string) => void;
 }) {
-  const [open, setOpen] = useState(true);
   const total = group.blocks.reduce((n, b) => n + b.questions.length, 0);
 
   return (
-    <section className="space-y-4">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="flex w-full items-center gap-2 border-b-2 border-brand-accent/30 pb-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
+    <details className="group/sec space-y-4" open={defaultOpen}>
+      <summary className="flex cursor-pointer list-none items-center gap-2 border-b-2 border-brand-accent/30 pb-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
         <ChevronDown
-          className={cn("h-4 w-4 shrink-0 text-muted-foreground transition-transform", !open && "-rotate-90")}
+          className="h-4 w-4 shrink-0 -rotate-90 text-muted-foreground transition-transform group-open/sec:rotate-0"
           aria-hidden
         />
         <h2 className="flex-1 text-lg font-semibold tracking-tight text-foreground">{group.group}</h2>
         <span className="shrink-0 text-xs font-normal text-muted-foreground">{total} q</span>
-      </button>
+      </summary>
 
-      {open &&
-        group.blocks.map((block) => (
-          <BlockSection
-            key={block.seq}
-            block={block}
-            groupLabel={group.group}
-            supabaseUrl={supabaseUrl}
-            revealed={revealed}
-            blocked={blocked}
-            onToggleReveal={onToggleReveal}
-          />
-        ))}
-    </section>
+      {group.blocks.map((block) => (
+        <BlockSection
+          key={block.seq}
+          block={block}
+          groupLabel={group.group}
+          supabaseUrl={supabaseUrl}
+          revealed={revealed}
+          blocked={blocked}
+          onToggleReveal={onToggleReveal}
+        />
+      ))}
+    </details>
   );
 }
 
@@ -138,56 +154,51 @@ function BlockSection({
   blocked: Set<string>;
   onToggleReveal: (id: string) => void;
 }) {
-  const [open, setOpen] = useState(true);
   // A single-block group (e.g. "Miscellaneous Exercise 2 (A)") has no distinct
   // sub-heading — the group header already collapses it, so render questions flat.
   const hasOwnHeader = block.label !== groupLabel;
 
-  return (
-    <div className="space-y-3">
-      {hasOwnHeader && (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="flex w-full items-center gap-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          <ChevronRight
-            className={cn("h-3.5 w-3.5 shrink-0 text-muted-foreground/70 transition-transform", open && "rotate-90")}
-            aria-hidden
-          />
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">{block.label}</h3>
-          <span className="rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium normal-case tracking-normal text-muted-foreground/80">
-            {KIND_TAG[block.kind]} · {block.questions.length}
-          </span>
-        </button>
-      )}
+  const questions = (
+    <ol className="space-y-3">
+      {block.questions.map((q, i) => {
+        const prev = block.questions[i - 1];
+        const showContext = !!q.context && (!q.setId || q.setId !== prev?.setId);
+        return (
+          <li key={q.id}>
+            {showContext && (
+              <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm italic text-muted-foreground">
+                <BlockText text={q.context as string} />
+              </div>
+            )}
+            <BoardQuestionItem
+              q={q}
+              supabaseUrl={supabaseUrl}
+              revealed={revealed.has(q.id)}
+              blocked={blocked.has(q.id)}
+              onToggleReveal={() => onToggleReveal(q.id)}
+            />
+          </li>
+        );
+      })}
+    </ol>
+  );
 
-      {open && (
-        <ol className="space-y-3">
-          {block.questions.map((q, i) => {
-            const prev = block.questions[i - 1];
-            const showContext = !!q.context && (!q.setId || q.setId !== prev?.setId);
-            return (
-              <li key={q.id}>
-                {showContext && (
-                  <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm italic text-muted-foreground">
-                    <BlockText text={q.context as string} />
-                  </div>
-                )}
-                <BoardQuestionItem
-                  q={q}
-                  supabaseUrl={supabaseUrl}
-                  revealed={revealed.has(q.id)}
-                  blocked={blocked.has(q.id)}
-                  onToggleReveal={() => onToggleReveal(q.id)}
-                />
-              </li>
-            );
-          })}
-        </ol>
-      )}
-    </div>
+  if (!hasOwnHeader) return <div className="space-y-3">{questions}</div>;
+
+  return (
+    <details className="group/blk space-y-3">
+      <summary className="flex cursor-pointer list-none items-center gap-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+        <ChevronRight
+          className="h-3.5 w-3.5 shrink-0 text-muted-foreground/70 transition-transform group-open/blk:rotate-90"
+          aria-hidden
+        />
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">{block.label}</h3>
+        <span className="rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium normal-case tracking-normal text-muted-foreground/80">
+          {KIND_TAG[block.kind]} · {block.questions.length}
+        </span>
+      </summary>
+      {questions}
+    </details>
   );
 }
 
