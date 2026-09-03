@@ -1,0 +1,21 @@
+[
+  {
+    "ref": "Solved Ex.2.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differential Calculus",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivatives of the functions.\n(a) \\(f(x) = x^{8}\\)\n(b) \\(f(x) = x^{3} + \\sin x\\)\n(c) \\(f(x) = x^{3}\\sin x\\)",
+    "solution": "(a) Using \\(\\dfrac{dx^{n}}{dx} = nx^{n-1}\\),\n\\(\\dfrac{d(x^{8})}{dx} = 8x^{7}\\)\n(b) Using \\(\\dfrac{d}{dx}(f_1(x) + f_2(x)) = \\dfrac{df_1(x)}{dx} + \\dfrac{df_2(x)}{dx}\\) and \\(\\dfrac{d(\\sin x)}{dx} = \\cos x\\)\n\\(\\dfrac{d}{dx}(x^{3} + \\sin x) = \\dfrac{d(x^{3})}{dx} + \\dfrac{d(\\sin x)}{dx} = 3x^{2} + \\cos x\\)\n(c) Using \\(\\dfrac{d}{dx}(f_1(x)\\,f_2(x)) = f_1(x)\\dfrac{df_2(x)}{dx} + \\dfrac{df_1(x)}{dx}f_2(x)\\) and \\(\\dfrac{d(\\sin x)}{dx} = \\cos x\\)\n\\(\\dfrac{d}{dx}(x^{3}\\sin x) = x^{3}\\dfrac{d(\\sin x)}{dx} + \\dfrac{d(x^{3})}{dx}\\sin x = x^{3}\\cos x + 3x^{2}\\sin x\\)"
+  },
+  {
+    "ref": "Solved Ex.2.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integral Calculus",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following integrals:\n(a) \\(\\displaystyle\\int x^{8}\\,dx\\)\n(b) \\(\\displaystyle\\int_{2}^{5} x^{2}\\,dx\\)\n(c) \\(\\displaystyle\\int (x + \\sin x)\\,dx\\)",
+    "solution": "[Textbook misprint, corrected above: part (c) cited \\(\\int \\sin x\\,dx = \\cos x\\), wrong by a sign — and the example refutes itself on the very next line, where its own working uses \\(-\\cos x\\) and reaches the correct answer. Left as printed, the cited step teaches the wrong antiderivative in the chapter that introduces integration. Part (b) also leaves \\(\\tfrac{117}{3}\\) unsimplified.]\n\n(a) Using formula \\(\\displaystyle\\int x^{n}dx = \\dfrac{x^{n+1}}{n+1}\\), \\(\\displaystyle\\int x^{8}dx = \\dfrac{x^{9}}{9}\\)\n(b) Using Eq. (2.44),\n\\(\\displaystyle\\int_{2}^{5} x^{2}dx = \\left.\\dfrac{x^{3}}{3}\\right|_{2}^{5} = \\dfrac{5^{3}}{3} - \\dfrac{2^{3}}{3} = \\dfrac{125 - 8}{3} = \\dfrac{117}{3}\\)\n(c) Using Eq. (2.45),\n\\(\\displaystyle\\int (f_1(x) + f_2(x))\\,dx = \\int f_1(x)dx + \\int f_2(x)dx\\)\nand \\(\\displaystyle\\int \\sin x\\,dx = -\\cos x\\), we get \\(\\displaystyle\\int (x + \\sin x)\\,dx\\)\n\\(\\displaystyle\\int x\\,dx + \\int \\sin x\\,dx = \\dfrac{x^{2}}{2} - \\cos x\\)",
+    "_note": "PRINTED-SOLUTION DEFECT, transcribed verbatim. Part (c) cites \\(\\int \\sin x\\,dx = \\cos x\\); the correct antiderivative is \\(-\\cos x\\), and THE SAME PAGE prints Eq. (2.49) as \\(\\int \\sin x\\,dx = -\\cos x\\), so the book contradicts itself within one page. The final answer \\(x^{2}/2 - \\cos x\\) is correct, so the error is confined to the cited intermediate step - but as printed it teaches the wrong antiderivative, which makes it a candidate for apply-solved-fixes.ts plus an errata bracket (NOT run in this pass). Minor, separate: part (b) leaves \\(117/3\\) unsimplified (= 39)."
+  }
+]

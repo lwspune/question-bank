@@ -1,0 +1,52 @@
+[
+  {
+    "ref": "Solved Ex.2.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Triangle Law and Parallelogram Law",
+    "difficulty": "EASY",
+    "stem": "Express vector \\(\\overrightarrow{AC}\\) in terms of vectors \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{CB}\\) shown in the following figure.\n\n[Figure: a triangle with vertex A at the lower left, B at the lower right and C at the top. Three directed segments are drawn - \\(\\overrightarrow{AC}\\) from A up to C, \\(\\overrightarrow{CB}\\) from C down to B, and \\(\\overrightarrow{AB}\\) from A across to B.]",
+    "solution": "Using the triangle law of addition of vectors we can write\n\\(\\overrightarrow{AC} + \\overrightarrow{CB} = \\overrightarrow{AB}\\)\n\\(\\therefore \\overrightarrow{AC} = \\overrightarrow{AB} - \\overrightarrow{CB}\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. on printed p.19: triangle A-B-C carrying the three directed segments AC, CB and AB. The stem says 'shown in the following figure', so the sense of each arrow is given only there; it is described in the stem so the row is answerable without it."
+  },
+  {
+    "ref": "Solved Ex.2.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Triangle Law and Parallelogram Law",
+    "difficulty": "MODERATE",
+    "stem": "From the following figure, determine the resultant of four forces \\(\\vec{A_1}, \\vec{A_2}, \\vec{A_3}\\) and \\(\\vec{A_4}\\).\n\n[Figure: an open polygon O-A-B-C-D. \\(\\vec{A_1}\\) runs from O to A along the base, \\(\\vec{A_2}\\) from A up to B, \\(\\vec{A_3}\\) from B to C, and \\(\\vec{A_4}\\) from C to D. A fifth vector \\(\\vec{A_5}\\) is drawn from O to D, closing the figure.]",
+    "solution": "Join \\(\\overrightarrow{OB}\\) to complete \\(\\Delta\\) OAB as shown in (a)\nNow, \\(\\overrightarrow{OB} = \\overrightarrow{OA} + \\overrightarrow{AB} = \\vec{A_1} + \\vec{A_2}\\)\nJoin \\(\\overrightarrow{OC}\\) to complete triangle OBC as shown in (b).\nNow, \\(\\overrightarrow{OC} = \\overrightarrow{OB} + \\overrightarrow{BC} = \\vec{A_1} + \\vec{A_2} + \\vec{A_3}\\)\nFrom triangle OCD,\n\\(\\overrightarrow{OD} = \\vec{A_5} = \\overrightarrow{OC} + \\overrightarrow{CD} = \\vec{A_1} + \\vec{A_2} + \\vec{A_3} + \\vec{A_4}\\)\nThus \\(\\overrightarrow{OD}\\) is the resultant of the four vectors, \\(\\vec{A_1}, \\vec{A_2}, \\vec{A_3}\\) and \\(\\vec{A_4}\\), represented by \\(\\overrightarrow{OA}, \\overrightarrow{AB}, \\overrightarrow{BC}\\) and \\(\\overrightarrow{CD}\\), respectively.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. on printed p.19, plus the solution's Fig. (a) and Fig. (b): open polygon O-A-B-C-D whose successive sides are A1..A4, with A5 = OD. The stem opens 'From the following figure', so the polygon's connectivity is given only there; it is described in the stem so the row is answerable without it."
+  },
+  {
+    "ref": "Solved Ex.2.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Triangle Law and Parallelogram Law",
+    "difficulty": "MODERATE",
+    "stem": "Water is flowing in a stream with velocity 5 km/hr in an easterly direction relative to the shore. Speed of a boat is relative to still water is 20 km/hr. If the boat enters the stream heading North, with what velocity will the boat actually travel?",
+    "solution": "[Textbook misprint: \\(\\tan^{-1}(0.25) = 14^{\\circ}02'\\), where the book prints \\(14^{\\circ}04'\\). The magnitude, \\(20.61\\) km/hr, is correct.]\n\nThe resultant velocity \\(\\vec{R}\\) of the boat can be obtained by adding the two velocities using \\(\\Delta\\) OAB shown in the figure. Magnitude of the resultant velocity is calculated as follows:\n\\(R = \\sqrt{20^{2} + 5^{2}}\\)\n\\(= \\sqrt{425} = 20.61\\) km / hr\nThe direction of the resultant velocity is\n\\(= \\tan^{-1}\\left(\\dfrac{5}{20}\\right) = \\tan^{-1}(0.25)\\)\n\\(= 14^{\\circ}04'\\)\n\\(\\therefore\\) The velocity of the boat is 20.61 km/hr in a direction \\(14^{\\circ}04'\\) east of north.",
+    "_note": "Printed-solution arithmetic slip, NOT answer-affecting at the stated precision: \\(\\tan^{-1}(0.25) = 14.0362^{\\circ} = 14^{\\circ}02'\\), whereas the book prints \\(14^{\\circ}04'\\) (= 14.0667 degrees). The magnitude 20.61 km/hr is correct (\\(\\sqrt{425} = 20.6155\\)). Transcribed as printed. The stem's 'Speed of a boat is relative to still water' reproduces the book's own wording, including its stray 'is'."
+  },
+  {
+    "ref": "Solved Ex.2.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Resolution of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find a unit vector in the direction of the vector \\(3\\hat{i} + 4\\hat{j}\\)",
+    "solution": "Let \\(\\vec{V} = 3\\hat{i} + 4\\hat{j}\\)\nMagnitude of \\(\\vec{V} = |\\vec{V}| = \\sqrt{3^{2} + 4^{2}} = \\sqrt{25} = 5\\)\n\\(\\vec{V} = \\hat{\\alpha}\\,|\\vec{V}|\\), where \\(\\hat{\\alpha}\\) is a unit vector along \\(\\vec{V}\\).\n\\(\\hat{\\alpha} = \\dfrac{\\vec{V}}{|\\vec{V}|} = \\dfrac{3}{5}\\hat{i} + \\dfrac{4}{5}\\hat{j}\\)"
+  },
+  {
+    "ref": "Solved Ex.2.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Resolution of Vectors",
+    "difficulty": "EASY",
+    "stem": "Given \\(\\vec{a} = \\hat{i} + 2\\hat{j}\\) and \\(\\vec{b} = 2\\hat{i} + \\hat{j}\\), what are the magnitudes of the two vectors? Are these two vectors equal?",
+    "solution": "\\(|\\vec{a}| = \\sqrt{1^{2} + 2^{2}} = \\sqrt{5}\\)\n\\(|\\vec{b}| = \\sqrt{2^{2} + 1^{2}} = \\sqrt{5}\\)\nThe magnitudes of \\(\\vec{a}\\) and \\(\\vec{b}\\) are equal. However, their corresponding components are not equal i.e., \\(a_x \\ne b_x\\) and \\(a_y \\ne b_y\\). Hence, the two vectors are not equal."
+  }
+]
