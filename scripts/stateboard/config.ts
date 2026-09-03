@@ -1026,6 +1026,90 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    (arenesulfonyl chloride / Hinsberg) folded into Chemical Properties since
   //    it is a reaction OF amines. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ── Ch.1 Solid State. 27pp. 172 PYQ (MHT-CET 133 — one of its densest).
+  //    Worked examples 1.1-1.6, contiguous. Exercise opens p24, runs to p26.
+  //    ⚠ THE HEAVIEST FIGURE LOAD IN THE BOOK BY FAR — 101,156 vector drawings
+  //      and 5,126 raster images, an order of magnitude above any other chapter
+  //      (Amines has 2,124). Unit cells and packing diagrams are the chapter's
+  //      subject matter, so budget figure work accordingly and read the Amines
+  //      pilot's figure-cost report before starting.
+  //    Its MCQ block prints `1. Choose the most correct answer` (ANSWER, not
+  //    OPTION — the wording varies chapter to chapter; key on block SHAPE).
+  "solid-state-12-chem": {
+    id: "solid-state-12-chem",
+    chapterName: "Solid State",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Solid_State.pdf",
+    pdf: chem12("01. Solid State.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Solid State (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Types of Solids",
+      "Classification of Crystalline Solids",
+      "Crystal Structure and Unit Cells",
+      "Cubic System",
+      "Packing of Particles in Crystal Lattice",
+      "Packing Efficiency",
+      "Crystal Defects and Imperfections",
+      "Electrical Properties of Solids",
+      "Magnetic Properties of Solids",
+    ],
+  },
+
+  // ── Ch.2 Solutions. 19pp. 265 PYQ across CET+NEET+JEE.
+  //    Worked examples 2.1-2.14, contiguous, ending p16 where the Exercise also
+  //    opens; runs to p18.
+  //    ⚠ `Solution` IS THIS CHAPTER'S SUBJECT MATTER, so a `Solution :` scan is
+  //      structurally unreliable here — anchor on `Problem N.M` only. Same
+  //      semantic trap as Ch.5 Electrochemistry and Ch.3 Ionic Equilibria.
+  "solutions-12-chem": {
+    id: "solutions-12-chem",
+    chapterName: "Solutions",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Solutions.pdf",
+    pdf: chem12("02. Solutions.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Solutions (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Types of Solutions",
+      "Solubility and Capacity to Dissolve Solute",
+      "Vapour Pressure of Solutions of Liquids in Liquids",
+      "Colligative Properties of Nonelectrolyte Solutions",
+      "Vapour Pressure Lowering",
+      "Boiling Point Elevation",
+      "Depression in Freezing Point",
+      "Osmotic Pressure",
+      "Colligative Properties of Electrolytes",
+    ],
+  },
+
+  // ── Ch.3 Ionic Equilibria. 16pp. 127 PYQ (MHT-CET).
+  //    Worked examples 3.1-3.13, contiguous. Exercise opens p14, runs to p15.
+  //    ⚠ Same `Solution`-is-a-chemical-term trap as Ch.2 and Ch.5 (p14 shows 3
+  //      line-start labels against 4 loose hits). Anchor on `Problem N.M`.
+  //    Thin gate — only ~1-2 exercise rows print an answer. Say so rather than
+  //    implying the gate ran across the chapter.
+  "ionic-equilibria-12-chem": {
+    id: "ionic-equilibria-12-chem",
+    chapterName: "Ionic Equilibria",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_12_Chemistry__Ionic_Equilibria.pdf",
+    pdf: chem12("03. Ionic Equilibria.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Ionic Equilibria (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Types of Electrolyte",
+      "Acids and Bases",
+      "Ionisation of Acids and Bases",
+      "Autoionization of Water",
+      "pH Scale",
+      "Hydrolysis of Salts",
+      "Buffer Solutions",
+      "Solubility Product",
+      "Common Ion Effect",
+    ],
+  },
+
   // ── Ch.4 Chemical Thermodynamics. 27pp. The strongest gate in Std XII: ~7
   //    exercise rows print an answer, and this chapter introduces a SIXTH printed
   //    form — `Ans. : (-873.4 J)`, with the token OUTSIDE the parentheses and the

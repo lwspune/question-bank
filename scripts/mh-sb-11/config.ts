@@ -1591,6 +1591,83 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    a /browse filter that returns nothing. 1.5 and 1.6 are merged because each
   //    is a single thin section. Diff the committed `by subtopic` tally against
   //    this list BEFORE --apply and report any that came out empty.
+  // ── Ch.6 Redox Reactions. 12pp. Worked examples 6.1-6.9, contiguous.
+  //    Exercise opens p10, runs to p11. Blocks: `1. Choose the most correct
+  //    option`, `2. Write the formula for the following`, `3. Answer the
+  //    following questions`.
+  //    ⚠ THE MCQ BLOCK'S ITEM LETTERS SKIP H — printed A,B,C,D,E,F,G,I,J,K.
+  //      Keep the book's own numbering so the gap stays visible; do not close it
+  //      up. (Std XI Physics Sound had the same defect at item vi.)
+  //    ~8 keyed rows, all standard-electrode-potential values (E0 = 1.36 V).
+  "redox-11-chem": {
+    id: "redox-11-chem",
+    chapterName: "Redox Reactions",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Redox_Reactions.pdf",
+    pdf: chem11("06. Redox Reactions.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Redox Reactions (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Oxidation Number",
+      "Balancing of Redox Reactions",
+      "Redox Reaction and Electrode Potential",
+    ],
+  },
+
+  // ── Ch.10 States of Matter. 25pp — the largest Std XI Chemistry chapter.
+  //    Exercise opens p22, runs to p24. Blocks: `1. Select and write the most
+  //    appropriate answer`, `2. Answer in one sentence.`, then further blocks.
+  //    ~26 candidate keyed rows — the second-best gate in Std XI after Ch.2.
+  //    ⚠ WORKED EXAMPLES RUN 10.2-10.7 AND 10.1 IS ABSENT from the text layer
+  //      (7 labels, 6 unique). Establish from the page whether the book skips
+  //      10.1 or the extractor drops its label; do not assume either.
+  "states-of-matter-11-chem": {
+    id: "states-of-matter-11-chem",
+    chapterName: "States of Matter",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__States_of_Matter.pdf",
+    pdf: chem11("10. States of Matter.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — States of Matter (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Intermolecular Forces",
+      "Characteristic Properties of Gases",
+      "Gas Laws",
+      "Ideal Gas Equation",
+      "Kinetic Molecular Theory of Gases",
+      "Liquefaction of Gases and Critical Constants",
+      "Liquid State",
+    ],
+  },
+
+  // ── Ch.13 Nuclear Chemistry and Radioactivity. 14pp. ~22 candidate keyed rows.
+  //    Exercise opens p12, runs to p13. Blocks: `1. Choose correct option.`,
+  //    `2. Explain`, `3. Answer the following questions`, `4. Solve the problems`.
+  //    ⚠⚠ THIS CHAPTER PRINTS **ZERO** `Problem N.M` LABELS, yet carries EIGHT
+  //      `Solution :` labels — so its worked examples are labelled some OTHER way
+  //      and the anchor used everywhere else in this lane does not exist here.
+  //      This is the one chapter where the `Solution` count is PRIMARY rather than
+  //      a cross-check. Establish the real labelling from the page BEFORE
+  //      planning bands, and report what the book actually prints.
+  "nuclear-chemistry-11-chem": {
+    id: "nuclear-chemistry-11-chem",
+    chapterName: "Nuclear Chemistry and Radioactivity",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Nuclear_Chemistry.pdf",
+    pdf: chem11("13. Nuclear Chemistry and Radioactivity.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Nuclear Chemistry and Radioactivity (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Nuclides",
+      "Nuclear Stability",
+      "Radioactivity",
+      "Radioactive Decay",
+      "Modes of Decay",
+      "Nuclear Reactions",
+      "Applications of Radioisotopes",
+    ],
+  },
+
   // ── Ch.2 Introduction to Analytical Chemistry. 14pp.
   //    ⚠ THIS IS THE BEST-KEYED CHAPTER IN THE ENTIRE BOOK — ~46 candidate keyed
   //      rows, against a book-wide average of ~14% coverage. If the step-6 gate is
