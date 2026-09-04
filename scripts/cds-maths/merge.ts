@@ -23,9 +23,9 @@ function main() {
   const paper = requirePaper(process.argv[2]);
   const apply = process.argv.includes("--apply");
 
-  const bandRe = new RegExp(`^${paper.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.b\\d+\\.json$`);
+  const bandRe = new RegExp(`^${paper.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.b[A-Za-z0-9]+\\.json$`);
   const files = readdirSync(DATA).filter((f) => bandRe.test(f)).sort();
-  if (!files.length) throw new Error(`no band files matching ${paper.id}.b<N>.json in ${DATA}`);
+  if (!files.length) throw new Error(`no band files matching ${paper.id}.b<name>.json in ${DATA}`);
 
   const bands: Band[] = files.map((f) => {
     const b = JSON.parse(readFileSync(`${DATA}/${f}`, "utf8")) as Band;

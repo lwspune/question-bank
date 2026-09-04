@@ -42,7 +42,45 @@ Output: `scripts/cds-maths/data/<paperId>.<passName>.json`, an array of:
   prints its correct answer twice needs the option repaired, not the answer
   changed, and only `value` can tell those apart.
 - `confidence` — HIGH / MED / LOW. See the calibration rule below.
-- `reasoning` — the derivation, short but complete enough to check.
+- `reasoning` — the derivation, short but complete enough to check. This is
+  **REVIEWER EVIDENCE**: it is what the crosstab prints on a disputed row so a
+  human can adjudicate, and the runner-up rule below applies to it.
+- `solution` — **the same derivation written for a STUDENT.** Required on every
+  row. See below; it is the field that ships.
+
+### Why `reasoning` and `solution` are separate
+
+They have different readers and one field cannot serve both. `reasoning` must
+name the runner-up, say what would flip the answer, and record which tool
+confirmed it — all of which a reviewer needs and a student must never see.
+
+Piping `reasoning` straight through is not hypothetical: it shipped on **419 of
+800 published rows** of this corpus before anyone looked at a rendered card.
+Students were reading "RUNNER-UP: option C, if the interval were closed",
+"Verified with sympy", and — on 328 rows — bare ASCII like "the product vanishes
+only if sin alpha equals -2" sitting beside a fully typeset stem.
+
+So write both. `solution` is what a student reads:
+
+1. **No process language.** No runner-up, no confidence, no "both passes", no
+   naming the CAS, no "I verified". If the runner-up matters mathematically, say
+   what is ambiguous about the QUESTION, not what you did about it.
+2. **Every expression typeset** in `\( ... \)` — `\(\sqrt{x}\)` not `sqrt(x)`,
+   `\(\pi\)` not `pi`, `\(9^{27}\)` not `9^27`, `\(\ge\)` not `>=`. A prose-only
+   answer with no formula is correct as prose; do not manufacture maths.
+3. **Name an option by what it SAYS, never by its bare letter.** A capital A–D in
+   the prose makes the structural key-audit read it as the solution's own
+   conclusion and flag a correct row.
+4. **Say plainly when the PAPER is defective** — two valid answers, no correct
+   option, a statement inconsistent with its own stem. That belongs in front of
+   a student, in the student's terms.
+5. Two to four sentences.
+6. Write **nothing about where the answer came from.** No key disclaimer, no
+   sourcing footnote. Provenance is structured data elsewhere.
+
+`npx tsx scripts/cds-maths/audit-solutions.ts <paperId>` probes exactly these
+shapes and is the check to run before you report. It reads the DATABASE, so
+before a paper is committed it can only be run over the text you would ship.
 
 **Write the file early and append as you go.** Do not batch 100 questions to the
 end; if you are interrupted, everything already written survives.

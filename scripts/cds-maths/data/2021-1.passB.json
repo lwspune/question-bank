@@ -1,0 +1,177 @@
+[
+  {
+    "number": 1,
+    "answer": "D",
+    "value": "P = 8",
+    "confidence": "HIGH",
+    "reasoning": "Brute-forced all ten digits: 4132838759387 = 13 x 317910673799 exactly, and the residues for P = 0..9 run 5,6,7,8,9,10,11,12,0,1, so P = 8 is the unique digit making the number divisible by 13."
+  },
+  {
+    "number": 2,
+    "answer": "B",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "2^3 = 8 = 1 (mod 7), so the residue cycles with period 3; 1000000 = 3*333333 + 1, hence 2^1000000 = 2^1 = 2 (mod 7). Confirmed by pow(2,1000000,7) = 2."
+  },
+  {
+    "number": 3,
+    "answer": "A",
+    "value": "Zero",
+    "confidence": "HIGH",
+    "reasoning": "x/y + y/x = 2 multiplies out to x^2 + y^2 = 2xy, i.e. (x - y)^2 = 0, which forces x = y. Since x != y is required, no pair qualifies; an exhaustive scan of all ordered pairs from {2,3,6,8,9} returned 0."
+  },
+  {
+    "number": 4,
+    "answer": "D",
+    "value": "5 pairs",
+    "confidence": "HIGH",
+    "reasoning": "Primes strictly between 50 and 100 are 53,59,61,67,71,73,79,83,89,97. Those differing by 6: (59,53), (67,61), (73,67), (79,73), (89,83) - exactly 5, verified by exhaustive scan."
+  },
+  {
+    "number": 5,
+    "answer": "D",
+    "value": "60",
+    "confidence": "HIGH",
+    "reasoning": "Expanding a product of three sums with 3, 4 and 5 terms gives one term per choice from each bracket, all distinct since the a/b/c symbols are independent: 3 x 4 x 5 = 60."
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "27 = 15 = 3 (mod 6), and 3^n = 3 (mod 6) for every n >= 1, so 27^27 - 15^27 = 3 - 3 = 0 (mod 6). Confirmed by exact big-integer computation."
+  },
+  {
+    "number": 7,
+    "answer": "D",
+    "value": "All three statements 1, 2, 3 are correct",
+    "confidence": "HIGH",
+    "reasoning": "Substituting c = -(a+b) and simplifying gives residual 0 for all three: a^3+b^3+c^3-3abc = 0 (the standard identity), (a+b+c)^2 = 0 gives a^2+b^2+c^2 = -2(ab+bc+ca), and 3abc = 3ab(-(a+b)) = -3ab(a+b) so statement 3 is statement 1 rewritten."
+  },
+  {
+    "number": 8,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Rationalising gives p = (3q + sqrt(9q^2-4))/2, so 2p - 3q = sqrt(9q^2-4); squaring gives 4p^2 - 12pq + 9q^2 = 9q^2 - 4, i.e. p^2 - 3pq = -1 and p^2 - 3pq + 2 = 1. Sympy returns 1 symbolically and at q = 1, 2, 5, 7/3."
+  },
+  {
+    "number": 9,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Only the unit digit 7 matters; powers of 7 cycle 7,9,3,1 with period 4 and 32 = 0 (mod 4), so the unit digit is 1. Confirmed by exact computation of 67^32 mod 10 = 1."
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "value": "x = 2ab/(a+1)^2",
+    "confidence": "HIGH",
+    "reasoning": "Writing s = sqrt(b^2-2bx), (b+s)/(b-s) = a gives s = b(a-1)/(a+1); squaring, b^2 - 2bx = b^2(a-1)^2/(a+1)^2, so 2bx = b^2 * 4a/(a+1)^2 and x = 2ab/(a+1)^2. Sympy's solve returns exactly 2*a*b/(a+1)**2."
+  },
+  {
+    "number": 11,
+    "answer": "B",
+    "value": "(x - 2)",
+    "confidence": "HIGH",
+    "reasoning": "x^3-1 = (x-1)(x^2+x+1), x^2-9x+14 = (x-2)(x-7), x^2-8x+7 = (x-1)(x-7); cancelling (x^2+x+1), (x-1) and (x-7) leaves (x-2). Sympy simplify returns x - 2."
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "value": "1/(x^2 - 7x + 12)",
+    "confidence": "HIGH",
+    "reasoning": "Since x^2-5x+6 = (x-2)(x-3), the required addend is (2x-5)/((x-2)(x-3)(x-4)) - 1/((x-2)(x-4)) = [(2x-5)-(x-3)]/((x-2)(x-3)(x-4)) = (x-2)/((x-2)(x-3)(x-4)) = 1/((x-3)(x-4)) = 1/(x^2-7x+12). Sympy confirms the denominator factors as (x-4)(x-3)."
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Solving the two equations gives x = a^2 and y = b^2 (sympy), so x/a^2 = y/b^2 = 1 and the difference is 0. By hand: with u = x/a^2, v = y/b^2 the equations become au + bv = a+b and u+v = 2, giving u(a-b) = a-b so u = v = 1."
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "value": "k = (d - b)/(a - c)",
+    "confidence": "HIGH",
+    "reasoning": "(x-k) divides both quadratics means k^2+ak+b = 0 and k^2+ck+d = 0; subtracting, (a-c)k + (b-d) = 0, so k = (d-b)/(a-c), which is option B. Option A is its negative."
+  },
+  {
+    "number": 15,
+    "answer": "C",
+    "value": "Both statements 1 and 2 are correct",
+    "confidence": "HIGH",
+    "reasoning": "With x = k1*z and y = k2*z, x^2 - y^2 = (k1^2 - k2^2)z^2, a constant times z^2. With x = k1/z and y = k2/z, xy = k1k2/z^2, i.e. inversely proportional to z^2. Both hold (the only exception in 1 is the degenerate k1 = k2 case, which both options treat alike)."
+  },
+  {
+    "number": 16,
+    "answer": "D",
+    "value": "(x - 3)(x - 2)",
+    "confidence": "HIGH",
+    "reasoning": "x^3-19x+30 factors as (x-3)(x-2)(x+5) and x^2-5x+6 as (x-3)(x-2), so the whole of the second polynomial is the HCF: (x-3)(x-2). Verified with sympy factor."
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "(x+1)/(x-1) - (x-1)/(x+1) = 4x/(x^2-1); combining with -4x/(x^2+1) gives 8x/(x^4-1), which cancels the leading 8x/(1-x^4). Sympy simplify returns 0, and direct substitution at x = 3 and x = 5 gives 0."
+  },
+  {
+    "number": 18,
+    "answer": "C",
+    "value": "x = 2",
+    "confidence": "HIGH",
+    "reasoning": "Sympy gives the two roots x = 2 and x = 192/43; only x = 2 is an integer. Checked directly with exact fractions: at x = 2 the nested fraction evaluates to 12/(7 - 6/(7-1)) = 12/6 = 2, while x = 1, 3, 4 give 300/151, 132/65 and 24/11."
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "value": "k = x^2 - 3x + 1",
+    "confidence": "HIGH",
+    "reasoning": "Pairing x(x-3) and (x-1)(x-2) gives t(t+2)+1 with t = x^2-3x, i.e. (t+1)^2 = (x^2-3x+1)^2. Sympy factors x(x-1)(x-2)(x-3)+1 as exactly (x**2 - 3*x + 1)**2."
+  },
+  {
+    "number": 20,
+    "answer": "D",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Sympy's together/simplify collapses the sum to 0, and three discriminating numeric checks - (a,b,c) = (2,3,5), (1,4,7) and (1/2,3,-2) - each give exactly 0 while a+b+c and ab+bc+ca take three different non-zero values there, ruling out A and C."
+  },
+  {
+    "number": 21,
+    "answer": "C",
+    "value": "Two values (k = 2/3 and k = 6)",
+    "confidence": "HIGH",
+    "reasoning": "6kx^2 + (12k-24)x + 16 is a perfect square exactly when its discriminant vanishes: (12k-24)^2 - 384k = 48(k-6)(3k-2) = 0, giving k = 6 and k = 2/3. Both check out: k = 2/3 gives 4(x-2)^2 and k = 6 gives 4(3x+2)^2. k = 0 fails (16 - 24x = -8 at x = 1). So two real values."
+  },
+  {
+    "number": 22,
+    "answer": "B",
+    "value": "255/16",
+    "confidence": "HIGH",
+    "reasoning": "x + 1/x = 5/2 gives x = 2 or x = 1/2, so x^4 - 1/x^4 = 255/16 or -255/16. Only 255/16 is a printed option (the other candidates 195/16, 625/16 and 0 are unreachable). Cross-checked by identity: (x^2-1/x^2)(x^2+1/x^2) = (15/4)(17/4) = 255/16."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "value": "k = 0 and k = 12",
+    "confidence": "HIGH",
+    "reasoning": "Equal roots require the discriminant (2k)^2 - 4*4*3k = 4k^2 - 48k = 4k(k-12) to vanish, giving k = 0 and k = 12. Sympy returns [0, 12]. k = 0 does give the equal (double) root x = 0 of 4x^2 = 0."
+  },
+  {
+    "number": 24,
+    "answer": "B",
+    "value": "p + q = 7",
+    "confidence": "HIGH",
+    "reasoning": "Sum of roots 6/p = 6 gives p = 1; product q/p = 6 then gives q = 6, so p + q = 7. Sympy's simultaneous solve returns {p: 1, q: 6}."
+  },
+  {
+    "number": 25,
+    "answer": "C",
+    "value": "Both (2x + 1) and (2x - 1)",
+    "confidence": "HIGH",
+    "reasoning": "Grouping, 4x^3+12x^2-x-3 = 4x^2(x+3) - (x+3) = (x+3)(4x^2-1) = (x+3)(2x-1)(2x+1). Sympy factor confirms both linear factors are present."
+  }
+]

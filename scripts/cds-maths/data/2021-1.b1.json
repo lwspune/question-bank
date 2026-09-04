@@ -1,0 +1,724 @@
+{
+  "band": "b1",
+  "pages": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "bandReport": {
+    "numbersFound": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band b1 covers Q1-Q27 across p00 (Q1-6), p01 (Q7-10), p02 (Q11-14), p03 (Q15-20), p04 (Q21-27). Q1 is the first question of the paper, so nothing precedes my first page. Q27 is complete on p04: its stem and all four options print there, and p05 (checked, not transcribed) opens cleanly at Q28 in the left column and Q31 in the right, so there is no straddle at the seam and no question is stranded between b1 and b2. There is NO Directions block anywhere in p00-p04 - every question in this band is a standalone MCQ with no shared stimulus - so this band opens no set and inherits none; p05 likewise opens no set at its head. No figures in this band: every question is fully stated in text, so nothing here needs a crop. Layout is two-column, read left column top to bottom then right column; numbering runs down the left column then continues down the right (e.g. p00 left 1-3, right 4-6). ONE subtopic was invented, and it is flagged on the question itself: Q5 (counting the terms of an expanded product) has no home in the catalog at all - there is no Permutations and Combinations chapter and no expansion-counting subtopic anywhere - so it is filed under the closest chapter with an invented subtopic. One further fit is imperfect but uses a LISTED subtopic and so carries no flag: Q21 (for how many k is a quadratic a perfect square for every integer x) is filed under Nature of Roots and Discriminant, which is the method the question turns on rather than a literal match for its wording. Note that check-bands validates the chapter against catalog.json but does NOT look at the subtopic, so the soft subtopic warning the brief describes is not emitted here - the flags array is the only carrier of that finding in this band. No misprints found: every stem and option on these five pages is internally consistent and legible. Sign-critical and letter-critical option blocks were re-read from high-zoom crops rather than the page thumbnail - Q10 (ab/(a+b) vs 2ab/(a+1) vs 2ab/(a+1)^2 vs ab/(a+b)^2), Q12 (the four sign combinations of x^2 +/- 7x +/- 12), Q14 (the four arrangements of (d-b)/(c-a)) - as were the long numeral in Q1 (413283P759387), the compound expressions in Q11, Q13, Q17, Q20 and the nested continued fraction in Q18."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "If the number 413283P759387 is divisible by 13, then what is the value of P ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "8"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 2,
+      "stem": "What is the remainder when \\(2^{1000000}\\) is divided by 7?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "4"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 3,
+      "stem": "How many pairs of \\((x, y)\\) can be chosen from the set \\(\\{2, 3, 6, 8, 9\\}\\) such that \\(\\frac{x}{y} + \\frac{y}{x} = 2\\), where \\(x \\ne y\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Zero"
+        },
+        {
+          "label": "B",
+          "text": "One"
+        },
+        {
+          "label": "C",
+          "text": "Two"
+        },
+        {
+          "label": "D",
+          "text": "Three"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 4,
+      "stem": "Consider the pairs of prime numbers \\((m, n)\\) between 50 and 100 such that \\(m - n = 6\\). How many such pairs are there?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "4"
+        },
+        {
+          "label": "D",
+          "text": "5"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 5,
+      "stem": "How many terms are there in the following product?\n\n\\((a_1 + a_2 + a_3)(b_1 + b_2 + b_3 + b_4)(c_1 + c_2 + c_3 + c_4 + c_5)\\)",
+      "options": [
+        {
+          "label": "A",
+          "text": "15"
+        },
+        {
+          "label": "B",
+          "text": "30"
+        },
+        {
+          "label": "C",
+          "text": "45"
+        },
+        {
+          "label": "D",
+          "text": "60"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Number of Terms in a Product Expansion",
+      "difficulty": "EASY",
+      "flags": [
+        "Invented subtopic: the catalog has no combinatorics/expansion-counting subtopic under this chapter, and no Permutations and Combinations chapter exists. Closest chapter used."
+      ]
+    },
+    {
+      "number": 6,
+      "stem": "What is the remainder when \\(27^{27} - 15^{27}\\) is divided by 6?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 7,
+      "stem": "If \\(a + b + c = 0\\), then which of the following are correct?\n\n1. \\(a^3 + b^3 + c^3 = 3abc\\)\n\n2. \\(a^2 + b^2 + c^2 = -2(ab + bc + ca)\\)\n\n3. \\(a^3 + b^3 + c^3 = -3ab(a + b)\\)\n\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 2 only"
+        },
+        {
+          "label": "B",
+          "text": "2 and 3 only"
+        },
+        {
+          "label": "C",
+          "text": "1 and 3 only"
+        },
+        {
+          "label": "D",
+          "text": "1, 2 and 3"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 8,
+      "stem": "If\n\n\\(p = \\frac{\\sqrt{3q + 2} + \\sqrt{3q - 2}}{\\sqrt{3q + 2} - \\sqrt{3q - 2}}\\)\n\nthen what is the value of \\(p^2 - 3pq + 2\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 9,
+      "stem": "What is the unit digit in the expansion of \\(67^{32}\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Unit Digit and Powers",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 10,
+      "stem": "What is the value of \\(x\\), if\n\n\\(\\frac{b + \\sqrt{b^2 - 2bx}}{b - \\sqrt{b^2 - 2bx}} = a\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{ab}{(a + b)}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{2ab}{(a + 1)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{2ab}{(a + 1)^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{ab}{(a + b)^2}\\)"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 11,
+      "stem": "The expression\n\n\\(\\frac{(x^3 - 1)(x^2 - 9x + 14)}{(x^2 + x + 1)(x^2 - 8x + 7)}\\)\n\nsimplifies to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((x - 1)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((x - 2)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((x - 7)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((x + 2)\\)"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 12,
+      "stem": "What should be added to \\(\\frac{1}{(x - 2)(x - 4)}\\) to get \\(\\frac{2x - 5}{(x^2 - 5x + 6)(x - 4)}\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{(x^2 - 7x + 12)}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{(x^2 + 7x + 12)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{(x^2 - 7x - 12)}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{(x^2 + 7x - 12)}\\)"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 13,
+      "stem": "If \\(\\frac{x}{a} + \\frac{y}{b} = a + b\\) and \\(\\frac{x}{a^2} + \\frac{y}{b^2} = 2\\), then what is \\(\\frac{x}{a^2} - \\frac{y}{b^2}\\) equal to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "C",
+          "text": "0"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Solving Linear Systems",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 14,
+      "stem": "If \\((x - k)\\) is the HCF of \\(x^2 + ax + b\\) and \\(x^2 + cx + d\\), then what is the value of \\(k\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{d - b}{c - a}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{d - b}{a - c}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{d + b}{c + a}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{d - b}{c + a}\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 15,
+      "stem": "Consider the following statements :\n\n1. If \\(x\\) is directly proportional to \\(z\\) and \\(y\\) is directly proportional to \\(z\\), then \\((x^2 - y^2)\\) is directly proportional to \\(z^2\\).\n\n2. If \\(x\\) is inversely proportional to \\(z\\) and \\(y\\) is inversely proportional to \\(z\\), then \\((xy)\\) is inversely proportional to \\(z^2\\).\n\nWhich of the above statements is/are correct?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 16,
+      "stem": "What is the HCF of \\(x^3 - 19x + 30\\) and \\(x^2 - 5x + 6\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((x + 2)(x - 3)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((x - 2)(x + 3)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((x + 2)(x - 1)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((x - 3)(x - 2)\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 17,
+      "stem": "What is\n\n\\(\\frac{8x}{1 - x^4} - \\frac{4x}{x^2 + 1} + \\frac{x + 1}{x - 1} - \\frac{x - 1}{x + 1}\\)\n\nequal to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 18,
+      "stem": "For what integral value of \\(x\\) is\n\n\\(\\cfrac{12}{7 - \\cfrac{6}{7 - \\cfrac{3}{5 - x}}} = x\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Continued Fractions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 19,
+      "stem": "If \\(x(x - 1)(x - 2)(x - 3) + 1 = k^2\\), then which one of the following is a possible expression for \\(k\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x^2 - 3x + 1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x^2 - 3x - 1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x^2 + 3x - 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x^2 - 2x - 1\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Factorisation of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 20,
+      "stem": "What is\n\n\\(\\frac{1}{bc(a - b)(a - c)} + \\frac{1}{ca(b - c)(b - a)} + \\frac{1}{ab(c - a)(c - b)}\\)\n\nequal to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(a + b + c\\)"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "\\(ab + bc + ca\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 21,
+      "stem": "For how many real values of \\(k\\) is \\(6kx^2 + 12kx - 24x + 16\\) a perfect square for every integer \\(x\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Zero"
+        },
+        {
+          "label": "B",
+          "text": "One"
+        },
+        {
+          "label": "C",
+          "text": "Two"
+        },
+        {
+          "label": "D",
+          "text": "Four"
+        }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Nature of Roots and Discriminant",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 22,
+      "stem": "If \\(x + \\frac{1}{x} = \\frac{5}{2}\\), then what is \\(x^4 - \\frac{1}{x^4}\\) equal to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{195}{16}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{255}{16}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{625}{16}\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 23,
+      "stem": "If the equation \\(4x^2 - 2kx + 3k = 0\\) has equal roots, then what are the values of \\(k\\)?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4, 12"
+        },
+        {
+          "label": "B",
+          "text": "4, 8"
+        },
+        {
+          "label": "C",
+          "text": "0, 12"
+        },
+        {
+          "label": "D",
+          "text": "0, 8"
+        }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Nature of Roots and Discriminant",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 24,
+      "stem": "If the sum as well as the product of the roots of the equation \\(px^2 - 6x + q = 0\\) is 6, then what is \\((p + q)\\) equal to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "7"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "5"
+        }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 25,
+      "stem": "\\(4x^3 + 12x^2 - x - 3\\) is divisible by",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((2x + 1)\\) only"
+        },
+        {
+          "label": "B",
+          "text": "\\((2x - 1)\\) only"
+        },
+        {
+          "label": "C",
+          "text": "Both \\((2x + 1)\\) and \\((2x - 1)\\)"
+        },
+        {
+          "label": "D",
+          "text": "Neither \\((2x + 1)\\) nor \\((2x - 1)\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 26,
+      "stem": "Which one of the following fractions will have minimum change in its value if 3 is added to both the numerator and the denominator of all the fractions?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{2}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{3}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{4}{5}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{5}{6}\\)"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "Let the average score of a class of boys and girls in an examination be \\(p\\). The ratio of boys and girls in the class is \\(3 : 1\\). If the average score of the boys is \\((p + 1)\\), then what is the average score of the girls?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((p - 1)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((p - 2)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((p - 3)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(p\\)"
+        }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

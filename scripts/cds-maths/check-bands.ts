@@ -177,9 +177,21 @@ function main() {
   const strict = process.argv.includes("--strict");
   const chapters = new Set(Object.keys(catalog()));
 
-  const bandRe = new RegExp(`^${paper.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.b\\d+\\.json$`);
+  // A CLEAN RUN HERE DOES NOT MEAN THE PAPER IS COVERED. Each band is checked
+  // against its OWN bandReport, so two bands that both stop short of their own
+  // last page are each internally consistent and both pass. That happened on
+  // 2021-I: Q21-27 and Q75-80 were printed on pages b1 and b3 owned, absent
+  // from every band file, and invisible here. `merge.ts` is the gate for that
+  // -- it reconciles the union against 1..QUESTIONS_PER_PAPER and REFUSES to
+  // write on a gap. Do not read a green check-bands as "the paper is complete".
+  // Band suffixes are ALPHANUMERIC, not numeric. Every shipped paper used
+  // b1..b6, so the pattern was `b\d+` -- and a paper transcribed with bA..bD
+  // matched NOTHING, so this probe threw "no band files" instead of checking
+  // them. The failure is loud rather than silent, which is the only reason it
+  // was caught, and it was caught by an agent rather than by a run.
+  const bandRe = new RegExp(`^${paper.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.b[A-Za-z0-9]+\\.json$`);
   const files = readdirSync(DATA).filter((f) => bandRe.test(f)).sort();
-  if (!files.length) throw new Error(`no band files matching ${paper.id}.b<N>.json in ${DATA}`);
+  if (!files.length) throw new Error(`no band files matching ${paper.id}.b<name>.json in ${DATA}`);
 
   const findings: Finding[] = [];
   for (const f of files) {
