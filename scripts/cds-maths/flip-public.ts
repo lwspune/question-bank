@@ -116,7 +116,16 @@ async function main() {
   }
 
   // 4. option integrity
-  const norm = (s: string) => (s ?? "").replace(/\s+/g, " ").trim().toLowerCase();
+  // CASE-SENSITIVE on purpose, and this gate is where getting it wrong is most
+  // expensive. In a maths corpus the case IS the variable: 2023-II Q31 offers
+  // `H tan(g) - h tan(b)` against `h tan(g) - H tan(b)` (H is the flagstaff-top
+  // height, h the tower height) and Q39/Q40 offer `2r^2/(R-r)` against
+  // `2R^2/(R-r)`. Lowercasing collapses each pair, so the gate reported three
+  // "duplicate option" defects on a paper that has none -- refusing to publish a
+  // correct paper, and inviting a "repair" that would DESTROY the discriminator
+  // the question turns on. lib.ts carried the same bug and was fixed first; this
+  // copy was missed, which is the argument for one shared normaliser.
+  const norm = (s: string) => (s ?? "").replace(/\s+/g, " ").trim();
   for (const r of rows) {
     const opts = (r.options ?? []) as { label: string; is_correct: boolean; text: string }[];
     if (opts.length !== 4) problems.push(`Q${r.question_number}: ${opts.length} options, expected 4`);

@@ -1,0 +1,707 @@
+{
+  "paper": "2023-2",
+  "reconciled": [],
+  "note": "Two independent blind passes agreed on all 100 letters (crosstab: AGREE 100, DISPUTE 0, TWIN 0), so nothing required reconciliation between them. Agreement is NOT accuracy -- two passes can be wrong the same way -- so the four items below were adjudicated by hand against the printed page, and two of them were re-verified independently by exhaustive computation. This paper has NO answer key of any kind. Q13 (premise unsatisfiable), Q23 (two valid answers, one printed), Q29 (turns on a strict interval) and Q82 ('sector' printed for 'segment') carry an adjudication note on the row.",
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "D",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "a*alpha + b*beta + c*gamma = a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca), and alpha+beta+gamma = a^2+b^2+c^2-ab-bc-ca. The quotient is therefore identically 1 (confirmed by sympy simplify)."
+    },
+    {
+      "number": 2,
+      "answer": "A",
+      "value": "\\(x + 1\\)",
+      "confidence": "HIGH",
+      "reasoning": "The quartic is monic of degree 4 with (x-1)^3 a factor, so the other factor is monic linear, x+k. Expanding (x-1)^3(x+k) gives constant term -k, which must equal -1, so k = 1. alpha, beta, gamma are then forced but unconstrained by the question."
+    },
+    {
+      "number": 3,
+      "answer": "D",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "With digits a (tens) and b (units): 11(a+b) = 55 gives a+b = 5, and 9(a-b) = 45 gives a-b = 5. So a = 5, b = 0, the number is 50, and the product of the digits is 0."
+    },
+    {
+      "number": 4,
+      "answer": "C",
+      "value": "4 days",
+      "confidence": "HIGH",
+      "reasoning": "2(A+B+C) = 1/10 + 1/12 + 1/15 = 1/4, so A+B+C = 1/8 of the work per day. The whole work takes 8 days, so half the work takes 4 days."
+    },
+    {
+      "number": 5,
+      "answer": "A",
+      "value": "Rs. 927.27",
+      "confidence": "HIGH",
+      "reasoning": "12% p.a. compounded quarterly is 3% per quarter; 9 months is 3 quarters. 10000(1.03)^3 = 10927.27 exactly (92727/100 by exact rational arithmetic), so the interest is Rs. 927.27."
+    },
+    {
+      "number": 6,
+      "answer": "A",
+      "value": "\\(a = b\\)",
+      "confidence": "HIGH",
+      "reasoning": "By AM-GM, (a+b)/(2*sqrt(ab)) >= 1 for positive a, b, with equality only at a = b. Since sin(theta) <= 1, the equation is possible only when the right side equals 1, i.e. a = b."
+    },
+    {
+      "number": 7,
+      "answer": "B",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "Solving A+B+C = 1/36, A+B = 5C, B+C = A gives A = 1/72, B = 1/108, C = 1/216 (sympy). Then (A+C)/B = (4/216)/(1/108) = 2."
+    },
+    {
+      "number": 8,
+      "answer": "B",
+      "value": "\\(\\sqrt{355}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Setting the common ratio to k gives a = 3k/2, b = 5k/4, c = 4k/3. Then a^2+c^2-b^2 = 355k^2/144, so (18/a)*sqrt(...) = (12/k)*(k*sqrt(355)/12) = sqrt(355) (sympy-confirmed, k cancels)."
+    },
+    {
+      "number": 9,
+      "answer": "A",
+      "value": "12",
+      "confidence": "HIGH",
+      "reasoning": "S - 10n = a and S - 20n = b. b = -4a gives S - 20n = -4S + 40n, so 5S = 60n and the mean S/n = 12."
+    },
+    {
+      "number": 10,
+      "answer": "D",
+      "value": "54",
+      "confidence": "HIGH",
+      "reasoning": "Sorted: 1, 8, 12, 17, 21, 28, 35, 45, 54, 61. With n = 10 the median is (21+28)/2 = 24.5, so 2M + 5 = 49 + 5 = 54."
+    },
+    {
+      "number": 11,
+      "answer": "A",
+      "value": "one real root (x = 7)",
+      "confidence": "HIGH",
+      "reasoning": "Squaring gives x^2 - 7x = 0, so x = 0 or x = 7. x = 0 fails the original equation (sqrt(9) = 3 but x-3 = -3), while x = 7 checks out (sqrt(16) = 4 = 7-3). Exactly one real root. Option (a) is printed 'Onle one', plainly 'Only one'."
+    },
+    {
+      "number": 12,
+      "answer": "D",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "97 + 56*sqrt(3) = (7 + 4*sqrt(3))^2 = ((2+sqrt(3))^2)^2 = (2+sqrt(3))^4. So x^(1/4) = 2+sqrt(3) and its reciprocal is 2-sqrt(3); the sum is 4 (numerically confirmed as 4.000000)."
+    },
+    {
+      "number": 13,
+      "answer": "D",
+      "value": "no such pair of numbers exists, so the product is not determined",
+      "confidence": "LOW",
+      "reasoning": "AS PRINTED THE HYPOTHESIS IS IMPOSSIBLE. If the numbers are hp and hq with gcd(p,q) = 1, then L = hpq and H = h, so L/H = pq is always a positive INTEGER; it can never be 3/2. Enumerating all 22 pairs summing to 45 confirms every L:H ratio is an integer (44, 86, 14, 8, 4, 2, 6, 20, 56, ...), and none is 3:2. So no pair satisfies the stem and the product cannot be determined, which is the closest printed option. RUNNER-UP: B (486). The pair 18, 27 sums to 45 and has product 486, and 18:27 = 2:3 - so the stem has most likely garbled 'the numbers are in the ratio 2:3' (or 'L:H = 6:1', which is that pair's true ratio) into 'L and H are in the ratio 3:2'. If the intended condition is either of those, B wins. Flagged as a source defect, not corrected. Adjudicated by hand: the stem's premise is UNSATISFIABLE as printed. For any two integers written \\(hp\\) and \\(hq\\) with \\(\\gcd(p,q)=1\\), the ratio \\(L/H = pq\\) is always a positive INTEGER, so it can never be \\(3:2\\); an exhaustive check of all 22 pairs summing to 45 finds none. Option (d) is therefore the only defensible printed answer. Both blind passes independently reached this and both named 486 as the likely intended value: the pair 18 and 27 sums to 45, gives product 486, and has \\(L:H = 6:1\\)."
+    },
+    {
+      "number": 14,
+      "answer": "B",
+      "value": "8 km",
+      "confidence": "HIGH",
+      "reasoning": "The two walks differ by 80 minutes = 4/3 hour: d/2 - d/3 = 4/3, so d/6 = 4/3 and d = 8 km."
+    },
+    {
+      "number": 15,
+      "answer": "A",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "Put u = 3^(x-1); then 3^(3-x) = 9/u and u + 9/u = 6 gives (u-3)^2 = 0, u = 3, so x - 1 = 1 and x = 2. Then 2^(x-1) + 2^(3-x) = 2 + 2 = 4."
+    },
+    {
+      "number": 16,
+      "answer": "A",
+      "value": "\\(-2b^3\\)",
+      "confidence": "HIGH",
+      "reasoning": "The bracket coefficients are (a^2-ab+b^2)/(a-b) and (a^2+ab+b^2)/(a+b); cross-multiplying turns the relation into x(a^3+b^3) = y(a^3-b^3). With x+y = 2a^3 this forces x = a^3-b^3 and y = a^3+b^3 (sympy solve), so x - y = -2b^3."
+    },
+    {
+      "number": 17,
+      "answer": "C",
+      "value": "\\(3x^2 + 2y^2 - \\sqrt{18}x - \\sqrt{12}y - \\sqrt{6}xy + 6\\)",
+      "confidence": "HIGH",
+      "reasoning": "With u = sqrt(3)x, v = sqrt(2)y, w = sqrt(6) the expression is u^3+v^3+w^3-3uvw (since 3uvw = 18xy and w^3 = 6*sqrt(6)), which factors as (u+v+w)(u^2+v^2+w^2-uv-vw-wu). The linear factor is sqrt(3)x+sqrt(2)y+SQRT(6) - option (b) has a minus sign and is NOT a factor. The quadratic factor is 3x^2+2y^2+6-sqrt(6)xy-sqrt(12)y-sqrt(18)x, exactly option (c); sympy confirms the remainder is 0."
+    },
+    {
+      "number": 18,
+      "answer": "D",
+      "value": "210",
+      "confidence": "HIGH",
+      "reasoning": "125^100 = 5^300 = 10^300 / 2^300, so log10 of it is 300 - 300(0.301) = 209.7. Number of digits = floor(209.7) + 1 = 210."
+    },
+    {
+      "number": 19,
+      "answer": "D",
+      "value": "\\(ax + b\\)",
+      "confidence": "HIGH",
+      "reasoning": "sympy factor gives (ax+b)(cx^2+dx+cd) and (ax+b)(dx^2+cx+cd). The two quadratics differ by (c-d)x(x-1), and since c != d and gcd(c,d) = 1 they share no common factor in general (x = 1 would need c+d+cd = 0). So the HCF is ax+b."
+    },
+    {
+      "number": 20,
+      "answer": "C",
+      "value": "1",
+      "confidence": "MED",
+      "reasoning": "The divisor factors as (x-ay)(x-bz). Divisibility makes both x = ay and x = bz roots: a^n y^n - p y^n + q z^n = 0 and b^n z^n - p y^n + q z^n = 0. Subtracting gives a^n y^n = b^n z^n, i.e. z^n = (a^n/b^n) y^n; substituting into the first gives a^n y^n = p y^n - q (a^n/b^n) y^n, and dividing by a^n y^n yields exactly p/a^n - q/b^n = 1. The same value 1 also comes out of either substitution taken in isolation with coefficient matching (p = a^n, q = 0 gives 1 - 0; p = 0, q = -b^n gives 0 + 1). RUNNER-UP: D (2), which is what the sloppier 'take p from the first substitution and q from the second' route gives (p = a^n and q = -b^n simultaneously). Note the stem is over-determined - strictly no non-degenerate p, q satisfy both conditions as polynomial identities - so this is partly a reading of a defective stem."
+    },
+    {
+      "number": 21,
+      "answer": "C",
+      "value": "both statements are correct",
+      "confidence": "HIGH",
+      "reasoning": "(1) a+b = k(a-b) forces a/b = (1+k)/(k-1), a constant lambda, so (a^2+b^2)/(ab) = (lambda^2+1)/lambda is constant - proportional. (2) a = kb gives (a^2-b^2)/(ab) = (k^2-1)/k, also constant. Both hold."
+    },
+    {
+      "number": 22,
+      "answer": "C",
+      "value": "\\(ad = bc\\)",
+      "confidence": "HIGH",
+      "reasoning": "Both sides are differences of squares: LHS = (3a+2d)^2-(6b+c)^2, RHS = (3a-2d)^2-(6b-c)^2. Expanding, everything cancels except 12ad - 12bc = -12ad + 12bc, i.e. 24ad = 24bc. sympy factors LHS-RHS as 24(ad-bc), so ad = bc."
+    },
+    {
+      "number": 23,
+      "answer": "B",
+      "value": "\\(-3\\)",
+      "confidence": "HIGH",
+      "reasoning": "(3s+5c)^2 + (5s-3c)^2 = 34, so with 3s+5c = 5 we get (5s-3c)^2 = 9 and 5s-3c = +/-3. Solving exactly gives two solutions: (s,c) = (0,1) giving -3, and (15/17, 8/17) giving +3. Only -3 is a printed option. Adjudicated by hand: the equation has TWO valid solutions on the unit circle, \\((\\sin\theta,\\cos\theta) = (0,1)\\) and \\((15/17, 8/17)\\), giving \\(-3\\) and \\(+3\\) respectively. Only \\(-3\\) is printed, so option (b) is the sole defensible choice, but a student reaching \\(+3\\) is not wrong -- the paper omits it."
+    },
+    {
+      "number": 24,
+      "answer": "B",
+      "value": "3 children",
+      "confidence": "HIGH",
+      "reasoning": "With M = couple's combined age, C = children's combined age, n children: M = 6C; M-4 = 10(C-2n); M+12 = 3(C+6n). sympy gives n = 3, C = 14, M = 84. Two years ago the children's combined age was 8 > 0, consistent with each child being at least 2."
+    },
+    {
+      "number": 25,
+      "answer": "C",
+      "value": "13",
+      "confidence": "HIGH",
+      "reasoning": "With p = sin x cos x: 3(1-2p)^2 = 3 - 12p + 12p^2; 6(1+2p) = 6 + 12p; 4(sin^6+cos^6) = 4(1-3p^2) = 4 - 12p^2. Sum = 13, a constant (numerically 13.000 at x = 0.7 and x = 2.3)."
+    },
+    {
+      "number": 26,
+      "answer": "C",
+      "value": "\\(\\frac{\\sqrt{3}+1}{2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The equation factors as (cot theta - 1)(cot theta - sqrt3) = 0, giving theta = pi/4 or pi/6. The strict range 0 < theta < pi/4 excludes pi/4, leaving theta = pi/6, where sin + cos = 1/2 + sqrt3/2 = (sqrt3+1)/2 = 1.36603."
+    },
+    {
+      "number": 27,
+      "answer": "A",
+      "value": "\\(\\pi/12\\)",
+      "confidence": "HIGH",
+      "reasoning": "tan2theta tan4theta = 1 means tan4theta = cot2theta = tan(pi/2 - 2theta), so 6theta = pi/2 + k*pi and theta = pi/12 + k*pi/6. Evaluating each option numerically, only pi/12 gives tan2theta tan4theta - 1 = 0 (the others give -0.506, -4.000, -3.236)."
+    },
+    {
+      "number": 28,
+      "answer": "A",
+      "value": "\\(\\sin\\theta + \\cos\\theta\\)",
+      "confidence": "HIGH",
+      "reasoning": "(sin+cos)^2 + (sin-cos)^2 = 2, so a right triangle with opposite = sin+cos and adjacent = sin-cos has hypotenuse sqrt2; on (pi/4, pi/2) both are positive so x is in the first quadrant. Hence sin x = (sin+cos)/sqrt2 and sqrt2 sin x = sin theta + cos theta (numerically 1.29440 = 1.29440 at theta = 1.2)."
+    },
+    {
+      "number": 29,
+      "answer": "A",
+      "value": "no values of theta (0 solutions)",
+      "confidence": "HIGH",
+      "reasoning": "First factor = (sin theta - 1)(sin theta - 3), needing sin theta = 1 (theta = pi/2, excluded by the strict inequality) or 3 (impossible). Second factor = sin^2 + 4 sin + 3 = (sin+1)(sin+3), needing sin theta = -1 or -3, impossible on (0, pi/2). sympy solveset over the open interval returns EmptySet. Option (a) 'None' - note option (c) is printed 'Onle two'. Adjudicated by hand: the only candidate is \\(\\sin\theta = 1\\), i.e. \\(\theta = \\pi/2\\), which the printed STRICT interval \\(0 < \theta < \\pi/2\\) excludes -- hence 'None'. Recorded because a key treating the interval as closed at \\(\\pi/2\\) would instead say 'Only one'. The mathematics as printed is not in doubt. (The paper misprints this option as 'Onle two'; transcribed as printed.)"
+    },
+    {
+      "number": 30,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "The second relation gives x sin = y cos = t; substituting x = t/sin, y = t/cos into the first gives t(sin^2 + cos^2) = t = sin cos. Hence x = cos theta, y = sin theta (sympy solve confirms) and x^2 + y^2 = 1."
+    },
+    {
+      "number": 31,
+      "answer": "A",
+      "value": "\\(H\\tan\\gamma - h\\tan\\beta = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "From the nearer point, at horizontal distance D-d, both the flagstaff top and the tower top are seen: H = (D-d)tan(beta) and h = (D-d)tan(gamma). Eliminating D-d gives H/tan(beta) = h/tan(gamma), i.e. H tan(gamma) - h tan(beta) = 0."
+    },
+    {
+      "number": 32,
+      "answer": "C",
+      "value": "\\(d = H(\\cot\\alpha - \\cot\\beta)\\)",
+      "confidence": "HIGH",
+      "reasoning": "The far point is at horizontal distance H cot(alpha) from the tower base and the near point at H cot(beta), both measured to the flagstaff top of height H. The advance is the difference: d = H(cot alpha - cot beta)."
+    },
+    {
+      "number": 33,
+      "answer": "B",
+      "value": "\\(x < y\\)",
+      "confidence": "HIGH",
+      "reasoning": "With angle theta at R (distance x+y) and 2theta at Q (distance x), the double-angle formula reduces to h^2 = y^2 - x^2 (sympy: h = sqrt(y-x)sqrt(y+x)). For h to be a real positive height we need y^2 > x^2, i.e. x < y."
+    },
+    {
+      "number": 34,
+      "answer": "D",
+      "value": "\\(h^2 = y^2 - x^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "tan(theta) = h/(x+y) and tan(2theta) = h/x. Substituting into tan2theta = 2tan/(1-tan^2) and clearing denominators gives (x+y)^2 - h^2 = 2x(x+y), which simplifies to y^2 - h^2 = x^2, i.e. h^2 = y^2 - x^2 (sympy solve returns h = sqrt(y-x)*sqrt(y+x))."
+    },
+    {
+      "number": 35,
+      "answer": "C",
+      "value": "100 cm",
+      "confidence": "HIGH",
+      "reasoning": "Half-chords 30 and 40; distances from centre sqrt(r^2-900) and sqrt(r^2-1600), and being on the same side they differ by 10. Since the difference of squares is 700, the sum of the roots is 70, so the roots are 40 and 30, giving r^2 = 2500, r = 50 (sympy solve confirms r = 50). Diameter = 100 cm."
+    },
+    {
+      "number": 36,
+      "answer": "D",
+      "value": "\\(7/12\\)",
+      "confidence": "HIGH",
+      "reasoning": "With r = 50: for AB = 60, sin(alpha/2) = 30/50 and cos(alpha/2) = 40/50, so tan(alpha/2) = 3/4. For CD = 80, tan(beta/2) = 40/30 = 4/3. The difference is 4/3 - 3/4 = 7/12."
+    },
+    {
+      "number": 37,
+      "answer": "A",
+      "value": "\\((x^2+y^2+z^2)(p+q+r)\\)",
+      "confidence": "HIGH",
+      "reasoning": "px^2+qy^2+rz^2 = x^6+y^6+z^6-3x^2y^2z^2 = X^3+Y^3+Z^3-3XYZ with X = x^2 etc., which equals (X+Y+Z)(X^2+Y^2+Z^2-XY-YZ-ZX). The second bracket is exactly p+q+r. sympy confirms the difference from option (a) is identically 0."
+    },
+    {
+      "number": 38,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "sympy simplifies x^2(px^2+qy^2+rz^2) + qr - p^2 to identically 0. Spot-checked by hand: at (x,y,z) = (2,1,1), p = 15, q = r = -3, the bracket is 54, so 4*54 + 9 - 225 = 0; at (1,2,3), 686 + 539 - 1225 = 0. Option (c) (p+q+r) is 9 and 819 in those cases, so it is not the answer."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "\\(\\frac{2R^2}{R-r}\\)",
+      "confidence": "HIGH",
+      "reasoning": "A sphere of radius rho inscribed in the cone has its centre at distance rho/sin(theta) from the apex. The big sphere sits on the table (centre at height R) and the small one on top of it (centre at height 2R+r). So h - R = R/sin(theta) and h - 2R - r = r/sin(theta); subtracting gives R + r = (R-r)/sin(theta), so sin(theta) = (R-r)/(R+r). Then h = R + R(R+r)/(R-r) = 2R^2/(R-r) (sympy)."
+    },
+    {
+      "number": 40,
+      "answer": "B",
+      "value": "\\(\\frac{2R^2\\tan\\theta}{R-r}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The base of the cone is on the table, so its radius is h tan(theta) where h = 2R^2/(R-r) from the previous item. That gives 2R^2 tan(theta)/(R-r)."
+    },
+    {
+      "number": 41,
+      "answer": "D",
+      "value": "\\(2R = 3r\\)",
+      "confidence": "HIGH",
+      "reasoning": "Put A = (0,0), B = (4a,0), C = (2a,0), so S1 has radius 2a and S2, S3 radius a each; R = a. By symmetry S is centred at x = 2a with radius t: internal tangency to S1 gives centre height 2a - t, external tangency to S2 gives a^2 + (2a-t)^2 = (a+t)^2. sympy solves t = 2a/3, so 2R - 3r = 2a - 3(2a/3) = 0, i.e. 2R = 3r."
+    },
+    {
+      "number": 42,
+      "answer": "A",
+      "value": "\\(9m = 2n\\)",
+      "confidence": "HIGH",
+      "reasoning": "With r = 2a/3, m = pi(2a/3)^2 = 4*pi*a^2/9 and n = (1/2)pi(2a)^2 = 2*pi*a^2. sympy gives m/n = 2/9 exactly, so 9m = 2n."
+    },
+    {
+      "number": 43,
+      "answer": "D",
+      "value": "\\(1/m\\)",
+      "confidence": "HIGH",
+      "reasoning": "Cross-multiplying and cancelling, the equation reduces to 2Sx(m(x^2+ab) - (x^2+m^2 ab)) = 0 with S = a+b, so m(x^2+ab) = x^2 + m^2 ab. Therefore (x^2+ab)/(x^2+m^2 ab) = 1/m. sympy confirms the value 1/m at the root x^2 = mab."
+    },
+    {
+      "number": 44,
+      "answer": "A",
+      "value": "\\(\\pm\\sqrt{mab}\\)",
+      "confidence": "HIGH",
+      "reasoning": "From m(x^2+ab) = x^2 + m^2 ab we get x^2(m-1) = mab(m-1), so for m != 1, x^2 = mab and x = +/- sqrt(mab). sympy solve returns exactly {0, -sqrt(mab), +sqrt(mab)}; x = 0 is the degenerate root that makes both sides equal trivially, so the non-trivial answer is +/- sqrt(mab)."
+    },
+    {
+      "number": 45,
+      "answer": "B",
+      "value": "Rs. \\((20m + n)\\)",
+      "confidence": "HIGH",
+      "reasoning": "Bill = p*(rooms) + q*(units). Solving 8p+240q = 400 and 6p+200q = 320 gives p = 20, q = 1 (sympy). So the bill is 20m + n."
+    },
+    {
+      "number": 46,
+      "answer": "B",
+      "value": "Rs. 440",
+      "confidence": "HIGH",
+      "reasoning": "20(7) + 300 = 140 + 300 = 440."
+    },
+    {
+      "number": 47,
+      "answer": "C",
+      "value": "15",
+      "confidence": "HIGH",
+      "reasoning": "Class mid-points are 2300, 2800, 3300, 3800, 4300, 4800. Sum(f*x) = 126500 + 3300k and Sum(f) = 35 + k. Setting the mean to 3520 gives 126500 + 3300k = 123200 + 3520k, so 220k = 3300 and k = 15 (sympy solve)."
+    },
+    {
+      "number": 48,
+      "answer": "B",
+      "value": "Rs. 3,383",
+      "confidence": "HIGH",
+      "reasoning": "With k = 15 the total is N = 50, so N/2 = 25. Cumulative frequencies 5, 15, 30, ... put the median in the class 3050-3550 (cf before = 15, f = 15, width 500). Median = 3050 + (25-15)/15*500 = 3383.33, i.e. about Rs. 3,383."
+    },
+    {
+      "number": 49,
+      "answer": "A",
+      "value": "\\(1\\) and \\(\\frac{a+b-c}{a+b+c}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The coefficients sum to (a+b+c) - (2a+2b) + (a+b-c) = 0, so x = 1 is a root; sympy factors the quadratic with (x-1) as a factor. The product of the roots is (a+b-c)/(a+b+c), so the other root is (a+b-c)/(a+b+c). sympy solve returns exactly [1, (a+b-c)/(a+b+c)]."
+    },
+    {
+      "number": 50,
+      "answer": "A",
+      "value": "statement 1 only",
+      "confidence": "HIGH",
+      "reasoning": "The roots are 1 and (a+b-c)/(a+b+c). (1) With a, b, c all positive the numerator is smaller than the denominator and the denominator is positive, so that root is strictly less than 1 - correct. (2) With a, b, c all negative it need not be negative: a = -4, b = -5, c = -1 (real and distinct) gives (-8)/(-10) = 4/5 > 0, and a = -1, b = -2, c = -3 gives exactly 0. So statement 2 is false."
+    },
+    {
+      "number": 51,
+      "answer": "B",
+      "value": "14 cm",
+      "confidence": "HIGH",
+      "reasoning": "The sphere through the corners of a cuboid has the space diagonal as its diameter: sqrt(64+144+576) = sqrt(784) = 28, so the radius is 14 cm."
+    },
+    {
+      "number": 52,
+      "answer": "B",
+      "value": "18 cm",
+      "confidence": "HIGH",
+      "reasoning": "Radii are proportional to circumferences, so r_top/r_bottom = 30/40 = 3/4. If the vertex is H above the top end, similar triangles give H/(H+6) = 3/4, so H = 18 cm (sympy). Note this is the axial distance; the slant distance would be about 18.6, which is not an option."
+    },
+    {
+      "number": 53,
+      "answer": "D",
+      "value": "26",
+      "confidence": "HIGH",
+      "reasoning": "Need (1.2)^n > 100, i.e. n log(1.2) > 2. log(1.2) = 2log2 + log3 - 1 = 0.602 + 0.477 - 1 = 0.079, so n > 2/0.079 = 25.32. The least integer is 26."
+    },
+    {
+      "number": 54,
+      "answer": "B",
+      "value": "3 : 2",
+      "confidence": "HIGH",
+      "reasoning": "Cutting a corner triangle of side s from each vertex of an equilateral triangle of side 3s leaves a regular hexagon of side s. Triangle area = (sqrt3/4)(3s)^2 = 9sqrt3 s^2/4; hexagon area = 6(sqrt3/4)s^2 = 3sqrt3 s^2/2. The ratio is 3/2 (sympy)."
+    },
+    {
+      "number": 55,
+      "answer": "B",
+      "value": "5 : 4",
+      "confidence": "HIGH",
+      "reasoning": "Equal arcs give r1*theta1 = r2*theta2, so r1*60 = r2*75 and r1/r2 = 75/60 = 5/4."
+    },
+    {
+      "number": 56,
+      "answer": "C",
+      "value": "31.5 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Heron with s = 42: area ABC = sqrt(42*1*14*27) = 126 sq cm (the triangle is valid, 15+28 = 43 > 41). The medial triangle DEF is similar with ratio 1/2, so its area is 126/4 = 31.5 sq cm."
+    },
+    {
+      "number": 57,
+      "answer": "B",
+      "value": "11.2 cm",
+      "confidence": "HIGH",
+      "reasoning": "Heron with s = 21 gives area 84. Altitudes are 2*84/13 = 12.923, 2*84/14 = 12, 2*84/15 = 11.2; the smallest corresponds to the longest side, 11.2 cm."
+    },
+    {
+      "number": 58,
+      "answer": "D",
+      "value": "7.84 cm",
+      "confidence": "HIGH",
+      "reasoning": "pi*d - d = 16.8 with pi = 22/7 gives d(15/7) = 16.8, so d = 16.8*7/15 = 196/25 = 7.84 cm (sympy)."
+    },
+    {
+      "number": 59,
+      "answer": "B",
+      "value": "9 cm",
+      "confidence": "HIGH",
+      "reasoning": "With the right angle at B, AB^2 + BC^2 = 45 and 4AB^2 + 9BC^2 = 225. sympy gives AB^2 = 36, BC^2 = 9, so AB = 6, BC = 3 and AB + BC = 9 cm."
+    },
+    {
+      "number": 60,
+      "answer": "D",
+      "value": "154 square cm",
+      "confidence": "HIGH",
+      "reasoning": "The tangency point bisects the chord, so R^2 - r^2 = 7^2 = 49. The annulus area is pi(R^2-r^2) = (22/7)(49) = 154 sq cm."
+    },
+    {
+      "number": 61,
+      "answer": "B",
+      "value": "91 cm",
+      "confidence": "HIGH",
+      "reasoning": "Arc = r*theta with theta = 9 degrees = 9*(22/7)/180 radians. Solving r*(9*22/(7*180)) = 14.3 gives r = 91 cm (sympy)."
+    },
+    {
+      "number": 62,
+      "answer": "C",
+      "value": "29 m",
+      "confidence": "HIGH",
+      "reasoning": "With half-span 20 and rise 8, the centre is R-8 below the crown: R^2 = 20^2 + (R-8)^2, giving 16R = 464 and R = 29 m (sympy)."
+    },
+    {
+      "number": 63,
+      "answer": "B",
+      "value": "\\(-4b^2c^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "a is the hypotenuse (a > b > c), so c^2 = a^2 - b^2. Grouping, the product is [(a+b)^2-c^2][(a-b)^2-c^2] = [2b(a+b)][-2b(a-b)] = -4b^2(a^2-b^2) = -4b^2c^2. Checked on 3-4-5: 12*6*4*(-2) = -576 = -4(16)(9); and on 5-12-13: -14400 = -4(144)(25). Option (d) gives -1600 for the first case, so it is excluded."
+    },
+    {
+      "number": 64,
+      "answer": "C",
+      "value": "24",
+      "confidence": "HIGH",
+      "reasoning": "x^(1/3) = k/sqrt(y); x = 8 at y = 3 gives k = 2sqrt3. At y = 3^(1/3), sqrt(y) = 3^(1/6), so x^(1/3) = 2*3^(1/2-1/6) = 2*3^(1/3) and x = 8*3 = 24 (sympy)."
+    },
+    {
+      "number": 65,
+      "answer": "D",
+      "value": "28%",
+      "confidence": "HIGH",
+      "reasoning": "Radii 3, 4, 5: volumes 27+64+125 = 216 cubes, so the new radius is 6. Surface areas 4pi(9+16+25) = 200pi become 4pi(36) = 144pi. Diminution = 56/200 = 28% (sympy)."
+    },
+    {
+      "number": 66,
+      "answer": "D",
+      "value": "1.00 cm",
+      "confidence": "HIGH",
+      "reasoning": "Sphere volume = (4/3)pi(27) = 36pi. Hollow cylinder: pi(25 - r^2)(4) = 36pi gives r^2 = 16, r = 4 (sympy). Thickness = 5 - 4 = 1.00 cm."
+    },
+    {
+      "number": 67,
+      "answer": "B",
+      "value": "203 : 157",
+      "confidence": "HIGH",
+      "reasoning": "Taking capacities 1, 2, 3: milk = (1/3)(1) + (2/5)(2) + (3/4)(3) = 203/60; total = 6, so water = 157/60. Ratio 203:157 (exact rational arithmetic)."
+    },
+    {
+      "number": 68,
+      "answer": "C",
+      "value": "\\(x^6 - y^6\\)",
+      "confidence": "HIGH",
+      "reasoning": "x^4+x^2y^2+y^4 = (x^2+xy+y^2)(x^2-xy+y^2), x^3+y^3 = (x+y)(x^2-xy+y^2), x^3-y^3 = (x-y)(x^2+xy+y^2). sympy lcm returns (x-y)(x+y)(x^2-xy+y^2)(x^2+xy+y^2) = (x^2-y^2)(x^4+x^2y^2+y^4) = x^6-y^6."
+    },
+    {
+      "number": 69,
+      "answer": "C",
+      "value": "\\(\\frac{2x}{x+y-z}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Numerator = x^2-(y+z)^2 = (x-y-z)(x+y+z); first denominator = (x+y)^2-z^2 = (x+y-z)(x+y+z); second = (x-z)^2-y^2 = (x-y-z)(x+y-z). The fractions reduce to (x-y-z)/(x+y-z) and (x+y+z)/(x+y-z), summing to 2x/(x+y-z). sympy simplify returns exactly 2x/(x+y-z)."
+    },
+    {
+      "number": 70,
+      "answer": "C",
+      "value": "\\(n - 1\\)",
+      "confidence": "HIGH",
+      "reasoning": "t + 1/t = 2 forces t = 1, so tan A = 1 (A = 45 degrees, inside the given range). Every term tan^k A equals 1, and the exponents run from 2 to n, giving n - 1 terms and a sum of n - 1."
+    },
+    {
+      "number": 71,
+      "answer": "C",
+      "value": "both statements are identities",
+      "confidence": "HIGH",
+      "reasoning": "(1) (sin^3+cos^3)/(sin+cos) = sin^2 - sin cos + cos^2, so adding sin cos gives 1; sympy simplifies the whole left side to 1. (2) Writing everything in s = sin: (1-s^6) - (1-s^2)((1-s^2)^2 + 3s^2) expands to exactly 0, and the residual is 0 to machine precision at theta = 0.3, 0.9, 1.4, 2.2 and -0.7."
+    },
+    {
+      "number": 72,
+      "answer": "D",
+      "value": "\\(1/\\sqrt{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Substituting cos^4 = (1-s^2)^2 gives 16s^4 + 24s^2 - 7 = 0, whose roots are s^2 = 1/4 and -7/4 (rejected). So sin theta = 1/2, theta = 30 degrees and tan theta = 1/sqrt3 = 0.57735."
+    },
+    {
+      "number": 73,
+      "answer": "B",
+      "value": "\\(6a^2 + 2h^2 + ah\\)",
+      "confidence": "HIGH",
+      "reasoning": "Triangle area = (1/2)(2a)(h) = ah. Square on the base = (2a)^2 = 4a^2; each equal side is sqrt(a^2+h^2), so the two side squares contribute 2(a^2+h^2). Total = 4a^2 + 2a^2 + 2h^2 + ah = 6a^2 + 2h^2 + ah (sympy expand). I also checked the alternative reading that includes the three corner 'flank' triangles: each of those has area exactly ah, giving 6a^2+2h^2+4ah, which is not an option - so the intended figure is triangle plus three squares."
+    },
+    {
+      "number": 74,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "sympy simplifies p+q+r to 1 identically; hand check at (a,b,c) = (1,2,3): 1/2 - 4 + 9/2 = 1. Hence (p+q+r)^2 = 1."
+    },
+    {
+      "number": 75,
+      "answer": "D",
+      "value": "\\(a - b + c + 1\\)",
+      "confidence": "HIGH",
+      "reasoning": "a^2 - (b-c)^2 + (a+b-c) = (a-b+c)(a+b-c) + (a+b-c) = (a+b-c)(a-b+c+1). sympy factor returns exactly (a+b-c)(a-b+c+1), so a-b+c+1 is a factor."
+    },
+    {
+      "number": 76,
+      "answer": "B",
+      "value": "\\(x^2 - (a^2+b^2)x + a^2b^2 = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "Rearranging gives -(a+b)/[x(x+a+b)] = (a+b)/(ab), so x(x+a+b) = -ab and x^2+(a+b)x+ab = 0, i.e. (x+a)(x+b) = 0. sympy solve returns roots -a and -b. Their squares are a^2 and b^2, with sum a^2+b^2 and product a^2b^2, giving x^2 - (a^2+b^2)x + a^2b^2 = 0."
+    },
+    {
+      "number": 77,
+      "answer": "D",
+      "value": "20",
+      "confidence": "HIGH",
+      "reasoning": "The map f(t) = 6/(7-t) is a Mobius transformation with matrix [[0,6],[-1,7]] and eigenvalues 1 and 6, so its multiplier is 6 and f^4 has multiplier 6^4 = 1296 - hence f^4 has exactly the same fixed points as f. sympy solving f(f(f(f(x)))) = x returns exactly {1, 6}. With x > 1, x = 6 (checked: the depth-4 fraction evaluates to 6.0), and x^2-3x+2 = 36-18+2 = 20."
+    },
+    {
+      "number": 78,
+      "answer": "B",
+      "value": "62.5 m",
+      "confidence": "HIGH",
+      "reasoning": "L = (v-3)(5/18)(9) and L = (v-4)(5/18)(75/8). sympy gives v = 28 km/hr and L = 125/2 = 62.5 m."
+    },
+    {
+      "number": 79,
+      "answer": "C",
+      "value": "50%",
+      "confidence": "HIGH",
+      "reasoning": "With cost 1, SP = 1.2. At 20% less the cost is 0.8, so the profit is 0.4 on 0.8, i.e. 50%."
+    },
+    {
+      "number": 80,
+      "answer": "B",
+      "value": "\\(ab + bc + ca\\)",
+      "confidence": "HIGH",
+      "reasoning": "Substituting s = (a+b+c)/2, sympy simplifies the whole expression to ab + ac + bc. Hand check at (a,b,c) = (1,2,3), s = 3: 9 + 2 + 0 + 0 = 11 = ab+bc+ca; at (1,1,2), s = 2: 4 + 1 = 5 = 1+2+2."
+    },
+    {
+      "number": 81,
+      "answer": "A",
+      "value": "\\(5/3\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "Sphere volume = (4/3)pi(125) = 500pi/3 displaces water in a cylinder of radius 10: pi(100)h = 500pi/3, so h = 5/3 cm (sympy)."
+    },
+    {
+      "number": 82,
+      "answer": "C",
+      "value": "both statements are correct",
+      "confidence": "MED",
+      "reasoning": "(2) is certainly true: if opposite sides AB and CD of a cyclic quadrilateral are equal then arcs AB and CD are equal, so arc ABC = arc BCD and the diagonals AC and BD are equal - verified on concrete circles (A,B,C,D at 0,60,180,240 degrees and at 0,50,200,250 degrees, both giving equal diagonals). (1) is the classical Euclid III.31 proposition 'the angle in a SEGMENT greater than a semicircle is less than a right angle', which is true; the paper prints 'sector', evidently a typo for 'segment' - I have solved it as printed but read 'sector' the only way that makes the sentence a meaningful proposition. RUNNER-UP: B (2 only). If 'sector' is taken literally as the central angle of a sector, then a sector greater than a semicircle has a central angle above 180 degrees, which is NOT less than a right angle, and statement 1 would be false. Adjudicated by hand: Statement 1 is Euclid III.31 quoted almost verbatim, but the paper prints 'sector' where 'segment' is meant. Read as the segment theorem it is true and both statements hold, giving (c). Read literally a sector greater than a semicircle has a reflex central angle, which would make Statement 1 false and the answer (b). Statement 2 is provably true either way. Both blind passes independently identified the same slip."
+    },
+    {
+      "number": 83,
+      "answer": "C",
+      "value": "\\(a = b = c,\\ x = y = z = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "(a+b+c)^2 - 3(ab+bc+ca) = a^2+b^2+c^2-ab-bc-ca = (1/2)[(a-b)^2+(b-c)^2+(c-a)^2] >= 0. Adding the non-negative 3(x^2+y^2+z^2) and setting the total to 0 forces both parts to vanish: a = b = c and x = y = z = 0."
+    },
+    {
+      "number": 84,
+      "answer": "A",
+      "value": "\\(\\frac{5\\sqrt{11}}{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "AC is the hypotenuse, so AB = sqrt(144-100) = 2sqrt11. The altitude to the hypotenuse is p = (AB*BC)/AC = (2sqrt11*10)/12 = 5sqrt11/3 = 5.5277 (sympy)."
+    },
+    {
+      "number": 85,
+      "answer": "D",
+      "value": "340",
+      "confidence": "HIGH",
+      "reasoning": "p+q+r+s+t = 5(280) = 1400 and p+r+t = 3(240) = 720, so q+s = 680 and their mean is 340."
+    },
+    {
+      "number": 86,
+      "answer": "D",
+      "value": "18 years",
+      "confidence": "HIGH",
+      "reasoning": "Let the common gap be k, so B-C = E-G = D-E = k. With D = 3A, D+G = 32, A+E = 22, B+C = 22, sympy gives the unique solution A = 6, B = 12, C = 10, D = 18, E = 16, G = 14, k = 2. D's age is 18."
+    },
+    {
+      "number": 87,
+      "answer": "C",
+      "value": "14 years",
+      "confidence": "HIGH",
+      "reasoning": "Using the ages from the previous item, (12+10+18+16+14)/5 = 70/5 = 14 years."
+    },
+    {
+      "number": 88,
+      "answer": "B",
+      "value": "3 kg",
+      "confidence": "HIGH",
+      "reasoning": "D's age:weight = 9:20 with age 18 gives weight 40; A's 2:5 with age 6 gives 15. Then B = A+10 = 25 and C = B = 25; E = D-4 = 36, F = 32, G = 28. All are at most 40, as required. |G - C| = |28 - 25| = 3 kg."
+    },
+    {
+      "number": 89,
+      "answer": "A",
+      "value": "\\(\\frac{201}{7}\\) kg",
+      "confidence": "HIGH",
+      "reasoning": "15+25+25+40+36+32+28 = 201, so the average over seven cousins is 201/7 = 28.714 kg exactly."
+    },
+    {
+      "number": 90,
+      "answer": "D",
+      "value": "all three statements (1, 2 and 3) are correct",
+      "confidence": "HIGH",
+      "reasoning": "(1) F appears in no age relation at all (the age data links only A, B, C, D, E and G), so F's age is genuinely undetermined - correct. (2) (D+F)/2 = (40+32)/2 = 36 = E - correct. (3) Scanning all 21 pairwise weight differences, the maximum is 25 and it is attained uniquely by the pair (A, D) - correct."
+    },
+    {
+      "number": 91,
+      "answer": "D",
+      "value": "not determinable even with both statements - both m > n and m < n remain possible",
+      "confidence": "HIGH",
+      "reasoning": "Statement-I: m = 1-p^3 and n = 1+p^3, so m-n = -2p^3 and the sign depends entirely on the unknown p - insufficient. Statement-II alone is plainly insufficient. TOGETHER: 1-p^3 = p(1+p^3) gives p^4+p^3+p-1 = 0, which FACTORS as (p^2+p-1)(p^2+1), so its real roots are exactly p = (-1-sqrt5)/2 = -1.618 and p = (-1+sqrt5)/2 = 0.618 (sympy real_roots confirms exactly two). At p = -1.618, m = 5.236 > n = -3.236 (YES); at p = 0.618, m = 0.764 < n = 1.236 (NO). Both satisfy m = pn, so the two statements together still do not settle the question."
+    },
+    {
+      "number": 92,
+      "answer": "B",
+      "value": "either statement alone suffices; the other root is \\(\\frac{2+\\sqrt{10}}{2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Statement-I: other root = product / given root = [-(3/2)(3+sqrt10)] / [(-4-sqrt10)/2] = 3(3+sqrt10)/(4+sqrt10) = (2+sqrt10)/2 after rationalising - determined. Statement-II: other root = -1 - (-4-sqrt10)/2 = (2+sqrt10)/2 - determined. Both give the same value, so either alone answers the question."
+    },
+    {
+      "number": 93,
+      "answer": "A",
+      "value": "Statement-II alone suffices (the number is 640); Statement-I alone does not",
+      "confidence": "HIGH",
+      "reasoning": "The number is 100h+10t+0. Statement-I gives 90h-90t = 180, i.e. h-t = 2, satisfied by 200, 310, 420, 530, 640, 750, 860 and 970 - insufficient. Statement-II: halving the hundreds digit and swapping the tens and units digits gives 50h+t, and (100h+10t)-(50h+t) = 336 forces 50h+9t = 336, whose only digit solution is h = 6, t = 4 (exhaustive search over all h, t), giving 640 uniquely - sufficient. So exactly one statement alone answers it. (640 also satisfies I, so the two are consistent.)"
+    },
+    {
+      "number": 94,
+      "answer": "A",
+      "value": "Statement-I alone suffices (answer: yes, they are equal); Statement-II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "Statement-I: x^2+y^2+z^2-xy-yz-zx = (1/2)[(x-y)^2+(y-z)^2+(z-x)^2] = 0 forces x = y = z - sufficient (definite yes). Statement-II: x^3+y^3+z^3-3xyz = (x+y+z)(x^2+y^2+z^2-xy-yz-zx) = 0 holds either when x = y = z or when x+y+z = 0; (1,-1,0) satisfies it with the three unequal, while (1,1,1) satisfies it with them equal - insufficient."
+    },
+    {
+      "number": 95,
+      "answer": "C",
+      "value": "both together give \\(x : y : z = 2 : 3 : 4\\); neither alone suffices",
+      "confidence": "HIGH",
+      "reasoning": "I alone gives x^2+xz = yz, a one-parameter family: (x,y,z) = (1,2,1) and (1,1.5,2) both satisfy it with different ratios - insufficient. II alone gives z^2-yz = x^2, likewise satisfied by (1,1.5,2) and (1,8/3,3) - insufficient. Together, eliminating yz gives 2x^2+xz-z^2 = (2x-z)(x+z) = 0; z = -x forces y = 0, excluded, so z = 2x and then y = 3x/2. sympy solving both simultaneously returns the unique {y = 3x/2, z = 2x}, i.e. 2:3:4."
+    },
+    {
+      "number": 96,
+      "answer": "D",
+      "value": "not determinable; the sum could be 88, 120 or 216",
+      "confidence": "HIGH",
+      "reasoning": "I alone (LCM = 144) admits many pairs; II alone (one number is 72) says nothing about the other. Together, an exhaustive search finds LCM(72, n) = 144 for exactly n = 16, 48 and 144, giving sums 88, 120 and 216. The sum is therefore not determined even with both statements."
+    },
+    {
+      "number": 97,
+      "answer": "A",
+      "value": "Statement-I alone suffices (answer: no); Statement-II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "Order the numbers a <= b <= c <= d. The question 'is (a+d)/2 > (a+b+c+d)/4' is equivalent to a+d > b+c. Statement-I says d-c < b-a, i.e. a+d < b+c, which gives a definite NO - a statement forcing a definite 'no' is sufficient. Statement-II says d-a > c-b, i.e. b+d > a+c; that is essentially always true for sorted numbers and carries no information: (0,1,2,10) satisfies it with a+d = 10 > b+c = 3 (yes), while (0,4,5,6) satisfies it with a+d = 6 < b+c = 9 (no) - insufficient."
+    },
+    {
+      "number": 98,
+      "answer": "D",
+      "value": "not determinable; the question reduces to 'is c > b', which neither statement settles",
+      "confidence": "HIGH",
+      "reasoning": "(a-b+c) > (a+b-c) simplifies to 2c > 2b, i.e. c > b. Knowing b < 0 says nothing about c, and knowing c < 0 says nothing about b. Even with both: b = -1, c = -2 gives c < b (no), while b = -2, c = -1 gives c > b (yes). Not determinable."
+    },
+    {
+      "number": 99,
+      "answer": "C",
+      "value": "both together give Rs. 615; neither alone suffices",
+      "confidence": "HIGH",
+      "reasoning": "Each statement alone is one equation in three unknowns, and (15,21,18) is not a multiple of (7,6,5) or of (3,8,7), so neither alone determines the cost. Together, solving alpha(7,6,5) + beta(3,8,7) = (15,21,18) gives alpha = beta = 3/2 consistently across all three components (sympy), so the required cost is 1.5(200) + 1.5(210) = Rs. 615."
+    },
+    {
+      "number": 100,
+      "answer": "A",
+      "value": "Statement-II alone suffices (area 96 sq cm); Statement-I alone does not",
+      "confidence": "HIGH",
+      "reasoning": "A triangle inscribed in a semicircle on the diameter is right-angled at the third vertex (angle in a semicircle). Statement-I gives only the diameter 20, and the area varies with the vertex position from 0 up to 100 - insufficient. Statement-II gives the two legs as 12 and 16, so the area is (1/2)(12)(16) = 96 sq cm - sufficient. (Consistently, the hypotenuse is then 20, matching Statement-I.)"
+    }
+  ]
+}
