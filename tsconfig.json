@@ -23,6 +23,13 @@
     // throwaway probes ingestion agents write beside them. They are gitignored, but
     // tsc reads from disk regardless, so one agent's half-finished scratch file
     // turned the whole prepush gate red for everyone else during a parallel run.
-    "scripts/**/out"
+    "scripts/**/out",
+    // Ingestion agents' throwaway probes. They are conventionally underscore-
+    // prefixed but the prefix is NOT stable — a single parallel run produced
+    // _kt_, _ct_, _am_, _ss_, _so_, _ie_, _ec_, _cc_ and _tmp_. Chasing each one
+    // in .gitignore is a losing game, and tsc reads from disk regardless of git,
+    // so ONE agent's half-finished probe turns the whole prepush gate red for
+    // everyone else mid-run. Match the convention, not the prefixes.
+    "scripts/*/_*"
   ]
 }
