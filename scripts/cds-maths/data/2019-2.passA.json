@@ -1,0 +1,204 @@
+[
+  {
+    "number": 1,
+    "answer": "D",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "17 = -1 (mod 18) and 19 = 1 (mod 18), so 17^29 + 19^29 = (-1)^29 + 1^29 = -1 + 1 = 0 (mod 18). Confirmed by direct modular exponentiation in python: (pow(17,29,18)+pow(19,29,18))%18 = 0.",
+    "solution": "Modulo \\(18\\) we have \\(17 \\equiv -1\\) and \\(19 \\equiv 1\\). Hence \\(17^{29} \\equiv (-1)^{29} = -1\\) and \\(19^{29} \\equiv 1\\). Adding, \\(17^{29} + 19^{29} \\equiv -1 + 1 = 0 \\pmod{18}\\), so the remainder is \\(0\\)."
+  },
+  {
+    "number": 2,
+    "answer": "A",
+    "value": "65",
+    "confidence": "HIGH",
+    "reasoning": "10^n needs n factors of 2 and n of 5. Factor count computed with sympy factorint: powers of 2 total 5+16+7+36+6+28+11 = 109; powers of 5 total 3+6+12+14+30 = 65. min(109,65) = 65.",
+    "solution": "Each factor of \\(10\\) needs one \\(2\\) and one \\(5\\), so count both. The fives come from \\(5^3, 10^6, 15^{12}, 20^{14}\\) and \\(25^{15}\\), giving \\(3+6+12+14+30 = 65\\); the twos total \\(5+16+7+36+6+28+11 = 109\\). The scarcer prime decides, so the largest value is \\(n = 65\\)."
+  },
+  {
+    "number": 3,
+    "answer": "A",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "4+7+9+8+6+5 = 39, so 9 | (39+A+B) requires A+B = 6 or 15. With B odd: (5,1),(3,3),(1,5) from 6 and (8,7),(6,9) from 15. Exhaustive python search over all A in 0..9 and odd B returned exactly these 5 pairs.",
+    "solution": "The known digits sum to \\(39\\), so divisibility by \\(9\\) forces \\(A+B \\equiv 6 \\pmod 9\\), that is \\(A+B = 6\\) or \\(A+B = 15\\). Since the last digit \\(B\\) is odd, \\(A+B=6\\) gives \\((A,B) = (5,1), (3,3), (1,5)\\) and \\(A+B=15\\) gives \\((8,7), (6,9)\\). That is \\(5\\) pairs altogether."
+  },
+  {
+    "number": 4,
+    "answer": "D",
+    "value": "8, 6, 8, 8, 6, 7 (999 x 868 = 867132)",
+    "confidence": "HIGH",
+    "reasoning": "Searched all 3-digit N with 999N a 6-digit number ending in 132: unique solution N = 868, 999*868 = 867132. So abc = 868 and def = 867, giving a,b,c,d,e,f = 8,6,8,8,6,7.",
+    "solution": "Write \\(999 \\times abc = 1000\\,(abc) - abc\\); the last three digits are \\(132\\) only when \\(abc = 868\\), since \\(868000 - 868 = 867132\\). Reading off the product, \\(def = 867\\). Hence \\(a=8,\\ b=6,\\ c=8,\\ d=8,\\ e=6,\\ f=7\\)."
+  },
+  {
+    "number": 5,
+    "answer": "A",
+    "value": "120 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "Measuring t from 5 p.m.: 60t = 80(t-1) gives t = 4 h, meeting distance 240 km. Car C starts at 7 p.m. and covers 240 km in 2 h, so x = 120. sympy confirms t = 4 and x = 120.",
+    "solution": "Let the meeting be \\(t\\) hours after 5 p.m. Equating the first two distances, \\(60t = 80(t-1)\\), so \\(t = 4\\) and the meeting point is \\(240\\) km away. The third car travels for \\(4 - 2 = 2\\) hours, so \\(x = 240/2 = 120\\) km/hr."
+  },
+  {
+    "number": 6,
+    "answer": "C",
+    "value": "14 years",
+    "confidence": "HIGH",
+    "reasoning": "Search over ages: P-4 a cube of an integer > 1 and P+4 a perfect square gives P = 12 uniquely (8 = 2^3, 16 = 4^2). The excluded k = 1 case would give P = 5. Then need age A with A-1 a square and A+1 a cube: 25 and 27, so A = 26 and the wait is 26 - 12 = 14 years.",
+    "solution": "Four years ago her age was a cube and four years hence a square, and the only such age is \\(12\\), since \\(12-4 = 8 = 2^3\\) and \\(12+4 = 16 = 4^2\\). Later her age \\(A\\) must satisfy \\(A-1\\) a perfect square and \\(A+1\\) a perfect cube; the only close pair is \\(25\\) and \\(27\\), giving \\(A = 26\\). So she must wait \\(26 - 12 = 14\\) years."
+  },
+  {
+    "number": 7,
+    "answer": "C",
+    "value": "The claim that every number of the form 6n - 1 is prime",
+    "confidence": "HIGH",
+    "reasoning": "Two primes above 2 are both odd, so their difference is even (true). Euclid's lemma makes the p | mn statement true. The prime triplet 3, 5, 7 is the only one with consecutive gaps of 2 (true). But 6n-1 with n = 6 gives 35 = 5 x 7, composite, so that statement is false.",
+    "solution": "Numbers of the form \\(6n-1\\) need not be prime: taking \\(n = 6\\) gives \\(35 = 5 \\times 7\\). The other three claims hold, since two primes above \\(2\\) are both odd so their difference is even, a prime dividing a product must divide a factor, and \\(3, 5, 7\\) is the only prime triple with successive gaps of \\(2\\). So the false statement is the one about \\(6n-1\\) always being prime."
+  },
+  {
+    "number": 8,
+    "answer": "C",
+    "value": "5/2",
+    "confidence": "HIGH",
+    "reasoning": "x + (x+2)/(2x) = x + 1/2 + 1/x. By AM-GM x + 1/x >= 2 with equality at x = 1, so the minimum is 2 + 1/2 = 5/2. sympy minimum() over (0, oo) returns 5/2.",
+    "solution": "Split the fraction: \\(x + \\dfrac{x+2}{2x} = x + \\dfrac12 + \\dfrac1x\\). For \\(x > 0\\), \\(x + \\dfrac1x \\ge 2\\) with equality at \\(x = 1\\). So the least value is \\(2 + \\dfrac12 = \\dfrac52\\)."
+  },
+  {
+    "number": 9,
+    "answer": "A",
+    "value": "x = +/- (1/p) sqrt((2p - q)/q)",
+    "confidence": "HIGH",
+    "reasoning": "Squaring and cross-multiplying gives (1+px)^2(1-qx) = (1-px)^2(1+qx), which reduces to 4px = 2qx(1 + p^2x^2); dividing by the non-zero x gives p^2x^2 = (2p-q)/q, i.e. x = +/- (1/p)sqrt((2p-q)/q). sympy solve on the cross-multiplied equation returns exactly sqrt(2p-q)/(p*sqrt(q)). Numerically verified to give LHS = 1 for (p,q) = (1,1.5), (2,3), (3,4), (5,7), (2,2.5) at BOTH signs. Note: for parameter values outside p < q <= 2p the same root makes the printed left side equal -1 rather than +1, an artefact of squaring; the condition 2p != q printed alongside this option matches the derivation exactly. Options B and C require sqrt(p-q) and D forces 1-qx < 0, so none of them is a solution.",
+    "solution": "Rearranging and squaring gives \\((1+px)^2(1-qx) = (1-px)^2(1+qx)\\). Expanding, the terms cancel down to \\(4px = 2qx\\left(1 + p^2x^2\\right)\\), and dividing by the non-zero \\(x\\) leaves \\(p^2x^2 = \\dfrac{2p-q}{q}\\). Hence \\(x = \\pm\\dfrac{1}{p}\\sqrt{\\dfrac{2p-q}{q}}\\), which requires \\(2p \\ne q\\) so that \\(x\\) is not zero."
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "value": "44%",
+    "confidence": "HIGH",
+    "reasoning": "Collection = rent x rooms, so the multiplier is 1.2 x 1.2 = 1.44, an increase of 44%.",
+    "solution": "Total collection is rent per room multiplied by the number of rooms. Each rises by \\(20\\%\\), so the collection is multiplied by \\(1.2 \\times 1.2 = 1.44\\). That is an increase of \\(44\\%\\)."
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "value": "6 km",
+    "confidence": "HIGH",
+    "reasoning": "d/8 - d/10 = 9/60 hour. Left side is d/40, so d = 40 x 0.15 = 6 km.",
+    "solution": "If the distance is \\(d\\) km, the times differ by \\(\\dfrac{d}{8} - \\dfrac{d}{10} = \\dfrac{d}{40}\\) hours. This equals \\(9\\) minutes \\(= \\dfrac{9}{60}\\) hour, so \\(d = 40 \\times \\dfrac{9}{60} = 6\\). The school is \\(6\\) km away."
+  },
+  {
+    "number": 12,
+    "answer": "B",
+    "value": "0 and -2",
+    "confidence": "HIGH",
+    "reasoning": "Put y = 3^x: 9y + 1/y = 10 gives 9y^2 - 10y + 1 = 0, so y = 1 or y = 1/9, i.e. x = 0 or x = -2. sympy solve returns [-2, 0].",
+    "solution": "Substituting \\(y = 3^{x}\\) turns the equation into \\(9y + \\dfrac1y = 10\\), that is \\(9y^{2} - 10y + 1 = 0\\). This factorises as \\((9y-1)(y-1) = 0\\), so \\(y = 1\\) or \\(y = \\dfrac19\\). Therefore \\(3^{x} = 1\\) or \\(3^{x} = 3^{-2}\\), giving \\(x = 0\\) and \\(x = -2\\)."
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "value": "21",
+    "confidence": "HIGH",
+    "reasoning": "log(108^10) = 10(2 log 2 + 3 log 3) = 10(0.602 + 1.431) = 20.33, so the number of digits is 20 + 1 = 21. Cross-checked against len(str(108**10)) = 21.",
+    "solution": "Since \\(108 = 2^2 \\times 3^3\\), \\(\\log_{10}(108)^{10} = 10\\,(2\\log_{10}2 + 3\\log_{10}3) = 10\\,(0.602 + 1.431) = 20.33\\). The number of digits is the integer part plus one. So \\((108)^{10}\\) has \\(21\\) digits."
+  },
+  {
+    "number": 14,
+    "answer": "D",
+    "value": "None of the printed values; the three primes are 2, 31 and 67",
+    "confidence": "HIGH",
+    "reasoning": "An odd sum of three odd primes cannot be 100, so one prime is 2 and the other two sum to 98. With a difference of 36 they are 67 and 31, both prime. Exhaustive python search over all prime triples summing to 100 with some pair differing by 36 returns only {2, 31, 67}. Since 17, 29 and 43 are all absent from this set, the correct choice is the none-of-these option.",
+    "solution": "Three odd primes sum to an odd number, so one of them must be \\(2\\) and the other two sum to \\(98\\). If they differ by \\(36\\), they are \\(67\\) and \\(31\\), and both are prime. The three numbers are therefore \\(2, 31\\) and \\(67\\), none of which is \\(17\\), \\(29\\) or \\(43\\), so none of the listed values occurs."
+  },
+  {
+    "number": 15,
+    "answer": "B",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Unwinding: 23/16 = 1 + 7/16 gives a = 1; 16/7 = 2 + 2/7 gives b = 2; 7/2 - 1/2 = 3 gives c = 3. Exhaustive exact-fraction search over a,b,c in 1..9 returns the unique triple (1,2,3), mean 2.",
+    "solution": "Inverting, \\(a + \\cfrac{1}{b + \\cfrac{1}{c + \\frac12}} = \\dfrac{23}{16} = 1 + \\dfrac{7}{16}\\), so \\(a = 1\\). Then \\(b + \\cfrac{1}{c+\\frac12} = \\dfrac{16}{7} = 2 + \\dfrac27\\), so \\(b = 2\\) and \\(c + \\dfrac12 = \\dfrac72\\), giving \\(c = 3\\). The mean of \\(1, 2, 3\\) is \\(2\\)."
+  },
+  {
+    "number": 16,
+    "answer": "A",
+    "value": "20,000",
+    "confidence": "HIGH",
+    "reasoning": "Only I = 10-8-2+1 = 1%, only II = 30-8-4+1 = 19%, only III = 5-4-2+1 = 0%. Total 20% of 1,00,000 = 20,000. Consistency check: 20% (exactly one) + 12% (at least two) = 32% = the union computed independently.",
+    "solution": "Subtracting the overlaps, the percentage reading only the first paper is \\(10-8-2+1 = 1\\%\\), only the second \\(30-8-4+1 = 19\\%\\), and only the third \\(5-4-2+1 = 0\\%\\). These add to \\(20\\%\\) of the population. That is \\(20{,}000\\) people."
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "value": "12,000",
+    "confidence": "HIGH",
+    "reasoning": "Exactly two = (8-1)+(4-1)+(2-1) = 11%, all three = 1%, so at least two = 12% of 1,00,000 = 12,000. Equivalently 8+4+2-2(1) = 12%.",
+    "solution": "Those reading exactly two papers make up \\((8-1)+(4-1)+(2-1) = 11\\%\\), and \\(1\\%\\) read all three. Hence \\(12\\%\\) read at least two. Out of \\(1{,}00{,}000\\) that is \\(12{,}000\\) people."
+  },
+  {
+    "number": 18,
+    "answer": "D",
+    "value": "68,000",
+    "confidence": "HIGH",
+    "reasoning": "Union = 10+30+5-8-4-2+1 = 32%, so 68% read none, i.e. 68,000. Cross-checks against 20% reading exactly one plus 12% reading at least two.",
+    "solution": "By inclusion and exclusion the percentage reading at least one paper is \\(10+30+5-8-4-2+1 = 32\\%\\). So \\(100 - 32 = 68\\%\\) read none of them. That is \\(68{,}000\\) people."
+  },
+  {
+    "number": 19,
+    "answer": "C",
+    "value": "7",
+    "confidence": "HIGH",
+    "reasoning": "Unit digits of powers of 7 cycle 7, 9, 3, 1 with period 4; 73 = 4(18) + 1, so the unit digit is 7. pow(7,73,10) = 7.",
+    "solution": "The unit digits of \\(7^1, 7^2, 7^3, 7^4\\) are \\(7, 9, 3, 1\\), repeating with period \\(4\\). Since \\(73 = 4 \\times 18 + 1\\), the exponent leaves remainder \\(1\\). So \\(7^{73}\\) ends in the same digit as \\(7^1\\), namely \\(7\\)."
+  },
+  {
+    "number": 20,
+    "answer": "C",
+    "value": "Three (n = 1, 4, 11)",
+    "confidence": "HIGH",
+    "reasoning": "n^2 + 48 = m^2 gives (m-n)(m+n) = 48 with both factors of equal parity: 2x24, 4x12, 6x8 yield n = 11, 4, 1. Brute-force scan of n up to 10000 returns exactly [1, 4, 11].",
+    "solution": "Writing \\(n^2 + 48 = m^2\\) gives \\((m-n)(m+n) = 48\\), and the two factors must have the same parity. The even factor pairs \\(2 \\times 24,\\ 4 \\times 12,\\ 6 \\times 8\\) give \\(n = 11, 4, 1\\), since \\(1+48=49\\), \\(16+48=64\\) and \\(121+48=169\\) are squares. So there are three such values of \\(n\\)."
+  },
+  {
+    "number": 21,
+    "answer": "D",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Rationalising, x = 4sqrt6(sqrt3 - sqrt2). Using componendo-dividendo on x/(2sqrt2) = 2sqrt3/(sqrt2+sqrt3) and x/(2sqrt3) = 2sqrt2/(sqrt2+sqrt3), the two fractions become (3sqrt3+sqrt2)/(sqrt3-sqrt2) and (3sqrt2+sqrt3)/(sqrt2-sqrt3); their sum telescopes to 2(sqrt3-sqrt2)/(sqrt3-sqrt2) = 2. sympy simplify gives exactly 2 and N(...,20) gives 2.0000000000000000000.",
+    "solution": "Rationalising the denominator, \\(x = 4\\sqrt6\\,(\\sqrt3-\\sqrt2)\\), so \\(\\dfrac{x}{2\\sqrt2} = \\dfrac{2\\sqrt3}{\\sqrt2+\\sqrt3}\\) and \\(\\dfrac{x}{2\\sqrt3} = \\dfrac{2\\sqrt2}{\\sqrt2+\\sqrt3}\\). Applying componendo and dividendo, the two fractions are \\(\\dfrac{3\\sqrt3+\\sqrt2}{\\sqrt3-\\sqrt2}\\) and \\(\\dfrac{3\\sqrt2+\\sqrt3}{\\sqrt2-\\sqrt3}\\). Their sum is \\(\\dfrac{2\\sqrt3-2\\sqrt2}{\\sqrt3-\\sqrt2} = 2\\)."
+  },
+  {
+    "number": 22,
+    "answer": "D",
+    "value": "75",
+    "confidence": "HIGH",
+    "reasoning": "x = 0.3z, y = 0.4z, so x/y = 3/4 = 0.75, i.e. p = 75.",
+    "solution": "Taking \\(x = 0.3z\\) and \\(y = 0.4z\\), the ratio is \\(\\dfrac{x}{y} = \\dfrac{0.3z}{0.4z} = \\dfrac34\\). As a percentage that is \\(75\\%\\). Hence \\(p = 75\\)."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "value": "105 seconds",
+    "confidence": "MED",
+    "reasoning": "The path is a circle and the plane passes vertically above P, so P lies on that circle; equal elevation means equal horizontal distance, i.e. equal chord from P. Angular speed is 360/180 = 2 deg/s, so the plane turns 60 deg in 30 s. Equal chords require the two angular positions to satisfy th1 + th2 = 360. An exhaustive scan over all integer starting angles found EXACTLY TWO configurations: th = 150 -> 210, which reaches P after a further 210 deg = 105 s; and th = 330 -> 30, which reaches P after 30 deg = 15 s. Both satisfy the stem as printed, so the question admits two answers, but only 105 s is offered. RUNNER-UP: no printed option is defensible as a rival - the rival VALUE is 15 s, which appears in none of the four options. If the intended configuration were the one where the plane is nearest P between the two observations, the answer would be the unprinted 15 s.",
+    "runnerUp": "None of the printed options; the rival value is an unprinted 15 seconds",
+    "runnerUpIf": "If the two equal-elevation instants straddle the point directly above P (plane at 330 deg then 30 deg) rather than straddling the diametrically opposite point, the answer is 15 seconds, which is not among the choices.",
+    "solution": "The plane passes directly over \\(P\\), so \\(P\\) lies on the circular path, and equal elevation means equal horizontal distance from \\(P\\). The plane turns \\(\\dfrac{360^\\circ}{180} = 2^\\circ\\) per second, so in \\(30\\) seconds it turns \\(60^\\circ\\), and the two equal positions lie symmetrically about the point of the circle farthest from \\(P\\), at \\(150^\\circ\\) and \\(210^\\circ\\) from \\(P\\). It then needs a further \\(210^\\circ\\), that is \\(105\\) seconds, to reach \\(P\\). Note that the stem also allows the symmetric pair \\(330^\\circ\\) and \\(30^\\circ\\), which would give \\(15\\) seconds, so the question as set has two valid answers and only one of them is offered."
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "value": "All three statements (1, 2 and 3)",
+    "confidence": "HIGH",
+    "reasoning": "Relatively prime means gcd 1, which places no primality constraint: 3 and 5 are both prime and coprime; 4 and 9 are both composite and coprime; 3 and 4 are one prime and one composite and coprime. All three statements are correct.",
+    "solution": "Being relatively prime only means the greatest common divisor is \\(1\\), which says nothing about whether either number is prime. Both can be prime, as with \\(3\\) and \\(5\\); both can be composite, as with \\(4\\) and \\(9\\); and one of each is possible, as with \\(3\\) and \\(4\\). So all three statements are correct."
+  },
+  {
+    "number": 25,
+    "answer": "A",
+    "value": "25",
+    "confidence": "HIGH",
+    "reasoning": "With g girls, 24g + 32(100-g) = 3000 gives 3200 - 8g = 3000, so g = 25. Alligation: (32-30):(30-24) = 2:6 = 1:3, so girls are 100/4 = 25.",
+    "solution": "If there are \\(g\\) girls, the total weight gives \\(24g + 32(100-g) = 100 \\times 30 = 3000\\). This simplifies to \\(3200 - 8g = 3000\\), so \\(g = 25\\). There are \\(25\\) girls in the class."
+  }
+]

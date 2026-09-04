@@ -1,0 +1,810 @@
+[
+  {
+    "number": 1,
+    "answer": "D",
+    "value": "23, 31, 37",
+    "confidence": "HIGH",
+    "reasoning": "Factorisation gives 26381 = 23 x 31 x 37 (confirmed by sympy factorint: {23:1, 31:1, 37:1}). The other printed triples multiply to A 18241, B 24769, C 9139 — none is 26381.",
+    "solution": "Factorising the number gives \\(26381 = 23 \\times 31 \\times 37\\), and each of these three is prime. The other listed triples multiply to \\(18241\\), \\(24769\\) and \\(9139\\), none of which is \\(26381\\). So the distinct prime factors are \\(23\\), \\(31\\) and \\(37\\)."
+  },
+  {
+    "number": 2,
+    "answer": "D",
+    "value": "\\(x-7\\)",
+    "confidence": "HIGH",
+    "reasoning": "At x = 7 the expression is 6*5*3 - 90 = 0, so (x-7) divides it. Full factorisation is (x-7)(x^2+14), whose quadratic factor is irreducible over the reals, so x+14, x-14 and x-6 are all non-factors.",
+    "solution": "Substituting \\(x=7\\) gives \\((7-1)(7-2)(7-4)-90 = 90-90 = 0\\), so \\(x-7\\) is a factor. In fact \\((x-1)(x-2)(x-4)-90 = (x-7)(x^2+14)\\), and the remaining quadratic has no real linear factor, so none of the other choices divides the polynomial."
+  },
+  {
+    "number": 3,
+    "answer": "C",
+    "value": "\\(\\sqrt{3}-2\\sqrt{5} = -2.7401\\ldots\\) (the principal square root is \\(2\\sqrt{5}-\\sqrt{3}\\))",
+    "confidence": "MED",
+    "runnerUp": "no option correct (paper defective)",
+    "runnerUpIf": "the radical is read strictly as the PRINCIPAL (non-negative) square root, in which case the true value 2*sqrt(5) - sqrt(3) = +2.7401 is not printed at all and the correct verdict is 'no option'.",
+    "reasoning": "23 - 4*sqrt(15) = (2*sqrt5)^2 + (sqrt3)^2 - 2*(2*sqrt5)*(sqrt3) = (2*sqrt5 - sqrt3)^2, so the two square roots are +/-(2*sqrt5 - sqrt3) = +/-2.740085. Option C is sqrt3 - 2*sqrt5 = -2.740085, and sympy confirms C^2 - (23-4*sqrt15) = 0 exactly. Squares of the other options are 3.2154, 0.0851 and 22.0161, none equal to 7.50807. So C is the ONLY option that squares back to the given number, but the paper has printed the two terms in reversed order, giving the negative root. MED because under the usual convention the radical denotes the principal root, which is not printed.",
+    "solution": "Since \\(23-4\\sqrt{15} = (2\\sqrt{5})^2 + (\\sqrt{3})^2 - 2\\cdot 2\\sqrt{5}\\cdot\\sqrt{3} = (2\\sqrt{5}-\\sqrt{3})^2\\), the two square roots are \\(\\pm(2\\sqrt{5}-\\sqrt{3})\\). Only \\(\\sqrt{3}-2\\sqrt{5}\\) squares back to \\(23-4\\sqrt{15}\\); the other choices square to about \\(3.22\\), \\(0.09\\) and \\(22.02\\). Note that the paper has printed the two terms the wrong way round, so this option is the negative square root — the principal square root is \\(2\\sqrt{5}-\\sqrt{3}\\)."
+  },
+  {
+    "number": 4,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "37 = 4*9 + 1, so 37 is congruent to 1 mod 9 and 37^1000 is congruent to 1^1000 = 1. Python pow(37,1000,9) returns 1.",
+    "solution": "Since \\(37 = 4\\times 9 + 1\\), we have \\(37 \\equiv 1 \\pmod 9\\). Raising to the thousandth power, \\(37^{1000} \\equiv 1^{1000} = 1 \\pmod 9\\). So the remainder is \\(1\\)."
+  },
+  {
+    "number": 5,
+    "answer": "B",
+    "value": "480",
+    "confidence": "HIGH",
+    "reasoning": "LCM + HCF = 536 and LCM - HCF = 296 give LCM = 416, HCF = 120. Product of the two numbers = LCM x HCF = 49920, so the other number is 49920/104 = 480, which is printed. DEFECT: the data is internally inconsistent — an HCF of 120 cannot divide 104 — and gcd(104,480) = 8 with lcm 6240, so no actual pair of integers satisfies the stem. The computation is nevertheless forced and no rival option exists, hence HIGH.",
+    "solution": "Adding and subtracting the two given relations gives \\(\\text{LCM} = 416\\) and \\(\\text{HCF} = 120\\). Since the product of two numbers equals the product of their LCM and HCF, the other number is \\(\\dfrac{416\\times 120}{104} = 480\\). The data is not self-consistent, though — an HCF of \\(120\\) cannot divide \\(104\\) — so no actual pair of numbers fits the stem."
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "value": "40 more men",
+    "confidence": "HIGH",
+    "reasoning": "20 men x 5 days = 100 man-days produced one quarter of the work, so the whole job is 400 man-days. The remaining three quarters is 300 man-days and only 5 days remain, needing 300/5 = 60 men; 60 - 20 = 40 extra.",
+    "solution": "In \\(5\\) days, \\(20\\) men completed \\(\\tfrac14\\) of the work, so \\(100\\) man-days do a quarter and the whole job is \\(400\\) man-days. The remaining \\(\\tfrac34\\) is \\(300\\) man-days with only \\(5\\) days left, so \\(300/5 = 60\\) men are needed. That is \\(60-20 = 40\\) more men."
+  },
+  {
+    "number": 7,
+    "answer": "B",
+    "value": "statements 1, 2 and 4",
+    "confidence": "HIGH",
+    "reasoning": "x < 0. (1) k natural means k > 0, so kx < 0 always — statement 1 is FALSE. (2) x = -0.5 gives x^2 + x = -0.25 < 0, so 'always' is FALSE. (3) x < 0 gives both 2x < x and x < -x, so statement 3 is TRUE. (4) x = -2^(1/4) gives x^2 = sqrt(2), irrational, so 'always rational' is FALSE. The not-correct set is {1, 2, 4}.",
+    "solution": "For \\(x<0\\) and any natural number \\(k\\) we have \\(kx<0\\), so the first statement fails. Taking \\(x=-\\tfrac12\\) gives \\(x^2+x=-\\tfrac14<0\\), and taking \\(x=-2^{1/4}\\) gives \\(x^2=\\sqrt{2}\\), which is irrational, so the second and fourth fail too. Only \\(2x<x<-x\\) is true for every negative \\(x\\), so the statements that are not correct are \\(1\\), \\(2\\) and \\(4\\)."
+  },
+  {
+    "number": 8,
+    "answer": "C",
+    "value": "\\(3x+2y\\)",
+    "confidence": "HIGH",
+    "reasoning": "sympy factor gives 2x^2 + xy - 3y^2 = (2x + 3y)(x - y). Sum of the two linear factors = (2x+3y) + (x-y) = 3x + 2y.",
+    "solution": "Factorising, \\(2x^2+xy-3y^2 = (2x+3y)(x-y)\\). Adding the two linear factors gives \\((2x+3y)+(x-y) = 3x+2y\\)."
+  },
+  {
+    "number": 9,
+    "answer": "D",
+    "value": "\\(4x^2+9x+6=0\\)",
+    "confidence": "HIGH",
+    "reasoning": "Discriminants b^2-4ac: 256-24 = 232, 100+8 = 108, 64-4 = 60, 81-96 = -15. Only the last is negative, so only 4x^2+9x+6=0 lacks real roots.",
+    "solution": "Comparing discriminants \\(b^2-4ac\\), the first three give \\(232\\), \\(108\\) and \\(60\\), all positive. The equation \\(4x^2+9x+6=0\\) gives \\(81-96=-15<0\\), and a negative discriminant means the roots are not real."
+  },
+  {
+    "number": 10,
+    "answer": "B",
+    "value": "\\(x^2-8x+12=0\\)",
+    "confidence": "HIGH",
+    "reasoning": "The original equation is x^2 - 7x + 12 = 0 with roots 3 and 4. Halving the bigger root gives 2, doubling the smaller gives 6. New sum 8, new product 12, so x^2 - 8x + 12 = 0.",
+    "solution": "The roots satisfy \\(x^2-7x+12=0\\), so they are \\(3\\) and \\(4\\). Halving the larger and doubling the smaller gives \\(2\\) and \\(6\\), whose sum is \\(8\\) and product is \\(12\\). The resulting equation is therefore \\(x^2-8x+12=0\\)."
+  },
+  {
+    "number": 11,
+    "answer": "D",
+    "value": "\\(k<-2\\sqrt{2}\\) or \\(k>2\\sqrt{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Real and distinct roots require k^2 - 8 > 0, i.e. |k| > 2*sqrt(2). That is exactly k < -2*sqrt2 OR k > 2*sqrt2; the options restricting to one branch only are incomplete and the interval option has the inequality reversed.",
+    "solution": "Real and distinct roots need a positive discriminant: \\(k^2-8>0\\), that is \\(k^2>8\\). Hence \\(|k|>2\\sqrt{2}\\), which means \\(k<-2\\sqrt{2}\\) or \\(k>2\\sqrt{2}\\). Restricting to just one of these two branches would miss half the values."
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "value": "\\(1-\\alpha\\beta\\gamma\\)",
+    "confidence": "HIGH",
+    "reasoning": "Expanding gives 1 - (a+b+g) + (ab+bg+ga) - abg. The hypothesis makes the two symmetric sums equal so they cancel, leaving 1 - abg. sympy confirms the substitution yields 1 - alpha*beta*gamma.",
+    "solution": "Expanding, \\((1-\\alpha)(1-\\beta)(1-\\gamma)=1-(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)-\\alpha\\beta\\gamma\\). The given condition makes the second and third brackets equal, so they cancel. What remains is \\(1-\\alpha\\beta\\gamma\\)."
+  },
+  {
+    "number": 13,
+    "answer": "D",
+    "value": "10",
+    "confidence": "HIGH",
+    "reasoning": "log x + log x^2 = 3 log x, so 3 log x = 2 log x + 1 gives log x = 1 and x = 10. sympy solve returns [10].",
+    "solution": "Since \\(\\log_{10}x^2 = 2\\log_{10}x\\), the left side is \\(3\\log_{10}x\\). The equation becomes \\(3\\log_{10}x = 2\\log_{10}x+1\\), so \\(\\log_{10}x=1\\) and hence \\(x=10\\)."
+  },
+  {
+    "number": 14,
+    "answer": "C",
+    "value": "74",
+    "confidence": "HIGH",
+    "reasoning": "For two distinct primes the LCM is their product, so pq = 2231 = 23 x 97 (sympy factorint). With p > q this gives p = 97, q = 23 and p - q = 74.",
+    "solution": "For two distinct primes the LCM is simply their product, so \\(pq = 2231 = 23\\times 97\\). With \\(p>q\\) this gives \\(p=97\\) and \\(q=23\\). Hence \\(p-q=74\\)."
+  },
+  {
+    "number": 15,
+    "answer": "D",
+    "value": "after 7 hours (420 minutes)",
+    "confidence": "HIGH",
+    "reasoning": "LCM(20, 30, 35) = 2^2 * 3 * 5 * 7 = 420 minutes = 7 hours.",
+    "solution": "They next meet at the starting point after \\(\\operatorname{LCM}(20,30,35)\\) minutes. Since \\(20=2^2\\cdot 5\\), \\(30=2\\cdot 3\\cdot 5\\) and \\(35=5\\cdot 7\\), the LCM is \\(2^2\\cdot 3\\cdot 5\\cdot 7=420\\) minutes. That is \\(7\\) hours."
+  },
+  {
+    "number": 16,
+    "answer": "B",
+    "value": "Rs. 75",
+    "confidence": "HIGH",
+    "reasoning": "Two equations in three unknowns, but the requested combination is determined. Solving gives e = p - 5 and n = 95/2 - 2p, so 2n + 4e = 95 - 4p + 4p - 20 = 75 identically. Equivalently (3/4) x eq1 minus (5/8) x eq2 eliminates pencils exactly and yields 187.5 - 112.5 = 75.",
+    "solution": "The two conditions are \\(5p+6n+7e=250\\) and \\(6p+4n+2e=180\\). Taking \\(\\tfrac34\\) of the first minus \\(\\tfrac58\\) of the second cancels the pencils exactly and leaves \\(2n+4e\\), giving \\(\\tfrac34(250)-\\tfrac58(180)=187.5-112.5=75\\). So two notebooks and four erasers cost \\(\\text{Rs. }75\\), even though the individual prices are not determined."
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "value": "262",
+    "confidence": "HIGH",
+    "reasoning": "In the product the factor k carries exponent 51-k. Sum of v5(k)*(51-k) over k = 1..50 is 46+41+36+31+52+21+16+11+6+2 = 262; the corresponding sum for the prime 2 is 1139. Trailing zeros = min(262, 1139) = 262.",
+    "solution": "In \\(1^{50}\\times 2^{49}\\times 3^{48}\\times\\cdots\\times 50^{1}\\) the factor \\(k\\) carries the exponent \\(51-k\\). Counting powers of \\(5\\) over the multiples of \\(5\\) gives \\(46+41+36+31+52+21+16+11+6+2=262\\), while the matching count for the prime \\(2\\) is \\(1139\\). The number of trailing zeros is the smaller of the two, namely \\(262\\)."
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "value": "\\(p-2q+27=0\\)",
+    "confidence": "HIGH",
+    "reasoning": "x^2 - 60x + 899 = (x-31)(x-29), so p = 31, q = 29. Evaluating: p-q-1 = 1, p-2q+27 = 0, 2p-q-30 = 3, 3p-2q-43 = -8. Only the second vanishes.",
+    "solution": "Since \\(x^2-60x+899=(x-31)(x-29)\\), the roots are \\(p=31\\) and \\(q=29\\). Then \\(p-2q+27 = 31-58+27 = 0\\). The other three expressions evaluate to \\(1\\), \\(3\\) and \\(-8\\), so none of them vanishes."
+  },
+  {
+    "number": 19,
+    "answer": "D",
+    "value": "0.0001",
+    "confidence": "HIGH",
+    "reasoning": "Real roots require the discriminant 16 + 4*log10(N) >= 0, i.e. log10(N) >= -4, so N >= 10^-4 = 0.0001. That least value is printed.",
+    "solution": "Real roots require the discriminant to be non-negative: \\(16+4\\log_{10}N \\ge 0\\), so \\(\\log_{10}N \\ge -4\\). Hence \\(N \\ge 10^{-4}\\), and the minimum value of \\(N\\) is \\(0.0001\\)."
+  },
+  {
+    "number": 20,
+    "answer": "D",
+    "value": "\\(2\\log_{10}5 \\approx 1.3979\\)",
+    "confidence": "HIGH",
+    "reasoning": "Taking log10 of both sides: (x-1)log5 = log5 * log(5/2) = log5 (log5 - log2). Cancelling log5 gives x - 1 = log5 - log2 = (1 - log2) - log2 = 1 - 2log2, so x = 2 - 2log2 = 2log5. sympy returns 2*log(5)/log(10) = 1.39794, matching numerically.",
+    "solution": "Taking \\(\\log_{10}\\) of both sides gives \\((x-1)\\log 5 = \\log 5\\cdot\\log 2.5 = \\log 5\\,(\\log 5-\\log 2)\\). Cancelling \\(\\log 5\\) leaves \\(x-1=\\log 5-\\log 2\\), and since \\(\\log 5 = 1-\\log 2\\) this is \\(1-2\\log 2\\). Hence \\(x = 2-2\\log 2 = 2\\log_{10}5\\)."
+  },
+  {
+    "number": 21,
+    "answer": "C",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "sympy confirms 96 - 64a^3 + 8/a^6 - 48/a^3 equals (2/a^2 - 4a)^3 identically. Hence t = 2/a^2 - 4a and a^2*t + 4a^3 = 2 - 4a^3 + 4a^3 = 2, independent of a.",
+    "solution": "The left-hand expression is a perfect cube: \\(96-64a^3+\\dfrac{8}{a^6}-\\dfrac{48}{a^3} = \\left(\\dfrac{2}{a^2}-4a\\right)^{3}\\). So \\(t = \\dfrac{2}{a^2}-4a\\), and therefore \\(a^2t+4a^3 = 2-4a^3+4a^3 = 2\\), whatever the value of \\(a\\)."
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "value": "\\(x-3\\)",
+    "confidence": "HIGH",
+    "reasoning": "2B = (A+B) - (A-B) = [(x^2-8) - (-x^2+2x+4)]/(x+2) = (2x^2-2x-12)/(x+2) = 2(x-3)(x+2)/(x+2), so B = x-3. Of the options only (2x^2-7x+3)/(2x-1) = (2x-1)(x-3)/(2x-1) reduces to x-3; the others reduce to (x-2)/(x+2), (x+2)/(x-2) and an irreducible fraction.",
+    "solution": "Subtracting the two given expressions, \\(2B = \\dfrac{(x^2-8)-(-x^2+2x+4)}{x+2} = \\dfrac{2x^2-2x-12}{x+2} = \\dfrac{2(x-3)(x+2)}{x+2}\\), so \\(B = x-3\\). Among the choices only \\(\\dfrac{2x^2-7x+3}{2x-1}\\) reduces to this, since \\(2x^2-7x+3=(2x-1)(x-3)\\)."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Setting u = x^2, v = y^2, w = z^2 turns this into the Lagrange-type identity sum of u^2/((u-v)(u-w)) over the three symbols, which equals 1 for three distinct nodes. sympy simplify returns 1, and numeric checks at (2,3,5) and (1,4,7) both give exactly 1.",
+    "solution": "Put \\(u=x^2\\), \\(v=y^2\\), \\(w=z^2\\); the sum becomes \\(\\dfrac{u^2}{(u-v)(u-w)}+\\dfrac{v^2}{(v-u)(v-w)}+\\dfrac{w^2}{(w-u)(w-v)}\\). Combining over the common denominator \\((u-v)(v-w)(u-w)\\), the numerator cancels the denominator completely and the value is \\(1\\). Substituting \\((x,y,z)=(2,3,5)\\) also gives \\(1\\)."
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "value": "\\(-5\\) or \\(5\\)",
+    "confidence": "HIGH",
+    "reasoning": "Cross-multiplying: 6(2ab - b^2) = 6a^2 - ab, i.e. 6a^2 - 13ab + 6b^2 = 0 = (3a-2b)(2a-3b). So a/b = 2/3 or 3/2, giving (a+b)/(a-b) = 5/(-1) = -5 or 5/1 = 5 respectively. sympy confirms both roots.",
+    "solution": "Cross-multiplying gives \\(6(2ab-b^2)=6a^2-ab\\), that is \\(6a^2-13ab+6b^2=0\\), which factorises as \\((3a-2b)(2a-3b)=0\\). So \\(\\dfrac{a}{b}=\\dfrac23\\) or \\(\\dfrac{a}{b}=\\dfrac32\\). These give \\(\\dfrac{a+b}{a-b}=-5\\) and \\(5\\) respectively, so both values are possible."
+  },
+  {
+    "number": 25,
+    "answer": "C",
+    "value": "\\(k^2(a+b+c)^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "x^2+y^2+z^2-2xy-2yz+2zx = (x-y+z)^2. Here x-y+z = k[(b+c-a) - (b-c-a) + (a+b-c)] = k(a+b+c). sympy factor of the expanded substitution returns k^2*(a+b+c)^2 and rejects the other three options.",
+    "solution": "Notice that \\(x^2+y^2+z^2-2xy-2yz+2zx = (x-y+z)^2\\). Here \\(x-y+z = k\\big[(b+c-a)-(b-c-a)+(a+b-c)\\big] = k(a+b+c)\\). Squaring gives \\(k^2(a+b+c)^2\\)."
+  },
+  {
+    "number": 26,
+    "answer": "C",
+    "value": "60",
+    "confidence": "HIGH",
+    "reasoning": "Numbers 2t, 3t, 5t give 4t^2 + 9t^2 + 25t^2 = 38t^2 = 1368, so t^2 = 36 and t = 6 (positive). Sum = 10t = 60.",
+    "solution": "Let the numbers be \\(2t\\), \\(3t\\) and \\(5t\\). Then \\(4t^2+9t^2+25t^2 = 38t^2 = 1368\\), so \\(t^2=36\\) and, as the numbers are positive, \\(t=6\\). Their sum is \\(10t = 60\\)."
+  },
+  {
+    "number": 27,
+    "answer": "A",
+    "value": "only statement 1 is correct",
+    "confidence": "MED",
+    "runnerUp": "C (both 1 and 2)",
+    "runnerUpIf": "the phrase 'only when a > b > 0' in statement 2 is read loosely as merely asserting the inequality on that range rather than as a necessity claim. Under that reading statement 2 is true and the answer becomes both.",
+    "reasoning": "Statement 1: the difference is 2ab(a-b)/((a+b)(a^2+b^2)), strictly positive for a>b>0 (sympy factor; numeric check a=3,b=1 gives 0.30 > 0). TRUE. Statement 2: (a^3+b^3)(a+b) - (a^2+b^2)^2 = ab(a-b)^2 (sympy factor), which is positive for ALL positive unequal a, b — verified numerically at a=1, b=3 (b>a>0) where the difference is 0.30 > 0. So the inequality is not confined to a>b>0 and the word 'only' makes statement 2 false. MED because the necessity reading of 'only when' is what decides it.",
+    "solution": "For the first, \\(\\dfrac{a^2-b^2}{a^2+b^2}-\\dfrac{a-b}{a+b} = \\dfrac{2ab(a-b)}{(a+b)(a^2+b^2)}\\), which is positive whenever \\(a>b>0\\), so it is correct. For the second, \\((a^3+b^3)(a+b)-(a^2+b^2)^2 = ab(a-b)^2\\), which is positive for every pair of unequal positive numbers — at \\(a=1\\), \\(b=3\\) the inequality still holds even though \\(b>a\\). So the restriction 'only when \\(a>b>0\\)' is wrong and the second statement fails."
+  },
+  {
+    "number": 28,
+    "answer": "B",
+    "value": "7",
+    "confidence": "HIGH",
+    "reasoning": "Work is proportional to men x days, so 11(3n-1)(2n+1) = 6(3n+1)(4n-3), giving 6n^2 - 41n - 7 = 0 = (n-7)(6n+1). The positive root is n = 7; direct check at n = 7 gives x:y = (20)(15):(22)(25) = 300:550 = 6:11.",
+    "solution": "Work done is proportional to men \\(\\times\\) days, so \\(\\dfrac{(3n-1)(2n+1)}{(3n+1)(4n-3)} = \\dfrac{6}{11}\\). Cross-multiplying gives \\(6n^2-41n-7=0\\), which factorises as \\((n-7)(6n+1)=0\\). Since \\(n\\) must be positive, \\(n=7\\), and then the ratio is \\(300:550 = 6:11\\) as required."
+  },
+  {
+    "number": 29,
+    "answer": "C",
+    "value": "both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "Each equal ratio equals [c(ay-bx) + b(cx-az) + a(bz-cy)]/(a^2+b^2+c^2), and sympy expands the numerator to exactly 0. Hence each ratio is 0, giving ay=bx, cx=az, bz=cy, i.e. x/a = y/b = z/c = m. Statement 1 holds; and (x+y+z)/(a+b+c) = m(a+b+c)/(a+b+c) = m = z/c, so statement 2 holds too.",
+    "solution": "By the rule for equal ratios, each fraction equals \\(\\dfrac{c(ay-bx)+b(cx-az)+a(bz-cy)}{a^2+b^2+c^2}\\), and the numerator cancels to \\(0\\). So each ratio is zero, giving \\(ay=bx\\), \\(cx=az\\) and \\(bz=cy\\), that is \\(\\dfrac{x}{a}=\\dfrac{y}{b}=\\dfrac{z}{c}\\). Writing this common value as \\(m\\), we also get \\(\\dfrac{x+y+z}{a+b+c}=m=\\dfrac{z}{c}\\), so both statements hold."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "value": "80 m",
+    "confidence": "HIGH",
+    "reasoning": "With two equal sides x and the third y: 2x + y = 65, xy = 375 gives 2x^2 - 65x + 375 = 0, roots x = 25 and x = 7.5. x = 25, y = 15 gives perimeter 80; x = 7.5, y = 50 gives perimeter 115. DEFECT: the stem is satisfied by BOTH rectangles, so it is genuinely under-determined, but only 80 is printed, so the answer is unambiguous among the options.",
+    "solution": "If the two fenced equal sides are \\(x\\) and the third is \\(y\\), then \\(2x+y=65\\) and \\(xy=375\\), giving \\(2x^2-65x+375=0\\) and so \\(x=25\\) or \\(x=7.5\\). Taking \\(x=25\\), \\(y=15\\) makes the perimeter \\(2(25+15)=80\\) m. The stem is in fact also satisfied by a \\(7.5\\) m by \\(50\\) m garden, of perimeter \\(115\\) m, but that value is not offered."
+  },
+  {
+    "number": 31,
+    "answer": "B",
+    "value": "\\(\\dfrac{17}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Substituting x = 3/2 gives 9a/4 - 6a + 15 = 0, so a = 4 and the equation is 4x^2 - 16x + 15 = 0 with roots 3/2 and 5/2. Sum of squares = 9/4 + 25/4 = 34/4 = 17/2 (sympy confirms).",
+    "solution": "Substituting \\(x=\\tfrac32\\) into \\(ax^2-4ax+15=0\\) gives \\(-\\tfrac{15a}{4}+15=0\\), so \\(a=4\\) and the equation is \\(4x^2-16x+15=0\\). Its roots are \\(\\tfrac32\\) and \\(\\tfrac52\\), summing to \\(4\\) with product \\(\\tfrac{15}{4}\\). The sum of their squares is \\(4^2-2\\cdot\\tfrac{15}{4} = \\tfrac{17}{2}\\)."
+  },
+  {
+    "number": 32,
+    "answer": "D",
+    "value": "9",
+    "confidence": "HIGH",
+    "reasoning": "10a + b + 63 = 10b + a gives b - a = 7, and ab = 8 gives a(a+7) = 8, so a = 1, b = 8. Brute force over all two-digit numbers confirms 18 is the unique solution (18 + 63 = 81). Digit sum = 9.",
+    "solution": "If the number is \\(10a+b\\), then \\(10a+b+63 = 10b+a\\) gives \\(b-a=7\\), while the product condition gives \\(ab=8\\). Solving \\(a(a+7)=8\\) yields \\(a=1\\) and \\(b=8\\), so the number is \\(18\\), and indeed \\(18+63=81\\). The sum of the digits is \\(1+8=9\\)."
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "value": "10 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "60/(30+s) + 60/(30-s) = 9/2 reduces to 3600/(900 - s^2) = 9/2, so 900 - s^2 = 800 and s = 10 (positive root; sympy gives +/-10).",
+    "solution": "With stream speed \\(s\\), the total time is \\(\\dfrac{60}{30+s}+\\dfrac{60}{30-s}=\\dfrac92\\), which simplifies to \\(\\dfrac{3600}{900-s^2}=\\dfrac92\\). Hence \\(900-s^2=800\\), so \\(s^2=100\\) and the speed of the stream is \\(10\\) km/hr."
+  },
+  {
+    "number": 34,
+    "answer": "B",
+    "value": "40 years",
+    "confidence": "HIGH",
+    "reasoning": "Let F be the father's age; children's ages also total F. After ten years children total F+40 and father is F+10, so F+40 = 1.6(F+10), giving 0.6F = 24 and F = 40 (sympy confirms).",
+    "solution": "Let the father's present age be \\(F\\); the four children's ages also total \\(F\\). After ten years the children total \\(F+40\\) while the father is \\(F+10\\), so \\(F+40 = 1.6(F+10)\\). This gives \\(0.6F = 24\\), so the father is \\(40\\) years old."
+  },
+  {
+    "number": 35,
+    "answer": "C",
+    "value": "4",
+    "confidence": "HIGH",
+    "reasoning": "n + d = 10 and n + 3 = d - 1 give d - n = 4, so n = 3 and d = 7 (sympy). Check: (3+3)/(7-1) = 1. The difference between numerator and denominator is 4 in magnitude.",
+    "solution": "With numerator \\(n\\) and denominator \\(d\\), we have \\(n+d=10\\) and \\(n+3=d-1\\), so \\(d-n=4\\). Solving gives the fraction \\(\\tfrac37\\), and indeed \\(\\dfrac{3+3}{7-1}=1\\). The difference between numerator and denominator is \\(4\\)."
+  },
+  {
+    "number": 36,
+    "answer": "A",
+    "value": "\\(k\\ne 7\\) (the full condition is \\(k\\ne\\pm 7\\))",
+    "confidence": "HIGH",
+    "reasoning": "A unique solution requires 7*7 - k*k != 0, i.e. k != 7 AND k != -7. Given uniqueness, 'k != 7' is a true (if incomplete) consequence, so it is a correct statement. 'k != 13' is NOT implied, since k = 13 gives 49 - 169 = -120 != 0 and a unique solution does exist there; and k = 7 or k = 13 as equalities are plainly wrong. So only the first option is defensible.",
+    "solution": "The system has a unique solution exactly when \\(7\\times 7-k\\times k\\ne 0\\), that is when \\(k^2\\ne 49\\). Uniqueness therefore forces \\(k\\ne 7\\) (and also \\(k\\ne -7\\)), while a value such as \\(k=13\\) is perfectly allowed. So the statement that must hold is \\(k\\ne 7\\), although it records only half of the full condition."
+  },
+  {
+    "number": 37,
+    "answer": "A",
+    "value": "10 years",
+    "confidence": "HIGH",
+    "reasoning": "P(1+r)^5 = 2P, so P(1+r)^10 = P((1+r)^5)^2 = 4P. Four times in 10 years.",
+    "solution": "Doubling in \\(5\\) years means \\(P(1+r)^5 = 2P\\). After \\(10\\) years the amount is \\(P(1+r)^{10} = P\\big((1+r)^5\\big)^2 = 4P\\). So the sum becomes four times itself in \\(10\\) years."
+  },
+  {
+    "number": 38,
+    "answer": "B",
+    "value": "\\(16\\tfrac{4}{11}\\) minutes past 3, i.e. between 16 and 17 minutes",
+    "confidence": "HIGH",
+    "reasoning": "t minutes after 3, minute hand is at 6t degrees, hour hand at 90 + 0.5t. Equality gives 5.5t = 90, so t = 180/11 = 16.3636 minutes, which lies in the 16-17 minute band.",
+    "solution": "At \\(t\\) minutes past 3, the minute hand is at \\(6t\\) degrees and the hour hand at \\(90+0.5t\\) degrees. Setting them equal gives \\(5.5t = 90\\), so \\(t = \\dfrac{180}{11} = 16\\tfrac{4}{11}\\) minutes. This lies between \\(16\\) and \\(17\\) minutes past 3."
+  },
+  {
+    "number": 39,
+    "answer": null,
+    "value": "\\(\\dfrac{180}{7}\\approx 25.71\\) days — matches NO printed option",
+    "confidence": "LOW",
+    "runnerUp": "C (35 days)",
+    "runnerUpIf": "the combined rate 1/2 + 2/3 = 7/6 is mistakenly treated as DAYS PER SUIT rather than suits per day, giving 30 x 7/6 = 35. That arithmetic slip is the only route to any printed option, so 35 is the likely intended key.",
+    "reasoning": "Sheela's rate is 1/2 suit per day, Meena's is 1/(3/2) = 2/3 suit per day, combined 7/6 suits per day. Time for 30 suits = 30/(7/6) = 180/7 = 25.714 days. NO printed option (32, 33, 35, 40) matches. Stem verified against page image p04: 'in 2 days', 'in 1 1/2 days' and '30 suits' are exactly as transcribed, so this is not a transcription artefact. Alternative readings also fail: if they cannot share a suit and each works on whole suits, the best split (13 and 17) gives 26 days; if each stitched 30 suits alone the times would be 60 and 45 days. The printed 35 arises only from misusing the combined rate as days-per-suit. Reported as no-correct-option per the brief.",
+    "solution": "Sheela stitches \\(\\tfrac12\\) of a suit per day and Meena \\(\\dfrac{1}{3/2}=\\tfrac23\\) of a suit per day, so together they manage \\(\\tfrac12+\\tfrac23=\\tfrac76\\) suits per day. Thirty suits therefore take \\(30\\div\\tfrac76 = \\dfrac{180}{7}\\approx 25.7\\) days. None of the printed times — \\(32\\), \\(33\\), \\(35\\) or \\(40\\) days — equals this, so the question has no correct option as printed."
+  },
+  {
+    "number": 40,
+    "answer": "D",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "sympy factor gives 8x^3 - 36x^2y + 54xy^2 - 27y^3 = (2x-3y)^3. With 2x - 3y = 7 this is 343, so the expression is 343 - 340 = 3.",
+    "solution": "The first four terms form a perfect cube: \\(8x^3-36x^2y+54xy^2-27y^3 = (2x-3y)^3\\). Since \\(2x-3y=7\\), this equals \\(7^3 = 343\\). The whole expression is therefore \\(343-340 = 3\\)."
+  },
+  {
+    "number": 41,
+    "answer": "A",
+    "value": "87.5%",
+    "confidence": "HIGH",
+    "reasoning": "p = cq/r^2. Replacing q by 1.2q and r by 0.8r multiplies p by 1.2/0.64 = 1.875 = 15/8, an increase of 0.875 = 87.5% (exact fraction 175/2 per cent).",
+    "solution": "Here \\(p = \\dfrac{cq}{r^2}\\) for a constant \\(c\\). Replacing \\(q\\) by \\(1.2q\\) and \\(r\\) by \\(0.8r\\) multiplies \\(p\\) by \\(\\dfrac{1.2}{(0.8)^2} = \\dfrac{1.2}{0.64} = 1.875\\). That is an increase of \\(87.5\\%\\)."
+  },
+  {
+    "number": 42,
+    "answer": "C",
+    "value": "24 days",
+    "confidence": "HIGH",
+    "reasoning": "500w - 100(30 - w) = 11400 gives 600w = 14400, so w = 24 (sympy). Check: 24 x 500 - 6 x 100 = 12000 - 600 = 11400.",
+    "solution": "If he worked \\(w\\) days he was absent for \\(30-w\\), so \\(500w-100(30-w)=11400\\). This gives \\(600w=14400\\), so \\(w=24\\) days. Checking, \\(24\\times 500 - 6\\times 100 = 12000-600 = 11400\\)."
+  },
+  {
+    "number": 43,
+    "answer": "C",
+    "value": "Rs. 550",
+    "confidence": "HIGH",
+    "reasoning": "0.05(750 - t) + 0.20t = 0.16 x 750 = 120 gives 0.15t = 82.5, so t = 550 (sympy). Check: chair 200 gains 10, table 550 gains 110, total 120 on 750 = 16%.",
+    "solution": "Let the table cost \\(t\\), so the chair costs \\(750-t\\). The total gain gives \\(0.05(750-t)+0.20t = 0.16\\times 750 = 120\\), so \\(0.15t = 82.5\\) and \\(t = 550\\). Checking, the chair at \\(\\text{Rs. }200\\) gains \\(10\\) and the table gains \\(110\\), a total of \\(120\\) on \\(750\\), which is \\(16\\%\\)."
+  },
+  {
+    "number": 44,
+    "answer": "C",
+    "value": "240 km",
+    "confidence": "HIGH",
+    "reasoning": "Actual time = (D/3)(1/60 + 1/50 + 1/40) = 37D/1800. Alternative = (D/2)(1/60 + 1/40) = D/48. Difference = D/3600 hours = 4 min = 1/15 hour, so D = 240 (sympy solve confirms).",
+    "solution": "For a journey of \\(D\\) km the actual time is \\(\\dfrac{D}{3}\\left(\\dfrac1{60}+\\dfrac1{50}+\\dfrac1{40}\\right)=\\dfrac{37D}{1800}\\) hours, while the alternative takes \\(\\dfrac{D}{2}\\left(\\dfrac1{60}+\\dfrac1{40}\\right)=\\dfrac{D}{48}\\) hours. Their difference is \\(\\dfrac{D}{3600}\\) hours, which must equal \\(4\\) minutes, that is \\(\\dfrac1{15}\\) hour. Hence \\(D = 240\\) km."
+  },
+  {
+    "number": 45,
+    "answer": "B",
+    "value": "17 years",
+    "confidence": "HIGH",
+    "reasoning": "Savings form an AP with a = 2000, d = 1000. Sum of n terms = 500n(n+3) = 170000 gives n^2 + 3n - 340 = 0 = (n+20)(n-17), so n = 17 (sympy gives [-20, 17]).",
+    "solution": "The yearly savings form an arithmetic progression with first term \\(2000\\) and common difference \\(1000\\), so \\(n\\) years give a total of \\(\\dfrac{n}{2}\\big(4000+(n-1)1000\\big) = 500n(n+3)\\). Setting this equal to \\(170000\\) gives \\(n^2+3n-340=0\\), that is \\((n+20)(n-17)=0\\). The positive root is \\(n = 17\\) years."
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Put u = cos^3(theta); for 0 <= theta < 90 degrees, u ranges over (0,1]. The expression is u + 1/u, which decreases on (0,1], so the minimum is at u = 1, i.e. theta = 0, giving 2. Sampling confirms: 2.0000 at 0 deg, 2.0108 at 15 deg, 3.182 at 45 deg, 8.125 at 60 deg. Note the interval is CLOSED at 0 as printed, so the value 2 is genuinely attained; that is what makes the answer 2 rather than 'none of the above'.",
+    "solution": "Write \\(u=\\cos^3\\theta\\); as \\(0^\\circ\\le\\theta<90^\\circ\\), \\(u\\) runs over \\((0,1]\\) and the expression is \\(u+\\dfrac1u\\). This is decreasing on \\((0,1]\\), so its least value occurs at \\(u=1\\), that is at \\(\\theta=0^\\circ\\). The minimum value is \\(1+1=2\\)."
+  },
+  {
+    "number": 47,
+    "answer": "A",
+    "value": "\\(\\dfrac{4}{\\sqrt{3}}\\approx 2.3094\\)",
+    "confidence": "HIGH",
+    "reasoning": "14sin^2 + 10cos^2 = 10 + 4sin^2 = 11 gives sin^2 = 1/4, so theta = 30 deg in the given range. tan30 + cot30 = 1/sqrt3 + sqrt3 = 4/sqrt3 = 2.30940, matching option A exactly.",
+    "solution": "Since \\(14\\sin^2\\theta+10\\cos^2\\theta = 10+4\\sin^2\\theta = 11\\), we get \\(\\sin^2\\theta=\\tfrac14\\), so \\(\\theta=30^\\circ\\) in the given range. Then \\(\\tan\\theta+\\cot\\theta = \\dfrac{1}{\\sqrt{3}}+\\sqrt{3} = \\dfrac{1+3}{\\sqrt{3}} = \\dfrac{4}{\\sqrt{3}}\\)."
+  },
+  {
+    "number": 48,
+    "answer": "C",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Using a^3 +/- b^3 = (a +/- b)(a^2 -/+ ab + b^2), the two fractions are (1 - sin cos) and (1 + sin cos), summing to 2. sympy simplify returns 2; numeric checks at theta = 0.37 and 1.1 rad both give 2.0.",
+    "solution": "Using \\(a^3\\pm b^3 = (a\\pm b)(a^2\\mp ab+b^2)\\), the first fraction reduces to \\(\\sin^2\\theta-\\sin\\theta\\cos\\theta+\\cos^2\\theta\\) and the second to \\(\\sin^2\\theta+\\sin\\theta\\cos\\theta+\\cos^2\\theta\\). Adding them, the \\(\\sin\\theta\\cos\\theta\\) terms cancel and each bracket leaves \\(1\\). The value is \\(2\\)."
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "value": "15 m",
+    "confidence": "HIGH",
+    "reasoning": "Let H be the flagstaff height and d the distance of the ladder's foot from the base. The ladder reaches H - 10, so d^2 + (H-10)^2 = 100, and tan60 = H/d gives d = H/sqrt3. Substituting: H^2/3 + H^2 - 20H = 0, so H = 15 (sympy). Check: d = 8.660, ladder point at 5 m, sqrt(75+25) = 10.",
+    "solution": "Let the flagstaff be \\(H\\) m tall and the ladder's foot be \\(d\\) m from its base. The ladder reaches a height \\(H-10\\), so \\(d^2+(H-10)^2 = 100\\), while \\(\\tan 60^\\circ = \\dfrac{H}{d}\\) gives \\(d=\\dfrac{H}{\\sqrt{3}}\\). Substituting gives \\(\\dfrac{H^2}{3}+H^2-20H=0\\), so \\(H=15\\) m."
+  },
+  {
+    "number": 50,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "sin^4 + cos^4 = 1 - 2 sin^2 cos^2, so the expression = 4 sin^2 cos^2 = sin^2(2theta). sympy simplifies it to 1/2 - cos(4 theta)/2, whose maximum is 1, attained at theta = 45 deg which lies inside the open interval. Numeric scan over 1..89 degrees gives max 1.0.",
+    "solution": "Since \\(\\sin^4\\theta+\\cos^4\\theta = 1-2\\sin^2\\theta\\cos^2\\theta\\), the expression becomes \\(4\\sin^2\\theta\\cos^2\\theta = \\sin^2 2\\theta\\). Its greatest possible value is \\(1\\), reached when \\(2\\theta = 90^\\circ\\), that is at \\(\\theta = 45^\\circ\\), which lies in the given range."
+  },
+  {
+    "number": 51,
+    "answer": "C",
+    "value": "\\(\\theta\\approx 52.5^\\circ\\), so \\(45^\\circ<\\theta<60^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "The plane is stated to be flying ABOVE the river, so the foot of the perpendicular lies between the banks and the two horizontal distances add to 3000. d1 = 1200/tan30 = 1200*sqrt3 = 2078.46 (< 3000, so consistent), leaving d2 = 921.54 and tan(theta) = 1200/921.54 = 1.3021, theta = 52.478 deg. If instead the plane were beyond one bank the answer would be 13.29 deg, but that contradicts 'flying above a river'.",
+    "solution": "The aeroplane is above the river, so the two horizontal distances to the banks add up to the width \\(3000\\) m. The \\(30^\\circ\\) bank is \\(\\dfrac{1200}{\\tan 30^\\circ}=1200\\sqrt{3}\\approx 2078\\) m away, leaving about \\(922\\) m to the other bank. Then \\(\\tan\\theta = \\dfrac{1200}{922}\\approx 1.30\\), so \\(\\theta\\approx 52.5^\\circ\\), which lies between \\(45^\\circ\\) and \\(60^\\circ\\)."
+  },
+  {
+    "number": 52,
+    "answer": "A",
+    "value": "\\(\\dfrac{5}{4}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With c = cos(theta): (c^2 - 3c + 2)/(1 - c^2) = (c-1)(c-2)/((1-c)(1+c)) = (2-c)/(1+c) = 1, giving c = 1/2 (sympy solve returns [1/2]). Then sin^2 + cos = 3/4 + 1/2 = 5/4.",
+    "solution": "With \\(c=\\cos\\theta\\) the equation reads \\(\\dfrac{c^2-3c+2}{1-c^2} = \\dfrac{(c-1)(c-2)}{(1-c)(1+c)} = \\dfrac{2-c}{1+c} = 1\\). This gives \\(2-c = 1+c\\), so \\(c=\\tfrac12\\) and \\(\\theta=60^\\circ\\). Then \\(\\sin^2\\theta+\\cos\\theta = \\tfrac34+\\tfrac12 = \\tfrac54\\)."
+  },
+  {
+    "number": 53,
+    "answer": "C",
+    "value": "statements 1 and 3 only",
+    "confidence": "HIGH",
+    "reasoning": "(1) Both sides equal -sin^2 cos^2, so it is an identity (sympy difference simplifies to 0). (2) sin^4 + cos^4 = 1 - 2 sin^2 cos^2, so the printed '+' is wrong; sympy gives the difference as cos(4 theta)/2 - 1/2, which is -0.5146 at theta = 0.4 rad, non-zero. (3) tan^2 = sec^2 - 1 turns the left side into sec^4 - sec^2, so it is an identity (difference simplifies to 0).",
+    "solution": "The first is an identity because both sides equal \\(-\\sin^2\\theta\\cos^2\\theta\\). The third is one too, since \\(\\tan^2\\theta = \\sec^2\\theta-1\\) turns the left side into \\((\\sec^2\\theta-1)^2+\\sec^2\\theta-1 = \\sec^4\\theta-\\sec^2\\theta\\). The second is false, because \\(\\sin^4\\theta+\\cos^4\\theta = 1-2\\sin^2\\theta\\cos^2\\theta\\) with a minus sign — at \\(\\theta = 0.4\\) radians the two sides differ. So only the first and third are identities."
+  },
+  {
+    "number": 54,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "sin66 = cos24 and cos66 = sin24, so the first two terms are both sin24*cos24 and cancel. tan66 = cot24 and cot66 = tan24, so the last two terms are both 1 and cancel. sympy simplify returns 0 exactly (float evaluation gives 2.4e-125).",
+    "solution": "Because \\(66^\\circ\\) and \\(24^\\circ\\) are complementary, \\(\\sin 66^\\circ = \\cos 24^\\circ\\) and \\(\\cos 66^\\circ = \\sin 24^\\circ\\), so the first two terms are both \\(\\sin 24^\\circ\\cos 24^\\circ\\) and cancel. Likewise \\(\\tan 66^\\circ = \\cot 24^\\circ\\) and \\(\\cot 66^\\circ = \\tan 24^\\circ\\), so the last two terms are each \\(1\\) and also cancel. The value is \\(0\\)."
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "value": "\\(p^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "x^2 + y^2 = p^2 sin^2 A (cos^2 B + sin^2 B) = p^2 sin^2 A; adding z^2 = p^2 cos^2 A gives p^2. sympy simplify returns p**2.",
+    "solution": "Adding the first two, \\(x^2+y^2 = p^2\\sin^2A(\\cos^2B+\\sin^2B) = p^2\\sin^2A\\). Adding \\(z^2 = p^2\\cos^2A\\) then gives \\(p^2(\\sin^2A+\\cos^2A) = p^2\\)."
+  },
+  {
+    "number": 56,
+    "answer": "A",
+    "value": "\\(m^2-n^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "The cross terms 2mn sec A tan A cancel, leaving (m^2 - n^2)(sec^2 A - tan^2 A) = m^2 - n^2. sympy simplify returns m**2 - n**2.",
+    "solution": "Expanding both squares, the cross terms \\(2mn\\sec A\\tan A\\) are identical and cancel, leaving \\((m^2-n^2)(\\sec^2A-\\tan^2A)\\). Since \\(\\sec^2A-\\tan^2A = 1\\), the value is \\(m^2-n^2\\)."
+  },
+  {
+    "number": 57,
+    "answer": "D",
+    "value": "\\(-\\dfrac{1}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "In (0,90) degrees, tan(theta) = 1 means theta = 45 deg, so sin = cos = 1/sqrt2. Then sin^2 - 2 sin cos = 1/2 - 1 = -1/2 (sympy exact -1/2).",
+    "solution": "In the given range \\(\\tan\\theta=1\\) forces \\(\\theta=45^\\circ\\), so \\(\\sin\\theta=\\cos\\theta=\\dfrac{1}{\\sqrt{2}}\\). Then \\(\\sin^2\\theta-2\\sin\\theta\\cos\\theta = \\dfrac12-2\\cdot\\dfrac12 = -\\dfrac12\\)."
+  },
+  {
+    "number": 58,
+    "answer": "C",
+    "value": "\\(\\tan\\theta\\)",
+    "confidence": "HIGH",
+    "reasoning": "Numerator = sin(2sin^2 - 1) = -sin*cos(2theta); denominator = cos(1 - 2cos^2) = -cos*cos(2theta). Cancelling -cos(2theta) gives tan(theta). sympy simplify returns tan(theta); numeric checks at 0.3 and 1.2 rad match tan exactly. The expression is 0/0 at theta = 45 deg, which the printed open interval does include, so it equals tan(theta) everywhere except there.",
+    "solution": "The numerator is \\(\\sin\\theta(2\\sin^2\\theta-1) = -\\sin\\theta\\cos 2\\theta\\) and the denominator is \\(\\cos\\theta(1-2\\cos^2\\theta) = -\\cos\\theta\\cos 2\\theta\\). Cancelling the common factor \\(-\\cos 2\\theta\\) leaves \\(\\dfrac{\\sin\\theta}{\\cos\\theta} = \\tan\\theta\\). The only exception is \\(\\theta=45^\\circ\\), where numerator and denominator both vanish and the expression is undefined."
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "In a triangle (B+C)/2 = 90 - A/2, so tan((B+C)/2) = cot(A/2) and sin((B+C)/2) = cos(A/2). The four terms cancel in pairs. sympy substitution B = pi - A - C simplifies the expression to 0; numeric check at A=0.7, B=1.1 gives -1.3e-15.",
+    "solution": "In any triangle \\(A+B+C = 180^\\circ\\), so \\(\\dfrac{B+C}{2} = 90^\\circ-\\dfrac{A}{2}\\). Hence \\(\\tan\\dfrac{B+C}{2} = \\cot\\dfrac{A}{2}\\) and \\(\\sin\\dfrac{B+C}{2} = \\cos\\dfrac{A}{2}\\). The four terms therefore cancel in pairs and the value is \\(0\\)."
+  },
+  {
+    "number": 60,
+    "answer": "A",
+    "value": "\\(\\dfrac{4}{\\sqrt{3}}\\approx 2.3094\\)",
+    "confidence": "HIGH",
+    "reasoning": "With the right angle at B, tanA + tanC = BC/AB + AB/BC = (AB^2 + BC^2)/(AB*BC) = AC^2/(AB*BC). Squaring AB + BC = 10(1+sqrt3) gives 400 + 2 AB*BC = 400 + 200 sqrt3, so AB*BC = 100 sqrt3 and the sum is 400/(100 sqrt3) = 4/sqrt3. sympy solves the sides as {10, 10 sqrt3} and confirms 4 sqrt3/3 either way round.",
+    "solution": "With the right angle at \\(B\\), \\(\\tan A+\\tan C = \\dfrac{BC}{AB}+\\dfrac{AB}{BC} = \\dfrac{AB^2+BC^2}{AB\\cdot BC} = \\dfrac{AC^2}{AB\\cdot BC}\\). Squaring \\(AB+BC = 10(1+\\sqrt{3})\\) gives \\(400+2\\,AB\\cdot BC = 400+200\\sqrt{3}\\), so \\(AB\\cdot BC = 100\\sqrt{3}\\). Hence the sum is \\(\\dfrac{400}{100\\sqrt{3}} = \\dfrac{4}{\\sqrt{3}}\\)."
+  },
+  {
+    "number": 61,
+    "answer": "B",
+    "value": "80 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "In a right-angled triangle the circumcentre is the midpoint of the hypotenuse, so the hypotenuse = 2 x 10 = 20 cm. With that as base and the given altitude 8 cm, area = (1/2)(20)(8) = 80.",
+    "solution": "In a right-angled triangle the circumcentre is the midpoint of the hypotenuse, so the hypotenuse is \\(2\\times 10 = 20\\) cm. Taking it as the base with the given altitude of \\(8\\) cm, the area is \\(\\tfrac12\\times 20\\times 8 = 80\\) cm\\(^2\\)."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "2 cm",
+    "confidence": "HIGH",
+    "reasoning": "Touching externally gives r1 + r2 = 9; the area condition gives r1^2 + r2^2 = 41. Then 2 r1 r2 = 81 - 41 = 40, so the radii are roots of t^2 - 9t + 20 = 0, namely 4 and 5 (sympy). Diameters 8 and 10, difference 2.",
+    "solution": "Touching externally gives \\(r_1+r_2 = 9\\), and \\(\\pi(r_1^2+r_2^2) = 41\\pi\\) gives \\(r_1^2+r_2^2 = 41\\). Then \\(2r_1r_2 = 81-41 = 40\\), so the radii are the roots of \\(t^2-9t+20=0\\), namely \\(4\\) and \\(5\\) cm. The diameters are \\(8\\) and \\(10\\) cm, differing by \\(2\\) cm."
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "value": "\\(\\dfrac{1}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Side a gives p = a^2; the diagonal is a*sqrt2 so the square on it has q = 2a^2. Hence p/q = 1/2.",
+    "solution": "If the square \\(X\\) has side \\(a\\), then \\(p = a^2\\) and its diagonal is \\(a\\sqrt{2}\\). The square described on that diagonal has area \\(q = (a\\sqrt{2})^2 = 2a^2\\). Therefore \\(\\dfrac{p}{q} = \\dfrac12\\)."
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "value": "100 cm",
+    "confidence": "HIGH",
+    "reasoning": "(1/2) d1 d2 = 336 with d1 = 48 gives d2 = 14. The diagonals bisect at right angles so the side is sqrt(24^2 + 7^2) = sqrt(625) = 25. Perimeter = 100.",
+    "solution": "From \\(\\tfrac12 d_1 d_2 = 336\\) with \\(d_1 = 48\\), the other diagonal is \\(d_2 = 14\\) cm. The diagonals of a rhombus bisect each other at right angles, so each side is \\(\\sqrt{24^2+7^2} = \\sqrt{625} = 25\\) cm. The perimeter is \\(4\\times 25 = 100\\) cm."
+  },
+  {
+    "number": 65,
+    "answer": "C",
+    "value": "462 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "The raised dot in '10.10 a.m' and '10.30 a.m' is a TIME separator, so the interval is 20 minutes, i.e. 120 degrees. Area = (120/360)(22/7)(21^2) = (1/3)(1386) = 462 exactly.",
+    "solution": "From 10:10 a.m. to 10:30 a.m. is \\(20\\) minutes, so the minute hand sweeps \\(\\dfrac{20}{60}\\times 360^\\circ = 120^\\circ\\). The area swept is \\(\\dfrac{120}{360}\\times\\dfrac{22}{7}\\times 21^2 = \\dfrac13\\times 1386 = 462\\) cm\\(^2\\)."
+  },
+  {
+    "number": 66,
+    "answer": "C",
+    "value": "12 m",
+    "confidence": "HIGH",
+    "reasoning": "The longest rod is the space diagonal: 21^2 + 16^2 + h^2 = 29^2 gives 441 + 256 + h^2 = 841, so h^2 = 144 and h = 12.",
+    "solution": "The longest rod that fits is the space diagonal, so \\(21^2+16^2+h^2 = 29^2\\). That gives \\(441+256+h^2 = 841\\), so \\(h^2 = 144\\). The height of the room is \\(12\\) m."
+  },
+  {
+    "number": 67,
+    "answer": "C",
+    "value": "108",
+    "confidence": "HIGH",
+    "reasoning": "Hemisphere volume = (2/3)pi(18)^3 = 3888 pi. Bottle volume = pi(3^2)(4) = 36 pi. Number = 3888/36 = 108 exactly.",
+    "solution": "The bowl holds \\(\\tfrac23\\pi(18)^3 = 3888\\pi\\) cm\\(^3\\), while each bottle holds \\(\\pi(3)^2(4) = 36\\pi\\) cm\\(^3\\). Dividing gives \\(\\dfrac{3888}{36} = 108\\) bottles."
+  },
+  {
+    "number": 68,
+    "answer": "D",
+    "value": "5544 g",
+    "confidence": "HIGH",
+    "reasoning": "Shell volume = (4/3)(22/7)(6^3 - 3^3) = (4/3)(22/7)(189) = 792 cm^3. Mass = 792 x 7 = 5544 g exactly.",
+    "solution": "The metal occupies \\(\\tfrac43\\pi(6^3-3^3) = \\tfrac43\\times\\dfrac{22}{7}\\times 189 = 792\\) cm\\(^3\\). At a density of \\(7\\) g/cm\\(^3\\), the mass is \\(792\\times 7 = 5544\\) g."
+  },
+  {
+    "number": 69,
+    "answer": "A",
+    "value": "1540 cm\\(^3\\)",
+    "confidence": "HIGH",
+    "reasoning": "Diameter 14 gives r = 7. Cone = (1/3)pi(49)(16) = 784pi/3; hemisphere = (2/3)pi(343) = 686pi/3. Total = 1470pi/3 = 490pi = 490 x 22/7 = 1540 exactly.",
+    "solution": "The common radius is \\(r = 7\\) cm. The cone contributes \\(\\tfrac13\\pi(49)(16) = \\dfrac{784\\pi}{3}\\) and the hemisphere \\(\\tfrac23\\pi(343) = \\dfrac{686\\pi}{3}\\). Their sum is \\(490\\pi = 490\\times\\dfrac{22}{7} = 1540\\) cm\\(^3\\)."
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "value": "686 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Cube edge = cube root of 343 = 7, so the cuboid is 21 x 7 x 7. TSA = 2(21*7 + 7*7 + 21*7) = 2(147 + 49 + 147) = 686.",
+    "solution": "Each cube has edge \\(\\sqrt[3]{343} = 7\\) cm, so joining three end to end gives a cuboid \\(21\\times 7\\times 7\\) cm. Its total surface area is \\(2(21\\times 7 + 7\\times 7 + 21\\times 7) = 2\\times 343 = 686\\) cm\\(^2\\)."
+  },
+  {
+    "number": 71,
+    "answer": "A",
+    "value": "1330 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Cube TSA = 6(14^2) = 1176. Add the hemisphere's curved surface 2(22/7)(49) = 308 and subtract the circle it covers (22/7)(49) = 154. Total = 1176 + 308 - 154 = 1330.",
+    "solution": "The cube alone has surface area \\(6\\times 14^2 = 1176\\) cm\\(^2\\). The hemisphere adds its curved surface \\(2\\times\\dfrac{22}{7}\\times 49 = 308\\) cm\\(^2\\) but conceals a circle of area \\(\\dfrac{22}{7}\\times 49 = 154\\) cm\\(^2\\). The total is \\(1176+308-154 = 1330\\) cm\\(^2\\)."
+  },
+  {
+    "number": 72,
+    "answer": "A",
+    "value": "420",
+    "confidence": "HIGH",
+    "reasoning": "Coin radius 1.75 cm, thickness 0.4 cm, volume = (22/7)(1.75^2)(0.4) = 77/20 = 3.85 cm^3 exactly. Cuboid = 21 x 11 x 7 = 1617. Number = 1617/3.85 = 420 exactly.",
+    "solution": "Each coin is a cylinder of radius \\(1.75\\) cm and height \\(0.4\\) cm, of volume \\(\\dfrac{22}{7}\\times(1.75)^2\\times 0.4 = 3.85\\) cm\\(^3\\). The cuboid has volume \\(21\\times 11\\times 7 = 1617\\) cm\\(^3\\). Dividing gives \\(\\dfrac{1617}{3.85} = 420\\) coins."
+  },
+  {
+    "number": 73,
+    "answer": "B",
+    "value": "65 cm",
+    "confidence": "HIGH",
+    "reasoning": "For a frustum l = sqrt(h^2 + (R-r)^2) = sqrt(16^2 + 63^2) = sqrt(256 + 3969) = sqrt(4225) = 65 exactly.",
+    "solution": "For a frustum the slant height is \\(l = \\sqrt{h^2+(R-r)^2}\\). Here \\(R-r = 105-42 = 63\\) cm and \\(h = 16\\) cm, so \\(l = \\sqrt{256+3969} = \\sqrt{4225} = 65\\) cm."
+  },
+  {
+    "number": 74,
+    "answer": "A",
+    "value": "\\(\\dfrac{3168}{7}\\approx 452.6\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Revolving about BC makes BC the axis, so radius = AB = 8 and height = BC = 6, slant = AC = 10. TSA = pi r (r + l) = (22/7)(8)(18) = 3168/7 = 452.571, so 'approximately 452' is the printed match; the next option, 440, is 12.6 away.",
+    "solution": "Revolving about \\(BC\\) makes \\(BC\\) the axis, giving a cone of radius \\(AB = 8\\) cm and height \\(BC = 6\\) cm, with slant height \\(AC = 10\\) cm. Its total surface area is \\(\\pi r(r+l) = \\dfrac{22}{7}\\times 8\\times 18 = \\dfrac{3168}{7}\\approx 452.6\\) cm\\(^2\\). To the nearest listed value this is about \\(452\\) cm\\(^2\\)."
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "value": "34.65 kg",
+    "confidence": "HIGH",
+    "reasoning": "Large cylinder = (22/7)(49)(20) = 3080 cm^3; small = (22/7)(3.5^2)(10) = 385 cm^3; total 3465 cm^3. Since 1 m^3 = 10^6 cm^3 weighs 10000 kg, 1 cm^3 weighs 0.01 kg, so mass = 34.65 kg (exact fraction 693/20).",
+    "solution": "The larger cylinder has volume \\(\\dfrac{22}{7}\\times 49\\times 20 = 3080\\) cm\\(^3\\) and the smaller \\(\\dfrac{22}{7}\\times(3.5)^2\\times 10 = 385\\) cm\\(^3\\), a total of \\(3465\\) cm\\(^3\\). Since \\(1\\) m\\(^3 = 10^6\\) cm\\(^3\\) weighs \\(10000\\) kg, each cm\\(^3\\) weighs \\(0.01\\) kg. The rod therefore weighs \\(34.65\\) kg."
+  },
+  {
+    "number": 76,
+    "answer": "A",
+    "value": "a sphere of radius \\(x\\) (volume \\(\\tfrac43\\pi x^3\\))",
+    "confidence": "HIGH",
+    "reasoning": "Cone = (1/3)pi x^2 (2x) = (2/3)pi x^3; hemisphere = (2/3)pi x^3; total (4/3)pi x^3, which is EXACTLY the volume of a sphere of radius x (sympy difference = 0). A sphere of diameter x would be pi x^3/6. DEFECT worth noting: the two cylinder options give a radius but no height, so they name no definite volume at all; the sphere-of-radius-x option is both well defined and exactly correct, so the question still resolves.",
+    "solution": "The cone contributes \\(\\tfrac13\\pi x^2(2x) = \\tfrac23\\pi x^3\\) and the hemisphere \\(\\tfrac23\\pi x^3\\), so the solid has volume \\(\\tfrac43\\pi x^3\\). That is exactly the volume of a sphere of radius \\(x\\); a sphere of diameter \\(x\\) would be only \\(\\dfrac{\\pi x^3}{6}\\). Note that the two cylinder choices state a radius but no height, so they do not describe a definite volume at all."
+  },
+  {
+    "number": 77,
+    "answer": "C",
+    "value": "\\(\\pi x^2(2+\\sqrt{5})\\approx 13.31\\,x^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Slant height l = sqrt(x^2 + 4x^2) = x sqrt5. TSA = cone curved surface pi x l + hemisphere curved surface 2 pi x^2 = pi x^2 (sqrt5 + 2). With pi = 22/7 this is 13.3134 x^2; with true pi it is 13.3080 x^2. Either way 13.3 is the match (next option 12.5 is far off). The flat circular join is internal and correctly excluded.",
+    "solution": "The cone has slant height \\(l = \\sqrt{x^2+(2x)^2} = x\\sqrt{5}\\), so its curved surface is \\(\\pi x\\cdot x\\sqrt{5}\\). Adding the hemisphere's curved surface \\(2\\pi x^2\\) gives \\(\\pi x^2(\\sqrt{5}+2)\\), which with \\(\\pi = \\tfrac{22}{7}\\) is about \\(13.3\\,x^2\\). The circular face where the two parts meet is inside the solid, so it is not counted."
+  },
+  {
+    "number": 78,
+    "answer": "D",
+    "value": "\\(\\tfrac53\\pi x^3\\approx 5.24\\,x^3\\)",
+    "confidence": "HIGH",
+    "reasoning": "The solid is 2x + x = 3x tall, exactly the cylinder's height, so it is fully submerged and displaces its whole volume (4/3)pi x^3. Water left = 3 pi x^3 - (4/3) pi x^3 = (5/3) pi x^3 = 5.2381 x^2 with pi = 22/7 (5.2360 with true pi). Rounds to 5.24; the nearest other option, 5.14, is 0.10 away.",
+    "solution": "The solid stands \\(2x + x = 3x\\) high, exactly the height of the cylinder, and has volume \\(\\tfrac43\\pi x^3\\). The cylinder holds \\(\\pi x^2(3x) = 3\\pi x^3\\), so the water left is \\(3\\pi x^3-\\tfrac43\\pi x^3 = \\tfrac53\\pi x^3\\). With \\(\\pi = \\tfrac{22}{7}\\) that is about \\(5.24\\,x^3\\)."
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "value": "\\(\\approx 2.71\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Sector = (120/360)(22/7)(2.1^2) = 4.62 exactly. Triangle = (1/2)(2.1^2)(sqrt3/2) with sqrt3 = 1.732 gives 1.90953. Minor segment = 4.62 - 1.90953 = 2.71047, i.e. 2.71.",
+    "solution": "The sector of angle \\(120^\\circ\\) has area \\(\\dfrac{120}{360}\\times\\dfrac{22}{7}\\times(2.1)^2 = 4.62\\) cm\\(^2\\). The triangle formed by the two radii and the chord has area \\(\\tfrac12(2.1)^2\\sin 120^\\circ = \\tfrac12\\times 4.41\\times\\dfrac{1.732}{2} = 1.91\\) cm\\(^2\\). The minor segment is the difference, about \\(2.71\\) cm\\(^2\\)."
+  },
+  {
+    "number": 80,
+    "answer": "D",
+    "value": "\\(\\approx 11.15\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Circle area = (22/7)(2.1^2) = 13.86 exactly. Major segment = 13.86 - 2.71047 = 11.14953, i.e. 11.15. (Consistency check: minor + major = 13.86 = whole circle.)",
+    "solution": "The whole circle has area \\(\\dfrac{22}{7}\\times(2.1)^2 = 13.86\\) cm\\(^2\\), and the minor segment is about \\(2.71\\) cm\\(^2\\). Subtracting leaves a major segment of about \\(11.15\\) cm\\(^2\\). The two segments together do restore the full \\(13.86\\) cm\\(^2\\)."
+  },
+  {
+    "number": 81,
+    "answer": "C",
+    "value": "12 cm",
+    "confidence": "HIGH",
+    "reasoning": "Touching in pairs gives rA + rB = 6, rB + rC = 10, rC + rA = 8. Adding: 2(rA+rB+rC) = 24, so the sum is 12 (individually 2, 4, 6 by sympy).",
+    "solution": "Since each pair of circles touches externally, the distance between two centres is the sum of their radii: \\(r_A+r_B = 6\\), \\(r_B+r_C = 10\\) and \\(r_C+r_A = 8\\). Adding all three gives \\(2(r_A+r_B+r_C) = 24\\). So the radii total \\(12\\) cm."
+  },
+  {
+    "number": 82,
+    "answer": "D",
+    "value": "4.8 cm",
+    "confidence": "HIGH",
+    "reasoning": "6^2 + 8^2 = 100 = 10^2, so the triangle is right-angled at A and its area is (1/2)(6)(8) = 24. With BC = 10 as base, (1/2)(10)h = 24 gives h = 24/5 = 4.8.",
+    "solution": "Since \\(6^2+8^2 = 10^2\\), the triangle is right-angled at \\(A\\), so its area is \\(\\tfrac12\\times 6\\times 8 = 24\\) cm\\(^2\\). Taking \\(BC = 10\\) cm as the base, the altitude \\(h\\) from \\(A\\) satisfies \\(\\tfrac12\\times 10\\times h = 24\\). Hence \\(h = 4.8\\) cm."
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "value": "both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "Radii are rA = 2, rB = 4, rC = 6. The angle at A is 90 deg, so P = (90/360) pi (2^2) = pi, giving statement 1. For statement 2, 9Q + 4R = (pi/360)(9*16*B + 4*36*C) = (144 pi/360)(B + C) = (144 pi/360)(90) = 36 pi, since B + C = 90 deg. sympy evaluates 9Q + 4R to 113.0973 = 36 pi exactly.",
+    "solution": "Solving the three touching conditions gives \\(r_A = 2\\), \\(r_B = 4\\) and \\(r_C = 6\\) cm. The angle at \\(A\\) is \\(90^\\circ\\), so \\(P = \\dfrac{90}{360}\\pi(2)^2 = \\pi\\) cm\\(^2\\), confirming the first claim. For the second, \\(9Q+4R = \\dfrac{\\pi}{360}\\big(9\\cdot 16\\cdot B + 4\\cdot 36\\cdot C\\big) = \\dfrac{144\\pi}{360}(B+C) = 36\\pi\\) cm\\(^2\\), because \\(B+C = 90^\\circ\\). So both statements hold."
+  },
+  {
+    "number": 84,
+    "answer": "B",
+    "value": "\\(AC^2-AD^2 = BD\\times CD\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let M be the foot of the perpendicular from A; since AB = AC, M is the midpoint of BC. Then AC^2 - AD^2 = MC^2 - MD^2 = (MC - MD)(MC + MD) = BD x CD (using MB = MC). sympy verifies the identity symbolically. The other three options carry a spurious factor 2 or the wrong product.",
+    "solution": "Drop the perpendicular \\(AM\\) from \\(A\\) to \\(BC\\); since \\(AB = AC\\), the foot \\(M\\) is the midpoint of \\(BC\\). Then \\(AC^2-AD^2 = (AM^2+MC^2)-(AM^2+MD^2) = MC^2-MD^2 = (MC-MD)(MC+MD)\\). Because \\(MB = MC\\), that product is exactly \\(BD\\times CD\\)."
+  },
+  {
+    "number": 85,
+    "answer": "A",
+    "value": "7 cm",
+    "confidence": "HIGH",
+    "reasoning": "Using the relation from the previous item, AB^2 = AD^2 + BD x CD = 25 + 4 x 6 = 49, so AB = 7.",
+    "solution": "For this isosceles triangle \\(AB^2 = AD^2 + BD\\times CD\\). Substituting the given lengths, \\(AB^2 = 5^2 + 4\\times 6 = 25+24 = 49\\). Hence \\(AB = 7\\) cm."
+  },
+  {
+    "number": 86,
+    "answer": "B",
+    "value": "42.25 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Q is the midpoint of BC so BQ = 3.15. AB^2 + 4BQ^2 = 2.56 + 4(9.9225) = 2.56 + 39.69 = 42.25. Note this equals AB^2 + BC^2 = 42.25 = CA^2, confirming the triangle is right-angled at B.",
+    "solution": "Since \\(Q\\) is the midpoint of \\(BC\\), \\(BQ = 3.15\\) cm, so \\(4BQ^2 = BC^2 = 39.69\\). Then \\(AB^2+4BQ^2 = 2.56+39.69 = 42.25\\) cm\\(^2\\). This is also \\(CA^2\\), which shows the triangle is right-angled at \\(B\\)."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "value": "\\(1.25\\,AC^2\\) (numerically 52.8125 cm\\(^2\\))",
+    "confidence": "HIGH",
+    "reasoning": "The triangle is right-angled at B, so AQ^2 = AB^2 + BC^2/4 and CP^2 = BC^2 + AB^2/4. Their sum is (5/4)(AB^2 + BC^2) = 1.25 AC^2. Numerically 12.4825 + 40.33 = 52.8125 and 52.8125/42.25 = 1.25 exactly.",
+    "solution": "The triangle is right-angled at \\(B\\), so \\(AQ^2 = AB^2+BQ^2 = AB^2+\\tfrac{BC^2}{4}\\) and \\(CP^2 = BC^2+BP^2 = BC^2+\\tfrac{AB^2}{4}\\). Adding gives \\(\\tfrac54(AB^2+BC^2) = \\tfrac54 AC^2\\). That is \\(1.25\\,AC^2\\)."
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "value": "111.39 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "CP^2 - AQ^2 = (BC^2 + AB^2/4) - (AB^2 + BC^2/4) = (3/4)(BC^2 - AB^2), so 4(CP^2 - AQ^2) = 3(39.69 - 2.56) = 3(37.13) = 111.39 exactly.",
+    "solution": "Here \\(CP^2-AQ^2 = \\left(BC^2+\\tfrac{AB^2}{4}\\right)-\\left(AB^2+\\tfrac{BC^2}{4}\\right) = \\tfrac34\\left(BC^2-AB^2\\right)\\). Multiplying by \\(4\\) gives \\(3(BC^2-AB^2) = 3(39.69-2.56)\\). That is \\(111.39\\) cm\\(^2\\)."
+  },
+  {
+    "number": 89,
+    "answer": "C",
+    "value": "\\(45^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "OA = OP are radii and angle AOP = 90 deg, so triangle AOP is right-angled isosceles and its base angles are each 45 deg. Coordinate check with A = (-1,0), B = (1,0), P = (0,1) gives angle BAP = 45.0 deg.",
+    "solution": "Since \\(OA\\) and \\(OP\\) are radii of the same circle they are equal, and \\(\\angle AOP = 90^\\circ\\) because \\(OP\\) is perpendicular to \\(AB\\). Triangle \\(AOP\\) is therefore right-angled and isosceles, so its two base angles are equal. Each is \\(\\dfrac{180^\\circ-90^\\circ}{2} = 45^\\circ\\), so \\(\\angle BAP = 45^\\circ\\)."
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "value": "\\(45^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "Angle AQP is the inscribed angle subtending chord AP from the arc on the other side of AP, and the central angle AOP is 90 deg, so it is 45 deg. Verified numerically with A = (-1,0), P = (0,1) and Q on arc PB at 5, 20, 45, 70 and 85 degrees: angle AQP = 45.0 in every case, so it is independent of where Q lies.",
+    "solution": "\\(\\angle AQP\\) is the angle subtended at \\(Q\\) by the chord \\(AP\\), and \\(Q\\) lies on the arc on the far side of that chord. The corresponding angle at the centre, \\(\\angle AOP\\), is \\(90^\\circ\\), and an inscribed angle is half the central angle standing on the same arc. So \\(\\angle AQP = 45^\\circ\\), wherever \\(Q\\) is taken on arc \\(PB\\)."
+  },
+  {
+    "number": 91,
+    "answer": "D",
+    "value": "\\(C\\) and \\(D\\) — together 1000 in both years",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ from page image p11 (both pies legible at zoom; each set of six percentages sums to exactly 100, a self-check). 2019: A 20, B 6, C 10, D 15, E 27, F 22 of 4000 -> A 800, B 240, C 400, D 600, E 1080, F 880. 2020: A 22, B 10, C 11, D 9, E 27, F 21 of 5000 -> A 1100, B 500, C 550, D 450, E 1350, F 1050. NO single category is unchanged, so the stem must mean the pair's COMBINED total. C + D: 400 + 600 = 1000 and 550 + 450 = 1000, a match. The others: C+B 640 -> 1050, E+A 1880 -> 2450, E+F 1960 -> 2400.",
+    "solution": "Reading the charts, the 2019 numbers are \\(A=800\\), \\(B=240\\), \\(C=400\\), \\(D=600\\), \\(E=1080\\) and \\(F=880\\); for 2020 they are \\(A=1100\\), \\(B=500\\), \\(C=550\\), \\(D=450\\), \\(E=1350\\) and \\(F=1050\\). No single category keeps its strength, so the two must be a pair whose combined total is unchanged. Categories \\(C\\) and \\(D\\) give \\(400+600 = 1000\\) in 2019 and \\(550+450 = 1000\\) in 2020, while the other pairs move from \\(640\\) to \\(1050\\), \\(1880\\) to \\(2450\\) and \\(1960\\) to \\(2400\\)."
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "value": "category \\(B\\), about \\(108.3\\%\\)",
+    "confidence": "HIGH",
+    "reasoning": "Using the counts read from p11: A 800 -> 1100 = +37.5%; B 240 -> 500 = +108.33%; C 400 -> 550 = +37.5%; D 600 -> 450 = -25%; E 1080 -> 1350 = +25%; F 880 -> 1050 = +19.32%. The largest change, on either the signed or the absolute reading, is B at about 108.3%.",
+    "solution": "The percentage changes work out as \\(A:\\ \\tfrac{300}{800} = 37.5\\%\\), \\(B:\\ \\tfrac{260}{240}\\approx 108.3\\%\\), \\(C:\\ \\tfrac{150}{400} = 37.5\\%\\), \\(D:\\ -25\\%\\), \\(E:\\ 25\\%\\) and \\(F:\\ \\approx 19.3\\%\\). Category \\(B\\) more than doubles, from \\(240\\) to \\(500\\), and its change is far larger than any other. So the maximum percentage change is in category \\(B\\)."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "value": "25%",
+    "confidence": "HIGH",
+    "reasoning": "Category E is 27% in both years (read from p11): 27% of 4000 = 1080 and 27% of 5000 = 1350. Increase = 270 on 1080 = 25% exactly. The clean exact value is a good check on the chart reading.",
+    "solution": "Category \\(E\\) is \\(27\\%\\) in both charts, giving \\(27\\%\\) of \\(4000 = 1080\\) employees in 2019 and \\(27\\%\\) of \\(5000 = 1350\\) in 2020. The rise is \\(270\\) employees on a base of \\(1080\\). That is \\(\\dfrac{270}{1080}\\times 100 = 25\\%\\)."
+  },
+  {
+    "number": 94,
+    "answer": "D",
+    "value": "\\(A\\) and \\(C\\) — both up 37.5%",
+    "confidence": "HIGH",
+    "reasoning": "Percentage increases from the p11 counts: A 800 -> 1100 = +37.5%; C 400 -> 550 = +37.5%; E +25%; F +19.32%; B +108.33%; D falls 25%. The only pair with equal percentage increases is A and C. Checking the other options: E&F 25 vs 19.3, C&E 37.5 vs 25, A&E 37.5 vs 25 — none matches.",
+    "solution": "The increases are \\(A:\\ 800\\to 1100\\), a rise of \\(37.5\\%\\), and \\(C:\\ 400\\to 550\\), also \\(37.5\\%\\). By comparison \\(E\\) rises \\(25\\%\\), \\(F\\) about \\(19.3\\%\\), \\(B\\) about \\(108.3\\%\\), and \\(D\\) actually falls. So the two categories that grew by the same percentage are \\(A\\) and \\(C\\)."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "value": "100%",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ from page image p12; every bar sits exactly on a gridline. X: 300, 400, 500, 600, 700; Y: 200, 300, 400, 500, 500; Z: 500, 500, 600, 700, 800 for 2014..2018. Totals: 1000, 1200, 1500, 1800, 2000. From 2014 to 2018: (2000 - 1000)/1000 = 100% exactly.",
+    "solution": "From the chart the 2014 output is \\(300+200+500 = 1000\\) cars and the 2018 output is \\(700+500+800 = 2000\\) cars. The rise is \\(1000\\) cars on a base of \\(1000\\). That is an increase of \\(100\\%\\)."
+  },
+  {
+    "number": 96,
+    "answer": "A",
+    "value": "5 instances (strictly above 20%)",
+    "confidence": "MED",
+    "runnerUp": "C (7)",
+    "runnerUpIf": "'greater than 20%' is read inclusively as 'at least 20%'. Two rises are EXACTLY 20% — company X from 500 to 600 (2016 to 2017) and company Z from 500 to 600 (2015 to 2016) — and counting those gives 7, which is exactly why 7 is printed as an option.",
+    "reasoning": "Per-company year-on-year changes from the p12 bars. X: 300->400 = +33.33%, 400->500 = +25%, 500->600 = +20%, 600->700 = +16.67%. Y: 200->300 = +50%, 300->400 = +33.33%, 400->500 = +25%, 500->500 = 0%. Z: 500->500 = 0%, 500->600 = +20%, 600->700 = +16.67%, 700->800 = +14.29%. Strictly greater than 20%: two for X and three for Y, none for Z = 5. The two exactly-20% cases look deliberately planted, which is the whole risk on this row.",
+    "solution": "Taking each company separately, the year-on-year rises are, for \\(X\\), \\(33.3\\%\\), \\(25\\%\\), \\(20\\%\\) and \\(16.7\\%\\); for \\(Y\\), \\(50\\%\\), \\(33.3\\%\\), \\(25\\%\\) and \\(0\\%\\); and for \\(Z\\), \\(0\\%\\), \\(20\\%\\), \\(16.7\\%\\) and \\(14.3\\%\\). Counting only those strictly above \\(20\\%\\) gives two for \\(X\\) and three for \\(Y\\), a total of \\(5\\) instances. Two of the rises are exactly \\(20\\%\\), so a reader who takes 'greater than' to include equality would instead count \\(7\\)."
+  },
+  {
+    "number": 97,
+    "answer": "D",
+    "value": "2018",
+    "confidence": "HIGH",
+    "reasoning": "Yearly totals from p12: 1000, 1200, 1500, 1800, 2000. Rises over the previous year: 2015 +20%, 2016 +25%, 2017 +20%, 2018 +11.11%. The minimum is 2018. Cross-check: the value 100/9 = 11 1/9 % is printed verbatim as an option in the companion item, which confirms both the bar readings and that 'production of cars' here means the combined total (per-company minima would be 0%, 14.29% or 16.67%, none of which is offered there).",
+    "solution": "The total output is \\(1000\\), \\(1200\\), \\(1500\\), \\(1800\\) and \\(2000\\) cars for 2014 to 2018. The rises over the previous year are \\(20\\%\\) in 2015, \\(25\\%\\) in 2016, \\(20\\%\\) in 2017 and \\(\\dfrac{200}{1800}\\times 100 = 11\\tfrac19\\%\\) in 2018. The smallest of these occurs in 2018."
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "value": "\\(11\\tfrac19\\% = \\dfrac{100}{9}\\%\\)",
+    "confidence": "HIGH",
+    "reasoning": "The smallest year-on-year rise in total production is 1800 -> 2000, i.e. 200/1800 = 1/9 = 11.111% = 11 1/9 %. This is an exact match to the printed option, which independently corroborates the bar readings of 1800 for 2017 and 2000 for 2018.",
+    "solution": "The smallest year-on-year rise in total production is from \\(1800\\) cars in 2017 to \\(2000\\) cars in 2018, an increase of \\(200\\). As a percentage this is \\(\\dfrac{200}{1800}\\times 100 = \\dfrac{100}{9}\\). That is \\(11\\tfrac19\\%\\)."
+  },
+  {
+    "number": 99,
+    "answer": "D",
+    "value": "Five",
+    "confidence": "HIGH",
+    "reasoning": "Brute force over all starting integers from -60 to 59 finds exactly five runs: (-4..0), (-3..1), (-2..2), (-1..3), (0..4). Every run containing 0 works because the product is then 0, which is itself a member. No run avoiding 0 works: the nearest candidates 1..5 and -5..-1 have products 120 and -120 while their members are at most 5 in absolute value, and the product grows far faster than the members as the run moves away from the origin.",
+    "solution": "If one of the five consecutive integers is \\(0\\), the product is \\(0\\), which is itself one of them, so every such run qualifies. Those runs start at \\(-4\\), \\(-3\\), \\(-2\\), \\(-1\\) and \\(0\\), giving five sequences. No run avoiding \\(0\\) can work: the closest cases \\(1,2,3,4,5\\) and \\(-5,-4,-3,-2,-1\\) already have products of \\(120\\) in size against members of at most \\(5\\), and moving further out only widens the gap."
+  },
+  {
+    "number": 100,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "The five valid runs are (-4..0), (-3..1), (-2..2), (-1..3), (0..4). Pooling all members, the smallest integer occurring anywhere is P = -4 and the largest is Q = 4, so the arithmetic mean is (-4 + 4)/2 = 0. Brute force confirms min -4 and max 4.",
+    "solution": "The five valid runs are \\(-4\\) to \\(0\\), \\(-3\\) to \\(1\\), \\(-2\\) to \\(2\\), \\(-1\\) to \\(3\\), and \\(0\\) to \\(4\\). Across all of them the smallest integer that occurs is \\(-4\\) and the largest is \\(4\\). Their arithmetic mean is \\(\\dfrac{-4+4}{2} = 0\\)."
+  }
+]

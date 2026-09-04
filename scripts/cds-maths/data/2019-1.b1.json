@@ -1,0 +1,643 @@
+{
+  "band": "b1",
+  "pages": [0, 1, 2, 3, 4, 5, 6, 7],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band b1 = pages p00-p07, Q1-Q47 complete, no gaps. Per-page: p00 Q1-4 (only FOUR questions, not seven), p01 Q5-10, p02 Q11-16, p03 Q17-22, p04 Q23-28, p05 Q29-35 (seven), p06 Q36-41, p07 Q42-47.\n\nSEAM: nothing straddles either end. Q1 is the paper's first question. Q47's stem and all four options print on p07; p08 (band b2's territory) opens cleanly at Q48 in the left column and Q51 in the right, both fresh standalone questions with NO Directions block above either, so b2 inherits no set from me and nothing of mine is stranded.\n\nDIRECTIONS SETS - THREE, ALL OPENING AND CLOSING INSIDE THIS BAND, so b2 inherits none: D1-2 (Q1-2, frequency-distribution table, opens p00 left column), D3-6 (Q3-6, scooters/showrooms table, opens p00 right column and its last two members Q5-Q6 run over onto p01 left column), D7-10 (Q7-10, road-fatalities table, opens p01 LEFT column below Q6 while all four of its questions sit in the p01 RIGHT column). Q11 onward to Q47 are all standalone.\n\nSTRUCTURALLY NEW vs the 2020-2025 papers, worth passing to the other bands:\n(1) THE PAPER OPENS WITH TWO DIRECTIONS BLOCKS SIDE BY SIDE. Q1 is not a standalone MCQ - p00 carries a Directions block at the head of EACH column and only 4 questions in total (2020-1 p00 carries 7 standalone questions). A reader expecting the usual standalone opener would mis-assign Q1-Q6.\n(2) QUESTIONS PER PAGE VARY 4-7 across this band, and the three data-heavy pages are the light ones.\n(3) A Directions block does NOT always sit above its own questions: D7-10's block and its table occupy the bottom of p01's LEFT column while every one of its four questions is in the RIGHT column.\n(4) Printed page numbers advance by TWO (p00 = printed 3, p01 = 5, p02 = 7 ... p07 = 17), i.e. the source booklet is bilingual and the render has already dropped the Hindi pages. Footer on every page is 'C - SDHY-T-MTH'.\n\nFIGURES: none in Q1-Q47. Every geometry item here is fully specified in words - Q27 names the three parallel lines and both transversals with their intersection points, Q37/Q40/Q45 name all vertices - so no question in this band depends on a printed diagram. Three data tables are transcribed as GFM pipe tables in `context` (verbatim and identical on every member of their set).\n\nMISPRINTS: none found. Every digit that could be misread was re-cropped at 4-8x and confirmed: both p00 tables cell by cell (percentages sum to 100 in each row of the scooters table), the p01 road-fatalities table, Q11's two surd equations, Q12's four signed quadratics, Q14's exponent 17^174, Q16's x^3+kx^2-7x+6, Q19's four signed fraction pairs, Q23's four fractions, Q32's four sine exponents 12/10/8/6, Q33's coefficient run 1,3,9,27,81,243, Q34's four right-hand sides, Q37 'triangle BDC' (not BOC), Q42's four options and Q46 (c)/(d).\n\nCONVENTIONS APPLIED: the booklet's raised middle dot is transcribed as a full stop wherever it is a decimal separator (Q28 25.6, Q31 0.5, Q37 3.6/1.8, Q27 10.5/3.5/4.5, Q38 6.5). The booklet prints the rupee glyph in Q15/Q20/Q22; transcribed as 'Rs.' to match the rest of this corpus, in which the rupee glyph appears zero times and 'Rs.' is the established form. No option text or value was altered.\n\nNO SUBTOPIC INVENTED - all 47 rows use a chapter key and a listed subtopic from catalog.json. Two classification calls worth naming rather than hiding: Q33 (sin(theta)=3/5 then sum 1+3x+...+243x^5) is filed under Sequence and Series / Geometric Progressions because the finite GP is the bulk of the work, though the trigonometric ratio step would equally justify Trigonometric Ratios and Identities; Q31 (sum of six log_10 of trig ratios) is filed under Logarithms / Logarithm Identities and Change of Base rather than Trigonometric Ratios and Identities, for the same reason in reverse."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "What is the mean of frequency distribution of Series-I ?",
+      "options": [
+        { "label": "A", "text": "33.6" },
+        { "label": "B", "text": "35.6" },
+        { "label": "C", "text": "37.6" },
+        { "label": "D", "text": "39.6" }
+      ],
+      "context": "Directions for the following two (02) items :\n\nRead the following frequency distribution for two series of observations and answer the two items that follow :\n\n| Class interval | Frequency Series-I | Frequency Series-II |\n|---|---|---|\n| 10-20 | 20 | 4 |\n| 20-30 | 15 | 8 |\n| 30-40 | 10 | 4 |\n| 40-50 | \\(x\\) | \\(2x\\) |\n| 50-60 | \\(y\\) | \\(y\\) |\n| Total | 100 | 100 |",
+      "setLabel": "D1-2",
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 2,
+      "stem": "What is the mode of the frequency distribution of Series-II ?",
+      "options": [
+        { "label": "A", "text": "26" },
+        { "label": "B", "text": "36" },
+        { "label": "C", "text": "46" },
+        { "label": "D", "text": "56" }
+      ],
+      "context": "Directions for the following two (02) items :\n\nRead the following frequency distribution for two series of observations and answer the two items that follow :\n\n| Class interval | Frequency Series-I | Frequency Series-II |\n|---|---|---|\n| 10-20 | 20 | 4 |\n| 20-30 | 15 | 8 |\n| 30-40 | 10 | 4 |\n| 40-50 | \\(x\\) | \\(2x\\) |\n| 50-60 | \\(y\\) | \\(y\\) |\n| Total | 100 | 100 |",
+      "setLabel": "D1-2",
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 3,
+      "stem": "Number of scooters of company \\(Y\\) sold by showroom \\(E\\) is what per cent of the number of scooters of both companies sold by showroom \\(C\\) ?",
+      "options": [
+        { "label": "A", "text": "52" },
+        { "label": "B", "text": "54" },
+        { "label": "C", "text": "55" },
+        { "label": "D", "text": "56" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nLet the distribution of number of scooters of companies \\(X\\) and \\(Y\\) sold by 5 showrooms (\\(A\\), \\(B\\), \\(C\\), \\(D\\) and \\(E\\)) in a certain year be denoted by \\(S1\\) and the distribution of number of scooters of only company \\(X\\) sold by the five showrooms in the same year be denoted by \\(S2\\).\n\n| Showroom | A | B | C | D | E | Total number of scooters sold |\n|---|---|---|---|---|---|---|\n| \\(S1\\) (in %) | 19 | 21 | 15 | 33 | 12 | 6400 |\n| \\(S2\\) (in %) | 24 | 18 | 20 | 30 | 8 | 3000 |",
+      "setLabel": "D3-6",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 4,
+      "stem": "Number of scooters of both the companies sold by showroom \\(B\\) is what per cent more than the number of scooters of company \\(X\\) sold by showroom \\(A\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(78\\frac{2}{3}\\)" },
+        { "label": "B", "text": "\\(83\\frac{1}{3}\\)" },
+        { "label": "C", "text": "\\(86\\frac{2}{3}\\)" },
+        { "label": "D", "text": "\\(88\\frac{1}{3}\\)" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nLet the distribution of number of scooters of companies \\(X\\) and \\(Y\\) sold by 5 showrooms (\\(A\\), \\(B\\), \\(C\\), \\(D\\) and \\(E\\)) in a certain year be denoted by \\(S1\\) and the distribution of number of scooters of only company \\(X\\) sold by the five showrooms in the same year be denoted by \\(S2\\).\n\n| Showroom | A | B | C | D | E | Total number of scooters sold |\n|---|---|---|---|---|---|---|\n| \\(S1\\) (in %) | 19 | 21 | 15 | 33 | 12 | 6400 |\n| \\(S2\\) (in %) | 24 | 18 | 20 | 30 | 8 | 3000 |",
+      "setLabel": "D3-6",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 5,
+      "stem": "What is the average number of scooters of company \\(Y\\) sold by the showrooms \\(A\\), \\(C\\) and \\(E\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(461\\frac{1}{3}\\)" },
+        { "label": "B", "text": "\\(431\\frac{1}{3}\\)" },
+        { "label": "C", "text": "\\(426\\frac{1}{3}\\)" },
+        { "label": "D", "text": "\\(416\\frac{1}{3}\\)" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nLet the distribution of number of scooters of companies \\(X\\) and \\(Y\\) sold by 5 showrooms (\\(A\\), \\(B\\), \\(C\\), \\(D\\) and \\(E\\)) in a certain year be denoted by \\(S1\\) and the distribution of number of scooters of only company \\(X\\) sold by the five showrooms in the same year be denoted by \\(S2\\).\n\n| Showroom | A | B | C | D | E | Total number of scooters sold |\n|---|---|---|---|---|---|---|\n| \\(S1\\) (in %) | 19 | 21 | 15 | 33 | 12 | 6400 |\n| \\(S2\\) (in %) | 24 | 18 | 20 | 30 | 8 | 3000 |",
+      "setLabel": "D3-6",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 6,
+      "stem": "What is the difference between the number of scooters of both companies sold by showroom \\(A\\) and total number of scooters of company \\(X\\) sold by showrooms \\(B\\) and \\(E\\) together ?",
+      "options": [
+        { "label": "A", "text": "416" },
+        { "label": "B", "text": "426" },
+        { "label": "C", "text": "432" },
+        { "label": "D", "text": "436" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nLet the distribution of number of scooters of companies \\(X\\) and \\(Y\\) sold by 5 showrooms (\\(A\\), \\(B\\), \\(C\\), \\(D\\) and \\(E\\)) in a certain year be denoted by \\(S1\\) and the distribution of number of scooters of only company \\(X\\) sold by the five showrooms in the same year be denoted by \\(S2\\).\n\n| Showroom | A | B | C | D | E | Total number of scooters sold |\n|---|---|---|---|---|---|---|\n| \\(S1\\) (in %) | 19 | 21 | 15 | 33 | 12 | 6400 |\n| \\(S2\\) (in %) | 24 | 18 | 20 | 30 | 8 | 3000 |",
+      "setLabel": "D3-6",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 7,
+      "stem": "What was the average number of pedestrians killed per day in the year 2017 ?",
+      "options": [
+        { "label": "A", "text": "51" },
+        { "label": "B", "text": "53" },
+        { "label": "C", "text": "54" },
+        { "label": "D", "text": "56" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nThe data shows that Indian roads are turning deadlier over the years.\n\n| Year | 2014 | 2015 | 2016 | 2017 |\n|---|---|---|---|---|\n| Number of bikers killed | 40957 | 46070 | 52750 | 48746 |\n| Number of pedestrians killed | 12330 | 13894 | 15746 | 20457 |\n| Number of cyclists killed | 4037 | 3125 | 2585 | 3559 |",
+      "setLabel": "D7-10",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 8,
+      "stem": "What is the approximate percentage change in the pedestrians' fatalities during the period 2014-17 ?",
+      "options": [
+        { "label": "A", "text": "66%" },
+        { "label": "B", "text": "68%" },
+        { "label": "C", "text": "71%" },
+        { "label": "D", "text": "76%" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nThe data shows that Indian roads are turning deadlier over the years.\n\n| Year | 2014 | 2015 | 2016 | 2017 |\n|---|---|---|---|---|\n| Number of bikers killed | 40957 | 46070 | 52750 | 48746 |\n| Number of pedestrians killed | 12330 | 13894 | 15746 | 20457 |\n| Number of cyclists killed | 4037 | 3125 | 2585 | 3559 |",
+      "setLabel": "D7-10",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 9,
+      "stem": "What is the average number of bikers killed daily in road accidents in the year 2017 ?",
+      "options": [
+        { "label": "A", "text": "163" },
+        { "label": "B", "text": "152" },
+        { "label": "C", "text": "147" },
+        { "label": "D", "text": "134" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nThe data shows that Indian roads are turning deadlier over the years.\n\n| Year | 2014 | 2015 | 2016 | 2017 |\n|---|---|---|---|---|\n| Number of bikers killed | 40957 | 46070 | 52750 | 48746 |\n| Number of pedestrians killed | 12330 | 13894 | 15746 | 20457 |\n| Number of cyclists killed | 4037 | 3125 | 2585 | 3559 |",
+      "setLabel": "D7-10",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 10,
+      "stem": "What is the average number of cyclists killed daily in road accidents in 2017 ?",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "19" },
+        { "label": "D", "text": "21" }
+      ],
+      "context": "Directions for the following four (04) items :\n\nRead the following information and answer the four items that follow :\n\nThe data shows that Indian roads are turning deadlier over the years.\n\n| Year | 2014 | 2015 | 2016 | 2017 |\n|---|---|---|---|---|\n| Number of bikers killed | 40957 | 46070 | 52750 | 48746 |\n| Number of pedestrians killed | 12330 | 13894 | 15746 | 20457 |\n| Number of cyclists killed | 4037 | 3125 | 2585 | 3559 |",
+      "setLabel": "D7-10",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 11,
+      "stem": "Let \\(a\\) and \\(b\\) be two positive real numbers such that \\(a\\sqrt{a} + b\\sqrt{b} = 32\\) and \\(a\\sqrt{b} + b\\sqrt{a} = 31\\). What is the value of \\(\\dfrac{5(a+b)}{7}\\) ?",
+      "options": [
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "7" },
+        { "label": "C", "text": "9" },
+        { "label": "D", "text": "Cannot be determined" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 12,
+      "stem": "If \\(x = \\dfrac{1+\\sqrt{3}}{2}\\) and \\(y = x^3\\), then \\(y\\) satisfies which one of the following equations ?",
+      "options": [
+        { "label": "A", "text": "\\(8y^2 - 20y - 1 = 0\\)" },
+        { "label": "B", "text": "\\(8y^2 + 20y - 1 = 0\\)" },
+        { "label": "C", "text": "\\(8y^2 + 20y + 1 = 0\\)" },
+        { "label": "D", "text": "\\(8y^2 - 20y + 1 = 0\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 13,
+      "stem": "HCF of two numbers is 12. Which one of the following can never be their LCM ?",
+      "options": [
+        { "label": "A", "text": "80" },
+        { "label": "B", "text": "60" },
+        { "label": "C", "text": "36" },
+        { "label": "D", "text": "24" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 14,
+      "stem": "Consider the following statements :\n\n1. Unit digit in \\(17^{174}\\) is 7.\n\n2. Difference of the squares of any two odd numbers is always divisible by 8.\n\n3. Adding 1 to the product of two consecutive odd numbers makes it a perfect square.\n\nWhich of the above statements are correct ?",
+      "options": [
+        { "label": "A", "text": "1, 2 and 3" },
+        { "label": "B", "text": "1 and 2 only" },
+        { "label": "C", "text": "2 and 3 only" },
+        { "label": "D", "text": "1 and 3 only" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Unit Digit and Powers",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 15,
+      "stem": "The rate of interest on two different schemes is the same and it is 20%. But in one of the schemes, the interest is compounded half yearly and in the other the interest is compounded annually. Equal amounts are invested in the schemes. If the difference of the returns after 2 years is Rs. 482, then what is the principal amount in each scheme ?",
+      "options": [
+        { "label": "A", "text": "Rs. 10,000" },
+        { "label": "B", "text": "Rs. 16,000" },
+        { "label": "C", "text": "Rs. 20,000" },
+        { "label": "D", "text": "Rs. 24,000" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Compound Interest",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 16,
+      "stem": "For what value of \\(k\\) can the expression \\(x^3 + kx^2 - 7x + 6\\) be resolved into three linear factors ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Factorisation of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 17,
+      "stem": "\\(X\\), \\(Y\\) and \\(Z\\) start at same point and same time in the same direction to run around a circular stadium. \\(X\\) completes a round in 252 seconds, \\(Y\\) in 308 seconds and \\(Z\\) in 198 seconds. After what time will they meet again at the starting point ?",
+      "options": [
+        { "label": "A", "text": "26 minutes 18 seconds" },
+        { "label": "B", "text": "42 minutes 36 seconds" },
+        { "label": "C", "text": "45 minutes" },
+        { "label": "D", "text": "46 minutes 12 seconds" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 18,
+      "stem": "What is the LCM of \\(\\dfrac{1}{3}\\), \\(\\dfrac{5}{6}\\), \\(\\dfrac{2}{9}\\), \\(\\dfrac{4}{27}\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{5}{18}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{1}{27}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{10}{27}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{20}{3}\\)" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 19,
+      "stem": "If the equations \\(x^2 + 5x + 6 = 0\\) and \\(x^2 + kx + 1 = 0\\) have a common root, then what is the value of \\(k\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(-\\dfrac{5}{2}\\) or \\(-\\dfrac{10}{3}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{5}{2}\\) or \\(\\dfrac{10}{3}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{5}{2}\\) or \\(-\\dfrac{10}{3}\\)" },
+        { "label": "D", "text": "\\(-\\dfrac{5}{2}\\) or \\(\\dfrac{10}{3}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Common Roots",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 20,
+      "stem": "\\(A\\) lent Rs. 25000 to \\(B\\) and at the same time lent some amount to \\(C\\) at same 7% simple interest. After 4 years \\(A\\) received Rs. 11200 as interest from \\(B\\) and \\(C\\). How much did \\(A\\) lend to \\(C\\) ?",
+      "options": [
+        { "label": "A", "text": "Rs. 20000" },
+        { "label": "B", "text": "Rs. 25000" },
+        { "label": "C", "text": "Rs. 15000" },
+        { "label": "D", "text": "Rs. 10000" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Simple Interest",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 21,
+      "stem": "A trader sells two computers at the same price, making a profit of 30% on one and a loss of 30% on the other. What is the net loss or profit percentage on the transaction ?",
+      "options": [
+        { "label": "A", "text": "6% loss" },
+        { "label": "B", "text": "6% gain" },
+        { "label": "C", "text": "9% loss" },
+        { "label": "D", "text": "9% gain" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 22,
+      "stem": "The monthly incomes of \\(A\\) and \\(B\\) are in the ratio 4 : 3. Each saves Rs. 600. If their expenditures are in the ratio 3 : 2, then what is the monthly income of \\(A\\) ?",
+      "options": [
+        { "label": "A", "text": "Rs. 1800" },
+        { "label": "B", "text": "Rs. 2000" },
+        { "label": "C", "text": "Rs. 2400" },
+        { "label": "D", "text": "Rs. 3600" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 23,
+      "stem": "The train fare and bus fare between two stations is in the ratio 3 : 4. If the train fare increases by 20% and bus fare increases by 30%, then what is the ratio between revised train fare and revised bus fare ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{9}{13}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{17}{12}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{32}{43}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{19}{21}\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 24,
+      "stem": "When \\(N\\) is divided by 17, the quotient is equal to 182. The difference between the quotient and the remainder is 175. What is the value of \\(N\\) ?",
+      "options": [
+        { "label": "A", "text": "2975" },
+        { "label": "B", "text": "3094" },
+        { "label": "C", "text": "3101" },
+        { "label": "D", "text": "3269" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 25,
+      "stem": "A stock of food grains is enough for 240 men for 48 days. How long will the same stock last for 160 men ?",
+      "options": [
+        { "label": "A", "text": "72 days" },
+        { "label": "B", "text": "64 days" },
+        { "label": "C", "text": "60 days" },
+        { "label": "D", "text": "54 days" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 26,
+      "stem": "A hollow right circular cylindrical vessel of volume \\(V\\) whose diameter is equal to its height, is completely filled with water. A heavy sphere of maximum possible volume is then completely immersed in the vessel. What volume of water remains in the vessel ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{V}{2}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{V}{3}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{2V}{3}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{V}{4}\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Cylinder, Cone and Sphere",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "Three parallel lines \\(x\\), \\(y\\) and \\(z\\) are cut by two transversals \\(m\\) and \\(n\\). Transversal \\(m\\) cuts the lines \\(x\\), \\(y\\), \\(z\\) at \\(P\\), \\(Q\\), \\(R\\) respectively; and Transversal \\(n\\) cuts the lines \\(x\\), \\(y\\), \\(z\\) at \\(L\\), \\(M\\), \\(N\\) respectively. If \\(PQ = 3\\) cm, \\(QR = 9\\) cm and \\(MN = 10.5\\) cm, then what is the length of \\(LM\\) ?",
+      "options": [
+        { "label": "A", "text": "3 cm" },
+        { "label": "B", "text": "3.5 cm" },
+        { "label": "C", "text": "4 cm" },
+        { "label": "D", "text": "4.5 cm" }
+      ],
+      "chapter": "Lines, Angles and Polygons",
+      "subtopic": "Parallel Lines and Transversals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 28,
+      "stem": "The area of a sector of a circle of radius 4 cm is 25.6 cm\\(^2\\). What is the radian measure of the arc of the sector ?",
+      "options": [
+        { "label": "A", "text": "2.3" },
+        { "label": "B", "text": "3.2" },
+        { "label": "C", "text": "3.3" },
+        { "label": "D", "text": "3.4" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Circle, Sector and Segment",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 29,
+      "stem": "Which one of the following is correct in respect of a right angled triangle ?",
+      "options": [
+        { "label": "A", "text": "Its orthocentre lies inside the triangle" },
+        { "label": "B", "text": "Its orthocentre lies outside the triangle" },
+        { "label": "C", "text": "Its orthocentre lies on the triangle" },
+        { "label": "D", "text": "It has no orthocentre" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Centres of a Triangle",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 30,
+      "stem": "Let the bisector of the angle \\(BAC\\) of a triangle \\(ABC\\) meet \\(BC\\) in \\(X\\). Which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(AB < BX\\)" },
+        { "label": "B", "text": "\\(AB > BX\\)" },
+        { "label": "C", "text": "\\(AX = CX\\)" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Basic Proportionality and Angle Bisector",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 31,
+      "stem": "What is the value of \\(\\log_{10}(\\cos\\theta) + \\log_{10}(\\sin\\theta) + \\log_{10}(\\tan\\theta) + \\log_{10}(\\cot\\theta) + \\log_{10}(\\sec\\theta) + \\log_{10}(\\operatorname{cosec}\\theta)\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "0.5" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Logarithm Identities and Change of Base",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 32,
+      "stem": "If \\(\\cos^2 x + \\cos x = 1\\), then what is the value of \\(\\sin^{12} x + 3\\sin^{10} x + 3\\sin^{8} x + \\sin^{6} x\\) ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "8" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 33,
+      "stem": "If \\(0 < \\theta < 90^\\circ\\), \\(\\sin\\theta = \\dfrac{3}{5}\\) and \\(x = \\cot\\theta\\), then what is the value of \\(1 + 3x + 9x^2 + 27x^3 + 81x^4 + 243x^5\\) ?",
+      "options": [
+        { "label": "A", "text": "941" },
+        { "label": "B", "text": "1000" },
+        { "label": "C", "text": "1220" },
+        { "label": "D", "text": "1365" }
+      ],
+      "chapter": "Sequence and Series",
+      "subtopic": "Geometric Progressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 34,
+      "stem": "The angles of elevation of the tops of two pillars of heights \\(h\\) and \\(2h\\) from a point \\(P\\) on the line joining the feet of the two pillars are complementary. If the distances of the foot of the pillars from the point \\(P\\) are \\(x\\) and \\(y\\) respectively, then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(2h^2 = x^2 y\\)" },
+        { "label": "B", "text": "\\(2h^2 = x y^2\\)" },
+        { "label": "C", "text": "\\(2h^2 = xy\\)" },
+        { "label": "D", "text": "\\(2h^2 = x^2 y^2\\)" }
+      ],
+      "chapter": "Heights and Distances",
+      "subtopic": "Two Object and Shadow Problems",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 35,
+      "stem": "What is the value of \\(\\dfrac{\\sin 19^\\circ}{\\cos 71^\\circ} + \\dfrac{\\cos 73^\\circ}{\\sin 17^\\circ}\\) ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Complementary and Allied Angles",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 36,
+      "stem": "The perimeter of a triangle is 22 cm. Through each vertex of the triangle, a straight line parallel to the opposite side is drawn. What is the perimeter of triangle formed by these lines ?",
+      "options": [
+        { "label": "A", "text": "33 cm" },
+        { "label": "B", "text": "44 cm" },
+        { "label": "C", "text": "66 cm" },
+        { "label": "D", "text": "88 cm" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Perimeters of Subdivided Triangles",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 37,
+      "stem": "The sides \\(AD\\), \\(BC\\) of a trapezium \\(ABCD\\) are parallel and the diagonals \\(AC\\) and \\(BD\\) meet at \\(O\\). If the area of triangle \\(AOB\\) is 3 cm\\(^2\\) and the area of triangle \\(BDC\\) is 8 cm\\(^2\\), then what is the area of triangle \\(AOD\\) ?",
+      "options": [
+        { "label": "A", "text": "8 cm\\(^2\\)" },
+        { "label": "B", "text": "5 cm\\(^2\\)" },
+        { "label": "C", "text": "3.6 cm\\(^2\\)" },
+        { "label": "D", "text": "1.8 cm\\(^2\\)" }
+      ],
+      "chapter": "Quadrilaterals",
+      "subtopic": "Trapezium, Rhombus and Kite",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 38,
+      "stem": "A line segment \\(AB\\) is the diameter of a circle with centre at \\(O\\) having radius 6.5 cm. Point \\(P\\) is in the plane of the circle such that \\(AP = x\\) and \\(BP = y\\). In which one of the following cases the point \\(P\\) does not lie on the circle ?",
+      "options": [
+        { "label": "A", "text": "\\(x = 6.5\\) cm and \\(y = 6.5\\) cm" },
+        { "label": "B", "text": "\\(x = 12\\) cm and \\(y = 5\\) cm" },
+        { "label": "C", "text": "\\(x = 5\\) cm and \\(y = 12\\) cm" },
+        { "label": "D", "text": "\\(x = 0\\) cm and \\(y = 13\\) cm" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Angles in a Circle",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 39,
+      "stem": "The perimeters of two similar triangles \\(ABC\\) and \\(PQR\\) are 75 cm and 50 cm respectively. If the length of one side of the triangle \\(PQR\\) is 20 cm, then what is the length of corresponding side of the triangle \\(ABC\\) ?",
+      "options": [
+        { "label": "A", "text": "25 cm" },
+        { "label": "B", "text": "30 cm" },
+        { "label": "C", "text": "40 cm" },
+        { "label": "D", "text": "45 cm" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Congruence and Similarity",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 40,
+      "stem": "Let \\(PQRS\\) be a parallelogram whose diagonals \\(PR\\) and \\(QS\\) intersect at \\(O\\). If triangle \\(QRS\\) is an equilateral triangle having a side of length 10 cm, then what is the length of the diagonal \\(PR\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(5\\sqrt{3}\\) cm" },
+        { "label": "B", "text": "\\(10\\sqrt{3}\\) cm" },
+        { "label": "C", "text": "\\(15\\sqrt{3}\\) cm" },
+        { "label": "D", "text": "\\(20\\sqrt{3}\\) cm" }
+      ],
+      "chapter": "Quadrilaterals",
+      "subtopic": "Parallelograms",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 41,
+      "stem": "The areas of three adjacent faces of a cuboid are \\(x\\), \\(y\\) and \\(z\\). If \\(V\\) is the volume of the cuboid, then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(V = xyz\\)" },
+        { "label": "B", "text": "\\(V^2 = xyz\\)" },
+        { "label": "C", "text": "\\(V^3 = xyz\\)" },
+        { "label": "D", "text": "\\(V = (xyz)^2\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Surface Area and Volume Relations",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 42,
+      "stem": "If \\(l\\) is the length of the median of an equilateral triangle, then what is its area ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{\\sqrt{3}\\,l^2}{3}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{\\sqrt{3}\\,l^2}{2}\\)" },
+        { "label": "C", "text": "\\(\\sqrt{3}\\,l^2\\)" },
+        { "label": "D", "text": "\\(2l^2\\)" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 43,
+      "stem": "A piece of wire is in the form of a sector of a circle of radius 20 cm, subtending an angle \\(150^\\circ\\) at the centre. If it is bent in the form of a circle, then what will be its radius ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{19}{3}\\) cm" },
+        { "label": "B", "text": "7 cm" },
+        { "label": "C", "text": "8 cm" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Circle, Sector and Segment",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 44,
+      "stem": "Suppose \\(P\\), \\(Q\\) and \\(R\\) are the mid-points of sides of a triangle of area 128 cm\\(^2\\). If a triangle \\(ABC\\) is drawn by joining the mid-points of sides of triangle \\(PQR\\), then what is the area of triangle \\(ABC\\) ?",
+      "options": [
+        { "label": "A", "text": "4 cm\\(^2\\)" },
+        { "label": "B", "text": "8 cm\\(^2\\)" },
+        { "label": "C", "text": "16 cm\\(^2\\)" },
+        { "label": "D", "text": "32 cm\\(^2\\)" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Ratio of Areas of Triangles",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 45,
+      "stem": "Let two lines \\(p\\) and \\(q\\) be parallel. Consider two points \\(B\\) and \\(C\\) on the line \\(p\\) and two points \\(D\\) and \\(E\\) on the line \\(q\\). The line through \\(B\\) and \\(E\\) intersects the line through \\(C\\) and \\(D\\) at \\(A\\) in between the two lines \\(p\\) and \\(q\\). If \\(AC : AD = 4 : 9\\), then what is the ratio of area of triangle \\(ABC\\) to that of triangle \\(ADE\\) ?",
+      "options": [
+        { "label": "A", "text": "2 : 3" },
+        { "label": "B", "text": "4 : 9" },
+        { "label": "C", "text": "16 : 81" },
+        { "label": "D", "text": "1 : 2" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Ratio of Areas of Triangles",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 46,
+      "stem": "An equilateral triangle and a square are constructed using metallic wires of equal length. What is the ratio of area of triangle to that of square ?",
+      "options": [
+        { "label": "A", "text": "3 : 4" },
+        { "label": "B", "text": "2 : 3" },
+        { "label": "C", "text": "\\(4\\sqrt{3} : 9\\)" },
+        { "label": "D", "text": "\\(2\\sqrt{3} : 9\\)" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 47,
+      "stem": "All the four sides of a parallelogram are of equal length. The diagonals are in the ratio 1 : 2. If the sum of the lengths of the diagonals is 12 cm, then what is the area of the parallelogram ?",
+      "options": [
+        { "label": "A", "text": "9 cm\\(^2\\)" },
+        { "label": "B", "text": "12 cm\\(^2\\)" },
+        { "label": "C", "text": "16 cm\\(^2\\)" },
+        { "label": "D", "text": "25 cm\\(^2\\)" }
+      ],
+      "chapter": "Quadrilaterals",
+      "subtopic": "Trapezium, Rhombus and Kite",
+      "difficulty": "MODERATE"
+    }
+  ]
+}
