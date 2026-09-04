@@ -398,5 +398,405 @@
     "confidence": "HIGH",
     "reasoning": "As a quadratic in x: x^2 - (2y sin^2 t)x + y^2 = 0 with discriminant 4y^2(sin^4 t - 1) <= 0. Real solutions therefore need it zero: either y = 0 (forcing x = 0) or sin^2 t = 1, which gives (x - y)^2 = 0. Both cases give x = y; checked at t = 0, pi/6, pi/4, pi/3 (all discriminants negative) and t = pi/2 (zero).",
     "solution": "Treat the equation as a quadratic in \\(x\\): \\(x^2-(2y\\sin^2\\theta)x+y^2=0\\), whose discriminant is \\(4y^2\\sin^4\\theta-4y^2=4y^2(\\sin^4\\theta-1)\\). Since \\(\\sin^4\\theta\\le 1\\), this discriminant is never positive, so a real solution forces it to be zero. That happens either when \\(y=0\\), which then gives \\(x^2=0\\) and so \\(x=0\\), or when \\(\\sin^2\\theta=1\\), which reduces the equation to \\((x-y)^2=0\\). In every case \\(x=y\\)."
+  },
+  {
+    "number": 51,
+    "answer": "A",
+    "value": "Statement 1 only",
+    "confidence": "HIGH",
+    "reasoning": "sin 1 = 0.017452 < cos 57 = 0.544639, so statement 1 is true (cos 57 = sin 33 and sine increases on 0-90). cos 60 = 0.5 is NOT greater than sin 57 = 0.838671, so statement 2 is false.",
+    "solution": "Since \\(\\cos 57^\\circ=\\sin 33^\\circ\\) and the sine increases from \\(0^\\circ\\) to \\(90^\\circ\\), we have \\(\\sin 1^\\circ<\\sin 33^\\circ\\), so the first inequality is true. For the second, \\(\\cos 60^\\circ=0.5\\) while \\(\\sin 57^\\circ\\approx 0.839\\), so \\(\\cos 60^\\circ\\) is the smaller of the two and the claimed inequality fails. Only the first statement is correct."
+  },
+  {
+    "number": 52,
+    "answer": "A",
+    "value": "-1",
+    "confidence": "HIGH",
+    "reasoning": "With p = (1-sin)/cos and q = (1+cos)/sin, the identity (1+cos)(1-sin-cos) = sin(sin-1-cos) gives q(p-1) = (sin-1-cos)/cos, so p + q(p-1) = (1-sin+sin-1-cos)/cos = -1. Sympy trigsimp returns exactly -1, and numeric checks at theta = pi/4, pi/6, pi/3, 0.2, 0.777, 1.286 and 2.31 rad all give -1.",
+    "solution": "Write \\(p=\\dfrac{1-\\sin\\theta}{\\cos\\theta}\\) and \\(q=\\dfrac{1+\\cos\\theta}{\\sin\\theta}\\), so \\(p-1=\\dfrac{1-\\sin\\theta-\\cos\\theta}{\\cos\\theta}\\). Expanding, \\((1+\\cos\\theta)(1-\\sin\\theta-\\cos\\theta)=\\sin\\theta(\\sin\\theta-1-\\cos\\theta)\\), so \\(q(p-1)=\\dfrac{\\sin\\theta-1-\\cos\\theta}{\\cos\\theta}\\). Adding \\(p\\), the numerators cancel down to \\(-\\cos\\theta\\), giving \\(p+q(p-1)=-1\\)."
+  },
+  {
+    "number": 53,
+    "answer": "D",
+    "value": "\\(\\frac{m}{2}+\\frac{1}{2m}\\)",
+    "confidence": "HIGH",
+    "reasoning": "cosec^2 - cot^2 = 1 gives (cosec - cot)(cosec + cot) = 1, so cosec + cot = 1/m; adding m gives 2cosec = m + 1/m, i.e. cosec = m/2 + 1/(2m). Checked numerically at theta = pi/4, pi/6, pi/3 and 0.4 rad: m/2 + 1/(2m) matches cosec exactly each time, while m + 1/m is double it and m/2 + 2/m is much too large.",
+    "solution": "Since \\(\\operatorname{cosec}^2\\theta-\\cot^2\\theta=1\\), we can factorise it as \\((\\operatorname{cosec}\\theta-\\cot\\theta)(\\operatorname{cosec}\\theta+\\cot\\theta)=1\\), so \\(\\operatorname{cosec}\\theta+\\cot\\theta=\\dfrac{1}{m}\\). Adding this to the given \\(\\operatorname{cosec}\\theta-\\cot\\theta=m\\) eliminates the cotangent and gives \\(2\\operatorname{cosec}\\theta=m+\\dfrac{1}{m}\\). Hence \\(\\operatorname{cosec}\\theta=\\dfrac{m}{2}+\\dfrac{1}{2m}\\)."
+  },
+  {
+    "number": 54,
+    "answer": "D",
+    "value": "\\(\\frac{c^2}{ab}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Right angle at C, so a = BC and b = CA are the legs and c = AB the hypotenuse: tanA = a/b, tanB = b/a, sum = (a^2+b^2)/(ab) = c^2/(ab). Checked on the triples (3,4,5), (5,12,13) and (7,24,25): the sum matches c^2/(ab) exactly (2.0833, 2.8167, 3.7202) and no other option comes close.",
+    "solution": "With the right angle at \\(C\\), the two legs are \\(a=BC\\) and \\(b=CA\\), and \\(c=AB\\) is the hypotenuse. Then \\(\\tan A=\\dfrac{a}{b}\\) and \\(\\tan B=\\dfrac{b}{a}\\), so \\(\\tan A+\\tan B=\\dfrac{a^2+b^2}{ab}\\). By Pythagoras \\(a^2+b^2=c^2\\), so the sum is \\(\\dfrac{c^2}{ab}\\)."
+  },
+  {
+    "number": 55,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Each cosine is at most 1, so a sum of 2 forces cos(alpha) = cos(beta) = 1, and on [0, 90] that means alpha = beta = 0, which is consistent with sin(alpha) + sin(beta) = 0. Then cos2alpha - cos2beta = 1 - 1 = 0. The value IS determined, so the cannot-be-determined choice is wrong.",
+    "solution": "Each cosine is at most \\(1\\), so \\(\\cos\\alpha+\\cos\\beta=2\\) can only happen when \\(\\cos\\alpha=\\cos\\beta=1\\). On \\(0^\\circ\\le\\alpha,\\beta\\le 90^\\circ\\) that forces \\(\\alpha=\\beta=0^\\circ\\), which is consistent with the second condition \\(\\sin\\alpha+\\sin\\beta=0\\). The data therefore fix both angles, and \\(\\cos 2\\alpha-\\cos 2\\beta=1-1=0\\)."
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "value": "3/4",
+    "confidence": "HIGH",
+    "reasoning": "Putting c = cos theta, 1/c + c = 5/2 gives 2c^2 - 5c + 2 = 0 with roots c = 2 and c = 1/2 (sympy). Only c = 1/2 is a possible cosine, so sin^2 = 1 - 1/4 = 3/4.",
+    "solution": "Put \\(c=\\cos\\theta\\); then \\(\\dfrac{1}{c}+c=\\dfrac{5}{2}\\) becomes \\(2c^2-5c+2=0\\), whose roots are \\(c=2\\) and \\(c=\\dfrac12\\). A cosine can never be \\(2\\), so \\(\\cos\\theta=\\dfrac12\\). Hence \\(\\sin^2\\theta=1-\\dfrac14=\\dfrac34\\)."
+  },
+  {
+    "number": 57,
+    "answer": "C",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Writing each bracket over a common denominator gives [(sin+cos-1)/sin][(cos+sin+1)/cos] = [(sin+cos)^2 - 1]/(sin.cos) = 2sin.cos/(sin.cos) = 2. Sympy simplify returns 2, and numeric checks at pi/4, pi/6, pi/3, 0.333 and 1.1 rad all give exactly 2.",
+    "solution": "Put each bracket over a common denominator: the first is \\(\\dfrac{\\sin\\theta+\\cos\\theta-1}{\\sin\\theta}\\) and the second is \\(\\dfrac{\\cos\\theta+\\sin\\theta+1}{\\cos\\theta}\\). Their product is \\(\\dfrac{(\\sin\\theta+\\cos\\theta)^2-1}{\\sin\\theta\\cos\\theta}\\), and since \\((\\sin\\theta+\\cos\\theta)^2-1=2\\sin\\theta\\cos\\theta\\), this reduces to \\(\\dfrac{2\\sin\\theta\\cos\\theta}{\\sin\\theta\\cos\\theta}\\). The value is \\(2\\) wherever the expression is defined."
+  },
+  {
+    "number": 58,
+    "answer": "D",
+    "value": "99",
+    "confidence": "HIGH",
+    "reasoning": "Squaring and adding: (6+8t)^2 + (8-6t)^2 = 100 + 100t^2 = 100 sec^2 (sympy-expanded). The left side is sec^2 + k^2 sec^2, so 1 + k^2 = 100 and k^2 = 99. Confirmed by solving explicitly: tan = (-16 +/- sqrt 11)/21 gives k = +/-3 sqrt 11, and k^2 = 99 for both roots.",
+    "solution": "Square each given relation and add: \\((6+8\\tan\\theta)^2+(8-6\\tan\\theta)^2=100+100\\tan^2\\theta=100\\sec^2\\theta\\), because the cross terms cancel. The same left-hand side equals \\(\\sec^2\\theta+k^2\\sec^2\\theta\\) by the two given equations, so \\((1+k^2)\\sec^2\\theta=100\\sec^2\\theta\\). Dividing through by \\(\\sec^2\\theta\\) gives \\(1+k^2=100\\), so \\(k^2=99\\)."
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "value": "\\(\\sqrt{3}\\,x\\) metre",
+    "confidence": "HIGH",
+    "reasoning": "If the two halves subtend equal angles at A, then AM (M the midpoint of OP) is both a median and an angle bisector of triangle OAP, forcing AO = AP = x. Leaning 60 deg from the vertical means 30 deg from the ground, so angle AOP = 30, angle APO = 30, angle OAP = 120, and the sine rule gives OP = x sin120/sin30 = sqrt(3) x. Verified by coordinates: with the pole leaning toward the point, solving AO = AP gives L = 1.7320508 for x = 1, and the two half-angles then measure 60.000000 deg each; the lean-away case has no positive solution.",
+    "solution": "If the two halves subtend equal angles at the point \\(A\\), then the line from \\(A\\) to the midpoint \\(M\\) of the pole \\(OP\\) is both a median and an angle bisector of triangle \\(OAP\\), which forces \\(AO=AP=x\\). Leaning \\(60^\\circ\\) from the vertical means \\(30^\\circ\\) from the ground, so \\(\\angle AOP=30^\\circ\\); the pole cannot lean away from \\(A\\), since that would need \\(\\angle AOP=150^\\circ\\) in an isosceles triangle. The base angles being equal gives \\(\\angle APO=30^\\circ\\) and \\(\\angle OAP=120^\\circ\\), so by the sine rule \\(OP=\\dfrac{x\\sin 120^\\circ}{\\sin 30^\\circ}=\\sqrt{3}\\,x\\) metres."
+  },
+  {
+    "number": 60,
+    "answer": "C",
+    "value": "\\(\\frac{2}{\\sqrt{3}}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With height h, the nearer corners are at a = h/tan60 = h/sqrt3 and b = h/tan45 = h. The far corner is at sqrt(a^2+b^2) = 2h/sqrt3, so tan(theta) = sqrt3/2 and cot(theta) = 2/sqrt3 = 1.154701 (numerically confirmed; 4/sqrt3 = 2.309 does not match).",
+    "solution": "Let the tower have height \\(h\\) and let the rectangle's sides from that corner be \\(a\\) and \\(b\\). From \\(\\tan 60^\\circ=\\dfrac{h}{a}\\) and \\(\\tan 45^\\circ=\\dfrac{h}{b}\\) we get \\(a=\\dfrac{h}{\\sqrt3}\\) and \\(b=h\\). The farthest corner is the opposite one, at distance \\(\\sqrt{a^2+b^2}=\\sqrt{\\dfrac{h^2}{3}+h^2}=\\dfrac{2h}{\\sqrt3}\\). Hence \\(\\tan\\theta=\\dfrac{h}{2h/\\sqrt3}=\\dfrac{\\sqrt3}{2}\\), so \\(\\cot\\theta=\\dfrac{2}{\\sqrt3}\\)."
+  },
+  {
+    "number": 61,
+    "answer": "B",
+    "value": "2 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Equal bases means a common radius r. Equating volumes, (1/3)pi r^2 h = (2/3) pi r^3 gives h = 2r (sympy), so height : radius = 2 : 1.",
+    "solution": "Equal bases means the cone and the hemisphere share the same radius \\(r\\). Equating the volumes, \\(\\dfrac13\\pi r^2h=\\dfrac23\\pi r^3\\), and cancelling \\(\\dfrac13\\pi r^2\\) leaves \\(h=2r\\). So the height of the cone to the radius of the hemisphere is \\(2:1\\)."
+  },
+  {
+    "number": 62,
+    "answer": "B",
+    "value": "1 cm",
+    "confidence": "HIGH",
+    "reasoning": "Diameter 60 mm = 6 cm, so radius 3 cm and volume (4/3)pi(27) = 36pi cm^3. Equating to the wire, pi rho^2 (144) = 36pi gives rho = 1/2 cm (sympy), so the diameter is 1 cm. Note the units: the sphere is given in mm and the wire in cm.",
+    "solution": "The sphere's diameter is \\(60\\) mm \\(=6\\) cm, so its radius is \\(3\\) cm and its volume is \\(\\dfrac43\\pi(3)^3=36\\pi\\) cm\\(^3\\). Melting and stretching changes the shape but not the volume, so \\(\\pi\\rho^2\\times 144=36\\pi\\), giving \\(\\rho^2=\\dfrac14\\) and \\(\\rho=0.5\\) cm. The diameter of the wire is therefore \\(1\\) cm."
+  },
+  {
+    "number": 63,
+    "answer": "C",
+    "value": "462 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "Take r = 2k, h = 3k. Then (22/7)(2k)^2(3k) = 1617 gives k^3 = 343/8 and k = 7/2 (sympy), so r = 7 and h = 10.5. CSA = 2 pi r h = 2(22/7)(7)(10.5) = 462 cm^2.",
+    "solution": "Write \\(r=2k\\) and \\(h=3k\\). The volume gives \\(\\dfrac{22}{7}(2k)^2(3k)=1617\\), so \\(k^3=\\dfrac{343}{8}\\) and \\(k=\\dfrac72\\), making \\(r=7\\) cm and \\(h=10.5\\) cm. The curved surface area is \\(2\\pi rh=2\\times\\dfrac{22}{7}\\times 7\\times 10.5=462\\) cm\\(^2\\)."
+  },
+  {
+    "number": 64,
+    "answer": "D",
+    "value": "4.5 cm",
+    "confidence": "HIGH",
+    "reasoning": "Surface difference: 2 pi h (R - r) = 44 with h = 14 gives R - r = 0.5. Volume: pi (R^2 - r^2) h = 99 gives 44 (R-r)(R+r) = 99, so 22(R+r) = 99 and R + r = 4.5. Sympy solves the pair as R = 2.5, r = 2, which satisfies both conditions exactly.",
+    "solution": "The difference of the two curved surfaces is \\(2\\pi h(R-r)=44\\); with \\(h=14\\) and \\(\\pi=\\dfrac{22}{7}\\) this gives \\(88(R-r)=44\\), so \\(R-r=0.5\\) cm. The metal's volume is \\(\\pi(R^2-r^2)h=99\\), that is \\(\\dfrac{22}{7}\\times 14\\times(R-r)(R+r)=99\\). Substituting \\(R-r=0.5\\) gives \\(22(R+r)=99\\), so \\(R+r=4.5\\) cm."
+  },
+  {
+    "number": 65,
+    "answer": "C",
+    "value": "2400 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "Volume is conserved: 24^3 = 13824, and 12^3 + 16^3 = 1728 + 4096 = 5824, so the third cube has volume 8000 and edge 20 cm exactly. Its surface area is 6(20^2) = 2400 cm^2.",
+    "solution": "Melting conserves volume, and the large cube has volume \\(24^3=13824\\) cm\\(^3\\). The two known cubes account for \\(12^3+16^3=1728+4096=5824\\) cm\\(^3\\), so the third has volume \\(13824-5824=8000\\) cm\\(^3\\) and hence edge \\(20\\) cm. Its surface area is \\(6\\times 20^2=2400\\) cm\\(^2\\)."
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "value": "2 cm",
+    "confidence": "HIGH",
+    "reasoning": "Cone volume = (1/3)pi(25)(24) = 200 pi cm^3. In a cylinder of radius 10, 100 pi H = 200 pi gives H = 2 cm (sympy).",
+    "solution": "The cone holds \\(\\dfrac13\\pi(5)^2(24)=200\\pi\\) cm\\(^3\\) of water. Poured into the cylinder, that water forms a column of height \\(H\\) and volume \\(\\pi(10)^2H=100\\pi H\\). Setting \\(100\\pi H=200\\pi\\) gives \\(H=2\\) cm."
+  },
+  {
+    "number": 67,
+    "answer": "C",
+    "value": "22 cm",
+    "confidence": "HIGH",
+    "reasoning": "The cube's volume is 22^3 = 10648 cm^3. For the cone, (1/3)(22/7) r^2 (21) = 22 r^2 = 10648 gives r^2 = 484 and r = 22 cm (sympy).",
+    "solution": "The cube has volume \\(22^3=10648\\) cm\\(^3\\), and melting preserves it. For the cone, \\(\\dfrac13\\times\\dfrac{22}{7}\\times r^2\\times 21=22r^2\\), so \\(22r^2=10648\\) and \\(r^2=484\\). Hence the base radius is \\(r=22\\) cm."
+  },
+  {
+    "number": 68,
+    "answer": "C",
+    "value": "7 : 25",
+    "confidence": "HIGH",
+    "reasoning": "With l = sqrt(576 + r^2), the curved surface gives (22/7) r sqrt(576+r^2) = 550, i.e. r sqrt(576+r^2) = 175, whose solution is r = 7 (sympy) since 7 x 25 = 175. Then l = 25 and r : l = 7 : 25.",
+    "solution": "The slant height is \\(l=\\sqrt{24^2+r^2}=\\sqrt{576+r^2}\\), so the curved surface area gives \\(\\dfrac{22}{7}r\\sqrt{576+r^2}=550\\), that is \\(r\\sqrt{576+r^2}=175\\). Trying \\(r=7\\) gives \\(7\\times\\sqrt{625}=7\\times 25=175\\), so \\(r=7\\) cm and \\(l=25\\) cm. The ratio of radius to slant height is \\(\\dfrac{7}{25}\\)."
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "value": "2 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Rolling along the length makes the circumference 44 and the height 22: r = 7, volume x = (22/7)(49)(22) = 3388. Rolling along the width makes the circumference 22 and the height 44: r = 3.5, volume y = (22/7)(12.25)(44) = 1694. Exact ratio 3388 : 1694 = 2 : 1.",
+    "solution": "Rolling along the length makes the circumference \\(44\\) cm and the height \\(22\\) cm, so \\(2\\pi r=44\\) gives \\(r=7\\) and \\(x=\\dfrac{22}{7}(7)^2(22)=3388\\) cm\\(^3\\). Rolling along the width makes the circumference \\(22\\) cm and the height \\(44\\) cm, so \\(r=3.5\\) and \\(y=\\dfrac{22}{7}(3.5)^2(44)=1694\\) cm\\(^3\\). Hence \\(x:y=3388:1694=2:1\\) — the taller, narrower cylinder holds less."
+  },
+  {
+    "number": 70,
+    "answer": "A",
+    "value": "1144 g",
+    "confidence": "HIGH",
+    "reasoning": "Shell volume = (4/3)pi(R^3 - r^3) = (4/3)(22/7)(216 - 125) = 1144/3 cm^3 exactly. Mass = density x volume = 3 x 1144/3 = 1144 g.",
+    "solution": "The metal occupies the space between the two spheres, so its volume is \\(\\dfrac43\\pi(R^3-r^3)=\\dfrac43\\times\\dfrac{22}{7}\\times(216-125)=\\dfrac{1144}{3}\\) cm\\(^3\\). Multiplying by the density \\(3\\) g/cm\\(^3\\) gives the mass. Hence the mass is \\(3\\times\\dfrac{1144}{3}=1144\\) g."
+  },
+  {
+    "number": 71,
+    "answer": "C",
+    "value": "44 m",
+    "confidence": "HIGH",
+    "reasoning": "Radius = 12/2 = 6 m, so the tent's curved surface is pi r l = (22/7)(6)(7) = 132 m^2. The cloth is a rectangle 3 m wide, so its length is 132/3 = 44 m.",
+    "solution": "The tent's radius is half the \\(12\\) m diameter, that is \\(6\\) m, so its curved surface area is \\(\\pi rl=\\dfrac{22}{7}\\times 6\\times 7=132\\) m\\(^2\\). The cloth is a rectangle of width \\(3\\) m, so its area is \\(3\\times\\text{length}\\). Setting \\(3\\times\\text{length}=132\\) gives a length of \\(44\\) m."
+  },
+  {
+    "number": 72,
+    "answer": "B",
+    "value": "1 cm",
+    "confidence": "HIGH",
+    "reasoning": "The sphere has radius 3 cm and volume (4/3)pi(27) = 36 pi cm^3, which is the water displaced. In a vessel of radius 6, pi(36) x rise = 36 pi gives a rise of exactly 1 cm.",
+    "solution": "The sphere has radius \\(3\\) cm, so its volume is \\(\\dfrac43\\pi(3)^3=36\\pi\\) cm\\(^3\\), and being completely submerged it displaces exactly that much water. The displaced water forms a layer of height \\(\\Delta h\\) across the vessel's cross-section, of volume \\(\\pi(6)^2\\Delta h=36\\pi\\Delta h\\). Setting \\(36\\pi\\Delta h=36\\pi\\) gives \\(\\Delta h=1\\) cm."
+  },
+  {
+    "number": 73,
+    "answer": "A",
+    "value": "577.5 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "Area of a sector = (1/2) x radius x arc length = (1/2)(21)(55) = 1155/2 = 577.5 cm^2 exactly. (The angle need not be found; note 55 is not a whole-number fraction of the 132 cm circumference, which is why the direct formula is the clean route.)",
+    "solution": "The area of a sector equals half the radius times the arc length, \\(\\dfrac12 r\\ell\\), so the central angle never has to be found. Here that is \\(\\dfrac12\\times 21\\times 55=\\dfrac{1155}{2}\\). The area of the sector is \\(577.5\\) cm\\(^2\\)."
+  },
+  {
+    "number": 74,
+    "answer": "D",
+    "value": "110 cm",
+    "confidence": "HIGH",
+    "reasoning": "The circle's circumference is 2(22/7)(70) = 440 cm, and bending preserves the wire's length. A rhombus has four equal sides, so each is 440/4 = 110 cm.",
+    "solution": "The circle's circumference is \\(2\\pi r=2\\times\\dfrac{22}{7}\\times 70=440\\) cm, and bending the wire does not change its length. A rhombus has four equal sides, so its perimeter is also \\(440\\) cm. Each side is therefore \\(\\dfrac{440}{4}=110\\) cm."
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "value": "7700 m^2",
+    "confidence": "HIGH",
+    "reasoning": "The perimeter of a semicircular region is the arc plus the diameter: pi r + 2r = 360. With pi = 22/7 this is (36/7) r = 360, so r = 70 m (sympy). Area = (1/2) pi r^2 = (1/2)(22/7)(4900) = 7700 m^2.",
+    "solution": "The perimeter of a semicircular park is the curved arc plus the straight diameter, that is \\(\\pi r+2r\\), not just the arc. Setting \\(\\dfrac{22}{7}r+2r=360\\) gives \\(\\dfrac{36}{7}r=360\\), so \\(r=70\\) m. The area is \\(\\dfrac12\\pi r^2=\\dfrac12\\times\\dfrac{22}{7}\\times 4900=7700\\) m\\(^2\\)."
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "value": "x = 3",
+    "confidence": "HIGH",
+    "reasoning": "AB parallel to DC makes triangles APB and CPD similar, so AP/PC = BP/PD: 4/(4x-4) = (2x-1)/(2x+4). Cross-multiplying gives 8x^2 - 20x - 12 = 0, i.e. 2x^2 - 5x - 3 = 0 with roots x = 3 and x = -1/2 (sympy). At x = -1/2 the ratios come out 4:-6 and -2:3, both negative, so x = 3, giving AP:PC = 4:8 and BP:PD = 5:10, which agree at 1:2.",
+    "solution": "Because \\(AB\\) is parallel to \\(DC\\), triangles \\(APB\\) and \\(CPD\\) are similar, so \\(\\dfrac{AP}{PC}=\\dfrac{BP}{PD}\\). This gives \\(\\dfrac{4}{4x-4}=\\dfrac{2x-1}{2x+4}\\), which cross-multiplies to \\(8x^2-20x-12=0\\), that is \\(2x^2-5x-3=0\\) and \\((2x+1)(x-3)=0\\). The root \\(x=-\\dfrac12\\) would make the segment ratios negative, so \\(x=3\\); then \\(AP:PC=4:8\\) and \\(BP:PD=5:10\\), which do agree."
+  },
+  {
+    "number": 77,
+    "answer": "B",
+    "value": "4 : 3",
+    "confidence": "HIGH",
+    "reasoning": "In similar triangles every corresponding length, and hence every sum of corresponding lengths and the perimeter itself, scales by the same factor. That factor is 40/30 = 4/3, so (BC+CA):(EF+FD) = 4:3.",
+    "solution": "In similar triangles every pair of corresponding sides is in the same ratio, and so therefore is any sum of corresponding sides — including the perimeters. The perimeters give that ratio directly as \\(\\dfrac{40}{30}=\\dfrac43\\). Hence \\((BC+CA):(EF+FD)=4:3\\)."
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "value": "22 : 23",
+    "confidence": "HIGH",
+    "reasoning": "Equal vertical angles in isosceles triangles force equal base angles, so the triangles are similar. For similar figures the area ratio is the square of the length ratio, so heights are as sqrt(4.84) : sqrt(5.29) = 2.2 : 2.3 = 22 : 23 (0.956522, matching 22/23 exactly).",
+    "solution": "Two isosceles triangles with equal vertical angles have equal base angles as well, so they are similar. For similar figures the ratio of areas is the square of the ratio of corresponding lengths, so the ratio of heights is \\(\\sqrt{4.84}:\\sqrt{5.29}\\). That is \\(2.2:2.3\\), which simplifies to \\(22:23\\)."
+  },
+  {
+    "number": 79,
+    "answer": "D",
+    "value": "10 cm",
+    "confidence": "HIGH",
+    "reasoning": "For the altitude from the right angle to the hypotenuse, AD^2 = BD x DC = 8 x 12.5 = 100, so AD = 10 cm.",
+    "solution": "When the altitude is dropped from the right angle to the hypotenuse, the two smaller triangles are each similar to the whole, which gives \\(AD^2=BD\\times DC\\). Here \\(AD^2=8\\times 12.5=100\\). Hence \\(AD=10\\) cm."
+  },
+  {
+    "number": 80,
+    "answer": "A",
+    "value": "pi : 6",
+    "confidence": "HIGH",
+    "reasoning": "Equal surface areas give 6a^2 = 4 pi R^2, so a^2 = 2 pi R^2/3. Then x = a^3 = R^3 (2pi/3)^{3/2} and y = (4/3) pi R^3, so x^2/y^2 = (8 pi^3/27)(9/(16 pi^2)) = pi/6. Numerically 0.52359878, which equals pi/6 = 0.52359878; the other options give 1.910, 1.047 and 0.955.",
+    "solution": "Equal surface areas give \\(6a^2=4\\pi R^2\\), so \\(a^2=\\dfrac{2\\pi R^2}{3}\\). Then \\(x=a^3=R^3\\left(\\dfrac{2\\pi}{3}\\right)^{3/2}\\) and \\(y=\\dfrac43\\pi R^3\\), so squaring removes the awkward half-power: \\(\\dfrac{x^2}{y^2}=\\dfrac{R^6(2\\pi/3)^3}{(16/9)\\pi^2R^6}=\\dfrac{8\\pi^3/27}{16\\pi^2/9}\\). This simplifies to \\(\\dfrac{\\pi}{6}\\), so \\(x^2:y^2=\\pi:6\\)."
+  },
+  {
+    "number": 81,
+    "answer": "C",
+    "value": "56 units",
+    "confidence": "HIGH",
+    "reasoning": "The largest side is x, so x^2 = (x-1)^2 + (x-18)^2 gives x^2 - 38x + 325 = 0 with roots 25 and 13 (sympy). x = 13 makes the third side 13 - 18 = -5, impossible, so x = 25 and the sides are 25, 24, 7 (7^2 + 24^2 = 625 checks). Perimeter 56. Note the stem says 'ratio' but the options are absolute lengths, so the sides are taken as x, x-1, x-18 themselves; the Pythagorean condition is scale-invariant and fixes x = 25 either way.",
+    "solution": "The largest of the three is \\(x\\), so it is the hypotenuse and \\(x^2=(x-1)^2+(x-18)^2\\). Expanding gives \\(x^2-38x+325=0\\), whose roots are \\(x=25\\) and \\(x=13\\). The root \\(x=13\\) would make the third side \\(13-18=-5\\), which is impossible, so \\(x=25\\) and the sides are \\(25\\), \\(24\\) and \\(7\\) — and indeed \\(7^2+24^2=625=25^2\\). The perimeter is \\(25+24+7=56\\) units."
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "value": "12 cm",
+    "confidence": "HIGH",
+    "reasoning": "PM and QN are both parallel to CB, so triangles APM and AQN are each similar to ACB. With AM = AB/3 and AN = 2AB/3, PM = 12/3 = 4 and QN = 2(12)/3 = 8, so PM + QN = 12 cm.",
+    "solution": "Since \\(PM\\) and \\(QN\\) are both parallel to \\(CB\\), triangles \\(APM\\) and \\(AQN\\) are each similar to triangle \\(ACB\\). The three equal parts give \\(AM=\\dfrac{AB}{3}\\) and \\(AN=\\dfrac{2AB}{3}\\), so \\(PM=\\dfrac{12}{3}=4\\) cm and \\(QN=\\dfrac{2\\times 12}{3}=8\\) cm. Hence \\(PM+QN=12\\) cm."
+  },
+  {
+    "number": 83,
+    "answer": "D",
+    "value": "120 degrees",
+    "confidence": "HIGH",
+    "reasoning": "Two diameters can only intersect at the centre, so P is the centre and PA = PD are radii, making triangle PAD isosceles. With angle PAD = 60, angle PDA = 60 too, so angle APD = 60. Since A, P, B are collinear along the diameter AB, angle BPD = 180 - 60 = 120 degrees.",
+    "solution": "Two diameters of a circle can only cross at the centre, so \\(P\\) is the centre and \\(PA=PD\\) are both radii, making triangle \\(PAD\\) isosceles. With \\(\\angle PAD=60^\\circ\\), the base angle \\(\\angle PDA\\) is also \\(60^\\circ\\), so \\(\\angle APD=180^\\circ-120^\\circ=60^\\circ\\). Since \\(A\\), \\(P\\) and \\(B\\) lie on the straight diameter \\(AB\\), the angles \\(\\angle APD\\) and \\(\\angle BPD\\) are supplementary, giving \\(\\angle BPD=120^\\circ\\)."
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "value": "60 degrees",
+    "confidence": "HIGH",
+    "reasoning": "The equilateral triangle gives angle BAC = 60. D lies on the same side of chord BC as A, so angle BDC and angle BAC are angles in the same segment and are equal. Hence angle BDC = 60 degrees, independent of the scalene triangle's shape.",
+    "solution": "Since \\(ABC\\) is equilateral, \\(\\angle BAC=60^\\circ\\). The vertices \\(A\\) and \\(D\\) lie on the same side of the chord \\(BC\\), so \\(\\angle BDC\\) and \\(\\angle BAC\\) are angles in the same segment of the circle and must be equal. Hence \\(\\angle BDC=60^\\circ\\), whatever the shape of the scalene triangle."
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "value": "9 cm",
+    "confidence": "HIGH",
+    "reasoning": "Circles centred at the vertices touching externally in pairs give rA + rB = 4, rB + rC = 6, rC + rA = 8. Adding all three, 2(rA + rB + rC) = 18, so the sum is 9 cm regardless of which side is which (sympy gives the individual radii as 3, 1, 5).",
+    "solution": "When two circles touch externally, the distance between their centres is the sum of their radii, so each side of the triangle equals the sum of the radii at its two ends. Adding the three relations gives \\(2(r_A+r_B+r_C)=4+6+8=18\\). Hence the sum of the radii is \\(9\\) cm, and the individual radii work out as \\(3\\), \\(1\\) and \\(5\\) cm."
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "value": "7 cm",
+    "confidence": "HIGH",
+    "reasoning": "The tangent-secant relation gives PT^2 = PA x PB, so 144 = 9 x PB and PB = 16 cm. With A between P and B, AB = PB - PA = 16 - 9 = 7 cm.",
+    "solution": "For a tangent and a secant from the same external point, \\(PT^2=PA\\times PB\\). Here \\(12^2=9\\times PB\\), so \\(PB=16\\) cm. Since \\(A\\) lies between \\(P\\) and \\(B\\), the chord is \\(AB=PB-PA=16-9=7\\) cm."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "value": "30 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "Legs a + b = 30 - 13 = 17 and a^2 + b^2 = 169. Squaring the first, 289 = 169 + 2ab, so ab = 60 and the area is 30 cm^2. Sympy gives the legs explicitly as 5 and 12, a genuine 5-12-13 triangle.",
+    "solution": "Let the legs be \\(a\\) and \\(b\\); the perimeter gives \\(a+b=30-13=17\\) and Pythagoras gives \\(a^2+b^2=169\\). Squaring the first, \\(289=(a^2+b^2)+2ab=169+2ab\\), so \\(ab=60\\). The area is \\(\\dfrac{ab}{2}=30\\) cm\\(^2\\) — the triangle is in fact the \\(5\\)-\\(12\\)-\\(13\\) one."
+  },
+  {
+    "number": 88,
+    "answer": "C",
+    "value": "4.8 cm",
+    "confidence": "HIGH",
+    "reasoning": "Right angle at C, so AB = sqrt(36+64) = 10 cm. Computing the area two ways, (1/2)(6)(8) = (1/2)(10)p, gives 48 = 10p and p = 4.8 cm.",
+    "solution": "With the right angle at \\(C\\), the hypotenuse is \\(AB=\\sqrt{6^2+8^2}=10\\) cm. The area can be written using the two legs as \\(\\dfrac12\\times 6\\times 8=24\\), and also using the hypotenuse and the perpendicular as \\(\\dfrac12\\times 10\\times p\\). Equating these gives \\(10p=48\\), so \\(p=4.8\\) cm."
+  },
+  {
+    "number": 89,
+    "answer": "D",
+    "value": "9 : 4",
+    "confidence": "HIGH",
+    "reasoning": "2AB = 3DC gives AB/DC = 3/2. AB parallel to DC makes triangles AOB and COD similar with that ratio, and areas of similar triangles go as the square of the ratio, so 9 : 4.",
+    "solution": "From \\(2AB=3DC\\) we get \\(\\dfrac{AB}{DC}=\\dfrac32\\). Since \\(AB\\) is parallel to \\(DC\\), the alternate angles make triangles \\(AOB\\) and \\(COD\\) similar, with corresponding sides in that same ratio \\(3:2\\). Areas of similar triangles are in the square of the ratio of sides, so the required ratio is \\(9:4\\)."
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "value": "13 cm",
+    "confidence": "HIGH",
+    "reasoning": "For a quadrilateral with an inscribed circle, the sums of opposite sides are equal: AB + CD = BC + DA, so 9 + 12 = 8 + DA and DA = 13 cm.",
+    "solution": "When a circle touches all four sides, the two tangents from each vertex are equal, and adding them up gives \\(AB+CD=BC+DA\\). Substituting the given lengths, \\(9+12=8+DA\\). Hence \\(DA=13\\) cm."
+  },
+  {
+    "number": 91,
+    "answer": "C",
+    "value": "Countries A, C, D and E",
+    "confidence": "HIGH",
+    "reasoning": "Percentage rises: A 3/35 = 8.5714%, B 2/45 = 4.4444%, C 5/88 = 5.6818%, D 4/75 = 5.3333%, E 2.9/58 = 5.0000% exactly. Only B falls below 5%. Since the stem says more than OR EQUAL TO 5%, E qualifies, so the set is A, C, D, E; the A/C/D-only choice is the strict-inequality reading, which the wording excludes.",
+    "solution": "The percentage rises are \\(\\dfrac{3}{35}=8.57\\%\\) for country \\(A\\), \\(\\dfrac{2}{45}=4.44\\%\\) for \\(B\\), \\(\\dfrac{5}{88}=5.68\\%\\) for \\(C\\), \\(\\dfrac{4}{75}=5.33\\%\\) for \\(D\\) and \\(\\dfrac{2.9}{58}=5.00\\%\\) for \\(E\\). Only country \\(B\\) falls short of \\(5\\%\\). Country \\(E\\) is exactly \\(5\\%\\), and since the question asks for an increase of more than or equal to \\(5\\%\\), it qualifies. So the qualifying countries are \\(A\\), \\(C\\), \\(D\\) and \\(E\\)."
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "value": "40%",
+    "confidence": "MED",
+    "reasoning": "The test is out of 80, so 50% of the marks is 40. The classes up to 31-40 hold 5 + 8 + 10 + 13 = 36 students, and 36/90 = 40%. RUNNER-UP: 60%, which is what you get by reading the cut-off as 50 MARKS rather than 50% of them (5+8+10+13+18 = 54, and 54/90 = 60%). Both cut-offs fall exactly on class boundaries, so the arithmetic is clean either way and only the wording decides it; the printed stem says 50% marks with a per-cent sign, and the stem bothers to state the total is 80, so 40 marks is the reading taken here.",
+    "solution": "The test is out of \\(80\\) marks, so \\(50\\%\\) of the marks means \\(40\\) marks. The classes up to \\(31\\)-\\(40\\) contain \\(5+8+10+13=36\\) students, and as a fraction of the \\(90\\) students that is \\(\\dfrac{36}{90}\\times 100=40\\%\\). Note the wording matters here: taking the cut-off to be \\(50\\) marks instead of \\(50\\%\\) of them would add the \\(41\\)-\\(50\\) class and give \\(54\\) students, or \\(60\\%\\)."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "Sorting the seven values gives -1, 2, 2, 3, 6, 8, 9; with an odd count the median is the fourth value, which is 3. (The mean would be 29/7 = 4.14, so 4 is a distractor for the wrong statistic.)",
+    "solution": "Arranging the seven values in increasing order gives \\(-1, 2, 2, 3, 6, 8, 9\\). With an odd number of observations the median is the middle one, that is the fourth. So the median is \\(3\\)."
+  },
+  {
+    "number": 94,
+    "answer": "D",
+    "value": "11.2",
+    "confidence": "HIGH",
+    "reasoning": "The first ten composite numbers are 4, 6, 8, 9, 10, 12, 14, 15, 16, 18 (1 is neither prime nor composite and the primes are skipped). Their sum is 112, so the mean is 11.2.",
+    "solution": "The first ten composite numbers are \\(4, 6, 8, 9, 10, 12, 14, 15, 16, 18\\) — remember that \\(1\\) is neither prime nor composite, and all the primes are skipped. Their sum is \\(112\\). The arithmetic mean is therefore \\(\\dfrac{112}{10}=11.2\\)."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "value": "30",
+    "confidence": "HIGH",
+    "reasoning": "The five marks total 21 + 27 + 19 + 26 + 32 = 125, so the mean is 25. Adding 5 to every score raises the mean by exactly 5, giving 30.",
+    "solution": "The five marks total \\(21+27+19+26+32=125\\), so the original mean is \\(\\dfrac{125}{5}=25\\). Adding the same \\(5\\) grace marks to every student raises the total by \\(25\\) and the mean by exactly \\(5\\). The revised average is \\(25+5=30\\)."
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "value": "p <= c <= q",
+    "confidence": "HIGH",
+    "reasoning": "The combined mean is c = (mp + nq)/(m + n), a weighted average of p and q with positive weights. A weighted average always lies between the two quantities, so with p <= q we get p <= c <= q.",
+    "solution": "The combined mean is \\(c=\\dfrac{mp+nq}{m+n}\\), which is a weighted average of \\(p\\) and \\(q\\) with the positive weights \\(m\\) and \\(n\\). A weighted average can never fall outside the range of the values being averaged. Since \\(p\\le q\\), it follows that \\(p\\le c\\le q\\)."
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "value": "Type III (total 504)",
+    "confidence": "HIGH",
+    "reasoning": "Column totals over 2000-2005: type I 1125, type II 620, type III 504, type IV 612, type V 605. The smallest is type III at 504. Note types III, IV and V are close (504, 612, 605), so the columns must actually be added rather than eyeballed.",
+    "solution": "Adding each column across the six years gives \\(1125\\) for type I, \\(620\\) for type II, \\(504\\) for type III, \\(612\\) for type IV and \\(605\\) for type V. The smallest of these totals is \\(504\\). So type III is produced least over the period — note that types III, IV and V are close enough that the columns really do have to be added."
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "value": "(2003, 2005), difference 7",
+    "confidence": "HIGH",
+    "reasoning": "Yearly totals: 2000 = 475, 2001 = 695, 2002 = 394, 2003 = 655, 2004 = 585, 2005 = 662. The four listed pairs differ by |655-662| = 7, |695-662| = 33, |655-585| = 70 and |475-394| = 81, so the minimum is 7 for 2003 and 2005.",
+    "solution": "The row totals are \\(475\\) for 2000, \\(695\\) for 2001, \\(394\\) for 2002, \\(655\\) for 2003, \\(585\\) for 2004 and \\(662\\) for 2005. The differences for the pairs offered are \\(|655-662|=7\\), \\(|695-662|=33\\), \\(|655-585|=70\\) and \\(|475-394|=81\\). The smallest of these is \\(7\\), for the pair 2003 and 2005."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "value": "1/2",
+    "confidence": "HIGH",
+    "reasoning": "Both drops are measured against 2001 (total 695): the 2004 drop is 110/695 = 15.827% and the 2000 drop is 220/695 = 31.655%. The common base cancels, giving the ratio 110/220 = 1/2 exactly.",
+    "solution": "Both drops are measured against the same year, 2001, whose total is \\(695\\). The drop for 2004 is \\(\\dfrac{695-585}{695}=\\dfrac{110}{695}\\) and the drop for 2000 is \\(\\dfrac{695-475}{695}=\\dfrac{220}{695}\\). Since the common denominator cancels, the ratio is simply \\(\\dfrac{110}{220}=\\dfrac12\\)."
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "value": "2003",
+    "confidence": "HIGH",
+    "reasoning": "Comparing type I with (type III + type IV) year by year: 2000 gives 160 vs 160 (equal, not more), 2001 gives 200 vs 245, 2002 gives 135 vs 139, 2003 gives 240 vs 200 (more), 2004 gives 180 vs 180 (equal). Only 2003 among the years offered has type I strictly greater. (2005 also qualifies at 210 vs 192 but is not an option.)",
+    "solution": "Compare type I with the sum of types III and IV, year by year: \\(160\\) against \\(160\\) in 2000, \\(200\\) against \\(245\\) in 2001, \\(135\\) against \\(139\\) in 2002, \\(240\\) against \\(200\\) in 2003, and \\(180\\) against \\(180\\) in 2004. Two of these are exact ties, which do not count as more. Only in 2003 is type I strictly greater, so the year is 2003."
   }
 ]

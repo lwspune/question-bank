@@ -80,7 +80,8 @@ export type Band = {
  */
 export type Derivation = {
   number: number;
-  answer: string; // A|B|C|D
+  /** A|B|C|D, or NULL where the deriver found no printed option correct. */
+  answer: string | null;
   value: string; // the answer's content in plain terms
   confidence: string; // HIGH|MED|LOW
   /**
@@ -314,20 +315,42 @@ export function crosstab(
         const which = !da && !db ? "both passes" : !da ? "pass A" : "pass B";
         return { number: n, verdict: "MISSING" as const, a: da, b: db, note: `no derivation from ${which}` };
       }
-      if (da.answer.toUpperCase() === db.answer.toUpperCase()) {
+      // A NULL answer means "no printed option is correct", which the derivation
+      // brief calls a wanted outcome rather than a failure. It went unhandled
+      // until 2021-I produced the corpus's first one (Q49, whose ratio is -2
+      // against options -3, -1, 1, 3) and this crashed on `null.toUpperCase()`.
+      // Both null is genuine agreement -- two passes independently concluding
+      // the paper is broken is a strong finding, not a gap. One null against a
+      // letter is a real DISPUTE, and must not fall through to the TWIN check,
+      // which would look up an option named `null`.
+      const aAns = da.answer;
+      const bAns = db.answer;
+      if (aAns == null || bAns == null) {
+        if (aAns == null && bAns == null) return { number: n, verdict: "AGREE" as const, a: da, b: db };
+        return {
+          number: n,
+          verdict: "DISPUTE" as const,
+          a: da,
+          b: db,
+          note: `${aAns == null ? "pass A" : "pass B"} found NO correct option; the other answered ${
+            (aAns == null ? bAns : aAns) ?? "?"
+          }`,
+        };
+      }
+      if (aAns.toUpperCase() === bAns.toUpperCase()) {
         return { number: n, verdict: "AGREE" as const, a: da, b: db };
       }
       const q = qs.get(n)!;
       const textOf = (label: string) => q.options.find((o) => o.label === label.toUpperCase())?.text ?? "";
-      const ta = textOf(da.answer);
-      const tb = textOf(db.answer);
+      const ta = textOf(aAns);
+      const tb = textOf(bAns);
       if (ta && tb && norm(ta) === norm(tb)) {
         return {
           number: n,
           verdict: "TWIN" as const,
           a: da,
           b: db,
-          note: `options ${da.answer} and ${db.answer} carry the same text — repair the option, not the answer`,
+          note: `options ${aAns} and ${bAns} carry the same text — repair the option, not the answer`,
         };
       }
       return { number: n, verdict: "DISPUTE" as const, a: da, b: db };
@@ -351,6 +374,13 @@ export function buildRecords(
   for (const q of questions) {
     const d = byNumber.get(q.number);
     if (!d) continue;
+    // A NULL answer means the deriver found no printed option correct, and that
+    // is a finding rather than a gap. It cannot be committed: the bank requires
+    // exactly one correct option, so the only ways to ship such a row are to
+    // invent an answer or to mark a wrong option right. Drop it, for the same
+    // reason a question nobody derived is dropped — the paper is short by one
+    // question, which is true, instead of carrying one that is wrong.
+    if (d.answer == null) continue;
     const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
     const agreed = !opts.reconciled?.has(q.number);
     rows.push({
@@ -391,10 +421,25 @@ function findTableWithoutSeparator(s: string): string | null {
 }
 
 /** Coverage + structural + collision checks over the assembled rows. */
-export function validateRows(rows: RawRow[], qFrom: number, qTo: number): string[] {
+export function validateRows(
+  rows: RawRow[],
+  qFrom: number,
+  qTo: number,
+  /**
+   * Numbers DELIBERATELY absent, because both derivations found no printed
+   * option correct. Without this the coverage gate cannot tell a deliberate
+   * drop from a transcription hole -- and it must not, since the two need
+   * opposite responses. Pass the set explicitly rather than inferring it, so a
+   * genuinely missing question can never be waved through by silence.
+   */
+  intentionallyAbsent: ReadonlySet<number> = new Set(),
+): string[] {
   const errs: string[] = [];
   const nums = new Set(rows.map((r) => Number(r.questionNumber)));
-  for (let n = qFrom; n <= qTo; n++) if (!nums.has(n)) errs.push(`missing Q${n}`);
+  for (let n = qFrom; n <= qTo; n++) {
+    if (nums.has(n) || intentionallyAbsent.has(n)) continue;
+    errs.push(`missing Q${n}`);
+  }
 
   const seen = new Map<string, number>();
   for (const r of rows) {

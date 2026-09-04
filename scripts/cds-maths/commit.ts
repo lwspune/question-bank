@@ -70,7 +70,20 @@ async function main() {
     if (r.solution) r.solution = normalizeNewlines(r.solution);
   }
 
-  const errs = [...catErrors, ...setErrors, ...validateRows(built, 1, QUESTIONS_PER_PAPER)];
+  // A row whose derivation answered null is dropped by buildRecords on purpose:
+   // no printed option is correct, so committing it would mean inventing one.
+  // Tell the coverage gate which those are, so it still catches a REAL hole.
+  const noCorrectOption = new Set(
+    answers.derivations.filter((d) => d.answer == null).map((d) => d.number),
+  );
+  if (noCorrectOption.size) {
+    console.log(
+      `
+DROPPED (no printed option is correct, per both derivations): ` +
+        [...noCorrectOption].map((n) => `Q${n}`).join(", "),
+    );
+  }
+  const errs = [...catErrors, ...setErrors, ...validateRows(built, 1, QUESTIONS_PER_PAPER, noCorrectOption)];
   const parsed = [];
   for (const r of built) {
     const v = validateRow(r);

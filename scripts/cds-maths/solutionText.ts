@@ -151,8 +151,31 @@ export function auditSolution(solution: string): SolutionFinding[] {
 
   // A note appended during adjudication that merely restates the sentence
   // before it. Cheap heuristic: the same >=40-char run appearing twice.
-  const dup = findRepeatedRun(prose, 40);
-  if (dup) out.push({ kind: "DUPLICATED_CLAUSE", detail: dup.slice(0, 60) });
+  //
+  // Run on `body`, NOT on the math-masked `prose`. The other probes mask so they
+  // cannot fire inside legitimate LaTeX; duplication needs the opposite, because
+  // a good solution often argues two parallel cases that differ ONLY in their
+  // formulas. Masked, "Since \(x^8\ge0\), the condition \(x^8y^9<0\) forces
+  // \(y<0\) but says nothing about the sign of \(x\)" and its \(y^{10}\) twin
+  // both collapse to "Since , the condition forces but says nothing about" and
+  // read as a duplicate. That fired on a correct 2022-II solution.
+  //
+  // And the repeat must be PROSE. Unmasked, a solution that legitimately
+  // restates a factorisation fires on the formula itself
+  // (`\left(x^2+x+1\right)\left(x^2-x+1\right)` twice is good writing, not a
+  // duplicate). Masked, parallel cases fire. Requiring several real WORDS in the
+  // repeated run excludes both: a restated sentence has them, a restated formula
+  // does not, and two sentences differing only in their maths are not verbatim.
+  //
+  // Count words AFTER stripping LaTeX command names. `\left` and `\right` are
+  // letters and are not prose: a repeated
+  // `\left(x^2+x+1\right)\left(x^2-x+1\right)` carries four of them and passed a
+  // naive word count, which is how a correct 2022-II solution stayed flagged
+  // through two attempts at this rule.
+  const dup = findRepeatedRun(body, 40);
+  const dupProse = dup ? dup.replace(/\\[A-Za-z]+/g, " ") : "";
+  const words = (dupProse.match(/[A-Za-z]{3,}/g) ?? []).length;
+  if (dup && words >= 4) out.push({ kind: "DUPLICATED_CLAUSE", detail: dup.slice(0, 60) });
 
   return out;
 }

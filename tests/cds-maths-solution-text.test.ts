@@ -112,6 +112,37 @@ describe("auditSolution — ASCII maths", () => {
   });
 });
 
+describe("auditSolution - duplication", () => {
+  it("does NOT flag two parallel cases that differ only in their formulas", () => {
+    // Masked, both halves read "Since , the condition forces but says nothing",
+    // so a probe on the MASKED string calls a correct solution a duplicate.
+    const s =
+      "Since \\(x^8\\ge0\\), the condition \\(x^8y^9<0\\) forces \\(y<0\\) but says nothing about x. " +
+      "Since \\(y^{10}>0\\), the condition \\(x^9y^{10}<0\\) forces \\(x<0\\) but says nothing about y." +
+      PROV;
+    expect(auditSolution(s).filter((f) => f.kind === "DUPLICATED_CLAUSE")).toEqual([]);
+  });
+
+  it("does NOT flag a formula legitimately restated (real 2022-II Q26 text)", () => {
+    // This string defeated TWO earlier versions of the rule: unmasked it is a
+    // repeated run, and the LaTeX command names inside it are LETTERS, so a
+    // naive word count saw four "words" and flagged a correct solution.
+    const s =
+      "Here \\(p(x)=x^4+x^2+1=\\left(x^2+x+1\\right)\\left(x^2-x+1\\right)\\) and " +
+      "\\(q(x)=\\left(x^2-x+1\\right)^2\\). Taking the highest power of each factor, " +
+      "the LCM is \\(\\left(x^2+x+1\\right)\\left(x^2-x+1\\right)^2\\)." +
+      PROV;
+    expect(auditSolution(s).filter((f) => f.kind === "DUPLICATED_CLAUSE")).toEqual([]);
+  });
+
+  it("still flags a clause genuinely repeated verbatim", () => {
+    const line = "the two statements together determine the value uniquely";
+    expect(
+      auditSolution(`${line}, and ${line}.` + PROV).some((f) => f.kind === "DUPLICATED_CLAUSE"),
+    ).toBe(true);
+  });
+});
+
 describe("hasMathMarkup", () => {
   it("detects inline and display zones", () => {
     expect(hasMathMarkup("a \\(x\\) b")).toBe(true);

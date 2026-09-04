@@ -349,7 +349,7 @@
     "value": "Eight",
     "confidence": "HIGH",
     "reasoning": "5^(2n) - 1 = 25^n - 1 is always divisible by 24; n = 1 gives exactly 24, so nothing larger always divides. gcd(24, 624, 15624) = 24, whose divisors are 1,2,3,4,6,8,12,24 -> eight.",
-    "solution": "Since \\(5^{2n}-1=25^n-1\\), it is always divisible by \\(25-1=24\\). At \\(n=1\\) the value is exactly \\(24\\), so no larger number can always divide it, and the natural divisors of \\(24\\) are \\(1, 2, 3, 4, 6, 8, 12, 24\\) â€” eight in all."
+    "solution": "Since \\(5^{2n}-1=25^n-1\\), it is always divisible by \\(25-1=24\\). At \\(n=1\\) the value is exactly \\(24\\), so no larger number can always divide it. The natural divisors of \\(24\\) are \\(1, 2, 3, 4, 6, 8, 12, 24\\), which is eight numbers in all."
   },
   {
     "number": 45,
@@ -373,7 +373,9 @@
     "value": "0 <= k <= 0.5",
     "confidence": "MED",
     "reasoning": "sin(theta)cos(theta) = (1/2)sin(2theta), and on [0, pi/2] the angle 2theta covers [0, pi] so sin(2theta) covers [0,1] exactly; hence k ranges exactly over [0, 0.5]. RUNNER-UP: option A (0 <= k <= 1), which is a TRUE containment statement but not the exact range; it would win if the question is read as asking merely for a valid bound rather than for the attained range. The word 'only' in the chosen option marks it as the tight one.",
-    "solution": "Since \\(\\sin\\theta\\cos\\theta=\\tfrac12\\sin 2\\theta\\) and \\(0\\le\\theta\\le\\tfrac{\\pi}{2}\\) makes \\(2\\theta\\) run over \\([0,\\pi]\\), the quantity \\(\\sin 2\\theta\\) takes every value in \\([0,1]\\). So \\(k\\) ranges exactly over \\(0\\le k\\le 0.5\\), with both endpoints attained. The wider bound \\(0\\le k\\le 1\\) is true but is not the set of values \\(k\\) actually takes."
+    "solution": "Since \\(\\sin\\theta\\cos\\theta=\\tfrac12\\sin 2\\theta\\) and \\(0\\le\\theta\\le\\tfrac{\\pi}{2}\\) makes \\(2\\theta\\) run over \\([0,\\pi]\\), the quantity \\(\\sin 2\\theta\\) takes every value in \\([0,1]\\). So \\(k\\) ranges exactly over \\(0\\le k\\le 0.5\\), with both endpoints attained. The wider bound \\(0\\le k\\le 1\\) is true but is not the set of values \\(k\\) actually takes.",
+    "runnerUp": "A",
+    "runnerUpIf": "if the question were read as asking merely for a valid bound on \\(k\\) rather than for the exact set of values it takes, since \\(0 \\le k \\le 1\\) is also a true statement; the word 'only' in the chosen option is what marks it as the tight range."
   },
   {
     "number": 48,
@@ -389,7 +391,9 @@
     "value": "-2 (greatest 2, smallest -1) -- matches no printed option",
     "confidence": "LOW",
     "reasoning": "NO OPTION MATCHES. Stem verified against the printed page (2021 Apr.pdf, rendered page index 8): the range really is 0 <= x <= pi/2 and the expression really is 2 - 2sin x - sin^2 x. With s = sin x in [0,1], f(s) = -s^2 - 2s + 2 is strictly decreasing, so greatest = f(0) = 2 and smallest = f(1) = -1, ratio = -2. The printed option -3 arises only if s is allowed to reach -1 (max f(-1) = 3), which the stated domain forbids. Solved as printed per the brief; the paper appears defective in its stated range.",
-    "solution": "Putting \\(s=\\sin x\\), the expression is \\(2-2s-s^2\\), and on \\(0\\le x\\le\\frac{\\pi}{2}\\) the value of \\(s\\) runs over \\([0,1]\\). The function decreases steadily from \\(2\\) at \\(s=0\\) to \\(-1\\) at \\(s=1\\), so the required ratio is \\(\\frac{2}{-1}=-2\\). None of the four choices is \\(-2\\); the value \\(-3\\) would need \\(\\sin x=-1\\), which the stated range \\(0\\le x\\le\\frac{\\pi}{2}\\) does not allow, so as printed the question has no correct option."
+    "solution": "Putting \\(s=\\sin x\\), the expression is \\(2-2s-s^2\\), and on \\(0\\le x\\le\\frac{\\pi}{2}\\) the value of \\(s\\) runs over \\([0,1]\\). The function decreases steadily from \\(2\\) at \\(s=0\\) to \\(-1\\) at \\(s=1\\), so the required ratio is \\(\\frac{2}{-1}=-2\\). None of the four choices is \\(-2\\); the value \\(-3\\) would need \\(\\sin x=-1\\), which the stated range \\(0\\le x\\le\\frac{\\pi}{2}\\) does not allow, so as printed the question has no correct option.",
+    "runnerUp": "A",
+    "runnerUpIf": "if the domain were all real \\(x\\) (or any range letting \\(\\sin x\\) reach \\(-1\\)), the greatest value would be \\(3\\) and the smallest \\(-1\\), giving \\(-3\\); the printed range \\(0 \\le x \\le \\frac{\\pi}{2}\\) forbids this, so \\(-3\\) is almost certainly the intended answer to a misprinted stem."
   },
   {
     "number": 50,
@@ -549,7 +553,7 @@
     "value": "2 : 1",
     "confidence": "HIGH",
     "reasoning": "Rolling along the length: circumference 44 so r = 7, h = 22, volume 3388. Rolling along the width: circumference 22 so r = 3.5, h = 44, volume 1694. Ratio 3388 : 1694 = 2 : 1 (sympy exact).",
-    "solution": "Rolling along the length makes the circumference \\(44\\) cm, so \\(r=7\\) cm and \\(h=22\\) cm, giving \\(x=\\frac{22}{7}(7)^2(22)=3388\\) cm\\(^3\\). Rolling along the width makes the circumference \\(22\\) cm, so \\(r=3.5\\) cm and \\(h=44\\) cm, giving \\(y=1694\\) cm\\(^3\\). Hence \\(x:y=2:1\\)."
+    "solution": "Rolled along its length the paper gives a circumference of \\(44\\) cm, so \\(r=7\\) cm and \\(h=22\\) cm, and \\(x=\\frac{22}{7}(7)^2(22)=3388\\) cm\\(^3\\). Rolled along its width the circumference is instead \\(22\\) cm, which gives \\(r=3.5\\) cm, \\(h=44\\) cm and \\(y=1694\\) cm\\(^3\\). Hence \\(x:y=2:1\\)."
   },
   {
     "number": 70,
@@ -645,7 +649,9 @@
     "value": "56 units (sides 25, 24, 7)",
     "confidence": "MED",
     "reasoning": "Taking x as the largest side, x^2 = (x-1)^2 + (x-18)^2 gives x^2 - 38x + 325 = 0 with roots 25 and 13; x = 13 makes the third side negative, so x = 25 and the sides are 25, 24, 7 (625 = 576 + 49), perimeter 56. RUNNER-UP: option D (84), or indeed either of the other two, because the stem says the sides are 'in the ratio' x : (x-1) : (x-18) rather than equal to those numbers -- read literally the perimeter is fixed only up to a scale factor and 28, 42 and 84 are all attainable. The unique answer 56 requires reading the sides as x, x-1 and x-18 themselves, which is plainly the intent.",
-    "solution": "The largest of \\(x\\), \\(x-1\\) and \\(x-18\\) is \\(x\\), so \\(x^2=(x-1)^2+(x-18)^2\\), which reduces to \\(x^2-38x+325=0\\) with roots \\(25\\) and \\(13\\). The root \\(13\\) makes a side negative, so \\(x=25\\) and the sides are \\(25\\), \\(24\\) and \\(7\\), giving a perimeter of \\(56\\) units. Strictly the stem gives only a ratio, so any multiple of \\(56\\) would also be in that ratio; the intended reading is that the sides themselves are \\(x\\), \\(x-1\\) and \\(x-18\\)."
+    "solution": "The largest of \\(x\\), \\(x-1\\) and \\(x-18\\) is \\(x\\), so \\(x^2=(x-1)^2+(x-18)^2\\), which reduces to \\(x^2-38x+325=0\\) with roots \\(25\\) and \\(13\\). The root \\(13\\) makes a side negative, so \\(x=25\\) and the sides are \\(25\\), \\(24\\) and \\(7\\), giving a perimeter of \\(56\\) units. Strictly the stem gives only a ratio, so any multiple of \\(56\\) would also be in that ratio; the intended reading is that the sides themselves are \\(x\\), \\(x-1\\) and \\(x-18\\).",
+    "runnerUp": "D",
+    "runnerUpIf": "if 'in the ratio' were taken literally, the perimeter is fixed only up to a scale factor and 28, 42 and 84 are all attainable for a triangle with sides in the ratio 25:24:7; 56 is unique only under the reading that the sides ARE x, x-1 and x-18."
   },
   {
     "number": 82,

@@ -52,6 +52,10 @@ function scorePass(name: string, pass: Derivation[], key: Record<string, string>
   for (const d of pass) {
     const want = key[String(d.number)];
     if (!want) continue;
+    // A NULL answer is "no printed option is correct" -- a finding, not a guess.
+    // Scoring it against a key would count a deliberate refusal as a wrong
+    // answer and quietly depress the measured accuracy of the confidence bands.
+    if (d.answer == null) continue;
     const got = d.answer.toUpperCase();
     const ok = got === want.toUpperCase();
     if (ok) right += 1;
@@ -116,6 +120,7 @@ function main() {
     const db = byB.get(n);
     const want = key[String(n)];
     if (!da || !db || !want) continue;
+    if (da.answer == null || db.answer == null) continue; // see note above
     const ga = da.answer.toUpperCase();
     const gb = db.answer.toUpperCase();
     if (ga === gb) {

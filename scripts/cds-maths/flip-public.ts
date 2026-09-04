@@ -137,10 +137,34 @@ async function main() {
   }
 
   // 5. coverage
+  //
+  // A number can be absent for two opposite reasons and this gate must not
+  // conflate them. A TRANSCRIPTION HOLE is a defect and must block the publish.
+  // A row both derivations answered `null` — no printed option is correct — was
+  // dropped at assembly ON PURPOSE, because committing it would mean inventing
+  // an answer or marking a wrong option right. Read the intended drops from the
+  // answers file, which is the source of record, rather than inferring them
+  // from the gap itself; inferring would make every hole self-justifying.
+  const intended = new Set<number>();
+  const aPath = dataPath(paper.id, "answers");
+  if (existsSync(aPath)) {
+    const file = JSON.parse(readFileSync(aPath, "utf8")) as {
+      derivations?: { number: number; answer: string | null }[];
+    };
+    for (const d of file.derivations ?? []) if (d.answer == null) intended.add(d.number);
+  }
   const nums = new Set(rows.map((r) => Number(r.question_number)));
   const missing: number[] = [];
-  for (let n = 1; n <= QUESTIONS_PER_PAPER; n++) if (!nums.has(n)) missing.push(n);
+  for (let n = 1; n <= QUESTIONS_PER_PAPER; n++) {
+    if (nums.has(n) || intended.has(n)) continue;
+    missing.push(n);
+  }
   if (missing.length) problems.push(`paper is short: missing Q${missing.join(", Q")}`);
+  if (intended.size) {
+    console.log(
+      `note: Q${[...intended].join(", Q")} deliberately absent — no printed option is correct.`,
+    );
+  }
 
   if (problems.length) {
     console.log(`\nREFUSING TO PUBLISH (${problems.length} problem(s)):`);
