@@ -109,7 +109,7 @@
     "value": "none of 17, 29 or 43 — the primes are 2, 31 and 67",
     "confidence": "HIGH",
     "reasoning": "Three odd primes sum to an odd number, so one prime must be 2 and the other two sum to 98; a difference of 36 gives 67 and 31, both prime. An exhaustive search over all prime triples summing to 100 with some pair differing by 36 returns [2, 31, 67] as the unique triple, and none of 17, 29, 43 belongs to it.",
-    "solution": "Three odd primes would give an odd total, so one of the primes must be \\(2\\) and the other two add to \\(98\\). A difference of \\(36\\) then gives \\(67\\) and \\(31\\), both prime, and this is the only triple satisfying the conditions. Since none of \\(17\\), \\(29\\) or \\(43\\) is among \\(2, 31, 67\\), none of the listed values can be one of the numbers."
+    "solution": "Three odd primes would give an odd total, so one of the primes must be \\(2\\) and the other two add to \\(98\\). Requiring a difference of \\(36\\) then gives \\(67\\) and \\(31\\), both prime, and this is the only triple satisfying the conditions. Since none of \\(17\\), \\(29\\) or \\(43\\) is among \\(2, 31, 67\\), none of the listed values can be one of the numbers."
   },
   {
     "number": 15,
@@ -271,7 +271,7 @@
     "runnerUp": "B",
     "runnerUpIf": "the question is read as covering only primes with more than one digit, which removes 2 and 5 and leaves the four digits 1, 3, 7, 9",
     "reasoning": "Taking all primes, the set of unit digits is {1,2,3,5,7,9}: 11, 2, 3, 5, 7, 19 supply them. A scan of primes below 10000 returns exactly that set, with no prime ending in 0, 4, 6 or 8. So 6 digits. RUNNER-UP: 4, if the question is silently restricted to multi-digit primes, since 2 and 5 are then excluded; nothing in the printed stem imposes that restriction.",
-    "solution": "A prime can end in \\(1\\) (as in \\(11\\)), \\(2\\) (as in \\(2\\)), \\(3\\), \\(5\\), \\(7\\) or \\(9\\) (as in \\(19\\)). No prime ends in \\(0, 4, 6\\) or \\(8\\), since such a number is even and larger than \\(2\\). That leaves \\(6\\) possible unit digits — though if one had in mind only primes of more than one digit, \\(2\\) and \\(5\\) would drop out and just \\(4\\) would remain."
+    "solution": "Primes can end in \\(1\\) (as in \\(11\\)), \\(2\\) (as in \\(2\\)), \\(3\\), \\(5\\), \\(7\\) or \\(9\\) (as in \\(19\\)). No prime ends in \\(0, 4, 6\\) or \\(8\\), since such a number is even and larger than \\(2\\). That leaves \\(6\\) possible unit digits — though if one had in mind only primes of more than one digit, \\(2\\) and \\(5\\) would drop out and just \\(4\\) would remain."
   },
   {
     "number": 35,
@@ -404,5 +404,407 @@
     "confidence": "HIGH",
     "reasoning": "5^(2n) - 2^(3n) = 25^n - 8^n, and a^n - b^n is always divisible by a - b = 17. Factorisations: n=1 gives 17; n=2 gives 3 x 11 x 17; n=3 gives 7 x 17 x 127. So 17 divides it for every n while 3 and 7 fail at n = 1.",
     "solution": "Rewrite the expression as \\(5^{2n} - 2^{3n} = 25^n - 8^n\\). Since \\(a^n - b^n\\) is always divisible by \\(a-b\\), this is divisible by \\(25 - 8 = 17\\) for every \\(n\\). Checking small cases, \\(n=1\\) gives \\(17\\) itself and \\(n=2\\) gives \\(561 = 3 \\times 11 \\times 17\\), so neither \\(3\\) nor \\(7\\) is a factor in general."
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "tan x = 1 with 0 < x < 90 gives x = 45 degrees, and 2 sin x cos x = sin 2x = sin 90 = 1.",
+    "solution": "In the range \\(0 < x < 90^\\circ\\), \\(\\tan x = 1\\) forces \\(x = 45^\\circ\\). Since \\(2\\sin x \\cos x = \\sin 2x\\), the value is \\(\\sin 90^\\circ = 1\\)."
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "The expression is the expansion of sin(46 + 44) = sin 90 = 1.",
+    "solution": "The expression is exactly the expansion of \\(\\sin(A+B)\\) with \\(A = 46^\\circ\\) and \\(B = 44^\\circ\\). Since \\(46^\\circ + 44^\\circ = 90^\\circ\\), the value is \\(\\sin 90^\\circ = 1\\)."
+  },
+  {
+    "number": 53,
+    "answer": "B",
+    "value": "4 sin(theta)",
+    "confidence": "HIGH",
+    "reasoning": "4 sin^2(t) + 1 - 4 sin(t) = (2 sin t - 1)^2 >= 0, confirmed by sympy factor, so the expression is always at least 4 sin t. A scan of t from 0.1 to 89.9 degrees found 0 violations for 4 sin t but 299 for the constant 2, 435 for 4 cos t and 696 for 4 tan t.",
+    "solution": "Observe that \\(4\\sin^2\\theta + 1 - 4\\sin\\theta = (2\\sin\\theta - 1)^2\\), which is never negative, so the expression is always at least \\(4\\sin\\theta\\). The other comparisons fail somewhere in the range: as \\(\\theta \\to 0^\\circ\\) the expression tends to \\(1\\), below both \\(2\\) and \\(4\\cos\\theta\\), and at \\(\\theta = 45^\\circ\\) it equals \\(3\\), below \\(4\\tan\\theta = 4\\)."
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "value": "1 : 3",
+    "confidence": "HIGH",
+    "reasoning": "In a regular hexagon of side s the adjacent vertex is at distance s and the next-but-one vertex at s*sqrt(3) (verified from unit-hexagon coordinates: 1.0000 and 1.7321). Heights are s*tan30 = s/sqrt(3) and s*sqrt(3)*tan45 = s*sqrt(3); their ratio is 1/3.",
+    "solution": "In a regular hexagon of side \\(s\\), the neighbouring vertex lies at distance \\(s\\) and the next-but-one vertex at distance \\(s\\sqrt{3}\\). The two tower heights are therefore \\(s\\tan 30^\\circ = \\dfrac{s}{\\sqrt{3}}\\) and \\(s\\sqrt{3}\\tan 45^\\circ = s\\sqrt{3}\\). Their ratio is \\(\\dfrac{s/\\sqrt{3}}{s\\sqrt{3}} = \\dfrac{1}{3}\\), that is \\(1 : 3\\)."
+  },
+  {
+    "number": 55,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "tan(k) tan(90-k) = 1 pairs off k = 1..44 with k = 89..46, and the middle factor tan 45 = 1. Direct numerical product of tan 1 through tan 89 gives 0.99999999999999 (rounding), i.e. 1.",
+    "solution": "Pair each factor with its complement: \\(\\tan k^\\circ \\cdot \\tan(90^\\circ - k^\\circ) = \\tan k^\\circ \\cot k^\\circ = 1\\) for \\(k = 1, 2, \\ldots, 44\\). That uses up every factor except the middle one, \\(\\tan 45^\\circ = 1\\). The whole product is therefore \\(1\\)."
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "value": "12.5 km",
+    "confidence": "HIGH",
+    "reasoning": "Heading north, a 150-degree right turn gives a bearing of 150 degrees; distance 20 x 15/60 = 5 km with eastward component 5 sin150 = 2.5 km. A 60-degree left turn gives bearing 90 (due east) for 30 x 20/60 = 10 km. Total eastward displacement 2.5 + 10 = 12.5 km, which is the separation of the two north-south streets. Vector walk simulation gives final position (12.5, -4.330).",
+    "solution": "Facing north, a turn of \\(150^\\circ\\) to the right leaves him heading \\(30^\\circ\\) east of due south, and he covers \\(20 \\times \\dfrac{15}{60} = 5\\) km, of which \\(5\\sin 150^\\circ = 2.5\\) km is eastward. Turning a further \\(60^\\circ\\) to the left points him due east, and he covers \\(30 \\times \\dfrac{20}{60} = 10\\) km. Since both streets run north to south, their separation is the total eastward shift, \\(2.5 + 10 = 12.5\\) km."
+  },
+  {
+    "number": 57,
+    "answer": "A",
+    "value": "pi/6",
+    "confidence": "HIGH",
+    "reasoning": "3 tan t = cot t gives 3 tan^2 t = 1, so tan t = 1/sqrt(3) and t = pi/6 in [0, pi/2]. sympy solveset on that interval returns {pi/6}.",
+    "solution": "Writing \\(\\cot\\theta = \\dfrac{1}{\\tan\\theta}\\), the equation becomes \\(3\\tan^2\\theta = 1\\), so \\(\\tan\\theta = \\dfrac{1}{\\sqrt{3}}\\) in the given range. The only such angle between \\(0\\) and \\(\\dfrac{\\pi}{2}\\) is \\(\\theta = \\dfrac{\\pi}{6}\\)."
+  },
+  {
+    "number": 58,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "65 = 90 - 25, so sin 65 = cos 25 and the sum is sin^2 25 + cos^2 25 = 1. sympy simplify returns 1.",
+    "solution": "Since \\(65^\\circ = 90^\\circ - 25^\\circ\\), we have \\(\\sin 65^\\circ = \\cos 25^\\circ\\). The expression is therefore \\(\\sin^2 25^\\circ + \\cos^2 25^\\circ\\), which equals \\(1\\)."
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "sin^6 + cos^6 = 1 - 3 sin^2 cos^2, so the whole expression collapses to 0 identically. sympy simplify left it in a half-reduced form, so it was tested numerically instead: at theta = 0.371 rad the value is 4.44e-16, i.e. zero to machine precision.",
+    "solution": "Using \\(\\sin^6\\theta + \\cos^6\\theta = 1 - 3\\sin^2\\theta\\cos^2\\theta\\), the expression becomes \\(1 - 3\\sin^2\\theta\\cos^2\\theta + 3\\sin^2\\theta\\cos^2\\theta - 1\\). Every term cancels, so the value is \\(0\\) for every \\(\\theta\\)."
+  },
+  {
+    "number": 60,
+    "answer": "C",
+    "value": "Three (the secant, cosecant and cosine statements)",
+    "confidence": "HIGH",
+    "reasoning": "|sec| >= 1 and |cosec| >= 1, so sec = 1/4 and cosec = 1/2 are impossible; |cos| <= 1, so cos = 2 is impossible. Only tan = 20 is attainable, since tangent takes every real value. Hence three statements are not possible.",
+    "solution": "Both the secant and the cosecant have absolute value at least \\(1\\), so \\(\\sec\\alpha = \\dfrac{1}{4}\\) and \\(\\operatorname{cosec}\\gamma = \\dfrac{1}{2}\\) are impossible, and the cosine never exceeds \\(1\\) in absolute value, so \\(\\cos\\delta = 2\\) is impossible too. Only \\(\\tan\\beta = 20\\) can occur, since the tangent takes every real value. So three of the four statements are not possible."
+  },
+  {
+    "number": 61,
+    "answer": "C",
+    "value": "11",
+    "confidence": "HIGH",
+    "reasoning": "Class marks 5, 15, 25, 35, 45 give sum(f x) = 40 + 180 + 250 + 35p + 405 = 875 + 35p over sum(f) = 39 + p. Setting the mean to 25.2 gives 9.8p = 107.8, so p = 11. sympy solve returns [11].",
+    "solution": "The class marks are \\(5, 15, 25, 35, 45\\), so the mean is \\(\\dfrac{40 + 180 + 250 + 35p + 405}{39 + p} = 25.2\\). Cross-multiplying gives \\(875 + 35p = 982.8 + 25.2p\\), so \\(9.8p = 107.8\\). Hence \\(p = 11\\)."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "8",
+    "confidence": "HIGH",
+    "reasoning": "Sorted by x, the values 4, 5, 6, 7, 8, 9, 10 have frequencies 6, 4, 5, 4, 6, 9, 8 and cumulative frequencies 6, 10, 15, 19, 25, 34, 42. With N = 42 the median is the mean of the 21st and 22nd observations, both of which lie in the block x = 8. Building the full 42-value list and averaging positions 21 and 22 gives 8.0.",
+    "solution": "Arranging the values in increasing order, \\(x = 4, 5, 6, 7, 8, 9, 10\\) carry frequencies \\(6, 4, 5, 4, 6, 9, 8\\), with cumulative totals \\(6, 10, 15, 19, 25, 34, 42\\). Since \\(N = 42\\) is even, the median is the average of the \\(21\\)st and \\(22\\)nd observations. Both fall between the cumulative counts \\(19\\) and \\(25\\), so both equal \\(8\\) and the median is \\(8\\)."
+  },
+  {
+    "number": 63,
+    "answer": "B",
+    "value": "x + 2",
+    "confidence": "HIGH",
+    "reasoning": "For 50 consecutive numbers starting at a, the mean is a + 24.5 = x. Adding the next four gives 54 consecutive numbers starting at a, with mean a + 26.5 = x + 2.",
+    "solution": "For \\(50\\) consecutive natural numbers beginning at \\(a\\), the mean is the average of the first and last, \\(a + 24.5 = x\\). Including the next four gives \\(54\\) consecutive numbers beginning at the same \\(a\\), whose mean is \\(a + 26.5\\). That is \\(x + 2\\)."
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "value": "55",
+    "confidence": "HIGH",
+    "reasoning": "A two-digit number unchanged by swapping its digits must have equal digits: 11, 22, ..., 99. These form an arithmetic progression, so the mean is (11 + 99)/2 = 55.",
+    "solution": "Interchanging the digits leaves a two-digit number unchanged only when both digits are equal, giving \\(11, 22, 33, \\ldots, 99\\). These nine numbers form an arithmetic progression, so their average is the average of the first and last, \\(\\dfrac{11 + 99}{2} = 55\\)."
+  },
+  {
+    "number": 65,
+    "answer": "D",
+    "value": "1, 2 and 3 — bar diagram, pie-diagram and pictogram",
+    "confidence": "HIGH",
+    "reasoning": "Bar diagrams, pie-diagrams and pictograms are all standard diagrammatic (pictorial) presentations of data, as distinct from tabular or graphical (frequency-curve) presentation. All three belong.",
+    "solution": "Bar diagrams, pie-diagrams and pictograms are all pictorial devices that present data through shapes and areas rather than through a table of figures or a plotted curve. Each is a standard form of diagrammatic representation, so all three belong in the list."
+  },
+  {
+    "number": 66,
+    "answer": "D",
+    "value": "data taken from a published thesis",
+    "confidence": "HIGH",
+    "reasoning": "Direct interviews, indirect interviews and schedules sent through enumerators all gather fresh information from the informants, so they yield primary data. A published thesis reports data already collected and processed by someone else, so it is secondary.",
+    "solution": "Direct interviews, indirect interviews and schedules completed by enumerators all gather fresh information straight from the informants, so each yields primary data. Figures lifted from a published thesis have already been collected, processed and reported by someone else. That makes them secondary data, not primary."
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "value": "1.2 cm and 4.15 cm",
+    "confidence": "HIGH",
+    "reasoning": "Education is 480/6000 = 8% of the total and miscellaneous 1660/6000 = 27.667%. On a bar of height 15 cm these occupy 480/400 = 1.2 cm and 1660/400 = 4.15 cm.",
+    "solution": "Education accounts for \\(\\dfrac{480}{6000} = 8\\%\\) of the expenditure and miscellaneous for \\(\\dfrac{1660}{6000} \\approx 27.67\\%\\). On a percentage bar of height \\(15\\) cm these become \\(\\dfrac{480}{6000} \\times 15 = 1.2\\) cm and \\(\\dfrac{1660}{6000} \\times 15 = 4.15\\) cm respectively."
+  },
+  {
+    "number": 68,
+    "answer": "A",
+    "value": "2m - m^2/n",
+    "confidence": "HIGH",
+    "reasoning": "The m observations total mn and the remaining n - m total (n - m)m, so the grand total is 2mn - m^2 and the mean is 2m - m^2/n. sympy simplify of (m*n + (n-m)*m)/n gives m(2n - m)/n, the same expression.",
+    "solution": "The first \\(m\\) observations have mean \\(n\\), so they total \\(mn\\), while the remaining \\(n-m\\) observations have mean \\(m\\) and total \\((n-m)m\\). The grand total is therefore \\(mn + nm - m^2 = 2mn - m^2\\). Dividing by \\(n\\) gives the overall mean \\(2m - \\dfrac{m^2}{n}\\)."
+  },
+  {
+    "number": 69,
+    "answer": "A",
+    "value": "Median - Graphical location",
+    "confidence": "HIGH",
+    "reasoning": "The median is the classic average that can be read off a graph: the abscissa where the two ogives cross, or where the cumulative frequency reaches N/2. The mean and the geometric mean have no graphical construction, and the mode is obtained from a histogram rather than from an ogive.",
+    "solution": "The median is the one average with a genuine graphical construction: it is the abscissa where the less-than and more-than cumulative frequency curves cross, equivalently where the cumulative frequency reaches \\(\\dfrac{N}{2}\\). The arithmetic mean and the geometric mean are computed, not located on a graph, and the mode is read off a histogram rather than an ogive. So the correctly matched pair is the median with graphical location."
+  },
+  {
+    "number": 70,
+    "answer": "D",
+    "value": "Area of the polygon - Total frequency of the distribution (the pairing that is NOT correct)",
+    "confidence": "MED",
+    "runnerUp": "C",
+    "runnerUpIf": "the pairing of the abscissae with class marks is judged wrong on the ground that a discrete variable has values rather than classes at all",
+    "reasoning": "For a frequency polygon the base line is the X-axis, the ordinates of the vertices are the class frequencies and the abscissae are the class marks — all three are the standard description. The area enclosed by the polygon equals the area of the corresponding histogram, which is (total frequency) x (class width); it equals the total frequency only in the special case of unit class width, so that pairing is not correct in general. RUNNER-UP: the abscissa/class-marks pairing, which a strict reader could call wrong because a discrete variable has values rather than classes; but that is the textbook description of a frequency polygon, so the area statement is the weaker claim.",
+    "solution": "For a frequency polygon the base line is the horizontal axis, the ordinates of the vertices are the class frequencies, and their abscissae are the class marks — all three are correct descriptions. The area enclosed by the polygon equals the area of the corresponding histogram, which is the total frequency multiplied by the class width. That coincides with the total frequency only when the class width happens to be \\(1\\), so pairing the polygon's area with the total frequency is the statement that is not correct in general."
+  },
+  {
+    "number": 71,
+    "answer": "C",
+    "value": "25%",
+    "confidence": "HIGH",
+    "reasoning": "Take breadth 1 and length 3, so the perimeter is 8. After the increases the sides are 3.9 and 1.1, giving a perimeter of 10. The rise is 2/8 = 25% exactly (exact rational computation gives 25).",
+    "solution": "Take the breadth as \\(1\\) and the length as \\(3\\), giving a perimeter of \\(2(3+1) = 8\\). After the increases the sides are \\(3 \\times 1.3 = 3.9\\) and \\(1 \\times 1.1 = 1.1\\), so the new perimeter is \\(2(3.9 + 1.1) = 10\\). The increase is \\(\\dfrac{2}{8} = 25\\%\\)."
+  },
+  {
+    "number": 72,
+    "answer": "A",
+    "value": "75%",
+    "confidence": "HIGH",
+    "reasoning": "Halving every side gives a similar triangle with linear scale factor 1/2, so the area is multiplied by 1/4 — a decrease of 75%.",
+    "solution": "Halving every side produces a similar triangle with linear scale factor \\(\\dfrac{1}{2}\\). Areas of similar figures scale as the square of that factor, so the new area is \\(\\left(\\dfrac{1}{2}\\right)^2 = \\dfrac{1}{4}\\) of the old. The area therefore falls by \\(75\\%\\)."
+  },
+  {
+    "number": 73,
+    "answer": "A",
+    "value": "300%",
+    "confidence": "HIGH",
+    "reasoning": "A 700% rise makes the volume 8 times as large, so the radius is multiplied by the cube root of 8, namely 2. Surface area scales as the square of the radius, hence by 4 — an increase of 300%. Exact computation of (8^(2/3) - 1) x 100 gives 300.",
+    "solution": "An increase of \\(700\\%\\) makes the volume \\(8\\) times its original size, and since volume scales as the cube of the radius, the radius is multiplied by \\(\\sqrt[3]{8} = 2\\). Surface area scales as the square of the radius, so it becomes \\(4\\) times as large. That is an increase of \\(300\\%\\)."
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "value": "2 cm or 14 cm",
+    "confidence": "HIGH",
+    "reasoning": "Distances from the centre are sqrt(100 - 36) = 8 cm and sqrt(100 - 64) = 6 cm. On the same side of the centre the gap is 8 - 6 = 2 cm; on opposite sides it is 8 + 6 = 14 cm. Both configurations are possible, so both values stand.",
+    "solution": "The chord of length \\(12\\) cm lies \\(\\sqrt{10^2 - 6^2} = 8\\) cm from the centre, and the one of length \\(16\\) cm lies \\(\\sqrt{10^2 - 8^2} = 6\\) cm from it. If the two chords are on the same side of the centre the distance between them is \\(8 - 6 = 2\\) cm; if on opposite sides it is \\(8 + 6 = 14\\) cm. Both arrangements are possible, so the answer is \\(2\\) cm or \\(14\\) cm."
+  },
+  {
+    "number": 75,
+    "answer": "C",
+    "value": "a^2(pi/2 - 1)",
+    "confidence": "HIGH",
+    "reasoning": "Each arc bounds a quarter disc of radius a and area pi a^2 / 4. The two quarter discs cover the whole square: if a point missed both then x(x-a) + y(y-a) > 0, impossible for 0 <= x, y <= a. So the overlap is 2(pi a^2/4) - a^2 = a^2(pi/2 - 1) = 0.5708 a^2. A 400,000-point Monte Carlo estimate gives 0.57085, against pi/2 - 1 = 0.570796; the other options evaluate to 3.6416, 2.6416 and 2.5708.",
+    "solution": "Each arc cuts off a quarter disc of radius \\(a\\), of area \\(\\dfrac{\\pi a^2}{4}\\). Together the two quarter discs cover the whole square, since no point of the square can be more than \\(a\\) from both of those opposite corners at once. So their overlap is \\(2 \\times \\dfrac{\\pi a^2}{4} - a^2 = a^2\\left(\\dfrac{\\pi}{2} - 1\\right)\\)."
+  },
+  {
+    "number": 76,
+    "answer": "A",
+    "value": "a(sqrt(2) - 1)",
+    "confidence": "HIGH",
+    "reasoning": "Cutting an isosceles right triangle of leg t from each corner leaves square-side pieces of length a - 2t and creates new sides t*sqrt(2). Regularity needs a - 2t = t*sqrt(2), so t = a/(2 + sqrt(2)) and the octagon side is t*sqrt(2) = a(sqrt(2) - 1) = 0.41421a. sympy confirms both a - 2t and t*sqrt(2) equal sqrt(2) - 1 for a = 1. Note the option a/(sqrt(2) + 2) is the leg cut off, not the octagon's side.",
+    "solution": "Cutting an isosceles right triangle of leg \\(t\\) from each corner leaves a piece of length \\(a - 2t\\) on each side of the square and creates a new side of length \\(t\\sqrt{2}\\). For a regular octagon these must be equal, so \\(a - 2t = t\\sqrt{2}\\) and \\(t = \\dfrac{a}{2+\\sqrt{2}}\\). The side of the octagon is therefore \\(t\\sqrt{2} = \\dfrac{a\\sqrt{2}}{2+\\sqrt{2}} = a\\left(\\sqrt{2}-1\\right)\\)."
+  },
+  {
+    "number": 77,
+    "answer": "A",
+    "value": "Only one (the set 3, 4, 5)",
+    "confidence": "HIGH",
+    "reasoning": "For sides n-1, n, n+1 the right angle faces the longest side, so (n-1)^2 + n^2 = (n+1)^2, i.e. n^2 - 4n = 0. Only n = 4 gives positive lengths, and a scan of n up to 500 returns only (3, 4, 5).",
+    "solution": "If the sides are \\(n-1, n, n+1\\), the right angle must face the longest side, so \\((n-1)^2 + n^2 = (n+1)^2\\). Expanding gives \\(n^2 - 4n = 0\\), so \\(n = 0\\) or \\(n = 4\\), and only \\(n = 4\\) yields positive lengths. Hence \\(3, 4, 5\\) is the only such set."
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "value": "462 square cm",
+    "confidence": "HIGH",
+    "reasoning": "2 pi r = 44 with pi = 22/7 gives r = 7 cm, and doubling the circumference doubles the radius to 14 cm. The ring has area (22/7)(196 - 49) = (22/7)(147) = 462 square cm exactly.",
+    "solution": "From \\(2\\pi r = 44\\) with \\(\\pi = \\dfrac{22}{7}\\), the smaller radius is \\(7\\) cm, and doubling the circumference doubles the radius to \\(14\\) cm. The region between the circles has area \\(\\pi\\left(14^2 - 7^2\\right) = \\dfrac{22}{7} \\times 147\\). That is \\(462\\) square cm."
+  },
+  {
+    "number": 79,
+    "answer": "C",
+    "value": "17 square feet",
+    "confidence": "HIGH",
+    "reasoning": "A border 6 inches = 0.5 ft wide running inside the carpet leaves an inner rectangle of (6 - 1) x (12 - 1) = 55 square feet. The full carpet is 72 square feet, so the border is 72 - 55 = 17 square feet.",
+    "solution": "The border is \\(6\\) inches, that is \\(0.5\\) ft, wide, so it takes \\(0.5\\) ft off each of the four edges and the inner rectangle measures \\((6-1) \\times (12-1) = 5 \\times 11 = 55\\) square feet. The whole carpet is \\(6 \\times 12 = 72\\) square feet. The border therefore covers \\(72 - 55 = 17\\) square feet."
+  },
+  {
+    "number": 80,
+    "answer": "C",
+    "value": "4",
+    "confidence": "HIGH",
+    "reasoning": "With the other leg and the hypotenuse in the ratio 4 : 5, take them as 4m and 5m; the third side is sqrt(25m^2 - 16m^2) = 3m, which is indeed the shortest. The perimeter is 12m, so k = 12m/3m = 4.",
+    "solution": "Taking the other side and the hypotenuse as \\(4m\\) and \\(5m\\), the remaining side is \\(\\sqrt{25m^2 - 16m^2} = 3m\\), which is the shortest of the three. The perimeter is \\(3m + 4m + 5m = 12m\\). Hence \\(k = \\dfrac{12m}{3m} = 4\\)."
+  },
+  {
+    "number": 81,
+    "answer": "B",
+    "value": "6/(pi + 4)",
+    "confidence": "HIGH",
+    "reasoning": "A square enclosing the circle touches it, so its side is 2r and its perimeter 8r, while the circle uses 2 pi r. Then 8r + 2 pi r = 12, giving r = 12/(2 pi + 8) = 6/(pi + 4). sympy solve returns 6/(pi + 4).",
+    "solution": "The square just encloses the circle, touching it on all four sides, so its side is \\(2r\\) and its perimeter \\(8r\\), while the circle needs \\(2\\pi r\\) of wire. The two pieces use the whole wire, so \\(8r + 2\\pi r = 12\\). Solving gives \\(r = \\dfrac{12}{2\\pi + 8} = \\dfrac{6}{\\pi + 4}\\)."
+  },
+  {
+    "number": 82,
+    "answer": "A",
+    "value": "1 + 2/sqrt(3)",
+    "confidence": "HIGH",
+    "reasoning": "Angles in the ratio 1 : 1 : 4 are 30, 30 and 120 degrees, and by the sine rule the sides are proportional to 1/2, 1/2 and sqrt(3)/2. Then k = (1/2 + 1/2 + sqrt(3)/2)/(sqrt(3)/2) = (2 + sqrt(3))/sqrt(3) = 1 + 2/sqrt(3) = 2.1547005, matching sympy's 1 + 2 sqrt(3)/3 exactly.",
+    "solution": "Angles in the ratio \\(1 : 1 : 4\\) must be \\(30^\\circ, 30^\\circ\\) and \\(120^\\circ\\), and by the sine rule the sides are proportional to \\(\\dfrac{1}{2}, \\dfrac{1}{2}\\) and \\(\\dfrac{\\sqrt{3}}{2}\\), the last being the largest. So \\(k = \\dfrac{\\tfrac12 + \\tfrac12 + \\tfrac{\\sqrt{3}}{2}}{\\tfrac{\\sqrt{3}}{2}} = \\dfrac{2 + \\sqrt{3}}{\\sqrt{3}} = 1 + \\dfrac{2}{\\sqrt{3}}\\)."
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "value": "sqrt(265) cm",
+    "confidence": "HIGH",
+    "reasoning": "The legs satisfy pq = 48 and p^2 + q^2 = 100, so (p + q)^2 = 196 and the legs are 6 and 8. Halving the shorter and doubling the longer gives 3 and 16, and the new hypotenuse is sqrt(9 + 256) = sqrt(265).",
+    "solution": "The two legs satisfy \\(pq = 48\\) from the area and \\(p^2 + q^2 = 100\\) from the hypotenuse, so \\((p+q)^2 = 100 + 96 = 196\\) and the legs are \\(6\\) and \\(8\\). Halving the shorter gives \\(3\\) and doubling the longer gives \\(16\\). The new hypotenuse is \\(\\sqrt{3^2 + 16^2} = \\sqrt{265}\\) cm."
+  },
+  {
+    "number": 84,
+    "answer": "D",
+    "value": "6 sqrt(7) cm",
+    "confidence": "HIGH",
+    "reasoning": "Put the centre at the origin and the common vertex at (0, 8). A circle point (u, v) at distance 12 from it satisfies u^2 + v^2 - 16v + 64 = 144 with u^2 + v^2 = 64, giving v = -1 and u^2 = 63. The chord joining the two such points has length 2 sqrt(63) = 6 sqrt(7) = 15.8745 cm; the distance from (0,8) to (sqrt(63), -1) checks as exactly 12.",
+    "solution": "Place the centre at the origin, so the common vertex is at \\((0, 8)\\) and the two equal chords end at points \\((u, v)\\) on the circle with \\(u^2 + v^2 = 64\\). The condition that each chord is \\(12\\) cm gives \\(64 - 16v + 64 = 144\\), so \\(v = -1\\) and \\(u^2 = 63\\). The two endpoints are therefore \\(\\left(\\pm 3\\sqrt{7}, -1\\right)\\), and the chord joining them has length \\(6\\sqrt{7}\\) cm."
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "value": "Both 1 and 2 are correct",
+    "confidence": "HIGH",
+    "reasoning": "In an isosceles trapezium the base angles are equal, which makes each pair of opposite angles supplementary, so it is cyclic. In a cyclic parallelogram opposite angles are both equal (parallelogram) and supplementary (cyclic), hence each is 90 degrees, making it a rectangle. Both statements hold.",
+    "solution": "In an isosceles trapezium the angles at each parallel side are equal, which makes every pair of opposite angles add to \\(180^\\circ\\), and that is exactly the condition for a quadrilateral to be cyclic. In a cyclic parallelogram the opposite angles are equal because it is a parallelogram and supplementary because it is cyclic, so each must be \\(90^\\circ\\) and the figure is a rectangle. Both statements are therefore correct."
+  },
+  {
+    "number": 86,
+    "answer": "B",
+    "value": "6.5 m",
+    "confidence": "HIGH",
+    "reasoning": "With initial wall height h, h^2 + 2.5^2 = (h - 0.8)^2 + 3.9^2 gives 1.6h = 9.6, so h = 6 and the length is sqrt(36 + 6.25) = 6.5. sympy solve returns h = 6 and length 6.5 exactly.",
+    "solution": "Let the ladder reach a height \\(h\\) on the wall, so that \\(h^2 + 2.5^2\\) is its squared length. After slipping, the same length gives \\((h - 0.8)^2 + 3.9^2\\), and equating the two yields \\(1.6h = 9.6\\), so \\(h = 6\\). The ladder is therefore \\(\\sqrt{36 + 6.25} = \\sqrt{42.25} = 6.5\\) m long."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "value": "20 cm",
+    "confidence": "HIGH",
+    "reasoning": "Each centre lies on the other circle, so the centres are r apart and the common chord is bisected at distance r/2 from each centre. Half the chord is sqrt(r^2 - r^2/4) = r sqrt(3)/2, so the chord is r sqrt(3) = 10 sqrt(3), giving r = 10 and diameter 20.",
+    "solution": "Since each circle passes through the other's centre, the two centres are a distance \\(r\\) apart, and the common chord is bisected perpendicularly at the midpoint, \\(\\dfrac{r}{2}\\) from each centre. Half the chord is then \\(\\sqrt{r^2 - \\dfrac{r^2}{4}} = \\dfrac{r\\sqrt{3}}{2}\\), so the whole chord is \\(r\\sqrt{3}\\). Setting \\(r\\sqrt{3} = 10\\sqrt{3}\\) gives \\(r = 10\\) cm and a diameter of \\(20\\) cm."
+  },
+  {
+    "number": 88,
+    "answer": "D",
+    "value": "Neither 1 nor 2 is correct",
+    "confidence": "HIGH",
+    "reasoning": "Exactly one circle passes through three non-collinear points, since the perpendicular bisectors of the three joining segments meet in a single point — so the first statement is false. The angle in the minor segment is supplementary to the angle in the major segment, which is acute, so it is obtuse — the second statement is false too.",
+    "solution": "Exactly one circle passes through three non-collinear points: the perpendicular bisectors of the joining segments meet at a single point, which is the only possible centre. And an angle in the minor segment is supplementary to the corresponding angle in the major segment, which is acute, so the angle in the minor segment is obtuse rather than acute. Neither statement is correct."
+  },
+  {
+    "number": 89,
+    "answer": "D",
+    "value": "1, 2 and 3 are all correct",
+    "confidence": "HIGH",
+    "reasoning": "Each inequality is a rearrangement of the triangle inequality (sum of two sides exceeds the third). A random test over 20,000 triangles found 0 violations of any of the three.",
+    "solution": "In any triangle the sum of two sides exceeds the third. Rearranging \\(AB + BC > AC\\) gives \\(AC - AB < BC\\), rearranging \\(AB + AC > BC\\) gives \\(BC - AC < AB\\), and rearranging \\(BC + AC > AB\\) gives \\(AB - BC < AC\\). All three inequalities are therefore correct."
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "value": "Both 1 and 2 are correct",
+    "confidence": "HIGH",
+    "reasoning": "For each median, twice its length is less than the sum of the two sides at that vertex; adding the three gives sum of medians < perimeter. Over 20,000 random triangles the largest ratio of median-sum to perimeter was 0.99678, never reaching 1. For the second, AB + BD > AD and AC + CD > AD add to AB + BC + CA > 2AD; over 20,000 random triangles with a random point on BC the largest ratio of 2AD to the perimeter was 0.99991.",
+    "solution": "For a median drawn from a vertex, twice its length is less than the sum of the two sides meeting there; adding the three such inequalities shows the medians together fall short of the perimeter. For the second claim, with the point taken on \\(BC\\), the triangle inequality gives \\(AB + BD > AD\\) and \\(AC + CD > AD\\), and adding these yields \\(AB + BC + CA > 2AD\\). Both statements are therefore correct."
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "value": "6 sqrt(3) : 1",
+    "confidence": "HIGH",
+    "reasoning": "With cube edge a, the sphere's radius is a sqrt(3)/2 while the cylinder and cone each have radius a/2 and height a. Volumes: sphere = (4/3) pi (a sqrt3/2)^3 = (sqrt3/2) pi a^3; cone = (1/3) pi (a/2)^2 a = pi a^3/12. Ratio = 6 sqrt(3), confirmed by sympy simplify.",
+    "solution": "If the cube has edge \\(a\\), its diagonal is the sphere's diameter, so the sphere has radius \\(\\dfrac{a\\sqrt{3}}{2}\\), while the cylinder and the cone each have radius \\(\\dfrac{a}{2}\\) and height \\(a\\). Their volumes are \\(\\dfrac{4}{3}\\pi\\left(\\dfrac{a\\sqrt{3}}{2}\\right)^3 = \\dfrac{\\sqrt{3}}{2}\\pi a^3\\) and \\(\\dfrac{1}{3}\\pi\\left(\\dfrac{a}{2}\\right)^2 a = \\dfrac{\\pi a^3}{12}\\). Dividing gives a ratio of \\(6\\sqrt{3} : 1\\)."
+  },
+  {
+    "number": 92,
+    "answer": "C",
+    "value": "14 : 11 (that is, 4 : pi with pi = 22/7)",
+    "confidence": "HIGH",
+    "reasoning": "Cube volume a^3, cylinder volume pi (a/2)^2 a = pi a^3/4, so the ratio is 4 : pi = 1.27324. With pi = 22/7 this is exactly 28/22 = 14/11 = 1.27273; the rival options are 1.3333, 1.3125 and 1.40625, all far off. The paper uses pi = 22/7 elsewhere (its circle-area item comes out to exactly 462 on that convention).",
+    "solution": "The cube has volume \\(a^3\\), while the cylinder, of radius \\(\\dfrac{a}{2}\\) and height \\(a\\), has volume \\(\\pi\\left(\\dfrac{a}{2}\\right)^2 a = \\dfrac{\\pi a^3}{4}\\). The ratio is therefore \\(4 : \\pi\\). Taking \\(\\pi = \\dfrac{22}{7}\\) this becomes \\(\\dfrac{4 \\times 7}{22} = \\dfrac{14}{11}\\), that is \\(14 : 11\\)."
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "value": "Neither 1 nor 2 is correct",
+    "confidence": "HIGH",
+    "reasoning": "Sphere surface = 4 pi (a sqrt3/2)^2 = 3 pi a^2. Cone slant height = sqrt(a^2/4 + a^2) = a sqrt5/2, so its curved surface = pi (a/2)(a sqrt5/2) = sqrt5 pi a^2/4; multiplying by sqrt5 gives 5 pi a^2/4, not 3 pi a^2 (the true ratio is 12/sqrt5 = 5.3666, not sqrt5 = 2.2361). Cube surface = 6a^2 while the cylinder's curved surface = 2 pi (a/2) a = pi a^2 = 3.1416 a^2; the ratio is 6/pi = 1.9099, not 1. Both statements fail.",
+    "solution": "The sphere's surface area is \\(4\\pi\\left(\\dfrac{a\\sqrt{3}}{2}\\right)^2 = 3\\pi a^2\\), while the cone has slant height \\(\\dfrac{a\\sqrt{5}}{2}\\) and curved surface \\(\\dfrac{\\sqrt{5}\\,\\pi a^2}{4}\\); multiplying the latter by \\(\\sqrt{5}\\) gives \\(\\dfrac{5\\pi a^2}{4}\\), which is not \\(3\\pi a^2\\). The cube's surface area is \\(6a^2\\) while the cylinder's curved surface is \\(2\\pi\\left(\\dfrac{a}{2}\\right)a = \\pi a^2\\), and these are unequal as well. Neither statement is correct."
+  },
+  {
+    "number": 94,
+    "answer": "A",
+    "value": "126 square cm",
+    "confidence": "HIGH",
+    "reasoning": "The right angle at B gives AC = sqrt(81 + 1600) = 41. Triangle ADC then has sides 15, 28, 41 with s = 42, and Heron gives sqrt(42 x 27 x 14 x 1) = sqrt(15876) = 126 exactly.",
+    "solution": "The right angle in triangle \\(ABC\\) gives the diagonal \\(AC = \\sqrt{9^2 + 40^2} = \\sqrt{1681} = 41\\) cm. Triangle \\(ADC\\) then has sides \\(15, 28\\) and \\(41\\), so its semi-perimeter is \\(s = 42\\). By Heron's formula its area is \\(\\sqrt{42 \\times 27 \\times 14 \\times 1} = \\sqrt{15876} = 126\\) square cm."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "value": "306 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Triangle ABC is right-angled with area (1/2)(9)(40) = 180, and triangle ADC has area 126. The diagonal AC splits the quadrilateral into these two, so the total is 306 square cm.",
+    "solution": "The diagonal \\(AC\\) divides the quadrilateral into two triangles. The right-angled one has area \\(\\dfrac{1}{2} \\times 9 \\times 40 = 180\\) square cm, and the other, with sides \\(15, 28, 41\\), has area \\(126\\) square cm. Their sum is \\(180 + 126 = 306\\) square cm."
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "value": "6 cm",
+    "confidence": "HIGH",
+    "reasoning": "With AC = 41, the perimeter of triangle ABC is 9 + 40 + 41 = 90 and that of triangle ADC is 15 + 28 + 41 = 84. The difference is 6 cm.",
+    "solution": "The shared diagonal is \\(AC = 41\\) cm. Triangle \\(ABC\\) then has perimeter \\(9 + 40 + 41 = 90\\) cm and triangle \\(ADC\\) has perimeter \\(15 + 28 + 41 = 84\\) cm. The difference is \\(6\\) cm."
+  },
+  {
+    "number": 97,
+    "answer": "D",
+    "value": "60 cm",
+    "confidence": "HIGH",
+    "reasoning": "For an equilateral triangle the circumradius is (side)/sqrt(3), so the side is 20 sqrt(3) x sqrt(3) = 60 cm.",
+    "solution": "For an equilateral triangle the circumradius is \\(\\dfrac{\\text{side}}{\\sqrt{3}}\\). So the side is \\(20\\sqrt{3} \\times \\sqrt{3} = 60\\) cm."
+  },
+  {
+    "number": 98,
+    "answer": "C",
+    "value": "20 sqrt(3) cm",
+    "confidence": "HIGH",
+    "reasoning": "In an equilateral triangle the centroid coincides with the circumcentre, so its distance from any vertex is the circumradius, 20 sqrt(3) cm. Cross-check: the side is 60, the median is 60 sqrt(3)/2 = 30 sqrt(3), and two-thirds of that is 20 sqrt(3).",
+    "solution": "In an equilateral triangle the centroid and the circumcentre are the same point, so the distance from a vertex to the centroid is just the circumradius, \\(20\\sqrt{3}\\) cm. This agrees with the median calculation: with side \\(60\\) cm the median is \\(30\\sqrt{3}\\) cm, and the centroid divides it so that \\(\\dfrac{2}{3} \\times 30\\sqrt{3} = 20\\sqrt{3}\\) cm lies on the vertex side."
+  },
+  {
+    "number": 99,
+    "answer": "A",
+    "value": "288 square cm",
+    "confidence": "HIGH",
+    "reasoning": "(l+b+h)^2 = l^2+b^2+h^2 + 2(lb+bh+hl) gives 484 = 196 + 2(lb+bh+hl), so 2(lb+bh+hl) = 288, which is exactly the surface area. The individual dimensions are not needed, so the 'cannot be determined' option is a trap.",
+    "solution": "Squaring the sum of the dimensions gives \\((l+b+h)^2 = l^2+b^2+h^2 + 2(lb+bh+hl)\\), that is \\(22^2 = 14^2 + 2(lb+bh+hl)\\). Hence \\(2(lb+bh+hl) = 484 - 196 = 288\\), and that quantity is precisely the total surface area. So the surface area is \\(288\\) square cm, and the individual dimensions are never needed."
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "value": "1144 cubic cm",
+    "confidence": "HIGH",
+    "reasoning": "Using l^3+b^3+h^3-3lbh = (l+b+h)(l^2+b^2+h^2-lb-bh-hl), with l+b+h = 22, l^2+b^2+h^2 = 196 and lb+bh+hl = 144 from the previous relation, S - 3V = 22(196 - 144) = 22 x 52 = 1144.",
+    "solution": "The identity \\(l^3+b^3+h^3-3lbh = (l+b+h)\\left(l^2+b^2+h^2-lb-bh-hl\\right)\\) applies directly. From the diagonal and the sum of the dimensions, \\(l^2+b^2+h^2 = 196\\) and \\(lb+bh+hl = 144\\). Hence \\(S - 3V = 22(196 - 144) = 22 \\times 52 = 1144\\) cubic cm."
   }
 ]
