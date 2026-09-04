@@ -1,0 +1,793 @@
+{
+  "band": "b1",
+  "pages": [0, 1, 2, 3, 4, 5, 6, 7],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band covers Q1-Q60 contiguously across p00-p07 (printed pages 2-A, 4-A, 6-A, 8-A, 10-A, 12-A, 14-A, 16-A — the booklet is bilingual, so printed page numbers advance by two and the render has already dropped the Hindi pages). Booklet code BLS-S-FDE.\n\nPer-page counts: p00 Q1-8 (8), p01 Q9-15 (7), p02 Q16-23 (8), p03 Q24-30 (7), p04 Q31-38 (8), p05 Q39-45 (7), p06 Q46-53 (8), p07 Q54-60 (7).\n\nDIRECTIONS SETS: NONE. There is no 'Directions:' block and no 'Consider the following for the next N items' block anywhere in p00-p07, so no setLabel/context is used in this band. THREE questions look set-like and are not — each is a single self-contained question whose own options follow immediately: Q4 and Q46 open 'Consider the following statements :' with numbered items 1. and 2.; Q53 opens 'Consider the following distribution :' and Q58 'Consider the following frequency distribution :', each carrying one table used by that question alone (so per the brief the table goes in the stem, not in context).\n\nSEAM CHECK: there is no page before p00 — the render starts at Q1, which is complete with its four options on p00. I opened p08 (band b2's first page, printed 18-A) WITHOUT transcribing it: it opens cleanly at Q61 ('If x sin theta = y cos theta = 2z tan theta / (1 - tan^2 theta), then what is 4z^2(x^2+y^2) equal to?') with its full option block, and its right column opens at Q65. So nothing straddles the p07/p08 boundary, no question is stranded between the bands, and no Directions block starts on p07 and runs into p08. My last question, Q60, is complete on p07 with all four options printed.\n\nFIGURES: NONE in this band. No question in Q1-Q60 refers to a printed diagram, and no diagram is printed on p00-p07. Q54 is the one that might be mistaken for a figure question — it says 'In a pie diagram, there are four slices with angles 150, 90, 60 and 60' — but NO pie chart is drawn on the page; every angle the question needs is stated in words, so it is answerable from the stem alone and hasFigure is correctly absent. Q53, Q57 and Q58 carry printed DATA TABLES (not figures); all three are transcribed inline as GFM pipe tables with separator rows.\n\nRAISED MIDDLE DOT: every occurrence in this band is a DECIMAL POINT, checked individually at zoom — Q1 (0.064, 6.25, 0.081, 4.84), Q5 (0.35, 0.70, 2.25, 0.19), Q6 (log 2 = 0.301), and the Q57 table (1.00, 1.50, 2.00) plus its 'average price per pencil is Rs. 1.25'. All transcribed as full stops per the brief. No multiplication dot and no time separator occurs in p00-p07.\n\nRUPEE GLYPH: the booklet prints the rupee sign in Q22, Q26, Q34, Q37, Q40, Q57 (both column headers and all four options). Transcribed as 'Rs.' per the corpus convention (verified against the shipped 2018-1/2018-2/2019-1/2019-2 band files, which use 'Rs.' and never the Unicode glyph).\n\nITALIC ELL (Q56): the stem's odd-number list is 'j, k, l, m, n' and option (b) is '(5l + 7d)/4', where the fourth letter is a typeset ITALIC ell, not the digit 1 — confirmed at 4.5x against the upright '1' elsewhere on the same page. Transcribed as the letter l.\n\nGLYPHS CHECKED AT HIGH ZOOM (each was ambiguous at page resolution and is now settled): Q38's relation reads as a clean two-bar '=' at 9x — what looks like a third bar at page scale is an ink speck below the glyph, so it is NOT an approximation sign. Q21's 'which' is faded in the scan but legible at 5x, and the small '0' floating to its right is a stray pencil/scan artefact, not printed text. Q43's radical carries index 3 (cube root) over the mixed number 4 12/125. Q48's exponent is p-1. Q41's options were read letter by letter at 4.5x and 7x because (a)-(d) differ only by signs and a leading x.\n\nNO MISPRINTS FOUND. Nothing in p00-p07 required a flags entry for a printed defect, and nothing was illegible. The single flags entry in this band (Q12) is NOT a misprint report — it records that the asymmetric exponent placement in (3A^2 + 4B)/(3A - 4B^2) was verified at 5x and is exactly what the page prints, so that a later pass does not 'repair' it into a symmetric expression.\n\nINVENTED SUBTOPICS: NONE. Every chapter and subtopic used is a literal key/value from catalog.json.\n\nCLASSIFICATION NOTES worth a second eye: Q43 (cube root of the mixed number 4 12/125) is filed under Surds, Indices and Simplification / 'Simplification of Expressions'; Number System / 'Perfect Squares and Cubes' is an equally defensible home and was the runner-up. Q44 (policeman chasing a thief with a 100 m head start) is filed under Time, Speed and Distance / 'Time, Speed and Distance' rather than 'Races', since 'Races' in this catalog is the A-gives-B-a-start shape that Q23 already occupies. Q49 (ratio 1:5, product 320, difference of squares) is filed under Ratio, Proportion and Variation / 'Ratio and Proportion'; Number System / 'Difference of Squares and Factor Pairs' was the runner-up."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "What is \\(\\sqrt{\\dfrac{0.064 \\times 6.25}{0.081 \\times 4.84}}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{10}{99}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{100}{99}\\)" },
+        { "label": "C", "text": "9" },
+        { "label": "D", "text": "99" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 2,
+      "stem": "\\((x + 4)\\) is a factor of which one of the following expressions ?",
+      "options": [
+        { "label": "A", "text": "\\(x^2 - 7x + 44\\)" },
+        { "label": "B", "text": "\\(x^2 + 7x - 44\\)" },
+        { "label": "C", "text": "\\(x^2 - 7x - 44\\)" },
+        { "label": "D", "text": "\\(x^2 + 7x + 44\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 3,
+      "stem": "If \\(\\alpha\\) and \\(\\beta\\) are the roots of the quadratic equation \\(2x^2 + 6x + k = 0\\), where \\(k < 0\\), then what is the maximum value of \\(\\dfrac{\\alpha}{\\beta} + \\dfrac{\\beta}{\\alpha}\\) ?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "\\(-2\\)" },
+        { "label": "C", "text": "9" },
+        { "label": "D", "text": "\\(-9\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 4,
+      "stem": "Consider the following statements :\n\n1. If \\(a = bc\\) with HCF \\((b, c) = 1\\), then HCF \\((c, bd) = \\) HCF \\((c, d)\\).\n\n2. If \\(a = bc\\) with HCF \\((b, c) = 1\\), then LCM \\((a, d) = \\) LCM \\((c, bd)\\).\n\nWhich of the above statements is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 5,
+      "stem": "What is the square root of \\(\\dfrac{(0.35)^2 + 0.70 + 1}{2.25} + 0.19\\) ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 6,
+      "stem": "What is the number of digits in \\(2^{40}\\) ? (Given that \\(\\log_{10} 2 = 0.301\\))",
+      "options": [
+        { "label": "A", "text": "14" },
+        { "label": "B", "text": "13" },
+        { "label": "C", "text": "12" },
+        { "label": "D", "text": "11" }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Number of Digits and Characteristic",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 7,
+      "stem": "If one root of\n\n\\((a^2 - 5a + 3) x^2 + (3a - 1) x + 2 = 0\\)\n\nis twice the other, then what is the value of 'a' ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{2}{3}\\)" },
+        { "label": "B", "text": "\\(-\\dfrac{2}{3}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{1}{3}\\)" },
+        { "label": "D", "text": "\\(-\\dfrac{1}{3}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 8,
+      "stem": "What is the remainder when the number \\((4444)^{4444}\\) is divided by 9 ?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "8" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 9,
+      "stem": "If \\(x = \\dfrac{\\sqrt{a + b} - \\sqrt{a - b}}{\\sqrt{a + b} + \\sqrt{a - b}}\\), then what is \\(bx^2 - 2ax + b\\) equal to \\((b \\ne 0)\\) ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "\\(ab\\)" },
+        { "label": "D", "text": "\\(2ab\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 10,
+      "stem": "What is the value of\n\n\\(\\dfrac{(443 + 547)^2 + (443 - 547)^2}{443 \\times 443 + 547 \\times 547}\\) ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 11,
+      "stem": "If \\(x = t^{\\frac{1}{t-1}}\\) and \\(y = t^{\\frac{t}{t-1}}\\), \\(t > 0\\), \\(t \\ne 1\\), then what is the relation between \\(x\\) and \\(y\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(y^x = x^{1/y}\\)" },
+        { "label": "B", "text": "\\(x^{1/y} = y^{1/x}\\)" },
+        { "label": "C", "text": "\\(x^y = y^x\\)" },
+        { "label": "D", "text": "\\(x^y = y^{1/x}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 12,
+      "stem": "If \\(A : B = 3 : 4\\), then what is the value of the expression \\(\\left( \\dfrac{3A^2 + 4B}{3A - 4B^2} \\right)\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{43}{55}\\)" },
+        { "label": "B", "text": "\\(-\\dfrac{43}{55}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{47}{55}\\)" },
+        { "label": "D", "text": "Cannot be determined" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE",
+      "flags": "Exponent placement verified at 5x and transcribed exactly as printed: the numerator carries A squared with B linear, the denominator carries A linear with B squared. The asymmetry is on the page, not a transcription slip — recorded so a later pass does not 'repair' it into a symmetric expression."
+    },
+    {
+      "number": 13,
+      "stem": "If \\(A = \\{x : x \\text{ is a multiple of } 7\\}\\),\n\\(B = \\{x : x \\text{ is a multiple of } 5\\}\\) and\n\\(C = \\{x : x \\text{ is a multiple of } 35\\}\\),\nthen which one of the following is a null set ?",
+      "options": [
+        { "label": "A", "text": "\\((A - B) \\cup C\\)" },
+        { "label": "B", "text": "\\((A - B) - C\\)" },
+        { "label": "C", "text": "\\((A \\cap B) \\cap C\\)" },
+        { "label": "D", "text": "\\((A \\cap B) - C\\)" }
+      ],
+      "chapter": "Sets",
+      "subtopic": "Set Operations and Venn Diagrams",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 14,
+      "stem": "If \\(x = 2 + 2^{2/3} + 2^{1/3}\\), then what is the value of \\(x^3 - 6x^2 + 6x\\) ?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 15,
+      "stem": "If \\(\\sqrt{\\dfrac{x}{y}} = \\dfrac{24}{5} + \\sqrt{\\dfrac{y}{x}}\\) and \\(x + y = 26\\), then what is the value of \\(xy\\) ?",
+      "options": [
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "15" },
+        { "label": "C", "text": "25" },
+        { "label": "D", "text": "30" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 16,
+      "stem": "What is the solution of the equation\n\n\\(x \\log_{10} \\left( \\dfrac{10}{3} \\right) + \\log_{10} 3 = \\log_{10} (2 + 3^x) + x\\) ?",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Solving Logarithmic Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 17,
+      "stem": "If \\(\\alpha\\) and \\(\\beta\\) are the roots of the equation \\(x^2 + px + q = 0\\), then what is \\(\\alpha^2 + \\beta^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(p^2 - 2q\\)" },
+        { "label": "B", "text": "\\(q^2 - 2p\\)" },
+        { "label": "C", "text": "\\(p^2 + 2q\\)" },
+        { "label": "D", "text": "\\(q^2 - q\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 18,
+      "stem": "If \\(a^3 = 335 + b^3\\) and \\(a = 5 + b\\), then what is the value of \\(a + b\\) (given that \\(a > 0\\) and \\(b > 0\\)) ?",
+      "options": [
+        { "label": "A", "text": "7" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "16" },
+        { "label": "D", "text": "49" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 19,
+      "stem": "If \\(9^x \\, 3^y = 2187\\) and \\(2^{3x} \\, 2^{2y} - 4^{xy} = 0\\), then what can be the value of \\((x + y)\\) ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "7" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 20,
+      "stem": "The pair of linear equations \\(kx + 3y + 1 = 0\\) and \\(2x + y + 3 = 0\\) intersect each other, if",
+      "options": [
+        { "label": "A", "text": "\\(k = 6\\)" },
+        { "label": "B", "text": "\\(k \\ne 6\\)" },
+        { "label": "C", "text": "\\(k = 0\\)" },
+        { "label": "D", "text": "\\(k \\ne 0\\)" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Consistency of Simultaneous Equations",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 21,
+      "stem": "The number of prime numbers which are less than 100 is",
+      "options": [
+        { "label": "A", "text": "24" },
+        { "label": "B", "text": "25" },
+        { "label": "C", "text": "26" },
+        { "label": "D", "text": "27" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 22,
+      "stem": "The cost of a diamond varies directly as the square of its weight. A diamond broke into four pieces with their weights in the ratio of \\(1 : 2 : 3 : 4\\). If the loss in total value of the diamond was Rs. 70,000, what was the price of the original diamond ?",
+      "options": [
+        { "label": "A", "text": "Rs. 1,00,000" },
+        { "label": "B", "text": "Rs. 1,40,000" },
+        { "label": "C", "text": "Rs. 1,50,000" },
+        { "label": "D", "text": "Rs. 1,75,000" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 23,
+      "stem": "In a 100 m race, A runs at a speed of \\(\\dfrac{5}{3}\\) m/s. If A gives a start of 4 m to B and still beats him by 12 seconds, what is the speed of B ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{5}{4}\\) m/s" },
+        { "label": "B", "text": "\\(\\dfrac{7}{5}\\) m/s" },
+        { "label": "C", "text": "\\(\\dfrac{4}{3}\\) m/s" },
+        { "label": "D", "text": "\\(\\dfrac{6}{5}\\) m/s" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Races",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 24,
+      "stem": "If 15 men take 21 days of 8 hours each to do a piece of work, then what is the number of days of 6 hours each that 21 women would take, if 3 women would do as much work as 2 men ?",
+      "options": [
+        { "label": "A", "text": "18" },
+        { "label": "B", "text": "20" },
+        { "label": "C", "text": "25" },
+        { "label": "D", "text": "30" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 25,
+      "stem": "What number must be subtracted from both the numerator and the denominator of the fraction \\(\\dfrac{27}{35}\\) so that it becomes \\(\\dfrac{2}{3}\\) ?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "8" },
+        { "label": "C", "text": "9" },
+        { "label": "D", "text": "11" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 26,
+      "stem": "A sum of Rs. 8,400 was taken as a loan. This is to be paid in two equal instalments. If the rate of interest is 10% per annum, compounded annually, then the value of each instalment is",
+      "options": [
+        { "label": "A", "text": "Rs. 4,200" },
+        { "label": "B", "text": "Rs. 4,480" },
+        { "label": "C", "text": "Rs. 4,840" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Instalments and Difference of SI and CI",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "Leela got married 6 years ago. Today her age is \\(1\\frac{1}{4}\\) times her age at the time of her marriage. Her son's age is \\(\\dfrac{1}{10}\\) times her age. What is the present age of her son ?",
+      "options": [
+        { "label": "A", "text": "1 year" },
+        { "label": "B", "text": "2 years" },
+        { "label": "C", "text": "3 years" },
+        { "label": "D", "text": "4 years" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 28,
+      "stem": "A and B working together can finish a piece of work in 12 days while B alone can finish it in 30 days. In how many days can A alone finish the work ?",
+      "options": [
+        { "label": "A", "text": "18 days" },
+        { "label": "B", "text": "20 days" },
+        { "label": "C", "text": "24 days" },
+        { "label": "D", "text": "25 days" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 29,
+      "stem": "The values of \\(x\\) which satisfy the equation \\(5^{1+x} + 5^{1-x} = 26\\) are",
+      "options": [
+        { "label": "A", "text": "\\(-1, 1\\)" },
+        { "label": "B", "text": "\\(0, 1\\)" },
+        { "label": "C", "text": "\\(1, 2\\)" },
+        { "label": "D", "text": "\\(-1, 0\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 30,
+      "stem": "If 5 men can do a piece of work in 10 days and 12 women can do the same work in 15 days, the number of days required to complete the work by 5 men and 6 women is",
+      "options": [
+        { "label": "A", "text": "\\(7\\frac{1}{2}\\) days" },
+        { "label": "B", "text": "8 days" },
+        { "label": "C", "text": "\\(9\\frac{1}{2}\\) days" },
+        { "label": "D", "text": "12 days" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 31,
+      "stem": "A passenger train departs from Delhi at 6 p.m. for Mumbai. At 9 p.m., an express train, whose average speed exceeds that of the passenger train by 15 km/hour leaves Mumbai for Delhi. Two trains meet each other mid-route. At what time do they meet, given that the distance between the cities is 1080 km ?",
+      "options": [
+        { "label": "A", "text": "4 p.m." },
+        { "label": "B", "text": "2 a.m." },
+        { "label": "C", "text": "12 midnight" },
+        { "label": "D", "text": "6 a.m." }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 32,
+      "stem": "In a class of 49 students, the ratio of girls to boys is \\(4 : 3\\). If 4 girls leave the class, the ratio of girls to boys would be",
+      "options": [
+        { "label": "A", "text": "\\(11 : 7\\)" },
+        { "label": "B", "text": "\\(8 : 7\\)" },
+        { "label": "C", "text": "\\(6 : 5\\)" },
+        { "label": "D", "text": "\\(9 : 8\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 33,
+      "stem": "If \\(a + b = 5\\) and \\(ab = 6\\), then what is the value of \\(a^3 + b^3\\) ?",
+      "options": [
+        { "label": "A", "text": "35" },
+        { "label": "B", "text": "40" },
+        { "label": "C", "text": "90" },
+        { "label": "D", "text": "125" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 34,
+      "stem": "Rajendra bought a mobile with 25% discount on the selling price. If the mobile cost him Rs. 4,875, what is the original selling price of the mobile ?",
+      "options": [
+        { "label": "A", "text": "Rs. 6,300" },
+        { "label": "B", "text": "Rs. 6,400" },
+        { "label": "C", "text": "Rs. 6,500" },
+        { "label": "D", "text": "Rs. 6,600" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 35,
+      "stem": "A 225 m long train is running at a speed of 30 km/hour. How much time does it take to cross a man running at 3 km/hour in the same direction ?",
+      "options": [
+        { "label": "A", "text": "40 seconds" },
+        { "label": "B", "text": "30 seconds" },
+        { "label": "C", "text": "25 seconds" },
+        { "label": "D", "text": "15 seconds" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 36,
+      "stem": "Which one among the following is the largest ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{7}{9}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{11}{14}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{3}{4}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{10}{13}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 37,
+      "stem": "The difference between the simple and the compound interest on a certain sum of money at 4% per annum in 2 years is Rs. 10. What is the sum ?",
+      "options": [
+        { "label": "A", "text": "Rs. 5,000" },
+        { "label": "B", "text": "Rs. 6,000" },
+        { "label": "C", "text": "Rs. 6,250" },
+        { "label": "D", "text": "Rs. 7,500" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Instalments and Difference of SI and CI",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 38,
+      "stem": "If \\(a\\%\\) of \\(a\\) + \\(b\\%\\) of \\(b\\) = 2% of \\(ab\\), then what percent of \\(a\\) is \\(b\\) ?",
+      "options": [
+        { "label": "A", "text": "50%" },
+        { "label": "B", "text": "75%" },
+        { "label": "C", "text": "100%" },
+        { "label": "D", "text": "Cannot be determined" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 39,
+      "stem": "\\(\\dfrac{5}{9}\\)th part of the population in a village are males. If 30% of the males are married, the percentage of unmarried females in the total population is",
+      "options": [
+        { "label": "A", "text": "\\(20\\frac{2}{9}\\)" },
+        { "label": "B", "text": "\\(27\\frac{2}{9}\\)" },
+        { "label": "C", "text": "\\(27\\frac{7}{9}\\)" },
+        { "label": "D", "text": "\\(29\\frac{2}{9}\\)" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 40,
+      "stem": "Sunil wants to spend Rs. 200 on two types of sweets, costing Rs. 7 and Rs. 10 respectively. What is the maximum number of sweets he can get so that no money is left over ?",
+      "options": [
+        { "label": "A", "text": "25" },
+        { "label": "B", "text": "26" },
+        { "label": "C", "text": "27" },
+        { "label": "D", "text": "28" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Integral Solutions and Diophantine Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 41,
+      "stem": "What is the LCM of \\(x^3 + 8\\), \\(x^2 + 5x + 6\\) and \\(x^3 + 4x^2 + 4x\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(x (x + 2)^2 (x + 3) (x^2 - 2x + 4)\\)" },
+        { "label": "B", "text": "\\(x (x - 2)^2 (x - 3) (x^2 + 2x + 4)\\)" },
+        { "label": "C", "text": "\\((x + 2)^2 (x + 3) (x^2 - 2x + 4)\\)" },
+        { "label": "D", "text": "\\((x - 2)^2 (x - 3) (x^2 - 2x + 4)\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 42,
+      "stem": "The HCF of two expressions \\(p\\) and \\(q\\) is 1. What is the reciprocal of their LCM ?",
+      "options": [
+        { "label": "A", "text": "\\(p + q\\)" },
+        { "label": "B", "text": "\\(p - q\\)" },
+        { "label": "C", "text": "\\(pq\\)" },
+        { "label": "D", "text": "\\((pq)^{-1}\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 43,
+      "stem": "What is the value of \\(\\sqrt[3]{4\\frac{12}{125}}\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(1\\frac{3}{5}\\)" },
+        { "label": "B", "text": "\\(1\\frac{2}{5}\\)" },
+        { "label": "C", "text": "\\(1\\frac{4}{5}\\)" },
+        { "label": "D", "text": "\\(2\\frac{2}{5}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Simplification of Expressions",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 44,
+      "stem": "A thief is spotted by a policeman from a distance of 100 m. When the policeman starts the chase, the thief also starts running. If the speed of the thief is 8 km/hour and that of the policeman is 10 km/hour, then how far will the thief have to run before he is overtaken ?",
+      "options": [
+        { "label": "A", "text": "200 m" },
+        { "label": "B", "text": "300 m" },
+        { "label": "C", "text": "400 m" },
+        { "label": "D", "text": "500 m" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 45,
+      "stem": "Aman and Alok attempted to solve a quadratic equation. Aman made a mistake in writing down the constant term and ended up in roots \\((4, 3)\\). Alok made a mistake in writing down the coefficient of \\(x\\) to get roots \\((3, 2)\\). The correct roots of the equation are",
+      "options": [
+        { "label": "A", "text": "\\(-4, -3\\)" },
+        { "label": "B", "text": "\\(6, 1\\)" },
+        { "label": "C", "text": "\\(4, 3\\)" },
+        { "label": "D", "text": "\\(-6, -1\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 46,
+      "stem": "Consider the following statements :\n\n1. Of two consecutive integers, one is even.\n\n2. Square of an odd integer is of the form \\(8n + 1\\).\n\nWhich of the above statements is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Parity of Integers",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 47,
+      "stem": "The system of equations \\(2x + 4y = 6\\) and \\(4x + 8y = 8\\) is",
+      "options": [
+        { "label": "A", "text": "Consistent with a unique solution" },
+        { "label": "B", "text": "Consistent with infinitely many solutions" },
+        { "label": "C", "text": "Inconsistent" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Consistency of Simultaneous Equations",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 48,
+      "stem": "\\((N^{p-1} - 1)\\) is a multiple of \\(p\\), if \\(N\\) is prime to \\(p\\) and \\(p\\) is a",
+      "options": [
+        { "label": "A", "text": "Prime number" },
+        { "label": "B", "text": "Rational number" },
+        { "label": "C", "text": "Real number" },
+        { "label": "D", "text": "Composite number" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 49,
+      "stem": "The ratio of two numbers is \\(1 : 5\\) and their product is 320. What is the difference between the squares of these two numbers ?",
+      "options": [
+        { "label": "A", "text": "1024" },
+        { "label": "B", "text": "1256" },
+        { "label": "C", "text": "1536" },
+        { "label": "D", "text": "1640" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 50,
+      "stem": "25 kg of alloy X is mixed with 125 kg of alloy Y. If the amount of lead and tin in the alloy X is in the ratio \\(1 : 2\\) and the amount of lead and tin in the alloy Y is in the ratio \\(2 : 3\\), then what is the ratio of lead to tin in the mixture ?",
+      "options": [
+        { "label": "A", "text": "\\(1 : 2\\)" },
+        { "label": "B", "text": "\\(2 : 3\\)" },
+        { "label": "C", "text": "\\(3 : 5\\)" },
+        { "label": "D", "text": "\\(7 : 11\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Mixtures and Alligation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 51,
+      "stem": "The mean of 5 numbers is 15. If one more number is included, the mean of the 6 numbers becomes 17. What is the included number ?",
+      "options": [
+        { "label": "A", "text": "24" },
+        { "label": "B", "text": "25" },
+        { "label": "C", "text": "26" },
+        { "label": "D", "text": "27" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 52,
+      "stem": "The mean marks obtained by 300 students in a subject are 60. The mean of top 100 students was found to be 80 and the mean of last 100 students was found to be 50. The mean marks of the remaining 100 students are",
+      "options": [
+        { "label": "A", "text": "70" },
+        { "label": "B", "text": "65" },
+        { "label": "C", "text": "60" },
+        { "label": "D", "text": "50" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 53,
+      "stem": "Consider the following distribution :\n\n| Class | Frequency |\n|---|---|\n| 0 - 20 | 17 |\n| 20 - 40 | 28 |\n| 40 - 60 | 32 |\n| 60 - 80 | f |\n| 80 - 100 | 19 |\n\nIf the mean of the above distribution is 50, what is the value of f ?",
+      "options": [
+        { "label": "A", "text": "24" },
+        { "label": "B", "text": "34" },
+        { "label": "C", "text": "56" },
+        { "label": "D", "text": "96" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 54,
+      "stem": "In a pie diagram, there are four slices with angles \\(150^\\circ\\), \\(90^\\circ\\), \\(60^\\circ\\) and \\(60^\\circ\\). A new pie diagram is formed by deleting one of the slices having angle \\(60^\\circ\\) in the given pie diagram. In the new pie diagram",
+      "options": [
+        { "label": "A", "text": "The largest slice has angle \\(150^\\circ\\)" },
+        { "label": "B", "text": "The smallest slice has angle \\(70^\\circ\\)" },
+        { "label": "C", "text": "The largest slice has angle \\(180^\\circ\\)" },
+        { "label": "D", "text": "The smallest slice has angle \\(90^\\circ\\)" }
+      ],
+      "chapter": "Data Interpretation",
+      "subtopic": "Pie Charts",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 55,
+      "stem": "In an asymmetrical distribution, if the mean and median of the distribution are 270 and 220 respectively, then the mode of the data is",
+      "options": [
+        { "label": "A", "text": "120" },
+        { "label": "B", "text": "220" },
+        { "label": "C", "text": "280" },
+        { "label": "D", "text": "370" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 56,
+      "stem": "Let \\(a, b, c, d, e, f, g\\) be consecutive even numbers and \\(j, k, l, m, n\\) be consecutive odd numbers. What is the average of all the numbers ?",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{3 (a + n)}{2}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{(5l + 7d)}{4}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{(a + b + m + n)}{4}\\)" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 57,
+      "stem": "An individual purchases three qualities of pencils. The relevant data is given below :\n\n| Quality | Price per pencil (in Rs.) | Money spent (in Rs.) |\n|---|---|---|\n| A | 1.00 | 50 |\n| B | 1.50 | x |\n| C | 2.00 | 20 |\n\nIt is known that the average price per pencil is Rs. 1.25. What is the value of \\(x\\) ?",
+      "options": [
+        { "label": "A", "text": "Rs. 10" },
+        { "label": "B", "text": "Rs. 30" },
+        { "label": "C", "text": "Rs. 40" },
+        { "label": "D", "text": "Rs. 60" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 58,
+      "stem": "Consider the following frequency distribution :\n\n| x | Frequency | Cumulative frequency |\n|---|---|---|\n| 1 | 8 | 8 |\n| 2 | 10 | 18 |\n| 3 | \\(f_1\\) | 29 |\n| 4 | \\(f_2\\) | 45 |\n\nWhat are the values of \\(f_1\\) and \\(f_2\\) respectively ?",
+      "options": [
+        { "label": "A", "text": "10 and 17" },
+        { "label": "B", "text": "17 and 10" },
+        { "label": "C", "text": "11 and 16" },
+        { "label": "D", "text": "16 and 11" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 59,
+      "stem": "If D is the number of degrees and R is the number of radians in an angle \\(\\theta\\), then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(\\pi D = 180 R\\)" },
+        { "label": "B", "text": "\\(\\pi D = 90 R\\)" },
+        { "label": "C", "text": "\\(\\pi R = 180 D\\)" },
+        { "label": "D", "text": "\\(\\pi R = 90 D\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Degree and Radian Measure",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 60,
+      "stem": "What is the minimum value of \\(9 \\tan^2 \\theta + 4 \\cot^2 \\theta\\) ?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "12" },
+        { "label": "D", "text": "13" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

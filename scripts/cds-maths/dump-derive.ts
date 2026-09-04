@@ -31,7 +31,22 @@ type DerivePacketItem = {
   hasFigure?: boolean;
 };
 
-/** Exported for tests: strips a transcribed question down to the blind packet. */
+/**
+ * Exported for tests: strips a transcribed question down to the blind packet.
+ *
+ * Built by ALLOWLIST, not by deleting known-bad fields, so a field added to the
+ * transcription later cannot leak into a blind pass by default.
+ *
+ * `figureNote` is EXCLUDED ON PURPOSE and must stay excluded. It is the
+ * transcriber's reading of a diagram, and a deriver handed it stops reading the
+ * page and starts trusting a description. That is not hypothetical: 2018-II Q93's
+ * figureNote had the two semicircles the wrong way round (it said the semicircle
+ * on AB was drawn above and BD below; the page draws the opposite). The note's
+ * reading gives 54pi, which is NOT a printed option -- so a pass that trusted it
+ * would have returned answer:null and the row would have been dropped. Both
+ * passes got 27pi because they opened the image. `hasFigure` is the only signal
+ * that ships, and it means GO LOOK.
+ */
 export function toPacket(questions: TQ[]): DerivePacketItem[] {
   return questions
     .slice()
