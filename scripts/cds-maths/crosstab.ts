@@ -19,7 +19,7 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import { dataPath, requirePaper } from "./config";
-import { crosstab, normalizeQuestions, type Derivation, type TQ } from "./lib";
+import { crosstab, normalizeQuestions, type Derivation, type TQ, normalizeDerivations } from "./lib";
 
 function load<T>(path: string, what: string): T {
   if (!existsSync(path)) throw new Error(`missing ${path} — ${what}`);
@@ -34,8 +34,8 @@ function main() {
   const questions: TQ[] = normalizeQuestions(
     load(dataPath(paper.id, "questions"), "run merge.ts first")
   );
-  const a = load<Derivation[]>(dataPath(paper.id, passAName), `derivation pass "${passAName}" not found`);
-  const b = load<Derivation[]>(dataPath(paper.id, passBName), `derivation pass "${passBName}" not found`);
+  const a = normalizeDerivations(load<Derivation[]>(dataPath(paper.id, passAName), `derivation pass "${passAName}" not found`));
+  const b = normalizeDerivations(load<Derivation[]>(dataPath(paper.id, passBName), `derivation pass "${passBName}" not found`));
 
   const rows = crosstab(a, b, questions);
   const by = (v: string) => rows.filter((r) => r.verdict === v);

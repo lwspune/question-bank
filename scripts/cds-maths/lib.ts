@@ -254,6 +254,29 @@ export function validateCatalog(
  * is to the option text, never to the answer. Letting that reach adjudication as
  * a DISPUTE buries the real disagreements in noise.
  */
+/**
+ * Accept `why` as an alias for `reasoning` on a derivation row.
+ *
+ * The brief names the field `reasoning` and that stays authoritative -- this is
+ * NOT a second supported spelling to write to. It exists because a dispatch
+ * prompt once said `why` while the brief said `reasoning`, and the cost of that
+ * mismatch is badly asymmetric: the crosstab prints the justification only on
+ * DISPUTED rows, i.e. exactly where a human is deciding, and `buildRecords`
+ * puts it into the STORED SOLUTION. So a mismatch either blanks the evidence at
+ * the one moment it is read, or throws mid-commit. Normalising on read makes it
+ * a non-event instead. A row carrying neither key is still left undefined and
+ * will fail loudly downstream, which is the correct outcome.
+ */
+export function normalizeDerivations<T>(rows: T[]): T[] {
+  return (rows ?? []).map((r) => {
+    const row = r as unknown as { reasoning?: string; why?: string };
+    if (!row.reasoning && typeof row.why === "string") {
+      return { ...row, reasoning: row.why } as unknown as T;
+    }
+    return r;
+  });
+}
+
 export function crosstab(
   passA: Derivation[],
   passB: Derivation[],

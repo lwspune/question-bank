@@ -8,6 +8,7 @@ import {
   validateCatalog,
   validateRows,
   validateSets,
+  normalizeDerivations,
   type Band,
   type Derivation,
   type TQ,
@@ -345,5 +346,28 @@ describe("comparisons are CASE-SENSITIVE (maths, not prose)", () => {
     const tq = q({ options: opts("H\tan\gamma", "h\tan\gamma", "c", "d") });
     const d = (n: string) => ({ number: 1, answer: n, value: "v", confidence: "HIGH", reasoning: "r" });
     expect(crosstab([d("A")], [d("B")], [tq])[0].verdict).toBe("DISPUTE");
+  });
+});
+
+describe("normalizeDerivations", () => {
+  it("accepts `why` as an alias for `reasoning`", () => {
+    const out = normalizeDerivations([{ number: 1, answer: "C", why: "because" } as never]);
+    expect((out[0] as { reasoning?: string }).reasoning).toBe("because");
+  });
+
+  it("does NOT overwrite a reasoning that is already present", () => {
+    // The brief's field wins. A row carrying both (a hedging agent) must keep
+    // the authoritative one, or the alias would silently demote real content.
+    const out = normalizeDerivations([
+      { number: 1, reasoning: "real", why: "alias" } as never,
+    ]);
+    expect((out[0] as { reasoning?: string }).reasoning).toBe("real");
+  });
+
+  it("leaves a row carrying NEITHER key undefined, so it fails loudly downstream", () => {
+    // Deliberate: buildRecords calls .trim() on this field, so an absent
+    // justification throws mid-commit rather than storing an empty solution.
+    const out = normalizeDerivations([{ number: 1, answer: "C" } as never]);
+    expect((out[0] as { reasoning?: string }).reasoning).toBeUndefined();
   });
 });
