@@ -194,14 +194,21 @@ describe("buildRecords", () => {
     expect(buildRecords([q(), q({ number: 2 })], [d])).toHaveLength(1);
   });
 
-  it("states reconciliation and the prep-house key in the provenance bracket", () => {
+  it("ships the working and NOTHING about where the answer came from", () => {
+    // A solution ends with the mathematics. It used to end with a bracket
+    // explaining that the booklet carries no official key and the answer is
+    // ours -- which no textbook or question bank does, and which a teacher
+    // could not hand to a student. Provenance is structured data
+    // (derived_model / derived_at / question_reviews), not a footnote on
+    // every card.
     const [plain] = buildRecords([q()], [d]);
-    expect(plain.solution).toMatch(/blind derivations agreed/);
-    expect(plain.solution).not.toMatch(/prep-house/);
-
+    expect(plain.solution).toBe(d.reasoning.trim());
+    for (const leak of [/\[/, /no answer key/i, /official key/i, /our own working/i, /confidence/i, /blind/i]) {
+      expect(plain.solution).not.toMatch(leak);
+    }
+    // Same for the sitting that has an external key: nothing is appended.
     const [keyed] = buildRecords([q()], [d], { reconciled: new Set([1]), keyed: true });
-    expect(keyed.solution).toMatch(/reconciled by hand/);
-    expect(keyed.solution).toMatch(/prep-house answer key/);
+    expect(keyed.solution).toBe(d.reasoning.trim());
   });
 });
 

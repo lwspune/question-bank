@@ -30,7 +30,6 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, dataPath, requirePaper } from "./config";
-import { provenance } from "./lib";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -82,13 +81,8 @@ async function main() {
       problems.push(`Q${d.number}: ANSWER MOVED — stored key ${hit.key}, answers file says ${d.answer}`);
       continue;
     }
-    // Rebuild exactly what buildRecords would emit, so the two paths cannot drift.
-    const agreed = true;
-    const text = `${(d.solution ?? d.reasoning).trim()} ${provenance(
-      d.confidence.toUpperCase(),
-      agreed,
-      Boolean(paper.answerKey),
-    )}`.trim();
+    // Rebuild exactly what buildRecords would emit, so the two cannot drift.
+    const text = (d.solution ?? d.reasoning).trim();
     // A control character here is ALWAYS corruption, never content. It arrives
     // when LaTeX is authored through a shell heredoc or a non-raw Python string:
     // UNKNOWN escapes survive (\( and \sqrt come through fine) but KNOWN ones do

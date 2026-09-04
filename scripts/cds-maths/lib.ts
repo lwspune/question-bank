@@ -334,21 +334,6 @@ export function crosstab(
     });
 }
 
-/**
- * The provenance bracket every derived answer carries. No booklet in this corpus
- * prints a key, and the answer-key export prints `solution` verbatim — so a
- * reader of a downloaded paper sees this too, which is the intent.
- *
- * `keyed` is the 2020 case: an EXTERNAL prep-house key exists for that sitting.
- * It is named as prep-house rather than official, because it is not a published
- * UPSC key and claiming otherwise would overstate the evidence.
- */
-export const provenance = (confidence: string, agreed: boolean, keyed = false) =>
-  `[Derived answer — this booklet carries no official key. ` +
-  `Two independent blind derivations ${agreed ? "agreed" : "were reconciled by hand"}; ` +
-  `confidence: ${confidence}.` +
-  (keyed ? ` Cross-checked against a prep-house answer key for this sitting.` : ``) +
-  ` Verify before relying on it.]`;
 
 /**
  * Assemble bank rows. A question with no derivation is DROPPED, not defaulted —
@@ -384,7 +369,7 @@ export function buildRecords(
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
       // Student text when authored, reviewer evidence otherwise. See Derivation.
-      solution: `${(d.solution ?? d.reasoning).trim()} ${provenance(d.confidence.toUpperCase(), agreed, opts.keyed)}`.trim(),
+      solution: (d.solution ?? d.reasoning).trim(),
     });
   }
   return rows;

@@ -109,7 +109,9 @@ export function maskMath(s: string): string {
  * makes the match what it always meant: a trailing bracket, and only that.
  */
 export function stripProvenance(s: string): string {
-  return s.replace(/\[\s*(?:Derived answer|Adjudicated against)[^\]]*\]\s*$/i, "").trim();
+  return s
+    .replace(/\[\s*(?:UPSC publishes no answer key|Derived answer|Adjudicated against)[^\]]*\]\s*$/i, "")
+    .trim();
 }
 
 /**
