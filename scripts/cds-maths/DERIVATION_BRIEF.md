@@ -148,6 +148,20 @@ exactly the alternative the deriver had named and set aside — in both directio
 so this is a tendency and not a law. It costs a sentence and it turns the MED
 list into a ranked review queue rather than a pile.
 
+## Adjudicating a dispute
+
+When the crosstab shows a DISPUTE and you settle it by hand, override BOTH
+`answer` AND `value` on that row. The answers file is normally built by copying
+one pass wholesale and overriding the adjudicated rows; override only `answer`
+and the row keeps the OTHER pass's `value`, so it asserts one option in the
+letter field and a different one in plain words. That shipped on 2022-I Q5 --
+`answer: "D"` ("cannot be determined") beside `value: "45"` -- and was caught by
+a rewrite agent reading the row, not by any check.
+
+Append the adjudication to `reasoning` rather than replacing it. The losing
+pass's argument is the evidence for why the call was close, and a `reasoning`
+that reads as self-contradictory is the audit trail working, not a defect.
+
 ## Practical
 
 - Do not run `git add` or any git command.

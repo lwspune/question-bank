@@ -4,174 +4,399 @@
     "answer": "D",
     "value": "P = 8",
     "confidence": "HIGH",
-    "reasoning": "Brute-forced all ten digits: 4132838759387 = 13 x 317910673799 exactly, and the residues for P = 0..9 run 5,6,7,8,9,10,11,12,0,1, so P = 8 is the unique digit making the number divisible by 13."
+    "reasoning": "Brute-forced all ten digits: 4132838759387 = 13 x 317910673799 exactly, and the residues for P = 0..9 run 5,6,7,8,9,10,11,12,0,1, so P = 8 is the unique digit making the number divisible by 13.",
+    "solution": "Divisibility by \\(13\\) has to be tested on the whole number, so try each digit in turn. Taking \\(P=0,1,\\dots,9\\) the remainders on division by \\(13\\) run \\(5,6,7,8,9,10,11,12,0,1\\), so exactly one digit gives remainder \\(0\\). That digit is \\(P=8\\), and indeed \\(4132838759387 = 13 \\times 317910673799\\)."
   },
   {
     "number": 2,
     "answer": "B",
     "value": "2",
     "confidence": "HIGH",
-    "reasoning": "2^3 = 8 = 1 (mod 7), so the residue cycles with period 3; 1000000 = 3*333333 + 1, hence 2^1000000 = 2^1 = 2 (mod 7). Confirmed by pow(2,1000000,7) = 2."
+    "reasoning": "2^3 = 8 = 1 (mod 7), so the residue cycles with period 3; 1000000 = 3*333333 + 1, hence 2^1000000 = 2^1 = 2 (mod 7). Confirmed by pow(2,1000000,7) = 2.",
+    "solution": "Since \\(2^3 = 8\\) leaves remainder \\(1\\) on division by \\(7\\), the remainders of the powers of \\(2\\) repeat in a cycle of length \\(3\\). Now \\(1000000 = 3 \\times 333333 + 1\\), so \\(2^{1000000}\\) leaves the same remainder as \\(2^1\\). The remainder is therefore \\(2\\)."
   },
   {
     "number": 3,
     "answer": "A",
     "value": "Zero",
     "confidence": "HIGH",
-    "reasoning": "x/y + y/x = 2 multiplies out to x^2 + y^2 = 2xy, i.e. (x - y)^2 = 0, which forces x = y. Since x != y is required, no pair qualifies; an exhaustive scan of all ordered pairs from {2,3,6,8,9} returned 0."
+    "reasoning": "x/y + y/x = 2 multiplies out to x^2 + y^2 = 2xy, i.e. (x - y)^2 = 0, which forces x = y. Since x != y is required, no pair qualifies; an exhaustive scan of all ordered pairs from {2,3,6,8,9} returned 0.",
+    "solution": "Multiplying \\(\\frac{x}{y}+\\frac{y}{x}=2\\) through by \\(xy\\) gives \\(x^2+y^2=2xy\\), that is \\((x-y)^2=0\\). This forces \\(x=y\\), but the question requires \\(x \\ne y\\). Hence no such pair can be chosen from the set, and the number of pairs is zero."
   },
   {
     "number": 4,
     "answer": "D",
     "value": "5 pairs",
     "confidence": "HIGH",
-    "reasoning": "Primes strictly between 50 and 100 are 53,59,61,67,71,73,79,83,89,97. Those differing by 6: (59,53), (67,61), (73,67), (79,73), (89,83) - exactly 5, verified by exhaustive scan."
+    "reasoning": "Primes strictly between 50 and 100 are 53,59,61,67,71,73,79,83,89,97. Those differing by 6: (59,53), (67,61), (73,67), (79,73), (89,83) - exactly 5, verified by exhaustive scan.",
+    "solution": "The primes between \\(50\\) and \\(100\\) are \\(53, 59, 61, 67, 71, 73, 79, 83, 89, 97\\). Picking out those that differ by \\(6\\) gives \\((59,53)\\), \\((67,61)\\), \\((73,67)\\), \\((79,73)\\) and \\((89,83)\\). That is five pairs in all."
   },
   {
     "number": 5,
     "answer": "D",
     "value": "60",
     "confidence": "HIGH",
-    "reasoning": "Expanding a product of three sums with 3, 4 and 5 terms gives one term per choice from each bracket, all distinct since the a/b/c symbols are independent: 3 x 4 x 5 = 60."
+    "reasoning": "Expanding a product of three sums with 3, 4 and 5 terms gives one term per choice from each bracket, all distinct since the a/b/c symbols are independent: 3 x 4 x 5 = 60.",
+    "solution": "Each term of the expansion is formed by choosing exactly one symbol from each of the three brackets. Because the \\(a\\), \\(b\\) and \\(c\\) symbols are all different, no two choices can give the same term. The number of terms is therefore \\(3 \\times 4 \\times 5 = 60\\)."
   },
   {
     "number": 6,
     "answer": "A",
     "value": "0",
     "confidence": "HIGH",
-    "reasoning": "27 = 15 = 3 (mod 6), and 3^n = 3 (mod 6) for every n >= 1, so 27^27 - 15^27 = 3 - 3 = 0 (mod 6). Confirmed by exact big-integer computation."
+    "reasoning": "27 = 15 = 3 (mod 6), and 3^n = 3 (mod 6) for every n >= 1, so 27^27 - 15^27 = 3 - 3 = 0 (mod 6). Confirmed by exact big-integer computation.",
+    "solution": "Both \\(27\\) and \\(15\\) leave remainder \\(3\\) when divided by \\(6\\), and any power \\(3^n\\) with \\(n \\ge 1\\) also leaves remainder \\(3\\), since \\(3^2 = 9\\) leaves remainder \\(3\\) and the pattern then repeats. So \\(27^{27}\\) and \\(15^{27}\\) leave the same remainder as each other, and their difference leaves remainder \\(0\\)."
   },
   {
     "number": 7,
     "answer": "D",
     "value": "All three statements 1, 2, 3 are correct",
     "confidence": "HIGH",
-    "reasoning": "Substituting c = -(a+b) and simplifying gives residual 0 for all three: a^3+b^3+c^3-3abc = 0 (the standard identity), (a+b+c)^2 = 0 gives a^2+b^2+c^2 = -2(ab+bc+ca), and 3abc = 3ab(-(a+b)) = -3ab(a+b) so statement 3 is statement 1 rewritten."
+    "reasoning": "Substituting c = -(a+b) and simplifying gives residual 0 for all three: a^3+b^3+c^3-3abc = 0 (the standard identity), (a+b+c)^2 = 0 gives a^2+b^2+c^2 = -2(ab+bc+ca), and 3abc = 3ab(-(a+b)) = -3ab(a+b) so statement 3 is statement 1 rewritten.",
+    "solution": "Squaring \\(a+b+c=0\\) gives \\(a^2+b^2+c^2+2(ab+bc+ca)=0\\), which is statement 2. The identity \\(a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)\\) has the factor \\(a+b+c=0\\), so \\(a^3+b^3+c^3=3abc\\), which is statement 1. Finally \\(c=-(a+b)\\) turns \\(3abc\\) into \\(-3ab(a+b)\\), so statement 3 is just statement 1 rewritten, and all three are correct."
   },
   {
     "number": 8,
     "answer": "B",
     "value": "1",
     "confidence": "HIGH",
-    "reasoning": "Rationalising gives p = (3q + sqrt(9q^2-4))/2, so 2p - 3q = sqrt(9q^2-4); squaring gives 4p^2 - 12pq + 9q^2 = 9q^2 - 4, i.e. p^2 - 3pq = -1 and p^2 - 3pq + 2 = 1. Sympy returns 1 symbolically and at q = 1, 2, 5, 7/3."
+    "reasoning": "Rationalising gives p = (3q + sqrt(9q^2-4))/2, so 2p - 3q = sqrt(9q^2-4); squaring gives 4p^2 - 12pq + 9q^2 = 9q^2 - 4, i.e. p^2 - 3pq = -1 and p^2 - 3pq + 2 = 1. Sympy returns 1 symbolically and at q = 1, 2, 5, 7/3.",
+    "solution": "Multiplying numerator and denominator by \\(\\sqrt{3q+2}+\\sqrt{3q-2}\\) gives \\(p=\\dfrac{3q+\\sqrt{9q^2-4}}{2}\\), so that \\(2p-3q=\\sqrt{9q^2-4}\\). Squaring both sides, \\(4p^2-12pq+9q^2=9q^2-4\\), which reduces to \\(p^2-3pq=-1\\). Therefore \\(p^2-3pq+2=1\\)."
   },
   {
     "number": 9,
     "answer": "A",
     "value": "1",
     "confidence": "HIGH",
-    "reasoning": "Only the unit digit 7 matters; powers of 7 cycle 7,9,3,1 with period 4 and 32 = 0 (mod 4), so the unit digit is 1. Confirmed by exact computation of 67^32 mod 10 = 1."
+    "reasoning": "Only the unit digit 7 matters; powers of 7 cycle 7,9,3,1 with period 4 and 32 = 0 (mod 4), so the unit digit is 1. Confirmed by exact computation of 67^32 mod 10 = 1.",
+    "solution": "The unit digit of a power depends only on the unit digit of the base, here \\(7\\). The unit digits of \\(7^1, 7^2, 7^3, 7^4\\) are \\(7, 9, 3, 1\\), and then the pattern repeats every four steps. Since \\(32\\) is a multiple of \\(4\\), the unit digit of \\(67^{32}\\) is \\(1\\)."
   },
   {
     "number": 10,
     "answer": "C",
     "value": "x = 2ab/(a+1)^2",
     "confidence": "HIGH",
-    "reasoning": "Writing s = sqrt(b^2-2bx), (b+s)/(b-s) = a gives s = b(a-1)/(a+1); squaring, b^2 - 2bx = b^2(a-1)^2/(a+1)^2, so 2bx = b^2 * 4a/(a+1)^2 and x = 2ab/(a+1)^2. Sympy's solve returns exactly 2*a*b/(a+1)**2."
+    "reasoning": "Writing s = sqrt(b^2-2bx), (b+s)/(b-s) = a gives s = b(a-1)/(a+1); squaring, b^2 - 2bx = b^2(a-1)^2/(a+1)^2, so 2bx = b^2 * 4a/(a+1)^2 and x = 2ab/(a+1)^2. Sympy's solve returns exactly 2*a*b/(a+1)**2.",
+    "solution": "Write \\(s=\\sqrt{b^2-2bx}\\), so that \\(\\dfrac{b+s}{b-s}=a\\) gives \\(b+s=ab-as\\) and hence \\(s=\\dfrac{b(a-1)}{a+1}\\). Squaring, \\(b^2-2bx=\\dfrac{b^2(a-1)^2}{(a+1)^2}\\), so \\(2bx=b^2\\left[\\dfrac{(a+1)^2-(a-1)^2}{(a+1)^2}\\right]=\\dfrac{4ab^2}{(a+1)^2}\\). Dividing by \\(2b\\) gives \\(x=\\dfrac{2ab}{(a+1)^2}\\)."
   },
   {
     "number": 11,
     "answer": "B",
     "value": "(x - 2)",
     "confidence": "HIGH",
-    "reasoning": "x^3-1 = (x-1)(x^2+x+1), x^2-9x+14 = (x-2)(x-7), x^2-8x+7 = (x-1)(x-7); cancelling (x^2+x+1), (x-1) and (x-7) leaves (x-2). Sympy simplify returns x - 2."
+    "reasoning": "x^3-1 = (x-1)(x^2+x+1), x^2-9x+14 = (x-2)(x-7), x^2-8x+7 = (x-1)(x-7); cancelling (x^2+x+1), (x-1) and (x-7) leaves (x-2). Sympy simplify returns x - 2.",
+    "solution": "Factorise each piece: \\(x^3-1=(x-1)(x^2+x+1)\\), \\(x^2-9x+14=(x-2)(x-7)\\) and \\(x^2-8x+7=(x-1)(x-7)\\). The expression becomes \\(\\dfrac{(x-1)(x^2+x+1)(x-2)(x-7)}{(x^2+x+1)(x-1)(x-7)}\\). Cancelling the common factors leaves \\((x-2)\\)."
   },
   {
     "number": 12,
     "answer": "A",
     "value": "1/(x^2 - 7x + 12)",
     "confidence": "HIGH",
-    "reasoning": "Since x^2-5x+6 = (x-2)(x-3), the required addend is (2x-5)/((x-2)(x-3)(x-4)) - 1/((x-2)(x-4)) = [(2x-5)-(x-3)]/((x-2)(x-3)(x-4)) = (x-2)/((x-2)(x-3)(x-4)) = 1/((x-3)(x-4)) = 1/(x^2-7x+12). Sympy confirms the denominator factors as (x-4)(x-3)."
+    "reasoning": "Since x^2-5x+6 = (x-2)(x-3), the required addend is (2x-5)/((x-2)(x-3)(x-4)) - 1/((x-2)(x-4)) = [(2x-5)-(x-3)]/((x-2)(x-3)(x-4)) = (x-2)/((x-2)(x-3)(x-4)) = 1/((x-3)(x-4)) = 1/(x^2-7x+12). Sympy confirms the denominator factors as (x-4)(x-3).",
+    "solution": "Since \\(x^2-5x+6=(x-2)(x-3)\\), the target expression is \\(\\dfrac{2x-5}{(x-2)(x-3)(x-4)}\\). Writing \\(\\dfrac{1}{(x-2)(x-4)}=\\dfrac{x-3}{(x-2)(x-3)(x-4)}\\) and subtracting gives \\(\\dfrac{(2x-5)-(x-3)}{(x-2)(x-3)(x-4)}=\\dfrac{x-2}{(x-2)(x-3)(x-4)}\\). Cancelling \\((x-2)\\) leaves \\(\\dfrac{1}{(x-3)(x-4)}=\\dfrac{1}{x^2-7x+12}\\)."
   },
   {
     "number": 13,
     "answer": "C",
     "value": "0",
     "confidence": "HIGH",
-    "reasoning": "Solving the two equations gives x = a^2 and y = b^2 (sympy), so x/a^2 = y/b^2 = 1 and the difference is 0. By hand: with u = x/a^2, v = y/b^2 the equations become au + bv = a+b and u+v = 2, giving u(a-b) = a-b so u = v = 1."
+    "reasoning": "Solving the two equations gives x = a^2 and y = b^2 (sympy), so x/a^2 = y/b^2 = 1 and the difference is 0. By hand: with u = x/a^2, v = y/b^2 the equations become au + bv = a+b and u+v = 2, giving u(a-b) = a-b so u = v = 1.",
+    "solution": "Put \\(u=\\dfrac{x}{a^2}\\) and \\(v=\\dfrac{y}{b^2}\\), so that \\(\\dfrac{x}{a}=au\\) and \\(\\dfrac{y}{b}=bv\\). The two given equations become \\(au+bv=a+b\\) and \\(u+v=2\\); substituting \\(v=2-u\\) into the first gives \\(u(a-b)=a-b\\), so \\(u=1\\) and \\(v=1\\). Hence \\(\\dfrac{x}{a^2}-\\dfrac{y}{b^2}=1-1=0\\)."
   },
   {
     "number": 14,
     "answer": "B",
     "value": "k = (d - b)/(a - c)",
     "confidence": "HIGH",
-    "reasoning": "(x-k) divides both quadratics means k^2+ak+b = 0 and k^2+ck+d = 0; subtracting, (a-c)k + (b-d) = 0, so k = (d-b)/(a-c), which is option B. Option A is its negative."
+    "reasoning": "(x-k) divides both quadratics means k^2+ak+b = 0 and k^2+ck+d = 0; subtracting, (a-c)k + (b-d) = 0, so k = (d-b)/(a-c), which is option B. Option A is its negative.",
+    "solution": "If \\((x-k)\\) is a common factor then \\(k\\) is a root of both quadratics, so \\(k^2+ak+b=0\\) and \\(k^2+ck+d=0\\). Subtracting the second from the first eliminates \\(k^2\\) and gives \\((a-c)k+(b-d)=0\\). Hence \\(k=\\dfrac{d-b}{a-c}\\)."
   },
   {
     "number": 15,
     "answer": "C",
     "value": "Both statements 1 and 2 are correct",
     "confidence": "HIGH",
-    "reasoning": "With x = k1*z and y = k2*z, x^2 - y^2 = (k1^2 - k2^2)z^2, a constant times z^2. With x = k1/z and y = k2/z, xy = k1k2/z^2, i.e. inversely proportional to z^2. Both hold (the only exception in 1 is the degenerate k1 = k2 case, which both options treat alike)."
+    "reasoning": "With x = k1*z and y = k2*z, x^2 - y^2 = (k1^2 - k2^2)z^2, a constant times z^2. With x = k1/z and y = k2/z, xy = k1k2/z^2, i.e. inversely proportional to z^2. Both hold (the only exception in 1 is the degenerate k1 = k2 case, which both options treat alike).",
+    "solution": "For the first statement, \\(x=k_1z\\) and \\(y=k_2z\\) give \\(x^2-y^2=(k_1^2-k_2^2)z^2\\), a fixed multiple of \\(z^2\\), so \\(x^2-y^2\\) varies directly as \\(z^2\\). For the second, \\(x=\\dfrac{k_1}{z}\\) and \\(y=\\dfrac{k_2}{z}\\) give \\(xy=\\dfrac{k_1k_2}{z^2}\\), so \\(xy\\) varies inversely as \\(z^2\\). Both statements are therefore correct."
   },
   {
     "number": 16,
     "answer": "D",
     "value": "(x - 3)(x - 2)",
     "confidence": "HIGH",
-    "reasoning": "x^3-19x+30 factors as (x-3)(x-2)(x+5) and x^2-5x+6 as (x-3)(x-2), so the whole of the second polynomial is the HCF: (x-3)(x-2). Verified with sympy factor."
+    "reasoning": "x^3-19x+30 factors as (x-3)(x-2)(x+5) and x^2-5x+6 as (x-3)(x-2), so the whole of the second polynomial is the HCF: (x-3)(x-2). Verified with sympy factor.",
+    "solution": "Testing \\(x=2\\) and \\(x=3\\) in \\(x^3-19x+30\\) gives \\(0\\) in both cases, so \\(x^3-19x+30=(x-2)(x-3)(x+5)\\). The second polynomial factorises as \\(x^2-5x+6=(x-2)(x-3)\\). Since it divides the cubic completely, the HCF is \\((x-3)(x-2)\\)."
   },
   {
     "number": 17,
     "answer": "A",
     "value": "0",
     "confidence": "HIGH",
-    "reasoning": "(x+1)/(x-1) - (x-1)/(x+1) = 4x/(x^2-1); combining with -4x/(x^2+1) gives 8x/(x^4-1), which cancels the leading 8x/(1-x^4). Sympy simplify returns 0, and direct substitution at x = 3 and x = 5 gives 0."
+    "reasoning": "(x+1)/(x-1) - (x-1)/(x+1) = 4x/(x^2-1); combining with -4x/(x^2+1) gives 8x/(x^4-1), which cancels the leading 8x/(1-x^4). Sympy simplify returns 0, and direct substitution at x = 3 and x = 5 gives 0.",
+    "solution": "Combine the last two terms: \\(\\dfrac{x+1}{x-1}-\\dfrac{x-1}{x+1}=\\dfrac{(x+1)^2-(x-1)^2}{x^2-1}=\\dfrac{4x}{x^2-1}\\). Subtracting \\(\\dfrac{4x}{x^2+1}\\) from this gives \\(4x\\left[\\dfrac{1}{x^2-1}-\\dfrac{1}{x^2+1}\\right]=\\dfrac{8x}{x^4-1}\\). This is exactly the negative of the first term \\(\\dfrac{8x}{1-x^4}\\), so the whole expression is \\(0\\)."
   },
   {
     "number": 18,
     "answer": "C",
     "value": "x = 2",
     "confidence": "HIGH",
-    "reasoning": "Sympy gives the two roots x = 2 and x = 192/43; only x = 2 is an integer. Checked directly with exact fractions: at x = 2 the nested fraction evaluates to 12/(7 - 6/(7-1)) = 12/6 = 2, while x = 1, 3, 4 give 300/151, 132/65 and 24/11."
+    "reasoning": "Sympy gives the two roots x = 2 and x = 192/43; only x = 2 is an integer. Checked directly with exact fractions: at x = 2 the nested fraction evaluates to 12/(7 - 6/(7-1)) = 12/6 = 2, while x = 1, 3, 4 give 300/151, 132/65 and 24/11.",
+    "solution": "Clearing the nested denominators reduces the equation to a quadratic whose roots are \\(x=2\\) and \\(x=\\dfrac{192}{43}\\), and only the first is an integer. Checking \\(x=2\\) directly: the innermost fraction is \\(\\dfrac{3}{5-2}=1\\), so the next level is \\(\\dfrac{6}{7-1}=1\\), and the whole expression is \\(\\dfrac{12}{7-1}=2\\). The other integer choices give \\(\\dfrac{300}{151}\\), \\(\\dfrac{132}{65}\\) and \\(\\dfrac{24}{11}\\), none of which equals \\(x\\)."
   },
   {
     "number": 19,
     "answer": "A",
     "value": "k = x^2 - 3x + 1",
     "confidence": "HIGH",
-    "reasoning": "Pairing x(x-3) and (x-1)(x-2) gives t(t+2)+1 with t = x^2-3x, i.e. (t+1)^2 = (x^2-3x+1)^2. Sympy factors x(x-1)(x-2)(x-3)+1 as exactly (x**2 - 3*x + 1)**2."
+    "reasoning": "Pairing x(x-3) and (x-1)(x-2) gives t(t+2)+1 with t = x^2-3x, i.e. (t+1)^2 = (x^2-3x+1)^2. Sympy factors x(x-1)(x-2)(x-3)+1 as exactly (x**2 - 3*x + 1)**2.",
+    "solution": "Pair the outer and inner factors: \\(\\big[x(x-3)\\big]\\big[(x-1)(x-2)\\big]=(x^2-3x)(x^2-3x+2)\\). Writing \\(t=x^2-3x\\), the left side of the equation becomes \\(t(t+2)+1=t^2+2t+1=(t+1)^2\\). Hence \\(k^2=(x^2-3x+1)^2\\), so a possible expression for \\(k\\) is \\(x^2-3x+1\\)."
   },
   {
     "number": 20,
     "answer": "D",
     "value": "0",
     "confidence": "HIGH",
-    "reasoning": "Sympy's together/simplify collapses the sum to 0, and three discriminating numeric checks - (a,b,c) = (2,3,5), (1,4,7) and (1/2,3,-2) - each give exactly 0 while a+b+c and ab+bc+ca take three different non-zero values there, ruling out A and C."
+    "reasoning": "Sympy's together/simplify collapses the sum to 0, and three discriminating numeric checks - (a,b,c) = (2,3,5), (1,4,7) and (1/2,3,-2) - each give exactly 0 while a+b+c and ab+bc+ca take three different non-zero values there, ruling out A and C.",
+    "solution": "Put the three fractions over the common denominator \\(abc(a-b)(b-c)(c-a)\\); after adjusting signs the numerators become \\(a(b-c)+b(c-a)+c(a-b)\\), which is identically \\(0\\). So the whole expression equals \\(0\\) for every admissible \\(a, b, c\\). Substituting a sample such as \\((a,b,c)=(2,3,5)\\) gives \\(0\\), while \\(a+b+c=10\\) and \\(ab+bc+ca=31\\) there, so the value is genuinely \\(0\\) and not one of the symmetric expressions."
   },
   {
     "number": 21,
     "answer": "C",
     "value": "Two values (k = 2/3 and k = 6)",
     "confidence": "HIGH",
-    "reasoning": "6kx^2 + (12k-24)x + 16 is a perfect square exactly when its discriminant vanishes: (12k-24)^2 - 384k = 48(k-6)(3k-2) = 0, giving k = 6 and k = 2/3. Both check out: k = 2/3 gives 4(x-2)^2 and k = 6 gives 4(3x+2)^2. k = 0 fails (16 - 24x = -8 at x = 1). So two real values."
+    "reasoning": "6kx^2 + (12k-24)x + 16 is a perfect square exactly when its discriminant vanishes: (12k-24)^2 - 384k = 48(k-6)(3k-2) = 0, giving k = 6 and k = 2/3. Both check out: k = 2/3 gives 4(x-2)^2 and k = 6 gives 4(3x+2)^2. k = 0 fails (16 - 24x = -8 at x = 1). So two real values.",
+    "solution": "Collect the expression as \\(6kx^2+(12k-24)x+16\\); a quadratic is a perfect square exactly when its discriminant is zero. Here \\((12k-24)^2-4(6k)(16)=144k^2-960k+576=48(k-6)(3k-2)\\), which vanishes for \\(k=6\\) and \\(k=\\frac{2}{3}\\). Both work: \\(k=6\\) gives \\(4(3x+2)^2\\) and \\(k=\\frac{2}{3}\\) gives \\(4(x-2)^2\\), while \\(k=0\\) leaves \\(16-24x\\), which is \\(-8\\) at \\(x=1\\) and so not a square. There are two such real values."
   },
   {
     "number": 22,
     "answer": "B",
     "value": "255/16",
     "confidence": "HIGH",
-    "reasoning": "x + 1/x = 5/2 gives x = 2 or x = 1/2, so x^4 - 1/x^4 = 255/16 or -255/16. Only 255/16 is a printed option (the other candidates 195/16, 625/16 and 0 are unreachable). Cross-checked by identity: (x^2-1/x^2)(x^2+1/x^2) = (15/4)(17/4) = 255/16."
+    "reasoning": "x + 1/x = 5/2 gives x = 2 or x = 1/2, so x^4 - 1/x^4 = 255/16 or -255/16. Only 255/16 is a printed option (the other candidates 195/16, 625/16 and 0 are unreachable). Cross-checked by identity: (x^2-1/x^2)(x^2+1/x^2) = (15/4)(17/4) = 255/16.",
+    "solution": "From \\(x+\\dfrac{1}{x}=\\dfrac{5}{2}\\) we get \\(\\left(x-\\dfrac{1}{x}\\right)^2=\\left(x+\\dfrac{1}{x}\\right)^2-4=\\dfrac{9}{4}\\), so \\(x-\\dfrac{1}{x}=\\pm\\dfrac{3}{2}\\), and also \\(x^2+\\dfrac{1}{x^2}=\\dfrac{25}{4}-2=\\dfrac{17}{4}\\). Then \\(x^4-\\dfrac{1}{x^4}=\\left(x^2-\\dfrac{1}{x^2}\\right)\\left(x^2+\\dfrac{1}{x^2}\\right)=\\pm\\dfrac{15}{4}\\cdot\\dfrac{17}{4}=\\pm\\dfrac{255}{16}\\). The two roots are \\(x=2\\) and \\(x=\\frac12\\); the value \\(\\dfrac{255}{16}\\) (from \\(x=2\\)) is the one offered among the choices."
   },
   {
     "number": 23,
     "answer": "C",
     "value": "k = 0 and k = 12",
     "confidence": "HIGH",
-    "reasoning": "Equal roots require the discriminant (2k)^2 - 4*4*3k = 4k^2 - 48k = 4k(k-12) to vanish, giving k = 0 and k = 12. Sympy returns [0, 12]. k = 0 does give the equal (double) root x = 0 of 4x^2 = 0."
+    "reasoning": "Equal roots require the discriminant (2k)^2 - 4*4*3k = 4k^2 - 48k = 4k(k-12) to vanish, giving k = 0 and k = 12. Sympy returns [0, 12]. k = 0 does give the equal (double) root x = 0 of 4x^2 = 0.",
+    "solution": "Equal roots mean the discriminant of \\(4x^2-2kx+3k\\) is zero: \\((-2k)^2-4(4)(3k)=4k^2-48k=4k(k-12)\\). Setting this to \\(0\\) gives \\(k=0\\) and \\(k=12\\). Both are genuine: \\(k=0\\) reduces the equation to \\(4x^2=0\\) with the repeated root \\(x=0\\), and \\(k=12\\) gives \\(4x^2-24x+36=4(x-3)^2\\)."
   },
   {
     "number": 24,
     "answer": "B",
     "value": "p + q = 7",
     "confidence": "HIGH",
-    "reasoning": "Sum of roots 6/p = 6 gives p = 1; product q/p = 6 then gives q = 6, so p + q = 7. Sympy's simultaneous solve returns {p: 1, q: 6}."
+    "reasoning": "Sum of roots 6/p = 6 gives p = 1; product q/p = 6 then gives q = 6, so p + q = 7. Sympy's simultaneous solve returns {p: 1, q: 6}.",
+    "solution": "For \\(px^2-6x+q=0\\) the sum of the roots is \\(\\dfrac{6}{p}\\) and the product is \\(\\dfrac{q}{p}\\). Setting \\(\\dfrac{6}{p}=6\\) gives \\(p=1\\), and then \\(\\dfrac{q}{1}=6\\) gives \\(q=6\\). Hence \\(p+q=7\\)."
   },
   {
     "number": 25,
     "answer": "C",
     "value": "Both (2x + 1) and (2x - 1)",
     "confidence": "HIGH",
-    "reasoning": "Grouping, 4x^3+12x^2-x-3 = 4x^2(x+3) - (x+3) = (x+3)(4x^2-1) = (x+3)(2x-1)(2x+1). Sympy factor confirms both linear factors are present."
+    "reasoning": "Grouping, 4x^3+12x^2-x-3 = 4x^2(x+3) - (x+3) = (x+3)(4x^2-1) = (x+3)(2x-1)(2x+1). Sympy factor confirms both linear factors are present.",
+    "solution": "Group the terms in pairs: \\(4x^3+12x^2-x-3=4x^2(x+3)-(x+3)=(x+3)(4x^2-1)\\). The second bracket is a difference of squares, \\(4x^2-1=(2x-1)(2x+1)\\). So the cubic is \\((x+3)(2x-1)(2x+1)\\) and is divisible by both \\((2x+1)\\) and \\((2x-1)\\)."
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "value": "5/6 (change of 1/18)",
+    "confidence": "HIGH",
+    "reasoning": "Exact fraction arithmetic: 2/3 -> 5/6 changes by 1/6 = 0.16667; 3/4 -> 6/7 by 3/28 = 0.10714; 4/5 -> 7/8 by 3/40 = 0.075; 5/6 -> 8/9 by 1/18 = 0.05556. The smallest change is on 5/6.",
+    "solution": "Adding \\(3\\) to both parts turns \\(\\frac{2}{3}\\) into \\(\\frac{5}{6}\\), \\(\\frac{3}{4}\\) into \\(\\frac{6}{7}\\), \\(\\frac{4}{5}\\) into \\(\\frac{7}{8}\\) and \\(\\frac{5}{6}\\) into \\(\\frac{8}{9}\\). The corresponding increases are \\(\\frac{1}{6}\\), \\(\\frac{3}{28}\\), \\(\\frac{3}{40}\\) and \\(\\frac{1}{18}\\). The smallest of these is \\(\\frac{1}{18}\\approx 0.056\\), so \\(\\frac{5}{6}\\) changes least."
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "value": "p - 3",
+    "confidence": "HIGH",
+    "reasoning": "With 3k boys averaging (p+1) and k girls averaging g, total marks give 3k(p+1) + kg = 4kp, so 3p + 3 + g = 4p and g = p - 3. Sympy solve returns [p - 3].",
+    "solution": "Let there be \\(3k\\) boys and \\(k\\) girls, and let the girls' average be \\(g\\). Equating total marks, \\(3k(p+1)+kg=4kp\\), which simplifies to \\(3p+3+g=4p\\). Hence \\(g=p-3\\)."
+  },
+  {
+    "number": 28,
+    "answer": "A",
+    "value": "56 : 99 : 69",
+    "confidence": "HIGH",
+    "reasoning": "Incomes 7x, 9x, 12x and expenditures 8y, 9y, 15y. A's saving = income/4 gives 7x - 8y = 7x/4, so y = 21x/32. Savings are then 56x/32, 99x/32, 69x/32, i.e. 56 : 99 : 69 (sympy-confirmed).",
+    "solution": "Take the incomes as \\(7x, 9x, 12x\\) and the expenditures as \\(8y, 9y, 15y\\). Since \\(A\\) saves a quarter of his income, \\(7x-8y=\\frac{7x}{4}\\), which gives \\(8y=\\frac{21x}{4}\\) and so \\(y=\\frac{21x}{32}\\). The three savings are then \\(\\frac{56x}{32}\\), \\(9x-\\frac{189x}{32}=\\frac{99x}{32}\\) and \\(12x-\\frac{315x}{32}=\\frac{69x}{32}\\), i.e. in the ratio \\(56:99:69\\)."
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "value": "30 m/s",
+    "confidence": "HIGH",
+    "reasoning": "To clear a platform the train covers its own length plus the platform length: 200 + 100 = 300 m in 10 s, giving 30 m/s.",
+    "solution": "To pass a platform completely, the train must cover its own length plus the length of the platform, that is \\(200+100=300\\) m. It does this in \\(10\\) seconds. So the speed is \\(\\frac{300}{10}=30\\) m/s."
+  },
+  {
+    "number": 30,
+    "answer": "B",
+    "value": "n = 99",
+    "confidence": "HIGH",
+    "reasoning": "Telescoping: sum = 1 - 1/(n+1) = n/(n+1). Setting n/(n+1) = 99/100 gives n = 99, and summing the 99 exact fractions returns 99/100.",
+    "solution": "Each term splits as \\(\\frac{1}{r(r+1)}=\\frac{1}{r}-\\frac{1}{r+1}\\), so the series telescopes to \\(1-\\frac{1}{n+1}=\\frac{n}{n+1}\\). Setting \\(\\frac{n}{n+1}=\\frac{99}{100}\\) gives \\(100n=99n+99\\). Hence \\(n=99\\)."
+  },
+  {
+    "number": 31,
+    "answer": "B",
+    "value": "31.6%",
+    "confidence": "HIGH",
+    "reasoning": "Successive discounts multiply the surviving fractions: 0.80 x 0.90 x 0.95 = 0.684 exactly (171/250), so the overall discount is 31.6%.",
+    "solution": "Successive discounts multiply the fractions of the price that survive: \\(0.80\\times0.90\\times0.95=0.684\\). So the customer pays \\(68.4\\%\\) of the marked price. The overall discount is \\(100\\%-68.4\\%=31.6\\%\\)."
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "value": "Rs. 2,000",
+    "confidence": "HIGH",
+    "reasoning": "The extra interest is due only to the extra 5% over 5 years: P*5*5/100 = P/4 = 500, so P = 2000. Sympy solve returns [2000]; the unknown original rate cancels.",
+    "solution": "The extra earnings come only from the additional \\(5\\%\\) acting for \\(5\\) years, so the original rate cancels out. That extra interest is \\(\\frac{P\\times 5\\times 5}{100}=\\frac{P}{4}\\). Setting \\(\\frac{P}{4}=500\\) gives \\(P=2000\\), so the principal is Rs. \\(2{,}000\\)."
+  },
+  {
+    "number": 33,
+    "answer": "D",
+    "value": "Rs. 5,000",
+    "confidence": "HIGH",
+    "reasoning": "For 2 years, CI - SI = P(r/100)^2 = P(0.12)^2 = 0.0144P = 72, so P = 5000. Sympy solve of P((1.12)^2 - 1) - 0.24P = 72 returns [5000].",
+    "solution": "For two years the gap between compound and simple interest is exactly one year's interest on the first year's interest, namely \\(P\\left(\\frac{r}{100}\\right)^2\\). Here that is \\(P(0.12)^2=0.0144P\\). Setting \\(0.0144P=72\\) gives \\(P=5000\\), so the principal is Rs. \\(5{,}000\\)."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "100 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "Average speed is total distance over total time: (600+900)/(5+10) = 1500/15 = 100 km/hr. (The mean of the two leg speeds, 120 and 90, would be 105 - not what average speed means.)",
+    "solution": "Average speed is total distance divided by total time, not the average of the two separate speeds. The train covers \\(600+900=1500\\) km in \\(5+10=15\\) hours. So the average speed is \\(\\frac{1500}{15}=100\\) km/hr."
+  },
+  {
+    "number": 35,
+    "answer": "A",
+    "value": "48 minutes",
+    "confidence": "HIGH",
+    "reasoning": "Speed multiplied by 4/5 means time multiplied by 5/4, so the delay is 1/4 of the usual time: T/4 = 12, T = 48 minutes. Sympy solve returns [48].",
+    "solution": "Walking at \\(\\frac{4}{5}\\) of the usual speed makes the journey take \\(\\frac{5}{4}\\) of the usual time, since time varies inversely as speed. The extra \\(\\frac{1}{4}\\) of the usual time is the \\(12\\) minutes by which he is late. Hence the usual time is \\(4\\times 12=48\\) minutes."
+  },
+  {
+    "number": 36,
+    "answer": "D",
+    "value": "25%",
+    "confidence": "HIGH",
+    "reasoning": "Taking the cost price of one mango as 1, the selling price of 80 equals 100, so SP per mango = 100/80 = 1.25. Profit is 0.25 on a cost of 1, i.e. 25%.",
+    "solution": "Take the cost price of one mango as \\(1\\), so \\(100\\) mangoes cost \\(100\\). This equals the selling price of \\(80\\) mangoes, so each is sold for \\(\\frac{100}{80}=1.25\\). The profit per mango is \\(0.25\\) on a cost of \\(1\\), that is \\(25\\%\\)."
+  },
+  {
+    "number": 37,
+    "answer": "B",
+    "value": "40%",
+    "confidence": "HIGH",
+    "reasoning": "Set Y = 100. X is 25% cheaper than Y so X = 75; X is 25% dearer than Z so 75 = 1.25Z and Z = 60. Z is 40 below Y on a base of 100, i.e. 40% cheaper.",
+    "solution": "Let \\(Y\\)'s price be \\(100\\). Being \\(25\\%\\) cheaper, \\(X=75\\); and since \\(X\\) is \\(25\\%\\) dearer than \\(Z\\), \\(75=1.25Z\\) so \\(Z=60\\). Comparing \\(Z\\) with \\(Y\\), the shortfall is \\(100-60=40\\) on a base of \\(100\\). So \\(Z\\)'s goods are \\(40\\%\\) cheaper than \\(Y\\)'s."
+  },
+  {
+    "number": 38,
+    "answer": "B",
+    "value": "20 litres",
+    "confidence": "HIGH",
+    "reasoning": "The 80 litres hold 20 litres of liquid, unchanged by adding water. Solving 20/(80+w) = 0.20 gives 80 + w = 100 and w = 20 (sympy confirms [20]).",
+    "solution": "The mixture holds \\(25\\%\\) of \\(80=20\\) litres of liquid, and adding water leaves that amount unchanged. If \\(w\\) litres of water are added, the liquid becomes \\(\\frac{20}{80+w}\\) of the mixture, and we need this to equal \\(\\frac{20}{100}\\). So \\(80+w=100\\), giving \\(w=20\\) litres."
+  },
+  {
+    "number": 39,
+    "answer": "C",
+    "value": "20 days",
+    "confidence": "HIGH",
+    "reasoning": "20 persons on 20 floors in 20 days means one person handles one floor in 20 days. 16 persons on 16 floors is again one floor per person, so still 20 days - the numbers change together and cancel.",
+    "solution": "If \\(20\\) persons clean \\(20\\) floors in \\(20\\) days, then each person is cleaning one floor, and that takes \\(20\\) days. With \\(16\\) persons and \\(16\\) floors it is again one floor per person. So the time is unchanged at \\(20\\) days."
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "value": "x = 8",
+    "confidence": "HIGH",
+    "reasoning": "Work is proportional to men x days, so y = (x-1)(x+1) and z = (x+2)(x-1). From 10y = 9z: 10x^2 - 10 = 9x^2 + 9x - 18, i.e. x^2 - 9x + 8 = 0, giving x = 1 or 8 (sympy). x = 1 makes (x-1) = 0 men, so x = 8.",
+    "solution": "Work done is proportional to (number of men) \\(\\times\\) (number of days), so \\(y=(x-1)(x+1)=x^2-1\\) and \\(z=(x+2)(x-1)=x^2+x-2\\). From \\(\\frac{y}{z}=\\frac{9}{10}\\) we get \\(10x^2-10=9x^2+9x-18\\), that is \\(x^2-9x+8=0\\), so \\(x=1\\) or \\(x=8\\). Since \\(x=1\\) would mean \\(x-1=0\\) men doing the work, the value is \\(x=8\\)."
+  },
+  {
+    "number": 41,
+    "answer": "A",
+    "value": "3 - 5 log_10 2",
+    "confidence": "HIGH",
+    "reasoning": "31.25 = 1000/32 = 10^3/2^5, so log = 3 - 5log2. Numerically log10(31.25) = 1.49485002 and 3 - 5log10(2) = 1.49485002; the other options give 2.398, 3.495 and 4.097.",
+    "solution": "Write \\(31.25=\\dfrac{1000}{32}=\\dfrac{10^3}{2^5}\\). Then \\(\\log_{10}31.25=\\log_{10}10^{3}-\\log_{10}2^{5}=3-5\\log_{10}2\\). Numerically this is \\(1.49485\\), which is indeed \\(\\log_{10}31.25\\)."
+  },
+  {
+    "number": 42,
+    "answer": "A",
+    "value": "\\(2\\sqrt{2}-\\sqrt{7}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Seek (sqrt a - sqrt b)^2 = a + b - 2 sqrt(ab) with a + b = 15, ab = 56, giving a = 8, b = 7. So the root is sqrt8 - sqrt7 = 2sqrt2 - sqrt7 = 0.18267581, matching sqrt(15 - 4sqrt14) = 0.18267581; the other options give -1.049, 1.227 and 0.504. Sympy nsimplify returns 2*sqrt(2) - sqrt(7).",
+    "solution": "Look for \\(15-4\\sqrt{14}\\) in the form \\((\\sqrt{a}-\\sqrt{b})^2=a+b-2\\sqrt{ab}\\), so \\(a+b=15\\) and \\(ab=56\\), giving \\(a=8\\) and \\(b=7\\). Hence \\(15-4\\sqrt{14}=(\\sqrt{8}-\\sqrt{7})^2\\), and its square root is \\(\\sqrt{8}-\\sqrt{7}=2\\sqrt{2}-\\sqrt{7}\\). Numerically both sides are \\(0.1827\\)."
+  },
+  {
+    "number": 43,
+    "answer": "C",
+    "value": "14",
+    "confidence": "HIGH",
+    "reasoning": "Alternate natural numbers differ by 2: 1/n + 1/(n+2) = 7/24 clears to 7n^2 - 34n - 48 = 0, whose positive root is n = 6 (sympy). The numbers are 6 and 8; check 1/6 + 1/8 = 7/24 exactly, and the sum is 14.",
+    "solution": "Alternate natural numbers differ by \\(2\\), so take them as \\(n\\) and \\(n+2\\), giving \\(\\frac{1}{n}+\\frac{1}{n+2}=\\frac{7}{24}\\). Clearing denominators leads to \\(7n^2-34n-48=0\\), whose only positive root is \\(n=6\\). The numbers are \\(6\\) and \\(8\\) — checking, \\(\\frac{1}{6}+\\frac{1}{8}=\\frac{7}{24}\\) — so their sum is \\(14\\)."
+  },
+  {
+    "number": 44,
+    "answer": "D",
+    "value": "Eight",
+    "confidence": "HIGH",
+    "reasoning": "5^(2n) - 1 = 25^n - 1 is divisible by 25 - 1 = 24 for all n, and n = 1 gives exactly 24, so the gcd across all n is 24 (computed over n = 1..6). 24 has divisors 1,2,3,4,6,8,12,24 - eight of them.",
+    "solution": "Since \\(5^{2n}-1=25^{n}-1\\) and \\(25^{n}-1\\) is always divisible by \\(25-1=24\\), every such number is a multiple of \\(24\\). Taking \\(n=1\\) gives exactly \\(24\\), so nothing larger can divide all of them. The divisors of \\(24\\) are \\(1, 2, 3, 4, 6, 8, 12, 24\\), which is eight natural numbers."
+  },
+  {
+    "number": 45,
+    "answer": "A",
+    "value": "3/(1 - log_10 2)",
+    "confidence": "HIGH",
+    "reasoning": "Taking log base 10: (x-3)log5 = 3log2, and log5 = 1 - log2, so x = 3 + 3log2/(1-log2) = 3/(1-log2). Sympy gives x = 3ln10/ln5 = 4.29202967, and 3/(1-log10 2) = 4.29202967; the other options give 2.306, 2.861 and 7.153.",
+    "solution": "Taking logarithms to base \\(10\\), \\((x-3)\\log_{10}5=\\log_{10}8=3\\log_{10}2\\). Since \\(\\log_{10}5=1-\\log_{10}2\\), this gives \\(x-3=\\dfrac{3\\log_{10}2}{1-\\log_{10}2}\\). Adding \\(3\\) and combining over the common denominator, \\(x=\\dfrac{3(1-\\log_{10}2)+3\\log_{10}2}{1-\\log_{10}2}=\\dfrac{3}{1-\\log_{10}2}\\approx 4.292\\)."
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "3sin^2 + 4cos^2 = 3(sin^2 + cos^2) + cos^2 = 3 + cos^2 theta, whose least value is 3 at cos theta = 0. Sympy minimum returns 3.",
+    "solution": "Rewrite the expression as \\(3(\\sin^2\\theta+\\cos^2\\theta)+\\cos^2\\theta=3+\\cos^2\\theta\\). Since \\(\\cos^2\\theta\\) can never be negative, the smallest value occurs when \\(\\cos\\theta=0\\). The least value is therefore \\(3\\)."
+  },
+  {
+    "number": 47,
+    "answer": "B",
+    "value": "0 <= k <= 0.5",
+    "confidence": "MED",
+    "reasoning": "sin.cos = (1/2)sin2theta, and as theta runs 0 to pi/2, 2theta runs 0 to pi so sin2theta covers exactly [0,1]; sympy minimum/maximum on [0, pi/2] give 0 and 1/2. The exact range is therefore 0 <= k <= 0.5. RUNNER-UP: the option '0 <= k <= 1', which is also a TRUE containment statement though not the exact range - it would win if 'correct' were read as merely 'true' rather than 'the precise range'. The word 'only' attached to the 0.5 option marks it as the exactness claim, and '0 < k < 1' is outright false since k = 0 is attained at both endpoints.",
+    "solution": "Since \\(\\sin\\theta\\cos\\theta=\\tfrac12\\sin 2\\theta\\), and \\(2\\theta\\) runs from \\(0\\) to \\(\\pi\\) as \\(\\theta\\) runs from \\(0\\) to \\(\\tfrac{\\pi}{2}\\), the quantity \\(\\sin 2\\theta\\) covers exactly \\([0,1]\\). So \\(k\\) takes every value in \\(0\\le k\\le 0.5\\) and no other, reaching \\(0.5\\) at \\(\\theta=\\tfrac{\\pi}{4}\\) and \\(0\\) at both endpoints. This rules out \\(0<k<1\\), since \\(k=0\\) does occur; and although the looser bound \\(0\\le k\\le 1\\) is a true statement, only \\(0\\le k\\le 0.5\\) is the exact range."
+  },
+  {
+    "number": 48,
+    "answer": "D",
+    "value": "Neither statement is correct (3/4 <= p <= 1)",
+    "confidence": "HIGH",
+    "reasoning": "With c = cos^2 theta in [0,1], p = 1 - c + c^2 = c^2 - c + 1. Sympy gives minimum 3/4 (at c = 1/2) and maximum 1 (at c = 0 or 1), so 3/4 <= p <= 1. p is never below 3/4 and never above 1, so both statements fail.",
+    "solution": "Put \\(c=\\cos^2\\theta\\), which lies in \\([0,1]\\); then \\(p=\\sin^2\\theta+\\cos^4\\theta=(1-c)+c^2=c^2-c+1\\). This quadratic has its minimum at \\(c=\\tfrac12\\), where \\(p=\\tfrac34\\), and its maximum at the endpoints \\(c=0\\) or \\(c=1\\), where \\(p=1\\). So \\(\\tfrac34\\le p\\le 1\\) always: \\(p\\) can neither be less than \\(\\tfrac34\\) nor more than \\(1\\), and neither statement is correct."
+  },
+  {
+    "number": 49,
+    "answer": null,
+    "value": "-2 (greatest 2, smallest -1)",
+    "confidence": "LOW",
+    "reasoning": "NO OPTION MATCHES. With s = sin x on [0,1] - which is what 0 <= x <= pi/2 gives - 2 - 2s - s^2 = 3 - (s+1)^2 is strictly decreasing, so greatest = 2 at s = 0 and smallest = -1 at s = 1; sympy maximum/minimum on [0,1] confirm 2 and -1. The ratio is -2, which is not among -3, -1, 1, 3. The intended answer is evidently -3, which needs s in [-1,1] (x in [-pi/2, pi/2] or unrestricted), where the maximum is 3 at s = -1. VERIFIED AGAINST THE PRINTED PAGE (source scan, page index 8): the paper really does print 0 <= x <= pi/2, so this is the paper's defect and not a transcription error. RUNNER-UP if a letter must be forced: the -3 option.",
+    "solution": "Write \\(s=\\sin x\\); for \\(0\\le x\\le\\frac{\\pi}{2}\\) this gives \\(s\\) in \\([0,1]\\). The expression is \\(2-2s-s^2=3-(s+1)^2\\), which decreases as \\(s\\) grows, so its greatest value is \\(2\\) (at \\(s=0\\)) and its least is \\(-1\\) (at \\(s=1\\)); the required ratio is therefore \\(-2\\). None of the printed choices is \\(-2\\), so as printed this question has no correct answer. The value \\(-3\\) would arise only if \\(\\sin x\\) were allowed to reach \\(-1\\), which the stated interval \\(0\\le x\\le\\frac{\\pi}{2}\\) does not permit."
+  },
+  {
+    "number": 50,
+    "answer": "A",
+    "value": "x = y",
+    "confidence": "HIGH",
+    "reasoning": "As a quadratic in x: x^2 - (2y sin^2 t)x + y^2 = 0 with discriminant 4y^2(sin^4 t - 1) <= 0. Real solutions therefore need it zero: either y = 0 (forcing x = 0) or sin^2 t = 1, which gives (x - y)^2 = 0. Both cases give x = y; checked at t = 0, pi/6, pi/4, pi/3 (all discriminants negative) and t = pi/2 (zero).",
+    "solution": "Treat the equation as a quadratic in \\(x\\): \\(x^2-(2y\\sin^2\\theta)x+y^2=0\\), whose discriminant is \\(4y^2\\sin^4\\theta-4y^2=4y^2(\\sin^4\\theta-1)\\). Since \\(\\sin^4\\theta\\le 1\\), this discriminant is never positive, so a real solution forces it to be zero. That happens either when \\(y=0\\), which then gives \\(x^2=0\\) and so \\(x=0\\), or when \\(\\sin^2\\theta=1\\), which reduces the equation to \\((x-y)^2=0\\). In every case \\(x=y\\)."
   }
 ]

@@ -1,0 +1,354 @@
+[
+  {
+    "number": 1,
+    "answer": "B",
+    "value": "x = 5",
+    "confidence": "HIGH",
+    "reasoning": "Let y be the infinite radical: y = sqrt(20 + y) gives y^2 - y - 20 = 0, (y-5)(y+4)=0, so y = 5 (positive root). Then x^2 - 20 = 5, x^2 = 25, x = 5."
+  },
+  {
+    "number": 2,
+    "answer": "D",
+    "value": "a + b + c + d = 0",
+    "confidence": "HIGH",
+    "reasoning": "Cross-multiplying (a+b)(d+a) = (c+d)(b+c) gives a^2 + ad + ab = c^2 + cb + cd, i.e. (a^2 - c^2) + (b+d)(a-c) = 0, i.e. (a-c)(a+b+c+d) = 0. Since a != c, a+b+c+d = 0."
+  },
+  {
+    "number": 3,
+    "answer": "A",
+    "value": "proportional to (a - b)",
+    "confidence": "HIGH",
+    "reasoning": "a^3+b^3 = k(a^2-b^2) means (a+b)(a^2-ab+b^2) = k(a+b)(a-b), so a^2-ab+b^2 = k(a-b), i.e. proportional to (a-b). Option (c) is printed as (a + ab + b) with no exponents; even under the probable intended reading a^2+ab+b^2 it is not proportional to a^2-ab+b^2, so A stands under either reading."
+  },
+  {
+    "number": 4,
+    "answer": "C",
+    "value": "10",
+    "confidence": "HIGH",
+    "reasoning": "Componendo-dividendo: sqrt(x+20)/sqrt(x-1) = (7+3)/(7-3) = 5/2, so (x+20)/(x-1) = 25/4, 4x+80 = 25x-25, x = 5. Then (x+20)(x-1) = 25*4 = 100 and its square root is 10."
+  },
+  {
+    "number": 5,
+    "answer": "C",
+    "value": "(x-y)(x^2+y^2) = x^3 - y^3 - x^2 y + x y^2",
+    "confidence": "HIGH",
+    "reasoning": "x^8-y^8 = (x-y)(x+y)(x^2+y^2)(x^4+y^4). The second expression groups as x^5(x^2+y^2) - y^5(x^2+y^2) = (x^2+y^2)(x^5-y^5) = (x^2+y^2)(x-y)(x^4+x^3y+x^2y^2+xy^3+y^4). Common factor is (x-y)(x^2+y^2) = x^3 - x^2 y + x y^2 - y^3, which is option C."
+  },
+  {
+    "number": 6,
+    "answer": "B",
+    "value": "k = 48",
+    "confidence": "HIGH",
+    "reasoning": "Sum of roots 14, product k. Sum of squares = 14^2 - 2k = 196 - 2k = 100, so k = 48."
+  },
+  {
+    "number": 7,
+    "answer": "A",
+    "value": "k = -1",
+    "confidence": "HIGH",
+    "reasoning": "x = -k is a root of both: k^2 - pk + q = 0 and k^2 - qk + p = 0. Subtracting gives (q-p)k + (q-p) = 0, i.e. (q-p)(k+1) = 0. Since p != q, k = -1."
+  },
+  {
+    "number": 8,
+    "answer": "B",
+    "value": "9",
+    "confidence": "HIGH",
+    "reasoning": "3G = 6S + 6 gives G = 2S + 2; 5S = 2G + 3 gives 5S = 4S + 7, so S = 7, G = 16. Check: 48 = 6*7 + 6 and 35 = 2*16 + 3, remainders 6 and 3 are less than the divisors 7 and 16. Difference 16 - 7 = 9."
+  },
+  {
+    "number": 9,
+    "answer": "A",
+    "value": "Only statement 1 is correct",
+    "confidence": "HIGH",
+    "reasoning": "The expression factors with (ab+bc+ca) as a factor: setting ab+bc+ca = 0 with a=1, b=2, c=-2/3 gives (8/3)^3 + 4(-5/3)^3 - 4/9 = 0. But a+b+c is not a factor: a=1, b=2, c=-3 satisfies a+b+c=0 yet the expression equals 125 - 256 - 9 = -140."
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "value": "1/(xyz)",
+    "confidence": "HIGH",
+    "reasoning": "Putting over a common denominator xyz(x-y)(y-z)(z-x) the numerator collapses to (x-y)(y-z)(z-x); checked at x=1,y=2,z=3: 1/2 - 1/2 + 1/6 = 1/6 = 1/(1*2*3)."
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "value": "Both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "x^4(y-z)+y^4(z-x)+z^4(x-y) = -(x-y)(y-z)(z-x)(x^2+y^2+z^2+xy+yz+zx), and the last factor = (1/2)[(x+y)^2+(y+z)^2+(z+x)^2] > 0 for distinct values. If x>y>z the triple product (x-y)(y-z)(z-x) is negative so the expression is positive; if x<y<z it is positive so the expression is negative. Both hold."
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "value": "x^2",
+    "confidence": "HIGH",
+    "reasoning": "Numerator = x^2(x^2-12)^2 = x^2 (x-2sqrt3)^2 (x+2sqrt3)^2. Denominator: x^2+4sqrt3 x+12 = (x+2sqrt3)^2, so denominator = (x+2sqrt3)^2 (x-2sqrt3)^2. The quotient is x^2."
+  },
+  {
+    "number": 13,
+    "answer": "B",
+    "value": "n = 9",
+    "confidence": "HIGH",
+    "reasoning": "n(1/45 + 1/40) + 23/40 = 1. 1/45+1/40 = 17/360 and 23/40 = 207/360, so 17n = 360 - 207 = 153, n = 9."
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "value": "420 additional persons",
+    "confidence": "HIGH",
+    "reasoning": "Quarter of the work costs 480*10*10 = 48000 person-hours, so the whole job is 192000 and the remaining three-quarters is 144000 person-hours. In 20 days at 8 h/day each person gives 160 hours, so 900 persons are needed; 900 - 480 = 420 extra."
+  },
+  {
+    "number": 15,
+    "answer": "B",
+    "value": "2 days",
+    "confidence": "HIGH",
+    "reasoning": "5(12w+16m) = 4(13w+24m) gives 60w+80m = 52w+96m, so w = 2m. Then 200m = 1, m = 1/200 and w = 1/100. 25w+50m = 1/4 + 1/4 = 1/2 per day, so 2 days."
+  },
+  {
+    "number": 16,
+    "answer": "C",
+    "value": "8 p.m.",
+    "confidence": "HIGH",
+    "reasoning": "By 2 p.m. the first train has run 8 h at 60 km/h = 480 km, leaving a gap of 840 km. Closing speed 60+80 = 140 km/h, so they meet 840/140 = 6 h after 2 p.m., i.e. 8 p.m."
+  },
+  {
+    "number": 17,
+    "answer": "C",
+    "value": "7 : 3",
+    "confidence": "HIGH",
+    "reasoning": "Taking each glass as 1 unit: alcohol 3/5 + 4/5 = 7/5, water 2/5 + 1/5 = 3/5. Ratio 7:3."
+  },
+  {
+    "number": 18,
+    "answer": "D",
+    "value": "y = 360x (x = 3/100, y = 54/5)",
+    "confidence": "HIGH",
+    "reasoning": "HCF of fractions = HCF(numerators)/LCM(denominators) = HCF(3,6,9,27)/LCM(5,25,20,50) = 3/100. LCM = LCM(3,6,9,27)/HCF(5,25,20,50) = 54/5. y/x = (54/5)(100/3) = 360."
+  },
+  {
+    "number": 19,
+    "answer": "C",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "x = 6a+2, y = 6b+3, so x - y = 6(a-b) - 1, which is congruent to 5 mod 6. Since x > y the difference is positive, so the remainder is 5."
+  },
+  {
+    "number": 20,
+    "answer": "C",
+    "value": "20 (the number is 45)",
+    "confidence": "HIGH",
+    "reasoning": "10a+b = 5(a+b) gives 5a = 4b, so a=4, b=5 and the number is 45. Product of digits = 4*5 = 20."
+  },
+  {
+    "number": 21,
+    "answer": "C",
+    "value": "Both statements are correct (60 odd factors, 720 even factors)",
+    "confidence": "HIGH",
+    "reasoning": "N = 12^6 * 3^8 * 5^3 = 2^12 * 3^14 * 5^3. Odd factors: (14+1)(3+1) = 60. Total factors: 13*15*4 = 780, so even factors = 780 - 60 = 720."
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "value": "abc = 1",
+    "confidence": "HIGH",
+    "reasoning": "Set each ratio = k. Then log a + log b + log c = k[(b-c)+(c-a)+(a-b)] = 0, so log(abc) = 0 and abc = 1."
+  },
+  {
+    "number": 23,
+    "answer": "B",
+    "value": "100 degrees",
+    "confidence": "HIGH",
+    "reasoning": "Hour hand at 4*30 + 40*0.5 = 140 degrees; minute hand at 40*6 = 240 degrees. Difference 100 degrees."
+  },
+  {
+    "number": 24,
+    "answer": "A",
+    "value": "12",
+    "confidence": "HIGH",
+    "reasoning": "995 + sqrt(x^2-12x+60) = 1000 gives sqrt(...) = 5, so x^2-12x+60 = 25, i.e. x^2-12x+35 = 0 with roots 5 and 7 (both valid). Sum = 12."
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "value": "Two of the three listed expressions are roots",
+    "confidence": "MED",
+    "reasoning": "Roots of qx^2-2px+q=0 are (p +/- sqrt(p^2-q^2))/q. Expression 2 is exactly the + root. Expression 1 rationalises to (2p + 2sqrt(p^2-q^2))/(2q), the same root. Expression 3, x = sqrt((p+q)/(p-q)), substituted gives 2pq/(p-q) = 2p sqrt((p+q)/(p-q)), which forces p^2 = 2q^2, not general, so it is not a root. Two of the three listed values satisfy the equation.",
+    "runnerUp": "A",
+    "runnerUpIf": "if 'values' is read as DISTINCT values - items 1 and 2 are the same number, so only one distinct value satisfies the equation, giving 'Only one value'."
+  },
+  {
+    "number": 26,
+    "answer": "A",
+    "value": "(x^2+x+1)(x^2-x+1)^2",
+    "confidence": "HIGH",
+    "reasoning": "p = x^4+x^2+1 = (x^2+x+1)(x^2-x+1) and q = (x^2-x+1)^2. LCM = p*q/GCD = (x^2+x+1)(x^2-x+1)^3/(x^2-x+1)... more directly, LCM of (x^2+x+1)(x^2-x+1) and (x^2-x+1)^2 is (x^2+x+1)(x^2-x+1)^2. Option D equals (x^2+x+1)(x^2-x+1)^3, which is too large."
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "value": "Both statements together are sufficient; the number is 99",
+    "confidence": "HIGH",
+    "reasoning": "Sum = 11(a+b). Statement 1 alone gives a+b divisible by 9, i.e. a+b = 9 or 18 - many numbers. Statement 2 alone gives a+b even - many numbers. Together a+b must be both even and a multiple of 9, so a+b = 18, forcing a=b=9 and the number 99. Unique, so both together are sufficient."
+  },
+  {
+    "number": 28,
+    "answer": "C",
+    "value": "Both together sufficient; (x,y) = (37,13) and 3x-2y = 85",
+    "confidence": "HIGH",
+    "reasoning": "481 = 13*37. Pairs with LCM 481 and x>y are (481,1), (481,13), (481,37), (37,13). Statement 1 (y>1) leaves three pairs giving 1417, 1369, 85 - not unique. Statement 2 (HCF 1) leaves (481,1) and (37,13) giving 1441 and 85 - not unique. Together only (37,13) survives, giving 3(37)-2(13) = 85."
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "value": "Statement 2 alone is sufficient (answer: No, it is not divisible)",
+    "confidence": "HIGH",
+    "reasoning": "Statement 1 does not decide: n=1 gives divisibility, n=2 does not. Statement 2 does decide: for even n, substituting x = -y into x^n + y^n gives 2y^n which is not identically zero, so x^n+y^n is never divisible by (x+y). A definite 'No' is a sufficient answer in data sufficiency."
+  },
+  {
+    "number": 30,
+    "answer": "C",
+    "value": "Both together sufficient; x<0 and y<0 so xy>0",
+    "confidence": "HIGH",
+    "reasoning": "Statement 1: x^8 >= 0 so x^8 y^9 < 0 forces y < 0 but leaves x's sign free - insufficient. Statement 2: y^10 > 0 so x^9 < 0 forces x < 0 but leaves y's sign free - insufficient. Together x<0 and y<0, so xy>0, a definite Yes."
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "value": "-43/27",
+    "confidence": "HIGH",
+    "reasoning": "Take d = 1. Then c = 7/6, b = 5c/4 = 35/24, a = 3b = 35/8. (d+a)/(d-a) = (1+35/8)/(1-35/8) = (43/8)/(-27/8) = -43/27."
+  },
+  {
+    "number": 32,
+    "answer": "B",
+    "value": "-6 < k < 2",
+    "confidence": "HIGH",
+    "reasoning": "For k != 3 the discriminant is k^2 + 4(k-3) = k^2+4k-12 = (k+6)(k-2); no real linear factors requires it negative, i.e. -6 < k < 2. (k = 3 gives the linear -3x-1, which does factor, and 3 lies outside the interval anyway.)"
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "value": "ad - bc = 0",
+    "confidence": "HIGH",
+    "reasoning": "bc+cd = 2bd means c is the harmonic mean of b and d; a+c = 2b means b is the arithmetic mean of a and c. Take b=1, d=3: c = 2*1*3/4 = 3/2, a = 2-3/2 = 1/2. Then ad-bc = 1.5-1.5 = 0 while ab-cd = -4, ac-bd = -2.25, ad+bc = 3. Confirmed again with b=2, d=6: c=3, a=1, ad-bc = 6-6 = 0."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "800 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "2800/(v-100) - 2800/v = 1/2 gives v^2 - 100v - 560000 = 0, so v = (100 + 1500)/2 = 800. Check: 2800/800 = 3.5 h and 2800/700 = 4 h, a 30-minute increase."
+  },
+  {
+    "number": 35,
+    "answer": "C",
+    "value": "8(a^3+b^3+c^3)",
+    "confidence": "HIGH",
+    "reasoning": "x+y+z = 2(a+b+c), so (x+y+z)^3 = 8(a+b+c)^3. Using (a+b+c)^3 = a^3+b^3+c^3+3(a+b)(b+c)(c+a), 8(a+b+c)^3 - 24(a+b)(b+c)(c+a) = 8(a^3+b^3+c^3). Checked at a=1,b=2,c=3: 1728 - 1440 = 288 = 8*36."
+  },
+  {
+    "number": 36,
+    "answer": "A",
+    "value": "ud/(u-v)",
+    "confidence": "HIGH",
+    "reasoning": "The gap d closes at relative speed (u-v), so the time to overtake is d/(u-v) and X's distance is u*d/(u-v)."
+  },
+  {
+    "number": 37,
+    "answer": "D",
+    "value": "q^2",
+    "confidence": "HIGH",
+    "reasoning": "With p = n - 1/n and q = n^2 - 1/n^2 = (n-1/n)(n+1/n) = p(n+1/n). Since (n+1/n)^2 = (n-1/n)^2 + 4 = p^2+4, q^2 = p^2(p^2+4) = p^4+4p^2."
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "value": "136",
+    "confidence": "HIGH",
+    "reasoning": "x = 2+sqrt2, x^2 = 6+4sqrt2, x^4 = 68+48sqrt2. Since (68+48sqrt2)(68-48sqrt2) = 4624-4608 = 16, 16/x^4 = 68-48sqrt2. Sum = 136."
+  },
+  {
+    "number": 39,
+    "answer": "C",
+    "value": "30/7 = 4 2/7 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "30/x = 30/y + 3 and 15/x = 30/y - 2. Subtracting gives 15/x = 5, x = 3, so 30/y = 10 - 3 = 7 and y = 30/7 = 4 and 2/7 km/hr. Check: 30/6 = 5 = 30/y - 2 = 7 - 2."
+  },
+  {
+    "number": 40,
+    "answer": "D",
+    "value": "C = Rs. 406.04, so C > Rs. 400",
+    "confidence": "HIGH",
+    "reasoning": "Quarterly rate 1%, four quarters: A = 10000(1.01)^4 = 10406.0401, so C = 406.04, which exceeds Rs. 400."
+  },
+  {
+    "number": 41,
+    "answer": "B",
+    "value": "3/2 (the other root is 8/3)",
+    "confidence": "HIGH",
+    "reasoning": "Group as 6(x^2 + 1/x^2) - 25(x - 1/x) + 12 = 0. With t = x - 1/x, x^2+1/x^2 = t^2+2, giving 6t^2 - 25t + 24 = 0, whose roots are t = 3/2 and t = 8/3. Of these only 3/2 is listed."
+  },
+  {
+    "number": 42,
+    "answer": "D",
+    "value": "82/9 (the other value is 17/4)",
+    "confidence": "HIGH",
+    "reasoning": "x^2 + 1/x^2 = t^2 + 2 where t = x - 1/x is 3/2 or 8/3 from the same quadratic 6t^2-25t+24 = 0. These give 9/4+2 = 17/4 and 64/9+2 = 82/9; only 82/9 is listed."
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "9^2+12^2 = 225 = 15^2, so the triangle is right-angled at C with AB the hypotenuse. cos A = 12/15 = 4/5, cos B = 9/15 = 3/5, cos C = 0. Sum of squares = 16/25 + 9/25 + 0 = 1."
+  },
+  {
+    "number": 44,
+    "answer": "A",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "sin A = 3/5, sin B = 4/5, sin C = 1 (right angle at C). Sum of squares = 9/25 + 16/25 + 1 = 2. Equivalently 3 - (cos^2 sum) = 3 - 1 = 2."
+  },
+  {
+    "number": 45,
+    "answer": "C",
+    "value": "7.5 cm",
+    "confidence": "HIGH",
+    "reasoning": "The triangle is right-angled at C, so AB = 15 cm is a diameter of the circumscribing circle and the radius is 7.5 cm."
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "value": "60 degrees",
+    "confidence": "HIGH",
+    "reasoning": "P is H above the lake and the cloud is 2H above it, so the cloud is H above P; with elevation 30 degrees the horizontal distance is H*sqrt3. The reflection lies 2H below the lake, i.e. 3H below P, so tan(theta) = 3H/(H sqrt3) = sqrt3 and theta = 60 degrees."
+  },
+  {
+    "number": 47,
+    "answer": "D",
+    "value": "2H metres",
+    "confidence": "HIGH",
+    "reasoning": "Vertical rise from P to C is H and the horizontal distance is H sqrt3, so PC = sqrt(H^2 + 3H^2) = 2H. (Equivalently PC = H/sin 30 = 2H.)"
+  },
+  {
+    "number": 48,
+    "answer": "C",
+    "value": "p = 76",
+    "confidence": "HIGH",
+    "reasoning": "p+q = 200 - (46+25+10+5) = 114 and sum fx = p+2q+140 = 1.46*200 = 292 gives p+2q = 152. Subtracting, q = 38 and p = 76."
+  },
+  {
+    "number": 49,
+    "answer": "D",
+    "value": "q = 38",
+    "confidence": "HIGH",
+    "reasoning": "From p+q = 114 and p+2q = 152, q = 38."
+  },
+  {
+    "number": 50,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Cumulative frequencies: 46 at x=0, 122 at x=1. With n=200 the median is the mean of the 100th and 101st observations, both of which fall in the x=1 block, so the median is 1."
+  }
+]
