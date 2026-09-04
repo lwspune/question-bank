@@ -202,6 +202,13 @@ that reads as self-contradictory is the audit trail working, not a defect.
 - After writing, scan your own output for control characters **by CODEPOINT**
   (`ord(ch) < 32`, allowing only newline and tab), never by eyeballing it. These
   bytes are invisible in a terminal and pass a read-through.
+- **Give every probe a canary: feed it a known-bad string and confirm it FIRES
+  before you trust a clean run.** A probe that has never gone red proves nothing,
+  and the worst case is not a probe that lies — it is one that tests nothing and
+  reports clean. That happened here: a validator's control-character regex was
+  written as escape literals, the escapes were eaten, the pattern became inert,
+  and the scan returned green having checked nothing. The data was fine; the
+  probe was not. A canary is the only thing that separates those two states.
 - Give scratch files a unique name including your pass name; several agents share
   one scratchpad and have overwritten each other's scripts.
 
