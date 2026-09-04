@@ -400,5 +400,407 @@
     "confidence": "HIGH",
     "reasoning": "Take A = 6k. Then D = A/3 = 2k, E = A/2 = 3k, B = E/3 = k, C = 2A/3 = 4k, total 16k. Profit is shared in the same proportion, so (11 - 5)/16 of the profit is 13500, giving total profit 36000. B + C + E = 8/16 of that = 18000.",
     "solution": "Take A's capital as \\(6k\\); then \\(D=2k\\), \\(E=3k\\), \\(B=k\\) and \\(C=4k\\), a total of \\(16k\\). Profits are shared in the same proportion, so the stated difference is \\(\\dfrac{(6+2+3)-(1+4)}{16}=\\dfrac{6}{16}\\) of the profit, giving a total profit of \\(₹36{,}000\\). B, C and E together take \\(\\dfrac{1+4+3}{16}=\\dfrac{8}{16}\\) of it, that is \\(₹18{,}000\\)."
+  },
+  {
+    "number": 51,
+    "answer": "C",
+    "value": "58 degrees (57.96 exactly)",
+    "confidence": "HIGH",
+    "reasoning": "The six percentages sum to exactly 100.0, so the table is a complete pie. Social Services is 16.1%, giving 0.161 x 360 = 57.96 degrees, which rounds to 58.",
+    "solution": "The six percentages add to \\(100\\), so the whole circle of \\(360^\\circ\\) is accounted for. Social Services takes \\(16.1\\%\\) of it, that is \\(\\dfrac{16.1}{100}\\times 360=57.96^\\circ\\). To the nearest degree this is \\(58^\\circ\\)."
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "value": "16 and 4",
+    "confidence": "HIGH",
+    "reasoning": "AM 10 gives a + b = 20 and GM 8 gives ab = 64, so a and b are the roots of t^2 - 20t + 64 = 0, namely 4 and 16. Checked: their AM is 10 and their GM is sqrt(64) = 8.",
+    "solution": "An arithmetic mean of \\(10\\) gives \\(a+b=20\\), and a geometric mean of \\(8\\) gives \\(ab=64\\). So the numbers are the roots of \\(t^2-20t+64=0\\), which factorises as \\((t-16)(t-4)=0\\). The numbers are \\(16\\) and \\(4\\)."
+  },
+  {
+    "number": 53,
+    "answer": "C",
+    "value": "11.0",
+    "confidence": "HIGH",
+    "reasoning": "All eleven total 11 x 11 = 121. The first six total 63 and the last six total 69; together these count the sixth observation twice, so it equals 63 + 69 - 121 = 11.",
+    "solution": "The eleven observations total \\(11\\times 11=121\\). The first six total \\(6\\times 10.5=63\\) and the last six total \\(6\\times 11.5=69\\), and adding those two counts the sixth observation twice. So the sixth observation is \\(63+69-121=11\\)."
+  },
+  {
+    "number": 54,
+    "answer": "D",
+    "value": "1 - 2cos^2(theta)",
+    "confidence": "HIGH",
+    "reasoning": "sin^4 - cos^4 = (sin^2 - cos^2)(sin^2 + cos^2) = sin^2 - cos^2 = (1 - cos^2) - cos^2 = 1 - 2cos^2. Tested against all four options at three deliberately awkward angles (0.3, 1.1 and 2.3 radians, avoiding 45 degrees where the sign-flipped option would also pass): only 1 - 2cos^2(theta) gave a zero residual at every point.",
+    "solution": "Factor as a difference of squares: \\(\\sin^4\\theta-\\cos^4\\theta=\\left(\\sin^2\\theta-\\cos^2\\theta\\right)\\left(\\sin^2\\theta+\\cos^2\\theta\\right)=\\sin^2\\theta-\\cos^2\\theta\\). Replacing \\(\\sin^2\\theta\\) by \\(1-\\cos^2\\theta\\) gives \\(1-2\\cos^2\\theta\\). Note that \\(1-2\\sin^2\\theta\\) is the negative of this, so the sign matters."
+  },
+  {
+    "number": 55,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "cot(90 - x) = tan x, so cot 89 = tan 1 and cot 67 = tan 23, while cot 45 = 1. The product pairs to (cot1.tan1)(cot23.tan23)(1) = 1. Direct numerical evaluation gives 1.000000000000.",
+    "solution": "Use \\(\\cot\\left(90^\\circ-x\\right)=\\tan x\\), so \\(\\cot 89^\\circ=\\tan 1^\\circ\\) and \\(\\cot 67^\\circ=\\tan 23^\\circ\\), while \\(\\cot 45^\\circ=1\\). The product pairs up as \\(\\left(\\cot 1^\\circ\\tan 1^\\circ\\right)\\left(\\cot 23^\\circ\\tan 23^\\circ\\right)\\times 1\\). Each bracket equals \\(1\\), so the product is \\(1\\)."
+  },
+  {
+    "number": 56,
+    "answer": "B",
+    "value": "5 degrees",
+    "confidence": "HIGH",
+    "reasoning": "The hour hand covers 360 degrees in 12 hours, i.e. 30 degrees per hour or 0.5 degrees per minute, so in 10 minutes it turns 5 degrees. (6 degrees would be the MINUTE hand's movement in one minute.)",
+    "solution": "The hour hand sweeps \\(360^\\circ\\) in \\(12\\) hours, that is \\(30^\\circ\\) per hour. Per minute this is \\(\\dfrac{30}{60}=0.5^\\circ\\). In \\(10\\) minutes it turns through \\(10\\times 0.5=5^\\circ\\)."
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "value": "Statement 2 only",
+    "confidence": "HIGH",
+    "reasoning": "Statement 1: (sec^2 - 1)(1 - cosec^2) = tan^2 x (-cot^2) = -1, not 1, so it is false on the sign. Statement 2: combining over a common denominator gives [sin^2 + (1 + cos)^2]/[sin(1+cos)] = 2(1+cos)/[sin(1+cos)] = 2 cosec, so it is true. Numerically at theta = 0.3, 1.7 and 2.9 radians the first expression returned -1.000000000 every time, while the second matched 2 cosec(theta) to nine decimals.",
+    "solution": "The first expression is \\(\\left(\\sec^2\\theta-1\\right)\\left(1-\\operatorname{cosec}^2\\theta\\right)=\\tan^2\\theta\\times\\left(-\\cot^2\\theta\\right)=-1\\), not \\(1\\), so the first statement fails on the sign. For the second, \\(\\dfrac{\\sin\\theta}{1+\\cos\\theta}+\\dfrac{1+\\cos\\theta}{\\sin\\theta}=\\dfrac{\\sin^2\\theta+(1+\\cos\\theta)^2}{\\sin\\theta(1+\\cos\\theta)}=\\dfrac{2(1+\\cos\\theta)}{\\sin\\theta(1+\\cos\\theta)}=2\\operatorname{cosec}\\theta\\). So only the second statement is correct."
+  },
+  {
+    "number": 58,
+    "answer": "B",
+    "value": "l^2/2",
+    "confidence": "HIGH",
+    "reasoning": "The tip is h above the centre and the centre is l/sqrt2 from each vertex, so each slant line is sqrt(h^2 + l^2/2). A side of length l with two equal slant sides and apex 60 degrees forces an equilateral triangle, so sqrt(h^2 + l^2/2) = l and h^2 = l^2/2. Verified in 3-D coordinates: with h^2 = l^2/2 the angle subtended by a side is exactly 60.000000 degrees, while the other options give 36.87, 41.41 and 55.15 degrees.",
+    "solution": "The tip is \\(h\\) above the centre, and the centre is \\(\\dfrac{l}{\\sqrt2}\\) from each vertex, so the tip is \\(\\sqrt{h^2+\\dfrac{l^2}{2}}\\) from every vertex. A side of length \\(l\\) together with those two equal slant lines forms an isosceles triangle whose apex angle is \\(60^\\circ\\), which forces it to be equilateral. Hence \\(\\sqrt{h^2+\\dfrac{l^2}{2}}=l\\), giving \\(h^2=\\dfrac{l^2}{2}\\)."
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "value": "H - 2h units",
+    "confidence": "HIGH",
+    "reasoning": "With horizontal distance d, initially tan(alpha) = (H - h)/d and tan(beta) = h/d. After climbing k, the depression of the foot must become alpha, so (h + k)/d = (H - h)/d, giving k = H - 2h; the same k also makes the elevation of the top equal beta, since (H - h - k)/d = h/d. Checked numerically with h = 2, d = 7, H = 20 (so H > 4h): alpha = 68.7495, beta = 15.9454, k = 16, and after climbing the new elevation is 15.9454 and the new depression 68.7495 - exactly interchanged.",
+    "solution": "Let the horizontal distance to the tower be \\(d\\). Initially \\(\\tan\\alpha=\\dfrac{H-h}{d}\\) and \\(\\tan\\beta=\\dfrac{h}{d}\\). After climbing a further \\(k\\), the depression of the foot must be \\(\\alpha\\), so \\(\\dfrac{h+k}{d}=\\dfrac{H-h}{d}\\), giving \\(k=H-2h\\). With that same \\(k\\) the elevation of the top becomes \\(\\dfrac{H-h-k}{d}=\\dfrac{h}{d}=\\tan\\beta\\), so both angles do swap; he must climb \\(H-2h\\) units."
+  },
+  {
+    "number": 60,
+    "answer": "A",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "sec x cosec x = 2 means 1/(sin x cos x) = 2, so sin x cos x = 1/2 and sin 2x = 1. Sympy returns x = pi/4 and x = -3pi/4; at both, tan x = 1 and cot x = 1, so tan^n x + cot^n x = 1 + 1 = 2 for every n. The answer is independent of n, which is why the n-bearing options fail.",
+    "solution": "\\(\\sec x\\operatorname{cosec}x=2\\) means \\(\\dfrac{1}{\\sin x\\cos x}=2\\), so \\(\\sin x\\cos x=\\dfrac12\\) and \\(\\sin 2x=1\\). This forces \\(x=45^\\circ\\) (or \\(225^\\circ\\)), and in either case \\(\\tan x=\\cot x=1\\). Hence \\(\\tan^n x+\\cot^n x=1+1=2\\) for every value of \\(n\\)."
+  },
+  {
+    "number": 61,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "cos x + cos^2 x = 1 rearranges to cos x = 1 - cos^2 x = sin^2 x. Hence sin^4 x = cos^2 x and sin^2 x + sin^4 x = cos x + cos^2 x = 1. Confirmed by solving cos x = (sqrt5 - 1)/2 and evaluating: exactly 1.",
+    "solution": "The condition \\(\\cos x+\\cos^2 x=1\\) rearranges to \\(\\cos x=1-\\cos^2 x=\\sin^2 x\\). Squaring that, \\(\\sin^4 x=\\cos^2 x\\). Therefore \\(\\sin^2 x+\\sin^4 x=\\cos x+\\cos^2 x\\), which is exactly the given quantity, so the value is \\(1\\)."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "p^3 - 3p + 2q = 0",
+    "confidence": "HIGH",
+    "reasoning": "Cubing p = sinA + cosA gives p^3 = q + 3p sinA cosA, and p^2 = 1 + 2 sinA cosA gives sinA cosA = (p^2 - 1)/2. Substituting and clearing gives p^3 - 3p + 2q = 0. Tested all four candidate relations at A = 0.3, 1.3 and 2.7 radians: only p^3 - 3p + 2q vanished (to 1e-9) at every point.",
+    "solution": "Cubing \\(p=\\sin A+\\cos A\\) gives \\(p^3=\\sin^3A+\\cos^3A+3\\sin A\\cos A\\left(\\sin A+\\cos A\\right)=q+3p\\sin A\\cos A\\). Also \\(p^2=1+2\\sin A\\cos A\\), so \\(\\sin A\\cos A=\\dfrac{p^2-1}{2}\\). Substituting, \\(p^3=q+\\dfrac{3p\\left(p^2-1\\right)}{2}\\), and clearing the fraction gives \\(p^3-3p+2q=0\\)."
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "value": "1/3 <= x <= 3 (a closed interval)",
+    "confidence": "HIGH",
+    "reasoning": "With t = tan(theta), sec^2 = 1 + t^2 and x = (t^2 - t + 1)/(t^2 + t + 1), where t ranges over all reals. Differentiating gives critical points at t = 1 and t = -1, where x = 1/3 and x = 3 respectively, and x -> 1 as t -> infinity. Both endpoints are ATTAINED (at theta = 45 and 135 degrees), so the interval is closed and the strict-inequality option is wrong; a numerical scan over t confirmed the minimum 0.333333 at t = 1.",
+    "solution": "Write \\(t=\\tan\\theta\\), so \\(\\sec^2\\theta=1+t^2\\) and \\(x=\\dfrac{t^2-t+1}{t^2+t+1}\\), where \\(t\\) can be any real number. The turning points are at \\(t=1\\) and \\(t=-1\\), giving \\(x=\\dfrac13\\) and \\(x=3\\), while \\(x\\to 1\\) as \\(t\\to\\pm\\infty\\). Both extreme values are actually reached, at \\(\\theta=45^\\circ\\) and \\(\\theta=135^\\circ\\), so the correct range is the closed interval \\(\\dfrac13\\le x\\le 3\\)."
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "value": "\\(2+\\sqrt{3}\\) (but \\(2-\\sqrt{3}\\) is equally valid - the question has two correct answers)",
+    "confidence": "LOW",
+    "runnerUp": "A",
+    "runnerUpIf": "the key was set with AB the shorter leg, i.e. angle C = 15 degrees rather than 75 degrees - nothing in the stem distinguishes the two cases",
+    "reasoning": "Right angle at B (base BC, height AB). Equating the two area expressions, AB.BC = AC.p = 4p^2, and AB^2 + BC^2 = AC^2 = 16p^2. Putting r = tan C = AB/BC and dividing gives (1 + r^2)/r = 4, so r^2 - 4r + 1 = 0 and r = 2 + sqrt3 OR r = 2 - sqrt3. I then built an explicit triangle for EACH root and measured AC/p: both returned 4.000000000, so both are genuine solutions and BOTH appear as printed options. PAPER DEFECT: two correct answers. The two roots are reciprocals (their product is exactly 1) and describe the same triangle - acute angles 75 and 15 degrees - with the labels A and C exchanged; the stem's phrase 'base BC and height AB' fixes only where the right angle is, not which leg is longer. RUNNER-UP: 2 - sqrt3.",
+    "solution": "With the right angle at \\(B\\), equating the two ways of writing the area gives \\(AB\\cdot BC=AC\\cdot p=4p^2\\), while \\(AB^2+BC^2=AC^2=16p^2\\). Writing \\(r=\\tan C=\\dfrac{AB}{BC}\\) and dividing one by the other gives \\(\\dfrac{1+r^2}{r}=4\\), that is \\(r^2-4r+1=0\\), so \\(r=2+\\sqrt3\\) or \\(r=2-\\sqrt3\\). Each value gives a genuine triangle whose hypotenuse really is four times the perpendicular from the right angle, and the question says nothing that rules either out. This question therefore has two correct answers among the choices: the triangle's acute angles are \\(75^\\circ\\) and \\(15^\\circ\\), and either may be angle \\(C\\)."
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "value": "a^2 b^2 = p^2 (a^2 + b^2)",
+    "confidence": "HIGH",
+    "reasoning": "The area is (1/2)ab and also (1/2)(AB)p with AB = sqrt(a^2 + b^2), so ab = p sqrt(a^2 + b^2). Squaring gives a^2 b^2 = p^2 (a^2 + b^2). Sympy confirms a^2 b^2 - p^2(a^2 + b^2) simplifies to exactly 0 with p = ab/sqrt(a^2 + b^2).",
+    "solution": "The area of the triangle can be written two ways: \\(\\dfrac12ab\\) using the two legs, and \\(\\dfrac12\\cdot AB\\cdot p\\) using the hypotenuse and the perpendicular, where \\(AB=\\sqrt{a^2+b^2}\\). Equating them gives \\(ab=p\\sqrt{a^2+b^2}\\). Squaring both sides gives \\(a^2b^2=p^2\\left(a^2+b^2\\right)\\)."
+  },
+  {
+    "number": 66,
+    "answer": "A",
+    "value": "100 pi cubic cm",
+    "confidence": "HIGH",
+    "reasoning": "The height is sqrt(13^2 - 5^2) = 12, so the volume is (1/3)pi r^2 h = (1/3)pi(25)(12) = 100 pi cubic cm.",
+    "solution": "The radius, height and slant height form a right triangle, so the height is \\(\\sqrt{13^2-5^2}=\\sqrt{144}=12\\) cm. The volume of a cone is \\(\\dfrac13\\pi r^2h=\\dfrac13\\pi\\times 25\\times 12\\). That gives \\(100\\pi\\) cubic centimetres."
+  },
+  {
+    "number": 67,
+    "answer": "A",
+    "value": "A/2",
+    "confidence": "HIGH",
+    "reasoning": "Two equal circles pack optimally inside a circle of radius R when each has radius R/2, sitting side by side along a diameter and touching each other and the rim. Each then has area pi R^2/4 = A/4, so the two remove A/2 and leave A/2.",
+    "solution": "Two equal circles fit best inside a circle of radius \\(R\\) when each has radius \\(\\dfrac{R}{2}\\), sitting side by side along a diameter and touching both each other and the rim. Each then has area \\(\\pi\\left(\\dfrac{R}{2}\\right)^2=\\dfrac{\\pi R^2}{4}=\\dfrac{A}{4}\\), so together they take \\(\\dfrac{A}{2}\\). The remaining area is \\(A-\\dfrac{A}{2}=\\dfrac{A}{2}\\)."
+  },
+  {
+    "number": 68,
+    "answer": "D",
+    "value": "4 : 3",
+    "confidence": "HIGH",
+    "reasoning": "With r = 1 and l = 3, curved surface = pi r l = 3 pi and total surface = pi r (r + l) = 4 pi, so the ratio of total to curved is 4 : 3.",
+    "solution": "Take \\(r=1\\) and \\(l=3\\) to match the given ratio. The curved surface area is \\(\\pi rl=3\\pi\\), and the total surface area is \\(\\pi r(r+l)=\\pi\\times 1\\times 4=4\\pi\\). The ratio of total to curved surface area is \\(4:3\\)."
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "value": "16 : 9",
+    "confidence": "HIGH",
+    "reasoning": "The small cone and the whole cone have volumes in ratio 64 : 125, so their linear dimensions are in ratio 4 : 5. Curved surface areas scale as the square, so the small cone has 16/25 of the whole cone's curved surface and the frustum's curved surface is the remaining 9/25 (the frustum's curved surface is pi R L - pi r l, not the whole lateral difference of any other kind). Ratio 16 : 9.",
+    "solution": "The small cone and the whole cone have volumes in the ratio \\(64:(64+61)=64:125\\), so their linear dimensions are in the ratio \\(4:5\\). Curved surface areas scale as the square of that, so the small cone has \\(\\dfrac{16}{25}\\) of the whole cone's curved surface. The frustum's curved surface is what remains, \\(\\dfrac{9}{25}\\), so the ratio is \\(16:9\\)."
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "value": "Rs. 4,113 (4113.40 exactly)",
+    "confidence": "HIGH",
+    "reasoning": "Floor 10 x 10 = 100 sq m. The equilateral table of side 2 m covers (sqrt3/4)(4) = 1.7321 sq m. The shelves are printed 4 m x 1 m x 9 m (confirmed on the scan), so 9 m is the height and the footprint is 4 x 1 = 4 sq m each, 16 sq m for four. Rest = 100 - 1.7321 - 16 = 82.2679; half = 41.1340; at Rs 100 per sq m the cost is Rs 4,113.40, matching a printed option exactly. The alternatives fail: a 4 x 9 footprint would need 144 sq m in a 100 sq m room, and a 1 x 9 footprint gives Rs 3,113.40, which is not an option.",
+    "solution": "The floor is \\(10\\times 10=100\\) square metres. The equilateral table of side \\(2\\) m covers \\(\\dfrac{\\sqrt3}{4}\\times 2^2=\\sqrt3\\approx 1.73\\) square metres, and each shelf stands on a \\(4\\ \\text{m}\\times 1\\ \\text{m}\\) base, so four of them take \\(16\\) square metres. The area left is \\(100-1.73-16=82.27\\) square metres, of which half is \\(41.13\\) square metres. At \\(₹100\\) per square metre the cost is about \\(₹4{,}113\\)."
+  },
+  {
+    "number": 71,
+    "answer": "B",
+    "value": "p decreases as m increases",
+    "confidence": "HIGH",
+    "reasoning": "The circle of radius r_m encloses m of the equal-area regions, so pi r_m^2 = mA/n and r_m = R sqrt(m/n). Then p_m = r_(m+1)/r_m = sqrt((m+1)/m) = sqrt(1 + 1/m), which strictly decreases in m. Computed for n = 10: 1.41421, 1.22474, 1.15470, 1.11803, 1.09545, 1.08012, 1.06904, 1.06066 - monotonically decreasing.",
+    "solution": "The circle of radius \\(r_m\\) encloses exactly \\(m\\) of the equal-area regions, so \\(\\pi r_m^2=\\dfrac{mA}{n}\\) and hence \\(r_m=R\\sqrt{\\dfrac{m}{n}}\\). Then \\(p_m=\\dfrac{r_{m+1}}{r_m}=\\sqrt{\\dfrac{m+1}{m}}=\\sqrt{1+\\dfrac{1}{m}}\\). Since \\(\\dfrac1m\\) shrinks as \\(m\\) grows, \\(p\\) decreases as \\(m\\) increases."
+  },
+  {
+    "number": 72,
+    "answer": "C",
+    "value": "2 pi a^3 / 3",
+    "confidence": "HIGH",
+    "reasoning": "The base circle must fit inside a face of side 2a, so its greatest radius is a, and the greatest height available is the edge 2a. Volume = (1/3)pi a^2 (2a) = 2 pi a^3/3.",
+    "solution": "The cone's base must fit inside a face of the cube, which is a square of side \\(2a\\), so the largest possible base radius is \\(a\\). The greatest available height is the edge itself, \\(2a\\). The volume is therefore \\(\\dfrac13\\pi a^2\\left(2a\\right)=\\dfrac{2\\pi a^3}{3}\\)."
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "value": "6 cm",
+    "confidence": "HIGH",
+    "reasoning": "The transverse (internal) common tangent has length sqrt(d^2 - (r1 + r2)^2) = sqrt(100 - 64) = 6 cm. (The DIRECT common tangent would use the difference of radii and give sqrt(100 - 1) = 9.95, which is not an option, so the intended transverse formula is the one that resolves.)",
+    "solution": "The transverse common tangent between two circles has length \\(\\sqrt{d^2-\\left(r_1+r_2\\right)^2}\\), where \\(d\\) is the distance between the centres. Here \\(r_1+r_2=4.5+3.5=8\\) cm and \\(d=10\\) cm. So the length is \\(\\sqrt{100-64}=\\sqrt{36}=6\\) cm."
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "value": "3 cm",
+    "confidence": "HIGH",
+    "reasoning": "Equating the numerical values, 4 pi r^2 = (4/3) pi r^3. Cancelling 4 pi r^2 with r not zero gives 1 = r/3, so r = 3. Sympy returns r = 3 as the only positive root.",
+    "solution": "Equating the two numbers gives \\(4\\pi r^2=\\dfrac43\\pi r^3\\). Cancelling \\(4\\pi r^2\\), which is non-zero, leaves \\(1=\\dfrac{r}{3}\\). So the radius is \\(3\\) cm."
+  },
+  {
+    "number": 75,
+    "answer": "B",
+    "value": "(3 - sqrt5) cm, about 0.764 cm",
+    "confidence": "HIGH",
+    "reasoning": "With CB = x we have AC = 2 - x, so (2 - x)^2 = 2x gives x^2 - 6x + 4 = 0 and x = 3 +/- sqrt5. Only 3 - sqrt5 = 0.7639 is less than the whole length 2, so CB = 3 - sqrt5 cm. The option 3 sqrt5 = 6.7 and 5 sqrt3 = 8.7 both exceed AB, and sqrt5 - 1 = 1.236 does not satisfy the equation.",
+    "solution": "Let \\(CB=x\\), so \\(AC=2-x\\). The condition \\(AC^2=AB\\times CB\\) becomes \\((2-x)^2=2x\\), that is \\(x^2-6x+4=0\\), whose roots are \\(x=3\\pm\\sqrt5\\). Only \\(3-\\sqrt5\\approx 0.76\\) is smaller than the whole length \\(2\\), so \\(CB=3-\\sqrt5\\) cm."
+  },
+  {
+    "number": 76,
+    "answer": "A",
+    "value": "A concentric circle of radius 8 cm",
+    "confidence": "HIGH",
+    "reasoning": "Every radius runs from the centre outwards with length 16, so its mid-point is always 8 from the centre; as the radius turns through every direction the mid-point sweeps out all points at distance 8. The locus is a concentric circle of radius 8 cm.",
+    "solution": "Each radius has one end at the centre and length \\(16\\) cm, so its mid-point is always \\(8\\) cm from the centre. As the radius turns through every direction, that mid-point reaches every point at distance \\(8\\) cm from the centre. The locus is therefore a concentric circle of radius \\(8\\) cm."
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "value": "10 sqrt15 cm, about 38.73 cm",
+    "confidence": "HIGH",
+    "reasoning": "1.76 m^2 = 17600 cm^2 and r = 70 cm. pi r l = 17600 with pi = 22/7 gives 220 l = 17600, so l = 80. Then h = sqrt(80^2 - 70^2) = sqrt(1500) = 10 sqrt15 = 38.729833 cm, which matches the option exactly.",
+    "solution": "Convert the units: \\(1.76\\ \\text{m}^2=17600\\ \\text{cm}^2\\), and the radius is \\(\\dfrac{140}{2}=70\\) cm. From \\(\\pi rl=17600\\) with \\(\\pi=\\dfrac{22}{7}\\) we get \\(220\\,l=17600\\), so the slant height is \\(l=80\\) cm. Then \\(h=\\sqrt{80^2-70^2}=\\sqrt{1500}=10\\sqrt{15}\\) cm."
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "value": "Statements 2 and 3",
+    "confidence": "HIGH",
+    "reasoning": "1 is false: the orthocentre of an obtuse triangle lies outside it. 2 is true: the centroid is the average of the vertices, so it is always interior. 3 is true: in a right-angled triangle the two legs are altitudes, so the orthocentre is the right-angle vertex, which lies ON the triangle. 4 is false: the centroid of a right-angled triangle is still strictly inside.",
+    "solution": "The orthocentre lies outside an obtuse-angled triangle, so it is not always inside, but the centroid is an average of the three vertices and so is always inside. In a right-angled triangle the two legs are themselves altitudes, so the orthocentre is the right-angle vertex and lies on the triangle. The centroid of a right-angled triangle is still strictly interior, so the correct pair is the second and third statements."
+  },
+  {
+    "number": 79,
+    "answer": "C",
+    "value": "A pair of straight lines",
+    "confidence": "HIGH",
+    "reasoning": "Points equidistant from two intersecting lines lie on the bisectors of the angles between them, and there are two such bisectors (mutually perpendicular). So the locus is a pair of straight lines, not a single one.",
+    "solution": "The points equidistant from two intersecting lines are exactly those lying on the bisectors of the angles the lines form. There are two such bisectors, and they are perpendicular to each other. So the locus is a pair of straight lines rather than a single line."
+  },
+  {
+    "number": 80,
+    "answer": "D",
+    "value": "Statements 2, 3 and 4",
+    "confidence": "HIGH",
+    "reasoning": "Statement 1 (three equal angles) gives only similarity, not congruence - a triangle and a scaled copy share all three angles. Statements 2, 3 and 4 are the standard SSS, SAS and ASA criteria and are correct.",
+    "solution": "Three equal angles make two triangles similar but not necessarily congruent: a triangle and an enlarged copy of it have the same three angles yet different sizes. The other three conditions are the standard SSS, SAS and ASA congruence criteria. So statements 2, 3 and 4 are the correct ones."
+  },
+  {
+    "number": 81,
+    "answer": "C",
+    "value": "Statement-1 is true but Statement-2 is false",
+    "confidence": "HIGH",
+    "reasoning": "Statement-1: if every interior angle is 90 degrees then 90n = (n - 2)180, giving n = 4 - true. Statement-2: the sum is (n - 2)180 degrees = (2n - 4) right angles, not (3n - 8). The two expressions coincide only at n = 4 (both give 4) and differ elsewhere - at n = 3 they give 2 and 1, at n = 5 they give 6 and 7 - so Statement-2 is false as a general formula. Since Statement-2 is false it cannot be an explanation of anything.",
+    "solution": "If every interior angle is a right angle, then \\(90n=(n-2)\\times 180\\), which gives \\(n=4\\), so the first statement is true. The sum of the interior angles of an \\(n\\)-sided polygon is \\((n-2)\\times 180^\\circ\\), that is \\((2n-4)\\) right angles, not \\((3n-8)\\). The two formulas agree only at \\(n=4\\) and differ elsewhere - at \\(n=5\\) they give \\(6\\) and \\(7\\) right angles - so the second statement is false."
+  },
+  {
+    "number": 82,
+    "answer": "B",
+    "value": "3.5 cm",
+    "confidence": "HIGH",
+    "reasoning": "(s + 8)^2 - s^2 = 120 gives 16s + 64 = 120, so 16s = 56 and s = 3.5. Sympy returns s = 7/2 exactly.",
+    "solution": "If the side is \\(s\\), the increase in area is \\((s+8)^2-s^2=120\\). Expanding gives \\(16s+64=120\\), so \\(16s=56\\). Hence \\(s=3.5\\) cm."
+  },
+  {
+    "number": 83,
+    "answer": "D",
+    "value": "None of the above - the answer is 6 (that is, 10^6 divides 25!)",
+    "confidence": "HIGH",
+    "reasoning": "The product is 25!. The number of factors of 10 is limited by the factors of 5: floor(25/5) + floor(25/25) = 5 + 1 = 6, against 22 factors of 2. So the largest power of 10 dividing it is 10^6, and 25! indeed ends in exactly 6 zeros (checked on the actual integer). Since 6 is not 2, 4 or 5, the correct choice is 'None of the above'.",
+    "solution": "The product is \\(25!\\), and the number of factors of \\(10\\) it contains is limited by its factors of \\(5\\), since factors of \\(2\\) are far more plentiful. The multiples of \\(5\\) up to \\(25\\) contribute \\(\\left\\lfloor\\dfrac{25}{5}\\right\\rfloor=5\\), and \\(25=5^2\\) contributes one more, giving \\(6\\) in all. So the largest power is \\(10^6\\), and since \\(6\\) is none of \\(2\\), \\(4\\) or \\(5\\), none of the listed values is correct."
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "value": "13 cans",
+    "confidence": "HIGH",
+    "reasoning": "Walls only: area per room = 2(6 + 4) x 2.5 = 50 sq m, so five rooms give 250 sq m. At 20 sq m per litre this needs 12.5 litres, and since paint comes only in whole 1 L cans, 13 cans are needed.",
+    "solution": "The four walls of one room have area \\(2(6+4)\\times 2.5=50\\) square metres, so five identical rooms give \\(250\\) square metres. At \\(20\\) square metres per litre this needs \\(\\dfrac{250}{20}=12.5\\) litres. Paint comes only in whole \\(1\\) L cans, so \\(13\\) cans must be bought."
+  },
+  {
+    "number": 85,
+    "answer": "D",
+    "value": "Rs. 900",
+    "confidence": "HIGH",
+    "reasoning": "Pathway area 4.5 x 10 = 45 sq m; each tile is 0.5 x 0.5 = 0.25 sq m, so 180 tiles are needed, and they fit exactly (9 across by 20 along, no cutting). That is 180/20 = 9 packets at Rs 100 each, so Rs 900.",
+    "solution": "The pathway is \\(4.5\\times 10=45\\) square metres, and each tile is \\(0.5\\times 0.5=0.25\\) square metres, so \\(\\dfrac{45}{0.25}=180\\) tiles are needed (and they fit exactly, \\(9\\) across by \\(20\\) along). That is \\(\\dfrac{180}{20}=9\\) packets. At \\(₹100\\) a packet the total cost is \\(₹900\\)."
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "value": "2 : sqrt3 pi",
+    "confidence": "HIGH",
+    "reasoning": "For a cube of edge a inscribed in a sphere of radius R the space diagonal is the diameter, so a sqrt3 = 2R and a = 2R/sqrt3. Cube volume 8R^3/(3 sqrt3), sphere volume (4/3) pi R^3, and the ratio simplifies to 2/(sqrt3 pi). Sympy confirms both the ratio and the option reduce to 2 sqrt3/(3 pi).",
+    "solution": "For a cube of edge \\(a\\) inscribed in a sphere of radius \\(R\\), the space diagonal is a diameter, so \\(a\\sqrt3=2R\\) and \\(a=\\dfrac{2R}{\\sqrt3}\\). The cube's volume is \\(a^3=\\dfrac{8R^3}{3\\sqrt3}\\) and the sphere's is \\(\\dfrac43\\pi R^3\\). Their ratio is \\(\\dfrac{8R^3}{3\\sqrt3}\\div\\dfrac{4\\pi R^3}{3}=\\dfrac{2}{\\sqrt3\\,\\pi}\\), that is \\(2:\\sqrt3\\,\\pi\\)."
+  },
+  {
+    "number": 87,
+    "answer": "D",
+    "value": "pi r^2 sqrt(4 pi^2 + 9) / 3",
+    "confidence": "HIGH",
+    "reasoning": "2 pi r / h = 3 gives h = 2 pi r / 3, so l = sqrt(r^2 + 4 pi^2 r^2/9) = r sqrt(9 + 4 pi^2)/3 and CSA = pi r l = pi r^2 sqrt(4 pi^2 + 9)/3. Sympy confirms the difference between this and the option is exactly 0.",
+    "solution": "The condition \\(\\dfrac{2\\pi r}{h}=3\\) gives \\(h=\\dfrac{2\\pi r}{3}\\). Then the slant height is \\(l=\\sqrt{r^2+h^2}=r\\sqrt{1+\\dfrac{4\\pi^2}{9}}=\\dfrac{r\\sqrt{9+4\\pi^2}}{3}\\). So the curved surface area is \\(\\pi rl=\\dfrac{\\pi r^2\\sqrt{4\\pi^2+9}}{3}\\)."
+  },
+  {
+    "number": 88,
+    "answer": "C",
+    "value": "154 cm",
+    "confidence": "HIGH",
+    "reasoning": "The wire's length is the circumference 2 pi r = 2 x (22/7) x 98 = 616 cm exactly (98 is a multiple of 7, so this is exact). Bent into a square, the side is 616/4 = 154 cm.",
+    "solution": "The wire's length is the circumference \\(2\\pi r=2\\times\\dfrac{22}{7}\\times 98=616\\) cm. Bending it into a square makes that length the perimeter, so each side is \\(\\dfrac{616}{4}\\). The side is \\(154\\) cm."
+  },
+  {
+    "number": 89,
+    "answer": "C",
+    "value": "2(p + q + r) < 3(a + b + c)",
+    "confidence": "HIGH",
+    "reasoning": "The standard bounds are (3/4)(a+b+c) < p+q+r < (a+b+c), i.e. the ratio k = (p+q+r)/(a+b+c) lies in (0.75, 1). Testing each option as a condition on k: the equality option needs k = 0.5 (false); '2(p+q+r) > 3(a+b+c)' needs k > 1.5 (impossible); '2(p+q+r) < 3(a+b+c)' needs k < 1.5 (always true); '11(p+q+r) > 10(a+b+c)' needs k > 10/11 = 0.9091, which FAILS for an equilateral triangle where k = (3 sqrt3/2)/3 = 0.8660. A scan of 102,999 random valid triangles gave k in [0.753919, 0.994024], confirming the upper bound is below 1 and that values under 10/11 genuinely occur.",
+    "solution": "For any triangle the sum of the medians lies strictly between \\(\\dfrac34\\) and \\(1\\) times the perimeter, so in particular \\(p+q+r<a+b+c\\). Hence \\(2(p+q+r)<2(a+b+c)<3(a+b+c)\\), which is the statement that always holds. The claim \\(11(p+q+r)>10(a+b+c)\\) would need the medians to exceed \\(\\dfrac{10}{11}\\approx 0.909\\) of the perimeter, but an equilateral triangle reaches only \\(\\dfrac{3\\sqrt3/2}{3}\\approx 0.866\\), so it fails."
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "value": "3(a + b + c) < 4(p + q + r)",
+    "confidence": "HIGH",
+    "reasoning": "Same bounds as Q89: k = (p+q+r)/(a+b+c) lies in (0.75, 1). '(a+b+c) < (p+q+r)' needs k > 1 (false, max observed 0.994024); '3(a+b+c) < 4(p+q+r)' needs k > 0.75 (always true, min observed 0.753919); '2(a+b+c) > 3(p+q+r)' needs k < 2/3 (false); '3(a+b+c) > 4(p+q+r)' needs k < 0.75 (false). So only the second is correct.",
+    "solution": "For any triangle the sum of the medians is more than three quarters of the perimeter, that is \\(p+q+r>\\dfrac34(a+b+c)\\). Multiplying through by \\(4\\) gives \\(4(p+q+r)>3(a+b+c)\\), which is exactly the statement asserted. The opposite inequality fails, and so does the claim that the medians outweigh the perimeter, since their sum is always less than the perimeter."
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "value": "1 square unit",
+    "confidence": "HIGH",
+    "reasoning": "The largest disc in a square has diameter equal to the side, so its radius is half of 2/sqrt(pi), i.e. 1/sqrt(pi). Its area is pi x (1/pi) = 1 square unit exactly.",
+    "solution": "The largest disc that fits in a square has diameter equal to the side, so its radius is \\(\\dfrac12\\times\\dfrac{2}{\\sqrt\\pi}=\\dfrac{1}{\\sqrt\\pi}\\). Its area is \\(\\pi\\left(\\dfrac{1}{\\sqrt\\pi}\\right)^2=\\pi\\times\\dfrac{1}{\\pi}\\). That is exactly \\(1\\) square unit."
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "value": "5 units",
+    "confidence": "HIGH",
+    "reasoning": "A square's diagonals are equal, so their product is d^2 = 50 and d = 5 sqrt2. Since the diagonal of a square of side s is s sqrt2, we get s sqrt2 = 5 sqrt2 and s = 5. (5 sqrt2 is the diagonal, not the side.)",
+    "solution": "The two diagonals of a square are equal, so if each is \\(d\\) their product is \\(d^2=50\\), giving \\(d=5\\sqrt2\\). For a square of side \\(s\\) the diagonal is \\(s\\sqrt2\\), so \\(s\\sqrt2=5\\sqrt2\\). The side is \\(5\\) units."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "value": "8 cm",
+    "confidence": "HIGH",
+    "reasoning": "The closed box has surface area 2 pi r(r + h) = 352 with h = 10, so 2 x (22/7) x r(r + 10) = 352 gives r(r + 10) = 56, i.e. r^2 + 10r - 56 = 0, whose positive root is r = 4 (sympy confirms). The diameter is 8 cm.",
+    "solution": "For a closed cylinder the surface area is \\(2\\pi r(r+h)=352\\), and with \\(h=10\\) and \\(\\pi=\\dfrac{22}{7}\\) this gives \\(\\dfrac{44}{7}r(r+10)=352\\), so \\(r(r+10)=56\\). Solving \\(r^2+10r-56=0\\) gives \\(r=4\\) (the root \\(-14\\) is rejected). The diameter is \\(8\\) cm."
+  },
+  {
+    "number": 94,
+    "answer": "D",
+    "value": "16 sqrt3 square cm, about 27.71",
+    "confidence": "HIGH",
+    "reasoning": "A square with diagonal 6 sqrt2 has side 6, so its perimeter is 24. The equilateral triangle shares that perimeter, so its side is 8, and its area is (sqrt3/4)(64) = 16 sqrt3 = 27.712813.",
+    "solution": "A square with diagonal \\(6\\sqrt2\\) has side \\(\\dfrac{6\\sqrt2}{\\sqrt2}=6\\) cm, so its perimeter is \\(24\\) cm. The equilateral triangle has the same perimeter, so each of its sides is \\(\\dfrac{24}{3}=8\\) cm. Its area is \\(\\dfrac{\\sqrt3}{4}\\times 8^2=16\\sqrt3\\) square centimetres."
+  },
+  {
+    "number": 95,
+    "answer": "D",
+    "value": "(pi - 2) a^2 / 2 square units",
+    "confidence": "HIGH",
+    "reasoning": "A circle through the four corners of a square of side a has the diagonal as diameter, so its radius is a sqrt2/2 and its area is pi a^2/2. The region between circle and square is pi a^2/2 - a^2 = (pi - 2) a^2/2. Sympy confirms the simplification.",
+    "solution": "A circle through the four corners of the square has the square's diagonal as its diameter, so its radius is \\(\\dfrac{a\\sqrt2}{2}\\) and its area is \\(\\pi\\times\\dfrac{a^2}{2}\\). The region asked for is what lies inside the circle but outside the square, that is \\(\\dfrac{\\pi a^2}{2}-a^2\\). This simplifies to \\(\\dfrac{(\\pi-2)a^2}{2}\\) square units."
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "value": "65 degrees",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p13, cropped and enlarged 3x): A and B are the two points of tangency with X outside to the right and the 50-degree mark at X; C is a point on the circle to the LEFT, with chords CA and CB drawn, and CA running parallel to the tangent XB. Since XA = XB, triangle AXB is isosceles with base angles (180 - 50)/2 = 65 degrees, and by the alternate segment theorem the angle between tangent BX and chord BA equals the angle ACB in the alternate segment, so angle ACB = 65 degrees. Built the configuration explicitly on a unit circle (A at 65 degrees, B at -65 degrees, X on the axis, C the second intersection of the line through A parallel to XB): the checks returned |OC| = 1.000000000, angle AXB = 50.000000, the AC and XB directions exactly parallel (cross product 0.00e+00), and angle ACB = 65.000000. Worth noting that ANY point on the major arc gives 65 degrees, so the parallel condition only fixes which point C is and the answer is robust to reading it.",
+    "solution": "The two tangents from an external point are equal, so triangle \\(AXB\\) is isosceles and its base angles are \\(\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ\\). By the alternate segment theorem, the angle between the tangent \\(XB\\) and the chord \\(BA\\) equals the angle subtended by \\(AB\\) in the alternate segment, which is \\(\\angle ACB\\). Hence \\(\\angle ACB=65^\\circ\\)."
+  },
+  {
+    "number": 97,
+    "answer": "C",
+    "value": "Both statements 1 and 2 are correct",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14): three horizontal parallel lines p (top), q (middle), r (bottom); transversal l cuts them at A, B, C from top to bottom and transversal m cuts them at D, E, F from top to bottom. The intercept theorem gives AB/BC = DE/EF. Adding 1 to each side of AC/BC = DF/EF (obtained from it) rearranges to AB : AC = DE : DF, so statement 1 holds; cross-multiplying AB/BC = DE/EF gives AB x EF = BC x DE, so statement 2 holds. Both are correct.",
+    "solution": "Three parallel lines cut any two transversals in the same ratio, so \\(\\dfrac{AB}{BC}=\\dfrac{DE}{EF}\\). Adding \\(1\\) to both sides gives \\(\\dfrac{AB+BC}{BC}=\\dfrac{DE+EF}{EF}\\), that is \\(\\dfrac{AC}{BC}=\\dfrac{DF}{EF}\\), which rearranges to \\(AB:AC=DE:DF\\). Cross-multiplying the original proportion gives \\(AB\\times EF=BC\\times DE\\), so both statements are correct."
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "value": "3 sqrt3 l^2 / 16",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14): equilateral triangle ABC with A at the top, B bottom-left, C bottom-right; D on AB and E on AC are the mid-points (AD = DB, AE = EC), and the HATCHED region is the trapezium DBCE below the line DE - the small top triangle ADE is left unshaded. Triangle ADE is similar to ABC with ratio 1/2, so its area is 1/4 of the whole and the trapezium is 3/4 of it: (3/4)(sqrt3/4)l^2 = 3 sqrt3 l^2/16. Numerically at l = 2: whole 1.732051, ADE 0.433013, trapezium 1.299038, and 3 sqrt3 l^2/16 = 1.299038 (the 1/32 option gives 0.649519, i.e. half as much).",
+    "solution": "Since \\(D\\) and \\(E\\) are the mid-points of \\(AB\\) and \\(AC\\), triangle \\(ADE\\) is similar to triangle \\(ABC\\) with ratio \\(\\dfrac12\\), so its area is \\(\\dfrac14\\) of the whole triangle. The shaded trapezium \\(DBCE\\) is what remains, namely \\(\\dfrac34\\) of the triangle's area. An equilateral triangle of side \\(l\\) has area \\(\\dfrac{\\sqrt3}{4}l^2\\), so the shaded area is \\(\\dfrac34\\times\\dfrac{\\sqrt3}{4}l^2=\\dfrac{3\\sqrt3\\,l^2}{16}\\)."
+  },
+  {
+    "number": 99,
+    "answer": "B",
+    "value": "2 alpha",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14): SPT is drawn as a horizontal tangent touching the circle at P at the bottom, O is the centre directly above P, and Q lies on the circle to the upper right; alpha is marked at P between the chord PQ and the tangent towards T, and the angle at O between OP and OQ is the one asked for. Since OP is perpendicular to the tangent, angle OPQ = 90 - alpha, and triangle OPQ is isosceles (OP = OQ are radii) so angle OQP = 90 - alpha too; hence angle POQ = 180 - 2(90 - alpha) = 2 alpha. Constructed explicitly on a unit circle for alpha = 20, 35 and 52 degrees: |OQ| = 1.000000000 each time and angle POQ came out 40.000000, 70.000000 and 104.000000 - exactly 2 alpha, and clearly distinguishing it from 90 - alpha and 180 - 2 alpha.",
+    "solution": "The radius \\(OP\\) is perpendicular to the tangent at \\(P\\), so \\(\\angle OPQ=90^\\circ-\\alpha\\). Triangle \\(OPQ\\) is isosceles because \\(OP\\) and \\(OQ\\) are both radii, so \\(\\angle OQP=90^\\circ-\\alpha\\) as well. The third angle is therefore \\(\\angle POQ=180^\\circ-2\\left(90^\\circ-\\alpha\\right)=2\\alpha\\)."
+  },
+  {
+    "number": 100,
+    "answer": "D",
+    "value": "2 sqrt37 cm, about 12.166 cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14): O is the centre, A on the left and C on the right of the circle, with chords AB and CD crossing at P near the bottom; D sits just left of B along the lower boundary, and OP and OC are drawn. AB = 10 with PB = 3 gives AP = 7. Intersecting chords give CP x PD = AP x PB = 21 with CP + PD = 10, so the parts of CD are 7 and 3. Each chord has half-length 5 against radius 13, so each is sqrt(169 - 25) = 12 from O, and P is |7 - 5| = 2 from each chord's mid-point (the same 2 either way round, so the answer does not depend on which of CP, PD is 7). Hence OP^2 = 144 + 4 = 148 and OP = 2 sqrt37 = 12.1655. Built the whole configuration in coordinates (chord y = -12 from x = -5 to 5, second chord -12x + 35y + 444 = 0): all four endpoints lie exactly on the radius-13 circle, both chords measure 10.000000, PA = 7 and PB = 3, the second chord's parts are 7.000000 and 3.000000, and OP = 12.165525061 = 2 sqrt37 exactly (2 sqrt29 would be 10.770).",
+    "solution": "Since \\(AB=10\\) and \\(PB=3\\), we have \\(AP=7\\). The intersecting chords property gives \\(CP\\times PD=AP\\times PB=21\\), and \\(CP+PD=10\\), so the two parts of \\(CD\\) are also \\(7\\) and \\(3\\). Each chord has half-length \\(5\\) while the radius is \\(13\\), so each lies \\(\\sqrt{13^2-5^2}=12\\) cm from the centre, and \\(P\\) is \\(|7-5|=2\\) cm from each chord's mid-point. Since the line from the centre to a chord's mid-point is perpendicular to it, \\(OP=\\sqrt{12^2+2^2}=\\sqrt{148}=2\\sqrt{37}\\) cm."
   }
 ]

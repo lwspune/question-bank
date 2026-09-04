@@ -233,3 +233,34 @@ So Maths behaves like GK, not like English, and there is no free key. Six probes
 paper is evidence rather than proof; the standing detector is `commit.ts`, which NAMES every
 row that dedups instead of letting a silent skip count stand for a question that was never
 on the paper.
+
+## Figure anchoring: the detached-label trap
+
+A figure's labels are often set in their OWN ink band, separated from the
+diagram body by a genuine whitespace gap. The first gap below a diagram is
+therefore frequently INSIDE the figure, and anchoring `bottom` there amputates
+the vertex letters while `snap-crop` still reports `ok: true` -- because `ok` is
+computed from the anchors, not from the figure.
+
+Measured across this corpus it has hit **14 of 17 figures**. Three variants, all
+seen live:
+
+- **BELOW** (the common case): 2024-I had it on 7 of 10 figures; 2021-II on both;
+  2023-I on the one figure whose whole constraint was in the diagram.
+- **ABOVE** (2018-I Q97): the line labels `l` and `m` sat in their own band 8 px
+  ABOVE the transversal arrowheads. Check the gap above as well as below -- if
+  the first ink run under your `top` is a short label-height band rather than the
+  diagram body, `top` is too low.
+- **BOTH ENDS** (2018-I Q98): an apex label above and a base-label row below.
+
+**Geometry alone cannot settle it.** On that Q98 the label band sat 13 px below
+the stem -- indistinguishable by measurement from an ordinary line gap -- and the
+first anchor set read it as a stem line and dropped the apex label. It was caught
+only by looking at the crop. `ok: true` is necessary and never sufficient; the
+visual review is the check.
+
+Related: the vertical column rule is present on some booklets and absent on
+others (measured, not assumed -- 2018-I has one, 2021-II does not), and where it
+exists it is SKEWED by several px down the page. It can be as narrow as 2-3 px
+against a `ROW_MIN` of ~3.4 px, so it may pass unnoticed once and bite later.
+Exclude its whole skew envelope from `col` rather than relying on the margin.

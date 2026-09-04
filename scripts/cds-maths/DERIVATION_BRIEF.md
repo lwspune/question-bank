@@ -34,7 +34,8 @@ Output: `scripts/cds-maths/data/<paperId>.<passName>.json`, an array of:
 }
 ```
 
-- `answer` — one of A, B, C, D.
+- `answer` — one of A, B, C, D, or **`null`** where no printed option is
+  correct. See "If no option is correct" below.
 - `value` — **mandatory**, and not decoration. It is the answer's content in
   plain terms: `"4"`, `"37.5 km/hour"`, `"\\(3\\sqrt{2}\\) cm"`. The crosstab
   compares two derivations of the same *quantity*, which is what separates a
@@ -112,13 +113,30 @@ comparison this pass exists to make. Flag it; do not fix it.
 
 ## If no option is correct
 
-Say so. Set `answer` to your best reading, drop `confidence` to LOW, and state
-plainly in `reasoning` that the computed value matches no printed option and what
-that value is.
+**Set `answer` to `null`**, drop `confidence` to LOW, and state plainly in
+`reasoning` and `solution` what the computed value is and why no option matches.
 
 **Never choose the nearest option to make the question resolve.** A question with
 no correct answer is a real and expected outcome on a scanned corpus, and it is a
 finding we want, not a failure to hide.
+
+This paragraph used to say "set `answer` to your best reading" instead, and the
+two instructions give opposite results. `buildRecords` DROPS a null row, so the
+paper ships one question short — which is true. A "best reading" is committed
+like any other answer, so the bank marks an option correct that is not, a
+student is told they are wrong for choosing something equally defensible, and
+nothing downstream can tell the row apart from a normal one. The drop is
+recorded and visible; the best reading is silent. Prefer the visible failure.
+
+Two distinctions worth holding:
+
+- **"None of the above" being printed is NOT this case.** 2019-I Q43's computed
+  values match no NUMERIC option, but the paper offers "None of the above" and
+  it is correct under both readings of the stem — so it is an ordinary answer.
+  Null is for when no option, including any escape hatch, is right.
+- **An ambiguous stem with two defensible answers is not this case either.**
+  2018-I Q64 has two printed options that are both correct; that is a normal
+  answer plus a note, not a null. Null means *nothing* printed is right.
 
 ## Figure-bearing questions
 

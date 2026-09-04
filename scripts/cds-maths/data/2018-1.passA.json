@@ -37,7 +37,7 @@
     "value": "The decimal expansion of an irrational number is non-terminating and non-repeating",
     "confidence": "HIGH",
     "reasoning": "A rational number's expansion either terminates (1/2 = 0.5) or recurs (1/3 = 0.333...), so the two blanket claims about rationals are each refuted by an example. An irrational number can never terminate, since a terminating decimal is a fraction over a power of 10 and hence rational. The remaining statement is the standard characterisation and is true.",
-    "solution": "A rational number's decimal expansion either terminates, as with \\(\\tfrac12=0.5\\), or recurs, as with \\(\\tfrac13=0.333\\ldots\\) — so neither blanket claim about rationals holds. An irrational number can never have a terminating expansion, because a terminating decimal is always a fraction with a power of \\(10\\) underneath and is therefore rational. What is always true is that an irrational number's expansion is non-terminating and non-repeating."
+    "solution": "The decimal expansion of a rational number either terminates, as with \\(\\tfrac12=0.5\\), or recurs, as with \\(\\tfrac13=0.333\\ldots\\) — so neither blanket claim about rationals holds. An irrational number can never have a terminating expansion, because a terminating decimal is always a fraction with a power of \\(10\\) underneath and is therefore rational. What is always true is that an irrational number's expansion is non-terminating and non-repeating."
   },
   {
     "number": 6,
@@ -213,7 +213,7 @@
     "value": "500 metres",
     "confidence": "HIGH",
     "reasoning": "60 km/hour = 60000/3600 = 50/3 m/s. Crossing a pole covers exactly the train's own length, so length = (50/3) x 30 = 500 m.",
-    "solution": "A speed of \\(60\\) km per hour is \\(\\dfrac{60\\times 1000}{3600}=\\dfrac{50}{3}\\) metres per second. Crossing a pole means covering exactly the train's own length, since the pole has no length of its own. So the length is \\(\\dfrac{50}{3}\\times 30=500\\) metres."
+    "solution": "Converting units, \\(60\\) km per hour is \\(\\dfrac{60\\times 1000}{3600}=\\dfrac{50}{3}\\) metres per second. Crossing a pole means covering exactly the train's own length, since the pole has no length of its own. So the length is \\(\\dfrac{50}{3}\\times 30=500\\) metres."
   },
   {
     "number": 28,
@@ -279,7 +279,7 @@
     "runnerUp": "none of the printed options — the alternative is that the question has no correct answer",
     "runnerUpIf": "Read literally, 'original annual income' means the interest received, which is Rs. 1,024 at 4%, and no printed option carries that value. Rs. 25,600 wins only if 'annual income' is taken to mean the capital or sum invested.",
     "reasoning": "A drop from 4% to 3.75% is 0.25 percentage points, so the invested sum P satisfies P x 0.0025 = 64, giving P = 25600 exactly. But 25600 is the CAPITAL, not the annual income: the income at 4% is 25600 x 0.04 = 1024, and 1024 matches no printed option. Taken literally the question has no correct answer; it is a misprint for 'capital' or 'sum invested', under which 25600 is the unique consistent choice. Verified both directions with sympy. RUNNER-UP: there is no rival option — no other printed number reproduces the Rs. 64 drop (24000 gives 60, 25000 gives 62.5, 24600 gives 61.5) — so the only alternative to 25600 is 'no correct option'.",
-    "solution": "A fall from \\(4\\%\\) to \\(3.75\\%\\) is a drop of \\(0.25\\) percentage points, so the sum invested \\(P\\) satisfies \\(P\\times\\dfrac{0.25}{100}=64\\), which gives \\(P=25{,}600\\). The question is misworded, though: Rs. \\(25{,}600\\) is the capital, and the annual income it yields at \\(4\\%\\) is \\(25{,}600\\times 0.04=1{,}024\\) — a figure that appears among none of the choices. Read as a question about the sum invested, the answer is Rs. \\(25{,}600\\), and no other printed figure reproduces the Rs. \\(64\\) drop."
+    "solution": "The fall from \\(4\\%\\) to \\(3.75\\%\\) is a drop of \\(0.25\\) percentage points, so the sum invested \\(P\\) satisfies \\(P\\times\\dfrac{0.25}{100}=64\\), which gives \\(P=25{,}600\\). The question is misworded, though: Rs. \\(25{,}600\\) is the capital, and the annual income it yields at \\(4\\%\\) is \\(25{,}600\\times 0.04=1{,}024\\) — a figure that appears among none of the choices. Read as a question about the sum invested, the answer is Rs. \\(25{,}600\\), and no other printed figure reproduces the Rs. \\(64\\) drop."
   },
   {
     "number": 36,
@@ -327,7 +327,7 @@
     "value": "5",
     "confidence": "HIGH",
     "reasoning": "The odd primes up to 110 include 5, and every factor is odd, so the product is odd and divisible by 5. An odd multiple of 5 must end in 5. Direct computation of the product of all odd primes below 111 confirms the unit digit is 5. The trap 0 would require a factor of 2, which is excluded by 'odd'.",
-    "solution": "The odd primes up to \\(110\\) include \\(5\\), and every one of them is odd, so the product is an odd number that is a multiple of \\(5\\). A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), and an odd one cannot end in \\(0\\). So the unit digit is \\(5\\) — it would only be \\(0\\) if the factor \\(2\\) were included, which the word 'odd' excludes."
+    "solution": "The odd primes up to \\(110\\) include \\(5\\), and every one of them is odd, so the product is an odd number that is a multiple of \\(5\\). Any multiple of \\(5\\) ends in \\(0\\) or \\(5\\), and an odd one cannot end in \\(0\\). So the unit digit is \\(5\\) — it would only be \\(0\\) if the factor \\(2\\) were included, which the word 'odd' excludes."
   },
   {
     "number": 42,
@@ -407,7 +407,7 @@
     "value": "\\(58^\\circ\\) (exactly \\(57.96^\\circ\\))",
     "confidence": "HIGH",
     "reasoning": "A full circle is 360 degrees over 100 percentage points, so each point is worth 3.6 degrees. Social Services is 16.1%, giving 16.1 x 3.6 = 57.96 degrees, which rounds to 58. The other sector percentages are not needed (they sum to 100). Exact fraction 1449/25 = 57.96.",
-    "solution": "A full circle is \\(360^{\\circ}\\) spread over \\(100\\) percentage points, so each percentage point subtends \\(3.6^{\\circ}\\). The Social Services sector is \\(16.1\\%\\), giving \\(16.1\\times 3.6=57.96^{\\circ}\\). To the nearest degree that is \\(58^{\\circ}\\)."
+    "solution": "The full circle of \\(360^{\\circ}\\) is spread over \\(100\\) percentage points, so each percentage point subtends \\(3.6^{\\circ}\\). The Social Services sector is \\(16.1\\%\\), giving \\(16.1\\times 3.6=57.96^{\\circ}\\). To the nearest degree that is \\(58^{\\circ}\\)."
   },
   {
     "number": 52,
@@ -633,7 +633,7 @@
     "value": "A pair of straight lines",
     "confidence": "HIGH",
     "reasoning": "The points equidistant from two intersecting lines are exactly those on the bisectors of the angles between them. Two intersecting lines create two pairs of vertically opposite angles and hence two bisectors, which are mutually perpendicular. So the locus is a pair of straight lines, not one.",
-    "solution": "A point is equidistant from two intersecting lines exactly when it lies on a bisector of the angles between them. Two intersecting lines have two such bisectors, and these are perpendicular to each other. So the locus consists of two straight lines, not one."
+    "solution": "Points equidistant from two intersecting lines are exactly those lying on a bisector of the angles between them. Two intersecting lines have two such bisectors, and these are perpendicular to each other. So the locus consists of two straight lines, not one."
   },
   {
     "number": 80,
@@ -689,7 +689,7 @@
     "value": "\\(2:\\sqrt3\\,\\pi\\)",
     "confidence": "HIGH",
     "reasoning": "A cube inscribed in a sphere has its space diagonal equal to the diameter: s sqrt(3) = 2R, so s = 2R/sqrt(3). Cube volume = 8R^3/(3 sqrt(3)); sphere volume = (4/3) pi R^3. Ratio = (8/(3 sqrt 3)) x (3/(4 pi)) = 2/(sqrt(3) pi). Sympy radsimp returns 2 sqrt(3)/(3 pi), which is the same number. Numerically 0.3676.",
-    "solution": "A cube with every corner on the sphere has its space diagonal equal to the diameter, so \\(s\\sqrt3=2R\\) and \\(s=\\dfrac{2R}{\\sqrt3}\\). The cube's volume is \\(s^{3}=\\dfrac{8R^{3}}{3\\sqrt3}\\) and the sphere's is \\(\\dfrac43\\pi R^{3}\\). Their ratio is \\(\\dfrac{8R^{3}/(3\\sqrt3)}{4\\pi R^{3}/3}=\\dfrac{2}{\\sqrt3\\,\\pi}\\), that is \\(2:\\sqrt3\\,\\pi\\)."
+    "solution": "The cube with every corner on the sphere has its space diagonal equal to the diameter, so \\(s\\sqrt3=2R\\) and \\(s=\\dfrac{2R}{\\sqrt3}\\). The cube's volume is \\(s^{3}=\\dfrac{8R^{3}}{3\\sqrt3}\\) and the sphere's is \\(\\dfrac43\\pi R^{3}\\). Their ratio is \\(\\dfrac{8R^{3}/(3\\sqrt3)}{4\\pi R^{3}/3}=\\dfrac{2}{\\sqrt3\\,\\pi}\\), that is \\(2:\\sqrt3\\,\\pi\\)."
   },
   {
     "number": 87,
@@ -753,7 +753,7 @@
     "value": "\\(16\\sqrt3\\) cm\\(^2\\)",
     "confidence": "HIGH",
     "reasoning": "A square with diagonal 6 sqrt(2) has side (6 sqrt 2)/sqrt(2) = 6, so perimeter 24. The equilateral triangle shares that perimeter, so its side is 8, and its area is (sqrt(3)/4) x 64 = 16 sqrt(3).",
-    "solution": "A square whose diagonal is \\(6\\sqrt2\\) has side \\(\\dfrac{6\\sqrt2}{\\sqrt2}=6\\) cm, so its perimeter is \\(24\\) cm. The equilateral triangle has the same perimeter, so each of its sides is \\(\\dfrac{24}{3}=8\\) cm. Its area is \\(\\dfrac{\\sqrt3}{4}\\times 8^{2}=16\\sqrt3\\) cm\\(^2\\)."
+    "solution": "The square, whose diagonal is \\(6\\sqrt2\\), has side \\(\\dfrac{6\\sqrt2}{\\sqrt2}=6\\) cm, so its perimeter is \\(24\\) cm. The equilateral triangle has the same perimeter, so each of its sides is \\(\\dfrac{24}{3}=8\\) cm. Its area is \\(\\dfrac{\\sqrt3}{4}\\times 8^{2}=16\\sqrt3\\) cm\\(^2\\)."
   },
   {
     "number": 95,
