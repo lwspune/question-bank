@@ -108,7 +108,8 @@ export function checkBand(band: Band, chapters: Set<string>): Finding[] {
     if (labels.join(",") !== "A,B,C,D") at(q.number, `option labels are [${labels.join(",")}], expected A,B,C,D`);
     if (q.options.some((o) => !o.text?.trim())) at(q.number, "an option is blank");
 
-    const texts = q.options.map((o) => (o.text ?? "").replace(/\s+/g, " ").trim().toLowerCase());
+    // Case-SENSITIVE: see lib.ts norm(). `2r^2` and `2R^2` are different options.
+    const texts = q.options.map((o) => (o.text ?? "").replace(/\s+/g, " ").trim());
     for (let i = 0; i < texts.length; i++) {
       for (let j = i + 1; j < texts.length; j++) {
         if (texts[i] && texts[i] === texts[j]) {

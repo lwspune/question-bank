@@ -304,3 +304,46 @@ describe("normalizeQuestions — flags coercion", () => {
     expect("flags" in normalizeQuestions([q()])[0]).toBe(false);
   });
 });
+
+describe("comparisons are CASE-SENSITIVE (maths, not prose)", () => {
+  // Found on 2023-2 Q31: the four options are H tanγ − h tanβ, h tanγ − H tanβ,
+  // H tanγ − h tanα, h tanγ − H tanα, where H is a flagstaff and h a tower.
+  // Lowercasing collapsed them into two "duplicate" pairs.
+  const opts = (a: string, b: string, c: string, d: string) => [
+    { label: "A", text: a }, { label: "B", text: b },
+    { label: "C", text: c }, { label: "D", text: d },
+  ];
+
+  it("does not call options differing only in letter case duplicates", () => {
+    const rows = [{
+      sourceRow: 1, questionNumber: "1", subject: "Mathematics", chapter: "Number System",
+      question: "Which one of the following is correct ?",
+      optionA: "H\tan\gamma - h\tan\beta", optionB: "h\tan\gamma - H\tan\beta",
+      optionC: "2r^2", optionD: "2R^2",
+      answer: "A", difficulty: "MODERATE",
+    }];
+    expect(validateRows(rows, 1, 1)).toEqual([]);
+  });
+
+  it("still catches a genuine duplicate", () => {
+    const rows = [{
+      sourceRow: 1, questionNumber: "1", subject: "Mathematics", chapter: "Number System",
+      question: "q", optionA: "2R^2", optionB: "2R^2", optionC: "x", optionD: "y",
+      answer: "A", difficulty: "MODERATE",
+    }];
+    expect(validateRows(rows, 1, 1).some((e) => /duplicate option text/.test(e))).toBe(true);
+  });
+
+  it("treats a case difference between two bands as a DISAGREEMENT", () => {
+    const a = q({ options: opts("H\tan\gamma", "b", "c", "d") });
+    const b = q({ options: opts("h\tan\gamma", "b", "c", "d") });
+    expect(mergeBands([band("b1", [a]), band("b2", [b])]).errors).toHaveLength(1);
+  });
+
+  // The dangerous one: a real DISPUTE must not be dismissed as a TWIN.
+  it("does not call two case-different options a TWIN", () => {
+    const tq = q({ options: opts("H\tan\gamma", "h\tan\gamma", "c", "d") });
+    const d = (n: string) => ({ number: 1, answer: n, value: "v", confidence: "HIGH", reasoning: "r" });
+    expect(crosstab([d("A")], [d("B")], [tq])[0].verdict).toBe("DISPUTE");
+  });
+});
