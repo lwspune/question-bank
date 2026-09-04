@@ -184,7 +184,24 @@ that reads as self-contradictory is the audit trail working, not a defect.
 
 - Do not run `git add` or any git command.
 - Author files with the Write/Edit tools, never a shell heredoc — heredocs eat
-  backslashes here and will corrupt LaTeX into invisible control characters.
+  backslashes here and will corrupt LaTeX into invisible control characters. The
+  corruption is selective, which is what makes it survive review: a KNOWN escape
+  is consumed (`\t` becomes a TAB, `\f` a form feed, `\r` a CR, `\a` a BEL) while
+  an unknown one comes through untouched. So `\tan` and `\frac` are destroyed
+  while `\sqrt` and `\(` are fine, and a spot check lands on a good line.
+- **The same trap ruins PROBES, and there it is worse.** A `python -c` or
+  `node -e` one-liner that checks your output has its own backslashes mangled
+  before it ever runs, so it reports a defect that is not there, or misses one
+  that is. Both happened on this corpus in a single day: a transcriber's
+  `\tan`/`\frac` genuinely corrupted and was caught only by a scan run FROM A
+  FILE, and another agent's one-liner reported a bogus "literal backslash-n" that
+  was three legitimate `\ne`. The person who wrote this bullet then hit the same
+  trap writing it, and emitted four control characters into this very paragraph.
+  **Author a probe as a file, and when a probe and the data disagree, suspect the
+  probe first.**
+- After writing, scan your own output for control characters **by CODEPOINT**
+  (`ord(ch) < 32`, allowing only newline and tab), never by eyeballing it. These
+  bytes are invisible in a terminal and pass a read-through.
 - Give scratch files a unique name including your pass name; several agents share
   one scratchpad and have overwritten each other's scripts.
 
