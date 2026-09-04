@@ -83,7 +83,26 @@ export type Derivation = {
   answer: string; // A|B|C|D
   value: string; // the answer's content in plain terms
   confidence: string; // HIGH|MED|LOW
+  /**
+   * REVIEWER EVIDENCE. The brief requires this to name the runner-up on a MED
+   * item and say what would flip it, which is what the crosstab prints on a
+   * disputed row so a human can adjudicate. It is NOT student-facing prose.
+   */
   reasoning: string;
+  /**
+   * STUDENT-FACING solution, optional. When present it is what ships; when
+   * absent `reasoning` ships instead.
+   *
+   * The two exist separately because they have different audiences and one
+   * field cannot serve both. Piping `reasoning` straight through put reviewer
+   * jargon in front of students on 161 published rows ("RUNNER-UP: option C,
+   * if ...", "Verified with sympy") and left 328 more answering a typeset stem
+   * in bare ASCII ("sin alpha equals -2"). Overwriting `reasoning` to fix that
+   * would have destroyed the adjudication record -- the runner-up note is the
+   * most useful thing the derivation protocol produces -- so the student text
+   * is ADDITIVE and the evidence is kept.
+   */
+  solution?: string;
 };
 
 export type Verdict = "AGREE" | "TWIN" | "DISPUTE" | "MISSING";
@@ -364,7 +383,8 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed, opts.keyed)}`.trim(),
+      // Student text when authored, reviewer evidence otherwise. See Derivation.
+      solution: `${(d.solution ?? d.reasoning).trim()} ${provenance(d.confidence.toUpperCase(), agreed, opts.keyed)}`.trim(),
     });
   }
   return rows;

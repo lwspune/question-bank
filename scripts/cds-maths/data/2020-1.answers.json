@@ -8,7 +8,8 @@
       "answer": "A",
       "value": "a prime number (2311)",
       "confidence": "HIGH",
-      "reasoning": "2*3*5*7*11 + 1 = 2310 + 1 = 2311. sympy factorint(2311) = {2311: 1}, isprime = True. It is odd, so C is impossible on parity alone; it is prime, so A."
+      "reasoning": "2*3*5*7*11 + 1 = 2310 + 1 = 2311. sympy factorint(2311) = {2311: 1}, isprime = True. It is odd, so C is impossible on parity alone; it is prime, so A.",
+      "solution": "Since \\(2\\times3\\times5\\times7\\times11 = 2310\\), the number is \\(2311\\). It is odd, so it cannot be an even composite. Testing the primes up to \\(\\sqrt{2311}\\approx 48\\) \u2014 that is \\(2, 3, 5, 7, 11, 13, \\ldots, 47\\) \u2014 none divides \\(2311\\), so \\(2311\\) is itself prime."
     },
     {
       "number": 2,
@@ -29,7 +30,8 @@
       "answer": "A",
       "value": "{1, n^2}",
       "confidence": "HIGH",
-      "reasoning": "x^(sqrt x) = (x^x)^(1/n) = x^(x/n). Equating exponents for x > 0, x != 1: sqrt(x) = x/n so n = x/sqrt(x) = sqrt(x), giving x = n^2. x = 1 satisfies trivially. Solution set {1, n^2}."
+      "reasoning": "x^(sqrt x) = (x^x)^(1/n) = x^(x/n). Equating exponents for x > 0, x != 1: sqrt(x) = x/n so n = x/sqrt(x) = sqrt(x), giving x = n^2. x = 1 satisfies trivially. Solution set {1, n^2}.",
+      "solution": "Write the right-hand side as \\(\\sqrt[n]{x^{x}} = x^{x/n}\\), so the equation reads \\(x^{\\sqrt{x}} = x^{x/n}\\). For \\(x>0\\) with \\(x\\neq 1\\) the exponents must agree: \\(\\sqrt{x} = \\dfrac{x}{n}\\), which gives \\(n = \\dfrac{x}{\\sqrt{x}} = \\sqrt{x}\\) and hence \\(x = n^{2}\\). Since \\(x=1\\) satisfies the equation trivially, the solution set is \\(\\{1,\\ n^{2}\\}\\)."
     },
     {
       "number": 5,
@@ -50,7 +52,8 @@
       "answer": "A",
       "value": "2^2222",
       "confidence": "HIGH",
-      "reasoning": "log10 values: 2222^2 = 6.69, 222^22 = 51.62, 22^222 = 298.02, 2^2222 = 668.89. Largest is 2^2222."
+      "reasoning": "log10 values: 2222^2 = 6.69, 222^22 = 51.62, 22^222 = 298.02, 2^2222 = 668.89. Largest is 2^2222.",
+      "solution": "Compare the numbers through their logarithms: \\(\\log_{10}\\!\\left(2222^{2}\\right)\\approx 6.7\\), \\(\\log_{10}\\!\\left(222^{22}\\right)\\approx 51.6\\), \\(\\log_{10}\\!\\left(22^{222}\\right)\\approx 298\\) and \\(\\log_{10}\\!\\left(2^{2222}\\right)\\approx 669\\). Raising the exponent gains far more than shrinking the base loses, so \\(2^{2222}\\) is much the largest."
     },
     {
       "number": 8,
@@ -71,7 +74,8 @@
       "answer": "C",
       "value": "39",
       "confidence": "HIGH",
-      "reasoning": "3^x + 3^(x+1) + 3^(x+2) = 3^x(1 + 3 + 9) = 13 * 3^x. For x ranging over all natural numbers (x >= 1) the gcd of these values is 13 * 3 = 39. 117 would need 3^2 to divide the x = 1 case (39), which it does not."
+      "reasoning": "3^x + 3^(x+1) + 3^(x+2) = 3^x(1 + 3 + 9) = 13 * 3^x. For x ranging over all natural numbers (x >= 1) the gcd of these values is 13 * 3 = 39. 117 would need 3^2 to divide the x = 1 case (39), which it does not.",
+      "solution": "Factor the expression: \\(3^{x} + 3^{x+1} + 3^{x+2} = 3^{x}(1+3+9) = 13\\cdot 3^{x}\\). For every natural number \\(x\\ge 1\\) this is divisible by \\(13\\times 3 = 39\\). It is not always divisible by \\(117 = 13\\times 9\\), because \\(x=1\\) gives just \\(39\\); so \\(39\\) is the largest divisor that always works."
     },
     {
       "number": 11,
@@ -85,7 +89,8 @@
       "answer": "A",
       "value": "2",
       "confidence": "HIGH",
-      "reasoning": "alpha + beta = -k, alpha*beta = -15. (alpha - beta)^2 = k^2 + 60 = 64, so k^2 = 4 and the positive value is k = 2."
+      "reasoning": "alpha + beta = -k, alpha*beta = -15. (alpha - beta)^2 = k^2 + 60 = 64, so k^2 = 4 and the positive value is k = 2.",
+      "solution": "For the roots, \\(\\alpha+\\beta = -k\\) and \\(\\alpha\\beta = -15\\). Then \\((\\alpha-\\beta)^{2} = (\\alpha+\\beta)^{2} - 4\\alpha\\beta = k^{2} + 60\\), and this must equal \\(8^{2} = 64\\). Hence \\(k^{2} = 4\\), so the positive value is \\(k = 2\\)."
     },
     {
       "number": 13,
@@ -106,7 +111,8 @@
       "answer": "D",
       "value": "1000000",
       "confidence": "HIGH",
-      "reasoning": "5^(x-1)(5^2 - 1) = 600 -> 24 * 5^(x-1) = 600 -> 5^(x-1) = 25 -> x = 3. 10^(2x) = 10^6 = 1000000."
+      "reasoning": "5^(x-1)(5^2 - 1) = 600 -> 24 * 5^(x-1) = 600 -> 5^(x-1) = 25 -> x = 3. 10^(2x) = 10^6 = 1000000.",
+      "solution": "Take out the common power: \\(5^{x-1}\\!\\left(5^{2}-1\\right) = 600\\), so \\(24\\cdot 5^{x-1} = 600\\) and \\(5^{x-1} = 25\\). That gives \\(x-1 = 2\\), i.e. \\(x = 3\\). Therefore \\(10^{2x} = 10^{6} = 1000000\\)."
     },
     {
       "number": 16,
@@ -127,35 +133,40 @@
       "answer": "B",
       "value": "100",
       "confidence": "MED",
-      "reasoning": "1331 = 11^3, so m = 11, n = 3 gives (m-1)^(n-1) = 10^2 = 100. Runner-up A (= 1): the degenerate factorisation m = 1331, n = 1 also satisfies m^n = 1331 and gives 1330^0 = 1. A would win if the setter intended n = 1 to be admissible; the standard reading takes the non-trivial power, so B."
+      "reasoning": "1331 = 11^3, so m = 11, n = 3 gives (m-1)^(n-1) = 10^2 = 100. Runner-up A (= 1): the degenerate factorisation m = 1331, n = 1 also satisfies m^n = 1331 and gives 1330^0 = 1. A would win if the setter intended n = 1 to be admissible; the standard reading takes the non-trivial power, so B.",
+      "solution": "Since \\(1331 = 11^{3}\\), take \\(m = 11\\) and \\(n = 3\\), so \\((m-1)^{n-1} = 10^{2} = 100\\). Note that the question is loose: \\(m = 1331,\\ n = 1\\) also satisfies \\(m^{n} = 1331\\) and would give \\(1330^{0} = 1\\), which is among the printed choices. The intended reading is the genuine power \\(11^{3}\\), so the value is \\(100\\)."
     },
     {
       "number": 19,
       "answer": "B",
       "value": "-1",
       "confidence": "HIGH",
-      "reasoning": "Put t = a^(m-n). Second term = 1/(1/t - 1) = t/(1 - t). Sum = 1/(t-1) - t/(t-1) = (1-t)/(t-1) = -1."
+      "reasoning": "Put t = a^(m-n). Second term = 1/(1/t - 1) = t/(1 - t). Sum = 1/(t-1) - t/(t-1) = (1-t)/(t-1) = -1.",
+      "solution": "Put \\(t = a^{m-n}\\), so that \\(a^{n-m} = \\dfrac{1}{t}\\). The second fraction becomes \\(\\dfrac{1}{\\frac{1}{t}-1} = \\dfrac{t}{1-t}\\). Adding, \\(\\dfrac{1}{t-1} - \\dfrac{t}{t-1} = \\dfrac{1-t}{t-1} = -1\\)."
     },
     {
       "number": 20,
       "answer": "B",
       "value": "z < x < y",
       "confidence": "HIGH",
-      "reasoning": "2^(1/2) = 1.41421, 3^(1/3) = 1.44225, 6^(1/6) = 1.34801. So z < x < y."
+      "reasoning": "2^(1/2) = 1.41421, 3^(1/3) = 1.44225, 6^(1/6) = 1.34801. So z < x < y.",
+      "solution": "Raise all three numbers to the sixth power, which preserves order for positive numbers: \\(x^{6} = \\left(2^{1/2}\\right)^{6} = 8\\), \\(y^{6} = \\left(3^{1/3}\\right)^{6} = 9\\) and \\(z^{6} = 6\\). Since \\(6 < 8 < 9\\), the same order holds for the numbers themselves, giving \\(z < x < y\\)."
     },
     {
       "number": 21,
       "answer": "C",
       "value": "1.5625",
       "confidence": "HIGH",
-      "reasoning": "log y = log(x^(log x)) = (log x)(log x) = 1.25^2 = 1.5625."
+      "reasoning": "log y = log(x^(log x)) = (log x)(log x) = 1.25^2 = 1.5625.",
+      "solution": "Take logarithms of \\(y = x^{\\log x}\\): \\(\\log y = (\\log x)(\\log x) = (\\log x)^{2}\\). With \\(\\log x = 1.2500\\), this gives \\(\\log y = (1.25)^{2} = 1.5625\\)."
     },
     {
       "number": 22,
       "answer": "C",
       "value": "[(x - beta) f(alpha) - (x - alpha) f(beta)] / (alpha - beta)",
       "confidence": "HIGH",
-      "reasoning": "The remainder R(x) is linear with R(alpha) = f(alpha), R(beta) = f(beta). Lagrange interpolation gives R(x) = f(alpha)(x-beta)/(alpha-beta) + f(beta)(x-alpha)/(beta-alpha) = [(x-beta)f(alpha) - (x-alpha)f(beta)]/(alpha-beta). Checked: at x = alpha this returns f(alpha); at x = beta it returns f(beta)."
+      "reasoning": "The remainder R(x) is linear with R(alpha) = f(alpha), R(beta) = f(beta). Lagrange interpolation gives R(x) = f(alpha)(x-beta)/(alpha-beta) + f(beta)(x-alpha)/(beta-alpha) = [(x-beta)f(alpha) - (x-alpha)f(beta)]/(alpha-beta). Checked: at x = alpha this returns f(alpha); at x = beta it returns f(beta).",
+      "solution": "Dividing by a quadratic leaves a remainder \\(R(x)\\) of degree at most \\(1\\), and \\(f(x) = (x-\\alpha)(x-\\beta)Q(x) + R(x)\\) forces \\(R(\\alpha) = f(\\alpha)\\) and \\(R(\\beta) = f(\\beta)\\). The linear function through those two points is \\(R(x) = \\dfrac{(x-\\beta)f(\\alpha) - (x-\\alpha)f(\\beta)}{\\alpha-\\beta}\\). Substituting \\(x=\\alpha\\) returns \\(f(\\alpha)\\) and \\(x=\\beta\\) returns \\(f(\\beta)\\), which confirms it."
     },
     {
       "number": 23,
@@ -183,7 +194,8 @@
       "answer": "B",
       "value": "(1/6, -1)",
       "confidence": "HIGH",
-      "reasoning": "Dividing by xy and putting u = 1/x, v = 1/y: 2u + 5v = 7 and 3u + 10v = 8. Solving, u = 6, v = -1, so x = 1/6, y = -1. (sympy also returns the degenerate (0,0), which is not a listed option.)"
+      "reasoning": "Dividing by xy and putting u = 1/x, v = 1/y: 2u + 5v = 7 and 3u + 10v = 8. Solving, u = 6, v = -1, so x = 1/6, y = -1. (sympy also returns the degenerate (0,0), which is not a listed option.)",
+      "solution": "Divide both equations by \\(xy\\) and set \\(u = \\dfrac{1}{x}\\), \\(v = \\dfrac{1}{y}\\); they become \\(2u + 5v = 7\\) and \\(3u + 10v = 8\\). Solving this pair gives \\(u = 6\\) and \\(v = -1\\), so \\(x = \\dfrac{1}{6}\\) and \\(y = -1\\). The point is \\(\\left(\\dfrac{1}{6},\\ -1\\right)\\)."
     },
     {
       "number": 27,
@@ -330,7 +342,8 @@
       "answer": "C",
       "value": "44100",
       "confidence": "HIGH",
-      "reasoning": "LCM(3,4,5,6,7) = 420 = 2^2 x 3 x 5 x 7. To be a perfect square every prime exponent must be even, so the least such square is 2^2 x 3^2 x 5^2 x 7^2 = 44100. Checked against each option: 1764 = 42^2 is a square but not divisible by 5; 17640 is divisible by all five but is not a perfect square; 176400 = 420^2 qualifies but is larger. A brute-force scan of n^2 upward returns 44100 as the first hit."
+      "reasoning": "LCM(3,4,5,6,7) = 420 = 2^2 x 3 x 5 x 7. To be a perfect square every prime exponent must be even, so the least such square is 2^2 x 3^2 x 5^2 x 7^2 = 44100. Checked against each option: 1764 = 42^2 is a square but not divisible by 5; 17640 is divisible by all five but is not a perfect square; 176400 = 420^2 qualifies but is larger. A brute-force scan of n^2 upward returns 44100 as the first hit.",
+      "solution": "First \\(\\operatorname{lcm}(3,4,5,6,7) = 420 = 2^{2}\\times 3\\times 5\\times 7\\). A perfect square needs every prime exponent even, so the least square multiple of \\(420\\) is \\(2^{2}\\times 3^{2}\\times 5^{2}\\times 7^{2} = 44100\\). Among the smaller values printed, \\(1764 = 42^{2}\\) is a square but is not divisible by \\(5\\), and \\(17640\\) is divisible by all five numbers but is not a perfect square."
     },
     {
       "number": 48,
@@ -351,35 +364,40 @@
       "answer": "C",
       "value": "18",
       "confidence": "HIGH",
-      "reasoning": "Let u = x^4 + 1/x^4; u^2 - 2 = 47 so u = 7 (u = -7 is impossible for real x but either way the next step gives the same). Let v = x^2 + 1/x^2; v^2 - 2 = 7 so v = 3 (v >= 2 for real x). Then x^6 + 1/x^6 = v^3 - 3v = 27 - 9 = 18. The alternative v = -3 gives -18, which is not an option."
+      "reasoning": "Let u = x^4 + 1/x^4; u^2 - 2 = 47 so u = 7 (u = -7 is impossible for real x but either way the next step gives the same). Let v = x^2 + 1/x^2; v^2 - 2 = 7 so v = 3 (v >= 2 for real x). Then x^6 + 1/x^6 = v^3 - 3v = 27 - 9 = 18. The alternative v = -3 gives -18, which is not an option.",
+      "solution": "Let \\(u = x^{4} + \\dfrac{1}{x^{4}}\\). From \\(\\left(x^{4}+\\dfrac{1}{x^{4}}\\right)^{2} = x^{8}+\\dfrac{1}{x^{8}}+2\\) we get \\(u^{2} = 49\\), so \\(u = 7\\). Likewise with \\(v = x^{2}+\\dfrac{1}{x^{2}}\\), \\(v^{2} - 2 = 7\\) gives \\(v = 3\\) (for real \\(x\\), \\(v \\ge 2\\)). Finally \\(x^{6}+\\dfrac{1}{x^{6}} = v^{3} - 3v = 27 - 9 = 18\\)."
     },
     {
       "number": 51,
       "answer": "C",
       "value": "12 pi radians per second",
       "confidence": "HIGH",
-      "reasoning": "360 revolutions per minute = 6 revolutions per second = 6 x 2 pi = 12 pi radians per second."
+      "reasoning": "360 revolutions per minute = 6 revolutions per second = 6 x 2 pi = 12 pi radians per second.",
+      "solution": "\\(360\\) revolutions per minute is \\(\\dfrac{360}{60} = 6\\) revolutions per second. One revolution is \\(2\\pi\\) radians, so the wheel turns \\(6 \\times 2\\pi = 12\\pi\\) radians in a second."
     },
     {
       "number": 52,
       "answer": "B",
       "value": "36",
       "confidence": "HIGH",
-      "reasoning": "Minimise f = 25/sin^2 x + 1/cos^2 x. Setting s = sin^2 x, f' = 0 gives 25(1-s)^2 = s^2, i.e. s = 5/6, and f = 30 + 6 = 36. Independently, min of a/sin^2 + b/cos^2 = (sqrt a + sqrt b)^2 = (5+1)^2 = 36. sympy critical points confirm 36.0."
+      "reasoning": "Minimise f = 25/sin^2 x + 1/cos^2 x. Setting s = sin^2 x, f' = 0 gives 25(1-s)^2 = s^2, i.e. s = 5/6, and f = 30 + 6 = 36. Independently, min of a/sin^2 + b/cos^2 = (sqrt a + sqrt b)^2 = (5+1)^2 = 36. sympy critical points confirm 36.0.",
+      "solution": "The expression is \\(f = \\dfrac{25}{\\sin^{2}x} + \\dfrac{1}{\\cos^{2}x}\\). Writing \\(s = \\sin^{2}x\\) and setting the derivative to zero gives \\(25(1-s)^{2} = s^{2}\\), so \\(s = \\dfrac{5}{6}\\) and \\(f = 30 + 6 = 36\\). In general \\(\\dfrac{a}{\\sin^{2}x} + \\dfrac{b}{\\cos^{2}x}\\) has least value \\(\\left(\\sqrt{a}+\\sqrt{b}\\right)^{2}\\), which here is \\((5+1)^{2} = 36\\)."
     },
     {
       "number": 53,
       "answer": "A",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "theta = 0.9 degrees. Pair n with 100-n: cot(n theta) cot((100-n) theta) = cot(n theta) cot(90 deg - n theta) = cot x tan x = 1. The 49 such pairs cover n = 1..49 and 51..99, and the middle term n = 50 gives cot 45 = 1. Product = 1. mpmath at 40 digits returns 0.9999999999999999999999999999999999999999."
+      "reasoning": "theta = 0.9 degrees. Pair n with 100-n: cot(n theta) cot((100-n) theta) = cot(n theta) cot(90 deg - n theta) = cot x tan x = 1. The 49 such pairs cover n = 1..49 and 51..99, and the middle term n = 50 gives cot 45 = 1. Product = 1. mpmath at 40 digits returns 0.9999999999999999999999999999999999999999.",
+      "solution": "Here \\(100\\theta = 90^\\circ\\), so \\(n\\theta + (100-n)\\theta = 90^\\circ\\) for every \\(n\\). Pairing \\(n\\) with \\(100-n\\) therefore gives \\(\\cot n\\theta \\cdot \\cot\\!\\left(90^\\circ - n\\theta\\right) = \\cot n\\theta \\cdot \\tan n\\theta = 1\\), and these \\(49\\) pairs use up every factor except the middle one. That middle factor is \\(\\cot 45^\\circ = 1\\), so the whole product is \\(\\alpha = 1\\)."
     },
     {
       "number": 54,
       "answer": "A",
       "value": "sqrt(2)",
       "confidence": "HIGH",
-      "reasoning": "tan 6theta = cot 2theta = tan(90 deg - 2theta), so 6theta = 90 - 2theta, theta = 11.25 deg. Then 4theta = 45 deg and sec 45 = sqrt(2). (6theta = 67.5 deg lies in (0, 90) as required.)"
+      "reasoning": "tan 6theta = cot 2theta = tan(90 deg - 2theta), so 6theta = 90 - 2theta, theta = 11.25 deg. Then 4theta = 45 deg and sec 45 = sqrt(2). (6theta = 67.5 deg lies in (0, 90) as required.)",
+      "solution": "Since \\(\\cot 2\\theta = \\tan\\!\\left(90^\\circ - 2\\theta\\right)\\), the equation gives \\(6\\theta = 90^\\circ - 2\\theta\\), so \\(8\\theta = 90^\\circ\\) and \\(\\theta = 11.25^\\circ\\). This is admissible because \\(6\\theta = 67.5^\\circ\\) does lie strictly between \\(0\\) and \\(90^\\circ\\). Then \\(4\\theta = 45^\\circ\\), so \\(\\sec 4\\theta = \\sec 45^\\circ = \\sqrt{2}\\)."
     },
     {
       "number": 55,
@@ -393,14 +411,16 @@
       "answer": "A",
       "value": "256/3 = 85.33 feet, approximately 85 feet",
       "confidence": "MED",
-      "reasoning": "STEM DEFECTIVE AS PRINTED. Taking the pole strictly between the bases at 75 ft from the shorter tower, collinearity of (0,40), (75,6), (100,H) forces H = -5.33, i.e. no tower at all; the mirrored placements give H = -96 or H = 20.6 (shorter than 40, contradicting 'taller'). The only consistent reading is the pole on the LINE through the two bases but outside the segment, 75 ft beyond the shorter tower: (-75,6), (0,40), (100,H) gives H = 40 + 100(34/75) = 256/3 = 85.33, matching option A and the word 'approximately'. Runner-up: none of the options - B, C, D would need the pole at 48.6, 40 or 34 ft respectively, not 75. Marked MED only because the literal 'on the line joining the base of two towers' reading is unsatisfiable."
+      "reasoning": "STEM DEFECTIVE AS PRINTED. Taking the pole strictly between the bases at 75 ft from the shorter tower, collinearity of (0,40), (75,6), (100,H) forces H = -5.33, i.e. no tower at all; the mirrored placements give H = -96 or H = 20.6 (shorter than 40, contradicting 'taller'). The only consistent reading is the pole on the LINE through the two bases but outside the segment, 75 ft beyond the shorter tower: (-75,6), (0,40), (100,H) gives H = 40 + 100(34/75) = 256/3 = 85.33, matching option A and the word 'approximately'. Runner-up: none of the options - B, C, D would need the pole at 48.6, 40 or 34 ft respectively, not 75. Marked MED only because the literal 'on the line joining the base of two towers' reading is unsatisfiable.",
+      "solution": "Read literally the question cannot be answered: if the pole stands between the two bases, collinearity of \\((0,40)\\), \\((75,6)\\) and \\((100,H)\\) forces \\(H\\) negative, and the other in-between placements give a tower shorter than \\(40\\) feet, contradicting \"taller\". The reading that works is the pole on the same straight line but \\(75\\) feet beyond the shorter tower, outside the gap. Collinearity of \\((-75,6)\\), \\((0,40)\\) and \\((100,H)\\) then gives \\(H = 40 + 100\\times\\dfrac{34}{75} = \\dfrac{256}{3} \\approx 85.3\\) feet, which is why the question says \"approximately\" \u2014 about \\(85\\) feet."
     },
     {
       "number": 57,
       "answer": "B",
       "value": "sqrt(pq)",
       "confidence": "HIGH",
-      "reasoning": "h = p tan 27 = q tan 63. Since 27 + 63 = 90, tan 63 = cot 27, so h^2 = pq tan 27 cot 27 = pq and h = sqrt(pq)."
+      "reasoning": "h = p tan 27 = q tan 63. Since 27 + 63 = 90, tan 63 = cot 27, so h^2 = pq tan 27 cot 27 = pq and h = sqrt(pq).",
+      "solution": "If \\(h\\) is the height then \\(h = p\\tan 27^\\circ\\) and \\(h = q\\tan 63^\\circ\\). Because \\(27^\\circ + 63^\\circ = 90^\\circ\\), \\(\\tan 63^\\circ = \\cot 27^\\circ\\), so multiplying the two relations gives \\(h^{2} = pq\\tan 27^\\circ\\cot 27^\\circ = pq\\). Hence \\(h = \\sqrt{pq}\\)."
     },
     {
       "number": 58,
@@ -414,14 +434,16 @@
       "answer": "B",
       "value": "sec theta",
       "confidence": "HIGH",
-      "reasoning": "cos/(1+sin) + tan = [cos^2 + sin + sin^2]/[cos(1+sin)] = (1+sin)/[cos(1+sin)] = 1/cos = sec theta. sympy simplify returns 1/cos(theta)."
+      "reasoning": "cos/(1+sin) + tan = [cos^2 + sin + sin^2]/[cos(1+sin)] = (1+sin)/[cos(1+sin)] = 1/cos = sec theta. sympy simplify returns 1/cos(theta).",
+      "solution": "Since \\(\\dfrac{1}{\\cot\\theta} = \\tan\\theta\\), the expression is \\(\\dfrac{\\cos\\theta}{1+\\sin\\theta} + \\dfrac{\\sin\\theta}{\\cos\\theta}\\). Over the common denominator \\(\\cos\\theta\\,(1+\\sin\\theta)\\) the numerator is \\(\\cos^{2}\\theta + \\sin\\theta + \\sin^{2}\\theta = 1 + \\sin\\theta\\). Cancelling the factor \\(1+\\sin\\theta\\) leaves \\(\\dfrac{1}{\\cos\\theta} = \\sec\\theta\\)."
     },
     {
       "number": 60,
       "answer": "A",
       "value": "0",
       "confidence": "HIGH",
-      "reasoning": "(sin - cos + 1)/(sin + cos - 1) equals (1 + sin)/cos identically (multiply numerator and denominator by (sin + cos + 1) and use sin^2 + cos^2 = 1), so the difference is 0. sympy simplify returns 0 and four non-special numeric test points (0.3, 1.1, 2.4, -0.7 rad) all return 0 to machine precision."
+      "reasoning": "(sin - cos + 1)/(sin + cos - 1) equals (1 + sin)/cos identically (multiply numerator and denominator by (sin + cos + 1) and use sin^2 + cos^2 = 1), so the difference is 0. sympy simplify returns 0 and four non-special numeric test points (0.3, 1.1, 2.4, -0.7 rad) all return 0 to machine precision.",
+      "solution": "Multiply the numerator and denominator of the first fraction by \\(\\sin\\theta + \\cos\\theta + 1\\) and use \\(\\sin^{2}\\theta + \\cos^{2}\\theta = 1\\); the first fraction simplifies to \\(\\dfrac{1+\\sin\\theta}{\\cos\\theta}\\). That is exactly the second fraction, so the difference is \\(0\\) wherever both terms are defined."
     },
     {
       "number": 61,
@@ -442,35 +464,40 @@
       "answer": "C",
       "value": "79/65",
       "confidence": "HIGH",
-      "reasoning": "cot theta = 63/16 gives a 16-63-65 right triangle (16^2 + 63^2 = 4225 = 65^2). In the first quadrant sin = 16/65 and cos = 63/65, so the sum is 79/65."
+      "reasoning": "cot theta = 63/16 gives a 16-63-65 right triangle (16^2 + 63^2 = 4225 = 65^2). In the first quadrant sin = 16/65 and cos = 63/65, so the sum is 79/65.",
+      "solution": "\\(\\cot\\theta = \\dfrac{63}{16}\\) corresponds to a right triangle with legs \\(16\\) and \\(63\\), whose hypotenuse is \\(\\sqrt{16^{2}+63^{2}} = \\sqrt{4225} = 65\\). In the first quadrant both ratios are positive, so \\(\\sin\\theta = \\dfrac{16}{65}\\) and \\(\\cos\\theta = \\dfrac{63}{65}\\). Their sum is \\(\\dfrac{79}{65}\\)."
     },
     {
       "number": 64,
       "answer": "D",
       "value": "5",
       "confidence": "HIGH",
-      "reasoning": "sin^4 + cos^4 = (sin^2 + cos^2)^2 - 2 sin^2 cos^2 = 1 - 2 sin^2 cos^2, which is exactly the numerator, so the fraction is 1 and the expression is 1 + 4 = 5. sympy simplify returns 5."
+      "reasoning": "sin^4 + cos^4 = (sin^2 + cos^2)^2 - 2 sin^2 cos^2 = 1 - 2 sin^2 cos^2, which is exactly the numerator, so the fraction is 1 and the expression is 1 + 4 = 5. sympy simplify returns 5.",
+      "solution": "Note that \\(\\sin^{4}\\theta + \\cos^{4}\\theta = \\left(\\sin^{2}\\theta+\\cos^{2}\\theta\\right)^{2} - 2\\sin^{2}\\theta\\cos^{2}\\theta = 1 - 2\\sin^{2}\\theta\\cos^{2}\\theta\\), which is precisely the numerator. The fraction is therefore \\(1\\) for every \\(\\theta\\), and the whole expression is \\(1 + 4 = 5\\)."
     },
     {
       "number": 65,
       "answer": "A",
       "value": "775/168",
       "confidence": "HIGH",
-      "reasoning": "Diagonal = sqrt(48^2 + 14^2) = 50. With theta the angle to the longer side, sec theta = 50/48 = 25/24 and cosec theta = 50/14 = 25/7. Sum = 25(7 + 24)/168 = 775/168."
+      "reasoning": "Diagonal = sqrt(48^2 + 14^2) = 50. With theta the angle to the longer side, sec theta = 50/48 = 25/24 and cosec theta = 50/14 = 25/7. Sum = 25(7 + 24)/168 = 775/168.",
+      "solution": "The diagonal of the rectangle is \\(\\sqrt{48^{2}+14^{2}} = \\sqrt{2500} = 50\\) cm. Measuring \\(\\theta\\) from the longer side, the adjacent side is \\(48\\) and the opposite side is \\(14\\), so \\(\\sec\\theta = \\dfrac{50}{48} = \\dfrac{25}{24}\\) and \\(\\operatorname{cosec}\\theta = \\dfrac{50}{14} = \\dfrac{25}{7}\\). Their sum is \\(\\dfrac{25(7+24)}{168} = \\dfrac{775}{168}\\)."
     },
     {
       "number": 66,
       "answer": "C",
       "value": "sqrt(x/y + y/z + z/x)",
       "confidence": "HIGH",
-      "reasoning": "Put p = x/y, q = y/z, r = z/x so pqr = 1 and the sides are q+r, r+p, p+q. Then s = p+q+r, s-a = p, s-b = q, s-c = r, and Heron gives area = sqrt(s p q r) = sqrt(p+q+r) = sqrt(x/y + y/z + z/x). Checked with p=2, q=3, r=1/6: Heron gives sqrt(186)/6 = 2.27303, equal to sqrt(p+q+r)."
+      "reasoning": "Put p = x/y, q = y/z, r = z/x so pqr = 1 and the sides are q+r, r+p, p+q. Then s = p+q+r, s-a = p, s-b = q, s-c = r, and Heron gives area = sqrt(s p q r) = sqrt(p+q+r) = sqrt(x/y + y/z + z/x). Checked with p=2, q=3, r=1/6: Heron gives sqrt(186)/6 = 2.27303, equal to sqrt(p+q+r).",
+      "solution": "Put \\(p = \\dfrac{x}{y}\\), \\(q = \\dfrac{y}{z}\\), \\(r = \\dfrac{z}{x}\\), so that \\(pqr = 1\\) and the three sides are \\(q+r\\), \\(r+p\\) and \\(p+q\\). The semi-perimeter is then \\(s = p+q+r\\), with \\(s-a = p\\), \\(s-b = q\\) and \\(s-c = r\\). Heron's formula gives area \\(= \\sqrt{s\\,pqr} = \\sqrt{p+q+r} = \\sqrt{\\dfrac{x}{y}+\\dfrac{y}{z}+\\dfrac{z}{x}}\\)."
     },
     {
       "number": 67,
       "answer": "C",
       "value": "(sqrt(3)+1)/2 sq cm",
       "confidence": "HIGH",
-      "reasoning": "Third angle = 105 deg and the given side c = sqrt(3)+1 is opposite it. Area = (1/2) c^2 sin A sin B / sin C = (1/2)(4 + 2 sqrt 3)(1/2)(sqrt2/2)/((sqrt6+sqrt2)/4), which sympy simplifies to (1 + sqrt 3)/2 = 1.36603 - exactly option C."
+      "reasoning": "Third angle = 105 deg and the given side c = sqrt(3)+1 is opposite it. Area = (1/2) c^2 sin A sin B / sin C = (1/2)(4 + 2 sqrt 3)(1/2)(sqrt2/2)/((sqrt6+sqrt2)/4), which sympy simplifies to (1 + sqrt 3)/2 = 1.36603 - exactly option C.",
+      "solution": "The third angle is \\(180^\\circ - 30^\\circ - 45^\\circ = 105^\\circ\\), and the given side lies between the \\(30^\\circ\\) and \\(45^\\circ\\) angles, so it is opposite the \\(105^\\circ\\) angle. Using area \\(= \\dfrac{c^{2}\\sin A\\,\\sin B}{2\\sin C}\\) with \\(c = \\sqrt{3}+1\\), \\(\\sin 30^\\circ = \\dfrac{1}{2}\\), \\(\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}\\) and \\(\\sin 105^\\circ = \\dfrac{\\sqrt{6}+\\sqrt{2}}{4}\\), this reduces to \\(\\dfrac{1}{2}\\left(\\sqrt{3}+1\\right)\\) square centimetres, about \\(1.37\\)."
     },
     {
       "number": 68,
@@ -484,7 +511,8 @@
       "answer": "B",
       "value": "d = 16 + 4 sqrt(7) = 26.583 cm, so 26 < d < 27",
       "confidence": "MED",
-      "reasoning": "Half-chord 12; distances from the centres to the chord are sqrt(400-144) = 16 and sqrt(256-144) = 4 sqrt 7 = 10.583. With the centres on opposite sides of the common chord, d = 26.583, which is option B. Runner-up A (d < 26): the same-side configuration d = 16 - 10.583 = 5.417 is also a genuine pair of intersecting circles with a 24 cm common chord (verified: half-chord recomputes to exactly 12), so option A is technically satisfiable too. B wins on the standard configuration and is the only option that pins d to a 1 cm band."
+      "reasoning": "Half-chord 12; distances from the centres to the chord are sqrt(400-144) = 16 and sqrt(256-144) = 4 sqrt 7 = 10.583. With the centres on opposite sides of the common chord, d = 26.583, which is option B. Runner-up A (d < 26): the same-side configuration d = 16 - 10.583 = 5.417 is also a genuine pair of intersecting circles with a 24 cm common chord (verified: half-chord recomputes to exactly 12), so option A is technically satisfiable too. B wins on the standard configuration and is the only option that pins d to a 1 cm band.",
+      "solution": "The line of centres bisects the common chord at right angles, so the centres stand \\(\\sqrt{20^{2}-12^{2}} = 16\\) cm and \\(\\sqrt{16^{2}-12^{2}} = 4\\sqrt{7} \\approx 10.58\\) cm from the chord. With the centres on opposite sides of the chord, \\(d = 16 + 4\\sqrt{7} \\approx 26.58\\) cm, which lies between \\(26\\) cm and \\(27\\) cm. The question is loose here: both centres on the same side is also a genuine pair of intersecting circles with a \\(24\\) cm common chord, and it would give \\(d = 16 - 4\\sqrt{7} \\approx 5.42\\) cm. The standard configuration is the opposite-side one, so \\(26 < d < 27\\)."
     },
     {
       "number": 70,
@@ -498,28 +526,32 @@
       "answer": "B",
       "value": "10 cm and 6 cm",
       "confidence": "HIGH",
-      "reasoning": "Internal touching gives r1 - r2 = 4, and r1^2 + r2^2 = 136. Then 16 = 136 - 2 r1 r2 so r1 r2 = 60 and (r1+r2)^2 = 256, r1 + r2 = 16. Hence r1 = 10, r2 = 6. sympy returns (10, 6) as the positive solution."
+      "reasoning": "Internal touching gives r1 - r2 = 4, and r1^2 + r2^2 = 136. Then 16 = 136 - 2 r1 r2 so r1 r2 = 60 and (r1+r2)^2 = 256, r1 + r2 = 16. Hence r1 = 10, r2 = 6. sympy returns (10, 6) as the positive solution.",
+      "solution": "Internal contact gives \\(r_{1} - r_{2} = 4\\), and equal total area gives \\(\\pi\\!\\left(r_{1}^{2}+r_{2}^{2}\\right) = 136\\pi\\), so \\(r_{1}^{2}+r_{2}^{2} = 136\\). Squaring the first relation, \\(16 = 136 - 2r_{1}r_{2}\\), so \\(r_{1}r_{2} = 60\\) and \\(\\left(r_{1}+r_{2}\\right)^{2} = 136 + 120 = 256\\), giving \\(r_{1}+r_{2} = 16\\). With \\(r_{1}-r_{2} = 4\\) the radii are \\(10\\) cm and \\(6\\) cm."
     },
     {
       "number": 72,
       "answer": "C",
       "value": "sqrt(pi)/2",
       "confidence": "HIGH",
-      "reasoning": "pi r^2 = a^2 gives a = r sqrt(pi). Ratio of perimeters = 2 pi r / (4 r sqrt pi) = pi/(2 sqrt pi) = sqrt(pi)/2."
+      "reasoning": "pi r^2 = a^2 gives a = r sqrt(pi). Ratio of perimeters = 2 pi r / (4 r sqrt pi) = pi/(2 sqrt pi) = sqrt(pi)/2.",
+      "solution": "Equal areas give \\(\\pi r^{2} = a^{2}\\), so the side of the square is \\(a = r\\sqrt{\\pi}\\). The ratio of the perimeters is then \\(\\dfrac{2\\pi r}{4a} = \\dfrac{2\\pi r}{4r\\sqrt{\\pi}} = \\dfrac{\\pi}{2\\sqrt{\\pi}} = \\dfrac{\\sqrt{\\pi}}{2}\\)."
     },
     {
       "number": 73,
       "answer": "D",
       "value": "8(3 - 2 sqrt 2) cm",
       "confidence": "HIGH",
-      "reasoning": "Big circle radius 4, centre (4,4), so its centre is 4 sqrt 2 from the corner. Small circle radius r has centre (r,r) at distance r sqrt 2 from the corner, and external tangency needs 4 sqrt 2 - r sqrt 2 = 4 + r, giving r = 4(3 - 2 sqrt 2) = 0.6863. Tangency verified: distance between centres = sqrt2(4-r) = 4.68629 = 4 + r. The question asks for the DIAMETER, so 8(3 - 2 sqrt 2)."
+      "reasoning": "Big circle radius 4, centre (4,4), so its centre is 4 sqrt 2 from the corner. Small circle radius r has centre (r,r) at distance r sqrt 2 from the corner, and external tangency needs 4 sqrt 2 - r sqrt 2 = 4 + r, giving r = 4(3 - 2 sqrt 2) = 0.6863. Tangency verified: distance between centres = sqrt2(4-r) = 4.68629 = 4 + r. The question asks for the DIAMETER, so 8(3 - 2 sqrt 2).",
+      "solution": "Take the two lines as the axes. The given circle has radius \\(4\\) and centre \\((4,4)\\), so its centre is \\(4\\sqrt{2}\\) from the corner. A smaller circle of radius \\(r\\) touching both lines has centre \\((r,r)\\), at distance \\(r\\sqrt{2}\\) from the corner, and touching the big circle externally requires \\(4\\sqrt{2} - r\\sqrt{2} = 4 + r\\). This gives \\(r = 4\\!\\left(3-2\\sqrt{2}\\right)\\), and since the question asks for the diameter the value is \\(8\\!\\left(3-2\\sqrt{2}\\right)\\) cm."
     },
     {
       "number": 74,
       "answer": "C",
       "value": "8/3 litre",
       "confidence": "MED",
-      "reasoning": "Inner curved surface = 2 pi (3)(7) = 42 pi, which takes 1 litre. All surfaces of the hollow cylinder = inner curved 42 pi + outer curved 2 pi (4)(7) = 56 pi + two annular rims 2 pi (16 - 9) = 14 pi, total 112 pi. Ratio 112/42 = 8/3 litre. Runner-up A (7/3): that is what you get if 'all the surfaces' is read as only the two curved surfaces, dropping the rims - A would win if the rims were not counted."
+      "reasoning": "Inner curved surface = 2 pi (3)(7) = 42 pi, which takes 1 litre. All surfaces of the hollow cylinder = inner curved 42 pi + outer curved 2 pi (4)(7) = 56 pi + two annular rims 2 pi (16 - 9) = 14 pi, total 112 pi. Ratio 112/42 = 8/3 litre. Runner-up A (7/3): that is what you get if 'all the surfaces' is read as only the two curved surfaces, dropping the rims - A would win if the rims were not counted.",
+      "solution": "The inner curved surface is \\(2\\pi(3)(7) = 42\\pi\\), and painting it takes one litre. All the surfaces of this hollow cylinder are the inner curved \\(42\\pi\\), the outer curved \\(2\\pi(4)(7) = 56\\pi\\), and the two annular rims \\(2\\pi\\!\\left(4^{2}-3^{2}\\right) = 14\\pi\\), giving \\(112\\pi\\) in total. The paint needed is therefore \\(\\dfrac{112\\pi}{42\\pi} = \\dfrac{8}{3}\\) litre. Note that counting only the two curved surfaces and ignoring the rims would give \\(\\dfrac{7}{3}\\) litre \u2014 the rims are what the phrase \"all the surfaces\" adds."
     },
     {
       "number": 75,
@@ -540,14 +572,16 @@
       "answer": "D",
       "value": "850 pi square feet",
       "confidence": "HIGH",
-      "reasoning": "Remaining fraction = 340/360 = 17/18 of pi(30)^2 = 900 pi, giving 850 pi square feet."
+      "reasoning": "Remaining fraction = 340/360 = 17/18 of pi(30)^2 = 900 pi, giving 850 pi square feet.",
+      "solution": "Removing a \\(20^\\circ\\) sector leaves \\(\\dfrac{360-20}{360} = \\dfrac{17}{18}\\) of the disc. The full disc has area \\(\\pi(30)^{2} = 900\\pi\\), so the remaining region measures \\(\\dfrac{17}{18}\\times 900\\pi = 850\\pi\\) square feet."
     },
     {
       "number": 78,
       "answer": "B",
       "value": "(3/4) AB^2",
       "confidence": "HIGH",
-      "reasoning": "In triangle ABD, angle A = 60 deg and angle ADB = 90 deg, so AB is the hypotenuse and BD = AB sin 60 = AB sqrt3/2. Hence BD^2 = (3/4) AB^2."
+      "reasoning": "In triangle ABD, angle A = 60 deg and angle ADB = 90 deg, so AB is the hypotenuse and BD = AB sin 60 = AB sqrt3/2. Hence BD^2 = (3/4) AB^2.",
+      "solution": "In triangle \\(ABD\\) we have \\(\\angle BAD = 60^\\circ\\) and \\(\\angle ADB = 90^\\circ\\), so \\(AB\\) is the hypotenuse. Hence \\(BD = AB\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}AB\\). Squaring gives \\(BD^{2} = \\dfrac{3}{4}AB^{2}\\)."
     },
     {
       "number": 79,
@@ -561,7 +595,8 @@
       "answer": "D",
       "value": "30.8 cubic metre",
       "confidence": "HIGH",
-      "reasoning": "Volume = pi r^2 h = (22/7)(1.4)^2(5) = 22 x 0.28 x 5 = 30.8 cubic metre."
+      "reasoning": "Volume = pi r^2 h = (22/7)(1.4)^2(5) = 22 x 0.28 x 5 = 30.8 cubic metre.",
+      "solution": "The well is a cylinder, so the earth removed is \\(\\pi r^{2}h = \\dfrac{22}{7}\\times(1.4)^{2}\\times 5\\). Since \\(\\dfrac{22}{7}\\times 1.96 = 6.16\\), the volume is \\(6.16\\times 5 = 30.8\\) cubic metres."
     },
     {
       "number": 81,
@@ -575,7 +610,8 @@
       "answer": "C",
       "value": "1, 1, 1",
       "confidence": "HIGH",
-      "reasoning": "The largest side is 5 z^(1/3), so 9x^2 + 16y = 25 z^(2/3). x = y = z = 1 gives 9 + 16 = 25 and the sides 3 < 4 < 5 satisfy the stated ordering, so the minimum integral values are 1, 1, 1 - no smaller positive integers exist."
+      "reasoning": "The largest side is 5 z^(1/3), so 9x^2 + 16y = 25 z^(2/3). x = y = z = 1 gives 9 + 16 = 25 and the sides 3 < 4 < 5 satisfy the stated ordering, so the minimum integral values are 1, 1, 1 - no smaller positive integers exist.",
+      "solution": "The largest side is \\(5\\sqrt[3]{z}\\), so the right angle faces it and \\((3x)^{2} + \\left(4\\sqrt{y}\\right)^{2} = \\left(5\\sqrt[3]{z}\\right)^{2}\\), that is \\(9x^{2} + 16y = 25z^{2/3}\\). Taking \\(x = y = z = 1\\) gives \\(9 + 16 = 25\\), and the sides become \\(3 < 4 < 5\\), which respects the ordering the question states. No smaller positive integers exist, so the minimum values are \\(1,\\ 1,\\ 1\\)."
     },
     {
       "number": 83,
@@ -589,63 +625,72 @@
       "answer": "A",
       "value": "pi = 3.14 cm",
       "confidence": "HIGH",
-      "reasoning": "Arc length = r theta with theta in radians = 6 x (30 pi/180) = pi = 3.14 cm."
+      "reasoning": "Arc length = r theta with theta in radians = 6 x (30 pi/180) = pi = 3.14 cm.",
+      "solution": "Convert the angle to radians: \\(30^\\circ = \\dfrac{\\pi}{6}\\). The arc length is \\(r\\theta = 6\\times\\dfrac{\\pi}{6} = \\pi \\approx 3.14\\) cm."
     },
     {
       "number": 85,
       "answer": "C",
       "value": "6.2 m",
       "confidence": "HIGH",
-      "reasoning": "Base distance on the first side = sqrt(25 - 4.8^2) = sqrt(1.96) = 1.4 m; on the second side = sqrt(25 - 1.4^2) = sqrt(23.04) = 4.8 m. Breadth = 1.4 + 4.8 = 6.2 m."
+      "reasoning": "Base distance on the first side = sqrt(25 - 4.8^2) = sqrt(1.96) = 1.4 m; on the second side = sqrt(25 - 1.4^2) = sqrt(23.04) = 4.8 m. Breadth = 1.4 + 4.8 = 6.2 m.",
+      "solution": "On the first side the foot of the ladder stands \\(\\sqrt{5^{2}-(4.8)^{2}} = \\sqrt{1.96} = 1.4\\) m from that wall. Turned over to the opposite wall without moving the base, the ladder reaches \\(1.4\\) m up, so its foot is \\(\\sqrt{5^{2}-(1.4)^{2}} = \\sqrt{23.04} = 4.8\\) m from that wall. The breadth of the room is \\(1.4 + 4.8 = 6.2\\) m."
     },
     {
       "number": 86,
       "answer": "D",
       "value": "2 square units",
       "confidence": "HIGH",
-      "reasoning": "The largest inscribed square has the circle's diameter as its diagonal, so diagonal = 2, side = sqrt 2, area = 2 square units."
+      "reasoning": "The largest inscribed square has the circle's diameter as its diagonal, so diagonal = 2, side = sqrt 2, area = 2 square units.",
+      "solution": "The largest square inscribed in a circle has the diameter as its diagonal, so the diagonal is \\(2\\) units. Its side is then \\(\\dfrac{2}{\\sqrt{2}} = \\sqrt{2}\\), and the area is \\(\\left(\\sqrt{2}\\right)^{2} = 2\\) square units."
     },
     {
       "number": 87,
       "answer": "D",
       "value": "((sqrt3 + 2 sqrt2)/sqrt3) r",
       "confidence": "HIGH",
-      "reasoning": "The three lower centres lie at height r forming an equilateral triangle of side 2r, whose circumradius is 2r/sqrt3. The top centre is 2r from each, so it sits 2r sqrt(1 - 1/3) = 2r sqrt(2/3) above their plane. Distance from the ground plane = r + 2r sqrt(2/3) = 2.63299 r. Option D evaluates to 2.63299 r; option A (2 sqrt(2/3) r = 1.63299 r) omits the +r. [Adjudicated against the external prep-house key for this sitting, which gives option A. The key is wrong: A is exactly this value MINUS r, i.e. the height of the 4th centre above the plane of the three lower CENTRES, whereas the question asks for its distance from the plane the three balls rest on. Option D is algebraically exact.]"
+      "reasoning": "The three lower centres lie at height r forming an equilateral triangle of side 2r, whose circumradius is 2r/sqrt3. The top centre is 2r from each, so it sits 2r sqrt(1 - 1/3) = 2r sqrt(2/3) above their plane. Distance from the ground plane = r + 2r sqrt(2/3) = 2.63299 r. Option D evaluates to 2.63299 r; option A (2 sqrt(2/3) r = 1.63299 r) omits the +r. [Adjudicated against the external prep-house key for this sitting, which gives option A. The key is wrong: A is exactly this value MINUS r, i.e. the height of the 4th centre above the plane of the three lower CENTRES, whereas the question asks for its distance from the plane the three balls rest on. Option D is algebraically exact.]",
+      "solution": "The three lower centres sit at height \\(r\\) and form an equilateral triangle of side \\(2r\\), whose circumradius is \\(\\dfrac{2r}{\\sqrt{3}}\\). The fourth centre is \\(2r\\) from each of them, so it stands \\(\\sqrt{(2r)^{2} - \\dfrac{4r^{2}}{3}} = 2r\\sqrt{\\dfrac{2}{3}}\\) above the plane containing those three centres. Measured from the ground the distance is \\(r + 2r\\sqrt{\\dfrac{2}{3}} = \\dfrac{\\sqrt{3}+2\\sqrt{2}}{\\sqrt{3}}\\,r \\approx 2.633\\,r\\). Beware the common slip of quoting \\(2\\sqrt{\\dfrac{2}{3}}\\,r\\), which is the height above the lower centres and omits the radius \\(r\\) up to them."
     },
     {
       "number": 88,
       "answer": "A",
       "value": "p = q",
       "confidence": "HIGH",
-      "reasoning": "The enclosing cylinder has the same radius r and height 2r. Sphere surface p = 4 pi r^2; cylinder curved surface q = 2 pi r (2r) = 4 pi r^2. So p = q."
+      "reasoning": "The enclosing cylinder has the same radius r and height 2r. Sphere surface p = 4 pi r^2; cylinder curved surface q = 2 pi r (2r) = 4 pi r^2. So p = q.",
+      "solution": "A cylinder that just encloses a sphere of radius \\(r\\) has the same radius \\(r\\) and height \\(2r\\). The sphere's surface area is \\(p = 4\\pi r^{2}\\), and the cylinder's curved surface is \\(q = 2\\pi r(2r) = 4\\pi r^{2}\\). The two are equal, so \\(p = q\\)."
     },
     {
       "number": 89,
       "answer": "A",
       "value": "269.2, approximately 269 sq units",
       "confidence": "HIGH",
-      "reasoning": "AD = DC = CA = 20 makes ACD equilateral, area = (sqrt3/4)(400) = 173.21. In ABC, angle B = 90 with hypotenuse AC = 20 and BC = 12, so AB = 16 and area = (1/2)(12)(16) = 96. Total = 269.21, i.e. about 269."
+      "reasoning": "AD = DC = CA = 20 makes ACD equilateral, area = (sqrt3/4)(400) = 173.21. In ABC, angle B = 90 with hypotenuse AC = 20 and BC = 12, so AB = 16 and area = (1/2)(12)(16) = 96. Total = 269.21, i.e. about 269.",
+      "solution": "Since \\(AD = DC = CA = 20\\), triangle \\(ACD\\) is equilateral with area \\(\\dfrac{\\sqrt{3}}{4}(20)^{2} = 100\\sqrt{3} \\approx 173.2\\). In triangle \\(ABC\\) the right angle at \\(B\\) makes \\(AC = 20\\) the hypotenuse, so \\(AB = \\sqrt{20^{2}-12^{2}} = 16\\) and its area is \\(\\dfrac{1}{2}(12)(16) = 96\\). The quadrilateral therefore measures about \\(173.2 + 96 \\approx 269\\) square units."
     },
     {
       "number": 90,
       "answer": "B",
       "value": "5 : 13",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ: big circle radius 9 with diameter PS = 18 split into three equal parts PQ = QR = RS = 6; a semicircle on QS (diameter 12, radius 6) is drawn on the upper side, and the hatching is the part of the UPPER half of the big circle lying outside that semicircle. Shaded = (1/2)pi(81) - (1/2)pi(36) = 22.5 pi. Unshaded = 81 pi - 22.5 pi = 58.5 pi. Ratio 22.5 : 58.5 = 5 : 13."
+      "reasoning": "FIGURE READ: big circle radius 9 with diameter PS = 18 split into three equal parts PQ = QR = RS = 6; a semicircle on QS (diameter 12, radius 6) is drawn on the upper side, and the hatching is the part of the UPPER half of the big circle lying outside that semicircle. Shaded = (1/2)pi(81) - (1/2)pi(36) = 22.5 pi. Unshaded = 81 pi - 22.5 pi = 58.5 pi. Ratio 22.5 : 58.5 = 5 : 13.",
+      "solution": "The big circle has radius \\(9\\), so \\(PS = 18\\) and each of \\(PQ\\), \\(QR\\), \\(RS\\) is \\(6\\); the semicircle drawn on \\(QS\\) has diameter \\(12\\) and radius \\(6\\). The shaded part is the upper half of the big circle with that semicircle removed: \\(\\dfrac{1}{2}\\pi\\!\\left(9^{2}\\right) - \\dfrac{1}{2}\\pi\\!\\left(6^{2}\\right) = 22.5\\pi\\). The unshaded part is the rest of the disc, \\(81\\pi - 22.5\\pi = 58.5\\pi\\), so the ratio is \\(22.5 : 58.5 = 5 : 13\\)."
     },
     {
       "number": 91,
       "answer": "A",
       "value": "4 sqrt(3) - 2 pi sq cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ: three equal circles of radius 2 touching pairwise, centres A, B, C forming an equilateral triangle of side 4; the hatched region is the curvilinear triangle between the three circles, inside triangle ABC. Area = (sqrt3/4)(16) - 3 x (60/360) pi (4) = 4 sqrt3 - 2 pi = 0.645 sq cm."
+      "reasoning": "FIGURE READ: three equal circles of radius 2 touching pairwise, centres A, B, C forming an equilateral triangle of side 4; the hatched region is the curvilinear triangle between the three circles, inside triangle ABC. Area = (sqrt3/4)(16) - 3 x (60/360) pi (4) = 4 sqrt3 - 2 pi = 0.645 sq cm.",
+      "solution": "The three centres form an equilateral triangle of side \\(4\\) cm \u2014 twice the radius \u2014 with area \\(\\dfrac{\\sqrt{3}}{4}\\!\\left(4^{2}\\right) = 4\\sqrt{3}\\). Inside that triangle each circle contributes a \\(60^\\circ\\) sector, and the three sectors together measure \\(3\\times\\dfrac{60}{360}\\times\\pi\\!\\left(2^{2}\\right) = 2\\pi\\). The curvilinear region left between the circles is \\(4\\sqrt{3} - 2\\pi \\approx 0.64\\) square centimetres."
     },
     {
       "number": 92,
       "answer": "B",
       "value": "3(4 pi - 3 sqrt 3) sq units",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ: a rectangle 6 sqrt 3 by 6 inscribed in a circle; the hatched region is the circular segment above the rectangle's top side. Diagonal = sqrt(108 + 36) = 12, so radius 6. The top side is a chord of length 6 sqrt 3 at distance 3 from the centre; half-chord/radius = sqrt3/2 so the central angle is 120 deg. Segment = (120/360) pi (36) - (1/2)(6 sqrt3)(3) = 12 pi - 9 sqrt 3 = 22.1107 = 3(4 pi - 3 sqrt 3)."
+      "reasoning": "FIGURE READ: a rectangle 6 sqrt 3 by 6 inscribed in a circle; the hatched region is the circular segment above the rectangle's top side. Diagonal = sqrt(108 + 36) = 12, so radius 6. The top side is a chord of length 6 sqrt 3 at distance 3 from the centre; half-chord/radius = sqrt3/2 so the central angle is 120 deg. Segment = (120/360) pi (36) - (1/2)(6 sqrt3)(3) = 12 pi - 9 sqrt 3 = 22.1107 = 3(4 pi - 3 sqrt 3).",
+      "solution": "The rectangle's diagonal is \\(\\sqrt{\\left(6\\sqrt{3}\\right)^{2} + 6^{2}} = \\sqrt{144} = 12\\), so the circle has radius \\(6\\). The top side is a chord of length \\(6\\sqrt{3}\\) lying \\(3\\) units from the centre, and since \\(\\dfrac{3\\sqrt{3}}{6} = \\dfrac{\\sqrt{3}}{2}\\) it subtends \\(120^\\circ\\). The shaded segment is \\(\\dfrac{120}{360}\\pi\\!\\left(6^{2}\\right) - \\dfrac{1}{2}\\!\\left(6\\sqrt{3}\\right)(3) = 12\\pi - 9\\sqrt{3} = 3\\!\\left(4\\pi - 3\\sqrt{3}\\right)\\) square units."
     },
     {
       "number": 93,
@@ -659,7 +704,8 @@
       "answer": "D",
       "value": "22 sqrt(2)/3 sq cm",
       "confidence": "HIGH",
-      "reasoning": "With DC = 7 and AB = 4, the horizontal offsets satisfy u + v = 3, u^2 + h^2 = 4, v^2 + h^2 = 9. Then v^2 - u^2 = 5 gives v - u = 5/3, so u = 2/3, v = 7/3 and h = 4 sqrt2/3. Area = (1/2)(4+7)h = 22 sqrt2/3 = 10.3709. sympy gives the unique positive solution."
+      "reasoning": "With DC = 7 and AB = 4, the horizontal offsets satisfy u + v = 3, u^2 + h^2 = 4, v^2 + h^2 = 9. Then v^2 - u^2 = 5 gives v - u = 5/3, so u = 2/3, v = 7/3 and h = 4 sqrt2/3. Area = (1/2)(4+7)h = 22 sqrt2/3 = 10.3709. sympy gives the unique positive solution.",
+      "solution": "Drop perpendiculars of height \\(h\\) from \\(A\\) and \\(B\\) onto \\(DC\\); they cut off horizontal pieces \\(u\\) and \\(v\\) with \\(u+v = 7-4 = 3\\), while \\(u^{2}+h^{2} = 2^{2}\\) and \\(v^{2}+h^{2} = 3^{2}\\). Subtracting gives \\(v^{2}-u^{2} = 5\\), so \\(v-u = \\dfrac{5}{3}\\), whence \\(u = \\dfrac{2}{3}\\), \\(v = \\dfrac{7}{3}\\) and \\(h = \\dfrac{4\\sqrt{2}}{3}\\). The area is \\(\\dfrac{1}{2}(4+7)h = \\dfrac{22\\sqrt{2}}{3}\\) square centimetres."
     },
     {
       "number": 95,
@@ -687,14 +733,16 @@
       "answer": "D",
       "value": "462 square units",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ: semicircle ABC on AC (above) plus semicircles AEF on AF and CDF on FC (below). AC = 28 so radius 14; F is the midpoint so AF = FC = 14 and the two small radii are 7. Total = (1/2)pi(196) + 2 x (1/2)pi(49) = 98 pi + 49 pi = 147 pi = 147 x 22/7 = 462 square units."
+      "reasoning": "FIGURE READ: semicircle ABC on AC (above) plus semicircles AEF on AF and CDF on FC (below). AC = 28 so radius 14; F is the midpoint so AF = FC = 14 and the two small radii are 7. Total = (1/2)pi(196) + 2 x (1/2)pi(49) = 98 pi + 49 pi = 147 pi = 147 x 22/7 = 462 square units.",
+      "solution": "With \\(AC = 28\\), the large semicircle on \\(AC\\) has radius \\(14\\); since \\(F\\) is the midpoint of \\(AC\\), the semicircles on \\(AF\\) and \\(FC\\) each have diameter \\(14\\) and radius \\(7\\). The total area is \\(\\dfrac{1}{2}\\pi\\!\\left(14^{2}\\right) + 2\\times\\dfrac{1}{2}\\pi\\!\\left(7^{2}\\right) = 98\\pi + 49\\pi = 147\\pi\\). Taking \\(\\pi = \\dfrac{22}{7}\\), this is \\(147\\times\\dfrac{22}{7} = 462\\) square units."
     },
     {
       "number": 99,
       "answer": "D",
       "value": "30.54, approximately 30.5 sq cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ: an 8 by 6 rectangle inscribed in a circle, the hatched region being the circle minus the rectangle. Diagonal = sqrt(64+36) = 10, so radius 5. Circle area = 25 pi = 78.5398; minus 48 gives 30.5398, i.e. about 30.5 sq cm."
+      "reasoning": "FIGURE READ: an 8 by 6 rectangle inscribed in a circle, the hatched region being the circle minus the rectangle. Diagonal = sqrt(64+36) = 10, so radius 5. Circle area = 25 pi = 78.5398; minus 48 gives 30.5398, i.e. about 30.5 sq cm.",
+      "solution": "The rectangle measures \\(8\\) by \\(6\\), so its diagonal \u2014 which is the circle's diameter \u2014 is \\(\\sqrt{8^{2}+6^{2}} = 10\\), giving radius \\(5\\). The shaded part is the disc with the rectangle removed: \\(\\pi\\!\\left(5^{2}\\right) - (8\\times 6) = 25\\pi - 48 \\approx 78.54 - 48\\). That is about \\(30.5\\) square centimetres."
     },
     {
       "number": 100,

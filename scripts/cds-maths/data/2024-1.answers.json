@@ -8,7 +8,8 @@
       "answer": "A",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "a:b:c:d = 2:sqrt3:sqrt2:1 so a^2:b^2:c^2:d^2 = 4:3:2:1 (take a^2=4k, b^2=3k, c^2=2k, d^2=k). Numerator = (-4+3+2+1)k = 2k; denominator = (4-3+2-1)k = 2k. Ratio = 1."
+      "reasoning": "a:b:c:d = 2:sqrt3:sqrt2:1 so a^2:b^2:c^2:d^2 = 4:3:2:1 (take a^2=4k, b^2=3k, c^2=2k, d^2=k). Numerator = (-4+3+2+1)k = 2k; denominator = (4-3+2-1)k = 2k. Ratio = 1.",
+      "solution": "Squaring the ratio gives \\(a^2 : b^2 : c^2 : d^2 = 4 : 3 : 2 : 1\\), so take \\(a^2 = 4k\\), \\(b^2 = 3k\\), \\(c^2 = 2k\\), \\(d^2 = k\\). The numerator is then \\((-4 + 3 + 2 + 1)k = 2k\\) and the denominator is \\((4 - 3 + 2 - 1)k = 2k\\). The value of the fraction is \\(1\\)."
     },
     {
       "number": 2,
@@ -29,7 +30,8 @@
       "answer": "C",
       "value": "Rs. 76.25",
       "confidence": "HIGH",
-      "reasoning": "CI = 10000(1.05^3 - 1) = 10000(0.157625) = Rs. 1576.25. SI = 10000*0.05*3 = Rs. 1500. Difference = Rs. 76.25 (exact fraction 305/4)."
+      "reasoning": "CI = 10000(1.05^3 - 1) = 10000(0.157625) = Rs. 1576.25. SI = 10000*0.05*3 = Rs. 1500. Difference = Rs. 76.25 (exact fraction 305/4).",
+      "solution": "Compound interest is \\(10000\\left(1.05^3 - 1\\right) = 10000(0.157625)\\), i.e. Rs. 1576.25. Simple interest is \\(10000 \\times 0.05 \\times 3\\), i.e. Rs. 1500. The difference is Rs. 76.25."
     },
     {
       "number": 5,
@@ -50,7 +52,8 @@
       "answer": "C",
       "value": "x^2 - 2x - 100 = 0",
       "confidence": "HIGH",
-      "reasoning": "Sum 2, product -100 gives x^2 - (sum)x + product = x^2 - 2x - 100 = 0. Option B has sum -2, so it is wrong. Option A claims infinitely many equations with DIFFERENT roots, but sum and product fix the root pair (1 +/- sqrt(101)) uniquely, so all such equations are scalar multiples with identical roots. D is plainly false. C is the only defensible option."
+      "reasoning": "Sum 2, product -100 gives x^2 - (sum)x + product = x^2 - 2x - 100 = 0. Option B has sum -2, so it is wrong. Option A claims infinitely many equations with DIFFERENT roots, but sum and product fix the root pair (1 +/- sqrt(101)) uniquely, so all such equations are scalar multiples with identical roots. D is plainly false. C is the only defensible option.",
+      "solution": "A quadratic whose roots have sum \\(2\\) and product \\(-100\\) is \\(x^2 - (\\text{sum})x + (\\text{product}) = x^2 - 2x - 100 = 0\\); the version \\(x^2 + 2x - 100 = 0\\) has root sum \\(-2\\), so it does not fit. The sum and product fix the root pair \\(1 \\pm \\sqrt{101}\\) uniquely, so although the equation may be multiplied by any non-zero constant, every such equation has the SAME roots. There is therefore no family of such equations with different roots, and \\(x^2 - 2x - 100 = 0\\) is the only one."
     },
     {
       "number": 8,
@@ -64,28 +67,32 @@
       "answer": "D",
       "value": "sqrt((1-t)/(1+t))",
       "confidence": "HIGH",
-      "reasoning": "cosec79(1 - cos79) = (1-t)/sin79 = (1-t)/sqrt(1-t^2) = (1-t)/sqrt((1-t)(1+t)) = sqrt((1-t)/(1+t)). Numerically LHS = 0.824336 and option D = 0.824336; A = 1.2131, B = 0.19438, C = 5.1446."
+      "reasoning": "cosec79(1 - cos79) = (1-t)/sin79 = (1-t)/sqrt(1-t^2) = (1-t)/sqrt((1-t)(1+t)) = sqrt((1-t)/(1+t)). Numerically LHS = 0.824336 and option D = 0.824336; A = 1.2131, B = 0.19438, C = 5.1446.",
+      "solution": "With \\(t = \\cos 79^\\circ\\) we have \\(\\sin 79^\\circ = \\sqrt{1 - t^2}\\), so the expression becomes \\(\\dfrac{1 - t}{\\sqrt{1 - t^2}} = \\dfrac{1 - t}{\\sqrt{(1-t)(1+t)}} = \\sqrt{\\dfrac{1 - t}{1 + t}}\\). Numerically both sides come to \\(0.8243\\), whereas the other three expressions give \\(1.213\\), \\(0.194\\) and \\(5.145\\)."
     },
     {
       "number": 10,
       "answer": "B",
       "value": "lambda - delta",
       "confidence": "HIGH",
-      "reasoning": "Both are monic quartics, so p(x) = (x-a)(x-b)(x-g)(x-delta) and q(x) = (x-a)(x-b)(x-g)(x-lambda). p - q = (x-a)(x-b)(x-g)[(x-delta)-(x-lambda)] = (x-a)(x-b)(x-g)(lambda - delta). Dividing gives lambda - delta."
+      "reasoning": "Both are monic quartics, so p(x) = (x-a)(x-b)(x-g)(x-delta) and q(x) = (x-a)(x-b)(x-g)(x-lambda). p - q = (x-a)(x-b)(x-g)[(x-delta)-(x-lambda)] = (x-a)(x-b)(x-g)(lambda - delta). Dividing gives lambda - delta.",
+      "solution": "Both polynomials are monic quartics, so \\(p(x) = (x-\\alpha)(x-\\beta)(x-\\gamma)(x-\\delta)\\) and \\(q(x) = (x-\\alpha)(x-\\beta)(x-\\gamma)(x-\\lambda)\\). Subtracting, \\(p(x) - q(x) = (x-\\alpha)(x-\\beta)(x-\\gamma)\\left[(x-\\delta) - (x-\\lambda)\\right]\\), and the bracket collapses to the constant \\(\\lambda - \\delta\\). Dividing by \\((x-\\alpha)(x-\\beta)(x-\\gamma)\\) leaves \\(\\lambda - \\delta\\)."
     },
     {
       "number": 11,
       "answer": "B",
       "value": "p <= 1/8",
       "confidence": "HIGH",
-      "reasoning": "x^2 - x cos(theta) + p = 0 needs discriminant cos^2(theta) - 4p >= 0, i.e. p <= cos^2(theta)/4, for EVERY theta in [0, pi/4]. The minimum of cos^2 on that interval is at theta = pi/4, giving 1/2, so p <= 1/8. Option C is the reverse inequality and D is the bound for cos^2 = 1."
+      "reasoning": "x^2 - x cos(theta) + p = 0 needs discriminant cos^2(theta) - 4p >= 0, i.e. p <= cos^2(theta)/4, for EVERY theta in [0, pi/4]. The minimum of cos^2 on that interval is at theta = pi/4, giving 1/2, so p <= 1/8. Option C is the reverse inequality and D is the bound for cos^2 = 1.",
+      "solution": "Write the equation as \\(x^2 - x\\cos\\theta + p = 0\\); a real solution needs \\(\\cos^2\\theta - 4p \\ge 0\\), i.e. \\(p \\le \\tfrac14\\cos^2\\theta\\). This has to hold for EVERY \\(\\theta\\) in \\(\\left[0, \\tfrac{\\pi}{4}\\right]\\), so \\(p\\) must not exceed the SMALLEST value of \\(\\tfrac14\\cos^2\\theta\\) on that interval, which occurs at \\(\\theta = \\tfrac{\\pi}{4}\\) where \\(\\cos^2\\theta = \\tfrac12\\). Hence \\(p \\le \\tfrac18\\); the bound \\(\\tfrac14\\) would come from \\(\\cos^2\\theta = 1\\), which is the largest value rather than the smallest."
     },
     {
       "number": 12,
       "answer": "C",
       "value": "2",
       "confidence": "HIGH",
-      "reasoning": "cos^2 + 3 sin^2 + 2 = 1 + 2 sin^2 + 2 = 3 + 2 sin^2(theta) (sympy: 4 - cos 2theta). sin^2 ranges over [0,1], so the expression ranges over [3,5] and greatest minus least = 2."
+      "reasoning": "cos^2 + 3 sin^2 + 2 = 1 + 2 sin^2 + 2 = 3 + 2 sin^2(theta) (sympy: 4 - cos 2theta). sin^2 ranges over [0,1], so the expression ranges over [3,5] and greatest minus least = 2.",
+      "solution": "Using \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\), the expression becomes \\(1 - \\sin^2\\theta + 3\\sin^2\\theta + 2 = 3 + 2\\sin^2\\theta\\). As \\(\\sin^2\\theta\\) runs over \\([0, 1]\\), the expression runs over \\([3, 5]\\). Greatest value minus least value is \\(2\\)."
     },
     {
       "number": 13,
@@ -99,7 +106,8 @@
       "answer": "B",
       "value": "2",
       "confidence": "HIGH",
-      "reasoning": "Real roots need discriminant 16 - 8k >= 0, so k <= 2 and the greatest value is 2."
+      "reasoning": "Real roots need discriminant 16 - 8k >= 0, so k <= 2 and the greatest value is 2.",
+      "solution": "Real roots require a non-negative discriminant: \\((-4)^2 - 4(2)(k) = 16 - 8k \\ge 0\\), so \\(k \\le 2\\). The greatest such value is \\(k = 2\\), where the equation becomes \\(2(x-1)^2 = 0\\) with the repeated root \\(x = 1\\)."
     },
     {
       "number": 15,
@@ -113,7 +121,8 @@
       "answer": "A",
       "value": "6",
       "confidence": "HIGH",
-      "reasoning": "225^n mod 1000 = 625 for every n >= 2 (225^2 = 50625), so 225^40 ends ...890625 and the hundreds (10^2) digit is 6. The alternative reading '100th digit' is impossible: 225^40 has only 95 digits."
+      "reasoning": "225^n mod 1000 = 625 for every n >= 2 (225^2 = 50625), so 225^40 ends ...890625 and the hundreds (10^2) digit is 6. The alternative reading '100th digit' is impossible: 225^40 has only 95 digits.",
+      "solution": "For every \\(n \\ge 2\\) the power \\(225^n\\) ends in \\(625\\) (already \\(225^2 = 50625\\)), and \\(225^{40}\\) in fact ends \\(\\ldots 890625\\), so the digit in the hundreds place is \\(6\\). Reading the question instead as asking for the \\(100\\)th digit is impossible here, since \\(225^{40}\\) has only \\(95\\) digits."
     },
     {
       "number": 17,
@@ -134,7 +143,8 @@
       "answer": "B",
       "value": "12",
       "confidence": "HIGH",
-      "reasoning": "10^4 is divisible by 16, so the remainder depends only on the last four digits. The concatenation ends ...9899100, so the last four digits are 9100, and 9100 = 16*568 + 12. Verified by computing the full 192-digit integer mod 16 = 12."
+      "reasoning": "10^4 is divisible by 16, so the remainder depends only on the last four digits. The concatenation ends ...9899100, so the last four digits are 9100, and 9100 = 16*568 + 12. Verified by computing the full 192-digit integer mod 16 = 12.",
+      "solution": "Because \\(10^4\\) is divisible by \\(16\\), the remainder depends only on the last four digits of the number. The concatenation ends \\(\\ldots 9899100\\), so its last four digits are \\(9100\\), and \\(9100 = 16 \\times 568 + 12\\). The remainder is \\(12\\)."
     },
     {
       "number": 20,
@@ -155,42 +165,48 @@
       "answer": "D",
       "value": "COMPUTED 20 pieces (85 cm squares) - NO PRINTED OPTION MATCHES",
       "confidence": "LOW",
-      "reasoning": "NO OPTION IS CORRECT. Plank is 425 cm by 340 cm; the largest square leaving no wastage has side HCF(425,340) = 85 cm, giving (425/85)*(340/85) = 5*4 = 20 pieces. 20 is not among 45/90/400/500. Stem and options verified verbatim on page p03, so this is not a transcription defect. Printed option D (500) corresponds exactly to a 17 cm square (425/17 = 25, 340/17 = 20, 25*20 = 500) - 17 is a common divisor but NOT the greatest, so 500 answers 'no wastage' but not 'largest size'. D is recorded only as my best reading of the intended key. [ADJUDICATED. No printed option is correct. The LARGEST square is HCF(425,340) = 85 cm, giving 20 pieces; the printed 500 corresponds to a 17 cm square, a common divisor but not the greatest. Both blind passes reached this independently. D is recorded as the best available reading, not as a correct answer.]"
+      "reasoning": "NO OPTION IS CORRECT. Plank is 425 cm by 340 cm; the largest square leaving no wastage has side HCF(425,340) = 85 cm, giving (425/85)*(340/85) = 5*4 = 20 pieces. 20 is not among 45/90/400/500. Stem and options verified verbatim on page p03, so this is not a transcription defect. Printed option D (500) corresponds exactly to a 17 cm square (425/17 = 25, 340/17 = 20, 25*20 = 500) - 17 is a common divisor but NOT the greatest, so 500 answers 'no wastage' but not 'largest size'. D is recorded only as my best reading of the intended key. [ADJUDICATED. No printed option is correct. The LARGEST square is HCF(425,340) = 85 cm, giving 20 pieces; the printed 500 corresponds to a 17 cm square, a common divisor but not the greatest. Both blind passes reached this independently. D is recorded as the best available reading, not as a correct answer.]",
+      "solution": "The plank is \\(425\\) cm by \\(340\\) cm, so the largest square that leaves no wastage has side \\(\\mathrm{HCF}(425, 340) = 85\\) cm, giving \\(\\dfrac{425}{85} \\times \\dfrac{340}{85} = 5 \\times 4 = 20\\) pieces. Since \\(20\\) is not among the printed choices, this question has no correct option as set. The printed \\(500\\) corresponds to a \\(17\\) cm square (\\(25 \\times 20 = 500\\)); \\(17\\) does divide both sides with no wastage, but it is not the LARGEST such square, so \\(500\\) answers only half of what is asked and is recorded here as the figure the setter appears to have intended."
     },
     {
       "number": 23,
       "answer": "A",
       "value": "x - 5y",
       "confidence": "HIGH",
-      "reasoning": "Factorisations (sympy): x^4-13x^2y^2-300y^4 = (x-5y)(x+5y)(x^2+12y^2); x^3-4x^2y-4xy^2-5y^3 = (x-5y)(x^2+xy+y^2); x^3-125y^3 = (x-5y)(x^2+5xy+25y^2). The only common factor is x - 5y. Option C divides the first and third but not the second."
+      "reasoning": "Factorisations (sympy): x^4-13x^2y^2-300y^4 = (x-5y)(x+5y)(x^2+12y^2); x^3-4x^2y-4xy^2-5y^3 = (x-5y)(x^2+xy+y^2); x^3-125y^3 = (x-5y)(x^2+5xy+25y^2). The only common factor is x - 5y. Option C divides the first and third but not the second.",
+      "solution": "Factorising each expression: \\(x^4 - 13x^2y^2 - 300y^4 = (x-5y)(x+5y)(x^2+12y^2)\\), \\(x^3 - 4x^2y - 4xy^2 - 5y^3 = (x-5y)(x^2+xy+y^2)\\) and \\(x^3 - 125y^3 = (x-5y)(x^2+5xy+25y^2)\\). The only factor common to all three is \\(x - 5y\\). The expression \\(x^2 + 5xy + 25y^2\\) appears only in the third factorisation and \\(x + 5y\\) only in the first, so neither is common to all three."
     },
     {
       "number": 24,
       "answer": "A",
       "value": "5 (from x=2, y=3) - but x+y = 11 (x=8, y=3) is ALSO valid",
       "confidence": "MED",
-      "reasoning": "Brute force over 2 <= x,y <= 59 gives solutions (x,y,x+y) = (2,3,5), (2,4,6), (4,2,6), (4,6,10), (6,4,10), (8,3,11), (2,12,14), (12,2,14). Two of these hit printed options: (2,3) -> 5 and (8,3) -> 11. Check (2,3): gcd(2^8*3, 2^6*3^2) = 192 = 32*2*3. Check (8,3): gcd(2^8*3, 2^18*3^2) = 768 = 32*8*3. So the item has TWO correct printed options and is defective. I take A (5), the smallest solution and the natural intended one. RUNNER-UP: D (11) - it wins if the setter intended the maximal case where the HCF equals 768 itself. [ADJUDICATED. Not uniquely determined as printed: exhaustive search gives both (x,y) = (2,3) with x+y = 5 and (8,3) with x+y = 11, and BOTH are printed options. A is recorded as the minimal natural solution; D is equally defensible.]"
+      "reasoning": "Brute force over 2 <= x,y <= 59 gives solutions (x,y,x+y) = (2,3,5), (2,4,6), (4,2,6), (4,6,10), (6,4,10), (8,3,11), (2,12,14), (12,2,14). Two of these hit printed options: (2,3) -> 5 and (8,3) -> 11. Check (2,3): gcd(2^8*3, 2^6*3^2) = 192 = 32*2*3. Check (8,3): gcd(2^8*3, 2^18*3^2) = 768 = 32*8*3. So the item has TWO correct printed options and is defective. I take A (5), the smallest solution and the natural intended one. RUNNER-UP: D (11) - it wins if the setter intended the maximal case where the HCF equals 768 itself. [ADJUDICATED. Not uniquely determined as printed: exhaustive search gives both (x,y) = (2,3) with x+y = 5 and (8,3) with x+y = 11, and BOTH are printed options. A is recorded as the minimal natural solution; D is equally defensible.]",
+      "solution": "Searching all pairs with \\(x, y \\ge 2\\) throws up several solutions, and TWO of them are printed choices. Taking \\((x, y) = (2, 3)\\) gives \\(x + y = 5\\), and indeed \\(\\gcd\\left(768,\\, 2^6 \\cdot 3^2\\right) = 192 = 32 \\times 2 \\times 3\\); taking \\((x, y) = (8, 3)\\) gives \\(x + y = 11\\), and \\(\\gcd\\left(768,\\, 8^6 \\cdot 3^2\\right) = 768 = 32 \\times 8 \\times 3\\). Both satisfy the condition exactly as stated, so the question does not have a unique answer as printed; the smaller solution \\(x + y = 5\\) is taken as the intended one, but \\(11\\) is equally defensible."
     },
     {
       "number": 25,
       "answer": "D",
       "value": "12",
       "confidence": "HIGH",
-      "reasoning": "The product is (n+1)!. 910 = 2*5*7*13, whose largest prime is 13, so we need n+1 >= 13, i.e. n >= 12. 13! contains 2, 5, 7 and 13, so n = 12 works and is smallest (verified by direct factorial test)."
+      "reasoning": "The product is (n+1)!. 910 = 2*5*7*13, whose largest prime is 13, so we need n+1 >= 13, i.e. n >= 12. 13! contains 2, 5, 7 and 13, so n = 12 works and is smallest (verified by direct factorial test).",
+      "solution": "The product \\((n+1) \\times n \\times (n-1) \\times \\cdots \\times 2 \\times 1\\) is just \\((n+1)!\\). Since \\(910 = 2 \\times 5 \\times 7 \\times 13\\), the largest prime required is \\(13\\), so \\((n+1)!\\) must reach \\(13\\), i.e. \\(n + 1 \\ge 13\\). The smallest such \\(n\\) is \\(12\\), and \\(13!\\) does contain the factors \\(2\\), \\(5\\), \\(7\\) and \\(13\\)."
     },
     {
       "number": 26,
       "answer": "D",
       "value": "1, 2 and 3",
       "confidence": "HIGH",
-      "reasoning": "Odd + odd = even, so 2 divides it. 555 = 3*185 and 777 = 3*259, so both terms are divisible by 3. 555 = 37*15 and 777 = 37*21, so both terms are divisible by 37. Verified by computing 555^777 + 777^555 mod 2, 3 and 37: all zero."
+      "reasoning": "Odd + odd = even, so 2 divides it. 555 = 3*185 and 777 = 3*259, so both terms are divisible by 3. 555 = 37*15 and 777 = 37*21, so both terms are divisible by 37. Verified by computing 555^777 + 777^555 mod 2, 3 and 37: all zero.",
+      "solution": "Both \\(555^{777}\\) and \\(777^{555}\\) are odd, and odd added to odd is even, so \\(2\\) divides the sum. Also \\(555 = 3 \\times 185\\) and \\(777 = 3 \\times 259\\), so \\(3\\) divides both terms; and \\(555 = 37 \\times 15\\) and \\(777 = 37 \\times 21\\), so \\(37\\) divides both terms too. The expression is therefore divisible by \\(2\\), \\(3\\) and \\(37\\) alike."
     },
     {
       "number": 27,
       "answer": "A",
       "value": "1 only",
       "confidence": "MED",
-      "reasoning": "Statement 1: (3m^3+2m^2+5m+n)/m = 3m^2+2m+5 + n/m, which is an integer exactly when m divides n; so if it is not an integer then m does not divide n. TRUE. Statement 2: 5(8^m) + 2^(3m) = 5*8^m + 8^m = 6*8^m. At m = 0 this is 6, and 6 mod 48 = 6, so it is NOT divisible by 48 for all WHOLE numbers (whole numbers include 0 in Indian convention). FALSE, so answer A. RUNNER-UP: C - it wins if 'whole numbers' is read as positive integers only, since 6*8^m is divisible by 48 for every m >= 1."
+      "reasoning": "Statement 1: (3m^3+2m^2+5m+n)/m = 3m^2+2m+5 + n/m, which is an integer exactly when m divides n; so if it is not an integer then m does not divide n. TRUE. Statement 2: 5(8^m) + 2^(3m) = 5*8^m + 8^m = 6*8^m. At m = 0 this is 6, and 6 mod 48 = 6, so it is NOT divisible by 48 for all WHOLE numbers (whole numbers include 0 in Indian convention). FALSE, so answer A. RUNNER-UP: C - it wins if 'whole numbers' is read as positive integers only, since 6*8^m is divisible by 48 for every m >= 1.",
+      "solution": "For the first statement, \\(\\dfrac{3m^3 + 2m^2 + 5m + n}{m} = 3m^2 + 2m + 5 + \\dfrac{n}{m}\\), which is an integer exactly when \\(m\\) divides \\(n\\); so if it is not an integer, \\(m\\) does not divide \\(n\\) — the statement is true. For the second, \\(5\\left(8^m\\right) + 2^{3m} = 5 \\cdot 8^m + 8^m = 6 \\cdot 8^m\\), and at \\(m = 0\\) this equals \\(6\\), which is not divisible by \\(48\\); whole numbers include \\(0\\), so the statement fails. Only the first statement is correct. Note that the wording is what decides this item: had it said 'natural numbers', \\(6 \\cdot 8^m\\) would be divisible by \\(48\\) for every \\(m \\ge 1\\) and both statements would have held."
     },
     {
       "number": 28,
@@ -225,28 +241,32 @@
       "answer": "A",
       "value": "-3",
       "confidence": "HIGH",
-      "reasoning": "(3s+5c)^2 + (5s-3c)^2 = 34, so 25 + (5s-3c)^2 = 34 and 5 sin - 3 cos = +/- 3. Solving 3 sin + 5 cos = 5 exactly gives cos = 1 (theta = 0, value -3) or cos = 8/17, sin = 15/17 (value +3). Both signs are genuinely attainable, but only -3 is printed, so A is forced."
+      "reasoning": "(3s+5c)^2 + (5s-3c)^2 = 34, so 25 + (5s-3c)^2 = 34 and 5 sin - 3 cos = +/- 3. Solving 3 sin + 5 cos = 5 exactly gives cos = 1 (theta = 0, value -3) or cos = 8/17, sin = 15/17 (value +3). Both signs are genuinely attainable, but only -3 is printed, so A is forced.",
+      "solution": "Since \\((3\\sin\\theta + 5\\cos\\theta)^2 + (5\\sin\\theta - 3\\cos\\theta)^2 = 34\\), the given value \\(5\\) yields \\(25 + (5\\sin\\theta - 3\\cos\\theta)^2 = 34\\), so \\(5\\sin\\theta - 3\\cos\\theta = \\pm 3\\). Solving \\(3\\sin\\theta + 5\\cos\\theta = 5\\) exactly gives either \\(\\cos\\theta = 1\\), for which the value is \\(-3\\), or \\(\\cos\\theta = \\tfrac{8}{17}\\) and \\(\\sin\\theta = \\tfrac{15}{17}\\), for which it is \\(+3\\) — so both signs genuinely occur. Only \\(-3\\) is printed, so that is the answer available."
     },
     {
       "number": 33,
       "answer": "C",
       "value": "Both 1 and 2",
       "confidence": "HIGH",
-      "reasoning": "The polynomial is x^(4k)(1 + x^2 + x^4 + x^6) = x^(4k)(x^2+1)(x^4+1) (sympy factorisation confirms). Both x^2+1 and x^4+1 are factors, so both remainders are zero. Verified by polynomial division for k = 0,1,2,3: remainder 0 in every case."
+      "reasoning": "The polynomial is x^(4k)(1 + x^2 + x^4 + x^6) = x^(4k)(x^2+1)(x^4+1) (sympy factorisation confirms). Both x^2+1 and x^4+1 are factors, so both remainders are zero. Verified by polynomial division for k = 0,1,2,3: remainder 0 in every case.",
+      "solution": "The polynomial factors as \\(x^{4k}\\left(1 + x^2 + x^4 + x^6\\right) = x^{4k}\\left(x^2+1\\right)\\left(x^4+1\\right)\\). Both \\(x^2 + 1\\) and \\(x^4 + 1\\) are therefore factors of it, so division by either leaves remainder \\(0\\). Both statements are correct."
     },
     {
       "number": 34,
       "answer": "C",
       "value": "7",
       "confidence": "HIGH",
-      "reasoning": "With s = sin A in (0,1], the expression is s + 5 + 1/s. Its derivative 1 - 1/s^2 is negative on (0,1), so it decreases to its minimum at s = 1 (A = pi/2), giving 1 + 5 + 1 = 7. Scan over s = 0.01..1.00 confirms the minimum 7.0 at s = 1."
+      "reasoning": "With s = sin A in (0,1], the expression is s + 5 + 1/s. Its derivative 1 - 1/s^2 is negative on (0,1), so it decreases to its minimum at s = 1 (A = pi/2), giving 1 + 5 + 1 = 7. Scan over s = 0.01..1.00 confirms the minimum 7.0 at s = 1.",
+      "solution": "Put \\(s = \\sin A\\), so that \\(0 < s \\le 1\\) and the expression is \\(\\dfrac{s^2 + 5s + 1}{s} = s + 5 + \\dfrac{1}{s}\\). Its derivative \\(1 - \\dfrac{1}{s^2}\\) is negative throughout \\((0, 1)\\), so the expression decreases and attains its least value at the right-hand end \\(s = 1\\), that is \\(A = \\tfrac{\\pi}{2}\\). The minimum value is \\(1 + 5 + 1 = 7\\)."
     },
     {
       "number": 35,
       "answer": "A",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "The nth term (2n+1)/(n^2(n+1)^2) equals 1/n^2 - 1/(n+1)^2 identically (sympy: difference simplifies to 0), so the series telescopes to 1 - 0 = 1. sympy summation to infinity returns 1."
+      "reasoning": "The nth term (2n+1)/(n^2(n+1)^2) equals 1/n^2 - 1/(n+1)^2 identically (sympy: difference simplifies to 0), so the series telescopes to 1 - 0 = 1. sympy summation to infinity returns 1.",
+      "solution": "The \\(n\\)th term is \\(\\dfrac{2n+1}{n^2(n+1)^2}\\), which is identically \\(\\dfrac{1}{n^2} - \\dfrac{1}{(n+1)^2}\\). The series therefore telescopes: every interior term cancels and only \\(\\dfrac{1}{1^2}\\) survives, since \\(\\dfrac{1}{(n+1)^2} \\to 0\\). The sum is \\(1\\)."
     },
     {
       "number": 36,
@@ -260,28 +280,32 @@
       "answer": "C",
       "value": "252 square cm",
       "confidence": "HIGH",
-      "reasoning": "Cube surface = 6*14^2 = 1176 sq cm. Each painted circle has area (22/7)*49 = 154, six of them 924. Unpainted = 1176 - 924 = 252 sq cm."
+      "reasoning": "Cube surface = 6*14^2 = 1176 sq cm. Each painted circle has area (22/7)*49 = 154, six of them 924. Unpainted = 1176 - 924 = 252 sq cm.",
+      "solution": "The cube has surface area \\(6 \\times 14^2 = 1176\\) square cm. Each painted circle has area \\(\\tfrac{22}{7} \\times 7^2 = 154\\) square cm, and the six of them cover \\(924\\) square cm. The unpainted area is \\(1176 - 924 = 252\\) square cm."
     },
     {
       "number": 38,
       "answer": "B",
       "value": "0.7 cm",
       "confidence": "HIGH",
-      "reasoning": "Thickness 0.16 mm = 0.016 cm. Remaining plate is 210/360 of the disc: volume = (7/12)*pi*49*0.016. Setting (4/3)*pi*r^3 equal to it gives r^3 = 0.343, r = 0.7 cm. Exact solve returns r = 7/10 both with pi = 22/7 and with pi symbolic."
+      "reasoning": "Thickness 0.16 mm = 0.016 cm. Remaining plate is 210/360 of the disc: volume = (7/12)*pi*49*0.016. Setting (4/3)*pi*r^3 equal to it gives r^3 = 0.343, r = 0.7 cm. Exact solve returns r = 7/10 both with pi = 22/7 and with pi symbolic.",
+      "solution": "The thickness is \\(0.16\\) mm \\(= 0.016\\) cm, and removing a \\(150^\\circ\\) sector leaves \\(\\tfrac{210}{360} = \\tfrac{7}{12}\\) of the disc, of volume \\(\\tfrac{7}{12}\\pi (7)^2 (0.016)\\). Equating this to the bead's volume \\(\\tfrac43 \\pi r^3\\) gives \\(r^3 = 0.343\\), so \\(r = 0.7\\) cm. The same value follows whether \\(\\pi\\) is taken as \\(\\tfrac{22}{7}\\) or left symbolic, since it cancels."
     },
     {
       "number": 39,
       "answer": "B",
       "value": "1.7",
       "confidence": "HIGH",
-      "reasoning": "Let the central angle be 2t. Chord = 2R sin t, segment height = R(1 - cos t). 2R sin t = 2*sqrt3*R(1-cos t) gives tan(t/2) = 1/sqrt3, t = 60 deg, central angle 120 deg. P = pi R^2/3; segment Q = P - (1/2)R^2 sin120 = P - sqrt3 R^2/4. P/Q = (pi/3)/((pi/3) - sqrt3/4). With the paper's pi = 3.14 and sqrt3 = 1.7 this is 1.0467/0.6217 = 1.684; with exact constants 1.705. Either way the nearest printed value is 1.7."
+      "reasoning": "Let the central angle be 2t. Chord = 2R sin t, segment height = R(1 - cos t). 2R sin t = 2*sqrt3*R(1-cos t) gives tan(t/2) = 1/sqrt3, t = 60 deg, central angle 120 deg. P = pi R^2/3; segment Q = P - (1/2)R^2 sin120 = P - sqrt3 R^2/4. P/Q = (pi/3)/((pi/3) - sqrt3/4). With the paper's pi = 3.14 and sqrt3 = 1.7 this is 1.0467/0.6217 = 1.684; with exact constants 1.705. Either way the nearest printed value is 1.7.",
+      "solution": "Let the central angle be \\(2t\\); then the chord is \\(2R\\sin t\\) and the height of the minor segment is \\(R(1 - \\cos t)\\). The given relation \\(2R\\sin t = 2\\sqrt3\\,R(1 - \\cos t)\\) reduces to \\(\\tan\\tfrac{t}{2} = \\tfrac{1}{\\sqrt3}\\), so \\(t = 60^\\circ\\) and the central angle is \\(120^\\circ\\). Then \\(P = \\tfrac{\\pi R^2}{3}\\) and \\(Q = P - \\tfrac12 R^2 \\sin 120^\\circ = P - \\tfrac{\\sqrt3}{4}R^2\\), so \\(\\dfrac{P}{Q} = \\dfrac{\\pi/3}{\\pi/3 - \\sqrt3/4}\\). With the paper's \\(\\pi = 3.14\\) and \\(\\sqrt3 = 1.7\\) this is \\(\\dfrac{1.0467}{0.6217} \\approx 1.68\\), and with exact constants \\(1.705\\) — nearest to \\(1.7\\)."
     },
     {
       "number": 40,
       "answer": "A",
       "value": "154 square cm",
       "confidence": "HIGH",
-      "reasoning": "The chord of the outer circle tangent to the inner circle is bisected at the point of contact, and the perpendicular from the common centre has length r. So R^2 - r^2 = 7^2 = 49. Annulus area = pi(R^2 - r^2) = (22/7)*49 = 154 sq cm - determinable without knowing R or r individually, so D is wrong."
+      "reasoning": "The chord of the outer circle tangent to the inner circle is bisected at the point of contact, and the perpendicular from the common centre has length r. So R^2 - r^2 = 7^2 = 49. Annulus area = pi(R^2 - r^2) = (22/7)*49 = 154 sq cm - determinable without knowing R or r individually, so D is wrong.",
+      "solution": "A chord of the outer circle that touches the inner circle is bisected at the point of contact, so the perpendicular from the common centre has length \\(r\\) and half the chord is \\(7\\) cm. By Pythagoras, \\(R^2 - r^2 = 7^2 = 49\\). The area between the circles is \\(\\pi\\left(R^2 - r^2\\right) = \\tfrac{22}{7} \\times 49 = 154\\) square cm — obtainable without knowing \\(R\\) and \\(r\\) individually, so the data is not insufficient."
     },
     {
       "number": 41,
@@ -295,7 +319,8 @@
       "answer": "D",
       "value": "P^(1/3) Q^(2/3)",
       "confidence": "HIGH",
-      "reasoning": "P^n = a1...an and Q^(2n) = a(n+1)...a(3n), so the product of all 3n terms is P^n Q^(2n) and the overall GM is (P^n Q^(2n))^(1/(3n)) = P^(1/3) Q^(2/3). sympy confirms the difference is identically 0; numeric check n=3, a1=2, r=3 gives GM = 162 = P^(1/3)Q^(2/3), while P^2Q = 30304 and PQ^2 = 4251528 and sqrt(PQ) = 71.07."
+      "reasoning": "P^n = a1...an and Q^(2n) = a(n+1)...a(3n), so the product of all 3n terms is P^n Q^(2n) and the overall GM is (P^n Q^(2n))^(1/(3n)) = P^(1/3) Q^(2/3). sympy confirms the difference is identically 0; numeric check n=3, a1=2, r=3 gives GM = 162 = P^(1/3)Q^(2/3), while P^2Q = 30304 and PQ^2 = 4251528 and sqrt(PQ) = 71.07.",
+      "solution": "Here \\(P^n = a_1 a_2 \\cdots a_n\\) and \\(Q^{2n} = a_{n+1} a_{n+2} \\cdots a_{3n}\\), so the product of ALL \\(3n\\) terms is \\(P^n Q^{2n}\\). The geometric mean of the \\(3n\\) numbers is therefore \\(\\left(P^n Q^{2n}\\right)^{1/(3n)} = P^{1/3} Q^{2/3}\\). A numerical check with \\(n = 3\\), first term \\(2\\) and common ratio \\(3\\) gives the geometric mean \\(162\\), which is exactly \\(P^{1/3}Q^{2/3}\\), while \\(P^2Q\\), \\(PQ^2\\) and \\(\\sqrt{PQ}\\) come out as \\(30304\\), \\(4251528\\) and \\(71.07\\)."
     },
     {
       "number": 43,
@@ -330,7 +355,8 @@
       "answer": "D",
       "value": "Rs. 1",
       "confidence": "HIGH",
-      "reasoning": "x = 1000(1.1^3 - 1) = 1000(0.331) = Rs. 331. y = 1000*0.11*3 = Rs. 330. Difference = Rs. 1."
+      "reasoning": "x = 1000(1.1^3 - 1) = 1000(0.331) = Rs. 331. y = 1000*0.11*3 = Rs. 330. Difference = Rs. 1.",
+      "solution": "The compound interest is \\(x = 1000\\left(1.1^3 - 1\\right) = 1000(0.331)\\), i.e. Rs. 331. The simple interest is \\(y = 1000 \\times 0.11 \\times 3\\), i.e. Rs. 330. The difference is Rs. 1."
     },
     {
       "number": 48,
@@ -344,7 +370,8 @@
       "answer": "A",
       "value": "(sqrt2 + 1) : 1",
       "confidence": "HIGH",
-      "reasoning": "The inscribed circle touches both bounding radii, so its centre lies on the bisector at distance d from the corner with perpendicular distance d/sqrt2 = r, i.e. d = r*sqrt2. It also touches the arc, so d + r = R. Hence R = r(sqrt2 + 1) and R : r = (sqrt2+1) : 1."
+      "reasoning": "The inscribed circle touches both bounding radii, so its centre lies on the bisector at distance d from the corner with perpendicular distance d/sqrt2 = r, i.e. d = r*sqrt2. It also touches the arc, so d + r = R. Hence R = r(sqrt2 + 1) and R : r = (sqrt2+1) : 1.",
+      "solution": "The inscribed circle touches both bounding radii, so its centre lies on the bisector of the right angle at some distance \\(d\\) from the corner, with perpendicular distance \\(\\dfrac{d}{\\sqrt2} = r\\), giving \\(d = r\\sqrt2\\). It also touches the arc, so \\(d + r = R\\). Hence \\(R = r\\left(\\sqrt2 + 1\\right)\\), and \\(R : r = \\left(\\sqrt2 + 1\\right) : 1\\)."
     },
     {
       "number": 50,
@@ -365,21 +392,24 @@
       "answer": "C",
       "value": "2 (p = 1, q = 1)",
       "confidence": "HIGH",
-      "reasoning": "(sin - cos + 1)/(sin + cos - 1) = sec + tan identically (sympy: the difference simplifies to 0; checked numerically at theta = 0.3, 0.7, 1.1, 1.4 to 15 digits). So p = q = 1 and p + q = 2."
+      "reasoning": "(sin - cos + 1)/(sin + cos - 1) = sec + tan identically (sympy: the difference simplifies to 0; checked numerically at theta = 0.3, 0.7, 1.1, 1.4 to 15 digits). So p = q = 1 and p + q = 2.",
+      "solution": "The identity \\(\\dfrac{\\sin\\theta - \\cos\\theta + 1}{\\sin\\theta + \\cos\\theta - 1} = \\sec\\theta + \\tan\\theta\\) holds for every \\(\\theta\\) in \\(\\left(0, \\tfrac{\\pi}{2}\\right)\\) — multiply numerator and denominator by \\(\\sin\\theta + \\cos\\theta + 1\\) and simplify using \\(\\sin^2\\theta + \\cos^2\\theta = 1\\). Comparing with \\(p\\sec\\theta + q\\tan\\theta\\) gives \\(p = 1\\) and \\(q = 1\\). Hence \\(p + q = 2\\)."
     },
     {
       "number": 53,
       "answer": "A",
       "value": "4 m",
       "confidence": "HIGH",
-      "reasoning": "Complementary angles give tan(alpha) = 6/x and tan(90-alpha) = cot(alpha) = 6/(x+5), so x/6 = 6/(x+5), i.e. x^2 + 5x - 36 = 0 = (x+9)(x-4). The positive root is x = 4 m."
+      "reasoning": "Complementary angles give tan(alpha) = 6/x and tan(90-alpha) = cot(alpha) = 6/(x+5), so x/6 = 6/(x+5), i.e. x^2 + 5x - 36 = 0 = (x+9)(x-4). The positive root is x = 4 m.",
+      "solution": "Complementary angles of elevation give \\(\\tan\\alpha = \\dfrac{6}{x}\\) from the nearer point and \\(\\tan\\left(90^\\circ - \\alpha\\right) = \\cot\\alpha = \\dfrac{6}{x+5}\\) from the farther one. Since \\(\\cot\\alpha = \\dfrac{1}{\\tan\\alpha}\\), this means \\(\\dfrac{x}{6} = \\dfrac{6}{x+5}\\), i.e. \\(x^2 + 5x - 36 = 0 = (x+9)(x-4)\\). The positive root is \\(x = 4\\) m."
     },
     {
       "number": 54,
       "answer": "C",
       "value": "Both 1 and 2",
       "confidence": "HIGH",
-      "reasoning": "At A = B = C = 60 deg, sinA+sinB+sinC = 3*(sqrt3/2) = 3sqrt3/2 exactly, and cosA+cosB+cosC = 3*(1/2) = 3/2 exactly (both verified symbolically). These are in fact the maxima of the two expressions over all triangles, attained only for the equilateral triangle, so each condition not only 'can' but must give an equilateral triangle. Both statements are correct."
+      "reasoning": "At A = B = C = 60 deg, sinA+sinB+sinC = 3*(sqrt3/2) = 3sqrt3/2 exactly, and cosA+cosB+cosC = 3*(1/2) = 3/2 exactly (both verified symbolically). These are in fact the maxima of the two expressions over all triangles, attained only for the equilateral triangle, so each condition not only 'can' but must give an equilateral triangle. Both statements are correct.",
+      "solution": "For an equilateral triangle \\(A = B = C = 60^\\circ\\), giving \\(\\sin A + \\sin B + \\sin C = 3 \\times \\tfrac{\\sqrt3}{2} = \\tfrac{3\\sqrt3}{2}\\) and \\(\\cos A + \\cos B + \\cos C = 3 \\times \\tfrac12 = \\tfrac32\\). These are in fact the MAXIMUM values of the two expressions over all triangles, attained only when the triangle is equilateral, so each condition not merely can but must describe an equilateral triangle. Both statements are correct."
     },
     {
       "number": 55,
@@ -400,14 +430,16 @@
       "answer": "A",
       "value": "COMPUTED Rs. 2400 - NO PRINTED OPTION MATCHES",
       "confidence": "LOW",
-      "reasoning": "NO OPTION IS CORRECT. Deductions total 93+24+55 = 172, so the reduced amounts sum to 9400 - 172 = 9228 = 12k with k = 769. P's reduced amount = 3*769 = 2307, so P's SHARE = 2307 + 93 = Rs. 2400 (then Q = 3100, R = 3900, total 9400, checks out). Rs. 2400 is not printed. Stem and options verified verbatim on page p08. Printed option A (2307) is P's amount AFTER the deduction, i.e. the key omits adding back the Rs. 93; taking A as P's share makes the three shares total only 9028, not 9400. I record A only as my best reading of the intended key. (B, C, D give totals 9304, 9832 and a non-integer respectively.) [ADJUDICATED. No printed option is correct. The deductions total 172, so 9228/12 = 769 and P's ratio amount is 2307 -- but P's ACTUAL share is 2307+93 = 2400, and 2400+3100+3900 = 9400 checks. 2400 is not printed; option A is the pre-add-back figure the setter evidently keyed. Recorded as the best available reading.]"
+      "reasoning": "NO OPTION IS CORRECT. Deductions total 93+24+55 = 172, so the reduced amounts sum to 9400 - 172 = 9228 = 12k with k = 769. P's reduced amount = 3*769 = 2307, so P's SHARE = 2307 + 93 = Rs. 2400 (then Q = 3100, R = 3900, total 9400, checks out). Rs. 2400 is not printed. Stem and options verified verbatim on page p08. Printed option A (2307) is P's amount AFTER the deduction, i.e. the key omits adding back the Rs. 93; taking A as P's share makes the three shares total only 9028, not 9400. I record A only as my best reading of the intended key. (B, C, D give totals 9304, 9832 and a non-integer respectively.) [ADJUDICATED. No printed option is correct. The deductions total 172, so 9228/12 = 769 and P's ratio amount is 2307 -- but P's ACTUAL share is 2307+93 = 2400, and 2400+3100+3900 = 9400 checks. 2400 is not printed; option A is the pre-add-back figure the setter evidently keyed. Recorded as the best available reading.]",
+      "solution": "The deductions total \\(93 + 24 + 55 = 172\\), so the reduced amounts sum to \\(9400 - 172 = 9228 = 12k\\), giving \\(k = 769\\). P's reduced amount is \\(3 \\times 769 = 2307\\), so P's actual SHARE is Rs. 2400, since \\(2307 + 93 = 2400\\) — and then Q gets Rs. 3100 and R gets Rs. 3900, which correctly total Rs. 9400. Rs. 2400 is not among the printed choices, so this question has no correct option as set: the printed \\(2307\\) is P's amount AFTER the deduction, and taking it as P's share makes the three shares total only \\(9028\\). It is recorded here as the figure the setter appears to have keyed."
     },
     {
       "number": 58,
       "answer": "D",
       "value": "1, 2 and 3",
       "confidence": "HIGH",
-      "reasoning": "P^2 = k1 R and Q^2 = k2 R. (1) P^2 + Q^2 = (k1+k2)R, varies as R. (2) PQ = sqrt(k1 k2) R, varies as R. (3) P^2 - Q^2 = (k1-k2)R; the given P != Q guarantees k1 != k2 so the constant is non-zero and it too varies as R. All three."
+      "reasoning": "P^2 = k1 R and Q^2 = k2 R. (1) P^2 + Q^2 = (k1+k2)R, varies as R. (2) PQ = sqrt(k1 k2) R, varies as R. (3) P^2 - Q^2 = (k1-k2)R; the given P != Q guarantees k1 != k2 so the constant is non-zero and it too varies as R. All three.",
+      "solution": "Write \\(P^2 = k_1 R\\) and \\(Q^2 = k_2 R\\). Then \\(P^2 + Q^2 = (k_1 + k_2)R\\) and \\(PQ = \\sqrt{k_1 k_2}\\,R\\), both proportional to \\(R\\). For the third, \\(P^2 - Q^2 = (k_1 - k_2)R\\), and the given condition \\(P \\ne Q\\) guarantees \\(k_1 \\ne k_2\\), so this constant is non-zero and it too varies as \\(R\\). All three statements hold."
     },
     {
       "number": 59,
@@ -421,14 +453,16 @@
       "answer": "D",
       "value": "25",
       "confidence": "HIGH",
-      "reasoning": "Each factor is a + 3 + 1/a with a > 0; by AM-GM a + 1/a >= 2 so each factor >= 5, with equality at a = 1 (sympy minimum on (0, inf) = 5). The two factors are independent, so the product's minimum is 5*5 = 25 at a = b = 1."
+      "reasoning": "Each factor is a + 3 + 1/a with a > 0; by AM-GM a + 1/a >= 2 so each factor >= 5, with equality at a = 1 (sympy minimum on (0, inf) = 5). The two factors are independent, so the product's minimum is 5*5 = 25 at a = b = 1.",
+      "solution": "Each bracket is \\(a + 3 + \\dfrac{1}{a}\\), and by AM–GM \\(a + \\dfrac1a \\ge 2\\) for \\(a > 0\\), so each bracket is at least \\(5\\), with equality at \\(a = 1\\). The two brackets involve independent variables, so the product's least value is \\(5 \\times 5 = 25\\), attained at \\(a = b = 1\\)."
     },
     {
       "number": 61,
       "answer": "C",
       "value": "Both statements needed; the answer is then a",
       "confidence": "HIGH",
-      "reasoning": "For positive integers abcd >= each of a,b,c,d, so abcd - x is smallest for the LARGEST of them; the question is 'which is largest'. Statement-I (a > b > c) says nothing about d, which could exceed a - insufficient. Statement-II (c is not the smallest) gives no ordering at all - insufficient. Together, a > b > c and something is smaller than c forces d < c, so a > b > c > d and a is the unique maximum. Both needed."
+      "reasoning": "For positive integers abcd >= each of a,b,c,d, so abcd - x is smallest for the LARGEST of them; the question is 'which is largest'. Statement-I (a > b > c) says nothing about d, which could exceed a - insufficient. Statement-II (c is not the smallest) gives no ordering at all - insufficient. Together, a > b > c and something is smaller than c forces d < c, so a > b > c > d and a is the unique maximum. Both needed.",
+      "solution": "For positive integers \\(abcd\\) is at least as large as each of \\(a, b, c, d\\), so \\(abcd - x\\) is smallest for the LARGEST of them — the question is really asking which of the four is largest. Statement-I, \\(a > b > c\\), says nothing about \\(d\\), which could exceed \\(a\\), so it is not enough on its own; Statement-II, that \\(c\\) is not the smallest, gives no ordering at all. Taken together they force \\(d < c\\), hence \\(a > b > c > d\\) and \\(a\\) is the unique maximum, so both statements are needed and neither will do alone."
     },
     {
       "number": 62,
@@ -442,28 +476,32 @@
       "answer": "A",
       "value": "Statement-I alone suffices (remainder 1); Statement-II alone does not",
       "confidence": "HIGH",
-      "reasoning": "p = -1 (mod p+1), so p^n = (-1)^n (mod p+1). Statement-I (n even) gives remainder 1 regardless of p - sufficient. Statement-II (p even, so p >= 2) leaves n's parity open: n even gives remainder 1, n odd gives remainder p != 1 - insufficient. Exactly one statement alone works."
+      "reasoning": "p = -1 (mod p+1), so p^n = (-1)^n (mod p+1). Statement-I (n even) gives remainder 1 regardless of p - sufficient. Statement-II (p even, so p >= 2) leaves n's parity open: n even gives remainder 1, n odd gives remainder p != 1 - insufficient. Exactly one statement alone works.",
+      "solution": "Since \\(p \\equiv -1 \\pmod{p+1}\\), it follows that \\(p^n \\equiv (-1)^n \\pmod{p+1}\\). Statement-I, that \\(n\\) is even, makes this \\(1\\) whatever \\(p\\) may be, so that statement alone answers the question. Statement-II, that \\(p\\) is even, leaves the parity of \\(n\\) open — an even \\(n\\) gives remainder \\(1\\) while an odd \\(n\\) gives remainder \\(p\\) — so it is not sufficient. Exactly one of the two statements works alone."
     },
     {
       "number": 64,
       "answer": "C",
       "value": "Both statements needed; xy is then positive",
       "confidence": "MED",
-      "reasoning": "Statement-I fixes x = cbrt(-0.19683) < 0 but says nothing about y - insufficient. Statement-II gives xy = x * x^(1/3) = x^(4/3), which is >= 0 always but equals 0 when x = 0, and Statement-II alone does not exclude x = 0 - strictly insufficient. Together, x is a specific non-zero negative number and y = cbrt(x) < 0, so xy > 0. Statement-I's role is precisely to certify x != 0, which is a coherent design. RUNNER-UP: A - it wins if the setter treats Statement-II alone as sufficient by tacitly assuming x != 0, in which case exactly one statement answers the question."
+      "reasoning": "Statement-I fixes x = cbrt(-0.19683) < 0 but says nothing about y - insufficient. Statement-II gives xy = x * x^(1/3) = x^(4/3), which is >= 0 always but equals 0 when x = 0, and Statement-II alone does not exclude x = 0 - strictly insufficient. Together, x is a specific non-zero negative number and y = cbrt(x) < 0, so xy > 0. Statement-I's role is precisely to certify x != 0, which is a coherent design. RUNNER-UP: A - it wins if the setter treats Statement-II alone as sufficient by tacitly assuming x != 0, in which case exactly one statement answers the question.",
+      "solution": "Statement-I fixes \\(x = \\sqrt[3]{-0.19683}\\), a specific negative number, but says nothing whatever about \\(y\\). Statement-II gives \\(xy = x \\cdot x^{1/3} = x^{4/3}\\), which is never negative but IS zero when \\(x = 0\\), and Statement-II by itself does not rule that out, so strictly it does not establish that \\(xy\\) is positive. Together, \\(x\\) is a definite non-zero negative number and \\(y = \\sqrt[3]{x} < 0\\), so \\(xy > 0\\) — Statement-I's role is precisely to certify that \\(x \\ne 0\\). Note that a reader who tacitly assumes \\(x \\ne 0\\) would find Statement-II sufficient on its own, so this item turns on how strictly the zero case is read."
     },
     {
       "number": 65,
       "answer": "B",
       "value": "Either statement alone proves the triangle equilateral",
       "confidence": "HIGH",
-      "reasoning": "Statement-I: a^2+b^2+c^2-(ab+bc+ca) = (1/2)[(a-b)^2+(b-c)^2+(c-a)^2] (sympy difference = 0), zero only when a=b=c. Statement-II looks asymmetric but expands EXACTLY as (a-b)^2 + 2(a-c)^2 + 2(b-c)^2 (sympy: 3a^2+3b^2+4c^2-2ab-4bc-4ca minus that expression = 0), again a sum of squares forcing a=b=c; solving it for real positive sides returns only the a=b=c branch (the other roots are complex). So each statement alone is sufficient."
+      "reasoning": "Statement-I: a^2+b^2+c^2-(ab+bc+ca) = (1/2)[(a-b)^2+(b-c)^2+(c-a)^2] (sympy difference = 0), zero only when a=b=c. Statement-II looks asymmetric but expands EXACTLY as (a-b)^2 + 2(a-c)^2 + 2(b-c)^2 (sympy: 3a^2+3b^2+4c^2-2ab-4bc-4ca minus that expression = 0), again a sum of squares forcing a=b=c; solving it for real positive sides returns only the a=b=c branch (the other roots are complex). So each statement alone is sufficient.",
+      "solution": "Statement-I rearranges to \\(a^2 + b^2 + c^2 - (ab + bc + ca) = \\tfrac12\\left[(a-b)^2 + (b-c)^2 + (c-a)^2\\right] = 0\\), a sum of squares that vanishes only when \\(a = b = c\\). Statement-II looks asymmetric, but \\(3a^2 + 3b^2 + 4c^2 - 2ab - 4bc - 4ca\\) expands EXACTLY as \\((a-b)^2 + 2(a-c)^2 + 2(b-c)^2\\), so setting it to zero again forces \\(a = b = c\\). Either statement alone proves the triangle equilateral."
     },
     {
       "number": 66,
       "answer": "B",
       "value": "Either statement alone; P > Q is always true",
       "confidence": "HIGH",
-      "reasoning": "P = xy and Q = xy sin(theta) where theta is the parallelogram's angle; 'strictly not a rectangle' means theta != 90 deg so sin(theta) < 1 and Q < P always. The answer 'yes' therefore follows under Statement-I alone (x:y = 2:1) and under Statement-II alone (theta = 60 deg gives Q = 0.866 xy). Either statement alone answers it."
+      "reasoning": "P = xy and Q = xy sin(theta) where theta is the parallelogram's angle; 'strictly not a rectangle' means theta != 90 deg so sin(theta) < 1 and Q < P always. The answer 'yes' therefore follows under Statement-I alone (x:y = 2:1) and under Statement-II alone (theta = 60 deg gives Q = 0.866 xy). Either statement alone answers it.",
+      "solution": "The rectangle has area \\(P = xy\\), while a parallelogram on the same two side lengths has area \\(Q = xy\\sin\\theta\\), where \\(\\theta\\) is the angle between its adjacent sides. Being 'strictly not a rectangle' means \\(\\theta \\ne 90^\\circ\\), so \\(\\sin\\theta < 1\\) and \\(Q < P\\) ALWAYS — the answer is 'yes' before either statement is used. Statement-I alone therefore answers it, and so does Statement-II alone; either is sufficient."
     },
     {
       "number": 67,
@@ -477,14 +515,16 @@
       "answer": "B",
       "value": "Either statement alone; ratio 1 : sqrt3",
       "confidence": "HIGH",
-      "reasoning": "In a rhombus of side s, d1^2 + d2^2 = 4s^2. Statement-I: one diagonal = s gives the other = sqrt(4s^2 - s^2) = s*sqrt3, ratio 1 : sqrt3. Statement-II: longer diagonal = s*sqrt3 gives the other = sqrt(4s^2 - 3s^2) = s, the same ratio. Either alone determines it."
+      "reasoning": "In a rhombus of side s, d1^2 + d2^2 = 4s^2. Statement-I: one diagonal = s gives the other = sqrt(4s^2 - s^2) = s*sqrt3, ratio 1 : sqrt3. Statement-II: longer diagonal = s*sqrt3 gives the other = sqrt(4s^2 - 3s^2) = s, the same ratio. Either alone determines it.",
+      "solution": "In a rhombus of side \\(s\\) the diagonals satisfy \\(d_1^2 + d_2^2 = 4s^2\\). Statement-I makes one diagonal \\(s\\), so the other is \\(\\sqrt{4s^2 - s^2} = s\\sqrt3\\) and the ratio is \\(1 : \\sqrt3\\). Statement-II makes the longer diagonal \\(s\\sqrt3\\), so the other is \\(\\sqrt{4s^2 - 3s^2} = s\\) — the same ratio. Either statement alone determines it."
     },
     {
       "number": 69,
       "answer": "D",
       "value": "Not determinable; at least four integer pairs (r,R) fit",
       "confidence": "HIGH",
-      "reasoning": "The chord is bisected at the point of tangency, so R^2 = r^2 + 12^2 = r^2 + 144. Statement-I alone (r integer) leaves R free (r=5,9,16,... all admissible). Statement-II alone (R integer) likewise. Together, R^2 - r^2 = 144 in positive integers has (R-r)(R+r) = 144 with both factors even, giving (r,R) = (5,13), (9,15), (16,20) and (35,37) - four distinct solutions - so even both statements together do not determine r and R."
+      "reasoning": "The chord is bisected at the point of tangency, so R^2 = r^2 + 12^2 = r^2 + 144. Statement-I alone (r integer) leaves R free (r=5,9,16,... all admissible). Statement-II alone (R integer) likewise. Together, R^2 - r^2 = 144 in positive integers has (R-r)(R+r) = 144 with both factors even, giving (r,R) = (5,13), (9,15), (16,20) and (35,37) - four distinct solutions - so even both statements together do not determine r and R.",
+      "solution": "The chord is bisected at the point of tangency, so \\(R^2 = r^2 + 12^2 = r^2 + 144\\). Statement-I alone, that \\(r\\) is an integer, leaves \\(R\\) free, and Statement-II alone, that \\(R\\) is an integer, leaves \\(r\\) free. Even together they are not enough: \\((R-r)(R+r) = 144\\) with both factors even has FOUR positive integer solutions, namely \\((r, R) = (5, 13), (9, 15), (16, 20)\\) and \\((35, 37)\\). So the values of \\(r\\) and \\(R\\) cannot be found even from both statements."
     },
     {
       "number": 70,
@@ -498,7 +538,8 @@
       "answer": "D",
       "value": "616/9 square cm",
       "confidence": "HIGH",
-      "reasoning": "Ratio 2:3:7:5:1 sums to 18 parts, so one part = 20 deg; angles are 40, 60, 140, 100, 20 deg. Sector area = (theta/360)(22/7)(49) = (theta/360)(154). Smallest (20 deg): P = 154/18 = 77/9. Largest (140 deg): Q = 539/9. P + Q = 616/9 sq cm."
+      "reasoning": "Ratio 2:3:7:5:1 sums to 18 parts, so one part = 20 deg; angles are 40, 60, 140, 100, 20 deg. Sector area = (theta/360)(22/7)(49) = (theta/360)(154). Smallest (20 deg): P = 154/18 = 77/9. Largest (140 deg): Q = 539/9. P + Q = 616/9 sq cm.",
+      "solution": "The ratio \\(2 : 3 : 7 : 5 : 1\\) has \\(18\\) parts, so one part is \\(\\dfrac{360^\\circ}{18} = 20^\\circ\\) and the five angles are \\(40^\\circ, 60^\\circ, 140^\\circ, 100^\\circ\\) and \\(20^\\circ\\). A sector of angle \\(\\theta\\) has area \\(\\dfrac{\\theta}{360} \\times \\tfrac{22}{7} \\times 7^2 = \\dfrac{154\\theta}{360}\\), so the smallest sector gives \\(P = \\dfrac{77}{9}\\) and the largest gives \\(Q = \\dfrac{539}{9}\\). Hence \\(P + Q = \\dfrac{616}{9}\\) square cm."
     },
     {
       "number": 72,
@@ -533,14 +574,16 @@
       "answer": "C",
       "value": "1024/17 square cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p11): square ABCD with A top-left, D top-right, B bottom-left, C bottom-right; E on AD, F on AB. Since 6^2 + 8^2 = 10^2, angle EFC = 90. Then triangles AEF and BFC are similar with ratio EF:FC = 6:8, so AF = (3/4)BC = 3s/4, FB = s/4, AE = 3s/16. From BFC: (s/4)^2 + s^2 = 64 gives (17/16)s^2 = 64, s^2 = 1024/17. Exact solve of the three distance equations returns the unique solution s = 32/sqrt17, e = 6/sqrt17, f = 8/sqrt17, and DE^2 + DC^2 = 100 checks out."
+      "reasoning": "FIGURE READ (p11): square ABCD with A top-left, D top-right, B bottom-left, C bottom-right; E on AD, F on AB. Since 6^2 + 8^2 = 10^2, angle EFC = 90. Then triangles AEF and BFC are similar with ratio EF:FC = 6:8, so AF = (3/4)BC = 3s/4, FB = s/4, AE = 3s/16. From BFC: (s/4)^2 + s^2 = 64 gives (17/16)s^2 = 64, s^2 = 1024/17. Exact solve of the three distance equations returns the unique solution s = 32/sqrt17, e = 6/sqrt17, f = 8/sqrt17, and DE^2 + DC^2 = 100 checks out.",
+      "solution": "Since \\(6^2 + 8^2 = 10^2\\), the triangle CEF is right-angled at F, so \\(\\angle EFC = 90^\\circ\\). In the figure E lies on AD and F on AB, and that right angle at F makes triangles AEF and BFC similar in the ratio \\(EF : FC = 6 : 8 = 3 : 4\\); writing the side of the square as \\(s\\), this gives \\(AF = \\tfrac{3s}{4}\\) and hence \\(FB = \\tfrac{s}{4}\\). Applying Pythagoras in triangle BFC, \\(\\left(\\tfrac{s}{4}\\right)^2 + s^2 = 8^2\\), i.e. \\(\\tfrac{17}{16}s^2 = 64\\). The area of the square is therefore \\(s^2 = \\dfrac{1024}{17}\\) square cm."
     },
     {
       "number": 77,
       "answer": "D",
       "value": "17/4",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ at high zoom: the alpha arc at C lies between the bottom edge CB and the LOWER of the two lines from C, i.e. CF, so alpha = angle FCB; the beta arc at E lies between the top edge EA and EF, so beta = angle AEF. tan alpha = BF/BC = (s/4)/s = 1/4; tan beta = AF/AE = (3s/4)/(3s/16) = 4. Sum = 1/4 + 4 = 17/4. (The rival readings give tan(FEC) = 4/3 -> 19/12 and tan(DEC) = 16/13 -> 77/52, neither of which is printed, which corroborates the reading.)"
+      "reasoning": "FIGURE READ at high zoom: the alpha arc at C lies between the bottom edge CB and the LOWER of the two lines from C, i.e. CF, so alpha = angle FCB; the beta arc at E lies between the top edge EA and EF, so beta = angle AEF. tan alpha = BF/BC = (s/4)/s = 1/4; tan beta = AF/AE = (3s/4)/(3s/16) = 4. Sum = 1/4 + 4 = 17/4. (The rival readings give tan(FEC) = 4/3 -> 19/12 and tan(DEC) = 16/13 -> 77/52, neither of which is printed, which corroborates the reading.)",
+      "solution": "In the figure \\(\\alpha\\) is the angle at C between the bottom edge CB and the line CF, and \\(\\beta\\) is the angle at E between the top edge EA and EF. From the side length found earlier, \\(FB = \\tfrac{s}{4}\\), \\(AF = \\tfrac{3s}{4}\\) and \\(AE = \\tfrac{3s}{16}\\), so \\(\\tan\\alpha = \\dfrac{FB}{BC} = \\dfrac{s/4}{s} = \\dfrac14\\) and \\(\\tan\\beta = \\dfrac{AF}{AE} = \\dfrac{3s/4}{3s/16} = 4\\). Their sum is \\(\\dfrac14 + 4 = \\dfrac{17}{4}\\)."
     },
     {
       "number": 78,
@@ -554,7 +597,8 @@
       "answer": "D",
       "value": "66.5 square cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p12, zoomed): big circle centre O radius OB = 7 with CA a horizontal diameter and BD a vertical diameter; a small circle on OC as diameter (radius 3.5) is hatched; chords BA and DA are drawn and the two minor segments between each chord and its arc are hatched. Small circle = (22/7)(3.5^2) = 38.5. Each segment has a 90 degree central angle: sector 154/4 = 38.5 minus triangle (1/2)(7)(7) = 24.5, i.e. 14 each. Total shaded = 38.5 + 2(14) = 66.5 sq cm."
+      "reasoning": "FIGURE READ (p12, zoomed): big circle centre O radius OB = 7 with CA a horizontal diameter and BD a vertical diameter; a small circle on OC as diameter (radius 3.5) is hatched; chords BA and DA are drawn and the two minor segments between each chord and its arc are hatched. Small circle = (22/7)(3.5^2) = 38.5. Each segment has a 90 degree central angle: sector 154/4 = 38.5 minus triangle (1/2)(7)(7) = 24.5, i.e. 14 each. Total shaded = 38.5 + 2(14) = 66.5 sq cm.",
+      "solution": "In the figure CA is a horizontal diameter and BD a vertical diameter of the big circle of radius \\(7\\); the small circle drawn on OC as diameter has radius \\(3.5\\), and the shading covers that small circle together with the two minor segments cut off by the chords BA and DA. The small circle has area \\(\\tfrac{22}{7}(3.5)^2 = 38.5\\) square cm. Each segment stands on a \\(90^\\circ\\) central angle, so it is a quarter sector minus a right triangle: \\(\\tfrac{154}{4} - \\tfrac12(7)(7) = 38.5 - 24.5 = 14\\) square cm. The total shaded area is \\(38.5 + 2(14) = 66.5\\) square cm."
     },
     {
       "number": 80,
@@ -617,77 +661,88 @@
       "answer": "D",
       "value": "14 cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p14): M is the point where the incircle touches the hypotenuse AC. With BC = a, AB = c, AC = b, the inradius gives a + c - b = 2r = 4, and AM = s - a, CM = s - c, so (b+c-a)/(a+b-c) = 2/3. Solving together with a^2 + c^2 = b^2 gives the unique positive solution a = 8, c = 6, b = 10 (sympy). Then AM = 4, CM = 6 (ratio 2:3, checks) and AB + BC = 6 + 8 = 14 cm."
+      "reasoning": "FIGURE READ (p14): M is the point where the incircle touches the hypotenuse AC. With BC = a, AB = c, AC = b, the inradius gives a + c - b = 2r = 4, and AM = s - a, CM = s - c, so (b+c-a)/(a+b-c) = 2/3. Solving together with a^2 + c^2 = b^2 gives the unique positive solution a = 8, c = 6, b = 10 (sympy). Then AM = 4, CM = 6 (ratio 2:3, checks) and AB + BC = 6 + 8 = 14 cm.",
+      "solution": "M is the point where the incircle touches the hypotenuse AC. Writing \\(BC = a\\), \\(AB = c\\) and \\(AC = b\\), the inradius of a right triangle gives \\(a + c - b = 2r = 4\\), while \\(AM = s - a\\) and \\(CM = s - c\\) turn \\(MA : MC = 2 : 3\\) into \\(\\dfrac{b + c - a}{a + b - c} = \\dfrac23\\). Solving these together with \\(a^2 + c^2 = b^2\\) gives the unique positive solution \\(a = 8\\), \\(c = 6\\), \\(b = 10\\), for which \\(AM = 4\\) and \\(CM = 6\\), in the ratio \\(2 : 3\\) as required. Hence \\(AB + BC = 6 + 8 = 14\\) cm."
     },
     {
       "number": 89,
       "answer": "D",
       "value": "3 - sqrt5",
       "confidence": "HIGH",
-      "reasoning": "With B at the origin, A = (0,6), C = (8,0), incircle centre (2,2) radius 2. The circle at O1 is tangent to the same two sides AB and AC, so it lies on the bisector from A: distances from A are rho/sin(A/2) and 2/sin(A/2), and external tangency gives (2 - rho)/sin(A/2) = 2 + rho. cos A = 6/10 so sin(A/2) = 1/sqrt5, giving rho = 2(sqrt5-1)/(sqrt5+1) = 3 - sqrt5 = 0.7639 (sympy exact solve)."
+      "reasoning": "With B at the origin, A = (0,6), C = (8,0), incircle centre (2,2) radius 2. The circle at O1 is tangent to the same two sides AB and AC, so it lies on the bisector from A: distances from A are rho/sin(A/2) and 2/sin(A/2), and external tangency gives (2 - rho)/sin(A/2) = 2 + rho. cos A = 6/10 so sin(A/2) = 1/sqrt5, giving rho = 2(sqrt5-1)/(sqrt5+1) = 3 - sqrt5 = 0.7639 (sympy exact solve).",
+      "solution": "Place B at the origin, so \\(A = (0, 6)\\) and \\(C = (8, 0)\\), and the incircle has centre \\((2, 2)\\) with radius \\(2\\). The circle at \\(O_1\\) touches the same two sides AB and AC, so its centre lies on the bisector from A; the distances from A to the two centres are \\(\\dfrac{\\rho}{\\sin(A/2)}\\) and \\(\\dfrac{2}{\\sin(A/2)}\\), and external tangency of the circles gives \\(\\dfrac{2 - \\rho}{\\sin(A/2)} = 2 + \\rho\\). From \\(\\cos A = \\tfrac{6}{10}\\) we get \\(\\sin\\tfrac{A}{2} = \\dfrac{1}{\\sqrt5}\\), and solving yields \\(\\rho = \\dfrac{2\\left(\\sqrt5 - 1\\right)}{\\sqrt5 + 1} = 3 - \\sqrt5 \\approx 0.76\\) cm."
     },
     {
       "number": 90,
       "answer": "C",
       "value": "(22 - 4*sqrt10)/9",
       "confidence": "HIGH",
-      "reasoning": "Same construction at vertex C, whose sides are BC and AC. cos C = 8/10 so sin(C/2) = 1/sqrt10, and (2 - rho)/sin(C/2) = 2 + rho gives rho = 2(sqrt10 - 1)/(sqrt10 + 1) = (22 - 4*sqrt10)/9 = 1.0390 (sympy exact solve). Option D, (22 - 2*sqrt10)/9 = 1.742, and option A, 5 - sqrt10 = 1.838, are both too large to fit between the incircle and vertex C."
+      "reasoning": "Same construction at vertex C, whose sides are BC and AC. cos C = 8/10 so sin(C/2) = 1/sqrt10, and (2 - rho)/sin(C/2) = 2 + rho gives rho = 2(sqrt10 - 1)/(sqrt10 + 1) = (22 - 4*sqrt10)/9 = 1.0390 (sympy exact solve). Option D, (22 - 2*sqrt10)/9 = 1.742, and option A, 5 - sqrt10 = 1.838, are both too large to fit between the incircle and vertex C.",
+      "solution": "The same construction at vertex C uses the sides BC and AC instead. There \\(\\cos C = \\tfrac{8}{10}\\), so \\(\\sin\\tfrac{C}{2} = \\dfrac{1}{\\sqrt{10}}\\), and the tangency condition \\(\\dfrac{2 - \\rho}{\\sin(C/2)} = 2 + \\rho\\) gives \\(\\rho = \\dfrac{2\\left(\\sqrt{10} - 1\\right)}{\\sqrt{10} + 1} = \\dfrac{22 - 4\\sqrt{10}}{9} \\approx 1.04\\) cm. The alternatives \\(\\dfrac{22 - 2\\sqrt{10}}{9} \\approx 1.74\\) and \\(5 - \\sqrt{10} \\approx 1.84\\) are both far too large to fit between the incircle and the vertex."
     },
     {
       "number": 91,
       "answer": "C",
       "value": "12.5 square cm",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p14, zoomed): the two identical semicircles have the top side DC and the bottom side AB as diameters (radius 5 each, centres (5,w) and (5,0)); the inscribed circle touches top and bottom, centre (5,w/2) radius w/2, touching DC at O. E and F are simultaneously the semicircle intersections AND the extreme left/right points of the inscribed circle, which forces sqrt(25 - w^2/4) = w/2, i.e. w = 5*sqrt2 (this is why the paper supplies sqrt2 = 1.4). The drawn figure's aspect ratio measures 0.706 against sqrt2/2 = 0.707, confirming it. EF = 5*sqrt2, height from O to EF = 5*sqrt2/2, area = (1/2)(5sqrt2)(5sqrt2/2) = 12.5 exactly (no surd, so options A and B are excluded)."
+      "reasoning": "FIGURE READ (p14, zoomed): the two identical semicircles have the top side DC and the bottom side AB as diameters (radius 5 each, centres (5,w) and (5,0)); the inscribed circle touches top and bottom, centre (5,w/2) radius w/2, touching DC at O. E and F are simultaneously the semicircle intersections AND the extreme left/right points of the inscribed circle, which forces sqrt(25 - w^2/4) = w/2, i.e. w = 5*sqrt2 (this is why the paper supplies sqrt2 = 1.4). The drawn figure's aspect ratio measures 0.706 against sqrt2/2 = 0.707, confirming it. EF = 5*sqrt2, height from O to EF = 5*sqrt2/2, area = (1/2)(5sqrt2)(5sqrt2/2) = 12.5 exactly (no surd, so options A and B are excluded).",
+      "solution": "The two semicircles stand on DC and on AB as diameters, so each has radius \\(5\\), while the inscribed circle touches top and bottom and so has radius half the rectangle's width \\(w\\). In the figure E and F are simultaneously the intersections of the two semicircles AND the extreme left and right points of the inscribed circle, which forces \\(\\sqrt{25 - \\tfrac{w^2}{4}} = \\tfrac{w}{2}\\), i.e. \\(w = 5\\sqrt2\\) — which is why the paper supplies \\(\\sqrt2 = 1.4\\). Then \\(EF = 5\\sqrt2\\) and the height from O down to EF is \\(\\tfrac{5\\sqrt2}{2}\\), so the area is \\(\\tfrac12\\left(5\\sqrt2\\right)\\left(\\tfrac{5\\sqrt2}{2}\\right) = 12.5\\) square cm exactly. No surd survives, which is why neither choice carrying \\(\\sqrt3\\) can be right."
     },
     {
       "number": 92,
       "answer": "A",
       "value": "30 square cm",
       "confidence": "HIGH",
-      "reasoning": "AEFB is a trapezium with parallel sides AB = 10 and EF = 5*sqrt2 and height w/2 = 5*sqrt2/2. Area = (1/2)(10 + 5sqrt2)(5sqrt2/2) = 12.5(1 + sqrt2). Exactly 30.178; with the paper's own instruction sqrt2 = 1.4 it is exactly 12.5(2.4) = 30 square cm."
+      "reasoning": "AEFB is a trapezium with parallel sides AB = 10 and EF = 5*sqrt2 and height w/2 = 5*sqrt2/2. Area = (1/2)(10 + 5sqrt2)(5sqrt2/2) = 12.5(1 + sqrt2). Exactly 30.178; with the paper's own instruction sqrt2 = 1.4 it is exactly 12.5(2.4) = 30 square cm.",
+      "solution": "AEFB is a trapezium whose parallel sides are \\(AB = 10\\) and \\(EF = 5\\sqrt2\\), with height equal to half the rectangle's width, \\(\\tfrac{5\\sqrt2}{2}\\). Its area is \\(\\tfrac12\\left(10 + 5\\sqrt2\\right)\\left(\\tfrac{5\\sqrt2}{2}\\right) = 12.5\\left(1 + \\sqrt2\\right)\\). Using the paper's own instruction \\(\\sqrt2 = 1.4\\), this is exactly \\(12.5 \\times 2.4 = 30\\) square cm; the exact value is \\(30.18\\)."
     },
     {
       "number": 93,
       "answer": "B",
       "value": "14.25 square cm",
       "confidence": "HIGH",
-      "reasoning": "The shaded lens is the intersection of the two semicircular discs, both radius R = 5 with centres 5*sqrt2 apart. Half-angle: cos = (d/2)/R = sqrt2/2, so the angle is 45 degrees and the lens area = 2[R^2*(pi/4) - (d/2)*sqrt(R^2 - d^2/4)] = 12.5*pi - 25. Exactly 14.2699; with the paper's pi = 3.14 it is exactly 39.25 - 25 = 14.25 square cm. (Options C and D are near half the lens, i.e. a single segment.)"
+      "reasoning": "The shaded lens is the intersection of the two semicircular discs, both radius R = 5 with centres 5*sqrt2 apart. Half-angle: cos = (d/2)/R = sqrt2/2, so the angle is 45 degrees and the lens area = 2[R^2*(pi/4) - (d/2)*sqrt(R^2 - d^2/4)] = 12.5*pi - 25. Exactly 14.2699; with the paper's pi = 3.14 it is exactly 39.25 - 25 = 14.25 square cm. (Options C and D are near half the lens, i.e. a single segment.)",
+      "solution": "The shaded lens is the overlap of the two semicircular discs, each of radius \\(R = 5\\) with their centres \\(5\\sqrt2\\) apart. The half-angle at a centre satisfies \\(\\cos = \\dfrac{d/2}{R} = \\dfrac{\\sqrt2}{2}\\), so it is \\(45^\\circ\\), and the lens area is \\(2\\left[R^2 \\cdot \\tfrac{\\pi}{4} - \\tfrac{d}{2}\\sqrt{R^2 - \\tfrac{d^2}{4}}\\right] = 12.5\\pi - 25\\). With the paper's \\(\\pi = 3.14\\) this is exactly \\(39.25 - 25 = 14.25\\) square cm. The two much smaller choices are roughly half the lens, that is a single segment rather than the whole overlap."
     },
     {
       "number": 94,
       "answer": "B",
       "value": "4*sqrt3 unit",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p15, zoomed): apex A is the top point of the circle and the base BC is the horizontal tangent at the bottom, so the triangle's height equals the circle's diameter. Area 9*pi gives r = 3 and height = 6. For an equilateral triangle, height = side*sqrt3/2, so side = 12/sqrt3 = 4*sqrt3 = 6.928. The drawn figure measures height/base = 0.867 against sqrt3/2 = 0.866, and circle diameter/height = 1.02, both confirming the configuration."
+      "reasoning": "FIGURE READ (p15, zoomed): apex A is the top point of the circle and the base BC is the horizontal tangent at the bottom, so the triangle's height equals the circle's diameter. Area 9*pi gives r = 3 and height = 6. For an equilateral triangle, height = side*sqrt3/2, so side = 12/sqrt3 = 4*sqrt3 = 6.928. The drawn figure measures height/base = 0.867 against sqrt3/2 = 0.866, and circle diameter/height = 1.02, both confirming the configuration.",
+      "solution": "In the figure the apex A is the topmost point of the circle and the base BC is the horizontal tangent at the bottom, so the height of the triangle equals the diameter of the circle. Area \\(9\\pi\\) gives \\(r = 3\\), hence a height of \\(6\\). For an equilateral triangle the height is \\(\\tfrac{\\sqrt3}{2}\\) times the side, so the side is \\(\\dfrac{12}{\\sqrt3} = 4\\sqrt3 \\approx 6.93\\) unit."
     },
     {
       "number": 95,
       "answer": "A",
       "value": "COMPUTED 3(pi + sqrt3) = 14.62 square unit - NO PRINTED OPTION MATCHES",
       "confidence": "LOW",
-      "reasoning": "NO OPTION IS CORRECT. Hatching read at high zoom is the SYMMETRIC DIFFERENCE: the two circular segments of the circle outside the triangle, plus the two curvilinear corners inside the triangle and outside the circle; the circle-and-triangle overlap is white. Take the circle x^2+y^2 = 9, A = (0,3), B = (-2sqrt3,-3), C = (2sqrt3,-3). Line AB (y = sqrt3 x + 3) meets the circle again at (-3sqrt3/2, -3/2), a 120 degree chord, so each outside segment = (1/2)(9)(2pi/3 - sin120) = 3pi - 2.25sqrt3. Overlap = 9pi - 2(3pi - 2.25sqrt3) = 3pi + 4.5sqrt3 = 17.219. Triangle = 12sqrt3 = 20.785. Shaded = (9pi - overlap) + (12sqrt3 - overlap) = 3pi + 3sqrt3 = 3(pi + sqrt3) = 14.621. Printed options are 29.24, 19.82, 34.92, 39.63. I record A because option A is 6(pi + sqrt3), the SAME algebraic form as the true answer with exactly double the coefficient - a factor-of-2 slip is by far the most likely origin of the key (6(pi+sqrt3) is what this configuration would give for a circle of area 18pi, not 9pi). [ADJUDICATED. No printed option is correct. The shaded region is the symmetric difference of circle and triangle = 3(pi + sqrt3) = 14.62, confirmed by an 8-million-point Monte Carlo. Printed option (a) is EXACTLY twice that value. Recorded as the best available reading.]"
+      "reasoning": "NO OPTION IS CORRECT. Hatching read at high zoom is the SYMMETRIC DIFFERENCE: the two circular segments of the circle outside the triangle, plus the two curvilinear corners inside the triangle and outside the circle; the circle-and-triangle overlap is white. Take the circle x^2+y^2 = 9, A = (0,3), B = (-2sqrt3,-3), C = (2sqrt3,-3). Line AB (y = sqrt3 x + 3) meets the circle again at (-3sqrt3/2, -3/2), a 120 degree chord, so each outside segment = (1/2)(9)(2pi/3 - sin120) = 3pi - 2.25sqrt3. Overlap = 9pi - 2(3pi - 2.25sqrt3) = 3pi + 4.5sqrt3 = 17.219. Triangle = 12sqrt3 = 20.785. Shaded = (9pi - overlap) + (12sqrt3 - overlap) = 3pi + 3sqrt3 = 3(pi + sqrt3) = 14.621. Printed options are 29.24, 19.82, 34.92, 39.63. I record A because option A is 6(pi + sqrt3), the SAME algebraic form as the true answer with exactly double the coefficient - a factor-of-2 slip is by far the most likely origin of the key (6(pi+sqrt3) is what this configuration would give for a circle of area 18pi, not 9pi). [ADJUDICATED. No printed option is correct. The shaded region is the symmetric difference of circle and triangle = 3(pi + sqrt3) = 14.62, confirmed by an 8-million-point Monte Carlo. Printed option (a) is EXACTLY twice that value. Recorded as the best available reading.]",
+      "solution": "Reading the hatching, the shaded region is the SYMMETRIC DIFFERENCE of circle and triangle — the two circular segments lying outside the triangle plus the two curvilinear corners of the triangle lying outside the circle, with the overlap left white. Taking the circle \\(x^2 + y^2 = 9\\) with \\(A = (0, 3)\\), \\(B = \\left(-2\\sqrt3, -3\\right)\\) and \\(C = \\left(2\\sqrt3, -3\\right)\\), each outside segment subtends \\(120^\\circ\\) and equals \\(3\\pi - 2.25\\sqrt3\\), so the overlap is \\(3\\pi + 4.5\\sqrt3\\) and the shaded area is \\(\\left(9\\pi - \\text{overlap}\\right) + \\left(12\\sqrt3 - \\text{overlap}\\right) = 3\\left(\\pi + \\sqrt3\\right) \\approx 14.62\\) square unit. That value is not among the printed choices, so this question has no correct option as set. The printed \\(6\\left(\\pi + \\sqrt3\\right)\\) is EXACTLY twice it — the value this configuration would give for a circle of area \\(18\\pi\\) rather than \\(9\\pi\\) — and is recorded here as the figure the setter appears to have intended."
     },
     {
       "number": 96,
       "answer": "A",
       "value": "17*pi square unit",
       "confidence": "HIGH",
-      "reasoning": "FIGURE READ (p15): the rectangle is 9 wide by 8 tall (the big circle is tangent to top, bottom and left, so its diameter equals the height 8, radius 4, centre (4,4), touching AB at P = (4,0); a height of 9 would make the circle overflow the width). The small circle is tangent to the right side and the bottom, centre (9-r, r), and touches the big circle: (5-r)^2 + (r-4)^2 = (4+r)^2 gives r^2 - 26r + 25 = 0, so r = 1 (r = 25 is rejected). Sum of areas = 16pi + pi = 17pi."
+      "reasoning": "FIGURE READ (p15): the rectangle is 9 wide by 8 tall (the big circle is tangent to top, bottom and left, so its diameter equals the height 8, radius 4, centre (4,4), touching AB at P = (4,0); a height of 9 would make the circle overflow the width). The small circle is tangent to the right side and the bottom, centre (9-r, r), and touches the big circle: (5-r)^2 + (r-4)^2 = (4+r)^2 gives r^2 - 26r + 25 = 0, so r = 1 (r = 25 is rejected). Sum of areas = 16pi + pi = 17pi.",
+      "solution": "The big circle touches the top, bottom and left sides, so its diameter equals the height \\(8\\), giving radius \\(4\\) and centre \\((4, 4)\\); the rectangle must therefore be \\(9\\) wide and \\(8\\) tall, since a height of \\(9\\) would let the circle overflow the width. The small circle touches the right side and the bottom, so its centre is \\((9 - r,\\, r)\\), and touching the big circle gives \\((5 - r)^2 + (r - 4)^2 = (4 + r)^2\\), i.e. \\(r^2 - 26r + 25 = 0\\), whose admissible root is \\(r = 1\\). The sum of the two areas is \\(16\\pi + \\pi = 17\\pi\\) square unit."
     },
     {
       "number": 97,
       "answer": "C",
       "value": "theta = 53.13 degrees, so 45 < theta < 60",
       "confidence": "HIGH",
-      "reasoning": "theta is the angle at O1 between O1P (straight down, (0,-1)) and O1O2 (from (4,4) to (8,1), i.e. (4,-3)/5). cos theta = 3/5 = 0.6, so theta = 53.13 degrees, which lies strictly between 45 and 60."
+      "reasoning": "theta is the angle at O1 between O1P (straight down, (0,-1)) and O1O2 (from (4,4) to (8,1), i.e. (4,-3)/5). cos theta = 3/5 = 0.6, so theta = 53.13 degrees, which lies strictly between 45 and 60.",
+      "solution": "The angle \\(\\theta\\) is measured at \\(O_1\\) between \\(O_1P\\), which points straight down, and \\(O_1O_2\\), which runs from \\((4, 4)\\) to \\((8, 1)\\), i.e. along \\(\\tfrac15(4, -3)\\). Hence \\(\\cos\\theta = \\tfrac35 = 0.6\\), so \\(\\theta \\approx 53.13^\\circ\\). That lies strictly between \\(45^\\circ\\) and \\(60^\\circ\\)."
     },
     {
       "number": 98,
       "answer": "D",
       "value": "(240 - 12*pi - pi*theta)/24 square unit",
       "confidence": "HIGH",
-      "reasoning": "The shaded region is bounded below by AB from P(4,0) to the small circle's contact point (8,0) and above by the two arcs meeting at the point of tangency. Take the quadrilateral P(4,0), O1(4,4), O2(8,1), (8,0): shoelace area = 10. Subtract the big-circle sector of angle theta, (theta/360)*pi*16, and the small-circle sector between O2O1 and the downward vertical, whose angle is 180 - theta, giving ((180-theta)/360)*pi*1. Total = 10 - 2*pi*theta/45 - pi/2 + pi*theta/360 = 10 - pi/2 - pi*theta/24 = (240 - 12pi - pi*theta)/24. sympy confirms the difference from option D is identically 0. (Including the corner beyond (8,0) up to B would add 1 - pi/4 and give (264 - 18pi - pi*theta)/24, which is not printed - so the region is as read.)"
+      "reasoning": "The shaded region is bounded below by AB from P(4,0) to the small circle's contact point (8,0) and above by the two arcs meeting at the point of tangency. Take the quadrilateral P(4,0), O1(4,4), O2(8,1), (8,0): shoelace area = 10. Subtract the big-circle sector of angle theta, (theta/360)*pi*16, and the small-circle sector between O2O1 and the downward vertical, whose angle is 180 - theta, giving ((180-theta)/360)*pi*1. Total = 10 - 2*pi*theta/45 - pi/2 + pi*theta/360 = 10 - pi/2 - pi*theta/24 = (240 - 12pi - pi*theta)/24. sympy confirms the difference from option D is identically 0. (Including the corner beyond (8,0) up to B would add 1 - pi/4 and give (264 - 18pi - pi*theta)/24, which is not printed - so the region is as read.)",
+      "solution": "The shaded region is bounded below by AB from \\(P(4, 0)\\) across to the small circle's point of contact \\((8, 0)\\), and above by the two arcs meeting where the circles touch. The quadrilateral \\(P(4,0)\\), \\(O_1(4,4)\\), \\(O_2(8,1)\\), \\((8,0)\\) has area \\(10\\); from it subtract the big-circle sector of angle \\(\\theta\\), namely \\(\\dfrac{\\theta}{360}\\pi(4)^2\\), and the small-circle sector of angle \\(180^\\circ - \\theta\\), namely \\(\\dfrac{180 - \\theta}{360}\\pi(1)^2\\). This leaves \\(10 - \\dfrac{\\pi}{2} - \\dfrac{\\pi\\theta}{24} = \\dfrac{240 - 12\\pi - \\pi\\theta}{24}\\) square unit."
     },
     {
       "number": 99,
@@ -701,7 +756,8 @@
       "answer": "D",
       "value": "12*pi cm",
       "confidence": "HIGH",
-      "reasoning": "The boundary of the shaded region is made entirely of arcs (no straight part), consistent with every option being a multiple of pi: the lower semicircular arc of the big circle (pi*6), the semicircular arc on AB (pi*2) and the semicircular arc on BD (pi*4). Total = 6pi + 2pi + 4pi = 12pi cm."
+      "reasoning": "The boundary of the shaded region is made entirely of arcs (no straight part), consistent with every option being a multiple of pi: the lower semicircular arc of the big circle (pi*6), the semicircular arc on AB (pi*2) and the semicircular arc on BD (pi*4). Total = 6pi + 2pi + 4pi = 12pi cm.",
+      "solution": "The boundary of the shaded region consists only of arcs, with no straight portion — which is consistent with every choice being a multiple of \\(\\pi\\). With \\(AB = BC = CD = 4\\) cm, it is made up of the lower semicircular arc of the big circle, of length \\(6\\pi\\); the semicircular arc on AB of radius \\(2\\), length \\(2\\pi\\); and the semicircular arc on BD of radius \\(4\\), length \\(4\\pi\\). The perimeter is \\(6\\pi + 2\\pi + 4\\pi = 12\\pi\\) cm."
     }
   ]
 }

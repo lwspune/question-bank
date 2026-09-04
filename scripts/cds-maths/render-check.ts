@@ -76,6 +76,28 @@ function main() {
   if (!existsSync(qPath)) throw new Error(`missing ${qPath} — run merge.ts first`);
   const questions: TQ[] = normalizeQuestions(JSON.parse(readFileSync(qPath, "utf8")));
 
+  // SOLUTIONS ARE IN SCOPE, and they were not until two agents rewriting them
+  // reported, independently, that this probe could not validate a word of their
+  // new LaTeX. That was a real hole: a solution is rendered to the student
+  // through the same KaTeX path as a stem, so unconvertible markup there fails
+  // exactly as visibly -- and the solutions are the half most likely to carry
+  // hand-authored maths, because stems are transcribed from a printed page
+  // while solutions are written from scratch.
+  const aPath = dataPath(paper.id, "answers");
+  const solutions = new Map<number, string>();
+  if (existsSync(aPath)) {
+    const file = JSON.parse(readFileSync(aPath, "utf8")) as {
+      derivations?: { number: number; reasoning?: string; solution?: string }[];
+    };
+    for (const d of file.derivations ?? []) {
+      // Mirror buildRecords: the student-facing field when authored, the
+      // reviewer evidence otherwise. Checking `reasoning` when a `solution`
+      // exists would validate a string nobody will ever see.
+      const text = d.solution ?? d.reasoning;
+      if (text) solutions.set(d.number, text);
+    }
+  }
+
   let zones = 0;
   const failures: string[] = [];
   for (const q of questions) {
@@ -83,6 +105,7 @@ function main() {
       ["stem", q.stem],
       ["context", q.context],
       ...q.options.map((o) => [`option ${o.label}`, o.text] as [string, string]),
+      ["solution", solutions.get(q.number)],
     ];
     for (const [name, val] of fields) {
       if (!val) continue;
