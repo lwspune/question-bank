@@ -103,11 +103,34 @@ const p = (
 // That is why 2020-2 below points OUTSIDE All_PYQPs — it is the one sitting the
 // All_PYQPs folder is missing, and the corpus is 20 papers, not 19.
 export const PAPERS: Record<string, Paper> = {
-  // PRE-PASS NOT DONE. The raw UPSC booklet: 48 pages, Hindi + English
-  // alternating, cover scanned LAST (index 47). `englishPages` must be
-  // established from rendered images — there is no text layer to count
-  // Devanagari in, so scripts/upsc/classify-pages.py cannot be used as-is.
-  "2026-1": p("2026-1", "2026 Apr.pdf", 2026, "I"),
+  // PRE-PASS DONE 2026-09-04. English question pages are the EVEN indices 2..42.
+  //
+  // The booklet has NO text layer at all — 48 pages, 0 extractable characters —
+  // so the split could not be detected by counting Devanagari and had to be read
+  // off rendered images. scripts/upsc/classify-pages.py is useless here for that
+  // reason: it counts characters, and there are none.
+  //
+  // Established from a whole-booklet montage plus a full-resolution read of p01
+  // and p02: p01 is Q1-Q6 in HINDI and p02 is the SAME Q1-Q6 in ENGLISH, printed
+  // page 3, footer `A - KPRS-T-MTE`. So printed page = index + 1, and English
+  // printed pages are ODD (3, 5, 7 ... 43) — the identical convention the sibling
+  // CDS General Knowledge 2026 booklet follows, and the same one the 19 reprints
+  // implement by simply dropping the Hindi pages.
+  //
+  // The order is HINDI BLOCK then ENGLISH BLOCK of the SAME questions, so reading
+  // consecutive pages looks like the numbering jumps backwards. That is not a
+  // misprint and not a duplicate — it is the trap here.
+  //
+  // Indices 43-46 are SPACE FOR ROUGH WORK and 47 is the English cover, scanned
+  // LAST. A naive "all even pages" rule would therefore feed two blank pages to a
+  // transcriber; the range stops at 42 deliberately.
+  //
+  // 21 English pages for 100 questions is ~4.8 q/page, and p02 carries 6.
+  // WHERE Q100 COMPLETES IS NOT YET CONFIRMED — the band that owns the tail must
+  // verify it per the brief's standing rule, rather than trusting this comment.
+  "2026-1": p("2026-1", "2026 Apr.pdf", 2026, "I", {
+    englishPages: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42],
+  }),
   "2025-2": p("2025-2", "2025 Sep.pdf", 2025, "II"),
   "2025-1": p("2025-1", "2025 Apr.pdf", 2025, "I"),
   "2024-2": p("2024-2", "2024 Sep.pdf", 2024, "II"),
