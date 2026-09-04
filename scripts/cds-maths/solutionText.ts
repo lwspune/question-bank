@@ -44,6 +44,18 @@ const JARGON_PATTERNS: { re: RegExp; label: string }[] = [
   { re: /\bboth passes\b|\btwo passes\b/i, label: "refers to the two derivation passes" },
   { re: /\bDISAGREED?\b/, label: "reports pass disagreement" },
   { re: /\bconfidence:\s*(HIGH|MED|LOW)\b/, label: "leaks the confidence flag into prose" },
+  // Added after a rewrite agent pointed out the list named three CAS tools but
+  // missed the commoner way a derivation says how it was checked.
+  //
+  // SCOPED TO THE TOOL AND THE AUTHOR, deliberately. A first draft also flagged
+  // "exhaustive search", "enumerated" and "brute-force" and was wrong to: for a
+  // counting question, "an exhaustive check over all divisor pairs returns
+  // exactly these two" IS the justification -- it tells the student the list is
+  // complete, which is the entire content of the answer. Those are ordinary
+  // mathematical English. Naming the LANGUAGE ("enumerated in python", "exactly
+  // with Fractions") is not, and neither is the author narrating themselves.
+  { re: /\b(?:in|using|with)\s+(?:python|numpy|Fractions|Decimal)\b/i, label: "names the language or library it was checked in" },
+  { re: /\bI (?:checked|verified|computed|re-?derived|ran|chose|enumerated)\b/, label: "first person: the author narrating their own process" },
 ];
 
 /**
@@ -87,9 +99,17 @@ export function maskMath(s: string): string {
  * the honesty disclosure saying the answer is derived and no official key
  * exists. It legitimately contains "blind derivations" and "confidence:", which
  * would otherwise trip two jargon rules. Strip it before probing prose.
+ *
+ * The body is `[^\]]*`, NOT a lazy `[\s\S]*?`. With the `$` anchor a lazy body
+ * still has to reach the end of the string, so a MID-string bracket -- some
+ * rows carry an inline `[Adjudicated against the external key ...]` -- matched
+ * from there all the way through the appended clause's closing `]`, silently
+ * swallowing every word between them. Those rows were then probed with most of
+ * their prose missing, so the audit UNDER-reported. Refusing to cross a `]`
+ * makes the match what it always meant: a trailing bracket, and only that.
  */
 export function stripProvenance(s: string): string {
-  return s.replace(/\[\s*(?:Derived answer|Adjudicated against)[\s\S]*?\]\s*$/i, "").trim();
+  return s.replace(/\[\s*(?:Derived answer|Adjudicated against)[^\]]*\]\s*$/i, "").trim();
 }
 
 /**

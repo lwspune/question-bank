@@ -18,6 +18,27 @@ describe("stripProvenance", () => {
     expect(stripProvenance("The answer is 7.")).toBe("The answer is 7.");
   });
 
+  it("does NOT let a MID-STRING bracket swallow the prose after it", () => {
+    // The regression that made the audit UNDER-report. With a lazy body and a
+    // `$` anchor, the inline bracket matched all the way through the appended
+    // clause's closing `]`, taking every word between them with it — so those
+    // rows were probed with most of their text missing.
+    const s =
+      "Body one. [Adjudicated against the external key.] Body two with RUNNER-UP in it." + PROV;
+    const out = stripProvenance(s);
+    expect(out).toContain("Body one.");
+    expect(out).toContain("Body two");
+    expect(out).toContain("RUNNER-UP");
+    expect(out).not.toContain("Derived answer");
+  });
+
+  it("a mid-string bracket therefore still reaches the jargon probe", () => {
+    const f = auditSolution(
+      "Body one. [Adjudicated against the external key.] Body two." + PROV,
+    );
+    expect(f.some((x) => x.kind === "JARGON" && /adjudication/.test(x.detail))).toBe(true);
+  });
+
   it("does NOT eat a mid-sentence bracket", () => {
     // Only a trailing clause is provenance; an interval like [-1, 1] must survive.
     const s = "sin lies in [-1, 1] so nothing vanishes.";
