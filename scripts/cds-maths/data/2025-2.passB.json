@@ -1,0 +1,702 @@
+[
+  {
+    "number": 1,
+    "answer": "C",
+    "value": "3 - x",
+    "confidence": "HIGH",
+    "reasoning": "Remainder mod a quadratic is linear: r(x)=ax+b. p(1)=2 gives a+b=2; p(2)=1 gives 2a+b=1. Solving: a=-1, b=3, so r(x)=3-x."
+  },
+  {
+    "number": 2,
+    "answer": "D",
+    "value": "I, II and III are all correct",
+    "confidence": "HIGH",
+    "reasoning": "For x>0, AM-GM gives x+1/x >= 2 (equality at x=1). Hence I: x+1/x >= 2 > 1 true; II: (x+1/x)^2 >= 4 > 2 true; III: (x+1/x)^4 >= 16 > 9 true. All three hold, including at the minimum x=1."
+  },
+  {
+    "number": 3,
+    "answer": "A",
+    "value": "3",
+    "confidence": "MED",
+    "reasoning": "Solved as printed (the expression mixes q and p). Need some natural q>p with q^2-5p-4<0. The least admissible q is p+1, so we need (p+1)^2 < 5p+4, i.e. p^2-3p-3<0, i.e. p < (3+sqrt21)/2 = 3.79, so p<=3. Verified: p=3,q=4 gives 16-19=-3<0; p=4 forces q>=5 giving 25-24=+1>0. Brute force over p<=59 confirms largest p=3. Runner-up B=4: it would win if the intended expression were p^2-5p-4 or if q>p were relaxed to q>=p (then p=4,q=4 gives 16-24=-8<0, and p=5,q=5 gives 25-29=-4<0, which actually pushes further, so the q>=p reading gives neither 3 nor 4 cleanly). Flagged as a possible misprint, not corrected."
+  },
+  {
+    "number": 4,
+    "answer": "A",
+    "value": "One: (x,y,x+y,x-y) = (5,2,7,3)",
+    "confidence": "HIGH",
+    "reasoning": "x-y prime forces x>y. If x,y both odd primes, x+y is even and >2, not prime; so y=2. Then x, x-2, x+2 all prime forces the prime triplet 3,5,7, i.e. x=5. Exhaustive search over x,y<20 returns exactly the single combination (5,2,7,3)."
+  },
+  {
+    "number": 5,
+    "answer": "A",
+    "value": "-1",
+    "confidence": "HIGH",
+    "reasoning": "x^4-1 = (x+1)(x-1)(x^2+1). Cancelling (x+1) requires (x+p)(x^2+p^2) = (x-1)(x^2+1), so p=-1. Sympy returns p=-1 as the only constant solution (its other two roots are x-dependent and so cannot make this an identity in x)."
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "(2+sqrt3)(2-sqrt3)=1, so with t=(2+sqrt3)^x the condition is t+1/t=2, giving t=1 and hence x=0. Then (2+sqrt3)^0-(2-sqrt3)^0 = 1-1 = 0."
+  },
+  {
+    "number": 7,
+    "answer": "B",
+    "value": "35/216",
+    "confidence": "HIGH",
+    "reasoning": "With u=1/a, v=1/b: u+v=5/6, u^2+v^2=13/36, so uv = ((5/6)^2-13/36)/2 = 1/6. Then u^3+v^3 = (5/6)^3 - 3(1/6)(5/6) = 125/216 - 90/216 = 35/216. Exact-rational solve confirms (u,v)=(1/3,1/2)."
+  },
+  {
+    "number": 8,
+    "answer": "A",
+    "value": "-1",
+    "confidence": "HIGH",
+    "reasoning": "Modulo x^2+1 we have x^2 = -1, so x^6 = (x^2)^3 = -1. Sympy polynomial remainder confirms -1."
+  },
+  {
+    "number": 9,
+    "answer": "A",
+    "value": "x^5-4x^4-3x^3+8x^2-14x+12",
+    "confidence": "HIGH",
+    "reasoning": "(x+2) is a factor iff p(-2)=0. Evaluated: A gives 0, B gives 128, C gives -48, D gives -56. Only A."
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "value": "107",
+    "confidence": "HIGH",
+    "reasoning": "log10(60^60) = 60(log10 2 + log10 3 + 1) = 60(0.301+0.477+1) = 60(1.778) = 106.68. Digits = floor(106.68)+1 = 107. Direct big-integer computation of 60^60 also gives 107 digits."
+  },
+  {
+    "number": 11,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Mod 18, 17 = -1 and 19 = 1, so 17^25+19^25 = (-1)^25 + 1 = -1+1 = 0. Direct computation of (17^25+19^25) mod 18 gives 0."
+  },
+  {
+    "number": 12,
+    "answer": "C",
+    "value": "Both I and II",
+    "confidence": "HIGH",
+    "reasoning": "p = (x^3+y^3)/(x^2-xy+y^2) = x+y and q = (x^3-y^3)/(x^2+xy+y^2) = x-y. Writing x=Ha, y=Hb with gcd(a,b)=1, HCF(p,q) = H*gcd(a+b,a-b) and gcd(a+b,a-b) divides 2, so it is 1 or 2. Brute force over all x>y<60 returns exactly the ratio set {H, 2H}: e.g. (x,y)=(2,1) gives HCF 1 = H, and (3,1) gives HCF 2 = 2H. Both statements are achievable."
+  },
+  {
+    "number": 13,
+    "answer": "B",
+    "value": "3 + sqrt(5)",
+    "confidence": "HIGH",
+    "reasoning": "With u=x^2, u^2=u+1 so u=(1+sqrt5)/2 (positive root). Then x^4=u+1=(3+sqrt5)/2 and 2x^4 = 3+sqrt5. Sympy over the positive real root confirms 2x^4 = sqrt(5)+3."
+  },
+  {
+    "number": 14,
+    "answer": "C",
+    "value": "Either p+q+r+s=0 or p=r",
+    "confidence": "HIGH",
+    "reasoning": "Cross-multiplying, (p+q)(s+p)-(r+s)(q+r) = 0, and sympy factors this exactly as (p-r)(p+q+r+s). So the product vanishes iff p=r or p+q+r+s=0."
+  },
+  {
+    "number": 15,
+    "answer": "A",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "8n+1 is odd, so gcd(12n+2,8n+1) = gcd(2(6n+1),8n+1) = gcd(6n+1,8n+1); and 3(8n+1)-4(6n+1) = -1, so the gcd is always 1. Checked n=1..6: gcds all 1, so all 6 values of n qualify."
+  },
+  {
+    "number": 16,
+    "answer": "C",
+    "value": "x + y - 1",
+    "confidence": "HIGH",
+    "reasoning": "x^3+y^3-1+3xy is a^3+b^3+c^3-3abc with a=x,b=y,c=-1, so it factors as (x+y-1)(x^2+y^2+1-xy+x+y). Also (x+y)^4-1 = (x+y-1)(x+y+1)((x+y)^2+1). Sympy gcd of the two polynomials returns x+y-1."
+  },
+  {
+    "number": 17,
+    "answer": "B",
+    "value": "II only",
+    "confidence": "HIGH",
+    "reasoning": "For n even, x=n(n+1)(n+2) is divisible by 24 but not always by 48: n=2 gives x=24. So I is false. Since 12 | x always, 144 | x^2 always; checked for n=2..38 even, all x^2 divisible by 144. So II only."
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "value": "x^3 y^2 (x^6 - y^6)",
+    "confidence": "HIGH",
+    "reasoning": "Factorisations: x^4+x^2y^2+y^4 = (x^2-xy+y^2)(x^2+xy+y^2); x^3y+y^4 = y(x+y)(x^2-xy+y^2); x^4y^2-x^3y^3 = x^3y^2(x-y). LCM = x^3y^2(x-y)(x+y)(x^2-xy+y^2)(x^2+xy+y^2) = x^3y^2(x^6-y^6). Sympy lcm confirms, and only option B matches identically."
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "(100X+10Y+Z) - (100Z+10Y+X) = 99(X-Z), which is an exact multiple of 99, so the remainder is 0."
+  },
+  {
+    "number": 20,
+    "answer": "C",
+    "value": "8",
+    "confidence": "HIGH",
+    "reasoning": "Let s=p+q (s>=2 for naturals). Need 2^9 | s^s. Checked s=2..9: only s=8 works (8^8=2^24). Note the trap s=4 gives 4^4=2^8=256, one factor of 2 short, and s=6 gives 2^6*3^6."
+  },
+  {
+    "number": 21,
+    "answer": "A",
+    "value": "-1/2",
+    "confidence": "HIGH",
+    "reasoning": "c^2+bc-a^2-ab = (c-a)(c+a+b), so the first two terms combine to (a+b)(a+b+c)/[(c-a)(c+a+b)] = (a+b)/(c-a). Then (a+b)/(c-a) - (a+2b+c)/(2(c-a)) = (a-c)/(2(c-a)) = -1/2. Sympy simplify returns -1/2, and the numeric check at (a,b,c)=(1,2,5) gives -1/2."
+  },
+  {
+    "number": 22,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Put r=a/b. From a^b=b^a one gets b=r^(1/(r-1)) and a=r^(r/(r-1)). The expression is a^(1-r) r^r = r^(-r) r^r = 1. Numeric check with the standard solution a=2,b=4 gives exactly 1.0."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "value": "4",
+    "confidence": "HIGH",
+    "reasoning": "x = 2 + sqrt2 + 2sqrt2 = 2+3sqrt2, so (x-2)^2 = 18, i.e. x^2-4x+4 = 18 and x^2-4x-10 = 4. Sympy confirms exactly 4."
+  },
+  {
+    "number": 24,
+    "answer": "D",
+    "value": "2p^2/(p^2+1)",
+    "confidence": "HIGH",
+    "reasoning": "Componendo-dividendo gives sqrt((p+x)/(p-x)) = (p+1)/(p-1), then (p+x)/(p-x) = (p+1)^2/(p-1)^2, and a second application gives p/x = (p^2+1)/(2p), so x = 2p^2/(p^2+1). Sympy solve returns exactly 2p^2/(p^2+1); back-substituting p=3, x=9/5 reproduces the LHS value 3."
+  },
+  {
+    "number": 25,
+    "answer": "B",
+    "value": "1 and 2b/(a-b)",
+    "confidence": "HIGH",
+    "reasoning": "Multiplying by 2: (a-b)x^2-(a+b)x+2b=0. x=1 satisfies it since (a-b)-(a+b)+2b=0; product of roots is 2b/(a-b). Sympy solve returns [1, 2b/(a-b)]."
+  },
+  {
+    "number": 26,
+    "answer": "B",
+    "value": "4*sqrt(2)",
+    "confidence": "HIGH",
+    "reasoning": "(x+1/x)^2 = (x-1/x)^2+4 = 8, so x+1/x = 2sqrt2 for x>0. Then x^2-1/x^2 = (x-1/x)(x+1/x) = 2*2sqrt2 = 4sqrt2. Sympy on the positive root confirms 4*sqrt(2)."
+  },
+  {
+    "number": 27,
+    "answer": "A",
+    "value": "plus or minus 9",
+    "confidence": "HIGH",
+    "reasoning": "Sum of the three squared differences = 2(a^2+b^2+c^2) - 2(ab+bc+ca) = 6, so with a^2+b^2+c^2=29, ab+bc+ca = 26. Then (a+b+c)^2 = 29+52 = 81, giving a+b+c = +/-9."
+  },
+  {
+    "number": 28,
+    "answer": "C",
+    "value": "322",
+    "confidence": "HIGH",
+    "reasoning": "q = 1/p, so p/q + q/p = p^2 + q^2. Rationalising, p = 9-4sqrt5 and q = 9+4sqrt5, whose squares are 161-72sqrt5 and 161+72sqrt5, summing to 322. Sympy simplify confirms 322."
+  },
+  {
+    "number": 29,
+    "answer": "D",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "25^10 = 95367431640625; its last three digits are 625, so the hundreds digit is 6."
+  },
+  {
+    "number": 30,
+    "answer": "D",
+    "value": "1011",
+    "confidence": "HIGH",
+    "reasoning": "N = 252k+3 since lcm(4,6,7,9)=252. The values are 507, 759, 1011, ..., so the smallest four-digit one is 1011. (None of 1003, 1005, 1007 leaves remainder 3 on division by 4, 6, 7 and 9.)"
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "value": "1/2",
+    "confidence": "HIGH",
+    "reasoning": "The infinite radical y satisfies y^2 = 2+y, so y=2 (positive root). Then cosec(theta)=2 and sin(theta)=1/2."
+  },
+  {
+    "number": 32,
+    "answer": "C",
+    "value": "5/3",
+    "confidence": "HIGH",
+    "reasoning": "From cos = 8sin - 4 and sin^2+cos^2=1: 65s^2-64s+15=0, so s = 3/5 or 5/13. For 0<theta<pi/2 we also need cos>0: s=3/5 gives cos=4/5 (valid, and 8(3/5)-4/5=4 checks out), while s=5/13 gives cos=-12/13 (rejected). So cosec = 5/3."
+  },
+  {
+    "number": 33,
+    "answer": "A",
+    "value": "sqrt(2) - 1",
+    "confidence": "HIGH",
+    "reasoning": "Using sec^2 = 1+tan^2: 2t = t^2-1, so t^2-2t-1=0 and t = 1 +/- sqrt2. On (0,pi/2) tan>0 so t = 1+sqrt2, and cot = 1/(1+sqrt2) = sqrt2-1."
+  },
+  {
+    "number": 34,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "sqrt((1-sin)/(1+sin)) = sqrt((1-sin)^2/(1-sin^2)) = (1-sin)/|cos|, and sec-tan = (1-sin)/cos. Where cos>0 the two are identical and the difference is 0. (For cos<0 the difference would be 2(sec-tan), which matches no option, so 0 is the intended and only available value.)"
+  },
+  {
+    "number": 35,
+    "answer": "D",
+    "value": "3/4",
+    "confidence": "HIGH",
+    "reasoning": "cot^2=7 gives cosec^2 = 1+7 = 8 and tan^2 = 1/7 gives sec^2 = 8/7. Then (8 - 8/7)/(8 + 8/7) = (48/7)/(64/7) = 3/4."
+  },
+  {
+    "number": 36,
+    "answer": "C",
+    "value": "52.5 degrees",
+    "confidence": "HIGH",
+    "reasoning": "The two acute angles sum to 90 degrees and differ by pi/12 rad = 15 degrees, so they are 52.5 and 37.5 degrees. Only 52.5 appears among the options."
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "value": "36",
+    "confidence": "HIGH",
+    "reasoning": "998 + sqrt(x^2-18x+76) = 10^3 = 1000, so the radical equals 2 and x^2-18x+72 = 0. Then alpha+beta = 18, alpha*beta = 72, and (alpha-beta)^2 = 324-288 = 36. (Roots 6 and 12; both give a non-negative radicand.)"
+  },
+  {
+    "number": 38,
+    "answer": "C",
+    "value": "Both I and II",
+    "confidence": "HIGH",
+    "reasoning": "Adding 2x^2y^2: (x^2+y^2)^2 = 16x^2y^2 so x^2+y^2 = 4xy, giving log(x^2+y^2) = log x + log y + 2log 2, i.e. I. Subtracting 2x^2y^2: (x^2-y^2)^2 = 12x^2y^2 so x^2-y^2 = 2sqrt3 xy, giving log(x^2-y^2) = log x + log y + log 2 + 0.5 log 3, i.e. II. (The logs presuppose x,y>0 and x>y, which the statements themselves require.)"
+  },
+  {
+    "number": 39,
+    "answer": "C",
+    "value": "Both I and II are factors",
+    "confidence": "HIGH",
+    "reasoning": "With u=3x+y, v=x+5y the expression is u^2+uv-20v^2 = (u+5v)(u-4v) = 2(4x+13y) * (-(x+19y)). Sympy factor returns -2(x+19y)(4x+13y), so both listed binomials are factors."
+  },
+  {
+    "number": 40,
+    "answer": "B",
+    "value": "1/2",
+    "confidence": "HIGH",
+    "reasoning": "Adding 1 to each denominator-term: (x+y)/(x-y)+1 = 2x/(x-y), and similarly for the other two, so the denominator equals twice the numerator. Ratio = 1/2. Sympy simplify returns 1/2 and the numeric check at (x,y,z)=(2,3,5) gives 1/2."
+  },
+  {
+    "number": 41,
+    "answer": "C",
+    "value": "(m-q)(n-q)/[(m-p)(n-p)]",
+    "confidence": "HIGH",
+    "reasoning": "From p sin^2a + q cos^2a = m: sin^2a = (m-q)/(p-q), cos^2a = (p-m)/(p-q), so tan^2a = (m-q)/(p-m). From q sin^2b + p cos^2b = n: sin^2b = (n-p)/(q-p), cos^2b = (q-n)/(q-p), so tan^2b = (n-p)/(q-n). The ratio simplifies to (m-q)(n-q)/((m-p)(n-p)). Numeric check with p=3,q=7,alpha=0.7,beta=1.1 gives LHS 0.183782 and option C 0.183782 (option D gives 2.739)."
+  },
+  {
+    "number": 42,
+    "answer": "D",
+    "value": "m - n = 0",
+    "confidence": "HIGH",
+    "reasoning": "If beta = 90deg - alpha then sin(beta)=cos(alpha) and cos(beta)=sin(alpha), so n = q cos^2a + p sin^2a = m. Hence m-n = 0. Numeric check gives m-n = 1.8e-15."
+  },
+  {
+    "number": 43,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "p = cosec t - sin t = cos^2 t / sin t and q = sec t - cos t = sin^2 t / cos t. Then p sin t + q cos t = cos^2 t + sin^2 t = 1. Numeric check at t=0.83 gives 1.0."
+  },
+  {
+    "number": 44,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "With u = sin^2 t cos^2 t: p^2q^2 = u, and p^2+q^2 = (cos^6 t + sin^6 t)/u = (1-3u)/u, so p^2+q^2+3 = 1/u. The product is u * (1/u) = 1. Numeric check at t=0.83 gives 1.0000000000000002."
+  },
+  {
+    "number": 45,
+    "answer": "A",
+    "value": "8",
+    "confidence": "HIGH",
+    "reasoning": "sin^2a = (32/9) sin^2b and cos^2a = (4/27) cos^2b. Imposing sin^2a+cos^2a=1 with cos^2b = 1-sin^2b gives sin^2b = 1/4, cos^2b = 3/4. Then sin^2a = 8/9, cos^2a = 1/9 (sum exactly 1), so tan^2a = 8."
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "value": "1/3",
+    "confidence": "HIGH",
+    "reasoning": "From the same solve as Q45, sin^2b = 1/4 and cos^2b = 3/4, so tan^2b = (1/4)/(3/4) = 1/3."
+  },
+  {
+    "number": 47,
+    "answer": "B",
+    "value": "sqrt(p^2+1)",
+    "confidence": "HIGH",
+    "reasoning": "(1+sin t)/cos t = sec t + tan t = p + sqrt(p^2+1). Its reciprocal sec t - tan t = 1/(p+sqrt(p^2+1)) = sqrt(p^2+1) - p. Adding the two gives 2 sec t = 2 sqrt(p^2+1), so sec t = sqrt(p^2+1). Numeric check at p=1.7: solving gives theta=1.03907, sec = 1.972308 = sqrt(p^2+1)."
+  },
+  {
+    "number": 48,
+    "answer": "A",
+    "value": "p",
+    "confidence": "HIGH",
+    "reasoning": "Subtracting sec t - tan t = sqrt(p^2+1) - p from sec t + tan t = p + sqrt(p^2+1) gives 2 tan t = 2p, so tan t = p. Numeric check at p=1.7 gives tan(theta) = 1.7000000000000002."
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "value": "2p = q(p^2 - 1)",
+    "confidence": "HIGH",
+    "reasoning": "q = (sin+cos)/(sin cos) = p/(sin cos), and p^2 = 1+2 sin cos gives sin cos = (p^2-1)/2. So q = 2p/(p^2-1), i.e. q(p^2-1) = 2p. Numeric check at theta=0.6: 2p = 2.77996 and q(p^2-1) = 2.77996 (while p(p^2-1) = 1.296 and 2q = 5.965, ruling out D)."
+  },
+  {
+    "number": 50,
+    "answer": "B",
+    "value": "q/p",
+    "confidence": "HIGH",
+    "reasoning": "tan+cot = 1/(sin cos) = 2/(p^2-1). Since p^2-1 = 2p/q from Q49, this equals 2/(2p/q) = q/p. Numeric check at theta=0.6: tan+cot = 2.145833 = q/p = 2.145833."
+  },
+  {
+    "number": 51,
+    "answer": "B",
+    "value": "100 m",
+    "confidence": "HIGH",
+    "reasoning": "Crossing a man (a point) in the other train uses the relative speed 100-60 = 40 km/hr = 100/9 m/s. Length = (100/9)*9 = 100 m."
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "value": "4 km",
+    "confidence": "HIGH",
+    "reasoning": "X's 10-minute head start is 4.8/6 = 0.8 km; the closing speed is 6-4.8 = 1.2 km/hr, so Y catches X after 0.8/1.2 = 2/3 hr, i.e. 6*(2/3) = 4 km from P. Cross-check on X: 4.8 * 50/60 = 4 km."
+  },
+  {
+    "number": 53,
+    "answer": "C",
+    "value": "121 : 126",
+    "confidence": "HIGH",
+    "reasoning": "X's factor is 1.12*0.90 = 1.008 and Y's is 1.10*0.88 = 0.968. Equal final salaries give X0/Y0 = 0.968/1.008 = 968/1008 = 121/126 (exact Fraction check confirms equality)."
+  },
+  {
+    "number": 54,
+    "answer": "A",
+    "value": "p(x - z)/(y - z)",
+    "confidence": "HIGH",
+    "reasoning": "With M males, yM + z(p-M) = xp, so M(y-z) = p(x-z) and M = p(x-z)/(y-z)."
+  },
+  {
+    "number": 55,
+    "answer": "B",
+    "value": "5 : 7",
+    "confidence": "HIGH",
+    "reasoning": "Taking one unit of each alloy: Cu = 5/9 + 5/18 = 5/6 and Zn = 4/9 + 13/18 = 7/6. Ratio = 5:7 (exact Fraction arithmetic)."
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "value": "3 : 1",
+    "confidence": "HIGH",
+    "reasoning": "X = 0.75(X+Y) gives 4X = 3X+3Y, so X = 3Y. With X = Y+20: 3Y = Y+20, Y = 10, X = 30. Check: 0.75*40 = 30. Ratio 3:1."
+  },
+  {
+    "number": 57,
+    "answer": "A",
+    "value": "8/3",
+    "confidence": "HIGH",
+    "reasoning": "Sum of roots 5p/2, product p^2, so (difference)^2 = 25p^2/4 - 4p^2 = 9p^2/4 and |difference| = 3|p|/2 = 4, giving p = +/- 8/3. Sympy returns both p = 8/3 (roots 16/3 and 4/3) and p = -8/3; only 8/3 is offered. Verified: 9x^2-60x+64 = 0 has roots 16/3 and 4/3, differing by exactly 4."
+  },
+  {
+    "number": 58,
+    "answer": "C",
+    "value": "Rs. 4,021",
+    "confidence": "HIGH",
+    "reasoning": "Present value of three equal annual installments X at 10%: X/1.1 + X/1.21 + X/1.331 = 10000. Sympy gives X = 4021.148, i.e. approximately Rs. 4,021."
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "value": "4 < x < 6",
+    "confidence": "HIGH",
+    "reasoning": "5x+3 < 8x-9 gives 3x > 12, x > 4. 2x+20 > 5x+2 gives 3x < 18, x < 6. Intersection is 4 < x < 6; sympy returns (4 < x) & (x < 6)."
+  },
+  {
+    "number": 60,
+    "answer": "D",
+    "value": "80% (none of the printed options)",
+    "confidence": "HIGH",
+    "reasoning": "MP*0.9*0.8*0.75 = 1.08*CP gives MP = 2*CP. Selling after only the first discount gives SP = 0.9*MP = 1.8*CP, a profit of 80%. That is not 20%, 40% or 50%, so option D 'None of the above' is the correct printed choice."
+  },
+  {
+    "number": 61,
+    "answer": "C",
+    "value": "pq/r",
+    "confidence": "HIGH",
+    "reasoning": "AD is the common altitude, so AB^2 - BD^2 = AD^2 = AC^2 - CD^2, giving AB^2 - AC^2 = BD^2 - CD^2, i.e. (AB+AC)(AB-AC) = (BD+CD)(BD-CD). With BD+CD = BC this is pq = BC*r, so BC = pq/r."
+  },
+  {
+    "number": 62,
+    "answer": "D",
+    "value": "2156 cm^3",
+    "confidence": "HIGH",
+    "reasoning": "2*(22/7)*r*h = 616 gives rh = 98, and r+h = 21, so r and h are the roots of t^2-21t+98 = 0, namely 7 and 14. Since r < h, r = 7 and h = 14. Volume = (22/7)*49*14 = 2156 cm^3 (exact)."
+  },
+  {
+    "number": 63,
+    "answer": "C",
+    "value": "Both I and II are required",
+    "confidence": "HIGH",
+    "reasoning": "With AB = 2m and BC = 2n, AQ^2 = 4m^2+n^2 and CP^2 = m^2+4n^2. Using both, 5(m^2+n^2) = 125 and 3(m^2-n^2) = 21 give m=4, n=3, so AB=8, BC=6 and area = 24. Either alone is insufficient: from I alone, 4m^2+n^2 = 73 has infinitely many positive solutions, e.g. m=1 gives area 2*sqrt(69) = 16.61, not 24."
+  },
+  {
+    "number": 64,
+    "answer": "B",
+    "value": "292 square units",
+    "confidence": "HIGH",
+    "reasoning": "n(n+1)(n+2) = 336 gives 6*7*8, so the edges are 6, 7, 8. TSA = 2(6*7 + 7*8 + 8*6) = 2(42+56+48) = 292."
+  },
+  {
+    "number": 65,
+    "answer": "D",
+    "value": "14 cm",
+    "confidence": "HIGH",
+    "reasoning": "P is the arc midpoint so OP is perpendicular to AB through its midpoint C; OP = 14 and PC = 7 give OC = 7. Then AC^2 = 196-49 = 147, and AP^2 = AC^2 + PC^2 = 147+49 = 196, so AP = 14. Consistency check: triangle OAP is then equilateral, giving central angle 60 deg for AP and chord AB = 14*sqrt(3) with OC = 14cos60 = 7, as required."
+  },
+  {
+    "number": 66,
+    "answer": "C",
+    "value": "6 m",
+    "confidence": "HIGH",
+    "reasoning": "The intersection height of the two cross-joining lines is the harmonic-type expression ab/(a+b), independent of the separation: 10*15/(10+15) = 150/25 = 6 m. (The 25 m separation is not needed.)"
+  },
+  {
+    "number": 67,
+    "answer": "D",
+    "value": "150 square units",
+    "confidence": "HIGH",
+    "reasoning": "With S = AB+BC and c = AC: S - c = 10 and S + c = 60, so S = 35 and c = 25. Then AB^2+BC^2 = 625 and (AB+BC)^2 = 1225 gives 2*AB*BC = 600, so AB*BC = 300 and area = 150."
+  },
+  {
+    "number": 68,
+    "answer": "B",
+    "value": "26 m",
+    "confidence": "HIGH",
+    "reasoning": "The tips are separated horizontally by 24 m and vertically by the 10 m height difference, so the distance is sqrt(24^2+10^2) = sqrt(676) = 26 m. (Only the difference of heights matters, so the data are sufficient and D is wrong.)"
+  },
+  {
+    "number": 69,
+    "answer": "C",
+    "value": "Both I and II",
+    "confidence": "HIGH",
+    "reasoning": "ZX is a midline parallel to AC with ZX = AC/2 = AY, and XY is a midline parallel to AB with XY = AB/2 = AZ, so AZXY is a parallelogram (I true). Its area is [AZY] + [ZXY] = (1/4 + 1/4)[ABC] = half of [ABC] (II true)."
+  },
+  {
+    "number": 70,
+    "answer": "D",
+    "value": "All four",
+    "confidence": "HIGH",
+    "reasoning": "An exterior angle e is possible iff 360/e is an integer (the number of sides). 360/4 = 90, 360/5 = 72, 360/6 = 60, 360/8 = 45 are all integers, so all four angles work."
+  },
+  {
+    "number": 71,
+    "answer": "A",
+    "value": "21 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "Area = (1/2)*AB*AC*sin(A) = (1/2)*7*12*sin(30 deg) = 42*(1/2) = 21 cm^2 (sympy exact)."
+  },
+  {
+    "number": 72,
+    "answer": "C",
+    "value": "sqrt(3)p/2",
+    "confidence": "HIGH",
+    "reasoning": "AC = sqrt(p^2 + 3p^2) = 2p. The altitude to the hypotenuse is BD = AB*BC/AC = p*sqrt(3)p/(2p) = sqrt(3)p/2."
+  },
+  {
+    "number": 73,
+    "answer": "D",
+    "value": "12",
+    "confidence": "HIGH",
+    "reasoning": "Interior + exterior = 180 and interior - exterior = 120, so interior = 150 and exterior = 30. Number of sides = 360/30 = 12."
+  },
+  {
+    "number": 74,
+    "answer": "C",
+    "value": "18 degrees",
+    "confidence": "HIGH",
+    "reasoning": "theta = (1/4)(90 - theta) gives 4theta = 90 - theta, so 5theta = 90 and theta = 18 degrees."
+  },
+  {
+    "number": 75,
+    "answer": "C",
+    "value": "82.5 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "11^2 + 60^2 = 121+3600 = 3721 = 61^2, so the triangle is right-angled and its area is (1/2)(11)(60) = 330. The medial triangle has one quarter of that area: 330/4 = 82.5 cm^2."
+  },
+  {
+    "number": 76,
+    "answer": "C",
+    "value": "105 cm",
+    "confidence": "HIGH",
+    "reasoning": "Arc = r*theta with theta = 30 deg = pi/6 = (22/7)/6 = 11/21 rad. So 55 = r*(11/21) and r = 55*21/11 = 105 cm (sympy exact)."
+  },
+  {
+    "number": 77,
+    "answer": "A",
+    "value": "250*sqrt(2)/sqrt(3*pi) m^3, about 115.16",
+    "confidence": "HIGH",
+    "reasoning": "A 60 deg vertical angle gives semi-vertical angle 30 deg, so r = l sin30 = l/2, i.e. l = 2r. CSA = pi*r*l = 2*pi*r^2 = 100 gives r^2 = 50/pi. Height h = sqrt(l^2-r^2) = sqrt(3) r, so V = (1/3)pi r^2 (sqrt3 r) = 115.1647 m^3. Option A evaluates to 115.1647; B, C, D give 488.6, 691.0, 977.2. CSA back-check = 100.0."
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "value": "2 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Equal bases means the same radius r. (1/3)pi r^2 h = (2/3) pi r^3 gives h = 2r, so h : r = 2 : 1."
+  },
+  {
+    "number": 79,
+    "answer": "D",
+    "value": "36/(pi+2) = 7.0018 cm (or 36/pi = 11.459 if only the arc is formed); none of the printed options",
+    "confidence": "MED",
+    "reasoning": "(sqrt3/4)a^2 = 36 sqrt3 gives a^2 = 144, a = 12, so the wire is 36 cm long. Forming a semicircle (arc plus diameter) gives r(pi+2) = 36, r = 36/(pi+2) = 7.0017; forming only the semicircular arc gives r = 36/pi = 11.4592. The printed options evaluate to 2.8648, 3.5009 and 5.7296, so neither reading matches any of A, B, C and option D 'None of the above' is correct as printed. Runner-up B = 18/(pi+2): it wins if the wire length were 18 rather than 36, i.e. if the printed area were 9sqrt3 rather than 36sqrt3 - note every option is exactly half the correct value, which is the signature of that misprint. Solved as printed."
+  },
+  {
+    "number": 80,
+    "answer": "D",
+    "value": "pi*x = 8y (x = 2, y = pi/4)",
+    "confidence": "HIGH",
+    "reasoning": "Largest square in a unit-radius circle has diagonal 2, side sqrt2, so x = 2. Largest circle in a unit square has radius 1/2, so y = pi/4. Then pi*x = 2pi and 8y = 2pi, so pi*x = 8y. The other options give 2y = pi/2, y = pi/4, 4y = pi, none equal to 2pi."
+  },
+  {
+    "number": 81,
+    "answer": "D",
+    "value": "Remainder is 1 for every n; no Statement needed",
+    "confidence": "HIGH",
+    "reasoning": "x^(2n) - y^(2n) = (x^n - y^n)(x^n + y^n) is exactly divisible by x^n + y^n, so the remainder of x^(2n)-y^(2n)+1 is 1 regardless of the parity of n. Polynomial division verified for n = 1..5, remainder 1 each time. So the question is answerable without either Statement."
+  },
+  {
+    "number": 82,
+    "answer": "A",
+    "value": "II alone suffices (N = 21); I alone does not",
+    "confidence": "HIGH",
+    "reasoning": "Brute force over N = 1..252 gives exactly two ordered possibilities with N*reverse(N) = 252: (N,M) = (12,21) and (21,12). Statement I (N+M=33) holds for BOTH, so it does not determine N. Statement II (N>M) leaves only N = 21, so it alone determines N. Hence one Statement alone answers it and the other does not."
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "value": "Both together give D = 9",
+    "confidence": "HIGH",
+    "reasoning": "D^100 mod 10 = 1 only for D in {1,3,7,9} (checked all digits 0-9). Statement I (D>5) leaves {7,9} - insufficient. Statement II (D a multiple of 3) leaves {3,9} - insufficient. Together they leave D = 9 uniquely, so both are needed."
+  },
+  {
+    "number": 84,
+    "answer": "D",
+    "value": "Yes, angle A is always acute; no Statement needed",
+    "confidence": "HIGH",
+    "reasoning": "A = B - C with A+B+C = 180 gives B = A+C, hence 2A+2C = 180 and A + C = 90, so B = 90 and A = 90 - C < 90 for any positive C. Angle A is therefore acute unconditionally, and the question is answerable without either Statement."
+  },
+  {
+    "number": 85,
+    "answer": "D",
+    "value": "Circumradius = 10 cm; no Statement needed",
+    "confidence": "HIGH",
+    "reasoning": "In a right-angled triangle the hypotenuse is a diameter of the circumcircle, so the circumradius is AC/2 = 20/2 = 10 cm. Neither Statement is required (and note I and II are mutually consistent, 12-16-20, so they add nothing)."
+  },
+  {
+    "number": 86,
+    "answer": "B",
+    "value": "Perimeter 18 units from either Statement (sides 2 and 7)",
+    "confidence": "HIGH",
+    "reasoning": "Area = AB*BC*sin60 = 7sqrt3 gives AB*BC = 14. Statement I: AB and DA (= BC) prime, and the only prime factorisation of 14 is 2*7, so perimeter = 2(2+7) = 18. Statement II: sides natural and each greater than 1 excludes 1*14, again leaving {2,7} and perimeter 18. Either alone suffices."
+  },
+  {
+    "number": 87,
+    "answer": "D",
+    "value": "CP x PD = 48 square units; no Statement needed",
+    "confidence": "HIGH",
+    "reasoning": "By the intersecting-chords theorem, AP*PB = CP*PD for chords meeting at P, so CP*PD = 48 directly. Neither Statement is required."
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "value": "BD = 14 units from either Statement",
+    "confidence": "HIGH",
+    "reasoning": "Triangle ABD gives |9-6| < BD < 9+6, i.e. 3 < BD < 15; triangle BCD gives |18-6| < BD < 18+6, i.e. 12 < BD < 24. Combined: 12 < BD < 15. Statement I (integer > 13) leaves only 14; Statement II (even integer) also leaves only 14 (12 is excluded as the strict lower bound). Either alone suffices."
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "value": "II alone suffices (BC = 12); I alone does not",
+    "confidence": "HIGH",
+    "reasoning": "With half-base m, m*sqrt(100-m^2) = 48 gives m^2 = 36 or 64, so (BC, height) = (12, 8) or (16, 6). Statement I (BC even) admits both 12 and 16 - insufficient. Statement II (height > half the base) holds only for (12, 8) since 8 > 6, while (16,6) fails as 6 < 8; so II alone determines BC = 12."
+  },
+  {
+    "number": 90,
+    "answer": "D",
+    "value": "No, neither diagonal equals the side; no Statement needed",
+    "confidence": "HIGH",
+    "reasoning": "With diagonals 5k and 12k, the side is sqrt((5k/2)^2+(6k)^2) = 13k/2. Neither 5k nor 12k equals 13k/2 for any k > 0, so the answer to the yes/no question is 'No' regardless of scale. Both Statements merely fix k (I: 17k = 34 so k = 2; II: 13k/2 = 13 so k = 2), which is not needed."
+  },
+  {
+    "number": 91,
+    "answer": "D",
+    "value": "Median",
+    "confidence": "HIGH",
+    "reasoning": "The median depends only on the position of the middle observation, so extreme values can be changed arbitrarily without moving it, whereas the arithmetic, geometric and harmonic means all use every observation's magnitude."
+  },
+  {
+    "number": 92,
+    "answer": "C",
+    "value": "Harmonic mean",
+    "confidence": "HIGH",
+    "reasoning": "Rates expressed as a ratio of one quantity per unit of another (price/unit, work/hour, km/hour) are averaged by the harmonic mean when the numerator quantity is held constant, since HM is the reciprocal of the mean of the reciprocals."
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "value": "32.5",
+    "confidence": "MED",
+    "reasoning": "The 'more than' table gives class frequencies 10-20: 25, 20-30: 15, 30-40: 20, and 'more than 40': 40 (sum 100). The last class is printed with no upper limit, so it is closed at the common width of 10, i.e. 40-50 with midpoint 45. Mean = (25*15 + 15*25 + 20*35 + 40*45)/100 = 3250/100 = 32.5. Transcription verified against the page image: the table really does stop at 'More than 40'. Runner-up C = 30.5: it wins if the open class is collapsed to the single point 40 (midpoint 40 gives exactly 30.5), which is the value a reader gets by using the class boundary instead of a midpoint. A last class of 40-45 would give 31.5, which is not offered."
+  },
+  {
+    "number": 94,
+    "answer": "B",
+    "value": "300",
+    "confidence": "HIGH",
+    "reasoning": "Multiplying every observation by 5 multiplies the arithmetic mean by 5: 60*5 = 300. (The count 200 is irrelevant.)"
+  },
+  {
+    "number": 95,
+    "answer": "A",
+    "value": "2.14",
+    "confidence": "HIGH",
+    "reasoning": "Combined mean = (45*2 + 40*2.5 + 55*2)/(45+40+55) = (90+100+110)/140 = 300/140 = 2.142857, i.e. 2.14 to two decimals."
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "value": "Median",
+    "confidence": "MED",
+    "reasoning": "Averages split into mathematical averages (arithmetic, geometric, harmonic mean) and positional averages, which are located by where a value sits in the ordered data. The median is the canonical positional average, being defined purely by the position of the middle observation, so A and D are excluded outright. Runner-up C = Mode: many texts classify the mode as a positional average too, so C wins under the classification that groups median and mode together and then treats the mode as the 'located by inspection' one; I take B because the median is located by position while the mode is located by frequency."
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "value": "u = 2 (but as printed the equations give u = 159/62 = 2.5645, which matches no option)",
+    "confidence": "LOW",
+    "reasoning": "STEM DEFECT. Solved as printed: the first group's median 20.8 lies in class 20-25, giving 20 + 5*((N1/2)-(u+v+63))/75 = 20.8, hence u+v = 10 exactly. The second group's MEAN 17.3 gives 111u + 49v = 649. Solving the pair exactly yields u = 159/62 = 2.5645 and v = 461/62 = 7.4355, so as printed NO option matches, and 111u+49v = 649 has no integer solution at all for u in 1..5. The transcription was verified against the page image (the table and both statistics are exactly as given). However, the word 'mean' appears to be a misprint for 'median': with u = 2, v = 8 the first group's median is exactly 104/5 = 20.8 AND the second group's MEDIAN is exactly 173/10 = 17.3 (both groups then total 170), two exact hits that cannot be coincidence. Under that reading 3u+2v = 22 with u+v = 10 gives u = 2 uniquely. Runner-up C = 3: it wins if one simply rounds the as-printed solution 2.5645 to the nearest integer (which also keeps u+v = 10, giving v = 7); the second group's mean is then 17.2368 rather than 17.3, while u = 2 gives 17.3824."
+  },
+  {
+    "number": 98,
+    "answer": "D",
+    "value": "v = 8 (but as printed the equations give v = 461/62 = 7.4355, which matches no option)",
+    "confidence": "LOW",
+    "reasoning": "STEM DEFECT, same item as Q97. As printed, the median condition gives u+v = 10 and the second group's mean condition gives 111u+49v = 649, whose exact joint solution is v = 461/62 = 7.4355 - matching no printed option, and the system has no integer solution. Reading 'mean' as 'median' for the second group makes everything exact: u = 2, v = 8 gives first-group median 20.8 and second-group median 17.3 precisely, with both group totals 170. Runner-up C = 7: it wins on the round-the-as-printed-answer reading (u = 3, v = 7, still satisfying u+v = 10 but giving a second-group mean of 17.2368, not 17.3)."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "value": "25",
+    "confidence": "HIGH",
+    "reasoning": "The 'less than' table gives class frequencies 0-10: 5, 10-20: 25, 20-30: k, 30-40: 18, 40-50: 7, with N = 55+k. Median 24 lies in 20-30, so 20 + 10*((N/2)-30)/k = 24, giving 0.1k = 2.5 and k = 25. Check: N = 80, N/2 = 40, cumulative before the median class is 30, so median = 20 + 10*(40-30)/25 = 24 exactly."
+  },
+  {
+    "number": 100,
+    "answer": "D",
+    "value": "24.625",
+    "confidence": "HIGH",
+    "reasoning": "With k = 25 from Q99 the frequencies are 5, 25, 25, 18, 7 (N = 80) at midpoints 5, 15, 25, 35, 45. Sum of f*x = 25+375+625+630+315 = 1970, so the mean = 1970/80 = 197/8 = 24.625 exactly."
+  }
+]

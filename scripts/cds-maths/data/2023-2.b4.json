@@ -1,0 +1,387 @@
+{
+  "band": "b4",
+  "pages": [13, 14, 15, 16],
+  "bandReport": {
+    "numbersFound": [77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "SEAMS. p12 (read, not transcribed) ends with Q76 complete - all four options (a)-(d) printed - and no Directions block is open across the p12/p13 seam, so the band starts cleanly at Q77. There is no page after p16: the PDF has 17 pages (0-16) and p16 is the last, so the band ends at the end of the paper. p16's lower half is blank after Q100.\n\nPAPER ENDS AT Q100, PRESENT AND COMPLETE. Q100 is the last item on p16 (right column) and carries its Question line plus both Statement-I and Statement-II; nothing of it runs off the page. The band's 24 numbers 77-100 are contiguous with no gaps.\n\nSETS. Two Directions blocks, and BOTH start inside this band, so no set is owned elsewhere and none is skipped. (1) D86-90 - 'Consider the following for the next (05) items that follow', the seven-cousins age/weight puzzle, opens in the left column of p14 below Q85; all five members Q86-Q90 are on p14 and are contiguous. (2) D91-100 - 'Consider the following for the next ten (10) items that follow', the Statement-I/Statement-II data-sufficiency block, opens at the top of the left column of p15; Q91-Q96 on p15, Q97-Q100 on p16, contiguous. No Directions block opened before p13.\n\nDATA-SUFFICIENCY FORMAT (Q91-100). This block prints its four lettered choices ONCE, inside the Directions text at the top of p15, as four 'Mark option (x) if ...' paragraphs; no item 91-100 prints options of its own. Following the shipped 2024-1.b3 precedent for the identical structure, those four choices are repeated as each item's A-D options so every row carries a full option set, and context holds only the one-line Directions preamble. The printed lead-in 'Mark option (a) if the question can be answered ...' is rendered as 'If the question can be answered ...' because '(a)' is the option LABEL rather than option text; no other word is changed. Each item's own Question, Statement-I and Statement-II are in its stem, with the statement labels on their own lines as the booklet sets them.\n\nFIGURES: NONE. All four pages were checked column by column - there is no printed diagram, chart or geometric figure anywhere in p13-p16, so no question in this band carries hasFigure. Several items name geometric objects (Q84 a right triangle, Q82 a sector and a cyclic quadrilateral, Q100 a triangle inscribed in a semi-circle) but every one of them is stated entirely in words with no accompanying drawing. DATA TABLES: NONE.\n\nZOOM CHECKS at 5-8x against the source PDF: Q77 (four-level continued fraction, each numerator 6 and each partial denominator 7, innermost 7 - x - confirmed level by level), Q84 options label by label (5*sqrt11/3, 10*sqrt11/3, 40/sqrt61, 12/25), the whole D86-90 stimulus, the D91-100 Directions block, Q91 Statement-I (the two cubic factorisations read separately), Q92 (root -4-sqrt10 over 2; product -3/2 times (3+sqrt10); sum -1), Q93 (180 and 336), Q94 (both statements), Q95 (both fractional statements, numerator and denominator read separately), Q96 (144 and 72), Q99 (200 and 210).\n\nCURRENCY. Q99 prints the Indian rupee glyph; transcribed as 'Rs.' per the brief's sanctioned form and the corpus convention (the rupee glyph appears in no sibling band). Flagged on the item. No decimals with a raised middle dot occur in this band except Q78's options, transcribed as 62.5 m and 67.5 m per the brief.\n\nMISPRINTS. None that change a claim. One typographic artefact flagged on Q97, where Statement-II is set with an over-wide gap between 'is' and 'greater' - a justification artefact, not a dropped word.\n\nINVENTED SUBTOPIC. One: 'Comparison of Algebraic Expressions' on Q91 (chapter 'Algebraic Identities and Simplification'), flagged on the item. No listed subtopic covers deciding an inequality between two factorised cubic expressions; the closest listed candidates are all about establishing an identity rather than comparing two quantities. Every other question in the band uses a subtopic listed in catalog.json.\n\nUNREADABLE ITEMS: none. Every glyph in the band resolved at 5-8x."
+  },
+  "questions": [
+    {
+      "number": 77,
+      "stem": "If \\(x = \\cfrac{6}{7 - \\cfrac{6}{7 - \\cfrac{6}{7 - \\cfrac{6}{7 - x}}}}\\); \\(x > 1\\), then what is the value of \\(x^2 - 3x + 2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "18" },
+        { "label": "D", "text": "20" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Continued Fractions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 78,
+      "stem": "A train completely overtakes two persons, walking in the same direction with speeds 3 km/hr and 4 km/hr in 9 seconds and \\(\\frac{75}{8}\\) seconds respectively. What is the length of the train ?",
+      "options": [
+        { "label": "A", "text": "60 m" },
+        { "label": "B", "text": "62.5 m" },
+        { "label": "C", "text": "55 m" },
+        { "label": "D", "text": "67.5 m" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 79,
+      "stem": "A person bought an article and sold it at a profit of 20%. Had he bought it at 20% less, what would have been the profit percentage if the selling price had been the same ?",
+      "options": [
+        { "label": "A", "text": "25%" },
+        { "label": "B", "text": "40%" },
+        { "label": "C", "text": "50%" },
+        { "label": "D", "text": "60%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 80,
+      "stem": "If \\(2s = a + b + c\\), then what is \\(s^2 + (s - a)(s - b) + (s - b)(s - c) + (s - c)(s - a)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\((a + b + c)^2\\)" },
+        { "label": "B", "text": "\\(ab + bc + ca\\)" },
+        { "label": "C", "text": "\\(2(ab + bc + ca)\\)" },
+        { "label": "D", "text": "\\(3(ab + bc + ca)\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 81,
+      "stem": "A sphere of radius 5 cm is dropped in a right circular cylindrical vessel partly filled with water. The radius of the cylindrical vessel is 10 cm. If the sphere is completely submerged in water, by how much will the level of water rise in the cylindrical vessel ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{5}{3}\\) cm" },
+        { "label": "B", "text": "\\(\\frac{5}{2}\\) cm" },
+        { "label": "C", "text": "1 cm" },
+        { "label": "D", "text": "\\(\\frac{5}{6}\\) cm" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Cylinder, Cone and Sphere",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 82,
+      "stem": "Consider the following statements :\n1. The angle in a sector greater than a semi-circle is less than a right angle.\n2. If two sides of a pair of opposite sides of a cyclic quadrilateral are equal, then its diagonals are also equal.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Angles in a Circle",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 83,
+      "stem": "If \\(a, b, c, x, y, z\\) are real numbers such that \\((a + b + c)^2 - 3(ab + bc + ca) + 3(x^2 + y^2 + z^2) = 0\\), then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(a = b = c,\\ x = y = z \\neq 0\\)" },
+        { "label": "B", "text": "\\(a = b = c = 0,\\ x = y = z = 1\\)" },
+        { "label": "C", "text": "\\(a = b = c,\\ x = y = z = 0\\)" },
+        { "label": "D", "text": "\\(a \\neq b \\neq c,\\ x = y = z = 0\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 84,
+      "stem": "In a triangle ABC, angle \\(B = 90^\\circ\\) and p is the length of the perpendicular from B to AC. If BC = 10 cm and AC = 12 cm, then what is the value of p ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{5\\sqrt{11}}{3}\\)" },
+        { "label": "B", "text": "\\(\\frac{10\\sqrt{11}}{3}\\)" },
+        { "label": "C", "text": "\\(\\frac{40}{\\sqrt{61}}\\)" },
+        { "label": "D", "text": "\\(\\frac{12}{25}\\)" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Altitudes and Sides of a Triangle",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 85,
+      "stem": "The mean of p, q, r, s and t is 280. If the mean of p, r and t is 240, what is the mean of q and s ?",
+      "options": [
+        { "label": "A", "text": "310" },
+        { "label": "B", "text": "320" },
+        { "label": "C", "text": "330" },
+        { "label": "D", "text": "340" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 86,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next (05) items that follow :\nA, B, C, D, E, F and G are cousins. D is thrice as old as A. Further, C is as many years younger to B, as G to E and E to D. The average age of D and G is 16 years; the average age of A and E is 11 years; the average age of B and C is also 11 years. B and C have equal weight. A's weight is 10 kg less than that of B; D is 4 kg heavier than E; E is 4 kg heavier than F; F is 4 kg heavier than G. Further, D has age-weight ratio of 9 : 20, where age is in years and weight in kg; A has age-weight ratio of 2 : 5. Moreover, none of them is more than 40 kg.",
+      "stem": "What is D's age (in years) ?",
+      "options": [
+        { "label": "A", "text": "15" },
+        { "label": "B", "text": "16" },
+        { "label": "C", "text": "17" },
+        { "label": "D", "text": "18" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 87,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next (05) items that follow :\nA, B, C, D, E, F and G are cousins. D is thrice as old as A. Further, C is as many years younger to B, as G to E and E to D. The average age of D and G is 16 years; the average age of A and E is 11 years; the average age of B and C is also 11 years. B and C have equal weight. A's weight is 10 kg less than that of B; D is 4 kg heavier than E; E is 4 kg heavier than F; F is 4 kg heavier than G. Further, D has age-weight ratio of 9 : 20, where age is in years and weight in kg; A has age-weight ratio of 2 : 5. Moreover, none of them is more than 40 kg.",
+      "stem": "What is the average age (in years) of B, C, D, E and G ?",
+      "options": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "13" },
+        { "label": "C", "text": "14" },
+        { "label": "D", "text": "15" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 88,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next (05) items that follow :\nA, B, C, D, E, F and G are cousins. D is thrice as old as A. Further, C is as many years younger to B, as G to E and E to D. The average age of D and G is 16 years; the average age of A and E is 11 years; the average age of B and C is also 11 years. B and C have equal weight. A's weight is 10 kg less than that of B; D is 4 kg heavier than E; E is 4 kg heavier than F; F is 4 kg heavier than G. Further, D has age-weight ratio of 9 : 20, where age is in years and weight in kg; A has age-weight ratio of 2 : 5. Moreover, none of them is more than 40 kg.",
+      "stem": "What is the difference between the weights (in kg) of G and C ?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 89,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next (05) items that follow :\nA, B, C, D, E, F and G are cousins. D is thrice as old as A. Further, C is as many years younger to B, as G to E and E to D. The average age of D and G is 16 years; the average age of A and E is 11 years; the average age of B and C is also 11 years. B and C have equal weight. A's weight is 10 kg less than that of B; D is 4 kg heavier than E; E is 4 kg heavier than F; F is 4 kg heavier than G. Further, D has age-weight ratio of 9 : 20, where age is in years and weight in kg; A has age-weight ratio of 2 : 5. Moreover, none of them is more than 40 kg.",
+      "stem": "What is the average weight (in kg) of A, B, C, D, E, F and G ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{201}{7}\\)" },
+        { "label": "B", "text": "\\(\\frac{197}{7}\\)" },
+        { "label": "C", "text": "30" },
+        { "label": "D", "text": "32" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 90,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next (05) items that follow :\nA, B, C, D, E, F and G are cousins. D is thrice as old as A. Further, C is as many years younger to B, as G to E and E to D. The average age of D and G is 16 years; the average age of A and E is 11 years; the average age of B and C is also 11 years. B and C have equal weight. A's weight is 10 kg less than that of B; D is 4 kg heavier than E; E is 4 kg heavier than F; F is 4 kg heavier than G. Further, D has age-weight ratio of 9 : 20, where age is in years and weight in kg; A has age-weight ratio of 2 : 5. Moreover, none of them is more than 40 kg.",
+      "stem": "Consider the following statements :\n1. The age of F cannot be determined due to insufficient data.\n2. The average weight of D and F is equal to weight of E.\n3. The weight difference is maximum for D and A.\nWhich of the statements given above are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 91,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : Is \\(m > n\\) if m, n are real numbers ?\n\nStatement-I :\n\\(m = (1 - p)(p^2 + p + 1)\\) and \\(n = (p + 1)(p^2 - p + 1)\\)\n\nStatement-II :\n\\(m = pn\\)",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Comparison of Algebraic Expressions",
+      "difficulty": "HARD",
+      "flags": [
+        "Data-sufficiency item. The four lettered choices are printed ONCE inside the Directions block at the top of p15 and are shared by all ten items 91-100; they are repeated as this item's options so every row carries A-D, and the Directions preamble line is in context. The printed lead-in 'Mark option (a) if ...' is rendered as 'If ...' because '(a)' is the label, not option text.",
+        "Subtopic 'Comparison of Algebraic Expressions' is not in catalog.json - no listed subtopic covers deciding an inequality between two factorised cubic expressions."
+      ]
+    },
+    {
+      "number": 92,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the other root of the quadratic equation with real coefficients if one of the roots is \\(\\frac{-4 - \\sqrt{10}}{2}\\) ?\n\nStatement-I :\nThe product of the roots is \\(-\\frac{3}{2}(3 + \\sqrt{10})\\).\n\nStatement-II :\nThe sum of roots of quadratic equation is \\(-1\\).",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 93,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the 3-digit number which is divisible by 10 ?\n\nStatement-I :\nIf the digits in hundred's place and ten's place of the number are interchanged, the resulting number is diminished by 180.\n\nStatement-II :\nIf the digit in hundred's place is halved and digit in ten's place and unit place of the number are interchanged, the resulting number is diminished by 336.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 94,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : Are x, y, z equal, where x, y, z are real numbers ?\n\nStatement-I :\n\\(x^2 + y^2 + z^2 - xy - yz - zx = 0\\)\n\nStatement-II :\n\\(x^3 + y^3 + z^3 - 3xyz = 0\\)",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 95,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the ratio \\(x : y : z\\) equal to if \\(x, y, z \\neq 0\\) ?\n\nStatement-I :\n\\(\\frac{x + z}{y} = \\frac{z}{x}\\)\n\nStatement-II :\n\\(\\frac{z - y}{x} = \\frac{x}{z}\\)",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "HARD",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 96,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the sum of two natural numbers ?\n\nStatement-I :\nLCM of the two numbers is 144.\n\nStatement-II :\nOne of the numbers is 72.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "EASY",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 97,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : Is average of the largest and the smallest of 4 given numbers greater than the average of the 4 numbers ?\n\nStatement-I :\nThe difference between the largest and the second largest numbers is less than the difference between the second smallest and the smallest of the numbers.\n\nStatement-II :\nThe difference between the largest and the smallest numbers is  greater than the difference between the second largest and the second smallest of the numbers.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "HARD",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried.",
+        "Typographic only: Statement-II is printed with a wide gap between 'is' and 'greater' (a justification artefact); transcribed as printed, no word is missing."
+      ]
+    },
+    {
+      "number": 98,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : Is \\((a - b + c) > (a + b - c)\\), where a, b and c are real numbers ?\n\nStatement-I :\nb is negative.\n\nStatement-II :\nc is negative.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Inequalities",
+      "subtopic": "Linear Inequalities",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    },
+    {
+      "number": 99,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the cost of 15 pens, 21 pencils and 18 note books ?\n\nStatement-I :\nThe cost of 7 pens, 6 pencils and 5 note books is Rs. 200.\n\nStatement-II :\nThe cost of 3 pens, 8 pencils and 7 note books is Rs. 210.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Solving Linear Systems",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried.",
+        "The booklet prints the Indian rupee glyph before 200 and 210; transcribed as 'Rs.' per the brief and the corpus convention (no rupee glyph appears in any sibling band). Values unchanged."
+      ]
+    },
+    {
+      "number": 100,
+      "setLabel": "D91-100",
+      "context": "Consider the following for the next ten (10) items that follow :",
+      "stem": "Question : What is the area of the triangle inscribed in a semi-circle with the diameter as the base ?\n\nStatement-I :\nThe diameter of semi-circle is 20 cm.\n\nStatement-II :\nTwo shorter sides of the triangle are 12 cm and 16 cm.",
+      "options": [
+        { "label": "A", "text": "If the question can be answered by using one of the statements alone, but cannot be answered using the other statement alone." },
+        { "label": "B", "text": "If the question can be answered by using either statement alone." },
+        { "label": "C", "text": "If the question can be answered by using both the statements together, but cannot be answered using either statement alone." },
+        { "label": "D", "text": "If the question cannot be answered even by using both the statements together." }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Inscribed and Circumscribed Figures",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Data-sufficiency item - see the flag on Q91 for how the shared A-D choices and context are carried."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "band": "b1",
+  "pages": [0, 1, 2, 3, 4],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Pages p00-p04 are printed pages 3, 5, 7, 9, 11 (booklet ANFB-T-EMT/45A), two-column, Q1-Q31 with no gaps and no overflow at either seam. Q1 is the paper's first question and opens at the top of p00's left column. Q31 completes on p04 (stem + all four options in the right column). Opened p05 (printed p13, Q32-Q37) WITHOUT transcribing it: Q32 begins fresh at the top of that page's left column, so the p04/p05 seam is clean and no question is stranded between bands. NO Directions blocks anywhere in p00-p05 - every item in this band is self-contained, so no set crosses into b2. NO printed figures and NO data tables in p00-p04 (checked every question region; this band is entirely algebra, number system, surds/indices, logarithms and one trigonometry item - nothing geometric or data-interpretation). Misprints/defects flagged in-row: Q3 (stem mixes variables, prints \\(q^2-5p-4\\)) and Q26 (ink blot on the scanned page covers one prose letter; no mathematics obscured). Subtopics that are loose fits rather than clean matches, each flagged in-row: Q2 and Q3 filed under Inequalities/Linear Inequalities, Q13 under Quadratic Equations/Nature of Roots and Discriminant. No subtopic name was invented - every value used is a listed catalog subtopic."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "Let \\(p(x)\\) be a polynomial. When \\(p(x)\\) is divided by \\((x-1)\\), it leaves 2 as the remainder. When \\(p(x)\\) is divided by \\((x-2)\\), it leaves 1 as the remainder. What is the remainder when \\(p(x)\\) is divided by \\((x-1)(x-2)\\)?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "\\(-3\\)" },
+        { "label": "C", "text": "\\(3-x\\)" },
+        { "label": "D", "text": "\\(3-2x\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 2,
+      "stem": "Consider the following in respect of a positive real number \\(x\\) :\n\nI. \\(x+\\frac{1}{x}>1\\)\n\nII. \\(\\left(x+\\frac{1}{x}\\right)^2>2\\)\n\nIII. \\(\\left(x+\\frac{1}{x}\\right)^4>9\\)\n\nWhich of the above are correct?",
+      "options": [
+        { "label": "A", "text": "I and II only" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I and III only" },
+        { "label": "D", "text": "I, II and III" }
+      ],
+      "chapter": "Inequalities",
+      "subtopic": "Linear Inequalities",
+      "difficulty": "MODERATE",
+      "flags": ["Subtopic is a loose fit: this is an AM-GM style inequality in \\(x+1/x\\), not a linear inequality."]
+    },
+    {
+      "number": 3,
+      "stem": "Let \\(p\\) and \\(q\\) be natural numbers such that \\(q>p\\). What is the largest value of \\(p\\) such that \\(q^2-5p-4\\) is negative?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "6" }
+      ],
+      "chapter": "Inequalities",
+      "subtopic": "Linear Inequalities",
+      "difficulty": "MODERATE",
+      "flags": ["Stem mixes the two variables: the expression is printed as \\(q^2-5p-4\\) (q squared, then 5p). Verified against the source PDF at 6x; transcribed exactly as printed."]
+    },
+    {
+      "number": 4,
+      "stem": "Let \\(x\\) and \\(y\\) be natural numbers, each less than 20, such that \\(x\\), \\(y\\), \\(x+y\\) and \\(x-y\\) are prime numbers. How many such combinations of \\((x,\\ y,\\ x+y,\\ x-y)\\) are possible?",
+      "options": [
+        { "label": "A", "text": "One" },
+        { "label": "B", "text": "Two" },
+        { "label": "C", "text": "Three" },
+        { "label": "D", "text": "None" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 5,
+      "stem": "If \\((x+1)(x+p)(x^2+p^2)=x^4-1\\), then what is the value of \\(p\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "Cannot be determined" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 6,
+      "stem": "If \\((2+\\sqrt{3})^x+(2-\\sqrt{3})^x=2\\), then what is \\((2+\\sqrt{3})^x-(2-\\sqrt{3})^x\\) equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "0.5" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "1.5" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 7,
+      "stem": "If \\(\\frac{1}{a}+\\frac{1}{b}=\\frac{5}{6}\\) and \\(\\frac{1}{a^2}+\\frac{1}{b^2}=\\frac{13}{36}\\), then what is \\(\\frac{1}{a^3}+\\frac{1}{b^3}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(31/216\\)" },
+        { "label": "B", "text": "\\(35/216\\)" },
+        { "label": "C", "text": "\\(37/216\\)" },
+        { "label": "D", "text": "\\(41/216\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 8,
+      "stem": "What is the remainder when \\(x^6\\) is divided by \\(x^2+1\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(x+1\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 9,
+      "stem": "\\((x+2)\\) is a factor of which one of the following?",
+      "options": [
+        { "label": "A", "text": "\\(x^5-4x^4-3x^3+8x^2-14x+12\\)" },
+        { "label": "B", "text": "\\(x^5+4x^4-3x^3+8x^2-14x+12\\)" },
+        { "label": "C", "text": "\\(x^5-4x^4+3x^3+8x^2-14x+12\\)" },
+        { "label": "D", "text": "\\(x^5-4x^4-3x^3+8x^2+14x+12\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 10,
+      "stem": "If \\(\\log_{10}2=0.301\\) and \\(\\log_{10}3=0.477\\), then what is the number of digits in the expansion of \\(60^{60}\\)?",
+      "options": [
+        { "label": "A", "text": "105" },
+        { "label": "B", "text": "106" },
+        { "label": "C", "text": "107" },
+        { "label": "D", "text": "108" }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Number of Digits and Characteristic",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 11,
+      "stem": "What is the remainder when\n\n\\((17^{25}+19^{25})\\)\n\nis divided by 18?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "9" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 12,
+      "stem": "The HCF of \\(x\\) and \\(y\\) is \\(H\\). Consider the following statements in respect of the HCF of \\(p=\\frac{x^3+y^3}{x^2-xy+y^2}\\) and \\(q=\\frac{x^3-y^3}{x^2+xy+y^2}\\) :\n\nI. The HCF of \\(p\\) and \\(q\\) can be \\(H\\).\n\nII. The HCF of \\(p\\) and \\(q\\) can be \\(2H\\).\n\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 13,
+      "stem": "If \\(x^4=x^2+1\\), where \\(x>0\\), then what is \\(2x^4\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(2+\\sqrt{3}\\)" },
+        { "label": "B", "text": "\\(3+\\sqrt{5}\\)" },
+        { "label": "C", "text": "\\(5-2\\sqrt{3}\\)" },
+        { "label": "D", "text": "\\(3-\\sqrt{5}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Nature of Roots and Discriminant",
+      "difficulty": "MODERATE",
+      "flags": ["Subtopic is a loose fit: the item is a quadratic-in-\\(x^2\\) substitution, not a discriminant question."]
+    },
+    {
+      "number": 14,
+      "stem": "If \\(\\frac{p+q}{q+r}=\\frac{r+s}{s+p}\\); \\((q+r)\\ne 0\\), \\((s+p)\\ne 0\\), then which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "\\(p+q+r+s=0\\)" },
+        { "label": "B", "text": "\\(p=r\\)" },
+        { "label": "C", "text": "Either \\(p+q+r+s=0\\) or \\(p=r\\)" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 15,
+      "stem": "If \\(n\\) is natural number less than 7, then what is the number of values of \\(n\\) for which \\((12n+2)\\) and \\((8n+1)\\) are relatively prime?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "5" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 16,
+      "stem": "What is the HCF of \\(x^3+y^3+3xy-1\\) and \\((x+y)^4-1\\)?",
+      "options": [
+        { "label": "A", "text": "\\(x+y\\)" },
+        { "label": "B", "text": "\\(x+y+1\\)" },
+        { "label": "C", "text": "\\(x+y-1\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 17,
+      "stem": "Let \\(x=n(n+1)(n+2)\\), where \\(n\\) is an even natural number. Which of the following statements is/are correct?\n\nI. \\(x\\) is always divisible by 48.\n\nII. \\(x^2\\) is always divisible by 144.\n\nSelect the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 18,
+      "stem": "What is the LCM of \\(x^4+x^2y^2+y^4\\), \\(x^3y+y^4\\) and \\(x^4y^2-x^3y^3\\)?",
+      "options": [
+        { "label": "A", "text": "\\(x^3y^3(x^6-y^6)\\)" },
+        { "label": "B", "text": "\\(x^3y^2(x^6-y^6)\\)" },
+        { "label": "C", "text": "\\(x^3y(x^6-y^6)\\)" },
+        { "label": "D", "text": "\\(xy(x^6-y^6)\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 19,
+      "stem": "Let \\(XYZ\\) be a 3-digit number. Let \\(D\\) be the difference between \\(XYZ\\) and \\(ZYX\\). What is the remainder when \\(D\\) is divided by 99?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "9" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 20,
+      "stem": "Let \\(p\\) and \\(q\\) be two natural numbers such that \\((p+q)^{p+q}\\) is divisible by 512. What is the least value of \\((p+q)\\)?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "12" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 21,
+      "stem": "What is\n\n\\(\\frac{(a+b)^2}{(c-a)(c+a+b)}+\\frac{(a+b)c}{c^2+bc-a^2-ab}-\\frac{(a+2b+c)}{2(c-a)}\\), \\(a\\ne b\\), \\(b\\ne c\\), \\(c\\ne a\\)\n\nequal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1/2\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "\\(1/2\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 22,
+      "stem": "If \\(a^b=b^a\\), then what is\n\n\\(\\frac{a\\times\\left(\\frac{a}{b}\\right)^{\\frac{a}{b}}}{a^{\\left(\\frac{a}{b}\\right)}}\\)\n\nequal to?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "\\(ab\\)" },
+        { "label": "C", "text": "\\(b\\)" },
+        { "label": "D", "text": "\\(a^b\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 23,
+      "stem": "If \\(x=2+2^{1/2}+2^{3/2}\\), then what is \\(x^2-4x-10\\) equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "6" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 24,
+      "stem": "If \\(\\frac{\\sqrt{p+x}+\\sqrt{p-x}}{\\sqrt{p+x}-\\sqrt{p-x}}=p\\), then what is \\(x\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{p}{p^2+1}\\)" },
+        { "label": "B", "text": "\\(\\frac{2p}{p^2+1}\\)" },
+        { "label": "C", "text": "\\(\\frac{p^2}{p^2+1}\\)" },
+        { "label": "D", "text": "\\(\\frac{2p^2}{p^2+1}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 25,
+      "stem": "If \\(\\left(\\frac{a-b}{2}\\right)x^2-\\left(\\frac{a+b}{2}\\right)x+b=0\\), then what are the roots of this equation?",
+      "options": [
+        { "label": "A", "text": "\\(1,\\ \\frac{b}{a-b}\\)" },
+        { "label": "B", "text": "\\(1,\\ \\frac{2b}{a-b}\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{2},\\ \\frac{b}{a+b}\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{2},\\ \\frac{2b}{a+b}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 26,
+      "stem": "If \\(x-\\frac{1}{x}=2\\), \\(x>0\\); then what is \\(x^2-\\frac{1}{x^2}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "\\(4\\sqrt{2}\\)" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "\\(2\\sqrt{2}\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "EASY",
+      "flags": ["Scan artefact: an ink blot on the printed page covers the letter 'w' of 'what' in the stem. Checked at 9x — no mathematics is obscured; the word is read from context."]
+    },
+    {
+      "number": 27,
+      "stem": "If \\((a-b)^2+(b-c)^2+(c-a)^2=6\\) and \\(a^2+b^2+c^2=29\\), then what is \\((a+b+c)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(\\pm 9\\)" },
+        { "label": "B", "text": "\\(\\pm 8\\)" },
+        { "label": "C", "text": "\\(\\pm 6\\)" },
+        { "label": "D", "text": "\\(\\pm 3\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 28,
+      "stem": "If \\(p=\\frac{\\sqrt{5}-2}{\\sqrt{5}+2}\\) and \\(q=\\frac{\\sqrt{5}+2}{\\sqrt{5}-2}\\), then what is \\(\\left(\\frac{p}{q}+\\frac{q}{p}\\right)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "18" },
+        { "label": "B", "text": "\\(8\\sqrt{5}\\)" },
+        { "label": "C", "text": "322" },
+        { "label": "D", "text": "\\(72\\sqrt{5}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 29,
+      "stem": "What is the digit at hundreds place of the number \\((25)^{10}\\)?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "6" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 30,
+      "stem": "A number \\(N\\) is such that when divided by 4, 6, 7 or 9, it leaves 3 as remainder. What is the smallest 4-digit number that satisfies this property?",
+      "options": [
+        { "label": "A", "text": "1003" },
+        { "label": "B", "text": "1005" },
+        { "label": "C", "text": "1007" },
+        { "label": "D", "text": "1011" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 31,
+      "stem": "If \\(\\sqrt{2+\\sqrt{2+\\sqrt{2+\\sqrt{2+\\ldots}}}}=\\operatorname{cosec}\\theta\\), then what is \\(\\sin\\theta\\) equal to?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "\\(\\frac{\\sqrt{3}}{2}\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{\\sqrt{2}}\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{2}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Specific Values and Quadrants",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

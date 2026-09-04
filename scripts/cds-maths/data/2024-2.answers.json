@@ -1,0 +1,707 @@
+{
+  "paper": "2024-2",
+  "reconciled": [],
+  "note": "Two independent blind passes agreed on all 100 letters (crosstab: AGREE 100, DISPUTE 0, TWIN 0), so nothing required reconciliation between them. This paper has NO answer key of any kind. Items flagged MED/LOW carry an adjudication note on the row; where no printed option is correct the row says so explicitly rather than presenting the best reading as a verified answer.",
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "B",
+      "value": "\\(-0.125\\)",
+      "confidence": "HIGH",
+      "reasoning": "Minimise f(x)=x+4x^2. f'(x)=1+8x=0 gives x=-1/8=-0.125, and f''=8>0 so it is a minimum. f(-0.125)=-0.125+4(0.015625)=-0.0625, lower than f(-0.625)=-0.625+1.5625=0.9375, f(0.125)=0.1875 and f(1)=5."
+    },
+    {
+      "number": 2,
+      "answer": "A",
+      "value": "3",
+      "confidence": "HIGH",
+      "reasoning": "m^2-n^2=(m-n)(m+n)=72 with m,n natural. The two factors must have the same parity, and since 72 is even both must be even: 2x36 -> (19,17), 4x18 -> (11,7), 6x12 -> (9,3). 8x9 is mixed parity. Exactly 3 pairs (brute force over m,n<200 confirms exactly these three)."
+    },
+    {
+      "number": 3,
+      "answer": "B",
+      "value": "99956",
+      "confidence": "HIGH",
+      "reasoning": "6-2=12-8=15-11=24-20=4, so N = -4 (mod lcm(6,12,15,24)=120), i.e. N=120k-4. Largest 5-digit: 120*833=99960, so N=99956. (99956 mod 6=2, mod 12=8, mod 15=11, mod 24=20.)"
+    },
+    {
+      "number": 4,
+      "answer": "D",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "Mod 5: 111=1 so 111^222=1. 222=2 and 222^333: 333 mod 4 = 1 so 2^333=2. 333=3 and 444 mod 4 = 0 so 3^444=3^4=81=1. Total 1+2+1=4."
+    },
+    {
+      "number": 5,
+      "answer": "B",
+      "value": "2, 0, 5",
+      "confidence": "HIGH",
+      "reasoning": "Only the last three digits of each factor matter mod 1000: 345 x 789 = 272205, so the product ends in 205. Direct product 4321012345 x 98766789 = ...205."
+    },
+    {
+      "number": 6,
+      "answer": "C",
+      "value": "135",
+      "confidence": "HIGH",
+      "reasoning": "p = k(x^2+y^2+z^2). With (1,2,3): 1+4+9=14 and p=70 gives k=5. With (-1,1,5): 1+1+25=27, so p=5*27=135."
+    },
+    {
+      "number": 7,
+      "answer": "D",
+      "value": "N = 1265, so 1200 < N < 1300",
+      "confidence": "HIGH",
+      "reasoning": "N = 5 (mod lcm(6,12,15,18)=180) gives N=180k+5, and 11 | N. 180 = 4 (mod 11), so 4k+5 = 0 (mod 11) -> k = 7 (mod 11). Least is k=7: N=1265 = 11 x 115, and 1265 mod 6 = mod 12 = mod 15 = mod 18 = 5. 1200 < 1265 < 1300."
+    },
+    {
+      "number": 8,
+      "answer": "C",
+      "value": "11",
+      "confidence": "HIGH",
+      "reasoning": "Rationalising, 1/(sqrt(n+1)+sqrt(n)) = sqrt(n+1)-sqrt(n). The sum telescopes from n=9 to n=195, giving sqrt(196)-sqrt(9) = 14-3 = 11."
+    },
+    {
+      "number": 9,
+      "answer": "A",
+      "value": "1 : 2",
+      "confidence": "HIGH",
+      "reasoning": "Lengths: Lx=24vx, Ly=18vy. Crossing in opposite directions: (Lx+Ly)/(vx+vy)=20, so 24vx+18vy = 20vx+20vy, i.e. 4vx = 2vy, vx:vy = 1:2."
+    },
+    {
+      "number": 10,
+      "answer": "C",
+      "value": "Both I and II are correct (m=-1, n=2, p=-1, q=2)",
+      "confidence": "HIGH",
+      "reasoning": "p+q=-m, pq=-n, m+n=-p, mn=-q. Substituting q=-m-p into pq=-n=p+m gives (p+m)(p+1)=0; p=-m forces q=0, so p=-1. Then (1-m)(m+1)=0 and m=1 forces q=0, so m=-1, giving n=2, q=2. Check: x^2-x-2=0 has roots 2,-1 for both equations. I: m(m+n)=-1(1)=-1 true. II: p+q=-1+2=1 true."
+    },
+    {
+      "number": 11,
+      "answer": "B",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "With s=sin(theta) in [-1,1], f(s) = -4s^2+8s = 4-4(s-1)^2, maximised at s=1 giving 4. The unconstrained vertex of the parabola is also at s=1, which is attainable (theta=90 degrees)."
+    },
+    {
+      "number": 12,
+      "answer": "B",
+      "value": "\\(\\sec^2\\alpha\\,\\sec^2\\beta\\)",
+      "confidence": "HIGH",
+      "reasoning": "Expanding: (1+2tA tB + tA^2 tB^2) + (tA^2 - 2tA tB + tB^2) = 1 + tA^2 + tB^2 + tA^2 tB^2 = (1+tA^2)(1+tB^2) = sec^2(alpha) sec^2(beta), where tA=tan(alpha), tB=tan(beta)."
+    },
+    {
+      "number": 13,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "tan50 = 1.19175 > cot50 = 0.83910, so I is positive: true. cot25 - tan25 = 2.14451 - 0.46631 = +1.67820, which is positive, not negative, so II is false. (For 0<x<45 cot x > tan x; 25 is below 45.)"
+    },
+    {
+      "number": 14,
+      "answer": "C",
+      "value": "\\(\\sqrt{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Within the stated range, alpha+beta = 60 deg and alpha-beta = 30 deg, so alpha = 45 deg, beta = 15 deg. tan(alpha) cot(2beta) = tan45 * cot30 = 1 * sqrt(3) = sqrt(3)."
+    },
+    {
+      "number": 15,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "sin^2 cos^2 (sec^2 + cosec^2) = sin^2 cos^2 (1/cos^2 + 1/sin^2) = sin^2 + cos^2 = 1."
+    },
+    {
+      "number": 16,
+      "answer": "B",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "Let a=64^(sin^2), b=64^(cos^2). Then ab=64^1=64 and a+b=16, so a,b are roots of t^2-16t+64=(t-8)^2, giving a=b=8. Then 64^(sin^2)=8 means sin^2 = 1/2, theta = 45 deg, and tan+cot = 1+1 = 2."
+    },
+    {
+      "number": 17,
+      "answer": "A",
+      "value": "\\(\\tfrac12\\left(m+n+\\tfrac1m+\\tfrac1n\\right)\\)",
+      "confidence": "HIGH",
+      "reasoning": "(cosec-cot)(cosec+cot)=1 so cosec+cot=1/m, and adding to cosec-cot=m gives cosec = (m+1/m)/2. Likewise (sec-tan)(sec+tan)=1 gives sec = (n+1/n)/2. Sum = (1/2)(m+n+1/m+1/n)."
+    },
+    {
+      "number": 18,
+      "answer": "D",
+      "value": "\\(h\\sec\\alpha\\,\\mathrm{cosec}\\,\\alpha\\)",
+      "confidence": "HIGH",
+      "reasoning": "Horizontal distances from the foot of X: h cot(alpha) and h cot(beta). With alpha+beta=90 deg, cot(beta)=tan(alpha), so width = h(cot a + tan a) = h(cos^2+sin^2)/(sin a cos a) = h/(sin a cos a) = h sec(a) cosec(a). Option A has a spurious factor 2; option C gives h cot a tan a = h."
+    },
+    {
+      "number": 19,
+      "answer": "B",
+      "value": "\\(12\\sqrt{3}\\) square cm",
+      "confidence": "HIGH",
+      "reasoning": "Angle ABC is included between AB and BC, so area = (1/2)(AB)(BC) sin B = (1/2)(6)(8) sin60 = 24 * (sqrt3/2) = 12 sqrt3. (The altitude AD = AB sin60 = 3sqrt3 gives the same: (1/2)(8)(3sqrt3)=12sqrt3.)"
+    },
+    {
+      "number": 20,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "p+q = sin^2(t), pq = -cos^2(t). p^2+q^2 = (p+q)^2 - 2pq = sin^4 + 2cos^2. With s=sin^2 in [0,1]: s^2+2(1-s) = (s-1)^2+1, minimum 1 at s=1 (theta = 90 deg)."
+    },
+    {
+      "number": 21,
+      "answer": "B",
+      "value": "\\(nM - k\\)",
+      "confidence": "HIGH",
+      "reasoning": "Total of n numbers = nM. The first (n-1) sum to k, so the nth number = nM - k."
+    },
+    {
+      "number": 22,
+      "answer": "A",
+      "value": "81",
+      "confidence": "HIGH",
+      "reasoning": "The seven terms are 3^1 ... 3^7, so GM = 3^((1+2+...+7)/7) = 3^(28/7) = 3^4 = 81."
+    },
+    {
+      "number": 23,
+      "answer": "C",
+      "value": "2.05 kg per Rs. 1000",
+      "confidence": "HIGH",
+      "reasoning": "Rs. 1000 buys 1, 2, 4, 5 kg at A, B, C, D, so buying 1 kg at each costs 1000+500+250+200 = Rs. 1950 for 4 kg. Per Rs. 1000 that is 4000/1950 = 2.0513 kg (the harmonic mean of 1,2,4,5), approximately 2.05."
+    },
+    {
+      "number": 24,
+      "answer": "D",
+      "value": "9889",
+      "confidence": "HIGH",
+      "reasoning": "Single-digit primes are 2,3,5,7; a 4-digit number without repetition must use all four. Largest 7532, smallest 2357, sum = 9889."
+    },
+    {
+      "number": 25,
+      "answer": "D",
+      "value": "27",
+      "confidence": "HIGH",
+      "reasoning": "3^3 = 27 = -1 (mod 28), so 3^6 = 1 (mod 28). 255 = 6*42 + 3, so 3^255 = 3^3 = 27 (mod 28)."
+    },
+    {
+      "number": 26,
+      "answer": "B",
+      "value": "6",
+      "confidence": "HIGH",
+      "reasoning": "100 = 1 (mod 9), so 100^97 + 100^54 + x + 1 = 1+1+x+1 = x+3 (mod 9). Need x+3 = 0 (mod 9), i.e. x = 6 (mod 9). The only value in 0 <= x <= 8 is x = 6."
+    },
+    {
+      "number": 27,
+      "answer": "A",
+      "value": "\\(\\alpha = \\beta\\)",
+      "confidence": "HIGH",
+      "reasoning": "AB.DC = AC.BD rearranges to BD/DC = AB/AC, which is exactly the converse of the internal angle-bisector theorem for the cevian AD. Hence AD bisects angle A, so angle BAD = angle CAD, i.e. alpha = beta."
+    },
+    {
+      "number": 28,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "Digit sum 1+2+...+8 = 36, so 9 | N requires 9 | (A+B). Over all digit pairs the achievable sums are exactly 0, 9, 18, each divisible by 9, so I is true (0 is divisible by 9). II fails: A=1, B=8 gives A+B=9 with A odd and B even. So I only."
+    },
+    {
+      "number": 29,
+      "answer": "B",
+      "value": "6",
+      "confidence": "HIGH",
+      "reasoning": "With u = x+1/x, x^3+1/x^3 = u^3-3u. u=5/2 gives 125/8-15/2 = 65/8, so x is 2 or 1/2. With v = y+1/y, v=10/3 gives 1000/27-10 = 730/27, so y is 3 or 1/3. The possible products xy are 6, 3/2, 2/3, 1/6; only 6 is listed."
+    },
+    {
+      "number": 30,
+      "answer": "C",
+      "value": "5",
+      "confidence": "HIGH",
+      "reasoning": "11x+5y has the same parity as x+y, so if x+y is even the value is even and >2, hence composite; x+y must be odd. x+y=3 gives 21 and 27 (both composite); x+y=5 gives (1,4)->31, prime. Exhaustive search over x+y = 2..9 confirms 5 is the minimum."
+    },
+    {
+      "number": 31,
+      "answer": "C",
+      "value": "45",
+      "confidence": "HIGH",
+      "reasoning": "15 = 15 or 5x3, so N = p^14 (smallest 2^14 = 16384, not 4-digit) or N = p^4 q^2. Then N^2 = p^8 q^4 has 9x5 = 45 divisors. Brute force over all 4-digit numbers finds 11 with exactly 15 divisors (1936, 2025, 2500, ...), and every one of their squares has exactly 45 divisors."
+    },
+    {
+      "number": 32,
+      "answer": "B",
+      "value": "Negative only",
+      "confidence": "MED",
+      "reasoning": "The triangle inequality gives p<q+r, q<r+p, r<p+q strictly, so all three factors are strictly negative and their product is strictly negative (numerical sweep over right triangles with integer legs 1..29 gives values from -28573 to -1.17, all negative). Runner-up C 'Non-positive only': that statement is also literally true since negative implies non-positive, and C would win if the setter wanted the weaker characterisation; B is the exact one because the product is never zero."
+    },
+    {
+      "number": 33,
+      "answer": "C",
+      "value": "9",
+      "confidence": "HIGH",
+      "reasoning": "The expression factors as (a^4 + 1 + 1/a^4)(b^4 + 1 + 1/b^4). By AM-GM a^4 + 1/a^4 >= 2, so each factor is at least 3, with equality at a=1 and b=1. Minimum = 3x3 = 9 (numerical sweep confirms 9.0 at a=b=1)."
+    },
+    {
+      "number": 34,
+      "answer": "B",
+      "value": "25",
+      "confidence": "HIGH",
+      "reasoning": "|tea or coffee| = 3n + 2n - n = 4n, and 4n prefer neither, so 4n + 4n = 200, giving 8n = 200 and n = 25. (Check: coffee 50, tea 75, both 25, neither 100; 50+75-25+100 = 200.)"
+    },
+    {
+      "number": 35,
+      "answer": "A",
+      "value": "\\(\\dfrac{\\sqrt{5}}{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Angle ABC is included between AB and BC, so area = (1/2)(9)(12) sin(theta) = 54 sin(theta) = 36, giving sin(theta) = 2/3. Then cos(theta) = sqrt(1-4/9) = sqrt5/3 (the obtuse branch -sqrt5/3 is not offered)."
+    },
+    {
+      "number": 36,
+      "answer": "B",
+      "value": "Only two (LCM = 20 or 60)",
+      "confidence": "HIGH",
+      "reasoning": "HCF(n, n+10) = HCF(n,10) = 10 requires 10 | n, say n = 10m. Then LCM = n(n+10)/10 = 10m(m+1), which is 2-digit only for m=1 (20) and m=2 (60); m=3 gives 120. Brute force over n < 400 returns exactly {20, 60}."
+    },
+    {
+      "number": 37,
+      "answer": "C",
+      "value": "\\((a^2+a+1)^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "a^4+2a^3+3a^2+2a+1 = (a^2+a+1)^2 and a^6-2a^3+1 = (a^3-1)^2 = (a-1)^2 (a^2+a+1)^2. Sympy gcd confirms (a^2+a+1)^2."
+    },
+    {
+      "number": 38,
+      "answer": "B",
+      "value": "0 and 8",
+      "confidence": "HIGH",
+      "reasoning": "Equal roots require discriminant zero: (k-2)^2 - 4(k+1) = k^2 - 8k = 0, so k = 0 or k = 8. (k=0 gives x^2+2x+1; k=8 gives x^2-6x+9.)"
+    },
+    {
+      "number": 39,
+      "answer": "A",
+      "value": "\\(-1\\)",
+      "confidence": "HIGH",
+      "reasoning": "Evaluated at theta = 11, 23, 37, 58, 79, 101 and 163 degrees the expression is -1.0000000000 every time, so the product is identically -1. (Algebraically the first factor equals (1+cos-sin)/(cos+sin-1) = -(cot+cosec) after using 1 = sec^2-tan^2 style manipulation, and (cot-cosec)(cot+cosec) = cot^2 - cosec^2 = -1.)"
+    },
+    {
+      "number": 40,
+      "answer": "D",
+      "value": "\\(\\tan\\theta\\)",
+      "confidence": "HIGH",
+      "reasoning": "Numerator = sin(1-2sin^2) = sin cos2t; denominator = cos(2cos^2-1) = cos cos2t. The cos2t cancels leaving tan(theta). Numerically matched tan(theta) to 10 decimals at 11, 23, 37, 58, 79, 101 and 163 degrees."
+    },
+    {
+      "number": 41,
+      "answer": "A",
+      "value": "1 : 2",
+      "confidence": "HIGH",
+      "reasoning": "70b + 55g = 60(b+g) gives 10b = 5g, so g = 2b and b:g = 1:2. (With 150 students that is 50 boys and 100 girls: 3500+5500 = 9000 = 150x60.)"
+    },
+    {
+      "number": 42,
+      "answer": "D",
+      "value": "5 cm/sec",
+      "confidence": "HIGH",
+      "reasoning": "The rod joins the two tops: horizontal 9 m, vertical 23-11 = 12 m, so length = sqrt(81+144) = 15 m. Speed = 15/5 = 3 m/min = 300 cm / 60 s = 5 cm/sec. (10 m/min, 5 m/min and 10 cm/sec correspond to 50 m, 25 m and 30 m of rod.)"
+    },
+    {
+      "number": 43,
+      "answer": "B",
+      "value": "\\(\\dfrac{3\\pi r^2}{2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Four planes through one common diameter cut the ball into 8 congruent wedges. Each wedge carries 1/8 of the sphere's surface, (1/8)(4 pi r^2) = pi r^2/2, plus two flat semicircular faces of area pi r^2/2 each. Total = pi r^2/2 + pi r^2 = 3 pi r^2/2."
+    },
+    {
+      "number": 44,
+      "answer": "C",
+      "value": "1020",
+      "confidence": "HIGH",
+      "reasoning": "Travelling clockwise the centre lies to the right, so the right wheel is the inner one on radius 50 m and the left wheel runs on radius 51 m. Turns are proportional to distance, so the other wheel turns 1000 x 51/50 = 1020. (The 1-foot wheel radius cancels; if the right wheel were outer the answer would be 980, which is not offered.)"
+    },
+    {
+      "number": 45,
+      "answer": "D",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "The product contains 70 (one factor 5) and 75 (two factors 5), giving 5^3, and several even factors giving 2^3, so it is divisible by 1000. Direct computation of the product mod 1000 gives 0."
+    },
+    {
+      "number": 46,
+      "answer": "B",
+      "value": "\\(90^\\circ\\)",
+      "confidence": "HIGH",
+      "reasoning": "PA = 64 gives tan(alpha) = 80/64 = 5/4; PB = 64+36 = 100 gives tan(beta) = 80/100 = 4/5. Since tan(alpha) tan(beta) = 1, the angles are complementary: arctan(1.25)+arctan(0.8) = 90.0 degrees exactly."
+    },
+    {
+      "number": 47,
+      "answer": "D",
+      "value": "\\(x^{8k+3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The numerator is x^(8k+3)(1+x^3+x^6+x^9) and (1+x^3)(1+x^6) = 1+x^3+x^6+x^9, so the quotient is x^(8k+3) with zero remainder. Polynomial division for k=1,2,4 returns x^11, x^19, x^35, remainder 0 in each case."
+    },
+    {
+      "number": 48,
+      "answer": "A",
+      "value": "98 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Outer area = 14^2 = 196. The inner square has side sqrt(7^2+7^2) = 7 sqrt2, area 98 (exactly half the outer square). Area between = 196 - 98 = 98."
+    },
+    {
+      "number": 49,
+      "answer": "C",
+      "value": "36 cm",
+      "confidence": "HIGH",
+      "reasoning": "With height h and base (4/3)h, area = (1/2)(4h/3)(h) = (2/3)h^2 = 54, so h^2 = 81, h = 9 and base = 12. Hypotenuse = 15 (9-12-15). Perimeter = 9+12+15 = 36."
+    },
+    {
+      "number": 50,
+      "answer": "A",
+      "value": "\\(3\\sqrt{7}\\) square unit",
+      "confidence": "HIGH",
+      "reasoning": "s = (4+4+6)/2 = 7, Heron gives sqrt(7 x 3 x 3 x 1) = sqrt63 = 3 sqrt7 = 7.9373. (Same via the isosceles altitude sqrt(16-9) = sqrt7: (1/2)(6)(sqrt7) = 3 sqrt7.)"
+    },
+    {
+      "number": 51,
+      "answer": "B",
+      "value": "\\(\\dfrac{1}{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "In right triangle ABP, tan45 = BP/AB gives BP = 10, so PC = 10 and BC = 20. Then tan(angle BAC) = BC/AB = 2, and angle BAC = 45 + theta, so (1+tan t)/(1-tan t) = 2, giving 3 tan t = 1, tan(theta) = 1/3."
+    },
+    {
+      "number": 52,
+      "answer": "A",
+      "value": "\\(\\dfrac{1}{2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "P lies on BC, so angle ACP is just angle ACB. In right triangle ABC, tan C = AB/BC = 10/20 = 1/2."
+    },
+    {
+      "number": 53,
+      "answer": "D",
+      "value": "I, II and III are all correct",
+      "confidence": "HIGH",
+      "reasoning": "I: BP = PC makes AP a median, which bisects the area - true. III: area APC = (1/2)(PC)(AB) = (1/2)(10)(10) = 50, exactly half of area ABC = 100 - true. II: AP = 10sqrt2 = 14.1421, PC = 10, AC = sqrt(100+400) = 10sqrt5 = 22.3607, perimeter = 46.5028 > 46 - true."
+    },
+    {
+      "number": 54,
+      "answer": "D",
+      "value": "46.3",
+      "confidence": "HIGH",
+      "reasoning": "N = 50. Converting the inclusive classes to boundaries (17.5-26.5, 26.5-35.5, ...) each of width 9. Cumulative frequencies 5, 12, 22, 37, ...; N/2 = 25 falls in 44.5-53.5 with cf = 22 and f = 15. Median = 44.5 + (25-22)/15 x 9 = 44.5 + 1.8 = 46.3."
+    },
+    {
+      "number": 55,
+      "answer": "C",
+      "value": "48.25",
+      "confidence": "HIGH",
+      "reasoning": "Modal class is 44.5-53.5 (f1 = 15), with f0 = 10 and f2 = 8, h = 9. Mode = 44.5 + (15-10)/(2x15-10-8) x 9 = 44.5 + (5/12)(9) = 44.5 + 3.75 = 48.25."
+    },
+    {
+      "number": 56,
+      "answer": "D",
+      "value": "\\(\\frac{79}{65}\\)",
+      "confidence": "HIGH",
+      "reasoning": "AC = AB+2 and AC^2 = AB^2 + 256 give 4AB + 4 = 256, so AB = 63 and AC = 65 (63-16-65 is a right triple). With theta = angle BAC, sin = BC/AC = 16/65 and cos = AB/AC = 63/65, so the sum is 79/65."
+    },
+    {
+      "number": 57,
+      "answer": "A",
+      "value": "\\(\\frac{1008}{65}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "The altitude to the hypotenuse of a right triangle is (leg x leg)/hypotenuse = (63 x 16)/65 = 1008/65 = 15.5077 cm."
+    },
+    {
+      "number": 58,
+      "answer": "B",
+      "value": "6 cm",
+      "confidence": "HIGH",
+      "reasoning": "OP through the intersection of the two tangents is the perpendicular bisector of MN, so MQ = 8. OQ = sqrt(10^2 - 8^2) = 6 cm."
+    },
+    {
+      "number": 59,
+      "answer": "C",
+      "value": "\\(\\frac{40}{3}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "Triangles OQM and OMP are similar, so OM^2 = OQ.OP, giving OP = 100/6 = 50/3. Then PM = sqrt(OP^2 - OM^2) = sqrt(2500/9 - 100) = sqrt(1600/9) = 40/3 cm. (Equivalently PM = MQ.OM/OQ = 8x10/6.)"
+    },
+    {
+      "number": 60,
+      "answer": "D",
+      "value": "48 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Taking MN = 16 as base and OQ = 6 as the height from O, area OMN = (1/2)(16)(6) = 48 square cm."
+    },
+    {
+      "number": 61,
+      "answer": "A",
+      "value": "Statement I alone suffices (k = -3); Statement II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "4x^2 - kx + 1 > 0 for all x requires k^2 - 16 < 0, i.e. -4 < k < 4, so the integral candidates are -3,-2,-1,0,1,2,3 - not unique on their own. Statement I (k < -2) leaves only k = -3, a unique value. Statement II (k > -4) leaves all seven. So one statement alone answers it and the other does not."
+    },
+    {
+      "number": 62,
+      "answer": "D",
+      "value": "Cannot be answered even by using both Statements together",
+      "confidence": "HIGH",
+      "reasoning": "The statements give a+b = 1/24 and b+c = 1/36. Adding gives a+2b+c, not a+b+c; b is free, so a+b+c is not determined (e.g. b = 1/48 and b = 1/72 give different totals). Both together are insufficient."
+    },
+    {
+      "number": 63,
+      "answer": "C",
+      "value": "Both Statements together are needed; the common root 19 is prime",
+      "confidence": "HIGH",
+      "reasoning": "I has roots 7 and 19; II has roots 19 and 25. A 'common' solution is only defined once both equations are present, so neither alone answers the question; together the common root is 19, which is prime, so the answer is yes."
+    },
+    {
+      "number": 64,
+      "answer": "A",
+      "value": "Statement I alone suffices (yes for odd n); Statement II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "327 + 173 = 500, and a^n + b^n is divisible by a+b for odd n. Computing (327^n + 173^n) mod 500 gives 0 for n = 1,3,5,7 and 358, 82, 178, 362 for n = 2,4,6,8. So Statement I (n odd) settles it as yes, while Statement II (n any positive integer) leaves both outcomes open. Option D here reads 'can be answered even without using any of the Statements', which is false since n is otherwise unspecified."
+    },
+    {
+      "number": 65,
+      "answer": "D",
+      "value": "Can be answered without either Statement: reduction of \\(16\\tfrac23\\%\\)",
+      "confidence": "HIGH",
+      "reasoning": "To keep expenditure fixed after a 20% price rise, consumption must fall by 20/120 = 1/6 = 16.67%, which depends only on the percentage rise. Neither the price per litre nor the earlier consumption is needed, so option D (answerable without any Statement) applies."
+    },
+    {
+      "number": 66,
+      "answer": "D",
+      "value": "Cannot be answered even by using both Statements together (only P's expenditure = 3k for unknown scale k)",
+      "confidence": "HIGH",
+      "reasoning": "Let salaries be 6k and 5k. With II (expenditures equal) and I (savings 3s:2s): 6k-3s = 5k-2s gives s = k, so P's expenditure = 3k. No absolute rupee figure appears anywhere in the question or the statements, so 'how much' has no numeric answer even with both."
+    },
+    {
+      "number": 67,
+      "answer": "A",
+      "value": "Statement I alone suffices (average = 5); Statement II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "The three middle integers come from {3,4,5,6,7}. Statement I forces their sum to 15, achieved by {3,5,7} and {4,5,6}; both give a total of 25 and average 5, so I alone determines the average. Statement II (odd count odd) admits {3,4,6}, {3,5,7}, {4,5,6}, {4,6,7} with averages 4.6, 5.0, 5.0, 5.4 - not determined."
+    },
+    {
+      "number": 68,
+      "answer": "C",
+      "value": "Both Statements together are needed; the weights are 2, 3, 6 (sum 11)",
+      "confidence": "HIGH",
+      "reasoning": "Exhaustive search over distinct positive integers up to 400: requiring both a 1:2 pair and a 1:3 pair leaves the families with sums 6x, 9x, 10x and 11x, of which only 11x1 = 11 is prime, giving the unique triple {2,3,6}. Each statement alone leaves many possibilities (I: {1,2,4} sum 7, {1,2,8} sum 11, ...; II: {1,3,7} sum 11, {1,3,9} sum 13, ...)."
+    },
+    {
+      "number": 69,
+      "answer": "C",
+      "value": "Both Statements together are needed (principal and rate)",
+      "confidence": "MED",
+      "reasoning": "Neither the principal alone nor the rate alone determines an amount; together with the stated 10-year period they do, on the usual convention that 'the amount' means simple interest unless compounding is specified (Rs. 2,00,000). Runner-up D: D would win if the setter intends the unstated simple-vs-compound distinction to be a genuine gap, since compound interest would give Rs. 2,59,374 from exactly the same two statements."
+    },
+    {
+      "number": 70,
+      "answer": "A",
+      "value": "Statement II alone suffices (value is odd); Statement I alone does not",
+      "confidence": "HIGH",
+      "reasoning": "Statement II (pq odd) forces both p and q odd, so p^2+pq+q^2 is odd+odd+odd = odd - a definite yes (checked over all odd p,q from -9 to 9: parity always 1). Statement I (p+q even) allows both even (p=q=2 gives 12, even) or both odd (p=q=1 gives 3, odd), so it does not settle the parity."
+    },
+    {
+      "number": 71,
+      "answer": "C",
+      "value": "4200",
+      "confidence": "HIGH",
+      "reasoning": "Males = 5000. Newspaper readers = 30% of 10000 = 3000; English readers = 3000/3 = 1000; female English readers = 20% of 1000 = 200, so male English readers = 800. Males not reading English newspaper = 5000 - 800 = 4200."
+    },
+    {
+      "number": 72,
+      "answer": "D",
+      "value": "10,000 square cm",
+      "confidence": "HIGH",
+      "reasoning": "For a fixed perimeter the rectangle of maximum area is a square. Perimeter 400 gives side 100 and area 100^2 = 10,000 square cm."
+    },
+    {
+      "number": 73,
+      "answer": "D",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "3^6 = 1 (mod 7) by Fermat, and 10 = 6+4, so 3^10 = 3^4 = 81 = 4 (mod 7). Direct: pow(3,10,7) = 4."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "80%",
+      "confidence": "HIGH",
+      "reasoning": "64% = 0.64 and sqrt(0.64) = 0.8 = 80%. (Check: 80% x 80% = 0.8 x 0.8 = 0.64 = 64%; 8% would square to 0.64%.)"
+    },
+    {
+      "number": 75,
+      "answer": "B",
+      "value": "3 (p = 1, 4, 7)",
+      "confidence": "HIGH",
+      "reasoning": "The difference is 10^31 - 5 - 10^30 - p = 9x10^30 - 5 - p, and 9x10^30 = 0 (mod 3), so we need 5+p = 0 (mod 3), i.e. p = 1 (mod 3). Digits satisfying this are 1, 4, 7 - three values (direct check confirms exactly these)."
+    },
+    {
+      "number": 76,
+      "answer": "C",
+      "value": "Both I and II are correct",
+      "confidence": "HIGH",
+      "reasoning": "I: 107^2 - 76^2 = (107-76)(107+76) = 31 x 183 and 183 = 3 x 61, so 61 divides 107^2-76^2, hence divides (107^2)^50 - (76^2)^50 = 107^100 - 76^100. Direct: (107^100 - 76^100) mod 61 = 0. II: n = 5 is odd so 67+33 = 100 divides 67^5 + 33^5; direct: (67^5+33^5) mod 100 = 0."
+    },
+    {
+      "number": 77,
+      "answer": "D",
+      "value": "\\(37^\\circ\\)C",
+      "confidence": "HIGH",
+      "reasoning": "Total over 7 days = 7 x 31 = 217. Every reading is at least the recorded minimum 30, so to maximise one day set the other six to 30: 217 - 180 = 37 degrees C. (The stem does not require distinct temperatures.)"
+    },
+    {
+      "number": 78,
+      "answer": "B",
+      "value": "\\(-1\\)",
+      "confidence": "HIGH",
+      "reasoning": "1/(yz) - 1/(zx) = (x-y)/(xyz) and 1/(zx) - 1/(xy) = (y-z)/(xyz), so the equation becomes (x-y)(1 + 1/(xyz)) = (y-z)(1 + 1/(xyz)), i.e. (1 + 1/(xyz))(x + z - 2y) = 0. Since x+z is not 2y, 1 + 1/(xyz) = 0, so xyz = -1. (Check x=1, y=1, z=-1: all three bracketed terms equal 0 and x+z = 0 does not equal 2y = 2.)"
+    },
+    {
+      "number": 79,
+      "answer": "C",
+      "value": "Both I and II are correct",
+      "confidence": "HIGH",
+      "reasoning": "p = n(n+1)(n+2)(n+3) + 1 = (n^2+3n+1)^2, a perfect square, so II holds. The product of four consecutive integers is even, so p is even+1 = odd, and I holds. Verified for n = 1..7: 25, 121, 361, 841, 1681, 3025, 5041 - all odd and all perfect squares equal to (n^2+3n+1)^2."
+    },
+    {
+      "number": 80,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "First 50 even naturals 2..100 average (2+100)/2 = 51; first 50 odd naturals 1..99 average (1+99)/2 = 50. Difference = 1. (Equivalently each even number exceeds its paired odd number by 1.)"
+    },
+    {
+      "number": 81,
+      "answer": "B",
+      "value": "\\(y^2 = zx\\)",
+      "confidence": "HIGH",
+      "reasoning": "With f = (1+r)^t - 1 the same for both, y = xf and z = yf = xf^2. Then y^2 = x^2 f^2 and zx = x^2 f^2, so y^2 = zx (sympy: y^2 - zx simplifies to 0, while x^2 - yz does not)."
+    },
+    {
+      "number": 82,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "Innermost square has area 1, side 1, diagonal sqrt2. Corresponding corners lie along the diagonal rays, so each half-diagonal grows by 1 and the diagonal by 2 per step: d_n = sqrt2 + 2(n-1) = 2n + sqrt2 - 2, so I is correct. Side_n = 1 + sqrt2(n-1), and successive area differences are 4.828, 8.828, 12.828, 16.828, 20.828 (= 2sqrt2 + 4n - 6), which depend on n, so II is false."
+    },
+    {
+      "number": 83,
+      "answer": "A",
+      "value": "24 square unit (the triangle cut off by diagonal AC; AB = 8, AD = 6, AC = 10)",
+      "confidence": "MED",
+      "reasoning": "AC = AD + 4 and AC + AB = 3AD give AB = 2AD - 4; AC^2 = AB^2 + AD^2 then gives 4(AD)^2 - 24AD = 0, so AD = 6, AB = 8, AC = 10 (checks: 10+8 = 3x6 and 10-6 = 4). The stem asks for 'the area of the triangle' and the only triangle present is either half of the rectangle cut off by diagonal AC, of area (1/2)(8)(6) = 24. Runner-up C (48): that is the area of the RECTANGLE, and would win if 'triangle' is a misprint for 'rectangle' - both 24 and 48 are offered, so the option set is built around exactly this ambiguity. Solved as printed. [ADJUDICATED. Defective as printed: the stem names only rectangle ABCD and diagonal AC, then asks for 'the area of the triangle' without naming one. The constraints give AD = 6, AB = 8, AC = 10 uniquely, so the half-rectangle cut by AC has area 24. Both 24 and 48 (the rectangle) are printed options, so the set appears built around this ambiguity. Solved as printed.]"
+    },
+    {
+      "number": 84,
+      "answer": "B",
+      "value": "1 cm",
+      "confidence": "HIGH",
+      "reasoning": "Three mutually touching circles of radius r have centres forming an equilateral triangle of side 2r, circumradius 2r/sqrt3. The enclosing circle has R = 2r/sqrt3 + r = r(2+sqrt3)/sqrt3, so its area is pi r^2 (2+sqrt3)^2 / 3. Equating to the given pi(2+sqrt3)^2/3 gives r^2 = 1, r = 1 cm."
+    },
+    {
+      "number": 85,
+      "answer": "A",
+      "value": "96 square cm",
+      "confidence": "HIGH",
+      "reasoning": "AB = 21 is the longest side. With AD = x, CD^2 = 13^2 - x^2 = 20^2 - (21-x)^2 gives 42x = 210, x = 5, so DB = 16 and CD = sqrt(169-25) = 12. Area BCD = (1/2)(16)(12) = 96 square cm. (Whole triangle by Heron = 126 = 96 + 30, consistent with area ACD = (1/2)(5)(12) = 30.)"
+    },
+    {
+      "number": 86,
+      "answer": "A",
+      "value": "\\(\\frac{1}{2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Milk fraction: (2/5)(1/4) + (3/5)f = 3/10 gives 1/10 + (3/5)f = 3/10, so f = 1/3, i.e. m/(m+n) = 1/3, n = 2m and m/n = 1/2. (The 20-litre total is not needed.)"
+    },
+    {
+      "number": 87,
+      "answer": "B",
+      "value": "1.5",
+      "confidence": "HIGH",
+      "reasoning": "Equal bases of radius r and equal heights; the hemisphere's height is r, so h = r throughout. Volumes: cone pi r^3/3, hemisphere 2 pi r^3/3, cylinder pi r^3; sum = 2 pi r^3. Setting (4/3) pi R^3 = 2 pi r^3 gives R^3/r^3 = 3/2 = 1.5."
+    },
+    {
+      "number": 88,
+      "answer": "B",
+      "value": "III only (r must be an integer; p and q need not be)",
+      "confidence": "HIGH",
+      "reasoning": "x = 0 forces r to be an integer. But p and q need not be: p = q = 1/2 gives x^3 + x^2/2 + x/2 + r = x^3 + x(x+1)/2 + r, and x(x+1)/2 is always an integer, so the whole expression is integral for every integral x (checked for x = -4..4). Hence only III must hold."
+    },
+    {
+      "number": 89,
+      "answer": "B",
+      "value": "8",
+      "confidence": "HIGH",
+      "reasoning": "XYZ - YXZ = 90(X - Y) = 90, so X - Y = 1 with X, Y distinct non-zero digits; Y runs 1..8 and X = Y+1. X+Y = 2Y+1 takes the 8 values 3,5,7,9,11,13,15,17 (Z can always be chosen distinct and non-zero). Reading the difference as |XYZ - YXZ| gives X - Y = +/-1 and the same 8 sums."
+    },
+    {
+      "number": 90,
+      "answer": "D",
+      "value": "118 (matches no printed option, so 'None of the above')",
+      "confidence": "HIGH",
+      "reasoning": "The second hand gains 360 - 6 = 354 degrees per minute on the minute hand, so coincidences occur every 60/59 minutes, i.e. 59 per hour and 118 in two hours. Measuring from 2:00 pm, coincidences are at t = 60k/59 minutes; those strictly inside (1, 121) minutes are k = 1..118, first at 2:01:01 and last at 4:00:00 exactly - 118 in all. 118 is not 121, 120 or 119, so option D is correct."
+    },
+    {
+      "number": 91,
+      "answer": "C",
+      "value": "511",
+      "confidence": "HIGH",
+      "reasoning": "gcd(2^a - 1, 2^b - 1) = 2^gcd(a,b) - 1. gcd(36,45) = 9, so the HCF is 2^9 - 1 = 511. Direct computation of gcd(2^36-1, 2^45-1) returns 511."
+    },
+    {
+      "number": 92,
+      "answer": "B",
+      "value": "\\(\\frac{1078}{\\sqrt3}\\) cubic cm (= \\(\\frac{1078\\sqrt3}{3}\\) ≈ 622.38)",
+      "confidence": "HIGH",
+      "reasoning": "The axial section is an equilateral triangle of side 14, so base diameter 14 (r = 7), slant 14 and height sqrt(196-49) = 7 sqrt3. Volume = (1/3)(22/7)(49)(7 sqrt3) = 1078 sqrt3 / 3 = 1078/sqrt3 = 622.384 cubic cm, which is option B (option A is 3 times too large)."
+    },
+    {
+      "number": 93,
+      "answer": "D",
+      "value": "\\(12\\pi\\) square cm",
+      "confidence": "HIGH",
+      "reasoning": "The three base circles of radius 3 touch pairwise, so the base centres form an equilateral triangle of side 6. The apexes sit vertically above those centres at a common height, so they are coplanar and their circle has the circumradius of that triangle, 6/sqrt3 = 2 sqrt3. Area = pi (2 sqrt3)^2 = 12 pi."
+    },
+    {
+      "number": 94,
+      "answer": "C",
+      "value": "2 cm",
+      "confidence": "HIGH",
+      "reasoning": "For a right triangle the inradius is (a + b - c)/2 with c the hypotenuse. Here c = sqrt(25+144) = 13, so r = (5+12-13)/2 = 2 cm. (Check by area: area 30 = r.s with s = 15, so r = 2.)"
+    },
+    {
+      "number": 95,
+      "answer": "D",
+      "value": "\\(140^\\circ\\)",
+      "confidence": "HIGH",
+      "reasoning": "(n-2)180 / 360 = 7/2 gives (n-2)/2 = 7/2, so n = 9. Each interior angle of a regular 9-gon = (9-2)(180)/9 = 1260/9 = 140 degrees."
+    },
+    {
+      "number": 96,
+      "answer": "A",
+      "value": "9900",
+      "confidence": "HIGH",
+      "reasoning": "199 is prime, so (m-n)(m+n) = 199 forces m-n = 1 and m+n = 199, giving m = 100, n = 99 uniquely. mn = 9900. (100^2 - 99^2 = 10000 - 9801 = 199.)"
+    },
+    {
+      "number": 97,
+      "answer": "B",
+      "value": "4 (namely 3, 7, 31, 127)",
+      "confidence": "HIGH",
+      "reasoning": "2^n - 1 < 2000 requires n <= 10 (2^11 - 1 = 2047). Testing n = 1..10: 1, 3, 7, 15, 31, 63, 127, 255, 511 (= 7x73), 1023 (= 3x341). The primes are 3, 7, 31, 127 - four of them."
+    },
+    {
+      "number": 98,
+      "answer": "D",
+      "value": "100",
+      "confidence": "HIGH",
+      "reasoning": "With no student taking exactly two languages, let a, b, c be the only-one counts and t all three. a+t = 130, b+t = 120, c+t = 110 and a+b+c+t = 160. Adding the first three gives a+b+c+3t = 360; subtracting the fourth gives 2t = 200, so t = 100 (a = 30, b = 20, c = 10)."
+    },
+    {
+      "number": 99,
+      "answer": "C",
+      "value": "5",
+      "confidence": "HIGH",
+      "reasoning": "Mod 10: 5^a = 5 and 11^c = 1 for all natural a, c; 7^b cycles through {7,9,3,1} and 13^d through {3,9,7,1}. So S = 6 + 7^b + 13^d (mod 10) and the achievable values, enumerated over all 16 combinations, are {0, 2, 4, 6, 8} - exactly 5 distinct remainders."
+    },
+    {
+      "number": 100,
+      "answer": "A",
+      "value": "3 cm",
+      "confidence": "HIGH",
+      "reasoning": "In right triangle ADC (right angle at D), angle CAD = 60 gives angle ACD = 30, so angle C = 30 and angle B = 60. In triangle ABC right-angled at A, AB = BC sin C = 6 sin30 = 3 cm. (Equivalently angle BAD = 90 - 60 = 30 = angle C, the standard altitude-to-hypotenuse relation.)"
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "band": "b5",
+  "pages": [9, 10],
+  "bandReport": {
+    "numbersFound": [71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "LAYOUT ESTABLISHED FROM THE PAGES, not from any expectation supplied in the dispatch. Both pages are two-column, read LEFT column top-to-bottom then RIGHT. p09 = Q71, Q72, Q73, Q74, Q75 (left) then Q76, Q77, Q78, Q79, Q80 (right). p10 = Q81, Q82, Q83, Q84, Q85 (left) then a Directions block followed by Q86, Q87, Q88, Q89, Q90 (right). Q71-Q90 run with no gaps and no repeats.\n\nSEAM BEFORE. p08 was opened and NOT transcribed. It ends with Q70 complete -- stem plus all four options printed at the foot of its right column -- and no Directions block left hanging open: the two 'next two (02) items' blocks on p08 (the right-triangle ABC block feeding Q65-Q66, and the conical-body block feeding Q69-Q70) both START on p08 and both CLOSE on p08. So band b4 owns them entirely, nothing of theirs spills into my pages, Q71 opens cleanly at the top of p09's left column, and firstComplete is true.\n\nSEAM AFTER. p11 was opened and NOT transcribed. It opens with a fresh 'Consider the following for the next two (02) items that follow :' block (marks-obtained frequency table, feeding Q91-Q92) at the top of its LEFT column and another fresh 'next three (03) items' block (newspaper-circulation table, feeding Q93-Q95) at the top of its RIGHT column. Both blocks START on p11, so by the ownership rule band b6 owns them and I own none of their members. Nothing of my band is truncated overleaf and lastComplete is true. Band b6 starts at Q91.\n\nONE DIRECTIONS BLOCK IN THIS BAND, fully owned and fully contained. 'Consider the following for the next five (05) items that follow :' opens at the top of p10's RIGHT column with the stimulus 'The frequency distribution of 205 observations on X is given below :' and a two-row printed data table. Its five members Q86, Q87, Q88, Q89, Q90 are contiguous and ALL FIVE are printed on p10 -- I did not need to read past the end of my band. Each of the five carries the identical verbatim context (Directions sentence + stimulus sentence + the table as a GFM pipe table with a separator row) and setLabel 'D86-90'. No other question in this band carries a context or a setLabel. Q85 prints a numbered statement list (I, II) followed by 'Which of the statements given above is/are correct ?', but that list belongs to Q85 alone, is printed inside Q85's own stem, and is NOT a Directions block -- it is carried in the stem and no context/setLabel is set.\n\nNO FIGURES ANYWHERE IN THIS BAND. Checked at full page and again at 6-7x over every question of p09 and p10: not one printed diagram, chart or geometric figure. 'hasFigure' is therefore not set on any question and no figureNote is emitted. This was verified rather than assumed precisely because three items READ as though they ought to carry one and do not: Q73 (circle inscribed in an equilateral triangle), Q84 (arc AB subtending angle x at centre O) and Q75 (a large bracketed expression). Q73 and Q84 are stated entirely in words and print no diagram; Q75's brackets are typeset inline maths, not a figure. The band's only printed graphic object is the Q86-Q90 frequency TABLE, which is transcribed as a pipe table in context and needs no crop. The dispatch noted that figure load is not predictable per paper -- for this band it is zero, and that is a measurement, not a guess.\n\nHIGH-ZOOM CHECKS. Every numeral, exponent, sign and option value in this band was re-read from the source PDF at 6-26x rather than off the 2.6x page image. The one genuinely ambiguous glyph was Q77's recurring-decimal bar: at 2.6x 'p = 0.09' with an overline is readable either as a bar over BOTH digits (0.090909...) or over the 9 alone (0.0999...), and the two are different numbers. Cropped at 24x, the bar begins at the left edge of the 9 and does NOT extend over the preceding 0, so it is a bar over the 9 only; transcribed as \\(p = 0.0\\overline{9}\\). Also confirmed at zoom: Q71 option (d) is 51,500 (not 41,500 or 51,000); Q74's option numerators are 359 / 379 / 389 / 399 in that printed order, all over 64, all with k squared; Q76's four amounts are 10,406 / 10,416 / 10,426 / 10,436; Q78's exponent is 101 and the divisor is 101; Q81's option pairs are 17,16 / 16,17 / 15,16 / 16,15 -- four permutations of nearly the same digits, so each pair was read separately off its own label; Q83's options (b) and (d) differ only in the sign of the constant term (x^4 - x^2 + 1 vs x^4 - x^2 - 1) and were read separately; Q86-Q90's table reads X = 3, 5, 6, 7 against frequencies f, f + 2, f - 3, f + 6 with the total stated as 205 observations.\n\nOPTION LABELS were read off the page separately for each of (a)-(d) on all 20 questions and never inferred from a neighbour or from what an answer 'ought' to be, per the brief's warning about the CDS English mis-slotting defect. This mattered most on Q81, Q83, Q87 and Q88, where the four options are near-permutations of each other.\n\nCURRENCY. Q71 and Q76 print the rupee glyph. Written as 'Rs.' per the brief's currency rule, matching the convention already in the 2020-1 and 2020-2 band files (zero rupee glyphs across all twelve of them); no LaTeX macro invented.\n\nDECIMALS. The booklet sets a raised middle dot: Q74 prints 1.5k and 2.25k, Q77 prints 0.09, Q90 prints 3.29 / 4.29 / 5.29 / 6.29. All transcribed with a full stop per the brief's decimal rule.\n\nNO MISPRINTS FOUND. One item was checked at high zoom on suspicion and then deliberately NOT flagged: Q82 gives px^2 + px + 4 = 0 and x^2 + qx + q = 0 with common root 2, which yields non-integer p and q while the four options are integers. At 7x that is exactly what is printed, the pair is a well-formed system, and the option set is consistent with it, so it is transcribed verbatim with no flags entry -- flagging it would have invited a later pass to 'repair' a faithful transcription. Nothing in this band was unreadable and no question could not be transcribed.\n\nINVENTED SUBTOPIC -- ONE, on Q74. See its flags entry. Everything else uses a catalog key and one of that chapter's listed subtopics. Three classification calls worth recording as closest-fit rather than exact. Q77 (evaluate a quadratic at a recurring decimal) is filed under 'Surds, Indices and Simplification' / 'Fractions and Decimals' because the load-bearing step is converting a recurring decimal to a fraction; 'Number System' / 'Rational and Irrational Numbers' is arguable and was not chosen because the question does not turn on rationality itself. Q84 (sector area against arc length, angle in radians) is filed under 'Mensuration 2D' / 'Circle, Sector and Segment' rather than 'Trigonometric Ratios and Identities' / 'Degree and Radian Measure', because the relation being used is the sector-area formula and the radian measure is incidental. Q89 (most appropriate graphical representation of a discrete frequency distribution) is filed under 'Statistics' / 'Frequency Distributions and Classification' rather than 'Data Interpretation', because it asks which display SUITS the distribution rather than asking the candidate to read a display."
+  },
+  "questions": [
+    {
+      "number": 71,
+      "stem": "A person sells article X for Rs. 34,500 and makes a profit of 15%. He sells article Y at a loss of 10%. He neither loses nor gains on the whole because of these two transactions. What is the selling price of article Y ?",
+      "options": [
+        { "label": "A", "text": "Rs. 40,000" },
+        { "label": "B", "text": "Rs. 40,500" },
+        { "label": "C", "text": "Rs. 41,000" },
+        { "label": "D", "text": "Rs. 51,500" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 72,
+      "stem": "100 quintals is what percent of 10 metric tonnes ?",
+      "options": [
+        { "label": "A", "text": "1%" },
+        { "label": "B", "text": "10%" },
+        { "label": "C", "text": "100%" },
+        { "label": "D", "text": "1000%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Percentage",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 73,
+      "stem": "A circle is inscribed in an equilateral triangle. The radius of the circle is 2 cm. What is the area of the triangle ?",
+      "options": [
+        { "label": "A", "text": "\\(12\\sqrt{3}\\) square cm" },
+        { "label": "B", "text": "12 square cm" },
+        { "label": "C", "text": "\\(9\\sqrt{3}\\) square cm" },
+        { "label": "D", "text": "9 square cm" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Inscribed and Circumscribed Figures",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 74,
+      "stem": "The sides of a triangle are k, 1.5k and 2.25k. What is the sum of the squares of its medians ?",
+      "options": [
+        { "label": "A", "text": "\\(359k^2/64\\)" },
+        { "label": "B", "text": "\\(379k^2/64\\)" },
+        { "label": "C", "text": "\\(389k^2/64\\)" },
+        { "label": "D", "text": "\\(399k^2/64\\)" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Medians and Apollonius Theorem",
+      "difficulty": "HARD",
+      "flags": [
+        "INVENTED SUBTOPIC. The catalog's 'Triangles' chapter has no entry covering the LENGTH of a median (Apollonius theorem / the sum-of-squares-of-medians relation). 'Centres of a Triangle' concerns the centroid, incentre and circumcentre as points rather than median lengths, and 'Pythagoras Theorem and its Converse' is a different relation, so neither was forced in to silence the warning. The subtopic wording is mine and is offered to the catalog-extension pass."
+      ]
+    },
+    {
+      "number": 75,
+      "stem": "If \\(2s = a + b + c\\), then what is \\(s\\,(s - a)\\,(s - b)\\,(s - c)\\left[\\frac{1}{s - a} + \\frac{1}{s - b} + \\frac{1}{s - c} - \\frac{1}{s}\\right]\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "abc" },
+        { "label": "B", "text": "2abc" },
+        { "label": "C", "text": "4abc" },
+        { "label": "D", "text": "ab + bc + ca" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 76,
+      "stem": "How much will Rs. 10,000 amount to in one year's time at 4% rate of interest per annum if the interest is compounded once in every three months ? (take approximate value)",
+      "options": [
+        { "label": "A", "text": "Rs. 10,406" },
+        { "label": "B", "text": "Rs. 10,416" },
+        { "label": "C", "text": "Rs. 10,426" },
+        { "label": "D", "text": "Rs. 10,436" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Compound Interest",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 77,
+      "stem": "If \\(p = 0.0\\overline{9}\\), then what is the value of \\(70p^2 + 43p - 5\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "10" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 78,
+      "stem": "What is the remainder when \\(2^{101}\\) is divided by 101 ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "7" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 79,
+      "stem": "If \\(p\\,(\\ne 0)\\) and \\(q\\,(\\ne 0)\\) are the roots of the equation \\(x^2 + px + q = 0\\), then what is \\(p^2 + q^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "5" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 80,
+      "stem": "The equations \\(x^2 + px + q = 0\\) and \\(x^2 + qx + p = 0\\) \\((p \\ne q)\\) have a common root. What is the value of \\((p + q)\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Common Roots",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 81,
+      "stem": "If \\(x^2 - 5x + 4\\) is a factor of \\(x^4 - px^2 + q\\), then what are the values of p and q respectively ?",
+      "options": [
+        { "label": "A", "text": "17, 16" },
+        { "label": "B", "text": "16, 17" },
+        { "label": "C", "text": "15, 16" },
+        { "label": "D", "text": "16, 15" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 82,
+      "stem": "If two quadratic equations \\(px^2 + px + 4 = 0\\) and \\(x^2 + qx + q = 0\\) have a common root 2, then what is \\(p + q\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-3\\)" },
+        { "label": "B", "text": "\\(-2\\)" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Common Roots",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 83,
+      "stem": "What is the HCF of the polynomials \\(x^8 + x^4 + 1\\) and \\(x^4 + x^2 + 1\\) ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "\\(x^4 - x^2 + 1\\)" },
+        { "label": "C", "text": "\\(x^4 + x^2 + 1\\)" },
+        { "label": "D", "text": "\\(x^4 - x^2 - 1\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 84,
+      "stem": "An arc AB of a circle subtends an angle x radian at the centre O. If the area of the sector AOB is equal to half of the square of length of arc AB, then what is x equal to ?",
+      "options": [
+        { "label": "A", "text": "1/4" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Circle, Sector and Segment",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 85,
+      "stem": "Consider the following statements in respect of prime numbers p and q :\n\nI. Their LCM is always an odd number.\n\nII. Sum of their LCM and HCF is always an even number.\n\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 86,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next five (05) items that follow :\n\nThe frequency distribution of 205 observations on X is given below :\n\n| X | 3 | 5 | 6 | 7 |\n|---|---|---|---|---|\n| Frequency | f | f + 2 | f - 3 | f + 6 |",
+      "stem": "What is the value of f ?",
+      "options": [
+        { "label": "A", "text": "50" },
+        { "label": "B", "text": "60" },
+        { "label": "C", "text": "70" },
+        { "label": "D", "text": "80" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 87,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next five (05) items that follow :\n\nThe frequency distribution of 205 observations on X is given below :\n\n| X | 3 | 5 | 6 | 7 |\n|---|---|---|---|---|\n| Frequency | f | f + 2 | f - 3 | f + 6 |",
+      "stem": "What is the median of the frequency distribution ?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "5" },
+        { "label": "C", "text": "6" },
+        { "label": "D", "text": "It cannot be determined from the given data" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 88,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next five (05) items that follow :\n\nThe frequency distribution of 205 observations on X is given below :\n\n| X | 3 | 5 | 6 | 7 |\n|---|---|---|---|---|\n| Frequency | f | f + 2 | f - 3 | f + 6 |",
+      "stem": "What is the mode of the frequency distribution ?",
+      "options": [
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "It cannot be determined from the given data" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 89,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next five (05) items that follow :\n\nThe frequency distribution of 205 observations on X is given below :\n\n| X | 3 | 5 | 6 | 7 |\n|---|---|---|---|---|\n| Frequency | f | f + 2 | f - 3 | f + 6 |",
+      "stem": "What is the most appropriate graphical representation of the given frequency distribution of X ?",
+      "options": [
+        { "label": "A", "text": "Bar diagram" },
+        { "label": "B", "text": "Histogram" },
+        { "label": "C", "text": "Frequency polygon" },
+        { "label": "D", "text": "Pie Chart" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 90,
+      "setLabel": "D86-90",
+      "context": "Consider the following for the next five (05) items that follow :\n\nThe frequency distribution of 205 observations on X is given below :\n\n| X | 3 | 5 | 6 | 7 |\n|---|---|---|---|---|\n| Frequency | f | f + 2 | f - 3 | f + 6 |",
+      "stem": "What is the mean of the frequency distribution ?",
+      "options": [
+        { "label": "A", "text": "3.29" },
+        { "label": "B", "text": "4.29" },
+        { "label": "C", "text": "5.29" },
+        { "label": "D", "text": "6.29" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

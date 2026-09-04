@@ -21,7 +21,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
-import { uploadImage } from "../../src/lib/storage/images";
+import { uploadImage, MAX_SIZE_BYTES } from "../../src/lib/storage/images";
 import { EXAM_ID, ORG_ID, OUT, dataPath, requirePaper } from "./config";
 
 function loadEnv() {
@@ -30,25 +30,59 @@ function loadEnv() {
 
 type Fig = { ref: string; page: number; bbox: [number, number, number, number] };
 
+/**
+ * Crop each fractional bbox via PyMuPDF. SIZE-AWARE, and that is not optional:
+ * a small line-art diagram is fine at 3x, but a near-full-page stimulus is not.
+ * The 2025-1 pie-chart block (three stacked charts, two-thirds of a column)
+ * rendered at 1.16 MB against the 1 MB cap (MAX_SIZE_BYTES in
+ * src/lib/storage/images) and the upload simply THREW - no partial write, no
+ * degraded image, just a failed attach. So step the render scale down until the
+ * PNG fits, then fall back to JPEG (also an ALLOWED_MIME) when even a modest
+ * scale will not compress. A scanned booklet page is already lossy, so JPEG
+ * costs nothing real and stays legible.
+ *
+ * Small figures still take the 3x PNG path on the FIRST try, byte-identically -
+ * the step-down only engages for a crop that would otherwise fail outright.
+ * Ported from scripts/mh-sb-9 and scripts/mh-ssc-10, which hit this before us.
+ */
 function cropFigures(pdf: string, figs: Fig[], dir: string): Record<string, string> {
   const py = `
-import fitz, json, sys, os
-pdf, figs_json, outdir = sys.argv[1], sys.argv[2], sys.argv[3]
+import fitz, json, sys, os, io
+from PIL import Image
+pdf, figs_json, outdir, budget = sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4])
 os.makedirs(outdir, exist_ok=True)
 doc = fitz.open(pdf); out = {}
 for f in json.loads(figs_json):
     pg = doc[f["page"]]; r = pg.rect
     x0, y0, x1, y1 = f["bbox"]
     clip = fitz.Rect(r.width*x0, r.height*y0, r.width*x1, r.height*y1)
-    p = f"{outdir}/{f['ref']}.png"
-    pg.get_pixmap(matrix=fitz.Matrix(3.0, 3.0), clip=clip).save(p)
+    chosen = None
+    for scale in (3.0, 2.5, 2.0, 1.75):
+        data = pg.get_pixmap(matrix=fitz.Matrix(scale, scale), clip=clip).tobytes("png")
+        if len(data) <= budget:
+            p = f"{outdir}/{f['ref']}.png"
+            open(p, "wb").write(data); chosen = (p, scale, "png", len(data)); break
+    if chosen is None:
+        pix = pg.get_pixmap(matrix=fitz.Matrix(2.5, 2.5), clip=clip)
+        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        for q in (88, 80, 70, 60):
+            buf = io.BytesIO(); img.save(buf, "JPEG", quality=q, optimize=True)
+            if buf.tell() <= budget or q == 60:
+                p = f"{outdir}/{f['ref']}.jpg"
+                open(p, "wb").write(buf.getvalue()); chosen = (p, 2.5, "jpeg q%d" % q, buf.tell()); break
+    p, scale, fmt, size = chosen
+    print("  %-8s %sx %-9s %6d KB" % (f["ref"], scale, fmt, size // 1024), file=sys.stderr)
     out[f["ref"]] = p
 print(json.dumps(out))
 `;
-  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir], {
+  // Headroom under the hard cap: the budget is what we accept, the cap is what
+  // the server rejects, and they must not be the same number.
+  const budget = Math.floor(MAX_SIZE_BYTES * 0.95);
+  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir, String(budget)], {
     encoding: "utf8",
-    maxBuffer: 64 * 1024 * 1024,
+    maxBuffer: 128 * 1024 * 1024,
   });
+  if (res.stderr) process.stderr.write(res.stderr);
   if (res.status !== 0) throw new Error(`crop failed: ${res.stderr}`);
   return JSON.parse(res.stdout.trim().split("\n").pop()!);
 }
@@ -96,7 +130,7 @@ async function main() {
       console.log(`  ${f.ref}: image_url already set — skipping`);
       continue;
     }
-    const path = await uploadImage(client, ORG_ID, readFileSync(crops[f.ref]), "image/png");
+    const path = await uploadImage(client, ORG_ID, readFileSync(crops[f.ref]), crops[f.ref].endsWith(".jpg") ? "image/jpeg" : "image/png");
     const { error: uErr } = await client.from("questions").update({ image_url: path }).eq("id", q.id);
     if (uErr) throw new Error(`${f.ref} set image_url: ${uErr.message}`);
     console.log(`  ${f.ref}: attached ${path}`);

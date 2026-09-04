@@ -1,0 +1,223 @@
+{
+  "band": "b2",
+  "pages": [3, 4],
+  "bandReport": {
+    "numbersFound": [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Pages p03-p04 carry Q28-Q43 with no gaps. All 16 are standalone items and every one is complete within its own page.\n\nSEAM BEFORE (p02, opened but not transcribed): p02 ends with Q27 complete -- all four options printed at the foot of its right column -- and no Directions block open, so Q28 starts cleanly at the top of p03's left column. Nothing of p02's is truncated into my band.\n\nSEAM AFTER (p05, opened but not transcribed): p05 opens at the top of its left column with Q44, a fresh standalone item on ratios. Q43's four options all sit above the foot of p04's right column, so nothing of mine continues overleaf.\n\nDIRECTIONS SETS: NONE. There is no \"Directions:\" block and no \"Consider the following for the next N items\" block anywhere on p02, p03, p04 or p05. No question in this band carries context or setLabel, and no set opening before p03 reaches into my pages, so there is nothing for a neighbouring band to skip.\n\nFIGURES: NONE. Neither p03 nor p04 prints a diagram, chart or data table; both pages were checked at 6-8x. hasFigure is therefore not set on any question in this band. (Establishing this was part of the task -- figure load on this paper's p03/p04 is zero, not merely unverified.)\n\nCOLUMN BREAKS: no stem is separated from its options. On both pages every question sits whole inside a single column, so there is no within-page split of the kind that has caught sibling bands.\n\nMISPRINTS: none found, and one suspected class was checked and cleared. p02 carries a genuine digit-for-Roman misprint at Q22(c) and Q24(c) (\"Both 1 and II\"). The corresponding options in my band -- Q29(c) and Q43(c) -- were cropped at 8x and both print a serifed Roman I identical to the I in their own \"I only\" option, so both read \"Both I and II\" correctly and neither warrants a flag.\n\nPRINTED WORDING WORTH KNOWING: Q28 asks \"then what is A VALUE OF sin(theta) + cos(2theta) ?\" -- \"a value of\", not \"equal to\". Transcribed verbatim rather than normalised to the paper's usual phrasing. Q35 prints its lower bound as a bare \"0\" with no degree sign while its upper bound carries one (\"30 degrees\"); transcribed exactly as printed.\n\nINVENTED SUBTOPIC (one): Q28 uses \"Trigonometric Equations\", which is not in the catalog. The Trigonometric Ratios and Identities chapter has no equation-solving subtopic, and Q28 is a quadratic in cot(theta) that must be solved before anything can be evaluated -- none of the seven listed subtopics describes that. Flagged on the question. Q35 is also an equation but resolves through the complementary-angle rule (tan A tan B = 1 implies A + B = 90 degrees), which IS a listed subtopic, so it was NOT forced onto the invented one.\n\nUNREADABLE: nothing. Every stem, every option and every exponent in this band was confirmed against a 6-8x crop of the source PDF."
+  },
+  "questions": [
+    {
+      "number": 28,
+      "stem": "If \\(\\cot^2\\theta - 3\\sqrt{3}\\cot\\theta + 6 = 0\\), where \\(\\frac{\\pi}{6} \\le \\theta < \\frac{\\pi}{2}\\), then what is a value of \\(\\sin\\theta + \\cos 2\\theta\\) ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "\\(\\sqrt{3}\\)" },
+        { "label": "D", "text": "\\(1 + \\sqrt{2}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Trigonometric Equations",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Subtopic INVENTED: the catalog's Trigonometric Ratios and Identities chapter lists no equation-solving subtopic, and this item is a quadratic in cot(theta) that must be solved before the requested expression can be evaluated. Closest listed alternatives (Specific Values and Quadrants, Compound and Multiple Angles) each describe only one later step, not the item. Work-list entry for the catalog extension pass."
+      ]
+    },
+    {
+      "number": 29,
+      "stem": "Which of the following equations is/are possible ?\n\nI. \\(\\sin^2\\theta = \\frac{(x+y)^2}{4xy}\\), where x, y are positive unequal real quantities.\n\nII. \\(\\sin\\theta + \\cos\\theta = x + \\frac{1}{x}\\), where x is a positive real quantity.\n\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 30,
+      "stem": "If \\(m^2(\\sin\\theta - 1) + n^2(\\sin\\theta + 1) = 0\\), where \\(0 < \\theta < \\frac{\\pi}{2}\\), then what is \\((m^2 + n^2)\\cos\\theta - (m^2 - n^2)\\cot\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "4mn" },
+        { "label": "B", "text": "2mn" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 31,
+      "stem": "If \\(\\sin\\alpha + \\cos\\alpha = \\sqrt{2}\\), where \\(0 < \\alpha < \\frac{\\pi}{2}\\), then what is \\(\\sin^3\\alpha - \\cos^3\\alpha\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "1/4" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 32,
+      "stem": "What is \\((1 + \\cot\\alpha - \\operatorname{cosec}\\alpha)(1 + \\tan\\alpha + \\sec\\alpha)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "1/2" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 33,
+      "stem": "If \\(\\tan\\theta = \\frac{\\sin\\alpha - \\cos\\alpha}{\\sin\\alpha + \\cos\\alpha}\\), where \\(\\theta\\) and \\(\\alpha\\) \\(\\left(\\alpha \\ne \\frac{\\pi}{4}\\right)\\) are acute angles, then what is \\(\\sqrt{2}\\sin\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\sin\\alpha - \\cos\\alpha\\)" },
+        { "label": "B", "text": "\\(\\sin\\alpha + \\cos\\alpha\\)" },
+        { "label": "C", "text": "\\(\\cos\\alpha - \\sin\\alpha\\)" },
+        { "label": "D", "text": "\\(\\pm(\\sin\\alpha - \\cos\\alpha)\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 34,
+      "stem": "For how many values of \\(\\alpha\\) does the expression \\((\\sin\\alpha + 2)(\\sin\\alpha + 4)(\\sin\\alpha - 2)(\\sin\\alpha - 4)\\) become zero ?",
+      "options": [
+        { "label": "A", "text": "No value" },
+        { "label": "B", "text": "One" },
+        { "label": "C", "text": "Two" },
+        { "label": "D", "text": "Four" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 35,
+      "stem": "What is the value of x, where \\(0 \\le x < 30^\\circ\\), satisfying \\(\\tan 3x \\tan 6x = 1\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(0^\\circ\\)" },
+        { "label": "B", "text": "\\(10^\\circ\\)" },
+        { "label": "C", "text": "\\(12^\\circ\\)" },
+        { "label": "D", "text": "\\(15^\\circ\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Complementary and Allied Angles",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 36,
+      "stem": "What is \\(\\frac{(a-b)^2}{(b-c)(c-a)} + \\frac{(b-c)^2}{(c-a)(a-b)} + \\frac{(c-a)^2}{(a-b)(b-c)} - 3\\) equal to, where \\(a \\ne b \\ne c\\) ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "\\(a + b + c\\)" },
+        { "label": "D", "text": "\\(3(a-b)(b-c)(c-a)\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 37,
+      "stem": "Given that \\(\\frac{100 \\times 99 \\times 98 \\times \\ldots \\times 3 \\times 2 \\times 1}{100^n}\\) is an integer. What is the largest value of n for which this is true ?",
+      "options": [
+        { "label": "A", "text": "20" },
+        { "label": "B", "text": "21" },
+        { "label": "C", "text": "24" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 38,
+      "stem": "A man starting from a place P went x metre \\((x > 120\\text{ m})\\) East before turning South. He went 40 m straight before turning to West. He went 60 m to reach a place Q. From Q he went 200 m North and reached a place R. If PR = 200 m, then what is x equal to ?",
+      "options": [
+        { "label": "A", "text": "150 m" },
+        { "label": "B", "text": "180 m" },
+        { "label": "C", "text": "200 m" },
+        { "label": "D", "text": "240 m" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Pythagoras Theorem and its Converse",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 39,
+      "stem": "If \\(x^2 + y^2 + z^2 = 3\\), where x, y and z are integers, then how many values can \\((xy + yz + zx)\\) have ?",
+      "options": [
+        { "label": "A", "text": "One" },
+        { "label": "B", "text": "Two" },
+        { "label": "C", "text": "Three" },
+        { "label": "D", "text": "Four" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 40,
+      "stem": "If x, y, z are real numbers such that \\(x + y + z = 10\\) and \\(xy + yz + zx = 18\\), then what is the value of \\(x^3 + y^3 + z^3 - 3xyz\\) ?",
+      "options": [
+        { "label": "A", "text": "400" },
+        { "label": "B", "text": "440" },
+        { "label": "C", "text": "460" },
+        { "label": "D", "text": "500" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 41,
+      "stem": "What is \\(\\sqrt{17 - 4\\sqrt{15}} + \\sqrt{8 - 2\\sqrt{15}}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\sqrt{3}\\)" },
+        { "label": "B", "text": "\\(2\\sqrt{3}\\)" },
+        { "label": "C", "text": "\\(2(\\sqrt{5} - \\sqrt{3})\\)" },
+        { "label": "D", "text": "\\(2(\\sqrt{5} + \\sqrt{3})\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 42,
+      "stem": "What is the maximum value of the sum of the numbers 36, 33, 30, 27, 24, ... ?",
+      "options": [
+        { "label": "A", "text": "240" },
+        { "label": "B", "text": "237" },
+        { "label": "C", "text": "234" },
+        { "label": "D", "text": "231" }
+      ],
+      "chapter": "Sequence and Series",
+      "subtopic": "Arithmetic Progressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 43,
+      "stem": "There are two natural numbers m and n \\((m > n)\\). When m is divided by 12, it leaves a remainder 4. When n is divided by 12, it leaves a remainder 6. Which of the following statements is/are correct ?\n\nI. The remainder when \\((m + n)\\) is divided by 12 is 10.\n\nII. The remainder when \\((m - n)\\) is divided by 12 is 10.\n\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE"
+    }
+  ]
+}
