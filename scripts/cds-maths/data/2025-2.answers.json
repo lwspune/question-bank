@@ -15,35 +15,40 @@
       "answer": "D",
       "value": "I, II and III",
       "confidence": "HIGH",
-      "reasoning": "For x>0, AM-GM gives x+1/x >= 2. Hence x+1/x > 1 (I true), (x+1/x)^2 >= 4 > 2 (II true), (x+1/x)^4 >= 16 > 9 (III true). All three hold."
+      "reasoning": "For x>0, AM-GM gives x+1/x >= 2. Hence x+1/x > 1 (I true), (x+1/x)^2 >= 4 > 2 (II true), (x+1/x)^4 >= 16 > 9 (III true). All three hold.",
+      "solution": "For every \\(x>0\\), AM-GM gives \\(x+\\dfrac{1}{x}\\ge 2\\). Hence \\(x+\\dfrac{1}{x}>1\\), \\(\\left(x+\\dfrac{1}{x}\\right)^{2}\\ge 4>2\\) and \\(\\left(x+\\dfrac{1}{x}\\right)^{4}\\ge 16>9\\), so all three statements are correct."
     },
     {
       "number": 3,
       "answer": "A",
       "value": "3",
       "confidence": "MED",
-      "reasoning": "AS PRINTED the expression is q^2-5p-4 while the question asks for the largest p, so p and q are mixed. Taking the only sensible reading (there exists a natural q>p making it negative), the smallest admissible q is p+1, so (p+1)^2 < 5p+4, i.e. p^2-3p-3<0, i.e. p < (3+sqrt21)/2 = 3.79, giving p=3 (checked: p=3,q=4 gives 16-15-4=-3<0; p=4,q=5 gives 25-20-4=+1). Verified by brute force. RUNNER-UP C (5): if the stem were meant to read p^2-5p-4<0 the answer is p=5, and the option set (3,4,5,6) is consistent with that intent. C wins only if the printed q^2 is a misprint for p^2."
+      "reasoning": "AS PRINTED the expression is q^2-5p-4 while the question asks for the largest p, so p and q are mixed. Taking the only sensible reading (there exists a natural q>p making it negative), the smallest admissible q is p+1, so (p+1)^2 < 5p+4, i.e. p^2-3p-3<0, i.e. p < (3+sqrt21)/2 = 3.79, giving p=3 (checked: p=3,q=4 gives 16-15-4=-3<0; p=4,q=5 gives 25-20-4=+1). Verified by brute force. RUNNER-UP C (5): if the stem were meant to read p^2-5p-4<0 the answer is p=5, and the option set (3,4,5,6) is consistent with that intent. C wins only if the printed q^2 is a misprint for p^2.",
+      "solution": "As printed the expression mixes the two letters — it reads \\(q^{2}-5p-4\\) while the question asks for the largest \\(p\\) — so it has to be taken as: the largest \\(p\\) for which some natural \\(q>p\\) makes it negative. The best chance is the smallest such \\(q\\), namely \\(q=p+1\\), which needs \\((p+1)^{2}<5p+4\\), i.e. \\(p^{2}-3p-3<0\\) and so \\(p<\\dfrac{3+\\sqrt{21}}{2}\\approx 3.79\\). Checking, \\(p=3,\\ q=4\\) gives \\(16-15-4=-3<0\\) while \\(p=4,\\ q=5\\) gives \\(25-20-4=+1\\), so the largest value is \\(p=3\\). Had the printed \\(q^{2}\\) been a misprint for \\(p^{2}\\), the same working would have given 5 instead."
     },
     {
       "number": 4,
       "answer": "A",
       "value": "One",
       "confidence": "HIGH",
-      "reasoning": "x-y prime forces x>y. If both x,y were odd primes then x+y and x-y are both even, and both cannot be 2. So y=2, x an odd prime with x-2 and x+2 both prime: only x=5 (3,5,7) below 20. Exhaustive search over x,y<20 returns exactly one quadruple (5,2,7,3)."
+      "reasoning": "x-y prime forces x>y. If both x,y were odd primes then x+y and x-y are both even, and both cannot be 2. So y=2, x an odd prime with x-2 and x+2 both prime: only x=5 (3,5,7) below 20. Exhaustive search over x,y<20 returns exactly one quadruple (5,2,7,3).",
+      "solution": "Since \\(x-y\\) must itself be prime it is positive, so \\(x>y\\). If \\(x\\) and \\(y\\) were both odd primes then \\(x+y\\) and \\(x-y\\) would both be even, and they cannot both equal 2 — so \\(y=2\\). That leaves an odd prime \\(x\\) with \\(x-2\\) and \\(x+2\\) also prime, and below 20 the only such value is \\(x=5\\), giving the primes 3, 5 and 7. Exactly one combination is possible, namely \\((5,\\ 2,\\ 7,\\ 3)\\)."
     },
     {
       "number": 5,
       "answer": "A",
       "value": "\\(-1\\)",
       "confidence": "HIGH",
-      "reasoning": "x^4-1=(x-1)(x+1)(x^2+1), so (x+p)(x^2+p^2) must be (x-1)(x^2+1), giving p=-1. Sympy coefficient matching returns p=-1 uniquely."
+      "reasoning": "x^4-1=(x-1)(x+1)(x^2+1), so (x+p)(x^2+p^2) must be (x-1)(x^2+1), giving p=-1. Sympy coefficient matching returns p=-1 uniquely.",
+      "solution": "Factorise the right-hand side as \\(x^{4}-1=(x-1)(x+1)(x^{2}+1)\\). Cancelling the common factor \\((x+1)\\) leaves \\((x+p)(x^{2}+p^{2})=(x-1)(x^{2}+1)\\), and comparing the two sides gives \\(p=-1\\)."
     },
     {
       "number": 6,
       "answer": "A",
       "value": "0",
       "confidence": "HIGH",
-      "reasoning": "(2+sqrt3)(2-sqrt3)=1, so with t=(2+sqrt3)^x the second term is 1/t. t+1/t=2 forces (t-1)^2=0, t=1, x=0. Then the difference is 1-1=0."
+      "reasoning": "(2+sqrt3)(2-sqrt3)=1, so with t=(2+sqrt3)^x the second term is 1/t. t+1/t=2 forces (t-1)^2=0, t=1, x=0. Then the difference is 1-1=0.",
+      "solution": "Since \\((2+\\sqrt{3})(2-\\sqrt{3})=4-3=1\\), writing \\(t=(2+\\sqrt{3})^{x}\\) makes the second term \\(\\dfrac{1}{t}\\). Then \\(t+\\dfrac{1}{t}=2\\) forces \\((t-1)^{2}=0\\), so \\(t=1\\) and \\(x=0\\). Both terms are therefore 1 and their difference is 0."
     },
     {
       "number": 7,
@@ -57,7 +62,8 @@
       "answer": "A",
       "value": "\\(-1\\)",
       "confidence": "HIGH",
-      "reasoning": "Modulo x^2+1, x^2 = -1, so x^6=(x^2)^3=-1. Sympy rem(x^6, x^2+1) = -1."
+      "reasoning": "Modulo x^2+1, x^2 = -1, so x^6=(x^2)^3=-1. Sympy rem(x^6, x^2+1) = -1.",
+      "solution": "Working modulo \\(x^{2}+1\\) we may replace \\(x^{2}\\) by \\(-1\\), so \\(x^{6}=(x^{2})^{3}=(-1)^{3}=-1\\). The remainder is the constant \\(-1\\)."
     },
     {
       "number": 9,
@@ -78,7 +84,8 @@
       "answer": "A",
       "value": "0",
       "confidence": "HIGH",
-      "reasoning": "17 = -1 and 19 = 1 (mod 18), so 17^25+19^25 = (-1)^25 + 1 = 0 (mod 18). Direct computation of the integer confirms remainder 0."
+      "reasoning": "17 = -1 and 19 = 1 (mod 18), so 17^25+19^25 = (-1)^25 + 1 = 0 (mod 18). Direct computation of the integer confirms remainder 0.",
+      "solution": "Modulo 18 we have \\(17\\equiv -1\\) and \\(19\\equiv 1\\). Hence \\(17^{25}+19^{25}\\equiv (-1)^{25}+1^{25}=-1+1=0 \\pmod{18}\\), so the remainder is 0."
     },
     {
       "number": 12,
@@ -92,14 +99,16 @@
       "answer": "B",
       "value": "\\(3+\\sqrt{5}\\)",
       "confidence": "HIGH",
-      "reasoning": "With u=x^2, u^2=u+1 so u=(1+sqrt5)/2 and x^4=u^2=u+1=(3+sqrt5)/2. Hence 2x^4=3+sqrt5. Sympy gives 2x^4 = sqrt(5)+3 for the positive root."
+      "reasoning": "With u=x^2, u^2=u+1 so u=(1+sqrt5)/2 and x^4=u^2=u+1=(3+sqrt5)/2. Hence 2x^4=3+sqrt5. Sympy gives 2x^4 = sqrt(5)+3 for the positive root.",
+      "solution": "Put \\(u=x^{2}\\); the equation becomes \\(u^{2}=u+1\\), whose positive root is \\(u=\\dfrac{1+\\sqrt{5}}{2}\\). Then \\(x^{4}=u^{2}=u+1=\\dfrac{3+\\sqrt{5}}{2}\\), so \\(2x^{4}=3+\\sqrt{5}\\)."
     },
     {
       "number": 14,
       "answer": "C",
       "value": "Either \\(p+q+r+s=0\\) or \\(p=r\\)",
       "confidence": "HIGH",
-      "reasoning": "Cross-multiplying and factoring gives (p-r)(p+q+r+s)=0 (sympy factor: -(-p+r)(p+q+r+s)). So either p=r or the sum is zero."
+      "reasoning": "Cross-multiplying and factoring gives (p-r)(p+q+r+s)=0 (sympy factor: -(-p+r)(p+q+r+s)). So either p=r or the sum is zero.",
+      "solution": "Cross-multiplying gives \\((p+q)(s+p)=(q+r)(r+s)\\), which rearranges to \\(p^{2}-r^{2}+q(p-r)+s(p-r)=0\\). That factorises as \\((p-r)(p+q+r+s)=0\\), so either \\(p=r\\) or \\(p+q+r+s=0\\). Both alternatives genuinely occur, so the combined statement is the correct one rather than either half on its own."
     },
     {
       "number": 15,
@@ -113,7 +122,8 @@
       "answer": "C",
       "value": "\\(x+y-1\\)",
       "confidence": "HIGH",
-      "reasoning": "x^3+y^3+3xy-1 = x^3+y^3+(-1)^3-3xy(-1) = (x+y-1)(x^2+y^2+1-xy+x+y). And (x+y)^4-1 = (x+y-1)(x+y+1)((x+y)^2+1). Sympy factorisations confirm the only common factor is (x+y-1); the cofactors are coprime."
+      "reasoning": "x^3+y^3+3xy-1 = x^3+y^3+(-1)^3-3xy(-1) = (x+y-1)(x^2+y^2+1-xy+x+y). And (x+y)^4-1 = (x+y-1)(x+y+1)((x+y)^2+1). Sympy factorisations confirm the only common factor is (x+y-1); the cofactors are coprime.",
+      "solution": "Write the first polynomial as \\(x^{3}+y^{3}+(-1)^{3}-3xy(-1)\\), which by the standard identity factorises as \\((x+y-1)\\left(x^{2}+y^{2}+1-xy+x+y\\right)\\). The second factorises as \\((x+y)^{4}-1=(x+y-1)(x+y+1)\\left((x+y)^{2}+1\\right)\\). The remaining cofactors have no common factor, so the HCF is \\(x+y-1\\)."
     },
     {
       "number": 17,
@@ -127,7 +137,8 @@
       "answer": "B",
       "value": "\\(x^3y^2(x^6-y^6)\\)",
       "confidence": "HIGH",
-      "reasoning": "Factors: x^4+x^2y^2+y^4=(x^2+xy+y^2)(x^2-xy+y^2); x^3y+y^4=y(x+y)(x^2-xy+y^2); x^4y^2-x^3y^3=x^3y^2(x-y). Sympy LCM = x^3 y^2 (x-y)(x+y)(x^2-xy+y^2)(x^2+xy+y^2) = x^3y^2(x^6-y^6) (difference verified zero)."
+      "reasoning": "Factors: x^4+x^2y^2+y^4=(x^2+xy+y^2)(x^2-xy+y^2); x^3y+y^4=y(x+y)(x^2-xy+y^2); x^4y^2-x^3y^3=x^3y^2(x-y). Sympy LCM = x^3 y^2 (x-y)(x+y)(x^2-xy+y^2)(x^2+xy+y^2) = x^3y^2(x^6-y^6) (difference verified zero).",
+      "solution": "Factorise each expression: \\(x^{4}+x^{2}y^{2}+y^{4}=(x^{2}+xy+y^{2})(x^{2}-xy+y^{2})\\), \\(x^{3}y+y^{4}=y(x+y)(x^{2}-xy+y^{2})\\) and \\(x^{4}y^{2}-x^{3}y^{3}=x^{3}y^{2}(x-y)\\). The LCM takes the highest power of every factor, giving \\(x^{3}y^{2}(x-y)(x+y)(x^{2}-xy+y^{2})(x^{2}+xy+y^{2})\\), which collapses to \\(x^{3}y^{2}\\left(x^{6}-y^{6}\\right)\\)."
     },
     {
       "number": 19,
@@ -141,49 +152,56 @@
       "answer": "C",
       "value": "8",
       "confidence": "HIGH",
-      "reasoning": "Need s^s divisible by 2^9 with s=p+q. s=2 gives 2^2, s=4 gives 2^8 (one short), s=6 gives 2^6*3^6. s=8 gives 2^24. Brute force over s=2..19 returns least s = 8."
+      "reasoning": "Need s^s divisible by 2^9 with s=p+q. s=2 gives 2^2, s=4 gives 2^8 (one short), s=6 gives 2^6*3^6. s=8 gives 2^24. Brute force over s=2..19 returns least s = 8.",
+      "solution": "Since \\(512=2^{9}\\), we need \\(s^{s}\\) to carry at least nine factors of 2, where \\(s=p+q\\). An odd \\(s\\) carries none; \\(s=2\\) gives \\(2^{2}\\), \\(s=4\\) gives \\(4^{4}=2^{8}\\) — one factor short — and \\(s=6\\) gives \\(6^{6}=2^{6}\\cdot 3^{6}\\). The first value that works is \\(s=8\\), since \\(8^{8}=2^{24}\\)."
     },
     {
       "number": 21,
       "answer": "A",
       "value": "\\(-1/2\\)",
       "confidence": "HIGH",
-      "reasoning": "c^2+bc-a^2-ab=(c-a)(c+a+b), so the first two terms combine to (a+b)(a+b+c)/[(c-a)(c+a+b)] = (a+b)/(c-a). Then (a+b)/(c-a) - (a+2b+c)/(2(c-a)) = (a-c)/(2(c-a)) = -1/2. Sympy simplify returns -1/2."
+      "reasoning": "c^2+bc-a^2-ab=(c-a)(c+a+b), so the first two terms combine to (a+b)(a+b+c)/[(c-a)(c+a+b)] = (a+b)/(c-a). Then (a+b)/(c-a) - (a+2b+c)/(2(c-a)) = (a-c)/(2(c-a)) = -1/2. Sympy simplify returns -1/2.",
+      "solution": "The second denominator factorises as \\(c^{2}+bc-a^{2}-ab=(c-a)(a+b+c)\\). The first two terms then combine to \\(\\dfrac{(a+b)^{2}+(a+b)c}{(c-a)(a+b+c)}=\\dfrac{(a+b)(a+b+c)}{(c-a)(a+b+c)}=\\dfrac{a+b}{c-a}\\). Subtracting the third term leaves \\(\\dfrac{2(a+b)-(a+2b+c)}{2(c-a)}=\\dfrac{a-c}{2(c-a)}=-\\dfrac{1}{2}\\)."
     },
     {
       "number": 22,
       "answer": "A",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "From a^b=b^a, b^(a/b)=(b^a)^(1/b)=(a^b)^(1/b)=a. The expression is a*(a/b)^(a/b)/a^(a/b) = a/b^(a/b) = a/a = 1. Checked numerically with (a,b)=(2,4) and (4,2): both give 1."
+      "reasoning": "From a^b=b^a, b^(a/b)=(b^a)^(1/b)=(a^b)^(1/b)=a. The expression is a*(a/b)^(a/b)/a^(a/b) = a/b^(a/b) = a/a = 1. Checked numerically with (a,b)=(2,4) and (4,2): both give 1.",
+      "solution": "Split the numerator using \\(\\left(\\dfrac{a}{b}\\right)^{a/b}=\\dfrac{a^{a/b}}{b^{a/b}}\\); the whole expression then reduces to \\(\\dfrac{a}{b^{a/b}}\\). The given condition supplies the rest: \\(b^{a/b}=\\left(b^{a}\\right)^{1/b}=\\left(a^{b}\\right)^{1/b}=a\\). The value is therefore \\(\\dfrac{a}{a}=1\\)."
     },
     {
       "number": 23,
       "answer": "C",
       "value": "4",
       "confidence": "HIGH",
-      "reasoning": "x = 2 + sqrt2 + 2sqrt2 = 2+3sqrt2, x^2 = 22+12sqrt2, so x^2-4x-10 = 22+12sqrt2-8-12sqrt2-10 = 4. Sympy simplify gives 4."
+      "reasoning": "x = 2 + sqrt2 + 2sqrt2 = 2+3sqrt2, x^2 = 22+12sqrt2, so x^2-4x-10 = 22+12sqrt2-8-12sqrt2-10 = 4. Sympy simplify gives 4.",
+      "solution": "Here \\(x=2+\\sqrt{2}+2\\sqrt{2}=2+3\\sqrt{2}\\), so \\(x^{2}=4+12\\sqrt{2}+18=22+12\\sqrt{2}\\). Then \\(x^{2}-4x-10=\\left(22+12\\sqrt{2}\\right)-\\left(8+12\\sqrt{2}\\right)-10=4\\)."
     },
     {
       "number": 24,
       "answer": "D",
       "value": "\\(\\frac{2p^2}{p^2+1}\\)",
       "confidence": "HIGH",
-      "reasoning": "Rationalising gives (p+sqrt(p^2-x^2))/x = p, so sqrt(p^2-x^2)=p(x-1); squaring gives x(p^2+1)=2p^2 (rejecting x=0). Sympy solve returns x = 2p^2/(p^2+1)."
+      "reasoning": "Rationalising gives (p+sqrt(p^2-x^2))/x = p, so sqrt(p^2-x^2)=p(x-1); squaring gives x(p^2+1)=2p^2 (rejecting x=0). Sympy solve returns x = 2p^2/(p^2+1).",
+      "solution": "Multiply numerator and denominator by \\(\\sqrt{p+x}+\\sqrt{p-x}\\): the top becomes \\(2p+2\\sqrt{p^{2}-x^{2}}\\) and the bottom \\(2x\\), so the condition reads \\(\\dfrac{p+\\sqrt{p^{2}-x^{2}}}{x}=p\\). Hence \\(\\sqrt{p^{2}-x^{2}}=p(x-1)\\), and squaring gives \\(x\\left(x(p^{2}+1)-2p^{2}\\right)=0\\). Rejecting the trivial \\(x=0\\) leaves \\(x=\\dfrac{2p^{2}}{p^{2}+1}\\)."
     },
     {
       "number": 25,
       "answer": "B",
       "value": "\\(1,\\ \\frac{2b}{a-b}\\)",
       "confidence": "HIGH",
-      "reasoning": "Multiplying by 2: (a-b)x^2-(a+b)x+2b=0. x=1 gives (a-b)-(a+b)+2b=0, so 1 is a root; the product of roots is 2b/(a-b). Sympy solve returns [1, 2b/(a-b)]."
+      "reasoning": "Multiplying by 2: (a-b)x^2-(a+b)x+2b=0. x=1 gives (a-b)-(a+b)+2b=0, so 1 is a root; the product of roots is 2b/(a-b). Sympy solve returns [1, 2b/(a-b)].",
+      "solution": "Multiplying through by 2 clears the fractions: \\((a-b)x^{2}-(a+b)x+2b=0\\). Substituting \\(x=1\\) gives \\((a-b)-(a+b)+2b=0\\), so 1 is a root. The product of the roots is \\(\\dfrac{2b}{a-b}\\), so the second root is \\(\\dfrac{2b}{a-b}\\)."
     },
     {
       "number": 26,
       "answer": "B",
       "value": "\\(4\\sqrt{2}\\)",
       "confidence": "HIGH",
-      "reasoning": "x^2-1/x^2=(x-1/x)(x+1/x). (x+1/x)^2=(x-1/x)^2+4=8, and x>0 gives x+1/x=2sqrt2, so the value is 2*2sqrt2=4sqrt2. Sympy on the positive root x=1+sqrt2 returns 4sqrt2."
+      "reasoning": "x^2-1/x^2=(x-1/x)(x+1/x). (x+1/x)^2=(x-1/x)^2+4=8, and x>0 gives x+1/x=2sqrt2, so the value is 2*2sqrt2=4sqrt2. Sympy on the positive root x=1+sqrt2 returns 4sqrt2.",
+      "solution": "Use the factorisation \\(x^{2}-\\dfrac{1}{x^{2}}=\\left(x-\\dfrac{1}{x}\\right)\\left(x+\\dfrac{1}{x}\\right)\\). From \\(\\left(x+\\dfrac{1}{x}\\right)^{2}=\\left(x-\\dfrac{1}{x}\\right)^{2}+4=8\\) and \\(x>0\\) we get \\(x+\\dfrac{1}{x}=2\\sqrt{2}\\). The value is therefore \\(2\\times 2\\sqrt{2}=4\\sqrt{2}\\)."
     },
     {
       "number": 27,
@@ -197,49 +215,56 @@
       "answer": "C",
       "value": "322",
       "confidence": "HIGH",
-      "reasoning": "q=1/p, so p/q+q/p = p^2+1/p^2 = p^2+q^2. Rationalising, p=9-4sqrt5 and q=9+4sqrt5, so p^2+q^2 = (161-72sqrt5)+(161+72sqrt5) = 322. Sympy simplify returns 322."
+      "reasoning": "q=1/p, so p/q+q/p = p^2+1/p^2 = p^2+q^2. Rationalising, p=9-4sqrt5 and q=9+4sqrt5, so p^2+q^2 = (161-72sqrt5)+(161+72sqrt5) = 322. Sympy simplify returns 322.",
+      "solution": "Rationalising gives \\(p=9-4\\sqrt{5}\\) and \\(q=9+4\\sqrt{5}\\), so \\(q=\\dfrac{1}{p}\\) and the expression \\(\\dfrac{p}{q}+\\dfrac{q}{p}\\) is simply \\(p^{2}+q^{2}\\). Since \\(p^{2}=161-72\\sqrt{5}\\) and \\(q^{2}=161+72\\sqrt{5}\\), the surds cancel and the sum is 322."
     },
     {
       "number": 29,
       "answer": "D",
       "value": "6",
       "confidence": "HIGH",
-      "reasoning": "25^10 = 95367431640625; the last three digits are 625, so the hundreds digit is 6 (5^k ends in 625 for every even k >= 4)."
+      "reasoning": "25^10 = 95367431640625; the last three digits are 625, so the hundreds digit is 6 (5^k ends in 625 for every even k >= 4).",
+      "solution": "Note that \\((25)^{10}=5^{20}\\), and the last three digits of powers of 5 settle into a pattern: \\(5^{4}=625\\), \\(5^{5}\\) ends in 125, \\(5^{6}\\) ends in 625, and every even power from the fourth onwards ends in 625. Since \\(5^{20}=95{,}367{,}431{,}640{,}625\\), the last three digits are 625 and the digit in the hundreds place is 6."
     },
     {
       "number": 30,
       "answer": "D",
       "value": "1011",
       "confidence": "HIGH",
-      "reasoning": "N = 252k+3 since lcm(4,6,7,9)=252. 252*3+3=759 is 3-digit; 252*4+3=1011. Brute-force search from 1000 returns 1011."
+      "reasoning": "N = 252k+3 since lcm(4,6,7,9)=252. 252*3+3=759 is 3-digit; 252*4+3=1011. Brute-force search from 1000 returns 1011.",
+      "solution": "A number leaving remainder 3 on division by 4, 6, 7 and 9 has the form \\(N=252k+3\\), because \\(\\operatorname{lcm}(4,6,7,9)=252\\). Taking \\(k=3\\) gives \\(759\\), which is still a three-digit number, while \\(k=4\\) gives \\(1011\\). That is the smallest four-digit number with the property."
     },
     {
       "number": 31,
       "answer": "D",
       "value": "\\(1/2\\)",
       "confidence": "HIGH",
-      "reasoning": "The nested radical L satisfies L^2 = 2+L, so L = 2 (the positive root; -1 is rejected). cosec(theta) = 2 gives sin(theta) = 1/2."
+      "reasoning": "The nested radical L satisfies L^2 = 2+L, so L = 2 (the positive root; -1 is rejected). cosec(theta) = 2 gives sin(theta) = 1/2.",
+      "solution": "Let \\(L\\) be the value of the infinite nested radical, so that \\(L=\\sqrt{2+L}\\). Then \\(L^{2}=L+2\\), giving \\(L=2\\) once the negative root is rejected. Hence \\(\\operatorname{cosec}\\theta=2\\) and \\(\\sin\\theta=\\dfrac{1}{2}\\)."
     },
     {
       "number": 32,
       "answer": "C",
       "value": "\\(5/3\\)",
       "confidence": "HIGH",
-      "reasoning": "cos = 8sin-4; substituting into sin^2+cos^2=1 gives 65s^2-64s+15=0 with roots s=3/5 and s=5/13. In the first quadrant cos>0 is required: s=5/13 gives cos=-12/13 and is rejected; s=3/5 gives cos=4/5. So cosec = 5/3 (numeric solve confirms theta=0.6435 rad, cosec=1.6667)."
+      "reasoning": "cos = 8sin-4; substituting into sin^2+cos^2=1 gives 65s^2-64s+15=0 with roots s=3/5 and s=5/13. In the first quadrant cos>0 is required: s=5/13 gives cos=-12/13 and is rejected; s=3/5 gives cos=4/5. So cosec = 5/3 (numeric solve confirms theta=0.6435 rad, cosec=1.6667).",
+      "solution": "Substituting \\(\\cos\\theta=8\\sin\\theta-4\\) into \\(\\sin^{2}\\theta+\\cos^{2}\\theta=1\\) gives \\(65\\sin^{2}\\theta-64\\sin\\theta+15=0\\), whose roots are \\(\\sin\\theta=\\dfrac{3}{5}\\) and \\(\\sin\\theta=\\dfrac{5}{13}\\). The second is rejected because it forces \\(\\cos\\theta=-\\dfrac{12}{13}\\), impossible for \\(0<\\theta<\\dfrac{\\pi}{2}\\); the first gives \\(\\cos\\theta=\\dfrac{4}{5}\\), which is admissible. Hence \\(\\operatorname{cosec}\\theta=\\dfrac{5}{3}\\)."
     },
     {
       "number": 33,
       "answer": "A",
       "value": "\\(\\sqrt{2}-1\\)",
       "confidence": "HIGH",
-      "reasoning": "sec^2 = 1+tan^2, so 2t = t^2-1, i.e. t^2-2t-1=0 and t = 1+sqrt2 (positive root, required for 0<theta<pi/2). cot = 1/(1+sqrt2) = sqrt2-1."
+      "reasoning": "sec^2 = 1+tan^2, so 2t = t^2-1, i.e. t^2-2t-1=0 and t = 1+sqrt2 (positive root, required for 0<theta<pi/2). cot = 1/(1+sqrt2) = sqrt2-1.",
+      "solution": "Replace \\(\\sec^{2}\\theta\\) by \\(1+\\tan^{2}\\theta\\); the equation becomes \\(2\\tan\\theta=\\tan^{2}\\theta-1\\), i.e. \\(t^{2}-2t-1=0\\) with \\(t=\\tan\\theta\\). Its roots are \\(t=1\\pm\\sqrt{2}\\), and \\(0<\\theta<\\dfrac{\\pi}{2}\\) forces the positive one, \\(t=1+\\sqrt{2}\\). Hence \\(\\cot\\theta=\\dfrac{1}{1+\\sqrt{2}}=\\sqrt{2}-1\\)."
     },
     {
       "number": 34,
       "answer": "A",
       "value": "0",
       "confidence": "HIGH",
-      "reasoning": "sqrt((1-sin)/(1+sin)) = (1-sin)/|cos| which equals (1-sin)/cos = sec-tan when cos>0, so the difference is 0. Checked numerically at 20, 40, 65 and 80 degrees (deliberately not at 45): residual ~1e-125 in all cases."
+      "reasoning": "sqrt((1-sin)/(1+sin)) = (1-sin)/|cos| which equals (1-sin)/cos = sec-tan when cos>0, so the difference is 0. Checked numerically at 20, 40, 65 and 80 degrees (deliberately not at 45): residual ~1e-125 in all cases.",
+      "solution": "Multiply inside the radical by \\(1-\\sin\\theta\\) top and bottom: \\(\\sqrt{\\dfrac{1-\\sin\\theta}{1+\\sin\\theta}}=\\sqrt{\\dfrac{(1-\\sin\\theta)^{2}}{\\cos^{2}\\theta}}=\\dfrac{1-\\sin\\theta}{\\lvert\\cos\\theta\\rvert}\\). Where \\(\\cos\\theta>0\\) this is exactly \\(\\dfrac{1-\\sin\\theta}{\\cos\\theta}=\\sec\\theta-\\tan\\theta\\), so the difference is 0. Strictly the identity needs \\(\\cos\\theta>0\\); the stem does not restrict \\(\\theta\\), but that is the intended range."
     },
     {
       "number": 35,
@@ -253,63 +278,72 @@
       "answer": "C",
       "value": "\\(52.5^\\circ\\)",
       "confidence": "HIGH",
-      "reasoning": "The two acute angles sum to 90 degrees and differ by pi/12 rad = 15 degrees, so they are 52.5 and 37.5 degrees. Only 52.5 is offered."
+      "reasoning": "The two acute angles sum to 90 degrees and differ by pi/12 rad = 15 degrees, so they are 52.5 and 37.5 degrees. Only 52.5 is offered.",
+      "solution": "The two acute angles of a right-angled triangle add to \\(90^\\circ\\), and \\(\\dfrac{\\pi}{12}\\) radian is \\(15^\\circ\\). Solving \\(x+y=90^\\circ\\) with \\(x-y=15^\\circ\\) gives the angles \\(52.5^\\circ\\) and \\(37.5^\\circ\\), and of these only \\(52.5^\\circ\\) appears among the choices."
     },
     {
       "number": 37,
       "answer": "C",
       "value": "36",
       "confidence": "HIGH",
-      "reasoning": "998 + sqrt(x^2-18x+76) = 10^3 gives sqrt(...) = 2, so x^2-18x+72=0 with roots 6 and 12. (alpha-beta)^2 = 324-288 = 36."
+      "reasoning": "998 + sqrt(x^2-18x+76) = 10^3 gives sqrt(...) = 2, so x^2-18x+72=0 with roots 6 and 12. (alpha-beta)^2 = 324-288 = 36.",
+      "solution": "The equation gives \\(998+\\sqrt{x^{2}-18x+76}=10^{3}\\), so the radical equals 2 and \\(x^{2}-18x+72=0\\). Its roots are 6 and 12, so \\((\\alpha-\\beta)^{2}=(\\alpha+\\beta)^{2}-4\\alpha\\beta=324-288=36\\)."
     },
     {
       "number": 38,
       "answer": "C",
       "value": "Both I and II",
       "confidence": "HIGH",
-      "reasoning": "(x^2+y^2)^2 = x^4+y^4+2x^2y^2 = 16x^2y^2 so x^2+y^2 = 4xy, giving log(x^2+y^2) = log x + log y + 2log 2 (I). (x^2-y^2)^2 = 12x^2y^2 so |x^2-y^2| = 2sqrt3 xy, giving log = log x + log y + log 2 + 0.5 log 3 (II). Verified numerically at x=1, y=sqrt(7+4sqrt3): both identities hold to 1e-15."
+      "reasoning": "(x^2+y^2)^2 = x^4+y^4+2x^2y^2 = 16x^2y^2 so x^2+y^2 = 4xy, giving log(x^2+y^2) = log x + log y + 2log 2 (I). (x^2-y^2)^2 = 12x^2y^2 so |x^2-y^2| = 2sqrt3 xy, giving log = log x + log y + log 2 + 0.5 log 3 (II). Verified numerically at x=1, y=sqrt(7+4sqrt3): both identities hold to 1e-15.",
+      "solution": "From \\(x^{4}+y^{4}=14x^{2}y^{2}\\) we get \\((x^{2}+y^{2})^{2}=x^{4}+y^{4}+2x^{2}y^{2}=16x^{2}y^{2}\\), so \\(x^{2}+y^{2}=4xy\\) and \\(\\log_{10}(x^{2}+y^{2})=\\log_{10}x+\\log_{10}y+2\\log_{10}2\\), which is the first statement. Similarly \\((x^{2}-y^{2})^{2}=x^{4}+y^{4}-2x^{2}y^{2}=12x^{2}y^{2}\\), so \\(\\lvert x^{2}-y^{2}\\rvert=2\\sqrt{3}\\,xy\\) and its logarithm is \\(\\log_{10}x+\\log_{10}y+\\log_{10}2+0.5\\log_{10}3\\), which is the second. Both statements are therefore correct."
     },
     {
       "number": 39,
       "answer": "C",
       "value": "Both I and II",
       "confidence": "HIGH",
-      "reasoning": "With A=3x+y and B=x+5y the expression is A^2+AB-20B^2=(A+5B)(A-4B) = 2(4x+13y) * -(x+19y). Sympy factor gives -2(x+19y)(4x+13y), so both listed binomials are factors."
+      "reasoning": "With A=3x+y and B=x+5y the expression is A^2+AB-20B^2=(A+5B)(A-4B) = 2(4x+13y) * -(x+19y). Sympy factor gives -2(x+19y)(4x+13y), so both listed binomials are factors.",
+      "solution": "Put \\(A=3x+y\\) and \\(B=x+5y\\); the expression becomes \\(A^{2}+AB-20B^{2}=(A+5B)(A-4B)\\). Substituting back, \\(A+5B=8x+26y=2(4x+13y)\\) and \\(A-4B=-(x+19y)\\), so the expression equals \\(-2(4x+13y)(x+19y)\\). Both listed binomials are therefore factors."
     },
     {
       "number": 40,
       "answer": "B",
       "value": "\\(1/2\\)",
       "confidence": "HIGH",
-      "reasoning": "Each denominator term satisfies (x+y)/(x-y) = 2x/(x-y) - 1, so the denominator equals 2N - 3 + 3 = 2N where N is the numerator. The ratio is 1/2; sympy simplify confirms."
+      "reasoning": "Each denominator term satisfies (x+y)/(x-y) = 2x/(x-y) - 1, so the denominator equals 2N - 3 + 3 = 2N where N is the numerator. The ratio is 1/2; sympy simplify confirms.",
+      "solution": "Each denominator term can be rewritten as \\(\\dfrac{x+y}{x-y}=\\dfrac{2x}{x-y}-1\\), and likewise for the other two. The denominator is therefore \\(2N-3+3=2N\\), where \\(N\\) is the numerator. The required ratio is \\(\\dfrac{N}{2N}=\\dfrac{1}{2}\\)."
     },
     {
       "number": 41,
       "answer": "C",
       "value": "\\(\\dfrac{(m-q)(n-q)}{(m-p)(n-p)}\\)",
       "confidence": "HIGH",
-      "reasoning": "From m = p sin^2 a + q cos^2 a: sin^2 a = (m-q)/(p-q), cos^2 a = (p-m)/(p-q), so tan^2 a = (m-q)/(p-m). From n = q sin^2 b + p cos^2 b: tan^2 b = (p-n)/(n-q). The ratio is (m-q)(n-q)/[(m-p)(n-p)]; sympy gives ratio - optionC = 0 exactly, and numeric checks at three (alpha,beta) pairs match C and not D."
+      "reasoning": "From m = p sin^2 a + q cos^2 a: sin^2 a = (m-q)/(p-q), cos^2 a = (p-m)/(p-q), so tan^2 a = (m-q)/(p-m). From n = q sin^2 b + p cos^2 b: tan^2 b = (p-n)/(n-q). The ratio is (m-q)(n-q)/[(m-p)(n-p)]; sympy gives ratio - optionC = 0 exactly, and numeric checks at three (alpha,beta) pairs match C and not D.",
+      "solution": "From \\(p\\sin^{2}\\alpha+q\\cos^{2}\\alpha=m\\) we get \\(\\sin^{2}\\alpha=\\dfrac{m-q}{p-q}\\) and \\(\\cos^{2}\\alpha=\\dfrac{p-m}{p-q}\\), so \\(\\tan^{2}\\alpha=\\dfrac{m-q}{p-m}\\). The same working on \\(q\\sin^{2}\\beta+p\\cos^{2}\\beta=n\\) gives \\(\\tan^{2}\\beta=\\dfrac{p-n}{n-q}\\). Dividing, \\(\\left(\\dfrac{\\tan\\alpha}{\\tan\\beta}\\right)^{2}=\\dfrac{(m-q)(n-q)}{(p-m)(p-n)}\\), and since reversing the sign of both brackets in the denominator leaves the product unchanged this equals \\(\\dfrac{(m-q)(n-q)}{(m-p)(n-p)}\\)."
     },
     {
       "number": 42,
       "answer": "D",
       "value": "\\(m-n=0\\)",
       "confidence": "HIGH",
-      "reasoning": "If beta = 90 - alpha then sin^2 b = cos^2 a and cos^2 b = sin^2 a, so n = q cos^2 a + p sin^2 a = m. Hence m - n = 0. Numeric check at alpha = 0.3, 0.8, 1.2 rad gives m-n ~ 1e-16 while mn-1 and m+n are far from zero."
+      "reasoning": "If beta = 90 - alpha then sin^2 b = cos^2 a and cos^2 b = sin^2 a, so n = q cos^2 a + p sin^2 a = m. Hence m - n = 0. Numeric check at alpha = 0.3, 0.8, 1.2 rad gives m-n ~ 1e-16 while mn-1 and m+n are far from zero.",
+      "solution": "Complementary angles mean \\(\\beta=90^\\circ-\\alpha\\), so \\(\\sin^{2}\\beta=\\cos^{2}\\alpha\\) and \\(\\cos^{2}\\beta=\\sin^{2}\\alpha\\). Substituting into the second relation, \\(n=q\\cos^{2}\\alpha+p\\sin^{2}\\alpha\\), which is precisely \\(m\\). Hence \\(m-n=0\\)."
     },
     {
       "number": 43,
       "answer": "C",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "p = cosec - sin = cos^2/sin and q = sec - cos = sin^2/cos, so p sin + q cos = cos^2 + sin^2 = 1. Sympy simplify returns 1; numeric checks at 17, 33, 58, 71 degrees all give 1.000000000000."
+      "reasoning": "p = cosec - sin = cos^2/sin and q = sec - cos = sin^2/cos, so p sin + q cos = cos^2 + sin^2 = 1. Sympy simplify returns 1; numeric checks at 17, 33, 58, 71 degrees all give 1.000000000000.",
+      "solution": "Simplify each quantity: \\(p=\\operatorname{cosec}\\theta-\\sin\\theta=\\dfrac{1-\\sin^{2}\\theta}{\\sin\\theta}=\\dfrac{\\cos^{2}\\theta}{\\sin\\theta}\\), and in the same way \\(q=\\sec\\theta-\\cos\\theta=\\dfrac{\\sin^{2}\\theta}{\\cos\\theta}\\). Therefore \\(p\\sin\\theta+q\\cos\\theta=\\cos^{2}\\theta+\\sin^{2}\\theta=1\\)."
     },
     {
       "number": 44,
       "answer": "B",
       "value": "1",
       "confidence": "HIGH",
-      "reasoning": "p^2q^2 = sin^2 cos^2 and the identity p^2q^2(p^2+q^2+3) = 1 holds. Sympy simplify returns 1 symbolically; numeric checks at 17, 33, 58 and 71 degrees (deliberately not 45) all give 1.000000000000."
+      "reasoning": "p^2q^2 = sin^2 cos^2 and the identity p^2q^2(p^2+q^2+3) = 1 holds. Sympy simplify returns 1 symbolically; numeric checks at 17, 33, 58 and 71 degrees (deliberately not 45) all give 1.000000000000.",
+      "solution": "With \\(p=\\dfrac{\\cos^{2}\\theta}{\\sin\\theta}\\) and \\(q=\\dfrac{\\sin^{2}\\theta}{\\cos\\theta}\\), write \\(k=\\sin^{2}\\theta\\cos^{2}\\theta\\); then \\(p^{2}q^{2}=k\\). Also \\(p^{2}+q^{2}=\\dfrac{\\cos^{6}\\theta+\\sin^{6}\\theta}{k}=\\dfrac{1-3k}{k}\\), using the identity \\(\\sin^{6}\\theta+\\cos^{6}\\theta=1-3\\sin^{2}\\theta\\cos^{2}\\theta\\). Hence \\(p^{2}q^{2}\\left(p^{2}+q^{2}+3\\right)=k\\left(\\dfrac{1-3k}{k}+3\\right)=1\\)."
     },
     {
       "number": 45,
@@ -323,28 +357,32 @@
       "answer": "C",
       "value": "\\(1/3\\)",
       "confidence": "HIGH",
-      "reasoning": "From the same system sin^2 beta = 1/4 and cos^2 beta = 3/4, so tan^2 beta = 1/3 (exact)."
+      "reasoning": "From the same system sin^2 beta = 1/4 and cos^2 beta = 3/4, so tan^2 beta = 1/3 (exact).",
+      "solution": "Squaring both given ratios and substituting into \\(\\sin^{2}\\alpha+\\cos^{2}\\alpha=1\\) gives \\(\\dfrac{32}{9}\\sin^{2}\\beta+\\dfrac{4}{27}\\cos^{2}\\beta=1\\). Replacing \\(\\cos^{2}\\beta\\) by \\(1-\\sin^{2}\\beta\\) reduces this to \\(\\sin^{2}\\beta=\\dfrac{1}{4}\\). Then \\(\\cos^{2}\\beta=\\dfrac{3}{4}\\), so \\(\\tan^{2}\\beta=\\dfrac{1}{3}\\)."
     },
     {
       "number": 47,
       "answer": "B",
       "value": "\\(\\sqrt{p^2+1}\\)",
       "confidence": "HIGH",
-      "reasoning": "(1+sin)/cos = sec + tan = p + sqrt(p^2+1), and sec - tan is its reciprocal = sqrt(p^2+1) - p. Adding gives 2 sec = 2 sqrt(p^2+1), so sec = sqrt(p^2+1). Numeric check at 12, 35, 58, 77 degrees: sec matches sqrt(p^2+1) to 8 decimals."
+      "reasoning": "(1+sin)/cos = sec + tan = p + sqrt(p^2+1), and sec - tan is its reciprocal = sqrt(p^2+1) - p. Adding gives 2 sec = 2 sqrt(p^2+1), so sec = sqrt(p^2+1). Numeric check at 12, 35, 58, 77 degrees: sec matches sqrt(p^2+1) to 8 decimals.",
+      "solution": "Note first that \\(\\dfrac{1+\\sin\\theta}{\\cos\\theta}=\\sec\\theta+\\tan\\theta\\), so \\(\\sec\\theta+\\tan\\theta=p+\\sqrt{p^{2}+1}\\). Because \\((\\sec\\theta+\\tan\\theta)(\\sec\\theta-\\tan\\theta)=1\\), the other combination is its reciprocal, \\(\\sec\\theta-\\tan\\theta=\\sqrt{p^{2}+1}-p\\). Adding the two relations gives \\(2\\sec\\theta=2\\sqrt{p^{2}+1}\\), so \\(\\sec\\theta=\\sqrt{p^{2}+1}\\)."
     },
     {
       "number": 48,
       "answer": "A",
       "value": "\\(p\\)",
       "confidence": "HIGH",
-      "reasoning": "Subtracting sec - tan = sqrt(p^2+1) - p from sec + tan = p + sqrt(p^2+1) gives 2 tan = 2p, so tan = p. Numeric check at 12, 35, 58, 77 degrees: tan equals the recovered p to 8 decimals."
+      "reasoning": "Subtracting sec - tan = sqrt(p^2+1) - p from sec + tan = p + sqrt(p^2+1) gives 2 tan = 2p, so tan = p. Numeric check at 12, 35, 58, 77 degrees: tan equals the recovered p to 8 decimals.",
+      "solution": "As before, \\(\\dfrac{1+\\sin\\theta}{\\cos\\theta}=\\sec\\theta+\\tan\\theta=p+\\sqrt{p^{2}+1}\\), and taking reciprocals in \\((\\sec\\theta+\\tan\\theta)(\\sec\\theta-\\tan\\theta)=1\\) gives \\(\\sec\\theta-\\tan\\theta=\\sqrt{p^{2}+1}-p\\). Subtracting the second relation from the first leaves \\(2\\tan\\theta=2p\\), so \\(\\tan\\theta=p\\)."
     },
     {
       "number": 49,
       "answer": "B",
       "value": "\\(2p=q(p^2-1)\\)",
       "confidence": "HIGH",
-      "reasoning": "q = (sin+cos)/(sin cos) = p/(sin cos) and sin cos = (p^2-1)/2, so q = 2p/(p^2-1), i.e. 2p = q(p^2-1). Sympy: 2p - q(p^2-1) simplifies to 0 identically, while p - q(p^2-1) does not."
+      "reasoning": "q = (sin+cos)/(sin cos) = p/(sin cos) and sin cos = (p^2-1)/2, so q = 2p/(p^2-1), i.e. 2p = q(p^2-1). Sympy: 2p - q(p^2-1) simplifies to 0 identically, while p - q(p^2-1) does not.",
+      "solution": "Combine the two terms of \\(q\\): \\(q=\\dfrac{1}{\\cos\\theta}+\\dfrac{1}{\\sin\\theta}=\\dfrac{\\sin\\theta+\\cos\\theta}{\\sin\\theta\\cos\\theta}=\\dfrac{p}{\\sin\\theta\\cos\\theta}\\). Squaring the first relation gives \\(p^{2}=1+2\\sin\\theta\\cos\\theta\\), so \\(\\sin\\theta\\cos\\theta=\\dfrac{p^{2}-1}{2}\\). Substituting, \\(q=\\dfrac{2p}{p^{2}-1}\\), which rearranges to \\(2p=q\\left(p^{2}-1\\right)\\)."
     },
     {
       "number": 50,
@@ -400,7 +438,8 @@
       "answer": "A",
       "value": "\\(8/3\\)",
       "confidence": "HIGH",
-      "reasoning": "Sum = 5p/2, product = p^2, so (alpha-beta)^2 = 25p^2/4 - 4p^2 = 9p^2/4 = 16 and p = +/- 8/3. Only 8/3 is offered; at p=8/3 the roots are 4/3 and 16/3, differing by exactly 4."
+      "reasoning": "Sum = 5p/2, product = p^2, so (alpha-beta)^2 = 25p^2/4 - 4p^2 = 9p^2/4 = 16 and p = +/- 8/3. Only 8/3 is offered; at p=8/3 the roots are 4/3 and 16/3, differing by exactly 4.",
+      "solution": "For \\(2x^{2}-5px+2p^{2}=0\\) the sum of the roots is \\(\\dfrac{5p}{2}\\) and the product is \\(p^{2}\\), so \\((\\alpha-\\beta)^{2}=\\dfrac{25p^{2}}{4}-4p^{2}=\\dfrac{9p^{2}}{4}\\). A difference of 4 means \\(\\dfrac{9p^{2}}{4}=16\\), giving \\(p=\\pm\\dfrac{8}{3}\\); at \\(p=\\dfrac{8}{3}\\) the roots are \\(\\dfrac{4}{3}\\) and \\(\\dfrac{16}{3}\\), which differ by exactly 4. Both signs satisfy the condition, but only \\(\\dfrac{8}{3}\\) is offered among the choices."
     },
     {
       "number": 58,
@@ -414,7 +453,8 @@
       "answer": "A",
       "value": "\\(4 < x < 6\\)",
       "confidence": "HIGH",
-      "reasoning": "5x+3 < 8x-9 gives x > 4; 2x+20 > 5x+2 gives x < 6. Sympy returns (4 < x) & (x < 6)."
+      "reasoning": "5x+3 < 8x-9 gives x > 4; 2x+20 > 5x+2 gives x < 6. Sympy returns (4 < x) & (x < 6).",
+      "solution": "The first inequality \\(5x+3<8x-9\\) gives \\(3x>12\\), i.e. \\(x>4\\). The second, \\(2x+20>5x+2\\), gives \\(3x<18\\), i.e. \\(x<6\\). Both must hold at once, so the solution is \\(4<x<6\\)."
     },
     {
       "number": 60,
@@ -470,14 +510,16 @@
       "answer": "D",
       "value": "150 square units",
       "confidence": "HIGH",
-      "reasoning": "AB+BC = AC+10 and AB+BC+AC = 60 give AC = 25 and AB+BC = 35. Then 35^2 = AB^2+BC^2 + 2 AB.BC = 625 + 2 AB.BC, so AB.BC = 300 and the area is 150 square units."
+      "reasoning": "AB+BC = AC+10 and AB+BC+AC = 60 give AC = 25 and AB+BC = 35. Then 35^2 = AB^2+BC^2 + 2 AB.BC = 625 + 2 AB.BC, so AB.BC = 300 and the area is 150 square units.",
+      "solution": "The two conditions \\(AB+BC=AC+10\\) and \\(AB+BC+AC=60\\) give \\(2\\,AC+10=60\\), so \\(AC=25\\) and \\(AB+BC=35\\). Squaring the second and using the right angle at \\(B\\), \\(35^{2}=AB^{2}+BC^{2}+2\\,AB\\cdot BC=625+2\\,AB\\cdot BC\\), so \\(AB\\cdot BC=300\\). The area is \\(\\dfrac{1}{2}AB\\cdot BC=150\\) square units."
     },
     {
       "number": 68,
       "answer": "B",
       "value": "26 m",
       "confidence": "HIGH",
-      "reasoning": "The tips differ horizontally by 24 m and vertically by 10 m, so the distance is sqrt(24^2+10^2) = 26 m. Only the height difference is needed, not the individual heights, so 'insufficient data' is wrong."
+      "reasoning": "The tips differ horizontally by 24 m and vertically by 10 m, so the distance is sqrt(24^2+10^2) = 26 m. Only the height difference is needed, not the individual heights, so 'insufficient data' is wrong.",
+      "solution": "The tips of the two poles differ by 24 m horizontally and by 10 m vertically, so the distance between them is \\(\\sqrt{24^{2}+10^{2}}=\\sqrt{676}=26\\) m. Only the difference in heights is needed, not the two heights separately, so the data given is sufficient."
     },
     {
       "number": 69,
@@ -505,77 +547,88 @@
       "answer": "C",
       "value": "\\(\\sqrt{3}p/2\\)",
       "confidence": "HIGH",
-      "reasoning": "AC = sqrt(p^2 + 3p^2) = 2p, and the altitude to the hypotenuse is AB.BC/AC = p(sqrt3 p)/(2p) = sqrt3 p/2."
+      "reasoning": "AC = sqrt(p^2 + 3p^2) = 2p, and the altitude to the hypotenuse is AB.BC/AC = p(sqrt3 p)/(2p) = sqrt3 p/2.",
+      "solution": "The hypotenuse is \\(AC=\\sqrt{p^{2}+3p^{2}}=2p\\). The altitude from the right angle to the hypotenuse satisfies \\(BD=\\dfrac{AB\\cdot BC}{AC}\\), so \\(BD=\\dfrac{p\\cdot\\sqrt{3}\\,p}{2p}=\\dfrac{\\sqrt{3}\\,p}{2}\\)."
     },
     {
       "number": 73,
       "answer": "D",
       "value": "12",
       "confidence": "HIGH",
-      "reasoning": "Interior + exterior = 180 and interior - exterior = 120 give exterior = 30, so n = 360/30 = 12. Sympy solve of 180 - 720/n = 120 returns n = 12."
+      "reasoning": "Interior + exterior = 180 and interior - exterior = 120 give exterior = 30, so n = 360/30 = 12. Sympy solve of 180 - 720/n = 120 returns n = 12.",
+      "solution": "An interior angle and its exterior angle add to \\(180^\\circ\\), and here they differ by \\(120^\\circ\\), so the exterior angle is \\(30^\\circ\\). For a regular polygon each exterior angle is \\(\\dfrac{360^\\circ}{n}\\), so \\(n=\\dfrac{360}{30}=12\\)."
     },
     {
       "number": 74,
       "answer": "C",
       "value": "\\(18^\\circ\\)",
       "confidence": "HIGH",
-      "reasoning": "theta = (90 - theta)/4 gives 5 theta = 90, so theta = 18 degrees."
+      "reasoning": "theta = (90 - theta)/4 gives 5 theta = 90, so theta = 18 degrees.",
+      "solution": "The complement of \\(\\theta\\) is \\(90^\\circ-\\theta\\), so the condition reads \\(\\theta=\\dfrac{90^\\circ-\\theta}{4}\\). Hence \\(4\\theta=90^\\circ-\\theta\\), giving \\(5\\theta=90^\\circ\\) and \\(\\theta=18^\\circ\\)."
     },
     {
       "number": 75,
       "answer": "C",
       "value": "\\(82.5\\ \\text{cm}^2\\)",
       "confidence": "HIGH",
-      "reasoning": "11^2 + 60^2 = 3721 = 61^2, so the triangle is right-angled with area (1/2)(11)(60) = 330 cm^2. The medial triangle has one quarter of that area: 82.5 cm^2."
+      "reasoning": "11^2 + 60^2 = 3721 = 61^2, so the triangle is right-angled with area (1/2)(11)(60) = 330 cm^2. The medial triangle has one quarter of that area: 82.5 cm^2.",
+      "solution": "Since \\(11^{2}+60^{2}=3721=61^{2}\\), the triangle is right angled and its area is \\(\\dfrac{1}{2}\\times 11\\times 60=330\\) cm\\(^{2}\\). The triangle formed by joining the mid-points is similar to it with each side halved, so its area is one quarter of 330, namely \\(82.5\\) cm\\(^{2}\\)."
     },
     {
       "number": 76,
       "answer": "C",
       "value": "105 cm",
       "confidence": "HIGH",
-      "reasoning": "Arc = r x theta with theta = 30 degrees = (22/7)/6 rad, so 55 = 11r/21 and r = 105 cm."
+      "reasoning": "Arc = r x theta with theta = 30 degrees = (22/7)/6 rad, so 55 = 11r/21 and r = 105 cm.",
+      "solution": "An arc subtending an angle \\(\\theta\\) at the centre of a circle of radius \\(r\\) has length \\(r\\theta\\), with \\(\\theta\\) in radians. Here \\(\\theta=30^\\circ=\\dfrac{\\pi}{6}=\\dfrac{11}{21}\\) radian on taking \\(\\pi=\\dfrac{22}{7}\\). So \\(55=\\dfrac{11r}{21}\\), giving \\(r=105\\) cm as the length of the pendulum."
     },
     {
       "number": 77,
       "answer": "A",
       "value": "\\(\\frac{250\\sqrt{2}}{\\sqrt{3\\pi}}\\) m\\(^3\\)",
       "confidence": "HIGH",
-      "reasoning": "Vertex angle 60 degrees means semi-vertical angle 30 degrees, so r = l/2. Then pi r l = 2 pi r^2 = 100 gives r = 5sqrt2/sqrt(pi), l = 10sqrt2/sqrt(pi) and h = r sqrt3. Volume = (1/3) pi r^3 sqrt3 = 250 sqrt6/(3 sqrt(pi)) = 115.1647 m^3, and sympy confirms this equals option A exactly (A numerically 115.1647; B 488.6, C 691.0, D 977.2)."
+      "reasoning": "Vertex angle 60 degrees means semi-vertical angle 30 degrees, so r = l/2. Then pi r l = 2 pi r^2 = 100 gives r = 5sqrt2/sqrt(pi), l = 10sqrt2/sqrt(pi) and h = r sqrt3. Volume = (1/3) pi r^3 sqrt3 = 250 sqrt6/(3 sqrt(pi)) = 115.1647 m^3, and sympy confirms this equals option A exactly (A numerically 115.1647; B 488.6, C 691.0, D 977.2).",
+      "solution": "A vertex angle of \\(60^\\circ\\) means a semi-vertical angle of \\(30^\\circ\\), so \\(r=\\dfrac{l}{2}\\); the curved surface area \\(\\pi r l=2\\pi r^{2}=100\\) then gives \\(r=\\dfrac{5\\sqrt{2}}{\\sqrt{\\pi}}\\). The height is \\(h=\\sqrt{l^{2}-r^{2}}=r\\sqrt{3}\\), so the volume is \\(\\dfrac{1}{3}\\pi r^{2}h=\\dfrac{\\sqrt{3}}{3}\\pi r^{3}=\\dfrac{250\\sqrt{6}}{3\\sqrt{\\pi}}\\approx 115.16\\) m\\(^{3}\\). Rationalising, that is exactly \\(\\dfrac{250\\sqrt{2}}{\\sqrt{3\\pi}}\\)."
     },
     {
       "number": 78,
       "answer": "C",
       "value": "\\(2 : 1\\)",
       "confidence": "HIGH",
-      "reasoning": "(1/3) pi r^2 h = (2/3) pi r^3 gives h = 2r, so the height of the cone to the radius of the hemisphere is 2 : 1."
+      "reasoning": "(1/3) pi r^2 h = (2/3) pi r^3 gives h = 2r, so the height of the cone to the radius of the hemisphere is 2 : 1.",
+      "solution": "Equal bases means the cone and the hemisphere share the same radius \\(r\\). Equating the volumes, \\(\\dfrac{1}{3}\\pi r^{2}h=\\dfrac{2}{3}\\pi r^{3}\\), so \\(h=2r\\). The height of the cone to the radius of the hemisphere is therefore \\(2:1\\)."
     },
     {
       "number": 79,
       "answer": "D",
       "value": "None of the above; the radius is \\(36/(\\pi+2)\\approx 7.00\\) cm (or \\(36/\\pi\\approx 11.46\\) cm if only the arc is formed)",
       "confidence": "HIGH",
-      "reasoning": "(sqrt3/4)a^2 = 36 sqrt3 gives a = 12 and wire length = perimeter = 36 cm. A semicircle of perimeter pi r + 2r = 36 gives r = 36/(pi+2) = 7.0017; even taking the arc alone, pi r = 36 gives r = 36/pi = 11.459. The printed options are 9/pi = 2.865, 18/(pi+2) = 3.501 and 18/pi = 5.730; options B and C are each exactly half of my two candidate radii (i.e. what an 18 cm wire would give), so no computed radius matches A, B or C and 'None of the above' is correct."
+      "reasoning": "(sqrt3/4)a^2 = 36 sqrt3 gives a = 12 and wire length = perimeter = 36 cm. A semicircle of perimeter pi r + 2r = 36 gives r = 36/(pi+2) = 7.0017; even taking the arc alone, pi r = 36 gives r = 36/pi = 11.459. The printed options are 9/pi = 2.865, 18/(pi+2) = 3.501 and 18/pi = 5.730; options B and C are each exactly half of my two candidate radii (i.e. what an 18 cm wire would give), so no computed radius matches A, B or C and 'None of the above' is correct.",
+      "solution": "From \\(\\dfrac{\\sqrt{3}}{4}a^{2}=36\\sqrt{3}\\) the side is \\(a=12\\) cm, so the wire is \\(36\\) cm long. Bent into a semicircle whose boundary includes the diameter, \\(\\pi r+2r=36\\) gives \\(r=\\dfrac{36}{\\pi+2}\\approx 7.00\\) cm; even taking the curved part alone, \\(\\pi r=36\\) gives \\(r=\\dfrac{36}{\\pi}\\approx 11.46\\) cm. The three printed radii work out to about \\(2.87\\), \\(3.50\\) and \\(5.73\\) cm; none of them matches, and two are exactly what an \\(18\\) cm wire would give rather than a \\(36\\) cm one. So no printed radius is correct and 'None of the above' is the right response."
     },
     {
       "number": 80,
       "answer": "D",
       "value": "\\(\\pi x = 8y\\)",
       "confidence": "HIGH",
-      "reasoning": "Square in a unit circle: diagonal 2, side sqrt2, area x = 2. Circle in a unit square: radius 1/2, area y = pi/4. Then pi x = 2pi and 8y = 2pi, so pi x = 8y; the other three options fail (checked symbolically)."
+      "reasoning": "Square in a unit circle: diagonal 2, side sqrt2, area x = 2. Circle in a unit square: radius 1/2, area y = pi/4. Then pi x = 2pi and 8y = 2pi, so pi x = 8y; the other three options fail (checked symbolically).",
+      "solution": "The largest square in a circle of unit radius has diagonal 2, hence side \\(\\sqrt{2}\\) and area \\(x=2\\). The largest circle in a square of unit side has radius \\(\\dfrac{1}{2}\\) and area \\(y=\\dfrac{\\pi}{4}\\). Then \\(\\pi x=2\\pi\\) and \\(8y=2\\pi\\), so the relation is \\(\\pi x=8y\\)."
     },
     {
       "number": 81,
       "answer": "D",
       "value": "Remainder is 1 for every n, so no Statement is needed",
       "confidence": "HIGH",
-      "reasoning": "x^(2n) - y^(2n) = (x^n - y^n)(x^n + y^n) is exactly divisible by x^n + y^n, so the remainder is 1 whatever the parity of n. Sympy polynomial division for n=1..6 returns remainder 1 every time, so the parity Statements are irrelevant and the question is answerable without either."
+      "reasoning": "x^(2n) - y^(2n) = (x^n - y^n)(x^n + y^n) is exactly divisible by x^n + y^n, so the remainder is 1 whatever the parity of n. Sympy polynomial division for n=1..6 returns remainder 1 every time, so the parity Statements are irrelevant and the question is answerable without either.",
+      "solution": "Since \\(x^{2n}-y^{2n}=(x^{n}-y^{n})(x^{n}+y^{n})\\), that part divides exactly by \\(x^{n}+y^{n}\\) and only the \\(+1\\) is left over. The remainder is therefore 1 for every natural \\(n\\), whatever its parity, so the question can be answered without either Statement."
     },
     {
       "number": 82,
       "answer": "A",
       "value": "Statement II alone fixes N = 21; Statement I alone does not",
       "confidence": "HIGH",
-      "reasoning": "Exhaustive search up to 10^5 gives exactly two numbers with N x reverse(N) = 252: N=12 (M=21) and N=21 (M=12), so the question alone is undetermined. Statement I (N+M=33) holds for BOTH, so it does not resolve. Statement II (N>M) forces N=21 uniquely. Hence one Statement alone answers it and the other does not."
+      "reasoning": "Exhaustive search up to 10^5 gives exactly two numbers with N x reverse(N) = 252: N=12 (M=21) and N=21 (M=12), so the question alone is undetermined. Statement I (N+M=33) holds for BOTH, so it does not resolve. Statement II (N>M) forces N=21 uniquely. Hence one Statement alone answers it and the other does not.",
+      "solution": "Only two natural numbers satisfy \\(N\\times M=252\\) with \\(M\\) the digit-reversal of \\(N\\): \\(N=12\\) with \\(M=21\\), and \\(N=21\\) with \\(M=12\\). So the question on its own is undetermined. Statement I, that \\(N+M=33\\), is true of both possibilities and settles nothing; Statement II, that \\(N>M\\), forces \\(N=21\\) by itself. One Statement alone therefore answers the question while the other does not."
     },
     {
       "number": 83,
@@ -603,7 +656,8 @@
       "answer": "B",
       "value": "Either Statement alone gives perimeter 18 units",
       "confidence": "HIGH",
-      "reasoning": "Area = ab sin60 = 7sqrt3 gives ab = 14; with real sides the perimeter is not determined (e.g. sqrt14 x sqrt14 gives 4sqrt14). Statement I (both sides prime) forces {2,7}; Statement II (both natural and >1) also forces {2,7} since 14 = 1x14 is excluded. Each alone gives perimeter 2(2+7) = 18, so either Statement suffices."
+      "reasoning": "Area = ab sin60 = 7sqrt3 gives ab = 14; with real sides the perimeter is not determined (e.g. sqrt14 x sqrt14 gives 4sqrt14). Statement I (both sides prime) forces {2,7}; Statement II (both natural and >1) also forces {2,7} since 14 = 1x14 is excluded. Each alone gives perimeter 2(2+7) = 18, so either Statement suffices.",
+      "solution": "The area of the parallelogram is \\(ab\\sin 60^\\circ=\\dfrac{\\sqrt{3}}{2}ab=7\\sqrt{3}\\), so \\(ab=14\\); with no further restriction the sides could be \\(\\sqrt{14}\\) each and the perimeter is not fixed. Statement I makes both sides prime, forcing \\(\\{a,b\\}=\\{2,7\\}\\); Statement II makes them natural numbers each above 1, which rules out \\(1\\times 14\\) and again forces \\(\\{2,7\\}\\). Each Statement on its own therefore gives the perimeter \\(2(2+7)=18\\) units, so either one suffices."
     },
     {
       "number": 87,
@@ -624,14 +678,16 @@
       "answer": "A",
       "value": "Statement II alone gives BC = 12 units; Statement I alone does not",
       "confidence": "HIGH",
-      "reasoning": "With half-base t, t sqrt(100-t^2) = 48 gives t = 6 or 8, i.e. BC = 12 (height 8) or BC = 16 (height 6); the question alone is undetermined. Statement I (BC even) is satisfied by both 12 and 16, so it fails. Statement II (height > half-base) holds only for t=6 (8>6) and fails for t=8 (6<8), fixing BC = 12. So exactly one Statement alone answers it."
+      "reasoning": "With half-base t, t sqrt(100-t^2) = 48 gives t = 6 or 8, i.e. BC = 12 (height 8) or BC = 16 (height 6); the question alone is undetermined. Statement I (BC even) is satisfied by both 12 and 16, so it fails. Statement II (height > half-base) holds only for t=6 (8>6) and fails for t=8 (6<8), fixing BC = 12. So exactly one Statement alone answers it.",
+      "solution": "Writing the half-base as \\(t\\), the height is \\(\\sqrt{100-t^{2}}\\) and the area condition \\(t\\sqrt{100-t^{2}}=48\\) gives \\(t=6\\) or \\(t=8\\) — that is, \\(BC=12\\) with height 8, or \\(BC=16\\) with height 6. Statement I, that \\(BC\\) is even, is satisfied by both and so decides nothing. Statement II, that the height exceeds half the base, holds only for \\(t=6\\) and fixes \\(BC=12\\). Exactly one of the Statements answers the question on its own."
     },
     {
       "number": 90,
       "answer": "D",
       "value": "No - the side is 13k/2 while the diagonals are 5k and 12k, so no Statement is needed",
       "confidence": "HIGH",
-      "reasoning": "With diagonals 5k and 12k the side is sqrt((5k/2)^2+(6k)^2) = 6.5k, which equals neither 5k nor 12k for any k>0. The yes/no question therefore has the definite answer 'No' from the ratio alone. (Both Statements merely fix k=2, giving diagonals 10 and 24 and side 13 - consistent with each other and with the answer 'No'.)"
+      "reasoning": "With diagonals 5k and 12k the side is sqrt((5k/2)^2+(6k)^2) = 6.5k, which equals neither 5k nor 12k for any k>0. The yes/no question therefore has the definite answer 'No' from the ratio alone. (Both Statements merely fix k=2, giving diagonals 10 and 24 and side 13 - consistent with each other and with the answer 'No'.)",
+      "solution": "If the diagonals are \\(5k\\) and \\(12k\\), the half-diagonals are \\(\\dfrac{5k}{2}\\) and \\(6k\\), so each side of the rhombus is \\(\\sqrt{\\left(\\dfrac{5k}{2}\\right)^{2}+(6k)^{2}}=6.5k\\). That is neither \\(5k\\) nor \\(12k\\) for any \\(k>0\\), so the answer to the yes-or-no question is 'No' from the ratio alone and neither Statement is needed. Both Statements merely fix \\(k=2\\), giving diagonals of 10 cm and 24 cm with side 13 cm, which is consistent with that answer."
     },
     {
       "number": 91,
@@ -673,21 +729,24 @@
       "answer": "B",
       "value": "Median",
       "confidence": "MED",
-      "reasoning": "A positional average is one located by its rank in the ordered array rather than computed from every value; the median is defined exactly that way (the (N+1)/2-th item), whereas the arithmetic and geometric means are mathematical averages using all magnitudes. RUNNER-UP C (Mode): many textbooks classify Median AND Mode together as 'averages of position', so if the setter is following that classification the item has two correct options and C is equally defensible. C wins if the intended contrast is simply mathematical-vs-non-mathematical averages; B wins on the stricter reading that only the median is fixed by position (the mode is fixed by frequency). Flagged as arguably defective."
+      "reasoning": "A positional average is one located by its rank in the ordered array rather than computed from every value; the median is defined exactly that way (the (N+1)/2-th item), whereas the arithmetic and geometric means are mathematical averages using all magnitudes. RUNNER-UP C (Mode): many textbooks classify Median AND Mode together as 'averages of position', so if the setter is following that classification the item has two correct options and C is equally defensible. C wins if the intended contrast is simply mathematical-vs-non-mathematical averages; B wins on the stricter reading that only the median is fixed by position (the mode is fixed by frequency). Flagged as arguably defective.",
+      "solution": "A positional average is one located by its rank in the ordered data rather than computed from every value, and the median — the \\(\\left(\\dfrac{N+1}{2}\\right)\\)-th item — is defined in exactly that way, whereas the arithmetic and geometric means both use every observation's magnitude. The item is arguably defective, though: many textbooks class the mode as an average of position as well, since it too is read off the data rather than calculated, and on that classification it is equally defensible. The median is the safer response on the stricter reading that only it is fixed purely by rank, the mode being fixed by frequency instead."
     },
     {
       "number": 97,
       "answer": "B",
       "value": "2",
       "confidence": "MED",
-      "reasoning": "The first-group median fixes u+v exactly: N = u+v+160, median class 20-25 gives 20 + 5(N/2 - (u+v+63))/75 = 20.8, which reduces to u+v = 10 (and reproduces 20.8 exactly, so this half of the data is exact). The second-group mean then gives 111u + 49v = 649, and solving the pair yields u = 159/62 = 2.5645, v = 7.4355 - NOT integers, so the printed data is internally inconsistent. Exact means for the admissible integer pairs: u=2,v=8 -> 17.3824; u=3,v=7 -> 17.2368; u=4,v=6 -> 17.0930. I choose u=2 because (a) only 17.3824 can produce the printed '17.3' under a standard reporting convention (truncation to one decimal), whereas 17.2368 gives '17.2' under both truncation and rounding, and (b) u=2 makes the second group total 170, exactly equal to the first group's total of 170, which looks like the intended design. RUNNER-UP C (u=3): it wins on raw proximity, since 17.2368 is 0.063 from 17.3 while 17.3824 is 0.082 away, and rounding the exact solution 2.5645 gives 3. Paired with Q98. [ADJUDICATED. AS PRINTED THIS PAIR HAS NO INTEGER SOLUTION: the group-1 median condition forces u+v = 10 while the group-2 MEAN condition forces 111u+49v = 649, giving u = 159/62. Reading 'mean' as 'MEDIAN' yields the unique integer solution u = 2, v = 8, at which BOTH group medians are exact (20.8 and 17.3) and both groups total 170. Verified independently of the derivation passes by exhaustive integer search. Recorded at LOW because the as-printed computation matches nothing.]"
+      "reasoning": "The first-group median fixes u+v exactly: N = u+v+160, median class 20-25 gives 20 + 5(N/2 - (u+v+63))/75 = 20.8, which reduces to u+v = 10 (and reproduces 20.8 exactly, so this half of the data is exact). The second-group mean then gives 111u + 49v = 649, and solving the pair yields u = 159/62 = 2.5645, v = 7.4355 - NOT integers, so the printed data is internally inconsistent. Exact means for the admissible integer pairs: u=2,v=8 -> 17.3824; u=3,v=7 -> 17.2368; u=4,v=6 -> 17.0930. I choose u=2 because (a) only 17.3824 can produce the printed '17.3' under a standard reporting convention (truncation to one decimal), whereas 17.2368 gives '17.2' under both truncation and rounding, and (b) u=2 makes the second group total 170, exactly equal to the first group's total of 170, which looks like the intended design. RUNNER-UP C (u=3): it wins on raw proximity, since 17.2368 is 0.063 from 17.3 while 17.3824 is 0.082 away, and rounding the exact solution 2.5645 gives 3. Paired with Q98. [ADJUDICATED. AS PRINTED THIS PAIR HAS NO INTEGER SOLUTION: the group-1 median condition forces u+v = 10 while the group-2 MEAN condition forces 111u+49v = 649, giving u = 159/62. Reading 'mean' as 'MEDIAN' yields the unique integer solution u = 2, v = 8, at which BOTH group medians are exact (20.8 and 17.3) and both groups total 170. Verified independently of the derivation passes by exhaustive integer search. Recorded at LOW because the as-printed computation matches nothing.]",
+      "solution": "The first group's median fixes \\(u+v\\): with \\(N=u+v+160\\) and the median falling in the 20 to 25 class, \\(20+5\\cdot\\dfrac{N/2-(u+v+63)}{75}=20.8\\) reduces to \\(u+v=10\\). Taken with the second group's stated mean of \\(17.3\\), which gives \\(111u+49v=649\\), this forces \\(u=\\dfrac{159}{62}\\) — not a whole number, and a frequency must be one, so as printed the question has no valid answer. Reading the second group's \\(17.3\\) as its median instead makes everything fit: the median then works out to \\(15+\\dfrac{48-u}{20}\\), and setting that equal to \\(17.3\\) gives \\(u=2\\) uniquely. With \\(v=8\\) both group medians come out at exactly \\(20.8\\) and \\(17.3\\), and each group totals 170 children."
     },
     {
       "number": 98,
       "answer": "D",
       "value": "8",
       "confidence": "MED",
-      "reasoning": "Same system as Q97: the first-group median forces u+v = 10 exactly, and the second-group mean forces 111u+49v = 649, whose exact solution u = 159/62, v = 461/62 = 7.4355 is not an integer - the printed data is inconsistent. With u = 2 (see Q97: only that pair reproduces '17.3' by truncation, and it makes both group totals 170) the partner is v = 8. RUNNER-UP C (v=7): the companion of the runner-up u=3, which wins if the intended pair is the one whose mean 17.2368 is numerically nearest to the printed 17.3. Paired with Q97. [ADJUDICATED. See Q97: 'mean' is a misprint for 'median'; the unique integer solution is u = 2, v = 8. Recorded at LOW because as printed nothing matches.]"
+      "reasoning": "Same system as Q97: the first-group median forces u+v = 10 exactly, and the second-group mean forces 111u+49v = 649, whose exact solution u = 159/62, v = 461/62 = 7.4355 is not an integer - the printed data is inconsistent. With u = 2 (see Q97: only that pair reproduces '17.3' by truncation, and it makes both group totals 170) the partner is v = 8. RUNNER-UP C (v=7): the companion of the runner-up u=3, which wins if the intended pair is the one whose mean 17.2368 is numerically nearest to the printed 17.3. Paired with Q97. [ADJUDICATED. See Q97: 'mean' is a misprint for 'median'; the unique integer solution is u = 2, v = 8. Recorded at LOW because as printed nothing matches.]",
+      "solution": "This rests on the same system as the previous item: the first group's median of \\(20.8\\) forces \\(u+v=10\\), while the second group's stated mean of \\(17.3\\) forces \\(111u+49v=649\\). Together these give \\(u=\\dfrac{159}{62}\\) and \\(v=\\dfrac{461}{62}\\), neither of which is a whole number, so the data as printed is internally inconsistent and no listed value can be justified from it. If the second group's \\(17.3\\) is read as a median rather than a mean, the unique whole-number solution is \\(u=2\\) and \\(v=8\\) — at which both group medians are exactly \\(20.8\\) and \\(17.3\\), and each group totals 170 children."
     },
     {
       "number": 99,
