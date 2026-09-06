@@ -1,0 +1,226 @@
+{
+  "band": "b3",
+  "pages": [5, 6],
+  "bandReport": {
+    "numbersFound": [44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "BAND CONTENTS - Q44 to Q58, fifteen items, all complete. p05 carries seven standalone items (Q44-Q47 left column, Q48-Q50 right column) with NO Directions block anywhere on the page. p06 carries FOUR two-item Directions sets, each of which both STARTS and ENDS on p06: D51-52 (frustum) and D53-54 (right triangle) in the left column, D55-56 (two touching circles) and D57-58 (perimeter and altitudes) in the right column. Every set is therefore wholly owned by this band and every member is transcribed.\n\nSEAM BEFORE - p04 was opened and NOT transcribed. It ends with Q43 complete: Q43's four options (I only / II only / Both I and II / Neither I nor II) all print in the p04 right column, and its left column ends with Q40 option (d) 500. There is no Directions block anywhere on p04, so nothing crosses into p05 and no question of mine continues from the previous page. Q44 opens fresh at the top of the p05 left column.\n\nSEAM AFTER - p07 was opened and NOT transcribed. It opens with a FRESH Directions block at the top of its left column ('Consider the following for the next two (02) items that follow :' + the hollow-sphere pot stimulus) governing Q59 and Q60, and a second fresh block heads its right column for Q61-Q62. Neither continues anything from p06. My last item Q58 is complete on p06: its stem and all four options print in the p06 right column, and the D57-58 stimulus that governs it prints directly above Q57 on that same page. Nothing straddles the p06/p07 boundary.\n\nNO FIGURES IN THIS BAND - checked two ways. Visually, both pages are pure two-column text with no diagram box, axis, chart or geometry sketch; and structurally, PyMuPDF reports each of pages p04-p07 as exactly one embedded image (the page scan itself) with ZERO vector drawings and ZERO text layer, i.e. these are pure scans and there is no separately-drawn figure object on any of them. Q53-Q54 (right triangle with an inscribed circle) and Q55-Q56 (two externally touching circles and their common tangent) are the two items a reader might expect to carry a diagram; neither does. Both are fully specified in words and no stem uses a phrase such as 'in the figure given below'. So no question in this band carries hasFigure.\n\nGLYPHS RE-READ AT ZOOM - every question in the band was re-read from a 6x or 7x crop of the source PDF rather than from the 2.6x page render, because the 2.6x render is soft on superscripts and on the raised middle dot. Specifically confirmed: Q44's ratio 3 : 5 : 6 and the squared exponents; Q45's four ratio options (13:5 / 25:1 / 9:4 / 16:1, read label by label); Q46's superscript 'th' on 3/5; Q47's exponent p and the strict inequality p > 5; Q48's three cubes 24^3 - 16^3 - 8^3 and both minus signs; Q50's four algebraic options, each read separately (the (c) option is the only one with a 3 and the only one with a 2y in the denominator); Q51's k^2 with denominator 8 against Q52's k^3 with denominator 48; Q52's numerators 61/59/57/53, which are close in shape at low resolution; Q55/Q56's surd options; Q57's four three-term ratios; Q58's 175/190/205/285.\n\nMISPRINTS - none found. Every stem is internally consistent and every option block is four distinct alternatives; no duplicate option text and no option that fails to parse. Nothing was 'corrected'.\n\nUNREADABLE - none. No glyph in this band was left to a guess.\n\nDECIMAL CONVENTION APPLIED - the booklet prints a raised middle dot (U+00B7) as its decimal separator and it occurs three times in this band: the frustum's bottom diameter in the D51-52 stimulus (printed as two, middle dot, five, k), and Q54's options (b) and (d) (printed as one, middle dot, five cm and two, middle dot, five cm). Per the brief these are transcribed as 2.5k, 1.5 cm and 2.5 cm. No value changes. The glyph itself is deliberately kept out of this file entirely, including out of this note.\n\nINVENTED SUBTOPIC, 1 - 'Altitudes and Sides of a Triangle' under the Triangles chapter, used by Q57. That chapter's six listed subtopics cover congruence/similarity, Pythagoras, the triangle centres, basic proportionality and the angle bisector, the ratio of AREAS, and the angles of a triangle. Q57 turns on none of them: it is the relation that a side is inversely proportional to the altitude drawn to it (side x altitude = 2 x area, constant across the three altitudes), used to convert a ratio of altitudes into a ratio of sides. 'Ratio of Areas of Triangles' is the nearest listed name and is genuinely about something else (comparing two triangles' areas), so it was not used. Flagged on the question rather than forced.\n\nCLASSIFICATION NOTES WORTH KNOWING - two sets are deliberately split across chapters, because each member asks a different kind of thing and the pipeline classifies per question, not per set. D53-54: Q53 asks for an AREA (Mensuration 2D / Areas of Triangles and Quadrilaterals) while Q54 asks for the INRADIUS of the inscribed circle (Mensuration 2D / Inscribed and Circumscribed Figures). D57-58: Q57 is the altitude-to-side conversion described above (Triangles) while Q58 is a Heron's-formula area from perimeter and side ratio (Mensuration 2D / Areas of Triangles and Quadrilaterals). D55-56 is kept whole under Circles / Two Circles and Common Tangents even though Q56 asks for an area, because the quadrilateral in Q56 exists only as the tangent-and-radii configuration of the two circles and is unintelligible outside it."
+  },
+  "questions": [
+    {
+      "number": 44,
+      "stem": "If \\((x + y) : (y + z) : (z + x) = 3 : 5 : 6\\) and \\(x + y + z = 14\\), then what is \\(x^2 + y^2 + z^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "81" },
+        { "label": "B", "text": "84" },
+        { "label": "C", "text": "87" },
+        { "label": "D", "text": "90" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 45,
+      "stem": "The ratio of sum of two numbers to their difference is \\(5 : 1\\). What is the ratio of the sum of their squares to the difference of their squares ?",
+      "options": [
+        { "label": "A", "text": "\\(13 : 5\\)" },
+        { "label": "B", "text": "\\(25 : 1\\)" },
+        { "label": "C", "text": "\\(9 : 4\\)" },
+        { "label": "D", "text": "\\(16 : 1\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 46,
+      "stem": "Travelling at \\(3/5^{\\text{th}}\\) of his usual speed, a man is late by 20 minutes. What is the usual time if he travels with his usual speed ?",
+      "options": [
+        { "label": "A", "text": "25 minutes" },
+        { "label": "B", "text": "30 minutes" },
+        { "label": "C", "text": "32 minutes" },
+        { "label": "D", "text": "35 minutes" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 47,
+      "stem": "What is the remainder when \\(2^p - 1\\) is divided by p, where \\(p > 5\\) is a prime number ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 48,
+      "stem": "What is the number of factors of \\(24^3 - 16^3 - 8^3\\) ?",
+      "options": [
+        { "label": "A", "text": "33" },
+        { "label": "B", "text": "30" },
+        { "label": "C", "text": "28" },
+        { "label": "D", "text": "24" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 49,
+      "stem": "What is the least number of complete years in which a sum of money put out at 20% compound interest (compounded annually) will be more than doubled ?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "5" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Compound Interest",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 50,
+      "stem": "A train of certain length takes time t to pass completely through a station of length x. The same train with same speed takes time 2t to pass completely through another station of length y. What is the time taken by the train to pass completely through a station of length \\((x + y)\\) ?",
+      "options": [
+        { "label": "A", "text": "\\((2yt + xt) / (y - x)\\)" },
+        { "label": "B", "text": "\\((yt + xt) / (y - x)\\)" },
+        { "label": "C", "text": "\\((3yt - xt) / (2y - x)\\)" },
+        { "label": "D", "text": "\\((2yt - xt) / (y - x)\\)" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 51,
+      "setLabel": "D51-52",
+      "context": "Consider the following for the next two (02) items that follow :\n\nA frustum of a right cone has a top of diameter 2k, bottom of diameter 2.5k and height k.",
+      "stem": "What is the whole surface area of the frustum ?",
+      "options": [
+        { "label": "A", "text": "\\(39\\pi k^2 / 8\\)" },
+        { "label": "B", "text": "\\(41\\pi k^2 / 8\\)" },
+        { "label": "C", "text": "\\(43\\pi k^2 / 8\\)" },
+        { "label": "D", "text": "\\(45\\pi k^2 / 8\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Frustum and Combined Solids",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 52,
+      "setLabel": "D51-52",
+      "context": "Consider the following for the next two (02) items that follow :\n\nA frustum of a right cone has a top of diameter 2k, bottom of diameter 2.5k and height k.",
+      "stem": "What is the volume of the frustum ?",
+      "options": [
+        { "label": "A", "text": "\\(61\\pi k^3 / 48\\)" },
+        { "label": "B", "text": "\\(59\\pi k^3 / 48\\)" },
+        { "label": "C", "text": "\\(57\\pi k^3 / 48\\)" },
+        { "label": "D", "text": "\\(53\\pi k^3 / 48\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Frustum and Combined Solids",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 53,
+      "setLabel": "D53-54",
+      "context": "Consider the following for the next two (02) items that follow :\n\nABC is a triangle right-angled at B. The perimeter of the triangle is 24 cm and the difference between the sum of the perpendicular sides and the hypotenuse is 4 cm.",
+      "stem": "What is the area of the triangle ABC ?",
+      "options": [
+        { "label": "A", "text": "18 square cm" },
+        { "label": "B", "text": "24 square cm" },
+        { "label": "C", "text": "36 square cm" },
+        { "label": "D", "text": "48 square cm" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 54,
+      "setLabel": "D53-54",
+      "context": "Consider the following for the next two (02) items that follow :\n\nABC is a triangle right-angled at B. The perimeter of the triangle is 24 cm and the difference between the sum of the perpendicular sides and the hypotenuse is 4 cm.",
+      "stem": "A circle is inscribed in the triangle. What is its radius ?",
+      "options": [
+        { "label": "A", "text": "1 cm" },
+        { "label": "B", "text": "1.5 cm" },
+        { "label": "C", "text": "2 cm" },
+        { "label": "D", "text": "2.5 cm" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Inscribed and Circumscribed Figures",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 55,
+      "setLabel": "D55-56",
+      "context": "Consider the following for the next two (02) items that follow :\n\nA circle M of radius 8 cm touches externally with another circle N of radius 16 cm. Let P, Q be the points where the common tangent touches the circles M and N respectively.",
+      "stem": "What is the length of the common tangent PQ ?",
+      "options": [
+        { "label": "A", "text": "16 cm" },
+        { "label": "B", "text": "\\(16\\sqrt{2}\\) cm" },
+        { "label": "C", "text": "24 cm" },
+        { "label": "D", "text": "\\(24\\sqrt{2}\\) cm" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Two Circles and Common Tangents",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 56,
+      "setLabel": "D55-56",
+      "context": "Consider the following for the next two (02) items that follow :\n\nA circle M of radius 8 cm touches externally with another circle N of radius 16 cm. Let P, Q be the points where the common tangent touches the circles M and N respectively.",
+      "stem": "If U, V are the centres of the circles M and N respectively, then what is the area of the quadrilateral formed by the points P, Q, V and U ?",
+      "options": [
+        { "label": "A", "text": "\\(192\\sqrt{2}\\) square cm" },
+        { "label": "B", "text": "192 square cm" },
+        { "label": "C", "text": "\\(96\\sqrt{2}\\) square cm" },
+        { "label": "D", "text": "96 square cm" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Two Circles and Common Tangents",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 57,
+      "setLabel": "D57-58",
+      "context": "Consider the following for the next two (02) items that follow :\n\nThe perimeter of a triangle ABC is 105 cm. The altitudes AD, BE and CF are in the ratio \\(3 : 5 : 6\\).",
+      "stem": "What is AB : BC : CA equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(10 : 6 : 5\\)" },
+        { "label": "B", "text": "\\(5 : 10 : 6\\)" },
+        { "label": "C", "text": "\\(6 : 5 : 3\\)" },
+        { "label": "D", "text": "\\(3 : 5 : 6\\)" }
+      ],
+      "chapter": "Triangles",
+      "subtopic": "Altitudes and Sides of a Triangle",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Subtopic not in catalog. 'Altitudes and Sides of a Triangle' is invented. The chapter's six listed subtopics are congruence/similarity, Pythagoras and its converse, centres of a triangle, basic proportionality and angle bisector, ratio of AREAS of triangles, and angles of a triangle. This item turns on none of them: it uses side x altitude = 2 x area (constant across the three altitudes of one triangle), so a side is inversely proportional to the altitude drawn to it, converting a ratio of altitudes into a ratio of sides. 'Ratio of Areas of Triangles' is the nearest listed name and means something genuinely different (comparing the areas of two triangles), so it was not forced."
+      ]
+    },
+    {
+      "number": 58,
+      "setLabel": "D57-58",
+      "context": "Consider the following for the next two (02) items that follow :\n\nThe perimeter of a triangle ABC is 105 cm. The altitudes AD, BE and CF are in the ratio \\(3 : 5 : 6\\).",
+      "stem": "What is the approximate area of the triangle ABC ?",
+      "options": [
+        { "label": "A", "text": "175 square cm" },
+        { "label": "B", "text": "190 square cm" },
+        { "label": "C", "text": "205 square cm" },
+        { "label": "D", "text": "285 square cm" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "HARD"
+    }
+  ]
+}

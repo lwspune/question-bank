@@ -1,0 +1,282 @@
+{
+  "band": "b2",
+  "pages": [5, 6, 7, 8],
+  "bandReport": {
+    "numbersFound": [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Q33-50, 18 items, all complete within p05-p08. Two-column layout: LEFT column top-to-bottom, then RIGHT. p05 = Q33-35 left, Q36-38 right. p06 = Q39-40 left, Q41-42 right. p07 = Q43-44 left, Q45-46 right. p08 = Q47-48 left, Q49-50 right.\n\nSTRUCTURE: this band is ENTIRELY Directions sets — nine consecutive 'Consider the following for the next two (02) items that follow :' blocks, every one of them a 2-item set, and every one STARTING inside my pages. There is not a single standalone question in Q33-50. Sets: D33-34, D35-36, D37-38, D39-40, D41-42, D43-44, D45-46, D47-48, D49-50.\n\nSEAM BEFORE (p04, opened not transcribed): p04 carries Q28-32. It has a 2-item Directions block (flagstaff on a tower) that STARTS on p04 and whose members Q31 and Q32 both sit on p04 — that set is complete on p04 and belongs to the band owning p04, not to me. Nothing on p04 spills into p05: the last item there (Q32) has all four options printed on p04, and p05 opens with a fresh Directions block. No set starting before p05 has any member inside p05.\n\nSEAM AFTER (p09, opened not transcribed): p09 opens at Q51 with standalone questions (Q51-57 visible), no continuation of anything from p08 and no Directions block carried over. Q50 is complete on p08 with all four options printed. Clean seam both ways.\n\nFIGURES: ZERO. No printed diagram anywhere on p05-p08 — no geometry figure, no chart, no number line. Q35-36 (two parallel chords), Q39-40 (conical cap over two spheres) and Q41-42 (semi-circles on AB, AC, CB with an inscribed circle) are all configurations described entirely in words with no accompanying figure on the page; nothing is left unanswerable by the absence of one, so no hasFigure/figureNote is set on any item.\n\nTABLES: ONE. Q47-48 share a printed grouped-frequency table (weekly wages vs numbers of workers, 6 class intervals, one frequency given as the unknown k). Transcribed as a GFM pipe table with separator row inside `context`, identical on both members. The class-interval dashes are printed as en dashes; written as plain hyphens.\n\nCURRENCY: the booklet prints the rupee glyph in Q45 options, Q46 options, the Q47 stem, the Q48 options and the Q47-48 table header. Written as 'Rs.' per the brief's currency rule, matching the convention already used across the 2020-1/2020-2/2024-1 band files; no LaTeX macro invented.\n\nDECIMALS: none occur in this band — no raised middle dot appears anywhere on p05-p08.\n\nHIGH-ZOOM CROPS (6-8x from the source PDF, because the character decides the item): Q38's expression \\(x^2(px^2 + qy^2 + rz^2) + qr - p^2\\); Q39's four options (r vs R inside each numerator); Q43's fraction \\(\\frac{x^2+ab}{x^2+m^2ab}\\); Q44's four options (the vinculum extent — confirmed the radical covers all of 'mab', 'ab', '2mab', '2ab' rather than only the leading letter); the Q49-50 quadratic \\((a+b+c)x^2-(2a+2b)x+(a+b-c)=0\\); Q49's four options (the sign pattern inside each numerator, and the leading root being 1 in (a),(b) versus -1 in (c),(d)); the Q47-48 frequency table; Q47's Rs. 3,520; Q48's four amounts. All read as transcribed.\n\nDO NOT 'REPAIR' Q39/Q40 — their options A and B are correct as transcribed. Option A is \\(\\frac{2r^2}{R-r}\\) with a LOWERCASE r; option B is \\(\\frac{2R^2}{R-r}\\) with an UPPERCASE R, and the shared context defines r as the radius of the smaller sphere and R as the radius of the bigger sphere, so the case distinction IS the content of the item. Re-verified at 9x from the source PDF for both questions: the (a) numerator carries the short baseline r, the (b) numerator the tall bowl-and-leg R, unambiguously. Recorded because an earlier revision of check-bands.ts lowercased option text before its duplicate comparison and therefore reported A and B as identical on both items (it flagged Q31 of band b1, 'H tan y - h tan B' vs 'h tan y - H tan B', for the same reason). That check has since been made case-SENSITIVE and the paper now runs clean, so this paragraph is history rather than a live finding — it is kept only so that nobody meeting a similar r/R, h/H or x/X option pair in this corpus concludes the transcription is at fault.\n\nMISPRINTS: none found. Nothing on these four pages is ambiguous or self-contradictory after the crops above; no flags entry was needed on any of the 18 items.\n\nUNREADABLE: nothing.\n\nINVENTED SUBTOPICS: none — every (chapter, subtopic) pair used is listed in catalog.json.\n\nCLASSIFICATION NOTE (not a defect, recorded so the reader knows it was a judgement rather than an oversight): the two members of D41-42 are filed under DIFFERENT chapters. Q41 asks for a radius relation between two touching circles (Circles / Two Circles and Common Tangents); Q42 converts the same configuration into an area comparison (Mensuration 2D / Inscribed and Circumscribed Figures). Their shared `context` is byte-identical, so the set still groups correctly."
+  },
+  "questions": [
+    {
+      "number": 33,
+      "setLabel": "D33-34",
+      "context": "AB is a straight road leading to the foot P of a tower of height h. Q is at distance x from P and R is at a distance y from Q (R is farther from P than Q; R, Q are on the same side). The angle of elevation of the top of the tower at Q is twice of that at R. (Use the formula \\(\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}\\))",
+      "stem": "Which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(x = y\\)" },
+        { "label": "B", "text": "\\(x < y\\)" },
+        { "label": "C", "text": "\\(x > y\\)" },
+        { "label": "D", "text": "Cannot be concluded due to insufficient data" }
+      ],
+      "chapter": "Heights and Distances",
+      "subtopic": "Angles of Elevation and Depression",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 34,
+      "setLabel": "D33-34",
+      "context": "AB is a straight road leading to the foot P of a tower of height h. Q is at distance x from P and R is at a distance y from Q (R is farther from P than Q; R, Q are on the same side). The angle of elevation of the top of the tower at Q is twice of that at R. (Use the formula \\(\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}\\))",
+      "stem": "Which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(h^2 = x^2 - y^2\\)" },
+        { "label": "B", "text": "\\(h^2 = x^2 + y^2\\)" },
+        { "label": "C", "text": "\\(h^2 = 2(y^2 - x^2)\\)" },
+        { "label": "D", "text": "\\(h^2 = y^2 - x^2\\)" }
+      ],
+      "chapter": "Heights and Distances",
+      "subtopic": "Angles of Elevation and Depression",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 35,
+      "setLabel": "D35-36",
+      "context": "Two parallel chords AB and CD of a circle are of lengths 60 cm and 80 cm respectively. They are on the same side of the centre O and 10 cm apart.",
+      "stem": "What is the diameter of the circle ?",
+      "options": [
+        { "label": "A", "text": "120 cm" },
+        { "label": "B", "text": "110 cm" },
+        { "label": "C", "text": "100 cm" },
+        { "label": "D", "text": "90 cm" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Chords and Perpendiculars",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 36,
+      "setLabel": "D35-36",
+      "context": "Two parallel chords AB and CD of a circle are of lengths 60 cm and 80 cm respectively. They are on the same side of the centre O and 10 cm apart.",
+      "stem": "If the chord AB subtends an angle \\(\\alpha\\) and chord CD subtends an angle \\(\\beta\\) at the centre O, then what is the value of \\(\\tan\\left(\\frac{\\beta}{2}\\right) - \\tan\\left(\\frac{\\alpha}{2}\\right)\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{3}{4}\\)" },
+        { "label": "B", "text": "\\(\\frac{5}{12}\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{2}\\)" },
+        { "label": "D", "text": "\\(\\frac{7}{12}\\)" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Angles in a Circle",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 37,
+      "setLabel": "D37-38",
+      "context": "Let \\(p = x^4 - y^2z^2\\), \\(q = y^4 - z^2x^2\\), \\(r = z^4 - x^2y^2\\).",
+      "stem": "What is \\(px^2 + qy^2 + rz^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\((x^2 + y^2 + z^2)(p + q + r)\\)" },
+        { "label": "B", "text": "\\(-(x^2 + y^2 + z^2)(p + q + r)\\)" },
+        { "label": "C", "text": "\\((y^2 + z^2 - x^2)(r - q - p)\\)" },
+        { "label": "D", "text": "\\((x^2 + y^2 - z^2)(p - q - r)\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 38,
+      "setLabel": "D37-38",
+      "context": "Let \\(p = x^4 - y^2z^2\\), \\(q = y^4 - z^2x^2\\), \\(r = z^4 - x^2y^2\\).",
+      "stem": "What is \\(x^2(px^2 + qy^2 + rz^2) + qr - p^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "\\(p + q + r\\)" },
+        { "label": "D", "text": "\\(x^2 + y^2 + z^2\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 39,
+      "setLabel": "D39-40",
+      "context": "A right conical cap just covers two spheres placed one above the other on a table such that it touches both the spheres. Let r be the radius of the smaller sphere and R be the radius of the bigger sphere. Let \\(2\\theta\\) be the vertical angle of the cone.",
+      "stem": "What is the height of the cone ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{2r^2}{R - r}\\)" },
+        { "label": "B", "text": "\\(\\frac{2R^2}{R - r}\\)" },
+        { "label": "C", "text": "\\(\\frac{2(r^2 + R^2)}{R - r}\\)" },
+        { "label": "D", "text": "\\(\\frac{r^2 + R^2}{R - r}\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Cylinder, Cone and Sphere",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 40,
+      "setLabel": "D39-40",
+      "context": "A right conical cap just covers two spheres placed one above the other on a table such that it touches both the spheres. Let r be the radius of the smaller sphere and R be the radius of the bigger sphere. Let \\(2\\theta\\) be the vertical angle of the cone.",
+      "stem": "What is the radius of the base of the cone ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{2r^2 \\tan\\theta}{R - r}\\)" },
+        { "label": "B", "text": "\\(\\frac{2R^2 \\tan\\theta}{R - r}\\)" },
+        { "label": "C", "text": "\\(\\frac{2(r^2 + R^2)\\tan\\theta}{R - r}\\)" },
+        { "label": "D", "text": "\\(\\frac{(r^2 + R^2)\\tan\\theta}{R - r}\\)" }
+      ],
+      "chapter": "Mensuration 3D",
+      "subtopic": "Cylinder, Cone and Sphere",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 41,
+      "setLabel": "D41-42",
+      "context": "A line segment AB is bisected at C and semi-circles \\(S_1\\), \\(S_2\\) and \\(S_3\\) are drawn respectively on AB, AC and CB as diameters such that they all lie on same side of AB. A circle S is drawn touching internally \\(S_1\\) and externally \\(S_2\\) and \\(S_3\\).",
+      "stem": "If r is the radius of S and R is the radius of \\(S_2\\), then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(R = 3r\\)" },
+        { "label": "B", "text": "\\(R = 2r\\)" },
+        { "label": "C", "text": "\\(3R = 4r\\)" },
+        { "label": "D", "text": "\\(2R = 3r\\)" }
+      ],
+      "chapter": "Circles",
+      "subtopic": "Two Circles and Common Tangents",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 42,
+      "setLabel": "D41-42",
+      "context": "A line segment AB is bisected at C and semi-circles \\(S_1\\), \\(S_2\\) and \\(S_3\\) are drawn respectively on AB, AC and CB as diameters such that they all lie on same side of AB. A circle S is drawn touching internally \\(S_1\\) and externally \\(S_2\\) and \\(S_3\\).",
+      "stem": "If m is the area of the circle S and n is the area of semi-circle \\(S_1\\), then which one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "\\(9m = 2n\\)" },
+        { "label": "B", "text": "\\(9m = 4n\\)" },
+        { "label": "C", "text": "\\(3m = 2n\\)" },
+        { "label": "D", "text": "\\(7m = 3n\\)" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Inscribed and Circumscribed Figures",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 43,
+      "setLabel": "D43-44",
+      "context": "Let \\(\\frac{(x-a)(x-b)}{(x-ma)(x-mb)} = \\frac{(x+a)(x+b)}{(x+ma)(x+mb)}\\); \\(m, a, b > 0\\).",
+      "stem": "What is \\(\\frac{x^2 + ab}{x^2 + m^2ab}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-\\frac{1}{m^2}\\)" },
+        { "label": "B", "text": "\\(\\frac{1}{m^2}\\)" },
+        { "label": "C", "text": "\\(\\frac{2}{m}\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{m}\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 44,
+      "setLabel": "D43-44",
+      "context": "Let \\(\\frac{(x-a)(x-b)}{(x-ma)(x-mb)} = \\frac{(x+a)(x+b)}{(x+ma)(x+mb)}\\); \\(m, a, b > 0\\).",
+      "stem": "What is x equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\pm\\sqrt{mab}\\)" },
+        { "label": "B", "text": "\\(\\pm\\sqrt{ab}\\)" },
+        { "label": "C", "text": "\\(\\pm\\sqrt{2mab}\\)" },
+        { "label": "D", "text": "\\(\\pm\\sqrt{2ab}\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 45,
+      "setLabel": "D45-46",
+      "context": "The total monthly electricity bill for a house consists of the sum of two parts, one part is proportional to number of rooms and the other part is proportional to number of units consumed. Rs. 400 is the monthly electricity bill for a house with 8 rooms and consuming 240 units and Rs. 320 is the monthly electricity bill for a house with 6 rooms and consuming 200 units.",
+      "stem": "What is the monthly electricity bill for a house with m rooms and consuming n units ?",
+      "options": [
+        { "label": "A", "text": "Rs. \\((40m + n)\\)" },
+        { "label": "B", "text": "Rs. \\((20m + n)\\)" },
+        { "label": "C", "text": "Rs. \\(\\frac{(40m + n)}{2}\\)" },
+        { "label": "D", "text": "Rs. \\(\\frac{(30m + n)}{2}\\)" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 46,
+      "setLabel": "D45-46",
+      "context": "The total monthly electricity bill for a house consists of the sum of two parts, one part is proportional to number of rooms and the other part is proportional to number of units consumed. Rs. 400 is the monthly electricity bill for a house with 8 rooms and consuming 240 units and Rs. 320 is the monthly electricity bill for a house with 6 rooms and consuming 200 units.",
+      "stem": "What is the monthly electricity bill for a house with 7 rooms consuming 300 units ?",
+      "options": [
+        { "label": "A", "text": "Rs. 500" },
+        { "label": "B", "text": "Rs. 440" },
+        { "label": "C", "text": "Rs. 340" },
+        { "label": "D", "text": "Rs. 300" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 47,
+      "setLabel": "D47-48",
+      "context": "A grouped frequency distribution is given below :\n\n| Weekly wages in Rupees (Rs.) | Numbers of workers |\n|---|---|\n| 2050 - 2550 | 5 |\n| 2550 - 3050 | 10 |\n| 3050 - 3550 | k |\n| 3550 - 4050 | 8 |\n| 4050 - 4550 | 2 |\n| 4550 - 5050 | 10 |",
+      "stem": "If average weekly wages earned by a worker is Rs. 3,520, then what is the value of k ?",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "15" },
+        { "label": "D", "text": "20" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 48,
+      "setLabel": "D47-48",
+      "context": "A grouped frequency distribution is given below :\n\n| Weekly wages in Rupees (Rs.) | Numbers of workers |\n|---|---|\n| 2050 - 2550 | 5 |\n| 2550 - 3050 | 10 |\n| 3050 - 3550 | k |\n| 3550 - 4050 | 8 |\n| 4050 - 4550 | 2 |\n| 4550 - 5050 | 10 |",
+      "stem": "What is the median (approximate value) of the distribution ?",
+      "options": [
+        { "label": "A", "text": "Rs. 3,263" },
+        { "label": "B", "text": "Rs. 3,383" },
+        { "label": "C", "text": "Rs. 3,413" },
+        { "label": "D", "text": "Rs. 3,483" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Measures of Central Tendency",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 49,
+      "setLabel": "D49-50",
+      "context": "A quadratic equation is given by\n\\((a + b + c)x^2 - (2a + 2b)x + (a + b - c) = 0\\);\nwhere a, b and c are real and distinct.",
+      "stem": "What are the roots of the equation ?",
+      "options": [
+        { "label": "A", "text": "\\(1,\\ \\frac{(a + b - c)}{(a + b + c)}\\)" },
+        { "label": "B", "text": "\\(1,\\ \\frac{(a - b + c)}{(a + b + c)}\\)" },
+        { "label": "C", "text": "\\(-1,\\ \\frac{(-a - b + c)}{(a + b + c)}\\)" },
+        { "label": "D", "text": "\\(-1,\\ \\frac{(a + b - c)}{(a + b + c)}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 50,
+      "setLabel": "D49-50",
+      "context": "A quadratic equation is given by\n\\((a + b + c)x^2 - (2a + 2b)x + (a + b - c) = 0\\);\nwhere a, b and c are real and distinct.",
+      "stem": "Consider the following statements :\n1. One of the roots of the equation is always less than 1 if a, b and c are all positive.\n2. One of the roots of the equation is always negative if a, b and c are all negative.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Nature of Roots and Discriminant",
+      "difficulty": "HARD"
+    }
+  ]
+}

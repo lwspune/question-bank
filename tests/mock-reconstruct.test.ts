@@ -3,6 +3,8 @@ import {
   NDA_MATHS_PAPER,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  CDS_GK_PAPER,
+  CDS_MATHS_PAPER,
 } from "@/lib/mocks/blueprints";
 import {
   mockSlug,
@@ -256,10 +258,56 @@ describe("NEET reconstruction", () => {
 
 describe("CDS reconstruction", () => {
   it("builds edition-aware slugs and titles", () => {
-    expect(cdsMockSlug(2026, "I")).toBe("cds-2026-i-english");
-    expect(cdsMockSlug(2017, "II")).toBe("cds-2017-ii-english");
-    expect(cdsMockTitle(2026, "I")).toBe("CDS (I) 2026 — English");
-    expect(cdsMockTitle(2025, "II")).toBe("CDS (II) 2025 — English");
+    expect(cdsMockSlug(2026, "I", "english")).toBe("cds-2026-i-english");
+    expect(cdsMockSlug(2017, "II", "english")).toBe("cds-2017-ii-english");
+    expect(cdsMockTitle(2026, "I", "english")).toBe("CDS (I) 2026 — English");
+    expect(cdsMockTitle(2025, "II", "english")).toBe("CDS (II) 2025 — English");
+  });
+
+  /**
+   * THE ENGLISH SLUGS MUST NOT MOVE. 19 English mocks are already published and
+   * their id is slugToUuid(slug); changing a slug mints a NEW id, so the old row
+   * is orphaned along with every attempt against it while a duplicate appears
+   * under the new id. Adding the `subject` parameter is only safe because the
+   * english value reproduces the pre-existing string exactly — pinned here as a
+   * literal rather than derived, so a later refactor of the helper cannot quietly
+   * take the assertion with it.
+   */
+  it("keeps every published English slug byte-identical", () => {
+    const published = [
+      [2017, "I"], [2017, "II"], [2018, "I"], [2018, "II"], [2019, "I"],
+      [2019, "II"], [2020, "I"], [2020, "II"], [2021, "I"], [2021, "II"],
+      [2022, "I"], [2022, "II"], [2023, "I"], [2023, "II"], [2024, "I"],
+      [2024, "II"], [2025, "I"], [2025, "II"], [2026, "I"],
+    ] as const;
+    const expected = [
+      "cds-2017-i-english", "cds-2017-ii-english", "cds-2018-i-english",
+      "cds-2018-ii-english", "cds-2019-i-english", "cds-2019-ii-english",
+      "cds-2020-i-english", "cds-2020-ii-english", "cds-2021-i-english",
+      "cds-2021-ii-english", "cds-2022-i-english", "cds-2022-ii-english",
+      "cds-2023-i-english", "cds-2023-ii-english", "cds-2024-i-english",
+      "cds-2024-ii-english", "cds-2025-i-english", "cds-2025-ii-english",
+      "cds-2026-i-english",
+    ];
+    expect(published.map(([y, e]) => cdsMockSlug(y, e, "english"))).toEqual(expected);
+  });
+
+  it("gives each subject of one sitting a distinct slug, title and id", () => {
+    // A shared sitting is the collision risk: same year, same edition, and
+    // pyq_month is null for all three, so ONLY the subject separates them.
+    const slugs = (["english", "gk", "maths"] as const).map((s) =>
+      cdsMockSlug(2026, "I", s)
+    );
+    expect(slugs).toEqual(["cds-2026-i-english", "cds-2026-i-gk", "cds-2026-i-maths"]);
+    // NB: not `slugs.map(slugToUuid)` — map passes (value, index, array) and
+    // slugToUuid's second parameter is a namespace, so the index would be
+    // silently taken as one.
+    expect(new Set(slugs.map((sl) => slugToUuid(sl))).size).toBe(3);
+
+    expect(cdsMockTitle(2026, "I", "gk")).toBe("CDS (I) 2026 — General Knowledge");
+    expect(cdsMockTitle(2026, "I", "maths")).toBe(
+      "CDS (I) 2026 — Elementary Mathematics"
+    );
   });
 
   /**
@@ -274,8 +322,8 @@ describe("CDS reconstruction", () => {
       mockSlug("cds", 2025, null, "english")
     );
 
-    const one = cdsMockSlug(2025, "I");
-    const two = cdsMockSlug(2025, "II");
+    const one = cdsMockSlug(2025, "I", "english");
+    const two = cdsMockSlug(2025, "II", "english");
     expect(one).not.toBe(two);
     expect(slugToUuid(one)).not.toBe(slugToUuid(two));
   });
@@ -284,8 +332,8 @@ describe("CDS reconstruction", () => {
     const snap = buildMockPaper(CDS_ENGLISH_PAPER, cdsRows(120), {
       year: 2026,
       month: null,
-      slug: cdsMockSlug(2026, "I"),
-      title: cdsMockTitle(2026, "I"),
+      slug: cdsMockSlug(2026, "I", "english"),
+      title: cdsMockTitle(2026, "I", "english"),
     });
     expect(snap.slug).toBe("cds-2026-i-english");
     expect(snap.id).toBe(slugToUuid("cds-2026-i-english"));
@@ -316,8 +364,118 @@ describe("CDS reconstruction", () => {
       buildMockPaper(CDS_ENGLISH_PAPER, cdsRows(119), {
         year: 2026,
         month: null,
-        slug: cdsMockSlug(2026, "I"),
+        slug: cdsMockSlug(2026, "I", "english"),
       })
     ).toThrow(/120/);
+  });
+});
+
+/**
+ * CDS General Knowledge — the paper whose 120 items are filed across EIGHT bank
+ * subjects because subject is a per-question decision in that pipeline, while the
+ * printed booklet interleaves them and prints no subject heading anywhere.
+ */
+describe("CDS General Knowledge reconstruction", () => {
+  const GK_SUBJECTS = [
+    "Physics", "Chemistry", "Biology", "History",
+    "Geography", "Polity", "Economics", "Current Affairs",
+  ];
+
+  // 120 rows with the eight subjects INTERLEAVED, exactly as the booklet prints
+  // them — subject cycles per question, so no subject occupies a contiguous run.
+  function gkRows(count = 120): PaperQuestionRow[] {
+    const rows: PaperQuestionRow[] = [];
+    for (let i = 1; i <= count; i++) {
+      rows.push({
+        id: `q-${i}`,
+        sourceRow: i,
+        questionNumber: String(i),
+        subjectName: GK_SUBJECTS[i % GK_SUBJECTS.length],
+        answer: (["A", "B", "C", "D"] as const)[i % 4],
+      });
+    }
+    return rows.sort((a, b) => (a.id < b.id ? 1 : -1)); // shuffle
+  }
+
+  it("maps all eight bank subjects to the single section", () => {
+    expect(validatePaperRows(CDS_GK_PAPER, gkRows(120))).toEqual([]);
+  });
+
+  /**
+   * THE REASON GK IS ONE SECTION AND NOT EIGHT. reconstructPaper emits section by
+   * section, so eight sections would group the paper into subject blocks — every
+   * History question together — in an order no candidate ever sat. One section
+   * preserves the printed interleaving via source_row. This asserts the ORDER,
+   * which is the only thing that would catch the mistake; counts pass either way.
+   */
+  it("preserves printed order rather than grouping by subject", () => {
+    const snap = buildMockPaper(CDS_GK_PAPER, gkRows(120), {
+      year: 2026,
+      month: null,
+      slug: cdsMockSlug(2026, "I", "gk"),
+      title: cdsMockTitle(2026, "I", "gk"),
+    });
+    expect(snap.questions.map((q) => q.questionId)).toEqual(
+      Array.from({ length: 120 }, (_, i) => `q-${i + 1}`)
+    );
+    expect(snap.totalQuestions).toBe(120);
+    expect(snap.totalMarks).toBe(100); // 120 × 0.8333, rounded off the float drift
+    expect(snap.slug).toBe("cds-2026-i-gk");
+  });
+
+  it("flags a subject that is not one of the eight", () => {
+    const rows = gkRows(120);
+    rows[0].subjectName = "Mathematics"; // a real CDS subject, wrong paper
+    expect(
+      validatePaperRows(CDS_GK_PAPER, rows).some((m) => /section|Mathematics/i.test(m))
+    ).toBe(true);
+  });
+});
+
+describe("CDS Elementary Mathematics reconstruction", () => {
+  function cdsMathsRows(count = 100): PaperQuestionRow[] {
+    const rows: PaperQuestionRow[] = [];
+    for (let i = 1; i <= count; i++) {
+      rows.push({
+        id: `q-${i}`,
+        sourceRow: i,
+        questionNumber: String(i),
+        subjectName: "Mathematics",
+        answer: (["A", "B", "C", "D"] as const)[i % 4],
+      });
+    }
+    return rows.sort((a, b) => (a.id < b.id ? 1 : -1));
+  }
+
+  /**
+   * Marking differs from English/GK and must not be copied from them: this paper
+   * is 100 items for 100 marks (+1, −1/3), where those are 120 items for 100
+   * marks (+0.8333, −0.2778).
+   */
+  it("is 100 questions for 100 marks at +1 / −0.3333", () => {
+    const snap = buildMockPaper(CDS_MATHS_PAPER, cdsMathsRows(100), {
+      year: 2026,
+      month: null,
+      slug: cdsMockSlug(2026, "I", "maths"),
+      title: cdsMockTitle(2026, "I", "maths"),
+    });
+    expect(snap.totalQuestions).toBe(100);
+    expect(snap.totalMarks).toBe(100);
+    expect(snap.durationSecs).toBe(7200);
+    expect(snap.questions[0]).toMatchObject({ marks: 1, negMarks: -0.3333 });
+    expect(snap.title).toBe("CDS (I) 2026 — Elementary Mathematics");
+  });
+
+  /**
+   * The HOLD contract. Three sittings are 98/99/99 because a question with no
+   * correct printed option was dropped at assembly. The count is HARD so a short
+   * paper REFUSES to build — that is what stops a fragment shipping labelled as
+   * the real sitting.
+   */
+  it("refuses to build a short paper rather than shipping a fragment", () => {
+    expect(validatePaperRows(CDS_MATHS_PAPER, cdsMathsRows(98)).length).toBeGreaterThan(0);
+    expect(() =>
+      buildMockPaper(CDS_MATHS_PAPER, cdsMathsRows(98), { year: 2018, month: null })
+    ).toThrow();
   });
 });

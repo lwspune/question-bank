@@ -1,0 +1,702 @@
+[
+  {
+    "number": 1,
+    "answer": "A",
+    "value": "a prime number",
+    "confidence": "HIGH",
+    "reasoning": "2*3*5*7*11 + 1 = 2310 + 1 = 2311. sympy isprime(2311) = True, factorint = {2311: 1}. So it is a prime number."
+  },
+  {
+    "number": 2,
+    "answer": "B",
+    "value": "72",
+    "confidence": "HIGH",
+    "reasoning": "Numbers are 12a, 12b with gcd(a,b)=1 and 144ab = 2160, so ab = 15. Coprime factorisations of 15: (1,15) and (3,5), giving pairs (12,180) and (36,60). Means x = 96, y = 48; mean of x and y = (96+48)/2 = 72."
+  },
+  {
+    "number": 3,
+    "answer": "B",
+    "value": "18",
+    "confidence": "HIGH",
+    "reasoning": "log10(54) = log10 2 + 3 log10 3 = 0.301 + 1.431 = 1.732. 10*1.732 = 17.32, so the number of digits is 17 + 1 = 18. Confirmed exactly: len(str(54**10)) = 18."
+  },
+  {
+    "number": 4,
+    "answer": "A",
+    "value": "\\(\\{1,\\ n^{2}\\}\\)",
+    "confidence": "HIGH",
+    "reasoning": "x^(sqrt x) = (x^x)^(1/n) = x^(x/n). For x > 0, x != 1 the exponents match: sqrt(x) = x/n, i.e. n = x/sqrt(x) = sqrt(x), so x = n^2. x = 1 also satisfies the equation trivially. Solution set {1, n^2}."
+  },
+  {
+    "number": 5,
+    "answer": "D",
+    "value": "160",
+    "confidence": "HIGH",
+    "reasoning": "|P union M| = 50 + 75 - 35 = 90. Neither = 250 - 90 = 160."
+  },
+  {
+    "number": 6,
+    "answer": "B",
+    "value": "422",
+    "confidence": "HIGH",
+    "reasoning": "10^n - 1 is a string of n nines, so its digit sum is 9n. 9n = 3798 gives n = 422."
+  },
+  {
+    "number": 7,
+    "answer": "A",
+    "value": "\\(2^{2222}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Base-10 logs: 2222^2 -> 6.69, 222^22 -> 51.62, 22^222 -> 298.02, 2^2222 -> 668.89. Largest is 2^2222."
+  },
+  {
+    "number": 8,
+    "answer": "B",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "Primes in (0,50): 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47 -> m = 15. Primes in (50,100): 53,59,61,67,71,73,79,83,89,97 -> n = 10. m - n = 5."
+  },
+  {
+    "number": 9,
+    "answer": "C",
+    "value": "\\(\\frac{3}{8}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Set f = 1: e = 1/4, d = 3e = 3/4, c = d/2 = 3/8, b = 2c = 3/4, a = b/3 = 1/4. abc = 9/128, def = 3/16, ratio = 3/8."
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "value": "39",
+    "confidence": "HIGH",
+    "reasoning": "3^x + 3^(x+1) + 3^(x+2) = 3^x(1 + 3 + 9) = 13*3^x. For every natural x >= 1 this is divisible by 13*3 = 39, and x = 1 gives exactly 39, so 117 cannot always divide it. Largest guaranteed divisor = 39."
+  },
+  {
+    "number": 11,
+    "answer": "A",
+    "value": "81",
+    "confidence": "HIGH",
+    "reasoning": "Search over all two-digit numbers: the only n with n = 4*reverse(n) + 9 and digit product 8 is 81 (81 = 4*18 + 9 = 72 + 9, and 8*1 = 8)."
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "alpha + beta = -k, alpha*beta = -15. (alpha - beta)^2 = (alpha+beta)^2 - 4*alpha*beta gives 64 = k^2 + 60, so k^2 = 4 and the positive value is k = 2."
+  },
+  {
+    "number": 13,
+    "answer": "A",
+    "value": "p = 1, q = -6",
+    "confidence": "HIGH",
+    "reasoning": "f(1) = 1 + 4 + p + q = 0 -> p + q = -5. f(-2) = -8 + 16 - 2p + q = 0 -> -2p + q = -8. Subtracting: 3p = 3, p = 1, hence q = -6."
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "x^2+5x+6 = (x+2)(x+3) and x^2+8x+15 = (x+3)(x+5). HCF = (x+3), so k = 3."
+  },
+  {
+    "number": 15,
+    "answer": "D",
+    "value": "1000000",
+    "confidence": "HIGH",
+    "reasoning": "5^(x+1) - 5^(x-1) = 5^(x-1)(25 - 1) = 24*5^(x-1) = 600, so 5^(x-1) = 25 and x = 3. 10^(2x) = 10^6 = 1000000."
+  },
+  {
+    "number": 16,
+    "answer": "C",
+    "value": "221",
+    "confidence": "HIGH",
+    "reasoning": "Equal remainders means the divisor divides the pairwise differences: 28200-12288 = 15912, 44333-28200 = 16133, 44333-12288 = 32045. Their gcd is 221 (and 221 is among the options)."
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "value": "1 : 3",
+    "confidence": "HIGH",
+    "reasoning": "x^2 - 6xy + 9y^2 = (x - 3y)^2 = 0, so x = 3y, hence y : x = 1 : 3."
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "value": "100",
+    "confidence": "MED",
+    "reasoning": "1331 = 11^3, so m = 11, n = 3 and (m-1)^(n-1) = 10^2 = 100. Runner-up A (=1): the degenerate factorisation m = 1331, n = 1 also satisfies m^n = 1331 and would give 1330^0 = 1; A would win if the setter intended n = 1 to be admissible. The stem only says m, n are positive integers, so it is strictly ambiguous, but the non-trivial reading giving 100 is plainly intended."
+  },
+  {
+    "number": 19,
+    "answer": "B",
+    "value": "\\(-1\\)",
+    "confidence": "HIGH",
+    "reasoning": "Put t = a^(m-n); then a^(n-m) = 1/t. Sum = 1/(t-1) + 1/(1/t - 1) = 1/(t-1) + t/(1-t) = (1 - t)/(t - 1) = -1."
+  },
+  {
+    "number": 20,
+    "answer": "B",
+    "value": "\\(z < x < y\\)",
+    "confidence": "HIGH",
+    "reasoning": "Raise all to the 6th power: x^6 = 2^3 = 8, y^6 = 3^2 = 9, z^6 = 6. Since 6 < 8 < 9 and t -> t^6 is increasing on positives, z < x < y."
+  },
+  {
+    "number": 21,
+    "answer": "C",
+    "value": "1.5625",
+    "confidence": "HIGH",
+    "reasoning": "y = x^(log x) so log y = (log x)(log x) = 1.25^2 = 1.5625."
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "value": "\\(\\frac{(x-\\beta)f(\\alpha) - (x-\\alpha)f(\\beta)}{\\alpha-\\beta}\\)",
+    "confidence": "HIGH",
+    "reasoning": "The remainder R(x) is linear with R(alpha) = f(alpha), R(beta) = f(beta). Lagrange interpolation on the two nodes gives R(x) = f(alpha)(x-beta)/(alpha-beta) + f(beta)(x-alpha)/(beta-alpha) = [(x-beta)f(alpha) - (x-alpha)f(beta)]/(alpha-beta). Checked at x = alpha and x = beta."
+  },
+  {
+    "number": 23,
+    "answer": "C",
+    "value": "\\(49x^2 + 2\\)",
+    "confidence": "HIGH",
+    "reasoning": "(49x^2 + 2)^2 = 2401x^4 + 2*49*2*x^2 + 4 = 2401x^4 + 196x^2 + 4, exactly the given area. Side = 49x^2 + 2."
+  },
+  {
+    "number": 24,
+    "answer": "C",
+    "value": "\\(\\frac{z}{x}\\)",
+    "confidence": "HIGH",
+    "reasoning": "x = k y z gives y = x/(k z) = (1/k)*(x/z), i.e. y is proportional to x/z, which is the same as y varying inversely as z/x."
+  },
+  {
+    "number": 25,
+    "answer": "A",
+    "value": "\\(\\frac{1}{6}\\)",
+    "confidence": "HIGH",
+    "reasoning": "0.7bar3 = (73-7)/90 = 66/90 = 11/15; 0.5bar6 = (56-5)/90 = 51/90 = 17/30. Distance = 22/30 - 17/30 = 5/30 = 1/6."
+  },
+  {
+    "number": 26,
+    "answer": "B",
+    "value": "\\(\\left(\\frac{1}{6},\\ -1\\right)\\)",
+    "confidence": "HIGH",
+    "reasoning": "Divide both by xy: 5/y + 2/x = 7 and 10/y + 3/x = 8. With u = 1/x, v = 1/y: 2u + 5v = 7, 3u + 10v = 8. Solving: u = 6, v = -1, so x = 1/6, y = -1. Both original equations check."
+  },
+  {
+    "number": 27,
+    "answer": "B",
+    "value": "2013",
+    "confidence": "HIGH",
+    "reasoning": "Differences 5000*1.2^k - 2000*1.1^k: k=0 -> 3000, k=1 -> 3800, k=2 -> 4780, k=3 -> 5978. First exceeds 5000 at k = 3, i.e. the year 2013."
+  },
+  {
+    "number": 28,
+    "answer": "C",
+    "value": "Y wins by 130 m",
+    "confidence": "HIGH",
+    "reasoning": "Speeds 5 and 6. X must cover 1200-70 = 1130 at speed 5 -> 226 time units; Y covers 1200 at speed 6 -> 200 time units. Y wins. At t = 200 X is at 70 + 5*200 = 1070 m, so 1200 - 1070 = 130 m short."
+  },
+  {
+    "number": 29,
+    "answer": "D",
+    "value": "25 km/hr",
+    "confidence": "HIGH",
+    "reasoning": "300/v - 300/(v+5) = 2 gives 1500 = 2v(v+5), v^2 + 5v - 750 = 0, v = 25 (positive root). Check: 300/25 = 12 h, 300/30 = 10 h, difference 2 h."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "value": "2 : 1",
+    "confidence": "HIGH",
+    "reasoning": "10(6m + 8w) = 4(13m + 24w) gives 60m + 80w = 52m + 96w, so 8m = 16w and m = 2w. Ratio 2 : 1."
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "value": "120",
+    "confidence": "HIGH",
+    "reasoning": "With s per row and r rows: (s+2)(r-3) = sr -> 2r - 3s = 6; (s+4)(r-5) = sr -> 4r - 5s = 20. Solving gives s = 8, r = 15, so total students = 120."
+  },
+  {
+    "number": 32,
+    "answer": "D",
+    "value": "Rs. 1200",
+    "confidence": "HIGH",
+    "reasoning": "Extra interest = P*2*1/100 = 24, so P = 1200."
+  },
+  {
+    "number": 33,
+    "answer": "D",
+    "value": "\\(\\frac{5}{6}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Village 1 (61 parts of 25): males 675, females 850. Village 2 (13 parts of 200): males 1200, females 1400. Combined 1875 : 2250 = 5 : 6."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "13/3 = 4.333 feet (more than 4.3 but less than 4.4)",
+    "confidence": "HIGH",
+    "reasoning": "(3g + 4*4.8)/7 = 4.6 gives 3g = 32.2 - 19.2 = 13, g = 13/3 = 4.3333 feet, which lies strictly between 4.3 and 4.4."
+  },
+  {
+    "number": 35,
+    "answer": "A",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "Sorted: 3, 4, 5, 6, 9, 11, 18. Seven values, median is the 4th = 6."
+  },
+  {
+    "number": 36,
+    "answer": "B",
+    "value": "\\(180^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "Angles are 360*(1,2,3)/6 = 60, 120, 180 degrees. Largest = 180 degrees."
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "value": "20",
+    "confidence": "HIGH",
+    "reasoning": "Scaling factor 50/250 = 1/5. Highest 170 -> 34, lowest 70 -> 14. Difference 34 - 14 = 20 (equivalently 100/5)."
+  },
+  {
+    "number": 38,
+    "answer": "B",
+    "value": "D (highest, 74.5%) and F (smallest, 38.7%)",
+    "confidence": "HIGH",
+    "reasoning": "Trained percentage Y/X: A 45/86 = 52.3%, B 903/1305 = 69.2%, C 940/2019 = 46.6%, D 869/1166 = 74.5%, E 544/954 = 57.0%, F 464/1198 = 38.7%. Highest D, smallest F."
+  },
+  {
+    "number": 39,
+    "answer": "D",
+    "value": "A (55.6%)",
+    "confidence": "HIGH",
+    "reasoning": "Placement rate among the trained is Z/Y: A 25/45 = 55.6%, B 461/903 = 51.1%, C 474/940 = 50.4%, D 416/869 = 47.9%, E 254/544 = 46.7%, F 174/464 = 37.5%. Highest is A."
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "value": "A, B and C",
+    "confidence": "HIGH",
+    "reasoning": "Z/Y > 1/2 for A (0.556), B (0.5105) and C (0.5043); it fails for D (0.479), E (0.467) and F (0.375). So the jails are A, B and C."
+  },
+  {
+    "number": 41,
+    "answer": "C",
+    "value": "Four",
+    "confidence": "HIGH",
+    "reasoning": "Exhaustive search over 100-999 with three distinct digits, divisible by 7, whose reversal is also divisible by 7: 168 (rev 861), 259 (rev 952), 861 (rev 168), 952 (rev 259). Exactly four. (The count is the same whether or not reversals with a leading zero are allowed, since none arise.)"
+  },
+  {
+    "number": 42,
+    "answer": "B",
+    "value": "111",
+    "confidence": "HIGH",
+    "reasoning": "5x + 9y = 7 forces x = 5 + 9t, y = -2 - 5t. The x-range -500 < x < 500 gives -56 <= t <= 54 (111 values); the y-range gives -100 <= t <= 99, which is weaker. Intersection = 111 integer pairs. Exhaustive enumeration confirms 111."
+  },
+  {
+    "number": 43,
+    "answer": "D",
+    "value": "1 and 3",
+    "confidence": "HIGH",
+    "reasoning": "S = (100X+10Y+Z)+(100Y+10Z+X)+(100Z+10X+Y) = 111(X+Y+Z) = 3*37*(X+Y+Z). So S is always divisible by 3, by (X+Y+Z) and by 37 (statements 1 and 3). Divisibility by 9 needs 3 | (X+Y+Z), which fails e.g. for X,Y,Z = 1,2,4 (S = 777, not divisible by 9). So statement 2 is false."
+  },
+  {
+    "number": 44,
+    "answer": "C",
+    "value": "180 minutes",
+    "confidence": "HIGH",
+    "reasoning": "Speeds 4 : 5 over the same distance means times 5 : 4, say 5k and 4k. 5k - 4k = k = 45 minutes, so Y's time = 4k = 180 minutes."
+  },
+  {
+    "number": 45,
+    "answer": "C",
+    "value": "\\(\\frac{2P}{S}\\)",
+    "confidence": "HIGH",
+    "reasoning": "For two observations a, b the harmonic mean is 2/(1/a + 1/b) = 2ab/(a+b) = 2P/S."
+  },
+  {
+    "number": 46,
+    "answer": "B",
+    "value": "\\(16\\frac{2}{3}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Take Y = 100, then X = 120. Y is less than X by (120-100)/120 = 1/6 of X, i.e. 50/3 = 16 2/3 percent."
+  },
+  {
+    "number": 47,
+    "answer": "C",
+    "value": "44100",
+    "confidence": "HIGH",
+    "reasoning": "LCM(3,4,5,6,7) = 420 = 2^2*3*5*7. A perfect square multiple needs even exponents throughout: 2^2*3^2*5^2*7^2 = 44100. Checked: 1764 is a square but not divisible by 420; 17640 is divisible but not a square; 44100 is the least value that is both."
+  },
+  {
+    "number": 48,
+    "answer": "D",
+    "value": "60 minutes",
+    "confidence": "HIGH",
+    "reasoning": "1/20 = 1/30 + 1/t gives 1/t = 1/20 - 1/30 = 1/60, so t = 60 minutes."
+  },
+  {
+    "number": 49,
+    "answer": "D",
+    "value": "\\(a + c + e = b + d\\)",
+    "confidence": "HIGH",
+    "reasoning": "(x^2-1) a factor means f(1) = 0 and f(-1) = 0, i.e. a+b+c+d+e = 0 and a-b+c-d+e = 0. Adding: 2(a+c+e) = 0; subtracting: 2(b+d) = 0. Hence a+c+e = 0 = b+d, so a+c+e = b+d."
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "value": "18",
+    "confidence": "HIGH",
+    "reasoning": "x^8 + 1/x^8 = 47 gives (x^4 + 1/x^4)^2 = 49 so x^4 + 1/x^4 = 7; then (x^2 + 1/x^2)^2 = 9 so x^2 + 1/x^2 = 3. Now x^6 + 1/x^6 = (x^2+1/x^2)^3 - 3(x^2+1/x^2) = 27 - 9 = 18. Numerically checked at x = 1.618034 (x^8+1/x^8 = 47.000, x^6+1/x^6 = 18.000)."
+  },
+  {
+    "number": 51,
+    "answer": "C",
+    "value": "\\(12\\pi\\)",
+    "confidence": "HIGH",
+    "reasoning": "360 revolutions per minute = 6 revolutions per second = 6*2*pi = 12*pi radians per second."
+  },
+  {
+    "number": 52,
+    "answer": "B",
+    "value": "36",
+    "confidence": "HIGH",
+    "reasoning": "25cosec^2 x + sec^2 x = 26 + 25cot^2 x + tan^2 x, and by AM-GM 25cot^2 x + tan^2 x >= 2*sqrt(25) = 10, attained when tan^2 x = 5. Minimum = 36. Confirmed by a numeric scan over (0, pi/2): min = 36.0000."
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "value": "\\(\\alpha = 1\\)",
+    "confidence": "HIGH",
+    "reasoning": "theta = 0.9 degrees. cot(n*theta)*cot((100-n)*theta) = cot(n*theta)*cot(90deg - n*theta) = cot*tan = 1, pairing n = 1..49 with n = 99..51. The unpaired term n = 50 is cot(45deg) = 1. So alpha = 1. Product evaluated numerically to 30 digits = 1.000000000000000000000000000000."
+  },
+  {
+    "number": 54,
+    "answer": "A",
+    "value": "\\(\\sqrt{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "tan 6theta = cot 2theta = tan(90deg - 2theta), so 8theta = 90deg and theta = 11.25deg (which satisfies 0 < 6theta < 90deg). Then 4theta = 45deg and sec 45deg = sqrt(2)."
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "value": "5 m",
+    "confidence": "HIGH",
+    "reasoning": "If the break is at height h, the fallen part has length 15 - h and sin 30deg = h/(15-h). So (15-h)/2 = h, giving h = 5 m."
+  },
+  {
+    "number": 56,
+    "answer": "A",
+    "value": "about 85 feet (exactly 256/3 = 85.33 feet)",
+    "confidence": "MED",
+    "reasoning": "Put the shorter (40 ft) tower at x = 0 and the taller at x = 100. Collinearity of the three tips with the pole tip at height 6 requires the pole to be OUTSIDE the segment: at x = +75 the collinearity equation 40 + 0.75(H-40) = 6 gives H = -16/3, impossible. At x = -75 (75 ft from the shorter tower on the far side) the slope 34/75 gives H = 40 + 3400/75 = 85.33 ft, i.e. about 85 feet. Runner-up B (110 ft): it would win only if the intended configuration were the pole between the towers with the sight-line running the other way, but that yields no positive height, so A is the only consistent reading."
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "value": "\\(\\sqrt{pq}\\)",
+    "confidence": "HIGH",
+    "reasoning": "h = p tan 27deg and h = q tan 63deg. Since 27deg + 63deg = 90deg, tan 63deg = cot 27deg, so h^2 = pq tan27*tan63 = pq (verified numerically = 1.0000). Hence h = sqrt(pq)."
+  },
+  {
+    "number": 58,
+    "answer": "D",
+    "value": "8",
+    "confidence": "HIGH",
+    "reasoning": "The 15 terms are sin^2 of 6,12,...,90 degrees. Pair sin^2 t + sin^2(90-t) = 1 for the seven pairs (6,84),(12,78),(18,72),(24,66),(30,60),(36,54),(42,48) giving 7, plus sin^2 90 = 1. Total 8. Numeric sum = 8.0000000000."
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "value": "\\(\\sec\\theta\\)",
+    "confidence": "HIGH",
+    "reasoning": "cos/(1+sin) + tan = [cos^2 + sin(1+sin)]/[(1+sin)cos] = (1+sin)/[(1+sin)cos] = sec. sympy simplify of (expression - sec) returns exactly 0."
+  },
+  {
+    "number": 60,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "The standard identity (sin - cos + 1)/(sin + cos - 1) = (1 + sin)/cos makes the difference identically zero. Verified numerically at theta = 0.3, 0.7, 1.1, 2.0, 2.9, 4.0 and 5.5 rad: residuals of order 1e-16, i.e. exactly 0."
+  },
+  {
+    "number": 61,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "With a = tan x, b = tan y the expression is (a+b)(ab-1)/(ab) + ((a+b)/(ab))(1-ab) = 0. sympy simplify returns 0, and numeric checks at several (x,y) pairs give ~1e-16."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "\\(\\frac{1}{\\sec x + \\tan x}\\)",
+    "confidence": "HIGH",
+    "reasoning": "(sec x - tan x)(sec x + tan x) = 1, so the radicand equals 1/(sec x + tan x)^2 and the square root is 1/(sec x + tan x). Checked numerically at x = 0.3, 0.7, 1.1, -0.4 - option C matches to full precision while option D does not."
+  },
+  {
+    "number": 63,
+    "answer": "C",
+    "value": "\\(\\frac{79}{65}\\)",
+    "confidence": "HIGH",
+    "reasoning": "cot = 63/16 in the first quadrant gives adjacent 63, opposite 16, hypotenuse sqrt(63^2+16^2) = sqrt(4225) = 65. sin + cos = 16/65 + 63/65 = 79/65."
+  },
+  {
+    "number": 64,
+    "answer": "D",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "sin^4 + cos^4 = (sin^2+cos^2)^2 - 2 sin^2 cos^2 = 1 - 2 sin^2 cos^2, exactly the numerator, so the fraction is 1 and the expression is 1 + 4 = 5. sympy simplify returns 5."
+  },
+  {
+    "number": 65,
+    "answer": "A",
+    "value": "\\(\\frac{775}{168}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Diagonal = sqrt(48^2 + 14^2) = 50. With theta at the longer side, cos = 48/50 and sin = 14/50, so sec + cosec = 50/48 + 50/14 = 25/24 + 25/7 = 775/168."
+  },
+  {
+    "number": 66,
+    "answer": "C",
+    "value": "\\(\\sqrt{\\frac{x}{y} + \\frac{y}{z} + \\frac{z}{x}}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Put p = x/y, q = y/z, r = z/x with pqr = 1. The sides are q+r, r+p, p+q, so s = p+q+r and s-a = p, s-b = q, s-c = r. Heron gives area = sqrt(s*pqr) = sqrt(p+q+r) = sqrt(x/y + y/z + z/x). sympy simplification of Heron's formula returns exactly this, and three numeric substitutions match while options A, B, D do not."
+  },
+  {
+    "number": 67,
+    "answer": "C",
+    "value": "\\(\\frac{1}{2}(\\sqrt{3}+1)\\) cm\\(^2\\) = 1.366 cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Third angle 105deg, included side c = sqrt(3)+1 opposite it. Area = c^2 sinA sinB/(2 sin C) = (sqrt3+1)^2 * sin30 * sin45 /(2 sin105). sympy gives exactly 1/2 + sqrt(3)/2 = 1.36603, which is option C."
+  },
+  {
+    "number": 68,
+    "answer": "D",
+    "value": "\\(\\frac{7}{8}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With A(0,0), B(b,0), C(b+c,d), D(c,d) the line through O = ((b+c)/2, d/2) parallel to AD meets DC at its midpoint E and AB at its midpoint F. Symbolic area of triangle DOE = bd/8 against the parallelogram bd, so the remaining portion is 7/8 of the whole."
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "value": "\\(d = 16 + 4\\sqrt{7} \\approx 26.58\\) cm, so 26 cm < d < 27 cm",
+    "confidence": "MED",
+    "reasoning": "Half-chord 12, so the centre distances to the chord are sqrt(400-144) = 16 and sqrt(256-144) = 4sqrt(7) = 10.583. With the centres on opposite sides of the common chord d = 26.583, which lies in (26, 27). Runner-up A (d < 26): the same-side configuration is also geometrically valid (both circles still meet in the same two points) and gives d = 16 - 10.583 = 5.417, which satisfies d < 26; A would win if the setter intended that arrangement. The option boundaries 26/27/28 are clearly built around 26.58, so B is the intended reading, but the stem does not exclude the other."
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "value": "9.6 cm",
+    "confidence": "HIGH",
+    "reasoning": "Put the circle at the origin with radius 5 and A = (0,5). B = (t,u) with t^2+u^2 = 25 and t^2+(u-5)^2 = 64 gives u = -7/5 and t = 24/5. By symmetry C = (-24/5, -7/5), so BC = 48/5 = 9.6 cm."
+  },
+  {
+    "number": 71,
+    "answer": "B",
+    "value": "10 cm and 6 cm",
+    "confidence": "HIGH",
+    "reasoning": "Internal contact gives r1 - r2 = 4, and pi(r1^2 + r2^2) = 136pi gives r1^2 + r2^2 = 136. Solving: r2^2 + 4r2 - 60 = 0, r2 = 6, r1 = 10. (100 + 36 = 136 checks.)"
+  },
+  {
+    "number": 72,
+    "answer": "C",
+    "value": "\\(\\frac{\\sqrt{\\pi}}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Equal areas: pi r^2 = a^2 so a = r sqrt(pi). Perimeter ratio = 2 pi r / (4 r sqrt(pi)) = sqrt(pi)/2."
+  },
+  {
+    "number": 73,
+    "answer": "D",
+    "value": "\\(8(3 - 2\\sqrt{2})\\) cm \\(\\approx 1.373\\) cm",
+    "confidence": "HIGH",
+    "reasoning": "Big circle radius 4 with centre (4,4) touching both axes. The small circle of radius r sits at (r,r) and touches the big one externally, so sqrt(2)(4 - r) = 4 + r, giving r = 12 - 8sqrt(2) and diameter 24 - 16sqrt(2) = 8(3 - 2sqrt(2)) = 1.3726 cm."
+  },
+  {
+    "number": 74,
+    "answer": "C",
+    "value": "\\(\\frac{8}{3}\\) litre",
+    "confidence": "HIGH",
+    "reasoning": "Inner curved surface 2pi*3*7 = 42pi takes 1 litre. All surfaces = inner 42pi + outer 2pi*4*7 = 56pi + two annular rims 2*pi(16-9) = 14pi, total 112pi. Paint needed = 112pi/42pi = 8/3 litre."
+  },
+  {
+    "number": 75,
+    "answer": "C",
+    "value": "of unit length",
+    "confidence": "HIGH",
+    "reasoning": "Square side s has area s^2. Rectangle has one side s^2 and other side t with s^2 * t = s^2, so t = 1: the other side is of unit length."
+  },
+  {
+    "number": 76,
+    "answer": "D",
+    "value": "\\(1 : 1\\)",
+    "confidence": "HIGH",
+    "reasoning": "The diagonals of a rectangle bisect each other, so each of the four triangles has area = (1/2)*side*(half the other side) = LW/4. With L = 4k, W = 3k both are 6k^2. Ratio 1 : 1."
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "value": "\\(850\\pi\\) square feet",
+    "confidence": "HIGH",
+    "reasoning": "Full disc area = pi*30^2 = 900pi. Removing a 20-degree sector leaves 900pi*(340/360) = 850pi square feet."
+  },
+  {
+    "number": 78,
+    "answer": "B",
+    "value": "\\(\\frac{3}{4}AB^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "In triangle ABD the angle at D is 90deg and the angle at A is 60deg, so BD = AB sin 60deg and BD^2 = (3/4)AB^2."
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "value": "1 only",
+    "confidence": "HIGH",
+    "reasoning": "Triangles APD and QPC are congruent (DP = PC, vertical angles at P, alternate angles with AD parallel to CQ), so statement 1 holds - a numeric parallelogram A(0,0) B(4,0) C(5,3) D(1,3) gives P(3,3), Q(6,6), area PDA = area PCQ = 3. Congruence also makes P the midpoint of AQ, so CP : BA = QP : QA = 1 : 2 and area QAB = 4 * area PCQ (numerically 12 vs 3), not twice. Statement 2 is false."
+  },
+  {
+    "number": 80,
+    "answer": "D",
+    "value": "\\(30\\cdot 8\\) cubic metre",
+    "confidence": "HIGH",
+    "reasoning": "Volume = pi r^2 h = (22/7)(1.4)^2(5) = (22/7)(9.8) = 30.8 cubic metre."
+  },
+  {
+    "number": 81,
+    "answer": "A",
+    "value": "\\(\\frac{xy}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "The diagonals of a rhombus are perpendicular bisectors of each other, so the area is half the product of the diagonals = xy/2."
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "value": "1, 1, 1",
+    "confidence": "HIGH",
+    "reasoning": "x = y = z = 1 gives sides 3, 4, 5 which satisfy 3 < 4 < 5 and 3^2 + 4^2 = 5^2, so the right-angle condition holds at the smallest possible positive integers. Checked that (1,2,3), (2,3,4) and (3,4,5) all fail the Pythagorean condition (and (3,4,5) even fails the ordering)."
+  },
+  {
+    "number": 83,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Three non-collinear points determine exactly one circle, so a triangle has exactly one circumcircle."
+  },
+  {
+    "number": 84,
+    "answer": "A",
+    "value": "\\(3\\cdot 14\\) cm",
+    "confidence": "HIGH",
+    "reasoning": "Arc = r*theta = 6 * (30 * pi/180) = 6 * pi/6 = pi = 3.14159 cm, i.e. about 3.14 cm."
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "value": "\\(6\\cdot 2\\) m",
+    "confidence": "HIGH",
+    "reasoning": "Foot distance from the first wall = sqrt(25 - 4.8^2) = 1.4; from the second = sqrt(25 - 1.4^2) = 4.8. Breadth = 1.4 + 4.8 = 6.2 m."
+  },
+  {
+    "number": 86,
+    "answer": "D",
+    "value": "2 square units",
+    "confidence": "HIGH",
+    "reasoning": "The largest inscribed square has the circle's diameter as its diagonal: diagonal 2, so side sqrt(2) and area 2 square units."
+  },
+  {
+    "number": 87,
+    "answer": "D",
+    "value": "\\(\\frac{\\sqrt{3} + 2\\sqrt{2}}{\\sqrt{3}}r = \\frac{(3 + 2\\sqrt{6})}{3}r \\approx 2.633r\\)",
+    "confidence": "HIGH",
+    "reasoning": "The three base centres form an equilateral triangle of side 2r at height r, circumradius 2r/sqrt(3). The top centre is 2r from each, so it sits sqrt(4r^2 - 4r^2/3) = 2r sqrt(2/3) above their plane, giving height r + 2r sqrt(2/3) = r(3 + 2sqrt(6))/3 = 2.633r. Evaluated numerically the options give A 1.633r, B 3.225r, C 5.828r, D 2.633r - only D matches. (Option A is the same expression with the +r floor radius omitted.)"
+  },
+  {
+    "number": 88,
+    "answer": "A",
+    "value": "\\(p = q\\)",
+    "confidence": "HIGH",
+    "reasoning": "The enclosing cylinder has radius r and height 2r. p = 4 pi r^2 and q = 2 pi r (2r) = 4 pi r^2, so p = q (Archimedes)."
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "value": "about 269 sq units (exactly \\(100\\sqrt{3} + 96 = 269.2\\))",
+    "confidence": "HIGH",
+    "reasoning": "Triangle ACD has AD = DC = CA = 20 so it is equilateral: area = (sqrt3/4)(400) = 173.205. Triangle ABC has a right angle at B with hypotenuse AC = 20 and BC = 12, so AB = 16 and area = 96. Total = 269.205, i.e. about 269 sq units."
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "value": "\\(5 : 13\\)",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: PS is a diameter of the big circle (radius 9, so PS = 18) with PQ = QR = RS = 6; the semicircle on QS (diameter 12, radius 6) sits in the upper half, and the hatching is the crescent between the big upper semicircle and that semicircle. Shaded = (1/2)pi*81 - (1/2)pi*36 = 45pi/2. Unshaded = 81pi - 45pi/2 = 117pi/2. Ratio = 45:117 = 5:13."
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "value": "\\(4\\sqrt{3} - 2\\pi\\) cm\\(^2\\) \\(\\approx 0.645\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: three equal circles of radius 2, mutually touching, with A, B, C their centres joined into a triangle; the hatched region is the small curvilinear triangle enclosed by the three arcs at the centre. Centre triangle is equilateral of side 2r = 4, area = (sqrt3/4)*16 = 4sqrt3; subtract the three 60-degree sectors of radius 2, total 3*(1/6)*pi*4 = 2pi. Shaded = 4sqrt3 - 2pi = 0.645 cm^2, matching option A (B and D are negative or too large, C = 0.161)."
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "value": "\\(3(4\\pi - 3\\sqrt{3})= 12\\pi - 9\\sqrt{3} \\approx 22.11\\) sq units",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: a rectangle 6sqrt3 by 6 inscribed in the circle, and ONLY the circular segment above the rectangle's top side is hatched. Diagonal = sqrt(108+36) = 12 so R = 6; the top chord 6sqrt3 lies 3 from the centre (3^2 + (3sqrt3)^2 = 36 checks), giving a central angle of 2*arccos(1/2) = 120 degrees. Segment = (1/2)R^2(alpha - sin alpha) = 18(2pi/3 - sqrt3/2) = 12pi - 9sqrt3 = 22.11, which is option B (A = 12.69, C = 7.49, D negative)."
+  },
+  {
+    "number": 93,
+    "answer": "C",
+    "value": "\\(15^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: a full horizontal line with two rays drawn from one point of it on the upper side - one up-left and one up-right. x is between the left half-line and the up-left ray, y between the two rays, z between the up-right ray and the right half-line, so x + y + z = 180 degrees. With y = 6x and z = 5x, 12x = 180 and x = 15 degrees."
+  },
+  {
+    "number": 94,
+    "answer": "D",
+    "value": "\\(\\frac{22\\sqrt{2}}{3}\\) cm\\(^2\\) \\(\\approx 10.37\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Place D(0,0), C(7,0), A(a,h), B(a+4,h). DA = 2 gives a^2+h^2 = 4; BC = 3 gives (3-a)^2+h^2 = 9. Subtracting: a = 2/3, h = 4sqrt(2)/3. Area = (1/2)(4+7)h = 22sqrt(2)/3 = 10.371 cm^2, matching option D (options A, B, C evaluate to 17.96, 26.94, 38.11)."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "value": "\\(360^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: the eight labelled vertices form a single closed self-intersecting octagon 1-2-7-8-5-6-3-4-1, made of four long segments (1-4, 2-7, 3-6, 8-5) and four short ones (1-2, 3-4, 5-6, 7-8), and the marked angle at each vertex is the angle between its two edges. The four V-shapes are the apex pairs of four triangles whose third vertices are the four crossings, so the eight angles = 4*180 minus the four crossing angles. Those four crossing angles are vertically opposite the interior angles of the convex quadrilateral formed by the crossings, and so sum to 360. Total = 720 - 360 = 360 degrees. Measuring the eight angles directly from pixel coordinates read off the scan gives 42.5+49.6+57.8+47.6+31.7+56.9+44.5+29.4 = 360.0 degrees."
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "value": "25",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: PQ and RS are the two parallel vertical lines, with E above F on PQ and G above H on RS; line A-E-G-B descends to the right and line C-F-H-B ascends to the right, meeting at B. In triangle BGH: angle BHG = 180 - 110 = 70 degrees; angle AGH = angle AEF = 95 degrees (corresponding angles, PQ parallel RS, transversal AB) so angle BGH = 180 - 95 = 85 degrees. Hence x = 180 - 70 - 85 = 25. Equivalently AB is 5 degrees off horizontal and CB is 20 degrees off horizontal, on opposite sides, so the angle at B is 25 degrees."
+  },
+  {
+    "number": 97,
+    "answer": "A",
+    "value": "85",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: the top line carries A and B, the bottom line carries E, C, D, F (so AB is parallel to CD); at A the up-right ray AH is the opposite ray of the down-left ray AE, and the up-left ray is opposite AC. Let beta be the angle line AC (and its parallel BD) makes below the horizontal going right, and gamma the angle AE makes below the horizontal going left. At D, angle FDG is between the rightward ray DF and the down-right ray DG along BD extended, so beta = 55. At A the three angles below the top line give gamma + 40 + beta = 180, so gamma = 85. Angle HAB is vertically opposite the angle between AE and the leftward horizontal, so x = gamma = 85."
+  },
+  {
+    "number": 98,
+    "answer": "D",
+    "value": "462 square units (= \\(147\\pi\\) with \\(\\pi = 22/7\\))",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: semicircle ABC on the whole diameter AC = 28 (above the line), and semicircles AEF and CDF on AF = FC = 14 (below the line). Total = (1/2)pi(14^2) + 2*(1/2)pi(7^2) = 98pi + 49pi = 147pi. With pi = 22/7 this is exactly 147*22/7 = 462 square units (the true value 461.81 rounds to the same option)."
+  },
+  {
+    "number": 99,
+    "answer": "D",
+    "value": "\\(25\\pi - 48 \\approx 30.54\\) cm\\(^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Figure read: a rectangle 8 cm by 6 cm inscribed in the circle (its four corners on the circle) with the ENTIRE circle-minus-rectangle region hatched, left and right slivers included. Diagonal = 10 so radius = 5 and circle area = 25pi = 78.54. Shaded = 78.54 - 48 = 30.54 cm^2, i.e. about 30.5. (If only the top and bottom segments were shaded the value would be 22.37, which matches no option, confirming the whole-annulus reading.)"
+  },
+  {
+    "number": 100,
+    "answer": "B",
+    "value": "2 and 3 only",
+    "confidence": "MED",
+    "reasoning": "Figure read: A is directly above D and B directly above C, so ABCD is a right trapezium with AD parallel to BC and AD < BC; O is the intersection of the diagonals. Statement 2 is always true - angle AOD and angle BOC are vertically opposite (measured on the scan's coordinates both are 75.3786 degrees). Statement 3 is always true - adding AB+BC>AC, AD+DC>AC, AB+AD>BD, BC+CD>BD gives 2*perimeter > 2*(AC+BD); on the scan's coordinates perimeter 3735 > diagonals 2637. Statement 1 requires (AO-OC)(OD-OB) = 0, i.e. O must bisect one diagonal; here O divides both diagonals in the ratio AD:BC which is not 1, and the measured sums are 435303 vs 400617, so statement 1 is FALSE. Runner-up D (1, 2 and 3): it would win if the figure were meant as a parallelogram or as any quadrilateral in which a diagonal is bisected, which is the reading under which statement 1 becomes true; the drawn figure is clearly not one, but a setter treating statement 1 as a general truth would key D."
+  }
+]

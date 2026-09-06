@@ -1,0 +1,702 @@
+[
+  {
+    "number": 1,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "a:b:c:d = 2:sqrt3:sqrt2:1 so a^2:b^2:c^2:d^2 = 4:3:2:1 (take a^2=4k, b^2=3k, c^2=2k, d^2=k). Numerator = (-4+3+2+1)k = 2k; denominator = (4-3+2-1)k = 2k. Ratio = 1."
+  },
+  {
+    "number": 2,
+    "answer": "B",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "Distance is the same for all four: 2u*xt = 3u*4t = 4u*3t = xu*2t. The middle two both give 12ut, so 2xut = 12ut gives x = 6, and xu*2t = 12ut gives x = 6 as well. Consistent."
+  },
+  {
+    "number": 3,
+    "answer": "A",
+    "value": "1 : 1",
+    "confidence": "HIGH",
+    "reasoning": "m = k, n = 2k, p = 3j, q = 4j. 2m + 4p = 2k + 12j; n + 3q = 2k + 12j. Identical for all k, j, so the ratio is 1:1 (checked with k=1,j=1 and k=5,j=3)."
+  },
+  {
+    "number": 4,
+    "answer": "C",
+    "value": "Rs. 76.25",
+    "confidence": "HIGH",
+    "reasoning": "CI = 10000(1.05^3 - 1) = 10000(0.157625) = Rs. 1576.25. SI = 10000*0.05*3 = Rs. 1500. Difference = Rs. 76.25 (exact fraction 305/4)."
+  },
+  {
+    "number": 5,
+    "answer": "D",
+    "value": "100%",
+    "confidence": "HIGH",
+    "reasoning": "Let listed price L. Cost = (3/4)L, selling price = 1.5L. Gain = 0.75L on a cost of 0.75L, i.e. 100%."
+  },
+  {
+    "number": 6,
+    "answer": "D",
+    "value": "20",
+    "confidence": "HIGH",
+    "reasoning": "Interior - exterior = (n-2)180/n - 360/n = (180n - 720)/n = 144, so 36n = 720 and n = 20. (Check n=20: interior 162, exterior 18, difference 144.)"
+  },
+  {
+    "number": 7,
+    "answer": "C",
+    "value": "x^2 - 2x - 100 = 0",
+    "confidence": "HIGH",
+    "reasoning": "Sum 2, product -100 gives x^2 - (sum)x + product = x^2 - 2x - 100 = 0. Option B has sum -2, so it is wrong. Option A claims infinitely many equations with DIFFERENT roots, but sum and product fix the root pair (1 +/- sqrt(101)) uniquely, so all such equations are scalar multiples with identical roots. D is plainly false. C is the only defensible option."
+  },
+  {
+    "number": 8,
+    "answer": "B",
+    "value": "17",
+    "confidence": "HIGH",
+    "reasoning": "p(2) = 8 + 12 - 12 - a = 0 gives a = 8. Then x^3 + 3x^2 - 6x - 8 = (x-2)(x+1)(x+4), so the other zeros are -1 and -4 and the sum of their squares is 1 + 16 = 17."
+  },
+  {
+    "number": 9,
+    "answer": "D",
+    "value": "sqrt((1-t)/(1+t))",
+    "confidence": "HIGH",
+    "reasoning": "cosec79(1 - cos79) = (1-t)/sin79 = (1-t)/sqrt(1-t^2) = (1-t)/sqrt((1-t)(1+t)) = sqrt((1-t)/(1+t)). Numerically LHS = 0.824336 and option D = 0.824336; A = 1.2131, B = 0.19438, C = 5.1446."
+  },
+  {
+    "number": 10,
+    "answer": "B",
+    "value": "lambda - delta",
+    "confidence": "HIGH",
+    "reasoning": "Both are monic quartics, so p(x) = (x-a)(x-b)(x-g)(x-delta) and q(x) = (x-a)(x-b)(x-g)(x-lambda). p - q = (x-a)(x-b)(x-g)[(x-delta)-(x-lambda)] = (x-a)(x-b)(x-g)(lambda - delta). Dividing gives lambda - delta."
+  },
+  {
+    "number": 11,
+    "answer": "B",
+    "value": "p <= 1/8",
+    "confidence": "HIGH",
+    "reasoning": "x^2 - x cos(theta) + p = 0 needs discriminant cos^2(theta) - 4p >= 0, i.e. p <= cos^2(theta)/4, for EVERY theta in [0, pi/4]. The minimum of cos^2 on that interval is at theta = pi/4, giving 1/2, so p <= 1/8. Option C is the reverse inequality and D is the bound for cos^2 = 1."
+  },
+  {
+    "number": 12,
+    "answer": "C",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "cos^2 + 3 sin^2 + 2 = 1 + 2 sin^2 + 2 = 3 + 2 sin^2(theta) (sympy: 4 - cos 2theta). sin^2 ranges over [0,1], so the expression ranges over [3,5] and greatest minus least = 2."
+  },
+  {
+    "number": 13,
+    "answer": "B",
+    "value": "96/7 cm",
+    "confidence": "HIGH",
+    "reasoning": "Two inscribed-square configurations exist. Corner at the right angle B: side = ab/(a+b) = 48/14 = 24/7, area 11.755. Side lying on the hypotenuse: altitude = 4.8, side = 10*4.8/14.8 = 120/37, area 10.519. Maximum area is the first, side 24/7, perimeter 4*24/7 = 96/7 cm. (Option A is the side, not the perimeter.)"
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Real roots need discriminant 16 - 8k >= 0, so k <= 2 and the greatest value is 2."
+  },
+  {
+    "number": 15,
+    "answer": "B",
+    "value": "2 and 3 only",
+    "confidence": "HIGH",
+    "reasoning": "Sorted old: 36,41,43,61,71,92,93,95,99,110,110,127; median = (92+93)/2 = 92.5. New (93->94): median = (92+94)/2 = 93. Difference = 0.5, not 1, so statement 1 is FALSE. Sum 978 -> 979, mean 81.5 -> 81.5833, difference 1/12 = 0.0833 < 0.1, statement 2 TRUE. Mode is 110 (twice) before and after, difference 0, statement 3 TRUE."
+  },
+  {
+    "number": 16,
+    "answer": "A",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "225^n mod 1000 = 625 for every n >= 2 (225^2 = 50625), so 225^40 ends ...890625 and the hundreds (10^2) digit is 6. The alternative reading '100th digit' is impossible: 225^40 has only 95 digits."
+  },
+  {
+    "number": 17,
+    "answer": "C",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "1^a = 1; 2^b mod 10 cycles {2,4,8,6}; 3^c cycles {3,9,7,1}; 4^d cycles {4,6}. Exhaustive enumeration of 1 + 2^b + 3^c + 4^d mod 10 over all cycles gives the set {0,2,4,6,8} - exactly 5 remainders (all even, since 1+even+odd+even is even)."
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "value": "4",
+    "confidence": "HIGH",
+    "reasoning": "mod 10: 4^n is 4 (n odd) or 6 (n even); 6^n = 6; 9^n is 9 (odd) or 1 (even); 11^n = 1. n odd: 4+6+9+1 = 20 -> 0. n even: 6+6+1+1 = 14 -> 4. Distinct remainders {0,4}, sum = 4. Verified for n = 1..59."
+  },
+  {
+    "number": 19,
+    "answer": "B",
+    "value": "12",
+    "confidence": "HIGH",
+    "reasoning": "10^4 is divisible by 16, so the remainder depends only on the last four digits. The concatenation ends ...9899100, so the last four digits are 9100, and 9100 = 16*568 + 12. Verified by computing the full 192-digit integer mod 16 = 12."
+  },
+  {
+    "number": 20,
+    "answer": "C",
+    "value": "4 hours",
+    "confidence": "HIGH",
+    "reasoning": "Rates 1/3, 1/6, 1/9, 1/12 per hour; exactly one worker per hour and no one in two consecutive hours, so the best schedule alternates the two fastest: A,B,A,B = 1/3+1/6+1/3+1/6 = 1 exactly, in 4 hours. The maximum achievable in 3 hours is A,B,A = 5/6 < 1, so 4 is minimal. Option A (36/25) is the all-four-together answer and D (2) is A and B together, both of which violate the stated constraints."
+  },
+  {
+    "number": 21,
+    "answer": "C",
+    "value": "2a",
+    "confidence": "HIGH",
+    "reasoning": "With u,v the two cube roots, u^3+v^3 = 2a and uv = cbrt(a^2 - (a^2+b^3)) = cbrt(-b^3) = -b. Then p^3 = u^3+v^3+3uv(u+v) = 2a - 3bp, so p^3 + 3bp = 2a. Numerical check a=5, b=2: p = 1.30027, p^3+3bp = 10.0000 = 2a."
+  },
+  {
+    "number": 22,
+    "answer": "D",
+    "value": "COMPUTED 20 pieces (85 cm squares) - NO PRINTED OPTION MATCHES",
+    "confidence": "LOW",
+    "reasoning": "NO OPTION IS CORRECT. Plank is 425 cm by 340 cm; the largest square leaving no wastage has side HCF(425,340) = 85 cm, giving (425/85)*(340/85) = 5*4 = 20 pieces. 20 is not among 45/90/400/500. Stem and options verified verbatim on page p03, so this is not a transcription defect. Printed option D (500) corresponds exactly to a 17 cm square (425/17 = 25, 340/17 = 20, 25*20 = 500) - 17 is a common divisor but NOT the greatest, so 500 answers 'no wastage' but not 'largest size'. D is recorded only as my best reading of the intended key."
+  },
+  {
+    "number": 23,
+    "answer": "A",
+    "value": "x - 5y",
+    "confidence": "HIGH",
+    "reasoning": "Factorisations (sympy): x^4-13x^2y^2-300y^4 = (x-5y)(x+5y)(x^2+12y^2); x^3-4x^2y-4xy^2-5y^3 = (x-5y)(x^2+xy+y^2); x^3-125y^3 = (x-5y)(x^2+5xy+25y^2). The only common factor is x - 5y. Option C divides the first and third but not the second."
+  },
+  {
+    "number": 24,
+    "answer": "A",
+    "value": "5 (from x=2, y=3) - but x+y = 11 (x=8, y=3) is ALSO valid",
+    "confidence": "MED",
+    "reasoning": "Brute force over 2 <= x,y <= 59 gives solutions (x,y,x+y) = (2,3,5), (2,4,6), (4,2,6), (4,6,10), (6,4,10), (8,3,11), (2,12,14), (12,2,14). Two of these hit printed options: (2,3) -> 5 and (8,3) -> 11. Check (2,3): gcd(2^8*3, 2^6*3^2) = 192 = 32*2*3. Check (8,3): gcd(2^8*3, 2^18*3^2) = 768 = 32*8*3. So the item has TWO correct printed options and is defective. I take A (5), the smallest solution and the natural intended one. RUNNER-UP: D (11) - it wins if the setter intended the maximal case where the HCF equals 768 itself."
+  },
+  {
+    "number": 25,
+    "answer": "D",
+    "value": "12",
+    "confidence": "HIGH",
+    "reasoning": "The product is (n+1)!. 910 = 2*5*7*13, whose largest prime is 13, so we need n+1 >= 13, i.e. n >= 12. 13! contains 2, 5, 7 and 13, so n = 12 works and is smallest (verified by direct factorial test)."
+  },
+  {
+    "number": 26,
+    "answer": "D",
+    "value": "1, 2 and 3",
+    "confidence": "HIGH",
+    "reasoning": "Odd + odd = even, so 2 divides it. 555 = 3*185 and 777 = 3*259, so both terms are divisible by 3. 555 = 37*15 and 777 = 37*21, so both terms are divisible by 37. Verified by computing 555^777 + 777^555 mod 2, 3 and 37: all zero."
+  },
+  {
+    "number": 27,
+    "answer": "A",
+    "value": "1 only",
+    "confidence": "MED",
+    "reasoning": "Statement 1: (3m^3+2m^2+5m+n)/m = 3m^2+2m+5 + n/m, which is an integer exactly when m divides n; so if it is not an integer then m does not divide n. TRUE. Statement 2: 5(8^m) + 2^(3m) = 5*8^m + 8^m = 6*8^m. At m = 0 this is 6, and 6 mod 48 = 6, so it is NOT divisible by 48 for all WHOLE numbers (whole numbers include 0 in Indian convention). FALSE, so answer A. RUNNER-UP: C - it wins if 'whole numbers' is read as positive integers only, since 6*8^m is divisible by 48 for every m >= 1."
+  },
+  {
+    "number": 28,
+    "answer": "C",
+    "value": "24",
+    "confidence": "HIGH",
+    "reasoning": "AM = 40/2 = 20, GM = 0.8*20 = 16, so ab = 256. (a-b)^2 = (a+b)^2 - 4ab = 1600 - 1024 = 576, giving |a-b| = 24."
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "value": "50 days",
+    "confidence": "HIGH",
+    "reasoning": "Total work = 50*40 = 2000 man-days. Man-days per 10-day block: 500, 450, 400, 350, 300, cumulative 500, 950, 1350, 1700, 2000. The 2000th man-day is reached exactly at the end of the fifth block, i.e. day 50."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "value": "x = 2861/7534 = 0.37975, so 0 < x < 0.5",
+    "confidence": "HIGH",
+    "reasoning": "Evaluated exactly bottom-up with Fractions: 8 + 9/10 = 89/10; 6 + 70/89 = 604/89; 4 + 445/604 = 2861/604; 2 + 1812/2861 = 7534/2861; x = 2861/7534 = 0.379745. That lies strictly between 0 and 0.5."
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "value": "11 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Spirit fractions are 1/5 and 4/5; the target 1:3 means spirit fraction 1/4. Alligation: (4/5 - 1/4) : (1/4 - 1/5) = (11/20) : (1/20) = 11 : 1, first bottle to second."
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "value": "-3",
+    "confidence": "HIGH",
+    "reasoning": "(3s+5c)^2 + (5s-3c)^2 = 34, so 25 + (5s-3c)^2 = 34 and 5 sin - 3 cos = +/- 3. Solving 3 sin + 5 cos = 5 exactly gives cos = 1 (theta = 0, value -3) or cos = 8/17, sin = 15/17 (value +3). Both signs are genuinely attainable, but only -3 is printed, so A is forced."
+  },
+  {
+    "number": 33,
+    "answer": "C",
+    "value": "Both 1 and 2",
+    "confidence": "HIGH",
+    "reasoning": "The polynomial is x^(4k)(1 + x^2 + x^4 + x^6) = x^(4k)(x^2+1)(x^4+1) (sympy factorisation confirms). Both x^2+1 and x^4+1 are factors, so both remainders are zero. Verified by polynomial division for k = 0,1,2,3: remainder 0 in every case."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "7",
+    "confidence": "HIGH",
+    "reasoning": "With s = sin A in (0,1], the expression is s + 5 + 1/s. Its derivative 1 - 1/s^2 is negative on (0,1), so it decreases to its minimum at s = 1 (A = pi/2), giving 1 + 5 + 1 = 7. Scan over s = 0.01..1.00 confirms the minimum 7.0 at s = 1."
+  },
+  {
+    "number": 35,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "The nth term (2n+1)/(n^2(n+1)^2) equals 1/n^2 - 1/(n+1)^2 identically (sympy: difference simplifies to 0), so the series telescopes to 1 - 0 = 1. sympy summation to infinity returns 1."
+  },
+  {
+    "number": 36,
+    "answer": "A",
+    "value": "720",
+    "confidence": "HIGH",
+    "reasoning": "972/421 = 2 + 130/421; 421/130 = 3 + 31/130; 130/31 = 4 + 6/31; 31/6 = 5 + 1/6; 6/1 = 6. So (a,b,c,d,e) = (2,3,4,5,6) and the continued fraction rebuilds exactly to 421/972. Product = 720."
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "value": "252 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Cube surface = 6*14^2 = 1176 sq cm. Each painted circle has area (22/7)*49 = 154, six of them 924. Unpainted = 1176 - 924 = 252 sq cm."
+  },
+  {
+    "number": 38,
+    "answer": "B",
+    "value": "0.7 cm",
+    "confidence": "HIGH",
+    "reasoning": "Thickness 0.16 mm = 0.016 cm. Remaining plate is 210/360 of the disc: volume = (7/12)*pi*49*0.016. Setting (4/3)*pi*r^3 equal to it gives r^3 = 0.343, r = 0.7 cm. Exact solve returns r = 7/10 both with pi = 22/7 and with pi symbolic."
+  },
+  {
+    "number": 39,
+    "answer": "B",
+    "value": "1.7",
+    "confidence": "HIGH",
+    "reasoning": "Let the central angle be 2t. Chord = 2R sin t, segment height = R(1 - cos t). 2R sin t = 2*sqrt3*R(1-cos t) gives tan(t/2) = 1/sqrt3, t = 60 deg, central angle 120 deg. P = pi R^2/3; segment Q = P - (1/2)R^2 sin120 = P - sqrt3 R^2/4. P/Q = (pi/3)/((pi/3) - sqrt3/4). With the paper's pi = 3.14 and sqrt3 = 1.7 this is 1.0467/0.6217 = 1.684; with exact constants 1.705. Either way the nearest printed value is 1.7."
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "value": "154 square cm",
+    "confidence": "HIGH",
+    "reasoning": "The chord of the outer circle tangent to the inner circle is bisected at the point of contact, and the perpendicular from the common centre has length r. So R^2 - r^2 = 7^2 = 49. Annulus area = pi(R^2 - r^2) = (22/7)*49 = 154 sq cm - determinable without knowing R or r individually, so D is wrong."
+  },
+  {
+    "number": 41,
+    "answer": "B",
+    "value": "42 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Right angle at B (15-20-25). Foot of the altitude divides the hypotenuse into AP = AB^2/AC = 9 and PC = BC^2/AC = 16, with BP = 15*20/25 = 12. Areas = (1/2)(9)(12) = 54 and (1/2)(16)(12) = 96; difference = 42 sq cm."
+  },
+  {
+    "number": 42,
+    "answer": "D",
+    "value": "P^(1/3) Q^(2/3)",
+    "confidence": "HIGH",
+    "reasoning": "P^n = a1...an and Q^(2n) = a(n+1)...a(3n), so the product of all 3n terms is P^n Q^(2n) and the overall GM is (P^n Q^(2n))^(1/(3n)) = P^(1/3) Q^(2/3). sympy confirms the difference is identically 0; numeric check n=3, a1=2, r=3 gives GM = 162 = P^(1/3)Q^(2/3), while P^2Q = 30304 and PQ^2 = 4251528 and sqrt(PQ) = 71.07."
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "value": "25%",
+    "confidence": "HIGH",
+    "reasoning": "y*CP = z*SP with y:z = 5:4 gives 5c = 4s, so s = 5c/4. Profit% = (s-c)/c*100 = 25%."
+  },
+  {
+    "number": 44,
+    "answer": "B",
+    "value": "6",
+    "confidence": "HIGH",
+    "reasoning": "Simple interest tripling in 8 years means interest of 2P in 8 years, i.e. P/4 per year. In 20 years interest = 5P, so the amount is 6P and n = 6."
+  },
+  {
+    "number": 45,
+    "answer": "A",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "Equal man-days: x(x+1) = (x+5)(x-2), i.e. x^2 + x = x^2 + 3x - 10, giving 2x = 10 and x = 5. (Check: 5 men * 6 days = 30 = 10 men * 3 days.)"
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "value": "3 : 1",
+    "confidence": "HIGH",
+    "reasoning": "a+b = 5k, b+c = 7k, c+a = 6k sum to 2(a+b+c) = 18k, so a+b+c = 9k and a = 2k, b = 3k, c = 4k. Then a-b+c = 3k and a+b-c = k, ratio 3:1."
+  },
+  {
+    "number": 47,
+    "answer": "D",
+    "value": "Rs. 1",
+    "confidence": "HIGH",
+    "reasoning": "x = 1000(1.1^3 - 1) = 1000(0.331) = Rs. 331. y = 1000*0.11*3 = Rs. 330. Difference = Rs. 1."
+  },
+  {
+    "number": 48,
+    "answer": "B",
+    "value": "12 < x < 16",
+    "confidence": "HIGH",
+    "reasoning": "BD is a side of both triangles ABD and BCD. Triangle inequality in ABD (6, 10): 4 < x < 16. In BCD (18, 6): 12 < x < 24. The intersection is 12 < x < 16."
+  },
+  {
+    "number": 49,
+    "answer": "A",
+    "value": "(sqrt2 + 1) : 1",
+    "confidence": "HIGH",
+    "reasoning": "The inscribed circle touches both bounding radii, so its centre lies on the bisector at distance d from the corner with perpendicular distance d/sqrt2 = r, i.e. d = r*sqrt2. It also touches the arc, so d + r = R. Hence R = r(sqrt2 + 1) and R : r = (sqrt2+1) : 1."
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "value": "36 square cm",
+    "confidence": "HIGH",
+    "reasoning": "AB = BC and CD = DA make ABCD a kite; B and D are both equidistant from A and C, so BD is the perpendicular bisector of AC and the diagonals are perpendicular. Area = (1/2)d1 d2 = (1/2)(6)(12) = 36 sq cm."
+  },
+  {
+    "number": 51,
+    "answer": "C",
+    "value": "28 degrees",
+    "confidence": "HIGH",
+    "reasoning": "cot(A - 22) = tan(90 - (A-22)) = tan(112 - A), so 3A = 112 - A giving A = 28 (and 3A = 84 is acute as required). Numerical check: tan 84 = 9.5144 = cot 6 = 9.5144; the other options fail (A=25 gives 3.732 vs 19.08, A=27 gives 6.314 vs 11.43)."
+  },
+  {
+    "number": 52,
+    "answer": "C",
+    "value": "2 (p = 1, q = 1)",
+    "confidence": "HIGH",
+    "reasoning": "(sin - cos + 1)/(sin + cos - 1) = sec + tan identically (sympy: the difference simplifies to 0; checked numerically at theta = 0.3, 0.7, 1.1, 1.4 to 15 digits). So p = q = 1 and p + q = 2."
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "value": "4 m",
+    "confidence": "HIGH",
+    "reasoning": "Complementary angles give tan(alpha) = 6/x and tan(90-alpha) = cot(alpha) = 6/(x+5), so x/6 = 6/(x+5), i.e. x^2 + 5x - 36 = 0 = (x+9)(x-4). The positive root is x = 4 m."
+  },
+  {
+    "number": 54,
+    "answer": "C",
+    "value": "Both 1 and 2",
+    "confidence": "HIGH",
+    "reasoning": "At A = B = C = 60 deg, sinA+sinB+sinC = 3*(sqrt3/2) = 3sqrt3/2 exactly, and cosA+cosB+cosC = 3*(1/2) = 3/2 exactly (both verified symbolically). These are in fact the maxima of the two expressions over all triangles, attained only for the equilateral triangle, so each condition not only 'can' but must give an equilateral triangle. Both statements are correct."
+  },
+  {
+    "number": 55,
+    "answer": "D",
+    "value": "1000/3 km",
+    "confidence": "HIGH",
+    "reasoning": "A's 50-minute head start = 80*(5/6) = 200/3 km. Relative speed 100 - 80 = 20 kmph, so B catches A after (200/3)/20 = 10/3 hours, by which time B has covered 100*(10/3) = 1000/3 km from Delhi. Cross-check on A: 80*(5/6 + 10/3) = 80*25/6 = 1000/3."
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "value": "98%",
+    "confidence": "HIGH",
+    "reasoning": "New volume factor = 1.1 * 1.2 * 1.5 = 1.98 (exact: 11/10 * 12/10 * 15/10 = 198/100), an increase of 98%."
+  },
+  {
+    "number": 57,
+    "answer": "A",
+    "value": "COMPUTED Rs. 2400 - NO PRINTED OPTION MATCHES",
+    "confidence": "LOW",
+    "reasoning": "NO OPTION IS CORRECT. Deductions total 93+24+55 = 172, so the reduced amounts sum to 9400 - 172 = 9228 = 12k with k = 769. P's reduced amount = 3*769 = 2307, so P's SHARE = 2307 + 93 = Rs. 2400 (then Q = 3100, R = 3900, total 9400, checks out). Rs. 2400 is not printed. Stem and options verified verbatim on page p08. Printed option A (2307) is P's amount AFTER the deduction, i.e. the key omits adding back the Rs. 93; taking A as P's share makes the three shares total only 9028, not 9400. I record A only as my best reading of the intended key. (B, C, D give totals 9304, 9832 and a non-integer respectively.)"
+  },
+  {
+    "number": 58,
+    "answer": "D",
+    "value": "1, 2 and 3",
+    "confidence": "HIGH",
+    "reasoning": "P^2 = k1 R and Q^2 = k2 R. (1) P^2 + Q^2 = (k1+k2)R, varies as R. (2) PQ = sqrt(k1 k2) R, varies as R. (3) P^2 - Q^2 = (k1-k2)R; the given P != Q guarantees k1 != k2 so the constant is non-zero and it too varies as R. All three."
+  },
+  {
+    "number": 59,
+    "answer": "C",
+    "value": "36",
+    "confidence": "HIGH",
+    "reasoning": "Work is fixed: pq = 1.5p(q-12), so 1.5q - 18 = q and q = 36. p cancels, so the data are sufficient and D is wrong."
+  },
+  {
+    "number": 60,
+    "answer": "D",
+    "value": "25",
+    "confidence": "HIGH",
+    "reasoning": "Each factor is a + 3 + 1/a with a > 0; by AM-GM a + 1/a >= 2 so each factor >= 5, with equality at a = 1 (sympy minimum on (0, inf) = 5). The two factors are independent, so the product's minimum is 5*5 = 25 at a = b = 1."
+  },
+  {
+    "number": 61,
+    "answer": "C",
+    "value": "Both statements needed; the answer is then a",
+    "confidence": "HIGH",
+    "reasoning": "For positive integers abcd >= each of a,b,c,d, so abcd - x is smallest for the LARGEST of them; the question is 'which is largest'. Statement-I (a > b > c) says nothing about d, which could exceed a - insufficient. Statement-II (c is not the smallest) gives no ordering at all - insufficient. Together, a > b > c and something is smaller than c forces d < c, so a > b > c > d and a is the unique maximum. Both needed."
+  },
+  {
+    "number": 62,
+    "answer": "A",
+    "value": "Statement-I alone suffices (value = k - 1); Statement-II alone does not",
+    "confidence": "HIGH",
+    "reasoning": "mn = k even with m, n prime forces one of them to be 2. Statement-I (m > n): m = 2 would need n < 2, impossible, so n = 2 and mn - n + 1 = k - 2 + 1 = k - 1 - determined. Statement-II ('one of the numbers is 2') does not say which: if n = 2 the value is k - 1, if m = 2 then n = k/2 and the value is k/2 + 1; these differ for every k except k = 4. So exactly one statement alone answers it."
+  },
+  {
+    "number": 63,
+    "answer": "A",
+    "value": "Statement-I alone suffices (remainder 1); Statement-II alone does not",
+    "confidence": "HIGH",
+    "reasoning": "p = -1 (mod p+1), so p^n = (-1)^n (mod p+1). Statement-I (n even) gives remainder 1 regardless of p - sufficient. Statement-II (p even, so p >= 2) leaves n's parity open: n even gives remainder 1, n odd gives remainder p != 1 - insufficient. Exactly one statement alone works."
+  },
+  {
+    "number": 64,
+    "answer": "C",
+    "value": "Both statements needed; xy is then positive",
+    "confidence": "MED",
+    "reasoning": "Statement-I fixes x = cbrt(-0.19683) < 0 but says nothing about y - insufficient. Statement-II gives xy = x * x^(1/3) = x^(4/3), which is >= 0 always but equals 0 when x = 0, and Statement-II alone does not exclude x = 0 - strictly insufficient. Together, x is a specific non-zero negative number and y = cbrt(x) < 0, so xy > 0. Statement-I's role is precisely to certify x != 0, which is a coherent design. RUNNER-UP: A - it wins if the setter treats Statement-II alone as sufficient by tacitly assuming x != 0, in which case exactly one statement answers the question."
+  },
+  {
+    "number": 65,
+    "answer": "B",
+    "value": "Either statement alone proves the triangle equilateral",
+    "confidence": "HIGH",
+    "reasoning": "Statement-I: a^2+b^2+c^2-(ab+bc+ca) = (1/2)[(a-b)^2+(b-c)^2+(c-a)^2] (sympy difference = 0), zero only when a=b=c. Statement-II looks asymmetric but expands EXACTLY as (a-b)^2 + 2(a-c)^2 + 2(b-c)^2 (sympy: 3a^2+3b^2+4c^2-2ab-4bc-4ca minus that expression = 0), again a sum of squares forcing a=b=c; solving it for real positive sides returns only the a=b=c branch (the other roots are complex). So each statement alone is sufficient."
+  },
+  {
+    "number": 66,
+    "answer": "B",
+    "value": "Either statement alone; P > Q is always true",
+    "confidence": "HIGH",
+    "reasoning": "P = xy and Q = xy sin(theta) where theta is the parallelogram's angle; 'strictly not a rectangle' means theta != 90 deg so sin(theta) < 1 and Q < P always. The answer 'yes' therefore follows under Statement-I alone (x:y = 2:1) and under Statement-II alone (theta = 60 deg gives Q = 0.866 xy). Either statement alone answers it."
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "value": "Either statement alone; perimeter = 20 cm",
+    "confidence": "HIGH",
+    "reasoning": "For a tangential quadrilateral, Pitot's theorem gives AB + CD = BC + DA, so the perimeter is twice either sum. Statement-I (AB + DC = 10) gives perimeter 20; Statement-II (AD + BC = 10) gives perimeter 20. Either alone suffices."
+  },
+  {
+    "number": 68,
+    "answer": "B",
+    "value": "Either statement alone; ratio 1 : sqrt3",
+    "confidence": "HIGH",
+    "reasoning": "In a rhombus of side s, d1^2 + d2^2 = 4s^2. Statement-I: one diagonal = s gives the other = sqrt(4s^2 - s^2) = s*sqrt3, ratio 1 : sqrt3. Statement-II: longer diagonal = s*sqrt3 gives the other = sqrt(4s^2 - 3s^2) = s, the same ratio. Either alone determines it."
+  },
+  {
+    "number": 69,
+    "answer": "D",
+    "value": "Not determinable; at least four integer pairs (r,R) fit",
+    "confidence": "HIGH",
+    "reasoning": "The chord is bisected at the point of tangency, so R^2 = r^2 + 12^2 = r^2 + 144. Statement-I alone (r integer) leaves R free (r=5,9,16,... all admissible). Statement-II alone (R integer) likewise. Together, R^2 - r^2 = 144 in positive integers has (R-r)(R+r) = 144 with both factors even, giving (r,R) = (5,13), (9,15), (16,20) and (35,37) - four distinct solutions - so even both statements together do not determine r and R."
+  },
+  {
+    "number": 70,
+    "answer": "B",
+    "value": "Either statement alone; difference = 50 square unit",
+    "confidence": "HIGH",
+    "reasoning": "By Varignon's theorem PQRS is a parallelogram of exactly half the area of ABCD, so the difference is always half of [ABCD] (equivalently equal to [PQRS]). Statement-I: [ABCD] = 100 gives difference 50. Statement-II: [PQRS] = 50 gives [ABCD] = 100 and difference 50. Either alone suffices."
+  },
+  {
+    "number": 71,
+    "answer": "D",
+    "value": "616/9 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Ratio 2:3:7:5:1 sums to 18 parts, so one part = 20 deg; angles are 40, 60, 140, 100, 20 deg. Sector area = (theta/360)(22/7)(49) = (theta/360)(154). Smallest (20 deg): P = 154/18 = 77/9. Largest (140 deg): Q = 539/9. P + Q = 616/9 sq cm."
+  },
+  {
+    "number": 72,
+    "answer": "B",
+    "value": "148 cm",
+    "confidence": "HIGH",
+    "reasoning": "Smallest sector is 20 deg. Perimeter = two radii + arc = 14 + (20/360)(2*(22/7)*7) = 14 + 44/18 = 14 + 22/9 = 148/9 cm. Hence 9p = 148 cm."
+  },
+  {
+    "number": 73,
+    "answer": "C",
+    "value": "156 km",
+    "confidence": "HIGH",
+    "reasoning": "7 p.m. to 4 a.m. is 9 hours, in which A covers 540 km, leaving 260 km. Closing speed 60 + 90 = 150 kmph, so they meet 26/15 h after 4 a.m. B (from Q) covers 90*(26/15) = 156 km. Cross-check: A's total 540 + 60*(26/15) = 644 and 644 + 156 = 800."
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "value": "5:44 a.m.",
+    "confidence": "HIGH",
+    "reasoning": "Meeting occurs 26/15 hours = 104 minutes = 1 h 44 min after B starts at 4:00 a.m., i.e. at 5:44 a.m."
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "value": "21.6 seconds",
+    "confidence": "HIGH",
+    "reasoning": "Combined length 400 + 500 = 900 m = 0.9 km; relative speed (opposite directions) 60 + 90 = 150 kmph. Time = 0.9/150 h = 0.006 h = 3/500 h = 21.6 seconds."
+  },
+  {
+    "number": 76,
+    "answer": "C",
+    "value": "1024/17 square cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p11): square ABCD with A top-left, D top-right, B bottom-left, C bottom-right; E on AD, F on AB. Since 6^2 + 8^2 = 10^2, angle EFC = 90. Then triangles AEF and BFC are similar with ratio EF:FC = 6:8, so AF = (3/4)BC = 3s/4, FB = s/4, AE = 3s/16. From BFC: (s/4)^2 + s^2 = 64 gives (17/16)s^2 = 64, s^2 = 1024/17. Exact solve of the three distance equations returns the unique solution s = 32/sqrt17, e = 6/sqrt17, f = 8/sqrt17, and DE^2 + DC^2 = 100 checks out."
+  },
+  {
+    "number": 77,
+    "answer": "D",
+    "value": "17/4",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ at high zoom: the alpha arc at C lies between the bottom edge CB and the LOWER of the two lines from C, i.e. CF, so alpha = angle FCB; the beta arc at E lies between the top edge EA and EF, so beta = angle AEF. tan alpha = BF/BC = (s/4)/s = 1/4; tan beta = AF/AE = (3s/4)/(3s/16) = 4. Sum = 1/4 + 4 = 17/4. (The rival readings give tan(FEC) = 4/3 -> 19/12 and tan(DEC) = 16/13 -> 77/52, neither of which is printed, which corroborates the reading.)"
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "value": "416/17 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Triangle CDE is right-angled at D with DE = s - AE = 13s/16 and DC = s. Area = (1/2)(13s/16)(s) = 13s^2/32 = 13(1024/17)/32 = 416/17 sq cm. The shared denominator 17 with Q76's answer is an internal consistency check."
+  },
+  {
+    "number": 79,
+    "answer": "D",
+    "value": "66.5 square cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p12, zoomed): big circle centre O radius OB = 7 with CA a horizontal diameter and BD a vertical diameter; a small circle on OC as diameter (radius 3.5) is hatched; chords BA and DA are drawn and the two minor segments between each chord and its arc are hatched. Small circle = (22/7)(3.5^2) = 38.5. Each segment has a 90 degree central angle: sector 154/4 = 38.5 minus triangle (1/2)(7)(7) = 24.5, i.e. 14 each. Total shaded = 38.5 + 2(14) = 66.5 sq cm."
+  },
+  {
+    "number": 80,
+    "answer": "A",
+    "value": "19/25",
+    "confidence": "HIGH",
+    "reasoning": "Whole circle = (22/7)(49) = 154. Shaded = 66.5 (Q79), non-shaded = 154 - 66.5 = 87.5. Ratio = 66.5/87.5 = 133/175 = 19/25. This is the only shaded-area option that also produces a printed ratio option, which cross-confirms Q79 = 66.5."
+  },
+  {
+    "number": 81,
+    "answer": "D",
+    "value": "15/8 cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p12): PQ and RS are perpendicular to AB at Q and S with P and R above; PS and QR cross at M. With Q = (0,0), S = (d,0), P = (0,5), R = (d,3): line PS is y = 5 - 5x/d and line QR is y = 3x/d, meeting at x = 5d/8, y = 15/8. So MN = 15/8 cm, independent of QS (the harmonic-type formula ab/(a+b) = 15/8)."
+  },
+  {
+    "number": 82,
+    "answer": "C",
+    "value": "275/117",
+    "confidence": "HIGH",
+    "reasoning": "N = (5d/8, 0), so QN = 5d/8 and NS = 3d/8. PQNM is a trapezium with parallel sides PQ = 5 and MN = 15/8 and height QN: area = (1/2)(5 + 15/8)(5d/8) = 275d/128. RSNM has parallel sides RS = 3 and MN = 15/8 and height NS: area = (1/2)(3 + 15/8)(3d/8) = 117d/128. Ratio = 275/117 (d cancels), matching the common denominator of all four options."
+  },
+  {
+    "number": 83,
+    "answer": "A",
+    "value": "1.2 lac (120,000)",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p13): Pie-I gives P 40%, Q 30%, S 20%, R 10%; Pie-II gives A 50%, D 20%, B 15%, C 15%. One State inside S is 15% of S and numbers 24,000, so S = 24,000/0.15 = 160,000; S is 20% of the total, so the total = 800,000. Age group B = 15% of 800,000 = 120,000 = 1.2 lac. (The rival reading '15% of the total' gives a total of 160,000 and B = 24,000, which is not printed here and also makes Q84 and Q85 unprintable - so this reading is confirmed three times over.)"
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "value": "2.4 lac (240,000)",
+    "confidence": "HIGH",
+    "reasoning": "With the total 800,000 established in Q83: P = 320,000, Q = 240,000, S = 160,000, R = 80,000. The largest pairwise difference is P - R = 240,000 = 2.4 lac."
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "value": "8,000",
+    "confidence": "HIGH",
+    "reasoning": "R = 10% of 800,000 = 80,000, of whom age group A is 50% = 40,000. Q = 30% of 800,000 = 240,000, of whom age group D is 20% = 48,000. Difference = 48,000 - 40,000 = 8,000."
+  },
+  {
+    "number": 86,
+    "answer": "B",
+    "value": "5/4 square cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p13): ABCD is the upright 1x2 rectangle (A bottom-left, B bottom-right, C top-right, D top-left) and BEDF is its mirror image in the diagonal BD, with F on the left and E on the right. Taking A(0,0), B(1,0), C(1,2), D(0,2), reflecting in 2x+y=2 gives E = (8/5,4/5) and F = (-3/5,6/5), matching the figure's placement. Clipping ABCD by the four half-planes of BEDF gives the parallelogram B(1,0), (1,5/4), D(0,2), (0,3/4), whose area is exactly 5/4 sq cm (verified by exact polygon clipping + shoelace)."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "value": "3/2 square cm",
+    "confidence": "HIGH",
+    "reasoning": "Each rectangle has area 2 and the overlap is 5/4, so the region covered by exactly one rectangle is 2(2 - 5/4) = 3/2 sq cm; equivalently union - intersection = (4 - 5/4) - 5/4 = 3/2. (Option B, 11/4, is the union and option D, 5/4, is the overlap itself.)"
+  },
+  {
+    "number": 88,
+    "answer": "D",
+    "value": "14 cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14): M is the point where the incircle touches the hypotenuse AC. With BC = a, AB = c, AC = b, the inradius gives a + c - b = 2r = 4, and AM = s - a, CM = s - c, so (b+c-a)/(a+b-c) = 2/3. Solving together with a^2 + c^2 = b^2 gives the unique positive solution a = 8, c = 6, b = 10 (sympy). Then AM = 4, CM = 6 (ratio 2:3, checks) and AB + BC = 6 + 8 = 14 cm."
+  },
+  {
+    "number": 89,
+    "answer": "D",
+    "value": "3 - sqrt5",
+    "confidence": "HIGH",
+    "reasoning": "With B at the origin, A = (0,6), C = (8,0), incircle centre (2,2) radius 2. The circle at O1 is tangent to the same two sides AB and AC, so it lies on the bisector from A: distances from A are rho/sin(A/2) and 2/sin(A/2), and external tangency gives (2 - rho)/sin(A/2) = 2 + rho. cos A = 6/10 so sin(A/2) = 1/sqrt5, giving rho = 2(sqrt5-1)/(sqrt5+1) = 3 - sqrt5 = 0.7639 (sympy exact solve)."
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "value": "(22 - 4*sqrt10)/9",
+    "confidence": "HIGH",
+    "reasoning": "Same construction at vertex C, whose sides are BC and AC. cos C = 8/10 so sin(C/2) = 1/sqrt10, and (2 - rho)/sin(C/2) = 2 + rho gives rho = 2(sqrt10 - 1)/(sqrt10 + 1) = (22 - 4*sqrt10)/9 = 1.0390 (sympy exact solve). Option D, (22 - 2*sqrt10)/9 = 1.742, and option A, 5 - sqrt10 = 1.838, are both too large to fit between the incircle and vertex C."
+  },
+  {
+    "number": 91,
+    "answer": "C",
+    "value": "12.5 square cm",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p14, zoomed): the two identical semicircles have the top side DC and the bottom side AB as diameters (radius 5 each, centres (5,w) and (5,0)); the inscribed circle touches top and bottom, centre (5,w/2) radius w/2, touching DC at O. E and F are simultaneously the semicircle intersections AND the extreme left/right points of the inscribed circle, which forces sqrt(25 - w^2/4) = w/2, i.e. w = 5*sqrt2 (this is why the paper supplies sqrt2 = 1.4). The drawn figure's aspect ratio measures 0.706 against sqrt2/2 = 0.707, confirming it. EF = 5*sqrt2, height from O to EF = 5*sqrt2/2, area = (1/2)(5sqrt2)(5sqrt2/2) = 12.5 exactly (no surd, so options A and B are excluded)."
+  },
+  {
+    "number": 92,
+    "answer": "A",
+    "value": "30 square cm",
+    "confidence": "HIGH",
+    "reasoning": "AEFB is a trapezium with parallel sides AB = 10 and EF = 5*sqrt2 and height w/2 = 5*sqrt2/2. Area = (1/2)(10 + 5sqrt2)(5sqrt2/2) = 12.5(1 + sqrt2). Exactly 30.178; with the paper's own instruction sqrt2 = 1.4 it is exactly 12.5(2.4) = 30 square cm."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "value": "14.25 square cm",
+    "confidence": "HIGH",
+    "reasoning": "The shaded lens is the intersection of the two semicircular discs, both radius R = 5 with centres 5*sqrt2 apart. Half-angle: cos = (d/2)/R = sqrt2/2, so the angle is 45 degrees and the lens area = 2[R^2*(pi/4) - (d/2)*sqrt(R^2 - d^2/4)] = 12.5*pi - 25. Exactly 14.2699; with the paper's pi = 3.14 it is exactly 39.25 - 25 = 14.25 square cm. (Options C and D are near half the lens, i.e. a single segment.)"
+  },
+  {
+    "number": 94,
+    "answer": "B",
+    "value": "4*sqrt3 unit",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p15, zoomed): apex A is the top point of the circle and the base BC is the horizontal tangent at the bottom, so the triangle's height equals the circle's diameter. Area 9*pi gives r = 3 and height = 6. For an equilateral triangle, height = side*sqrt3/2, so side = 12/sqrt3 = 4*sqrt3 = 6.928. The drawn figure measures height/base = 0.867 against sqrt3/2 = 0.866, and circle diameter/height = 1.02, both confirming the configuration."
+  },
+  {
+    "number": 95,
+    "answer": "A",
+    "value": "COMPUTED 3(pi + sqrt3) = 14.62 square unit - NO PRINTED OPTION MATCHES",
+    "confidence": "LOW",
+    "reasoning": "NO OPTION IS CORRECT. Hatching read at high zoom is the SYMMETRIC DIFFERENCE: the two circular segments of the circle outside the triangle, plus the two curvilinear corners inside the triangle and outside the circle; the circle-and-triangle overlap is white. Take the circle x^2+y^2 = 9, A = (0,3), B = (-2sqrt3,-3), C = (2sqrt3,-3). Line AB (y = sqrt3 x + 3) meets the circle again at (-3sqrt3/2, -3/2), a 120 degree chord, so each outside segment = (1/2)(9)(2pi/3 - sin120) = 3pi - 2.25sqrt3. Overlap = 9pi - 2(3pi - 2.25sqrt3) = 3pi + 4.5sqrt3 = 17.219. Triangle = 12sqrt3 = 20.785. Shaded = (9pi - overlap) + (12sqrt3 - overlap) = 3pi + 3sqrt3 = 3(pi + sqrt3) = 14.621. Printed options are 29.24, 19.82, 34.92, 39.63. I record A because option A is 6(pi + sqrt3), the SAME algebraic form as the true answer with exactly double the coefficient - a factor-of-2 slip is by far the most likely origin of the key (6(pi+sqrt3) is what this configuration would give for a circle of area 18pi, not 9pi)."
+  },
+  {
+    "number": 96,
+    "answer": "A",
+    "value": "17*pi square unit",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p15): the rectangle is 9 wide by 8 tall (the big circle is tangent to top, bottom and left, so its diameter equals the height 8, radius 4, centre (4,4), touching AB at P = (4,0); a height of 9 would make the circle overflow the width). The small circle is tangent to the right side and the bottom, centre (9-r, r), and touches the big circle: (5-r)^2 + (r-4)^2 = (4+r)^2 gives r^2 - 26r + 25 = 0, so r = 1 (r = 25 is rejected). Sum of areas = 16pi + pi = 17pi."
+  },
+  {
+    "number": 97,
+    "answer": "C",
+    "value": "theta = 53.13 degrees, so 45 < theta < 60",
+    "confidence": "HIGH",
+    "reasoning": "theta is the angle at O1 between O1P (straight down, (0,-1)) and O1O2 (from (4,4) to (8,1), i.e. (4,-3)/5). cos theta = 3/5 = 0.6, so theta = 53.13 degrees, which lies strictly between 45 and 60."
+  },
+  {
+    "number": 98,
+    "answer": "D",
+    "value": "(240 - 12*pi - pi*theta)/24 square unit",
+    "confidence": "HIGH",
+    "reasoning": "The shaded region is bounded below by AB from P(4,0) to the small circle's contact point (8,0) and above by the two arcs meeting at the point of tangency. Take the quadrilateral P(4,0), O1(4,4), O2(8,1), (8,0): shoelace area = 10. Subtract the big-circle sector of angle theta, (theta/360)*pi*16, and the small-circle sector between O2O1 and the downward vertical, whose angle is 180 - theta, giving ((180-theta)/360)*pi*1. Total = 10 - 2*pi*theta/45 - pi/2 + pi*theta/360 = 10 - pi/2 - pi*theta/24 = (240 - 12pi - pi*theta)/24. sympy confirms the difference from option D is identically 0. (Including the corner beyond (8,0) up to B would add 1 - pi/4 and give (264 - 18pi - pi*theta)/24, which is not printed - so the region is as read.)"
+  },
+  {
+    "number": 99,
+    "answer": "A",
+    "value": "2 : 7",
+    "confidence": "HIGH",
+    "reasoning": "FIGURE READ (p16, zoomed): AD is the diameter (radius 6) trisected by B and C, and BOTH semicircles - on AB (radius 2) and on BD (radius 4) - are drawn BELOW AD, with their interiors left white; the hatching is the lower half-disc minus both. Shaded = 18pi - 2pi - 8pi = 8pi. Non-shaded = 36pi - 8pi = 28pi. Ratio = 8:28 = 2:7."
+  },
+  {
+    "number": 100,
+    "answer": "D",
+    "value": "12*pi cm",
+    "confidence": "HIGH",
+    "reasoning": "The boundary of the shaded region is made entirely of arcs (no straight part), consistent with every option being a multiple of pi: the lower semicircular arc of the big circle (pi*6), the semicircular arc on AB (pi*2) and the semicircular arc on BD (pi*4). Total = 6pi + 2pi + 4pi = 12pi cm."
+  }
+]

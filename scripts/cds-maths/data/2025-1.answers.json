@@ -1,0 +1,758 @@
+{
+  "paper": "2025-1",
+  "reconciled": [],
+  "note": "Two independent blind passes agreed on all 100 letters (crosstab: AGREE 100, DISPUTE 0, TWIN 0), so nothing required reconciliation between them. This paper has NO answer key of any kind. Items flagged MED/LOW carry an adjudication note on the row; where no printed option is correct the row says so explicitly rather than presenting the best reading as a verified answer.",
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "A",
+      "value": "-0.25",
+      "confidence": "HIGH",
+      "reasoning": "N = M^2, so M + N = M + M^2, a upward parabola in M. Minimum at M = -1/2, giving -1/2 + 1/4 = -1/4 = -0.25. Verified by differentiation (2M+1=0)."
+    },
+    {
+      "number": 2,
+      "answer": "B",
+      "value": "9540",
+      "confidence": "HIGH",
+      "reasoning": "3-digit numbers of the form 50k+5: 105, 155, ..., 955 (k = 2..19), 18 terms. Sum = 18*(105+955)/2 = 9*1060 = 9540. Enumerated in python: 18 numbers, sum 9540.",
+      "solution": "3-digit numbers of the form 50k+5: 105, 155, ..., 955 (k = 2..19), 18 terms. Sum = 18*(105+955)/2 = 9*1060 = 9540. Listing all eighteen terms confirms both the count and the sum."
+    },
+    {
+      "number": 3,
+      "answer": "B",
+      "value": "69",
+      "confidence": "HIGH",
+      "reasoning": "64+69+72+75 = 280. Need 62 < (280+x)/5 < 76, i.e. 310 < 280+x < 380, i.e. 30 < x < 100. Integer x from 31 to 99 inclusive = 69 values. Exclusive bounds are what make it 69 rather than 71; enumerated exactly with Fractions.",
+      "solution": "64+69+72+75 = 280. Need 62 < (280+x)/5 < 76, i.e. 310 < 280+x < 380, i.e. 30 < x < 100. Integer x from 31 to 99 inclusive = 69 values. Exclusive bounds are what make it 69 rather than 71."
+    },
+    {
+      "number": 4,
+      "answer": "C",
+      "value": "yz",
+      "confidence": "HIGH",
+      "reasoning": "(x+z-y)(x-z+y) = x^2 - (y-z)^2 = L*yz for some constant L. Substituting x = k-y-z gives k^2 - 2k(y+z) + 2yz = (L-2)yz, i.e. k(k - 2(y+z)) = (L-4)yz. Since k-2(y+z) = -(k-2x) = -(y+z-x), we get (y+z-x) = ((4-L)/k)*yz, i.e. proportional to yz."
+    },
+    {
+      "number": 5,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "7^3 = 343 = 342+1, so 7^3 = 1 (mod 342) and 7^84 = (7^3)^28 = 1, p = 1. Also 343 = -1 (mod 344), so 7^84 = (-1)^28 = 1, q = 1. p - q = 0. Confirmed by pow(7,84,342)=1 and pow(7,84,344)=1.",
+      "solution": "Since \\(7^3 = 343 = 342 + 1\\), we have \\(7^3 \\equiv 1 \\pmod{342}\\), so \\(7^{84} = (7^3)^{28} \\equiv 1\\) and the first remainder is \\(p = 1\\). Modulo 344 the same cube gives \\(343 \\equiv -1\\), so \\(7^{84} = (-1)^{28} \\equiv 1\\) and \\(q = 1\\). Hence \\(p - q = 0\\)."
+    },
+    {
+      "number": 6,
+      "answer": "C",
+      "value": "14",
+      "confidence": "MED",
+      "reasoning": "N-1 must be divisible by 2^n. The smallest 5-digit number of this shape is N = 2^n + 1 with 2^n >= 9999, giving 2^14 = 16384 and N = 16385 (2^13+1 = 8193 is only 4-digit). For N = 16385, N-1 = 2^14 exactly, so remainder 1 holds for 2^1 ... 2^14 and no higher power. n = 14. RUNNER-UP B (13): wins if the intended rule is 'largest n with 2^n < 10000' (2^13 = 8192). Note the stem is under-determined as written - the smallest 5-digit N congruent to 1 mod 2^n exists for every n up to 16 (N = 65537), and 16 is not an option, which rules out the 'largest feasible n' reading.",
+      "solution": "For the remainder to be 1 on division by every power up to \\(2^n\\), the number \\(N - 1\\) must be divisible by \\(2^n\\). The smallest five-digit number of that shape is \\(N = 16385\\), because \\(2^{13} + 1 = 8193\\) still has only four digits while \\(2^{14} + 1 = 16385\\) has five. Here \\(N - 1 = 2^{14}\\) exactly, so the remainder is 1 for every divisor from \\(2\\) up to \\(2^{14}\\) and for no higher power, giving \\(n = 14\\)."
+    },
+    {
+      "number": 7,
+      "answer": "C",
+      "value": "27 (but as printed NO option makes the expression an integer)",
+      "confidence": "LOW",
+      "reasoning": "AS PRINTED the third denominator is 523900 = 2^2*5^2*13^2*31, which is not 532900 = 730^2 nor 266450 = 730^2/2. With 523900 the expression is (5239 + 10478p^2 + 5329p^4)/(2^2*5^2*73^2*13^2*31); p = 1, 27, 243, 729 all give non-integers (checked exactly with Fractions), and a brute-force search to p = 200000 found no integer p at all. The digit transposition is evident: with 523900 -> 532900 the expression is (1+p^2)^2/730^2, integral iff 730 | 1+p^2, and 27^2+1 = 730 exactly, so the minimum is p = 27 = option C (value then equals 1). Answer given as the intended reading; flagged because no option is correct for the stem as printed. [ADJUDICATED. The paper is defective here: the third denominator prints 523900 (= 2^2*5^2*13^2*31) where the first two are 532900 = 730^2 and 266450 = 730^2/2. Both blind passes independently factored it and searched p exhaustively to 200000, finding NO integer value for any option as printed. Under the evident digit transposition 523900 -> 532900 the expression is (1+p^2)^2/730^2, integral iff 730 divides 1+p^2, and 27^2+1 = 730 exactly. C is recorded as the intended reading.",
+      "solution": "This question is defective as printed. The third denominator reads \\(523900 = 2^2 \\cdot 5^2 \\cdot 13^2 \\cdot 31\\) while the first two are \\(532900 = 730^2\\) and \\(266450 = 730^2/2\\); with \\(523900\\) the expression is not an integer for any positive integer \\(p\\) whatever, so none of the four values offered works. The evident misprint is a transposed pair of digits, \\(523900\\) for \\(532900\\), and with that correction the expression collapses to \\(\\dfrac{(1+p^2)^2}{730^2}\\), an integer exactly when \\(730\\) divides \\(1 + p^2\\). Since \\(27^2 + 1 = 730\\) exactly, the intended least value is \\(p = 27\\)."
+    },
+    {
+      "number": 8,
+      "answer": "B",
+      "value": "ab - a - b",
+      "confidence": "HIGH",
+      "reasoning": "Let S = a+b, P = ab. Clearing the denominator: (x+S)(P+Sx) = Px gives Sx^2 + S^2 x + SP = 0, i.e. x^2 + Sx + P = 0. So alpha+beta = -(a+b), alpha*beta = ab, and alpha*beta + alpha + beta = ab - a - b.",
+      "solution": "Write \\(S = a + b\\) and \\(P = ab\\), so the denominator is \\(P + Sx\\). Clearing it, \\((x + S)(P + Sx) = Px\\) reduces to \\(Sx^2 + S^2 x + SP = 0\\), i.e. \\(x^2 + Sx + P = 0\\). Hence \\(\\alpha + \\beta = -(a+b)\\) and \\(\\alpha\\beta = ab\\), so \\(\\alpha\\beta + \\alpha + \\beta = ab - a - b\\)."
+    },
+    {
+      "number": 9,
+      "answer": "B",
+      "value": "110",
+      "confidence": "HIGH",
+      "reasoning": "With tens digit t and units digit u: t(u+t) = 84 and u(t+u) = 60. Adding, (t+u)^2 = 144 so t+u = 12; dividing, t:u = 84:60 = 7:5, so t = 7, u = 5. Check: P = 35, 35+49 = 84, 35+25 = 60. N = 75, P+N = 110."
+    },
+    {
+      "number": 10,
+      "answer": "D",
+      "value": "Not possible",
+      "confidence": "HIGH",
+      "reasoning": "The 100 L mixture is 60 L kerosene and 40 L turpentine, i.e. already 60% kerosene. Adding pure kerosene can only raise that fraction, never lower it to 20%. No quantity works."
+    },
+    {
+      "number": 11,
+      "answer": "B",
+      "value": "5 m",
+      "confidence": "HIGH",
+      "reasoning": "The pole foot is at horizontal distance sqrt(0.7^2 + 2.4^2) = sqrt(6.25) = 2.5 m from the corner. The lamp top is 5*sqrt(3)/2 m above ground, so the distance is sqrt(2.5^2 + 75/4) = sqrt(6.25 + 18.75) = sqrt(25) = 5 m.",
+      "solution": "The foot of the pole stands at horizontal distance \\(\\sqrt{0.7^2 + 2.4^2} = \\sqrt{6.25} = 2.5\\) m from the corner where the walls meet. The top of the lamp is \\(\\dfrac{5\\sqrt3}{2}\\) m above the ground, and that vertical rise is perpendicular to the ground distance. So the required length is \\(\\sqrt{2.5^2 + \\dfrac{75}{4}} = \\sqrt{6.25 + 18.75} = \\sqrt{25} = 5\\) m."
+    },
+    {
+      "number": 12,
+      "answer": "A",
+      "value": "231 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Power of the point E inside the circle: AE*EB = r^2 - CE^2 = 400 - 169 = 231. Cross-check: distance from centre to chord = sqrt(400-256) = 12, so E lies 5 from the midpoint (sqrt(169-144)); AE = 11, EB = 21, product 231.",
+      "solution": "By the power of a point lying inside a circle, \\(AE \\times EB = r^2 - CE^2 = 20^2 - 13^2 = 231\\) square cm. As a check, the centre is \\(\\sqrt{20^2 - 16^2} = 12\\) cm from the chord, so \\(E\\) lies \\(\\sqrt{13^2 - 12^2} = 5\\) cm from the midpoint of \\(AB\\); then \\(AE = 16 - 5 = 11\\) and \\(EB = 16 + 5 = 21\\), whose product is again 231 square cm."
+    },
+    {
+      "number": 13,
+      "answer": "A",
+      "value": "2.5d",
+      "confidence": "HIGH",
+      "reasoning": "The water surface plane is at distance R - d from the sphere centre, and the surface circle has radius 2d, so (2d)^2 + (R-d)^2 = R^2. Expanding: 4d^2 - 2Rd + d^2 = 0, so 5d = 2R and R = 2.5d."
+    },
+    {
+      "number": 14,
+      "answer": "A",
+      "value": "5 : 4",
+      "confidence": "HIGH",
+      "reasoning": "Angle bisector from A gives BD:DC = AB:AC = 2:3, so BD = 4*(2/5) = 8/5. In triangle ABD, BE bisects angle B, so AE:ED = AB:BD = 2:(8/5) = 10:8 = 5:4."
+    },
+    {
+      "number": 15,
+      "answer": "A",
+      "value": "2.5 cm",
+      "confidence": "HIGH",
+      "reasoning": "The internal bisector from A gives AB:AC = BD:DC = 3:1. With AB + AC = 10, AB = 7.5 and AC = 2.5 cm."
+    },
+    {
+      "number": 16,
+      "answer": "D",
+      "value": "3.3 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Adding the three equations gives 2(a+b+c) = 26.4, perimeter 13.2. Then CA = 13.2-7.1 = 6.1, AB = 13.2-12.1 = 1.1, BC = 13.2-7.2 = 6.0. Since 1.1^2 + 6.0^2 = 37.21 = 6.1^2 the triangle is right-angled, area = (1/2)(1.1)(6.0) = 3.3. Heron gives the same: sqrt(6.6*5.5*0.6*0.5) = sqrt(10.89) = 3.3.",
+      "solution": "Adding the three given equations gives \\(2(a+b+c) = 26.4\\), so the perimeter is 13.2 cm. Subtracting each equation in turn from that leaves \\(CA = 6.1\\), \\(AB = 1.1\\) and \\(BC = 6.0\\) cm. Since \\(1.1^2 + 6.0^2 = 37.21 = 6.1^2\\), the triangle is right-angled and its area is \\(\\dfrac12 (1.1)(6.0) = 3.3\\) square cm; Heron's formula agrees, giving \\(\\sqrt{6.6 \\times 5.5 \\times 0.6 \\times 0.5} = \\sqrt{10.89} = 3.3\\)."
+    },
+    {
+      "number": 17,
+      "answer": "B",
+      "value": "40 square cm",
+      "confidence": "HIGH",
+      "reasoning": "Area = ab sin(theta) = 10*8*sin(150 deg) = 80*(1/2) = 40 square cm.",
+      "solution": "The area of a parallelogram with adjacent sides \\(a, b\\) and included angle \\(\\theta\\) is \\(ab\\sin\\theta\\). The angle being obtuse makes no difference, since \\(\\sin 150^\\circ = \\sin 30^\\circ = \\dfrac12\\). So the area is \\(10 \\times 8 \\times \\dfrac12 = 40\\) square cm."
+    },
+    {
+      "number": 18,
+      "answer": "C",
+      "value": "80 degrees",
+      "confidence": "HIGH",
+      "reasoning": "The angle between the internal bisectors of A and C (i.e. angle AIC at the incentre) equals 90 + B/2. So 90 + B/2 = 130 and B = 80 degrees. The other angle formed is 50 degrees, which would give a negative B, so 130 is the correct one to use."
+    },
+    {
+      "number": 19,
+      "answer": "C",
+      "value": "18",
+      "confidence": "HIGH",
+      "reasoning": "In terms of a = log2, b = log5 (a+b = 1): 2000 = 2^4*5^3, 400 = 2^4*5^2, 25^4 = 5^8, 20^5 = 2^10*5^5. Total powers: 2 -> 4+4+0+10 = 18, 5 -> 3+2+8+5 = 18. Sum = 18(a+b) = 18. Numeric check: 3.30103+2.60206+5.59176+6.50515 = 18.0000.",
+      "solution": "Write each number in powers of 2 and 5: \\(2000 = 2^4 5^3\\), \\(400 = 2^4 5^2\\), \\(25^4 = 5^8\\) and \\(20^5 = 2^{10} 5^5\\). The total power of 2 is \\(4 + 4 + 0 + 10 = 18\\), and the total power of 5 is \\(3 + 2 + 8 + 5 = 18\\) as well. The sum is therefore \\(18\\left(\\log_{10} 2 + \\log_{10} 5\\right) = 18\\log_{10} 10 = 18\\)."
+    },
+    {
+      "number": 20,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "The equation is log10(100001 - 4^x) = 5 - x. At x = 0: 100001 - 1 = 100000, log = 5 = 5 - 0. Checks fail for the others: x = 1 gives log(99997) = 4.99999 vs 4; x = 10 and x = 100 make 4^x > 100001, so the logarithm is undefined."
+    },
+    {
+      "number": 21,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "sin^4 + cos^4 = 1 - (1/2)sin^2(2a), so 2(sin^4+cos^4) - 1 = 1 - sin^2(2a) = 0, giving sin(2a) = 1 (2a lies in [0,pi) so the negative root is excluded). Hence 2a = pi/2, a = pi/4, cos 2a = 0, and sin2a + cos2a = 1.",
+      "solution": "Using \\(\\sin^4\\alpha + \\cos^4\\alpha = 1 - \\dfrac12\\sin^2 2\\alpha\\), the given condition becomes \\(1 - \\sin^2 2\\alpha = 0\\). Since \\(0 \\le \\alpha < \\dfrac{\\pi}{2}\\) puts \\(2\\alpha\\) in \\([0, \\pi)\\), the negative root is impossible and \\(\\sin 2\\alpha = 1\\), so \\(2\\alpha = \\dfrac{\\pi}{2}\\). Then \\(\\cos 2\\alpha = 0\\) and \\(\\sin 2\\alpha + \\cos 2\\alpha = 1\\)."
+    },
+    {
+      "number": 22,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "With t = cos^2 a: 1 - sin^6 a = 1 - (1-t)^3 = t^3 - 3t^2 + 3t = t(t^2-3t+3), which is exactly the RHS of I, so I is an identity (sympy simplify gives 0). II fails: at a = pi/4 the LHS is 0 while the RHS is 1; at a = 0 the LHS is 1 and the RHS is 0. sympy leaves a non-zero residual for II.",
+      "solution": "Put \\(t = \\cos^2\\alpha\\). Then \\(1 - \\sin^6\\alpha = 1 - (1-t)^3 = t^3 - 3t^2 + 3t = t\\left(t^2 - 3t + 3\\right)\\), which is precisely the right-hand side of the first statement, so that one is an identity. The second is not: at \\(\\alpha = \\dfrac{\\pi}{4}\\) its left side is 0 while its right side is 1, and at \\(\\alpha = 0\\) the two are 1 and 0. So only the first statement holds for all \\(\\alpha\\)."
+    },
+    {
+      "number": 23,
+      "answer": "A",
+      "value": "-1",
+      "confidence": "HIGH",
+      "reasoning": "p = 1/(cosec+cot) = (cosec-cot)/(cosec^2-cot^2) = cosec - cot. Then p^2 - 2pq = p(p-2q) = (cosec-cot)(-cosec-cot) = -(cosec^2 - cot^2) = -1."
+    },
+    {
+      "number": 24,
+      "answer": "D",
+      "value": "Neither I nor II",
+      "confidence": "HIGH",
+      "reasoning": "At alpha = 60 deg (first quadrant), cosec - sec = 1.1547 - 2 = -0.845 < 0, so I is false. At the same angle tan - cot = 1.732 - 0.577 = +1.155 > 0, so II is false. (Each holds on part of the quadrant only, with the sign flipping at 45 degrees.)",
+      "solution": "Test both at \\(\\alpha = 60^\\circ\\), which lies in the first quadrant. There \\(\\operatorname{cosec}\\alpha - \\sec\\alpha = 1.155 - 2 = -0.845\\), which is negative, so the first statement fails; and \\(\\tan\\alpha - \\cot\\alpha = 1.732 - 0.577 = +1.155\\), which is positive, so the second fails too. Each expression changes sign at \\(45^\\circ\\), so neither keeps one sign across the whole quadrant, and neither statement is correct."
+    },
+    {
+      "number": 25,
+      "answer": "C",
+      "value": "3h",
+      "confidence": "HIGH",
+      "reasoning": "From B at height h, the depression of the tower foot is 30 deg, so the horizontal distance d = h/tan30 = h*sqrt(3). From A the elevation of the top is 60 deg, so the height = d*tan60 = h*sqrt(3)*sqrt(3) = 3h.",
+      "solution": "From \\(B\\), at height \\(h\\), the angle of depression of the tower's foot is \\(30^\\circ\\), so the horizontal distance is \\(d = \\dfrac{h}{\\tan 30^\\circ} = h\\sqrt3\\). From \\(A\\), directly below \\(B\\), the top of the tower is seen at \\(60^\\circ\\), so its height is \\(d\\tan 60^\\circ = h\\sqrt3 \\times \\sqrt3 = 3h\\)."
+    },
+    {
+      "number": 26,
+      "answer": "A",
+      "value": "sin(theta) + cos(theta)",
+      "confidence": "HIGH",
+      "reasoning": "sin/(1-cot) = sin^2/(sin-cos) and cos/(1-tan) = cos^2/(cos-sin), so the sum is (sin^2 - cos^2)/(sin-cos) = sin + cos. sympy simplify of the difference is 0; numeric check at theta = 0.7 gives 1.40906 both ways.",
+      "solution": "Multiply the first fraction above and below by \\(\\sin\\theta\\) and the second by \\(\\cos\\theta\\): they become \\(\\dfrac{\\sin^2\\theta}{\\sin\\theta - \\cos\\theta}\\) and \\(\\dfrac{\\cos^2\\theta}{\\cos\\theta - \\sin\\theta}\\). Over the common denominator \\(\\sin\\theta - \\cos\\theta\\) the sum is \\(\\dfrac{\\sin^2\\theta - \\cos^2\\theta}{\\sin\\theta - \\cos\\theta} = \\sin\\theta + \\cos\\theta\\). The restriction \\(\\theta \\ne \\dfrac{\\pi}{4}\\) is exactly what keeps that denominator non-zero."
+    },
+    {
+      "number": 27,
+      "answer": "D",
+      "value": "pi/4",
+      "confidence": "HIGH",
+      "reasoning": "Arc length = r*theta, so pi = 4*theta and theta = pi/4 radian.",
+      "solution": "An arc subtending \\(\\theta\\) radians at the centre of a circle of radius \\(r\\) has length \\(r\\theta\\). Here \\(r = 4\\) cm and the arc is \\(\\pi\\) cm, so \\(4\\theta = \\pi\\) and \\(\\theta = \\dfrac{\\pi}{4}\\) radian."
+    },
+    {
+      "number": 28,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "The quadratic in cot has roots sqrt(3) and 2sqrt(3). On [pi/6, pi/2) cot decreases from sqrt(3) to 0, so only cot = sqrt(3) is admissible, giving theta = pi/6. Then sin(pi/6) + cos(pi/3) = 1/2 + 1/2 = 1.",
+      "solution": "The quadratic \\(\\cot^2\\theta - 3\\sqrt3\\cot\\theta + 6 = 0\\) has roots \\(\\cot\\theta = \\sqrt3\\) and \\(\\cot\\theta = 2\\sqrt3\\). On \\(\\left[\\dfrac{\\pi}{6}, \\dfrac{\\pi}{2}\\right)\\) the cotangent decreases from \\(\\sqrt3\\) down to 0, so \\(2\\sqrt3\\) is out of range and only \\(\\cot\\theta = \\sqrt3\\) survives, giving \\(\\theta = \\dfrac{\\pi}{6}\\). Then \\(\\sin\\theta + \\cos 2\\theta = \\sin\\dfrac{\\pi}{6} + \\cos\\dfrac{\\pi}{3} = \\dfrac12 + \\dfrac12 = 1\\)."
+    },
+    {
+      "number": 29,
+      "answer": "D",
+      "value": "Neither I nor II",
+      "confidence": "HIGH",
+      "reasoning": "I: for positive unequal x, y, AM-GM is strict so (x+y)^2 > 4xy and the RHS exceeds 1, while sin^2 <= 1 - impossible. II: for x > 0, x + 1/x >= 2, while sin+cos lies in [-sqrt(2), sqrt(2)] and sqrt(2) < 2 - impossible.",
+      "solution": "For the first equation, positive unequal \\(x, y\\) satisfy \\((x+y)^2 > 4xy\\) strictly by AM-GM, so its right-hand side exceeds 1 while \\(\\sin^2\\theta \\le 1\\) always: impossible. For the second, \\(x + \\dfrac{1}{x} \\ge 2\\) for every \\(x > 0\\), whereas \\(\\sin\\theta + \\cos\\theta\\) can never exceed \\(\\sqrt2\\), and \\(\\sqrt2 < 2\\): impossible as well. So neither equation can hold."
+    },
+    {
+      "number": 30,
+      "answer": "D",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "The relation gives sin(theta) = (m^2-n^2)/(m^2+n^2), hence cos(theta) = 2mn/(m^2+n^2) and cot(theta) = 2mn/(m^2-n^2). Then (m^2+n^2)cos - (m^2-n^2)cot = 2mn - 2mn = 0. sympy simplify returns 0; numeric check at m=3, n=2 gives 0.0.",
+      "solution": "The given relation rearranges to \\(\\sin\\theta\\left(m^2 + n^2\\right) = m^2 - n^2\\), so \\(\\sin\\theta = \\dfrac{m^2 - n^2}{m^2 + n^2}\\), and with \\(0 < \\theta < \\dfrac{\\pi}{2}\\) this gives \\(\\cos\\theta = \\dfrac{2mn}{m^2 + n^2}\\) and \\(\\cot\\theta = \\dfrac{2mn}{m^2 - n^2}\\). Substituting, \\(\\left(m^2 + n^2\\right)\\cos\\theta = 2mn\\) and \\(\\left(m^2 - n^2\\right)\\cot\\theta = 2mn\\), so the difference is 0."
+    },
+    {
+      "number": 31,
+      "answer": "D",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "Squaring gives 1 + 2 sin a cos a = 2, so sin 2a = 1 and (on (0, pi/2)) a = pi/4. Then sin a = cos a and sin^3 a - cos^3 a = 0.",
+      "solution": "Squaring \\(\\sin\\alpha + \\cos\\alpha = \\sqrt2\\) gives \\(1 + 2\\sin\\alpha\\cos\\alpha = 2\\), so \\(\\sin 2\\alpha = 1\\) and, within \\(0 < \\alpha < \\dfrac{\\pi}{2}\\), \\(\\alpha = \\dfrac{\\pi}{4}\\). At that angle \\(\\sin\\alpha = \\cos\\alpha\\), so \\(\\sin^3\\alpha - \\cos^3\\alpha = 0\\)."
+    },
+    {
+      "number": 32,
+      "answer": "C",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "(1+cot-cosec) = (s+c-1)/s and (1+tan+sec) = (s+c+1)/c, so the product is ((s+c)^2 - 1)/(sc) = (2sc)/(sc) = 2. sympy simplify gives 2; numeric checks at 0.9 and 2.3 both give 2.",
+      "solution": "Write \\(s = \\sin\\alpha\\) and \\(c = \\cos\\alpha\\). Then \\(1 + \\cot\\alpha - \\operatorname{cosec}\\alpha = \\dfrac{s + c - 1}{s}\\) and \\(1 + \\tan\\alpha + \\sec\\alpha = \\dfrac{s + c + 1}{c}\\), so the product is \\(\\dfrac{(s+c)^2 - 1}{sc}\\). Since \\((s+c)^2 - 1 = 2sc\\), this equals 2."
+    },
+    {
+      "number": 33,
+      "answer": "A",
+      "value": "sin(alpha) - cos(alpha)",
+      "confidence": "HIGH",
+      "reasoning": "Dividing by cos alpha, tan theta = (tan a - 1)/(tan a + 1) = tan(a - pi/4). Since theta is acute, tan theta > 0, which forces a > pi/4 and theta = a - pi/4. Then sqrt(2) sin theta = sqrt(2) sin(a - pi/4) = sin a - cos a. Numeric check at a = 1 rad: sqrt(2) sin theta = 0.30115 = sin a - cos a. Option D's plus/minus is unnecessary because the acute-angle condition fixes the sign.",
+      "solution": "Divide numerator and denominator by \\(\\cos\\alpha\\): \\(\\tan\\theta = \\dfrac{\\tan\\alpha - 1}{\\tan\\alpha + 1} = \\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right)\\). Because \\(\\theta\\) is acute, \\(\\tan\\theta > 0\\), which forces \\(\\alpha > \\dfrac{\\pi}{4}\\) and \\(\\theta = \\alpha - \\dfrac{\\pi}{4}\\). Hence \\(\\sqrt2\\sin\\theta = \\sqrt2\\sin\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\sin\\alpha - \\cos\\alpha\\); the acute-angle condition pins the sign, so no \\(\\pm\\) is needed."
+    },
+    {
+      "number": 34,
+      "answer": "A",
+      "value": "No value",
+      "confidence": "HIGH",
+      "reasoning": "The product vanishes only if sin alpha equals -2, -4, 2 or 4, and sin alpha lies in [-1, 1]. So no value of alpha makes it zero.",
+      "solution": "The product is zero only if one factor vanishes, i.e. only if \\(\\sin\\alpha\\) equals \\(-2\\), \\(-4\\), \\(2\\) or \\(4\\). But \\(\\sin\\alpha\\) always lies in \\([-1, 1]\\), so none of those is attainable. No value of \\(\\alpha\\) makes the expression zero."
+    },
+    {
+      "number": 35,
+      "answer": "B",
+      "value": "10 degrees",
+      "confidence": "HIGH",
+      "reasoning": "tan(3x)tan(6x) = 1 means the angles are complementary: 9x = 90 + 180k, i.e. x = 10 + 20k. In [0, 30) only x = 10 qualifies (x = 30 is excluded). Check: tan30*tan60 = (1/sqrt3)(sqrt3) = 1. x = 0 gives 0, not 1.",
+      "solution": "\\(\\tan 3x \\tan 6x = 1\\) means \\(3x\\) and \\(6x\\) are complementary, so \\(9x = 90^\\circ + 180^\\circ k\\) and \\(x = 10^\\circ + 20^\\circ k\\). The only such value with \\(0^\\circ \\le x < 30^\\circ\\) is \\(x = 10^\\circ\\), since \\(x = 30^\\circ\\) is excluded by the range. It checks out: \\(\\tan 30^\\circ \\tan 60^\\circ = \\dfrac{1}{\\sqrt3} \\times \\sqrt3 = 1\\), whereas \\(x = 0^\\circ\\) would give 0."
+    },
+    {
+      "number": 36,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "Put u = a-b, v = b-c, w = c-a, so u+v+w = 0 and hence u^3+v^3+w^3 = 3uvw. The three fractions sum to (u^3+v^3+w^3)/(uvw) = 3, so the expression is 3 - 3 = 0. sympy simplify returns 0; numeric check at (2,7,-3) gives 0.",
+      "solution": "Put \\(u = a - b\\), \\(v = b - c\\) and \\(w = c - a\\), so that \\(u + v + w = 0\\) and therefore \\(u^3 + v^3 + w^3 = 3uvw\\). Each fraction can be written over the common denominator \\(uvw\\), for instance \\(\\dfrac{u^2}{vw} = \\dfrac{u^3}{uvw}\\), so the three together sum to \\(\\dfrac{u^3 + v^3 + w^3}{uvw} = 3\\). Subtracting the 3 leaves 0."
+    },
+    {
+      "number": 37,
+      "answer": "D",
+      "value": "None of the above (the largest n is 12)",
+      "confidence": "HIGH",
+      "reasoning": "100 = 2^2 * 5^2, so 100^n needs 5^(2n) and 2^(2n). The 5-adic valuation of 100! is floor(100/5)+floor(100/25) = 20+4 = 24 (the binding one; the 2-adic valuation is 97). So 2n <= 24 and the largest n is 12, which is not among 20, 21 or 24.",
+      "solution": "Since \\(100 = 2^2 \\times 5^2\\), the divisor \\(100^n\\) demands \\(2^{2n}\\) and \\(5^{2n}\\) inside \\(100!\\). The power of 5 available is \\(\\left\\lfloor \\dfrac{100}{5} \\right\\rfloor + \\left\\lfloor \\dfrac{100}{25} \\right\\rfloor = 20 + 4 = 24\\), and it is the binding constraint because the power of 2 is 97. So \\(2n \\le 24\\) and the largest possible \\(n\\) is 12, which is none of the three numerical values offered."
+    },
+    {
+      "number": 38,
+      "answer": "B",
+      "value": "180 m",
+      "confidence": "HIGH",
+      "reasoning": "Taking P = (0,0): east x to (x,0), south 40 to (x,-40), west 60 to Q = (x-60,-40), north 200 to R = (x-60,160). PR = 200 gives (x-60)^2 = 40000-25600 = 14400, so x-60 = 120 and x = 180 (which satisfies x > 120)."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "Two",
+      "confidence": "HIGH",
+      "reasoning": "x^2+y^2+z^2 = 3 over the integers forces each of x, y, z to be +/-1. Exhaustive enumeration gives xy+yz+zx in {-1, 3}: 3 when all three signs agree, -1 otherwise. Two distinct values."
+    },
+    {
+      "number": 40,
+      "answer": "C",
+      "value": "460",
+      "confidence": "HIGH",
+      "reasoning": "x^3+y^3+z^3-3xyz = (x+y+z)((x+y+z)^2 - 3(xy+yz+zx)) = 10*(100 - 54) = 10*46 = 460."
+    },
+    {
+      "number": 41,
+      "answer": "A",
+      "value": "\\(\\sqrt{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "17 - 4sqrt(15) = (sqrt(12) - sqrt(5))^2, so the first radical is 2sqrt(3) - sqrt(5) (positive). 8 - 2sqrt(15) = (sqrt(5) - sqrt(3))^2, so the second is sqrt(5) - sqrt(3). Sum = 2sqrt(3) - sqrt(5) + sqrt(5) - sqrt(3) = sqrt(3). Numeric check: 1.7320508.",
+      "solution": "Each radicand is a perfect square in disguise: \\(17 - 4\\sqrt{15} = \\left(\\sqrt{12} - \\sqrt5\\right)^2\\) and \\(8 - 2\\sqrt{15} = \\left(\\sqrt5 - \\sqrt3\\right)^2\\). Taking the positive square roots gives \\(2\\sqrt3 - \\sqrt5\\) and \\(\\sqrt5 - \\sqrt3\\). Their sum is \\(2\\sqrt3 - \\sqrt5 + \\sqrt5 - \\sqrt3 = \\sqrt3 \\approx 1.732\\)."
+    },
+    {
+      "number": 42,
+      "answer": "C",
+      "value": "234",
+      "confidence": "HIGH",
+      "reasoning": "AP with a = 36, d = -3. Partial sums rise while terms are positive and peak at n = 12 (last positive term 3) and n = 13 (term 0), both giving 234; thereafter they fall. Maximum sum = 234."
+    },
+    {
+      "number": 43,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "m = 4 (mod 12), n = 6 (mod 12). I: m+n = 10 (mod 12). II: m-n = -2 = 10 (mod 12), and m > n so the difference is positive. Exhaustive check over many m > n pairs confirms both remainders are always 10."
+    },
+    {
+      "number": 44,
+      "answer": "B",
+      "value": "84",
+      "confidence": "HIGH",
+      "reasoning": "The three sums total 2(x+y+z) = 28, and 3+5+6 = 14 parts, so one part = 2: x+y = 6, y+z = 10, z+x = 12. Hence z = 8, x = 4, y = 2 and x^2+y^2+z^2 = 16+4+64 = 84."
+    },
+    {
+      "number": 45,
+      "answer": "A",
+      "value": "13 : 5",
+      "confidence": "HIGH",
+      "reasoning": "(a+b)/(a-b) = 5 gives a = 3k, b = 2k. Then a^2+b^2 = 13k^2 and a^2-b^2 = 5k^2, so the ratio is 13 : 5."
+    },
+    {
+      "number": 46,
+      "answer": "B",
+      "value": "30 minutes",
+      "confidence": "HIGH",
+      "reasoning": "At 3/5 of the speed the time is 5/3 of usual, so (5/3)t - t = 20, i.e. (2/3)t = 20 and t = 30 minutes."
+    },
+    {
+      "number": 47,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "By Fermat's little theorem 2^p = 2 (mod p) for prime p, so 2^p - 1 = 1 (mod p). Verified for p = 7, 11, 13, 17, 19, 23, 101: remainder 1 in every case."
+    },
+    {
+      "number": 48,
+      "answer": "A",
+      "value": "33",
+      "confidence": "HIGH",
+      "reasoning": "24^3 - 16^3 - 8^3 = 13824 - 4096 - 512 = 9216 = 2^10 * 3^2. Number of factors = (10+1)(2+1) = 33 (sympy divisor_count confirms 33).",
+      "solution": "First evaluate the expression: \\(24^3 - 16^3 - 8^3 = 13824 - 4096 - 512 = 9216\\). Factorising, \\(9216 = 2^{10} \\times 3^2\\), so the number of positive factors is \\((10+1)(2+1) = 33\\)."
+    },
+    {
+      "number": 49,
+      "answer": "C",
+      "value": "4 years",
+      "confidence": "HIGH",
+      "reasoning": "Need 1.2^n > 2. Exact powers: 1.2^2 = 1.44, 1.2^3 = 1.728, 1.2^4 = 2.0736 > 2. The least complete number of years is 4.",
+      "solution": "At 20% compounded annually the sum is multiplied by \\(1.2^n\\) after \\(n\\) years, and we need \\(1.2^n > 2\\). Now \\(1.2^3 = 1.728\\), which is still short, while \\(1.2^4 = 2.0736\\), which clears it. So the least number of complete years is 4."
+    },
+    {
+      "number": 50,
+      "answer": "D",
+      "value": "(2yt - xt)/(y - x)",
+      "confidence": "HIGH",
+      "reasoning": "L + x = vt and L + y = 2vt, so v = (y-x)/t and L = y - 2x. Time for length (x+y) is (L+x+y)/v = (2y-x)t/(y-x). sympy gives t(x-2y)/(x-y), identical to option D (difference simplifies to 0). Numeric check L = 100, v = 10, t = 20 gives x = 100, y = 300 and the time 50, matching option D.",
+      "solution": "Let the train have length \\(L\\) and speed \\(v\\). Passing completely through a station of length \\(x\\) covers \\(L + x = vt\\), and through one of length \\(y\\) covers \\(L + y = 2vt\\); subtracting gives \\(v = \\dfrac{y - x}{t}\\) and hence \\(L = y - 2x\\). The time for a station of length \\(x + y\\) is therefore \\(\\dfrac{L + x + y}{v} = \\dfrac{(2y - x)t}{y - x}\\)."
+    },
+    {
+      "number": 51,
+      "answer": "A",
+      "value": "\\(39\\pi k^2/8\\) as the nearest option; the exact value is \\((41+9\\sqrt{17})\\pi k^2/16 \\approx 4.8817\\pi k^2\\), which matches no option exactly",
+      "confidence": "MED",
+      "reasoning": "Radii r1 = k, r2 = 1.25k, h = k (radii confirmed by Q52, whose volume 61*pi*k^3/48 matches exactly). Slant l = sqrt(k^2 + (0.25k)^2) = k*sqrt(17)/4 = 1.03078k. Whole surface = pi(r1+r2)l + pi r1^2 + pi r2^2 = pi k^2 (9 sqrt(17) + 41)/16 = 4.881747 pi k^2. Option A = 4.875 (would require l = 37/36 k), which is 0.14% low - almost certainly the intended answer with sqrt(17) rounded. RUNNER-UP C (43/8 = 5.375), which is obtained exactly if the slant height is wrongly taken as 1.25k (the bottom radius) instead of sqrt(17)k/4; B and D require l = 41/36 and 49/36 and have no natural derivation. No option is exactly correct.",
+      "solution": "The radii are \\(r_1 = k\\) and \\(r_2 = 1.25k\\) with height \\(k\\), so the slant height is \\(l = \\sqrt{k^2 + (0.25k)^2} = \\dfrac{k\\sqrt{17}}{4}\\). The whole surface area is \\(\\pi\\left(r_1 + r_2\\right)l + \\pi r_1^2 + \\pi r_2^2 = \\dfrac{\\left(41 + 9\\sqrt{17}\\right)\\pi k^2}{16} \\approx 4.8817\\pi k^2\\), and no printed value matches this exactly. The nearest, \\(\\dfrac{39\\pi k^2}{8} = 4.875\\pi k^2\\), is the intended one; it is what you get on rounding \\(\\sqrt{17}\\), and it is low by about \\(0.14\\%\\)."
+    },
+    {
+      "number": 52,
+      "answer": "A",
+      "value": "\\(61\\pi k^3/48\\)",
+      "confidence": "HIGH",
+      "reasoning": "V = (pi h/3)(r1^2 + r1 r2 + r2^2) with r1 = k, r2 = 1.25k, h = k: (pi k/3)(k^2 + 1.25k^2 + 1.5625k^2) = (pi k^3/3)(3.8125) = 61 pi k^3/48. sympy returns 61*pi*k**3/48 exactly.",
+      "solution": "The volume of a frustum is \\(V = \\dfrac{\\pi h}{3}\\left(r_1^2 + r_1 r_2 + r_2^2\\right)\\). With \\(r_1 = k\\), \\(r_2 = 1.25k\\) and \\(h = k\\), this gives \\(\\dfrac{\\pi k}{3}\\left(k^2 + 1.25k^2 + 1.5625k^2\\right) = \\dfrac{\\pi k^3}{3}(3.8125) = \\dfrac{61\\pi k^3}{48}\\)."
+    },
+    {
+      "number": 53,
+      "answer": "B",
+      "value": "24 square cm",
+      "confidence": "HIGH",
+      "reasoning": "a+c+b = 24 and a+c-b = 4 give a+c = 14, b = 10. Then a^2+c^2 = 100 and (a+c)^2 = 196 give 2ac = 96, so area = ac/2 = 24. sympy solves the system to legs 6 and 8, hypotenuse 10, area 24.",
+      "solution": "Let the perpendicular sides be \\(a, c\\) and the hypotenuse \\(b\\). The perimeter gives \\(a + b + c = 24\\) and the second condition gives \\(a + c - b = 4\\), so \\(a + c = 14\\) and \\(b = 10\\). Then \\(a^2 + c^2 = 100\\) and \\((a+c)^2 = 196\\) give \\(2ac = 96\\), so the area \\(\\dfrac{ac}{2} = 24\\) square cm — the legs being 6 and 8 cm."
+    },
+    {
+      "number": 54,
+      "answer": "C",
+      "value": "2 cm",
+      "confidence": "HIGH",
+      "reasoning": "For a right triangle the inradius is (sum of legs - hypotenuse)/2 = 4/2 = 2 cm. Cross-check: r = area/s = 24/12 = 2."
+    },
+    {
+      "number": 55,
+      "answer": "B",
+      "value": "\\(16\\sqrt{2}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "For circles touching externally the centre distance is 8+16 = 24, and the direct (external) common tangent has length sqrt(d^2 - (r2-r1)^2) = sqrt(576 - 64) = sqrt(512) = 16 sqrt(2) cm.",
+      "solution": "The circles touch externally, so the distance between the centres is \\(8 + 16 = 24\\) cm. For a direct common tangent the length is \\(\\sqrt{d^2 - \\left(r_2 - r_1\\right)^2} = \\sqrt{24^2 - 8^2} = \\sqrt{512} = 16\\sqrt2\\) cm."
+    },
+    {
+      "number": 56,
+      "answer": "A",
+      "value": "\\(192\\sqrt{2}\\) square cm",
+      "confidence": "HIGH",
+      "reasoning": "UP and VQ are both perpendicular to PQ (radii to the points of tangency), so PQVU is a right trapezium with parallel sides 8 and 16 and height PQ = 16 sqrt(2). Area = (1/2)(8+16)(16 sqrt(2)) = 192 sqrt(2) square cm.",
+      "solution": "The radii \\(UP\\) and \\(VQ\\) are each perpendicular to the tangent at the point of contact, so \\(PQVU\\) is a right trapezium with parallel sides 8 cm and 16 cm and height \\(PQ = 16\\sqrt2\\) cm. Its area is \\(\\dfrac12(8 + 16)\\left(16\\sqrt2\\right) = 192\\sqrt2\\) square cm."
+    },
+    {
+      "number": 57,
+      "answer": "B",
+      "value": "5 : 10 : 6",
+      "confidence": "HIGH",
+      "reasoning": "Each side times its altitude equals twice the area, so sides are inversely proportional to the corresponding altitudes: BC : CA : AB = 1/3 : 1/5 : 1/6 = 10 : 6 : 5. Rearranged in the asked order, AB : BC : CA = 5 : 10 : 6.",
+      "solution": "Each side multiplied by its own altitude equals twice the area, so the sides are inversely proportional to the corresponding altitudes. Hence \\(BC : CA : AB = \\dfrac13 : \\dfrac15 : \\dfrac16 = 10 : 6 : 5\\). Rearranged into the order asked for, \\(AB : BC : CA = 5 : 10 : 6\\)."
+    },
+    {
+      "number": 58,
+      "answer": "D",
+      "value": "285 square cm (284.98)",
+      "confidence": "HIGH",
+      "reasoning": "With 21 parts totalling 105 cm each part is 5, so AB = 25, BC = 50, CA = 30 (valid: 25+30 = 55 > 50). Heron with s = 52.5 gives area = sqrt(52.5*27.5*2.5*22.5) = 284.975, approximately 285.",
+      "solution": "From the ratio \\(AB : BC : CA = 5 : 10 : 6\\) there are 21 parts in all, and a perimeter of 105 cm makes each part 5 cm, so \\(AB = 25\\), \\(BC = 50\\) and \\(CA = 30\\) cm. These do form a triangle, since \\(25 + 30 = 55 > 50\\). Heron's formula with \\(s = 52.5\\) gives the area as \\(\\sqrt{52.5 \\times 27.5 \\times 2.5 \\times 22.5} = 284.98\\), which is about 285 square cm."
+    },
+    {
+      "number": 59,
+      "answer": "C",
+      "value": "\\(10\\sqrt{3}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "The pot is a spherical cap of height 30 cut from a sphere of radius 20, so the cutting plane lies 30 - 20 = 10 cm above the centre. Opening radius = sqrt(20^2 - 10^2) = sqrt(300) = 10 sqrt(3) cm.",
+      "solution": "The pot is a spherical cap of height 30 cm cut from a sphere of radius 20 cm, so the cutting plane lies \\(30 - 20 = 10\\) cm above the centre. The opening is the circle in which that plane meets the sphere, so its radius is \\(\\sqrt{20^2 - 10^2} = \\sqrt{300} = 10\\sqrt3\\) cm."
+    },
+    {
+      "number": 60,
+      "answer": "A",
+      "value": "\\(\\pi/3\\)",
+      "confidence": "HIGH",
+      "reasoning": "The rim point is 10 cm above the centre at radial distance 20, so the angle with the upward vertical satisfies cos(angle) = 10/20 = 1/2, giving 60 degrees = pi/3. (Measured to the downward vertical it would be 120 degrees, which is not an option.)",
+      "solution": "A point on the rim is 10 cm above the centre and 20 cm away from it, so the line joining it to the centre makes an angle with the upward vertical whose cosine is \\(\\dfrac{10}{20} = \\dfrac12\\). That angle is \\(60^\\circ\\), i.e. \\(\\dfrac{\\pi}{3}\\). Measured instead to the downward vertical it would be \\(120^\\circ\\), which is not among the values offered."
+    },
+    {
+      "number": 61,
+      "answer": "B",
+      "value": "4 m",
+      "confidence": "HIGH",
+      "reasoning": "The maximum distance inside is the space diagonal: l^2+b^2+h^2 = 196. The maximum distance on the floor is the floor diagonal: l^2+b^2 = (6 sqrt(5))^2 = 180. So h^2 = 16 and h = 4 m.",
+      "solution": "The greatest distance between two points inside the hall is the space diagonal, so \\(l^2 + b^2 + h^2 = 14^2 = 196\\). The greatest distance between two points on the floor is the floor diagonal, so \\(l^2 + b^2 = \\left(6\\sqrt5\\right)^2 = 180\\). Subtracting, \\(h^2 = 16\\) and \\(h = 4\\) m."
+    },
+    {
+      "number": 62,
+      "answer": "B",
+      "value": "\\(3\\sqrt{5}/7\\)",
+      "confidence": "HIGH",
+      "reasoning": "Q is vertically above R, so triangle PRQ is right-angled at R and PR is the projection of PQ onto the floor. cos(alpha) = PR/PQ = 6 sqrt(5)/14 = 3 sqrt(5)/7 = 0.9583.",
+      "solution": "\\(Q\\) is vertically above \\(R\\), so the triangle \\(PRQ\\) is right-angled at \\(R\\) and \\(PR\\) is simply the projection of \\(PQ\\) onto the floor. Therefore \\(\\cos\\alpha = \\dfrac{PR}{PQ} = \\dfrac{6\\sqrt5}{14} = \\dfrac{3\\sqrt5}{7} \\approx 0.958\\)."
+    },
+    {
+      "number": 63,
+      "answer": "D",
+      "value": "730 gm",
+      "confidence": "HIGH",
+      "reasoning": "External dimensions: 14+2(0.5) = 15, 10+2(0.5) = 11, and 8+1 = 9 (bottom 1 cm thick, top open). Material volume = 15*11*9 - 14*10*8 = 1485 - 1120 = 365 cubic cm. 2000 kg per cubic metre = 2 g per cubic cm, so weight = 730 gm."
+    },
+    {
+      "number": 64,
+      "answer": "A",
+      "value": "1.850 kg",
+      "confidence": "HIGH",
+      "reasoning": "Water volume 14*10*8 = 1120 cubic cm at 1 g per cubic cm = 1.120 kg. Box = 0.730 kg (from the previous item). Total = 1.850 kg."
+    },
+    {
+      "number": 65,
+      "answer": "A",
+      "value": "4.8 cm",
+      "confidence": "HIGH",
+      "reasoning": "Right angle at A with AB = 8 and hypotenuse BC = 10 gives AC = 6. The altitude to the hypotenuse is AD = AB*AC/BC = 48/10 = 4.8 cm."
+    },
+    {
+      "number": 66,
+      "answer": "B",
+      "value": "9 : 16",
+      "confidence": "HIGH",
+      "reasoning": "BD = AB^2/BC = 6.4 and DC = AC^2/BC = 3.6. The two triangles share the altitude AD, so their areas are in the ratio DC : BD = 3.6 : 6.4 = 9 : 16."
+    },
+    {
+      "number": 67,
+      "answer": "C",
+      "value": "4000 cubic metre",
+      "confidence": "HIGH",
+      "reasoning": "40 cm = 0.4 m depth over 1 hectare = 10000 square metre gives 0.4 * 10000 = 4000 cubic metre."
+    },
+    {
+      "number": 68,
+      "answer": "C",
+      "value": "4000 metric tonnes",
+      "confidence": "HIGH",
+      "reasoning": "4000 cubic metre at 1 metric tonne per cubic metre = 4000 metric tonnes."
+    },
+    {
+      "number": 69,
+      "answer": "C",
+      "value": "\\(\\sqrt{3} : 2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Vertex angle 120 degrees means the semi-vertical angle is 60 degrees, and sin(60) = r/l, so r : l = sqrt(3) : 2.",
+      "solution": "A vertex angle of \\(120^\\circ\\) is split by the axis into two equal parts, so the semi-vertical angle is \\(60^\\circ\\). In the right triangle formed by the radius, the height and the slant height, that angle is opposite the radius, so \\(\\sin 60^\\circ = \\dfrac{r}{l}\\). Hence \\(r : l = \\sqrt3 : 2\\)."
+    },
+    {
+      "number": 70,
+      "answer": "A",
+      "value": "\\(27\\pi\\) cubic cm",
+      "confidence": "HIGH",
+      "reasoning": "With semi-vertical angle 60 degrees, r = l sqrt(3)/2 and h = l/2, so l + h + r = l(3+sqrt(3))/2 = 9 + 3 sqrt(3) = 3(3+sqrt(3)), giving l = 6, h = 3, r = 3 sqrt(3). Volume = (1/3) pi (27)(3) = 27 pi cubic cm (sympy confirms 27*pi).",
+      "solution": "With a semi-vertical angle of \\(60^\\circ\\) we have \\(r = \\dfrac{l\\sqrt3}{2}\\) and \\(h = \\dfrac{l}{2}\\), so \\(l + h + r = \\dfrac{l\\left(3 + \\sqrt3\\right)}{2}\\). Setting this equal to \\(9 + 3\\sqrt3 = 3\\left(3 + \\sqrt3\\right)\\) gives \\(l = 6\\), hence \\(h = 3\\) and \\(r = 3\\sqrt3\\) cm. The volume is \\(\\dfrac13\\pi r^2 h = \\dfrac13\\pi(27)(3) = 27\\pi\\) cubic cm."
+    },
+    {
+      "number": 71,
+      "answer": "B",
+      "value": "Rs. 40,500",
+      "confidence": "HIGH",
+      "reasoning": "CP of X = 34500/1.15 = 30000, so profit = 4500. For no overall gain or loss the loss on Y must be 4500, so 0.10 * CP_Y = 4500 and CP_Y = 45000. SP of Y = 0.90 * 45000 = Rs. 40,500."
+    },
+    {
+      "number": 72,
+      "answer": "C",
+      "value": "100%",
+      "confidence": "HIGH",
+      "reasoning": "1 quintal = 100 kg, so 100 quintals = 10,000 kg. 10 metric tonnes = 10,000 kg. The two are equal, so the answer is 100%."
+    },
+    {
+      "number": 73,
+      "answer": "A",
+      "value": "\\(12\\sqrt{3}\\) square cm",
+      "confidence": "HIGH",
+      "reasoning": "For an equilateral triangle the inradius is a/(2 sqrt(3)), so a = 2*2*sqrt(3) = 4 sqrt(3). Area = (sqrt(3)/4)(48) = 12 sqrt(3) square cm.",
+      "solution": "For an equilateral triangle of side \\(a\\), the inradius is \\(\\dfrac{a}{2\\sqrt3}\\). Setting that equal to 2 cm gives \\(a = 4\\sqrt3\\) cm. The area is then \\(\\dfrac{\\sqrt3}{4}a^2 = \\dfrac{\\sqrt3}{4}(48) = 12\\sqrt3\\) square cm."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "\\(399k^2/64\\)",
+      "confidence": "HIGH",
+      "reasoning": "The sum of the squares of the medians is (3/4)(a^2+b^2+c^2) = (3/4)(k^2 + 2.25k^2 + 5.0625k^2) = (3/4)(8.3125 k^2) = 6.234375 k^2 = 399 k^2/64. Verified independently by summing the three median-length formulas in sympy, which also gives 399k^2/64. (Sides k, 1.5k, 2.25k do form a triangle since k + 1.5k > 2.25k.)",
+      "solution": "The sum of the squares of the three medians of a triangle is \\(\\dfrac34\\) of the sum of the squares of the sides. Here the sides are \\(k\\), \\(1.5k\\) and \\(2.25k\\), which do form a triangle since \\(k + 1.5k > 2.25k\\). So the answer is \\(\\dfrac34\\left(k^2 + 2.25k^2 + 5.0625k^2\\right) = \\dfrac34 \\times 8.3125k^2 = \\dfrac{399k^2}{64}\\)."
+    },
+    {
+      "number": 75,
+      "answer": "A",
+      "value": "abc",
+      "confidence": "HIGH",
+      "reasoning": "Put x = s-a, y = s-b, z = s-c, so x+y+z = 3s - 2s = s. The bracket clears to s(xy+yz+zx) - xyz = (x+y+z)(xy+yz+zx) - xyz = (x+y)(y+z)(z+x). Since 2s = a+b+c, x+y = c, y+z = a, z+x = b, so the value is abc. sympy factor confirms aa*bb*cc.",
+      "solution": "Put \\(x = s - a\\), \\(y = s - b\\) and \\(z = s - c\\), so that \\(x + y + z = 3s - 2s = s\\). The bracket then clears to \\(s(xy + yz + zx) - xyz = (x + y + z)(xy + yz + zx) - xyz\\), which factorises as \\((x+y)(y+z)(z+x)\\). Since \\(2s = a + b + c\\) we have \\(x + y = c\\), \\(y + z = a\\) and \\(z + x = b\\), so the whole expression equals \\(abc\\)."
+    },
+    {
+      "number": 76,
+      "answer": "A",
+      "value": "Rs. 10,406",
+      "confidence": "HIGH",
+      "reasoning": "Quarterly compounding at 4% per annum means 1% per quarter for 4 quarters: 10000 * (1.01)^4 = 10406.04, approximately Rs. 10,406."
+    },
+    {
+      "number": 77,
+      "answer": "B",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "The bar is over the 9 only, so p = 0.0999... = (1/10)(0.999...) = 1/10 exactly. Then 70(1/100) + 43(1/10) - 5 = 0.7 + 4.3 - 5 = 0. (If the notation were instead 0.090909... = 1/11, the value would be -62/121, which matches no option - so the reading p = 1/10 is the right one.)"
+    },
+    {
+      "number": 78,
+      "answer": "B",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "101 is prime, so by Fermat 2^100 = 1 (mod 101) and 2^101 = 2 (mod 101). Confirmed by pow(2,101,101) = 2.",
+      "solution": "101 is a prime and 2 is not a multiple of it, so Fermat's little theorem gives \\(2^{100} \\equiv 1 \\pmod{101}\\). Multiplying both sides by 2, \\(2^{101} \\equiv 2 \\pmod{101}\\). The remainder is therefore 2."
+    },
+    {
+      "number": 79,
+      "answer": "D",
+      "value": "5",
+      "confidence": "HIGH",
+      "reasoning": "Sum of roots: p + q = -p. Product: pq = q, and since q is non-zero, p = 1; then q = -2p = -2. Both are non-zero as required. p^2 + q^2 = 1 + 4 = 5. (Check: x^2 + x - 2 has roots 1 and -2, which are exactly p and q.) The other algebraic solution p = q = 0 is excluded by the stem."
+    },
+    {
+      "number": 80,
+      "answer": "A",
+      "value": "-1",
+      "confidence": "HIGH",
+      "reasoning": "Subtracting the two equations at the common root gives (p-q)(x-1) = 0, and p is not q, so x = 1. Substituting into either equation: 1 + p + q = 0, so p + q = -1."
+    },
+    {
+      "number": 81,
+      "answer": "A",
+      "value": "p = 17, q = 16",
+      "confidence": "HIGH",
+      "reasoning": "x^2-5x+4 = (x-1)(x-4), so x = 1 and x = 4 are roots of x^4 - p x^2 + q: 1 - p + q = 0 and 256 - 16p + q = 0. Subtracting, 255 = 15p, so p = 17 and q = 16. Verified: x^4 - 17x^2 + 16 divided by x^2-5x+4 gives x^2+5x+4 with remainder 0."
+    },
+    {
+      "number": 82,
+      "answer": "B",
+      "value": "-2",
+      "confidence": "HIGH",
+      "reasoning": "Substituting x = 2: 4p + 2p + 4 = 0 gives p = -2/3; and 4 + 2q + q = 0 gives q = -4/3. So p + q = -2."
+    },
+    {
+      "number": 83,
+      "answer": "C",
+      "value": "\\(x^4 + x^2 + 1\\)",
+      "confidence": "HIGH",
+      "reasoning": "x^8 + x^4 + 1 = (x^4+x^2+1)(x^4-x^2+1), so the second polynomial divides the first exactly and is itself the HCF. sympy gcd returns x**4 + x**2 + 1.",
+      "solution": "Note the factorisation \\(x^8 + x^4 + 1 = \\left(x^4 + x^2 + 1\\right)\\left(x^4 - x^2 + 1\\right)\\). So the second polynomial divides the first exactly, and a polynomial's highest common factor with one of its own multiples is itself. The HCF is \\(x^4 + x^2 + 1\\)."
+    },
+    {
+      "number": 84,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Sector area = (1/2) r^2 x, arc length = r x. The condition (1/2) r^2 x = (1/2)(r x)^2 gives x = x^2, and x is non-zero, so x = 1 radian."
+    },
+    {
+      "number": 85,
+      "answer": "D",
+      "value": "Neither I nor II",
+      "confidence": "HIGH",
+      "reasoning": "Counterexample p = 2, q = 3: LCM = 6, which is even, so I fails; LCM + HCF = 6 + 1 = 7, which is odd, so II fails. Both statements are refuted by the single pair involving the prime 2."
+    },
+    {
+      "number": 86,
+      "answer": "A",
+      "value": "50",
+      "confidence": "HIGH",
+      "reasoning": "f + (f+2) + (f-3) + (f+6) = 4f + 5 = 205, so f = 50."
+    },
+    {
+      "number": 87,
+      "answer": "C",
+      "value": "6",
+      "confidence": "HIGH",
+      "reasoning": "Frequencies are 50, 52, 47, 56 for X = 3, 5, 6, 7 (total 205). Cumulative: 50, 102, 149, 205. The median is the 103rd observation, which falls in the X = 6 class (positions 103 to 149). Median = 6."
+    },
+    {
+      "number": 88,
+      "answer": "C",
+      "value": "7",
+      "confidence": "HIGH",
+      "reasoning": "The largest frequency is f + 6 = 56, at X = 7. Mode = 7."
+    },
+    {
+      "number": 89,
+      "answer": "A",
+      "value": "Bar diagram",
+      "confidence": "HIGH",
+      "reasoning": "X takes four distinct discrete values (3, 5, 6, 7) with unequal gaps, not class intervals. A histogram and a frequency polygon both require continuous grouped data with class intervals, and a pie chart shows composition of a whole rather than a frequency distribution of a variable. The correct display for a discrete frequency distribution is a bar diagram."
+    },
+    {
+      "number": 90,
+      "answer": "C",
+      "value": "5.29",
+      "confidence": "HIGH",
+      "reasoning": "Mean = (3*50 + 5*52 + 6*47 + 7*56)/205 = (150+260+282+392)/205 = 1084/205 = 5.2878, approximately 5.29."
+    },
+    {
+      "number": 91,
+      "answer": "A",
+      "value": "105",
+      "confidence": "HIGH",
+      "reasoning": "Students scoring between 60 and 70 = (number below 70) - (number below 60) = 315 - 210 = 105."
+    },
+    {
+      "number": 92,
+      "answer": "D",
+      "value": "225",
+      "confidence": "HIGH",
+      "reasoning": "The total is 350 (all students are below 80). Those below 50 number 125, so those scoring 50 or more = 350 - 125 = 225."
+    },
+    {
+      "number": 93,
+      "answer": "A",
+      "value": "2020 and 2021",
+      "confidence": "HIGH",
+      "reasoning": "D's circulations are 8, 12, 14, 15, 16 with average 65/5 = 13. Absolute deviations by year: 2019 -> 5, 2020 -> 1, 2021 -> 1, 2022 -> 2, 2023 -> 3. The two closest years are 2020 and 2021, both off by 1."
+    },
+    {
+      "number": 94,
+      "answer": "D",
+      "value": "2022",
+      "confidence": "HIGH",
+      "reasoning": "Yearly averages of all five newspapers: 2019 -> 14.6, 2020 -> 13.2, 2021 -> 16.8, 2022 -> 15.2. D's values are 8, 12, 14, 15, so the deviations are 6.6, 1.2, 2.8 and 0.2. The smallest is 2022. (2023 also has deviation 0.2, which is exactly why the stem restricts the range to 2019-2022.)"
+    },
+    {
+      "number": 95,
+      "answer": "B",
+      "value": "Two",
+      "confidence": "HIGH",
+      "reasoning": "Five-year averages: A = 20.8, B = 12.4, C = 16.0, D = 13.0, E = 13.4. The overall average across all newspapers and years is 378/25 = 15.12. Only A and C exceed it, so the count is two."
+    },
+    {
+      "number": 96,
+      "answer": "C",
+      "value": "9.54 persons per pucca house",
+      "confidence": "HIGH",
+      "reasoning": "Read from the page images: Chart-I gives PUCCA 110 deg, KUTCHA 40 deg, SEMI PUCCA 210 deg (sum 360); Chart-II gives pucca 60 deg, kutcha 70 deg, houseless 20 deg, semi pucca 210 deg (sum 360). Population in pucca houses = 2100000*60/360 = 350000. Number of pucca houses = 120000*110/360 = 110000/3 = 36666.67. Ratio = 105/11 = 9.5454, i.e. 9.54."
+    },
+    {
+      "number": 97,
+      "answer": "B",
+      "value": "about 13 degrees (12.8 degrees)",
+      "confidence": "MED",
+      "reasoning": "Kutcha houses = 120000*40/360 = 40000/3 = 13333.33. After building 5000 more the count is 55000/3 = 18333.33 and the TOTAL housing stock rises to 125000. New angle = (55000/3)/125000 * 360 = 52.8 deg, so the change is 12.8 deg, approximately 13 deg. The word 'approximate' in the stem supports a non-round answer. RUNNER-UP C (15 deg): this is obtained exactly if the denominator is wrongly held at 120000, giving a new angle of 55 deg; C would win if the setter made that error, and the pairing of 13 and 15 in the options looks like a deliberate trap around exactly this fork. [ADJUDICATED BY HAND, not accepted on agreement. Kutcha is 40 degrees of 120000 houses = 13333; adding 5000 makes the numerator 18333 AND the total 125000, giving 52.8 degrees and a change of 12.8, i.e. about 13. The runner-up 15 comes from holding the denominator at 120000, which is wrong because the new houses join the total.]",
+      "solution": "Kutcha houses occupy \\(40^\\circ\\) of Chart-I, i.e. \\(120000 \\times \\dfrac{40}{360} = \\dfrac{40000}{3} \\approx 13333\\) houses. Building 5000 more raises the kutcha count to about 18333, but it also raises the total housing stock to 125000 — and that second change is the point of the question. The new angle is \\(\\dfrac{18333}{125000} \\times 360^\\circ = 52.8^\\circ\\), so the change is \\(52.8^\\circ - 40^\\circ = 12.8^\\circ\\), approximately \\(13^\\circ\\). Leaving the total at 120000 instead would give \\(55^\\circ\\) and a change of \\(15^\\circ\\), which is the slip this question is built to catch."
+    },
+    {
+      "number": 98,
+      "answer": "B",
+      "value": "13.9 families per kutcha house",
+      "confidence": "HIGH",
+      "reasoning": "Chart-III (read from the page): pucca 70, semi pucca 85, houseless 20, kutcha 185 degrees (sum 360); with 360000 families each degree is 1000 families, so kutcha families = 185000 and houseless = 20000. After 300 shift in, kutcha families = 185300. Kutcha houses = 40000/3 = 13333.33. Average = 185300*3/40000 = 13.8975, i.e. 13.9. The answer is robust: even without the 300 shift the figure is 13.875, which also rounds to 13.9."
+    },
+    {
+      "number": 99,
+      "answer": "B",
+      "value": "26.7%",
+      "confidence": "HIGH",
+      "reasoning": "The 60 marks were re-read off the page image and match the transcription exactly. Counting values with 60 <= m < 80 gives 16 (60, 63, 60, 74, 60, 63, 64, 62, 66, 78, 72, 65, 60, 63, 72, 67); 16/60 = 26.67%. Note 80 itself occurs once and is correctly excluded by 'less than 80' - including it would give 17/60 = 28.3%, which is option C.",
+      "solution": "Count the marks \\(m\\) satisfying \\(60 \\le m < 80\\): there are 16 such scores among the 60 students. The percentage is \\(\\dfrac{16}{60} = 26.67\\%\\), i.e. about \\(26.7\\). Note that the single score of exactly 80 is excluded by the words \"less than 80\"; counting it would give \\(\\dfrac{17}{60} = 28.3\\%\\) instead."
+    },
+    {
+      "number": 100,
+      "answer": "B",
+      "value": "51.5",
+      "confidence": "HIGH",
+      "reasoning": "Original sum = 100*50 = 5000. The corrections add (182-82) + (56-6) = 100 + 50 = 150, so the corrected sum is 5150 and the corrected mean is 51.5."
+    }
+  ]
+}

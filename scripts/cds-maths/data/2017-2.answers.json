@@ -1,0 +1,807 @@
+{
+  "paper": "2017-2",
+  "reconciled": [],
+  "note": "Two independent blind passes agreed on all 100 questions (crosstab AGREE 100%, 0 DISPUTE, 0 TWIN). Derivations taken from passA wholesale.",
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "A",
+      "value": "6",
+      "confidence": "HIGH",
+      "reasoning": "A common factor means a common root r. Subtracting r^2-7r+2a=0 from r^2-5r+a=0 gives 2r-a=0, so a=2r. Substituting back gives r^2-3r=0, so r=0 or r=3. r=0 forces alpha=0, which the stem excludes, leaving r=3 and alpha=6. sympy returns exactly the two solutions (alpha,x)=(0,0) and (6,3).",
+      "solution": "If the two quadratics share a factor they share a root \\(r\\), so \\(r^2-5r+\\alpha=0\\) and \\(r^2-7r+2\\alpha=0\\). Subtracting gives \\(2r-\\alpha=0\\), that is \\(\\alpha=2r\\). Putting this back into the first equation gives \\(r^2-3r=0\\), so \\(r=0\\) or \\(r=3\\), and \\(r=0\\) would force \\(\\alpha=0\\), which the stem rules out. Hence \\(r=3\\) and \\(\\alpha=6\\)."
+    },
+    {
+      "number": 2,
+      "answer": "A",
+      "value": "16",
+      "confidence": "HIGH",
+      "reasoning": "Divisibility by 2, 3, 4 and 5 together means divisibility by lcm(2,3,4,5)=60. floor(1000/60)=16; a direct count over 1..1000 gives 16.",
+      "solution": "A number divisible by \\(2\\), \\(3\\), \\(4\\) and \\(5\\) is divisible by their L.C.M., which is \\(60\\). The multiples of \\(60\\) from \\(1\\) to \\(1000\\) run \\(60, 120, \\ldots, 960\\), and \\(\\left\\lfloor \\frac{1000}{60} \\right\\rfloor = 16\\). So there are \\(16\\) such numbers."
+    },
+    {
+      "number": 3,
+      "answer": "C",
+      "value": "\\((x+2)\\), \\((x-3)\\) and \\((x+5)\\)",
+      "confidence": "HIGH",
+      "reasoning": "x=-2 gives -8+16+22-30=0, so (x+2) is a factor; the quotient is x^2+2x-15=(x+5)(x-3). sympy factor returns (x-3)(x+2)(x+5).",
+      "solution": "Substituting \\(x=-2\\) gives \\(-8+16+22-30=0\\), so \\((x+2)\\) is a factor. Dividing out, \\(x^3+4x^2-11x-30=(x+2)(x^2+2x-15)\\), and \\(x^2+2x-15=(x+5)(x-3)\\). The three factors are therefore \\((x+2)\\), \\((x-3)\\) and \\((x+5)\\)."
+    },
+    {
+      "number": 4,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "x=(10^20-1)/9, y=(10^10-1)/3, z=2(10^10-1)/9. Then y^2=(10^20-2*10^10+1)/9, so x-y^2=(2*10^10-2)/9=z and the ratio is 1. Confirmed with exact integer arithmetic on the literal 20-, 10- and 10-digit numbers.",
+      "solution": "Write \\(x=\\frac{10^{20}-1}{9}\\), \\(y=\\frac{10^{10}-1}{3}\\) and \\(z=\\frac{2\\left(10^{10}-1\\right)}{9}\\). Then \\(y^2=\\frac{\\left(10^{10}-1\\right)^2}{9}=\\frac{10^{20}-2\\cdot 10^{10}+1}{9}\\), so \\(x-y^2=\\frac{2\\cdot 10^{10}-2}{9}\\), which is exactly \\(z\\). Hence \\(\\frac{x-y^2}{z}=1\\)."
+    },
+    {
+      "number": 5,
+      "answer": "A",
+      "value": "\\(5\\sqrt{10}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Roots 3k and 2k: product 6k^2=5/12 gives k^2=5/72; sum 5k=-m/12 gives m=-60k. sympy gives m=+/-5*sqrt(10); the positive value is 5*sqrt(10)~15.81, for which the discriminant is 250-240=10>0 and the roots -0.5270, -0.7906 are in ratio 2:3.",
+      "solution": "Let the roots be \\(3k\\) and \\(2k\\). Their product is \\(6k^2=\\frac{5}{12}\\), so \\(k^2=\\frac{5}{72}\\), and their sum is \\(5k=-\\frac{m}{12}\\), so \\(m=-60k\\). Taking the negative value of \\(k\\) makes \\(m\\) positive, giving \\(m=60\\sqrt{\\frac{5}{72}}=5\\sqrt{10}\\)."
+    },
+    {
+      "number": 6,
+      "answer": "B",
+      "value": "7",
+      "confidence": "HIGH",
+      "reasoning": "The leading coefficients are non-zero reals, so their product is non-zero and the degree of the product is 3+4=7.",
+      "solution": "When two polynomials are multiplied, the leading terms multiply and cannot cancel, so the degrees add. Here \\(3+4=7\\), so \\(f(x)g(x)\\) has degree \\(7\\)."
+    },
+    {
+      "number": 7,
+      "answer": "D",
+      "value": "-63",
+      "confidence": "HIGH",
+      "reasoning": "Remainder theorem at x=-3: 5(-27)+5(9)-6(-3)+9 = -135+45+18+9 = -63.",
+      "solution": "By the remainder theorem the remainder on division by \\((x+3)\\) is the value of the polynomial at \\(x=-3\\). That is \\(5(-27)+5(9)-6(-3)+9=-135+45+18+9=-63\\)."
+    },
+    {
+      "number": 8,
+      "answer": "D",
+      "value": "\\((x+y+z)p\\)",
+      "confidence": "HIGH",
+      "reasoning": "Product = HCF x LCM, so LCM = (x+y+z)p^3 / p^2 = (x+y+z)p.",
+      "solution": "For any two expressions, the product equals the H.C.F. multiplied by the L.C.M. So the L.C.M. is \\(\\frac{(x+y+z)p^3}{p^2}=(x+y+z)p\\)."
+    },
+    {
+      "number": 9,
+      "answer": "B",
+      "value": "\\(\\frac{19}{90}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The bar sits over the last digit only (verified by the transcribers at high zoom), so 0.8-bar3 = (83-8)/90 = 75/90 = 5/6 and 0.6-bar2 = (62-6)/90 = 56/90. Difference 75/90 - 56/90 = 19/90. Without the bars these would be terminating decimals giving 0.83-0.62=0.21=21/100, which is option C, so the bars are load-bearing here.",
+      "solution": "With the bar over the last digit only, \\(0.8\\overline{3}=\\frac{83-8}{90}=\\frac{75}{90}\\) and \\(0.6\\overline{2}=\\frac{62-6}{90}=\\frac{56}{90}\\). The distance between the two points is the difference \\(\\frac{75}{90}-\\frac{56}{90}=\\frac{19}{90}\\)."
+    },
+    {
+      "number": 10,
+      "answer": "A",
+      "value": "33.5%",
+      "confidence": "HIGH",
+      "reasoning": "Successive discounts multiply: 0.80 x 0.875 x 0.95 = 0.665 exactly (67/200 remaining as a fraction is 133/200), so the deduction is 1-0.665 = 0.335.",
+      "solution": "Successive discounts multiply, so the price falls to \\(0.80\\times 0.875\\times 0.95=0.665\\) of the original. The actual deduction is therefore \\(1-0.665=0.335\\), that is \\(33.5\\%\\)."
+    },
+    {
+      "number": 11,
+      "answer": "C",
+      "value": "400",
+      "confidence": "HIGH",
+      "reasoning": "After 5% rot, 0.95N remain; selling 75% of those leaves 0.25 x 0.95N = 0.2375N = 95, so N = 400.",
+      "solution": "If he began with \\(N\\) mangoes, \\(0.95N\\) were sound. He sold \\(75\\%\\) of these, so \\(25\\%\\) of them were left: \\(0.25\\times 0.95N=0.2375N=95\\). Hence \\(N=400\\)."
+    },
+    {
+      "number": 12,
+      "answer": "B",
+      "value": "1 hr 30 min 12 sec",
+      "confidence": "HIGH",
+      "reasoning": "60 km/hr = 50/3 m/s; crossing a km-stone (a point) in 12 s makes the train 200 m long. The 1st to the 91st stone is 90 km, and clearing the last stone completely adds the train's own 200 m, giving 90.2 km. Time = 90.2/60 hr = 451/300 hr = 1.503333 hr = 1 h 30.2 min = 1 h 30 min 12 s. RUNNER-UP: option A (1 hr 30 min), which is what you get if the train's own length is ignored; the 12-second crossing datum exists precisely to supply that length, so A discards the only use of the first sentence.",
+      "solution": "At \\(60\\) km/hr the train moves at \\(\\frac{50}{3}\\) m/s, so taking \\(12\\) seconds to pass a km-stone (a single point) makes the train \\(200\\) m long. The first and the ninety-first stones are \\(90\\) km apart, and clearing the last stone completely needs a further \\(200\\) m, so the distance is \\(90.2\\) km. The time is \\(\\frac{90.2}{60}\\) hour, which is \\(1\\) hour \\(30\\) minutes \\(12\\) seconds."
+    },
+    {
+      "number": 13,
+      "answer": "B",
+      "value": "4.8 km/hour",
+      "confidence": "HIGH",
+      "reasoning": "A runs at 6 km/hr = 5/3 m/s, so covers 100 m in 60 s. With an 8 m start B runs only 92 m, and is beaten by 9 s, so takes 69 s. Speed = 92/69 = 4/3 m/s = (4/3)(18/5) = 24/5 = 4.8 km/hr.",
+      "solution": "\\(A\\) runs at \\(6\\) km/hr \\(=\\frac{5}{3}\\) m/s, so \\(A\\) covers the \\(100\\) m in \\(60\\) seconds. With an \\(8\\) m start \\(B\\) has only \\(92\\) m to run, and being beaten by \\(9\\) seconds he takes \\(69\\) seconds. His speed is \\(\\frac{92}{69}=\\frac{4}{3}\\) m/s, which is \\(4.8\\) km/hr."
+    },
+    {
+      "number": 14,
+      "answer": "C",
+      "value": "\\(2x-y\\)",
+      "confidence": "HIGH",
+      "reasoning": "The divisor 2xy+4x^2+y^2 is 4x^2+2xy+y^2, and 8x^3-y^3=(2x-y)(4x^2+2xy+y^2). sympy cancel returns 2x-y.",
+      "solution": "The divisor rearranges to \\(4x^2+2xy+y^2\\), which is exactly the second factor in the difference of cubes \\(8x^3-y^3=(2x-y)\\left(4x^2+2xy+y^2\\right)\\). Dividing therefore leaves the quotient \\(2x-y\\)."
+    },
+    {
+      "number": 15,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Putting x=-2 in both: 4-2a+b=0 and 4-2b+a=0. Subtracting gives 3(b-a)=0 so a=b, and then 4-a=0 gives a=b=4. Ratio a:b=1.",
+      "solution": "Since \\((x+2)\\) divides both, substituting \\(x=-2\\) gives \\(4-2a+b=0\\) and \\(4-2b+a=0\\). Subtracting these shows \\(a=b\\), and then \\(4-a=0\\) gives \\(a=b=4\\). Hence \\(a:b=1\\)."
+    },
+    {
+      "number": 16,
+      "answer": "A",
+      "value": "\\(f\\!\\left(\\frac{b}{a}\\right)\\)",
+      "confidence": "HIGH",
+      "reasoning": "ax-b vanishes at x=b/a, so by the remainder theorem the remainder is f(b/a).",
+      "solution": "The divisor \\(ax-b\\) is zero when \\(x=\\frac{b}{a}\\). By the remainder theorem, dividing \\(f(x)\\) by a linear expression leaves the value of \\(f\\) at the root of that expression, so the remainder is \\(f\\!\\left(\\frac{b}{a}\\right)\\)."
+    },
+    {
+      "number": 17,
+      "answer": "D",
+      "value": "1, 3 and 4",
+      "confidence": "HIGH",
+      "reasoning": "11664 = 108^2 exactly, so item 2 IS a perfect square. 2222 ends in 2, 343343 ends in 3 and 220347 ends in 7; no perfect square ends in 2, 3 or 7, and exact integer square roots confirm none of the three is a square. So items 1, 3 and 4 are the non-squares.",
+      "solution": "A perfect square can never end in \\(2\\), \\(3\\) or \\(7\\), which immediately rules out \\(2222\\), \\(343343\\) and \\(220347\\). The remaining number is a square, since \\(108^2=11664\\). So the numbers that are not perfect squares are the first, the third and the fourth."
+    },
+    {
+      "number": 18,
+      "answer": "B",
+      "value": "\\(\\left(x^4-16\\right)^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "x^3-2x^2+4x-8=(x-2)(x^2+4) and x^3+2x^2+4x+8=(x+2)(x^2+4). The whole product is (x^2-4)(x-2)(x^2+4)(x+2)(x^2+4)=(x^2-4)^2(x^2+4)^2=(x^4-16)^2. Expanding both and subtracting gives 0 in sympy. Option D (x^2-4)^4 is a different polynomial, and A has degree 8 but is x^8-256 rather than x^8-32x^4+256.",
+      "solution": "Group the two cubics: \\(x^3-2x^2+4x-8=(x-2)\\left(x^2+4\\right)\\) and \\(x^3+2x^2+4x+8=(x+2)\\left(x^2+4\\right)\\). The whole product is then \\((x+2)(x-2)\\cdot(x-2)\\left(x^2+4\\right)\\cdot(x+2)\\left(x^2+4\\right)=\\left(x^2-4\\right)^2\\left(x^2+4\\right)^2\\), which is \\(\\left[\\left(x^2-4\\right)\\left(x^2+4\\right)\\right]^2=\\left(x^4-16\\right)^2\\)."
+    },
+    {
+      "number": 19,
+      "answer": "C",
+      "value": "\\((x-1)\\), \\((x+6)\\) and \\((x^2+5x+12)\\)",
+      "confidence": "HIGH",
+      "reasoning": "Pair as x(x+5)=t and (x+2)(x+3)=t+6 with t=x^2+5x. Then t(t+6)-72=(t+12)(t-6)=(x^2+5x+12)(x^2+5x-6)=(x^2+5x+12)(x+6)(x-1). sympy factor confirms.",
+      "solution": "Pair the factors as \\(x(x+5)=x^2+5x\\) and \\((x+2)(x+3)=x^2+5x+6\\), and put \\(t=x^2+5x\\). The expression becomes \\(t(t+6)-72=t^2+6t-72=(t+12)(t-6)\\), that is \\(\\left(x^2+5x+12\\right)\\left(x^2+5x-6\\right)\\). Since \\(x^2+5x-6=(x+6)(x-1)\\), the factors are \\((x-1)\\), \\((x+6)\\) and \\(\\left(x^2+5x+12\\right)\\)."
+    },
+    {
+      "number": 20,
+      "answer": "B",
+      "value": "a = 2, b = -3",
+      "confidence": "HIGH",
+      "reasoning": "The HCF x^2+x-2=(x+2)(x-1). f(x) already carries (x-1), so (x+2) must divide x^2+3x+a: 4-6+a=0 gives a=2. g(x) already carries (x+2), so (x-1) must divide x^2+2x+b: 1+2+b=0 gives b=-3.",
+      "solution": "The given H.C.F. factorises as \\(x^2+x-2=(x+2)(x-1)\\). Since \\(f(x)\\) already contains \\((x-1)\\), the factor \\((x+2)\\) must come from \\(x^2+3x+a\\), so \\(4-6+a=0\\) and \\(a=2\\). Since \\(g(x)\\) already contains \\((x+2)\\), the factor \\((x-1)\\) must come from \\(x^2+2x+b\\), so \\(1+2+b=0\\) and \\(b=-3\\)."
+    },
+    {
+      "number": 21,
+      "answer": "C",
+      "value": "a is a factor of d",
+      "confidence": "HIGH",
+      "reasoning": "a divides ab and ab divides cd, so a divides cd. With gcd(a,c)=1, Euclid's lemma forces a | d. Counterexamples kill the others: a=2,b=3,c=3,d=4 gives ab=6 | 12=cd with gcd(2,3)=1, yet 2 does not divide c=3 (kills A), 2 does not divide b=3 (kills B), and d=4 is not a factor of a=2 (kills D).",
+      "solution": "Since \\(a\\) divides \\(ab\\) and \\(ab\\) divides \\(cd\\), \\(a\\) must divide \\(cd\\). Because \\(a\\) and \\(c\\) are coprime they share no prime factor, so every prime power in \\(a\\) has to be supplied by \\(d\\). Hence \\(a\\) is a factor of \\(d\\)."
+    },
+    {
+      "number": 22,
+      "answer": "C",
+      "value": "\\(\\frac{2}{b}=\\frac{1}{a}+\\frac{1}{c}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The three coefficients sum to a(b-c)+b(c-a)+c(a-b)=0, so x=1 is always a root. Equal roots therefore means both roots are 1, so the product of roots c(a-b)/[a(b-c)]=1, giving ca-cb=ab-ac, i.e. 2ac=ab+bc. Dividing by abc gives 2/b=1/a+1/c (a, b, c in harmonic progression). Note option A (2b=a+c, arithmetic progression) and B (b^2=ac, geometric progression) are the two natural distractors and neither follows.",
+      "solution": "The coefficients add to \\(a(b-c)+b(c-a)+c(a-b)=0\\), so \\(x=1\\) is always a root of this equation. If the roots are equal then both are \\(1\\), so their product \\(\\frac{c(a-b)}{a(b-c)}\\) equals \\(1\\), giving \\(ca-cb=ab-ac\\), that is \\(2ac=ab+bc\\). Dividing throughout by \\(abc\\) gives \\(\\frac{2}{b}=\\frac{1}{a}+\\frac{1}{c}\\)."
+    },
+    {
+      "number": 23,
+      "answer": "A",
+      "value": "\\(\\frac{b^2+ac}{b^2+c^2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Solved exactly as printed: the first numerator is a-x^2 and the fourth is b-x^2, an asymmetry the transcribers verified at 9x. Bringing both x-denominator terms to one side gives [ca+b^2-x^2(b+c)]/(bcx) = [b^2+c^2-x(b+c)]/(bc); multiplying by bcx cancels the -x^2(b+c) on both sides and leaves ca+b^2 = x(b^2+c^2). sympy returns exactly (a*c+b^2)/(b^2+c^2). The asymmetry is load-bearing rather than a misprint: making both numerators a-x^2 would give x = a(b+c)/(b^2+c^2), which matches no printed option, so the printed stem is the self-consistent one.",
+      "solution": "Bring both fractions that have \\(x\\) in the denominator to the same side: \\(\\frac{a-x^2}{bx}+\\frac{b-x^2}{cx}=\\frac{c-x}{b}+\\frac{b-x}{c}\\). Combining each side over a common denominator gives \\(\\frac{ca+b^2-x^2(b+c)}{bcx}=\\frac{b^2+c^2-x(b+c)}{bc}\\). Multiplying through by \\(bcx\\) cancels the \\(x^2(b+c)\\) terms on both sides and leaves \\(ca+b^2=x\\left(b^2+c^2\\right)\\), so \\(x=\\frac{b^2+ac}{b^2+c^2}\\)."
+    },
+    {
+      "number": 24,
+      "answer": "C",
+      "value": "No integral root",
+      "confidence": "HIGH",
+      "reasoning": "The equation is x^2+7x-14k^2+49/4=0, i.e. (x+7/2)^2=14k^2, so x = -7/2 +/- sqrt(14) k. For k=0 the double root is -7/2, not an integer; for any non-zero integer k, sqrt(14) k is irrational, so x is irrational. sympy roots -7/2 +/- sqrt(14) k confirm this for every k from -4 to 4.",
+      "solution": "Since \\(14\\times\\frac{7}{8}=\\frac{49}{4}\\), the equation is \\(x^2+7x+\\frac{49}{4}=14k^2\\), that is \\(\\left(x+\\frac{7}{2}\\right)^2=14k^2\\). Hence \\(x=-\\frac{7}{2}\\pm\\sqrt{14}\\,k\\). When \\(k=0\\) this gives \\(-\\frac{7}{2}\\), and when \\(k\\) is a non-zero integer \\(\\sqrt{14}\\,k\\) is irrational, so the roots are never integers."
+    },
+    {
+      "number": 25,
+      "answer": "C",
+      "value": "38",
+      "confidence": "HIGH",
+      "reasoning": "First multiple of 13 above 500 is 13x39=507; last below 1000 is 13x76=988. Count = 76-39+1 = 38. A direct count over 501..999 gives 38. (Including the endpoints changes nothing, since neither 500 nor 1000 is a multiple of 13.)",
+      "solution": "The first multiple of \\(13\\) above \\(500\\) is \\(13\\times 39=507\\) and the last one below \\(1000\\) is \\(13\\times 76=988\\). The multipliers run from \\(39\\) to \\(76\\), giving \\(76-39+1=38\\) numbers."
+    },
+    {
+      "number": 26,
+      "answer": "D",
+      "value": "72 days",
+      "confidence": "HIGH",
+      "reasoning": "8 cows x 60 days = 480 cow-days cost Rs 6400, so one cow-day costs 6400/480 = 40/3. Then 5n x 40/3 = 4800 gives n = 72. sympy confirms n=72.",
+      "solution": "Maintaining \\(8\\) cows for \\(60\\) days is \\(480\\) cow-days at a cost of Rs. \\(6{,}400\\), so one cow-day costs \\(\\frac{6400}{480}=\\frac{40}{3}\\) rupees. For \\(5\\) cows over \\(n\\) days the cost is \\(5n\\times\\frac{40}{3}=4800\\), which gives \\(n=72\\)."
+    },
+    {
+      "number": 27,
+      "answer": "B",
+      "value": "125",
+      "confidence": "HIGH",
+      "reasoning": "He needs 5 more marks than the 45 he scored, so the pass mark is 50. That is 40% of the maximum, so the maximum is 50 x 100/40 = 125.",
+      "solution": "Failing by \\(5\\) marks with a score of \\(45\\) means the pass mark is \\(50\\). Since \\(50\\) is \\(40\\%\\) of the maximum, the maximum marks are \\(\\frac{50\\times 100}{40}=125\\)."
+    },
+    {
+      "number": 28,
+      "answer": "D",
+      "value": "1",
+      "confidence": "MED",
+      "reasoning": "Dividing both equations by uv and setting p=1/u, q=1/v gives 3p+6q=7 and 9p+3q=11, whence p=1 and q=2/3, so u=1 and v=3/2. Check: 3(2+1.5)=10.5=7(1)(1.5) and 3(1+4.5)=16.5=11(1)(1.5). RUNNER-UP: option A (0). sympy returns TWO solutions, {u:0, v:0} and {u:1, v:3/2}, and u=v=0 does satisfy both printed equations literally (both sides become 0). Option A wins only if the trivial degenerate solution is admitted; the reciprocal substitution the problem is built around requires u, v non-zero, so the intended value is 1.",
+      "solution": "Divide both equations by \\(uv\\): the first becomes \\(\\frac{6}{v}+\\frac{3}{u}=7\\) and the second \\(\\frac{3}{v}+\\frac{9}{u}=11\\). Writing \\(p=\\frac{1}{u}\\) and \\(q=\\frac{1}{v}\\) gives \\(3p+6q=7\\) and \\(9p+3q=11\\), which solve to \\(p=1\\) and \\(q=\\frac{2}{3}\\). Hence \\(u=1\\) and \\(v=\\frac{3}{2}\\); note that \\(u=v=0\\) also satisfies both equations, but it makes every term vanish and is the degenerate case this substitution excludes."
+    },
+    {
+      "number": 29,
+      "answer": "B",
+      "value": "32 years",
+      "confidence": "HIGH",
+      "reasoning": "R-5=3(S-5) gives R=3S-10; R+4=2(S+4) gives R=2S+4. Equating, S=14 and R=32. sympy confirms {R:32, S:14}.",
+      "solution": "Let Ram and Shyam be \\(R\\) and \\(S\\) years old now. Then \\(R-5=3(S-5)\\), so \\(R=3S-10\\), and \\(R+4=2(S+4)\\), so \\(R=2S+4\\). Equating the two gives \\(S=14\\), and hence \\(R=32\\) years."
+    },
+    {
+      "number": 30,
+      "answer": "C",
+      "value": "Rs. 800",
+      "confidence": "HIGH",
+      "reasoning": "Let C and S be the total cost of the chairs and the stools. C+S=1340 and 0.1C+0.2S=188. Substituting gives 0.1C+268-0.2C=188, so C=800 (and S=540). sympy confirms {C:800, S:540}.",
+      "solution": "Let the chairs cost Rs. \\(C\\) in all and the stools Rs. \\(S\\), so \\(C+S=1340\\). The profit condition is \\(0.1C+0.2S=188\\). Substituting \\(S=1340-C\\) gives \\(0.1C+268-0.2C=188\\), so \\(0.1C=80\\) and \\(C=800\\). He paid Rs. \\(800\\) for the chairs."
+    },
+    {
+      "number": 31,
+      "answer": "B",
+      "value": "\\(\\{x : x+5=5\\}=\\{0\\}\\)",
+      "confidence": "HIGH",
+      "reasoning": "x+5=5 gives x=0, so the set contains exactly one element, 0, and is therefore the singleton {0}. It is not empty (kills A), it is a set and not the number 0 (kills C), and {phi} is the set whose only element is the empty set, which is not the same as {0} (kills D).",
+      "solution": "The condition \\(x+5=5\\) is satisfied only by \\(x=0\\), so the set has exactly one member. That makes it the singleton \\(\\{0\\}\\) rather than the empty set, and rather than the number \\(0\\) itself or the set \\(\\{\\phi\\}\\) whose only member is the empty set."
+    },
+    {
+      "number": 32,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "From ab+bc+ca=0, bc=-a(b+c), so a^2-bc = a^2+a(b+c) = a(a+b+c); similarly for the other two. The sum becomes a/(a+b+c)+b/(a+b+c)+c/(a+b+c) = 1. Verified on four exact triples satisfying the constraint ((1,1,-1/2), (2,3,-6/5), (5,-1,5/4), (7,2,-14/9)), each giving 1.",
+      "solution": "Since \\(ab+bc+ca=0\\), we have \\(bc=-a(b+c)\\), so \\(a^2-bc=a^2+a(b+c)=a(a+b+c)\\). In the same way \\(b^2-ca=b(a+b+c)\\) and \\(c^2-ab=c(a+b+c)\\). The sum is therefore \\(\\frac{a+b+c}{a+b+c}=1\\)."
+    },
+    {
+      "number": 33,
+      "answer": "D",
+      "value": "40",
+      "confidence": "HIGH",
+      "reasoning": "Failed in at least one subject = 35+45-20 = 60%. So passed in both = 100-60 = 40%.",
+      "solution": "The percentage failing in at least one subject is \\(35+45-20=60\\), because those failing in both have been counted twice. Everyone else passed both subjects, so the required percentage is \\(100-60=40\\)."
+    },
+    {
+      "number": 34,
+      "answer": "B",
+      "value": "\\(\\frac{1}{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Setting p=x-y, q=y-z, r=z-x gives p+q+r=0, and then p^3+q^3+r^3=3pqr. So the ratio is pqr/(3pqr)=1/3. Verified on three distinct numeric triples, each giving exactly 1/3.",
+      "solution": "Put \\(p=x-y\\), \\(q=y-z\\) and \\(r=z-x\\); these add to zero. Whenever \\(p+q+r=0\\), the identity \\(p^3+q^3+r^3=3pqr\\) holds, so the denominator is three times the numerator. The value is therefore \\(\\frac{1}{3}\\)."
+    },
+    {
+      "number": 35,
+      "answer": "C",
+      "value": "Lies between 1 and 2 (the value is \\(\\frac{1+\\sqrt{5}}{2}\\approx 1.618\\))",
+      "confidence": "HIGH",
+      "reasoning": "If x is the value then x^2 = 1+x, so x = (1+sqrt5)/2 = 1.61803 (the negative root is rejected as the expression is positive). That lies strictly between 1 and 2.",
+      "solution": "Call the value \\(x\\). The expression repeats itself inside the radical, so \\(x=\\sqrt{1+x}\\), that is \\(x^2=1+x\\). The positive root is \\(x=\\frac{1+\\sqrt{5}}{2}\\approx 1.618\\), which lies between \\(1\\) and \\(2\\)."
+    },
+    {
+      "number": 36,
+      "answer": "D",
+      "value": "6.6813",
+      "confidence": "HIGH",
+      "reasoning": "log 8000 = log 8 + 3 = 3.9031 and log 600 = log 6 + 2 = 2.7782. Sum = 6.6813.",
+      "solution": "Since \\(8000=8\\times 10^3\\), \\(\\log_{10}8000=0.9031+3=3.9031\\), and since \\(600=6\\times 10^2\\), \\(\\log_{10}600=0.7782+2=2.7782\\). Adding gives \\(6.6813\\)."
+    },
+    {
+      "number": 37,
+      "answer": "B",
+      "value": "18",
+      "confidence": "HIGH",
+      "reasoning": "Total work = 30 x 40 = 1200 man-days. In 24 days 30 x 24 = 720 was done, leaving 480. If m men took 40 more days, 40m = 480 so m = 12, and 30-12 = 18 men left.",
+      "solution": "The job is \\(30\\times 40=1200\\) man-days. In the first \\(24\\) days, \\(30\\times 24=720\\) man-days were done, leaving \\(480\\). If \\(m\\) men then took \\(40\\) days, \\(40m=480\\), so \\(m=12\\) and the number who left is \\(30-12=18\\)."
+    },
+    {
+      "number": 38,
+      "answer": "D",
+      "value": "50 days",
+      "confidence": "HIGH",
+      "reasoning": "4 goats do 1/50 of the field per day, so one goat does 1/200; 6 sheep do 1/50, so one sheep does 1/300. Then 2 goats and 3 sheep do 2/200 + 3/300 = 1/100 + 1/100 = 1/50 per day, i.e. 50 days. (2 goats are half of 4 goats and 3 sheep are half of 6 sheep, so the combination is exactly one full grazing rate.)",
+      "solution": "Four goats graze \\(\\frac{1}{50}\\) of the field a day, so one goat grazes \\(\\frac{1}{200}\\); six sheep also graze \\(\\frac{1}{50}\\) a day, so one sheep grazes \\(\\frac{1}{300}\\). Together, \\(2\\) goats and \\(3\\) sheep graze \\(\\frac{2}{200}+\\frac{3}{300}=\\frac{1}{50}\\) of the field per day. They therefore need \\(50\\) days."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "25 hours",
+      "confidence": "HIGH",
+      "reasoning": "The stem prints 'watcr' for 'water' (verified at 9x by the transcribers); it does not affect the mathematics. Tap rate 1/10 per hour, leak rate 1/L. For 5 hours both act, then the tap alone for 7 hours: 5(1/10 - 1/L) + 7/10 = 1, so 1.2 - 5/L = 1 and L = 25. sympy confirms L=25.",
+      "solution": "The tap fills \\(\\frac{1}{10}\\) of the tub each hour, and let the outlet empty \\(\\frac{1}{L}\\) of it each hour. For the first \\(5\\) hours both act together and for the next \\(7\\) hours only the tap acts, filling the tub: \\(5\\left(\\frac{1}{10}-\\frac{1}{L}\\right)+\\frac{7}{10}=1\\). This gives \\(\\frac{5}{L}=\\frac{1}{5}\\), so \\(L=25\\) hours."
+    },
+    {
+      "number": 40,
+      "answer": "B",
+      "value": "8 km",
+      "confidence": "HIGH",
+      "reasoning": "One-way distance d: d/12 + d/8 = 50/60 = 5/6, so 5d/24 = 5/6 and d = 4 km. The question asks the TOTAL distance walked, which is both legs, 2d = 8 km. RUNNER-UP: option A (4 km), the one-way distance, if 'total distance' were read as the school distance.",
+      "solution": "Let the one-way distance be \\(d\\) km. The total time is \\(\\frac{d}{12}+\\frac{d}{8}=\\frac{5d}{24}\\) hours, and \\(50\\) minutes is \\(\\frac{5}{6}\\) hour, so \\(\\frac{5d}{24}=\\frac{5}{6}\\) and \\(d=4\\) km. The whole journey covers this distance twice, so the total distance walked is \\(8\\) km."
+    },
+    {
+      "number": 41,
+      "answer": "C",
+      "value": "\\(\\frac{52}{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The ratios 1 : 1/3 : 1/6 sum to 3/2, so the parts are 78x(1)/(3/2)=52, 78x(1/3)/(3/2)=52/3 and 78x(1/6)/(3/2)=26/3. These add to 78. The middle part is 52/3.",
+      "solution": "The three ratios \\(1\\), \\(\\frac{1}{3}\\) and \\(\\frac{1}{6}\\) add up to \\(\\frac{3}{2}\\), so each part is \\(78\\) multiplied by its own ratio and divided by \\(\\frac{3}{2}\\). This gives \\(52\\), \\(\\frac{52}{3}\\) and \\(\\frac{26}{3}\\), which indeed add to \\(78\\). The middle part is \\(\\frac{52}{3}\\)."
+    },
+    {
+      "number": 42,
+      "answer": "D",
+      "value": "230",
+      "confidence": "HIGH",
+      "reasoning": "First : second = 2:3 = 8:12 and second : third = 4:5 = 12:15, so first : second : third = 8:12:15, summing to 35 parts. With 350 boys each part is 10, giving 80, 120 and 150. First plus third is 80+150 = 230.",
+      "solution": "Scale the two ratios to a common middle term: \\(2:3=8:12\\) and \\(4:5=12:15\\), so the three standards are in the ratio \\(8:12:15\\). These \\(35\\) parts make up \\(350\\) boys, so each part is \\(10\\), giving \\(80\\), \\(120\\) and \\(150\\) boys. The first and third together number \\(80+150=230\\)."
+    },
+    {
+      "number": 43,
+      "answer": "A",
+      "value": "Rs. 6,000",
+      "confidence": "HIGH",
+      "reasoning": "For 2 years the difference between compound and simple interest is P(r/100)^2 = P(0.05)^2 = P/400 = 15, so P = 6000. sympy confirms.",
+      "solution": "Over two years the compound interest exceeds the simple interest by exactly the interest on the first year's interest, that is \\(P\\left(\\frac{r}{100}\\right)^2\\). Here \\(P\\left(\\frac{5}{100}\\right)^2=\\frac{P}{400}=15\\), so \\(P=\\) Rs. \\(6{,}000\\)."
+    },
+    {
+      "number": 44,
+      "answer": "D",
+      "value": "\\(10\\frac{5}{7}\\%\\)",
+      "confidence": "HIGH",
+      "reasoning": "To keep expenditure fixed when prices rise by r%, consumption must fall by 100r/(100+r) percent = 1200/112 = 75/7 = 10 5/7 %. RUNNER-UP: option B (10 2/7 %), which is 72/7 and is what a mis-simplification of 1200/112 gives; the exact value 75/7 = 10.714 matches option D.",
+      "solution": "If the price rises by \\(12\\%\\), the new price is \\(1.12\\) times the old, so the consumption must become \\(\\frac{1}{1.12}\\) of the old to keep the expenditure the same. The reduction is \\(1-\\frac{1}{1.12}=\\frac{12}{112}=\\frac{75}{700}\\), that is \\(\\frac{75}{7}\\%=10\\frac{5}{7}\\%\\)."
+    },
+    {
+      "number": 45,
+      "answer": "D",
+      "value": "1, 2 and 3 (all three statements are correct)",
+      "confidence": "HIGH",
+      "reasoning": "Downstream speed = 18/4 = 4.5 km/hr, upstream speed = 18/10 = 1.8 km/hr. Statement 1 (against the stream = 1.8) is correct. Still water = (4.5+1.8)/2 = 3.15, so statement 2 is correct. Stream = (4.5-1.8)/2 = 1.35, so statement 3 is correct.",
+      "solution": "Going with the stream he covers \\(18\\) km in \\(4\\) hours, a speed of \\(4.5\\) km/hr, and returning he covers it in \\(10\\) hours, a speed of \\(1.8\\) km/hr against the stream. The speed in still water is the average, \\(\\frac{4.5+1.8}{2}=3.15\\) km/hr, and the speed of the stream is half the difference, \\(\\frac{4.5-1.8}{2}=1.35\\) km/hr. All three statements are therefore correct."
+    },
+    {
+      "number": 46,
+      "answer": "D",
+      "value": "\\(\\frac{17}{13}\\)",
+      "confidence": "HIGH",
+      "reasoning": "5^2+12^2=169=13^2, so the triangle is right-angled with hypotenuse 13. Whichever of the two acute angles theta is, its sine and cosine are 5/13 and 12/13 in some order, so the sum is 17/13 either way. The answer is therefore independent of which acute angle is meant.",
+      "solution": "Since \\(5^2+12^2=169=13^2\\), the triangle is right-angled with the side \\(13\\) as hypotenuse. For either acute angle, the sine and cosine are \\(\\frac{5}{13}\\) and \\(\\frac{12}{13}\\) in one order or the other, so their sum is \\(\\frac{5}{13}+\\frac{12}{13}=\\frac{17}{13}\\) in both cases."
+    },
+    {
+      "number": 47,
+      "answer": "A",
+      "value": "Greater than 2 (strictly)",
+      "confidence": "MED",
+      "reasoning": "Writing t = sin x, the expression is t + 1/t, whose minimum over t>0 is 2 at t=1. On the OPEN interval 0<x<pi/2 we have 0<t<1 strictly, so t+1/t>2 strictly. Numerically the value falls to 2.0002 at x=1.4 and approaches 2 only as x tends to pi/2, never attaining it. RUNNER-UP: option C (>=2), which is also a true statement since >2 implies >=2. Option C would win outright if the interval were closed at pi/2, where the value is exactly 2; the paper's choice of a strict inequality in the stem is what makes the strict option the precise one.",
+      "solution": "Put \\(t=\\sin x\\); the expression is \\(t+\\frac{1}{t}\\), and \\(t+\\frac{1}{t}-2=\\frac{(t-1)^2}{t}\\), which is positive for every \\(t\\) other than \\(1\\). Because the interval \\(0<x<\\frac{\\pi}{2}\\) is open, \\(\\sin x\\) is strictly less than \\(1\\), so the value never reaches \\(2\\) and is always greater than \\(2\\)."
+    },
+    {
+      "number": 48,
+      "answer": "A",
+      "value": "\\(\\frac{2mn}{m^2+n^2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "cos theta = sqrt(1 - sin^2 theta) with the positive sign since theta is in the first quadrant. (m^2+n^2)^2 - (m^2-n^2)^2 = 4m^2n^2, so cos theta = 2mn/(m^2+n^2). sympy simplifies the radical to exactly this for positive m, n.",
+      "solution": "Since \\(\\theta\\) lies in the first quadrant, \\(\\cos\\theta=\\sqrt{1-\\sin^2\\theta}\\) is positive. Here \\(\\left(m^2+n^2\\right)^2-\\left(m^2-n^2\\right)^2=4m^2n^2\\), so \\(\\cos\\theta=\\frac{\\sqrt{4m^2n^2}}{m^2+n^2}=\\frac{2mn}{m^2+n^2}\\)."
+    },
+    {
+      "number": 49,
+      "answer": "B",
+      "value": "10 cm",
+      "confidence": "HIGH",
+      "reasoning": "By the extended sine rule, BC = a = 2R sin A = 2(10) sin 30 = 20 x 1/2 = 10 cm.",
+      "solution": "By the extended sine rule, the side opposite an angle is \\(2R\\) times the sine of that angle, where \\(R\\) is the circumradius. Here \\(BC=2\\times 10\\times\\sin 30^\\circ=20\\times\\frac{1}{2}=10\\) cm."
+    },
+    {
+      "number": 50,
+      "answer": "A",
+      "value": "\\(A=B\\); both equal \\(3-2\\sqrt{2}\\approx 0.1716\\)",
+      "confidence": "HIGH",
+      "reasoning": "A = (1/sqrt2 - 1/2)/(1/sqrt2 + 1/2); multiplying numerator and denominator by 2 gives (sqrt2 - 1)/(sqrt2 + 1). B = (sqrt2 - 1)/(sqrt2 + 1) directly, since sec45 = cosec45 = sqrt2 and tan45 = cot45 = 1. Both simplify in sympy to 3 - 2*sqrt(2) = 0.17157, and A - B simplifies to exactly 0. Both are positive, which also kills option D.",
+      "solution": "For \\(A\\), multiply numerator and denominator by \\(2\\): \\(A=\\frac{\\frac{1}{\\sqrt{2}}-\\frac{1}{2}}{\\frac{1}{\\sqrt{2}}+\\frac{1}{2}}=\\frac{\\sqrt{2}-1}{\\sqrt{2}+1}\\). For \\(B\\), \\(\\sec 45^\\circ=\\operatorname{cosec}45^\\circ=\\sqrt{2}\\) and \\(\\tan 45^\\circ=\\cot 45^\\circ=1\\), so \\(B=\\frac{\\sqrt{2}-1}{\\sqrt{2}+1}\\) as well. Both equal \\(3-2\\sqrt{2}\\approx 0.1716\\), so \\(A=B\\)."
+    },
+    {
+      "number": 51,
+      "answer": "B",
+      "value": "\\(\\theta=78^\\circ=\\frac{13\\pi}{30}\\), which lies in \\(\\left(\\frac{2\\pi}{5},\\frac{3\\pi}{5}\\right)\\)",
+      "confidence": "HIGH",
+      "reasoning": "At 4:36 the minute hand is at 36x6 = 216 deg and the hour hand at 4x30 + 36x0.5 = 138 deg, so the angle is 78 deg = 13pi/30. Comparing over the common denominator 30: option A is (18/30, 24/30)pi, B is (12/30, 18/30)pi, C is [6/30, 12/30]pi, D is [14/30, 16/30]pi. Only B contains 13/30. Note D is the near miss - it starts at 14pi/30, just above the true value.",
+      "solution": "At \\(4{:}36\\) the minute hand has turned \\(36\\times 6^\\circ=216^\\circ\\) from \\(12\\), and the hour hand has turned \\(4\\times 30^\\circ+36\\times 0.5^\\circ=138^\\circ\\). The angle between them is \\(216^\\circ-138^\\circ=78^\\circ\\), which in radians is \\(\\frac{78\\pi}{180}=\\frac{13\\pi}{30}\\). Since \\(\\frac{2\\pi}{5}=\\frac{12\\pi}{30}\\) and \\(\\frac{3\\pi}{5}=\\frac{18\\pi}{30}\\), this value lies strictly between \\(\\frac{2\\pi}{5}\\) and \\(\\frac{3\\pi}{5}\\)."
+    },
+    {
+      "number": 52,
+      "answer": "C",
+      "value": "Two (statements 1 and 2 are true, statement 3 is false)",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1: sec^2+cosec^2 = 4/sin^2(2theta); for theta in (45,60), 2theta is in (90,120) so the value lies in (4, 16/3), giving alpha in (2, 2.31), certainly >1. TRUE (numerically 4.00005 at 45.1 deg up to 5.312 at 59.9 deg). Statement 2: (1+cos)/(1-cos) = cot^2(theta/2); for theta in (0,45), theta/2 is in (0,22.5) so cot(theta/2) > cot 22.5 = 2.414 > 2. TRUE (numerically 2.420 at 44.9 deg rising without bound as theta tends to 0). Statement 3: the expression simplifies identically to sin theta + cos theta (sympy confirms the difference is exactly 0), which on (0,45) lies in (1, sqrt2) and never reaches 2. FALSE. So two statements are true.",
+      "solution": "For the first, \\(\\sec^2\\theta+\\operatorname{cosec}^2\\theta=\\frac{1}{\\sin^2\\theta\\cos^2\\theta}=\\frac{4}{\\sin^2 2\\theta}\\), which for \\(45^\\circ<\\theta<60^\\circ\\) lies between \\(4\\) and \\(\\frac{16}{3}\\), so \\(\\alpha\\) lies between \\(2\\) and \\(2.31\\) and is greater than \\(1\\). For the second, \\(\\frac{1+\\cos\\theta}{1-\\cos\\theta}=\\cot^2\\frac{\\theta}{2}\\), and for \\(0^\\circ<\\theta<45^\\circ\\) we get \\(\\cot\\frac{\\theta}{2}>\\cot 22.5^\\circ\\approx 2.414>2\\). For the third, \\(\\frac{\\cos\\theta}{1-\\tan\\theta}+\\frac{\\sin\\theta}{1-\\cot\\theta}=\\frac{\\cos^2\\theta-\\sin^2\\theta}{\\cos\\theta-\\sin\\theta}=\\sin\\theta+\\cos\\theta\\), which is at most \\(\\sqrt{2}\\approx 1.414\\) and so is never \\(\\ge 2\\). Exactly two statements are true."
+    },
+    {
+      "number": 53,
+      "answer": "C",
+      "value": "Statement I is true but Statement II is false",
+      "confidence": "HIGH",
+      "reasoning": "Looking from A (height h) to A' (height h+x) across the horizontal distance d, the rise is x and tan 45 = x/d gives x = d. Statement I: h+x = h+d > d since the building has positive height h. TRUE. Statement II: from A' the depression of B has tan = (h+x)/d = (h+d)/d > 1, so the depression exceeds 45 degrees, not less. FALSE. Statement I true and II false is exactly option C.",
+      "solution": "From \\(A\\) at height \\(h\\), the point \\(A'\\) is \\(x\\) higher and \\(d\\) away horizontally, so \\(\\tan 45^\\circ=\\frac{x}{d}=1\\) and \\(x=d\\). Statement I asks whether \\(h+x>d\\); since \\(x=d\\) and \\(h>0\\), \\(h+x=h+d>d\\), so it is true. For Statement II, looking down from \\(A'\\) at height \\(h+x\\) to \\(B\\) at horizontal distance \\(d\\), the angle of depression has tangent \\(\\frac{h+d}{d}>1\\), so that angle is greater than \\(45^\\circ\\), making Statement II false."
+    },
+    {
+      "number": 54,
+      "answer": "C",
+      "value": "80 m",
+      "confidence": "HIGH",
+      "reasoning": "Take X at the origin with East along the bank and North across the river of breadth w; let the tower be at (t, w). From X the bearing N alpha E gives tan alpha = t/w = 2, so t = 2w. From Y = (200, 0) the bearing N beta W gives tan beta = (200-t)/w = 0.5. Substituting, 200 - 2w = 0.5w, so w = 80 m. sympy confirms w = 80.",
+      "solution": "Put \\(X\\) at the origin with East along the bank and North across the river, and let the breadth be \\(w\\) so the tower stands at \\((t,\\,w)\\). The bearing \\(N\\alpha^\\circ E\\) from \\(X\\) gives \\(\\tan\\alpha=\\frac{t}{w}=2\\), so \\(t=2w\\). Walking \\(200\\) m East to \\(Y\\), the bearing \\(N\\beta^\\circ W\\) gives \\(\\tan\\beta=\\frac{200-t}{w}=0.5\\). Substituting \\(t=2w\\) gives \\(200-2w=0.5w\\), so \\(w=80\\) m."
+    },
+    {
+      "number": 55,
+      "answer": "B",
+      "value": "Less than 1 (the ratio is about 0.0207)",
+      "confidence": "HIGH",
+      "reasoning": "The stem prints the radian superscript as a literal 'c' and defines it in the stem itself. sin 1 degree = 0.0174524 while sin 1 radian = sin 57.3 degrees = 0.841471, so the ratio is 0.02074, well under 1. Structurally, 1 degree < 1 radian and both lie in the first quadrant where sine increases, so the numerator is necessarily the smaller.",
+      "solution": "One radian is about \\(57.3^\\circ\\), so \\(1^\\circ\\) is a far smaller angle than \\(1\\) radian. Both lie in the first quadrant, where the sine increases with the angle, so \\(\\sin 1^\\circ<\\sin 1^c\\). Numerically \\(\\frac{\\sin 1^\\circ}{\\sin 1^c}=\\frac{0.01745}{0.84147}\\approx 0.021\\), which is less than \\(1\\)."
+    },
+    {
+      "number": 56,
+      "answer": "D",
+      "value": "30 cm and 12.5 cm",
+      "confidence": "HIGH",
+      "reasoning": "Let the diameters be 12k and 5k, so the radii are 6k and 2.5k. Then pi(6k)^2 + pi(2.5k)^2 = pi(32.5)^2 gives 42.25k^2 = 1056.25, so k = 5. The diameters are 60 and 25 and the RADII are 30 and 12.5. Option C (60 and 25) is the diameters, not the radii, which is the trap; the question asks for the radii.",
+      "solution": "Let the diameters be \\(12k\\) and \\(5k\\), so the radii are \\(6k\\) and \\(2.5k\\), while the third circle has radius \\(32.5\\) cm. Then \\(\\pi(6k)^2+\\pi(2.5k)^2=\\pi(32.5)^2\\) gives \\(42.25k^2=1056.25\\), so \\(k=5\\). The radii are therefore \\(6\\times 5=30\\) cm and \\(2.5\\times 5=12.5\\) cm."
+    },
+    {
+      "number": 57,
+      "answer": "B",
+      "value": "24 square cm",
+      "confidence": "HIGH",
+      "reasoning": "A cube has 12 edges, and each edge is where one pair of square faces meets, so 12 pieces of tape are needed. Each piece measures 4 cm by 0.5 cm, an area of 2 square cm, and 12 x 2 = 24 square cm. (The 4 cm tape length matches the 4 cm edge of each square face.)",
+      "solution": "A cube has \\(12\\) edges, and each edge is one join between a pair of square faces, so \\(12\\) pieces of tape are needed. Each piece has area \\(4\\times 0.5=2\\) square cm. The total area of tape is \\(12\\times 2=24\\) square cm."
+    },
+    {
+      "number": 58,
+      "answer": "B",
+      "value": "\\(60^\\circ\\)",
+      "confidence": "HIGH",
+      "reasoning": "A circle inscribed in an angle of half-size theta with centre at distance D from the vertex has radius r = D sin theta. Equal areas ratio 9 means radii ratio 3, so r2 = 3r1 and hence D2 = 3D1. The circles touch, so D2 - D1 = r1 + r2 = 4r1, i.e. 2D1 = 4r1 and D1 = 2r1. Then sin theta = r1/D1 = 1/2, theta = 30 degrees, and angle A = 2theta = 60 degrees.",
+      "solution": "A circle touching both arms of an angle has its centre on the bisector, and if the half-angle is \\(\\theta\\) and the centre is at distance \\(D\\) from the vertex, then \\(r=D\\sin\\theta\\). Since the areas are in the ratio \\(9:1\\), the radii are in the ratio \\(3:1\\), so the distances of the centres from the vertex are also in the ratio \\(3:1\\), say \\(D\\) and \\(3D\\). The circles touch each other, so \\(3D-D=r_1+r_2=4r_1\\), giving \\(D=2r_1\\) and \\(\\sin\\theta=\\frac{r_1}{D}=\\frac{1}{2}\\). Hence \\(\\theta=30^\\circ\\) and angle \\(A=60^\\circ\\)."
+    },
+    {
+      "number": 59,
+      "answer": "D",
+      "value": "\\(1:3\\)",
+      "confidence": "HIGH",
+      "reasoning": "Let the square have side a. The complete figure's boundary is three sides of the square plus the two equal sides of the triangle (the base is interior), so 3a + 2s = (7/6)(4a) = 14a/3, giving s = 5a/6. The triangle's height is sqrt((5a/6)^2 - (a/2)^2) = sqrt(16a^2/36) = 2a/3, so its area is (1/2)(a)(2a/3) = a^2/3. The ratio to the square's a^2 is 1:3.",
+      "solution": "Let the square have side \\(a\\). The outline of the whole figure is three sides of the square together with the two equal sides of the triangle, so \\(3a+2s=\\frac{7}{6}\\times 4a=\\frac{14a}{3}\\), giving each equal side \\(s=\\frac{5a}{6}\\). The height of the triangle is \\(\\sqrt{\\left(\\frac{5a}{6}\\right)^2-\\left(\\frac{a}{2}\\right)^2}=\\frac{2a}{3}\\), so its area is \\(\\frac{1}{2}\\times a\\times\\frac{2a}{3}=\\frac{a^2}{3}\\). Against the square's area \\(a^2\\), the ratio is \\(1:3\\)."
+    },
+    {
+      "number": 60,
+      "answer": "C",
+      "value": "306 square cm",
+      "confidence": "HIGH",
+      "reasoning": "s = (51+37+20)/2 = 54, and Heron's formula gives sqrt(54 x 3 x 17 x 34) = sqrt(93636) = 306 exactly. sympy returns the exact integer 306.",
+      "solution": "The semi-perimeter is \\(s=\\frac{51+37+20}{2}=54\\). By Heron's formula the area is \\(\\sqrt{54\\times(54-51)\\times(54-37)\\times(54-20)}=\\sqrt{54\\times 3\\times 17\\times 34}=\\sqrt{93636}=306\\) square cm."
+    },
+    {
+      "number": 61,
+      "answer": "B",
+      "value": "\\(\\frac{r^2}{2}-\\frac{\\pi r^2}{8}\\)",
+      "confidence": "HIGH",
+      "reasoning": "QR is tangent at Q so PQ is perpendicular to QR, and PQ = QR = r makes triangle PQR right-angled and isosceles with area r^2/2 and angle QPR = 45 degrees = pi/4. Every point of the circle inside the angle is within distance r of P and therefore on P's side of the tangent line QR, so the whole sector of angle pi/4 lies inside the triangle; its area is (1/2)r^2(pi/4) = pi r^2/8. The region outside the circle is r^2/2 - pi r^2/8.",
+      "solution": "The tangent at \\(Q\\) is perpendicular to the radius \\(PQ\\), so triangle \\(PQR\\) is right-angled at \\(Q\\) with \\(PQ=QR=r\\). Its area is \\(\\frac{r^2}{2}\\) and the angle at \\(P\\) is \\(45^\\circ=\\frac{\\pi}{4}\\). The part of the triangle inside the circle is the sector of radius \\(r\\) and angle \\(\\frac{\\pi}{4}\\), of area \\(\\frac{1}{2}r^2\\cdot\\frac{\\pi}{4}=\\frac{\\pi r^2}{8}\\). The area outside the circle is therefore \\(\\frac{r^2}{2}-\\frac{\\pi r^2}{8}\\)."
+    },
+    {
+      "number": 62,
+      "answer": "C",
+      "value": "\\(p=\\frac{bc}{a}\\)",
+      "confidence": "HIGH",
+      "reasoning": "With the right angle at A, the legs are AB = c and CA = b, so the area is (1/2)bc. Taking BC = a as base with height AD = p, the area is also (1/2)ap. Equating gives p = bc/a. Option D (ab/c) fails dimensionally as a relation among these particular labels; only bc/a is the product of the two legs over the hypotenuse.",
+      "solution": "Since the right angle is at \\(A\\), the two legs are \\(AB=c\\) and \\(CA=b\\), so the area of the triangle is \\(\\frac{1}{2}bc\\). Taking \\(BC=a\\) as the base with the perpendicular \\(AD=p\\) as height, the same area is \\(\\frac{1}{2}ap\\). Equating the two gives \\(p=\\frac{bc}{a}\\)."
+    },
+    {
+      "number": 63,
+      "answer": "C",
+      "value": "\\(\\sqrt{29}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "Half-chords are 2 and 5, so r^2 = 4 + d1^2 = 25 + d2^2 with d1, d2 the distances from the centre. If the chords are on the same side, d1 - d2 = 3 and sympy gives d1 = 5, d2 = 2, so r^2 = 29. If they were on opposite sides, d1 + d2 = 3 forces d2 = -2, which is impossible, so the same-side configuration is the only one. r = sqrt(29).",
+      "solution": "Half of \\(AB\\) is \\(2\\) cm and half of \\(CD\\) is \\(5\\) cm, so if their distances from the centre are \\(d_1\\) and \\(d_2\\) then \\(r^2=4+d_1^2=25+d_2^2\\). Placing the chords on opposite sides of the centre gives a negative distance, so both lie on the same side and \\(d_1-d_2=3\\). Solving gives \\(d_1=5\\) and \\(d_2=2\\), so \\(r^2=25+4=29\\) and the radius is \\(\\sqrt{29}\\) cm."
+    },
+    {
+      "number": 64,
+      "answer": "D",
+      "value": "9.375 square cm",
+      "confidence": "HIGH",
+      "reasoning": "In a cyclic quadrilateral the angles BAC and BDC subtend the same arc BC and are equal, and the angles at P are vertically opposite, so triangle APB is similar to triangle DPC with AB corresponding to DC. The ratio of areas is (8/5)^2 = 64/25, so the area of CPD is 24 x 25/64 = 75/8 = 9.375 square cm. Option A (24) would require the triangles to be congruent, which the unequal sides 8 and 5 rule out.",
+      "solution": "The angles \\(\\angle BAC\\) and \\(\\angle BDC\\) stand on the same arc \\(BC\\) and are therefore equal, and the angles at \\(P\\) are vertically opposite. So triangle \\(APB\\) is similar to triangle \\(DPC\\), with \\(AB\\) corresponding to \\(DC\\). Areas of similar triangles are in the ratio of the squares of corresponding sides, so the area of \\(CPD\\) is \\(24\\times\\left(\\frac{5}{8}\\right)^2=\\frac{75}{8}=9.375\\) square cm."
+    },
+    {
+      "number": 65,
+      "answer": "C",
+      "value": "\\(3AD^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "In an equilateral triangle the perpendicular from B bisects AC, so with side a we have AD = a/2 and BD = a sqrt3 / 2. Then BD^2 = 3a^2/4 and AD^2 = a^2/4, so BD^2 = 3 AD^2.",
+      "solution": "In an equilateral triangle the perpendicular from a vertex bisects the opposite side, so if the side is \\(a\\) then \\(AD=\\frac{a}{2}\\). By Pythagoras, \\(BD^2=a^2-\\frac{a^2}{4}=\\frac{3a^2}{4}\\), while \\(AD^2=\\frac{a^2}{4}\\). Hence \\(BD^2=3AD^2\\)."
+    },
+    {
+      "number": 66,
+      "answer": "A",
+      "value": "12 cm",
+      "confidence": "HIGH",
+      "reasoning": "The direct (external) common tangent has length sqrt(d^2 - (r1 - r2)^2) = sqrt(169 - 25) = sqrt(144) = 12 cm. Note d = 13 = 9 + 4, so the circles touch externally, which is consistent: the transverse tangent would have length sqrt(169 - 169) = 0, while the direct one is 12.",
+      "solution": "The length of a direct common tangent to two circles is \\(\\sqrt{d^2-(r_1-r_2)^2}\\), where \\(d\\) is the distance between the centres. Here that is \\(\\sqrt{13^2-(9-4)^2}=\\sqrt{169-25}=\\sqrt{144}=12\\) cm."
+    },
+    {
+      "number": 67,
+      "answer": "D",
+      "value": "Triangle OPR",
+      "confidence": "HIGH",
+      "reasoning": "P, Q, R and the orthocentre O form an orthocentric system: each of the four points is the orthocentre of the triangle formed by the other three. So Q is the orthocentre of triangle OPR. Concretely, RN lies along RO and is perpendicular to PQ, and PL lies along PO and is perpendicular to QR, so in triangle OPR the altitudes from P and from R both pass through Q. Options A and B each contain Q itself, so Q cannot be their orthocentre in general, and C (PLR) is not part of this system.",
+      "solution": "The three vertices of a triangle together with its orthocentre form an orthocentric system, in which each of the four points is the orthocentre of the triangle formed by the other three. Here, in triangle \\(OPR\\), the line \\(PO\\) is perpendicular to \\(QR\\) and the line \\(RO\\) is perpendicular to \\(PQ\\), so the altitudes of triangle \\(OPR\\) all pass through \\(Q\\). Hence \\(Q\\) is the orthocentre of triangle \\(OPR\\)."
+    },
+    {
+      "number": 68,
+      "answer": "D",
+      "value": "\\(AB\\cdot CD=BC\\cdot CA\\)",
+      "confidence": "HIGH",
+      "reasoning": "With the right angle at C, the area is (1/2)(CA)(CB) taking the legs as base and height, and also (1/2)(AB)(CD) taking the hypotenuse as base. Equating gives AB.CD = BC.CA, which is option D and is in fact equivalent to the relation given in the stem. Checking a 3-4-5 triangle with CA=3, CB=4, AB=5, CD=2.4: option D gives 5x2.4 = 12 = 4x3, correct; A gives 4x2.4=9.6 vs 5x3=15, false; B gives 5x4=20 vs 2.4x3=7.2, false; C gives 9+16=25 vs 2(AD^2+CD^2)=2(1.8^2+2.4^2)=18, false.",
+      "solution": "Since the angle at \\(C\\) is a right angle, the area of the triangle is \\(\\frac{1}{2}\\,CA\\cdot CB\\) using the two legs, and also \\(\\frac{1}{2}\\,AB\\cdot CD\\) using the hypotenuse as base with \\(CD\\) as height. Equating these gives \\(AB\\cdot CD=BC\\cdot CA\\). Dividing this relation through by \\(AB\\cdot BC\\cdot CA\\cdot CD\\) reproduces exactly the condition \\((CD)^{-2}=(BC)^{-2}+(CA)^{-2}\\) stated in the question."
+    },
+    {
+      "number": 69,
+      "answer": "C",
+      "value": "\\(OC^2+OA^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "British flag theorem: for any point O and rectangle ABCD, the sums of squares to opposite pairs of vertices are equal, OA^2 + OC^2 = OB^2 + OD^2. Taking A=(0,0), B=(w,0), C=(w,h), D=(0,h) and O=(p,q): OB^2+OD^2 = (p-w)^2+q^2 + p^2+(q-h)^2 and OA^2+OC^2 = p^2+q^2 + (p-w)^2+(q-h)^2, which are the same sum of four terms.",
+      "solution": "Place the rectangle with \\(A=(0,0)\\), \\(B=(w,0)\\), \\(C=(w,h)\\), \\(D=(0,h)\\) and take \\(O=(p,q)\\). Then \\(OB^2+OD^2=\\left[(p-w)^2+q^2\\right]+\\left[p^2+(q-h)^2\\right]\\), and \\(OA^2+OC^2=\\left[p^2+q^2\\right]+\\left[(p-w)^2+(q-h)^2\\right]\\). These are the same four terms in a different order, so \\(OB^2+OD^2=OC^2+OA^2\\)."
+    },
+    {
+      "number": 70,
+      "answer": "A",
+      "value": "\\(\\sqrt{3}:4\\)",
+      "confidence": "HIGH",
+      "reasoning": "The sphere has radius 2x and the cylinder has height 2x, so half the height is x and the cylinder's radius satisfies rc^2 + x^2 = (2x)^2, giving rc = x sqrt3. The curved surface of the cylinder is 2 pi rc h = 2 pi (x sqrt3)(2x) = 4 sqrt3 pi x^2, and the sphere's surface is 4 pi (2x)^2 = 16 pi x^2. The ratio is 4 sqrt3 / 16 = sqrt3 / 4. sympy confirms the ratio sqrt(3)/4.",
+      "solution": "The sphere has radius \\(2x\\) and the cylinder's axis passes through its centre, so half the cylinder's height is \\(x\\) and its radius \\(\\rho\\) satisfies \\(\\rho^2+x^2=(2x)^2\\), giving \\(\\rho=x\\sqrt{3}\\). The curved surface area of the cylinder is \\(2\\pi\\rho\\times 2x=4\\sqrt{3}\\,\\pi x^2\\), while the sphere's surface area is \\(4\\pi(2x)^2=16\\pi x^2\\). The ratio is \\(\\sqrt{3}:4\\)."
+    },
+    {
+      "number": 71,
+      "answer": "D",
+      "value": "5 cm",
+      "confidence": "HIGH",
+      "reasoning": "The sphere has radius 15 cm and volume (4/3)pi(15)^3 = 4500 pi cubic cm. The vessel has radius 30 cm, so the rise h satisfies pi(30)^2 h = 4500 pi, giving 900h = 4500 and h = 5 cm. sympy confirms h = 5.",
+      "solution": "The sphere has radius \\(15\\) cm, so its volume is \\(\\frac{4}{3}\\pi(15)^3=4500\\pi\\) cubic cm, and being completely immersed it displaces exactly this much water. The vessel has radius \\(30\\) cm, so a rise of \\(h\\) adds \\(\\pi(30)^2h=900\\pi h\\). Setting \\(900\\pi h=4500\\pi\\) gives \\(h=5\\) cm."
+    },
+    {
+      "number": 72,
+      "answer": "C",
+      "value": "\\(\\frac{\\pi r^3}{3}\\) cubic cm",
+      "confidence": "HIGH",
+      "reasoning": "A vertical angle of pi/2 means the semi-vertical angle is pi/4, so with slant height l = sqrt2 r the base radius is l sin(45) = r and the height is l cos(45) = r. Volume = (1/3) pi r^2 . r = pi r^3 / 3. sympy confirms pi*r**3/3.",
+      "solution": "The vertical angle \\(\\frac{\\pi}{2}\\) means the semi-vertical angle is \\(\\frac{\\pi}{4}\\). With slant height \\(\\sqrt{2}\\,r\\), the base radius is \\(\\sqrt{2}\\,r\\sin 45^\\circ=r\\) and the height is \\(\\sqrt{2}\\,r\\cos 45^\\circ=r\\). The volume is \\(\\frac{1}{3}\\pi r^2\\times r=\\frac{\\pi r^3}{3}\\) cubic cm."
+    },
+    {
+      "number": 73,
+      "answer": "D",
+      "value": "\\(7:8\\)",
+      "confidence": "HIGH",
+      "reasoning": "The frustum's radii in the ratio 2:1 mean the cut was made where the radius is half the base radius, which by similar triangles is at half the height from the apex. The small cone removed is therefore similar to the whole with linear ratio 1/2, so its volume is (1/2)^3 = 1/8 of the whole. The frustum is the remaining 7/8, giving 7:8.",
+      "solution": "The two radii of the frustum are in the ratio \\(2:1\\), so the cone was cut where the radius is half the base radius. By similar triangles, that is at half the height from the apex, so the small cone removed is similar to the whole cone with all lengths halved and volume \\(\\left(\\frac{1}{2}\\right)^3=\\frac{1}{8}\\) of it. The frustum is the rest, \\(\\frac{7}{8}\\), so the ratio is \\(7:8\\)."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "\\(60\\pi\\) square cm",
+      "confidence": "HIGH",
+      "reasoning": "The cavity is a cone of radius 6 and height 8, whose slant height is sqrt(36+64) = 10. Its inner surface is the curved surface of that cone, pi r l = pi(6)(10) = 60 pi square cm. The three small distractors (6pi, 8pi, 10pi) are simply the radius, height and slant height multiplied by pi.",
+      "solution": "The cavity is a cone of base radius \\(6\\) cm and height \\(8\\) cm, so its slant height is \\(\\sqrt{6^2+8^2}=10\\) cm. The inner surface of the cavity is the curved surface of this cone, which is \\(\\pi r l=\\pi\\times 6\\times 10=60\\pi\\) square cm."
+    },
+    {
+      "number": 75,
+      "answer": "B",
+      "value": "\\(\\frac{87500\\pi}{3}\\) cubic metres",
+      "confidence": "HIGH",
+      "reasoning": "The cylinder has radius 50 and height 10, volume pi(2500)(10) = 25000 pi. The cone on top has the same radius and height 15 - 10 = 5, volume (1/3)pi(2500)(5) = 12500pi/3. The total is 25000pi + 12500pi/3 = 87500pi/3. Option D (25000pi) is the cylinder alone, ignoring the cone.",
+      "solution": "The cylinder has radius \\(50\\) m and height \\(10\\) m, so its volume is \\(\\pi(50)^2(10)=25000\\pi\\) cubic metres. The cone on top has the same radius and height \\(15-10=5\\) m, so its volume is \\(\\frac{1}{3}\\pi(50)^2(5)=\\frac{12500\\pi}{3}\\). Adding gives \\(25000\\pi+\\frac{12500\\pi}{3}=\\frac{87500\\pi}{3}\\) cubic metres."
+    },
+    {
+      "number": 76,
+      "answer": "B",
+      "value": "\\(8\\pi^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Each sheet can be rolled two ways. Sheet 2pi x 4pi: circumference 2pi gives r=1, h=4pi, V=4pi^2; circumference 4pi gives r=2, h=2pi, V=8pi^2. Sheet pi x 5pi: circumference pi gives r=1/2, h=5pi, V=1.25pi^2; circumference 5pi gives r=5/2, h=pi, V=6.25pi^2. The four printed options are exactly these four volumes, which confirms the reading; the maximum is 8pi^2. The options carry no unit even though a volume is asked for - printed that way, and since the sheet dimensions are themselves pure multiples of pi the numerical answer is unaffected.",
+      "solution": "Each sheet can be rolled in two ways, with either pair of parallel sides becoming the circumference. From the \\(2\\pi\\times 4\\pi\\) sheet: circumference \\(2\\pi\\) gives radius \\(1\\) and height \\(4\\pi\\), volume \\(4\\pi^2\\); circumference \\(4\\pi\\) gives radius \\(2\\) and height \\(2\\pi\\), volume \\(8\\pi^2\\). From the \\(\\pi\\times 5\\pi\\) sheet the two volumes are \\(1.25\\pi^2\\) and \\(6.25\\pi^2\\). The largest of these is \\(8\\pi^2\\)."
+    },
+    {
+      "number": 77,
+      "answer": "A",
+      "value": "2.25 cm",
+      "confidence": "HIGH",
+      "reasoning": "E is the midpoint of AC (BE is a median) and D is the midpoint of BC (AD is a median). In triangle BEC, D is the midpoint of BC and DF is parallel to BE, so by the midpoint theorem F is the midpoint of EC. Since EC = AC/2 = 4.5 cm, CF = 4.5/2 = 2.25 cm. Note the point G is a red herring - the answer does not use it.",
+      "solution": "Because \\(BE\\) is a median, \\(E\\) is the midpoint of \\(AC\\), so \\(EC=\\frac{9}{2}=4.5\\) cm. Because \\(AD\\) is a median, \\(D\\) is the midpoint of \\(BC\\). Now in triangle \\(BEC\\), the line \\(DF\\) passes through the midpoint \\(D\\) of \\(BC\\) and is parallel to \\(BE\\), so it bisects \\(EC\\). Hence \\(CF=\\frac{4.5}{2}=2.25\\) cm."
+    },
+    {
+      "number": 78,
+      "answer": "A",
+      "value": "XY is parallel to PQ",
+      "confidence": "HIGH",
+      "reasoning": "RX/RP = 4/10 = 2/5 and RY/RQ = 2/5, so the two sides of the triangle are cut in the same ratio and by the converse of the basic proportionality theorem XY is parallel to PQ. The similarity ratio is 2/5, so PQ = 2.5 XY, which kills options B (PQ = 2XY) and D (PQ = 3XY). PX = 6 and QY = 3 are unequal, which kills option C.",
+      "solution": "On \\(PR\\), \\(\\frac{RX}{RP}=\\frac{4}{10}=\\frac{2}{5}\\), and on \\(QR\\), \\(\\frac{RY}{RQ}=\\frac{2}{5}\\). The two sides are therefore divided in the same ratio, so by the converse of the basic proportionality theorem \\(XY\\) is parallel to \\(PQ\\). (The similarity ratio is \\(\\frac{2}{5}\\), so in fact \\(PQ=2.5\\,XY\\), and \\(PX=6\\) cm while \\(QY=3\\) cm.)"
+    },
+    {
+      "number": 79,
+      "answer": "B",
+      "value": "1 and 2 only",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is the transitivity of parallelism in a plane: TRUE. Statement 2 is true in a plane, since two lines perpendicular to the same line have the same direction: TRUE. Statement 3 is FALSE - take C horizontal, A inclined at +30 degrees and B at -30 degrees; each makes an acute angle of 30 degrees with C, but A and B meet. So only 1 and 2 hold.",
+      "solution": "If two lines are each parallel to a third, they have the same direction and so are parallel to each other, and in a plane two lines perpendicular to the same line are likewise parallel. The third statement fails: take \\(C\\) horizontal with \\(A\\) inclined at \\(+30^\\circ\\) and \\(B\\) at \\(-30^\\circ\\). Each makes an acute angle of \\(30^\\circ\\) with \\(C\\), yet \\(A\\) and \\(B\\) are not parallel. Only the first two statements are correct."
+    },
+    {
+      "number": 80,
+      "answer": "B",
+      "value": "26 cm",
+      "confidence": "HIGH",
+      "reasoning": "The diagonals of a rhombus bisect each other at right angles, giving half-diagonals 10 and 24. The side is sqrt(10^2 + 24^2) = sqrt(676) = 26 cm.",
+      "solution": "The diagonals of a rhombus bisect each other at right angles, so each side is the hypotenuse of a right triangle with legs \\(\\frac{20}{2}=10\\) cm and \\(\\frac{48}{2}=24\\) cm. The side is \\(\\sqrt{10^2+24^2}=\\sqrt{676}=26\\) cm."
+    },
+    {
+      "number": 81,
+      "answer": "B",
+      "value": "7 cm",
+      "confidence": "HIGH",
+      "reasoning": "An angle of pi radians at the centre gives arc length r x pi = 22, so r = 22/pi = 22/(22/7) = 7 cm with the value of pi supplied in the stem.",
+      "solution": "For an arc subtending \\(\\theta\\) radians at the centre, the length is \\(r\\theta\\). Here \\(\\theta=\\pi\\), so \\(r\\pi=22\\) and \\(r=\\frac{22}{\\pi}\\). Using \\(\\pi=\\frac{22}{7}\\) gives \\(r=22\\times\\frac{7}{22}=7\\) cm."
+    },
+    {
+      "number": 82,
+      "answer": "B",
+      "value": "\\(2\\sqrt{5}\\) cm",
+      "confidence": "HIGH",
+      "reasoning": "DE parallel to BC makes triangle ADE similar to triangle ABC. The piece cut off by the line at the vertex is triangle ADE, so its area is one-fifth of the whole and the ratio of corresponding sides is 1/sqrt5. Hence DE = 10/sqrt5 = 2 sqrt5 cm. (Reading 'cut off' as the trapezium instead would make triangle ADE four-fifths of the whole and give DE = 4 sqrt5, option D; but 'a line cuts off a triangle' is the standard phrasing for the vertex piece, and it is the detached corner that is described as cut off.)",
+      "solution": "Since \\(DE\\) is parallel to \\(BC\\), triangle \\(ADE\\) is similar to triangle \\(ABC\\), and the piece cut off at the vertex \\(A\\) is triangle \\(ADE\\). Its area is one-fifth of the whole, so the ratio of corresponding sides is \\(\\frac{1}{\\sqrt{5}}\\). Hence \\(DE=\\frac{10}{\\sqrt{5}}=2\\sqrt{5}\\) cm."
+    },
+    {
+      "number": 83,
+      "answer": "C",
+      "value": "28",
+      "confidence": "HIGH",
+      "reasoning": "With no two lines parallel every pair meets, and the maximum count comes when no three are concurrent, so each of the C(8,2) = 28 pairs contributes a distinct point.",
+      "solution": "No two of the lines are parallel, so every pair of lines meets in a point. The count is largest when no three lines pass through the same point, in which case each pair gives a different intersection. The number of pairs is \\(\\binom{8}{2}=28\\)."
+    },
+    {
+      "number": 84,
+      "answer": "B",
+      "value": "\\(115^\\circ\\)",
+      "confidence": "HIGH",
+      "reasoning": "The interior angles of a hexagon sum to (6-2) x 180 = 720 degrees. With five equal angles x and one of x+30: 5x + (x+30) = 720, so 6x = 690 and x = 115 degrees. Check: 5(115) + 145 = 575 + 145 = 720. Option A (55) is the trap from mistakenly using 360 degrees.",
+      "solution": "The interior angles of a six-sided polygon add to \\((6-2)\\times 180^\\circ=720^\\circ\\). If each of the five equal angles is \\(x\\), the sixth is \\(x+30^\\circ\\), so \\(5x+(x+30^\\circ)=720^\\circ\\). This gives \\(6x=690^\\circ\\) and \\(x=115^\\circ\\)."
+    },
+    {
+      "number": 85,
+      "answer": "C",
+      "value": "Both 1 and 2 are correct",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 concerns the circumcentre, which lies outside the triangle whenever the triangle is obtuse: TRUE. Statement 2 concerns the orthocentre; in a right-angled triangle it coincides with the vertex containing the right angle, and that point lies on both of the two sides meeting there: TRUE. So both are correct.",
+      "solution": "The perpendicular bisectors of the sides meet at the circumcentre, and for an obtuse-angled triangle this point lies outside the triangle, so the first statement is correct. The perpendiculars from the vertices to the opposite sides meet at the orthocentre, and in a right-angled triangle this is the vertex at the right angle, a point lying on both of the sides that meet there. So the second statement is correct as well."
+    },
+    {
+      "number": 86,
+      "answer": "C",
+      "value": "250",
+      "confidence": "HIGH",
+      "reasoning": "Mathematics = 20% of 1200 = 240, Physics = 1200/4 = 300, Statistics = 320, so Chemistry = 1200 - 240 - 300 - 320 = 340. Statistics has 250 girls so 70 boys; Physics is 60% boys, that is 180 boys. Boys in Statistics and Physics = 70 + 180 = 250.",
+      "solution": "Physics has \\(\\frac{1200}{4}=300\\) students, of whom \\(60\\%\\) are boys, that is \\(180\\) boys. Statistics has \\(320\\) students of whom \\(250\\) are girls, leaving \\(320-250=70\\) boys. Together the two subjects have \\(180+70=250\\) boys."
+    },
+    {
+      "number": 87,
+      "answer": "B",
+      "value": "73.5",
+      "confidence": "HIGH",
+      "reasoning": "Chemistry has 1200 - 240 - 300 - 320 = 340 students. Girls in Statistics number 250, and 250/340 x 100 = 73.529%, which rounds to 73.5. Option A (58.8) would be 200/340 and option C (78.7) does not match any pairing in the data.",
+      "solution": "The number of Chemistry students is \\(1200-240-300-320=340\\), and \\(250\\) girls study Statistics. The required percentage is \\(\\frac{250}{340}\\times 100\\approx 73.5\\)."
+    },
+    {
+      "number": 88,
+      "answer": "C",
+      "value": "Mathematics and Physics (a difference of 60 in each)",
+      "confidence": "HIGH",
+      "reasoning": "Mathematics: 150 boys and 240-150 = 90 girls, difference 60. Physics: 180 boys and 120 girls, difference 60. Statistics: 70 boys and 250 girls, difference 180. Chemistry: 340 students with three-fifths girls, so 204 girls and 136 boys, difference 68. Only Mathematics and Physics share a difference.",
+      "solution": "Mathematics has \\(150\\) boys out of \\(240\\), so \\(90\\) girls and a difference of \\(60\\). Physics has \\(180\\) boys and \\(120\\) girls, again a difference of \\(60\\). Statistics has \\(70\\) boys and \\(250\\) girls, a difference of \\(180\\), and Chemistry has \\(136\\) boys and \\(204\\) girls, a difference of \\(68\\). The equal differences occur in Mathematics and Physics."
+    },
+    {
+      "number": 89,
+      "answer": "B",
+      "value": "30",
+      "confidence": "HIGH",
+      "reasoning": "Boys studying Mathematics = 150 (given). Physics has 300 students with 60% boys, so 120 girls. The difference is 150 - 120 = 30.",
+      "solution": "The number of boys studying Mathematics is given as \\(150\\). Physics has \\(300\\) students of whom \\(60\\%\\) are boys, so the girls number \\(300-180=120\\). The difference is \\(150-120=30\\)."
+    },
+    {
+      "number": 90,
+      "answer": "A",
+      "value": "\\(67:83\\) (536 boys to 664 girls)",
+      "confidence": "HIGH",
+      "reasoning": "Boys: Mathematics 150, Statistics 70, Physics 180, Chemistry 136, total 536. Girls: 90 + 250 + 120 + 204 = 664. These sum to 1200 as a check. 536:664 divides by 8 to give 67:83.",
+      "solution": "The boys number \\(150\\) in Mathematics, \\(70\\) in Statistics, \\(180\\) in Physics and \\(136\\) in Chemistry, a total of \\(536\\). The girls number \\(90+250+120+204=664\\), and the two totals add to \\(1200\\) as they should. The ratio \\(536:664\\) reduces on dividing by \\(8\\) to \\(67:83\\)."
+    },
+    {
+      "number": 91,
+      "answer": "A",
+      "value": "Class frequency to the class width",
+      "confidence": "HIGH",
+      "reasoning": "Frequency density is defined as frequency divided by class width; it is what makes a histogram's bar AREA rather than height represent the frequency, which is why it is needed for unequal class intervals. Option B is relative frequency and option D is cumulative relative frequency.",
+      "solution": "Frequency density is the class frequency divided by the width of the class. It is used so that in a histogram the area of each bar, rather than its height, represents the frequency, which matters when the class intervals are of unequal width."
+    },
+    {
+      "number": 92,
+      "answer": "A",
+      "value": "8",
+      "confidence": "HIGH",
+      "reasoning": "Total salary = 5(20000) + 3(25000) + 65000 = 100000 + 75000 + 65000 = 240000 over 9 workers, so the mean is 240000/9 = 26666.67. Both 20000 and 25000 are below this, so all 5 category C and all 3 category B workers earn less than the mean, that is 8 workers; only the single category A worker at 65000 is above it.",
+      "solution": "The total salary is \\(5\\times 20000+3\\times 25000+65000=240000\\) for \\(9\\) workers, so the mean is \\(\\frac{240000}{9}\\approx 26667\\). Both Rs. \\(20{,}000\\) and Rs. \\(25{,}000\\) are below this figure, so the \\(5\\) category C workers and the \\(3\\) category B workers all earn less than the mean. That is \\(8\\) workers, the single high salary having pulled the mean above all the others."
+    },
+    {
+      "number": 93,
+      "answer": "A",
+      "value": "4.4 km/hour",
+      "confidence": "HIGH",
+      "reasoning": "Times are 12/4 = 3 hours and 10/5 = 2 hours, so 22 km in 5 hours and the average speed is 22/5 = 4.4 km/hr. Option B (4.5) is the arithmetic mean of the two speeds, which is not the average speed.",
+      "solution": "The first stretch takes \\(\\frac{12}{4}=3\\) hours and the second \\(\\frac{10}{5}=2\\) hours, so he covers \\(22\\) km in \\(5\\) hours. Average speed is total distance over total time, \\(\\frac{22}{5}=4.4\\) km/hr, which is not the same as the average of the two speeds."
+    },
+    {
+      "number": 94,
+      "answer": "C",
+      "value": "Rs. 25,600 and Rs. 8,100",
+      "confidence": "HIGH",
+      "reasoning": "In a pie diagram the total is represented by the AREA of the circle, so radii in the ratio 16:9 mean the two expenditures are in the ratio 16^2 : 9^2 = 256 : 81. Checking the options: 16000:9000 = 16:9, 8000:4500 = 16:9, 4000:3000 = 4:3, and 25600:8100 = 256:81, which is the only match. The stem says the pie diagrams are drawn but no chart is printed on the page; the question is nonetheless fully answerable from the text, since it asks which data would produce that radius ratio.",
+      "solution": "In a pie diagram the whole quantity is represented by the area of the circle, not by its radius. So radii in the ratio \\(16:9\\) correspond to expenditures in the ratio \\(16^2:9^2=256:81\\). Among the given pairs only Rs. \\(25{,}600\\) and Rs. \\(8{,}100\\) are in the ratio \\(256:81\\); the pairs in the ratio \\(16:9\\) would need radii in the ratio \\(4:3\\)."
+    },
+    {
+      "number": 95,
+      "answer": "C",
+      "value": "Statement I is true but Statement II is false",
+      "confidence": "HIGH",
+      "reasoning": "Statement I is the definition of the mode and is true. Statement II is false: a distribution can be bimodal or multimodal, with two or more values sharing the highest frequency, and a data set in which every value occurs once has no mode at all. So I is true and II is false.",
+      "solution": "The mode is by definition the value that occurs most often, so the first statement is correct. The second is not: a set such as \\(2, 2, 5, 5, 7\\) has two values sharing the highest frequency and so has two modes, while a set in which every value occurs once has no mode at all. Mode is therefore not unique."
+    },
+    {
+      "number": 96,
+      "answer": "D",
+      "value": "Perimeters of the slices",
+      "confidence": "HIGH",
+      "reasoning": "Sector area = (1/2)r^2 theta, and arc length = r theta, both proportional to the angle for a fixed radius, so options A, B and C are all correct. The perimeter of a sector is 2r + r theta, which carries the constant 2r and so is NOT proportional to theta. Doubling the angle less than doubles the perimeter, so option D is the statement that is not correct.",
+      "solution": "For a fixed radius, both the area of a slice, \\(\\frac{1}{2}r^2\\theta\\), and the length of its curved arc, \\(r\\theta\\), are proportional to the angle, so those three descriptions are sound. The perimeter of a slice is \\(2r+r\\theta\\), which includes the two straight radii and so is not proportional to \\(\\theta\\): doubling the angle does not double the perimeter. That is the statement which is not correct."
+    },
+    {
+      "number": 97,
+      "answer": "C",
+      "value": "6",
+      "confidence": "HIGH",
+      "reasoning": "sqrt(xy) = 6 gives xy = 36, and (xyz)^(1/3) = 6 gives xyz = 216. Dividing, z = 216/36 = 6.",
+      "solution": "The geometric mean of two numbers is \\(\\sqrt{xy}=6\\), so \\(xy=36\\). The geometric mean of three numbers is \\(\\sqrt[3]{xyz}=6\\), so \\(xyz=216\\). Dividing gives \\(z=\\frac{216}{36}=6\\)."
+    },
+    {
+      "number": 98,
+      "answer": "B",
+      "value": "Secondary data",
+      "confidence": "HIGH",
+      "reasoning": "The figures were compiled by the Birth Registrar for the Registrar's own purposes and merely obtained from that office by the investigator, so they are second-hand: secondary data. Primary data would be collected by the investigator directly from the source.",
+      "solution": "Data collected by an investigator directly from the original source is primary; data already compiled by someone else and merely obtained from them is secondary. Here the figures were assembled by the Birth Registrar's office and simply taken from there, so they are secondary data."
+    },
+    {
+      "number": 99,
+      "answer": "B",
+      "value": "Mean 155 cm and median 155 cm",
+      "confidence": "HIGH",
+      "reasoning": "Sum = 150+165+161+144+155 = 775, so the mean is 775/5 = 155. Sorted the values are 144, 150, 155, 161, 165 and the middle one is 155. Both are 155.",
+      "solution": "The sum of the heights is \\(150+165+161+144+155=775\\), so the mean is \\(\\frac{775}{5}=155\\) cm. Arranged in order the heights are \\(144, 150, 155, 161, 165\\), and the middle value of these five is \\(155\\) cm. So the mean and the median are both \\(155\\) cm."
+    },
+    {
+      "number": 100,
+      "answer": "C",
+      "value": "146.72 cm",
+      "confidence": "HIGH",
+      "reasoning": "Combined mean = (22 x 140 + 28 x 152)/(22+28) = (3080 + 4256)/50 = 7336/50 = 146.72 cm. Note the plain average of 140 and 152 would be 146, so the weighting towards the larger, taller class correctly pushes the value above that.",
+      "solution": "The two classes contribute total heights of \\(22\\times 140=3080\\) cm and \\(28\\times 152=4256\\) cm, making \\(7336\\) cm for \\(50\\) students. The combined average is \\(\\frac{7336}{50}=146.72\\) cm, which lies above the midpoint \\(146\\) because the taller class is the larger one."
+    }
+  ]
+}

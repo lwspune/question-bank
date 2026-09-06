@@ -47,8 +47,24 @@ async function main(): Promise<void> {
       console.log(`truncated ${rows.length} tables`);
     }
     // 3) empty the bucket (storage.objects rows; actual blobs are GC'd by Supabase).
-    await client.query(`delete from storage.objects where bucket_id = 'question-images'`);
-    console.log("emptied question-images bucket");
+    //
+    // BEST EFFORT, AND IT MUST STAY THAT WAY. Supabase refuses direct DML on
+    // storage.* ("Direct deletion from storage tables is not allowed. Use the
+    // Storage API instead."), and this threw for real on 2026-09-06 — AFTER the
+    // truncate above and BEFORE the re-seed below, leaving the test project
+    // emptied and unseeded, i.e. worse than not running the reset at all. Every
+    // suite then failed for a reason that had nothing to do with the code under
+    // test. A cleanup step that cannot restore anything must never be able to
+    // abort the restore that follows it.
+    try {
+      await client.query(`delete from storage.objects where bucket_id = 'question-images'`);
+      console.log("emptied question-images bucket");
+    } catch (err) {
+      console.warn(
+        `WARN: could not empty question-images bucket (${(err as Error).message}). ` +
+          `Continuing — leftover blob rows are harmless, an unseeded database is not.`
+      );
+    }
   } finally {
     await client.end();
   }

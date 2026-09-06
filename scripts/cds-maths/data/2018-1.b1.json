@@ -1,0 +1,715 @@
+{
+  "band": "b1",
+  "pages": [0, 1, 2, 3, 4, 5, 6, 7],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band covers Q1-Q54 contiguously across p00-p07 (printed pages 2-A, 4-A, 6-A, 8-A, 10-A, 12-A, 14-A, 16-A — the booklet is bilingual, so printed page numbers advance by two and the render has already dropped the Hindi pages).\n\nPer-page counts, which vary: p00 Q1-8 (8), p01 Q9-15 (7), p02 Q16-23 (8), p03 Q24-30 (7), p04 Q31-38 (8), p05 Q39-45 (7), p06 Q46-49 (4 — the data-heaviest page: Q46 has four stacked-fraction options and Q47 carries three lettered statements), p07 Q50-54 (5).\n\nDIRECTIONS SETS: NONE. There is no 'Directions:' block and no 'Consider the following for the next N items' block anywhere in p00-p07. Every question is standalone, so no setLabel/context is used in this band. Two questions LOOK set-like and are not: Q47 carries its own lettered statements S1/S2/S3 inside its stem with its four options following immediately, and Q57 (p08, band b2's territory) opens 'Consider the following statements :' with numbered items 1. and 2. followed immediately by its own options — that is also a single self-contained question, not a shared stimulus.\n\nSEAM CHECK: there is no page before p00 (the render starts at Q1, which is complete with its four options on p00). I opened p08 and did not transcribe it: it opens cleanly at Q55 ('What is cot 1 deg cot 23 deg ... equal to?') with its full option block, so nothing straddles the p07/p08 boundary and no Directions block starts on p07 and runs into p08. My last question, Q54, is complete on p07.\n\nFIGURES: NONE in this band. No question in Q1-Q54 refers to a printed diagram; every geometry/measurement item is stated entirely in words. Q29 and Q51 carry printed DATA TABLES (not figures) and both are transcribed inline as GFM pipe tables with separator rows.\n\nTABLE NOTE (Q29): the printed table is a 2-row grid whose first column holds the row labels M and N; it has no natural header row, so the M row is used as the GFM header so that each M value stays paired with the N value printed directly beneath it.\n\nRAISED MIDDLE DOT: every occurrence in this band is a DECIMAL POINT, checked individually at zoom — 5.5% (Q30), 3.75% (Q35), 0.459459459... etc. (Q34), 18.5/17.5 years (Q45), 10.5/11.5 (Q53), and the six percentages of the Q51 pie-chart table. All transcribed as full stops per the brief. No multiplication dot and no time separator occurs in p00-p07.\n\nOVERBAR (Q23): the stem prints '0.9-with-a-vinculum-over-the-9' against a plain '0.9'; confirmed at 4x zoom and transcribed as \\(0.\\overline{9}\\) and \\(0.9\\). Transcribing both as 0.9 would have destroyed the question.\n\nRUPEE GLYPH: the booklet prints the rupee sign in Q28, Q30, Q33, Q35, Q37, Q50. Transcribed as 'Rs.' per the corpus convention.\n\nNO MISPRINTS FOUND. Nothing in p00-p07 required a flags entry for a printed defect, and nothing was illegible.\n\nNEIGHBOUR'S TERRITORY — b2 CHECKED AND NOW COMPLETE (no action needed): at 23:10 the file 2018-1.b2.json held only 42 questions, Q55-Q96, while its own bandReport already claimed pages [8..14] with lastComplete: true. I opened p14 (b2's last page, printed 30-A) WITHOUT transcribing it and confirmed it carries four further questions, Q97-Q100, all figure-bearing (Q97 three parallel lines cut by two transversals; Q98 an equilateral triangle with a shaded trapezium; Q99 a circle with a tangent SPT; Q100 a circle with two equal chords crossing). That is exactly the shape of the defect the brief warns about, so it was worth checking rather than assuming. It was work in progress, not a stranded tail: re-checked at 23:14, b2 holds Q55-Q100 (46 questions) and the paper is fully covered — b1 Q1-Q54 plus b2 Q55-Q100 = 100 with no gaps and no overlap. Recorded here so a later reader knows the seam WAS verified against the page rather than inferred from a clean check-bands run.\n\nINVENTED SUBTOPIC (1): Q36 ('For 0 < m < 1, which one of the following is correct?', ordering log_10 m, m, m^2, m^-1) is filed under Logarithms with the invented subtopic 'Comparison of Logarithmic and Power Expressions' and a flags entry. The catalog's Logarithms chapter lists only identities/change-of-base, solving log equations, and digits-and-characteristic; the Inequalities chapter lists only linear, modulus and quadratic. Neither covers ordering a log against powers, so per the brief the closest chapter is used and the gap is reported rather than forced."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "\\(5^{17} + 5^{18} + 5^{19} + 5^{20}\\) is divisible by",
+      "options": [
+        { "label": "A", "text": "7" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "11" },
+        { "label": "D", "text": "13" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 2,
+      "stem": "If \\(a + b = 2c\\), then what is the value of \\(\\frac{a}{a-c} + \\frac{c}{b-c}\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 3,
+      "stem": "If \\(x = y^{1/a}\\), \\(y = z^{1/b}\\) and \\(z = x^{1/c}\\) where \\(x \\ne 1\\), \\(y \\ne 1\\), \\(z \\ne 1\\), then what is the value of \\(abc\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 4,
+      "stem": "If \\(2b = a + c\\) and \\(y^2 = xz\\), then what is \\(x^{b-c} y^{c-a} z^{a-b}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(-1\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 5,
+      "stem": "Which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "Decimal expansion of a rational number is terminating." },
+        { "label": "B", "text": "Decimal expansion of a rational number is non-terminating." },
+        { "label": "C", "text": "Decimal expansion of an irrational number is terminating." },
+        { "label": "D", "text": "Decimal expansion of an irrational number is non-terminating and non-repeating." }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Rational and Irrational Numbers",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 6,
+      "stem": "If the roots of the equation \\(px^2 + x + r = 0\\) are reciprocal to each other, then which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "\\(p = 2r\\)" },
+        { "label": "B", "text": "\\(p = r\\)" },
+        { "label": "C", "text": "\\(2p = r\\)" },
+        { "label": "D", "text": "\\(p = 4r\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 7,
+      "stem": "If \\(65x - 33y = 97\\) and \\(33x - 65y = 1\\), then what is \\(xy\\) equal to?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "\\(-2\\)" },
+        { "label": "D", "text": "\\(-3\\)" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Solving Linear Systems",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 8,
+      "stem": "If \\(\\frac{b}{y} + \\frac{z}{c} = 1\\) and \\(\\frac{c}{z} + \\frac{x}{a} = 1\\), then what is \\(\\frac{ab + xy}{bx}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "\\(-1\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 9,
+      "stem": "If \\(\\frac{a^2 - 1}{a} = 5\\), then what is the value of \\(\\frac{a^6 - 1}{a^3}\\)?",
+      "options": [
+        { "label": "A", "text": "125" },
+        { "label": "B", "text": "\\(-125\\)" },
+        { "label": "C", "text": "140" },
+        { "label": "D", "text": "\\(-140\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 10,
+      "stem": "If \\(x + y + z = 0\\), then what is \\((y + z - x)^3 + (z + x - y)^3 + (x + y - z)^3\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\((x + y + z)^3\\)" },
+        { "label": "B", "text": "\\(3(x + y)(y + z)(z + x)\\)" },
+        { "label": "C", "text": "\\(24xyz\\)" },
+        { "label": "D", "text": "\\(-24xyz\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 11,
+      "stem": "If \\((x + 3)\\) is a factor of \\(x^3 + 3x^2 + 4x + k\\), then what is the value of \\(k\\)?",
+      "options": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "24" },
+        { "label": "C", "text": "36" },
+        { "label": "D", "text": "72" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 12,
+      "stem": "The smallest integer with 4 digits which is a perfect square is",
+      "options": [
+        { "label": "A", "text": "1000" },
+        { "label": "B", "text": "1024" },
+        { "label": "C", "text": "1089" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Perfect Squares and Cubes",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 13,
+      "stem": "Which one of the following is a zero of the polynomial \\(3x^3 + 4x^2 - 7\\)?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "\\(-1\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 14,
+      "stem": "There are two numbers which are greater than 21 and their LCM and HCF are 3003 and 21 respectively. What is the sum of these numbers?",
+      "options": [
+        { "label": "A", "text": "504" },
+        { "label": "B", "text": "508" },
+        { "label": "C", "text": "514" },
+        { "label": "D", "text": "528" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 15,
+      "stem": "If \\(\\alpha\\) and \\(\\beta\\) are the roots of the equation \\(ax^2 + bx + c = 0\\), then what is the value of the expression \\((\\alpha + 1)(\\beta + 1)\\)?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{a + b + c}{a}\\)" },
+        { "label": "B", "text": "\\(\\frac{b + c - a}{a}\\)" },
+        { "label": "C", "text": "\\(\\frac{a - b + c}{a}\\)" },
+        { "label": "D", "text": "\\(\\frac{a + b - c}{a}\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 16,
+      "stem": "The remainder when \\(3x^3 + kx^2 + 5x - 6\\) is divided by \\((x + 1)\\) is \\(-7\\). What is the value of \\(k\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-14\\)" },
+        { "label": "B", "text": "14" },
+        { "label": "C", "text": "\\(-7\\)" },
+        { "label": "D", "text": "7" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 17,
+      "stem": "If \\(f(x)\\) and \\(g(x)\\) are polynomials of degree \\(p\\) and \\(q\\) respectively, then the degree of \\(\\{f(x) \\pm g(x)\\}\\) (if it is non-zero) is",
+      "options": [
+        { "label": "A", "text": "Greater than \\(\\min(p, q)\\)" },
+        { "label": "B", "text": "Greater than \\(\\max(p, q)\\)" },
+        { "label": "C", "text": "Less than or equal to \\(\\max(p, q)\\)" },
+        { "label": "D", "text": "Equal to \\(\\min(p, q)\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Degree and Coefficients",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 18,
+      "stem": "What is the value of \\(\\frac{\\sqrt{5} - \\sqrt{3}}{\\sqrt{5} + \\sqrt{3}} - \\frac{\\sqrt{5} + \\sqrt{3}}{\\sqrt{5} - \\sqrt{3}}\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-2\\sqrt{15}\\)" },
+        { "label": "B", "text": "\\(2\\sqrt{15}\\)" },
+        { "label": "C", "text": "\\(\\sqrt{15}\\)" },
+        { "label": "D", "text": "\\(-\\sqrt{15}\\)" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 19,
+      "stem": "What is the value of \\(\\frac{1}{1 + x^{b-a} + x^{c-a}} + \\frac{1}{1 + x^{a-b} + x^{c-b}} + \\frac{1}{1 + x^{a-c} + x^{b-c}}\\) where \\(x \\ne 0\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "3" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Laws of Indices",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 20,
+      "stem": "The sum of a number and its square is 20. Then the number is",
+      "options": [
+        { "label": "A", "text": "\\(-5\\) or 4" },
+        { "label": "B", "text": "2 or 3" },
+        { "label": "C", "text": "\\(-5\\) only" },
+        { "label": "D", "text": "5 or \\(-4\\)" }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 21,
+      "stem": "If the price of wheat rises by 25%, then by how much percent must a man reduce his consumption in order to keep his budget the same as before?",
+      "options": [
+        { "label": "A", "text": "15%" },
+        { "label": "B", "text": "20%" },
+        { "label": "C", "text": "25%" },
+        { "label": "D", "text": "30%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Percentage",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 22,
+      "stem": "\\(\\frac{1}{25}\\) of the students who registered did not appear for the examination, \\(\\frac{11}{20}\\) of those who appeared passed. If the number of registered students is 2000, the number who passed is",
+      "options": [
+        { "label": "A", "text": "1920" },
+        { "label": "B", "text": "1056" },
+        { "label": "C", "text": "1020" },
+        { "label": "D", "text": "864" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Fractions and Decimals",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 23,
+      "stem": "What is the difference between \\(0.\\overline{9}\\) and \\(0.9\\)?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "0.099" },
+        { "label": "C", "text": "0.1" },
+        { "label": "D", "text": "0.09" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Rational and Irrational Numbers",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 24,
+      "stem": "If \\(A : B = 1 : 2\\), \\(B : C = 3 : 4\\), \\(C : D = 2 : 3\\) and \\(D : E = 3 : 4\\), then what is \\(B : E\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(3 : 2\\)" },
+        { "label": "B", "text": "\\(1 : 8\\)" },
+        { "label": "C", "text": "\\(3 : 8\\)" },
+        { "label": "D", "text": "\\(4 : 1\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 25,
+      "stem": "A work when done by 10 women is completed in 12 days. The same work can be completed in 8 days when done by 5 men. How many days will it take to complete when 6 women and 3 men are employed to perform the same job?",
+      "options": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "10" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "5" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 26,
+      "stem": "A man undertakes to do a certain work in 150 days. He employs 200 men. He finds that only a quarter of the work is done in 50 days. How many additional men should he employ so that the whole work is finished in time?",
+      "options": [
+        { "label": "A", "text": "75" },
+        { "label": "B", "text": "85" },
+        { "label": "C", "text": "100" },
+        { "label": "D", "text": "120" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "A train moving with a speed of 60 km per hour crosses an electric pole in 30 seconds. What is the length of the train in metres?",
+      "options": [
+        { "label": "A", "text": "300" },
+        { "label": "B", "text": "400" },
+        { "label": "C", "text": "500" },
+        { "label": "D", "text": "600" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 28,
+      "stem": "Rs. 120 is distributed among A, B and C so that A's share is Rs. 20 more than B's and Rs. 20 less than C's. What is B's share?",
+      "options": [
+        { "label": "A", "text": "Rs. 10" },
+        { "label": "B", "text": "Rs. 15" },
+        { "label": "C", "text": "Rs. 20" },
+        { "label": "D", "text": "Rs. 25" }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 29,
+      "stem": "In the following table of inverse variation, what are the values of A, B and C respectively?\n\n| M | 15 | \\(-6\\) | 2 | C |\n|---|---|---|---|---|\n| N | \\(-4\\) | A | B | 60 |",
+      "options": [
+        { "label": "A", "text": "\\(10, -30, -1\\)" },
+        { "label": "B", "text": "\\(10, -1, 30\\)" },
+        { "label": "C", "text": "\\(-30, 10, -1\\)" },
+        { "label": "D", "text": "\\(-1, -30, 10\\)" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 30,
+      "stem": "A person borrowed Rs. 5,000 at 5% rate of interest per annum and immediately lent it at 5.5%. After two years he collected the amount and settled his loan. What is the amount gained by him in this transaction?",
+      "options": [
+        { "label": "A", "text": "Rs. 25" },
+        { "label": "B", "text": "Rs. 50" },
+        { "label": "C", "text": "Rs. 100" },
+        { "label": "D", "text": "Rs. 200" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Simple Interest",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 31,
+      "stem": "At present the average of the ages of a father and a son is 25 years. After seven years the son will be 17 years old. What will be the age of the father after 10 years?",
+      "options": [
+        { "label": "A", "text": "44 years" },
+        { "label": "B", "text": "45 years" },
+        { "label": "C", "text": "50 years" },
+        { "label": "D", "text": "52 years" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 32,
+      "stem": "If 5 tractors can plough 5 hectares of land in 5 days, then what is the number of tractors required to plough 100 hectares in 50 days?",
+      "options": [
+        { "label": "A", "text": "100" },
+        { "label": "B", "text": "20" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "5" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 33,
+      "stem": "A merchant commences with a certain capital and gains annually at the rate of 25%. At the end of 3 years he has Rs. 10,000. What is the original amount that the merchant invested?",
+      "options": [
+        { "label": "A", "text": "Rs. 5,120" },
+        { "label": "B", "text": "Rs. 5,210" },
+        { "label": "C", "text": "Rs. 5,350" },
+        { "label": "D", "text": "Rs. 5,500" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Compound Interest",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 34,
+      "stem": "Which one of the following decimal numbers is a rational number with denominator 37?",
+      "options": [
+        { "label": "A", "text": "\\(0.459459459 \\ldots\\)" },
+        { "label": "B", "text": "\\(0.459459459\\)" },
+        { "label": "C", "text": "\\(0.0459459459 \\ldots\\)" },
+        { "label": "D", "text": "\\(0.00459459 \\ldots\\)" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Rational and Irrational Numbers",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 35,
+      "stem": "The annual income of a person decreases by Rs. 64 if the annual rate of interest decreases from 4% to 3.75%. What is his original annual income?",
+      "options": [
+        { "label": "A", "text": "Rs. 24,000" },
+        { "label": "B", "text": "Rs. 25,000" },
+        { "label": "C", "text": "Rs. 25,600" },
+        { "label": "D", "text": "Rs. 24,600" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Principal, Rate and Time Relationships",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 36,
+      "stem": "For \\(0 < m < 1\\), which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "\\(\\log_{10} m < m^2 < m < m^{-1}\\)" },
+        { "label": "B", "text": "\\(m < m^{-1} < m^2 < \\log_{10} m\\)" },
+        { "label": "C", "text": "\\(\\log_{10} m < m < m^{-1} < m^2\\)" },
+        { "label": "D", "text": "\\(\\log_{10} m < m^{-1} < m < m^2\\)" }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Comparison of Logarithmic and Power Expressions",
+      "difficulty": "MODERATE",
+      "flags": ["Subtopic invented — the catalog's Logarithms chapter lists no ordering/comparison subtopic, and the Inequalities chapter's three subtopics (linear, modulus, quadratic) do not fit either."]
+    },
+    {
+      "number": 37,
+      "stem": "A gentleman left a sum of Rs. 39,000 to be distributed after his death among his widow, five sons and four daughters. If each son receives 3 times as much as a daughter receives, and each daughter receives twice as much as their mother receives, then what is the widow's share?",
+      "options": [
+        { "label": "A", "text": "Rs. 1,000" },
+        { "label": "B", "text": "Rs. 1,200" },
+        { "label": "C", "text": "Rs. 1,500" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 38,
+      "stem": "Three numbers which are co-prime to each other, are such that the product of the first two is 286 and that of the last two is 770. What is the sum of the three numbers?",
+      "options": [
+        { "label": "A", "text": "85" },
+        { "label": "B", "text": "80" },
+        { "label": "C", "text": "75" },
+        { "label": "D", "text": "70" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 39,
+      "stem": "The age of a woman is a two-digit integer. On reversing this integer, the new integer is the age of her husband who is elder to her. The difference between their ages is one-eleventh of their sum. What is the difference between their ages?",
+      "options": [
+        { "label": "A", "text": "8 years" },
+        { "label": "B", "text": "9 years" },
+        { "label": "C", "text": "10 years" },
+        { "label": "D", "text": "11 years" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 40,
+      "stem": "A passenger train and a goods train are running in the same direction on parallel railway tracks. If the passenger train now takes three times as long to pass the goods train, as when they are running in opposite directions, then what is the ratio of the speed of the passenger train to that of the goods train?\n(Assume that the trains run at uniform speeds)",
+      "options": [
+        { "label": "A", "text": "\\(2 : 1\\)" },
+        { "label": "B", "text": "\\(3 : 2\\)" },
+        { "label": "C", "text": "\\(4 : 3\\)" },
+        { "label": "D", "text": "\\(1 : 1\\)" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 41,
+      "stem": "All odd prime numbers upto 110 are multiplied together. What is the unit digit in this product?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Unit Digit and Powers",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 42,
+      "stem": "An alloy A contains two elements, copper and tin in the ratio of \\(2 : 3\\), whereas an alloy B contains the same elements in the ratio of \\(3 : 4\\). If 20 kg of alloy A, 28 kg of alloy B and some more pure copper are mixed to form a third alloy C which now contains copper and tin in the ratio of \\(6 : 7\\), then what is the quantity of pure copper mixed in the alloy C?",
+      "options": [
+        { "label": "A", "text": "3 kg" },
+        { "label": "B", "text": "4 kg" },
+        { "label": "C", "text": "5 kg" },
+        { "label": "D", "text": "7 kg" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Mixtures and Alligation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 43,
+      "stem": "A quadratic polynomial \\(ax^2 + bx + c\\) is such that when it is divided by \\(x\\), \\((x - 1)\\) and \\((x + 1)\\), the remainders are 3, 6 and 4 respectively. What is the value of \\((a + b)\\)?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(-1\\)" }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "Remainder and Factor Theorem",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 44,
+      "stem": "If the average of 9 consecutive positive integers is 55, then what is the largest integer?",
+      "options": [
+        { "label": "A", "text": "57" },
+        { "label": "B", "text": "58" },
+        { "label": "C", "text": "59" },
+        { "label": "D", "text": "60" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 45,
+      "stem": "The average of the ages of 15 students in a class is 19 years. When 5 new students are admitted to the class, the average age of the class becomes 18.5 years. What is the average age of the 5 newly admitted students?",
+      "options": [
+        { "label": "A", "text": "17 years" },
+        { "label": "B", "text": "17.5 years" },
+        { "label": "C", "text": "18 years" },
+        { "label": "D", "text": "18.5 years" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 46,
+      "stem": "A man can row at a speed of \\(x\\) km/hr in still water. If in a stream which is flowing at a speed of \\(y\\) km/hr it takes him \\(z\\) hours to row to a place and back, then what is the distance between the two places?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{z(x^2 - y^2)}{2y}\\)" },
+        { "label": "B", "text": "\\(\\frac{z(x^2 - y^2)}{2x}\\)" },
+        { "label": "C", "text": "\\(\\frac{(x^2 - y^2)}{2zx}\\)" },
+        { "label": "D", "text": "\\(\\frac{z(x^2 - y^2)}{x}\\)" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Boats and Streams",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 47,
+      "stem": "A water tank has been fitted with two taps P and Q and a drain pipe R. Taps P and Q fill at the rate of 12 litres per minute and 10 litres per minute respectively.\nConsider the following statements S1, S2 and S3:\nS1 : Pipe R drains out at the rate of 6 litres per minute.\nS2 : If both the taps and the drain pipe are opened simultaneously, then the tank is filled in 5 hours 45 minutes.\nS3 : Pipe R drains out (fully) the filled tank in 15 hours 20 minutes.\nTo know what is the capacity of the tank, which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "S2 is only sufficient" },
+        { "label": "B", "text": "S1, S2 and S3 are necessary" },
+        { "label": "C", "text": "Any two out of S1, S2 and S3 are sufficient" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Pipes and Cisterns",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 48,
+      "stem": "A car has an average speed of 60 km per hour while going from Delhi to Agra and has an average speed of \\(y\\) km per hour while returning to Delhi from Agra (by travelling the same distance). If the average speed of the car for the whole journey is 48 km per hour, then what is the value of \\(y\\)?",
+      "options": [
+        { "label": "A", "text": "30 km per hour" },
+        { "label": "B", "text": "35 km per hour" },
+        { "label": "C", "text": "40 km per hour" },
+        { "label": "D", "text": "45 km per hour" }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 49,
+      "stem": "An article is sold at a profit of 32%. If the cost price is increased by 20% and the sale price remains the same, then the profit percentage becomes",
+      "options": [
+        { "label": "A", "text": "10%" },
+        { "label": "B", "text": "12%" },
+        { "label": "C", "text": "15%" },
+        { "label": "D", "text": "20%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 50,
+      "stem": "A, B, C, D and E start a partnership firm. Capital contributed by A is three times that contributed by D. E contributes half of A's contribution, B contributes one-third of E's contribution and C contributes two-third of A's contribution. If the difference between the combined shares of A, D and E and the combined shares of B and C in the total profit of the firm is Rs. 13,500, what is the combined share of B, C and E? (The shares are supposed to be proportional to the contributions)",
+      "options": [
+        { "label": "A", "text": "Rs. 13,500" },
+        { "label": "B", "text": "Rs. 18,000" },
+        { "label": "C", "text": "Rs. 19,750" },
+        { "label": "D", "text": "Rs. 20,250" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Partnership",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 51,
+      "stem": "A Pie Chart is drawn for the following data :\n\n| Sector | Percentage |\n|---|---|\n| Agriculture and Rural Development | 12.9 |\n| Irrigation | 12.5 |\n| Energy | 27.2 |\n| Industry and Minerals | 15.4 |\n| Transport and Communication | 15.9 |\n| Social Services | 16.1 |\n\nWhat is the angle (approximately) subtended by the Social Services Sector at the centre of the circle?",
+      "options": [
+        { "label": "A", "text": "\\(45^\\circ\\)" },
+        { "label": "B", "text": "\\(46^\\circ\\)" },
+        { "label": "C", "text": "\\(58^\\circ\\)" },
+        { "label": "D", "text": "\\(98^\\circ\\)" }
+      ],
+      "chapter": "Data Interpretation",
+      "subtopic": "Pie Charts",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 52,
+      "stem": "The arithmetic mean of two numbers is 10 and their geometric mean is 8. What are the two numbers?",
+      "options": [
+        { "label": "A", "text": "15, 5" },
+        { "label": "B", "text": "12, 8" },
+        { "label": "C", "text": "16, 4" },
+        { "label": "D", "text": "18, 2" }
+      ],
+      "chapter": "Sequence and Series",
+      "subtopic": "Harmonic Progressions and the Three Means",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 53,
+      "stem": "The arithmetic mean of 11 observations is 11. The arithmetic mean of the first 6 observations is 10.5 and the arithmetic mean of the last 6 observations is 11.5. What is the sixth observation?",
+      "options": [
+        { "label": "A", "text": "10.0" },
+        { "label": "B", "text": "10.5" },
+        { "label": "C", "text": "11.0" },
+        { "label": "D", "text": "11.5" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Average and Weighted Average",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 54,
+      "stem": "What is \\(\\sin^4 \\theta - \\cos^4 \\theta\\) equal to for any real number \\(\\theta\\)?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "\\(1 - 2\\sin^2 \\theta\\)" },
+        { "label": "C", "text": "\\(2\\cos^2 \\theta + 1\\)" },
+        { "label": "D", "text": "\\(1 - 2\\cos^2 \\theta\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "EASY"
+    }
+  ]
+}

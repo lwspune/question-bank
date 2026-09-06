@@ -21,10 +21,13 @@
  */
 
 import { PAPERS, type Paper } from "../cds/config";
+import { PAPERS as GS_PAPERS } from "../cds-gs/config";
+import { PAPERS as MATHS_PAPERS } from "../cds-maths/config";
 import {
   cdsMockSlug,
   cdsMockTitle,
   type CdsEdition,
+  type CdsSubject,
 } from "../../src/lib/mocks/reconstruct";
 
 export type CdsSitting = {
@@ -36,6 +39,31 @@ export type CdsSitting = {
   edition: CdsEdition;
   slug: string;
   title: string;
+  /**
+   * Set when this sitting CANNOT reconstruct whole, with the reason. A hold is
+   * an ASSERTION, not a mute (the mhtcetSittings rule): the builder still
+   * attempts the paper and flags a hold whose paper now reconstructs, so closing
+   * a corpus hole surfaces as a prompt to delete the line rather than as silence.
+   */
+  hold?: string;
+};
+
+/**
+ * The three CDS Elementary Mathematics sittings that cannot ship a faithful mock.
+ *
+ * Each is short because a question with NO correct printed option was dropped at
+ * assembly rather than committed with an invented answer — a deliberate, recorded
+ * outcome (see each paper's data/<id>.answers.json). The rows are not missing
+ * from the bank by accident and no future ingest closes these: the questions do
+ * not have an answer to ingest. Shipping them short would relabel a 98-question
+ * fragment as "CDS (II) 2018", which a mock must never do.
+ *
+ * Keyed by the config paper id. Measured against the live bank 2026-09-06.
+ */
+export const CDS_MATHS_HOLDS: Record<string, string> = {
+  "2018-2": "98 of 100 — Q39 and Q42 have no correct printed option (dropped at assembly)",
+  "2021-1": "99 of 100 — Q49 has no correct printed option (dropped at assembly)",
+  "2021-2": "99 of 100 — Q39 has no correct printed option (dropped at assembly)",
 };
 
 /** `"2026-1"` → year 2026, edition I. Throws on any other shape. */
@@ -63,7 +91,9 @@ export function parseCdsPaperId(id: string): {
  * sitting under the wrong year's slug. Also refuses duplicate slugs outright.
  */
 export function deriveCdsSittings(
-  papers: Record<string, Paper> = PAPERS
+  papers: Record<string, Paper> = PAPERS,
+  subject: CdsSubject = "english",
+  holds: Record<string, string> = {}
 ): CdsSitting[] {
   const sittings: CdsSitting[] = [];
   for (const [id, p] of Object.entries(papers)) {
@@ -78,8 +108,9 @@ export function deriveCdsSittings(
       sourceFile: p.sourceFile,
       year,
       edition,
-      slug: cdsMockSlug(year, edition),
-      title: cdsMockTitle(year, edition),
+      slug: cdsMockSlug(year, edition, subject),
+      title: cdsMockTitle(year, edition, subject),
+      ...(holds[id] ? { hold: holds[id] } : {}),
     });
   }
 
@@ -99,4 +130,22 @@ export function deriveCdsSittings(
   return sittings.sort(
     (a, b) => b.year - a.year || editionRank(a.edition) - editionRank(b.edition)
   );
+}
+
+/** The 19 CDS English sittings (2017-I … 2026-I). */
+export function cdsEnglishSittings(): CdsSitting[] {
+  return deriveCdsSittings(PAPERS, "english");
+}
+
+/** The 19 CDS General Knowledge sittings (2016-II … 2026-I). */
+export function cdsGkSittings(): CdsSitting[] {
+  return deriveCdsSittings(GS_PAPERS, "gk");
+}
+
+/**
+ * The 20 CDS Elementary Mathematics sittings (2016-II … 2026-I), three of them
+ * HELD — see CDS_MATHS_HOLDS.
+ */
+export function cdsMathsSittings(): CdsSitting[] {
+  return deriveCdsSittings(MATHS_PAPERS, "maths", CDS_MATHS_HOLDS);
 }

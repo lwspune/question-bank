@@ -167,6 +167,95 @@ export const CDS_ENGLISH_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * CDS General Knowledge — one paper: 120 questions, 100 marks, 2 hours.
+ * Same marking as CDS English (scripts/cds-gs/config.ts: "120 items / 100 marks
+ * / 2 hours / one-third negative"), so the same fractional +0.8333 / −0.2778.
+ *
+ * ONE SECTION SPANNING EIGHT BANK SUBJECTS, and that asymmetry is the point.
+ * Unlike English — one paper, one bank subject — GK's 120 items are filed across
+ * Physics, Chemistry, Biology, History, Geography, Polity, Economics and Current
+ * Affairs, because subject is a PER-QUESTION decision in that pipeline. But the
+ * printed booklet runs 120 standalone MCQs with those subjects INTERLEAVED and
+ * prints no subject heading anywhere, so the paper HAS no subject sections to
+ * reproduce. Declaring eight would invent a delivery shape the source does not
+ * have, and would reorder the paper: reconstructPaper emits section by section,
+ * so a student would meet all the History together, in an order no candidate
+ * ever sat. One section preserves the printed order via `source_row`.
+ *
+ * The eight names must match the `subjects` rows EXACTLY — assignSection maps a
+ * bank subject name to a section and reconstructPaper THROWS on a question whose
+ * subject maps to none, so a typo here fails loudly rather than silently
+ * dropping that subject's ~10-20 questions from every sitting.
+ *
+ * `count: 120` is a HARD contract, and it is safe because it is measured: all 19
+ * sittings hold exactly 120 rows with `source_row` 1..120, no gaps and no
+ * duplicates. A short GK paper would therefore be a real defect, not a layout
+ * variant, and should refuse to build rather than ship as "the real paper".
+ */
+export const CDS_GK_PAPER: MockPaperBlueprint = {
+  code: "gk",
+  examName: "CDS",
+  examSlug: "cds",
+  paperLabel: "General Knowledge",
+  durationSecs: 120 * 60,
+  marking: { correct: 0.8333, wrong: -0.2778 },
+  sections: [
+    {
+      key: "general-knowledge",
+      label: "General Knowledge",
+      subjects: [
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "History",
+        "Geography",
+        "Polity",
+        "Economics",
+        "Current Affairs",
+      ],
+      count: 120,
+    },
+  ],
+};
+
+/**
+ * CDS Elementary Mathematics — one paper: 100 questions, 100 marks, 2 hours.
+ *
+ * Marking is NOT the English/GK scheme. Those papers carry 120 items for 100
+ * marks, hence the fractional 0.8333; this one is 100 items for 100 marks, so it
+ * is a clean +1 with a one-third penalty of −0.3333. Both figures are read off
+ * the 2026-I cover, the only cover in the corpus (scripts/cds-maths/config.ts),
+ * and were independently corroborated by the transcription band that verified
+ * Q100 completes: "contains 100 items", Series A, Two Hours, one-third penalty.
+ *
+ * ONE section — a single bank subject, and the printed paper has no internal
+ * divisions at all (no Directions blocks, unlike English).
+ *
+ * `count: 100` is HARD on purpose. Three of the 20 sittings hold 98/99/99 rows
+ * because a question with NO correct printed option was deliberately dropped at
+ * assembly rather than shipped with an invented answer. Those three are HELD in
+ * scripts/mocks/cdsMathsSittings.ts, not shipped short: a mock is the real paper
+ * or it is nothing, and a soft count would silently relabel a 98-question
+ * fragment as CDS (II) 2018.
+ */
+export const CDS_MATHS_PAPER: MockPaperBlueprint = {
+  code: "maths",
+  examName: "CDS",
+  examSlug: "cds",
+  paperLabel: "Elementary Mathematics",
+  durationSecs: 120 * 60,
+  marking: { correct: 1, wrong: -0.3333 },
+  sections: [
+    {
+      key: "mathematics",
+      label: "Elementary Mathematics",
+      subjects: ["Mathematics"],
+      count: 100,
+    },
+  ],
+};
+
+/**
  * MHT-CET (PCM group) — TWO papers per sitting, the NDA shape.
  *
  *   Paper I  — Mathematics:          50 q  x 2 marks = 100 marks, 90 min

@@ -1,0 +1,756 @@
+{
+  "band": "b1",
+  "pages": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "bandReport": {
+    "numbersFound": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band b1 = Q1-Q28 across p00 (Q1-7), p01 (Q8-12), p02 (Q13-17), p03 (Q18-23), p04 (Q24-28). Layout is two-column and the per-page count VARIES (7/5/5/6/5) because option blocks and displayed fractions are set at very different heights — do not assume a fixed questions-per-page. Numbering runs down the LEFT column first, then the RIGHT (p00 left = Q1-3, right = Q4-7; p03 left = Q18-20, right = Q21-23).\n\nSEAM (start): Q1 is the first question of the paper. p00 carries no header, no instruction preamble and no Directions block above it — it opens directly on '1. If x^2 - 20 = ...'.\n\nSEAM (end): Q28 is COMPLETE on p04 — its stem, its two statements and all four options print there. I opened p05 (the next band's territory) WITHOUT transcribing it and confirmed the seam is CLEAN: p05 opens at Q29 (left column) and Q31 (right column), each self-contained with its own stem and its own four options. Nothing on p05 continues from p04, and nothing on p04 continues onto p05.\n\nDIRECTIONS SETS: there are NONE anywhere in p00-p04. Every one of Q1-Q28 is a standalone MCQ, so this band opens no set and inherits none; no question carries `context` or `setLabel`. NOTE for the next band: Q27 and Q28 (and Q29/Q30 on p05, which I did not transcribe) use the 'Consider the question and two statements given below :' data-sufficiency frame. These are NOT Directions sets — each item prints its own premise, its own Question line and its own Statement-1/Statement-2, so they share no stimulus and must NOT be given a setLabel. Same call the 2022-1 bA band recorded for the identical frame.\n\nFIGURES: none. No question in Q1-Q28 prints or refers to a diagram, so `hasFigure` is unset throughout.\n\nDECIMALS: this band contains NO decimal numbers at all, so the raised-middle-dot rule never came into play here.\n\nCURRENCY: none in this band.\n\nGLYPHS VERIFIED BY TARGETED CROP AT 7-9x from the source PDF (nothing guessed): Q3 option (c) — the a and b carry NO exponents (see its flag); Q5 all four options, including the sign pattern that separates (c) from (d); Q9 both statements' exponents (a^2(b-c)^3 ...); Q10 all three denominators, whose variable ORDER differs per term — x(x-y)(x-z), y(y-z)(y-x), z(z-x)(z-y); Q11 both statements' x^4/y^4/z^4 and the inequality directions; Q12 numerator x^6 - 24x^4 + 144x^2 and denominator (x^2 + 4sqrt3 x + 12)(x - 2sqrt3)^2; Q18 all four fractions 3/5, 6/25, 9/20, 27/50; Q21 the exponents in N = 12^6 x 3^8 x 5^3; Q24 the bracketed argument 995 + sqrt(x^2 - 12x + 60); Q25 all three candidate expressions; Q26 all four options, where (a) vs (d) differ only in the first factor and (c) vs (d) only in the sign inside the squared factor; Q28 the LCM value 481.\n\nMISPRINT FLAGGED: Q3 option (c) prints '(a + ab + b)' with no exponents where the sibling options all set theirs. Transcribed exactly as printed, not repaired.\n\nSUBTOPICS INVENTED (2, both flagged on their questions): Q1 'Infinite Nested Radicals' and Q25 'Roots in Surd Form'. Chapters are catalog keys in both cases."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "If \\(x^2 - 20 = \\sqrt{20 + \\sqrt{20 + \\sqrt{20 + \\sqrt{20 + \\ldots}}}}\\) infinite terms, then what is x equal to ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sqrt{5}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2\\sqrt{5}\\)"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Infinite Nested Radicals",
+      "difficulty": "MODERATE",
+      "flags": [
+        "subtopic 'Infinite Nested Radicals' is not in catalog.json — the chapter's listed 'Continued Fractions' is reserved in this corpus for genuine \\cfrac continued fractions (2022-1 Q14, 2023-2 Q77, 2024-1 Q36), and 'Surds and Rationalisation' does not describe a self-similar infinite radical. Offered to the catalog-extension pass."
+      ]
+    },
+    {
+      "number": 2,
+      "stem": "If \\(\\frac{a + b}{b + c} = \\frac{c + d}{d + a}\\) where \\(a \\ne c\\), then which one of the following is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(a + b = c + d\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(a + c = b + d\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(a - b - c + d = 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(a + b + c + d = 0\\)"
+        }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 3,
+      "stem": "If \\((a^3 + b^3)\\) is proportional to \\((a^2 - b^2)\\), then \\((a^2 - ab + b^2)\\) is proportional to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((a - b)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((a + b)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((a + ab + b)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((a^3 - b^3)\\)"
+        }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE",
+      "flags": [
+        "option (c) prints '(a + ab + b)' with NO exponents — verified at 7x against the source PDF, the a and b carry no superscript while (a) (b) (d) all set their exponents clearly. It reads like a misprint for \\(a^2 + ab + b^2\\); transcribed exactly as printed, not repaired."
+      ]
+    },
+    {
+      "number": 4,
+      "stem": "If \\(\\frac{\\sqrt{x + 20} + \\sqrt{x - 1}}{\\sqrt{x + 20} - \\sqrt{x - 1}} = \\frac{7}{3}\\), then what is the value of \\(\\sqrt{(x + 20)(x - 1)}\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "9"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "12"
+        }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Surds and Rationalisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 5,
+      "stem": "What is the HCF of \\((x^8 - y^8)\\) and \\((x^7 - y^7 + x^5y^2 - x^2y^5)\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((x^2 + y^2)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((x^2 - y^2)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((x^3 - y^3 - x^2y + xy^2)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((x^3 - y^3 + x^2y - xy^2)\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 6,
+      "stem": "If the sum of the squares of the roots of the equation \\(x^2 - 14x + k = 0\\) is 100, then what is the value of k ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "42"
+        },
+        {
+          "label": "B",
+          "text": "48"
+        },
+        {
+          "label": "C",
+          "text": "52"
+        },
+        {
+          "label": "D",
+          "text": "56"
+        }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 7,
+      "stem": "If \\((x + k)\\) is the HCF of \\(x^2 + px + q\\) and \\(x^2 + qx + p\\), where \\(p \\ne q\\), then what is the value of k ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "B",
+          "text": "0"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 8,
+      "stem": "If three times the greater of two numbers is divided by the smaller number, the quotient will be 6 and the remainder will be 6. If five times the smaller number is divided by the greater number, the quotient will be 2 and the remainder will be 3. What is the difference between the numbers ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "9"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "12"
+        }
+      ],
+      "chapter": "Linear Equations",
+      "subtopic": "Word Problems and Applications",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 9,
+      "stem": "Consider the following statements :\n\n1. \\((ab + bc + ca)\\) is a factor of \\(a^2(b - c)^3 + b^2(c - a)^3 + c^2(a - b)^3\\).\n\n2. \\((a + b + c)\\) is a factor of \\(a^2(b - c)^3 + b^2(c - a)^3 + c^2(a - b)^3\\).\n\nWhich of the statements given above is/are correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only 1"
+        },
+        {
+          "label": "B",
+          "text": "Only 2"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 10,
+      "stem": "What is \\(\\frac{1}{x(x - y)(x - z)} + \\frac{1}{y(y - z)(y - x)} + \\frac{1}{z(z - x)(z - y)}\\) equal to ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{1}{xyz}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\frac{1}{xyz}\\)"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 11,
+      "stem": "Consider the following statements :\n\n1. \\(x^4(y - z) + y^4(z - x) + z^4(x - y)\\) is positive if \\(x > y > z\\).\n\n2. \\(x^4(y - z) + y^4(z - x) + z^4(x - y)\\) is negative if \\(x < y < z\\).\n\nWhich of the above statements is/are correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only 1"
+        },
+        {
+          "label": "B",
+          "text": "Only 2"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Symmetric and Cyclic Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 12,
+      "stem": "What is \\(\\frac{x^6 - 24x^4 + 144x^2}{(x^2 + 4\\sqrt{3}x + 12)(x - 2\\sqrt{3})^2}\\) equal to ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x^2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x^2 - 2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x^2 + 2\\sqrt{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x^2 - 2\\sqrt{3}\\)"
+        }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 13,
+      "stem": "X and Y can do a piece of work in 45 days and 40 days respectively. They begin to work together, but X leaves after n days and then Y completes the remaining work in 23 days. What is n equal to ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "9"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "12"
+        }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 14,
+      "stem": "480 persons working 10 hours per day complete one-fourth of a work in 10 days. How many additional persons are to be employed in order to complete the remaining work in 20 days, working 8 hours per day ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "400"
+        },
+        {
+          "label": "B",
+          "text": "420"
+        },
+        {
+          "label": "C",
+          "text": "480"
+        },
+        {
+          "label": "D",
+          "text": "500"
+        }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 15,
+      "stem": "12 women and 16 men can do a piece of work in 5 days. 13 women and 24 men can do it in 4 days. How long will 25 women and 50 men take to do it ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 day"
+        },
+        {
+          "label": "B",
+          "text": "2 days"
+        },
+        {
+          "label": "C",
+          "text": "3 days"
+        },
+        {
+          "label": "D",
+          "text": "4 days"
+        }
+      ],
+      "chapter": "Time and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 16,
+      "stem": "There are two stations X and Y, 1320 km apart. A train starts from station X at 6 a.m. and moves at an average speed of 60 km/hr. At 2 p.m. another train starts from Y towards X and moves at an average speed of 80 km/hr. When do they meet ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 p.m."
+        },
+        {
+          "label": "B",
+          "text": "7 p.m."
+        },
+        {
+          "label": "C",
+          "text": "8 p.m."
+        },
+        {
+          "label": "D",
+          "text": "9 p.m."
+        }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Trains and Relative Speed",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 17,
+      "stem": "Two glasses of equal volume are filled with a mixture of alcohol and water in the ratio 3 : 2 and 4 : 1, respectively. These glasses are emptied into a third glass. What is the ratio of alcohol and water in the third glass ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5 : 4"
+        },
+        {
+          "label": "B",
+          "text": "7 : 2"
+        },
+        {
+          "label": "C",
+          "text": "7 : 3"
+        },
+        {
+          "label": "D",
+          "text": "7 : 4"
+        }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Mixtures and Alligation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 18,
+      "stem": "If x is the HCF and y is the LCM of \\(\\frac{3}{5}, \\frac{6}{25}, \\frac{9}{20}, \\frac{27}{50}\\), then which one of the following is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(y = 90x\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(y = 180x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(y = 270x\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(y = 360x\\)"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 19,
+      "stem": "There are two natural numbers x and y, where \\(x > y\\). When x is divided by 6, it leaves the remainder 2 and; when y is divided by 6, it leaves the remainder 3. What is the remainder when \\((x - y)\\) is divided by 6 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "Remainder cannot be determined"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 20,
+      "stem": "The value of a 2-digit number is 5 times the sum of the digits. What is the product of the digits ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15"
+        },
+        {
+          "label": "B",
+          "text": "18"
+        },
+        {
+          "label": "C",
+          "text": "20"
+        },
+        {
+          "label": "D",
+          "text": "27"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 21,
+      "stem": "Consider the number \\(N = 12^6 \\times 3^8 \\times 5^3\\). Which of the following statements is/are correct ?\n\n1. The number of odd factors of N is 60.\n\n2. The number of even factors of N is 720.\n\nSelect the correct answer using the code given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only 1"
+        },
+        {
+          "label": "B",
+          "text": "Only 2"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 22,
+      "stem": "If \\(\\frac{\\log_{10} a}{b - c} = \\frac{\\log_{10} b}{c - a} = \\frac{\\log_{10} c}{a - b}\\), \\((a \\ne b \\ne c)\\), then what is the value of abc ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "B",
+          "text": "0"
+        },
+        {
+          "label": "C",
+          "text": "1"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Logarithm Identities and Change of Base",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 23,
+      "stem": "What is the angle between the hour hand and the minute hand of a clock when the clock shows 4 hours 40 minutes ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(80^\\circ\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(100^\\circ\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(120^\\circ\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(220^\\circ\\)"
+        }
+      ],
+      "chapter": "Time, Speed and Distance",
+      "subtopic": "Clocks and Angles",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 24,
+      "stem": "If \\(\\log_{10}\\left[995 + \\sqrt{x^2 - 12x + 60}\\right] = 3\\), then what is the sum of the roots of the equation ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "11"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "chapter": "Logarithms",
+      "subtopic": "Solving Logarithmic Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 25,
+      "stem": "How many of the following values of x would satisfy the equation \\(qx^2 - 2px + q = 0\\) ?\n\n1. \\(x = \\frac{\\sqrt{p + q} + \\sqrt{p - q}}{\\sqrt{p + q} - \\sqrt{p - q}}\\), where \\(p > q\\)\n\n2. \\(x = \\frac{p + \\sqrt{p^2 - q^2}}{q}\\), where \\(p > q\\)\n\n3. \\(x = \\frac{\\sqrt{p + q}}{\\sqrt{p - q}}\\), where \\(p > q\\)\n\nSelect the correct answer using the code given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only one value"
+        },
+        {
+          "label": "B",
+          "text": "Only two values"
+        },
+        {
+          "label": "C",
+          "text": "All three values"
+        },
+        {
+          "label": "D",
+          "text": "None"
+        }
+      ],
+      "chapter": "Quadratic Equations",
+      "subtopic": "Vieta's Relations and Root Coefficient Identities",
+      "difficulty": "HARD",
+      "flags": [
+        "subtopic 'Roots in Surd Form' is not in catalog.json — the equation itself carries no radical, so the chapter's 'Radical Equations and Extraneous Roots' does not describe it; what is being tested is whether each printed surd expression is a root of a quadratic. Offered to the catalog-extension pass."
+      ]
+    },
+    {
+      "number": 26,
+      "stem": "Let \\(p(x) = x^4 + x^2 + 1\\), \\(q(x) = x^4 - 2x^3 + 3x^2 - 2x + 1\\). If GCD of \\(p(x)\\) and \\(q(x)\\) is \\(x^2 - x + 1\\), then what is their LCM ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((x^2 + x + 1)(x^2 - x + 1)^2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((x^4 + x^2 + 1)^2(x^2 - x + 1)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((x^4 + x^2 + 1)(x^2 + x + 1)^2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((x^4 + x^2 + 1)(x^2 - x + 1)^2\\)"
+        }
+      ],
+      "chapter": "Polynomials",
+      "subtopic": "HCF and LCM of Polynomials",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 27,
+      "stem": "Consider the question and two statements given below :\n\nA 2-digit number is added to the number formed by reversing the digits of the 2-digit number.\n\nQuestion : What is the 2-digit number ?\n\nStatement-1 : The sum is divisible by 9.\n\nStatement-2 : The sum is divisible by 2.\n\nWhich one of the following is correct in respect of the question and the statements ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Statement-1 alone is sufficient to answer the question"
+        },
+        {
+          "label": "B",
+          "text": "Statement-2 alone is sufficient to answer the question"
+        },
+        {
+          "label": "C",
+          "text": "Both Statement-1 and Statement-2 are sufficient to answer the question"
+        },
+        {
+          "label": "D",
+          "text": "Both Statement-1 and Statement-2 are not sufficient to answer the question"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 28,
+      "stem": "Consider the question and two statements given below :\n\nLCM of two numbers x and y is 481 where \\(x > y\\).\n\nQuestion : What is the value of \\((3x - 2y)\\) ?\n\nStatement-1 : \\(y > 1\\).\n\nStatement-2 : HCF of x and y is 1.\n\nWhich one of the following is correct in respect of the question and the statements ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Statement-1 alone is sufficient to answer the question"
+        },
+        {
+          "label": "B",
+          "text": "Statement-2 alone is sufficient to answer the question"
+        },
+        {
+          "label": "C",
+          "text": "Both Statement-1 and Statement-2 are sufficient to answer the question"
+        },
+        {
+          "label": "D",
+          "text": "Both Statement-1 and Statement-2 are not sufficient to answer the question"
+        }
+      ],
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

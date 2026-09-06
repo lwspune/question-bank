@@ -29,13 +29,41 @@ import {
 describe("MHT-CET sitting registry", () => {
   const sittings = deriveMhtCetSittings();
 
-  it("covers all 45 sittings in the bank", () => {
-    expect(sittings).toHaveLength(45);
+  /**
+   * 45 source_file labels in the bank, but only 42 real sittings: three papers
+   * were uploaded twice and each pair is now ONE merged sitting.
+   */
+  it("covers all 42 real sittings", () => {
+    expect(sittings).toHaveLength(42);
   });
 
   it("has a unique key and a unique source file for every sitting", () => {
-    expect(new Set(sittings.map((s) => s.key)).size).toBe(45);
-    expect(new Set(sittings.map((s) => s.sourceFile)).size).toBe(45);
+    expect(new Set(sittings.map((s) => s.key)).size).toBe(42);
+    expect(new Set(sittings.map((s) => s.sourceFile)).size).toBe(42);
+  });
+
+  /**
+   * The merged labels must not ALSO appear as sittings of their own — that would
+   * ship the same paper twice, once whole and once as the fragment it was split
+   * into, and the fragment would fail its hard count with no clue why.
+   */
+  it("claims all 45 bank labels exactly once, across primaries and merges", () => {
+    const claimed = sittings.flatMap((s) =>
+      s.mergeWith ? [s.sourceFile, s.mergeWith] : [s.sourceFile]
+    );
+    expect(claimed).toHaveLength(45);
+    expect(new Set(claimed).size).toBe(45);
+  });
+
+  it("merges exactly the three double-uploaded papers", () => {
+    const merged = sittings.filter((s) => s.mergeWith);
+    expect(merged.map((s) => s.key).sort()).toEqual([
+      "2023-may-16-s2",
+      "2024-may-12-s2",
+      "2025-apr-19-s2",
+    ]);
+    // ...and each merged sitting is complete, so it carries NO hold.
+    for (const s of merged) expect(s.hold).toBeUndefined();
   });
 
   /**
@@ -43,13 +71,13 @@ describe("MHT-CET sitting registry", () => {
    * upsert overwrites the other (same slugToUuid id) and a real paper vanishes
    * with no error. Checked across BOTH papers at once, since they share a stem.
    */
-  it("derives 90 distinct slugs across the two papers", () => {
+  it("derives 84 distinct slugs across the two papers", () => {
     const slugs = sittings.flatMap((s) => [
       mhtCetMockSlug(s.key, MHT_CET_MATHS_PAPER.code),
       mhtCetMockSlug(s.key, MHT_CET_PHY_CHEM_PAPER.code),
     ]);
-    expect(slugs).toHaveLength(90);
-    expect(new Set(slugs).size).toBe(90);
+    expect(slugs).toHaveLength(84);
+    expect(new Set(slugs).size).toBe(84);
   });
 
   it("emits slugs that are URL-safe and exam-prefixed", () => {
@@ -81,7 +109,7 @@ describe("MHT-CET sitting registry", () => {
   it("keeps every hand-written sitting out of the derived set", () => {
     const configKeys = new Set(Object.keys(SHIFTS));
     const handWritten = MHT_CET_SITTINGS.filter((s) => !configKeys.has(s.key));
-    expect(handWritten).toHaveLength(32);
+    expect(handWritten).toHaveLength(29);
     // A hand-written entry duplicating a config source file would produce two
     // sittings for one paper.
     const configFiles = new Set(Object.values(SHIFTS).map((s) => s.sourceFile));
@@ -100,12 +128,12 @@ describe("MHT-CET sitting registry", () => {
    * withheld PRIVATE (irrecoverable), 20 because rows are absent from the bank
    * (closable by a future ingest) — so 60 ship.
    */
-  it("holds exactly 30 papers, leaving 60 to ship", () => {
+  it("holds exactly 20 papers, leaving 64 to ship", () => {
     const heldMaths = sittings.filter((s) => s.hold?.maths).length;
     const heldPhyChem = sittings.filter((s) => s.hold?.phyChem).length;
-    expect(heldMaths).toBe(12);
-    expect(heldPhyChem).toBe(18);
-    expect(90 - heldMaths - heldPhyChem).toBe(60);
+    expect(heldMaths).toBe(8);
+    expect(heldPhyChem).toBe(12);
+    expect(84 - heldMaths - heldPhyChem).toBe(64);
   });
 
   /** A hold with no stated reason is indistinguishable from a mistake. */

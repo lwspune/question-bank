@@ -1,0 +1,807 @@
+{
+  "paper": "2026-1",
+  "reconciled": [],
+  "note": "Two independent blind passes agreed on all 100 questions (crosstab AGREE 100%, 0 DISPUTE, 0 TWIN). Derivations taken from passA wholesale; no row needed hand adjudication. PAPER DEFECT, found independently by BOTH passes and named in Q7's shipped solution: the printed HCF x^2-ax+a^2 does not divide the printed LCM (x+a)(x^3-a^3), and neither does p(x), so no pair of polynomials has both. The answer is still unambiguous -- the product rule forces degree 2 and only one printed option is degree 2 -- so the row ships rather than being dropped. Also recorded: Q64's page prints 'triangle PAD is similar to triangle PBC' where the standard theorem gives PAD ~ PCB; the triangles are similar as shapes but not in the asserted vertex order, so statement I is false as written.",
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "D",
+      "value": "z^3",
+      "confidence": "HIGH",
+      "reasoning": "The three exponents add to (p^3+q^3+r^3)/(pqr). With p+q+r=0 the identity p^3+q^3+r^3=3pqr applies, so the sum of exponents is 3pqr/(pqr)=3. Confirmed symbolically by substituting r=-p-q (simplifies to 3) and on three numeric triples (2,5,-7), (7,-3,-4) and (1/3,4/7,-19/21), each giving exactly 3.",
+      "solution": "Adding the exponents gives \\( \\dfrac{p^{2}}{qr}+\\dfrac{q^{2}}{rp}+\\dfrac{r^{2}}{pq}=\\dfrac{p^{3}+q^{3}+r^{3}}{pqr} \\). Since \\( p+q+r=0 \\), the identity \\( p^{3}+q^{3}+r^{3}=3pqr \\) holds, so the exponents total \\( 3 \\). The product is therefore \\( z^{3} \\)."
+    },
+    {
+      "number": 2,
+      "answer": "D",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "An identity in x forces every coefficient to vanish. k^2-5k+4=0 gives k=1 or 4; k^2-3k-4=0 gives k=4 or -1; k^2-4k=0 gives k=0 or 4. The only value common to all three sets is k=4.",
+      "solution": "The expression is an identity only if each of its coefficients is zero. From \\( k^{2}-5k+4=0 \\) we get \\( k=1 \\) or \\( k=4 \\); from \\( k^{2}-3k-4=0 \\) we get \\( k=4 \\) or \\( k=-1 \\); from \\( k^{2}-4k=0 \\) we get \\( k=0 \\) or \\( k=4 \\). The single value satisfying all three conditions is \\( k=4 \\)."
+    },
+    {
+      "number": 3,
+      "answer": "A",
+      "value": "a^2b^2 + b^2c^2 + c^2a^2 (ratio 1)",
+      "confidence": "HIGH",
+      "reasoning": "Put each equal ratio equal to t. Adding all numerators over all denominators gives (a^2+b^2+c^2) = 2t(a^2+b^2+c^2), so t=1/2 and hence 2a^2=b^2+c^2, 2b^2=c^2+a^2, 2c^2=a^2+b^2. These force a^2=b^2=c^2 (sympy returns b=a, c=a as the only positive solution). Then a^4+b^4+c^4=3a^4 and a^2b^2+b^2c^2+c^2a^2=3a^4, so the required multiple is 1.",
+      "solution": "Let each of the equal ratios be \\( t \\). Adding the numerators and the denominators gives \\( a^{2}+b^{2}+c^{2}=2t\\left(a^{2}+b^{2}+c^{2}\\right) \\), so \\( t=\\tfrac{1}{2} \\) and therefore \\( 2a^{2}=b^{2}+c^{2} \\), \\( 2b^{2}=c^{2}+a^{2} \\), \\( 2c^{2}=a^{2}+b^{2} \\). Solving these together forces \\( a^{2}=b^{2}=c^{2} \\). Then \\( a^{4}+b^{4}+c^{4}=3a^{4} \\) and \\( a^{2}b^{2}+b^{2}c^{2}+c^{2}a^{2}=3a^{4} \\), so the two expressions are equal."
+    },
+    {
+      "number": 4,
+      "answer": "D",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "1/x = 1/p + 1/q gives x = pq/(p+q). Then (x+p)/(x-p) = -(p+2q)/p and (x+q)/(x-q) = -(q+2p)/q, whose difference is 2(p^2-q^2)/(pq). Multiplying by pq/(p^2-q^2) leaves 2. Confirmed by direct symbolic simplification.",
+      "solution": "From \\( \\dfrac{1}{x}=\\dfrac{1}{p}+\\dfrac{1}{q} \\) we get \\( x=\\dfrac{pq}{p+q} \\). Substituting, \\( \\dfrac{x+p}{x-p}=-\\dfrac{p+2q}{p} \\) and \\( \\dfrac{x+q}{x-q}=-\\dfrac{q+2p}{q} \\), so their difference is \\( \\dfrac{2\\left(p^{2}-q^{2}\\right)}{pq} \\). Multiplying by \\( \\dfrac{pq}{p^{2}-q^{2}} \\) leaves \\( 2 \\)."
+    },
+    {
+      "number": 5,
+      "answer": "D",
+      "value": "Zero",
+      "confidence": "HIGH",
+      "reasoning": "Every factor of P (5, 15, 25, 35) is odd, so P is odd; every factor of Q (10, 20, 30, 40) is even, so Q is even. An odd plus an even is odd, and an odd number cannot end in 0. Computed (P+Q) mod 10 = 5.",
+      "solution": "Each factor of \\( P \\) — namely \\( 5 \\), \\( 15 \\), \\( 25 \\) and \\( 35 \\) — is odd, so \\( P \\) is odd. Each factor of \\( Q \\) is even, so \\( Q \\) is even. Their sum is therefore odd, and an odd number can never end in \\( 0 \\), so the count of trailing zeros is zero."
+    },
+    {
+      "number": 6,
+      "answer": "D",
+      "value": "23",
+      "confidence": "HIGH",
+      "reasoning": "If (x-5) is a common factor then x=5 is a root of both. From 25-5-p=0, p=20; from 25-5q-10=0, q=3. Hence p+q=23.",
+      "solution": "Since \\( (x-5) \\) divides both polynomials, \\( x=5 \\) is a root of each. Substituting into \\( x^{2}-x-p \\) gives \\( 25-5-p=0 \\), so \\( p=20 \\); substituting into \\( x^{2}-qx-10 \\) gives \\( 25-5q-10=0 \\), so \\( q=3 \\). Therefore \\( p+q=23 \\)."
+    },
+    {
+      "number": 7,
+      "answer": "C",
+      "value": "x^2 - a^2",
+      "confidence": "HIGH",
+      "reasoning": "Using p(x)q(x) = LCM x HCF: q(x) = (x+a)(x^3-a^3)(x^2-ax+a^2) / (x^4+a^2x^2+a^4). Since x^4+a^2x^2+a^4 = (x^2+ax+a^2)(x^2-ax+a^2) and x^3-a^3 = (x-a)(x^2+ax+a^2), this cancels to (x+a)(x-a) = x^2-a^2. NOTE the paper is internally inconsistent as printed: the stated HCF x^2-ax+a^2 does not divide the stated LCM (polynomial remainder 2a^3(-a-x)), and p(x) does not divide the stated LCM either, so no genuine pair of polynomials has these as their HCF and LCM. Solved as printed. The product rule nonetheless fixes deg q = 6 - 4 = 2, and C is the only option of degree 2, so no other option is defensible.",
+      "solution": "Using \\( p(x)\\,q(x)=\\text{LCM}\\times\\text{HCF} \\) together with \\( x^{4}+a^{2}x^{2}+a^{4}=\\left(x^{2}+ax+a^{2}\\right)\\left(x^{2}-ax+a^{2}\\right) \\) and \\( x^{3}-a^{3}=(x-a)\\left(x^{2}+ax+a^{2}\\right) \\), dividing \\( (x+a)\\left(x^{3}-a^{3}\\right)\\left(x^{2}-ax+a^{2}\\right) \\) by \\( p(x) \\) leaves \\( (x+a)(x-a)=x^{2}-a^{2} \\). The printed data is itself inconsistent — the given HCF is not a factor of the given LCM, so no actual pair of polynomials can have both — but the product rule still forces \\( q(x) \\) to have degree \\( 2 \\), and \\( x^{2}-a^{2} \\) is the only such choice offered."
+    },
+    {
+      "number": 8,
+      "answer": "D",
+      "value": "I only (x - 1)",
+      "confidence": "HIGH",
+      "reasoning": "Substituting the roots: at x=1 both polynomials give 0, so (x-1) divides both. At x=-1 the first gives 8 and the second -4, so (x+1) divides neither. At x=-2 the first gives 12 (the second gives 0), so (x+2) divides only the second. Hence I alone.",
+      "solution": "Testing the root of each factor: at \\( x=1 \\) both \\( x^{3}+2x^{2}-5x+2 \\) and \\( x^{3}+4x^{2}+x-6 \\) vanish, so \\( x-1 \\) divides both. At \\( x=-1 \\) they give \\( 8 \\) and \\( -4 \\), so \\( x+1 \\) divides neither. At \\( x=-2 \\) the first gives \\( 12 \\), so \\( x+2 \\) fails even though it divides the second. Only \\( x-1 \\) works."
+    },
+    {
+      "number": 9,
+      "answer": "A",
+      "value": "1/3 of a day",
+      "confidence": "HIGH",
+      "reasoning": "Taking one unit of work: 8M+24W=1 and 12M+18W=1 give 6W=4M, so M=1/24 and W=1/36 of the work per day. Then 24 men and 72 women do 24(1/24)+72(1/36)=1+2=3 units per day, i.e. the work takes 1/3 of a day.",
+      "solution": "Let one man's daily work be \\( M \\) and one woman's be \\( W \\), with the whole job as one unit. Then \\( 8M+24W=1 \\) and \\( 12M+18W=1 \\), which give \\( M=\\tfrac{1}{24} \\) and \\( W=\\tfrac{1}{36} \\). Together \\( 24 \\) men and \\( 72 \\) women do \\( 24\\left(\\tfrac{1}{24}\\right)+72\\left(\\tfrac{1}{36}\\right)=3 \\) units in a day, so the job takes \\( \\tfrac{1}{3} \\) of a day."
+    },
+    {
+      "number": 10,
+      "answer": "D",
+      "value": "No such value exists",
+      "confidence": "HIGH",
+      "reasoning": "Writing the pair as kx-5y+6=0 and -12x+4(k-1)y+3=0, the no-solution condition needs k/(-12) = -5/(4(k-1)), i.e. 4k(k-1)=60, so k^2-k-15=0 and k=(1 +/- sqrt(61))/2. The discriminant 61 is not a perfect square, so no integral k exists.",
+      "solution": "For no solution the coefficients of \\( x \\) and \\( y \\) must be proportional, so \\( \\dfrac{k}{-12}=\\dfrac{-5}{4(k-1)} \\), giving \\( 4k(k-1)=60 \\) and hence \\( k^{2}-k-15=0 \\). Its roots are \\( k=\\dfrac{1\\pm\\sqrt{61}}{2} \\), which are irrational because \\( 61 \\) is not a perfect square. No integral value of \\( k \\) therefore exists."
+    },
+    {
+      "number": 11,
+      "answer": "B",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "With digits a (tens) and b (units), 7(10a+b)=4(10b+a) gives 66a=33b, so b=2a. With a from 1 to 9 and b at most 9, a can be 1, 2, 3 or 4, giving 12, 24, 36, 48. Brute-force scan over all two-digit numbers returns exactly these four.",
+      "solution": "Let the number be \\( 10a+b \\). Then \\( 7(10a+b)=4(10b+a) \\) reduces to \\( 66a=33b \\), so \\( b=2a \\). Since \\( b \\) is a single digit, \\( a \\) can only be \\( 1, 2, 3 \\) or \\( 4 \\), giving \\( 12, 24, 36 \\) and \\( 48 \\) — four such numbers."
+    },
+    {
+      "number": 12,
+      "answer": "A",
+      "value": "3 months",
+      "confidence": "HIGH",
+      "reasoning": "Quarterly rate is 12/4 = 3%. Rs 3300 x 1.03 = Rs 3399 exactly, so one quarter suffices, i.e. 3 months.",
+      "solution": "Compounded quarterly at \\( 12\\% \\) per annum, the rate per quarter is \\( 3\\% \\). One quarter turns \\( \\mathrm{Rs.}\\,3300 \\) into \\( 3300\\times1.03=\\mathrm{Rs.}\\,3399 \\), which is exactly the required amount. The time needed is therefore one quarter, or \\( 3 \\) months."
+    },
+    {
+      "number": 13,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "x = ky. Then x^2+y^2 = (k^2+1)y^2, a constant multiple of y^2, so I is correct. But x^3/y^4 = k^3y^3/y^4 = k^3/y, which varies inversely as y, not directly, so II is wrong.",
+      "solution": "Direct variation means \\( x=ky \\) for a constant \\( k \\). Then \\( x^{2}+y^{2}=\\left(k^{2}+1\\right)y^{2} \\), a fixed multiple of \\( y^{2} \\), so the first statement holds. However \\( \\dfrac{x^{3}}{y^{4}}=\\dfrac{k^{3}y^{3}}{y^{4}}=\\dfrac{k^{3}}{y} \\), which varies inversely as \\( y \\) rather than directly, so the second statement fails."
+    },
+    {
+      "number": 14,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "Daily rates are 1/4 and 1/6. Simulating alternate days: starting with X the job is complete after 14/3 = 4.67 days, i.e. part-way through the fifth day, so I holds. Starting with Y, four days give 5/6 and the remaining 1/6 takes Y exactly one more full day, so the total is exactly 5 days, not less than 5; II fails.",
+      "solution": "X does \\( \\tfrac{1}{4} \\) and Y does \\( \\tfrac{1}{6} \\) of the work per day. Starting with X, four days complete \\( \\tfrac14+\\tfrac16+\\tfrac14+\\tfrac16=\\tfrac{5}{6} \\), and X finishes the remaining \\( \\tfrac16 \\) in \\( \\tfrac23 \\) of the fifth day, so the first statement is right. Starting with Y, four days also give \\( \\tfrac{5}{6} \\), but the remaining \\( \\tfrac16 \\) takes Y a whole further day, making the total exactly \\( 5 \\) days rather than less than \\( 5 \\)."
+    },
+    {
+      "number": 15,
+      "answer": "D",
+      "value": "36",
+      "confidence": "HIGH",
+      "reasoning": "Work is proportional to volume. First wall: 100 x 0.2 x 5 = 100 cubic metres, built in 12 x 8 x 10 = 960 man-hours, i.e. 9.6 man-hours per cubic metre. Second wall: 200 x 0.6 x 5 = 600 cubic metres needs 5760 man-hours; at 16 x 10 = 160 man-hours a day that is 36 days.",
+      "solution": "Take the work as proportional to the volume of the wall. The first wall is \\( 100\\times0.2\\times5=100\\ \\mathrm{m}^{3} \\) and takes \\( 12\\times8\\times10=960 \\) man-hours, so each cubic metre needs \\( 9.6 \\) man-hours. The second wall is \\( 200\\times0.6\\times5=600\\ \\mathrm{m}^{3} \\), needing \\( 5760 \\) man-hours, and \\( 16 \\) men working \\( 10 \\) hours a day supply \\( 160 \\) man-hours daily, so it takes \\( 36 \\) days."
+    },
+    {
+      "number": 16,
+      "answer": "D",
+      "value": "120 km/h",
+      "confidence": "HIGH",
+      "reasoning": "Let T be the time to the meeting point. P covers the pre-meeting stretch in T and Q covers the same stretch in 1 hour, so 60T = V_Q. Q covers the other stretch in T and P covers it in 4 hours, so 4(60) = V_Q T. Solving gives T=2 and V_Q=120. Confirmed by solving the pair simultaneously.",
+      "solution": "Let \\( T \\) be the time each train travels before they meet. The stretch P covers first is the one Q covers in \\( 1 \\) hour, so \\( 60T=V_{Q} \\); the stretch Q covers first is the one P covers in \\( 4 \\) hours, so \\( 4\\times60=V_{Q}T \\). Dividing gives \\( T^{2}=4 \\), so \\( T=2 \\) and \\( V_{Q}=120 \\) km/h."
+    },
+    {
+      "number": 17,
+      "answer": "B",
+      "value": "12 minutes",
+      "confidence": "HIGH",
+      "reasoning": "In one hour with stoppages the train covers 48 km, which at its running speed of 60 km/h takes 48/60 hour = 48 minutes. The remaining 12 minutes of the hour are spent stopped.",
+      "solution": "In one hour of travel with stoppages the train covers \\( 48 \\) km. At its running speed of \\( 60 \\) km/h that distance takes \\( \\dfrac{48}{60} \\) hour, or \\( 48 \\) minutes. The other \\( 12 \\) minutes of the hour are spent at stops."
+    },
+    {
+      "number": 18,
+      "answer": "C",
+      "value": "(x + y) : (x - y)",
+      "confidence": "HIGH",
+      "reasoning": "Downstream speed x = b + s and upstream speed y = b - s, so b = (x+y)/2 and s = (x-y)/2. The ratio b : s is therefore (x+y) : (x-y).",
+      "solution": "If \\( b \\) is the speed of the boat in still water and \\( s \\) that of the water, then \\( x=b+s \\) and \\( y=b-s \\). Adding and subtracting gives \\( b=\\dfrac{x+y}{2} \\) and \\( s=\\dfrac{x-y}{2} \\). Their ratio is \\( \\dfrac{x+y}{x-y} \\)."
+    },
+    {
+      "number": 19,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "MED",
+      "reasoning": "Sum of roots is -b and product is c, so c = -b and Q = x^2 + bx - b. I: Q is a perfect square exactly when the discriminant b^2+4b = 0, i.e. b = 0 (giving x^2) or b = -4 (giving (x-2)^2), so 'Q can be a perfect square' is true. II asserts that Q is positive for all real x; this fails at b = 0 (Q(0)=0) and at b = 1 (Q(0) = -1), so as a universal claim it is false. RUNNER-UP: option C, which would win if II were read with the same modal force as I, i.e. as 'Q can be positive for all x' — that is true for any b strictly between -4 and 0. The deliberate contrast between 'can be' in I and 'is' in II is what settles it against C.",
+      "solution": "The sum of the roots is \\( -b \\) and the product is \\( c \\), so \\( c=-b \\) and \\( Q=x^{2}+bx-b \\). It is a perfect square when the discriminant \\( b^{2}+4b \\) is zero, that is when \\( b=0 \\) giving \\( x^{2} \\), or \\( b=-4 \\) giving \\( (x-2)^{2} \\); so the first statement is right. The second statement claims positivity for every real \\( x \\), which fails for instance at \\( b=0 \\), where \\( Q(0)=0 \\), and at \\( b=1 \\), where \\( Q(0)=-1 \\). Only the first statement is correct."
+    },
+    {
+      "number": 20,
+      "answer": "C",
+      "value": "3",
+      "confidence": "HIGH",
+      "reasoning": "Let the ages be 4t and 5t. Then (4t-k)/(5t-k) = 1/2 gives 8t-2k = 5t-k, so k = 3t. Ages in complete years force 4t and 5t to be integers, and their difference t is then an integer too. With k = 3t < 10 and k positive, t is 1, 2 or 3, giving k = 3, 6, 9 — three values, each checked to reproduce the 1:2 ratio.",
+      "solution": "Write the present ages as \\( 4t \\) and \\( 5t \\). Then \\( \\dfrac{4t-k}{5t-k}=\\dfrac{1}{2} \\) gives \\( 8t-2k=5t-k \\), so \\( k=3t \\). Because both ages are whole numbers, their difference \\( t \\) is a whole number as well, and \\( k=3t<10 \\) leaves \\( t=1,2,3 \\). The possible values \\( k=3,6,9 \\) — three in all — correspond to age pairs \\( (4,5) \\), \\( (8,10) \\) and \\( (12,15) \\)."
+    },
+    {
+      "number": 21,
+      "answer": "D",
+      "value": "4 (namely 1, 3, 5 and 9)",
+      "confidence": "HIGH",
+      "reasoning": "27^27 - 9^40 - 3^79 = 3^81 - 3^80 - 3^79 = 3^79(9 - 3 - 1) = 5 x 3^79. The number is odd and carries no factor 7, so among the naturals below 10 only 1, 3, 5 and 9 divide it. That is four, i.e. more than 3. Confirmed by direct integer computation.",
+      "solution": "Writing everything in base \\( 3 \\), \\( 27^{27}-9^{40}-3^{79}=3^{81}-3^{80}-3^{79}=3^{79}(9-3-1)=5\\times3^{79} \\). This number is odd and has no factor of \\( 7 \\), so among the natural numbers below \\( 10 \\) it is divisible only by \\( 1 \\), \\( 3 \\), \\( 5 \\) and \\( 9 \\). That is four such numbers, which is more than three."
+    },
+    {
+      "number": 22,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "Any common divisor of p and p+q also divides q, and conversely G divides both p and p+q; hence HCF(p, p+q) = G. The identical argument applies to p and p-q. A brute-force check over all pairs with p up to 60 found zero counterexamples to either statement.",
+      "solution": "If \\( d \\) divides both \\( p \\) and \\( p+q \\) then \\( d \\) divides their difference \\( q \\), so \\( d \\) divides \\( G \\); and \\( G \\) itself divides \\( p \\) and \\( p+q \\). Hence the HCF of \\( p \\) and \\( p+q \\) is exactly \\( G \\). The same reasoning applied to \\( p \\) and \\( p-q \\) gives \\( G \\) again, so both statements hold."
+    },
+    {
+      "number": 23,
+      "answer": "B",
+      "value": "924",
+      "confidence": "HIGH",
+      "reasoning": "p = 55 x 4 = 220. Since pq = HCF x LCM = 44 x 4620 = 203280, q = 203280/220 = 924. Checked: HCF(220, 924) = 44 and LCM(220, 924) = 4620.",
+      "solution": "Dividing \\( p \\) by \\( 55 \\) leaves quotient \\( 4 \\) and no remainder, so \\( p=220 \\). Since the product of two numbers equals the product of their HCF and LCM, \\( pq=44\\times4620=203280 \\), giving \\( q=\\dfrac{203280}{220}=924 \\). Checking back, \\( 220 \\) and \\( 924 \\) do have HCF \\( 44 \\) and LCM \\( 4620 \\)."
+    },
+    {
+      "number": 24,
+      "answer": "D",
+      "value": "31",
+      "confidence": "HIGH",
+      "reasoning": "Equal remainders means N divides the differences 631-600=31, 724-631=93 and 724-600=124. Their HCF is 31, and each of 600, 631, 724 leaves remainder 11 on division by 31.",
+      "solution": "If the three numbers leave the same remainder on division by \\( N \\), then \\( N \\) divides their differences \\( 631-600=31 \\), \\( 724-631=93 \\) and \\( 724-600=124 \\). The greatest such \\( N \\) is their HCF, which is \\( 31 \\). Each of \\( 600 \\), \\( 631 \\) and \\( 724 \\) then leaves remainder \\( 11 \\)."
+    },
+    {
+      "number": 25,
+      "answer": "B",
+      "value": "10.8",
+      "confidence": "HIGH",
+      "reasoning": "Expressed in thousandths the numbers are 3600, 9 and 270. LCM(3600, 9, 270) = 2^4 x 3^3 x 5^2 = 10800 thousandths = 10.8.",
+      "solution": "Scale all three to whole numbers of thousandths: \\( 3.6=3600 \\), \\( 0.009=9 \\) and \\( 0.27=270 \\). Their LCM is \\( 2^{4}\\times3^{3}\\times5^{2}=10800 \\). Scaling back down gives \\( 10.8 \\)."
+    },
+    {
+      "number": 26,
+      "answer": "B",
+      "value": "1.9 km/h",
+      "confidence": "HIGH",
+      "reasoning": "The greatest such speed is the HCF of the two distances. In tenths of a kilometre they are 133 = 7 x 19 and 209 = 11 x 19, so the HCF is 19 tenths = 1.9 km/h, giving times of 7 and 11 hours.",
+      "solution": "The speed must divide both distances exactly, so the greatest one is their HCF. In tenths of a kilometre the distances are \\( 133=7\\times19 \\) and \\( 209=11\\times19 \\), so the HCF is \\( 19 \\) tenths, that is \\( 1.9 \\) km/h. The journeys then take \\( 7 \\) hours and \\( 11 \\) hours."
+    },
+    {
+      "number": 27,
+      "answer": "A",
+      "value": "511",
+      "confidence": "HIGH",
+      "reasoning": "256 = 2^8, so the sum of its divisors is 1+2+4+...+256 = 2^9 - 1 = 511. Confirmed by summing the divisors directly.",
+      "solution": "Since \\( 256=2^{8} \\), its divisors are \\( 1, 2, 4, \\ldots, 256 \\). Their sum is the geometric series \\( 2^{9}-1=511 \\)."
+    },
+    {
+      "number": 28,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "Consecutive naturals differ by 1, so any common divisor divides 1 and their HCF is 1 — statement I is correct. Statement II fails at m = 3, n = 5, which are relatively prime but whose product 15 is odd.",
+      "solution": "Two consecutive natural numbers differ by \\( 1 \\), so any common divisor must divide \\( 1 \\); their HCF is \\( 1 \\) and they are always co-prime, making the first statement correct. The second fails at \\( m=3 \\) and \\( n=5 \\), which are relatively prime yet give the odd product \\( 15 \\)."
+    },
+    {
+      "number": 29,
+      "answer": "B",
+      "value": "p - q + r",
+      "confidence": "HIGH",
+      "reasoning": "Write everything over log 2 = A, log 3 = B, log 5 = C. Then p = 4A+C, q = 2B+C, r = 3A+3B, while log 384 = log(2^7 x 3) = 7A+B. Testing all four combinations, only p-q+r = 7A+B matches.",
+      "solution": "Let \\( A=\\log_{10}2 \\), \\( B=\\log_{10}3 \\) and \\( C=\\log_{10}5 \\). Then \\( p=4A+C \\) from \\( 80=2^{4}\\cdot5 \\), \\( q=2B+C \\) from \\( 45=3^{2}\\cdot5 \\) and \\( r=3A+3B \\) from \\( 216=2^{3}\\cdot3^{3} \\). Since \\( 384=2^{7}\\cdot3 \\), the target is \\( 7A+B \\), and \\( p-q+r=(4A+C)-(2B+C)+(3A+3B)=7A+B \\)."
+    },
+    {
+      "number": 30,
+      "answer": "C",
+      "value": "5",
+      "confidence": "HIGH",
+      "reasoning": "The product is a product of odd numbers, so it is odd, and it contains the factor 5^5, so it is a multiple of 5. An odd multiple of 5 ends in 5. Direct computation gives unit digit 5.",
+      "solution": "Every factor in the product is odd, so the product is odd. It also contains \\( 5^{5} \\), so it is a multiple of \\( 5 \\). A number that is both odd and a multiple of \\( 5 \\) must end in \\( 5 \\)."
+    },
+    {
+      "number": 31,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Write N = 2m+1; then N^2 = 4m(m+1)+1, and m(m+1) is even, so N^2 = 8k+1. A scan of all odd N up to 199 gives remainder 1 in every case.",
+      "solution": "Write the odd integer as \\( N=2m+1 \\). Then \\( N^{2}=4m^{2}+4m+1=4m(m+1)+1 \\), and \\( m(m+1) \\) is a product of consecutive integers and so is even. Hence \\( N^{2} \\) is of the form \\( 8k+1 \\) and the remainder is always \\( 1 \\)."
+    },
+    {
+      "number": 32,
+      "answer": "C",
+      "value": "Rs. 45",
+      "confidence": "HIGH",
+      "reasoning": "With original price P, the extra quantity is 2790/(0.9P) - 2790/P = 6.2, which gives 279/(0.9P) = 6.2, so 0.9P = 45. The reduced price is Rs 45 per kilogram (original Rs 50).",
+      "solution": "If the original price is \\( P \\) per kilogram, the reduced price is \\( 0.9P \\) and the extra quantity bought is \\( \\dfrac{2790}{0.9P}-\\dfrac{2790}{P}=6.2 \\). This simplifies to \\( \\dfrac{279}{0.9P}=6.2 \\), so \\( 0.9P=45 \\). The reduced price is \\( \\mathrm{Rs.}\\,45 \\) per kilogram, the original having been \\( \\mathrm{Rs.}\\,50 \\)."
+    },
+    {
+      "number": 33,
+      "answer": "B",
+      "value": "20%",
+      "confidence": "HIGH",
+      "reasoning": "Successive discounts leave (1 - p/100)(1 - p/200)(1 - p/400) = 0.684. Solving gives p = 20, and indeed 0.8 x 0.9 x 0.95 = 0.684, a single discount of 31.6%.",
+      "solution": "Three successive discounts leave a factor \\( \\left(1-\\dfrac{p}{100}\\right)\\left(1-\\dfrac{p}{200}\\right)\\left(1-\\dfrac{p}{400}\\right) \\), and a single discount of \\( 31.6\\% \\) leaves \\( 0.684 \\). Setting the two equal and solving gives \\( p=20 \\), since \\( 0.8\\times0.9\\times0.95=0.684 \\)."
+    },
+    {
+      "number": 34,
+      "answer": "A",
+      "value": "100",
+      "confidence": "HIGH",
+      "reasoning": "Speed = 40 - c sqrt(n). At n = 36 the speed is 16, so 40 - 6c = 16 and c = 4. The engine cannot move once 40 - 4 sqrt(n) <= 0, i.e. sqrt(n) >= 10, i.e. n >= 100; a scan over n confirms 100 is the least such value.",
+      "solution": "The speed is \\( 40-c\\sqrt{n} \\) for a constant \\( c \\). With \\( 36 \\) wagons the speed is \\( 16 \\), so \\( 40-6c=16 \\) and \\( c=4 \\), making the speed \\( 40-4\\sqrt{n} \\). The engine cannot move once this reaches zero, that is when \\( \\sqrt{n}\\ge10 \\), so the smallest such number of wagons is \\( 100 \\)."
+    },
+    {
+      "number": 35,
+      "answer": "A",
+      "value": "-5",
+      "confidence": "HIGH",
+      "reasoning": "From (P+1)/(Q+1) = 7/10 and (P+3)/(Q+3) = 3/4 we get P = 6 and Q = 9, so x : y = 2 : 3. Then (x+y) : (x-y) = 5 : (-1) = -5.",
+      "solution": "The two conditions give \\( 10(P+1)=7(Q+1) \\) and \\( 4(P+3)=3(Q+3) \\), whose solution is \\( P=6 \\) and \\( Q=9 \\). Hence \\( x:y=2:3 \\), so \\( x+y=5 \\) and \\( x-y=-1 \\) in the same units, and \\( \\dfrac{x+y}{x-y}=-5 \\)."
+    },
+    {
+      "number": 36,
+      "answer": "A",
+      "value": "4*sqrt(5) cm",
+      "confidence": "HIGH",
+      "reasoning": "Right angle at C gives AC = sqrt(100-64) = 6 cm. P lies on AC produced with AP = 10, so CP = 10 - 6 = 4 cm, and BC remains perpendicular to the line ACP. Hence BP^2 = 8^2 + 4^2 = 80 and BP = 4 sqrt(5) ~ 8.944 cm. The semicircle on AB is incidental to the computation.",
+      "solution": "Since the angle at \\( C \\) is right, \\( AC=\\sqrt{10^{2}-8^{2}}=6 \\) cm. The point \\( P \\) lies on \\( AC \\) produced with \\( AP=10 \\) cm, so \\( CP=10-6=4 \\) cm, and \\( BC \\) is still perpendicular to the line through \\( A \\), \\( C \\) and \\( P \\). Therefore \\( BP=\\sqrt{8^{2}+4^{2}}=\\sqrt{80}=4\\sqrt{5} \\) cm."
+    },
+    {
+      "number": 37,
+      "answer": "A",
+      "value": "4",
+      "confidence": "HIGH",
+      "reasoning": "There are C(5,3) = 10 groups and each letter appears in C(4,2) = 6 of them. So the aggregate 120 equals 6(A+B+C+D+E), giving a total of 20 and a mean of 20/5 = 4.",
+      "solution": "There are \\( \\binom{5}{3}=10 \\) groups, and each of the five numbers appears in \\( \\binom{4}{2}=6 \\) of them. Hence the aggregate of the group sums is \\( 6(A+B+C+D+E)=120 \\), so the five numbers total \\( 20 \\). Their arithmetic mean is \\( \\dfrac{20}{5}=4 \\)."
+    },
+    {
+      "number": 38,
+      "answer": "C",
+      "value": "60",
+      "confidence": "HIGH",
+      "reasoning": "Adding a constant to every observation shifts the mean by that constant, so the new mean is 50 + 10 = 60.",
+      "solution": "Adding the same constant to every observation increases the total by \\( 100\\times10=1000 \\), so the mean rises by exactly that constant. The new arithmetic mean is \\( 50+10=60 \\)."
+    },
+    {
+      "number": 39,
+      "answer": "C",
+      "value": "3.75",
+      "confidence": "HIGH",
+      "reasoning": "Let S be the sum and n the count. Then S - 15n = -90 and S + 3n = 54. Subtracting gives 18n = 144, so n = 8 and S = 30, making the mean 30/8 = 3.75.",
+      "solution": "If the numbers total \\( S \\) and there are \\( n \\) of them, then \\( S-15n=-90 \\) and \\( S-(-3)n=S+3n=54 \\). Subtracting the first from the second gives \\( 18n=144 \\), so \\( n=8 \\) and \\( S=30 \\). The arithmetic mean is \\( \\dfrac{30}{8}=3.75 \\)."
+    },
+    {
+      "number": 40,
+      "answer": "B",
+      "value": "4 only",
+      "confidence": "HIGH",
+      "reasoning": "With 12 numbers the median is the mean of the sixth and seventh terms, here (8x+1) and (x^2+1). Setting (x^2+8x+2)/2 = 25 gives x^2+8x-48 = 0, so x = 4 or x = -12. Only x = 4 keeps the printed list in descending order (33 and 17 sit correctly between 36 and 13). At x = -12 the entries become -95 and 145, which breaks the stated descending order, and re-sorting that list gives a median of 24.5, not 25. So x = 4 alone.",
+      "solution": "There are twelve numbers, so the median is the average of the sixth and seventh, namely \\( 8x+1 \\) and \\( x^{2}+1 \\). Setting \\( \\dfrac{x^{2}+8x+2}{2}=25 \\) gives \\( x^{2}+8x-48=0 \\), so \\( x=4 \\) or \\( x=-12 \\). Only \\( x=4 \\) is admissible: it makes those terms \\( 33 \\) and \\( 17 \\), which sit correctly between \\( 36 \\) and \\( 13 \\), whereas \\( x=-12 \\) gives \\( -95 \\) and \\( 145 \\), destroying the stated descending order and shifting the median to \\( 24.5 \\)."
+    },
+    {
+      "number": 41,
+      "answer": "B",
+      "value": "10/3",
+      "confidence": "HIGH",
+      "reasoning": "Combining the two fractions over the common denominator 1-sin^2(theta) = cos^2(theta) gives 2cos(theta)/cos^2(theta) = 2/cos(theta) = 4, so cos(theta) = 1/2 and sin^2(theta) = 3/4. Then tan^2(theta) = 3 and cot^2(theta) = 1/3, summing to 10/3. sympy returns theta = +/- pi/3 and evaluates the sum as exactly 10/3.",
+      "solution": "Putting the two fractions over the common denominator \\( 1-\\sin^{2}\\theta=\\cos^{2}\\theta \\) gives \\( \\dfrac{2\\cos\\theta}{\\cos^{2}\\theta}=\\dfrac{2}{\\cos\\theta}=4 \\), so \\( \\cos\\theta=\\tfrac{1}{2} \\) and \\( \\sin^{2}\\theta=\\tfrac{3}{4} \\). Hence \\( \\tan^{2}\\theta=3 \\) and \\( \\cot^{2}\\theta=\\tfrac{1}{3} \\), and their sum is \\( \\dfrac{10}{3} \\)."
+    },
+    {
+      "number": 42,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "I: factor each bracket as tan^4(1+tan^2) and cot^4(1+cot^2); the tan^4 cot^4 product is 1 and (1+tan^2)(1+cot^2) = sec^2 cosec^2. II: tan+sin = sin(1+cos)/cos and tan-sin = sin(1-cos)/cos, so the ratio is (1+cos)/(1-cos); the right side is (cos^2/sin^2)(1+cos)^2/cos^2 = (1+cos)^2/sin^2 = (1+cos)/(1-cos). Both sides identical. sympy simplifies both residuals to exactly 0, and numeric tests at the deliberately non-special angles 17, 41, 73 and 88 degrees give residuals below 1e-160 at 30-digit precision.",
+      "solution": "For the first, \\( \\tan^{4}\\theta+\\tan^{6}\\theta=\\tan^{4}\\theta\\sec^{2}\\theta \\) and \\( \\cot^{4}\\theta+\\cot^{6}\\theta=\\cot^{4}\\theta\\operatorname{cosec}^{2}\\theta \\); since \\( \\tan^{4}\\theta\\cot^{4}\\theta=1 \\), the product is \\( \\sec^{2}\\theta\\operatorname{cosec}^{2}\\theta \\). For the second, \\( \\tan\\theta+\\sin\\theta=\\dfrac{\\sin\\theta(1+\\cos\\theta)}{\\cos\\theta} \\) and \\( \\tan\\theta-\\sin\\theta=\\dfrac{\\sin\\theta(1-\\cos\\theta)}{\\cos\\theta} \\), so the ratio is \\( \\dfrac{1+\\cos\\theta}{1-\\cos\\theta} \\), which is exactly what \\( \\cot^{2}\\theta(\\sec\\theta+1)^{2}=\\dfrac{(1+\\cos\\theta)^{2}}{\\sin^{2}\\theta} \\) reduces to. Both are identities."
+    },
+    {
+      "number": 43,
+      "answer": "A",
+      "value": "7",
+      "confidence": "HIGH",
+      "reasoning": "The maximum of 3sin(theta)+4cos(theta) is sqrt(9+16) = 5, so equality forces sin(theta) = 3/5 and cos(theta) = 4/5; solving the pair with sin^2+cos^2 = 1 gives this as the unique solution. Then 4tan+3cot = 4(3/4)+3(4/3) = 3+4 = 7.",
+      "solution": "Since \\( 3\\sin\\theta+4\\cos\\theta \\) can be at most \\( \\sqrt{3^{2}+4^{2}}=5 \\), the given equation is the extreme case and forces \\( \\sin\\theta=\\tfrac{3}{5} \\), \\( \\cos\\theta=\\tfrac{4}{5} \\). Then \\( \\tan\\theta=\\tfrac{3}{4} \\) and \\( \\cot\\theta=\\tfrac{4}{3} \\), so \\( 4\\tan\\theta+3\\cot\\theta=3+4=7 \\)."
+    },
+    {
+      "number": 44,
+      "answer": "A",
+      "value": "225 m",
+      "confidence": "HIGH",
+      "reasoning": "With height h, the first distance is 6h/5 and the second is 8h/9, differing by the 70 m walked. So 6h/5 - 8h/9 = 70, i.e. 14h/45 = 70 and h = 225.",
+      "solution": "If the tower is \\( h \\) metres high, the first point is \\( \\dfrac{6h}{5} \\) from its foot and the second is \\( \\dfrac{8h}{9} \\), since the tangents are \\( \\tfrac{5}{6} \\) and \\( \\tfrac{9}{8} \\). Walking \\( 70 \\) m closes that gap, so \\( \\dfrac{6h}{5}-\\dfrac{8h}{9}=70 \\), which gives \\( \\dfrac{14h}{45}=70 \\) and \\( h=225 \\) m."
+    },
+    {
+      "number": 45,
+      "answer": "C",
+      "value": "about 230 m (exactly 400/sqrt(3) = 230.94 m)",
+      "confidence": "HIGH",
+      "reasoning": "The two horizontal distances are 100/tan(30) = 100 sqrt(3) ~ 173.21 and 100/tan(60) = 100/sqrt(3) ~ 57.74. Being on diametrically opposite sides they add: 400/sqrt(3) = 230.94 m, whose nearest option is 230.",
+      "solution": "The person at \\( 30^\\circ \\) stands \\( \\dfrac{100}{\\tan 30^\\circ}=100\\sqrt{3}\\approx173.2 \\) m from the foot, and the one at \\( 60^\\circ \\) stands \\( \\dfrac{100}{\\tan 60^\\circ}=\\dfrac{100}{\\sqrt{3}}\\approx57.7 \\) m away. Being on opposite sides of the tower, these distances add to \\( \\dfrac{400}{\\sqrt{3}}\\approx230.9 \\) m, which is about \\( 230 \\) m."
+    },
+    {
+      "number": 46,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "AC bisecting angle C means the inscribed angles ACB and ACD are equal, so arcs AB and AD are equal and AB = AD. Triangle ABD is then isosceles, giving angle ABD = angle ADB, so I holds. Equal arcs also make A the midpoint of arc BD, so the radius OA is perpendicular to chord BD; the tangent at A is perpendicular to OA, hence parallel to BD, so II holds. Verified numerically on three configurations (A at 90 and 110 degrees with half-arcs 47, 33 and 61 degrees): the bisection, the equal base angles and a zero cross-product between the tangent direction and BD all hold.",
+      "solution": "Since \\( AC \\) bisects \\( \\angle C \\), the inscribed angles \\( \\angle ACB \\) and \\( \\angle ACD \\) are equal, so the arcs \\( AB \\) and \\( AD \\) are equal and \\( AB=AD \\). Triangle \\( ABD \\) is therefore isosceles and \\( \\angle ABD=\\angle ADB \\). Equal arcs also place \\( A \\) at the midpoint of arc \\( BD \\), so the radius \\( OA \\) is perpendicular to the chord \\( BD \\); as the tangent at \\( A \\) is perpendicular to \\( OA \\) too, it is parallel to \\( BD \\). Both statements are correct."
+    },
+    {
+      "number": 47,
+      "answer": "A",
+      "value": "6(x + y) = 30 + 12 sqrt(6)",
+      "confidence": "HIGH",
+      "reasoning": "With edge a, x = a sqrt(2) and y = a sqrt(3), so x+y = a(sqrt(2)+sqrt(3)) = 5+2 sqrt(6) = (sqrt(2)+sqrt(3))^2, giving a = sqrt(2)+sqrt(3). Then the total surface area 6a^2 = 6(5+2 sqrt(6)) = 30+12 sqrt(6), which equals 6(x+y). Checked against the others: 6xy = 72+30 sqrt(6), 3xy = 36+15 sqrt(6) and 3(x+y) = 15+6 sqrt(6), none of which is 30+12 sqrt(6).",
+      "solution": "For a cube of edge \\( a \\) the face diagonal is \\( x=a\\sqrt{2} \\) and the space diagonal is \\( y=a\\sqrt{3} \\), so \\( x+y=a\\left(\\sqrt{2}+\\sqrt{3}\\right) \\). Since \\( 5+2\\sqrt{6}=\\left(\\sqrt{2}+\\sqrt{3}\\right)^{2} \\), the edge is \\( a=\\sqrt{2}+\\sqrt{3} \\) and \\( a^{2}=5+2\\sqrt{6} \\). The total surface area is \\( 6a^{2}=6\\left(5+2\\sqrt{6}\\right) \\), which is precisely \\( 6(x+y) \\)."
+    },
+    {
+      "number": 48,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "Drop the altitude AM to BC, with M the midpoint since AB = AC. Then AB^2 - AD^2 = BM^2 - MD^2 = (BM-MD)(BM+MD) = BD x DC, so I holds. II is pure algebra: with BC = a and BD = d, BC^2+BD^2-DC^2 = a^2+d^2-(a-d)^2 = 2ad = 2 BD x BC, true for any D on BC. Checked exactly on three non-symmetric configurations (apex heights 7, 4, 9 with D at 0.3, 0.7 and 0.25 of the base) and both held with exact fractions.",
+      "solution": "Let \\( M \\) be the foot of the altitude from \\( A \\); since \\( AB=AC \\), \\( M \\) is the midpoint of \\( BC \\). Then \\( AB^{2}-AD^{2}=BM^{2}-MD^{2}=(BM-MD)(BM+MD)=BD\\times DC \\), so the first statement holds. For the second, writing \\( BC=a \\) and \\( BD=d \\) gives \\( BC^{2}+BD^{2}-DC^{2}=a^{2}+d^{2}-(a-d)^{2}=2ad=2\\,BD\\times BC \\), which is true for every position of \\( D \\)."
+    },
+    {
+      "number": 49,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "With the right angle at B, b is the hypotenuse and b = sqrt(a^2+c^2). Computing the area two ways, (1/2)ac = (1/2)bp, gives pb = ac, which is II, and dividing by b gives p = ac/sqrt(a^2+c^2), which is I. Verified exactly on the legs (3,4), (5,12) and (7,9).",
+      "solution": "Because the right angle is at \\( B \\), the hypotenuse is \\( b=CA=\\sqrt{a^{2}+c^{2}} \\). Computing the area with the legs and again with the hypotenuse and its perpendicular gives \\( \\tfrac{1}{2}ac=\\tfrac{1}{2}bp \\), so \\( pb=ac \\). Dividing by \\( b \\) gives \\( p=\\dfrac{ac}{\\sqrt{a^{2}+c^{2}}} \\), so both statements are correct."
+    },
+    {
+      "number": 50,
+      "answer": "B",
+      "value": "II only",
+      "confidence": "HIGH",
+      "reasoning": "With side a and square side s, the triangle's width at height s is a - 2s/sqrt(3), and equating this to s gives a = s(2+sqrt(3))/sqrt(3), i.e. sqrt(3) AB = (2+sqrt(3)) PQ, so II holds exactly. For I, the point P sits at height s on AB, so BP = 2s/sqrt(3) and AP = a - BP = s, making AP : PB = sqrt(3) : 2 ~ 0.866, not 4 : 3 ~ 1.333. So I is wrong.",
+      "solution": "Let the triangle have side \\( a \\) and the square side \\( s \\), with the square standing on \\( BC \\). At height \\( s \\) the triangle is \\( a-\\dfrac{2s}{\\sqrt{3}} \\) wide, and setting this equal to \\( s \\) gives \\( \\sqrt{3}\\,a=(2+\\sqrt{3})s \\), so the second statement is exactly right. Since \\( P \\) lies at height \\( s \\) on \\( AB \\), \\( BP=\\dfrac{2s}{\\sqrt{3}} \\) and \\( AP=a-BP=s \\), so \\( AP:PB=\\sqrt{3}:2\\approx0.87 \\), not \\( 4:3 \\). Only the second statement holds."
+    },
+    {
+      "number": 51,
+      "answer": "C",
+      "value": "17 < alpha < 18 (alpha = 300 - 200 sqrt(2) = 17.157)",
+      "confidence": "HIGH",
+      "reasoning": "With legs L the perimeter is L(2+sqrt(2)) = 20, so L = 20 - 10 sqrt(2) ~ 5.8579. The area is L^2/2 = 300 - 200 sqrt(2) ~ 17.157, which lies strictly between 17 and 18.",
+      "solution": "If each equal side is \\( L \\), the hypotenuse is \\( L\\sqrt{2} \\) and the perimeter gives \\( L\\left(2+\\sqrt{2}\\right)=20 \\), so \\( L=20-10\\sqrt{2}\\approx5.86 \\). The area is \\( \\dfrac{L^{2}}{2}=300-200\\sqrt{2}\\approx17.16 \\). This lies between \\( 17 \\) and \\( 18 \\)."
+    },
+    {
+      "number": 52,
+      "answer": "A",
+      "value": "54 degrees",
+      "confidence": "HIGH",
+      "reasoning": "The inscribed angle ABC = 153 degrees subtends the arc AC not containing B, so that arc measures 306 degrees. The remaining arc AC, on which the ordinary (non-reflex) central angle stands, is 360 - 306 = 54 degrees.",
+      "solution": "The inscribed angle \\( \\angle ABC=153^\\circ \\) stands on the arc \\( AC \\) that does not contain \\( B \\), so that arc measures \\( 2\\times153^\\circ=306^\\circ \\). The other arc \\( AC \\) therefore measures \\( 360^\\circ-306^\\circ=54^\\circ \\), and the central angle \\( \\angle AOC \\) standing on it is \\( 54^\\circ \\)."
+    },
+    {
+      "number": 53,
+      "answer": "A",
+      "value": "np/m",
+      "confidence": "HIGH",
+      "reasoning": "Triangles ABD and CBD share the base BD, so their areas are in the ratio of the distances from A and from C to line BD. Since A, O, C are collinear with O on BD, that ratio is AO : OC = m : n. Hence [CBD] = p n/m. Verified with explicit coordinates for (m,n) = (3,5) and (2,7), giving [CBD] = 25 and 35 against [ABD] = 15 and 10.",
+      "solution": "Triangles \\( ABD \\) and \\( BCD \\) stand on the same base \\( BD \\), so their areas are in the ratio of the perpendicular distances from \\( A \\) and \\( C \\) to the line \\( BD \\). Because \\( A \\), \\( O \\) and \\( C \\) are collinear and \\( O \\) lies on \\( BD \\), those distances are in the ratio \\( AO:OC=m:n \\). Therefore the area of triangle \\( BCD \\) is \\( \\dfrac{np}{m} \\)."
+    },
+    {
+      "number": 54,
+      "answer": "C",
+      "value": "7.2 cm",
+      "confidence": "HIGH",
+      "reasoning": "Since E is the midpoint of BC and AD is parallel and equal to BC, triangles BFE and DFA are similar with ratio BE : AD = 1 : 2. So BF : FD = 1 : 2 and BF = BD/3, giving BD = 3 x 2.4 = 7.2 cm. Confirmed by solving the intersection with coordinates for two different parallelogram shapes, both giving BF/BD = 1/3.",
+      "solution": "Because \\( AD \\) is parallel to \\( BC \\), triangles \\( BFE \\) and \\( DFA \\) are similar, and \\( BE=\\tfrac{1}{2}BC=\\tfrac{1}{2}AD \\). The similarity ratio is therefore \\( 1:2 \\), so \\( BF:FD=1:2 \\) and \\( BF=\\tfrac{1}{3}BD \\). Hence \\( BD=3\\times2.4=7.2 \\) cm."
+    },
+    {
+      "number": 55,
+      "answer": "B",
+      "value": "48 cm",
+      "confidence": "HIGH",
+      "reasoning": "With the right angle at C, AC^2 + BC^2 = 400 and AC^2 + (BC/2)^2 = 208. Subtracting gives (3/4)BC^2 = 192, so BC = 16 and AC = 12. The perimeter is 12 + 16 + 20 = 48 cm.",
+      "solution": "The right angle at \\( C \\) gives \\( AC^{2}+BC^{2}=20^{2}=400 \\), and since \\( P \\) is the midpoint of \\( BC \\), \\( AC^{2}+\\left(\\tfrac{BC}{2}\\right)^{2}=\\left(4\\sqrt{13}\\right)^{2}=208 \\). Subtracting gives \\( \\tfrac{3}{4}BC^{2}=192 \\), so \\( BC=16 \\) and \\( AC=12 \\). The perimeter is \\( 12+16+20=48 \\) cm."
+    },
+    {
+      "number": 56,
+      "answer": "B",
+      "value": "2*sqrt(39) cm",
+      "confidence": "HIGH",
+      "reasoning": "Let AB = h and let BM = t, so BN = 2t and BC = 3t. Then h^2+t^2 = 36 and h^2+4t^2 = 81, giving 3t^2 = 45, t^2 = 15 and h^2 = 21. Hence AC^2 = h^2+9t^2 = 21+135 = 156 and AC = 2 sqrt(39) ~ 12.49 cm (4 sqrt(39) ~ 24.98 is twice too large).",
+      "solution": "Write \\( AB=h \\) and \\( BM=t \\), so that \\( BN=2t \\) and \\( BC=3t \\). Then \\( h^{2}+t^{2}=36 \\) and \\( h^{2}+4t^{2}=81 \\), so \\( 3t^{2}=45 \\), giving \\( t^{2}=15 \\) and \\( h^{2}=21 \\). Therefore \\( AC^{2}=h^{2}+9t^{2}=21+135=156 \\), so \\( AC=2\\sqrt{39} \\) cm."
+    },
+    {
+      "number": 57,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "AB^2 = AC^2 - BC^2 = ((p+q)^2 - (p-q)^2)/4 = pq, so AB = sqrt(pq), the geometric mean; I holds. The perimeter is (p+q)/2 + (p-q)/2 + sqrt(pq) = p + sqrt(pq), which is not p(q+1) in general; at p = 9, q = 4 it is 15 while p(q+1) = 45. So II fails.",
+      "solution": "With the right angle at \\( B \\), \\( AB^{2}=AC^{2}-BC^{2}=\\dfrac{(p+q)^{2}-(p-q)^{2}}{4}=pq \\), so \\( AB=\\sqrt{pq} \\), the geometric mean of \\( p \\) and \\( q \\); the first statement is correct. The perimeter is \\( \\dfrac{p+q}{2}+\\dfrac{p-q}{2}+\\sqrt{pq}=p+\\sqrt{pq} \\), which is not \\( p(q+1) \\) — at \\( p=9 \\), \\( q=4 \\) it equals \\( 15 \\) whereas \\( p(q+1)=45 \\). Only the first statement holds."
+    },
+    {
+      "number": 58,
+      "answer": "A",
+      "value": "7/3 cm",
+      "confidence": "HIGH",
+      "reasoning": "The sphere of radius 7 has volume (4/3)pi(343). Spread over the cylinder's cross-section pi(14^2) = 196pi, the rise is (4 x 343)/(3 x 196) = 7/3 cm.",
+      "solution": "The sphere has radius \\( 7 \\) cm and volume \\( \\tfrac{4}{3}\\pi\\left(7^{3}\\right) \\). Submerging it displaces exactly that volume, which spreads over the vessel's cross-section \\( \\pi\\left(14^{2}\\right) \\). The rise is \\( \\dfrac{4\\times343}{3\\times196}=\\dfrac{7}{3} \\) cm."
+    },
+    {
+      "number": 59,
+      "answer": "B",
+      "value": "II only",
+      "confidence": "HIGH",
+      "reasoning": "Since 9^2+40^2 = 1681 = 41^2, angle B is a right angle. If ABCD were cyclic, AC = 41 would be a diameter and angle D would also be right; but 15^2+28^2 = 1009 is not 1681, so it is not, and I fails. For II, triangle ACD has sides 41, 28, 15 and semi-perimeter 42, so its area is sqrt(42 x 1 x 14 x 27) = sqrt(15876) = 126 square cm exactly; II holds.",
+      "solution": "Since \\( 9^{2}+40^{2}=1681=41^{2} \\), the angle at \\( B \\) is a right angle. Were \\( ABCD \\) cyclic, \\( AC \\) would be a diameter and the angle at \\( D \\) would be right too, but \\( 15^{2}+28^{2}=1009\\ne1681 \\), so the four vertices are not concyclic. For triangle \\( ACD \\) the semi-perimeter is \\( 42 \\), giving area \\( \\sqrt{42\\times1\\times14\\times27}=126 \\) square cm, so only the second statement is correct."
+    },
+    {
+      "number": 60,
+      "answer": "C",
+      "value": "24 degrees",
+      "confidence": "HIGH",
+      "reasoning": "The swept region is a sector of radius 15, so (theta/360) pi (15^2) = 15 pi gives theta/360 = 15/225 = 1/15 and theta = 24 degrees.",
+      "solution": "The hand sweeps a sector of radius \\( 15 \\) cm, so \\( \\dfrac{\\theta}{360^\\circ}\\times\\pi\\left(15^{2}\\right)=15\\pi \\). This gives \\( \\dfrac{\\theta}{360^\\circ}=\\dfrac{15}{225}=\\dfrac{1}{15} \\), so \\( \\theta=24^\\circ \\)."
+    },
+    {
+      "number": 61,
+      "answer": "C",
+      "value": "5.76 m",
+      "confidence": "HIGH",
+      "reasoning": "The sphere has radius 3, volume (4/3)pi(27) = 36 pi. The wire has radius 0.25, cross-section pi/16. Equating volumes gives length = 36/(1/16) = 576 cm = 5.76 m.",
+      "solution": "The sphere has radius \\( 3 \\) cm and volume \\( \\tfrac{4}{3}\\pi\\left(3^{3}\\right)=36\\pi \\) cubic cm. The wire is a cylinder of radius \\( 0.25 \\) cm, so its cross-section is \\( \\pi\\left(0.25\\right)^{2}=\\dfrac{\\pi}{16} \\). Equating volumes gives a length of \\( 576 \\) cm, that is \\( 5.76 \\) m."
+    },
+    {
+      "number": 62,
+      "answer": "D",
+      "value": "4q",
+      "confidence": "HIGH",
+      "reasoning": "The square has side p/4 and area p^2/16, while the rectangle has l+b = p/2 and area lb = p^2/16 - q. Then (l-b)^2 = (l+b)^2 - 4lb = p^2/4 - 4(p^2/16 - q) = 4q. Confirmed symbolically.",
+      "solution": "The square has side \\( \\dfrac{p}{4} \\) and area \\( \\dfrac{p^{2}}{16} \\), while the rectangle satisfies \\( l+b=\\dfrac{p}{2} \\) and \\( lb=\\dfrac{p^{2}}{16}-q \\). Then \\( (l-b)^{2}=(l+b)^{2}-4lb=\\dfrac{p^{2}}{4}-4\\left(\\dfrac{p^{2}}{16}-q\\right)=4q \\)."
+    },
+    {
+      "number": 63,
+      "answer": "C",
+      "value": "72 degrees",
+      "confidence": "HIGH",
+      "reasoning": "The angle between the tangent PT and the chord PQ equals the inscribed angle in the alternate segment, so the arc PQ measures 2 x 36 = 72 degrees. The central angle POQ stands on that arc and is therefore 72 degrees.",
+      "solution": "The angle between a tangent and a chord equals the inscribed angle in the alternate segment, so the arc \\( PQ \\) cut off measures \\( 2\\times36^\\circ=72^\\circ \\). The central angle \\( \\angle POQ \\) stands on the same arc, so \\( \\angle POQ=72^\\circ \\)."
+    },
+    {
+      "number": 64,
+      "answer": "B",
+      "value": "II only",
+      "confidence": "MED",
+      "reasoning": "The two triangles do have the same three angles, but not in the order the notation asserts. With A-B-P and D-C-P, the exterior angle of the cyclic quadrilateral gives angle PBC = angle ADC = angle PDA and angle PCB = angle BAD = angle PAD, so the correct correspondence is triangle PAD ~ triangle PCB, with A matching C and D matching B. The notation 'triangle PAD is similar to triangle PBC' asserts angle PAD = angle PBC, which would force angle PAD = angle PDA, i.e. an isosceles special case. Verified numerically on three cyclic quadrilaterals: PAD = PCB and PDA = PBC held every time while PAD = PBC failed every time (85 vs 75, 85 vs 70, 67.5 vs 77.5 degrees). II is true for a trivial reason - both sums equal 180 degrees minus the common angle P - and was confirmed equal in all three cases. RUNNER-UP: option C, which wins if 'similar to' is read loosely as 'these two triangles are similar' without binding the vertex order; the triangles are indeed similar as shapes. Two things push against that reading: the standard textbook statement of this result is written PAD ~ PCB, so writing PBC is a deliberate alteration, and if I were intended to be true then II would be a redundant consequence rather than a statement worth asking about. Confirmed against the printed page: statement I really is written 'PAD is similar to PBC', not the textbook's PCB. One further pointer from the wording itself - statement II asserts the SUM of the two angles rather than the term-by-term equalities. If I held with A matching B and D matching C, then angle PAD = angle PBC and angle PDA = angle PCB would each hold individually and II would be a strictly weaker restatement; the setter writing only the sum is consistent with knowing the term-by-term pairing fails under that labelling.",
+      "solution": "Because \\( ABCD \\) is cyclic and \\( P \\) lies beyond \\( B \\) on \\( AB \\) and beyond \\( C \\) on \\( DC \\), the exterior-angle property gives \\( \\angle PBC=\\angle ADC=\\angle PDA \\) and \\( \\angle PCB=\\angle BAD=\\angle PAD \\). So the two triangles share all three angles, but \\( A \\) corresponds to \\( C \\) and \\( D \\) to \\( B \\) — the correct statement is \\( \\triangle PAD\\sim\\triangle PCB \\), whereas the order written in the first statement would require \\( \\angle PAD=\\angle PBC \\), which holds only in an isosceles special case. The second statement is true for every such figure, since both sums equal \\( 180^\\circ \\) minus the common angle at \\( P \\)."
+    },
+    {
+      "number": 65,
+      "answer": "A",
+      "value": "I only",
+      "confidence": "HIGH",
+      "reasoning": "Let the distances from O be OP and OQ with OP+OQ = 17 and OP^2+5^2 = OQ^2+12^2, giving OP-OQ = 119/17 = 7, so OP = 12, OQ = 5 and the radius is 13. Then [OAP] = (1/2)(5)(12) = 30 and [OCQ] = (1/2)(12)(5) = 30, so I holds. II cannot hold: OA = OC = 13, so the area of triangle OAC is at most (1/2)(13)(13) = 84.5 square cm, which is less than 102 whatever the configuration. The four possible placements give 84.5 or 59.5.",
+      "solution": "Writing \\( OP \\) and \\( OQ \\) for the distances from the centre, \\( OP+OQ=17 \\) and \\( OP^{2}+5^{2}=OQ^{2}+12^{2} \\), which give \\( OP-OQ=7 \\), so \\( OP=12 \\), \\( OQ=5 \\) and the radius is \\( 13 \\) cm. Then triangle \\( OAP \\) has area \\( \\tfrac{1}{2}(5)(12)=30 \\) and triangle \\( OCQ \\) has area \\( \\tfrac{1}{2}(12)(5)=30 \\), so the first statement holds. The second cannot: since \\( OA=OC=13 \\), the area of triangle \\( OAC \\) is at most \\( \\tfrac{1}{2}(13)(13)=84.5 \\) square cm, so it can never reach \\( 102 \\) square cm."
+    },
+    {
+      "number": 66,
+      "answer": "C",
+      "value": "8 cm",
+      "confidence": "HIGH",
+      "reasoning": "The box has volume x(48-2x)(36-2x) = 5120 cubic cm, since 5.12 litre is 5120 cubic cm. Solving gives x = 8 as the only admissible root (the others are 17 +/- sqrt(129), of which 17+sqrt(129) exceeds 18 and makes a side negative, and 17-sqrt(129) ~ 5.64 is not among the options). Checked directly: x = 6 gives 5184, x = 7.5 gives 5197.5, x = 8 gives exactly 5120, x = 8.5 gives 5006.5.",
+      "solution": "Cutting squares of side \\( x \\) leaves a base \\( (48-2x) \\) by \\( (36-2x) \\) and height \\( x \\), so the volume is \\( x(48-2x)(36-2x) \\). Since \\( 5.12 \\) litre is \\( 5120 \\) cubic cm, we need \\( x(48-2x)(36-2x)=5120 \\), and \\( x=8 \\) gives \\( 8\\times32\\times20=5120 \\) exactly. The other roots are inadmissible, so \\( x=8 \\) cm."
+    },
+    {
+      "number": 67,
+      "answer": "B",
+      "value": "(xy + yz + zx + z^2)/z",
+      "confidence": "HIGH",
+      "reasoning": "Angles APB and DPC are vertically opposite and angles A and D are both right angles, so triangles APB and DPC are similar. Hence AP/DP = PB/PC, giving PD = xy/z. Then AC+BD = (x+y) + (z + xy/z) = (xz+yz+z^2+xy)/z. Verified numerically on three configurations with A and D on the same side of BC on the circle with diameter BC: option B matched to 1e-7 every time and no other option matched. A deliberately wrong construction with A and D on opposite sides (where the segments cannot cross) matched nothing, confirming the check discriminates.",
+      "solution": "Angles \\( APB \\) and \\( DPC \\) are vertically opposite, and the angles at \\( A \\) and \\( D \\) are both right angles, so triangles \\( APB \\) and \\( DPC \\) are similar. Hence \\( \\dfrac{AP}{DP}=\\dfrac{PB}{PC} \\), which gives \\( PD=\\dfrac{xy}{z} \\). Therefore \\( AC+BD=(x+y)+\\left(z+\\dfrac{xy}{z}\\right)=\\dfrac{xy+yz+zx+z^{2}}{z} \\)."
+    },
+    {
+      "number": 68,
+      "answer": "B",
+      "value": "120 cm^2",
+      "confidence": "HIGH",
+      "reasoning": "The bisector of angle A divides BC in the ratio AB : AC = 18 : 15 = 6 : 5. With BC = 22, BD = 22(6/11) = 12 and DC = 10, so BD x DC = 120 square cm.",
+      "solution": "The internal bisector of \\( \\angle BAC \\) divides \\( BC \\) in the ratio \\( AB:AC=18:15=6:5 \\). Since \\( BC=22 \\) cm, \\( BD=22\\times\\dfrac{6}{11}=12 \\) cm and \\( DC=10 \\) cm. Hence \\( BD\\times DC=120 \\) square cm."
+    },
+    {
+      "number": 69,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "The cuboid must satisfy xyz = 8 with x > y > z natural numbers. An exhaustive scan over all factor triples of 8 gives only (4, 2, 1); the alternatives 8 x 1 x 1 and 2 x 2 x 2 repeat a value and so fail the strict inequalities. Hence n = 1.",
+      "solution": "The cube has volume \\( 8 \\) cubic cm, so the cuboid needs \\( xyz=8 \\) with \\( x>y>z \\) natural numbers. Listing the factorisations of \\( 8 \\) into three natural numbers gives \\( 8\\times1\\times1 \\), \\( 4\\times2\\times1 \\) and \\( 2\\times2\\times2 \\), and only \\( 4\\times2\\times1 \\) has three different values. So exactly one such cuboid exists."
+    },
+    {
+      "number": 70,
+      "answer": "B",
+      "value": "62 square units",
+      "confidence": "HIGH",
+      "reasoning": "Since x, y, z are distinct primes their product is squarefree, but 30k^3 is squarefree only when k = 1, because any prime factor of k appears to at least the third power. So xyz = 30 = 2 x 3 x 5, giving x = 5, y = 3, z = 2, and the total surface area is 2(15+6+10) = 62. An exhaustive search over k up to 11 and all prime triples returns only this solution.",
+      "solution": "Three different primes have a squarefree product, but \\( 30k^{3} \\) is squarefree only for \\( k=1 \\), since any prime dividing \\( k \\) would appear to at least the third power. Hence \\( xyz=30=2\\times3\\times5 \\), so \\( x=5 \\), \\( y=3 \\), \\( z=2 \\). The total surface area is \\( 2(xy+yz+zx)=2(15+6+10)=62 \\) square units."
+    },
+    {
+      "number": 71,
+      "answer": "B",
+      "value": "Either Statement alone is sufficient (radius 4/sqrt(3) cm)",
+      "confidence": "HIGH",
+      "reasoning": "An equilateral triangle is fixed by any one measurement. Statement I: (sqrt(3)/4)a^2 = 16 sqrt(3) gives a = 8. Statement II: 3a = 24 gives a = 8. Each alone determines the side and hence the inradius a/(2 sqrt(3)) = 4/sqrt(3) cm, so either statement alone answers the question.",
+      "solution": "An equilateral triangle is completely determined by a single measurement, and its inradius is \\( \\dfrac{a}{2\\sqrt{3}} \\). The area condition \\( \\dfrac{\\sqrt{3}}{4}a^{2}=16\\sqrt{3} \\) gives \\( a=8 \\), and the perimeter condition \\( 3a=24 \\) gives \\( a=8 \\) as well. Each statement on its own therefore fixes the radius at \\( \\dfrac{4}{\\sqrt{3}} \\) cm."
+    },
+    {
+      "number": 72,
+      "answer": "C",
+      "value": "Both Statements together are needed (sum = 180 degrees)",
+      "confidence": "HIGH",
+      "reasoning": "With AB parallel to DC and AD = BC, the figure is either an isosceles trapezium or a parallelogram. Statement I alone therefore leaves the parallelogram case open, where the two angles are equal and their sum varies: numerically, shears of 2 and 5 on a parallelogram with AD = BC give sums of 126.87 and 77.32 degrees. Statement II alone says nothing about the angles. Together they rule out the parallelogram, forcing an isosceles trapezium, which is cyclic, so the two opposite angles sum to 180 degrees - confirmed on two trapezia (tops 4 and 2) both giving exactly 180.",
+      "solution": "If \\( AB \\) is parallel to \\( DC \\) and \\( AD=BC \\), the quadrilateral is either an isosceles trapezium or a parallelogram. The first statement alone leaves the parallelogram open, and there \\( \\angle ABC=\\angle ADC \\) so their sum changes with the shape — for instance \\( 126.9^\\circ \\) or \\( 77.3^\\circ \\). The second statement alone constrains no angle. Taken together they force an isosceles trapezium, which is cyclic, so \\( \\angle ABC+\\angle ADC=180^\\circ \\)."
+    },
+    {
+      "number": 73,
+      "answer": "D",
+      "value": "Answerable with no Statement at all; the ratios are always equal (Yes)",
+      "confidence": "HIGH",
+      "reasoning": "AC bisecting both angle A and angle C makes triangles ABC and ADC congruent by ASA (equal angles at A, common side AC, equal angles at C). Hence AB = AD and CB = CD, so AB/DC = AB/CB and AD/BC = AB/CB, which are equal. The answer is Yes without either statement. Verified on two kites (angle A = 50, C = 70 and angle A = 35, C = 95): AB/DC and AD/BC agreed to 1e-9 in both.",
+      "solution": "Since \\( AC \\) bisects both \\( \\angle A \\) and \\( \\angle C \\), triangles \\( ABC \\) and \\( ADC \\) have equal angles at \\( A \\), the common side \\( AC \\), and equal angles at \\( C \\), so they are congruent. That gives \\( AB=AD \\) and \\( CB=CD \\) directly. Hence \\( \\dfrac{AB}{DC} \\) and \\( \\dfrac{AD}{BC} \\) are both equal to \\( \\dfrac{AB}{CB} \\), so the answer is yes for every such quadrilateral, whatever its angles."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "Answerable with no Statement at all; PQRS is always cyclic (Yes)",
+      "confidence": "HIGH",
+      "reasoning": "Joining the midpoints of the sides of any quadrilateral gives a parallelogram whose sides are parallel to the diagonals. In a rhombus the diagonals are perpendicular, so PQRS is a rectangle, and every rectangle is cyclic. No angle information is needed. Confirmed numerically for rhombi with angle B = 120, 60, 77 and 143 degrees: all four angles of PQRS came out exactly 90 degrees each time.",
+      "solution": "Joining the midpoints of the sides of any quadrilateral produces a parallelogram whose sides are parallel to the two diagonals. In a rhombus the diagonals are perpendicular, so that parallelogram is a rectangle, and a rectangle always has its opposite angles supplementary. Hence \\( PQRS \\) is cyclic for every rhombus, whatever its angles, and neither statement is needed."
+    },
+    {
+      "number": 75,
+      "answer": "C",
+      "value": "Both Statements together are needed (p - q = 8)",
+      "confidence": "HIGH",
+      "reasoning": "Statement I gives p^2+q^2 = 130, whose solutions with p > q > 1 are (11,3) and (9,7), so p-q is 8 or 2 - not determined. Statement II gives p+q = 14 (external contact), with (12,2), (11,3), (10,4), (9,5) and (8,6) all admissible, so p-q could be 10, 8, 6, 4 or 2 - not determined. Together, 2pq = 196-130 = 66, so p and q are the roots of t^2-14t+33 = 0, namely 11 and 3, and p-q = 8.",
+      "solution": "Touching externally means the distance between the centres is \\( p+q \\). The first statement gives \\( p^{2}+q^{2}=130 \\), which allows \\( (11,3) \\) and \\( (9,7) \\), so \\( p-q \\) could be \\( 8 \\) or \\( 2 \\). The second gives \\( p+q=14 \\), which allows several pairs from \\( (12,2) \\) to \\( (8,6) \\). Together, \\( 2pq=14^{2}-130=66 \\), so \\( p \\) and \\( q \\) are the roots of \\( t^{2}-14t+33=0 \\), namely \\( 11 \\) and \\( 3 \\), giving \\( p-q=8 \\)."
+    },
+    {
+      "number": 76,
+      "answer": "A",
+      "value": "Statement I alone suffices; Statement II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "Statement I says 0 < r^2 < 1, so |r| < 1 and r is non-zero; then |r^n| < 1 for every natural n, and r^n < 1 whether r is positive or negative. That answers the question Yes. Statement II says 0 < r^3 < 2, which permits any r up to 2^(1/3) = 1.2599: at r = 0.5 the powers stay below 1, but at r = 1.2 we get r^10 = 6.19 > 1, so the answer is not determined. Exactly one statement suffices.",
+      "solution": "The first statement gives \\( 0<r^{2}<1 \\), so \\( |r|<1 \\) with \\( r\\ne0 \\); then \\( |r^{n}|<1 \\) for every natural \\( n \\), and \\( r^{n}<1 \\) whether \\( r \\) is positive or negative. The second statement gives \\( 0<r^{3}<2 \\), which allows \\( r \\) as large as \\( \\sqrt[3]{2}\\approx1.26 \\); taking \\( r=1.2 \\) gives \\( r^{10}\\approx6.19 \\), which exceeds \\( 1 \\), while \\( r=0.5 \\) keeps every power below \\( 1 \\). So only the first statement settles the question."
+    },
+    {
+      "number": 77,
+      "answer": "B",
+      "value": "Either Statement alone is sufficient (the answer is No)",
+      "confidence": "HIGH",
+      "reasoning": "For integers p and q, (p-q) and (p+q) always have the same parity, so the two statements are logically equivalent. Either one says the difference (or sum) is odd, which for two primes forces one of them to be 2. Then p^2+q^2 = 4+q^2, and q = 3 gives 13, a prime, so the answer to 'always composite' is definitely No. Each statement alone therefore settles it. Noted but not offered as an option: the answer would be No even with no statement, since 2 and 3 are admissible primes in any case; among the four printed choices B is the only correct one, since it can be answered and neither statement is redundant relative to the other.",
+      "solution": "For any integers, \\( p-q \\) and \\( p+q \\) have the same parity, so the two statements say the same thing. Either one makes the parity odd, which for two different primes forces one of them to be \\( 2 \\). Then \\( p^{2}+q^{2}=4+q^{2} \\), and taking \\( q=3 \\) gives \\( 13 \\), which is prime, so the expression is not always composite. Each statement on its own therefore settles the question, with the answer no."
+    },
+    {
+      "number": 78,
+      "answer": "D",
+      "value": "Answerable with no Statement at all; at n = 0 the value is exactly 2, so 'always greater than 2' is No",
+      "confidence": "MED",
+      "reasoning": "Writing t = (0.5)^n, the expression is t + 1/t, which is at least 2 for every positive t and equals 2 exactly when t = 1, i.e. when n = 0. Since n ranges over the integers, n = 0 is admissible and the value is exactly 2 there, so the universal claim 'always greater than 2' is definitely false - answerable with no statement. Statement I (n even) still admits n = 0, so it gives the same No; statement II (n negative) makes every value exceed 2, giving Yes. Computed values confirm: n = 0 gives 2, n = +/-1 gives 5/2, n = +/-2 gives 17/4, n = +/-3 gives 65/8. Worth noting that the answer is D under BOTH readings of the stem: a solver who overlooks n = 0 concludes the expression always exceeds 2 and so also needs no statement. RUNNER-UP: option B, which wins if 'without using both the Statements' is read as 'using only one of them' rather than 'using neither'; each statement alone does yield a determinate answer, so under that reading either statement suffices.",
+      "solution": "Putting \\( t=(0.5)^{n} \\), the expression is \\( t+\\dfrac{1}{t} \\), which is at least \\( 2 \\) for every positive \\( t \\) and equals \\( 2 \\) exactly when \\( t=1 \\), that is when \\( n=0 \\). Since \\( n \\) is allowed to be any integer, \\( n=0 \\) gives exactly \\( 2 \\), so the expression is not always greater than \\( 2 \\). That verdict needs neither statement — the values \\( \\tfrac{5}{2} \\), \\( \\tfrac{17}{4} \\) and \\( \\tfrac{65}{8} \\) at \\( n=\\pm1,\\pm2,\\pm3 \\) exceed \\( 2 \\), but \\( n=0 \\) does not."
+    },
+    {
+      "number": 79,
+      "answer": "A",
+      "value": "Statement I alone suffices (product 750); Statement II alone does not",
+      "confidence": "HIGH",
+      "reasoning": "Each number is a multiple of 5 dividing 30, so all three come from {5, 10, 15, 30}. The triples with HCF 5 and LCM 30 are {5,10,15} (product 750), {5,10,30} (1500), {5,15,30} (2250) and {10,15,30} (4500). Statement I (largest = 15) leaves only {5,10,15}, so the product is 750 - determined. Statement II (middle = 10) leaves {5,10,15} and {5,10,30}, with products 750 and 1500 - not determined. So exactly one statement suffices.",
+      "solution": "Every one of the three numbers is a multiple of the HCF \\( 5 \\) and a divisor of the LCM \\( 30 \\), so each lies in \\( \\{5,10,15,30\\} \\). The triples that actually have HCF \\( 5 \\) and LCM \\( 30 \\) are \\( \\{5,10,15\\} \\), \\( \\{5,10,30\\} \\), \\( \\{5,15,30\\} \\) and \\( \\{10,15,30\\} \\), with products \\( 750 \\), \\( 1500 \\), \\( 2250 \\) and \\( 4500 \\). Knowing the largest is \\( 15 \\) pins the triple to \\( \\{5,10,15\\} \\) and the product to \\( 750 \\), whereas knowing the middle one is \\( 10 \\) still allows two triples with different products."
+    },
+    {
+      "number": 80,
+      "answer": "D",
+      "value": "Answerable with no Statement at all; P + R = Q always (Yes)",
+      "confidence": "HIGH",
+      "reasoning": "XYZ - ZYX = 99(X - Z), so the difference is one of 99, 198, 297, 396, 495, 594, 693, 792, 891. Every one of these has its middle digit 9 and its outer digits summing to 9, so P + R = Q in all cases. An exhaustive scan over all 900 three-digit numbers found no exception. The answer is Yes without either statement; the statements merely single out 396.",
+      "solution": "The difference is \\( (100X+10Y+Z)-(100Z+10Y+X)=99(X-Z) \\), so it must be one of \\( 99, 198, 297, 396, 495, 594, 693, 792 \\) or \\( 891 \\). Each of these has middle digit \\( 9 \\) and outer digits adding to \\( 9 \\), so \\( P+R=Q \\) in every case. The answer is therefore yes whatever the digits, and neither statement is needed."
+    },
+    {
+      "number": 81,
+      "answer": "B",
+      "value": "-1",
+      "confidence": "HIGH",
+      "reasoning": "Since x^2-x-6 = (x-3)(x+2) divides the quartic, both x = 3 and x = -2 are roots. Substituting gives 27p+9q+90 = 0 and -8p+4q+20 = 0, i.e. 3p+q = -10 and -2p+q = -5, whose solution is p = -1, q = -7. Checked by division: the quotient is (x-1)(x+1) and the remainder is exactly 0.",
+      "solution": "Since \\( x^{2}-x-6=(x-3)(x+2) \\), both \\( x=3 \\) and \\( x=-2 \\) must be roots of the quartic. Substituting them gives \\( 27p+9q+90=0 \\) and \\( -8p+4q+20=0 \\), that is \\( 3p+q=-10 \\) and \\( -2p+q=-5 \\). Solving the pair gives \\( p=-1 \\)."
+    },
+    {
+      "number": 82,
+      "answer": "A",
+      "value": "-7",
+      "confidence": "HIGH",
+      "reasoning": "Same pair of conditions as the previous item: 3p+q = -10 and -2p+q = -5 give p = -1 and q = -7. Dividing x^4-x^3-7x^2+x+6 by x^2-x-6 leaves quotient (x-1)(x+1) and remainder 0, confirming q = -7.",
+      "solution": "The two roots \\( x=3 \\) and \\( x=-2 \\) of the divisor give \\( 3p+q=-10 \\) and \\( -2p+q=-5 \\), whose solution is \\( p=-1 \\) and \\( q=-7 \\). Checking, \\( x^{4}-x^{3}-7x^{2}+x+6 \\) divided by \\( x^{2}-x-6 \\) leaves the quotient \\( (x-1)(x+1) \\) and no remainder."
+    },
+    {
+      "number": 83,
+      "answer": "D",
+      "value": "17/4",
+      "confidence": "HIGH",
+      "reasoning": "The equation gives x^4 + 1/x^4 = 257/16. Since (x^2+1/x^2)^2 = x^4 + 2 + 1/x^4 = 257/16 + 2 = 289/16, we get x^2+1/x^2 = +/- 17/4, and only 17/4 is possible because x^2+1/x^2 is positive for every real non-zero x. The real solutions are x = +/-2 and +/-1/2, each giving exactly 17/4.",
+      "solution": "The equation gives \\( x^{4}+\\dfrac{1}{x^{4}}=\\dfrac{257}{16} \\). Squaring the required quantity, \\( \\left(x^{2}+\\dfrac{1}{x^{2}}\\right)^{2}=x^{4}+2+\\dfrac{1}{x^{4}}=\\dfrac{257}{16}+2=\\dfrac{289}{16} \\). Since \\( x^{2}+\\dfrac{1}{x^{2}} \\) is positive for every real non-zero \\( x \\), it equals \\( \\dfrac{17}{4} \\)."
+    },
+    {
+      "number": 84,
+      "answer": "A",
+      "value": "65/8",
+      "confidence": "HIGH",
+      "reasoning": "With x^2+1/x^2 = 17/4, we get (x+1/x)^2 = 17/4 + 2 = 25/4, so x+1/x = +/- 5/2, and x^3+1/x^3 = v^3 - 3v = +/- 65/8. The real solutions are x = 2, 1/2 (giving +65/8) and x = -2, -1/2 (giving -65/8); of the two possible values only 65/8 appears among the choices, and it is genuinely attained.",
+      "solution": "From \\( x^{2}+\\dfrac{1}{x^{2}}=\\dfrac{17}{4} \\) we get \\( \\left(x+\\dfrac{1}{x}\\right)^{2}=\\dfrac{17}{4}+2=\\dfrac{25}{4} \\), so \\( x+\\dfrac{1}{x}=\\pm\\dfrac{5}{2} \\). Using \\( x^{3}+\\dfrac{1}{x^{3}}=v^{3}-3v \\) with \\( v=\\dfrac{5}{2} \\) gives \\( \\dfrac{125}{8}-\\dfrac{15}{2}=\\dfrac{65}{8} \\), the value taken at \\( x=2 \\) and at \\( x=\\dfrac{1}{2} \\)."
+    },
+    {
+      "number": 85,
+      "answer": "D",
+      "value": "88*sqrt(30)",
+      "confidence": "HIGH",
+      "reasoning": "Rationalising, x = (sqrt(6)+sqrt(5))^2/(6-5) = 11 + 2 sqrt(30) and y = 11 - 2 sqrt(30). So x+y = 22 and x-y = 4 sqrt(30), giving x^2-y^2 = 22 x 4 sqrt(30) = 88 sqrt(30) ~ 481.996. Confirmed symbolically.",
+      "solution": "Rationalising, \\( x=\\dfrac{\\left(\\sqrt{6}+\\sqrt{5}\\right)^{2}}{6-5}=11+2\\sqrt{30} \\) and likewise \\( y=11-2\\sqrt{30} \\). Hence \\( x+y=22 \\) and \\( x-y=4\\sqrt{30} \\). Therefore \\( x^{2}-y^{2}=(x+y)(x-y)=88\\sqrt{30} \\)."
+    },
+    {
+      "number": 86,
+      "answer": "C",
+      "value": "481",
+      "confidence": "HIGH",
+      "reasoning": "With x = 11 + 2 sqrt(30) and y = 11 - 2 sqrt(30), xy = 121 - 120 = 1 and x+y = 22. Then x^2 - xy + y^2 = (x+y)^2 - 3xy = 484 - 3 = 481. Confirmed symbolically.",
+      "solution": "Here \\( x+y=22 \\) and \\( xy=\\left(11\\right)^{2}-\\left(2\\sqrt{30}\\right)^{2}=121-120=1 \\). Writing \\( x^{2}-xy+y^{2}=(x+y)^{2}-3xy \\) gives \\( 484-3=481 \\)."
+    },
+    {
+      "number": 87,
+      "answer": "B",
+      "value": "64%",
+      "confidence": "HIGH",
+      "reasoning": "Tin comes only from Y, so 0.16b = 0.10(a+b), giving 6b = 10a and a : b = 3 : 5. Taking 3 parts of X and 5 of Y, the copper in the mixture is 0.74 x 8 = 5.92, of which 0.80 x 5 = 4.0 comes from Y, leaving 1.92 from 3 parts of X, i.e. 64%. Confirmed by solving the system.",
+      "solution": "All the tin comes from \\( Y \\), so \\( 0.16b=0.10(a+b) \\), which gives \\( a:b=3:5 \\). Taking \\( 3 \\) parts of \\( X \\) with \\( 5 \\) parts of \\( Y \\), the mixture holds \\( 0.74\\times8=5.92 \\) parts of copper, of which \\( 0.80\\times5=4.0 \\) comes from \\( Y \\). The remaining \\( 1.92 \\) parts come from \\( 3 \\) parts of \\( X \\), so \\( X \\) is \\( 64\\% \\) copper."
+    },
+    {
+      "number": 88,
+      "answer": "B",
+      "value": "36%",
+      "confidence": "HIGH",
+      "reasoning": "With the same 3 : 5 split, the zinc in the mixture is 0.16 x 8 = 1.28, of which 0.04 x 5 = 0.2 comes from Y, leaving 1.08 from 3 parts of X, i.e. 36%. This is consistent with X containing only copper and zinc, since 64% + 36% = 100%.",
+      "solution": "Using the same \\( 3:5 \\) ratio of \\( X \\) to \\( Y \\), the mixture holds \\( 0.16\\times8=1.28 \\) parts of zinc, of which \\( 0.04\\times5=0.2 \\) comes from \\( Y \\). That leaves \\( 1.08 \\) parts from \\( 3 \\) parts of \\( X \\), so \\( X \\) is \\( 36\\% \\) zinc — consistent with \\( X \\) being copper and zinc only, since \\( 64\\%+36\\%=100\\% \\)."
+    },
+    {
+      "number": 89,
+      "answer": "B",
+      "value": "10%",
+      "confidence": "HIGH",
+      "reasoning": "The first loan runs the full year: interest 16000 R/100 = 160R. The second runs 8 months at rate 2R: 24000 x 2R/100 x 8/12 = 320R. Total 480R = 4800, so R = 10%.",
+      "solution": "The first loan of \\( \\mathrm{Rs.}\\,16{,}000 \\) runs the whole year at \\( R\\% \\), giving interest \\( 160R \\). The second of \\( \\mathrm{Rs.}\\,24{,}000 \\) runs only \\( 8 \\) months at \\( 2R\\% \\), giving \\( 24000\\times\\dfrac{2R}{100}\\times\\dfrac{8}{12}=320R \\). Their total is \\( 480R=4800 \\), so \\( R=10\\% \\)."
+    },
+    {
+      "number": 90,
+      "answer": "A",
+      "value": "1 : 2",
+      "confidence": "HIGH",
+      "reasoning": "At R = 10 the first loan yields 160 x 10 = Rs 1600 and the second 320 x 10 = Rs 3200, a ratio of 1 : 2. The ratio 160R : 320R is in fact independent of R.",
+      "solution": "The two interests are \\( 160R \\) and \\( 320R \\), which at \\( R=10 \\) come to \\( \\mathrm{Rs.}\\,1600 \\) and \\( \\mathrm{Rs.}\\,3200 \\). Their ratio is \\( 1:2 \\), and since both are multiples of \\( R \\) the ratio does not depend on the rate at all."
+    },
+    {
+      "number": 91,
+      "answer": "C",
+      "value": "1/5",
+      "confidence": "HIGH",
+      "reasoning": "12(t + 1/t) = 25 with t = tan(theta) gives 12t^2 - 25t + 12 = 0, so t = 4/3 or 3/4. The restriction 45 < theta < 90 forces tan(theta) > 1, hence tan(theta) = 4/3, sin(theta) = 4/5 and cos(theta) = 3/5. Then sin - cos = 1/5, which is positive as it must be above 45 degrees.",
+      "solution": "Writing \\( t=\\tan\\theta \\), the condition becomes \\( 12t^{2}-25t+12=0 \\), so \\( t=\\dfrac{4}{3} \\) or \\( \\dfrac{3}{4} \\). Since \\( 45^\\circ<\\theta<90^\\circ \\) we need \\( \\tan\\theta>1 \\), so \\( \\tan\\theta=\\dfrac{4}{3} \\), giving \\( \\sin\\theta=\\dfrac{4}{5} \\) and \\( \\cos\\theta=\\dfrac{3}{5} \\). Hence \\( \\sin\\theta-\\cos\\theta=\\dfrac{1}{5} \\)."
+    },
+    {
+      "number": 92,
+      "answer": "B",
+      "value": "35/12",
+      "confidence": "HIGH",
+      "reasoning": "With sin(theta) = 4/5 and cos(theta) = 3/5, cosec + sec = 5/4 + 5/3 = 15/12 + 20/12 = 35/12.",
+      "solution": "With \\( \\sin\\theta=\\dfrac{4}{5} \\) and \\( \\cos\\theta=\\dfrac{3}{5} \\), we get \\( \\operatorname{cosec}\\theta=\\dfrac{5}{4} \\) and \\( \\sec\\theta=\\dfrac{5}{3} \\). Their sum is \\( \\dfrac{15}{12}+\\dfrac{20}{12}=\\dfrac{35}{12} \\)."
+    },
+    {
+      "number": 93,
+      "answer": "B",
+      "value": "q/p",
+      "confidence": "HIGH",
+      "reasoning": "cosec - sin = (1-sin^2)/sin = cos^2/sin = p^3, and sec - cos = sin^2/cos = q^3. Dividing, p^3/q^3 = (cos^2/sin)(cos/sin^2) = cot^3(theta), so p/q = cot(theta) and tan(theta) = q/p. Verified numerically at 23, 47 and 68 degrees, where q/p matched tan(theta) to 20 significant figures.",
+      "solution": "Writing the first as \\( \\operatorname{cosec}\\theta-\\sin\\theta=\\dfrac{1-\\sin^{2}\\theta}{\\sin\\theta}=\\dfrac{\\cos^{2}\\theta}{\\sin\\theta}=p^{3} \\) and the second as \\( \\sec\\theta-\\cos\\theta=\\dfrac{\\sin^{2}\\theta}{\\cos\\theta}=q^{3} \\), their ratio is \\( \\dfrac{p^{3}}{q^{3}}=\\dfrac{\\cos^{3}\\theta}{\\sin^{3}\\theta}=\\cot^{3}\\theta \\). Taking cube roots gives \\( \\dfrac{p}{q}=\\cot\\theta \\), so \\( \\tan\\theta=\\dfrac{q}{p} \\)."
+    },
+    {
+      "number": 94,
+      "answer": "D",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "p^4q^2 + p^2q^4 = p^2q^2(p^2+q^2). With p^2 = cos^(4/3)/sin^(2/3) and q^2 = sin^(4/3)/cos^(2/3), the product p^2q^2 = (sin cos)^(2/3) while p^2+q^2 = (cos^2+sin^2)/(sin cos)^(2/3) = 1/(sin cos)^(2/3). The two cancel exactly, leaving 1. Evaluated numerically at 11, 29, 44, 63 and 81 degrees it returned 1.000000000000000000000000000 at 30-digit precision every time.",
+      "solution": "Factorising, \\( p^{4}q^{2}+p^{2}q^{4}=p^{2}q^{2}\\left(p^{2}+q^{2}\\right) \\). From \\( p^{3}=\\dfrac{\\cos^{2}\\theta}{\\sin\\theta} \\) and \\( q^{3}=\\dfrac{\\sin^{2}\\theta}{\\cos\\theta} \\) we get \\( p^{2}q^{2}=\\left(\\sin\\theta\\cos\\theta\\right)^{2/3} \\), while \\( p^{2}+q^{2}=\\dfrac{\\cos^{2}\\theta+\\sin^{2}\\theta}{\\left(\\sin\\theta\\cos\\theta\\right)^{2/3}}=\\dfrac{1}{\\left(\\sin\\theta\\cos\\theta\\right)^{2/3}} \\). The two factors cancel exactly, leaving \\( 1 \\)."
+    },
+    {
+      "number": 95,
+      "answer": "A",
+      "value": "(m - q)/(p - m)",
+      "confidence": "HIGH",
+      "reasoning": "Replacing cos^2(alpha) by 1 - sin^2(alpha) gives sin^2(alpha)(p-q) + q = m, so sin^2(alpha) = (m-q)/(p-q) and cos^2(alpha) = (p-m)/(p-q). Their ratio is tan^2(alpha) = (m-q)/(p-m). Checked symbolically against all four options (only A matches) and numerically on three concrete cases, where option B was confirmed to differ.",
+      "solution": "Replacing \\( \\cos^{2}\\alpha \\) by \\( 1-\\sin^{2}\\alpha \\) turns the relation into \\( \\sin^{2}\\alpha(p-q)+q=m \\), so \\( \\sin^{2}\\alpha=\\dfrac{m-q}{p-q} \\). Then \\( \\cos^{2}\\alpha=1-\\sin^{2}\\alpha=\\dfrac{p-m}{p-q} \\). Dividing gives \\( \\tan^{2}\\alpha=\\dfrac{m-q}{p-m} \\)."
+    },
+    {
+      "number": 96,
+      "answer": "A",
+      "value": "(n - q)/(p - n)",
+      "confidence": "HIGH",
+      "reasoning": "Replacing sin^2(beta) by 1 - cos^2(beta) gives cos^2(beta)(p-q) + q = n, so cos^2(beta) = (n-q)/(p-q) and sin^2(beta) = (p-n)/(p-q). Their ratio is cot^2(beta) = (n-q)/(p-n). Checked symbolically against all four options (only A matches) and numerically on three concrete cases.",
+      "solution": "Replacing \\( \\sin^{2}\\beta \\) by \\( 1-\\cos^{2}\\beta \\) turns the relation into \\( \\cos^{2}\\beta(p-q)+q=n \\), so \\( \\cos^{2}\\beta=\\dfrac{n-q}{p-q} \\). Then \\( \\sin^{2}\\beta=\\dfrac{p-n}{p-q} \\). Dividing gives \\( \\cot^{2}\\beta=\\dfrac{n-q}{p-n} \\)."
+    },
+    {
+      "number": 97,
+      "answer": "D",
+      "value": "13",
+      "confidence": "HIGH",
+      "reasoning": "Squaring and adding the two relations, the cross terms 2pq cot(theta) cancel and the left side becomes (p^2+q^2)(1+cot^2) = (p^2+q^2)cosec^2. The right side is 9cosec^2 + 4cosec^2 = 13cosec^2. Hence p^2+q^2 = 13. Confirmed by solving the pair for p and q and simplifying p^2+q^2 to exactly 13.",
+      "solution": "Squaring both relations and adding, the cross terms \\( 2pq\\cot\\theta \\) cancel and the left side becomes \\( \\left(p^{2}+q^{2}\\right)\\left(1+\\cot^{2}\\theta\\right)=\\left(p^{2}+q^{2}\\right)\\operatorname{cosec}^{2}\\theta \\). The right side is \\( 9\\operatorname{cosec}^{2}\\theta+4\\operatorname{cosec}^{2}\\theta=13\\operatorname{cosec}^{2}\\theta \\). Dividing gives \\( p^{2}+q^{2}=13 \\)."
+    },
+    {
+      "number": 98,
+      "answer": "A",
+      "value": "(2q + 3p)/(3q - 2p)",
+      "confidence": "HIGH",
+      "reasoning": "Multiplying the first relation by p and the second by q and adding gives p^2+q^2 = (3p+2q)cosec(theta). Multiplying the first by q and the second by -p and adding gives (p^2+q^2)cot(theta) = (3q-2p)cosec(theta). Dividing, cot(theta) = (3q-2p)/(3p+2q), so tan(theta) = (2q+3p)/(3q-2p). Confirmed by solving the pair for p and q and testing all four options; only A reduces to tan(theta).",
+      "solution": "Multiplying the first relation by \\( p \\) and the second by \\( q \\) and adding gives \\( p^{2}+q^{2}=(3p+2q)\\operatorname{cosec}\\theta \\). Multiplying the first by \\( q \\) and the second by \\( -p \\) and adding gives \\( \\left(p^{2}+q^{2}\\right)\\cot\\theta=(3q-2p)\\operatorname{cosec}\\theta \\). Dividing one by the other, \\( \\cot\\theta=\\dfrac{3q-2p}{3p+2q} \\), so \\( \\tan\\theta=\\dfrac{2q+3p}{3q-2p} \\)."
+    },
+    {
+      "number": 99,
+      "answer": "B",
+      "value": "2pq - 1 = 0, i.e. pq = 1/2",
+      "confidence": "HIGH",
+      "reasoning": "The product pq has numerator sin(1+sin) and denominator (1+cos+sin)(1+sin-cos) = (1+sin)^2 - cos^2 = 2sin + 2sin^2 = 2sin(1+sin). So pq = 1/2 identically and 2pq - 1 = 0. Verified numerically at 7, 19, 53, 88, 111, 200 and 305 degrees, where pq read exactly 0.500000000000000 every time while p - q was never zero, ruling out option A.",
+      "solution": "The product \\( pq \\) has numerator \\( \\sin\\theta(1+\\sin\\theta) \\) and denominator \\( (1+\\cos\\theta+\\sin\\theta)(1+\\sin\\theta-\\cos\\theta) \\), which is \\( (1+\\sin\\theta)^{2}-\\cos^{2}\\theta=2\\sin\\theta(1+\\sin\\theta) \\). The factors cancel, leaving \\( pq=\\dfrac{1}{2} \\) for every \\( \\theta \\), so \\( 2pq-1=0 \\). The quantities \\( p \\) and \\( q \\) are not themselves equal, so their difference does not vanish."
+    },
+    {
+      "number": 100,
+      "answer": "C",
+      "value": "9/2",
+      "confidence": "HIGH",
+      "reasoning": "Expanding, (p + 1/q)(q + 1/p) = pq + 1 + 1 + 1/(pq) = pq + 2 + 1/(pq). With pq = 1/2 this is 1/2 + 2 + 2 = 9/2. Verified numerically at 7, 19, 53, 88, 111, 200 and 305 degrees, giving exactly 4.50000000000000 each time.",
+      "solution": "Expanding, \\( \\left(p+\\dfrac{1}{q}\\right)\\left(q+\\dfrac{1}{p}\\right)=pq+1+1+\\dfrac{1}{pq}=pq+2+\\dfrac{1}{pq} \\). Since \\( pq=\\dfrac{1}{2} \\), this is \\( \\dfrac{1}{2}+2+2=\\dfrac{9}{2} \\)."
+    }
+  ]
+}

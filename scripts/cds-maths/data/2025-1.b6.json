@@ -1,0 +1,165 @@
+{
+  "band": "b6",
+  "pages": [11, 12],
+  "bandReport": {
+    "numbersFound": [91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "This band ends the paper. The source PDF has 13 pages (0-12); p12 is the last page of the booklet and Q100 is the last printed item. Its option (d) 53.4 is the final printed content, followed only by the booklet footer line ('CFRN-T-EMT' and the page number '( 27 - A )') - verified by cropping the foot of p12 at 4x. Nothing runs past the end of the band, so the paper is complete at 100 questions.\n\nSeam with b5 is clean. p10 was opened and NOT transcribed: its LEFT column carries Q81, Q82, Q83, Q84 and Q85, all complete on that page, and its RIGHT column opens a 'Consider the following for the next five (05) items that follow' block (frequency distribution of 205 observations on X) governing Q86-Q90. That whole set - Directions block, table and all five members with their options - is printed on p10, so b5 owns it and nothing is inherited here. Q90's options run (a) to (d) at the foot of p10's right column. My first question, Q91, opens this band cleanly under its own Directions block printed at the top of p11.\n\nThree Directions sets, ALL of which START inside this band, so all three are owned here and all members are contiguous:\n  - D91-92, 'next two (02)', p11 left column: cumulative ('Below') frequency table of marks in an English examination. Table transcribed as a GFM pipe table in context; the printed table has no vertical rules to lose, and every value was re-read from a 5x crop.\n  - D93-95, 'next three (03)', p11 right column: circulation figures (in thousands) of newspapers A-E for 2019-2023. 5x6 table transcribed as a GFM pipe table in context and every cell re-read from a 6x crop.\n  - D96-98, 'next three (03)', p12 left column: three pie charts. This is a FIGURE set - see below.\n\nQ99 and Q100 are standalone items with no Directions block and no shared stimulus; they carry no context and no setLabel.\n\nFigures: 3 - Q96, Q97 and Q98, which share ONE stimulus consisting of three separate pie charts printed down the left column of p12. Each of the three questions is marked hasFigure and carries a figureNote naming the same three charts, because the renderer attaches a crop per question and each item needs all three charts to be answerable (Q96 uses Chart-I and Chart-II, Q97 uses Chart-I, Q98 uses Chart-I and Chart-III). No sector angle from any chart appears in any stem or context - the angles ARE the data the questions test, and every one of them lives only in the crop. The three chart CAPTIONS ('Chart-I : Number of houses : 1,20,000', 'Chart-II : Population : 21,00,000', 'Chart-III : Number of families : 3,60,000') are printed prose lines carrying the population totals, so they are transcribed verbatim into context AND the crops are specified to include them; a caption appearing both above its crop and in the shared stimulus reads naturally as a chart title, and keeping the totals in text means they survive even if a crop is tightened. Q91-Q95, Q99 and Q100 have no printed diagram - their stimulus is a table or a plain number list, both transcribed as text.\n\nEach of the three pie charts was checked to sum to 360 degrees, as a read-accuracy check only on the printed labels (Chart-I 110+40+210; Chart-II 60+70+20+210; Chart-III 70+85+20+185). All three sum exactly, so no printed angle is misread. This is a check on my transcription of the figure labels, not a derivation of any answer, and none of these values is recorded in the JSON.\n\nQ99's data list was cropped at 6x and re-read digit by digit: it is 5 printed lines of 12 values = 60 values, matching the stem's '60 students'. The leading-zero forms are printed as such and transcribed as printed - '09' (line 1), '00' (line 2) and '03' (line 4) are two-digit marks, not stray single digits.\n\nDecimals: the booklet sets a raised middle dot throughout this band (8.54, 13.9, 26.7, 53.4 and the rest). Per the brief these are transcribed as full stops. No value changes.\n\nQ98's stem contains the printed curly double quotes around \"Houseless\"; they are transcribed as the curly glyphs the page prints.\n\nNo misprints found. No unreadable item. No invented subtopic - every chapter and subtopic used is a catalog entry. Both pages carry faint mirror-image bleed-through from the reverse side of the sheet (the words 'FOR ROUGH WORK' are legible in reverse at the top of p12's right column, and p11 shows reversed traces of the facing page); it is show-through, not content, and nothing was transcribed from it.",
+    "figureCount": 3
+  },
+  "questions": [
+    {
+      "number": 91,
+      "stem": "What is the number of students who scored between 60 and 70 marks ?",
+      "options": [
+        { "label": "A", "text": "105" },
+        { "label": "B", "text": "110" },
+        { "label": "C", "text": "205" },
+        { "label": "D", "text": "210" }
+      ],
+      "context": "Consider the following for the next two (02) items that follow :\n\nThe frequency distribution of marks obtained by students in an English examination is given below :\n\n| Marks obtained | Number of Students |\n|---|---|\n| Below 40 | 50 |\n| Below 50 | 125 |\n| Below 60 | 210 |\n| Below 70 | 315 |\n| Below 80 | 350 |",
+      "setLabel": "D91-92",
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 92,
+      "stem": "What is the number of students who scored more than 50 marks ?",
+      "options": [
+        { "label": "A", "text": "100" },
+        { "label": "B", "text": "125" },
+        { "label": "C", "text": "200" },
+        { "label": "D", "text": "225" }
+      ],
+      "context": "Consider the following for the next two (02) items that follow :\n\nThe frequency distribution of marks obtained by students in an English examination is given below :\n\n| Marks obtained | Number of Students |\n|---|---|\n| Below 40 | 50 |\n| Below 50 | 125 |\n| Below 60 | 210 |\n| Below 70 | 315 |\n| Below 80 | 350 |",
+      "setLabel": "D91-92",
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 93,
+      "stem": "In which of the given years was the circulation of the newspaper D close to its average circulation over all the years ?",
+      "options": [
+        { "label": "A", "text": "2020 and 2021" },
+        { "label": "B", "text": "2022 and 2023" },
+        { "label": "C", "text": "2022 only" },
+        { "label": "D", "text": "2020 only" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nCirculation figures (in thousands) of different newspapers (A, B, C, D, E) for five years are given below :\n\n| Year | A | B | C | D | E |\n|---|---|---|---|---|---|\n| 2019 | 20 | 10 | 15 | 8 | 20 |\n| 2020 | 12 | 12 | 18 | 12 | 12 |\n| 2021 | 24 | 14 | 17 | 14 | 15 |\n| 2022 | 26 | 10 | 16 | 15 | 9 |\n| 2023 | 22 | 16 | 14 | 16 | 11 |",
+      "setLabel": "D93-95",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 94,
+      "stem": "In which of the years from 2019 to 2022 was the circulation of the newspaper D close to the average circulation of all the newspapers in that year ?",
+      "options": [
+        { "label": "A", "text": "2019" },
+        { "label": "B", "text": "2020" },
+        { "label": "C", "text": "2021" },
+        { "label": "D", "text": "2022" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nCirculation figures (in thousands) of different newspapers (A, B, C, D, E) for five years are given below :\n\n| Year | A | B | C | D | E |\n|---|---|---|---|---|---|\n| 2019 | 20 | 10 | 15 | 8 | 20 |\n| 2020 | 12 | 12 | 18 | 12 | 12 |\n| 2021 | 24 | 14 | 17 | 14 | 15 |\n| 2022 | 26 | 10 | 16 | 15 | 9 |\n| 2023 | 22 | 16 | 14 | 16 | 11 |",
+      "setLabel": "D93-95",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 95,
+      "stem": "How many cases are there in which average of the circulation for an individual newspaper was more than the average of the circulation of all the newspapers ?",
+      "options": [
+        { "label": "A", "text": "One" },
+        { "label": "B", "text": "Two" },
+        { "label": "C", "text": "Three" },
+        { "label": "D", "text": "Four" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nCirculation figures (in thousands) of different newspapers (A, B, C, D, E) for five years are given below :\n\n| Year | A | B | C | D | E |\n|---|---|---|---|---|---|\n| 2019 | 20 | 10 | 15 | 8 | 20 |\n| 2020 | 12 | 12 | 18 | 12 | 12 |\n| 2021 | 24 | 14 | 17 | 14 | 15 |\n| 2022 | 26 | 10 | 16 | 15 | 9 |\n| 2023 | 22 | 16 | 14 | 16 | 11 |",
+      "setLabel": "D93-95",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 96,
+      "stem": "On an average, how many persons live in every pucca house ?",
+      "options": [
+        { "label": "A", "text": "8" },
+        { "label": "B", "text": "8.54" },
+        { "label": "C", "text": "9.54" },
+        { "label": "D", "text": "7.54" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nStudy the following Pie Charts :\n\nChart-I : Number of houses : 1,20,000\n\nChart-II : Population : 21,00,000\n\nChart-III : Number of families : 3,60,000",
+      "setLabel": "D96-98",
+      "hasFigure": true,
+      "figureNote": "p12, LEFT column: the shared stimulus of the Q96-Q98 set, THREE pie charts stacked one above the other and running from just below the line 'Study the following Pie Charts :' down to just above the '96.' label. Crop all three as ONE image, including each chart's printed caption line ('Chart-I : Number of houses : 1,20,000', 'Chart-II : Population : 21,00,000', 'Chart-III : Number of families : 3,60,000'). Each chart is a circle divided into sectors by solid radii, with a dashed arc inside carrying the degree label of the large sector, and each sector named by a dotted leader arrow pointing to a capitalised label OUTSIDE the circle (PUCCA, SEMI PUCCA, KUTCHA, HOUSELESS and their 'LIVING IN ... HOUSES' forms). The outside labels sit well clear of the circles, some to the far LEFT of the column edge, so crop the full column width and leave a margin on all four sides rather than tightening to the circles - the degree labels and the sector names are the entire data of these three questions and clipping any one of them makes the set unanswerable.",
+      "chapter": "Data Interpretation",
+      "subtopic": "Pie Charts",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 97,
+      "stem": "If 5000 more Kutcha houses are built, then what will be approximate change in angle for Kutcha houses in Pie Chart-I ?",
+      "options": [
+        { "label": "A", "text": "\\(11^\\circ\\)" },
+        { "label": "B", "text": "\\(13^\\circ\\)" },
+        { "label": "C", "text": "\\(15^\\circ\\)" },
+        { "label": "D", "text": "\\(23^\\circ\\)" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nStudy the following Pie Charts :\n\nChart-I : Number of houses : 1,20,000\n\nChart-II : Population : 21,00,000\n\nChart-III : Number of families : 3,60,000",
+      "setLabel": "D96-98",
+      "hasFigure": true,
+      "figureNote": "Same crop as Q96 - the three stacked pie charts with their captions down the LEFT column of p12, between 'Study the following Pie Charts :' and the '96.' label. This item asks about Pie Chart-I specifically, but the crop must still carry all three charts so the set renders one consistent stimulus; do not crop to Chart-I alone. Include every caption line, every dashed degree label and every dotted-arrow sector name outside the circles, with a margin on all four sides.",
+      "chapter": "Data Interpretation",
+      "subtopic": "Pie Charts",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 98,
+      "stem": "If 300 families from the “Houseless” category shift into Kutcha houses, what will be the average number of families in every Kutcha house ?",
+      "options": [
+        { "label": "A", "text": "15" },
+        { "label": "B", "text": "13.9" },
+        { "label": "C", "text": "12.9" },
+        { "label": "D", "text": "10.5" }
+      ],
+      "context": "Consider the following for the next three (03) items that follow :\n\nStudy the following Pie Charts :\n\nChart-I : Number of houses : 1,20,000\n\nChart-II : Population : 21,00,000\n\nChart-III : Number of families : 3,60,000",
+      "setLabel": "D96-98",
+      "hasFigure": true,
+      "figureNote": "Same crop as Q96 - the three stacked pie charts with their captions down the LEFT column of p12, between 'Study the following Pie Charts :' and the '96.' label. This item reads the Kutcha and Houseless sectors of Chart-III against the house count in Chart-I, so both must be inside the crop; take all three charts as one image. Include every caption line, every dashed degree label and every dotted-arrow sector name outside the circles, with a margin on all four sides.",
+      "chapter": "Data Interpretation",
+      "subtopic": "Pie Charts",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 99,
+      "stem": "Marks obtained by 60 students in a test (Maximum Marks-100) are given below :\n\n60, 82, 63, 40, 88, 80, 24, 60, 09, 58, 44, 74\n\n57, 60, 63, 30, 31, 64, 00, 62, 37, 54, 10, 99\n\n35, 83, 58, 33, 92, 43, 66, 41, 78, 72, 32, 33\n\n65, 11, 60, 17, 53, 93, 57, 03, 29, 31, 82, 50\n\n63, 15, 41, 55, 72, 42, 32, 23, 30, 48, 67, 34\n\nWhat is the percentage (approximate) of students getting marks higher than or equal to 60 but less than 80 ?",
+      "options": [
+        { "label": "A", "text": "25.0" },
+        { "label": "B", "text": "26.7" },
+        { "label": "C", "text": "28.3" },
+        { "label": "D", "text": "30.0" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Frequency Distributions and Classification",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 100,
+      "stem": "The arithmetic mean of 100 observations was 50. Later on, it was found that two observations were misread as 82 and 6 instead of 182 and 56. What is the value of the corrected mean ?",
+      "options": [
+        { "label": "A", "text": "50.1" },
+        { "label": "B", "text": "51.5" },
+        { "label": "C", "text": "52.3" },
+        { "label": "D", "text": "53.4" }
+      ],
+      "chapter": "Averages",
+      "subtopic": "Correction of Mean",
+      "difficulty": "EASY"
+    }
+  ]
+}
