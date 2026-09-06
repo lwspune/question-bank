@@ -4,9 +4,20 @@ Scanned CDS "Elementary Mathematics" booklets (image PDFs, **no text layer**, **
 answer key**) → the bank, `question_kind='pyq'`, under the existing **CDS** exam in a
 new **Mathematics** subject.
 
-**Status: BOTH KEYED SITTINGS DONE — `2020-1` and `2020-2` committed, 200 q, all PRIVATE,
-10 figures attached. Nothing is PUBLIC; publishing is a separate decision. 18 papers remain,
-none of which has a key.**
+**Status: COMPLETE — all 20 sittings (2016-II … 2026-I), 1,996 q PUBLIC, 0 PRIVATE, 80
+figures attached.** Every row carries a solution and `derived_model` provenance. Four
+questions are deliberately ABSENT because no printed option is correct (2018-Sep Q39/Q42,
+2021-Apr, 2021-Sep — hence 98/99/99); every other paper is whole at 100. Each paper was
+derived by two independent blind passes and **every one crosstabbed at AGREE 100%**, with
+0 DISPUTE and 0 TWIN across the whole corpus.
+
+Only `2020-1` and `2020-2` ever had an external prep-house key, and it was used to MEASURE
+the method rather than to answer the papers — see the next section, which is the reason to
+trust the other 18.
+
+**Owed, and not provable headlessly:** a browser click-through of `/browse`. The answer
+reveal is click-gated and the 80 figures render in it, so nothing in this pipeline proves
+they lay out correctly.
 
 ## What the two keyed papers measured
 
