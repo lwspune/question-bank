@@ -47,6 +47,8 @@ import {
   MOCK_BLUEPRINTS,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  CDS_GK_PAPER,
+  CDS_MATHS_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
   type MockPaperBlueprint,
@@ -60,7 +62,11 @@ import {
   type MockPaperSnapshot,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
-import { deriveCdsSittings } from "./cdsSittings";
+import {
+  cdsEnglishSittings,
+  cdsGkSittings,
+  cdsMathsSittings,
+} from "./cdsSittings";
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 
 function loadEnv() {
@@ -394,22 +400,36 @@ function neetSittings(): SourceFileSitting[] {
 }
 
 // ── CDS ─────────────────────────────────────────────────────────────────────
-// CDS English is source_file-keyed for the same reason as NEET (pyq_month NULL,
-// two sittings share a year) but is otherwise perfectly uniform: 19 × 120 q, no
-// grace, no overrides, one duration. So it needs no hand-written registry — its
-// sittings are DERIVED from scripts/cds/config.ts, the source of record the
-// ingestion pipeline stamps into source_file (see cdsSittings.ts).
+// THREE papers, one per bank subject: English, General Knowledge and Elementary
+// Mathematics. All source_file-keyed for the same reason as NEET (pyq_month is
+// NULL on every CDS row and the two sittings of a year share it), and all three
+// registries are DERIVED from their own ingestion config — the source of record
+// the pipeline stamps into source_file (see cdsSittings.ts).
 //
-// No `questionCount` advisory: the blueprint declares a HARD count of 120, so a
-// short sitting already fails loudly in validatePaperRows — a soft warning first
-// would just be noise ahead of the throw.
-function cdsSittings(): SourceFileSitting[] {
-  return deriveCdsSittings().map((s) => ({
+// The three differ in ways that matter and are NOT interchangeable:
+//
+//   English  19 sittings (2017-I …), 120 q, ONE bank subject.
+//   GK       19 sittings (2016-II …), 120 q, EIGHT bank subjects interleaved —
+//            the blueprint's single section lists all eight, because the printed
+//            booklet prints no subject heading and reproducing eight sections
+//            would REORDER the paper into subject blocks no candidate ever sat.
+//   Maths    20 sittings (2016-II …), 100 q, ONE bank subject, DIFFERENT marking
+//            (+1 / −0.3333, since it is 100 items for 100 marks where the other
+//            two are 120), and THREE HELD sittings.
+//
+// No `questionCount` advisory on any of them: each blueprint declares a HARD
+// section count, so a short sitting already fails loudly in validatePaperRows —
+// a soft warning first would just be noise ahead of the throw.
+function cdsSittingsFor(
+  derive: () => { key: string; sourceFile: string; year: number; slug: string; title: string; hold?: string }[]
+): SourceFileSitting[] {
+  return derive().map((s) => ({
     key: s.key,
     sourceFile: s.sourceFile,
     year: s.year,
     slug: s.slug,
     title: s.title,
+    ...(s.hold ? { hold: s.hold } : {}),
   }));
 }
 
@@ -484,7 +504,11 @@ async function main() {
   }
 
   if (runNeet) await buildFromSourceFiles(db, NEET_PAPER, neetSittings(), run);
-  if (runCds) await buildFromSourceFiles(db, CDS_ENGLISH_PAPER, cdsSittings(), run);
+  if (runCds) {
+    await buildFromSourceFiles(db, CDS_ENGLISH_PAPER, cdsSittingsFor(cdsEnglishSittings), run);
+    await buildFromSourceFiles(db, CDS_GK_PAPER, cdsSittingsFor(cdsGkSittings), run);
+    await buildFromSourceFiles(db, CDS_MATHS_PAPER, cdsSittingsFor(cdsMathsSittings), run);
+  }
   if (runMhtCet) {
     await buildFromSourceFiles(db, MHT_CET_MATHS_PAPER, mhtCetSittings(MHT_CET_MATHS_PAPER, "maths"), run);
     await buildFromSourceFiles(db, MHT_CET_PHY_CHEM_PAPER, mhtCetSittings(MHT_CET_PHY_CHEM_PAPER, "phyChem"), run);

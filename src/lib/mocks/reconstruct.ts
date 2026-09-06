@@ -148,13 +148,43 @@ export type CdsEdition = "I" | "II";
  * The edition segment is what keeps the two sittings distinct. (NEET solves the
  * same null-month problem with its `-re` segment.)
  */
-export function cdsMockSlug(year: number, edition: CdsEdition): string {
-  return `cds-${year}-${edition.toLowerCase()}-english`;
+export type CdsSubject = "english" | "gk" | "maths";
+
+/** How each CDS subject is spelled in a mock title. */
+const CDS_SUBJECT_LABEL: Record<CdsSubject, string> = {
+  english: "English",
+  gk: "General Knowledge",
+  maths: "Elementary Mathematics",
+};
+
+/**
+ * CDS slug, e.g. "cds-2026-i-english" / "cds-2026-i-gk" / "cds-2026-i-maths".
+ *
+ * `subject` is REQUIRED rather than defaulted to "english". A default would have
+ * let a new caller silently emit an English slug for a Maths paper, and since the
+ * mock id is slugToUuid(slug) that upsert would OVERWRITE the real English mock
+ * with no error — the collision failure this helper exists to prevent. Making it
+ * required means the typechecker enumerates every call site instead.
+ *
+ * The three existing subjects are a closed union for the same reason: an
+ * arbitrary string would let a typo ("englsh") mint a slug that looks valid,
+ * builds a mock nobody can find, and leaves the real one untouched.
+ */
+export function cdsMockSlug(
+  year: number,
+  edition: CdsEdition,
+  subject: CdsSubject
+): string {
+  return `cds-${year}-${edition.toLowerCase()}-${subject}`;
 }
 
 /** CDS title, e.g. "CDS (I) 2026 — English" (the scripts/cds pyqNote form). */
-export function cdsMockTitle(year: number, edition: CdsEdition): string {
-  return `CDS (${edition}) ${year} — English`;
+export function cdsMockTitle(
+  year: number,
+  edition: CdsEdition,
+  subject: CdsSubject
+): string {
+  return `CDS (${edition}) ${year} — ${CDS_SUBJECT_LABEL[subject]}`;
 }
 
 /**
