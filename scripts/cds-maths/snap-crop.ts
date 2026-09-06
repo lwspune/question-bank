@@ -10,12 +10,22 @@
  * forgiving anchors: a column band, whitespace gaps above and below the diagram,
  * and the hard ceiling the crop must not reach past.
  *
- * WHAT `answerY` MEANS ON THIS PAPER, and it is not what the name suggests. The
- * sibling pipelines crop a figure that sits ABOVE its solution, so the ceiling is
- * where the answer begins. Here the layout is: bare question number, then the
- * DIAGRAM, then the stem, then the options — so the thing the ceiling protects is
- * the STEM. Pass the stem's first line as `answerY`. Cropping into it would put
- * the question's own text inside the figure image.
+ * WHAT `answerY` MEANS, and it is not what the name suggests. The sibling
+ * pipelines crop a figure that sits ABOVE its solution, so the ceiling is where
+ * the answer begins. Here it is whatever block follows the diagram, and **THAT
+ * DIFFERS BY BOOKLET** — check the page before assuming:
+ *
+ *   - Some sittings run: bare question number, DIAGRAM, stem, options. The
+ *     ceiling protects the STEM, so pass the stem's first line.
+ *   - Others (2017-I, 2018-II, measured) run: stem, DIAGRAM, options. The ceiling
+ *     protects the OPTION BLOCK, so pass the first option line — except where a
+ *     stem continues below its diagram ("Consider the following statements :",
+ *     2017-I Q97), which is then the ceiling instead.
+ *
+ * Two independent agents each had to rediscover this from the page because this
+ * comment asserted the first layout as though it were the only one. Either way
+ * the rule is the same: `answerY` is the first ink row of the block that FOLLOWS
+ * the diagram, and cropping into it puts the question's own text in the image.
  *
  * TWO DOCUMENTED BLIND SPOTS IN THE CORE, both of which have shipped clipped
  * figures elsewhere in this repo, and neither of which this script can fix:
