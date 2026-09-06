@@ -126,8 +126,21 @@ export const PAPERS: Record<string, Paper> = {
   // transcriber; the range stops at 42 deliberately.
   //
   // 21 English pages for 100 questions is ~4.8 q/page, and p02 carries 6.
-  // WHERE Q100 COMPLETES IS NOT YET CONFIRMED — the band that owns the tail must
-  // verify it per the brief's standing rule, rather than trusting this comment.
+  //
+  // Q100 COMPLETES ON p42 — VERIFIED 2026-09-06 by the tail band, two ways: its
+  // stem and all four options sit wholly in p42's right column, and the band
+  // rendered the un-rendered tail straight from the PDF to confirm 43-46 are
+  // SPACE FOR ROUGH WORK and 47 is the English cover. The cover corroborates the
+  // paper's shape independently — "contains 100 items", Series A, T.B.C.
+  // KPRS-T-MTE, Two Hours, 100 marks, one-third penalty. Every other fact in this
+  // comment was re-checked and held.
+  //
+  // A TRAP IN THE Q71-Q80 DATA-SUFFICIENCY RUN: options (a)(b)(c) are word-for-
+  // word identical across all ten, but (d) is NOT. It reads "cannot be answered
+  // even by using both" on 71/72/75/76/77 and "can be answered even without using
+  // both" on 73/74/78/79/80. Transcribing (d) once and reusing it would put the
+  // wrong fourth option on five questions, silently. Those ten reprint the
+  // preamble in full each time, so they are standalone questions, not a set.
   "2026-1": p("2026-1", "2026 Apr.pdf", 2026, "I", {
     englishPages: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42],
   }),
