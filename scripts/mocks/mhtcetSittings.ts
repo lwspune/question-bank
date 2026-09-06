@@ -36,6 +36,14 @@
  * flags a hold whose paper now reconstructs, so closing a corpus hole surfaces
  * as a prompt to delete the line rather than as silence.
  *
+ * MERGED SITTINGS (2026-09-06): the bank has 45 source_file labels but only 42
+ * real sittings. Three papers were uploaded twice and, because the two uploads
+ * were typed independently, content_hash deduped only the matching rows — so each
+ * of those papers is SPLIT across two labels, neither of which reconstructs while
+ * the union is exactly 150. They are merged via `mergeWith` rather than
+ * re-ingested; nothing was missing from the bank in the first place. That closed
+ * 10 of the 30 holds this registry used to carry.
+ *
  * Pure — no I/O, no DB. Unit-tested in tests/mock-mhtcet-sittings.test.ts.
  */
 
@@ -50,6 +58,21 @@ export type MhtCetSitting = {
   key: string;
   /** `questions.source_file` for this sitting. */
   sourceFile: string;
+  /**
+   * A SECOND `source_file` holding the SAME paper — a duplicate upload.
+   *
+   * Three MHT-CET papers were uploaded twice, typed independently. content_hash
+   * deduped only the rows whose typing matched, so each paper's 150 questions are
+   * SPLIT across both labels and NEITHER reconstructs alone, while the union is
+   * exactly 150. Proven structurally (union = 150, ~90 identical stems per pair)
+   * and, for the 2024 pair, on disk: its two source .docx are BYTE-IDENTICAL,
+   * question paper and answer key alike.
+   *
+   * The builder normalises both labels onto the paper's own numbering (they can
+   * differ — see paperNumberOffset) and keeps `sourceFile`'s copy where both hold
+   * a question.
+   */
+  mergeWith?: string;
   year: number;
   /** Human sitting label for the title; null when no date is established. */
   label: string | null;
@@ -72,20 +95,13 @@ export type MhtCetSitting = {
  */
 export const MHT_CET_SITTINGS: MhtCetSitting[] = [
   // ── 2025 ──────────────────────────────────────────────────────────────────
-  // The one 2025 source outside the April docx batch. Its note reads "Shift ||"
-  // and it is stamped May, and the only May-2025 file on disk is
-  // "MHT_CET_2025_14th_May_Shift_2_QP.pdf" — so the label is INFERRED from that
-  // agreement, not verified against stems. It ships no mocks either way.
-  {
-    key: "2025-may-14-s2",
-    sourceFile: "MHT_CET_2025_PCM.xlsx",
-    year: 2025,
-    label: "14 May Shift 2",
-    hold: {
-      maths: "48/50 — 2 questions withheld PRIVATE (flawed)",
-      phyChem: "99/100 — 1 question absent from the bank",
-    },
-  },
+  // The 13 April-2025 shifts are DERIVED from scripts/mhtcet/config.ts below.
+  //
+  // `MHT_CET_2025_PCM.xlsx` is NOT a sitting of its own: it is a second upload of
+  // 19 April Shift II, merged into that sitting. It was first labelled "14 May
+  // Shift 2" from its own May stamp plus the lone May-2025 file on disk — an
+  // INFERENCE, flagged as such, and wrong. The bank settles it: union with
+  // 2025_Apr_19_S2 is exactly 150 with 103 identical stems.
 
   // ── 2024 ──────────────────────────────────────────────────────────────────
   {
@@ -107,24 +123,20 @@ export const MHT_CET_SITTINGS: MhtCetSitting[] = [
     year: 2024,
     label: "13 May Shift 2",
   },
-  // The worst-covered sitting in the corpus: less than half its Chemistry block
-  // is in the bank.
-  {
-    key: "2024-may-13-s1",
-    sourceFile: "MHT_CET_13thMay2024_Shift1_QuestionBank.xlsx",
-    year: 2024,
-    label: "13 May Shift 1",
-    hold: {
-      maths: "47/50 — 3 questions absent from the bank",
-      phyChem: "62/100 — 38 questions absent from the bank",
-    },
-  },
+  // MERGED with MHT_CET_13thMay2024_Shift1_QuestionBank.xlsx — the same paper
+  // uploaded twice (their two source .docx are byte-identical, QP and AK).
+  //
+  // WHICH SITTING IT REALLY IS CANNOT BE ESTABLISHED: one of 12-May-Shift-2 and
+  // 13-May-Shift-1 has no paper of its own and was filled with a copy of the
+  // other, and nothing on disk or in the bank distinguishes them. The 12 May
+  // label is kept because a mock is already PUBLISHED under it, so this adds no
+  // labelling risk that was not already live — but the date is not established.
   {
     key: "2024-may-12-s2",
     sourceFile: "MHT_CET_12thMay2024_Shift2_QuestionBank.xlsx",
+    mergeWith: "MHT_CET_13thMay2024_Shift1_QuestionBank.xlsx",
     year: 2024,
     label: "12 May Shift 2",
-    hold: { phyChem: "98/100 — 2 questions absent from the bank" },
   },
   {
     key: "2024-may-12-s1",
@@ -172,28 +184,16 @@ export const MHT_CET_SITTINGS: MhtCetSitting[] = [
   },
 
   // ── 2023 ──────────────────────────────────────────────────────────────────
-  // Undated: the only 2023 source with no day or shift, matching the folder's
-  // lone "MHT_CET_2023_QP.docx". Ships nothing, so the missing date costs
-  // nothing — but a fabricated one would have.
-  {
-    key: "2023-analysis",
-    sourceFile: "MHT_CET_2023_Analysis.xlsx",
-    year: 2023,
-    label: null,
-    hold: {
-      maths: "49/50 — 1 question withheld PRIVATE (flawed)",
-      phyChem: "91/100 — 8 absent from the bank, 1 withheld PRIVATE (flawed)",
-    },
-  },
+  // MERGED with MHT_CET_2023_Analysis.xlsx, which is not a sitting of its own but
+  // a second upload of THIS paper: union exactly 150, 85 identical stems, and the
+  // undated "MHT_CET_2023_QP.docx" on disk is this same 16-May-Shift-2 paper.
+  // The dated label wins over the undated one.
   {
     key: "2023-may-16-s2",
     sourceFile: "MHT_CET_16thMay2023_Shift2_QuestionBank.xlsx",
+    mergeWith: "MHT_CET_2023_Analysis.xlsx",
     year: 2023,
     label: "16 May Shift 2",
-    hold: {
-      maths: "44/50 — 6 questions absent from the bank",
-      phyChem: "61/100 — 39 questions absent from the bank",
-    },
   },
   {
     key: "2023-may-16-s1",
@@ -335,7 +335,6 @@ const APRIL_2025_HOLDS: Record<string, MhtCetHold> = {
     maths: "49/50 — 1 question withheld PRIVATE (flawed)",
     phyChem: "99/100 — 1 question withheld PRIVATE (flawed)",
   },
-  "2025-apr-19-s2": { phyChem: "93/100 — 7 questions absent from the bank" },
   "2025-apr-20-s1": { phyChem: "99/100 — 1 question absent from the bank" },
   "2025-apr-20-s2": { maths: "48/50 — 2 questions withheld PRIVATE (flawed)" },
   "2025-apr-22-s2": { phyChem: "98/100 — 2 questions absent from the bank" },
@@ -345,12 +344,23 @@ const APRIL_2025_HOLDS: Record<string, MhtCetHold> = {
   },
 };
 
+/**
+ * A derived sitting that is ALSO a merge target. `MHT_CET_2025_PCM.xlsx` is a
+ * second upload of 19 April Shift II (see the 2025 note above), and the .docx —
+ * the curated pipeline's transcription, with derived and verified answers — is
+ * the primary, so its copy wins wherever both labels hold a question.
+ */
+const APRIL_2025_MERGES: Record<string, string> = {
+  "2025-apr-19-s2": "MHT_CET_2025_PCM.xlsx",
+};
+
 function derivedApril2025(): MhtCetSitting[] {
   return Object.entries(SHIFTS).map(([key, s]) => ({
     key,
     sourceFile: s.sourceFile,
     year: s.pyqYear,
     label: s.pyqNote,
+    ...(APRIL_2025_MERGES[key] ? { mergeWith: APRIL_2025_MERGES[key] } : {}),
     ...(APRIL_2025_HOLDS[key] ? { hold: APRIL_2025_HOLDS[key] } : {}),
   }));
 }
@@ -384,6 +394,19 @@ export function deriveMhtCetSittings(): MhtCetSitting[] {
     }
     byFile.set(s.sourceFile, s.key);
 
+    // A merged label must not ALSO be a sitting of its own, or the same paper
+    // ships twice — once whole and once as the fragment it was split into.
+    if (s.mergeWith) {
+      const prevMerge = byFile.get(s.mergeWith);
+      if (prevMerge) {
+        throw new Error(
+          `MHT-CET sitting "${s.key}" merges "${s.mergeWith}", but that file is ` +
+            `already claimed by "${prevMerge}" — one paper cannot be two sittings`
+        );
+      }
+      byFile.set(s.mergeWith, s.key);
+    }
+
     // A hold keyed to a sitting that does not exist would silently do nothing.
     if (!s.key.startsWith(String(s.year))) {
       throw new Error(
@@ -397,6 +420,11 @@ export function deriveMhtCetSittings(): MhtCetSitting[] {
   for (const k of Object.keys(APRIL_2025_HOLDS)) {
     if (!keys.has(k)) {
       throw new Error(`APRIL_2025_HOLDS names unknown sitting "${k}"`);
+    }
+  }
+  for (const k of Object.keys(APRIL_2025_MERGES)) {
+    if (!keys.has(k)) {
+      throw new Error(`APRIL_2025_MERGES names unknown sitting "${k}"`);
     }
   }
 

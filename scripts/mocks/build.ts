@@ -55,6 +55,8 @@ import {
 } from "../../src/lib/mocks/blueprints";
 import {
   buildMockPaper,
+  dedupeMergedRows,
+  normalisePaperRows,
   neetMockSlug,
   neetMockTitle,
   mhtCetMockSlug,
@@ -145,10 +147,10 @@ async function discoverSittings(db: SupabaseClient, chapterIds: string[]) {
 /** How a sitting is pinned within a paper's corpus. */
 type SittingPin =
   | { by: "yearMonth"; year: number; month: string | null }
-  | { by: "sourceFile"; sourceFile: string };
+  | { by: "sourceFile"; sourceFiles: string[] };
 
 function pinLabel(pin: SittingPin): string {
-  return pin.by === "sourceFile" ? pin.sourceFile : `${pin.year}-${pin.month ?? "-"}`;
+  return pin.by === "sourceFile" ? pin.sourceFiles.join(" + ") : `${pin.year}-${pin.month ?? "-"}`;
 }
 
 async function fetchPaperRows(
@@ -162,12 +164,12 @@ async function fetchPaperRows(
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("questions")
-      .select("id, source_row, question_number, chapter_id, options(label,is_correct)")
+      .select("id, source_row, question_number, chapter_id, source_file, options(label,is_correct)")
       .in("chapter_id", chapterIds)
       .eq("question_kind", "pyq")
       .eq("visibility", "PUBLIC");
     if (pin.by === "sourceFile") {
-      q = q.eq("source_file", pin.sourceFile);
+      q = q.in("source_file", pin.sourceFiles);
     } else {
       q = q.eq("pyq_year", pin.year);
       q = pin.month === null ? q.is("pyq_month", null) : q.eq("pyq_month", pin.month);
@@ -181,6 +183,7 @@ async function fetchPaperRows(
         sourceRow: (r.source_row as number | null) ?? null,
         questionNumber: (r.question_number as string | null) ?? null,
         subjectName: chapterToSubject.get(r.chapter_id as string) ?? "?",
+        sourceFile: (r.source_file as string | null) ?? undefined,
         answer: (opts.find((o) => o.is_correct)?.label as "A" | "B" | "C" | "D" | null) ?? null,
       });
     }
@@ -199,13 +202,13 @@ function fetchRowsByYearMonth(
   return fetchPaperRows(db, chapterToSubject, { by: "yearMonth", year, month });
 }
 
-/** One sitting's rows, pinned by source_file (NEET, CDS). */
+/** One sitting's rows, pinned by source_file — several when the sitting is MERGED. */
 function fetchRowsBySourceFile(
   db: SupabaseClient,
   chapterToSubject: Map<string, string>,
-  sourceFile: string
+  sourceFiles: string[]
 ): Promise<PaperQuestionRow[]> {
-  return fetchPaperRows(db, chapterToSubject, { by: "sourceFile", sourceFile });
+  return fetchPaperRows(db, chapterToSubject, { by: "sourceFile", sourceFiles });
 }
 
 // ── Shared write ────────────────────────────────────────────────────────────
@@ -253,6 +256,14 @@ type SourceFileSitting = {
   /** Registry key — matched by `--only` alongside the slug. */
   key: string;
   sourceFile: string;
+  /**
+   * A SECOND source_file holding the same paper — a duplicate upload. The two
+   * are typed independently, so content_hash deduped only the rows that matched
+   * and the paper's questions are SPLIT across both labels: neither reconstructs
+   * alone. Rows are normalised onto the paper's own numbering and collapsed to
+   * one per position, preferring `sourceFile`. MHT-CET only (3 of its sittings).
+   */
+  mergeWith?: string;
   year: number;
   slug: string;
   title: string;
@@ -290,7 +301,18 @@ async function buildFromSourceFiles(
   console.log(`\n${bp.paperLabel} — ${sittings.length} sitting(s)${only ? ` (filtered: ${only})` : ""}\n`);
 
   for (const s of sittings) {
-    let rows = await fetchRowsBySourceFile(db, chapterToSubject, s.sourceFile);
+    const files = s.mergeWith ? [s.sourceFile, s.mergeWith] : [s.sourceFile];
+    let rows = await fetchRowsBySourceFile(db, chapterToSubject, files);
+    if (s.mergeWith) {
+      const before = rows.length;
+      // Normalise FIRST: the two labels can number the same question differently
+      // (a .docx at 1..150 vs an .xlsx at 2..151), so collapsing on raw
+      // source_row would pair the wrong questions and tie adjacent ones.
+      rows = dedupeMergedRows(normalisePaperRows(rows), s.sourceFile);
+      console.log(
+        `  ⤢ ${s.key.padEnd(18)} merged ${files.length} labels: ${before} rows → ${rows.length} after dedupe`
+      );
+    }
     if (s.prepare) rows = s.prepare(rows);
     if (s.questionCount != null && rows.length !== s.questionCount) {
       console.log(`  ! ${s.key}: ${rows.length} rows vs expected ${s.questionCount} (shipping the PUBLIC subset)`);
@@ -448,6 +470,10 @@ function mhtCetSittings(
   return deriveMhtCetSittings().map((s) => ({
     key: s.key,
     sourceFile: s.sourceFile,
+    // Forwarding this is load-bearing: drop it and the merge is INERT — the
+    // sitting silently rebuilds from one label and fails its hard count, which
+    // reads as a corpus gap rather than a plumbing bug.
+    mergeWith: s.mergeWith,
     year: s.year,
     slug: mhtCetMockSlug(s.key, bp.code),
     title: mhtCetMockTitle(s.year, s.label, bp),

@@ -30,6 +30,11 @@ export type PaperQuestionRow = {
   sourceRow: number | null;
   questionNumber: string | null;
   subjectName: string;
+  /**
+   * The `source_file` this row came from. Only needed when a sitting is MERGED
+   * from two labels (see dedupeMergedRows) — every other path ignores it.
+   */
+  sourceFile?: string;
   /** The correct option label, or null when the key is missing (a defect). */
   answer: "A" | "B" | "C" | "D" | null;
   /**
@@ -77,6 +82,77 @@ function orderKey(r: PaperQuestionRow): number {
 /** Sort a section's rows into original paper order (does not mutate input). */
 export function orderPaperRows(rows: PaperQuestionRow[]): PaperQuestionRow[] {
   return [...rows].sort((a, b) => orderKey(a) - orderKey(b));
+}
+
+// ── Merging a sitting that exists under TWO source_file labels ──────────────
+// Three MHT-CET papers were uploaded twice, independently typed. content_hash
+// deduped only the rows whose typing matched, so each paper's 150 questions are
+// SPLIT across both labels: neither reconstructs alone, the union is exactly 150.
+
+/**
+ * How far a file's `source_row` runs ahead of the paper's own question number.
+ *
+ * MEASURED, not assumed: every .xlsx upload runs Physics `source_row` 2..51 with
+ * `question_number` 1..50 — the Excel header row — while the 2025 .docx sources
+ * run 1..50 for the same questions. Anything else is treated as 0 rather than
+ * guessed; a wrong offset would silently shift a whole paper by one.
+ */
+export function paperNumberOffset(sourceFile: string | undefined): number {
+  return sourceFile?.toLowerCase().endsWith(".xlsx") ? 1 : 0;
+}
+
+/**
+ * Rewrite each row's ordering key from its file's `source_row` to the PAPER's
+ * question number, so rows from two files that number differently can be
+ * compared and ordered as one paper.
+ *
+ * Without this, merging the 2025 pair (a .docx at 1..150 with an .xlsx at
+ * 2..151) pairs docx q13 with xlsx q12 and produces TIES between adjacent
+ * questions — leaving the paper's order arbitrary exactly where the two
+ * conventions collide, with nothing downstream able to notice.
+ */
+export function normalisePaperRows(
+  rows: PaperQuestionRow[]
+): PaperQuestionRow[] {
+  return rows.map((r) =>
+    typeof r.sourceRow === "number"
+      ? { ...r, sourceRow: r.sourceRow - paperNumberOffset(r.sourceFile) }
+      : r
+  );
+}
+
+/**
+ * Collapse a merged sitting to one row per (section, position), preferring the
+ * PRIMARY label's copy.
+ *
+ * Both labels usually hold the same question — they are two typings of one
+ * paper — which is a duplicate ordering key, and validatePaperRows rejects those
+ * (rightly: an ambiguous order is not a paper). So the merge must choose, and
+ * choose deterministically regardless of the order rows arrive from PostgREST.
+ *
+ * The key includes the SUBJECT because collapsing two subjects that happen to
+ * share a position would silently delete a real question.
+ *
+ * Which copy wins is a genuine editorial call and the caller owns it: for the
+ * 2025 pair the .docx is the curated-pipeline transcription (derived + verified
+ * answers) and is preferred over the older bulk .xlsx.
+ */
+export function dedupeMergedRows(
+  rows: PaperQuestionRow[],
+  primarySourceFile: string
+): PaperQuestionRow[] {
+  const best = new Map<string, PaperQuestionRow>();
+  for (const r of rows) {
+    const key = `${r.subjectName}#${orderKey(r)}`;
+    const seen = best.get(key);
+    if (!seen) { best.set(key, r); continue; }
+    // Primary wins; otherwise keep what we had (first-seen), so the result does
+    // not depend on row arrival order.
+    if (seen.sourceFile !== primarySourceFile && r.sourceFile === primarySourceFile) {
+      best.set(key, r);
+    }
+  }
+  return [...best.values()];
 }
 
 /** The blueprint section a bank subject belongs to; null when it fits none. */
