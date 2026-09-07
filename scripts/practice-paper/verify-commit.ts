@@ -14,7 +14,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { PAPERS, loadRecords, examIdOf, statusOf } from "./config";
+import { PAPERS, loadRecords, examIdOf, statusOf, recToParsedRow } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -39,16 +39,58 @@ async function main() {
 
   console.log(`\nverifying "${spec.title}"  (${recs.length} records, source_file=${spec.sourceFile})\n`);
 
+  const SELECT =
+    "id,question_number,visibility,question_kind,solution,context,set_id,subtopic_id,source_file,content_hash,chapters(name,subjects(name))";
+
+  // Rows this ingest OWNS — inserted under its own source_file.
   const { data: qData, error: qErr } = await c
-    .from("questions")
-    .select("id,question_number,visibility,question_kind,solution,context,set_id,subtopic_id,chapters(name,subjects(name))")
+    .from("questions").select(SELECT)
     .eq("exam_id", examId).eq("source_file", spec.sourceFile);
   if (qErr) throw new Error(`questions: ${qErr.message}`);
-  const rows = (qData ?? []) as any[];
+  const owned = (qData ?? []) as any[];
 
-  check(rows.length === recs.length, "row count matches the records file",
-    `${rows.length} in DB vs ${recs.length} records`);
-  check(rows.every((q) => q.question_kind === "practice"), "every row is question_kind='practice'");
+  // A record whose content_hash already existed in the bank is SKIPPED by commitStaged
+  // (ignoreDuplicates on org_id,exam_id,content_hash), so it has no row under our
+  // source_file — commit-paper references the pre-existing bank row instead. Resolve
+  // those the same way commit-paper does, or every check below silently measures the
+  // wrong set. A fully bank-mirrored paper owns ZERO rows and is legitimate.
+  const ownedByNum = new Map(owned.map((q) => [String(q.question_number), q]));
+  const rowOf = new Map<number, any>();
+  const mirroredHashes: { n: number; hash: string }[] = [];
+  for (const r of recs) {
+    const hit = ownedByNum.get(String(r.n));
+    if (hit) rowOf.set(r.n, hit);
+    else mirroredHashes.push({ n: r.n, hash: recToParsedRow(spec, r).contentHash });
+  }
+  for (let i = 0; i < mirroredHashes.length; i += 200) {
+    const chunk = mirroredHashes.slice(i, i + 200);
+    const { data: mData, error: mErr } = await c
+      .from("questions").select(SELECT)
+      .eq("exam_id", examId).in("content_hash", chunk.map((m) => m.hash));
+    if (mErr) throw new Error(`mirrored questions: ${mErr.message}`);
+    const byHash = new Map(((mData ?? []) as any[]).map((q) => [q.content_hash, q]));
+    for (const m of chunk) {
+      const hit = byHash.get(m.hash);
+      if (hit) rowOf.set(m.n, hit);
+    }
+  }
+  // Mirrors commit-paper's `commitRecs`: with no paper to back the test, dup/flawed rows
+  // have no consumer, so a createPaper:false ingest commits ONLY the genuinely-new ones.
+  // Expecting all N to resolve there would be a permanent false alarm.
+  const expected = spec.createPaper === false ? recs.filter((r) => statusOf(r) === "new") : recs;
+  const rows = expected.map((r) => rowOf.get(r.n)).filter(Boolean) as any[];
+  const mirrored = rows.filter((q) => q.source_file !== spec.sourceFile);
+  if (mirrored.length) {
+    console.log(`  note  ${mirrored.length}/${recs.length} question(s) are BANK-MIRRORED — the printed item already`);
+    console.log(`        existed in the bank, so the paper references the pre-existing row and this ingest`);
+    console.log(`        inserted nothing for it. Those rows keep their own kind/visibility/question_number.\n`);
+  }
+
+  check(rows.length === expected.length, "every expected record resolves to a bank row",
+    `${rows.length} resolved (${owned.length} own, ${mirrored.length} mirrored) vs ${expected.length} expected of ${recs.length} records`);
+  check(owned.every((q) => q.question_kind === "practice"),
+    "every row this ingest created is question_kind='practice'",
+    `${owned.length} own row(s)`);
   check(rows.every((q) => q.solution && q.solution.trim()), "every row has a solution",
     `${rows.filter((q) => !q.solution || !q.solution.trim()).length} missing`);
   check(rows.every((q) => q.subtopic_id), "every row has a subtopic",
@@ -56,17 +98,24 @@ async function main() {
 
   // Visibility: a `new` row may legitimately be PUBLIC (after flip-public) or PRIVATE
   // (before it), but a dup/flawed row must NEVER be PUBLIC — that is the dedup gate.
-  const byNum = new Map(rows.map((q) => [String(q.question_number), q]));
+  // Scoped to rows this ingest CREATED: a mirrored row's visibility was decided by
+  // whatever ingest first committed it, and this paper neither set it nor can leak it.
   const leaked = recs
-    .filter((r) => statusOf(r) !== "new" && byNum.get(String(r.n))?.visibility === "PUBLIC")
+    .filter((r) => statusOf(r) !== "new")
+    .filter((r) => {
+      const q = rowOf.get(r.n);
+      return q && q.source_file === spec.sourceFile && q.visibility === "PUBLIC";
+    })
     .map((r) => r.n);
-  check(leaked.length === 0, "no dup/flawed row is PUBLIC (the dedup gate)",
+  check(leaked.length === 0, "no dup/flawed row this ingest created is PUBLIC (the dedup gate)",
     leaked.length ? `leaked: ${leaked.join(", ")}` : "");
 
-  const nums = rows.map((q) => Number(q.question_number)).sort((a, b) => a - b);
   const wantNums = recs.map((r) => r.n).sort((a, b) => a - b);
-  check(nums.length === wantNums.length && nums.every((v, i) => v === wantNums[i]),
-    "question_number set matches the printed numbering");
+  const nums = owned.map((q) => Number(q.question_number)).sort((a, b) => a - b);
+  const wantOwned = expected.filter((r) => rowOf.get(r.n)?.source_file === spec.sourceFile)
+    .map((r) => r.n).sort((a, b) => a - b);
+  check(nums.length === wantOwned.length && nums.every((v, i) => v === wantOwned[i]),
+    "question_number set matches the printed numbering (rows this ingest created)");
 
   // Options — chunk the .in() FILTER at 200; that is a URL-length limit and is a
   // different limit from the 1000-row cap on a result. Paging one does not fix the other.
@@ -93,7 +142,7 @@ async function main() {
   const wantSets = new Set(recs.filter((r) => r.setLabel).map((r) => r.setLabel!));
   if (wantSets.size) {
     const withCtx = recs.filter((r) => r.context).map((r) => r.n).sort((a, b) => a - b);
-    const dbCtx = rows.filter((q) => q.context).map((q) => Number(q.question_number)).sort((a, b) => a - b);
+    const dbCtx = recs.filter((r) => rowOf.get(r.n)?.context).map((r) => r.n).sort((a, b) => a - b);
     check(withCtx.length === dbCtx.length && withCtx.every((v, i) => v === dbCtx[i]),
       "the rows carrying a shared passage are exactly the ones the records declare");
     const dbSets = new Set(rows.filter((q) => q.set_id).map((q) => q.set_id));
@@ -118,10 +167,18 @@ async function main() {
         `${links.length} links vs ${recs.length} records`);
       check(new Set(links.map((l) => l.question_id)).size === links.length,
         "no question is linked twice");
-      const numById = new Map(rows.map((q) => [q.id, Number(q.question_number)]));
-      const ordered = [...links].sort((a, b) => a.position - b.position).map((l) => numById.get(l.question_id));
-      check(ordered.every((v) => v !== undefined), "every paper question belongs to this source file");
-      check(ordered.every((v, i) => v === wantNums[i]), "paper order == printed Q-order (OMR parity)");
+      // Map by the row this record RESOLVED to, not by question_number: a mirrored row
+      // carries its original paper's number, so numbering can't identify a printed Q.
+      const nById = new Map<string, number>();
+      for (const r of recs) {
+        const q = rowOf.get(r.n);
+        if (q) nById.set(q.id, r.n);
+      }
+      const ordered = [...links].sort((a, b) => a.position - b.position).map((l) => nById.get(l.question_id));
+      check(ordered.every((v) => v !== undefined), "every paper question is one of this paper's records",
+        `${ordered.filter((v) => v === undefined).length} unrecognised`);
+      check(ordered.length === wantNums.length && ordered.every((v, i) => v === wantNums[i]),
+        "paper order == printed Q-order (OMR parity)");
       console.log(`\n  paper id: ${paperId}`);
     }
   }
