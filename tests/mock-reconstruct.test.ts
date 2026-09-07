@@ -5,6 +5,7 @@ import {
   CDS_ENGLISH_PAPER,
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
+  JEE_MAINS_PAPER,
 } from "@/lib/mocks/blueprints";
 import {
   mockSlug,
@@ -19,6 +20,7 @@ import {
   type PaperQuestionRow,
 } from "@/lib/mocks/reconstruct";
 import { slugToUuid } from "@/lib/quiz/quizPayload";
+import { jeeMockSlug, jeeMockTitle } from "@/lib/mocks/reconstruct";
 
 // A NEET sitting: Physics 1-N, Chemistry N+1..2N, then a CONTENT-MIXED Biology
 // block (Botany + Zoology interleaved by source_row). Default 200-q layout.
@@ -30,7 +32,7 @@ function neetRows(per = 50): PaperQuestionRow[] {
       sourceRow: n,
       questionNumber: String(n),
       subjectName: subject,
-      answer: (["A", "B", "C", "D"] as const)[n % 4],
+      answer: { kind: "mcq", label: (["A", "B", "C", "D"] as const)[n % 4] },
     });
   for (let n = 1; n <= per; n++) push(n, "Physics");
   for (let n = per + 1; n <= 2 * per; n++) push(n, "Chemistry");
@@ -52,7 +54,7 @@ function mathsRows(count = 120): PaperQuestionRow[] {
       sourceRow: i + 1, // Excel row 1 is the header, so q1 → source_row 2
       questionNumber: String(i),
       subjectName: "Mathematics",
-      answer: (["A", "B", "C", "D"] as const)[i % 4],
+      answer: { kind: "mcq", label: (["A", "B", "C", "D"] as const)[i % 4] },
     });
   }
   // shuffle to prove ordering is derived, not input order
@@ -68,7 +70,7 @@ function cdsRows(count = 120): PaperQuestionRow[] {
       sourceRow: i,
       questionNumber: String(i),
       subjectName: "English",
-      answer: (["A", "B", "C", "D"] as const)[i % 4],
+      answer: { kind: "mcq", label: (["A", "B", "C", "D"] as const)[i % 4] },
     });
   }
   return rows.sort((a, b) => (a.id < b.id ? 1 : -1)); // shuffle
@@ -105,8 +107,8 @@ describe("orderPaperRows", () => {
 
   it("falls back to numeric question_number when source_row is null", () => {
     const rows: PaperQuestionRow[] = [
-      { id: "b", sourceRow: null, questionNumber: "10", subjectName: "Mathematics", answer: "A" },
-      { id: "a", sourceRow: null, questionNumber: "2", subjectName: "Mathematics", answer: "B" },
+      { id: "b", sourceRow: null, questionNumber: "10", subjectName: "Mathematics", answer: { kind: "mcq", label: "A" } },
+      { id: "a", sourceRow: null, questionNumber: "2", subjectName: "Mathematics", answer: { kind: "mcq", label: "B" } },
     ];
     expect(orderPaperRows(rows).map((r) => r.id)).toEqual(["a", "b"]);
   });
@@ -391,7 +393,7 @@ describe("CDS General Knowledge reconstruction", () => {
         sourceRow: i,
         questionNumber: String(i),
         subjectName: GK_SUBJECTS[i % GK_SUBJECTS.length],
-        answer: (["A", "B", "C", "D"] as const)[i % 4],
+        answer: { kind: "mcq", label: (["A", "B", "C", "D"] as const)[i % 4] },
       });
     }
     return rows.sort((a, b) => (a.id < b.id ? 1 : -1)); // shuffle
@@ -441,7 +443,7 @@ describe("CDS Elementary Mathematics reconstruction", () => {
         sourceRow: i,
         questionNumber: String(i),
         subjectName: "Mathematics",
-        answer: (["A", "B", "C", "D"] as const)[i % 4],
+        answer: { kind: "mcq", label: (["A", "B", "C", "D"] as const)[i % 4] },
       });
     }
     return rows.sort((a, b) => (a.id < b.id ? 1 : -1));
@@ -477,5 +479,98 @@ describe("CDS Elementary Mathematics reconstruction", () => {
     expect(() =>
       buildMockPaper(CDS_MATHS_PAPER, cdsMathsRows(98), { year: 2018, month: null })
     ).toThrow();
+  });
+});
+
+/**
+ * JEE Mains — the first paper whose answers are not all option labels. Each
+ * subject runs 20 MCQ (Section A) then 5 numeric (Section B), and the paper runs
+ * Physics 1-25, Chemistry 26-50, Maths 51-75.
+ */
+function jeeRows(perSubject = 25, numericPer = 5): PaperQuestionRow[] {
+  const rows: PaperQuestionRow[] = [];
+  const subjects = ["Physics", "Chemistry", "Maths"];
+  let n = 0;
+  for (const subject of subjects) {
+    for (let k = 1; k <= perSubject; k++) {
+      n += 1;
+      const isNumeric = k > perSubject - numericPer;
+      rows.push({
+        id: `q-${n}`,
+        sourceRow: n,
+        questionNumber: String(n),
+        subjectName: subject,
+        answer: isNumeric
+          ? { kind: "numeric", value: n * 10 }
+          : { kind: "mcq", label: (["A", "B", "C", "D"] as const)[n % 4] },
+      });
+    }
+  }
+  return rows;
+}
+
+describe("JEE Mains reconstruction", () => {
+  it("builds a 75-question / 300-mark paper", () => {
+    const snap = buildMockPaper(JEE_MAINS_PAPER, jeeRows(), {
+      year: 2026,
+      month: null,
+      slug: jeeMockSlug("2026-jan-21-s1", JEE_MAINS_PAPER.code),
+      title: jeeMockTitle(2026, "21 Jan, Shift 1", JEE_MAINS_PAPER),
+    });
+    expect(snap.totalQuestions).toBe(75);
+    expect(snap.totalMarks).toBe(300);
+    expect(snap.slug).toBe("jee-mains-2026-jan-21-s1-paper-1");
+    expect(snap.title).toBe("JEE Mains 2026 (21 Jan, Shift 1) — Paper 1 (B.E./B.Tech)");
+    expect(snap.id).toBe(slugToUuid(snap.slug));
+  });
+
+  /** Section order IS paper order: Physics must occupy positions 1-25. */
+  it("places the subjects in printed order", () => {
+    const snap = buildMockPaper(JEE_MAINS_PAPER, jeeRows(), {
+      year: 2026, month: null, slug: "s", title: "t",
+    });
+    const keyAt = (pos: number) => snap.questions.find((q) => q.position === pos)!.sectionKey;
+    expect(keyAt(1)).toBe("physics");
+    expect(keyAt(25)).toBe("physics");
+    expect(keyAt(26)).toBe("chemistry");
+    expect(keyAt(50)).toBe("chemistry");
+    expect(keyAt(51)).toBe("maths");
+    expect(keyAt(75)).toBe("maths");
+    expect(snap.questions.map((q) => q.position)).toEqual(
+      Array.from({ length: 75 }, (_, i) => i + 1)
+    );
+  });
+
+  /** A numeric key is a valid key: validatePaperRows must not read the union as
+   *  "no answer" and refuse the 15 Section-B questions of every JEE paper. */
+  it("accepts numeric answer keys", () => {
+    expect(validatePaperRows(JEE_MAINS_PAPER, jeeRows())).toEqual([]);
+  });
+
+  it("marks every question +4 / -1, Section B included", () => {
+    const snap = buildMockPaper(JEE_MAINS_PAPER, jeeRows(), {
+      year: 2026, month: null, slug: "s", title: "t",
+    });
+    expect(snap.questions.every((q) => q.marks === 4 && q.negMarks === -1)).toBe(true);
+  });
+
+  /** A short paper is questions MISSING, not a layout variant — it must refuse
+   *  rather than ship a 74-question fragment labelled as the real sitting. */
+  it("refuses a paper short of 75 questions", () => {
+    const short = jeeRows().slice(0, 74);
+    expect(validatePaperRows(JEE_MAINS_PAPER, short).length).toBeGreaterThan(0);
+    expect(() =>
+      buildMockPaper(JEE_MAINS_PAPER, short, { year: 2026, month: null, slug: "s", title: "t" })
+    ).toThrow();
+  });
+
+  /** The bank spells it "Maths"; a row arriving as "Mathematics" belongs to no
+   *  section and must be reported, not silently dropped. */
+  it("reports a row whose subject maps to no section", () => {
+    const rows = jeeRows();
+    rows[60] = { ...rows[60], subjectName: "Mathematics" };
+    expect(
+      validatePaperRows(JEE_MAINS_PAPER, rows).some((m) => /maps to no section/.test(m))
+    ).toBe(true);
   });
 });

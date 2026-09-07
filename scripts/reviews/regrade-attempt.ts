@@ -23,6 +23,8 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { gradeMock } from "../../src/lib/mocks/attempt";
 import type { MockGradeQuestion } from "../../src/lib/mocks/attempt";
+import type { SavedResponse } from "../../src/lib/mocks/answers";
+import { loadAnswerKey } from "../../src/lib/mocks/query";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -56,34 +58,26 @@ async function main() {
     grace?: boolean;
   }[];
 
-  // Live key, chunked — an .in() filter rides in the URL and a few hundred
-  // uuids exceeds the request line.
-  const key: Record<string, string> = {};
+  // The live key, via the SAME loader the app grades with. This script used to
+  // read `options` directly, which made it a second implementation of "what is
+  // the answer" — and one that was blind to numeric (JEE Section-B) questions,
+  // whose key lives in questions.numeric_answer and which have no options at
+  // all. It would have regraded every JEE attempt as though the paper had no
+  // Section B. loadAnswerKey chunks its own .in() filter (a few hundred uuids
+  // exceed the request line).
   const ids = snapshot.map((q) => q.questionId);
-  for (let i = 0; i < ids.length; i += 100) {
-    const { data, error } = await db
-      .from("options")
-      .select("question_id,label,is_correct")
-      .in("question_id", ids.slice(i, i + 100))
-      .eq("is_correct", true);
-    if (error) throw error;
-    for (const o of data as any[]) key[o.question_id] = o.label;
-  }
-  const missing = ids.filter((id) => !key[id]);
-  if (missing.length) {
-    console.error(`REFUSE: ${missing.length} question(s) in the snapshot have no correct option.`);
-    process.exit(1);
-  }
-  // Narrow by VALIDATING, never by casting: an unexpected label silently
-  // mis-grades every attempt, and a cast would hide exactly that.
-  const LABELS = ["A", "B", "C", "D"] as const;
-  type Label = (typeof LABELS)[number];
-  const isLabel = (v: string): v is Label => (LABELS as readonly string[]).includes(v);
-  const badLabel = ids.filter((id) => !isLabel(key[id]));
-  if (badLabel.length) {
+  const key = await loadAnswerKey(db as any, ids);
+
+  // Narrow by VALIDATING, never by casting: a key we cannot read silently
+  // mis-grades every attempt. loadAnswerKey returns a validated union and simply
+  // OMITS a question whose key it could not read, so the thing to refuse on is
+  // ABSENCE. Regrading against a paper with a missing key would score that
+  // question as skipped for everyone and quietly move real students' marks.
+  const missingKey = ids.filter((id) => !key[id]);
+  if (missingKey.length) {
     console.error(
-      `REFUSE: ${badLabel.length} question(s) have a correct option outside A-D ` +
-        `(e.g. ${badLabel[0]} -> ${JSON.stringify(key[badLabel[0]])}).`
+      `REFUSE: ${missingKey.length} question(s) in the snapshot have no readable ` +
+        `answer key (e.g. ${missingKey[0]}).`
     );
     process.exit(1);
   }
@@ -93,7 +87,7 @@ async function main() {
     sectionKey: q.sectionKey,
     marks: q.marks,
     negMarks: q.negMarks,
-    answer: key[q.questionId] as Label,
+    answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
   }));
 
@@ -110,15 +104,24 @@ async function main() {
   const plan: { id: string; before: any; after: any }[] = [];
 
   for (const a of attempts as any[]) {
-    const answerMap: Record<string, string | null> = {};
+    const answerMap: Record<string, SavedResponse> = {};
     for (let i = 0; i < ids.length; i += 100) {
       const { data, error } = await db
         .from("attempt_answers")
-        .select("question_id,selected_label")
+        .select("question_id,selected_label,numeric_response")
         .eq("attempt_id", a.id)
         .in("question_id", ids.slice(i, i + 100));
       if (error) throw error;
-      for (const r of data as any[]) answerMap[r.question_id] = r.selected_label;
+      // BOTH response columns: reading only selected_label would score every
+      // numeric (JEE Section-B) answer as blank and silently drop real marks.
+      for (const r of data as any[])
+        answerMap[r.question_id] = {
+          selectedLabel: r.selected_label ?? null,
+          numericResponse:
+            r.numeric_response === null || r.numeric_response === undefined
+              ? null
+              : Number(r.numeric_response),
+        };
     }
     const result = gradeMock(gradeQuestions, answerMap);
     const changed =

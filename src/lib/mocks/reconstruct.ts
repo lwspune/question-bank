@@ -16,6 +16,7 @@
  */
 
 import { slugToUuid } from "../quiz/quizPayload";
+import type { MockAnswerKey } from "./answers";
 import {
   totalQuestions,
   totalMarks,
@@ -35,8 +36,12 @@ export type PaperQuestionRow = {
    * from two labels (see dedupeMergedRows) — every other path ignores it.
    */
   sourceFile?: string;
-  /** The correct option label, or null when the key is missing (a defect). */
-  answer: "A" | "B" | "C" | "D" | null;
+  /**
+   * The answer key, or null when it is missing (a defect — validatePaperRows
+   * refuses to build such a paper). A UNION, not a letter: JEE Section-B is a
+   * numeric-answer question whose key is a value, not an option.
+   */
+  answer: MockAnswerKey | null;
   /**
    * Officially dropped / bonus question (e.g. NTA awarded full marks to all).
    * It appeared on the real paper, so a faithful mock includes it — but it has
@@ -291,6 +296,30 @@ export function mhtCetMockTitle(
   bp: MockPaperBlueprint
 ): string {
   return `MHT-CET ${year}${label ? ` (${label})` : ""} — ${bp.paperLabel}`;
+}
+
+/**
+ * JEE Mains slug — the sitting KEY carries year, date and shift, e.g.
+ * "jee-mains-2026-jan-21-s1-paper-1".
+ *
+ * THE REASON THIS EXISTS: `pyq_month` is NULL on every JEE row, so the generic
+ * mockSlug() would emit ONE slug per year for all ~18 sittings of that year —
+ * and since the mock id is slugToUuid(slug), those upserts would silently
+ * overwrite each other, leaving 17 real sittings missing with no error. Worse
+ * than CDS or NEET: a single 2025 `source_file` holds TWO shifts, so even
+ * source_file is not a sitting here (see scripts/mocks/jeeSittings.ts).
+ */
+export function jeeMockSlug(sittingKey: string, paperCode: string): string {
+  return `jee-mains-${sittingKey}-${paperCode}`;
+}
+
+/** JEE title, e.g. "JEE Mains 2026 (21 Jan, Shift 1) — Paper 1 (B.E./B.Tech)". */
+export function jeeMockTitle(
+  year: number,
+  label: string,
+  bp: MockPaperBlueprint
+): string {
+  return `JEE Mains ${year} (${label}) — ${bp.paperLabel}`;
 }
 
 /**

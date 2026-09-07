@@ -6,6 +6,7 @@
  * server-only helper and never folded into the client-facing question view.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { MockAnswerKey, OptionLabel } from "./answers";
 
 export type MockSnapshotQuestion = {
   position: number;
@@ -116,6 +117,16 @@ export type MockQuestionView = {
   context: string | null;
   imageUrl: string | null;
   options: MockOptionView[];
+  /**
+   * How the student answers this one. "numeric" is JEE Section-B (NAT): the
+   * question carries ZERO option rows and the answer is a typed value.
+   *
+   * Carried EXPLICITLY rather than inferred from `options.length === 0`, because
+   * those two are not the same thing - an options-less row is also what a failed
+   * content load looks like, and rendering a numeric keypad for a question whose
+   * options merely failed to arrive would hide the defect behind a plausible UI.
+   */
+  format: "mcq" | "numeric";
 };
 
 /**
@@ -128,13 +139,13 @@ export async function loadMockQuestionViews(
   snapshot: MockSnapshotQuestion[]
 ): Promise<MockQuestionView[]> {
   const ids = snapshot.map((s) => s.questionId);
-  const byId = new Map<string, { text: string; context: string | null; imageUrl: string | null; options: MockOptionView[] }>();
+  const byId = new Map<string, { text: string; context: string | null; imageUrl: string | null; options: MockOptionView[]; format: "mcq" | "numeric" }>();
   const PAGE = 300;
   for (let i = 0; i < ids.length; i += PAGE) {
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, options(label, text, image_url)")
+      .select("id, text, context, image_url, question_format, options(label, text, image_url)")
       .in("id", chunk);
     if (error) throw new Error(`loadMockQuestionViews: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -150,6 +161,7 @@ export async function loadMockQuestionViews(
         context: (row.context as string | null) ?? null,
         imageUrl: (row.image_url as string | null) ?? null,
         options: opts,
+        format: row.question_format === "numeric" ? "numeric" : "mcq",
       });
     }
   }
@@ -168,6 +180,7 @@ export async function loadMockQuestionViews(
         context: content?.context ?? null,
         imageUrl: content?.imageUrl ?? null,
         options: content?.options ?? [],
+        format: content?.format ?? "mcq",
       };
     });
 }
@@ -235,6 +248,9 @@ export type ReviewQuestionContent = {
   solution: string | null;
   solutionImageUrl: string | null;
   options: ReviewOption[];
+  format: "mcq" | "numeric";
+  /** The correct value for a numeric (JEE Section-B) question; null otherwise. */
+  numericAnswer: number | null;
 };
 
 /** Post-submit review content: full question + the CORRECT option + solution.
@@ -250,7 +266,7 @@ export async function loadReviewQuestions(
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, solution, solution_image_url, options(label, text, image_url, is_correct)")
+      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, options(label, text, image_url, is_correct)")
       .in("id", chunk);
     if (error) throw new Error(`loadReviewQuestions: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -269,29 +285,58 @@ export async function loadReviewQuestions(
         solution: (row.solution as string | null) ?? null,
         solutionImageUrl: (row.solution_image_url as string | null) ?? null,
         options: opts,
+        format: row.question_format === "numeric" ? "numeric" : "mcq",
+        numericAnswer:
+          row.numeric_answer === null || row.numeric_answer === undefined
+            ? null
+            : Number(row.numeric_answer),
       });
     }
   }
   return byId;
 }
 
-/** Server-only: the correct-option label per question id, for grading. */
+/**
+ * Server-only: the answer key per question id, for grading.
+ *
+ * TWO SHAPES, and which one a question uses is decided by its OWN
+ * `question_format`, never by whether options happen to exist. A numeric
+ * (JEE Section-B) question carries zero option rows and its key lives in
+ * `questions.numeric_answer`; inferring "no options therefore numeric" would
+ * turn a failed options read into a silently numeric question that no MCQ
+ * response could ever match.
+ *
+ * A question missing its key is simply ABSENT from the map. gradeMock scores an
+ * absent key as skipped rather than wrong (see verdictFor) - it cannot happen,
+ * because validatePaperRows refuses to build such a paper, but if it did the
+ * student must not be penalised for our defect.
+ */
 export async function loadAnswerKey(
   db: SupabaseClient,
   questionIds: string[]
-): Promise<Record<string, "A" | "B" | "C" | "D">> {
-  const key: Record<string, "A" | "B" | "C" | "D"> = {};
+): Promise<Record<string, MockAnswerKey>> {
+  const key: Record<string, MockAnswerKey> = {};
   const PAGE = 300;
   for (let i = 0; i < questionIds.length; i += PAGE) {
     const chunk = questionIds.slice(i, i + PAGE);
     const { data, error } = await db
-      .from("options")
-      .select("question_id, label, is_correct")
-      .in("question_id", chunk)
-      .eq("is_correct", true);
+      .from("questions")
+      .select("id, question_format, numeric_answer, options(label, is_correct)")
+      .in("id", chunk);
     if (error) throw new Error(`loadAnswerKey: ${error.message}`);
-    for (const o of (data ?? []) as Record<string, unknown>[]) {
-      key[o.question_id as string] = o.label as "A" | "B" | "C" | "D";
+    for (const row of (data ?? []) as Record<string, unknown>[]) {
+      const id = row.id as string;
+      if (row.question_format === "numeric") {
+        const v = row.numeric_answer;
+        if (v !== null && v !== undefined && Number.isFinite(Number(v))) {
+          key[id] = { kind: "numeric", value: Number(v) };
+        }
+        continue;
+      }
+      const correct = ((row.options as Record<string, unknown>[]) ?? []).find(
+        (o) => o.is_correct
+      );
+      if (correct) key[id] = { kind: "mcq", label: correct.label as OptionLabel };
     }
   }
   return key;

@@ -313,19 +313,83 @@ export const MHT_CET_PHY_CHEM_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * JEE Mains — Paper 1 (B.E./B.Tech), the 2025-onward pattern.
+ *
+ *   75 questions x 4 marks = 300 marks, 180 minutes, +4 / -1 UNIFORM.
+ *   Three subjects x (Section A: 20 MCQ + Section B: 5 numeric) = 25 each.
+ *
+ * THE FIRST BLUEPRINT WITH NON-MCQ ANSWERS. Section B is a numeric-answer (NAT)
+ * question: no options at all, the key living in `questions.numeric_answer`.
+ * That is why the whole answer axis is a union (src/lib/mocks/answers.ts) rather
+ * than a letter.
+ *
+ * ONLY 2025+ IS EXPRESSIBLE HERE, and the reason is the pattern change. A
+ * 2021-2024 shift printed 90 questions of which a candidate attempted 75 — all
+ * 60 MCQ plus ANY 5 OF 10 numeric per subject. gradeMock has no "attempt at most
+ * N" concept, so those sittings would score out of 360 instead of 300 and let a
+ * student answer all ten. From 2025 Section B is 5 questions, all compulsory, so
+ * the paper is simply its 75 questions and the optionality problem disappears.
+ * The pre-2025 corpus is ingested and deliberately NOT built (see
+ * scripts/mocks/jeeSittings.ts).
+ *
+ * SECTION ORDER IS PAPER ORDER: every source file runs Physics 1-25,
+ * Chemistry 26-50, Maths 51-75, and buildMockPaper walks sections in blueprint
+ * order — so reordering these three renumbers the whole paper.
+ *
+ * Section A/B is deliberately NOT a section here. Splitting each subject in two
+ * would give the same question ORDER (source_row already puts the 20 MCQs before
+ * the 5 NAT within a subject) and buy only a finer palette grouping, at the cost
+ * of six hard counts and a six-row results table. Per-format performance can be
+ * derived later from `question_format` without touching the snapshot.
+ *
+ * The bank's subject row is "Maths", NOT "Mathematics" — resolvePaper looks
+ * subjects up by name, so the wrong spelling resolves zero chapters and every
+ * sitting reconstructs empty (the MHT-CET trap, same shape).
+ *
+ * Sittings are NOT discoverable from the bank: `pyq_month` is NULL on every JEE
+ * row, and a single `source_file` holds BOTH shifts of a date for 2025 (150 rows
+ * = 2 x 75). So JEE needs a third discovery rule — a split WITHIN a source file
+ * — and is deliberately absent from MOCK_BLUEPRINTS. See scripts/mocks/jeeSittings.ts.
+ */
+export const JEE_MAINS_PAPER: MockPaperBlueprint = {
+  code: "paper-1",
+  examName: "JEE Mains",
+  examSlug: "jee-mains",
+  paperLabel: "Paper 1 (B.E./B.Tech)",
+  durationSecs: 180 * 60,
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    { key: "physics", label: "Physics", subjects: ["Physics"], count: 25 },
+    { key: "chemistry", label: "Chemistry", subjects: ["Chemistry"], count: 25 },
+    { key: "maths", label: "Mathematics", subjects: ["Maths"], count: 25 },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
   NDA_GAT_PAPER,
 ];
 
-/** Every blueprint (incl. exams with bespoke build paths) — for getBlueprint. */
+/**
+ * Every blueprint (incl. exams with bespoke build paths) — for getBlueprint.
+ *
+ * EVERY shipped paper must be listed. CDS GK and CDS Elementary Mathematics were
+ * omitted when they shipped, so getBlueprint("cds", "gk") returned null for 35
+ * published mocks — latent, because nothing in src/ calls it today, but exactly
+ * the kind of gap that bites the first consumer. tests/mock-blueprints.test.ts
+ * now asserts the list covers every exported blueprint so it cannot recur.
+ */
 const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   ...MOCK_BLUEPRINTS,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  CDS_GK_PAPER,
+  CDS_MATHS_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
+  JEE_MAINS_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */

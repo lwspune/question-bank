@@ -17,6 +17,7 @@ import {
   type ReviewOption,
 } from "./query";
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
+import { verdictFor, type OptionLabel, type SavedResponse } from "./answers";
 import { logActivityBatch } from "@/lib/activity/service";
 import type { ActivityEvent } from "@/lib/activity/events";
 
@@ -26,8 +27,11 @@ export class MockError extends Error {
   }
 }
 
-export type SavedAnswer = {
-  selectedLabel: "A" | "B" | "C" | "D" | null;
+/**
+ * One saved response, mirroring the two `attempt_answers` response columns
+ * (migration 0087). At most one is non-null; both null means unanswered.
+ */
+export type SavedAnswer = SavedResponse & {
   isFlagged: boolean;
   timeSpentSecs: number;
 };
@@ -115,7 +119,9 @@ export async function saveAnswer(
   attemptId: string,
   patch: {
     questionId: string;
-    selectedLabel: "A" | "B" | "C" | "D" | null;
+    selectedLabel: OptionLabel | null;
+    /** JEE Section-B (NAT): the value the student typed. */
+    numericResponse: number | null;
     isFlagged: boolean;
     timeSpentSecs: number;
   }
@@ -129,6 +135,7 @@ export async function saveAnswer(
       attempt_id: attemptId,
       question_id: patch.questionId,
       selected_label: patch.selectedLabel,
+      numeric_response: patch.numericResponse,
       is_flagged: patch.isFlagged,
       time_spent_secs: Math.max(0, Math.floor(patch.timeSpentSecs)),
       updated_at: new Date().toISOString(),
@@ -179,13 +186,14 @@ export async function submitAttempt(
     sectionKey: q.sectionKey,
     marks: q.marks,
     negMarks: q.negMarks,
-    answer: key[q.questionId] ?? "A",
+    // A key that is somehow missing stays NULL rather than defaulting to "A" —
+    // that old fallback silently marked every A-picker correct. verdictFor
+    // scores a null key as skipped, so our defect can never cost a student marks.
+    answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
   }));
-  const answerMap: Record<string, string | null> = {};
-  for (const [qid, a] of Object.entries(answers)) answerMap[qid] = a.selectedLabel;
 
-  const result = gradeMock(gradeQuestions, answerMap);
+  const result = gradeMock(gradeQuestions, answers);
   const status = reason === "expired" ? "expired" : "submitted";
 
   const { error } = await db
@@ -226,8 +234,10 @@ export async function submitAttempt(
   ];
   for (const gq of gradeQuestions) {
     if (gq.grace) continue; // a grace question is never "wrong" (no drill fuel)
-    const selected = answerMap[gq.questionId];
-    if (selected && selected !== gq.answer) {
+    // Read the verdict gradeMock already produced rather than re-deriving it.
+    // Re-deriving was a second implementation of right-vs-wrong, and it silently
+    // could not see a numeric (JEE Section-B) response at all.
+    if (result.verdicts[gq.questionId] === -1) {
       events.push({
         kind: "answer_wrong",
         refId: gq.questionId,
@@ -257,12 +267,16 @@ async function loadSavedAnswers(
   const out: Record<string, SavedAnswer> = {};
   const { data, error } = await db
     .from("attempt_answers")
-    .select("question_id, selected_label, is_flagged, time_spent_secs")
+    .select("question_id, selected_label, numeric_response, is_flagged, time_spent_secs")
     .eq("attempt_id", attemptId);
   if (error) throw new MockError(500, `loadSavedAnswers: ${error.message}`);
   for (const r of (data ?? []) as Record<string, unknown>[]) {
     out[r.question_id as string] = {
-      selectedLabel: (r.selected_label as "A" | "B" | "C" | "D" | null) ?? null,
+      selectedLabel: (r.selected_label as OptionLabel | null) ?? null,
+      numericResponse:
+        r.numeric_response === null || r.numeric_response === undefined
+          ? null
+          : Number(r.numeric_response),
       isFlagged: Boolean(r.is_flagged),
       timeSpentSecs: (r.time_spent_secs as number) ?? 0,
     };
@@ -315,8 +329,13 @@ export type ReviewItem = {
   context: string | null;
   imageUrl: string | null;
   options: ReviewOption[];
-  selectedLabel: "A" | "B" | "C" | "D" | null;
-  correctLabel: "A" | "B" | "C" | "D" | null;
+  /** "numeric" is JEE Section-B: no options, a typed answer. */
+  format: "mcq" | "numeric";
+  selectedLabel: OptionLabel | null;
+  correctLabel: OptionLabel | null;
+  /** What the student typed, and the key, for a numeric question. */
+  numericResponse: number | null;
+  correctNumeric: number | null;
   verdict: 1 | -1 | 0;
   solution: string | null;
   solutionImageUrl: string | null;
@@ -354,11 +373,28 @@ export async function getAttemptReview(
     .map((s) => {
       const c = content.get(s.questionId);
       const grace = s.grace === true;
-      const selectedLabel = answers[s.questionId]?.selectedLabel ?? null;
+      const saved = answers[s.questionId];
+      const selectedLabel = saved?.selectedLabel ?? null;
+      const numericResponse = saved?.numericResponse ?? null;
       // Grace questions have no valid key (NTA awarded all): suppress the correct
       // highlight and count the row as awarded (verdict 1) for everyone.
       const correctLabel = grace ? null : c?.options.find((o) => o.isCorrect)?.label ?? null;
-      const verdict: 1 | -1 | 0 = grace ? 1 : !selectedLabel ? 0 : selectedLabel === correctLabel ? 1 : -1;
+      const correctNumeric = grace ? null : c?.numericAnswer ?? null;
+      const format = c?.format ?? "mcq";
+      // The verdict comes from the SAME helper gradeMock uses. It used to be
+      // recomputed here, which meant the score and this list were two separate
+      // implementations of right-vs-wrong and free to disagree on screen.
+      const verdict = verdictFor(
+        format === "numeric"
+          ? correctNumeric === null
+            ? null
+            : { kind: "numeric", value: correctNumeric }
+          : correctLabel === null
+            ? null
+            : { kind: "mcq", label: correctLabel },
+        saved ?? null,
+        grace
+      );
       return {
         position: s.position,
         sectionKey: s.sectionKey,
@@ -366,8 +402,11 @@ export async function getAttemptReview(
         context: c?.context ?? null,
         imageUrl: c?.imageUrl ?? null,
         options: c?.options ?? [],
+        format,
         selectedLabel,
         correctLabel,
+        numericResponse,
+        correctNumeric,
         verdict,
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
