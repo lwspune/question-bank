@@ -550,10 +550,24 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10."] },
   ],
 
-  // Ch.11 Thermodynamics — worked Examples scattered through the teaching prose, then the
-  // single terminal exercise block. "Eg 11." and "Ex 11." cannot collide.
+  // Ch.11 Thermodynamics — EXERCISES ONLY, deliberately. This chapter contains NO
+  // worked Examples at all: verified by reading all 18 pages (the one worked
+  // calculation, the 1 g water liquid-to-vapour ΔU in §11.6, is unnumbered
+  // illustrative prose, not an `Example 11.x` block).
+  //
+  // The solved block is REMOVED rather than left to match nothing, because
+  // `section_seq` is the block's INDEX in this array: leaving an unmatched block
+  // first puts every exercise row at seq 2 with no seq 1, and `board:lint` fails
+  // the chapter for non-contiguous section_seq. It caught exactly that here after
+  // the chapter had already been flipped PUBLIC — which is the check working.
+  //
+  // The pre-authored two-block outlines below assume both blocks exist, which is
+  // true of every other Physics chapter measured so far. Any chapter that turns
+  // out to have no Examples needs this same single-block treatment. (Oscillations
+  // and Waves were ALSO predicted to have none by a text probe and both in fact
+  // DO — their transcriptions carry Eg 13.x and Eg 14.x refs — so verify from the
+  // committed rows, not from the probe.)
   c11PhyThermodynamics: [
-    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 11."] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11."] },
   ],
 

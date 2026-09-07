@@ -1438,13 +1438,27 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls11Phy("Part_2/keph2an.pdf"),
     answerPages: [0, 1, 2, 3, 4, 5, 6],
     note: "NCERT (CBSE Class 11) — Thermodynamics (Chapter 11, NCERT Physics Part 2)",
+    // FIVE subtopics, corrected from six after the chapter was transcribed.
+    //
+    // "Second Law, Reversibility and the Carnot Engine" was DROPPED. §11.9-11.11
+    // (Second Law, Kelvin-Planck, Clausius, reversibility, the Carnot cycle and
+    // Carnot's theorem) run pp.10-13 — nearly a quarter of the teaching text — and
+    // NOT ONE of the eight exercises tests any of it. That is a property of the
+    // rationalised exercise set, not a mapping choice, and it was verified by
+    // reading the pages. Keeping it would ship a `/browse` filter returning nothing
+    // (the Class-12 Linear Programming precedent). Safe to drop: no committed row
+    // ever used it, so the subtopic was never created in the DB.
+    //
+    // "Specific Heat Capacity of Gases" was RENAMED to drop "of Gases" — §11.6
+    // covers solids and water too, and the bucket really does hold Ex 11.1 (water
+    // calorimetry) and Ex 11.3(b)/(d) (coolants, sea water). The old name was
+    // narrower than its own content. Renamed in the DB in the same change.
     subtopics: [
       "Thermal Equilibrium and the Zeroth Law",
       "Heat, Internal Energy and Work",
       "First Law of Thermodynamics",
-      "Specific Heat Capacity of Gases",
+      "Specific Heat Capacity",
       "Thermodynamic Processes",
-      "Second Law, Reversibility and the Carnot Engine",
     ],
   },
 

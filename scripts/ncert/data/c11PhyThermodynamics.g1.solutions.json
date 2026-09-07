@@ -1,0 +1,73 @@
+[
+  {
+    "id": "b82384f0-e03b-471c-97ba-6e8ef4551dff",
+    "ref": "Ex 11.1",
+    "solution": "The fuel must supply the heat absorbed by the water. Take the density of water as \\(1\\,\\text{kg L}^{-1}\\), so the mass heated per minute is \\(m = 3.0\\,\\text{kg}\\), and take the specific heat capacity of water as \\(s = 4.2 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\).\n\nThe temperature rise is \\(\\Delta T = 77 - 27 = 50\\,^\\circ\\text{C} = 50\\,\\text{K}\\).\n\nHeat needed per minute:\n\\(Q = m\\,s\\,\\Delta T = 3.0 \\times 4.2 \\times 10^{3} \\times 50 = 6.3 \\times 10^{5}\\,\\text{J}\\).\n\nEach gram of fuel releases \\(4.0 \\times 10^{4}\\,\\text{J}\\), so the mass of fuel burnt per minute is\n\\(\\dfrac{6.3 \\times 10^{5}}{4.0 \\times 10^{4}} = 15.75\\,\\text{g}\\).\n\nRate of fuel consumption \\(\\approx 15.75\\,\\text{g per minute}\\) (about \\(0.26\\,\\text{g s}^{-1}\\)). Using the chapter's more precise \\(s = 4186\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\) gives \\(15.7\\,\\text{g per minute}\\), the same to three significant figures."
+  },
+  {
+    "id": "3b789bc4-e8de-47ad-a0c7-48b787978b55",
+    "ref": "Ex 11.2",
+    "solution": "Number of moles of nitrogen:\n\\(\\mu = \\dfrac{m}{M} = \\dfrac{2.0 \\times 10^{-2}\\,\\text{kg}}{28 \\times 10^{-3}\\,\\text{kg mol}^{-1}} = \\dfrac{20}{28} = 0.714\\,\\text{mol}\\).\n\nNitrogen is a diatomic gas, so at room temperature its molar specific heat capacity at constant pressure is\n\\(C_p = \\dfrac{7}{2}R = \\dfrac{7}{2}(8.3) = 29.05\\,\\text{J mol}^{-1}\\,\\text{K}^{-1}\\).\n\nA rise of \\(45\\,^\\circ\\text{C}\\) is a rise of \\(45\\,\\text{K}\\), so at constant pressure\n\\(Q = \\mu\\,C_p\\,\\Delta T = 0.714 \\times 29.05 \\times 45\\).\n\n\\(Q = 933.75\\,\\text{J}\\).\n\nHeat required \\(\\approx 9.34 \\times 10^{2}\\,\\text{J}\\)."
+  },
+  {
+    "id": "75cf62c0-48b1-45d8-86ea-3d433ff481b7",
+    "ref": "Ex 11.3(a)",
+    "solution": "The two bodies do reach a common final temperature — that is what thermal equilibrium means — but that common temperature is fixed by energy conservation, not by averaging the two starting temperatures.\n\nIf no heat escapes, the heat given out by the hotter body equals the heat taken in by the colder one:\n\\(m_1 s_1 (T_1 - T) = m_2 s_2 (T - T_2)\\),\n\nwhich gives\n\\(T = \\dfrac{m_1 s_1 T_1 + m_2 s_2 T_2}{m_1 s_1 + m_2 s_2}\\).\n\nSo the equilibrium temperature is a **weighted** mean of \\(T_1\\) and \\(T_2\\), the weights being the heat capacities \\(m_1 s_1\\) and \\(m_2 s_2\\). It reduces to the simple mean \\((T_1 + T_2)/2\\) only in the special case \\(m_1 s_1 = m_2 s_2\\). In general the masses and the specific heat capacities differ, and the final temperature lies closer to the initial temperature of the body with the larger heat capacity.\n\n(If either body changes phase during the exchange, latent heat is absorbed or released at constant temperature and the result departs from this expression as well.)"
+  },
+  {
+    "id": "c59253e2-6aba-4975-8c29-191b1448124a",
+    "ref": "Ex 11.3(b)",
+    "solution": "The coolant's job is to carry away a large amount of heat while itself staying cool.\n\nThe heat a coolant absorbs is \\(Q = m\\,s\\,\\Delta T\\), so for a given mass \\(m\\) circulated its temperature rise is\n\\(\\Delta T = \\dfrac{Q}{m\\,s}\\).\n\nA large specific heat \\(s\\) therefore makes \\(\\Delta T\\) small: the coolant can absorb a great deal of heat for only a small rise in its own temperature. This keeps the plant near the required working temperature, keeps the coolant well below its boiling point, and means a smaller mass of coolant has to be circulated for the same rate of heat removal."
+  },
+  {
+    "id": "0b749fb3-1c66-419d-99c0-a5cbd397dec7",
+    "ref": "Ex 11.3(c)",
+    "solution": "While the car is driven the tyre is flexed repeatedly and rubs against the road. This work done against friction is dissipated as heat, which raises the temperature of the air inside the tyre.\n\nThe tyre is (very nearly) rigid, so the volume of the enclosed air stays constant and the amount of air is fixed. For a fixed mass of gas at constant volume the ideal gas equation \\(PV = \\mu R T\\) gives\n\\(\\dfrac{P}{T} = \\text{constant}\\), i.e. \\(P \\propto T\\).\n\nSo the rise in temperature produces a proportional rise in pressure. (Strictly the tyre also expands slightly, so the increase is a little less than the constant-volume estimate.)"
+  },
+  {
+    "id": "caf13574-6718-4e55-840c-279489ffc6da",
+    "ref": "Ex 11.3(d)",
+    "solution": "A harbour town lies beside a large body of water, and water has a very high specific heat capacity — about \\(4.2 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\), roughly five times that of sand or rock (about \\(8 \\times 10^{2}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\)).\n\nThe sea therefore acts as a huge thermal reservoir: by day (and in summer) it absorbs a large quantity of heat for only a small rise in its own temperature, and by night (and in winter) it gives that heat back as it cools slowly. Evaporation of sea water also carries off latent heat, and the resulting sea and land breezes carry this moderating influence over the town.\n\nA desert town has no such reservoir. Dry sand has a low specific heat capacity and there is little water to evaporate, so it heats up quickly during the day and cools quickly at night.\n\nHence the harbour town has a much smaller range between its day and night (and summer and winter) temperatures — that is, a more temperate climate."
+  },
+  {
+    "id": "1014d4f0-8324-4a70-bac8-0c0a8abedb35",
+    "ref": "Ex 11.4",
+    "solution": "The cylinder walls are heat-insulating and the piston is insulated by the sand, so no heat enters or leaves: the compression is adiabatic.\n\nFor an adiabatic change of an ideal gas \\(P V^{\\gamma} = \\text{constant}\\), so\n\\(P_1 V_1^{\\gamma} = P_2 V_2^{\\gamma}\\) and \\(\\dfrac{P_2}{P_1} = \\left(\\dfrac{V_1}{V_2}\\right)^{\\gamma}\\).\n\nHydrogen is diatomic, so \\(\\gamma = \\dfrac{C_p}{C_v} = \\dfrac{7/2\\,R}{5/2\\,R} = 1.4\\). The gas is compressed to half its volume, so \\(V_1/V_2 = 2\\).\n\n\\(\\dfrac{P_2}{P_1} = 2^{1.4} = 2.64\\).\n\nThe pressure increases by a factor of about \\(2.64\\). (The quantity of gas and the initial conditions are not needed — the factor depends only on \\(\\gamma\\) and the volume ratio.)"
+  },
+  {
+    "id": "8bc63a29-dbdc-44bf-bca8-4e05afd85e25",
+    "ref": "Ex 11.5",
+    "solution": "Use the first law \\(\\Delta Q = \\Delta U + \\Delta W\\), with \\(\\Delta W\\) the work done **by** the system.\n\nFirst path (adiabatic): \\(\\Delta Q = 0\\), and \\(22.3\\,\\text{J}\\) of work is done **on** the system, so \\(\\Delta W = -22.3\\,\\text{J}\\). Hence\n\\(\\Delta U = \\Delta Q - \\Delta W = 0 - (-22.3) = +22.3\\,\\text{J}\\).\n\nInternal energy is a state variable, so this same \\(\\Delta U = 22.3\\,\\text{J}\\) applies to **any** process from \\(A\\) to \\(B\\).\n\nSecond path: \\(\\Delta Q = 9.35\\,\\text{cal} = 9.35 \\times 4.19 = 39.18\\,\\text{J}\\). Therefore\n\\(\\Delta W = \\Delta Q - \\Delta U = 39.18 - 22.3 = 16.88\\,\\text{J}\\).\n\nNet work done by the system in the second case \\(\\approx 16.9\\,\\text{J}\\)."
+  },
+  {
+    "id": "3e895b95-b6e1-4c44-bb42-5261d6b0b6f7",
+    "ref": "Ex 11.6(a)",
+    "solution": "When the stopcock is opened the gas expands freely into the evacuated cylinder, so it finally occupies both cylinders. Since the two are of equal capacity, the volume available to the gas doubles from \\(V\\) to \\(2V\\), while the amount of gas is unchanged.\n\nThe temperature is also unchanged in a free expansion (see the later parts of this question), so the ideal gas equation \\(PV = \\mu R T\\) gives \\(PV = \\text{constant}\\):\n\\(P_1 V = P_2 (2V) \\;\\Rightarrow\\; P_2 = \\dfrac{P_1}{2}\\).\n\nThe gas started at standard pressure, \\(P_1 = 1\\,\\text{atm} = 1.01 \\times 10^{5}\\,\\text{Pa}\\).\n\nFinal pressure \\(= \\dfrac{P_1}{2} = 0.5\\,\\text{atm} \\approx 0.5 \\times 10^{5}\\,\\text{Pa}\\), the same throughout \\(A\\) and \\(B\\) since the two cylinders are now connected."
+  },
+  {
+    "id": "90ed1000-4a2e-4fc1-a8b1-ce713722d19d",
+    "ref": "Ex 11.6(b)",
+    "solution": "Apply the first law, \\(\\Delta Q = \\Delta U + \\Delta W\\), to the gas together with both cylinders.\n\nThe whole system is thermally insulated, so no heat enters or leaves: \\(\\Delta Q = 0\\).\n\nThe gas expands into a vacuum. There is nothing on the other side of the advancing gas to push against, so the gas does no work on its surroundings and the rigid outer walls do no work on it: \\(\\Delta W = 0\\).\n\nHence\n\\(\\Delta U = \\Delta Q - \\Delta W = 0 - 0 = 0\\).\n\nChange in internal energy \\(= 0\\)."
+  },
+  {
+    "id": "4421f344-a23e-450c-ad37-9be7f8157162",
+    "ref": "Ex 11.6(c)",
+    "solution": "The internal energy of an ideal gas is the total kinetic energy of its molecules, which depends only on the temperature — not on the volume the gas occupies.\n\nThe free expansion is adiabatic (\\(\\Delta Q = 0\\)) and is against a vacuum (\\(\\Delta W = 0\\)), so by the first law \\(\\Delta U = 0\\).\n\nSince \\(U\\) is a function of \\(T\\) alone, \\(\\Delta U = 0\\) requires \\(\\Delta T = 0\\).\n\nChange in temperature \\(= 0\\); the gas ends at the same temperature it started at."
+  },
+  {
+    "id": "cf0ae365-b4a9-447b-aedd-b5d1d2bc287f",
+    "ref": "Ex 11.6(d)",
+    "solution": "No, the intermediate states do not lie on the \\(P\\)-\\(V\\)-\\(T\\) surface.\n\nThe \\(P\\)-\\(V\\)-\\(T\\) surface is the graph of the equation of state, and an equation of state relates \\(P\\), \\(V\\) and \\(T\\) only for an **equilibrium** state — a state in which pressure and temperature have single, well-defined values throughout the gas.\n\nThe stopcock is opened suddenly, so the free expansion is rapid and violent: while it is happening the gas is turbulent, and its pressure and temperature are not uniform from one part of the vessel to another. No single triple \\((P, V, T)\\) describes the gas, so those intermediate states cannot be represented by a point on the surface.\n\nOnly the initial state (before the stopcock is opened) and the final state (after the gas has settled down) are equilibrium states, and only those two lie on the \\(P\\)-\\(V\\)-\\(T\\) surface."
+  },
+  {
+    "id": "af0112f5-6c19-47e9-b60c-dc0024232c55",
+    "ref": "Ex 11.7",
+    "solution": "Write the first law as a rate equation. Heat is supplied **to** the system and work is done **by** the system, so\n\\(\\dfrac{\\mathrm{d}Q}{\\mathrm{d}t} = \\dfrac{\\mathrm{d}U}{\\mathrm{d}t} + \\dfrac{\\mathrm{d}W}{\\mathrm{d}t}\\).\n\nHere \\(\\dfrac{\\mathrm{d}Q}{\\mathrm{d}t} = 100\\,\\text{W}\\) and \\(\\dfrac{\\mathrm{d}W}{\\mathrm{d}t} = 75\\,\\text{J s}^{-1}\\).\n\nTherefore\n\\(\\dfrac{\\mathrm{d}U}{\\mathrm{d}t} = 100 - 75 = 25\\,\\text{J s}^{-1}\\).\n\nThe internal energy is increasing at the rate of \\(25\\,\\text{W}\\)."
+  },
+  {
+    "id": "186e086f-7e4b-4846-82e8-d83930f890bb",
+    "ref": "Ex 11.8",
+    "solution": "[Textbook misprint: the question cites \"Fig. (11.13)\", but there is NO Fig. 11.13 in this chapter — the last figure in the teaching text is Fig. 11.10, and the graph printed directly beneath this question is captioned Fig. 11.11, which is the correct next number. The figure attached above is that graph; read the question against it. The stem is transcribed as printed.] Read the three states off the graph: \\(D = (2.0\\,\\text{m}^3,\\; 600\\,\\text{N m}^{-2})\\), \\(E = (5.0\\,\\text{m}^3,\\; 300\\,\\text{N m}^{-2})\\) and \\(F = (2.0\\,\\text{m}^3,\\; 300\\,\\text{N m}^{-2})\\).\n\nThe work done by the gas is the area under the path on the \\(P\\)-\\(V\\) diagram, counted positive when the volume increases.\n\n\\(D \\to E\\) is a straight line, so the area beneath it is a trapezium:\n\\(W_{DE} = \\tfrac{1}{2}\\,(P_D + P_E)(V_E - V_D) = \\tfrac{1}{2}(600 + 300)(5.0 - 2.0) = \\tfrac{1}{2}(900)(3.0) = 1350\\,\\text{J}\\).\n\n\\(E \\to F\\) is isobaric at \\(P = 300\\,\\text{N m}^{-2}\\), and the volume is reduced, so the work is negative:\n\\(W_{EF} = P\\,(V_F - V_E) = 300 \\times (2.0 - 5.0) = -900\\,\\text{J}\\).\n\nTotal work done by the gas:\n\\(W = W_{DE} + W_{EF} = 1350 - 900 = 450\\,\\text{J}\\).",
+    "_note": "The numerical data for this question exist only on the printed graph (Fig. 11.11, p-17), not in the stem. The coordinates used above were read off that figure, which is attached to this row."
+  }
+]
