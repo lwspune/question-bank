@@ -1,0 +1,58 @@
+[
+  {
+    "ref": "Eg 6.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "Show that moment of a couple does not depend on the point about which you take the moments.",
+    "solution": "Consider a couple as shown in Fig. 6.22 acting on a rigid body. The forces \\(\\mathbf{F}\\) and \\(-\\mathbf{F}\\) act respectively at points B and A. These points have position vectors \\(\\mathbf{r}_{1}\\) and \\(\\mathbf{r}_{2}\\) with respect to origin O. Let us take the moments of the forces about the origin.\n\nThe moment of the couple = sum of the moments of the two forces making the couple\n\n\\(= \\mathbf{r}_{1} \\times (-\\mathbf{F}) + \\mathbf{r}_{2} \\times \\mathbf{F}\\)\n\n\\(= \\mathbf{r}_{2} \\times \\mathbf{F} - \\mathbf{r}_{1} \\times \\mathbf{F}\\)\n\n\\(= (\\mathbf{r}_{2} - \\mathbf{r}_{1}) \\times \\mathbf{F}\\)\n\nBut \\(\\mathbf{r}_{1} + \\mathbf{AB} = \\mathbf{r}_{2}\\), and hence \\(\\mathbf{AB} = \\mathbf{r}_{2} - \\mathbf{r}_{1}\\).\n\nThe moment of the couple, therefore, is \\(\\mathbf{AB} \\times \\mathbf{F}\\).\n\nClearly this is independent of the origin, the point about which we took the moments of the forces.",
+    "_note": "PRINTED AMBIGUITY (does not affect the result). The solution's opening sentence lists the force application points as 'B and A' and then their position vectors as 'r1 and r2', which read in that order pairs B with r1 and A with r2. Both Fig. 6.22 and the algebra that follows require the opposite pairing: r1 points to A (where -F acts) and r2 to B (where F acts), which is what the very next line, r1 x (-F) + r2 x F, uses. The derivation and the result AB x F are unaffected."
+  },
+  {
+    "ref": "Eg 6.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "A metal bar 70 cm long and 4.00 kg in mass supported on two knife-edges placed 10 cm from each end. A 6.00 kg load is suspended at 30 cm from one end. Find the reactions at the knife-edges. (Assume the bar to be of uniform cross section and homogeneous.)",
+    "solution": "Figure 6.26 shows the rod AB, the positions of the knife edges \\(K_{1}\\) and \\(K_{2}\\), the centre of gravity of the rod at G and the suspended load at P.\n\nNote the weight of the rod \\(W\\) acts at its centre of gravity G. The rod is uniform in cross section and homogeneous; hence G is at the centre of the rod; \\(AB = 70\\,\\text{cm}\\). \\(AG = 35\\,\\text{cm}\\), \\(AP = 30\\,\\text{cm}\\), \\(PG = 5\\,\\text{cm}\\), \\(AK_{1} = BK_{2} = 10\\,\\text{cm}\\) and \\(K_{1}G = K_{2}G = 25\\,\\text{cm}\\). Also, \\(W =\\) weight of the rod \\(= 4.00\\,\\text{kg}\\) and \\(W_{1} =\\) suspended load \\(= 6.00\\,\\text{kg}\\); \\(R_{1}\\) and \\(R_{2}\\) are the normal reactions of the support at the knife edges.\n\nFor translational equilibrium of the rod,\n\n\\(R_{1} + R_{2} - W_{1} - W = 0\\)   (i)\n\nNote \\(W_{1}\\) and \\(W\\) act vertically down and \\(R_{1}\\) and \\(R_{2}\\) act vertically up.\n\nFor considering rotational equilibrium, we take moments of the forces. A convenient point to take moments about is G. The moments of \\(R_{2}\\) and \\(W_{1}\\) are anticlockwise (+ve), whereas the moment of \\(R_{1}\\) is clockwise (-ve).\n\nFor rotational equilibrium,\n\n\\(-R_{1}(K_{1}G) + W_{1}(PG) + R_{2}(K_{2}G) = 0\\)   (ii)\n\nIt is given that \\(W = 4.00g\\,\\text{N}\\) and \\(W_{1} = 6.00g\\,\\text{N}\\), where \\(g =\\) acceleration due to gravity. We take \\(g = 9.8\\,\\text{m/s}^{2}\\).\n\nWith numerical values inserted, from (i)\n\n\\(R_{1} + R_{2} - 4.00g - 6.00g = 0\\)\n\nor \\(R_{1} + R_{2} = 10.00g\\,\\text{N} = 98.00\\,\\text{N}\\)   (iii)\n\nFrom (ii), \\(-0.25R_{1} + 0.05W_{1} + 0.25R_{2} = 0\\)\n\nor \\(R_{1} - R_{2} = 1.2g\\,\\text{N} = 11.76\\,\\text{N}\\)   (iv)\n\nFrom (iii) and (iv), \\(R_{1} = 54.88\\,\\text{N}\\), \\(R_{2} = 43.12\\,\\text{N}\\)\n\nThus the reactions of the support are about \\(55\\,\\text{N}\\) at \\(K_{1}\\) and \\(43\\,\\text{N}\\) at \\(K_{2}\\)."
+  },
+  {
+    "ref": "Eg 6.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "HARD",
+    "stem": "A 3m long ladder weighing 20 kg leans on a frictionless wall. Its feet rest on the floor 1 m from the wall as shown in Fig.6.27. Find the reaction forces of the wall and the floor.",
+    "solution": "The ladder AB is 3 m long, its foot A is at distance \\(AC = 1\\,\\text{m}\\) from the wall. From Pythagoras theorem, \\(BC = 2\\sqrt{2}\\,\\text{m}\\). The forces on the ladder are its weight \\(W\\) acting at its centre of gravity D, reaction forces \\(F_{1}\\) and \\(F_{2}\\) of the wall and the floor respectively. Force \\(F_{1}\\) is perpendicular to the wall, since the wall is frictionless. Force \\(F_{2}\\) is resolved into two components, the normal reaction \\(N\\) and the force of friction \\(F\\). Note that \\(F\\) prevents the ladder from sliding away from the wall and is therefore directed toward the wall.\n\nFor translational equilibrium, taking the forces in the vertical direction,\n\n\\(N - W = 0\\)   (i)\n\nTaking the forces in the horizontal direction,\n\n\\(F - F_{1} = 0\\)   (ii)\n\nFor rotational equilibrium, taking the moments of the forces about A,\n\n\\(2\\sqrt{2}\\,F_{1} - (1/2)\\,W = 0\\)   (iii)\n\nNow \\(W = 20\\,g = 20 \\times 9.8\\,\\text{N} = 196.0\\,\\text{N}\\)\n\nFrom (i) \\(N = 196.0\\,\\text{N}\\)\n\nFrom (iii) \\(F_{1} = W/4\\sqrt{2} = 196.0/4\\sqrt{2} = 34.6\\,\\text{N}\\)\n\nFrom (ii) \\(F = F_{1} = 34.6\\,\\text{N}\\)\n\n\\(F_{2} = \\sqrt{F^{2} + N^{2}} = 199.0\\,\\text{N}\\)\n\nThe force \\(F_{2}\\) makes an angle \\(\\alpha\\) with the horizontal,\n\n\\(\\tan\\alpha = N/F = 4\\sqrt{2}\\), \\(\\alpha = \\tan^{-1}(4\\sqrt{2}) \\approx 80^{\\circ}\\)"
+  },
+  {
+    "ref": "Eg 6.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "Obtain Eq. (6.36) from first principles.",
+    "solution": "The angular acceleration is uniform, hence\n\n\\(\\dfrac{\\mathrm{d}\\omega}{\\mathrm{d}t} = \\alpha = \\text{constant}\\)   (i)\n\nIntegrating this equation,\n\n\\(\\omega = \\int \\alpha\\,\\mathrm{d}t + c\\)\n\n\\(= \\alpha t + c\\)   (as \\(\\alpha\\) is constant)\n\nAt \\(t = 0\\), \\(\\omega = \\omega_{0}\\) (given)\n\nFrom (i) we get at \\(t = 0\\), \\(\\omega = c = \\omega_{0}\\)\n\nThus, \\(\\omega = \\alpha t + \\omega_{0}\\) as required.\n\nWith the definition of \\(\\omega = \\mathrm{d}\\theta/\\mathrm{d}t\\) we may integrate Eq. (6.36) to get Eq. (6.37). This derivation and the derivation of Eq. (6.38) is left as an exercise.",
+    "_note": "STALE CROSS-REFERENCE in the printed solution (does not affect the result). The line 'From (i) we get at t = 0, omega = c = omega_0' cites equation (i), which is d(omega)/dt = alpha and contains no constant c. The constant is identified from the INTEGRATED equation omega = alpha*t + c printed two lines above, by setting t = 0. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 6.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "The angular speed of a motor wheel is increased from 1200 rpm to 3120 rpm in 16 seconds. (i) What is its angular acceleration, assuming the acceleration to be uniform? (ii) How many revolutions does the engine make during this time?",
+    "solution": "(i) We shall use \\(\\omega = \\omega_{0} + \\alpha t\\)\n\n\\(\\omega_{0} =\\) initial angular speed in rad/s\n\n\\(= 2\\pi \\times\\) angular speed in rev/s\n\n\\(= \\dfrac{2\\pi \\times \\text{angular speed in rev/min}}{60\\,\\text{s/min}}\\)\n\n\\(= \\dfrac{2\\pi \\times 1200}{60}\\,\\text{rad/s}\\)\n\n\\(= 40\\pi\\,\\text{rad/s}\\)\n\nSimilarly \\(\\omega =\\) final angular speed in rad/s\n\n\\(= \\dfrac{2\\pi \\times 3120}{60}\\,\\text{rad/s}\\)\n\n\\(= 2\\pi \\times 52\\,\\text{rad/s}\\)\n\n\\(= 104\\pi\\,\\text{rad/s}\\)\n\nAngular acceleration\n\n\\(\\alpha = \\dfrac{\\omega - \\omega_{0}}{t} = 4\\pi\\,\\text{rad/s}^{2}\\)\n\nThe angular acceleration of the engine \\(= 4\\pi\\,\\text{rad/s}^{2}\\)\n\n(ii) The angular displacement in time \\(t\\) is given by\n\n\\(\\theta = \\omega_{0}t + \\dfrac{1}{2}\\alpha t^{2}\\)\n\n\\(= \\left(40\\pi \\times 16 + \\dfrac{1}{2} \\times 4\\pi \\times 16^{2}\\right)\\,\\text{rad}\\)\n\n\\(= (640\\pi + 512\\pi)\\,\\text{rad}\\)\n\n\\(= 1152\\pi\\,\\text{rad}\\)\n\nNumber of revolutions \\(= \\dfrac{1152\\pi}{2\\pi} = 576\\)"
+  },
+  {
+    "ref": "Eg 6.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "A cord of negligible mass is wound round the rim of a fly wheel of mass 20 kg and radius 20 cm. A steady pull of 25 N is applied on the cord as shown in Fig. 6.31. The flywheel is mounted on a horizontal axle with frictionless bearings.\n\n(a) Compute the angular acceleration of the wheel.\n\n(b) Find the work done by the pull, when 2m of the cord is unwound.\n\n(c) Find also the kinetic energy of the wheel at this point. Assume that the wheel starts from rest.\n\n(d) Compare answers to parts (b) and (c).",
+    "solution": "(a) We use \\(I\\alpha = \\tau\\)\n\nthe torque \\(\\tau = FR\\)\n\n\\(= 25 \\times 0.20\\,\\text{N m}\\) (as \\(R = 0.20\\,\\text{m}\\))\n\n\\(= 5.0\\,\\text{N m}\\)\n\n\\(I =\\) Moment of inertia of flywheel about its axis \\(= \\dfrac{MR^{2}}{2}\\)\n\n\\(= \\dfrac{20.0 \\times (0.2)^{2}}{2} = 0.4\\,\\text{kg m}^{2}\\)\n\n\\(\\alpha =\\) angular acceleration\n\n\\(= 5.0\\,\\text{N m}/0.4\\,\\text{kg m}^{2} = 12.5\\,\\text{s}^{-2}\\)\n\n(b) Work done by the pull unwinding 2 m of the cord\n\n\\(= 25\\,\\text{N} \\times 2\\,\\text{m} = 50\\,\\text{J}\\)\n\n(c) Let \\(\\omega\\) be the final angular velocity. The kinetic energy gained \\(= \\dfrac{1}{2}I\\omega^{2}\\), since the wheel starts from rest. Now,\n\n\\(\\omega^{2} = \\omega_{0}^{2} + 2\\alpha\\theta\\), \\(\\omega_{0} = 0\\)\n\nThe angular displacement \\(\\theta =\\) length of unwound string / radius of wheel \\(= 2\\,\\text{m}/0.2\\,\\text{m} = 10\\,\\text{rad}\\)\n\n\\(\\omega^{2} = 2 \\times 12.5 \\times 10.0 = 250\\,(\\text{rad/s})^{2}\\)\n\nK.E. gained \\(= \\dfrac{1}{2} \\times 0.4 \\times 250 = 50\\,\\text{J}\\)\n\n(d) The answers are the same, i.e. the kinetic energy gained by the wheel = work done by the force. There is no loss of energy due to friction."
+  }
+]

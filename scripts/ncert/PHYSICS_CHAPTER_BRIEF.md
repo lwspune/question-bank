@@ -123,6 +123,46 @@ Report the number of rows you actually DIFFED separately from those you skipped.
 Do not import the NCERT-Maths "keys are rarely wrong" prior. Measured on the first Physics
 chapter gated: 3 genuine key errors + 1 book-internal inconsistency in 18 rows.
 
+### 8b. MCQs — blind key verification AND a solution (only if your chapter has any)
+
+Most NCERT Physics chapters have ZERO MCQs, so this step is usually a no-op. Check first:
+if `commit.ts`'s dry-run reported `format: mcq=N` with N > 0, do this.
+
+An MCQ row commits with a DERIVED answer and NO solution. Both halves need work:
+
+**READ `scripts/ncert/MCQ_VERIFY_BRIEF.md` — it is the contract for this step and it carries
+rules the solution brief does not.** In particular the `solution` you write here goes straight
+onto the question row and SHIPS TO STUDENTS, so it needs LaTeX `\(...\)` for all math and must
+NEVER name an option by letter (the standing `audit:keys` probe reads a named letter as the
+concluded answer and fires a false SOLN-vs-KEY). A past run briefed only on the schema
+produced 27 of 29 solutions naming letters and needed a rewrite pass.
+
+```
+npx tsx scripts/ncert/dump-mcq.ts <chapterId>
+```
+writes `data/<chapterId>.mcq-blind.json` — stems and options with **no** `is_correct`, so the
+derivation is genuinely blind. Solve each from scratch, then write
+`data/<chapterId>.blind.mcq-verify.json` as
+`[{ id, ref, derived_answer: "A|B|C|D", solution }]` — the field is **`derived_answer`**, not
+`answer`. Then:
+```
+npx tsx scripts/ncert/mark-mcq-verify.ts <chapterId>
+```
+which compares your letter against what was committed and records the result.
+
+**Report agreement or mismatch — never silently re-key.** A mismatch is a finding for the
+maintainer, not something you fix.
+
+The `solution` half is not optional: an MCQ with a correct letter and no working ships a
+student an answer they cannot learn from, and this project has already shipped that defect
+once — 22 PUBLIC MCQ rows in the Class-12 Integrals chapter had a correct key and no
+solution, found only by a later count.
+
+Then say in your report how many MCQs the chapter has, whether the blind pass agreed, and
+that each carries a solution. **If your chapter has MCQs, say so prominently** — the exam's
+`EXAM_REGISTRY.mixedFormats` flag has to be set the moment any of them goes PUBLIC, and that
+is the maintainer's change, not yours.
+
 ## Figures
 
 If any exercise question reads data off a printed figure, it is unanswerable from its stem
