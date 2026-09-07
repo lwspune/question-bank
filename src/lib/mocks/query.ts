@@ -53,10 +53,28 @@ export type MockListItem = Omit<MockRow, "questions" | "marking"> & {
   marking: { correct: number; wrong: number };
 };
 
-const MOCK_SELECT =
-  "id, slug, paper_code, pyq_year, pyq_month, source, scope, title, duration_secs, marking, sections, questions, total_questions, total_marks, exam:exams(name)";
+/**
+ * Everything a LISTING needs — deliberately WITHOUT `questions`.
+ *
+ * `questions` is the ordered per-question ref snapshot (0044): ~150 entries of
+ * {position, questionId, sectionKey, marks, negMarks} per mock, which across the
+ * published corpus is 2,446 kB against the 46 kB a listing actually renders — a
+ * 53x overfetch, measured 2026-09-07. The list used to take MOCK_SELECT and
+ * destructure `questions` off in JS, i.e. AFTER Postgres had read it, PostgREST
+ * had serialised it and it had crossed the network. Three route families now
+ * call getPublishedMocks (21 prerendered pages, up from 6), so the waste was
+ * about to triple.
+ */
+const MOCK_LIST_SELECT =
+  "id, slug, paper_code, pyq_year, pyq_month, source, scope, title, duration_secs, marking, sections, total_questions, total_marks, exam:exams(name)";
 
-function mapMock(r: Record<string, unknown>): MockRow {
+/** The listing columns PLUS the snapshot — for the two single-mock reads, which
+ *  genuinely need the ordered refs to deliver the test. */
+const MOCK_SELECT = `${MOCK_LIST_SELECT}, questions`;
+
+/** Map every field except the snapshot. Shared so the list and the single-mock
+ *  reads cannot drift in how they interpret a row. */
+function mapMockListItem(r: Record<string, unknown>): MockListItem {
   const exam = (Array.isArray(r.exam) ? r.exam[0] : r.exam) as { name: string } | null;
   return {
     id: r.id as string,
@@ -73,10 +91,17 @@ function mapMock(r: Record<string, unknown>): MockRow {
     durationSecs: r.duration_secs as number,
     marking: r.marking as { correct: number; wrong: number },
     sections: (r.sections as MockSection[]) ?? [],
-    questions: (r.questions as MockSnapshotQuestion[]) ?? [],
     totalQuestions: r.total_questions as number,
     totalMarks: Number(r.total_marks),
     examName: exam?.name ?? "",
+  };
+}
+
+/** A full row, snapshot included. */
+function mapMock(r: Record<string, unknown>): MockRow {
+  return {
+    ...mapMockListItem(r),
+    questions: (r.questions as MockSnapshotQuestion[]) ?? [],
   };
 }
 
@@ -84,7 +109,7 @@ function mapMock(r: Record<string, unknown>): MockRow {
 export async function getPublishedMocks(db: SupabaseClient): Promise<MockListItem[]> {
   const { data, error } = await db
     .from("mock_tests")
-    .select(MOCK_SELECT)
+    .select(MOCK_LIST_SELECT)
     .eq("status", "published")
     // nullsFirst: false — Postgres puts NULLs FIRST on a DESC order, so
     // without it every undated row (practice / sectional, migration 0088)
@@ -92,10 +117,7 @@ export async function getPublishedMocks(db: SupabaseClient): Promise<MockListIte
     .order("pyq_year", { ascending: false, nullsFirst: false })
     .order("pyq_month", { ascending: true });
   if (error) throw new Error(`getPublishedMocks: ${error.message}`);
-  return (data ?? []).map((r) => {
-    const { questions: _q, ...rest } = mapMock(r as Record<string, unknown>);
-    return rest;
-  });
+  return (data ?? []).map((r) => mapMockListItem(r as Record<string, unknown>));
 }
 
 /** One published mock by slug (includes the ordered snapshot). Null when absent. */
