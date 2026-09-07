@@ -103,8 +103,18 @@ export function targetOf(stem: string): string | null {
  * the cluster is still good, only the example is missing.
  */
 export function isBareStem(sentence: string, word: string): boolean {
-  const withoutWord = sentence.toLowerCase().replace(word, "").replace(/[^a-z]/g, "");
-  return withoutWord.length < 18 || /^(choose|select|pick)\b/i.test(sentence);
+  // COUNT WORDS, NOT LETTERS. A letter threshold called "Brevity is the soul of
+  // wit." and "Her smile was contagious." unusable — both are perfectly good
+  // example sentences, and short ones are the BEST kind for a vocabulary book.
+  // What actually makes a stem unusable is that it is only the headword, or an
+  // instruction wrapped round it.
+  if (/^(choose|select|pick|find)\b/i.test(sentence.trim())) return true;
+  const rest = sentence
+    .toLowerCase()
+    .replace(word.toLowerCase(), " ")
+    .split(/[^a-z']+/)
+    .filter(Boolean);
+  return rest.length < 3;
 }
 
 /**
