@@ -36,8 +36,19 @@
  * "bank-paper:cds-english-blind-2026-08-23". `question_reviews` is append-only
  * and the newest row is the current belief, so writing `unverifiable` over one
  * of those would DOWNGRADE a row that has genuinely been checked. This script
- * therefore strips the marker from every row but emits a review only where none
- * already confirms the key.
+ * therefore strips the marker from every row but emits a review only where no
+ * human adjudication already stands.
+ *
+ * "ADJUDICATED" IS ANY VERDICT BUT `unverifiable` (widened 2026-09-08). Asking
+ * only for `confirmed` was too narrow — it would have written "nobody has
+ * checked this" over CDS 2018-1 Q35, whose key was corrected against the
+ * printed page hours earlier and carries `key_fixed`.
+ *
+ * SCOPES: a built `papers` UUID, `--sets=`, or `--paper=<cdsId>` / `--all`,
+ * which resolve through the PAPERS config to `source_file`. The last two exist
+ * because the marker sits on 2,022 rows across all 19 English papers, most
+ * belonging to no `papers` row — so before them the bank-wide cleanup could not
+ * be expressed at all, which is why 93% of the corpus still carried it.
  *
  * SAFE ON HASHES: `contentHash` takes question + options + answer. `solution` is
  * not an input, so nothing here can desync dedup identity. Asserted at run time.
@@ -45,6 +56,7 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { stripDerivationMarker } from "./lib";
+import { PAPERS } from "./config";
 import { contentHash } from "../../src/lib/upload/hash";
 import { recordReviews } from "../../src/lib/reviews/service";
 import type { ReviewInput } from "../../src/lib/reviews/record";
@@ -67,10 +79,33 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const paperId = process.argv[2]?.startsWith("--") ? undefined : process.argv[2];
   const setsArg = process.argv.find((a) => a.startsWith("--sets="))?.slice("--sets=".length);
-  if (!paperId && !setsArg) {
-    throw new Error("usage: clean-markers.ts <paperId> [--apply]   |   clean-markers.ts --sets=<setId,...> [--apply]");
+  /**
+   * SOURCE SCOPE — the whole ingest paper, by its CDS id ("2018-1"), or `--all`
+   * for every paper in the config.
+   *
+   * The two scopes above can only reach rows that are already in a built paper
+   * or an enumerated set, and the marker is on 2,022 rows spread across all 19
+   * English papers — most of which belong to no `papers` row at all. Without
+   * this the bank-wide cleanup could not be expressed, which is why the marker
+   * survived on 93% of the corpus.
+   *
+   * Scoping on `source_file` is EXACT rather than convenient: every marked row
+   * in the bank is `Eng_CDS_*.pdf`, and it cannot reach CDS General Knowledge,
+   * whose rows carry a DIFFERENT and deliberately student-facing disclosure
+   * ("[Derived answer — ... Verify before relying on it.]") that must survive.
+   */
+  const paperArg = process.argv.find((a) => a.startsWith("--paper="))?.slice("--paper=".length);
+  const allArg = process.argv.includes("--all");
+  const scopes = [paperId, setsArg, paperArg, allArg ? "--all" : undefined].filter(Boolean);
+  if (scopes.length === 0) {
+    throw new Error(
+      "usage: clean-markers.ts <paperId> [--apply]\n" +
+        "   |   clean-markers.ts --sets=<setId,...> [--apply]\n" +
+        "   |   clean-markers.ts --paper=<cdsPaperId> [--apply]\n" +
+        "   |   clean-markers.ts --all [--apply]"
+    );
   }
-  if (paperId && setsArg) throw new Error("give a paperId OR --sets=, not both");
+  if (scopes.length > 1) throw new Error("give exactly ONE scope");
 
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -78,7 +113,7 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  let ids: string[];
+  let ids: string[] = [];
   if (paperId) {
     const { data: pq, error: pqErr } = await client
       .from("paper_questions")
@@ -87,7 +122,7 @@ async function main() {
     if (pqErr) throw new Error(`paper_questions: ${pqErr.message}`);
     ids = (pq ?? []).map((r) => r.question_id as string);
     if (ids.length === 0) throw new Error(`paper ${paperId} has no questions`);
-  } else {
+  } else if (setsArg) {
     // SET SCOPE, for cleaning rows a paper has not been built from yet.
     //
     // The paper scope alone is circular: scripts/bank-paper/build.ts REFUSES to
@@ -111,6 +146,29 @@ async function main() {
     console.log(`set scope: ${setIds.length} set(s) -> ${ids.length} question(s)`);
   }
 
+  if (paperArg || allArg) {
+    const wanted = allArg ? Object.keys(PAPERS) : [paperArg!];
+    for (const p of wanted) {
+      if (!PAPERS[p]) throw new Error(`unknown CDS paper "${p}" — known: ${Object.keys(PAPERS).join(", ")}`);
+    }
+    const seen = new Set<string>();
+    for (const p of wanted) {
+      const src = PAPERS[p].sourceFile;
+      // Paged: a paper is 120 rows, but a bare .select() is capped at 1000 and
+      // `--all` spans 2,280.
+      for (let from = 0; ; from += 1000) {
+        const { data, error } = await client
+          .from("questions").select("id").eq("source_file", src).range(from, from + 999);
+        if (error) throw new Error(`questions by source_file: ${error.message}`);
+        for (const r of data ?? []) seen.add(r.id as string);
+        if (!data || data.length < 1000) break;
+      }
+    }
+    ids = [...seen];
+    if (ids.length === 0) throw new Error(`no questions found for ${wanted.length} paper(s)`);
+    console.log(`source scope: ${wanted.length} paper(s) -> ${ids.length} question(s)`);
+  }
+
   const rows: Row[] = [];
   for (let i = 0; i < ids.length; i += 100) {
     const { data, error } = await client
@@ -130,7 +188,7 @@ async function main() {
   const inScope = rows.filter((r) => (r.exams as { name?: string } | null)?.name === "CDS");
   const marked = inScope.filter((r) => (r.solution ?? "").includes("LLM-derived"));
   console.log(
-    `${paperId ? `paper ${paperId}` : `${ids.length} question(s) in set scope`}: ${rows.length} question(s), ${inScope.length} from CDS, ` +
+    `${paperId ? `paper ${paperId}` : `${ids.length} question(s) in scope`}: ${rows.length} question(s), ${inScope.length} from CDS, ` +
       `${marked.length} still carrying the derivation marker\n`
   );
   if (inScope.length === 0) {
@@ -138,19 +196,28 @@ async function main() {
     return;
   }
 
-  // Rows a properly-instrumented pass has already confirmed. Chunked at 200
-  // because `.in()` puts the list in the URL.
-  const alreadyConfirmed = new Set<string>();
+  /**
+   * Rows a human has ALREADY ADJUDICATED, by any verdict other than
+   * `unverifiable`. Chunked at 200 because `.in()` puts the list in the URL.
+   *
+   * Originally this asked only for `confirmed`, which is too narrow: the table
+   * is append-only and the NEWEST row is the current belief, so writing
+   * `unverifiable` over a `key_fixed` / `stem_fixed` / `defect_preserved` row
+   * would report a question that was read against the printed page as one
+   * nobody has ever checked. Live case — CDS 2018-1 Q35, whose key was
+   * corrected from the source on 2026-09-07.
+   */
+  const alreadyAdjudicated = new Set<string>();
   {
     const ids = inScope.map((r) => r.id);
     for (let i = 0; i < ids.length; i += 200) {
       const { data, error } = await client
         .from("question_reviews")
         .select("question_id")
-        .eq("verdict", "confirmed")
+        .neq("verdict", "unverifiable")
         .in("question_id", ids.slice(i, i + 200));
       if (error) throw new Error(`question_reviews: ${error.message}`);
-      for (const r of data ?? []) alreadyConfirmed.add(r.question_id as string);
+      for (const r of data ?? []) alreadyAdjudicated.add(r.question_id as string);
     }
   }
 
@@ -203,11 +270,11 @@ async function main() {
       if (error) throw new Error(`solution ${r.id}: ${error.message}`);
     }
 
-    if (alreadyConfirmed.has(r.id)) {
+    if (alreadyAdjudicated.has(r.id)) {
       // A confirmation already stands; `unverifiable` is APPEND-ONLY and newest
       // wins, so emitting one here would overwrite better evidence with worse.
       skippedReview += 1;
-      console.log(`  provenance: already confirmed by a directions-supplied pass — no review emitted`);
+      console.log(`  provenance: already adjudicated (a non-unverifiable review stands) — no review emitted`);
       console.log();
       continue;
     }
@@ -234,7 +301,7 @@ async function main() {
   console.log(`${changed} row(s) ${apply ? "cleaned" : "would be cleaned"}.`);
   console.log(
     `${reviews.length} provenance review(s) to record; ` +
-      `${skippedReview} skipped (already confirmed by a directions-supplied pass).`
+      `${skippedReview} skipped (a human adjudication already stands).`
   );
 
   if (apply) {
