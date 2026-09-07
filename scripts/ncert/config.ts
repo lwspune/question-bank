@@ -1864,6 +1864,27 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ⚠ Ch.14's PDF CONTAINS THE WHOLE BOOK'S BACK MATTER — measured 2026-09-07,
+  // before dispatch, because two probes disagreed wildly about this chapter (one
+  // reported 95 exercise questions, a later one 6) and "14 pages for 6 questions"
+  // is implausible on its face. Neither reading was a defect; the chapter PDF is
+  // simply not just the chapter:
+  //     p0-17   the chapter itself (§14.1-14.7, Examples 14.1-14.4)
+  //     p18-19  the REAL exercise block — 6 questions, 14.1-14.6. That is all
+  //             there is; the block is two pages, not fourteen.
+  //     p21-29  the ANSWERS SECTION FOR ALL OF PART 2 (chapters 9 through 14).
+  //             This is what the "95" probe counted: it read the 9.x/10.x/…/14.x
+  //             key entries as question numbers. p29 carries chapter 14's own key,
+  //             with exactly 6 entries — which independently confirms the 6.
+  //     p30-31  bibliography and index.
+  //
+  // A transcribing agent MUST NOT read past p19. Transcribing p21-29 would ingest
+  // six chapters' ANSWER KEY as questions, and nothing downstream would catch it:
+  // the rows would commit, section, and pass every audit.
+  //
+  // (answerPages still points into NCERT_Physics_12th_Part_2.pdf p125-131 rather
+  // than these pages — same content, and the whole-book path is what the other
+  // five Part-2 chapters already use.)
   c12PhySemiconductors: {
     id: "c12PhySemiconductors",
     chapterName: "Semiconductor Electronics: Materials, Devices and Simple Circuits",
