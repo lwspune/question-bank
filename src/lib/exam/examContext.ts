@@ -191,13 +191,36 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
     std: 11,
-    // NO mixedFormats — and unlike the other board corpora that is a PERMANENT
-    // property, not a "not yet". Measured over all 14 chapter PDFs: the NCERT
-    // Class 11 Maths book contains ZERO MCQs (no "Choose the correct answer"
-    // instruction anywhere, no four-option run in any chapter), where Class 12
-    // has 29. So its corpus is 100% subjective — single-format — and the
-    // /browse Format control would be a no-op. tests/format-mix-registry.test.ts
-    // re-measures this against the live bank in both directions.
+    // NO mixedFormats — correct TODAY, but read the scope before trusting it.
+    // Measured over all 14 chapter PDFs, the NCERT Class 11 **Maths** book
+    // contains ZERO MCQs (no "Choose the correct answer" instruction anywhere,
+    // no four-option run in any chapter), where Class 12 Maths has 29 — so
+    // while Maths was this exam's only subject the corpus was 100% subjective
+    // and the /browse Format control would have been a no-op.
+    //
+    // ⚠ THAT CLAIM WAS ONCE WRITTEN HERE AS A **PERMANENT** PROPERTY OF THE
+    // EXAM. It is not: it was measured on one SUBJECT and this flag is
+    // EXAM-scoped. PHYSICS landed on this exam on 2026-09-07, and Class 11
+    // Physics DOES contain genuine four-option MCQs — Ch.5 Work, Energy and
+    // Power questions 5.9 and 5.10 ("the power delivered to it at time t is
+    // proportional to (i) t^1/2 (ii) t (iii) t^3/2 (iv) t^2") are four mutually
+    // exclusive rival answers. So this flag MUST be set to true in the same
+    // change that makes any such row PUBLIC, or the control goes missing on an
+    // exam that needs it.
+    //
+    // It is deliberately still absent because the probe below scopes to PUBLIC
+    // rows and the Physics corpus has no public MCQ yet — setting it early
+    // fails the test in the other direction ("flag stale").
+    //
+    // Two near-misses worth keeping, because both look like MCQs and are not:
+    // "Choose the correct alternative" in Ch.2/Ch.7 (and Class 12 Ch.12) heads
+    // a SUB-PART list where each (a)/(b)/(c)/(d) carries its own inline either/or
+    // ("increases/decreases with increasing altitude"); and Ch.6 Q6.1 lists
+    // "(i) sphere, (ii) cylinder, (iii) ring, (iv) cube" inside one subjective
+    // question. Key on whether the four alternatives are RIVAL ANSWERS, never on
+    // the instruction line or the label shape.
+    // tests/format-mix-registry.test.ts re-measures this against the live bank
+    // in both directions.
   },
   {
     slug: "cbse-12",
