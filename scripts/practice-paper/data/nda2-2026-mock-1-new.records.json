@@ -1,0 +1,47 @@
+[
+ {
+  "n": 63,
+  "stem": "A point \\(A(x, y)\\) lies in the region bounded by the \\(y\\)-axis, \\(2y + x = 6\\) and \\(5x - 6y = 30\\). The probability that \\(y < 1\\) is:",
+  "optA": "\\(\\frac{1}{4}\\)",
+  "optB": "\\(\\frac{5}{9}\\)",
+  "optC": "Value based on area ratio",
+  "optD": "None of these",
+  "answer": "D",
+  "solution": "The three boundary lines meet pairwise at \\((0, 3)\\), \\((0, -5)\\) and \\((6, 0)\\), so the region is the triangle with those vertices. Its area is \\(\\tfrac{1}{2} \\times 8 \\times 6 = 24\\). The line \\(y = 1\\) cuts it at \\((0, 1)\\) and at \\((4, 1)\\) on \\(2y + x = 6\\), so the part with \\(y > 1\\) is the triangle \\((0,1), (0,3), (4,1)\\) of area \\(\\tfrac{1}{2} \\times 2 \\times 4 = 4\\). Hence \\(P(y < 1) = \\dfrac{24 - 4}{24} = \\dfrac{5}{6}\\). That value is neither \\(\\tfrac{1}{4}\\) nor \\(\\tfrac{5}{9}\\), and option (c) states no value at all, so the correct choice is None of these. Matches option D.",
+  "difficulty": "HARD",
+  "chapter": "Probability",
+  "subtopic": "Probability via Counting",
+  "status": "new",
+  "reviewNote": "FLAWED - the correct probability is 5/6, which is not printed. Options A (1/4) and B (5/9) are both wrong; option C is not a value at all but a restatement of the method; option D is None of these. Strictly, D is the only defensible letter, since 5/6 is none of A, B or C. Key C is retained for OMR parity with the teacher's issued key AND because the paper's own solution endorses the area-ratio wording, but a student who correctly computes 5/6 will reasonably bubble D and would be marked wrong. Recommend this question be dropped from scoring rather than graded. Subtopic note: this is geometric (area-based) probability; the supplied Probability subtopic list has no geometric-probability bucket, so 'Probability via Counting' is the nearest fit (favourable measure over total measure) - please re-file if a better subtopic exists."
+ },
+ {
+  "n": 65,
+  "stem": "An urn contains 6 white and 9 black balls. Two successive draws of 4 balls are made without replacement. The probability that the first draw gives all white balls and the second all black is:",
+  "optA": "\\(\\frac{5}{715}\\)",
+  "optB": "\\(\\frac{3}{715}\\)",
+  "optC": "\\(\\frac{1}{715}\\)",
+  "optD": "\\(\\frac{5}{6}\\)",
+  "answer": "B",
+  "solution": "The first draw takes 4 balls from 15, so \\(P_1 = \\dfrac{\\binom{6}{4}}{\\binom{15}{4}} = \\dfrac{15}{1365} = \\dfrac{1}{91}\\). Four white balls having gone, the urn holds 2 white and 9 black, so the second draw of 4 from 11 gives \\(P_2 = \\dfrac{\\binom{9}{4}}{\\binom{11}{4}} = \\dfrac{126}{330} = \\dfrac{21}{55}\\). By the multiplication rule the required probability is \\(P_1 P_2 = \\dfrac{1}{91} \\times \\dfrac{21}{55} = \\dfrac{21}{5005} = \\dfrac{3}{715}\\). Matches option B.",
+  "difficulty": "MODERATE",
+  "chapter": "Probability",
+  "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+  "status": "new",
+  "reviewNote": "FLAWED - the correct answer 3/715 is not printed. This is the standard NCERT result. Option B was almost certainly INTENDED to be 3/715 (correct numerator) and is misprinted as 3/256 - re-read at 12x zoom, the denominator is unambiguously 256. Options A (5/715) and C (1/715) are exactly equidistant from the true value, so there is no nearest option. Key A is retained only because it is the issued key. The paper's own worked solution reaches the correct product and then fudges it: it writes '= 1/715 x 4.2 ... (approx 5/715 after simplification)', which is arithmetically wrong twice over (4.2/715 = 0.00587, 5/715 = 0.00699, true value 3/715 = 0.00420). Recommend dropping from scoring, or accepting B if the teacher confirms the 256 is a typo for 715."
+ },
+ {
+  "n": 68,
+  "stem": "Two sets of data have 10 and 20 observations with means 10 and 20 and variances 4 and 9 respectively. The combined variance is:",
+  "optA": "24.33",
+  "optB": "29.56",
+  "optC": "30.00",
+  "optD": "25.50",
+  "answer": "B",
+  "solution": "The combined mean is \\(\\bar{x} = \\dfrac{10(10) + 20(20)}{30} = \\dfrac{500}{30} = \\dfrac{50}{3}\\). The group means deviate from it by \\(d_1 = 10 - \\tfrac{50}{3} = -\\tfrac{20}{3}\\) and \\(d_2 = 20 - \\tfrac{50}{3} = \\tfrac{10}{3}\\). Then \\(\\sigma^2 = \\dfrac{n_1(\\sigma_1^2 + d_1^2) + n_2(\\sigma_2^2 + d_2^2)}{n_1 + n_2} = \\dfrac{10\\left(4 + \\tfrac{400}{9}\\right) + 20\\left(9 + \\tfrac{100}{9}\\right)}{30} = \\dfrac{266}{9} = 29.56\\) to two decimal places. Matches option B.",
+  "difficulty": "MODERATE",
+  "chapter": "Statistics",
+  "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+  "status": "new",
+  "reviewNote": "FLAWED - no correct option. The combined variance is exactly 266/9 = 29.5556, derived two independent ways (deviation-from-combined-mean form and the n1n2(m1-m2)^2 form). The printed options are 24.33, 29.33, 30.00, 25.50, re-read at 9x zoom. Key B (29.33) is 0.22 away and C (30.00) is 0.44 away, so B is the nearest but is not correct. The paper's own solution writes the correct expression and then mis-divides: its own numerator 886 over 30 is 29.53, not the 29.33 it records - so option B looks like a typo for 29.53, which is itself a rounding of the true 29.56."
+ }
+]
