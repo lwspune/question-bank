@@ -86,6 +86,9 @@ export default async function BookChapterPage({
           bookSlug={book.slug}
           chapterSlug={chapter.slug}
           excludedIds={view.excludedIds}
+          // Object, not the Map: a Map serialises to `{}` across the
+          // server/client boundary with no error at all.
+          recurrence={Object.fromEntries(view.recurrence)}
         />
 
         <nav className="flex items-center justify-between gap-4 border-t pt-4 text-sm">

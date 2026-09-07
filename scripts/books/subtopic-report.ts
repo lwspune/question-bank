@@ -35,7 +35,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { NDA_CDS_ENGLISH } from "../../src/lib/books/registry";
+import { selectBook } from "./selectBook";
 import { loadBookChapter } from "../../src/lib/books/query";
 import type { BookSection } from "../../src/lib/books/order";
 import type { QuestionRow } from "../../src/lib/questions/query";
@@ -153,7 +153,7 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const book = NDA_CDS_ENGLISH;
+  const book = selectBook();
   const only = arg("chapter");
   const chapters = only ? book.chapters.filter((c) => c.slug === only) : book.chapters;
   if (only && chapters.length === 0) throw new Error(`no chapter with slug "${only}"`);

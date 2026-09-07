@@ -17,7 +17,8 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { NDA_CDS_ENGLISH, bookExams } from "../../src/lib/books/registry";
+import { bookExams } from "../../src/lib/books/registry";
+import { selectBook } from "./selectBook";
 import { loadBookChapter, loadBookOverview } from "../../src/lib/books/query";
 import { chapterContents, numberChapter } from "../../src/lib/books/print";
 
@@ -39,7 +40,7 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const book = NDA_CDS_ENGLISH;
+  const book = selectBook();
   const overview = await loadBookOverview(client, book);
 
   console.log(`\n${book.title}`);
@@ -65,10 +66,13 @@ async function main() {
     const view = await loadBookChapter(client, book, chapter);
     const summary = overview.chapters.find((c) => c.chapter.slug === chapter.slug)!;
 
-    // The section contract: both halves, always, in NDA-then-CDS order.
+    // The section contract: every section the BOOK declares, always, in the
+    // order it declares them. Hardcoding "NDA PYQ | CDS PYQ" made this a check
+    // on one book rather than on the contract.
+    const expectedSections = book.sections.map((s) => s.title).join(" | ");
     check(
-      view.sections.map((s) => s.title).join(" | ") === "NDA PYQ | CDS PYQ",
-      `${chapter.name}: section order is ${view.sections.map((s) => s.title).join(" | ")}`
+      view.sections.map((s) => s.title).join(" | ") === expectedSections,
+      `${chapter.name}: section order is ${view.sections.map((s) => s.title).join(" | ")}, expected ${expectedSections}`
     );
 
     // The TOC must not disagree with the chapter it links to.
@@ -87,9 +91,14 @@ async function main() {
         new Set(ids).size === ids.length,
         `${chapter.name}/${section.title}: a question appears more than once`
       );
+      // The TOC counts what the book PRINTS; `questionCount` counts every row
+      // the section holds, excluded ones included. They are equal only in a book
+      // with no curation, so compare like with like — otherwise this check fires
+      // on every collapsed duplicate and says nothing.
+      const liveInSection = ids.filter((id) => !new Set(view.excludedIds).has(id)).length;
       check(
-        section.questionCount === (summary.byExam[section.exam] ?? 0),
-        `${chapter.name}/${section.title}: ${section.questionCount} vs TOC ${summary.byExam[section.exam]}`
+        liveInSection === (summary.byExam[section.exam] ?? 0),
+        `${chapter.name}/${section.title}: ${liveInSection} live vs TOC ${summary.byExam[section.exam]}`
       );
 
       // Every question the reader will try to draw must have been fetched —
@@ -209,12 +218,15 @@ async function main() {
       .join("");
     console.log(`    ${"All questions".padEnd(26)}${totals}`);
 
-    const first = view.sections[0];
-    const second = view.sections[1];
+    // Every section, not sections[0] and sections[1]: a one-section book threw
+    // here, which is the shape of latent bug a second book is for finding.
+    const per = view.sections
+      .map((s) => `${String(s.sets.length).padStart(3)} sets / ${String(s.questionCount).padStart(4)} q`)
+      .join("   |   ");
+    const firstLabel = view.sections[0]?.sets[0]?.label ?? "—";
+    const lastLabel = view.sections.at(-1)?.sets.at(-1)?.label ?? "—";
     console.log(
-      `  ${chapter.name.padEnd(24)} ${String(first.sets.length).padStart(3)} sets / ${String(first.questionCount).padStart(4)} q` +
-        `   |   ${String(second.sets.length).padStart(3)} sets / ${String(second.questionCount).padStart(4)} q` +
-        `   first: ${first.sets[0]?.label ?? "—"}  last: ${second.sets.at(-1)?.label ?? "—"}`
+      `  ${chapter.name.padEnd(24)} ${per}   first: ${firstLabel}  last: ${lastLabel}`
     );
   }
 

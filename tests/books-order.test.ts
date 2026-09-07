@@ -512,3 +512,68 @@ describe("buildStoredSections", () => {
     expect(sections[0].sets.flatMap((s) => s.questionIds)).toEqual(["a"]);
   });
 });
+
+/**
+ * MHT-CET is the first exam whose sitting is readable from NEITHER rule.
+ *
+ * `pyq_month` collapses its 45 source-file labels into 6 buckets — 17 share
+ * (2023, "May") and 12 share (2024, "May") — and is ACTIVELY WRONG on one label
+ * (`MHT_CET_2025_PCM.xlsx` is stamped May and is a second upload of an April
+ * paper). The filename carries the date but in at least eight conventions, one
+ * of them a typo, so no regex reads them all. Hence a third rule: a registry.
+ */
+describe("sittingOrdinal + sittingLabel for MHT-CET (registry rule)", () => {
+  const cet = (sourceFile: string, pyqYear: number) =>
+    q({ id: "x", exam: "MHT-CET", pyqYear, pyqMonth: "May", sourceFile });
+
+  it("reads the sitting from the registry, not the month 17 papers share", () => {
+    const may16 = sittingOrdinal(cet("MHT_CET_16thMay2023_Shift2_QuestionBank.xlsx", 2023));
+    const may09 = sittingOrdinal(cet("MHT_CET_9thMay2023_Shift1_QuestionBank.xlsx", 2023));
+    expect(may16).not.toBeNull();
+    expect(may09).not.toBeNull();
+    expect(may16).not.toBe(may09);
+  });
+
+  it("orders sittings chronologically, so 16 May comes after 9 May", () => {
+    expect(sittingOrdinal(cet("MHT_CET_16thMay2023_Shift2_QuestionBank.xlsx", 2023))!)
+      .toBeGreaterThan(
+        sittingOrdinal(cet("MHT_CET_9thMay2023_Shift1_QuestionBank.xlsx", 2023))!
+      );
+  });
+
+  /**
+   * THE LOAD-BEARING CASE. Three papers were uploaded twice under different
+   * labels. If the two labels read as two sittings, the book both mis-orders
+   * them and — because the recurrence badge counts distinct sittings — claims
+   * 90 questions were "asked twice" when they were asked once.
+   */
+  it("resolves a duplicate-upload label to the SAME sitting as the paper it duplicates", () => {
+    const primary = sittingOrdinal(cet("MHT_CET_16thMay2023_Shift2_QuestionBank.xlsx", 2023));
+    const duplicate = sittingOrdinal(cet("MHT_CET_2023_Analysis.xlsx", 2023));
+    // Asserted NOT-null first, or this passes trivially while no rule exists at
+    // all and both sides read null — the failure it is here to catch.
+    expect(primary).not.toBeNull();
+    expect(duplicate).toBe(primary);
+
+    const p24 = sittingOrdinal(cet("MHT_CET_12thMay2024_Shift2_QuestionBank.xlsx", 2024));
+    const d24 = sittingOrdinal(cet("MHT_CET_13thMay2024_Shift1_QuestionBank.xlsx", 2024));
+    expect(p24).not.toBeNull();
+    expect(d24).toBe(p24);
+  });
+
+  it("returns null rather than guessing when the registry has never seen the file", () => {
+    // Paired with a KNOWN file, so this cannot pass by the rule being absent.
+    expect(sittingOrdinal(cet("MHT_CET_2021_Question_Bank.xlsx", 2021))).not.toBeNull();
+    expect(sittingOrdinal(cet("MHT_CET_99thMay2099_Shift9.xlsx", 2099))).toBeNull();
+  });
+
+  it("names a sitting by its date, without repeating the exam on every line", () => {
+    const meta = cet("MHT_CET_16thMay2023_Shift2_QuestionBank.xlsx", 2023);
+    expect(sittingLabel("MHT-CET", 2023, sittingOrdinal(meta))).toBe("2023 · 16 May Shift 2");
+  });
+
+  it("degrades to the bare year where no date is established", () => {
+    const meta = cet("MHT_CET_2021_Question_Bank.xlsx", 2021);
+    expect(sittingLabel("MHT-CET", 2021, sittingOrdinal(meta))).toBe("2021");
+  });
+});

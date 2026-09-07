@@ -31,11 +31,28 @@ type Props = {
   chapterSlug: string;
   /** Questions curated OUT — rendered struck through, not hidden. */
   excludedIds: string[];
+  /**
+   * For each PRINTED question, the sittings it stands for. Serialised as a plain
+   * object: a Map cannot cross the server/client boundary, and one that does
+   * arrives as `{}` with no error.
+   */
+  recurrence: Record<string, string[]>;
 };
 
-/** The chapter's other half. There are two sections, so this is a flip. */
-function otherSection(key: string): string {
-  return key === "nda" ? "cds" : "nda";
+/**
+ * The section a set would move to, or null when there is nowhere to move it.
+ *
+ * This was a hardcoded `nda <-> cds` flip. A one-section book (MHT-CET Maths is
+ * the first) would have rendered a "Move to CDS PYQ" button that targets a
+ * section the book does not have; with three or more, the flip is meaningless.
+ * Returning null is what lets the control simply not render.
+ */
+function otherSection(
+  sections: BookSection[],
+  key: string
+): BookSection | null {
+  if (sections.length !== 2) return null;
+  return sections.find((s) => s.key !== key) ?? null;
 }
 
 /**
@@ -65,6 +82,7 @@ export default function BookChapterReader({
   bookSlug,
   chapterSlug,
   excludedIds,
+  recurrence,
 }: Props) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -240,25 +258,34 @@ export default function BookChapterReader({
                         >
                           <ArrowDown className="h-3 w-3" aria-hidden="true" /> Down
                         </SetButton>
-                        <SetButton
-                          disabled={pending}
-                          label={`Move ${set.label} to the other half of the chapter`}
-                          onClick={() =>
-                            run(
-                              () =>
-                                moveSetToSectionAction(
-                                  bookSlug,
-                                  chapterSlug,
-                                  section.key,
-                                  set.key,
-                                  otherSection(section.key)
-                                ),
-                              `Moved to ${otherSection(section.key).toUpperCase()} PYQ`
-                            )
-                          }
-                        >
-                          Move to {otherSection(section.key).toUpperCase()} PYQ
-                        </SetButton>
+                        {(() => {
+                          // Rendered only where there IS another section. The
+                          // title comes from the book, not from the key, so a
+                          // section is named the way the book names it.
+                          const target = otherSection(sections, section.key);
+                          if (!target) return null;
+                          return (
+                            <SetButton
+                              disabled={pending}
+                              label={`Move ${set.label} to ${target.title}`}
+                              onClick={() =>
+                                run(
+                                  () =>
+                                    moveSetToSectionAction(
+                                      bookSlug,
+                                      chapterSlug,
+                                      section.key,
+                                      set.key,
+                                      target.key
+                                    ),
+                                  `Moved to ${target.title}`
+                                )
+                              }
+                            >
+                              Move to {target.title}
+                            </SetButton>
+                          );
+                        })()}
                       </div>
 
                       {isOpen ? (
@@ -283,6 +310,7 @@ export default function BookChapterReader({
                                 showAnswer={showAnswers}
                                 supabaseUrl={supabaseUrl}
                                 excluded={isOut}
+                                sittings={recurrence[id] ?? []}
                                 pending={pending}
                                 onToggleExclude={() =>
                                   run(
@@ -345,6 +373,7 @@ function Question({
   showAnswer,
   supabaseUrl,
   excluded,
+  sittings,
   pending,
   onToggleExclude,
 }: {
@@ -353,6 +382,8 @@ function Question({
   showAnswer: boolean;
   supabaseUrl: string;
   excluded: boolean;
+  /** Sittings this question stands for; more than one earns a recurrence line. */
+  sittings: string[];
   pending: boolean;
   onToggleExclude: () => void;
 }) {
@@ -370,6 +401,14 @@ function Question({
           {excluded ? (
             <p className="font-sans text-xs font-medium text-amber-600 dark:text-amber-400">
               Excluded from the book
+            </p>
+          ) : null}
+
+          {/* Shown here as well as in print, so the person curating sees the
+              same claim the book will make. */}
+          {sittings.length > 1 ? (
+            <p className="font-sans text-xs font-medium text-brand-accent">
+              Asked {sittings.length} times: {sittings.join(", ")}
             </p>
           ) : null}
 

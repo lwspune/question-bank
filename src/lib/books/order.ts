@@ -21,11 +21,25 @@
  * mis-orders it SILENTLY; in NDA 2019 a filename sort actively inverts the two
  * sittings, because `GAT_NDA2_2019...` sorts before `NDA1_2019...`.
  *
- * SETS ARE ATOMIC. 3,175 of the 3,180 questions sit in a shared-`context` set;
- * in Reading Comprehension one passage feeds five or more questions. So the
- * unit of ordering is the SET — a question separated from its set is separated
- * from the passage it needs, and nothing downstream would notice.
+ * MHT-CET needs a THIRD rule and reads by NEITHER: `pyq_month` collapses its 45
+ * source-file labels into 6 buckets (17 share (2023, "May")) and is actively
+ * wrong on one, and its filenames carry the date in at least eight conventions,
+ * one of them a typo. So its sitting is LOOKED UP in a registry — see
+ * `SittingRegistry` and src/lib/mocks/mhtcetSittings.ts.
+ *
+ * SETS ARE ATOMIC — where they exist. 3,175 of the English book's 3,180
+ * questions sit in a shared-`context` set; in Reading Comprehension one passage
+ * feeds five or more questions. So the unit of ordering is the SET — a question
+ * separated from its set is separated from the passage it needs, and nothing
+ * downstream would notice. A maths book is the opposite case (MHT-CET Maths has
+ * `set_id` NULL on all 2,228 rows), where every set is one question and this
+ * costs nothing.
  */
+
+import {
+  deriveMhtCetSittingIdentities,
+  mhtCetSittingOrdinals,
+} from "@/lib/mocks/mhtcetSittings";
 
 /** A section of a chapter, declared by the book. `key` is stored in `book_questions.section_key`. */
 export type BookSectionDef = {
@@ -43,7 +57,29 @@ export type BookSectionDef = {
 export type SittingRule =
   | { from: "month"; map: Record<string, number>; label: "numbered" }
   | { from: "sourceFile"; label: "roman" }
+  | { from: "registry"; registry: SittingRegistry; label: "dated" }
   | { from: "none" };
+
+/**
+ * A hand-maintained `source_file` -> sitting map, for an exam whose sitting is
+ * readable from NEITHER the month nor a filename convention.
+ *
+ * MHT-CET is the first: `pyq_month` collapses its 45 labels into 6 buckets (17
+ * share (2023, "May")) and is actively wrong on one, while the filenames carry
+ * the date in at least eight conventions, one containing a typo. No regex reads
+ * them all, so the answer is looked up rather than parsed.
+ *
+ * `ordinalOf` is keyed by EVERY label, including the three duplicate-upload
+ * labels, which resolve to the ordinal of the paper they duplicate. That
+ * collapse is load-bearing: two labels for one paper must give one sitting, or
+ * the book both mis-orders them and over-counts how often a question was asked.
+ */
+export type SittingRegistry = {
+  /** Every `source_file` label -> chronological ordinal, oldest = 1. */
+  ordinalOf: Map<string, number>;
+  /** Ordinal -> display label; null where no date is established. */
+  labelOf: Map<number, string | null>;
+};
 
 /**
  * `Eng_CDS_2017_1.pdf` -> 1. The four-digit year group is load-bearing, not
@@ -51,6 +87,25 @@ export type SittingRule =
  * sitting 2017.
  */
 const SOURCE_FILE_SITTING_RE = /_(\d{4})_(\d{1,2})\.pdf$/i;
+
+/**
+ * Built once at module load from the sitting identities. Pure data — this file
+ * still performs no I/O.
+ */
+function mhtCetRegistry(): SittingRegistry {
+  const ordinals = mhtCetSittingOrdinals();
+  const ordinalOf = new Map<string, number>();
+  const labelOf = new Map<number, string | null>();
+  for (const s of deriveMhtCetSittingIdentities()) {
+    const ordinal = ordinals.get(s.key);
+    if (ordinal === undefined) continue;
+    ordinalOf.set(s.sourceFile, ordinal);
+    // The duplicate-upload label resolves to the SAME sitting as its primary.
+    if (s.mergeWith) ordinalOf.set(s.mergeWith, ordinal);
+    labelOf.set(ordinal, s.label);
+  }
+  return { ordinalOf, labelOf };
+}
 
 /**
  * Both the short and long month spellings are accepted: the English bank stores
@@ -64,6 +119,7 @@ export const EXAM_SITTING: Record<string, SittingRule> = {
     label: "numbered",
   },
   CDS: { from: "sourceFile", label: "roman" },
+  "MHT-CET": { from: "registry", registry: mhtCetRegistry(), label: "dated" },
 };
 
 /** An exam with no declared rule has no readable sitting — stated, not guessed. */
@@ -171,6 +227,12 @@ export function sittingOrdinal(meta: BookQuestionMeta): number | null {
     const sitting = Number(match[2]);
     return Number.isFinite(sitting) && sitting > 0 ? sitting : null;
   }
+  if (rule.from === "registry") {
+    // An unknown label reads as null rather than being slotted somewhere
+    // plausible — a guessed sitting orders the book confidently and wrongly.
+    if (!meta.sourceFile) return null;
+    return rule.registry.ordinalOf.get(meta.sourceFile) ?? null;
+  }
   return null;
 }
 
@@ -192,6 +254,13 @@ export function sittingLabel(
   if (rule.from === "month" && rule.label === "numbered") {
     if (sitting == null) return yearText ? `${exam} ${yearText}` : exam;
     return yearText ? `${exam} ${sitting} · ${yearText}` : `${exam} ${sitting}`;
+  }
+  if (rule.from === "registry" && rule.label === "dated") {
+    // The exam is deliberately NOT repeated: a single-exam book would print it
+    // on every provenance line, where it carries no information.
+    const name = sitting == null ? null : rule.registry.labelOf.get(sitting) ?? null;
+    if (!yearText) return name ?? exam;
+    return name ? `${yearText} · ${name}` : yearText;
   }
   if (rule.from === "sourceFile" && rule.label === "roman") {
     const edition = sitting != null && ROMAN[sitting] ? ` (${ROMAN[sitting]})` : "";
