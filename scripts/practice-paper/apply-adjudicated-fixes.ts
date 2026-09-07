@@ -59,6 +59,14 @@ type Fix = {
   solution?: Edit[];
   /** Prepended to the solution (the bank convention: 590 prepended vs 18 inline). */
   notePrefix?: string;
+  /**
+   * Key correction. Asserts the row currently keys `from`, then flips it to
+   * `to`. The answer LETTER is a content_hash input (src/lib/upload/hash.ts),
+   * so this moves the hash exactly as a stem edit does — and it is applied by
+   * UPDATEing options.is_correct in place, never delete-and-re-commit, which
+   * would mint a fresh uuid and orphan the row's paper_questions membership.
+   */
+  answer?: { from: string; to: string };
   why: string;
 };
 
@@ -66,6 +74,57 @@ const THETA = "\\(\\theta\\)";
 const DEG45 = "\\(45^\\circ\\)";
 
 const FIXES: Fix[] = [
+  {
+    questionId: "e4d3de0b-e1b1-4e98-a0b4-03a475a3328c",
+    recordsFile: "oswaal-gat-mock-6.records.json",
+    n: 120,
+    label: "Oswaal GAT Mock 6 Q120 - subtropical high keyed as Roaring forties",
+    answer: { from: "B", to: "A" },
+    solution: [{ find: "Subtropical high-pressure belts: • These areas are characterised by calm winds and little precipitation, typically located at approximately 30o north and south latitude.", replace: "The subtropical high-pressure belts lie at roughly 30 degrees north and south, where air descending on the poleward limb of the Hadley cell gives calm winds, clear skies and little precipitation. That belt is the one traditionally called the horse latitudes. The Roaring Forties, Furious Fifties and Screeching Sixties are the strong westerly WIND belts of the Southern Ocean near 40, 50 and 60 degrees south; they are named for winds, not for a pressure belt. Matches option A." }],
+    notePrefix:
+      "[Key corrected 2026-09-07: this row previously keyed Roaring forties. The subtropical " +
+      "high-pressure belt at about 30 degrees IS the horse latitudes; the Roaring Forties are the " +
+      "westerly wind belt near 40 degrees south. The row's own printed solution, which places the belt " +
+      "at approximately 30 degrees, refutes the old key.] ",
+    why:
+      "Found during the dedup gate for the LWS Pressure Belt paper. Objectively wrong and SELF-" +
+      "REFUTING: the stored solution places the belt at 30 degrees, while the Roaring Forties are by " +
+      "definition the 40-degree-S westerlies - a wind belt, not a pressure belt. No gate could see it: " +
+      "the solution never names an option letter, so audit:keys' solution-contradicts-key probe cannot " +
+      "fire; this is the stealth wrong-key class. The source PDF is not on disk, so whether Oswaal " +
+      "printed B or our pass mis-transcribed it could NOT be determined - recorded as key_fixed rather " +
+      "than defect_preserved because either way the stored answer was wrong, and this is a commercial " +
+      "practice booklet, not a PYQ with an issued key anyone was marked against. The solution was also " +
+      "rewritten to justify the answer rather than merely describe the belt.",
+  },
+  {
+    questionId: "3b13aa96-8e0c-4dce-94b0-1bfa7cc5aa94",
+    recordsFile: "lws-pressure-belt-pos.records.json",
+    n: 13,
+    label: "LWS Pressure Belt Q13 - calm conditions latitude",
+    answer: { from: "A", to: "B" },
+    solution: [{ find: "The equator carries the doldrums, literally named the belt of calms, because surface air motion there is mainly vertical. Q47 of this paper confirms the doldrums is the belt of calms. Matches option A.", replace: "Both the equatorial belt and the subtropical belt are belts of calms, so the discriminator is the word most frequently. At about 30 degrees the descending limb of the Hadley cell gives persistently light and variable winds under clear skies, which is why sailors named it the horse latitudes. The equatorial doldrums are calm at the surface but are broken repeatedly by convectional thunderstorms, so calm conditions are less consistently observed there. Note this paper's Q47 uses Belt of Calms as a NAME for the doldrums; this question instead asks where calm is most often found. Matches option B." }],
+    why:
+      "The paper's own key (via the nda-tracker RESULTS sheet) gives B. Both blind derivation passes " +
+      "returned A at MED confidence and BOTH named B as the runner-up on exactly this ground - that 30 " +
+      "degrees is also a belt of calms - so the key lands on the alternative the derivers named and set " +
+      "aside. Genuinely ambiguous rather than a derivation error: the doldrums are literally the belt " +
+      "of calms, but calm is more PERSISTENT under subtropical subsidence. Deferred to the paper's own " +
+      "key, since that is what students are graded against.",
+  },
+  {
+    questionId: "7c66123d-8605-492a-a0c0-0d694210eb78",
+    recordsFile: "lws-pressure-belt-pos.records.json",
+    n: 41,
+    label: "LWS Pressure Belt Q41 - centrifugal force and the equatorial low",
+    answer: { from: "A", to: "D" },
+    solution: [{ find: "Statement 1 is the definition of atmospheric pressure and statement 2 is correct because both density and column height fall with height. Statement 3 is doubtful because the equatorial low is taught as thermally induced by convection rather than as a product of centrifugal force. Matches option A.", replace: "Statement 1 is the definition of atmospheric pressure. Statement 2 is correct: air density and the overlying column both fall with height, so pressure falls with altitude. Statement 3 follows the standard Indian-syllabus treatment, which credits the centrifugal effect of the Earth's rotation, greatest at the equator, as a CONTRIBUTING cause of the equatorial low alongside intense solar heating - the two are taught together rather than as rivals. All three statements are therefore correct. Matches option D." }],
+    why:
+      "The paper's own key gives D. Both blind passes returned A at MED and BOTH named D as the " +
+      "runner-up with the precise condition - that Indian texts do credit the rotational centrifugal " +
+      "effect as a contributing cause of the equatorial low. That condition holds for this syllabus, so " +
+      "statement 3 stands and all three are correct. Deferred to the paper's own key.",
+  },
   {
     questionId: "3bc00f7a-6660-4ee2-ac87-30ac83607193",
     recordsFile: "oswaal-gat-mock-8.records.json",
@@ -175,6 +234,31 @@ function swapValue(raw: string, prev: string, next: string, where: string): stri
   throw new Error(`${where}: neither the expected old value nor the new one is in the file - refusing`);
 }
 
+/**
+ * Mirror a key flip into the records file.
+ *
+ * A bare `"A"` occurs in every record and in option texts, so a blind
+ * swapValue would match dozens of places (and its >1 guard would simply
+ * refuse). The swap is therefore ANCHORED: find this record's stem, then take
+ * the FIRST `"answer": "X"` after it. Self-healing like swapValue - already
+ * holding `to` is a no-op, anything else is drift and is refused.
+ */
+function swapAnswer(raw: string, stem: string, from: string, to: string, where: string): string {
+  if (from === to) return raw;
+  for (const enc of encodings(stem)) {
+    const at = raw.indexOf(enc);
+    if (at === -1) continue;
+    const re = /("answer"\s*:\s*")([A-D])(")/g;
+    re.lastIndex = at;
+    const m = re.exec(raw);
+    if (!m) throw new Error(`${where}: no "answer" field after the stem - refusing`);
+    if (m[2] === to) return raw;
+    if (m[2] !== from) throw new Error(`${where}: file keys ${m[2]}, expected ${from} - refusing`);
+    return raw.slice(0, m.index) + m[1] + to + m[3] + raw.slice(m.index + m[0].length);
+  }
+  throw new Error(`${where}: stem not found in file - refusing`);
+}
+
 async function main() {
   const apply = process.argv.includes("--apply");
   const db = createClient(url!, key!, { auth: { persistSession: false } });
@@ -216,11 +300,24 @@ async function main() {
       newSoln = fix.notePrefix + newSoln;
     }
 
-    const newHash = contentHash(newText, optTexts, answer);
+    // A key flip is self-healing: `from` means not yet applied, `to` means a
+    // previous run already landed it. Anything else is drift and is refused.
+    let newAnswer = answer;
+    if (fix.answer) {
+      if (answer === fix.answer.from) newAnswer = fix.answer.to;
+      else if (answer === fix.answer.to) newAnswer = answer;
+      else
+        throw new Error(
+          `${fix.questionId}: key is ${answer}, expected ${fix.answer.from} (or ${fix.answer.to} if already applied) - refusing`,
+        );
+    }
+    const answerChanged = newAnswer !== answer;
+
+    const newHash = contentHash(newText, optTexts, newAnswer);
     const textChanged = newText !== storedText;
     const solnChanged = newSoln !== storedSoln;
 
-    if (textChanged) {
+    if (textChanged || answerChanged) {
       const { data: clash, error: ce } = await db
         .from("questions")
         .select("id")
@@ -242,6 +339,10 @@ async function main() {
       console.log(`        hash ${row.content_hash.slice(0, 12)} -> ${newHash.slice(0, 12)}`);
     }
     if (solnChanged) console.log(`        solution ${storedSoln.length} -> ${newSoln.length} chars`);
+    if (answerChanged) {
+      console.log(`        KEY ${answer} -> ${newAnswer}  (${opts.find((o) => o.label === newAnswer)?.text})`);
+      console.log(`        hash ${row.content_hash.slice(0, 12)} -> ${newHash.slice(0, 12)}`);
+    }
 
     // ---- records mirror, computed independently of whether the DB changed ----
     const path = join(process.cwd(), "scripts", "practice-paper", "data", fix.recordsFile);
@@ -252,6 +353,9 @@ async function main() {
 
     let patched = swapValue(raw, String(rec.stem), newText, `${fix.recordsFile} n=${fix.n} stem`);
     patched = swapValue(patched, String(rec.solution ?? ""), newSoln, `${fix.recordsFile} n=${fix.n} solution`);
+    if (fix.answer) {
+      patched = swapAnswer(patched, newText, fix.answer.from, fix.answer.to, `${fix.recordsFile} n=${fix.n} answer`);
+    }
 
     // Prove the patched file still parses AND that the record now holds exactly
     // what is about to be written to the database.
@@ -266,6 +370,11 @@ async function main() {
     if (String(recAfter.solution ?? "") !== newSoln) {
       throw new Error(`${fix.recordsFile} n=${fix.n}: patched solution !== DB target - refusing`);
     }
+    if (String(recAfter.answer) !== newAnswer) {
+      throw new Error(
+        `${fix.recordsFile} n=${fix.n}: patched answer ${recAfter.answer} !== DB target ${newAnswer} - refusing`,
+      );
+    }
     const changedLines = patched === raw ? 0 : patched.split("\n").filter((l, i) => l !== raw.split("\n")[i]).length;
     console.log(
       `  file: ${patched === raw ? "already mirrored" : "patched"}; reparses, ${reparsed.length} records, ` +
@@ -274,29 +383,54 @@ async function main() {
 
     if (!apply) continue;
 
-    if (textChanged || solnChanged) {
+    if (textChanged || solnChanged || answerChanged) {
       const { error: ue } = await db
         .from("questions")
         .update({ text: newText, solution: newSoln, content_hash: newHash })
         .eq("id", fix.questionId);
       if (ue) throw new Error(`${fix.questionId}: ${ue.message}`);
     }
+    if (answerChanged) {
+      // Clear the old key BEFORE setting the new one, so the row is never
+      // momentarily left with two correct options (the shape verify-commit and
+      // audit:keys both treat as a defect).
+      const { error: c1 } = await db
+        .from("options")
+        .update({ is_correct: false })
+        .eq("question_id", fix.questionId)
+        .eq("label", answer);
+      if (c1) throw new Error(`${fix.questionId}: ${c1.message}`);
+      const { error: c2 } = await db
+        .from("options")
+        .update({ is_correct: true })
+        .eq("question_id", fix.questionId)
+        .eq("label", newAnswer);
+      if (c2) throw new Error(`${fix.questionId}: ${c2.message}`);
+    }
     if (patched !== raw) writeFileSync(path, patched, "utf8");
 
     // Verify from the database, and confirm paper membership survived.
     const { data: after, error: ae } = await db
       .from("questions")
-      .select("text, solution, content_hash")
+      .select("text, solution, content_hash, options(label, is_correct)")
       .eq("id", fix.questionId)
       .single();
     if (ae) throw new Error(ae.message);
-    const ok = after.text === newText && after.solution === newSoln && after.content_hash === newHash;
+    const liveOpts = after.options as { label: string; is_correct: boolean }[];
+    const liveKeys = liveOpts.filter((o) => o.is_correct).map((o) => o.label);
+    const keyOk = liveKeys.length === 1 && liveKeys[0] === newAnswer;
+    const ok =
+      after.text === newText && after.solution === newSoln && after.content_hash === newHash && keyOk;
+    if (!keyOk) console.error(`  KEY MISMATCH: live key is [${liveKeys.join(",")}], expected ${newAnswer}`);
     const { count } = await db
       .from("paper_questions")
       .select("*", { count: "exact", head: true })
       .eq("question_id", fix.questionId);
     const fileOk = String((JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>[]).find((r) => r.n === fix.n)!.stem) === newText;
-    console.log(`  verified: db matches target = ${ok}; file matches target = ${fileOk}; still in ${count ?? 0} paper(s)`);
+    console.log(
+      `  verified: db matches target = ${ok}; key = ${liveKeys.join(",")}; file matches target = ${fileOk}; ` +
+        `still in ${count ?? 0} paper(s)`,
+    );
     if (!ok || !fileOk) process.exit(1);
   }
 
