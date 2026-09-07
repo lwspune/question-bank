@@ -32,6 +32,7 @@ async function main() {
   const diffs: Diff[] = [];
   let checked = 0;
   let missing = 0;
+  let solutionDiffs = 0;
 
   for (const id of Object.keys(PAPERS)) {
     if (only && id !== only) continue;
@@ -47,7 +48,7 @@ async function main() {
 
     const { data: live, error } = await db
       .from("questions")
-      .select("id,question_number,text,content_hash,options(label,text,is_correct)")
+      .select("id,question_number,text,content_hash,solution,options(label,text,is_correct)")
       .eq("source_file", PAPERS[id].sourceFile);
     if (error) throw error;
     const byNum = new Map((live ?? []).map((r: any) => [String(r.question_number), r]));
@@ -71,11 +72,25 @@ async function main() {
       if (liveAns !== row.answer) {
         diffs.push({ paper: id, n: Number(row.questionNumber), field: "answer", live: liveAns, built: row.answer! });
       }
+
+      // SOLUTION IS COUNTED, NOT TREATED AS A DIFFERENCE.
+      //
+      // Divergence here is often legitimate: a solution rewritten by hand after
+      // an adjudication (fix-keys, apply-underline-fixes) is BETTER than what
+      // buildRecords regenerates, and re-committing must not clobber it. What
+      // this count is really for is the opposite direction — if it suddenly
+      // covers the whole corpus, the generator and the live rows have drifted
+      // wholesale, which is what the "[LLM-derived ...]" marker used to cause.
+      if (norm(lr.solution ?? "") !== norm(row.solution ?? "")) solutionDiffs++;
     }
   }
 
   console.log(`rows compared: ${checked}   (source rows with no live match: ${missing})`);
-  console.log(`differences: ${diffs.length}\n`);
+  console.log(`differences: ${diffs.length}`);
+  console.log(
+    `solution text differing from the generator: ${solutionDiffs} ` +
+      `(informational — hand-rewritten solutions legitimately differ)\n`
+  );
 
   const byField = new Map<string, number>();
   for (const d of diffs) byField.set(d.field, (byField.get(d.field) ?? 0) + 1);
