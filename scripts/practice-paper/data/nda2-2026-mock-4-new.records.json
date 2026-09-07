@@ -1,0 +1,32 @@
+[
+ {
+  "n": 49,
+  "stem": "If \\(f''(x)\\) is continuous at \\(x = 0\\) and \\(f''(0) = 4\\), then value of \\(\\lim_{x \\to 0} \\dfrac{2f(x) - 3f(2x) + f(4x)}{x^{2}}\\) is equal to",
+  "optA": "12",
+  "optB": "10",
+  "optC": "8",
+  "optD": "3",
+  "answer": "A",
+  "solution": "Since \\(f''\\) is continuous at \\(0\\), Taylor's theorem with the Peano remainder gives \\(f(t) = f(0) + f'(0)t + \\tfrac{1}{2}f''(0)t^{2} + o(t^{2})\\). Putting \\(t = x,\\; 2x,\\; 4x\\) into \\(2f(x) - 3f(2x) + f(4x)\\): the constant terms cancel, \\(2 - 3 + 1 = 0\\); the linear terms cancel, \\((2 - 6 + 4)f'(0)x = 0\\); the quadratic terms give \\(\\tfrac{1}{2}f''(0)(2 - 12 + 16)x^{2} = 3f''(0)x^{2}\\). Hence \\(2f(x) - 3f(2x) + f(4x) = 3f''(0)x^{2} + o(x^{2}) = 12x^{2} + o(x^{2})\\), so over a denominator \\(x^{2}\\) the limit is \\(3f''(0) = 12\\). The paper prints the denominator as \\(x^{3}\\); over \\(x^{3}\\) the quotient behaves like \\(12/x\\), which tends to \\(+\\infty\\) as \\(x\\) approaches \\(0\\) from the right and to \\(-\\infty\\) from the left, so as printed the limit does not exist and no option is correct. The paper's own solution restates the denominator as \\(x^{2}\\) and applies L'Hospital's rule twice, reaching \\(f''(0) - 6f''(0) + 8f''(0) = 3f''(0) = 12\\). Matches option A.",
+  "difficulty": "MODERATE",
+  "chapter": "Limits & Continuity",
+  "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+  "status": "new",
+  "reviewNote": "PRINTED STEM DEFECT, verified rather than a mis-read: the denominator really is x^3. Confirmed at 9x DPI and from the PDF span metrics -- the fraction body is set at 8.04pt while the '3' is 6.48pt on a raised baseline (y0=303.4 vs 304.6, x0=121.2 just past the x at x0=116.1), the identical superscript pattern to cot^3 x in Q50 on the same page. With f'' only continuous, the numerator is 3f''(0)x^2 + o(x^2) = 12x^2 + o(x^2), so over x^3 the quotient diverges (+inf from the right, -inf from the left) and none of 12/10/8/3 is correct. Verified in sympy against three different C^2 functions with f''(0)=4: the numerator's series is 12x^2 + O(x^3) in every case, N/x^2 -> 12 and N/x^3 -> +/-inf. The intended denominator is x^2, giving 12: the paper's OWN solution (MATHS MOCK TEST-4 SOLUTION.pdf, Q49) restates the limit with x^2 and derives 12 by L'Hospital. So the printed KEY (a) is correct for the intended question and the printed STEM is the misprint. Stem kept as printed and keyed (a) for OMR parity; must never flip PUBLIC."
+ },
+ {
+  "n": 92,
+  "stem": "If two cards are drawn simultaneously from a well shuffled pack of 52 cards, then the probability of getting a card having a prime number and a card having a number which is a multiple of 5 is",
+  "optA": "\\(\\dfrac{94}{663}\\)",
+  "optB": "\\(\\dfrac{62}{663}\\)",
+  "optC": "\\(\\dfrac{30}{663}\\)",
+  "optD": "\\(\\dfrac{59}{663}\\)",
+  "answer": "D",
+  "solution": "Only ranks \\(2\\) to \\(10\\) carry a number. The prime ranks are \\(2, 3, 5, 7\\) (16 cards) and the multiples of \\(5\\) are \\(5\\) and \\(10\\) (8 cards). Rank \\(5\\) is in BOTH sets, so the two categories are not disjoint and the product \\(16 \\times 8\\) is not a count of two-card hands: it counts selections that take the same five twice and double-counts the pairs of fives. Count directly instead, splitting the primes into \\(A\\) = ranks \\(2, 3, 7\\) (12 cards) and \\(C\\) = rank \\(5\\) (4 cards), with \\(B\\) = rank \\(10\\) (4 cards). Favourable hands are \\(A\\) with \\(B\\): \\(12 \\times 4 = 48\\); \\(A\\) with \\(C\\): \\(12 \\times 4 = 48\\); \\(C\\) with \\(B\\): \\(4 \\times 4 = 16\\); and two fives, which satisfy both conditions at once: \\(\\binom{4}{2} = 6\\). That is \\(48 + 48 + 16 + 6 = 118\\) hands out of \\(\\binom{52}{2} = 1326\\), so the probability is \\(\\dfrac{118}{1326} = \\dfrac{59}{663}\\). Matches option D.",
+  "difficulty": "MODERATE",
+  "chapter": "Probability",
+  "subtopic": "Probability via Counting",
+  "status": "new",
+  "reviewNote": "PRINTED KEY IS ARITHMETICALLY WRONG and the correct value is absent from the four options. Rank 5 is both prime and a multiple of 5, so the naive product of 16 and 8 that the paper's solution uses (MATHS MOCK TEST-4 SOLUTION.pdf, Q92) over-counts twice over: it includes 4 impossible selections that take the same five as both cards, and it double-counts the 6 hands consisting of two different fives. A brute-force enumeration of all 1326 two-card hands gives 118 favourable, i.e. 59/663. The printed options are 94/663, 62/663, 30/663, 64/663, so none is correct. Note 62/663 = 124/1326 is the ORDERED count over the unordered total, so it is not right either. Alternative readings were tested and none lands on a printed option: treating J/Q/K as numbered gives 91/663; requiring the two categories to be witnessed by cards in only one category gives 56/663; counting Ace as 1 changes nothing. Key (d) retained as printed for OMR parity; must never flip PUBLIC."
+ }
+]

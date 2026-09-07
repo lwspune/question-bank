@@ -93,6 +93,78 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // --- LWS NDA-II 2026 Maths test series: the genuinely-NEW questions only ---
+  // Five 120-question papers whose dedup gate came back ~98% already in the bank
+  // (585 of 600). These three specs carry ONLY the questions that are new AND
+  // usable — 6 of the 11 that had no bank match. The other 5 are irredeemably
+  // flawed (no correct option exists, or the question is structurally unfixable)
+  // and are REPLACED in the mock by an existing bank row; each substitution
+  // records its reason in scripts/mocks/data/nda2-2026-practice.json.
+  //
+  // createPaper:false — these are MOCKS, not printed papers. There is no
+  // /dashboard/papers paper and no OMR sheet, so the "full test everywhere"
+  // rule that requires all 120 records does not apply; the mock's completeness
+  // is enforced instead by build-practice-mocks.ts against the 120-question
+  // blueprint contract.
+  //
+  // Five adjudicated REPAIRS are baked into the records by
+  // build-nda2-2026-records.py, which asserts every before-state.
+  "nda2-2026-mock-1-new": {
+    slug: "nda2-2026-mock-1-new",
+    title: "NDA Paper I — Practice Mock 1 (new questions)",
+    recordsFile: "nda2-2026-mock-1-new.records.json",
+    outName: "Tags_NDA2_2026_Mock_1_New",
+    sourceFile: "NDA2_2026_Maths_Practice_Mock_1.pdf",
+    subjectName: "Mathematics",
+    pyqNote: "NDA Mathematics practice — LWS NDA-II 2026 test series, Mock 1 (assembled paper, not a past sitting)",
+    examName: "NDA",
+    section: { key: "nda2-2026-mock-1", label: "Practice Mock 1" },
+    bankAdd: true,
+    createPaper: false,
+    chapters: {
+      Probability: [
+        "Probability via Counting",
+        "Conditional Probability, Total Probability, and Bayes' Theorem",
+      ],
+      Statistics: ["Dispersion — Standard Deviation, Variance, Mean Deviation"],
+    },
+  },
+  "nda2-2026-mock-2-new": {
+    slug: "nda2-2026-mock-2-new",
+    title: "NDA Paper I — Practice Mock 2 (new questions)",
+    recordsFile: "nda2-2026-mock-2-new.records.json",
+    outName: "Tags_NDA2_2026_Mock_2_New",
+    sourceFile: "NDA2_2026_Maths_Practice_Mock_2.pdf",
+    subjectName: "Mathematics",
+    pyqNote: "NDA Mathematics practice — LWS NDA-II 2026 test series, Mock 2 (assembled paper, not a past sitting)",
+    examName: "NDA",
+    section: { key: "nda2-2026-mock-2", label: "Practice Mock 2" },
+    bankAdd: true,
+    createPaper: false,
+    chapters: {
+      Statistics: ["Frequency Distributions and Graphical Representation"],
+    },
+  },
+  "nda2-2026-mock-4-new": {
+    slug: "nda2-2026-mock-4-new",
+    title: "NDA Paper I — Practice Mock 4 (new questions)",
+    recordsFile: "nda2-2026-mock-4-new.records.json",
+    outName: "Tags_NDA2_2026_Mock_4_New",
+    sourceFile: "NDA2_2026_Maths_Practice_Mock_4.pdf",
+    subjectName: "Mathematics",
+    pyqNote: "NDA Mathematics practice — LWS NDA-II 2026 test series, Mock 4 (assembled paper, not a past sitting)",
+    examName: "NDA",
+    section: { key: "nda2-2026-mock-4", label: "Practice Mock 4" },
+    bankAdd: true,
+    createPaper: false,
+    chapters: {
+      "Limits & Continuity": [
+        "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      ],
+      Probability: ["Probability via Counting"],
+    },
+  },
+
   // --- LWS weekly GAT mocks, NDA-1 2026 (8 Mar - 5 Apr 2026) -----------------
   // The GAT half of Test_Series/NDA_Mock_Tests. Its MATHS half is already in the bank as
   // NDA_Maths_Weekly_Mock_2026_T1..T4, so sourceFile mirrors that naming and the two
