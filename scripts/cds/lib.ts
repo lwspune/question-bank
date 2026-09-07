@@ -208,9 +208,29 @@ export function buildRecords(
       ? `${dir}\n\nPassage\n${(sec.passage || "").trim()}`
       : dir;
 
-    const conf = q.confidence.toUpperCase();
-    const note = conf === "HIGH" ? " (verified in review)" : "";
-    const solution = `Answer: ${q.answer}. ${(q.reasoning || "").trim()} [LLM-derived, confidence: ${conf}${note}; no official key — verify before PUBLIC]`;
+    /**
+     * NO INTERNAL MARKER IN THE SOLUTION.
+     *
+     * This used to append
+     *   [LLM-derived, confidence: HIGH; no official key — verify before PUBLIC]
+     * which is an instruction addressed to US — and the answer-key export prints
+     * `solution` verbatim, so it reached students on /browse and inside every
+     * downloaded teacher key. 2,022 of 2,280 rows carried it before the
+     * 2026-09-08 cleanup; regenerating it here is what would have put it back on
+     * the next paper committed.
+     *
+     * The fact is not lost: `commit.ts` records it in `question_reviews` via
+     * `recordDerivedProvenance`, a table no student-facing surface renders. The
+     * per-row confidence stays available on the TQ and in the committed
+     * `data/<paper>.questions.json`.
+     *
+     * A reader-facing disclosure is a SEPARATE question and is deliberately not
+     * reintroduced here — see the CDS General Knowledge corpus, which carries
+     * one written for the student ("[Derived answer — ... Verify before relying
+     * on it.]"). Adding one to CDS English is a product decision, not a
+     * formatting one.
+     */
+    const solution = `Answer: ${q.answer}. ${(q.reasoning || "").trim()}`.trim();
 
     const opt = (l: string) => options.find((o) => o.label === l)?.text ?? "";
     rows.push({

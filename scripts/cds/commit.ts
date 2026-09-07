@@ -15,6 +15,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
+import { recordDerivedProvenance } from "./provenance";
 import { validateRow } from "../../src/lib/upload/validate";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { buildRecords, normalizeQuestions, validateRows, type Section, type Underlines } from "./lib";
@@ -106,6 +107,45 @@ async function main() {
   const { error: uErr, count } = await client.from("questions").update({ visibility: "PRIVATE" }, { count: "exact" }).eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
   if (uErr) throw new Error(`visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE.${(publicBefore ?? 0) > 0 ? `  (${publicBefore} were PUBLIC — re-publish with flip-public)` : ""}`);
+
+  /**
+   * Provenance goes to `question_reviews`, not into the solution text.
+   *
+   * `buildRecords` no longer appends the "[LLM-derived ... verify before
+   * PUBLIC]" bracket, because the answer-key export prints `solution` verbatim
+   * and that bracket is addressed to us, not the student. Recording it HERE, at
+   * commit, is what stops the fact being lost — and commit is the right moment
+   * for the same reason the CDS General Knowledge corpus learned it: provenance
+   * attached at publish time is one step too late, because a row can be read
+   * before anyone publishes it.
+   *
+   * Rows with a human verdict already standing are skipped, so re-committing a
+   * paper to repair one question cannot bury an adjudication under
+   * "unverifiable".
+   */
+  {
+    const { data: live, error: lErr } = await client
+      .from("questions")
+      .select("id, content_hash, question_number")
+      .eq("exam_id", EXAM_ID)
+      .eq("source_file", paper.sourceFile);
+    if (lErr) throw new Error(`provenance fetch: ${lErr.message}`);
+    const confOf = new Map(questions.map((q) => [String(q.number), q.confidence.toUpperCase()]));
+    const rows = (live ?? [])
+      .filter((r) => confOf.has(String(r.question_number)))
+      .map((r) => ({
+        id: r.id as string,
+        contentHash: r.content_hash as string,
+        confidence: confOf.get(String(r.question_number))!,
+      }));
+    const p = await recordDerivedProvenance(client, rows, {
+      runLabel: `cds:ingest-provenance:${paper.id}`,
+      apply: true,
+    });
+    console.log(
+      `provenance: ${p.written} review(s) recorded, ${p.skipped} skipped (a human adjudication already stands).`
+    );
+  }
 
   const { count: linked } = await client.from("questions").select("id", { count: "exact", head: true }).eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
   await client.from("upload_jobs").update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() }).eq("id", jobId);
