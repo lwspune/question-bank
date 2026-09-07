@@ -72,9 +72,51 @@ export function normalizeQuestions(raw: unknown[]): TQ[] {
 
 export const und = (w: string) => `\\(\\underline{\\text{${w}}}\\)`;
 
+/**
+ * The match used to place an underline.
+ *
+ * WORD BOUNDARIES ARE CONDITIONAL, and that is not a nicety: `\b` asserts a
+ * word/non-word transition, so a blanket `\b<w>\b` can NEVER match a target
+ * that starts or ends with punctuation. The live case is the Parts-of-Speech
+ * item whose target is "Oh no!" — `\bOh no!\b` requires a word character after
+ * the "!", and the stem has a space, so it matched nothing at all.
+ */
+export function undPattern(w: string): RegExp {
+  const esc = w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const lead = /^\w/.test(w) ? "\\b" : "";
+  const trail = /\w$/.test(w) ? "\\b" : "";
+  return new RegExp(`${lead}${esc}${trail}`);
+}
+
+/**
+ * Underline the first occurrence of `w` in `text`.
+ *
+ * THROWS WHEN THE WORD IS NOT THERE, deliberately. This previously returned the
+ * stem UNCHANGED on no match, which is the worst available outcome: the row
+ * commits, the count reconciles, `audit:keys` sees a well-formed MCQ and
+ * `board:lint` has no opinion — while the student is shown a Directions line
+ * saying "the underlined word" above a sentence with nothing underlined.
+ *
+ * Seven live PUBLIC questions shipped that way across four papers, and one of
+ * them ALSO took a wrong answer key, because the recorded word was an OPTION
+ * rather than the target, so whoever derived the answer was solving for the
+ * wrong word (2018-1 Q35 — recorded "idle", printed target "activity").
+ *
+ * `commit.ts` only PRINTS its build flags, so flagging instead of throwing
+ * would reproduce exactly the silence this replaces. Run
+ * `npx tsx scripts/cds/audit-underlines.ts` to find every mismatch at once,
+ * and adjudicate each against the PRINTED PAGE — the record and the stem have
+ * each been the wrong side before.
+ */
 export function undFirst(text: string, w: string): string {
   if (!w) return text;
-  const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+  const re = undPattern(w);
+  if (!re.test(text)) {
+    throw new Error(
+      `underline target ${JSON.stringify(w)} does not occur in the stem — ` +
+        `adjudicate against the printed page (stem: ${JSON.stringify(text.slice(0, 90))})`
+    );
+  }
   return text.replace(re, () => und(w));
 }
 

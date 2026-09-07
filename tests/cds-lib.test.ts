@@ -20,7 +20,21 @@ describe("primitives", () => {
     expect(undFirst("the cat sat on the cat", "cat")).toBe("the \\(\\underline{\\text{cat}}\\) sat on the cat");
   });
   it("does not underline a substring", () => {
-    expect(undFirst("category error", "cat")).toBe("category error"); // \b prevents substring
+    // \b still prevents a substring match — but a target that is not present is
+    // now an ERROR rather than a silent no-op. Returning the stem unchanged is
+    // what shipped seven PUBLIC questions whose Directions promised an
+    // underlined word above a sentence with nothing underlined.
+    expect(() => undFirst("category error", "cat")).toThrow(/does not occur in the stem/);
+  });
+  it("underlines a target that ends in punctuation", () => {
+    // "\\bOh no!\\b" can never match: \b after "!" demands a word character.
+    // This is the live 2023-2 Q4 case (Parts of Speech, target "Oh no!").
+    expect(undFirst("Oh no! I am getting late.", "Oh no!")).toBe(
+      "\\(\\underline{\\text{Oh no!}}\\) I am getting late."
+    );
+  });
+  it("still anchors the leading boundary when the target starts with a word char", () => {
+    expect(() => undFirst("the scone reading", "cone")).toThrow(/does not occur/);
   });
   it("normalizes a Directions prefix to a single canonical form", () => {
     expect(normalizeDirections("Directions : do the thing accordingly.")).toBe("Directions: do the thing accordingly.");
