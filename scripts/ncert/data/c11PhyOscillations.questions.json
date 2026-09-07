@@ -1,0 +1,242 @@
+[
+  {
+    "ref": "Eg 13.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Periodic and Oscillatory Motion",
+    "difficulty": "EASY",
+    "stem": "On an average, a human heart is found to beat 75 times in a minute. Calculate its frequency and period.",
+    "solution": "The beat frequency of the heart \\(= \\dfrac{75}{1\\,\\text{min}} = \\dfrac{75}{60\\,\\text{s}} = 1.25\\,\\text{s}^{-1} = 1.25\\,\\text{Hz}\\).\n\nThe time period \\(T = \\dfrac{1}{1.25\\,\\text{s}^{-1}} = 0.8\\,\\text{s}\\)."
+  },
+  {
+    "ref": "Eg 13.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Periodic and Oscillatory Motion",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following functions of time represent (a) periodic and (b) non-periodic motion? Give the period for each case of periodic motion [\\(\\omega\\) is any positive constant].\n\n(i) \\(\\sin \\omega t + \\cos \\omega t\\)\n\n(ii) \\(\\sin \\omega t + \\cos 2\\omega t + \\sin 4\\omega t\\)\n\n(iii) \\(e^{-\\omega t}\\)\n\n(iv) \\(\\log(\\omega t)\\)",
+    "solution": "(i) \\(\\sin \\omega t + \\cos \\omega t\\) is a periodic function; it can also be written as \\(\\sqrt{2}\\,\\sin(\\omega t + \\pi/4)\\).\n\nNow \\(\\sqrt{2}\\,\\sin(\\omega t + \\pi/4) = \\sqrt{2}\\,\\sin(\\omega t + \\pi/4 + 2\\pi) = \\sqrt{2}\\,\\sin\\!\\left[\\omega\\left(t + \\dfrac{2\\pi}{\\omega}\\right) + \\dfrac{\\pi}{4}\\right]\\).\n\nThe periodic time of the function is \\(2\\pi/\\omega\\).\n\n(ii) This is an example of a periodic motion. It can be noted that each term represents a periodic function with a different angular frequency. Since period is the least interval of time after which a function repeats its value, \\(\\sin \\omega t\\) has a period \\(T_0 = 2\\pi/\\omega\\); \\(\\cos 2\\omega t\\) has a period \\(\\pi/\\omega = T_0/2\\); and \\(\\sin 4\\omega t\\) has a period \\(2\\pi/4\\omega = T_0/4\\). The period of the first term is a multiple of the periods of the last two terms. Therefore, the smallest interval of time after which the sum of the three terms repeats is \\(T_0\\), and thus the sum is a periodic function with a period \\(2\\pi/\\omega\\).\n\n(iii) The function \\(e^{-\\omega t}\\) is not periodic, it decreases monotonically with increasing time and tends to zero as \\(t \\to \\infty\\) and thus, never repeats its value.\n\n(iv) The function \\(\\log(\\omega t)\\) increases monotonically with time \\(t\\). It, therefore, never repeats its value and is a non-periodic function. It may be noted that as \\(t \\to \\infty\\), \\(\\log(\\omega t)\\) diverges to \\(\\infty\\). It, therefore, cannot represent any kind of physical displacement."
+  },
+  {
+    "ref": "Eg 13.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Simple Harmonic Motion",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following functions of time represent (a) simple harmonic motion and (b) periodic but not simple harmonic? Give the period for each case.\n\n(1) \\(\\sin \\omega t - \\cos \\omega t\\)\n\n(2) \\(\\sin^2 \\omega t\\)",
+    "solution": "(a) \\(\\sin \\omega t - \\cos \\omega t\\)\n\n\\(= \\sin \\omega t - \\sin(\\pi/2 - \\omega t)\\)\n\n\\(= 2\\cos(\\pi/4)\\,\\sin(\\omega t - \\pi/4)\\)\n\n\\(= \\sqrt{2}\\,\\sin(\\omega t - \\pi/4)\\)\n\nThis function represents a simple harmonic motion having a period \\(T = 2\\pi/\\omega\\) and a phase angle \\((-\\pi/4)\\) or \\((7\\pi/4)\\).\n\n(b) \\(\\sin^2 \\omega t\\)\n\n\\(= \\dfrac{1}{2} - \\dfrac{1}{2}\\cos 2\\omega t\\)\n\nThe function is periodic having a period \\(T = \\pi/\\omega\\). It also represents a harmonic motion with the point of equilibrium occurring at \\(\\tfrac{1}{2}\\) instead of zero.",
+    "_note": "The book labels the two functions (1) and (2) in the question but answers them as (a) and (b). Transcribed as printed."
+  },
+  {
+    "ref": "Eg 13.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "SHM and Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "context": "The two circular motions referred to are: (a) a circle of radius \\(A\\) with period \\(T = 4\\,\\text{s}\\), the particle P starting at \\(t = 0\\) on a radius that makes \\(45^\\circ\\) with the positive \\(x\\)-axis, revolving anticlockwise; and (b) a circle of radius \\(B\\) with period \\(T = 30\\,\\text{s}\\), the particle P starting at \\(t = 0\\) on the positive \\(y\\)-axis, revolving clockwise.",
+    "stem": "The figure given below depicts two circular motions. The radius of the circle, the period of revolution, the initial position and the sense of revolution are indicated in the figures. Obtain the simple harmonic motions of the \\(x\\)-projection of the radius vector of the rotating particle P in each case.",
+    "solution": "(a) At \\(t = 0\\), OP makes an angle of \\(45^\\circ = \\pi/4\\) rad with the (positive direction of) \\(x\\)-axis. After time \\(t\\), it covers an angle \\(\\dfrac{2\\pi}{T}t\\) in the anticlockwise sense, and makes an angle of \\(\\dfrac{2\\pi}{T}t + \\dfrac{\\pi}{4}\\) with the \\(x\\)-axis.\n\nThe projection of OP on the \\(x\\)-axis at time \\(t\\) is given by\n\n\\(x(t) = A\\cos\\!\\left(\\dfrac{2\\pi}{T}t + \\dfrac{\\pi}{4}\\right)\\)\n\nFor \\(T = 4\\,\\text{s}\\),\n\n\\(x(t) = A\\cos\\!\\left(\\dfrac{2\\pi}{4}t + \\dfrac{\\pi}{4}\\right)\\)\n\nwhich is a SHM of amplitude \\(A\\), period \\(4\\,\\text{s}\\), and an initial phase \\(= \\dfrac{\\pi}{4}\\).\n\n(b) In this case at \\(t = 0\\), OP makes an angle of \\(90^\\circ = \\dfrac{\\pi}{2}\\) with the \\(x\\)-axis. After a time \\(t\\), it covers an angle of \\(\\dfrac{2\\pi}{T}t\\) in the clockwise sense and makes an angle of \\(\\left(\\dfrac{\\pi}{2} - \\dfrac{2\\pi}{T}t\\right)\\) with the \\(x\\)-axis. The projection of OP on the \\(x\\)-axis at time \\(t\\) is given by\n\n\\(x(t) = B\\cos\\!\\left(\\dfrac{\\pi}{2} - \\dfrac{2\\pi}{T}t\\right) = B\\sin\\!\\left(\\dfrac{2\\pi}{T}t\\right)\\)\n\nFor \\(T = 30\\,\\text{s}\\),\n\n\\(x(t) = B\\sin\\!\\left(\\dfrac{\\pi}{15}t\\right)\\)\n\nWriting this as \\(x(t) = B\\cos\\!\\left(\\dfrac{\\pi}{15}t - \\dfrac{\\pi}{2}\\right)\\), and comparing with Eq. (13.4), we find that this represents a SHM of amplitude \\(B\\), period \\(30\\,\\text{s}\\), and an initial phase of \\(-\\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Eg 13.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "MODERATE",
+    "stem": "A body oscillates with SHM according to the equation (in SI units),\n\n\\(x = 5\\cos\\left[2\\pi t + \\pi/4\\right]\\).\n\nAt \\(t = 1.5\\,\\text{s}\\), calculate the (a) displacement, (b) speed and (c) acceleration of the body.",
+    "solution": "The angular frequency \\(\\omega\\) of the body \\(= 2\\pi\\,\\text{s}^{-1}\\) and its time period \\(T = 1\\,\\text{s}\\).\n\nAt \\(t = 1.5\\,\\text{s}\\)\n\n(a) displacement \\(= (5.0\\,\\text{m})\\cos\\left[(2\\pi\\,\\text{s}^{-1}) \\times 1.5\\,\\text{s} + \\pi/4\\right]\\)\n\n\\(= (5.0\\,\\text{m})\\cos\\left[(3\\pi + \\pi/4)\\right]\\)\n\n\\(= -5.0 \\times 0.707\\,\\text{m} = -3.535\\,\\text{m}\\)\n\n(b) Using Eq. (13.9), the speed of the body\n\n\\(= -(5.0\\,\\text{m})(2\\pi\\,\\text{s}^{-1})\\sin\\left[(2\\pi\\,\\text{s}^{-1}) \\times 1.5\\,\\text{s} + \\pi/4\\right]\\)\n\n\\(= -(5.0\\,\\text{m})(2\\pi\\,\\text{s}^{-1})\\sin\\left[(3\\pi + \\pi/4)\\right]\\)\n\n\\(= 10\\pi \\times 0.707\\,\\text{m s}^{-1} = 22\\,\\text{m s}^{-1}\\)\n\n(c) Using Eq. (13.10), the acceleration of the body\n\n\\(= -(2\\pi\\,\\text{s}^{-1})^2 \\times\\) displacement\n\n\\(= -(2\\pi\\,\\text{s}^{-1})^2 \\times (-3.535\\,\\text{m})\\)\n\n\\(= 140\\,\\text{m s}^{-2}\\)"
+  },
+  {
+    "ref": "Eg 13.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "MODERATE",
+    "context": "In Fig. 13.14 the block of mass \\(m\\) rests on a horizontal surface between two fixed vertical supports, with one spring of spring constant \\(k\\) joining it to the support on its left and an identical spring joining it to the support on its right.",
+    "stem": "Two identical springs of spring constant \\(k\\) are attached to a block of mass \\(m\\) and to fixed supports as shown in Fig. 13.14. Show that when the mass is displaced from its equilibrium position on either side, it executes a simple harmonic motion. Find the period of oscillations.",
+    "solution": "Let the mass be displaced by a small distance \\(x\\) to the right side of the equilibrium position, as shown in Fig. 13.15. Under this situation the spring on the left side gets elongated by a length equal to \\(x\\) and that on the right side gets compressed by the same length. The forces acting on the mass are then,\n\n\\(F_1 = -kx\\) (force exerted by the spring on the left side, trying to pull the mass towards the mean position)\n\n\\(F_2 = -kx\\) (force exerted by the spring on the right side, trying to push the mass towards the mean position)\n\nThe net force, \\(F\\), acting on the mass is then given by,\n\n\\(F = -2kx\\)\n\nHence the force acting on the mass is proportional to the displacement and is directed towards the mean position; therefore, the motion executed by the mass is simple harmonic. The time period of oscillations is,\n\n\\(T = 2\\pi\\sqrt{\\dfrac{m}{2k}}\\)"
+  },
+  {
+    "ref": "Eg 13.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Energy in Simple Harmonic Motion",
+    "difficulty": "MODERATE",
+    "stem": "A block whose mass is \\(1\\,\\text{kg}\\) is fastened to a spring. The spring has a spring constant of \\(50\\,\\text{N m}^{-1}\\). The block is pulled to a distance \\(x = 10\\,\\text{cm}\\) from its equilibrium position at \\(x = 0\\) on a frictionless surface from rest at \\(t = 0\\). Calculate the kinetic, potential and total energies of the block when it is \\(5\\,\\text{cm}\\) away from the mean position.",
+    "solution": "The block executes SHM, its angular frequency, as given by Eq. (13.14b), is\n\n\\(\\omega = \\sqrt{\\dfrac{k}{m}} = \\sqrt{\\dfrac{50\\,\\text{N m}^{-1}}{1\\,\\text{kg}}} = 7.07\\,\\text{rad s}^{-1}\\)\n\nIts displacement at any time \\(t\\) is then given by,\n\n\\(x(t) = 0.1\\cos(7.07\\,t)\\)\n\nTherefore, when the particle is \\(5\\,\\text{cm}\\) away from the mean position, we have\n\n\\(0.05 = 0.1\\cos(7.07\\,t)\\)\n\nOr \\(\\cos(7.07\\,t) = 0.5\\) and hence\n\n\\(\\sin(7.07\\,t) = \\dfrac{\\sqrt{3}}{2} = 0.866\\)\n\nThen, the velocity of the block at \\(x = 5\\,\\text{cm}\\) is\n\n\\(= 0.1 \\times 7.07 \\times 0.866\\,\\text{m s}^{-1} = 0.61\\,\\text{m s}^{-1}\\)\n\nHence the K.E. of the block,\n\n\\(= \\dfrac{1}{2}mv^2 = \\tfrac{1}{2}\\left[1\\,\\text{kg} \\times (0.6123\\,\\text{m s}^{-1})^2\\right] = 0.19\\,\\text{J}\\)\n\nThe P.E. of the block,\n\n\\(= \\dfrac{1}{2}kx^2 = \\tfrac{1}{2}(50\\,\\text{N m}^{-1} \\times 0.05\\,\\text{m} \\times 0.05\\,\\text{m}) = 0.0625\\,\\text{J}\\)\n\nThe total energy of the block at \\(x = 5\\,\\text{cm}\\),\n\n\\(=\\) K.E. \\(+\\) P.E. \\(= 0.25\\,\\text{J}\\)\n\nWe also know that at maximum displacement, K.E. is zero and hence the total energy of the system is equal to the P.E. Therefore, the total energy of the system,\n\n\\(= \\tfrac{1}{2}(50\\,\\text{N m}^{-1} \\times 0.1\\,\\text{m} \\times 0.1\\,\\text{m}) = 0.25\\,\\text{J}\\)\n\nwhich is same as the sum of the two energies at a displacement of \\(5\\,\\text{cm}\\). This is in conformity with the principle of conservation of energy.",
+    "_note": "Printed defect: the book's velocity line prints \"= 0.1 x 7.07  0.866 m s-1\" with the second multiplication sign dropped; restored here. The book then states that velocity as 0.61 m s-1 but substitutes 0.6123 m s-1 into the K.E. line - both retained as printed."
+  },
+  {
+    "ref": "Eg 13.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Simple Pendulum",
+    "difficulty": "EASY",
+    "stem": "What is the length of a simple pendulum, which ticks seconds?",
+    "solution": "From Eq. (13.26), the time period of a simple pendulum is given by,\n\n\\(T = 2\\pi\\sqrt{\\dfrac{L}{g}}\\)\n\nFrom this relation one gets,\n\n\\(L = \\dfrac{gT^2}{4\\pi^2}\\)\n\nThe time period of a simple pendulum, which ticks seconds, is \\(2\\,\\text{s}\\). Therefore, for \\(g = 9.8\\,\\text{m s}^{-2}\\) and \\(T = 2\\,\\text{s}\\), \\(L\\) is\n\n\\(= \\dfrac{9.8\\,(\\text{m s}^{-2}) \\times 4\\,(\\text{s}^2)}{4\\pi^2} = 1\\,\\text{m}\\)"
+  },
+  {
+    "ref": "Ex 13.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Periodic and Oscillatory Motion",
+    "difficulty": "EASY",
+    "stem": "Which of the following examples represent periodic motion?\n\n(a) A swimmer completing one (return) trip from one bank of a river to the other and back.\n\n(b) A freely suspended bar magnet displaced from its N-S direction and released.\n\n(c) A hydrogen molecule rotating about its centre of mass.\n\n(d) An arrow released from a bow."
+  },
+  {
+    "ref": "Ex 13.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Simple Harmonic Motion",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following examples represent (nearly) simple harmonic motion and which represent periodic but not simple harmonic motion?\n\n(a) the rotation of earth about its axis.\n\n(b) motion of an oscillating mercury column in a U-tube.\n\n(c) motion of a ball bearing inside a smooth curved bowl, when released from a point slightly above the lower most point.\n\n(d) general vibrations of a polyatomic molecule about its equilibrium position."
+  },
+  {
+    "ref": "Ex 13.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Periodic and Oscillatory Motion",
+    "difficulty": "MODERATE",
+    "stem": "Fig. 13.18 depicts four \\(x\\)-\\(t\\) plots for linear motion of a particle. Which of the plots represent periodic motion? What is the period of motion (in case of periodic motion)?",
+    "_figure": {
+      "fig": "Fig 13.18",
+      "page": 15
+    },
+    "_note": "The figure's printed caption reads \"Fig. 18.18\"; the stem calls it Fig. 13.18. Chapter 13 has no figure 18.18, so the caption is a misprint."
+  },
+  {
+    "ref": "Ex 13.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Simple Harmonic Motion",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following functions of time represent (a) simple harmonic, (b) periodic but not simple harmonic, and (c) non-periodic motion? Give period for each case of periodic motion (\\(\\omega\\) is any positive constant):\n\n(a) \\(\\sin \\omega t - \\cos \\omega t\\)\n\n(b) \\(\\sin^3 \\omega t\\)\n\n(c) \\(3\\cos(\\pi/4 - 2\\omega t)\\)\n\n(d) \\(\\cos \\omega t + \\cos 3\\omega t + \\cos 5\\omega t\\)\n\n(e) \\(\\exp(-\\omega^2 t^2)\\)\n\n(f) \\(1 + \\omega t + \\omega^2 t^2\\)"
+  },
+  {
+    "ref": "Ex 13.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "MODERATE",
+    "stem": "A particle is in linear simple harmonic motion between two points, A and B, \\(10\\,\\text{cm}\\) apart. Take the direction from A to B as the positive direction and give the signs of velocity, acceleration and force on the particle when it is\n\n(a) at the end A,\n\n(b) at the end B,\n\n(c) at the mid-point of AB going towards A,\n\n(d) at \\(2\\,\\text{cm}\\) away from B going towards A,\n\n(e) at \\(3\\,\\text{cm}\\) away from A going towards B, and\n\n(f) at \\(4\\,\\text{cm}\\) away from B going towards A."
+  },
+  {
+    "ref": "Ex 13.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "EASY",
+    "stem": "Which of the following relationships between the acceleration \\(a\\) and the displacement \\(x\\) of a particle involve simple harmonic motion?\n\n(a) \\(a = 0.7x\\)\n\n(b) \\(a = -200x^2\\)\n\n(c) \\(a = -10x\\)\n\n(d) \\(a = 100x^3\\)"
+  },
+  {
+    "ref": "Ex 13.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Simple Harmonic Motion",
+    "difficulty": "HARD",
+    "stem": "The motion of a particle executing simple harmonic motion is described by the displacement function,\n\n\\(x(t) = A\\cos(\\omega t + \\phi)\\).\n\nIf the initial \\((t = 0)\\) position of the particle is \\(1\\,\\text{cm}\\) and its initial velocity is \\(\\omega\\,\\text{cm/s}\\), what are its amplitude and initial phase angle? The angular frequency of the particle is \\(\\pi\\,\\text{s}^{-1}\\). If instead of the cosine function, we choose the sine function to describe the SHM: \\(x = B\\sin(\\omega t + \\alpha)\\), what are the amplitude and initial phase of the particle with the above initial conditions."
+  },
+  {
+    "ref": "Ex 13.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "MODERATE",
+    "stem": "A spring balance has a scale that reads from \\(0\\) to \\(50\\,\\text{kg}\\). The length of the scale is \\(20\\,\\text{cm}\\). A body suspended from this balance, when displaced and released, oscillates with a period of \\(0.6\\,\\text{s}\\). What is the weight of the body?"
+  },
+  {
+    "ref": "Ex 13.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "MODERATE",
+    "stem": "A spring having with a spring constant \\(1200\\,\\text{N m}^{-1}\\) is mounted on a horizontal table as shown in Fig. 13.19. A mass of \\(3\\,\\text{kg}\\) is attached to the free end of the spring. The mass is then pulled sideways to a distance of \\(2.0\\,\\text{cm}\\) and released.\n\nDetermine (i) the frequency of oscillations, (ii) maximum acceleration of the mass, and (iii) the maximum speed of the mass.",
+    "_figure": {
+      "fig": "Fig 13.19",
+      "page": 16
+    },
+    "_note": "Printed as \"A spring having with a spring constant\" - a stray word in the book, transcribed faithfully."
+  },
+  {
+    "ref": "Ex 13.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Simple Harmonic Motion",
+    "difficulty": "MODERATE",
+    "stem": "In Exercise 13.9, let us take the position of mass when the spring is unstreched as \\(x = 0\\), and the direction from left to right as the positive direction of \\(x\\)-axis. Give \\(x\\) as a function of time \\(t\\) for the oscillating mass if at the moment we start the stopwatch \\((t = 0)\\), the mass is\n\n(a) at the mean position,\n\n(b) at the maximum stretched position, and\n\n(c) at the maximum compressed position.\n\nIn what way do these functions for SHM differ from each other, in frequency, in amplitude or the initial phase?",
+    "_note": "Printed as \"unstreched\" - a misprint for \"unstretched\", transcribed faithfully."
+  },
+  {
+    "ref": "Ex 13.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "SHM and Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "Figures 13.20 correspond to two circular motions. The radius of the circle, the period of revolution, the initial position, and the sense of revolution (i.e. clockwise or anti-clockwise) are indicated on each figure.\n\nObtain the corresponding simple harmonic motions of the \\(x\\)-projection of the radius vector of the revolving particle P, in each case.",
+    "_figure": {
+      "fig": "Fig 13.20",
+      "page": 17
+    }
+  },
+  {
+    "ref": "Ex 13.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "SHM and Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "Plot the corresponding reference circle for each of the following simple harmonic motions. Indicate the initial \\((t = 0)\\) position of the particle, the radius of the circle, and the angular speed of the rotating particle. For simplicity, the sense of rotation may be fixed to be anticlockwise in every case: (\\(x\\) is in cm and \\(t\\) is in s).\n\n(a) \\(x = -2\\sin(3t + \\pi/3)\\)\n\n(b) \\(x = \\cos(\\pi/6 - t)\\)\n\n(c) \\(x = 3\\sin(2\\pi t + \\pi/4)\\)\n\n(d) \\(x = 2\\cos \\pi t\\)"
+  },
+  {
+    "ref": "Ex 13.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "HARD",
+    "stem": "Figure 13.21(a) shows a spring of force constant \\(k\\) clamped rigidly at one end and a mass \\(m\\) attached to its free end. A force \\(\\mathbf{F}\\) applied at the free end stretches the spring. Figure 13.21(b) shows the same spring with both ends free and attached to a mass \\(m\\) at either end. Each end of the spring in Fig. 13.21(b) is stretched by the same force \\(\\mathbf{F}\\).\n\n(a) What is the maximum extension of the spring in the two cases?\n\n(b) If the mass in Fig. (a) and the two masses in Fig. (b) are released, what is the period of oscillation in each case?",
+    "_figure": {
+      "fig": "Fig 13.21",
+      "page": 17
+    }
+  },
+  {
+    "ref": "Ex 13.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "EASY",
+    "stem": "The piston in the cylinder head of a locomotive has a stroke (twice the amplitude) of \\(1.0\\,\\text{m}\\). If the piston moves with simple harmonic motion with an angular frequency of \\(200\\,\\text{rad/min}\\), what is its maximum speed?"
+  },
+  {
+    "ref": "Ex 13.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Simple Pendulum",
+    "difficulty": "EASY",
+    "stem": "The acceleration due to gravity on the surface of moon is \\(1.7\\,\\text{m s}^{-2}\\). What is the time period of a simple pendulum on the surface of moon if its time period on the surface of earth is \\(3.5\\,\\text{s}\\)? (\\(g\\) on the surface of earth is \\(9.8\\,\\text{m s}^{-2}\\))"
+  },
+  {
+    "ref": "Ex 13.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Simple Pendulum",
+    "difficulty": "HARD",
+    "stem": "A simple pendulum of length \\(l\\) and having a bob of mass \\(M\\) is suspended in a car. The car is moving on a circular track of radius \\(R\\) with a uniform speed \\(v\\). If the pendulum makes small oscillations in a radial direction about its equilibrium position, what will be its time period?"
+  },
+  {
+    "ref": "Ex 13.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "HARD",
+    "stem": "A cylindrical piece of cork of density of base area \\(A\\) and height \\(h\\) floats in a liquid of density \\(\\rho_l\\). The cork is depressed slightly and then released. Show that the cork oscillates up and down simple harmonically with a period\n\n\\(T = 2\\pi\\sqrt{\\dfrac{h\\rho}{\\rho_l g}}\\)\n\nwhere \\(\\rho\\) is the density of cork. (Ignore damping due to viscosity of the liquid).",
+    "_note": "Printed as \"a cylindrical piece of cork of density of base area A\" - the density symbol has dropped out of the opening clause; the book supplies it later as \"where the greek rho is the density of cork\". Transcribed faithfully. The liquid-density subscript is set ambiguously and reads as either an italic ell or a numeral one; taken as ell (liquid) here."
+  },
+  {
+    "ref": "Ex 13.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Force Law in SHM",
+    "difficulty": "HARD",
+    "stem": "One end of a U-tube containing mercury is connected to a suction pump and the other end to atmosphere. A small pressure difference is maintained between the two columns. Show that, when the suction pump is removed, the column of mercury in the U-tube executes simple harmonic motion."
+  }
+]
