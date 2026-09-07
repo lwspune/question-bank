@@ -1,0 +1,51 @@
+[
+  {
+    "ref": "Ex 5.1",
+    "verdict": "AGREE",
+    "ourAnswer": "m = 0.36 J T^-1",
+    "keyAnswer": "0.36 J T^-1",
+    "note": "Exact. m = tau/(B sin theta) = 4.5e-2 / (0.25 x 0.5) = 0.36."
+  },
+  {
+    "ref": "Ex 5.2",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) m parallel to B, U = -4.8e-2 J (stable); (b) m anti-parallel to B, U = +4.8e-2 J (unstable)",
+    "keyAnswer": "(a) m parallel to B; U = -mB = -4.8 x 10^-2 J: stable. (b) m anti-parallel to B; U = +mB = +4.8 x 10^-2 J; unstable.",
+    "note": "Exact, including both orientations and both signs. mB = 0.32 x 0.15 = 0.048 J."
+  },
+  {
+    "ref": "Ex 5.3",
+    "verdict": "AGREE",
+    "ourAnswer": "m = 0.60 J T^-1 (= 0.60 A m^2), along the solenoid axis",
+    "keyAnswer": "0.60 J T^-1 along the axis of the solenoid determined by the sense of flow of the current.",
+    "note": "Exact. m = NIA = 800 x 3.0 x 2.5e-4 = 0.60. Direction statement matches."
+  },
+  {
+    "ref": "Ex 5.4",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "tau = 7.5 x 10^-2 N m",
+    "keyAnswer": "7.5 x 10^-2 J",
+    "note": "UNIT-LABEL DEFECT ONLY - the numeric value agrees exactly and our answer is right. The key labels a TORQUE in joules; the SI unit of torque is N m, and joule is energy. Evidence that this is a slip rather than a convention is that the key contradicts itself within the same and the adjacent chapter: 4.9 prints '0.96 N m' and 5.6(b) prints 'torque = 0.048 Nm' for the same quantity. SEPARATELY AND MORE IMPORTANTLY, this key entry settles the stale cross-reference in the stem: the stem says 'the solenoid in Exercise 5.5', but Ex 5.5 is a bar magnet of m = 1.5 J/T, which would give tau = 1.5 x 0.25 x 0.5 = 0.1875 N m. Only the Ex 5.3 solenoid (m = 0.60) reproduces the printed 7.5e-2. So the intended referent is Exercise 5.3, confirmed by the key itself."
+  },
+  {
+    "ref": "Ex 5.5",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "(a)(i) W = 0.33 J, (ii) W = 0.66 J; (b)(i) tau = 0.33 N m, (ii) tau = 0",
+    "keyAnswer": "(a) (i) 0.33 J (ii) 0.66 J. (b) (i) Torque of magnitude 0.33 J in a direction that tends to align the magnitude moment vector along B. (ii) Zero.",
+    "note": "UNIT-LABEL DEFECT ONLY - every value agrees exactly (W = mB = 0.33 J and 2mB = 0.66 J; tau = mB sin 90 = 0.33 N m and mB sin 180 = 0). The same defect as 5.4: part (b)(i) labels a TORQUE in joules, where the key's own 5.6(b) prints 'Nm' for a torque. Note the key's (b)(i) also prints 'the magnitude moment vector' for 'the magnetic moment vector' - a word typo, not an answer error."
+  },
+  {
+    "ref": "Ex 5.6",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) m = 1.28 J T^-1 (= 1.28 A m^2) along the axis; (b) force = 0, torque = 4.8 x 10^-2 N m",
+    "keyAnswer": "(a) 1.28 A m^2 along the axis in the direction related to the sense of current via the right-handed screw rule. (b) Force is zero in uniform field; torque = 0.048 Nm in a direction that tends to align the axis of the solenoid along B.",
+    "note": "Exact on both parts. m = 2000 x 4.0 x 1.6e-4 = 1.28; tau = 1.28 x 7.5e-2 x 0.5 = 0.048 N m; zero net force in a uniform field. 4.8e-2 N m and the key's 0.048 Nm are the same number."
+  },
+  {
+    "ref": "Ex 5.7",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 9.6 x 10^-5 T = 0.96 G along the S-N direction; (b) 4.8 x 10^-5 T = 0.48 G along the N-S direction",
+    "keyAnswer": "(a) 0.96 g along S-N direction. (b) 0.48 G along N-S direction.",
+    "note": "Both magnitudes and both directions agree exactly (1 G = 1e-4 T). The key prints a lowercase 'g' in (a) where (b) two lines below prints 'G' for the identical quantity - a typographic slip for gauss, NOT scored as a defect because the sibling part makes the intended unit unambiguous, unlike the torque-in-joules case at 5.4 and 5.5 where 'J' is a real unit of a different quantity that a student could absorb as correct."
+  }
+]

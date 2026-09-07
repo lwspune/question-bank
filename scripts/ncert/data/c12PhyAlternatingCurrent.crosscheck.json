@@ -1,0 +1,58 @@
+[
+  {
+    "ref": "Ex 7.1",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) I = 2.20 A  (b) P = 484 W",
+    "keyAnswer": "(a) 2.20 A  (b) 484 W",
+    "note": "Exact match on both parts."
+  },
+  {
+    "ref": "Ex 7.2",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) rms voltage = 212 V  (b) peak current = 14.1 A",
+    "keyAnswer": "(a) 300/sqrt(2) = 212.1 V  (b) 10*sqrt(2) = 14.1 A",
+    "note": "Part (b) exact. Part (a): 300/sqrt(2) = 212.13; we round to 3 s.f. (212 V), the key to 4 s.f. (212.1 V) — a 0.06% difference, i.e. rounding only, not a disagreement."
+  },
+  {
+    "ref": "Ex 7.3",
+    "verdict": "AGREE",
+    "ourAnswer": "I = 15.9 A",
+    "keyAnswer": "15.9 A",
+    "note": "Exact match. X_L = 2*pi*50*44e-3 = 13.82 ohm, 220/13.82 = 15.92 A."
+  },
+  {
+    "ref": "Ex 7.4",
+    "verdict": "AGREE",
+    "ourAnswer": "I = 2.49 A",
+    "keyAnswer": "2.49 A",
+    "note": "Exact match. X_C = 1/(2*pi*60*60e-6) = 44.21 ohm, 110/44.21 = 2.488 A."
+  },
+  {
+    "ref": "Ex 7.5",
+    "verdict": "AGREE",
+    "ourAnswer": "Net power absorbed = 0 in each circuit (pure inductor and pure capacitor: phase angle pi/2, so cos(phi) = 0).",
+    "keyAnswer": "Zero in each case.",
+    "note": "Agreement on the value. The key prints the bare result with no reasoning, while the question explicitly asks students to 'Explain your answer' — so our stated physical reason (energy is stored and returned each quarter cycle, no resistance is present to dissipate it, hence a wattless current) is the only explanation a student gets here."
+  },
+  {
+    "ref": "Ex 7.6",
+    "verdict": "AGREE",
+    "ourAnswer": "omega_0 = 1.11 x 10^3 rad s^-1",
+    "keyAnswer": "1.1 x 10^3 s^-1",
+    "note": "1/sqrt(27e-3 * 30e-6) = 1111.1, so 1.11e3 to 3 s.f. and 1.1e3 to 2 s.f. — rounding only. The key writes the unit as s^-1 where we write rad s^-1; both are correct, since the radian is dimensionless. Not scored as a disagreement."
+  },
+  {
+    "ref": "Ex 7.7",
+    "verdict": "AGREE",
+    "ourAnswer": "P = 2000 W = 2 kW",
+    "keyAnswer": "2,000 W",
+    "note": "Exact match. At resonance Z = R = 20 ohm, I = 200/20 = 10 A, P = I^2 R = 2000 W."
+  },
+  {
+    "ref": "Ex 7.8",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) omega_0 = 50 rad s^-1, i.e. nu_0 = 7.96 Hz  (b) Z = 40 ohm, i_m = 8.13 A  (c) V_R = 230 V, V_L = V_C = 1437.5 V, drop across LC = 0",
+    "keyAnswer": "(a) 50 rad s^-1  (b) 40 ohm, 8.1 A  (c) V_Lrms = 1437.5 V, V_Crms = 1437.5 V, V_Rrms = 230 V; V_LCrms = I_rms(omega_0 L - 1/(omega_0 C)) = 0",
+    "note": "All three parts agree. (b): sqrt(2)*230/40 = 8.1317, so our 8.13 A and the key's 8.1 A differ only by rounding. (a): the question asks for the source FREQUENCY and the key answers with the ANGULAR frequency 50 rad/s; we give both that and nu_0 = 7.96 Hz, so ours is a superset of the key, not a disagreement. (c) exact on all four values, and both sides obtain the zero LC drop the question asks to be shown."
+  }
+]

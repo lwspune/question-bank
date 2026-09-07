@@ -1,0 +1,79 @@
+[
+  {
+    "ref": "Ex 2.1",
+    "verdict": "AGREE",
+    "ourAnswer": "V = 0 at 10 cm from the +5e-8 C charge (between the charges) and at 40 cm from it on the side of the negative charge (24 cm beyond it). No third point exists.",
+    "keyAnswer": "10 cm, 40 cm away from the positive charge on the side of the negative charge.",
+    "note": "Both roots reproduce exactly. Direct evaluation of V(x) gives 0.000e+00 at x = 0.10 m and 2.4e-13 (floating-point zero) at x = 0.40 m. Our solution additionally shows the third region admits no root because the nearer charge there is the larger in magnitude; the key does not contradict this, it simply does not mention it."
+  },
+  {
+    "ref": "Ex 2.2",
+    "verdict": "AGREE",
+    "ourAnswer": "V = 2.7 x 10^6 V",
+    "keyAnswer": "2.7 x 10^6 V",
+    "note": "Exact match. Recomputed independently from the stem: 6 x (9e9)(5e-6)/0.10 = 2.7e6 V, using the regular-hexagon property that the centre-to-vertex distance equals the side."
+  },
+  {
+    "ref": "Ex 2.3",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) The plane perpendicular to AB through its mid-point, on which the potential is zero everywhere. (b) Normal to that plane, directed along AB (positive to negative charge).",
+    "keyAnswer": "(a) The plane normal to AB and passing through its mid-point has zero potential everywhere. (b) Normal to the plane in the direction AB.",
+    "note": "Conceptual question; both parts match the key in substance and in direction. Our part (b) additionally states WHY E must be normal to an equipotential (a tangential component would do work between two points at equal potential)."
+  },
+  {
+    "ref": "Ex 2.4",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) E = 0  (b) E = 1.0 x 10^5 N C^-1 radially outward  (c) E = 4.4 x 10^4 N C^-1 radially outward",
+    "keyAnswer": "(a) Zero  (b) 10^5 N C^-1  (c) 4.4 x 10^4 N C^-1",
+    "note": "All three parts match. Independent recomputation: kQ/R^2 = 1440/0.0144 = 1.000e5 exactly, and kQ/(0.18)^2 = 1440/0.0324 = 4.444e4, which rounds to the key's 4.4e4. Our answer adds the direction (radially outward), which the key omits but does not contradict."
+  },
+  {
+    "ref": "Ex 2.5",
+    "verdict": "AGREE",
+    "ourAnswer": "C' = 96 pF",
+    "keyAnswer": "96 pF",
+    "note": "Exact match. C' = 2K C = 2 x 6 x 8 pF = 96 pF; halving d doubles C and the dielectric multiplies it by 6."
+  },
+  {
+    "ref": "Ex 2.6",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) C = 3 pF  (b) 40 V across each capacitor",
+    "keyAnswer": "(a) 3 pF  (b) 40 V",
+    "note": "Exact match on both parts. Series of three identical 9 pF gives 9/3 = 3 pF; the common charge Q = 3.6e-10 C divided by 9 pF returns 40 V, which is also just 120/3 by symmetry."
+  },
+  {
+    "ref": "Ex 2.7",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) C = 9 pF  (b) Q1 = 2 x 10^-10 C, Q2 = 3 x 10^-10 C, Q3 = 4 x 10^-10 C",
+    "keyAnswer": "(a) 9 pF  (b) 2 x 10^-10 C, 3 x 10^-10 C, 4 x 10^-10 C",
+    "note": "Exact match on both parts, and the three charges sum to 9e-10 C = CV, an internal consistency check that also holds for the key."
+  },
+  {
+    "ref": "Ex 2.8",
+    "verdict": "AGREE",
+    "ourAnswer": "C ~ 18 pF (1.77 x 10^-11 F); Q ~ 1.8 x 10^-9 C on each plate",
+    "keyAnswer": "18 pF, 1.8 x 10^-9 C",
+    "note": "Match at the key's 2-significant-figure precision. The unrounded values from eps0 = 8.854e-12 are C = 17.71 pF and Q = 1.771e-9 C, which round to exactly the key's figures; our solution states both the rounded and the unrounded value."
+  },
+  {
+    "ref": "Ex 2.9",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) V = 100 V unchanged, C' = 108 pF, Q' = 1.08 x 10^-8 C  (b) Q = 1.8 x 10^-9 C unchanged, C' = 108 pF, V' = 16.7 V",
+    "keyAnswer": "(a) V = 100 V, C = 108 pF, Q = 1.08 x 10^-8 C  (b) Q = 1.8 x 10^-9 C, C = 108 pF, V = 16.6 V",
+    "note": "Every figure matches except the last digit of V' in part (b): the exact value is V/K = 100/6 = 16.667 V, so 16.7 V is the correct 3-s.f. round and the key's 16.6 V is a truncation of the same number, not a different answer. Reported as AGREE per the rule that a last-digit difference is not a finding. Worth recording that both 108 pF figures inherit the key's own rounding of Ex 2.8 (6 x 18 = 108); carrying the unrounded C = 17.71 pF through instead gives C' = 106.2 pF and Q' = 1.06e-8 C. Our stored solution deliberately follows the book's rounded chain so the two are directly comparable."
+  },
+  {
+    "ref": "Ex 2.10",
+    "verdict": "AGREE",
+    "ourAnswer": "U = 1.5 x 10^-8 J",
+    "keyAnswer": "1.5 x 10^-8 J",
+    "note": "Exact match. U = 0.5 x 12e-12 x 50^2 = 1.5e-8 J."
+  },
+  {
+    "ref": "Ex 2.11",
+    "verdict": "AGREE",
+    "ourAnswer": "Energy lost = 6 x 10^-6 J",
+    "keyAnswer": "6 x 10^-6 J",
+    "note": "Exact match. Ui = 1.2e-5 J; charge conservation gives V' = 100 V across the 1200 pF combination, so Uf = 6e-6 J and the loss is 6e-6 J, exactly half the initial energy. Independently corroborated by the chapter's own worked Example 2.10, which sets up the identical 900 pF configuration and likewise finds the final energy to be half the initial."
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "ref": "Eg 4.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+    "difficulty": "EASY",
+    "stem": "A straight wire of mass \\(200\\,\\text{g}\\) and length \\(1.5\\,\\text{m}\\) carries a current of \\(2\\,\\text{A}\\). It is suspended in mid-air by a uniform horizontal magnetic field \\(\\mathbf{B}\\) (Fig. 4.3). What is the magnitude of the magnetic field?",
+    "solution": "From Eq. (4.4), we find that there is an upward force \\(\\mathbf{F}\\), of magnitude \\(IlB\\). For mid-air suspension, this must be balanced by the force due to gravity:\n\\(mg = IlB\\)\n\\(B = \\dfrac{mg}{Il} = \\dfrac{0.2 \\times 9.8}{2 \\times 1.5} = 0.65\\,\\text{T}\\)\nNote that it would have been sufficient to specify \\(m/l\\), the mass per unit length of the wire. The earth's magnetic field is approximately \\(4 \\times 10^{-5}\\,\\text{T}\\) and we have ignored it."
+  },
+  {
+    "ref": "Eg 4.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+    "difficulty": "EASY",
+    "stem": "If the magnetic field is parallel to the positive \\(y\\)-axis and the charged particle is moving along the positive \\(x\\)-axis (Fig. 4.4), which way would the Lorentz force be for (a) an electron (negative charge), (b) a proton (positive charge).",
+    "solution": "The velocity \\(\\mathbf{v}\\) of the particle is along the \\(x\\)-axis, while \\(\\mathbf{B}\\), the magnetic field, is along the \\(y\\)-axis, so \\(\\mathbf{v} \\times \\mathbf{B}\\) is along the \\(z\\)-axis (screw rule or right-hand thumb rule). So,\n(a) for an electron it will be along the \\(-z\\) axis.\n(b) for a positive charge (proton) the force is along the \\(+z\\) axis."
+  },
+  {
+    "ref": "Eg 4.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+    "difficulty": "MODERATE",
+    "stem": "What is the radius of the path of an electron (mass \\(9 \\times 10^{-31}\\,\\text{kg}\\) and charge \\(1.6 \\times 10^{-19}\\,\\text{C}\\)) moving at a speed of \\(3 \\times 10^{7}\\,\\text{m/s}\\) in a magnetic field of \\(6 \\times 10^{-4}\\,\\text{T}\\) perpendicular to it? What is its frequency? Calculate its energy in keV. (\\(1\\,\\text{eV} = 1.6 \\times 10^{-19}\\,\\text{J}\\)).",
+    "solution": "Using Eq. (4.5) we find\n\\(r = mv/(qB) = 9 \\times 10^{-31}\\,\\text{kg} \\times 3 \\times 10^{7}\\,\\text{m s}^{-1} / (1.6 \\times 10^{-19}\\,\\text{C} \\times 6 \\times 10^{-4}\\,\\text{T})\\)\n\\(= 28 \\times 10^{-2}\\,\\text{m} = 28\\,\\text{cm}\\)\n\\(\\nu = v/(2\\pi r) = 17 \\times 10^{6}\\,\\text{s}^{-1} = 17 \\times 10^{6}\\,\\text{Hz} = 17\\,\\text{MHz}\\)\n\\(E = \\left(\\tfrac{1}{2}\\right) mv^{2} = \\left(\\tfrac{1}{2}\\right) 9 \\times 10^{-31}\\,\\text{kg} \\times 9 \\times 10^{14}\\,\\text{m}^{2}/\\text{s}^{2} = 40.5 \\times 10^{-17}\\,\\text{J}\\)\n\\(\\approx 4 \\times 10^{-16}\\,\\text{J} = 2.5\\,\\text{keV}\\)."
+  },
+  {
+    "ref": "Eg 4.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+    "difficulty": "MODERATE",
+    "stem": "An element \\(\\Delta \\boldsymbol{l} = \\Delta x\\,\\hat{\\mathbf{i}}\\) is placed at the origin and carries a large current \\(I = 10\\,\\text{A}\\) (Fig. 4.8). What is the magnetic field on the \\(y\\)-axis at a distance of \\(0.5\\,\\text{m}\\). \\(\\Delta x = 1\\,\\text{cm}\\).",
+    "solution": "\\(|d\\mathbf{B}| = \\dfrac{\\mu_0}{4\\pi}\\,\\dfrac{I\\,dl\\,\\sin\\theta}{r^{2}}\\) [using Eq. (4.7)]\n\\(dl = \\Delta x = 10^{-2}\\,\\text{m}\\), \\(I = 10\\,\\text{A}\\), \\(r = 0.5\\,\\text{m} = y\\), \\(\\mu_0/4\\pi = 10^{-7}\\,\\dfrac{\\text{T m}}{\\text{A}}\\)\n\\(\\theta = 90^{\\circ}\\); \\(\\sin\\theta = 1\\)\n\\(|d\\mathbf{B}| = \\dfrac{10^{-7} \\times 10 \\times 10^{-2}}{25 \\times 10^{-2}} = 4 \\times 10^{-8}\\,\\text{T}\\)\nThe direction of the field is in the \\(+z\\)-direction. This is so since,\n\\(d\\boldsymbol{l} \\times \\mathbf{r} = \\Delta x\\,\\hat{\\mathbf{i}} \\times y\\,\\hat{\\mathbf{j}} = y\\,\\Delta x\\,(\\hat{\\mathbf{i}} \\times \\hat{\\mathbf{j}}) = y\\,\\Delta x\\,\\hat{\\mathbf{k}}\\)\nWe remind you of the following cyclic property of cross-products,\n\\(\\hat{\\mathbf{i}} \\times \\hat{\\mathbf{j}} = \\hat{\\mathbf{k}}\\); \\(\\hat{\\mathbf{j}} \\times \\hat{\\mathbf{k}} = \\hat{\\mathbf{i}}\\); \\(\\hat{\\mathbf{k}} \\times \\hat{\\mathbf{i}} = \\hat{\\mathbf{j}}\\)\nNote that the field is small in magnitude."
+  },
+  {
+    "ref": "Eg 4.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+    "difficulty": "MODERATE",
+    "stem": "A straight wire carrying a current of \\(12\\,\\text{A}\\) is bent into a semi-circular arc of radius \\(2.0\\,\\text{cm}\\) as shown in Fig. 4.11(a). Consider the magnetic field \\(\\mathbf{B}\\) at the centre of the arc. (a) What is the magnetic field due to the straight segments? (b) In what way the contribution to \\(\\mathbf{B}\\) from the semicircle differs from that of a circular loop and in what way does it resemble? (c) Would your answer be different if the wire were bent into a semi-circular arc of the same radius but in the opposite way as shown in Fig. 4.11(b)?",
+    "solution": "(a) \\(d\\boldsymbol{l}\\) and \\(\\mathbf{r}\\) for each element of the straight segments are parallel. Therefore, \\(d\\boldsymbol{l} \\times \\mathbf{r} = 0\\). Straight segments do not contribute to \\(|\\mathbf{B}|\\).\n(b) For all segments of the semicircular arc, \\(d\\boldsymbol{l} \\times \\mathbf{r}\\) are all parallel to each other (into the plane of the paper). All such contributions add up in magnitude. Hence direction of \\(\\mathbf{B}\\) for a semicircular arc is given by the right-hand rule and magnitude is half that of a circular loop. Thus \\(\\mathbf{B}\\) is \\(1.9 \\times 10^{-4}\\,\\text{T}\\) normal to the plane of the paper going into it.\n(c) Same magnitude of \\(\\mathbf{B}\\) but opposite in direction to that in (b)."
+  },
+  {
+    "ref": "Eg 4.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+    "difficulty": "EASY",
+    "stem": "Consider a tightly wound \\(100\\) turn coil of radius \\(10\\,\\text{cm}\\), carrying a current of \\(1\\,\\text{A}\\). What is the magnitude of the magnetic field at the centre of the coil?",
+    "solution": "Since the coil is tightly wound, we may take each circular element to have the same radius \\(R = 10\\,\\text{cm} = 0.1\\,\\text{m}\\). The number of turns \\(N = 100\\). The magnitude of the magnetic field is,\n\\(B = \\dfrac{\\mu_0 N I}{2R} = \\dfrac{4\\pi \\times 10^{-7} \\times 10^{2} \\times 1}{2 \\times 10^{-1}} = 2\\pi \\times 10^{-4} = 6.28 \\times 10^{-4}\\,\\text{T}\\)"
+  },
+  {
+    "ref": "Eg 4.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ampere's Circuital Law and the Solenoid",
+    "difficulty": "HARD",
+    "stem": "Figure 4.13 shows a long straight wire of a circular cross-section (radius \\(a\\)) carrying steady current \\(I\\). The current \\(I\\) is uniformly distributed across this cross-section. Calculate the magnetic field in the region \\(r < a\\) and \\(r > a\\).",
+    "solution": "(a) Consider the case \\(r > a\\). The Amperian loop, labelled 2, is a circle concentric with the cross-section. For this loop,\n\\(L = 2\\pi r\\)\n\\(I_e = \\) Current enclosed by the loop \\(= I\\)\nThe result is the familiar expression for a long straight wire\n\\(B\\,(2\\pi r) = \\mu_0 I\\)\n\\(B = \\dfrac{\\mu_0 I}{2\\pi r}\\)\n\\(B \\propto \\dfrac{1}{r}\\quad (r > a)\\)\nNow the current enclosed \\(I_e\\) is not \\(I\\), but is less than this value. Since the current distribution is uniform, the current enclosed is,\n\\(I_e = I\\left(\\dfrac{\\pi r^{2}}{\\pi a^{2}}\\right) = \\dfrac{I r^{2}}{a^{2}}\\)\nUsing Ampere's law, \\(B\\,(2\\pi r) = \\mu_0 \\dfrac{I r^{2}}{a^{2}}\\)\n\\(B = \\left(\\dfrac{\\mu_0 I}{2\\pi a^{2}}\\right) r\\)\n\\(B \\propto r\\quad (r < a)\\)\nFigure 4.14 shows a plot of the magnitude of \\(\\mathbf{B}\\) with distance \\(r\\) from the centre of the wire. The direction of the field is tangential to the respective circular loop (1 or 2) and given by the right-hand rule described earlier in this section.\nThis example possesses the required symmetry so that Ampere's law can be applied readily.",
+    "_note": "The book labels the first half of this solution '(a)' (the case r > a) and never prints a matching '(b)' label for the r < a half, which simply continues after it. Transcribed faithfully; the stem asks for both regions and both are answered."
+  }
+]

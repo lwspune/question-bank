@@ -1633,12 +1633,26 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls12Phy("Part_1/leph1an.pdf"),
     answerPages: [0, 1, 2, 3, 4, 5],
     note: "NCERT (CBSE Class 12) — Current Electricity (Chapter 3, NCERT Physics Part 1)",
+    // FIVE subtopics, corrected from six after transcription — two dropped, one added.
+    //
+    // DROPPED "Electrical Energy and Power": NO question in this chapter computes a
+    // power or an energy. Eg 3.3 and Ex 3.6 look like power questions and are both
+    // temperature-coefficient problems. DROPPED "Combination of Resistors and
+    // Cells": the rationalised edition has no resistors-in-series-and-parallel
+    // section at all (§3.8 runs straight to §3.9 Electrical Energy, then §3.10
+    // Cells EMF, then §3.11 Cells in Series and in Parallel), so the label only ever
+    // mapped to §3.11. Neither was created in the DB, since no row used them.
+    //
+    // ADDED "Temperature Dependence of Resistivity": without it "Drift of Electrons
+    // and Resistivity" held 8 of the chapter's 16 rows — half the chapter in one
+    // /browse filter. It splits cleanly along the book's own section boundary,
+    // §3.5 drift proper (3 rows) vs §3.8 temperature dependence (5 rows), so this
+    // is the book's structure rather than an arbitrary cut.
     subtopics: [
       "Electric Current and Ohm's Law",
       "Drift of Electrons and Resistivity",
-      "Electrical Energy and Power",
+      "Temperature Dependence of Resistivity",
       "Cells, EMF and Internal Resistance",
-      "Combination of Resistors and Cells",
       "Kirchhoff's Rules and Wheatstone Bridge",
     ],
   },
@@ -1673,11 +1687,21 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls12Phy("Part_1/leph1an.pdf"),
     answerPages: [0, 1, 2, 3, 4, 5],
     note: "NCERT (CBSE Class 12) — Magnetism and Matter (Chapter 5, NCERT Physics Part 1)",
+    // THREE subtopics, corrected from four. "Magnetic Properties of Materials"
+    // (§5.5 dia/para/ferromagnetism) was DROPPED: the rationalised edition keeps
+    // the theory and removed every exercise on it, so all 7 exercises are
+    // dipole/bar-magnet mechanics and the label would ship a /browse filter
+    // returning nothing. Never created in the DB, since no row used it. This is
+    // now the FOURTH Physics chapter where the book teaches a section it never
+    // examines (ch.11 Second Law, ch.12 equipartition, ch.3 energy-and-power).
+    //
+    // "The Bar Magnet" holding 9 of 12 rows is left alone deliberately: §5.2 does
+    // have sub-sections to split on, but at 12 rows a split would make three
+    // buckets of 2-3 and read as noise rather than navigation.
     subtopics: [
       "The Bar Magnet",
       "Magnetism and Gauss's Law",
       "Magnetisation and Magnetic Intensity",
-      "Magnetic Properties of Materials",
     ],
   },
 
@@ -1710,12 +1734,21 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls12Phy("Part_1/leph1an.pdf"),
     answerPages: [0, 1, 2, 3, 4, 5],
     note: "NCERT (CBSE Class 12) — Alternating Current (Chapter 7, NCERT Physics Part 1)",
+    // FOUR subtopics. "Transformers" was DROPPED: §7.8 is taught and then never
+    // assessed — no worked Example and no exercise question touches it — so the
+    // label would ship a /browse filter returning nothing. Never created in the DB.
+    //
+    // THIS IS THE FIFTH PHYSICS CHAPTER WITH THAT SHAPE (ch.11 Second Law, ch.12
+    // equipartition, ch.3 energy-and-power AND resistor combinations, ch.5
+    // magnetic materials, now ch.7 transformers). It is a systematic property of
+    // the rationalised editions, not a run of coincidences: the exercise sets were
+    // cut harder than the teaching text. Expect it in the remaining chapters and
+    // check the `by subtopic` tally at commit rather than trusting the section list.
     subtopics: [
       "AC Voltage Applied to a Resistor",
       "AC Voltage Applied to an Inductor and a Capacitor",
       "Series LCR Circuit and Resonance",
       "Power in AC Circuits and the Power Factor",
-      "Transformers",
     ],
   },
 

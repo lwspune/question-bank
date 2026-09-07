@@ -1,0 +1,49 @@
+[
+  {
+    "ref": "Eg 4.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Ampere's Circuital Law and the Solenoid",
+    "difficulty": "EASY",
+    "stem": "A solenoid of length \\(0.5\\,\\text{m}\\) has a radius of \\(1\\,\\text{cm}\\) and is made up of \\(500\\) turns. It carries a current of \\(5\\,\\text{A}\\). What is the magnitude of the magnetic field inside the solenoid?",
+    "solution": "[Textbook stale cross-reference: the solution cites \"Eq. (4.20)\" for the field inside a long solenoid, but that formula is derived on this very page as Eq. (4.16) — Eq. (4.20) in this rationalised edition is a torque expression in §4.9. Carried over from an earlier edition's numbering. The same solution also calls the solenoid's radius \\(r\\) on one line and \\(a\\) on the next.] The number of turns per unit length is,\n\\(n = \\dfrac{500}{0.5} = 1000\\ \\text{turns/m}\\)\nThe length \\(l = 0.5\\,\\text{m}\\) and radius \\(r = 0.01\\,\\text{m}\\). Thus, \\(l/a = 50\\) i.e., \\(l \\gg a\\). Hence, we can use the long solenoid formula, namely, Eq. (4.20)\n\\(B = \\mu_0 n I\\)\n\\(= 4\\pi \\times 10^{-7} \\times 10^{3} \\times 5\\)\n\\(= 6.28 \\times 10^{-3}\\,\\text{T}\\)",
+    "_note": "Two printed oddities, both transcribed as they stand. (1) The solution cites 'Eq. (4.20)' for the long-solenoid formula, but that formula is derived on this very page as Eq. (4.16) and this rationalised edition's Eq. (4.20) is the torque expression in section 4.9 — a stale cross-reference carried over from an earlier edition. (2) The radius is introduced as 'r = 0.01 m' and then used as 'l/a' in the very next clause, so the same quantity is called r and a in consecutive lines."
+  },
+  {
+    "ref": "Eg 4.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Force Between Parallel Currents",
+    "difficulty": "MODERATE",
+    "stem": "The horizontal component of the earth's magnetic field at a certain place is \\(3.0 \\times 10^{-5}\\,\\text{T}\\) and the direction of the field is from the geographic south to the geographic north. A very long straight conductor is carrying a steady current of \\(1\\,\\text{A}\\). What is the force per unit length on it when it is placed on a horizontal table and the direction of the current is (a) east to west; (b) south to north?",
+    "solution": "\\(\\mathbf{F} = I\\boldsymbol{l} \\times \\mathbf{B}\\)\n\\(F = IlB\\sin\\theta\\)\nThe force per unit length is\n\\(f = F/l = I B \\sin\\theta\\)\n(a) When the current is flowing from east to west,\n\\(\\theta = 90^{\\circ}\\)\nHence,\n\\(f = I B = 1 \\times 3 \\times 10^{-5} = 3 \\times 10^{-5}\\,\\text{N m}^{-1}\\)\nThis is larger than the value \\(2 \\times 10^{-7}\\,\\text{N m}^{-1}\\) quoted in the definition of the ampere. Hence it is important to eliminate the effect of the earth's magnetic field and other stray fields while standardising the ampere.\nThe direction of the force is downwards. This direction may be obtained by the directional property of cross product of vectors.\n(b) When the current is flowing from south to north,\n\\(\\theta = 0^{\\circ}\\)\n\\(f = 0\\)\nHence there is no force on the conductor."
+  },
+  {
+    "ref": "Eg 4.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+    "difficulty": "HARD",
+    "stem": "A \\(100\\) turn closely wound circular coil of radius \\(10\\,\\text{cm}\\) carries a current of \\(3.2\\,\\text{A}\\). (a) What is the field at the centre of the coil? (b) What is the magnetic moment of this coil?\nThe coil is placed in a vertical plane and is free to rotate about a horizontal axis which coincides with its diameter. A uniform magnetic field of \\(2\\,\\text{T}\\) in the horizontal direction exists such that initially the axis of the coil is in the direction of the field. The coil rotates through an angle of \\(90^{\\circ}\\) under the influence of the magnetic field. (c) What are the magnitudes of the torques on the coil in the initial and final position? (d) What is the angular speed acquired by the coil when it has rotated by \\(90^{\\circ}\\)? The moment of inertia of the coil is \\(0.1\\,\\text{kg m}^{2}\\).",
+    "solution": "(a) From Eq. (4.12)\n\\(B = \\dfrac{\\mu_0 N I}{2R}\\)\nHere, \\(N = 100\\); \\(I = 3.2\\,\\text{A}\\), and \\(R = 0.1\\,\\text{m}\\). Hence,\n\\(B = \\dfrac{4\\pi \\times 10^{-7} \\times 3.2}{2 \\times 10^{-1}} = \\dfrac{4 \\times 10^{-5} \\times 10}{2 \\times 10^{-1}}\\) (using \\(\\pi \\times 3.2 = 10\\))\n\\(= 2 \\times 10^{-3}\\,\\text{T}\\)\nThe direction is given by the right-hand thumb rule.\n(b) The magnetic moment is given by Eq. (4.24),\n\\(m = N I A = N I \\pi r^{2} = 100 \\times 3.2 \\times 3.14 \\times 10^{-2} = 10\\,\\text{A m}^{2}\\)\nThe direction is once again given by the right-hand thumb rule.\n(c) \\(\\tau = |\\mathbf{m} \\times \\mathbf{B}|\\) [from Eq. (4.23)]\n\\(= m B \\sin\\theta\\)\nInitially, \\(\\theta = 0\\). Thus, initial torque \\(\\tau_i = 0\\). Finally, \\(\\theta = \\pi/2\\) (or \\(90^{\\circ}\\)). Thus, final torque \\(\\tau_f = m B = 10 \\times 2 = 20\\,\\text{N m}\\).\n(d) From Newton's second law,\n\\(\\mathcal{I}\\dfrac{d\\omega}{dt} = m B \\sin\\theta\\)\nwhere \\(\\mathcal{I}\\) is the moment of inertia of the coil. From the chain rule,\n\\(\\dfrac{d\\omega}{dt} = \\dfrac{d\\omega}{d\\theta}\\dfrac{d\\theta}{dt} = \\dfrac{d\\omega}{d\\theta}\\omega\\)\nUsing this,\n\\(\\mathcal{I}\\,\\omega\\,d\\omega = m B \\sin\\theta\\,d\\theta\\)\nIntegrating from \\(\\theta = 0\\) to \\(\\theta = \\pi/2\\),\n\\(\\mathcal{I}\\displaystyle\\int_{0}^{\\omega_f}\\omega\\,d\\omega = m B \\int_{0}^{\\pi/2}\\sin\\theta\\,d\\theta\\)\n\\(\\mathcal{I}\\dfrac{\\omega_f^{2}}{2} = -m B \\cos\\theta\\Big|_{0}^{\\pi/2} = m B\\)\n\\(\\omega_f = \\left(\\dfrac{2mB}{\\mathcal{I}}\\right)^{1/2} = \\left(\\dfrac{2 \\times 20}{10^{-1}}\\right)^{1/2} = 20\\,\\text{s}^{-1}\\)"
+  },
+  {
+    "ref": "Eg 4.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+    "difficulty": "MODERATE",
+    "stem": "(a) A current-carrying circular loop lies on a smooth horizontal plane. Can a uniform magnetic field be set up in such a manner that the loop turns around itself (i.e., turns about the vertical axis).\n(b) A current-carrying circular loop is located in a uniform external magnetic field. If the loop is free to turn, what is its orientation of stable equilibrium? Show that in this orientation, the flux of the total field (external field + field produced by the loop) is maximum.\n(c) A loop of irregular shape carrying current is located in an external magnetic field. If the wire is flexible, why does it change to a circular shape?",
+    "solution": "(a) No, because that would require \\(\\boldsymbol{\\tau}\\) to be in the vertical direction. But \\(\\boldsymbol{\\tau} = I\\mathbf{A} \\times \\mathbf{B}\\), and since \\(\\mathbf{A}\\) of the horizontal loop is in the vertical direction, \\(\\tau\\) would be in the plane of the loop for any \\(\\mathbf{B}\\).\n(b) Orientation of stable equilibrium is one where the area vector \\(\\mathbf{A}\\) of the loop is in the direction of the external magnetic field. In this orientation, the magnetic field produced by the loop is in the same direction as the external field, both normal to the plane of the loop, thus giving rise to maximum flux of the total field.\n(c) It assumes circular shape with its plane normal to the field to maximise flux, since for a given perimeter, a circle encloses greater area than any other shape."
+  },
+  {
+    "ref": "Eg 4.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Moving Coil Galvanometer",
+    "difficulty": "MODERATE",
+    "stem": "In the circuit (Fig. 4.23) the current is to be measured. What is the value of the current if the ammeter shown (a) is a galvanometer with a resistance \\(R_G = 60.00\\,\\Omega\\); (b) is a galvanometer described in (a) but converted to an ammeter by a shunt resistance \\(r_s = 0.02\\,\\Omega\\); (c) is an ideal ammeter with zero resistance? The circuit is a \\(3.00\\,\\text{V}\\) source in series with a \\(3.00\\,\\Omega\\) resistor and the ammeter.",
+    "solution": "(a) Total resistance in the circuit is,\n\\(R_G + 3 = 63\\,\\Omega\\). Hence, \\(I = 3/63 = 0.048\\,\\text{A}\\).\n(b) Resistance of the galvanometer converted to an ammeter is,\n\\(\\dfrac{R_G r_s}{R_G + r_s} = \\dfrac{60\\,\\Omega \\times 0.02\\,\\Omega}{(60 + 0.02)\\,\\Omega} \\simeq 0.02\\,\\Omega\\)\nTotal resistance in the circuit is,\n\\(0.02\\,\\Omega + 3\\,\\Omega = 3.02\\,\\Omega\\). Hence, \\(I = 3/3.02 = 0.99\\,\\text{A}\\).\n(c) For the ideal ammeter with zero resistance,\n\\(I = 3/3 = 1.00\\,\\text{A}\\)",
+    "_note": "The printed stem gives the circuit only as 'Fig. 4.23'; the source e.m.f. (3.00 V) and the series resistance (3.00 Omega) are labelled on that figure and are the numbers the book's own solution substitutes, so they have been stated in words in the stem to keep the row answerable without the figure."
+  }
+]

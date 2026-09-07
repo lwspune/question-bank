@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Eg 3.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Drift of Electrons and Resistivity",
+    "difficulty": "HARD",
+    "stem": "(a) Estimate the average drift speed of conduction electrons in a copper wire of cross-sectional area \\(1.0 \\times 10^{-7}\\,\\text{m}^2\\) carrying a current of \\(1.5\\,\\text{A}\\). Assume that each copper atom contributes roughly one conduction electron. The density of copper is \\(9.0 \\times 10^{3}\\,\\text{kg/m}^{3}\\), and its atomic mass is \\(63.5\\,\\text{u}\\). (b) Compare the drift speed obtained above with, (i) thermal speeds of copper atoms at ordinary temperatures, (ii) speed of propagation of electric field along the conductor which causes the drift motion.",
+    "solution": "(a) The direction of drift velocity of conduction electrons is opposite to the electric field direction, i.e., electrons drift in the direction of increasing potential. The drift speed \\(v_d\\) is given by Eq. (3.18)\n\\(v_d = (I/neA)\\)\nNow, \\(e = 1.6 \\times 10^{-19}\\,\\text{C}\\), \\(A = 1.0 \\times 10^{-7}\\,\\text{m}^2\\), \\(I = 1.5\\,\\text{A}\\). The density of conduction electrons, \\(n\\) is equal to the number of atoms per cubic metre (assuming one conduction electron per Cu atom as is reasonable from its valence electron count of one). A cubic metre of copper has a mass of \\(9.0 \\times 10^{3}\\,\\text{kg}\\). Since \\(6.0 \\times 10^{23}\\) copper atoms have a mass of \\(63.5\\,\\text{g}\\),\n\\(n = \\dfrac{6.0 \\times 10^{23}}{63.5} \\times 9.0 \\times 10^{6} = 8.5 \\times 10^{28}\\,\\text{m}^{-3}\\)\nwhich gives,\n\\(v_d = \\dfrac{1.5}{8.5 \\times 10^{28} \\times 1.6 \\times 10^{-19} \\times 1.0 \\times 10^{-7}} = 1.1 \\times 10^{-3}\\,\\text{m s}^{-1} = 1.1\\,\\text{mm s}^{-1}\\)\n(b) (i) At a temperature \\(T\\), the thermal speed of a copper atom of mass \\(M\\) is obtained from \\(\\left[\\langle (1/2)Mv^2 \\rangle = (3/2)k_BT\\right]\\) and is thus typically of the order of \\(\\sqrt{k_BT/M}\\), where \\(k_B\\) is the Boltzmann constant. For copper at \\(300\\,\\text{K}\\), this is about \\(2 \\times 10^{2}\\,\\text{m/s}\\). This figure indicates the random vibrational speeds of copper atoms in a conductor. Note that the drift speed of electrons is much smaller, about \\(10^{-5}\\) times the typical thermal speed at ordinary temperatures.\n(ii) An electric field travelling along the conductor has a speed of an electromagnetic wave, namely equal to \\(3.0 \\times 10^{8}\\,\\text{m s}^{-1}\\) (You will learn about this in Chapter 8). The drift speed is, in comparison, extremely small; smaller by a factor of \\(10^{-11}\\)."
+  },
+  {
+    "ref": "Eg 3.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Drift of Electrons and Resistivity",
+    "difficulty": "MODERATE",
+    "stem": "(a) In Example 3.1, the electron drift speed is estimated to be only a few \\(\\text{mm s}^{-1}\\) for currents in the range of a few amperes? How then is current established almost the instant a circuit is closed?\n(b) The electron drift arises due to the force experienced by electrons in the electric field inside the conductor. But force should cause acceleration. Why then do the electrons acquire a steady average drift speed?\n(c) If the electron drift speed is so small, and the electron's charge is small, how can we still obtain large amounts of current in a conductor?\n(d) When electrons drift in a metal from lower to higher potential, does it mean that all the 'free' electrons of the metal are moving in the same direction?\n(e) Are the paths of electrons straight lines between successive collisions (with the positive ions of the metal) in the (i) absence of electric field, (ii) presence of electric field?",
+    "solution": "(a) Electric field is established throughout the circuit, almost instantly (with the speed of light) causing at every point a local electron drift. Establishment of a current does not have to wait for electrons from one end of the conductor travelling to the other end. However, it does take a little while for the current to reach its steady value.\n(b) Each 'free' electron does accelerate, increasing its drift speed until it collides with a positive ion of the metal. It loses its drift speed after collision but starts to accelerate and increases its drift speed again only to suffer a collision again and so on. On the average, therefore, electrons acquire only a drift speed.\n(c) Simple, because the electron number density is enormous, \\(\\sim 10^{29}\\,\\text{m}^{-3}\\).\n(d) By no means. The drift velocity is superposed over the large random velocities of electrons.\n(e) In the absence of electric field, the paths are straight lines; in the presence of electric field, the paths are, in general, curved."
+  },
+  {
+    "ref": "Eg 3.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Drift of Electrons and Resistivity",
+    "difficulty": "MODERATE",
+    "stem": "An electric toaster uses nichrome for its heating element. When a negligibly small current passes through it, its resistance at room temperature (\\(27.0\\,^\\circ\\text{C}\\)) is found to be \\(75.3\\,\\Omega\\). When the toaster is connected to a \\(230\\,\\text{V}\\) supply, the current settles, after a few seconds, to a steady value of \\(2.68\\,\\text{A}\\). What is the steady temperature of the nichrome element? The temperature coefficient of resistance of nichrome averaged over the temperature range involved, is \\(1.70 \\times 10^{-4}\\,^\\circ\\text{C}^{-1}\\).",
+    "solution": "When the current through the element is very small, heating effects can be ignored and the temperature \\(T_1\\) of the element is the same as room temperature. When the toaster is connected to the supply, its initial current will be slightly higher than its steady value of \\(2.68\\,\\text{A}\\). But due to heating effect of the current, the temperature will rise. This will cause an increase in resistance and a slight decrease in current. In a few seconds, a steady state will be reached when temperature will rise no further, and both the resistance of the element and the current drawn will achieve steady values. The resistance \\(R_2\\) at the steady temperature \\(T_2\\) is\n\\(R_2 = \\dfrac{230\\,\\text{V}}{2.68\\,\\text{A}} = 85.8\\,\\Omega\\)\nUsing the relation\n\\(R_2 = R_1\\left[1 + \\alpha (T_2 - T_1)\\right]\\)\nwith \\(\\alpha = 1.70 \\times 10^{-4}\\,^\\circ\\text{C}^{-1}\\), we get\n\\(T_2 - T_1 = \\dfrac{(85.8 - 75.3)}{(75.3) \\times 1.70 \\times 10^{-4}} = 820\\,^\\circ\\text{C}\\)\nthat is, \\(T_2 = (820 + 27.0)\\,^\\circ\\text{C} = 847\\,^\\circ\\text{C}\\)\nThus, the steady temperature of the heating element (when heating effect due to the current equals heat loss to the surroundings) is \\(847\\,^\\circ\\text{C}\\)."
+  },
+  {
+    "ref": "Eg 3.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Drift of Electrons and Resistivity",
+    "difficulty": "EASY",
+    "stem": "The resistance of the platinum wire of a platinum resistance thermometer at the ice point is \\(5\\,\\Omega\\) and at steam point is \\(5.23\\,\\Omega\\). When the thermometer is inserted in a hot bath, the resistance of the platinum wire is \\(5.795\\,\\Omega\\). Calculate the temperature of the bath.",
+    "solution": "\\(R_0 = 5\\,\\Omega\\), \\(R_{100} = 5.23\\,\\Omega\\) and \\(R_t = 5.795\\,\\Omega\\)\nNow, \\(t = \\dfrac{R_t - R_0}{R_{100} - R_0} \\times 100\\), \\(\\qquad R_t = R_0(1 + \\alpha t)\\)\n\\(= \\dfrac{5.795 - 5}{5.23 - 5} \\times 100\\)\n\\(= \\dfrac{0.795}{0.23} \\times 100 = 345.65\\,^\\circ\\text{C}\\)"
+  }
+]

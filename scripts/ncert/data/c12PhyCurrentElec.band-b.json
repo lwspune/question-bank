@@ -1,0 +1,29 @@
+[
+  {
+    "ref": "Eg 3.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+    "difficulty": "HARD",
+    "stem": "A battery of \\(10\\,\\text{V}\\) and negligible internal resistance is connected across the diagonally opposite corners of a cubical network consisting of 12 resistors each of resistance \\(1\\,\\Omega\\) (Fig. 3.16). Determine the equivalent resistance of the network and the current along each edge of the cube.",
+    "solution": "The network is not reducible to a simple series and parallel combinations of resistors. There is, however, a clear symmetry in the problem which we can exploit to obtain the equivalent resistance of the network.\nThe paths AA', AD and AB are obviously symmetrically placed in the network. Thus, the current in each must be the same, say, \\(I\\). Further, at the corners A', B and D, the incoming current \\(I\\) must split equally into the two outgoing branches. In this manner, the current in all the 12 edges of the cube are easily written down in terms of \\(I\\), using Kirchhoff's first rule and the symmetry in the problem.\nNext take a closed loop, say, ABCC'EA, and apply Kirchhoff's second rule:\n\\(-IR - (1/2)IR - IR + \\varepsilon = 0\\)\nwhere \\(R\\) is the resistance of each edge and \\(\\varepsilon\\) the emf of battery. Thus,\n\\(\\varepsilon = \\dfrac{5}{2}IR\\)\nThe equivalent resistance \\(R_{eq}\\) of the network is\n\\(R_{eq} = \\dfrac{\\varepsilon}{3I} = \\dfrac{5}{6}R\\)\nFor \\(R = 1\\,\\Omega\\), \\(R_{eq} = (5/6)\\,\\Omega\\) and for \\(\\varepsilon = 10\\,\\text{V}\\), the total current \\((= 3I)\\) in the network is\n\\(3I = 10\\,\\text{V}/(5/6)\\,\\Omega = 12\\,\\text{A}\\), i.e., \\(I = 4\\,\\text{A}\\)\nThe current flowing in each edge can now be read off from the Fig. 3.16."
+  },
+  {
+    "ref": "Eg 3.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+    "difficulty": "HARD",
+    "stem": "Determine the current in each branch of the network shown in Fig. 3.17.",
+    "solution": "Each branch of the network is assigned an unknown current to be determined by the application of Kirchhoff's rules. To reduce the number of unknowns at the outset, the first rule of Kirchhoff is used at every junction to assign the unknown current in each branch. We then have three unknowns \\(I_1\\), \\(I_2\\) and \\(I_3\\) which can be found by applying the second rule of Kirchhoff to three different closed loops. Kirchhoff's second rule for the closed loop ADCA gives,\n\\(10 - 4(I_1 - I_2) + 2(I_2 + I_3 - I_1) - I_1 = 0\\)\nthat is, \\(7I_1 - 6I_2 - 2I_3 = 10\\)\nFor the closed loop ABCA, we get\n\\(10 - 4I_2 - 2(I_2 + I_3) - I_1 = 0\\)\nthat is, \\(I_1 + 6I_2 + 2I_3 = 10\\)\nFor the closed loop BCDEB, we get\n\\(5 - 2(I_2 + I_3) - 2(I_2 + I_3 - I_1) = 0\\)\nthat is, \\(2I_1 - 4I_2 - 4I_3 = -5\\)\nEquations (3.61 a, b, c) are three simultaneous equations in three unknowns. These can be solved by the usual method to give\n\\(I_1 = 2.5\\,\\text{A}\\), \\(\\quad I_2 = \\dfrac{5}{8}\\,\\text{A}\\), \\(\\quad I_3 = 1\\dfrac{7}{8}\\,\\text{A}\\)\nThe currents in the various branches of the network are\nAB : \\(\\dfrac{5}{8}\\,\\text{A}\\), \\(\\quad\\) CA : \\(2\\dfrac{1}{2}\\,\\text{A}\\), \\(\\quad\\) DEB : \\(1\\dfrac{7}{8}\\,\\text{A}\\)\nAD : \\(1\\dfrac{7}{8}\\,\\text{A}\\), \\(\\quad\\) CD : \\(0\\,\\text{A}\\), \\(\\quad\\) BC : \\(2\\dfrac{1}{2}\\,\\text{A}\\)\nIt is easily verified that Kirchhoff's second rule applied to the remaining closed loops does not provide any additional independent equation, that is, the above values of currents satisfy the second rule for every closed loop of the network. For example, the total voltage drop over the closed loop BADEB\n\\(5\\,\\text{V} + \\left(\\dfrac{5}{8} \\times 4\\right)\\text{V} - \\left(\\dfrac{15}{8} \\times 4\\right)\\text{V}\\)\nequal to zero, as required by Kirchhoff's second rule."
+  },
+  {
+    "ref": "Eg 3.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+    "difficulty": "HARD",
+    "stem": "The four arms of a Wheatstone bridge (Fig. 3.19) have the following resistances:\nAB \\(= 100\\,\\Omega\\), BC \\(= 10\\,\\Omega\\), CD \\(= 5\\,\\Omega\\), and DA \\(= 60\\,\\Omega\\).\nA galvanometer of \\(15\\,\\Omega\\) resistance is connected across BD. Calculate the current through the galvanometer when a potential difference of \\(10\\,\\text{V}\\) is maintained across AC.",
+    "solution": "Considering the mesh BADB, we have\n\\(100I_1 + 15I_g - 60I_2 = 0\\)\nor \\(\\quad 20I_1 + 3I_g - 12I_2 = 0\\)\nConsidering the mesh BCDB, we have\n\\(10(I_1 - I_g) - 15I_g - 5(I_2 + I_g) = 0\\)\n\\(10I_1 - 30I_g - 5I_2 = 0\\)\n\\(2I_1 - 6I_g - I_2 = 0\\)\nConsidering the mesh ADCEA,\n\\(60I_2 + 5(I_2 + I_g) = 10\\)\n\\(65I_2 + 5I_g = 10\\)\n\\(13I_2 + I_g = 2\\)\nMultiplying Eq. (3.65b) by 10\n\\(20I_1 - 60I_g - 10I_2 = 0\\)\nFrom Eqs. (3.65d) and (3.65a) we have\n\\(63I_g - 2I_2 = 0\\)\n\\(I_2 = 31.5I_g\\)\nSubstituting the value of \\(I_2\\) into Eq. [3.65(c)], we get\n\\(13(31.5I_g) + I_g = 2\\)\n\\(410.5I_g = 2\\)\n\\(I_g = 4.87\\,\\text{mA}\\)."
+  }
+]

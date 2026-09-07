@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bf8eef39-1271-405a-a25e-e84e953d2052",
+    "ref": "Ex 7.1",
+    "solution": "The circuit is purely resistive, so the current is in phase with the voltage and Ohm's law relates the rms values directly.\n\n(a) \\(I = \\frac{V}{R} = \\frac{220\\,\\text{V}}{100\\,\\Omega} = 2.20\\,\\text{A}\\)\n\n(b) For a pure resistor the phase angle is \\(\\phi = 0\\), so the power factor is \\(\\cos\\phi = 1\\) and the average power over a full cycle is\n\n\\(P = V I \\cos\\phi = V I = (220\\,\\text{V})(2.20\\,\\text{A}) = 484\\,\\text{W}\\)\n\n(Equivalently \\(P = V^{2}/R = (220\\,\\text{V})^{2}/100\\,\\Omega = 484\\,\\text{W}\\).) Note that the net power is not zero: the instantaneous current reverses each half cycle but the Joule heating \\(i^{2}R\\) is positive throughout.\n\n(a) \\(I = 2.20\\,\\text{A}\\)\n(b) \\(P = 484\\,\\text{W}\\)"
+  },
+  {
+    "id": "21f0aec1-c086-4e6d-a168-35c66ef59f16",
+    "ref": "Ex 7.2",
+    "solution": "For a sinusoidal quantity the rms value and the peak value are related by \\(\\text{rms} = \\text{peak}/\\sqrt{2}\\).\n\n(a) \\(V = \\frac{v_{m}}{\\sqrt{2}} = \\frac{300\\,\\text{V}}{1.414} = 212\\,\\text{V}\\)\n\n(b) \\(i_{m} = \\sqrt{2}\\,I = (1.414)(10\\,\\text{A}) = 14.1\\,\\text{A}\\)\n\n(a) rms voltage \\(= 212\\,\\text{V}\\)\n(b) peak current \\(= 14.1\\,\\text{A}\\)"
+  },
+  {
+    "id": "5c08bbbe-4ccc-4d5f-94a6-eb6ec1475ef7",
+    "ref": "Ex 7.3",
+    "solution": "Convert to SI: \\(L = 44\\,\\text{mH} = 44 \\times 10^{-3}\\,\\text{H}\\).\n\nThe inductive reactance is\n\n\\(X_{L} = 2\\pi\\nu L = 2\\pi(50\\,\\text{Hz})(44 \\times 10^{-3}\\,\\text{H}) = 13.82\\,\\Omega\\)\n\nFor a purely inductive circuit the rms current is\n\n\\(I = \\frac{V}{X_{L}} = \\frac{220\\,\\text{V}}{13.82\\,\\Omega} = 15.9\\,\\text{A}\\)\n\n\\(I = 15.9\\,\\text{A}\\)"
+  },
+  {
+    "id": "2c58aea4-e014-4311-b2ec-c25e1486abb6",
+    "ref": "Ex 7.4",
+    "solution": "Convert to SI: \\(C = 60\\,\\mu\\text{F} = 60 \\times 10^{-6}\\,\\text{F}\\).\n\nThe capacitive reactance is\n\n\\(X_{C} = \\frac{1}{2\\pi\\nu C} = \\frac{1}{2\\pi(60\\,\\text{Hz})(60 \\times 10^{-6}\\,\\text{F})} = 44.2\\,\\Omega\\)\n\nFor a purely capacitive circuit the rms current is\n\n\\(I = \\frac{V}{X_{C}} = \\frac{110\\,\\text{V}}{44.2\\,\\Omega} = 2.49\\,\\text{A}\\)\n\n\\(I = 2.49\\,\\text{A}\\)"
+  },
+  {
+    "id": "e9303ff5-457c-478a-8936-bfdba9594482",
+    "ref": "Ex 7.5",
+    "solution": "In both circuits the net power absorbed over a complete cycle is ZERO.\n\nThe average power in an ac circuit is \\(P = V I \\cos\\phi\\), where \\(\\phi\\) is the phase angle between the voltage and the current.\n\nIn Exercise 7.3 the element is a pure inductor, in which the current lags the voltage by \\(\\phi = \\pi/2\\). In Exercise 7.4 the element is a pure capacitor, in which the current leads the voltage by \\(\\phi = \\pi/2\\). In each case \\(\\cos\\phi = \\cos(\\pi/2) = 0\\), so \\(P = 0\\).\n\nPhysically, neither element dissipates energy. Over one quarter of a cycle the inductor stores energy in its magnetic field (and the capacitor in its electric field), and over the next quarter it returns exactly that energy to the source. There is no resistance present to convert any of it into heat, so the energy simply oscillates between the source and the element and the average over a complete cycle vanishes. The current that flows is for this reason called a wattless current.\n\nNet power absorbed \\(= 0\\) in each circuit."
+  },
+  {
+    "id": "029fbdf3-fd96-4a24-994c-9815c481d63f",
+    "ref": "Ex 7.6",
+    "solution": "A charged capacitor connected across an inductor forms an \\(LC\\) circuit, whose charge and current oscillate freely at the natural angular frequency\n\n\\(\\omega_{0} = \\frac{1}{\\sqrt{LC}}\\)\n\nConvert to SI: \\(L = 27\\,\\text{mH} = 27 \\times 10^{-3}\\,\\text{H}\\) and \\(C = 30\\,\\mu\\text{F} = 30 \\times 10^{-6}\\,\\text{F}\\), so\n\n\\(LC = (27 \\times 10^{-3}\\,\\text{H})(30 \\times 10^{-6}\\,\\text{F}) = 8.1 \\times 10^{-7}\\,\\text{s}^{2}\\)\n\n\\(\\sqrt{LC} = 9.0 \\times 10^{-4}\\,\\text{s}\\)\n\n\\(\\omega_{0} = \\frac{1}{9.0 \\times 10^{-4}\\,\\text{s}} = 1.11 \\times 10^{3}\\,\\text{rad s}^{-1}\\)\n\n\\(\\omega_{0} = 1.11 \\times 10^{3}\\,\\text{rad s}^{-1}\\) (about \\(1111\\,\\text{rad s}^{-1}\\))"
+  },
+  {
+    "id": "55d4b536-5d14-4df6-b09c-60cbfd6c3ff1",
+    "ref": "Ex 7.7",
+    "solution": "When the supply frequency equals the natural frequency of the circuit, the circuit is at resonance. At resonance \\(X_{L} = X_{C}\\), so the reactive parts cancel and\n\n\\(Z = \\sqrt{R^{2} + (X_{C} - X_{L})^{2}} = R = 20\\,\\Omega\\)\n\nThe phase angle is then \\(\\phi = 0\\) and the power factor is \\(\\cos\\phi = 1\\).\n\nThe rms current is\n\n\\(I = \\frac{V}{Z} = \\frac{V}{R} = \\frac{200\\,\\text{V}}{20\\,\\Omega} = 10\\,\\text{A}\\)\n\nThe average power transferred over one complete cycle is\n\n\\(P = V I \\cos\\phi = I^{2}R = (10\\,\\text{A})^{2}(20\\,\\Omega) = 2000\\,\\text{W}\\)\n\nThe values of \\(L\\) and \\(C\\) are not needed for the power itself; they fix only the frequency at which this resonance occurs.\n\n\\(P = 2000\\,\\text{W} = 2\\,\\text{kW}\\)"
+  },
+  {
+    "id": "206f0752-4567-4637-b19c-5dd25b36d332",
+    "ref": "Ex 7.8",
+    "solution": "(a) Resonance occurs at the angular frequency\n\n\\(\\omega_{0} = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{(5.0\\,\\text{H})(80 \\times 10^{-6}\\,\\text{F})}} = \\frac{1}{\\sqrt{4.0 \\times 10^{-4}\\,\\text{s}^{2}}} = \\frac{1}{0.020\\,\\text{s}} = 50\\,\\text{rad s}^{-1}\\)\n\nso the source frequency is\n\n\\(\\nu_{0} = \\frac{\\omega_{0}}{2\\pi} = \\frac{50\\,\\text{rad s}^{-1}}{2\\pi} = 7.96\\,\\text{Hz}\\)\n\n(b) At resonance \\(X_{L} = X_{C}\\), so the impedance is purely resistive:\n\n\\(Z = R = 40\\,\\Omega\\)\n\nThe amplitude (peak value) of the current is\n\n\\(i_{m} = \\frac{v_{m}}{Z} = \\frac{\\sqrt{2}\\,V}{R} = \\frac{(1.414)(230\\,\\text{V})}{40\\,\\Omega} = 8.13\\,\\text{A}\\)\n\n(c) The rms current at resonance is\n\n\\(I = \\frac{V}{R} = \\frac{230\\,\\text{V}}{40\\,\\Omega} = 5.75\\,\\text{A}\\)\n\nThe reactances at \\(\\omega_{0}\\) are\n\n\\(X_{L} = \\omega_{0}L = (50\\,\\text{rad s}^{-1})(5.0\\,\\text{H}) = 250\\,\\Omega\\)\n\n\\(X_{C} = \\frac{1}{\\omega_{0}C} = \\frac{1}{(50\\,\\text{rad s}^{-1})(80 \\times 10^{-6}\\,\\text{F})} = 250\\,\\Omega\\)\n\nso the rms potential drops are\n\n\\(V_{R} = I R = (5.75\\,\\text{A})(40\\,\\Omega) = 230\\,\\text{V}\\)\n\n\\(V_{L} = I X_{L} = (5.75\\,\\text{A})(250\\,\\Omega) = 1437.5\\,\\text{V}\\)\n\n\\(V_{C} = I X_{C} = (5.75\\,\\text{A})(250\\,\\Omega) = 1437.5\\,\\text{V}\\)\n\nThe voltage across the inductor leads the current by \\(\\pi/2\\) while that across the capacitor lags it by \\(\\pi/2\\), so the two are exactly \\(\\pi\\) out of phase with each other. Their combined drop is therefore the difference of the magnitudes:\n\n\\(V_{LC} = |V_{L} - V_{C}| = |1437.5\\,\\text{V} - 1437.5\\,\\text{V}| = 0\\)\n\nThis is why the whole of the source voltage appears across the resistor, \\(V_{R} = 230\\,\\text{V}\\), equal to the applied voltage.\n\n(a) \\(\\omega_{0} = 50\\,\\text{rad s}^{-1}\\), i.e. \\(\\nu_{0} = 7.96\\,\\text{Hz}\\)\n(b) \\(Z = 40\\,\\Omega\\), \\(i_{m} = 8.13\\,\\text{A}\\)\n(c) \\(V_{R} = 230\\,\\text{V}\\), \\(V_{L} = V_{C} = 1437.5\\,\\text{V}\\), and the drop across the \\(LC\\) combination is zero."
+  }
+]

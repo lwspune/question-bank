@@ -1,0 +1,65 @@
+[
+  {
+    "ref": "Ex 3.1",
+    "verdict": "AGREE",
+    "ourAnswer": "30 A",
+    "keyAnswer": "30 A",
+    "note": "I_max = eps/r = 12/0.4 = 30 A on short circuit. Exact match."
+  },
+  {
+    "ref": "Ex 3.2",
+    "verdict": "AGREE",
+    "ourAnswer": "R = 17 ohm; terminal voltage = 8.5 V",
+    "keyAnswer": "17 ohm, 8.5 V",
+    "note": "R + r = 10/0.5 = 20 ohm so R = 17 ohm; V = eps - Ir = 8.5 V, cross-checked as IR = 0.5 x 17 = 8.5 V. Exact match on both parts."
+  },
+  {
+    "ref": "Ex 3.3",
+    "verdict": "AGREE",
+    "ourAnswer": "1027 degC",
+    "keyAnswer": "1027 degC",
+    "note": "dT = (117-100)/(100 x 1.70e-4) = 1000 degC exactly, + 27.0 degC. Exact match."
+  },
+  {
+    "ref": "Ex 3.4",
+    "verdict": "AGREE",
+    "ourAnswer": "2.0 x 10^-7 ohm m",
+    "keyAnswer": "2.0 x 10^-7 ohm m",
+    "note": "rho = RA/l = 5.0 x 6.0e-7 / 15. Exact match including the unit."
+  },
+  {
+    "ref": "Ex 3.5",
+    "verdict": "AGREE",
+    "ourAnswer": "3.9 x 10^-3 degC^-1 (0.0039 degC^-1)",
+    "keyAnswer": "0.0039 degC^-1",
+    "note": "alpha = (2.7-2.1)/(2.1 x 72.5) = 3.9409e-3; the key's 0.0039 is the same number to its stated 2 significant figures."
+  },
+  {
+    "ref": "Ex 3.6",
+    "verdict": "AGREE",
+    "ourAnswer": "867 degC",
+    "keyAnswer": "867 degC",
+    "note": "R1 = 230/3.2 = 71.875 ohm, R2 = 230/2.8 = 82.143 ohm, dT = 840.3 degC, + 27.0 degC = 867.3 degC. Rounds to the key's 867 degC."
+  },
+  {
+    "ref": "Ex 3.7",
+    "verdict": "AGREE",
+    "ourAnswer": "AB = 4/17 A, BC = 6/17 A, AD = 6/17 A, DC = 4/17 A (i.e. -4/17 A in the C-to-D sense), BD = 2/17 A flowing D to B (i.e. -2/17 A in the B-to-D sense), total = 10/17 A (about 0.588 A)",
+    "keyAnswer": "AB = (4/17) A, BC = (6/17) A, CD = (-4/17) A, AD = (6/17) A, BD = (-2/17) A, total current = (10/17) A",
+    "note": "Every magnitude matches exactly and the two negative signs are the same physical statement as ours: the key names the branches CD and BD, and our currents run D-to-C and D-to-B, i.e. opposite to those named directions. Independently corroborated three ways: the junction rule closes at C, both routes give the identical V_AC = 70/17 V, and that makes the bridge exactly 7 ohm so the total circuit is 17 ohm and I = 10 V / 17 ohm = 10/17 A - which is why every branch current is a seventeenth. Worth recording: the key names a vertex D that the printed Fig. 3.20 leaves UNLETTERED (only A, B and C are labelled), so NCERT's own key confirms the intended label for the bottom node."
+  },
+  {
+    "ref": "Ex 3.8",
+    "verdict": "AGREE",
+    "ourAnswer": "11.5 V; the series resistor limits the charging current, which would otherwise be (120-8.0)/0.5 = 224 A",
+    "keyAnswer": "11.5 V; the series resistor limits the current drawn from the external source. In its absence, the current will be dangerously high.",
+    "note": "I = (120-8.0)/16 = 7.0 A; V = eps + Ir = 8.0 + 3.5 = 11.5 V, cross-checked as 120 - 7.0 x 15.5 = 11.5 V. The conceptual half agrees, and our 224 A is the quantified form of the key's 'dangerously high'."
+  },
+  {
+    "ref": "Ex 3.9",
+    "verdict": "AGREE",
+    "ourAnswer": "2.7 x 10^4 s (about 7.6 h)",
+    "keyAnswer": "2.7 x 10^4 s (7.5 h)",
+    "note": "v_d = 3.0/(8.5e28 x 1.6e-19 x 2.0e-6) = 1.103e-4 m/s, t = 3.0/v_d = 2.72e4 s. The primary answer matches exactly. The parenthetical hours differ only because the key converts its OWN rounded 2.7e4 s (27000/3600 = 7.50 h) while the unrounded 27200 s gives 7.56 h; a 0.7% difference, well inside rounding tolerance and not a finding on either side."
+  }
+]
