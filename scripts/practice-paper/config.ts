@@ -5406,6 +5406,58 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "apj-bio-t01", label: "Biology MCQ Test 01" },
     bankAdd: true,
   },
+
+  // LWS "PQRS TEST 1" (running header "Arrangement of Words (PQRS)") — a 30-question
+  // in-house English test, every item a P/Q/R/S sentence-part rearrangement.
+  //
+  // BANK-MIRRORED, 30 of 30. The dedup gate matched every printed question, fragment for
+  // fragment WITH THE SAME P/Q/R/S LETTER ASSIGNMENT and the same four printed options,
+  // to a question already live in the bank as a PUBLIC NDA GAT **PYQ**. The teacher
+  // assembled this test out of past papers:
+  //   Q1-10  GAT_2020_NDA1_QuestionBank.xlsx  Q11-20
+  //   Q11-13 NDA1_2019_GAT_PYQ.xlsx           Q38-40
+  //   Q14-17 GAT_NDA2_2019_PYQ.xlsx           Q37-40
+  //   Q18-27 NDA2_2021_GAT_PYQ.xlsx           Q21-30
+  //   Q28-30 GAT_NDA1_2022_PYQ.xlsx           Q21-23
+  // So NOTHING here is new content and every record is status:"dup" — flip-public is a
+  // no-op by construction and must never be run for this slug.
+  //
+  // The records are copied VERBATIM out of those bank rows (stem, options in stored A-D
+  // order, key, solution, subtopic, difficulty, Directions context) rather than
+  // re-transcribed from the .docx, so `contentHash` matches the stored hash for all 30 —
+  // verified before committing. commitStaged therefore inserts 0 rows (upsert is
+  // ignoreDuplicates on org_id,exam_id,content_hash) and commit-paper's content_hash
+  // fallback resolves each printed Q to the EXISTING PYQ row, which is what the paper
+  // references. The bank half of the ingest is a proven no-op; the paper is the
+  // deliverable, and it is exactly what /dashboard/papers is for — a test assembled from
+  // bank questions.
+  //
+  // Three distinct printed Directions wordings survive (one per source paper family);
+  // each record carries its own, as stored on its bank row.
+  //
+  // Known pre-existing bank defect, NOT touched here: Q30's item exists TWICE in the bank
+  // — this PYQ row (56ee0236-…, GAT_NDA1_2022 Q23, keyed A=SPQR) and an Oswaal mock row
+  // (563bfed0-…, keyed C=QSPR) with the SAME four options and the OPPOSITE key. QSPR is
+  // the grammatical reading ("In the arena of sport, perhaps / the greatest moment in
+  // Indian Olympic history / was the victory secured by the women's hockey team /
+  // against Australia in the Tokyo Olympics"); SPQR strands "in the arena of sport,
+  // perhaps" mid-sentence. Both rows are shipped PUBLIC content, so the flip needs a 360
+  // + explicit permission — logged to the SUGGESTIONS backfill ledger, not fixed here.
+  "lws-pqrs-test-1": {
+    slug: "lws-pqrs-test-1",
+    title: "NDA English — Arrangement of Words (PQRS) Test 1",
+    recordsFile: "lws-pqrs-test-1.records.json",
+    outName: "Tags_LWS_PQRS_Test_1",
+    sourceFile: "LWS_PUNE_PQRS_TEST_1.docx",
+    subjectName: "English",
+    chapterName: "Sentence Rearrangement",
+    subtopics: ["Sentence Part Rearrangement (PQRS)"],
+    pyqNote:
+      "NDA English practice — LWS Pune 'PQRS Test 1' (Arrangement of Words). Bank-mirrored: all 30 questions are existing NDA GAT PYQs, assembled into an in-house test.",
+    examName: "NDA",
+    section: { key: "lws-pqrs-test-1", label: "Arrangement of Words (PQRS)" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
