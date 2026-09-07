@@ -27,15 +27,20 @@ describe("mocksNav — cross-exam mock grouping", () => {
     expect(slugs).toContain("nda");
     expect(slugs).toContain("neet");
     expect(slugs).toContain("mht-cet");
-    // JEE Mains has guides + notes but no mocks — must NOT appear.
-    expect(slugs).not.toContain("jee-mains");
+    expect(slugs).toContain("jee-mains");
+    // Worksheets is practice-only — it has no PYQ corpus, so it can never back
+    // a mock. A DURABLE exemplar, unlike the exams that merely have none yet
+    // (this assertion has already had to move twice: MHT-CET, then JEE Mains).
+    expect(slugs).not.toContain("worksheets-11-12");
   });
 
   it("resolves a mock exam by slug, null for no-mocks or unknown", () => {
     expect(getMockExam("nda")?.examName).toBe("NDA");
     expect(getMockExam("neet")?.examName).toBe("NEET");
     expect(getMockExam("mht-cet")?.examName).toBe("MHT-CET");
-    expect(getMockExam("jee-mains")).toBeNull(); // registered, but no mocks
+    expect(getMockExam("jee-mains")?.examName).toBe("JEE Mains");
+    // Registered, but practice-only — it can never have mocks.
+    expect(getMockExam("worksheets-11-12")).toBeNull();
     expect(getMockExam("not-an-exam")).toBeNull();
   });
 
@@ -53,7 +58,8 @@ describe("mocksNav — cross-exam mock grouping", () => {
     expect(slugs).toContain("nda");
     expect(slugs).toContain("neet");
     expect(slugs).toContain("mht-cet");
-    expect(slugs).not.toContain("jee-mains");
+    expect(slugs).toContain("jee-mains");
+    expect(slugs).not.toContain("worksheets-11-12");
   });
 
   it("includes CDS, whose 19 English PYQ papers ship as mocks", () => {
@@ -190,8 +196,8 @@ describe("buildMockExamCards — the /mock picker model", () => {
     // registry exams. A row for an unflagged exam must not appear, and must not
     // disturb the exams that are flagged. (The prod-contract probe in
     // tests/mocks-registry.test.ts is what stops such a row existing at all.)
-    const cards = buildMockExamCards([...SAMPLE, fixture("JEE Mains", 2026)]);
-    expect(cards.map((c) => c.slug)).not.toContain("jee-mains");
+    const cards = buildMockExamCards([...SAMPLE, fixture("Worksheets - 11th+12th", 2026)]);
+    expect(cards.map((c) => c.slug)).not.toContain("worksheets-11-12");
     expect(cards.find((c) => c.slug === "nda")!.count).toBe(3);
   });
 });

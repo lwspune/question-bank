@@ -7,6 +7,9 @@ import {
   CDS_ENGLISH_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
+  CDS_GK_PAPER,
+  CDS_MATHS_PAPER,
+  JEE_MAINS_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -197,5 +200,88 @@ describe("MHT-CET blueprints", () => {
   it("does not collide with NDA's 'maths' paper code", () => {
     expect(getBlueprint("nda", "maths")).toBe(NDA_MATHS_PAPER);
     expect(getBlueprint("mht-cet", "maths")).not.toBe(NDA_MATHS_PAPER);
+  });
+});
+
+describe("JEE Mains Paper 1", () => {
+  it("is 75 questions across three 25-question subject sections", () => {
+    expect(totalQuestions(JEE_MAINS_PAPER)).toBe(75);
+    expect(totalMarks(JEE_MAINS_PAPER)).toBe(300);
+    expect(JEE_MAINS_PAPER.sections).toHaveLength(3);
+    expect(JEE_MAINS_PAPER.sections.every((s) => s.count === 25)).toBe(true);
+  });
+
+  /**
+   * SECTION ORDER IS PAPER ORDER — buildMockPaper walks sections in blueprint
+   * order and numbers 1..N, and every source file runs Physics 1-25,
+   * Chemistry 26-50, Maths 51-75. Reordering these renumbers the whole paper.
+   */
+  it("orders its sections Physics, Chemistry, Maths", () => {
+    expect(JEE_MAINS_PAPER.sections.map((s) => s.key)).toEqual([
+      "physics",
+      "chemistry",
+      "maths",
+    ]);
+  });
+
+  /**
+   * The bank's subject row is "Maths", NOT "Mathematics". resolvePaper looks
+   * subjects up by name, so the long spelling resolves zero chapters and every
+   * sitting reconstructs EMPTY — a silent failure, not an error.
+   */
+  it("names the Maths subject exactly as the bank spells it", () => {
+    const maths = JEE_MAINS_PAPER.sections.find((s) => s.key === "maths")!;
+    expect(maths.subjects).toEqual(["Maths"]);
+    expect(maths.subjects).not.toContain("Mathematics");
+  });
+
+  it("marks +4 / -1 uniformly across Section A and B", () => {
+    // From 2025 Section B is 5 COMPULSORY numeric questions marked like Section
+    // A, which is what makes the paper expressible as a flat 75 at all.
+    expect(JEE_MAINS_PAPER.marking).toEqual({ correct: 4, wrong: -1 });
+  });
+
+  it("runs 180 minutes", () => {
+    expect(JEE_MAINS_PAPER.durationSecs).toBe(180 * 60);
+  });
+
+  it("is resolvable by getBlueprint but NOT in the NDA discovery list", () => {
+    expect(getBlueprint("jee-mains", "paper-1")).toBe(JEE_MAINS_PAPER);
+    // pyq_month is NULL on every JEE row AND a 2025 source_file holds two
+    // shifts, so neither NDA discovery rule can express a JEE sitting.
+    expect(MOCK_BLUEPRINTS).not.toContain(JEE_MAINS_PAPER);
+  });
+});
+
+/**
+ * EVERY shipped paper must be in ALL_BLUEPRINTS. CDS GK and CDS Elementary
+ * Mathematics were omitted when they shipped, so getBlueprint returned null for
+ * 35 published mocks — latent, because nothing in src/ calls it yet, but exactly
+ * the gap that bites the first consumer. This asserts the list stays complete
+ * rather than trusting whoever adds the next paper to remember.
+ */
+describe("getBlueprint covers every exported blueprint", () => {
+  const ALL = [
+    NDA_MATHS_PAPER,
+    NDA_GAT_PAPER,
+    NEET_PAPER,
+    CDS_ENGLISH_PAPER,
+    CDS_GK_PAPER,
+    CDS_MATHS_PAPER,
+    MHT_CET_MATHS_PAPER,
+    MHT_CET_PHY_CHEM_PAPER,
+    JEE_MAINS_PAPER,
+  ];
+
+  it.each(ALL.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(
+    "resolves %s",
+    (_name, bp) => {
+      expect(getBlueprint(bp.examSlug, bp.code)).toBe(bp);
+    }
+  );
+
+  it("gives every blueprint a unique (examSlug, code)", () => {
+    const keys = ALL.map((bp) => `${bp.examSlug}/${bp.code}`);
+    expect(new Set(keys).size).toBe(keys.length);
   });
 });

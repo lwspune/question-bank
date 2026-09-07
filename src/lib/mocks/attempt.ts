@@ -5,6 +5,13 @@
  * from remainingSecs / paletteState so display and grading agree.
  */
 
+import {
+  isAnswered,
+  verdictFor,
+  type MockAnswerKey,
+  type SavedResponse,
+} from "./answers";
+
 /** Whole seconds left until `expiresAt`, clamped at zero (refresh-resistant:
  *  the client re-derives this from the server timestamp, never a local count). */
 export function remainingSecs(expiresAt: string, nowMs: number): number {
@@ -19,13 +26,18 @@ export type PaletteState =
   | "flagged";
 
 /** The palette colour for one question, from its saved answer row (if any).
- *  Flag is an overlay that wins over answered/not-answered (CBT convention). */
+ *  Flag is an overlay that wins over answered/not-answered (CBT convention).
+ *
+ *  "Answered" comes from isAnswered, which reads BOTH response columns — a
+ *  selectedLabel-only test would render every answered JEE Section-B (NAT)
+ *  question as "not answered", silently, in the one control a student uses to
+ *  find their unanswered questions. */
 export function paletteState(
-  row: { selectedLabel: string | null; isFlagged: boolean } | undefined
+  row: (SavedResponse & { isFlagged: boolean }) | undefined
 ): PaletteState {
   if (!row) return "not_visited";
   if (row.isFlagged) return "flagged";
-  return row.selectedLabel ? "answered" : "not_answered";
+  return isAnswered(row) ? "answered" : "not_answered";
 }
 
 export type MockGradeQuestion = {
@@ -33,8 +45,10 @@ export type MockGradeQuestion = {
   sectionKey: string;
   marks: number;
   negMarks: number;
-  /** The correct option label (the answer key). */
-  answer: "A" | "B" | "C" | "D";
+  /** The answer key: an option label (MCQ) or a value (JEE Section-B NAT).
+   *  Null only if the bank lost the key — see verdictFor, which refuses to
+   *  penalise a student for that rather than guessing a letter. */
+  answer: MockAnswerKey | null;
   /**
    * Officially dropped / bonus question: award full marks to EVERY attempt,
    * never penalize, regardless of the chosen option (NTA grace-marks reality).
@@ -71,13 +85,16 @@ const emptySection = (): SectionScore => ({
 });
 
 /**
- * Grade a set of chosen letters against the key. `answers` maps questionId to
- * the chosen letter (missing / null / empty = skipped). Case-insensitive.
- * Applies per-question +marks / negMarks, and rolls totals up per section.
+ * Grade a set of saved responses against the key. `responses` maps questionId to
+ * the student's saved row (missing / blank = skipped). Applies per-question
+ * +marks / negMarks, and rolls totals up per section.
+ *
+ * The right/wrong/blank judgement itself lives in verdictFor, shared with the
+ * review page so the score and the per-question review cannot disagree.
  */
 export function gradeMock(
   questions: MockGradeQuestion[],
-  answers: Record<string, string | null | undefined>
+  responses: Record<string, SavedResponse | undefined>
 ): MockGradeResult {
   let correct = 0;
   let wrong = 0;
@@ -92,36 +109,25 @@ export function gradeMock(
     maxScore += q.marks;
     sec.maxScore += q.marks;
 
-    // Grace (officially dropped / bonus): everyone gets full marks, no penalty,
-    // regardless of what — or whether — they answered.
-    if (q.grace) {
+    // Grace (officially dropped / bonus) is handled inside verdictFor: everyone
+    // gets full marks, no penalty, regardless of what — or whether — they
+    // answered.
+    const verdict = verdictFor(q.answer, responses?.[q.questionId], q.grace === true);
+    verdicts[q.questionId] = verdict;
+
+    if (verdict === 1) {
       correct++;
       sec.correct++;
       score += q.marks;
       sec.score += q.marks;
-      verdicts[q.questionId] = 1;
-      continue;
-    }
-
-    const chosen = String(answers?.[q.questionId] ?? "").trim().toUpperCase();
-    const key = String(q.answer).trim().toUpperCase();
-
-    if (!chosen) {
-      skipped++;
-      sec.skipped++;
-      verdicts[q.questionId] = 0;
-    } else if (chosen === key) {
-      correct++;
-      sec.correct++;
-      score += q.marks;
-      sec.score += q.marks;
-      verdicts[q.questionId] = 1;
-    } else {
+    } else if (verdict === -1) {
       wrong++;
       sec.wrong++;
       score += q.negMarks;
       sec.score += q.negMarks;
-      verdicts[q.questionId] = -1;
+    } else {
+      skipped++;
+      sec.skipped++;
     }
   }
 

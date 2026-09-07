@@ -23,6 +23,23 @@ import type { RunnerState, SavedAnswer } from "@/lib/mocks/service";
 
 type Answers = Record<string, SavedAnswer>;
 
+/** A visited-but-unanswered row. Both response columns null — see answers.ts. */
+const EMPTY_ROW: SavedAnswer = {
+  selectedLabel: null,
+  numericResponse: null,
+  isFlagged: false,
+  timeSpentSecs: 0,
+};
+
+/**
+ * What may be TYPED into a numeric (JEE Section-B) box, as opposed to what may
+ * be SAVED. It deliberately admits partial values — "", "-", "1." — because a
+ * student types through those on the way to "-1.5", and rejecting a keystroke
+ * mid-number makes the field feel broken. Only a value that parses finite is
+ * ever sent to the server.
+ */
+const NUMERIC_DRAFT_RE = /^-?\d*\.?\d*$/;
+
 const PALETTE_STYLE: Record<PaletteState, string> = {
   not_visited: "bg-muted text-muted-foreground border-transparent",
   not_answered: "bg-red-100 text-red-800 border-red-300 dark:bg-red-950/50 dark:text-red-300 dark:border-red-800",
@@ -53,14 +70,16 @@ export default function MockRunner({
   const [remaining, setRemaining] = useState(() => remainingSecs(attempt.expiresAt, Date.now()));
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  // Raw text per numeric question, so a half-typed "-" or "1." survives a
+  // re-render without being parsed into a saved answer.
+  const [numericDrafts, setNumericDrafts] = useState<Record<string, string>>({});
 
   const submittedRef = useRef(false);
   const enteredAtRef = useRef(Date.now());
   const q = questions[current];
 
   const rowFor = useCallback(
-    (qid: string): SavedAnswer =>
-      answers[qid] ?? { selectedLabel: null, isFlagged: false, timeSpentSecs: 0 },
+    (qid: string): SavedAnswer => answers[qid] ?? EMPTY_ROW,
     [answers]
   );
 
@@ -74,6 +93,7 @@ export default function MockRunner({
           body: JSON.stringify({
             questionId: qid,
             selectedLabel: row.selectedLabel,
+            numericResponse: row.numericResponse,
             isFlagged: row.isFlagged,
             timeSpentSecs: row.timeSpentSecs,
           }),
@@ -150,7 +170,7 @@ export default function MockRunner({
     enteredAtRef.current = Date.now();
     const qid = questions[current]?.questionId;
     if (qid && !answers[qid]) {
-      setAnswers((a) => ({ ...a, [qid]: { selectedLabel: null, isFlagged: false, timeSpentSecs: 0 } }));
+      setAnswers((a) => ({ ...a, [qid]: EMPTY_ROW }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
@@ -192,6 +212,28 @@ export default function MockRunner({
 
   const row = rowFor(q.questionId);
   const low = remaining <= 300; // last 5 minutes
+
+  // The box shows the student's in-progress text when there is one, else the
+  // saved value (so a resumed attempt renders what was stored).
+  const numericDraft =
+    numericDrafts[q.questionId] ??
+    (row.numericResponse === null ? "" : String(row.numericResponse));
+
+  const onNumericChange = (raw: string) => {
+    // Reject an illegal keystroke by ignoring it, keeping what was typed.
+    if (!NUMERIC_DRAFT_RE.test(raw)) return;
+    setNumericDrafts((d) => ({ ...d, [q.questionId]: raw }));
+    const trimmed = raw.trim();
+    if (trimmed === "") {
+      update({ numericResponse: null });
+      return;
+    }
+    const parsed = Number(trimmed);
+    // A partial value ("-", "1.") is held as a draft and NOT saved: writing NaN
+    // would be a constraint error, and writing null would erase a real answer
+    // the moment the student typed a decimal point after it.
+    if (Number.isFinite(parsed)) update({ numericResponse: parsed });
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -259,6 +301,35 @@ export default function MockRunner({
               />
             )}
 
+            {q.format === "numeric" ? (
+              <div className="mt-4">
+                <label
+                  htmlFor="numeric-answer"
+                  className="block text-sm font-medium text-foreground"
+                >
+                  Your answer
+                </label>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Section B — type the value. There are no options for this
+                  question.
+                </p>
+                <input
+                  id="numeric-answer"
+                  // "text" with an explicit inputMode, not type="number": a
+                  // number input silently discards a value the browser deems
+                  // invalid mid-typing and swallows scroll-wheel changes over
+                  // the field, both of which lose a student's answer in a timed
+                  // exam.
+                  type="text"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  value={numericDraft}
+                  onChange={(e) => onNumericChange(e.target.value)}
+                  placeholder="e.g. 17280"
+                  className="mt-2 w-full max-w-xs rounded-md border bg-background px-3 py-2 font-mono text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+                />
+              </div>
+            ) : (
             <ol className="mt-4 space-y-2">
               {q.options.map((opt) => {
                 const selected = row.selectedLabel === opt.label;
@@ -299,6 +370,7 @@ export default function MockRunner({
                 );
               })}
             </ol>
+            )}
 
             <div className="mt-4 flex flex-wrap items-center gap-2 border-t pt-3">
               <Button
@@ -312,8 +384,11 @@ export default function MockRunner({
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => update({ selectedLabel: null })}
-                disabled={!row.selectedLabel}
+                onClick={() => {
+                  setNumericDrafts((d) => ({ ...d, [q.questionId]: "" }));
+                  update({ selectedLabel: null, numericResponse: null });
+                }}
+                disabled={row.selectedLabel === null && row.numericResponse === null}
               >
                 <Eraser className="h-3.5 w-3.5" aria-hidden />
                 Clear

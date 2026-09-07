@@ -132,6 +132,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     displayName: "JEE Mains",
     examName: "JEE Mains", // must match the `exams` DB row exactly
     mixedFormats: true, // Section-B NAT: 2,900 numeric alongside 7,593 MCQ
+    hasMocks: true, // 24 Paper 1 mocks (2025+2026 shifts) published at /mock
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
   },

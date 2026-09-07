@@ -33,7 +33,7 @@ const row = (
   id: `q${over.sourceRow}-${over.sourceFile ?? "x"}`,
   questionNumber: null,
   subjectName: "Physics",
-  answer: "A",
+  answer: { kind: "mcq", label: "A" },
   ...over,
 });
 

@@ -20,6 +20,9 @@
  *     For MHT-CET `pyq_month` is not merely null but ACTIVELY MISLEADING: 17 of
  *     its 45 sittings share (2023, "May"), so the year+month loop would emit one
  *     slug for all 17 and silently overwrite 16 real papers.
+ *   • SOURCE_FILE + ROW BLOCK (JEE) — a third rule, because for JEE not even
+ *     source_file is a sitting: a 2025 file holds a whole DATE, 150 rows = two
+ *     75-question shifts back to back. The sitting is a row RANGE within a file.
  * Both feed one shared loop (`buildFromSourceFiles`) and one shared writer
  * (`emitMock`) so a fix to the write path cannot land on one exam and miss the
  * other — the drift this repo has already paid for twice.
@@ -30,6 +33,8 @@
  *   npx tsx scripts/mocks/build.ts --paper=gat --apply --publish
  *   npx tsx scripts/mocks/build.ts --paper=cds
  *   npx tsx scripts/mocks/build.ts --paper=mht-cet          # both CET papers
+ *   npx tsx scripts/mocks/build.ts --paper=jee              # JEE Mains 2025+
+ *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
  *   npx tsx scripts/mocks/build.ts --only=2023-may-03-s1    # one CET sitting
@@ -51,8 +56,10 @@ import {
   CDS_MATHS_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
+  JEE_MAINS_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
+import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
 import {
   buildMockPaper,
   dedupeMergedRows,
@@ -61,6 +68,8 @@ import {
   neetMockTitle,
   mhtCetMockSlug,
   mhtCetMockTitle,
+  jeeMockSlug,
+  jeeMockTitle,
   type MockPaperSnapshot,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
@@ -70,6 +79,7 @@ import {
   cdsMathsSittings,
 } from "./cdsSittings";
 import { deriveMhtCetSittings } from "./mhtcetSittings";
+import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -147,10 +157,18 @@ async function discoverSittings(db: SupabaseClient, chapterIds: string[]) {
 /** How a sitting is pinned within a paper's corpus. */
 type SittingPin =
   | { by: "yearMonth"; year: number; month: string | null }
-  | { by: "sourceFile"; sourceFiles: string[] };
+  | { by: "sourceFile"; sourceFiles: string[] }
+  /**
+   * A 75-row BLOCK within one source file — JEE, where a 2025 file holds a whole
+   * DATE (150 rows = two shifts back to back) and `source_file` is therefore not
+   * a sitting. `block` is 1-based; rows are taken by source_row range.
+   */
+  | { by: "sourceFileBlock"; sourceFile: string; block: number; blockSize: number };
 
 function pinLabel(pin: SittingPin): string {
-  return pin.by === "sourceFile" ? pin.sourceFiles.join(" + ") : `${pin.year}-${pin.month ?? "-"}`;
+  if (pin.by === "sourceFile") return pin.sourceFiles.join(" + ");
+  if (pin.by === "sourceFileBlock") return `${pin.sourceFile}#${pin.block}`;
+  return `${pin.year}-${pin.month ?? "-"}`;
 }
 
 async function fetchPaperRows(
@@ -164,12 +182,19 @@ async function fetchPaperRows(
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("questions")
-      .select("id, source_row, question_number, chapter_id, source_file, options(label,is_correct)")
+      .select("id, source_row, question_number, chapter_id, source_file, question_format, numeric_answer, options(label,is_correct)")
       .in("chapter_id", chapterIds)
       .eq("question_kind", "pyq")
       .eq("visibility", "PUBLIC");
     if (pin.by === "sourceFile") {
       q = q.in("source_file", pin.sourceFiles);
+    } else if (pin.by === "sourceFileBlock") {
+      // The block's source_row window, e.g. block 2 of 75 = rows 76..150.
+      const lo = (pin.block - 1) * pin.blockSize + 1;
+      q = q
+        .eq("source_file", pin.sourceFile)
+        .gte("source_row", lo)
+        .lte("source_row", lo + pin.blockSize - 1);
     } else {
       q = q.eq("pyq_year", pin.year);
       q = pin.month === null ? q.is("pyq_month", null) : q.eq("pyq_month", pin.month);
@@ -184,12 +209,35 @@ async function fetchPaperRows(
         questionNumber: (r.question_number as string | null) ?? null,
         subjectName: chapterToSubject.get(r.chapter_id as string) ?? "?",
         sourceFile: (r.source_file as string | null) ?? undefined,
-        answer: (opts.find((o) => o.is_correct)?.label as "A" | "B" | "C" | "D" | null) ?? null,
+        answer: readAnswerKey(r, opts),
       });
     }
     if (!data || data.length < PAGE) break;
   }
   return out;
+}
+
+/**
+ * The answer key for one fetched row.
+ *
+ * Which SHAPE a question uses is decided by its own `question_format`, never by
+ * whether options happen to exist: a numeric (JEE Section-B) question carries
+ * zero option rows, and inferring "no options therefore numeric" would turn a
+ * failed options read into a silently numeric question. Mirrors loadAnswerKey in
+ * src/lib/mocks/query.ts — the build and the grader must agree about what the
+ * answer IS, or a paper validates at build time and mis-grades at delivery.
+ */
+function readAnswerKey(
+  r: Record<string, unknown>,
+  opts: { label: string; is_correct: boolean }[]
+): MockAnswerKey | null {
+  if (r.question_format === "numeric") {
+    const v = r.numeric_answer;
+    if (v === null || v === undefined || !Number.isFinite(Number(v))) return null;
+    return { kind: "numeric", value: Number(v) };
+  }
+  const label = opts.find((o) => o.is_correct)?.label;
+  return label ? { kind: "mcq", label: label as OptionLabel } : null;
 }
 
 /** One sitting's rows, pinned by year + month (NDA). */
@@ -257,6 +305,12 @@ type SourceFileSitting = {
   key: string;
   sourceFile: string;
   /**
+   * Take only this 1-based `blockSize`-row block of the file (JEE: a 2025 file
+   * holds a whole DATE, two 75-question shifts back to back). Omitted everywhere
+   * else, where a source_file IS the sitting.
+   */
+  block?: { index: number; size: number };
+  /**
    * A SECOND source_file holding the same paper — a duplicate upload. The two
    * are typed independently, so content_hash deduped only the rows that matched
    * and the paper's questions are SPLIT across both labels: neither reconstructs
@@ -291,7 +345,9 @@ async function buildFromSourceFiles(
   db: SupabaseClient,
   bp: MockPaperBlueprint,
   allSittings: SourceFileSitting[],
-  run: RunState
+  run: RunState,
+  /** Registry to name in a stale-hold failure — three exams share this loop. */
+  registryFile = "the sitting registry"
 ) {
   const { examId, chapterToSubject } = await resolvePaper(db, bp);
   const only = run.only;
@@ -302,7 +358,14 @@ async function buildFromSourceFiles(
 
   for (const s of sittings) {
     const files = s.mergeWith ? [s.sourceFile, s.mergeWith] : [s.sourceFile];
-    let rows = await fetchRowsBySourceFile(db, chapterToSubject, files);
+    let rows = s.block
+      ? await fetchPaperRows(db, chapterToSubject, {
+          by: "sourceFileBlock",
+          sourceFile: s.sourceFile,
+          block: s.block.index,
+          blockSize: s.block.size,
+        })
+      : await fetchRowsBySourceFile(db, chapterToSubject, files);
     if (s.mergeWith) {
       const before = rows.length;
       // Normalise FIRST: the two labels can number the same question differently
@@ -342,7 +405,7 @@ async function buildFromSourceFiles(
     if (s.hold) {
       run.failures.push(
         `${s.key} (${bp.code}): STALE HOLD — this paper now reconstructs whole ` +
-          `(recorded as "${s.hold}"). Delete the hold in mhtcetSittings.ts and re-run.`
+          `(recorded as "${s.hold}"). Delete the hold in ${registryFile} and re-run.`
       );
       continue;
     }
@@ -414,7 +477,7 @@ function neetSittings(): SourceFileSitting[] {
       const out = rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
       // Inject include-overrides (a deduped real question referenced at its slot).
       for (const ov of s.overrides) {
-        out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: ov.answer });
+        out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: { kind: "mcq", label: ov.answer } });
       }
       return out;
     },
@@ -481,6 +544,35 @@ function mhtCetSittings(
   }));
 }
 
+/**
+ * JEE Mains sittings, mapped onto the shared source_file loop.
+ *
+ * The one thing JEE adds is `block`: a 2025 source file holds a whole DATE — two
+ * 75-question shifts back to back — so the sitting is a row RANGE within the
+ * file, not the file. 2026 files are already one shift each and carry block 1.
+ */
+function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
+  const sittings = deriveJeeSittings();
+  const inferred = sittings.filter((s) => s.shiftInferred && !s.hold).length;
+  if (inferred > 0) {
+    console.log(
+      `\n  NOTE: ${inferred} sitting(s) carry an INFERRED shift number. The 2025 ` +
+        `sources name no shift anywhere (their pyqNote is the bare date and the\n` +
+        `        extracted pages carry only "Section - A" headers), so "Shift 1" is ` +
+        `rows 1-75 by convention, not by evidence. See scripts/mocks/jeeSittings.ts.`
+    );
+  }
+  return sittings.map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    block: { index: s.block, size: JEE_SHIFT_SIZE },
+    year: s.year,
+    slug: jeeMockSlug(s.key, bp.code),
+    title: jeeMockTitle(s.year, s.label, bp),
+    hold: s.hold,
+  }));
+}
+
 async function main() {
   const apply = process.argv.includes("--apply");
   const publish = process.argv.includes("--publish");
@@ -498,8 +590,9 @@ async function main() {
   const runNeet = !paperFilter || paperFilter === "neet";
   const runCds = !paperFilter || paperFilter === "cds";
   const runMhtCet = !paperFilter || paperFilter === "mht-cet";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet) {
-    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet)`);
+  const runJee = !paperFilter || paperFilter === "jee";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee) {
+    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee)`);
   }
 
   const run: RunState = { apply, publish, only, built: { n: 0 }, held: { n: 0 }, failures: [] };
@@ -536,8 +629,11 @@ async function main() {
     await buildFromSourceFiles(db, CDS_MATHS_PAPER, cdsSittingsFor(cdsMathsSittings), run);
   }
   if (runMhtCet) {
-    await buildFromSourceFiles(db, MHT_CET_MATHS_PAPER, mhtCetSittings(MHT_CET_MATHS_PAPER, "maths"), run);
-    await buildFromSourceFiles(db, MHT_CET_PHY_CHEM_PAPER, mhtCetSittings(MHT_CET_PHY_CHEM_PAPER, "phyChem"), run);
+    await buildFromSourceFiles(db, MHT_CET_MATHS_PAPER, mhtCetSittings(MHT_CET_MATHS_PAPER, "maths"), run, "mhtcetSittings.ts");
+    await buildFromSourceFiles(db, MHT_CET_PHY_CHEM_PAPER, mhtCetSittings(MHT_CET_PHY_CHEM_PAPER, "phyChem"), run, "mhtcetSittings.ts");
+  }
+  if (runJee) {
+    await buildFromSourceFiles(db, JEE_MAINS_PAPER, jeeSittings(JEE_MAINS_PAPER), run, "jeeSittings.ts");
   }
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);

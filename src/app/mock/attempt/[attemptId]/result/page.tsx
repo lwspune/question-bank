@@ -190,6 +190,39 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         <img src={publicImageUrl(supabaseUrl, item.imageUrl)} alt="Question diagram" className="mt-3 max-h-60 w-auto rounded border" />
       )}
 
+      {item.format === "numeric" ? (
+        /* JEE Section-B: no options to paint, so show the two values side by
+           side. Rendered from the review row rather than re-derived here, so it
+           cannot disagree with the verdict badge above it. */
+        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+          <div
+            className={cn(
+              "rounded-md border p-2 text-sm",
+              item.verdict === 1 && "border-emerald-400 bg-emerald-50 dark:bg-emerald-950/30",
+              item.verdict === -1 && "border-red-400 bg-red-50 dark:bg-red-950/30"
+            )}
+          >
+            <dt className="text-xs font-medium text-muted-foreground">Your answer</dt>
+            <dd className="mt-0.5 font-mono text-base">
+              {item.numericResponse === null ? (
+                <span className="text-muted-foreground">Not answered</span>
+              ) : (
+                item.numericResponse
+              )}
+            </dd>
+          </div>
+          <div className="rounded-md border border-emerald-400 bg-emerald-50 p-2 text-sm dark:bg-emerald-950/30">
+            <dt className="text-xs font-medium text-muted-foreground">Correct answer</dt>
+            <dd className="mt-0.5 font-mono text-base">
+              {item.correctNumeric === null ? (
+                <span className="text-muted-foreground">—</span>
+              ) : (
+                item.correctNumeric
+              )}
+            </dd>
+          </div>
+        </dl>
+      ) : (
       <ul className="mt-3 space-y-1.5">
         {item.options.map((opt) => {
           // Grace questions have no valid key (NTA awarded all) — never paint an
@@ -220,6 +253,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           );
         })}
       </ul>
+      )}
 
       {item.solution && (
         <details className="mt-3 rounded-md border border-dashed bg-muted/20 p-3 text-sm">
