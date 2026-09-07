@@ -5352,6 +5352,52 @@ export const PAPERS: Record<string, PaperSpec> = {
       },
     },
   },
+
+  // Dr. APJ Innovation School "NDA Biology MCQ Test 01" (03-09-2026), 50 Q on
+  // systematics + Kingdoms Monera, Protista and Fungi. Born-digital PDF, clean text
+  // layer, no figures, no LaTeX.
+  //
+  // The PDF ships NO answer key (verified: absent from body, metadata, annotations,
+  // TOC and embedded files). The key comes instead from the school's EVALBEE OMR
+  // export, which is a far stronger source than a printed key: it is uniform across
+  // all 90 students who sat the test. It was then corroborated three independent
+  // ways - two blind derivations that never saw it (50/50 and 49/50 agreement), and
+  // the 16 bank rows the dedup gate matched (16/16 agree). NO key needed correcting,
+  // and no question is defective on either blind pass, so nothing is `flawed`.
+  //
+  // `difficulty` is MEASURED, not guessed: it is banded from the proportion of those
+  // 90 students who answered each item correctly (EASY >= 0.70, MODERATE >= 0.40).
+  //
+  // Dedup vs the 431-q NDA Biology bank: 33 new / 17 dup. Sixteen duplicate existing
+  // bank rows; the seventeenth (Q34) duplicates Q28 of this same paper. All 50 are
+  // committed PRIVATE and filed in the paper for OMR parity; only the 33 flip PUBLIC.
+  //
+  // Files under three subtopics created for this paper - Systematics and Nomenclature,
+  // Kingdom Monera, Kingdom Protista - because the chapter previously had only Kingdom
+  // Fungi / Plant Kingdom / Animal Kingdom, so ~36 of these 50 questions had no home
+  // anywhere in NDA Biology. They carry order_index NULL deliberately: `notes:order`
+  // owns that column for chapters with /notes, and NULL sorts them ahead of the three
+  // ordered siblings, which is the correct teaching order anyway.
+  "apj-bio-t01": {
+    slug: "apj-bio-t01",
+    title: "NDA Biology — APJ MCQ Test 01 (Systematics, Monera, Protista, Fungi)",
+    recordsFile: "apj-bio-t01.records.json",
+    outName: "Tags_NDA_APJ_Biology_T01",
+    sourceFile: "NDA_Biology_Practice__APJ_MCQ_Test_01.pdf",
+    subjectName: "Biology",
+    chapterName: "Biodiversity and Classification",
+    subtopics: [
+      "Systematics and Nomenclature",
+      "Kingdom Monera",
+      "Kingdom Protista",
+      "Kingdom Fungi",
+    ],
+    pyqNote:
+      "NDA Biology practice — Dr. APJ Innovation School 'NDA Biology MCQ Test 01', 03-09-2026 (answer key from the school's Evalbee OMR export, corroborated by two independent blind derivations)",
+    examName: "NDA",
+    section: { key: "apj-bio-t01", label: "Biology MCQ Test 01" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
