@@ -1372,6 +1372,23 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // Ch.9 SHIPPED 2026-09-07. Cross-check: 21 of 34 exercise rows diffed — 21 AGREE,
+  // 0 our-answer-wrong, 0 book-key-wrong. The key is genuinely clean on the numbers,
+  // which is a DIFFERENT result from ch.8's 3 errors + 1 inconsistency; both are
+  // reported as measured rather than averaged into a house prior.
+  //
+  // Two printed defects recorded here rather than as student-facing brackets:
+  //   - The key entry for 9.7 is LABELLED "19.7" — a stray leading 1, sitting
+  //     between 9.6 and 9.8 (verified on the rendered page). Its content answers
+  //     9.7 unambiguously and no answer is affected, so it gets no bracket. Do not
+  //     read it as a missing 9.7: an earlier probe of mine did exactly that and the
+  //     cross-check agent corrected me from the image.
+  //   - 9.3(d) DOES get a bracket: the key answers two clauses where the reprint
+  //     prints one, which a student comparing against the official key would trip on.
+  //
+  // 13 rows are NO-KEY-ENTRY (all of 9.1, 9.2 and 9.4 — "Explain why" blocks with no
+  // final value to print; the key opens at 9.3 and jumps to 9.5). Those carry
+  // derived-answer provenance, since ours is the only answer a student gets.
   c11PhyMechFluids: {
     id: "c11PhyMechFluids",
     chapterName: "Mechanical Properties of Fluids",
