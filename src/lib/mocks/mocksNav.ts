@@ -10,6 +10,7 @@
  */
 
 import { EXAM_REGISTRY, type ExamSlug } from "@/lib/exam/examContext";
+import { MOCK_TYPES, mocksOfType, type MockTypeSlug } from "@/lib/mocks/catalogue";
 // Type-only: keeps this module pure (no DB import at runtime).
 import type { MockListItem } from "@/lib/mocks/query";
 
@@ -67,9 +68,21 @@ export function mockExamNames(): string {
 /** One exam's card on the /mock picker. Every number is DERIVED from the rows
  *  /mock already fetches, so a new sitting updates the card by itself. */
 export type MockExamCard = MockExamNav & {
-  /** Published mocks for this exam. 0 renders as "coming soon". */
+  /** Published mocks for this exam, ALL types. 0 renders as "coming soon". */
   count: number;
-  /** Oldest / newest sitting; both 0 when nothing is published yet. */
+  /**
+   * How many of each type, so the card can name them separately ("36 past
+   * papers · 27 practice mocks") instead of a single total that hides the
+   * difference between the real thing and a simulation of it.
+   */
+  byType: Record<MockTypeSlug, number>;
+  /**
+   * Oldest / newest SITTING; both 0 when this exam has published no past paper.
+   *
+   * PAST PAPERS ONLY. The span is printed beside the exam name as a claim about
+   * real sittings, and no other type has one — an assembled paper is built, not
+   * sat. Reading a stray year off one would widen a span that says otherwise.
+   */
   firstYear: number;
   lastYear: number;
   /** Distinct papers a sitting is made of — NDA 2 (Maths + GAT), CDS/NEET 1. */
@@ -99,10 +112,16 @@ export type MockExamCard = MockExamNav & {
 export function buildMockExamCards(mocks: MockListItem[]): MockExamCard[] {
   return getMockExams().map((exam) => {
     const mine = mocks.filter((m) => m.examName === exam.examName);
-    const years = mine.map((m) => m.pyqYear);
+    const years = mocksOfType(mine, "past-papers")
+      .map((m) => m.pyqYear)
+      .filter((y): y is number => typeof y === "number");
+    const byType = Object.fromEntries(
+      MOCK_TYPES.map((t) => [t.slug, mocksOfType(mine, t.slug).length])
+    ) as Record<MockTypeSlug, number>;
     return {
       ...exam,
       count: mine.length,
+      byType,
       firstYear: years.length ? Math.min(...years) : 0,
       lastYear: years.length ? Math.max(...years) : 0,
       paperCount: new Set(mine.map((m) => m.paperCode)).size,

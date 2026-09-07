@@ -30,6 +30,16 @@ export async function readPublishedMocks(db: SupabaseClient): Promise<MockLite[]
       .from("mock_tests")
       .select("id, slug, title, exam_id, paper_code, pyq_year, pyq_month, total_questions, duration_secs")
       .eq("status", "published")
+      // PAST PAPERS ONLY, deliberately. This recommender is sitting-ordered
+      // end to end — sittingRank() is `pyqYear * 10 + month`, and MockLite
+      // types pyqYear as a plain number. A practice or sectional test has NO
+      // sitting (migration 0088 made pyq_year nullable for exactly that), so
+      // it would rank as year 0, sort last, and still be emailed to a student
+      // as "the next paper in the sequence". Extending this email to the other
+      // types is a product decision with its own ordering question; until it is
+      // taken, the query says what it means instead of casting a null to 0.
+      .eq("source", "pyq")
+      .eq("scope", "full")
       .order("pyq_year", { ascending: false })
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readPublishedMocks: ${error.message}`);

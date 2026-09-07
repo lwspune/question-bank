@@ -6,7 +6,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { mockSideNav, mockExamNames, buildMockExamCards } from "@/lib/mocks/mocksNav";
+import { mockSideNav, mockExamNames, buildMockExamCards, type MockExamCard } from "@/lib/mocks/mocksNav";
 
 // Public catalogue — anon + stable, cacheable. New mocks appear on revalidation.
 export const revalidate = 3600;
@@ -16,13 +16,13 @@ export const revalidate = 3600;
 const EXAMS = mockExamNames();
 
 const PAGE_INTRO =
-  "Real past papers, served whole as full-length timed tests — the exact questions from each " +
-  "sitting, official marking, instant scoring. Pick your exam, then a sitting, and sit it like " +
-  "the real thing.";
+  "Full-length papers, timed and auto-graded — real past papers served whole, plus practice " +
+  "papers built to the same blueprint. Official marking, a live timer, instant scoring. Pick " +
+  "your exam, then a paper, and sit it like the real thing.";
 
 export const metadata: Metadata = {
-  title: `${EXAMS} Mock Tests — real PYQ papers, timed & auto-graded`,
-  description: `Take real past ${EXAMS} papers as full-length, timed mock tests — the exact questions from each sitting, official marking, instant scoring. Free, from PYQ Vault.`,
+  title: `${EXAMS} Mock Tests — past papers & practice, timed & auto-graded`,
+  description: `Take ${EXAMS} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
   alternates: { canonical: "/mock" },
 };
 
@@ -54,13 +54,16 @@ const COPY: Record<string, ExamCopy> = {
   nda: {
     tagline: "Paper I & Paper II",
     blurb:
-      "Paper I Mathematics and Paper II General Ability Test, rebuilt question-for-question from each UPSC sitting — English and all eight General Knowledge subjects in the printed order, with the official marking scheme and a live timer.",
+      "Paper I Mathematics and Paper II General Ability Test — English and all eight General Knowledge subjects in the printed order, on the official UPSC marking scheme with a live timer.",
     icon: Shield,
   },
   cds: {
-    tagline: "English",
+    // Was "English" only, which went stale the day General Knowledge and
+    // Elementary Mathematics shipped (2026-09-06) — the exact class of
+    // hand-typed string this file's own header warns about.
+    tagline: "English · GK · Maths",
     blurb:
-      "The CDS English paper, served whole with its Directions-based comprehension, cloze and spotting-errors sets intact, on the exam's own fractional marking scheme.",
+      "The CDS papers, served whole — English with its Directions-based comprehension, cloze and spotting-errors sets intact, alongside General Knowledge and Elementary Mathematics, on the exam's own fractional marking scheme.",
     icon: Compass,
   },
   neet: {
@@ -71,15 +74,30 @@ const COPY: Record<string, ExamCopy> = {
   },
 };
 
-/** "36 mocks · 2017–2026 · 2 papers per sitting" — every part derived. */
-function metaLine(card: { count: number; firstYear: number; lastYear: number; paperCount: number }) {
+/**
+ * "36 past papers (2017–2026) · 27 practice" — every part derived.
+ *
+ * Broken down BY TYPE rather than a single total, because "63 mocks" would hide
+ * the difference between the real thing and a simulation of it, and the year
+ * span only ever describes the past papers. A type with none is omitted rather
+ * than printed as a zero.
+ */
+function metaLine(card: MockExamCard) {
   if (card.count === 0) return "Coming soon";
-  const span =
-    card.firstYear === card.lastYear
-      ? `${card.firstYear}`
-      : `${card.firstYear}–${card.lastYear}`;
-  const parts = [`${card.count} ${card.count === 1 ? "mock" : "mocks"}`, span];
-  if (card.paperCount > 1) parts.push(`${card.paperCount} papers per sitting`);
+  const parts: string[] = [];
+
+  const past = card.byType["past-papers"];
+  if (past > 0) {
+    const span =
+      card.firstYear === 0
+        ? ""
+        : card.firstYear === card.lastYear
+          ? ` (${card.firstYear})`
+          : ` (${card.firstYear}–${card.lastYear})`;
+    parts.push(`${past} past ${past === 1 ? "paper" : "papers"}${span}`);
+  }
+  if (card.byType["practice"] > 0) parts.push(`${card.byType["practice"]} practice`);
+  if (card.byType["sectional"] > 0) parts.push(`${card.byType["sectional"]} sectional`);
   return parts.join(" · ");
 }
 
@@ -101,7 +119,7 @@ export default async function MockCatalogue() {
       />
 
       <GuideHero
-        eyebrow="Timed PYQ mock tests"
+        eyebrow="Timed mock tests"
         title="Mock Tests"
         subtitle={PAGE_INTRO}
       >
@@ -130,7 +148,7 @@ export default async function MockCatalogue() {
                   </span>
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {copy?.tagline ?? "Past papers"}
+                      {copy?.tagline ?? "Full-length papers"}
                     </p>
                     <h2 className="text-lg font-semibold leading-tight">
                       {card.displayName} mock tests
@@ -140,7 +158,7 @@ export default async function MockCatalogue() {
 
                 <p className="mt-4 flex-1 text-sm text-muted-foreground">
                   {copy?.blurb ??
-                    `Real past ${card.examName} papers, served whole as full-length timed tests.`}
+                    `${card.examName} papers served whole as full-length timed tests, on the exam's own marking scheme.`}
                 </p>
 
                 <p className="mt-4 text-xs font-medium text-muted-foreground tabular-nums">

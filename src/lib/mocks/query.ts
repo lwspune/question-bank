@@ -20,12 +20,25 @@ export type MockSnapshotQuestion = {
 
 export type MockSection = { key: string; label: string; count: number };
 
+/** Where a mock's question set came from (migration 0088). */
+export type MockSource = "pyq" | "practice";
+/** How much of the exam a mock covers (migration 0088). */
+export type MockScope = "full" | "sectional";
+
 export type MockRow = {
   id: string;
   slug: string;
   paperCode: string;
-  pyqYear: number;
+  /**
+   * The sitting's year — NULL for anything that is not a whole past paper.
+   * An assembled paper has no sitting, and this field is rendered as a section
+   * HEADING in the catalogue, so a stand-in value would print a sitting that
+   * never happened. A DB CHECK still requires it on a full past paper.
+   */
+  pyqYear: number | null;
   pyqMonth: string | null;
+  source: MockSource;
+  scope: MockScope;
   title: string;
   durationSecs: number;
   marking: { correct: number; wrong: number };
@@ -41,7 +54,7 @@ export type MockListItem = Omit<MockRow, "questions" | "marking"> & {
 };
 
 const MOCK_SELECT =
-  "id, slug, paper_code, pyq_year, pyq_month, title, duration_secs, marking, sections, questions, total_questions, total_marks, exam:exams(name)";
+  "id, slug, paper_code, pyq_year, pyq_month, source, scope, title, duration_secs, marking, sections, questions, total_questions, total_marks, exam:exams(name)";
 
 function mapMock(r: Record<string, unknown>): MockRow {
   const exam = (Array.isArray(r.exam) ? r.exam[0] : r.exam) as { name: string } | null;
@@ -49,8 +62,13 @@ function mapMock(r: Record<string, unknown>): MockRow {
     id: r.id as string,
     slug: r.slug as string,
     paperCode: r.paper_code as string,
-    pyqYear: r.pyq_year as number,
+    pyqYear: (r.pyq_year as number | null) ?? null,
     pyqMonth: (r.pyq_month as string | null) ?? null,
+    // Defaulted rather than cast: these columns landed in 0088 with defaults
+    // matching every pre-existing row, so an older cached shape still reads as
+    // the past paper it is instead of arriving undefined.
+    source: (r.source as MockSource | null) ?? "pyq",
+    scope: (r.scope as MockScope | null) ?? "full",
     title: r.title as string,
     durationSecs: r.duration_secs as number,
     marking: r.marking as { correct: number; wrong: number },
@@ -68,7 +86,10 @@ export async function getPublishedMocks(db: SupabaseClient): Promise<MockListIte
     .from("mock_tests")
     .select(MOCK_SELECT)
     .eq("status", "published")
-    .order("pyq_year", { ascending: false })
+    // nullsFirst: false — Postgres puts NULLs FIRST on a DESC order, so
+    // without it every undated row (practice / sectional, migration 0088)
+    // would lead the list ahead of the newest real sitting.
+    .order("pyq_year", { ascending: false, nullsFirst: false })
     .order("pyq_month", { ascending: true });
   if (error) throw new Error(`getPublishedMocks: ${error.message}`);
   return (data ?? []).map((r) => {
@@ -189,7 +210,11 @@ export type UserAttempt = {
   attemptId: string;
   mockSlug: string;
   mockTitle: string;
-  pyqYear: number;
+  pyqYear: number | null;
+  /** Past paper or practice — the attempt history is the one surface where
+   *  every type mixes, so the row has to say which this was. */
+  source: MockSource;
+  scope: MockScope;
   status: "in_progress" | "submitted" | "expired";
   score: number | null;
   maxScore: number | null;
@@ -210,7 +235,7 @@ export async function getUserAttempts(
   let q = db
     .from("mock_attempts")
     .select(
-      "id, mock_id, status, score, max_score, correct_count, wrong_count, skipped_count, started_at, submitted_at, mock:mock_tests(slug, title, pyq_year)"
+      "id, mock_id, status, score, max_score, correct_count, wrong_count, skipped_count, started_at, submitted_at, mock:mock_tests(slug, title, pyq_year, source, scope)"
     )
     .eq("user_id", userId)
     .order("started_at", { ascending: false });
@@ -220,13 +245,21 @@ export async function getUserAttempts(
   return (data ?? []).map((r) => {
     const row = r as Record<string, unknown>;
     const mock = (Array.isArray(row.mock) ? row.mock[0] : row.mock) as
-      | { slug: string; title: string; pyq_year: number }
+      | {
+          slug: string;
+          title: string;
+          pyq_year: number | null;
+          source: MockSource | null;
+          scope: MockScope | null;
+        }
       | null;
     return {
       attemptId: row.id as string,
       mockSlug: mock?.slug ?? "",
       mockTitle: mock?.title ?? "",
-      pyqYear: mock?.pyq_year ?? 0,
+      pyqYear: mock?.pyq_year ?? null,
+      source: mock?.source ?? "pyq",
+      scope: mock?.scope ?? "full",
       status: row.status as UserAttempt["status"],
       score: row.score == null ? null : Number(row.score),
       maxScore: row.max_score == null ? null : Number(row.max_score),

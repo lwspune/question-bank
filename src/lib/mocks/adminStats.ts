@@ -56,7 +56,8 @@ async function resolveUsers(
 export type MockPerfRow = MockSummary & {
   slug: string;
   title: string;
-  pyqYear: number;
+  /** Null for anything that is not a whole past paper (migration 0088). */
+  pyqYear: number | null;
   totalMarks: number;
 };
 
@@ -67,7 +68,9 @@ export async function getMockPerformance(): Promise<MockPerfRow[]> {
     .from("mock_tests")
     .select("id, slug, title, pyq_year, total_marks")
     .eq("status", "published")
-    .order("pyq_year", { ascending: false });
+    // nullsFirst: false — see query.ts: a DESC order puts NULLs first in
+    // Postgres, which would float every undated mock above the real sittings.
+    .order("pyq_year", { ascending: false, nullsFirst: false });
   if (error) throw new Error(`getMockPerformance mocks: ${error.message}`);
 
   const attempts = await readAllAttempts(db, "mock_id, user_id, score");
@@ -81,7 +84,7 @@ export async function getMockPerformance(): Promise<MockPerfRow[]> {
   return (mocks ?? []).map((m) => ({
     slug: m.slug as string,
     title: m.title as string,
-    pyqYear: m.pyq_year as number,
+    pyqYear: (m.pyq_year as number | null) ?? null,
     totalMarks: Number(m.total_marks),
     ...summarizeAttempts(byMock.get(m.id as string) ?? []),
   }));

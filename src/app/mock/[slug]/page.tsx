@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn } from "lucide-react";
+import { Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getSessionUser, getSessionMember } from "@/lib/auth";
 import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
 import { markingCopy } from "@/lib/mocks/marking";
+import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
@@ -37,6 +38,15 @@ export default async function MockInstructions({ params }: { params: Params }) {
   // old wording asserted a penalty and told the reader to "skip if unsure" —
   // advice that costs marks when a blank scores the same as a wrong answer.
   const marking = markingCopy(mock.marking);
+  // Stated for EVERY type, past papers included — see mockKindNote. This is the
+  // screen someone reaches from a shared link, with no route to tell them what
+  // they are about to sit.
+  const kindNote = mockKindNote({
+    source: mock.source,
+    scope: mock.scope,
+    examName: mock.examName,
+    totalQuestions: mock.totalQuestions,
+  });
 
   return (
     <>
@@ -56,6 +66,11 @@ export default async function MockInstructions({ params }: { params: Params }) {
           <Stat icon={Trophy} value={String(mock.totalMarks)} label="marks" />
           <Stat icon={Clock} value={`${mins}`} label="minutes" />
         </div>
+
+        <p className="mt-6 flex items-start gap-2 rounded-lg border bg-muted/40 p-4 text-sm text-muted-foreground">
+          <Info className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+          <span>{kindNote}</span>
+        </p>
 
         <section className="mt-6 rounded-lg border bg-card p-5">
           <h2 className="text-sm font-semibold">Instructions</h2>
