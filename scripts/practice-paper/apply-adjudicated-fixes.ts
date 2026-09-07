@@ -177,6 +177,101 @@ const FIXES: Fix[] = [
       "2T*cos(contact)/(rho*g*r) does not depend on tilt, so the column measured along the tube " +
       "is h/cos45 = h*sqrt(2) > h.",
   },
+
+  // --- NDA GAT "ordering of words" wrong keys, found by an OMR key mismatch ----
+  //
+  // Surfaced while grading LWS "PQRS Test 1": the teacher's Evalbee RESULTS key and
+  // the tags sheet built from the bank disagreed on exactly three questions. All
+  // three were then read off the ORIGINAL printed UPSC booklets (not the .xlsx the
+  // rows were uploaded from), and in all three the bank's key is the wrong one.
+  //
+  // Two things make these unusually well evidenced. (1) The printed papers carry NO
+  // ANSWER KEY - they are the question booklets - so there is no issued key being
+  // overridden and the preserve-the-paper's-key convention does not apply; the
+  // stored letter came from a prep-house `Answer` column, which the 2026-08-26
+  // precedent already established is a derivation rather than a published key.
+  // (2) Each row's OWN stored solution derives the correct sequence and then talks
+  // itself out of it to match the key ("the answer key indicates PRSQ", "on review",
+  // "best fit is") - a scan of all 288 rows in the chapter for that tell returns
+  // exactly these three, with no misses and no false positives. Both solutions are
+  // rewritten so they justify the answer rather than defer to a key.
+  {
+    questionId: "7b7e248f-6a08-4fdc-bf82-a102c862b175",
+    recordsFile: "lws-pqrs-test-1.records.json",
+    n: 10,
+    label: "NDA 2020 (I) GAT Q20 - 'instead of worrying about what you cannot control'",
+    answer: { from: "A", to: "D" },
+    solution: [
+      {
+        find:
+          "The sentence: 'To what you can create (P), control, shift your energy (Q) instead of worrying about (R) what you cannot (S)' — but the natural reading is: 'Shift your energy (Q) to what you can create (P) instead of worrying about (R) what you cannot (S)' — Q P R S. Option (b) is QRSP which gives 'shift your energy, instead of worrying about, what you can create, what you cannot' — incorrect. Best fit is option A: PRSQ.",
+        replace:
+          "R opens with the subordinating phrase 'instead of worrying about', which needs an object, and S supplies it: 'what you cannot'. The trick is that S is cut off mid-phrase, so Q has to follow immediately to complete it as 'what you cannot control'. Q then carries the main clause, 'shift your energy', whose complement is P: 'to what you can create'. Reading R-S-Q-P gives 'Instead of worrying about what you cannot control, shift your energy to what you can create.' Matches option D.",
+      },
+    ],
+    notePrefix:
+      "[Key corrected 2026-09-07: this row previously keyed PRSQ. Verified against the printed " +
+      "UPSC paper - NDA 2020 (I) GAT, booklet KJU-F-GTA, Q20 - whose parts and options match this " +
+      "row exactly. PRSQ opens on 'to what you can create' and never produces a main clause.] ",
+    why:
+      "Found by an OMR key mismatch on LWS 'PQRS Test 1' (printed Q10): the teacher's RESULTS key " +
+      "says D, the bank said A. Adjudicated against the printed booklet, which confirms our parts " +
+      "and options are faithful and prints no answer key of its own, so the stored A came from the " +
+      "prep-house .xlsx Answer column. The row's own solution derives 'QPRS' - a sequence that is " +
+      "not even among the four options - and then picks A anyway.",
+  },
+  {
+    questionId: "baeb55cb-8156-4021-af1a-fe4297421e07",
+    recordsFile: "lws-pqrs-test-1.records.json",
+    n: 28,
+    label: "NDA 2022 (I) GAT Q21 - 'dealing with intransigent customers'",
+    answer: { from: "A", to: "B" },
+    solution: [
+      {
+        find:
+          "The logical sentence: 'There are many ways of dealing (Q) with intransigent customers (S) but perhaps the best way is to agree (P) with them without excessive argumentation (R)' gives QSPR. On review, QPRS also assembles a coherent sentence; the standard key is QPRS. Matches option A: QPRS.",
+        replace:
+          "Q states the topic, 'there are many ways of dealing', and the verb 'dealing' needs an object, which S supplies: 'with intransigent customers'. P then introduces the contrast, 'but perhaps the best way is to agree', and R completes it with 'with them without excessive argumentation', where 'them' now has the customers as its antecedent. Reading Q-S-P-R gives 'There are many ways of dealing with intransigent customers, but perhaps the best way is to agree with them without excessive argumentation.' Matches option B.",
+      },
+    ],
+    notePrefix:
+      "[Key corrected 2026-09-07: this row previously keyed QPRS. Verified against the printed " +
+      "UPSC paper - NDA 2022 (I) GAT, booklet SDFR-F-TAG/44A, Q21 - whose parts and options match " +
+      "this row exactly. QPRS leaves 'dealing' with no object and puts 'with them' before the noun " +
+      "it refers to.] ",
+    why:
+      "Found by an OMR key mismatch on LWS 'PQRS Test 1' (printed Q28): the teacher's RESULTS key " +
+      "says B, the bank said A. Adjudicated against the printed booklet, which prints no answer key, " +
+      "so the stored A came from the prep-house .xlsx. The row's own solution derives QSPR - the " +
+      "correct answer - and then reverses itself with 'on review ... the standard key is QPRS'. " +
+      "Its source file's rearrangement block is keyed A nine times out of ten, which is what a " +
+      "broken key column looks like; the rest of that block is logged in SUGGESTIONS.md.",
+  },
+  {
+    questionId: "a0b60ec1-6053-4538-91b1-53777e3aaec2",
+    recordsFile: "lws-pqrs-test-1.records.json",
+    n: 29,
+    label: "NDA 2022 (I) GAT Q22 - 'in the years following the landmark reforms'",
+    answer: { from: "B", to: "D" },
+    solution: [
+      {
+        find:
+          "The logical sequence: 'India achieved remarkable economic development (Q) in the years following (P) the landmark reforms inaugurated via (S) liberalization in the year 1991 (R)' gives QPSR. The answer key indicates PRSQ. Matches option B: PRSQ.",
+        replace:
+          "Q is the only part carrying a finite main clause, 'India achieved remarkable economic development', so it opens the sentence. P adds the time phrase 'in the years following', which needs a noun after it, and S supplies one: 'the landmark reforms inaugurated via'. That trailing 'via' in turn needs an object, which R supplies: 'liberalization in the year 1991'. Reading Q-P-S-R gives 'India achieved remarkable economic development in the years following the landmark reforms inaugurated via liberalization in the year 1991.' Matches option D.",
+      },
+    ],
+    notePrefix:
+      "[Key corrected 2026-09-07: this row previously keyed PRSQ. Verified against the printed " +
+      "UPSC paper - NDA 2022 (I) GAT, booklet SDFR-F-TAG/44A, Q22 - whose parts and options match " +
+      "this row exactly. PRSQ strands the main clause at the end, after 'inaugurated via'.] ",
+    why:
+      "Found by an OMR key mismatch on LWS 'PQRS Test 1' (printed Q29): the teacher's RESULTS key " +
+      "says D, the bank said B. Adjudicated against the printed booklet, which prints no answer key, " +
+      "so the stored B came from the prep-house .xlsx. The row's own solution derives QPSR - the " +
+      "correct answer - and then writes 'The answer key indicates PRSQ' and keys B, which is the " +
+      "clearest statement of this defect class anywhere in the chapter.",
+  },
 ];
 
 /**
