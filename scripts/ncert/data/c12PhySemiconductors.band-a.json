@@ -1,0 +1,41 @@
+[
+  {
+    "ref": "Eg 14.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Classification of Metals, Conductors and Semiconductors",
+    "difficulty": "MODERATE",
+    "stem": "C, Si and Ge have same lattice structure. Why is C insulator while Si and Ge intrinsic semiconductors?",
+    "solution": "The 4 bonding electrons of C, Si or Ge lie, respectively, in the second, third and fourth orbit. Hence, energy required to take out an electron from these atoms (i.e., ionisation energy \\(E_g\\)) will be least for Ge, followed by Si and highest for C. Hence, number of free electrons for conduction in Ge and Si are significant but negligibly small for C.",
+    "_note": "Printed faithfully. The book labels the ionisation energy with the symbol \\(E_g\\), which it uses everywhere else in this chapter for the energy BAND GAP; the two are different quantities. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 14.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intrinsic and Extrinsic Semiconductors",
+    "difficulty": "MODERATE",
+    "stem": "Suppose a pure Si crystal has \\(5 \\times 10^{28}\\,\\text{atoms m}^{-3}\\). It is doped by 1 ppm concentration of pentavalent As. Calculate the number of electrons and holes. Given that \\(n_i = 1.5 \\times 10^{16}\\,\\text{m}^{-3}\\).",
+    "solution": "Note that thermally generated electrons \\((n_i \\sim 10^{16}\\,\\text{m}^{-3})\\) are negligibly small as compared to those produced by doping.\nTherefore, \\(n_e \\approx N_D\\).\nSince \\(n_e n_h = n_i^2\\), the number of holes\n\\(n_h = (2.25 \\times 10^{32})/(5 \\times 10^{22})\\)\n\\(\\sim 4.5 \\times 10^{9}\\,\\text{m}^{-3}\\)",
+    "_note": "The book's printed solution never states the donor concentration explicitly: 1 ppm of \\(5 \\times 10^{28}\\,\\text{m}^{-3}\\) is \\(N_D = 5 \\times 10^{22}\\,\\text{m}^{-3}\\), and that value appears only as the divisor. Nor does it print a number for \\(n_e\\), although the question asks for the number of electrons AND holes; \\(n_e \\approx N_D = 5 \\times 10^{22}\\,\\text{m}^{-3}\\) is left implicit."
+  },
+  {
+    "ref": "Eg 14.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "MODERATE",
+    "stem": "Can we take one slab of p-type semiconductor and physically join it to another n-type semiconductor to get p-n junction?",
+    "solution": "No! Any slab, howsoever flat, will have roughness much larger than the inter-atomic crystal spacing \\((\\sim 2\\) to \\(3\\,\\text{Å})\\) and hence continuous contact at the atomic level will not be possible. The junction will behave as a discontinuity for the flowing charge carriers."
+  },
+  {
+    "ref": "Eg 14.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "MODERATE",
+    "stem": "The \\(V\\)-\\(I\\) characteristic of a silicon diode is shown in the Fig. 14.17. Calculate the resistance of the diode at (a) \\(I_D = 15\\,\\text{mA}\\) and (b) \\(V_D = -10\\,\\text{V}\\).",
+    "solution": "Considering the diode characteristics as a straight line between \\(I = 10\\,\\text{mA}\\) to \\(I = 20\\,\\text{mA}\\) passing through the origin, we can calculate the resistance using Ohm's law.\n(a) From the curve, at \\(I = 20\\,\\text{mA}\\), \\(V = 0.8\\,\\text{V}\\); \\(I = 10\\,\\text{mA}\\), \\(V = 0.7\\,\\text{V}\\)\n\\(r_{fb} = \\Delta V/\\Delta I = 0.1\\,\\text{V}/10\\,\\text{mA} = 10\\,\\Omega\\)\n(b) From the curve at \\(V = -10\\,\\text{V}\\), \\(I = -1\\,\\mu\\text{A}\\),\nTherefore,\n\\(r_{rb} = 10\\,\\text{V}/1\\,\\mu\\text{A} = 1.0 \\times 10^{7}\\,\\Omega\\)",
+    "_note": "The printed solution's opening sentence is internally inconsistent and is transcribed as printed: it says the line is taken \"passing through the origin\" and invokes Ohm's law, but then computes the DYNAMIC resistance \\(\\Delta V/\\Delta I\\). A chord through the origin at \\(I_D = 15\\,\\text{mA}\\) would give \\(V/I \\approx 0.75\\,\\text{V}/15\\,\\text{mA} \\approx 50\\,\\Omega\\), not the printed \\(10\\,\\Omega\\). The two stated answers, \\(10\\,\\Omega\\) forward and \\(1.0 \\times 10^{7}\\,\\Omega\\) reverse, are the standard dynamic values and follow from the substitutions actually shown. All values the solution needs are quoted from Fig. 14.17 inside the solution itself, so no figure crop is required."
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "ref": "Ex 11.1",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 7.24e18 Hz  (b) 4.14e-11 m = 0.041 nm",
+    "keyAnswer": "(a) 7.24 x 10^18 Hz  (b) 0.041 nm",
+    "note": "Exact match on both parts."
+  },
+  {
+    "ref": "Ex 11.2",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 0.35 eV = 5.54e-20 J  (b) 0.35 V  (c) 3.49e5 m/s = 349 km/s",
+    "keyAnswer": "(a) 0.34 eV = 0.54 x 10^-19 J  (b) 0.34 V  (c) 344 km/s",
+    "note": "Rounding, and the key is self-consistent about it. hv = 6.63e-34 x 6e14 = 3.978e-19 J = 2.48625 eV, so Kmax = 0.34625 eV, which rounds to 0.35 eV; the key TRUNCATES it to 0.34 and then propagates that value. Confirmed rather than assumed: the key's 344 km/s reproduces to four significant figures (344.3) from its OWN printed 0.54e-19 J via v = sqrt(2K/m), whereas our 0.34625 eV gives 348.7 -> 349 km/s. Largest gap 1.4%, no clean factor, so this is precision convention and not an error on either side. The same truncate-rather-than-round convention appears at Ex 11.8 and Ex 11.9."
+  },
+  {
+    "ref": "Ex 11.3",
+    "verdict": "AGREE",
+    "ourAnswer": "1.5 eV = 2.4e-19 J",
+    "keyAnswer": "1.5 eV = 2.4 x 10^-19 J",
+    "note": "Exact match."
+  },
+  {
+    "ref": "Ex 11.4",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 3.14e-19 J (1.96 eV), p = 1.05e-27 kg m/s  (b) 3.0e16 photons/s  (c) 0.63 m/s",
+    "keyAnswer": "(a) 3.14 x 10^-19 J, 1.05 x 10^-27 kg m/s  (b) 3 x 10^16 photons/s  (c) 0.63 m/s",
+    "note": "Exact match on all three parts, including the hydrogen-atom speed (m_H = 1.66e-27 kg)."
+  },
+  {
+    "ref": "Ex 11.5",
+    "verdict": "AGREE",
+    "ourAnswer": "h = 6.59e-34 J s",
+    "keyAnswer": "6.59 x 10^-34 J s",
+    "note": "Exact match; h = slope x e = 4.12e-15 x 1.6e-19."
+  },
+  {
+    "ref": "Ex 11.6",
+    "verdict": "AGREE",
+    "ourAnswer": "V0 = 2.03 V",
+    "keyAnswer": "2.0 V",
+    "note": "eV0 = h(v - v0) = 6.63e-34 x 4.9e14 = 3.2487e-19 J, so V0 = 2.0304 V. The key states 2 significant figures; agreement is exact to the key's stated precision."
+  },
+  {
+    "ref": "Ex 11.7",
+    "verdict": "AGREE",
+    "ourAnswer": "No - incident photon energy 3.77 eV is below the 4.2 eV work function (threshold wavelength 296 nm, incident 330 nm)",
+    "keyAnswer": "No, because v < v0",
+    "note": "Same conclusion by an equivalent criterion: v < v0 is exactly lambda > lambda0. Our answer additionally states the threshold wavelength (296 nm) and the incident photon energy (3.77 eV), which the key does not print."
+  },
+  {
+    "ref": "Ex 11.8",
+    "verdict": "AGREE",
+    "ourAnswer": "v0 = 4.74e14 Hz",
+    "keyAnswer": "4.73 x 10^14 Hz",
+    "note": "Exact value 4.7367e14 Hz, which rounds to 4.74e14; the key truncates to 4.73e14. 0.2% apart - last-digit only, same truncation convention as Ex 11.2 and Ex 11.9."
+  },
+  {
+    "ref": "Ex 11.9",
+    "verdict": "AGREE",
+    "ourAnswer": "phi0 = 2.17 eV = 3.47e-19 J",
+    "keyAnswer": "2.16 eV = 3.46 x 10^-19 J",
+    "note": "Exact value 2.1674 eV, which rounds to 2.17; the key truncates to 2.16 (its own J value 3.46e-19 is consistent with its 2.16 eV). 0.46% apart - last-digit only."
+  },
+  {
+    "ref": "Ex 11.10",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "(a) 1.66e-35 m  (b) 1.11e-32 m  (c) 3.01e-25 m",
+    "keyAnswer": "(a) 1.7 x 10^-35 m  (b) 1.1 x 10^-32 m  (c) 3.0 x 10^-23 m",
+    "note": "Parts (a) and (b) agree exactly. Part (c) is wrong in the printed key by a clean factor of 100: it prints 3.0 x 10^-23 m where the correct value is 3.0 x 10^-25 m. Read at 8x magnification to rule out a misread - the exponent is unambiguously -23, and the same page sets -32 in part (b) and -35 in part (a), so the typesetting distinguishes 2, 3 and 5. THREE independent routes, none of them our solution: (1) direct computation, p = (1.0e-9 kg)(2.2 m/s) = 2.2e-9 kg m/s, lambda = h/p = 6.63e-34/2.2e-9 = 3.0136e-25 m; (2) the KEY CONTRADICTS ITSELF - since lambda is inversely proportional to p, the key's own part (b) value of 1.1e-32 m together with the two stems' momenta forces part (c) to be 1.1e-32 x (0.060/2.2e-9) = 3.000e-25 m, reproducing the printed mantissa 3.0 EXACTLY with only the exponent differing; (3) the mass that would actually yield 3.0e-23 m is 1.005e-11 kg, two decades away from the 1.0e-9 kg the stem states. MECHANISM (decisive, not merely proposed): the mantissa reproduces to two significant figures and only the exponent is off, and by exactly 2 - this is a typesetting slip in the exponent, not a computational error."
+  },
+  {
+    "ref": "Ex 11.11",
+    "verdict": "AGREE",
+    "ourAnswer": "lambda_dB = h/p = h/(hv/c) = c/v = lambda, so the de Broglie wavelength of the photon equals the wavelength of the radiation",
+    "keyAnswer": "lambda = h/p = h/(hv/c) = c/v",
+    "note": "Identical derivation; our solution states the same chain and adds the concluding identification with the radiation's own wavelength."
+  }
+]

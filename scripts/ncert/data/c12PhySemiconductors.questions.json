@@ -1,0 +1,167 @@
+[
+  {
+    "ref": "Eg 14.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Classification of Metals, Conductors and Semiconductors",
+    "difficulty": "MODERATE",
+    "stem": "C, Si and Ge have same lattice structure. Why is C insulator while Si and Ge intrinsic semiconductors?",
+    "solution": "The 4 bonding electrons of C, Si or Ge lie, respectively, in the second, third and fourth orbit. Hence, energy required to take out an electron from these atoms (i.e., ionisation energy \\(E_g\\)) will be least for Ge, followed by Si and highest for C. Hence, number of free electrons for conduction in Ge and Si are significant but negligibly small for C.",
+    "_note": "Printed faithfully. The book labels the ionisation energy with the symbol \\(E_g\\), which it uses everywhere else in this chapter for the energy BAND GAP; the two are different quantities. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 14.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Intrinsic and Extrinsic Semiconductors",
+    "difficulty": "MODERATE",
+    "stem": "Suppose a pure Si crystal has \\(5 \\times 10^{28}\\,\\text{atoms m}^{-3}\\). It is doped by 1 ppm concentration of pentavalent As. Calculate the number of electrons and holes. Given that \\(n_i = 1.5 \\times 10^{16}\\,\\text{m}^{-3}\\).",
+    "solution": "Note that thermally generated electrons \\((n_i \\sim 10^{16}\\,\\text{m}^{-3})\\) are negligibly small as compared to those produced by doping.\nTherefore, \\(n_e \\approx N_D\\).\nSince \\(n_e n_h = n_i^2\\), the number of holes\n\\(n_h = (2.25 \\times 10^{32})/(5 \\times 10^{22})\\)\n\\(\\sim 4.5 \\times 10^{9}\\,\\text{m}^{-3}\\)",
+    "_note": "The book's printed solution never states the donor concentration explicitly: 1 ppm of \\(5 \\times 10^{28}\\,\\text{m}^{-3}\\) is \\(N_D = 5 \\times 10^{22}\\,\\text{m}^{-3}\\), and that value appears only as the divisor. Nor does it print a number for \\(n_e\\), although the question asks for the number of electrons AND holes; \\(n_e \\approx N_D = 5 \\times 10^{22}\\,\\text{m}^{-3}\\) is left implicit."
+  },
+  {
+    "ref": "Eg 14.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "MODERATE",
+    "stem": "Can we take one slab of p-type semiconductor and physically join it to another n-type semiconductor to get p-n junction?",
+    "solution": "No! Any slab, howsoever flat, will have roughness much larger than the inter-atomic crystal spacing \\((\\sim 2\\) to \\(3\\,\\text{Å})\\) and hence continuous contact at the atomic level will not be possible. The junction will behave as a discontinuity for the flowing charge carriers."
+  },
+  {
+    "ref": "Eg 14.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "MODERATE",
+    "stem": "The \\(V\\)-\\(I\\) characteristic of a silicon diode is shown in the Fig. 14.17. Calculate the resistance of the diode at (a) \\(I_D = 15\\,\\text{mA}\\) and (b) \\(V_D = -10\\,\\text{V}\\).",
+    "solution": "Considering the diode characteristics as a straight line between \\(I = 10\\,\\text{mA}\\) to \\(I = 20\\,\\text{mA}\\) passing through the origin, we can calculate the resistance using Ohm's law.\n(a) From the curve, at \\(I = 20\\,\\text{mA}\\), \\(V = 0.8\\,\\text{V}\\); \\(I = 10\\,\\text{mA}\\), \\(V = 0.7\\,\\text{V}\\)\n\\(r_{fb} = \\Delta V/\\Delta I = 0.1\\,\\text{V}/10\\,\\text{mA} = 10\\,\\Omega\\)\n(b) From the curve at \\(V = -10\\,\\text{V}\\), \\(I = -1\\,\\mu\\text{A}\\),\nTherefore,\n\\(r_{rb} = 10\\,\\text{V}/1\\,\\mu\\text{A} = 1.0 \\times 10^{7}\\,\\Omega\\)",
+    "_note": "The printed solution's opening sentence is internally inconsistent and is transcribed as printed: it says the line is taken \"passing through the origin\" and invokes Ohm's law, but then computes the DYNAMIC resistance \\(\\Delta V/\\Delta I\\). A chord through the origin at \\(I_D = 15\\,\\text{mA}\\) would give \\(V/I \\approx 0.75\\,\\text{V}/15\\,\\text{mA} \\approx 50\\,\\Omega\\), not the printed \\(10\\,\\Omega\\). The two stated answers, \\(10\\,\\Omega\\) forward and \\(1.0 \\times 10^{7}\\,\\Omega\\) reverse, are the standard dynamic values and follow from the substitutions actually shown. All values the solution needs are quoted from Fig. 14.17 inside the solution itself, so no figure crop is required."
+  },
+  {
+    "ref": "Ex 14.1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Intrinsic and Extrinsic Semiconductors",
+    "difficulty": "EASY",
+    "stem": "In an n-type silicon, which of the following statement is true:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Electrons are majority carriers and trivalent atoms are the dopants."
+      },
+      {
+        "label": "B",
+        "text": "Electrons are minority carriers and pentavalent atoms are the dopants."
+      },
+      {
+        "label": "C",
+        "text": "Holes are minority carriers and pentavalent atoms are the dopants."
+      },
+      {
+        "label": "D",
+        "text": "Holes are majority carriers and trivalent atoms are the dopants."
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 14.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Intrinsic and Extrinsic Semiconductors",
+    "difficulty": "EASY",
+    "stem": "Which of the statements given in Exercise 14.1 is true for p-type semiconductos.",
+    "_note": "Two printed oddities, both transcribed as they stand. (1) The book spells it \"semiconductos\" — its own typo for \"semiconductors\". (2) The question is a bare CROSS-REFERENCE: the four candidate statements are printed only under Exercise 14.1 and are not repeated here, so this row is not self-contained on /browse the way it is on the printed page. Nothing was added to the stem; the authored solution names the statement in full instead."
+  },
+  {
+    "ref": "Ex 14.3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Classification of Metals, Conductors and Semiconductors",
+    "difficulty": "EASY",
+    "stem": "Carbon, silicon and germanium have four valence electrons each. These are characterised by valence and conduction bands separated by energy band gap respectively equal to \\((E_g)_{\\text{C}}\\), \\((E_g)_{\\text{Si}}\\) and \\((E_g)_{\\text{Ge}}\\). Which of the following statements is true?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((E_g)_{\\text{Si}} < (E_g)_{\\text{Ge}} < (E_g)_{\\text{C}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((E_g)_{\\text{C}} < (E_g)_{\\text{Ge}} > (E_g)_{\\text{Si}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((E_g)_{\\text{C}} > (E_g)_{\\text{Si}} > (E_g)_{\\text{Ge}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((E_g)_{\\text{C}} = (E_g)_{\\text{Si}} = (E_g)_{\\text{Ge}}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Option (b) is printed with mixed inequality directions, \\((E_g)_{\\text{C}} < (E_g)_{\\text{Ge}} > (E_g)_{\\text{Si}}\\), rather than as a single chain. Transcribed exactly as printed; it is a distractor either way."
+  },
+  {
+    "ref": "Ex 14.4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "MODERATE",
+    "stem": "In an unbiased p-n junction, holes diffuse from the p-region to n-region because",
+    "options": [
+      {
+        "label": "A",
+        "text": "free electrons in the n-region attract them."
+      },
+      {
+        "label": "B",
+        "text": "they move across the junction by the potential difference."
+      },
+      {
+        "label": "C",
+        "text": "hole concentration in p-region is more as compared to n-region."
+      },
+      {
+        "label": "D",
+        "text": "All the above."
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 14.5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "p-n Junction and the Semiconductor Diode",
+    "difficulty": "EASY",
+    "stem": "When a forward bias is applied to a p-n junction, it",
+    "options": [
+      {
+        "label": "A",
+        "text": "raises the potential barrier."
+      },
+      {
+        "label": "B",
+        "text": "reduces the majority carrier current to zero."
+      },
+      {
+        "label": "C",
+        "text": "lowers the potential barrier."
+      },
+      {
+        "label": "D",
+        "text": "None of the above."
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 14.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Application of Junction Diode as a Rectifier",
+    "difficulty": "EASY",
+    "stem": "In half-wave rectification, what is the output frequency if the input frequency is \\(50\\,\\text{Hz}\\). What is the output frequency of a full-wave rectifier for the same input frequency."
+  }
+]
