@@ -1,0 +1,128 @@
+[
+  {
+    "ref": "Ex 2.1",
+    "verdict": "AGREE",
+    "ourAnswer": "The body may be treated as a point object in (a) and (b) only; not in (c) or (d).",
+    "keyAnswer": "(a), (b)",
+    "note": "Exact match."
+  },
+  {
+    "ref": "Ex 2.2",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "(a) A....B  (b) A....B  (c) B....A  (d) DIFFERENT time  (e) B....A....once",
+    "keyAnswer": "(a) A....B, (b) A....B, (c) B....A, (d) Same, (e) B....A....once.",
+    "note": "Four of the five blanks match the key exactly. Part (d) does not, and the book's OWN figure is the third route that settles it. Measured off the rendered page (not eyeballed): the t-axis sits at row 434 and the P tick at height 276 above it. Line A (cyan) runs from x=46 to x=499 and its last point is at height 276, i.e. A reaches P at t = 499 px. Line B (black) runs to x=377 and its last point is at height 349, i.e. B reaches Q at t = 377 px. A null control confirms B does not continue: the region x 380-520, y 10-120, where an extrapolation of B would lie, contains ZERO pixels darker than 200 (the same-height control strip x 300-380, where B is drawn, contains 142). So as printed, B reaches home 122 px earlier than A on a 453 px run - a 27% difference, far outside drawing precision - and the key's 'Same' is not supported. The identification A=cyan / B=black is itself corroborated by three of the key's own entries: A starts at the origin (key: A starts earlier), B is much steeper (key: B walks faster), and B's terminus is higher than A's (key: A lives closer). MAINTAINER: this is either a wrong key entry or a redrawn figure that lost the equal-arrival property; the two cannot be reconciled and our answer follows the printed figure, which is the only data a student has."
+  },
+  {
+    "ref": "Ex 2.3",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "x-t graph: (9.00 am, 0) to (9.30 am, 2.5 km), horizontal to 5.00 pm, then down to (5.06 pm, 0).",
+    "keyAnswer": "",
+    "note": "The key jumps 2.2 -> 2.4. A plotting question with no single value to print; not a defect."
+  },
+  {
+    "ref": "Ex 2.4",
+    "verdict": "AGREE",
+    "ourAnswer": "37 s (during the 5th cycle; total path length 37 m for a displacement of 13 m)",
+    "keyAnswer": "37 s",
+    "note": "Exact match. Reached independently by noting that the farthest point of the nth cycle is 2(n-1)+5, so the pit is reached mid-cycle rather than at the end of one."
+  },
+  {
+    "ref": "Ex 2.5",
+    "verdict": "AGREE",
+    "ourAnswer": "retardation 3.06 m s^-2 ; time 11.4 s",
+    "keyAnswer": "3.06 m s^-2 ; 11.4 s",
+    "note": "Exact match to both figures."
+  },
+  {
+    "ref": "Ex 2.6",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) vertically downward; (b) v = 0, a = 9.8 m s^-2 downward; (c) x > 0 throughout, v < 0 upward and v > 0 downward, a > 0 throughout; (d) 44.1 m, 6 s",
+    "keyAnswer": "(a) Vertically downwards; (b) zero velocity, acceleration of 9.8 m s^-2 downwards; (c) x > 0 (upward and downward motion); v < 0 (upward), v > 0 (downward), a > 0 throughout; (d) 44.1 m, 6 s.",
+    "note": "All four parts match, including every sign in the reversed-axis convention of (c)."
+  },
+  {
+    "ref": "Ex 2.7",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) True; (b) False; (c) True; (d) False",
+    "keyAnswer": "(a) True; (b) False; (c) True (if the particle rebounds instantly with the same speed, it implies infinite acceleration which is unphysical); (d) False (true only when the chosen positive direction is along the direction of motion)",
+    "note": "All four verdicts match. Our justification for (c) is the same argument stated the other way round - a reversal of velocity at constant non-zero speed would have to be discontinuous - which is exactly the key's 'infinite acceleration'."
+  },
+  {
+    "ref": "Ex 2.8",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Rise 0 -> 42.0 m s^-1 over 0 to 4.29 s; drop to 37.8 m s^-1; fall to 0 at 8.14 s; rise to 37.8 m s^-1 at 12.0 s; drop to 34.0 m s^-1. Slope magnitude 9.8 m s^-2 throughout.",
+    "keyAnswer": "",
+    "note": "The key jumps 2.7 -> 2.10, so 2.8 and 2.9 are both unanswered. A plotting question; not a defect. Worth recording that the stem states no value of g: with g = 9.8 the impact speed is exactly 42.0 m s^-1 and the SECOND collision falls exactly on t = 12.0 s, the end of the interval the question names, which is strong internal evidence that 9.8 is the intended value (g = 10 puts it at 11.88 s)."
+  },
+  {
+    "ref": "Ex 2.9",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Path length >= |displacement| because |sum of dx| <= sum of |dx|; dividing by the same dt gives average speed >= |average velocity|. Equality iff the particle never reverses direction in the interval.",
+    "keyAnswer": "",
+    "note": "Conceptual 'explain with examples' question; the key prints nothing. Not a defect."
+  },
+  {
+    "ref": "Ex 2.10",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 5 km h^-1, 5 km h^-1 ; (ii) 0, 6 km h^-1 ; (iii) 1.875 km h^-1, 5.625 km h^-1",
+    "keyAnswer": "(a) 5 km h^-1, 5 km h^-1; (b) 0, 6 km h^-1; (c) 15/8 km h^-1, 45/8 km h^-1",
+    "note": "All six values match: 15/8 = 1.875 and 45/8 = 5.625. The key relabels the three time-intervals (a)(b)(c) where the question numbers them (i)(ii)(iii) - a labelling difference only, and the order (magnitude of average velocity, then average speed) is the same on both sides."
+  },
+  {
+    "ref": "Ex 2.11",
+    "verdict": "AGREE",
+    "ourAnswer": "Over a vanishing interval the particle cannot reverse, so the path length tends to the magnitude of the displacement; dividing by dt gives instantaneous speed = |dx/dt|.",
+    "keyAnswer": "Because, for an arbitrarily small interval of time, the magnitude of displacement is equal to the length of the path.",
+    "note": "Same argument."
+  },
+  {
+    "ref": "Ex 2.12",
+    "verdict": "AGREE",
+    "ourAnswer": "All four are impossible: (a) two positions at one instant; (b) two velocities at one instant; (c) speed cannot be negative; (d) total path length cannot decrease.",
+    "keyAnswer": "All the four graphs are impossible. (a) a particle cannot have two different positions at the same time; (b) a particle cannot have velocity in opposite directions at the same time; (c) speed is always non-negative; (d) total path length of a particle can never decrease with time. (Note, the arrows on the graphs are meaningless).",
+    "note": "Identical, reason by reason."
+  },
+  {
+    "ref": "Ex 2.13",
+    "verdict": "AGREE",
+    "ourAnswer": "No. An x-t plot is not the trajectory; the motion is along a straight line throughout. Context: a body at rest until t = 0 that then moves from rest with uniform acceleration - e.g. a stone released at t = 0 and falling freely, x measured downward from the release point.",
+    "keyAnswer": "No, wrong. x-t plot does not show the trajectory of a particle. Context: A body is dropped from a tower (x = 0) at t = 0.",
+    "note": "Same verdict and the same physical context - our 'stone released from rest at t = 0, x measured downward from the release point' is the key's 'body dropped from a tower (x = 0) at t = 0'."
+  },
+  {
+    "ref": "Ex 2.14",
+    "verdict": "AGREE",
+    "ourAnswer": "105 m s^-1",
+    "keyAnswer": "105 m s^-1",
+    "note": "Exact match. 150 + 8.33 = 158.33 m s^-1 relative to the ground, minus the car's 53.33 m s^-1."
+  },
+  {
+    "ref": "Ex 2.15",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) a ball at rest kicked towards a wall, rebounding from it with reduced speed and stopped by a second wall; (b) a ball thrown up, bouncing off the floor with reduced speed each time; (c) a uniformly moving cricket ball struck back by a bat for a very short time.",
+    "keyAnswer": "(a) A ball at rest on a smooth floor is kicked, it rebounds from a wall with reduced speed and moves to the opposite wall which stops it; (b) A ball thrown up with some initial velocity rebounding from the floor with reduced speed after each hit; (c) A uniformly moving cricket ball turned back by hitting it with a bat for a very short time-interval.",
+    "note": "All three situations match the key almost word for word."
+  },
+  {
+    "ref": "Ex 2.16",
+    "verdict": "AGREE",
+    "ourAnswer": "t = 0.3 s: x < 0, v < 0, a > 0 ; t = 1.2 s: x > 0, v > 0, a < 0 ; t = -1.2 s: x < 0, v > 0, a > 0",
+    "keyAnswer": "x < 0, v < 0, a > 0 ; x > 0, v > 0, a < 0 ; x < 0, v > 0, a > 0.",
+    "note": "All nine signs match. Read off the figure by measurement, not by eye: the vertical axis sits at x = 266 px, the printed labels -2 and 3 calibrate the scale at 122 px per second, and the curve's extrema are at 90, 207, 322, 435, 552, 669 px. The three instants then fall just past a minimum (t = 0.3, descending, x < 0), just before a maximum (t = 1.2, rising, x > 0) and just past a minimum (t = -1.2, rising, x < 0). The alternative calibration implied by the curve's own period (115.5 px per second) gives the same three answers, so the reading is not sensitive to the calibration."
+  },
+  {
+    "ref": "Ex 2.17",
+    "verdict": "AGREE",
+    "ourAnswer": "Average speed greatest in interval 3, least in interval 2; average velocity positive in 1 and 2, negative in 3.",
+    "keyAnswer": "Greatest in 3, least in 2; v > 0 in 1 and 2, v < 0 in 3.",
+    "note": "Exact match. Measured off the figure with the cyan CAPTION masked out (the captions are printed in the same cyan as the curve, and including them silently corrupts a column-mean trace): the three equal bands span x 126-147, 209-231, 293-316 and the change in x across them is +15, +4.5 and -49.5 px respectively - largest magnitude in 3, smallest in 2, and the signs as the key gives them."
+  },
+  {
+    "ref": "Ex 2.18",
+    "verdict": "AGREE",
+    "ourAnswer": "Average acceleration greatest in magnitude in interval 2; average speed greatest in interval 3; v > 0 in all three; a > 0 in 1, a < 0 in 2, a > 0 (but very small) in 3; a = 0 at A, B, C and D.",
+    "keyAnswer": "Acceleration magnitude greatest in 2; speed greatest in 3; v > 0 in 1, 2 and 3; a > 0 in 1 and 3, a < 0 in 2; a = 0 at A, B, C, D.",
+    "note": "Every substantive claim matches. ONE nuance the maintainer should see: the sign of a in interval 3 is NOT robustly determinable from the printed drawing, because that interval sits almost exactly astride the maximum D. Measuring the shaded band's outer edges (x 512 and 528) gives a change of -1 px; measuring the DASHED RULES that actually bound the interval (centres x 510 and 528.5) gives +1 px, against a full-scale curve height of 301 px. Two instruments, opposite signs, magnitude ~0.3% - i.e. the figure cannot settle it. The dashed rules are the correct boundary, and they agree with the key, so the solution states a > 0 while saying plainly that the increase is very small. Recorded rather than buried because the first measurement was taken before the key was opened and read as a ~ 0."
+  }
+]

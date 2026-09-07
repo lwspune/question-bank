@@ -1257,6 +1257,23 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // Ch.2 SHIPPED 2026-09-07. Cross-check 15 of 18 diffed: 14 AGREE, 1 book-key-wrong.
+  //
+  // TWO THINGS ABOUT ITS KEY WORTH KEEPING. (1) The Chapter-2 block SPANS A PAGE
+  // BREAK — 2.1-2.5 at the foot of ak-00, 2.6-2.18 at the top of ak-01 — so
+  // reading only the page carrying the "Chapter 2" heading loses 13 of the 15
+  // keyed rows SILENTLY. This is why answerPages covers the whole answers region
+  // rather than a computed per-chapter slice. (2) Its 2.2(d) says A and B reach
+  // home at the same time while Fig 2.9 as printed shows A running on to a
+  // visibly larger t — bracketed, with the answer following the figure.
+  //
+  // TAXONOMY GAP, recorded not fixed: the p0 contents box lists "2.5 Relative
+  // velocity" and NO SUCH SECTION EXISTS in this reprint's body (p-08 runs
+  // straight from Example 2.7 into SUMMARY, and the summary never mentions it) —
+  // a rationalisation leftover. But Ex 2.14 IS a relative-velocity question, and
+  // with no matching subtopic it sits under "Instantaneous Velocity and Speed"
+  // with a note on the row. One row does not justify a subtopic for a section the
+  // book no longer prints; revisit if Class 12 or a sibling adds more.
   c11PhyMotionLine: {
     id: "c11PhyMotionLine",
     chapterName: "Motion in a Straight Line",
@@ -1275,6 +1292,23 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // Ch.3 SHIPPED 2026-09-07, the largest Class-11 Physics chapter at 56 rows.
+  // Cross-check 47 of 47 diffed: 46 AGREE, 1 book-internal inconsistency. Note
+  // this key has ZERO NO-KEY-ENTRY — it answers every one of 3.1-3.22 including
+  // the conceptual ones, which no sibling chapter's key does.
+  //
+  // ONE DELIBERATE DEVIATION FROM FAITHFUL TRANSCRIPTION, accepted: Ex 3.22
+  // prints "wat is the speed" and ships as "what". Purely orthographic — it
+  // cannot make a correct answer look wrong against the key, which is the reason
+  // the faithful-transcription rule exists. Same call as the dropped multiplication
+  // signs in ch.10; a defect that changes a CLAIM would be preserved and bracketed
+  // instead.
+  //
+  // Exercise sub-items ARE split here (47 rows from 22 printed questions), unlike
+  // ch.5 where a uniform split was impossible because parts back-reference each
+  // other. That matters for errata: a bracket must target "Ex 3.4(f)", not
+  // "Ex 3.4" — the whole-question ref does not exist, and apply-errata reports it
+  // as a SHORTFALL rather than half-applying the file.
   c11PhyMotionPlane: {
     id: "c11PhyMotionPlane",
     chapterName: "Motion in a Plane",

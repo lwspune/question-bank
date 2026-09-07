@@ -1,0 +1,85 @@
+[
+  {
+    "ref": "Eg 3.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition, Subtraction and Resolution of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Rain is falling vertically with a speed of \\(35\\,\\text{m s}^{-1}\\). Winds starts blowing after sometime with a speed of \\(12\\,\\text{m s}^{-1}\\) in east to west direction. In which direction should a boy waiting at a bus stop hold his umbrella?",
+    "solution": "The velocity of the rain and the wind are represented by the vectors \\(\\mathbf{v}_r\\) and \\(\\mathbf{v}_w\\) in the directions specified by the problem. Using the rule of vector addition, the resultant of \\(\\mathbf{v}_r\\) and \\(\\mathbf{v}_w\\) is \\(\\mathbf{R}\\).\n\nThe magnitude of \\(\\mathbf{R}\\) is\n\n\\(R = \\sqrt{v_r^{2} + v_w^{2}} = \\sqrt{35^{2} + 12^{2}}\\,\\text{m s}^{-1} = 37\\,\\text{m s}^{-1}\\)\n\nThe direction \\(\\theta\\) that \\(R\\) makes with the vertical is given by\n\n\\(\\tan\\theta = \\dfrac{v_w}{v_r} = \\dfrac{12}{35} = 0.343\\)\n\nOr, \\(\\theta = \\tan^{-1}(0.343) = 19^{\\circ}\\)\n\nTherefore, the boy should hold his umbrella in the vertical plane at an angle of about \\(19^{\\circ}\\) with the vertical towards the east."
+  },
+  {
+    "ref": "Eg 3.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition, Subtraction and Resolution of Vectors",
+    "difficulty": "HARD",
+    "stem": "Find the magnitude and direction of the resultant of two vectors \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\) in terms of their magnitudes and angle \\(\\theta\\) between them.",
+    "solution": "Let \\(\\mathbf{OP}\\) and \\(\\mathbf{OQ}\\) represent the two vectors \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\) making an angle \\(\\theta\\). Then, using the parallelogram method of vector addition, \\(\\mathbf{OS}\\) represents the resultant vector \\(\\mathbf{R}\\):\n\n\\(\\mathbf{R} = \\mathbf{A} + \\mathbf{B}\\)\n\nLet \\(SN\\) be normal to \\(OP\\) and \\(PM\\) be normal to \\(OS\\). From the geometry of the figure,\n\n\\(OS^{2} = ON^{2} + SN^{2}\\)\n\nbut \\(ON = OP + PN = A + B\\cos\\theta\\) and \\(SN = B\\sin\\theta\\), so\n\n\\(OS^{2} = (A + B\\cos\\theta)^{2} + (B\\sin\\theta)^{2}\\)\n\nor, \\(R^{2} = A^{2} + B^{2} + 2AB\\cos\\theta\\)\n\n\\(R = \\sqrt{A^{2} + B^{2} + 2AB\\cos\\theta}\\)\n\nIn \\(\\triangle OSN\\), \\(SN = OS\\sin\\alpha = R\\sin\\alpha\\), and in \\(\\triangle PSN\\), \\(SN = PS\\sin\\theta = B\\sin\\theta\\).\n\nTherefore, \\(R\\sin\\alpha = B\\sin\\theta\\)\n\nor, \\(\\dfrac{R}{\\sin\\theta} = \\dfrac{B}{\\sin\\alpha}\\)\n\nSimilarly, \\(PM = A\\sin\\alpha = B\\sin\\beta\\), or \\(\\dfrac{A}{\\sin\\beta} = \\dfrac{B}{\\sin\\alpha}\\)\n\nCombining these,\n\n\\(\\dfrac{R}{\\sin\\theta} = \\dfrac{A}{\\sin\\beta} = \\dfrac{B}{\\sin\\alpha}\\)\n\nUsing this we get\n\n\\(\\sin\\alpha = \\dfrac{B}{R}\\sin\\theta\\)\n\nwhere \\(R\\) is given above, or\n\n\\(\\tan\\alpha = \\dfrac{SN}{OP + PN} = \\dfrac{B\\sin\\theta}{A + B\\cos\\theta}\\)\n\nThe expression for \\(R\\) gives the magnitude of the resultant and the last two equations give its direction. \\(R = \\sqrt{A^{2} + B^{2} + 2AB\\cos\\theta}\\) is known as the **Law of cosines** and \\(\\dfrac{R}{\\sin\\theta} = \\dfrac{A}{\\sin\\beta} = \\dfrac{B}{\\sin\\alpha}\\) as the **Law of sines**."
+  },
+  {
+    "ref": "Eg 3.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition, Subtraction and Resolution of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "A motorboat is racing towards north at \\(25\\,\\text{km/h}\\) and the water current in that region is \\(10\\,\\text{km/h}\\) in the direction of \\(60^{\\circ}\\) east of south. Find the resultant velocity of the boat.",
+    "solution": "The vector \\(\\mathbf{v}_b\\) representing the velocity of the motorboat and the vector \\(\\mathbf{v}_c\\) representing the water current are in the directions specified by the problem. Using the parallelogram method of addition, the resultant \\(\\mathbf{R}\\) is obtained in the direction shown in the figure.\n\nWe can obtain the magnitude of \\(\\mathbf{R}\\) using the Law of cosines:\n\n\\(R = \\sqrt{v_b^{2} + v_c^{2} + 2 v_b v_c \\cos 120^{\\circ}}\\)\n\n\\(= \\sqrt{25^{2} + 10^{2} + 2 \\times 25 \\times 10 \\times (-1/2)} \\simeq 22\\,\\text{km/h}\\)\n\nTo obtain the direction, we apply the Law of sines\n\n\\(\\dfrac{R}{\\sin\\theta} = \\dfrac{v_c}{\\sin\\phi}\\) or, \\(\\sin\\phi = \\dfrac{v_c}{R}\\sin\\theta\\)\n\n\\(= \\dfrac{10 \\times \\sin 120^{\\circ}}{21.8} = \\dfrac{10\\sqrt{3}}{2 \\times 21.8} \\simeq 0.397\\)\n\n\\(\\phi \\simeq 23.4^{\\circ}\\)"
+  },
+  {
+    "ref": "Eg 3.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Motion in a Plane with Constant Acceleration",
+    "difficulty": "MODERATE",
+    "stem": "The position of a particle is given by\n\n\\(\\mathbf{r} = 3.0t\\,\\hat{\\mathbf{i}} + 2.0t^{2}\\,\\hat{\\mathbf{j}} + 5.0\\,\\hat{\\mathbf{k}}\\)\n\nwhere \\(t\\) is in seconds and the coefficients have the proper units for \\(\\mathbf{r}\\) to be in metres. (a) Find \\(\\mathbf{v}(t)\\) and \\(\\mathbf{a}(t)\\) of the particle. (b) Find the magnitude and direction of \\(\\mathbf{v}(t)\\) at \\(t = 1.0\\,\\text{s}\\).",
+    "solution": "\\(\\mathbf{v}(t) = \\dfrac{\\mathrm{d}\\mathbf{r}}{\\mathrm{d}t} = \\dfrac{\\mathrm{d}}{\\mathrm{d}t}\\left(3.0\\,t\\,\\hat{\\mathbf{i}} + 2.0t^{2}\\,\\hat{\\mathbf{j}} + 5.0\\,\\hat{\\mathbf{k}}\\right)\\)\n\n\\(= 3.0\\,\\hat{\\mathbf{i}} + 4.0t\\,\\hat{\\mathbf{j}}\\)\n\n\\(\\mathbf{a}(t) = \\dfrac{\\mathrm{d}\\mathbf{v}}{\\mathrm{d}t} = +4.0\\,\\hat{\\mathbf{j}}\\)\n\n\\(a = 4.0\\,\\text{m s}^{-2}\\) along the \\(y\\)-direction.\n\nAt \\(t = 1.0\\,\\text{s}\\), \\(\\mathbf{v} = 3.0\\,\\hat{\\mathbf{i}} + 4.0\\,\\hat{\\mathbf{j}}\\)\n\nIts magnitude is \\(v = \\sqrt{3^{2} + 4^{2}} = 5.0\\,\\text{m s}^{-1}\\)\n\nand direction is\n\n\\(\\theta = \\tan^{-1}\\left(\\dfrac{v_y}{v_x}\\right) = \\tan^{-1}\\left(\\dfrac{4}{3}\\right) \\simeq 53^{\\circ}\\) with the \\(x\\)-axis."
+  },
+  {
+    "ref": "Eg 3.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Motion in a Plane with Constant Acceleration",
+    "difficulty": "MODERATE",
+    "stem": "A particle starts from origin at \\(t = 0\\) with a velocity \\(5.0\\,\\hat{\\mathbf{i}}\\,\\text{m/s}\\) and moves in \\(x\\)-\\(y\\) plane under action of a force which produces a constant acceleration of \\((3.0\\,\\hat{\\mathbf{i}} + 2.0\\,\\hat{\\mathbf{j}})\\,\\text{m/s}^{2}\\). (a) What is the \\(y\\)-coordinate of the particle at the instant its \\(x\\)-coordinate is \\(84\\,\\text{m}\\)? (b) What is the speed of the particle at this time?",
+    "solution": "From \\(\\mathbf{r} = \\mathbf{r_0} + \\mathbf{v_0}t + \\tfrac{1}{2}\\mathbf{a}t^{2}\\) with \\(\\mathbf{r}_0 = 0\\), the position of the particle is given by\n\n\\(\\mathbf{r}(t) = \\mathbf{v_0}t + \\tfrac{1}{2}\\mathbf{a}t^{2}\\)\n\n\\(= 5.0\\,\\hat{\\mathbf{i}}\\,t + (1/2)\\left(3.0\\,\\hat{\\mathbf{i}} + 2.0\\,\\hat{\\mathbf{j}}\\right)t^{2}\\)\n\n\\(= \\left(5.0t + 1.5t^{2}\\right)\\hat{\\mathbf{i}} + 1.0t^{2}\\,\\hat{\\mathbf{j}}\\)\n\nTherefore, \\(x(t) = 5.0t + 1.5t^{2}\\) and \\(y(t) = +1.0t^{2}\\)\n\nGiven \\(x(t) = 84\\,\\text{m}\\), \\(t = ?\\)\n\n\\(5.0t + 1.5t^{2} = 84 \\Rightarrow t = 6\\,\\text{s}\\)\n\nAt \\(t = 6\\,\\text{s}\\), \\(y = 1.0(6)^{2} = 36.0\\,\\text{m}\\)\n\nNow, the velocity \\(\\mathbf{v} = \\dfrac{\\mathrm{d}\\mathbf{r}}{\\mathrm{d}t} = (5.0 + 3.0t)\\hat{\\mathbf{i}} + 2.0t\\,\\hat{\\mathbf{j}}\\)\n\nAt \\(t = 6\\,\\text{s}\\), \\(\\mathbf{v} = 23.0\\,\\hat{\\mathbf{i}} + 12.0\\,\\hat{\\mathbf{j}}\\)\n\nspeed \\(= |\\mathbf{v}| = \\sqrt{23^{2} + 12^{2}} \\simeq 26\\,\\text{m s}^{-1}\\)"
+  },
+  {
+    "ref": "Eg 3.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Projectile Motion",
+    "difficulty": "MODERATE",
+    "stem": "Galileo, in his book **Two new sciences**, stated that \"for elevations which exceed or fall short of \\(45^{\\circ}\\) by equal amounts, the ranges are equal\". Prove this statement.",
+    "solution": "For a projectile launched with velocity \\(\\mathbf{v}_o\\) at an angle \\(\\theta_o\\), the range is given by\n\n\\(R = \\dfrac{v_0^{2}\\sin 2\\theta_0}{g}\\)\n\nNow, for angles \\((45^{\\circ} + \\alpha)\\) and \\((45^{\\circ} - \\alpha)\\), \\(2\\theta_o\\) is \\((90^{\\circ} + 2\\alpha)\\) and \\((90^{\\circ} - 2\\alpha)\\), respectively. The values of \\(\\sin(90^{\\circ} + 2\\alpha)\\) and \\(\\sin(90^{\\circ} - 2\\alpha)\\) are the same, equal to that of \\(\\cos 2\\alpha\\).\n\nTherefore, ranges are equal for elevations which exceed or fall short of \\(45^{\\circ}\\) by equal amounts \\(\\alpha\\).",
+    "_note": "The degree signs after 45, 90 do not render in the PDF's stem/answer text layer for this chapter (they are dropped by the font substitution); they are restored here because the physics requires them."
+  },
+  {
+    "ref": "Eg 3.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Projectile Motion",
+    "difficulty": "MODERATE",
+    "stem": "A hiker stands on the edge of a cliff \\(490\\,\\text{m}\\) above the ground and throws a stone horizontally with an initial speed of \\(15\\,\\text{m s}^{-1}\\). Neglecting air resistance, find the time taken by the stone to reach the ground, and the speed with which it hits the ground. (Take \\(g = 9.8\\,\\text{m s}^{-2}\\)).",
+    "solution": "We choose the origin of the \\(x\\)- and \\(y\\)-axis at the edge of the cliff and \\(t = 0\\,\\text{s}\\) at the instant the stone is thrown. Choose the positive direction of \\(x\\)-axis to be along the initial velocity and the positive direction of \\(y\\)-axis to be the vertically upward direction. The \\(x\\)- and \\(y\\)-components of the motion can be treated independently. The equations of motion are:\n\n\\(x(t) = x_o + v_{ox}t\\)\n\n\\(y(t) = y_o + v_{oy}t + (1/2)a_y t^{2}\\)\n\nHere, \\(x_o = y_o = 0\\), \\(v_{oy} = 0\\), \\(a_y = -g = -9.8\\,\\text{m s}^{-2}\\), \\(v_{ox} = 15\\,\\text{m s}^{-1}\\).\n\nThe stone hits the ground when \\(y(t) = -490\\,\\text{m}\\).\n\n\\(-490\\,\\text{m} = -(1/2)(9.8)t^{2}\\)\n\nThis gives \\(t = 10\\,\\text{s}\\).\n\nThe velocity components are \\(v_x = v_{ox}\\) and \\(v_y = v_{oy} - g t\\), so that when the stone hits the ground:\n\n\\(v_{ox} = 15\\,\\text{m s}^{-1}\\)\n\n\\(v_{oy} = 0 - 9.8 \\times 10 = -98\\,\\text{m s}^{-1}\\)\n\nTherefore, the speed of the stone is\n\n\\(\\sqrt{v_x^{2} + v_y^{2}} = \\sqrt{15^{2} + 98^{2}} = 99\\,\\text{m s}^{-1}\\)"
+  },
+  {
+    "ref": "Eg 3.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Projectile Motion",
+    "difficulty": "EASY",
+    "stem": "A cricket ball is thrown at a speed of \\(28\\,\\text{m s}^{-1}\\) in a direction \\(30^{\\circ}\\) above the horizontal. Calculate (a) the maximum height, (b) the time taken by the ball to return to the same level, and (c) the distance from the thrower to the point where the ball returns to the same level.",
+    "solution": "(a) The maximum height is given by\n\n\\(h_m = \\dfrac{(v_o \\sin\\theta_o)^{2}}{2g} = \\dfrac{(28 \\sin 30^{\\circ})^{2}}{2\\,(9.8)}\\,\\text{m}\\)\n\n\\(= \\dfrac{14 \\times 14}{2 \\times 9.8} = 10.0\\,\\text{m}\\)\n\n(b) The time taken to return to the same level is\n\n\\(T_f = \\dfrac{2 v_o \\sin\\theta_o}{g} = \\dfrac{2 \\times 28 \\times \\sin 30^{\\circ}}{9.8} = \\dfrac{28}{9.8}\\,\\text{s} = 2.9\\,\\text{s}\\)\n\n(c) The distance from the thrower to the point where the ball returns to the same level is\n\n\\(R = \\dfrac{v_o^{2}\\sin 2\\theta_o}{g} = \\dfrac{28 \\times 28 \\times \\sin 60^{\\circ}}{9.8} = 69\\,\\text{m}\\)",
+    "_note": "The degree sign after 30 in the printed stem does not render in this PDF (font substitution drops it in the shaded example boxes); it is restored here. The book's own worked solution uses \\(\\sin 30^{\\circ}\\) and \\(\\sin 60^{\\circ}\\) with the degree signs intact."
+  },
+  {
+    "ref": "Eg 3.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Uniform Circular Motion",
+    "difficulty": "MODERATE",
+    "stem": "An insect trapped in a circular groove of radius \\(12\\,\\text{cm}\\) moves along the groove steadily and completes \\(7\\) revolutions in \\(100\\,\\text{s}\\). (a) What is the angular speed, and the linear speed of the motion? (b) Is the acceleration vector a constant vector? What is its magnitude?",
+    "solution": "This is an example of uniform circular motion. Here \\(R = 12\\,\\text{cm}\\). The angular speed \\(\\omega\\) is given by\n\n\\(\\omega = 2\\pi/T = 2\\pi \\times 7/100 = 0.44\\,\\text{rad/s}\\)\n\nThe linear speed \\(v\\) is:\n\n\\(v = \\omega R = 0.44\\,\\text{s}^{-1} \\times 12\\,\\text{cm} = 5.3\\,\\text{cm s}^{-1}\\)\n\nThe direction of velocity \\(\\mathbf{v}\\) is along the tangent to the circle at every point. The acceleration is directed towards the centre of the circle. Since this direction changes continuously, acceleration here is **not** a constant vector.\n\nHowever, the magnitude of acceleration is constant:\n\n\\(a = \\omega^{2} R = (0.44\\,\\text{s}^{-1})^{2}(12\\,\\text{cm}) = 2.3\\,\\text{cm s}^{-2}\\)"
+  }
+]
