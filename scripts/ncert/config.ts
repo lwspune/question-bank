@@ -1494,10 +1494,17 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls11Phy("Part_2/keph2an.pdf"),
     answerPages: [0, 1, 2, 3, 4, 5, 6],
     note: "NCERT (CBSE Class 11) — Kinetic Theory (Chapter 12, NCERT Physics Part 2)",
+    // FOUR subtopics, corrected from five after transcription.
+    // "Law of Equipartition of Energy" was DROPPED: §12.5 is taught but the
+    // chapter sets NO question on it — all 22 rows were read and the only
+    // near-miss, Ex 12.7 (average thermal energy of a helium atom), is the direct
+    // use of Eq (12.19) from §12.4 and, helium being monatomic, never exercises
+    // equipartition's actual content. Keeping it would ship a `/browse` filter
+    // returning nothing. Safe to drop: no committed row used it, so the subtopic
+    // was never created in the DB. Same shape as ch.11's Second Law bucket.
     subtopics: [
       "Behaviour of Gases",
       "Kinetic Theory of an Ideal Gas",
-      "Law of Equipartition of Energy",
       "Specific Heat Capacity",
       "Mean Free Path",
     ],

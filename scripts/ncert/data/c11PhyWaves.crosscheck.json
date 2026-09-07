@@ -1,0 +1,212 @@
+[
+  {
+    "ref": "Ex 14.1",
+    "verdict": "AGREE",
+    "ourAnswer": "0.50 s",
+    "keyAnswer": "0.5 s",
+    "note": "mu = 0.125 kg/m, v = sqrt(200/0.125) = 40 m/s, t = 20/40 = 0.5 s."
+  },
+  {
+    "ref": "Ex 14.2",
+    "verdict": "AGREE",
+    "ourAnswer": "8.7 s",
+    "keyAnswer": "8.7 s",
+    "note": "t_fall = sqrt(600/9.8) = 7.82 s, t_sound = 300/340 = 0.88 s, total 8.71 s."
+  },
+  {
+    "ref": "Ex 14.3",
+    "verdict": "AGREE",
+    "ourAnswer": "2.06e4 N",
+    "keyAnswer": "2.06 x 10^4 N",
+    "note": "mu = 0.175 kg/m, T = mu v^2 = 0.175 x 343^2 = 20589 N."
+  },
+  {
+    "ref": "Ex 14.4(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Independent of pressure: P/rho = RT/M, so v = sqrt(gamma RT / M) and P cancels",
+    "keyAnswer": "Independent of pressure (key derives v = sqrt(gamma RT / M) from P = rho RT / M)",
+    "note": "Same derivation and same conclusion."
+  },
+  {
+    "ref": "Ex 14.4(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "v proportional to sqrt(T), so it increases with temperature",
+    "keyAnswer": "Increases as sqrt(T)",
+    "note": "Identical."
+  },
+  {
+    "ref": "Ex 14.4(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Water vapour (M = 18) is lighter than air (M ~ 29), so moist air is less dense and v = sqrt(gamma P / rho) rises",
+    "keyAnswer": "Molecular mass of water (18) is less than that of N2 (28) and O2 (32); as humidity increases the effective molecular mass of air decreases and hence v increases",
+    "note": "Same mechanism, expressed via density in ours and via effective molar mass in the key - equivalent, since rho = PM/RT at fixed P and T."
+  },
+  {
+    "ref": "Ex 14.5(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Cannot represent a travelling wave - (x - vt)^2 is unbounded as |x - vt| grows",
+    "keyAnswer": "Cannot possibly represent a travelling wave (key: only function (c) satisfies the finiteness condition)",
+    "note": "Both reject (a) on the same finiteness grounds."
+  },
+  {
+    "ref": "Ex 14.5(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Cannot represent a travelling wave - the log is undefined for x + vt < 0 and diverges both as x + vt -> 0 and as x + vt -> infinity",
+    "keyAnswer": "Cannot possibly represent a travelling wave",
+    "note": "Both reject (b)."
+  },
+  {
+    "ref": "Ex 14.5(c)",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "Cannot represent a travelling wave - 1/(x + vt) diverges at x = -vt",
+    "keyAnswer": "Only function (c) satisfies the condition [i.e. (c) CAN represent a travelling wave]",
+    "note": "THE KEY CONTRADICTS ITS OWN STATED CRITERION, which is the whole evidence here and needs no computation. Its sentence is: 'An obvious requirement for an acceptable function for a travelling wave is that it should be finite everywhere and at all times. Only function (c) satisfies this condition.' But 1/(x + vt) is NOT finite everywhere: at the point x = -vt it diverges, and such a point exists at every instant t (at t = 0 it is x = 0). So (c) fails the very test the key names one sentence earlier. A charitable reading is that NCERT means 'finite as x -> +/- infinity', which (c) alone satisfies while (a) and (b) blow up there - but that is not the criterion the key states, and an infinite displacement of the medium is unphysical wherever it occurs. Recorded as a key error rather than a book-internal inconsistency because the key makes a definite verdict that its own test refutes. Flagging honestly: this is a long-contested item and many teachers follow the key; the maintainer may prefer to preserve it as a printed defect with both readings recorded."
+  },
+  {
+    "ref": "Ex 14.6",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 3.4e-4 m  (b) 1.49e-3 m",
+    "keyAnswer": "(a) 3.4 x 10^-4 m  (b) 1.49 x 10^-3 m",
+    "note": "Frequency 1e6 Hz unchanged on reflection and on transmission; 340/1e6 and 1486/1e6."
+  },
+  {
+    "ref": "Ex 14.7",
+    "verdict": "AGREE",
+    "ourAnswer": "4.1e-4 m",
+    "keyAnswer": "4.1 x 10^-4 m",
+    "note": "1700 / 4.2e6 = 4.048e-4 m."
+  },
+  {
+    "ref": "Ex 14.8",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) travelling, right to left, 20 m/s  (b) 3.0 cm, 5.73 Hz  (c) pi/4 rad  (d) 3.49 m",
+    "keyAnswer": "(a) A travelling wave. It travels from right to left with a speed of 20 m/s  (b) 3.0 cm, 5.7 Hz  (c) pi/4  (d) 3.5 m",
+    "note": "All four parts match. (b) 5.7296 vs 5.7 Hz and (d) 3.4907 vs 3.5 m are the key's rounding, well inside tolerance."
+  },
+  {
+    "ref": "Ex 14.9",
+    "verdict": "AGREE",
+    "ourAnswer": "All sinusoidal, same amplitude (3.0 cm) and same period (0.175 s); only the initial phase differs",
+    "keyAnswer": "All the graphs are sinusoidal. They have same amplitude and frequency, but different initial phases.",
+    "note": "Identical conclusion; ours additionally gives the numeric phase offsets 0.036 and 0.072 rad."
+  },
+  {
+    "ref": "Ex 14.10",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "(a) 6.4 pi rad  (b) 0.8 pi rad  (c) pi rad  (d) 3 pi / 2 rad",
+    "keyAnswer": "(a) 6.4 pi rad  (b) 0.8 pi rad  (c) pi rad  (d) (pi/2) rad",
+    "note": "Parts (a), (b), (c) agree exactly; only (d) disagrees. The key value was re-read at 5x magnification to rule out a lost '3': it is printed '(pi/2) rad'. THE STRONGEST EVIDENCE IS THAT THE KEY CONTRADICTS ITSELF ACROSS PARTS OF THE SAME QUESTION. With lambda = 125 cm the rule is delta-phi = 2 pi (delta-x / lambda), which gives 6.4 pi for delta-x = 4 m and 3 pi / 2 for delta-x = 3 lambda / 4. The key reports (a) as 6.4 pi WITHOUT reducing it modulo 2 pi (the reduced value would be 0.4 pi), yet its (d) of pi/2 can only be reached BY reducing 3 pi / 2 to its equivalent |3 pi / 2 - 2 pi| = pi/2. One convention or the other, but not both. TWO mechanisms each reproduce the printed pi/2 exactly and the evidence does not distinguish them, so neither is asserted: (i) reducing 3 pi / 2 to the smallest equivalent phase difference, or (ii) computing for lambda/4 instead of 3 lambda / 4. Ours follows the same unreduced convention the key itself uses in (a)."
+  },
+  {
+    "ref": "Ex 14.11",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) stationary wave  (b) lambda = 3 m, nu = 60 Hz, v = 180 m/s for each of the two component waves (amplitude 0.03 m)  (c) T = 648 N",
+    "keyAnswer": "(a) Stationary wave  (b) l = 3 m, n = 60 Hz, and v = 180 m/s for each wave  (c) 648 N",
+    "note": "All three parts match exactly. mu = 0.02 kg/m, T = mu v^2 = 0.02 x 180^2 = 648 N."
+  },
+  {
+    "ref": "Ex 14.12",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) same frequency (60 Hz) except at the nodes; same phase; NOT the same amplitude.  (ii) 4.24e-2 m",
+    "keyAnswer": "(a) All the points except the nodes on the string have the same frequency and phase, but not the same amplitude.  (b) 0.042 m",
+    "note": "Matches on all three sub-claims and on the amplitude: 0.06 sin(pi/4) = 0.04243 m. Note the key labels the two parts (a)/(b) where the question prints (i)/(ii) - a labelling difference only."
+  },
+  {
+    "ref": "Ex 14.13(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Stationary wave",
+    "keyAnswer": "Stationary wave.",
+    "note": "x and t in separate factors: the standing-wave form 2a cos(kx) sin(omega t)."
+  },
+  {
+    "ref": "Ex 14.13(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Neither - not an acceptable wave function (undefined for x < vt, unbounded as x - vt -> infinity)",
+    "keyAnswer": "Unacceptable function for any wave.",
+    "note": "Same verdict."
+  },
+  {
+    "ref": "Ex 14.13(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Travelling wave: 3 sin(theta) + 4 cos(theta) = 5 sin(theta + 0.927) with theta = 5x - 0.5t",
+    "keyAnswer": "Travelling harmonic wave.",
+    "note": "Same verdict; ours also gives the resultant amplitude 5 and phase arctan(4/3) = 0.927 rad."
+  },
+  {
+    "ref": "Ex 14.13(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "A superposition of two stationary waves (k = 1, omega = 1 and k = 2, omega = 2)",
+    "keyAnswer": "Superposition of two stationary waves.",
+    "note": "Identical."
+  },
+  {
+    "ref": "Ex 14.14",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 78.8 m/s  (b) 248 N",
+    "keyAnswer": "(a) 79 m/s  (b) 248 N",
+    "note": "L = m/mu = 0.875 m, v = 2 L nu = 78.75 m/s (key rounds to 79), T = mu v^2 = 248.06 N."
+  },
+  {
+    "ref": "Ex 14.15",
+    "verdict": "OUR-ANSWER-WRONG",
+    "ourAnswer": "366 m/s (from the DIFFERENCE of the two resonance lengths: lambda/2 = 79.3 - 25.5 = 53.8 cm, so v = 340 x 1.076)",
+    "keyAnswer": "347 m/s",
+    "note": "THE KEY IS RIGHT ABOUT THE INTENDED METHOD AND ITS VALUE IS EXACTLY REPRODUCIBLE: taking the FIRST resonance as a quarter wavelength, lambda = 4 x 25.5 cm = 1.02 m and v = 340 x 1.02 = 346.8 m/s, i.e. the printed 347. That is the route the question itself prescribes twice over - the stem says 'the edge effects may be neglected', which is precisely what licenses using l = lambda/4 directly, and the key prints its own hint, nu_n = (2n-1) v / 4l, which is the same formula. Our solution instead built its method on CANCELLING an end correction the question told us to ignore, so it answered a different question from the one posed. CORRECT ANSWER: v = 3.47 x 10^2 m/s (about 347 m/s). Worth recording for the maintainer, because it is a real tension in the data rather than a clean error: the two printed lengths are NOT consistent with a zero end correction, since 3 x 25.5 = 76.5 cm and not the 79.3 cm printed. The key's own formula applied to the second length (n = 2) gives v = 340 x 4 x 0.793 / 3 = 359.5 m/s, a third value - so the key's method is itself inconsistent across the two lengths it was given. Treating the mismatch as a genuine end correction e = lambda/4 - l1 = 1.4 cm is what produces our 366 m/s. The question is answerable as intended; the data simply do not close."
+  },
+  {
+    "ref": "Ex 14.16",
+    "verdict": "AGREE",
+    "ourAnswer": "5.06e3 m/s (5.06 km/s)",
+    "keyAnswer": "5.06 km/s",
+    "note": "Clamped at the middle: node at centre, antinodes at both free ends, so L = lambda/2 and lambda = 2.00 m; v = 2530 x 2 = 5060 m/s."
+  },
+  {
+    "ref": "Ex 14.17",
+    "verdict": "AGREE",
+    "ourAnswer": "The first (fundamental) mode of the closed pipe; and No, there is no resonance with both ends open",
+    "keyAnswer": "First harmonic (fundamental); No.",
+    "note": "Both parts match. Recorded as an observation with no key consequence: with the PRINTED v = 340 m/s the closed-pipe fundamental is v/4L = 425 Hz, not the source's 430 Hz - the numbers close exactly only for v = 344 m/s (air at about 22 C). The key prints no frequency, so this never surfaces in the key, and the verdict is unaffected either way since the next closed-pipe mode is 1275 Hz and the open-pipe fundamental is 850 Hz, both far from 430 Hz."
+  },
+  {
+    "ref": "Ex 14.18",
+    "verdict": "AGREE",
+    "ourAnswer": "318 Hz",
+    "keyAnswer": "318 Hz",
+    "note": "Reducing A's tension lowers nu_A; the beats fall from 6 Hz to 3 Hz, so B must lie BELOW A: nu_B = 324 - 6 = 318 Hz."
+  },
+  {
+    "ref": "Ex 14.19(a)",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "The excess pressure goes as -B (ds/dx), so where s = 0 (displacement node) |ds/dx| is largest - a pressure antinode - and where s is largest (displacement antinode) ds/dx = 0 - a pressure node",
+    "keyAnswer": null,
+    "note": "The Chapter 14 key ends at 14.18; there is no 14.19 entry at all. Expected - all five parts are 'explain why' questions with no final value to print."
+  },
+  {
+    "ref": "Ex 14.19(b)",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Ultrasonic echolocation: the echo delay gives distance (d = vt/2), the direction of the loudest echo and the inter-ear difference give direction, the returned intensity gives size, and the altered spectrum gives the nature of the surface; short wavelengths reflect sharply instead of diffracting",
+    "keyAnswer": null,
+    "note": "No 14.19 entry in the key."
+  },
+  {
+    "ref": "Ex 14.19(c)",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Same fundamental (hence same pitch) but different relative amplitudes of the overtones, giving different waveforms - heard as a difference of quality (timbre)",
+    "keyAnswer": null,
+    "note": "No 14.19 entry in the key."
+  },
+  {
+    "ref": "Ex 14.19(d)",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "A transverse wave needs a shear modulus, which solids have and gases do not; a longitudinal wave needs only a bulk modulus, which all three states have",
+    "keyAnswer": null,
+    "note": "No 14.19 entry in the key."
+  },
+  {
+    "ref": "Ex 14.19(e)",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "A pulse is a superposition of many frequencies; in a dispersive medium each travels at its own speed, so the components slip out of their original phase relation and no longer rebuild the original shape",
+    "keyAnswer": null,
+    "note": "No 14.19 entry in the key."
+  }
+]
