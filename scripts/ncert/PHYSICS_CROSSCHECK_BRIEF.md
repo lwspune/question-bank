@@ -49,9 +49,14 @@ is yours.
    - **OUR-ANSWER-WRONG** — the key is right, ours is wrong. **Re-derive from scratch**
      before claiming this; give the correct answer in `note`.
    - **BOOK-KEY-WRONG** — our answer is right, the printed key is wrong. Re-derive to
-     confirm and hold a HIGH bar: NCERT keys are rarely wrong, and the likeliest explanation
-     is that you read the wrong entry or misread a cramped exponent. **Check you are under
-     the right `CHAPTER <n>` heading before concluding this** — Physics numbers its chapters
+     confirm. **Do NOT import the NCERT-Maths prior here.** The Maths brief says NCERT keys
+     are "rarely wrong" on a measured 2 errors in ~256 questions; that is a MATHS
+     measurement and it does NOT hold for Physics. The first Physics chapter gated
+     (Class 11 Ch.8, 18 exercise rows) returned **3 genuine key errors plus 1
+     book-internal inconsistency** — an order of magnitude dirtier. So report what you
+     find; a high count is not by itself evidence that you have misread something.
+     What you must still do is EARN each one (see the evidence section below) and
+     **check you are under the right `CHAPTER <n>` heading before concluding it** — Physics numbers its chapters
      continuously across both parts, so a chapter-8 key sits in the Part-2 answers file with
      no page of its own, and reading chapter 9's block against chapter 8's answers would
      manufacture a whole chapter of false findings.
@@ -67,6 +72,28 @@ check the key's value against something other than our solution and the key itse
 - Is the value dimensionally impossible for the quantity asked?
 Those are the findings that survive review. A disagreement resting only on "I got a
 different number" usually resolves as an arithmetic slip on one side — re-derive it twice.
+
+**The sharpest evidence of all is REPRODUCING the key's exact number from a specific,
+nameable slip.** On Ch.8 that settled three rows at very different strengths, and the
+difference matters — report the strength honestly rather than asserting a mechanism:
+  - `Ex 8.11` — reading the stem's "2 rev/s" as 2 rad/s reproduces the printed
+    1.539e-4 to FOUR significant figures. That is decisive.
+  - `Ex 8.6` — the printed 4e-6 is exactly the shear STRAIN, i.e. the answer with the
+    final `x L` dropped. Decisive.
+  - `Ex 8.7` — the proposed slip (not dividing the load among four columns) gives
+    2.888e-6 against a printed 2.8e-6, so it does NOT reproduce. The key is still wrong
+    (the stem says "uniform ... each column"), but say the mechanism is UNCONFIRMED
+    rather than claiming it.
+And distinguish a wrong key from a **book-internal inconsistency**: `Ex 8.15`'s key implies
+a copper bulk modulus of ~121 GPa while the chapter's own Table 8.3 prints 140 GPa. Both
+are physically defensible, so that is not an arithmetic error — record both values and say
+which the chapter supports.
+
+**One convention to recognise before scoring it as an error:** this key sometimes prints a
+dimensionless strain as a PERCENTAGE WITH THE `%` SIGN OMITTED (Ch.8's 8.8 "0.127" and
+8.14 "0.0027" are 0.127% and 0.0027%). Two entries showing the identical x100 relation with
+matching mantissas is a convention, not two coincidental errors — and the chapter itself
+quotes strain both ways in its own worked examples.
 
 ## Output → `scripts/ncert/data/<chapterId>.crosscheck.json`
 A JSON array of `{ref, verdict, ourAnswer, keyAnswer, note}` where `verdict` is one of
