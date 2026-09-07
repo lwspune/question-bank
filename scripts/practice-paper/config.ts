@@ -5318,6 +5318,40 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "gat-mock-l3", label: "GAT Mock L3" },
     bankAdd: true,
   },
+
+  // --- LWS "Pressure Belt, POS" test (Akash Rathod, LWS Pune) ----------------
+  // 80 Q in two halves: Geography Q1-60 (pressure belts / winds / isobars) and
+  // English Q61-80 (Parts of Speech, the tested word underlined on the page).
+  // The .docx ships NO ANSWER KEY of any kind - not in the body, headers or
+  // footers - so every answer here is DERIVED. Two INDEPENDENT blind passes were
+  // run and crosstabbed: 79/80 agreed, and both independently flagged the same
+  // four defective questions (Q6, Q33, Q42, Q77), which is why those are `flawed`
+  // and can never reach the public bank. Q74 was the single disagreement and is
+  // keyed to the convention the bank itself already uses for an object-less
+  // "over" ("knock that vase over" -> Adverb); its reviewNote records the dispute.
+  "lws-pressure-belt-pos": {
+    slug: "lws-pressure-belt-pos",
+    title: "NDA GAT - LWS Pressure Belts & Parts of Speech (80 Q)",
+    recordsFile: "lws-pressure-belt-pos.records.json",
+    outName: "Tags_NDA_LWS_Pressure_Belt_POS",
+    sourceFile: "NDA_GAT_Practice__LWS_Pressure_Belt_POS.docx",
+    pyqNote: "NDA GAT practice - LWS Pune 'Pressure Belt, POS' test (answers DERIVED by two independent blind passes; this source prints no answer key)",
+    examName: "NDA",
+    section: { key: "lws-pressure-belt-pos", label: "Pressure Belts & Parts of Speech" },
+    bankAdd: true,
+    subjects: {
+      "Geography": {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Pressure and Winds",
+          "Atmospheric Layers, Composition and Aurora",
+          "Cyclones, Fronts and Local Winds",
+        ],
+      },
+      "English": {
+        "Grammar": ["Parts of Speech"],
+      },
+    },
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
