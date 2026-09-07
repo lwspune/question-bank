@@ -1408,6 +1408,28 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // Ch.10 SHIPPED 2026-09-07. Cross-check: 23 of 28 exercise rows diffed — 23 AGREE,
+  // 0 wrong on either side. The 5 skipped are Ex 10.19(a)-(e); the key jumps 10.18
+  // to 10.20 because all five parts are "explain why" with no value to print.
+  //
+  // NO errata brackets, deliberately. The three printed defects found are all
+  // DROPPED-GLYPH artifacts where the intended value is unambiguous, so they were
+  // restored in transcription rather than preserved-and-bracketed — bracketing a
+  // lost multiplication sign would be noise in a student's solution:
+  //   - Eg 10.2 prints "1.20 10^-5 K^-1" and Eg 10.4 "3.34 10^5 J kg^-1", each with
+  //     the multiplication sign dropped from the book's own printed working.
+  //   - Ex 10.15's table heading prints "cal mo1^-1 K^-1" — the l of "mol" set as
+  //     the digit 1. The stem's own "2.92 cal/mol K" confirms the reading.
+  // Preserved-and-bracketed is for a defect that changes a CLAIM (see ch.9's
+  // 9.3(d), where the key answers a clause the reprint no longer prints).
+  //
+  // Defects in teaching prose, with no row to carry them (publisher-report only):
+  // p13 cites "the low thermal conductivity of air in the Table 10.5" — air is in
+  // Table 10.6; p19 SUMMARY prints "the Farenheit temperare"; and the p0 contents
+  // box still lists "Additional Exercises" which this reprint does not contain.
+  //
+  // No figures: every exercise states its data in words. Eg 10.6/10.7 cite figures
+  // but are worked examples whose printed solutions restate the geometry.
   c11PhyThermalProps: {
     id: "c11PhyThermalProps",
     chapterName: "Thermal Properties of Matter",
