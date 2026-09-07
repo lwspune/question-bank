@@ -5375,9 +5375,17 @@ export const PAPERS: Record<string, PaperSpec> = {
   // Files under three subtopics created for this paper - Systematics and Nomenclature,
   // Kingdom Monera, Kingdom Protista - because the chapter previously had only Kingdom
   // Fungi / Plant Kingdom / Animal Kingdom, so ~36 of these 50 questions had no home
-  // anywhere in NDA Biology. They carry order_index NULL deliberately: `notes:order`
-  // owns that column for chapters with /notes, and NULL sorts them ahead of the three
-  // ordered siblings, which is the correct teaching order anyway.
+  // anywhere in NDA Biology. They carry order_index NULL, which is the documented
+  // default for a subtopic with no teaching order (migration 0029) and matches every
+  // other non-noted subtopic in the bank — so they sort LAST, after the three that
+  // /notes orders. Do NOT "fix" that by renumbering all six 1..6: `notes:order` owns
+  // this column for a chapter with /notes and rewrites Fungi/Plant/Animal back to
+  // 1/2/3 on its next run, which would collide. Putting Systematics first would need
+  // a value < 1 (0 or negative), against the column's documented 1-based contract, so
+  // it is a deliberate open question rather than an oversight.
+  // NB: `sync-subtopic-order.ts` warns that an unordered subtopic "will sort ahead of
+  // ordered siblings" — that message is WRONG. `facets.ts` ranks `orderIndex ?? Infinity`
+  // and `query.ts` passes `nullsFirst: false`. Trust the migration, not the warning.
   "apj-bio-t01": {
     slug: "apj-bio-t01",
     title: "NDA Biology — APJ MCQ Test 01 (Systematics, Monera, Protista, Fungi)",
