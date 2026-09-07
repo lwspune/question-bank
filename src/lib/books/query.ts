@@ -18,6 +18,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
 import {
   buildStoredSections,
+  sittingLabel,
   sittingOrdinal,
   type BookQuestionMeta,
   type BookSection,
@@ -25,6 +26,7 @@ import {
   type StoredPlacement,
 } from "./order";
 import { bookExams, type BookChapter, type BookDefinition } from "./registry";
+import { recurrenceLabels } from "./recurrence";
 
 /** PostgREST truncates a `.select()` at 1000 rows, silently. Page under it. */
 const PAGE_SIZE = 1000;
@@ -90,6 +92,17 @@ export type BookChapterView = {
   assembled: boolean;
   /** Rows curated out of THIS chapter. */
   excluded: number;
+  /**
+   * For each PRINTED question, the sittings it stands for — its own, plus those
+   * of the copies excluded in its favour. More than one entry means the exam
+   * asked it more than once and the reader shows a recurrence line.
+   *
+   * DERIVED here rather than stored, deliberately. A stored badge would be a
+   * second place for the truth to live and would rot the next time a group is
+   * re-adjudicated, with nothing on the page to say so — the same call the
+   * contents table makes.
+   */
+  recurrence: Map<string, string[]>;
   /**
    * Questions present in the chapter but curated OUT. They are still rendered
    * (struck through, with an Include control) rather than hidden, for two
@@ -341,7 +354,12 @@ export async function loadBookOverview(
   }
 
   const stored = await loadStored(client, row.id);
-  const examOfSection: Record<string, string> = { nda: "NDA", cds: "CDS" };
+  // DERIVED from the book, never hardcoded. This was `{ nda, cds }`, which is
+  // silent rather than wrong for any other book: an unrecognised section key
+  // simply counts nothing, so every chapter reads 0 with no error anywhere.
+  const examOfSection: Record<string, string> = Object.fromEntries(
+    book.sections.map((s) => [s.key, s.exam])
+  );
 
   const counts = new Map<string, Record<string, number>>();
   let excluded = 0;
@@ -398,6 +416,7 @@ export async function loadBookChapter(
       assembled: false,
       excluded: 0,
       excludedIds: [],
+      recurrence: new Map(),
     };
   }
 
@@ -418,6 +437,28 @@ export async function loadBookChapter(
   );
   const questionsById = new Map(batches.flat().map((q) => [q.id, q]));
 
+  // Built from EVERY row of the chapter, excluded ones included: a printed
+  // question's badge is exactly the sittings of the copies dropped in its
+  // favour, so the dropped rows are the input rather than noise to filter out.
+  const metaById = new Map(meta.map((m) => [m.id, m]));
+  const recurrence = recurrenceLabels(
+    orderedIds.flatMap((id) => {
+      const m = metaById.get(id);
+      const q = questionsById.get(id);
+      if (!m || !q) return [];
+      const sitting = sittingOrdinal(m);
+      return [
+        {
+          questionId: id,
+          stem: q.text ?? "",
+          sittingOrdinal: sitting,
+          sittingLabel: sittingLabel(m.exam, m.pyqYear, sitting),
+        },
+      ];
+    }),
+    new Set(excludedIds)
+  );
+
   return {
     book,
     chapter,
@@ -427,5 +468,6 @@ export async function loadBookChapter(
     assembled: row.syncedAt != null,
     excluded: excludedIds.length,
     excludedIds,
+    recurrence,
   };
 }

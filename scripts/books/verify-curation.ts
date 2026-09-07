@@ -22,7 +22,8 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { buildStoredSections, sittingOrdinal, type SetMeta } from "../../src/lib/books/order";
 import { loadBookMeta } from "../../src/lib/books/query";
 import { moveSet, moveSetToSection, setQuestionExcluded } from "../../src/lib/books/service";
-import { NDA_CDS_ENGLISH, getBookChapter } from "../../src/lib/books/registry";
+import { getBookChapter } from "../../src/lib/books/registry";
+import { selectBook } from "./selectBook";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -70,14 +71,14 @@ async function sectionsOf(
     .order("position")
     .order("question_id");
   if (error) throw new Error(error.message);
-  const meta = await loadBookMeta(client, NDA_CDS_ENGLISH, { chapterName });
+  const meta = await loadBookMeta(client, selectBook(), { chapterName });
   const metaById = new Map<string, SetMeta>(
     meta.map((m) => [m.id, { setId: m.setId, year: m.pyqYear, sitting: sittingOrdinal(m) }])
   );
   return buildStoredSections(
     (data ?? []).map((r) => ({ questionId: r.question_id, sectionKey: r.section_key })),
     metaById,
-    NDA_CDS_ENGLISH.sections
+    selectBook().sections
   );
 }
 
@@ -88,7 +89,20 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const book = NDA_CDS_ENGLISH;
+  const book = selectBook();
+  // Section 4 below moves a set between the literal sections "nda" and "cds",
+  // so this verifies the NDA/CDS English book and nothing else. It REFUSES any
+  // other book rather than running three of its four checks and reporting a
+  // pass — a partial verification that calls itself a verification is worse
+  // than none.
+  if (!book.sections.some((x) => x.key === "nda") ||
+      !book.sections.some((x) => x.key === "cds")) {
+    console.error(
+      `verify-curation is written against the nda/cds section pair and cannot ` +
+        `verify "${book.slug}" (sections: ${book.sections.map((x) => x.key).join(", ")}).`
+    );
+    process.exit(1);
+  }
   const slug = arg("chapter") ?? "fill-in-the-blanks";
   const chapter = getBookChapter(book, slug);
   if (!chapter) throw new Error(`no chapter "${slug}"`);

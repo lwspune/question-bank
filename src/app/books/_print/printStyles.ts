@@ -114,6 +114,13 @@ export const BOOK_PRINT_CSS = `
 .bsub2 .bcount { float: right; font-size: 8.5pt; font-weight: 400; color: #555; }
 /* Provenance for a set whose Directions were lifted to the block heading. */
 .bprov { font-size: 8.5pt; color: #555; margin: 1.6mm 0 0.6mm; break-after: avoid; }
+/* A per-QUESTION provenance line closes its question rather than introducing
+   the next one, so it must avoid a break BEFORE it, not after — the opposite of
+   the set-level line above, which is a heading for what follows. */
+.bqprov { margin: 0.8mm 0 0; break-before: avoid; break-after: auto; }
+/* The recurrence line is the reason this book collapses repeats at all, so it
+   is the one piece of provenance that is not muted. */
+.brepeat { color: #1f2937; font-weight: 600; }
 
 /* ---- answer key: its own page at the end of the chapter ---- */
 .bkeyhead { break-before: page; page-break-before: always; }

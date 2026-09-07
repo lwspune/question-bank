@@ -1,8 +1,13 @@
 /**
  * Render a chapter's PRINT view to a standalone HTML file.
  *
- *   npx tsx scripts/books/render-print.tsx --chapter=vocabulary
- *   npx tsx scripts/books/render-print.tsx            # every chapter
+ *   npx tsx --tsconfig scripts/books/tsconfig.render.json scripts/books/render-print.tsx --chapter=vocabulary
+ *   npx tsx --tsconfig scripts/books/tsconfig.render.json scripts/books/render-print.tsx --book=mht-cet-maths
+ *
+ * THE --tsconfig FLAG IS NOT OPTIONAL. The root config sets jsx=preserve, which
+ * Next compiles itself; a plain `npx tsx` run falls back to the CLASSIC JSX
+ * runtime and every app component dies with "React is not defined". This header
+ * used to document the plain command, which has never worked.
  *
  * WHY THIS EXISTS: /books/<book>/<chapter>/print is superadmin-gated and
  * `force-dynamic`, so `next build` never executes it and nothing headless
@@ -24,7 +29,7 @@ import { join } from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createClient } from "@supabase/supabase-js";
-import { NDA_CDS_ENGLISH } from "../../src/lib/books/registry";
+import { selectBook } from "./selectBook";
 import { loadBookChapter } from "../../src/lib/books/query";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -57,7 +62,7 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const book = NDA_CDS_ENGLISH;
+  const book = selectBook();
   const only = arg("chapter");
   const chapters = only ? book.chapters.filter((c) => c.slug === only) : book.chapters;
   if (only && chapters.length === 0) {

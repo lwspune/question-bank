@@ -85,7 +85,14 @@ export default function BookChapterPrint({ view }: { view: BookChapterView }) {
         {ids.map((id) => {
           const q = view.questionsById.get(id);
           if (!q) return null;
-          return <Question key={id} q={q} n={numberOf.get(id)!} />;
+          return (
+            <Question
+              key={id}
+              q={q}
+              n={numberOf.get(id)!}
+              sittings={view.recurrence.get(id) ?? []}
+            />
+          );
         })}
       </div>
     );
@@ -254,7 +261,37 @@ function ContentsCell({ range }: { range: ContentsRange | null }) {
   );
 }
 
-function Question({ q, n }: { q: QuestionRow; n: number }) {
+/**
+ * The recurrence line — how often the exam has asked this question.
+ *
+ * `sittings` is what the question STANDS FOR: its own paper plus every copy
+ * excluded in its favour. Two or more means a genuine repeat, because the
+ * duplicate-upload labels were collapsed onto one sitting upstream.
+ *
+ * A question asked ONCE prints NOTHING (user's call, 2026-09-06). A per-question
+ * provenance line was tried and removed: the shift is one of 45 and tells a
+ * reader nothing, and even the bare year did not earn a line on all 2,136
+ * questions. Only a REPEAT is worth naming, and there the sitting is the
+ * evidence for the claim.
+ */
+function Recurrence({ sittings }: { sittings: string[] }) {
+  if (sittings.length < 2) return null;
+  return (
+    <p className="bprov bqprov brepeat">
+      Asked {sittings.length} times: {sittings.join(", ")}
+    </p>
+  );
+}
+
+function Question({
+  q,
+  n,
+  sittings,
+}: {
+  q: QuestionRow;
+  n: number;
+  sittings: string[];
+}) {
   return (
     <div className="bq">
       <span className="bnum">{n}. </span>
@@ -271,6 +308,7 @@ function Question({ q, n }: { q: QuestionRow; n: number }) {
           ))}
         </ul>
       ) : null}
+      <Recurrence sittings={sittings} />
     </div>
   );
 }
