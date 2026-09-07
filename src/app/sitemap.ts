@@ -22,6 +22,7 @@ import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { getMockExams } from "@/lib/mocks/mocksNav";
+import { MOCK_TYPES, mockTypeOf, mockTypeHref } from "@/lib/mocks/catalogue";
 import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
 import {
   contentDateFor,
@@ -97,13 +98,18 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
     const db = createSupabaseAdminClient();
     const { data } = await db
       .from("mock_tests")
-      .select("slug, updated_at, exam:exams(name)")
+      .select("slug, updated_at, source, scope, exam:exams(name)")
       .eq("status", "published")
       .limit(1000); // 63 today; explicit so this can never silently truncate
 
     const rows = data ?? [];
     /** exam NAME -> the updated_at of every mock it holds, as ISO strings. */
     const isoByExam = new Map<string, string[]>();
+    /** "<exam NAME>|<type slug>" -> the same, per TYPE. Only a pair that has at
+     *  least one published mock gets a URL: a type page with nothing in it is
+     *  reachable (the picker prerenders all of them) but it is an honest empty
+     *  state, not a page worth indexing. */
+    const isoByExamType = new Map<string, string[]>();
     const allIso: string[] = [];
 
     const mockUrls: MetadataRoute.Sitemap = rows.map((m) => {
@@ -111,6 +117,12 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
       const iso = (m.updated_at as string | null) ?? null;
       if (exam?.name && iso) {
         isoByExam.set(exam.name, [...(isoByExam.get(exam.name) ?? []), iso]);
+        const type = mockTypeOf({
+          source: (m.source as "pyq" | "practice" | null) ?? "pyq",
+          scope: (m.scope as "full" | "sectional" | null) ?? "full",
+        });
+        const k = `${exam.name}|${type}`;
+        isoByExamType.set(k, [...(isoByExamType.get(k) ?? []), iso]);
         allIso.push(iso);
       }
       return {
@@ -130,6 +142,22 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
       priority: 0.75,
     }));
 
+    // Per-type listings, one per (exam, type) that actually has content.
+    const typeUrls: MetadataRoute.Sitemap = getMockExams().flatMap((e) =>
+      MOCK_TYPES.flatMap((t) => {
+        const iso = isoByExamType.get(`${e.examName}|${t.slug}`);
+        if (!iso || iso.length === 0) return [];
+        return [
+          {
+            url: `${SITE_URL}${mockTypeHref(e.slug, t.slug)}`,
+            lastModified: newestOf(iso, buildDate),
+            changeFrequency: "weekly" as const,
+            priority: 0.75,
+          },
+        ];
+      })
+    );
+
     return [
       {
         url: `${SITE_URL}/mock`,
@@ -138,6 +166,7 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
       },
       ...examUrls,
+      ...typeUrls,
       ...mockUrls,
     ];
   } catch {

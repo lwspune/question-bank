@@ -13,6 +13,20 @@ function fmtDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
 }
 
+/**
+ * The type badge on a history row.
+ *
+ * This list is the ONE surface where all three types genuinely mix — the
+ * catalogue separates them by route — so without it a student's history reads
+ * "NDA Mathematics — Mock 5, 190/300" with nothing saying whether that was a
+ * real UPSC paper or a practice one. Those two scores do not mean the same
+ * thing and should not look identical.
+ */
+function typeLabel(a: UserAttempt): string | null {
+  if (a.scope === "sectional") return "Sectional";
+  return a.source === "practice" ? "Practice" : null; // past paper = the default, unlabelled
+}
+
 /** A signed-in student's attempts. `showMock` includes the paper title (history
  *  view); omit it on a single mock's page. Submitted/timed-out rows link to the
  *  result; an in-progress row links back into the runner to resume. */
@@ -38,7 +52,16 @@ export default function AttemptsList({
               className="group flex items-center gap-4 p-3 transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none sm:p-4"
             >
               <div className="min-w-0 flex-1">
-                {showMock && <p className="truncate text-sm font-medium">{a.mockTitle}</p>}
+                {showMock && (
+                  <p className="flex items-center gap-2 text-sm font-medium">
+                    <span className="truncate">{a.mockTitle}</span>
+                    {typeLabel(a) && (
+                      <span className="shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                        {typeLabel(a)}
+                      </span>
+                    )}
+                  </p>
+                )}
                 <p className={cn("text-xs", showMock ? "text-muted-foreground" : "font-medium")}>
                   <span className={s.style}>{s.label}</span>
                   <span className="text-muted-foreground"> · {fmtDate(a.startedAt)}</span>

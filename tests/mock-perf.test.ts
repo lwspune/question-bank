@@ -12,6 +12,8 @@ function attempt(over: Partial<UserAttempt> = {}): UserAttempt {
     mockSlug: `mock-${seq}`,
     mockTitle: `Mock ${seq}`,
     pyqYear: 2020,
+    source: "pyq",
+    scope: "full",
     status: "submitted",
     score: 150,
     maxScore: 300,

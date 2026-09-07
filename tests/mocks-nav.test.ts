@@ -132,6 +132,8 @@ describe("buildMockExamCards — the /mock picker model", () => {
       totalQuestions: 100,
       totalMarks: 100,
       examName,
+      source: "pyq",
+      scope: "full",
       ...over,
     };
   }
@@ -175,6 +177,33 @@ describe("buildMockExamCards — the /mock picker model", () => {
     expect(cards.find((c) => c.slug === "nda")!.paperCount).toBe(2);
     expect(cards.find((c) => c.slug === "cds")!.paperCount).toBe(1);
     expect(cards.find((c) => c.slug === "neet")!.paperCount).toBe(1);
+  });
+
+  it("breaks the count down by type, so the card can name each", () => {
+    const cards = buildMockExamCards([
+      ...SAMPLE,
+      fixture("NDA", 0, { paperCode: "maths", slug: "nda-practice-maths-1", source: "practice", pyqYear: null }),
+      fixture("NDA", 0, { paperCode: "maths", slug: "nda-sectional-1", scope: "sectional", pyqYear: null }),
+    ]);
+    const nda = cards.find((c) => c.slug === "nda")!;
+    expect(nda.count).toBe(5);
+    expect(nda.byType["past-papers"]).toBe(3);
+    expect(nda.byType["practice"]).toBe(1);
+    expect(nda.byType["sectional"]).toBe(1);
+  });
+
+  it("reads the year span off PAST PAPERS only", () => {
+    // The span is printed as "2017-2026" beside the exam name, which is a claim
+    // about real sittings. An assembled paper has none; if a stray year is ever
+    // set on one it must not widen a span that says otherwise.
+    const cards = buildMockExamCards([
+      fixture("NEET", 2021),
+      fixture("NEET", 1999, { slug: "neet-practice-1", source: "practice" }),
+    ]);
+    const neet = cards.find((c) => c.slug === "neet")!;
+    expect(neet.count).toBe(2);
+    expect(neet.firstYear).toBe(2021);
+    expect(neet.lastYear).toBe(2021);
   });
 
   it("still renders a card for a mock-exam with nothing published yet", () => {
