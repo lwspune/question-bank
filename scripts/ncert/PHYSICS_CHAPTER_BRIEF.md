@@ -128,7 +128,15 @@ chapter gated: 3 genuine key errors + 1 book-internal inconsistency in 18 rows.
 Most NCERT Physics chapters have ZERO MCQs, so this step is usually a no-op. Check first:
 if `commit.ts`'s dry-run reported `format: mcq=N` with N > 0, do this.
 
-An MCQ row commits with a DERIVED answer and NO solution. Both halves need work:
+An MCQ row commits with a DERIVED answer and NO solution. Both halves need work.
+
+**And step 6 CANNOT reach them, by construction** — `dump-tosolve.ts` filters
+`question_format='subjective'`, so an MCQ id never appears in the tosolve dump, and
+`apply-solutions.ts` then REFUSES any id absent from that dump. That is the pairing gate doing
+its job, not a bug to route around: an MCQ needs its key re-derived blind as well as a
+solution written, which is a different job from authoring a free-response answer. The MCQ path
+below is how those rows get both. (`apply-solutions` does pick the solution up from the
+verify file — it reports "updated solution on N mcq row(s)" — so run it again after this step.)
 
 **READ `scripts/ncert/MCQ_VERIFY_BRIEF.md` — it is the contract for this step and it carries
 rules the solution brief does not.** In particular the `solution` you write here goes straight

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "86073d84-29bf-45cb-8311-e669e4775a44",
+    "ref": "Ex 7.3",
+    "solution": "By Kepler's law of periods, for planets around the same Sun \\(T^2 \\propto a^3\\), so\n\n\\(\\dfrac{a_p}{a_e} = \\left(\\dfrac{T_p}{T_e}\\right)^{2/3}\\)\n\n\"Twice as fast\" means it completes one revolution in half the time, so \\(T_p = \\dfrac{T_e}{2}\\). Then\n\n\\(\\dfrac{a_p}{a_e} = \\left(\\dfrac{1}{2}\\right)^{2/3} = \\dfrac{1}{2^{2/3}} = 0.63\\)\n\nThe planet's orbit would be about \\(0.63\\) times the size of the earth's orbit (about \\(0.63\\,\\text{AU}\\), i.e. roughly two-thirds of the earth-Sun distance)."
+  },
+  {
+    "id": "6cc35131-ad4b-4804-89ef-154cc32f431e",
+    "ref": "Ex 7.4",
+    "solution": "For a satellite in a circular orbit of radius \\(R\\) about a central body of mass \\(M\\), Kepler's third law gives\n\n\\(T^2 = \\dfrac{4\\pi^2 R^3}{G M}\\), so \\(M = \\dfrac{4\\pi^2 R^3}{G T^2}\\)\n\nFor Io about Jupiter: \\(T = 1.769\\,\\text{d} = 1.769 \\times 24 \\times 3600 = 1.528 \\times 10^5\\,\\text{s}\\), \\(R = 4.22 \\times 10^8\\,\\text{m}\\).\n\n\\(M_J = \\dfrac{4\\pi^2 \\left(4.22 \\times 10^8\\right)^3}{6.67 \\times 10^{-11} \\times \\left(1.528 \\times 10^5\\right)^2} = 1.90 \\times 10^{27}\\,\\text{kg}\\)\n\nApply the SAME relation to the earth about the Sun, with \\(R = 1.496 \\times 10^{11}\\,\\text{m}\\) and \\(T = 1\\,\\text{y} = 3.156 \\times 10^7\\,\\text{s}\\):\n\n\\(M_S = \\dfrac{4\\pi^2 \\left(1.496 \\times 10^{11}\\right)^3}{6.67 \\times 10^{-11} \\times \\left(3.156 \\times 10^7\\right)^2} = 1.99 \\times 10^{30}\\,\\text{kg}\\)\n\nHence\n\n\\(\\dfrac{M_J}{M_S} = \\dfrac{1.90 \\times 10^{27}}{1.99 \\times 10^{30}} = 9.6 \\times 10^{-4} \\approx \\dfrac{1}{1045}\\)\n\nSo the mass of Jupiter is about one-thousandth that of the Sun, as required."
+  },
+  {
+    "id": "1f85d840-d6c1-4aac-85dd-a647cb9aa1fb",
+    "ref": "Ex 7.5",
+    "solution": "Treat the star as orbiting the whole galactic mass concentrated at the centre, so Kepler's third law applies:\n\n\\(T = 2\\pi\\sqrt{\\dfrac{r^3}{G M}}\\)\n\nMass enclosed: \\(M = 2.5 \\times 10^{11} \\times 2 \\times 10^{30} = 5 \\times 10^{41}\\,\\text{kg}\\)\n\nRadius: \\(1\\,\\text{ly} = 9.46 \\times 10^{15}\\,\\text{m}\\), so\n\n\\(r = 5 \\times 10^4 \\times 9.46 \\times 10^{15} = 4.73 \\times 10^{20}\\,\\text{m}\\)\n\n\\(T = 2\\pi\\sqrt{\\dfrac{\\left(4.73 \\times 10^{20}\\right)^3}{6.67 \\times 10^{-11} \\times 5 \\times 10^{41}}} = 2\\pi\\sqrt{3.17 \\times 10^{30}} = 1.12 \\times 10^{16}\\,\\text{s}\\)\n\nIn years, dividing by \\(3.156 \\times 10^7\\,\\text{s y}^{-1}\\):\n\n\\(T = 3.5 \\times 10^8\\,\\text{years}\\)\n\n(The stated Milky Way diameter of \\(10^5\\,\\text{ly}\\) confirms that a star at \\(50{,}000\\,\\text{ly}\\) is at the galaxy's edge, so essentially all of the galactic mass lies inside its orbit.)\n\n\\(T \\approx 1.12 \\times 10^{16}\\,\\text{s} \\approx 3.5 \\times 10^8\\,\\text{years}\\)"
+  },
+  {
+    "id": "e3541585-d4fa-4c97-903f-c41cafba8c32",
+    "ref": "Ex 7.12",
+    "solution": "Let the null point be at distance \\(x\\) from the earth's centre, so it is \\((d - x)\\) from the Sun's centre with \\(d = 1.5 \\times 10^{11}\\,\\text{m}\\). Setting the two pulls equal:\n\n\\(\\dfrac{G M_E m}{x^2} = \\dfrac{G M_S m}{(d-x)^2}\\)\n\n\\(\\dfrac{d-x}{x} = \\sqrt{\\dfrac{M_S}{M_E}} = \\sqrt{\\dfrac{2 \\times 10^{30}}{6 \\times 10^{24}}} = \\sqrt{3.33 \\times 10^5} = 577\\)\n\nSo \\(d = 578\\,x\\), giving\n\n\\(x = \\dfrac{1.5 \\times 10^{11}}{578} = 2.6 \\times 10^8\\,\\text{m}\\)\n\nThe gravitational force on the rocket is zero at about \\(2.6 \\times 10^8\\,\\text{m}\\) from the earth's centre (roughly \\(2.6 \\times 10^5\\,\\text{km}\\), i.e. still well inside the moon's orbit)."
+  },
+  {
+    "id": "f0a09abe-ee91-430c-afa5-3bc5d7288cfd",
+    "ref": "Ex 7.13",
+    "solution": "You weigh the Sun by watching something orbit it — the earth. The Sun's pull supplies the earth's centripetal force:\n\n\\(\\dfrac{G M_S m_E}{r^2} = m_E\\,\\dfrac{4\\pi^2 r}{T^2}\\)\n\nThe earth's own mass cancels, leaving\n\n\\(M_S = \\dfrac{4\\pi^2 r^3}{G T^2}\\)\n\nso only the orbital radius and the period are needed. With \\(r = 1.5 \\times 10^8\\,\\text{km} = 1.5 \\times 10^{11}\\,\\text{m}\\) and \\(T = 1\\,\\text{year} = 365 \\times 24 \\times 3600 = 3.154 \\times 10^7\\,\\text{s}\\):\n\n\\(M_S = \\dfrac{4\\pi^2 \\left(1.5 \\times 10^{11}\\right)^3}{6.67 \\times 10^{-11} \\times \\left(3.154 \\times 10^7\\right)^2}\\)\n\n\\(M_S = 2.0 \\times 10^{30}\\,\\text{kg}\\)"
+  },
+  {
+    "id": "e749b1d0-063f-4d9a-a3cf-b6548b4e5549",
+    "ref": "Ex 7.14",
+    "solution": "Both planets orbit the same Sun, so Kepler's law of periods gives\n\n\\(\\dfrac{r_S}{r_E} = \\left(\\dfrac{T_S}{T_E}\\right)^{2/3}\\)\n\nWith \\(T_S/T_E = 29.5\\) and \\(r_E = 1.50 \\times 10^8\\,\\text{km}\\):\n\n\\((29.5)^{2/3} = 9.55\\)\n\n\\(r_S = 1.50 \\times 10^8 \\times 9.55 = 1.43 \\times 10^9\\,\\text{km}\\)\n\nSaturn is about \\(1.43 \\times 10^9\\,\\text{km}\\) from the Sun (roughly \\(9.5\\) times the earth's distance)."
+  },
+  {
+    "id": "b7421b40-bb8e-4d1c-9110-797e7c5d04bd",
+    "ref": "Ex 7.15",
+    "solution": "The weight on the surface fixes \\(\\dfrac{G M_E m}{R_E^2} = 63\\,\\text{N}\\).\n\nAt height \\(h = R_E/2\\) the body is a distance \\(R_E + h = \\dfrac{3R_E}{2}\\) from the centre, so\n\n\\(F = \\dfrac{G M_E m}{\\left(3R_E/2\\right)^2} = \\dfrac{G M_E m}{R_E^2} \\times \\dfrac{4}{9}\\)\n\n\\(F = 63 \\times \\dfrac{4}{9} = 28\\,\\text{N}\\)\n\nThe gravitational force on the body is \\(28\\,\\text{N}\\)."
+  },
+  {
+    "id": "b953b6ae-8301-4188-a52b-f49a3d564181",
+    "ref": "Ex 7.16",
+    "solution": "Below the surface only the sphere of radius \\((R_E - d)\\) beneath the body attracts it; the shell outside contributes nothing. For uniform density that gives\n\n\\(g(d) = g\\left(1 - \\dfrac{d}{R_E}\\right)\\)\n\nHalf way down to the centre, \\(d = \\dfrac{R_E}{2}\\), so\n\n\\(g(d) = g\\left(1 - \\dfrac{1}{2}\\right) = \\dfrac{g}{2}\\)\n\nWeight is proportional to \\(g\\), so\n\n\\(W = \\dfrac{250}{2} = 125\\,\\text{N}\\)\n\nThe body would weigh \\(125\\,\\text{N}\\).\n\n(Note this is NOT the same rule as going UP by \\(R_E/2\\), which gives \\(250 \\times 4/9 = 111\\,\\text{N}\\): \\(g\\) falls linearly with depth but as an inverse square with height.)"
+  },
+  {
+    "id": "18c7e2e8-a13e-4a82-9555-abfe969916b2",
+    "ref": "Ex 7.17",
+    "solution": "The rocket's speed \\(5\\,\\text{km s}^{-1}\\) is below the escape speed, so it rises to a highest point where its speed is zero. Conserving total energy between the surface and that point (distance \\(R_E + h\\) from the centre):\n\n\\(\\dfrac{1}{2}m v^2 - \\dfrac{G M_E m}{R_E} = -\\dfrac{G M_E m}{R_E + h}\\)\n\nCancel \\(m\\) and use \\(G M_E = 6.67 \\times 10^{-11} \\times 6.0 \\times 10^{24} = 4.00 \\times 10^{14}\\,\\text{m}^3\\,\\text{s}^{-2}\\), \\(v = 5.0 \\times 10^3\\,\\text{m s}^{-1}\\), \\(R_E = 6.4 \\times 10^6\\,\\text{m}\\):\n\n\\(\\dfrac{1}{2}v^2 = G M_E\\left(\\dfrac{1}{R_E} - \\dfrac{1}{R_E + h}\\right) = \\dfrac{G M_E\\,h}{R_E(R_E + h)}\\)\n\n\\(h = \\dfrac{v^2 R_E^2}{2 G M_E - v^2 R_E} = \\dfrac{\\left(5.0 \\times 10^3\\right)^2\\left(6.4 \\times 10^6\\right)^2}{2\\left(4.00 \\times 10^{14}\\right) - \\left(5.0 \\times 10^3\\right)^2\\left(6.4 \\times 10^6\\right)}\\)\n\n\\(h = \\dfrac{1.024 \\times 10^{21}}{6.40 \\times 10^{14}} = 1.6 \\times 10^6\\,\\text{m}\\)\n\nThe rocket rises \\(1.6 \\times 10^6\\,\\text{m}\\) (\\(1600\\,\\text{km}\\)) above the earth's surface, i.e. it reaches a distance of \\(8.0 \\times 10^6\\,\\text{m}\\) from the earth's centre."
+  },
+  {
+    "id": "8992da7e-9868-4a2a-8e0a-a77e84555abe",
+    "ref": "Ex 7.18",
+    "solution": "Far from the earth the potential energy is zero, so conserving total energy between the surface and infinity:\n\n\\(\\dfrac{1}{2}m v_i^2 - \\dfrac{G M_E m}{R_E} = \\dfrac{1}{2}m v_f^2\\)\n\nThe escape speed is defined by \\(\\dfrac{1}{2}v_e^2 = \\dfrac{G M_E}{R_E}\\), so the middle term is just \\(\\dfrac{1}{2}m v_e^2\\) and\n\n\\(v_f^2 = v_i^2 - v_e^2\\)\n\nWith \\(v_i = 3 v_e\\):\n\n\\(v_f^2 = 9 v_e^2 - v_e^2 = 8 v_e^2\\)\n\n\\(v_f = 2\\sqrt{2}\\,v_e = 2.828 \\times 11.2 = 31.7\\,\\text{km s}^{-1}\\)\n\nThe speed of the body far away from the earth is \\(31.7\\,\\text{km s}^{-1}\\)."
+  },
+  {
+    "id": "b5e7ff75-0823-4f9e-b1b3-d47e0bbc69e0",
+    "ref": "Ex 7.19",
+    "solution": "The satellite's orbital radius is\n\n\\(r = R_E + h = 6.4 \\times 10^6 + 4.0 \\times 10^5 = 6.8 \\times 10^6\\,\\text{m}\\)\n\nA satellite in a circular orbit has total energy\n\n\\(E = -\\dfrac{G M_E m}{2r}\\)\n\nTo just free it from the earth's influence it must be raised to \\(E = 0\\), so the energy that has to be supplied is \\(-E\\):\n\n\\(-E = \\dfrac{6.67 \\times 10^{-11} \\times 6.0 \\times 10^{24} \\times 200}{2 \\times 6.8 \\times 10^6}\\)\n\n\\(-E = \\dfrac{8.00 \\times 10^{16}}{1.36 \\times 10^7} = 5.9 \\times 10^9\\,\\text{J}\\)\n\nThe energy that must be expended is \\(5.9 \\times 10^9\\,\\text{J}\\)."
+  },
+  {
+    "id": "70f30af3-c69f-4316-b907-6974a912be94",
+    "ref": "Ex 7.20",
+    "solution": "By symmetry each star has the same speed \\(v\\) at collision, and momentum stays zero throughout. Conserve total energy between the initial separation \\(d\\) (speeds negligible) and the moment of contact, when the centres are \\(2R\\) apart:\n\n\\(-\\dfrac{G M^2}{d} = -\\dfrac{G M^2}{2R} + 2\\left(\\dfrac{1}{2}M v^2\\right)\\)\n\n\\(M v^2 = G M^2\\left(\\dfrac{1}{2R} - \\dfrac{1}{d}\\right)\\)\n\n\\(v = \\sqrt{G M \\left(\\dfrac{1}{2R} - \\dfrac{1}{d}\\right)}\\)\n\nIn SI: \\(M = 2 \\times 10^{30}\\,\\text{kg}\\), \\(d = 10^9\\,\\text{km} = 10^{12}\\,\\text{m}\\), \\(R = 10^4\\,\\text{km} = 10^7\\,\\text{m}\\), so \\(2R = 2 \\times 10^7\\,\\text{m}\\).\n\n\\(\\dfrac{1}{2R} - \\dfrac{1}{d} = 5.0 \\times 10^{-8} - 1.0 \\times 10^{-12} \\approx 5.0 \\times 10^{-8}\\,\\text{m}^{-1}\\)\n\n(the initial separation is so large that its term is negligible)\n\n\\(v = \\sqrt{6.67 \\times 10^{-11} \\times 2 \\times 10^{30} \\times 5.0 \\times 10^{-8}} = \\sqrt{6.67 \\times 10^{12}}\\)\n\n\\(v = 2.6 \\times 10^6\\,\\text{m s}^{-1}\\)\n\nEach star is moving at about \\(2.6 \\times 10^6\\,\\text{m s}^{-1}\\) when they collide."
+  },
+  {
+    "id": "c4693b8f-79a7-42a3-a788-efb61bdc5075",
+    "ref": "Ex 7.21",
+    "solution": "[Textbook answer-key error (sign): the printed key gives the gravitational potential at the midpoint as \\(2.7 \\times 10^{-8}\\,\\text{J kg}^{-1}\\) with no leading minus. With the zero of potential taken at infinity — the convention this chapter uses throughout — a gravitational potential is necessarily NEGATIVE, so the value is \\(-2.7 \\times 10^{-8}\\,\\text{J kg}^{-1}\\). The magnitude, the zero field and the \"unstable\" verdict all agree with the key. It is not a dropped glyph: the same key entry prints a minus inside \\(10^{-8}\\), and the chapter's own table defines the potential as \\(-GM/r\\) while its Example 7.3 prints \\(-4\\sqrt{2}\\,Gm/l\\).] Each sphere is uniform, so outside it acts as a point mass at its centre. The midpoint is \\(r = 0.50\\,\\text{m}\\) from each centre (and well outside both, since each radius is only \\(0.10\\,\\text{m}\\)).\n\nFORCE: the two pulls are equal in magnitude and opposite in direction, so they cancel.\n\n\\(F = 0\\)\n\nPOTENTIAL: potential is a scalar, so the two contributions ADD rather than cancel.\n\n\\(V = -\\dfrac{G m}{r} - \\dfrac{G m}{r} = -\\dfrac{2 \\times 6.67 \\times 10^{-11} \\times 100}{0.50} = -2.7 \\times 10^{-8}\\,\\text{J kg}^{-1}\\)\n\nEQUILIBRIUM: since the net force is zero, an object placed there IS in equilibrium.\n\nSTABILITY: displace it slightly ALONG the line joining the centres and it moves nearer one sphere and further from the other, so that sphere's pull grows while the other's weakens and the net force drives it further away — the potential has a maximum along this direction. (Displaced PERPENDICULAR to the line it would be pushed back, but instability in even one direction is enough.)\n\n\\(F = 0\\); \\(V = -2.7 \\times 10^{-8}\\,\\text{J kg}^{-1}\\); the object is in equilibrium, and the equilibrium is UNSTABLE."
+  }
+]
