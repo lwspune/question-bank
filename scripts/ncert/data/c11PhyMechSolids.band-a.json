@@ -1,0 +1,50 @@
+[
+  {
+    "ref": "Eg 8.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Young's Modulus",
+    "difficulty": "MODERATE",
+    "stem": "A structural steel rod has a radius of 10 mm and a length of 1.0 m. A 100 kN force stretches it along its length. Calculate (a) stress, (b) elongation, and (c) strain on the rod. Young's modulus, of structural steel is \\(2.0 \\times 10^{11}\\,\\text{N m}^{-2}\\).",
+    "solution": "We assume that the rod is held by a clamp at one end, and the force \\(F\\) is applied at the other end, parallel to the length of the rod. Then the stress on the rod is given by\n\n\\(\\text{Stress} = \\frac{F}{A} = \\frac{F}{\\pi r^{2}}\\)\n\n\\(= \\frac{100 \\times 10^{3}\\,\\text{N}}{3.14 \\times \\left(10^{-2}\\,\\text{m}\\right)^{2}}\\)\n\n\\(= 3.18 \\times 10^{8}\\,\\text{N m}^{-2}\\)\n\nThe elongation,\n\n\\(\\Delta L = \\frac{(F/A)\\,L}{Y}\\)\n\n\\(= \\frac{\\left(3.18 \\times 10^{8}\\,\\text{N m}^{-2}\\right)(1\\,\\text{m})}{2 \\times 10^{11}\\,\\text{N m}^{-2}}\\)\n\n\\(= 1.59 \\times 10^{-3}\\,\\text{m}\\)\n\n\\(= 1.59\\,\\text{mm}\\)\n\nThe strain is given by\n\nStrain \\(= \\Delta L/L\\)\n\n\\(= (1.59 \\times 10^{-3}\\,\\text{m})/(1\\,\\text{m})\\)\n\n\\(= 1.59 \\times 10^{-3}\\)\n\n\\(= 0.16\\%\\)"
+  },
+  {
+    "ref": "Eg 8.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Young's Modulus",
+    "difficulty": "HARD",
+    "stem": "A copper wire of length 2.2 m and a steel wire of length 1.6 m, both of diameter 3.0 mm, are connected end to end. When stretched by a load, the net elongation is found to be 0.70 mm. Obtain the load applied.",
+    "solution": "The copper and steel wires are under a tensile stress because they have the same tension (equal to the load \\(W\\)) and the same area of cross-section \\(A\\). From Eq. (8.7) we have stress \\(=\\) strain \\(\\times\\) Young's modulus. Therefore\n\n\\(W/A = Y_{c} \\times (\\Delta L_{c}/L_{c}) = Y_{s} \\times (\\Delta L_{s}/L_{s})\\)\n\nwhere the subscripts \\(c\\) and \\(s\\) refer to copper and stainless steel respectively. Or,\n\n\\(\\Delta L_{c}/\\Delta L_{s} = (Y_{s}/Y_{c}) \\times (L_{c}/L_{s})\\)\n\nGiven \\(L_{c} = 2.2\\,\\text{m}\\), \\(L_{s} = 1.6\\,\\text{m}\\),\n\nFrom Table 9.1 \\(Y_{c} = 1.1 \\times 10^{11}\\,\\text{N m}^{-2}\\), and \\(Y_{s} = 2.0 \\times 10^{11}\\,\\text{N m}^{-2}\\).\n\n\\(\\Delta L_{c}/\\Delta L_{s} = (2.0 \\times 10^{11}/1.1 \\times 10^{11}) \\times (2.2/1.6) = 2.5\\).\n\nThe total elongation is given to be\n\n\\(\\Delta L_{c} + \\Delta L_{s} = 7.0 \\times 10^{-4}\\,\\text{m}\\)\n\nSolving the above equations,\n\n\\(\\Delta L_{c} = 5.0 \\times 10^{-4}\\,\\text{m}\\), and \\(\\Delta L_{s} = 2.0 \\times 10^{-4}\\,\\text{m}\\).\n\nTherefore\n\n\\(W = (A \\times Y_{c} \\times \\Delta L_{c})/L_{c}\\)\n\n\\(= \\pi (1.5 \\times 10^{-3})^{2} \\times [(5.0 \\times 10^{-4} \\times 1.1 \\times 10^{11})/2.2]\\)\n\n\\(= 1.8 \\times 10^{2}\\,\\text{N}\\)",
+    "_note": "The printed solution cites \"Table 9.1\" for the Young's moduli. This chapter is Chapter 8 and the Young's-moduli table in it is Table 8.1, a stale cross-reference left from the edition in which this was Chapter 9. Transcribed as printed. The values quoted (copper 1.1, steel 2.0, in units of \\(10^{11}\\,\\text{N m}^{-2}\\)) do match Table 8.1, so only the table NUMBER is wrong."
+  },
+  {
+    "ref": "Eg 8.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Young's Modulus",
+    "difficulty": "HARD",
+    "stem": "In a human pyramid in a circus, the entire weight of the balanced group is supported by the legs of a performer who is lying on his back (as shown in Fig. 8.4). The combined mass of all the persons performing the act, and the tables, plaques etc. involved is 280 kg. The mass of the performer lying on his back at the bottom of the pyramid is 60 kg. Each thighbone (femur) of this performer has a length of 50 cm and an effective radius of 2.0 cm. Determine the amount by which each thighbone gets compressed under the extra load.",
+    "solution": "Total mass of all the performers, tables, plaques etc. \\(= 280\\,\\text{kg}\\)\n\nMass of the performer \\(= 60\\,\\text{kg}\\)\n\nMass supported by the legs of the performer at the bottom of the pyramid \\(= 280 - 60 = 220\\,\\text{kg}\\)\n\nWeight of this supported mass \\(= 220\\,\\text{kg wt.} = 220 \\times 9.8\\,\\text{N} = 2156\\,\\text{N}\\).\n\nWeight supported by each thighbone of the performer \\(= \\tfrac{1}{2}(2156)\\,\\text{N} = 1078\\,\\text{N}\\).\n\nFrom Table 9.1, the Young's modulus for bone is given by\n\n\\(Y = 9.4 \\times 10^{9}\\,\\text{N m}^{-2}\\).\n\nLength of each thighbone \\(L = 0.5\\,\\text{m}\\)\n\nthe radius of thighbone \\(= 2.0\\,\\text{cm}\\)\n\nThus the cross-sectional area of the thighbone\n\n\\(A = \\pi \\times (2 \\times 10^{-2})^{2}\\,\\text{m}^{2} = 1.26 \\times 10^{-3}\\,\\text{m}^{2}\\).\n\nUsing Eq. (9.8), the compression in each thighbone \\((\\Delta L)\\) can be computed as\n\n\\(\\Delta L = [(F \\times L)/(Y \\times A)]\\)\n\n\\(= [(1078 \\times 0.5)/(9.4 \\times 10^{9} \\times 1.26 \\times 10^{-3})]\\)\n\n\\(= 4.55 \\times 10^{-5}\\,\\text{m}\\) or \\(4.55 \\times 10^{-3}\\,\\text{cm}\\).\n\nThis is a very small change! The fractional decrease in the thighbone is \\(\\Delta L/L = 0.000091\\) or \\(0.0091\\%\\).",
+    "_note": "The printed solution carries two stale cross-references from the edition in which this was Chapter 9: \"Table 9.1\" (the Young's-moduli table in this chapter is Table 8.1) and \"Eq. (9.8)\" (the Young's-modulus relation here is Eq. 8.8). Transcribed as printed; the quoted value for bone, \\(9.4 \\times 10^{9}\\,\\text{N m}^{-2}\\), does match Table 8.1."
+  },
+  {
+    "ref": "Eg 8.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Shear Modulus",
+    "difficulty": "MODERATE",
+    "stem": "A square lead slab of side 50 cm and thickness 10 cm is subject to a shearing force (on its narrow face) of \\(9.0 \\times 10^{4}\\,\\text{N}\\). The lower edge is riveted to the floor. How much will the upper edge be displaced?",
+    "solution": "The lead slab is fixed and the force is applied parallel to the narrow face as shown in Fig. 8.6. The area of the face parallel to which this force is applied is\n\n\\(A = 50\\,\\text{cm} \\times 10\\,\\text{cm}\\)\n\n\\(= 0.5\\,\\text{m} \\times 0.1\\,\\text{m}\\)\n\n\\(= 0.05\\,\\text{m}^{2}\\)\n\nTherefore, the stress applied is\n\n\\(= (9.4 \\times 10^{4}\\,\\text{N}/0.05\\,\\text{m}^{2})\\)\n\n\\(= 1.80 \\times 10^{6}\\,\\text{N m}^{-2}\\)\n\nWe know that shearing strain \\(= (\\Delta x/L) = \\text{Stress}/G\\). Therefore the displacement\n\n\\(\\Delta x = (\\text{Stress} \\times L)/G\\)\n\n\\(= (1.8 \\times 10^{6}\\,\\text{N m}^{-2} \\times 0.5\\,\\text{m})/(5.6 \\times 10^{9}\\,\\text{N m}^{-2})\\)\n\n\\(= 1.6 \\times 10^{-4}\\,\\text{m} = 0.16\\,\\text{mm}\\)",
+    "_note": "Two printed defects, both transcribed faithfully. (1) The solution's stress line reads \\(9.4 \\times 10^{4}\\,\\text{N}\\) where the stem states the shearing force is \\(9.0 \\times 10^{4}\\,\\text{N}\\). The stem's value is the correct one: \\(9.0 \\times 10^{4}/0.05 = 1.8 \\times 10^{6}\\), which is exactly the result the book then prints and carries forward, whereas \\(9.4 \\times 10^{4}/0.05 = 1.88 \\times 10^{6}\\). So the \"9.4\" is a misprint and the final answer 0.16 mm is unaffected. (2) The solution says \"as shown in Fig. 8.6\" but the figure printed immediately below it is captioned Fig. 8.5 (Fig. 8.6 is the loaded beam, three pages later)."
+  },
+  {
+    "ref": "Eg 8.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bulk Modulus and Compressibility",
+    "difficulty": "MODERATE",
+    "stem": "The average depth of Indian Ocean is about 3000 m. Calculate the fractional compression, \\(\\Delta V/V\\), of water at the bottom of the ocean, given that the bulk modulus of water is \\(2.2 \\times 10^{9}\\,\\text{N m}^{-2}\\). (Take \\(g = 10\\,\\text{m s}^{-2}\\))",
+    "solution": "The pressure exerted by a 3000 m column of water on the bottom layer\n\n\\(p = h \\rho g = 3000\\,\\text{m} \\times 1000\\,\\text{kg m}^{-3} \\times 10\\,\\text{m s}^{-2}\\)\n\n\\(= 3 \\times 10^{7}\\,\\text{kg m}^{-1}\\,\\text{s}^{-2}\\)\n\n\\(= 3 \\times 10^{7}\\,\\text{N m}^{-2}\\)\n\nFractional compression \\(\\Delta V/V\\), is\n\n\\(\\Delta V/V = \\text{stress}/B = (3 \\times 10^{7}\\,\\text{N m}^{-2})/(2.2 \\times 10^{9}\\,\\text{N m}^{-2})\\)\n\n\\(= 1.36 \\times 10^{-2}\\) or \\(1.36\\%\\)"
+  }
+]

@@ -448,6 +448,27 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
     { group: "Miscellaneous Exercise on Chapter 7", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ══ PHYSICS ═══════════════════════════════════════════════════════════════
+  // A Physics chapter's book structure is SIMPLER than a Maths one and its refs
+  // are different: there is exactly ONE terminal exercise block, numbered
+  // <chapter>.<n> directly, so there is no per-exercise banding and no
+  // Miscellaneous. The two prefixes are "Eg <n>." (worked Examples, printed
+  // "Example 8.3") and "Ex <n>." (exercise questions, printed "8.5").
+  //
+  // Those two namespaces OVERLAP by number and must not be merged: NCERT numbers
+  // worked Examples 8.1-8.5 and then restarts the exercises at 8.1, so "Eg 8.1"
+  // and "Ex 8.1" are different questions sharing a number. That is exactly why
+  // the prefixes differ. See PHYSICS_TRANSCRIPTION_BRIEF.md.
+
+  // Ch.8 Mechanical Properties of Solids — all five worked Examples sit inside
+  // §8.5 Elastic Moduli (verified by the transcription pass, which read the
+  // pages: 8.1/8.2/8.3 are Young's modulus, 8.4 shear, 8.5 bulk), so they form a
+  // single solved block rather than one per section.
+  c11PhyMechSolids: [
+    { group: "8.5 Elastic Moduli", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 8."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8."] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
