@@ -75,6 +75,20 @@ export type Appearance = {
 
 export type BankWord = { word: string; timesAsked: number; appearances: Appearance[] };
 
+/**
+ * A word that appears only as an OPTION, never as a question's target.
+ *
+ * These are phase 3 of the book — ~2,275 of them — but they are extracted now
+ * because THE CHAPTER BANDS CANNOT BE SIZED WITHOUT THEM. Bands are frozen into
+ * URLs, so they must be chosen against the final corpus; sizing on the 655
+ * target words alone produced 3 chapters where the finished Part 1 needs 14.
+ *
+ * `kinds` decides the part exactly as it does for a target word: a word offered
+ * as an option in a REAL PAPER has been put in front of candidates by UPSC, so
+ * it belongs in Part 1 even though the question was not about it.
+ */
+export type OptionWord = { word: string; exams: string[]; kinds: string[]; uses: number };
+
 /** Strip the underline markup so the sentence reads as printed. */
 export function plainSentence(stem: string): string {
   return stem
@@ -210,6 +224,32 @@ async function main() {
 
   const words = [...byWord.values()].sort((a, b) => a.word.localeCompare(b.word));
 
+  // Option words: single, lower-case, alphabetic. A multiword option is either a
+  // phrase ("give up") or an answer-format string ("neither 1 nor 2") — the
+  // latter is not vocabulary at all, so both are left to a later pass.
+  const SINGLE = /^[a-z][a-z'-]*$/;
+  const targets = new Set(byWord.keys());
+  const optAgg = new Map<string, { exams: Set<string>; kinds: Set<string>; uses: number }>();
+  for (const r of inScope) {
+    for (const o of (r.options ?? []) as { text: string }[]) {
+      const t = (o.text ?? "").trim().toLowerCase();
+      if (!SINGLE.test(t) || targets.has(t)) continue;
+      const e = optAgg.get(t) ?? { exams: new Set<string>(), kinds: new Set<string>(), uses: 0 };
+      e.exams.add(r.exams.name);
+      e.kinds.add(r.question_kind);
+      e.uses++;
+      optAgg.set(t, e);
+    }
+  }
+  const optionWords: OptionWord[] = [...optAgg.entries()]
+    .map(([word, v]) => ({
+      word,
+      exams: [...v.exams].sort(),
+      kinds: [...v.kinds].sort(),
+      uses: v.uses,
+    }))
+    .sort((a, b) => a.word.localeCompare(b.word));
+
   const usableSentence = words.filter((w) => w.appearances.some((a) => !a.bareStem)).length;
   const bothExams = words.filter(
     (w) => new Set(w.appearances.map((a) => a.exam)).size > 1
@@ -225,6 +265,9 @@ async function main() {
   console.log(
     `appearances                       : ${words.reduce((n, w) => n + w.timesAsked, 0)}`
   );
+  const optPyq = optionWords.filter((o) => o.kinds.includes("pyq")).length;
+  console.log(`option-only words                 : ${optionWords.length}`);
+  console.log(`  offered in a REAL paper         : ${optPyq}`);
 
   if (!WRITE) {
     console.log("\n[report only] pass --write to emit data/bank-words.json");
@@ -232,7 +275,9 @@ async function main() {
   }
   mkdirSync(DATA, { recursive: true });
   writeFileSync(join(DATA, "bank-words.json"), JSON.stringify(words, null, 1) + "\n");
-  console.log(`\nwrote data/bank-words.json (${words.length} words)`);
+  writeFileSync(join(DATA, "option-words.json"), JSON.stringify(optionWords, null, 1) + "\n");
+  console.log(`\nwrote data/bank-words.json   (${words.length} target words)`);
+  console.log(`wrote data/option-words.json (${optionWords.length} option-only words)`);
 }
 
 if (require.main === module) {
