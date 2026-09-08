@@ -84,7 +84,7 @@ export const CADET_VOCAB: VocabBookDefinition = {
   slug: "cadet-vocab",
   title: "Cadet Vocabulary",
   subtitle:
-    "Every word the NDA and CDS papers have actually asked, with the sentence it was asked in — followed by the Class 5-12 school list.",
+    "Every word the NDA and CDS papers have actually asked, with the sentence it was asked in — then the words only the mocks set, then the Class 5-12 school list.",
   parts: [
     {
       key: "pyq",
