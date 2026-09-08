@@ -19,10 +19,13 @@
  * shared `placementOf` for the same reason: two readers of the same data drift,
  * and the drift is silent — a worksheet offering a word the commit then refuses.
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { BankWord, OptionWord } from "./extract-bank";
 import type { SchoolWord } from "./extract-docx";
+
+/** One line of the fill roster: the word, and the rung it was commissioned for. */
+export type FillWord = { word: string; class: number };
 
 const DATA = join(__dirname, "data");
 
@@ -41,6 +44,22 @@ export type CorpusWord = {
    * synonym/antonym job, with this as the starting point rather than a blank.
    */
   schoolMeaning?: string;
+  /**
+   * The rung a school word sits on, and where that grading came from.
+   *
+   * DERIVED FROM A DECLARED SOURCE FILE, never authored on the entry — the same
+   * rule `part` and `section` follow, and for the same reason: a class heading
+   * is a claim about a word's level, and letting whoever types the entry pick
+   * its rung would put that claim in their hands.
+   *
+   *   'cbse'     — the class that FIRST introduces it in the printed CBSE
+   *                lists. `school-words.json`, min of its `classes`.
+   *   'authored' — written to fill a rung the printed lists leave thin, at the
+   *                level of that class. `school-fill-words.json`, which is a
+   *                roster: the word and the rung it was commissioned for.
+   */
+  schoolClass?: number;
+  schoolSource?: "cbse" | "authored";
   /** Empty for an option-only word. */
   appearances: BankWord["appearances"];
   /** True when a question was ABOUT this word, not merely offering it. */
@@ -104,12 +123,51 @@ export function loadCorpus(): CorpusWord[] {
       word: w.word,
       source: "school",
       schoolMeaning: w.meaning,
+      // LOWEST class wins: the source reprints a word in every list that
+      // revises it, so the class that first introduces it is the rung at which
+      // a student should already have it. See plan-school-classes.ts.
+      schoolClass: Math.min(...w.classes),
+      schoolSource: "cbse",
       appearances: [],
       tested: false,
       pyqExams: [],
       allExams: [],
     });
     seen.add(w.word);
+  }
+
+  /**
+   * THE FILL ROSTER. Optional: absent until the upper rungs are commissioned.
+   *
+   * Every word here is REFUSED if anything else already claims it, in either
+   * direction. A collision with the exam corpus means the word belongs to Part
+   * 2 or 3 (the registry calls part membership frozen), and a collision with
+   * the CBSE list means a publisher already graded it — so in both cases
+   * accepting the fill entry would silently overrule a stronger claim.
+   */
+  const fillPath = join(DATA, "school-fill-words.json");
+  if (existsSync(fillPath)) {
+    const fill = JSON.parse(readFileSync(fillPath, "utf8")) as FillWord[];
+    for (const f of fill) {
+      const word = f.word.toLowerCase();
+      if (seen.has(word)) {
+        throw new Error(
+          `${word}: commissioned as a Class ${f.class} fill word but the corpus already ` +
+            `has it — REFUSING (it belongs where it already is)`
+        );
+      }
+      out.push({
+        word,
+        source: "school",
+        schoolClass: f.class,
+        schoolSource: "authored",
+        appearances: [],
+        tested: false,
+        pyqExams: [],
+        allExams: [],
+      });
+      seen.add(word);
+    }
   }
 
   return out.sort((a, b) => a.word.localeCompare(b.word));

@@ -181,8 +181,15 @@ export type VocabChapter = {
    * distinguishable.
    */
   section?: VocabSectionKey;
-  /** Inclusive first letters this chapter covers. */
-  letters: string[];
+  /**
+   * Set on PART 1 ONLY. Part 1 is a class ladder, so its chapter is decided by
+   * the word's CLASS and not by its initial letter -- which is why `letters` is
+   * optional and absent there. The two are mutually exclusive by construction:
+   * a chapter is found by one or the other, never both.
+   */
+  schoolClass?: number;
+  /** Inclusive first letters this chapter covers. Absent on a class rung. */
+  letters?: string[];
   /** Measured against the FINAL corpus — a target, not a promise. */
   expected: number;
 };
@@ -213,7 +220,7 @@ export const CADET_VOCAB: VocabBookDefinition = {
    * actually set, then out to what the coaching books add.
    *
    * The ORDINALS live here and nowhere else. Slugs are keyed on the part's NAME
-   * ("school-a-b", "papers-c"), never its number, so reordering the parts moves
+   * ("school-class-9", "papers-c"), never its number, so reordering the parts moves
    * no URL — which is the whole reason to name rather than number a slug.
    */
   parts: [
@@ -221,8 +228,18 @@ export const CADET_VOCAB: VocabBookDefinition = {
       key: "school",
       ordinal: "Part 1",
       title: "School List (Class 5-12)",
+      /**
+       * THE BLURB NAMES THE MIXED PROVENANCE, because the heading "Class 9"
+       * would otherwise imply CBSE graded every word under it. Most of the
+       * upper rungs are ours: the printed Class 9 list is 86% a re-run of
+       * Class 7, so filing each word at the class that FIRST introduces it
+       * leaves Class 9 holding 21 of the source's words and Class 12 holding
+       * 30. The rest were written to the level of that class. `school_source`
+       * records which is which per row (migration 0092); this line is what a
+       * reader sees.
+       */
       blurb:
-        "The CBSE class lists — the foundation. Not yet seen in either exam, but assumed by both.",
+        "A ladder, one rung per class. Each word sits at the class that should first know it, so a student can start at their own level and climb. Built on the CBSE class lists and extended to a full rung where those lists only repeat themselves.",
     },
     {
       key: "pyq",
@@ -320,10 +337,25 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "practice-n-s", label: "N-S", part: "practice", letters: band("N", "S"), expected: 180 },
     { slug: "practice-t-z", label: "T-Z", part: "practice", letters: band("T", "Z"), expected: 63 },
 
-    { slug: "school-a-b", label: "A-B", part: "school", letters: band("A", "B"), expected: 145 },
-    { slug: "school-c-d", label: "C-D", part: "school", letters: band("C", "D"), expected: 188 },
-    { slug: "school-e-l", label: "E-L", part: "school", letters: band("E", "L"), expected: 191 },
-    { slug: "school-m-z", label: "M-Z", part: "school", letters: band("M", "Z"), expected: 152 },
+    // ── Part 1 · the class ladder ──
+    //
+    // EIGHT RUNGS, NOT FOUR LETTER BANDS. A band answers "where do I look this
+    // word up"; a rung answers "what should I know by now", which is the only
+    // question this part exists to answer. The letter bands went with the A-Z
+    // index they were built to complement.
+    //
+    // A WORD SITS AT THE CLASS THAT FIRST INTRODUCES IT, so it is printed once
+    // and a Class 10 student can start at Class 5 and climb. `expected` is the
+    // ~130 target per rung; Class 5 keeps its 164, since levelling it down
+    // would mean dropping real CBSE words to hit a round number.
+    { slug: "school-class-5",  label: "Class 5",  part: "school", schoolClass: 5,  expected: 164 },
+    { slug: "school-class-6",  label: "Class 6",  part: "school", schoolClass: 6,  expected: 130 },
+    { slug: "school-class-7",  label: "Class 7",  part: "school", schoolClass: 7,  expected: 130 },
+    { slug: "school-class-8",  label: "Class 8",  part: "school", schoolClass: 8,  expected: 130 },
+    { slug: "school-class-9",  label: "Class 9",  part: "school", schoolClass: 9,  expected: 130 },
+    { slug: "school-class-10", label: "Class 10", part: "school", schoolClass: 10, expected: 130 },
+    { slug: "school-class-11", label: "Class 11", part: "school", schoolClass: 11, expected: 130 },
+    { slug: "school-class-12", label: "Class 12", part: "school", schoolClass: 12, expected: 130 },
 
     /**
      * ═══ SORTED ON THE LITERAL FIRST WORD (user's call) ═══
@@ -400,14 +432,27 @@ export function chapterFor(
   book: VocabBookDefinition,
   part: VocabPartKey,
   word: string,
-  section: VocabSectionKey | null
+  section: VocabSectionKey | null,
+  schoolClass: number | null
 ): VocabChapter | undefined {
+  // A CLASS-LADDERED PART IS FOUND BY CLASS, NEVER BY LETTER. `schoolClass` is
+  // required-but-nullable for the same reason `section` is: making it optional
+  // would let a caller silently omit it and land on `undefined`, where a
+  // required parameter makes the typechecker enumerate every call site.
+  const laddered = book.chapters.some((c) => c.part === part && c.schoolClass !== undefined);
+  if (laddered) {
+    if (schoolClass == null) {
+      throw new Error(`chapterFor: part "${part}" is a class ladder — pass a class`);
+    }
+    return book.chapters.find((c) => c.part === part && c.schoolClass === schoolClass);
+  }
+
   const first = (word.trim()[0] ?? "").toUpperCase();
   const sectioned = book.chapters.some((c) => c.part === part && c.section);
   if (sectioned && !section) {
     throw new Error(`chapterFor: part "${part}" is split by exam — pass a section`);
   }
   return book.chapters.find(
-    (c) => c.part === part && c.letters.includes(first) && (!sectioned || c.section === section)
+    (c) => c.part === part && (c.letters?.includes(first) ?? false) && (!sectioned || c.section === section)
   );
 }

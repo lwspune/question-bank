@@ -132,13 +132,22 @@ export function preferredAppearance(w: {
 export function placementOf(w: CorpusWord): {
   part: "pyq" | "practice" | "school";
   section: VocabSectionKey | null;
+  /** The rung, for Part 1 only. Null everywhere else. */
+  schoolClass: number | null;
 } {
-  if (w.source === "school") return { part: "school", section: null };
+  if (w.source === "school") {
+    // A school word with no rung cannot be placed at all, and defaulting it to
+    // any class would print an invented level under a printed heading.
+    if (w.schoolClass == null) {
+      throw new Error(`${w.word}: a Part 1 word with no class — REFUSING`);
+    }
+    return { part: "school", section: null, schoolClass: w.schoolClass };
+  }
   // `pyqExams` covers both halves of the corpus: for a TARGET word it is the
   // exams whose papers asked it, for an OPTION word the exams whose papers
   // printed it. A word with none of either belongs to Part 3.
-  if (!w.pyqExams.length) return { part: "practice", section: null };
-  return { part: "pyq", section: examSectionOf(w.pyqExams) };
+  if (!w.pyqExams.length) return { part: "practice", section: null, schoolClass: null };
+  return { part: "pyq", section: examSectionOf(w.pyqExams), schoolClass: null };
 }
 
 async function main() {
@@ -158,9 +167,9 @@ async function main() {
      * entry — which is how "adroit" was cited as an NDA question off an Oswaal
      * coaching book.
      */
-    const { part, section } = placementOf(w);
-    const chapter = chapterFor(CADET_VOCAB, part, a.word, section);
-    if (!chapter) throw new Error(`${a.word}: no chapter covers its first letter — REFUSING`);
+    const { part, section, schoolClass } = placementOf(w);
+    const chapter = chapterFor(CADET_VOCAB, part, a.word, section, schoolClass);
+    if (!chapter) throw new Error(`${a.word}: no chapter covers it — REFUSING`);
 
     // The citation must match a real appearance.
     if (a.sentenceSource) {
@@ -268,6 +277,12 @@ async function main() {
       // printed by the paper, never asked by it, and a "2x" beside it would
       // assert the opposite.
       times_asked: w.appearances.filter((x) => x.kind === "pyq").length,
+      // Both NULL for every part but Part 1, which the DB insists on: a
+      // non-school row carrying either violates
+      // `vocab_entries_school_fields_match_part` (0093). Carried from the
+      // corpus, never from the authored entry -- see placementOf.
+      school_class: schoolClass,
+      school_source: part === "school" ? (w.schoolSource ?? null) : null,
       note: a.note ?? null,
       excluded: a.excluded ?? false,
       derived_model: MODEL,

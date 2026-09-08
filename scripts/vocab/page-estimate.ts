@@ -7,10 +7,15 @@
  * breaks. This exists so a page count can be quoted before opening anything,
  * and so a change in entry format can be costed in pages rather than characters.
  *
- * ═══ CALIBRATED AGAINST WORD, TWICE: IT RUNS 14-17% HIGH ═══
+ * ═══ CALIBRATED AGAINST WORD, THREE TIMES: IT RUNS 13-17% HIGH ═══
  *
  *   2026-09-08  per-chapter page breaks + A-Z index   Word 176   here 206  (+17%)
  *   2026-09-08  continuous chapters, no index         Word 154   here 175  (+14%)
+ *   2026-09-08  page per chapter, Part 1 as 8 rungs   Word 199   here 225  (+13%)
+ *
+ * The bias is stable across a doubling of the book and two structural changes,
+ * which is the useful property: a CHANGE in this number is worth reading even
+ * though its absolute value is not.
  *
  * The bias is deliberate and is kept — `CPL` is rounded down, which under-counts
  * characters per line and so over-counts pages, and a printer's quote that comes

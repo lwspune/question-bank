@@ -82,7 +82,8 @@ async function main() {
     // Section is DERIVED from the corpus, never authored — a paper set it, or
     // only a mock did, and that is the one claim Part 4's structure makes.
     const section = idiomSectionOf(w.timesAsked);
-    const chapter = chapterFor(CADET_VOCAB, "idiom", w.idiom, section);
+    const chapter = // Part 4 is not a class ladder, so it carries no rung.
+    chapterFor(CADET_VOCAB, "idiom", w.idiom, section, null);
     if (!chapter) throw new Error(`${w.idiom}: no idiom chapter covers its first letter — REFUSING`);
 
     let meaning = MEANING_CHOICE[w.idiom];
