@@ -117,6 +117,27 @@ too, and **prove a probe can go red before trusting it green**: on the pilot one
 reported "0 math zones" because it filtered on the wrong field names and was silently
 verifying nothing.
 
+## ⚠ DO THE WORK YOURSELF — do not delegate the bands to sub-agents
+
+**Transcribe your own bands.** Do not spawn sub-agents for them.
+
+This is not a style preference, it is a lifecycle fact that has already cost two stalls on one
+chapter: **your turn ends as soon as you have no live children**, and that fires while you are
+waiting for them. The chapter then sits half-transcribed with no merge, and needs a human to
+notice and resume you. On the first occurrence exactly two of four bands existed, one of them
+a 744-byte stub.
+
+A chapter here is 22-47 pages. Reading it yourself, in order, is well within one agent's
+reach — and it is what catches the things a band split hides: a block continuing past a page,
+an "Intext Question" heading printed SINGULAR because it holds one item, a `Problem 8.2` split
+across two spans. Band your own reading if it helps you keep track; just do not hand a band to
+another agent.
+
+If you have already spawned children before reading this: do not wait on them. Check what is
+on disk, verify it rather than trusting that a file exists (a file being present is not
+evidence its author finished — check refs, ranges and bucket/solution agreement), and
+transcribe whatever is missing or stubbed yourself.
+
 ## Working rules for a parallel wave
 
 - Other agents are working in `scripts/ncert/data/` at the same time. **Touch only your own
