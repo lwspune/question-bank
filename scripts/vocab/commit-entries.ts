@@ -140,8 +140,20 @@ async function main() {
         );
       }
     }
-    if (a.sentence && !a.sentenceSource) {
-      warnings.push(`${a.word}: sentence with no source — will read as AUTHORED`);
+    /**
+     * An authored sentence is only worth flagging when a REAL ONE WAS ON OFFER.
+     *
+     * Roughly half of Part 3's words appear only in a bare stem — "Choose the
+     * word most similar in meaning to ABATE" — so there is no sentence to
+     * quote and authoring one is the only option, not a shortcut. Warning
+     * there would fire on the expected case for most of a whole part, and a
+     * gate that cries wolf on a legitimate outcome is worse than no gate: the
+     * next person either burns time re-checking it or learns to wave it
+     * through. It still fires when the corpus HAS a usable sentence and the
+     * author did not use it, which is the case worth a second look.
+     */
+    if (a.sentence && !a.sentenceSource && w.appearances.some((x) => !x.bareStem)) {
+      warnings.push(`${a.word}: authored a sentence although the corpus carries a real one`);
     }
 
     // If a real paper carries this sentence, cite the paper, not the mock.
@@ -191,7 +203,8 @@ async function main() {
       const other = app.role === "antonym" ? ourSyn : ourAnt;
       if (other.has(key)) {
         warnings.push(
-          `${a.word}: the paper keys "${app.key}" as a ${app.role.toUpperCase()} but we list it as the OPPOSITE`
+          `${a.word}: the paper keys "${app.key}" as ${app.role === "antonym" ? "an" : "a"} ` +
+            `${app.role.toUpperCase()} but we list it as the OPPOSITE`
         );
       } else if (!want.has(key) && want.size) {
         warnings.push(`${a.word}: paper's ${app.role} "${app.key}" is not in our ${app.role}s`);
