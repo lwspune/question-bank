@@ -125,7 +125,17 @@ async function main() {
      * a word offered in eight questions is commoner than one offered in one,
      * and that is the only signal available for these.
      */
-    if (!w.tested) {
+    if (w.source === "school") {
+      /**
+       * The docx's OWN gloss is printed, because Part 1 is not a
+       * definition-writing job — all 924 school words already carry one. It is
+       * offered as a STARTING POINT, not as text to copy: the docx writes
+       * "To give up completely or leave behind", and the book's house style is
+       * a lower-case clause with no closing full stop.
+       */
+      lines.push(`- [school] Class 5-12 list — never yet set by either exam`);
+      lines.push(`  docx gloss: ${w.schoolMeaning ?? "(none)"}`);
+    } else if (!w.tested) {
       const where = w.pyqExams.length ? w.pyqExams.join(" + ") : w.allExams.join(" + ");
       lines.push(`- [option] offered among the choices in ${where} — never the target`);
       lines.push(`  no sentence and no key: the meaning must be authored`);

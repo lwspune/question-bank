@@ -55,6 +55,28 @@ sentence under it, that word IS a tested word: use that sentence verbatim and
 set `sentenceSource` to the citation exactly as printed. None of the current
 chapters contain any.)
 
+## Three kinds of worksheet entry
+
+- **`- [option] …`** — the exams printed it among the choices. No sentence, no
+  key. Author the meaning and the sentence.
+- **`- [school] …`** — from the Class 5-12 school list; neither exam has set it.
+  It comes with a **`docx gloss`** line.
+- **`- [synonym] NDA 2019 (Apr)`** with a `>` sentence — a tested word (see
+  above). Rare in these chapters.
+
+### The `docx gloss` is a STARTING POINT, not text to paste
+
+It is the school book's own definition and it is usually sound, but it is
+written in a different style: `To give up a position of power or responsibility`
+— capitalised, often an infinitive phrase. House style is a lower-case clause
+with **no closing full stop**: `to give up a position of power or
+responsibility`.
+
+Read it, then write the meaning you would write anyway. Where the gloss is
+thin, or misses a second live sense, improve it — you are not bound by it. Where
+it is simply right, lower-casing it is the correct outcome and not laziness.
+**Never copy a gloss you believe is wrong**; report it instead.
+
 ## Coverage
 
 Every heading in the worksheet, exactly once, nothing extra. The worksheet's

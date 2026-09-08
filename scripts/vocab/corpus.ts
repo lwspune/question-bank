@@ -22,11 +22,25 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { BankWord, OptionWord } from "./extract-bank";
+import type { SchoolWord } from "./extract-docx";
 
 const DATA = join(__dirname, "data");
 
 export type CorpusWord = {
   word: string;
+  /**
+   * Which half of the book this word came from. `school` words are NOT in the
+   * exam corpus at all — they come from the Class 5-12 docx — so they carry no
+   * exam and must file into Part 1. The DB enforces that: a school row with a
+   * non-empty `exams` violates `vocab_entries_exams_match_part`.
+   */
+  source: "exam" | "school";
+  /**
+   * The docx's own gloss, for a school word. ALL 924 school words already carry
+   * one, so Part 1 is not a definition-writing job — it is a sentence and
+   * synonym/antonym job, with this as the starting point rather than a blank.
+   */
+  schoolMeaning?: string;
   /** Empty for an option-only word. */
   appearances: BankWord["appearances"];
   /** True when a question was ABOUT this word, not merely offering it. */
@@ -48,6 +62,7 @@ export function loadCorpus(): CorpusWord[] {
 
   const out: CorpusWord[] = bank.map((w) => ({
     word: w.word,
+    source: "exam" as const,
     appearances: w.appearances,
     tested: true,
     pyqExams: [...new Set(w.appearances.filter((a) => a.kind === "pyq").map((a) => a.exam))].sort(),
@@ -66,11 +81,36 @@ export function loadCorpus(): CorpusWord[] {
     }
     out.push({
       word: o.word,
+      source: "exam",
       appearances: [],
       tested: false,
       pyqExams: o.pyqExams,
       allExams: o.exams,
     });
+    seen.add(o.word);
   }
+
+  /**
+   * PART 1, and the exclusion is the point: a school word that an exam has ALSO
+   * printed belongs to Part 2 or 3, not here. 248 of the 924 are in that
+   * position. The registry's own note calls part membership frozen — a word is
+   * in Part 2 if the exams touch it AT ALL — so filing one here would move it
+   * later and change both its URL and what it claims to a reader.
+   */
+  const school = JSON.parse(readFileSync(join(DATA, "school-words.json"), "utf8")) as SchoolWord[];
+  for (const w of school) {
+    if (seen.has(w.word)) continue;
+    out.push({
+      word: w.word,
+      source: "school",
+      schoolMeaning: w.meaning,
+      appearances: [],
+      tested: false,
+      pyqExams: [],
+      allExams: [],
+    });
+    seen.add(w.word);
+  }
+
   return out.sort((a, b) => a.word.localeCompare(b.word));
 }

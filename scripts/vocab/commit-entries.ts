@@ -130,9 +130,10 @@ export function preferredAppearance(w: {
  * under another.
  */
 export function placementOf(w: CorpusWord): {
-  part: "pyq" | "practice";
+  part: "pyq" | "practice" | "school";
   section: VocabSectionKey | null;
 } {
+  if (w.source === "school") return { part: "school", section: null };
   // `pyqExams` covers both halves of the corpus: for a TARGET word it is the
   // exams whose papers asked it, for an OPTION word the exams whose papers
   // printed it. A word with none of either belongs to Part 3.
@@ -242,6 +243,9 @@ async function main() {
       }
     }
 
+    // EMPTY FOR A SCHOOL WORD, and the database insists: the CHECK
+    // `vocab_entries_exams_match_part` refuses a school row that names an exam,
+    // because naming one would claim a paper printed it.
     const exams = w.allExams;
     return {
       book_slug: CADET_VOCAB.slug,
