@@ -58,7 +58,8 @@ const APPLY = process.argv.includes("--apply");
     // that no longer exists, and it would render nowhere.
     if (!w) throw new Error(`${r.word}: not in bank-words.json — cannot re-file, REFUSING`);
     const { part, section } = placementOf(w);
-    const ch = chapterFor(CADET_VOCAB, part, r.word, section);
+    const ch = // Part 2 only -- this script never sees a Part 1 row, so it has no rung.
+    chapterFor(CADET_VOCAB, part, r.word, section, null);
     if (!ch) throw new Error(`${r.word}: no chapter for ${part}/${section} — REFUSING`);
     if (ch.slug === r.chapter_slug) unchanged.push(r.word);
     else moves.push({ id: r.id, word: r.word, from: r.chapter_slug, to: ch.slug });

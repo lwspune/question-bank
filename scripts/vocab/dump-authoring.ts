@@ -77,8 +77,8 @@ async function main() {
   // worksheet would offer a word under one chapter and the commit file it under
   // another.
   const mine = bank.filter((w) => {
-    const { part, section } = placementOf(w);
-    return chapterFor(CADET_VOCAB, part, w.word, section)?.slug === slug && !already.has(w.word);
+    const { part, section, schoolClass } = placementOf(w);
+    return chapterFor(CADET_VOCAB, part, w.word, section, schoolClass)?.slug === slug && !already.has(w.word);
   });
 
   mkdirSync(OUT, { recursive: true });

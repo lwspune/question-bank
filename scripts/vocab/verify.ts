@@ -32,7 +32,7 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
         // undefined, and a check on undefined quietly passes for every row —
         // `times_asked` was missing here while a check keyed on it reported a
         // reassuring 0 that it could never have failed to report.
-        "word,part,chapter_slug,position,meaning,sentence,sentence_source,synonyms,antonyms,excluded,derived_model,times_asked,exams"
+        "word,part,chapter_slug,position,meaning,sentence,sentence_source,synonyms,antonyms,excluded,derived_model,times_asked,exams,school_class,school_source"
       )
       .eq("book_slug", CADET_VOCAB.slug)
       .order("word")
@@ -108,6 +108,36 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
   console.log(
     `   no antonyms (deliberate — no natural opposite): ${rows.filter((r) => !r.antonyms?.length).length}`
   );
+
+  /**
+   * PART 1 IS A CLASS LADDER, so a school row's rung must agree with the
+   * chapter it sits in. The DB CHECK (0093) already refuses a school row with
+   * no rung; what it CANNOT see is a row whose `school_class` says 9 while its
+   * `chapter_slug` says `school-class-11` — both columns are individually
+   * valid and the book would print the word on the wrong rung with nothing
+   * anywhere reporting it.
+   */
+  const school = rows.filter((r) => r.part === "school");
+  const rungOf = new Map(
+    CADET_VOCAB.chapters
+      .filter((c) => c.part === "school")
+      .map((c) => [c.slug, c.schoolClass])
+  );
+  const mismatched = school.filter((r) => rungOf.get(r.chapter_slug) !== r.school_class);
+  const cbse = school.filter((r) => r.school_source === "cbse").length;
+  const authored = school.filter((r) => r.school_source === "authored").length;
+  console.log(`
+Part 1 ladder: ${school.length} words`);
+  console.log(`   graded by CBSE: ${cbse}   authored to level: ${authored}`);
+  console.log(
+    `   class disagrees with its chapter: ${mismatched.length}` +
+      (mismatched.length ? `  !! ${mismatched.slice(0, 5).map((r) => r.word).join(", ")}` : "")
+  );
+  // A non-school row carrying a rung is refused by the DB, so this is belt and
+  // braces -- but it is one line and it is the check that would catch a future
+  // part being added without thinking about these columns.
+  const strays = rows.filter((r) => r.part !== "school" && r.school_class != null);
+  console.log(`   non-school rows carrying a class: ${strays.length}`);
 
   // per chapter, and position must be contiguous alphabetical
   for (const ch of CADET_VOCAB.chapters) {

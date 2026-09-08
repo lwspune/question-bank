@@ -100,10 +100,21 @@ function main() {
     .filter((w) => !bankSet.has(w.word) && !optSet.has(w.word))
     .map((w) => w.word);
 
+  /**
+   * PART 1 IS NO LONGER HERE, and its absence is deliberate. It is a CLASS
+   * LADDER now — one rung per class, found by the word's class rather than its
+   * initial letter — so letter bands are the wrong shape for it entirely.
+   * Re-adding it would print eight replacement chapters that quietly undo the
+   * ladder. Size that part with `plan-school-classes.ts`.
+   *
+   * `schoolWords` is still computed above, because the exclusion it performs
+   * (a school word an exam has also printed belongs to Part 2 or 3) is what
+   * makes the OTHER two counts right.
+   */
+  void schoolWords;
   const sets: [string, string, string[]][] = [
     ["pyq", "papers", pyqWords],
     ["practice", "practice", practiceWords],
-    ["school", "school", schoolWords],
   ];
 
   let total = 0;
