@@ -20,6 +20,15 @@
  * author can judge against a hundred real examples far better than against an
  * adjective like "moderate".
  *
+ * ═══ A PENDING PROPOSAL IS AS TAKEN AS A COMMITTED ONE ═══
+ *
+ * The rungs are authored in PARALLEL against a snapshot of the taken list, so
+ * no author can see a sibling's proposals — and words on the boundary between
+ * two rungs are exactly the ones two authors both reach for. The first run lost
+ * 79 of 398 that way. So the list is built from the database AND from every
+ * `data/fill-class-*.json` already on disk, and a rung's remaining need is
+ * counted net of what has been written for it.
+ *
  * ═══ THE TAKEN LIST IS A FILE, NOT A PROMPT ═══
  *
  * 3,700 words will not survive being pasted into a prompt and read carefully.
@@ -27,7 +36,7 @@
  * `build-fill-roster.ts` re-checks every proposal mechanically afterwards —
  * because an instruction to check is not a check.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
@@ -35,6 +44,8 @@ import { createClient } from "@supabase/supabase-js";
 import { CADET_VOCAB } from "../../src/lib/vocab/registry";
 
 const OUT = join(__dirname, "out");
+const DATA = join(__dirname, "data");
+const CLASSES = [5, 6, 7, 8, 9, 10, 11, 12];
 const arg = (n: string, d: number) =>
   Number(process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d);
 const TARGET = arg("target", 130);
@@ -57,25 +68,41 @@ const TARGET = arg("target", 130);
     if ((data ?? []).length < 1000) break;
   }
 
+  // Words written for a rung but not yet committed. On a top-up pass these
+  // exist only on disk, so a list built from the database alone would invite
+  // the very collisions this pass is repairing.
+  const pending = new Map<number, string[]>();
+  for (const cls of CLASSES) {
+    const f = join(DATA, `fill-class-${cls}.json`);
+    if (!existsSync(f)) continue;
+    const written = JSON.parse(readFileSync(f, "utf8")) as { word: string }[];
+    pending.set(cls, written.map((r) => r.word.toLowerCase()));
+  }
+  const pendingAll = [...pending.values()].flat();
+
   mkdirSync(OUT, { recursive: true });
-  writeFileSync(
-    join(OUT, "_taken-words.txt"),
-    rows.map((r) => r.word).sort().join("\n") + "\n"
+  const taken = [...rows.map((r) => r.word), ...pendingAll].sort();
+  writeFileSync(join(OUT, "_taken-words.txt"), taken.join("\n") + "\n");
+  console.log(
+    `taken list: ${rows.length} in the book + ${pendingAll.length} already proposed ` +
+      `= ${taken.length} -> out/_taken-words.txt`
   );
-  console.log(`taken list: ${rows.length} words -> out/_taken-words.txt`);
 
   const rungs = CADET_VOCAB.chapters.filter((c) => c.part === "school");
   const atRung = (c: number) =>
-    rows.filter((r) => r.part === "school" && r.school_class === c).sort((a, b) =>
-      a.word.localeCompare(b.word)
-    );
+    rows
+      .filter((r) => r.part === "school" && r.school_class === c)
+      .sort((a, b) => a.word.localeCompare(b.word));
 
   for (const ch of rungs) {
     const cls = ch.schoolClass!;
     const have = atRung(cls);
-    const need = Math.max(0, TARGET - have.length);
+    const proposed = pending.get(cls)?.length ?? 0;
+    const need = Math.max(0, TARGET - have.length - proposed);
     if (!need) {
-      console.log(`  Class ${cls}: full (${have.length}) — no brief`);
+      console.log(
+        `  Class ${String(cls).padStart(2)}: full (${have.length} cbse + ${proposed} fill)`
+      );
       continue;
     }
     const below = cls > 5 ? atRung(cls - 1) : [];
@@ -86,43 +113,61 @@ const TARGET = arg("target", 130);
         ? xs.map((r) => `- **${r.word}** — ${r.meaning}`).join("\n")
         : "_(none — this rung is one of the thin ones)_";
 
-    const md = `# Fill roster — Class ${cls}
+    const topUp = proposed
+      ? [
+          "",
+          `> **This is a TOP-UP.** ${proposed} words have already been written for this`,
+          "> rung by an earlier pass. They are counted above and they are in the taken",
+          "> list, so do not repeat them and do not rewrite their file.",
+          `> Write ONLY the ${need} new ones, to \`data/fill-class-${cls}-topup.json\`.`,
+          "",
+        ].join("\n")
+      : "";
 
-Author **${need}** new entries for the Class ${cls} rung of Part 1.
+    const target = proposed
+      ? `\`scripts/vocab/data/fill-class-${cls}-topup.json\``
+      : `\`scripts/vocab/data/fill-class-${cls}.json\``;
 
-Read \`scripts/vocab/FILL_BRIEF.md\` first. It is the contract; this file is
-only the data for your rung.
-
-## Write to
-
-\`scripts/vocab/data/fill-class-${cls}.json\`
-
-## The level you are matching
-
-These are the words CBSE itself places at Class ${cls}. **Match their
-difficulty** — not the hardest of them, the middle.
-
-${list(have)}
-
-${
-  below.length
-    ? `### Class ${cls - 1} (just below — do not go this easy)\n\n${list(below.slice(0, 40))}\n`
-    : ""
-}${
+    const md = [
+      `# Fill roster — Class ${cls}`,
+      "",
+      `Author **${need}** new entries for the Class ${cls} rung of Part 1.`,
+      topUp,
+      "Read `scripts/vocab/FILL_BRIEF.md` first. It is the contract; this file is",
+      "only the data for your rung.",
+      "",
+      "## Write to",
+      "",
+      target,
+      "",
+      "## The level you are matching",
+      "",
+      `These are the words CBSE itself places at Class ${cls}. **Match their`,
+      "difficulty** — not the hardest of them, the middle.",
+      "",
+      list(have),
+      "",
+      below.length
+        ? `### Class ${cls - 1} (just below — do not go this easy)\n\n${list(below.slice(0, 40))}\n`
+        : "",
       above.length
         ? `### Class ${cls + 1} (just above — do not go this hard)\n\n${list(above.slice(0, 40))}\n`
-        : ""
-    }
-## Words already in the book — do not propose any of these
+        : "",
+      "## Words already spoken for — do not propose any of these",
+      "",
+      `\`scripts/vocab/out/_taken-words.txt\` (${taken.length} words, one per line:`,
+      `${rows.length} already in the book plus ${pendingAll.length} written for the`,
+      "other rungs in this same run). Grep it for every word you propose. A",
+      "collision is REFUSED at commit, so a proposal that ignores this file simply",
+      "wastes the run.",
+      "",
+    ].join("\n");
 
-\`scripts/vocab/out/_taken-words.txt\` (${rows.length} words, one per line).
-Grep it for every word you propose. A collision is REFUSED at commit, so a
-proposal that ignores this file simply wastes the run.
-`;
     writeFileSync(join(OUT, `fill-class-${cls}.md`), md);
     console.log(
-      `  Class ${String(cls).padStart(2)}: have ${String(have.length).padStart(3)}, ` +
-        `author ${String(need).padStart(3)} -> out/fill-class-${cls}.md`
+      `  Class ${String(cls).padStart(2)}: cbse ${String(have.length).padStart(3)} + ` +
+        `fill ${String(proposed).padStart(3)}, author ${String(need).padStart(3)} ` +
+        `-> out/fill-class-${cls}.md`
     );
   }
 })();

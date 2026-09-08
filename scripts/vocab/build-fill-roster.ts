@@ -133,6 +133,46 @@ type Authored = {
     );
   }
 
+  /**
+   * NEAR-COLLISIONS ARE A WARNING, NOT A REFUSAL, and the asymmetry is the
+   * point. "abundance" when "abundant" is taken teaches one word twice; but
+   * "vacant" when "vacation" is taken is two unrelated headwords that merely
+   * share letters. No rule separates those, so this reports and a human reads.
+   * Refusing would drop legitimate words; silence would ship the duplicates.
+   *
+   * PREFIX CONTAINMENT, NOT A FIXED-LENGTH STEM. A 5-character stem is BLIND TO
+   * SHORT WORDS -- gnaw/gnawing, urge/urged and zeal/zealous all pass it and
+   * all three are the same lemma. Found by the Class 9 author, whose own first
+   * scan had exactly this bug; testing whether either word is a prefix of the
+   * other catches an inflection at any length.
+   *
+   * Bucketed on the first three characters so this stays a scan.
+   */
+  const MIN = 4;
+  const byPrefix = new Map<string, string[]>();
+  for (const t of taken) {
+    if (t.length < MIN) continue;
+    const k = t.slice(0, 3);
+    const list = byPrefix.get(k) ?? [];
+    list.push(t);
+    byPrefix.set(k, list);
+  }
+  const near: string[] = [];
+  for (const r of roster) {
+    if (r.word.length < MIN) continue;
+    for (const t of byPrefix.get(r.word.slice(0, 3)) ?? []) {
+      if (t === r.word) continue;
+      if (t.startsWith(r.word) || r.word.startsWith(t)) {
+        near.push('"' + r.word + '" (Class ' + r.class + ') vs "' + t + '" already in the book');
+      }
+    }
+  }
+  if (near.length) {
+    console.log("");
+    console.log(`${near.length} near-collision(s) — READ THESE, they are not refused:`);
+    for (const n of near) console.log('  ? ' + n);
+  }
+
   console.log(`\nroster: ${roster.length} fill words`);
   if (problems.length) {
     console.log(`\n${problems.length} PROBLEM(S) — refusing:`);
