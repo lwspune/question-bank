@@ -89,11 +89,29 @@ export type BankWord = { word: string; timesAsked: number; appearances: Appearan
  */
 export type OptionWord = { word: string; exams: string[]; kinds: string[]; uses: number };
 
-/** Strip the underline markup so the sentence reads as printed. */
+/**
+ * Strip the underline markup so the sentence reads as printed.
+ *
+ * THE THIRD PASS IS NOT REDUNDANT. Trailing punctuation is sometimes INSIDE the
+ * delimiters — `\(\underline{\text{captious}}.\)` — which is a documented shape
+ * in this bank (see the underline-bypass note in CLAUDE.md). The whole-zone
+ * pattern then fails to match, the inner pattern strips only the underline, and
+ * the sentence ships as "He is always \(captious.\)" with the delimiters
+ * visible. So any inline-math zone left holding no markup at all is unwrapped.
+ *
+ * Guarded on `[^\\]` so a zone still containing a command is left alone rather
+ * than half-unwrapped — this corpus is English, but the guard costs nothing.
+ */
 export function plainSentence(stem: string): string {
   return stem
     .replace(/\\\(\\underline\{\\text\{([^}]+)\}\}\\\)/g, "$1")
     .replace(/\\underline\{\\text\{([^}]+)\}\}/g, "$1")
+    // Italics too: one stem marks its phrase with \textit rather than
+    // \underline ("...is about \(\textit{\text{cloud feedback}}\)"). The book
+    // prints the sentence, not the paper's emphasis markup.
+    .replace(/\\textit\{\\text\{([^}]+)\}\}/g, "$1")
+    .replace(/\\text\{([^}]+)\}/g, "$1")
+    .replace(/\\\(([^\\]*?)\\\)/g, "$1")
     .replace(/\s+/g, " ")
     .trim();
 }
