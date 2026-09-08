@@ -18,7 +18,7 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor, examTagOf } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, chapterFor, examTagOf, idiomSectionOf } from "../../src/lib/vocab/registry";
 import type { IdiomWord } from "./extract-idioms";
 
 const DATA = join(__dirname, "data");
@@ -51,13 +51,24 @@ const MEANING_CHOICE: Record<string, string> = {
   "Turn a blind eye": "to choose to ignore behaviour that you know is wrong",
 };
 
-/** House style: a lower-case clause with no closing full stop. */
-const tidyMeaning = (s: string) =>
-  s
-    .trim()
-    .replace(/\.$/, "")
-    .replace(/^([A-Z])(?=[a-z])/, (m) => m.toLowerCase())
-    .replace(/\s+/g, " ");
+/**
+ * House style: a lower-case clause with no closing full stop.
+ *
+ * THE FIRST RULE MISSED THE ARTICLE. It required a lower-case letter to follow
+ * the capital, so "A bad person" kept its capital while "Absence from work"
+ * lost it — visible only on the rendered page. Measured across all 296: the
+ * only capitalised first words are "A" and "I".
+ *
+ * "I" MUST KEEP ITS CAPITAL — it is the pronoun, and lower-casing it would be
+ * wrong English rather than a style choice. A multi-letter all-caps word is an
+ * acronym and is left alone for the same reason.
+ */
+const tidyMeaning = (s: string) => {
+  const t = s.trim().replace(/\.$/, "").replace(/\s+/g, " ");
+  const first = t.split(" ")[0];
+  if (first === "I" || (first.length > 1 && first === first.toUpperCase())) return t;
+  return t.charAt(0).toLowerCase() + t.slice(1);
+};
 
 /** Printed as the paper printed it, but with sentence-case capitalisation. */
 const tidyIdiom = (s: string) => s.trim().replace(/\s+/g, " ");
@@ -68,7 +79,10 @@ async function main() {
   const warnings: string[] = [];
 
   const rows = idioms.map((w) => {
-    const chapter = chapterFor(CADET_VOCAB, "idiom", w.idiom, null);
+    // Section is DERIVED from the corpus, never authored — a paper set it, or
+    // only a mock did, and that is the one claim Part 4's structure makes.
+    const section = idiomSectionOf(w.timesAsked);
+    const chapter = chapterFor(CADET_VOCAB, "idiom", w.idiom, section);
     if (!chapter) throw new Error(`${w.idiom}: no idiom chapter covers its first letter — REFUSING`);
 
     let meaning = MEANING_CHOICE[w.idiom];

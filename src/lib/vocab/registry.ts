@@ -89,10 +89,17 @@ export type VocabPartKey = "pyq" | "practice" | "school" | "idiom";
  * the same rule `part` follows, and for the same reason: letting whoever types
  * an entry choose would put the book's central claim in their hands.
  */
-export type VocabSectionKey = "both" | "nda" | "cds";
+export type VocabSectionKey = "both" | "nda" | "cds" | "papers" | "practice-set";
 
 export type VocabSection = {
   key: VocabSectionKey;
+  /**
+   * Which part the section belongs to. Sections are NOT a single axis: Part 2
+   * splits by EXAM (both / NDA / CDS) and Part 4 by PROVENANCE (papers /
+   * practice). Without this field a listing would print Part 2's sections under
+   * Part 4, which is how the contents page first rendered after Part 4 landed.
+   */
+  part: VocabPartKey;
   title: string;
   /** Printed under the section heading. Must never read as "you may skip this". */
   blurb: string;
@@ -107,6 +114,7 @@ export type VocabSection = {
 export const VOCAB_SECTIONS: VocabSection[] = [
   {
     key: "both",
+    part: "pyq",
     title: "Asked by Both Papers",
     indexTag: "NDA + CDS",
     blurb:
@@ -114,6 +122,7 @@ export const VOCAB_SECTIONS: VocabSection[] = [
   },
   {
     key: "nda",
+    part: "pyq",
     title: "Asked in NDA Papers",
     indexTag: "NDA",
     blurb:
@@ -121,10 +130,40 @@ export const VOCAB_SECTIONS: VocabSection[] = [
   },
   {
     key: "cds",
+    part: "pyq",
     title: "Asked in CDS Papers",
     indexTag: "CDS",
     blurb:
       "So far seen only in CDS papers, which is the graduate paper and runs harder. NDA candidates: later work, not optional — most repeated words eventually turn up in the other paper too.",
+  },
+
+  /**
+   * PART 4 SPLITS ON PROVENANCE, NOT ON EXAM, and that was a measured call.
+   * The exam split works for Part 2 because its sections run 149 / 1,001 / 941
+   * and save a candidate ~47 pages. Part 4 is 3.5 pages of content, and its
+   * NDA+CDS group is FOUR idioms — a section heading over a footnote. The exam
+   * is already on every entry as its tag, so an exam split there would add
+   * navigation and no information.
+   *
+   * This boundary is different in kind: "a real paper set this" versus "only a
+   * mock did" is the book's integrity claim, structural enough to earn Part 3
+   * an entire part of its own.
+   */
+  {
+    key: "papers",
+    part: "idiom",
+    title: "Set in the Papers",
+    indexTag: "Idiom",
+    blurb:
+      "Set by a real NDA or CDS paper, with the meaning that paper keyed as correct. The exam that set it is named on each entry.",
+  },
+  {
+    key: "practice-set",
+    part: "idiom",
+    title: "Practice Material",
+    indexTag: "Idiom (practice)",
+    blurb:
+      "Set only in mocks and coaching books, never yet in a paper. Worth learning — but not a past question.",
   },
 ];
 
@@ -244,8 +283,16 @@ export const CADET_VOCAB: VocabBookDefinition = {
       ordinal: "Part 4",
       title: "Idioms and Phrases",
       indexTag: "Idiom",
+      /**
+       * "PAPER OR A MOCK", because the part now contains both. The first
+       * wording read "every idiom an NDA or CDS paper has set", which was true
+       * while the part was one sequence and became false the moment the
+       * practice section moved inside it — 79 of the 296 were never set by a
+       * paper. The sections below draw the line; this line must not pre-empt
+       * it with a claim that covers only one of them.
+       */
       blurb:
-        "Every idiom an NDA or CDS paper has set, with the meaning the paper itself keyed as correct.",
+        "Every idiom an NDA or CDS paper or mock has set, with the meaning the exam itself keyed as correct.",
     },
   ],
   /**
@@ -306,8 +353,9 @@ export const CADET_VOCAB: VocabBookDefinition = {
      * Recorded because the two rules give visibly different books and the
      * measurement is easy to re-run: `plan-sections.ts` prints both.
      */
-    { slug: "idioms-a-o", label: "A-O", part: "idiom", letters: band("A", "O"), expected: 193 },
-    { slug: "idioms-p-z", label: "P-Z", part: "idiom", letters: band("P", "Z"), expected: 103 },
+    { slug: "idioms-papers-a-s", label: "A-S", part: "idiom", section: "papers", letters: band("A", "S"), expected: 170 },
+    { slug: "idioms-papers-t-z", label: "T-Z", part: "idiom", section: "papers", letters: band("T", "Z"), expected: 47 },
+    { slug: "idioms-practice-a-z", label: "A-Z", part: "idiom", section: "practice-set", letters: band("A", "Z"), expected: 79 },
   ],
 };
 
@@ -368,6 +416,16 @@ export function indexTagFor(
  * throwing would invent a claim — so callers must pass a non-empty set and the
  * function says so.
  */
+/**
+ * Which Part 4 section an idiom belongs to. DERIVED, like every other
+ * placement in this book: `timesAsked` counts real-paper appearances only, so 0
+ * means a mock set it and nothing else. Letting this be authored would put the
+ * book's integrity claim in the hands of whoever typed the entry.
+ */
+export function idiomSectionOf(timesAsked: number): VocabSectionKey {
+  return timesAsked > 0 ? "papers" : "practice-set";
+}
+
 export function examSectionOf(exams: Iterable<string>): VocabSectionKey {
   const s = new Set(exams);
   if (s.has("NDA") && s.has("CDS")) return "both";

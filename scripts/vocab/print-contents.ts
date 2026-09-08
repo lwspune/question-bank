@@ -81,7 +81,7 @@ async function main() {
      */
     const sectioned = chapters.some((c) => c.section);
     const groups = sectioned
-      ? VOCAB_SECTIONS.map((sec) => ({
+      ? VOCAB_SECTIONS.filter((sec) => sec.part === part.key).map((sec) => ({
           title: sec.title,
           blurb: sec.blurb,
           rows: chapters.filter((c) => c.section === sec.key),
