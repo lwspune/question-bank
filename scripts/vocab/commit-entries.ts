@@ -138,12 +138,27 @@ async function main() {
       }
     }
 
-    // Cross-check against the exam's own cluster.
-    const lower = (xs: string[]) => new Set(xs.map((x) => x.toLowerCase()));
+    /**
+     * Cross-check against the exam's own cluster.
+     *
+     * MEMBERSHIP IS COMPARED ON LETTERS ONLY. The question being asked is "is
+     * the paper's answer the same WORD as one of ours", and spacing and
+     * hyphenation are not part of that: CDS 2021-I prints the adjective as
+     * "straight forward", which is its typo for "straightforward", and the book
+     * must print correct English rather than copy it. Same for
+     * "even-handed"/"evenhanded".
+     *
+     * The printed text is untouched — this normalisation exists only for the
+     * comparison. It costs a small risk (a genuine pair like "make up" vs
+     * "makeup" would read as equal) which is acceptable because this is a
+     * WARNING, not a gate: it points a human at a difference worth reading.
+     */
+    const fold = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
+    const lower = (xs: string[]) => new Set(xs.map(fold));
     const ourSyn = lower(a.synonyms);
     const ourAnt = lower(a.antonyms);
     for (const app of w.appearances) {
-      const key = app.key?.toLowerCase();
+      const key = app.key ? fold(app.key) : null;
       if (!key) continue;
       const want = app.role === "antonym" ? ourAnt : ourSyn;
       const other = app.role === "antonym" ? ourSyn : ourAnt;
