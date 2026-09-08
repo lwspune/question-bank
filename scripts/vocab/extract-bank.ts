@@ -87,7 +87,24 @@ export type BankWord = { word: string; timesAsked: number; appearances: Appearan
  * as an option in a REAL PAPER has been put in front of candidates by UPSC, so
  * it belongs in Part 1 even though the question was not about it.
  */
-export type OptionWord = { word: string; exams: string[]; kinds: string[]; uses: number };
+/**
+ * A word that only ever appeared as an OPTION, never as a question's target.
+ *
+ * `pyqExams` IS SEPARATE FROM `exams` AND IS THE ONE THE BOOK FILES ON. Part 2
+ * is sectioned by which PAPER printed a word, so an exam that only ever saw it
+ * in a mock must not put it in that exam's section — and 288 of these words
+ * appear in both a paper and practice material, so a single merged `exams` list
+ * cannot answer the question. `exams` is kept for reporting; `pyqExams` is what
+ * a placement decision may read.
+ */
+export type OptionWord = {
+  word: string;
+  exams: string[];
+  /** Exams that printed this word IN A REAL PAPER. Empty for practice-only. */
+  pyqExams: string[];
+  kinds: string[];
+  uses: number;
+};
 
 /**
  * Strip the underline markup so the sentence reads as printed.
@@ -247,13 +264,20 @@ async function main() {
   // latter is not vocabulary at all, so both are left to a later pass.
   const SINGLE = /^[a-z][a-z'-]*$/;
   const targets = new Set(byWord.keys());
-  const optAgg = new Map<string, { exams: Set<string>; kinds: Set<string>; uses: number }>();
+  const optAgg = new Map<
+    string,
+    { exams: Set<string>; pyqExams: Set<string>; kinds: Set<string>; uses: number }
+  >();
   for (const r of inScope) {
     for (const o of (r.options ?? []) as { text: string }[]) {
       const t = (o.text ?? "").trim().toLowerCase();
       if (!SINGLE.test(t) || targets.has(t)) continue;
-      const e = optAgg.get(t) ?? { exams: new Set<string>(), kinds: new Set<string>(), uses: 0 };
+      const e =
+        optAgg.get(t) ??
+        { exams: new Set<string>(), pyqExams: new Set<string>(), kinds: new Set<string>(), uses: 0 };
       e.exams.add(r.exams.name);
+      // Recorded per KIND, not merged: see the OptionWord doc comment.
+      if (r.question_kind === "pyq") e.pyqExams.add(r.exams.name);
       e.kinds.add(r.question_kind);
       e.uses++;
       optAgg.set(t, e);
@@ -263,6 +287,7 @@ async function main() {
     .map(([word, v]) => ({
       word,
       exams: [...v.exams].sort(),
+      pyqExams: [...v.pyqExams].sort(),
       kinds: [...v.kinds].sort(),
       uses: v.uses,
     }))

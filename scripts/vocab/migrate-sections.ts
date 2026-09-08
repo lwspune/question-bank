@@ -22,15 +22,13 @@ config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
 import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
 import { placementOf } from "./commit-entries";
-import type { BankWord } from "./extract-bank";
+import { loadCorpus } from "./corpus";
 
 const APPLY = process.argv.includes("--apply");
 
 (async () => {
-  const bank = JSON.parse(
-    readFileSync(join(__dirname, "data", "bank-words.json"), "utf8")
-  ) as BankWord[];
-  const byWord = new Map(bank.map((w) => [w.word, w]));
+  // The WHOLE corpus: an option word must be re-filed the same way a target is.
+  const byWord = new Map(loadCorpus().map((w) => [w.word, w]));
 
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

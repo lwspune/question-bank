@@ -18,7 +18,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { CADET_VOCAB, chapterFor, indexTagFor } from "../../src/lib/vocab/registry";
 import type { IndexRow } from "../../src/lib/vocab/index";
-import type { BankWord } from "./extract-bank";
+import { loadCorpus } from "./corpus";
 import { placementOf } from "./commit-entries";
 import type { SchoolWord } from "./extract-docx";
 
@@ -30,7 +30,7 @@ const read = <T,>(f: string): T => JSON.parse(readFileSync(join(DATA, f), "utf8"
 const arg = (n: string) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 
 function plannedRows(): IndexRow[] {
-  const bank = read<BankWord[]>("bank-words.json");
+  const bank = loadCorpus();
   const school = read<SchoolWord[]>("school-words.json");
   const bankSet = new Set(bank.map((w) => w.word));
   const rows: IndexRow[] = [];

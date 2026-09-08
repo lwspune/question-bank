@@ -33,6 +33,7 @@ import {
   type VocabSectionKey,
 } from "../../src/lib/vocab/registry";
 import type { BankWord } from "./extract-bank";
+import { loadCorpus, type CorpusWord } from "./corpus";
 
 const DATA = join(__dirname, "data");
 const APPLY = process.argv.includes("--apply");
@@ -103,7 +104,9 @@ export function citationOf(a: BankWord["appearances"][number]): string {
  * (the coaching books reprint PYQs). Where both exist the paper is the honest
  * citation, so the choice is made here rather than left to whoever authors.
  */
-export function preferredAppearance(w: BankWord): BankWord["appearances"][number] | undefined {
+export function preferredAppearance(w: {
+  appearances: BankWord["appearances"];
+}): BankWord["appearances"][number] | undefined {
   const usable = w.appearances.filter((a) => !a.bareStem);
   const pool = usable.length ? usable : w.appearances;
   return (
@@ -126,25 +129,26 @@ export function preferredAppearance(w: BankWord): BankWord["appearances"][number
  * worksheet would offer a word under one chapter and the commit would file it
  * under another.
  */
-export function placementOf(w: BankWord): {
+export function placementOf(w: CorpusWord): {
   part: "pyq" | "practice";
   section: VocabSectionKey | null;
 } {
-  const pyqApps = w.appearances.filter((x) => x.kind === "pyq");
-  if (!pyqApps.length) return { part: "practice", section: null };
-  return { part: "pyq", section: examSectionOf(pyqApps.map((x) => x.exam)) };
+  // `pyqExams` covers both halves of the corpus: for a TARGET word it is the
+  // exams whose papers asked it, for an OPTION word the exams whose papers
+  // printed it. A word with none of either belongs to Part 3.
+  if (!w.pyqExams.length) return { part: "practice", section: null };
+  return { part: "pyq", section: examSectionOf(w.pyqExams) };
 }
 
 async function main() {
   if (!FILE) throw new Error("usage: commit-entries.ts <data/file.json> [--apply]");
   const authored = JSON.parse(readFileSync(join(DATA, FILE), "utf8")) as Authored[];
-  const bank = JSON.parse(readFileSync(join(DATA, "bank-words.json"), "utf8")) as BankWord[];
-  const byWord = new Map(bank.map((w) => [w.word, w]));
+  const byWord = new Map(loadCorpus().map((w) => [w.word, w]));
 
   const warnings: string[] = [];
   const rows = authored.map((a, i) => {
     const w = byWord.get(a.word.toLowerCase());
-    if (!w) throw new Error(`${a.word}: not an exam-tested word — REFUSING`);
+    if (!w) throw new Error(`${a.word}: no exam has printed this word — REFUSING`);
 
     /**
      * PART IS DERIVED FROM THE CORPUS, never authored: a word is in `pyq` if a
@@ -238,7 +242,7 @@ async function main() {
       }
     }
 
-    const exams = [...new Set(w.appearances.map((x) => x.exam))].sort();
+    const exams = w.allExams;
     return {
       book_slug: CADET_VOCAB.slug,
       word: a.word.toLowerCase(),
@@ -255,6 +259,10 @@ async function main() {
       // which would print "2x" beside a practice-only word and imply the exam
       // asked it twice — the same conflation the citation fix removed. A
       // practice word therefore carries 0 and shows no recurrence marker.
+      // TARGET APPEARANCES ONLY, so an option word carries 0 and shows no
+      // recurrence marker. A word that was merely offered among the choices was
+      // printed by the paper, never asked by it, and a "2x" beside it would
+      // assert the opposite.
       times_asked: w.appearances.filter((x) => x.kind === "pyq").length,
       note: a.note ?? null,
       excluded: a.excluded ?? false,

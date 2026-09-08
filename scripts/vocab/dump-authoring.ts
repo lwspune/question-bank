@@ -25,7 +25,7 @@ config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
 import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
 import { citationOf, placementOf, preferredAppearance } from "./commit-entries";
-import type { BankWord } from "./extract-bank";
+import { loadCorpus } from "./corpus";
 
 const DATA = join(__dirname, "data");
 const OUT = join(__dirname, "out");
@@ -39,7 +39,9 @@ async function main() {
     throw new Error(`unknown chapter "${slug}" — have: ${CADET_VOCAB.chapters.map((c) => c.slug).join(", ")}`);
   }
 
-  const bank = JSON.parse(readFileSync(join(DATA, "bank-words.json"), "utf8")) as BankWord[];
+  // The WHOLE exam corpus, targets and option-only words alike — the latter are
+  // three quarters of Part 2 and would otherwise never reach a worksheet.
+  const bank = loadCorpus();
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
   const { data: done, error } = await db
@@ -95,6 +97,18 @@ async function main() {
 
   for (const w of mine) {
     lines.push(`## ${w.word}`);
+    /**
+     * An OPTION word has no appearances, so without this it prints as a bare
+     * headword and the worksheet looks broken rather than honest. What evidence
+     * exists is still worth stating: which papers printed it, and how often —
+     * a word offered in eight questions is commoner than one offered in one,
+     * and that is the only signal available for these.
+     */
+    if (!w.tested) {
+      const where = w.pyqExams.length ? w.pyqExams.join(" + ") : w.allExams.join(" + ");
+      lines.push(`- [option] offered among the choices in ${where} — never the target`);
+      lines.push(`  no sentence and no key: the meaning must be authored`);
+    }
     for (const a of w.appearances) {
       lines.push(
         `- [${a.role}] ${citationOf(a)}${a.bareStem ? " (no usable sentence)" : ""}`

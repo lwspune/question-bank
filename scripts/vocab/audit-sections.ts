@@ -24,6 +24,7 @@ const bank = JSON.parse(readFileSync(join(D, "bank-words.json"), "utf8")) as Ban
 const opts = JSON.parse(readFileSync(join(D, "option-words.json"), "utf8")) as {
   word: string;
   exams: string[];
+  pyqExams: string[];
   kinds: string[];
   uses: number;
 }[];
@@ -35,13 +36,14 @@ for (const w of bank) {
   merged.set(w.word, { exams: new Set(p.map((a) => a.exam)), uses: p.length, pyq: p.length > 0 });
 }
 for (const o of opts) {
-  const isPyq = o.kinds.includes("pyq");
+  // PYQ membership is now decided by pyqExams, not by the kind list.
   const cur = merged.get(o.word);
   if (cur) {
-    if (isPyq) for (const e of o.exams) cur.exams.add(e);
+    // pyqExams ONLY: a mock sighting must not put a word in an exam section.
+    for (const e of o.pyqExams) cur.exams.add(e);
     cur.uses += o.uses;
   } else {
-    merged.set(o.word, { exams: new Set(isPyq ? o.exams : []), uses: o.uses, pyq: isPyq });
+    merged.set(o.word, { exams: new Set(o.pyqExams), uses: o.uses, pyq: o.pyqExams.length > 0 });
   }
 }
 const pyq = [...merged.values()].filter((r) => r.pyq);
