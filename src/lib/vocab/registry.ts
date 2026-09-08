@@ -1,0 +1,193 @@
+/**
+ * The Cadet Vocab Book, declared as data.
+ *
+ * Unlike `src/lib/books/registry.ts`, this book is not a view over the bank —
+ * most of its content is authored — so its chapters are letter bands rather
+ * than bank chapters, and its unit is a WORD.
+ *
+ * TWO PARTS, and the exam part is NOT split by exam. A question belongs to one
+ * paper; a word does not. 58 words are already asked by both NDA and CDS, so
+ * separate NDA and CDS parts would print each of them twice. The exam(s) are an
+ * attribute of the entry.
+ *
+ * ═══ THE BANDS ARE SIZED AGAINST THE FINAL CORPUS, NOT TODAY'S ═══
+ *
+ * Part 2 holds 655 authored words today and 2,922 once the option words land
+ * (phase 3). Bands computed from 655 would be recut then and EVERY chapter URL
+ * would move — so they are declared here, from the measured final distribution,
+ * and frozen. Same call `books/registry.ts` makes about chapter order: "a
+ * derived order would silently reshuffle the book on every ingest".
+ *
+ * PART MEMBERSHIP IS FROZEN THE SAME WAY, and this is the subtler half. A word
+ * belongs to Part 2 if the exams ask it AT ALL — as the question's target OR as
+ * an option — which is knowable now even though only the targets are authored
+ * yet. Deciding membership from the CURRENT corpus instead would put 166 school
+ * words in Part 1 today and move them to Part 2 in phase 3, changing their URL
+ * and their meaning to a reader.
+ */
+
+/**
+ * THREE PARTS, split on ONE yes/no fact: has a real UPSC paper asked this word?
+ *
+ * `pyq` and `practice` were one part until it was measured: 609 of the exam
+ * words appear ONLY in coaching material (Oswaal books, weekly mocks) and never
+ * in a paper. Merging them makes the book's headline claim — "the words the
+ * papers have actually asked" — false for 22% of it.
+ *
+ * Unlike the NDA/CDS question, this split is CLEAN and costs no duplication: a
+ * word either appears in a paper or it does not, and the 51 that appear in both
+ * a paper and a mock simply belong to `pyq`. That is why it is a part and the
+ * exam is only a tag.
+ */
+export type VocabPartKey = "pyq" | "practice" | "school";
+
+export type VocabPart = {
+  key: VocabPartKey;
+  /** "Part 1" — a book has parts, and the running head needs one. */
+  ordinal: string;
+  title: string;
+  /**
+   * What the INDEX prints. A name, never a number: an index entry reading
+   * "Part 2 · A-C" makes the reader decode an ordinal AND a band that is
+   * already implied by the word's own first letter.
+   */
+  indexTag: string;
+  /** One line under the part heading, saying what earns a word its place here. */
+  blurb: string;
+};
+
+export type VocabChapter = {
+  slug: string;
+  /** "A-C". Printed as the chapter heading. */
+  label: string;
+  part: VocabPartKey;
+  /** Inclusive first letters this chapter covers. */
+  letters: string[];
+  /** Measured against the FINAL corpus — a target, not a promise. */
+  expected: number;
+};
+
+export type VocabBookDefinition = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  parts: VocabPart[];
+  chapters: VocabChapter[];
+};
+
+const band = (from: string, to: string): string[] => {
+  const A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return A.slice(A.indexOf(from), A.indexOf(to) + 1).split("");
+};
+
+export const CADET_VOCAB: VocabBookDefinition = {
+  slug: "cadet-vocab",
+  title: "Cadet Vocabulary",
+  // Follows the part order. It has now been wrong twice after a restructure —
+  // if the parts move again, this line moves with them.
+  subtitle:
+    "The Class 5-12 school list, then every word an NDA or CDS paper has actually asked — with the sentence it was asked in — and finally the words only the mocks set.",
+  /**
+   * PART ORDER IS SCHOOL -> PAPERS -> PRACTICE: the book is read as a ladder,
+   * from the foundation a cadet should already have, up to what the papers
+   * actually set, then out to what the coaching books add.
+   *
+   * The ORDINALS live here and nowhere else. Slugs are keyed on the part's NAME
+   * ("school-a-b", "papers-c"), never its number, so reordering the parts moves
+   * no URL — which is the whole reason to name rather than number a slug.
+   */
+  parts: [
+    {
+      key: "school",
+      ordinal: "Part 1",
+      title: "School List (Class 5-12)",
+      indexTag: "School",
+      blurb:
+        "The CBSE class lists — the foundation. Not yet seen in either exam, but assumed by both.",
+    },
+    {
+      key: "pyq",
+      ordinal: "Part 2",
+      title: "Asked in the Papers",
+      indexTag: "Papers",
+      blurb:
+        "Every word an NDA or CDS paper has actually asked, with the sentence it was asked in.",
+    },
+    {
+      key: "practice",
+      ordinal: "Part 3",
+      title: "Practice Material",
+      indexTag: "Practice",
+      blurb:
+        "Set only in mocks and coaching books, never yet in a paper. Worth learning — but not a past question.",
+    },
+  ],
+  /**
+   * ═══ AT MOST 200 ENTRIES PER CHAPTER, AND NEVER A SPLIT LETTER ═══
+   *
+   * Generated by `scripts/vocab/plan-chapters.ts` against the FINAL corpus
+   * (2,091 pyq + 640 practice + 676 school = 3,407), not today's 12. Sizing on
+   * the 655 target words alone produced 3 chapters where Part 1 needs 14 — and
+   * these slugs are URLs, so that is not something a later pass can quietly fix.
+   *
+   * ONE CHAPTER EXCEEDS THE CAP: `papers-c`, at 226. It is a single letter and
+   * can only be brought under 200 by cutting C in half — which is exactly what
+   * must not happen, because a LETTER boundary is permanently stable ("C" means
+   * the same set of words forever) while a COUNT boundary moves every time a
+   * C-word is ingested, changing which chapter a word lives in and breaking its
+   * URL. D (198) and S (196) are already within two of the cap and would need
+   * re-cutting on the very next ingest under a strict rule.
+   *
+   * The cost of the exception is small: entries inside a chapter are
+   * alphabetical either way, so a reader scanning for "candid" cannot tell
+   * whether the chapter holds 200 or 226.
+   *
+   * To regenerate: `npx tsx scripts/vocab/plan-chapters.ts --cap=200`.
+   */
+  chapters: [
+    { slug: "papers-a", label: "A", part: "pyq", letters: band("A", "A"), expected: 165 },
+    { slug: "papers-b", label: "B", part: "pyq", letters: band("B", "B"), expected: 68 },
+    // Over the 200 cap by design — see the note above. Do not split.
+    { slug: "papers-c", label: "C", part: "pyq", letters: band("C", "C"), expected: 226 },
+    { slug: "papers-d", label: "D", part: "pyq", letters: band("D", "D"), expected: 198 },
+    { slug: "papers-e", label: "E", part: "pyq", letters: band("E", "E"), expected: 138 },
+    { slug: "papers-f-h", label: "F-H", part: "pyq", letters: band("F", "H"), expected: 184 },
+    { slug: "papers-i-k", label: "I-K", part: "pyq", letters: band("I", "K"), expected: 187 },
+    { slug: "papers-l-n", label: "L-N", part: "pyq", letters: band("L", "N"), expected: 163 },
+    { slug: "papers-o", label: "O", part: "pyq", letters: band("O", "O"), expected: 60 },
+    { slug: "papers-p-q", label: "P-Q", part: "pyq", letters: band("P", "Q"), expected: 161 },
+    { slug: "papers-r", label: "R", part: "pyq", letters: band("R", "R"), expected: 115 },
+    { slug: "papers-s", label: "S", part: "pyq", letters: band("S", "S"), expected: 196 },
+    { slug: "papers-t-v", label: "T-V", part: "pyq", letters: band("T", "V"), expected: 189 },
+    { slug: "papers-w-z", label: "W-Z", part: "pyq", letters: band("W", "Z"), expected: 41 },
+
+    { slug: "practice-a-d", label: "A-D", part: "practice", letters: band("A", "D"), expected: 197 },
+    { slug: "practice-e-m", label: "E-M", part: "practice", letters: band("E", "M"), expected: 200 },
+    { slug: "practice-n-s", label: "N-S", part: "practice", letters: band("N", "S"), expected: 180 },
+    { slug: "practice-t-z", label: "T-Z", part: "practice", letters: band("T", "Z"), expected: 63 },
+
+    { slug: "school-a-b", label: "A-B", part: "school", letters: band("A", "B"), expected: 145 },
+    { slug: "school-c-d", label: "C-D", part: "school", letters: band("C", "D"), expected: 188 },
+    { slug: "school-e-l", label: "E-L", part: "school", letters: band("E", "L"), expected: 191 },
+    { slug: "school-m-z", label: "M-Z", part: "school", letters: band("M", "Z"), expected: 152 },
+  ],
+};
+
+export const VOCAB_BOOKS: VocabBookDefinition[] = [CADET_VOCAB];
+
+export function vocabBook(slug: string): VocabBookDefinition | undefined {
+  return VOCAB_BOOKS.find((b) => b.slug === slug);
+}
+
+/**
+ * Which chapter a word belongs to. Pure, and the ONLY place the letter -> chapter
+ * rule lives — the commit script and the reader must not each have their own.
+ */
+export function chapterFor(
+  book: VocabBookDefinition,
+  part: VocabPartKey,
+  word: string
+): VocabChapter | undefined {
+  const first = (word.trim()[0] ?? "").toUpperCase();
+  return book.chapters.find((c) => c.part === part && c.letters.includes(first));
+}
