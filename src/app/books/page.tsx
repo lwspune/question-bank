@@ -12,6 +12,7 @@ import { BookMarked } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { BOOKS, bookExams } from "@/lib/books/registry";
+import { CADET_VOCAB } from "@/lib/vocab/registry";
 
 export const dynamic = "force-dynamic";
 
@@ -26,9 +27,10 @@ export default async function BooksIndexPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Books</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Assembled PYQ books, for review before export. A book is a view over
+            Assembled books, for review before export. A PYQ book is a view over
             the live bank — it stores no content of its own, so a fix made to a
-            question anywhere shows up here.
+            question anywhere shows up here. The vocabulary book is different:
+            most of its content is authored, and its unit is a word.
           </p>
         </header>
 
@@ -55,6 +57,36 @@ export default async function BooksIndexPage() {
               </Link>
             </li>
           ))}
+
+          {/*
+            THE VOCABULARY BOOK IS NOT IN `BOOKS`, and that is deliberate rather
+            than an oversight. That registry describes books which are a VIEW
+            over the question bank; this one has its own table, its own loaders
+            and a word as its unit, so folding it in would mean every consumer
+            of `BOOKS` branching on which kind it had. It is listed here because
+            a shelf is exactly where a reader expects to find it.
+          */}
+          <li>
+            <Link
+              href="/books/vocab"
+              className="flex gap-4 rounded-lg border p-4 transition-colors hover:border-brand-accent hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <BookMarked
+                className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent"
+                aria-hidden="true"
+              />
+              <span className="min-w-0">
+                <span className="block font-medium">{CADET_VOCAB.title}</span>
+                <span className="mt-0.5 block text-sm text-muted-foreground">
+                  {CADET_VOCAB.subtitle}
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground">
+                  {CADET_VOCAB.chapters.length} chapters ·{" "}
+                  {CADET_VOCAB.parts.length} parts · NDA + CDS
+                </span>
+              </span>
+            </Link>
+          </li>
         </ul>
       </main>
     </>

@@ -3,11 +3,19 @@
  *
  *   npx tsx scripts/vocab/page-estimate.ts
  *
- * AN ESTIMATE, AND IT SAYS SO. The real number comes from the browser's own
- * print preview of `/books/vocab/<chapter>/print`, because only the browser
- * knows where a column breaks. This exists so a page count can be quoted before
- * that page is built, and so a change in entry format can be costed in pages
- * rather than in characters.
+ * AN ESTIMATE, AND IT SAYS SO. Only a real layout engine knows where a column
+ * breaks. This exists so a page count can be quoted before opening anything,
+ * and so a change in entry format can be costed in pages rather than characters.
+ *
+ * ═══ CALIBRATED AGAINST WORD, TWICE: IT RUNS 14-17% HIGH ═══
+ *
+ *   2026-09-08  per-chapter page breaks + A-Z index   Word 176   here 206  (+17%)
+ *   2026-09-08  continuous chapters, no index         Word 154   here 175  (+14%)
+ *
+ * The bias is deliberate and is kept — `CPL` is rounded down, which under-counts
+ * characters per line and so over-counts pages, and a printer's quote that comes
+ * in short is the worse error. But quote the MEASURED number when one exists:
+ * run `export-docx.ts` and open the file.
  *
  * Geometry is taken from the print stylesheet, not invented: US Letter, 0.5in
  * margins, two columns with a 0.5in gutter, Cambria 10pt.
@@ -60,7 +68,7 @@ const wrap = (s: string) => Math.max(1, Math.ceil(s.length / CPL));
     if (r.sentence) n += wrap(`${r.sentence}${r.sentence_source ? ` — ${r.sentence_source}` : ""}`);
     if (r.synonyms?.length) n += wrap(`SYNONYMS ${r.synonyms.join(", ")}`);
     if (r.antonyms?.length) n += wrap(`ANTONYMS ${r.antonyms.join(", ")}`);
-    return n + 0.35; // inter-entry space, measured as a fraction of a line
+    return n + 0.6; // inter-entry space (6pt), as a fraction of a 12pt line
   };
 
   const byPart: Record<string, { entries: number; lines: number }> = {};
@@ -75,32 +83,36 @@ const wrap = (s: string) => Math.max(1, Math.ceil(s.length / CPL));
       `${LINES_PER_COL} lines/col, ${LINES_PER_PAGE} lines/page\n`
   );
   let totalPages = 0;
-  const order = ["school", "pyq", "practice"];
+  const order = ["school", "pyq", "practice", "idiom"];
   for (const key of order) {
     const p = byPart[key];
     if (!p) continue;
     const part = CADET_VOCAB.parts.find((x) => x.key === key)!;
-    // Each chapter starts a new page, so a part pays for its own part-openers.
-    const chapters = CADET_VOCAB.chapters.filter((c) => c.part === key).length;
-    const pages = Math.ceil(p.lines / LINES_PER_PAGE) + chapters;
+    // Each chapter opens a new page (the continuous variant was tried and
+    // reversed -- see export-docx.ts), so a part pays for its own opener plus
+    // one page per chapter.
+    const openers = 1 + CADET_VOCAB.chapters.filter((c) => c.part === key).length;
+    const pages = Math.ceil(p.lines / LINES_PER_PAGE) + openers;
     totalPages += pages;
     console.log(
       `  ${part.ordinal.padEnd(7)} ${part.title.padEnd(28)} ` +
         `${String(p.entries).padStart(5)} entries  ~${String(pages).padStart(3)} pages ` +
-        `(${chapters} chapter openers included)`
+        `(${openers} part + chapter openers included)`
     );
   }
 
-  // The back-of-book index: one line per word, three columns.
-  const idxCols = 3;
-  const idxLines = Math.ceil(rows.length / 1) / idxCols;
-  const idxPages = Math.ceil(idxLines / LINES_PER_COL);
-  console.log(`  ${"".padEnd(7)} ${"Index (A-Z, every word)".padEnd(28)} ${String(rows.length).padStart(5)} lines    ~${String(idxPages).padStart(3)} pages`);
-  totalPages += idxPages;
+  // Front matter: title page + the contents listing (4 parts, 5 sections,
+  // 24 chapters -> comfortably one page).
+  const frontPages = 2;
+  console.log(
+    `  ${"".padEnd(7)} ${"Front matter (title, contents)".padEnd(28)} ` +
+      `${"".padStart(5)}          ~${String(frontPages).padStart(3)} pages`
+  );
+  totalPages += frontPages;
 
   console.log(`\n  ESTIMATE: ~${totalPages} pages of content, ${rows.length} entries.`);
   console.log(
-    `  Add front matter (title, contents ~2pp) and allow +-10%: the browser\n` +
-      `  decides real column breaks, and this cannot see a widow or an orphan.`
+    `  Allow +-10%: Word decides real column breaks, and this cannot see a\n` +
+      `  widow, an orphan, or a letter-change gap landing at a column foot.`
   );
 })();

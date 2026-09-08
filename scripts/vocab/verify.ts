@@ -27,7 +27,13 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
   for (let from = 0; ; from += 1000) {
     const { data, error } = await db
       .from("vocab_entries")
-      .select("word,part,chapter_slug,position,meaning,sentence,sentence_source,synonyms,antonyms,excluded,derived_model")
+      .select(
+        // EVERY COLUMN A CHECK BELOW READS. An absent column arrives as
+        // undefined, and a check on undefined quietly passes for every row —
+        // `times_asked` was missing here while a check keyed on it reported a
+        // reassuring 0 that it could never have failed to report.
+        "word,part,chapter_slug,position,meaning,sentence,sentence_source,synonyms,antonyms,excluded,derived_model,times_asked,exams"
+      )
       .eq("book_slug", CADET_VOCAB.slug)
       .order("word")
       .range(from, from + 999);
@@ -43,7 +49,20 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
 
   const bad = (name: string, n: number) => console.log(`${n === 0 ? "ok " : "!! "}${name}: ${n}`);
   bad("no meaning", rows.filter((r) => !r.meaning?.trim()).length);
-  bad("no sentence", rows.filter((r) => !r.sentence?.trim()).length);
+  /**
+   * PART 4 IS EXEMPT FROM BOTH OF THESE BY DESIGN, not by tolerance. An idiom
+   * entry carries a meaning and nothing else: migration 0091 REFUSES one that
+   * has a sentence, and an idiom's synonym would just restate its meaning. So
+   * a zero here would mean the shape had been violated, not that all was well.
+   *
+   * Fourth newly-legitimate state this probe has had to learn — Part 3's bare
+   * stems, then Part 2's option words, then their citations, now Part 4. The
+   * pattern is that a check written for one shape of corpus reads a later shape
+   * as a fault, and a red line on an expected state is how a probe teaches
+   * people to skip it.
+   */
+  const vocabRows = rows.filter((r) => r.part !== "idiom");
+  bad("no sentence", vocabRows.filter((r) => !r.sentence?.trim()).length);
   /**
    * AN UNCITED SENTENCE IS A DEFECT IN PART 2 AND NORMAL IN PART 3.
    *
@@ -78,10 +97,13 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
       `${uncited.filter((r) => r.part !== "pyq" || (r.times_asked ?? 0) === 0).length}` +
       ` (Part 3 bare stems + Part 2 option words)`
   );
-  bad("no synonyms", rows.filter((r) => !r.synonyms?.length).length);
+  bad("no synonyms", vocabRows.filter((r) => !r.synonyms?.length).length);
   bad("no provenance", rows.filter((r) => !r.derived_model).length);
   bad("backslash anywhere", rows.filter((r) => JSON.stringify(r).includes("\\\\")).length);
   bad("meaning ends with a full stop", rows.filter((r) => /\.$/.test(r.meaning ?? "")).length);
+  const idioms = rows.filter((r) => r.part === "idiom");
+  bad("idiom carrying a sentence", idioms.filter((r) => r.sentence || r.sentence_source).length);
+  bad("idiom with no exam tag", idioms.filter((r) => !r.exams?.length).length);
   console.log(`   excluded (withheld from print): ${rows.filter((r) => r.excluded).length}`);
   console.log(
     `   no antonyms (deliberate — no natural opposite): ${rows.filter((r) => !r.antonyms?.length).length}`

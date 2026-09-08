@@ -43,9 +43,16 @@ export const VOCAB_PRINT_CSS = `
 
 /* An entry is a few lines at most, so keeping it whole can never strand a page.
    That is NOT true of the /books reader, where a set can exceed a page. */
-.ventry { break-inside: avoid; margin: 0 0 2.6mm; }
+.ventry { break-inside: avoid; margin: 0 0 3.6mm; }
+
+/* The letter-change gap. EXTRA SPACE, not a heading: the bold headword already
+   says which letter you are in, and a heading would cost two lines per letter. */
+.ventry.vgap { margin-top: 5mm; }
 
 .vhead { text-indent: -3.2mm; padding-left: 3.2mm; }
+/* Set small and light so the number stays a reference and never competes with
+   the headword the eye is scanning for. */
+.vnum { font-size: 8pt; color: #555; }
 .vword { font-weight: 700; }
 .vsemi { font-weight: 700; }
 .vmeaning { }
@@ -63,30 +70,4 @@ export const VOCAB_PRINT_CSS = `
 /* On-screen only: the print control disappears on paper. */
 .vnoprint { margin-bottom: 4mm; }
 @media print { .vnoprint { display: none !important; } .vdoc { padding: 0; } }
-`;
-
-/**
- * The index only. THREE columns, against the body's two: an index line is a
- * word, a leader and one tag, so at two columns most of the line is dots and
- * the index runs ~50% longer for no gain in legibility.
- *
- * A letter GROUP may break across columns (only the heading is kept with its
- * first rows) — an index is scanned, not read, and forcing a whole letter to
- * stay together would strand most of a column at A, C and P, which carry 193,
- * 202 and 110 words.
- */
-export const VOCAB_INDEX_CSS = `
-.vixcols { column-count: 3; column-gap: 7mm; font-size: 8.5pt; line-height: 1.22; }
-.vixgroup { break-inside: auto; }
-.vixletter {
-  font-weight: 700; font-size: 9.5pt; margin: 2.2mm 0 0.8mm;
-  border-bottom: 0.4pt solid #999; break-after: avoid;
-}
-.vixrow { display: flex; align-items: baseline; gap: 1mm; }
-.vixword { white-space: nowrap; }
-.vixdots {
-  flex: 1 1 auto; min-width: 2mm;
-  border-bottom: 0.4pt dotted #aaa; transform: translateY(-0.6mm);
-}
-.vixtag { white-space: nowrap; color: #333; font-size: 8pt; }
 `;
