@@ -16,9 +16,10 @@ import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { CADET_VOCAB, chapterFor, type VocabPartKey } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, chapterFor, indexTagFor } from "../../src/lib/vocab/registry";
 import type { IndexRow } from "../../src/lib/vocab/index";
 import type { BankWord } from "./extract-bank";
+import { placementOf } from "./commit-entries";
 import type { SchoolWord } from "./extract-docx";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -28,26 +29,24 @@ const DATA = join(__dirname, "data");
 const read = <T,>(f: string): T => JSON.parse(readFileSync(join(DATA, f), "utf8")) as T;
 const arg = (n: string) => process.argv.find((a) => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 
-const TAG = new Map(CADET_VOCAB.parts.map((p) => [p.key, p.indexTag]));
-
 function plannedRows(): IndexRow[] {
   const bank = read<BankWord[]>("bank-words.json");
   const school = read<SchoolWord[]>("school-words.json");
   const bankSet = new Set(bank.map((w) => w.word));
   const rows: IndexRow[] = [];
   for (const w of bank) {
-    const part: VocabPartKey = w.appearances.some((a) => a.kind === "pyq") ? "pyq" : "practice";
-    if (!chapterFor(CADET_VOCAB, part, w.word)) continue;
+    const { part, section } = placementOf(w);
+    if (!chapterFor(CADET_VOCAB, part, w.word, section)) continue;
     rows.push({
       word: w.word,
-      partTag: TAG.get(part)!,
+      partTag: indexTagFor(CADET_VOCAB, part, section),
       timesAsked: w.appearances.filter((a) => a.kind === "pyq").length,
     });
   }
   for (const w of school) {
     if (bankSet.has(w.word)) continue;
-    if (!chapterFor(CADET_VOCAB, "school", w.word)) continue;
-    rows.push({ word: w.word, partTag: TAG.get("school")!, timesAsked: 0 });
+    if (!chapterFor(CADET_VOCAB, "school", w.word, null)) continue;
+    rows.push({ word: w.word, partTag: indexTagFor(CADET_VOCAB, "school", null), timesAsked: 0 });
   }
   return rows;
 }

@@ -44,7 +44,22 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
   const bad = (name: string, n: number) => console.log(`${n === 0 ? "ok " : "!! "}${name}: ${n}`);
   bad("no meaning", rows.filter((r) => !r.meaning?.trim()).length);
   bad("no sentence", rows.filter((r) => !r.sentence?.trim()).length);
-  bad("sentence without citation", rows.filter((r) => r.sentence && !r.sentence_source).length);
+  /**
+   * AN UNCITED SENTENCE IS A DEFECT IN PART 2 AND NORMAL IN PART 3.
+   *
+   * A Part 2 word is there because a paper asked it, so a real sentence exists
+   * and an authored one means the citation was dropped. Roughly half of Part 3
+   * appears only in a bare stem ("Choose the word most similar to ABATE"), so
+   * there is nothing to quote and authoring is the only option. Reporting them
+   * together printed a red line on an expected state, which is how a probe
+   * teaches people to skip it.
+   */
+  const uncited = rows.filter((r) => r.sentence && !r.sentence_source);
+  bad("Part 2 sentence with no citation", uncited.filter((r) => r.part === "pyq").length);
+  console.log(
+    `   Part 3 authored sentences (expected — no exam sentence exists): ` +
+      `${uncited.filter((r) => r.part !== "pyq").length}`
+  );
   bad("no synonyms", rows.filter((r) => !r.synonyms?.length).length);
   bad("no provenance", rows.filter((r) => !r.derived_model).length);
   bad("backslash anywhere", rows.filter((r) => JSON.stringify(r).includes("\\\\")).length);

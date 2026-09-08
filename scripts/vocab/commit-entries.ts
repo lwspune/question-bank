@@ -26,7 +26,12 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
+import {
+  CADET_VOCAB,
+  chapterFor,
+  examSectionOf,
+  type VocabSectionKey,
+} from "../../src/lib/vocab/registry";
 import type { BankWord } from "./extract-bank";
 
 const DATA = join(__dirname, "data");
@@ -108,6 +113,28 @@ export function preferredAppearance(w: BankWord): BankWord["appearances"][number
   );
 }
 
+/**
+ * Where a word belongs: its part AND, for Part 2, its exam section.
+ *
+ * BOTH ARE DERIVED FROM THE CORPUS, never authored. Letting whoever types an
+ * entry choose would put the book's central claims — "a real paper asked this"
+ * and "this is the paper that asked it" — in their hands; that is exactly how
+ * `adroit` came to be cited as an NDA question off an Oswaal coaching book.
+ *
+ * Exported so `dump-authoring` files a word the same way the commit will. Two
+ * implementations of this rule would drift, and the drift is silent: the
+ * worksheet would offer a word under one chapter and the commit would file it
+ * under another.
+ */
+export function placementOf(w: BankWord): {
+  part: "pyq" | "practice";
+  section: VocabSectionKey | null;
+} {
+  const pyqApps = w.appearances.filter((x) => x.kind === "pyq");
+  if (!pyqApps.length) return { part: "practice", section: null };
+  return { part: "pyq", section: examSectionOf(pyqApps.map((x) => x.exam)) };
+}
+
 async function main() {
   if (!FILE) throw new Error("usage: commit-entries.ts <data/file.json> [--apply]");
   const authored = JSON.parse(readFileSync(join(DATA, FILE), "utf8")) as Authored[];
@@ -126,8 +153,8 @@ async function main() {
      * entry — which is how "adroit" was cited as an NDA question off an Oswaal
      * coaching book.
      */
-    const part = w.appearances.some((x) => x.kind === "pyq") ? "pyq" : "practice";
-    const chapter = chapterFor(CADET_VOCAB, part, a.word);
+    const { part, section } = placementOf(w);
+    const chapter = chapterFor(CADET_VOCAB, part, a.word, section);
     if (!chapter) throw new Error(`${a.word}: no chapter covers its first letter — REFUSING`);
 
     // The citation must match a real appearance.
