@@ -42,6 +42,23 @@ type Authored = {
   synonyms: string[];
   antonyms: string[];
   note?: string;
+  /**
+   * WITHHOLD THIS WORD FROM THE PRINTED BOOK, keeping the row.
+   *
+   * The case it exists for is a MIS-TARGETED SOURCE RECORD: CDS 2018-I stores
+   * the target of "Vendors must have licence." as `licence`, while its key and
+   * all three distractors define a VENDOR ("One engaged in selling", "One who
+   * drives a car"). So the paper never asked `licence`, and printing it in
+   * Part 2 would assert the one claim this book has that a bought word list
+   * does not — that every word here was actually asked.
+   *
+   * A row rather than an omission, because an omitted word comes back in the
+   * next worksheet and gets re-adjudicated from scratch, and because the reason
+   * is worth keeping. The cluster cross-check is SKIPPED for an excluded entry:
+   * it compares our lists against the paper's key, and the whole finding is
+   * that this key describes a different word.
+   */
+  excluded?: boolean;
 };
 
 /**
@@ -167,7 +184,7 @@ async function main() {
     const lower = (xs: string[]) => new Set(xs.map(fold));
     const ourSyn = lower(a.synonyms);
     const ourAnt = lower(a.antonyms);
-    for (const app of w.appearances) {
+    for (const app of a.excluded ? [] : w.appearances) {
       const key = app.key ? fold(app.key) : null;
       if (!key) continue;
       const want = app.role === "antonym" ? ourAnt : ourSyn;
@@ -200,6 +217,7 @@ async function main() {
       // practice word therefore carries 0 and shows no recurrence marker.
       times_asked: w.appearances.filter((x) => x.kind === "pyq").length,
       note: a.note ?? null,
+      excluded: a.excluded ?? false,
       derived_model: MODEL,
       derived_at: new Date().toISOString(),
     };
@@ -209,7 +227,7 @@ async function main() {
   for (const r of rows) {
     console.log(
       `  ${r.word.padEnd(14)} ${r.chapter_slug}  x${r.times_asked}  ${r.exams.join("+")}  ` +
-        `${r.sentence_source ?? "(authored sentence)"}`
+        `${r.sentence_source ?? "(authored sentence)"}${r.excluded ? "  [EXCLUDED]" : ""}`
     );
   }
   console.log(`\ncluster cross-check: ${warnings.length} warning(s)`);
