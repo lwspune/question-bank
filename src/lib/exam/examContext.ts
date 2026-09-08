@@ -191,7 +191,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
     std: 11,
-    mixedFormats: true, // 1,465 subjective vs 1 MCQ (measured 2026-09-07)
+    mixedFormats: true, // 1,612 subjective vs 5 MCQ (re-measured 2026-09-08, Physics complete)
     //
     // THE HISTORY MATTERS HERE, because this flag was once wrong in a way that
     // looked permanent. It read "NO mixedFormats — and unlike the other board
@@ -223,7 +223,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "cbse-12",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
-    mixedFormats: true, // 756 MCQ vs 2,424 subjective (measured 2026-08-21)
+    mixedFormats: true, // 760 MCQ vs 2,696 subjective (re-measured 2026-09-08, Physics complete)
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
     // NOT practiceOnly since 2026-08-21: Class 12 IS a board year and the board
