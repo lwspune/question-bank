@@ -448,6 +448,247 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
     { group: "Miscellaneous Exercise on Chapter 7", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ══ PHYSICS ═══════════════════════════════════════════════════════════════
+  // A Physics chapter's book structure is SIMPLER than a Maths one and its refs
+  // are different: there is exactly ONE terminal exercise block, numbered
+  // <chapter>.<n> directly, so there is no per-exercise banding and no
+  // Miscellaneous. The two prefixes are "Eg <n>." (worked Examples, printed
+  // "Example 8.3") and "Ex <n>." (exercise questions, printed "8.5").
+  //
+  // Those two namespaces OVERLAP by number and must not be merged: NCERT numbers
+  // worked Examples 8.1-8.5 and then restarts the exercises at 8.1, so "Eg 8.1"
+  // and "Ex 8.1" are different questions sharing a number. That is exactly why
+  // the prefixes differ. See PHYSICS_TRANSCRIPTION_BRIEF.md.
+
+  // Ch.8 Mechanical Properties of Solids — all five worked Examples sit inside
+  // §8.5 Elastic Moduli (verified by the transcription pass, which read the
+  // pages: 8.1/8.2/8.3 are Young's modulus, 8.4 shear, 8.5 bulk), so they form a
+  // single solved block rather than one per section.
+  c11PhyMechSolids: [
+    { group: "8.5 Elastic Moduli", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 8."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8."] },
+  ],
+
+  // The remaining 27 Physics chapters. These are PRE-AUTHORED for the whole
+  // subject rather than one at a time, and that is a parallelism decision as much
+  // as a convenience: sections.ts is a single shared code file, so a wave of
+  // per-chapter agents editing it concurrently would collide. Pre-authoring takes
+  // it off the per-chapter critical path entirely.
+  //
+  // They are mechanical because a Physics chapter's book structure is UNIFORM —
+  // worked Examples scattered through the teaching prose, then ONE terminal
+  // exercise block. There is no Miscellaneous and no per-exercise banding, which
+  // is what makes the Maths outlines above long and these two lines each.
+  //
+  // The group is "Worked Examples" rather than a section title because in most
+  // chapters the Examples span several sections, so naming one would be false.
+  // Ch.8 above is the exception and keeps its section title: all five of its
+  // Examples genuinely sit inside §8.5, which the transcription pass verified
+  // from the pages.
+
+  // Ch.1 Units and Measurement — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 1." and "Ex 1." cannot collide.
+  c11PhyUnits: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 1."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1."] },
+  ],
+
+  // Ch.2 Motion in a Straight Line — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 2." and "Ex 2." cannot collide.
+  c11PhyMotionLine: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 2."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2."] },
+  ],
+
+  // Ch.3 Motion in a Plane — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 3." and "Ex 3." cannot collide.
+  c11PhyMotionPlane: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 3."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3."] },
+  ],
+
+  // Ch.4 Laws of Motion — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 4." and "Ex 4." cannot collide.
+  c11PhyLawsMotion: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 4."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4."] },
+  ],
+
+  // Ch.5 Work, Energy and Power — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 5." and "Ex 5." cannot collide.
+  c11PhyWorkEnergy: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 5."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5."] },
+  ],
+
+  // Ch.6 System of Particles and Rotational Motion — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 6." and "Ex 6." cannot collide.
+  c11PhyRotational: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 6."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6."] },
+  ],
+
+  // Ch.7 Gravitation — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 7." and "Ex 7." cannot collide.
+  c11PhyGravitation: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 7."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7."] },
+  ],
+
+  // Ch.9 Mechanical Properties of Fluids — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 9." and "Ex 9." cannot collide.
+  c11PhyMechFluids: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 9."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9."] },
+  ],
+
+  // Ch.10 Thermal Properties of Matter — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 10." and "Ex 10." cannot collide.
+  c11PhyThermalProps: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 10."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10."] },
+  ],
+
+  // Ch.11 Thermodynamics — EXERCISES ONLY, deliberately. This chapter contains NO
+  // worked Examples at all: verified by reading all 18 pages (the one worked
+  // calculation, the 1 g water liquid-to-vapour ΔU in §11.6, is unnumbered
+  // illustrative prose, not an `Example 11.x` block).
+  //
+  // The solved block is REMOVED rather than left to match nothing, because
+  // `section_seq` is the block's INDEX in this array: leaving an unmatched block
+  // first puts every exercise row at seq 2 with no seq 1, and `board:lint` fails
+  // the chapter for non-contiguous section_seq. It caught exactly that here after
+  // the chapter had already been flipped PUBLIC — which is the check working.
+  //
+  // The pre-authored two-block outlines below assume both blocks exist, which is
+  // true of every other Physics chapter measured so far. Any chapter that turns
+  // out to have no Examples needs this same single-block treatment. (Oscillations
+  // and Waves were ALSO predicted to have none by a text probe and both in fact
+  // DO — their transcriptions carry Eg 13.x and Eg 14.x refs — so verify from the
+  // committed rows, not from the probe.)
+  c11PhyThermodynamics: [
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11."] },
+  ],
+
+  // Ch.12 Kinetic Theory — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 12." and "Ex 12." cannot collide.
+  c11PhyKineticTheory: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 12."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12."] },
+  ],
+
+  // Ch.13 Oscillations — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 13." and "Ex 13." cannot collide.
+  c11PhyOscillations: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 13."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 13."] },
+  ],
+
+  // Ch.14 Waves — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 14." and "Ex 14." cannot collide.
+  c11PhyWaves: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 14."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 14."] },
+  ],
+
+  // Ch.1 Electric Charges and Fields — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 1." and "Ex 1." cannot collide.
+  c12PhyElectricCharges: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 1."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1."] },
+  ],
+
+  // Ch.2 Electrostatic Potential and Capacitance — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 2." and "Ex 2." cannot collide.
+  c12PhyPotentialCap: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 2."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2."] },
+  ],
+
+  // Ch.3 Current Electricity — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 3." and "Ex 3." cannot collide.
+  c12PhyCurrentElec: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 3."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3."] },
+  ],
+
+  // Ch.4 Moving Charges and Magnetism — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 4." and "Ex 4." cannot collide.
+  c12PhyMovingCharges: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 4."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4."] },
+  ],
+
+  // Ch.5 Magnetism and Matter — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 5." and "Ex 5." cannot collide.
+  c12PhyMagnetismMatter: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 5."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5."] },
+  ],
+
+  // Ch.6 Electromagnetic Induction — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 6." and "Ex 6." cannot collide.
+  c12PhyEMInduction: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 6."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6."] },
+  ],
+
+  // Ch.7 Alternating Current — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 7." and "Ex 7." cannot collide.
+  c12PhyAlternatingCurrent: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 7."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7."] },
+  ],
+
+  // Ch.8 Electromagnetic Waves — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 8." and "Ex 8." cannot collide.
+  c12PhyEMWaves: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 8."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8."] },
+  ],
+
+  // Ch.9 Ray Optics and Optical Instruments — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 9." and "Ex 9." cannot collide.
+  c12PhyRayOptics: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 9."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9."] },
+  ],
+
+  // Ch.10 Wave Optics — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 10." and "Ex 10." cannot collide.
+  c12PhyWaveOptics: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 10."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10."] },
+  ],
+
+  // Ch.11 Dual Nature of Radiation and Matter — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 11." and "Ex 11." cannot collide.
+  c12PhyDualNature: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 11."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11."] },
+  ],
+
+  // Ch.12 Atoms — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 12." and "Ex 12." cannot collide.
+  c12PhyAtoms: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 12."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12."] },
+  ],
+
+  // Ch.13 Nuclei — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 13." and "Ex 13." cannot collide.
+  c12PhyNuclei: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 13."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 13."] },
+  ],
+
+  // Ch.14 Semiconductor Electronics: Materials, Devices and Simple Circuits — worked Examples scattered through the teaching prose, then the
+  // single terminal exercise block. "Eg 14." and "Ex 14." cannot collide.
+  c12PhySemiconductors: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 14."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 14."] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

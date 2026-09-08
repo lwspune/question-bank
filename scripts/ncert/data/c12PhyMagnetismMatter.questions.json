@@ -1,0 +1,116 @@
+[
+  {
+    "ref": "Eg 5.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "(a) What happens if a bar magnet is cut into two pieces: (i) transverse to its length, (ii) along its length?\n(b) A magnetised needle in a uniform magnetic field experiences a torque but no net force. An iron nail near a bar magnet, however, experiences a force of attraction in addition to a torque. Why?\n(c) Must every magnetic configuration have a north pole and a south pole? What about the field due to a toroid?\n(d) Two identical looking iron bars A and B are given, one of which is definitely known to be magnetised. (We do not know which one.) How would one ascertain whether or not both are magnetised? If only one is magnetised, how does one ascertain which one? [Use nothing else but the bars A and B.]",
+    "solution": "(a) In either case, one gets two magnets, each with a north and south pole.\n(b) No force if the field is uniform. The iron nail experiences a non-uniform field due to the bar magnet. There is induced magnetic moment in the nail, therefore, it experiences both force and torque. The net force is attractive because the induced south pole (say) in the nail is closer to the north pole of magnet than induced north pole.\n(c) Not necessarily. True only if the source of the field has a net non-zero magnetic moment. This is not so for a toroid or even for a straight infinite conductor.\n(d) Try to bring different ends of the bars closer. A repulsive force in some situation establishes that both are magnetised. If it is always attractive, then one of them is not magnetised. In a bar magnet the intensity of the magnetic field is the strongest at the two ends (poles) and weakest at the central region. This fact may be used to determine whether A or B is the magnet. In this case, to see which one of the two bars is a magnet, pick up one, (say, A) and lower one of its ends; first on one of the ends of the other (say, B), and then on the middle of B. If you notice that in the middle of B, A experiences no force, then B is magnetised. If you do not notice any change from the end to the middle of B, then A is magnetised."
+  },
+  {
+    "ref": "Eg 5.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "HARD",
+    "stem": "Figure 5.4 shows a small magnetised needle P placed at a point O. The arrow shows the direction of its magnetic moment. The other arrows show different positions (and orientations of the magnetic moment) of another identical magnetised needle Q.\n(a) In which configuration the system is not in equilibrium?\n(b) In which configuration is the system in (i) stable, and (ii) unstable equilibrium?\n(c) Which configuration corresponds to the lowest potential energy among all the configurations shown?",
+    "solution": "Potential energy of the configuration arises due to the potential energy of one dipole (say, Q) in the magnetic field due to other (P). Use the result that the field due to P is given by the expression [Eqs. (5.4) and (5.5)]:\n\\(\\mathbf{B}_{P} = -\\dfrac{\\mu_0}{4\\pi}\\dfrac{\\mathbf{m}_{P}}{r^{3}}\\) (on the normal bisector)\n\\(\\mathbf{B}_{P} = \\dfrac{\\mu_0}{4\\pi}\\dfrac{2\\mathbf{m}_{P}}{r^{3}}\\) (on the axis)\nwhere \\(\\mathbf{m}_{P}\\) is the magnetic moment of the dipole P.\nEquilibrium is stable when \\(\\mathbf{m}_{Q}\\) is parallel to \\(\\mathbf{B}_{P}\\), and unstable when it is anti-parallel to \\(\\mathbf{B}_{P}\\).\nFor instance for the configuration \\(Q_{3}\\) for which Q is along the perpendicular bisector of the dipole P, the magnetic moment of Q is parallel to the magnetic field at the position 3. Hence \\(Q_{3}\\) is stable.\nThus,\n(a) \\(PQ_{1}\\) and \\(PQ_{2}\\)\n(b) (i) \\(PQ_{3}\\), \\(PQ_{6}\\) (stable); (ii) \\(PQ_{5}\\), \\(PQ_{4}\\) (unstable)\n(c) \\(PQ_{6}\\)",
+    "_figure": {
+      "fig": "Fig 5.4",
+      "page": 5
+    },
+    "_note": "The stem is unanswerable without Fig. 5.4 — the figure is the only place the six configurations Q1..Q6 are defined, so it carries the question's data rather than merely illustrating it. Figure attached for that reason."
+  },
+  {
+    "ref": "Eg 5.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetism and Gauss's Law",
+    "difficulty": "HARD",
+    "stem": "Many of the diagrams given in Fig. 5.6 show magnetic field lines (thick lines in the figure) wrongly. Point out what is wrong with them. Some of them may describe electrostatic field lines correctly. Point out which ones.",
+    "solution": "(a) Wrong. Magnetic field lines can never emanate from a point, as shown in figure. Over any closed surface, the net flux of \\(\\mathbf{B}\\) must always be zero, i.e., pictorially as many field lines should seem to enter the surface as the number of lines leaving it. The field lines shown, in fact, represent electric field of a long positively charged wire. The correct magnetic field lines are circling the straight conductor, as described in Chapter 4.\n(b) Wrong. Magnetic field lines (like electric field lines) can never cross each other, because otherwise the direction of field at the point of intersection is ambiguous. There is further error in the figure. Magnetostatic field lines can never form closed loops around empty space. A closed loop of static magnetic field line must enclose a region across which a current is passing. By contrast, electrostatic field lines can never form closed loops, neither in empty space, nor when the loop encloses charges.\n(c) Right. Magnetic lines are completely confined within a toroid. Nothing wrong here in field lines forming closed loops, since each loop encloses a region across which a current passes. Note, for clarity of figure, only a few field lines within the toroid have been shown. Actually, the entire region enclosed by the windings contains magnetic field.\n(d) Wrong. Field lines due to a solenoid at its ends and outside cannot be so completely straight and confined; such a thing violates Ampere's law. The lines should curve out at both ends, and meet eventually to form closed loops.\n(e) Right. These are field lines outside and inside a bar magnet. Note carefully the direction of field lines inside. Not all field lines emanate out of a north pole (or converge into a south pole). Around both the N-pole, and the S-pole, the net flux of the field is zero.\n(f) Wrong. These field lines cannot possibly represent a magnetic field. Look at the upper region. All the field lines seem to emanate out of the shaded plate. The net flux through a surface surrounding the shaded plate is not zero. This is impossible for a magnetic field. The given field lines, in fact, show the electrostatic field lines around a positively charged upper plate and a negatively charged lower plate. The difference between Fig. [5.6(e) and (f)] should be carefully grasped.\n(g) Wrong. Magnetic field lines between two pole pieces cannot be precisely straight at the ends. Some fringing of lines is inevitable. Otherwise, Ampere's law is violated. This is also true for electric field lines.",
+    "_figure": {
+      "fig": "Fig 5.6",
+      "page": 7
+    },
+    "_note": "The stem is unanswerable without Fig. 5.6 — the seven diagrams (a)-(g) it asks about exist only in the figure. Figure attached for that reason."
+  },
+  {
+    "ref": "Eg 5.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetism and Gauss's Law",
+    "difficulty": "MODERATE",
+    "stem": "(a) Magnetic field lines show the direction (at every point) along which a small magnetised needle aligns (at the point). Do the magnetic field lines also represent the lines of force on a moving charged particle at every point?\n(b) If magnetic monopoles existed, how would the Gauss's law of magnetism be modified?\n(c) Does a bar magnet exert a torque on itself due to its own field? Does one element of a current-carrying wire exert a force on another element of the same wire?\n(d) Magnetic field arises due to charges in motion. Can a system have magnetic moments even though its net charge is zero?",
+    "solution": "(a) No. The magnetic force is always normal to \\(\\mathbf{B}\\) (remember magnetic force \\(= q\\mathbf{v} \\times \\mathbf{B}\\)). It is misleading to call magnetic field lines as lines of force.\n(b) Gauss's law of magnetism states that the flux of \\(\\mathbf{B}\\) through any closed surface is always zero, \\(\\int_{S} \\mathbf{B} \\cdot \\Delta\\mathbf{s} = 0\\). If monopoles existed, the right hand side would be equal to the monopole (magnetic charge) \\(q_{m}\\) enclosed by S. [Analogous to Gauss's law of electrostatics, \\(\\int_{S} \\mathbf{B} \\cdot \\Delta\\mathbf{s} = \\mu_{0} q_{m}\\) where \\(q_{m}\\) is the (monopole) magnetic charge enclosed by S.]\n(c) No. There is no force or torque on an element due to the field produced by that element itself. But there is a force (or torque) on an element of the same wire. (For the special case of a straight wire, this force is zero.)\n(d) Yes. The average of the charge in the system may be zero. Yet, the mean of the magnetic moments due to various current loops may not be zero. We will come across such examples in connection with paramagnetic material where atoms have net dipole moment through their net charge is zero.",
+    "_note": "In the printed solution (a) the cross-product sign is dropped by the book's typesetting — the page reads 'magnetic force = qv   B' with a blank where the multiplication sign belongs. Restored here as a cross product, which is what the sentence asserts. Part (d)'s last clause is printed as 'through their net charge is zero' (for 'though'), transcribed as printed."
+  },
+  {
+    "ref": "Eg 5.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Magnetisation and Magnetic Intensity",
+    "difficulty": "MODERATE",
+    "stem": "A solenoid has a core of a material with relative permeability 400. The windings of the solenoid are insulated from the core and carry a current of 2A. If the number of turns is 1000 per metre, calculate (a) \\(H\\), (b) \\(M\\), (c) \\(B\\) and (d) the magnetising current \\(I_{m}\\).",
+    "solution": "(a) The field \\(H\\) is dependent of the material of the core, and is\n\\(H = nI = 1000 \\times 2.0 = 2 \\times 10^{3}\\,\\text{A/m}\\).\n(b) The magnetic field \\(B\\) is given by\n\\(B = \\mu_{r}\\mu_{0}H = 400 \\times 4\\pi \\times 10^{-7}\\,(\\text{N/A}^{2}) \\times 2 \\times 10^{3}\\,(\\text{A/m}) = 1.0\\,\\text{T}\\)\n(c) Magnetisation is given by\n\\(M = (B - \\mu_{0}H)/\\mu_{0} = (\\mu_{r}\\mu_{0}H - \\mu_{0}H)/\\mu_{0} = (\\mu_{r} - 1)H = 399 \\times H \\cong 8 \\times 10^{5}\\,\\text{A/m}\\)\n(d) The magnetising current \\(I_{M}\\) is the additional current that needs to be passed through the windings of the solenoid in the absence of the core which would give a \\(B\\) value as in the presence of the core. Thus \\(B = \\mu_{r}n(I + I_{M})\\). Using \\(I = 2\\,\\text{A}\\), \\(B = 1\\,\\text{T}\\), we get \\(I_{M} = 794\\,\\text{A}\\).",
+    "_note": "Three printed defects, all transcribed as printed. (1) Solution (a) reads 'The field H is dependent of the material of the core' — the physics and the whole point of H is that it is INdependent of the core material. (2) The stem asks for (a) H, (b) M, (c) B, (d) I_m, but the printed solution answers them in the order H, B, M, I_M — its labels (b) and (c) are swapped relative to its own stem. (3) Solution (d) prints 'B = mu_r n (I + I_M)', which is dimensionally impossible; the relation the book actually uses is B = mu_0 n (I + I_M), and only that reproduces the printed 794 A (1 = 4*pi*1e-7 * 1000 * (2 + I_M) gives I_M = 793.8)."
+  },
+  {
+    "ref": "Ex 5.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "EASY",
+    "stem": "A short bar magnet placed with its axis at \\(30^{\\circ}\\) with a uniform external magnetic field of \\(0.25\\,\\text{T}\\) experiences a torque of magnitude equal to \\(4.5 \\times 10^{-2}\\,\\text{J}\\). What is the magnitude of magnetic moment of the magnet?"
+  },
+  {
+    "ref": "Ex 5.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "A short bar magnet of magnetic moment \\(m = 0.32\\,\\text{J T}^{-1}\\) is placed in a uniform magnetic field of \\(0.15\\,\\text{T}\\). If the bar is free to rotate in the plane of the field, which orientation would correspond to its (a) stable, and (b) unstable equilibrium? What is the potential energy of the magnet in each case?"
+  },
+  {
+    "ref": "Ex 5.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "A closely wound solenoid of 800 turns and area of cross section \\(2.5 \\times 10^{-4}\\,\\text{m}^{2}\\) carries a current of \\(3.0\\,\\text{A}\\). Explain the sense in which the solenoid acts like a bar magnet. What is its associated magnetic moment?"
+  },
+  {
+    "ref": "Ex 5.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "If the solenoid in Exercise 5.5 is free to turn about the vertical direction and a uniform horizontal magnetic field of \\(0.25\\,\\text{T}\\) is applied, what is the magnitude of torque on the solenoid when its axis makes an angle of \\(30^{\\circ}\\) with the direction of applied field?",
+    "_note": "STALE CROSS-REFERENCE, transcribed as printed. The stem says 'the solenoid in Exercise 5.5', but Exercise 5.5 in this rationalised edition is a BAR MAGNET of moment 1.5 J/T — it contains no solenoid. The only 800-turn solenoid in the exercise block is Exercise 5.3, and the printed answer key's value for 5.4 is consistent with 5.3's moment. The reference is left over from the pre-rationalisation numbering."
+  },
+  {
+    "ref": "Ex 5.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "A bar magnet of magnetic moment \\(1.5\\,\\text{J T}^{-1}\\) lies aligned with the direction of a uniform magnetic field of \\(0.22\\,\\text{T}\\).\n(a) What is the amount of work required by an external torque to turn the magnet so as to align its magnetic moment: (i) normal to the field direction, (ii) opposite to the field direction?\n(b) What is the torque on the magnet in cases (i) and (ii)?"
+  },
+  {
+    "ref": "Ex 5.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "A closely wound solenoid of 2000 turns and area of cross-section \\(1.6 \\times 10^{-4}\\,\\text{m}^{2}\\), carrying a current of \\(4.0\\,\\text{A}\\), is suspended through its centre allowing it to turn in a horizontal plane.\n(a) What is the magnetic moment associated with the solenoid?\n(b) What is the force and torque on the solenoid if a uniform horizontal magnetic field of \\(7.5 \\times 10^{-2}\\,\\text{T}\\) is set up at an angle of \\(30^{\\circ}\\) with the axis of the solenoid?"
+  },
+  {
+    "ref": "Ex 5.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Bar Magnet",
+    "difficulty": "MODERATE",
+    "stem": "A short bar magnet has a magnetic moment of \\(0.48\\,\\text{J T}^{-1}\\). Give the direction and magnitude of the magnetic field produced by the magnet at a distance of \\(10\\,\\text{cm}\\) from the centre of the magnet on (a) the axis, (b) the equatorial lines (normal bisector) of the magnet."
+  }
+]

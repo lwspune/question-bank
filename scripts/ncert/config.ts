@@ -86,6 +86,30 @@ const cls12Maths = (p: string) => join(SOURCE_ROOT, "12th", "Maths", p);
 // split), with the end-of-book answers in kemh1an.pdf alongside them.
 const cls11Maths = (p: string) => join(SOURCE_ROOT, "11th", "Maths", p);
 
+// ── PHYSICS path helpers (2026-09-07) ───────────────────────────────────────────
+// Physics ships as pre-split per-chapter PDFs under Part_1/Part_2, PLUS the
+// whole-book PDF and NCERT's own answer files.
+//
+// TWO TRAPS, both measured before any chapter was added:
+//
+// 1. THE CHAPTER NUMBER IS NOT THE FILE NUMBER. Physics numbers its chapters
+//    CONTINUOUSLY across the two parts, but each part's files restart at 01.
+//    So `Part_2/05. KINETIC THEORY.pdf` is CHAPTER 12, and every section,
+//    worked example, exercise question and answer-key entry inside it is
+//    numbered 12.x. Class 11 Part 2 adds 7 (files 01-07 = chapters 8-14);
+//    Class 12 Part 2 adds 8 (files 01-06 = chapters 9-14). Getting this wrong
+//    does not error — it silently mis-refs every row in the chapter and points
+//    the answer-key cross-check at the wrong chapter's key.
+//
+// 2. CLASS 12 PART 2 HAS NO STANDALONE ANSWERS FILE. `leph2an.pdf` simply is
+//    not in the folder, and `leph1an.pdf` stops at chapter 8 — which reads as
+//    "chapters 9-14 have no key". They do: the key is inside the whole-book
+//    `NCERT_Physics_12th_Part_2.pdf` at 0-based pages 125-131. Verified by
+//    reading it (ch9 opens p125 "ANSWERS / CHAPTER 9", ch14 closes p131).
+const cls11Phy = (p: string) => join(SOURCE_ROOT, "11th", "Physics", p);
+const cls12Phy = (p: string) => join(SOURCE_ROOT, "12th", "Physics", p);
+
+
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.7 Integrals (12th, Part 2). 67pp, ~300 questions.
   //    The hardest common case: dense 2-D math (integrals, fractions, exponents)
@@ -1126,6 +1150,756 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Types of Events and the Algebra of Events",
       "Axiomatic Approach to Probability",
       "Probability of 'A or B' and 'not A'",
+    ],
+  },
+
+  // ══ PHYSICS ═══════════════════════════════════════════════════════════════
+  // First non-Mathematics subject on the CBSE exams (2026-09-07). The Physics
+  // subject row is seeded by scripts/ncert/seed-subject.ts and is deliberately
+  // NOT created ahead of the first commit: `listSubjects` applies no
+  // question-count filter, so an empty subject renders as a live `/browse`
+  // filter returning nothing (the mh-sb-11 Std-XI Physics row that was seeded
+  // and removed the same day). Seed it when the first chapter commits.
+  //
+  // TRANSCRIPTION IS VISION-ONLY, and that is MEASURED rather than assumed.
+  // Across 785,781 characters of Class 11 Physics the text layer yields the
+  // radical sign ONCE and superscript two ZERO times, in a book whose every
+  // other page carries a squared unit; 538 characters land in the Unicode
+  // private-use area. Prose extracts perfectly, which is exactly what makes a
+  // text-first pass dangerous here — `m s–2` is a plausible-looking string
+  // that is not what the page says.
+
+  // ── Ch.8 Mechanical Properties of Solids (11th, Part 2). 13pp. PILOT for the
+  //    Physics lane: deliberately chosen to retire the most structural unknowns
+  //    at the smallest size — it is a Part-2 file (so it proves the +7 chapter
+  //    offset: `01. …pdf` IS chapter 8), it carries exercise-scoped figures
+  //    (Fig 8.9/8.10/8.11 on the exercise pages, which the stems read their
+  //    data off), and its answer key is COMPLETE (8.1-8.16, no gaps).
+  //    Structure (0-based pages):
+  //      §8.1 Introduction p0 · §8.2 Stress and Strain p1-2 · §8.3 Hooke's Law
+  //      p2 · §8.4 Stress-Strain Curve p2-3 · §8.5 Elastic Moduli p3-7
+  //      (8.5.1 Young's · 8.5.2 Shear · 8.5.3 Bulk · 8.5.4 Poisson's Ratio ·
+  //      8.5.5 Elastic Potential Energy) · §8.6 Applications p7-9 ·
+  //      Examples 8.1-8.5 scattered p4-7 · EXERCISES p10-12.
+  //    NOTE p0 also matches an "EXERCISES" heading — that is the chapter-opening
+  //    CONTENTS box, not the exercise block. The block is the LAST match (p10).
+  //    Answers: keph2an.pdf p0-1 (its answers region is p0-6; p7-13 are the
+  //    bibliography + index and p14 is Notes — do NOT widen the range into them).
+  c11PhyMechSolids: {
+    id: "c11PhyMechSolids",
+    chapterName: "Mechanical Properties of Solids",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__MechanicalPropertiesOfSolids.pdf",
+    pdf: cls11Phy("Part_2/01. MECHANICAL PROPERTIES OF SOLIDS.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Mechanical Properties of Solids (Chapter 8, NCERT Physics Part 2)",
+    // FIVE subtopics, and the split is MEASURED rather than authored up front.
+    // The first draft used the book's top-level arc (Stress and Strain / Hooke's
+    // Law + Curve / Elastic Moduli / Applications) and the commit tally came back
+    // 1 / 3 / 18 / 1 — i.e. 18 of 23 rows in one bucket, which is a `/browse`
+    // filter that does not filter. The chapter's own sub-sections 8.5.1-8.5.3
+    // give the honest split (Young's / Shear / Bulk), and the two thin
+    // stress-strain buckets merge into one. Resulting tally 4 / 9 / 3 / 6 / 1.
+    // §8.6 Applications keeps its single row (Ex 8.7, the mild-steel columns)
+    // because that IS the section's subject matter — the book illustrates exactly
+    // that configuration in Fig 8.8 "Pillars or columns" — even though the
+    // arithmetic goes through Young's modulus.
+    subtopics: [
+      "Stress, Strain and Hooke's Law",
+      "Young's Modulus",
+      "Shear Modulus",
+      "Bulk Modulus and Compressibility",
+      "Applications of Elastic Behaviour",
+    ],
+  },
+
+  // ── The remaining 27 Physics chapters. Page maps are DERIVED, not guessed:
+  //    `pages` is omitted so render.ts rasterises the whole chapter PDF, and
+  //    `answerPages` is the WHOLE answers region of that book — deliberately not
+  //    a per-chapter slice. A computed slice was built first (each chapter's
+  //    "CHAPTER n" marker to the next) and then abandoned: these answer files are
+  //    only 6-8 pages, so rendering all of them costs a few seconds, while a
+  //    per-chapter range that is one page short silently truncates the key and NO
+  //    GATE CAN SEE IT — a missing answer page is indistinguishable from a key
+  //    that simply skips those questions (the Class-11 Maths lesson: read
+  //    answerPages at a chapter's LAST answer, not its first). The cross-check
+  //    agent is told which chapter to read, so extra pages cost nothing.
+  //
+  //    Answer regions are BOUNDED and must not be widened past them:
+  //      keph1an.pdf p0-6   · keph2an.pdf p0-6  (p7-13 are bibliography + index)
+  //      leph1an.pdf p0-5
+  //      NCERT_Physics_12th_Part_2.pdf p125-131 (see the cls12Phy note above)
+  //
+  //    Subtopics are AUTHORED from each chapter's printed section headings, not
+  //    extracted verbatim: several sections are a single paragraph and would ship
+  //    a `/browse` filter returning nothing. Check the commit's `by subtopic`
+  //    tally per chapter and re-split only where a bucket is genuinely empty.
+  //    Class-11 Oscillations and Waves set their headings in a style the
+  //    heading probe could not read (3 of ~8 sections recovered), so their lists
+  //    are authored from the chapter arc and want checking against the page.
+
+  c11PhyUnits: {
+    id: "c11PhyUnits",
+    chapterName: "Units and Measurement",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__UnitsAndMeasurement.pdf",
+    pdf: cls11Phy("Part_1/01. UNITS AND MEASUREMENT.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Units and Measurement (Chapter 1, NCERT Physics Part 1)",
+    subtopics: [
+      "Units and the SI System",
+      "Significant Figures and Errors in Measurement",
+      "Dimensions and Dimensional Analysis",
+    ],
+  },
+
+  // Ch.2 SHIPPED 2026-09-07. Cross-check 15 of 18 diffed: 14 AGREE, 1 book-key-wrong.
+  //
+  // TWO THINGS ABOUT ITS KEY WORTH KEEPING. (1) The Chapter-2 block SPANS A PAGE
+  // BREAK — 2.1-2.5 at the foot of ak-00, 2.6-2.18 at the top of ak-01 — so
+  // reading only the page carrying the "Chapter 2" heading loses 13 of the 15
+  // keyed rows SILENTLY. This is why answerPages covers the whole answers region
+  // rather than a computed per-chapter slice. (2) Its 2.2(d) says A and B reach
+  // home at the same time while Fig 2.9 as printed shows A running on to a
+  // visibly larger t — bracketed, with the answer following the figure.
+  //
+  // TAXONOMY GAP, recorded not fixed: the p0 contents box lists "2.5 Relative
+  // velocity" and NO SUCH SECTION EXISTS in this reprint's body (p-08 runs
+  // straight from Example 2.7 into SUMMARY, and the summary never mentions it) —
+  // a rationalisation leftover. But Ex 2.14 IS a relative-velocity question, and
+  // with no matching subtopic it sits under "Instantaneous Velocity and Speed"
+  // with a note on the row. One row does not justify a subtopic for a section the
+  // book no longer prints; revisit if Class 12 or a sibling adds more.
+  c11PhyMotionLine: {
+    id: "c11PhyMotionLine",
+    chapterName: "Motion in a Straight Line",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__MotionInAStraightLine.pdf",
+    pdf: cls11Phy("Part_1/02. MOTION IN A STRAIGHT LINE.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Motion in a Straight Line (Chapter 2, NCERT Physics Part 1)",
+    subtopics: [
+      "Position, Path Length and Displacement",
+      "Instantaneous Velocity and Speed",
+      "Acceleration",
+      "Kinematic Equations for Uniformly Accelerated Motion",
+    ],
+  },
+
+  // Ch.3 SHIPPED 2026-09-07, the largest Class-11 Physics chapter at 56 rows.
+  // Cross-check 47 of 47 diffed: 46 AGREE, 1 book-internal inconsistency. Note
+  // this key has ZERO NO-KEY-ENTRY — it answers every one of 3.1-3.22 including
+  // the conceptual ones, which no sibling chapter's key does.
+  //
+  // ONE DELIBERATE DEVIATION FROM FAITHFUL TRANSCRIPTION, accepted: Ex 3.22
+  // prints "wat is the speed" and ships as "what". Purely orthographic — it
+  // cannot make a correct answer look wrong against the key, which is the reason
+  // the faithful-transcription rule exists. Same call as the dropped multiplication
+  // signs in ch.10; a defect that changes a CLAIM would be preserved and bracketed
+  // instead.
+  //
+  // Exercise sub-items ARE split here (47 rows from 22 printed questions), unlike
+  // ch.5 where a uniform split was impossible because parts back-reference each
+  // other. That matters for errata: a bracket must target "Ex 3.4(f)", not
+  // "Ex 3.4" — the whole-question ref does not exist, and apply-errata reports it
+  // as a SHORTFALL rather than half-applying the file.
+  c11PhyMotionPlane: {
+    id: "c11PhyMotionPlane",
+    chapterName: "Motion in a Plane",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__MotionInAPlane.pdf",
+    pdf: cls11Phy("Part_1/03. MOTION IN A PLANE.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Motion in a Plane (Chapter 3, NCERT Physics Part 1)",
+    subtopics: [
+      "Scalars and Vectors",
+      "Addition, Subtraction and Resolution of Vectors",
+      "Motion in a Plane with Constant Acceleration",
+      "Projectile Motion",
+      "Uniform Circular Motion",
+    ],
+  },
+
+  c11PhyLawsMotion: {
+    id: "c11PhyLawsMotion",
+    chapterName: "Laws of Motion",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__LawsOfMotion.pdf",
+    pdf: cls11Phy("Part_1/04. LAWS OF MOTION.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Laws of Motion (Chapter 4, NCERT Physics Part 1)",
+    subtopics: [
+      "The Law of Inertia and Newton's First Law",
+      "Newton's Second Law of Motion",
+      "Newton's Third Law and Conservation of Momentum",
+      "Equilibrium of a Particle",
+      "Common Forces in Mechanics and Friction",
+      "Circular Motion",
+    ],
+  },
+
+  c11PhyWorkEnergy: {
+    id: "c11PhyWorkEnergy",
+    chapterName: "Work, Energy and Power",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__WorkEnergyAndPower.pdf",
+    pdf: cls11Phy("Part_1/05. WORK, ENERGY AND POWER.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Work, Energy and Power (Chapter 5, NCERT Physics Part 1)",
+    subtopics: [
+      "Work and Kinetic Energy",
+      "Work Done by a Variable Force",
+      "Potential Energy and Conservation of Mechanical Energy",
+      "Power",
+      "Collisions",
+    ],
+  },
+
+  c11PhyRotational: {
+    id: "c11PhyRotational",
+    chapterName: "System of Particles and Rotational Motion",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__RotationalMotion.pdf",
+    pdf: cls11Phy("Part_1/06. SYSTEMS OF PARTICLES AND ROTATIONAL MOTION.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — System of Particles and Rotational Motion (Chapter 6, NCERT Physics Part 1)",
+    subtopics: [
+      "Centre of Mass and its Motion",
+      "Vector Product and Angular Velocity",
+      "Torque and Angular Momentum",
+      "Equilibrium of a Rigid Body",
+      "Moment of Inertia",
+      "Dynamics of Rotational Motion about a Fixed Axis",
+    ],
+  },
+
+  c11PhyGravitation: {
+    id: "c11PhyGravitation",
+    chapterName: "Gravitation",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__Gravitation.pdf",
+    pdf: cls11Phy("Part_1/07. GRAVITATION.pdf"),
+    answersPdf: cls11Phy("Part_1/keph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Gravitation (Chapter 7, NCERT Physics Part 1)",
+    subtopics: [
+      "Kepler's Laws",
+      "Universal Law of Gravitation",
+      "Acceleration due to Gravity",
+      "Gravitational Potential Energy and Escape Speed",
+      "Earth Satellites",
+    ],
+  },
+
+  // Ch.9 SHIPPED 2026-09-07. Cross-check: 21 of 34 exercise rows diffed — 21 AGREE,
+  // 0 our-answer-wrong, 0 book-key-wrong. The key is genuinely clean on the numbers,
+  // which is a DIFFERENT result from ch.8's 3 errors + 1 inconsistency; both are
+  // reported as measured rather than averaged into a house prior.
+  //
+  // Two printed defects recorded here rather than as student-facing brackets:
+  //   - The key entry for 9.7 is LABELLED "19.7" — a stray leading 1, sitting
+  //     between 9.6 and 9.8 (verified on the rendered page). Its content answers
+  //     9.7 unambiguously and no answer is affected, so it gets no bracket. Do not
+  //     read it as a missing 9.7: an earlier probe of mine did exactly that and the
+  //     cross-check agent corrected me from the image.
+  //   - 9.3(d) DOES get a bracket: the key answers two clauses where the reprint
+  //     prints one, which a student comparing against the official key would trip on.
+  //
+  // 13 rows are NO-KEY-ENTRY (all of 9.1, 9.2 and 9.4 — "Explain why" blocks with no
+  // final value to print; the key opens at 9.3 and jumps to 9.5). Those carry
+  // derived-answer provenance, since ours is the only answer a student gets.
+  c11PhyMechFluids: {
+    id: "c11PhyMechFluids",
+    chapterName: "Mechanical Properties of Fluids",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__MechanicalPropertiesOfFluids.pdf",
+    pdf: cls11Phy("Part_2/02. MECHANICAL PROPERTIES OF FLUIDS.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Mechanical Properties of Fluids (Chapter 9, NCERT Physics Part 2)",
+    subtopics: [
+      "Pressure in Fluids",
+      "Streamline Flow",
+      "Bernoulli's Principle",
+      "Viscosity",
+      "Surface Tension",
+    ],
+  },
+
+  // Ch.10 SHIPPED 2026-09-07. Cross-check: 23 of 28 exercise rows diffed — 23 AGREE,
+  // 0 wrong on either side. The 5 skipped are Ex 10.19(a)-(e); the key jumps 10.18
+  // to 10.20 because all five parts are "explain why" with no value to print.
+  //
+  // NO errata brackets, deliberately. The three printed defects found are all
+  // DROPPED-GLYPH artifacts where the intended value is unambiguous, so they were
+  // restored in transcription rather than preserved-and-bracketed — bracketing a
+  // lost multiplication sign would be noise in a student's solution:
+  //   - Eg 10.2 prints "1.20 10^-5 K^-1" and Eg 10.4 "3.34 10^5 J kg^-1", each with
+  //     the multiplication sign dropped from the book's own printed working.
+  //   - Ex 10.15's table heading prints "cal mo1^-1 K^-1" — the l of "mol" set as
+  //     the digit 1. The stem's own "2.92 cal/mol K" confirms the reading.
+  // Preserved-and-bracketed is for a defect that changes a CLAIM (see ch.9's
+  // 9.3(d), where the key answers a clause the reprint no longer prints).
+  //
+  // Defects in teaching prose, with no row to carry them (publisher-report only):
+  // p13 cites "the low thermal conductivity of air in the Table 10.5" — air is in
+  // Table 10.6; p19 SUMMARY prints "the Farenheit temperare"; and the p0 contents
+  // box still lists "Additional Exercises" which this reprint does not contain.
+  //
+  // No figures: every exercise states its data in words. Eg 10.6/10.7 cite figures
+  // but are worked examples whose printed solutions restate the geometry.
+  c11PhyThermalProps: {
+    id: "c11PhyThermalProps",
+    chapterName: "Thermal Properties of Matter",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__ThermalPropertiesOfMatter.pdf",
+    pdf: cls11Phy("Part_2/03. THERMAL PROPERTIES OF MATTER.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Thermal Properties of Matter (Chapter 10, NCERT Physics Part 2)",
+    subtopics: [
+      "Temperature, Heat and Thermometry",
+      "Thermal Expansion",
+      "Specific Heat Capacity and Calorimetry",
+      "Change of State and Latent Heat",
+      "Heat Transfer",
+      "Newton's Law of Cooling",
+    ],
+  },
+
+  c11PhyThermodynamics: {
+    id: "c11PhyThermodynamics",
+    chapterName: "Thermodynamics",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__Thermodynamics.pdf",
+    pdf: cls11Phy("Part_2/04. THERMODYNAMICS.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Thermodynamics (Chapter 11, NCERT Physics Part 2)",
+    // FIVE subtopics, corrected from six after the chapter was transcribed.
+    //
+    // "Second Law, Reversibility and the Carnot Engine" was DROPPED. §11.9-11.11
+    // (Second Law, Kelvin-Planck, Clausius, reversibility, the Carnot cycle and
+    // Carnot's theorem) run pp.10-13 — nearly a quarter of the teaching text — and
+    // NOT ONE of the eight exercises tests any of it. That is a property of the
+    // rationalised exercise set, not a mapping choice, and it was verified by
+    // reading the pages. Keeping it would ship a `/browse` filter returning nothing
+    // (the Class-12 Linear Programming precedent). Safe to drop: no committed row
+    // ever used it, so the subtopic was never created in the DB.
+    //
+    // "Specific Heat Capacity of Gases" was RENAMED to drop "of Gases" — §11.6
+    // covers solids and water too, and the bucket really does hold Ex 11.1 (water
+    // calorimetry) and Ex 11.3(b)/(d) (coolants, sea water). The old name was
+    // narrower than its own content. Renamed in the DB in the same change.
+    subtopics: [
+      "Thermal Equilibrium and the Zeroth Law",
+      "Heat, Internal Energy and Work",
+      "First Law of Thermodynamics",
+      "Specific Heat Capacity",
+      "Thermodynamic Processes",
+    ],
+  },
+
+  c11PhyKineticTheory: {
+    id: "c11PhyKineticTheory",
+    chapterName: "Kinetic Theory",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__KineticTheory.pdf",
+    pdf: cls11Phy("Part_2/05. KINETIC THEORY.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Kinetic Theory (Chapter 12, NCERT Physics Part 2)",
+    // FOUR subtopics, corrected from five after transcription.
+    // "Law of Equipartition of Energy" was DROPPED: §12.5 is taught but the
+    // chapter sets NO question on it — all 22 rows were read and the only
+    // near-miss, Ex 12.7 (average thermal energy of a helium atom), is the direct
+    // use of Eq (12.19) from §12.4 and, helium being monatomic, never exercises
+    // equipartition's actual content. Keeping it would ship a `/browse` filter
+    // returning nothing. Safe to drop: no committed row used it, so the subtopic
+    // was never created in the DB. Same shape as ch.11's Second Law bucket.
+    subtopics: [
+      "Behaviour of Gases",
+      "Kinetic Theory of an Ideal Gas",
+      "Specific Heat Capacity",
+      "Mean Free Path",
+    ],
+  },
+
+  c11PhyOscillations: {
+    id: "c11PhyOscillations",
+    chapterName: "Oscillations",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__Oscillations.pdf",
+    pdf: cls11Phy("Part_2/06. OSCILLATIONS.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Oscillations (Chapter 13, NCERT Physics Part 2)",
+    subtopics: [
+      "Periodic and Oscillatory Motion",
+      "Simple Harmonic Motion",
+      "SHM and Uniform Circular Motion",
+      "Velocity, Acceleration and Force Law in SHM",
+      "Energy in Simple Harmonic Motion",
+      "The Simple Pendulum",
+    ],
+  },
+
+  c11PhyWaves: {
+    id: "c11PhyWaves",
+    chapterName: "Waves",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Physics",
+    sourceFile: "NCERT_11_Physics__Waves.pdf",
+    pdf: cls11Phy("Part_2/07. WAVES.pdf"),
+    answersPdf: cls11Phy("Part_2/keph2an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Waves (Chapter 14, NCERT Physics Part 2)",
+    subtopics: [
+      "Transverse and Longitudinal Waves",
+      "Displacement Relation in a Progressive Wave",
+      "The Speed of a Travelling Wave",
+      "Superposition of Waves and Standing Waves",
+      "Beats",
+    ],
+  },
+
+  c12PhyElectricCharges: {
+    id: "c12PhyElectricCharges",
+    chapterName: "Electric Charges and Fields",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__ElectricChargesAndFields.pdf",
+    pdf: cls12Phy("Part_1/01. ELECTRIC CHARGES and FIELDS.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Electric Charges and Fields (Chapter 1, NCERT Physics Part 1)",
+    subtopics: [
+      "Electric Charge and its Basic Properties",
+      "Coulomb's Law and Forces Between Multiple Charges",
+      "Electric Field and Field Lines",
+      "Electric Dipole and Dipole in a Uniform Field",
+      "Electric Flux and Gauss's Law",
+      "Applications of Gauss's Law",
+    ],
+  },
+
+  c12PhyPotentialCap: {
+    id: "c12PhyPotentialCap",
+    chapterName: "Electrostatic Potential and Capacitance",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__ElectrostaticPotentialAndCapacitance.pdf",
+    pdf: cls12Phy("Part_1/02. ELECTROSTATIC POTENTIAL AND CAPACITANCE.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Electrostatic Potential and Capacitance (Chapter 2, NCERT Physics Part 1)",
+    subtopics: [
+      "Electrostatic Potential due to Charges and Dipoles",
+      "Equipotential Surfaces",
+      "Potential Energy of a System of Charges",
+      "Electrostatics of Conductors and Dielectrics",
+      "Capacitors, Capacitance and their Combinations",
+      "Energy Stored in a Capacitor",
+    ],
+  },
+
+  c12PhyCurrentElec: {
+    id: "c12PhyCurrentElec",
+    chapterName: "Current Electricity",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__CurrentElectricity.pdf",
+    pdf: cls12Phy("Part_1/03. CURRENT_ELECTRICITY.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Current Electricity (Chapter 3, NCERT Physics Part 1)",
+    // FIVE subtopics, corrected from six after transcription — two dropped, one added.
+    //
+    // DROPPED "Electrical Energy and Power": NO question in this chapter computes a
+    // power or an energy. Eg 3.3 and Ex 3.6 look like power questions and are both
+    // temperature-coefficient problems. DROPPED "Combination of Resistors and
+    // Cells": the rationalised edition has no resistors-in-series-and-parallel
+    // section at all (§3.8 runs straight to §3.9 Electrical Energy, then §3.10
+    // Cells EMF, then §3.11 Cells in Series and in Parallel), so the label only ever
+    // mapped to §3.11. Neither was created in the DB, since no row used them.
+    //
+    // ADDED "Temperature Dependence of Resistivity": without it "Drift of Electrons
+    // and Resistivity" held 8 of the chapter's 16 rows — half the chapter in one
+    // /browse filter. It splits cleanly along the book's own section boundary,
+    // §3.5 drift proper (3 rows) vs §3.8 temperature dependence (5 rows), so this
+    // is the book's structure rather than an arbitrary cut.
+    subtopics: [
+      "Electric Current and Ohm's Law",
+      "Drift of Electrons and Resistivity",
+      "Temperature Dependence of Resistivity",
+      "Cells, EMF and Internal Resistance",
+      "Kirchhoff's Rules and Wheatstone Bridge",
+    ],
+  },
+
+  c12PhyMovingCharges: {
+    id: "c12PhyMovingCharges",
+    chapterName: "Moving Charges and Magnetism",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__MovingChargesAndMagnetism.pdf",
+    pdf: cls12Phy("Part_1/04. MOVING CHARGES AND MAGNETISM.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Moving Charges and Magnetism (Chapter 4, NCERT Physics Part 1)",
+    subtopics: [
+      "Magnetic Force and Motion in a Magnetic Field",
+      "Biot-Savart Law and Field of a Circular Loop",
+      "Ampere's Circuital Law and the Solenoid",
+      "Force Between Parallel Currents",
+      "Torque on a Current Loop and Magnetic Dipole",
+      "The Moving Coil Galvanometer",
+    ],
+  },
+
+  c12PhyMagnetismMatter: {
+    id: "c12PhyMagnetismMatter",
+    chapterName: "Magnetism and Matter",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__MagnetismAndMatter.pdf",
+    pdf: cls12Phy("Part_1/05. MAGNETISM AND MATTER.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Magnetism and Matter (Chapter 5, NCERT Physics Part 1)",
+    // THREE subtopics, corrected from four. "Magnetic Properties of Materials"
+    // (§5.5 dia/para/ferromagnetism) was DROPPED: the rationalised edition keeps
+    // the theory and removed every exercise on it, so all 7 exercises are
+    // dipole/bar-magnet mechanics and the label would ship a /browse filter
+    // returning nothing. Never created in the DB, since no row used it. This is
+    // now the FOURTH Physics chapter where the book teaches a section it never
+    // examines (ch.11 Second Law, ch.12 equipartition, ch.3 energy-and-power).
+    //
+    // "The Bar Magnet" holding 9 of 12 rows is left alone deliberately: §5.2 does
+    // have sub-sections to split on, but at 12 rows a split would make three
+    // buckets of 2-3 and read as noise rather than navigation.
+    subtopics: [
+      "The Bar Magnet",
+      "Magnetism and Gauss's Law",
+      "Magnetisation and Magnetic Intensity",
+    ],
+  },
+
+  c12PhyEMInduction: {
+    id: "c12PhyEMInduction",
+    chapterName: "Electromagnetic Induction",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__ElectromagneticInduction.pdf",
+    pdf: cls12Phy("Part_1/06. ELECTROMAGNETIC INDUCTION.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Electromagnetic Induction (Chapter 6, NCERT Physics Part 1)",
+    subtopics: [
+      "Magnetic Flux and Faraday's Law",
+      "Lenz's Law and Conservation of Energy",
+      "Motional Electromotive Force",
+      "Inductance",
+      "AC Generator",
+    ],
+  },
+
+  c12PhyAlternatingCurrent: {
+    id: "c12PhyAlternatingCurrent",
+    chapterName: "Alternating Current",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__AlternatingCurrent.pdf",
+    pdf: cls12Phy("Part_1/07. ALTERNATING CURRENT.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Alternating Current (Chapter 7, NCERT Physics Part 1)",
+    // FOUR subtopics. "Transformers" was DROPPED: §7.8 is taught and then never
+    // assessed — no worked Example and no exercise question touches it — so the
+    // label would ship a /browse filter returning nothing. Never created in the DB.
+    //
+    // THIS IS THE FIFTH PHYSICS CHAPTER WITH THAT SHAPE (ch.11 Second Law, ch.12
+    // equipartition, ch.3 energy-and-power AND resistor combinations, ch.5
+    // magnetic materials, now ch.7 transformers). It is a systematic property of
+    // the rationalised editions, not a run of coincidences: the exercise sets were
+    // cut harder than the teaching text. Expect it in the remaining chapters and
+    // check the `by subtopic` tally at commit rather than trusting the section list.
+    subtopics: [
+      "AC Voltage Applied to a Resistor",
+      "AC Voltage Applied to an Inductor and a Capacitor",
+      "Series LCR Circuit and Resonance",
+      "Power in AC Circuits and the Power Factor",
+    ],
+  },
+
+  c12PhyEMWaves: {
+    id: "c12PhyEMWaves",
+    chapterName: "Electromagnetic Waves",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__ElectromagneticWaves.pdf",
+    pdf: cls12Phy("Part_1/08. ELECTROMAGNETICS WAVES.pdf"),
+    answersPdf: cls12Phy("Part_1/leph1an.pdf"),
+    answerPages: [0, 1, 2, 3, 4, 5],
+    note: "NCERT (CBSE Class 12) — Electromagnetic Waves (Chapter 8, NCERT Physics Part 1)",
+    subtopics: [
+      "Displacement Current",
+      "Electromagnetic Waves and their Properties",
+      "Electromagnetic Spectrum",
+    ],
+  },
+
+  c12PhyRayOptics: {
+    id: "c12PhyRayOptics",
+    chapterName: "Ray Optics and Optical Instruments",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__RayOpticsAndOpticalInstruments.pdf",
+    pdf: cls12Phy("Part_2/01. RAY OPTICS AND OPTICAL INSTRUMENTS.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Ray Optics and Optical Instruments (Chapter 9, NCERT Physics Part 2)",
+    subtopics: [
+      "Reflection by Spherical Mirrors",
+      "Refraction and Total Internal Reflection",
+      "Refraction at Spherical Surfaces and by Lenses",
+      "Refraction Through a Prism",
+      "Optical Instruments",
+    ],
+  },
+
+  c12PhyWaveOptics: {
+    id: "c12PhyWaveOptics",
+    chapterName: "Wave Optics",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__WaveOptics.pdf",
+    pdf: cls12Phy("Part_2/02. WAVE OPTICS.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Wave Optics (Chapter 10, NCERT Physics Part 2)",
+    subtopics: [
+      "Huygens Principle",
+      "Refraction and Reflection of Plane Waves",
+      "Interference and Young's Experiment",
+      "Diffraction",
+      "Polarisation",
+    ],
+  },
+
+  c12PhyDualNature: {
+    id: "c12PhyDualNature",
+    chapterName: "Dual Nature of Radiation and Matter",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__DualNatureOfRadiationAndMatter.pdf",
+    pdf: cls12Phy("Part_2/03. DUAL NATURE OF RADIATION AND MATTER.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Dual Nature of Radiation and Matter (Chapter 11, NCERT Physics Part 2)",
+    subtopics: [
+      "Electron Emission",
+      "Photoelectric Effect and its Experimental Study",
+      "Einstein's Photoelectric Equation and the Photon",
+      "Wave Nature of Matter",
+    ],
+  },
+
+  c12PhyAtoms: {
+    id: "c12PhyAtoms",
+    chapterName: "Atoms",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__Atoms.pdf",
+    pdf: cls12Phy("Part_2/04. ATOMS.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Atoms (Chapter 12, NCERT Physics Part 2)",
+    subtopics: [
+      "Alpha-Particle Scattering and Rutherford's Model",
+      "Atomic Spectra",
+      "Bohr Model of the Hydrogen Atom",
+      "Line Spectra of the Hydrogen Atom",
+      "de Broglie's Explanation of Bohr's Postulate",
+    ],
+  },
+
+  c12PhyNuclei: {
+    id: "c12PhyNuclei",
+    chapterName: "Nuclei",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__Nuclei.pdf",
+    pdf: cls12Phy("Part_2/05. NUCLEI.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Nuclei (Chapter 13, NCERT Physics Part 2)",
+    subtopics: [
+      "Atomic Masses and Composition of the Nucleus",
+      "Size of the Nucleus",
+      "Mass-Energy and Nuclear Binding Energy",
+      "Nuclear Force",
+      "Radioactivity",
+      "Nuclear Energy",
+    ],
+  },
+
+  // ⚠ Ch.14's PDF CONTAINS THE WHOLE BOOK'S BACK MATTER — measured 2026-09-07,
+  // before dispatch, because two probes disagreed wildly about this chapter (one
+  // reported 95 exercise questions, a later one 6) and "14 pages for 6 questions"
+  // is implausible on its face. Neither reading was a defect; the chapter PDF is
+  // simply not just the chapter:
+  //     p0-17   the chapter itself (§14.1-14.7, Examples 14.1-14.4)
+  //     p18-19  the REAL exercise block — 6 questions, 14.1-14.6. That is all
+  //             there is; the block is two pages, not fourteen.
+  //     p21-29  the ANSWERS SECTION FOR ALL OF PART 2 (chapters 9 through 14).
+  //             This is what the "95" probe counted: it read the 9.x/10.x/…/14.x
+  //             key entries as question numbers. p29 carries chapter 14's own key,
+  //             with exactly 6 entries — which independently confirms the 6.
+  //     p30-31  bibliography and index.
+  //
+  // A transcribing agent MUST NOT read past p19. Transcribing p21-29 would ingest
+  // six chapters' ANSWER KEY as questions, and nothing downstream would catch it:
+  // the rows would commit, section, and pass every audit.
+  //
+  // (answerPages still points into NCERT_Physics_12th_Part_2.pdf p125-131 rather
+  // than these pages — same content, and the whole-book path is what the other
+  // five Part-2 chapters already use.)
+  c12PhySemiconductors: {
+    id: "c12PhySemiconductors",
+    chapterName: "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Physics",
+    sourceFile: "NCERT_12_Physics__SemiconductorElectronics.pdf",
+    pdf: cls12Phy("Part_2/06. SEICONDUCTOR ELECTRONICS.pdf"),
+    answersPdf: cls12Phy("Part_2/NCERT_Physics_12th_Part_2.pdf"),
+    answerPages: [125, 126, 127, 128, 129, 130, 131],
+    note: "NCERT (CBSE Class 12) — Semiconductor Electronics: Materials, Devices and Simple Circuits (Chapter 14, NCERT Physics Part 2)",
+    subtopics: [
+      "Classification of Metals, Conductors and Semiconductors",
+      "Intrinsic and Extrinsic Semiconductors",
+      "p-n Junction and the Semiconductor Diode",
+      "Application of Junction Diode as a Rectifier",
     ],
   },
 };

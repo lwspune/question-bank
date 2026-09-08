@@ -1,0 +1,62 @@
+[
+  {
+    "id": "c7dd0b8f-2537-4ced-b601-75f40f54f696",
+    "ref": "Ex 7.1(a)",
+    "solution": "No. Electrostatic shielding works because charge comes in two signs: the free charges in a conductor redistribute themselves until their field exactly cancels the external field inside the cavity. Gravitational \"charge\" is mass, which is of one sign only and always attracts, so no distribution of matter can produce a field that cancels the field of external matter.\n\nA hollow sphere does contribute zero field of its OWN at points inside it, but that says nothing about outside bodies: their field passes through the shell unchanged and simply adds to it.\n\nGravitational shielding is not possible."
+  },
+  {
+    "id": "a19c9b5d-8a86-4f13-8bbf-9e505b37a682",
+    "ref": "Ex 7.1(b)",
+    "solution": "Yes, in a large enough station he can.\n\nAn orbiting astronaut feels no gravity because he and his ship are in free fall together: over a small ship the earth's field is essentially UNIFORM, so every part of the ship has the same acceleration \\(g\\) and nothing accelerates relative to anything else.\n\nOver a large station the field is no longer uniform across it. Its magnitude falls off as \\(1/r^2\\) and its direction points to the earth's centre, so points at different places in the station have slightly different accelerations. This differential (tidal) effect makes objects drift relative to the station, and the astronaut can detect it.\n\nYes — through the tidal effect arising from the non-uniformity of the earth's field across a large station."
+  },
+  {
+    "id": "d33b10a7-e29f-410d-8823-fda33a718580",
+    "ref": "Ex 7.1(c)",
+    "solution": "The tides are raised by the DIFFERENCE in the pull across the earth's diameter, not by the pull itself.\n\nThe pull of a body of mass \\(M\\) at distance \\(d\\) is \\(F \\propto \\dfrac{M}{d^2}\\), while the difference of that pull between the near and far sides of the earth (radius \\(R_E\\)) is\n\n\\(\\Delta F \\approx \\left|\\dfrac{\\mathrm{d}F}{\\mathrm{d}d}\\right| (2R_E) \\propto \\dfrac{M\\,R_E}{d^3}\\)\n\nSo the tidal effect falls off as \\(1/d^3\\), one power of \\(d\\) faster than the pull.\n\nThe Sun is about \\(2.7 \\times 10^7\\) times more massive than the moon but about 390 times farther away, so\n\npull: \\(\\dfrac{F_{\\text{sun}}}{F_{\\text{moon}}} \\approx \\dfrac{2.7 \\times 10^7}{(390)^2} \\approx 1.8 \\times 10^2\\)\n\ntide: \\(\\dfrac{\\Delta F_{\\text{moon}}}{\\Delta F_{\\text{sun}}} \\approx \\dfrac{(390)^3}{2.7 \\times 10^7} \\approx 2.2\\)\n\nThe extra factor of \\(d\\) in the denominator more than cancels the Sun's mass advantage. Hence the Sun pulls the earth about 180 times harder, yet the moon's tidal effect is about twice the Sun's."
+  },
+  {
+    "id": "fccbfd7d-7bef-4acf-8497-d1af9355abb9",
+    "ref": "Ex 7.2(a)",
+    "solution": "Above the surface, \\(g(h) = \\dfrac{G M_E}{(R_E + h)^2}\\), which gets smaller as \\(h\\) grows (for \\(h \\ll R_E\\), \\(g(h) \\approx g\\left(1 - \\dfrac{2h}{R_E}\\right)\\)).\n\nAcceleration due to gravity DECREASES with increasing altitude."
+  },
+  {
+    "id": "3123068e-eee6-455c-80d8-ff4455744fcb",
+    "ref": "Ex 7.2(b)",
+    "solution": "At a depth \\(d\\) only the sphere of radius \\((R_E - d)\\) beneath the body pulls on it; the shell outside contributes nothing. For uniform density this gives\n\n\\(g(d) = g\\left(1 - \\dfrac{d}{R_E}\\right)\\)\n\nwhich decreases as \\(d\\) grows, reaching zero at the centre.\n\nAcceleration due to gravity DECREASES with increasing depth."
+  },
+  {
+    "id": "f9010673-5b52-4d2b-9686-d2cc0830d8ad",
+    "ref": "Ex 7.2(c)",
+    "solution": "The force on a body of mass \\(m\\) is \\(F = \\dfrac{G M_E m}{R_E^2}\\), so its acceleration is\n\n\\(g = \\dfrac{F}{m} = \\dfrac{G M_E}{R_E^2}\\)\n\nThe body's own mass cancels, while \\(M_E\\) remains.\n\nAcceleration due to gravity is independent of the MASS OF THE BODY."
+  },
+  {
+    "id": "5655fc09-f0bf-406c-a0ab-2c9700a2bd83",
+    "ref": "Ex 7.2(d)",
+    "solution": "\\(-G\\,Mm\\left(1/r_2 - 1/r_1\\right)\\) is the exact result of integrating the true inverse-square force between \\(r_1\\) and \\(r_2\\), and it holds for any separation.\n\n\\(mg(r_2 - r_1)\\) assumes the force is constant at its surface value \\(mg\\) over the whole interval, which is only a good approximation when \\((r_2 - r_1) \\ll R_E\\). It is the limiting case of the first formula, not an independent result.\n\nThe formula \\(-G\\,Mm\\left(1/r_2 - 1/r_1\\right)\\) is MORE accurate."
+  },
+  {
+    "id": "022c4057-c281-4c09-b3a8-96e48d627ec2",
+    "ref": "Ex 7.6(a)",
+    "solution": "For a satellite in a circular orbit of radius \\(r\\), the gravitational pull supplies the centripetal force, so \\(\\dfrac{mv^2}{r} = \\dfrac{G M_E m}{r^2}\\), giving\n\nK.E. \\(= \\dfrac{1}{2}mv^2 = \\dfrac{G M_E m}{2r}\\), P.E. \\(= -\\dfrac{G M_E m}{r}\\)\n\nHence\n\n\\(E = \\text{K.E.} + \\text{P.E.} = -\\dfrac{G M_E m}{2r} = -(\\text{K.E.})\\)\n\n(Note it is \\(+\\tfrac{1}{2}\\) of the potential energy, not the negative of it.)\n\nThe total energy is the negative of its KINETIC energy."
+  },
+  {
+    "id": "d6f766e7-f6e8-44a7-b830-f16b565d1ea1",
+    "ref": "Ex 7.6(b)",
+    "solution": "To send a body to infinity you must supply exactly as much energy as it lacks, i.e. \\(-E\\).\n\nFor the ORBITING satellite at radius \\(r\\): \\(E = -\\dfrac{G M_E m}{2r}\\), so the energy needed is \\(\\dfrac{G M_E m}{2r}\\).\n\nFor a STATIONARY object at the same height: it has no kinetic energy, so \\(E = -\\dfrac{G M_E m}{r}\\) and the energy needed is \\(\\dfrac{G M_E m}{r}\\).\n\nThe satellite is already halfway there, because its orbital motion supplies half of the required energy.\n\nThe energy required to launch the orbiting satellite out is LESS — half as much."
+  },
+  {
+    "id": "35ae9b16-1905-4bec-8e12-972fa543e828",
+    "ref": "Ex 7.7",
+    "solution": "Equating the launch kinetic energy to the depth of the potential well at the launch point \\((R_E + h)\\) from the earth's centre:\n\n\\(\\dfrac{1}{2}m v_e^2 = \\dfrac{G M_E m}{R_E + h}\\)\n\n\\(v_e = \\sqrt{\\dfrac{2 G M_E}{R_E + h}}\\)\n\nThe body's mass \\(m\\) cancels, and the result contains only \\(M_E\\) and the distance from the earth's centre.\n\n(a) mass of the body — NO, it cancels.\n\n(b) location from where it is projected — NO, since for a spherically symmetric earth every surface point is the same distance \\(R_E\\) from the centre.\n\n(c) direction of projection — NO, because energy conservation involves only the SPEED; direction affects the path taken, not whether the body escapes.\n\n(d) height of the location — YES, \\(v_e\\) decreases as \\((R_E + h)\\) increases.\n\nNo, No, No, Yes — the escape speed depends only on the height (distance from the earth's centre)."
+  },
+  {
+    "id": "557d9026-e8e2-409b-8574-85d11b6aabe3",
+    "ref": "Ex 7.8",
+    "solution": "Gravity is a CENTRAL force (always along the line to the Sun) and is CONSERVATIVE. A central force exerts no torque about the Sun, so angular momentum is conserved; a conservative force conserves total mechanical energy. Nothing else on the list is protected.\n\nSince \\(L = m r^2\\omega\\) and \\(E\\) are fixed while \\(r\\) swings between perihelion and aphelion, both \\(\\omega\\) and the speed \\(v\\) must change, and with them the kinetic and potential energies.\n\n(a) linear speed — NOT constant (largest at perihelion, smallest at aphelion)\n\n(b) angular speed — NOT constant\n\n(c) angular momentum — CONSTANT\n\n(d) kinetic energy — NOT constant\n\n(e) potential energy — NOT constant\n\n(f) total energy — CONSTANT\n\nOnly the angular momentum and the total energy are constant."
+  },
+  {
+    "id": "f352228e-6188-498c-b099-1706c86757be",
+    "ref": "Ex 7.9",
+    "solution": "On the ground, gravity holds a column of blood and tissue fluid in the lower body. In orbit the astronaut is in free fall, that column is no longer pulled down, and the body fluids shift towards the head.\n\n(a) swollen feet — NOT likely; fluid drains OUT of the legs, so the legs actually become thinner.\n\n(b) swollen face — likely, from the headward fluid shift.\n\n(c) headache — likely, from the raised blood and cerebrospinal fluid pressure in the head.\n\n(d) orientational problem — likely, because the balance organs of the inner ear rely on gravity to signal \"down\", and that cue is absent.\n\nSymptoms (b), (c) and (d) are likely; (a) is not."
+  }
+]

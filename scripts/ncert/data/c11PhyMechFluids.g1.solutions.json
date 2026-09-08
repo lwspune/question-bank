@@ -1,0 +1,90 @@
+[
+  {
+    "id": "e3b1fd09-d511-4481-9d4e-61052af91bf6",
+    "ref": "Ex 9.1(a)",
+    "solution": "Blood is, to a good approximation, a fluid in hydrostatic equilibrium, so its pressure obeys \\(P_2 = P_1 + \\rho g h\\): the pressure at a point is set by the weight of the column of blood standing above that point. In a standing adult the feet lie about \\(h = 1.5\\,\\text{m}\\) below the brain, so the feet carry that much extra column of blood while the brain does not.\n\nWith \\(\\rho_{\\text{blood}} \\approx 1.06 \\times 10^{3}\\,\\text{kg m}^{-3}\\) and \\(g = 9.8\\,\\text{m s}^{-2}\\),\n\\[\\Delta P = \\rho g h = (1.06 \\times 10^{3})(9.8)(1.5) \\approx 1.6 \\times 10^{4}\\,\\text{Pa},\\]\nwhich in the clinical unit is \\(\\dfrac{1.56 \\times 10^{4}}{(13.6 \\times 10^{3})(9.8)} \\approx 0.12\\,\\text{m}\\) of mercury.\n\nThe height of the blood column between brain and feet, through the hydrostatic term \\(\\rho g h\\), makes the pressure at the feet greater than at the brain by about \\(1.6 \\times 10^{4}\\,\\text{Pa}\\) (roughly \\(120\\,\\text{mm}\\) of mercury)."
+  },
+  {
+    "id": "89b43def-42e0-4adb-8fee-aadf4c4761eb",
+    "ref": "Ex 9.1(b)",
+    "solution": "For any fluid at rest \\(\\dfrac{dP}{dh} = -\\rho g\\). Water is practically incompressible, so \\(\\rho\\) is constant and its pressure falls linearly with height. Air is compressible: at a roughly uniform temperature \\(\\rho \\propto P\\), so\n\\[\\frac{dP}{dh} = -\\frac{\\rho_0 g}{P_0}\\,P \\quad\\Longrightarrow\\quad P = P_0\\,e^{-h/H}, \\qquad H = \\frac{P_0}{\\rho_0 g}.\\]\nWith \\(P_0 = 1.013 \\times 10^{5}\\,\\text{Pa}\\) and \\(\\rho_0 = 1.29\\,\\text{kg m}^{-3}\\),\n\\[H = \\frac{1.013 \\times 10^{5}}{(1.29)(9.8)} \\approx 8 \\times 10^{3}\\,\\text{m} = 8\\,\\text{km},\\]\nso the pressure halves at \\(h = H\\ln 2 \\approx 5.5\\,\\text{km}\\), which is the quoted \\(6\\,\\text{km}\\).\n\nThe pressure at a level measures the weight of air above it, and air is densest near the ground and thins out rapidly with height. Nearly half the mass of the atmosphere therefore lies in the lowest \\(6\\,\\text{km}\\), while the remaining \\(100\\,\\text{km}\\) is so rarefied that it adds very little weight. Because the fall is exponential rather than linear, the total height of the atmosphere is irrelevant: it is the density distribution, not the height, that fixes how much weight sits above a given level."
+  },
+  {
+    "id": "d5458fe2-d894-4562-99e9-ca99f1b76f78",
+    "ref": "Ex 9.1(c)",
+    "solution": "At a point in a fluid at rest the pressure has the same magnitude on every surface element through that point, whatever the orientation of the element (Pascal's law), and the force on the element is always along its normal. So the direction of the force is fixed entirely by the area vector, not by the pressure:\n\\[\\mathbf{F} = P\\,\\mathbf{A}.\\]\nPressure is the scalar that multiplies the area vector to produce the force vector; it has no direction of its own, and pressures at a point do not combine by the vector (parallelogram) law — they simply add arithmetically.\n\nHence, although \\(P = F/A\\) is formed from the magnitude of a force and an area, hydrostatic pressure carries no direction and is a scalar quantity."
+  },
+  {
+    "id": "55e92318-56d0-48aa-8ef2-ca88281b4fde",
+    "ref": "Ex 9.3(b)",
+    "solution": "In a gas the shear stress is carried by molecules migrating between layers; heating raises the molecular speeds and hence the rate of this momentum transport, so the viscosity rises (roughly as \\(\\sqrt{T}\\)). In a liquid the resistance comes from intermolecular cohesion; heating loosens those bonds, so the layers slide past one another more easily and the viscosity falls.\n\nViscosity of gases increases with temperature, whereas viscosity of liquids decreases with temperature."
+  },
+  {
+    "id": "ba58d60f-c6c0-47ed-9462-fb70ab94c3df",
+    "ref": "Ex 9.3(c)",
+    "solution": "A solid sheared by a constant stress reaches a fixed deformation and stays there, so Hooke's law relates stress to the strain itself: \\(\\dfrac{F}{A} = G\\,\\theta\\), with \\(G\\) the modulus of rigidity. A fluid has no equilibrium shear configuration — it keeps deforming as long as the stress acts — so the stress can only be related to how fast it deforms: \\(\\dfrac{F}{A} = \\eta\\,\\dfrac{d\\theta}{dt} = \\eta\\,\\dfrac{dv}{dz}\\), with \\(\\eta\\) the coefficient of viscosity.\n\nFor solids the shearing force is proportional to the shear strain, while for fluids it is proportional to the rate of shear strain."
+  },
+  {
+    "id": "d8022cad-60e3-4d3a-aa5b-52a2997fcdcb",
+    "ref": "Ex 9.3(d)",
+    "solution": "[Textbook inconsistency between the question and its key: the printed answer key gives TWO answers for this blank — \"conservation of mass, Bernoulli's equation\" — while the question as printed in this reprint contains only ONE clause. The sibling items (c) and (e) on the same page still show their \\(\\ldots\\) blank markers and this one does not, so the reprint appears to have dropped a second clause (the decrease of pressure at the constriction, which is what Bernoulli's equation supplies) along with its marker. The stem above is faithful to the printed page and the answer below answers the clause that survives; if your copy of the key lists two answers, that is why.] In steady flow the mass entering a tube of flow per second must equal the mass leaving it, since no fluid accumulates anywhere. For an incompressible liquid this gives the equation of continuity \\(A v = \\text{constant}\\), so where the cross-section \\(A\\) is squeezed the speed \\(v\\) must rise in inverse proportion. Bernoulli's principle then tells us the consequence of that speed rise — the pressure drops — but it is not the reason the speed rises in the first place.\n\nThe increase in flow speed at a constriction follows from conservation of mass."
+  },
+  {
+    "id": "f1871d4d-8603-49d4-b4fd-a15079363467",
+    "ref": "Ex 9.3(e)",
+    "solution": "The onset of turbulence is governed not by speed alone but by the Reynolds number\n\\[R_e = \\frac{\\rho v d}{\\eta},\\]\nwhich becomes critical at a fixed value (a few thousand) for geometrically similar bodies. A wind-tunnel model has a much smaller linear dimension \\(d\\) than the actual plane, and it is tested in air of essentially the same \\(\\rho\\) and \\(\\eta\\). To reach the same critical \\(R_e\\), the smaller \\(d\\) must therefore be compensated by a larger \\(v\\).\n\nTurbulence sets in on the model at a greater speed than on the actual plane.",
+    "_note": "The printed stem is garbled — it reads \"turbulence occurs at a ... speed for turbulence for an actual plane\", with the word \"than\" apparently dropped and \"for turbulence\" duplicated. The intended comparison (model versus actual plane) is unambiguous and is what is solved here. Transcribed faithfully; not corrected."
+  },
+  {
+    "id": "5d2bccb2-a0db-4ca9-b909-3ab1b057bf7c",
+    "ref": "Ex 9.4(b)",
+    "solution": "The volume of water delivered per second is set by the supply line and the tap setting, and is essentially unchanged by the fingers. By the equation of continuity for this fixed volume flux,\n\\[Q = A v = \\text{constant}.\\]\nPressing the fingers over the mouth of the tap does not stop the water; it leaves only narrow gaps between them, cutting the total outlet area \\(A\\) to a small fraction of the tap's bore. Since \\(Q\\) is unchanged, \\(v = Q/A\\) must rise by the same large factor.\n\nThe water is therefore forced through the small gaps between the fingers at a much higher speed, appearing as fast jets — a direct consequence of the equation of continuity (conservation of mass)."
+  },
+  {
+    "id": "8b09d604-f7f5-4080-943c-e675884c31bf",
+    "ref": "Ex 9.4(c)",
+    "solution": "The flow of a viscous liquid through the narrow needle is laminar, so it obeys Poiseuille's law\n\\[Q = \\frac{\\pi \\Delta P\\, r^{4}}{8 \\eta l}.\\]\nThe flow rate depends on the pressure difference only in the first power, but on the radius of the needle in the fourth power. A small fractional change in \\(r\\) therefore changes \\(Q\\) far more than the same fractional change in \\(\\Delta P\\): doubling the radius multiplies the flow rate by \\(2^{4} = 16\\), whereas doubling the thumb pressure merely doubles it.\n\nBecause \\(Q \\propto r^{4}\\) while \\(Q \\propto \\Delta P\\), the needle's bore is by far the more sensitive control, and it is also a fixed, reproducible quantity — unlike the thumb pressure, which the doctor can only vary crudely and cannot hold steady."
+  },
+  {
+    "id": "48a97502-7f1f-48eb-8bcf-6fd6321a3caa",
+    "ref": "Ex 9.5",
+    "solution": "The whole weight rests on the single heel, so the force normal to the floor is\n\\[F = mg = (50)(9.8) = 490\\,\\text{N}.\\]\nThe heel is circular of diameter \\(1.0\\,\\text{cm}\\), so its radius is \\(r = 0.5\\,\\text{cm} = 0.5 \\times 10^{-2}\\,\\text{m}\\) and its area is\n\\[A = \\pi r^{2} = \\pi (0.5 \\times 10^{-2})^{2} = 7.85 \\times 10^{-5}\\,\\text{m}^{2}.\\]\nHence\n\\[P = \\frac{F}{A} = \\frac{490}{7.85 \\times 10^{-5}} = 6.24 \\times 10^{6}\\,\\text{Pa}.\\]\n\nThe pressure exerted on the floor is \\(P \\approx 6.2 \\times 10^{6}\\,\\text{Pa}\\) (about \\(62\\) times atmospheric pressure)."
+  },
+  {
+    "id": "305e4d92-5a16-41c2-9d7b-28c1385d2b56",
+    "ref": "Ex 9.6",
+    "solution": "In a barometer the atmospheric pressure is balanced by the hydrostatic pressure of the liquid column, \\(P = \\rho g h\\), so\n\\[h = \\frac{P}{\\rho g}.\\]\nTaking normal atmospheric pressure \\(P = 1.013 \\times 10^{5}\\,\\text{Pa}\\), the density of the wine \\(\\rho = 984\\,\\text{kg m}^{-3}\\) and \\(g = 9.8\\,\\text{m s}^{-2}\\),\n\\[h = \\frac{1.013 \\times 10^{5}}{(984)(9.8)} = \\frac{1.013 \\times 10^{5}}{9.643 \\times 10^{3}} = 10.5\\,\\text{m}.\\]\nThe column is about \\(13.6\\) times taller than the mercury one because wine is about that many times less dense, which is precisely why mercury is used in practice.\n\nHeight of the wine column, \\(h \\approx 10.5\\,\\text{m}\\).",
+    "_note": "The stem prints \"Toricelli's\" for Torricelli's; transcribed faithfully and not corrected."
+  },
+  {
+    "id": "b1caab82-80b1-40e3-b486-24374885dd47",
+    "ref": "Ex 9.7",
+    "solution": "The structure has to withstand the gauge pressure of the water at the ocean floor,\n\\[P = \\rho g h.\\]\nWith \\(\\rho \\approx 1.0 \\times 10^{3}\\,\\text{kg m}^{-3}\\), \\(g = 9.8\\,\\text{m s}^{-2}\\) and \\(h = 3\\,\\text{km} = 3 \\times 10^{3}\\,\\text{m}\\),\n\\[P = (1.0 \\times 10^{3})(9.8)(3 \\times 10^{3}) = 2.94 \\times 10^{7}\\,\\text{Pa} \\approx 3 \\times 10^{7}\\,\\text{Pa}.\\]\n(Using the density of sea water, \\(1.03 \\times 10^{3}\\,\\text{kg m}^{-3}\\), gives \\(3.0 \\times 10^{7}\\,\\text{Pa}\\), and adding one atmosphere changes nothing at this precision.)\n\nThis is about \\(3\\%\\) of the maximum stress the structure is designed to take, \\(10^{9}\\,\\text{Pa}\\). Since \\(3 \\times 10^{7}\\,\\text{Pa} \\ll 10^{9}\\,\\text{Pa}\\), the structure is suitable for putting up on the oil well.",
+    "_note": "The stem gives no density for sea water; \\(1.0 \\times 10^{3}\\,\\text{kg m}^{-3}\\) is assumed and the sea-water value is quoted alongside, since the verdict is unchanged either way."
+  },
+  {
+    "id": "7eb57265-c487-473d-ba26-81d7f5defe36",
+    "ref": "Ex 9.8",
+    "solution": "By Pascal's law the pressure applied at the smaller piston is transmitted undiminished through the liquid, so the pressure the small piston must bear equals the pressure at the large (load-carrying) piston.\n\nThe maximum load is \\(F = mg = (3000)(9.8) = 2.94 \\times 10^{4}\\,\\text{N}\\), carried on\n\\[A = 425\\,\\text{cm}^{2} = 425 \\times 10^{-4}\\,\\text{m}^{2} = 4.25 \\times 10^{-2}\\,\\text{m}^{2}.\\]\nHence\n\\[P = \\frac{F}{A} = \\frac{2.94 \\times 10^{4}}{4.25 \\times 10^{-2}} = 6.92 \\times 10^{5}\\,\\text{Pa}.\\]\nNote that the answer does not depend on the area of the smaller piston — that area fixes only the force needed there, not the pressure.\n\nMaximum pressure on the smaller piston, \\(P \\approx 6.92 \\times 10^{5}\\,\\text{Pa}\\)."
+  },
+  {
+    "id": "db1a0b4e-e030-4cfb-9df4-0e219665c4f3",
+    "ref": "Ex 9.9",
+    "solution": "The mercury surfaces in the two arms are at the same level, so the pressures at that common level, reached down each arm, must be equal. Above that level one arm carries only the water column and the other only the spirit column, and both are open to the atmosphere. Hence\n\\[P_0 + \\rho_w g h_w = P_0 + \\rho_s g h_s \\quad\\Longrightarrow\\quad \\rho_w h_w = \\rho_s h_s.\\]\nWith \\(h_w = 10.0\\,\\text{cm}\\) and \\(h_s = 12.5\\,\\text{cm}\\),\n\\[\\frac{\\rho_s}{\\rho_w} = \\frac{h_w}{h_s} = \\frac{10.0}{12.5} = 0.8.\\]\nThe mercury cancels out entirely — it serves only to keep the two liquids apart and to provide a common level.\n\nSpecific gravity of the spirit \\(= 0.8\\) (density \\(\\approx 0.8 \\times 10^{3}\\,\\text{kg m}^{-3}\\))."
+  },
+  {
+    "id": "f9008c93-1421-470d-98e6-bfaf9e3a468d",
+    "ref": "Ex 9.10",
+    "solution": "From the previous part the specific gravity of the spirit is \\(0.8\\). After the extra liquid is poured in, the columns become\n\\[h_w = 10.0 + 15.0 = 25.0\\,\\text{cm of water}, \\qquad h_s = 12.5 + 15.0 = 27.5\\,\\text{cm of spirit}.\\]\nExpressed as equivalent heights of water, the two arms now press down with\n\\[(1.0)(25.0) = 25.0 \\quad \\text{and} \\quad (0.8)(27.5) = 22.0,\\]\nso the water arm is heavier and pushes its mercury surface down; the mercury rises in the spirit arm by the same amount. Let \\(h\\) be the resulting difference in the mercury levels. Balancing pressures at the level of the lower mercury surface (in the water arm), all heights in cm and all densities relative to water,\n\\[(1.0)(25.0) = (0.8)(27.5) + (13.6)\\,h\\]\n\\[25.0 = 22.0 + 13.6\\,h \\quad\\Longrightarrow\\quad h = \\frac{3.0}{13.6} = 0.221\\,\\text{cm}.\\]\n\nThe mercury levels differ by \\(h \\approx 0.22\\,\\text{cm}\\) (about \\(2.2\\,\\text{mm}\\)), the mercury standing higher in the spirit arm."
+  },
+  {
+    "id": "6479e23f-9ac0-4628-8fc3-acb448cc43ff",
+    "ref": "Ex 9.13",
+    "solution": "Convert the given mass flow to a volume flow:\n\\[Q = \\frac{\\dot{m}}{\\rho} = \\frac{4.0 \\times 10^{-3}}{1.3 \\times 10^{3}} = 3.08 \\times 10^{-6}\\,\\text{m}^{3}\\,\\text{s}^{-1}.\\]\nFor steady laminar flow through a horizontal tube, Poiseuille's law gives\n\\[Q = \\frac{\\pi\\,\\Delta P\\, r^{4}}{8\\eta l} \\quad\\Longrightarrow\\quad \\Delta P = \\frac{8 \\eta l\\, Q}{\\pi r^{4}}.\\]\nWith \\(\\eta = 0.83\\,\\text{Pa s}\\), \\(l = 1.5\\,\\text{m}\\) and \\(r = 1.0\\,\\text{cm} = 1.0 \\times 10^{-2}\\,\\text{m}\\) (so \\(r^{4} = 1.0 \\times 10^{-8}\\,\\text{m}^{4}\\)),\n\\[\\Delta P = \\frac{8(0.83)(1.5)(3.08 \\times 10^{-6})}{\\pi (1.0 \\times 10^{-8})} = \\frac{3.06 \\times 10^{-5}}{3.14 \\times 10^{-8}} = 9.8 \\times 10^{2}\\,\\text{Pa}.\\]\n\nChecking the assumption of laminar flow: the mean speed is\n\\[v = \\frac{Q}{\\pi r^{2}} = \\frac{3.08 \\times 10^{-6}}{3.14 \\times 10^{-4}} = 9.8 \\times 10^{-3}\\,\\text{m s}^{-1},\\]\nso with \\(d = 2r = 2.0 \\times 10^{-2}\\,\\text{m}\\),\n\\[R_e = \\frac{\\rho v d}{\\eta} = \\frac{(1.3 \\times 10^{3})(9.8 \\times 10^{-3})(2.0 \\times 10^{-2})}{0.83} \\approx 0.3.\\]\nThis is far below the turbulent threshold of about \\(2000\\), so the flow is indeed laminar and Poiseuille's law was legitimate.\n\nPressure difference \\(\\Delta P \\approx 9.8 \\times 10^{2}\\,\\text{Pa}\\); Reynolds number \\(R_e \\approx 0.3\\), so the laminar assumption is correct."
+  },
+  {
+    "id": "61067db8-e166-4138-aaff-67a133a209a3",
+    "ref": "Ex 9.16",
+    "solution": "The liquid is incompressible, so by the equation of continuity the volume flowing along the tube per second equals the total volume leaving through the \\(40\\) holes per second:\n\\[A_1 v_1 = 40\\, a\\, v_2.\\]\nIn SI units,\n\\[A_1 = 8.0\\,\\text{cm}^{2} = 8.0 \\times 10^{-4}\\,\\text{m}^{2}, \\qquad v_1 = 1.5\\,\\text{m min}^{-1} = \\frac{1.5}{60} = 2.5 \\times 10^{-2}\\,\\text{m s}^{-1},\\]\nand each hole of diameter \\(1.0\\,\\text{mm}\\) has radius \\(r = 0.5 \\times 10^{-3}\\,\\text{m}\\), so\n\\[a = \\pi r^{2} = \\pi(0.5 \\times 10^{-3})^{2} = 7.85 \\times 10^{-7}\\,\\text{m}^{2}, \\qquad 40a = 3.14 \\times 10^{-5}\\,\\text{m}^{2}.\\]\nHence\n\\[v_2 = \\frac{A_1 v_1}{40 a} = \\frac{(8.0 \\times 10^{-4})(2.5 \\times 10^{-2})}{3.14 \\times 10^{-5}} = \\frac{2.0 \\times 10^{-5}}{3.14 \\times 10^{-5}} = 0.64\\,\\text{m s}^{-1}.\\]\n\nSpeed of ejection through the holes, \\(v_2 \\approx 0.64\\,\\text{m s}^{-1}\\)."
+  }
+]

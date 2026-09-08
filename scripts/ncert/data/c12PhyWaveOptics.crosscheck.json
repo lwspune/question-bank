@@ -1,0 +1,72 @@
+[
+  {
+    "ref": "Ex 10.1",
+    "verdict": "AGREE",
+    "ourAnswer": "Reflected: lambda = 589 nm, nu = 5.09e14 Hz, v = 3.00e8 m/s. Refracted: lambda' = 443 nm, nu = 5.09e14 Hz, v = 2.26e8 m/s.",
+    "keyAnswer": "(a) Reflected: lambda = 589 nm, nu = 5.09e14 Hz, c = 3.00e8 m/s. (b) Refracted: nu = 5.09e14 Hz, v = (c/n) = 2.26e8 m/s, lambda = (v/nu) = 444 nm",
+    "note": "Every quantity matches. The only difference is the refracted wavelength, 443 nm vs the key's 444 nm — 0.225% apart, and the mechanism is fully explained by the key's own printed route. Exact value: lambda/n = 589/1.33 = 442.86 nm, and v/nu computed unrounded gives the identical 442.86 nm. The key writes 'lambda = (v/nu)' and divides its ALREADY-ROUNDED values: 2.26e8 / 5.09e14 = 444.01 nm. So neither figure is an error; they differ only in when the rounding is applied. Within the brief's rounding tolerance."
+  },
+  {
+    "ref": "Ex 10.2(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Spherical (diverging spherical wavefront)",
+    "keyAnswer": "Spherical",
+    "note": ""
+  },
+  {
+    "ref": "Ex 10.2(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Plane (parallel beam)",
+    "keyAnswer": "Plane",
+    "note": ""
+  },
+  {
+    "ref": "Ex 10.2(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Plane (a small area on the surface of a very large sphere is nearly planar)",
+    "keyAnswer": "Plane (a small area on the surface of a large sphere is nearly planar).",
+    "note": ""
+  },
+  {
+    "ref": "Ex 10.3(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "v = 2.0e8 m/s",
+    "keyAnswer": "2.0 x 10^8 m/s",
+    "note": ""
+  },
+  {
+    "ref": "Ex 10.3(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "No — n depends on wavelength, so v = c/n differs by colour; violet travels slower than red in a glass prism.",
+    "keyAnswer": "No. The refractive index, and hence the speed of light in a medium, depends on wavelength. ... the violet component of white light travels slower than the red component.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 10.4",
+    "verdict": "AGREE",
+    "ourAnswer": "lambda = 600 nm",
+    "keyAnswer": "lambda = (1.2e-2 x 0.28e-3)/(4 x 1.4) m = 600 nm",
+    "note": "Independently recomputed: (1.2e-2)(0.28e-3)/(4 x 1.4) = 6.0000e-7 m exactly. The key even prints the same substitution, so the fourth-order fringe reading (n = 4, not 3) is confirmed on both sides."
+  },
+  {
+    "ref": "Ex 10.5",
+    "verdict": "AGREE",
+    "ourAnswer": "I = K/4",
+    "keyAnswer": "K/4",
+    "note": "Independently recomputed from I = 4 I0 cos^2(phi/2): at path difference lambda, phi = 2pi and I = 4 I0 = K; at lambda/3, phi = 2pi/3 and I = 4 I0 cos^2(pi/3) = I0 = K/4. Ratio checked numerically = 0.2500."
+  },
+  {
+    "ref": "Ex 10.6(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "x3 = 3 lambda1 D/d = 1.95e-6 (D/d) m; = 1.17 mm for d = 2 mm, D = 1.2 m",
+    "keyAnswer": "(a) 1.17 mm",
+    "note": "AGREES NUMERICALLY, BUT FLAGGING A QUESTION DEFECT FOR ADJUDICATION — the answer is unreachable from the stem AS PRINTED. This reprint's Ex 10.6 supplies neither the slit separation d nor the slit-to-screen distance D, so no distance can be computed; only x3 = 3 lambda1 (D/d) follows. The missing pair is identifiable and the evidence is decisive rather than assumed: d = 2 mm with D = 1.2 m reproduces BOTH printed key entries exactly and simultaneously (1.170 mm here and 1.560 mm in part (b)) — one pair, two independent targets. It is not inherited from a neighbouring question either: carrying over Ex 10.4's d = 0.28 mm and D = 1.4 m gives 9.75 mm and 13.0 mm, nowhere near the key. Cause is almost certainly rationalisation: the answers section was NOT trimmed alongside the chapter (see the chapter-level note on Ex 10.6(b)), so the key still answers a pre-rationalisation stem that carried the data. Maintainer's call whether this warrants an errata bracket; our stored solution states the symbolic result first and labels the numeric value as resting on the reconstructed d and D."
+  },
+  {
+    "ref": "Ex 10.6(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Coincidence at the 4th bright fringe of 650 nm (= 5th of 520 nm); x = 2.6e-6 (D/d) m = 1.56 mm for d = 2 mm, D = 1.2 m",
+    "keyAnswer": "(b) 1.56 mm",
+    "note": "Same missing-data defect as part (a); the fringe ORDERS (n1/n2 = 520/650 = 4/5, so n1 = 4, n2 = 5, checked as 4 x 650 = 2600 = 5 x 520) follow from the stem alone and are independent of d and D — only the conversion to a distance needs the omitted values. CHAPTER-LEVEL OBSERVATION, recorded here because it is the same root cause: the printed CHAPTER 10 key runs 10.1 to 10.10 while the rationalised chapter has only six exercises (10.1-10.6). Entries 10.7 (0.15 deg), 10.8 (tan^-1(1.5) ~ 56.3 deg — a Brewster's-angle answer for a section this reprint no longer teaches), 10.9 (5000 A, 6e14 Hz; 45 deg) and 10.10 (40 m) answer questions that are ABSENT from the chapter. The answers section was not rationalised alongside the chapter body, which is exactly why it can still answer an Ex 10.6 whose data has been cut."
+  }
+]

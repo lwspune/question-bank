@@ -32,8 +32,17 @@ function main() {
     // hole in the mh-sb-11 pipeline ingested a `.mcq-verify.json` as "10 questions"
     // and was stopped only by a coincidental duplicate ref. Anything REGENERATED
     // rather than authored belongs on this list.
+    //
+    // `fig` and `anchors` joined it on 2026-09-07, from the Physics lane: the
+    // figure pipeline writes `<id>.fig.json` (the bbox manifest attach-images
+    // reads) and `<id>.fig.anchors.json` (the coarse anchors snap-crop reads),
+    // and BOTH were being globbed as question fragments. Note `<id>.fig.json`
+    // also has to survive the file's own `*fig.json` glob in snap-crop.ts, so it
+    // cannot simply be renamed out of the way. The SHAPE GUARD below is what
+    // actually caught this — the name list had gone stale again, exactly as its
+    // own comment predicts it will.
     const SCRATCH =
-      /\.(solutions|tosolve|review|mcq-verify|mcq-blind|crosscheck|errata|solution-images)\.json$/;
+      /\.(solutions|tosolve|review|mcq-verify|mcq-blind|crosscheck|errata|solution-images|fig|anchors)\.json$/;
     // `diagram-specs` needs its own test: its part-files are named
     // `<id>.diagram-specs.<group>.json`, so the suffix is in the MIDDLE and the
     // anchored pattern above can never match it.

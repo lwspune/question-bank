@@ -1,0 +1,341 @@
+[
+  {
+    "ref": "Eg 7.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "Let the speed of the planet at the perihelion \\(P\\) in Fig. 7.1(a) be \\(v_P\\) and the Sun-planet distance SP be \\(r_P\\). Relate \\(\\{r_P,\\ v_P\\}\\) to the corresponding quantities at the aphelion \\(\\{r_A,\\ v_A\\}\\). Will the planet take equal times to traverse \\(BAC\\) and \\(CPB\\)?",
+    "solution": "The magnitude of the angular momentum at \\(P\\) is \\(L_P = m_p r_P v_P\\), since inspection tells us that \\(\\mathbf{r}_p\\) and \\(\\mathbf{v}_p\\) are mutually perpendicular. Similarly, \\(L_A = m_p r_A v_A\\). From angular momentum conservation\n\n\\(m_p r_P v_P = m_p r_A v_A\\)\n\nor \\(\\dfrac{v_P}{v_A} = \\dfrac{r_A}{r_P}\\)\n\nSince \\(r_A > r_P\\), \\(v_P > v_A\\).\n\nThe area \\(SBAC\\) bounded by the ellipse and the radius vectors \\(SB\\) and \\(SC\\) is larger than \\(SBPC\\) in Fig. 7.1. From Kepler's second law, equal areas are swept in equal times. Hence the planet will take a longer time to traverse \\(BAC\\) than \\(CPB\\)."
+  },
+  {
+    "ref": "Eg 7.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "MODERATE",
+    "stem": "Three equal masses of \\(m\\) kg each are fixed at the vertices of an equilateral triangle ABC.\n\n(a) What is the force acting on a mass \\(2m\\) placed at the centroid G of the triangle?\n\n(b) What is the force if the mass at the vertex A is doubled?\n\nTake \\(AG = BG = CG = 1\\,\\text{m}\\) (see Fig. 7.5)",
+    "solution": "(a) The angle between GC and the positive \\(x\\)-axis is \\(30^\\circ\\) and so is the angle between GB and the negative \\(x\\)-axis. The individual forces in vector notation are\n\n\\(\\mathbf{F}_{GA} = \\dfrac{Gm(2m)}{1}\\hat{\\mathbf{j}}\\)\n\n\\(\\mathbf{F}_{GB} = \\dfrac{Gm(2m)}{1}\\left(-\\hat{\\mathbf{i}}\\cos 30^\\circ - \\hat{\\mathbf{j}}\\sin 30^\\circ\\right)\\)\n\n\\(\\mathbf{F}_{GC} = \\dfrac{Gm(2m)}{1}\\left(+\\hat{\\mathbf{i}}\\cos 30^\\circ - \\hat{\\mathbf{j}}\\sin 30^\\circ\\right)\\)\n\nFrom the principle of superposition and the law of vector addition, the resultant gravitational force \\(\\mathbf{F}_R\\) on \\((2m)\\) is\n\n\\(\\mathbf{F}_R = \\mathbf{F}_{GA} + \\mathbf{F}_{GB} + \\mathbf{F}_{GC}\\)\n\n\\(\\mathbf{F}_R = 2Gm^2\\,\\hat{\\mathbf{j}} + 2Gm^2\\left(-\\hat{\\mathbf{i}}\\cos 30^\\circ - \\hat{\\mathbf{j}}\\sin 30^\\circ\\right) + 2Gm^2\\left(\\hat{\\mathbf{i}}\\cos 30^\\circ - \\hat{\\mathbf{j}}\\sin 30^\\circ\\right) = 0\\)\n\nAlternatively, one expects on the basis of symmetry that the resultant force ought to be zero.\n\n(b) Now if the mass at vertex A is doubled then\n\n\\(\\mathbf{F}'_{GA} = \\dfrac{G\\,2m\\cdot 2m}{1}\\hat{\\mathbf{j}} = 4Gm^2\\,\\hat{\\mathbf{j}}\\)\n\n\\(\\mathbf{F}'_{GB} = \\mathbf{F}_{GB}\\) and \\(\\mathbf{F}'_{GC} = \\mathbf{F}_{GC}\\)\n\n\\(\\mathbf{F}'_R = \\mathbf{F}'_{GA} + \\mathbf{F}'_{GB} + \\mathbf{F}'_{GC}\\)\n\n\\(\\mathbf{F}'_R = 2\\,Gm^2\\,\\hat{\\mathbf{j}}\\)"
+  },
+  {
+    "ref": "Eg 7.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "MODERATE",
+    "stem": "Find the potential energy of a system of four particles placed at the vertices of a square of side \\(l\\). Also obtain the potential at the centre of the square.",
+    "solution": "Consider four masses each of mass \\(m\\) at the corners of a square of side \\(l\\); see Fig. 7.9. We have four mass pairs at distance \\(l\\) and two diagonal pairs at distance \\(\\sqrt{2}\\,l\\).\n\nHence,\n\n\\(W(r) = -4\\,\\dfrac{G\\,m^2}{l} - 2\\,\\dfrac{G\\,m^2}{\\sqrt{2}\\,l} = -\\dfrac{2\\,G\\,m^2}{l}\\left(2 + \\dfrac{1}{\\sqrt{2}}\\right) = -5.41\\,\\dfrac{G\\,m^2}{l}\\)\n\nThe gravitational potential at the centre of the square \\(\\left(r = \\sqrt{2}\\,l/2\\right)\\) is\n\n\\(U(r) = -4\\sqrt{2}\\,\\dfrac{G\\,m}{l}\\)"
+  },
+  {
+    "ref": "Eg 7.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "HARD",
+    "stem": "Two uniform solid spheres of equal radii \\(R\\), but mass \\(M\\) and \\(4M\\) have a centre to centre separation \\(6R\\), as shown in Fig. 7.10. The two spheres are held fixed. A projectile of mass \\(m\\) is projected from the surface of the sphere of mass \\(M\\) directly towards the centre of the second sphere. Obtain an expression for the minimum speed \\(v\\) of the projectile so that it reaches the surface of the second sphere.",
+    "solution": "The projectile is acted upon by two mutually opposing gravitational forces of the two spheres. The neutral point N (see Fig. 7.10) is defined as the position where the two forces cancel each other exactly. If \\(ON = r\\), we have\n\n\\(\\dfrac{G\\,M\\,m}{r^2} = \\dfrac{4\\,G\\,M\\,m}{(6R-r)^2}\\)\n\n\\((6R - r)^2 = 4r^2\\)\n\n\\(6R - r = \\pm 2r\\)\n\n\\(r = 2R\\) or \\(-6R\\).\n\nThe neutral point \\(r = -6R\\) does not concern us in this example. Thus \\(ON = r = 2R\\). It is sufficient to project the particle with a speed which would enable it to reach N. Thereafter, the greater gravitational pull of \\(4M\\) would suffice. The mechanical energy at the surface of \\(M\\) is\n\n\\(E_i = \\dfrac{1}{2}m\\,v^2 - \\dfrac{G\\,M\\,m}{R} - \\dfrac{4\\,G\\,M\\,m}{5R}\\)\n\nAt the neutral point N, the speed approaches zero. The mechanical energy at N is purely potential.\n\n\\(E_N = -\\dfrac{G\\,M\\,m}{2R} - \\dfrac{4\\,G\\,M\\,m}{4R}\\)\n\nFrom the principle of conservation of mechanical energy\n\n\\(\\dfrac{1}{2}v^2 - \\dfrac{GM}{R} - \\dfrac{4GM}{5R} = -\\dfrac{GM}{2R} - \\dfrac{GM}{R}\\)\n\nor\n\n\\(v^2 = \\dfrac{2\\,G\\,M}{R}\\left(\\dfrac{4}{5} - \\dfrac{1}{2}\\right)\\)\n\n\\(v = \\left(\\dfrac{3\\,G\\,M}{5\\,R}\\right)^{1/2}\\)\n\nA point to note is that the speed of the projectile is zero at N, but is nonzero when it strikes the heavier sphere \\(4M\\). The calculation of this speed is left as an exercise to the students."
+  },
+  {
+    "ref": "Eg 7.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "The planet Mars has two moons, phobos and delmos. (i) phobos has a period 7 hours, 39 minutes and an orbital radius of \\(9.4 \\times 10^3\\,\\text{km}\\). Calculate the mass of mars. (ii) Assume that earth and mars move in circular orbits around the sun, with the martian orbit being 1.52 times the orbital radius of the earth. What is the length of the martian year in days?",
+    "solution": "(i) We employ Eq. (7.38) with the sun's mass replaced by the martian mass \\(M_m\\)\n\n\\(T^2 = \\dfrac{4\\pi^2}{G\\,M_m}R^3\\)\n\n\\(M_m = \\dfrac{4\\pi^2}{G}\\dfrac{R^3}{T^2}\\)\n\n\\(= \\dfrac{4 \\times (3.14)^2 \\times (9.4)^3 \\times 10^{18}}{6.67 \\times 10^{-11} \\times (459 \\times 60)^2}\\)\n\n\\(M_m = \\dfrac{4 \\times (3.14)^2 \\times (9.4)^3 \\times 10^{18}}{6.67 \\times (4.59 \\times 6)^2 \\times 10^{-5}} = 6.48 \\times 10^{23}\\,\\text{kg}\\)\n\n(ii) Once again Kepler's third law comes to our aid,\n\n\\(\\dfrac{T_M^2}{T_E^2} = \\dfrac{R_{MS}^3}{R_{ES}^3}\\)\n\nwhere \\(R_{MS}\\) is the mars-sun distance and \\(R_{ES}\\) is the earth-sun distance.\n\n\\(\\therefore\\ T_M = (1.52)^{3/2} \\times 365 = 684\\,\\text{days}\\)\n\nWe note that the orbits of all planets except Mercury and Mars are very close to being circular. For example, the ratio of the semi-minor to semi-major axis for our Earth is \\(b/a = 0.99986\\).",
+    "_note": "The book prints the second Martian moon as 'delmos' (Deimos) and sets 'phobos', 'mars', 'earth' and 'sun' in lower case throughout this example. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 7.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Weighing the Earth : You are given the following data: \\(g = 9.81\\,\\text{m s}^{-2}\\), \\(R_E = 6.37 \\times 10^6\\,\\text{m}\\), the distance to the moon \\(R = 3.84 \\times 10^8\\,\\text{m}\\) and the time period of the moon's revolution is 27.3 days. Obtain the mass of the Earth \\(M_E\\) in two different ways.",
+    "solution": "From Eq. (7.12) we have\n\n\\(M_E = \\dfrac{g\\,R_E^2}{G} = \\dfrac{9.81 \\times \\left(6.37 \\times 10^6\\right)^2}{6.67 \\times 10^{-11}} = 5.97 \\times 10^{24}\\,\\text{kg}\\)\n\nThe moon is a satellite of the Earth. From the derivation of Kepler's third law [see Eq. (7.38)]\n\n\\(T^2 = \\dfrac{4\\pi^2 R^3}{G\\,M_E}\\)\n\n\\(M_E = \\dfrac{4\\pi^2 R^3}{G\\,T^2} = \\dfrac{4 \\times 3.14 \\times 3.14 \\times (3.84)^3 \\times 10^{24}}{6.67 \\times 10^{-11} \\times (27.3 \\times 24 \\times 60 \\times 60)^2} = 6.02 \\times 10^{24}\\,\\text{kg}\\)\n\nBoth methods yield almost the same answer, the difference between them being less than 1%."
+  },
+  {
+    "ref": "Eg 7.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Express the constant \\(k\\) of Eq. (7.38) in days and kilometres. Given \\(k = 10^{-13}\\,\\text{s}^2\\,\\text{m}^{-3}\\). The moon is at a distance of \\(3.84 \\times 10^5\\,\\text{km}\\) from the earth. Obtain its time-period of revolution in days.",
+    "solution": "Given\n\n\\(k = 10^{-13}\\,\\text{s}^2\\,\\text{m}^{-3}\\)\n\n\\(= 10^{-13}\\left[\\dfrac{1}{(24 \\times 60 \\times 60)^2}\\,\\text{d}^2\\right]\\left[\\dfrac{1}{(1/1000)^3\\,\\text{km}^3}\\right]\\)\n\n\\(= 1.33 \\times 10^{-14}\\,\\text{d}^2\\,\\text{km}^{-3}\\)\n\nUsing Eq. (7.38) and the given value of \\(k\\), the time period of the moon is\n\n\\(T^2 = \\left(1.33 \\times 10^{-14}\\right)\\left(3.84 \\times 10^5\\right)^3\\)\n\n\\(T = 27.3\\,\\text{d}\\)"
+  },
+  {
+    "ref": "Eg 7.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "A 400 kg satellite is in a circular orbit of radius \\(2R_E\\) about the Earth. How much energy is required to transfer it to a circular orbit of radius \\(4R_E\\)? What are the changes in the kinetic and potential energies?",
+    "solution": "Initially,\n\n\\(E_i = -\\dfrac{G\\,M_E\\,m}{4\\,R_E}\\)\n\nWhile finally\n\n\\(E_f = -\\dfrac{G\\,M_E\\,m}{8\\,R_E}\\)\n\nThe change in the total energy is\n\n\\(\\Delta E = E_f - E_i\\)\n\n\\(= \\dfrac{G\\,M_E\\,m}{8\\,R_E} = \\left(\\dfrac{G\\,M_E}{R_E^2}\\right)\\dfrac{m\\,R_E}{8}\\)\n\n\\(\\Delta E = \\dfrac{g\\,m\\,R_E}{8} = \\dfrac{9.81 \\times 400 \\times 6.37 \\times 10^6}{8} = 3.13 \\times 10^9\\,\\text{J}\\)\n\nThe kinetic energy is reduced and it mimics \\(\\Delta E\\), namely, \\(\\Delta K = K_f - K_i = -3.13 \\times 10^9\\,\\text{J}\\).\n\nThe change in potential energy is twice the change in the total energy, namely\n\n\\(\\Delta V = V_f - V_i = -6.25 \\times 10^9\\,\\text{J}\\)",
+    "_note": "PRINTED DEFECT, transcribed as printed. The final line's SIGN is wrong: raising the orbit makes the potential energy less negative, so \\(\\Delta V = V_f - V_i = -gmR_E/4 + gmR_E/2 = +6.25 \\times 10^9\\,\\text{J}\\). The magnitude 6.25e9 is right (it is exactly twice the stated \\(\\Delta E\\), as the line's own words say). The book contradicts ITSELF here: its own \\(\\Delta E = \\Delta K + \\Delta V\\) gives \\(-3.13 + 6.25 = +3.12 \\times 10^9\\,\\text{J}\\), matching the \\(\\Delta E\\) it printed two lines above, whereas the printed \\(-6.25 \\times 10^9\\) would give \\(-9.38 \\times 10^9\\,\\text{J}\\). Note also that \\(-6.25 \\times 10^9\\,\\text{J}\\) is numerically \\(V_f\\) itself, which is likely the origin of the slip."
+  },
+  {
+    "ref": "Ex 7.1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "MODERATE",
+    "stem": "Answer the following :\n\n(a) You can shield a charge from electrical forces by putting it inside a hollow conductor. Can you shield a body from the gravitational influence of nearby matter by putting it inside a hollow sphere or by some other means ?"
+  },
+  {
+    "ref": "Ex 7.1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "Answer the following :\n\n(b) An astronaut inside a small space ship orbiting around the earth cannot detect gravity. If the space station orbiting around the earth has a large size, can he hope to detect gravity ?"
+  },
+  {
+    "ref": "Ex 7.1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "Answer the following :\n\n(c) If you compare the gravitational force on the earth due to the sun to that due to the moon, you would find that the Sun's pull is greater than the moon's pull. (you can check this yourself using the data available in the succeeding exercises). However, the tidal effect of the moon's pull is greater than the tidal effect of sun. Why ?"
+  },
+  {
+    "ref": "Ex 7.2(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Choose the correct alternative :\n\n(a) Acceleration due to gravity increases/decreases with increasing altitude."
+  },
+  {
+    "ref": "Ex 7.2(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Choose the correct alternative :\n\n(b) Acceleration due to gravity increases/decreases with increasing depth (assume the earth to be a sphere of uniform density)."
+  },
+  {
+    "ref": "Ex 7.2(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Choose the correct alternative :\n\n(c) Acceleration due to gravity is independent of mass of the earth/mass of the body."
+  },
+  {
+    "ref": "Ex 7.2(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "MODERATE",
+    "stem": "Choose the correct alternative :\n\n(d) The formula \\(-G\\,Mm\\left(1/r_2 - 1/r_1\\right)\\) is more/less accurate than the formula \\(mg\\left(r_2 - r_1\\right)\\) for the difference of potential energy between two points \\(r_2\\) and \\(r_1\\) distance away from the centre of the earth."
+  },
+  {
+    "ref": "Ex 7.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "Suppose there existed a planet that went around the Sun twice as fast as the earth. What would be its orbital size as compared to that of the earth ?"
+  },
+  {
+    "ref": "Ex 7.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "Io, one of the satellites of Jupiter, has an orbital period of \\(1.769\\) days and the radius of the orbit is \\(4.22 \\times 10^8\\,\\text{m}\\). Show that the mass of Jupiter is about one-thousandth that of the sun."
+  },
+  {
+    "ref": "Ex 7.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "Let us assume that our galaxy consists of \\(2.5 \\times 10^{11}\\) stars each of one solar mass. How long will a star at a distance of \\(50{,}000\\,\\text{ly}\\) from the galactic centre take to complete one revolution ? Take the diameter of the Milky Way to be \\(10^5\\,\\text{ly}\\)."
+  },
+  {
+    "ref": "Ex 7.6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Choose the correct alternative:\n\n(a) If the zero of potential energy is at infinity, the total energy of an orbiting satellite is negative of its kinetic/potential energy."
+  },
+  {
+    "ref": "Ex 7.6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Choose the correct alternative:\n\n(b) The energy required to launch an orbiting satellite out of earth's gravitational influence is more/less than the energy required to project a stationary object at the same height (as the satellite) out of earth's influence."
+  },
+  {
+    "ref": "Ex 7.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "MODERATE",
+    "stem": "Does the escape speed of a body from the earth depend on (a) the mass of the body, (b) the location from where it is projected, (c) the direction of projection, (d) the height of the location from where the body is launched?"
+  },
+  {
+    "ref": "Ex 7.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "A comet orbits the sun in a highly elliptical orbit. Does the comet have a constant (a) linear speed, (b) angular speed, (c) angular momentum, (d) kinetic energy, (e) potential energy, (f) total energy throughout its orbit? Neglect any mass loss of the comet when it comes very close to the Sun."
+  },
+  {
+    "ref": "Ex 7.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following symptoms is likely to afflict an astronaut in space (a) swollen feet, (b) swollen face, (c) headache, (d) orientational problem.",
+    "_note": "Printed as an inline list of four candidate symptoms, but MORE THAN ONE is correct (all except swollen feet), so it is NOT a single-answer MCQ and is transcribed as one subjective question."
+  },
+  {
+    "ref": "Ex 7.10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "In the following two exercises, choose the correct answer from among the given ones:\n\nThe gravitational intensity at the centre of a hemispherical shell of uniform mass density has the direction indicated by the arrow (see Fig 7.11)",
+    "options": [
+      {
+        "label": "A",
+        "text": "a"
+      },
+      {
+        "label": "B",
+        "text": "b"
+      },
+      {
+        "label": "C",
+        "text": "c"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "C",
+    "_figure": {
+      "fig": "Fig 7.11",
+      "page": 15
+    },
+    "_note": "The book labels the four alternatives (i), (ii), (iii), (iv); mapped POSITIONALLY to A-D. Option (iv) is printed as the digit '0' (zero intensity), not the letter o. Unanswerable without Fig. 7.11, which names the arrows. FIGURE LABEL COLLISION (verified at 4x zoom on the crop): in Fig. 7.11 the CENTRE POINT itself is labelled 'c' AND the downward arrow at that point is also labelled 'c'. The answer is unaffected — there is no leftward arrow, so the point label can never be one of the four options — but the drawing does reuse the letter. Arrows at the centre: b = up, a = right, c = down."
+  },
+  {
+    "ref": "Ex 7.11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "HARD",
+    "stem": "For the above problem, the direction of the gravitational intensity at an arbitrary point P is indicated by the arrow",
+    "options": [
+      {
+        "label": "A",
+        "text": "d"
+      },
+      {
+        "label": "B",
+        "text": "e"
+      },
+      {
+        "label": "C",
+        "text": "f"
+      },
+      {
+        "label": "D",
+        "text": "g"
+      }
+    ],
+    "answer": "B",
+    "_figure": {
+      "fig": "Fig 7.11",
+      "page": 15
+    },
+    "_note": "The book labels the four alternatives (i), (ii), (iii), (iv); mapped POSITIONALLY to A-D. The stem back-references Ex 7.10 ('For the above problem') and so is not self-contained: the setup is the hemispherical shell of uniform mass density of Ex 7.10, and P is the arbitrary point marked on the flat face in Fig. 7.11. Flagged for the maintainer rather than silently rewritten."
+  },
+  {
+    "ref": "Ex 7.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "MODERATE",
+    "stem": "A rocket is fired from the earth towards the sun. At what distance from the earth's centre is the gravitational force on the rocket zero ? Mass of the sun \\(= 2 \\times 10^{30}\\,\\text{kg}\\), mass of the earth \\(= 6 \\times 10^{24}\\,\\text{kg}\\). Neglect the effect of other planets etc. (orbital radius \\(= 1.5 \\times 10^{11}\\,\\text{m}\\))."
+  },
+  {
+    "ref": "Ex 7.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "MODERATE",
+    "stem": "How will you 'weigh the sun', that is estimate its mass? The mean orbital radius of the earth around the sun is \\(1.5 \\times 10^8\\,\\text{km}\\)."
+  },
+  {
+    "ref": "Ex 7.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Kepler's Laws",
+    "difficulty": "EASY",
+    "stem": "A saturn year is 29.5 times the earth year. How far is the saturn from the sun if the earth is \\(1.50 \\times 10^8\\,\\text{km}\\) away from the sun ?"
+  },
+  {
+    "ref": "Ex 7.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "A body weighs \\(63\\,\\text{N}\\) on the surface of the earth. What is the gravitational force on it due to the earth at a height equal to half the radius of the earth ?"
+  },
+  {
+    "ref": "Ex 7.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Acceleration due to Gravity",
+    "difficulty": "EASY",
+    "stem": "Assuming the earth to be a sphere of uniform mass density, how much would a body weigh half way down to the centre of the earth if it weighed \\(250\\,\\text{N}\\) on the surface ?"
+  },
+  {
+    "ref": "Ex 7.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "MODERATE",
+    "stem": "A rocket is fired vertically with a speed of \\(5\\,\\text{km s}^{-1}\\) from the earth's surface. How far from the earth does the rocket go before returning to the earth ? Mass of the earth \\(= 6.0 \\times 10^{24}\\,\\text{kg}\\); mean radius of the earth \\(= 6.4 \\times 10^6\\,\\text{m}\\); \\(G = 6.67 \\times 10^{-11}\\,\\text{N m}^2\\,\\text{kg}^{-2}\\)."
+  },
+  {
+    "ref": "Ex 7.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "MODERATE",
+    "stem": "The escape speed of a projectile on the earth's surface is \\(11.2\\,\\text{km s}^{-1}\\). A body is projected out with thrice this speed. What is the speed of the body far away from the earth? Ignore the presence of the sun and other planets."
+  },
+  {
+    "ref": "Ex 7.19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Earth Satellites",
+    "difficulty": "MODERATE",
+    "stem": "A satellite orbits the earth at a height of \\(400\\,\\text{km}\\) above the surface. How much energy must be expended to rocket the satellite out of the earth's gravitational influence? Mass of the satellite \\(= 200\\,\\text{kg}\\); mass of the earth \\(= 6.0 \\times 10^{24}\\,\\text{kg}\\); radius of the earth \\(= 6.4 \\times 10^6\\,\\text{m}\\); \\(G = 6.67 \\times 10^{-11}\\,\\text{N m}^2\\,\\text{kg}^{-2}\\)."
+  },
+  {
+    "ref": "Ex 7.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Gravitational Potential Energy and Escape Speed",
+    "difficulty": "HARD",
+    "stem": "Two stars each of one solar mass \\((= 2 \\times 10^{30}\\,\\text{kg})\\) are approaching each other for a head on collision. When they are a distance \\(10^9\\,\\text{km}\\), their speeds are negligible. What is the speed with which they collide ? The radius of each star is \\(10^4\\,\\text{km}\\). Assume the stars to remain undistorted until they collide. (Use the known value of \\(G\\))."
+  },
+  {
+    "ref": "Ex 7.21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Universal Law of Gravitation",
+    "difficulty": "MODERATE",
+    "stem": "Two heavy spheres each of mass \\(100\\,\\text{kg}\\) and radius \\(0.10\\,\\text{m}\\) are placed \\(1.0\\,\\text{m}\\) apart on a horizontal table. What is the gravitational force and potential at the mid point of the line joining the centres of the spheres ? Is an object placed at that point in equilibrium? If so, is the equilibrium stable or unstable ?"
+  }
+]

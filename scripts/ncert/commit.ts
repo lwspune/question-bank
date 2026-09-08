@@ -33,6 +33,32 @@ async function main() {
   loadEnv();
 
   const questions: SBQuestion[] = JSON.parse(readFileSync(questionsJsonPath(id), "utf8"));
+
+  // CONTROL-CHARACTER GUARD on the transcription itself.
+  //
+  // apply-solutions.ts already refuses control characters in an AUTHORED solution,
+  // but nothing checked the transcription's own stem/context — so a band file, or a
+  // hand-patched `context`, could carry the corruption straight into the bank.
+  //
+  // The signature: \t \b \f \v are all valid LaTeX command starts (\text, \beta,
+  // \frac, \vec). When a shell layer eats one backslash level the escape resolves to
+  // the CONTROL CHARACTER instead, so "\text{cm}" becomes TAB + "ext{cm}" and renders
+  // as garbage while every other check passes — the delimiters still balance, the JSON
+  // still parses, and a control-character scan that whitelists TAB as "benign
+  // whitespace" cannot see it. That whitelist is exactly how this reached a `context`
+  // field on 2026-09-07, and the typechecker (not the probe) is what caught it.
+  //
+  // TAB is therefore NOT exempt here. Newline IS, because prose legitimately contains
+  // one and normalizeNewlines depends on it.
+  const CTRL = /[\t\f\v\b\0]/;
+  const corrupt = questions.flatMap((q) =>
+    (["stem", "context", "solution"] as const)
+      .filter((f) => typeof q[f] === "string" && CTRL.test(q[f] as string))
+      .map((f) => `${q.ref}: control character in ${f} (heredoc corruption — author it with the Write tool)`)
+  );
+  if (corrupt.length) {
+    throw new Error(`refusing to commit ${corrupt.length} corrupt field(s):\n  ${corrupt.join("\n  ")}`);
+  }
   const { rows, flags } = buildRecords(
     { chapterName: ch.chapterName, subjectName: ch.subjectName, subtopics: ch.subtopics },
     questions

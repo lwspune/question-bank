@@ -1,0 +1,331 @@
+[
+  {
+    "ref": "Ex 3.1",
+    "verdict": "AGREE",
+    "ourAnswer": "Scalars — volume, mass, speed, density, number of moles, angular frequency. Vectors — acceleration, velocity, displacement, angular velocity.",
+    "keyAnswer": "Volume, mass, speed, density, number of moles, angular frequency are scalars; the rest are vectors.",
+    "note": "Identical partition of all ten quantities."
+  },
+  {
+    "ref": "Ex 3.2",
+    "verdict": "AGREE",
+    "ourAnswer": "Work and current.",
+    "keyAnswer": "Work, current",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.3",
+    "verdict": "AGREE",
+    "ourAnswer": "Impulse.",
+    "keyAnswer": "Impulse",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Not meaningful in general — only if both scalars have the same dimensions.",
+    "keyAnswer": "Only (c) and (d) are permissible — so (a) is not permissible.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Not meaningful — a scalar can never be added to a vector.",
+    "keyAnswer": "Only (c) and (d) are permissible — so (b) is not permissible.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Meaningful — a vector may be multiplied by any scalar.",
+    "keyAnswer": "Only (c) and (d) are permissible — (c) is permissible.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "Meaningful — any two scalars may be multiplied.",
+    "keyAnswer": "Only (c) and (d) are permissible — (d) is permissible.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(e)",
+    "verdict": "AGREE",
+    "ourAnswer": "Not meaningful in general — only if the two vectors have the same dimensions.",
+    "keyAnswer": "Only (c) and (d) are permissible — so (e) is not permissible.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.4(f)",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "Meaningful — a component of a vector is itself a vector of the same dimensions, so it may be added to the vector.",
+    "keyAnswer": "Only (c) and (d) are permissible — i.e. (f) is NOT permissible.",
+    "note": "BOOK-INTERNAL INCONSISTENCY rather than an arithmetic slip — the key contradicts ITSELF, which is the strongest evidence class available here. The key for 3.4 can only exclude (f) by reading \"a component of a vector\" as the SCALAR coefficient A_x, so that (f) collapses into case (b) (scalar + vector). But the key for 3.5(b) answers the statement \"each component of a vector is always a scalar\" with F — explicitly denying that a component is a scalar. Under the key's own 3.5(b) ruling a component is a VECTOR of the same dimensions as its parent, and then the key's own rule for (e) (vectors of equal dimensions may be added) makes (f) permissible. The CHAPTER TEXT supports the vector reading too: section 3.5 resolves A = (lambda)a + (mu)b and calls (lambda)a and (mu)b the component VECTORS, and Eq. (3.16b) writes A = A_x i + A_y j + A_z k. Two of the six sub-parts therefore cannot both be right under one consistent definition of \"component\". Our answer follows the definition the chapter and the 3.5(b) key both use. FOR MAINTAINER ADJUDICATION — the alternative is to keep the key's reading and record it as a preserved book defect."
+  },
+  {
+    "ref": "Ex 3.5(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "True.",
+    "keyAnswer": "(a) T",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.5(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — a component of a vector is itself a vector.",
+    "keyAnswer": "(b) F",
+    "note": "This entry is the one that makes the 3.4(f) key self-contradictory; see the Ex 3.4(f) note."
+  },
+  {
+    "ref": "Ex 3.5(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — path length equals the displacement magnitude only for straight-line motion without reversal.",
+    "keyAnswer": "(c) F",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.5(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — path length is never less than the displacement magnitude over the same interval.",
+    "keyAnswer": "(d) T",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.5(e)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — three vectors summing to zero must be coplanar.",
+    "keyAnswer": "(e) T",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.6(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Proved from |a+b|^2 = a^2 + b^2 + 2ab cos(theta) with cos(theta) <= 1; equality when theta = 0 (parallel).",
+    "keyAnswer": "Hint: the sum (difference) of any two sides of a triangle is never less (greater) than the third side. Equality holds for collinear vectors.",
+    "note": "The key gives a hint plus a blanket equality condition rather than a per-part proof. Our equality condition (parallel) is a collinear case, consistent with the key and more specific."
+  },
+  {
+    "ref": "Ex 3.6(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Proved from |a+b|^2 >= (a-b)^2 using cos(theta) >= -1; equality when theta = 180 degrees (antiparallel).",
+    "keyAnswer": "Hint ... Equality holds for collinear vectors.",
+    "note": "Antiparallel is a collinear case — consistent with the key."
+  },
+  {
+    "ref": "Ex 3.6(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Proved by applying the triangle inequality to a and -b; equality when theta = 180 degrees (antiparallel).",
+    "keyAnswer": "Hint ... Equality holds for collinear vectors.",
+    "note": "Antiparallel is a collinear case — consistent with the key."
+  },
+  {
+    "ref": "Ex 3.6(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "Proved from |a-b|^2 >= (a-b)^2 using cos(theta) <= 1; equality when theta = 0 (parallel).",
+    "keyAnswer": "Hint ... Equality holds for collinear vectors.",
+    "note": "Parallel is a collinear case — consistent with the key."
+  },
+  {
+    "ref": "Ex 3.7(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Incorrect — the four vectors need only close into a polygon.",
+    "keyAnswer": "All statements except (a) are correct.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.7(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Correct — a + c = -(b + d), so the magnitudes are equal.",
+    "keyAnswer": "All statements except (a) are correct.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.7(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Correct — |a| = |b + c + d| <= |b| + |c| + |d| by the triangle inequality.",
+    "keyAnswer": "All statements except (a) are correct.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.7(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "Correct — b + c = -(a + d), which lies in the plane (or on the line) of a and d.",
+    "keyAnswer": "All statements except (a) are correct.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.8",
+    "verdict": "AGREE",
+    "ourAnswer": "400 m for each girl; equal to the path length only for girl B.",
+    "keyAnswer": "400 m for each; B",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.9",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 0  (b) 0  (c) 21.4 km/h",
+    "keyAnswer": "(a) O; (b) O; (c) 21.4 km h^-1",
+    "note": "The key prints the letter O for zero in parts (a) and (b)."
+  },
+  {
+    "ref": "Ex 3.10",
+    "verdict": "AGREE",
+    "ourAnswer": "Third turn 1000 m at 60 degrees to the initial direction, path 1500 m; sixth turn null displacement, path 3000 m; eighth turn 866 m at 30 degrees, path 4000 m.",
+    "keyAnswer": "Displacement of magnitude 1 km and direction 60 deg with the initial direction; total path length = 1.5 km (third turn); null displacement vector; path length = 3 km (sixth turn); 866 m, 30 deg, 4 km (eighth turn)",
+    "note": "1000 m = 1 km; every figure matches."
+  },
+  {
+    "ref": "Ex 3.11",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) 49.3 km/h  (b) 21.4 km/h; not equal.",
+    "keyAnswer": "(a) 49.3 km h^-1; (b) 21.4 km h^-1. No, the average speed equals average velocity magnitude only for a straight path.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.12",
+    "verdict": "AGREE",
+    "ourAnswer": "150.5 m (at about 33.6 degrees).",
+    "keyAnswer": "150.5 m",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.13",
+    "verdict": "AGREE",
+    "ourAnswer": "50 m",
+    "keyAnswer": "50 m",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.14",
+    "verdict": "AGREE",
+    "ourAnswer": "9.9 m/s^2, directed radially inwards along the string towards the centre.",
+    "keyAnswer": "9.9 m s^-2, along the radius at every point towards the centre.",
+    "note": "Verified by two independent routes (omega^2 R and v^2/R), both 9.90 m/s^2."
+  },
+  {
+    "ref": "Ex 3.15",
+    "verdict": "AGREE",
+    "ourAnswer": "62.5 m/s^2, about 6.4 times g.",
+    "keyAnswer": "6.4 g",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.16(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — true only for uniform circular motion; otherwise there is also a tangential component.",
+    "keyAnswer": "(a) False (true only for uniform circular motion)",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.16(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — velocity is dr/dt, which is tangent to the path.",
+    "keyAnswer": "(b) True",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.16(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — over a full cycle the velocity is unchanged, so the average acceleration is zero.",
+    "keyAnswer": "(c) True",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.17",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) v = 3.0 i - 4.0t j m/s, a = -4.0 j m/s^2  (b) 8.5 m/s at 69.4 degrees below the x-axis.",
+    "keyAnswer": "(a) v(t) = (3.0 i - 4.0t j), a(t) = -4.0 j  (b) 8.54 m s^-1, 70 deg with x-axis.",
+    "note": "sqrt(73) = 8.544, which the key rounds to 8.54 and we round to 8.5; 69.44 deg rounds to the key's 70 deg. Our answer additionally states that the angle is BELOW the x-axis, which the key leaves unsigned."
+  },
+  {
+    "ref": "Ex 3.18",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) t = 2.0 s, y = 24 m  (b) 21.3 m/s",
+    "keyAnswer": "(a) 2 s, 24 m, 21.26 m s^-1",
+    "note": "sqrt(452) = 21.26; we quote 21.3 to three significant figures."
+  },
+  {
+    "ref": "Ex 3.19",
+    "verdict": "AGREE",
+    "ourAnswer": "Both have magnitude sqrt(2), at +45 and -45 degrees to the x-axis; components of A are 5/sqrt(2) = 3.54 and -1/sqrt(2) = -0.71.",
+    "keyAnswer": "sqrt(2), 45 deg with the x-axis; sqrt(2), -45 deg with the x-axis, (5/sqrt(2), -1/sqrt(2)).",
+    "note": "Independently checked by reconstruction: (5/sqrt2)n1 + (-1/sqrt2)n2 returns exactly 2i + 3j."
+  },
+  {
+    "ref": "Ex 3.20(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — holds only for uniformly accelerated motion.",
+    "keyAnswer": "(b) and (e) [are true] — so (a) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.20(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — this is the definition of average velocity.",
+    "keyAnswer": "(b) and (e)",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.20(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — holds only for constant acceleration.",
+    "keyAnswer": "(b) and (e) [are true] — so (c) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.20(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — holds only for constant acceleration.",
+    "keyAnswer": "(b) and (e) [are true] — so (d) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.20(e)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — this is the definition of average acceleration.",
+    "keyAnswer": "(b) and (e)",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.21(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — temperature is an unconserved scalar, momentum a conserved vector.",
+    "keyAnswer": "Only (e) is true — so (a) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.21(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — temperature in Celsius, potential energy and charge can all be negative.",
+    "keyAnswer": "Only (e) is true — so (b) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.21(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — mass, energy and density are dimensional scalars.",
+    "keyAnswer": "Only (e) is true — so (c) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.21(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "False — a scalar may be a scalar field, e.g. temperature in a room.",
+    "keyAnswer": "Only (e) is true — so (d) is false.",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.21(e)",
+    "verdict": "AGREE",
+    "ourAnswer": "True — invariance under rotation of axes is the defining property of a scalar.",
+    "keyAnswer": "Only (e) is true",
+    "note": ""
+  },
+  {
+    "ref": "Ex 3.22",
+    "verdict": "AGREE",
+    "ourAnswer": "182 m/s (about 656 km/h).",
+    "keyAnswer": "182 m s^-1",
+    "note": "2 x 3400 x tan(15 deg) = 1822 m in 10.0 s."
+  }
+]

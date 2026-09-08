@@ -1,0 +1,92 @@
+[
+  {
+    "id": "f3fd6801-239b-4e5f-9123-9bf7fabe6afe",
+    "ref": "Ex 6.1",
+    "solution": "For a body of uniform mass density, the centre of mass lies at the body's geometric centre, because for every mass element at a point there is an identical element at the diametrically opposite point, so the two contributions to \\(\\int \\mathbf{r}\\,\\mathrm{d}m\\) cancel in pairs about that centre.\n\n(i) Sphere: the centre of the sphere.\n(ii) Cylinder: the mid-point of its axis.\n(iii) Ring: the centre of the ring.\n(iv) Cube: the point where its body diagonals meet, i.e. the centre of the cube.\n\nNo, the centre of mass need not lie inside the body. The ring above is the counter-example already in the list: its centre of mass is at the centre of the circle, where there is no material at all. A hollow sphere, a hollow cylinder and a horseshoe are further examples."
+  },
+  {
+    "id": "e814d59d-b789-4846-8268-c5803f28bf70",
+    "ref": "Ex 6.2",
+    "solution": "Nearly all the mass sits in the nuclei, so treat the molecule as two point masses on a line. Take the hydrogen nucleus as origin and the chlorine nucleus at \\(x = 1.27\\,\\mathring{A}\\). Let the hydrogen mass be \\(m\\); then the chlorine mass is \\(35.5\\,m\\).\n\n\\(x_{\\text{CM}} = \\dfrac{m(0) + 35.5m(1.27\\,\\mathring{A})}{m + 35.5m} = \\dfrac{35.5 \\times 1.27}{36.5}\\,\\mathring{A}\\)\n\n\\(x_{\\text{CM}} = 1.235\\,\\mathring{A}\\)\n\nThe centre of mass lies on the line joining the two nuclei, \\(1.235\\,\\mathring{A}\\) from the hydrogen nucleus — that is, only about \\(0.035\\,\\mathring{A}\\) from the chlorine nucleus, since chlorine is far the heavier atom."
+  },
+  {
+    "id": "eae5a4e4-edff-4991-9c4c-edc1845d8936",
+    "ref": "Ex 6.3",
+    "solution": "The centre of mass of a system moves according to \\(M\\mathbf{A} = \\mathbf{F}_{\\text{ext}}\\), so its velocity can change only under an EXTERNAL force.\n\nThe floor is smooth, so it exerts no horizontal force on the trolley. Gravity and the normal reaction are vertical and cancel. The forces between the child and the trolley floor, however the child runs, are INTERNAL to the (trolley + child) system and cancel in pairs by Newton's third law.\n\nHence the net external horizontal force is zero, the horizontal momentum of the system is conserved, and the speed of the centre of mass is unchanged:\n\nspeed of CM \\(= V\\)"
+  },
+  {
+    "id": "b075d1be-130a-4256-a939-a6535aec554f",
+    "ref": "Ex 6.4",
+    "solution": "Place \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) tail to tail and let \\(\\theta\\) be the angle between them. Take \\(\\mathbf{a}\\) as the base of the triangle they contain, so the base length is \\(|\\mathbf{a}|\\).\n\nThe height of the triangle is the perpendicular distance from the tip of \\(\\mathbf{b}\\) to the line of \\(\\mathbf{a}\\), which is\n\n\\(h = |\\mathbf{b}|\\sin\\theta\\)\n\nHence\n\n\\(\\text{Area} = \\dfrac{1}{2}\\,\\text{base} \\times \\text{height} = \\dfrac{1}{2}|\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\)\n\nBy the definition of the vector product, \\(|\\mathbf{a} \\times \\mathbf{b}| = |\\mathbf{a}||\\mathbf{b}|\\sin\\theta\\). Therefore\n\n\\(\\text{Area of the triangle} = \\dfrac{1}{2}|\\mathbf{a} \\times \\mathbf{b}|\\)\n\nEquivalently, \\(|\\mathbf{a} \\times \\mathbf{b}|\\) is the area of the parallelogram spanned by \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\), and the triangle is half of it."
+  },
+  {
+    "id": "8664bc53-b697-4b48-ac3f-0e6837ee9cbf",
+    "ref": "Ex 6.5",
+    "solution": "Let the parallelepiped be built on \\(\\mathbf{a}\\), \\(\\mathbf{b}\\) and \\(\\mathbf{c}\\) drawn from a common corner. Take the parallelogram spanned by \\(\\mathbf{b}\\) and \\(\\mathbf{c}\\) as its base.\n\nThe area of that base is\n\n\\(A = |\\mathbf{b} \\times \\mathbf{c}|\\)\n\nand the direction of \\(\\mathbf{b} \\times \\mathbf{c}\\) is normal to the base. Let \\(\\phi\\) be the angle between \\(\\mathbf{a}\\) and this normal. The height of the parallelepiped is the projection of \\(\\mathbf{a}\\) on the normal,\n\n\\(h = |\\mathbf{a}||\\cos\\phi|\\)\n\nTherefore\n\n\\(\\text{Volume} = A\\,h = |\\mathbf{b} \\times \\mathbf{c}|\\,|\\mathbf{a}||\\cos\\phi| = |\\mathbf{a}\\cdot(\\mathbf{b} \\times \\mathbf{c})|\\)\n\nHence \\(\\mathbf{a}\\cdot(\\mathbf{b} \\times \\mathbf{c})\\) equals the volume of the parallelepiped in magnitude. The modulus is needed because the scalar triple product is negative when \\(\\mathbf{a}\\), \\(\\mathbf{b}\\), \\(\\mathbf{c}\\) form a left-handed set, while a volume is positive."
+  },
+  {
+    "id": "54ba080b-d26e-474c-be90-870499a21e92",
+    "ref": "Ex 6.6",
+    "solution": "The angular momentum about the origin is \\(\\mathbf{l} = \\mathbf{r} \\times \\mathbf{p}\\). Writing it as a determinant,\n\n\\(\\mathbf{l} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ x & y & z \\\\ p_{x} & p_{y} & p_{z} \\end{vmatrix}\\)\n\nExpanding, the components are\n\n\\(l_{x} = y\\,p_{z} - z\\,p_{y}\\)\n\n\\(l_{y} = z\\,p_{x} - x\\,p_{z}\\)\n\n\\(l_{z} = x\\,p_{y} - y\\,p_{x}\\)\n\nIf the particle moves only in the \\(x\\)-\\(y\\) plane then its \\(z\\) coordinate is zero and it has no \\(z\\) momentum, so \\(z = 0\\) and \\(p_{z} = 0\\). Substituting,\n\n\\(l_{x} = y(0) - 0\\,p_{y} = 0\\)\n\n\\(l_{y} = 0\\,p_{x} - x(0) = 0\\)\n\n\\(l_{z} = x\\,p_{y} - y\\,p_{x}\\)\n\nBoth transverse components vanish, so the angular momentum has only a \\(z\\)-component, \\(\\mathbf{l} = (x\\,p_{y} - y\\,p_{x})\\hat{k}\\), i.e. it is perpendicular to the plane of the motion."
+  },
+  {
+    "id": "52132235-4f98-4d29-847d-261d96cc906a",
+    "ref": "Ex 6.7",
+    "solution": "Let the two particles be at position vectors \\(\\mathbf{r}_{1}\\) and \\(\\mathbf{r}_{2}\\) measured from an arbitrary point O, with momenta \\(m\\mathbf{v}\\) and \\(-m\\mathbf{v}\\) (equal speeds, opposite directions along parallel lines).\n\nThe total angular momentum about O is\n\n\\(\\mathbf{L} = \\mathbf{r}_{1} \\times m\\mathbf{v} + \\mathbf{r}_{2} \\times (-m\\mathbf{v})\\)\n\n\\(\\mathbf{L} = (\\mathbf{r}_{1} - \\mathbf{r}_{2}) \\times m\\mathbf{v}\\)\n\nThe vector \\(\\mathbf{r}_{1} - \\mathbf{r}_{2}\\) joins particle 2 to particle 1 and does NOT depend on O — the point O has cancelled out of the expression entirely. Hence \\(\\mathbf{L}\\) is the same whatever point the moments are taken about.\n\nIts magnitude follows from resolving \\(\\mathbf{r}_{1} - \\mathbf{r}_{2}\\) into a component along \\(\\mathbf{v}\\) (which contributes nothing to the cross product) and a component perpendicular to \\(\\mathbf{v}\\), which is exactly the separation \\(d\\) of the two parallel lines. Therefore\n\n\\(L = m\\,v\\,d\\)\n\ndirected perpendicular to the plane containing the two lines. So the angular momentum vector is the same about every point, with magnitude \\(mvd\\)."
+  },
+  {
+    "id": "6d2bd132-37ab-4812-9016-99f74c4375de",
+    "ref": "Ex 6.8",
+    "solution": "Let \\(T_{1}\\) be the tension in the left string (at \\(36.9^{\\circ}\\) to the vertical) and \\(T_{2}\\) that in the right string (at \\(53.1^{\\circ}\\)). Note \\(36.9^{\\circ} + 53.1^{\\circ} = 90^{\\circ}\\), so the two strings are mutually perpendicular.\n\nFor translational equilibrium, horizontally and vertically:\n\n\\(T_{1}\\sin 36.9^{\\circ} = T_{2}\\sin 53.1^{\\circ}\\)\n\n\\(T_{1}\\cos 36.9^{\\circ} + T_{2}\\cos 53.1^{\\circ} = W\\)\n\nUsing \\(\\sin 36.9^{\\circ} = \\cos 53.1^{\\circ} = 0.600\\) and \\(\\cos 36.9^{\\circ} = \\sin 53.1^{\\circ} = 0.800\\), the first equation gives \\(T_{1} = (0.800/0.600)\\,T_{2} = 1.332\\,T_{2}\\). Substituting into the second,\n\n\\(1.332\\,T_{2}(0.800) + T_{2}(0.600) = W\\)\n\n\\(T_{2} = 0.600\\,W\\), and hence \\(T_{1} = 0.800\\,W\\)\n\nFor rotational equilibrium take moments about the left-hand end of the bar, where \\(T_{1}\\) acts and so contributes no moment. The bar is horizontal, so only the vertical components of the forces have a moment arm along it. With the weight \\(W\\) acting at distance \\(d\\) and \\(T_{2}\\) at the far end, \\(2\\,\\text{m}\\) away:\n\n\\(W\\,d = \\left(T_{2}\\cos 53.1^{\\circ}\\right)(2\\,\\text{m})\\)\n\n\\(d = 2(0.600)(0.600)\\,\\text{m}\\)\n\n\\(d = 0.72\\,\\text{m}\\)\n\nThe centre of gravity lies \\(0.72\\,\\text{m}\\) from the left end of the bar. (Taking moments about the right-hand end instead gives \\(d = 2 - 2(0.800)(0.800) = 0.72\\,\\text{m}\\), the same result.)"
+  },
+  {
+    "id": "8fb2568b-73ce-4f0d-a7e8-fc787dca996f",
+    "ref": "Ex 6.9",
+    "solution": "The weight of the car acts at its centre of gravity, which is \\(1.05\\,\\text{m}\\) from the front axle and therefore \\(1.8 - 1.05 = 0.75\\,\\text{m}\\) from the back axle.\n\n\\(W = 1800\\,\\text{kg} \\times 9.8\\,\\text{m s}^{-2} = 17640\\,\\text{N}\\)\n\nLet \\(R_{f}\\) and \\(R_{b}\\) be the total upward forces on the front and back axles. For translational equilibrium,\n\n\\(R_{f} + R_{b} = 17640\\,\\text{N}\\)\n\nTaking moments about the centre of gravity (so that \\(W\\) contributes nothing),\n\n\\(R_{f}(1.05\\,\\text{m}) = R_{b}(0.75\\,\\text{m})\\)\n\nSolving the two equations,\n\n\\(R_{f} = \\dfrac{0.75}{1.8} \\times 17640 = 7350\\,\\text{N}\\)\n\n\\(R_{b} = \\dfrac{1.05}{1.8} \\times 17640 = 10290\\,\\text{N}\\)\n\nEach axle carries two wheels, and by the left-right symmetry of the car each wheel on an axle takes half of that axle's load:\n\nForce on each front wheel \\(= 7350/2 = 3675\\,\\text{N}\\)\n\nForce on each back wheel \\(= 10290/2 = 5145\\,\\text{N}\\)\n\nThe back wheels carry more, because the centre of gravity is nearer the front axle."
+  },
+  {
+    "id": "23915504-70dc-46b1-96ce-33b5a6179f67",
+    "ref": "Ex 6.10",
+    "solution": "For rotation about a fixed axis, \\(\\tau = I\\alpha\\), so for a given torque the angular acceleration is inversely proportional to the moment of inertia.\n\nFor the same mass \\(M\\) and radius \\(R\\):\n\nhollow cylinder about its axis of symmetry: \\(I_{c} = MR^{2}\\)\n\nsolid sphere about a diameter: \\(I_{s} = \\dfrac{2}{5}MR^{2}\\)\n\nSince \\(I_{s} < I_{c}\\), the sphere has the larger angular acceleration. Both start from rest and \\(\\omega = \\alpha t\\), so after the same time \\(t\\),\n\n\\(\\dfrac{\\omega_{s}}{\\omega_{c}} = \\dfrac{\\alpha_{s}}{\\alpha_{c}} = \\dfrac{I_{c}}{I_{s}} = \\dfrac{MR^{2}}{\\frac{2}{5}MR^{2}} = 2.5\\)\n\nThe SOLID SPHERE acquires the greater angular speed — 2.5 times that of the hollow cylinder — because its mass is distributed closer to the axis."
+  },
+  {
+    "id": "fb96da7f-9fcc-4389-9d79-c8c6ac62e41c",
+    "ref": "Ex 6.11",
+    "solution": "For a solid cylinder rotating about its own axis,\n\n\\(I = \\dfrac{1}{2}MR^{2} = \\dfrac{1}{2}(20\\,\\text{kg})(0.25\\,\\text{m})^{2} = 0.625\\,\\text{kg m}^{2}\\)\n\nRotational kinetic energy:\n\n\\(K = \\dfrac{1}{2}I\\omega^{2} = \\dfrac{1}{2}(0.625\\,\\text{kg m}^{2})(100\\,\\text{rad s}^{-1})^{2}\\)\n\n\\(K = 3125\\,\\text{J}\\)\n\nAngular momentum about the axis:\n\n\\(L = I\\omega = (0.625\\,\\text{kg m}^{2})(100\\,\\text{rad s}^{-1})\\)\n\n\\(L = 62.5\\,\\text{kg m}^{2}\\,\\text{s}^{-1}\\)\n\nKinetic energy \\(= 3125\\,\\text{J}\\); angular momentum \\(= 62.5\\,\\text{J s}\\)."
+  },
+  {
+    "id": "1df7f416-1896-40dd-a8d3-0a0fe5429591",
+    "ref": "Ex 6.12(a)",
+    "solution": "The turntable is frictionless, so no external torque acts about the vertical axis. The child's arms are pulled in by internal (muscular) forces, which cannot change the angular momentum of the system. Hence angular momentum is conserved:\n\n\\(I_{1}\\omega_{1} = I_{2}\\omega_{2}\\)\n\nHere \\(\\omega_{1} = 40\\,\\text{rev/min}\\) and \\(I_{2} = \\dfrac{2}{5}I_{1}\\), so\n\n\\(\\omega_{2} = \\dfrac{I_{1}}{I_{2}}\\,\\omega_{1} = \\dfrac{5}{2}(40\\,\\text{rev/min})\\)\n\n\\(\\omega_{2} = 100\\,\\text{rev/min}\\)\n\n(The units of \\(\\omega\\) need not be converted, since only the RATIO of the two angular speeds is involved.)"
+  },
+  {
+    "id": "922fc3be-f8d4-496c-bc47-e769313fd889",
+    "ref": "Ex 6.12(b)",
+    "solution": "Angular momentum \\(L = I\\omega\\) is conserved, so it is convenient to write the rotational kinetic energy in terms of \\(L\\):\n\n\\(K = \\dfrac{1}{2}I\\omega^{2} = \\dfrac{(I\\omega)^{2}}{2I} = \\dfrac{L^{2}}{2I}\\)\n\nSince \\(L\\) is the same before and after,\n\n\\(\\dfrac{K_{2}}{K_{1}} = \\dfrac{I_{1}}{I_{2}} = \\dfrac{I_{1}}{\\frac{2}{5}I_{1}} = \\dfrac{5}{2} = 2.5\\)\n\nSo \\(K_{2} = 2.5\\,K_{1}\\), i.e. the new kinetic energy of rotation is \\(2.5\\) times the initial value, which is more than the initial value. (The same follows directly: \\(K \\propto I\\omega^{2}\\), and \\(\\omega\\) rises by a factor \\(5/2\\) while \\(I\\) falls only by \\(2/5\\).)\n\nThis is not a violation of energy conservation. The child does WORK in folding his arms inwards: each hand is moving in a circle and must be pulled towards the axis against the outward inertial tendency, so the muscular force acts through a displacement and supplies energy. That work, drawn from the child's internal chemical energy, is exactly the extra rotational kinetic energy."
+  },
+  {
+    "id": "7124792a-30ea-44da-b8e2-2a4548b378e6",
+    "ref": "Ex 6.13",
+    "solution": "For a hollow cylinder about its own axis all the mass is at distance \\(R\\), so\n\n\\(I = MR^{2} = (3\\,\\text{kg})(0.40\\,\\text{m})^{2} = 0.48\\,\\text{kg m}^{2}\\)\n\n(The radius is converted from \\(40\\,\\text{cm}\\) to \\(0.40\\,\\text{m}\\).)\n\nThe rope is tangential, so its torque about the axis is\n\n\\(\\tau = FR = (30\\,\\text{N})(0.40\\,\\text{m}) = 12\\,\\text{N m}\\)\n\nHence\n\n\\(\\alpha = \\dfrac{\\tau}{I} = \\dfrac{12\\,\\text{N m}}{0.48\\,\\text{kg m}^{2}} = 25\\,\\text{rad s}^{-2}\\)\n\nSince there is no slipping, the rope's linear acceleration equals the tangential acceleration of the rim:\n\n\\(a = R\\alpha = (0.40\\,\\text{m})(25\\,\\text{rad s}^{-2}) = 10\\,\\text{m s}^{-2}\\)\n\nAngular acceleration \\(= 25\\,\\text{rad s}^{-2}\\); linear acceleration of the rope \\(= 10\\,\\text{m s}^{-2}\\)."
+  },
+  {
+    "id": "69e96c19-b6d1-4c1e-8842-6572ed112103",
+    "ref": "Ex 6.14",
+    "solution": "The power delivered by a torque turning a body at angular speed \\(\\omega\\) is the rotational analogue of \\(P = Fv\\):\n\n\\(P = \\tau\\omega\\)\n\nThe rotor turns at a uniform angular speed, so the applied torque exactly balances the frictional torque and the engine's whole output goes into overcoming friction. With the engine 100% efficient,\n\n\\(P = (180\\,\\text{N m})(200\\,\\text{rad s}^{-1})\\)\n\n\\(P = 36000\\,\\text{W} = 36\\,\\text{kW}\\)"
+  },
+  {
+    "id": "257668e7-f647-4b5c-b2ae-46b7499148dd",
+    "ref": "Ex 6.15",
+    "solution": "Treat the holed disc as the FULL disc minus a disc of radius \\(R/2\\). Let the mass per unit area be \\(\\sigma\\), take the centre of the original disc as the origin, and let the \\(x\\)-axis run through the centre of the hole, so the hole's centre is at \\(x = R/2\\).\n\nMass of the full disc: \\(M = \\sigma\\pi R^{2}\\)\n\nMass of the removed piece: \\(m = \\sigma\\pi (R/2)^{2} = \\dfrac{M}{4}\\)\n\nMass of the remaining body: \\(M - \\dfrac{M}{4} = \\dfrac{3M}{4}\\)\n\nThe full disc's centre of mass is at the origin, and it is the mass-weighted average of the remaining body and the removed piece:\n\n\\(M(0) = \\dfrac{3M}{4}\\,x_{\\text{CM}} + \\dfrac{M}{4}\\left(\\dfrac{R}{2}\\right)\\)\n\n\\(x_{\\text{CM}} = -\\dfrac{1}{3}\\left(\\dfrac{R}{2}\\right) = -\\dfrac{R}{6}\\)\n\nThe centre of gravity of the resulting flat body lies on the line joining the two centres, at a distance \\(R/6\\) from the centre of the original disc, on the side AWAY from the hole. (The minus sign is what says 'away from the hole'; by symmetry it lies on that line and nowhere off it.)"
+  },
+  {
+    "id": "7749b62e-b97b-401e-b856-05685ae44284",
+    "ref": "Ex 6.16",
+    "solution": "The stick balanced at its centre when empty, so its own weight acts at the \\(50.0\\,\\text{cm}\\) mark. Let its mass be \\(m\\). The two coins together have mass \\(2 \\times 5\\,\\text{g} = 10\\,\\text{g}\\) and sit at the \\(12.0\\,\\text{cm}\\) mark.\n\nWith the new knife edge at \\(45.0\\,\\text{cm}\\), take moments about that point. The moment arms are\n\ncoins: \\(45.0 - 12.0 = 33.0\\,\\text{cm}\\) (to the left)\n\nstick: \\(50.0 - 45.0 = 5.0\\,\\text{cm}\\) (to the right)\n\nFor rotational equilibrium the two moments balance (the factor \\(g\\) cancels):\n\n\\((10\\,\\text{g})(33.0\\,\\text{cm}) = m(5.0\\,\\text{cm})\\)\n\n\\(m = \\dfrac{10 \\times 33.0}{5.0}\\,\\text{g}\\)\n\n\\(m = 66\\,\\text{g}\\)"
+  },
+  {
+    "id": "5cf40e6a-dffe-4e5c-a151-0a5aad2f93fa",
+    "ref": "Ex 6.17",
+    "solution": "The kinetic energy of rotation is given as two thirds of the kinetic energy of translation:\n\n\\(\\dfrac{1}{2}I\\omega^{2} = \\dfrac{2}{3}\\left(\\dfrac{1}{2}mv^{2}\\right)\\)\n\nSolving for \\(\\omega\\),\n\n\\(\\omega = v\\sqrt{\\dfrac{2m}{3I}}\\)\n\nSubstituting \\(m = 5.30 \\times 10^{-26}\\,\\text{kg}\\), \\(I = 1.94 \\times 10^{-46}\\,\\text{kg m}^{2}\\) and \\(v = 500\\,\\text{m s}^{-1}\\):\n\n\\(\\omega = 500\\sqrt{\\dfrac{2(5.30 \\times 10^{-26})}{3(1.94 \\times 10^{-46})}}\\,\\text{rad s}^{-1}\\)\n\n\\(\\omega = 500\\sqrt{1.821 \\times 10^{20}}\\,\\text{rad s}^{-1} = 500(1.350 \\times 10^{10})\\,\\text{rad s}^{-1}\\)\n\n\\(\\omega = 6.75 \\times 10^{12}\\,\\text{rad s}^{-1}\\)"
+  }
+]

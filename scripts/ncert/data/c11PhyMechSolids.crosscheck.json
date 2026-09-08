@@ -1,0 +1,128 @@
+[
+  {
+    "ref": "Ex 8.1",
+    "verdict": "AGREE",
+    "ourAnswer": "Y_steel / Y_copper = 1.79 ≈ 1.8 (pure number)",
+    "keyAnswer": "1.8",
+    "note": "Recomputed: (4.7 × 4.0e-5)/(3.5 × 3.0e-5) = 18.8/10.5 = 1.7905 → 1.8."
+  },
+  {
+    "ref": "Ex 8.2",
+    "verdict": "AGREE",
+    "ourAnswer": "(a) Y ≈ 7.5e10 N m^-2  (b) yield strength ≈ 3e8 N m^-2",
+    "keyAnswer": "(a) for a stress of 150e6 N m^-2 the strain is 0.002  (b) approximate yield strength 3e8 N m^-2",
+    "note": "The key states the graph reading rather than the modulus; 150e6/0.002 = 7.5e10 N m^-2, which is exactly the point our solution reads and the slope it quotes. Part (b) matches verbatim."
+  },
+  {
+    "ref": "Ex 8.3(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Material A",
+    "keyAnswer": "(a) Material A",
+    "note": "Verbatim match."
+  },
+  {
+    "ref": "Ex 8.3(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Material A is the stronger material",
+    "keyAnswer": "(b) Strength is the stress required to cause fracture: material A is stronger than material B",
+    "note": "Same verdict and same stated reason (peak stress before fracture, not extensibility)."
+  },
+  {
+    "ref": "Ex 8.4(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "False",
+    "keyAnswer": "(a) False",
+    "note": "Verbatim match."
+  },
+  {
+    "ref": "Ex 8.4(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "True",
+    "keyAnswer": "(b) True",
+    "note": "Verbatim match."
+  },
+  {
+    "ref": "Ex 8.5",
+    "verdict": "AGREE",
+    "ourAnswer": "steel 1.5e-4 m; brass 1.3e-4 m",
+    "keyAnswer": "1.5e-4 m (steel); 1.3e-4 m (brass)",
+    "note": "Recomputed with A = π(1.25e-3)^2 = 4.91e-6 m^2: steel 98×1.5/(A×2.0e11) = 1.497e-4 m, brass 58.8×1.0/(A×0.91e11) = 1.316e-4 m. Both match to the key's 2 s.f."
+  },
+  {
+    "ref": "Ex 8.6",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "vertical deflection Δx = 3.92e-7 m",
+    "keyAnswer": "Deflection = 4e-6 m",
+    "note": "The key's number is the shear STRAIN, not the deflection — it omits the final × L. Shear stress = 980/0.01 = 9.8e4 Pa; θ = 9.8e4/25e9 = 3.92e-6 (dimensionless, and exactly 4.0e-6 if g = 10, which is the key's mantissa); Δx = θL = 3.92e-6 × 0.10 = 3.92e-7 m. THIRD ROUTE, against the stem's own numbers rather than against our solution: a deflection of 4e-6 m requires θ = 4e-5, hence F = θGA = 4e-5 × 25e9 × 0.01 = 1.0e4 N, a mass of 1020 kg — ten times the 100 kg the stem states. The key is a clean factor of 10 (= the 0.10 m edge) too large, and θ is dimensionless so the printed unit 'm' cannot attach to it."
+  },
+  {
+    "ref": "Ex 8.7",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "compressional strain of each column = 7.22e-7",
+    "keyAnswer": "2.8e-6",
+    "note": "The key fails to divide the load among the four columns. A = π(0.60^2 − 0.30^2) = 0.8482 m^2; per-column F = 50000×9.8/4 = 1.225e5 N; stress = 1.444e5 Pa; strain = 1.444e5/2.0e11 = 7.22e-7. THIRD ROUTE, against the stem's own numbers: the key's 2.8e-6 implies a per-column force of 4.75e5 N ≈ 48,470 kg — essentially the ENTIRE 50,000 kg structure on one column — contradicting the stem's 'Four identical … columns' and 'Assuming the load distribution to be uniform, calculate the compressional strain of each column'. FOURTH ROUTE: it also implies Y = 5.16e10 Pa where the chapter's own Table 8.1 prints steel Y = 200 GPa = 2.0e11. The stem was verified against the source PDF text layer: it says 'inner and outer RADII of each column are 30 and 60 cm' (a diameter reading would reproduce the key's value, but is not what the book prints)."
+  },
+  {
+    "ref": "Ex 8.8",
+    "verdict": "AGREE",
+    "ourAnswer": "strain ≈ 1.28e-3 (dimensionless)",
+    "keyAnswer": "0.127",
+    "note": "AGREE with a caveat: the key prints the value as a PERCENTAGE with the % sign omitted. stress = 44500/(0.0152×0.0191) = 1.5328e8 Pa; with Y_copper = 1.2e11 the strain is 1.2773e-3 = 0.1277%, i.e. the key's 0.127. The literal reading is impossible and that is the independent check — a bare 0.127 strain would require Y = 1.21e9 Pa (Table 8.1 gives copper 110 GPa), and 12.7% strain contradicts the stem's 'producing only elastic deformation' (copper's yield strength in Table 8.1 is 200 MPa against the 153 MPa applied). The chapter's own worked examples quote strain both ways — Eg 8.1 '1.59e-3 = 0.16%', Eg 8.3 '0.000091 or 0.0091%', Eg 8.5 '1.36e-2 or 1.36%' — so the percentage form is the book's established convention here. SEPARATE OBSERVATION, not a verdict: our solution uses Y_copper = 1.2e11 whereas Table 8.1 prints 110 GPa (which would give 1.39e-3); the key evidently used 1.2e11 too, so our value is the one that matches the key."
+  },
+  {
+    "ref": "Ex 8.9",
+    "verdict": "AGREE",
+    "ourAnswer": "7.1e4 N (mass ≈ 7.2e3 kg)",
+    "keyAnswer": "7.07e4 N",
+    "note": "Recomputed: F = 1e8 × π(0.015)^2 = 7.069e4 N. Our solution states 7.07e4 N in the working and rounds to 7.1e4 in the closing line; same value."
+  },
+  {
+    "ref": "Ex 8.10",
+    "verdict": "AGREE",
+    "ourAnswer": "d_copper : d_iron ≈ 1.26 : 1",
+    "keyAnswer": "D_copper/D_iron = 1.25",
+    "note": "Within the key's precision. sqrt(Y_Fe/Y_Cu) = sqrt(1.9e11/1.2e11) = 1.258 → 1.26 against the key's 1.25, a 0.6% difference and only the last digit. The key's 1.25 implies Y_copper = 1.22e11, consistent with the 1.2e11 it also uses in 8.8."
+  },
+  {
+    "ref": "Ex 8.11",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "elongation ≈ 1.9e-3 m (1.87e-3 m)",
+    "keyAnswer": "1.539e-4 m",
+    "note": "The key treats the angular velocity as 2 rad/s where the stem says 2 rev/s. THIRD ROUTE — the key's value is reproduced EXACTLY, to all four of its significant figures, by that one substitution: with ω = 2 rad/s, T = 14.5(9.8 + 4) = 200.1 N and ΔL = 200.1/(6.5e-6 × 2e11) = 1.5392e-4 m. That precision of match identifies the slip rather than merely disagreeing with it. Correctly, ω = 2 rev/s = 4π = 12.566 rad/s, so T = 14.5(9.8 + 157.9) = 2431.8 N and ΔL = 1.871e-3 m. The stem was verified against the source PDF text layer, which reads 'whirled in a vertical circle with an angular velocity of 2 rev/s'; rev/s is unambiguous, so the key contradicts the stem's own stated unit."
+  },
+  {
+    "ref": "Ex 8.12",
+    "verdict": "AGREE",
+    "ourAnswer": "B_water = 2.026e9 N m^-2; B_water/B_air ≈ 2.0e4",
+    "keyAnswer": "2.026e9 Pa",
+    "note": "Recomputed: (100.0 × 1.013e5)/(0.5/100.0) = 2.026e9 Pa. Exact match. The key prints no figure for the air comparison, which our answer additionally supplies."
+  },
+  {
+    "ref": "Ex 8.13",
+    "verdict": "AGREE",
+    "ourAnswer": "1.034e3 kg m^-3",
+    "keyAnswer": "1.034e3 kg/m^3",
+    "note": "Recomputed: ΔV/V = 8.104e6/2.2e9 = 3.684e-3; ρ' = 1030/(1 − 3.684e-3) = 1033.8 kg m^-3. Exact match to 4 s.f. Confirms that the stem's printed 'density 1.03 × 103' is the known baseline-exponent defect in the source and was correctly solved as 1.03e3."
+  },
+  {
+    "ref": "Ex 8.14",
+    "verdict": "AGREE",
+    "ourAnswer": "ΔV/V = 2.7e-5 (a contraction)",
+    "keyAnswer": "0.0027",
+    "note": "AGREE with the same caveat as 8.8: the key prints the value as a PERCENTAGE with the % sign omitted. ΔV/V = (10 × 1.013e5)/37e9 = 2.738e-5 = 0.002738%, i.e. the key's 0.0027. Independent check on the literal reading: a bare 0.0027 would require B = 3.75e8 Pa, where the chapter's own Table 8.3 prints glass B = 37 GPa — the value our solution uses. Two entries (8.8 and 8.14) showing the same ×100 relationship with matching mantissas make this a convention in the key, not two coincidental slips."
+  },
+  {
+    "ref": "Ex 8.15",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "ΔV = 5.0e-8 m^3 = 0.05 cm^3",
+    "keyAnswer": "0.058 cm^3",
+    "note": "A constant mismatch against the book's OWN table, not an arithmetic error on either side. ΔV = pV/B = (7.0e6 × 1.0e-3)/B. Our 0.05 cm^3 follows from B_copper = 140 GPa, which is exactly what this chapter's Table 8.3 prints (verified on the rendered page). The key's 0.058 cm^3 requires B = 120.7 GPa, a value that appears nowhere in the book. Recorded as BOOK-KEY-WRONG because a student working from this chapter has only Table 8.3 to go on and gets 0.05 cm^3; noting honestly that ~121 GPa is a defensible copper bulk modulus in the wider literature, so this is a weaker finding than 8.6/8.7/8.11, which are self-contradictory on the stem's own numbers."
+  },
+  {
+    "ref": "Ex 8.16",
+    "verdict": "AGREE",
+    "ourAnswer": "Δp = 2.2e6 Pa (about 21.7 atm)",
+    "keyAnswer": "2.2e6 N/m^2",
+    "note": "Recomputed: Δp = B × ΔV/V = 2.2e9 × 1.0e-3 = 2.2e6 Pa, using Table 8.3's water B = 2.2 GPa. Exact match; Pa and N/m^2 are the same unit."
+  }
+]

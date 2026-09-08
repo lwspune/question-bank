@@ -1,0 +1,30 @@
+[
+  {
+    "id": "9fe31139-1cdb-4894-87df-f668348c3e70",
+    "ref": "Ex 14.1",
+    "derived_answer": "C",
+    "solution": "An n-type semiconductor is produced by doping tetravalent \\(\\mathrm{Si}\\) (or \\(\\mathrm{Ge}\\)) with a pentavalent donor such as phosphorus, arsenic or antimony. Four of the dopant's five valence electrons complete covalent bonds with the four neighbouring silicon atoms, and the fifth is bound so weakly — the energy needed to free it is only about \\(0.05\\ \\text{eV}\\) in silicon and \\(0.01\\ \\text{eV}\\) in germanium, against roughly \\(1.1\\ \\text{eV}\\) and \\(0.72\\ \\text{eV}\\) to jump the forbidden band — that it is already detached at room temperature. Every donor therefore contributes one conduction electron, while holes still arise only from the intrinsic breaking of bonds, and the surplus of electrons even raises the recombination rate and cuts the hole population further. Hence \\(n_e \\gg n_h\\), so electrons are the majority carriers and holes the minority carriers. Both halves of the statement have to hold, so the one pairing holes as minority carriers with pentavalent dopants is the statement that survives. Doping instead with a trivalent element such as boron, aluminium or indium creates acceptor levels and yields a p-type crystal, so any statement naming trivalent dopants describes the opposite material; and describing electrons as the minority carriers inverts the roles in an n-type crystal.",
+    "matches_current": true
+  },
+  {
+    "id": "9096e89b-f40a-421d-824f-2cc31f543ec4",
+    "ref": "Ex 14.3",
+    "derived_answer": "C",
+    "solution": "All three elements are tetravalent and crystallise in the same diamond-like lattice, so what sets the size of the forbidden gap is how tightly the covalent bonds hold the valence electrons. The lattice spacing is \\(a = 3.56\\), \\(5.43\\) and \\(5.66\\) in units of \\(10^{-10}\\ \\text{m}\\) for carbon, silicon and germanium respectively: the closer the atoms sit, the stronger the bond and the wider the gap. Numerically \\((E_g)_{\\text{C}} \\approx 5.4\\ \\text{eV}\\) for carbon in the diamond form, \\((E_g)_{\\text{Si}} \\approx 1.1\\ \\text{eV}\\) and \\((E_g)_{\\text{Ge}} \\approx 0.72\\ \\text{eV}\\). Only carbon exceeds the \\(3\\ \\text{eV}\\) mark that classifies a solid as an insulator, which is why diamond does not conduct, while silicon and germanium fall below it and behave as semiconductors — germanium, with the smallest gap, being the easiest of the three to excite thermally. The ordering is therefore \\((E_g)_{\\text{C}} > (E_g)_{\\text{Si}} > (E_g)_{\\text{Ge}}\\). Any chain requiring \\((E_g)_{\\text{Si}} < (E_g)_{\\text{Ge}}\\) fails because \\(1.1 > 0.72\\); making germanium the largest of the three would make it the hardest to excite, contradicting its behaviour; and equal gaps would make all three conduct alike, which they plainly do not.",
+    "matches_current": true
+  },
+  {
+    "id": "b28a461e-e03e-403a-88f4-3a6e66301969",
+    "ref": "Ex 14.4",
+    "derived_answer": "C",
+    "solution": "In an unbiased junction no external source is connected, so nothing is driving the carriers except their own concentration gradient. The p-region is doped with acceptors and the n-region with donors, so the hole density satisfies \\(p_p \\gg p_n\\) — holes are the majority carriers on the p-side and the minority carriers on the n-side. Holes therefore diffuse down that gradient from \\(p \\to n\\), just as electrons diffuse \\(n \\to p\\), and this is what the concentration statement asserts. The idea that the free electrons of the n-region attract them fails because the bulk n-region is electrically neutral: every mobile electron is compensated by an immobile ionised donor core, so no net long-range Coulomb pull reaches across the junction. The idea that the potential difference carries them across is wrong in both direction and causality: the built-in potential \\(V_0\\) arises only as a consequence of this very diffusion, and the field it sets up runs from the positive space charge on the n-side to the negative space charge on the p-side, so it sweeps holes \\(n \\to p\\) as a drift current opposite in direction to the diffusion current. Since the concentration gradient is the only sound reason of the three, the blanket \"all the above\" cannot hold either.",
+    "matches_current": true
+  },
+  {
+    "id": "cc3b6688-2413-401f-b553-90116a0dbf48",
+    "ref": "Ex 14.5",
+    "derived_answer": "C",
+    "solution": "Forward bias connects the p-side to the positive terminal and the n-side to the negative terminal, so the applied voltage \\(V\\) acts against the built-in potential \\(V_0\\). Almost all of \\(V\\) drops across the depletion region, which is the high-resistance part of the diode, and the effective barrier becomes \\(V_0 - V\\): the barrier height falls and the depletion layer narrows. With a smaller barrier a far larger fraction of the majority carriers has enough energy to cross the junction, so the diffusion current grows and the forward current reaches the order of \\(\\text{mA}\\) — it certainly does not fall to zero, which is why the claim that the majority-carrier current is reduced to zero fails. Raising the effective barrier to \\(V_0 + V\\) is what happens under reverse bias, not forward bias. So a forward-biased junction lowers its potential barrier, and since that statement is true the denial of all of them cannot stand.",
+    "matches_current": true
+  }
+]

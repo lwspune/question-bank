@@ -1,0 +1,182 @@
+[
+  {
+    "ref": "Eg 8.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "A plane electromagnetic wave of frequency \\(25\\,\\text{MHz}\\) travels in free space along the \\(x\\)-direction. At a particular point in space and time, \\(\\mathbf{E} = 6.3\\,\\hat{\\mathbf{j}}\\,\\text{V/m}\\). What is \\(\\mathbf{B}\\) at this point?",
+    "solution": "Using \\(B = E/c\\) [Eq. (8.10)], the magnitude of \\(\\mathbf{B}\\) is\n\n\\(B = \\dfrac{E}{c} = \\dfrac{6.3\\,\\text{V/m}}{3 \\times 10^{8}\\,\\text{m/s}} = 2.1 \\times 10^{-8}\\,\\text{T}\\)\n\nTo find the direction, we note that \\(\\mathbf{E}\\) is along the \\(y\\)-direction and the wave propagates along the \\(x\\)-axis. Therefore, \\(\\mathbf{B}\\) should be in a direction perpendicular to both the \\(x\\)- and \\(y\\)-axes. Using vector algebra, \\(\\mathbf{E} \\times \\mathbf{B}\\) should be along the \\(x\\)-direction. Since \\((+\\hat{\\mathbf{j}}) \\times (+\\hat{\\mathbf{k}}) = \\hat{\\mathbf{i}}\\), \\(\\mathbf{B}\\) is along the \\(z\\)-direction.\n\nThus, \\(\\mathbf{B} = 2.1 \\times 10^{-8}\\,\\hat{\\mathbf{k}}\\,\\text{T}\\)",
+    "_note": "The stated frequency of \\(25\\,\\text{MHz}\\) is not used anywhere in the book's printed solution; only the magnitude relation \\(B = E/c\\) and the propagation direction are needed. Transcribed faithfully."
+  },
+  {
+    "ref": "Eg 8.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "The magnetic field in a plane electromagnetic wave is given by \\(B_y = (2 \\times 10^{-7})\\,\\text{T} \\sin\\left(0.5 \\times 10^{3} x + 1.5 \\times 10^{11} t\\right)\\).\n\n(a) What is the wavelength and frequency of the wave?\n\n(b) Write an expression for the electric field.",
+    "solution": "(a) Comparing the given equation with\n\n\\(B_y = B_0 \\sin\\left[2\\pi\\left(\\dfrac{x}{\\lambda} + \\dfrac{t}{T}\\right)\\right]\\)\n\nWe get, \\(\\lambda = \\dfrac{2\\pi}{0.5 \\times 10^{3}}\\,\\text{m} = 1.26\\,\\text{cm}\\),\n\nand \\(\\dfrac{1}{T} = \\nu = \\dfrac{1.5 \\times 10^{11}}{2\\pi} = 23.9\\,\\text{GHz}\\)\n\n(b) \\(E_0 = B_0 c = 2 \\times 10^{-7}\\,\\text{T} \\times 3 \\times 10^{8}\\,\\text{m/s} = 6 \\times 10^{1}\\,\\text{V/m}\\)\n\nThe electric field component is perpendicular to the direction of propagation and the direction of the magnetic field. Therefore, the electric field component along the \\(z\\)-axis is obtained as\n\n\\(E_z = 60 \\sin\\left(0.5 \\times 10^{3} x + 1.5 \\times 10^{11} t\\right)\\,\\text{V/m}\\)",
+    "_note": "PRINTED DEFECT in the book's own solution: the comparison equation is set as \"B_y = B_o Sin[2p(x/lambda + t/T)]\" — the page prints the letter p where the symbol pi belongs (a Symbol-font substitution) and capitalises Sin. It is transcribed here as \\(2\\pi\\), which is unambiguously what the book means: its very next line computes \\(\\lambda = 2\\pi/(0.5 \\times 10^{3})\\) using pi. No value or answer is affected."
+  },
+  {
+    "ref": "Ex 8.1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "MODERATE",
+    "stem": "Figure 8.5 shows a capacitor made of two circular plates each of radius \\(12\\,\\text{cm}\\), and separated by \\(5.0\\,\\text{cm}\\). The capacitor is being charged by an external source (not shown in the figure). The charging current is constant and equal to \\(0.15\\,\\text{A}\\).\n\n(a) Calculate the capacitance and the rate of change of potential difference between the plates.",
+    "_figure": {
+      "fig": "Fig 8.5",
+      "page": 12
+    }
+  },
+  {
+    "ref": "Ex 8.1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "MODERATE",
+    "stem": "Figure 8.5 shows a capacitor made of two circular plates each of radius \\(12\\,\\text{cm}\\), and separated by \\(5.0\\,\\text{cm}\\). The capacitor is being charged by an external source (not shown in the figure). The charging current is constant and equal to \\(0.15\\,\\text{A}\\).\n\n(b) Obtain the displacement current across the plates.",
+    "_figure": {
+      "fig": "Fig 8.5",
+      "page": 12
+    }
+  },
+  {
+    "ref": "Ex 8.1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "MODERATE",
+    "stem": "Figure 8.5 shows a capacitor made of two circular plates each of radius \\(12\\,\\text{cm}\\), and separated by \\(5.0\\,\\text{cm}\\). The capacitor is being charged by an external source (not shown in the figure). The charging current is constant and equal to \\(0.15\\,\\text{A}\\).\n\n(c) Is Kirchhoff's first rule (junction rule) valid at each plate of the capacitor? Explain.",
+    "_figure": {
+      "fig": "Fig 8.5",
+      "page": 12
+    }
+  },
+  {
+    "ref": "Ex 8.2(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "EASY",
+    "stem": "A parallel plate capacitor (Fig. 8.6) made of circular plates each of radius \\(R = 6.0\\,\\text{cm}\\) has a capacitance \\(C = 100\\,\\text{pF}\\). The capacitor is connected to a \\(230\\,\\text{V}\\) ac supply with a (angular) frequency of \\(300\\,\\text{rad s}^{-1}\\).\n\n(a) What is the rms value of the conduction current?",
+    "_figure": {
+      "fig": "Fig 8.6",
+      "page": 13
+    }
+  },
+  {
+    "ref": "Ex 8.2(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "MODERATE",
+    "stem": "A parallel plate capacitor (Fig. 8.6) made of circular plates each of radius \\(R = 6.0\\,\\text{cm}\\) has a capacitance \\(C = 100\\,\\text{pF}\\). The capacitor is connected to a \\(230\\,\\text{V}\\) ac supply with a (angular) frequency of \\(300\\,\\text{rad s}^{-1}\\).\n\n(b) Is the conduction current equal to the displacement current?",
+    "_figure": {
+      "fig": "Fig 8.6",
+      "page": 13
+    }
+  },
+  {
+    "ref": "Ex 8.2(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Displacement Current",
+    "difficulty": "HARD",
+    "stem": "A parallel plate capacitor (Fig. 8.6) made of circular plates each of radius \\(R = 6.0\\,\\text{cm}\\) has a capacitance \\(C = 100\\,\\text{pF}\\). The capacitor is connected to a \\(230\\,\\text{V}\\) ac supply with a (angular) frequency of \\(300\\,\\text{rad s}^{-1}\\).\n\n(c) Determine the amplitude of \\(\\mathbf{B}\\) at a point \\(3.0\\,\\text{cm}\\) from the axis between the plates.",
+    "_figure": {
+      "fig": "Fig 8.6",
+      "page": 13
+    }
+  },
+  {
+    "ref": "Ex 8.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Spectrum",
+    "difficulty": "EASY",
+    "stem": "What physical quantity is the same for X-rays of wavelength \\(10^{-10}\\,\\text{m}\\), red light of wavelength \\(6800\\,\\text{\\AA}\\) and radiowaves of wavelength \\(500\\,\\text{m}\\)?"
+  },
+  {
+    "ref": "Ex 8.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "A plane electromagnetic wave travels in vacuum along \\(z\\)-direction. What can you say about the directions of its electric and magnetic field vectors? If the frequency of the wave is \\(30\\,\\text{MHz}\\), what is its wavelength?"
+  },
+  {
+    "ref": "Ex 8.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Spectrum",
+    "difficulty": "EASY",
+    "stem": "A radio can tune in to any station in the \\(7.5\\,\\text{MHz}\\) to \\(12\\,\\text{MHz}\\) band. What is the corresponding wavelength band?"
+  },
+  {
+    "ref": "Ex 8.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "EASY",
+    "stem": "A charged particle oscillates about its mean equilibrium position with a frequency of \\(10^{9}\\,\\text{Hz}\\). What is the frequency of the electromagnetic waves produced by the oscillator?"
+  },
+  {
+    "ref": "Ex 8.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "EASY",
+    "stem": "The amplitude of the magnetic field part of a harmonic electromagnetic wave in vacuum is \\(B_0 = 510\\,\\text{nT}\\). What is the amplitude of the electric field part of the wave?"
+  },
+  {
+    "ref": "Ex 8.8(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that the electric field amplitude of an electromagnetic wave is \\(E_0 = 120\\,\\text{N/C}\\) and that its frequency is \\(\\nu = 50.0\\,\\text{MHz}\\).\n\n(a) Determine \\(B_0\\), \\(\\omega\\), \\(k\\), and \\(\\lambda\\)."
+  },
+  {
+    "ref": "Ex 8.8(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that the electric field amplitude of an electromagnetic wave is \\(E_0 = 120\\,\\text{N/C}\\) and that its frequency is \\(\\nu = 50.0\\,\\text{MHz}\\).\n\n(b) Find expressions for \\(\\mathbf{E}\\) and \\(\\mathbf{B}\\)."
+  },
+  {
+    "ref": "Ex 8.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Spectrum",
+    "difficulty": "HARD",
+    "stem": "The terminology of different parts of the electromagnetic spectrum is given in the text. Use the formula \\(E = h\\nu\\) (for energy of a quantum of radiation: photon) and obtain the photon energy in units of eV for different parts of the electromagnetic spectrum. In what way are the different scales of photon energies that you obtain related to the sources of electromagnetic radiation?"
+  },
+  {
+    "ref": "Ex 8.10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "EASY",
+    "stem": "In a plane electromagnetic wave, the electric field oscillates sinusoidally at a frequency of \\(2.0 \\times 10^{10}\\,\\text{Hz}\\) and amplitude \\(48\\,\\text{V m}^{-1}\\). [Take \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\).]\n\n(a) What is the wavelength of the wave?"
+  },
+  {
+    "ref": "Ex 8.10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "EASY",
+    "stem": "In a plane electromagnetic wave, the electric field oscillates sinusoidally at a frequency of \\(2.0 \\times 10^{10}\\,\\text{Hz}\\) and amplitude \\(48\\,\\text{V m}^{-1}\\). [Take \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\).]\n\n(b) What is the amplitude of the oscillating magnetic field?"
+  },
+  {
+    "ref": "Ex 8.10(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electromagnetic Waves and their Properties",
+    "difficulty": "MODERATE",
+    "stem": "In a plane electromagnetic wave, the electric field oscillates sinusoidally at a frequency of \\(2.0 \\times 10^{10}\\,\\text{Hz}\\) and amplitude \\(48\\,\\text{V m}^{-1}\\). [Take \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\).]\n\n(c) Show that the average energy density of the \\(\\mathbf{E}\\) field equals the average energy density of the \\(\\mathbf{B}\\) field."
+  }
+]

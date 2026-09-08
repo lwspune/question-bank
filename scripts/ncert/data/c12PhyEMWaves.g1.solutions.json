@@ -1,0 +1,87 @@
+[
+  {
+    "id": "020423d2-c589-44fc-a566-82fb3dae8868",
+    "ref": "Ex 8.1(a)",
+    "solution": "The plates are circular of radius \\(r = 12\\,\\text{cm} = 0.12\\,\\text{m}\\), so the plate area is\n\n\\(A = \\pi r^2 = \\pi(0.12\\,\\text{m})^2 = 4.52 \\times 10^{-2}\\,\\text{m}^2\\)\n\nwith separation \\(d = 5.0\\,\\text{cm} = 5.0 \\times 10^{-2}\\,\\text{m}\\). For a parallel plate capacitor,\n\n\\(C = \\dfrac{\\varepsilon_0 A}{d} = \\dfrac{(8.854 \\times 10^{-12}\\,\\text{F m}^{-1})(4.52 \\times 10^{-2}\\,\\text{m}^2)}{5.0 \\times 10^{-2}\\,\\text{m}} = 8.0 \\times 10^{-12}\\,\\text{F}\\)\n\nThe charge on the plates is \\(Q = CV\\), so the charging current is \\(i = \\dfrac{\\mathrm{d}Q}{\\mathrm{d}t} = C\\dfrac{\\mathrm{d}V}{\\mathrm{d}t}\\). Hence\n\n\\(\\dfrac{\\mathrm{d}V}{\\mathrm{d}t} = \\dfrac{i}{C} = \\dfrac{0.15\\,\\text{A}}{8.0 \\times 10^{-12}\\,\\text{F}} = 1.87 \\times 10^{10}\\,\\text{V s}^{-1}\\)\n\nCapacitance \\(C = 8.0\\,\\text{pF}\\); rate of change of potential difference \\(\\dfrac{\\mathrm{d}V}{\\mathrm{d}t} = 1.87 \\times 10^{10}\\,\\text{V s}^{-1}\\)."
+  },
+  {
+    "id": "f2825a7c-7124-449a-a4cf-bcbee4b87880",
+    "ref": "Ex 8.1(b)",
+    "solution": "The displacement current is \\(i_d = \\varepsilon_0 \\dfrac{\\mathrm{d}\\Phi_E}{\\mathrm{d}t}\\).\n\nBetween the plates the field is uniform, \\(E = \\dfrac{Q}{\\varepsilon_0 A}\\), so (ignoring end corrections) the electric flux through a surface lying between the plates is\n\n\\(\\Phi_E = EA = \\dfrac{Q}{\\varepsilon_0}\\)\n\nTherefore\n\n\\(i_d = \\varepsilon_0 \\dfrac{\\mathrm{d}}{\\mathrm{d}t}\\left(\\dfrac{Q}{\\varepsilon_0}\\right) = \\dfrac{\\mathrm{d}Q}{\\mathrm{d}t} = i\\)\n\nThe displacement current across the plates is exactly equal to the conduction current charging them, and this holds whatever the value of \\(\\varepsilon_0\\) or the plate area.\n\n\\(i_d = 0.15\\,\\text{A}\\)."
+  },
+  {
+    "id": "8b8bc0d0-2ae2-409a-8cb0-63c492fbfd4b",
+    "ref": "Ex 8.1(c)",
+    "solution": "Yes, provided that by \"current\" we mean the total current, that is the sum of the conduction current and the displacement current.\n\nAt a plate the conduction current \\(i\\) arrives along the wire and stops there, since no charge crosses the gap. But from part (b) a displacement current \\(i_d = i\\) leaves that plate through the region between the plates. The total current arriving at the plate therefore equals the total current leaving it, and Kirchhoff's junction rule is satisfied at each plate.\n\nIf only the conduction current were counted, the rule would appear to fail at each plate — charge would seem to accumulate with nothing carrying it onward. That apparent failure is precisely the inconsistency in Ampere's circuital law which Maxwell removed by introducing the displacement current."
+  },
+  {
+    "id": "993e533f-1766-46f9-a857-75b83011cec7",
+    "ref": "Ex 8.2(a)",
+    "solution": "For a capacitor in an ac circuit the capacitive reactance is \\(X_C = \\dfrac{1}{\\omega C}\\), so the rms conduction current is\n\n\\(I_{rms} = \\dfrac{V_{rms}}{X_C} = V_{rms}\\,\\omega C\\)\n\nSubstituting \\(V_{rms} = 230\\,\\text{V}\\), \\(\\omega = 300\\,\\text{rad s}^{-1}\\) and \\(C = 100\\,\\text{pF} = 100 \\times 10^{-12}\\,\\text{F}\\):\n\n\\(I_{rms} = (230\\,\\text{V})(300\\,\\text{rad s}^{-1})(100 \\times 10^{-12}\\,\\text{F}) = 6.9 \\times 10^{-6}\\,\\text{A}\\)\n\n\\(I_{rms} = 6.9\\,\\mu\\text{A}\\)."
+  },
+  {
+    "id": "787f80fe-b6a6-4655-bdc6-960c3eb3fa2e",
+    "ref": "Ex 8.2(b)",
+    "solution": "Yes.\n\nThe result \\(i_d = i\\) does not depend on the current being steady. At every instant the flux between the plates is \\(\\Phi_E = Q/\\varepsilon_0\\), so\n\n\\(i_d = \\varepsilon_0\\dfrac{\\mathrm{d}\\Phi_E}{\\mathrm{d}t} = \\dfrac{\\mathrm{d}Q}{\\mathrm{d}t} = i\\)\n\nand this derivation goes through unchanged when \\(i\\) oscillates in time. The conduction and displacement currents are therefore equal at every instant, and being equal instant by instant they have the same amplitude and the same rms value.\n\nYes — the conduction current equals the displacement current, at every instant and hence in rms value."
+  },
+  {
+    "id": "ead5789b-61f1-46bb-9a03-deb0834d6b79",
+    "ref": "Ex 8.2(c)",
+    "solution": "Apply the Ampere-Maxwell law to a circular loop of radius \\(r = 3.0\\,\\text{cm}\\) centred on the axis and lying between the plates. No conduction current threads this loop; only displacement current does. The electric field is uniform over the full plate area \\(\\pi R^2\\), so the displacement current enclosed by the loop is the fraction \\(\\dfrac{\\pi r^2}{\\pi R^2}\\) of the total:\n\n\\(B\\,(2\\pi r) = \\mu_0 i_d \\dfrac{r^2}{R^2}\\), so \\(B = \\dfrac{\\mu_0}{2\\pi}\\,\\dfrac{r}{R^2}\\,i_d\\)\n\nSince \\(i_d = i\\) at every instant, the same relation holds between the amplitudes. The current amplitude is\n\n\\(i_0 = \\sqrt{2}\\,I_{rms} = \\sqrt{2}\\,(6.9\\,\\mu\\text{A}) = 9.76\\,\\mu\\text{A}\\)\n\nWith \\(r = 3.0 \\times 10^{-2}\\,\\text{m}\\) and \\(R = 6.0 \\times 10^{-2}\\,\\text{m}\\), and \\(\\dfrac{\\mu_0}{2\\pi} = 2 \\times 10^{-7}\\,\\text{T m A}^{-1}\\):\n\n\\(B_0 = (2 \\times 10^{-7})\\dfrac{3.0 \\times 10^{-2}}{(6.0 \\times 10^{-2})^2}(9.76 \\times 10^{-6})\\,\\text{T}\\)\n\n\\(B_0 = 1.63 \\times 10^{-11}\\,\\text{T}\\)."
+  },
+  {
+    "id": "882d7642-b9fd-4293-8117-949c68420c02",
+    "ref": "Ex 8.3",
+    "solution": "All three are electromagnetic waves, and every electromagnetic wave travels through vacuum at the same speed \\(c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}}\\), which depends only on the electric and magnetic properties of free space and not at all on the wavelength or frequency of the wave.\n\nTheir wavelengths differ by twelve orders of magnitude and their frequencies differ by the same factor in the opposite sense, because the two are tied together by \\(\\nu\\lambda = c\\); it is the product \\(\\nu\\lambda\\) that is common to all three.\n\nThe physical quantity that is the same for all of them is the speed in vacuum, \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\)."
+  },
+  {
+    "id": "aed554fb-34d8-4c3e-9554-b86d637ad90f",
+    "ref": "Ex 8.4",
+    "solution": "An electromagnetic wave is transverse: \\(\\mathbf{E}\\) and \\(\\mathbf{B}\\) are perpendicular to each other and both are perpendicular to the direction of propagation. Here the wave travels along the \\(z\\)-direction, so both \\(\\mathbf{E}\\) and \\(\\mathbf{B}\\) lie in the \\(x\\)-\\(y\\) plane and are mutually perpendicular. Their orientation within that plane is not fixed by the data given; it is constrained only by requiring \\(\\mathbf{E} \\times \\mathbf{B}\\) to point along \\(+z\\), the direction of propagation.\n\nFor the wavelength, use \\(\\nu\\lambda = c\\):\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}\\,\\text{m s}^{-1}}{30 \\times 10^{6}\\,\\text{Hz}} = 10\\,\\text{m}\\)\n\n\\(\\mathbf{E}\\) and \\(\\mathbf{B}\\) lie in the \\(x\\)-\\(y\\) plane and are mutually perpendicular; \\(\\lambda = 10\\,\\text{m}\\)."
+  },
+  {
+    "id": "e6d7db73-98aa-442f-b75b-3ca924db326b",
+    "ref": "Ex 8.5",
+    "solution": "The wavelength corresponding to each end of the frequency band follows from \\(\\lambda = \\dfrac{c}{\\nu}\\), with \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\).\n\nAt \\(\\nu = 7.5\\,\\text{MHz}\\): \\(\\lambda = \\dfrac{3 \\times 10^{8}}{7.5 \\times 10^{6}} = 40\\,\\text{m}\\)\n\nAt \\(\\nu = 12\\,\\text{MHz}\\): \\(\\lambda = \\dfrac{3 \\times 10^{8}}{12 \\times 10^{6}} = 25\\,\\text{m}\\)\n\nWavelength varies inversely with frequency, so the upper frequency gives the shorter wavelength and the band runs the other way round from the frequency band.\n\nThe corresponding wavelength band is \\(40\\,\\text{m}\\) to \\(25\\,\\text{m}\\)."
+  },
+  {
+    "id": "b62c4098-3080-447c-b43f-ab26e1bbc60a",
+    "ref": "Ex 8.6",
+    "solution": "An oscillating charge is an accelerating charge, and an accelerating charge radiates electromagnetic waves. The oscillating charge sets up an oscillating electric field, which in turn produces an oscillating magnetic field, which regenerates the electric field, and so on as the disturbance propagates away.\n\nEach of these fields is driven at the rate at which the source itself oscillates, so the wave carries the frequency of the source and no other. The frequency of the electromagnetic wave is therefore equal to the frequency of oscillation of the charge.\n\nFrequency of the electromagnetic waves \\(= 10^{9}\\,\\text{Hz}\\)."
+  },
+  {
+    "id": "eae09f74-31bd-4fb8-8a52-ce19cea9eaca",
+    "ref": "Ex 8.7",
+    "solution": "In an electromagnetic wave travelling through vacuum the amplitudes of the electric and magnetic fields are related by \\(B_0 = \\dfrac{E_0}{c}\\), that is \\(E_0 = cB_0\\).\n\nWith \\(B_0 = 510\\,\\text{nT} = 510 \\times 10^{-9}\\,\\text{T}\\) and \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\):\n\n\\(E_0 = (3 \\times 10^{8}\\,\\text{m s}^{-1})(510 \\times 10^{-9}\\,\\text{T}) = 153\\,\\text{N C}^{-1}\\)\n\n\\(E_0 = 153\\,\\text{N C}^{-1}\\), equivalently \\(153\\,\\text{V m}^{-1}\\)."
+  },
+  {
+    "id": "25d0f2de-8117-45ae-9760-e0c3fe30d331",
+    "ref": "Ex 8.8(a)",
+    "solution": "The magnetic field amplitude follows from \\(B_0 = E_0/c\\):\n\n\\(B_0 = \\dfrac{120\\,\\text{N C}^{-1}}{3 \\times 10^{8}\\,\\text{m s}^{-1}} = 4.0 \\times 10^{-7}\\,\\text{T} = 400\\,\\text{nT}\\)\n\nThe angular frequency is\n\n\\(\\omega = 2\\pi\\nu = 2\\pi(50.0 \\times 10^{6}\\,\\text{Hz}) = 3.14 \\times 10^{8}\\,\\text{rad s}^{-1}\\)\n\nThe propagation constant is\n\n\\(k = \\dfrac{\\omega}{c} = \\dfrac{3.14 \\times 10^{8}\\,\\text{rad s}^{-1}}{3 \\times 10^{8}\\,\\text{m s}^{-1}} = 1.05\\,\\text{rad m}^{-1}\\)\n\nand the wavelength is\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}\\,\\text{m s}^{-1}}{50.0 \\times 10^{6}\\,\\text{Hz}} = 6.00\\,\\text{m}\\)\n\nAs a consistency check, \\(k = \\dfrac{2\\pi}{\\lambda} = \\dfrac{2\\pi}{6.00\\,\\text{m}} = 1.05\\,\\text{rad m}^{-1}\\), which agrees.\n\n\\(B_0 = 400\\,\\text{nT}\\), \\(\\omega = 3.14 \\times 10^{8}\\,\\text{rad s}^{-1}\\), \\(k = 1.05\\,\\text{rad m}^{-1}\\), \\(\\lambda = 6.00\\,\\text{m}\\)."
+  },
+  {
+    "id": "40b796ff-f919-423f-92de-45cf7cd516a2",
+    "ref": "Ex 8.8(b)",
+    "solution": "The question does not fix the direction of propagation, so take the wave to travel along \\(+x\\), with \\(\\mathbf{E}\\) along the \\(y\\)-axis and \\(\\mathbf{B}\\) along the \\(z\\)-axis, which makes \\(\\mathbf{E} \\times \\mathbf{B}\\) point along \\(+x\\) as it must. Using the amplitudes and the values of \\(k\\) and \\(\\omega\\) from part (a):\n\n\\(\\mathbf{E} = E_0\\sin(kx - \\omega t)\\,\\hat{\\mathbf{j}} = (120\\,\\text{N C}^{-1})\\sin\\left[(1.05\\,\\text{rad m}^{-1})x - (3.14 \\times 10^{8}\\,\\text{rad s}^{-1})t\\right]\\hat{\\mathbf{j}}\\)\n\n\\(\\mathbf{B} = B_0\\sin(kx - \\omega t)\\,\\hat{\\mathbf{k}} = (400\\,\\text{nT})\\sin\\left[(1.05\\,\\text{rad m}^{-1})x - (3.14 \\times 10^{8}\\,\\text{rad s}^{-1})t\\right]\\hat{\\mathbf{k}}\\)\n\nThe two fields oscillate in phase with each other, are mutually perpendicular, and are both perpendicular to the direction of propagation. Any other choice of axes consistent with these conditions is equally acceptable."
+  },
+  {
+    "id": "a23ca251-844d-4816-913b-b132803eaf63",
+    "ref": "Ex 8.9",
+    "solution": "The energy of a photon is \\(E = h\\nu = \\dfrac{hc}{\\lambda}\\). Taking \\(h = 6.63 \\times 10^{-34}\\,\\text{J s}\\), \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\) and \\(1\\,\\text{eV} = 1.6 \\times 10^{-19}\\,\\text{J}\\), a wavelength of \\(1\\,\\text{m}\\) gives\n\n\\(E = \\dfrac{(6.63 \\times 10^{-34}\\,\\text{J s})(3 \\times 10^{8}\\,\\text{m s}^{-1})}{(1\\,\\text{m})(1.6 \\times 10^{-19}\\,\\text{J eV}^{-1})} = 1.24 \\times 10^{-6}\\,\\text{eV}\\)\n\nSince \\(E \\propto 1/\\lambda\\), every other region follows by scaling this figure by the appropriate power of ten. Taking one representative wavelength for each part of the spectrum:\n\n| Region | Typical \\(\\lambda\\) | Photon energy |\n|---|---|---|\n| Radio | \\(1\\,\\text{m}\\) | \\(1.24 \\times 10^{-6}\\,\\text{eV}\\) |\n| Microwave | \\(10^{-3}\\,\\text{m}\\) | \\(1.24 \\times 10^{-3}\\,\\text{eV}\\) |\n| Infrared | \\(10^{-5}\\,\\text{m}\\) | \\(0.124\\,\\text{eV}\\) |\n| Visible | \\(5 \\times 10^{-7}\\,\\text{m}\\) | \\(2.5\\,\\text{eV}\\) |\n| Ultraviolet | \\(10^{-8}\\,\\text{m}\\) | \\(124\\,\\text{eV}\\) |\n| X-rays | \\(10^{-10}\\,\\text{m}\\) | \\(1.24 \\times 10^{4}\\,\\text{eV}\\) |\n| Gamma rays | \\(10^{-12}\\,\\text{m}\\) | \\(1.24 \\times 10^{6}\\,\\text{eV}\\) |\n\nA photon is emitted when a system drops from one energy level to a lower one, so the photon energy measures the spacing between the levels of whatever produced it. That is how these scales connect to the sources.\n\nGamma-ray photons, of order \\(\\text{MeV}\\), match the spacing of nuclear energy levels, and are emitted by nuclei. X-ray photons, of order \\(\\text{keV}\\), match the binding energies of the inner-shell electrons of heavy atoms. Visible and ultraviolet photons, a few \\(\\text{eV}\\), match transitions of the outer, loosely bound atomic electrons. Infrared photons, around \\(0.1\\,\\text{eV}\\), match the vibrational and rotational energies of molecules — which is why infrared is absorbed so readily by water and carbon dioxide. Microwave and radio photons carry such minute energies that they are not produced by individual quantum jumps at all, but by the collective acceleration of very large numbers of electrons in a circuit or an aerial.\n\nSo the scale of photon energy identifies the kind of source: the smaller and more tightly bound the system, the more energetic the radiation it emits."
+  },
+  {
+    "id": "49507216-3c7d-4e71-868e-54cd44c05bea",
+    "ref": "Ex 8.10(a)",
+    "solution": "Using \\(\\nu\\lambda = c\\),\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}\\,\\text{m s}^{-1}}{2.0 \\times 10^{10}\\,\\text{Hz}} = 1.5 \\times 10^{-2}\\,\\text{m}\\)\n\n\\(\\lambda = 1.5 \\times 10^{-2}\\,\\text{m}\\), that is \\(1.5\\,\\text{cm}\\)."
+  },
+  {
+    "id": "ce9450a9-8b6b-4d73-be26-b313f5b5273c",
+    "ref": "Ex 8.10(b)",
+    "solution": "The field amplitudes in an electromagnetic wave are related by \\(B_0 = \\dfrac{E_0}{c}\\). With \\(E_0 = 48\\,\\text{V m}^{-1}\\) and \\(c = 3 \\times 10^{8}\\,\\text{m s}^{-1}\\):\n\n\\(B_0 = \\dfrac{48\\,\\text{V m}^{-1}}{3 \\times 10^{8}\\,\\text{m s}^{-1}} = 1.6 \\times 10^{-7}\\,\\text{T}\\)\n\n\\(B_0 = 1.6 \\times 10^{-7}\\,\\text{T}\\), that is \\(160\\,\\text{nT}\\)."
+  },
+  {
+    "id": "777042fe-8876-4680-a5ef-b67100b3ca7b",
+    "ref": "Ex 8.10(c)",
+    "solution": "The instantaneous energy densities stored in the two fields are\n\n\\(u_E = \\dfrac{1}{2}\\varepsilon_0 E^2\\) and \\(u_B = \\dfrac{B^2}{2\\mu_0}\\)\n\nFor a harmonic wave \\(E = E_0\\sin(kz - \\omega t)\\) and \\(B = B_0\\sin(kz - \\omega t)\\), and the average of \\(\\sin^2\\) over a full cycle is \\(\\dfrac{1}{2}\\). Hence\n\n\\(\\langle u_E \\rangle = \\dfrac{1}{4}\\varepsilon_0 E_0^2\\) and \\(\\langle u_B \\rangle = \\dfrac{B_0^2}{4\\mu_0}\\)\n\nNow substitute \\(B_0 = \\dfrac{E_0}{c}\\) and use \\(c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}}\\), so that \\(\\dfrac{1}{c^2} = \\mu_0\\varepsilon_0\\):\n\n\\(\\langle u_B \\rangle = \\dfrac{1}{4\\mu_0}\\left(\\dfrac{E_0}{c}\\right)^2 = \\dfrac{E_0^2}{4\\mu_0 c^2} = \\dfrac{\\mu_0\\varepsilon_0 E_0^2}{4\\mu_0} = \\dfrac{1}{4}\\varepsilon_0 E_0^2 = \\langle u_E \\rangle\\)\n\nThe two averages are therefore equal identically — the result holds for any amplitude and any frequency, so the energy carried by an electromagnetic wave is shared equally between its electric and its magnetic field.\n\nAs a numerical check with \\(E_0 = 48\\,\\text{V m}^{-1}\\) and \\(B_0 = 1.6 \\times 10^{-7}\\,\\text{T}\\):\n\n\\(\\langle u_E \\rangle = \\dfrac{1}{4}(8.854 \\times 10^{-12})(48)^2 = 5.1 \\times 10^{-9}\\,\\text{J m}^{-3}\\)\n\n\\(\\langle u_B \\rangle = \\dfrac{(1.6 \\times 10^{-7})^2}{4(4\\pi \\times 10^{-7})} = 5.1 \\times 10^{-9}\\,\\text{J m}^{-3}\\)\n\n\\(\\langle u_E \\rangle = \\langle u_B \\rangle = 5.1 \\times 10^{-9}\\,\\text{J m}^{-3}\\)."
+  }
+]

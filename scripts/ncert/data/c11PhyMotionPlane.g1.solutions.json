@@ -1,0 +1,112 @@
+[
+  {
+    "id": "0150f9e8-837b-4ef1-a997-53652c8f1027",
+    "ref": "Ex 3.1",
+    "solution": "A quantity is a vector only if it has a direction **and** its addition obeys the parallelogram (triangle) law; otherwise it is a scalar.\n\nSpeed is the magnitude of velocity and so is a scalar, while velocity itself is a vector. Angular frequency \\(\\omega = 2\\pi\\nu\\) is a rate of change of phase and is a scalar, whereas angular velocity is a vector directed along the axis of rotation by the right-hand rule.\n\n**Scalars — volume, mass, speed, density, number of moles, angular frequency.**\n\n**Vectors — acceleration, velocity, displacement, angular velocity.**"
+  },
+  {
+    "id": "b9ade68a-c111-438f-88d6-ced2b7f548e5",
+    "ref": "Ex 3.2",
+    "solution": "Force, angular momentum, linear momentum, electric field, average velocity and magnetic moment all have a direction and add by the parallelogram law, so all six are vectors.\n\nWork \\(W = \\mathbf{F}\\cdot\\mathbf{d}\\) is a dot product of two vectors, and a dot product is a scalar.\n\nElectric current is a scalar: although we speak of current flowing \"along\" a wire, currents meeting at a junction add algebraically (Kirchhoff's junction rule), not by the parallelogram law.\n\n**The two scalars are work and current.**"
+  },
+  {
+    "id": "ab7fa232-09a2-4bae-8ca3-888ffa5f523a",
+    "ref": "Ex 3.3",
+    "solution": "Temperature, pressure, time, power, total path length, energy, gravitational potential, coefficient of friction and charge are each specified completely by a magnitude with a unit, so all nine are scalars. (Pressure at a point in a fluid has no direction of its own; the force it exerts on a surface does.)\n\nImpulse is \\(\\mathbf{J} = \\mathbf{F}\\,\\Delta t\\) — a vector multiplied by a scalar — and equals the change in linear momentum \\(\\Delta\\mathbf{p}\\). It therefore has a direction and adds by the parallelogram law.\n\n**The only vector quantity is impulse.**"
+  },
+  {
+    "id": "8cbdb6b6-31dc-4812-a73a-115c5b7ea549",
+    "ref": "Ex 3.4(a)",
+    "solution": "Two scalars can be added only if they are scalars of the **same physical quantity**, that is, of the same dimensions. Adding a mass to a time, \\(2\\,\\text{kg} + 3\\,\\text{s}\\), has no meaning.\n\n**Not meaningful in general — adding two scalars is meaningful only if both have the same dimensions.**"
+  },
+  {
+    "id": "dca71f4c-5472-478d-bae6-bca2926d060b",
+    "ref": "Ex 3.4(b)",
+    "solution": "A scalar is fixed by a single number; a vector needs a magnitude and a direction. No rule assigns a direction to such a sum, so the operation is undefined even when the dimensions agree — adding a speed of \\(5\\,\\text{m s}^{-1}\\) to a velocity of \\(5\\,\\text{m s}^{-1}\\) due east yields nothing definable.\n\n**Not meaningful — a scalar can never be added to a vector, whatever their dimensions.**"
+  },
+  {
+    "id": "a62590f5-24c3-4117-978f-cfceb0666d22",
+    "ref": "Ex 3.4(c)",
+    "solution": "Multiplying a vector \\(\\mathbf{A}\\) by a scalar \\(\\lambda\\) is defined: \\(\\lambda\\mathbf{A}\\) has magnitude \\(|\\lambda|\\,|\\mathbf{A}|\\), keeps the direction of \\(\\mathbf{A}\\) if \\(\\lambda > 0\\) and reverses it if \\(\\lambda < 0\\). Its dimensions are the product of the two. For example, mass (scalar) times acceleration (vector) gives force (vector).\n\n**Meaningful — a vector may be multiplied by any scalar.**"
+  },
+  {
+    "id": "44a8bd1c-d4cb-4db8-abc7-e6027e702621",
+    "ref": "Ex 3.4(d)",
+    "solution": "The product of two scalars is a scalar whose dimensions are the product of the two, so no matching of dimensions is required. For example, mass times specific heat capacity gives heat capacity, and power times time gives energy.\n\n**Meaningful — any two scalars may be multiplied.**"
+  },
+  {
+    "id": "3176601d-0308-41fb-9f46-2ba3ed16017e",
+    "ref": "Ex 3.4(e)",
+    "solution": "Vector addition is defined geometrically by the triangle (parallelogram) law, but the two vectors must represent the **same physical quantity**, i.e. have the same dimensions. Adding a velocity to a force has no meaning even though both are vectors.\n\n**Not meaningful in general — two vectors can be added only if they have the same dimensions.**"
+  },
+  {
+    "id": "e2e3f7ce-70b0-45c1-8fba-a076360ea6b0",
+    "ref": "Ex 3.4(f)",
+    "solution": "[Textbook inconsistency between two entries of the same answer key. The printed key for Exercise 3.4 reads \"Only (c) and (d) are permissible\", which excludes THIS part — adding a component of a vector to the same vector. That exclusion only follows if \"component\" means the SCALAR coefficient \\(A_x\\), which would collapse this into case (b), adding a scalar to a vector. But the key for the very next question, Ex 3.5(b), marks \"each component of a vector is always a scalar\" as FALSE — i.e. a component IS a vector. Under that reading this operation adds a vector to another vector of the same dimensions and IS permissible. The chapter's own text agrees with the key's 3.5(b): §3.5 resolves \\(\\vec{A} = \\lambda\\vec{a} + \\mu\\vec{b}\\) and calls \\(\\lambda\\vec{a}\\), \\(\\mu\\vec{b}\\) the COMPONENT VECTORS, and Eq. (3.16b) writes \\(\\vec{A} = A_x\\hat{i} + A_y\\hat{j} + A_z\\hat{k}\\). The two key entries cannot both be right under one definition of \"component\"; the answer below follows the vector reading and says so.] A component of a vector is itself a **vector** (for instance \\(\\mathbf{A}_x = A_x\\hat{\\mathbf{i}}\\)), and it necessarily has the same dimensions as the parent vector. Two vectors of the same dimensions may be added, so the operation is defined:\n\n\\(\\mathbf{A} + A_x\\hat{\\mathbf{i}} = 2A_x\\hat{\\mathbf{i}} + A_y\\hat{\\mathbf{j}}\\)\n\n**Meaningful — a component of a vector is a vector of the same dimensions, so it can be added to the vector itself.**"
+  },
+  {
+    "id": "9e95dd67-7c41-4599-bc21-e9b10e2b8948",
+    "ref": "Ex 3.5(a)",
+    "solution": "The magnitude of a vector \\(\\mathbf{A}\\) is \\(|\\mathbf{A}| = \\sqrt{A_x^{2} + A_y^{2} + A_z^{2}}\\) — a single non-negative number with a unit and no direction of its own. It is also unchanged when the axes are rotated, which is the defining property of a scalar.\n\n**True.**"
+  },
+  {
+    "id": "29a8438e-a7c9-49f6-8dc6-8703c8384277",
+    "ref": "Ex 3.5(b)",
+    "solution": "Resolving \\(\\mathbf{A}\\) gives \\(\\mathbf{A} = A_x\\hat{\\mathbf{i}} + A_y\\hat{\\mathbf{j}}\\), and each **component vector** \\(A_x\\hat{\\mathbf{i}}\\) carries a direction, so it is a vector, not a scalar. The numbers \\(A_x\\) and \\(A_y\\) are merely the coefficients of the unit vectors, and they are not true scalars either: they change when the axes are rotated, whereas a genuine scalar does not.\n\n**False.**"
+  },
+  {
+    "id": "1ad84a52-5984-4627-83cb-6c8f26d541c5",
+    "ref": "Ex 3.5(c)",
+    "solution": "The displacement depends only on the end points, while the path length depends on the actual route followed. The two are equal only when the particle moves along a straight line without reversing direction; for a curved path, or for any motion that turns back, the path length is strictly greater. A particle that returns to its starting point has zero displacement but a non-zero path length.\n\nIn general, path length \\(\\ge |\\text{displacement}|\\).\n\n**False.**"
+  },
+  {
+    "id": "860db757-56e6-4347-b2ea-4574e765eea1",
+    "ref": "Ex 3.5(d)",
+    "solution": "Over the same interval \\(\\Delta t\\),\n\naverage speed \\(= \\dfrac{\\text{path length}}{\\Delta t}\\) and \\(|\\text{average velocity}| = \\dfrac{|\\text{displacement}|}{\\Delta t}\\)\n\nSince path length \\(\\ge |\\text{displacement}|\\) always, and both are divided by the same positive \\(\\Delta t\\), the average speed can never be less than the magnitude of the average velocity. The two are equal only when the motion is along a straight line in one direction.\n\n**True.**"
+  },
+  {
+    "id": "25f30f12-5289-4c3c-9e17-38c67402045f",
+    "ref": "Ex 3.5(e)",
+    "solution": "Suppose \\(\\mathbf{A} + \\mathbf{B} + \\mathbf{C} = 0\\). Then \\(\\mathbf{C} = -(\\mathbf{A} + \\mathbf{B})\\). But \\(\\mathbf{A} + \\mathbf{B}\\) lies in the plane containing \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\), so \\(\\mathbf{C}\\) lies in that same plane. Hence three vectors summing to zero must be coplanar; three vectors that do not lie in one plane cannot close into a triangle and so cannot add to a null vector.\n\n**True.**"
+  },
+  {
+    "id": "b5a45bad-f827-40b1-b565-1963fdaee8f8",
+    "ref": "Ex 3.6(a)",
+    "solution": "Let \\(|\\mathbf{a}| = a\\), \\(|\\mathbf{b}| = b\\) and let \\(\\theta\\) be the angle between them. Then\n\n\\(|\\mathbf{a}+\\mathbf{b}|^{2} = a^{2} + b^{2} + 2ab\\cos\\theta\\)\n\nSince \\(\\cos\\theta \\le 1\\),\n\n\\(|\\mathbf{a}+\\mathbf{b}|^{2} \\le a^{2} + b^{2} + 2ab = (a+b)^{2}\\)\n\nTaking the non-negative square root, \\(|\\mathbf{a}+\\mathbf{b}| \\le a + b\\).\n\nGeometrically \\(\\mathbf{a}\\), \\(\\mathbf{b}\\) and \\(\\mathbf{a}+\\mathbf{b}\\) form a triangle, and one side of a triangle can never exceed the sum of the other two.\n\n**Equality holds when \\(\\cos\\theta = 1\\), i.e. \\(\\theta = 0\\) — when \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) are parallel (same direction), so that the triangle collapses onto a straight line.**"
+  },
+  {
+    "id": "904df389-9420-4254-b3b1-82f1cea7898b",
+    "ref": "Ex 3.6(b)",
+    "solution": "With \\(|\\mathbf{a}| = a\\), \\(|\\mathbf{b}| = b\\) and \\(\\theta\\) the angle between them,\n\n\\(|\\mathbf{a}+\\mathbf{b}|^{2} = a^{2} + b^{2} + 2ab\\cos\\theta\\)\n\nSince \\(\\cos\\theta \\ge -1\\),\n\n\\(|\\mathbf{a}+\\mathbf{b}|^{2} \\ge a^{2} + b^{2} - 2ab = (a-b)^{2}\\)\n\nTaking the non-negative square root gives \\(|\\mathbf{a}+\\mathbf{b}| \\ge |a - b|\\), which is the required inequality.\n\nGeometrically, one side of a triangle can never be smaller than the difference of the other two.\n\n**Equality holds when \\(\\cos\\theta = -1\\), i.e. \\(\\theta = 180^{\\circ}\\) — when \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) are antiparallel.**"
+  },
+  {
+    "id": "42d379b7-20b0-4f90-a3f9-f3db23e475c9",
+    "ref": "Ex 3.6(c)",
+    "solution": "Write \\(\\mathbf{a}-\\mathbf{b} = \\mathbf{a} + (-\\mathbf{b})\\). With \\(|\\mathbf{a}| = a\\), \\(|\\mathbf{b}| = b\\) and \\(\\theta\\) the angle between \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\),\n\n\\(|\\mathbf{a}-\\mathbf{b}|^{2} = a^{2} + b^{2} - 2ab\\cos\\theta\\)\n\nSince \\(-\\cos\\theta \\le 1\\),\n\n\\(|\\mathbf{a}-\\mathbf{b}|^{2} \\le a^{2} + b^{2} + 2ab = (a+b)^{2}\\)\n\nso \\(|\\mathbf{a}-\\mathbf{b}| \\le a + b\\). This is just the triangle inequality applied to \\(\\mathbf{a}\\) and \\(-\\mathbf{b}\\), whose magnitude is also \\(b\\).\n\n**Equality holds when \\(\\cos\\theta = -1\\), i.e. \\(\\theta = 180^{\\circ}\\) — when \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) are antiparallel, so that \\(\\mathbf{a}\\) and \\(-\\mathbf{b}\\) point the same way.**"
+  },
+  {
+    "id": "766b546a-c42a-41c2-9f0e-15349ca4919a",
+    "ref": "Ex 3.6(d)",
+    "solution": "With \\(|\\mathbf{a}| = a\\), \\(|\\mathbf{b}| = b\\) and \\(\\theta\\) the angle between them,\n\n\\(|\\mathbf{a}-\\mathbf{b}|^{2} = a^{2} + b^{2} - 2ab\\cos\\theta\\)\n\nSince \\(\\cos\\theta \\le 1\\), the subtracted term is at most \\(2ab\\), so\n\n\\(|\\mathbf{a}-\\mathbf{b}|^{2} \\ge a^{2} + b^{2} - 2ab = (a-b)^{2}\\)\n\nTaking the non-negative square root, \\(|\\mathbf{a}-\\mathbf{b}| \\ge |a - b|\\).\n\n**Equality holds when \\(\\cos\\theta = 1\\), i.e. \\(\\theta = 0\\) — when \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) are parallel.**"
+  },
+  {
+    "id": "1bf99c13-3a05-4708-84a2-dfe98c4bb6d8",
+    "ref": "Ex 3.7(a)",
+    "solution": "The condition \\(\\mathbf{a}+\\mathbf{b}+\\mathbf{c}+\\mathbf{d} = 0\\) only requires the four vectors to form a **closed polygon** when drawn head to tail; it says nothing about their individual magnitudes.\n\nA counter-example settles it: the four sides of a square, taken in order round the perimeter, are non-zero vectors whose sum is zero. Equally \\(\\hat{\\mathbf{i}} + \\hat{\\mathbf{j}} - \\hat{\\mathbf{i}} - \\hat{\\mathbf{j}} = 0\\), with no null vector among the four.\n\n**Incorrect.**"
+  },
+  {
+    "id": "6a092691-d486-4821-bdaa-4a43b58c8ae6",
+    "ref": "Ex 3.7(b)",
+    "solution": "Rearranging the given condition,\n\n\\(\\mathbf{a} + \\mathbf{c} = -(\\mathbf{b} + \\mathbf{d})\\)\n\nTwo vectors that differ only by a factor of \\(-1\\) have the same length, so\n\n\\(|\\mathbf{a} + \\mathbf{c}| = |-(\\mathbf{b} + \\mathbf{d})| = |\\mathbf{b} + \\mathbf{d}|\\)\n\n**Correct.**"
+  },
+  {
+    "id": "2c2caad9-9cf8-40b4-8a98-dbfdba88150f",
+    "ref": "Ex 3.7(c)",
+    "solution": "From the given condition, \\(\\mathbf{a} = -(\\mathbf{b} + \\mathbf{c} + \\mathbf{d})\\), so\n\n\\(|\\mathbf{a}| = |\\mathbf{b} + \\mathbf{c} + \\mathbf{d}|\\)\n\nApplying the triangle inequality twice,\n\n\\(|\\mathbf{b} + \\mathbf{c} + \\mathbf{d}| \\le |\\mathbf{b}| + |\\mathbf{c} + \\mathbf{d}| \\le |\\mathbf{b}| + |\\mathbf{c}| + |\\mathbf{d}|\\)\n\nHence \\(|\\mathbf{a}| \\le |\\mathbf{b}| + |\\mathbf{c}| + |\\mathbf{d}|\\), so the magnitude of \\(\\mathbf{a}\\) can never exceed the sum of the other three magnitudes.\n\n**Correct.**"
+  },
+  {
+    "id": "c04c06a1-f3ba-4a96-be12-da3e411fc55b",
+    "ref": "Ex 3.7(d)",
+    "solution": "From the given condition,\n\n\\(\\mathbf{b} + \\mathbf{c} = -(\\mathbf{a} + \\mathbf{d})\\)\n\nIf \\(\\mathbf{a}\\) and \\(\\mathbf{d}\\) are not collinear, their sum \\(\\mathbf{a} + \\mathbf{d}\\) is the diagonal of the parallelogram built on them and so lies in the plane of \\(\\mathbf{a}\\) and \\(\\mathbf{d}\\). Reversing a vector does not take it out of its plane, so \\(\\mathbf{b} + \\mathbf{c}\\) lies in that same plane.\n\nIf \\(\\mathbf{a}\\) and \\(\\mathbf{d}\\) are collinear, \\(\\mathbf{a} + \\mathbf{d}\\) is directed along the same line, and therefore so is \\(\\mathbf{b} + \\mathbf{c}\\).\n\n**Correct.**"
+  }
+]

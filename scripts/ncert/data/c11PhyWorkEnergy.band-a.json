@@ -1,0 +1,67 @@
+[
+  {
+    "ref": "Eg 5.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work and Kinetic Energy",
+    "difficulty": "MODERATE",
+    "stem": "Find the angle between force \\(\\mathbf{F} = (3\\hat{\\mathbf{i}} + 4\\hat{\\mathbf{j}} - 5\\hat{\\mathbf{k}})\\) unit and displacement \\(\\mathbf{d} = (5\\hat{\\mathbf{i}} + 4\\hat{\\mathbf{j}} + 3\\hat{\\mathbf{k}})\\) unit. Also find the projection of \\(\\mathbf{F}\\) on \\(\\mathbf{d}\\).",
+    "solution": "[Textbook incompleteness: the question asks for TWO things — the angle between the force and the displacement, AND the projection of \\(\\vec{F}\\) on \\(\\vec{d}\\) — but the book's printed solution stops at \\(\\theta = \\cos^{-1}(0.32)\\) and never states the projection. It is \\(\\dfrac{\\vec{F}\\cdot\\vec{d}}{|\\vec{d}|} = \\dfrac{16}{\\sqrt{50}} \\approx 2.26\\) units, which the solution below supplies.] \\(\\mathbf{F}\\cdot\\mathbf{d} = F_x d_x + F_y d_y + F_z d_z = 3(5) + 4(4) + (-5)(3) = 16\\) unit\n\nHence \\(\\mathbf{F}\\cdot\\mathbf{d} = F\\,d\\cos\\theta = 16\\) unit\n\nNow \\(\\mathbf{F}\\cdot\\mathbf{F} = F^2 = F_x^2 + F_y^2 + F_z^2 = 9 + 16 + 25 = 50\\) unit\n\nand \\(\\mathbf{d}\\cdot\\mathbf{d} = d^2 = d_x^2 + d_y^2 + d_z^2 = 25 + 16 + 9 = 50\\) unit\n\n\\(\\therefore \\cos\\theta = \\dfrac{16}{\\sqrt{50}\\sqrt{50}} = \\dfrac{16}{50} = 0.32\\)\n\n\\(\\theta = \\cos^{-1} 0.32\\)",
+    "_note": "The question asks for TWO things — the angle AND the projection of F on d — but the book's printed Answer stops at \\(\\theta = \\cos^{-1}0.32\\) and never states the projection. (The projection is \\(F\\cos\\theta = \\mathbf{F}\\cdot\\mathbf{d}/d = 16/\\sqrt{50} \\approx 2.26\\) unit.) Transcribed exactly as printed."
+  },
+  {
+    "ref": "Eg 5.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work and Kinetic Energy",
+    "difficulty": "MODERATE",
+    "stem": "It is well known that a raindrop falls under the influence of the downward gravitational force and the opposing resistive force. The latter is known to be proportional to the speed of the drop but is otherwise undetermined. Consider a drop of mass \\(1.00\\,\\text{g}\\) falling from a height \\(1.00\\,\\text{km}\\). It hits the ground with a speed of \\(50.0\\,\\text{m s}^{-1}\\). (a) What is the work done by the gravitational force? What is the work done by the unknown resistive force?",
+    "solution": "(a) The change in kinetic energy of the drop is\n\n\\(\\Delta K = \\dfrac{1}{2}mv^2 - 0 = \\dfrac{1}{2}\\times 10^{-3}\\times 50\\times 50 = 1.25\\,\\text{J}\\)\n\nwhere we have assumed that the drop is initially at rest.\n\nAssuming that \\(g\\) is a constant with a value \\(10\\,\\text{m s}^{-2}\\), the work done by the gravitational force is\n\n\\(W_g = mgh = 10^{-3}\\times 10\\times 10^{3} = 10.0\\,\\text{J}\\)\n\n(b) From the work-energy theorem\n\n\\(\\Delta K = W_g + W_r\\)\n\nwhere \\(W_r\\) is the work done by the resistive force on the raindrop. Thus\n\n\\(W_r = \\Delta K - W_g = 1.25 - 10 = -8.75\\,\\text{J}\\)\n\nis negative.",
+    "_note": "The printed stem labels only ONE part, '(a)', yet asks two questions in it, and the printed Answer is split into (a) and (b). The '(b)' label is missing from the question as printed. Transcribed faithfully."
+  },
+  {
+    "ref": "Eg 5.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work and Kinetic Energy",
+    "difficulty": "MODERATE",
+    "stem": "A cyclist comes to a skidding stop in \\(10\\,\\text{m}\\). During this process, the force on the cycle due to the road is \\(200\\,\\text{N}\\) and is directly opposed to the motion. (a) How much work does the road do on the cycle? (b) How much work does the cycle do on the road?",
+    "solution": "Work done on the cycle by the road is the work done by the stopping (frictional) force on the cycle due to the road.\n\n(a) The stopping force and the displacement make an angle of \\(180^{\\circ}\\) (\\(\\pi\\) rad) with each other. Thus, work done by the road,\n\n\\(W_r = Fd\\cos\\theta = 200\\times 10\\times\\cos\\pi = -2000\\,\\text{J}\\)\n\nIt is this negative work that brings the cycle to a halt in accordance with the WE theorem.\n\n(b) From Newton's Third Law an equal and opposite force acts on the road due to the cycle. Its magnitude is \\(200\\,\\text{N}\\). However, the road undergoes no displacement. Thus, work done by cycle on the road is zero."
+  },
+  {
+    "ref": "Eg 5.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work and Kinetic Energy",
+    "difficulty": "MODERATE",
+    "stem": "In a ballistics demonstration a police officer fires a bullet of mass \\(50.0\\,\\text{g}\\) with speed \\(200\\,\\text{m s}^{-1}\\) (see Table 5.2) on soft plywood of thickness \\(2.00\\,\\text{cm}\\). The bullet emerges with only \\(10\\%\\) of its initial kinetic energy. What is the emergent speed of the bullet?",
+    "solution": "The initial kinetic energy of the bullet is \\(mv^2/2 = 1000\\,\\text{J}\\). It has a final kinetic energy of \\(0.1\\times 1000 = 100\\,\\text{J}\\). If \\(v_f\\) is the emergent speed of the bullet,\n\n\\(\\dfrac{1}{2}mv_f^2 = 100\\,\\text{J}\\)\n\n\\(v_f = \\sqrt{\\dfrac{2\\times 100\\,\\text{J}}{0.05\\,\\text{kg}}} = 63.2\\,\\text{m s}^{-1}\\)\n\nThe speed is reduced by approximately \\(68\\%\\) (not \\(90\\%\\))."
+  },
+  {
+    "ref": "Eg 5.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work Done by a Variable Force",
+    "difficulty": "MODERATE",
+    "stem": "A woman pushes a trunk on a railway platform which has a rough surface. She applies a force of \\(100\\,\\text{N}\\) over a distance of \\(10\\,\\text{m}\\). Thereafter, she gets progressively tired and her applied force reduces linearly with distance to \\(50\\,\\text{N}\\). The total distance through which the trunk has been moved is \\(20\\,\\text{m}\\). Plot the force applied by the woman and the frictional force, which is \\(50\\,\\text{N}\\) versus displacement. Calculate the work done by the two forces over \\(20\\,\\text{m}\\).",
+    "solution": "The plot of the applied force is shown in Fig. 5.4. At \\(x = 20\\,\\text{m}\\), \\(F = 50\\,\\text{N}\\) (\\(\\neq 0\\)). We are given that the frictional force \\(f\\) is \\(|f| = 50\\,\\text{N}\\). It opposes motion and acts in a direction opposite to \\(\\mathbf{F}\\). It is therefore shown on the negative side of the force axis.\n\nThe work done by the woman is\n\n\\(W_F \\rightarrow\\) area of the rectangle ABCD + area of the trapezium CEID\n\n\\(W_F = 100\\times 10 + \\dfrac{1}{2}(100 + 50)\\times 10 = 1000 + 750 = 1750\\,\\text{J}\\)\n\nThe work done by the frictional force is\n\n\\(W_f \\rightarrow\\) area of the rectangle AGHI\n\n\\(W_f = (-50)\\times 20 = -1000\\,\\text{J}\\)\n\nThe area on the negative side of the force axis has a negative sign."
+  },
+  {
+    "ref": "Eg 5.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Work Done by a Variable Force",
+    "difficulty": "HARD",
+    "stem": "A block of mass \\(m = 1\\,\\text{kg}\\), moving on a horizontal surface with speed \\(v_i = 2\\,\\text{m s}^{-1}\\) enters a rough patch ranging from \\(x = 0.10\\,\\text{m}\\) to \\(x = 2.01\\,\\text{m}\\). The retarding force \\(F_r\\) on the block in this range is inversely proportional to \\(x\\) over this range,\n\n\\(F_r = \\dfrac{-k}{x}\\) for \\(0.1 < x < 2.01\\,\\text{m}\\)\n\n\\(= 0\\) for \\(x < 0.1\\,\\text{m}\\) and \\(x > 2.01\\,\\text{m}\\)\n\nwhere \\(k = 0.5\\,\\text{J}\\). What is the final kinetic energy and speed \\(v_f\\) of the block as it crosses this patch?",
+    "solution": "From Eq. (5.8a)\n\n\\(K_f = K_i + \\displaystyle\\int_{0.1}^{2.01}\\dfrac{(-k)}{x}\\,\\mathrm{d}x\\)\n\n\\(= \\dfrac{1}{2}mv_i^2 - k\\ln(x)\\Big|_{0.1}^{2.01}\\)\n\n\\(= \\dfrac{1}{2}mv_i^2 - k\\ln(2.01/0.1)\\)\n\n\\(= 2 - 0.5\\ln(20.1)\\)\n\n\\(= 2 - 1.5 = 0.5\\,\\text{J}\\)\n\n\\(v_f = \\sqrt{2K_f/m} = 1\\,\\text{m s}^{-1}\\)\n\nHere, note that \\(\\ln\\) is a symbol for the natural logarithm to the base \\(e\\) and not the logarithm to the base 10 \\([\\ln X = \\log_e X = 2.303\\log_{10} X]\\)."
+  },
+  {
+    "ref": "Eg 5.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Potential Energy and Conservation of Mechanical Energy",
+    "difficulty": "HARD",
+    "stem": "A bob of mass \\(m\\) is suspended by a light string of length \\(L\\). It is imparted a horizontal velocity \\(v_o\\) at the lowest point A such that it completes a semi-circular trajectory in the vertical plane with the string becoming slack only on reaching the topmost point, C. This is shown in Fig. 5.6. Obtain an expression for (i) \\(v_o\\); (ii) the speeds at points B and C; (iii) the ratio of the kinetic energies \\((K_B/K_C)\\) at B and C. Comment on the nature of the trajectory of the bob after it reaches the point C.",
+    "solution": "(i) There are two external forces on the bob: gravity and the tension \\(T\\) in the string. The latter does no work since the displacement of the bob is always normal to the string. The potential energy of the bob is thus associated with the gravitational force only. The total mechanical energy \\(E\\) of the system is conserved. We take the potential energy of the system to be zero at the lowest point A. Thus, at A:\n\n\\(E = \\dfrac{1}{2}mv_0^2\\)\n\n\\(T_A - mg = \\dfrac{mv_0^2}{L}\\) [Newton's Second Law]\n\nwhere \\(T_A\\) is the tension in the string at A. At the highest point C, the string slackens, as the tension in the string \\(T_C\\) becomes zero. Thus, at C\n\n\\(E = \\dfrac{1}{2}mv_c^2 + 2mgL\\)\n\n\\(mg = \\dfrac{mv_c^2}{L}\\) [Newton's Second Law]\n\nwhere \\(v_C\\) is the speed at C. From these two relations,\n\n\\(E = \\dfrac{5}{2}mgL\\)\n\nEquating this to the energy at A\n\n\\(\\dfrac{5}{2}mgL = \\dfrac{m}{2}v_0^2\\) or \\(v_0 = \\sqrt{5gL}\\)\n\n(ii) It is clear from Newton's Second Law at C that \\(v_C = \\sqrt{gL}\\).\n\nAt B, the energy is \\(E = \\dfrac{1}{2}mv_B^2 + mgL\\)\n\nEquating this to the energy at A and employing the result from (i), namely \\(v_0^2 = 5gL\\),\n\n\\(\\dfrac{1}{2}mv_B^2 + mgL = \\dfrac{1}{2}mv_0^2 = \\dfrac{5}{2}mgL\\)\n\n\\(\\therefore v_B = \\sqrt{3gL}\\)\n\n(iii) The ratio of the kinetic energies at B and C is\n\n\\(\\dfrac{K_B}{K_C} = \\dfrac{\\frac{1}{2}mv_B^2}{\\frac{1}{2}mv_C^2} = \\dfrac{3}{1}\\)\n\nAt point C, the string becomes slack and the velocity of the bob is horizontal and to the left. If the connecting string is cut at this instant, the bob will execute a projectile motion with horizontal projection akin to a rock kicked horizontally from the edge of a cliff. Otherwise the bob will continue on its circular path and complete the revolution."
+  }
+]

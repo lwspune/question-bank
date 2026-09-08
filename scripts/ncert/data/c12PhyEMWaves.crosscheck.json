@@ -1,0 +1,121 @@
+[
+  {
+    "ref": "Ex 8.1(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "C = 8.0 pF; dV/dt = 1.87 x 10^10 V s^-1",
+    "keyAnswer": "C = eps0*A/d = 8.00 pF; dV/dt = 0.15/(8 x 10^-12) = 1.87 x 10^10 V s^-1",
+    "note": "Independent recomputation from the stem alone: A = pi(0.12)^2 = 4.5239e-2 m^2, C = eps0*A/d = 8.011e-12 F, dV/dt = i/C = 1.8724e10 V/s. Both sides round to 8.0 pF and 1.87e10 V/s. Worth recording that the key's own two printed figures are not quite self-consistent: 0.15/(8.00e-12) is 1.875e10, which would round to 1.88e10, so the key evidently divided by the UNROUNDED 8.011 pF while displaying the rounded 8.00 pF. 1.87e10 is the more accurate value and is what we give, so this is a presentation quirk rather than an error on either side (0.4% apart, inside the rounding tolerance)."
+  },
+  {
+    "ref": "Ex 8.1(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "i_d = i = 0.15 A",
+    "keyAnswer": "i_d = i = 0.15 A",
+    "note": "Same derivation on both sides: Phi_E = EA = Q/eps0 between the plates, so i_d = eps0 dPhi_E/dt = dQ/dt = i. The key routes it via i_d = eps0*A*dE/dt with dE/dt = i/(eps0*A), which is the identical algebra."
+  },
+  {
+    "ref": "Ex 8.1(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "Yes, provided 'current' means the total current, i.e. conduction plus displacement. The conduction current i arriving at a plate is continued across the gap by the displacement current i_d = i, so total current in equals total current out.",
+    "keyAnswer": "Yes, provided by 'current' we mean the sum of conduction and displacement currents.",
+    "note": "Conceptual; identical claim and identical proviso. Ours adds why the rule would appear to fail on conduction current alone."
+  },
+  {
+    "ref": "Ex 8.2(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "I_rms = 6.9 microA",
+    "keyAnswer": "I_rms = V_rms * omega * C = 6.9 microA",
+    "note": "Recomputed independently: 230 x 300 x 100e-12 = 6.90e-6 A exactly. Same formula, same value."
+  },
+  {
+    "ref": "Ex 8.2(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "Yes - i_d = i holds at every instant, so the two are equal instant by instant and hence in rms value.",
+    "keyAnswer": "Yes. The derivation in Exercise 8.1(b) is true even if i is oscillating in time.",
+    "note": "Same reasoning: the 8.1(b) derivation never assumed a steady current. Ours makes the rms step explicit."
+  },
+  {
+    "ref": "Ex 8.2(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "B_0 = 1.63 x 10^-11 T",
+    "keyAnswer": "B_0 = (mu0/2pi)(r/R^2) i_0 with i_0 = sqrt(2) I_rms = 9.76 microA; for r = 3 cm, R = 6 cm, B_0 = 1.63 x 10^-11 T",
+    "note": "Derived independently from Ampere-Maxwell: only the enclosed fraction (r^2/R^2) of the displacement current threads a loop of radius r < R, giving B = (mu0/2pi)(r/R^2) i_d. Recomputed: i_0 = sqrt(2)(6.9e-6) = 9.7581e-6 A; B_0 = 2e-7 x (0.03/0.0036) x 9.7581e-6 = 1.6263e-11 T. Matches the key to 3 significant figures."
+  },
+  {
+    "ref": "Ex 8.3",
+    "verdict": "AGREE",
+    "ourAnswer": "The speed in vacuum, c = 3 x 10^8 m s^-1",
+    "keyAnswer": "The speed in vacuum is the same for all: c = 3 x 10^8 m s^-1",
+    "note": "Identical."
+  },
+  {
+    "ref": "Ex 8.4",
+    "verdict": "AGREE",
+    "ourAnswer": "E and B both lie in the x-y plane and are mutually perpendicular; lambda = 10 m",
+    "keyAnswer": "E and B in x-y plane and are mutually perpendicular, 10 m",
+    "note": "Identical on both halves. lambda = c/nu = 3e8/30e6 = 10 m, recomputed."
+  },
+  {
+    "ref": "Ex 8.5",
+    "verdict": "AGREE",
+    "ourAnswer": "40 m to 25 m",
+    "keyAnswer": "Wavelength band: 40 m - 25 m",
+    "note": "Recomputed: 3e8/7.5e6 = 40 m and 3e8/12e6 = 25 m exactly. Same band, same order (the higher frequency giving the shorter wavelength)."
+  },
+  {
+    "ref": "Ex 8.6",
+    "verdict": "AGREE",
+    "ourAnswer": "10^9 Hz",
+    "keyAnswer": "10^9 Hz",
+    "note": "Identical. The radiated frequency equals the oscillation frequency of the source charge."
+  },
+  {
+    "ref": "Ex 8.7",
+    "verdict": "AGREE",
+    "ourAnswer": "E_0 = 153 N C^-1 (= 153 V m^-1)",
+    "keyAnswer": "153 N/C",
+    "note": "Recomputed: E_0 = c*B_0 = 3e8 x 510e-9 = 153.0 N/C exactly. Unit matches."
+  },
+  {
+    "ref": "Ex 8.8(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "B_0 = 400 nT; omega = 3.14 x 10^8 rad s^-1; k = 1.05 rad m^-1; lambda = 6.00 m",
+    "keyAnswer": "400 nT, 3.14 x 10^8 rad/s, 1.05 rad/m, 6.00 m",
+    "note": "All four recomputed independently: B_0 = 120/3e8 = 4.0e-7 T; omega = 2pi(50e6) = 3.1416e8 rad/s; k = omega/c = 1.0472 rad/m; lambda = c/nu = 6.00 m. Cross-checked by a second route, k = 2pi/lambda = 1.0472 rad/m, which agrees. All four match the key, in the same order."
+  },
+  {
+    "ref": "Ex 8.8(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "E = (120 N/C) sin[(1.05 rad/m)x - (3.14 x 10^8 rad/s)t] j-hat ; B = (400 nT) sin[(1.05 rad/m)x - (3.14 x 10^8 rad/s)t] k-hat",
+    "keyAnswer": "E = {(120 N/C) sin[(1.05 rad/m)]x - (3.14 x 10^8 rad/s)t]} j-hat ; B = {(400 nT) sin[(1.05 rad/m)]x - (3.14 x 10^8 rad/s)t]} k-hat",
+    "note": "Same expressions, same amplitudes, same axes (propagation along x, E along y, B along z). PRINTED DEFECT IN THE KEY, not affecting the answer: the key sets a stray closing bracket immediately after '(1.05 rad/m)' so its argument reads 'sin[(1.05 rad/m)]x - ...t]' - brackets that do not balance. The intended argument is unambiguous ('sin[(1.05 rad/m)x - (3.14e8 rad/s)t]') and is what we print. Classified AGREE rather than BOOK-KEY-WRONG because the physics and every number are correct; only the bracket placement is mis-set. Note also that the stem fixes no propagation direction, so the choice of axes is free - any triad with E x B along the propagation direction is equally correct, and our solution says so."
+  },
+  {
+    "ref": "Ex 8.9",
+    "verdict": "AGREE",
+    "ourAnswer": "For lambda = 1 m, E = hc/lambda = 1.24 x 10^-6 eV; scaling as 1/lambda gives ~1.24e-3 eV (microwave), ~0.124 eV (infrared), ~2.5 eV (visible), ~124 eV (UV), ~1.24e4 eV (X-ray), ~1.24e6 eV (gamma). The photon energy measures the spacing of the energy levels of the source: MeV for nuclear transitions, keV for inner-shell electrons, a few eV for outer atomic electrons, ~0.1 eV for molecular vibration/rotation, and radio/microwave energies too small for individual quantum jumps (collective electron acceleration in a circuit or aerial).",
+    "keyAnswer": "Photon energy (for lambda = 1 m) = (6.63e-34 x 3e8)/(1.6e-19) eV = 1.24 x 10^-6 eV. Other wavelengths obtained by multiplying approximate powers of ten. Energy of a photon that a source produces indicates the spacings of the relevant energy levels of the source - e.g. lambda = 1e-12 m gives 1.24 MeV, indicating nuclear energy levels are spaced by ~1 MeV; a visible lambda = 5e-7 m gives 2.5 eV, so those energy levels are spaced by a few eV.",
+    "note": "Anchor value recomputed independently: (6.63e-34 x 3e8)/1.6e-19 = 1.243e-6 eV, matching. Both of the key's worked spot-values are reproduced by our table to 3 significant figures (gamma at 1e-12 m -> 1.24e6 eV = 1.24 MeV; visible at 5e-7 m -> 2.49 eV, printed 2.5 eV). The qualitative conclusion is the same on both sides; ours enumerates every region rather than two, which the question asks for."
+  },
+  {
+    "ref": "Ex 8.10(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "lambda = 1.5 x 10^-2 m (1.5 cm)",
+    "keyAnswer": "lambda = (c/nu) = 1.5 x 10^-2 m",
+    "note": "Recomputed: 3e8/2.0e10 = 1.5e-2 m exactly."
+  },
+  {
+    "ref": "Ex 8.10(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "B_0 = 1.6 x 10^-7 T (160 nT)",
+    "keyAnswer": "B_0 = (E_0/c) = 1.6 x 10^-7 T",
+    "note": "Recomputed: 48/3e8 = 1.6e-7 T exactly."
+  },
+  {
+    "ref": "Ex 8.10(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "<u_E> = (1/4)eps0*E_0^2 and <u_B> = B_0^2/(4 mu0); substituting B_0 = E_0/c and 1/c^2 = mu0*eps0 gives <u_B> = (1/4)eps0*E_0^2 = <u_E>. Numerically both are 5.1 x 10^-9 J m^-3.",
+    "keyAnswer": "Energy density in E field: u_E = (1/2)eps0*E^2; energy density in B field: u_B = (1/2 mu0)B^2. Using E = cB and c = 1/sqrt(mu0 eps0), u_E = u_B.",
+    "note": "Same result by the same substitution. One difference in completeness rather than correctness: the question asks about the AVERAGE energy density, and the key argues with the INSTANTANEOUS densities. The conclusion carries over because both averages pick up the same factor <sin^2> = 1/2, but the key does not say so; our solution performs the time-average explicitly and then substitutes. Not scored as a defect - the key's identity is true instant by instant, which is the stronger statement."
+  }
+]

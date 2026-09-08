@@ -1,0 +1,93 @@
+[
+  {
+    "ref": "Ex 12.1",
+    "verdict": "AGREE",
+    "ourAnswer": "fraction = 3.8e-4",
+    "keyAnswer": "4 x 10^-4",
+    "note": "The key prints ONE significant figure and the question says 'Estimate'. Our 3.80e-4 rounds to 4e-4 at 1 s.f. Reproduced independently: (4/3)pi(1.5e-10)^3 = 1.414e-29 m^3 per molecule, x N_A = 8.51e-6 m^3 per mole, / 22.4e-3 m^3 = 3.80e-4. Insensitive to N_A: 6.0e23 gives 3.79e-4."
+  },
+  {
+    "ref": "Ex 12.2",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "V = RT/P = 22.4 litre at STP",
+    "keyAnswer": "(none)",
+    "note": "The key jumps 12.1 -> 12.3; there is no 12.2 entry under the CHAPTER 12 heading. Expected, not a defect: this is a 'Show that' derivation whose target value (22.4 litres) is already stated in the question, so there is nothing for the key to print."
+  },
+  {
+    "ref": "Ex 12.3(a)",
+    "verdict": "AGREE",
+    "ourAnswer": "Ideal-gas behaviour: PV/T constant at mu*R = 0.26 J K^-1, independent of P",
+    "keyAnswer": "(a) The dotted plot corresponds to 'ideal' gas behaviour",
+    "note": "Same verdict. Ours additionally states the constant's value, which the key gives separately in part (c)."
+  },
+  {
+    "ref": "Ex 12.3(b)",
+    "verdict": "AGREE",
+    "ourAnswer": "T1 > T2",
+    "keyAnswer": "(b) T1 > T2",
+    "note": "Verbatim match. Independently supported by the cropped figure itself: the curve labelled T1 stays nearer the horizontal ideal-gas line, and a real gas is closer to ideal at the HIGHER temperature."
+  },
+  {
+    "ref": "Ex 12.3(c)",
+    "verdict": "AGREE",
+    "ourAnswer": "PV/T = 0.26 J K^-1",
+    "keyAnswer": "(c) 0.26 J K^-1",
+    "note": "Verbatim match. mu = 1.00e-3/32.0e-3 = 3.125e-2 mol; mu*R = 3.125e-2 x 8.31 = 0.2597 J K^-1."
+  },
+  {
+    "ref": "Ex 12.3(d)",
+    "verdict": "AGREE",
+    "ourAnswer": "No; 6.3e-5 kg of H2 gives the same intercept",
+    "keyAnswer": "(d) No, 6.3 x 10^-5 kg of H2 would yield the same value",
+    "note": "Verbatim match. m_H2 = m_O2 x (2.02/32.0) = 1.00 g x 0.0631 = 6.31e-2 g = 6.3e-5 kg."
+  },
+  {
+    "ref": "Ex 12.4",
+    "verdict": "AGREE",
+    "ourAnswer": "0.14 kg (139.9 g)",
+    "keyAnswer": "0.14 kg",
+    "note": "Agrees, and the agreement is robust to the one ambiguity in the stem. Treating 15/11 atm as GAUGE (absolute 16/12 atm) gives 19.50 - 15.13 = 4.37 mol = 139.9 g; treating them as ABSOLUTE gives 18.29 - 13.87 = 4.42 mol = 141.3 g. Both are 0.14 kg to two significant figures, so the key does not discriminate between the two readings."
+  },
+  {
+    "ref": "Ex 12.5",
+    "verdict": "AGREE",
+    "ourAnswer": "5.3 cm^3 = 5.3e-6 m^3",
+    "keyAnswer": "5.3 x 10^-6 m^3",
+    "note": "Same value, correctly converted (1 cm^3 = 1e-6 m^3). P1 = 1.01e5 + 1000x9.8x40 = 4.93e5 Pa; V2 = 1.0 x (4.93/1.01) x (308/285) = 5.28 cm^3."
+  },
+  {
+    "ref": "Ex 12.6",
+    "verdict": "AGREE",
+    "ourAnswer": "6.1e26 molecules",
+    "keyAnswer": "6.10 x 10^26",
+    "note": "N = PV/(k_B T) = (1.01e5 x 25.0)/(1.38e-23 x 300) = 6.099e26."
+  },
+  {
+    "ref": "Ex 12.7",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 6.21e-21 J (ii) 1.24e-19 J (iii) 2.07e-16 J",
+    "keyAnswer": "(a) 6.2 x 10^-21 J (b) 1.24 x 10^-19 J (c) 2.1 x 10^-16 J",
+    "note": "All three agree to the key's stated precision (6.21 vs 6.2; 1.24 vs 1.24; 2.07 vs 2.1). Note only that the key labels the three parts (a)(b)(c) while the question prints them (i)(ii)(iii) - a labelling mismatch, not an answer difference."
+  },
+  {
+    "ref": "Ex 12.8",
+    "verdict": "AGREE",
+    "ourAnswer": "Yes, equal numbers (Avogadro); no, v_rms differs; largest for neon",
+    "keyAnswer": "Yes, according to Avogadro's law. No, v_rms is largest for the lightest of the three gases; neon.",
+    "note": "Same on all three sub-questions, and for the same stated reason (v_rms proportional to 1/sqrt(m); Ne 20.2 u vs Cl2 70.9 u vs UF6 352 u)."
+  },
+  {
+    "ref": "Ex 12.9",
+    "verdict": "AGREE",
+    "ourAnswer": "2.52e3 K",
+    "keyAnswer": "2.52 x 10^3 K",
+    "note": "Verbatim match. T_Ar = 253 x (39.9/4.0) = 2523.7 K. The result is a pure ratio, so it does not depend on R."
+  },
+  {
+    "ref": "Ex 12.10",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "l = 1.11e-7 m; collision frequency nu = 4.6e9 s^-1 (n = 5.06e25 m^-3, v_rms = 508 m/s, t_coll = 3.9e-13 s, t_free = 2.2e-10 s, ratio ~556)",
+    "keyAnswer": "N/V = 5.10e25 m^-3; l = 1.0e-7 m; v_rms = 5.1e2 m/s; collisional frequency = 5.1e9 s^-1; t_coll = 4e-13 s; t_free = 2e-10 s; ratio 500",
+    "note": "THE KEY CONTRADICTS ITSELF, which is the decisive evidence here and needs neither our arithmetic nor an assumed slip. Substituting the key's OWN printed number density n = 5.10e25 m^-3 and the stem's d = 2r = 2.0e-10 m into the key's OWN printed formula l = 1/(sqrt(2) pi n d^2) gives l = 1.103e-7 m, not the 1.0e-7 m it prints alongside - low by 9.4%, and 1.10 does not round to 1.0 at the two significant figures the key itself writes. Our own n = 5.06e25 gives l = 1.112e-7 m, i.e. the two independent routes agree with each other and disagree with the print. SECOND ROUTE: the key's collision frequency is reproduced EXACTLY by its own error - v_rms/l = 508/1.0e-7 = 5.08e9, matching its printed 5.1e9 - so nu is not an independent second mistake, it simply inherits the low l; with the correct l it is 4.57e9 s^-1. MECHANISM UNCONFIRMED, and stated as such rather than asserted: dropping the sqrt(2) gives 1.56e-7, dropping pi gives 3.47e-7, using sqrt(2pi) gives 1.96e-7 and using d = 1.0 A gives 4.41e-7 - none reproduces 1.0e-7. Only d = 2.1 A does (1.001e-7), which the stem contradicts. EVERYTHING ELSE IN THIS ENTRY AGREES: n (5.06 vs 5.10e25), v_rms (508 vs 510 m/s), t_coll (3.9 vs 4e-13 s), t_free (2.2 vs 2e-10 s) and the headline conclusion that free flight lasts about 500 times a collision (ours 556). So the defect is confined to l and to the nu derived from it."
+  }
+]

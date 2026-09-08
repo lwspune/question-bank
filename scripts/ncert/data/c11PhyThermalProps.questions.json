@@ -1,0 +1,301 @@
+[
+  {
+    "ref": "Eg 10.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Show that the coefficient of area expansion, \\((\\Delta A/A)/\\Delta T\\), of a rectangular sheet of the solid is twice its linear expansivity, \\(\\alpha_l\\).",
+    "solution": "Consider a rectangular sheet of the solid material of length \\(a\\) and breadth \\(b\\) (Fig. 10.8). When the temperature increases by \\(\\Delta T\\), \\(a\\) increases by \\(\\Delta a = \\alpha_l a \\Delta T\\) and \\(b\\) increases by \\(\\Delta b = \\alpha_l b \\Delta T\\).\n\nFrom Fig. 10.8, the increase in area is\n\\(\\Delta A = \\Delta A_1 + \\Delta A_2 + \\Delta A_3\\)\n\\(\\Delta A = a\\,\\Delta b + b\\,\\Delta a + (\\Delta a)(\\Delta b)\\)\n\\(= a\\,\\alpha_l b\\,\\Delta T + b\\,\\alpha_l a\\,\\Delta T + (\\alpha_l)^2 ab\\,(\\Delta T)^2\\)\n\\(= \\alpha_l ab\\,\\Delta T\\,(2 + \\alpha_l \\Delta T) = \\alpha_l A\\,\\Delta T\\,(2 + \\alpha_l \\Delta T)\\)\n\nSince \\(\\alpha_l \\simeq 10^{-5}\\,\\text{K}^{-1}\\), from Table 10.1, the product \\(\\alpha_l \\Delta T\\) is small in comparison with 2 and may be neglected. Hence,\n\\(\\left(\\dfrac{\\Delta A}{A}\\right)\\dfrac{1}{\\Delta T} \\simeq 2\\alpha_l\\)"
+  },
+  {
+    "ref": "Eg 10.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A blacksmith fixes iron ring on the rim of the wooden wheel of a horse cart. The diameter of the rim and the iron ring are \\(5.243\\,\\text{m}\\) and \\(5.231\\,\\text{m}\\), respectively at \\(27\\,^\\circ\\text{C}\\). To what temperature should the ring be heated so as to fit the rim of the wheel?",
+    "solution": "Given, \\(T_1 = 27\\,^\\circ\\text{C}\\), \\(L_{T_1} = 5.231\\,\\text{m}\\), \\(L_{T_2} = 5.243\\,\\text{m}\\).\n\nSo, \\(L_{T_2} = L_{T_1}\\,[1 + \\alpha_l (T_2 - T_1)]\\)\n\n\\(5.243\\,\\text{m} = 5.231\\,\\text{m}\\,[1 + 1.20 \\times 10^{-5}\\,\\text{K}^{-1}\\,(T_2 - 27\\,^\\circ\\text{C})]\\)\n\nor \\(T_2 = 218\\,^\\circ\\text{C}\\).",
+    "_note": "The book's printed working sets the coefficient as \"1.20 10–5 K–1\" with the multiplication sign dropped by the typesetter; transcribed with the \\(\\times\\) restored. The value and the printed answer are unaffected."
+  },
+  {
+    "ref": "Eg 10.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Calorimetry",
+    "difficulty": "MODERATE",
+    "stem": "A sphere of \\(0.047\\,\\text{kg}\\) aluminium is placed for sufficient time in a vessel containing boiling water, so that the sphere is at \\(100\\,^\\circ\\text{C}\\). It is then immediately transfered to \\(0.14\\,\\text{kg}\\) copper calorimeter containing \\(0.25\\,\\text{kg}\\) water at \\(20\\,^\\circ\\text{C}\\). The temperature of water rises and attains a steady state at \\(23\\,^\\circ\\text{C}\\). Calculate the specific heat capacity of aluminium.",
+    "solution": "In solving this example, we shall use the fact that at a steady state, heat given by an aluminium sphere will be equal to the heat absorbed by the water and calorimeter.\n\nMass of aluminium sphere \\((m_1) = 0.047\\,\\text{kg}\\)\nInitial temperature of aluminium sphere \\(= 100\\,^\\circ\\text{C}\\)\nFinal temperature \\(= 23\\,^\\circ\\text{C}\\)\nChange in temperature \\((\\Delta T) = (100\\,^\\circ\\text{C} - 23\\,^\\circ\\text{C}) = 77\\,^\\circ\\text{C}\\)\n\nLet the specific heat capacity of aluminium be \\(s_{Al}\\). The amount of heat lost by the aluminium sphere \\(= m_1 s_{Al} \\Delta T = 0.047\\,\\text{kg} \\times s_{Al} \\times 77\\,^\\circ\\text{C}\\).\n\nMass of water \\((m_2) = 0.25\\,\\text{kg}\\)\nMass of calorimeter \\((m_3) = 0.14\\,\\text{kg}\\)\nInitial temperature of water and calorimeter \\(= 20\\,^\\circ\\text{C}\\)\nFinal temperature of the mixture \\(= 23\\,^\\circ\\text{C}\\)\nChange in temperature \\((\\Delta T_2) = 23\\,^\\circ\\text{C} - 20\\,^\\circ\\text{C} = 3\\,^\\circ\\text{C}\\)\nSpecific heat capacity of water \\((s_w) = 4.18 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\)\nSpecific heat capacity of copper calorimeter \\((s_{cu}) = 0.386 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\)\n\nThe amount of heat gained by water and calorimeter \\(= m_2 s_w \\Delta T_2 + m_3 s_{cu} \\Delta T_2 = (m_2 s_w + m_3 s_{cu})(\\Delta T_2)\\).\n\nIn the steady state, heat lost by the aluminium sphere = heat gained by water + heat gained by calorimeter. So,\n\n\\(0.047\\,\\text{kg} \\times s_{Al} \\times 77\\,^\\circ\\text{C} = (0.25\\,\\text{kg} \\times 4.18 \\times 10^{3}\\,\\text{J kg}^{-1}\\text{K}^{-1} + 0.14\\,\\text{kg} \\times 0.386 \\times 10^{3}\\,\\text{J kg}^{-1}\\text{K}^{-1})(3\\,^\\circ\\text{C})\\)\n\n\\(s_{Al} = 0.911\\,\\text{kJ kg}^{-1}\\,\\text{K}^{-1}\\)"
+  },
+  {
+    "ref": "Eg 10.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "MODERATE",
+    "stem": "When \\(0.15\\,\\text{kg}\\) of ice at \\(0\\,^\\circ\\text{C}\\) is mixed with \\(0.30\\,\\text{kg}\\) of water at \\(50\\,^\\circ\\text{C}\\) in a container, the resulting temperature is \\(6.7\\,^\\circ\\text{C}\\). Calculate the heat of fusion of ice. \\((s_{\\text{water}} = 4186\\,\\text{J kg}^{-1}\\,\\text{K}^{-1})\\)",
+    "solution": "Heat lost by water \\(= m s_w (\\theta_f - \\theta_i)_w\\)\n\\(= (0.30\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(50.0\\,^\\circ\\text{C} - 6.7\\,^\\circ\\text{C})\\)\n\\(= 54376.14\\,\\text{J}\\)\n\nHeat required to melt ice \\(= m_2 L_f = (0.15\\,\\text{kg})\\,L_f\\)\n\nHeat required to raise temperature of ice water to final temperature \\(= m_I s_w (\\theta_f - \\theta_i)_I\\)\n\\(= (0.15\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(6.7\\,^\\circ\\text{C} - 0\\,^\\circ\\text{C})\\)\n\\(= 4206.93\\,\\text{J}\\)\n\nHeat lost = heat gained\n\\(54376.14\\,\\text{J} = (0.15\\,\\text{kg})\\,L_f + 4206.93\\,\\text{J}\\)\n\n\\(L_f = 3.34 \\times 10^{5}\\,\\text{J kg}^{-1}\\)",
+    "_note": "The book's printed final line reads \"3.34 10⁵ J kg–1\" with the multiplication sign dropped by the typesetter; transcribed with the \\(\\times\\) restored."
+  },
+  {
+    "ref": "Eg 10.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the heat required to convert \\(3\\,\\text{kg}\\) of ice at \\(-12\\,^\\circ\\text{C}\\) kept in a calorimeter to steam at \\(100\\,^\\circ\\text{C}\\) at atmospheric pressure. Given specific heat capacity of ice \\(= 2100\\,\\text{J kg}^{-1}\\text{K}^{-1}\\), specific heat capacity of water \\(= 4186\\,\\text{J kg}^{-1}\\text{K}^{-1}\\), latent heat of fusion of ice \\(= 3.35 \\times 10^{5}\\,\\text{J kg}^{-1}\\) and latent heat of steam \\(= 2.256 \\times 10^{6}\\,\\text{J kg}^{-1}\\).",
+    "solution": "We have\nMass of the ice, \\(m = 3\\,\\text{kg}\\)\nSpecific heat capacity of ice, \\(s_{\\text{ice}} = 2100\\,\\text{J kg}^{-1}\\text{K}^{-1}\\)\nSpecific heat capacity of water, \\(s_{\\text{water}} = 4186\\,\\text{J kg}^{-1}\\text{K}^{-1}\\)\nLatent heat of fusion of ice, \\(L_{f\\,\\text{ice}} = 3.35 \\times 10^{5}\\,\\text{J kg}^{-1}\\)\nLatent heat of steam, \\(L_{\\text{steam}} = 2.256 \\times 10^{6}\\,\\text{J kg}^{-1}\\)\n\nNow, \\(Q\\) = heat required to convert \\(3\\,\\text{kg}\\) of ice at \\(-12\\,^\\circ\\text{C}\\) to steam at \\(100\\,^\\circ\\text{C}\\).\n\n\\(Q_1\\) = heat required to convert ice at \\(-12\\,^\\circ\\text{C}\\) to ice at \\(0\\,^\\circ\\text{C}\\)\n\\(= m\\,s_{\\text{ice}}\\,\\Delta T_1 = (3\\,\\text{kg})(2100\\,\\text{J kg}^{-1}\\text{K}^{-1})[0 - (-12)]\\,^\\circ\\text{C} = 75600\\,\\text{J}\\)\n\n\\(Q_2\\) = heat required to melt ice at \\(0\\,^\\circ\\text{C}\\) to water at \\(0\\,^\\circ\\text{C}\\)\n\\(= m\\,L_{f\\,\\text{ice}} = (3\\,\\text{kg})(3.35 \\times 10^{5}\\,\\text{J kg}^{-1}) = 1005000\\,\\text{J}\\)\n\n\\(Q_3\\) = heat required to convert water at \\(0\\,^\\circ\\text{C}\\) to water at \\(100\\,^\\circ\\text{C}\\)\n\\(= m\\,s_w\\,\\Delta T_2 = (3\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(100\\,^\\circ\\text{C}) = 1255800\\,\\text{J}\\)\n\n\\(Q_4\\) = heat required to convert water at \\(100\\,^\\circ\\text{C}\\) to steam at \\(100\\,^\\circ\\text{C}\\)\n\\(= m\\,L_{\\text{steam}} = (3\\,\\text{kg})(2.256 \\times 10^{6}\\,\\text{J kg}^{-1}) = 6768000\\,\\text{J}\\)\n\nSo, \\(Q = Q_1 + Q_2 + Q_3 + Q_4\\)\n\\(= 75600\\,\\text{J} + 1005000\\,\\text{J} + 1255800\\,\\text{J} + 6768000\\,\\text{J}\\)\n\\(= 9.1 \\times 10^{6}\\,\\text{J}\\)"
+  },
+  {
+    "ref": "Eg 10.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "What is the temperature of the steel-copper junction in the steady state of the system shown in Fig. 10.15. Length of the steel rod \\(= 15.0\\,\\text{cm}\\), length of the copper rod \\(= 10.0\\,\\text{cm}\\), temperature of the furnace \\(= 300\\,^\\circ\\text{C}\\), temperature of the other end \\(= 0\\,^\\circ\\text{C}\\). The area of cross section of the steel rod is twice that of the copper rod. (Thermal conductivity of steel \\(= 50.2\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\); and of copper \\(= 385\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\)).",
+    "solution": "The insulating material around the rods reduces heat loss from the sides of the rods. Therefore, heat flows only along the length of the rods. Consider any cross section of the rod. In the steady state, heat flowing into the element must equal the heat flowing out of it; otherwise there would be a net gain or loss of heat by the element and its temperature would not be steady. Thus in the steady state, rate of heat flowing across a cross section of the rod is the same at every point along the length of the combined steel-copper rod.\n\nLet \\(T\\) be the temperature of the steel-copper junction in the steady state. Then,\n\n\\(\\dfrac{K_1 A_1 (300 - T)}{L_1} = \\dfrac{K_2 A_2 (T - 0)}{L_2}\\)\n\nwhere 1 and 2 refer to the steel and copper rod respectively. For \\(A_1 = 2A_2\\), \\(L_1 = 15.0\\,\\text{cm}\\), \\(L_2 = 10.0\\,\\text{cm}\\), \\(K_1 = 50.2\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\), \\(K_2 = 385\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\), we have\n\n\\(\\dfrac{50.2 \\times 2\\,(300 - T)}{15} = \\dfrac{385\\,T}{10}\\)\n\nwhich gives \\(T = 44.4\\,^\\circ\\text{C}\\)"
+  },
+  {
+    "ref": "Eg 10.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "HARD",
+    "stem": "An iron bar \\((L_1 = 0.1\\,\\text{m},\\ A_1 = 0.02\\,\\text{m}^2,\\ K_1 = 79\\,\\text{W m}^{-1}\\text{K}^{-1})\\) and a brass bar \\((L_2 = 0.1\\,\\text{m},\\ A_2 = 0.02\\,\\text{m}^2,\\ K_2 = 109\\,\\text{W m}^{-1}\\text{K}^{-1})\\) are soldered end to end as shown in Fig. 10.16. The free ends of the iron bar and brass bar are maintained at \\(373\\,\\text{K}\\) and \\(273\\,\\text{K}\\) respectively. Obtain expressions for and hence compute (i) the temperature of the junction of the two bars, (ii) the equivalent thermal conductivity of the compound bar, and (iii) the heat current through the compound bar.",
+    "solution": "Given, \\(L_1 = L_2 = L = 0.1\\,\\text{m}\\), \\(A_1 = A_2 = A = 0.02\\,\\text{m}^2\\), \\(K_1 = 79\\,\\text{W m}^{-1}\\text{K}^{-1}\\), \\(K_2 = 109\\,\\text{W m}^{-1}\\text{K}^{-1}\\), \\(T_1 = 373\\,\\text{K}\\), and \\(T_2 = 273\\,\\text{K}\\).\n\nUnder steady state condition, the heat current \\((H_1)\\) through iron bar is equal to the heat current \\((H_2)\\) through brass bar. So, \\(H = H_1 = H_2\\)\n\n\\(\\dfrac{K_1 A_1 (T_1 - T_0)}{L_1} = \\dfrac{K_2 A_2 (T_0 - T_2)}{L_2}\\)\n\nFor \\(A_1 = A_2 = A\\) and \\(L_1 = L_2 = L\\), this equation leads to \\(K_1 (T_1 - T_0) = K_2 (T_0 - T_2)\\). Thus, the junction temperature \\(T_0\\) of the two bars is\n\n\\(T_0 = \\dfrac{(K_1 T_1 + K_2 T_2)}{(K_1 + K_2)}\\)\n\nUsing this equation, the heat current \\(H\\) through either bar is\n\n\\(H = \\dfrac{K_1 A (T_1 - T_0)}{L} = \\dfrac{K_2 A (T_0 - T_2)}{L} = \\left(\\dfrac{K_1 K_2}{K_1 + K_2}\\right)\\dfrac{A (T_1 - T_0)}{L} = \\dfrac{A (T_1 - T_2)}{L\\left(\\dfrac{1}{K_1} + \\dfrac{1}{K_2}\\right)}\\)\n\nUsing these equations, the heat current \\(H'\\) through the compound bar of length \\(L_1 + L_2 = 2L\\) and the equivalent thermal conductivity \\(K'\\) of the compound bar are given by\n\n\\(H' = \\dfrac{K' A (T_1 - T_2)}{2L} = H\\), and \\(K' = \\dfrac{2 K_1 K_2}{K_1 + K_2}\\)\n\n(i) \\(T_0 = \\dfrac{(K_1 T_1 + K_2 T_2)}{(K_1 + K_2)} = \\dfrac{(79\\,\\text{W m}^{-1}\\text{K}^{-1})(373\\,\\text{K}) + (109\\,\\text{W m}^{-1}\\text{K}^{-1})(273\\,\\text{K})}{79\\,\\text{W m}^{-1}\\text{K}^{-1} + 109\\,\\text{W m}^{-1}\\text{K}^{-1}} = 315\\,\\text{K}\\)\n\n(ii) \\(K' = \\dfrac{2 K_1 K_2}{K_1 + K_2} = \\dfrac{2 \\times (79\\,\\text{W m}^{-1}\\text{K}^{-1}) \\times (109\\,\\text{W m}^{-1}\\text{K}^{-1})}{79\\,\\text{W m}^{-1}\\text{K}^{-1} + 109\\,\\text{W m}^{-1}\\text{K}^{-1}} = 91.6\\,\\text{W m}^{-1}\\text{K}^{-1}\\)\n\n(iii) \\(H' = H = \\dfrac{K' A (T_1 - T_2)}{2L} = \\dfrac{(91.6\\,\\text{W m}^{-1}\\text{K}^{-1}) \\times (0.02\\,\\text{m}^2) \\times (373\\,\\text{K} - 273\\,\\text{K})}{2 \\times (0.1\\,\\text{m})} = 916.1\\,\\text{W}\\)"
+  },
+  {
+    "ref": "Eg 10.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "MODERATE",
+    "stem": "A pan filled with hot food cools from \\(94\\,^\\circ\\text{C}\\) to \\(86\\,^\\circ\\text{C}\\) in 2 minutes when the room temperature is at \\(20\\,^\\circ\\text{C}\\). How long will it take to cool from \\(71\\,^\\circ\\text{C}\\) to \\(69\\,^\\circ\\text{C}\\)?",
+    "solution": "The average temperature of \\(94\\,^\\circ\\text{C}\\) and \\(86\\,^\\circ\\text{C}\\) is \\(90\\,^\\circ\\text{C}\\), which is \\(70\\,^\\circ\\text{C}\\) above the room temperature. Under these conditions the pan cools \\(8\\,^\\circ\\text{C}\\) in 2 minutes.\n\nUsing Eq. (10.21), we have\n\n\\(\\dfrac{\\text{Change in temperature}}{\\text{Time}} = K\\,\\Delta T\\)\n\n\\(\\dfrac{8\\,^\\circ\\text{C}}{2\\ \\text{min}} = K\\,(70\\,^\\circ\\text{C})\\)\n\nThe average of \\(69\\,^\\circ\\text{C}\\) and \\(71\\,^\\circ\\text{C}\\) is \\(70\\,^\\circ\\text{C}\\), which is \\(50\\,^\\circ\\text{C}\\) above room temperature. \\(K\\) is the same for this situation as for the original.\n\n\\(\\dfrac{2\\,^\\circ\\text{C}}{\\text{Time}} = K\\,(50\\,^\\circ\\text{C})\\)\n\nWhen we divide above two equations, we have\n\n\\(\\dfrac{8\\,^\\circ\\text{C}/2\\ \\text{min}}{2\\,^\\circ\\text{C}/\\text{time}} = \\dfrac{K\\,(70\\,^\\circ\\text{C})}{K\\,(50\\,^\\circ\\text{C})}\\)\n\nTime \\(= 0.7\\ \\text{min} = 42\\,\\text{s}\\)"
+  },
+  {
+    "ref": "Ex 10.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "EASY",
+    "stem": "The triple points of neon and carbon dioxide are \\(24.57\\,\\text{K}\\) and \\(216.55\\,\\text{K}\\) respectively. Express these temperatures on the Celsius and Fahrenheit scales."
+  },
+  {
+    "ref": "Ex 10.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Two absolute scales \\(A\\) and \\(B\\) have triple points of water defined to be \\(200\\,\\text{A}\\) and \\(350\\,\\text{B}\\). What is the relation between \\(T_A\\) and \\(T_B\\) ?"
+  },
+  {
+    "ref": "Ex 10.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "The electrical resistance in ohms of a certain thermometer varies with temperature according to the approximate law :\n\n\\(R = R_o\\,[1 + \\alpha\\,(T - T_o)]\\)\n\nThe resistance is \\(101.6\\,\\Omega\\) at the triple-point of water \\(273.16\\,\\text{K}\\), and \\(165.5\\,\\Omega\\) at the normal melting point of lead \\((600.5\\,\\text{K})\\). What is the temperature when the resistance is \\(123.4\\,\\Omega\\) ?"
+  },
+  {
+    "ref": "Ex 10.4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Answer the following :\n\n(a) The triple-point of water is a standard fixed point in modern thermometry. Why ? What is wrong in taking the melting point of ice and the boiling point of water as standard fixed points (as was originally done in the Celsius scale) ?"
+  },
+  {
+    "ref": "Ex 10.4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Answer the following :\n\n(b) There were two fixed points in the original Celsius scale as mentioned above which were assigned the number \\(0\\,^\\circ\\text{C}\\) and \\(100\\,^\\circ\\text{C}\\) respectively. On the absolute scale, one of the fixed points is the triple-point of water, which on the Kelvin absolute scale is assigned the number \\(273.16\\,\\text{K}\\). What is the other fixed point on this (Kelvin) scale ?"
+  },
+  {
+    "ref": "Ex 10.4(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Answer the following :\n\n(c) The absolute temperature (Kelvin scale) \\(T\\) is related to the temperature \\(t_c\\) on the Celsius scale by\n\n\\(t_c = T - 273.15\\)\n\nWhy do we have \\(273.15\\) in this relation, and not \\(273.16\\) ?"
+  },
+  {
+    "ref": "Ex 10.4(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Answer the following :\n\n(d) What is the temperature of the triple-point of water on an absolute scale whose unit interval size is equal to that of the Fahrenheit scale ?"
+  },
+  {
+    "ref": "Ex 10.5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Two ideal gas thermometers \\(A\\) and \\(B\\) use oxygen and hydrogen respectively. The following observations are made :\n\n| Temperature | Pressure thermometer \\(A\\) | Pressure thermometer \\(B\\) |\n|---|---|---|\n| Triple-point of water | \\(1.250 \\times 10^{5}\\,\\text{Pa}\\) | \\(0.200 \\times 10^{5}\\,\\text{Pa}\\) |\n| Normal melting point of sulphur | \\(1.797 \\times 10^{5}\\,\\text{Pa}\\) | \\(0.287 \\times 10^{5}\\,\\text{Pa}\\) |\n\n(a) What is the absolute temperature of normal melting point of sulphur as read by thermometers \\(A\\) and \\(B\\) ?"
+  },
+  {
+    "ref": "Ex 10.5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature, Heat and Thermometry",
+    "difficulty": "MODERATE",
+    "stem": "Two ideal gas thermometers \\(A\\) and \\(B\\) use oxygen and hydrogen respectively. The following observations are made :\n\n| Temperature | Pressure thermometer \\(A\\) | Pressure thermometer \\(B\\) |\n|---|---|---|\n| Triple-point of water | \\(1.250 \\times 10^{5}\\,\\text{Pa}\\) | \\(0.200 \\times 10^{5}\\,\\text{Pa}\\) |\n| Normal melting point of sulphur | \\(1.797 \\times 10^{5}\\,\\text{Pa}\\) | \\(0.287 \\times 10^{5}\\,\\text{Pa}\\) |\n\n(b) What do you think is the reason behind the slight difference in answers of thermometers \\(A\\) and \\(B\\) ? (The thermometers are not faulty). What further procedure is needed in the experiment to reduce the discrepancy between the two readings ?"
+  },
+  {
+    "ref": "Ex 10.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A steel tape \\(1\\,\\text{m}\\) long is correctly calibrated for a temperature of \\(27.0\\,^\\circ\\text{C}\\). The length of a steel rod measured by this tape is found to be \\(63.0\\,\\text{cm}\\) on a hot day when the temperature is \\(45.0\\,^\\circ\\text{C}\\). What is the actual length of the steel rod on that day ? What is the length of the same steel rod on a day when the temperature is \\(27.0\\,^\\circ\\text{C}\\) ? Coefficient of linear expansion of steel \\(= 1.20 \\times 10^{-5}\\,\\text{K}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A large steel wheel is to be fitted on to a shaft of the same material. At \\(27\\,^\\circ\\text{C}\\), the outer diameter of the shaft is \\(8.70\\,\\text{cm}\\) and the diameter of the central hole in the wheel is \\(8.69\\,\\text{cm}\\). The shaft is cooled using 'dry ice'. At what temperature of the shaft does the wheel slip on the shaft? Assume coefficient of linear expansion of the steel to be constant over the required temperature range : \\(\\alpha_{\\text{steel}} = 1.20 \\times 10^{-5}\\,\\text{K}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "stem": "A hole is drilled in a copper sheet. The diameter of the hole is \\(4.24\\,\\text{cm}\\) at \\(27.0\\,^\\circ\\text{C}\\). What is the change in the diameter of the hole when the sheet is heated to \\(227\\,^\\circ\\text{C}\\)? Coefficient of linear expansion of copper \\(= 1.70 \\times 10^{-5}\\,\\text{K}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A brass wire \\(1.8\\,\\text{m}\\) long at \\(27\\,^\\circ\\text{C}\\) is held taut with little tension between two rigid supports. If the wire is cooled to a temperature of \\(-39\\,^\\circ\\text{C}\\), what is the tension developed in the wire, if its diameter is \\(2.0\\,\\text{mm}\\) ? Co-efficient of linear expansion of brass \\(= 2.0 \\times 10^{-5}\\,\\text{K}^{-1}\\); Young's modulus of brass \\(= 0.91 \\times 10^{11}\\,\\text{Pa}\\)."
+  },
+  {
+    "ref": "Ex 10.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A brass rod of length \\(50\\,\\text{cm}\\) and diameter \\(3.0\\,\\text{mm}\\) is joined to a steel rod of the same length and diameter. What is the change in length of the combined rod at \\(250\\,^\\circ\\text{C}\\), if the original lengths are at \\(40.0\\,^\\circ\\text{C}\\)? Is there a 'thermal stress' developed at the junction ? The ends of the rod are free to expand (Co-efficient of linear expansion of brass \\(= 2.0 \\times 10^{-5}\\,\\text{K}^{-1}\\), steel \\(= 1.2 \\times 10^{-5}\\,\\text{K}^{-1}\\))."
+  },
+  {
+    "ref": "Ex 10.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "EASY",
+    "stem": "The coefficient of volume expansion of glycerine is \\(49 \\times 10^{-5}\\,\\text{K}^{-1}\\). What is the fractional change in its density for a \\(30\\,^\\circ\\text{C}\\) rise in temperature ?"
+  },
+  {
+    "ref": "Ex 10.12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Calorimetry",
+    "difficulty": "EASY",
+    "stem": "A \\(10\\,\\text{kW}\\) drilling machine is used to drill a bore in a small aluminium block of mass \\(8.0\\,\\text{kg}\\). How much is the rise in temperature of the block in \\(2.5\\) minutes, assuming 50% of power is used up in heating the machine itself or lost to the surroundings. Specific heat of aluminium \\(= 0.91\\,\\text{J g}^{-1}\\,\\text{K}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "EASY",
+    "stem": "A copper block of mass \\(2.5\\,\\text{kg}\\) is heated in a furnace to a temperature of \\(500\\,^\\circ\\text{C}\\) and then placed on a large ice block. What is the maximum amount of ice that can melt? (Specific heat of copper \\(= 0.39\\,\\text{J g}^{-1}\\,\\text{K}^{-1}\\); heat of fusion of water \\(= 335\\,\\text{J g}^{-1}\\))."
+  },
+  {
+    "ref": "Ex 10.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Calorimetry",
+    "difficulty": "MODERATE",
+    "stem": "In an experiment on the specific heat of a metal, a \\(0.20\\,\\text{kg}\\) block of the metal at \\(150\\,^\\circ\\text{C}\\) is dropped in a copper calorimeter (of water equivalent \\(0.025\\,\\text{kg}\\)) containing \\(150\\,\\text{cm}^3\\) of water at \\(27\\,^\\circ\\text{C}\\). The final temperature is \\(40\\,^\\circ\\text{C}\\). Compute the specific heat of the metal. If heat losses to the surroundings are not negligible, is your answer greater or smaller than the actual value for specific heat of the metal ?"
+  },
+  {
+    "ref": "Ex 10.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Calorimetry",
+    "difficulty": "MODERATE",
+    "stem": "Given below are observations on molar specific heats at room temperature of some common gases.\n\n| Gas | Molar specific heat \\((C_v)\\) \\((\\text{cal mol}^{-1}\\,\\text{K}^{-1})\\) |\n|---|---|\n| Hydrogen | \\(4.87\\) |\n| Nitrogen | \\(4.97\\) |\n| Oxygen | \\(5.02\\) |\n| Nitric oxide | \\(4.99\\) |\n| Carbon monoxide | \\(5.01\\) |\n| Chlorine | \\(6.17\\) |\n\nThe measured molar specific heats of these gases are markedly different from those for monatomic gases. Typically, molar specific heat of a monatomic gas is \\(2.92\\,\\text{cal/mol K}\\). Explain this difference. What can you infer from the somewhat larger (than the rest) value for chlorine ?",
+    "_note": "The printed unit heading of the table reads \"cal mo1–1 K–1\" — the letter l of \"mol\" is set as the digit 1. Transcribed as \\(\\text{cal mol}^{-1}\\,\\text{K}^{-1}\\), which is what is meant and what the stem's own \"2.92 cal/mol K\" confirms."
+  },
+  {
+    "ref": "Ex 10.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "MODERATE",
+    "stem": "A child running a temperature of \\(101\\,^\\circ\\text{F}\\) is given an antipyrin (i.e. a medicine that lowers fever) which causes an increase in the rate of evaporation of sweat from his body. If the fever is brought down to \\(98\\,^\\circ\\text{F}\\) in \\(20\\) minutes, what is the average rate of extra evaporation caused, by the drug. Assume the evaporation mechanism to be the only way by which heat is lost. The mass of the child is \\(30\\,\\text{kg}\\). The specific heat of human body is approximately the same as that of water, and latent heat of evaporation of water at that temperature is about \\(580\\,\\text{cal g}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "A 'thermacole' icebox is a cheap and an efficient method for storing small quantities of cooked food in summer in particular. A cubical icebox of side \\(30\\,\\text{cm}\\) has a thickness of \\(5.0\\,\\text{cm}\\). If \\(4.0\\,\\text{kg}\\) of ice is put in the box, estimate the amount of ice remaining after \\(6\\,\\text{h}\\). The outside temperature is \\(45\\,^\\circ\\text{C}\\), and co-efficient of thermal conductivity of thermacole is \\(0.01\\,\\text{J s}^{-1}\\,\\text{m}^{-1}\\,\\text{K}^{-1}\\). [Heat of fusion of water \\(= 335 \\times 10^{3}\\,\\text{J kg}^{-1}\\)]"
+  },
+  {
+    "ref": "Ex 10.18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "A brass boiler has a base area of \\(0.15\\,\\text{m}^2\\) and thickness \\(1.0\\,\\text{cm}\\). It boils water at the rate of \\(6.0\\,\\text{kg/min}\\) when placed on a gas stove. Estimate the temperature of the part of the flame in contact with the boiler. Thermal conductivity of brass \\(= 109\\,\\text{J s}^{-1}\\,\\text{m}^{-1}\\,\\text{K}^{-1}\\) ; Heat of vaporisation of water \\(= 2256 \\times 10^{3}\\,\\text{J kg}^{-1}\\)."
+  },
+  {
+    "ref": "Ex 10.19(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "Explain why :\n\n(a) a body with large reflectivity is a poor emitter"
+  },
+  {
+    "ref": "Ex 10.19(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "Explain why :\n\n(b) a brass tumbler feels much colder than a wooden tray on a chilly day"
+  },
+  {
+    "ref": "Ex 10.19(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "Explain why :\n\n(c) an optical pyrometer (for measuring high temperatures) calibrated for an ideal black body radiation gives too low a value for the temperature of a red hot iron piece in the open, but gives a correct value for the temperature when the same piece is in the furnace"
+  },
+  {
+    "ref": "Ex 10.19(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "Explain why :\n\n(d) the earth without its atmosphere would be inhospitably cold"
+  },
+  {
+    "ref": "Ex 10.19(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "Explain why :\n\n(e) heating systems based on circulation of steam are more efficient in warming a building than those based on circulation of hot water"
+  },
+  {
+    "ref": "Ex 10.20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "MODERATE",
+    "stem": "A body cools from \\(80\\,^\\circ\\text{C}\\) to \\(50\\,^\\circ\\text{C}\\) in \\(5\\) minutes. Calculate the time it takes to cool from \\(60\\,^\\circ\\text{C}\\) to \\(30\\,^\\circ\\text{C}\\). The temperature of the surroundings is \\(20\\,^\\circ\\text{C}\\)."
+  }
+]

@@ -1,0 +1,261 @@
+[
+  {
+    "ref": "Eg 6.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "MODERATE",
+    "stem": "Find the centre of mass of three particles at the vertices of an equilateral triangle. The masses of the particles are 100g, 150g, and 200g respectively. Each side of the equilateral triangle is 0.5m long.",
+    "solution": "With the \\(x\\)- and \\(y\\)-axes chosen as shown in Fig. 6.9, the coordinates of points O, A and B forming the equilateral triangle are respectively \\((0,0)\\), \\((0.5,0)\\), \\((0.25,\\,0.25\\sqrt{3})\\). Let the masses 100 g, 150 g and 200 g be located at O, A and B respectively. Then,\n\n\\(X = \\dfrac{m_{1}x_{1} + m_{2}x_{2} + m_{3}x_{3}}{m_{1} + m_{2} + m_{3}}\\)\n\n\\(= \\dfrac{\\left[100(0) + 150(0.5) + 200(0.25)\\right]\\,\\text{g m}}{(100 + 150 + 200)\\,\\text{g}}\\)\n\n\\(= \\dfrac{75 + 50}{450}\\,\\text{m} = \\dfrac{125}{450}\\,\\text{m} = \\dfrac{5}{18}\\,\\text{m}\\)\n\n\\(Y = \\dfrac{\\left[100(0) + 150(0) + 200(0.25\\sqrt{3})\\right]\\,\\text{g m}}{450\\,\\text{g}}\\)\n\n\\(= \\dfrac{50\\sqrt{3}}{450}\\,\\text{m} = \\dfrac{\\sqrt{3}}{9}\\,\\text{m} = \\dfrac{1}{3\\sqrt{3}}\\,\\text{m}\\)\n\nThe centre of mass C is shown in the figure. Note that it is not the geometric centre of the triangle OAB. Why?"
+  },
+  {
+    "ref": "Eg 6.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "MODERATE",
+    "stem": "Find the centre of mass of a triangular lamina.",
+    "solution": "The lamina \\((\\Delta LMN)\\) may be subdivided into narrow strips each parallel to the base \\((MN)\\) as shown in Fig. 6.10.\n\nBy symmetry each strip has its centre of mass at its midpoint. If we join the midpoint of all the strips we get the median LP. The centre of mass of the triangle as a whole therefore, has to lie on the median LP. Similarly, we can argue that it lies on the median MQ and NR. This means the centre of mass lies on the point of concurrence of the medians, i.e. on the centroid G of the triangle."
+  },
+  {
+    "ref": "Eg 6.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "MODERATE",
+    "stem": "Find the centre of mass of a uniform L-shaped lamina (a thin flat plate) with dimensions as shown. The mass of the lamina is 3 kg.",
+    "solution": "Choosing the \\(X\\) and \\(Y\\) axes as shown in Fig. 6.11 we have the coordinates of the vertices of the L-shaped lamina as given in the figure. We can think of the L-shape to consist of 3 squares each of length 1 m. The mass of each square is 1 kg, since the lamina is uniform. The centres of mass \\(C_{1}\\), \\(C_{2}\\) and \\(C_{3}\\) of the squares are, by symmetry, their geometric centres and have coordinates \\((1/2,\\,1/2)\\), \\((3/2,\\,1/2)\\), \\((1/2,\\,3/2)\\) respectively. We take the masses of the squares to be concentrated at these points. The centre of mass of the whole L shape \\((X,\\,Y)\\) is the centre of mass of these mass points.\n\nHence\n\n\\(X = \\dfrac{\\left[1(1/2) + 1(3/2) + 1(1/2)\\right]\\,\\text{kg m}}{(1 + 1 + 1)\\,\\text{kg}} = \\dfrac{5}{6}\\,\\text{m}\\)\n\n\\(Y = \\dfrac{\\left[1(1/2) + 1(1/2) + 1(3/2)\\right]\\,\\text{kg m}}{(1 + 1 + 1)\\,\\text{kg}} = \\dfrac{5}{6}\\,\\text{m}\\)\n\nThe centre of mass of the L-shape lies on the line OD. We could have guessed this without calculations. Can you tell why? Suppose, the three squares that make up the L shaped lamina of Fig. 6.11 had different masses. How will you then determine the centre of mass of the lamina?"
+  },
+  {
+    "ref": "Eg 6.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Vector Product and Angular Velocity",
+    "difficulty": "EASY",
+    "stem": "Find the scalar and vector products of two vectors. \\(\\mathbf{a} = (3\\hat{i} - 4\\hat{j} + 5\\hat{k})\\) and \\(\\mathbf{b} = (-2\\hat{i} + \\hat{j} + 3\\hat{k})\\)",
+    "solution": "\\(\\mathbf{a}\\cdot\\mathbf{b} = (3\\hat{i} - 4\\hat{j} + 5\\hat{k})\\cdot(-2\\hat{i} + \\hat{j} - 3\\hat{k})\\)\n\n\\(= -6 - 4 - 15\\)\n\n\\(= -25\\)\n\n\\(\\mathbf{a} \\times \\mathbf{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -4 & 5 \\\\ -2 & 1 & -3 \\end{vmatrix} = 7\\hat{i} - \\hat{j} - 5\\hat{k}\\)\n\nNote \\(\\mathbf{b} \\times \\mathbf{a} = -7\\hat{i} + \\hat{j} + 5\\hat{k}\\)",
+    "_note": "PRINTED DEFECT (stem contradicts its own solution). The stem prints the third component of b as +3k, but every step of the book's printed solution uses -3k: the dot product is written out as (-2i + j - 3k), the determinant's third row is printed as (-2, 1, -3), and both printed results require it. Verified at 6x magnification on the rendered page. Checks: with b_z = -3, a.b = -6 - 4 - 15 = -25 (as printed) and a x b = 7i - j - 5k (as printed); with the stem's b_z = +3, a.b = +5 and a x b = -17i - 19j - 5k, matching NEITHER printed result. The book's third printed result, b x a = -7i + j + 5k, also requires b_z = -3. The stem's sign is the outlier, so the printed +3k is the misprint. Transcribed faithfully as printed."
+  },
+  {
+    "ref": "Eg 6.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Torque and Angular Momentum",
+    "difficulty": "EASY",
+    "stem": "Find the torque of a force \\(7\\hat{i} + 3\\hat{j} - 5\\hat{k}\\) about the origin. The force acts on a particle whose position vector is \\(\\hat{i} - \\hat{j} + \\hat{k}\\).",
+    "solution": "Here \\(\\mathbf{r} = \\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\mathbf{F} = 7\\hat{i} + 3\\hat{j} - 5\\hat{k}\\).\n\nWe shall use the determinant rule to find the torque \\(\\boldsymbol{\\tau} = \\mathbf{r} \\times \\mathbf{F}\\)\n\n\\(\\boldsymbol{\\tau} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -1 & 1 \\\\ 7 & 3 & -5 \\end{vmatrix} = (5 - 3)\\hat{i} - (-5 - 7)\\hat{j} + (3 - (-7))\\hat{k}\\)\n\nor \\(\\boldsymbol{\\tau} = 2\\hat{i} + 12\\hat{j} + 10\\hat{k}\\)"
+  },
+  {
+    "ref": "Eg 6.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Torque and Angular Momentum",
+    "difficulty": "MODERATE",
+    "stem": "Show that the angular momentum about any point of a single particle moving with constant velocity remains constant throughout the motion.",
+    "solution": "Let the particle with velocity \\(\\mathbf{v}\\) be at point P at some instant \\(t\\). We want to calculate the angular momentum of the particle about an arbitrary point O.\n\nThe angular momentum is \\(\\mathbf{l} = \\mathbf{r} \\times m\\mathbf{v}\\). Its magnitude is \\(mvr\\sin\\theta\\), where \\(\\theta\\) is the angle between \\(\\mathbf{r}\\) and \\(\\mathbf{v}\\) as shown in Fig. 6.19. Although the particle changes position with time, the line of direction of \\(\\mathbf{v}\\) remains the same and hence \\(OM = r\\sin\\theta\\) is a constant.\n\nFurther, the direction of \\(\\mathbf{l}\\) is perpendicular to the plane of \\(\\mathbf{r}\\) and \\(\\mathbf{v}\\). It is into the page of the figure. This direction does not change with time.\n\nThus, \\(\\mathbf{l}\\) remains the same in magnitude and direction and is therefore conserved. Is there any external torque on the particle?"
+  },
+  {
+    "ref": "Eg 6.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "Show that moment of a couple does not depend on the point about which you take the moments.",
+    "solution": "Consider a couple as shown in Fig. 6.22 acting on a rigid body. The forces \\(\\mathbf{F}\\) and \\(-\\mathbf{F}\\) act respectively at points B and A. These points have position vectors \\(\\mathbf{r}_{1}\\) and \\(\\mathbf{r}_{2}\\) with respect to origin O. Let us take the moments of the forces about the origin.\n\nThe moment of the couple = sum of the moments of the two forces making the couple\n\n\\(= \\mathbf{r}_{1} \\times (-\\mathbf{F}) + \\mathbf{r}_{2} \\times \\mathbf{F}\\)\n\n\\(= \\mathbf{r}_{2} \\times \\mathbf{F} - \\mathbf{r}_{1} \\times \\mathbf{F}\\)\n\n\\(= (\\mathbf{r}_{2} - \\mathbf{r}_{1}) \\times \\mathbf{F}\\)\n\nBut \\(\\mathbf{r}_{1} + \\mathbf{AB} = \\mathbf{r}_{2}\\), and hence \\(\\mathbf{AB} = \\mathbf{r}_{2} - \\mathbf{r}_{1}\\).\n\nThe moment of the couple, therefore, is \\(\\mathbf{AB} \\times \\mathbf{F}\\).\n\nClearly this is independent of the origin, the point about which we took the moments of the forces.",
+    "_note": "PRINTED AMBIGUITY (does not affect the result). The solution's opening sentence lists the force application points as 'B and A' and then their position vectors as 'r1 and r2', which read in that order pairs B with r1 and A with r2. Both Fig. 6.22 and the algebra that follows require the opposite pairing: r1 points to A (where -F acts) and r2 to B (where F acts), which is what the very next line, r1 x (-F) + r2 x F, uses. The derivation and the result AB x F are unaffected."
+  },
+  {
+    "ref": "Eg 6.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "A metal bar 70 cm long and 4.00 kg in mass supported on two knife-edges placed 10 cm from each end. A 6.00 kg load is suspended at 30 cm from one end. Find the reactions at the knife-edges. (Assume the bar to be of uniform cross section and homogeneous.)",
+    "solution": "Figure 6.26 shows the rod AB, the positions of the knife edges \\(K_{1}\\) and \\(K_{2}\\), the centre of gravity of the rod at G and the suspended load at P.\n\nNote the weight of the rod \\(W\\) acts at its centre of gravity G. The rod is uniform in cross section and homogeneous; hence G is at the centre of the rod; \\(AB = 70\\,\\text{cm}\\). \\(AG = 35\\,\\text{cm}\\), \\(AP = 30\\,\\text{cm}\\), \\(PG = 5\\,\\text{cm}\\), \\(AK_{1} = BK_{2} = 10\\,\\text{cm}\\) and \\(K_{1}G = K_{2}G = 25\\,\\text{cm}\\). Also, \\(W =\\) weight of the rod \\(= 4.00\\,\\text{kg}\\) and \\(W_{1} =\\) suspended load \\(= 6.00\\,\\text{kg}\\); \\(R_{1}\\) and \\(R_{2}\\) are the normal reactions of the support at the knife edges.\n\nFor translational equilibrium of the rod,\n\n\\(R_{1} + R_{2} - W_{1} - W = 0\\)   (i)\n\nNote \\(W_{1}\\) and \\(W\\) act vertically down and \\(R_{1}\\) and \\(R_{2}\\) act vertically up.\n\nFor considering rotational equilibrium, we take moments of the forces. A convenient point to take moments about is G. The moments of \\(R_{2}\\) and \\(W_{1}\\) are anticlockwise (+ve), whereas the moment of \\(R_{1}\\) is clockwise (-ve).\n\nFor rotational equilibrium,\n\n\\(-R_{1}(K_{1}G) + W_{1}(PG) + R_{2}(K_{2}G) = 0\\)   (ii)\n\nIt is given that \\(W = 4.00g\\,\\text{N}\\) and \\(W_{1} = 6.00g\\,\\text{N}\\), where \\(g =\\) acceleration due to gravity. We take \\(g = 9.8\\,\\text{m/s}^{2}\\).\n\nWith numerical values inserted, from (i)\n\n\\(R_{1} + R_{2} - 4.00g - 6.00g = 0\\)\n\nor \\(R_{1} + R_{2} = 10.00g\\,\\text{N} = 98.00\\,\\text{N}\\)   (iii)\n\nFrom (ii), \\(-0.25R_{1} + 0.05W_{1} + 0.25R_{2} = 0\\)\n\nor \\(R_{1} - R_{2} = 1.2g\\,\\text{N} = 11.76\\,\\text{N}\\)   (iv)\n\nFrom (iii) and (iv), \\(R_{1} = 54.88\\,\\text{N}\\), \\(R_{2} = 43.12\\,\\text{N}\\)\n\nThus the reactions of the support are about \\(55\\,\\text{N}\\) at \\(K_{1}\\) and \\(43\\,\\text{N}\\) at \\(K_{2}\\)."
+  },
+  {
+    "ref": "Eg 6.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "HARD",
+    "stem": "A 3m long ladder weighing 20 kg leans on a frictionless wall. Its feet rest on the floor 1 m from the wall as shown in Fig.6.27. Find the reaction forces of the wall and the floor.",
+    "solution": "The ladder AB is 3 m long, its foot A is at distance \\(AC = 1\\,\\text{m}\\) from the wall. From Pythagoras theorem, \\(BC = 2\\sqrt{2}\\,\\text{m}\\). The forces on the ladder are its weight \\(W\\) acting at its centre of gravity D, reaction forces \\(F_{1}\\) and \\(F_{2}\\) of the wall and the floor respectively. Force \\(F_{1}\\) is perpendicular to the wall, since the wall is frictionless. Force \\(F_{2}\\) is resolved into two components, the normal reaction \\(N\\) and the force of friction \\(F\\). Note that \\(F\\) prevents the ladder from sliding away from the wall and is therefore directed toward the wall.\n\nFor translational equilibrium, taking the forces in the vertical direction,\n\n\\(N - W = 0\\)   (i)\n\nTaking the forces in the horizontal direction,\n\n\\(F - F_{1} = 0\\)   (ii)\n\nFor rotational equilibrium, taking the moments of the forces about A,\n\n\\(2\\sqrt{2}\\,F_{1} - (1/2)\\,W = 0\\)   (iii)\n\nNow \\(W = 20\\,g = 20 \\times 9.8\\,\\text{N} = 196.0\\,\\text{N}\\)\n\nFrom (i) \\(N = 196.0\\,\\text{N}\\)\n\nFrom (iii) \\(F_{1} = W/4\\sqrt{2} = 196.0/4\\sqrt{2} = 34.6\\,\\text{N}\\)\n\nFrom (ii) \\(F = F_{1} = 34.6\\,\\text{N}\\)\n\n\\(F_{2} = \\sqrt{F^{2} + N^{2}} = 199.0\\,\\text{N}\\)\n\nThe force \\(F_{2}\\) makes an angle \\(\\alpha\\) with the horizontal,\n\n\\(\\tan\\alpha = N/F = 4\\sqrt{2}\\), \\(\\alpha = \\tan^{-1}(4\\sqrt{2}) \\approx 80^{\\circ}\\)"
+  },
+  {
+    "ref": "Eg 6.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "Obtain Eq. (6.36) from first principles.",
+    "solution": "The angular acceleration is uniform, hence\n\n\\(\\dfrac{\\mathrm{d}\\omega}{\\mathrm{d}t} = \\alpha = \\text{constant}\\)   (i)\n\nIntegrating this equation,\n\n\\(\\omega = \\int \\alpha\\,\\mathrm{d}t + c\\)\n\n\\(= \\alpha t + c\\)   (as \\(\\alpha\\) is constant)\n\nAt \\(t = 0\\), \\(\\omega = \\omega_{0}\\) (given)\n\nFrom (i) we get at \\(t = 0\\), \\(\\omega = c = \\omega_{0}\\)\n\nThus, \\(\\omega = \\alpha t + \\omega_{0}\\) as required.\n\nWith the definition of \\(\\omega = \\mathrm{d}\\theta/\\mathrm{d}t\\) we may integrate Eq. (6.36) to get Eq. (6.37). This derivation and the derivation of Eq. (6.38) is left as an exercise.",
+    "_note": "STALE CROSS-REFERENCE in the printed solution (does not affect the result). The line 'From (i) we get at t = 0, omega = c = omega_0' cites equation (i), which is d(omega)/dt = alpha and contains no constant c. The constant is identified from the INTEGRATED equation omega = alpha*t + c printed two lines above, by setting t = 0. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 6.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "The angular speed of a motor wheel is increased from 1200 rpm to 3120 rpm in 16 seconds. (i) What is its angular acceleration, assuming the acceleration to be uniform? (ii) How many revolutions does the engine make during this time?",
+    "solution": "(i) We shall use \\(\\omega = \\omega_{0} + \\alpha t\\)\n\n\\(\\omega_{0} =\\) initial angular speed in rad/s\n\n\\(= 2\\pi \\times\\) angular speed in rev/s\n\n\\(= \\dfrac{2\\pi \\times \\text{angular speed in rev/min}}{60\\,\\text{s/min}}\\)\n\n\\(= \\dfrac{2\\pi \\times 1200}{60}\\,\\text{rad/s}\\)\n\n\\(= 40\\pi\\,\\text{rad/s}\\)\n\nSimilarly \\(\\omega =\\) final angular speed in rad/s\n\n\\(= \\dfrac{2\\pi \\times 3120}{60}\\,\\text{rad/s}\\)\n\n\\(= 2\\pi \\times 52\\,\\text{rad/s}\\)\n\n\\(= 104\\pi\\,\\text{rad/s}\\)\n\nAngular acceleration\n\n\\(\\alpha = \\dfrac{\\omega - \\omega_{0}}{t} = 4\\pi\\,\\text{rad/s}^{2}\\)\n\nThe angular acceleration of the engine \\(= 4\\pi\\,\\text{rad/s}^{2}\\)\n\n(ii) The angular displacement in time \\(t\\) is given by\n\n\\(\\theta = \\omega_{0}t + \\dfrac{1}{2}\\alpha t^{2}\\)\n\n\\(= \\left(40\\pi \\times 16 + \\dfrac{1}{2} \\times 4\\pi \\times 16^{2}\\right)\\,\\text{rad}\\)\n\n\\(= (640\\pi + 512\\pi)\\,\\text{rad}\\)\n\n\\(= 1152\\pi\\,\\text{rad}\\)\n\nNumber of revolutions \\(= \\dfrac{1152\\pi}{2\\pi} = 576\\)"
+  },
+  {
+    "ref": "Eg 6.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "A cord of negligible mass is wound round the rim of a fly wheel of mass 20 kg and radius 20 cm. A steady pull of 25 N is applied on the cord as shown in Fig. 6.31. The flywheel is mounted on a horizontal axle with frictionless bearings.\n\n(a) Compute the angular acceleration of the wheel.\n\n(b) Find the work done by the pull, when 2m of the cord is unwound.\n\n(c) Find also the kinetic energy of the wheel at this point. Assume that the wheel starts from rest.\n\n(d) Compare answers to parts (b) and (c).",
+    "solution": "(a) We use \\(I\\alpha = \\tau\\)\n\nthe torque \\(\\tau = FR\\)\n\n\\(= 25 \\times 0.20\\,\\text{N m}\\) (as \\(R = 0.20\\,\\text{m}\\))\n\n\\(= 5.0\\,\\text{N m}\\)\n\n\\(I =\\) Moment of inertia of flywheel about its axis \\(= \\dfrac{MR^{2}}{2}\\)\n\n\\(= \\dfrac{20.0 \\times (0.2)^{2}}{2} = 0.4\\,\\text{kg m}^{2}\\)\n\n\\(\\alpha =\\) angular acceleration\n\n\\(= 5.0\\,\\text{N m}/0.4\\,\\text{kg m}^{2} = 12.5\\,\\text{s}^{-2}\\)\n\n(b) Work done by the pull unwinding 2 m of the cord\n\n\\(= 25\\,\\text{N} \\times 2\\,\\text{m} = 50\\,\\text{J}\\)\n\n(c) Let \\(\\omega\\) be the final angular velocity. The kinetic energy gained \\(= \\dfrac{1}{2}I\\omega^{2}\\), since the wheel starts from rest. Now,\n\n\\(\\omega^{2} = \\omega_{0}^{2} + 2\\alpha\\theta\\), \\(\\omega_{0} = 0\\)\n\nThe angular displacement \\(\\theta =\\) length of unwound string / radius of wheel \\(= 2\\,\\text{m}/0.2\\,\\text{m} = 10\\,\\text{rad}\\)\n\n\\(\\omega^{2} = 2 \\times 12.5 \\times 10.0 = 250\\,(\\text{rad/s})^{2}\\)\n\nK.E. gained \\(= \\dfrac{1}{2} \\times 0.4 \\times 250 = 50\\,\\text{J}\\)\n\n(d) The answers are the same, i.e. the kinetic energy gained by the wheel = work done by the force. There is no loss of energy due to friction."
+  },
+  {
+    "ref": "Ex 6.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "EASY",
+    "stem": "Give the location of the centre of mass of a (i) sphere, (ii) cylinder, (iii) ring, and (iv) cube, each of uniform mass density. Does the centre of mass of a body necessarily lie inside the body?"
+  },
+  {
+    "ref": "Ex 6.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "MODERATE",
+    "stem": "In the HCl molecule, the separation between the nuclei of the two atoms is about \\(1.27\\,\\mathring{A}\\) \\((1\\,\\mathring{A} = 10^{-10}\\,\\text{m})\\). Find the approximate location of the CM of the molecule, given that a chlorine atom is about 35.5 times as massive as a hydrogen atom and nearly all the mass of an atom is concentrated in its nucleus."
+  },
+  {
+    "ref": "Ex 6.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "MODERATE",
+    "stem": "A child sits stationary at one end of a long trolley moving uniformly with a speed \\(V\\) on a smooth horizontal floor. If the child gets up and runs about on the trolley in any manner, what is the speed of the CM of the (trolley + child) system?"
+  },
+  {
+    "ref": "Ex 6.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vector Product and Angular Velocity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the area of the triangle contained between the vectors \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) is one half of the magnitude of \\(\\mathbf{a} \\times \\mathbf{b}\\)."
+  },
+  {
+    "ref": "Ex 6.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vector Product and Angular Velocity",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(\\mathbf{a}\\cdot(\\mathbf{b} \\times \\mathbf{c})\\) is equal in magnitude to the volume of the parallelepiped formed on the three vectors, \\(\\mathbf{a}\\), \\(\\mathbf{b}\\) and \\(\\mathbf{c}\\)."
+  },
+  {
+    "ref": "Ex 6.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Torque and Angular Momentum",
+    "difficulty": "MODERATE",
+    "stem": "Find the components along the \\(x\\), \\(y\\), \\(z\\) axes of the angular momentum \\(\\mathbf{l}\\) of a particle, whose position vector is \\(\\mathbf{r}\\) with components \\(x\\), \\(y\\), \\(z\\) and momentum is \\(\\mathbf{p}\\) with components \\(p_{x}\\), \\(p_{y}\\) and \\(p_{z}\\). Show that if the particle moves only in the \\(x\\)-\\(y\\) plane the angular momentum has only a \\(z\\)-component."
+  },
+  {
+    "ref": "Ex 6.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Torque and Angular Momentum",
+    "difficulty": "HARD",
+    "stem": "Two particles, each of mass \\(m\\) and speed \\(v\\), travel in opposite directions along parallel lines separated by a distance \\(d\\). Show that the angular momentum vector of the two particle system is the same whatever be the point about which the angular momentum is taken."
+  },
+  {
+    "ref": "Ex 6.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "A non-uniform bar of weight \\(W\\) is suspended at rest by two strings of negligible weight as shown in Fig. 6.33. The angles made by the strings with the vertical are \\(36.9^{\\circ}\\) and \\(53.1^{\\circ}\\) respectively. The bar is \\(2\\,\\text{m}\\) long. Calculate the distance \\(d\\) of the centre of gravity of the bar from its left end.",
+    "_figure": {
+      "fig": "Fig 6.33",
+      "page": 33
+    }
+  },
+  {
+    "ref": "Ex 6.9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "A car weighs \\(1800\\,\\text{kg}\\). The distance between its front and back axles is \\(1.8\\,\\text{m}\\). Its centre of gravity is \\(1.05\\,\\text{m}\\) behind the front axle. Determine the force exerted by the level ground on each front wheel and each back wheel."
+  },
+  {
+    "ref": "Ex 6.10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia",
+    "difficulty": "MODERATE",
+    "stem": "Torques of equal magnitude are applied to a hollow cylinder and a solid sphere, both having the same mass and radius. The cylinder is free to rotate about its standard axis of symmetry, and the sphere is free to rotate about an axis passing through its centre. Which of the two will acquire a greater angular speed after a given time."
+  },
+  {
+    "ref": "Ex 6.11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia",
+    "difficulty": "MODERATE",
+    "stem": "A solid cylinder of mass \\(20\\,\\text{kg}\\) rotates about its axis with angular speed \\(100\\,\\text{rad s}^{-1}\\). The radius of the cylinder is \\(0.25\\,\\text{m}\\). What is the kinetic energy associated with the rotation of the cylinder? What is the magnitude of angular momentum of the cylinder about its axis?"
+  },
+  {
+    "ref": "Ex 6.12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "(a) A child stands at the centre of a turntable with his two arms outstretched. The turntable is set rotating with an angular speed of \\(40\\,\\text{rev/min}\\). How much is the angular speed of the child if he folds his hands back and thereby reduces his moment of inertia to \\(2/5\\) times the initial value? Assume that the turntable rotates without friction."
+  },
+  {
+    "ref": "Ex 6.12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "HARD",
+    "stem": "A child stands at the centre of a turntable with his two arms outstretched. The turntable is set rotating with an angular speed of \\(40\\,\\text{rev/min}\\). He folds his hands back and thereby reduces his moment of inertia to \\(2/5\\) times the initial value. Assume that the turntable rotates without friction.\n\n(b) Show that the child's new kinetic energy of rotation is more than the initial kinetic energy of rotation. How do you account for this increase in kinetic energy?"
+  },
+  {
+    "ref": "Ex 6.13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "MODERATE",
+    "stem": "A rope of negligible mass is wound round a hollow cylinder of mass \\(3\\,\\text{kg}\\) and radius \\(40\\,\\text{cm}\\). What is the angular acceleration of the cylinder if the rope is pulled with a force of \\(30\\,\\text{N}\\)? What is the linear acceleration of the rope? Assume that there is no slipping."
+  },
+  {
+    "ref": "Ex 6.14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Dynamics of Rotational Motion about a Fixed Axis",
+    "difficulty": "EASY",
+    "stem": "To maintain a rotor at a uniform angular speed of \\(200\\,\\text{rad s}^{-1}\\), an engine needs to transmit a torque of \\(180\\,\\text{N m}\\). What is the power required by the engine? (Note: uniform angular velocity in the absence of friction implies zero torque. In practice, applied torque is needed to counter frictional torque). Assume that the engine is 100% efficient."
+  },
+  {
+    "ref": "Ex 6.15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Centre of Mass and its Motion",
+    "difficulty": "HARD",
+    "stem": "From a uniform disk of radius \\(R\\), a circular hole of radius \\(R/2\\) is cut out. The centre of the hole is at \\(R/2\\) from the centre of the original disc. Locate the centre of gravity of the resulting flat body."
+  },
+  {
+    "ref": "Ex 6.16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Equilibrium of a Rigid Body",
+    "difficulty": "MODERATE",
+    "stem": "A metre stick is balanced on a knife edge at its centre. When two coins, each of mass \\(5\\,\\text{g}\\) are put one on top of the other at the \\(12.0\\,\\text{cm}\\) mark, the stick is found to be balanced at \\(45.0\\,\\text{cm}\\). What is the mass of the metre stick?"
+  },
+  {
+    "ref": "Ex 6.17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Moment of Inertia",
+    "difficulty": "HARD",
+    "stem": "The oxygen molecule has a mass of \\(5.30 \\times 10^{-26}\\,\\text{kg}\\) and a moment of inertia of \\(1.94 \\times 10^{-46}\\,\\text{kg m}^{2}\\) about an axis through its centre perpendicular to the lines joining the two atoms. Suppose the mean speed of such a molecule in a gas is \\(500\\,\\text{m/s}\\) and that its kinetic energy of rotation is two thirds of its kinetic energy of translation. Find the average angular velocity of the molecule."
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "ref": "Eg 7.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to a Resistor",
+    "difficulty": "EASY",
+    "stem": "A light bulb is rated at \\(100\\,\\text{W}\\) for a \\(220\\,\\text{V}\\) supply. Find (a) the resistance of the bulb; (b) the peak voltage of the source; and (c) the rms current through the bulb.",
+    "solution": "(a) We are given \\(P = 100\\,\\text{W}\\) and \\(V = 220\\,\\text{V}\\). The resistance of the bulb is\n\n\\(R = \\frac{V^{2}}{P} = \\frac{(220\\,\\text{V})^{2}}{100\\,\\text{W}} = 484\\,\\Omega\\)\n\n(b) The peak voltage of the source is\n\n\\(v_{m} = \\sqrt{2}\\,V = 311\\,\\text{V}\\)\n\n(c) Since \\(P = I\\,V\\),\n\n\\(I = \\frac{P}{V} = \\frac{100\\,\\text{W}}{220\\,\\text{V}} = 0.454\\,\\text{A}\\)"
+  },
+  {
+    "ref": "Eg 7.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "EASY",
+    "stem": "A pure inductor of \\(25.0\\,\\text{mH}\\) is connected to a source of \\(220\\,\\text{V}\\). Find the inductive reactance and rms current in the circuit if the frequency of the source is \\(50\\,\\text{Hz}\\).",
+    "solution": "The inductive reactance,\n\n\\(X_{L} = 2\\pi\\nu L = 2 \\times 3.14 \\times 50 \\times 25 \\times 10^{-3}\\,\\Omega\\)\n\n\\(= 7.85\\,\\Omega\\)\n\nThe rms current in the circuit is\n\n\\(I = \\frac{V}{X_{L}} = \\frac{220\\,\\text{V}}{7.85\\,\\Omega} = 28\\,\\text{A}\\)"
+  },
+  {
+    "ref": "Eg 7.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A lamp is connected in series with a capacitor. Predict your observations for dc and ac connections. What happens in each case if the capacitance of the capacitor is reduced?",
+    "solution": "When a dc source is connected to a capacitor, the capacitor gets charged and after charging no current flows in the circuit and the lamp will not glow. There will be no change even if \\(C\\) is reduced.\n\nWith ac source, the capacitor offers capacitative reactance \\((1/\\omega C)\\) and the current flows in the circuit. Consequently, the lamp will shine. Reducing \\(C\\) will increase reactance and the lamp will shine less brightly than before."
+  },
+  {
+    "ref": "Eg 7.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A \\(15.0\\,\\mu\\text{F}\\) capacitor is connected to a \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\) source. Find the capacitive reactance and the current (rms and peak) in the circuit. If the frequency is doubled, what happens to the capacitive reactance and the current?",
+    "solution": "The capacitive reactance is\n\n\\(X_{C} = \\frac{1}{2\\pi\\nu C} = \\frac{1}{2\\pi(50\\,\\text{Hz})(15.0 \\times 10^{-6}\\,\\text{F})} = 212\\,\\Omega\\)\n\nThe rms current is\n\n\\(I = \\frac{V}{X_{C}} = \\frac{220\\,\\text{V}}{212\\,\\Omega} = 1.04\\,\\text{A}\\)\n\nThe peak current is\n\n\\(i_{m} = \\sqrt{2}\\,I = (1.41)(1.04\\,\\text{A}) = 1.47\\,\\text{A}\\)\n\nThis current oscillates between \\(+1.47\\,\\text{A}\\) and \\(-1.47\\,\\text{A}\\), and is ahead of the voltage by \\(\\pi/2\\).\n\nIf the frequency is doubled, the capacitive reactance is halved and consequently, the current is doubled."
+  },
+  {
+    "ref": "Eg 7.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A light bulb and an open coil inductor are connected to an ac source through a key as shown in Fig. 7.9. The switch is closed and after sometime, an iron rod is inserted into the interior of the inductor. The glow of the light bulb (a) increases; (b) decreases; (c) is unchanged, as the iron rod is inserted. Give your answer with reasons.",
+    "solution": "As the iron rod is inserted, the magnetic field inside the coil magnetizes the iron increasing the magnetic field inside it. Hence, the inductance of the coil increases. Consequently, the inductive reactance of the coil increases. As a result, a larger fraction of the applied ac voltage appears across the inductor, leaving less voltage across the bulb. Therefore, the glow of the light bulb decreases.",
+    "_note": "The book prints only THREE lettered alternatives ((a) increases; (b) decreases; (c) is unchanged), not four, so this is transcribed as a free-response worked Example with the three printed choices left in the stem rather than as an MCQ. No fourth option was invented. Fig. 7.9 is the circuit sketch that accompanies the Example; the printed solution is transcribed in full and does not read any value off it, so no figure crop is requested."
+  },
+  {
+    "ref": "Eg 7.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Series LCR Circuit and Resonance",
+    "difficulty": "MODERATE",
+    "stem": "A resistor of \\(200\\,\\Omega\\) and a capacitor of \\(15.0\\,\\mu\\text{F}\\) are connected in series to a \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\) ac source. (a) Calculate the current in the circuit; (b) Calculate the voltage (rms) across the resistor and the capacitor. Is the algebraic sum of these voltages more than the source voltage? If yes, resolve the paradox.",
+    "solution": "Given \\(R = 200\\,\\Omega\\), \\(C = 15.0\\,\\mu\\text{F} = 15.0 \\times 10^{-6}\\,\\text{F}\\), \\(V = 220\\,\\text{V}\\), \\(\\nu = 50\\,\\text{Hz}\\).\n\n(a) In order to calculate the current, we need the impedance of the circuit. It is\n\n\\(Z = \\sqrt{R^{2} + X_{C}^{2}} = \\sqrt{R^{2} + (2\\pi\\nu C)^{-2}}\\)\n\n\\(= \\sqrt{(200\\,\\Omega)^{2} + (2 \\times 3.14 \\times 50 \\times 15.0 \\times 10^{-6}\\,\\text{F})^{-2}}\\)\n\n\\(= \\sqrt{(200\\,\\Omega)^{2} + (212.3\\,\\Omega)^{2}}\\)\n\n\\(= 291.67\\,\\Omega\\)\n\nTherefore, the current in the circuit is\n\n\\(I = \\frac{V}{Z} = \\frac{220\\,\\text{V}}{291.5\\,\\Omega} = 0.755\\,\\text{A}\\)\n\n(b) Since the current is the same throughout the circuit, we have\n\n\\(V_{R} = I\\,R = (0.755\\,\\text{A})(200\\,\\Omega) = 151\\,\\text{V}\\)\n\n\\(V_{C} = I\\,X_{C} = (0.755\\,\\text{A})(212.3\\,\\Omega) = 160.3\\,\\text{V}\\)\n\nThe algebraic sum of the two voltages, \\(V_{R}\\) and \\(V_{C}\\) is \\(311.3\\,\\text{V}\\) which is more than the source voltage of \\(220\\,\\text{V}\\). How to resolve this paradox? As you have learnt in the text, the two voltages are not in the same phase. Therefore, they cannot be added like ordinary numbers. The two voltages are out of phase by ninety degrees. Therefore, the total of these voltages must be obtained using the Pythagorean theorem:\n\n\\(V_{R+C} = \\sqrt{V_{R}^{2} + V_{C}^{2}} = 220\\,\\text{V}\\)\n\nThus, if the phase difference between two voltages is properly taken into account, the total voltage across the resistor and the capacitor is equal to the voltage of the source.",
+    "_note": "PRINTED INCONSISTENCY, transcribed as printed: the book computes the impedance as \\(291.67\\,\\Omega\\) and then divides by \\(291.5\\,\\Omega\\) in the very next line. Both give \\(0.755\\,\\text{A}\\) to three significant figures, so every stated answer is unaffected; only the intermediate value disagrees with itself."
+  },
+  {
+    "ref": "Eg 7.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in AC Circuits and the Power Factor",
+    "difficulty": "MODERATE",
+    "stem": "(a) For circuits used for transporting electric power, a low power factor implies large power loss in transmission. Explain. (b) Power factor can often be improved by the use of a capacitor of appropriate capacitance in the circuit. Explain.",
+    "solution": "(a) We know that \\(P = I\\,V\\cos\\phi\\) where \\(\\cos\\phi\\) is the power factor. To supply a given power at a given voltage, if \\(\\cos\\phi\\) is small, we have to increase current accordingly. But this will lead to large power loss \\((I^{2}R)\\) in transmission.\n\n(b) Suppose in a circuit, current \\(I\\) lags the voltage by an angle \\(\\phi\\). Then power factor \\(\\cos\\phi = R/Z\\).\n\nWe can improve the power factor (tending to 1) by making \\(Z\\) tend to \\(R\\). Let us understand, with the help of a phasor diagram (Fig. 7.15) how this can be achieved. Let us resolve \\(\\mathbf{I}\\) into two components: \\(\\mathbf{I}_{p}\\) along the applied voltage \\(\\mathbf{V}\\) and \\(\\mathbf{I}_{q}\\) perpendicular to the applied voltage. \\(\\mathbf{I}_{q}\\) is called the wattless component since corresponding to this component of current, there is no power loss. \\(\\mathbf{I}_{p}\\) is known as the power component because it is in phase with the voltage and corresponds to power loss in the circuit.\n\nIt is clear from this analysis that if we want to improve power factor, we must completely neutralize the lagging wattless current \\(\\mathbf{I}_{q}\\) by an equal leading wattless current \\(\\mathbf{I}'_{q}\\). This can be done by connecting a capacitor of appropriate value in parallel so that \\(\\mathbf{I}_{q}\\) and \\(\\mathbf{I}'_{q}\\) cancel each other and \\(P\\) is effectively \\(I_{p}V\\)."
+  },
+  {
+    "ref": "Eg 7.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power in AC Circuits and the Power Factor",
+    "difficulty": "HARD",
+    "stem": "A sinusoidal voltage of peak value \\(283\\,\\text{V}\\) and frequency \\(50\\,\\text{Hz}\\) is applied to a series \\(LCR\\) circuit in which \\(R = 3\\,\\Omega\\), \\(L = 25.48\\,\\text{mH}\\), and \\(C = 796\\,\\mu\\text{F}\\). Find (a) the impedance of the circuit; (b) the phase difference between the voltage across the source and the current; (c) the power dissipated in the circuit; and (d) the power factor.",
+    "solution": "(a) To find the impedance of the circuit, we first calculate \\(X_{L}\\) and \\(X_{C}\\).\n\n\\(X_{L} = 2\\pi\\nu L = 2 \\times 3.14 \\times 50 \\times 25.48 \\times 10^{-3}\\,\\Omega = 8\\,\\Omega\\)\n\n\\(X_{C} = \\frac{1}{2\\pi\\nu C} = \\frac{1}{2 \\times 3.14 \\times 50 \\times 796 \\times 10^{-6}} = 4\\,\\Omega\\)\n\nTherefore,\n\n\\(Z = \\sqrt{R^{2} + (X_{L} - X_{C})^{2}} = \\sqrt{3^{2} + (8-4)^{2}} = 5\\,\\Omega\\)\n\n(b) Phase difference,\n\n\\(\\phi = \\tan^{-1}\\frac{X_{C} - X_{L}}{R} = \\tan^{-1}\\left(\\frac{4-8}{3}\\right) = -53.1^{\\circ}\\)\n\nSince \\(\\phi\\) is negative, the current in the circuit lags the voltage across the source.\n\n(c) The power dissipated in the circuit is\n\n\\(P = I^{2}R\\)\n\nNow, \\(I = \\frac{i_{m}}{\\sqrt{2}} = \\frac{1}{\\sqrt{2}}\\left(\\frac{283}{5}\\right) = 40\\,\\text{A}\\)\n\nTherefore, \\(P = (40\\,\\text{A})^{2} \\times 3\\,\\Omega = 4800\\,\\text{W}\\)\n\n(d) Power factor \\(= \\cos\\phi = \\cos(-53.1^{\\circ}) = 0.6\\)"
+  },
+  {
+    "ref": "Eg 7.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Series LCR Circuit and Resonance",
+    "difficulty": "MODERATE",
+    "stem": "Suppose the frequency of the source in the previous example can be varied. (a) What is the frequency of the source at which resonance occurs? (b) Calculate the impedance, the current, and the power dissipated at the resonant condition.",
+    "solution": "(a) The frequency at which the resonance occurs is\n\n\\(\\omega_{0} = \\frac{1}{\\sqrt{LC}} = \\frac{1}{\\sqrt{25.48 \\times 10^{-3} \\times 796 \\times 10^{-6}}}\\)\n\n\\(= 222.1\\,\\text{rad/s}\\)\n\n\\(\\nu_{r} = \\frac{\\omega_{0}}{2\\pi} = \\frac{221.1}{2 \\times 3.14}\\,\\text{Hz} = 35.4\\,\\text{Hz}\\)\n\n(b) The impedance \\(Z\\) at resonant condition is equal to the resistance:\n\n\\(Z = R = 3\\,\\Omega\\)\n\nThe rms current at resonance is\n\n\\(= \\frac{V}{Z} = \\frac{V}{R} = \\left(\\frac{283}{\\sqrt{2}}\\right)\\frac{1}{3} = 66.7\\,\\text{A}\\)\n\nThe power dissipated at resonance is\n\n\\(P = I^{2} \\times R = (66.7)^{2} \\times 3 = 13.35\\,\\text{kW}\\)\n\nYou can see that in the present case, power dissipated at resonance is more than the power dissipated in Example 7.8.",
+    "_note": "TWO printed oddities, both transcribed as printed. (1) The stem is a BACK-REFERENCE: it says only \\\"the previous example\\\" and does not restate the data, so it is not answerable from the stem in isolation. The values it needs (\\(R = 3\\,\\Omega\\), \\(L = 25.48\\,\\text{mH}\\), \\(C = 796\\,\\mu\\text{F}\\), peak \\(283\\,\\text{V}\\)) come from Example 7.8, which is printed immediately above it, and they all reappear inside this Example's own printed solution. (2) PRINTED INCONSISTENCY: the book obtains \\(\\omega_{0} = 222.1\\,\\text{rad/s}\\) and then substitutes \\(221.1\\) in the very next line. \\(222.1\\) is the correct value and is the one consistent with the printed \\(35.4\\,\\text{Hz}\\) (\\(221.1/6.28 = 35.2\\), not \\(35.4\\)), so the \\(221.1\\) is a digit transposition and the stated answer is unaffected."
+  },
+  {
+    "ref": "Eg 7.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Series LCR Circuit and Resonance",
+    "difficulty": "EASY",
+    "stem": "At an airport, a person is made to walk through the doorway of a metal detector, for security reasons. If she/he is carrying anything made of metal, the metal detector emits a sound. On what principle does this detector work?",
+    "solution": "The metal detector works on the principle of resonance in ac circuits. When you walk through a metal detector, you are, in fact, walking through a coil of many turns. The coil is connected to a capacitor tuned so that the circuit is in resonance. When you walk through with metal in your pocket, the impedance of the circuit changes, resulting in significant change in current in the circuit. This change in current is detected and the electronic circuitry causes a sound to be emitted as an alarm."
+  },
+  {
+    "ref": "Ex 7.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to a Resistor",
+    "difficulty": "EASY",
+    "stem": "A \\(100\\,\\Omega\\) resistor is connected to a \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\) ac supply.\n\n(a) What is the rms value of current in the circuit?\n\n(b) What is the net power consumed over a full cycle?"
+  },
+  {
+    "ref": "Ex 7.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to a Resistor",
+    "difficulty": "EASY",
+    "stem": "(a) The peak voltage of an ac supply is \\(300\\,\\text{V}\\). What is the rms voltage?\n\n(b) The rms value of current in an ac circuit is \\(10\\,\\text{A}\\). What is the peak current?"
+  },
+  {
+    "ref": "Ex 7.3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "EASY",
+    "stem": "A \\(44\\,\\text{mH}\\) inductor is connected to \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\) ac supply. Determine the rms value of the current in the circuit."
+  },
+  {
+    "ref": "Ex 7.4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "EASY",
+    "stem": "A \\(60\\,\\mu\\text{F}\\) capacitor is connected to a \\(110\\,\\text{V}\\), \\(60\\,\\text{Hz}\\) ac supply. Determine the rms value of the current in the circuit."
+  },
+  {
+    "ref": "Ex 7.5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "In Exercises 7.3 and 7.4, what is the net power absorbed by each circuit over a complete cycle. Explain your answer.",
+    "_note": "The stem is a BACK-REFERENCE to Exercises 7.3 (a \\(44\\,\\text{mH}\\) inductor on \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\)) and 7.4 (a \\(60\\,\\mu\\text{F}\\) capacitor on \\(110\\,\\text{V}\\), \\(60\\,\\text{Hz}\\)), both of which are printed immediately above it in the same exercise block. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 7.6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Series LCR Circuit and Resonance",
+    "difficulty": "EASY",
+    "stem": "A charged \\(30\\,\\mu\\text{F}\\) capacitor is connected to a \\(27\\,\\text{mH}\\) inductor. What is the angular frequency of free oscillations of the circuit?"
+  },
+  {
+    "ref": "Ex 7.7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Power in AC Circuits and the Power Factor",
+    "difficulty": "MODERATE",
+    "stem": "A series \\(LCR\\) circuit with \\(R = 20\\,\\Omega\\), \\(L = 1.5\\,\\text{H}\\) and \\(C = 35\\,\\mu\\text{F}\\) is connected to a variable-frequency \\(200\\,\\text{V}\\) ac supply. When the frequency of the supply equals the natural frequency of the circuit, what is the average power transferred to the circuit in one complete cycle?"
+  },
+  {
+    "ref": "Ex 7.8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Series LCR Circuit and Resonance",
+    "difficulty": "HARD",
+    "stem": "Figure 7.17 shows a series \\(LCR\\) circuit connected to a variable frequency \\(230\\,\\text{V}\\) source. \\(L = 5.0\\,\\text{H}\\), \\(C = 80\\,\\mu\\text{F}\\), \\(R = 40\\,\\Omega\\).\n\n(a) Determine the source frequency which drives the circuit in resonance.\n\n(b) Obtain the impedance of the circuit and the amplitude of current at the resonating frequency.\n\n(c) Determine the rms potential drops across the three elements of the circuit. Show that the potential drop across the \\(LC\\) combination is zero at the resonating frequency.",
+    "_figure": {
+      "fig": "Fig 7.17",
+      "page": 23
+    },
+    "_note": "Fig. 7.17 is a plain schematic of the series \\(LCR\\) loop and carries NO data: the stem itself states \\(L\\), \\(C\\), \\(R\\), the source voltage and that the circuit is series, so the question is answerable from its stem alone. The crop is requested for PRESENTATION only, because the stem names the figure by number and a dangling figure reference reads as a missing image."
+  }
+]

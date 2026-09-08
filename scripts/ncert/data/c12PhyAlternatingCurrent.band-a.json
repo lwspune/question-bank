@@ -1,0 +1,48 @@
+[
+  {
+    "ref": "Eg 7.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to a Resistor",
+    "difficulty": "EASY",
+    "stem": "A light bulb is rated at \\(100\\,\\text{W}\\) for a \\(220\\,\\text{V}\\) supply. Find (a) the resistance of the bulb; (b) the peak voltage of the source; and (c) the rms current through the bulb.",
+    "solution": "(a) We are given \\(P = 100\\,\\text{W}\\) and \\(V = 220\\,\\text{V}\\). The resistance of the bulb is\n\n\\(R = \\frac{V^{2}}{P} = \\frac{(220\\,\\text{V})^{2}}{100\\,\\text{W}} = 484\\,\\Omega\\)\n\n(b) The peak voltage of the source is\n\n\\(v_{m} = \\sqrt{2}\\,V = 311\\,\\text{V}\\)\n\n(c) Since \\(P = I\\,V\\),\n\n\\(I = \\frac{P}{V} = \\frac{100\\,\\text{W}}{220\\,\\text{V}} = 0.454\\,\\text{A}\\)"
+  },
+  {
+    "ref": "Eg 7.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "EASY",
+    "stem": "A pure inductor of \\(25.0\\,\\text{mH}\\) is connected to a source of \\(220\\,\\text{V}\\). Find the inductive reactance and rms current in the circuit if the frequency of the source is \\(50\\,\\text{Hz}\\).",
+    "solution": "The inductive reactance,\n\n\\(X_{L} = 2\\pi\\nu L = 2 \\times 3.14 \\times 50 \\times 25 \\times 10^{-3}\\,\\Omega\\)\n\n\\(= 7.85\\,\\Omega\\)\n\nThe rms current in the circuit is\n\n\\(I = \\frac{V}{X_{L}} = \\frac{220\\,\\text{V}}{7.85\\,\\Omega} = 28\\,\\text{A}\\)"
+  },
+  {
+    "ref": "Eg 7.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A lamp is connected in series with a capacitor. Predict your observations for dc and ac connections. What happens in each case if the capacitance of the capacitor is reduced?",
+    "solution": "When a dc source is connected to a capacitor, the capacitor gets charged and after charging no current flows in the circuit and the lamp will not glow. There will be no change even if \\(C\\) is reduced.\n\nWith ac source, the capacitor offers capacitative reactance \\((1/\\omega C)\\) and the current flows in the circuit. Consequently, the lamp will shine. Reducing \\(C\\) will increase reactance and the lamp will shine less brightly than before."
+  },
+  {
+    "ref": "Eg 7.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A \\(15.0\\,\\mu\\text{F}\\) capacitor is connected to a \\(220\\,\\text{V}\\), \\(50\\,\\text{Hz}\\) source. Find the capacitive reactance and the current (rms and peak) in the circuit. If the frequency is doubled, what happens to the capacitive reactance and the current?",
+    "solution": "The capacitive reactance is\n\n\\(X_{C} = \\frac{1}{2\\pi\\nu C} = \\frac{1}{2\\pi(50\\,\\text{Hz})(15.0 \\times 10^{-6}\\,\\text{F})} = 212\\,\\Omega\\)\n\nThe rms current is\n\n\\(I = \\frac{V}{X_{C}} = \\frac{220\\,\\text{V}}{212\\,\\Omega} = 1.04\\,\\text{A}\\)\n\nThe peak current is\n\n\\(i_{m} = \\sqrt{2}\\,I = (1.41)(1.04\\,\\text{A}) = 1.47\\,\\text{A}\\)\n\nThis current oscillates between \\(+1.47\\,\\text{A}\\) and \\(-1.47\\,\\text{A}\\), and is ahead of the voltage by \\(\\pi/2\\).\n\nIf the frequency is doubled, the capacitive reactance is halved and consequently, the current is doubled."
+  },
+  {
+    "ref": "Eg 7.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+    "difficulty": "MODERATE",
+    "stem": "A light bulb and an open coil inductor are connected to an ac source through a key as shown in Fig. 7.9. The switch is closed and after sometime, an iron rod is inserted into the interior of the inductor. The glow of the light bulb (a) increases; (b) decreases; (c) is unchanged, as the iron rod is inserted. Give your answer with reasons.",
+    "solution": "[Textbook defect: this example prints only THREE lettered alternatives, not four. It ships here as a free-response question with the printed choices carried in the stem rather than as a multiple-choice question — inventing a fourth option would fabricate content the book does not contain.] As the iron rod is inserted, the magnetic field inside the coil magnetizes the iron increasing the magnetic field inside it. Hence, the inductance of the coil increases. Consequently, the inductive reactance of the coil increases. As a result, a larger fraction of the applied ac voltage appears across the inductor, leaving less voltage across the bulb. Therefore, the glow of the light bulb decreases.",
+    "_note": "The book prints only THREE lettered alternatives ((a) increases; (b) decreases; (c) is unchanged), not four, so this is transcribed as a free-response worked Example with the three printed choices left in the stem rather than as an MCQ. No fourth option was invented. Fig. 7.9 is the circuit sketch that accompanies the Example; the printed solution is transcribed in full and does not read any value off it, so no figure crop is requested."
+  }
+]

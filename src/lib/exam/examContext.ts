@@ -191,13 +191,33 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
     std: 11,
-    // NO mixedFormats — and unlike the other board corpora that is a PERMANENT
-    // property, not a "not yet". Measured over all 14 chapter PDFs: the NCERT
-    // Class 11 Maths book contains ZERO MCQs (no "Choose the correct answer"
-    // instruction anywhere, no four-option run in any chapter), where Class 12
-    // has 29. So its corpus is 100% subjective — single-format — and the
-    // /browse Format control would be a no-op. tests/format-mix-registry.test.ts
-    // re-measures this against the live bank in both directions.
+    mixedFormats: true, // 1,465 subjective vs 1 MCQ (measured 2026-09-07)
+    //
+    // THE HISTORY MATTERS HERE, because this flag was once wrong in a way that
+    // looked permanent. It read "NO mixedFormats — and unlike the other board
+    // corpora that is a PERMANENT property, not a 'not yet'", on a measurement
+    // of the NCERT Class 11 **Maths** book, which genuinely contains ZERO MCQs
+    // (no "Choose the correct answer" instruction anywhere, no four-option run
+    // in any of its 14 chapters) against 29 in Class 12 Maths.
+    //
+    // That claim was measured on one SUBJECT while this flag is EXAM-scoped.
+    // PHYSICS landed on this exam on 2026-09-07 and does contain genuine
+    // four-option MCQs, so the "permanent" property lasted exactly as long as
+    // the exam had one subject. Predicted here before it happened, then
+    // triggered by Ch.4 Laws of Motion Ex 4.4 (the net centripetal force on a
+    // particle whirled on a string) — NOT by the Ch.5 questions 5.9/5.10 the
+    // earlier note named, though those are real MCQs too and are still to come.
+    //
+    // Two near-misses worth keeping, because both look like MCQs and are not:
+    // "Choose the correct alternative" in Ch.2/Ch.7 (and Class 12 Ch.12) heads
+    // a SUB-PART list where each (a)/(b)/(c)/(d) carries its own inline either/or
+    // ("increases/decreases with increasing altitude"); and Ch.6 Q6.1 lists
+    // "(i) sphere, (ii) cylinder, (iii) ring, (iv) cube" inside one subjective
+    // question. Key on whether the four alternatives are RIVAL ANSWERS, never on
+    // the instruction line or the label shape.
+    //
+    // tests/format-mix-registry.test.ts re-measures this against the live bank
+    // in both directions.
   },
   {
     slug: "cbse-12",

@@ -1,0 +1,76 @@
+[
+  {
+    "ref": "Eg 10.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Show that the coefficient of area expansion, \\((\\Delta A/A)/\\Delta T\\), of a rectangular sheet of the solid is twice its linear expansivity, \\(\\alpha_l\\).",
+    "solution": "Consider a rectangular sheet of the solid material of length \\(a\\) and breadth \\(b\\) (Fig. 10.8). When the temperature increases by \\(\\Delta T\\), \\(a\\) increases by \\(\\Delta a = \\alpha_l a \\Delta T\\) and \\(b\\) increases by \\(\\Delta b = \\alpha_l b \\Delta T\\).\n\nFrom Fig. 10.8, the increase in area is\n\\(\\Delta A = \\Delta A_1 + \\Delta A_2 + \\Delta A_3\\)\n\\(\\Delta A = a\\,\\Delta b + b\\,\\Delta a + (\\Delta a)(\\Delta b)\\)\n\\(= a\\,\\alpha_l b\\,\\Delta T + b\\,\\alpha_l a\\,\\Delta T + (\\alpha_l)^2 ab\\,(\\Delta T)^2\\)\n\\(= \\alpha_l ab\\,\\Delta T\\,(2 + \\alpha_l \\Delta T) = \\alpha_l A\\,\\Delta T\\,(2 + \\alpha_l \\Delta T)\\)\n\nSince \\(\\alpha_l \\simeq 10^{-5}\\,\\text{K}^{-1}\\), from Table 10.1, the product \\(\\alpha_l \\Delta T\\) is small in comparison with 2 and may be neglected. Hence,\n\\(\\left(\\dfrac{\\Delta A}{A}\\right)\\dfrac{1}{\\Delta T} \\simeq 2\\alpha_l\\)"
+  },
+  {
+    "ref": "Eg 10.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Thermal Expansion",
+    "difficulty": "MODERATE",
+    "stem": "A blacksmith fixes iron ring on the rim of the wooden wheel of a horse cart. The diameter of the rim and the iron ring are \\(5.243\\,\\text{m}\\) and \\(5.231\\,\\text{m}\\), respectively at \\(27\\,^\\circ\\text{C}\\). To what temperature should the ring be heated so as to fit the rim of the wheel?",
+    "solution": "Given, \\(T_1 = 27\\,^\\circ\\text{C}\\), \\(L_{T_1} = 5.231\\,\\text{m}\\), \\(L_{T_2} = 5.243\\,\\text{m}\\).\n\nSo, \\(L_{T_2} = L_{T_1}\\,[1 + \\alpha_l (T_2 - T_1)]\\)\n\n\\(5.243\\,\\text{m} = 5.231\\,\\text{m}\\,[1 + 1.20 \\times 10^{-5}\\,\\text{K}^{-1}\\,(T_2 - 27\\,^\\circ\\text{C})]\\)\n\nor \\(T_2 = 218\\,^\\circ\\text{C}\\).",
+    "_note": "The book's printed working sets the coefficient as \"1.20 10–5 K–1\" with the multiplication sign dropped by the typesetter; transcribed with the \\(\\times\\) restored. The value and the printed answer are unaffected."
+  },
+  {
+    "ref": "Eg 10.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Calorimetry",
+    "difficulty": "MODERATE",
+    "stem": "A sphere of \\(0.047\\,\\text{kg}\\) aluminium is placed for sufficient time in a vessel containing boiling water, so that the sphere is at \\(100\\,^\\circ\\text{C}\\). It is then immediately transfered to \\(0.14\\,\\text{kg}\\) copper calorimeter containing \\(0.25\\,\\text{kg}\\) water at \\(20\\,^\\circ\\text{C}\\). The temperature of water rises and attains a steady state at \\(23\\,^\\circ\\text{C}\\). Calculate the specific heat capacity of aluminium.",
+    "solution": "In solving this example, we shall use the fact that at a steady state, heat given by an aluminium sphere will be equal to the heat absorbed by the water and calorimeter.\n\nMass of aluminium sphere \\((m_1) = 0.047\\,\\text{kg}\\)\nInitial temperature of aluminium sphere \\(= 100\\,^\\circ\\text{C}\\)\nFinal temperature \\(= 23\\,^\\circ\\text{C}\\)\nChange in temperature \\((\\Delta T) = (100\\,^\\circ\\text{C} - 23\\,^\\circ\\text{C}) = 77\\,^\\circ\\text{C}\\)\n\nLet the specific heat capacity of aluminium be \\(s_{Al}\\). The amount of heat lost by the aluminium sphere \\(= m_1 s_{Al} \\Delta T = 0.047\\,\\text{kg} \\times s_{Al} \\times 77\\,^\\circ\\text{C}\\).\n\nMass of water \\((m_2) = 0.25\\,\\text{kg}\\)\nMass of calorimeter \\((m_3) = 0.14\\,\\text{kg}\\)\nInitial temperature of water and calorimeter \\(= 20\\,^\\circ\\text{C}\\)\nFinal temperature of the mixture \\(= 23\\,^\\circ\\text{C}\\)\nChange in temperature \\((\\Delta T_2) = 23\\,^\\circ\\text{C} - 20\\,^\\circ\\text{C} = 3\\,^\\circ\\text{C}\\)\nSpecific heat capacity of water \\((s_w) = 4.18 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\)\nSpecific heat capacity of copper calorimeter \\((s_{cu}) = 0.386 \\times 10^{3}\\,\\text{J kg}^{-1}\\,\\text{K}^{-1}\\)\n\nThe amount of heat gained by water and calorimeter \\(= m_2 s_w \\Delta T_2 + m_3 s_{cu} \\Delta T_2 = (m_2 s_w + m_3 s_{cu})(\\Delta T_2)\\).\n\nIn the steady state, heat lost by the aluminium sphere = heat gained by water + heat gained by calorimeter. So,\n\n\\(0.047\\,\\text{kg} \\times s_{Al} \\times 77\\,^\\circ\\text{C} = (0.25\\,\\text{kg} \\times 4.18 \\times 10^{3}\\,\\text{J kg}^{-1}\\text{K}^{-1} + 0.14\\,\\text{kg} \\times 0.386 \\times 10^{3}\\,\\text{J kg}^{-1}\\text{K}^{-1})(3\\,^\\circ\\text{C})\\)\n\n\\(s_{Al} = 0.911\\,\\text{kJ kg}^{-1}\\,\\text{K}^{-1}\\)"
+  },
+  {
+    "ref": "Eg 10.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "MODERATE",
+    "stem": "When \\(0.15\\,\\text{kg}\\) of ice at \\(0\\,^\\circ\\text{C}\\) is mixed with \\(0.30\\,\\text{kg}\\) of water at \\(50\\,^\\circ\\text{C}\\) in a container, the resulting temperature is \\(6.7\\,^\\circ\\text{C}\\). Calculate the heat of fusion of ice. \\((s_{\\text{water}} = 4186\\,\\text{J kg}^{-1}\\,\\text{K}^{-1})\\)",
+    "solution": "Heat lost by water \\(= m s_w (\\theta_f - \\theta_i)_w\\)\n\\(= (0.30\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(50.0\\,^\\circ\\text{C} - 6.7\\,^\\circ\\text{C})\\)\n\\(= 54376.14\\,\\text{J}\\)\n\nHeat required to melt ice \\(= m_2 L_f = (0.15\\,\\text{kg})\\,L_f\\)\n\nHeat required to raise temperature of ice water to final temperature \\(= m_I s_w (\\theta_f - \\theta_i)_I\\)\n\\(= (0.15\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(6.7\\,^\\circ\\text{C} - 0\\,^\\circ\\text{C})\\)\n\\(= 4206.93\\,\\text{J}\\)\n\nHeat lost = heat gained\n\\(54376.14\\,\\text{J} = (0.15\\,\\text{kg})\\,L_f + 4206.93\\,\\text{J}\\)\n\n\\(L_f = 3.34 \\times 10^{5}\\,\\text{J kg}^{-1}\\)",
+    "_note": "The book's printed final line reads \"3.34 10⁵ J kg–1\" with the multiplication sign dropped by the typesetter; transcribed with the \\(\\times\\) restored."
+  },
+  {
+    "ref": "Eg 10.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Change of State and Latent Heat",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the heat required to convert \\(3\\,\\text{kg}\\) of ice at \\(-12\\,^\\circ\\text{C}\\) kept in a calorimeter to steam at \\(100\\,^\\circ\\text{C}\\) at atmospheric pressure. Given specific heat capacity of ice \\(= 2100\\,\\text{J kg}^{-1}\\text{K}^{-1}\\), specific heat capacity of water \\(= 4186\\,\\text{J kg}^{-1}\\text{K}^{-1}\\), latent heat of fusion of ice \\(= 3.35 \\times 10^{5}\\,\\text{J kg}^{-1}\\) and latent heat of steam \\(= 2.256 \\times 10^{6}\\,\\text{J kg}^{-1}\\).",
+    "solution": "We have\nMass of the ice, \\(m = 3\\,\\text{kg}\\)\nSpecific heat capacity of ice, \\(s_{\\text{ice}} = 2100\\,\\text{J kg}^{-1}\\text{K}^{-1}\\)\nSpecific heat capacity of water, \\(s_{\\text{water}} = 4186\\,\\text{J kg}^{-1}\\text{K}^{-1}\\)\nLatent heat of fusion of ice, \\(L_{f\\,\\text{ice}} = 3.35 \\times 10^{5}\\,\\text{J kg}^{-1}\\)\nLatent heat of steam, \\(L_{\\text{steam}} = 2.256 \\times 10^{6}\\,\\text{J kg}^{-1}\\)\n\nNow, \\(Q\\) = heat required to convert \\(3\\,\\text{kg}\\) of ice at \\(-12\\,^\\circ\\text{C}\\) to steam at \\(100\\,^\\circ\\text{C}\\).\n\n\\(Q_1\\) = heat required to convert ice at \\(-12\\,^\\circ\\text{C}\\) to ice at \\(0\\,^\\circ\\text{C}\\)\n\\(= m\\,s_{\\text{ice}}\\,\\Delta T_1 = (3\\,\\text{kg})(2100\\,\\text{J kg}^{-1}\\text{K}^{-1})[0 - (-12)]\\,^\\circ\\text{C} = 75600\\,\\text{J}\\)\n\n\\(Q_2\\) = heat required to melt ice at \\(0\\,^\\circ\\text{C}\\) to water at \\(0\\,^\\circ\\text{C}\\)\n\\(= m\\,L_{f\\,\\text{ice}} = (3\\,\\text{kg})(3.35 \\times 10^{5}\\,\\text{J kg}^{-1}) = 1005000\\,\\text{J}\\)\n\n\\(Q_3\\) = heat required to convert water at \\(0\\,^\\circ\\text{C}\\) to water at \\(100\\,^\\circ\\text{C}\\)\n\\(= m\\,s_w\\,\\Delta T_2 = (3\\,\\text{kg})(4186\\,\\text{J kg}^{-1}\\text{K}^{-1})(100\\,^\\circ\\text{C}) = 1255800\\,\\text{J}\\)\n\n\\(Q_4\\) = heat required to convert water at \\(100\\,^\\circ\\text{C}\\) to steam at \\(100\\,^\\circ\\text{C}\\)\n\\(= m\\,L_{\\text{steam}} = (3\\,\\text{kg})(2.256 \\times 10^{6}\\,\\text{J kg}^{-1}) = 6768000\\,\\text{J}\\)\n\nSo, \\(Q = Q_1 + Q_2 + Q_3 + Q_4\\)\n\\(= 75600\\,\\text{J} + 1005000\\,\\text{J} + 1255800\\,\\text{J} + 6768000\\,\\text{J}\\)\n\\(= 9.1 \\times 10^{6}\\,\\text{J}\\)"
+  },
+  {
+    "ref": "Eg 10.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "MODERATE",
+    "stem": "What is the temperature of the steel-copper junction in the steady state of the system shown in Fig. 10.15. Length of the steel rod \\(= 15.0\\,\\text{cm}\\), length of the copper rod \\(= 10.0\\,\\text{cm}\\), temperature of the furnace \\(= 300\\,^\\circ\\text{C}\\), temperature of the other end \\(= 0\\,^\\circ\\text{C}\\). The area of cross section of the steel rod is twice that of the copper rod. (Thermal conductivity of steel \\(= 50.2\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\); and of copper \\(= 385\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\)).",
+    "solution": "The insulating material around the rods reduces heat loss from the sides of the rods. Therefore, heat flows only along the length of the rods. Consider any cross section of the rod. In the steady state, heat flowing into the element must equal the heat flowing out of it; otherwise there would be a net gain or loss of heat by the element and its temperature would not be steady. Thus in the steady state, rate of heat flowing across a cross section of the rod is the same at every point along the length of the combined steel-copper rod.\n\nLet \\(T\\) be the temperature of the steel-copper junction in the steady state. Then,\n\n\\(\\dfrac{K_1 A_1 (300 - T)}{L_1} = \\dfrac{K_2 A_2 (T - 0)}{L_2}\\)\n\nwhere 1 and 2 refer to the steel and copper rod respectively. For \\(A_1 = 2A_2\\), \\(L_1 = 15.0\\,\\text{cm}\\), \\(L_2 = 10.0\\,\\text{cm}\\), \\(K_1 = 50.2\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\), \\(K_2 = 385\\,\\text{J s}^{-1}\\text{m}^{-1}\\text{K}^{-1}\\), we have\n\n\\(\\dfrac{50.2 \\times 2\\,(300 - T)}{15} = \\dfrac{385\\,T}{10}\\)\n\nwhich gives \\(T = 44.4\\,^\\circ\\text{C}\\)"
+  },
+  {
+    "ref": "Eg 10.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Heat Transfer",
+    "difficulty": "HARD",
+    "stem": "An iron bar \\((L_1 = 0.1\\,\\text{m},\\ A_1 = 0.02\\,\\text{m}^2,\\ K_1 = 79\\,\\text{W m}^{-1}\\text{K}^{-1})\\) and a brass bar \\((L_2 = 0.1\\,\\text{m},\\ A_2 = 0.02\\,\\text{m}^2,\\ K_2 = 109\\,\\text{W m}^{-1}\\text{K}^{-1})\\) are soldered end to end as shown in Fig. 10.16. The free ends of the iron bar and brass bar are maintained at \\(373\\,\\text{K}\\) and \\(273\\,\\text{K}\\) respectively. Obtain expressions for and hence compute (i) the temperature of the junction of the two bars, (ii) the equivalent thermal conductivity of the compound bar, and (iii) the heat current through the compound bar.",
+    "solution": "Given, \\(L_1 = L_2 = L = 0.1\\,\\text{m}\\), \\(A_1 = A_2 = A = 0.02\\,\\text{m}^2\\), \\(K_1 = 79\\,\\text{W m}^{-1}\\text{K}^{-1}\\), \\(K_2 = 109\\,\\text{W m}^{-1}\\text{K}^{-1}\\), \\(T_1 = 373\\,\\text{K}\\), and \\(T_2 = 273\\,\\text{K}\\).\n\nUnder steady state condition, the heat current \\((H_1)\\) through iron bar is equal to the heat current \\((H_2)\\) through brass bar. So, \\(H = H_1 = H_2\\)\n\n\\(\\dfrac{K_1 A_1 (T_1 - T_0)}{L_1} = \\dfrac{K_2 A_2 (T_0 - T_2)}{L_2}\\)\n\nFor \\(A_1 = A_2 = A\\) and \\(L_1 = L_2 = L\\), this equation leads to \\(K_1 (T_1 - T_0) = K_2 (T_0 - T_2)\\). Thus, the junction temperature \\(T_0\\) of the two bars is\n\n\\(T_0 = \\dfrac{(K_1 T_1 + K_2 T_2)}{(K_1 + K_2)}\\)\n\nUsing this equation, the heat current \\(H\\) through either bar is\n\n\\(H = \\dfrac{K_1 A (T_1 - T_0)}{L} = \\dfrac{K_2 A (T_0 - T_2)}{L} = \\left(\\dfrac{K_1 K_2}{K_1 + K_2}\\right)\\dfrac{A (T_1 - T_0)}{L} = \\dfrac{A (T_1 - T_2)}{L\\left(\\dfrac{1}{K_1} + \\dfrac{1}{K_2}\\right)}\\)\n\nUsing these equations, the heat current \\(H'\\) through the compound bar of length \\(L_1 + L_2 = 2L\\) and the equivalent thermal conductivity \\(K'\\) of the compound bar are given by\n\n\\(H' = \\dfrac{K' A (T_1 - T_2)}{2L} = H\\), and \\(K' = \\dfrac{2 K_1 K_2}{K_1 + K_2}\\)\n\n(i) \\(T_0 = \\dfrac{(K_1 T_1 + K_2 T_2)}{(K_1 + K_2)} = \\dfrac{(79\\,\\text{W m}^{-1}\\text{K}^{-1})(373\\,\\text{K}) + (109\\,\\text{W m}^{-1}\\text{K}^{-1})(273\\,\\text{K})}{79\\,\\text{W m}^{-1}\\text{K}^{-1} + 109\\,\\text{W m}^{-1}\\text{K}^{-1}} = 315\\,\\text{K}\\)\n\n(ii) \\(K' = \\dfrac{2 K_1 K_2}{K_1 + K_2} = \\dfrac{2 \\times (79\\,\\text{W m}^{-1}\\text{K}^{-1}) \\times (109\\,\\text{W m}^{-1}\\text{K}^{-1})}{79\\,\\text{W m}^{-1}\\text{K}^{-1} + 109\\,\\text{W m}^{-1}\\text{K}^{-1}} = 91.6\\,\\text{W m}^{-1}\\text{K}^{-1}\\)\n\n(iii) \\(H' = H = \\dfrac{K' A (T_1 - T_2)}{2L} = \\dfrac{(91.6\\,\\text{W m}^{-1}\\text{K}^{-1}) \\times (0.02\\,\\text{m}^2) \\times (373\\,\\text{K} - 273\\,\\text{K})}{2 \\times (0.1\\,\\text{m})} = 916.1\\,\\text{W}\\)"
+  },
+  {
+    "ref": "Eg 10.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Newton's Law of Cooling",
+    "difficulty": "MODERATE",
+    "stem": "A pan filled with hot food cools from \\(94\\,^\\circ\\text{C}\\) to \\(86\\,^\\circ\\text{C}\\) in 2 minutes when the room temperature is at \\(20\\,^\\circ\\text{C}\\). How long will it take to cool from \\(71\\,^\\circ\\text{C}\\) to \\(69\\,^\\circ\\text{C}\\)?",
+    "solution": "The average temperature of \\(94\\,^\\circ\\text{C}\\) and \\(86\\,^\\circ\\text{C}\\) is \\(90\\,^\\circ\\text{C}\\), which is \\(70\\,^\\circ\\text{C}\\) above the room temperature. Under these conditions the pan cools \\(8\\,^\\circ\\text{C}\\) in 2 minutes.\n\nUsing Eq. (10.21), we have\n\n\\(\\dfrac{\\text{Change in temperature}}{\\text{Time}} = K\\,\\Delta T\\)\n\n\\(\\dfrac{8\\,^\\circ\\text{C}}{2\\ \\text{min}} = K\\,(70\\,^\\circ\\text{C})\\)\n\nThe average of \\(69\\,^\\circ\\text{C}\\) and \\(71\\,^\\circ\\text{C}\\) is \\(70\\,^\\circ\\text{C}\\), which is \\(50\\,^\\circ\\text{C}\\) above room temperature. \\(K\\) is the same for this situation as for the original.\n\n\\(\\dfrac{2\\,^\\circ\\text{C}}{\\text{Time}} = K\\,(50\\,^\\circ\\text{C})\\)\n\nWhen we divide above two equations, we have\n\n\\(\\dfrac{8\\,^\\circ\\text{C}/2\\ \\text{min}}{2\\,^\\circ\\text{C}/\\text{time}} = \\dfrac{K\\,(70\\,^\\circ\\text{C})}{K\\,(50\\,^\\circ\\text{C})}\\)\n\nTime \\(= 0.7\\ \\text{min} = 42\\,\\text{s}\\)"
+  }
+]

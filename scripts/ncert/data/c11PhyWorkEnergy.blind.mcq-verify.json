@@ -1,0 +1,16 @@
+[
+  {
+    "id": "3bdfded4-d13c-4e65-9b9f-33b122028e8b",
+    "ref": "Ex 5.9",
+    "derived_answer": "B",
+    "solution": "The body starts from rest with a constant acceleration \\(a\\), so its speed grows linearly, \\(v = at\\). The acceleration is constant, so by Newton's second law the force is constant too, \\(F = ma\\). The instantaneous power is the product of the two: \\(P = Fv = (ma)(at) = ma^{2}t\\). Since \\(m\\) and \\(a\\) are both constant, the power is directly proportional to \\(t\\). The key point is that only ONE of the two factors in \\(P = Fv\\) grows with time here — the force does not.",
+    "matches_current": true
+  },
+  {
+    "id": "b187ab06-e098-418e-8a7b-321eb0a22848",
+    "ref": "Ex 5.10",
+    "derived_answer": "C",
+    "solution": "The power is constant, so \\(P = Fv = m\\dfrac{dv}{dt}v\\) is a constant. Separating the variables, \\(v\\,dv = \\dfrac{P}{m}\\,dt\\), and integrating from rest gives \\(\\dfrac{v^{2}}{2} = \\dfrac{P}{m}t\\), so \\(v = \\sqrt{\\dfrac{2P}{m}}\\,t^{1/2}\\) — the speed rises as \\(t^{1/2}\\), not linearly, because a constant power delivers less force as the body speeds up. Integrating once more for the displacement, \\(x = \\int v\\,dt \\propto \\int t^{1/2}\\,dt \\propto t^{3/2}\\). So the displacement grows as \\(t^{3/2}\\).",
+    "matches_current": true
+  }
+]

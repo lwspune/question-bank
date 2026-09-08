@@ -1,0 +1,49 @@
+[
+  {
+    "ref": "Eg 5.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Potential Energy and Conservation of Mechanical Energy",
+    "difficulty": "MODERATE",
+    "stem": "To simulate car accidents, auto manufacturers study the collisions of moving cars with mounted springs of different spring constants. Consider a typical simulation with a car of mass \\(1000\\,\\text{kg}\\) moving with a speed \\(18.0\\,\\text{km/h}\\) on a smooth road and colliding with a horizontally mounted spring of spring constant \\(5.25\\times 10^{3}\\,\\text{N m}^{-1}\\). What is the maximum compression of the spring?",
+    "solution": "At maximum compression the kinetic energy of the car is converted entirely into the potential energy of the spring.\n\nThe kinetic energy of the moving car is\n\n\\(K = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2}\\times 10^{3}\\times 5\\times 5\\)\n\n\\(K = 1.25\\times 10^{4}\\,\\text{J}\\)\n\nwhere we have converted \\(18\\,\\text{km h}^{-1}\\) to \\(5\\,\\text{m s}^{-1}\\) [it is useful to remember that \\(36\\,\\text{km h}^{-1} = 10\\,\\text{m s}^{-1}\\)].\n\nAt maximum compression \\(x_m\\), the potential energy \\(V\\) of the spring is equal to the kinetic energy \\(K\\) of the moving car from the principle of conservation of mechanical energy.\n\n\\(V = \\dfrac{1}{2}kx_m^2 = 1.25\\times 10^{4}\\,\\text{J}\\)\n\nWe obtain \\(x_m = 2.00\\,\\text{m}\\)\n\nWe note that we have idealised the situation. The spring is considered to be massless. The surface has been considered to possess negligible friction."
+  },
+  {
+    "ref": "Eg 5.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Potential Energy and Conservation of Mechanical Energy",
+    "difficulty": "HARD",
+    "stem": "Consider Example 5.8 taking the coefficient of friction, \\(\\mu\\), to be \\(0.5\\) and calculate the maximum compression of the spring.",
+    "solution": "In presence of friction, both the spring force and the frictional force act so as to oppose the compression of the spring as shown in Fig. 5.9.\n\nWe invoke the work-energy theorem, rather than the conservation of mechanical energy.\n\nThe change in kinetic energy is\n\n\\(\\Delta K = K_f - K_i = 0 - \\dfrac{1}{2}mv^2\\)\n\nThe work done by the net force is\n\n\\(W = -\\dfrac{1}{2}kx_m^2 - \\mu m g x_m\\)\n\nEquating we have\n\n\\(\\dfrac{1}{2}mv^2 = \\dfrac{1}{2}kx_m^2 + \\mu m g x_m\\)\n\nNow \\(\\mu m g = 0.5\\times 10^{3}\\times 10 = 5\\times 10^{3}\\,\\text{N}\\) (taking \\(g = 10.0\\,\\text{m s}^{-2}\\)). After rearranging the above equation we obtain the following quadratic equation in the unknown \\(x_m\\).\n\n\\(kx_m^2 + 2\\mu m g x_m - mv^2 = 0\\)\n\n\\(x_m = \\dfrac{-\\mu m g + \\left[\\mu^2 m^2 g^2 + m k v^2\\right]^{1/2}}{k}\\)\n\nwhere we take the positive square root since \\(x_m\\) is positive. Putting in numerical values we obtain\n\n\\(x_m = 1.35\\,\\text{m}\\)\n\nwhich, as expected, is less than the result in Example 5.8."
+  },
+  {
+    "ref": "Eg 5.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Power",
+    "difficulty": "EASY",
+    "stem": "An elevator can carry a maximum load of \\(1800\\,\\text{kg}\\) (elevator + passengers) is moving up with a constant speed of \\(2\\,\\text{m s}^{-1}\\). The frictional force opposing the motion is \\(4000\\,\\text{N}\\). Determine the minimum power delivered by the motor to the elevator in watts as well as in horse power.",
+    "solution": "The downward force on the elevator is\n\n\\(F = mg + F_f = (1800\\times 10) + 4000 = 22000\\,\\text{N}\\)\n\nThe motor must supply enough power to balance this force. Hence,\n\n\\(P = \\mathbf{F}\\cdot\\mathbf{v} = 22000\\times 2 = 44000\\,\\text{W} = 59\\,\\text{hp}\\)"
+  },
+  {
+    "ref": "Eg 5.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "stem": "Slowing down of neutrons: In a nuclear reactor a neutron of high speed (typically \\(10^{7}\\,\\text{m s}^{-1}\\)) must be slowed to \\(10^{3}\\,\\text{m s}^{-1}\\) so that it can have a high probability of interacting with isotope \\(^{235}_{92}\\text{U}\\) and causing it to fission. Show that a neutron can lose most of its kinetic energy in an elastic collision with a light nuclei like deuterium or carbon which has a mass of only a few times the neutron mass. The material making up the light nuclei, usually heavy water \\((\\text{D}_2\\text{O})\\) or graphite, is called a moderator.",
+    "solution": "[Textbook mislabel: the book calls \\(f_1\\) \"the fractional kinetic energy LOST\" by the neutron, but the expression it defines, \\(K_{1f}/K_{1i}\\), is the fraction RETAINED. The book's own numbers show which is the slip — for deuterium it gets \\(f_1 = 1/9\\) and describes that as almost 90% of the energy being TRANSFERRED to the moderator, which is only consistent with \\(f_1\\) being the fraction kept. The physics and the arithmetic are right; only the word is wrong.] The initial kinetic energy of the neutron is\n\n\\(K_{1i} = \\dfrac{1}{2}m_1 v_{1i}^2\\)\n\nwhile its final kinetic energy from Eq. (5.26)\n\n\\(K_{1f} = \\dfrac{1}{2}m_1 v_{1f}^2 = \\dfrac{1}{2}m_1\\left(\\dfrac{m_1 - m_2}{m_1 + m_2}\\right)^2 v_{1i}^2\\)\n\nThe fractional kinetic energy lost is\n\n\\(f_1 = \\dfrac{K_{1f}}{K_{1i}} = \\left(\\dfrac{m_1 - m_2}{m_1 + m_2}\\right)^2\\)\n\nwhile the fractional kinetic energy gained by the moderating nuclei \\(K_{2f}/K_{1i}\\) is\n\n\\(f_2 = 1 - f_1\\) (elastic collision)\n\n\\(= \\dfrac{4m_1 m_2}{(m_1 + m_2)^2}\\)\n\nOne can also verify this result by substituting from Eq. (5.27).\n\nFor deuterium \\(m_2 = 2m_1\\) and we obtain \\(f_1 = 1/9\\) while \\(f_2 = 8/9\\). Almost \\(90\\%\\) of the neutron's energy is transferred to deuterium. For carbon \\(f_1 = 71.6\\%\\) and \\(f_2 = 28.4\\%\\). In practice, however, this number is smaller since head-on collisions are rare.",
+    "_note": "The book labels \\(f_1\\) 'the fractional kinetic energy LOST', but the expression given, \\(K_{1f}/K_{1i}\\), is the fraction RETAINED by the neutron. Its own numbers confirm the label is the slip and the expression is right: for deuterium it quotes \\(f_1 = 1/9\\) with \\(f_2 = 8/9\\) and says almost 90% is TRANSFERRED, so \\(f_1\\) is what is kept. Transcribed as printed."
+  },
+  {
+    "ref": "Eg 5.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Collisions",
+    "difficulty": "HARD",
+    "stem": "Consider the collision depicted in Fig. 5.10 to be between two billiard balls with equal masses \\(m_1 = m_2\\). The first ball is called the cue while the second ball is called the target. The billiard player wants to 'sink' the target ball in a corner pocket, which is at an angle \\(\\theta_2 = 37^{\\circ}\\). Assume that the collision is elastic and that friction and rotational motion are not important. Obtain \\(\\theta_1\\).",
+    "solution": "From momentum conservation, since the masses are equal\n\n\\(\\mathbf{v}_{1i} = \\mathbf{v}_{1f} + \\mathbf{v}_{2f}\\)\n\nor \\(v_{1i}^2 = (\\mathbf{v}_{1f} + \\mathbf{v}_{2f})\\cdot(\\mathbf{v}_{1f} + \\mathbf{v}_{2f})\\)\n\n\\(= v_{1f}^2 + v_{2f}^2 + 2\\mathbf{v}_{1f}\\cdot\\mathbf{v}_{2f}\\)\n\n\\(= \\left\\{v_{1f}^2 + v_{2f}^2 + 2v_{1f}v_{2f}\\cos(\\theta_1 + 37^{\\circ})\\right\\}\\)\n\nSince the collision is elastic and \\(m_1 = m_2\\) it follows from conservation of kinetic energy that\n\n\\(v_{1i}^2 = v_{1f}^2 + v_{2f}^2\\)\n\nComparing the two relations, we get\n\n\\(\\cos(\\theta_1 + 37^{\\circ}) = 0\\)\n\nor \\(\\theta_1 + 37^{\\circ} = 90^{\\circ}\\)\n\nThus, \\(\\theta_1 = 53^{\\circ}\\)\n\nThis proves the following result: when two equal masses undergo a glancing elastic collision with one of them at rest, after the collision, they will move at right angles to each other.",
+    "_note": "The printed stem sets the angle as 'θ2 = 37 .' — the DEGREE SIGN is missing on the page (there is a bare 37 followed by a space and a full stop). The book's own solution uses 37° throughout, so the degree sign has been restored here."
+  }
+]
