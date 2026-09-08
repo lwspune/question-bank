@@ -44,8 +44,23 @@ type Authored = {
   note?: string;
 };
 
-/** How a sentence's citation is written, from the appearance itself. */
+/**
+ * How a sentence's citation is written, from the appearance itself.
+ *
+ * PRACTICE MATERIAL IS NAMED AS PRACTICE, and this is a correctness rule rather
+ * than a style one. 145 of the 655 words (22%) appear ONLY in coaching material
+ * — Oswaal books, weekly mocks — never in a UPSC paper. The first draft of this
+ * function returned a bare "NDA" for those, because it fell through to the
+ * no-year branch and practice rows carry no `pyq_year`. So "adroit" was cited
+ * "— NDA" off `Oswaal_NDA_YWSP_English.pdf`, which asserts that the exam asked
+ * a word the exam has never asked.
+ *
+ * That claim — "this is the sentence the paper asked it in" — is the one thing
+ * this book has that a bought word list does not, so it cannot be allowed to be
+ * ambiguous. A citation now either names a real sitting or says "practice".
+ */
 export function citationOf(a: BankWord["appearances"][number]): string {
+  if (a.kind === "practice") return `${a.exam} practice`;
   if (a.exam === "CDS") {
     const edition = /_(\d)\.pdf$/.exec(a.sourceFile ?? "")?.[1];
     const roman = edition === "2" ? "II" : "I";
@@ -53,7 +68,27 @@ export function citationOf(a: BankWord["appearances"][number]): string {
   }
   if (a.year && a.month) return `NDA ${a.year} (${a.month})`;
   if (a.year) return `NDA ${a.year}`;
-  return "NDA";
+  // A pyq row with no year at all. Never silently degrade to a bare exam name —
+  // that is indistinguishable from the practice case this function exists to
+  // separate.
+  return `${a.exam} (year not recorded)`;
+}
+
+/**
+ * Prefer a REAL PAPER for the printed sentence.
+ *
+ * 51 words appear in both a paper and a mock, often with the identical sentence
+ * (the coaching books reprint PYQs). Where both exist the paper is the honest
+ * citation, so the choice is made here rather than left to whoever authors.
+ */
+export function preferredAppearance(w: BankWord): BankWord["appearances"][number] | undefined {
+  const usable = w.appearances.filter((a) => !a.bareStem);
+  const pool = usable.length ? usable : w.appearances;
+  return (
+    pool.find((a) => a.kind === "pyq" && a.year) ??
+    pool.find((a) => a.kind === "pyq") ??
+    pool[0]
+  );
 }
 
 async function main() {
@@ -82,6 +117,17 @@ async function main() {
     }
     if (a.sentence && !a.sentenceSource) {
       warnings.push(`${a.word}: sentence with no source — will read as AUTHORED`);
+    }
+
+    // If a real paper carries this sentence, cite the paper, not the mock.
+    const preferred = preferredAppearance(w);
+    if (a.sentenceSource && preferred && a.sentenceSource !== citationOf(preferred)) {
+      const better = citationOf(preferred);
+      if (!better.endsWith("practice") && a.sentenceSource.endsWith("practice")) {
+        warnings.push(
+          `${a.word}: cited "${a.sentenceSource}" but a REAL PAPER also carries it — prefer "${better}"`
+        );
+      }
     }
 
     // Cross-check against the exam's own cluster.
