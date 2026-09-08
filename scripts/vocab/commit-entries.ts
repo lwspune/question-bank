@@ -102,7 +102,15 @@ async function main() {
     const w = byWord.get(a.word.toLowerCase());
     if (!w) throw new Error(`${a.word}: not an exam-tested word — REFUSING`);
 
-    const chapter = chapterFor(CADET_VOCAB, "exam", a.word);
+    /**
+     * PART IS DERIVED FROM THE CORPUS, never authored: a word is in `pyq` if a
+     * REAL PAPER has asked it, otherwise `practice`. Letting the author choose
+     * would put the book's central claim in the hands of whoever typed the
+     * entry — which is how "adroit" was cited as an NDA question off an Oswaal
+     * coaching book.
+     */
+    const part = w.appearances.some((x) => x.kind === "pyq") ? "pyq" : "practice";
+    const chapter = chapterFor(CADET_VOCAB, part, a.word);
     if (!chapter) throw new Error(`${a.word}: no chapter covers its first letter — REFUSING`);
 
     // The citation must match a real appearance.
@@ -152,7 +160,7 @@ async function main() {
     return {
       book_slug: CADET_VOCAB.slug,
       word: a.word.toLowerCase(),
-      part: "exam" as const,
+      part,
       chapter_slug: chapter.slug,
       position: (i + 1) * 100,
       meaning: a.meaning,
@@ -161,7 +169,11 @@ async function main() {
       synonyms: a.synonyms,
       antonyms: a.antonyms,
       exams,
-      times_asked: w.timesAsked,
+      // REAL PAPERS ONLY. w.timesAsked counts every appearance including mocks,
+      // which would print "2x" beside a practice-only word and imply the exam
+      // asked it twice — the same conflation the citation fix removed. A
+      // practice word therefore carries 0 and shows no recurrence marker.
+      times_asked: w.appearances.filter((x) => x.kind === "pyq").length,
       note: a.note ?? null,
       derived_model: MODEL,
       derived_at: new Date().toISOString(),

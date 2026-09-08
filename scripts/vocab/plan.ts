@@ -82,32 +82,33 @@ function main() {
   const bank = read<BankWord[]>("bank-words.json");
   const school = read<SchoolWord[]>("school-words.json");
 
+  // PART IS DERIVED FROM THE CORPUS: a word is in `pyq` only if a REAL PAPER has
+  // asked it. 22% of the exam-tested words appear solely in coaching material,
+  // and merging them makes the book's headline claim false for a fifth of it.
+  const isPyq = (w: BankWord) => w.appearances.some((a) => a.kind === "pyq");
+  const pyq = bank.filter(isPyq);
+  const practice = bank.filter((w) => !isPyq(w));
   const bankSet = new Set(bank.map((w) => w.word));
   const schoolOnly = school.filter((w) => !bankSet.has(w.word));
-  const inBoth = school.filter((w) => bankSet.has(w.word));
 
-  console.log("PART 2 — NDA & CDS Vocabulary (exam-tested)");
-  console.log(`  words                    : ${bank.length}`);
-  console.log(`  with a usable sentence   : ${bank.filter((w) => w.appearances.some((a) => !a.bareStem)).length}`);
-  console.log(`  asked by both exams      : ${bank.filter((w) => new Set(w.appearances.map((a) => a.exam)).size > 1).length}`);
-  console.log(`  asked more than once     : ${bank.filter((w) => w.timesAsked > 1).length}`);
-  for (const b of letterBands(bank.map((w) => w.word), TARGET_BAND)) {
-    console.log(`    ${b.label.padEnd(6)} ${b.count}`);
-  }
+  const show = (title: string, words: string[], target: number) => {
+    console.log(`
+${title}: ${words.length}`);
+    for (const b of letterBands(words, target)) {
+      console.log(`    ${b.label.padEnd(6)} ${b.count}`);
+    }
+  };
 
-  console.log("\nPART 1 — School Vocabulary (Class 5-12, not exam-tested)");
-  console.log(`  words                    : ${schoolOnly.length}`);
-  console.log(`  (also in Part 2, so not repeated here: ${inBoth.length})`);
-  for (const b of letterBands(schoolOnly.map((w) => w.word), TARGET_BAND)) {
-    console.log(`    ${b.label.padEnd(6)} ${b.count}`);
-  }
+  show("PART 1 — Asked in the Papers", pyq.map((w) => w.word), TARGET_BAND);
+  console.log(`    with a usable exam sentence : ${pyq.filter((w) => w.appearances.some((a) => a.kind === "pyq" && !a.bareStem)).length}`);
+  console.log(`    asked more than once        : ${pyq.filter((w) => w.appearances.filter((a) => a.kind === "pyq").length > 1).length}`);
 
-  console.log("\nTOTAL");
-  console.log(`  entries in phase 1+2     : ${bank.length + schoolOnly.length}`);
-  console.log(`  index rows (all words)   : ${new Set([...bankSet, ...school.map((w) => w.word)]).size}`);
+  show("PART 2 — Practice Material only", practice.map((w) => w.word), TARGET_BAND);
+  show("PART 3 — School List (never asked)", schoolOnly.map((w) => w.word), TARGET_BAND);
 
-  const noEvidence = bank.filter((w) => !w.appearances.some((a) => a.key));
-  if (noEvidence.length) console.log(`\nWARNING: ${noEvidence.length} bank word(s) with no keyed option`);
+  console.log(`
+TOTAL entries (phase 1-3): ${pyq.length + practice.length + schoolOnly.length}`);
+  console.log(`index rows               : ${new Set([...bankSet, ...school.map((w) => w.word)]).size}`);
 }
 
 if (require.main === module) main();

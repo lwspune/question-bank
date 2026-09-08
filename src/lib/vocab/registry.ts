@@ -26,11 +26,32 @@
  * and their meaning to a reader.
  */
 
-export type VocabPartKey = "exam" | "school";
+/**
+ * THREE PARTS, split on ONE yes/no fact: has a real UPSC paper asked this word?
+ *
+ * `pyq` and `practice` were one part until it was measured: 609 of the exam
+ * words appear ONLY in coaching material (Oswaal books, weekly mocks) and never
+ * in a paper. Merging them makes the book's headline claim — "the words the
+ * papers have actually asked" — false for 22% of it.
+ *
+ * Unlike the NDA/CDS question, this split is CLEAN and costs no duplication: a
+ * word either appears in a paper or it does not, and the 51 that appear in both
+ * a paper and a mock simply belong to `pyq`. That is why it is a part and the
+ * exam is only a tag.
+ */
+export type VocabPartKey = "pyq" | "practice" | "school";
 
 export type VocabPart = {
   key: VocabPartKey;
+  /** "Part 1" — a book has parts, and the running head needs one. */
+  ordinal: string;
   title: string;
+  /**
+   * What the INDEX prints. A name, never a number: an index entry reading
+   * "Part 2 · A-C" makes the reader decode an ordinal AND a band that is
+   * already implied by the word's own first letter.
+   */
+  indexTag: string;
   /** One line under the part heading, saying what earns a word its place here. */
   blurb: string;
 };
@@ -66,28 +87,41 @@ export const CADET_VOCAB: VocabBookDefinition = {
     "Every word the NDA and CDS papers have actually asked, with the sentence it was asked in — followed by the Class 5-12 school list.",
   parts: [
     {
-      key: "exam",
-      title: "Part 2 — NDA & CDS Vocabulary",
+      key: "pyq",
+      ordinal: "Part 1",
+      title: "Asked in the Papers",
+      indexTag: "Papers",
       blurb:
-        "Words the exams have asked. Where a paper supplied the sentence, it is the real one, cited.",
+        "Every word an NDA or CDS paper has actually asked, with the sentence it was asked in.",
+    },
+    {
+      key: "practice",
+      ordinal: "Part 2",
+      title: "Practice Material",
+      indexTag: "Practice",
+      blurb:
+        "Set only in mocks and coaching books, never yet in a paper. Worth learning — but not a past question.",
     },
     {
       key: "school",
-      title: "Part 1 — School Vocabulary",
+      ordinal: "Part 3",
+      title: "School List (Class 5-12)",
+      indexTag: "School",
       blurb:
-        "From the CBSE Class 5-12 lists. Not yet asked in an NDA or CDS paper — learn these after Part 2.",
+        "From the CBSE class lists, and not yet seen in either exam. Learn these last.",
     },
   ],
-  // Counts are the measured final distribution (2,922 exam + 671 school).
+  // Measured against the FINAL corpus: 2,122 pyq + 609 practice + 676 school.
   chapters: [
-    { slug: "exam-a-c", label: "A-C", part: "exam", letters: band("A", "C"), expected: 655 },
-    { slug: "exam-d-e", label: "D-E", part: "exam", letters: band("D", "E"), expected: 461 },
-    { slug: "exam-f-i", label: "F-I", part: "exam", letters: band("F", "I"), expected: 479 },
-    { slug: "exam-j-p", label: "J-P", part: "exam", letters: band("J", "P"), expected: 538 },
-    { slug: "exam-q-s", label: "Q-S", part: "exam", letters: band("Q", "S"), expected: 484 },
-    { slug: "exam-t-z", label: "T-Z", part: "exam", letters: band("T", "Z"), expected: 305 },
-    { slug: "school-a-d", label: "A-D", part: "school", letters: band("A", "D"), expected: 331 },
-    { slug: "school-e-z", label: "E-Z", part: "school", letters: band("E", "Z"), expected: 340 },
+    { slug: "papers-a-c", label: "A-C", part: "pyq", letters: band("A", "C"), expected: 470 },
+    { slug: "papers-d-f", label: "D-F", part: "pyq", letters: band("D", "F"), expected: 430 },
+    { slug: "papers-g-m", label: "G-M", part: "pyq", letters: band("G", "M"), expected: 414 },
+    { slug: "papers-n-r", label: "N-R", part: "pyq", letters: band("N", "R"), expected: 375 },
+    { slug: "papers-s-z", label: "S-Z", part: "pyq", letters: band("S", "Z"), expected: 433 },
+    { slug: "practice-a-l", label: "A-L", part: "practice", letters: band("A", "L"), expected: 355 },
+    { slug: "practice-m-z", label: "M-Z", part: "practice", letters: band("M", "Z"), expected: 254 },
+    { slug: "school-a-d", label: "A-D", part: "school", letters: band("A", "D"), expected: 333 },
+    { slug: "school-e-z", label: "E-Z", part: "school", letters: band("E", "Z"), expected: 343 },
   ],
 };
 

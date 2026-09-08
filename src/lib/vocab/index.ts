@@ -12,11 +12,21 @@
  */
 export type IndexRow = {
   word: string;
-  /** The chapter a reader should turn to. */
-  chapterLabel: string;
-  chapterSlug: string;
-  part: "exam" | "school";
-  /** Times the exams have asked it; 0 for a school word. */
+  /**
+   * What the index prints beside the word — "Papers", "Practice", "School".
+   *
+   * THE CHAPTER IS DELIBERATELY NOT HERE. Chapters are alphabetical bands and
+   * the index is alphabetical, so "A-C" beside "absurd" is derivable from the
+   * word itself and carries NO information — it just makes the line longer and
+   * the reader decode two things. The one fact a reader genuinely lacks is
+   * WHICH PART the word is in, because that depends on whether the exams have
+   * asked it, which is exactly what they are looking it up to find out.
+   *
+   * A name, not "Part 2", for the same reason: an ordinal has to be decoded
+   * against the contents page before it means anything.
+   */
+  partTag: string;
+  /** Times a real paper has asked it. Printed only when > 1. */
   timesAsked: number;
 };
 
@@ -41,12 +51,16 @@ export function buildIndex(rows: IndexRow[]): IndexGroup[] {
 }
 
 /**
- * How a row is printed. The part is shown as a short tag rather than a page
- * number because this book has no stable pagination until it is exported to
- * Word — and a wrong page number is worse than none.
+ * One printed index line: the word, a leader, the part, and a recurrence mark.
+ *
+ * A PAGE NUMBER IS DELIBERATELY ABSENT — this book has no stable pagination
+ * until the Word export, and a wrong page number is worse than none.
+ *
+ * `width` aligns the tags into a column so the eye can run down the parts
+ * rather than reading each line.
  */
-export function formatIndexRow(r: IndexRow): string {
-  const tag = r.part === "exam" ? `Part 2 · ${r.chapterLabel}` : `Part 1 · ${r.chapterLabel}`;
-  const asked = r.timesAsked > 1 ? `  (asked ${r.timesAsked}x)` : "";
-  return `${r.word}  ${tag}${asked}`;
+export function formatIndexRow(r: IndexRow, width = 22): string {
+  const asked = r.timesAsked > 1 ? ` ${r.timesAsked}x` : "";
+  const leader = ".".repeat(Math.max(2, width - r.word.length));
+  return `${r.word} ${leader} ${r.partTag}${asked}`;
 }

@@ -13,7 +13,7 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, chapterFor, type VocabPartKey } from "../../src/lib/vocab/registry";
 import { buildIndex, formatIndexRow, type IndexRow } from "../../src/lib/vocab/index";
 import type { BankWord } from "./extract-bank";
 import type { SchoolWord } from "./extract-docx";
@@ -22,10 +22,11 @@ const DATA = join(__dirname, "data");
 const PLANNED = process.argv.includes("--planned");
 const read = <T,>(f: string): T => JSON.parse(readFileSync(join(DATA, f), "utf8")) as T;
 
-function rowFor(word: string, part: "exam" | "school", timesAsked: number): IndexRow | null {
-  const c = chapterFor(CADET_VOCAB, part, word);
-  if (!c) return null;
-  return { word, part, chapterLabel: c.label, chapterSlug: c.slug, timesAsked };
+const TAG = new Map(CADET_VOCAB.parts.map((p) => [p.key, p.indexTag]));
+
+function rowFor(word: string, part: VocabPartKey, timesAsked: number): IndexRow | null {
+  if (!chapterFor(CADET_VOCAB, part, word)) return null;
+  return { word, partTag: TAG.get(part)!, timesAsked };
 }
 
 async function fromDb(): Promise<IndexRow[]> {
@@ -37,16 +38,11 @@ async function fromDb(): Promise<IndexRow[]> {
     .eq("excluded", false)
     .order("word");
   if (error) throw error;
-  return (data ?? []).map((r: any) => {
-    const c = CADET_VOCAB.chapters.find((x) => x.slug === r.chapter_slug)!;
-    return {
-      word: r.word,
-      part: r.part,
-      chapterLabel: c?.label ?? "?",
-      chapterSlug: r.chapter_slug,
-      timesAsked: r.times_asked,
-    };
-  });
+  return (data ?? []).map((r: any) => ({
+    word: r.word,
+    partTag: TAG.get(r.part as VocabPartKey) ?? r.part,
+    timesAsked: r.times_asked,
+  }));
 }
 
 function fromExtracts(): IndexRow[] {
@@ -55,11 +51,13 @@ function fromExtracts(): IndexRow[] {
   const bankSet = new Set(bank.map((w) => w.word));
   const rows: IndexRow[] = [];
   for (const w of bank) {
-    const r = rowFor(w.word, "exam", w.timesAsked);
+    // Part is derived, never authored — a real paper decides, not a typist.
+    const part: VocabPartKey = w.appearances.some((a) => a.kind === "pyq") ? "pyq" : "practice";
+    const r = rowFor(w.word, part, w.timesAsked);
     if (r) rows.push(r);
   }
   for (const w of school) {
-    if (bankSet.has(w.word)) continue; // lives in Part 2
+    if (bankSet.has(w.word)) continue; // lives in an exam part
     const r = rowFor(w.word, "school", 0);
     if (r) rows.push(r);
   }
@@ -76,9 +74,11 @@ async function main() {
   if (PLANNED) {
     // At full size the point is the SHAPE, not 1,492 lines of output.
     for (const g of groups) {
-      const exam = g.rows.filter((r) => r.part === "exam").length;
-      const school = g.rows.length - exam;
-      console.log(`  ${g.letter}   ${String(g.rows.length).padStart(4)}   (Part 2: ${exam}, Part 1: ${school})`);
+      const n = (t: string) => g.rows.filter((r) => r.partTag === t).length;
+      console.log(
+        `  ${g.letter}   ${String(g.rows.length).padStart(4)}   ` +
+          `Papers ${String(n("Papers")).padStart(3)} · Practice ${String(n("Practice")).padStart(3)} · School ${String(n("School")).padStart(3)}`
+      );
     }
     const repeats = rows.filter((r) => r.timesAsked > 1).length;
     console.log(`\n  words carrying an "asked Nx" marker: ${repeats}`);

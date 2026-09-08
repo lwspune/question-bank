@@ -37,7 +37,9 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
 
       <div className="vtitle">
         <h1>{view.book.title}</h1>
-        <div className="vsub">{part.title} · {view.chapter.label}</div>
+        <div className="vsub">
+          {part.ordinal} — {part.title} · {view.chapter.label}
+        </div>
         <div className="vblurb">{part.blurb}</div>
       </div>
 

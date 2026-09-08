@@ -8,7 +8,7 @@
  * nothing and cost the only headless proof that the page renders.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, vocabBook, type VocabBookDefinition, type VocabChapter } from "./registry";
+import { CADET_VOCAB, vocabBook, type VocabBookDefinition, type VocabChapter, type VocabPartKey } from "./registry";
 
 export type VocabEntry = {
   id: string;
@@ -23,6 +23,7 @@ export type VocabEntry = {
   timesAsked: number;
   excluded: boolean;
   note: string | null;
+  part: VocabPartKey;
 };
 
 export type VocabChapterView = {
@@ -34,7 +35,7 @@ export type VocabChapterView = {
 };
 
 const SELECT =
-  "id,word,meaning,sentence,sentence_source,synonyms,antonyms,exams,times_asked,excluded,note";
+  "id,word,meaning,sentence,sentence_source,synonyms,antonyms,exams,times_asked,excluded,note,part";
 
 function toEntry(r: any): VocabEntry {
   return {
@@ -49,6 +50,7 @@ function toEntry(r: any): VocabEntry {
     timesAsked: r.times_asked ?? 0,
     excluded: r.excluded,
     note: r.note,
+    part: r.part,
   };
 }
 
