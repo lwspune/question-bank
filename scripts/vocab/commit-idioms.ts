@@ -18,7 +18,7 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor, examTagOf, idiomSectionOf } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, chapterFor, idiomSectionOf } from "../../src/lib/vocab/registry";
 import type { IdiomWord } from "./extract-idioms";
 
 const DATA = join(__dirname, "data");
@@ -128,12 +128,16 @@ async function main() {
   const byTag: Record<string, number> = {};
   for (const r of rows) {
     byChapter[r.chapter_slug] = (byChapter[r.chapter_slug] ?? 0) + 1;
-    const t = examTagOf(r.exams, r.times_asked);
+    // DIAGNOSTIC ONLY. The book no longer prints a per-entry exam tag (the
+    // section heading carries the papers-vs-practice claim), but the committer
+    // still needs to see the shape of what it is about to write — a run where
+    // every idiom lands under one exam is a signal worth catching here.
+    const t = `${[...r.exams].sort().join(" + ")}${r.times_asked > 0 ? "" : " (practice)"}`;
     byTag[t] = (byTag[t] ?? 0) + 1;
   }
   console.log(`${rows.length} idiom(s) prepared`);
   for (const k of Object.keys(byChapter).sort()) console.log(`  ${k.padEnd(14)} ${byChapter[k]}`);
-  console.log(`  exam tags: ${JSON.stringify(byTag)}`);
+  console.log(`  by exam (not printed in the book): ${JSON.stringify(byTag)}`);
   console.log(`\n${warnings.length} warning(s)`);
   for (const w of warnings) console.log(`  ! ${w}`);
 

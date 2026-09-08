@@ -148,8 +148,16 @@ export const VOCAB_SECTIONS: VocabSection[] = [
     key: "papers",
     part: "idiom",
     title: "Set in the Papers",
+    /**
+     * THE SECOND SENTENCE WAS DELETED WITH THE PER-ENTRY EXAM TAG, and this is
+     * the reason the tag's removal touched the registry at all. It read "The
+     * exam that set it is named on each entry", which was a promise about the
+     * page — and the moment the tags went it became a claim the book does not
+     * keep. A blurb that describes a feature the pages no longer have is worse
+     * than no blurb: it sends a reader looking for something that is not there.
+     */
     blurb:
-      "Set by a real NDA or CDS paper, with the meaning that paper keyed as correct. The exam that set it is named on each entry.",
+      "Set by a real NDA or CDS paper, with the meaning that paper keyed as correct.",
   },
   {
     key: "practice-set",
@@ -391,11 +399,19 @@ export function vocabBook(slug: string): VocabBookDefinition | undefined {
  *
  * `timesAsked` counts REAL PAPER appearances only, so 0 means practice-only.
  */
-export function examTagOf(exams: string[], timesAsked: number): string {
-  const named = [...exams].sort().join(" + ");
-  if (!named) throw new Error("examTagOf: an idiom must name the exam that set it");
-  return timesAsked > 0 ? named : `${named} practice`;
-}
+/*
+ * `examTagOf` WAS HERE AND IS DELETED (2026-09-08). It rendered the per-entry
+ * "NDA" / "CDS" / "NDA practice" line under each Part 4 idiom.
+ *
+ * It stopped earning its place when Part 4 was split into "Set in the Papers"
+ * and "Practice Material": the section heading carries the papers-vs-practice
+ * claim — the half a candidate can act on — leaving the tag to say only WHICH
+ * exam, a third line on a two-line entry.
+ *
+ * `exams` and `times_asked` still sit on every row, and `idiomSectionOf` below
+ * still derives the section from `times_asked`, so nothing was lost from the
+ * data and restoring the line is a small change.
+ */
 
 /**
  * Which Part 4 section an idiom belongs to. DERIVED, like every other

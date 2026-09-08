@@ -17,7 +17,7 @@ import { Printer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { CADET_VOCAB, VOCAB_SECTIONS, examTagOf } from "@/lib/vocab/registry";
+import { CADET_VOCAB, VOCAB_SECTIONS } from "@/lib/vocab/registry";
 import { loadVocabChapter } from "@/lib/vocab/query";
 
 export const dynamic = "force-dynamic";
@@ -121,15 +121,10 @@ export default async function VocabChapterPage({
                 </p>
               ) : null}
 
-              {/* Part 4 carries no sentence, so the exam tag is the only
-                  provenance it has — and a practice-only idiom must say so
-                  rather than read as one a paper set. */}
-              {e.part === "idiom" && e.exams.length ? (
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {examTagOf(e.exams, e.timesAsked)}
-                </p>
-              ) : null}
-
+              {/* NO PER-ENTRY EXAM TAG ON PART 4 (user's call, 2026-09-08) —
+                  the section heading carries the papers-vs-practice claim, and
+                  the tag was left saying only WHICH exam. `exams` and
+                  `timesAsked` are still on the row; see export-docx.ts. */}
               {e.excluded && e.note ? (
                 <p className="mt-1 text-xs text-destructive">Withheld: {e.note}</p>
               ) : null}

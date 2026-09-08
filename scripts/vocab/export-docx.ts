@@ -13,7 +13,7 @@
  * NO MATH PIPELINE HERE, deliberately. The question exporter carries a
  * LaTeX -> MathML -> OMML path with a marker-and-patch step because a stem can
  * contain a fraction; a vocabulary entry is plain prose, and `verify.ts` asserts
- * 0 backslashes across all 3,703 rows. Reaching for that machinery would import
+ * 0 backslashes across every row. Reaching for that machinery would import
  * its whole failure surface for content that cannot use it.
  *
  * A CHAPTER IS TWO SECTIONS, not one. The heading sits in a single-column
@@ -61,7 +61,7 @@ import {
   SectionType,
   TextRun,
 } from "docx";
-import { CADET_VOCAB, VOCAB_SECTIONS, examTagOf } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, VOCAB_SECTIONS } from "../../src/lib/vocab/registry";
 
 const OUT = join(__dirname, "..", "..", "generated-papers");
 
@@ -158,17 +158,21 @@ function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[]
   if (r.synonyms?.length) out.push(list("Synonyms", r.synonyms));
   if (r.antonyms?.length) out.push(list("Antonyms", r.antonyms));
 
-  // Part 4 has no sentence, so the exam tag is its only provenance — and a
-  // practice-only idiom must say so rather than read as one a paper set.
-  if (r.part === "idiom" && r.exams?.length) {
-    out.push(
-      new Paragraph({
-        indent: { left: 160 },
-        spacing: { before: 0, after: 0 },
-        children: [run(examTagOf(r.exams, r.times_asked), { size: SMALL, italics: true })],
-      })
-    );
-  }
+  /**
+   * NO PER-ENTRY EXAM TAG ON PART 4 (user's call, 2026-09-08).
+   *
+   * Each idiom used to carry an "NDA" / "CDS" / "NDA practice" line. Its stated
+   * job was provenance — Part 4 has no sentence, so the tag was the only thing
+   * saying where the idiom came from. THE SECTION HEADING NOW DOES THAT JOB:
+   * splitting Part 4 into "Set in the Papers" and "Practice Material" carries
+   * the whole papers-vs-practice claim, which is the half that matters, and
+   * left the tag saying only WHICH exam — a third line on a two-line entry, for
+   * a distinction a candidate cannot act on.
+   *
+   * The data is UNTOUCHED: `exams` and `times_asked` still carry it per row,
+   * and `idiomSectionOf` still derives the section from `times_asked`. This is
+   * a render decision and reversing it is a few lines.
+   */
   return out;
 }
 
