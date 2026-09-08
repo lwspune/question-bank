@@ -1,0 +1,85 @@
+/**
+ * Standing verification over every committed vocabulary entry.
+ *
+ *   npx tsx scripts/vocab/verify.ts
+ *
+ * It reads back FROM THE DATABASE rather than from the authored files,
+ * because the authored files are the input and the question this answers is
+ * what the book will actually print. Two of the checks exist because their
+ * failure is SILENT: a chapter whose positions are not contiguous-alphabetical
+ * still renders, in the wrong order, and alphabetical order is the only way a
+ * reader finds anything in a dictionary; and a stray backslash renders as
+ * literal markup on the page while passing every other check.
+ *
+ * A zero for "no antonyms" would be WRONG, not good — some words have no
+ * natural opposite (bursar, commissary, eavesdropping), so that line reports a
+ * count rather than asserting one.
+ */
+import { config } from "dotenv";
+config({ path: ".env.local", override: true });
+import { createClient } from "@supabase/supabase-js";
+import { CADET_VOCAB } from "../../src/lib/vocab/registry";
+
+const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
+
+(async () => {
+  const rows: any[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("vocab_entries")
+      .select("word,part,chapter_slug,position,meaning,sentence,sentence_source,synonyms,antonyms,excluded,derived_model")
+      .eq("book_slug", CADET_VOCAB.slug)
+      .order("word")
+      .range(from, from + 999);
+    if (error) throw error;
+    rows.push(...(data ?? []));
+    if ((data ?? []).length < 1000) break;
+  }
+  const ids = new Set(rows.map((r) => r.word));
+  console.log(`total rows ${rows.length}, distinct words ${ids.size}`);
+  const byPart: Record<string, number> = {};
+  for (const r of rows) byPart[r.part] = (byPart[r.part] ?? 0) + 1;
+  console.log("by part:", JSON.stringify(byPart));
+
+  const bad = (name: string, n: number) => console.log(`${n === 0 ? "ok " : "!! "}${name}: ${n}`);
+  bad("no meaning", rows.filter((r) => !r.meaning?.trim()).length);
+  bad("no sentence", rows.filter((r) => !r.sentence?.trim()).length);
+  /**
+   * AN UNCITED SENTENCE IS A DEFECT IN PART 2 AND NORMAL IN PART 3.
+   *
+   * A Part 2 word is there because a paper asked it, so a real sentence exists
+   * and an authored one means the citation was dropped. Roughly half of Part 3
+   * appears only in a bare stem ("Choose the word most similar to ABATE"), so
+   * there is nothing to quote and authoring is the only option. Reporting them
+   * together printed a red line on an expected state, which is how a probe
+   * teaches people to skip it.
+   */
+  const uncited = rows.filter((r) => r.sentence && !r.sentence_source);
+  bad("Part 2 sentence with no citation", uncited.filter((r) => r.part === "pyq").length);
+  console.log(
+    `   Part 3 authored sentences (expected — no exam sentence exists): ` +
+      `${uncited.filter((r) => r.part !== "pyq").length}`
+  );
+  bad("no synonyms", rows.filter((r) => !r.synonyms?.length).length);
+  bad("no provenance", rows.filter((r) => !r.derived_model).length);
+  bad("backslash anywhere", rows.filter((r) => JSON.stringify(r).includes("\\\\")).length);
+  bad("meaning ends with a full stop", rows.filter((r) => /\.$/.test(r.meaning ?? "")).length);
+  console.log(`   excluded (withheld from print): ${rows.filter((r) => r.excluded).length}`);
+  console.log(
+    `   no antonyms (deliberate — no natural opposite): ${rows.filter((r) => !r.antonyms?.length).length}`
+  );
+
+  // per chapter, and position must be contiguous alphabetical
+  for (const ch of CADET_VOCAB.chapters) {
+    const mine = rows.filter((r) => r.chapter_slug === ch.slug);
+    if (!mine.length) continue;
+    const sorted = [...mine].sort((a, b) => a.position - b.position);
+    const alpha = [...mine].sort((a, b) => a.word.localeCompare(b.word));
+    const ordered = sorted.every((r, i) => r.word === alpha[i].word);
+    const contiguous = sorted.every((r, i) => r.position === (i + 1) * 100);
+    console.log(
+      `  ${ch.slug.padEnd(12)} ${String(mine.length).padStart(3)}  ` +
+        `${ordered ? "alphabetical" : "!! OUT OF ORDER"}  ${contiguous ? "contiguous" : "!! GAPS"}`
+    );
+  }
+})();

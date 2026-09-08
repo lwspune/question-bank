@@ -16,7 +16,7 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, VOCAB_SECTIONS } from "../../src/lib/vocab/registry";
 
 const PLANNED = process.argv.includes("--planned");
 
@@ -52,10 +52,41 @@ async function main() {
 
     console.log(`  ${part.ordinal} — ${part.title}`);
     console.log(`     ${part.blurb}`);
-    for (const c of chapters) {
-      const g = have.get(c.slug) ?? 0;
-      const bar = PLANNED ? `${c.expected}` : `${String(g).padStart(4)} / ${c.expected}`;
-      console.log(`       ${c.label.padEnd(6)} ${bar}`);
+
+    /**
+     * A SECTIONED PART PRINTS ITS SECTIONS IN STUDY ORDER, because on this page
+     * the order IS the instruction: a teacher reads it to tell a batch what to
+     * work through first. An unsectioned part keeps the flat list.
+     *
+     * Sections are taken from VOCAB_SECTIONS rather than from the distinct
+     * values present in the chapters, so a section that is declared but not yet
+     * authored still prints — an absent heading would read as "this part has no
+     * such section" rather than "nothing in it yet".
+     */
+    const sectioned = chapters.some((c) => c.section);
+    const groups = sectioned
+      ? VOCAB_SECTIONS.map((sec) => ({
+          title: sec.title,
+          blurb: sec.blurb,
+          rows: chapters.filter((c) => c.section === sec.key),
+        }))
+      : [{ title: "", blurb: "", rows: chapters }];
+
+    for (const g of groups) {
+      if (g.title) {
+        const gExp = g.rows.reduce((n, c) => n + c.expected, 0);
+        const gGot = g.rows.reduce((n, c) => n + (have.get(c.slug) ?? 0), 0);
+        console.log(
+          `
+     ${g.title}  ${PLANNED ? `(${gExp})` : `(${gGot} / ${gExp})`}`
+        );
+        console.log(`       ${g.blurb}`);
+      }
+      for (const c of g.rows) {
+        const n = have.get(c.slug) ?? 0;
+        const bar = PLANNED ? `${c.expected}` : `${String(n).padStart(4)} / ${c.expected}`;
+        console.log(`       ${c.label.padEnd(6)} ${bar}`);
+      }
     }
     console.log(`       ${"".padEnd(6)} ${PLANNED ? exp : `${String(got).padStart(4)} / ${exp}`}   (part total)\n`);
   }

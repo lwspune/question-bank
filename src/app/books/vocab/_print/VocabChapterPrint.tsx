@@ -1,5 +1,6 @@
 import PrintButton from "@/app/notes/_components/print/PrintButton";
 import type { VocabChapterView } from "@/lib/vocab/query";
+import { VOCAB_SECTIONS } from "@/lib/vocab/registry";
 import { VOCAB_PRINT_CSS } from "./printStyles";
 
 /**
@@ -26,6 +27,21 @@ import { VOCAB_PRINT_CSS } from "./printStyles";
 export default function VocabChapterPrint({ view }: { view: VocabChapterView }) {
   const entries = view.entries.filter((e) => !e.excluded);
   const part = view.book.parts.find((p) => p.key === view.chapter.part)!;
+  /**
+   * The SECTION replaces the part in the running head where one exists.
+   *
+   * A reader holding a Part 2 chapter needs to know which exam it covers far
+   * more than they need the part number, and printing both ("Part 2 - Asked in
+   * the Papers - Asked in NDA Papers - F-K") buries the one fact they came for.
+   * Parts 1 and 3 have no section and are unchanged.
+   *
+   * The BLURB follows the same rule, and here it is load-bearing rather than
+   * cosmetic: a section blurb is the only place that says the other exam's
+   * section is later work rather than optional.
+   */
+  const section = view.chapter.section
+    ? VOCAB_SECTIONS.find((s) => s.key === view.chapter.section)
+    : undefined;
 
   return (
     <div className="vdoc">
@@ -38,9 +54,9 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
       <div className="vtitle">
         <h1>{view.book.title}</h1>
         <div className="vsub">
-          {part.ordinal} — {part.title} · {view.chapter.label}
+          {part.ordinal} — {section ? section.title : part.title} · {view.chapter.label}
         </div>
-        <div className="vblurb">{part.blurb}</div>
+        <div className="vblurb">{section ? section.blurb : part.blurb}</div>
       </div>
 
       <div className="vcols">

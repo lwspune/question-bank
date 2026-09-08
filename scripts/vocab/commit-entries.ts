@@ -26,7 +26,12 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
+import {
+  CADET_VOCAB,
+  chapterFor,
+  examSectionOf,
+  type VocabSectionKey,
+} from "../../src/lib/vocab/registry";
 import type { BankWord } from "./extract-bank";
 
 const DATA = join(__dirname, "data");
@@ -42,6 +47,23 @@ type Authored = {
   synonyms: string[];
   antonyms: string[];
   note?: string;
+  /**
+   * WITHHOLD THIS WORD FROM THE PRINTED BOOK, keeping the row.
+   *
+   * The case it exists for is a MIS-TARGETED SOURCE RECORD: CDS 2018-I stores
+   * the target of "Vendors must have licence." as `licence`, while its key and
+   * all three distractors define a VENDOR ("One engaged in selling", "One who
+   * drives a car"). So the paper never asked `licence`, and printing it in
+   * Part 2 would assert the one claim this book has that a bought word list
+   * does not — that every word here was actually asked.
+   *
+   * A row rather than an omission, because an omitted word comes back in the
+   * next worksheet and gets re-adjudicated from scratch, and because the reason
+   * is worth keeping. The cluster cross-check is SKIPPED for an excluded entry:
+   * it compares our lists against the paper's key, and the whole finding is
+   * that this key describes a different word.
+   */
+  excluded?: boolean;
 };
 
 /**
@@ -91,6 +113,28 @@ export function preferredAppearance(w: BankWord): BankWord["appearances"][number
   );
 }
 
+/**
+ * Where a word belongs: its part AND, for Part 2, its exam section.
+ *
+ * BOTH ARE DERIVED FROM THE CORPUS, never authored. Letting whoever types an
+ * entry choose would put the book's central claims — "a real paper asked this"
+ * and "this is the paper that asked it" — in their hands; that is exactly how
+ * `adroit` came to be cited as an NDA question off an Oswaal coaching book.
+ *
+ * Exported so `dump-authoring` files a word the same way the commit will. Two
+ * implementations of this rule would drift, and the drift is silent: the
+ * worksheet would offer a word under one chapter and the commit would file it
+ * under another.
+ */
+export function placementOf(w: BankWord): {
+  part: "pyq" | "practice";
+  section: VocabSectionKey | null;
+} {
+  const pyqApps = w.appearances.filter((x) => x.kind === "pyq");
+  if (!pyqApps.length) return { part: "practice", section: null };
+  return { part: "pyq", section: examSectionOf(pyqApps.map((x) => x.exam)) };
+}
+
 async function main() {
   if (!FILE) throw new Error("usage: commit-entries.ts <data/file.json> [--apply]");
   const authored = JSON.parse(readFileSync(join(DATA, FILE), "utf8")) as Authored[];
@@ -109,8 +153,8 @@ async function main() {
      * entry — which is how "adroit" was cited as an NDA question off an Oswaal
      * coaching book.
      */
-    const part = w.appearances.some((x) => x.kind === "pyq") ? "pyq" : "practice";
-    const chapter = chapterFor(CADET_VOCAB, part, a.word);
+    const { part, section } = placementOf(w);
+    const chapter = chapterFor(CADET_VOCAB, part, a.word, section);
     if (!chapter) throw new Error(`${a.word}: no chapter covers its first letter — REFUSING`);
 
     // The citation must match a real appearance.
@@ -123,8 +167,20 @@ async function main() {
         );
       }
     }
-    if (a.sentence && !a.sentenceSource) {
-      warnings.push(`${a.word}: sentence with no source — will read as AUTHORED`);
+    /**
+     * An authored sentence is only worth flagging when a REAL ONE WAS ON OFFER.
+     *
+     * Roughly half of Part 3's words appear only in a bare stem — "Choose the
+     * word most similar in meaning to ABATE" — so there is no sentence to
+     * quote and authoring one is the only option, not a shortcut. Warning
+     * there would fire on the expected case for most of a whole part, and a
+     * gate that cries wolf on a legitimate outcome is worse than no gate: the
+     * next person either burns time re-checking it or learns to wave it
+     * through. It still fires when the corpus HAS a usable sentence and the
+     * author did not use it, which is the case worth a second look.
+     */
+    if (a.sentence && !a.sentenceSource && w.appearances.some((x) => !x.bareStem)) {
+      warnings.push(`${a.word}: authored a sentence although the corpus carries a real one`);
     }
 
     // If a real paper carries this sentence, cite the paper, not the mock.
@@ -167,14 +223,15 @@ async function main() {
     const lower = (xs: string[]) => new Set(xs.map(fold));
     const ourSyn = lower(a.synonyms);
     const ourAnt = lower(a.antonyms);
-    for (const app of w.appearances) {
+    for (const app of a.excluded ? [] : w.appearances) {
       const key = app.key ? fold(app.key) : null;
       if (!key) continue;
       const want = app.role === "antonym" ? ourAnt : ourSyn;
       const other = app.role === "antonym" ? ourSyn : ourAnt;
       if (other.has(key)) {
         warnings.push(
-          `${a.word}: the paper keys "${app.key}" as a ${app.role.toUpperCase()} but we list it as the OPPOSITE`
+          `${a.word}: the paper keys "${app.key}" as ${app.role === "antonym" ? "an" : "a"} ` +
+            `${app.role.toUpperCase()} but we list it as the OPPOSITE`
         );
       } else if (!want.has(key) && want.size) {
         warnings.push(`${a.word}: paper's ${app.role} "${app.key}" is not in our ${app.role}s`);
@@ -200,6 +257,7 @@ async function main() {
       // practice word therefore carries 0 and shows no recurrence marker.
       times_asked: w.appearances.filter((x) => x.kind === "pyq").length,
       note: a.note ?? null,
+      excluded: a.excluded ?? false,
       derived_model: MODEL,
       derived_at: new Date().toISOString(),
     };
@@ -209,7 +267,7 @@ async function main() {
   for (const r of rows) {
     console.log(
       `  ${r.word.padEnd(14)} ${r.chapter_slug}  x${r.times_asked}  ${r.exams.join("+")}  ` +
-        `${r.sentence_source ?? "(authored sentence)"}`
+        `${r.sentence_source ?? "(authored sentence)"}${r.excluded ? "  [EXCLUDED]" : ""}`
     );
   }
   console.log(`\ncluster cross-check: ${warnings.length} warning(s)`);

@@ -23,8 +23,8 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor, type VocabPartKey } from "../../src/lib/vocab/registry";
-import { citationOf, preferredAppearance } from "./commit-entries";
+import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
+import { citationOf, placementOf, preferredAppearance } from "./commit-entries";
 import type { BankWord } from "./extract-bank";
 
 const DATA = join(__dirname, "data");
@@ -49,9 +49,13 @@ async function main() {
   if (error) throw error;
   const already = new Set((done ?? []).map((r) => r.word as string));
 
+  // Placement is taken from `commit-entries`, never re-derived here: a second
+  // copy of the part/section rule would drift, and the drift is silent — the
+  // worksheet would offer a word under one chapter and the commit file it under
+  // another.
   const mine = bank.filter((w) => {
-    const part: VocabPartKey = w.appearances.some((a) => a.kind === "pyq") ? "pyq" : "practice";
-    return chapterFor(CADET_VOCAB, part, w.word)?.slug === slug && !already.has(w.word);
+    const { part, section } = placementOf(w);
+    return chapterFor(CADET_VOCAB, part, w.word, section)?.slug === slug && !already.has(w.word);
   });
 
   mkdirSync(OUT, { recursive: true });

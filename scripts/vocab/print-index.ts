@@ -13,20 +13,30 @@ import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
-import { CADET_VOCAB, chapterFor, type VocabPartKey } from "../../src/lib/vocab/registry";
+import {
+  CADET_VOCAB,
+  chapterFor,
+  indexTagFor,
+  type VocabPartKey,
+  type VocabSectionKey,
+} from "../../src/lib/vocab/registry";
 import { buildIndex, formatIndexRow, type IndexRow } from "../../src/lib/vocab/index";
 import type { BankWord } from "./extract-bank";
+import { placementOf } from "./commit-entries";
 import type { SchoolWord } from "./extract-docx";
 
 const DATA = join(__dirname, "data");
 const PLANNED = process.argv.includes("--planned");
 const read = <T,>(f: string): T => JSON.parse(readFileSync(join(DATA, f), "utf8")) as T;
 
-const TAG = new Map(CADET_VOCAB.parts.map((p) => [p.key, p.indexTag]));
-
-function rowFor(word: string, part: VocabPartKey, timesAsked: number): IndexRow | null {
-  if (!chapterFor(CADET_VOCAB, part, word)) return null;
-  return { word, partTag: TAG.get(part)!, timesAsked };
+function rowFor(
+  word: string,
+  part: VocabPartKey,
+  section: VocabSectionKey | null,
+  timesAsked: number
+): IndexRow | null {
+  if (!chapterFor(CADET_VOCAB, part, word, section)) return null;
+  return { word, partTag: indexTagFor(CADET_VOCAB, part, section), timesAsked };
 }
 
 async function fromDb(): Promise<IndexRow[]> {
@@ -40,7 +50,14 @@ async function fromDb(): Promise<IndexRow[]> {
   if (error) throw error;
   return (data ?? []).map((r: any) => ({
     word: r.word,
-    partTag: TAG.get(r.part as VocabPartKey) ?? r.part,
+    // The stored chapter slug carries the section, so the index tag is read
+    // back from the registry rather than recomputed from the corpus — a row
+    // must be indexed under the section it was actually filed in.
+    partTag: indexTagFor(
+      CADET_VOCAB,
+      r.part as VocabPartKey,
+      CADET_VOCAB.chapters.find((c) => c.slug === r.chapter_slug)?.section ?? null
+    ),
     timesAsked: r.times_asked,
   }));
 }
@@ -51,14 +68,14 @@ function fromExtracts(): IndexRow[] {
   const bankSet = new Set(bank.map((w) => w.word));
   const rows: IndexRow[] = [];
   for (const w of bank) {
-    // Part is derived, never authored — a real paper decides, not a typist.
-    const part: VocabPartKey = w.appearances.some((a) => a.kind === "pyq") ? "pyq" : "practice";
-    const r = rowFor(w.word, part, w.timesAsked);
+    // Part and section are derived, never authored — a real paper decides.
+    const { part, section } = placementOf(w);
+    const r = rowFor(w.word, part, section, w.timesAsked);
     if (r) rows.push(r);
   }
   for (const w of school) {
     if (bankSet.has(w.word)) continue; // lives in an exam part
-    const r = rowFor(w.word, "school", 0);
+    const r = rowFor(w.word, "school", null, 0);
     if (r) rows.push(r);
   }
   return rows;
