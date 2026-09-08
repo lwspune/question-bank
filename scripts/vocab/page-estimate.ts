@@ -3,11 +3,17 @@
  *
  *   npx tsx scripts/vocab/page-estimate.ts
  *
- * AN ESTIMATE, AND IT SAYS SO. The real number comes from the browser's own
- * print preview of `/books/vocab/<chapter>/print`, because only the browser
- * knows where a column breaks. This exists so a page count can be quoted before
- * that page is built, and so a change in entry format can be costed in pages
- * rather than in characters.
+ * AN ESTIMATE, AND IT SAYS SO. Only a real layout engine knows where a column
+ * breaks. This exists so a page count can be quoted before opening anything,
+ * and so a change in entry format can be costed in pages rather than characters.
+ *
+ * ═══ CALIBRATED AGAINST WORD, 2026-09-08: IT RUNS ~17% HIGH ═══
+ *
+ * The exported .docx repaginated in Word at **176 pages** where this estimated
+ * **206**. The bias is deliberate and is kept — `CPL` is rounded down, which
+ * under-counts characters per line and so over-counts pages, and a printer's
+ * quote that comes in short is the worse error. But quote the measured number
+ * when one exists: run `export-docx.ts` and open the file.
  *
  * Geometry is taken from the print stylesheet, not invented: US Letter, 0.5in
  * margins, two columns with a 0.5in gutter, Cambria 10pt.
