@@ -82,7 +82,7 @@
  * a paper and a mock simply belong to `pyq`. That is why it is a part and the
  * exam is only a tag.
  */
-export type VocabPartKey = "pyq" | "practice" | "school";
+export type VocabPartKey = "pyq" | "practice" | "school" | "idiom";
 
 /**
  * The exam sections inside Part 2. DERIVED FROM THE CORPUS, never authored —
@@ -226,6 +226,27 @@ export const CADET_VOCAB: VocabBookDefinition = {
       blurb:
         "Set only in mocks and coaching books, never yet in a paper. Worth learning — but not a past question.",
     },
+    {
+      /**
+       * PART 4 CARRIES A MEANING AND NOTHING ELSE, and that is the corpus's
+       * decision rather than a shortcut. Of the 350 idiom questions, 318 print
+       * the bare idiom with four meanings under it and only ~32 embed it in a
+       * sentence — so there is nothing to quote for ~91% of them, and an
+       * authored sentence would be our invention dressed as evidence. Synonyms
+       * are dropped for a different reason: an idiom's synonym IS its meaning.
+       *
+       * The meaning is the PAPER'S OWN KEYED OPTION, which makes it the
+       * best-attested text in the book: elsewhere we author a definition and
+       * the exam merely confirms a synonym; here the exam publishes the
+       * definition itself as the correct answer.
+       */
+      key: "idiom",
+      ordinal: "Part 4",
+      title: "Idioms and Phrases",
+      indexTag: "Idiom",
+      blurb:
+        "Every idiom an NDA or CDS paper has set, with the meaning the paper itself keyed as correct.",
+    },
   ],
   /**
    * ═══ AT MOST 200 ENTRIES PER CHAPTER, AND NEVER A SPLIT LETTER ═══
@@ -273,6 +294,20 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "school-c-d", label: "C-D", part: "school", letters: band("C", "D"), expected: 188 },
     { slug: "school-e-l", label: "E-L", part: "school", letters: band("E", "L"), expected: 191 },
     { slug: "school-m-z", label: "M-Z", part: "school", letters: band("M", "Z"), expected: 152 },
+
+    /**
+     * ═══ SORTED ON THE LITERAL FIRST WORD (user's call) ═══
+     *
+     * So "a damp squib" files under A and "to pull your weight" under T, as
+     * printed. The alternative — filing on the first CONTENT word — spreads the
+     * section more evenly (biggest letters S 33 / C 30 against T 50 / A 46), but
+     * it asks the reader to strip the article before looking a phrase up, and a
+     * reader who has just read "at the drop of a hat" in a paper looks under A.
+     * Recorded because the two rules give visibly different books and the
+     * measurement is easy to re-run: `plan-sections.ts` prints both.
+     */
+    { slug: "idioms-a-o", label: "A-O", part: "idiom", letters: band("A", "O"), expected: 193 },
+    { slug: "idioms-p-z", label: "P-Z", part: "idiom", letters: band("P", "Z"), expected: 103 },
   ],
 };
 
@@ -280,6 +315,23 @@ export const VOCAB_BOOKS: VocabBookDefinition[] = [CADET_VOCAB];
 
 export function vocabBook(slug: string): VocabBookDefinition | undefined {
   return VOCAB_BOOKS.find((b) => b.slug === slug);
+}
+
+/**
+ * The exam tag printed beside an idiom — the only provenance Part 4 carries.
+ *
+ * A PRACTICE-ONLY IDIOM MUST SAY SO. 79 of the 296 were set only in mocks and
+ * coaching books; printing a bare "NDA" beside one asserts that the exam asked
+ * it, which is exactly the false claim that put "adroit — NDA" in this book off
+ * an Oswaal paper and forced `citationOf` to name practice explicitly. Part 4
+ * has no citation line to carry that distinction, so the tag carries it.
+ *
+ * `timesAsked` counts REAL PAPER appearances only, so 0 means practice-only.
+ */
+export function examTagOf(exams: string[], timesAsked: number): string {
+  const named = [...exams].sort().join(" + ");
+  if (!named) throw new Error("examTagOf: an idiom must name the exam that set it");
+  return timesAsked > 0 ? named : `${named} practice`;
 }
 
 /**

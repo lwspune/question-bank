@@ -75,7 +75,7 @@ const wrap = (s: string) => Math.max(1, Math.ceil(s.length / CPL));
       `${LINES_PER_COL} lines/col, ${LINES_PER_PAGE} lines/page\n`
   );
   let totalPages = 0;
-  const order = ["school", "pyq", "practice"];
+  const order = ["school", "pyq", "practice", "idiom"];
   for (const key of order) {
     const p = byPart[key];
     if (!p) continue;
