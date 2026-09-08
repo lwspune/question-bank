@@ -69,3 +69,29 @@ export const VOCAB_PRINT_CSS = `
 .vnoprint { margin-bottom: 4mm; }
 @media print { .vnoprint { display: none !important; } .vdoc { padding: 0; } }
 `;
+
+/**
+ * The index only. THREE columns, against the body's two: an index line is a
+ * word, a leader and one tag, so at two columns most of the line is dots and
+ * the index runs ~50% longer for no gain in legibility.
+ *
+ * A letter GROUP may break across columns (only the heading is kept with its
+ * first rows) — an index is scanned, not read, and forcing a whole letter to
+ * stay together would strand most of a column at A, C and P, which carry 193,
+ * 202 and 110 words.
+ */
+export const VOCAB_INDEX_CSS = `
+.vixcols { column-count: 3; column-gap: 7mm; font-size: 8.5pt; line-height: 1.22; }
+.vixgroup { break-inside: auto; }
+.vixletter {
+  font-weight: 700; font-size: 9.5pt; margin: 2.2mm 0 0.8mm;
+  border-bottom: 0.4pt solid #999; break-after: avoid;
+}
+.vixrow { display: flex; align-items: baseline; gap: 1mm; }
+.vixword { white-space: nowrap; }
+.vixdots {
+  flex: 1 1 auto; min-width: 2mm;
+  border-bottom: 0.4pt dotted #aaa; transform: translateY(-0.6mm);
+}
+.vixtag { white-space: nowrap; color: #333; font-size: 8pt; }
+`;
