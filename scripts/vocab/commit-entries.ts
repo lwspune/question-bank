@@ -153,7 +153,17 @@ async function main() {
      * "makeup" would read as equal) which is acceptable because this is a
      * WARNING, not a gate: it points a human at a difference worth reading.
      */
-    const fold = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
+    /**
+     * A LEADING ARTICLE IS DROPPED TOO. Options are written to fit the sentence
+     * slot, so CDS 2021-II offers "a normal" where NDA 2022 offers "normal" for
+     * the same word — the same answer, and the book prints the bare word.
+     * Stripped before folding so an article cannot read as a disagreement.
+     */
+    const fold = (s: string) =>
+      s
+        .toLowerCase()
+        .replace(/^(an?|the)\s+/, "")
+        .replace(/[^a-z]/g, "");
     const lower = (xs: string[]) => new Set(xs.map(fold));
     const ourSyn = lower(a.synonyms);
     const ourAnt = lower(a.antonyms);
