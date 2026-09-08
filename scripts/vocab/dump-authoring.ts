@@ -74,6 +74,17 @@ async function main() {
     return;
   }
 
+  /**
+   * `--compact` drops the stored gloss, which is roughly half the worksheet.
+   *
+   * The gloss is the bank's own explanation of the answer. It is genuinely
+   * useful on a word whose sense is unobvious, and it is NOT evidence — it was
+   * written by the same kind of pass that wrote the key, so an entry must never
+   * rest on it. The word, its role, the paper's key and the distractors are the
+   * evidence, and those are always printed.
+   */
+  const compact = process.argv.includes("--compact");
+
   const lines: string[] = [];
   lines.push(`# ${chapter.label} — ${CADET_VOCAB.parts.find((p) => p.key === chapter.part)!.title}`);
   lines.push(`${mine.length} words to author (${already.size} already done book-wide)\n`);
@@ -86,7 +97,9 @@ async function main() {
       );
       if (!a.bareStem) lines.push(`  > ${a.sentence}`);
       lines.push(`  key: ${a.key ?? "(none)"}   |   others: ${a.distractors.join(", ")}`);
-      if (a.solution) lines.push(`  stored gloss: ${a.solution.replace(/\s+/g, " ").slice(0, 200)}`);
+      if (a.solution && !compact) {
+        lines.push(`  stored gloss: ${a.solution.replace(/\s+/g, " ").slice(0, 200)}`);
+      }
     }
     lines.push("");
   }
