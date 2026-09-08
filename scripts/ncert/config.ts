@@ -109,6 +109,68 @@ const cls11Maths = (p: string) => join(SOURCE_ROOT, "11th", "Maths", p);
 const cls11Phy = (p: string) => join(SOURCE_ROOT, "11th", "Physics", p);
 const cls12Phy = (p: string) => join(SOURCE_ROOT, "12th", "Physics", p);
 
+// ── CHEMISTRY path helpers (2026-09-08) ────────────────────────────────────────
+// Chemistry ships as pre-split per-chapter PDFs under Part_1/Part_2, like Physics,
+// with the end-of-book answers in kech1an/kech2an (Class 11) and lech1an/lech2an
+// (Class 12). `*a1.pdf` and `*ps.pdf` are APPENDICES and PRELIMS — not answers.
+//
+// FIVE THINGS THAT DIFFER FROM PHYSICS, all measured before the first chapter:
+//
+// 1. **THERE IS NO CHAPTER-NUMBER OFFSET — the INVERSE of Physics.** Chemistry's
+//    files are already numbered by BOOK chapter: Class 11 Part_2 runs 07-09 and
+//    Class 12 Part_2 runs 06-10. Porting the Physics +7/+8 would silently mis-ref
+//    every row in every Part-2 chapter.
+//
+// 2. **THREE QUESTION STREAMS, AND TWO OF THEM SHARE ONE NUMBERING NAMESPACE.**
+//    Class 12 prints worked `Example N.n`, unsolved `Intext Questions` numbered
+//    N.1, N.2 …, AND end-of-chapter `Exercises` ALSO numbered N.1, N.2 … So
+//    "1.5" names TWO different questions in the same chapter. Refs MUST carry the
+//    stream — `Eg 1.5` / `Intext 1.5` / `Ex 1.5` — or the rows collide and the
+//    answer-key cross-check diffs the wrong stream. A naive `^N\.\d` scan is
+//    useless here: it conflates section headings, intext questions and exercises,
+//    which is exactly what it did on the first probe of this chapter.
+//
+// 3. **THERE ARE TWO SEPARATE ANSWER SOURCES, one per stream.** The end-of-book
+//    key (`*an.pdf`) answers the EXERCISES — verified by content, not position:
+//    key 1.5 = "0.617 m, 0.01 and 0.99, 0.67" matches Exercise 1.5's four asks
+//    (molality, two mole fractions, molarity). Separately, **each Class-12
+//    chapter ends with its own "Answers to Some Intext Questions" section**
+//    covering most — never all — of its Intext stream.
+//
+//    CORRECTION, recorded because getting this wrong would have silently halved
+//    the gate's reach: this comment first read "INTEXT QUESTIONS HAVE NO PRINTED
+//    ANSWER ANYWHERE IN THE BOOK". That is FALSE. The in-chapter section is on
+//    the chapter's LAST page, below the final exercise, and a probe of mine did
+//    flag it — reporting exactly the item numbers it covers — which I dismissed
+//    as parsing noise after reading only the head of that page. Read a page to
+//    its END before calling a signal noise.
+//
+//    Measured across the subject: 9 of the 10 Class-12 chapters carry the section
+//    (all but ch10 Biomolecules); Class 11 carries none, consistently, because it
+//    has no Intext stream at all. Coverage is partial by design — the heading
+//    says "Some" — e.g. ch1 answers 1.1-1.5 and 1.9-1.12, skipping 1.6-1.8.
+//
+// 4. **KEY COVERAGE IS PARTIAL, and per-STREAM rather than per-chapter.** Four
+//    chapters have no EXERCISE key block: Class 11 ch3 (Periodicity) + ch4
+//    (Chemical Bonding), absent from kech1an, and Class 12 ch6 (Haloalkanes) +
+//    ch10 (Biomolecules), absent from lech2an. Those are largely descriptive
+//    chapters, consistent with a key that prints final values only. But only
+//    THREE are unkeyed outright: ch6 still carries ~7 in-chapter Intext answers.
+//    Class 11 ch3/ch4 and Class 12 ch10 have no printed answer of any kind, and
+//    the step-6 gate genuinely cannot run on them.
+//
+// 5. **CLASS 12 PDFs PAINT EVERY LINE ~5x** (a drop-shadow effect), so the text
+//    layer repeats each heading five times — "Intext Questions" extracts as five
+//    consecutive identical lines. Any Class-12 count must collapse runs first.
+//    Class 11 does NOT do this.
+//
+// Transcription is VISION-ONLY, measured: the delta glyph extracts as the Latin
+// letter `D` in Class 12 (`DrG` for the Gibbs term, 14x in Electrochemistry) and
+// vanishes entirely in Class 11, and the radical sign occurs ZERO times in either
+// book. Section headings also truncate at their line wrap in the margin column.
+const cls11Chem = (p: string) => join(SOURCE_ROOT, "11th", "Chemistry", p);
+const cls12Chem = (p: string) => join(SOURCE_ROOT, "12th", "Chemistry", p);
+
 
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.7 Integrals (12th, Part 2). 67pp, ~300 questions.
@@ -1900,6 +1962,47 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Intrinsic and Extrinsic Semiconductors",
       "p-n Junction and the Semiconductor Diode",
       "Application of Junction Diode as a Rectifier",
+    ],
+  },
+
+  // ── Ch.1 Solutions (12th, Part 1) — the CHEMISTRY PILOT, chosen deliberately as
+  //    the hardest shape in the subject so one chapter retires every unknown at
+  //    once: it carries ALL THREE streams (13 worked Examples, 12 Intext Questions,
+  //    41 Exercises), it is where the Intext/Exercise numbering COLLISION bites,
+  //    it is 5x-painted, and it is KEYED — so the step-6 gate runs on the first
+  //    pass rather than being deferred to some later chapter.
+  //
+  //    REFS MUST CARRY THE STREAM: `Eg 1.n` / `Intext 1.n` / `Ex 1.n`. The book
+  //    numbers Intext Questions and Exercises identically (both 1.1, 1.2, …), so a
+  //    bare "1.5" is ambiguous between two different questions. `Ex 1.` is not a
+  //    prefix of `Intext 1.` and vice versa, so section routing stays unambiguous.
+  //
+  //    ANSWER PAGES: lech1an.pdf is 5 pages covering Units 1-5, and Unit 1's whole
+  //    block sits on 0-based p0 (that page also carries Units 2 and 3 — read to the
+  //    next `UNIT` heading, not to the end of the page).
+  //
+  //    Subtopics are the book's SEVEN top-level numbered sections, read off the
+  //    rendered margin column: the text layer truncates each at its line wrap
+  //    ("Types of" for "Types of Solutions") and a `^1\.\d` scan returns the Intext
+  //    questions instead of the headings.
+  c12ChemSolutions: {
+    id: "c12ChemSolutions",
+    chapterName: "Solutions",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Solutions.pdf",
+    pdf: cls12Chem("Part_1/01. Solutions.pdf"),
+    answersPdf: cls12Chem("Part_1/lech1an.pdf"),
+    answerPages: [0],
+    note: "NCERT (CBSE Class 12) — Solutions (Chapter 1, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Types of Solutions",
+      "Expressing Concentration of Solutions",
+      "Solubility",
+      "Vapour Pressure of Liquid Solutions",
+      "Ideal and Non-ideal Solutions",
+      "Colligative Properties and Determination of Molar Mass",
+      "Abnormal Molar Masses",
     ],
   },
 };

@@ -689,6 +689,24 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 14."] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 14."] },
   ],
+
+  // ── CHEMISTRY. Ch.1 Solutions (12th, Part 1) — THREE blocks, not two, because
+  // NCERT Chemistry carries a stream Physics does not: unsolved "Intext Questions"
+  // interspersed through the chapter, separate from the end-of-chapter Exercises.
+  //
+  // The book numbers BOTH streams 1.1, 1.2, … so the refs — not the numbers — are
+  // what keep them apart. "Ex 1." and "Intext 1." share no prefix in either
+  // direction, so longest-prefix routing is unambiguous; a bare "1.5" would not be.
+  //
+  // Both question blocks are kind 'exercise' (only a worked item with the book's
+  // own printed solution is 'solved_example', which `bucketMatchesKind` enforces).
+  // Reading order is the book's: worked Examples and Intext Questions are
+  // interspersed through the teaching prose, Exercises are terminal.
+  c12ChemSolutions: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 1."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 1."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1."] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
