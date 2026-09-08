@@ -83,12 +83,31 @@ const band = (from: string, to: string): string[] => {
 export const CADET_VOCAB: VocabBookDefinition = {
   slug: "cadet-vocab",
   title: "Cadet Vocabulary",
+  // Follows the part order. It has now been wrong twice after a restructure —
+  // if the parts move again, this line moves with them.
   subtitle:
-    "Every word the NDA and CDS papers have actually asked, with the sentence it was asked in — then the words only the mocks set, then the Class 5-12 school list.",
+    "The Class 5-12 school list, then every word an NDA or CDS paper has actually asked — with the sentence it was asked in — and finally the words only the mocks set.",
+  /**
+   * PART ORDER IS SCHOOL -> PAPERS -> PRACTICE: the book is read as a ladder,
+   * from the foundation a cadet should already have, up to what the papers
+   * actually set, then out to what the coaching books add.
+   *
+   * The ORDINALS live here and nowhere else. Slugs are keyed on the part's NAME
+   * ("school-a-b", "papers-c"), never its number, so reordering the parts moves
+   * no URL — which is the whole reason to name rather than number a slug.
+   */
   parts: [
     {
-      key: "pyq",
+      key: "school",
       ordinal: "Part 1",
+      title: "School List (Class 5-12)",
+      indexTag: "School",
+      blurb:
+        "The CBSE class lists — the foundation. Not yet seen in either exam, but assumed by both.",
+    },
+    {
+      key: "pyq",
+      ordinal: "Part 2",
       title: "Asked in the Papers",
       indexTag: "Papers",
       blurb:
@@ -96,19 +115,11 @@ export const CADET_VOCAB: VocabBookDefinition = {
     },
     {
       key: "practice",
-      ordinal: "Part 2",
+      ordinal: "Part 3",
       title: "Practice Material",
       indexTag: "Practice",
       blurb:
         "Set only in mocks and coaching books, never yet in a paper. Worth learning — but not a past question.",
-    },
-    {
-      key: "school",
-      ordinal: "Part 3",
-      title: "School List (Class 5-12)",
-      indexTag: "School",
-      blurb:
-        "From the CBSE class lists, and not yet seen in either exam. Learn these last.",
     },
   ],
   /**
