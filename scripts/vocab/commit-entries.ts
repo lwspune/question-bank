@@ -200,9 +200,52 @@ async function main() {
     .upsert(rows, { onConflict: "book_slug,word", count: "exact" });
   if (error) throw error;
   console.log(`\nupserted ${count ?? rows.length} row(s).`);
+
+  /**
+   * RENUMBER EACH TOUCHED CHAPTER ALPHABETICALLY.
+   *
+   * `position` was assigned per FILE, so every authored file restarted at 100
+   * and a chapter built from two files INTERLEAVED them — "absurd, abated,
+   * abatement, aghast, abolish, allegiance" down the page. In a dictionary that
+   * is not a cosmetic fault: alphabetical order is the only way a reader finds
+   * anything, and it is what the chapter bands and the index both promise.
+   *
+   * Renumbering over the WHOLE chapter, not just this file, is the point — the
+   * defect is precisely that a file cannot see its neighbours. Idempotent, and
+   * it leaves gaps of 100 so a deliberate manual move still has somewhere to go.
+   */
+  const touched = [...new Set(rows.map((r) => r.chapter_slug))];
+  for (const slug of touched) {
+    const { data: all, error: rErr } = await db
+      .from("vocab_entries")
+      .select("id,word,position")
+      .eq("book_slug", CADET_VOCAB.slug)
+      .eq("chapter_slug", slug)
+      .order("word");
+    if (rErr) throw rErr;
+    let moved = 0;
+    for (let i = 0; i < (all ?? []).length; i++) {
+      const want = (i + 1) * 100;
+      if (all![i].position === want) continue;
+      const { error: uErr } = await db
+        .from("vocab_entries")
+        .update({ position: want })
+        .eq("id", all![i].id);
+      if (uErr) throw uErr;
+      moved++;
+    }
+    console.log(`  ${slug}: ${all?.length ?? 0} entries, ${moved} repositioned`);
+  }
 }
 
-main().catch((e) => {
-  console.error(e.message ?? e);
-  process.exit(1);
-});
+// GUARDED. `citationOf` and `preferredAppearance` are imported by
+// dump-authoring.ts, and an unguarded main() runs on IMPORT — it read that
+// script's own argv as a filename and died on "no such file: papers-a". The
+// same shape cost a CDS session earlier today, where importing a module for one
+// constant executed its writer.
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e.message ?? e);
+    process.exit(1);
+  });
+}
