@@ -48,7 +48,11 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
           <div className="ventry" key={e.id}>
             <p className="vhead">
               <span className="vword">{e.word}</span>
-              <span className="vsemi">; </span>
+              {/* A COLON, not a semicolon. The meaning itself often carries
+                  semicolons between senses ("died down; became less intense"),
+                  so a semicolon after the headword read as one more sense
+                  rather than as the break between word and definition. */}
+              <span className="vsemi">: </span>
               <span className="vmeaning">{e.meaning}</span>
             </p>
 
@@ -69,7 +73,12 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
                 <span className="vlab">Antonyms</span> {e.antonyms.join(", ")}
               </p>
             ) : null}
-            {e.note ? <p className="vnote">{e.note}</p> : null}
+            {/* `note` IS NOT PRINTED. An entry is four lines — word, sentence,
+                synonyms, antonyms — and a trailing editorial aside broke that
+                rhythm on the entries that had one and not on those that did
+                not. The column survives for its documented purpose, which is
+                recording a CURATION decision for whoever reads the book next,
+                not commentary for the student. */}
           </div>
         ))}
       </div>

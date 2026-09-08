@@ -58,11 +58,6 @@ export const VOCAB_PRINT_CSS = `
   font-variant: small-caps; letter-spacing: .04em;
   color: #333; font-size: 8.5pt; margin-right: 1mm;
 }
-.vnote {
-  padding-left: 3.2mm; font-size: 8.5pt; color: #444;
-  font-style: italic; margin-top: 0.4mm;
-}
-
 .vempty { text-align: center; color: #555; font-style: italic; padding: 12mm 0; }
 
 /* On-screen only: the print control disappears on paper. */
