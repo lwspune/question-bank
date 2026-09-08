@@ -21,6 +21,31 @@
  * the entries beneath it. One two-column section with the heading inside it
  * would trap the heading in the left column, which is not how a dictionary
  * looks.
+ *
+ * ═══ A CHAPTER STARTS A NEW PAGE, AND ITS NAME IS CENTRED ═══
+ *
+ * Running chapters on continuously was tried and REVERSED on the rendered page.
+ * A continuous section break lands the next chapter's heading part-way down the
+ * LEFT column with the previous chapter's last entries still filling the right
+ * one, so the heading reads as though it belongs to the text beside it. A band
+ * boundary is where a reader stops, and it needs the page break to show it.
+ *
+ * The name is CENTRED because it is a running head, not a paragraph: left-set
+ * and full-width it was indistinguishable from a long headword at a glance.
+ *
+ * ═══ NUMBERED WITHIN THE CHAPTER, NEVER ACROSS THE BOOK ═══
+ *
+ * Numbers exist so work can be set precisely — "Part 2, NDA A–B, 1–40". They
+ * restart per chapter because any number goes stale when the corpus grows, and
+ * restarting confines that churn to the one chapter that changed; a continuous
+ * sequence would shift every entry after an insertion.
+ *
+ * ═══ A GAP WHERE THE INITIAL LETTER CHANGES ═══
+ *
+ * A chapter runs to 200 entries with no visual break. The gap is what lets the
+ * eye find B while scanning. A letter HEADING was rejected: it costs two lines
+ * per letter (~50 lines across the book) to repeat information the bold headword
+ * already carries.
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -36,7 +61,7 @@ import {
   SectionType,
   TextRun,
 } from "docx";
-import { CADET_VOCAB, VOCAB_SECTIONS, examTagOf, indexTagFor } from "../../src/lib/vocab/registry";
+import { CADET_VOCAB, VOCAB_SECTIONS, examTagOf } from "../../src/lib/vocab/registry";
 
 const OUT = join(__dirname, "..", "..", "generated-papers");
 
@@ -84,12 +109,23 @@ type Row = {
 const run = (text: string, o: Partial<ConstructorParameters<typeof TextRun>[0]> = {}) =>
   new TextRun({ text, font: FONT, size: BODY, ...(o as object) });
 
-/** One entry: headword, meaning, then whatever that part carries. */
-function entryParagraphs(r: Row): Paragraph[] {
+/**
+ * One entry: number, headword, meaning, then whatever that part carries.
+ *
+ * `letterBreak` opens the gap where the initial letter changes. It is EXTRA
+ * SPACE, not a heading — see the file header.
+ */
+function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[] {
   const out: Paragraph[] = [
     new Paragraph({
-      spacing: { before: 40, after: 0 },
+      // 6pt between word groups, 13pt where the initial letter changes. The
+      // earlier 2pt packed the entries so tightly that a synonym line read as
+      // belonging to the entry below it.
+      spacing: { before: letterBreak ? 260 : 120, after: 0 },
       children: [
+        // The number is set small and light so it stays a reference, never
+        // competing with the headword the eye is scanning for.
+        run(`${num}. `, { size: SMALL }),
         run(r.word, { bold: true }),
         run(": "),
         run(r.meaning),
@@ -168,6 +204,8 @@ function entryParagraphs(r: Row): Paragraph[] {
     byChapter.set(r.chapter_slug, list);
   }
 
+  const countOf = (slug: string) => (byChapter.get(slug) ?? []).length;
+
   const parts = CADET_VOCAB.parts.filter((p) => !onlyPart || p.key === onlyPart);
   // The constructor's own element type, but a MUTABLE array: `sections` on the
   // Document options is declared readonly, so building it up with push needs
@@ -200,6 +238,82 @@ function entryParagraphs(r: Row): Paragraph[] {
         }),
       ],
     });
+  }
+
+  /**
+   * ── contents ──
+   *
+   * STRUCTURAL, WITH NO PAGE NUMBERS, and that is deliberate. Nothing here
+   * knows where Word will break a column, so any page number printed would be a
+   * guess presented as a fact — and a contents page whose numbers are wrong is
+   * worse than one that has none. What it does carry is the entry COUNT per
+   * chapter, which is what a teacher setting work actually needs.
+   */
+  if (!onlyPart) {
+    const toc: Paragraph[] = [
+      new Paragraph({
+        spacing: { after: 40 },
+        children: [run("Contents", { bold: true, size: HEAD })],
+      }),
+      new Paragraph({
+        spacing: { after: 200 },
+        children: [
+          run("Entries are numbered within each chapter, restarting at 1.", {
+            italics: true,
+            size: SMALL,
+          }),
+        ],
+      }),
+    ];
+    for (const part of parts) {
+      const chapters = CADET_VOCAB.chapters.filter((c) => c.part === part.key);
+      if (!chapters.length) continue;
+      const total = chapters.reduce((n, c) => n + countOf(c.slug), 0);
+      toc.push(
+        new Paragraph({
+          spacing: { before: 200, after: 60 },
+          children: [
+            run(`${part.ordinal} · ${part.title}`, { bold: true }),
+            run(`  ${total.toLocaleString()} entries`, { size: SMALL }),
+          ],
+        })
+      );
+      const secs = VOCAB_SECTIONS.filter((s) => s.part === part.key);
+      const groups = secs.length
+        ? secs.map((s) => ({
+            title: s.title,
+            rows: chapters.filter((c) => c.section === s.key),
+          }))
+        : [{ title: "", rows: chapters }];
+      for (const g of groups) {
+        if (g.title) {
+          const n = g.rows.reduce((acc, c) => acc + countOf(c.slug), 0);
+          toc.push(
+            new Paragraph({
+              indent: { left: 220 },
+              spacing: { before: 80, after: 20 },
+              children: [
+                run(g.title, { italics: true }),
+                run(`  ${n.toLocaleString()} entries`, { size: SMALL }),
+              ],
+            })
+          );
+        }
+        for (const ch of g.rows) {
+          toc.push(
+            new Paragraph({
+              indent: { left: g.title ? 440 : 220 },
+              spacing: { before: 0, after: 0 },
+              children: [
+                run(ch.label),
+                run(`  ${countOf(ch.slug).toLocaleString()}`, { size: SMALL }),
+              ],
+            })
+          );
+        }
+      }
+    }
+    sections.push({ properties: oneCol(SectionType.NEXT_PAGE), children: toc });
   }
 
   for (const part of parts) {
@@ -237,78 +351,49 @@ function entryParagraphs(r: Row): Paragraph[] {
     for (const g of groups) {
       for (const [i, ch] of g.rows.entries()) {
         const entries = byChapter.get(ch.slug) ?? [];
+        const first = i === 0;
         const heading: Paragraph[] = [];
         // The section heading prints once, above its first chapter.
-        if (g.title && i === 0) {
+        if (g.title && first) {
           heading.push(
             new Paragraph({
+              alignment: AlignmentType.CENTER,
               spacing: { before: 0, after: 40 },
               children: [run(g.title, { bold: true, size: HEAD })],
             }),
             new Paragraph({
-              spacing: { after: 120 },
+              alignment: AlignmentType.CENTER,
+              spacing: { after: 200 },
               children: [run(g.blurb, { italics: true, size: SMALL })],
             })
           );
         }
         heading.push(
           new Paragraph({
-            spacing: { before: g.title && i === 0 ? 0 : 0, after: 120 },
-            children: [run(`${part.title} · ${ch.label}`, { bold: true, size: BODY })],
+            alignment: AlignmentType.CENTER,
+            spacing: { before: 0, after: 160 },
+            children: [run(`${part.title} · ${ch.label}`, { bold: true, size: HEAD })],
           })
         );
 
         sections.push({ properties: oneCol(SectionType.NEXT_PAGE), children: heading });
+
+        let prevLetter = "";
         sections.push({
           properties: cols(2),
           children: entries.length
-            ? entries.flatMap(entryParagraphs)
+            ? entries.flatMap((r, n) => {
+                const letter = r.word.charAt(0).toUpperCase();
+                // Never on the first entry: a gap above the first line of a
+                // chapter is just a wider heading margin, not a divider.
+                const brk = n > 0 && letter !== prevLetter;
+                prevLetter = letter;
+                return entryParagraphs(r, n + 1, brk);
+              })
             : [new Paragraph({ children: [run("No entries in this chapter yet.", { italics: true })] })],
         });
       }
     }
-  }
-
-  // ── back-of-book index ──
-  if (!onlyPart) {
-    const sectionOf = new Map(CADET_VOCAB.chapters.map((c) => [c.slug, c.section ?? null]));
-    const sorted = [...rows].sort((a, b) => a.word.localeCompare(b.word));
-    sections.push({
-      properties: oneCol(SectionType.NEXT_PAGE),
-      children: [
-        new Paragraph({
-          spacing: { after: 120 },
-          children: [run("Index", { bold: true, size: HEAD })],
-        }),
-        new Paragraph({
-          spacing: { after: 160 },
-          children: [
-            run("Every word in the book, A–Z. The tag says which part to turn to.", {
-              italics: true,
-              size: SMALL,
-            }),
-          ],
-        }),
-      ],
-    });
-    sections.push({
-      // THREE columns, not the book's two: an index line is a word and a tag,
-      // so at two columns most of the measure would be empty.
-      properties: cols(3),
-      children: sorted.map(
-        (r) =>
-          new Paragraph({
-            spacing: { before: 0, after: 0 },
-            children: [
-              run(r.word),
-              run(
-                `  ${indexTagFor(CADET_VOCAB, r.part as never, sectionOf.get(r.chapter_slug) ?? null)}`,
-                { size: SMALL }
-              ),
-            ],
-          })
-      ),
-    });
   }
 
   const doc = new Document({

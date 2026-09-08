@@ -60,9 +60,18 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
       </div>
 
       <div className="vcols">
-        {entries.map((e) => (
-          <div className="ventry" key={e.id}>
+        {entries.map((e, i) => {
+          /* NUMBERED WITHIN THE CHAPTER, restarting at 1, and a GAP where the
+             initial letter changes -- both mirroring the Word exporter, since
+             this view exists to show what the Word file will look like. Never a
+             gap above the first entry: that is a wider heading margin, not a
+             divider. */
+          const letter = e.word.charAt(0).toUpperCase();
+          const gap = i > 0 && letter !== entries[i - 1].word.charAt(0).toUpperCase();
+          return (
+          <div className={gap ? "ventry vgap" : "ventry"} key={e.id}>
             <p className="vhead">
+              <span className="vnum">{i + 1}. </span>
               <span className="vword">{e.word}</span>
               {/* A COLON, not a semicolon. The meaning itself often carries
                   semicolons between senses ("died down; became less intense"),
@@ -96,7 +105,8 @@ export default function VocabChapterPrint({ view }: { view: VocabChapterView }) 
                 recording a CURATION decision for whoever reads the book next,
                 not commentary for the student. */}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {entries.length === 0 ? (
