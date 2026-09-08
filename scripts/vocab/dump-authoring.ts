@@ -44,12 +44,33 @@ async function main() {
   const bank = loadCorpus();
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data: done, error } = await db
-    .from("vocab_entries")
-    .select("word")
-    .eq("book_slug", CADET_VOCAB.slug);
-  if (error) throw error;
-  const already = new Set((done ?? []).map((r) => r.word as string));
+
+  /**
+   * PAGED, AND THIS ONE IS DANGEROUS UNPAGED.
+   *
+   * PostgREST truncates a raw `.select()` at 1000 rows with no error. This set
+   * is what stops an already-authored word being offered again — so once the
+   * book passed 1,000 entries the worksheet began listing finished TARGET words
+   * as if they were unwritten. Authoring one as an option word (no sentence, no
+   * citation) and upserting it would REPLACE the real exam sentence and its
+   * paper citation, which is the one thing this book has that a bought word
+   * list does not. Silent, and invisible to every count.
+   *
+   * `.order("word")` is required for the paging to be stable: LIMIT/OFFSET
+   * without an ORDER BY can repeat and skip rows between pages.
+   */
+  const already = new Set<string>();
+  for (let from = 0; ; from += 1000) {
+    const { data: done, error } = await db
+      .from("vocab_entries")
+      .select("word")
+      .eq("book_slug", CADET_VOCAB.slug)
+      .order("word")
+      .range(from, from + 999);
+    if (error) throw error;
+    for (const r of done ?? []) already.add(r.word as string);
+    if ((done ?? []).length < 1000) break;
+  }
 
   // Placement is taken from `commit-entries`, never re-derived here: a second
   // copy of the part/section rule would drift, and the drift is silent — the
