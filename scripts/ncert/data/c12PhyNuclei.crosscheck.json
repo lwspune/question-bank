@@ -1,0 +1,79 @@
+[
+  {
+    "ref": "Ex 13.1",
+    "verdict": "AGREE",
+    "ourAnswer": "104.7 MeV",
+    "keyAnswer": "104.7 MeV",
+    "note": "Exact match. Delta-m = 7(1.007825) + 7(1.008665) - 14.00307 = 0.11236 u; x 931.5 = 104.66 MeV."
+  },
+  {
+    "ref": "Ex 13.2",
+    "verdict": "AGREE",
+    "ourAnswer": "Fe-56: 492.26 MeV total (8.79 MeV/nucleon); Bi-209: 1640.26 MeV total (7.85 MeV/nucleon)",
+    "keyAnswer": "8.79 MeV, 7.84 MeV",
+    "note": "AGREE on two separate points that are worth recording. (1) The key prints PER-NUCLEON values while the stem asks for the binding energy of the nuclei 'in units of MeV', i.e. the totals — so the key answers a different quantity than the question asks. Our solution gives both, so it satisfies the stem AND matches the key. (2) The Bi-209 figure differs in the last digit only: the exact value is 7.8481 MeV/nucleon, which ROUNDS to 7.85 (ours) and TRUNCATES to 7.84 (the key's). That is a 0.1% difference and a last-digit convention, which this brief explicitly says not to report as a disagreement. Fe-56 is 8.7904 and both sources give 8.79."
+  },
+  {
+    "ref": "Ex 13.3",
+    "verdict": "AGREE",
+    "ourAnswer": "1.58e25 MeV = 2.5e12 J",
+    "keyAnswer": "1.584e25 MeV or 2.535e12 J",
+    "note": "Agree to the key's precision; ours is the same value quoted to 3 s.f. against the key's 4."
+  },
+  {
+    "ref": "Ex 13.4",
+    "verdict": "AGREE",
+    "ourAnswer": "1.23 (pure number)",
+    "keyAnswer": "1.23",
+    "note": "R0 cancels in the ratio, leaving (197/107)^(1/3) = 1.2264. Correctly unitless on both sides."
+  },
+  {
+    "ref": "Ex 13.5(i)",
+    "verdict": "AGREE",
+    "ourAnswer": "Q = -4.03 MeV; endothermic",
+    "keyAnswer": "Q = -4.03 MeV; endothermic",
+    "note": "Exact match, sign and classification included."
+  },
+  {
+    "ref": "Ex 13.5(ii)",
+    "verdict": "AGREE",
+    "ourAnswer": "Q = +4.62 MeV; exothermic",
+    "keyAnswer": "Q = 4.62 MeV; exothermic",
+    "note": "Exact match, sign and classification included."
+  },
+  {
+    "ref": "Ex 13.6",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "Q = -26.9 MeV; fission not energetically possible (endothermic)",
+    "keyAnswer": "Q = m(Fe-56) - 2m(Al-28) = 26.90 MeV; not possible.",
+    "note": "The printed key DROPS THE MINUS SIGN on its own result. Magnitude and verdict are both right; only the sign is missing. Read at 900 dpi to rule out a misread: there is a clear minus between the two mass terms and NONE before 26.90 — the '=' sits directly against it. THREE independent routes, and two of them are internal to the key itself, which is what makes this decisive rather than a difference of opinion: (1) the key's OWN printed expression, evaluated with the stem's OWN data (m(Fe-56) = 55.93494 u, m(Al-28) = 27.98191 u), gives 55.934939 - 2(27.98191) = -0.028881 u, x 931.5 = -26.90 MeV — so the expression the key prints contradicts the value it prints beside it; (2) the key's OWN verdict 'not possible' requires a NEGATIVE Q, since a Q of +26.90 MeV would be exothermic and therefore possible — the key would be refuting itself; (3) our independent derivation. The magnitude 26.90 is reproduced exactly, so this is a dropped sign in typesetting, not a computational error. Physically it is the expected result: Fe-56 sits at the peak of the binding-energy curve, so splitting it must COST energy."
+  },
+  {
+    "ref": "Ex 13.7",
+    "verdict": "AGREE",
+    "ourAnswer": "4.54e26 MeV (= 7.26e13 J)",
+    "keyAnswer": "4.536e26 MeV",
+    "note": "Agree to the key's precision; 4.536 rounds to 4.54 at 3 s.f."
+  },
+  {
+    "ref": "Ex 13.8",
+    "verdict": "AGREE",
+    "ourAnswer": "t = 1.58e12 s = 5.0e4 y",
+    "keyAnswer": "About 4.9e4 y",
+    "note": "AGREE — the 2% gap is entirely the year-length constant, and the key hedges with 'About'. Our seconds figure converts to 4.996e4 y using 1 y = 3.154e7 s, which is the value the book's OWN shared constants table prints at the head of the EXERCISES block, and that rounds to 5.0e4. Using 1 y = 3.2e7 s instead reproduces the printed 4.9e4 (4.924e4). So both sides agree on the physics and on the elapsed seconds; only the seconds-per-year differs, and the book's own table supports ours. Not reported as a defect: the key says 'About', and this is a constants convention rather than an error."
+  },
+  {
+    "ref": "Ex 13.9",
+    "verdict": "AGREE",
+    "ourAnswer": "360 keV (= 0.36 MeV = 5.76e-14 J)",
+    "keyAnswer": "360 KeV",
+    "note": "Exact match. (The key capitalises the unit as 'KeV'; the SI form is 'keV'. Typographic only, no bearing on the value, so not recorded as a defect.)"
+  },
+  {
+    "ref": "Ex 13.10",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "rho = 3 m_N / (4 pi R0^3) ~ 2.3e17 kg m^-3, independent of A",
+    "keyAnswer": "(none — the key's chapter-13 block ends at 13.9)",
+    "note": "Not a defect. This is a 'show that' derivation with no single final value for the key to print, and this key routinely skips such questions. Verified by reading to the next heading: the block runs 13.1 to 13.9 and CHAPTER 14 follows immediately."
+  }
+]
