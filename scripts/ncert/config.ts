@@ -2005,6 +2005,474 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Abnormal Molar Masses",
     ],
   },
+
+  // ── The remaining NINE Class-12 Chemistry chapters (2026-09-08). Subtopics are
+  //    each chapter's top-level printed section headings, harvested by a prep pass
+  //    that VALIDATED its method against Ch.1's known 7-section answer before
+  //    trusting itself — the text layer cannot be scanned for these directly:
+  //    headings wrap (so they truncate), and Exercise/Intext question numbers are
+  //    ALSO `N.n` in the same left margin, so a position-only scan returned 40
+  //    "sections" for a 7-section chapter. The discriminator is the FONT
+  //    (BallroomTango ~14pt vs Bookman-Demi ~9.5pt for question numbers).
+  //
+  // ⚠ DELIBERATE DIVERGENCE FROM THE PRINTED HEADINGS, in ch8 and ch9 ONLY.
+  //    Both chapters are really TWO HALF-CHAPTERS that repeat the same structural
+  //    headings: ch8 is aldehydes+ketones (8.1-8.5) then carboxylic acids
+  //    (8.6-8.10), and ch9 is amines (9.1-9.6) then diazonium salts (9.7-9.10).
+  //    So each prints "Physical Properties" and "Chemical Reactions" TWICE.
+  //    `subtopics_chapter_id_name_key` is UNIQUE on (chapter_id, name), so
+  //    committing them verbatim would SILENTLY FUSE the two halves — carboxylic
+  //    acid physical-properties questions landing in the aldehyde subtopic, with
+  //    every count still reconciling and nothing downstream able to see it. They
+  //    are therefore qualified by compound class. This is the same class of call
+  //    as mh-sb-11 Ch.4 shipping as `Binomial Theorem`: a name that diverges from
+  //    the printed one, on purpose, recorded here so nobody "restores" it.
+  //
+  //    ch9 §9.7 additionally prints "Diazoniun" — a genuine NCERT typo, confirmed
+  //    at 3x zoom against the same page's body text and §9.10, which both spell it
+  //    correctly. Corrected here: a subtopic name is a NAVIGATION LABEL and
+  //    nothing factual turns on it (the State Board TITLE_FIXES precedent).
+  //
+  //    KEY COVERAGE IS PARTIAL AND PER-STREAM. ch6 and ch10 have NO exercise key
+  //    block in lech2an (confirmed by a whole-file scan for `6.n`/`10.n` lines),
+  //    so they carry no answersPdf at all rather than pointing at a file that does
+  //    not answer them. ch6 is still not blind — its in-chapter section answers
+  //    all 9 intext questions. ch10 Biomolecules is the true outlier: no exercise
+  //    key, no intext-answer section, AND ZERO worked examples (the string
+  //    "Example" occurs 0 times in its 22 pages), so all three streams are
+  //    unkeyed and the step-6 gate cannot run on it at all.
+
+  c12ChemElectrochemistry: {
+    id: "c12ChemElectrochemistry",
+    chapterName: "Electrochemistry",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Electrochemistry.pdf",
+    pdf: cls12Chem("Part_1/02. Electrochemistry.pdf"),
+    answersPdf: cls12Chem("Part_1/lech1an.pdf"),
+    answerPages: [0],
+    note: "NCERT (CBSE Class 12) — Electrochemistry (Chapter 2, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Electrochemical Cells",
+      "Galvanic Cells",
+      "Nernst Equation",
+      "Conductance of Electrolytic Solutions",
+      "Electrolytic Cells and Electrolysis",
+      "Batteries",
+      "Fuel Cells",
+      "Corrosion",
+    ],
+  },
+
+  c12ChemKinetics: {
+    id: "c12ChemKinetics",
+    chapterName: "Chemical Kinetics",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Kinetics.pdf",
+    pdf: cls12Chem("Part_1/03. Chemical Kinetics.pdf"),
+    answersPdf: cls12Chem("Part_1/lech1an.pdf"),
+    answerPages: [0, 1],
+    note: "NCERT (CBSE Class 12) — Chemical Kinetics (Chapter 3, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Rate of a Chemical Reaction",
+      "Factors Influencing Rate of a Reaction",
+      "Integrated Rate Equations",
+      "Temperature Dependence of the Rate of a Reaction",
+      "Collision Theory of Chemical Reactions",
+    ],
+  },
+
+  c12ChemDBlock: {
+    id: "c12ChemDBlock",
+    chapterName: "The d-and f-Block Elements",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__DBlock.pdf",
+    pdf: cls12Chem("Part_1/04. The d-and f-Block Elements.pdf"),
+    answersPdf: cls12Chem("Part_1/lech1an.pdf"),
+    answerPages: [1],
+    note: "NCERT (CBSE Class 12) — The d-and f-Block Elements (Chapter 4, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Position in the Periodic Table",
+      "Electronic Configurations of the d-Block Elements",
+      "General Properties of the Transition Elements (d-Block)",
+      "Some Important Compounds of Transition Elements",
+      "The Lanthanoids",
+      "The Actinoids",
+      "Some Applications of d- and f-Block Elements",
+    ],
+  },
+
+  c12ChemCoordination: {
+    id: "c12ChemCoordination",
+    chapterName: "Coordination Compounds",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Coordination.pdf",
+    pdf: cls12Chem("Part_1/05. Coordination Compounds.pdf"),
+    answersPdf: cls12Chem("Part_1/lech1an.pdf"),
+    answerPages: [2],
+    note: "NCERT (CBSE Class 12) — Coordination Compounds (Chapter 5, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Werner’s Theory of Coordination Compounds",
+      "Definitions of Some Important Terms Pertaining to Coordination Compounds",
+      "Nomenclature of Coordination Compounds",
+      "Isomerism in Coordination Compounds",
+      "Bonding in Coordination Compounds",
+      "Bonding in Metal Carbonyls",
+      "Importance and Applications of Coordination Compounds",
+    ],
+  },
+
+  c12ChemHaloalkanes: {
+    id: "c12ChemHaloalkanes",
+    chapterName: "Haloalkanes and Haloarenes",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Haloalkanes.pdf",
+    pdf: cls12Chem("Part_2/06. Haloalkanes and Haloarenes.pdf"),
+    // NO EXERCISE KEY — this unit has no block in lech2an (verified by a
+    // whole-file scan: zero `6.n` lines). answersPdf is deliberately
+    // OMITTED rather than pointed at a file that does not answer it.
+    note: "NCERT (CBSE Class 12) — Haloalkanes and Haloarenes (Chapter 6, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Classification",
+      "Nomenclature",
+      "Nature of C-X Bond",
+      "Methods of Preparation of Haloalkanes",
+      "Preparation of Haloarenes",
+      "Physical Properties",
+      "Chemical Reactions",
+      "Polyhalogen Compounds",
+    ],
+  },
+
+  c12ChemAlcohols: {
+    id: "c12ChemAlcohols",
+    chapterName: "Alcohols, Phenols and Ethers",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Alcohols.pdf",
+    pdf: cls12Chem("Part_2/07. Alcohols, Phenols and Ethers.pdf"),
+    answersPdf: cls12Chem("Part_2/lech2an.pdf"),
+    answerPages: [0, 1],
+    note: "NCERT (CBSE Class 12) — Alcohols, Phenols and Ethers (Chapter 7, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Classification",
+      "Nomenclature",
+      "Structures of Functional Groups",
+      "Alcohols and Phenols",
+      "Some Commercially Important Alcohols",
+      "Ethers",
+    ],
+  },
+
+  c12ChemAldehydes: {
+    id: "c12ChemAldehydes",
+    chapterName: "Aldehydes, Ketones and Carboxylic Acids",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Aldehydes.pdf",
+    pdf: cls12Chem("Part_2/08. Aldehydes, Ketones and Carboxylic Acids.pdf"),
+    answersPdf: cls12Chem("Part_2/lech2an.pdf"),
+    answerPages: [1, 2],
+    note: "NCERT (CBSE Class 12) — Aldehydes, Ketones and Carboxylic Acids (Chapter 8, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Nomenclature and Structure of Carbonyl Group",
+      "Preparation of Aldehydes and Ketones",
+      "Physical Properties of Aldehydes and Ketones",
+      "Chemical Reactions of Aldehydes and Ketones",
+      "Uses of Aldehydes and Ketones",
+      "Nomenclature and Structure of Carboxyl Group",
+      "Methods of Preparation of Carboxylic Acids",
+      "Physical Properties of Carboxylic Acids",
+      "Chemical Reactions of Carboxylic Acids",
+      "Uses of Carboxylic Acids",
+    ],
+  },
+
+  c12ChemAmines: {
+    id: "c12ChemAmines",
+    chapterName: "Amines",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Amines.pdf",
+    pdf: cls12Chem("Part_2/09. Amines.pdf"),
+    answersPdf: cls12Chem("Part_2/lech2an.pdf"),
+    answerPages: [3],
+    note: "NCERT (CBSE Class 12) — Amines (Chapter 9, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Structure of Amines",
+      "Classification",
+      "Nomenclature",
+      "Preparation of Amines",
+      "Physical Properties of Amines",
+      "Chemical Reactions of Amines",
+      "Method of Preparation of Diazonium Salts",
+      "Physical Properties of Diazonium Salts",
+      "Chemical Reactions of Diazonium Salts",
+      "Importance of Diazonium Salts in Synthesis of Aromatic Compounds",
+    ],
+  },
+
+  c12ChemBiomolecules: {
+    id: "c12ChemBiomolecules",
+    chapterName: "Biomolecules",
+    examId: EXAM_ID_CBSE_12,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_12_Chemistry__Biomolecules.pdf",
+    pdf: cls12Chem("Part_2/10. Biomolecules.pdf"),
+    // NO EXERCISE KEY — this unit has no block in lech2an (verified by a
+    // whole-file scan: zero `10.n` lines). answersPdf is deliberately
+    // OMITTED rather than pointed at a file that does not answer it.
+    note: "NCERT (CBSE Class 12) — Biomolecules (Chapter 10, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Carbohydrates",
+      "Proteins",
+      "Enzymes",
+      "Vitamins",
+      "Nucleic Acids",
+      "Hormones",
+    ],
+  },
+
+
+  // ── The NINE Class-11 Chemistry chapters (2026-09-08). A SIMPLER shape than
+  //    Class 12 and the differences are structural, not incidental:
+  //      * NO INTEXT STREAM AT ALL — confirmed letterspacing-tolerantly across all
+  //        nine chapters (a naive scan returning zero proves nothing in a book that
+  //        letter-spaces display words). Worked items are `Problem N.n`, never
+  //        `Example N.n`. So two section blocks per chapter, not three.
+  //      * No 5x paint. Headings are separated by WEIGHT, not a display face, and
+  //        the face is named differently per Part — `BookmanOldStyle-Bold` 10.5pt
+  //        in Part_1, `Bookman-Demi` 10.5pt in Part_2, against regular 9.5pt for
+  //        question numbers. The Class-12 BallroomTango test returns 0 here.
+  //
+  // ⚠ THE KEY IS PARTIAL **PER QUESTION**, not merely per chapter, and page spans
+  //    badly overstate it: only 194 of 373 exercises (52%) carry an entry at all,
+  //    because this key prints final VALUES only. ch7 keys ONE exercise of 30;
+  //    ch8 keys FOUR of 40. So the compensating regime (blind re-derivation +
+  //    grounding) is owed on ch3, ch4, ch7 AND ch8 — about 150 exercises — not
+  //    just on the two chapters that lack a key block outright.
+  //
+  //    ch3 and ch4 have NO key of any kind and, having no Intext stream, no second
+  //    source either: 80 exercises resting entirely on derivation.
+  //
+  //    TRANSCRIBER HAZARDS measured during prep, all silent: every top-level
+  //    heading RENDERS IN ALL CAPS regardless of typed case, so text-layer casing
+  //    carries no information (titles below are normalised to Title Case);
+  //    ch5's delta extracts as U+2206 INCREMENT, not U+0394; `Problem 8.2` splits
+  //    across two spans so a span-level count under-reads ch8 by one; and §9.5 is
+  //    printed SINGULAR, "AROMATIC HYDROCARBON" — verified on a render, do not
+  //    "correct" it.
+
+  c11ChemBasicConcepts: {
+    id: "c11ChemBasicConcepts",
+    chapterName: "Some Basic Concepts of Chemistry",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mBasicConcepts.pdf",
+    pdf: cls11Chem("Part_1/01. Some Basic Concepts of Chemistry.pdf"),
+    answersPdf: cls11Chem("Part_1/kech1an.pdf"),
+    answerPages: [0],
+    // key is PARTIAL PER QUESTION: 17 of 36 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Some Basic Concepts of Chemistry (Chapter 1, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Importance of Chemistry",
+      "Nature of Matter",
+      "Properties of Matter and Their Measurement",
+      "Uncertainty in Measurement",
+      "Laws of Chemical Combinations",
+      "Dalton’s Atomic Theory",
+      "Atomic and Molecular Masses",
+      "Mole Concept and Molar Masses",
+      "Percentage Composition",
+      "Stoichiometry and Stoichiometric Calculations",
+    ],
+  },
+
+  c11ChemStructureAtom: {
+    id: "c11ChemStructureAtom",
+    chapterName: "Structure of Atom",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mStructureAtom.pdf",
+    pdf: cls11Chem("Part_1/02. Structure of Atom.pdf"),
+    answersPdf: cls11Chem("Part_1/kech1an.pdf"),
+    answerPages: [0, 1, 2],
+    // key is PARTIAL PER QUESTION: 66 of 67 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Structure of Atom (Chapter 2, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Discovery of Sub-atomic Particles",
+      "Atomic Models",
+      "Developments Leading to the Bohr’s Model of Atom",
+      "Bohr’s Model for Hydrogen Atom",
+      "Towards Quantum Mechanical Model of the Atom",
+      "Quantum Mechanical Model of Atom",
+    ],
+  },
+
+  c11ChemPeriodicity: {
+    id: "c11ChemPeriodicity",
+    chapterName: "Classification of Elements and Periodicity in Properties",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mPeriodicity.pdf",
+    pdf: cls11Chem("Part_1/03. Classification of Elements and Periodicity in Properties.pdf"),
+    // NO KEY OF ANY KIND — kech1an has no UNIT 3 block (verified), and
+    // Class 11 has no Intext stream, so there is no second source either.
+    // All 40 exercises rest on derivation; the step-6 gate cannot run.
+    note: "NCERT (CBSE Class 11) — Classification of Elements and Periodicity in Properties (Chapter 3, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Why Do We Need to Classify Elements ?",
+      "Genesis of Periodic Classification",
+      "Modern Periodic Law and the Present Form of the Periodic Table",
+      "Nomenclature of Elements with Atomic Numbers > 100",
+      "Electronic Configurations of Elements and the Periodic Table",
+      "Electronic Configurations and Types of Elements: s-, p-, d-, f- Blocks",
+      "Periodic Trends in Properties of Elements",
+    ],
+  },
+
+  c11ChemBonding: {
+    id: "c11ChemBonding",
+    chapterName: "Chemical Bonding and Molecular Structure",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mBonding.pdf",
+    pdf: cls11Chem("Part_1/04. Chemical Bonding and Molecular Structure.pdf"),
+    // NO KEY OF ANY KIND — kech1an has no UNIT 4 block (verified), and
+    // Class 11 has no Intext stream, so there is no second source either.
+    // All 40 exercises rest on derivation; the step-6 gate cannot run.
+    note: "NCERT (CBSE Class 11) — Chemical Bonding and Molecular Structure (Chapter 4, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Kössel-Lewis Approach to Chemical Bonding",
+      "Ionic or Electrovalent Bond",
+      "Bond Parameters",
+      "The Valence Shell Electron Pair Repulsion (VSEPR) Theory",
+      "Valence Bond Theory",
+      "Hybridisation",
+      "Molecular Orbital Theory",
+      "Bonding in Some Homonuclear Diatomic Molecules",
+      "Hydrogen Bonding",
+    ],
+  },
+
+  c11ChemThermodynamics: {
+    id: "c11ChemThermodynamics",
+    chapterName: "Thermodynamics",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mThermodynamics.pdf",
+    pdf: cls11Chem("Part_1/05. Thermodynamics.pdf"),
+    answersPdf: cls11Chem("Part_1/kech1an.pdf"),
+    answerPages: [2, 3],
+    // key is PARTIAL PER QUESTION: 22 of 22 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Thermodynamics (Chapter 5, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Thermodynamic Terms",
+      "Applications",
+      "Measurement of ΔU and ΔH: Calorimetry",
+      "Enthalpy Change, ΔrH of a Reaction – Reaction Enthalpy",
+      "Enthalpies for Different Types of Reactions",
+      "Spontaneity",
+      "Gibbs Energy Change and Equilibrium",
+    ],
+  },
+
+  c11ChemEquilibrium: {
+    id: "c11ChemEquilibrium",
+    chapterName: "Equilibrium",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mEquilibrium.pdf",
+    pdf: cls11Chem("Part_1/06. Equilibrium.pdf"),
+    answersPdf: cls11Chem("Part_1/kech1an.pdf"),
+    answerPages: [3, 4],
+    // key is PARTIAL PER QUESTION: 62 of 73 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Equilibrium (Chapter 6, NCERT Chemistry Part 1)",
+    subtopics: [
+      "Equilibrium in Physical Processes",
+      "Equilibrium in Chemical Processes – Dynamic Equilibrium",
+      "Law of Chemical Equilibrium and Equilibrium Constant",
+      "Homogeneous Equilibria",
+      "Heterogeneous Equilibria",
+      "Applications of Equilibrium Constants",
+      "Relationship Between Equilibrium Constant K, Reaction Quotient Q and Gibbs Energy G",
+      "Factors Affecting Equilibria",
+      "Ionic Equilibrium in Solution",
+      "Acids, Bases and Salts",
+      "Ionization of Acids and Bases",
+      "Buffer Solutions",
+      "Solubility Equilibria of Sparingly Soluble Salts",
+    ],
+  },
+
+  c11ChemRedox: {
+    id: "c11ChemRedox",
+    chapterName: "Redox Reactions",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mRedox.pdf",
+    pdf: cls11Chem("Part_2/07. Redox Reactions.pdf"),
+    answersPdf: cls11Chem("Part_2/kech2an.pdf"),
+    answerPages: [0],
+    // key is PARTIAL PER QUESTION: 1 of 30 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Redox Reactions (Chapter 7, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Classical Idea of Redox Reactions – Oxidation and Reduction Reactions",
+      "Redox Reactions in Terms of Electron Transfer Reactions",
+      "Oxidation Number",
+      "Redox Reactions and Electrode Processes",
+    ],
+  },
+
+  c11ChemOrganicBasics: {
+    id: "c11ChemOrganicBasics",
+    chapterName: "Organic Chemistry – Some Basic Principles and Techniques",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mOrganicBasics.pdf",
+    pdf: cls11Chem("Part_2/08. Organic Chemistry – Some Basic Principles and Techniques.pdf"),
+    answersPdf: cls11Chem("Part_2/kech2an.pdf"),
+    answerPages: [0],
+    // key is PARTIAL PER QUESTION: 4 of 40 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Organic Chemistry – Some Basic Principles and Techniques (Chapter 8, NCERT Chemistry Part 2)",
+    subtopics: [
+      "General Introduction",
+      "Tetravalence of Carbon: Shapes of Organic Compounds",
+      "Structural Representations of Organic Compounds",
+      "Classification of Organic Compounds",
+      "Nomenclature of Organic Compounds",
+      "Isomerism",
+      "Fundamental Concepts in Organic Reaction Mechanism",
+      "Methods of Purification of Organic Compounds",
+      "Qualitative Analysis of Organic Compounds",
+      "Quantitative Analysis",
+    ],
+  },
+
+  c11ChemHydrocarbons: {
+    id: "c11ChemHydrocarbons",
+    chapterName: "Hydrocarbons",
+    examId: EXAM_ID_CBSE_11,
+    subjectName: "Chemistry",
+    sourceFile: "NCERT_11_Chemistry__mHydrocarbons.pdf",
+    pdf: cls11Chem("Part_2/09. Hydrocarbons.pdf"),
+    answersPdf: cls11Chem("Part_2/kech2an.pdf"),
+    answerPages: [0, 1, 2, 3],
+    // key is PARTIAL PER QUESTION: 22 of 25 exercises carry an entry.
+    note: "NCERT (CBSE Class 11) — Hydrocarbons (Chapter 9, NCERT Chemistry Part 2)",
+    subtopics: [
+      "Classification",
+      "Alkanes",
+      "Alkenes",
+      "Alkynes",
+      "Aromatic Hydrocarbon",
+      "Carcinogenicity and Toxicity",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

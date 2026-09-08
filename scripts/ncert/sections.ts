@@ -707,6 +707,123 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 1."] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1."] },
   ],
+
+
+  // ── The remaining nine Class-12 Chemistry chapters. Three blocks each, in the
+  // book's own reading order: worked Examples and Intext Questions interspersed
+  // through the teaching prose, Exercises terminal.
+  //
+  // `Ex <n>.` and `Intext <n>.` share no prefix in either direction, which is what
+  // keeps routing unambiguous while the BOOK numbers both streams identically.
+  //
+  // ⚠ c12ChemBiomolecules has only TWO blocks — that chapter contains ZERO worked
+  // examples (the string "Example" occurs 0 times across its 22 pages), so a
+  // solved_example block would route nothing and render an empty section.
+
+  c12ChemElectrochemistry: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 2."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 2."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2."] },
+  ],
+
+  c12ChemKinetics: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 3."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 3."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3."] },
+  ],
+
+  c12ChemDBlock: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 4."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 4."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4."] },
+  ],
+
+  c12ChemCoordination: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 5."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 5."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5."] },
+  ],
+
+  c12ChemHaloalkanes: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 6."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 6."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6."] },
+  ],
+
+  c12ChemAlcohols: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 7."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 7."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7."] },
+  ],
+
+  c12ChemAldehydes: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 8."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 8."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8."] },
+  ],
+
+  c12ChemAmines: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 9."] },
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 9."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9."] },
+  ],
+
+  c12ChemBiomolecules: [
+    { group: "Intext Questions", label: "Intext Questions", kind: "exercise", refPrefixes: ["Intext 10."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10."] },
+  ],
+
+
+  // ── Class-11 Chemistry: TWO blocks per chapter, not three. This book has no
+  // Intext stream at all (confirmed across all nine chapters), so an
+  // "Intext Questions" block would route nothing and render an empty section.
+  // Worked items print as `Problem N.n` but carry the same `Eg N.` ref as
+  // Class 12's `Example N.n` — the ref convention is per-pipeline, not per-book.
+
+  c11ChemBasicConcepts: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 1."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1."] },
+  ],
+
+  c11ChemStructureAtom: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 2."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2."] },
+  ],
+
+  c11ChemPeriodicity: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 3."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3."] },
+  ],
+
+  c11ChemBonding: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 4."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4."] },
+  ],
+
+  c11ChemThermodynamics: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 5."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5."] },
+  ],
+
+  c11ChemEquilibrium: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 6."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6."] },
+  ],
+
+  c11ChemRedox: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 7."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7."] },
+  ],
+
+  c11ChemOrganicBasics: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 8."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8."] },
+  ],
+
+  c11ChemHydrocarbons: [
+    { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 9."] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9."] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
