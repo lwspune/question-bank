@@ -25,7 +25,7 @@ config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
 import { CADET_VOCAB, chapterFor } from "../../src/lib/vocab/registry";
 import { citationOf, placementOf, preferredAppearance } from "./commit-entries";
-import type { BankWord } from "./extract-bank";
+import { loadCorpus } from "./corpus";
 
 const DATA = join(__dirname, "data");
 const OUT = join(__dirname, "out");
@@ -39,15 +39,38 @@ async function main() {
     throw new Error(`unknown chapter "${slug}" — have: ${CADET_VOCAB.chapters.map((c) => c.slug).join(", ")}`);
   }
 
-  const bank = JSON.parse(readFileSync(join(DATA, "bank-words.json"), "utf8")) as BankWord[];
+  // The WHOLE exam corpus, targets and option-only words alike — the latter are
+  // three quarters of Part 2 and would otherwise never reach a worksheet.
+  const bank = loadCorpus();
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data: done, error } = await db
-    .from("vocab_entries")
-    .select("word")
-    .eq("book_slug", CADET_VOCAB.slug);
-  if (error) throw error;
-  const already = new Set((done ?? []).map((r) => r.word as string));
+
+  /**
+   * PAGED, AND THIS ONE IS DANGEROUS UNPAGED.
+   *
+   * PostgREST truncates a raw `.select()` at 1000 rows with no error. This set
+   * is what stops an already-authored word being offered again — so once the
+   * book passed 1,000 entries the worksheet began listing finished TARGET words
+   * as if they were unwritten. Authoring one as an option word (no sentence, no
+   * citation) and upserting it would REPLACE the real exam sentence and its
+   * paper citation, which is the one thing this book has that a bought word
+   * list does not. Silent, and invisible to every count.
+   *
+   * `.order("word")` is required for the paging to be stable: LIMIT/OFFSET
+   * without an ORDER BY can repeat and skip rows between pages.
+   */
+  const already = new Set<string>();
+  for (let from = 0; ; from += 1000) {
+    const { data: done, error } = await db
+      .from("vocab_entries")
+      .select("word")
+      .eq("book_slug", CADET_VOCAB.slug)
+      .order("word")
+      .range(from, from + 999);
+    if (error) throw error;
+    for (const r of done ?? []) already.add(r.word as string);
+    if ((done ?? []).length < 1000) break;
+  }
 
   // Placement is taken from `commit-entries`, never re-derived here: a second
   // copy of the part/section rule would drift, and the drift is silent — the
@@ -95,6 +118,28 @@ async function main() {
 
   for (const w of mine) {
     lines.push(`## ${w.word}`);
+    /**
+     * An OPTION word has no appearances, so without this it prints as a bare
+     * headword and the worksheet looks broken rather than honest. What evidence
+     * exists is still worth stating: which papers printed it, and how often —
+     * a word offered in eight questions is commoner than one offered in one,
+     * and that is the only signal available for these.
+     */
+    if (w.source === "school") {
+      /**
+       * The docx's OWN gloss is printed, because Part 1 is not a
+       * definition-writing job — all 924 school words already carry one. It is
+       * offered as a STARTING POINT, not as text to copy: the docx writes
+       * "To give up completely or leave behind", and the book's house style is
+       * a lower-case clause with no closing full stop.
+       */
+      lines.push(`- [school] Class 5-12 list — never yet set by either exam`);
+      lines.push(`  docx gloss: ${w.schoolMeaning ?? "(none)"}`);
+    } else if (!w.tested) {
+      const where = w.pyqExams.length ? w.pyqExams.join(" + ") : w.allExams.join(" + ");
+      lines.push(`- [option] offered among the choices in ${where} — never the target`);
+      lines.push(`  no sentence and no key: the meaning must be authored`);
+    }
     for (const a of w.appearances) {
       lines.push(
         `- [${a.role}] ${citationOf(a)}${a.bareStem ? " (no usable sentence)" : ""}`

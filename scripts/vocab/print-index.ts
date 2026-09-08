@@ -21,7 +21,7 @@ import {
   type VocabSectionKey,
 } from "../../src/lib/vocab/registry";
 import { buildIndex, formatIndexRow, type IndexRow } from "../../src/lib/vocab/index";
-import type { BankWord } from "./extract-bank";
+import { loadCorpus } from "./corpus";
 import { placementOf } from "./commit-entries";
 import type { SchoolWord } from "./extract-docx";
 
@@ -63,14 +63,21 @@ async function fromDb(): Promise<IndexRow[]> {
 }
 
 function fromExtracts(): IndexRow[] {
-  const bank = read<BankWord[]>("bank-words.json");
+  const bank = loadCorpus();
   const school = read<SchoolWord[]>("school-words.json");
   const bankSet = new Set(bank.map((w) => w.word));
   const rows: IndexRow[] = [];
   for (const w of bank) {
     // Part and section are derived, never authored — a real paper decides.
     const { part, section } = placementOf(w);
-    const r = rowFor(w.word, part, section, w.timesAsked);
+    // TARGET appearances only: an option word was printed by the paper, never
+    // asked by it, so it carries no recurrence count.
+    const r = rowFor(
+      w.word,
+      part,
+      section,
+      w.appearances.filter((a) => a.kind === "pyq").length
+    );
     if (r) rows.push(r);
   }
   for (const w of school) {

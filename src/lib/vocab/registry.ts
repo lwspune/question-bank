@@ -15,9 +15,16 @@
  *
  * What the split buys, measured over the FINAL corpus (target + option words):
  *
- *   both  302   asked by NDA *and* CDS
+ *   both  149   asked by NDA *and* CDS
  *   nda  1001
- *   cds   788
+ *   cds   941
+ *
+ * THOSE COUNTS REST ON A DISTINCTION THAT COST 153 WORDS TO GET RIGHT. An
+ * option word carries the exams that PRINTED it, and 288 of them were printed
+ * both in a paper and in a mock. Filing on the merged list put 153 words in
+ * `both` whose second exam had only ever seen them in coaching material — a
+ * section that claims two PAPERS asked a word. `OptionWord.pyqExams` exists to
+ * keep the two apart, and placement may read only that.
  *
  * `both` FIRST, for both cohorts. A word two different papers have set is the
  * strongest recurrence signal in the corpus, and a single A-Z sequence hides it
@@ -27,12 +34,20 @@
  * ═══ IT IS A PRIORITY ORDER, NEVER A SKIP LIST ═══
  *
  * Of the 490 words the corpus has seen more than once — the only ones where
- * exam-exclusivity is falsifiable — 302 (61.6%) were asked by BOTH exams. UPSC
- * draws both English papers from one pool (migration 0038 exists because the
- * two exams share literal questions), so "NDA only" mostly records that we have
- * one sighting, not that CDS will never ask it. Telling an NDA student to SKIP
- * the CDS section would therefore be wrong more often than right, and each
- * section's blurb says so in as many words. Order, not exclusion.
+ * exam-exclusivity is falsifiable — 149 (30.4%) were asked by BOTH exams.
+ *
+ * READ THAT NUMBER CAREFULLY, because an earlier draft of this comment said
+ * 61.6% and drew a stronger conclusion than the data supports. The inflated
+ * figure came from the merged-exams bug above. At 30.4% the two papers are
+ * plainly NOT separate vocabularies — separate pools predict ~0%, and UPSC
+ * demonstrably shares literal English questions between the exams (migration
+ * 0038 exists for that reason) — but neither are they one undifferentiated
+ * pool, which would predict ~50%. Each paper does lean toward its own words.
+ *
+ * The conclusion survives the correction: a word in the other exam's section
+ * still has roughly a one-in-three chance of turning up in yours, so telling a
+ * student to SKIP that section would be wrong far too often. It is a priority
+ * ORDER, and each section's blurb says so in as many words.
  *
  * PART 3 IS NOT SPLIT, and that is measured rather than assumed: all 640
  * practice words come from NDA sources and ZERO from CDS, so an exam split
@@ -165,7 +180,7 @@ export const CADET_VOCAB: VocabBookDefinition = {
   // Follows the part order. It has now been wrong twice after a restructure —
   // if the parts move again, this line moves with them.
   subtitle:
-    "The Class 5-12 school list, then every word an NDA or CDS paper has actually asked — with the sentence it was asked in — and finally the words only the mocks set.",
+    "The Class 5-12 school list, then every word an NDA or CDS paper has printed — with the sentence it was asked in, wherever the paper tested it — and finally the words only the mocks set.",
   /**
    * PART ORDER IS SCHOOL -> PAPERS -> PRACTICE: the book is read as a ladder,
    * from the foundation a cadet should already have, up to what the papers
@@ -189,8 +204,19 @@ export const CADET_VOCAB: VocabBookDefinition = {
       ordinal: "Part 2",
       title: "Asked in the Papers",
       indexTag: "Papers",
+      /**
+       * "PRINTED", not "asked", and the distinction is load-bearing. Only 510
+       * of Part 2's 2,091 words were the TARGET of a question; the rest
+       * appeared among the four choices. Both were set in front of a candidate
+       * by a real paper, so both belong here — but claiming the exam "asked"
+       * a distractor would be false for three quarters of the part, and this
+       * book's whole claim over a bought word list is that its provenance is
+       * exact. A tested word carries the sentence it was asked in; an option
+       * word carries no citation and no recurrence count, so the page shows
+       * which is which without needing a label.
+       */
       blurb:
-        "Every word an NDA or CDS paper has actually asked, with the sentence it was asked in.",
+        "Every word an NDA or CDS paper has printed. Where the paper tested the word, the sentence it was asked in is given.",
     },
     {
       key: "practice",
@@ -219,9 +245,8 @@ export const CADET_VOCAB: VocabBookDefinition = {
    * DIFF — do not trust these numbers, re-derive them.
    */
   chapters: [
-    // ── Part 2 · section 1: asked by BOTH papers (302) ──
-    { slug: "papers-both-a-o", label: "A-O", part: "pyq", section: "both", letters: band("A", "O"), expected: 185 },
-    { slug: "papers-both-p-z", label: "P-Z", part: "pyq", section: "both", letters: band("P", "Z"), expected: 117 },
+    // ── Part 2 · section 1: asked by BOTH papers (149) ──
+    { slug: "papers-both-a-z", label: "A-Z", part: "pyq", section: "both", letters: band("A", "Z"), expected: 149 },
 
     // ── Part 2 · section 2: NDA only (1,001) ──
     { slug: "papers-nda-a-b", label: "A-B", part: "pyq", section: "nda", letters: band("A", "B"), expected: 119 },
@@ -232,12 +257,12 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "papers-nda-r-t", label: "R-T", part: "pyq", section: "nda", letters: band("R", "T"), expected: 178 },
     { slug: "papers-nda-u-z", label: "U-Z", part: "pyq", section: "nda", letters: band("U", "Z"), expected: 79 },
 
-    // ── Part 2 · section 3: CDS only (788) ──
-    { slug: "papers-cds-a-c", label: "A-C", part: "pyq", section: "cds", letters: band("A", "C"), expected: 171 },
-    { slug: "papers-cds-d-g", label: "D-G", part: "pyq", section: "cds", letters: band("D", "G"), expected: 179 },
-    { slug: "papers-cds-h-o", label: "H-O", part: "pyq", section: "cds", letters: band("H", "O"), expected: 180 },
-    { slug: "papers-cds-p-s", label: "P-S", part: "pyq", section: "cds", letters: band("P", "S"), expected: 170 },
-    { slug: "papers-cds-t-z", label: "T-Z", part: "pyq", section: "cds", letters: band("T", "Z"), expected: 88 },
+    // ── Part 2 · section 3: CDS only (941) ──
+    { slug: "papers-cds-a-c", label: "A-C", part: "pyq", section: "cds", letters: band("A", "C"), expected: 197 },
+    { slug: "papers-cds-d-e", label: "D-E", part: "pyq", section: "cds", letters: band("D", "E"), expected: 161 },
+    { slug: "papers-cds-f-l", label: "F-L", part: "pyq", section: "cds", letters: band("F", "L"), expected: 196 },
+    { slug: "papers-cds-m-r", label: "M-R", part: "pyq", section: "cds", letters: band("M", "R"), expected: 195 },
+    { slug: "papers-cds-s-z", label: "S-Z", part: "pyq", section: "cds", letters: band("S", "Z"), expected: 192 },
 
     { slug: "practice-a-d", label: "A-D", part: "practice", letters: band("A", "D"), expected: 197 },
     { slug: "practice-e-m", label: "E-M", part: "practice", letters: band("E", "M"), expected: 200 },

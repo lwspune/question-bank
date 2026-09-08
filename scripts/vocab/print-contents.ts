@@ -20,16 +20,32 @@ import { CADET_VOCAB, VOCAB_SECTIONS } from "../../src/lib/vocab/registry";
 
 const PLANNED = process.argv.includes("--planned");
 
+/**
+ * COUNTED PER CHAPTER WITH `head: true`, NOT TALLIED FROM ROWS.
+ *
+ * The first version selected every row and counted them in JS. That silently
+ * broke the day the book passed 1,000 entries: PostgREST truncates a raw
+ * `.select()` at 1000 with no error, so the contents page under-reported every
+ * chapter — Part 2 read 855 of 2,091 when 1,203 were committed. The finished
+ * book is ~3,400 entries, so this could only ever have been temporary.
+ *
+ * `count: "exact", head: true` returns the number from a response header and
+ * fetches no rows at all, which is the documented fix for this class and is
+ * what `loadVocabOverview` already does.
+ */
 async function authoredCounts(): Promise<Map<string, number>> {
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data, error } = await db
-    .from("vocab_entries")
-    .select("chapter_slug")
-    .eq("book_slug", CADET_VOCAB.slug)
-    .eq("excluded", false);
-  if (error) throw error;
   const m = new Map<string, number>();
-  for (const r of data ?? []) m.set(r.chapter_slug, (m.get(r.chapter_slug) ?? 0) + 1);
+  for (const c of CADET_VOCAB.chapters) {
+    const { count, error } = await db
+      .from("vocab_entries")
+      .select("id", { count: "exact", head: true })
+      .eq("book_slug", CADET_VOCAB.slug)
+      .eq("chapter_slug", c.slug)
+      .eq("excluded", false);
+    if (error) throw error;
+    m.set(c.slug, count ?? 0);
+  }
   return m;
 }
 

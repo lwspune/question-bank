@@ -32,7 +32,20 @@ async function main() {
     "../../src/app/books/vocab/_print/VocabChapterPrint"
   );
 
-  const chapterSlug = arg("chapter") ?? CADET_VOCAB.chapters[0].slug;
+  /**
+   * A BARE POSITIONAL IS ACCEPTED, because silently ignoring one renders the
+   * WRONG CHAPTER and says nothing. `--chapter=` is easy to forget, and the
+   * old fallback to `chapters[0]` meant a mistyped invocation produced a
+   * perfectly good HTML file for a chapter you did not ask about — which is
+   * how a chapter got "verified" here that had only been rendered by
+   * coincidence, the default happening to be the one intended.
+   *
+   * A positional is anything that is not a flag and is not the script path.
+   */
+  const positional = process.argv
+    .slice(2)
+    .find((a) => !a.startsWith("-") && !a.endsWith(".tsx") && !a.endsWith(".json"));
+  const chapterSlug = arg("chapter") ?? positional ?? CADET_VOCAB.chapters[0].slug;
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,

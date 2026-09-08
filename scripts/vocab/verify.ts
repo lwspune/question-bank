@@ -54,11 +54,29 @@ const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPAB
    * together printed a red line on an expected state, which is how a probe
    * teaches people to skip it.
    */
+  /**
+   * `times_asked > 0` IDENTIFIES A TESTED WORD EXACTLY, and that is why the
+   * check keys on it. A Part 2 word is there because a paper printed it, but
+   * only a TARGET word was asked — and a target has at least one paper
+   * appearance by definition of its placement, while an option word carries 0.
+   * So an uncited sentence is a real defect on a tested word (the citation was
+   * dropped) and the only possible state for an option word, which has no exam
+   * sentence to quote.
+   *
+   * Third time this probe has had to learn a newly-legitimate state — Part 3's
+   * bare stems, then the option words. The pattern is that a check written when
+   * the corpus had one shape reads a later shape as a fault, and a red line on
+   * an expected state is how a probe teaches people to skip it.
+   */
   const uncited = rows.filter((r) => r.sentence && !r.sentence_source);
-  bad("Part 2 sentence with no citation", uncited.filter((r) => r.part === "pyq").length);
+  bad(
+    "tested word with no citation",
+    uncited.filter((r) => r.part === "pyq" && (r.times_asked ?? 0) > 0).length
+  );
   console.log(
-    `   Part 3 authored sentences (expected — no exam sentence exists): ` +
-      `${uncited.filter((r) => r.part !== "pyq").length}`
+    `   authored sentences (expected — no exam sentence exists): ` +
+      `${uncited.filter((r) => r.part !== "pyq" || (r.times_asked ?? 0) === 0).length}` +
+      ` (Part 3 bare stems + Part 2 option words)`
   );
   bad("no synonyms", rows.filter((r) => !r.synonyms?.length).length);
   bad("no provenance", rows.filter((r) => !r.derived_model).length);
