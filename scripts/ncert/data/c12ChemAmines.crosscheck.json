@@ -1,0 +1,170 @@
+[
+  {
+    "ref": "_SCOPE",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "",
+    "keyAnswer": "",
+    "note": "SCOPE OF THIS GATE. 28 rows were committed: 5 worked examples (Eg 9.1-9.5), 9 Intext (9.1-9.9) and 14 Exercises (9.1-9.14). The 5 worked examples are OUTSIDE this gate by construction — they print the book's own solution, so there is nothing external to diff — and are not listed below. TWO keys were read, one per stream, each to its LAST entry. (a) EXERCISE key: the end-of-book lech2an.pdf, UNIT 9 block on page index 3 (printed p.306). It answers ONLY 9.1 and 9.4 — DIFFED DENOMINATOR 2 of 14. Verified structurally as well as visually that the block does not continue: a text-layer scan of all 6 pages of the file finds the 'UNIT 9' heading on page 3 alone and exactly two '9.x' entries on it, with pages 4 and 5 carrying no UNIT heading and no 9.x line; the rendered page is also blank below the two entries. (b) INTEXT key: 'Answers to Some Intext Questions' on the chapter's own last page (p-21, printed p.280). It answers ONLY 9.4 — DIFFED DENOMINATOR 1 of 9. The remaining 12 exercise rows and 8 intext rows have no entry in either key and are recorded as NO-KEY-ENTRY, which is the expected result for this chapter and not a defect. RESULT: 3 rows diffed — 2 AGREE, 1 BOOK-KEY-WRONG (Ex 9.4, part (i) only), 0 OUR-ANSWER-WRONG."
+  },
+  {
+    "ref": "Intext 9.1",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) primary; (ii) tertiary; (iii) primary; (iv) secondary",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.2",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "8 isomers (4 primary, 3 secondary, 1 tertiary) with IUPAC names; chain, position, metamerism and functional-group isomerism",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.3",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) nitration then Sn/HCl reduction; (ii) via aniline, then 2 CH3Cl; (iii) 2 KCN then H2/Ni",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.4",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) C6H5NH2 < NH3 < C6H5CH2NH2 < C2H5NH2 < (C2H5)2NH; (ii) C6H5NH2 < C2H5NH2 < (C2H5)3N < (C2H5)2NH; (iii) C6H5NH2 < C6H5CH2NH2 < (CH3)3N < CH3NH2 < (CH3)2NH",
+    "keyAnswer": "(i) C6H5NH2 < NH3 < C6H5CH2NH2 < C2H5NH2 < (C2H5)2NH; (ii) C6H5NH2 < C2H5NH2 < (C2H5)3N < (C2H5)2NH; (iii) C6H5NH2 < C6H5CH2NH2 < (CH3)3N < CH3NH2 < (CH3)2NH",
+    "note": "All three orders match the key term for term. ⚠ WEAKER EVIDENCE THAN A BLIND AGREE, and the reason is structural rather than a lapse: this chapter's 'Answers to Some Intext Questions' block is printed on the SAME PAGE as Exercises 9.10-9.14 (p-21), so anyone transcribing the exercise stream in page order necessarily sees it. The authoring note on this row records the same. It is the ONLY intext row the key answers, so the contamination is confined to this one row. Mitigating: the three orders were derived from the chapter's own teaching content — Table 9.3's pKb values and the two aqueous-phase orders printed in the structure-basicity section — which independently reproduce the key exactly."
+  },
+  {
+    "ref": "Intext 9.5",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) propan-1-aminium chloride; (ii) N,N-diethylethanaminium chloride",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.6",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "N,N,N-trimethylanilinium iodide; with aqueous Na2CO3 the iodide is exchanged for hydroxide giving N,N,N-trimethylanilinium hydroxide",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only. The stem is open to two readings (Na2CO3 as a condition OF the alkylation, or a reagent acting ON the final product); both are answered rather than one being chosen silently."
+  },
+  {
+    "ref": "Intext 9.7",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "C6H5NHCOC6H5, N-phenylbenzamide (benzanilide)",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.8",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "4 isomers; propan-1-amine and propan-2-amine liberate N2 with nitrous acid",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Intext 9.9",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) diazotise, then HBF4 and NaNO2/Cu to replace N2+ by NO2; (ii) Br2 water to the 2,4,6-tribromo compound, then diazotise and reduce with H3PO2",
+    "keyAnswer": "",
+    "note": "The in-chapter intext key answers 9.4 only."
+  },
+  {
+    "ref": "Ex 9.1",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) Propan-2-amine, 1°; (ii) Propan-1-amine, 1°; (iii) N-Methylpropan-2-amine, 2°; (iv) 2-Methylpropan-2-amine, 1°; (v) N-Methylaniline (N-methylbenzenamine), 2°; (vi) N-Ethyl-N-methylethanamine, 3°; (vii) 3-Bromoaniline (3-bromobenzenamine), 1°",
+    "keyAnswer": "(i) 1-methylethylamine or propan-2-amine; (ii) Propan-1-amine; (iii) N-methyl-2-methylethylamine or N-methylpropan-2-amine; (iv) 2-methylpropan-2-amine; (v) N-methylbenzenamine or N-methylaniline; (vi) N-Ethyl-N-methylethanamine; (vii) 3-Bromoaniline or 3-Bromobenzenamine",
+    "note": "All seven IUPAC names match. Where the key prints two acceptable names ((i), (iii), (v), (vii)) ours is one of the pair, so this is a naming-convention difference and not a disagreement — the key's alternatives are common names built on the substituent ('1-methylethylamine') against the systematic alkanamine name. NOTE THE PARTIAL COVERAGE: the question also asks for the primary/secondary/tertiary CLASSIFICATION and the key prints none, so that half of our answer is unchecked by this gate."
+  },
+  {
+    "ref": "Ex 9.2",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "carbylamine test (i, v); Hinsberg's test (ii); azo-dye / bromine-water test (iii); nitrous acid at 273-278 K (iv)",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only. This key prints final values and named orders, and routinely skips 'give a test', 'account for' and 'convert' questions."
+  },
+  {
+    "ref": "Ex 9.3",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Seven explanations: lone-pair delocalisation into the ring; hydrophobic phenyl vs H-bonding; OH- generated by the amine precipitating Fe(OH)3; the meta-directing anilinium ion; salt formation with AlCl3; resonance stabilisation of the arenediazonium ion; single-alkylation at the phthalimide nitrogen",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.4",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "(i) C6H5NH2 > C6H5NHCH3 > C2H5NH2 > (C2H5)2NH; (ii) C6H5NH2 < C6H5N(CH3)2 < CH3NH2 < (C2H5)2NH; (iii)(a) p-nitroaniline < aniline < p-toluidine, (b) C6H5NH2 < C6H5NHCH3 < C6H5CH2NH2; (iv) (C2H5)3N > (C2H5)2NH > C2H5NH2 > NH3; (v) (CH3)2NH < C2H5NH2 < C2H5OH; (vi) C6H5NH2 < (C2H5)2NH < C2H5NH2",
+    "keyAnswer": "(i) C6H5NH2 < C6H5NHCH3 < C2H5NH2 < (C2H5)2NH; (ii) C6H5NH2 < C6H5N(CH3)2 < CH3NH2 < (C2H5)2NH; (iii)(a) p-nitroaniline < aniline < p-toluidine, (b) C6H5NH2 < C6H5NHCH3 < C6H5CH2NH2; (iv) (C2H5)3N > (C2H5)2NH > C2H5NH2 > NH3; (v) (CH3)2NH < C2H5NH2 < C2H5OH; (vi) C6H5NH2 < (C2H5)2NH < C2H5NH2",
+    "note": "PARTS (ii)-(vi) AGREE WITH THE KEY TERM FOR TERM. The finding is confined to PART (i), where the question asks for DECREASING order of pKb. The key prints the four compounds in the sequence aniline, N-methylaniline, ethylamine, diethylamine — the SAME sequence as ours — but joins them with '<' instead of '>'. Read literally as pKb values that chain asserts pKb(aniline) is the SMALLEST of the four, which is false. THIRD INDEPENDENT GROUND TRUTH, from the chapter itself and not from our solution: Table 9.3 on p.267 lists benzenamine 9.38, N-methylaniline 9.30, ethanamine 3.29, N-ethylethanamine 3.00, so decreasing pKb is 9.38 > 9.30 > 3.29 > 3.00 — exactly our order and exactly the reverse of what the printed symbols assert. CORROBORATION THAT THIS IS A SLIP AND NOT A HOUSE CONVENTION: the same key entry uses '>' correctly in part (iv), where the question asks for a decreasing order, and '<' correctly in parts (v) and (vi), where it asks for increasing orders — so the key does track the direction each question asks for, and got only (i) backwards. CHARITABLE ALTERNATIVE READING, stated rather than suppressed: the key may have answered (i) as though it read 'increasing order of BASIC STRENGTH', for which the printed line with '<' would be correct — pKb decreases exactly as basic strength increases, which is why the two orderings produce the identical sequence. On either reading the printed line does not answer the question as set. Our sequence is not in dispute; only the comparison symbol against the quantity named. For the maintainer to adjudicate."
+  },
+  {
+    "ref": "Ex 9.5",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Eight conversions via ascent (KCN then hydrolysis or reduction) and descent (amide then Br2/NaOH) of the series",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.6",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Hinsberg's test with benzenesulphonyl chloride: 1° gives an alkali-SOLUBLE sulphonamide, 2° an alkali-INSOLUBLE one, 3° does not react",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.7",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Short notes on the seven named reactions, each with its equation",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only. Part (iii) is printed 'Hofmann's' (single f) whereas the chapter body and Example 9.3 print 'Hoffmann' (double f) — a book-internal spelling inconsistency, transcribed as printed in each place. Recorded for the maintainer; it affects no answer."
+  },
+  {
+    "ref": "Ex 9.8",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Nine conversions; six route through a diazonium salt, and (vii) uses acetylation to protect the amino group",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.9",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) propanenitrile, propanamide, ethanamine; (ii) benzonitrile, benzoic acid, benzamide; (iii) propanenitrile, propan-1-amine, propan-1-ol; (iv) aniline, benzenediazonium chloride, phenol; (v) ethanamide, methanamine, methanol; (vi) aniline, benzenediazonium chloride, p-hydroxyazobenzene",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.10",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "A = benzoic acid, B = benzamide, C = aniline",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only. The stem's own C6H7N and the one-carbon loss of the Hofmann degradation fix all three structures unambiguously, so the row is self-checking even without a key."
+  },
+  {
+    "ref": "Ex 9.11",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) phenyl isocyanide; (ii) benzene; (iii) anilinium hydrogensulphate, then sulphanilic acid on heating; (iv) benzene + ethanal; (v) 2,4,6-tribromoaniline; (vi) acetanilide; (vii) nitrobenzene",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.12",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Aryl halides do not undergo nucleophilic substitution with the phthalimide anion, because the C-X bond has partial double-bond character, the carbon is sp2, and the ring repels the nucleophile",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only. The chapter states this outright in section 9.4.5, so the row is grounded in the book's own text."
+  },
+  {
+    "ref": "Ex 9.13",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) aromatic: a stable arenediazonium salt at 273-278 K; (ii) aliphatic: an unstable alkyldiazonium salt that decomposes at once to the alcohol with quantitative loss of N2",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  },
+  {
+    "ref": "Ex 9.14",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) N is less electronegative than O, so the N-H bond is less polar and the amide ion less stable than an alkoxide; (ii) a primary amine has two N-H hydrogens for intermolecular H-bonding, a tertiary amine none; (iii) the aliphatic amine's lone pair is localised and reinforced by +I, the aromatic amine's is delocalised into the ring",
+    "keyAnswer": "",
+    "note": "The UNIT 9 block keys 9.1 and 9.4 only."
+  }
+]

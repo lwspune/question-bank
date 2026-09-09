@@ -84,6 +84,38 @@ this caught a placeholder row with a fabricated id while the count matched 14 vs
 **DO NOT open either key while authoring.** An answer bent toward the book cannot disagree
 with it, so the gate it feeds learns nothing.
 
+**⚠ CROP THE LAST PAGE BEFORE YOU READ IT — the intext key usually shares a page with the
+tail of the Exercises.** Measured on wave 2: THREE of four chapters (ch4, ch5, ch9) print
+"Answers to Some Intext Questions" on the same page as the last few exercise questions, so
+transcribing those questions in page order necessarily puts the key on screen before you
+author anything. ch8 avoided it by rendering that page clipped above the key's heading,
+computing the cut from the heading's own y-coordinate. Do that.
+
+**The page is not the only route in. ANY whole-PDF probe can print the key into your context** —
+a text-layer heading scan run while planning bands did exactly that on two chapters, dumping
+two intext answers before either was authored. Scope every structural probe to the pages you
+are about to transcribe, or filter its output; a probe that reads the whole file is as
+contaminating as opening the key.
+
+If it happens anyway, **DECLARE it** — say which rows are therefore not blind and which
+remain so. Every agent that hit this declared it unprompted and scoped it precisely, and that
+is the behaviour wanted: an honest contamination note is worth more than a clean-looking
+claim, because a reader who does not know the intext AGREEs are weak evidence will over-trust
+them. Do not pretend to a blindness you did not have.
+
+**MCQ ROWS NEED A SOLUTION TOO, AND NOTHING WILL TELL YOU IF THEY LACK ONE.**
+`apply-solutions` fills SUBJECTIVE rows only — its own output says so — so an
+`exercise-mcq` row can end up with a correct key and no working. No gate catches it:
+`board:lint` checks structure, `audit:keys` skips rows with no solution, and a NULL solution
+is legal. This repo shipped exactly that once (NCERT Integrals, 22 rows). Before you finish,
+run:
+```sql
+-- expect 0
+select count(*) from questions q ... where q.question_format='mcq' and q.solution is null
+```
+and if your chapter has MCQs, put them through `dump-mcq.ts` → `MCQ_VERIFY_BRIEF.md` →
+`mark-mcq-verify.ts` so they carry both a verified key and a student-facing solution.
+
 ### 7. Sections
 Add your chapter's outline to `scripts/ncert/sections.ts` if it is absent — three blocks for
 a Class-12 chapter (Worked Examples / Intext Questions / Exercises), two for Class 11 (which
