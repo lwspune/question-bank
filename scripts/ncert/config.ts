@@ -2302,6 +2302,17 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: cls11Chem("Part_1/kech1an.pdf"),
     answerPages: [0, 1, 2],
     // key is PARTIAL PER QUESTION: 66 of 67 exercises carry an entry.
+    //
+    // THE EXERCISES BLOCK HAS A DELIBERATE GAP AT 2.21 - do not "repair" it.
+    // The book reprints its own worked `Problem 2.13` verbatim as exercise 2.21
+    // (byte-identical stems, verified), so `content_hash` deduped it and the
+    // surviving row is `Eg 2.13`, which carries the book's OWN printed solution.
+    // Nothing is lost by the drop, and re-admitting it would mean authoring a
+    // second solution to a question already answered two blocks above.
+    //
+    // THIS IS NOT THE CLASS-12 `Eg 6.3.21` CASE, which WAS re-admitted: there the
+    // two items posed the same function to teach two DIFFERENT tests, so dropping
+    // one lost the lesson. Here they teach the same thing.
     note: "NCERT (CBSE Class 11) — Structure of Atom (Chapter 2, NCERT Chemistry Part 1)",
     subtopics: [
       "Discovery of Sub-atomic Particles",
@@ -2462,7 +2473,14 @@ export const CHAPTERS: Record<string, Chapter> = {
     pdf: cls11Chem("Part_2/09. Hydrocarbons.pdf"),
     answersPdf: cls11Chem("Part_2/kech2an.pdf"),
     answerPages: [0, 1, 2, 3],
-    // key is PARTIAL PER QUESTION: 22 of 25 exercises carry an entry.
+    // KEY COVERAGE IS COMPLETE HERE: all 25 exercises carry an entry (9.1-9.25).
+    // An earlier note said "22 of 25" and was WRONG - it came from a text-layer
+    // scan, and this key draws several of its answers as STRUCTURES, whose entry
+    // numbers the text layer drops. 9.9 (cis/trans-hex-2-ene) and 9.17 (the three
+    // dicarbonyl products) are absent from get_text() and plainly present on the
+    // rendered page. Three entries are thin rather than missing: 9.10 is "Due to
+    // resonance", 9.16 is a bare cross-reference to the chapter text, and 9.23
+    // gives a reason without the order. COUNT KEY COVERAGE OFF THE RENDER.
     note: "NCERT (CBSE Class 11) — Hydrocarbons (Chapter 9, NCERT Chemistry Part 2)",
     subtopics: [
       "Classification",

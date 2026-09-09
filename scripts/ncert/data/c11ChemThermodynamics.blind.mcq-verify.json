@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ddf3a721-5723-4e20-8211-51b672bd230d",
+    "ref": "Ex 5.1",
+    "derived_answer": "B",
+    "solution": "A state function is a property whose value depends only on the state of the system (its temperature, pressure, composition and amount) and not on how that state was reached. Internal energy \\(U\\), enthalpy \\(H\\), entropy \\(S\\) and Gibbs energy \\(G\\) are state functions, so for any change \\(\\Delta U = U_{final} - U_{initial}\\) whatever route is taken.\nBy contrast heat \\(q\\) and work \\(\\text{w}\\) are PATH functions: for the same change of state, an isothermal reversible expansion and a free expansion give quite different values of \\(q\\) and \\(\\text{w}\\), even though \\(\\Delta U\\) is the same.\nSo being used to determine heat changes, or pressure-volume work, does not define a state function, and depending on temperature only is far too narrow (enthalpy of an ideal gas does, but volume also depends on pressure).\nThe defining property is that its value is independent of the path.",
+    "matches_current": true
+  },
+  {
+    "id": "61768ec8-d7d9-4d74-a08f-db788e9be935",
+    "ref": "Ex 5.2",
+    "derived_answer": "C",
+    "solution": "An adiabatic process is by definition one in which no heat is exchanged between the system and its surroundings, because the boundary is thermally insulating. Hence \\(q = 0\\), and the first law reduces to \\(\\Delta U = \\text{w}_{ad}\\).\nThe other conditions describe different processes: \\(\\Delta T = 0\\) is an ISOTHERMAL process, \\(\\Delta p = 0\\) an ISOBARIC one, and \\(\\text{w} = 0\\) a constant-volume (isochoric) one. In fact an adiabatic expansion COOLS a gas, so \\(\\Delta T \\neq 0\\) in general.\nThe correct condition is \\(q = 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "947f1bfb-14a9-4878-9686-58aa399ef4b2",
+    "ref": "Ex 5.3",
+    "derived_answer": "B",
+    "solution": "Absolute enthalpies cannot be measured, only changes in enthalpy. A reference point is therefore fixed by convention: the standard enthalpy of formation of an element in its reference state (its most stable form at \\(298\\,\\text{K}\\) and \\(1\\,\\text{bar}\\)) is taken as ZERO.\nSo \\(\\Delta_f H^{\\ominus} = 0\\) for \\(\\text{H}_2(g)\\), \\(\\text{O}_2(g)\\), \\(\\text{Cl}_2(g)\\), \\(\\text{Br}_2(l)\\) and \\(\\text{C}(\\text{graphite})\\).\nNote this applies to the REFERENCE state only: \\(\\text{C}(\\text{diamond})\\) is an element but is not the reference form, and has \\(\\Delta_f H^{\\ominus} = +1.89\\,\\text{kJ mol}^{-1}\\).\nThe enthalpies of elements in their standard states are zero.",
+    "matches_current": true
+  },
+  {
+    "id": "98a3958a-c10b-4df0-abf0-5d2344009e8f",
+    "ref": "Ex 5.4",
+    "derived_answer": "C",
+    "solution": "Relate the two by \\(\\Delta H^{\\ominus} = \\Delta U^{\\ominus} + \\Delta n_g \\text{R}T\\), where \\(\\Delta n_g\\) is the change in the number of moles of GAS.\nCombustion of methane under standard conditions is\n\\(\\text{CH}_4(g) + 2\\text{O}_2(g) \\rightarrow \\text{CO}_2(g) + 2\\text{H}_2\\text{O}(l)\\)\nGaseous products \\(= 1\\,\\text{mol}\\) (water is a liquid at \\(298\\,\\text{K}\\)); gaseous reactants \\(= 3\\,\\text{mol}\\).\n\\(\\Delta n_g = 1 - 3 = -2\\)\nSince \\(\\text{R}T > 0\\), the term \\(\\Delta n_g \\text{R}T = -2\\text{R}T\\) is negative, so\n\\(\\Delta H^{\\ominus} = \\Delta U^{\\ominus} - 2\\text{R}T\\)\nNumerically, \\(2\\text{R}T \\approx 2(8.314)(298) \\approx 4.96\\,\\text{kJ mol}^{-1}\\), so \\(\\Delta H^{\\ominus}\\) is about \\(5\\,\\text{kJ mol}^{-1}\\) MORE negative than \\(\\Delta U^{\\ominus}\\), i.e. smaller.\nTherefore \\(\\Delta H^{\\ominus} < \\Delta U^{\\ominus}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "b115c608-5d6f-4c04-8bd1-a0b281d47d13",
+    "ref": "Ex 5.5",
+    "derived_answer": "A",
+    "solution": "The target is the formation of methane:\n\\(\\text{C}(\\text{graphite}) + 2\\text{H}_2(g) \\rightarrow \\text{CH}_4(g)\\)\nBy Hess's law, combine the three combustion equations:\n(1) \\(\\text{C}(\\text{graphite}) + \\text{O}_2(g) \\rightarrow \\text{CO}_2(g)\\); \\(-393.5\\,\\text{kJ mol}^{-1}\\)\n(2) \\(\\text{H}_2(g) + \\dfrac{1}{2}\\text{O}_2(g) \\rightarrow \\text{H}_2\\text{O}(l)\\); \\(-285.8\\,\\text{kJ mol}^{-1}\\)\n(3) \\(\\text{CH}_4(g) + 2\\text{O}_2(g) \\rightarrow \\text{CO}_2(g) + 2\\text{H}_2\\text{O}(l)\\); \\(-890.3\\,\\text{kJ mol}^{-1}\\)\nTarget \\(= (1) + 2 \\times (2) - (3)\\):\n\\(\\Delta_f H^{\\ominus} = (-393.5) + 2(-285.8) - (-890.3)\\)\n\\(= -393.5 - 571.6 + 890.3\\)\n\\(= -74.8\\,\\text{kJ mol}^{-1}\\)\nThe sign must be negative — methane is more stable than its elements — which already rules out the two positive values, and the magnitude \\(52\\,\\text{kJ mol}^{-1}\\) does not arise from these data.\nThe enthalpy of formation is \\(-74.8\\,\\text{kJ mol}^{-1}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "aebf51cf-6155-4098-a3d2-cc3dd248e4aa",
+    "ref": "Ex 5.6",
+    "derived_answer": "D",
+    "solution": "[Textbook misprint in the option labels, affecting navigation rather than the answer. The four alternatives are printed (i), (ii), (iii), (v) — the fourth is labelled \"(v)\" where \"(iv)\" belongs, and no item is labelled (iv) anywhere in the question. The book's own answer key confirms it by answering \"(iv)\", a label that appears nowhere in the printed list, which both identifies the misprint and fixes the intended target as the FOURTH alternative. The options below are lettered A-D in printed order, so the key's \"(iv)\" is option D, which is the answer given.] In \\(\\text{A} + \\text{B} \\rightarrow \\text{C} + \\text{D} + q\\), heat appears on the PRODUCT side, so heat is released and the reaction is exothermic: \\(\\Delta H < 0\\). It is also given that \\(\\Delta S > 0\\).\nSpontaneity is decided by \\(\\Delta G = \\Delta H - T\\Delta S\\). Here \\(\\Delta H\\) is negative and \\(-T\\Delta S\\) is also negative for every \\(T > 0\\), because \\(T\\) is an absolute temperature and \\(\\Delta S\\) is positive.\nSo \\(\\Delta G\\) is the sum of two negative terms and is negative at ALL temperatures — there is no temperature at which the sign could change.\nThe reaction is possible at any temperature.",
+    "matches_current": true
+  }
+]

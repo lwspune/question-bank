@@ -57,7 +57,9 @@ A `answerPages: [0, 1, 2]` looks like full coverage and is not. Measured per cha
 | ch6 Equilibrium | 62 of 73 |
 | **ch7 Redox** | **1 of 30** |
 | **ch8 Organic Basics** | **4 of 40** |
-| ch9 Hydrocarbons | 22 of 25 |
+| ch9 Hydrocarbons | 25 of 25 |
+
+**COUNT KEY COVERAGE OFF THE RENDERED PAGE, NOT THE TEXT LAYER.** The ch9 row above read "22 of 25" until a chapter agent checked it: that key draws several answers as STRUCTURES, and the text layer drops those entry numbers entirely, so a `get_text()` scan under-reports. It can also OVER-report - the same scan finds 68 entries in a 67-question unit. Where a number decides whether the compensating regime is owed, render the page.
 
 **A row with no key entry is NO-KEY-ENTRY, not a defect and not a pass.** Report your
 diffed denominator as the KEYED count, never the chapter total — "0 wrong across 22 keyed"

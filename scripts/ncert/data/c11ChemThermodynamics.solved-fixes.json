@@ -1,0 +1,20 @@
+[
+  {
+    "ref": "Eg 5.9",
+    "why": "Reversing a reaction must flip the sign of its enthalpy. The book reverses eqn (ii) and keeps -3267.0, which makes its own next line arithmetically impossible: -3218.49 + (-3267.0) = -6485.49, not the -48.51 it prints. The magnitude 48.51 is exactly |-3218.49 + 3267.0|, so the book computed with +3267.0 and printed the sign wrong twice.",
+    "find": "= -3267.0\\,\\text{kJ mol}^{-1}",
+    "replace": "= +3267.0\\,\\text{kJ mol}^{-1}"
+  },
+  {
+    "ref": "Eg 5.9",
+    "why": "With eqn (vi) correctly reversed, (v) + (vi) = -3218.49 + 3267.0 = +48.51 kJ/mol. Corroborated by the book's own Table 5.2, which lists the standard enthalpy of formation of benzene(l) as +49.0 kJ/mol. A shipped worked example must not teach a sign error.",
+    "find": "= -48.51\\,\\text{kJ mol}^{-1}",
+    "replace": "= +48.51\\,\\text{kJ mol}^{-1}"
+  },
+  {
+    "ref": "Eg 5.14",
+    "why": "UNIT ONLY, and it is unambiguous: the printed line multiplies R = 8.314 J K^-1 mol^-1 by a temperature and two dimensionless factors, so the product is JOULES per mole. Printing kJ overstates the free-energy change by a factor of 1000. The VALUE is deliberately left as the book prints it - see the errata bracket, which records that the printed factors actually evaluate to 790.0 and that we cannot reconstruct which input the book intended.",
+    "find": "= -763.8\\,\\text{kJ mol}^{-1}",
+    "replace": "= -763.8\\,\\text{J mol}^{-1}"
+  }
+]
