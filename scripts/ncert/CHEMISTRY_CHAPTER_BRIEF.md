@@ -170,6 +170,28 @@ is the behaviour wanted: an honest contamination note is worth more than a clean
 claim, because a reader who does not know the intext AGREEs are weak evidence will over-trust
 them. Do not pretend to a blindness you did not have.
 
+**A WHOLE-CHAPTER AGENT CANNOT BLIND-VERIFY ITS OWN MCQ KEYS, AND `mark-mcq-verify`
+CANNOT TELL.** You derive the MCQ answer while transcribing; that derivation becomes the
+committed key. If you then "re-derive" it for the verify pass, `mark-mcq-verify` compares
+your answer to your own answer and agreement is guaranteed — **a check that structurally
+cannot go red, which is worth nothing.** It also records a `blind_rederivation` row in
+`question_reviews`, so the audit trail then OVERSTATES the evidence, which is the one
+thing that table exists to prevent.
+
+`dump-mcq.ts` withholds `is_correct`, so you are blind to the committed KEY. That is not
+the same as being independent of the FIRST DERIVATION, and only the second makes the pass
+mean anything.
+
+So, where your chapter has MCQs: **spawn ONE focused verifier** — the only sub-agent this
+brief permits — and tell it to read only the rendered question pages, never your band
+files, `.questions.json`, `config.ts` or the database. Have it return its own letters, then
+run `mark-mcq-verify.ts`, which computes agreement outside its output. Say in your report
+HOW you kept it independent. **If the chapter has no MCQs, say that plainly** — two wave-1
+chapters correctly did, rather than reporting a pass they never ran.
+
+Note the printed key is often the stronger evidence anyway: where your chapter's exercises
+are keyed, the cross-check already checks those same MCQs against the book.
+
 **MCQ ROWS NEED A SOLUTION TOO, AND NOTHING WILL TELL YOU IF THEY LACK ONE.**
 `apply-solutions` fills SUBJECTIVE rows only — its own output says so — so an
 `exercise-mcq` row can end up with a correct key and no working. No gate catches it:
