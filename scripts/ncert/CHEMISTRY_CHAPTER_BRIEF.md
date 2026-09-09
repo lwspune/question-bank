@@ -28,6 +28,71 @@ written. Everything you commit stays PRIVATE.
    reaches the RENDERED PAGE too** — one pilot example prints delta as `Ä`. Transcribe from
    images, and where a glyph is wrong on the page use the chemistry to disambiguate.
 
+## ⚠ IF YOUR CHAPTER IS CLASS 11 — read this instead of the "two streams" rule above
+
+Class 11 Chemistry has **NO Intext stream at all** (verified across all nine chapters). So:
+
+- **Two blocks, not three** — Worked Examples + Exercises. `sections.ts` already carries
+  yours; do not add a third.
+- **Refs are `Eg N.n` and `Ex N.n` only.** There is no numbering collision to defuse,
+  because there is no second N-numbered stream.
+- **The worked examples are headed `Problem N.n`, not `Example N.n`.** Same thing, same
+  `Eg N.n` ref. A scan for "Example" finds nothing and reads as a chapter with no worked
+  examples.
+- **ONE key file, and it is the end-of-book one** — `kech1an.pdf` for Part 1 chapters,
+  `kech2an.pdf` for Part 2. Your `answerPages` are already measured; read the block to its
+  LAST entry as usual.
+
+### THE KEY IS PARTIAL PER QUESTION, AND THE PAGE SPAN BADLY OVERSTATES IT
+
+A `answerPages: [0, 1, 2]` looks like full coverage and is not. Measured per chapter:
+
+| chapter | exercises keyed |
+|---|---|
+| ch1 Basic Concepts | 17 of 36 |
+| ch2 Structure of Atom | 66 of 67 |
+| **ch3 Periodicity** | **0 — NO key block exists** |
+| **ch4 Bonding** | **0 — NO key block exists** |
+| ch5 Thermodynamics | 22 of 22 |
+| ch6 Equilibrium | 62 of 73 |
+| **ch7 Redox** | **1 of 30** |
+| **ch8 Organic Basics** | **4 of 40** |
+| ch9 Hydrocarbons | 22 of 25 |
+
+**A row with no key entry is NO-KEY-ENTRY, not a defect and not a pass.** Report your
+diffed denominator as the KEYED count, never the chapter total — "0 wrong across 22 keyed"
+is a different claim from "across 73".
+
+### THE COMPENSATING REGIME — owed on ch3, ch4, ch7 and ch8
+
+Those four chapters have essentially no external check (~150 exercises between them), so
+the step-6 gate cannot carry the weight. If yours is one of them, do BOTH of these and say
+so in your report:
+
+1. **Author every answer strictly from the chapter's own prose**, and where the chapter
+   does not state something, SAY SO in the answer rather than supplying a remembered fact.
+   A fluent invention is the failure mode here, not a wrong number.
+2. **After `apply-solutions`, run an independent blind re-derivation of your MCQ keys**
+   (`dump-mcq.ts` → `MCQ_VERIFY_BRIEF.md` → `mark-mcq-verify.ts`). If your chapter has no
+   MCQs, say that plainly rather than reporting a pass you did not run.
+
+### TRANSCRIBER HAZARDS SPECIFIC TO CLASS 11 — all silent
+
+- **Every top-level heading RENDERS IN ALL CAPS regardless of typed case**, so text-layer
+  casing carries no information. `config.ts` holds the normalised Title-Case subtopic
+  names; use those VERBATIM and do not "correct" them from the page.
+- **ch5's delta extracts as U+2206 INCREMENT, not U+0394.** A search for the Greek letter
+  finds nothing.
+- **`Problem 8.2` splits across two spans**, so a span-level count under-reads ch8 by one.
+- **§9.5 is printed SINGULAR — "AROMATIC HYDROCARBON".** Verified on a render. Do not
+  pluralise it; the config list matches the page.
+
+### DO NOT RUN `seed-subject.ts`
+
+The `Chemistry` subject under `cbse-11` is seeded ONCE by the maintainer immediately before
+the wave. Running it yourself races every other agent in the wave. If `commit.ts` fails
+saying the subject is missing, STOP and report it rather than seeding.
+
 ## Steps
 
 ### 1. Read your config entry
