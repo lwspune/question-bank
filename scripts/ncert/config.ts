@@ -2401,7 +2401,20 @@ export const CHAPTERS: Record<string, Chapter> = {
     pdf: cls11Chem("Part_1/06. Equilibrium.pdf"),
     answersPdf: cls11Chem("Part_1/kech1an.pdf"),
     answerPages: [3, 4],
-    // key is PARTIAL PER QUESTION: 62 of 73 exercises carry an entry.
+    // Key coverage: 62 of 73 exercises carry an entry (measured off the RENDERED
+    // answer pages, ak-03 giving 27 and ak-04 giving 35 — not off the text layer,
+    // which under-reports where a key draws its answer).
+    //
+    // BUT 62 PRINTED IS NOT 62 DIFFABLE. Two of those entries (6.38, 6.41) point at
+    // rows that do not exist: the book reprints its own worked Problems 6.13 and
+    // 6.16 verbatim as exercises 6.38 and 6.41 (byte-identical stems), so
+    // content_hash keeps the copy carrying the book's printed solution and the
+    // Exercises block has deliberate gaps at 6.38 and 6.41. backfill-sections names
+    // exactly those two as its only orphans, which is the check that nothing else
+    // went missing. The honest cross-check denominator is 60.
+    //
+    // Do not "repair" the gaps — same call as ch2's Ex 2.21, and NOT the Class-12
+    // Eg 6.3.21 case, where the two items taught different things.
     note: "NCERT (CBSE Class 11) — Equilibrium (Chapter 6, NCERT Chemistry Part 1)",
     subtopics: [
       "Equilibrium in Physical Processes",
