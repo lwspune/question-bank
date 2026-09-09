@@ -102,6 +102,14 @@ end-of-book `*an.pdf` for Exercises, and the chapter's own last page for Intext.
 partial. Match a row to a key entry WITHIN ITS STREAM; crossing them manufactures findings
 that look real.
 
+**READ EACH KEY TO ITS LAST ENTRY, NOT ITS FIRST PAGE.** The in-chapter intext key spans TWO
+pages in ch6, ch7 and ch8 (measured across all ten Class-12 chapters; the rest are
+single-page). A page-scoped read on ch6 would have lost **6 of its 9 entries**, and nothing on
+the page signals the loss — the rows simply come back NO-KEY-ENTRY, which looks like a normal
+result rather than a failure. The same applies to the end-of-book key, where several UNITs
+share a page: find your `UNIT <n>` heading and read to the NEXT one, across a page break if
+the block continues.
+
 Write `data/<id>.crosscheck.json`. Report the diffed denominator **per stream separately**,
 and never count the worked examples — they print their own solutions and are outside the gate.
 

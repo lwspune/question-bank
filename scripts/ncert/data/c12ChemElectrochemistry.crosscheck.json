@@ -1,0 +1,233 @@
+[
+  {
+    "ref": "Ex 2.1",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Order of displacement: Mg > Al > Zn > Fe > Cu",
+    "keyAnswer": "",
+    "note": "The UNIT 2 block of lech1an p0 prints no entry for 2.1. Qualitative ordering question with no final value to print — expected, not a defect."
+  },
+  {
+    "ref": "Ex 2.2",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Increasing reducing power: Ag < Hg < Cr < Mg < K",
+    "keyAnswer": "",
+    "note": "No entry under UNIT 2. Qualitative ordering question."
+  },
+  {
+    "ref": "Ex 2.3",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Zn(s)|Zn2+(aq)||Ag+(aq)|Ag(s); (i) Zn is the negative electrode; (ii) ions in the solutions and the salt bridge, electrons in the external wire; (iii) anode Zn -> Zn2+ + 2e-, cathode 2Ag+ + 2e- -> 2Ag",
+    "keyAnswer": "",
+    "note": "No entry under UNIT 2. Descriptive/depict question."
+  },
+  {
+    "ref": "Ex 2.4",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) E(cell) = +0.34 V, DrG = -196.8 kJ/mol, Kc = 3.8e34 ; (ii) E(cell) = +0.03 V, DrG = -2.89 kJ/mol, Kc = 3.2",
+    "keyAnswer": "(i) E = 0.34 V, DrG = -196.86 kJ/mol, K = 3.124e34 ; (ii) E = 0.03 V, DrG = -2.895 kJ/mol, K = 3.2",
+    "note": "All THREE parts of (i) and all three of (ii) compared, not just the first number. E and DrG agree to rounding on both. The only gap is K in (i): 3.8e34 vs 3.124e34, which is a difference of 0.09 in log K and traces ENTIRELY to the choice of the 298 K constant. Reproduced: our route is log K = nE/0.059 = 6(0.34)/0.059 = 34.576 -> 3.77e34; the key's 3.124e34 has log K = 34.4947, so nE/log K = 6(0.34)/34.4947 = 0.05914, i.e. the key used 0.0591 (equivalently the exact RT/F route via its own DrG = -196.86 kJ/mol). Both are defensible and the Chemistry equivalence rules cover it. AGREE with the mechanism recorded."
+  },
+  {
+    "ref": "Ex 2.5",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 2.67 V, (ii) 0.53 V, (iii) 0.078 V, (iv) -1.30 V",
+    "keyAnswer": "(i) 2.68 V, (ii) 0.53 V, (iii) 0.08 V, (iv) -1.298 V",
+    "note": "Parts (ii), (iii), (iv) agree exactly or to rounding. Part (i) differs by 0.01 V and the cause is a BOOK-INTERNAL INCONSISTENCY that the authoring pass PRE-REGISTERED before seeing the key: Table 2.1 (p-06) prints Mg2+/Mg = -2.36 V, while the stem of Ex 2.2 quotes Mg2+/Mg = -2.37 V. Verified at the page: a search of p-06 finds '2.36' and NO '2.37'. Using -2.36 gives 2.67 V (ours); using -2.37 gives 2.68 V (the key's). Not an arithmetic error on either side — the book disagrees with itself by 0.01 V. AGREE, mechanism recorded."
+  },
+  {
+    "ref": "Ex 2.6",
+    "verdict": "BOOK-KEY-WRONG",
+    "ourAnswer": "E = 1.10 V (1.104 V), DrG = -213 kJ/mol",
+    "keyAnswer": "1.56 V",
+    "note": "OUR ANSWER IS THE ONE CONSISTENT WITH THE PRINTED REACTION. The stem's reaction is Zn(s) + Ag2O(s) + H2O(l) -> Zn2+(aq) + 2Ag(s) + 2OH-(aq), whose half-cells are anode Zn -> Zn2+ + 2e- (E = -0.76 V, Table 2.1) and cathode Ag2O + H2O + 2e- -> 2Ag + 2OH- (E = +0.342 V, standard), giving E(cell) = 0.342 + 0.762 = 1.104 V and DrG = -nFE = -213 kJ/mol. THE KEY'S NUMBER IS REPRODUCED EXACTLY BY A NAMEABLE SLIP: Table 2.1 prints Ag+/Ag = 0.80 and Zn2+/Zn = -0.76 (both verified at 6x zoom on p-06), and 0.80 - (-0.76) = 1.56 V to the digit. That substitutes the Ag+/Ag couple for the Ag2O/Ag couple — and there is no Ag+(aq) anywhere in the printed reaction. ROOT CAUSE, pre-registered blind by the authoring pass: the Ag2O/Ag couple is NOT in Table 2.1 and the chapter's own button-cell section describes the MERCURY cell (Zn-HgO, ~1.35 V), not the silver-oxide one, so the question supplies no data for its own cathode. COMPETING EXPLANATION, recorded honestly: a real silver-oxide button cell is ~1.55 V, but that voltage comes from an ALKALINE zinc anode (Zn/Zn(OH)2, about -1.25 V), which contradicts the stem's own Zn2+(aq) product. So under EITHER candidate mechanism the key's 1.56 V requires replacing one of the two printed half-reactions, while 1.104 V is the only value consistent with the reaction as written. The key also prints no DrG, so that half of the question is unkeyed. FOR MAINTAINER ADJUDICATION."
+  },
+  {
+    "ref": "Ex 2.7",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Definitions of conductivity and molar conductivity + their opposite variation with concentration (conductivity falls on dilution, molar conductivity rises; linear in sqrt(c) for strong electrolytes, steep and non-linear for weak).",
+    "keyAnswer": "",
+    "note": "No entry under UNIT 2. Definition/discussion question with no final value."
+  },
+  {
+    "ref": "Ex 2.8",
+    "verdict": "AGREE",
+    "ourAnswer": "124 S cm^2 mol^-1 (= 1.24e-2 S m^2 mol^-1)",
+    "keyAnswer": "124.0 S cm^2 mol^-1",
+    "note": "Exact. Our solution also gives the SI form, which is the same quantity."
+  },
+  {
+    "ref": "Ex 2.9",
+    "verdict": "AGREE",
+    "ourAnswer": "G* = 0.219 cm^-1 (= 21.9 m^-1)",
+    "keyAnswer": "0.219 cm^-1",
+    "note": "Exact."
+  },
+  {
+    "ref": "Ex 2.10",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Lm = 123.7, 118.5, 115.75, 111.06, 106.74 S cm^2 mol^-1 at 0.001-0.100 M; Lm(0) ~ 124.7 S cm^2 mol^-1 by a least-squares fit on all five points (~126 if only the dilute points are used)",
+    "keyAnswer": "",
+    "note": "The UNIT 2 block prints no entry for 2.10 — presumably because the question's deliverable is a PLOT. Worth recording that the authoring pass pre-registered the one judgement call here: the intercept depends on which points are fitted (five points -> 124.7, three most dilute -> 125.9, two most dilute -> 126.1), and the residuals show systematic curvature rather than scatter because the 0.05 M and 0.10 M points lie outside the Debye-Huckel-Onsager limiting range. The dilute-only value is independently corroborated by Kohlrausch's law from the chapter's own Table 2.4 (50.1 + 76.3 = 126.4, the figure the chapter's own Example 2.8 quotes). Both values and the reasoning are in the shipped solution. Unkeyed, so nothing to adjudicate."
+  },
+  {
+    "ref": "Ex 2.11",
+    "verdict": "AGREE",
+    "ourAnswer": "Lm = 32.76 S cm^2 mol^-1; Ka = 1.85e-5 mol L^-1",
+    "keyAnswer": "1.85e-5",
+    "note": "Exact on the value the key prints. The key gives no entry for the molar-conductivity half of the question; ours is 32.76 S cm^2 mol^-1. Our solution keeps the (1-alpha) denominator rather than approximating, and says so."
+  },
+  {
+    "ref": "Ex 2.12",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 3F = 2.89e5 C, (ii) 2F = 1.93e5 C, (iii) 5F = 4.82e5 C",
+    "keyAnswer": "3F, 2F, 5F",
+    "note": "All three parts exact. Part (iii) is the row that punishes taking n from the ion's charge rather than the oxidation-state change: Mn goes +7 -> +2, so n = 5."
+  },
+  {
+    "ref": "Ex 2.13",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 1.0 F, (ii) 4.44 F",
+    "keyAnswer": "1F, 4.44F",
+    "note": "Both parts exact."
+  },
+  {
+    "ref": "Ex 2.14",
+    "verdict": "AGREE",
+    "ourAnswer": "(i) 2F = 1.93e5 C, (ii) 1F = 9.65e4 C",
+    "keyAnswer": "2F, 1F",
+    "note": "Both parts exact. Part (ii) is the trap: Fe goes +2 -> +3, one electron per Fe."
+  },
+  {
+    "ref": "Ex 2.15",
+    "verdict": "AGREE",
+    "ourAnswer": "1.83 g (1.825 g) of Ni",
+    "keyAnswer": "1.8258 g",
+    "note": "Agrees to the key's precision; ours is rounded to 3 s.f. per the brief, and the unrounded 1.825 g appears in the working."
+  },
+  {
+    "ref": "Ex 2.16",
+    "verdict": "AGREE",
+    "ourAnswer": "t = 864 s (14.4 min); Cu 0.426 g; Zn 0.439 g",
+    "keyAnswer": "14.40 min; Copper 0.427 g; Zinc 0.437 g",
+    "note": "All THREE parts compared. Time exact. The two masses differ in the third significant figure only and trace to the ATOMIC-MASS TABLE, which the authoring pass pre-registered blind: we used Cu 63.5 and Zn 65.4, giving 0.426 and 0.439; the key's 0.437 g of zinc back-solves to Zn = 65.1 and its 0.427 g of copper to Cu = 63.6. Within the Chemistry equivalence rule for a different atomic-mass table (<0.5%). AGREE, mechanism recorded."
+  },
+  {
+    "ref": "Ex 2.17",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) feasible +0.23 V, (ii) feasible +0.46 V, (iii) not feasible -0.32 V, (iv) not feasible -0.03 V, (v) feasible +0.32 V",
+    "keyAnswer": "",
+    "note": "No entry under UNIT 2. Separately: the stem cites 'Table 3.1', which does not exist in this chapter — a stale cross-reference to the edition in which Electrochemistry was Chapter 3 (see the chapter-wide census in the report: 6 stale 3.x references against 92 correct 2.x ones). Transcribed as printed and flagged in the row's _note; the intended table is Table 2.1 and the authoring pass used it. Not a defect in our answer."
+  },
+  {
+    "ref": "Ex 2.18",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "(i) cathode Ag deposited / anode the Ag electrode dissolves, solution unchanged; (ii) cathode Ag / anode O2, solution becomes acidic; (iii) cathode H2 / anode O2; (iv) cathode Cu / anode Cl2",
+    "keyAnswer": "",
+    "note": "No entry under UNIT 2. Predictive question with no numeric answer. Part (iv) is the one where standard potentials alone give the wrong prediction and the oxygen overpotential decides it; our solution says so explicitly."
+  },
+  {
+    "ref": "Intext 2.1",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Couple the Mg electrode to a standard hydrogen electrode; the measured emf is 2.36 V and Mg is the anode, so E(Mg2+/Mg) = -2.36 V",
+    "keyAnswer": "",
+    "note": "The chapter's own 'Answers to Some Intext Questions' block (p-29) answers ONLY 2.5, 2.6 and 2.9 — the heading says 'Some'. No entry for 2.1."
+  },
+  {
+    "ref": "Intext 2.2",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "No — Zn displaces Cu2+ spontaneously, so the pot dissolves as Zn2+ and copper deposits on it.",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.3",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "F2, Cl2 and Br2 (each with E above the Fe3+/Fe2+ value of 0.77 V)",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.4",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "E = -0.059 x pH = -0.59 V",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.5",
+    "verdict": "AGREE",
+    "ourAnswer": "E(cell) = 0.91 V",
+    "keyAnswer": "E(cell) = 0.91 V",
+    "note": "Exact. Matched against the INTEXT key on p-29, not the exercise key — Ex 2.5 is a different question that shares the number 2.5."
+  },
+  {
+    "ref": "Intext 2.6",
+    "verdict": "AGREE",
+    "ourAnswer": "DrG = -45.5 kJ/mol; Kc = 1e8 (the solution also states 9.7e7 from the exact RT route)",
+    "keyAnswer": "DrG = -45.54 kJ/mol; Kc = 9.62e7",
+    "note": "Both parts compared. DrG agrees to rounding. Kc: ours 1e8 vs the key's 9.62e7 — the SAME constant-choice mechanism as Ex 2.4. Our solution derives it both ways and explicitly prints 9.7e7 for the RT/F route, which is the key's value to 1%; the 1e8 headline is the 0.059-shortcut result rounded to 1 s.f. Matched against the p-29 intext key, not the exercise key."
+  },
+  {
+    "ref": "Intext 2.7",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Conductivity falls on dilution because it is a per-unit-volume quantity and dilution reduces the ions contained in unit volume.",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.8",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Indirectly, by Kohlrausch's law: Lm(HCl) + Lm(NaOH) - Lm(NaCl) = 548.7 S cm^2 mol^-1",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.9",
+    "verdict": "AGREE",
+    "ourAnswer": "alpha = 0.114; Ka = 3.67e-4 mol L^-1",
+    "keyAnswer": "0.114, 3.67e-4 mol L^-1",
+    "note": "Exact on BOTH parts. Matched against the p-29 intext key."
+  },
+  {
+    "ref": "Intext 2.10",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "2.25e22 electrons",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.11",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Na, K, Li, Mg, Ca, Al extracted electrolytically; Cu, Zn, Ag, Ni refined electrolytically",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.12",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "6F = 5.79e5 C",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.13",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "On recharging, 2PbSO4(s) + 2H2O(l) -> Pb(s) + PbO2(s) + 2H2SO4(aq): PbSO4 reduced to Pb at the negative plate, oxidised to PbO2 at the positive plate, H2SO4 restored.",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.14",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "Methane (CH4) and methanol (CH3OH)",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  },
+  {
+    "ref": "Intext 2.15",
+    "verdict": "NO-KEY-ENTRY",
+    "ourAnswer": "An impure/strained spot is the anode (Fe -> Fe2+ + 2e-), a moisture-covered spot reducing dissolved O2 is the cathode, the CO2-containing water film is the electrolyte and the metal is the external circuit; Fe2+ is air-oxidised to hydrated Fe2O3.xH2O (rust).",
+    "keyAnswer": "",
+    "note": "No entry in the p-29 intext block."
+  }
+]

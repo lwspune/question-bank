@@ -1,0 +1,56 @@
+[
+  {
+    "ref": "Eg 3.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of a Chemical Reaction",
+    "difficulty": "MODERATE",
+    "stem": "From the concentrations of \\(\\text{C}_4\\text{H}_9\\text{Cl}\\) (butyl chloride) at different times given below, calculate the average rate of the reaction:\n\n\\(\\text{C}_4\\text{H}_9\\text{Cl} + \\text{H}_2\\text{O} \\rightarrow \\text{C}_4\\text{H}_9\\text{OH} + \\text{HCl}\\)\n\nduring different intervals of time.\n\n| \\(t/\\text{s}\\) | 0 | 50 | 100 | 150 | 200 | 300 | 400 | 700 | 800 |\n|---|---|---|---|---|---|---|---|---|---|\n| \\([\\text{C}_4\\text{H}_9\\text{Cl}]/\\text{mol L}^{-1}\\) | 0.100 | 0.0905 | 0.0820 | 0.0741 | 0.0671 | 0.0549 | 0.0439 | 0.0210 | 0.017 |",
+    "solution": "We can determine the difference in concentration over different intervals of time and thus determine the average rate by dividing \\(\\Delta[\\text{R}]\\) by \\(\\Delta t\\) (Table 3.1).\n\n**Table 3.1: Average rates of hydrolysis of butyl chloride**\n\n| \\([\\text{C}_4\\text{H}_9\\text{Cl}]_{t_1}/\\text{mol L}^{-1}\\) | \\([\\text{C}_4\\text{H}_9\\text{Cl}]_{t_2}/\\text{mol L}^{-1}\\) | \\(t_1/\\text{s}\\) | \\(t_2/\\text{s}\\) | \\(r_{av} \\times 10^{4}/\\text{mol L}^{-1}\\text{s}^{-1} = -\\left\\{\\left([\\text{C}_4\\text{H}_9\\text{Cl}]_{t_2} - [\\text{C}_4\\text{H}_9\\text{Cl}]_{t_1}\\right)/(t_2 - t_1)\\right\\} \\times 10^{4}\\) |\n|---|---|---|---|---|\n| 0.100 | 0.0905 | 0 | 50 | 1.90 |\n| 0.0905 | 0.0820 | 50 | 100 | 1.70 |\n| 0.0820 | 0.0741 | 100 | 150 | 1.58 |\n| 0.0741 | 0.0671 | 150 | 200 | 1.40 |\n| 0.0671 | 0.0549 | 200 | 300 | 1.22 |\n| 0.0549 | 0.0439 | 300 | 400 | 1.10 |\n| 0.0439 | 0.0335 | 400 | 500 | 1.04 |\n| 0.0210 | 0.017 | 700 | 800 | 0.4 |",
+    "_note": "Transcribed faithfully. The book's own Table 3.1 (the printed solution) contains a row \\(0.0439 \\rightarrow 0.0335\\) over \\(400\\text{-}500\\,\\text{s}\\), but the question's data table prints NO entry at \\(t = 500\\,\\text{s}\\) and never lists the concentration 0.0335 — so that row of the solution uses data the question does not supply. Every other row is reproducible from the stem's table, and the 1.04 value is itself consistent with 0.0439/0.0335 over 100 s. Also as printed: the final concentration is given to 3 dp (0.017) where every other entry carries 4 dp."
+  },
+  {
+    "ref": "Eg 3.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of a Chemical Reaction",
+    "difficulty": "MODERATE",
+    "stem": "The decomposition of \\(\\text{N}_2\\text{O}_5\\) in \\(\\text{CCl}_4\\) at 318K has been studied by monitoring the concentration of \\(\\text{N}_2\\text{O}_5\\) in the solution. Initially the concentration of \\(\\text{N}_2\\text{O}_5\\) is \\(2.33\\,\\text{mol L}^{-1}\\) and after 184 minutes, it is reduced to \\(2.08\\,\\text{mol L}^{-1}\\). The reaction takes place according to the equation\n\n\\(2\\,\\text{N}_2\\text{O}_5\\,(g) \\rightarrow 4\\,\\text{NO}_2\\,(g) + \\text{O}_2\\,(g)\\)\n\nCalculate the average rate of this reaction in terms of hours, minutes and seconds. What is the rate of production of \\(\\text{NO}_2\\) during this period?",
+    "solution": "Average Rate \\(= \\dfrac{1}{2}\\left\\{-\\dfrac{\\Delta[\\text{N}_2\\text{O}_5]}{\\Delta t}\\right\\} = -\\dfrac{1}{2}\\left[\\dfrac{(2.08 - 2.33)\\,\\text{mol L}^{-1}}{184\\,\\text{min}}\\right]\\)\n\n\\(= 6.79 \\times 10^{-4}\\,\\text{mol L}^{-1}/\\text{min} = (6.79 \\times 10^{-4}\\,\\text{mol L}^{-1}\\text{min}^{-1}) \\times (60\\,\\text{min}/1\\text{h})\\)\n\n\\(= 4.07 \\times 10^{-2}\\,\\text{mol L}^{-1}/\\text{h}\\)\n\n\\(= 6.79 \\times 10^{-4}\\,\\text{mol L}^{-1} \\times 1\\,\\text{min}/60\\,\\text{s}\\)\n\n\\(= 1.13 \\times 10^{-5}\\,\\text{mol L}^{-1}\\text{s}^{-1}\\)\n\nIt may be remembered that\n\nRate \\(= \\dfrac{1}{4}\\left\\{\\dfrac{\\Delta[\\text{NO}_2]}{\\Delta t}\\right\\}\\)\n\n\\(\\dfrac{\\Delta[\\text{NO}_2]}{\\Delta t} = 6.79 \\times 10^{-4} \\times 4\\,\\text{mol L}^{-1}\\text{min}^{-1} = 2.72 \\times 10^{-3}\\,\\text{mol L}^{-1}\\text{min}^{-1}\\)",
+    "_note": "Transcribed as printed. In the fourth line of the printed solution the book writes \\(6.79 \\times 10^{-4}\\,\\text{mol L}^{-1} \\times 1\\,\\text{min}/60\\,\\text{s}\\), dropping the \\(\\text{min}^{-1}\\) that the same quantity carries two lines above; the numerical result \\(1.13 \\times 10^{-5}\\,\\text{mol L}^{-1}\\text{s}^{-1}\\) is nevertheless correct. Also as printed: the stem describes decomposition in \\(\\text{CCl}_4\\) solution while the equation labels every species (g)."
+  },
+  {
+    "ref": "Intext 3.1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of a Chemical Reaction",
+    "difficulty": "EASY",
+    "stem": "For the reaction \\(\\text{R} \\rightarrow \\text{P}\\), the concentration of a reactant changes from 0.03M to 0.02M in 25 minutes. Calculate the average rate of reaction using units of time both in minutes and seconds."
+  },
+  {
+    "ref": "Intext 3.2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of a Chemical Reaction",
+    "difficulty": "EASY",
+    "stem": "In a reaction, \\(2\\text{A} \\rightarrow\\) Products, the concentration of A decreases from \\(0.5\\,\\text{mol L}^{-1}\\) to \\(0.4\\,\\text{mol L}^{-1}\\) in 10 minutes. Calculate the rate during this interval?"
+  },
+  {
+    "ref": "Eg 3.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factors Influencing Rate of a Reaction",
+    "difficulty": "EASY",
+    "stem": "Calculate the overall order of a reaction which has the rate expression\n\n(a) Rate \\(= k\\,[\\text{A}]^{1/2}\\,[\\text{B}]^{3/2}\\)\n\n(b) Rate \\(= k\\,[\\text{A}]^{3/2}\\,[\\text{B}]^{-1}\\)",
+    "solution": "(a) Rate \\(= k\\,[\\text{A}]^{x}\\,[\\text{B}]^{y}\\)\n\norder \\(= x + y\\)\n\nSo order \\(= 1/2 + 3/2 = 2\\), i.e., second order\n\n(b) order \\(= 3/2 + (-1) = 1/2\\), i.e., half order."
+  },
+  {
+    "ref": "Eg 3.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factors Influencing Rate of a Reaction",
+    "difficulty": "EASY",
+    "stem": "Identify the reaction order from each of the following rate constants.\n\n(i) \\(k = 2.3 \\times 10^{-5}\\,\\text{L mol}^{-1}\\text{s}^{-1}\\)\n\n(ii) \\(k = 3 \\times 10^{-4}\\,\\text{s}^{-1}\\)",
+    "solution": "(i) The unit of second order rate constant is \\(\\text{L mol}^{-1}\\text{s}^{-1}\\), therefore \\(k = 2.3 \\times 10^{-5}\\,\\text{L mol}^{-1}\\text{s}^{-1}\\) represents a second order reaction.\n\n(ii) The unit of a first order rate constant is \\(\\text{s}^{-1}\\) therefore \\(k = 3 \\times 10^{-4}\\,\\text{s}^{-1}\\) represents a first order reaction."
+  }
+]
