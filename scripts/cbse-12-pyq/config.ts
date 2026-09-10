@@ -261,6 +261,33 @@ export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
   },
 };
 
+/**
+ * Which subject a paperId belongs to, DERIVED from its paper code.
+ *
+ *   2023-56-1-1 -> chemistry (56)   2025-65-5-1 -> maths (65)
+ *
+ * Derived rather than defaulted, and shared by validate.ts and commit.ts so the
+ * two can never disagree about which subject a paper is. A default here is
+ * genuinely dangerous: it would validate a Chemistry paper against the Maths
+ * chapter list — reporting one "unknown chapter" per row, which reads as a
+ * transcription fault rather than a mis-scoped run — and, worse, at COMMIT it
+ * would stamp the wrong subject on real rows. `--subject=` overrides.
+ */
+export function subjectForPaperId(id: string, override?: string): SubjectSpec {
+  if (override) return subjectFromArg(override);
+  const prefix = /^\d{4}-(\d{2})-/.exec(id)?.[1];
+  const found = Object.values(SUBJECTS).find((s) => s.paperPrefix === prefix);
+  if (!found) {
+    throw new Error(
+      `cannot tell which subject "${id}" belongs to (expected a paper prefix of ` +
+        `${Object.values(SUBJECTS)
+          .map((s) => s.paperPrefix)
+          .join("/")}). Pass --subject=<key>.`
+    );
+  }
+  return found;
+}
+
 /** Resolve a --subject=<key> argument, refusing anything unknown rather than defaulting. */
 export function subjectFromArg(arg: string | undefined): SubjectSpec {
   const key = (arg ?? "").trim().toLowerCase();
