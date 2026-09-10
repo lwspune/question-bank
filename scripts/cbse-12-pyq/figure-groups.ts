@@ -34,8 +34,43 @@ export type Member = { pid: string; year: number; ref: string; page: number | nu
 export type Group = { hash: string; members: Member[]; stem: string; digital: boolean };
 
 const PAGE_RE = /[Pp]age\s*(?:idx|index)\s*(\d+)/;
-/** 2022 and 2025 have NO text layer (measured: 0 chars on every page). */
-const SCANNED_YEARS = new Set([2022, 2025]);
+
+/**
+ * Which papers have a usable text layer — READ, never inferred from the year.
+ *
+ * ⚠ THIS REPLACED `SCANNED_YEARS = new Set([2022, 2025])`, whose comment read
+ * "2022 and 2025 have NO text layer (measured: 0 chars on every page)". The
+ * measurement was real and was taken on one paper per year. Across all 234
+ * papers the property is per-SERIES, and the year rule was wrong both ways:
+ * 2025 Physics/Chemistry are 12 of 18 DIGITAL (series 4-7) and 2022 is 6 of 15,
+ * while 2023 Maths has 5 SCANNED papers and 2024 Physics/Chemistry 6 each.
+ *
+ * The harmful direction is the second: `digital` claims a figure is "reachable
+ * from a born-digital paper", so a scanned member counted as digital sends
+ * someone down an extraction path that cannot work.
+ *
+ * Falls back to the old year rule ONLY if the index is missing, and says so —
+ * silently guessing is what this replaced.
+ */
+function digitalByPaperId(): Map<string, boolean> {
+  const out = new Map<string, boolean>();
+  let found = false;
+  for (const f of readdirSync(DATA).filter((x) => /^_papers\..*\.json$/.test(x))) {
+    found = true;
+    const rows = JSON.parse(readFileSync(join(DATA, f), "utf8")) as {
+      paperId: string; digital?: boolean;
+    }[];
+    for (const r of rows) if (typeof r.digital === "boolean") out.set(r.paperId, r.digital);
+  }
+  if (!found) {
+    console.warn(
+      "⚠ no data/_papers.<subject>.json — falling back to the YEAR rule, which is\n" +
+        "  measurably wrong for 2022, 2023, 2024 and 2025. Run:\n" +
+        "    npx tsx scripts/cbse-12-pyq/papers.ts --all --emit-index"
+    );
+  }
+  return out;
+}
 
 export function loadGroups(): Group[] {
   const groups = new Map<string, Group>();
@@ -55,7 +90,13 @@ export function loadGroups(): Group[] {
       else groups.set(hash, { hash, members: [member], stem: q.stem, digital: false });
     }
   }
-  for (const g of groups.values()) g.digital = g.members.some((m) => !SCANNED_YEARS.has(m.year));
+  const digital = digitalByPaperId();
+  const YEAR_FALLBACK = new Set([2022, 2025]); // only when the index is absent
+  for (const g of groups.values()) {
+    g.digital = g.members.some((m) =>
+      digital.has(m.pid) ? digital.get(m.pid)! : !YEAR_FALLBACK.has(m.year)
+    );
+  }
   return [...groups.values()].sort((a, b) => b.members.length - a.members.length);
 }
 
@@ -63,8 +104,10 @@ function main() {
   const groups = loadGroups();
   const rows = groups.reduce((n, g) => n + g.members.length, 0);
   console.log(`REQUIRED rows ${rows}  ->  distinct figures to attach: ${groups.length}`);
-  console.log(`  reachable from a born-digital paper (2023/2024/2026): ${groups.filter((g) => g.digital).length}`);
-  console.log(`  only in a SCANNED paper (2022/2025, no text layer):   ${groups.filter((g) => !g.digital).length}`);
+  // Deliberately NOT labelled by year any more: scanned-ness is per-SERIES and
+  // every year but 2026 is mixed in at least one subject.
+  console.log(`  reachable from a born-digital paper: ${groups.filter((g) => g.digital).length}`);
+  console.log(`  only in a SCANNED paper:             ${groups.filter((g) => !g.digital).length}`);
 
   // A group whose members describe DIFFERENT figures is a hash collision, not a
   // reprint — image_url is not hashed, so two questions differing only by their

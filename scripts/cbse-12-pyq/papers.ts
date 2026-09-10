@@ -319,28 +319,108 @@ function report(subject: SubjectSpec, readMerged: boolean): number {
  * It also carries msPages, so a merged marking scheme renders the RIGHT block
  * automatically instead of relying on someone passing --ms-pages by hand.
  */
+/**
+ * Does each question paper carry a usable text layer? Measured, in one batch.
+ *
+ * ⚠ THIS IS A PER-PAPER PROPERTY AND WAS BEING TREATED AS PER-YEAR.
+ * figure-groups.ts carried `SCANNED_YEARS = {2022, 2025}` with the comment
+ * "measured: 0 chars on every page". That measurement was real but was taken on
+ * ONE paper per year and generalised. Measured across all 234 papers on
+ * 2026-09-10 it is wrong in BOTH directions:
+ *
+ *   • 2025 Physics and Chemistry are 12 of 18 papers DIGITAL (series 4-7),
+ *     and 2022 is 6 of 15 digital (series 2 and 4) — those were being sent
+ *     down the harder extraction path for no reason;
+ *   • 2023 Maths has 5 SCANNED papers and 2024 Physics/Chemistry 6 each,
+ *     which the year rule calls digital — so `digital: true` asserted a text
+ *     layer that is not there, which is the direction that actually misleads.
+ *
+ * The same "per-artifact, not per-year" trap this pipeline already hit five
+ * times over raised decimal points. So it is measured per paper and recorded
+ * here, rather than inferred from the year anywhere downstream.
+ */
+function textCharsByPaper(paths: string[]): Map<string, number> {
+  if (paths.length === 0) return new Map();
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { execFileSync } = require("node:child_process") as typeof import("node:child_process");
+  const script = `
+import fitz, json, sys
+out = {}
+for p in json.load(sys.stdin):
+    try:
+        d = fitz.open(p)
+        out[p] = sum(len(d[i].get_text().strip()) for i in range(d.page_count))
+    except Exception:
+        out[p] = -1   # unreadable: NOT the same as "no text", so never call it scanned
+print(json.dumps(out))
+`;
+  const raw = execFileSync("python", ["-c", script], {
+    input: JSON.stringify(paths),
+    encoding: "utf-8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  // ⚠ MuPDF writes its own diagnostics to STDOUT, not stderr — a damaged PDF in
+  // this corpus emits "MuPDF error: library error: zlib error ..." ahead of our
+  // JSON and a naive JSON.parse of the whole stream dies on it. Take the last
+  // non-empty line, which is ours.
+  const lastLine = raw.trimEnd().split(/\r?\n/).pop() ?? "{}";
+  return new Map(Object.entries(JSON.parse(lastLine) as Record<string, number>));
+}
+
 function emitIndex(subject: SubjectSpec): void {
   // readMerged is forced: without it every follower of a merged scheme resolves
   // to the opener's file with no page range, which is precisely the silent
   // wrong-key hazard the index is meant to remove.
   const d = discover(subject, { readMerged: true });
-  const rows = d.papers.map((p) => ({
-    year: p.year,
-    code: p.code,
-    paperId: `${p.year}-${p.code.replace(/\//g, "-")}`,
-    qp: p.qp,
-    ms: p.ms,
-    msPages: p.msPages,
-    pattern: p.pattern,
-  }));
+  const chars = textCharsByPaper(d.papers.map((p) => p.qp));
+  const rows = d.papers.map((p) => {
+    const n = chars.get(p.qp) ?? -1;
+    return {
+      year: p.year,
+      code: p.code,
+      paperId: `${p.year}-${p.code.replace(/\//g, "-")}`,
+      qp: p.qp,
+      ms: p.ms,
+      msPages: p.msPages,
+      pattern: p.pattern,
+      /** Characters in the question paper's text layer, measured. -1 = unreadable. */
+      textChars: n,
+      /**
+       * A usable text layer. The floor is 200 chars for a whole paper — a
+       * scanned CBSE paper still extracts a handful of header characters, so
+       * "> 0" is not the test. An UNREADABLE file (-1) is deliberately NOT
+       * called scanned: we do not know, and guessing would assert the harder
+       * path as fact.
+       */
+      digital: n >= 200,
+    };
+  });
   if (!existsSync(DATA)) mkdirSync(DATA, { recursive: true });
   const path = join(DATA, `_papers.${subject.key}.json`);
   writeFileSync(path, JSON.stringify(rows, null, 1) + "\n", "utf-8");
   const merged = rows.filter((r) => r.msPages).length;
+  const scanned = rows.filter((r) => !r.digital && r.textChars >= 0);
+  const unreadable = rows.filter((r) => r.textChars < 0);
   console.log(
     `wrote ${path} — ${rows.length} papers, ${rows.filter((r) => r.ms).length} with a marking scheme` +
       ` (${merged} of them a page-range into a merged file)`
   );
+  console.log(
+    `  text layer: ${rows.length - scanned.length - unreadable.length} digital, ${scanned.length} SCANNED` +
+      (unreadable.length ? `, ${unreadable.length} UNREADABLE` : "")
+  );
+  // Printed per YEAR because that is the shape people wrongly assume it has.
+  for (const y of [...new Set(rows.map((r) => r.year))].sort()) {
+    const inYear = rows.filter((r) => r.year === y);
+    const s = inYear.filter((r) => !r.digital && r.textChars >= 0).map((r) => r.code);
+    if (s.length && s.length !== inYear.length) {
+      console.log(`    ${y} is MIXED — scanned: ${s.join(", ")}`);
+    }
+  }
+  if (unreadable.length) {
+    console.log(`  ⚠ unreadable (treated as NOT scanned — we do not know):`);
+    for (const r of unreadable) console.log(`    ${r.paperId}  ${r.qp}`);
+  }
 }
 
 function main() {
