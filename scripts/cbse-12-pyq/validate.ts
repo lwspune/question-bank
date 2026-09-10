@@ -23,12 +23,37 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, SUBJECTS, EXAM_ID_CBSE_12 } from "./config";
-
-// ⚠ MATHS ONLY — see the note in commit.ts.
-const SUBJECT = SUBJECTS.maths;
+import { DATA, SUBJECTS, EXAM_ID_CBSE_12, subjectFromArg, type SubjectSpec } from "./config";
 import { sectionForQuestion, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
+
+/**
+ * Which subject's taxonomy to validate against.
+ *
+ * DERIVED FROM THE PAPER CODE, not defaulted: 65 -> maths, 55 -> physics,
+ * 56 -> chemistry. A default would validate a Chemistry paper against the Maths
+ * chapter list and report one "unknown chapter" per row — which reads as a
+ * transcription fault rather than a mis-scoped run, and buries every other
+ * finding under it. --subject= overrides.
+ */
+function subjectForPaperId(id: string, override?: string): SubjectSpec {
+  if (override) return subjectFromArg(override);
+  const prefix = /^\d{4}-(\d{2})-/.exec(id)?.[1];
+  const found = Object.values(SUBJECTS).find((s) => s.paperPrefix === prefix);
+  if (!found) {
+    throw new Error(
+      `cannot tell which subject "${id}" belongs to (expected a paper prefix of ` +
+        `${Object.values(SUBJECTS).map((s) => s.paperPrefix).join("/")}). Pass --subject=<key>.`
+    );
+  }
+  return found;
+}
+
+/** Does ANY chapter of this subject carry this subtopic? */
+function subtopicExistsAnywhere(axis: Map<string, Set<string>>, subtopic: string): boolean {
+  for (const set of axis.values()) if (set.has(subtopic)) return true;
+  return false;
+}
 
 type Q = {
   ref: string;
@@ -75,7 +100,11 @@ function baseNumber(ref: string): number {
 
 async function main() {
   const id = process.argv[2];
-  if (!id) throw new Error("usage: validate.ts <paperId>  e.g. 2025-65-5-1");
+  if (!id) throw new Error("usage: validate.ts <paperId> [--subject=<key>]  e.g. 2023-56-1-1");
+  const SUBJECT = subjectForPaperId(
+    id,
+    process.argv.find((a) => a.startsWith("--subject="))?.split("=")[1]
+  );
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const paper = JSON.parse(readFileSync(join(DATA, `${id}.questions.json`), "utf8")) as Paper;
@@ -116,9 +145,26 @@ async function main() {
       note(q.ref, `marks ${q.marks} but the band says ${expect.marks}`);
     }
 
-    if (!SUBJECT.chapters.includes(q.chapter)) note(q.ref, `unknown chapter "${q.chapter}"`);
-    else if (!axis.get(q.chapter)?.has(q.subtopic)) {
+    // ⚠ The chapter and subtopic checks are INDEPENDENT, deliberately.
+    //
+    // These were chained (`else if`) until 2026-09-10, which meant an unknown
+    // chapter silently suppressed the subtopic check for that row. Harmless
+    // while both axes agree — and actively misleading the first time they do
+    // not: running the Maths-scoped validator over the Chemistry pilot produced
+    // 46 unknown-chapter errors and reported nothing at all about subtopics,
+    // so a run that looked like it had checked two axes had only checked one.
+    // Found by the transcribing agent, which re-ran the subtopic query itself
+    // rather than accepting the expected-looking failure.
+    const chapterKnown = SUBJECT.chapters.includes(q.chapter);
+    if (!chapterKnown) note(q.ref, `unknown chapter "${q.chapter}"`);
+    if (chapterKnown && !axis.get(q.chapter)?.has(q.subtopic)) {
       note(q.ref, `subtopic "${q.subtopic}" is not on the live axis for "${q.chapter}"`);
+    }
+    if (!chapterKnown && !subtopicExistsAnywhere(axis, q.subtopic)) {
+      // Cannot say WHICH chapter it belongs to, but "no chapter of this subject
+      // has this subtopic at all" is still a real finding worth surfacing now
+      // rather than after the chapter name is fixed.
+      note(q.ref, `subtopic "${q.subtopic}" is not on the live axis for ANY chapter of ${SUBJECT.subjectName}`);
     }
     if (!DIFFICULTIES.includes(q.difficulty)) note(q.ref, `difficulty "${q.difficulty}"`);
 
@@ -180,7 +226,7 @@ async function main() {
 
   const mcq = paper.questions.filter((q) => q.format === "mcq").length;
   const answered = paper.questions.filter((q) => q.answer).length;
-  console.log(`${paper.paper} (${paper.year}, ${paper.pattern}) — ${paper.questions.length} rows`);
+  console.log(`${SUBJECT.subjectName} ${paper.paper} (${paper.year}, ${paper.pattern}) — ${paper.questions.length} rows`);
   console.log(`  mcq ${mcq} (all answered: ${answered === mcq}) | subjective ${paper.questions.length - mcq}`);
   console.log(`  distinct base question numbers: ${new Set(paper.questions.map((q) => baseNumber(q.ref))).size}`);
   console.log(`  chapters touched: ${new Set(paper.questions.map((q) => q.chapter)).size}`);
