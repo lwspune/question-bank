@@ -90,8 +90,11 @@ export { ORG_ID, CREATED_BY } from "../practice/config";
 // ambiguous name here would undo that.
 export { EXAM_ID_CBSE_12 } from "../ncert/config";
 
+import type { SubjectKey } from "./lib";
+export type { SubjectKey };
+
 /** Where the official ZIPs are unpacked: <SOURCE_ROOT>/<year>/{qp,ms}/… */
-export const SOURCE_ROOT = "C:\\tmp\\PYQPs\\CBSE\\XII\\Mathematics";
+const SOURCE_BASE = "C:\\tmp\\PYQPs\\CBSE\\XII";
 
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs + hash dumps
 export const DATA = join(__dirname, "data"); // committed: transcription source of truth
@@ -106,7 +109,7 @@ export const YEARS = [2022, 2023, 2024, 2025, 2026] as const;
  * mh-ssc-10-text lesson); commit.ts validates against this list and refuses an
  * unknown name rather than creating one.
  */
-export const SUBJECT_NAME = "Mathematics";
+export const SUBJECT_NAME_MATHS = "Mathematics";
 
 /**
  * The 13 live cbse-12 chapters, verbatim from the DB as of 2026-08-18.
@@ -121,7 +124,7 @@ export const SUBJECT_NAME = "Mathematics";
  * syllabus, but the 2022 Term-2 paper predates it — expect items there with no
  * clean NCERT home, and file them rather than inventing a chapter.
  */
-export const CHAPTERS = [
+export const CHAPTERS_MATHS = [
   "Relations and Functions",
   "Inverse Trigonometric Functions",
   "Matrices",
@@ -137,9 +140,115 @@ export const CHAPTERS = [
   "Probability",
 ] as const;
 
+/**
+ * The 14 live cbse-12 PHYSICS chapters, verbatim from the DB 2026-09-10.
+ * Created by the NCERT textbook ingest (276 practice rows, 0 pyq). A board
+ * paper is assigned per-question onto this SAME axis, so a chapter carries its
+ * textbook exercises and its board PYQs together.
+ */
+export const CHAPTERS_PHYSICS = [
+  "Alternating Current",
+  "Atoms",
+  "Current Electricity",
+  "Dual Nature of Radiation and Matter",
+  "Electric Charges and Fields",
+  "Electromagnetic Induction",
+  "Electromagnetic Waves",
+  "Electrostatic Potential and Capacitance",
+  "Magnetism and Matter",
+  "Moving Charges and Magnetism",
+  "Nuclei",
+  "Ray Optics and Optical Instruments",
+  "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+  "Wave Optics",
+] as const;
+
+/**
+ * The 10 live cbse-12 CHEMISTRY chapters, verbatim from the DB 2026-09-10
+ * (450 practice rows, 0 pyq).
+ *
+ * ⚠ The 2022 COVID Term-II paper predates NCERT's rationalisation and examines
+ * content these ten chapters no longer cover — MEASURED, not anticipated: 2022
+ * 56/1/1 Q10 asks about lyophilic/lyophobic colloids and coagulation, and its
+ * OR-branch about physisorption vs chemisorption. Both are Surface Chemistry,
+ * a chapter that no longer exists. Such chapters are added explicitly and
+ * marked "[Outdated]" so a student browsing can tell dropped syllabus from
+ * current, rather than being filed onto a plausible-but-wrong neighbour.
+ */
+export const CHAPTERS_CHEMISTRY = [
+  "Alcohols, Phenols and Ethers",
+  "Aldehydes, Ketones and Carboxylic Acids",
+  "Amines",
+  "Biomolecules",
+  "Chemical Kinetics",
+  "Coordination Compounds",
+  "Electrochemistry",
+  "Haloalkanes and Haloarenes",
+  "Solutions",
+  "The d-and f-Block Elements",
+] as const;
+
+/**
+ * Everything that differs between the three subjects, in ONE place.
+ *
+ * Parameterised rather than forked: the NCERT Class-11 precedent is explicit
+ * that a fork means applying every future fix twice, and this repo already has
+ * a live instance of that drift.
+ */
+export type SubjectSpec = {
+  key: SubjectKey;
+  /** The DB `subjects.name` row. Must already exist — the NCERT ingest made it. */
+  subjectName: string;
+  /** CBSE's internal subject code, as printed in marking-scheme headers. */
+  cbseCode: string;
+  /** The paper-code prefix CBSE prints on the paper: "65/5/1", "55/1/1", "56/7/3". */
+  paperPrefix: string;
+  sourceRoot: string;
+  chapters: readonly string[];
+};
+
+export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
+  maths: {
+    key: "maths",
+    subjectName: SUBJECT_NAME_MATHS,
+    cbseCode: "041",
+    paperPrefix: "65",
+    sourceRoot: join(SOURCE_BASE, "Mathematics"),
+    chapters: CHAPTERS_MATHS,
+  },
+  physics: {
+    key: "physics",
+    subjectName: "Physics",
+    cbseCode: "042",
+    paperPrefix: "55",
+    sourceRoot: join(SOURCE_BASE, "Physics"),
+    chapters: CHAPTERS_PHYSICS,
+  },
+  chemistry: {
+    key: "chemistry",
+    subjectName: "Chemistry",
+    cbseCode: "043",
+    paperPrefix: "56",
+    sourceRoot: join(SOURCE_BASE, "Chemistry"),
+    chapters: CHAPTERS_CHEMISTRY,
+  },
+};
+
+/** Resolve a --subject=<key> argument, refusing anything unknown rather than defaulting. */
+export function subjectFromArg(arg: string | undefined): SubjectSpec {
+  const key = (arg ?? "").trim().toLowerCase();
+  const spec = (SUBJECTS as Record<string, SubjectSpec>)[key];
+  if (!spec) {
+    throw new Error(
+      `unknown --subject=${JSON.stringify(arg ?? "")}. Expected one of: ${Object.keys(SUBJECTS).join(", ")}`
+    );
+  }
+  return spec;
+}
+
 /** questions.pyq_note — provenance stamped on every row. */
-export function pyqNote(year: number, code: string): string {
-  return `CBSE Class 12 Mathematics (041) board examination ${year}, question paper ${code}. Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
+export function pyqNote(subject: SubjectSpec, year: number, code: string): string {
+  return `CBSE Class 12 ${subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}. Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
 }
 
 /** questions.source_file / upload_jobs.filename — the dedup + rollback key. */

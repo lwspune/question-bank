@@ -28,8 +28,13 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel } from "../../src/lib/upload/validate";
 import {
-  DATA, ORG_ID, CREATED_BY, EXAM_ID_CBSE_12, SUBJECT_NAME, pyqNote, sourceFile,
+  DATA, ORG_ID, CREATED_BY, EXAM_ID_CBSE_12, SUBJECTS, pyqNote, sourceFile,
 } from "./config";
+
+// ⚠ MATHS ONLY. Phase 1 (2026-09-10) parameterised discovery for Physics and
+// Chemistry; the commit path still assumes one subject and says so explicitly
+// rather than reading an ambient constant that would quietly serve the wrong one.
+const SUBJECT = SUBJECTS.maths;
 
 type Q = {
   ref: string; questionNumber: string; format: "mcq" | "subjective";
@@ -52,7 +57,7 @@ function buildRows(paper: Paper): ParsedRowPayload[] {
     const base = {
       sourceRow,
       questionNumber: q.questionNumber,
-      subjectName: SUBJECT_NAME,
+      subjectName: SUBJECT.subjectName,
       chapterName: q.chapter,
       subtopicName: q.subtopic,
       text: q.stem,
@@ -215,7 +220,7 @@ async function main() {
     // CBSE Class-12 board exams sit in Feb-March; this paper code's own sitting
     // month is not printed on the paper, so it is left NULL rather than guessed.
     pyqMonth: null,
-    pyqNote: pyqNote(paper.year, paper.paper),
+    pyqNote: pyqNote(SUBJECT, paper.year, paper.paper),
   });
   console.log(`\ninserted ${res.inserted} | skipped ${res.skipped} | failed ${res.failed}`);
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);
