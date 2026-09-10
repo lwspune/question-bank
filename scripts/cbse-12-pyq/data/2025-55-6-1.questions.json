@@ -1,744 +1,1060 @@
 {
-  "paper": "55/6/1",
-  "year": 2025,
-  "pattern": "full70",
-  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 (printed folios 3, 5, 7 ... 31 — folio = idx + 1). The booklet is 31 pages: idx 0 is the bilingual cover, idx 1 is the Hindi General Instructions, and EVERY ODD index 1..29 is a Hindi facing page. Hindi comes FIRST in each pair. The alternating hypothesis held EXACTLY and did NOT invert; the last page (idx 30, folio 31) is EVEN and English, so there is no English-only tail page. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE — checked at full size on the tops of odd indices 3, 5, 9, 13, 19, 23, 27 and 29, all of which are pure Devanagari from the first line, and both cross-page continuations run ENGLISH-to-ENGLISH (Q31(b)(i) on idx 26 continues as (ii) on idx 28; Q33(a) on idx 28 continues as (b) on idx 30). Every question 1..33 with every sub-part was located on an even page; there are no gaps. STRUCTURE read off the paper's own printed General Instructions on idx 2 and it MATCHES `full70`: 33 questions, five sections, Section A Q1-16 @1, Section B Q17-21 @2, Section C Q22-28 @3, Section D Q29-30 case study-based @4, Section E Q31-33 long answer @5. 16 + 10 + 21 + 8 + 15 = 70. As forecast, the General Instructions call ALL of Q1-16 'Multiple Choice type questions' and name no assertion-reason band; the paper declares that separately in a printed block at the top of idx 10 ('Questions number 13 to 16 are Assertion (A) and Reason (R) type questions'). INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section A'), so the inventory was established by walking the official marking scheme, which reprints both branches with a bare 'OR' between them. SEVEN questions carry an OR — Q18, Q24, Q29(iv), Q30(iv), Q31, Q32, Q33 — each confirmed BOTH by a printed OR on the English page AND by an OR block in the scheme (a whole-document regex over the ms text layer finds 'OR' on its own line on ms pages 3, 7, 10 (twice), 11, 14, 16 and NOWHERE ELSE). Q17, Q19-Q23, Q25-Q28 carry none. 46 rows for 33 questions. ⚠ Q28 LOOKS like an eighth internal choice and is NOT one — see its _flag. SECTION-A ANSWERS taken VERBATIM from the official marking scheme's Section-A table (XII_042_Physics_MS_55_6_1,2,3_.pdf, page index 2, header 'MARKING SCHEME: PHYSICS(042) / Code: 55/6/1'), uppercased: 1D 2C 3C 4D 5C 6B 7C 8A 9C 10A 11B 12D 13A 14C 15D 16C. Read by VISION off ms/p02.png and independently cross-checked against the machine parse in data/_keys.physics.json — the two agree on all 16 letters, and the value text CBSE prints beside each letter matches the option text transcribed for that letter in every one of the 16 rows. Q29 and Q30's ten case-study answers likewise come from the scheme's SECTION-D block (ms page index 10, read at ms/p10.png) and each printed value matches the transcribed option. NO QUESTION IS VOIDED BY CBSE ON THIS PAPER and there is NO MEDIUM-SCOPED AWARD CLAUSE: the Section-A table prints a bare '(letter) 1 1' on every row with no grace note, `grace` is [] in the machine parse, and a scan of all 52 pages of the merged scheme for 'full mark', 'any option', 'printing error', 'misprint', 'no option is correct', 'bonus', 'deleted', 'Hindi', 'English version', 'medium only', 'award 1 mark' and 'not correct' returns only the front-matter boilerplate ('Please do not hesitate to award full marks if the answer deserves it') plus one ordinary value-point note on a DIFFERENT paper's Q21 ('Note: Award 1 mark if a student proves it mathematically'). DECIMAL POINTS ARE RAISED DOTS ON THIS PAPER — verified on the constants block on idx 2 (6·63, 1·6, 8·854, 9·1, 1·675, 1·673, 6·023, 1·38) and throughout the questions (2·21, 6·0, 1·326, 2·652, 3·978, 1·6, 1·5, 3·0, 2·014102, 3·016049, 4·002603, 1·008665, 0·5, 0·1, 0·05, 0·01, 1·25) — so every decimal is written 0{\\cdot}5 inside a math zone. plan.txt names no reference paper, so every question was transcribed. FIGURE LOAD: 9 distinct printed figures back 9 rows — Q1 (a V-I graph), Q3 (a wire with a curved section), Q7 (a magnet above a cut ring), Q17 (a resistor network), Q20 (a two-prism combination), Q23 (a loop beside a long wire), Q29(i) (two plate configurations), Q29(iv)(a) (a capacitor network) and Q33(b)(ii) (a cube on the coordinate axes). Eight are REQUIRED and one (Q7) is ILLUSTRATIVE because its stem already states the ring has a cut. None is decorative and none was approximated in ASCII; see each row's `_figure` for what was described in words and what was withheld.",
-  "questions": [
+ "paper": "55/6/1",
+ "year": 2025,
+ "pattern": "full70",
+ "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 (printed folios 3, 5, 7 ... 31 — folio = idx + 1). The booklet is 31 pages: idx 0 is the bilingual cover, idx 1 is the Hindi General Instructions, and EVERY ODD index 1..29 is a Hindi facing page. Hindi comes FIRST in each pair. The alternating hypothesis held EXACTLY and did NOT invert; the last page (idx 30, folio 31) is EVEN and English, so there is no English-only tail page. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE — checked at full size on the tops of odd indices 3, 5, 9, 13, 19, 23, 27 and 29, all of which are pure Devanagari from the first line, and both cross-page continuations run ENGLISH-to-ENGLISH (Q31(b)(i) on idx 26 continues as (ii) on idx 28; Q33(a) on idx 28 continues as (b) on idx 30). Every question 1..33 with every sub-part was located on an even page; there are no gaps. STRUCTURE read off the paper's own printed General Instructions on idx 2 and it MATCHES `full70`: 33 questions, five sections, Section A Q1-16 @1, Section B Q17-21 @2, Section C Q22-28 @3, Section D Q29-30 case study-based @4, Section E Q31-33 long answer @5. 16 + 10 + 21 + 8 + 15 = 70. As forecast, the General Instructions call ALL of Q1-16 'Multiple Choice type questions' and name no assertion-reason band; the paper declares that separately in a printed block at the top of idx 10 ('Questions number 13 to 16 are Assertion (A) and Reason (R) type questions'). INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section A'), so the inventory was established by walking the official marking scheme, which reprints both branches with a bare 'OR' between them. SEVEN questions carry an OR — Q18, Q24, Q29(iv), Q30(iv), Q31, Q32, Q33 — each confirmed BOTH by a printed OR on the English page AND by an OR block in the scheme (a whole-document regex over the ms text layer finds 'OR' on its own line on ms pages 3, 7, 10 (twice), 11, 14, 16 and NOWHERE ELSE). Q17, Q19-Q23, Q25-Q28 carry none. 46 rows for 33 questions. ⚠ Q28 LOOKS like an eighth internal choice and is NOT one — see its _flag. SECTION-A ANSWERS taken VERBATIM from the official marking scheme's Section-A table (XII_042_Physics_MS_55_6_1,2,3_.pdf, page index 2, header 'MARKING SCHEME: PHYSICS(042) / Code: 55/6/1'), uppercased: 1D 2C 3C 4D 5C 6B 7C 8A 9C 10A 11B 12D 13A 14C 15D 16C. Read by VISION off ms/p02.png and independently cross-checked against the machine parse in data/_keys.physics.json — the two agree on all 16 letters, and the value text CBSE prints beside each letter matches the option text transcribed for that letter in every one of the 16 rows. Q29 and Q30's ten case-study answers likewise come from the scheme's SECTION-D block (ms page index 10, read at ms/p10.png) and each printed value matches the transcribed option. NO QUESTION IS VOIDED BY CBSE ON THIS PAPER and there is NO MEDIUM-SCOPED AWARD CLAUSE: the Section-A table prints a bare '(letter) 1 1' on every row with no grace note, `grace` is [] in the machine parse, and a scan of all 52 pages of the merged scheme for 'full mark', 'any option', 'printing error', 'misprint', 'no option is correct', 'bonus', 'deleted', 'Hindi', 'English version', 'medium only', 'award 1 mark' and 'not correct' returns only the front-matter boilerplate ('Please do not hesitate to award full marks if the answer deserves it') plus one ordinary value-point note on a DIFFERENT paper's Q21 ('Note: Award 1 mark if a student proves it mathematically'). DECIMAL POINTS ARE RAISED DOTS ON THIS PAPER — verified on the constants block on idx 2 (6·63, 1·6, 8·854, 9·1, 1·675, 1·673, 6·023, 1·38) and throughout the questions (2·21, 6·0, 1·326, 2·652, 3·978, 1·6, 1·5, 3·0, 2·014102, 3·016049, 4·002603, 1·008665, 0·5, 0·1, 0·05, 0·01, 1·25) — so every decimal is written 0{\\cdot}5 inside a math zone. plan.txt names no reference paper, so every question was transcribed. FIGURE LOAD: 9 distinct printed figures back 9 rows — Q1 (a V-I graph), Q3 (a wire with a curved section), Q7 (a magnet above a cut ring), Q17 (a resistor network), Q20 (a two-prism combination), Q23 (a loop beside a long wire), Q29(i) (two plate configurations), Q29(iv)(a) (a capacitor network) and Q33(b)(ii) (a cube on the coordinate axes). Eight are REQUIRED and one (Q7) is ILLUSTRATIVE because its stem already states the ring has a cut. None is decorative and none was approximated in ASCII; see each row's `_figure` for what was described in words and what was withheld.",
+ "questions": [
+  {
+   "ref": "Q1",
+   "questionNumber": "1",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Temperature Dependence of Resistivity",
+   "difficulty": "MODERATE",
+   "stem": "The figure shows the voltage (V) versus the current (I) graphs for a wire at two temperatures \\(T_1\\) and \\(T_2\\). One can conclude that :",
+   "options": [
     {
-      "ref": "Q1",
-      "questionNumber": "1",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Current Electricity",
-      "subtopic": "Temperature Dependence of Resistivity",
-      "difficulty": "MODERATE",
-      "stem": "The figure shows the voltage (V) versus the current (I) graphs for a wire at two temperatures \\(T_1\\) and \\(T_2\\). One can conclude that :",
-      "options": [
-        { "label": "A", "text": "\\(T_2 = 2T_1\\)" },
-        { "label": "B", "text": "\\(T_1 > T_2\\)" },
-        { "label": "C", "text": "\\(T_1 = T_2 / 3\\)" },
-        { "label": "D", "text": "\\(T_1 < T_2\\)" }
-      ],
-      "answer": "D",
-      "_figure": "REQUIRED — the stem names neither line's slope, so the whole question lives in the drawing. What is drawn: a first-quadrant graph whose VERTICAL axis is labelled I and whose HORIZONTAL axis is labelled V, origin marked O, with two straight lines drawn from the origin, the upper labelled \\(T_1\\) and the lower labelled \\(T_2\\). WITHHELD: which of the two lines is the steeper, which is exactly what the four options discriminate. Page idx 4.",
-      "_flag": "STEM/FIGURE AXIS MISMATCH, transcribed as printed. The words say 'the voltage (V) versus the current (I) graphs', which reads as V on the vertical axis, but the figure plots I on the vertical axis and V on the horizontal. It matters: on the figure's reading the steeper line has the smaller resistance and CBSE's key (D) \\(T_1 < T_2\\) follows, whereas on the words' literal reading the steeper line would have the larger resistance and (B) would follow. Not corrected."
+     "label": "A",
+     "text": "\\(T_2 = 2T_1\\)"
     },
     {
-      "ref": "Q2",
-      "questionNumber": "2",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Ohm's Law",
-      "difficulty": "MODERATE",
-      "stem": "If \\(R_s\\) and \\(R_p\\) are the equivalent resistances of n resistors, each of value R, in series and parallel combinations respectively, then the value of \\((R_s - R_p)\\) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\left(\\dfrac{n^2 - 1}{n^2}\\right)R\\)" },
-        { "label": "B", "text": "\\(\\left(\\dfrac{n^2 + 1}{n^2 - 1}\\right)R\\)" },
-        { "label": "C", "text": "\\(\\left(\\dfrac{n^2 - 1}{n}\\right)R\\)" },
-        { "label": "D", "text": "\\(\\dfrac{(n^2 + 1)\\,R}{n^2}\\)" }
-      ],
-      "answer": "C",
-      "_flag": "TAXONOMY — this is a pure series/parallel combination question and the Current Electricity axis has no 'Combination of Resistors' subtopic. Filed on the chapter opener 'Electric Current and Ohm's Law'. Same call as Q17."
+     "label": "B",
+     "text": "\\(T_1 > T_2\\)"
     },
     {
-      "ref": "Q3",
-      "questionNumber": "3",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
-      "difficulty": "MODERATE",
-      "stem": "The value of magnetic field at point O in the given figure is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{\\mu_0 I}{2\\pi R}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{\\mu_0 I}{\\pi R}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{\\mu_0 I}{4R}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{\\mu_0 I}{R}\\)" }
-      ],
-      "answer": "C",
-      "_figure": "REQUIRED — the stem gives no geometry at all beyond the point O, so the drawing is the question. What is drawn: a current-carrying wire entering horizontally from the left with an arrow labelled I, rising into a curved section, and leaving horizontally to the right with an arrow labelled I; the two straight portions are collinear. The point O is marked on that line below the curve and a dashed line from O to the curve is labelled R. WITHHELD: the angle the curved section subtends at O, which is what the four options discriminate. Page idx 4."
+     "label": "C",
+     "text": "\\(T_1 = T_2 / 3\\)"
     },
     {
-      "ref": "Q4",
-      "questionNumber": "4",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Magnetism and Matter",
-      "subtopic": "Magnetisation and Magnetic Intensity",
-      "difficulty": "EASY",
-      "stem": "A piece of a diamagnetic material, free to move when placed in a uniform magnetic field :",
-      "options": [
-        { "label": "A", "text": "moves along the field" },
-        { "label": "B", "text": "moves opposite to the field" },
-        { "label": "C", "text": "moves perpendicular to the field" },
-        { "label": "D", "text": "does not move at all" }
-      ],
-      "answer": "D"
-    },
-    {
-      "ref": "Q5",
-      "questionNumber": "5",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "The Moving Coil Galvanometer",
-      "difficulty": "EASY",
-      "stem": "A galvanometer can be converted into an ammeter of desired range by connecting a :",
-      "options": [
-        { "label": "A", "text": "small resistance in series" },
-        { "label": "B", "text": "large resistance in series" },
-        { "label": "C", "text": "small resistance in parallel" },
-        { "label": "D", "text": "large resistance in parallel" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q6",
-      "questionNumber": "6",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
-      "difficulty": "MODERATE",
-      "stem": "A proton and an \\(\\alpha\\)-particle enter with the same velocity \\(\\vec{v}\\) in a uniform magnetic field \\(\\vec{B}\\) such that \\(\\vec{v} \\perp \\vec{B}\\). The ratio of the radii of their paths is :",
-      "options": [
-        { "label": "A", "text": "2" },
-        { "label": "B", "text": "\\(\\dfrac{1}{2}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{1}{4}\\)" },
-        { "label": "D", "text": "4" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q7",
-      "questionNumber": "7",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Lenz's Law and Conservation of Energy",
-      "difficulty": "MODERATE",
-      "stem": "A vertically held bar magnet is dropped along the axis of a copper ring having a cut as shown in the diagram. The acceleration of the falling magnet is :",
-      "options": [
-        { "label": "A", "text": "zero" },
-        { "label": "B", "text": "less than g" },
-        { "label": "C", "text": "g" },
-        { "label": "D", "text": "greater than g" }
-      ],
-      "answer": "C",
-      "_figure": "ILLUSTRATIVE — the stem already states in words that the ring is a copper ring HAVING A CUT, which is the whole discriminator, so the row is answerable from text alone. What is drawn: a rectangular bar magnet with S at its upper end and N at its lower end, a downward arrow beside it, and below it a horizontal circular ring drawn in perspective with a clearly visible gap in its near side. Page idx 6."
-    },
-    {
-      "ref": "Q8",
-      "questionNumber": "8",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Alternating Current",
-      "subtopic": "Series LCR Circuit and Resonance",
-      "difficulty": "EASY",
-      "stem": "An ac source is connected to a resistor and an inductor in series. The voltage across the resistor and inductor are 8 V and 6 V respectively. The voltage of the source is :",
-      "options": [
-        { "label": "A", "text": "10 V" },
-        { "label": "B", "text": "12 V" },
-        { "label": "C", "text": "14 V" },
-        { "label": "D", "text": "16 V" }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q9",
-      "questionNumber": "9",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "MODERATE",
-      "stem": "Two coherent waves, each of intensity \\(I_0\\), produce interference pattern on a screen. The average intensity of light on the screen is :",
-      "options": [
-        { "label": "A", "text": "zero" },
-        { "label": "B", "text": "\\(I_0\\)" },
-        { "label": "C", "text": "\\(2I_0\\)" },
-        { "label": "D", "text": "\\(4I_0\\)" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q10",
-      "questionNumber": "10",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "The work function of a material is \\(2{\\cdot}21\\) eV. Which of the following **cannot** produce photoelectrons from it ?",
-      "options": [
-        { "label": "A", "text": "Red light" },
-        { "label": "B", "text": "Blue light" },
-        { "label": "C", "text": "Violet light" },
-        { "label": "D", "text": "Green light" }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q11",
-      "questionNumber": "11",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "The momentum (in kg m/s) of a photon of frequency \\(6{\\cdot}0 \\times 10^{14}\\) Hz is :",
-      "options": [
-        { "label": "A", "text": "\\(6{\\cdot}63 \\times 10^{-25}\\)" },
-        { "label": "B", "text": "\\(1{\\cdot}326 \\times 10^{-27}\\)" },
-        { "label": "C", "text": "\\(2{\\cdot}652 \\times 10^{-26}\\)" },
-        { "label": "D", "text": "\\(3{\\cdot}978 \\times 10^{-24}\\)" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q12",
-      "questionNumber": "12",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Nuclei",
-      "subtopic": "Nuclear Force",
-      "difficulty": "EASY",
-      "stem": "Inside a nucleus, the nuclear forces between proton and proton, proton and neutron, neutron and neutron are \\(F_{pp}\\), \\(F_{pn}\\) and \\(F_{nn}\\) respectively. Then :",
-      "options": [
-        { "label": "A", "text": "\\(F_{pp} > F_{pn} > F_{nn}\\)" },
-        { "label": "B", "text": "\\(F_{pn} > F_{nn} > F_{pp}\\)" },
-        { "label": "C", "text": "\\(F_{nn} > F_{pp} > F_{pn}\\)" },
-        { "label": "D", "text": "\\(F_{pp} = F_{pn} = F_{nn}\\)" }
-      ],
-      "answer": "D"
-    },
-    {
-      "ref": "Q13",
-      "questionNumber": "13",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Optical Instruments",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : In a reflecting telescope, the image does not have chromatic aberration.\nReason (R) : Chromatic aberration occurs only due to refraction of light through an optical medium.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q14",
-      "questionNumber": "14",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : A hole is an apparent free particle with effective positive electronic charge.\nReason (R) : A hole is not necessarily a vacancy left behind by an electron in the valence band.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q15",
-      "questionNumber": "15",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electromagnetic Waves",
-      "subtopic": "Electromagnetic Spectrum",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : X-rays are produced when slow moving electrons are stopped by a metal target of high atomic number.\nReason (R) : X-rays consist of low-energy photons.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "D",
-      "_flag": "CHAPTER CHOICE — filed on Electromagnetic Waves / Electromagnetic Spectrum because NCERT's only statement of how X-rays are produced ('bombard a metal target by high energy electrons') sits in the EM-spectrum section, and the Reason is about where X-rays sit in the spectrum by photon energy. The near alternatives considered and rejected were Dual Nature / 'Electron Emission' (the assertion is about electrons being STOPPED, not emitted) and Atoms / 'Atomic Spectra' (this is bremsstrahlung, not a characteristic line spectrum)."
-    },
-    {
-      "ref": "Q16",
-      "questionNumber": "16",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Nuclei",
-      "subtopic": "Mass-Energy and Nuclear Binding Energy",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : The binding energy per nucleon is practically constant for mass number in the range \\((30 < A < 170)\\).\nReason (R) : Nuclear forces between the nucleons for mass numbers in the range \\((30 < A < 170)\\) are not short-range.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q17",
-      "questionNumber": "17",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Ohm's Law",
-      "difficulty": "MODERATE",
-      "stem": "Find the equivalent resistance between points A and B for the network shown in the figure.",
-      "_figure": "REQUIRED — the stem names no resistance value and no connectivity, so the entire question is in the drawing. What can safely be said: terminal A on the left is joined through a \\(1\\ \\Omega\\) resistor to the left-hand node of a diamond-shaped network whose right-hand node is terminal B. The remaining eight resistors carry the values \\(5\\ \\Omega\\), \\(5\\ \\Omega\\), \\(10\\ \\Omega\\), \\(25\\ \\Omega\\), \\(20\\ \\Omega\\), \\(15\\ \\Omega\\), \\(10\\ \\Omega\\) and \\(30\\ \\Omega\\). WITHHELD: which resistor sits on which branch and how the branches join, because that connectivity IS the question. Page idx 12.",
-      "_flag": "TAXONOMY — a series/parallel reduction with no bridge balance to exploit; the Current Electricity axis has no 'Combination of Resistors' subtopic, so this is filed on 'Electric Current and Ohm's Law'. Same call as Q2."
-    },
-    {
-      "ref": "Q18a",
-      "questionNumber": "18 (a)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "MODERATE",
-      "stem": "Find the intensity at a point on the screen in Young's double slit experiment, at which the interfering waves of intensity \\(I_0\\) each, have a path difference of (i) \\(\\dfrac{\\lambda}{3}\\), and (ii) \\(\\dfrac{\\lambda}{2}\\)."
-    },
-    {
-      "ref": "Q18b",
-      "questionNumber": "18 (b)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
-      "difficulty": "MODERATE",
-      "stem": "A point source of light in air is kept at a distance of 12 cm in front of a convex spherical surface of glass of refractive index \\(1{\\cdot}5\\) and radius of curvature 30 cm. Find the nature and position of the image formed.",
-      "_alternativeTo": "Q18a"
-    },
-    {
-      "ref": "Q19",
-      "questionNumber": "19",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "A laser beam of frequency \\(3{\\cdot}0 \\times 10^{14}\\) Hz produces average power of 9 mW. Find (i) the energy of photon of the beam, and (ii) the number of photons emitted per second on an average by the source."
-    },
-    {
-      "ref": "Q20",
-      "questionNumber": "20",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Refraction Through a Prism",
-      "difficulty": "MODERATE",
-      "stem": "A right angled isosceles glass prism ABC is kept in contact with an equilateral triangular prism DBC as shown in the figure. Both prisms are made of the same glass of refractive index \\(1{\\cdot}6\\). Trace the path of the ray MN incident normally on face AB as it passes through the combination.",
-      "_figure": "REQUIRED — the stem asks the candidate to TRACE a path through a specific geometry that only the drawing fixes. What is drawn: triangle ABC with A at the top, B below it and C to the right of B, so that AB is a vertical face and BC a horizontal face; the angle at A is marked 45°. A horizontal ray arrives from the left, its tail labelled M, and meets face AB at a point N marked with a right-angle symbol. Below BC an inverted triangle DBC is drawn sharing the face BC, with D at the bottom and the angles at B and C both marked 60°. WITHHELD: the traced path itself — where the ray reflects, refracts or emerges — which is the answer. Page idx 14."
-    },
-    {
-      "ref": "Q21",
-      "questionNumber": "21",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "MODERATE",
-      "stem": "In an n-type semiconductor electron-hole combination is a continuous process at room temperature. Yet the electron concentration is always greater than the hole concentration in it. Explain."
-    },
-    {
-      "ref": "Q22",
-      "questionNumber": "22",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Cells, EMF and Internal Resistance",
-      "difficulty": "MODERATE",
-      "stem": "What is the difference between 'emf' and 'terminal voltage' of a cell ?\nTwo cells of emfs \\(E_1\\) and \\(E_2\\) and internal resistances \\(r_1\\) and \\(r_2\\) are connected in parallel. Derive an expression for the emf and internal resistance of the equivalent cell."
-    },
-    {
-      "ref": "Q23",
-      "questionNumber": "23",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force Between Parallel Currents",
-      "difficulty": "MODERATE",
-      "stem": "A rectangular loop carries a current of 1 A. A straight long wire carrying 2 A current is kept near the loop in the same plane as shown in the figure.\nFind :\n(i) the torque acting on the loop, and\n(ii) the magnitude and direction of the net force on the loop.",
-      "_figure": "REQUIRED — every dimension in this question is printed on the drawing and none of it is in the stem. What is drawn: a long straight vertical wire on the left labelled 2 A; to its right a rectangle labelled 1 A whose width is marked 1 cm and whose height is marked 5 cm, with the horizontal gap between the wire and the nearer vertical side of the rectangle also marked 1 cm. WITHHELD: the arrow senses marked on the two currents, which are what decide the direction asked for in part (ii). Page idx 16."
-    },
-    {
-      "ref": "Q24a",
-      "questionNumber": "24 (a)",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Motional Electromotive Force",
-      "difficulty": "MODERATE",
-      "stem": "State Lenz's law. A rod MN of length L is rotated about an axis passing through its end M perpendicular to its length, with a constant angular velocity \\(\\omega\\) in a uniform magnetic field \\(\\vec{B}\\) parallel to the axis. Obtain an expression for emf induced between its ends."
-    },
-    {
-      "ref": "Q24b",
-      "questionNumber": "24 (b)",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Inductance",
-      "difficulty": "MODERATE",
-      "stem": "Define 'self-inductance' of a coil. Derive an expression for self-inductance of a long solenoid of cross-sectional area A and length \\(l\\), having n turns per unit length.",
-      "_alternativeTo": "Q24a"
-    },
-    {
-      "ref": "Q25",
-      "questionNumber": "25",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Electromagnetic Waves",
-      "subtopic": "Electromagnetic Spectrum",
-      "difficulty": "MODERATE",
-      "stem": "Name the electromagnetic wave used (i) in radar, (ii) in eye surgery and (iii) as diagnostic tool in medicine. Write their wavelength range also."
-    },
-    {
-      "ref": "Q26",
-      "questionNumber": "26",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Reflection by Spherical Mirrors",
-      "difficulty": "MODERATE",
-      "stem": "Draw a ray diagram showing the image formation when a concave mirror produces a real, inverted and magnified image of an object and hence obtain the mirror formula."
-    },
-    {
-      "ref": "Q27",
-      "questionNumber": "27",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "MODERATE",
-      "stem": "How is the necessary force provided to an electron to keep it moving in a circular orbit according to Bohr model of hydrogen atom ? Derive an expression for the total energy of an electron moving in an orbit of radius r in hydrogen atom. Give the significance of negative sign in this expression."
-    },
-    {
-      "ref": "Q28",
-      "questionNumber": "28",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Nuclei",
-      "subtopic": "Nuclear Energy",
-      "difficulty": "MODERATE",
-      "stem": "(a) Consider the so-called 'D-T reaction' (Deuterium-Tritium reaction). In a thermonuclear fusion reactor, the following nuclear reaction occurs :\n\\(^{2}_{1}\\mathrm{H} + {}^{3}_{1}\\mathrm{H} \\longrightarrow {}^{4}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + Q\\)\nFind the amount of energy released in the reaction.\nGiven :\n\\(m\\left({}^{2}_{1}\\mathrm{H}\\right) = 2{\\cdot}014102\\) u\n\\(m\\left({}^{3}_{1}\\mathrm{H}\\right) = 3{\\cdot}016049\\) u\n\\(m\\left({}^{4}_{2}\\mathrm{He}\\right) = 4{\\cdot}002603\\) u\n\\(m\\left({}^{1}_{0}\\mathrm{n}\\right) = 1{\\cdot}008665\\) u\n\\(1\\ \\mathrm{u} = 931\\ \\mathrm{MeV}/c^2\\)\n(b) Show that the nuclear density is independent of mass number.",
-      "_flag": "NOT AN INTERNAL CHOICE, although the printed layout invites that reading. The English page (idx 18) prints (a) and (b) with a large blank gap between them, NO 'OR', and a single '3' in the right margin against (b); the Hindi facing page (idx 17) likewise prints no 'अथवा'. The official marking scheme settles it: its value-points box for Q28 reads 'Finding the amount of energy released — 2' and 'Showing the nuclear density is independent of mass number — 1', with 3 in the Total Marks column, and there is no OR block between them (the whole-scheme OR scan finds seven ORs and none in Q28). So Q28 is ONE 3-mark question with a 2-mark part (a) and a 1-mark part (b), and the marginal '3' is the question total placed on its last line — the same convention the paper uses for Q31(a) and Q33(a). Ingested as a single row. Secondary note: part (b) is about the size of the nucleus (R = R0 A^(1/3)) rather than nuclear energy; the row is filed on 'Nuclear Energy' because part (a) carries 2 of the 3 marks."
-    },
-    {
-      "ref": "Q29i",
-      "questionNumber": "29 (i)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS1",
-      "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
-      "stem": "Consider a capacitor of capacitance C, with plate area A and plate separation d, filled with air [Fig. (a)]. The distance between the plates is increased to 2d and one of the plates is shifted as shown in Fig. (b). The capacitance of the new system now is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{C}{4}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{C}{2}\\)" },
-        { "label": "C", "text": "2C" },
-        { "label": "D", "text": "4C" }
-      ],
-      "answer": "A",
-      "_figure": "REQUIRED — the stem says only that 'one of the plates is shifted as shown', so how far it is shifted exists nowhere but the drawing. What is drawn: two sketches side by side. Fig. (a) is two short vertical parallel plates, the left one labelled A, with a dashed horizontal line between them and the gap marked d. Fig. (b) is the same left plate A and a second vertical plate further right, with the gap marked 2d and the dashed line running between them. WITHHELD: the vertical offset of the shifted plate, i.e. how much of the two plates still faces each other, which is exactly what the four options discriminate. Page idx 20."
-    },
-    {
-      "ref": "Q29ii",
-      "questionNumber": "29 (ii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Electrostatics of Conductors and Dielectrics",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS1",
-      "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
-      "stem": "A slab (area A and thickness \\(d_1\\)) of a linear dielectric of dielectric constant K is inserted between charged plates (charge density \\(\\sigma\\)) of a parallel plate capacitor [plate area A and plate separation \\(d\\ (> d_1)\\)] and opposite charges with charge density of magnitude \\(\\sigma_p\\) appear on the faces of the slab. The dielectric constant K is given by :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{\\sigma + \\sigma_p}{\\sigma}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{\\sigma}{\\sigma - \\sigma_p}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{\\sigma + \\sigma_p}{\\sigma_p}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{\\sigma}{\\sigma_p}\\)" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q29iii",
-      "questionNumber": "29 (iii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Energy Stored in a Capacitor",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS1",
-      "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
-      "stem": "An electric field E is established between the plates of an air filled parallel plate capacitor, with charges Q and – Q. V is the volume of the space enclosed between the plates. The energy stored in the capacitor is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{1}{2}\\varepsilon_0 E^2\\)" },
-        { "label": "B", "text": "\\(\\varepsilon_0 Q^2 E\\)" },
-        { "label": "C", "text": "\\(\\dfrac{1}{2}\\varepsilon_0 E^2 V\\)" },
-        { "label": "D", "text": "\\(\\varepsilon_0 E Q V\\)" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q29iva",
-      "questionNumber": "29 (iv) (a)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS1",
-      "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
-      "stem": "Three capacitors A, B and M, each of capacitance C are connected to a capacitor N of capacitance 2C and a battery as shown in the figure. If the charges on A and N are Q and \\(Q'\\) respectively, then \\(\\dfrac{Q'}{Q}\\) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{1}{6}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{1}{3}\\)" },
-        { "label": "C", "text": "3" },
-        { "label": "D", "text": "6" }
-      ],
-      "answer": "D",
-      "_figure": "REQUIRED — the stem names the four capacitors and the battery but not how they are wired, and the ratio asked for depends entirely on that. What can safely be said about the layout: the circuit is drawn as a rectangle, with capacitor A in the top side, capacitors B and M in the left and right vertical sides respectively, capacitor N in a horizontal branch across the middle and the battery, labelled V, in the bottom side. WITHHELD: nothing further — the plate orientations and the exact node joins are left to the drawing, and the series/parallel grouping that follows from them is the answer. Page idx 22."
-    },
-    {
-      "ref": "Q29ivb",
-      "questionNumber": "29 (iv) (b)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Electrostatics of Conductors and Dielectrics",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS1",
-      "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
-      "stem": "A slab (area A and thickness \\(\\dfrac{d}{2}\\)) of dielectric constant K is inserted in a parallel plate capacitor of plate area A and plate separation d. If C and \\(C_0\\) are the capacitances of the capacitors with and without the dielectric, then \\(\\dfrac{C}{C_0}\\) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{K + 1}{2K}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{2K}{K + 1}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{K}{K - 1}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{K - 1}{K}\\)" }
-      ],
-      "answer": "B",
-      "_alternativeTo": "Q29iva"
-    },
-    {
-      "ref": "Q30i",
-      "questionNumber": "30 (i)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "EASY",
-      "setId": "2025-55-6-1-CS2",
-      "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
-      "stem": "Which of the following is a donor impurity atom for Ge ?",
-      "options": [
-        { "label": "A", "text": "Boron" },
-        { "label": "B", "text": "Antimony" },
-        { "label": "C", "text": "Aluminium" },
-        { "label": "D", "text": "Indium" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q30ii",
-      "questionNumber": "30 (ii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS2",
-      "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
-      "stem": "When a pentavalent atom occupies the position of an atom in the crystal lattice of Si, four of its electrons form covalent bonds with four silicon neighbours, while the fifth remains bound to the parent atom. The energy required to set this electron free is about :",
-      "options": [
-        { "label": "A", "text": "\\(0{\\cdot}5\\) eV" },
-        { "label": "B", "text": "\\(0{\\cdot}1\\) eV" },
-        { "label": "C", "text": "\\(0{\\cdot}05\\) eV" },
-        { "label": "D", "text": "\\(0{\\cdot}01\\) eV" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q30iii",
-      "questionNumber": "30 (iii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "p-n Junction and the Semiconductor Diode",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS2",
-      "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
-      "stem": "During formation of a p-n junction :",
-      "options": [
-        { "label": "A", "text": "a layer of negative charge on n-side and a layer of positive charge on p-side appear." },
-        { "label": "B", "text": "a layer of positive charge on n-side and a layer of negative charge on p-side appear." },
-        { "label": "C", "text": "the electrons on p-side of the junction move to n-side initially." },
-        { "label": "D", "text": "initially diffusion current is small and drift current is large." }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q30iva",
-      "questionNumber": "30 (iv) (a)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "p-n Junction and the Semiconductor Diode",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-6-1-CS2",
-      "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
-      "stem": "In reverse-biased p-n junction :",
-      "options": [
-        { "label": "A", "text": "the drift current is of the order of few mA." },
-        { "label": "B", "text": "the applied voltage mostly drops across the depletion region." },
-        { "label": "C", "text": "the depletion region width decreases." },
-        { "label": "D", "text": "the current increases with increase in applied voltage." }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q30ivb",
-      "questionNumber": "30 (iv) (b)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Application of Junction Diode as a Rectifier",
-      "difficulty": "EASY",
-      "setId": "2025-55-6-1-CS2",
-      "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
-      "stem": "The output frequency of a full-wave rectifier with 50 Hz as input frequency is :",
-      "options": [
-        { "label": "A", "text": "25 Hz" },
-        { "label": "B", "text": "50 Hz" },
-        { "label": "C", "text": "100 Hz" },
-        { "label": "D", "text": "200 Hz" }
-      ],
-      "answer": "C",
-      "_alternativeTo": "Q30iva"
-    },
-    {
-      "ref": "Q31a",
-      "questionNumber": "31 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "AC Generator",
-      "difficulty": "HARD",
-      "stem": "(i) Write the principle of working of an ac generator. Draw its labelled diagram and explain its working.\n(ii) A resistor of 400 \\(\\Omega\\), an inductor of \\(\\left(\\dfrac{5}{\\pi}\\right)\\)H and a capacitor of \\(\\left(\\dfrac{50}{\\pi}\\right)\\mu\\mathrm{F}\\) are joined in series across an ac source \\(v = 140 \\sin (100\\pi)t\\) V. Find the rms voltages across these three circuit elements. The algebraic sum of these voltages is more than the rms voltage of source. Explain.",
-      "_flag": "SPLIT CHAPTER — part (i) is the ac generator (Electromagnetic Induction) and part (ii) is a series LCR circuit (Alternating Current). Filed on Electromagnetic Induction / 'AC Generator' because the marking scheme awards part (i) 3 of the 5 marks."
-    },
-    {
-      "ref": "Q31b",
-      "questionNumber": "31 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Alternating Current",
-      "subtopic": "Power in AC Circuits and the Power Factor",
-      "difficulty": "HARD",
-      "stem": "(i) Write the principle of working of a transformer. With the help of a labelled diagram, explain the working of a step-up transformer.\n(ii) An ideal transformer is designed to convert 50 V into 250 V. It draws 200 W power from an ac source whose instantaneous voltage is given by \\(v_i = 20 \\sin (100\\pi)t\\) V.\nFind :\n(I) rms value of input current.\n(II) expression for instantaneous output voltage.\n(III) expression for instantaneous output current.",
-      "_alternativeTo": "Q31a",
-      "_flag": "TAXONOMY — the Alternating Current axis has no 'Transformers' subtopic even though NCERT teaches the transformer in that chapter. Filed on 'Power in AC Circuits and the Power Factor', following the only precedent in the committed corpus (2024 55/2/1 Q5, a transformer question filed there); the numeric part turns on input power and rms current, so the fit is reasonable, but a 'Transformers' subtopic is the name I would have wanted."
-    },
-    {
-      "ref": "Q32a",
-      "questionNumber": "32 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Optical Instruments",
-      "difficulty": "HARD",
-      "stem": "(i) Draw a ray diagram to show the image formation by a compound microscope. Obtain the expression for the total magnification of the microscope when the final image is formed at infinity.\n(ii) In a compound microscope, an object is placed at a distance of \\(1{\\cdot}5\\) cm from the objective of focal length \\(1{\\cdot}25\\) cm. The eyepiece has a focal length of 5 cm. The final image is formed at infinity. Calculate the distance between the objective and the eyepiece."
-    },
-    {
-      "ref": "Q32b",
-      "questionNumber": "32 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Refraction and Reflection of Plane Waves",
-      "difficulty": "HARD",
-      "stem": "(i) Using Huygens' principle, explain the refraction of a plane wavefront, propagating in air, at a plane interface between air and glass. Hence verify Snell's law.\n(ii) Use mirror formula to deduce that a convex mirror always produces a virtual image of an object kept in front of it.",
-      "_alternativeTo": "Q32a",
-      "_flag": "SPLIT CHAPTER — part (i) is Huygens' principle (Wave Optics) and part (ii) is the mirror formula (Ray Optics / Reflection by Spherical Mirrors). Filed on Wave Optics / 'Refraction and Reflection of Plane Waves' because the marking scheme awards part (i) 3 of the 5 marks."
-    },
-    {
-      "ref": "Q33a",
-      "questionNumber": "33 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
-      "difficulty": "HARD",
-      "stem": "(i) The electric field in a region is given by \\(\\vec{E} = 40x\\,\\hat{i}\\) N/C. Find the amount of work done in taking a unit positive charge from a point (0, 3m) to the point (5m, 0).\n(ii) A charge Q is distributed over two concentric hollow spheres of radii r and R (> r) such that their surface charge densities are equal. Find :\n(I) the electric field, and\n(II) the potential\nat their common centre."
-    },
-    {
-      "ref": "Q33b",
-      "questionNumber": "33 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electric Charges and Fields",
-      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
-      "difficulty": "HARD",
-      "stem": "(i) Obtain an expression for the electric field \\(\\vec{E}\\) due to a dipole of dipole moment \\(\\vec{p}\\) at a point on its equatorial plane and specify its direction. Hence, find the value of electric field :\n(I) at the centre of the dipole (r = 0), and\n(II) at a point r >> a,\nwhere 2a is the length of the dipole.\n(ii) An electric field \\(\\vec{E} = (10x + 5)\\hat{i}\\) N/C exists in a region in which a cube of side L is kept as shown in the figure. Here x and L are in metres. Calculate the net flux through the cube.",
-      "_alternativeTo": "Q33a",
-      "_figure": "REQUIRED — part (ii)'s flux depends on WHERE the cube sits relative to the origin, because the field varies with x, and the stem says only 'as shown in the figure'. What is drawn: a set of three axes labelled X (to the right), Y (upward) and Z (towards the lower left), with a cube of side L drawn in perspective having one vertex at the origin O. The visible vertices are labelled A, B, C and D on the upper face and its left edge, and \\(A_1\\), \\(C_1\\) and \\(D_1\\) on the lower face, with O between \\(A_1\\) and \\(C_1\\); the unit vector \\(\\hat{i}\\) is marked as a short arrow along the +X direction near \\(C_1\\). WITHHELD: nothing further is needed — the two faces perpendicular to X and their x-coordinates are what the calculation turns on and follow from the placement above. Page idx 30.\n\nSPLIT CHAPTER NOTE: part (i) is the dipole field (Electric Charges and Fields) and part (ii) is Gauss-law flux through a cube (Electric Charges and Fields / 'Electric Flux and Gauss's Law'), so both parts sit in the same chapter; filed on the dipole subtopic, which carries the larger share of the marks."
+     "label": "D",
+     "text": "\\(T_1 < T_2\\)"
     }
-  ]
+   ],
+   "answer": "D",
+   "_figure": "REQUIRED — the stem names neither line's slope, so the whole question lives in the drawing. What is drawn: a first-quadrant graph whose VERTICAL axis is labelled I and whose HORIZONTAL axis is labelled V, origin marked O, with two straight lines drawn from the origin, the upper labelled \\(T_1\\) and the lower labelled \\(T_2\\). WITHHELD: which of the two lines is the steeper, which is exactly what the four options discriminate. Page idx 4.",
+   "_flag": "STEM/FIGURE AXIS MISMATCH, transcribed as printed. The words say 'the voltage (V) versus the current (I) graphs', which reads as V on the vertical axis, but the figure plots I on the vertical axis and V on the horizontal. It matters: on the figure's reading the steeper line has the smaller resistance and CBSE's key (D) \\(T_1 < T_2\\) follows, whereas on the words' literal reading the steeper line would have the larger resistance and (B) would follow. Not corrected."
+  },
+  {
+   "ref": "Q2",
+   "questionNumber": "2",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Combination of Resistors",
+   "difficulty": "MODERATE",
+   "stem": "If \\(R_s\\) and \\(R_p\\) are the equivalent resistances of n resistors, each of value R, in series and parallel combinations respectively, then the value of \\((R_s - R_p)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\left(\\dfrac{n^2 - 1}{n^2}\\right)R\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\left(\\dfrac{n^2 + 1}{n^2 - 1}\\right)R\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\left(\\dfrac{n^2 - 1}{n}\\right)R\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{(n^2 + 1)\\,R}{n^2}\\)"
+    }
+   ],
+   "answer": "C",
+   "_flag": "TAXONOMY — this is a pure series/parallel combination question and the Current Electricity axis has no 'Combination of Resistors' subtopic. Filed on the chapter opener 'Electric Current and Ohm's Law'. Same call as Q17.",
+   "_subtopicWas": "Electric Current and Ohm's Law"
+  },
+  {
+   "ref": "Q3",
+   "questionNumber": "3",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+   "difficulty": "MODERATE",
+   "stem": "The value of magnetic field at point O in the given figure is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\mu_0 I}{2\\pi R}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\mu_0 I}{\\pi R}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\mu_0 I}{4R}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mu_0 I}{R}\\)"
+    }
+   ],
+   "answer": "C",
+   "_figure": "REQUIRED — the stem gives no geometry at all beyond the point O, so the drawing is the question. What is drawn: a current-carrying wire entering horizontally from the left with an arrow labelled I, rising into a curved section, and leaving horizontally to the right with an arrow labelled I; the two straight portions are collinear. The point O is marked on that line below the curve and a dashed line from O to the curve is labelled R. WITHHELD: the angle the curved section subtends at O, which is what the four options discriminate. Page idx 4."
+  },
+  {
+   "ref": "Q4",
+   "questionNumber": "4",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "Magnetic Properties of Materials",
+   "difficulty": "EASY",
+   "stem": "A piece of a diamagnetic material, free to move when placed in a uniform magnetic field :",
+   "options": [
+    {
+     "label": "A",
+     "text": "moves along the field"
+    },
+    {
+     "label": "B",
+     "text": "moves opposite to the field"
+    },
+    {
+     "label": "C",
+     "text": "moves perpendicular to the field"
+    },
+    {
+     "label": "D",
+     "text": "does not move at all"
+    }
+   ],
+   "answer": "D",
+   "_subtopicWas": "Magnetisation and Magnetic Intensity"
+  },
+  {
+   "ref": "Q5",
+   "questionNumber": "5",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "The Moving Coil Galvanometer",
+   "difficulty": "EASY",
+   "stem": "A galvanometer can be converted into an ammeter of desired range by connecting a :",
+   "options": [
+    {
+     "label": "A",
+     "text": "small resistance in series"
+    },
+    {
+     "label": "B",
+     "text": "large resistance in series"
+    },
+    {
+     "label": "C",
+     "text": "small resistance in parallel"
+    },
+    {
+     "label": "D",
+     "text": "large resistance in parallel"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q6",
+   "questionNumber": "6",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "difficulty": "MODERATE",
+   "stem": "A proton and an \\(\\alpha\\)-particle enter with the same velocity \\(\\vec{v}\\) in a uniform magnetic field \\(\\vec{B}\\) such that \\(\\vec{v} \\perp \\vec{B}\\). The ratio of the radii of their paths is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q7",
+   "questionNumber": "7",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Lenz's Law and Conservation of Energy",
+   "difficulty": "MODERATE",
+   "stem": "A vertically held bar magnet is dropped along the axis of a copper ring having a cut as shown in the diagram. The acceleration of the falling magnet is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "zero"
+    },
+    {
+     "label": "B",
+     "text": "less than g"
+    },
+    {
+     "label": "C",
+     "text": "g"
+    },
+    {
+     "label": "D",
+     "text": "greater than g"
+    }
+   ],
+   "answer": "C",
+   "_figure": "ILLUSTRATIVE — the stem already states in words that the ring is a copper ring HAVING A CUT, which is the whole discriminator, so the row is answerable from text alone. What is drawn: a rectangular bar magnet with S at its upper end and N at its lower end, a downward arrow beside it, and below it a horizontal circular ring drawn in perspective with a clearly visible gap in its near side. Page idx 6."
+  },
+  {
+   "ref": "Q8",
+   "questionNumber": "8",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Series LCR Circuit and Resonance",
+   "difficulty": "EASY",
+   "stem": "An ac source is connected to a resistor and an inductor in series. The voltage across the resistor and inductor are 8 V and 6 V respectively. The voltage of the source is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "10 V"
+    },
+    {
+     "label": "B",
+     "text": "12 V"
+    },
+    {
+     "label": "C",
+     "text": "14 V"
+    },
+    {
+     "label": "D",
+     "text": "16 V"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q9",
+   "questionNumber": "9",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "difficulty": "MODERATE",
+   "stem": "Two coherent waves, each of intensity \\(I_0\\), produce interference pattern on a screen. The average intensity of light on the screen is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "zero"
+    },
+    {
+     "label": "B",
+     "text": "\\(I_0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2I_0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(4I_0\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q10",
+   "questionNumber": "10",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "stem": "The work function of a material is \\(2{\\cdot}21\\) eV. Which of the following **cannot** produce photoelectrons from it ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Red light"
+    },
+    {
+     "label": "B",
+     "text": "Blue light"
+    },
+    {
+     "label": "C",
+     "text": "Violet light"
+    },
+    {
+     "label": "D",
+     "text": "Green light"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q11",
+   "questionNumber": "11",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "stem": "The momentum (in kg m/s) of a photon of frequency \\(6{\\cdot}0 \\times 10^{14}\\) Hz is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(6{\\cdot}63 \\times 10^{-25}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1{\\cdot}326 \\times 10^{-27}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2{\\cdot}652 \\times 10^{-26}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(3{\\cdot}978 \\times 10^{-24}\\)"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q12",
+   "questionNumber": "12",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Nuclei",
+   "subtopic": "Nuclear Force",
+   "difficulty": "EASY",
+   "stem": "Inside a nucleus, the nuclear forces between proton and proton, proton and neutron, neutron and neutron are \\(F_{pp}\\), \\(F_{pn}\\) and \\(F_{nn}\\) respectively. Then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(F_{pp} > F_{pn} > F_{nn}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(F_{pn} > F_{nn} > F_{pp}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(F_{nn} > F_{pp} > F_{pn}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(F_{pp} = F_{pn} = F_{nn}\\)"
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q13",
+   "questionNumber": "13",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : In a reflecting telescope, the image does not have chromatic aberration.\nReason (R) : Chromatic aberration occurs only due to refraction of light through an optical medium.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q14",
+   "questionNumber": "14",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : A hole is an apparent free particle with effective positive electronic charge.\nReason (R) : A hole is not necessarily a vacancy left behind by an electron in the valence band.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q15",
+   "questionNumber": "15",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : X-rays are produced when slow moving electrons are stopped by a metal target of high atomic number.\nReason (R) : X-rays consist of low-energy photons.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "D",
+   "_flag": "CHAPTER CHOICE — filed on Electromagnetic Waves / Electromagnetic Spectrum because NCERT's only statement of how X-rays are produced ('bombard a metal target by high energy electrons') sits in the EM-spectrum section, and the Reason is about where X-rays sit in the spectrum by photon energy. The near alternatives considered and rejected were Dual Nature / 'Electron Emission' (the assertion is about electrons being STOPPED, not emitted) and Atoms / 'Atomic Spectra' (this is bremsstrahlung, not a characteristic line spectrum)."
+  },
+  {
+   "ref": "Q16",
+   "questionNumber": "16",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Nuclei",
+   "subtopic": "Mass-Energy and Nuclear Binding Energy",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : The binding energy per nucleon is practically constant for mass number in the range \\((30 < A < 170)\\).\nReason (R) : Nuclear forces between the nucleons for mass numbers in the range \\((30 < A < 170)\\) are not short-range.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q17",
+   "questionNumber": "17",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Combination of Resistors",
+   "difficulty": "MODERATE",
+   "stem": "Find the equivalent resistance between points A and B for the network shown in the figure.",
+   "_figure": "REQUIRED — the stem names no resistance value and no connectivity, so the entire question is in the drawing. What can safely be said: terminal A on the left is joined through a \\(1\\ \\Omega\\) resistor to the left-hand node of a diamond-shaped network whose right-hand node is terminal B. The remaining eight resistors carry the values \\(5\\ \\Omega\\), \\(5\\ \\Omega\\), \\(10\\ \\Omega\\), \\(25\\ \\Omega\\), \\(20\\ \\Omega\\), \\(15\\ \\Omega\\), \\(10\\ \\Omega\\) and \\(30\\ \\Omega\\). WITHHELD: which resistor sits on which branch and how the branches join, because that connectivity IS the question. Page idx 12.",
+   "_flag": "TAXONOMY — a series/parallel reduction with no bridge balance to exploit; the Current Electricity axis has no 'Combination of Resistors' subtopic, so this is filed on 'Electric Current and Ohm's Law'. Same call as Q2.",
+   "_subtopicWas": "Electric Current and Ohm's Law"
+  },
+  {
+   "ref": "Q18a",
+   "questionNumber": "18 (a)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "difficulty": "MODERATE",
+   "stem": "Find the intensity at a point on the screen in Young's double slit experiment, at which the interfering waves of intensity \\(I_0\\) each, have a path difference of (i) \\(\\dfrac{\\lambda}{3}\\), and (ii) \\(\\dfrac{\\lambda}{2}\\)."
+  },
+  {
+   "ref": "Q18b",
+   "questionNumber": "18 (b)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "MODERATE",
+   "stem": "A point source of light in air is kept at a distance of 12 cm in front of a convex spherical surface of glass of refractive index \\(1{\\cdot}5\\) and radius of curvature 30 cm. Find the nature and position of the image formed.",
+   "_alternativeTo": "Q18a"
+  },
+  {
+   "ref": "Q19",
+   "questionNumber": "19",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "stem": "A laser beam of frequency \\(3{\\cdot}0 \\times 10^{14}\\) Hz produces average power of 9 mW. Find (i) the energy of photon of the beam, and (ii) the number of photons emitted per second on an average by the source."
+  },
+  {
+   "ref": "Q20",
+   "questionNumber": "20",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction Through a Prism",
+   "difficulty": "MODERATE",
+   "stem": "A right angled isosceles glass prism ABC is kept in contact with an equilateral triangular prism DBC as shown in the figure. Both prisms are made of the same glass of refractive index \\(1{\\cdot}6\\). Trace the path of the ray MN incident normally on face AB as it passes through the combination.",
+   "_figure": "REQUIRED — the stem asks the candidate to TRACE a path through a specific geometry that only the drawing fixes. What is drawn: triangle ABC with A at the top, B below it and C to the right of B, so that AB is a vertical face and BC a horizontal face; the angle at A is marked 45°. A horizontal ray arrives from the left, its tail labelled M, and meets face AB at a point N marked with a right-angle symbol. Below BC an inverted triangle DBC is drawn sharing the face BC, with D at the bottom and the angles at B and C both marked 60°. WITHHELD: the traced path itself — where the ray reflects, refracts or emerges — which is the answer. Page idx 14."
+  },
+  {
+   "ref": "Q21",
+   "questionNumber": "21",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "stem": "In an n-type semiconductor electron-hole combination is a continuous process at room temperature. Yet the electron concentration is always greater than the hole concentration in it. Explain."
+  },
+  {
+   "ref": "Q22",
+   "questionNumber": "22",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "difficulty": "MODERATE",
+   "stem": "What is the difference between 'emf' and 'terminal voltage' of a cell ?\nTwo cells of emfs \\(E_1\\) and \\(E_2\\) and internal resistances \\(r_1\\) and \\(r_2\\) are connected in parallel. Derive an expression for the emf and internal resistance of the equivalent cell."
+  },
+  {
+   "ref": "Q23",
+   "questionNumber": "23",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Force Between Parallel Currents",
+   "difficulty": "MODERATE",
+   "stem": "A rectangular loop carries a current of 1 A. A straight long wire carrying 2 A current is kept near the loop in the same plane as shown in the figure.\nFind :\n(i) the torque acting on the loop, and\n(ii) the magnitude and direction of the net force on the loop.",
+   "_figure": "REQUIRED — every dimension in this question is printed on the drawing and none of it is in the stem. What is drawn: a long straight vertical wire on the left labelled 2 A; to its right a rectangle labelled 1 A whose width is marked 1 cm and whose height is marked 5 cm, with the horizontal gap between the wire and the nearer vertical side of the rectangle also marked 1 cm. WITHHELD: the arrow senses marked on the two currents, which are what decide the direction asked for in part (ii). Page idx 16."
+  },
+  {
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Motional Electromotive Force",
+   "difficulty": "MODERATE",
+   "stem": "State Lenz's law. A rod MN of length L is rotated about an axis passing through its end M perpendicular to its length, with a constant angular velocity \\(\\omega\\) in a uniform magnetic field \\(\\vec{B}\\) parallel to the axis. Obtain an expression for emf induced between its ends."
+  },
+  {
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Inductance",
+   "difficulty": "MODERATE",
+   "stem": "Define 'self-inductance' of a coil. Derive an expression for self-inductance of a long solenoid of cross-sectional area A and length \\(l\\), having n turns per unit length.",
+   "_alternativeTo": "Q24a"
+  },
+  {
+   "ref": "Q25",
+   "questionNumber": "25",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "difficulty": "MODERATE",
+   "stem": "Name the electromagnetic wave used (i) in radar, (ii) in eye surgery and (iii) as diagnostic tool in medicine. Write their wavelength range also."
+  },
+  {
+   "ref": "Q26",
+   "questionNumber": "26",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Reflection by Spherical Mirrors",
+   "difficulty": "MODERATE",
+   "stem": "Draw a ray diagram showing the image formation when a concave mirror produces a real, inverted and magnified image of an object and hence obtain the mirror formula."
+  },
+  {
+   "ref": "Q27",
+   "questionNumber": "27",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "stem": "How is the necessary force provided to an electron to keep it moving in a circular orbit according to Bohr model of hydrogen atom ? Derive an expression for the total energy of an electron moving in an orbit of radius r in hydrogen atom. Give the significance of negative sign in this expression."
+  },
+  {
+   "ref": "Q28",
+   "questionNumber": "28",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Nuclear Energy",
+   "difficulty": "MODERATE",
+   "stem": "(a) Consider the so-called 'D-T reaction' (Deuterium-Tritium reaction). In a thermonuclear fusion reactor, the following nuclear reaction occurs :\n\\(^{2}_{1}\\mathrm{H} + {}^{3}_{1}\\mathrm{H} \\longrightarrow {}^{4}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + Q\\)\nFind the amount of energy released in the reaction.\nGiven :\n\\(m\\left({}^{2}_{1}\\mathrm{H}\\right) = 2{\\cdot}014102\\) u\n\\(m\\left({}^{3}_{1}\\mathrm{H}\\right) = 3{\\cdot}016049\\) u\n\\(m\\left({}^{4}_{2}\\mathrm{He}\\right) = 4{\\cdot}002603\\) u\n\\(m\\left({}^{1}_{0}\\mathrm{n}\\right) = 1{\\cdot}008665\\) u\n\\(1\\ \\mathrm{u} = 931\\ \\mathrm{MeV}/c^2\\)\n(b) Show that the nuclear density is independent of mass number.",
+   "_flag": "NOT AN INTERNAL CHOICE, although the printed layout invites that reading. The English page (idx 18) prints (a) and (b) with a large blank gap between them, NO 'OR', and a single '3' in the right margin against (b); the Hindi facing page (idx 17) likewise prints no 'अथवा'. The official marking scheme settles it: its value-points box for Q28 reads 'Finding the amount of energy released — 2' and 'Showing the nuclear density is independent of mass number — 1', with 3 in the Total Marks column, and there is no OR block between them (the whole-scheme OR scan finds seven ORs and none in Q28). So Q28 is ONE 3-mark question with a 2-mark part (a) and a 1-mark part (b), and the marginal '3' is the question total placed on its last line — the same convention the paper uses for Q31(a) and Q33(a). Ingested as a single row. Secondary note: part (b) is about the size of the nucleus (R = R0 A^(1/3)) rather than nuclear energy; the row is filed on 'Nuclear Energy' because part (a) carries 2 of the 3 marks."
+  },
+  {
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS1",
+   "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
+   "stem": "Consider a capacitor of capacitance C, with plate area A and plate separation d, filled with air [Fig. (a)]. The distance between the plates is increased to 2d and one of the plates is shifted as shown in Fig. (b). The capacitance of the new system now is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{C}{4}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{C}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "2C"
+    },
+    {
+     "label": "D",
+     "text": "4C"
+    }
+   ],
+   "answer": "A",
+   "_figure": "REQUIRED — the stem says only that 'one of the plates is shifted as shown', so how far it is shifted exists nowhere but the drawing. What is drawn: two sketches side by side. Fig. (a) is two short vertical parallel plates, the left one labelled A, with a dashed horizontal line between them and the gap marked d. Fig. (b) is the same left plate A and a second vertical plate further right, with the gap marked 2d and the dashed line running between them. WITHHELD: the vertical offset of the shifted plate, i.e. how much of the two plates still faces each other, which is exactly what the four options discriminate. Page idx 20."
+  },
+  {
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatics of Conductors and Dielectrics",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS1",
+   "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
+   "stem": "A slab (area A and thickness \\(d_1\\)) of a linear dielectric of dielectric constant K is inserted between charged plates (charge density \\(\\sigma\\)) of a parallel plate capacitor [plate area A and plate separation \\(d\\ (> d_1)\\)] and opposite charges with charge density of magnitude \\(\\sigma_p\\) appear on the faces of the slab. The dielectric constant K is given by :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\sigma + \\sigma_p}{\\sigma}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\sigma}{\\sigma - \\sigma_p}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\sigma + \\sigma_p}{\\sigma_p}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\sigma}{\\sigma_p}\\)"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Energy Stored in a Capacitor",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS1",
+   "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
+   "stem": "An electric field E is established between the plates of an air filled parallel plate capacitor, with charges Q and – Q. V is the volume of the space enclosed between the plates. The energy stored in the capacitor is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{1}{2}\\varepsilon_0 E^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\varepsilon_0 Q^2 E\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{2}\\varepsilon_0 E^2 V\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\varepsilon_0 E Q V\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS1",
+   "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
+   "stem": "Three capacitors A, B and M, each of capacitance C are connected to a capacitor N of capacitance 2C and a battery as shown in the figure. If the charges on A and N are Q and \\(Q'\\) respectively, then \\(\\dfrac{Q'}{Q}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{1}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "6"
+    }
+   ],
+   "answer": "D",
+   "_figure": "REQUIRED — the stem names the four capacitors and the battery but not how they are wired, and the ratio asked for depends entirely on that. What can safely be said about the layout: the circuit is drawn as a rectangle, with capacitor A in the top side, capacitors B and M in the left and right vertical sides respectively, capacitor N in a horizontal branch across the middle and the battery, labelled V, in the bottom side. WITHHELD: nothing further — the plate orientations and the exact node joins are left to the drawing, and the series/parallel grouping that follows from them is the answer. Page idx 22."
+  },
+  {
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatics of Conductors and Dielectrics",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS1",
+   "context": "A capacitor is a system of two conductors separated by an insulator. In practice, the two conductors have charges Q and – Q with potential difference \\(V = V_1 - V_2\\) between them. The ratio \\(\\dfrac{Q}{V}\\) is a constant, denoted by C and is called the capacitance of the capacitor. It is independent of Q or V. It depends only on the geometrical configuration (shape, size, separation) of the two conductors and the medium separating the conductors. When a parallel plate capacitor is charged, the electric field \\(E_0\\) is localised between the plates and is uniform throughout. When a slab of a dielectric is inserted between the charged plates (charge density \\(\\sigma\\)), the dielectric is polarised by the field. Consequently opposite charges appear on the faces of the slab, near the plates, with surface charge density of magnitude \\(\\sigma_p\\). For a linear dielectric \\(\\sigma_p\\) is proportional to \\(E_0\\). Introduction of a dielectric changes the electric field, and hence, the capacitance of a capacitor, and hence, the energy stored in the capacitor.\nLike resistors, capacitors can also be arranged in series or in parallel or in a combination of series and parallel.",
+   "stem": "A slab (area A and thickness \\(\\dfrac{d}{2}\\)) of dielectric constant K is inserted in a parallel plate capacitor of plate area A and plate separation d. If C and \\(C_0\\) are the capacitances of the capacitors with and without the dielectric, then \\(\\dfrac{C}{C_0}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{K + 1}{2K}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{2K}{K + 1}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{K}{K - 1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{K - 1}{K}\\)"
+    }
+   ],
+   "answer": "B",
+   "_alternativeTo": "Q29iva"
+  },
+  {
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "EASY",
+   "setId": "2025-55-6-1-CS2",
+   "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
+   "stem": "Which of the following is a donor impurity atom for Ge ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Boron"
+    },
+    {
+     "label": "B",
+     "text": "Antimony"
+    },
+    {
+     "label": "C",
+     "text": "Aluminium"
+    },
+    {
+     "label": "D",
+     "text": "Indium"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS2",
+   "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
+   "stem": "When a pentavalent atom occupies the position of an atom in the crystal lattice of Si, four of its electrons form covalent bonds with four silicon neighbours, while the fifth remains bound to the parent atom. The energy required to set this electron free is about :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}5\\) eV"
+    },
+    {
+     "label": "B",
+     "text": "\\(0{\\cdot}1\\) eV"
+    },
+    {
+     "label": "C",
+     "text": "\\(0{\\cdot}05\\) eV"
+    },
+    {
+     "label": "D",
+     "text": "\\(0{\\cdot}01\\) eV"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q30iii",
+   "questionNumber": "30 (iii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS2",
+   "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
+   "stem": "During formation of a p-n junction :",
+   "options": [
+    {
+     "label": "A",
+     "text": "a layer of negative charge on n-side and a layer of positive charge on p-side appear."
+    },
+    {
+     "label": "B",
+     "text": "a layer of positive charge on n-side and a layer of negative charge on p-side appear."
+    },
+    {
+     "label": "C",
+     "text": "the electrons on p-side of the junction move to n-side initially."
+    },
+    {
+     "label": "D",
+     "text": "initially diffusion current is small and drift current is large."
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q30iva",
+   "questionNumber": "30 (iv) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-6-1-CS2",
+   "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
+   "stem": "In reverse-biased p-n junction :",
+   "options": [
+    {
+     "label": "A",
+     "text": "the drift current is of the order of few mA."
+    },
+    {
+     "label": "B",
+     "text": "the applied voltage mostly drops across the depletion region."
+    },
+    {
+     "label": "C",
+     "text": "the depletion region width decreases."
+    },
+    {
+     "label": "D",
+     "text": "the current increases with increase in applied voltage."
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q30ivb",
+   "questionNumber": "30 (iv) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "difficulty": "EASY",
+   "setId": "2025-55-6-1-CS2",
+   "context": "Extrinsic semiconductors are made by doping pure or intrinsic semiconductors with suitable impurity. There are two type of dopants used in doping, Si or Ge, and using them p-type and n-type semiconductors can be obtained. A p-n junction is the basic building block of many semiconductor devices. Two important processes occur during the formation of a p-n junction : diffusion and drift. When such a junction is formed, a 'depletion layer' is created consisting of immobile ion-cores. This is responsible for a junction potential barrier. The width of a depletion layer and the height of potential barrier changes when a junction is forward-biased or reverse-biased. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for application of an external voltage. Using diodes, alternating voltages can be rectified.",
+   "stem": "The output frequency of a full-wave rectifier with 50 Hz as input frequency is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "25 Hz"
+    },
+    {
+     "label": "B",
+     "text": "50 Hz"
+    },
+    {
+     "label": "C",
+     "text": "100 Hz"
+    },
+    {
+     "label": "D",
+     "text": "200 Hz"
+    }
+   ],
+   "answer": "C",
+   "_alternativeTo": "Q30iva"
+  },
+  {
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "AC Generator",
+   "difficulty": "HARD",
+   "stem": "(i) Write the principle of working of an ac generator. Draw its labelled diagram and explain its working.\n(ii) A resistor of 400 \\(\\Omega\\), an inductor of \\(\\left(\\dfrac{5}{\\pi}\\right)\\)H and a capacitor of \\(\\left(\\dfrac{50}{\\pi}\\right)\\mu\\mathrm{F}\\) are joined in series across an ac source \\(v = 140 \\sin (100\\pi)t\\) V. Find the rms voltages across these three circuit elements. The algebraic sum of these voltages is more than the rms voltage of source. Explain.",
+   "_flag": "SPLIT CHAPTER — part (i) is the ac generator (Electromagnetic Induction) and part (ii) is a series LCR circuit (Alternating Current). Filed on Electromagnetic Induction / 'AC Generator' because the marking scheme awards part (i) 3 of the 5 marks."
+  },
+  {
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "difficulty": "HARD",
+   "stem": "(i) Write the principle of working of a transformer. With the help of a labelled diagram, explain the working of a step-up transformer.\n(ii) An ideal transformer is designed to convert 50 V into 250 V. It draws 200 W power from an ac source whose instantaneous voltage is given by \\(v_i = 20 \\sin (100\\pi)t\\) V.\nFind :\n(I) rms value of input current.\n(II) expression for instantaneous output voltage.\n(III) expression for instantaneous output current.",
+   "_alternativeTo": "Q31a",
+   "_flag": "TAXONOMY — the Alternating Current axis has no 'Transformers' subtopic even though NCERT teaches the transformer in that chapter. Filed on 'Power in AC Circuits and the Power Factor', following the only precedent in the committed corpus (2024 55/2/1 Q5, a transformer question filed there); the numeric part turns on input power and rms current, so the fit is reasonable, but a 'Transformers' subtopic is the name I would have wanted.",
+   "_subtopicWas": "Power in AC Circuits and the Power Factor"
+  },
+  {
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "difficulty": "HARD",
+   "stem": "(i) Draw a ray diagram to show the image formation by a compound microscope. Obtain the expression for the total magnification of the microscope when the final image is formed at infinity.\n(ii) In a compound microscope, an object is placed at a distance of \\(1{\\cdot}5\\) cm from the objective of focal length \\(1{\\cdot}25\\) cm. The eyepiece has a focal length of 5 cm. The final image is formed at infinity. Calculate the distance between the objective and the eyepiece."
+  },
+  {
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Refraction and Reflection of Plane Waves",
+   "difficulty": "HARD",
+   "stem": "(i) Using Huygens' principle, explain the refraction of a plane wavefront, propagating in air, at a plane interface between air and glass. Hence verify Snell's law.\n(ii) Use mirror formula to deduce that a convex mirror always produces a virtual image of an object kept in front of it.",
+   "_alternativeTo": "Q32a",
+   "_flag": "SPLIT CHAPTER — part (i) is Huygens' principle (Wave Optics) and part (ii) is the mirror formula (Ray Optics / Reflection by Spherical Mirrors). Filed on Wave Optics / 'Refraction and Reflection of Plane Waves' because the marking scheme awards part (i) 3 of the 5 marks."
+  },
+  {
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+   "difficulty": "HARD",
+   "stem": "(i) The electric field in a region is given by \\(\\vec{E} = 40x\\,\\hat{i}\\) N/C. Find the amount of work done in taking a unit positive charge from a point (0, 3m) to the point (5m, 0).\n(ii) A charge Q is distributed over two concentric hollow spheres of radii r and R (> r) such that their surface charge densities are equal. Find :\n(I) the electric field, and\n(II) the potential\nat their common centre."
+  },
+  {
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+   "difficulty": "HARD",
+   "stem": "(i) Obtain an expression for the electric field \\(\\vec{E}\\) due to a dipole of dipole moment \\(\\vec{p}\\) at a point on its equatorial plane and specify its direction. Hence, find the value of electric field :\n(I) at the centre of the dipole (r = 0), and\n(II) at a point r >> a,\nwhere 2a is the length of the dipole.\n(ii) An electric field \\(\\vec{E} = (10x + 5)\\hat{i}\\) N/C exists in a region in which a cube of side L is kept as shown in the figure. Here x and L are in metres. Calculate the net flux through the cube.",
+   "_alternativeTo": "Q33a",
+   "_figure": "REQUIRED — part (ii)'s flux depends on WHERE the cube sits relative to the origin, because the field varies with x, and the stem says only 'as shown in the figure'. What is drawn: a set of three axes labelled X (to the right), Y (upward) and Z (towards the lower left), with a cube of side L drawn in perspective having one vertex at the origin O. The visible vertices are labelled A, B, C and D on the upper face and its left edge, and \\(A_1\\), \\(C_1\\) and \\(D_1\\) on the lower face, with O between \\(A_1\\) and \\(C_1\\); the unit vector \\(\\hat{i}\\) is marked as a short arrow along the +X direction near \\(C_1\\). WITHHELD: nothing further is needed — the two faces perpendicular to X and their x-coordinates are what the calculation turns on and follow from the placement above. Page idx 30.\n\nSPLIT CHAPTER NOTE: part (i) is the dipole field (Electric Charges and Fields) and part (ii) is Gauss-law flux through a cube (Electric Charges and Fields / 'Electric Flux and Gauss's Law'), so both parts sit in the same chapter; filed on the dipole subtopic, which carries the larger share of the marks."
+  }
+ ]
 }
