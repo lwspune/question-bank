@@ -186,8 +186,51 @@ so the discrimination the question tests survives. Say which you did.
   these in the text layer, so they must come off the page.
 - **Units**: `\(\mu\mathrm{F}\)`, `\(\Omega\)`, `\(\mathrm{Wb\,m^{-2}}\)`.
 - **Circuit diagrams, ray diagrams, field sketches and graphs are FIGURES** —
-  same rule as above, and they are FAR more common here: one 32-page Physics
-  paper carries ~79 embedded images. Expect several per paper and flag each.
+  same rule as above, and they are FAR more common here. Measured on the pilot
+  (2025 55/4/1): **8 distinct figures backing 12 of 46 rows, all REQUIRED, none
+  decorative** — about one figure per four questions, and spread across Sections
+  B, C, D and E rather than concentrated in one place.
+
+### ⚠ In Physics the figure usually IS the discriminator — describing it can hand over the answer
+
+§3's "naming vs describing" rule is Chemistry-shaped. Naming a drawn compound
+(`but-2-ene`) is a lossless reading and costs nothing. Physics is different: on
+**6 of the pilot's 8 figures**, a complete verbal description would have stated
+the answer outright, because what the question tests is exactly what the drawing
+carries — field direction, winding sense, current sense, circuit topology.
+
+The resolution, which worked and is now the rule:
+
+> **Describe the LABELLING AND LAYOUT; withhold the one directed quantity under
+> test — and say in the note which you did.**
+
+Worked examples from the pilot:
+
+| what is drawn | describe | withhold |
+|---|---|---|
+| charge moving in a field region | that there are axes, a field region, a particle | the direction of **B** and of **v** — every option names a plane |
+| three bulbs and a key | that there are three identical bulbs, a battery, a key | which bulbs are parallel, and which branch the key sits in |
+| two coils | the terminals M/N/O/P and the components | the winding sense of each coil |
+| an I–t graph | the axes, their units, the tick values, the shape | the comparison the question asks for |
+
+Where nothing can safely be said, say nothing and mark it `REQUIRED` — that is
+the correct outcome, not a failure.
+
+### A figure shared by a CASE STUDY goes on EVERY sibling
+
+A Section-D case study is one passage with several sub-parts, and its figure
+routinely carries a quantity the passage never states. On the pilot, Q29's plate
+separation `d` appears in **every option of every sub-part** and is defined only
+in the drawing — so all five siblings are unanswerable without it.
+
+**Flag `_figure` on every sibling that needs it, not just the first.** Rows are
+attached individually (`image_url` is per question, and there is no per-context
+image), so a sibling without the flag renders without the figure.
+
+The cost is bounded and is worth paying: `figure-groups.ts` keys on
+`content_hash`, and siblings hash differently, so they become separate groups.
+The crop step can point them all at ONE crop file, so the expensive part —
+cropping and eyeballing it — happens once no matter how many siblings cite it.
 
 ---
 

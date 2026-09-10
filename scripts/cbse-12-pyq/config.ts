@@ -89,6 +89,7 @@ export { ORG_ID, CREATED_BY } from "../practice/config";
 // scopes a Class-11 write to Class 12 and no gate sees it. Reintroducing the
 // ambiguous name here would undo that.
 export { EXAM_ID_CBSE_12 } from "../ncert/config";
+import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_12 as CBSE12 } from "../ncert/config";
 
 import type { SubjectKey } from "./lib";
 export type { SubjectKey };
@@ -106,8 +107,13 @@ export const YEARS = [2022, 2023, 2024, 2025, 2026] as const;
  * The subject row these questions land on. Must already exist — the NCERT
  * textbook ingest created it. Chapters AUTO-CREATE on commit, so a chapter name
  * that differs by even a space silently FORKS the corpus in two (the
- * mh-ssc-10-text lesson); commit.ts validates against this list and refuses an
- * unknown name rather than creating one.
+ * mh-ssc-10-text lesson).
+ *
+ * ⚠ commit.ts does NOT validate against this list — its own header says it
+ * "does not re-check chapter/subtopic names, and a bad chapter name
+ * AUTO-CREATES a duplicate chapter rather than failing". The only guard is
+ * validate.ts, and only if it is run. An earlier version of this comment
+ * claimed the opposite, promising a guard that does not exist.
  */
 export const SUBJECT_NAME_MATHS = "Mathematics";
 
@@ -322,4 +328,35 @@ export function pyqNote(subject: SubjectSpec, year: number, code: string): strin
 /** questions.source_file / upload_jobs.filename — the dedup + rollback key. */
 export function sourceFile(year: number, code: string): string {
   return `cbse-12-pyq-${year}-${code.replace(/\//g, "-")}`;
+}
+
+/**
+ * The subtopics DECLARED for this subject's chapters by the NCERT ingest —
+ * which is NOT the same set as the subtopics currently LIVE in the database.
+ *
+ * ⚠ THE DISTINCTION IS LOAD-BEARING AND WAS BEING COLLAPSED. A subtopic only
+ * appears in the DB once some question has been filed on it, so a perfectly
+ * legitimate, already-authored subtopic that no NCERT exercise happened to use
+ * is INVISIBLE to a live-axis query. validate.ts read that absence as "not on
+ * the live axis" and REFUSED the row — treating "nobody has used it yet" as
+ * "this name is invalid".
+ *
+ * Measured on the Physics pilot: NCERT declares `Diffraction` under Wave Optics
+ * and `Atomic Masses and Composition of the Nucleus` under Nuclei, and neither
+ * has a live row. CBSE sets diffraction EVERY year — the pilot paper alone asks
+ * it three times — so every Physics paper would have had those questions pushed
+ * into `Interference and Young's Experiment` and reported as a taxonomy gap
+ * that is not one. The right name already existed; nothing needed inventing.
+ *
+ * Returns chapterName -> declared subtopics, for this exam and subject only.
+ */
+export function declaredSubtopics(subject: SubjectSpec): Map<string, string[]> {
+  const out = new Map<string, string[]>();
+  for (const ch of Object.values(NCERT_CHAPTERS)) {
+    if (ch.examId !== CBSE12) continue;
+    if (ch.subjectName !== subject.subjectName) continue;
+    const prior = out.get(ch.chapterName) ?? [];
+    out.set(ch.chapterName, [...new Set([...prior, ...ch.subtopics])]);
+  }
+  return out;
 }

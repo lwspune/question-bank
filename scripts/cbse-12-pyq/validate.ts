@@ -17,13 +17,18 @@
  *     the fix belongs in the SOURCE, not at insert time;
  *   • control characters / double-escaped backslashes — the signature of text
  *     authored through a shell heredoc, invisible on inspection.
- * The subtopic check runs against the LIVE DB, because a hand-copied list is
- * exactly what goes stale.
+ * The subtopic check runs against the LIVE DB *unioned with* the subtopics the
+ * NCERT ingest DECLARED for the same chapters. The live half is read rather
+ * than hand-copied, because a copied list goes stale; the declared half exists
+ * because a subtopic only reaches the DB once a row is filed on it, so an
+ * authored-but-unused name (Wave Optics -> `Diffraction`) is absent from the
+ * live axis while being exactly the right answer. Refusing those conflated
+ * "nobody has used it yet" with "invalid".
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, EXAM_ID_CBSE_12, subjectForPaperId } from "./config";
+import { DATA, EXAM_ID_CBSE_12, subjectForPaperId, declaredSubtopics } from "./config";
 import { sectionForQuestion, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
@@ -109,6 +114,10 @@ async function main() {
 
   // chapter -> subtopics it will AUTO-CREATE at commit (declared, not yet live).
   const pending = new Map<string, Set<string>>();
+  // Same, one level down: the chapter IS live but this subtopic is declared-
+  // but-unused. Reported so the taxonomy move is visible before it happens.
+  const pendingSub = new Map<string, Set<string>>();
+  const declared = declaredSubtopics(SUBJECT);
 
   const seen = new Set<string>();
   for (const q of paper.questions) {
@@ -149,7 +158,26 @@ async function main() {
     if (chapterKnown && !chapterLive) {
       pending.set(q.chapter, (pending.get(q.chapter) ?? new Set()).add(q.subtopic));
     } else if (chapterKnown && !axis.get(q.chapter)?.has(q.subtopic)) {
-      note(q.ref, `subtopic "${q.subtopic}" is not on the live axis for "${q.chapter}"`);
+      // ⚠ "Not LIVE" is not the same as "not allowed", and treating them as one
+      // thing refused perfectly good rows. A subtopic only reaches the DB once a
+      // question is filed on it, so a subtopic the NCERT ingest AUTHORED but
+      // which no textbook exercise happened to use is invisible to a live-axis
+      // query — while being exactly the right name.
+      //
+      // Measured on the Physics pilot: NCERT declares `Diffraction` under Wave
+      // Optics and `Atomic Masses and Composition of the Nucleus` under Nuclei,
+      // neither live. CBSE sets diffraction EVERY year (three times on the pilot
+      // paper alone), so this check would have pushed those into
+      // `Interference and Young's Experiment` on all 78 papers and had each
+      // agent report a taxonomy gap that does not exist.
+      if (declared.get(q.chapter)?.includes(q.subtopic)) {
+        pendingSub.set(q.chapter, (pendingSub.get(q.chapter) ?? new Set()).add(q.subtopic));
+      } else {
+        note(
+          q.ref,
+          `subtopic "${q.subtopic}" is neither live nor declared for "${q.chapter}"`
+        );
+      }
     }
     if (!chapterKnown && !subtopicExistsAnywhere(axis, q.subtopic)) {
       // Cannot say WHICH chapter it belongs to, but "no chapter of this subject
@@ -229,6 +257,15 @@ async function main() {
     for (const [ch, subs] of pending) {
       console.log(`  - "${ch}"`);
       for (const s of [...subs].sort()) console.log(`      subtopic: "${s}"`);
+    }
+  }
+
+  if (pendingSub.size) {
+    console.log(`\n⚠ subtopic(s) DECLARED by the NCERT ingest but not yet holding a row.`);
+    console.log("  Legitimate names — commit.ts creates them on write. Listed so the");
+    console.log("  taxonomy move is visible BEFORE the commit rather than after:");
+    for (const [ch, subs] of pendingSub) {
+      for (const s of [...subs].sort()) console.log(`  - "${ch}" → "${s}"`);
     }
   }
 
