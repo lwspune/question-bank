@@ -64,6 +64,45 @@ keep the printed letter as `answer`. Do not "fix" the question, and do not drop
 it — a defective question with an unexplained key is exactly what this flag
 exists to prevent.
 
+### ⚠ PHYSICS ADDS TWO MORE VOID SHAPES — measured, and neither occurs in Chemistry
+
+**(a) The KEYLESS void — CBSE prints NO letter, because no option is right.**
+Real, seven questions across five Physics papers:
+
+```
+4.   Since no option is correct award 1 mark even if student does not attempt.
+11.  No option is correct, award 1 mark.
+2.   No option is correct. [Award one mark to each student]
+```
+
+There is no letter to keep. Set **`_noCorrectOption: true`**, leave `answer`
+absent, and put the printed note in `_cbseVoided`. `commit.ts` and
+`validate.ts` both accept that combination — an MCQ with no answer is a hard
+error *unless* `_noCorrectOption` says so explicitly, so the assertion has to
+be made rather than implied by an empty field.
+
+**(b) The MEDIUM-SCOPED void — the dangerous one. STOP and report it.**
+CBSE sometimes voids a question for ONE language edition only, and the two
+directions look alike while meaning opposite things:
+
+```
+2.   In Hindi version none of the answer is correct, Therefore award 1 mark.
+        → the ENGLISH key STANDS. Voiding this row throws away a good question.
+
+11.  (c) ... for students who have opted to answer the question in Hindi
+     medium only. English medium students - There is misprint in the English
+     version ... full mark to be awarded to each student who have opted to
+     answer the question in English medium.
+        → the printed letter is the HINDI answer. Keying it asserts an answer
+          CBSE explicitly VOIDED for the paper you are transcribing.
+```
+
+**We ingest the ENGLISH paper**, so getting this backwards is silently wrong in
+both directions. `parseSectionAKey` refuses these outright rather than guessing,
+which is why such a paper reaches you flagged for vision. Read the marking
+scheme page, decide which edition the clause governs, and **say so in your
+report** — do not resolve it quietly.
+
 ---
 
 ## 3. Chemistry notation

@@ -334,7 +334,13 @@ export function totalMarks(pattern: PatternName): number {
 /** One Section-A entry from CBSE's own marking scheme. */
 export type KeyEntry = {
   q: number;
-  answer: "A" | "B" | "C" | "D";
+  /**
+   * The option CBSE printed — or NULL where it printed none because no option
+   * is correct. Null is a FINDING ("CBSE voided this question outright") and is
+   * deliberately distinct from a field nobody filled in; downstream this becomes
+   * the transcriber's `_noCorrectOption`.
+   */
+  answer: "A" | "B" | "C" | "D" | null;
   /** Whatever CBSE printed after the letter — often the answer's value. */
   valueText?: string;
   /** Set when CBSE itself voided the question and awarded marks to all. */
@@ -345,6 +351,39 @@ const SECTION_A_START = /SECTION\s*[-–—:]?\s*A\b/i;
 const SECTION_B_START = /SECTION\s*[-–—:]?\s*B\b/i;
 /** CBSE's own wording when it voids a question — real, from Chemistry 2023. */
 const GRACE = /(full\s*mark|printing\s*error|award\s*full|any\s*option|bonus)/i;
+
+/**
+ * CBSE voiding a question by declaring that NONE of the options is right — so
+ * it prints a note and NO letter at all.
+ *
+ * Measured on Physics 2023/2024, three wordings:
+ *   "Since no option is correct award 1 mark even if student does not attempt."
+ *   "No option is correct, award 1 mark."
+ *   "No option is correct. [Award one mark to each student]"
+ *
+ * This is a SIXTH void class beyond the five catalogued on Chemistry, and the
+ * only one that prints no letter — which is why the parser used to skip the row
+ * and fail the whole paper on the resulting gap.
+ */
+const NO_CORRECT_OPTION = /\b(?:no|none)\b[^.\n]{0,40}?\b(?:is|are)\s+correct/i;
+
+/**
+ * ⚠ A void scoped to ONE MEDIUM — refuse rather than guess.
+ *
+ * CBSE sometimes voids a question for Hindi candidates only, or for English
+ * candidates only, and the two look alike while meaning OPPOSITE things:
+ *   • "In Hindi version none of the answer is correct" → the ENGLISH key stands,
+ *     and voiding the English row would throw away a perfectly good question;
+ *   • 2023 55/4/1 Q11 prints a letter "for students who have opted to answer the
+ *     question in Hindi medium only", then awards ENGLISH students full marks
+ *     for a misprint → the printed letter is the HINDI answer, and keying it
+ *     would assert an answer CBSE explicitly voided for this paper's readers.
+ *
+ * Nothing in the extracted text reliably says which direction applies, so this
+ * fails closed and sends the paper to a human. Both other options — keying the
+ * letter, or voiding the row — are silently wrong half the time.
+ */
+const MEDIUM_SCOPED = /(hindi|english)\s*(medium|version)/i;
 
 /**
  * Read the official Section-A MCQ key out of a marking scheme's text layer.
@@ -384,15 +423,68 @@ export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
   const b = SECTION_B_START.exec(rest);
   const block = b ? rest.slice(0, b.index) : rest;
 
+  // SEGMENT, then classify — rather than one regex demanding number-then-letter.
+  //
+  // The old single-pass regex could only see an entry that HAS a letter, so
+  // CBSE's keyless void ("No option is correct, award 1 mark.") was skipped
+  // silently, the 1..N run broke on the gap, and the whole paper was refused as
+  // a collapsed layout. Measured: that is the single commonest reason a Physics
+  // marking scheme "needs vision".
+  //
+  // A bare number line is NOT sufficient evidence of an entry — the marking
+  // scheme's marks columns are lines reading just "1". So a candidate is only
+  // promoted to an entry when the text BEFORE the next candidate carries either
+  // an option letter or a void note. That is what keeps the marks columns out.
+  const CANDIDATE = /(?:^|\n)[ \t]*Q?[ \t]*(\d{1,2})[ \t]*[.)]?[ \t]*/g;
+  // "(A)" and, because CBSE typos it, "A)". The CLOSING paren stays REQUIRED:
+  // without it "Award one mark" reads as answer "A".
+  const LETTER = /^\s*\(?[ \t]*([A-Da-d])[ \t]*\)([^\n]*)/;
+
+  const cands: { q: number; from: number; to: number }[] = [];
+  for (let m = CANDIDATE.exec(block); m; m = CANDIDATE.exec(block)) {
+    cands.push({ q: Number(m[1]), from: m.index + m[0].length, to: block.length });
+  }
+  for (let i = 0; i < cands.length - 1; i++) {
+    // A candidate's window ends where the next one begins, so a void note can
+    // never be attributed to the marks column printed just above it.
+    cands[i].to = block.indexOf("\n", cands[i].from) === -1 ? cands[i + 1].from : cands[i + 1].from;
+  }
+
   const all: KeyEntry[] = [];
-  // The number and the letter may sit on one line or two; CBSE does both.
-  const re = /(?:^|\n)\s*(\d{1,2})\s*[.)]?\s*\n?\s*\(\s*([A-Da-d])\s*\)([^\n]*)/g;
-  for (let m = re.exec(block); m; m = re.exec(block)) {
-    const valueText = m[3].trim();
-    const e: KeyEntry = { q: Number(m[1]), answer: m[2].toUpperCase() as KeyEntry["answer"] };
-    if (valueText) e.valueText = valueText;
-    if (valueText && GRACE.test(valueText)) e.graceNote = valueText;
-    all.push(e);
+  for (const c of cands) {
+    const win = block.slice(c.from, c.to);
+    const lm = LETTER.exec(win);
+    const voided = NO_CORRECT_OPTION.test(win);
+    if (!lm && !voided) continue; // a marks column, or unrelated prose
+
+    // ⚠ Refuse a medium-scoped award BEFORE reading anything off it. Whether
+    // the printed letter belongs to this paper's readers or to the Hindi
+    // edition is not decidable from the text, and both wrong answers are silent.
+    // Deliberately NOT gated behind a grace/void phrase as well. Measured across
+    // all 78 Physics and 78 Chemistry marking schemes, MEDIUM_SCOPED fires on
+    // exactly the genuine cases and nothing else — an ordinary answer's value
+    // text does not say "Hindi medium" or "English version". Requiring a second
+    // signal missed "In Hindi version none of the answer is correct", which
+    // carries neither the word "award" nor any GRACE phrase.
+    if (MEDIUM_SCOPED.test(win)) {
+      throw new Error(
+        `Section-A Q${c.q} carries a MEDIUM-SPECIFIC award ("Hindi medium only" / ` +
+          `"English version"), so the printed letter may belong to the other edition. ` +
+          `Refusing to key it — read the marking scheme page and adjudicate by hand.`
+      );
+    }
+
+    if (lm) {
+      const valueText = lm[2].trim();
+      const e: KeyEntry = { q: c.q, answer: lm[1].toUpperCase() as KeyEntry["answer"] };
+      if (valueText) e.valueText = valueText;
+      if (valueText && GRACE.test(valueText)) e.graceNote = valueText;
+      all.push(e);
+    } else {
+      // Keyless void: CBSE printed a note and no letter, because no option is
+      // right. `answer: null` is the finding, and becomes `_noCorrectOption`.
+      all.push({ q: c.q, answer: null, graceNote: win.replace(/\s+/g, " ").trim() });
+    }
   }
 
   // The paper's measured pattern already says how many Section-A questions

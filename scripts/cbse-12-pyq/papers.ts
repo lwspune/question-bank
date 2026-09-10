@@ -33,10 +33,10 @@
  * the opener, so without splitMergedMs 10 of that year's 15 papers would appear
  * to have no marking scheme at all.
  */
-import { readdirSync, statSync, readFileSync, existsSync } from "node:fs";
+import { readdirSync, statSync, readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
-import { YEARS, SUBJECTS, subjectFromArg, sourceFile, type SubjectSpec } from "./config";
+import { YEARS, SUBJECTS, subjectFromArg, sourceFile, DATA, type SubjectSpec } from "./config";
 import {
   parsePaperCode,
   paperCodeLabel,
@@ -300,14 +300,62 @@ function report(subject: SubjectSpec, readMerged: boolean): number {
   return d.problems.length + d.unaccounted.length;
 }
 
+/**
+ * Write the resolved inventory to `data/_papers.<subject>.json`, for prep.py.
+ *
+ * ⚠ THIS EXISTS TO KILL A SECOND MATCHER. prep.py used to re-derive each
+ * paper's PDF paths with its own filename search, and that search had diverged
+ * from this one — silently, because its miss is a non-fatal warning and the
+ * paper then renders with NO marking scheme. Measured 2026-09-10: it failed to
+ * find the marking scheme for 62 of 78 PHYSICS papers and 6 of 78 Chemistry
+ * ones. Two causes, and only the first was known:
+ *   • it normalises [_\s] to "-" without collapsing runs, so
+ *     "MS_56_2- 1-.pdf" becomes "56-2--1-" and never contains "56-2-1";
+ *   • it substring-matches the code, so a MERGED name advertising "55-1-1,2,3"
+ *     can never match "55-1-2" — which is most of the Physics corpus.
+ * Rather than teach the Python half the same tricks (and let the two drift
+ * again), prep.py now READS this file. One matcher, the tested one.
+ *
+ * It also carries msPages, so a merged marking scheme renders the RIGHT block
+ * automatically instead of relying on someone passing --ms-pages by hand.
+ */
+function emitIndex(subject: SubjectSpec): void {
+  // readMerged is forced: without it every follower of a merged scheme resolves
+  // to the opener's file with no page range, which is precisely the silent
+  // wrong-key hazard the index is meant to remove.
+  const d = discover(subject, { readMerged: true });
+  const rows = d.papers.map((p) => ({
+    year: p.year,
+    code: p.code,
+    paperId: `${p.year}-${p.code.replace(/\//g, "-")}`,
+    qp: p.qp,
+    ms: p.ms,
+    msPages: p.msPages,
+    pattern: p.pattern,
+  }));
+  if (!existsSync(DATA)) mkdirSync(DATA, { recursive: true });
+  const path = join(DATA, `_papers.${subject.key}.json`);
+  writeFileSync(path, JSON.stringify(rows, null, 1) + "\n", "utf-8");
+  const merged = rows.filter((r) => r.msPages).length;
+  console.log(
+    `wrote ${path} — ${rows.length} papers, ${rows.filter((r) => r.ms).length} with a marking scheme` +
+      ` (${merged} of them a page-range into a merged file)`
+  );
+}
+
 function main() {
   const argv = process.argv.slice(2);
   const check = argv.includes("--check");
   const readMerged = argv.includes("--read-merged");
   const all = argv.includes("--all");
+  const emit = argv.includes("--emit-index");
   const subjArg = argv.find((a) => a.startsWith("--subject="))?.split("=")[1];
 
   const subjects = all ? Object.values(SUBJECTS) : [subjectFromArg(subjArg)];
+  if (emit) {
+    for (const s of subjects) emitIndex(s);
+    return;
+  }
   let bad = 0;
   for (const s of subjects) bad += report(s, readMerged);
   if (check && bad) process.exit(1);

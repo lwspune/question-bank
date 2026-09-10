@@ -631,6 +631,121 @@ describe("parseSectionAKey", () => {
   });
 });
 
+// ── The four Section-A layouts PHYSICS ships that Chemistry never did ────────
+//
+// Measured 2026-09-10 across all 78 Physics marking schemes. Before these, 8 of
+// the 43 "needs vision" papers were parser gaps rather than genuine image-only
+// schemes — and the failure was always the SAME SHAPE: an otherwise perfect run
+// with one or two questions missing, which broke the ascending check and failed
+// the whole paper closed. Fail-closed was right; the parser was incomplete.
+describe("parseSectionAKey — Physics layout variants", () => {
+  it("reads a 'Q1.' prefix, not just a bare number (Physics 2023 55/4/*)", () => {
+    // REAL: that series numbers its key entries Q1./Q2. The old pattern
+    // required the line to START with a digit, so it read ZERO of 18 answers
+    // and three papers looked keyless when their key is perfectly clean.
+    const t = `SECTION - A \nMarks \nTotal \nQ1. \n(c) zero \n1 \nQ2. \n(b) v \n1 \n \nSECTION - B \n19. prose`;
+    expect(parseSectionAKey(t)).toEqual([
+      { q: 1, answer: "C", valueText: "zero" },
+      { q: 2, answer: "B", valueText: "v" },
+    ]);
+  });
+
+  it("tolerates a MISSING opening parenthesis: 'A)' (Physics 2025 55/1/2 Q16)", () => {
+    // REAL, and it is CBSE's own typo on the last entry of the block: every
+    // other row reads "(A)" and Q16 reads "A)". One missing character made a
+    // 16-answer key report as 15 and routed the paper to vision.
+    const t = `SECTION A \n1 \n(C) x \n1 \n2 \nA)   Both Assertion (A) and Reason (R) are true \n1 \n \nSECTION - B \n17 \nprose`;
+    const key = parseSectionAKey(t);
+    expect(key.map((e) => [e.q, e.answer])).toEqual([
+      [1, "C"],
+      [2, "A"],
+    ]);
+  });
+
+  it("does NOT invent a letter from ordinary prose beginning with A-D", () => {
+    // The guard on the rule above: the closing paren stays REQUIRED, so
+    // "Award one mark" cannot be read as answer "A". Without this the void
+    // wording below would key itself.
+    const t = `SECTION A \n1 \nAward one mark to each student \n1 \n \nSECTION B \n17 \nprose`;
+    expect(() => parseSectionAKey(t, 1)).toThrow(/short|expected|no option/i);
+  });
+
+  describe("the KEYLESS VOID — CBSE says no option is correct, so prints no letter", () => {
+    // A SIXTH defect class, beyond the five catalogued on Chemistry. The five
+    // there all keep a printed letter ("(c) / Full mark to be awarded for any
+    // option"). Here CBSE prints a note and NO letter at all, because none of
+    // the four options is right. The old parser skipped the row entirely, which
+    // broke the 1..N run and failed the paper — so the commonest Physics void
+    // presented as a corrupt layout.
+    const VOIDS = [
+      "Since no option is correct award 1 mark even if student does not attempt.",
+      "No option is correct, award 1 mark.",
+      "No option is correct. [Award one mark to each student]",
+    ];
+    for (const wording of VOIDS) {
+      it(`reads it as answer:null with the note kept — "${wording.slice(0, 34)}…"`, () => {
+        const t = `SECTION A \n1 \n(A) x \n1 \n2 \n${wording} \n1 \n3 \n(D) y \n1 \n \nSECTION - B \n17 \nprose`;
+        const key = parseSectionAKey(t, 3);
+        expect(key).toHaveLength(3);
+        expect(key[1].q).toBe(2);
+        // null, not undefined: "CBSE printed no letter" is a FINDING and must be
+        // distinguishable from a field nobody filled in.
+        expect(key[1].answer).toBeNull();
+        expect(key[1].graceNote).toContain("option is correct");
+        // …and it does not disturb its neighbours.
+        expect(key[0].answer).toBe("A");
+        expect(key[2].answer).toBe("D");
+      });
+    }
+
+    it("keeps the run ascending, so the paper is no longer refused", () => {
+      const rows = Array.from({ length: 18 }, (_, i) =>
+        i === 3 ? `${i + 1} \nNo option is correct, award 1 mark. \n1 ` : `${i + 1} \n(A) \n1 `
+      ).join("\n");
+      const key = parseSectionAKey(`SECTION A \n${rows}\n \nSECTION - B \n19 \nprose`, 18);
+      expect(key).toHaveLength(18);
+      expect(key.filter((e) => e.answer === null).map((e) => e.q)).toEqual([4]);
+    });
+  });
+
+  describe("a MEDIUM-SPECIFIC void is REFUSED, never auto-keyed", () => {
+    // ⚠ THE DANGEROUS ONE. CBSE sometimes voids a question for ONE medium only,
+    // and the two directions are opposite:
+    //   • "In Hindi version none of the answer is correct" — the ENGLISH key
+    //     stands, and voiding the English row would discard a good question;
+    //   • 2023 55/4/1 Q11 prints a letter "for students who have opted to
+    //     answer in Hindi medium only" and then awards ENGLISH students full
+    //     marks for a misprint — so the printed letter is the HINDI answer and
+    //     keying it would assert an answer CBSE explicitly voided for English.
+    // Nothing in the text reliably says which way round it is, so this refuses
+    // and sends the paper to a human. Guessing is the one option not available.
+    it("refuses when the note voids the HINDI version only", () => {
+      const t = `SECTION A \n1 \n(A) x \n1 \n2 \nIn Hindi version none of the answer is correct, Therefore award 1 mark. \n1 \n \nSECTION - B \n17 \nprose`;
+      expect(() => parseSectionAKey(t, 2)).toThrow(/medium-specific|hindi|english/i);
+    });
+
+    it("refuses when the letter applies to Hindi and English is awarded full marks", () => {
+      const t = `SECTION A \n1 \n(A) x \n1 \n2 \n(c ) R for students who have opted to answer the question in Hindi medium only. English medium students-There is misprint in the English version. \n1 \n \nSECTION - B \n17 \nprose`;
+      expect(() => parseSectionAKey(t, 2)).toThrow(/medium-specific|hindi|english/i);
+    });
+
+    it("names the question number, so the reader knows which page to open", () => {
+      const t = `SECTION A \n1 \n(A) x \n1 \n2 \nIn Hindi version none of the answer is correct. \n1 \n \nSECTION - B \n17 \nprose`;
+      // Anchored on "Q2" rather than a bare "2": the pre-fix message read
+      // "short: read 1 of 2 expected", so a bare digit made this pass for
+      // entirely the wrong reason.
+      expect(() => parseSectionAKey(t, 2)).toThrow(/Q2\b/);
+    });
+
+    it("does NOT fire on an ordinary answer that merely mentions a medium", () => {
+      // The guard against over-refusing: the trigger is a medium-specific
+      // AWARD clause, not the word "English" appearing in an answer's text.
+      const t = `SECTION A \n1 \n(A) English physicist Faraday \n1 \n2 \n(B) y \n1 \n \nSECTION - B \n17 \nprose`;
+      expect(parseSectionAKey(t, 2).map((e) => e.answer)).toEqual(["A", "B"]);
+    });
+  });
+});
+
 describe("patternForYear is per SUBJECT, not global", () => {
   it("knows the Physics years that have been measured", () => {
     expect(patternForYear("physics", 2026)).toBe("full70");

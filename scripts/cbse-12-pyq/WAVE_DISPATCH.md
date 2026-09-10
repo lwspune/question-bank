@@ -30,6 +30,11 @@ Each earned its place from a real incident in this repo.
    Agents are told to write early and update as they go, so a present file is
    not a finished one. This has already produced one false "missing questions"
    diagnosis that cost a wasted dispatch.
+6. **Emit the paper index BEFORE rendering anything**, once per subject:
+   `npx tsx scripts/cbse-12-pyq/papers.ts --subject=<s> --emit-index`.
+   `prep.py` reads it and refuses without it. It is what resolves each paper's
+   PDFs *and* the page range of a merged marking scheme — Physics ships those
+   in every year 2022-2025, 63 of its 78 papers.
 
 ---
 
@@ -132,12 +137,20 @@ Each earned its place from a real incident in this repo.
 | `«FOLLOWER_BLOCK»` | empty for an opener; see below for a follower |
 
 **`official (N)`** → *"Take the answer from the marking scheme's Section-A table,
-verbatim, uppercased. Do NOT derive it. There should be N entries."*
+verbatim, uppercased. Do NOT derive it. There should be N entries. Some entries
+carry a note INSTEAD of a letter ("No option is correct, award 1 mark") — those
+get `_noCorrectOption: true` with no `answer`, never a guessed letter."*
 
 **`VISION NEEDED`** → *"This paper's marking scheme does not extract cleanly, so
 read its Section-A block from the rendered `ms/` page images. If the block is
 unreadable, say so rather than deriving — an answer that arrives without saying
 it was derived is indistinguishable from an official key."*
+
+**`MEDIUM-SPECIFIC`** (the parser refuses these by name, quoting the question) →
+*"CBSE has scoped an award to ONE language edition on this question. We ingest
+the ENGLISH paper. Read the marking scheme page and work out whether the printed
+letter is the English answer or the Hindi one — the two cases exist and look
+alike. Report what you found and why; do not resolve it silently."*
 
 **`n/a (no MCQs)`** → *"This is the 2022 Term-II paper: 12 questions, 35 marks,
 and NO MCQs at all. Every row is subjective."*
