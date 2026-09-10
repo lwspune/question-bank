@@ -128,11 +128,15 @@ function main() {
 
   if (withPrep) {
     console.log(`\n── render commands (run → transcribe → DELETE out/<id> to keep disk flat) ──`);
+    // The page range of a merged marking scheme is NOT passed on the command
+    // line any more: prep.py reads it from the index emitted below, which is
+    // the same discovery this planner uses. Printing it here as well would be a
+    // second copy of the truth, free to disagree with the first.
+    console.log(`npx tsx scripts/cbse-12-pyq/papers.ts --subject=${subject.key} --emit-index`);
     for (const p of rows) {
       if (done.has(paperId(p))) continue;
-      const msFlag = p.msPages ? ` --ms-pages ${p.msPages.from}:${p.msPages.to}` : "";
       console.log(
-        `python scripts/cbse-12-pyq/prep.py ${p.year} ${p.code.replace(/\//g, "-")} --subject=${subject.key}${msFlag}`
+        `python scripts/cbse-12-pyq/prep.py ${p.year} ${p.code.replace(/\//g, "-")} --subject=${subject.key}`
       );
     }
   }
