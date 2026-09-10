@@ -82,12 +82,43 @@ exists to prevent.
 
 An organic structure, a mechanism, or a coordination-geometry drawing **cannot
 be typed**. Do not attempt an ASCII or LaTeX approximation — it will be wrong
-and it will look authoritative. Flag the question with
-`_needsFigure: "<what the drawing shows>"` and transcribe everything around it.
-The figure step attaches the real crop afterwards.
+and it will look authoritative.
 
-Name a compound in words where the paper does (`but-2-ene`, `phenol`) — that is
-text, not a figure.
+Flag the row with **`_figure`** — that exact field name, and it MUST open with
+one of three classifications. The pipeline reads no other field:
+
+```
+"_figure": "REQUIRED — all four options are drawn benzene rings; the stem
+            names nothing. Page idx 8."
+```
+
+| classification | meaning | what happens |
+|---|---|---|
+| `REQUIRED` | the figure **is** the question — options are drawings, or the stem names nothing | cropped and attached, **and** the dedup guard fires |
+| `ILLUSTRATIVE` | the compound is named losslessly in the stem, so the row is answerable from text, but the drawing is worth showing | cropped and attached |
+| `DECORATIVE` | carries no data (a captioned photograph) | not attached |
+
+Always include **`Page idx N`** — the crop step parses the page out of this note
+and otherwise gets `null`.
+
+> ⚠ **`REQUIRED` is a correctness guard, not just a cropping hint.** `commit.ts`
+> uses it for a hash-collision pre-flight, because where the figure IS the
+> question two genuinely DIFFERENT questions can carry a byte-identical
+> `content_hash`. The documented case is Maths 65/7/1 Q1 and 65/7/3 Q1: same
+> stem, same four option texts, same key (A) — but one graph is tan⁻¹ and the
+> other sec⁻¹. Such a row is refused rather than silently deduped. Marking a
+> merely-illustrative figure REQUIRED costs nothing (the guard only bites on a
+> real collision); failing to mark a load-bearing one merges two different
+> questions silently. **When unsure, choose REQUIRED.**
+>
+> An earlier version of this file said `_needsFigure`. Nothing reads that, so 13
+> papers' figure flags were invisible to both the crop step and the guard.
+
+**Naming vs describing — the distinction that decides an MCQ.** Naming a compound
+the paper draws (`but-2-ene`, `phenol`) is a lossless *reading*, not an
+approximation, and is preferred. But if the options are drawings and naming them
+would **state the answer**, describe the drawings instead without naming them,
+so the discrimination the question tests survives. Say which you did.
 
 ## 4. Physics notation
 

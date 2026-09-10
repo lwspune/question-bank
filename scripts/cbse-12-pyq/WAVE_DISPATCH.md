@@ -90,8 +90,14 @@ Each earned its place from a real incident in this repo.
 >   inspection and survives review.
 > - The papers use **raised decimal points** (`0·05`) → `0{\cdot}05`.
 > - A drawn structure, mechanism, circuit or ray diagram **cannot be typed**.
->   Flag it `_needsFigure: "<what it shows>"`. Do not approximate it in ASCII —
->   that is wrong AND looks authoritative. Naming a compound in words is fine.
+>   Flag it **`_figure`** — that exact field, opening with `REQUIRED`,
+>   `ILLUSTRATIVE` or `DECORATIVE`, and always carrying `Page idx N`. See the
+>   addendum's table. Nothing reads any other field name, and `REQUIRED` also
+>   drives a dedup guard, so when unsure choose `REQUIRED`. Do not approximate a
+>   drawing in ASCII — that is wrong AND looks authoritative. Naming a compound
+>   in words is a lossless reading and is preferred — **unless** the options are
+>   drawings and naming them would state the answer, in which case describe them
+>   without naming. Say which you did.
 > - Transcribe the paper **as printed**. If a stem looks wrong, transcribe it
 >   faithfully and REPORT it. Adjudication is the maintainer's call.
 > - Use a scratch filename unique to you: `_tmp_«PAPER_ID»_*`.
