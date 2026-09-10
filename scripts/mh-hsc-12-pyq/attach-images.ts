@@ -46,9 +46,24 @@ async function main() {
   const problems: string[] = [];
 
   for (const r of rows) {
-    const file = join(OUT, "media", r.image!);
+    // CHAPTER-SCOPED, and that is load-bearing rather than tidy.
+    //
+    // Every chapter's .docx names its pictures image1.png…imageN.png, so a flat
+    // out/media/ is a COLLIDING namespace: one chapter's image4.png silently
+    // overwrites — or is silently read instead of — another's. Found live on the
+    // Chemistry pilot, where out/media/image4.png was a SWITCHING CIRCUIT left
+    // over from the Mathematical Logic chapter while the real image4 was a
+    // nitration scheme. Nothing downstream can detect it: the file exists, so it
+    // uploads, and a Maths circuit ships onto a Chemistry question with no error.
+    //
+    // Scoping by chapter makes the collision impossible instead of relying on
+    // whoever unzipped last having done it for the right chapter.
+    const file = join(OUT, "media", id, r.image!);
     if (!existsSync(file)) {
-      problems.push(`${r.ref}: ${r.image} not unpacked — run unzip -j "<docx>" "word/media/*" into out/media/`);
+      problems.push(
+        `${r.ref}: ${r.image} not unpacked — unzip this CHAPTER's docx into out/media/${id}/ ` +
+          `(a flat out/media/ collides: every chapter names its pictures image1..imageN)`,
+      );
       continue;
     }
     const bytes = readFileSync(file).length;

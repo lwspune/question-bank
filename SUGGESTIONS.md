@@ -88,6 +88,117 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 | **The MH State Board Class-10 textbook layer was ingested by 30 parallel agents on 2026-08-28, and four inconsistencies survive that are cheap to fix but touch SHIPPED rows.** (a) **Ref style is split six-and-six across the twelve Mathematics chapters** - `AGENT_BRIEF.md` said `Ex 1.1 Q3` where the older `MATHS_TRANSCRIPTION_BRIEF.md` and the shipped `pythagoras-10` say `Ex 1.1 Q.3`, and both documents were in play at once. (b) **`config.ts` carries near-duplicate subtopics** the ingest deliberately reused rather than renamed - Geometry has both `Property of an Angle Bisector of a Triangle` and `Property of Angle Bisector of a Triangle` (1 PYQ row each), and `Construction of an Angle Bisector` beside `Construction of Angle Bisector`; Mensuration has `Area of Combined Figures` beside `Areas of Combined Figures`; Heat has `Humidity` beside `Humidity and Relative Humidity` and `Anomalous Behaviour of Water` beside `Anomalous Expansion of Water`; Refraction has `Refractive Index` beside `Absolute Refractive Index`. (c) **Several configured subtopics receive ZERO textbook rows because the chapter no longer teaches them** - Financial Planning's `Income Tax - Assessment Year` and `Income, Expenditure and Savings` (this edition is GST + shares), Life Processes Part 1's seven osmosis/transpiration/transport/excretion/glands names (the chapter covers three topics, not ten), Co-ordinate Geometry's `Equation of a Line`, Mensuration's `Euler's Formula`, Trigonometry's `Angle in Standard Position`, Carbon Compounds' `Rancidity`, Environmental Management's `Control of Noise Pollution` and `Blue Revolution`, Heredity's `Mendel's Laws of Inheritance`. All are PYQ-era names from an older syllabus. (d) **Two questions have no good subtopic home at all** - Lenses `Ex Q5` (astronomical telescope, filed under `Simple Microscope`) and Mensuration `PS7 Q12` (a chord-property question filed under `Circumference of a Circle`). | **(a) is measured and mechanical**: 383 rows across 41 files, `normalise-maths-refs.ts` is written, dry-run and self-tested, and `question_number` sits outside `content_hash` while sections routing keys on the block prefix - so the rename moves nothing and `backfill-sections.ts` re-proves every ref still routes. It waits only so it cannot race an in-flight agent. **(b) and (c) are a RENAME/RE-FILE pass and are the expensive half**: every one of those names carries live board-PYQ rows, so a merge or rename re-files SHIPPED PYQ content, which is exactly what the ingest policy refused to do unilaterally. Note the asymmetry recorded on the CDS GK run - an ADDITION is cheaper the earlier it lands, but a RENAME costs the same whenever it is paid, so waiting for a settled corpus is correct rather than merely convenient. **(d) needs a taxonomy decision, not a fix**: a `Telescopes and Optical Instruments` subtopic under Lenses would be a genuine addition; `PS7 Q12`'s real home is a chord property that Mensuration has no slot for. | **Identified 2026-08-28 during the ingest; (a) READY and pending only the last agents, (b)(c)(d) NOT done.** Each was reported by the agent that hit it rather than acted on, because `config.ts` was off-limits to them by design. (b)-(d) need a 360 + permission: they touch shipped PYQ rows and a subtopic rename is visible on `/browse` filters and every notes/guide cross-reference that names one. |
 
+## 2026-09-10
+
+### 13 same-tag groups in the Chemistry compilation are THREE different defects, and only one of them is a duplicate
+
+**Found 2026-09-10** while authoring the Chemistry board-PYQ waves. Three agents independently
+reported "the same printed question appears twice in this chapter" (Chemical Thermodynamics,
+Polymers, Coordination), which is what turned it from three repairs into one measurement. The
+signal is a shared provenance tag: a board paper prints one `Q.23`, so two rows tagged
+`Q.23, February 2020` in one chapter cannot both be it. The cross-chapter ledger is blind to
+these by construction — it adjudicates *across* chapters only.
+
+**13 groups covering 27 rows, and reading them is what matters, because they split three ways:**
+
+- **The same question typed twice (4 groups)** — Chemical Thermodynamics `#3`/`#36`
+  (*"Define the term 'enthalpy'"* / *"Define enthalpy"*), Coordination `#4`/`#23` (EAN of copper,
+  one in math zones and one in prose), p-block `#5`/`#6` (*"What is the action of ozone on hydrogen
+  peroxide"* / *"Action of ozone on hydrogen peroxide"*), Polymers `#6`/`#12`. These do NOT collapse
+  under `content_hash` — the two copies differ only in which words carry the math-zone residue —
+  so both commit as separate live rows.
+- **One copy TRUNCATED (4 groups)** — Chemical Thermodynamics `#43` has lost part (a) of `#8`;
+  Polymers `#7` has lost *"Write any two uses of LDP"* from `#23`; p-block `#17` has lost
+  *"Explain interhalogen compounds"* from `#26`, and `#22` has lost *"What are interhalogen
+  compounds?"* from `#27`.
+- **DIFFERENT questions sharing a tag (5 groups)** — Electrochemistry `#1`/`#2`/`#7` are a
+  thermodynamic derivation, a resistance calculation and a calomel-electrode diagram, all tagged
+  `Q.1.i March 2014`; likewise Chemical Thermodynamics `#11`/`#28`, Coordination `#32`/`#33`,
+  Solutions `#9`/`#30`, and — in the ALREADY-SHIPPED Maths corpus — Vectors `#4`/`#5`.
+
+**Why:** the last bucket is the reason this is logged rather than swept. **A blanket dedup keyed on
+the provenance tag would DELETE five groups of genuinely different questions**, and the deletion
+would look exactly like the four legitimate ones. Even within the truncation bucket the direction
+is not always obvious: p-block `#26` reads *"Explain interhalogen compounds. How is oxygen prepared
+from…"*, which is either one two-part board question (so `#17` is truncated) or the compilation
+running two separate items together (so `#26` is glued and `#17` is right) — and interhalogens are
+Group 17 while oxygen preparation is Group 16, which is what makes it genuinely ambiguous. Only the
+printed page settles it, and that is the ledger's own founding rule.
+
+Shipping both copies costs a near-duplicate on `/browse` and loses nothing. Dropping the wrong copy
+loses a board question permanently. So both copies ship for now, with every pair answered.
+
+**How to apply:** the pairs need `February 2020`, `March 2024` and `March 2025`, all of which are
+SCANNED sittings — so this is a render-and-read job, one page at a time, not a text pass. `dedupe.ts`
+already supports an intra-chapter `keep`/`drop` (nothing constrains the two refs to different
+chapters), so once a group is adjudicated the fix is one ledger entry. Take the four
+same-question groups first: they are settleable from the two stems alone and need no page. The
+Vectors group is SHIPPED and is cosmetic — both questions are legitimately in the bank and only one
+row's citation is wrong — so it needs its own 360 rather than riding along.
+
+### The `^x^` superscript residue renders literally in two Electrochemistry stems
+
+**Found 2026-09-10**, reported by the authoring agent. `electrochemistry-12-pyq#4` and `#5` carry
+`223 Ω^-1^cm^2^mol^-1^` and `0.01 Ω^-1^ cm^-1^` — pandoc's markdown superscript syntax, which
+nothing in this render path understands. KaTeX only reads inside `\(...\)`, so outside a math zone
+the carets print as themselves, on the web and in a downloaded Word paper alike.
+
+**Why:** measured corpus-wide it is exactly 2 rows, both in one chapter, and **zero in the 32
+committed chapters** — so it is not a shipped defect. Worth distinguishing from the bare `Ω` the
+same agent reported in `#2`/`#3` (`1500Ω`, `31.6 Ω`), which is NOT a defect: a Greek letter in prose
+renders correctly and needs no math zone.
+
+**How to apply:** two `stemsMistranscribed` entries converting the unit runs to a single math zone
+(`\(\Omega^{-1}\text{cm}^{2}\text{mol}^{-1}\)`). Deliberately not a general normaliser rule: the
+information is intact and the conversion is mechanical, but the *run boundary* is not — a general
+rule would have to decide where a unit expression starts and ends, with two rows of evidence to
+calibrate it against. The `from` field must be the POST-normalisation stem, so it can only be
+authored after the extractor's current rules have been re-run.
+
+
+### A shipped Maths option was repaired in `data/` only — re-running `assign.ts` would revert it
+
+**Found 2026-09-10** while proving the new math-wrapped-blank rule left every already-committed
+`mh-hsc-12-pyq` chapter untouched. Diffing all 32 committed chapters against a fresh full
+re-extract found **exactly one field that drifted, and it is not the blank rule**:
+`differentiation-12-pyq#10` option C reads **`-1` in `data/`** and **`--1` in the fresh draft**.
+
+**Why:** `assign.ts` REGENERATES `data/<id>.questions.json` from `out/<id>.draft.json`, so the
+committed `-1` has no upstream source. `defects.json` carries no entry for `#10`. The next person
+to re-run the promote chain on Differentiation — which is exactly what the halogen pilot needed
+here — silently reverts a live PUBLIC option to a double hyphen. This is the
+persist-fix-to-source-of-record shape: the fix reached the artifact and never reached the source
+of record, so it looks permanent and is not.
+
+**How to apply:** add a `defects.json` entry repairing `--1` → `-1` on that ref (an option fix
+asserting the current text, so it refuses on a mismatch rather than force-applying), then re-run
+`extract` → `assign` → `merge` for Differentiation and confirm the diff comes back empty. The DB
+row itself is already correct, so `content_hash` does not move and nothing needs a re-commit.
+
+### 11 shipped rows carry a literal `--` where the printed page has an en dash
+
+**Found in the same sweep.** Pandoc renders the source's en dash as a double hyphen, and 11 rows
+across four SHIPPED chapters carry it in both `data/` and the live DB — so it is not drift, it
+shipped that way: `semiconductors-12-pyq#14` (*"Exclusive -- OR (X -- OR) gate"*), `#15` options
+A/B/C (*"OR -- gate"*), `#16`, `thermodynamics-12-pyq#10`, `superposition-12-pyq#22`, and five
+`prob-distributions-12-pyq` table stems.
+
+**Why:** cosmetic, never answer-affecting — but it renders as a visible double hyphen on `/browse`
+AND in a teacher's downloaded Word paper, and `audit:text`'s `PANDOC_ARTIFACT` rule does not fire
+on it, so nothing catches the next one. Two different underlying characters are involved and they
+want different repairs: a dash used as PUNCTUATION (*"define -- (a) Mechanical…"*) wants an em or
+en dash, while `differentiation#10`'s `--1` is a MINUS SIGN and wants `-1`. A blanket `--` → `-`
+sweep would be wrong for the punctuation half.
+
+**How to apply:** fix at the source in `lib.ts` (`stripArtifacts`) so future chapters cannot carry
+it — a run of exactly two hyphens flanked by spaces is an en dash, one immediately before a digit
+is a minus — with the byte-identity regression across all 32 committed chapters as the acceptance
+criterion. Then decide separately whether to re-commit the 11 shipped rows: 6 of them are STEM
+edits, so `content_hash` moves and each needs delete-and-re-commit with its figures re-checked,
+which is why this is a permission gate and not a sweep. Extending `audit:text` to flag the class
+is the cheap half and can land first.
+
+
 ## 2026-09-09
 
 ### Gate `pyq_note` to superadmin on `/browse` — but it is doing TWO jobs and only one of them is staff-only

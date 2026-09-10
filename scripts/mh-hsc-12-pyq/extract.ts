@@ -24,6 +24,7 @@ import {
   splitImage,
   stripBlockquote,
   stripLeakedOptionRun,
+  unwrapProseRuns,
   type Provenance,
 } from "./lib";
 
@@ -77,6 +78,7 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
     optionsMistranscribed: { fixes: OptionFix[] };
     stemsMistranscribed: { fixes: { ref: string; from: string; to: string; consequence: string }[] };
     chapterRelocations: { moves: { ref: string; toChapter: string; why: string }[] };
+    imageMisattached?: { moves: { from: string; to: string; image: string; why: string }[] };
   };
   const log: string[] = [];
 
@@ -141,6 +143,37 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
       }
       log.push(`${rec.ref}: ${d.options.length} options recovered from the printed paper`);
     }
+  }
+
+  // A FIGURE ANCHORED TO THE WRONG QUESTION.
+  //
+  // pandoc attributes an embedded picture to the paragraph it sits in, and this
+  // compilation puts a reaction scheme at the HEAD of a paragraph — so the scheme
+  // belonging to question N is emitted inside question N-1. Found on the Chemistry
+  // pilot: `CH3CH2Cl --[AgCN, alc, heat]--> ?` landed on "Explain dehydrohalogenation
+  // of 2-chlorobutane" (which needs no figure and involves no AgCN) while
+  // "Complete the reaction:" one item later carried NO figure and was therefore
+  // unanswerable.
+  //
+  // Nothing downstream can see it. attach-images uploads whatever the row names,
+  // so the wrong picture ships silently and the row that needed one ships without.
+  // REFUSES unless the source row really carries that image and the target has
+  // none — a mis-typed move would otherwise overwrite a correct figure.
+  for (const mv of defects.imageMisattached?.moves ?? []) {
+    if (!mv.from.startsWith(`${chapterId}#`)) continue;
+    const src = drafts.find((x) => x.ref === mv.from);
+    const dst = drafts.find((x) => x.ref === mv.to);
+    if (!src || !dst) throw new Error(`imageMisattached names a ref this extraction did not produce: ${mv.from} -> ${mv.to}`);
+    if (src.image !== mv.image) {
+      throw new Error(
+        `${mv.from}: expected image ${mv.image} but it carries ${src.image ?? "none"} — REFUSING. ` +
+          `Re-adjudicate; the extraction changed under this move.`,
+      );
+    }
+    if (dst.image) throw new Error(`${mv.to}: already carries ${dst.image} — REFUSING to overwrite it`);
+    delete src.image;
+    dst.image = mv.image;
+    log.push(`${mv.image}: moved from ${mv.from} to ${mv.to} (${mv.why.slice(0, 60)}…)`);
   }
 
   // A stem the compilation copied wrong, where the question still READS as a
@@ -492,7 +525,18 @@ function main() {
   // reach. See applyDocumentRepairs.
   const repaired = applyDocumentRepairs(md.stdout, ch.id, defectsFile.itemNumberSwallowed?.fixes ?? []);
 
-  const lines = repaired.split("\n");
+  // Unwrap per-word `\text{}` prose BEFORE the item scan, not only per item.
+  //
+  // The Chemistry organic chapters typeset ordinary prose one word per math zone,
+  // and ITEM NUMBERS get caught in it — `\text{22. Why}`, `\text{13.   How}`. A
+  // number inside a zone is invisible to ITEM, which anchors on a line STARTING
+  // "<digits>. ", so the question is absorbed into its neighbour and vanishes:
+  // 6 Chemistry items were missing for exactly this reason, the same defect that
+  // cost Semiconductors its item 15.
+  //
+  // Running it per item (inside normaliseMath) is too late — by then the split
+  // has already happened. It runs in BOTH places, and is idempotent.
+  const lines = unwrapProseRuns(repaired).split("\n");
   const starts = lines.flatMap((l, i) => (ITEM.test(l) ? [i] : []));
   const drafts: Draft[] = [];
   const problems: string[] = [];

@@ -18,7 +18,34 @@ export type Provenance = {
 
 // e.g. "[Q. 1. (A) i., March 2015]" / "[Q. 27, 2025]" / "[Q. 30 (OR), March 2019\]"
 // pandoc escapes the closing bracket, hence the optional backslash.
-const TAG = /\[\s*(Q\.[^\]]*?)\s*,\s*(January|February|March|April)?\s*(\d{4})\s*\\?\]/;
+/** The board sits in Feb/March; Jan and Apr are kept from the original rule. */
+const MONTH = "January|February|March|April";
+
+/**
+ * The provenance tag, across all THREE subjects on this pipeline.
+ *
+ * Maths and Physics write one shape: `[Q. 4, March 2018]` — comma separator,
+ * month before year. CHEMISTRY writes neither consistently:
+ *
+ *   separator   comma OR period — `[Q.7.i. March 2017]` — and sometimes NEITHER,
+ *               where the number ends in a bracket: `[Q.27.A.(OR) March 2019]`.
+ *   date order  BOTH ways round, near 50/50 across its 399 tags: 180 read
+ *               "March 2017" and 179 read "2016 March".
+ *
+ * So the separator is optional and the date has two alternatives. The question
+ * number stays LAZY and the date is what anchors the match — that is what makes
+ * `Q.20. March 2019` yield `Q.20` rather than swallowing the period, and stops
+ * the number eating into the month.
+ *
+ * An unparsed tag makes the extractor DROP the item, so a rule too narrow here
+ * loses questions silently. Chemistry would have lost ~390 of 430.
+ */
+const TAG = new RegExp(
+  "\\[\\s*(Q\\.?[^\\]]*?)\\s*[,.]?\\s*(?:" +
+    `(?:(${MONTH})\\s+(\\d{4}))` + //  month year
+    `|(?:(\\d{4})(?:\\s+(${MONTH}))?)` + //  year [month]
+    ")\\s*\\\\?\\]",
+);
 
 /**
  * Read the `[Q. n, Month Year]` provenance tag.
@@ -35,11 +62,126 @@ const TAG = /\[\s*(Q\.[^\]]*?)\s*,\s*(January|February|March|April)?\s*(\d{4})\s
 export function parseProvenanceTag(text: string): Provenance | null {
   const m = TAG.exec(text);
   if (!m) return null;
+  // Two date alternatives: groups 2/3 are month-then-year, groups 4/5 are
+  // year-then-month (month optional — 14 Chemistry tags carry a bare year).
+  const month = m[2] ?? m[5] ?? null;
+  const year = Number(m[3] ?? m[4]);
   return {
     questionNumber: m[1].trim().replace(/\s+/g, " "),
-    month: m[2] ?? null,
-    year: Number(m[3]),
+    month,
+    year,
   };
+}
+
+/**
+ * Is this the content of a `\text{}` zone that is really PROSE?
+ *
+ * Deliberately conservative — when in doubt the zone is kept, because unwrapping
+ * a formula loses the upright styling that distinguishes it from a variable,
+ * whereas keeping a prose word merely leaves it looking as it already does.
+ *
+ * Rejected: anything with a digit (`Nylon-6`), an all-caps run of 2+ (`KOH`,
+ * `DNA`, `IUPAC`), or an internal capital (`NaCl`, `Buna-S`). A leading capital
+ * is fine — that is just a sentence opening.
+ *
+ * Accepted deliberately: a token carrying an option label or item number, such as
+ * `(A) Benzaldehyde` or `22. Why`. Those are exactly what must be released back
+ * into the text for the item scan and the option split to see them.
+ */
+const isProseToken = (t: string): boolean => {
+  const s = t.trim();
+  if (!s) return false;
+  if (/\d/.test(s) && !/^\s*\(?[A-Da-d]\)?[.)]?\s|^\s*\d{1,3}\.\s/.test(s)) return false;
+  const words = s.split(/\s+/);
+  return words.every((w) => {
+    const core = w.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, "");
+    if (!core) return true;
+    if (/^\d{1,3}$/.test(core)) return true; // a released item number
+    if (/\d/.test(core)) return false;
+    if (core.length > 1 && core === core.toUpperCase()) return false; // KOH, DNA
+    if (/[A-Z]/.test(core.slice(1))) return false; // NaCl, Buna-S
+    return /^[A-Za-z]/.test(core);
+  });
+};
+
+/**
+ * Is a LONE `\text{}` zone safe to release back into prose?
+ *
+ * Stricter than `isProseToken`, and it has to be: that predicate accepts `K` and
+ * `Kc`, both of which must stay wrapped — they are an equilibrium constant, not
+ * English. The extra condition is that EVERY word runs to at least three letters.
+ *
+ * That threshold is measured, not chosen. Across the Chemistry corpus the tokens
+ * it holds back are `Fe`, `Cu`, `Hg`, `Sc`, `At`, `Z`, `L atm`, `i`, `ii`, `a`,
+ * `b` — and EVERY chemical element symbol is one or two letters, so three is
+ * exactly the line between a symbol and a word. The price is ~20 short glue words
+ * ("of", "is", "in") that stay wrapped, which is the side of the trade that
+ * cannot corrupt a formula.
+ *
+ * Length alone is NOT enough, and the shipped Physics corpus is what proved it:
+ * `\(\text{mgr}\)` is an option of a Rotational Dynamics question — mass times
+ * gravity times radius — and it clears any length test. So a word must also
+ * contain a VOWEL. A formula is juxtaposed single-letter variables (`mgr`, `mgh`,
+ * `mvr`), which does not spell a pronounceable token; a word does. Conservative
+ * in the safe direction: it can only ever keep a zone wrapped.
+ */
+const isLoneProse = (t: string): boolean => {
+  if (!isProseToken(t)) return false;
+  const words = t.trim().split(/\s+/);
+  if (!words.length) return false;
+  return words.every((w) => {
+    const core = w.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, "");
+    if (!core) return true;
+    return core.length >= 3 && /[aeiouAEIOU]/.test(core);
+  });
+};
+
+/**
+ * Unwrap per-word `\text{}` zones back into prose.
+ *
+ * TWO passes, and they are separate because they answer different questions:
+ *
+ *   1. a RUN of two or more adjacent zones is prose by construction — the source
+ *      typed a whole sentence one word at a time — so each token is judged only
+ *      on whether it is a formula.
+ *   2. a LONE zone carries no such evidence, so it must clear the stricter
+ *      `isLoneProse` bar. Isolated zones are common (`Gabriel phthalimide
+ *      \(\text{synthesis}\)`, 236 of them in Chemistry plus 3 in shipped
+ *      Physics), and left wrapped they render as a font shift mid-sentence and,
+ *      because a math zone never breaks across lines, as an unbreakable unit.
+ *
+ * Handles BOTH delimiter forms, because this runs at two different points: on the
+ * whole pandoc document BEFORE items are split (where zones are still `$...$` and
+ * releasing a swallowed item number is the whole point), and again per item after
+ * `normaliseMath` has converted them to `\(...\)`. Idempotent, so running twice is
+ * the same as running once.
+ */
+export function unwrapProseRuns(text: string): string {
+  const FORMS = [
+    String.raw`\\\(\\text\{([^{}\\]*)\}\\\)`, //  \(\text{x}\)
+    String.raw`\$\\text\{([^{}$]*)\}\$`, //       $\text{x}$
+  ];
+  let out = text;
+  for (const ZONE of FORMS) {
+    const RUN = new RegExp(`(?:${ZONE}(?:[ ,]+|$)){2,}`, "g");
+    const ONE = new RegExp(ZONE, "g");
+    out = out.replace(RUN, (run) => {
+      const parts: string[] = [];
+      let last = 0;
+      for (const m of run.matchAll(ONE)) {
+        parts.push(run.slice(last, m.index)); // the separator that preceded it
+        parts.push(isProseToken(m[1]) ? m[1] : m[0]);
+        last = (m.index ?? 0) + m[0].length;
+      }
+      parts.push(run.slice(last));
+      return parts.join("");
+    });
+    // Second pass: whatever survived the run pass is, by definition, alone.
+    out = out.replace(new RegExp(ZONE, "g"), (whole, inner: string) =>
+      isLoneProse(inner) ? inner : whole,
+    );
+  }
+  return out;
 }
 
 /** Unicode → LaTeX. Only glyphs actually present in the source are listed. */
@@ -73,6 +215,60 @@ export function normaliseMath(text: string): string {
 
   // $...$ -> \(...\). Skip if already converted (idempotence).
   out = out.replace(/\$([^$]+)\$/g, (_, inner) => `\\(${inner}\\)`);
+
+  // PROSE TYPESET AS PER-WORD MATH — unwrap it.
+  //
+  // The Chemistry compilation's ORGANIC chapters wrap every word of ordinary
+  // prose in its own zone: `\(\text{Write}\) \(\text{the}\) \(\text{structure}\)`.
+  // 138 of its 430 items (32%) carry such a run; chapters 01-08 carry none, so
+  // the organic half was typed by a different hand. Maths and Physics have zero.
+  //
+  // It is not merely ugly. Option labels and ITEM NUMBERS get swallowed into the
+  // run — real examples are `\text{(A) Benzaldehyde}` and `\text{22. Why}` — so
+  // 14 MCQs failed to split and shipped as free-response, and 6 questions were
+  // never recognised as items at all. Unwrapping releases both.
+  //
+  // A RUN means two or more adjacent zones: a LONE `\text{}` is usually a real
+  // label inside a formula, not prose. Within a run a token that is not plain
+  // English keeps its zone, because a chemical formula is not prose — `KOH` and
+  // `Nylon-6` stay wrapped while `reaction` and `with` do not.
+  out = unwrapProseRuns(out);
+
+  // AN OPTION LABEL TRAPPED IN A LONE `\text{}` ZONE.
+  //
+  // The run-unwrap above needs two adjacent zones. Chemistry also produces a
+  // SINGLE zone carrying the first option label with its text —
+  // `\(\text{ (A)Finkelstein}\) reaction (B) Swarts reaction (C) … (D) …` — where
+  // the other three labels are already prose. The option list is complete on the
+  // page and invisible to splitOptions, so the A-D run never matches and the row
+  // ships as free-response with its options glued into the stem.
+  //
+  // 10 of the 13 Chemistry rows that failed to split are exactly this shape, so it
+  // earns a rule rather than ten hand-written recoveries. Safe because an option
+  // label is never legitimately inside math: releasing one cannot damage a
+  // formula, and a zone with no label is left untouched.
+  out = out.replace(/\\\(\\text\{([^{}]*\(\s*[A-Da-d]\s*\)[^{}]*)\}\\\)/g, "$1");
+
+  // The same defect one variant wider: the label sits in a `\text{}` that OPENS a
+  // LARGER zone, so it is welded to the formula that follows it —
+  //
+  //     \(\text{ (A) Na}\left\lbrack \text{Fe}\left( \text{CN} \right)_{6} \right\rbrack\)
+  //
+  // The rule above cannot see it, because that one requires the whole zone to be
+  // a single `\text{}`. Lift the label into prose and REOPEN the zone, so the
+  // formula stays math rather than being flattened.
+  //
+  // Measured: 1 row corpus-wide (Coordination #12), 0 in the shipped chapters —
+  // and it surfaced ONLY because commit.ts refuses to ship a known MCQ as
+  // free-response. Nothing upstream sees it; the four options are plainly on the
+  // page throughout. Same justification as above, which is why it lives here
+  // rather than as a hand-written repair: an option label is never legitimately
+  // inside math, and a single A-D letter is what distinguishes it from a state
+  // symbol such as `(aq)`.
+  out = out.replace(
+    /\\\(\\text\{\s*(\(\s*[A-Da-d]\s*\))\s*/g,
+    "$1 \\(\\text{",
+  );
 
   out = out.replace(/\\begin\{vmatrix\}/g, "\\begin{bmatrix}");
   out = out.replace(/\\end\{vmatrix\}/g, "\\end{bmatrix}");
@@ -248,6 +444,50 @@ export function stripArtifacts(text: string): string {
   // piecewise p.d.f. definitions are laid out with runs of them) and converts
   // fine. Only the trailing position is both useless and harmful.
   out = out.replace(/(?:\\[ \t])+(?=\\\))/g, "");
+
+  // A FILL-IN-THE-BLANK TYPESET AS A MATH ZONE — `\(_____\)`.
+  //
+  // Inside math `_` is the SUBSCRIPT operator, so a run of them is not meaningful
+  // LaTeX. KaTeX tolerates it and the OMML converter does not, so it renders fine
+  // on the card and ships as raw LaTeX in a teacher's downloaded Word answer key
+  // — the same invisible-until-Word shape as the trailing thin space.
+  //
+  // 15 stems across 7 Chemistry chapters; ZERO in the shipped Maths and Physics
+  // corpora, which write the blank as plain underscores in prose. This restores
+  // that form. Keyed on a zone that is ONLY underscores (escaped or not), so a
+  // genuine subscript such as `\(\Delta n_{g}\)` is untouched.
+  out = out.replace(/\\\(\s*((?:\\?_)+)\s*\\\)/g, "$1");
+
+  // A COMPILATION SECTION HEADING SWALLOWED BY THE STEM BEFORE IT.
+  //
+  // The Chemistry compilation groups its questions under its own bold headings
+  // ("**II. Colligative Property Calculations**"). Where one follows the previous
+  // section's last question with no blank line, pandoc keeps it in that
+  // paragraph and it lands at the END of that question's stem — 14 rows across 6
+  // chapters, all Chemistry. No board paper prints an LWS heading, so this is
+  // definitively ours; and no gate can see it, because the fragment is perfectly
+  // well-formed markdown and is wrong only in that it is not the question.
+  //
+  // Reported independently by three authoring agents on three different chapters
+  // before it was measured, which is what makes it a rule rather than fourteen
+  // hand-written repairs.
+  //
+  // Matches to the END OF THE STRING rather than to the heading's own closing
+  // `**`, because a heading CONTAINING MATH has its bold broken into several runs
+  // by pandoc — an end-anchored `[^*]` pattern reported one such chapter clean
+  // while an agent that had read the row reported the defect. The discriminators
+  // are an UPPERCASE roman numeral (sub-items in this source are lowercase and
+  // parenthesised) followed by a Title Case word, and at least THREE characters
+  // of real content ahead of it — so a field that is ONLY a heading is left
+  // intact, since that is a different defect and emptying it would hide it.
+  //
+  // Three, not more, because this also runs on OPTION text, where the real
+  // content is naturally short: a Solid State option is `\(\text{NiO}\)` with a
+  // heading glued after it, and any floor above 14 leaves it broken. And three,
+  // not one, because a floor of 1 lets the prefix absorb a LEADING SPACE and a
+  // heading-only field then matches after all — which I had reasoned was
+  // impossible at every floor, and is not. Measured across all five real shapes.
+  out = out.replace(/^([\s\S]{3,}?)\s*\*\*\s*[IVX]{1,5}\.\s+[A-Z][\s\S]*$/, "$1");
 
   return collapseSpaces(out);
 }
