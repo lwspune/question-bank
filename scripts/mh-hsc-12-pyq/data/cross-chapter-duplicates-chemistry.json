@@ -1,0 +1,531 @@
+{
+  "_readme": [
+    "Cross-chapter adjudication for the MH HSC Class-12 CHEMISTRY board-PYQ compilation.",
+    "",
+    "The compilation files ONE printed board question into more than one chapter, in three",
+    "different ways, and they need different treatment:",
+    "  pairs      a true duplicate    -> keep one copy, drop the other",
+    "  compounds  a multi-part question whose halves belong to different chapters -> SPLIT,",
+    "             each copy trimmed to its own half (the user's standing call, made on Physics)",
+    "  (also seen) a TRUNCATION, where one copy lost its content and the other is intact.",
+    "             Handled as a pair keeping the intact copy.",
+    "",
+    "SCOPE — COMPLETE as of 2026-09-10 (was deliberately partial while Halogen Derivatives",
+    "was the pilot). 29 printed board questions are adjudicated across the 16 Chemistry",
+    "chapters: 20 pair items over 19 tags, and 11 compounds producing 17 trims. 20 rows are",
+    "dropped and 17 trimmed. Q.26 March 2023 appears in both lists — it has three copies, one",
+    "of which is dropped while the other two are split. ONE group is knowingly LEFT",
+    "UNADJUDICATED and is described at the bottom of this readme. `expectedCounts` lists every",
+    "chapter a group touches; dedupe checks just those, so an unlisted chapter is left alone",
+    "rather than silently mis-reconciled. Add a group and its counts together, or the",
+    "reconciliation will disagree.",
+    "",
+    "HOW THE GROUPS WERE FOUND — TWO SIGNALS, because neither alone is sufficient, and that",
+    "is measured rather than assumed (scan: out/_chem_dupes.js).",
+    "",
+    "  STEM KEY. The key MUST keep \\text{} content. Chemistry puts the words themselves",
+    "  inside math zones, so a key that strips \\(...\\) — correct for Maths and Physics, where",
+    "  a zone holds a formula — compares two empty stems and calls 'Rosenmund reduction' a",
+    "  duplicate of 'Fischer esterification'. That mistake hid 5 real groups and invented a",
+    "  false one. Unwrap \\text{X} to X, drop other commands, then normalise. 16 links.",
+    "",
+    "  TAG. The stem key CANNOT find [Q.7.ii, 2014 March], whose three copies disagree about",
+    "  the reaction they print and sit as low as dice 0.500 on bigram similarity — below any",
+    "  usable fuzzy threshold. A tag (question number + sitting) names ONE printed board",
+    "  question, so the same tag under two chapters is a group. 35 links — but MOST ARE NOT",
+    "  ACTIONABLE: where two copies under one tag share NO text (chem-thermodynamics#1 'first",
+    "  law' vs d-f-block#25 'zone of reduction in a blast furnace', both Q.4.i March 2015) the",
+    "  compiler had ALREADY trimmed each copy to its own half, so there is nothing to do. A",
+    "  tag group is actionable only when one copy CONTAINS another's text.",
+    "",
+    "A fuzzy pass at dice >= 0.60 is a third net; it contributed 2 groups and 6 false",
+    "positives ('weakest acid' vs 'weakest base'; 'not a colligative property' vs 'not",
+    "present in DNA'), so it is triage, never a verdict.",
+    "",
+    "AND NEITHER SIGNAL FINDS EVERYTHING — RE-SCAN THE POST-DEDUPE STATE. Q.26 March 2023 has",
+    "THREE copies, and the third (aldehydes-ketones-acids#29, tagged Q.26.ii) had already been",
+    "trimmed by the compiler to a single clause. Before the ledger runs it matches neither the",
+    "whole copy's stem key nor its tag, so both signals miss it; it appears only once the",
+    "whole copy has been trimmed to that same clause and the two become identical. The scan",
+    "was therefore re-run against a simulated post-dedupe state, and that is where it surfaced.",
+    "",
+    "HOW OWNERSHIP WAS DECIDED — from the bank, not from topic feel. Every subtopic below",
+    "was checked against the 727 Balbharati practice rows that already sit in these chapters,",
+    "and in several cases the bank contradicted the obvious guess:",
+    "  - 'spin only magnetic moment' -> Transition and Inner Transition Elements ->",
+    "    TRENDS IN ATOMIC PROPERTIES, not 'Common Properties of d-Block Elements'. The bank",
+    "    holds the identical question (divalent cation, atomic number 25) filed there.",
+    "  - Delta n_g / the Delta-H-vs-Delta-U relation -> Chemical Thermodynamics -> 'Enthalpy",
+    "    and Enthalpies of Physical Transformations'; the bank holds 'Obtain the relationship",
+    "    between Delta H and Delta U for gas phase reactions' there.",
+    "  - Henry's law -> Solutions -> 'Solubility and Capacity to Dissolve Solute'; the bank",
+    "    holds this very CH3Br question there.",
+    "  - acid anhydride + amine -> Amines -> 'Chemical Properties of Amines' (acylation);",
+    "    dry ice + Grignard -> 'Preparation of Carboxylic Acids'; cis/trans and ionisation",
+    "    isomers -> 'Isomerism in Coordination Compounds'; hybridisation/geometry of a complex",
+    "    -> 'Theories of Bonding in Complexes'; nitro compound + Sn/conc.HCl -> 'Preparation",
+    "    of Amines'; nanoscience -> 'Introduction to Nanochemistry'.",
+    "",
+    "POLYMERS IS A MIS-FILE EVERY TIME IT APPEARS AS A WHOLE-QUESTION COPY. The alkaline",
+    "hydrolysis of tert-butyl bromide, Gabriel phthalimide synthesis and BHA/BHT are not",
+    "polymer chemistry; the compiler swept a multi-part question into whichever chapter one",
+    "clause matched. Where the question genuinely has a polymer clause it is SPLIT, not moved.",
+    "",
+    "THREE PARTS HAVE NO HOME CHAPTER AND ARE DROPPED BY THE TRIM, which is stated in each",
+    "`why` rather than left to be discovered: 'What are broad-spectrum antibiotics?',",
+    "'Explain cationic detergents' and 'Write the molecular formula ... of BHA and BHT' all",
+    "belong to the OLD-syllabus Chemistry-in-Everyday-Life chapter, which is not one of this",
+    "exam's 16. Two more are dropped for a different reason — 'Define: Vulcanization' and",
+    "'Give electronic configuration of Gd' DO have a home chapter (Polymers, and Transition",
+    "and Inner Transition Elements) but no copy of that sitting was filed there, so there is",
+    "no row to receive them.",
+    "",
+    "THE ONE GROUP LEFT UNADJUDICATED — [Q.31, March 2022], halogen-derivatives#7 vs",
+    "alcohols-phenols-ethers#21. The printed question is 'Write chemical reactions for the",
+    "following conversions:' followed by four sub-items: (i) ethyl bromide to ethyl methyl",
+    "ether (Williamson — Alcohols/Ethers), (ii) ethyl bromide to ethene (dehydrohalogenation),",
+    "(iii) bromobenzene to toluene (Wurtz-Fittig), (iv) chlorobenzene to biphenyl (Fittig) —",
+    "the last three all Halogen Derivatives. The compiler ALREADY trimmed the Alcohols copy",
+    "to sub-item (i) alone and left the Halogen copy whole. It cannot be split here because",
+    "the Halogen half sits AFTER a shared instruction line: `take: \"before\"` yields the",
+    "Alcohols half and `take: \"after\"` yields '(ii) Ethyl bromide to ethene...' with no",
+    "instruction verb at all. Dropping the Alcohols copy would file a Williamson ether",
+    "synthesis under Halogen Derivatives; doing nothing leaves sub-item (i) in two chapters,",
+    "which is the state today and harms nothing. Left alone deliberately — it needs either a",
+    "trim primitive that can cut a RANGE, or a hand edit in defects.json."
+  ],
+  "pairs": [
+    {
+      "_group": "[Q.7.ii, 2014 March] — THREE copies that disagree about the reaction they print",
+      "_finding": "CORRECTED 2026-09-10, and the correction reverses the original verdict. This pair was first adjudicated the other way round — keep the d/f-block copy, drop the Halogen one as 'truncated and unanswerable' — on a reading of the STEM TEXT alone. The Halogen stem does end at the colon, and that is correct: it carries the equation as a FIGURE (image4.png), so the row is complete. Reading that figure also shows the d/f-block copy is the corrupted one, and a THIRD copy exists in Aldehydes carrying the printed equation as text. Halogen is now kept and both others are dropped.",
+      "items": [
+        {
+          "keep": "halogen-derivatives-12-pyq#3",
+          "drop": "d-f-block-12-pyq#2",
+          "tag": "[Q.7.ii, 2014 March]",
+          "useText": "halogen-derivatives-12-pyq#3",
+          "defect": "The DROPPED d/f-block copy mis-transcribes both reagents. It prints conc. H2SO4 over heat where the paper prints 423-600 K, and Br2/KOH where the paper prints Sn/conc. HCl. Neither substitution is survivable chemistry: vapour-phase nitration of an alkane does not use sulphuric acid (those are aromatic nitration conditions), and Br2/KOH is the Hofmann bromamide degradation, which acts on an amide and does nothing to a nitroalkane. It also carries the corpus's only nested \\(\\( math zone.",
+          "why": "The figure the Halogen copy carries settles what the paper printed: CH3-CH3 + HNO3 --[423-600 K]--> 'A' --[Sn/conc. HCl]--> 'B' + H2O, i.e. vapour-phase nitration of ethane to nitroethane and then reduction to ethylamine — a coherent two-step sequence the textbook teaches. The kept copy's stem plus that figure is the faithful record; the dropped copy's equation is wrong in both reagents. NEITHER CHAPTER IS CHEMICALLY RIGHT: nitration followed by reduction of a nitro compound is an AMINES question, and the bank files 'Nitrobenzene --Sn/Conc.HCl--> ?' under Preparation of Amines. No Amines copy of this sitting exists, and this ledger can only keep, drop or trim rows that exist — so the chapter is left to be revisited (it needs a chapterRelocation in defects.json), because keeping the copy with the CORRECT equation matters more than which of three wrong chapters holds it. Subtopic deliberately unset for the same reason: the Halogen Derivatives axis has no honest home for it."
+        },
+        {
+          "keep": "halogen-derivatives-12-pyq#3",
+          "drop": "aldehydes-ketones-acids-12-pyq#11",
+          "tag": "[Q.7.ii, 2014 March]",
+          "useText": "halogen-derivatives-12-pyq#3",
+          "why": "The third copy of the same sitting, found by the tag scan. It transcribes the printed equation CORRECTLY as native LaTeX — it is what confirmed the figure independently — but Aldehydes is a mis-file with no carbonyl anywhere in the question, and the kept copy already carries the reaction as its figure. Its text is deliberately NOT taken across: doing so would leave the row showing the same equation twice, once as text and once as the picture."
+        }
+      ]
+    },
+    {
+      "_group": "Transition and Inner Transition Elements <-> Coordination Compounds",
+      "_finding": "Five tags. The compiler cross-files anything mentioning a transition-metal ion between the two chapters. The axis separates them cleanly: a BARE ion is d-block, a LIGAND-BEARING complex is coordination chemistry.",
+      "items": [
+        {
+          "keep": "d-f-block-12-pyq#11",
+          "drop": "coordination-12-pyq#16",
+          "tag": "[Q.1.iv, 2023 March]",
+          "subtopic": "Trends in Atomic Properties",
+          "useText": "d-f-block-12-pyq#11",
+          "why": "Spin-only magnetic moment of the FREE Mn2+ ion — d5, so 5.916 BM. No ligand is named, so nothing here is coordination chemistry. The bank files the identical question shape (divalent cation of a transition metal, atomic number 25) under Trends in Atomic Properties, which is why that subtopic is used rather than the more obvious-sounding 'Common Properties of d-Block Elements'. The dropped copy's option A carries a stray LaTeX thin space."
+        },
+        {
+          "keep": "d-f-block-12-pyq#13",
+          "drop": "coordination-12-pyq#18",
+          "tag": "[Q.1.i, 2024 March]",
+          "subtopic": "Trends in Atomic Properties",
+          "useText": "d-f-block-12-pyq#13",
+          "why": "Same question one year later for Cr3+ — d3, so 3.873 BM. Same axis argument, same defect in the dropped copy (a stray thin space in option A)."
+        },
+        {
+          "keep": "d-f-block-12-pyq#16",
+          "drop": "coordination-12-pyq#20",
+          "tag": "[Q.21.a, 2025 March]",
+          "subtopic": "Trends in Atomic Properties",
+          "useText": "coordination-12-pyq#20",
+          "why": "Spin-only moment of M2+ where Z(M) = 26, i.e. Fe2+ (d6, 4.90 BM) — again a bare ion. The DROPPED copy is the better text and is carried across: the kept copy has a section heading from the compilation glued onto the end of its stem ('II. Inner Transition Elements (f-Block) - Lanthanides and Actinides'), which would ship as part of the question."
+        },
+        {
+          "keep": "coordination-12-pyq#21",
+          "drop": "d-f-block-12-pyq#3",
+          "tag": "[Q.5.ii, 2015 March]",
+          "subtopic": "Isomerism in Coordination Compounds",
+          "useText": "coordination-12-pyq#21",
+          "defect": "The two copies print DIFFERENT option sets and neither is clean. The d/f-block copy's option C, [Cr(NH3)3Cl3]SO4, cannot exist — a neutral complex ion cannot carry a sulphate counter-ion. The Coordination copy's options A and C, [Cr(NH3)4SO4]Cl and [Cr(NH3)4Cl]SO4, are a proper ionisation-isomer pair but give chromium a coordination number of 5 where the printed pair is almost certainly [Cr(NH3)5SO4]Cl / [Cr(NH3)5Cl]SO4. The option list needs verifying against the March 2015 paper.",
+          "why": "Which complex gives a white precipitate with barium nitrate — the answer turns on which copy has free sulphate OUTSIDE the coordination sphere, i.e. on ionisation isomerism, which the Coordination chapter owns and the d/f-block chapter does not teach. The bank files 'What are ionization isomers?' under this subtopic. The kept copy's text is used because its option set preserves the isomer PAIR that makes the question work, leaving exactly one answerable option; the dropped copy's set contains an impossible formula."
+        },
+        {
+          "keep": "coordination-12-pyq#15",
+          "drop": "d-f-block-12-pyq#6",
+          "tag": "[Q.6.ii, 2018 March]",
+          "subtopic": "Theories of Bonding in Complexes",
+          "useText": "coordination-12-pyq#15",
+          "why": "Geometry of [Co(NH3)6]3+ from hybridisation — valence bond theory applied to a complex ion, which is a Coordination Compounds topic outright; the d/f-block chapter teaches no bonding theory. The bank files box-orbital/hybridisation questions about complexes under this subtopic. The kept copy also ends its sentence with a full stop where the dropped one does not."
+        }
+      ]
+    },
+    {
+      "_group": "Transition and Inner Transition Elements <-> the organic chapters",
+      "_finding": "Two stray pastes with no chemical connection at all to the chapter they landed in.",
+      "items": [
+        {
+          "keep": "d-f-block-12-pyq#20",
+          "drop": "aldehydes-ketones-acids-12-pyq#33",
+          "tag": "[Q.8.i, 2018 March]",
+          "subtopic": "Lanthanoids",
+          "useText": "d-f-block-12-pyq#20",
+          "why": "Lanthanide contraction is taught in the Lanthanoids section of the d/f-block chapter; the Aldehydes copy is a stray paste. The two transcriptions differ in wording — 'Explain what is lanthanide contraction?' against 'What is lanthanide contraction?' — and neither can be checked against the paper, so the kept copy's own plain-text version is used rather than the dropped copy, whose every word sits inside a math zone."
+        },
+        {
+          "keep": "biomolecules-12-pyq#13",
+          "drop": "aldehydes-ketones-acids-12-pyq#39",
+          "tag": "[Q.6.v, 2015 March]",
+          "subtopic": "Proteins",
+          "useText": "aldehydes-ketones-acids-12-pyq#39",
+          "why": "Classification of proteins by molecular shape (fibrous vs globular) is Biomolecules; the Aldehydes copy is a stray paste. Text taken from the DROPPED copy, which writes the sentence in plain prose where the kept one wraps its last word in a math zone for no reason."
+        }
+      ]
+    },
+    {
+      "_group": "Organic chapters cross-filed with each other",
+      "_finding": "Five tags where two organic chapters both claim a question. Each is decided by asking which functional group the question is ABOUT, not which one appears in it.",
+      "items": [
+        {
+          "keep": "amines-12-pyq#21",
+          "drop": "aldehydes-ketones-acids-12-pyq#42",
+          "tag": "[Q.1.viii, 2022 March]",
+          "subtopic": "Chemical Properties of Amines",
+          "useText": "aldehydes-ketones-acids-12-pyq#42",
+          "why": "An acid anhydride acylating a primary amine gives an amide. Both reagents are named, so either chapter is arguable — the bank settles it: 'What is the action of acetic anhydride on ethylamine, diethylamine and triethylamine?' sits in Amines under Chemical Properties, because acylation is taught there as a reaction OF the amine. Text from the dropped copy: the kept copy's stem reads 'which functional group_______ .', a question mark replaced by a fill-in blank, while the dropped one asks the question cleanly. The cost is a stray thin space in its option A."
+        },
+        {
+          "keep": "amines-12-pyq#16",
+          "drop": "aldehydes-ketones-acids-12-pyq#29",
+          "tag": "[Q.26.ii, 2023 March]",
+          "subtopic": "Classification and Nomenclature of Amines",
+          "useText": "amines-12-pyq#16",
+          "why": "The THIRD copy of Q.26 March 2023 (see the compound of the same tag below, which splits the whole copy). The compiler had already trimmed this one to the amine-nomenclature clause alone and then filed it under Aldehydes, where methylphenylamine has no business being. Once amines-12-pyq#16 is trimmed to that same clause the two are identical, so this copy is dropped. Its transcription is marginally the plainer of the two — it writes 'IUPAC' and 'methylphenylamine' as prose where the kept copy puts each in its own math zone — but taking it would need a zero-length trim to combine with the split, and KaTeX renders both identically, so it is not worth the obscurity."
+        },
+        {
+          "keep": "aldehydes-ketones-acids-12-pyq#22",
+          "drop": "biomolecules-12-pyq#20",
+          "tag": "[Q.6.iii, 2017 March]",
+          "subtopic": "Preparation of Carboxylic Acids",
+          "useText": "biomolecules-12-pyq#20",
+          "why": "Dry ice is solid CO2 and the route is a Grignard reagent carbonated to a carboxylic acid — the bank holds 'Acetic acid is prepared from methyl magnesium bromide and dry ice' under exactly this subtopic. Biomolecules is a stray paste. Text from the DROPPED copy because the kept copy misnames the product 'ethanoyl acid', which is not a compound (ethanoyl is the acyl group); the dropped copy says ethanoic acid, at the cost of a doubled question mark."
+        },
+        {
+          "keep": "aldehydes-ketones-acids-12-pyq#40",
+          "drop": "alcohols-phenols-ethers-12-pyq#24",
+          "tag": "[Q.11, 2020 February]",
+          "subtopic": "Preparation of Aldehydes and Ketones",
+          "useText": "aldehydes-ketones-acids-12-pyq#40",
+          "why": "The reaction is carried in the figure, so it was read from the image: benzene + CH3COCl over AlCl3 (Friedel-Crafts acylation) gives A = acetophenone, then Zn-Hg/conc.HCl (Clemmensen reduction) gives B = ethylbenzene. There is no alcohol, phenol or ether anywhere in it. Filed on the dominant first task, since a row carries one subtopic — Friedel-Crafts acylation is the standard preparation of an aryl ketone; the second step, Clemmensen, would file under Chemical Properties, where the bank keeps the analogous Wolff-Kishner question. The kept copy also carries the higher-resolution render of the equation (70 kB against 21 kB)."
+        },
+        {
+          "keep": "alcohols-phenols-ethers-12-pyq#4",
+          "drop": "aldehydes-ketones-acids-12-pyq#14",
+          "tag": "[Q.24, 2024 March]",
+          "subtopic": "Alcohols and Phenols",
+          "useText": "alcohols-phenols-ethers-12-pyq#4",
+          "why": "Read from the figure: CH3CH2OH --red P/Br2--> A --alc. KCN--> B --LiAlH4/ether--> C, i.e. ethanol to ethyl bromide to propanenitrile to propan-1-amine. Nothing in the chain is an aldehyde, ketone or acid, so the Aldehydes copy is a plain mis-file. Of the two chapters that hold a copy, Alcohols is the right one: the substrate is ethanol and step one is a reaction of an alcohol. Worth recording that the TRUEST home is Halogen Derivatives — two of the three steps act on the alkyl halide — but no copy was filed there, and this ledger can only keep, drop or trim rows that exist. The kept copy also writes 'in THE following chain reaction' where the dropped one loses the article."
+        }
+      ]
+    },
+    {
+      "_group": "Polymers as a dumping ground",
+      "_finding": "Two tags where the whole question was pasted into Polymers and none of it is polymer chemistry. Where a question genuinely has a polymer clause it is SPLIT instead; see `compounds`.",
+      "items": [
+        {
+          "keep": "alcohols-phenols-ethers-12-pyq#9",
+          "drop": "polymers-12-pyq#9",
+          "tag": "[Q.8.ii, 2017 March]",
+          "subtopic": "Alcohols and Phenols",
+          "useText": "either",
+          "why": "Three parts, none of them polymer chemistry: the SN1 mechanism of alkaline hydrolysis of tert-butyl bromide, the definition of carbolic acid (phenol), and its preparation from benzene sulphonic acid. Two of the three are phenol chemistry and the bank holds six phenol-preparation rows under Alcohols and Phenols, so the Alcohols copy is kept whole. It is NOT split: the first clause is Halogen Derivatives chemistry and that chapter holds no copy of this sitting, so trimming it away would delete a board question part with no row to receive it. The two transcriptions are byte-identical."
+        },
+        {
+          "keep": "polymers-12-pyq#8",
+          "drop": "halogen-derivatives-12-pyq#5",
+          "tag": "[Q.6.iv, 2016 March]",
+          "subtopic": "Some Important Polymers",
+          "useText": "polymers-12-pyq#8",
+          "why": "Two parts: 'What are broad-spectrum antibiotics?' and 'How are polythene and neoprene prepared?'. NEITHER is Halogen Derivatives, so that copy is a mis-file in whole. The compiler had already trimmed the Polymers copy to the polymer half, which the bank backs with six polythene/neoprene rows under Some Important Polymers, so keeping it is a clean drop rather than a trim. The antibiotics half is lost, and that is deliberate: broad-spectrum antibiotics belong to the old-syllabus Chemistry-in-Everyday-Life chapter, which is not one of this exam's 16, so it has no home to be moved to."
+        }
+      ]
+    },
+    {
+      "_group": "A physical-chemistry topic filed under the element chapter it happens to mention",
+      "_finding": "Three tags. Elements of Groups 16, 17 and 18 collects any question naming sulphur, oxygen or a halogen, whatever the question is actually testing.",
+      "items": [
+        {
+          "keep": "chem-thermodynamics-12-pyq#33",
+          "drop": "p-block-12-pyq#12",
+          "tag": "[Q.1.v, 2025 March]",
+          "subtopic": "Enthalpy and Enthalpies of Physical Transformations",
+          "useText": "either",
+          "why": "Delta n_g for oxidising 4 mol of SO2 to SO3: 4SO2 + 2O2 -> 4SO3, so 4 - 6 = -2. Delta n_g exists only inside Delta H = Delta U + Delta n_g RT and the sulphur is incidental. The bank files 'Obtain the relationship between Delta H and Delta U for gas phase reactions' under this subtopic, so it is not a judgement call. The two transcriptions are byte-identical."
+        },
+        {
+          "keep": "solid-state-12-pyq#3",
+          "drop": "p-block-12-pyq#24",
+          "tag": "[Q.4.ii, 2016 March]",
+          "subtopic": "Classification of Crystalline Solids",
+          "useText": "either",
+          "why": "Iodine exists as a non-polar molecular solid. The four options are the four classes of molecular and ionic solid, so what is being tested is the classification, not iodine — the p-block copy is a mis-file. The bank files 'Distinguish between ionic solids and molecular solids' under this subtopic. Byte-identical transcriptions."
+        },
+        {
+          "keep": "solutions-12-pyq#20",
+          "drop": "halogen-derivatives-12-pyq#21",
+          "tag": "[Q.11, 2024 March]",
+          "subtopic": "Solubility and Capacity to Dissolve Solute",
+          "useText": "solutions-12-pyq#20",
+          "why": "Henry's law: solubility of a gas from its constant and partial pressure. The only connection to Halogen Derivatives is that the dissolved gas happens to be CH3Br, which the question never reacts. The bank holds this very question under Solutions -> Solubility and Capacity to Dissolve Solute. The kept copy's text is used because the dropped one typesets the decimals with a middle dot ('0 cdot 159'). Note the same question was set again in March 2022 (solutions-12-pyq#18) — a genuine recurrence across sittings, deliberately NOT deduped."
+        }
+      ]
+    },
+    {
+      "_group": "An electrochemistry numerical filed under Chemical Thermodynamics",
+      "_finding": "One tag. The question asks for Delta G, which reads as thermodynamics until you notice it is a cell reaction and the datum given is a standard cell potential.",
+      "items": [
+        {
+          "keep": "electrochemistry-12-pyq#16",
+          "drop": "chem-thermodynamics-12-pyq#17",
+          "tag": "[Q.4.ii, 2015 March]",
+          "subtopic": "Thermodynamics of Galvanic Cells",
+          "useText": "either",
+          "why": "Mg(s) + Sn2+ -> Mg2+ + Sn(s) at stated concentrations with E(cell, standard) = 2.23 V: the route is the Nernst equation for E and then Delta G = -nFE. Chemical Thermodynamics has no electrochemistry subtopic on its axis and so cannot own it; Electrochemistry names this exact combination, and the bank holds a Ni/Cu2+ question of the same shape under it. Byte-identical transcriptions."
+        }
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "tag": "[Q.10, 2024 March]",
+      "_why": "One printed 2-part question: (a) an ETHER preparation and (b) a nucleophilic substitution ON AN ALKYL HALIDE. The compilation filed the whole question into both chapters; each half belongs to one of them.",
+      "parts": [
+        {
+          "ref": "alcohols-phenols-ethers-12-pyq#19",
+          "splitAt": "(b) ethyl cyanide",
+          "take": "before",
+          "subtopic": "Ethers",
+          "why": "Preparation of diethyl ether from ethyl bromide — Williamson synthesis. The ether is the product, so this half is Alcohols, Phenols and Ethers. The substrate is printed ONCE, after (b), and governs both halves, so the `before` cut loses it — without the append this stem names no starting material and stops being the two-products-from-one-substrate question the board set. Verified against the source .docx by the authoring pass.",
+          "append": " from ethyl bromide."
+        },
+        {
+          "ref": "halogen-derivatives-12-pyq#11",
+          "splitAt": "(b) ethyl cyanide",
+          "take": "after",
+          "subtopic": "Nucleophilic Substitution Reactions of Alkyl Halides",
+          "why": "Ethyl cyanide from ethyl bromide — nucleophilic substitution of the halide by cyanide. The alkyl halide is the substrate and the reaction is its characteristic one, so this half is Halogen Derivatives."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.5.i, 2014 March]",
+      "_why": "Three parts: C3H8O isomers with IUPAC names, two uses of phenol, then the reactions of glucose. The first two are one chapter's and the third is another's, and both copies carry all three.",
+      "parts": [
+        {
+          "ref": "alcohols-phenols-ethers-12-pyq#1",
+          "from": "biomolecules-12-pyq#1",
+          "splitAt": "What happens when glucose",
+          "take": "before",
+          "subtopic": "Nomenclature",
+          "why": "All isomers of C3H8O — propan-1-ol, propan-2-ol and methoxyethane — with structures and IUPAC names, plus two uses of phenol. Filed on the dominant first task; the bank files structure-and-IUPAC-name questions under Nomenclature. Split from the BIOMOLECULES copy: this copy's math zone is corrupted, swallowing 'Write two uses of phenol' inside the same \\(...\\) as the molecular formula and setting 'molecular formula' in italics, while the Biomolecules copy transcribes the whole half as plain prose."
+        },
+        {
+          "ref": "biomolecules-12-pyq#1",
+          "splitAt": "What happens when glucose",
+          "take": "after",
+          "subtopic": "Carbohydrates",
+          "why": "Glucose with bromine water, dilute nitric acid and HCN — the three classical tests that establish the aldehyde group and the chain length. Carbohydrates."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.5.ii, 2014 March]",
+      "_why": "Three parts — BHA and BHT, thermoplastic polymers, and aldol condensation — filed whole into two chapters, and only two of the three parts have a home among this exam's 16 chapters.",
+      "parts": [
+        {
+          "ref": "polymers-12-pyq#1",
+          "splitAt": "Write a note on aldol condensation",
+          "take": "before",
+          "subtopic": "Classification of Polymers",
+          "why": "'What are thermoplastic polymers?' — the bank files thermosetting-vs-thermoplastic under Classification of Polymers. The BHA/BHT clause rides along because the cut can only be made in one place and that clause has NO home chapter: butylated hydroxyanisole and hydroxytoluene are antioxidants from the old-syllabus Chemistry-in-Everyday-Life chapter. Keeping it here beats deleting a board question part, and BHT is at least used as a stabiliser in plastics."
+        },
+        {
+          "ref": "aldehydes-ketones-acids-12-pyq#9",
+          "from": "polymers-12-pyq#1",
+          "splitAt": "Write a note on aldol condensation",
+          "take": "after",
+          "subtopic": "Chemical Properties of Aldehydes and Ketones",
+          "why": "Aldol condensation is a reaction of aldehydes and ketones with an alpha-hydrogen. Split from the POLYMERS copy, which writes this half in plain prose; our own copy sets 'aldol' and 'condensation' in separate math zones and carries a stray markdown artefact ('.**\\**') where the sentence before it ends."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.8.i, 2015 March]",
+      "_why": "Three parts — Gabriel phthalimide synthesis, biodegradable polymers, cationic detergents — pasted whole into Amines and Polymers. Gabriel synthesis is not polymer chemistry, which is why the Polymers copy cannot simply be kept.",
+      "parts": [
+        {
+          "ref": "amines-12-pyq#1",
+          "splitAt": "What are biodegradable polymers",
+          "take": "before",
+          "subtopic": "Preparation of Amines",
+          "why": "Gabriel phthalimide synthesis makes a PRIMARY amine uncontaminated by secondary and tertiary product, and the chapter teaches it as a preparation route."
+        },
+        {
+          "ref": "polymers-12-pyq#3",
+          "splitAt": "What are biodegradable polymers",
+          "take": "after",
+          "subtopic": "Classification of Polymers",
+          "why": "Biodegradable versus non-biodegradable polymers with an example of each — a classification question. The cationic-detergents clause rides along: the cut can only be made once, and detergents belong to the old-syllabus Chemistry-in-Everyday-Life chapter, which is not one of this exam's 16, so there is no row anywhere to receive it."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.18, 2025 March]",
+      "_why": "Two parts: the peptide bond, and the reagent that turns an alkyl halide into a nitroalkane. Both copies carry both halves.",
+      "parts": [
+        {
+          "ref": "biomolecules-12-pyq#17",
+          "from": "amines-12-pyq#12",
+          "splitAt": "Write the name and formula",
+          "take": "before",
+          "subtopic": "Proteins",
+          "why": "What a peptide bond is and how it forms — the amide link between two amino acids. Split from the AMINES copy, which writes this half as plain prose; our own copy puts 'bond' and 'formed' in separate math zones."
+        },
+        {
+          "ref": "amines-12-pyq#12",
+          "splitAt": "Write the name and formula",
+          "take": "after",
+          "subtopic": "Preparation of Amines",
+          "why": "The reagent is silver nitrite, AgNO2. NEAREST FIT, not an exact one: the reaction itself is a nucleophilic substitution on an alkyl halide and belongs to Halogen Derivatives, which holds no copy of this sitting. Of the two chapters that do, Amines is the only one that teaches nitroalkanes at all — as the substrate it reduces to an amine — and the bank files 'Nitrobenzene --Sn/Conc.HCl--> ?' under Preparation of Amines."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.26, 2023 March]",
+      "_why": "THREE copies and three parts: two acetic-acid conversions and an amine nomenclature item. The compiler pre-trimmed BOTH Aldehydes copies — #27 to conversion (i) and #29 to the nomenclature clause — and left the Amines copy whole. #29 is dropped as a pair above; the other two are rebuilt from the whole copy here.",
+      "parts": [
+        {
+          "ref": "aldehydes-ketones-acids-12-pyq#27",
+          "from": "amines-12-pyq#16",
+          "splitAt": "Write \\(\\text{IUPAC}\\) name",
+          "take": "before",
+          "subtopic": "Chemical Properties of Carboxylic Acids",
+          "why": "Acetic acid into acetic anhydride and acetic acid into ethyl alcohol — both are reactions OF the carboxylic acid (dehydration and reduction). Split from the AMINES copy rather than trimming our own, because our own copy holds only conversion (i): trimming it would leave conversion (ii) with no row anywhere, where taking the Amines text restores it."
+        },
+        {
+          "ref": "amines-12-pyq#16",
+          "splitAt": "Write \\(\\text{IUPAC}\\) name",
+          "take": "after",
+          "subtopic": "Classification and Nomenclature of Amines",
+          "why": "IUPAC name and structure of methylphenylamine — N-methylaniline. Nomenclature of amines, and the only part of the printed question that is amine chemistry."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.28, 2023 March]",
+      "_why": "ASYMMETRIC. Three parts — the Delta-H/Delta-U relation, vulcanization, and the peptide bond — and the compiler ALREADY trimmed the Chemical Thermodynamics copy to the first, so only the Biomolecules copy still carries all three. Chemical Thermodynamics needs no edit.",
+      "parts": [
+        {
+          "ref": "biomolecules-12-pyq#14",
+          "splitAt": "What is peptide",
+          "take": "after",
+          "subtopic": "Proteins",
+          "why": "The peptide bond, which is the only Biomolecules part of the question. The vulcanization clause is DROPPED by this cut, and that is a real loss stated rather than hidden: it belongs to Polymers -> Some Important Polymers, but no Polymers copy of this sitting was filed, so there is no row to move it to — and cutting one place earlier would leave a Biomolecules row asking about rubber, which no single subtopic can honestly cover."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.27, 2023 March]",
+      "_why": "ASYMMETRIC. Three parts — a first-order kinetics proof, the electronic configuration of Gd, and a nanomaterial used in tyres — and the compiler already trimmed the Chemical Kinetics copy to the first, so only the Green Chemistry copy carries all three.",
+      "parts": [
+        {
+          "ref": "green-nano-12-pyq#10",
+          "splitAt": "Write the name of nano structured material",
+          "take": "after",
+          "subtopic": "Applications of Nanomaterials",
+          "why": "The nanostructured material used in car tyres — carbon black — which is the only Green Chemistry and Nanochemistry part. The Gd electronic configuration is DROPPED by this cut: it is a Lanthanoids question and belongs to Transition and Inner Transition Elements, which holds no copy of this sitting, and cutting one place earlier would file a lanthanoid configuration under nanochemistry."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.30, 2023 March]",
+      "_why": "FOUR parts across THREE chapters, and the compiler trimmed two of the three copies already. Only the Coordination copy still carries everything, so only it is cut; electrochemistry-12-pyq#14 (reference electrode) and p-block-12-pyq#7 (ozone as a dry bleach) are already correct as they stand.",
+      "parts": [
+        {
+          "ref": "coordination-12-pyq#24",
+          "splitAt": "What is reference electrode",
+          "take": "before",
+          "subtopic": "Isomerism in Coordination Compounds",
+          "why": "Diastereoisomers defined, then the cis and trans isomers of [Co(NH3)4Cl2]+ drawn — one topic across two clauses, and the bank files 'Which of the following complexes exist as cis and trans isomers?' under this subtopic. The stem preserves the compilation's misspelling 'Distereoisomers', which neither other copy carries and so cannot be repaired by taking their text."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.31, 2023 March]",
+      "_why": "ASYMMETRIC, four parts. Two phenol questions and two group-16 questions; the compiler already trimmed the p-block copy to the group-16 half, so only the Alcohols copy still carries all four.",
+      "parts": [
+        {
+          "ref": "alcohols-phenols-ethers-12-pyq#11",
+          "splitAt": "Give reason: Group 16",
+          "take": "before",
+          "subtopic": "Alcohols and Phenols",
+          "why": "The Dow process for phenol and the action of bromine water on phenol. The bank holds six phenol-preparation rows under Alcohols and Phenols, including the cumene route this question's sibling asks for. The group-16 ionisation-enthalpy and dioxygen clauses are cut away because p-block-12-pyq#4 already holds exactly those two, so nothing is lost."
+        }
+      ]
+    },
+    {
+      "tag": "[Q.29, 2024 March]",
+      "_why": "ASYMMETRIC, three parts — a cubic-lattice numerical, the definition of nanoscience, and the preparation of polyacrylonitrile. The compiler already trimmed the Polymers copy to the polyacrylonitrile part, so only the Green Chemistry copy carries all three.",
+      "parts": [
+        {
+          "ref": "green-nano-12-pyq#8",
+          "splitAt": "Write chemical reaction for the preparation",
+          "take": "before",
+          "subtopic": "Introduction to Nanochemistry",
+          "why": "'Define: Nanoscience' — the bank files the identical definition question under Introduction to Nanochemistry. The cut has to be made HERE rather than around the definition alone, because the nanoscience clause sits in the MIDDLE and a single cut cannot isolate a middle part: cutting the other way would leave this row carrying the polyacrylonitrile preparation that polymers-12-pyq#14 already holds, i.e. a duplicate. The cubic-lattice numerical therefore rides along; it belongs to Solid State, which holds no copy of this sitting."
+        }
+      ]
+    }
+  ],
+  "expectedCounts": {
+    "_note": [
+      "Post-dedupe row counts for the chapters THIS FILE touches, and only those. Measured",
+      "from the extracted drafts, not reasoned about. 398 rows extracted across the 16",
+      "Chemistry chapters; 20 dropped; 352 of the 378 survivors sit in the 14 chapters listed",
+      "below (ionic-equilibria 5 and chemical-kinetics 21 are named by no group and are",
+      "deliberately unlisted, so dedupe leaves them alone).",
+      "",
+      "A trim never changes a count — only the 20 drops do:",
+      "  aldehydes-ketones-acids  42 -> 36  loses #11, #14, #29, #33, #39, #42; #9 and #27 trimmed.",
+      "  d-f-block                28 -> 25  loses #2 (the corrupted Q.7.ii equation), #3, #6.",
+      "  coordination             33 -> 30  loses #16, #18, #20; #24 trimmed.",
+      "  halogen-derivatives      20 -> 18  loses #21 (Henry's law) and #5 (antibiotics +",
+      "                                     polymers). #3 is KEPT — it carries the Q.7.ii",
+      "                                     equation as a figure — and #11 is trimmed only.",
+      "  p-block                  30 -> 28  loses #12, #24.",
+      "  chem-thermodynamics      46 -> 45  loses #17.",
+      "  alcohols-phenols-ethers  26 -> 25  loses #24; #1, #4 kept, #11 and #19 trimmed.",
+      "  biomolecules             22 -> 21  loses #20; #1, #14, #17 trimmed.",
+      "  polymers                 23 -> 22  loses #9; #1 and #3 trimmed.",
+      "  solid-state, solutions, electrochemistry, amines, green-nano: unchanged — every group",
+      "  they appear in either keeps their row or only trims it."
+    ],
+    "solid-state-12-pyq": 9,
+    "solutions-12-pyq": 32,
+    "chem-thermodynamics-12-pyq": 45,
+    "electrochemistry-12-pyq": 30,
+    "p-block-12-pyq": 28,
+    "d-f-block-12-pyq": 25,
+    "coordination-12-pyq": 30,
+    "halogen-derivatives-12-pyq": 18,
+    "alcohols-phenols-ethers-12-pyq": 25,
+    "aldehydes-ketones-acids-12-pyq": 36,
+    "amines-12-pyq": 21,
+    "biomolecules-12-pyq": 21,
+    "polymers-12-pyq": 22,
+    "green-nano-12-pyq": 10
+  }
+}

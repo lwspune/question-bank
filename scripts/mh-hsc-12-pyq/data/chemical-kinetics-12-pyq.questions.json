@@ -1,0 +1,345 @@
+[
+  {
+    "ref": "chemical-kinetics-12-pyq#1",
+    "questionNumber": "Q.4.v",
+    "pyqYear": 2014,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Rate of Reaction",
+    "stem": "The rate of reaction for certain reaction is expressed as: $\\(- \\frac{1}{3}\\frac{\\text{d}\\lbrack A\\rbrack}{\\text{d}t} = \\frac{1}{2}\\frac{\\text{d}\\lbrack B\\rbrack}{\\text{d}t} = \\frac{\\text{d}\\lbrack C\\rbrack}{\\text{d}t}\\)\\( The reaction is ______. \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\)3A + 2B \\rightarrow C"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\)2B \\rightarrow 3A + C"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\)2B + C \\rightarrow 3A"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\)3A + 2B \\rightarrow C$"
+      }
+    ],
+    "solution": "The rate of a reaction is written by dividing the rate of change of concentration of each species by its stoichiometric coefficient, with a minus sign on a reactant, whose concentration falls with time, and a plus sign on a product, whose concentration rises.\n\nReading the given expression term by term:\n\n\\(-\\dfrac{1}{3}\\dfrac{d[\\mathrm{A}]}{dt}\\) carries a minus sign and the coefficient \\(3\\), so A is a reactant with coefficient \\(3\\).\n\n\\(+\\dfrac{1}{2}\\dfrac{d[\\mathrm{B}]}{dt}\\) carries a plus sign and the coefficient \\(2\\), so B is a product with coefficient \\(2\\).\n\n\\(+\\dfrac{d[\\mathrm{C}]}{dt}\\) carries a plus sign and the coefficient \\(1\\), so C is a product with coefficient \\(1\\).\n\n\\(\\therefore\\) the reaction is \\(\\mathrm{3A \\longrightarrow 2B + C}\\)\n\nNone of the four printed alternatives is \\(\\mathrm{3A \\longrightarrow 2B + C}\\). Each of them would require a different set of signs in the given expression: \\(\\mathrm{3A + 2B \\longrightarrow C}\\) needs a minus sign on the B term as well as on the A term; \\(\\mathrm{2B \\longrightarrow 3A + C}\\) needs the minus sign on the B term and a plus sign on the A term; and \\(\\mathrm{2B + C \\longrightarrow 3A}\\) needs minus signs on the B and the C terms together with a plus sign on the A term. As printed, the question has no correct answer among its alternatives.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#3",
+    "questionNumber": "Q.2.viii",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Write the mathematical relation between half life of zero order reaction and its rate constant.",
+    "solution": "For a zero order reaction \\(\\mathrm{A \\longrightarrow P}\\) the rate is independent of the concentration of the reactant, so\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k\\)\n\nRearranging and integrating between \\([\\mathrm{A}] = [\\mathrm{A}]_0\\) at \\(t = 0\\) and \\([\\mathrm{A}] = [\\mathrm{A}]_t\\) at time \\(t\\) gives the integrated rate law\n\n\\(k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t\\)\n\nThe half life \\(t_{1/2}\\) is the time in which the concentration of the reactant falls to half its initial value, so at \\(t = t_{1/2}\\) we have \\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\). Substituting this condition,\n\n\\(k\\,t_{1/2} = [\\mathrm{A}]_0 - \\dfrac{[\\mathrm{A}]_0}{2} = \\dfrac{[\\mathrm{A}]_0}{2}\\)\n\n\\(\\therefore t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2k}\\)  and  \\(k = \\dfrac{[\\mathrm{A}]_0}{2\\,t_{1/2}}\\)\n\nThe half life of a zero order reaction is thus directly proportional to the initial concentration of the reactant, unlike that of a first order reaction, which is independent of it.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#5",
+    "questionNumber": "Q.26",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Define instantaneous rate of reaction. Explain pseudo first order reaction with suitable example.",
+    "solution": "**Instantaneous rate of reaction.** The instantaneous rate of a reaction is the rate of the reaction at a particular instant of time. It is obtained by replacing the average rate \\(\\dfrac{\\Delta c}{\\Delta t}\\), measured over an interval, by the derivative \\(\\dfrac{dc}{dt}\\) at that instant, so that for \\(\\mathrm{A \\longrightarrow B}\\)\n\ninstantaneous rate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = \\dfrac{d[\\mathrm{B}]}{dt}\\)\n\nIn practice the concentration of a reactant or a product is measured at a series of times and plotted against time; a tangent is drawn to the curve at the instant of interest, and the slope of that tangent is the instantaneous rate.\n\n**Pseudo first order reaction.** A pseudo first order reaction is a reaction which is expected from its rate law to be of a higher order, but which is found experimentally to follow first order kinetics.\n\n**Example.** The hydrolysis of methyl acetate:\n\n\\(\\mathrm{CH_3COOCH_3(aq) + H_2O(\\mathit{l}) \\longrightarrow CH_3COOH(aq) + CH_3OH(aq)}\\)\n\nIts rate law is\n\nrate \\(= k'[\\mathrm{CH_3COOCH_3}][\\mathrm{H_2O}]\\)\n\nso the reaction is expected to be of second order. Water is the solvent and is present in such large excess that the quantity consumed during the reaction is negligible compared with the quantity present, so \\([\\mathrm{H_2O}]\\) remains effectively constant. Writing \\([\\mathrm{H_2O}] = k''\\), a constant,\n\nrate \\(= k'\\,k''\\,[\\mathrm{CH_3COOCH_3}] = k\\,[\\mathrm{CH_3COOCH_3}]\\)  where \\(k = k'\\,k''\\)\n\nThe rate now depends on one concentration term only and the reaction follows first order kinetics, so it is a pseudo first order reaction.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#7",
+    "questionNumber": "Q.1.vii",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "stem": "The integrated rate equation for first order reaction \\(\\text{A} \\rightarrow \\text{products}\\) is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\text{k} = \\frac{2.303}{\\text{t}}\\log_{10}\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}{\\left\\lbrack \\text{A} \\right\\rbrack_{\\text{t}}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\text{k} = - \\frac{1}{\\text{t}}\\ln\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{\\text{t}}}{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\text{k} = \\frac{2.303}{\\text{t}}\\log_{10}\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{\\text{t}}}{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\text{k} = \\frac{1}{\\text{t}}\\ln\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}{\\left\\lbrack \\text{A} \\right\\rbrack_{\\text{t}}}\\)"
+      }
+    ],
+    "solution": "For a first order reaction \\(\\mathrm{A \\longrightarrow products}\\) the differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]\\)\n\nSeparating the variables,\n\n\\(\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\,dt\\)\n\nIntegrating between \\([\\mathrm{A}] = [\\mathrm{A}]_0\\) at \\(t = 0\\) and \\([\\mathrm{A}] = [\\mathrm{A}]_t\\) at time \\(t\\),\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t}\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\(\\ln[\\mathrm{A}]_t - \\ln[\\mathrm{A}]_0 = -k\\,t\\), that is \\(\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t\\)\n\n\\(\\therefore k = \\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nand converting the natural logarithm to base \\(10\\),\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nwhich is the integrated rate law for a first order reaction.\n\nThree of the four printed expressions are this one equation written in different ways. Since \\(\\ln z = 2.303\\log_{10} z\\) and \\(-\\ln z = \\ln\\dfrac{1}{z}\\), the forms \\(\\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\), \\(\\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\) and \\(-\\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0}\\) are all equal to \\(k\\). The remaining form, \\(\\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0}\\), has the ratio inverted and is equal to \\(-k\\); since a rate constant is a positive quantity, it is the only incorrect expression of the four. The alternatives as printed therefore do not single out one answer.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#8",
+    "questionNumber": "Q.3.iv",
+    "pyqYear": 2014,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Derive the relation between half-life period and rate constant for first order reaction.",
+    "solution": "For a first order reaction \\(\\mathrm{A \\longrightarrow products}\\) the differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]\\)\n\nSeparating the variables and integrating between \\([\\mathrm{A}] = [\\mathrm{A}]_0\\) at \\(t = 0\\) and \\([\\mathrm{A}] = [\\mathrm{A}]_t\\) at time \\(t\\),\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t}\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\(\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t\\)\n\nso that the integrated rate law is\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n**The half life period.** The half life \\(t_{1/2}\\) is the time required for the concentration of the reactant to fall to one half of its initial value. Hence at \\(t = t_{1/2}\\),\n\n\\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\)\n\nSubstituting this condition into the integrated rate law,\n\n\\(k = \\dfrac{2.303}{t_{1/2}}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2} = \\dfrac{2.303}{t_{1/2}}\\log_{10} 2\\)\n\n\\(= \\dfrac{2.303 \\times 0.3010}{t_{1/2}}\\)\n\n\\(\\therefore k = \\dfrac{0.693}{t_{1/2}}\\)  and  \\(t_{1/2} = \\dfrac{0.693}{k}\\)\n\nThe initial concentration \\([\\mathrm{A}]_0\\) has cancelled out of the result, which is why the half life period of a first order reaction is independent of the initial concentration of the reactant.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#9",
+    "questionNumber": "Q.2.ii",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "In a first order reaction, \\(\\text{X} \\rightarrow \\text{Y}\\), \\(40\\%\\) of the given sample of compound remains unreacted in \\(45\\text{ minutes}\\). Calculate rate constant of the reaction.",
+    "solution": "For a first order reaction the integrated rate law is\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nTaking the initial amount of the compound as \\(100\\), the amount remaining unreacted after \\(45\\) minutes is \\(40\\).\n\n\\([\\mathrm{A}]_0 = 100\\), \\([\\mathrm{A}]_t = 40\\), \\(t = 45\\ \\mathrm{min}\\)\n\nSubstitution gives\n\n\\(k = \\dfrac{2.303}{45}\\log_{10}\\dfrac{100}{40} = \\dfrac{2.303}{45}\\log_{10} 2.5\\)\n\n\\(= \\dfrac{2.303}{45} \\times 0.3979\\)\n\n\\(\\therefore k = 0.0204\\ \\mathrm{min^{-1}} = 2.04 \\times 10^{-2}\\ \\mathrm{min^{-1}}\\)\n\nDividing by \\(60\\) expresses the same rate constant in reciprocal seconds:\n\n\\(k = \\dfrac{0.0204}{60} = 3.39 \\times 10^{-4}\\ \\mathrm{s^{-1}}\\)\n\nThe value can be checked against the half life it implies, \\(t_{1/2} = \\dfrac{0.693}{0.0204} = 34\\ \\mathrm{min}\\). The reaction has therefore run for a little longer than one half life, so rather less than half the sample should remain, and the given \\(40\\%\\) is consistent with that.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#10",
+    "questionNumber": "Q.1.vii",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "stem": "For a chemical reaction, \\(\\text{A} \\rightarrow \\text{products}\\), the rate of reaction doubles when the concentration of 'A' is increased by a factor of 4, the order of reaction is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "0.5"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(0.5\\)\n\nFor \\(\\mathrm{A \\longrightarrow products}\\) let the order of the reaction be \\(n\\), so that\n\nrate \\(= k[\\mathrm{A}]^n\\)   ...... (i)\n\nWhen the concentration of A is increased by a factor of \\(4\\) the rate becomes twice as large:\n\n\\(2 \\times\\) rate \\(= k\\,(4[\\mathrm{A}])^n = k\\,4^n[\\mathrm{A}]^n\\)   ...... (ii)\n\nDividing (ii) by (i), the factor \\(k[\\mathrm{A}]^n\\) cancels:\n\n\\(2 = 4^n\\)\n\nWriting \\(4 = 2^2\\) gives \\(2^1 = 2^{2n}\\), so \\(2n = 1\\)\n\n\\(\\therefore n = 0.5\\)\n\nThe size of the change confirms it. A zero order reaction would not have changed the rate at all, a first order reaction would have made it four times as large and a second order reaction sixteen times as large. Only a fractional order below one produces a mere doubling, and the order of a reaction, being determined by experiment, may be a fraction.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#11",
+    "questionNumber": "Q.2.iii",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "stem": "Explain elementary and complex reactions for a first order reaction.",
+    "solution": "**Elementary reaction.** An elementary reaction is one which takes place in a single step, exactly as its chemical equation is written. Because the single step is the reaction itself, the exponents in its rate law are the same as the stoichiometric coefficients in its balanced equation, so its order and its molecularity are equal.\n\nAn elementary reaction that is first order is therefore unimolecular: one molecule of a single reactant takes part in the one step. The isomerisation of cyclopropane to propene,\n\n\\(\\mathrm{C_3H_6(g) \\longrightarrow CH_3-CH=CH_2(g)}\\)\n\nis such a reaction, its rate law being rate \\(= k[\\mathrm{C_3H_6}]\\).\n\n**Complex reaction.** A complex reaction is one which does not take place in a single step but through a sequence of two or more elementary steps. That sequence of steps is the mechanism of the reaction, and a species which is produced in one step and consumed in a later one is a reaction intermediate. The slowest of the steps controls how fast the products can appear and is called the rate determining step.\n\nThe order of a complex reaction is decided by experiment and need not bear any relation to the coefficients of the overall balanced equation. The decomposition of dinitrogen pentoxide,\n\n\\(\\mathrm{2\\,N_2O_5(g) \\longrightarrow 4\\,NO_2(g) + O_2(g)}\\)\n\nis of this kind: although two molecules appear in the balanced equation, the reaction is found to be first order, its rate law being rate \\(= k[\\mathrm{N_2O_5}]\\), because its rate determining step involves a single molecule of \\(\\mathrm{N_2O_5}\\). A complex reaction is first order whenever its rate determining step involves one molecule of one reactant, so that the experimentally determined rate law contains a single concentration term raised to the first power.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#12",
+    "questionNumber": "Q.1.vii",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "stem": "The half-life period of zero order reaction \\(\\text{A} \\rightarrow \\text{product}\\) is given by ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}{2\\text{k}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{0.693}{\\text{k}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\left\\lbrack \\text{A} \\right\\rbrack_{0}}{\\text{k}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2\\left\\lbrack \\text{A} \\right\\rbrack_{0}}{\\text{k}}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(\\dfrac{[\\mathrm{A}]_0}{2k}\\)\n\nFor a zero order reaction \\(\\mathrm{A \\longrightarrow product}\\) the rate is independent of the concentration of the reactant, so the differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k\\)\n\nRearranging,\n\n\\(d[\\mathrm{A}] = -k\\,dt\\)\n\nIntegrating between \\([\\mathrm{A}] = [\\mathrm{A}]_0\\) at \\(t = 0\\) and \\([\\mathrm{A}] = [\\mathrm{A}]_t\\) at time \\(t\\),\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t} d[\\mathrm{A}] = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\([\\mathrm{A}]_t - [\\mathrm{A}]_0 = -k\\,t\\), that is \\(k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t\\)\n\nAt the half life, \\(t = t_{1/2}\\) and \\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\), so\n\n\\(k\\,t_{1/2} = [\\mathrm{A}]_0 - \\dfrac{[\\mathrm{A}]_0}{2} = \\dfrac{[\\mathrm{A}]_0}{2}\\)\n\n\\(\\therefore t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2k}\\)\n\nThe expression \\(\\dfrac{0.693}{k}\\) is the half life of a first order reaction and carries no concentration term at all, so it cannot serve for a zero order reaction, whose half life must depend on the initial concentration. Of the remaining expressions, both of which contain \\([\\mathrm{A}]_0\\), only the one with \\(2k\\) in the denominator satisfies the integrated rate law derived above; the form \\(\\dfrac{2[\\mathrm{A}]_0}{k}\\) is four times too large.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#13",
+    "questionNumber": "Q.29.A",
+    "pyqYear": 2019,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "stem": "The rate of a first order reaction, \\(\\text{A} \\rightarrow \\text{B}\\) is \\(5.4 \\times 10^{- 6}\\text{ Ms}^{- 1}\\) when \\(\\left\\lbrack \\text{A} \\right\\rbrack\\) is \\(0.3\\text{ M}\\). Calculate the rate constant of the reaction.",
+    "solution": "For a first order reaction \\(\\mathrm{A \\longrightarrow B}\\) the differential rate law is\n\nrate \\(= k[\\mathrm{A}]\\)  or  \\(k = \\dfrac{\\text{rate}}{[\\mathrm{A}]}\\)\n\nrate \\(= 5.4 \\times 10^{-6}\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) and \\([\\mathrm{A}] = 0.3\\ \\mathrm{mol\\ dm^{-3}}\\), the unit M standing for \\(\\mathrm{mol\\ dm^{-3}}\\).\n\nSubstitution gives\n\n\\(k = \\dfrac{5.4 \\times 10^{-6}\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}}{0.3\\ \\mathrm{mol\\ dm^{-3}}}\\)\n\n\\(\\therefore k = 1.8 \\times 10^{-5}\\ \\mathrm{s^{-1}}\\)\n\nThe unit is itself a check on the order: the concentration units cancel and leave \\(\\mathrm{s^{-1}}\\), which is what the rate constant of a first order reaction must have. Substituting the value back, \\(k[\\mathrm{A}] = 1.8 \\times 10^{-5} \\times 0.3 = 5.4 \\times 10^{-6}\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\), the rate given in the question.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#14",
+    "questionNumber": "Q.29.A OR",
+    "pyqYear": 2019,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "The half life period of a first order reaction is \\(6.0\\text{ h}\\). Calculate the rate constant.",
+    "solution": "For a first order reaction the half life period and the rate constant are related by\n\n\\(t_{1/2} = \\dfrac{0.693}{k}\\)  or  \\(k = \\dfrac{0.693}{t_{1/2}}\\)\n\n\\(t_{1/2} = 6.0\\ \\mathrm{h}\\)\n\n\\(\\therefore k = \\dfrac{0.693}{6.0\\ \\mathrm{h}} = 0.1155\\ \\mathrm{h^{-1}} = 1.155 \\times 10^{-1}\\ \\mathrm{h^{-1}}\\)\n\nExpressed in seconds the half life is \\(6.0 \\times 3600 = 2.16 \\times 10^{4}\\ \\mathrm{s}\\), so the same rate constant is\n\n\\(k = \\dfrac{0.693}{2.16 \\times 10^{4}\\ \\mathrm{s}} = 3.21 \\times 10^{-5}\\ \\mathrm{s^{-1}}\\)\n\nSubstituting back, \\(\\dfrac{0.693}{0.1155\\ \\mathrm{h^{-1}}} = 6.0\\ \\mathrm{h}\\), which is the half life given in the question.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#15",
+    "questionNumber": "Q.24",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Obtain the expression for half life and rate constant of the first order reaction.",
+    "solution": "**Rate constant: the integrated rate law.** For a first order reaction\n\n\\(\\mathrm{A \\longrightarrow products}\\)\n\nthe differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]\\)\n\nSeparating the variables,\n\n\\(\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\,dt\\)\n\nLet \\([\\mathrm{A}]_0\\) be the initial concentration of A at \\(t = 0\\) and \\([\\mathrm{A}]_t\\) its concentration at time \\(t\\). Integrating between these limits,\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t}\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\(\\ln[\\mathrm{A}]_t - \\ln[\\mathrm{A}]_0 = -k\\,t\\)\n\n\\(\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t\\)\n\n\\(k = \\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nConverting the natural logarithm to base \\(10\\),\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n**Half life.** The half life \\(t_{1/2}\\) is the time in which the concentration of the reactant falls to one half of its initial value, so at \\(t = t_{1/2}\\),\n\n\\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\)\n\nPutting this into the expression for \\(k\\),\n\n\\(k = \\dfrac{2.303}{t_{1/2}}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2} = \\dfrac{2.303}{t_{1/2}}\\log_{10} 2 = \\dfrac{2.303 \\times 0.3010}{t_{1/2}}\\)\n\n\\(\\therefore k = \\dfrac{0.693}{t_{1/2}}\\)  and  \\(t_{1/2} = \\dfrac{0.693}{k}\\)\n\nBecause \\([\\mathrm{A}]_0\\) cancels, the half life of a first order reaction does not depend on the initial concentration of the reactant, and the unit of \\(k\\) is the reciprocal of the unit of time.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#16",
+    "questionNumber": "Q.1.iii",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Which of the following correctly represents integrated rate law equation for a first order reaction in gas phase:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\text{k} = \\frac{2.303}{\\text{t}} \\times log\\frac{P_{i}}{P_{i} - P_{10}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\text{k} = \\frac{2.303}{\\text{t}} \\times log\\frac{P_{i}}{2P_{i} - P_{10}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\text{k} = \\frac{2.303}{2P_{i}} \\times log\\frac{P_{i}}{P_{10} - P_{i}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\text{k} = \\frac{2.303}{\\text{t}} \\times \\frac{P_{i}}{2P} \\times log\\frac{P_{i}}{P_{10}}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}\\)\n\nConsider the first order gas phase reaction\n\n\\(\\mathrm{A(g) \\longrightarrow B(g) + C(g)}\\)\n\nLet \\(P_i\\) be the initial pressure of A, let the pressure of A fall by \\(x\\) in time \\(t\\), and let \\(P\\) be the total pressure of the mixture at that time.\n\nPressure of A at time \\(t\\):\n\n\\(P_{\\mathrm{A}} = P_i - x\\)\n\nOne mole of A gives one mole of B and one mole of C, so at time \\(t\\) the pressures of the products are\n\n\\(P_{\\mathrm{B}} = P_{\\mathrm{C}} = x\\)\n\nThe total pressure at that time is therefore\n\n\\(P = (P_i - x) + x + x = P_i + x\\)\n\n\\(\\therefore x = P - P_i\\)\n\nSubstituting for \\(x\\) in the pressure of A,\n\n\\(P_{\\mathrm{A}} = P_i - (P - P_i) = 2P_i - P\\)\n\nAt constant volume and temperature the concentration of a gas is proportional to its partial pressure, so in the integrated rate law of a first order reaction,\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nthe concentrations may be replaced by pressures, with \\([\\mathrm{A}]_0 = P_i\\) and \\([\\mathrm{A}]_t = P_{\\mathrm{A}} = 2P_i - P\\). Hence\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}\\)\n\nwhere \\(P\\) is the total pressure of the reaction mixture at time \\(t\\).\n\nThe other expressions fail simple tests. The one with \\(P_i - P\\) in the denominator makes the ratio negative, because the total pressure rises above \\(P_i\\) as the reaction proceeds, and the logarithm of a negative quantity does not exist. The one carrying \\(2P_i\\) where the time belongs cannot be a rate constant at all, since \\(k\\) must vary inversely with time. The last carries an extra pressure ratio that the derivation above does not produce.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#17",
+    "questionNumber": "Q.23",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "What is Pseudo first order reaction? Derive integrated rate law equation for zero order reaction.",
+    "solution": "**Pseudo first order reaction.** A pseudo first order reaction is a reaction which is expected from its rate law to be of a higher order, but which is found experimentally to follow first order kinetics. This happens when one of the reactants is present in such large excess that its concentration does not change appreciably during the reaction.\n\nFor example, in the hydrolysis of methyl acetate,\n\n\\(\\mathrm{CH_3COOCH_3(aq) + H_2O(\\mathit{l}) \\longrightarrow CH_3COOH(aq) + CH_3OH(aq)}\\)\n\nthe rate law is rate \\(= k'[\\mathrm{CH_3COOCH_3}][\\mathrm{H_2O}]\\), so the reaction is expected to be of second order. Water is the solvent and is present in large excess, so \\([\\mathrm{H_2O}]\\) stays effectively constant and may be written as a constant \\(k''\\). The rate law then becomes\n\nrate \\(= k'\\,k''\\,[\\mathrm{CH_3COOCH_3}] = k\\,[\\mathrm{CH_3COOCH_3}]\\)  where \\(k = k'\\,k''\\)\n\nwhich contains one concentration term only, so the reaction is of first order.\n\n**Integrated rate law for a zero order reaction.** A zero order reaction is one whose rate does not depend on the concentration of the reactant. For\n\n\\(\\mathrm{A \\longrightarrow P}\\)\n\nthe differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k\\)\n\nRearranging,\n\n\\(d[\\mathrm{A}] = -k\\,dt\\)\n\nLet \\([\\mathrm{A}]_0\\) be the concentration of A at \\(t = 0\\) and \\([\\mathrm{A}]_t\\) its concentration at time \\(t\\). Integrating between these limits,\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t} d[\\mathrm{A}] = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\([\\mathrm{A}]_t - [\\mathrm{A}]_0 = -k\\,t\\)\n\n\\(\\therefore k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t\\)  and  \\(k = \\dfrac{[\\mathrm{A}]_0 - [\\mathrm{A}]_t}{t}\\)\n\nwhich is the integrated rate law for a zero order reaction. Written as \\([\\mathrm{A}]_t = [\\mathrm{A}]_0 - k\\,t\\) it shows that a plot of \\([\\mathrm{A}]_t\\) against \\(t\\) is a straight line of slope \\(-k\\) and intercept \\([\\mathrm{A}]_0\\). Since \\(k\\) is a concentration divided by a time, its units are \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\), the same as those of the rate itself.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#18",
+    "questionNumber": "Q.27",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Show that, time required for \\(99.9\\%\\) completion of a first order reaction is three times the time required for \\(90\\%\\) completion.",
+    "solution": "For a first order reaction the integrated rate law, written for the time, is\n\n\\(t = \\dfrac{2.303}{k}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\nTake the initial amount of the reactant as \\(100\\).\n\n**Time for \\(90\\%\\) completion.** If \\(90\\%\\) has reacted, \\(10\\%\\) remains, so \\([\\mathrm{A}]_t = 10\\) and\n\n\\(t_{90} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{10} = \\dfrac{2.303}{k}\\log_{10} 10 = \\dfrac{2.303}{k} \\times 1 = \\dfrac{2.303}{k}\\)\n\n**Time for \\(99.9\\%\\) completion.** If \\(99.9\\%\\) has reacted, \\(0.1\\%\\) remains, so \\([\\mathrm{A}]_t = 0.1\\) and\n\n\\(t_{99.9} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{0.1} = \\dfrac{2.303}{k}\\log_{10} 1000 = \\dfrac{2.303}{k} \\times 3 = \\dfrac{3 \\times 2.303}{k}\\)\n\n**Ratio of the two times.** Dividing one by the other, the factor \\(\\dfrac{2.303}{k}\\) cancels:\n\n\\(\\dfrac{t_{99.9}}{t_{90}} = \\dfrac{3 \\times 2.303/k}{2.303/k} = 3\\)\n\n\\(\\therefore t_{99.9} = 3\\,t_{90}\\)\n\nThe time required for \\(99.9\\%\\) completion is three times the time required for \\(90\\%\\) completion. The rate constant has cancelled, so the result holds for every first order reaction whatever its value of \\(k\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#19",
+    "questionNumber": "Q.19",
+    "pyqYear": 2024,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "stem": "For the reaction \\(\\text{A} + \\text{B} \\rightarrow \\text{P}\\). If \\(\\left\\lbrack \\text{B} \\right\\rbrack\\) is doubled at constant \\(\\left\\lbrack \\text{A} \\right\\rbrack\\), the rate of reaction doubled. If \\(\\left\\lbrack \\text{A} \\right\\rbrack\\) is triple and \\(\\left\\lbrack \\text{B} \\right\\rbrack\\) is doubled, the rate of reaction increases by a factor of \\(6\\). Calculate the rate law equation.",
+    "solution": "Let the rate law for \\(\\mathrm{A + B \\longrightarrow P}\\) be\n\nrate \\(= k[\\mathrm{A}]^x[\\mathrm{B}]^y\\)   ...... (i)\n\nwhere \\(x\\) and \\(y\\) are the orders of the reaction with respect to A and to B.\n\n**First observation.** \\([\\mathrm{B}]\\) is doubled at constant \\([\\mathrm{A}]\\) and the rate doubles:\n\n\\(2 \\times\\) rate \\(= k[\\mathrm{A}]^x[2\\mathrm{B}]^y = k\\,2^y[\\mathrm{A}]^x[\\mathrm{B}]^y\\)   ...... (ii)\n\nDividing (ii) by (i), the factor \\(k[\\mathrm{A}]^x[\\mathrm{B}]^y\\) cancels:\n\n\\(2 = 2^y\\), so \\(y = 1\\)\n\n**Second observation.** \\([\\mathrm{A}]\\) is trebled and \\([\\mathrm{B}]\\) doubled, and the rate becomes six times as large:\n\n\\(6 \\times\\) rate \\(= k[3\\mathrm{A}]^x[2\\mathrm{B}]^y = k\\,3^x\\,2^y[\\mathrm{A}]^x[\\mathrm{B}]^y\\)   ...... (iii)\n\nDividing (iii) by (i),\n\n\\(6 = 3^x \\times 2^y\\)\n\nSubstituting \\(y = 1\\),\n\n\\(6 = 3^x \\times 2\\), so \\(3^x = 3\\) and \\(x = 1\\)\n\n\\(\\therefore\\) the rate law equation is rate \\(= k[\\mathrm{A}][\\mathrm{B}]\\)\n\nThe reaction is first order in A, first order in B and of second order overall. The result reproduces both observations: doubling \\([\\mathrm{B}]\\) alone doubles the product \\([\\mathrm{A}][\\mathrm{B}]\\), and trebling \\([\\mathrm{A}]\\) while doubling \\([\\mathrm{B}]\\) multiplies it by \\(3 \\times 2 = 6\\), exactly as stated.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#20",
+    "questionNumber": "Q.1.x",
+    "pyqYear": 2024,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "stem": "If unit of rate constant is \\(\\text{mol dm}^{- 3}\\text{s}^{- 1}\\), the order of reaction would be ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "zero"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** zero\n\nFor a reaction of overall order \\(n\\) the rate law is\n\nrate \\(= k[\\mathrm{A}]^n\\), so \\(k = \\dfrac{\\text{rate}}{[\\mathrm{A}]^n}\\)\n\nThe rate of a reaction always has the units \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) and a concentration the units \\(\\mathrm{mol\\ dm^{-3}}\\), so the units of the rate constant are\n\n\\(\\dfrac{\\mathrm{mol\\ dm^{-3}\\ s^{-1}}}{(\\mathrm{mol\\ dm^{-3}})^{n}} = \\mathrm{mol^{1-n}\\ dm^{3n-3}\\ s^{-1}}\\)\n\nMatching this against the given units \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) requires the index of mol to be \\(1\\), that is \\(1 - n = 1\\)\n\n\\(\\therefore n = 0\\)\n\nSubstituting the other orders into the same expression confirms it: first order gives \\(\\mathrm{s^{-1}}\\), second order \\(\\mathrm{mol^{-1}\\ dm^{3}\\ s^{-1}}\\) and third order \\(\\mathrm{mol^{-2}\\ dm^{6}\\ s^{-1}}\\), none of which is \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\). Only for a zero order reaction are the units of the rate constant the same as those of the rate, because the rate is then equal to \\(k\\) itself.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#22",
+    "questionNumber": "Q.3",
+    "pyqYear": 2025,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Derive the relation between half life and rate constant for a first order reaction.",
+    "solution": "For a first order reaction \\(\\mathrm{A \\longrightarrow products}\\) the differential rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]\\)\n\nSeparating the variables and integrating between the initial concentration \\([\\mathrm{A}]_0\\) at \\(t = 0\\) and the concentration \\([\\mathrm{A}]_t\\) at time \\(t\\),\n\n\\(\\displaystyle\\int_{[\\mathrm{A}]_0}^{[\\mathrm{A}]_t}\\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\displaystyle\\int_{0}^{t} dt\\)\n\n\\(\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t\\)\n\nwhich on converting to logarithms to base \\(10\\) gives the integrated rate law\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n**The half life.** The half life \\(t_{1/2}\\) of a reaction is the time in which the concentration of the reactant falls to one half of its initial value. Hence when \\(t = t_{1/2}\\),\n\n\\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\)\n\nSubstituting this condition into the integrated rate law,\n\n\\(k = \\dfrac{2.303}{t_{1/2}}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}\\)\n\n\\(= \\dfrac{2.303}{t_{1/2}}\\log_{10} 2 = \\dfrac{2.303}{t_{1/2}} \\times 0.3010\\)\n\n\\(\\therefore k = \\dfrac{0.693}{t_{1/2}}\\)  and  \\(t_{1/2} = \\dfrac{0.693}{k}\\)\n\nwhich is the required relation. The initial concentration has cancelled from the result, so the half life of a first order reaction is independent of how much reactant was taken to begin with, and depends only on the rate constant.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#23",
+    "questionNumber": "Q.22",
+    "pyqYear": 2019,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "stem": "Derive Arrhenius equation. Derive an expression for temperature variations.",
+    "solution": "**The Arrhenius equation.** Arrhenius found from experiment that the rate constant of a reaction varies with temperature as\n\n\\(k = \\mathrm{A}\\,e^{-E_a/RT}\\)   ...... (i)\n\nwhere \\(k\\) is the rate constant, \\(E_a\\) the activation energy, \\(R\\) the gas constant \\(8.314\\ \\mathrm{J\\ K^{-1}\\ mol^{-1}}\\), \\(T\\) the temperature in kelvin and \\(\\mathrm{A}\\) the pre-exponential or frequency factor, which for a first order reaction has the same unit as \\(k\\).\n\nTaking the natural logarithm of both sides of (i),\n\n\\(\\ln k = \\ln \\mathrm{A} - \\dfrac{E_a}{RT}\\)\n\nDividing the logarithmic terms by \\(2.303\\) to convert them to base \\(10\\),\n\n\\(\\log_{10} k = \\log_{10}\\mathrm{A} - \\dfrac{E_a}{2.303\\,R\\,T}\\)   ...... (ii)\n\nEquation (ii) is of the form \\(y = mx + c\\), with \\(y = \\log_{10}k\\) and \\(x = \\dfrac{1}{T}\\). A plot of \\(\\log_{10}k\\) against \\(\\dfrac{1}{T}\\) is therefore a straight line whose slope is \\(-\\dfrac{E_a}{2.303\\,R}\\) and whose intercept is \\(\\log_{10}\\mathrm{A}\\), from which\n\n\\(E_a = -2.303\\,R \\times \\text{slope}\\)\n\n**Expression for the variation of the rate constant with temperature.** Let \\(k_1\\) be the rate constant at temperature \\(T_1\\) and \\(k_2\\) that at temperature \\(T_2\\). Writing equation (ii) at each temperature,\n\n\\(\\log_{10} k_1 = \\log_{10}\\mathrm{A} - \\dfrac{E_a}{2.303\\,R\\,T_1}\\)   ...... (iii)\n\n\\(\\log_{10} k_2 = \\log_{10}\\mathrm{A} - \\dfrac{E_a}{2.303\\,R\\,T_2}\\)   ...... (iv)\n\nThe activation energy and the pre-exponential factor do not change with temperature, so subtracting (iii) from (iv) removes \\(\\log_{10}\\mathrm{A}\\):\n\n\\(\\log_{10} k_2 - \\log_{10} k_1 = \\dfrac{E_a}{2.303\\,R\\,T_1} - \\dfrac{E_a}{2.303\\,R\\,T_2}\\)\n\n\\(\\therefore \\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R}\\left(\\dfrac{1}{T_1} - \\dfrac{1}{T_2}\\right) = \\dfrac{E_a}{2.303\\,R}\\left(\\dfrac{T_2 - T_1}{T_1\\,T_2}\\right)\\)\n\nThis is the required expression. For \\(T_2 > T_1\\) the right hand side is positive, so \\(k_2 > k_1\\): the rate constant, and with it the rate of the reaction, increases as the temperature is raised, and for a given rise in temperature the increase is the greater the larger the activation energy.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#24",
+    "questionNumber": "Q.4.iv",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "stem": "For a first order reaction, the half life period at \\(20^{\\circ}\\text{C}\\) is \\(4 \\times 10^{13}\\text{ sec}^{- 1}\\) and \\(98.6\\text{ kJ mol}^{- 1}\\) respectively. At what temperature will its half life period be \\(10\\text{ minutes}\\)?",
+    "solution": "The two quantities supplied are \\(4 \\times 10^{13}\\ \\mathrm{s^{-1}}\\), whose unit is that of the pre-exponential factor of a first order reaction, and \\(98.6\\ \\mathrm{kJ\\ mol^{-1}}\\), whose unit is that of an activation energy. The solution is worked with\n\n\\(\\mathrm{A} = 4 \\times 10^{13}\\ \\mathrm{s^{-1}}\\)  and  \\(E_a = 98.6\\ \\mathrm{kJ\\ mol^{-1}} = 98.6 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}\\)\n\nthis being the only reading on which the data are dimensionally consistent, since a half life cannot have the unit \\(\\mathrm{s^{-1}}\\).\n\n**The rate constant required.** For a first order reaction\n\n\\(k = \\dfrac{0.693}{t_{1/2}}\\)\n\n\\(t_{1/2} = 10\\ \\mathrm{minutes} = 10 \\times 60 = 600\\ \\mathrm{s}\\)\n\n\\(k = \\dfrac{0.693}{600\\ \\mathrm{s}} = 1.155 \\times 10^{-3}\\ \\mathrm{s^{-1}}\\)\n\n**The temperature.** The Arrhenius equation \\(k = \\mathrm{A}\\,e^{-E_a/RT}\\) is written as\n\n\\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{E_a}{2.303\\,R\\,T}\\)\n\n\\(\\dfrac{\\mathrm{A}}{k} = \\dfrac{4 \\times 10^{13}\\ \\mathrm{s^{-1}}}{1.155 \\times 10^{-3}\\ \\mathrm{s^{-1}}} = 3.463 \\times 10^{16}\\)\n\n\\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\log_{10}(3.463 \\times 10^{16}) = 16.54\\)\n\nRearranging for \\(T\\) and substituting \\(R = 8.314\\ \\mathrm{J\\ K^{-1}\\ mol^{-1}}\\),\n\n\\(T = \\dfrac{E_a}{2.303\\,R\\,\\log_{10}(\\mathrm{A}/k)} = \\dfrac{98.6 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}\\ mol^{-1}} \\times 16.54}\\)\n\n\\(= \\dfrac{98.6 \\times 10^{3}}{316.7}\\)\n\n\\(\\therefore T = 311.3\\ \\mathrm{K} = 38.3\\ ^\\circ\\mathrm{C}\\)\n\nSubstituting this temperature back into the Arrhenius equation checks the answer:\n\n\\(\\dfrac{E_a}{R\\,T} = \\dfrac{98.6 \\times 10^{3}}{8.314 \\times 311.3} = 38.10\\)\n\n\\(k = 4 \\times 10^{13} \\times e^{-38.10} = 1.14 \\times 10^{-3}\\ \\mathrm{s^{-1}}\\)\n\n\\(t_{1/2} = \\dfrac{0.693}{1.14 \\times 10^{-3}} = 6.1 \\times 10^{2}\\ \\mathrm{s}\\), that is about \\(10\\) minutes, which is the half life asked for.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "chemical-kinetics-12-pyq#25",
+    "questionNumber": "Q.24",
+    "pyqYear": 2025,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "stem": "Define zero order reaction.",
+    "solution": "A zero order reaction is a reaction whose rate is independent of the concentration of the reactant, so that the rate remains unchanged for as long as any reactant is present.\n\nFor the reaction \\(\\mathrm{A \\longrightarrow P}\\) the rate law is\n\nrate \\(= -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k\\)\n\nThe rate is therefore numerically equal to the rate constant, so the units of \\(k\\) are the units of the rate itself, \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\). Integration gives \\([\\mathrm{A}]_t = [\\mathrm{A}]_0 - k\\,t\\), so a plot of the concentration of the reactant against time is a straight line of slope \\(-k\\).\n\nThe decomposition of ammonia on a hot platinum surface at high pressure is an example: the surface is completely covered with ammonia molecules, so adding more ammonia does not increase the rate.",
+    "difficulty": "EASY"
+  }
+]

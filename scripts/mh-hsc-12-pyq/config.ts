@@ -459,6 +459,320 @@ const PHYSICS: Record<string, Chapter> = {
   },
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CHEMISTRY — the THIRD subject on this pipeline (2026-09-10).
+//
+// Same shape as Physics: a chapterwise LWS compilation of board PYQs, one .docx
+// per chapter, committed into chapters that ALREADY hold the Balbharati textbook
+// corpus (727 practice rows across these 16), so a chapter carries both and the
+// /browse PYQ/Practice toggle separates them.
+//
+// THREE THINGS DIFFER FROM PHYSICS, all measured before any chapter was added:
+//
+// 1. THE TAG IS WRITTEN BOTH WAYS ROUND. Maths and Physics always write
+//    "[Q. 4, March 2018]". Chemistry writes that AND "[Q.4.ii, 2016 March]" —
+//    180 month-first against 179 year-first across its 399 tags — and separates
+//    with a period as often as a comma. parseProvenanceTag was widened for this;
+//    an unparsed tag DROPS the item, so the old rule would have lost ~390 of 430.
+//
+// 2. THE CHAPTER NAME IS NOT THE FILENAME, for 3 of 16. The file says "Elements
+//    of Group 16, 17, and 18"; the DB says "Elements of GroupS 16, 17 and 18".
+//    Two more differ only in case. Chapters auto-create on commit, so a near-miss
+//    does not error — it forks the chapter and splits the corpus. Every name and
+//    subtopic below is taken VERBATIM from the live DB by a generator, not typed.
+//
+// 3. IT HAS FIGURES — 18 chemical structures across the three organic chapters
+//    (Halogen Derivatives 6, Alcohols 2, Aldehydes 10). Physics had zero, so the
+//    figure path has never run on this pipeline. Verified separately that no
+//    Physics stem referenced a figure it lacked (audit-figure-refs.ts, 5/5 on the
+//    known cases, 0 findings across 681 rows) — Physics genuinely needed none.
+//
+// 38 of the 430 items carry NO tag and are therefore DROPPED by the extractor.
+// That is deliberate and they are not lost: only 2 are Balbharati textbook
+// questions, and the distinctive data of the numerical ones appears in none of
+// the three text-layer papers (2023-25), so they are most likely from the eight
+// SCANNED years and need a vision pass to date. Held rather than shipped with an
+// invented year.
+const CHEM = (f: string) =>
+  join(
+    "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Question_Papers\\Chem_SB_PYQs",
+    f,
+  );
+const chemNote = (ch: string) =>
+  `Maharashtra HSC Class 12 Board PYQ — ${ch} (chapterwise compilation, 2014-2025; no 2021, exams cancelled)`;
+
+const CHEMISTRY: Record<string, Chapter> = {
+  "solid-state-12-pyq": {
+    id: "solid-state-12-pyq",
+    chapterName: "Solid State",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Solid_State.docx",
+    docx: CHEM("01. Solid_State.docx"),
+    note: chemNote("Solid State"),
+    subtopics: [
+      "Classification of Crystalline Solids",
+      "Crystal Defects and Imperfections",
+      "Crystal Structure and Unit Cells",
+      "Cubic System",
+      "Electrical Properties of Solids",
+      "Magnetic Properties of Solids",
+      "Packing Efficiency",
+      "Packing of Particles in Crystal Lattice",
+    ],
+  },
+  "solutions-12-pyq": {
+    id: "solutions-12-pyq",
+    chapterName: "Solutions",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Solutions.docx",
+    docx: CHEM("02. Solutions.docx"),
+    note: chemNote("Solutions"),
+    subtopics: [
+      "Boiling Point Elevation",
+      "Colligative Properties of Electrolytes",
+      "Colligative Properties of Nonelectrolyte Solutions",
+      "Depression in Freezing Point",
+      "Osmotic Pressure",
+      "Solubility and Capacity to Dissolve Solute",
+      "Vapour Pressure Lowering",
+      "Vapour Pressure of Solutions of Liquids in Liquids",
+    ],
+  },
+  "ionic-equilibria-12-pyq": {
+    id: "ionic-equilibria-12-pyq",
+    chapterName: "Ionic Equilibria",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Ionic_Equilibria.docx",
+    docx: CHEM("03. Ionic_Equilibria.docx"),
+    note: chemNote("Ionic Equilibria"),
+    subtopics: [
+      "Acids and Bases",
+      "Buffer Solutions",
+      "Common Ion Effect",
+      "Hydrolysis of Salts",
+      "Ionisation of Acids and Bases",
+      "pH Scale",
+      "Solubility Product",
+    ],
+  },
+  "chem-thermodynamics-12-pyq": {
+    id: "chem-thermodynamics-12-pyq",
+    chapterName: "Chemical Thermodynamics",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Chemical_Thermodynamics.docx",
+    docx: CHEM("04. Chemical_Thermodynamics.docx"),
+    note: chemNote("Chemical Thermodynamics"),
+    subtopics: [
+      "Enthalpy and Enthalpies of Physical Transformations",
+      "First Law of Thermodynamics",
+      "Pressure-Volume Work and Maximum Work",
+      "Spontaneity and Entropy",
+      "Terms Used in Thermodynamics",
+      "Thermochemistry",
+    ],
+  },
+  "electrochemistry-12-pyq": {
+    id: "electrochemistry-12-pyq",
+    chapterName: "Electrochemistry",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Electrochemistry.docx",
+    docx: CHEM("05. Electrochemistry.docx"),
+    note: chemNote("Electrochemistry"),
+    subtopics: [
+      "Electric Conduction and Conductance of Solutions",
+      "Electrochemical Series",
+      "Electrode Potential and Cell Potential",
+      "Electrolytic Cell",
+      "Galvanic Cells in Day-to-Day Life and Fuel Cells",
+      "Galvanic or Voltaic Cell",
+      "Reference Electrodes",
+      "Thermodynamics of Galvanic Cells",
+    ],
+  },
+  "chemical-kinetics-12-pyq": {
+    id: "chemical-kinetics-12-pyq",
+    chapterName: "Chemical Kinetics",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Chemical_Kinetics.docx",
+    docx: CHEM("06. Chemical Kinetics.docx"),
+    note: chemNote("Chemical Kinetics"),
+    subtopics: [
+      "Collision Theory of Bimolecular Reactions",
+      "Effect of a Catalyst on the Rate of Reaction",
+      "Integrated Rate Law",
+      "Molecularity of Elementary Reactions",
+      "Rate of Reaction",
+      "Rate of Reaction and Reactant Concentration",
+      "Temperature Dependence of Reaction Rates",
+    ],
+  },
+  "p-block-12-pyq": {
+    id: "p-block-12-pyq",
+    chapterName: "Elements of Groups 16, 17 and 18",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Elements_of_Groups_16_17_and_18.docx",
+    docx: CHEM("07. Elements of Group 16, 17, and 18.docx"),
+    note: chemNote("Elements of Groups 16, 17 and 18"),
+    subtopics: [
+      "Allotropy",
+      "Anomalous Behaviour",
+      "Atomic and Physical Properties",
+      "Chemical Properties of the Elements",
+      "Chlorine and Compounds of Chlorine",
+      "Compounds of Sulfur",
+      "Compounds of Xenon",
+      "Interhalogen Compounds",
+      "Occurrence and Electronic Configuration",
+      "Oxoacids",
+      "Oxygen and Compounds of Oxygen",
+    ],
+  },
+  "d-f-block-12-pyq": {
+    id: "d-f-block-12-pyq",
+    chapterName: "Transition and Inner Transition Elements",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Transition_and_Inner_Transition_Elements.docx",
+    docx: CHEM("08. Transition and Inner transition Elements.docx"),
+    note: chemNote("Transition and Inner Transition Elements"),
+    subtopics: [
+      "Actinoids",
+      "Common Properties of d-Block Elements",
+      "Compounds of Mn and Cr",
+      "Extraction of Metals",
+      "Lanthanoids",
+      "Oxidation States of the First Transition Series",
+      "Position in the Periodic Table and Electronic Configuration",
+      "Trends in Atomic Properties",
+    ],
+  },
+  "coordination-12-pyq": {
+    id: "coordination-12-pyq",
+    chapterName: "Coordination Compounds",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Coordination_Compounds.docx",
+    docx: CHEM("09. Coordination Compounds.docx"),
+    note: chemNote("Coordination Compounds"),
+    subtopics: [
+      "Applications of Coordination Compounds",
+      "Classification of Complexes",
+      "Isomerism in Coordination Compounds",
+      "IUPAC Nomenclature of Coordination Compounds",
+      "Stability of Coordination Compounds",
+      "Terms Used in Coordination Chemistry",
+      "Theories of Bonding in Complexes",
+      "Types of Ligands",
+    ],
+  },
+  "halogen-derivatives-12-pyq": {
+    id: "halogen-derivatives-12-pyq",
+    chapterName: "Halogen Derivatives",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Halogen_Derivatives.docx",
+    docx: CHEM("10. Halogen Derivatives.docx"),
+    note: chemNote("Halogen Derivatives"),
+    subtopics: [
+      "Classification of Halogen Derivatives",
+      "Methods of Preparation of Alkyl Halides",
+      "Nomenclature of Halogen Derivatives",
+      "Nucleophilic Substitution Reactions of Alkyl Halides",
+      "Optical Isomerism in Halogen Derivatives",
+      "Physical Properties",
+      "Reaction with Active Metals",
+      "Uses and Environmental Effects of Polyhalogen Compounds",
+    ],
+  },
+  "alcohols-phenols-ethers-12-pyq": {
+    id: "alcohols-phenols-ethers-12-pyq",
+    chapterName: "Alcohols, Phenols and Ethers",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Alcohols_Phenols_and_Ethers.docx",
+    docx: CHEM("11. Alcohols, Phenols and Ethers.docx"),
+    note: chemNote("Alcohols, Phenols and Ethers"),
+    subtopics: [
+      "Alcohols and Phenols",
+      "Ethers",
+      "Nomenclature",
+    ],
+  },
+  "aldehydes-ketones-acids-12-pyq": {
+    id: "aldehydes-ketones-acids-12-pyq",
+    chapterName: "Aldehydes, Ketones and Carboxylic Acids",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Aldehydes_Ketones_and_Carboxylic_Acids.docx",
+    docx: CHEM("12. Aldehydes, Ketones and Carboxylic acids.docx"),
+    note: chemNote("Aldehydes, Ketones and Carboxylic Acids"),
+    subtopics: [
+      "Chemical Properties of Aldehydes and Ketones",
+      "Chemical Properties of Carboxylic Acids",
+      "Classification of Aldehydes, Ketones and Carboxylic Acids",
+      "Nomenclature",
+      "Physical Properties",
+      "Polarity of the Carbonyl Group",
+      "Preparation of Aldehydes and Ketones",
+      "Preparation of Carboxylic Acids",
+    ],
+  },
+  "amines-12-pyq": {
+    id: "amines-12-pyq",
+    chapterName: "Amines",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Amines.docx",
+    docx: CHEM("13. Amines.docx"),
+    note: chemNote("Amines"),
+    subtopics: [
+      "Arene Diazonium Salts",
+      "Basicity of Amines",
+      "Chemical Properties of Amines",
+      "Classification and Nomenclature of Amines",
+      "Electrophilic Aromatic Substitution in Aromatic Amines",
+      "Physical Properties of Amines",
+      "Preparation of Amines",
+    ],
+  },
+  "biomolecules-12-pyq": {
+    id: "biomolecules-12-pyq",
+    chapterName: "Biomolecules",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Biomolecules.docx",
+    docx: CHEM("14. Biomolecules.docx"),
+    note: chemNote("Biomolecules"),
+    subtopics: [
+      "Carbohydrates",
+      "Nucleic Acids",
+      "Proteins",
+    ],
+  },
+  "polymers-12-pyq": {
+    id: "polymers-12-pyq",
+    chapterName: "Introduction to Polymer Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Introduction_to_Polymer_Chemistry.docx",
+    docx: CHEM("15. Introduction to Polymer Chemistry.docx"),
+    note: chemNote("Introduction to Polymer Chemistry"),
+    subtopics: [
+      "Classification of Polymers",
+      "Molecular Mass and Degree of Polymerization",
+      "Some Important Polymers",
+    ],
+  },
+  "green-nano-12-pyq": {
+    id: "green-nano-12-pyq",
+    chapterName: "Green Chemistry and Nanochemistry",
+    subjectName: "Chemistry",
+    sourceFile: "MH_HSC_12_Chemistry_PYQ__Green_Chemistry_and_Nanochemistry.docx",
+    docx: CHEM("16. Green Chemistry and Nanochemistry.docx"),
+    note: chemNote("Green Chemistry and Nanochemistry"),
+    subtopics: [
+      "Applications of Nanomaterials",
+      "Introduction to Nanochemistry",
+      "Principles of Green Chemistry",
+      "Sustainable Development",
+      "Synthesis of Nanomaterials",
+      "The Role of Green Chemistry",
+    ],
+  },
+};
+
 export const CHAPTERS: Record<string, Chapter> = {
   // ── PILOT. Deliberately the hardest chapter, not the easiest: it carries ALL 5
   //    of the compilation's embedded images (switching circuits — every other
@@ -721,6 +1035,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   ...PHYSICS,
+  ...CHEMISTRY,
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

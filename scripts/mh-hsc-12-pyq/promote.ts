@@ -139,7 +139,17 @@ function main() {
   // itself is sound" after that residue had already been removed.
   // Dropped only when the row now passes the text probe clean — a flag about a
   // defect that is STILL present is kept.
-  const ARTIFACT = /artifact|####|extraction|OPTION_LEAK|blockquote/i;
+  //
+  // The terms must name a DEFECT CLAIM, not merely mention extraction. A bare
+  // /extraction/i also matches a real DB subtopic name — "Extraction of Metals",
+  // the d-/f-block chapter's metallurgy subtopic — so a flag saying "this
+  // question belongs under Extraction of Metals" was silently dropped, whole
+  // report gone, no error, because an off-chapter question always passes the
+  // text probe. Found by the authoring agent whose flag vanished. Every genuine
+  // wording still matches: "an extraction artifact" via `artifact`, "lost in
+  // extraction" and "extraction slip" via the two explicit forms below.
+  const ARTIFACT =
+    /artifact|####|OPTION_LEAK|blockquote|\bextraction\s+(?:artifact|defect|error|residue|slip|bug)\b|\b(?:lost|dropped|mangled|corrupted|garbled)\s+(?:in|during)\s+extraction\b/i;
   const dropped: string[] = [];
   for (const s of answers) {
     if (!s.flag || !ARTIFACT.test(s.flag)) continue;

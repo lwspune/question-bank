@@ -50,6 +50,8 @@ type TrimPart = {
   from?: string;
   splitAt: string;
   take: "before" | "after";
+  /** A clause printed once that governs BOTH halves — see applyTrim. */
+  append?: string;
   subtopic?: string;
   why?: string;
 };
@@ -80,7 +82,12 @@ const chapterOf = (ref: string) => ref.split("#")[0];
  * hard-wrap backslash sits harmlessly mid-sentence until the half after it is
  * removed, and then it is trailing.
  */
-export function applyTrim(stem: string, splitAt: string, take: "before" | "after"): string {
+export function applyTrim(
+  stem: string,
+  splitAt: string,
+  take: "before" | "after",
+  append?: string,
+): string {
   const hits = stem.split(splitAt).length - 1;
   if (hits === 0) throw new Error(`split anchor not found: ${JSON.stringify(splitAt)}`);
   if (hits > 1) {
@@ -90,8 +97,31 @@ export function applyTrim(stem: string, splitAt: string, take: "before" | "after
   }
   const at = stem.indexOf(splitAt);
   const cut = take === "before" ? stem.slice(0, at) : stem.slice(at);
-  const out = stripArtifacts(cut).trim();
+  let out = stripArtifacts(cut).trim();
   if (!out) throw new Error(`trim leaves an empty stem: ${JSON.stringify(splitAt)} take=${take}`);
+
+  // A clause printed ONCE that governs BOTH halves — "Write preparation of (a)
+  // diethyl ether (b) ethyl cyanide FROM ETHYL BROMIDE." names the substrate for
+  // both products and sits at the end, so `take: "before"` structurally cannot
+  // keep it and the first half is left naming no starting material.
+  //
+  // Deliberately not a defects.json stem fix: those run at EXTRACT time, and this
+  // text only exists after the dedupe pass has made the cut.
+  if (append !== undefined) {
+    if (!append.trim()) {
+      throw new Error(
+        `append is blank, so it corrects NOTHING while still reporting success — ` +
+          `the same silent-no-op shape as a stem fix whose \`to\` equals its \`from\`.`,
+      );
+    }
+    if (out.endsWith(append.trim()) || out.endsWith(append)) {
+      throw new Error(
+        `the trimmed half already ends with ${JSON.stringify(append.trim())} — ` +
+          `appending it would duplicate the clause`,
+      );
+    }
+    out = stripArtifacts(out + append).trim();
+  }
   return out;
 }
 
@@ -101,7 +131,15 @@ function main() {
   // its own _readme describing how THAT source fails, and the two fail
   // differently — Maths cross-files whole questions, Physics also pastes a
   // compound question into both of the chapters its two halves belong to.
-  const ledgers = ["cross-chapter-duplicates.json", "cross-chapter-duplicates-physics.json"]
+  const ledgers = [
+    "cross-chapter-duplicates.json",
+    "cross-chapter-duplicates-physics.json",
+    // Chemistry's is DELIBERATELY PARTIAL while the subject is worked chapter by
+    // chapter: its `expectedCounts` lists only the chapters it touches, and the
+    // reconciliation checks only what is listed, so unlisted chapters are left
+    // alone rather than silently mis-reconciled.
+    "cross-chapter-duplicates-chemistry.json",
+  ]
     .filter((f) => existsSync(join(DATA, f)))
     .map((f) => JSON.parse(readFileSync(join(DATA, f), "utf8")) as Ledger);
   const items = ledgers.flatMap((l) => l.pairs.flatMap((p) => p.items));
@@ -162,7 +200,7 @@ function main() {
       continue;
     }
     try {
-      applyTrim(src.stem, p.splitAt, p.take);
+      applyTrim(src.stem, p.splitAt, p.take, p.append);
     } catch (e) {
       problems.push(`${p.tag}: ${p.ref}: ${(e as Error).message}`);
     }
@@ -221,7 +259,7 @@ function main() {
   for (const p of parts) {
     const row = find(p.ref)!;
     const before = row.stem;
-    row.stem = applyTrim(stems.get(p.from ?? p.ref)!, p.splitAt, p.take);
+    row.stem = applyTrim(stems.get(p.from ?? p.ref)!, p.splitAt, p.take, p.append);
     if (p.subtopic) subtopicSeed[p.ref] = p.subtopic;
     const src = p.from ? ` (text from ${p.from})` : "";
     log.push(

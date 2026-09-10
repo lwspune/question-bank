@@ -821,5 +821,22 @@
         "why": "OURS, and it cost a whole question. The compilation typed the item number INSIDE an OMML equation together with the expression, so pandoc emitted the line as a math zone starting with '$' and the ITEM rule - which anchors on a line beginning '<digits>. ' - never saw an item start. Board question Q.1(iii) February 2023 was therefore absorbed into item 14's stem, and the two questions (a March-2022 VSA asking for the X-OR Boolean expression, and this February-2023 MCQ) shipped as ONE row with item 14's number. Nothing downstream could detect it: the merged row is a well-formed MCQ with four intact options, so the only trace was a GAP in the item numbering, which is now the standing detector. The repair moves the numeral OUT of the zone and deletes nothing, so the equation still parses and the question recovers its own number."
       }
     ]
+  },
+  "imageMisattached": {
+    "_readme": "A figure pandoc anchored to the WRONG question. It attributes an embedded picture to the paragraph it sits in, and this compilation puts a reaction scheme at the HEAD of a paragraph - so the scheme belonging to question N is emitted inside question N-1. Invisible downstream: attach-images uploads whatever the row names, so the wrong picture ships and the row that needed one ships blank. Adjudicate by READING the image, never by position alone.",
+    "moves": [
+      {
+        "from": "halogen-derivatives-12-pyq#9",
+        "to": "halogen-derivatives-12-pyq#10",
+        "image": "image6.png",
+        "why": "The figure reads `CH3CH2Cl --[AgCN, alc., heat]--> ?` - a complete-the-reaction prompt ending in a literal question mark. #9 is 'Explain dehydrohalogenation of 2-chlorobutane. Write use and environmental effect of CFC': it needs no figure and involves no AgCN. #10 is 'Complete the reaction:' and carried NO figure, so it was unanswerable as extracted. Corroborated by reconciliation - every other figure in the chapter accounts for a question (image3 -> #2, image4 -> #3, image5 -> #4), leaving image6 the only unattached one and #10 the only question missing one. OURS, not the board's: the printed paper prints the scheme under its own question."
+      },
+      {
+        "from": "aldehydes-ketones-acids-12-pyq#12",
+        "to": "aldehydes-ketones-acids-12-pyq#13",
+        "image": "image1.png",
+        "why": "The figure is the structure CH3-CH2-CH(CH3)-CHO (2-methylbutanal). THREE independent lines put it on #13, not #12. (1) STEM: #13 reads 'Define racemic mixture. Give the IUPAC name of .' and DANGLES with nothing after 'of', so it is unanswerable as extracted; #12 ('Write a note on self oxidation-reduction reaction of aldehyde with suitable example') is complete without any figure. (2) CHEMISTRY, and this is the decisive one: #12 is the Cannizzaro reaction, which REQUIRES an aldehyde with no alpha-hydrogen - 2-methylbutanal has one, so as attached it is a WRONG example for the very question it sits on; meanwhile it is chiral, which is exactly what 'racemic mixture' needs. (3) GEOMETRY: the image renders to the right of item 13's line and overlaps item 13's own [Q.7. March 2017] tag - a floating image whose anchor landed in the preceding paragraph. OURS, not the board's: the printed paper prints the structure under its own question."
+      }
+    ]
   }
 }
