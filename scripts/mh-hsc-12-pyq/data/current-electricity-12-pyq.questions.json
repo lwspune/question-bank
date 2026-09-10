@@ -1,0 +1,309 @@
+[
+  {
+    "ref": "current-electricity-12-pyq#1",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "When a resistor of \\(5\\Omega\\) is connected across the cell, its terminal potential difference is balanced by 150 cm of potentiometer wire and when a resistance of \\(10\\Omega\\) is connected across the cell, the terminal potential difference is balanced by 175 cm of the same potentiometer wire. Find the balancing length when the cell is in open circuit and the internal resistance of the cell.",
+    "solution": "Given: with \\(R_{1} = 5\\ \\Omega\\) connected across the cell the balancing length is \\(l_{1} = 150\\) cm, and with \\(R_{2} = 10\\ \\Omega\\) it is \\(l_{2} = 175\\) cm. Let \\(l\\) be the balancing length when the cell is in open circuit; this length corresponds to the emf of the cell.\n\nWhen a resistance \\(R\\) is joined across the cell, the balancing length corresponds to the terminal potential difference, and the internal resistance is\n\n\\(r = R\\left(\\dfrac{l - l'}{l'}\\right)\\)\n\nwhere \\(l'\\) is the balancing length in the closed circuit.\n\nFor the first observation,\n\n\\(r = 5\\left(\\dfrac{l - 150}{150}\\right)\\)  --- (1)\n\nFor the second observation,\n\n\\(r = 10\\left(\\dfrac{l - 175}{175}\\right)\\)  --- (2)\n\nThe cell is the same in both, so from (1) and (2),\n\n\\(\\dfrac{5(l - 150)}{150} = \\dfrac{10(l - 175)}{175}\\)\n\n\\(\\dfrac{l - 150}{30} = \\dfrac{2(l - 175)}{35}\\)\n\n\\(35(l - 150) = 60(l - 175)\\)\n\n\\(35l - 5250 = 60l - 10500\\)\n\n\\(25l = 5250\\)\n\n\\(\\therefore l = 210\\) cm\n\nSubstituting this in (1),\n\n\\(r = 5\\left(\\dfrac{210 - 150}{150}\\right) = 5 \\times \\dfrac{60}{150}\\)\n\n\\(\\therefore r = 2\\ \\Omega\\)\n\nThe balancing length in open circuit is 210 cm and the internal resistance of the cell is \\(2\\ \\Omega\\).\n\nCheck with (2): \\(10\\left(\\dfrac{210 - 175}{175}\\right) = 10 \\times \\dfrac{35}{175} = 2\\ \\Omega\\), the same internal resistance, so the two observations are consistent.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "current-electricity-12-pyq#2",
+    "questionNumber": "Q. 1(i)",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Potentiometer",
+    "stem": "If the length of a potentiometer wire is increased by keeping constant potential difference across the wire, then ___________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "null point is obtained at larger distance"
+      },
+      {
+        "label": "B",
+        "text": "there is no change in the null point"
+      },
+      {
+        "label": "C",
+        "text": "potential gradient is increased"
+      },
+      {
+        "label": "D",
+        "text": "null point is obtained at shorter distance"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** null point is obtained at larger distance\n\nThe potential gradient of the potentiometer wire is the potential difference per unit length,\n\n\\(K = \\dfrac{V}{L}\\)\n\nwhere \\(V\\) is the potential difference across the whole wire and \\(L\\) its length. Here \\(V\\) is kept constant while \\(L\\) is increased, so \\(K\\) decreases.\n\nFor a cell of emf \\(\\varepsilon\\) balanced at a distance \\(l\\) from the end A of the wire,\n\n\\(\\varepsilon = K l\\)\n\n\\(\\therefore l = \\dfrac{\\varepsilon}{K}\\)\n\nThe emf of the cell being balanced is unchanged and \\(K\\) has decreased, so \\(l\\) increases; the point of zero deflection therefore shifts farther along the wire.\n\nA smaller potential gradient also makes the potentiometer more sensitive, since a smaller emf can now be balanced on the wire.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#3",
+    "questionNumber": "Q. 2(i)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "Define potential gradient of the potentiometer wire.",
+    "solution": "The potential gradient of a potentiometer wire is defined as the potential difference per unit length of the wire.\n\nIf \\(V_{AB}\\) is the potential difference across the wire AB of length \\(L\\), the potential gradient is\n\n\\(K = \\dfrac{V_{AB}}{L}\\)\n\nFor a wire of resistance \\(R\\) connected across a cell of emf \\(\\varepsilon\\) and internal resistance \\(r\\), the current through the wire is \\(I = \\dfrac{\\varepsilon}{R + r}\\), so \\(V_{AB} = IR = \\dfrac{\\varepsilon R}{R + r}\\) and\n\n\\(K = \\dfrac{\\varepsilon R}{L (R + r)}\\)\n\nIts SI unit is volt per metre (V/m) and its dimensions are \\([M^{1}L^{1}T^{-3}I^{-1}]\\).\n\nSo long as \\(\\varepsilon\\), \\(R\\), \\(r\\) and \\(L\\) remain constant, \\(K\\) is the same all along the wire, and the potential difference between two points a distance \\(l\\) apart is \\(V = K l\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#4",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "Distinguish between potentiometer and voltmeter.",
+    "solution": "| Potentiometer | Voltmeter |\n|---|---|\n| It works on a null method: at the balance point it draws no current from the cell, so it behaves as an ideal voltmeter of infinite resistance. | It has a finite resistance and always draws some current from the cell across which it is connected. |\n| It measures the emf of a cell as well as a potential difference. | It measures only the terminal potential difference \\(V = \\varepsilon - Ir\\); it cannot measure the emf of a cell. |\n| The reading taken is a balancing length, which is converted into a potential difference using the potential gradient. | The reading is taken directly from a calibrated scale by the deflection of a pointer. |\n| It is highly sensitive; a potential difference of the order of \\(10^{-6}\\) V can be measured, so its least count is very small. | It is far less sensitive and its least count is comparatively large. |\n| It is not portable and gives no direct reading. | It is portable and gives a direct reading. |\n\nThus a potentiometer is the more accurate instrument, while a voltmeter is the more convenient one.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#5",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "Explain the use of potentiometer to determine internal resistance of a cell.",
+    "solution": "**Circuit.** The potentiometer wire AB is connected in series with a cell of emf \\(\\varepsilon\\), a key \\(K_{1}\\) and a rheostat, the end A being at the higher potential. The cell of emf \\(\\varepsilon_{1}\\) whose internal resistance \\(r\\) is to be found is connected between A and the jockey J through a galvanometer G. A resistance box \\(R\\) is joined across this cell through a second key \\(K_{2}\\).\n\n**Step 1 - open circuit.** The key \\(K_{1}\\) is closed and \\(K_{2}\\) is kept open, so no current is drawn from the cell \\(\\varepsilon_{1}\\). The jockey is tapped along the wire until the galvanometer shows no deflection; let \\(l_{1}\\) be the balancing length measured from A. This length corresponds to the emf of the cell,\n\n\\(\\varepsilon_{1} = K l_{1}\\)  --- (1)\n\nwhere \\(K\\) is the potential gradient of the wire.\n\n**Step 2 - closed circuit.** Both \\(K_{1}\\) and \\(K_{2}\\) are now closed, so the cell sends a current \\(I\\) through the resistance box \\(R\\). The null point is found again, at a distance \\(l_{2}\\) from A. This length corresponds to the terminal potential difference of the cell,\n\n\\(V = K l_{2}\\)  --- (2)\n\n**Formula.** From (1) and (2),\n\n\\(\\dfrac{\\varepsilon_{1}}{V} = \\dfrac{K l_{1}}{K l_{2}} = \\dfrac{l_{1}}{l_{2}}\\)\n\nFor the loop containing the cell and the resistance box,\n\n\\(\\varepsilon_{1} = IR + Ir\\) and \\(V = IR\\)\n\n\\(\\dfrac{\\varepsilon_{1}}{V} = \\dfrac{IR + Ir}{IR} = \\dfrac{R + r}{R}\\)\n\n\\(\\therefore \\dfrac{R + r}{R} = \\dfrac{l_{1}}{l_{2}}\\)\n\n\\(\\therefore \\dfrac{r}{R} = \\dfrac{l_{1}}{l_{2}} - 1\\)\n\n\\(\\therefore r = R\\left(\\dfrac{l_{1} - l_{2}}{l_{2}}\\right)\\)\n\n\\(R\\), \\(l_{1}\\) and \\(l_{2}\\) are all measured, so the internal resistance \\(r\\) of the cell is determined. Since \\(r\\) is positive, \\(l_{2}\\) is always less than \\(l_{1}\\): shunting the cell shortens the balancing length.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#6",
+    "questionNumber": "Q. 6(iv)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Potentiometer",
+    "stem": "In potentiometer experiment, if \\(l_{1}\\) is the balancing length for e.m.f. of cell of internal resistance r and \\(l_{2}\\) is the balancing length for its terminal potential difference when shunted with resistance R then : ___________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(l_{1} = l_{2}\\left( \\frac{R + r}{R} \\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(l_{1} = l_{2}\\left( \\frac{R}{R + r} \\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(l_{1} = l_{2}\\left( \\frac{R}{R - r} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(l_{1} = l_{2}\\left( \\frac{R - r}{R} \\right)\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(l_{1} = l_{2}\\left( \\dfrac{R + r}{R} \\right)\\)\n\nAt the balance point no current is drawn from the cell, so the balancing length \\(l_{1}\\) corresponds to its emf,\n\n\\(\\varepsilon = K l_{1}\\)\n\nwhere \\(K\\) is the potential gradient of the wire.\n\nWhen the cell is shunted by the resistance \\(R\\) it sends a current \\(I\\), and the balancing length \\(l_{2}\\) now corresponds to its terminal potential difference,\n\n\\(V = K l_{2}\\)\n\nFor the loop containing the cell and \\(R\\),\n\n\\(\\varepsilon = I(R + r)\\) and \\(V = IR\\)\n\n\\(\\dfrac{\\varepsilon}{V} = \\dfrac{R + r}{R}\\)\n\nBut \\(\\dfrac{\\varepsilon}{V} = \\dfrac{K l_{1}}{K l_{2}} = \\dfrac{l_{1}}{l_{2}}\\)\n\n\\(\\therefore \\dfrac{l_{1}}{l_{2}} = \\dfrac{R + r}{R}\\)\n\n\\(\\therefore l_{1} = l_{2}\\left(\\dfrac{R + r}{R}\\right)\\)\n\nSince \\(r\\) is positive, this makes \\(l_{1} > l_{2}\\), which agrees with the observation that shunting the cell reduces the balancing length.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#7",
+    "questionNumber": "Q. 6(iii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "State the advantages of potentiometer over voltmeter.",
+    "solution": "**Advantages of a potentiometer over a voltmeter.**\n\n1. A potentiometer works on a null method. At the balance point the galvanometer shows no deflection, so no current is drawn from the cell under test and it measures the emf itself. A voltmeter has a finite resistance, always draws a current \\(I\\) from the cell, and therefore reads only the terminal potential difference \\(V = \\varepsilon - Ir\\), which is less than the emf.\n\n2. Since it draws no current at balance, a potentiometer behaves as an ideal voltmeter of infinite resistance.\n\n3. It is far more sensitive. A potential difference of the order of \\(10^{-6}\\) V can be measured with it, so its least count is much smaller than that of a voltmeter.\n\n4. Its sensitivity can be increased at will by decreasing the potential gradient \\(K = \\dfrac{V}{L}\\), that is by using a longer wire or a smaller current through it. A voltmeter has a fixed range and a fixed least count.\n\n5. It gives an accurate result without being calibrated against a standard instrument, because the emf is compared directly with a known emf using the balancing lengths.\n\n6. It can be used for several measurements - to compare the emfs of two cells, to measure the internal resistance of a cell, and to measure a small potential difference - whereas a voltmeter can only read a potential difference.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#8",
+    "questionNumber": "Q. 1(v)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Potentiometer",
+    "stem": "Which of the following equations gives correct expression for the internal resistance of a cell by using potentiometer?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(r = R\\left( \\frac{V}{E} - 1 \\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(r = R\\left( 1 - \\ \\frac{E}{V} \\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(r = R\\left( 1 - \\frac{V}{E} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(r = R\\left( \\frac{E}{V} - 1 \\right)\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** \\(r = R\\left( \\dfrac{E}{V} - 1 \\right)\\)\n\nLet \\(E\\) be the emf of the cell, \\(r\\) its internal resistance and \\(R\\) the resistance connected across the cell through the resistance box. When the cell is shunted by \\(R\\) it drives a current \\(I\\), and its terminal potential difference is \\(V\\).\n\nFor the loop containing the cell and \\(R\\),\n\n\\(E = I(R + r)\\) and \\(V = IR\\)\n\nDividing,\n\n\\(\\dfrac{E}{V} = \\dfrac{I(R + r)}{IR} = \\dfrac{R + r}{R} = 1 + \\dfrac{r}{R}\\)\n\n\\(\\dfrac{r}{R} = \\dfrac{E}{V} - 1\\)\n\n\\(\\therefore r = R\\left(\\dfrac{E}{V} - 1\\right)\\)\n\nIn terms of the two balancing lengths \\(l_{1}\\) (open circuit, corresponding to \\(E\\)) and \\(l_{2}\\) (closed circuit, corresponding to \\(V\\)), this is \\(r = R\\left(\\dfrac{l_{1} - l_{2}}{l_{2}}\\right)\\), the working formula of the experiment.\n\nCheck: \\(V\\) is always less than \\(E\\), so \\(\\dfrac{E}{V} > 1\\) and the expression gives a positive \\(r\\), as it must.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#9",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Potentiometer",
+    "stem": "State the advantages of a potentiometer over a voltmeter.",
+    "solution": "**Advantages of a potentiometer over a voltmeter.**\n\n1. It uses a null method. At the balance point the galvanometer shows no deflection, so the potentiometer draws no current from the cell being tested and measures its emf. A voltmeter always draws some current, because its resistance is finite, and hence measures only the terminal potential difference \\(V = \\varepsilon - Ir\\), which is smaller than the emf.\n\n2. Drawing no current at balance, the potentiometer acts as an ideal voltmeter of infinite resistance.\n\n3. It is much more sensitive: a potential difference of the order of \\(10^{-6}\\) V can be measured, so its least count is far better than that of a voltmeter.\n\n4. Its sensitivity can be improved by reducing the potential gradient \\(K = \\dfrac{V}{L}\\), that is by taking a longer wire or a smaller current through the wire, whereas a voltmeter has a fixed range and least count.\n\n5. Its result does not depend on the calibration of a pointer and a scale, since the emf is compared directly with a standard emf through the balancing lengths.\n\n6. The same instrument compares the emfs of two cells, measures the internal resistance of a cell and measures a small potential difference, while a voltmeter reads only a potential difference.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#10",
+    "questionNumber": "Q. 7(i)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "stem": "Explain with a neat circuit diagram how will you determine unknown resistance 'X' by using meter bridge.",
+    "solution": "**Construction.** A metre bridge consists of a uniform wire exactly one metre long stretched along a metre scale on a wooden board. The ends of the wire are fixed under two L-shaped metallic strips, and a third strip placed between them leaves two gaps, the left gap and the right gap. The unknown resistance \\(X\\) is connected in the left gap and a resistance box \\(R\\) in the right gap. One terminal of a galvanometer G is joined to the central strip C and the other terminal carries the jockey J. A cell \\(\\varepsilon\\) with a key and a rheostat is connected across the ends A and B of the wire.\n\n**Working.** A suitable resistance \\(R\\) is taken out of the box and the key is closed. The jockey is tapped at different points of the wire until the galvanometer shows no deflection. That point D is the null point, and the bridge is then balanced.\n\n**Calculation.** The metre bridge is a Wheatstone bridge in which the two lower arms are the two parts AD and DB of the wire. Let their lengths be \\(l_{x}\\) and \\(l_{R}\\), with \\(l_{x} + l_{R} = 100\\) cm, and their resistances \\(R_{AD}\\) and \\(R_{DB}\\). At balance,\n\n\\(\\dfrac{X}{R} = \\dfrac{R_{AD}}{R_{DB}}\\)\n\nThe wire is uniform, of resistivity \\(\\rho\\) and area of cross section \\(A\\), so\n\n\\(R_{AD} = \\dfrac{\\rho l_{x}}{A}\\) and \\(R_{DB} = \\dfrac{\\rho l_{R}}{A}\\)\n\n\\(\\dfrac{X}{R} = \\dfrac{\\rho l_{x} / A}{\\rho l_{R} / A} = \\dfrac{l_{x}}{l_{R}}\\)\n\n\\(\\therefore X = R\\left(\\dfrac{l_{x}}{l_{R}}\\right) = R\\left(\\dfrac{l_{x}}{100 - l_{x}}\\right)\\)\n\nKnowing \\(R\\) and the two lengths, the unknown resistance \\(X\\) is calculated.\n\n**Precautions.** \\(R\\) is chosen so that the null point lies in the middle one third of the wire, where the fractional error in the lengths is least, and the observation is repeated after interchanging \\(X\\) and \\(R\\) so that the end resistances cancel out.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#11",
+    "questionNumber": "Q. 26",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "stem": "Two resistances X and Y in the two gaps of a meter-bridge gives a null point dividing the wire in the ratio 2:3. If each resistance is increased by \\(30\\Omega\\), the null point divides the wire in the ratio 5:6, calculate the value of X and Y.",
+    "solution": "Given: with resistances \\(X\\) and \\(Y\\) in the two gaps the null point divides the wire in the ratio 2 : 3, and when each resistance is increased by \\(30\\ \\Omega\\) the ratio becomes 5 : 6.\n\nFor a metre bridge, at balance the ratio of the two gap resistances equals the ratio of the two parts of the wire.\n\nFirst observation:\n\n\\(\\dfrac{X}{Y} = \\dfrac{2}{3}\\)\n\n\\(3X = 2Y\\)  --- (1)\n\nSecond observation:\n\n\\(\\dfrac{X + 30}{Y + 30} = \\dfrac{5}{6}\\)\n\n\\(6(X + 30) = 5(Y + 30)\\)\n\n\\(6X + 180 = 5Y + 150\\)\n\n\\(6X - 5Y = -30\\)  --- (2)\n\nFrom (1), \\(Y = \\dfrac{3X}{2}\\). Substituting in (2),\n\n\\(6X - 5\\left(\\dfrac{3X}{2}\\right) = -30\\)\n\n\\(\\dfrac{12X - 15X}{2} = -30\\)\n\n\\(-3X = -60\\)\n\n\\(\\therefore X = 20\\ \\Omega\\)\n\n\\(\\therefore Y = \\dfrac{3 \\times 20}{2} = 30\\ \\Omega\\)\n\nCheck: \\(\\dfrac{X}{Y} = \\dfrac{20}{30} = \\dfrac{2}{3}\\), and after increasing each by \\(30\\ \\Omega\\), \\(\\dfrac{50}{60} = \\dfrac{5}{6}\\). Both given ratios are reproduced.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#12",
+    "questionNumber": "Q. 8(iii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "stem": "Describe Kelvin's method to determine the resistance of galvanometer by using metre bridge.",
+    "solution": "Kelvin's method determines the resistance \\(G\\) of a galvanometer with the help of a metre bridge.\n\n**Circuit.** The galvanometer whose resistance is to be found is connected in one gap of the metre bridge and a resistance box \\(R\\) in the other gap. Unlike the ordinary metre bridge circuit, here the galvanometer itself forms one arm of the bridge: one of its terminals is joined to the central strip C, so that the jockey and the wire complete the network. A cell with a key and a rheostat is connected across the ends A and B of the wire.\n\n**Working.**\n\n1. A suitable resistance is taken in the box and the key is closed, so that current flows round the circuit. Without touching the jockey to the wire, the deflection of the galvanometer is observed.\n\n2. The rheostat is adjusted so that this deflection is about two thirds of the full scale.\n\n3. The jockey is then tapped at different points of the wire, and the point D is found at which the deflection of the galvanometer does not change.\n\n4. At that point the galvanometer shows the same deflection whether or not the jockey touches the wire, so no current flows through the branch containing D. The point D and the junction of the two gaps are therefore at the same potential, and the bridge is balanced.\n\n5. The balancing length is measured. Let \\(l_{g}\\) be the length of the segment of wire adjacent to the galvanometer gap and \\(l_{r}\\) that adjacent to the resistance box, with \\(l_{g} + l_{r} = 100\\) cm.\n\n**Calculation.** Since the bridge is balanced,\n\n\\(\\dfrac{G}{R} = \\dfrac{R_{AD}}{R_{DB}}\\)\n\nand for a uniform wire \\(\\dfrac{R_{AD}}{R_{DB}} = \\dfrac{l_{g}}{l_{r}}\\)\n\n\\(\\therefore \\dfrac{G}{R} = \\dfrac{l_{g}}{100 - l_{g}}\\)\n\n\\(\\therefore G = R\\left(\\dfrac{l_{g}}{100 - l_{g}}\\right)\\)\n\nThe resistance of the galvanometer is calculated from this formula. The distinguishing feature of Kelvin's method is that the balance point is the one at which the deflection does not change when the jockey touches the wire, and not the one at which the deflection is zero.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "current-electricity-12-pyq#13",
+    "questionNumber": "Q. 6(vii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "stem": "An unknown resistance is placed in the left gap and resistance of 50 ohm is placed in the right gap of a meter bridge. The null point is obtained at 40 cm from the left end. Determine the unknown resistance.",
+    "solution": "Given: resistance in the right gap \\(R = 50\\ \\Omega\\); balancing length from the left end \\(l_{x} = 40\\) cm, so the length of the other segment is \\(l_{R} = 100 - 40 = 60\\) cm.\n\nFor a metre bridge, at balance\n\n\\(\\dfrac{X}{R} = \\dfrac{l_{x}}{100 - l_{x}}\\)\n\n\\(X = R\\left(\\dfrac{l_{x}}{100 - l_{x}}\\right) = 50 \\times \\dfrac{40}{60} = 50 \\times \\dfrac{2}{3}\\)\n\n\\(\\therefore X = 33.33\\ \\Omega\\)\n\nCheck: \\(\\dfrac{X}{R} = \\dfrac{33.33}{50} = 0.667 = \\dfrac{40}{60}\\), which is the ratio of the two segments of the wire, so the balance condition is satisfied.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#14",
+    "questionNumber": "Q. 2(i)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "What is the value of resistance for an ideal voltmeter?",
+    "solution": "The resistance of an ideal voltmeter is infinite.\n\nA voltmeter is connected in parallel across the two points between which the potential difference is to be measured. If its resistance is \\(R_{V}\\), it draws a current\n\n\\(I_{V} = \\dfrac{V}{R_{V}}\\)\n\nfrom the circuit, and this current changes the current in the circuit and hence the very potential difference being measured. The instrument should not disturb the circuit at all, so \\(I_{V}\\) must be zero, and \\(I_{V} = 0\\) for a finite \\(V\\) only when \\(R_{V}\\) is infinite.\n\n\\(\\therefore\\) an ideal voltmeter has infinite resistance. In practice a voltmeter is a galvanometer with a high resistance connected in series with it, so that its resistance is made as large as possible.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#15",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "How will you convert a moving coil galvanometer into an ammeter?",
+    "solution": "A moving coil galvanometer is converted into an ammeter by connecting a low resistance, called a shunt, in parallel with it.\n\nLet \\(G\\) be the resistance of the galvanometer, \\(I_{g}\\) the current that produces full scale deflection, \\(I\\) the maximum current to be measured, and \\(S\\) the shunt.\n\nThe shunt is in parallel with the galvanometer, so the potential difference across the two is the same. Of the total current \\(I\\), a part \\(I_{g}\\) passes through the coil and the remaining part \\(I - I_{g}\\) through the shunt. Hence\n\n\\(I_{g} G = (I - I_{g}) S\\)\n\n\\(\\therefore S = \\dfrac{I_{g} G}{I - I_{g}}\\)\n\nWith this shunt in place, a current \\(I\\) in the circuit sends only \\(I_{g}\\) through the coil, so the pointer moves to the end of the scale, and the scale is graduated to read up to \\(I\\) ampere.\n\nBecause \\(S\\) is small, the resistance of the combination,\n\n\\(R_{A} = \\dfrac{GS}{G + S}\\)\n\nis smaller than \\(S\\) itself, which is what an ammeter must have: it is connected in series in the circuit and must not appreciably change the current it is measuring. The shunt also protects the galvanometer, since most of the current is bypassed through it.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#16",
+    "questionNumber": "Q. 1(v)",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "To convert a moving coil galvanometer into an ammeter we need to connect a ___________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "small resistance in parallel with it"
+      },
+      {
+        "label": "B",
+        "text": "large resistance in series with it"
+      },
+      {
+        "label": "C",
+        "text": "small resistance in series with it"
+      },
+      {
+        "label": "D",
+        "text": "large resistance in parallel with it"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** small resistance in parallel with it\n\nA moving coil galvanometer carries only a very small current \\(I_{g}\\) at full scale deflection, and an ammeter is connected in series in a circuit, so it must have a very low resistance if it is not to change the current it measures. Both requirements are met by joining a low resistance \\(S\\), called a shunt, in parallel with the galvanometer.\n\nThe shunt and the coil are in parallel, so the potential difference across them is the same. If \\(I\\) is the maximum current to be measured, the current through the shunt is \\(I - I_{g}\\), so\n\n\\(I_{g} G = (I - I_{g}) S\\)\n\n\\(\\therefore S = \\dfrac{I_{g} G}{I - I_{g}}\\)\n\nSince \\(I\\) is much larger than \\(I_{g}\\), the value of \\(S\\) so obtained is much smaller than \\(G\\), and the resistance of the combination \\(\\dfrac{GS}{G + S}\\) is smaller still. A large resistance in series would instead make the instrument a voltmeter.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#17",
+    "questionNumber": "Q. 2(iii)",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "What is the resistance of an ideal voltmeter?",
+    "solution": "The resistance of an ideal voltmeter is infinite.\n\nA voltmeter is joined in parallel across the element whose potential difference is to be measured, and it therefore draws a current\n\n\\(I_{V} = \\dfrac{V}{R_{V}}\\)\n\nwhere \\(R_{V}\\) is its resistance. This current alters the current in the circuit and hence the potential difference the instrument is meant to read. For the instrument not to disturb the circuit, \\(I_{V}\\) must be zero, which for a finite \\(V\\) requires \\(R_{V}\\) to be infinite.\n\n\\(\\therefore\\) the resistance of an ideal voltmeter is infinite. A real voltmeter is a galvanometer with a high resistance in series, so that its resistance is as large as can be arranged.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#18",
+    "questionNumber": "Q. 7",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "A galvanometer has a resistance of \\(30\\Omega\\) and its full scale deflection current is 20 microampere (\\(\\mu A\\)). What resistance should be added to it to have a range 0-10 volt?",
+    "solution": "Given: galvanometer resistance \\(G = 30\\ \\Omega\\), full scale deflection current \\(I_{g} = 20\\ \\mu\\)A \\(= 20 \\times 10^{-6}\\) A, range of the voltmeter \\(V = 10\\) V.\n\nA galvanometer is converted into a voltmeter by connecting a high resistance \\(X\\) in series with it. When the full voltage \\(V\\) is applied across the combination, the current through it is \\(I_{g}\\), so\n\n\\(V = I_{g}(G + X)\\)\n\n\\(X = \\dfrac{V}{I_{g}} - G = \\dfrac{10}{20 \\times 10^{-6}} - 30 = 5 \\times 10^{5} - 30\\)\n\n\\(\\therefore X = 499970\\ \\Omega = 4.9997 \\times 10^{5}\\ \\Omega\\)\n\nA resistance of about \\(5 \\times 10^{5}\\ \\Omega\\) must therefore be connected in series with the galvanometer.\n\nCheck: \\(I_{g}(G + X) = 20 \\times 10^{-6} \\times (30 + 499970) = 20 \\times 10^{-6} \\times 5 \\times 10^{5} = 10\\) V, the required range.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#19",
+    "questionNumber": "Q. 29",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "Distinguish between an ammeter and a voltmeter. (Two points each).",
+    "solution": "| Ammeter | Voltmeter |\n|---|---|\n| It measures the current flowing in a circuit, and its scale is graduated in ampere. | It measures the potential difference between two points of a circuit, and its scale is graduated in volt. |\n| It is connected in series with the circuit element through which the current is to be measured. | It is connected in parallel across the circuit element whose potential difference is to be measured. |\n| Its resistance is very low; the resistance of an ideal ammeter is zero. | Its resistance is very high; the resistance of an ideal voltmeter is infinite. |\n| It is obtained from a moving coil galvanometer by connecting a low resistance (a shunt) in parallel with it, \\(S = \\dfrac{I_{g}G}{I - I_{g}}\\). | It is obtained from a moving coil galvanometer by connecting a high resistance in series with it, \\(X = \\dfrac{V}{I_{g}} - G\\). |\n\nIn each case the instrument is designed so that it disturbs the circuit as little as possible.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "current-electricity-12-pyq#20",
+    "questionNumber": "Q. 24",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Galvanometer, Ammeter and Voltmeter",
+    "stem": "A galvanometer has a resistance of \\(50\\Omega\\) and a current of 2 mA is needed for its full scale deflection. Calculate resistance required to convert it, (i) into an ammeter of 0.5 A range and (ii) into a voltmeter of 10 V range.",
+    "solution": "Given: galvanometer resistance \\(G = 50\\ \\Omega\\), full scale deflection current \\(I_{g} = 2\\) mA \\(= 2 \\times 10^{-3}\\) A.\n\n**(i) Ammeter of range \\(I = 0.5\\) A.** A low resistance \\(S\\), the shunt, is connected in parallel with the galvanometer. The potential difference across the two is the same and the current through the shunt is \\(I - I_{g}\\), so\n\n\\(I_{g} G = (I - I_{g}) S\\)\n\n\\(S = \\dfrac{I_{g} G}{I - I_{g}} = \\dfrac{2 \\times 10^{-3} \\times 50}{0.5 - 0.002} = \\dfrac{0.1}{0.498}\\)\n\n\\(\\therefore S = 0.2008\\ \\Omega\\), to be connected in parallel.\n\n**(ii) Voltmeter of range \\(V = 10\\) V.** A high resistance \\(X\\) is connected in series with the galvanometer, and at full scale deflection\n\n\\(V = I_{g}(G + X)\\)\n\n\\(X = \\dfrac{V}{I_{g}} - G = \\dfrac{10}{2 \\times 10^{-3}} - 50 = 5000 - 50\\)\n\n\\(\\therefore X = 4950\\ \\Omega\\), to be connected in series.\n\nCheck (i): the potential difference across the shunt is \\((I - I_{g})S = 0.498 \\times 0.2008 = 0.1\\) V, which equals \\(I_{g}G = 0.002 \\times 50 = 0.1\\) V.\n\nCheck (ii): \\(I_{g}(G + X) = 0.002 \\times (50 + 4950) = 0.002 \\times 5000 = 10\\) V, the required range.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "current-electricity-12-pyq#21",
+    "questionNumber": "Q. 26",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "stem": "Two cells of emf 4V and 2V having respective internal resistance of \\(1\\Omega\\) and \\(2\\Omega\\) are connected in parallel, so as to send current in the same direction through an external resistance of \\(5\\Omega\\). Find the current through the external resistance.",
+    "solution": "Given: \\(\\varepsilon_{1} = 4\\) V with \\(r_{1} = 1\\ \\Omega\\); \\(\\varepsilon_{2} = 2\\) V with \\(r_{2} = 2\\ \\Omega\\); external resistance \\(R = 5\\ \\Omega\\). The cells are in parallel and send current in the same direction through \\(R\\).\n\nEquivalent emf of the parallel combination:\n\n\\(\\varepsilon_{eq} = \\dfrac{\\dfrac{\\varepsilon_{1}}{r_{1}} + \\dfrac{\\varepsilon_{2}}{r_{2}}}{\\dfrac{1}{r_{1}} + \\dfrac{1}{r_{2}}} = \\dfrac{\\dfrac{4}{1} + \\dfrac{2}{2}}{\\dfrac{1}{1} + \\dfrac{1}{2}} = \\dfrac{5}{\\dfrac{3}{2}} = \\dfrac{10}{3}\\) V\n\nEquivalent internal resistance:\n\n\\(r_{eq} = \\dfrac{r_{1} r_{2}}{r_{1} + r_{2}} = \\dfrac{1 \\times 2}{1 + 2} = \\dfrac{2}{3}\\ \\Omega\\)\n\nCurrent through the external resistance:\n\n\\(I = \\dfrac{\\varepsilon_{eq}}{r_{eq} + R} = \\dfrac{10/3}{\\dfrac{2}{3} + 5} = \\dfrac{10/3}{17/3}\\)\n\n\\(\\therefore I = \\dfrac{10}{17} = 0.588\\) A\n\nCheck by Kirchhoff's laws. Let \\(I_{1}\\) and \\(I_{2}\\) be the currents through the two cells, so that \\(I_{1} + I_{2}\\) flows through \\(R\\). For the loop containing the first cell and \\(R\\),\n\n\\(4 - 1 \\cdot I_{1} - 5(I_{1} + I_{2}) = 0\\), that is \\(6I_{1} + 5I_{2} = 4\\)\n\nFor the loop containing the second cell and \\(R\\),\n\n\\(2 - 2 I_{2} - 5(I_{1} + I_{2}) = 0\\), that is \\(5I_{1} + 7I_{2} = 2\\)\n\nSolving these two equations gives \\(I_{1} = \\dfrac{18}{17}\\) A and \\(I_{2} = -\\dfrac{8}{17}\\) A, so\n\n\\(I_{1} + I_{2} = \\dfrac{18}{17} - \\dfrac{8}{17} = \\dfrac{10}{17}\\) A\n\nwhich is the same value. The negative sign of \\(I_{2}\\) shows that the 2 V cell is being charged by the 4 V cell rather than driving current out.",
+    "difficulty": "MODERATE"
+  }
+]

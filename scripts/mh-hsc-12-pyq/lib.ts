@@ -150,9 +150,34 @@ export function stripArtifacts(text: string): string {
   // still there, and the banner rule then removed the banner and left the bare
   // marker stranded at the end. Nine stems shipped with a trailing "####".
   // The heading text is optional here precisely so both forms are covered.
-  out = out.replace(/#{2,}[ \t]*(?:\*{0,2}[A-Z]\.[^\n]*)?/g, " ");
+  //
+  // The label is a LETTER or a NUMBER: Maths banners are "**A. Negation...**",
+  // the Physics compilation numbers them "### 1. Kinematics and Dynamics". The
+  // lettered-only rule consumed the "### " marker and left the title glued to
+  // the stem — 59 of 379 Physics rows, one per section boundary. Adding the
+  // numeric alternative is inert for Maths, which has no numbered banner.
+  out = out.replace(/#{2,}[ \t]*(?:\*{0,2}(?:[A-Z]|\d+)\.[^\n]*)?/g, " ");
   out = out.replace(/\\_/g, "_");
   out = out.replace(/\\\^/g, "^");
+  // The tag-removal step deliberately leaves the tag's opening backslash behind
+  // (see extract.ts — it is what forms the "\:" fill-in-blank token). Where the
+  // compilation puts a full stop AFTER the tag rather than a colon, that
+  // leftover instead lands as " \." — 272 Physics stems, and none in Maths,
+  // which has no full stop in that position.
+  //
+  // Four shapes, one rule, each observed in the corpus:
+  //   "track \."            tag mid-sentence, no punctuation of its own
+  //   "diameter\ \."        the item WRAPS, so pandoc's line-continuation
+  //                         backslash meets the tag's escape once the newline
+  //                         collapses — a single-backslash rule leaves "\."
+  //                         behind, since replace() does not rescan its output
+  //   "________. \."        the stem ALREADY ends in a full stop and the tag
+  //                         carries another; naively substituting gives ".."
+  //   "_______ . \."        the same with the stop spaced off
+  // Any sentence-final punctuation already present wins; otherwise a full stop
+  // is supplied. Runs BEFORE the "\:" rule below so the two cannot compete for
+  // the same backslash.
+  out = out.replace(/\s*([.?!])?[\s\\]*\\\./g, (_m, prev) => prev ?? ".");
   // pandoc escapes < and > outside a math zone. Left alone they ship as literal
   // backslashes — every p.d.f. support interval in the corpus reads "0\<x\<8".
   out = out.replace(/\\([<>])/g, "$1");
@@ -167,12 +192,30 @@ export function stripArtifacts(text: string): string {
   // ships in the stem. The reading is unambiguous — a \lbrack is open inside the
   // zone — so move the delimiter back in rather than deleting it.
   out = out.replace(/\\\)\\\]/g, " \\rbrack\\)");
+  // The MIRROR of the case above, and the commoner one in Physics: the board
+  // states its constants in a PROSE bracket — "[Given: g = 9.8 m/s^2]" — and
+  // pandoc leaves the opener escaped OUTSIDE the zone while the closer ends up
+  // inside it as \rbrack. Pull the bracket back out so the pair is prose again.
+  // Anchored on "\[" immediately followed by a math zone, so a genuine
+  // \lbrack...\rbrack pair sitting wholly inside a zone is never touched.
+  out = out.replace(/\\\[(\s*\\\([\s\S]*?)\s*\\rbrack\\\)/g, "[$1\\)]");
+  // pandoc escapes [ and ] in prose exactly as it escapes _ ^ < > above. Left
+  // alone they are worse than cosmetic: "\[...\]" is this project's DISPLAY-MATH
+  // delimiter, so "\[Assume all terms in SI unit\]" renders as typeset maths,
+  // and an unmatched "\[" ships as a literal backslash-bracket on the card.
+  out = out.replace(/\\([[\]])/g, "$1");
   // pandoc's hard-wrap line-continuation backslash. Strip only at a line end or
   // string end, so a genuine LaTeX command is never touched.
   // Allow trailing spaces before the newline: earlier substitutions above
   // (Options:, comment separators) replace with a space, so by this point the
   // backslash is often followed by " \n" rather than "\n" directly.
-  out = out.replace(/\\(?=[ \t]*(?:\n|$))/g, "");
+  //
+  // Matched as a RUN. Where an item wraps, the hard-wrap backslash ending the
+  // first line meets the tag's own escape opening the second, so once the
+  // newline collapses the text ends "________.\ \". A single-backslash rule
+  // strips the last one and cannot rescan, leaving "________.\" — 22 Physics
+  // fields, and none in Maths, where the tag never sits on its own line.
+  out = out.replace(/(?:\\[ \t]*)+(?=\n|$)/g, "");
   // The same continuation backslash can also land MID-string — before the
   // board's internal-choice "OR" marker — where it ships as a literal backslash
   // between two sentences. Matched only as a STANDALONE token (space, backslash,
@@ -180,6 +223,32 @@ export function stripArtifacts(text: string): string {
   // spacing command and is how this corpus lays out its piecewise p.d.f.
   // definitions, e.g. `\(\ \ \ \ = 0\)`.
   out = out.replace(/(^|[^\\(])\s\\\s(?=[^\\)])/g, "$1 ");
+  // ...and it also lands with NO space before it, where the item simply wrapped
+  // mid-sentence: "charged conductor.\ [Given: ...]" — 11 Physics stems, none in
+  // Maths. The rule above cannot see those because it requires a leading space.
+  //
+  // The discriminator is MATH-ZONE MEMBERSHIP, not the surrounding characters:
+  // `\ ` inside a zone is a real LaTeX thin space (this corpus lays out its
+  // piecewise p.d.f. definitions with runs of them) and is byte-identical to the
+  // artifact outside one. Anything cheaper than checking the zone would have to
+  // choose between keeping the artifact and destroying the spacing.
+  out = out.replace(/\\(?=[ \t])/g, (m, offset: number) =>
+    inMathZone(out, offset) ? m : "",
+  );
+
+  // A thin space at the very END of a math zone is dead — nothing follows it to
+  // be spaced from — and it is UNCONVERTIBLE to OMML. That combination is what
+  // makes it worth removing: KaTeX ignores it, so the web page looks right and
+  // the defect surfaces only as raw LaTeX in a teacher's downloaded Word answer
+  // key, which `audit:omml` is the only gate to see. Seven zones across four
+  // Physics rows were shaped this way.
+  //
+  // Deliberately NOT the same as the rule above, which keeps `\ ` inside a zone:
+  // a LEADING or INTERIOR thin space is real layout this corpus depends on (the
+  // piecewise p.d.f. definitions are laid out with runs of them) and converts
+  // fine. Only the trailing position is both useless and harmful.
+  out = out.replace(/(?:\\[ \t])+(?=\\\))/g, "");
+
   return collapseSpaces(out);
 }
 

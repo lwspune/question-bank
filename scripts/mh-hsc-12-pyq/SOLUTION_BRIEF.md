@@ -44,6 +44,39 @@ The practice corpus does double duty and is the most valuable file:
   Without it the table renders as raw pipes. Truth tables must be complete — all
   4 rows for two variables, all 8 for three — and must state the conclusion in
   words afterwards.
+- **WRITE IT AS A BOARD ANSWER.** This is the one rule with a probe behind it —
+  `scripts/lib/boardAnswerStyle.ts`, enforced by `promote.ts`, so an offending
+  answer never reaches `data/`. The reader is a student preparing for the board
+  exam, so the solution must read as the answer THEY would write to score the
+  marks: state the principle, show every step, close on the result. It is not a
+  note to whoever is marking it, and it is not a commentary on the question.
+
+  These BLOCK, and each was written by a real authoring pass before it was
+  caught in review:
+
+  | do not write | why |
+  |---|---|
+  | `(Other acceptable applications: SONAR, …)` | offers a marker alternatives instead of answering |
+  | `**A caution worth stating.**` · `It is worth noting…` | an aside addressed to the reader |
+  | `Note the question asks for the same SPEED…` | comments on the question rather than answering it |
+  | `By the standard result…` · `It can be shown that…` | asserts what the next rule says you must derive |
+  | `…which is option B` · `rules out options A and D` | names an option LETTER in prose — and it is what makes `audit:keys` misfire |
+
+  Conventions the shipped corpus follows, MEASURED across its 153 numericals —
+  quote these figures rather than re-deriving them:
+
+  - **`\therefore` before the concluding step — 135 of 153 (88%).** A numerical
+    without one is reported by `promote.ts` as a style warning, not a refusal.
+  - **Close a numerical with a CHECK, not a restatement.** Substitute the answer
+    back, or bound it ("the area must lie between 6 and 12; 9.33 is consistent").
+    Only **0 of 153** end on a bolded result line — a bolded conclusion is fine
+    but is NOT the house style, and an early draft of the probe that warned on
+    its absence fired on 43% of the shipped corpus before being corrected.
+  - An MCQ opens `**(B)** <the value>`, then the working.
+  - Where a convention is genuinely ambiguous, STATE it as part of the answer
+    ("the phase difference here is taken as \(\Delta\phi = \frac{2\pi}{\lambda}\Delta x\)")
+    rather than as a note about the answer.
+
 - **Show the working, do not assert the result.** "By the standard result…" is
   not a solution. A student reading it must be able to reproduce every step.
 - **Verify what can be verified.** Differentiate an integral back. Substitute a

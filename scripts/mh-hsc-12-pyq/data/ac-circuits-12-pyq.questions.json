@@ -1,0 +1,183 @@
+[
+  {
+    "ref": "ac-circuits-12-pyq#1",
+    "questionNumber": "Q. 1(ii)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Average and RMS Values",
+    "stem": "The average value of alternating current over a full cycle is always ________. [\\(I_{0} = Peak\\ valve\\ of\\ current\\)]",
+    "options": [
+      {
+        "label": "A",
+        "text": "Zero"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{I_{0}}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\ \\frac{I_{0}}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\ 2I_{0}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** Zero\n\nAn alternating current is written as \\( i = i_0 \\sin \\omega t \\), where \\( i_0 \\) is the peak value and the period is \\( T = \\frac{2\\pi}{\\omega} \\). Its average over one complete cycle is\n\n\\( i_{\\mathrm{av}} = \\frac{1}{T} \\int_{0}^{T} i_0 \\sin \\omega t \\, \\mathrm{d}t \\)\n\n\\( = \\frac{i_0}{T} \\left[ \\frac{- \\cos \\omega t}{\\omega} \\right]_{0}^{T} = \\frac{i_0}{\\omega T} \\left( 1 - \\cos \\omega T \\right) \\)\n\nNow \\( \\omega T = 2\\pi \\) and \\( \\cos 2\\pi = 1 \\), so the bracket vanishes.\n\n\\( \\therefore i_{\\mathrm{av}} = 0 \\)\n\nThe same result is read straight off the curve: every value taken during the positive half-cycle is exactly matched by an equal negative value half a period later, so the two halves cancel. None of \\( \\frac{i_0}{2} \\), \\( \\frac{i_0}{\\sqrt{2}} \\) or \\( 2 i_0 \\) can be the mean of a quantity that spends half of every cycle below zero. It is because this average vanishes that the average value of an alternating current is defined over a HALF cycle, where it works out to \\( \\frac{2 i_0}{\\pi} \\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#2",
+    "questionNumber": "Q. 2(iii)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "stem": "What is the average value of alternating current over a complete cycle?",
+    "solution": "The average value of an alternating current over a complete cycle is ZERO.\n\nLet \\( i = i_0 \\sin \\omega t \\), where \\( i_0 \\) is the peak value of the current and \\( T = \\frac{2\\pi}{\\omega} \\) is the period. The average value over one complete cycle is\n\n\\( i_{\\mathrm{av}} = \\frac{1}{T} \\int_{0}^{T} i_0 \\sin \\omega t \\, \\mathrm{d}t \\)\n\n\\( = \\frac{i_0}{T} \\left[ \\frac{- \\cos \\omega t}{\\omega} \\right]_{0}^{T} = \\frac{i_0}{\\omega T} \\left( 1 - \\cos \\omega T \\right) \\)\n\nSince \\( \\omega T = 2\\pi \\) and \\( \\cos 2\\pi = 1 \\),\n\n\\( \\therefore i_{\\mathrm{av}} = 0 \\)\n\nPhysically, the current flows in one direction during the first half of the cycle and in the opposite direction during the second half, and for every value \\( i_0 \\sin \\omega t \\) reached in the first half there is an equal and opposite value half a period later. The two halves therefore cancel exactly, which is why a moving-coil (d.c.) ammeter connected in an a.c. circuit reads zero.\n\nFor this reason the average value of an alternating current is defined over a HALF cycle, and there it is\n\n\\( i_{\\mathrm{av}} = \\frac{2 i_0}{\\pi} = 0.637\\, i_0 \\)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#3",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "An alternating voltage given by \\(e = 140sin(314.2t)\\) is connected across a pure resistor of \\(50\\ \\Omega\\). Calculate: (i) the frequency of the source (ii) the r.m.s current through the resistor.",
+    "solution": "Given\n\n\\( e = 140 \\sin (314.2\\, t) \\)\n\n\\( R = 50\\ \\Omega \\)\n\n(i) On comparing with \\( e = e_0 \\sin \\omega t \\) we get \\( e_0 = 140 \\) V and \\( \\omega = 314.2 \\) rad/s.\n\n\\( \\omega = 2\\pi f \\)\n\n\\( \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{314.2}{2 \\times 3.142} = \\frac{314.2}{6.284} \\)\n\n\\( \\therefore f = 50 \\) Hz\n\n(ii) \\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{140}{1.414} = 98.99 \\) V\n\nThe resistor is pure, so the current through it is in phase with the voltage across it and Ohm's law applies directly to the rms values:\n\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{98.99}{50} = 1.98 \\) A\n\nCheck: the peak current is \\( i_0 = \\frac{e_0}{R} = \\frac{140}{50} = 2.8 \\) A, and \\( \\frac{i_0}{\\sqrt{2}} = \\frac{2.8}{1.414} = 1.98 \\) A, the same value by the other route.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#4",
+    "questionNumber": "Q. 9",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Power in an AC Circuit",
+    "stem": "A \\(100\\ \\Omega\\) resistor is connected to a 220 V, 50 Hz supply. Calculate: (i) r.m.s. value of current and (ii) net power consumed over the full cycle.",
+    "solution": "Given\n\n\\( R = 100\\ \\Omega \\), \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz\n\n(i) A pure resistor draws a current that is in phase with the applied voltage, so Ohm's law holds between the rms values:\n\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{220}{100} = 2.2 \\) A\n\n(ii) The net power consumed over a full cycle is the average power\n\n\\( P_{\\mathrm{av}} = e_{\\mathrm{rms}}\\, i_{\\mathrm{rms}} \\cos\\phi \\)\n\nFor a pure resistor the phase difference is \\( \\phi = 0 \\), so the power factor is \\( \\cos\\phi = 1 \\):\n\n\\( P_{\\mathrm{av}} = 220 \\times 2.2 \\times 1 \\)\n\n\\( \\therefore P_{\\mathrm{av}} = 484 \\) W\n\nCheck: the same power follows from \\( i_{\\mathrm{rms}}^{2} R = (2.2)^2 \\times 100 = 484 \\) W and from \\( \\frac{e_{\\mathrm{rms}}^{2}}{R} = \\frac{(220)^2}{100} = 484 \\) W, so all three routes agree.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#5",
+    "questionNumber": "Q. 26",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Average and RMS Values",
+    "stem": "An alternating voltage is given by \\(e = 8sin(628.4t)\\). Find: (i) peak value of e.m.f. \\(ii\\) frequency of e.m.f. (iii) instantaneous value of e.m.f. at time \\(t = 10\\text{ ms}\\).",
+    "solution": "Given \\( e = 8 \\sin (628.4\\, t) \\). Comparing this with the standard form \\( e = e_0 \\sin \\omega t \\):\n\n(i) Peak value of the e.m.f.\n\n\\( \\therefore e_0 = 8 \\) V\n\n(ii) \\( \\omega = 628.4 \\) rad/s, and \\( \\omega = 2\\pi f \\)\n\n\\( \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{628.4}{2 \\times 3.142} = \\frac{628.4}{6.284} \\)\n\n\\( \\therefore f = 100 \\) Hz\n\n(iii) The period of the e.m.f. is\n\n\\( T = \\frac{1}{f} = \\frac{1}{100} = 0.01 \\) s \\( = 10 \\) ms\n\nso the instant \\( t = 10 \\) ms is exactly the end of one complete cycle. The instantaneous value there is\n\n\\( e = e_0 \\sin \\omega t = 8 \\sin \\left( 628.4 \\times 10 \\times 10^{-3} \\right) = 8 \\sin (6.284) \\)\n\nwhere the angle is in radian. Since \\( 6.284 \\) rad \\( = 2\\pi \\) rad and \\( \\sin 2\\pi = 0 \\),\n\n\\( \\therefore e = 0 \\) V\n\nCheck: the e.m.f. starts from \\( e = 8 \\sin 0 = 0 \\) at \\( t = 0 \\), and after one whole period the waveform has returned to the value it started from, so a zero at \\( t = T \\) is consistent.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#6",
+    "questionNumber": "Q. 5(i)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "If A.C. voltage is applied to a pure capacitor, then voltage across the capacitor ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "leads the current by phase angle \\(\\left( \\frac{\\pi}{2} \\right)\\) rad."
+      },
+      {
+        "label": "B",
+        "text": "leads the current by phase angle \\((\\pi)\\) rad."
+      },
+      {
+        "label": "C",
+        "text": "lags behind the current by phase angle \\(\\left( \\frac{\\pi}{2} \\right)\\) rad."
+      },
+      {
+        "label": "D",
+        "text": "lags behind the current by phase angle \\((\\pi)\\) rad."
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** the voltage across the capacitor lags behind the current by phase angle \\( \\left( \\frac{\\pi}{2} \\right) \\) rad.\n\nLet \\( e = e_0 \\sin \\omega t \\) be applied across a capacitor of capacitance C. At every instant the potential difference across the plates equals the applied e.m.f., so the charge on the capacitor is\n\n\\( q = Ce = C e_0 \\sin \\omega t \\)\n\nThe current is the rate of flow of charge:\n\n\\( i = \\frac{\\mathrm{d}q}{\\mathrm{d}t} = \\frac{\\mathrm{d}}{\\mathrm{d}t} \\left( C e_0 \\sin \\omega t \\right) = \\omega C e_0 \\cos \\omega t = \\frac{e_0}{\\left( 1 / \\omega C \\right)} \\cos \\omega t \\)\n\nUsing \\( \\cos \\omega t = \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\),\n\n\\( \\therefore i = i_0 \\sin \\left( \\omega t + \\frac{\\pi}{2} \\right) \\), where \\( i_0 = \\frac{e_0}{X_C} \\) and \\( X_C = \\frac{1}{\\omega C} \\) is the capacitive reactance.\n\nThe phase of the current is thus \\( \\frac{\\pi}{2} \\) rad AHEAD of the phase of the voltage: at \\( \\omega t = 0 \\) the current is already at its peak while the voltage is still zero, and the voltage reaches its own peak a quarter of a cycle later, at \\( \\omega t = \\frac{\\pi}{2} \\). Saying that the current leads the voltage by \\( \\frac{\\pi}{2} \\) and saying that the voltage across the capacitor lags the current by \\( \\frac{\\pi}{2} \\) are the same statement. A phase difference of \\( \\pi \\) rad would mean voltage and current are in exact opposition, which no single circuit element produces.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#7",
+    "questionNumber": "Q. 18",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "Define: (a) Inductive reactance (b) Capacitive reactance (c) Impedance.",
+    "solution": "(a) Inductive reactance: the opposition offered by a pure inductor to the alternating current flowing through it. It is measured by the ratio of the rms voltage across the inductor to the rms current through it, and for an inductor of self inductance L connected to a supply of frequency f it is\n\n\\( X_L = \\omega L = 2\\pi f L \\)\n\nIts SI unit is the ohm \\( ( \\Omega ) \\). It is directly proportional to the frequency, so an inductor offers little opposition at low frequency and a large opposition at high frequency.\n\n(b) Capacitive reactance: the opposition offered by a capacitor to the alternating current flowing through it. It is measured by the ratio of the rms voltage across the capacitor to the rms current through it, and for a capacitor of capacitance C connected to a supply of frequency f it is\n\n\\( X_C = \\frac{1}{\\omega C} = \\frac{1}{2\\pi f C} \\)\n\nIts SI unit is the ohm \\( ( \\Omega ) \\). It is inversely proportional to the frequency, so a capacitor offers a large opposition at low frequency and very little at high frequency.\n\n(c) Impedance: the effective opposition offered by a circuit containing resistance as well as reactance to the alternating current flowing through it. It is measured by the ratio of the rms e.m.f. applied to the circuit to the rms current drawn from the source,\n\n\\( Z = \\frac{e_{\\mathrm{rms}}}{i_{\\mathrm{rms}}} \\)\n\nand for a series LCR circuit it is given by\n\n\\( Z = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} \\)\n\nIts SI unit is also the ohm \\( ( \\Omega ) \\).\n\nAll three quantities have the same unit and the same dimensions as resistance, but they differ from it in one essential respect: a resistance dissipates energy as heat, whereas a reactance only stores energy in a magnetic or an electric field and returns it to the source.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#8",
+    "questionNumber": "Q. 6(vi)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "A capacitor of capacitance \\(0.5\\mu\\text{F}\\) is connected to a source of alternating e.m.f. of frequency 100 Hz. What is the capacitive reactance? (\\(\\pi = 3.142\\))",
+    "solution": "Given\n\n\\( C = 0.5\\ \\mu\\mathrm{F} = 0.5 \\times 10^{-6} \\) F\n\n\\( f = 100 \\) Hz, \\( \\pi = 3.142 \\)\n\nThe capacitive reactance is\n\n\\( X_C = \\frac{1}{2\\pi f C} \\)\n\n\\( = \\frac{1}{2 \\times 3.142 \\times 100 \\times 0.5 \\times 10^{-6}} \\)\n\n\\( = \\frac{1}{3.142 \\times 10^{-4}} \\)\n\n\\( \\therefore X_C = 3182.7\\ \\Omega \\), that is about \\( 3.18 \\times 10^{3}\\ \\Omega \\)\n\nCheck: multiplying back, \\( 2\\pi f C \\times X_C = 3.142 \\times 10^{-4} \\times 3182.7 = 1 \\), as it must be since the two are reciprocals. The reactance comes out large because \\( X_C \\) varies inversely with both the capacitance and the frequency, and here both are small.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#9",
+    "questionNumber": "Q. 21",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "Derive an expression for the impedance of an LCR circuit connected to an AC power supply. Draw phasor diagram.",
+    "solution": "Let a resistor R, a pure inductor L and an ideal capacitor C be joined in series across an alternating source \\( e = e_0 \\sin \\omega t \\). As the three are in series, the same current flows through all of them:\n\n\\( i = i_0 \\sin \\omega t \\)\n\nThe magnitudes of the voltages across the three elements are\n\n\\( e_R = i_0 R \\), \\( e_L = i_0 X_L \\), \\( e_C = i_0 X_C \\)\n\nwhere \\( X_L = \\omega L \\) and \\( X_C = \\frac{1}{\\omega C} \\). These three voltages are not in phase with one another:\n\n\\( e_R \\) is in phase with the current;\n\n\\( e_L \\) leads the current by \\( 90^\\circ \\);\n\n\\( e_C \\) lags the current by \\( 90^\\circ \\).\n\nPhasor diagram. Draw the current phasor \\( i_0 \\) along a reference direction \\( \\overline{OX} \\), and along the same direction draw \\( \\overline{OA} = e_R \\), since \\( e_R \\) is in phase with the current. Draw \\( \\overline{OB} = e_L \\) vertically upward, at \\( 90^\\circ \\) ahead of \\( \\overline{OX} \\), and \\( \\overline{OC} = e_C \\) vertically downward, at \\( 90^\\circ \\) behind it. Being oppositely directed, \\( e_L \\) and \\( e_C \\) are \\( 180^\\circ \\) apart and add to the single phasor \\( \\overline{OD} = \\left( e_L - e_C \\right) \\), drawn upward when \\( e_L > e_C \\). The applied e.m.f. \\( e_0 \\) is the resultant of the two mutually perpendicular phasors \\( \\overline{OA} \\) and \\( \\overline{OD} \\), that is the diagonal \\( \\overline{OP} \\) of the rectangle OAPD, and it makes an angle \\( \\phi \\) with the current phasor.\n\nApplying the theorem of Pythagoras to the right angled triangle OAP,\n\n\\( e_0 = \\sqrt{e_R^2 + \\left( e_L - e_C \\right)^2} \\)\n\n\\( = \\sqrt{\\left( i_0 R \\right)^2 + \\left( i_0 X_L - i_0 X_C \\right)^2} \\)\n\n\\( = i_0 \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} \\)\n\n\\( \\therefore \\frac{e_0}{i_0} = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} \\)\n\nComparing this with Ohm's law \\( \\frac{V}{i} = R \\), the quantity on the right is the effective opposition offered by the whole circuit to the alternating current. It is called the impedance Z of the circuit:\n\n\\( Z = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} = \\sqrt{R^2 + \\left( \\omega L - \\frac{1}{\\omega C} \\right)^2} \\)\n\nIts SI unit is the ohm \\( ( \\Omega ) \\). The same diagram gives the phase angle by which the applied e.m.f. differs from the current:\n\n\\( \\tan\\phi = \\frac{e_L - e_C}{e_R} = \\frac{X_L - X_C}{R} \\)\n\nCheck: putting \\( X_L = X_C \\) gives \\( Z = R \\) and \\( \\phi = 0 \\), which is the condition of series resonance; putting \\( R = 0 \\) and \\( X_C = 0 \\) gives \\( Z = X_L \\), the impedance of a circuit containing a pure inductor alone. Both limiting cases are the expected ones.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#10",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "stem": "In a series LCR circuit, if resistance, inductive reactance and capacitive reactance are \\(3\\Omega,8\\Omega\\) and \\(4\\Omega\\) respectively, calculate phase difference between voltage and current.",
+    "solution": "Given\n\n\\( R = 3\\ \\Omega \\), \\( X_L = 8\\ \\Omega \\), \\( X_C = 4\\ \\Omega \\)\n\nIn a series LCR circuit the voltage across the resistor is in phase with the current, that across the inductor leads the current by \\( \\frac{\\pi}{2} \\) and that across the capacitor lags it by \\( \\frac{\\pi}{2} \\). The net reactive voltage is therefore at right angles to the resistive one, and the phase difference \\( \\phi \\) between the applied voltage and the current is given by\n\n\\( \\tan\\phi = \\frac{X_L - X_C}{R} \\)\n\n\\( = \\frac{8 - 4}{3} = \\frac{4}{3} = 1.333 \\)\n\n\\( \\therefore \\phi = \\tan^{-1}(1.333) \\)\n\n\\( \\therefore \\phi = 53^\\circ 8' \\), that is about \\( 53.1^\\circ \\)\n\nSince \\( X_L > X_C \\) the circuit is inductive, so the applied voltage LEADS the current by this angle.\n\nCheck: the impedance is \\( Z = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} = \\sqrt{3^2 + 4^2} = 5\\ \\Omega \\), so the power factor is \\( \\cos\\phi = \\frac{R}{Z} = \\frac{3}{5} = 0.6 \\). The angle whose cosine is \\( 0.6 \\) is indeed \\( 53.1^\\circ \\), which confirms the value found above.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#12",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Electrical Resonance and Q Factor",
+    "stem": "Assuming expression for impedance in a parallel resonant circuit, state the conditions for parallel resonance. Define resonant frequency and obtain an expression for it.",
+    "solution": "Consider an inductor L, a capacitor C and a resistor R joined in PARALLEL across an alternating source \\( e = e_0 \\sin \\omega t \\). Each branch carries its own current: the current through R is in phase with the applied e.m.f., that through L lags it by \\( \\frac{\\pi}{2} \\) and that through C leads it by \\( \\frac{\\pi}{2} \\). Taking the expression for the impedance Z of such a parallel circuit as given,\n\n\\( \\frac{1}{Z} = \\sqrt{\\left( \\frac{1}{R} \\right)^{2} + \\left( \\frac{1}{X_C} - \\frac{1}{X_L} \\right)^{2}} \\)\n\nConditions for parallel resonance:\n\n(i) The inductive reactance must equal the capacitive reactance, \\( X_L = X_C \\). The branch currents through the inductor and the capacitor are then equal in magnitude and \\( \\pi \\) rad apart in phase, so they cancel each other completely.\n\n(ii) With \\( \\frac{1}{X_C} - \\frac{1}{X_L} = 0 \\) the quantity \\( \\frac{1}{Z} \\) takes its smallest possible value \\( \\frac{1}{R} \\). Hence at parallel resonance the impedance is a MAXIMUM and\n\n\\( Z = R \\)\n\n(iii) The current drawn from the source, \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{Z} \\), is therefore a MINIMUM, and it is in phase with the applied e.m.f. because the only surviving branch current is the resistive one. It is for this reason that a parallel resonant circuit is called a rejector circuit.\n\nResonant frequency: the resonant frequency of a circuit is that particular frequency of the applied alternating e.m.f. at which the inductive reactance of the circuit becomes equal to its capacitive reactance, so that the two cancel and the current drawn is in phase with the applied e.m.f.\n\nExpression for it: at the resonant frequency \\( f_r \\) we have \\( X_L = X_C \\), that is\n\n\\( \\omega_r L = \\frac{1}{\\omega_r C} \\)\n\n\\( \\therefore \\omega_r^{2} = \\frac{1}{LC} \\)\n\n\\( \\therefore \\omega_r = \\frac{1}{\\sqrt{LC}} \\)\n\nSince \\( \\omega_r = 2\\pi f_r \\),\n\n\\( 2\\pi f_r = \\frac{1}{\\sqrt{LC}} \\)\n\n\\( \\therefore f_r = \\frac{1}{2\\pi\\sqrt{LC}} \\)\n\nCheck: the condition \\( X_L = X_C \\) contains only L and C, and says nothing about how the two are joined. A parallel circuit therefore resonates at exactly the same frequency as a series circuit built from the same inductor and capacitor; what differs is the behaviour AT resonance, the series circuit offering minimum impedance and maximum current while the parallel circuit offers maximum impedance and minimum current.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#13",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "LC Oscillations",
+    "stem": "A parallel L-C circuit comprises of a 5H inductor and \\(5\\mu\\text{F}\\) capacitor. Calculate the resonant frequency of the circuit.",
+    "solution": "Given\n\n\\( L = 5 \\) H\n\n\\( C = 5\\ \\mu\\mathrm{F} = 5 \\times 10^{-6} \\) F\n\nAt resonance the inductive reactance of the circuit equals its capacitive reactance, \\( X_L = X_C \\):\n\n\\( 2\\pi f_r L = \\frac{1}{2\\pi f_r C} \\)\n\n\\( \\therefore f_r^{2} = \\frac{1}{4\\pi^{2} LC} \\)\n\n\\( \\therefore f_r = \\frac{1}{2\\pi\\sqrt{LC}} \\)\n\nSubstituting the given values,\n\n\\( LC = 5 \\times 5 \\times 10^{-6} = 25 \\times 10^{-6} \\)\n\n\\( \\sqrt{LC} = 5 \\times 10^{-3} \\)\n\n\\( f_r = \\frac{1}{2 \\times 3.142 \\times 5 \\times 10^{-3}} = \\frac{1}{3.142 \\times 10^{-2}} \\)\n\n\\( \\therefore f_r = 31.83 \\) Hz\n\nCheck: at this frequency \\( X_L = 2\\pi f_r L = 2 \\times 3.142 \\times 31.83 \\times 5 = 1000\\ \\Omega \\) and \\( X_C = \\frac{1}{2\\pi f_r C} = \\frac{1}{2 \\times 3.142 \\times 31.83 \\times 5 \\times 10^{-6}} = 1000\\ \\Omega \\). The two reactances are equal, which is exactly the condition that defines the resonant frequency.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "ac-circuits-12-pyq#14",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Electrical Resonance and Q Factor",
+    "stem": "A 0.1 H inductor, a \\(25 \\times 10^{- 6}\\text{ F}\\) capacitor and a \\(15\\Omega\\) resistor are connected in series to a 120 V, 50 Hz AC source. Calculate the resonant frequency.",
+    "solution": "Given\n\n\\( L = 0.1 \\) H\n\n\\( C = 25 \\times 10^{-6} \\) F\n\n\\( R = 15\\ \\Omega \\), \\( e_{\\mathrm{rms}} = 120 \\) V, supply frequency \\( = 50 \\) Hz\n\nA series LCR circuit is in resonance at the frequency at which its inductive reactance equals its capacitive reactance, \\( X_L = X_C \\):\n\n\\( 2\\pi f_r L = \\frac{1}{2\\pi f_r C} \\)\n\n\\( \\therefore f_r^{2} = \\frac{1}{4\\pi^{2} LC} \\)\n\n\\( \\therefore f_r = \\frac{1}{2\\pi\\sqrt{LC}} \\)\n\nThis depends on L and C alone, so the resistance, the applied voltage and the 50 Hz frequency of the supply do not enter the calculation.\n\n\\( LC = 0.1 \\times 25 \\times 10^{-6} = 2.5 \\times 10^{-6} \\)\n\n\\( \\sqrt{LC} = 1.581 \\times 10^{-3} \\)\n\n\\( f_r = \\frac{1}{2 \\times 3.142 \\times 1.581 \\times 10^{-3}} = \\frac{1}{9.936 \\times 10^{-3}} \\)\n\n\\( \\therefore f_r = 100.6 \\) Hz\n\nCheck: at \\( f_r = 100.6 \\) Hz, \\( X_L = 2\\pi f_r L = 2 \\times 3.142 \\times 100.6 \\times 0.1 = 63.22\\ \\Omega \\) and \\( X_C = \\frac{1}{2\\pi f_r C} = \\frac{1}{2 \\times 3.142 \\times 100.6 \\times 25 \\times 10^{-6}} = 63.27\\ \\Omega \\), equal to within the rounding, so the value found is the resonant frequency.",
+    "difficulty": "EASY"
+  }
+]

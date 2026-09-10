@@ -1,0 +1,227 @@
+[
+  {
+    "ref": "magnetic-materials-12-pyq#1",
+    "questionNumber": "Q. 6(iv)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "stem": "Define magnetization. Write its SI unit and dimensions.",
+    "solution": "**Magnetization.** When a material is placed in an external magnetic field, the magnetic dipole moments of its atoms tend to align with the field and the material as a whole acquires a net magnetic dipole moment. The magnetization of the material is defined as the net magnetic dipole moment acquired per unit volume:\n\n\\(M = \\dfrac{m_{net}}{V}\\)\n\nwhere \\(m_{net}\\) is the vector sum of the magnetic dipole moments of all the atoms contained in a volume \\(V\\) of the material. Magnetization is a vector quantity, directed along the net dipole moment.\n\n**SI unit.** The magnetic dipole moment is measured in A m\\(^{2}\\) and the volume in m\\(^{3}\\), so\n\n\\(M \\equiv \\dfrac{\\text{A m}^{2}}{\\text{m}^{3}} =\\) A m\\(^{-1}\\)\n\ni.e. the SI unit of magnetization is the ampere per metre (A m\\(^{-1}\\)).\n\n**Dimensions.**\n\n\\([M] = \\dfrac{[\\text{magnetic dipole moment}]}{[\\text{volume}]} = \\dfrac{[L^{2}I]}{[L^{3}]} = [L^{-1}I]\\)\n\ni.e. in terms of mass, length, time and current, \\([M^{0}L^{1 - 2}T^{0}I^{1}]\\) reduces to \\([M^{0}L^{-1}T^{0}I^{1}]\\).\n\nA useful cross-check on the unit: the magnetic intensity \\(H\\) is also measured in A m\\(^{-1}\\), which is what allows the susceptibility \\(\\chi = M/H\\) to be a pure number.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#2",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "The susceptibility of magnetism at 300 K is \\(1.2 \\times 10^{- 15}\\). What will be its susceptibility at 200 K?",
+    "solution": "Given: \\(\\chi_{1} = 1.2 \\times 10^{-15}\\) at \\(T_{1} = 300\\) K; \\(T_{2} = 200\\) K. To find: \\(\\chi_{2}\\).\n\n**Curie's law.** For a paramagnetic material the susceptibility is inversely proportional to the absolute temperature,\n\n\\(\\chi = \\dfrac{C\\mu_{0}}{T}\\), i.e. \\(\\chi \\propto \\dfrac{1}{T}\\)\n\nso the product \\(\\chi T\\) has the same value at every temperature:\n\n\\(\\chi_{1}T_{1} = \\chi_{2}T_{2}\\)\n\n**Substituting.**\n\n\\(\\chi_{2} = \\chi_{1}\\left(\\dfrac{T_{1}}{T_{2}}\\right) = 1.2 \\times 10^{-15} \\times \\dfrac{300}{200} = 1.2 \\times 10^{-15} \\times 1.5\\)\n\n\\(\\therefore \\chi_{2} = 1.8 \\times 10^{-15}\\)\n\nCheck: the temperature has been LOWERED, so thermal agitation disturbs the alignment of the atomic dipoles less and the susceptibility must rise. It does, from \\(1.2\\) to \\(1.8\\) in the same power of ten. The result depends only on the ratio of the two absolute temperatures, so it carries whatever power of ten the given susceptibility carries. Susceptibility is a pure number and has no unit.\n\n[Misprint in the stem, preserved as printed. Two things are wrong with it: 'susceptibility of magnetism' should read 'of magnesium' (magnetism is a phenomenon, not a substance), and \\(1.2 \\times 10^{-15}\\) should be \\(1.2 \\times 10^{-5}\\) - a real paramagnetic susceptibility is of order \\(10^{-5}\\). The chapter settles it internally: the March 2016 question in this same chapter runs the identical problem backwards for magnesium, with \\(\\chi = 1.8 \\times 10^{-5}\\) at 200 K falling to \\(1.2 \\times 10^{-5}\\) at 300 K. Nothing in the working changes - the answer depends only on the ratio \\(T_{1}/T_{2}\\), so only the power of ten moves.]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#3",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "stem": "What is magnetization, magnetic intensity and magnetic susceptibility?",
+    "solution": "**Magnetization \\(M\\).** When a material is placed in a magnetic field its atomic dipole moments tend to align with the field, so the material acquires a net magnetic dipole moment. The magnetization is that net magnetic dipole moment per unit volume:\n\n\\(M = \\dfrac{m_{net}}{V}\\)\n\nIt is a vector quantity and its SI unit is A m\\(^{-1}\\).\n\n**Magnetic intensity \\(H\\)** (also called the magnetising field). It is the part of the magnetic field that is produced by the current in the winding alone, without any contribution from the material placed inside it. For a long solenoid of \\(n\\) turns per unit length carrying a current \\(I\\),\n\n\\(H = nI\\)\n\nIts SI unit is also A m\\(^{-1}\\). The magnetic induction actually present inside the material is the sum of the contribution of the winding and that of the magnetised material:\n\n\\(B = \\mu_{0}(H + M)\\)\n\n**Magnetic susceptibility \\(\\chi\\).** It is the ratio of the magnetization produced in the material to the magnetic intensity applied to it:\n\n\\(\\chi = \\dfrac{M}{H}\\)\n\nSince \\(M\\) and \\(H\\) have the same unit, \\(\\chi\\) is a pure number, with no unit and no dimensions. It measures how readily a material is magnetised: \\(\\chi\\) is small and negative for a diamagnetic material, small and positive for a paramagnetic material, and large and positive for a ferromagnetic material. It is related to the relative permeability by \\(\\mu_{r} = 1 + \\chi\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#4",
+    "questionNumber": "Q. 17",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "stem": "Define and state unit and dimensions of: i. Magnetization ii. Magnetic susceptibility.",
+    "solution": "**i. Magnetization \\(M\\).**\n\n*Definition.* The magnetization of a material is the net magnetic dipole moment acquired by it per unit volume:\n\n\\(M = \\dfrac{m_{net}}{V}\\)\n\nwhere \\(m_{net}\\) is the vector sum of the magnetic dipole moments of all the atoms in a volume \\(V\\). It is a vector quantity.\n\n*Unit.* \\(\\dfrac{\\text{A m}^{2}}{\\text{m}^{3}} =\\) A m\\(^{-1}\\) (ampere per metre).\n\n*Dimensions.* \\([M] = \\dfrac{[L^{2}I]}{[L^{3}]} = [M^{0}L^{-1}T^{0}I^{1}]\\).\n\n**ii. Magnetic susceptibility \\(\\chi\\).**\n\n*Definition.* The magnetic susceptibility of a material is the ratio of the magnetization produced in it to the magnetic intensity applied:\n\n\\(\\chi = \\dfrac{M}{H}\\)\n\nIt is a scalar, and it measures how readily the material can be magnetised.\n\n*Unit.* \\(M\\) and \\(H\\) are both measured in A m\\(^{-1}\\), so the ratio has NO unit: \\(\\chi\\) is a pure number.\n\n*Dimensions.* \\([\\chi] = \\dfrac{[L^{-1}I]}{[L^{-1}I]} = [M^{0}L^{0}T^{0}I^{0}]\\), i.e. it is dimensionless.\n\nThe two results are consistent with the relation \\(\\mu_{r} = 1 + \\chi\\): a pure number can be added to 1, which it could not be if \\(\\chi\\) carried a unit.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#5",
+    "questionNumber": "Q. 5",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "stem": "Define magnetization. State its SI unit and dimensions.",
+    "solution": "**Magnetization.** When a material is placed in an external magnetic field, the magnetic dipole moments of its atoms tend to align with the field and the material as a whole acquires a net magnetic dipole moment. The magnetization of the material is defined as the net magnetic dipole moment acquired per unit volume:\n\n\\(M = \\dfrac{m_{net}}{V}\\)\n\nwhere \\(m_{net}\\) is the vector sum of the magnetic dipole moments of all the atoms contained in a volume \\(V\\) of the material. Magnetization is a vector quantity, directed along the net dipole moment.\n\n**SI unit.** The magnetic dipole moment is measured in A m\\(^{2}\\) and the volume in m\\(^{3}\\), so\n\n\\(M \\equiv \\dfrac{\\text{A m}^{2}}{\\text{m}^{3}} =\\) A m\\(^{-1}\\)\n\ni.e. the SI unit of magnetization is the ampere per metre (A m\\(^{-1}\\)).\n\n**Dimensions.**\n\n\\([M] = \\dfrac{[\\text{magnetic dipole moment}]}{[\\text{volume}]} = \\dfrac{[L^{2}I]}{[L^{3}]} = [L^{-1}I]\\)\n\ni.e. in terms of mass, length, time and current, \\([M^{0}L^{1 - 2}T^{0}I^{1}]\\) reduces to \\([M^{0}L^{-1}T^{0}I^{1}]\\).\n\nA useful cross-check on the unit: the magnetic intensity \\(H\\) is also measured in A m\\(^{-1}\\), which is what allows the susceptibility \\(\\chi = M/H\\) to be a pure number.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#6",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "stem": "A current carrying toroid winding is internally filled with lithium having susceptibility \\(\\chi = 2.1 \\times 10^{- 5}\\). What is the percentage increase in the magnetic field in the presence of lithium over that without it?",
+    "solution": "Given: susceptibility of lithium \\(\\chi = 2.1 \\times 10^{-5}\\).\n\n**Field without the lithium.** The winding alone produces the magnetic intensity \\(H\\), so the induction inside the empty toroid is\n\n\\(B_{0} = \\mu_{0}H\\)\n\n**Field with the lithium.** With the material filling the winding the induction becomes\n\n\\(B = \\mu H\\), where \\(\\mu = \\mu_{0}\\mu_{r} = \\mu_{0}(1 + \\chi)\\)\n\nThe current in the winding is unchanged, so \\(H\\) is the same in both cases.\n\n**Fractional increase.**\n\n\\(\\dfrac{B - B_{0}}{B_{0}} = \\dfrac{\\mu H - \\mu_{0}H}{\\mu_{0}H} = \\dfrac{\\mu - \\mu_{0}}{\\mu_{0}} = \\dfrac{\\mu}{\\mu_{0}} - 1 = \\mu_{r} - 1 = \\chi\\)\n\n**Percentage increase.**\n\n\\(\\dfrac{B - B_{0}}{B_{0}} \\times 100 = \\chi \\times 100 = 2.1 \\times 10^{-5} \\times 100\\)\n\n\\(\\therefore\\) percentage increase \\(= 2.1 \\times 10^{-3}\\ \\% = 0.0021\\ \\%\\)\n\nCheck: lithium is a paramagnetic material, so \\(\\chi\\) is positive and the field must INCREASE, which it does. And because \\(\\chi\\) is only of the order of \\(10^{-5}\\), the increase is a tiny fraction of one per cent, which is what distinguishes a paramagnetic filling from a ferromagnetic one, where \\(\\chi\\) runs into thousands.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#7",
+    "questionNumber": "Q. 5(vi)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "The susceptibility of magnesium at 200 K is \\(1.8 \\times 10^{- 5}\\). At what temperature will the susceptibility decrease by \\(6 \\times 10^{- 6}\\)?",
+    "solution": "Given: \\(\\chi_{1} = 1.8 \\times 10^{-5}\\) at \\(T_{1} = 200\\) K; the susceptibility decreases by \\(6 \\times 10^{-6}\\). To find: \\(T_{2}\\).\n\n**Step 1 - the new susceptibility.**\n\n\\(\\chi_{2} = \\chi_{1} - 6 \\times 10^{-6} = 1.8 \\times 10^{-5} - 0.6 \\times 10^{-5}\\)\n\n\\(\\chi_{2} = 1.2 \\times 10^{-5}\\)\n\n**Step 2 - Curie's law.** Magnesium is paramagnetic, so its susceptibility is inversely proportional to the absolute temperature,\n\n\\(\\chi \\propto \\dfrac{1}{T}\\), i.e. \\(\\chi_{1}T_{1} = \\chi_{2}T_{2}\\)\n\n**Step 3 - substituting.**\n\n\\(T_{2} = T_{1}\\left(\\dfrac{\\chi_{1}}{\\chi_{2}}\\right) = 200 \\times \\dfrac{1.8 \\times 10^{-5}}{1.2 \\times 10^{-5}} = 200 \\times 1.5\\)\n\n\\(\\therefore T_{2} = 300\\) K \\(= 27\\,^{\\circ}\\)C\n\nCheck by substituting back: at 300 K, \\(\\chi = \\chi_{1}T_{1}/T_{2} = (1.8 \\times 10^{-5} \\times 200)/300 = 1.2 \\times 10^{-5}\\), which is a fall of exactly \\(6 \\times 10^{-6}\\) from the value at 200 K. The susceptibility was required to DECREASE, so the temperature had to rise, and 300 K is above the 200 K given.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#8",
+    "questionNumber": "Q. 6",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "What happens to a ferromagnetic substance heated above Curie temperature?",
+    "solution": "Ferromagnetism depends on a strong exchange coupling between the magnetic dipole moments of neighbouring atoms, which holds all the moments within a domain parallel to one another. Raising the temperature increases the thermal agitation of the atoms, which distorts the domain structure and weakens that coupling.\n\nAt a definite temperature, called the CURIE TEMPERATURE \\(T_{C}\\) of the material, the domain structure collapses completely. Above \\(T_{C}\\) the substance ceases to be ferromagnetic and behaves as a PARAMAGNETIC substance: the atoms still carry permanent magnetic dipole moments, but these are now oriented at random by thermal motion instead of being locked parallel, so the spontaneous magnetization, the hysteresis and the ability to be made a permanent magnet are all lost.\n\nAbove the Curie temperature the susceptibility follows the Curie-Weiss law\n\n\\(\\chi = \\dfrac{C}{T - T_{C}}\\) for \\(T > T_{C}\\)\n\nso \\(\\chi\\) falls further as the temperature is raised. (For iron \\(T_{C} = 1043\\) K and for nickel \\(T_{C} = 631\\) K.) The change is reversible: on cooling below \\(T_{C}\\) the domain structure re-forms and the substance is ferromagnetic again.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#9",
+    "questionNumber": "Q. 1(viii)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Hysteresis",
+    "stem": "Soft iron is used to make the core of transformer because of its _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "low coercivity and low retentivity"
+      },
+      {
+        "label": "B",
+        "text": "low coercivity and high retentivity"
+      },
+      {
+        "label": "C",
+        "text": "high coercivity and high retentivity"
+      },
+      {
+        "label": "D",
+        "text": "high coercivity and low retentivity"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** low coercivity and low retentivity\n\nThe alternating current in a transformer carries its core round a complete cycle of magnetization fifty times every second. The energy dissipated as heat per unit volume of the core in each such cycle is equal to the AREA enclosed by its \\(B\\)-\\(H\\) loop, so the core material must have a hysteresis loop that is as NARROW as possible.\n\nA narrow loop means both of the following.\n\n- Small COERCIVITY: only a small reverse magnetising field is needed to bring \\(B\\) back to zero, so the core follows the reversals of the current instead of resisting them.\n- Small RETENTIVITY: very little magnetic induction survives when \\(H\\) returns to zero, so no flux is left locked in the core at the end of each half cycle.\n\nTesting the alternatives against that requirement: any material with a HIGH coercivity has a wide loop and therefore a large hysteresis loss every cycle, and it also opposes the rapid reversal the alternating current demands; and a material with a low coercivity but a HIGH retentivity would stay magnetised after the current was switched off, which is the specification of a permanent magnet, not of a core.\n\nSoft iron has both quantities small together with a very large permeability, so it gives the narrow loop a transformer core needs while still concentrating the flux.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#10",
+    "questionNumber": "Q. 2(v)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Hysteresis",
+    "stem": "What is value of B called, when H = 0 is in the hysteresis loop?",
+    "solution": "That value of \\(B\\) is called the RETENTIVITY of the material (also called its remanence, or its residual magnetism).\n\nA ferromagnetic sample is first magnetised to saturation, and the magnetising field \\(H\\) is then reduced to zero. The sample does not lose all of its magnetization when it does so: the magnetic induction that survives in it at \\(H = 0\\) is the retentivity, and on the hysteresis loop it is the intercept the loop makes on the \\(B\\) axis.\n\nRetentivity therefore measures how much magnetization a material retains after the magnetising current has been switched off. A permanent magnet is required to have a HIGH retentivity, so that it stays strongly magnetised on its own, whereas the soft iron used for an electromagnet or a transformer core is required to have a LOW retentivity, so that its magnetism disappears with the current.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#11",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "What is Ferromagnetism? Explain it on the basis of domain theory.",
+    "solution": "**Ferromagnetism.** Ferromagnetism is the property by which certain materials are very strongly attracted by a magnetic field, can be magnetised very strongly even by a weak magnetising field, and retain their magnetization after the field is removed. Iron, cobalt, nickel, gadolinium and alloys such as alnico are ferromagnetic. Their susceptibility \\(\\chi\\) is large and positive, running into thousands, their relative permeability \\(\\mu_{r}\\) is very much greater than 1, and their magnetization \\(M\\) is not proportional to \\(H\\) but depends on the previous magnetic history of the specimen, which is what produces hysteresis.\n\n**Explanation on the basis of domain theory.**\n\n*The domain.* In a ferromagnetic material every atom carries a permanent magnetic dipole moment, arising mainly from the spin of its electrons. A strong exchange coupling acts between neighbouring atoms and locks their moments PARALLEL to one another throughout a small region of the material. Such a region, within which all the atomic moments point the same way, is called a DOMAIN. A domain is of the order of a micrometre across and contains a very large number of atoms, and each domain is by itself magnetised to saturation.\n\n*The unmagnetised state.* Different domains of an unmagnetised specimen point in different directions, distributed at random. Their magnetic moments therefore cancel one another and the specimen as a whole has no net magnetic moment, even though every one of its domains is fully magnetised.\n\n*What an applied field does.* When the specimen is placed in an external magnetic field the domains respond in two stages.\n\n- In a WEAK field, those domains that are already oriented nearly along the field GROW at the expense of the unfavourably oriented ones. The boundaries between domains, called domain walls, shift so that atoms just outside a favourably oriented domain swing into line with it.\n- In a STRONG field, the domain walls have moved as far as they can, and the magnetic moments of the remaining domains ROTATE bodily into the direction of the applied field.\n\n*Saturation.* When all the domains have merged and aligned with the field, the whole specimen is magnetised to saturation and no further increase of \\(H\\) can increase \\(M\\). This is why a ferromagnetic material acquires such a large magnetization.\n\n*Hysteresis and the Curie temperature.* The movement of the domain walls is largely irreversible, so when the field is withdrawn the domains do not return completely to their random arrangement. Some magnetization is retained, the magnetization lags behind the magnetising field, and the specimen can serve as a permanent magnet. Raising the temperature increases the thermal agitation, and at the Curie temperature the domain structure collapses altogether, above which the material is merely paramagnetic.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#12",
+    "questionNumber": "Q. 5(iii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "Distinguish between 'paramagnetic' and 'ferromagnetic' substances.",
+    "solution": "| Paramagnetic substances | Ferromagnetic substances |\n|---|---|\n| They are weakly attracted by a magnetic field. | They are very strongly attracted by a magnetic field. |\n| Their atoms possess permanent magnetic dipole moments, but there is no coupling between neighbouring moments, so the moments are oriented at random. | Their atoms possess permanent magnetic dipole moments, and a strong exchange coupling holds neighbouring moments parallel over regions called domains. |\n| The susceptibility \\(\\chi\\) is small and positive, of the order of \\(10^{-5}\\) to \\(10^{-3}\\). | The susceptibility \\(\\chi\\) is large and positive, of the order of \\(10^{3}\\) and above. |\n| The relative permeability \\(\\mu_{r} = 1 + \\chi\\) is slightly greater than 1. | The relative permeability \\(\\mu_{r}\\) is very much greater than 1. |\n| The magnetization \\(M\\) is proportional to the magnetising field \\(H\\), and it vanishes as soon as the field is removed. | \\(M\\) is not proportional to \\(H\\); the material shows hysteresis and retains a magnetization after the field is removed, so it can be made a permanent magnet. |\n| They obey Curie's law \\(\\chi \\propto \\dfrac{1}{T}\\) at all temperatures. | They obey \\(\\chi = \\dfrac{C}{T - T_{C}}\\) only above the Curie temperature \\(T_{C}\\), below which they are ferromagnetic. |\n| In a non-uniform field they move slowly towards the stronger part of the field. | In a non-uniform field they move rapidly towards the stronger part of the field. |\n| Examples: aluminium, platinum, manganese, chromium, oxygen. | Examples: iron, cobalt, nickel, gadolinium, alnico. |\n\nIn short, both kinds of substance owe their magnetism to permanent atomic dipole moments; what separates them is the exchange coupling between neighbouring moments, which is absent in a paramagnetic substance and present in a ferromagnetic one, and which is the reason the ferromagnetic effect is larger by a factor of about a million.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#13",
+    "questionNumber": "Q. 5(iii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "stem": "If a watch-glass containing a small quantity of water is placed on two dissimilar magnetic poles, then water _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "shows a depression in the middle."
+      },
+      {
+        "label": "B",
+        "text": "shows an elevation in the middle."
+      },
+      {
+        "label": "C",
+        "text": "surface remains horizontal."
+      },
+      {
+        "label": "D",
+        "text": "evaporates immediately."
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** shows a depression in the middle.\n\nWater is a DIAMAGNETIC substance. Its molecules have no permanent magnetic dipole moment; when a field is applied it induces in the electron orbits a moment directed OPPOSITE to the applied field, so the susceptibility of water is small and NEGATIVE and the liquid is repelled by a magnetic field.\n\nThe two dissimilar poles are placed close together, so the magnetic field in the narrow gap between them, that is at the middle of the watch glass, is strong, and it grows weaker towards the edges of the glass. A diamagnetic liquid is pushed from the region of stronger field towards the region of weaker field, so the water is driven away from the middle and collects near the edges.\n\nThe free surface therefore sinks at the centre of the watch glass and rises at the sides, which is a depression in the middle.\n\nThe other outcomes belong to different substances: a paramagnetic liquid, such as a solution of a manganese salt, is drawn INTO the strong field and heaps up at the middle; a liquid that was unaffected by the field would leave the surface flat; and the field does nothing to the temperature of the water, so it does not evaporate.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#15",
+    "questionNumber": "Q. 31",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Origin of Magnetism in Materials",
+    "stem": "Derive an expression for magnitude of magnetic dipole moment of a revolving electron.",
+    "solution": "Consider an electron of charge \\(e\\) revolving with a constant speed \\(v\\) in a circular orbit of radius \\(r\\) about the nucleus of an atom. A charge going round a closed path is equivalent to a current in a loop, so the revolving electron behaves as a tiny current loop and possesses a magnetic dipole moment.\n\n**Step 1 - the equivalent current.** The electron covers the circumference \\(2\\pi r\\) of its orbit once in each period \\(T\\), so\n\n\\(v = \\dfrac{2\\pi r}{T}\\), i.e. \\(T = \\dfrac{2\\pi r}{v}\\)\n\nThe charge crossing any point of the orbit in unit time is therefore\n\n\\(I = \\dfrac{e}{T} = \\dfrac{ev}{2\\pi r}\\)\n\n**Step 2 - the dipole moment of the loop.** For a current loop the magnetic dipole moment is the product of the current and the area it encloses, \\(m = IA\\). Here \\(A = \\pi r^{2}\\), so\n\n\\(m_{orb} = IA = \\dfrac{ev}{2\\pi r} \\times \\pi r^{2}\\)\n\n\\(\\therefore m_{orb} = \\dfrac{1}{2}evr\\)\n\nThis is the required expression for the magnitude of the magnetic dipole moment of a revolving electron.\n\n**Step 3 - in terms of the angular momentum.** The orbital angular momentum of the electron of mass \\(m_{e}\\) is \\(L = m_{e}vr\\). Multiplying and dividing the result above by \\(m_{e}\\),\n\n\\(m_{orb} = \\dfrac{1}{2}evr \\times \\dfrac{m_{e}}{m_{e}} = \\left(\\dfrac{e}{2m_{e}}\\right)(m_{e}vr) = \\left(\\dfrac{e}{2m_{e}}\\right)L\\)\n\nThe magnetic dipole moment is thus proportional to the angular momentum, the constant of proportionality \\(\\dfrac{e}{2m_{e}}\\) being called the gyromagnetic ratio. Because the charge of the electron is negative, the vector \\(\\vec{m}_{orb}\\) is directed opposite to \\(\\vec{L}\\):\n\n\\(\\vec{m}_{orb} = -\\dfrac{e}{2m_{e}}\\vec{L}\\)\n\n**Step 4 - the quantised value.** By Bohr's second postulate the angular momentum in the \\(n^{th}\\) orbit is \\(L = \\dfrac{nh}{2\\pi}\\), so\n\n\\(m_{orb} = \\dfrac{e}{2m_{e}} \\times \\dfrac{nh}{2\\pi} = \\dfrac{neh}{4\\pi m_{e}}\\)\n\nFor the first orbit, \\(n = 1\\), this has the value \\(\\dfrac{eh}{4\\pi m_{e}} = 9.274 \\times 10^{-24}\\) A m\\(^{2}\\), which is called the Bohr magneton.\n\nA dimensional check on the result: \\(evr\\) has the dimensions \\([I\\,T][L\\,T^{-1}][L] = [L^{2}I]\\), which are the dimensions of a magnetic dipole moment, in agreement with the unit A m\\(^{2}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#16",
+    "questionNumber": "Q. 2(viii)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Origin of Magnetism in Materials",
+    "stem": "Write the mathematical formula for Bohr magneton for an electron revolving in \\(n^{th}\\) orbit.",
+    "solution": "An electron revolving in an orbit about the nucleus is equivalent to a current loop, and its orbital magnetic moment is related to its orbital angular momentum \\(L\\) by\n\n\\(m_{orb} = \\left(\\dfrac{e}{2m_{e}}\\right)L\\)\n\nBy Bohr's second postulate the angular momentum of the electron in the \\(n^{th}\\) orbit is quantised,\n\n\\(L = \\dfrac{nh}{2\\pi}\\), with \\(n = 1, 2, 3, \\ldots\\)\n\nSubstituting,\n\n\\(m_{orb} = \\dfrac{e}{2m_{e}} \\times \\dfrac{nh}{2\\pi}\\)\n\n\\(\\therefore m_{orb} = \\dfrac{neh}{4\\pi m_{e}} = n\\mu_{B}\\)\n\nwhere\n\n\\(\\mu_{B} = \\dfrac{eh}{4\\pi m_{e}}\\)\n\nis the smallest such moment, the value for \\(n = 1\\), and is called the BOHR MAGNETON. Here \\(e\\) is the charge and \\(m_{e}\\) the mass of the electron and \\(h\\) is Planck's constant. The orbital magnetic moment of an electron in the \\(n^{th}\\) orbit is thus an integral multiple of the Bohr magneton.\n\nSubstituting the constants, \\(\\mu_{B} = \\dfrac{(1.6 \\times 10^{-19})(6.63 \\times 10^{-34})}{4\\pi \\times 9.1 \\times 10^{-31}} = 9.27 \\times 10^{-24}\\) A m\\(^{2}\\), which is the accepted value of the Bohr magneton.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#17",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Torque on a Magnetic Dipole",
+    "stem": "A bar magnet of mass 120 g in the form of a rectangular parallelepiped, has dimensions \\(l = 40\\text{ mm}\\), \\(b = 100\\text{ mm}\\) and \\(h = 80\\text{ mm}\\), with its dimension 'h' vertical, the magnet performs angular oscillations in the plane of the magnetic field with period \\(\\pi\\) seconds. If the magnetic moment is \\(3.4\\text{ Am}^{2}\\), determine the influencing magnetic field.",
+    "solution": "Given: mass \\(M = 120\\) g \\(= 0.12\\) kg; \\(l = 40\\) mm \\(= 0.04\\) m, \\(b = 100\\) mm \\(= 0.1\\) m, \\(h = 80\\) mm \\(= 0.08\\) m with \\(h\\) vertical; period \\(T = \\pi\\) s; magnetic moment \\(m = 3.4\\) A m\\(^{2}\\). To find: \\(B\\).\n\n**Step 1 - the moment of inertia about the axis of oscillation.** The magnet oscillates in the plane of the magnetic field, which is horizontal, so it turns about the VERTICAL axis through its centre, that is about the axis parallel to the edge \\(h\\). For a rectangular parallelepiped turning about an axis through its centre parallel to one edge, the moment of inertia is decided by the two edges PERPENDICULAR to that axis:\n\n\\(I = \\dfrac{M(l^{2} + b^{2})}{12}\\)\n\nThe dimension \\(h\\) lies along the axis of rotation and so does not enter.\n\n\\(I = \\dfrac{0.12\\left[(0.04)^{2} + (0.1)^{2}\\right]}{12} = \\dfrac{0.12\\left(1.6 \\times 10^{-3} + 1.0 \\times 10^{-2}\\right)}{12} = \\dfrac{0.12 \\times 1.16 \\times 10^{-2}}{12}\\)\n\n\\(I = 1.16 \\times 10^{-4}\\) kg m\\(^{2}\\)\n\n**Step 2 - the period of angular oscillations.** A magnet of moment \\(m\\) making small angular oscillations in a field of induction \\(B\\) performs S.H.M. of period\n\n\\(T = 2\\pi\\sqrt{\\dfrac{I}{mB}}\\)\n\nSquaring and rearranging for \\(B\\),\n\n\\(T^{2} = \\dfrac{4\\pi^{2}I}{mB}\\), so \\(B = \\dfrac{4\\pi^{2}I}{T^{2}m}\\)\n\n**Step 3 - substituting.** With \\(T = \\pi\\) s, \\(T^{2} = \\pi^{2}\\) and the \\(\\pi^{2}\\) cancels:\n\n\\(B = \\dfrac{4\\pi^{2} \\times 1.16 \\times 10^{-4}}{\\pi^{2} \\times 3.4} = \\dfrac{4 \\times 1.16 \\times 10^{-4}}{3.4} = \\dfrac{4.64 \\times 10^{-4}}{3.4}\\)\n\n\\(\\therefore B = 1.365 \\times 10^{-4}\\) T\n\nCheck by substituting back: \\(T = 2\\pi\\sqrt{\\dfrac{1.16 \\times 10^{-4}}{3.4 \\times 1.365 \\times 10^{-4}}} = 2\\pi\\sqrt{0.25} = 2\\pi \\times 0.5 = \\pi\\) s, which is the period given. The value \\(1.365 \\times 10^{-4}\\) T is 1.365 gauss, a few times the earth's field, which is the order of field a bar magnet is normally made to oscillate in.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "magnetic-materials-12-pyq#18",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Torque on a Magnetic Dipole",
+    "stem": "Obtain an expression for the period of a bar magnet vibrating in a uniform magnetic field, performing S.H.M.",
+    "solution": "Consider a bar magnet of magnetic dipole moment \\(m\\) suspended by a thin fibre in a uniform magnetic field of induction \\(B\\), so that it is free to turn about a vertical axis through its centre. In its equilibrium position the magnet rests with its axis along the field.\n\n**The restoring torque.** Let the magnet be turned through a small angle \\(\\theta\\) from this equilibrium position and released. The field exerts on it a torque\n\n\\(\\tau = -mB\\sin\\theta\\)\n\nthe negative sign showing that the torque acts in the sense that brings the magnet BACK towards the equilibrium position.\n\n**Small oscillations.** For a small angular displacement, \\(\\sin\\theta \\approx \\theta\\) with \\(\\theta\\) measured in radian, so\n\n\\(\\tau = -mB\\theta\\)\n\n**Applying the equation of rotational motion.** If \\(I\\) is the moment of inertia of the magnet about the axis of suspension and \\(\\alpha = \\dfrac{d^{2}\\theta}{dt^{2}}\\) is its angular acceleration, then \\(\\tau = I\\alpha\\), so\n\n\\(I\\dfrac{d^{2}\\theta}{dt^{2}} = -mB\\theta\\)\n\n\\(\\dfrac{d^{2}\\theta}{dt^{2}} = -\\left(\\dfrac{mB}{I}\\right)\\theta\\)\n\nThe angular acceleration is proportional to the angular displacement and is directed opposite to it. That is precisely the condition for angular S.H.M., so the magnet performs simple harmonic motion.\n\n**The period.** Comparing with the defining equation of angular S.H.M., \\(\\dfrac{d^{2}\\theta}{dt^{2}} = -\\omega^{2}\\theta\\),\n\n\\(\\omega^{2} = \\dfrac{mB}{I}\\), so \\(\\omega = \\sqrt{\\dfrac{mB}{I}}\\)\n\nThe period is \\(T = \\dfrac{2\\pi}{\\omega}\\), hence\n\n\\(\\therefore T = 2\\pi\\sqrt{\\dfrac{I}{mB}}\\)\n\nThe expression contains no amplitude, so the period is independent of the angle through which the magnet is displaced, as it must be for S.H.M.; and a stronger field or a larger magnetic moment gives a larger restoring torque and so a shorter period, while a heavier magnet with a larger moment of inertia oscillates more slowly. A dimensional check: \\(\\dfrac{I}{mB}\\) has the dimensions \\(\\dfrac{[ML^{2}]}{[L^{2}I][MT^{-2}I^{-1}]} = [T^{2}]\\), whose square root is a time.",
+    "difficulty": "MODERATE"
+  }
+]

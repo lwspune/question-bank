@@ -1,0 +1,469 @@
+{
+  "_readme": [
+    "OWNERSHIP LEDGER for the PHYSICS board-PYQ compilation. Sibling of",
+    "cross-chapter-duplicates.json, which does the same job for Maths — kept",
+    "separate because the two sources fail in DIFFERENT ways and one _readme",
+    "cannot describe both.",
+    "",
+    "25 provenance tags appear under more than one chapter. NOT 22: the source",
+    "spells the same sitting `28 OR` and `28 (OR)`, so a tag key that does not",
+    "normalise the OR marker silently misses three real pairs.",
+    "",
+    "THE TWO POPULATIONS, and only the first is the Maths case:",
+    "",
+    "  pairs     — 14 tags where ONE question was cross-filed under two plausible",
+    "              chapters. Keep one, drop the other. Same shape as Maths.",
+    "",
+    "  compounds — 11 tags where the board's Section-C/D question pairs a THEORY",
+    "              part with an unrelated NUMERICAL, and the two halves belong to",
+    "              DIFFERENT chapters. The compiler pasted the whole question into",
+    "              each chapter it touches, so both copies carry both halves. Each",
+    "              copy is TRIMMED to its own half (user's call, 2026-09-09).",
+    "              Keeping one copy whole would silently cost the other chapter its",
+    "              question; keeping both whole would file an ammeter question",
+    "              under Oscillations.",
+    "",
+    "  Plus 3 SINGLE-COPY compounds that have no second copy to pair with, listed",
+    "  in `compounds` with one part.",
+    "",
+    "HOW OWNERSHIP WAS DECIDED — from the bank, not from topic feel. Every",
+    "ambiguous call was checked against the chapter's EXISTING practice rows and",
+    "the DB subtopic axis, and in each case the bank had already answered it:",
+    "  - 'Soft iron ... core of transformer' — the bank holds a practice row with",
+    "    the IDENTICAL stem under Magnetic Materials -> Hysteresis.",
+    "  - Mayer's relation / molar specific heats -> Kinetic Theory. Thermodynamics",
+    "    has NO specific-heats subtopic at all, so it cannot own them.",
+    "  - adiabatic -> Thermodynamics (7 practice rows); Bohr orbit -> Structure of",
+    "    Atoms and Nuclei (3); Bohr magneton -> Magnetic Materials (1);",
+    "    transformer -> Electromagnetic Induction -> Mutual Inductance (1).",
+    "",
+    "SUBTOPICS ARE NEAREST-FIT WHERE THE AXIS HAS NO HOME, never new (user's",
+    "call). Two cases are worth naming because the gap is in the TEXTBOOK, not in",
+    "our taxonomy: the Std XII Kinetic Theory chapter has 21 printed sections and",
+    "NONE is Newton's law of cooling, yet the board asked it twice (Q.3 Mar 2016,",
+    "Q.4.B Mar 2018); and Electromagnetic Induction has no Transformers subtopic",
+    "though the board sets one (Q.7 Mar 2016). Each such row records the",
+    "compromise in its own `why`.",
+    "",
+    "USETEXT IS A SEPARATE DECISION FROM KEEP, exactly as in the Maths ledger, and",
+    "the better transcription is often the copy being DROPPED — the Bohr-magneton",
+    "copy we discard is the one that typesets n-th properly.",
+    "",
+    "NET EFFECT: 379 extracted rows - 14 dropped = 365 rows to ingest."
+  ],
+  "pairs": [
+    {
+      "_group": "Electromagnetic Induction <-> Magnetic Fields / Magnetic Materials",
+      "_finding": "Four tags. The compilation cross-files anything involving a coil in a field between EMI and the two magnetism chapters.",
+      "items": [
+        {
+          "keep": "emi-12-pyq#4",
+          "drop": "magnetic-fields-12-pyq#21",
+          "tag": "[Q. 1(ii), February 2020]",
+          "subtopic": "Induced emf in a Stationary Coil",
+          "useText": "either",
+          "why": "A coil kept STATIONARY in a uniform field: no flux change, so neither emf nor current. The EMI subtopic names exactly this case; Magnetic Fields has no counterpart."
+        },
+        {
+          "keep": "emi-12-pyq#3",
+          "drop": "magnetic-fields-12-pyq#16",
+          "tag": "[Q. 1(v), February 2023]",
+          "subtopic": "Faraday's Laws and Magnetic Flux",
+          "useText": "emi-12-pyq#3",
+          "why": "Magnetic flux linked with a coil. The Magnetic-Fields copy is the ONE row in the corpus whose options are typeset inside a single math zone and so could not be split — dropping it resolves that flag with no hand transcription needed."
+        },
+        {
+          "keep": "magnetic-materials-12-pyq#9",
+          "drop": "emi-12-pyq#19",
+          "tag": "[Q. 1(viii), February 2023]",
+          "subtopic": "Hysteresis",
+          "useText": "either",
+          "why": "Coercivity and retentivity are hysteresis-loop parameters. The bank already holds a practice row with the IDENTICAL stem filed under Magnetic Materials -> Hysteresis, so this is not a judgement call."
+        },
+        {
+          "keep": "magnetic-materials-12-pyq#16",
+          "drop": "atoms-nuclei-12-pyq#9",
+          "tag": "[Q. 2(viii), February 2023]",
+          "subtopic": "Origin of Magnetism in Materials",
+          "useText": "atoms-nuclei-12-pyq#9",
+          "why": "The Bohr magneton is the magnetic moment of an orbiting electron; the bank's only 'Bohr magneton' practice row sits in Magnetic Materials. The DROPPED copy is the better text — it typesets \\(n^{th}\\) where the kept one writes bare 'nth'."
+        }
+      ]
+    },
+    {
+      "_group": "Kinetic Theory <-> Thermodynamics",
+      "_finding": "Four tags, all about gases. The split is decided by the subtopic axis rather than by feel: Thermodynamics has no specific-heats subtopic, Kinetic Theory has no process subtopic.",
+      "items": [
+        {
+          "keep": "thermodynamics-12-pyq#16",
+          "drop": "kinetic-theory-12-pyq#11",
+          "tag": "[Q. 13, February 2023]",
+          "subtopic": "Thermodynamic Processes",
+          "useText": "either",
+          "why": "Adiabatic compression, pressure ratio from the temperature ratio. Seven practice rows mentioning 'adiabatic' sit in Thermodynamics; none in Kinetic Theory."
+        },
+        {
+          "keep": "kinetic-theory-12-pyq#14",
+          "drop": "thermodynamics-12-pyq#20",
+          "tag": "[Q. 14, March 2022]",
+          "subtopic": "Specific Heat Capacity and Mayer's Relation",
+          "useText": "thermodynamics-12-pyq#20",
+          "why": "Mayer's relation. Thermodynamics has NO specific-heats subtopic, so it cannot own this; Kinetic Theory names it. Text from the dropped copy, whose sentence ends cleanly."
+        },
+        {
+          "keep": "kinetic-theory-12-pyq#12",
+          "drop": "thermodynamics-12-pyq#18",
+          "tag": "[Q. 2(vi), March 2016]",
+          "subtopic": "Law of Equipartition of Energy and Degrees of Freedom",
+          "useText": "kinetic-theory-12-pyq#12",
+          "why": "Cp/Cv for a molecule with f vibrational modes — equipartition. The dropped copy's option A carries a stray LaTeX thin space."
+        },
+        {
+          "keep": "kinetic-theory-12-pyq#13",
+          "drop": "thermodynamics-12-pyq#19",
+          "tag": "[Q. 2, March 2019]",
+          "subtopic": "Specific Heat Capacity and Mayer's Relation",
+          "useText": "kinetic-theory-12-pyq#13",
+          "why": "Specific heat capacity of water in units of R. Same axis argument as Q.14. The dropped copy's option A again carries a stray thin space."
+        }
+      ]
+    },
+    {
+      "_group": "Wave Optics <-> Superposition / Oscillations / AC Circuits",
+      "_finding": "Three tags. Two are light questions mis-filed elsewhere; one is a SOUND question mis-filed under Wave Optics, so the direction is not uniform.",
+      "items": [
+        {
+          "keep": "wave-optics-12-pyq#15",
+          "drop": "oscillations-12-pyq#19",
+          "tag": "[Q. 1(ix), March 2022]",
+          "subtopic": "Interference and Young's Double Slit Experiment",
+          "useText": "wave-optics-12-pyq#15",
+          "why": "Young's double slit is Wave Optics. The Oscillations copy is a mis-file and carries a transcription slip, opening 'The In Young's double slit experiment'."
+        },
+        {
+          "keep": "superposition-12-pyq#4",
+          "drop": "wave-optics-12-pyq#6",
+          "tag": "[Q. 2(iv), March 2016]",
+          "subtopic": "Stationary Waves",
+          "useText": "either",
+          "why": "SOUND waves reflected at a denser medium — the pi phase change that makes a node. Wave Optics is light, so here the Wave-Optics copy is the mis-file. The bank files an analogous practice row ('a sound wave ... reflected at an obstacle to form a stationary wave') under Superposition -> Stationary Waves."
+        },
+        {
+          "keep": "wave-optics-12-pyq#18",
+          "drop": "ac-circuits-12-pyq#11",
+          "tag": "[Q. 28, February 2024]",
+          "subtopic": "Interference and Young's Double Slit Experiment",
+          "useText": "either",
+          "why": "Fringe-width derivation from the double-slit geometry, mis-filed under AC Circuits. NOT a compound — a single question with one task."
+        }
+      ]
+    },
+    {
+      "_group": "Plain mis-files into an unrelated chapter",
+      "_finding": "Three tags where one copy sits in a chapter with no connection to the question at all. Kept for the record because the pattern (a stray paste) is worth recognising.",
+      "items": [
+        {
+          "keep": "current-electricity-12-pyq#20",
+          "drop": "thermodynamics-12-pyq#21",
+          "tag": "[Q. 24, February 2025]",
+          "subtopic": "Galvanometer, Ammeter and Voltmeter",
+          "useText": "current-electricity-12-pyq#20",
+          "why": "Converting a galvanometer to an ammeter and a voltmeter. The Thermodynamics copy is a stray paste and is also the worse text — a unicode ohm sign instead of LaTeX, and '(i)into' glued together."
+        },
+        {
+          "keep": "electrostatics-12-pyq#16",
+          "drop": "rotational-dynamics-12-pyq#13",
+          "tag": "[Q. 24, March 2022]",
+          "subtopic": "Parallel Plate Capacitor with a Dielectric",
+          "useText": "electrostatics-12-pyq#16",
+          "why": "Capacitance of an air-filled parallel-plate capacitor, pasted into Rotational Dynamics. Six 'parallel plate capacitor' practice rows sit in Electrostatics. The dropped copy writes the area as a unicode 'cm2'. CORRECTED 2026-09-10: the subtopic originally recorded here was 'Capacitors and Combination of Capacitors', which the bank contradicts. The practice corpus files a plain area-and-separation capacitance calculation under 'Parallel Plate Capacitor with a Dielectric' EVEN WHEN THE MEDIUM IS AIR - including one row with air and the same 6 cm^2 area, and one that is this question with 4 cm^2 / 2 mm - while 'Capacitors and Combination of Capacitors' holds the conceptual rows (isolated capacitor, circular plates). The original value was a secondary call made while adjudicating which CHAPTER this belonged to; the chapter verdict is unaffected."
+        },
+        {
+          "keep": "atoms-nuclei-12-pyq#1",
+          "drop": "magnetic-materials-12-pyq#14",
+          "tag": "[Q. 6(v), March 2018]",
+          "subtopic": "Bohr's Atomic Model",
+          "useText": "atoms-nuclei-12-pyq#1",
+          "why": "Period of revolution of the electron in a Bohr orbit — asks only for the period, so it is orbit kinematics rather than magnetism. Three 'Bohr orbit' practice rows sit in Structure of Atoms and Nuclei."
+        }
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "tag": "[Q. 27 OR, March 2019]",
+      "_why": "Stationary-waves theory + an unrelated radius-of-gyration numerical.",
+      "parts": [
+        {
+          "ref": "superposition-12-pyq#13",
+          "splitAt": "The radius of gyration",
+          "take": "before",
+          "subtopic": "Stationary Waves",
+          "why": "Formation of stationary waves by the analytical method; nodes and antinodes equally spaced."
+        },
+        {
+          "ref": "rotational-dynamics-12-pyq#23",
+          "splitAt": "The radius of gyration",
+          "take": "after",
+          "subtopic": "Theorems of Parallel and Perpendicular Axes",
+          "why": "Radius of gyration about a parallel axis through the centre of mass — the parallel-axis theorem."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 27, March 2019]",
+      "_why": "Air-column harmonics theory + an unrelated frictional-torque numerical.",
+      "parts": [
+        {
+          "ref": "superposition-12-pyq#20",
+          "splitAt": "A wheel of moment of inertia",
+          "take": "before",
+          "subtopic": "Vibrations of Air Columns",
+          "why": "Even and odd harmonics as overtones in a pipe open at both ends."
+        },
+        {
+          "ref": "rotational-dynamics-12-pyq#32",
+          "splitAt": "A wheel of moment of inertia",
+          "take": "after",
+          "subtopic": "Angular Momentum and Torque",
+          "why": "Average frictional torque from the change in angular momentum."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 28 OR, March 2019]",
+      "_why": "SHM differential-equation theory + an unrelated sonometer numerical. The two copies tag the sitting differently ('28 (OR)' and '28 OR'), which is why the OR marker must be normalised before pairing.",
+      "parts": [
+        {
+          "ref": "oscillations-12-pyq#9",
+          "splitAt": "A sonometer wire 1 metre",
+          "take": "before",
+          "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+          "why": "Acceleration, velocity and displacement obtained from the differential equation of linear S.H.M."
+        },
+        {
+          "ref": "superposition-12-pyq#17",
+          "splitAt": "A sonometer wire 1 metre",
+          "take": "after",
+          "subtopic": "Vibrations of a Stretched String and Sonometer",
+          "why": "Tension in a sonometer wire in resonance with a tuning fork."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 28, March 2019]",
+      "_why": "SHM potential-energy theory + an unrelated beats numerical.",
+      "parts": [
+        {
+          "ref": "oscillations-12-pyq#15",
+          "from": "superposition-12-pyq#29",
+          "splitAt": "A stretched sonometer wire",
+          "take": "before",
+          "subtopic": "Energy of a Particle Performing S.H.M.",
+          "why": "Potential energy of a particle in S.H.M., and its value at the mean and extreme positions. Split from the Superposition copy: this half is a QUESTION and only that copy prints the question mark, so trimming our own copy would end the stem mid-sentence."
+        },
+        {
+          "ref": "superposition-12-pyq#29",
+          "splitAt": "A stretched sonometer wire",
+          "take": "after",
+          "subtopic": "Beats",
+          "why": "Frequency of a tuning fork from the beats produced when the wire is lengthened by 5%."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 29, February 2024]",
+      "_why": "Ammeter-vs-voltmeter theory + an unrelated SHM-energy numerical. NOTE the Current-Electricity copy puts the qualifier '(Two points each)' at the very END, after the SHM half, where it belongs to the FIRST half — so that copy is split from the OSCILLATIONS text, which places it correctly.",
+      "parts": [
+        {
+          "ref": "current-electricity-12-pyq#19",
+          "from": "oscillations-12-pyq#17",
+          "splitAt": "The displacement of a particle",
+          "take": "before",
+          "subtopic": "Galvanometer, Ammeter and Voltmeter",
+          "why": "Distinguish an ammeter from a voltmeter, two points each. Split from the Oscillations copy because this copy has the qualifier stranded at the end."
+        },
+        {
+          "ref": "oscillations-12-pyq#17",
+          "splitAt": "The displacement of a particle",
+          "take": "after",
+          "subtopic": "Energy of a Particle Performing S.H.M.",
+          "why": "Fraction of total energy that is kinetic when the displacement is one third of the amplitude."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 29, March 2022]",
+      "_why": "Moving-coil-galvanometer diagram + an unrelated gas-work numerical.",
+      "parts": [
+        {
+          "ref": "magnetic-fields-12-pyq#17",
+          "from": "thermodynamics-12-pyq#15",
+          "splitAt": "The initial pressure and volume",
+          "take": "before",
+          "subtopic": "Torque on a Current Loop and the Moving Coil Galvanometer",
+          "why": "Labelled diagram of a suspended-coil moving-coil galvanometer. Split from the Thermodynamics copy, whose sentence ends with a full stop where this copy ends with a stray continuation backslash."
+        },
+        {
+          "ref": "thermodynamics-12-pyq#15",
+          "splitAt": "The initial pressure and volume",
+          "take": "after",
+          "subtopic": "Heat, Internal Energy and Work",
+          "why": "Final volume from the work done compressing a gas at constant pressure."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 31, February 2020]",
+      "_why": "Magnetic moment of a REVOLVING ELECTRON (atomic origin of magnetism) + the magnetic moment of a CURRENT-CARRYING COIL. Both are dipole moments, which is why the compiler cross-filed it, but they are taught in different chapters.",
+      "parts": [
+        {
+          "ref": "magnetic-materials-12-pyq#15",
+          "splitAt": "A circular coil of 300 turns",
+          "take": "before",
+          "subtopic": "Origin of Magnetism in Materials",
+          "why": "Magnetic dipole moment of a revolving electron — the atomic origin of magnetism."
+        },
+        {
+          "ref": "magnetic-fields-12-pyq#15",
+          "splitAt": "A circular coil of 300 turns",
+          "take": "after",
+          "subtopic": "Magnetic Dipole Moment and Potential Energy",
+          "why": "Dipole moment of a 300-turn current-carrying circular coil."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 3, March 2016]",
+      "_why": "ASYMMETRIC, and the only one of its kind: the compiler ALREADY trimmed the Oscillations copy to its own half, so only the Kinetic-Theory copy still carries both. Oscillations needs no edit.",
+      "parts": [
+        {
+          "ref": "kinetic-theory-12-pyq#22",
+          "splitAt": "A metal sphere cools",
+          "take": "after",
+          "subtopic": "Perfect Blackbody and Emissivity",
+          "why": "Rate of cooling of a metal sphere. NEAREST FIT, not an exact one: the Std XII Kinetic Theory chapter prints 21 sections and none of them is Newton's law of cooling (it is a Std XI topic), so the board is examining something this textbook does not teach. Filed under emission of heat radiation, which is the physics the law rests on."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 7 OR, March 2016]",
+      "_why": "Geiger-Marsden + mass defect, then an unrelated photoelectric numerical.",
+      "parts": [
+        {
+          "ref": "atoms-nuclei-12-pyq#25",
+          "splitAt": "The photoelectric work function",
+          "take": "before",
+          "subtopic": "Thomson's and Rutherford's Atomic Models",
+          "why": "The Geiger-Marsden experiment. This half also asks 'What is mass defect?', which belongs to Nuclear Binding Energy — filed on the dominant first task, since a row carries one subtopic."
+        },
+        {
+          "ref": "dual-nature-12-pyq#15",
+          "splitAt": "The photoelectric work function",
+          "take": "after",
+          "subtopic": "Einstein's Photoelectric Equation",
+          "why": "Threshold and incident frequency from the work function; whether emission occurs."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 7, March 2016]",
+      "_why": "Transformer theory + an unrelated charged-conductor numerical.",
+      "parts": [
+        {
+          "ref": "emi-12-pyq#22",
+          "splitAt": "A conductor of any shape",
+          "take": "before",
+          "subtopic": "Mutual Inductance",
+          "why": "Principle, construction and turns ratio of a transformer. NEAREST FIT: Electromagnetic Induction has no Transformers subtopic, and a transformer works by mutual induction — the bank already files a transformer practice row under Mutual Inductance."
+        },
+        {
+          "ref": "electrostatics-12-pyq#4",
+          "splitAt": "A conductor of any shape",
+          "take": "after",
+          "subtopic": "Applications of Gauss' Law",
+          "why": "Electric intensity just outside a charged conductor and the mechanical force per unit area — both follow from Gauss' law."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 8 OR, March 2017]",
+      "_why": "Hydrogen energy-level diagram and spectral series, then an unrelated photoelectric numerical.",
+      "parts": [
+        {
+          "ref": "atoms-nuclei-12-pyq#20",
+          "from": "dual-nature-12-pyq#16",
+          "splitAt": "The work functions for potassium",
+          "take": "before",
+          "subtopic": "Atomic Spectra",
+          "why": "Energy-level diagram for hydrogen and the series with inner orbit numbers 3 and 4. Split from the Dual-Nature copy: this copy separates the two halves with a bare continuation backslash where that one prints a full stop, so trimming our own would end the stem mid-sentence."
+        },
+        {
+          "ref": "dual-nature-12-pyq#16",
+          "splitAt": "The work functions for potassium",
+          "take": "after",
+          "subtopic": "Einstein's Photoelectric Equation",
+          "why": "Whether the photoelectric effect occurs for potassium and caesium at 5180 angstrom."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 4. B, March 2018]",
+      "_why": "SINGLE COPY. The SHM half is NOT split out into Oscillations: it opens 'Hence obtain the expression...', a continuation of part 4.A which the compilation does not carry, so it cannot stand alone as a question.",
+      "parts": [
+        {
+          "ref": "kinetic-theory-12-pyq#24",
+          "splitAt": "A body cools from",
+          "take": "after",
+          "subtopic": "Perfect Blackbody and Emissivity",
+          "why": "Temperature of the surroundings from two successive cooling intervals. Same nearest-fit reasoning as Q.3 March 2016 — the chapter does not teach Newton's law of cooling."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 4.OR, March 2017]",
+      "_why": "SINGLE COPY. The second half is an ELASTICITY numerical (extension of a steel wire, Young's modulus, elastic limit). Mechanical Properties of SOLIDS is a Std XI chapter and is not one of this exam's 16 Class-12 chapters, so that half has no home and is dropped rather than mis-filed under Superposition.",
+      "parts": [
+        {
+          "ref": "superposition-12-pyq#14",
+          "splitAt": "A mass of 1 kg is hung",
+          "take": "before",
+          "subtopic": "Stationary Waves",
+          "why": "Formation of stationary waves by the analytical method, shown diagrammatically."
+        }
+      ]
+    },
+    {
+      "tag": "[Q. 4.B, March 2017]",
+      "_why": "SINGLE COPY, and nothing is lost by trimming: the SHM-energy half ALREADY exists in Oscillations under its own tag [Q. 4, March 2017] (oscillations-12-pyq#14), where the compiler filed it separately — and that copy spells 'harmonic' correctly where this one reads 'hormonic'.",
+      "parts": [
+        {
+          "ref": "superposition-12-pyq#26",
+          "splitAt": "Two sound notes have wavelengths",
+          "take": "after",
+          "subtopic": "Beats",
+          "why": "Velocity of sound and the two frequencies from the beat rate of two notes."
+        }
+      ]
+    }
+  ],
+  "expectedCounts": {
+    "_note": "Rows expected per chapter AFTER the drops (trims do not change counts). A commit that disagrees with these is a bug in the parser or the ledger, not a surprise — check before shipping. CORRECTED 2026-09-10: semiconductors-12-pyq 15 -> 16 (and TOTAL +1). The original 15 was measured from an extraction that had LOST a question: the compilation typed item 15's number inside an OMML equation, so pandoc emitted the line starting with '$', the ITEM rule never saw an item start, and board question Q.1(iii) February 2023 was absorbed into item 14's stem. Repaired via defects.json -> itemNumberSwallowed.",
+    "rotational-dynamics-12-pyq": 42,
+    "fluids-12-pyq": 25,
+    "kinetic-theory-12-pyq": 24,
+    "thermodynamics-12-pyq": 17,
+    "superposition-12-pyq": 32,
+    "oscillations-12-pyq": 24,
+    "wave-optics-12-pyq": 27,
+    "electrostatics-12-pyq": 23,
+    "current-electricity-12-pyq": 21,
+    "magnetic-fields-12-pyq": 19,
+    "magnetic-materials-12-pyq": 17,
+    "emi-12-pyq": 22,
+    "ac-circuits-12-pyq": 13,
+    "dual-nature-12-pyq": 20,
+    "atoms-nuclei-12-pyq": 24,
+    "semiconductors-12-pyq": 16
+  }
+}

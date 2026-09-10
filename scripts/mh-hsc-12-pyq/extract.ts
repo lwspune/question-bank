@@ -123,6 +123,13 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
         text: stripArtifacts(normaliseMath(text)),
       }));
       d.format = "mcq";
+      // The options are no longer lost, so the pending marker must go. It is set
+      // by the corrupted-label guard in splitOptions, and `buildRecords` REFUSES
+      // to ship a pendingMcq row ("known MCQ … whose options are still lost") —
+      // so leaving it set blocks the commit of the very row this just repaired.
+      // thermodynamics#2 hit exactly that. The refusal still stands for the case
+      // it exists for: a known MCQ nobody has recovered yet.
+      delete d.pendingMcq;
       // Such a question is here BECAUSE its printed option block failed to parse
       // — one carries the labels (a)(b)(b)(c), a duplicated "b" and no "d" — so
       // the unparsed run is still glued to the stem and would render in full on
@@ -200,28 +207,252 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
 }
 
 /** A numbered item starts a question; pandoc emits "12. " at column 0. */
-const ITEM = /^(\d+)\.\s+/;
-const OPT = /\\?\(([a-d])\\?\)\s*/g;
+/**
+ * A question start. Maths is a Word LIST, so pandoc emits "1.  "; the Physics
+ * Semiconductor Devices chapter is plain paragraphs, so pandoc ESCAPES the dot
+ * and emits "1\.  ". Accepting only the first form yields ZERO items for that
+ * chapter — no error, just an empty extraction.
+ */
+export const ITEM = /^(\d+)\\?\.\s+/;
+/**
+ * An option label. Maths prints "(a)-(d)", Physics prints "(A)-(D)", and pandoc
+ * escapes the parens wherever the run is not inside a list. Measured across the
+ * Physics compilation, the lowercase-only rule found 8 marks corpus-wide
+ * against 369 for this one — so every one of its ~89 MCQs would have shipped as
+ * a free-response row with the option block still glued to the stem, which no
+ * downstream gate catches (a subjective row is allowed to have no options).
+ */
+const OPT = /\\?\(([a-dA-D])\\?\)\s*/g;
 
-/** Split a block into its stem and, if present, four options. */
-export function splitOptions(block: string): { stem: string; options?: { label: string; text: string }[] } {
-  const marks: { label: string; at: number; len: number }[] = [];
-  for (const m of block.matchAll(OPT)) {
-    marks.push({ label: m[1].toUpperCase(), at: m.index!, len: m[0].length });
+export type TagFix = { ref: string; from: string; to: string; why: string };
+
+/**
+ * Repair a malformed provenance tag BEFORE it is parsed.
+ *
+ * Every other repair in this pipeline is keyed on a ref and applied to a draft
+ * row. A broken tag cannot be, because parseProvenanceTag failing makes the
+ * extractor DROP the item — so the row, and therefore the ref, never exists.
+ * The problem is logged rather than silent, but the question is still absent
+ * from the corpus until this runs.
+ *
+ * EXACT match, exactly once, or it throws. A fuzzy match is what lets a repair
+ * land on a question it was never adjudicated for, and a silent no-op leaves a
+ * fix that LOOKS applied — so a stale entry is an error, not a shrug.
+ */
+export function applyTagOverride(raw: string, ref: string, fixes: TagFix[]): string {
+  const fix = fixes.find((f) => f.ref === ref);
+  if (!fix) return raw;
+  const hits = raw.split(fix.from).length - 1;
+  if (hits !== 1) {
+    throw new Error(
+      `tag override for ${ref} is stale: expected exactly 1 occurrence of ${JSON.stringify(fix.from)}, found ${hits}. ` +
+        `Either the source was corrected upstream or the item renumbered — re-adjudicate, do not loosen the match.`,
+    );
   }
-  // Require a full A-D run; a lone "(a)" is prose, not an option list.
+  return raw.replace(fix.from, fix.to);
+}
+
+/** A WHOLE-DOCUMENT repair, applied to pandoc's output before items are split. */
+export type DocFix = { chapter: string; from: string; to: string; why: string };
+
+/**
+ * Repair the raw markdown BEFORE the item scan.
+ *
+ * `applyTagOverride` cannot reach this class: it runs per ITEM, and the whole
+ * problem here is that no item was ever recognised. Semiconductors item 15
+ * vanished from the bank because the compilation typed the numeral inside an
+ * OMML equation, so pandoc emitted the line as `$15.\ Y = A + B$ is the …` —
+ * a line starting with `$`, which ITEM cannot anchor on. Its question was
+ * absorbed into item 14's stem and two board questions shipped as one row.
+ *
+ * NOTHING downstream can see that: the merged row is a well-formed MCQ with four
+ * intact options, so the only trace is a GAP in the item numbering. That gap is
+ * now the standing detector — the numbering should be contiguous once the
+ * ledger's deliberate drops are accounted for.
+ *
+ * REFUSES on a stale or ambiguous match rather than silently doing nothing: a
+ * no-op here would leave the question lost again with no signal, which is the
+ * exact failure being repaired.
+ */
+export function applyDocumentRepairs(md: string, chapterId: string, fixes: DocFix[]): string {
+  let out = md;
+  for (const fix of fixes.filter((f) => f.chapter === chapterId)) {
+    const hits = out.split(fix.from).length - 1;
+    if (hits !== 1) {
+      throw new Error(
+        `document repair for ${chapterId} is stale or ambiguous: expected exactly 1 occurrence ` +
+          `of ${JSON.stringify(fix.from)}, found ${hits}. Either the source was corrected ` +
+          `upstream or the item renumbered — re-adjudicate against the printed page, do not ` +
+          `loosen the match.`,
+      );
+    }
+    out = out.replace(fix.from, fix.to);
+  }
+  return out;
+}
+
+const mathBalance = (s: string) => s.split("\\(").length - s.split("\\)").length;
+
+/**
+ * Repair math delimiters broken by cutting an option run out of a block.
+ *
+ * The compilation sometimes typesets the option LABEL inside the math zone —
+ * `$(A)\ vt$ (B) $...$` — so the cut at "(A)" lands INSIDE the zone and leaves
+ * the stem holding a dangling `\(` while option A holds an orphan `\)`. An
+ * unbalanced delimiter is a KaTeX parse error that takes the whole card down,
+ * and it is invisible to every later gate: the row is a well-formed MCQ with
+ * four options. 18 of the 89 Physics MCQs are shaped this way.
+ *
+ * Only a CLEAN cut is repaired: an unmatched `\(` must be the last thing in its
+ * fragment, in which case it belongs to the fragment that follows and is moved
+ * there. Anything else is a genuinely malformed source and THROWS — a zone that
+ * never closes must not be silently turned into something that merely parses.
+ */
+/** Brace balance, ignoring LaTeX's escaped literal braces. */
+const braceBalance = (s: string) => {
+  const bare = s.replace(/\\[{}]/g, "");
+  return bare.split("{").length - bare.split("}").length;
+};
+
+/** Offset of the `\(` that this fragment leaves open, or -1. */
+function lastUnmatchedOpen(s: string): number {
+  const stack: number[] = [];
+  for (let i = 0; i < s.length - 1; i += 1) {
+    if (s[i] !== "\\") continue;
+    if (s[i + 1] === "(") stack.push(i);
+    else if (s[i + 1] === ")") stack.pop();
+  }
+  return stack.length ? stack[stack.length - 1] : -1;
+}
+
+/** A zone body carrying no content — whitespace and LaTeX thin spaces only. */
+const isSpacingOnly = (s: string) => /^(?:\s|\\ |\\,|\\;|\\quad|\\qquad)*$/.test(s);
+
+export function rebalanceAcrossCut(fragments: string[]): string[] {
+  const out = [...fragments];
+  for (let i = 0; i < out.length - 1; i += 1) {
+    const open = mathBalance(out[i]);
+    if (open <= 0) continue;
+    if (open > 1) {
+      throw new Error(
+        `unbalanced math: fragment ${i} leaves ${open} zones open, which is not a shape this repairs — ` +
+          `recover the options by hand via defects.json (${JSON.stringify(out[i].slice(-60))})`,
+      );
+    }
+    const at = lastUnmatchedOpen(out[i]);
+    const tail = out[i].slice(at + 2);
+    // A zone holding only spacing is typesetting noise; closing it would leave
+    // an empty \(\) on the card. Anything else is real content and must stay in
+    // the fragment it was printed in — moving it would hand one option's text
+    // to the next.
+    out[i] = isSpacingOnly(tail) ? out[i].slice(0, at) : `${out[i]}\\)`;
+    out[i + 1] = `\\(${out[i + 1]}`;
+  }
+
+  for (let i = 0; i < out.length; i += 1) {
+    if (mathBalance(out[i]) !== 0) {
+      throw new Error(
+        `unbalanced math zone after rebalancing: fragment ${i} is ${mathBalance(out[i])} open ` +
+          `(${JSON.stringify(out[i].slice(0, 80))})`,
+      );
+    }
+    // A cut through a \text{...} group leaves valid delimiters and INVALID
+    // LaTeX, which renders as a KaTeX error just the same. Refuse rather than
+    // emit something that merely balances.
+    if (braceBalance(out[i]) !== 0) {
+      throw new Error(
+        `unbalanced BRACES after rebalancing: fragment ${i} is ${braceBalance(out[i])} — the cut fell inside a ` +
+          `group such as \\text{...}. Recover the options by hand via defects.json ` +
+          `(${JSON.stringify(out[i].slice(0, 80))})`,
+      );
+    }
+  }
+  return out;
+}
+
+/**
+ * Split a block into its stem and, if present, four options.
+ *
+ * `unsplittable` is set when a full A-D run IS present but the cut cannot be
+ * made without emitting broken LaTeX. The row is returned unsplit and the
+ * caller marks it as a known-pending MCQ — the same treatment a question whose
+ * option list was lost already gets. It is deliberately NOT a throw: one
+ * tangled question must not block the other twenty in its chapter, and a row
+ * flagged pending is not a row that shipped as free-response by accident.
+ */
+export function splitOptions(block: string): {
+  stem: string;
+  options?: { label: string; text: string }[];
+  unsplittable?: string;
+} {
+  const marks: { label: string; at: number; len: number; upper: boolean }[] = [];
+  for (const m of block.matchAll(OPT)) {
+    marks.push({
+      label: m[1].toUpperCase(),
+      at: m.index!,
+      len: m[0].length,
+      // The ORIGINAL case is what separates an option list from a sub-part list
+      // in this source — see the corrupted-label guard below.
+      upper: m[1] === m[1].toUpperCase(),
+    });
+  }
+  // Require a full A-D run; a lone "(a)" is prose, not an option list. Anchor on
+  // the first position whose next four labels are A,B,C,D rather than on the
+  // first "A" anywhere: a matrix name or a surviving provenance fragment ahead
+  // of the real run would otherwise make the whole block fail to split. Where a
+  // block split under the old rule it still splits at the same place, since a
+  // valid run beginning at the first "A" is necessarily the earliest valid run.
   const labels = marks.map((x) => x.label);
-  const start = labels.indexOf("A");
-  if (start < 0 || labels.slice(start, start + 4).join("") !== "ABCD") {
+  const start = labels.findIndex((_, i) => labels.slice(i, i + 4).join("") === "ABCD");
+  if (start < 0) {
+    // No A-D run. Usually that is correct and the block really is prose — but it
+    // is ALSO what a MISTYPED label looks like, and the two are indistinguishable
+    // to every downstream gate: the row ships as free-response with its four
+    // alternatives glued into the stem, and nothing fires, because a subjective
+    // row is allowed to have no options. (thermodynamics-12-pyq#2 shipped that
+    // way — the compilation typed the third label "(B)" for "(C)". promote.ts
+    // then dropped the authoring pass's flag as stale, since probeRow cannot see
+    // a defect whose whole effect is the ABSENCE of options.)
+    //
+    // The discriminator is CASE, and it was chosen by measuring rather than by
+    // taste: across all 16 chapters exactly three subjective rows carry a run of
+    // three or more labels, and TWO are sound questions whose "(a) (b) (c)" are
+    // SUB-PART labels ("Define: (a) Inductive reactance (b) …"). This source
+    // prints options uppercase and sub-parts lowercase, so requiring uppercase
+    // fires on the one real defect and neither false positive. Fewer than three
+    // is not a run at all — a lone "(A)" is a matrix name or stray prose.
+    const upper = marks.filter((m) => m.upper);
+    if (upper.length >= 3) {
+      return {
+        stem: block,
+        unsplittable:
+          `option labels do not form an A-D run — found ${upper.map((m) => m.label).join(", ")}. ` +
+          `Settle against the printed page and repair via defects.json.`,
+      };
+    }
     return { stem: block };
   }
   const run = marks.slice(start, start + 4);
-  const stem = block.slice(0, run[0].at);
-  const options = run.map((mk, i) => {
-    const from = mk.at + mk.len;
-    const to = i + 1 < run.length ? run[i + 1].at : block.length;
-    return { label: mk.label, text: clean(block.slice(from, to)) };
-  });
+  const raw = [
+    block.slice(0, run[0].at),
+    ...run.map((mk, i) => {
+      const from = mk.at + mk.len;
+      const to = i + 1 < run.length ? run[i + 1].at : block.length;
+      return block.slice(from, to);
+    }),
+  ];
+  // Rebalance BEFORE cleaning: clean() trims, and the open zone has to still be
+  // at the end of its fragment for the repair to be provably a clean cut.
+  let parts: string[];
+  try {
+    parts = rebalanceAcrossCut(raw);
+  } catch (e) {
+    return { stem: block, unsplittable: (e as Error).message };
+  }
+  const [stem, ...opts] = parts;
+  const options = run.map((mk, i) => ({ label: mk.label, text: clean(opts[i]) }));
+  // The stem is returned UNCLEANED, exactly as before — main() normalises and
+  // trims it downstream, and cleaning here would change the Maths output.
   return { stem, options };
 }
 
@@ -250,15 +481,28 @@ function main() {
   });
   if (md.status !== 0) throw new Error(`pandoc failed: ${md.stderr}`);
 
-  const lines = md.stdout.split("\n");
+  const defectsFile = JSON.parse(readFileSync(join(DATA, "defects.json"), "utf8")) as {
+    tagsMalformed?: { fixes?: TagFix[] };
+    itemNumberSwallowed?: { fixes?: DocFix[] };
+  };
+  const tagFixes = defectsFile.tagsMalformed?.fixes ?? [];
+
+  // BEFORE the item scan — an item number swallowed into a math zone means no
+  // item is recognised at all, so there is no row for a ref-keyed repair to
+  // reach. See applyDocumentRepairs.
+  const repaired = applyDocumentRepairs(md.stdout, ch.id, defectsFile.itemNumberSwallowed?.fixes ?? []);
+
+  const lines = repaired.split("\n");
   const starts = lines.flatMap((l, i) => (ITEM.test(l) ? [i] : []));
   const drafts: Draft[] = [];
   const problems: string[] = [];
 
   starts.forEach((from, k) => {
     const to = k + 1 < starts.length ? starts[k + 1] : lines.length;
-    const raw = lines.slice(from, to).join("\n");
     const num = ITEM.exec(lines[from])![1];
+    // Before parsing, not after: a tag that fails to parse drops the whole item,
+    // so there is no row left for a ref-keyed repair to reach.
+    const raw = applyTagOverride(lines.slice(from, to).join("\n"), `${ch.id}#${num}`, tagFixes);
 
     const prov: Provenance | null = parseProvenanceTag(raw);
     if (!prov) {
@@ -269,9 +513,24 @@ function main() {
     // "> " is only identifiable at a line start, and once normaliseMath joins
     // the lines it is indistinguishable from a genuine `x > 3`.
     // Then drop the tag, lift the image, normalise, and split.
+    // The tag's LEADING backslash is deliberately left in place. It looks like
+    // an oversight and is load-bearing: where the compilation drops the printed
+    // fill-in blank and leaves a bare ":" after the tag, that leftover backslash
+    // is what forms the "\:" token stripArtifacts keys on to restore "______."
+    // Consuming it here silently turned 8 Maths stems into "...is :".
     const body = stripBlockquote(raw).replace(ITEM, "").replace(/\[\s*Q\.[^\]]*\\?\]/, "");
     const { text, image } = splitImage(body);
-    const { stem, options } = splitOptions(normaliseMath(text));
+    const { stem, options, unsplittable } = splitOptions(normaliseMath(text));
+    // Two different reasons a row that IS an MCQ came back unsplit, and the
+    // message has to say which — they need different repairs. Either way the row
+    // is marked pending, and `buildRecords` REFUSES to ship a pending row as
+    // free-response, so neither can become a silent format downgrade.
+    const labelDefect = unsplittable?.includes("A-D run") ?? false;
+    if (unsplittable) {
+      problems.push(
+        `item ${num}: ${labelDefect ? "MCQ OPTION LABELS CORRUPTED" : "MCQ OPTIONS TANGLED IN A MATH ZONE"} — ${unsplittable}`,
+      );
+    }
 
     drafts.push({
       // The FULL chapter id, so a ref here is the same string data/defects.json
@@ -284,6 +543,9 @@ function main() {
       subtopic: "",
       stem: clean(stem),
       ...(options ? { options } : {}),
+      ...(unsplittable
+        ? { pendingMcq: labelDefect ? "with corrupted option labels" : "options tangled in a math zone" }
+        : {}),
       ...(image ? { image } : {}),
     });
   });
@@ -310,4 +572,6 @@ function main() {
   console.log("subtopic is EMPTY on every row by design — assign it in the reviewed step.");
 }
 
-main();
+// Guarded so the pure helpers above (ITEM, splitOptions) can be imported by a
+// test without the CLI running and exiting on a missing chapter argument.
+if (require.main === module) main();

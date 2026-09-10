@@ -131,6 +131,61 @@ async function main() {
   if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE + question_kind='pyq'.`);
 
+  // THE OTHER WAY A ROW DISAPPEARS, and until 2026-09-10 nothing reported it.
+  //
+  // The ABSORBED report below catches a PYQ swallowed by a PRE-EXISTING question
+  // (usually its textbook twin). It CANNOT catch two rows of THIS batch that
+  // collapse into each other: its test is "did this stem land?", and for a
+  // duplicate pair the stem did land — once. So the pair reads as fully
+  // committed, `absorbed` is 0, and the only signal is the count above being one
+  // short of the authored total, which is easy to misread (I misread it once).
+  //
+  // These are real and expected: the board re-asks a question in a later sitting,
+  // and `content_hash` is unique per (org, exam), so the two sittings CANNOT both
+  // exist as rows. That is the corpus's own "duplicates are a recurrence signal"
+  // fact — but the second sitting's year and question number are lost with the
+  // row, so it has to be recorded rather than inferred.
+  {
+    const { contentHash: ch2, subjectiveContentHash: sch2 } = await import("../../src/lib/upload/hash");
+    const hashOf = (q: (typeof questions)[number]) =>
+      q.format === "subjective"
+        ? sch2(q.stem, null)
+        : ch2(q.stem, (q.options ?? []).map((o) => o.text), q.answer ?? "");
+    const byHash = new Map<string, typeof questions>();
+    for (const q of questions) {
+      const h = hashOf(q);
+      byHash.set(h, [...(byHash.get(h) ?? []), q]);
+    }
+    const collapsed = [...byHash.values()].filter((g) => g.length > 1);
+    if (collapsed.length) {
+      const lost = collapsed.reduce((n, g) => n + g.length - 1, 0);
+      console.log(
+        `\n${collapsed.length} question(s) asked in MORE THAN ONE SITTING — ${lost} row(s) collapsed by content_hash:`,
+      );
+      for (const g of collapsed) {
+        const where = g
+          .map((q) => `${q.pyqMonth ?? "?"} ${q.pyqYear ?? "?"} (Q.${q.questionNumber})`)
+          .join("  +  ");
+        console.log(`  ${where}`);
+        console.log(`    ${g[0].stem.replace(/\s+/g, " ").slice(0, 110)}`);
+      }
+      console.log(
+        `  Only ONE row exists for each. That is a recurrence signal, not a failure — but the\n` +
+          `  other sitting's year and question number are NOT in the bank. Record it deliberately.`,
+      );
+    }
+    // Reconcile explicitly, so a shortfall can never again be something the
+    // reader has to notice for themselves.
+    const expected = questions.length - collapsed.reduce((n, g) => n + g.length - 1, 0);
+    if ((count ?? 0) !== expected) {
+      console.log(
+        `\n  NOTE: ${count} row(s) carry this source_file against ${expected} expected ` +
+          `(${questions.length} authored − ${questions.length - expected} collapsed). ` +
+          `The difference is rows absorbed by a pre-existing question — listed below.`,
+      );
+    }
+  }
+
   // WHICH rows did the DB dedup swallow, and into what?
   //
   // content_hash is unique on (org_id, exam_id, content_hash) — per EXAM, not
