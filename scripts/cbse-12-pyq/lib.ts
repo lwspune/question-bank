@@ -215,6 +215,30 @@ export const PAPER_PATTERNS: Record<string, Band[]> = {
     { from: 31, to: 32, section: "D", marks: 4, kind: "case_study" },
     { from: 33, to: 35, section: "E", marks: 5, kind: "subjective" },
   ],
+
+  /**
+   * term2_sci — the 2022 COVID Term-II paper, shared by Physics and Chemistry.
+   *
+   * Measured by VISION (both years' papers are pure scans) from 2022 55/1/1 and
+   * 56/1/1, whose printed instructions agree with each other exactly:
+   *   12 questions / THREE sections / 35 marks
+   * Corroborated independently by the marking scheme, which instructs
+   * "A full scale of marks 0-35 has to be used".
+   *
+   * ⚠ NOT Maths' `term2`, which is 14 questions and 40 marks. Same COVID year,
+   * same "Term-II" name, different paper.
+   *
+   * Like Maths' Term-II it contains NO MCQs at all, so the blind MCQ
+   * re-derivation that anchors the other four years cannot run on 2022.
+   * 6 + 24 + 5 = 35.
+   */
+  term2_sci: [
+    { from: 1, to: 3, section: "A", marks: 2, kind: "subjective" },
+    { from: 4, to: 11, section: "B", marks: 3, kind: "subjective" },
+    // "Section C - question number 12 is a case study based question,
+    //  this question carries 5 marks."
+    { from: 12, to: 12, section: "C", marks: 5, kind: "case_study" },
+  ],
 };
 
 export type PatternName = keyof typeof PAPER_PATTERNS & string;
@@ -237,24 +261,26 @@ const YEAR_PATTERN: Record<SubjectKey, Record<number, PatternName>> = {
     2026: "full80",
   },
   // All entries below were read off each paper's own printed General
-  // Instructions on 2026-09-10, one paper per subject-year.
+  // Instructions on 2026-09-10, one paper per subject-year — the 2023/2024/2026
+  // papers from their text layer, the 2022 and 2025 papers by VISION, those
+  // being pure scans with a zero-character text layer.
   //
-  // ⚠ 2022 and 2025 are ABSENT ON PURPOSE for both sciences. Those question
-  // papers are pure scans with a ZERO-character text layer, so their structure
-  // cannot be read without vision and has not been. 2022 is separately known to
-  // be the COVID Term-II paper (its marking scheme says "A full scale of marks
-  // 0-35", so 35 marks, not Maths' 40) — but the section table is unread.
-  // Leaving them out makes patternForYear throw, which is the intended
-  // behaviour: an unmeasured default rendering as a checked claim is the
-  // failure this project has paid for most often.
+  // The table is dense because the papers really do differ: CBSE changed the
+  // exam twice in this window (35 questions in 2023, 33 from 2024), the two
+  // sciences did NOT change it the same way in 2023, and 2022 is a different
+  // exam again. Anything CBSE adds next must be read, not inherited.
   physics: {
+    2022: "term2_sci",
     2023: "full70_phy_2023",
     2024: "full70",
+    2025: "full70",
     2026: "full70",
   },
   chemistry: {
+    2022: "term2_sci",
     2023: "full70_chem_2023",
     2024: "full70",
+    2025: "full70",
     2026: "full70",
   },
 };
@@ -301,6 +327,101 @@ export function sectionForQuestion(q: number, pattern: PatternName): SectionInfo
  */
 export function totalMarks(pattern: PatternName): number {
   return PAPER_PATTERNS[pattern].reduce((sum, b) => sum + (b.to - b.from + 1) * b.marks, 0);
+}
+
+// ─── the official Section-A answer key ───────────────────────────────────────
+
+/** One Section-A entry from CBSE's own marking scheme. */
+export type KeyEntry = {
+  q: number;
+  answer: "A" | "B" | "C" | "D";
+  /** Whatever CBSE printed after the letter — often the answer's value. */
+  valueText?: string;
+  /** Set when CBSE itself voided the question and awarded marks to all. */
+  graceNote?: string;
+};
+
+const SECTION_A_START = /SECTION\s*[-–—:]?\s*A\b/i;
+const SECTION_B_START = /SECTION\s*[-–—:]?\s*B\b/i;
+/** CBSE's own wording when it voids a question — real, from Chemistry 2023. */
+const GRACE = /(full\s*mark|printing\s*error|award\s*full|any\s*option|bonus)/i;
+
+/**
+ * Read the official Section-A MCQ key out of a marking scheme's text layer.
+ *
+ * This is the strongest evidence class this bank has ever had for MCQs: an
+ * official, per-paper key that needs no vision and no derivation. The precise
+ * and useful bound, measured: the corruption in these PDFs hits SYMBOLS, so the
+ * option LETTER survives intact while the answer's value text does not
+ * ("8 μF" extracts as "8 F"). Trust the letter; treat valueText as advisory.
+ *
+ * ⚠ It does NOT work on every paper. Some marking schemes' two-column layout
+ * collapses in extraction and yields plausible-looking pairs in the wrong
+ * order. So this REFUSES a block whose numbers are not strictly ascending from
+ * 1 rather than returning a short or scrambled list — a partial key that reads
+ * as a complete one is worse than no key, because nothing downstream would
+ * question it. Callers fall back to reading the page.
+ *
+ * Bounded to the Section A ... Section B window on purpose: Section E prints
+ * "31 (a)" for its sub-parts, and a whole-document sweep reads those as MCQ
+ * answers for questions that are not MCQs at all.
+ */
+export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
+  // Find the Section-A header, SKIPPING any table-of-contents entry. Physics
+  // 2026's marking scheme opens with a contents page whose "SECTION-A ..... 4"
+  // line matches first; anchoring there finds nothing but dot leaders and the
+  // paper reads as keyless when it is not. A TOC line is identified by its
+  // leader dots, which no real section header carries.
+  let a: RegExpExecArray | null = null;
+  const finder = new RegExp(SECTION_A_START.source, "gi");
+  for (let m = finder.exec(text); m; m = finder.exec(text)) {
+    if (/\.{5,}/.test(text.slice(m.index, m.index + 120))) continue; // contents line
+    a = m;
+    break;
+  }
+  if (!a) return [];
+  const rest = text.slice(a.index + a[0].length);
+  const b = SECTION_B_START.exec(rest);
+  const block = b ? rest.slice(0, b.index) : rest;
+
+  const all: KeyEntry[] = [];
+  // The number and the letter may sit on one line or two; CBSE does both.
+  const re = /(?:^|\n)\s*(\d{1,2})\s*[.)]?\s*\n?\s*\(\s*([A-Da-d])\s*\)([^\n]*)/g;
+  for (let m = re.exec(block); m; m = re.exec(block)) {
+    const valueText = m[3].trim();
+    const e: KeyEntry = { q: Number(m[1]), answer: m[2].toUpperCase() as KeyEntry["answer"] };
+    if (valueText) e.valueText = valueText;
+    if (valueText && GRACE.test(valueText)) e.graceNote = valueText;
+    all.push(e);
+  }
+
+  // The paper's measured pattern already says how many Section-A questions
+  // exist, and that is a second bound worth using: in several real marking
+  // schemes the "SECTION B" header does not survive extraction, so the scan
+  // runs on into Section E's "31 (a)" sub-parts. Truncating to the expected
+  // count recovers those papers WITHOUT weakening the ascending check below,
+  // which still runs on the truncated run.
+  if (expected !== undefined && all.length > expected) all.length = expected;
+
+  // Fail closed on anything that is not a clean 1..N run. A scrambled
+  // extraction is the expected failure here, not a rare one.
+  all.forEach((e, i) => {
+    if (e.q !== i + 1) {
+      throw new Error(
+        `Section-A key is not ascending from 1: read [${all.map((x) => x.q).join(",")}]. ` +
+          `The marking scheme's layout has probably collapsed in extraction — read the page instead ` +
+          `of trusting a partial key.`
+      );
+    }
+  });
+
+  if (expected !== undefined && all.length !== expected) {
+    throw new Error(
+      `Section-A key is short: read ${all.length} of ${expected} expected answers. Refusing rather ` +
+        `than returning a partial key, which downstream would read as complete.`
+    );
+  }
+  return all;
 }
 
 // ─── merged marking schemes ──────────────────────────────────────────────────
