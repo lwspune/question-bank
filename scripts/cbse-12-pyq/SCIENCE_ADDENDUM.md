@@ -54,7 +54,14 @@ CBSE prints either case by year).
 `npx tsx scripts/cbse-12-pyq/keys.ts --subject=<s>` is the live answer; this is
 the shape of it, so nobody re-investigates a known gap.
 
-| year | Physics | why the gaps |
+⚠ **These counts are PAPERS, not answers.** A `full70` paper has 16 Section-A
+entries and a `full70_phy_2023` one has 18 — so "2025: 18 of 18" means
+eighteen papers keyed, not eighteen answers. An agent read it the other way and
+went looking for two Section-A entries that do not exist. `keys.ts` also prints
+a per-subject SUMMARY, not a per-paper line, so grepping it for one paper id
+returns nothing — read the marking scheme page.
+
+| year | Physics PAPERS keyed | why the gaps |
 |---|---|---|
 | 2022 | 0 of 15 | Term-II paper — **no MCQs at all**, so there is no key to read. Not a failure. |
 | 2023 | 9 of 15 | 3 refuse on a medium-scoped award; 3 lost entries to a collapsed two-column layout. |
@@ -85,7 +92,32 @@ keep the printed letter as `answer`. Do not "fix" the question, and do not drop
 it — a defective question with an unexplained key is exactly what this flag
 exists to prevent.
 
-### ⚠ PHYSICS ADDS TWO MORE VOID SHAPES — measured, and neither occurs in Chemistry
+### ⚠ A VOID CAN SIT OUTSIDE SECTION A — measured, and it is not rare
+
+Everything below is written in Section-A language because that is where voids
+were first found. **They are not confined to it.** Measured across all 78
+Physics marking schemes: **14 void notes, 11 in Section A and 3 outside** on a
+narrow scan; widened to any award-regardless wording, **11 sit outside Section A
+across 8 papers** — 2023 55/4/2 (Section B), the whole 2024 55/2 series and the
+whole 2025 55/2 series (Section D), and 2025 55/5/3.
+
+**So SCAN THE WHOLE MARKING SCHEME, not just its Section-A table.** An agent who
+reads 16 clean letters and stops will ship a Section-D sub-part with either no
+answer (which `validate.ts` catches) or a DERIVED one (which nothing catches).
+
+Two consequences worth stating outright:
+
+- **Section-D case-study sub-parts are ALSO keyed MCQs.** The addendum used to
+  discuss only Section A, and that is where their ten answers per paper come
+  from too — the scheme's Section-D block. Take them verbatim, same rules.
+- **A merged scheme renumbers the same void.** 2024 55/2/1's void is Q30(i);
+  in its siblings the identical question is Q29(i). A page-range slip therefore
+  attaches a void to the wrong question rather than failing loudly.
+
+### ⚠ PHYSICS ADDS THREE MORE VOID SHAPES — measured, and none occurs in Chemistry
+
+Taken in order of how often they turn up. All three are real on Physics papers
+transcribed for this ingest.
 
 **(a) The KEYLESS void — CBSE prints NO letter, because no option is right.**
 Real, seven questions across five Physics papers:
@@ -138,6 +170,25 @@ report** — do not resolve it quietly.
 - **Units** stay plain text outside the maths zone where they follow a number in
   prose, exactly as the Maths brief says.
 
+**(c) The DUAL KEY — CBSE accepts EITHER of two options.** The Section-A cell
+prints two letters and no prose note, in any of four measured spellings:
+`(A) resistor / (C) capacitor` · `(A) / (B)` · `(a) / (b)` · `A OR B`.
+
+This is **not** a keyless void — two options are accepted, so
+`_noCorrectOption` would assert something false — and not the letter-plus-note
+shape either. Record the cell verbatim in `_cbseVoided`, ship ONE letter as
+`answer`, and **flag it**: nobody was disadvantaged in the exam, but the bank
+displays a single answer and that choice is a teaching decision.
+
+> Ship the letter that **teaches the syllabus point**, not simply the first
+> printed. 2025 55/2/1 Q12 asks what a p-n junction with a high p-to-n
+> resistance acts as, accepting *resistor* or *capacitor*: "resistor" restates
+> the stem's own premise, while "capacitor" is the depletion-layer capacitance
+> the chapter exists to teach. Shipped as C. **The three dual keys in the
+> committed Chemistry corpus predate this rule and ship the first-printed
+> letter** — re-adjudicating them is a logged backfill candidate, not something
+> to change in passing.
+
 ### Structures and mechanisms are FIGURES
 
 An organic structure, a mechanism, or a coordination-geometry drawing **cannot
@@ -186,10 +237,17 @@ so the discrimination the question tests survives. Say which you did.
   these in the text layer, so they must come off the page.
 - **Units**: `\(\mu\mathrm{F}\)`, `\(\Omega\)`, `\(\mathrm{Wb\,m^{-2}}\)`.
 - **Circuit diagrams, ray diagrams, field sketches and graphs are FIGURES** —
-  same rule as above, and they are FAR more common here. Measured on the pilot
-  (2025 55/4/1): **8 distinct figures backing 12 of 46 rows, all REQUIRED, none
-  decorative** — about one figure per four questions, and spread across Sections
-  B, C, D and E rather than concentrated in one place.
+  same rule as above, and they are far more common here than in Chemistry.
+
+  ⚠ **Figure load is a PER-PAPER fact, not a Physics constant.** Do not budget
+  effort from another paper's count, and do not go hunting for figures a paper
+  does not have. Measured across the eleven papers transcribed so far, the
+  figure-flagged rows run **1 to 12**: 2025 55/7/1 has ONE figure in the whole
+  paper, while 2025 55/4/1 and 2025 55/1/1 have twelve. Sections B, C, D and E
+  all carry them — they are not front-loaded.
+
+  Every *"draw a labelled diagram / plot a graph / show graphically"*
+  instruction is the STUDENT drawing, not a printed figure. Do not flag those.
 
 ### ⚠ In Physics the figure usually IS the discriminator — describing it can hand over the answer
 
@@ -298,6 +356,26 @@ nor Surface Chemistry, do not guess: flag it `_outOfSyllabus: "<the topic>"`,
 leave `chapter` empty, and report it. That is a finding, not a blocker.
 
 ---
+
+## 5b. ⚠ The marking scheme's `OR` means TWO different things
+
+The printed instructions usually give no internal-choice count ("in few
+questions in all the Sections except Section A"), so the count has to come from
+walking the marking scheme for `OR`. **But a scheme `OR` is ambiguous:**
+
+* an **internal choice** — a whole alternative question, which IS a row; and
+* an **equivalent form of the answer** — `P = VI cos φ OR P = I² Z cos φ`,
+  which is not.
+
+Measured on 2024 55/1/1: two of its scheme ORs sit INSIDE an answer, and a
+naive scan would have invented an alternative for Q25. Take only a **bare `OR`
+on its own line**, and confirm each against a printed `OR` (and its Hindi
+`अथवा`) on the paper itself.
+
+> **The marks sum cannot save you, and it fails asymmetrically.** An
+> alternative is not a primary branch, so a DROPPED one still totals 70 and is
+> invisible; an UNMARKED one inflates the total and is caught. Two agents hit
+> the second case (71 and 75) and found it only because they summed.
 
 ## 6. Dedup is TEXT-based here — the Maths image-hash stage does NOT apply
 
