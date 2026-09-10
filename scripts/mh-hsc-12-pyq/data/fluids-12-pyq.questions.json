@@ -1,0 +1,391 @@
+[
+  {
+    "ref": "fluids-12-pyq#1",
+    "questionNumber": "Q. 1(iv)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "stem": "The compressibility of a substance is the reciprocal of ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Young's modulus"
+      },
+      {
+        "label": "B",
+        "text": "bulk modulus"
+      },
+      {
+        "label": "C",
+        "text": "modulus of rigidity"
+      },
+      {
+        "label": "D",
+        "text": "Poisson's ratio"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** bulk modulus\n\nWhen a body is subjected to a uniform increase of pressure \\( \\Delta p \\) over the whole of its surface, its volume decreases by \\( \\Delta V \\). The volume strain produced is \\( \\frac{\\Delta V}{V} \\), and the bulk modulus is defined as the ratio of the volume stress to the volume strain,\n\n\\( K = \\frac{\\Delta p}{\\left( \\frac{\\Delta V}{V} \\right)} \\)\n\nCompressibility measures the opposite thing, namely how easily the body is squeezed, that is, the volume strain produced per unit pressure applied,\n\n\\( C = \\frac{\\left( \\frac{\\Delta V}{V} \\right)}{\\Delta p} \\)\n\nComparing the two expressions,\n\n\\( \\therefore C = \\frac{1}{K} \\)\n\nso the compressibility of a substance is the reciprocal of its bulk modulus. The units agree: \\( K \\) is measured in N/m\\( ^{2} \\) and \\( C \\) in m\\( ^{2} \\)/N.\n\nYoung's modulus governs a change in LENGTH under a tensile stress and the modulus of rigidity a change in SHAPE under a shearing stress, so neither describes the change in VOLUME that compressibility measures. Poisson's ratio is the ratio of lateral strain to longitudinal strain, a pure number with no unit at all, so its reciprocal could not carry the unit m\\( ^{2} \\)/N.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#2",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Excess Pressure, Drops and Bubbles",
+    "stem": "Diameter of a water drop is 0.6 mm. Calculate the pressure inside a liquid drop. (\\(T = 72\\text{ dyne/cm}\\), atmospheric pressure = \\(1.013 \\times 10^{5}\\text{ N/m}^{2}\\)).",
+    "solution": "**Given:** diameter of the drop \\( d = 0.6 \\) mm, so its radius is \\( r = \\frac{d}{2} = 0.3 \\) mm \\( = 3 \\times 10^{-4} \\) m; surface tension \\( T = 72 \\) dyne/cm; atmospheric pressure \\( p_{0} = 1.013 \\times 10^{5} \\) N/m\\( ^{2} \\).\n\n**Converting the surface tension to SI units.** Since 1 dyne \\( = 10^{-5} \\) N and 1 cm \\( = 10^{-2} \\) m,\n\n\\( T = 72 \\times \\frac{10^{-5}\\ \\mathrm{N}}{10^{-2}\\ \\mathrm{m}} = 72 \\times 10^{-3} = 0.072 \\) N/m\n\n**Excess pressure inside the drop.** A liquid drop has a single liquid-air surface, so by Laplace's law of a spherical membrane the pressure inside exceeds the pressure outside by\n\n\\( p_{i} - p_{0} = \\frac{2T}{r} \\)\n\n\\( p_{i} - p_{0} = \\frac{2 \\times 0.072}{3 \\times 10^{-4}} = \\frac{0.144}{3 \\times 10^{-4}} = 480 \\) N/m\\( ^{2} \\)\n\n**Pressure inside the drop.** The drop hangs in air, so the pressure just outside its surface is the atmospheric pressure. Hence\n\n\\( p_{i} = p_{0} + \\frac{2T}{r} = 1.013 \\times 10^{5} + 480 = 101780 \\)\n\n\\( \\therefore p_{i} = 1.0178 \\times 10^{5} \\) N/m\\( ^{2} \\)\n\nCheck: the excess pressure of 480 N/m\\( ^{2} \\) is under half a per cent of one atmosphere, which is why the answer stays so close to \\( 1.013 \\times 10^{5} \\) N/m\\( ^{2} \\). And since \\( p_{i} - p_{0} \\propto \\frac{1}{r} \\), a drop of half this radius would carry twice the excess, 960 N/m\\( ^{2} \\), which is consistent with the value found.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "fluids-12-pyq#3",
+    "questionNumber": "Q. 1",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "When a sparingly soluble substance like alcohol is dissolved in water, surface tension of water ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "increases"
+      },
+      {
+        "label": "B",
+        "text": "decreases"
+      },
+      {
+        "label": "C",
+        "text": "remains constant"
+      },
+      {
+        "label": "D",
+        "text": "becomes infinite"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** decreases\n\nThe surface tension of a liquid arises from the net inward pull that the bulk of the liquid exerts on the molecules of its surface layer, and the size of that pull is decided by the cohesive force between the liquid molecules.\n\nA substance that is only sparingly soluble in water, such as alcohol, phenol, soap or detergent, is not carried away into the bulk of the water. Its molecules collect preferentially in the surface layer, where they come between the water molecules and keep them apart. The cohesive force between the water molecules of the surface layer is thereby weakened, the net inward pull on that layer is reduced, and the surface tension falls.\n\nHighly soluble substances behave in the opposite way. Common salt or sugar dissolves right through the bulk of the water, so the surface layer is not depleted of water molecules, and the added attraction raises the surface tension slightly.\n\nDissolving alcohol in water therefore lowers the surface tension of the water. It cannot remain constant, because the composition of the surface layer has been altered; and it cannot become infinite for any real liquid, since the surface tension of a liquid falls as the temperature rises and reaches zero at the critical temperature.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#4",
+    "questionNumber": "Q. 2(vi)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Calculate the work done in increasing the radius of a soap bubble in air from 1 cm to 2 cm. The surface tension of soap solution is 30 dyne/cm. (\\(\\pi = 3.142\\)).",
+    "solution": "**Given:** initial radius \\( r_{1} = 1 \\) cm \\( = 0.01 \\) m, final radius \\( r_{2} = 2 \\) cm \\( = 0.02 \\) m, surface tension of the soap solution \\( T = 30 \\) dyne/cm, \\( \\pi = 3.142 \\).\n\n**Converting the surface tension to SI units.** Since 1 dyne \\( = 10^{-5} \\) N and 1 cm \\( = 10^{-2} \\) m,\n\n\\( T = 30 \\times \\frac{10^{-5}}{10^{-2}} = 0.03 \\) N/m\n\n**Increase in surface area.** A soap bubble in air has TWO free surfaces, an outer one and an inner one, and the film is so thin that both may be taken to have the same radius. Its total surface area at radius \\( r \\) is therefore\n\n\\( A = 2 \\times 4 \\pi r^{2} = 8 \\pi r^{2} \\)\n\nso the increase in area when the radius grows from \\( r_{1} \\) to \\( r_{2} \\) is\n\n\\( dA = 8 \\pi \\left( r_{2}^{2} - r_{1}^{2} \\right) = 8 \\times 3.142 \\times \\left[ \\left( 0.02 \\right)^{2} - \\left( 0.01 \\right)^{2} \\right] \\)\n\n\\( dA = 8 \\times 3.142 \\times \\left( 4 \\times 10^{-4} - 1 \\times 10^{-4} \\right) = 8 \\times 3.142 \\times 3 \\times 10^{-4} \\)\n\n\\( dA = 7.541 \\times 10^{-3} \\) m\\( ^{2} \\)\n\n**Work done.** The work done against surface tension in creating fresh surface is stored in it as surface energy, so\n\n\\( W = T \\times dA = 0.03 \\times 7.541 \\times 10^{-3} \\)\n\n\\( \\therefore W = 2.262 \\times 10^{-4} \\) J\n\nCheck by working entirely in C.G.S. units: \\( dA = 8 \\times 3.142 \\times \\left( 2^{2} - 1^{2} \\right) = 75.41 \\) cm\\( ^{2} \\), so \\( W = 30 \\times 75.41 = 2262 \\) erg \\( = 2262 \\times 10^{-7} \\) J \\( = 2.262 \\times 10^{-4} \\) J, the same value.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#5",
+    "questionNumber": "Q. 29",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "stem": "What is capillarity? Give any two applications of capillarity? Calculate the work done in blowing a soap bubble of radius 0.1 m. (Surface tension of soap solution = 30 \\(\\frac{\\text{dyne}}{\\text{cm}}\\)).",
+    "solution": "**What is capillarity?**\n\nCapillarity, or capillary action, is the rise or fall of a liquid inside a tube of very fine bore when the tube is dipped into the liquid. Which of the two happens depends on whether the liquid wets the tube: a liquid that wets it, such as water in glass, has an acute angle of contact and a concave meniscus and its level rises, while a liquid that does not wet it, such as mercury in glass, has an obtuse angle of contact and a convex meniscus and its level falls. The rise or fall is given by\n\n\\( h = \\frac{2T\\cos\\theta}{r \\rho g} \\)\n\n**Two applications of capillarity.**\n\n(i) Oil rises through the fine pores of the wick of a lamp and reaches the flame, so the lamp keeps burning.\n\n(ii) Water and the minerals dissolved in it rise from the roots of a tree to its topmost leaves through the fine capillaries of the stem.\n\n**Work done in blowing the soap bubble.**\n\n**Given:** radius of the bubble \\( r = 0.1 \\) m, surface tension of the soap solution \\( T = 30 \\) dyne/cm \\( = 30 \\times \\frac{10^{-5}}{10^{-2}} = 0.03 \\) N/m.\n\nA soap bubble has two surfaces, an outer one and an inner one, so the area created in blowing it up from nothing is\n\n\\( dA = 2 \\times 4 \\pi r^{2} = 8 \\pi r^{2} = 8 \\times 3.142 \\times \\left( 0.1 \\right)^{2} = 0.2513 \\) m\\( ^{2} \\)\n\nThe work done is stored in these two new surfaces as surface energy,\n\n\\( W = T \\times dA = 0.03 \\times 0.2513 \\)\n\n\\( \\therefore W = 7.54 \\times 10^{-3} \\) J\n\nCheck: since \\( W = 8 \\pi T r^{2} \\) grows as the square of the radius, a bubble of half this radius would need a quarter of the work, \\( 1.885 \\times 10^{-3} \\) J, which is consistent with the value found.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#6",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Eight droplets of water each of radius 0.2 mm coalesce into a single drop. Find the decrease in the surface area.",
+    "solution": "**Given:** number of droplets \\( n = 8 \\), radius of each droplet \\( r = 0.2 \\) mm \\( = 2 \\times 10^{-4} \\) m.\n\n**Radius of the single drop.** No liquid is gained or lost when the droplets coalesce, so the total volume is unchanged:\n\n\\( \\frac{4}{3}\\pi R^{3} = n \\times \\frac{4}{3}\\pi r^{3} \\)\n\n\\( R^{3} = 8 r^{3} \\qquad \\therefore R = \\left( 8 \\right)^{1/3} r = 2r = 4 \\times 10^{-4} \\) m\n\n**Surface areas.** A liquid drop has one free surface, of area \\( 4\\pi r^{2} \\), so\n\ninitial area \\( = n \\times 4\\pi r^{2} = 8 \\times 4 \\pi \\times \\left( 2 \\times 10^{-4} \\right)^{2} = 4.021 \\times 10^{-6} \\) m\\( ^{2} \\)\n\nfinal area \\( = 4 \\pi R^{2} = 4 \\pi \\times \\left( 4 \\times 10^{-4} \\right)^{2} = 2.011 \\times 10^{-6} \\) m\\( ^{2} \\)\n\n**Decrease in surface area.**\n\n\\( dA = 4 \\pi \\left( n r^{2} - R^{2} \\right) = 4 \\pi \\left( 8 \\times 4 \\times 10^{-8} - 16 \\times 10^{-8} \\right) = 4 \\pi \\times 16 \\times 10^{-8} \\)\n\n\\( \\therefore dA = 2.011 \\times 10^{-6} \\) m\\( ^{2} \\)\n\nCheck: the final area comes out as exactly half the initial area. That is what the algebra requires, because\n\n\\( \\frac{n \\times 4 \\pi r^{2}}{4 \\pi R^{2}} = \\frac{n r^{2}}{n^{2/3} r^{2}} = n^{1/3} = 2 \\) for \\( n = 8 \\)\n\nThe surface area has decreased, so surface energy \\( T \\, dA \\) is released to the surroundings when the droplets merge.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#7",
+    "questionNumber": "Q. 30(i)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Obtain the relation between surface energy and surface tension.",
+    "solution": "Take a rectangular frame of wire fitted with a light wire \\( \\mathrm{LM} \\) of length \\( L \\) that can slide without friction along two of its arms. Dip the frame in a soap solution and take it out, so that a soap film is formed across it.\n\nThe film has TWO surfaces, an upper one and a lower one, and each of them pulls the wire \\( \\mathrm{LM} \\) inward with a force \\( TL \\), where \\( T \\) is the surface tension of the soap solution. The total inward force on the wire is therefore\n\n\\( F = 2 T L \\)\n\nTo keep the film from contracting, an equal and opposite force \\( F \\) must be applied to the wire. Let this applied force move the wire outward through a small distance \\( dx \\), slowly enough that the temperature of the film does not change. The work done by the applied force is\n\n\\( dW = F \\times dx = 2 T L \\, dx \\)\n\nBecause the wire has moved out by \\( dx \\), each of the two surfaces of the film has gained an area \\( L \\, dx \\), so the total new area created is\n\n\\( dA = 2 L \\, dx \\)\n\nSubstituting \\( 2L \\, dx = dA \\) in the expression for the work done,\n\n\\( dW = T \\, dA \\)\n\nThis work is not lost. It is stored in the newly created surface as its potential energy, and that stored energy is the surface energy \\( dE \\) of the new surface:\n\n\\( dE = dW = T \\, dA \\)\n\n\\( \\therefore T = \\frac{dE}{dA} \\)\n\nThe surface tension of a liquid is therefore equal to its surface energy per unit area.\n\nThe two quantities also carry the same units, as they must: \\( \\frac{\\mathrm{J}}{\\mathrm{m}^{2}} = \\frac{\\mathrm{N} \\, \\mathrm{m}}{\\mathrm{m}^{2}} = \\frac{\\mathrm{N}}{\\mathrm{m}} \\). So surface tension measured as force per unit length and surface energy measured as energy per unit area are numerically equal and dimensionally identical, both being \\( \\left\\lbrack L^{0}M^{1}T^{-2} \\right\\rbrack \\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#8",
+    "questionNumber": "Q. 30(ii)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Calculate the work done in blowing a soap bubble to a radius of 1 cm. The surface tension of soap solution is \\(2.5 \\times 10^{- 2}\\text{ N/m}\\).",
+    "solution": "**Given:** surface tension of the soap solution \\( T = 2.5 \\times 10^{-2} \\) N/m. The bubble is blown up from nothing, so the initial radius is 0 and the final radius is \\( r = 1 \\) cm \\( = 0.01 \\) m.\n\n**Increase in surface area.** A soap bubble has two surfaces, an outer one and an inner one, so the total surface area of a bubble of radius \\( r \\) is\n\n\\( A = 2 \\times \\left( 4 \\pi r^{2} \\right) = 8 \\pi r^{2} \\)\n\nThe initial surface area is zero, so the whole of this area is newly created:\n\n\\( dA = 8 \\pi r^{2} - 0 = 8 \\times 3.142 \\times \\left( 0.01 \\right)^{2} = 2.513 \\times 10^{-3} \\) m\\( ^{2} \\)\n\n**Work done.** The work done in blowing the bubble is stored in the two new surfaces as surface energy,\n\n\\( W = T \\times dA = 2.5 \\times 10^{-2} \\times 2.513 \\times 10^{-3} \\)\n\n\\( \\therefore W = 6.283 \\times 10^{-5} \\) J\n\nCheck: \\( W = 8 \\pi T r^{2} \\) grows as the square of the radius, so blowing the bubble on to a radius of 2 cm would take four times as much work, \\( 2.513 \\times 10^{-4} \\) J, which is consistent with the value found.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#9",
+    "questionNumber": "Q. 1(ii)",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "The dimensional formula of surface tension is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\ \\left\\lbrack L^{- 1}M^{1}T^{- 2} \\right\\rbrack\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\ \\left\\lbrack L^{2}M^{1}T^{- 2} \\right\\rbrack\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\ \\left\\lbrack L^{1}M^{1}T^{- 1} \\right\\rbrack\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\ \\left\\lbrack L^{0}M^{1}T^{- 2} \\right\\rbrack\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** \\( \\left\\lbrack L^{0}M^{1}T^{-2} \\right\\rbrack \\)\n\nSurface tension is defined as the force acting per unit length on either side of an imaginary line drawn on the free surface of a liquid,\n\n\\( T = \\frac{F}{L} \\)\n\nThe dimensions of force are \\( \\left\\lbrack L^{1}M^{1}T^{-2} \\right\\rbrack \\) and those of length are \\( \\left\\lbrack L^{1}M^{0}T^{0} \\right\\rbrack \\), so\n\n\\( \\left\\lbrack T \\right\\rbrack = \\frac{\\left\\lbrack L^{1}M^{1}T^{-2} \\right\\rbrack}{\\left\\lbrack L^{1}M^{0}T^{0} \\right\\rbrack} \\)\n\n\\( \\therefore \\left\\lbrack T \\right\\rbrack = \\left\\lbrack L^{0}M^{1}T^{-2} \\right\\rbrack \\)\n\nThe same answer follows from the other definition of surface tension, as surface energy per unit area:\n\n\\( \\left\\lbrack T \\right\\rbrack = \\frac{\\left\\lbrack L^{2}M^{1}T^{-2} \\right\\rbrack}{\\left\\lbrack L^{2}M^{0}T^{0} \\right\\rbrack} = \\left\\lbrack L^{0}M^{1}T^{-2} \\right\\rbrack \\)\n\nThe two definitions agree, as they must. The SI unit N/m confirms it, since \\( \\frac{\\mathrm{kg\\ m\\ s^{-2}}}{\\mathrm{m}} = \\mathrm{kg\\ s^{-2}} \\) carries mass and time but no length at all, so the exponent of \\( L \\) is zero.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#10",
+    "questionNumber": "Q. 2(ii)",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Why a detergent powder is mixed with water to wash clothes?",
+    "solution": "Dirt clings to cloth as a film of grease and oil, and water by itself will not remove it.\n\nPure water has a high surface tension, about \\( 7.2 \\times 10^{-2} \\) N/m, and it does not wet a greasy surface: its angle of contact with grease is obtuse, so water gathers into rounded drops that sit on the cloth instead of spreading into it and reaching the dirt.\n\nA detergent molecule has two ends, one attracted to water and the other attracted to grease. When detergent powder is mixed with water, these molecules collect in the surface layer of the water, come between the water molecules and weaken the cohesive force between them. The surface tension of the water is therefore reduced, and two things follow that make the washing possible.\n\n- With the surface tension lowered, the angle of contact with the greasy cloth becomes acute. The water now wets the cloth and is drawn by capillary action into the fine spaces between the fibres, so it reaches the dirt.\n- The grease-attracting ends of the detergent molecules fasten on to the oil film and lift it away from the fibre into the water, where it is held in suspension and is carried off when the cloth is rinsed.\n\nDetergent powder is therefore mixed with water to lower the surface tension of the water, so that it wets the cloth and lifts the greasy dirt out of it.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#11",
+    "questionNumber": "Q. 18",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Define surface energy of the liquid. Obtain the relation between the surface energy and surface tension.",
+    "solution": "**Surface energy of a liquid.**\n\nA molecule lying in the surface layer of a liquid has liquid molecules below it and beside it but none above it, so it is pulled inward by the molecules of the bulk. Bringing a molecule from the interior to the surface therefore requires work to be done against this inward cohesive force, and that work is stored in the surface layer as potential energy.\n\nThe surface energy of a liquid is defined as the extra potential energy possessed by the molecules of the surface layer of the liquid, over and above the energy those molecules would have in the bulk. Taken per unit area of the free surface it is called the surface energy per unit area, and its SI unit is J/m\\( ^{2} \\).\n\n**Relation between surface energy and surface tension.**\n\nTake a rectangular frame of wire fitted with a light wire \\( \\mathrm{LM} \\) of length \\( L \\) that can slide without friction along two of its arms, and form a soap film on the frame by dipping it in soap solution.\n\nThe film has two surfaces, and each of them pulls the wire \\( \\mathrm{LM} \\) inward with a force \\( TL \\), where \\( T \\) is the surface tension. The wire is therefore pulled in with a total force\n\n\\( F = 2 T L \\)\n\nApply an equal outward force and let the wire move out slowly through a small distance \\( dx \\), so that the temperature of the film stays constant. The work done by the applied force is\n\n\\( dW = F \\times dx = 2 T L \\, dx \\)\n\nEach of the two surfaces gains an area \\( L \\, dx \\) as the wire moves out, so the total area created is\n\n\\( dA = 2 L \\, dx \\)\n\nHence\n\n\\( dW = T \\, dA \\)\n\nThe whole of this work is stored in the new surface as its potential energy, that is, as its surface energy \\( dE \\):\n\n\\( dE = dW = T \\, dA \\)\n\n\\( \\therefore T = \\frac{dE}{dA} \\)\n\nThe surface tension of a liquid is thus numerically equal to its surface energy per unit area. The units bear this out, since \\( \\frac{\\mathrm{J}}{\\mathrm{m}^{2}} = \\frac{\\mathrm{N} \\, \\mathrm{m}}{\\mathrm{m}^{2}} = \\frac{\\mathrm{N}}{\\mathrm{m}} \\), which is the unit in which surface tension is measured.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#12",
+    "questionNumber": "Q. 2(i)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "At what temperature the surface tension of a liquid becomes zero?",
+    "solution": "The surface tension of a liquid becomes zero at its **critical temperature**.\n\nThe surface tension of a liquid arises from the cohesive force between its molecules. As the liquid is heated the molecules move faster and their average separation increases, so the cohesive force between them weakens and the surface tension falls steadily with rising temperature.\n\nAt the critical temperature the density of the liquid and the density of its own vapour become equal, so the boundary between the two phases disappears. There is then no distinguishable free surface, no surface layer to be pulled inward by the bulk, and hence no surface tension:\n\n\\( T = 0 \\) at the critical temperature\n\nFor water the critical temperature is \\( 374^{\\circ} \\)C. Below it the surface tension is positive and falls almost linearly as the temperature rises, and it drops to zero exactly at that point.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#13",
+    "questionNumber": "Q. 1(viii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "The energy of the free surface of a liquid drop is \\(5\\pi\\) times the surface tension of the liquid. Find the diameter of the drop in C.G.S. system.",
+    "solution": "**Given:** the energy of the free surface of the drop is \\( E = 5\\pi T \\), where \\( T \\) is the surface tension of the liquid, and all quantities are in the C.G.S. system, so lengths are measured in centimetres.\n\nA liquid drop has ONE free surface, of area\n\n\\( A = 4 \\pi r^{2} \\)\n\nand the energy of a free surface is the product of the surface tension and the area of that surface,\n\n\\( E = T \\times A = 4 \\pi r^{2} T \\)\n\nEquating this to the value given in the question,\n\n\\( 4 \\pi r^{2} T = 5 \\pi T \\)\n\nThe surface tension cancels from both sides, which is why the answer does not depend on which liquid the drop is made of:\n\n\\( 4 r^{2} = 5 \\qquad \\therefore r^{2} = \\frac{5}{4} \\)\n\n\\( r = \\frac{\\sqrt{5}}{2} = 1.118 \\) cm\n\nThe diameter is twice the radius,\n\n\\( \\therefore d = 2r = \\sqrt{5} = 2.236 \\) cm\n\nCheck: with \\( r = 1.118 \\) cm the area of the free surface is \\( 4 \\pi \\left( 1.118 \\right)^{2} = 5\\pi \\) cm\\( ^{2} \\), so its energy is \\( 5\\pi T \\), exactly as the question states.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#14",
+    "questionNumber": "Q. 4(iii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Excess Pressure, Drops and Bubbles",
+    "stem": "Derive Laplace's law for spherical membrane of bubble due to surface tension.",
+    "solution": "**Laplace's law of a spherical membrane** states that the pressure on the concave side of a spherical liquid surface is greater than that on its convex side, and that this excess pressure is inversely proportional to the radius of the surface.\n\nConsider a spherical bubble of radius \\( r \\) whose membrane has surface tension \\( T \\). Let \\( p_{i} \\) be the pressure inside it and \\( p_{o} \\) the pressure outside. Because the surface is curved, \\( p_{i} > p_{o} \\), and the excess pressure \\( p_{i} - p_{o} \\) is what is to be found.\n\nLet the bubble be blown up very slightly, so that its radius increases from \\( r \\) to \\( r + \\Delta r \\), where \\( \\Delta r \\) is so small that the pressure inside may be taken as unchanged throughout the expansion.\n\n**Work done by the excess pressure.** The outward force exerted on the membrane by the excess pressure is the excess pressure multiplied by the surface area,\n\n\\( F = \\left( p_{i} - p_{o} \\right) \\times 4 \\pi r^{2} \\)\n\nand this force acts through the small displacement \\( \\Delta r \\), so the work done by it is\n\n\\( dW = F \\, \\Delta r = \\left( p_{i} - p_{o} \\right) 4 \\pi r^{2} \\, \\Delta r \\qquad \\ldots (1) \\)\n\n**Increase in surface energy.** Take first a membrane having a single surface, of area \\( 4 \\pi r^{2} \\). After the expansion its area is\n\n\\( 4 \\pi \\left( r + \\Delta r \\right)^{2} = 4 \\pi \\left( r^{2} + 2 r \\Delta r + \\Delta r^{2} \\right) \\)\n\nSince \\( \\Delta r \\) is very small, \\( \\Delta r^{2} \\) is negligible in comparison with the other terms, so the increase in area is\n\n\\( dA = 4 \\pi \\left( r^{2} + 2 r \\Delta r \\right) - 4 \\pi r^{2} = 8 \\pi r \\, \\Delta r \\)\n\nThe work done in creating this fresh area is stored in it as surface energy,\n\n\\( dE = T \\, dA = T \\left( 8 \\pi r \\, \\Delta r \\right) \\qquad \\ldots (2) \\)\n\n**Equating (1) and (2),** since the work done by the excess pressure is exactly what is stored in the enlarged surface,\n\n\\( \\left( p_{i} - p_{o} \\right) 4 \\pi r^{2} \\, \\Delta r = T \\left( 8 \\pi r \\, \\Delta r \\right) \\)\n\n\\( \\therefore p_{i} - p_{o} = \\frac{2T}{r} \\)\n\nThis is Laplace's law of a spherical membrane. It applies to a liquid drop and to a bubble formed inside a liquid, each of which has only one surface.\n\n**A soap bubble in air has TWO surfaces**, an outer one and an inner one, and the film is so thin that both may be taken to have radius \\( r \\). The area created on expansion is then twice as great, \\( dA = 2 \\left( 8 \\pi r \\, \\Delta r \\right) \\), and repeating the same argument gives\n\n\\( \\left( p_{i} - p_{o} \\right) 4 \\pi r^{2} \\, \\Delta r = T \\times 2 \\left( 8 \\pi r \\, \\Delta r \\right) \\)\n\n\\( \\therefore p_{i} - p_{o} = \\frac{4T}{r} \\)\n\nIn both forms the excess pressure varies inversely as the radius, so a small bubble holds a larger excess pressure than a big one. That is why, when two soap bubbles of unequal size are joined through a tube, air passes from the smaller bubble into the larger one and the smaller bubble collapses.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "fluids-12-pyq#15",
+    "questionNumber": "Q. 3(iii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "The total energy of free surface of a liquid drop is \\(2\\pi\\) times the surface tension of the liquid. What is the diameter of the drop? [Assume all terms in SI unit].",
+    "solution": "**Given:** the total energy of the free surface of the drop is \\( E = 2\\pi T \\), where \\( T \\) is the surface tension of the liquid, and all quantities are in SI units, so lengths are measured in metres.\n\nA liquid drop has one free surface, of area \\( A = 4 \\pi r^{2} \\), and the energy of a free surface is\n\n\\( E = T \\times A = 4 \\pi r^{2} T \\)\n\nEquating this to the value given in the question,\n\n\\( 4 \\pi r^{2} T = 2 \\pi T \\)\n\nThe surface tension cancels from both sides, so the answer is the same whatever liquid the drop is made of:\n\n\\( 4 r^{2} = 2 \\qquad \\therefore r^{2} = \\frac{1}{2} \\)\n\n\\( r = \\frac{1}{\\sqrt{2}} = 0.7071 \\) m\n\nThe diameter is twice the radius,\n\n\\( \\therefore d = 2r = \\sqrt{2} = 1.414 \\) m\n\nCheck: substituting \\( r = 0.7071 \\) m back, the area of the free surface is \\( 4 \\pi \\left( 0.7071 \\right)^{2} = 4 \\pi \\times 0.5 = 2\\pi \\) m\\( ^{2} \\), so its energy is \\( 2\\pi T \\), which is the value stated in the question.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#16",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Capillary Action",
+    "stem": "Obtain an expression for the rise of a liquid in a capillary tube.",
+    "solution": "Let a capillary tube of radius \\( r \\) be dipped vertically into a liquid of density \\( \\rho \\) and surface tension \\( T \\) which wets the tube, so that the meniscus inside the tube is concave and the angle of contact \\( \\theta \\) is acute. Let \\( h \\) be the height through which the liquid rises above the free surface outside the tube, and let \\( R \\) be the radius of curvature of the meniscus.\n\n**Method I: from the pressure difference across the meniscus.**\n\nBy Laplace's law the pressure on the concave side of a curved liquid surface exceeds that on the convex side by \\( \\frac{2T}{R} \\). Here the air is on the concave side, so the pressure just below the meniscus is LESS than the atmospheric pressure just above it by \\( \\frac{2T}{R} \\).\n\nOutside the tube the liquid surface is plane, so the pressure just below it is the atmospheric pressure. Two points at the same horizontal level in the same liquid must be at the same pressure, and the liquid therefore rises inside the tube until the pressure of the raised column exactly makes up the deficit:\n\n\\( h \\rho g = \\frac{2T}{R} \\)\n\nFrom the geometry of the meniscus, the radius of the tube is the projection of the radius of curvature, so\n\n\\( r = R \\cos\\theta \\qquad \\text{that is} \\qquad R = \\frac{r}{\\cos\\theta} \\)\n\nSubstituting,\n\n\\( h \\rho g = \\frac{2T\\cos\\theta}{r} \\)\n\n\\( \\therefore h = \\frac{2T\\cos\\theta}{r \\rho g} \\)\n\n**Method II: from the forces on the raised column.**\n\nThe liquid touches the tube all round its circumference, a length \\( 2 \\pi r \\), so the force exerted on the liquid by surface tension is\n\n\\( f = T \\times 2 \\pi r \\)\n\nand it acts along the tangent to the meniscus, that is, at the angle of contact \\( \\theta \\) to the wall of the tube. Only its vertical component supports the raised column:\n\n\\( f_{v} = T \\times 2 \\pi r \\cos\\theta \\)\n\nNeglecting the small volume of liquid held in the meniscus itself, the raised column is a cylinder of radius \\( r \\) and height \\( h \\), so its weight is\n\n\\( w = \\pi r^{2} h \\rho g \\)\n\nAt equilibrium the weight of the raised column is balanced by the vertical component of the force due to surface tension:\n\n\\( \\pi r^{2} h \\rho g = 2 \\pi r T \\cos\\theta \\)\n\n\\( \\therefore h = \\frac{2T\\cos\\theta}{r \\rho g} \\)\n\nwhich is the same expression as before. Rearranged for the surface tension it becomes\n\n\\( T = \\frac{r h \\rho g}{2 \\cos\\theta} \\)\n\nand this is how surface tension is measured by the capillary rise method.\n\nThe expression covers a capillary fall as well. For a liquid that does not wet the tube, mercury in glass for instance, \\( \\theta \\) is obtuse, \\( \\cos\\theta \\) is negative and \\( h \\) comes out negative, meaning that the liquid stands below the outside level. And since \\( h \\propto \\frac{1}{r} \\), the narrower the tube the higher the liquid climbs.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#17",
+    "questionNumber": "Q. 1(viii)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Capillary Action",
+    "stem": "A liquid rises in glass capillary tube upto a height of 2.5 cm at room temperature. If another glass capillary tube having radius half that of the earlier tube is immersed in the same liquid, the rise of liquid in it will be ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.25 cm"
+      },
+      {
+        "label": "B",
+        "text": "2.5 cm"
+      },
+      {
+        "label": "C",
+        "text": "5 cm"
+      },
+      {
+        "label": "D",
+        "text": "10 cm"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** 5 cm\n\nThe height through which a liquid rises in a capillary tube is\n\n\\( h = \\frac{2T\\cos\\theta}{r \\rho g} \\)\n\nThe same liquid is used in both tubes and both tubes are of glass, at the same room temperature, so the surface tension \\( T \\), the angle of contact \\( \\theta \\) and the density \\( \\rho \\) are unchanged, as of course is \\( g \\). Everything on the right-hand side except the radius is therefore a constant, and\n\n\\( h \\propto \\frac{1}{r} \\qquad \\text{so} \\qquad h_{1} r_{1} = h_{2} r_{2} \\)\n\n**Given:** \\( h_{1} = 2.5 \\) cm and the second tube has \\( r_{2} = \\frac{r_{1}}{2} \\).\n\n\\( h_{2} = h_{1} \\times \\frac{r_{1}}{r_{2}} = 2.5 \\times \\frac{r_{1}}{\\left( \\frac{r_{1}}{2} \\right)} = 2.5 \\times 2 \\)\n\n\\( \\therefore h_{2} = 5 \\) cm\n\nHalving the bore doubles the rise, which is consistent with the familiar observation that a liquid climbs higher in a narrower tube. A rise of 1.25 cm would be what a tube of TWICE the radius gives.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#18",
+    "questionNumber": "Q. 1(vi)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "If '\\(\\theta\\)' represents the angle of contact made by a liquid which completely wets the surface of the container then ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\theta = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0 < \\theta < \\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\theta = \\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{2} < \\theta < \\pi\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\( \\theta = 0 \\)\n\nThe angle of contact is the angle between the tangent drawn to the free surface of the liquid at the point of contact and the surface of the solid, measured INSIDE the liquid.\n\nIts value is settled by the competition between the force of cohesion, which acts between the molecules of the liquid, and the force of adhesion, which acts between the liquid and the solid.\n\n- Where the adhesive force is the weaker, the liquid gathers itself into drops and does not wet the solid. The meniscus is convex and \\( \\theta \\) is obtuse, as for mercury on glass.\n- Where the adhesive force is the stronger, the liquid spreads over the solid and wets it. The meniscus is concave and \\( \\theta \\) is acute, as for water on clean glass.\n- A liquid COMPLETELY wets the solid only when it spreads right across the surface as a thin film, leaving no rounded edge anywhere. The tangent to the liquid surface at the point of contact then lies along the solid surface itself, so the angle between the two is zero.\n\n\\( \\therefore \\theta = 0 \\) for a liquid that completely wets the surface of its container, as pure water does on a perfectly clean glass plate.\n\nAny value of \\( \\theta \\) greater than zero, whether acute, right or obtuse, would mean that the liquid surface still meets the solid at a finite angle and so has not spread completely over it.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#19",
+    "questionNumber": "Q. 2(iv)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Surface Tension and Surface Energy",
+    "stem": "Draw a neat, labelled diagram for a liquid surface in contact with a solid, when the angle of contact is acute.",
+    "solution": "The diagram shows a drop of a liquid that wets the solid, water on clean glass for instance, resting on a plane solid surface. It carries the following labels.\n\n- The **solid surface**, drawn as a horizontal straight line and named (glass).\n- The **liquid** (water), drawn as a drop spread out on the solid, its free surface curving upward away from the edge of the drop so that the surface is **concave**.\n- The **air** above the liquid, marked outside the drop.\n- The **point of contact** \\( \\mathrm{P} \\), where the three media meet, that is, where the solid, the liquid and the air have a common boundary.\n- The **tangent** drawn to the free surface of the liquid at \\( \\mathrm{P} \\), extended as a straight line away from the solid.\n- The **angle of contact** \\( \\theta \\), marked between that tangent and the solid surface and measured inside the liquid, drawn clearly as an acute angle so that \\( \\theta < 90^{\\circ} \\).\n\nThe angle of contact is always measured inside the liquid, from the solid surface round to the tangent to the liquid surface at the point of contact.\n\nIt is acute in this figure because the force of adhesion between the liquid and the solid is stronger than the force of cohesion within the liquid. The liquid is therefore drawn along the solid, spreads over it and wets it, and its free surface is pulled up at the edges into a concave shape. Water on clean glass and kerosene on glass behave in this way. A liquid whose cohesive force is the stronger, mercury on glass for instance, would be drawn with a convex surface and an obtuse angle of contact.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#20",
+    "questionNumber": "Q. 2(ii)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Viscosity, Critical Velocity and Reynolds Number",
+    "stem": "State the formula for critical velocity in terms of Reynold's number for a flow of a fluid.",
+    "solution": "The critical velocity of a fluid is the velocity of flow above which the motion ceases to be streamline and becomes turbulent. In terms of Reynolds number it is\n\n\\( v_{c} = \\frac{R_{n} \\eta}{\\rho d} \\)\n\nwhere\n\n- \\( v_{c} \\) is the critical velocity of the fluid,\n- \\( R_{n} \\) is Reynolds number, a pure number having no unit and no dimensions,\n- \\( \\eta \\) is the coefficient of viscosity of the fluid,\n- \\( \\rho \\) is the density of the fluid, and\n- \\( d \\) is the diameter of the tube through which the fluid flows.\n\nThe relation is Reynolds number itself, \\( R_{n} = \\frac{\\rho v d}{\\eta} \\), rearranged for the speed of flow. For a fluid flowing through a pipe the flow is streamline while \\( R_{n} \\) is below about 1000, it is turbulent once \\( R_{n} \\) exceeds about 2000, and it is unsteady between the two values.\n\nThe expression shows that a fluid of high viscosity or low density, or one flowing through a narrow tube, keeps its streamline flow up to a higher speed.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#21",
+    "questionNumber": "Q. 21",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Stokes' Law and Terminal Velocity",
+    "stem": "Derive an expression for terminal velocity of a spherical object falling under gravity through a viscous medium.",
+    "solution": "Consider a small sphere of radius \\( r \\) and density \\( \\rho \\) released from rest in a viscous fluid of density \\( \\sigma \\) and coefficient of viscosity \\( \\eta \\).\n\nThree forces act on the sphere as it falls.\n\n**(i) Its weight**, acting vertically downward. The volume of the sphere is \\( \\frac{4}{3}\\pi r^{3} \\), so\n\n\\( W = \\frac{4}{3}\\pi r^{3} \\rho g \\)\n\n**(ii) The upthrust** of the fluid, acting vertically upward. By Archimedes' principle it equals the weight of the fluid displaced by the sphere,\n\n\\( F_{U} = \\frac{4}{3}\\pi r^{3} \\sigma g \\)\n\n**(iii) The viscous force**, acting vertically upward, opposite to the motion. For a small sphere moving slowly through a viscous fluid, Stokes' law gives\n\n\\( F_{V} = 6 \\pi \\eta r v \\)\n\nwhere \\( v \\) is the speed of the sphere at that instant.\n\nThe weight and the upthrust are both fixed, but the viscous force grows as the sphere speeds up. The sphere therefore accelerates downward at first, its speed increases, and \\( F_{V} \\) increases with it, until the net force on the sphere becomes zero. From that moment the sphere falls with a constant velocity, which is called its **terminal velocity** \\( v_{t} \\).\n\nAt the terminal velocity the two upward forces together balance the downward weight:\n\n\\( F_{U} + F_{V} = W \\)\n\n\\( \\frac{4}{3}\\pi r^{3} \\sigma g + 6 \\pi \\eta r v_{t} = \\frac{4}{3}\\pi r^{3} \\rho g \\)\n\n\\( 6 \\pi \\eta r v_{t} = \\frac{4}{3}\\pi r^{3} \\left( \\rho - \\sigma \\right) g \\)\n\n\\( v_{t} = \\frac{4 \\pi r^{3} \\left( \\rho - \\sigma \\right) g}{3 \\times 6 \\pi \\eta r} \\)\n\n\\( \\therefore v_{t} = \\frac{2 r^{2} \\left( \\rho - \\sigma \\right) g}{9 \\eta} \\)\n\nThis is the required expression.\n\nTwo consequences follow from it directly. Since \\( v_{t} \\propto r^{2} \\), a large drop falls much faster than a small one, which is why a fine mist appears to hang in the air while raindrops fall quickly. And if \\( \\sigma > \\rho \\), that is, if the body is lighter than the fluid, \\( v_{t} \\) comes out negative, meaning that the body moves upward instead of downward; an air bubble rising steadily through a liquid is exactly this case.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "fluids-12-pyq#22",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Viscosity, Critical Velocity and Reynolds Number",
+    "stem": "Define coefficient of viscosity. State its formula and S.I. units.",
+    "solution": "**Definition.** When a liquid flows in streamline motion over a fixed surface, the layers move with different velocities, and a tangential force acts between any two adjacent layers: the faster layer drags the slower one forward and is itself dragged back by it. This force is found to be proportional both to the area \\( A \\) of contact between the layers and to the velocity gradient \\( \\frac{dv}{dx} \\) measured at right angles to the flow, so that\n\n\\( F = - \\eta A \\frac{dv}{dx} \\)\n\nThe constant \\( \\eta \\) appearing here is called the coefficient of viscosity of the liquid, and the minus sign shows that the viscous force opposes the relative motion of the layers.\n\nThe coefficient of viscosity of a fluid is defined as the viscous force acting per unit area of contact between two adjacent layers, per unit velocity gradient at right angles to the direction of flow.\n\n**Formula.**\n\n\\( \\eta = \\frac{F}{A \\left( \\frac{dv}{dx} \\right)} \\)\n\nSetting \\( A = 1 \\) and \\( \\frac{dv}{dx} = 1 \\) makes \\( \\eta = F \\) numerically, which is the definition stated over again.\n\n**S.I. unit.** From the formula,\n\n\\( \\text{unit of } \\eta = \\frac{\\mathrm{N}}{\\mathrm{m}^{2} \\times \\left( \\frac{\\mathrm{m/s}}{\\mathrm{m}} \\right)} = \\frac{\\mathrm{N}}{\\mathrm{m}^{2} \\times \\mathrm{s}^{-1}} = \\mathrm{N\\ s/m^{2}} \\)\n\nso the SI unit of the coefficient of viscosity is N s/m\\( ^{2} \\), which is the same as the pascal second, Pa s, and is also called the decapoise. Its dimensions are \\( \\left\\lbrack L^{-1}M^{1}T^{-1} \\right\\rbrack \\). The C.G.S. unit is the poise, and 1 N s/m\\( ^{2} = 10 \\) poise.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "fluids-12-pyq#23",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Viscosity, Critical Velocity and Reynolds Number",
+    "stem": "A horizontal force of 0.5 N is required to move a metal plate of area \\(10^{- 2}\\text{ m}^{2}\\) with a velocity of \\(3 \\times 10^{- 2}\\text{ m/s}\\), when it rests on \\(0.5 \\times 10^{- 3}\\text{ m}\\) thick layer of glycerin. Find the coefficient of viscosity of glycerin.",
+    "solution": "**Given:** \\( F = 0.5 \\) N, area of the plate \\( A = 10^{-2} \\) m\\( ^{2} \\), velocity of the plate \\( v = 3 \\times 10^{-2} \\) m/s, thickness of the glycerin layer \\( d = 0.5 \\times 10^{-3} \\) m.\n\nThe plate moves with a constant velocity, so it has no acceleration and the applied horizontal force is exactly balanced by the viscous drag of the glycerin.\n\nThe layer of glycerin in contact with the plate moves along with the plate at \\( v \\), while the layer in contact with the surface underneath stays at rest. The layer is thin, so the velocity gradient across it may be taken as uniform:\n\n\\( \\frac{dv}{dx} = \\frac{v}{d} = \\frac{3 \\times 10^{-2}}{0.5 \\times 10^{-3}} = 60 \\) s\\( ^{-1} \\)\n\nBy Newton's law of viscosity, the magnitude of the viscous force is\n\n\\( F = \\eta A \\frac{v}{d} \\qquad \\therefore \\eta = \\frac{F d}{A v} \\)\n\n\\( \\eta = \\frac{0.5 \\times 0.5 \\times 10^{-3}}{\\left( 10^{-2} \\right) \\times \\left( 3 \\times 10^{-2} \\right)} = \\frac{2.5 \\times 10^{-4}}{3 \\times 10^{-4}} \\)\n\n\\( \\therefore \\eta = 0.833 \\) N s/m\\( ^{2} \\)\n\nCheck: putting this value back into Newton's law gives \\( \\eta A \\frac{v}{d} = 0.833 \\times 10^{-2} \\times 60 = 0.5 \\) N, which is the force stated in the question.\n\nThe coefficient of viscosity of the glycerin is therefore 0.833 N s/m\\( ^{2} \\), that is, 0.833 Pa s, or 8.33 poise in C.G.S. units.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#24",
+    "questionNumber": "Q. 4",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Viscosity, Critical Velocity and Reynolds Number",
+    "stem": "Using Newton's law of viscosity for streamline flow, derive an expression for coefficient of viscosity.",
+    "solution": "Consider a liquid flowing steadily in streamline motion over a fixed horizontal solid surface. The layer of liquid in contact with the solid is held at rest by adhesion, and the layers above it move faster the further they are from the solid, the topmost layer moving fastest of all.\n\nTake two adjacent layers: one at a distance \\( x \\) from the solid surface, moving with velocity \\( v \\), and the next at a distance \\( x + dx \\), moving with velocity \\( v + dv \\). The rate at which the velocity changes with distance measured normal to the direction of flow,\n\n\\( \\frac{dv}{dx} \\)\n\nis called the velocity gradient.\n\nBecause the two layers move at different speeds, the faster layer drags the slower one forward while the slower layer drags the faster one back, so a tangential force acts along the surface separating them. This is the viscous force. Newton found by experiment that its magnitude is\n\n- directly proportional to the area \\( A \\) of contact between the two layers,\n\n\\( F \\propto A \\)\n\n- and directly proportional to the velocity gradient between them,\n\n\\( F \\propto \\frac{dv}{dx} \\)\n\nCombining the two proportionalities,\n\n\\( F \\propto A \\frac{dv}{dx} \\)\n\n\\( F = - \\eta A \\frac{dv}{dx} \\)\n\nwhere \\( \\eta \\) is the constant of proportionality. It depends on the nature of the liquid and on its temperature, and it is called the coefficient of viscosity of the liquid. The minus sign records that the viscous force acts opposite to the relative motion of the layers, and it is dropped when only the magnitude is wanted.\n\nRearranging the relation for \\( \\eta \\),\n\n\\( \\therefore \\eta = \\frac{F}{A \\left( \\frac{dv}{dx} \\right)} \\)\n\nThis is the required expression for the coefficient of viscosity.\n\nIt shows that \\( \\eta \\) is the viscous force per unit area of contact per unit velocity gradient, since putting \\( A = 1 \\) m\\( ^{2} \\) and \\( \\frac{dv}{dx} = 1 \\) s\\( ^{-1} \\) gives \\( \\eta = F \\) numerically. Its SI unit follows from the same expression as N s/m\\( ^{2} \\), or Pa s, and its dimensions are \\( \\left\\lbrack L^{-1}M^{1}T^{-1} \\right\\rbrack \\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "fluids-12-pyq#25",
+    "questionNumber": "Q. 1(ii)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Equation of Continuity and Bernoulli's Equation",
+    "stem": "In Bernoulli's theorem, which of the following is constant?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Linear momentum"
+      },
+      {
+        "label": "B",
+        "text": "Angular momentum"
+      },
+      {
+        "label": "C",
+        "text": "Mass"
+      },
+      {
+        "label": "D",
+        "text": "Energy"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** Energy\n\nBernoulli's theorem is obtained by applying the work-energy theorem to a small element of fluid in steady, streamline flow. The net work done on the element by the pressure of the surrounding fluid is equal to the change in its kinetic energy together with the change in its gravitational potential energy,\n\n\\( W = \\Delta \\left( \\mathrm{K.E.} \\right) + \\Delta \\left( \\mathrm{P.E.} \\right) \\)\n\nCarrying this through for unit volume of the fluid gives Bernoulli's equation,\n\n\\( p + \\frac{1}{2}\\rho v^{2} + \\rho g h = \\text{constant} \\)\n\nThe three terms are the pressure energy, the kinetic energy and the gravitational potential energy of unit volume of the fluid. Their sum keeping the same value all along a streamline is precisely the statement that the total energy of the flowing fluid is conserved, so Bernoulli's theorem is a form of the principle of conservation of energy.\n\nMass is indeed conserved in such a flow, but that is the content of the equation of continuity, \\( Av = \\) constant, which is a separate result. Linear momentum is not conserved, because the surrounding fluid exerts pressure forces on the element, and angular momentum plays no part in the derivation at all.",
+    "difficulty": "EASY"
+  }
+]

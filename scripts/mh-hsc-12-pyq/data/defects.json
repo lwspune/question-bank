@@ -292,6 +292,16 @@
         "source": "Maths 2025 paper.pdf, page index 2 (printed Page 3, Section A), crop y 0.72-0.88 / x 0.08-1.00 at 300 dpi",
         "note": "Options (a) and (c) are the reciprocal pair 2/17 and 17/2 - read at 300 dpi on the rendered image and confirmed to be genuinely different stacked fractions, NOT a duplicated option. (a) is 2 over 17; (c) is 17 over 2.",
         "stemDiffersFromOurs": "Ours places \"(in square units)\" inside the sentence before the full stop; the paper prints it on its own line AFTER the blank and full stop. Wording otherwise identical."
+      },
+      {
+        "ref": "thermodynamics-12-pyq#2",
+        "options": {
+          "A": "zeroth law of thermodynamics",
+          "B": "first law of thermodynamics",
+          "C": "second law of thermodynamics",
+          "D": "Carnot's law"
+        },
+        "why": "OURS, not the board's - settled against the printed page. The compilation typed the THIRD option's label as (B) instead of (C), so the run reads A, B, B, D: no A-D anchor, so the row extracted as free-response with all four alternatives glued into the stem. Rendering `4. Thermodynamics.pdf` page 1 at 400 dpi confirms the duplicate B is what the compilation prints, while item 1 directly above it prints a clean (A)(B)(C)(D) run - so the typesetting distinguishes the glyphs and this is a typing slip rather than a rendering artifact. The option TEXTS are faithful and are restored verbatim from the stem; only the third label is corrected B -> C. The answer is unaffected: of the four, only the zeroth law states that two systems in thermal equilibrium with a third are in equilibrium with each other, so the key is A."
       }
     ],
     "needVisionPass": []
@@ -374,6 +384,16 @@
         },
         "why": "We hold A and B with numerator 1; the page prints 5 in both. The printed sequence is 5,5,15,15 — not 1,1,15,15 — so the paper is internally consistent and the 15/sqrt(102) pair are ordinary distractors rather than misprints.",
         "consequence": "Key B: cos(theta) = 5/(sqrt(6) sqrt(17)) = 5/sqrt(102)."
+      },
+      {
+        "ref": "kinetic-theory-12-pyq#7",
+        "options": {
+          "C": {
+            "from": "\\(\\ \\frac{1}{\\sqrt{}2\\pi nd^{2}\\ }\\)",
+            "to": "\\(\\ \\frac{1}{\\sqrt{2}\\pi nd^{2}\\ }\\)"
+          }
+        },
+        "why": "OURS, not the board's — settled against the printed page. The compilation renders option C with an EMPTY radical, \\sqrt{}2, so it ships as a bare radical sign and the option reads as broken. Rendering Q.1(i) of the February 2023 paper at 340 dpi shows the board printed it correctly as 1/(sqrt(2) pi n d^2), with the radical covering only the 2 — and the other three options are transcribed faithfully, so the defect is isolated to this one radicand. The repair restores what the page shows; it does not choose between readings. This is also the KEYED option: the mean free path is lambda = 1/(sqrt(2) pi n d^2), and the rivals fail on dimensions (A and D carry nd rather than nd^2, so their reciprocals are areas) or omit the sqrt(2) (B)."
       }
     ]
   },
@@ -734,6 +754,18 @@
         "source": "audit:text PANDOC_ARTIFACT; value verified in defects.json -> lostSuperscripts before the fix was written.",
         "why": "The compilation flattened the superscript, so the stem shipped as literal \"x2\" — which renders as x-two, not x-squared. x^{2}/18 on (-3,3) integrates to exactly 1 and is non-negative.",
         "consequence": "A valid p.d.f.; the question is answerable as printed once the exponent is restored."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#8",
+        "from": "Find the variance and standard deviation of the random variable \\(X\\) whose probability distribution is given below:\n| X = x | 0 | 1 | 2 | 3 |\n|-------|----------------:|----------------:|----------------:|----------------:|\n| P(x) | \\(\\(\\frac{1}{8}\\)\\( | \\)\\(\\frac{3}{8}\\)\\( | \\)\\(\\frac{3}{8}\\)\\( | \\)\\(\\frac{1}{8}\\)\\) |",
+        "to": "Find the variance and standard deviation of the random variable \\(X\\) whose probability distribution is given below:\n| X = x | 0 | 1 | 2 | 3 |\n|-------|----------------:|----------------:|----------------:|----------------:|\n| P(x) | \\(\\frac{1}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{1}{8}\\) |",
+        "consequence": "OURS, an extraction artifact. pandoc wrapped the whole run of table cells in ONE math zone, putting the table's own pipe separators inside math and nesting the real per-cell zones. The delimiters BALANCE, so findLatexImbalance cannot see it, and the |---| separator row is intact, so audit:text's table rule cannot either - it surfaces only in audit:omml, as an unconvertible construct: raw LaTeX in a downloaded Word answer key, and mangled math on the card. Unwrapping restores exactly the form the other three tables in this chapter already use - one zone per cell, pipes outside math. No value changes."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#11",
+        "from": "Find the expected value of the random variable \\(X\\) whose probability mass function is:\n| X = x | 1 | 2 | 3 |\n|-----------|----------------:|----------------:|----------------:|\n| P (X = x) | \\(\\(\\frac{1}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\) |",
+        "to": "Find the expected value of the random variable \\(X\\) whose probability mass function is:\n| X = x | 1 | 2 | 3 |\n|-----------|----------------:|----------------:|----------------:|\n| P (X = x) | \\(\\frac{1}{5}\\) | \\(\\frac{2}{5}\\) | \\(\\frac{2}{5}\\) |",
+        "consequence": "OURS, an extraction artifact. pandoc wrapped the whole run of table cells in ONE math zone, putting the table's own pipe separators inside math and nesting the real per-cell zones. The delimiters BALANCE, so findLatexImbalance cannot see it, and the |---| separator row is intact, so audit:text's table rule cannot either - it surfaces only in audit:omml, as an unconvertible construct: raw LaTeX in a downloaded Word answer key, and mangled math on the card. Unwrapping restores exactly the form the other three tables in this chapter already use - one zone per cell, pipes outside math. No value changes."
       }
     ]
   },
@@ -757,6 +789,36 @@
         "ref": "def-integration-12-pyq#3",
         "toChapter": "indef-integration-12-pyq",
         "why": "The printed integral has no limits, so it is an indefinite integral. Our fabricated limits are the only reason it was filed under Definite Integration."
+      }
+    ]
+  },
+  "tagsMalformed": {
+    "_why": [
+      "A provenance tag the compilation printed malformed. Unlike every other",
+      "defect here these are applied BEFORE parsing, because a tag that fails to",
+      "parse makes extract.ts DROP the whole item — so no row, and no ref, ever",
+      "exists for a normal repair to attach to. The extractor logs the drop, so",
+      "it is not silent, but the question is absent from the corpus until fixed.",
+      "Match is EXACT and must hit exactly once; a stale entry throws."
+    ],
+    "fixes": [
+      {
+        "ref": "kinetic-theory-12-pyq#24",
+        "from": "\\[Q. 4, B March 2018\\]",
+        "to": "\\[Q. 4. B, March 2018\\]",
+        "why": "The compilation prints the comma before the sub-part instead of before the month, so parseProvenanceTag finds no month and extract.ts drops the item. It is the ONLY malformed tag in 379. The corrected form is evidenced CORPUS-WIDE, not in this chapter: March 2018 numbers its sub-parts A/B and the compilation writes 'Q. 8. A, March 2018' (Electromagnetic Induction), 'Q. 8. B, March 2018' (Electrostatics), 'Q. 8. A OR' (Structure of Atoms and Nuclei), 'Q. 8. B (OR)' (Dual Nature), 'Q. 4.A OR' and 'Q. 4. OR B' (Superposition of Waves). Content unaffected — this changes only the tag.",
+        "note": "Compound question: the first half ('Hence obtain the expression for acceleration, velocity and displacement of a particle performing linear S.H.M.') is Oscillations and the second (Newton's law of cooling) is this chapter. Split is adjudicated in the cross-chapter ledger."
+      }
+    ]
+  },
+  "itemNumberSwallowed": {
+    "_readme": "A WHOLE-DOCUMENT repair applied to pandoc's markdown BEFORE items are split. Use this ONLY for the case where an item number is not recognisable as one, so no item exists for a ref-keyed repair to reach. Every other repair belongs in a ref-keyed category. applyDocumentRepairs REFUSES a stale or ambiguous match.",
+    "fixes": [
+      {
+        "chapter": "semiconductors-12-pyq",
+        "from": "$15.\\ Y = A + B$",
+        "to": "15. $Y = A + B$",
+        "why": "OURS, and it cost a whole question. The compilation typed the item number INSIDE an OMML equation together with the expression, so pandoc emitted the line as a math zone starting with '$' and the ITEM rule - which anchors on a line beginning '<digits>. ' - never saw an item start. Board question Q.1(iii) February 2023 was therefore absorbed into item 14's stem, and the two questions (a March-2022 VSA asking for the X-OR Boolean expression, and this February-2023 MCQ) shipped as ONE row with item 14's number. Nothing downstream could detect it: the merged row is a well-formed MCQ with four intact options, so the only trace was a GAP in the item numbering, which is now the standing detector. The repair moves the numeral OUT of the zone and deletes nothing, so the equation still parses and the question recovers its own number."
       }
     ]
   }

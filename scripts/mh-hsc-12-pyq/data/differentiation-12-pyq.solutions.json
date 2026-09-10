@@ -37,7 +37,7 @@
   },
   {
     "ref": "differentiation-12-pyq#7",
-    "answer": "Let \\(y = x^{x}\\).\n\nThe base and the index both contain \\(x\\), so take \\(\\log\\) of both sides,\n\\(\\log y = \\log x^{x} = x\\log x\\)\n\nDifferentiate both sides w. r. t. \\(x\\) (product rule on the right),\n\\(\\frac{1}{y}\\frac{dy}{dx} = x\\cdot\\frac{1}{x} + \\log x\\cdot 1 = 1 + \\log x\\)\n\\(\\therefore \\frac{dy}{dx} = y\\left(1 + \\log x\\right)\\)\n\\(\\therefore \\frac{dy}{dx} = x^{x}\\left(1 + \\log x\\right)\\), for \\(x > 0\\).\n\n[The identical question was set in March 2016; \\(x^{x}\\) is the standard test of logarithmic differentiation.]",
+    "answer": "Let \\(y = x^{x}\\).\n\nThe base and the index both contain \\(x\\), so neither the power rule nor the exponential rule applies directly. Take \\(\\log\\) of both sides,\n\\(\\log y = \\log x^{x} = x\\log x\\)\n\nDifferentiate both sides w. r. t. \\(x\\) (product rule on the right),\n\\(\\frac{1}{y}\\frac{dy}{dx} = x\\cdot\\frac{d}{dx}(\\log x) + \\log x\\cdot\\frac{d}{dx}(x)\\)\n\\(\\frac{1}{y}\\frac{dy}{dx} = x\\cdot\\frac{1}{x} + \\log x\\cdot 1 = 1 + \\log x\\)\n\\(\\therefore \\frac{dy}{dx} = y\\left(1 + \\log x\\right)\\)\n\\(\\therefore \\frac{dy}{dx} = x^{x}\\left(1 + \\log x\\right)\\), for \\(x > 0\\).\n\nCheck: at \\(x = 1\\) this gives \\(1^{1}(1 + 0) = 1\\), which is the slope of \\(y = x^{x}\\) at \\((1, 1)\\).",
     "difficulty": "EASY",
     "twin": "\\(x^a + x^x + a^x\\)"
   },

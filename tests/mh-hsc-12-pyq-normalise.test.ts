@@ -251,6 +251,122 @@ describe("stripArtifacts", () => {
     expect(stripArtifacts("none is spade. \\ ####")).toBe("none is spade.");
   });
 
+  // The PHYSICS compilation NUMBERS its section headings where Maths letters
+  // them ("### 1. Kinematics" vs "#### **A. Negation**"). The lettered-only rule
+  // consumed just the "### " marker and left the title glued to the stem — 59 of
+  // 379 Physics rows, 15.6%, one per section boundary.
+  it("removes a NUMBERED section banner, the Physics form", () => {
+    expect(
+      stripArtifacts("State the formula for angle of banking. ### 3. Vertical Circular Motion"),
+    ).toBe("State the formula for angle of banking.");
+  });
+
+  // The tag-removal step leaves the tag's OPENING backslash behind on purpose —
+  // it is what forms the "\:" token the fill-in-blank rule keys on. Where the
+  // compilation puts a full stop after the tag instead of a colon, the leftover
+  // lands as " \." : 272 Physics stems, zero in Maths.
+  it("cleans the leftover tag backslash before a full stop", () => {
+    expect(stripArtifacts("along a horizontal circular track \\.")).toBe(
+      "along a horizontal circular track.",
+    );
+  });
+
+  // Where the item WRAPS, two backslashes meet: pandoc's line-continuation ends
+  // the first line and the tag's escape opens the second, so once the newline
+  // collapses the text reads "diameter\ \." A single-backslash rule leaves
+  // "diameter\." behind, because replace() does not rescan its own output.
+  it("cleans a RUN of backslashes before a full stop, the wrapped-item case", () => {
+    expect(stripArtifacts("is a projection of U.C.M. on any diameter\\ \\.")).toBe(
+      "is a projection of U.C.M. on any diameter.",
+    );
+  });
+
+  // The stem often ends in its own full stop and the tag carries another, so a
+  // naive substitution ships "________..".
+  it("does not double the full stop when the stem already ends in one", () => {
+    expect(stripArtifacts("kept in a uniform magnetic field, then ________. \\.")).toBe(
+      "kept in a uniform magnetic field, then ________.",
+    );
+  });
+
+  it("absorbs a spaced-off full stop too", () => {
+    expect(stripArtifacts("the core of transformer because of its _______ . \\.")).toBe(
+      "the core of transformer because of its _______.",
+    );
+  });
+
+  // Where the item wraps, pandoc's hard-wrap backslash ending line 1 meets the
+  // tag's escape opening line 2, so the collapsed text ends "________.\ \".
+  // Stripping only the last one leaves "________.\" on the card.
+  it("strips a RUN of trailing continuation backslashes", () => {
+    expect(stripArtifacts("kept stationary in a uniform magnetic field, then ________.\\ \\")).toBe(
+      "kept stationary in a uniform magnetic field, then ________.",
+    );
+  });
+
+  it("still strips a single trailing continuation backslash", () => {
+    expect(stripArtifacts("the distance between a node and its antinode is ____.\\")).toBe(
+      "the distance between a node and its antinode is ____.",
+    );
+  });
+
+  // "\[...\]" is this project's DISPLAY-MATH delimiter, so an escaped prose
+  // bracket does not merely look untidy — it typesets the board's "Given:"
+  // clause as maths, or ships a literal "\[" when the pair is unbalanced.
+  it("unescapes a prose bracket pair", () => {
+    expect(stripArtifacts("What is the diameter of the drop? \\[Assume all terms in SI unit\\].")).toBe(
+      "What is the diameter of the drop? [Assume all terms in SI unit].",
+    );
+  });
+
+  it("pulls a closing bracket back out of the math zone it was absorbed into", () => {
+    expect(stripArtifacts("Calculate the length of the circular track. \\[\\(\\pi = 3.142 \\rbrack\\).")).toBe(
+      "Calculate the length of the circular track. [\\(\\pi = 3.142\\)].",
+    );
+  });
+
+  it("leaves a genuine \\lbrack...\\rbrack pair inside a zone alone", () => {
+    const s = "the dimensions are \\(\\left\\lbrack L^{-1}M^{1}T^{-2} \\right\\rbrack\\)";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
+  it("never strips a closing math delimiter, which also ends in a backslash-paren", () => {
+    expect(stripArtifacts("the value of \\(x\\)")).toBe("the value of \\(x\\)");
+  });
+
+  // pandoc's hard-wrap backslash also lands MID-sentence, where the item wraps
+  // and no provenance tag is involved. The shipped rule required a SPACE before
+  // it, so "conductor.\ [given data]" was left with a literal backslash on the
+  // card — 11 Physics stems, none in Maths.
+  it("strips a mid-sentence continuation backslash with no space before it", () => {
+    expect(stripArtifacts("mechanical force per unit area of the charged conductor.\\ [given]")).toBe(
+      "mechanical force per unit area of the charged conductor. [given]",
+    );
+  });
+
+  it("KEEPS a LaTeX thin space inside a math zone — the same two characters", () => {
+    const s = "the p.d.f. is \\(\\ \\ \\ = 0\\) elsewhere";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
+  it("keeps a question mark rather than replacing it with a full stop", () => {
+    expect(stripArtifacts("what is the magnetic field at the centre of the coil? \\.")).toBe(
+      "what is the magnetic field at the centre of the coil?",
+    );
+  });
+
+  it("still restores the fill-in blank from a trailing \\: — the Maths path", () => {
+    expect(stripArtifacts("the equation of the tangent at P(1,3) is \\:")).toBe(
+      "the equation of the tangent at P(1,3) is ______.",
+    );
+  });
+
+  it("removes a numbered banner that is bold and absorbed into an option", () => {
+    expect(
+      stripArtifacts("both current and e.m.f. are induced #### **2. Self Induction and Mutual Induction**"),
+    ).toBe("both current and e.m.f. are induced");
+  });
+
   it("removes an absorbed banner that follows a continuation backslash", () => {
     expect(stripArtifacts("If \\(x<y\\). \\ #### **D. Symbolic Logic**")).toBe("If \\(x<y\\).");
   });
@@ -368,5 +484,47 @@ describe("splitImage", () => {
   it("KEEPS a circuit description when there is no image to replace it", () => {
     const s = "Express the circuit: (Circuit diagram showing \\(S_{1}\\) in series).";
     expect(splitImage(s)).toEqual({ text: s });
+  });
+});
+
+describe("stripArtifacts — a trailing thin space before a math-zone close", () => {
+  // These render fine on the web (KaTeX ignores the dangling spacing macro) and
+  // are UNCONVERTIBLE to OMML, so they would ship as raw LaTeX in a teacher's
+  // downloaded Word answer key and nowhere else. Seven zones across four Physics
+  // rows were shaped this way; `audit:omml` is the only gate that sees them.
+  //
+  // The discriminator is position: a thin space at the END of a zone is dead
+  // (nothing follows it to be spaced from), while one at the START or INSIDE is
+  // real layout this corpus depends on.
+  it("drops a single trailing thin space", () => {
+    // Kinetic Theory Q.1(vi) option B, verbatim.
+    expect(stripArtifacts("\\(\\left( \\frac{3}{2} \\right)k_{B}T\\ \\)"))
+      .toBe("\\(\\left( \\frac{3}{2} \\right)k_{B}T\\)");
+  });
+
+  it("drops a RUN of trailing thin spaces", () => {
+    // Kinetic Theory Q.1(vi) option A carries two; Dual Nature Q.5(v) B likewise.
+    expect(stripArtifacts("\\(\\frac{h\\nu}{c}\\ \\ \\)")).toBe("\\(\\frac{h\\nu}{c}\\)");
+  });
+
+  it("KEEPS a LEADING thin space — it is real layout, and it converts fine", () => {
+    // Kinetic Theory Q.1(i) option C and Fluids Q.1(ii) option D both open with one.
+    expect(stripArtifacts("\\(\\ hE\\)")).toBe("\\(\\ hE\\)");
+  });
+
+  it("KEEPS a thin space INSIDE a group", () => {
+    const s = "\\(\\ \\frac{1}{\\sqrt{2}\\pi nd^{2}\\ }\\)";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
+  it("leaves a zone with no trailing space untouched", () => {
+    const s = "\\(\\left( \\frac{2}{3} \\right)RT\\)";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
+  it("handles the leading-and-trailing case, dropping only the trailing one", () => {
+    // Fluids Q.1(ii) option A, verbatim.
+    expect(stripArtifacts("\\(\\ \\left\\lbrack L^{- 1}M^{1}T^{- 2} \\right\\rbrack\\ \\)"))
+      .toBe("\\(\\ \\left\\lbrack L^{- 1}M^{1}T^{- 2} \\right\\rbrack\\)");
   });
 });

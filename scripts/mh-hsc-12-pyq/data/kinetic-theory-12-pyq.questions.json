@@ -1,0 +1,399 @@
+[
+  {
+    "ref": "kinetic-theory-12-pyq#1",
+    "questionNumber": "Q. 2(ii)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Mean Free Path and Pressure of an Ideal Gas",
+    "stem": "State any 'four' assumptions of kinetic theory of gases.",
+    "solution": "The kinetic theory of gases rests on the following assumptions about the molecules of an ideal gas.\n\n1. **A gas consists of a very large number of identical molecules** (of the order of \\(10^{23}\\) per \\(\\text{m}^{3}\\)), uniformly dispersed throughout the volume of the container and in continuous random motion in all directions. Because the number is so large, the macroscopic properties of the gas are the averages of the molecular quantities.\n\n2. **The size of a molecule is negligible** compared with the average distance between two molecules, so a molecule may be treated as a point particle. The total volume occupied by the molecules themselves is negligible compared with the volume of the container.\n\n3. **The molecules exert no force on one another except during a collision.** Between two successive collisions a molecule therefore travels along a straight line with constant velocity, and the average distance so travelled is the mean free path \\(\\lambda\\).\n\n4. **All collisions — between two molecules, and between a molecule and the wall of the container — are perfectly elastic**, and the time of a collision is negligible compared with the time between two successive collisions. Kinetic energy and momentum are therefore conserved in every collision, so the gas neither gains nor loses energy through collisions and the molecules obey Newton's laws of motion throughout.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#2",
+    "questionNumber": "Q. 7",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Mean Free Path and Pressure of an Ideal Gas",
+    "stem": "Deduce Boyle's law using the expression for pressure exerted by the gas.",
+    "solution": "From the kinetic theory, the pressure exerted by an ideal gas containing \\(N\\) molecules each of mass \\(m\\) in a volume \\(V\\) is\n\n\\(P = \\dfrac{1}{3}\\,\\dfrac{N}{V}\\,m\\,\\overline{v^{2}}\\)\n\nwhere \\(\\overline{v^{2}}\\) is the mean square speed of the molecules.\n\nMultiplying both sides by \\(V\\),\n\n\\(PV = \\dfrac{1}{3} N m \\overline{v^{2}} = \\dfrac{2}{3} N \\left( \\dfrac{1}{2} m \\overline{v^{2}} \\right)\\)\n\nThe bracket is the average kinetic energy of one molecule. Comparing \\(PV = \\dfrac{2}{3}N\\left(\\dfrac{1}{2}m\\overline{v^{2}}\\right)\\) with the equation of state \\(PV = N k_{B} T\\) gives\n\n\\(\\dfrac{1}{2} m \\overline{v^{2}} = \\dfrac{3}{2} k_{B} T\\)\n\nso the average kinetic energy of a molecule depends only on the absolute temperature of the gas.\n\nNow take a **fixed mass of gas held at a constant temperature**. Then \\(N\\) is fixed, \\(m\\) is fixed, and since \\(T\\) is constant \\(\\overline{v^{2}}\\) is also constant. Hence the whole of the right-hand side of\n\n\\(PV = \\dfrac{1}{3} N m \\overline{v^{2}}\\)\n\nis a constant.\n\n\\(\\therefore PV = \\text{constant}\\), or \\(P \\propto \\dfrac{1}{V}\\) at constant temperature,\n\nwhich is Boyle's law.\n\nThe molecular picture agrees: reducing \\(V\\) at constant \\(T\\) leaves the molecular speeds unchanged but increases the number density \\(N/V\\), so the molecules strike unit area of the wall more often and the pressure rises in the same proportion — halving the volume doubles the pressure, as \\(PV = \\text{constant}\\) requires.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#3",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Mean Free Path and Pressure of an Ideal Gas",
+    "stem": "Derive an expression for a pressure exerted by a gas on the basis of kinetic theory of gases.",
+    "solution": "**Assumptions.** The gas is ideal: its molecules are point particles in continuous random motion, they exert no force on one another except during collisions, all collisions are perfectly elastic, and intermolecular collisions may be neglected in comparison with collisions with the walls.\n\nLet \\(N\\) molecules, each of mass \\(m\\), be enclosed in a cubical box of side \\(L\\) and volume \\(V = L^{3}\\), the walls being parallel to the coordinate axes and held at a constant temperature \\(T\\).\n\n**Momentum given to one wall in one collision.** Consider a molecule with velocity components \\(v_{x}, v_{y}, v_{z}\\) moving towards the shaded wall, which is parallel to the \\(yz\\)-plane. The collision is elastic, so the \\(x\\) component is reversed while \\(v_{y}\\) and \\(v_{z}\\) are unchanged.\n\nChange in momentum of the molecule \\(= (-m v_{x}) - (m v_{x}) = -2 m v_{x}\\)\n\nMomentum transferred to the wall \\(= 2 m v_{x}\\)\n\n**Time between two successive collisions with the same wall.** After the collision the molecule travels to the opposite wall and returns, covering a distance \\(2L\\):\n\n\\(\\Delta t = \\dfrac{2L}{v_{x}}\\)\n\n**Average force due to one molecule** = average rate of change of momentum\n\n\\(f_{1} = \\dfrac{2 m v_{x1}}{2L / v_{x1}} = \\dfrac{m v_{x1}^{2}}{L}\\)\n\n**Total force due to all the molecules.** Adding the contributions of molecules \\(1, 2, 3, \\ldots, N\\),\n\n\\(F = \\dfrac{m}{L}\\left( v_{x1}^{2} + v_{x2}^{2} + \\cdots + v_{xN}^{2} \\right)\\)\n\n**Pressure** = force per unit area of the shaded wall, whose area is \\(L^{2}\\):\n\n\\(P = \\dfrac{F}{L^{2}} = \\dfrac{m}{L^{3}}\\left( v_{x1}^{2} + \\cdots + v_{xN}^{2} \\right) = \\dfrac{m N}{V} \\,\\overline{v_{x}^{2}}\\)\n\nwhere \\(\\overline{v_{x}^{2}} = \\dfrac{v_{x1}^{2} + \\cdots + v_{xN}^{2}}{N}\\) is the average over all the molecules.\n\n**Removing the direction.** For any molecule \\(v^{2} = v_{x}^{2} + v_{y}^{2} + v_{z}^{2}\\), so \\(\\overline{v^{2}} = \\overline{v_{x}^{2}} + \\overline{v_{y}^{2}} + \\overline{v_{z}^{2}}\\). The molecules have no preferred direction of motion, hence\n\n\\(\\overline{v_{x}^{2}} = \\overline{v_{y}^{2}} = \\overline{v_{z}^{2}} = \\dfrac{1}{3}\\overline{v^{2}}\\)\n\n\\(\\therefore P = \\dfrac{1}{3}\\,\\dfrac{N}{V}\\, m\\, \\overline{v^{2}}\\)\n\nWriting the density of the gas as \\(\\rho = \\dfrac{Nm}{V}\\), the same result is\n\n\\(P = \\dfrac{1}{3}\\rho\\,\\overline{v^{2}}\\)\n\nThe result was obtained for a cubical box, but it holds for a container of any shape, and allowing for intermolecular collisions does not change it, because for every molecule that acquires a new velocity in a collision another molecule acquires the velocity it has lost, the gas being in equilibrium.\n\nChecking the dimensions of the final form: \\(\\rho \\overline{v^{2}}\\) has units \\(\\text{kg m}^{-3} \\times \\text{m}^{2}\\text{s}^{-2} = \\text{kg m}^{-1}\\text{s}^{-2} = \\text{N m}^{-2}\\), which is pressure.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#4",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Mean Free Path and Pressure of an Ideal Gas",
+    "stem": "On the basis of kinetic theory of gases obtain an expression for pressure exerted by gas molecules enclosed in a container on its walls.",
+    "solution": "**Assumptions.** The gas is ideal: a very large number of point-like molecules in continuous random motion, exerting no force on one another except during collisions, all collisions perfectly elastic, and intermolecular collisions negligible compared with collisions with the walls.\n\nLet the container be a cube of side \\(L\\) and volume \\(V = L^{3}\\), holding \\(N\\) molecules each of mass \\(m\\), its walls parallel to the coordinate axes.\n\n**Step 1 — momentum delivered to a wall.** Take a molecule whose velocity has components \\(v_{x}, v_{y}, v_{z}\\), moving towards the wall parallel to the \\(yz\\)-plane. In an elastic collision with that wall only \\(v_{x}\\) is reversed:\n\nchange in momentum of the molecule \\(= (-m v_{x}) - (m v_{x}) = -2 m v_{x}\\)\n\nso the momentum received by the wall in one collision is \\(2 m v_{x}\\).\n\n**Step 2 — how often it collides.** Between two successive collisions with the same wall the molecule travels to the far wall and back, a distance \\(2L\\), so\n\n\\(\\Delta t = \\dfrac{2L}{v_{x}}\\)\n\n**Step 3 — average force from one molecule.**\n\n\\(f = \\dfrac{\\text{momentum transferred}}{\\text{time}} = \\dfrac{2 m v_{x}}{2L / v_{x}} = \\dfrac{m v_{x}^{2}}{L}\\)\n\n**Step 4 — force from all \\(N\\) molecules.**\n\n\\(F = \\dfrac{m}{L}\\left( v_{x1}^{2} + v_{x2}^{2} + \\cdots + v_{xN}^{2} \\right) = \\dfrac{m N}{L}\\,\\overline{v_{x}^{2}}\\)\n\n**Step 5 — pressure on the wall.** The wall has area \\(L^{2}\\):\n\n\\(P = \\dfrac{F}{L^{2}} = \\dfrac{m N}{L^{3}}\\,\\overline{v_{x}^{2}} = \\dfrac{m N}{V}\\,\\overline{v_{x}^{2}}\\)\n\n**Step 6 — using the randomness of the motion.** Since \\(v^{2} = v_{x}^{2} + v_{y}^{2} + v_{z}^{2}\\) and no direction is preferred,\n\n\\(\\overline{v_{x}^{2}} = \\overline{v_{y}^{2}} = \\overline{v_{z}^{2}} = \\dfrac{1}{3}\\overline{v^{2}}\\)\n\n\\(\\therefore P = \\dfrac{1}{3}\\,\\dfrac{N}{V}\\,m\\,\\overline{v^{2}} = \\dfrac{1}{3}\\,\\rho\\,\\overline{v^{2}}\\)\n\nwhere \\(\\rho = \\dfrac{Nm}{V}\\) is the density of the gas. This is the required expression for the pressure exerted by the gas on the walls of its container.\n\nThe expression stands up to two checks. Dimensionally, \\(\\rho\\overline{v^{2}}\\) is \\(\\text{kg m}^{-3}\\times\\text{m}^{2}\\text{s}^{-2} = \\text{N m}^{-2}\\), a pressure. Physically, multiplying by \\(V\\) gives \\(PV = \\dfrac{2}{3}N\\left(\\dfrac{1}{2}m\\overline{v^{2}}\\right)\\), which with \\(PV = N k_{B}T\\) returns the familiar \\(\\dfrac{1}{2}m\\overline{v^{2}} = \\dfrac{3}{2}k_{B}T\\).",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#5",
+    "questionNumber": "Q. 2(ii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "RMS Speed and Interpretation of Temperature",
+    "stem": "Prove that root mean square velocity of gas molecule is directly proportional to the square root of its absolute temperature.",
+    "solution": "From the kinetic theory, the pressure exerted by an ideal gas of \\(N\\) molecules, each of mass \\(m\\), enclosed in a volume \\(V\\) is\n\n\\(P = \\dfrac{1}{3}\\,\\dfrac{N}{V}\\,m\\,\\overline{v^{2}}\\)\n\nwhere \\(\\overline{v^{2}}\\) is the mean square speed. Multiplying by \\(V\\),\n\n\\(PV = \\dfrac{1}{3} N m \\overline{v^{2}}\\) ... (1)\n\nLet the gas contain \\(n\\) moles, so that the total mass of the gas is \\(Nm = n M_{0}\\), where \\(M_{0}\\) is the molar mass. Then (1) becomes\n\n\\(PV = \\dfrac{1}{3} n M_{0} \\overline{v^{2}}\\) ... (2)\n\nFor \\(n\\) moles of an ideal gas the equation of state is\n\n\\(PV = n R T\\) ... (3)\n\nComparing (2) and (3),\n\n\\(\\dfrac{1}{3} n M_{0} \\overline{v^{2}} = n R T\\)\n\n\\(\\overline{v^{2}} = \\dfrac{3RT}{M_{0}}\\)\n\nThe root mean square speed is defined as \\(v_{rms} = \\sqrt{\\overline{v^{2}}}\\), hence\n\n\\(\\therefore v_{rms} = \\sqrt{\\dfrac{3RT}{M_{0}}}\\)\n\nFor a given gas \\(M_{0}\\) is fixed and \\(R\\) is a universal constant, so \\(\\sqrt{3R/M_{0}}\\) is a constant for that gas. Therefore\n\n\\(v_{rms} \\propto \\sqrt{T}\\)\n\nthat is, the root mean square velocity of the molecules of a gas is directly proportional to the square root of its absolute temperature.\n\nThe relation is consistent with the interpretation of temperature: \\(\\dfrac{1}{2}m\\overline{v^{2}} = \\dfrac{3}{2}k_{B}T\\) gives \\(\\overline{v^{2}} \\propto T\\) for a molecule of fixed mass, so raising the absolute temperature four times doubles the rms speed.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#6",
+    "questionNumber": "Q. 1(v)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "RMS Speed and Interpretation of Temperature",
+    "stem": "The root mean square speed of the molecules of a gas is proportional to ________. [T = Absolute temperature of gas].",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{T}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{\\sqrt{T}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(T\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{T}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(\\sqrt{T}\\)\n\nFor an ideal gas of \\(n\\) moles enclosed in a volume \\(V\\), the kinetic theory gives \\(PV = \\dfrac{1}{3} n M_{0} \\overline{v^{2}}\\), where \\(M_{0}\\) is the molar mass and \\(\\overline{v^{2}}\\) the mean square speed. The equation of state gives \\(PV = nRT\\).\n\nComparing the two,\n\n\\(\\dfrac{1}{3} n M_{0} \\overline{v^{2}} = n R T\\), so \\(\\overline{v^{2}} = \\dfrac{3RT}{M_{0}}\\)\n\n\\(\\therefore v_{rms} = \\sqrt{\\overline{v^{2}}} = \\sqrt{\\dfrac{3RT}{M_{0}}}\\)\n\nFor a given gas \\(R\\) and \\(M_{0}\\) are constants, so\n\n\\(v_{rms} \\propto \\sqrt{T}\\)\n\nThe root mean square speed increases with temperature, which rules out both inverse forms, and it rises as the square root and not in direct proportion — quadrupling the absolute temperature only doubles the rms speed.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#7",
+    "questionNumber": "Q. 1(i)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Mean Free Path and Pressure of an Ideal Gas",
+    "stem": "If 'n' is the number of molecules per unit volume and 'd' is the diameter of the molecules, the mean free path '\\(\\lambda\\)' of molecules is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{\\frac{2}{\\pi nd}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2\\pi nd^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\ \\frac{1}{\\sqrt{2}\\pi nd^{2}\\ }\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{\\sqrt{2\\pi nd}}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(\\dfrac{1}{\\sqrt{2}\\,\\pi n d^{2}}\\)\n\nThe mean free path is the average distance a molecule travels between two successive collisions.\n\nTreat the molecules as hard spheres of diameter \\(d\\). A moving molecule collides with any molecule whose centre lies within a distance \\(d\\) of its own centre, so as it advances it sweeps out a cylinder of cross-section \\(\\pi d^{2}\\). In time \\(t\\), moving with speed \\(v\\), it sweeps a volume \\(\\pi d^{2} v t\\), and with \\(n\\) molecules per unit volume the number of collisions it makes in that time is\n\n\\(N_{c} = n \\pi d^{2} v t\\)\n\nThe distance covered in that time is \\(v t\\), so\n\n\\(\\lambda = \\dfrac{\\text{distance travelled}}{\\text{number of collisions}} = \\dfrac{v t}{n \\pi d^{2} v t} = \\dfrac{1}{\\pi n d^{2}}\\)\n\nThis result assumes that the other molecules stand still. In fact they are all moving, and what matters is the mean RELATIVE speed, which for a Maxwellian distribution is \\(\\sqrt{2}\\,v\\) rather than \\(v\\). Replacing \\(v\\) by \\(\\sqrt{2}\\,v\\) in the collision count,\n\n\\(\\therefore \\lambda = \\dfrac{1}{\\sqrt{2}\\,\\pi n d^{2}}\\)\n\nThe form of the answer can be checked against the physics it must reproduce. The mean free path must fall as the gas gets denser and as the molecules get bigger, so \\(n\\) and \\(d\\) must both appear in the denominator; and \\(d\\) must appear as \\(d^{2}\\), because it enters through the collision cross-section \\(\\pi d^{2}\\) and not through a length. A form carrying \\(d\\) to the first power inside a square root, or one with the factor \\(2\\) in place of \\(\\sqrt{2}\\), fails one of these tests.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#8",
+    "questionNumber": "Q. 30",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "RMS Speed and Interpretation of Temperature",
+    "stem": "Draw a neat labelled diagram of Ferry's perfectly black body. Compare the rms speed of hydrogen molecules at \\(227^{\\circ}\\text{C}\\) with rms speed of oxygen molecule at \\(127^{\\circ}\\text{C}\\). Given that molecular masses of hydrogen and oxygen are 2 and 32 respectively.",
+    "solution": "**Ferry's perfectly black body**\n\nThe diagram is a double-walled hollow sphere drawn in section, with these labels:\n\n- the **outer wall**, silvered on its outside surface;\n- the **inner wall**, coated on its inside with **lamp black**;\n- the **evacuated space** between the two walls;\n- a small **aperture (hole)** in the wall, through which radiation enters;\n- a **conical projection** on the inner surface, drawn directly opposite the aperture;\n- an arrow showing an incident heat ray entering the aperture and suffering **multiple reflections** inside before being absorbed.\n\nThe conical projection ensures that a ray travelling along the axis of the aperture does not strike the inner surface normally and so is not reflected straight back out along its own path. A ray entering the small hole therefore undergoes multiple reflections, is almost completely absorbed, and has a negligible chance of escaping. The aperture thus behaves as a perfect blackbody.\n\n**Comparison of the rms speeds**\n\n\\(v_{rms} = \\sqrt{\\dfrac{3RT}{M_{0}}}\\), so for two gases\n\n\\(\\dfrac{v_{1}}{v_{2}} = \\sqrt{\\dfrac{T_{1}}{M_{1}} \\times \\dfrac{M_{2}}{T_{2}}}\\)\n\nBoth temperatures must first be converted to kelvin, since the relation holds only for absolute temperature.\n\nHydrogen: \\(T_{1} = 227^{\\circ}\\text{C} = 227 + 273 = 500\\text{ K}\\), \\(M_{1} = 2\\)\n\nOxygen: \\(T_{2} = 127^{\\circ}\\text{C} = 127 + 273 = 400\\text{ K}\\), \\(M_{2} = 32\\)\n\n\\(\\dfrac{v_{\\text{H}_{2}}}{v_{\\text{O}_{2}}} = \\sqrt{\\dfrac{500}{2} \\times \\dfrac{32}{400}} = \\sqrt{250 \\times 0.08} = \\sqrt{20}\\)\n\n\\(\\sqrt{20} = 2\\sqrt{5} = 4.472\\)\n\n\\(\\therefore v_{rms}(\\text{H}_{2}) : v_{rms}(\\text{O}_{2}) = 2\\sqrt{5} : 1 \\approx 4.47 : 1\\)\n\nThe hydrogen molecules are about 4.5 times faster. The size of the ratio is reasonable: hydrogen is 16 times lighter, which alone would make it 4 times faster, and it is also at the higher temperature, which raises the ratio a little further to \\(\\sqrt{20}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#9",
+    "questionNumber": "Q. 1(vi)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "RMS Speed and Interpretation of Temperature",
+    "stem": "The kinetic energy per molecule of a gas at temperature T is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\left( \\frac{3}{2} \\right)RT\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\left( \\frac{3}{2} \\right)k_{B}T\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left( \\frac{2}{3} \\right)RT\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left( \\frac{3}{2} \\right)\\left( \\frac{RT}{M} \\right)\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(\\left( \\dfrac{3}{2} \\right) k_{B} T\\)\n\nFrom the kinetic theory, the pressure of an ideal gas containing \\(N\\) molecules each of mass \\(m\\) in a volume \\(V\\) is\n\n\\(P = \\dfrac{1}{3}\\,\\dfrac{N}{V}\\, m\\, \\overline{v^{2}}\\)\n\n\\(\\therefore PV = \\dfrac{1}{3} N m \\overline{v^{2}} = \\dfrac{2}{3} N \\left( \\dfrac{1}{2} m \\overline{v^{2}} \\right)\\)\n\nThe bracket is the average kinetic energy of a single molecule. The equation of state gives \\(PV = N k_{B} T\\), where \\(k_{B}\\) is the Boltzmann constant. Comparing the two expressions for \\(PV\\),\n\n\\(\\dfrac{2}{3} N \\left( \\dfrac{1}{2} m \\overline{v^{2}} \\right) = N k_{B} T\\)\n\n\\(\\therefore \\dfrac{1}{2} m \\overline{v^{2}} = \\dfrac{3}{2} k_{B} T\\)\n\nSo the kinetic energy PER MOLECULE is \\(\\dfrac{3}{2} k_{B} T\\), and it depends only on the absolute temperature and not on the mass or the nature of the molecule.\n\nThe other quantities in the list are the same energy expressed for different amounts of gas: \\(\\dfrac{3}{2} R T\\) is the average kinetic energy per MOLE, obtained by multiplying by the Avogadro number and using \\(N_{A} k_{B} = R\\), while \\(\\dfrac{3}{2}\\dfrac{RT}{M_{0}}\\) is the kinetic energy per unit MASS.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#10",
+    "questionNumber": "Q. 2(viii)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "RMS Speed and Interpretation of Temperature",
+    "stem": "Find kinetic energy of 1 litre of an ideal gas at S.T.P.",
+    "solution": "From the kinetic theory, for a gas of \\(N\\) molecules each of mass \\(m\\) in a volume \\(V\\),\n\n\\(PV = \\dfrac{1}{3} N m \\overline{v^{2}} = \\dfrac{2}{3}\\left[ N \\times \\dfrac{1}{2} m \\overline{v^{2}} \\right] = \\dfrac{2}{3} E\\)\n\nwhere \\(E\\) is the total translational kinetic energy of all the molecules in the volume \\(V\\).\n\n\\(\\therefore E = \\dfrac{3}{2} P V\\)\n\n**Given.** \\(V = 1\\text{ litre} = 1 \\times 10^{-3}\\text{ m}^{3}\\), and at S.T.P. the standard pressure is \\(P = 1.013 \\times 10^{5}\\text{ N/m}^{2}\\).\n\n\\(E = \\dfrac{3}{2} \\times \\left( 1.013 \\times 10^{5} \\right) \\times \\left( 1 \\times 10^{-3} \\right)\\)\n\n\\(= 1.5 \\times 101.3\\)\n\n\\(\\therefore E = 151.95\\text{ J} \\approx 1.52 \\times 10^{2}\\text{ J}\\)\n\nNo temperature is needed, because the pressure and the volume between them already fix the total kinetic energy through \\(E = \\dfrac{3}{2}PV\\). Substituting back, \\(\\dfrac{2}{3}E = \\dfrac{2}{3}\\times 151.95 = 101.3 = PV\\), which is the given data, so the value is consistent.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#12",
+    "questionNumber": "Q. 2(vi)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Law of Equipartition of Energy and Degrees of Freedom",
+    "stem": "For polyatomic molecules having 'f' vibrational modes, the ratio of two specific heats, \\(\\frac{C_{P}}{C_{V}}\\) is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1 + f}{2 + f}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{2 + f}{3 + f}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{4 + f}{3 + f}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5 + f}{4 + f}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(\\dfrac{4 + f}{3 + f}\\)\n\nBy the law of equipartition of energy, for a gas in thermal equilibrium at temperature \\(T\\) the average energy per molecule associated with each quadratic term in its energy is \\(\\dfrac{1}{2} k_{B} T\\).\n\nCount the contributions for one molecule of a polyatomic gas:\n\n- 3 translational degrees of freedom, contributing \\(3 \\times \\dfrac{1}{2} k_{B} T = \\dfrac{3}{2} k_{B} T\\);\n- 3 rotational degrees of freedom, about three mutually perpendicular axes through the centre of mass, contributing \\(\\dfrac{3}{2} k_{B} T\\);\n- \\(f\\) vibrational modes. A vibration carries TWO quadratic terms, one kinetic \\(\\left( \\dfrac{1}{2} m u^{2} \\right)\\) and one potential \\(\\left( \\dfrac{1}{2} k r^{2} \\right)\\), so each mode contributes \\(2 \\times \\dfrac{1}{2} k_{B} T = k_{B} T\\), giving \\(f k_{B} T\\) in all.\n\nFor one mole, multiply by the Avogadro number \\(N_{A}\\) and use \\(N_{A} k_{B} = R\\):\n\n\\(E = \\dfrac{3}{2} R T + \\dfrac{3}{2} R T + f R T = (3 + f) R T\\)\n\n\\(C_{V} = \\dfrac{dE}{dT} = (3 + f) R\\)\n\nBy Mayer's relation \\(C_{P} - C_{V} = R\\),\n\n\\(C_{P} = (3 + f) R + R = (4 + f) R\\)\n\n\\(\\therefore \\gamma = \\dfrac{C_{P}}{C_{V}} = \\dfrac{4 + f}{3 + f}\\)\n\nThe result behaves as it should. Putting \\(f = 0\\) gives \\(\\gamma = 4/3\\), the value for a rigid non-linear polyatomic molecule with translation and rotation only; and as \\(f\\) grows, \\(\\gamma\\) falls steadily towards 1, since each new vibrational mode adds the same \\(R\\) to both \\(C_{P}\\) and \\(C_{V}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#13",
+    "questionNumber": "Q. 2",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Specific Heat Capacity and Mayer's Relation",
+    "stem": "The specific heat capacity of water is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(8R\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{7}{8}R\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(9R\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{9}{7}R\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(9R\\)\n\nA water molecule in the liquid is not free to translate or rotate as a gas molecule is; each of its atoms is held about a mean position and can only VIBRATE. Water is therefore treated in the same way as a solid.\n\nAn atom vibrating about a fixed mean position oscillates along three mutually perpendicular directions. Each such vibration carries two quadratic terms in the energy, one kinetic and one potential, so by the law of equipartition each contributes \\(2 \\times \\dfrac{1}{2} k_{B} T = k_{B} T\\).\n\nAverage energy per atom \\(= 3 \\times k_{B} T = 3 k_{B} T\\)\n\nA water molecule \\(\\left( \\text{H}_{2}\\text{O} \\right)\\) contains three atoms — two hydrogen and one oxygen — so\n\naverage energy per molecule \\(= 3 \\times 3 k_{B} T = 9 k_{B} T\\)\n\nFor one mole, multiply by the Avogadro number \\(N_{A}\\) and use \\(N_{A} k_{B} = R\\):\n\n\\(E = 9 N_{A} k_{B} T = 9 R T\\)\n\n\\(\\therefore C = \\dfrac{dE}{dT} = 9R\\)\n\nNumerically \\(9R = 9 \\times 8.314 = 74.8\\text{ J mol}^{-1}\\text{K}^{-1}\\), which is close to the measured value of about \\(75.2\\text{ J mol}^{-1}\\text{K}^{-1}\\) for water, so the vibrational count of nine quadratic pairs per molecule is the right one.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#14",
+    "questionNumber": "Q. 14",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Specific Heat Capacity and Mayer's Relation",
+    "stem": "The difference between the two molar specific heats of a gas is 9000 J/kg K. If the ratio of the two specific heats is 1.5, calculate the two molar specific heats.",
+    "solution": "**Given.** \\(C_{P} - C_{V} = 9000\\text{ J kg}^{-1}\\text{K}^{-1}\\) and \\(\\dfrac{C_{P}}{C_{V}} = 1.5\\), the ratio being taken this way round since \\(C_{P} > C_{V}\\).\n\nFrom the ratio,\n\n\\(C_{P} = 1.5\\, C_{V}\\)\n\nSubstituting in the difference,\n\n\\(1.5\\, C_{V} - C_{V} = 9000\\)\n\n\\(0.5\\, C_{V} = 9000\\)\n\n\\(\\therefore C_{V} = \\dfrac{9000}{0.5} = 18000 = 1.8 \\times 10^{4}\\text{ J kg}^{-1}\\text{K}^{-1}\\)\n\nand\n\n\\(C_{P} = 9000 + C_{V} = 9000 + 18000 = 27000 = 2.7 \\times 10^{4}\\text{ J kg}^{-1}\\text{K}^{-1}\\)\n\nBoth given conditions are satisfied by these values: their difference is \\(27000 - 18000 = 9000\\text{ J kg}^{-1}\\text{K}^{-1}\\) and their ratio is \\(27000 / 18000 = 1.5\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#15",
+    "questionNumber": "Q. 1(iv)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "Define 'emissive power' and 'coefficient of emission of a body'.",
+    "solution": "**Emissive power (radiant power).** The emissive power \\(R\\) of a body at a given temperature is defined as the quantity of radiant heat energy emitted per unit time per unit surface area of the body at that temperature.\n\nIf a body of surface area \\(A\\) emits a quantity of heat \\(Q\\) in time \\(t\\), then\n\n\\(R = \\dfrac{Q}{A t}\\)\n\nSI unit: \\(\\text{J m}^{-2}\\text{s}^{-1}\\), that is \\(\\text{W m}^{-2}\\). Dimensions: \\(\\left[ L^{0} M^{1} T^{-3} \\right]\\).\n\n**Coefficient of emission (emissivity).** The coefficient of emission or emissivity \\(e\\) of a given surface is defined as the ratio of the emissive power \\(R\\) of that surface to the emissive power \\(R_{B}\\) of a perfect blackbody at the same temperature.\n\n\\(e = \\dfrac{R}{R_{B}}\\)\n\nBeing a ratio of two quantities of the same kind, \\(e\\) is a pure number: it has no unit and no dimensions. At a given temperature a perfect blackbody has the maximum emissive power of any body, so \\(e = 1\\) for a perfect blackbody and \\(e = 0\\) for a perfect reflector, and for every ordinary surface \\(0 < e < 1\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#16",
+    "questionNumber": "Q. 1(vii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Spectral Distribution and Wien's Displacement Law",
+    "stem": "Find the wavelength at which a black body radiates maximum energy, if its temperature is \\(427^{\\circ}\\text{C}\\). (Wein's constant \\(b = 2.898 \\times 10^{- 3}\\text{ mK}\\)).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.0414 \\times 10^{- 6}\\text{ m}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4.14 \\times 10^{- 6}\\text{ m}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(41.4 \\times 10^{- 6}\\text{ m}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(414 \\times 10^{- 6}\\text{ m}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(4.14 \\times 10^{-6}\\text{ m}\\)\n\nBy Wien's displacement law, the wavelength at which a blackbody radiates the maximum energy is inversely proportional to its absolute temperature:\n\n\\(\\lambda_{\\max} T = b\\), so \\(\\lambda_{\\max} = \\dfrac{b}{T}\\)\n\n**Given.** \\(T = 427^{\\circ}\\text{C} = 427 + 273 = 700\\text{ K}\\) and \\(b = 2.898 \\times 10^{-3}\\text{ m K}\\). The temperature must be in kelvin, since the law holds for absolute temperature.\n\n\\(\\lambda_{\\max} = \\dfrac{2.898 \\times 10^{-3}}{700}\\)\n\n\\(= 4.14 \\times 10^{-6}\\text{ m}\\)\n\n\\(\\therefore \\lambda_{\\max} = 4.14 \\times 10^{-6}\\text{ m}\\)\n\nSubstituting back, \\(\\lambda_{\\max} T = 4.14 \\times 10^{-6} \\times 700 = 2.898 \\times 10^{-3}\\text{ m K}\\), which is Wien's constant as given. The value lies in the infrared region, which is where a body at 700 K should radiate most strongly.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#17",
+    "questionNumber": "Q. 22",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "What is perfectly black body? Explain Ferry's black body.",
+    "solution": "**Perfect blackbody.** A body which absorbs the ENTIRE radiant energy incident on it is called an ideal or perfect blackbody. For such a body the coefficient of absorption \\(a = 1\\), and therefore the coefficients of reflection and transmission are both zero, \\(r = 0\\) and \\(t_{r} = 0\\). Since it reflects nothing, such a surface appears black, unless its temperature is high enough for it to be self-luminous. At a given temperature a perfect blackbody is also the best possible emitter, so its emissivity \\(e = 1\\) and its emissive power is the greatest of any body at that temperature.\n\nNo real material is a perfect blackbody. Lamp black and platinum black absorb nearly 97% of the radiant heat incident on them and only come close.\n\n**Ferry's blackbody.** A near-perfect blackbody is realized not as a surface but as a cavity with a small aperture, and the standard arrangement is the one designed by Ferry.\n\nIts construction is as follows.\n\n- It consists of a **double-walled hollow sphere** with a **tiny hole or aperture** through which radiant heat can enter.\n- The **space between the two walls is evacuated** and the **outer surface is silvered**, so that heat is not lost from the sphere.\n- The **inner surface is coated with lamp black**, which absorbs most of the energy at each reflection.\n- There is a **conical projection on the inner surface directly opposite the aperture**.\n\nIts working. A heat ray entering through the small hole strikes the blackened inner surface and suffers multiple reflections inside the sphere. At each reflection most of the remaining energy is absorbed, so the ray is almost completely absorbed and has a negligible chance of finding its way out again through the small hole. The conical projection ensures that a ray travelling along the axis of the aperture does not fall normally on the inner surface, so it cannot be reflected straight back out along its own path.\n\nThe aperture therefore absorbs practically all the radiation incident on it and behaves as a perfect blackbody. In a similar construction Wien used a cylindrical body with a vertical slit as the aperture, which gives a greater effective area.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#18",
+    "questionNumber": "Q. 21",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Spectral Distribution and Wien's Displacement Law",
+    "stem": "Explain energy distribution spectrum of a black body radiation in terms of wavelength.",
+    "solution": "The radiant energy emitted per unit area per unit time by a blackbody is not shared equally among all wavelengths. The quantity plotted is \\(R_{\\lambda}\\), the radiant power emitted per unit area per unit range of wavelength, and a graph of \\(R_{\\lambda}\\) against the wavelength \\(\\lambda\\) at a fixed temperature is the energy distribution spectrum of blackbody radiation. Lummer and Pringsheim obtained these curves experimentally by holding a cavity radiator at a series of constant temperatures and measuring the radiant power at different wavelengths.\n\nThe experimental curves show the following.\n\n1. At a given temperature the energy is NOT uniformly distributed over the wavelengths of the spectrum.\n\n2. At a given temperature the radiant power starts from zero, increases as the wavelength increases, reaches a maximum at a particular wavelength \\(\\lambda_{\\max}\\), and then decreases, falling off gradually at long wavelengths. Here \\(\\lambda_{\\max}\\) is the wavelength of maximum INTENSITY and is characteristic of the temperature of the body; it is not the largest wavelength the body emits.\n\n3. The area under a curve gives the total energy emitted per unit time per unit area at all wavelengths, which by the Stefan-Boltzmann law is \\(\\sigma T^{4}\\).\n\n4. As the temperature is raised the peak shifts towards the LEFT, that is towards shorter wavelengths, so \\(\\lambda_{\\max}\\) decreases as \\(T\\) increases. This is Wien's displacement law, \\(\\lambda_{\\max} T = b\\).\n\n5. At a higher temperature the radiant power is greater at EVERY wavelength, so the whole curve lies above the curves drawn for lower temperatures and two such curves never cross. The area under the curve, and hence the total energy radiated, increases rapidly as \\(T^{4}\\).\n\n6. At about 300 K almost the whole of the radiated energy is carried by wavelengths longer than those of red light, that is in the infrared, which is why bodies at room temperature are not seen to glow.\n\nThe distribution depends only on the absolute temperature of the blackbody and not at all on the material of which it is made, nor on the shape or size of the cavity.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#19",
+    "questionNumber": "Q. 1(iii)",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Absorption, Reflection and Transmission of Heat Radiation",
+    "stem": "Which of the following materials belongs to diathermanous substance?",
+    "options": [
+      {
+        "label": "A",
+        "text": "wood"
+      },
+      {
+        "label": "B",
+        "text": "iron"
+      },
+      {
+        "label": "C",
+        "text": "glass"
+      },
+      {
+        "label": "D",
+        "text": "copper"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** glass\n\nOf the thermal radiation incident on a body, the fractions absorbed, reflected and transmitted satisfy\n\n\\(a + r + t_{r} = 1\\)\n\nA substance through which heat radiation can pass is called a DIATHERMANOUS substance, so for it the coefficient of transmission \\(t_{r} \\neq 0\\). A diathermanous body is neither a good absorber nor a good reflector. Glass, quartz, sodium chloride, hydrogen, oxygen and dry air are diathermanous.\n\nA substance which is largely opaque to thermal radiation, that is which does not transmit the heat radiation incident on it, is called an ATHERMANOUS substance; for it \\(t_{r} = 0\\) and \\(a + r = 1\\). Water, wood, iron, copper, moist air and benzene are athermanous.\n\nOf the four materials listed in the question, wood, iron and copper are all athermanous and transmit no heat radiation, while glass transmits it.\n\n\\(\\therefore\\) glass is the diathermanous substance.\n\nThe classification is not a property of the material alone: \\(a\\), \\(r\\) and \\(t_{r}\\) also depend on the wavelength of the incident radiation, so a substance may be diathermanous for one range of wavelengths and athermanous for another.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#20",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "Calculate the energy radiated in one minute by a perfectly black body of surface area \\(200\\text{ cm}^{2}\\) when it is maintained at \\(127^{\\circ}\\text{C}\\).",
+    "solution": "By the Stefan-Boltzmann law, the power radiated per unit area of a perfect blackbody is \\(R = \\sigma T^{4}\\). If such a body of surface area \\(A\\) radiates for a time \\(t\\), the energy radiated is\n\n\\(Q = \\sigma A t T^{4}\\)\n\n**Given.** \\(A = 200\\text{ cm}^{2} = 200 \\times 10^{-4}\\text{ m}^{2}\\), \\(T = 127^{\\circ}\\text{C} = 127 + 273 = 400\\text{ K}\\), \\(t = 1\\text{ minute} = 60\\text{ s}\\), and Stefan's constant \\(\\sigma = 5.67 \\times 10^{-8}\\text{ J m}^{-2}\\text{s}^{-1}\\text{K}^{-4}\\).\n\n\\(Q = 5.67 \\times 10^{-8} \\times 200 \\times 10^{-4} \\times 60 \\times (400)^{4}\\)\n\n\\((400)^{4} = 2.56 \\times 10^{10}\\), and \\(200 \\times 10^{-4} \\times 60 = 1.2\\), so\n\n\\(Q = 5.67 \\times 10^{-8} \\times 1.2 \\times 2.56 \\times 10^{10} = 5.67 \\times 1.2 \\times 256\\)\n\n\\(\\therefore Q = 1741.8\\text{ J} \\approx 1742\\text{ J}\\)\n\nDividing back, the power radiated is \\(1741.8 / 60 = 29.0\\text{ W}\\) from \\(0.02\\text{ m}^{2}\\), that is \\(1451\\text{ W m}^{-2}\\), and \\(\\sigma T^{4} = 5.67 \\times 10^{-8} \\times 2.56 \\times 10^{10} = 1451\\text{ W m}^{-2}\\), so the value is consistent.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#21",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Kirchhoff's Law of Heat Radiation",
+    "stem": "State and prove Kirchhoff's law of heat radiation.",
+    "solution": "**Statement.** At a given temperature, the ratio of the emissive power of a body to its coefficient of absorption is equal to the emissive power of a perfect blackbody at the same temperature, for all wavelengths.\n\n\\(\\dfrac{R}{a} = R_{B}\\)\n\nSince the emissivity of a body is defined as \\(e = \\dfrac{R}{R_{B}}\\), the law may equally be stated as: for a body emitting and absorbing thermal radiation in thermal equilibrium, the emissivity is equal to the absorptivity,\n\n\\(a = e\\), or more specifically \\(a(\\lambda) = e(\\lambda)\\)\n\nThat is, a good absorber is a good emitter and a poor absorber is a poor emitter.\n\n**Theoretical proof.** Consider an ordinary body A and a perfect blackbody B, of identical geometric shape, placed inside an enclosure. In thermal equilibrium both bodies are at the same temperature as the enclosure, so neither is heating up nor cooling down.\n\nLet\n\n\\(R\\) = emissive power of body A,\n\n\\(R_{B}\\) = emissive power of the blackbody B,\n\n\\(a\\) = coefficient of absorption of body A,\n\n\\(Q\\) = quantity of radiant heat incident on unit area of each body in unit time.\n\nBody A absorbs only the fraction \\(a\\) of the radiation falling on it, so the quantity of radiant heat absorbed by A in unit time per unit area is\n\n\\(Q_{a} = a Q\\)\n\nSince the temperature of A stays constant, it must emit in unit time exactly as much as it absorbs in unit time. Emissive power is the heat radiated per unit area per unit time, so\n\nquantity of heat emitted by A = quantity of heat absorbed by A\n\n\\(R = a Q\\) ... (1)\n\nNow apply the same argument to the perfect blackbody B. Its coefficient of absorption is 1, so it absorbs the whole of the incident radiation, and being in equilibrium it emits as much as it absorbs:\n\n\\(R_{B} = Q\\) ... (2)\n\nDividing (1) by (2),\n\n\\(\\dfrac{R}{R_{B}} = a\\), that is \\(\\dfrac{R}{a} = R_{B}\\)\n\nBut by definition \\(\\dfrac{R}{R_{B}} = e\\), the emissivity of A.\n\n\\(\\therefore a = e\\)\n\nHence Kirchhoff's law is proved.\n\nEveryday applications follow from it: the bottom of a cooking utensil is blackened so that it absorbs and therefore emits well, and the walls of a thermos flask are silvered because a good reflector is a poor absorber and hence also a poor emitter, which suppresses the exchange of heat by radiation.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#22",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "A metal sphere cools at the rate of \\(4^{\\circ}\\text{C}/\\text{min.}\\) when its temperature is \\(50^{\\circ}\\text{C}\\). Find its rate of cooling at \\(45^{\\circ}\\text{C}\\) if the temperature of surroundings is \\(25^{\\circ}\\text{C}\\).",
+    "solution": "**The cooling relation.** A body at absolute temperature \\(T\\) in surroundings at \\(T_{0}\\) loses heat by radiation at the net rate\n\n\\(\\dfrac{dQ}{dt} = e \\sigma A \\left( T^{4} - T_{0}^{4} \\right) = e \\sigma A (T - T_{0})(T + T_{0})\\left( T^{2} + T_{0}^{2} \\right)\\)\n\nWhen the body is only a little hotter than its surroundings, \\(T \\approx T_{0}\\) in the last two brackets, so\n\n\\(\\dfrac{dQ}{dt} \\approx 4 e \\sigma A T_{0}^{3} (T - T_{0})\\)\n\nThe heat lost cools the body, \\(\\dfrac{dQ}{dt} = -m c \\dfrac{d\\theta}{dt}\\), and therefore the rate of cooling is\n\n\\(-\\dfrac{d\\theta}{dt} = \\dfrac{4 e \\sigma A T_{0}^{3}}{m c}\\left( \\theta - \\theta_{0} \\right) = k \\left( \\theta - \\theta_{0} \\right)\\)\n\nFor a given body in given surroundings \\(k\\) is a constant, so the rate of cooling is directly proportional to the excess of the temperature of the body over that of the surroundings.\n\n**Given.** Surroundings \\(\\theta_{0} = 25^{\\circ}\\text{C}\\).\n\nFirst case: \\(\\theta_{1} = 50^{\\circ}\\text{C}\\), excess \\(= 50 - 25 = 25^{\\circ}\\text{C}\\), rate of cooling \\(= 4^{\\circ}\\text{C/min}\\).\n\nSecond case: \\(\\theta_{2} = 45^{\\circ}\\text{C}\\), excess \\(= 45 - 25 = 20^{\\circ}\\text{C}\\), rate of cooling \\(= x\\).\n\nTaking the ratio of the two cases, \\(k\\) cancels:\n\n\\(\\dfrac{4}{x} = \\dfrac{50 - 25}{45 - 25} = \\dfrac{25}{20}\\)\n\n\\(x = \\dfrac{4 \\times 20}{25}\\)\n\n\\(\\therefore x = 3.2\\ ^{\\circ}\\text{C/min}\\)\n\nThe constant is the same in both cases: \\(k = 4/25 = 0.16\\text{ min}^{-1}\\) from the first, and \\(3.2/20 = 0.16\\text{ min}^{-1}\\) from the second. The body has cooled, so its excess temperature and hence its rate of cooling are smaller, as the answer shows.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#23",
+    "questionNumber": "Q. 2(viii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "A body cools at the rate of \\({0.5}^{\\circ}\\text{C}/\\text{minute}\\) when it is \\(25^{\\circ}\\text{C}\\) above the surroundings. Calculate the rate of cooling when it is \\(15^{\\circ}\\text{C}\\) above the same surroundings.",
+    "solution": "**The cooling relation.** A body at absolute temperature \\(T\\) in surroundings at \\(T_{0}\\) loses heat by radiation at the net rate\n\n\\(\\dfrac{dQ}{dt} = e \\sigma A \\left( T^{4} - T_{0}^{4} \\right) = e \\sigma A (T - T_{0})(T + T_{0})\\left( T^{2} + T_{0}^{2} \\right)\\)\n\nFor a small excess of temperature, \\(T \\approx T_{0}\\) in the last two brackets, so \\(\\dfrac{dQ}{dt} \\approx 4 e \\sigma A T_{0}^{3}(T - T_{0})\\). Since the heat lost cools the body, \\(\\dfrac{dQ}{dt} = -m c \\dfrac{d\\theta}{dt}\\),\n\n\\(-\\dfrac{d\\theta}{dt} = \\dfrac{4 e \\sigma A T_{0}^{3}}{m c}\\left( \\theta - \\theta_{0} \\right) = k \\left( \\theta - \\theta_{0} \\right)\\)\n\nSo the rate of cooling is directly proportional to the excess of the temperature of the body over that of the surroundings, \\(k\\) being a constant for a given body in given surroundings.\n\n**Given.** In the first case the excess temperature is \\(25^{\\circ}\\text{C}\\) and the rate of cooling is \\(0.5\\ ^{\\circ}\\text{C/minute}\\). In the second case the excess temperature is \\(15^{\\circ}\\text{C}\\) and the rate of cooling is \\(x\\). The surroundings are the same in both cases, so the same \\(k\\) applies and cancels in the ratio:\n\n\\(\\dfrac{0.5}{x} = \\dfrac{25}{15}\\)\n\n\\(x = \\dfrac{0.5 \\times 15}{25}\\)\n\n\\(\\therefore x = 0.3\\ ^{\\circ}\\text{C/minute}\\)\n\nThe same constant is obtained from either case, \\(k = 0.5/25 = 0.02\\text{ min}^{-1}\\) and \\(k = 0.3/15 = 0.02\\text{ min}^{-1}\\), so the values are consistent.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#24",
+    "questionNumber": "Q. 4. B",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "A body cools from \\(80^{\\circ}\\text{C}\\) to \\(70^{\\circ}\\text{C}\\) in 5 minutes and to \\(62^{\\circ}\\text{C}\\) in the next 5 minutes. Calculate the temperature of the surroundings.",
+    "solution": "**The cooling relation.** A body at temperature \\(\\theta\\) in surroundings at \\(\\theta_{0}\\) loses heat by radiation at the net rate \\(\\dfrac{dQ}{dt} = e\\sigma A\\left( T^{4} - T_{0}^{4} \\right)\\), which for a small excess of temperature reduces to \\(\\dfrac{dQ}{dt} \\approx 4 e \\sigma A T_{0}^{3}\\left( \\theta - \\theta_{0} \\right)\\). Since \\(\\dfrac{dQ}{dt} = -mc\\dfrac{d\\theta}{dt}\\), the rate of cooling is\n\n\\(-\\dfrac{d\\theta}{dt} = k\\left( \\theta - \\theta_{0} \\right)\\)\n\nOver a time interval that is not too long, this may be applied in the form\n\n\\(\\dfrac{\\theta_{1} - \\theta_{2}}{t} = k\\left[ \\dfrac{\\theta_{1} + \\theta_{2}}{2} - \\theta_{0} \\right]\\)\n\nwhere \\(\\dfrac{\\theta_{1} + \\theta_{2}}{2}\\) is the mean temperature of the body during that interval.\n\n**First interval.** \\(\\theta_{1} = 80^{\\circ}\\text{C}\\), \\(\\theta_{2} = 70^{\\circ}\\text{C}\\), \\(t = 5\\text{ min}\\), mean temperature \\(= \\dfrac{80 + 70}{2} = 75^{\\circ}\\text{C}\\).\n\n\\(\\dfrac{80 - 70}{5} = k\\left( 75 - \\theta_{0} \\right)\\), that is \\(2 = k\\left( 75 - \\theta_{0} \\right)\\) ... (1)\n\n**Second interval.** \\(\\theta_{1} = 70^{\\circ}\\text{C}\\), \\(\\theta_{2} = 62^{\\circ}\\text{C}\\), \\(t = 5\\text{ min}\\), mean temperature \\(= \\dfrac{70 + 62}{2} = 66^{\\circ}\\text{C}\\).\n\n\\(\\dfrac{70 - 62}{5} = k\\left( 66 - \\theta_{0} \\right)\\), that is \\(1.6 = k\\left( 66 - \\theta_{0} \\right)\\) ... (2)\n\n**Dividing (1) by (2)** to eliminate \\(k\\),\n\n\\(\\dfrac{2}{1.6} = \\dfrac{75 - \\theta_{0}}{66 - \\theta_{0}}\\)\n\n\\(1.25\\left( 66 - \\theta_{0} \\right) = 75 - \\theta_{0}\\)\n\n\\(82.5 - 1.25\\,\\theta_{0} = 75 - \\theta_{0}\\)\n\n\\(7.5 = 0.25\\,\\theta_{0}\\)\n\n\\(\\therefore \\theta_{0} = 30\\ ^{\\circ}\\text{C}\\)\n\nSubstituting back in (1), \\(k = \\dfrac{2}{75 - 30} = \\dfrac{2}{45} = 0.0444\\text{ min}^{-1}\\), and (2) then gives \\(k\\left( 66 - 30 \\right) = 0.0444 \\times 36 = 1.6\\ ^{\\circ}\\text{C/min}\\), which is the fall stated in the question.\n\nThe answer does not depend on the approximation used. Integrating \\(-\\dfrac{d\\theta}{dt} = k\\left( \\theta - \\theta_{0} \\right)\\) gives \\(\\theta - \\theta_{0} = \\left( \\theta_{i} - \\theta_{0} \\right)e^{-kt}\\), so over two equal intervals of 5 minutes the excess temperature is multiplied by the same factor each time:\n\n\\(\\dfrac{70 - \\theta_{0}}{80 - \\theta_{0}} = \\dfrac{62 - \\theta_{0}}{70 - \\theta_{0}}\\)\n\n\\(\\left( 70 - \\theta_{0} \\right)^{2} = \\left( 80 - \\theta_{0} \\right)\\left( 62 - \\theta_{0} \\right)\\)\n\n\\(4900 - 140\\,\\theta_{0} = 4960 - 142\\,\\theta_{0}\\), so \\(2\\,\\theta_{0} = 60\\) and \\(\\theta_{0} = 30\\ ^{\\circ}\\text{C}\\) once more.\n\nSo the temperature of the surroundings is \\(30\\ ^{\\circ}\\text{C}\\).",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "kinetic-theory-12-pyq#25",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "stem": "Compare the rate of loss of heat from a metal sphere at \\(827^{\\circ}\\text{C}\\) with rate of loss of heat from the same at \\(427^{\\circ}\\text{C}\\), if the temperature of surrounding is \\(27^{\\circ}\\text{C}\\).",
+    "solution": "**Given.** All temperatures must be converted to kelvin, since the Stefan-Boltzmann law holds for absolute temperature.\n\n\\(T_{1} = 827^{\\circ}\\text{C} = 827 + 273 = 1100\\text{ K}\\)\n\n\\(T_{2} = 427^{\\circ}\\text{C} = 427 + 273 = 700\\text{ K}\\)\n\n\\(T_{0} = 27^{\\circ}\\text{C} = 27 + 273 = 300\\text{ K}\\)\n\nA body of emissivity \\(e\\) and surface area \\(A\\) at temperature \\(T\\), placed in surroundings at \\(T_{0}\\), loses heat at the net rate\n\n\\(R_{1} = \\left( \\dfrac{dQ}{dt} \\right)_{1} = e \\sigma A \\left( T_{1}^{4} - T_{0}^{4} \\right)\\)\n\n\\(R_{2} = \\left( \\dfrac{dQ}{dt} \\right)_{2} = e \\sigma A \\left( T_{2}^{4} - T_{0}^{4} \\right)\\)\n\nIt is the same sphere in both cases, so \\(e\\), \\(\\sigma\\) and \\(A\\) are the same and cancel on dividing:\n\n\\(\\dfrac{R_{1}}{R_{2}} = \\dfrac{T_{1}^{4} - T_{0}^{4}}{T_{2}^{4} - T_{0}^{4}} = \\dfrac{(1100)^{4} - (300)^{4}}{(700)^{4} - (300)^{4}}\\)\n\nTaking \\(100^{4} = 10^{8}\\) out of both numerator and denominator,\n\n\\(\\dfrac{R_{1}}{R_{2}} = \\dfrac{11^{4} - 3^{4}}{7^{4} - 3^{4}} = \\dfrac{14641 - 81}{2401 - 81} = \\dfrac{14560}{2320}\\)\n\n\\(\\therefore \\dfrac{R_{1}}{R_{2}} = \\dfrac{182}{29} = 6.28\\), that is \\(R_{1} : R_{2} = 182 : 29\\)\n\nThe ratio is reasonable: had the surroundings been at absolute zero the ratio would have been \\(\\left( 11/7 \\right)^{4} = 6.10\\), and subtracting the same \\(T_{0}^{4}\\) from both rates raises it slightly, to 6.28.",
+    "difficulty": "MODERATE"
+  }
+]

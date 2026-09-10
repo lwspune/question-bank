@@ -1,0 +1,342 @@
+[
+  {
+    "ref": "oscillations-12-pyq#1",
+    "questionNumber": "Q. 1(vii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "stem": "A particle performing linear S.H.M. has a period of 6.28 seconds and a pathlength of 20 cm. What is the velocity when its displacement is 6 cm from mean position?",
+    "solution": "**Data:** \\(T = 6.28\\ \\text{s}\\), path length \\(= 20\\ \\text{cm}\\), \\(x = 6\\ \\text{cm}\\). **To find:** velocity \\(v\\).\n\nThe path length of a linear S.H.M. is twice the amplitude, so\n\n\\(A = \\dfrac{20}{2} = 10\\ \\text{cm}\\)\n\nHere \\(T = 6.28\\ \\text{s}\\), which is \\(2\\pi\\) seconds, so the angular frequency is\n\n\\(\\omega = \\dfrac{2\\pi}{T} = \\dfrac{2\\pi}{2\\pi} = 1\\ \\text{rad/s}\\)\n\nThe velocity of a particle performing linear S.H.M. at displacement \\(x\\) is\n\n\\(v = \\omega\\sqrt{A^{2} - x^{2}}\\)\n\n\\(\\therefore v = 1 \\times \\sqrt{(10)^{2} - (6)^{2}} = \\sqrt{100 - 36} = \\sqrt{64}\\)\n\n\\(\\therefore v = 8\\ \\text{cm/s}\\)\n\n*Check:* the maximum speed of this motion is \\(v_{\\max} = \\omega A = 10\\ \\text{cm/s}\\), and \\(8\\ \\text{cm/s}\\) is smaller than it, as any speed at a non-zero displacement must be.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#2",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Reference Circle, Phase and Graphical Representation",
+    "stem": "Define linear S.H.M. Show that S.H.M. is a projection of U.C.M. on any diameter.",
+    "solution": "**Definition of linear S.H.M.**\n\nLinear simple harmonic motion is the linear periodic motion of a body in which the restoring force acting on the body is always directed towards the mean position and its magnitude is directly proportional to the displacement of the body from the mean position.\n\nIf \\(x\\) is the displacement from the mean position and \\(F\\) the restoring force,\n\n\\(F \\propto -x\\)\n\n\\(\\therefore F = -kx\\)\n\nwhere \\(k\\) is a positive constant called the force constant. Dividing by the mass \\(m\\),\n\n\\(a = -\\dfrac{k}{m}x = -\\omega^{2}x\\), where \\(\\omega = \\sqrt{\\dfrac{k}{m}}\\)\n\n**S.H.M. as the projection of a U.C.M.**\n\nConsider a particle \\(P\\) moving anticlockwise along the circumference of a circle of radius \\(A\\) and centre \\(O\\) with a constant angular speed \\(\\omega\\). This is a uniform circular motion, and the circle is called the circle of reference.\n\nTake \\(O\\) as the origin and let the \\(X\\) and \\(Y\\) axes lie along two perpendicular diameters of the circle. Let the radius vector \\(OP\\) make an angle \\(\\phi\\) with the \\(X\\)-axis at \\(t = 0\\). Since \\(\\omega\\) is constant, after a time \\(t\\) the radius vector has turned through a further angle \\(\\omega t\\), so that\n\n\\(\\angle POX = \\omega t + \\phi\\)\n\nLet \\(N\\) be the foot of the perpendicular drawn from \\(P\\) on the \\(Y\\)-axis, which is a diameter of the circle. As \\(P\\) goes round the circle, \\(N\\) moves to and fro along this diameter between \\(+A\\) and \\(-A\\).\n\nFrom the right-angled triangle \\(ONP\\), the displacement of \\(N\\) from the centre is\n\n\\(y = ON = OP\\sin(\\omega t + \\phi)\\)\n\n\\(\\therefore y = A\\sin(\\omega t + \\phi)\\)\n\nDifferentiating with respect to time, the velocity of \\(N\\) is\n\n\\(v = \\dfrac{dy}{dt} = A\\omega\\cos(\\omega t + \\phi)\\)\n\nDifferentiating again, its acceleration is\n\n\\(a = \\dfrac{d^{2}y}{dt^{2}} = -A\\omega^{2}\\sin(\\omega t + \\phi)\\)\n\nBut \\(A\\sin(\\omega t + \\phi) = y\\).\n\n\\(\\therefore a = -\\omega^{2}y\\)\n\nSince \\(\\omega\\) is constant, the acceleration of \\(N\\) is directly proportional to its displacement from \\(O\\) and is directed opposite to that displacement, that is, always towards \\(O\\). This is exactly the defining condition of linear S.H.M.\n\n**Any diameter**\n\nThe choice of the \\(Y\\)-axis was arbitrary. Taking the projection \\(M\\) on the \\(X\\)-axis instead,\n\n\\(x = OM = A\\cos(\\omega t + \\phi)\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -A\\omega^{2}\\cos(\\omega t + \\phi) = -\\omega^{2}x\\)\n\nwhich is again linear S.H.M., differing only in its initial phase. The axes may be drawn along any pair of perpendicular diameters of the reference circle, so the same argument applies to every diameter.\n\n\\(\\therefore\\) the projection of a U.C.M. on any diameter of its circle is a linear S.H.M., of amplitude equal to the radius of the reference circle and of the same angular frequency, and hence the same period \\(T = \\dfrac{2\\pi}{\\omega}\\), as the U.C.M.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#3",
+    "questionNumber": "Q. 1(v)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Reference Circle, Phase and Graphical Representation",
+    "stem": "If the particle starts its motion from mean position, the phase difference between displacement and acceleration is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\pi\\) rad"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{2}\\) rad"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\) rad"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{4}\\) rad"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(\\pi\\) rad\n\nA particle starting from the mean position has zero initial phase, so its displacement is\n\n\\(x = A\\sin\\omega t\\)\n\nDifferentiating twice with respect to time,\n\n\\(v = \\dfrac{dx}{dt} = A\\omega\\cos\\omega t\\)\n\n\\(a = \\dfrac{dv}{dt} = -A\\omega^{2}\\sin\\omega t\\)\n\nWriting the acceleration as a sine of the same angular frequency,\n\n\\(a = A\\omega^{2}\\sin(\\omega t + \\pi)\\)\n\nsince \\(\\sin(\\theta + \\pi) = -\\sin\\theta\\).\n\nThe phase of the displacement is \\(\\omega t\\) and the phase of the acceleration is \\(\\omega t + \\pi\\).\n\n\\(\\therefore\\) phase difference \\(= (\\omega t + \\pi) - \\omega t = \\pi\\ \\text{rad}\\)\n\nThe same conclusion follows from \\(a = -\\omega^{2}x\\): the acceleration is at every instant opposite in sign to the displacement, and two sinusoids of the same frequency that are always opposite in sign differ in phase by \\(\\pi\\) radian. Because this relation holds whatever the initial phase, the answer is the same for a particle starting from any position.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#4",
+    "questionNumber": "Q. 2(viii)",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "stem": "A particle performing linear S. H. M. has maximum velocity of 25 cm/s and maximum acceleration of \\(100\\text{ cm/s}^{2}\\). Find the amplitude and period of oscillation. (\\(\\pi = 3.142\\)).",
+    "solution": "**Data:** \\(v_{\\max} = 25\\ \\text{cm/s}\\), \\(a_{\\max} = 100\\ \\text{cm/s}^{2}\\), \\(\\pi = 3.142\\). **To find:** amplitude \\(A\\) and period \\(T\\).\n\nFor a particle performing linear S.H.M.,\n\n\\(v_{\\max} = A\\omega\\) and \\(a_{\\max} = A\\omega^{2}\\)\n\nDividing the second by the first,\n\n\\(\\dfrac{a_{\\max}}{v_{\\max}} = \\dfrac{A\\omega^{2}}{A\\omega} = \\omega\\)\n\n\\(\\therefore \\omega = \\dfrac{100}{25} = 4\\ \\text{rad/s}\\)\n\n**Amplitude**\n\n\\(A = \\dfrac{v_{\\max}}{\\omega} = \\dfrac{25}{4}\\)\n\n\\(\\therefore A = 6.25\\ \\text{cm}\\)\n\n**Period**\n\n\\(T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2 \\times 3.142}{4}\\)\n\n\\(\\therefore T = 1.571\\ \\text{s}\\)\n\n*Check:* with \\(A = 6.25\\ \\text{cm}\\) and \\(\\omega = 4\\ \\text{rad/s}\\), \\(A\\omega^{2} = 6.25 \\times 16 = 100\\ \\text{cm/s}^{2}\\), which is the given maximum acceleration.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#5",
+    "questionNumber": "Q. 2(vii)",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "stem": "Calculate the velocity of a particle performing S.H.M. after 1 second, if its displacement is given by \\(x = 5\\ sin\\frac{\\pi t}{3}\\) m.",
+    "solution": "**Data:** \\(x = 5\\sin\\dfrac{\\pi t}{3}\\ \\text{m}\\), \\(t = 1\\ \\text{s}\\). **To find:** velocity \\(v\\).\n\nComparing the given displacement with the standard form \\(x = A\\sin(\\omega t + \\phi)\\),\n\n\\(A = 5\\ \\text{m}\\), \\(\\omega = \\dfrac{\\pi}{3}\\ \\text{rad/s}\\), \\(\\phi = 0\\)\n\nThe velocity is the time derivative of the displacement:\n\n\\(v = \\dfrac{dx}{dt} = 5 \\times \\dfrac{\\pi}{3}\\cos\\dfrac{\\pi t}{3}\\)\n\nSubstituting \\(t = 1\\ \\text{s}\\),\n\n\\(v = \\dfrac{5\\pi}{3}\\cos\\dfrac{\\pi}{3} = \\dfrac{5\\pi}{3} \\times \\dfrac{1}{2}\\)\n\n\\(\\therefore v = \\dfrac{5\\pi}{6} = \\dfrac{5 \\times 3.142}{6} = 2.618\\ \\text{m/s}\\)\n\n*Check:* at \\(t = 1\\ \\text{s}\\) the displacement is \\(x = 5\\sin\\dfrac{\\pi}{3} = 4.33\\ \\text{m}\\), and \\(v = \\omega\\sqrt{A^{2}-x^{2}} = 1.047\\sqrt{25 - 18.75} = 1.047 \\times 2.5 = 2.618\\ \\text{m/s}\\), the same value.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#6",
+    "questionNumber": "Q. 30",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Simple Pendulum",
+    "stem": "Define second's pendulum. Derive a formula for the length of second's pendulum. A particle performing linear S.H.M. has maximum velocity \\(25\\text{ cm/s}\\) and maximum acceleration \\(100\\text{ cm/s}^{2}\\). Find period of oscillations.",
+    "solution": "**Definition**\n\nA second's pendulum is a simple pendulum whose period of oscillation is exactly two seconds, so that each of its swings from one extreme position to the other takes one second.\n\n**Length of a second's pendulum**\n\nThe period of a simple pendulum of length \\(L\\) at a place where the acceleration due to gravity is \\(g\\) is\n\n\\(T = 2\\pi\\sqrt{\\dfrac{L}{g}}\\)\n\nSquaring both sides,\n\n\\(T^{2} = 4\\pi^{2}\\dfrac{L}{g}\\)\n\n\\(\\therefore L = \\dfrac{gT^{2}}{4\\pi^{2}}\\)\n\nFor a second's pendulum \\(T = 2\\ \\text{s}\\), so\n\n\\(L = \\dfrac{g \\times 2^{2}}{4\\pi^{2}} = \\dfrac{4g}{4\\pi^{2}}\\)\n\n\\(\\therefore L = \\dfrac{g}{\\pi^{2}}\\)\n\nThis is the required formula. Taking \\(g = 9.8\\ \\text{m/s}^{2}\\) and \\(\\pi^{2} = 9.87\\),\n\n\\(L = \\dfrac{9.8}{9.87} = 0.993\\ \\text{m}\\), that is about \\(99.3\\ \\text{cm}\\).\n\n**Numerical: period of the given S.H.M.**\n\n**Data:** \\(v_{\\max} = 25\\ \\text{cm/s}\\), \\(a_{\\max} = 100\\ \\text{cm/s}^{2}\\). **To find:** period \\(T\\).\n\n\\(v_{\\max} = A\\omega\\) and \\(a_{\\max} = A\\omega^{2}\\), so\n\n\\(\\omega = \\dfrac{a_{\\max}}{v_{\\max}} = \\dfrac{100}{25} = 4\\ \\text{rad/s}\\)\n\n\\(T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2 \\times 3.142}{4}\\)\n\n\\(\\therefore T = 1.571\\ \\text{s}\\)\n\n*Check:* the amplitude implied is \\(A = \\dfrac{v_{\\max}}{\\omega} = 6.25\\ \\text{cm}\\), and \\(A\\omega^{2} = 6.25 \\times 16 = 100\\ \\text{cm/s}^{2}\\), the given maximum acceleration.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#7",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2025,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "A body of mass 0.8 kg performs linear S.H.M. It experiences a restoring force of 0.4N, when its displacement from mean position is 4 cm. Determine Force constant and Period of S.H.M.",
+    "solution": "**Data:** \\(m = 0.8\\ \\text{kg}\\), \\(F = 0.4\\ \\text{N}\\), \\(x = 4\\ \\text{cm} = 0.04\\ \\text{m}\\). **To find:** force constant \\(k\\) and period \\(T\\).\n\n**(i) Force constant**\n\nFor linear S.H.M. the magnitude of the restoring force is \\(F = kx\\), so\n\n\\(k = \\dfrac{F}{x} = \\dfrac{0.4}{0.04}\\)\n\n\\(\\therefore k = 10\\ \\text{N/m}\\)\n\n**(ii) Period**\n\nThe period of a particle of mass \\(m\\) performing linear S.H.M. with force constant \\(k\\) is\n\n\\(T = 2\\pi\\sqrt{\\dfrac{m}{k}}\\)\n\n\\(\\therefore T = 2\\pi\\sqrt{\\dfrac{0.8}{10}} = 2 \\times 3.142 \\times \\sqrt{0.08} = 6.284 \\times 0.2828\\)\n\n\\(\\therefore T = 1.777\\ \\text{s}\\)\n\n*Check:* \\(\\omega = \\sqrt{\\dfrac{k}{m}} = \\sqrt{\\dfrac{10}{0.8}} = \\sqrt{12.5} = 3.536\\ \\text{rad/s}\\), and \\(\\dfrac{2\\pi}{\\omega} = \\dfrac{6.284}{3.536} = 1.777\\ \\text{s}\\), the same period.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#8",
+    "questionNumber": "Q. 2(iii)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "Obtain the differential equation of linear simple harmonic motion.",
+    "solution": "**Definition**\n\nFor a particle performing linear S.H.M., the restoring force acting on it is always directed towards the mean position and its magnitude is directly proportional to the displacement from that position. If \\(x\\) is the displacement and \\(F\\) the restoring force,\n\n\\(F \\propto -x\\)\n\n\\(\\therefore F = -kx\\)\n\nwhere \\(k\\) is a positive constant called the force constant. The negative sign shows that the force is directed opposite to the displacement, that is, towards the mean position.\n\n**Applying Newton's second law**\n\nIf \\(m\\) is the mass of the particle and \\(a\\) its acceleration,\n\n\\(F = ma = m\\dfrac{d^{2}x}{dt^{2}}\\)\n\nEquating the two expressions for \\(F\\),\n\n\\(m\\dfrac{d^{2}x}{dt^{2}} = -kx\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\dfrac{k}{m}x\\)\n\n**Introducing the angular frequency**\n\nSince \\(k\\) and \\(m\\) are both positive constants, the ratio \\(\\dfrac{k}{m}\\) is a positive constant and may be written as\n\n\\(\\omega^{2} = \\dfrac{k}{m}\\), so that \\(\\omega = \\sqrt{\\dfrac{k}{m}}\\)\n\nwhere \\(\\omega\\) is the angular frequency of the motion.\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\omega^{2}x\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} + \\omega^{2}x = 0\\)\n\nThis is the differential equation of linear simple harmonic motion. It is a second-order differential equation whose general solution \\(x = A\\sin(\\omega t + \\phi)\\) describes the position of the particle at any instant.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#9",
+    "questionNumber": "Q. 28 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "stem": "From differential equation of linear S.H.M., obtain an expression for acceleration, velocity and displacement of a particle performing S.H.M.",
+    "solution": "**The differential equation of linear S.H.M.**\n\nFor a particle of mass \\(m\\) performing linear S.H.M. the restoring force is \\(F = -kx\\). By Newton's second law \\(F = m\\dfrac{d^{2}x}{dt^{2}}\\), so\n\n\\(m\\dfrac{d^{2}x}{dt^{2}} = -kx\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} + \\omega^{2}x = 0\\), where \\(\\omega^{2} = \\dfrac{k}{m}\\)\n\n**(i) Acceleration**\n\nThe differential equation itself gives the acceleration in terms of the displacement:\n\n\\(a = \\dfrac{d^{2}x}{dt^{2}}\\)\n\n\\(\\therefore a = -\\omega^{2}x\\)\n\nThe negative sign shows that the acceleration is always directed opposite to the displacement, that is, towards the mean position. Its magnitude is zero at the mean position and maximum, \\(a_{\\max} = \\omega^{2}A\\), at the extreme positions.\n\n**(ii) Velocity**\n\nWrite the acceleration in terms of the displacement:\n\n\\(a = \\dfrac{dv}{dt} = \\dfrac{dv}{dx} \\cdot \\dfrac{dx}{dt} = v\\dfrac{dv}{dx}\\)\n\nSubstituting in the differential equation,\n\n\\(v\\dfrac{dv}{dx} = -\\omega^{2}x\\)\n\n\\(\\therefore v\\,dv = -\\omega^{2}x\\,dx\\)\n\nIntegrating both sides,\n\n\\(\\dfrac{v^{2}}{2} = -\\dfrac{\\omega^{2}x^{2}}{2} + C\\)\n\nwhere \\(C\\) is the constant of integration. At an extreme position the particle is momentarily at rest, so \\(v = 0\\) when \\(x = A\\).\n\n\\(\\therefore 0 = -\\dfrac{\\omega^{2}A^{2}}{2} + C\\)\n\n\\(\\therefore C = \\dfrac{\\omega^{2}A^{2}}{2}\\)\n\n\\(\\therefore \\dfrac{v^{2}}{2} = \\dfrac{\\omega^{2}A^{2}}{2} - \\dfrac{\\omega^{2}x^{2}}{2}\\)\n\n\\(\\therefore v = \\pm\\,\\omega\\sqrt{A^{2} - x^{2}}\\)\n\nThe two signs arise because the particle passes through every point of its path twice in each oscillation, once in each direction. The speed is maximum at the mean position, \\(v_{\\max} = \\omega A\\), and zero at the extreme positions.\n\n**(iii) Displacement**\n\nWriting \\(v = \\dfrac{dx}{dt}\\) in the expression just obtained,\n\n\\(\\dfrac{dx}{dt} = \\omega\\sqrt{A^{2} - x^{2}}\\)\n\nSeparating the variables,\n\n\\(\\dfrac{dx}{\\sqrt{A^{2} - x^{2}}} = \\omega\\,dt\\)\n\nIntegrating both sides,\n\n\\(\\sin^{-1}\\left(\\dfrac{x}{A}\\right) = \\omega t + \\phi\\)\n\nwhere \\(\\phi\\) is the constant of integration, called the initial phase or epoch of the motion.\n\n\\(\\therefore \\dfrac{x}{A} = \\sin(\\omega t + \\phi)\\)\n\n\\(\\therefore x = A\\sin(\\omega t + \\phi)\\)\n\nThis is the required expression for the displacement of a particle performing linear S.H.M. at any instant \\(t\\).\n\n*Check:* differentiating this twice gives \\(\\dfrac{d^{2}x}{dt^{2}} = -A\\omega^{2}\\sin(\\omega t + \\phi) = -\\omega^{2}x\\), so the expression satisfies the differential equation it was obtained from.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#10",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "Define linear S.H.M. Obtain differential equation of linear S.H.M.",
+    "solution": "**Definition of linear S.H.M.**\n\nLinear simple harmonic motion is the linear periodic motion of a body in which the restoring force acting on the body is always directed towards the mean position and its magnitude is directly proportional to the displacement of the body from the mean position.\n\n**Differential equation of linear S.H.M.**\n\nLet \\(x\\) be the displacement of the particle from the mean position at some instant and \\(F\\) the restoring force acting on it. By the definition above,\n\n\\(F \\propto -x\\)\n\n\\(\\therefore F = -kx\\)\n\nwhere \\(k\\) is a positive constant called the force constant, and the negative sign shows that the force is directed opposite to the displacement.\n\nIf \\(m\\) is the mass of the particle, by Newton's second law\n\n\\(F = ma = m\\dfrac{d^{2}x}{dt^{2}}\\)\n\nEquating the two expressions for \\(F\\),\n\n\\(m\\dfrac{d^{2}x}{dt^{2}} = -kx\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\dfrac{k}{m}x\\)\n\nSince \\(k\\) and \\(m\\) are positive constants, put\n\n\\(\\omega^{2} = \\dfrac{k}{m}\\)\n\nwhere \\(\\omega\\) is the angular frequency of the motion.\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\omega^{2}x\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} + \\omega^{2}x = 0\\)\n\nThis is the differential equation of linear simple harmonic motion.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#11",
+    "questionNumber": "Q. 2(v)",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Angular S.H.M. and Magnet Vibrating in a Magnetic Field",
+    "stem": "Write the differential equation for angular S.H.M.",
+    "solution": "In angular S.H.M. a body oscillates about an axis, and the restoring torque acting on it is always directed opposite to the angular displacement and is directly proportional to it in magnitude.\n\nLet \\(\\theta\\) be the angular displacement of the body from its mean position and \\(\\tau\\) the restoring torque acting on it. Then\n\n\\(\\tau \\propto -\\theta\\)\n\n\\(\\therefore \\tau = -c\\theta\\)\n\nwhere \\(c\\) is a positive constant called the torsion constant or the torque constant, and the negative sign shows that the torque is directed opposite to the angular displacement.\n\nIf \\(I\\) is the moment of inertia of the body about the axis of rotation and \\(\\alpha = \\dfrac{d^{2}\\theta}{dt^{2}}\\) its angular acceleration, then\n\n\\(\\tau = I\\alpha = I\\dfrac{d^{2}\\theta}{dt^{2}}\\)\n\nEquating the two expressions for \\(\\tau\\),\n\n\\(I\\dfrac{d^{2}\\theta}{dt^{2}} = -c\\theta\\)\n\n\\(\\therefore \\dfrac{d^{2}\\theta}{dt^{2}} = -\\dfrac{c}{I}\\theta = -\\omega^{2}\\theta\\), where \\(\\omega^{2} = \\dfrac{c}{I}\\)\n\n\\(\\therefore \\dfrac{d^{2}\\theta}{dt^{2}} + \\omega^{2}\\theta = 0\\)\n\nThis is the differential equation of angular S.H.M.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#12",
+    "questionNumber": "Q. 21",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "stem": "State the differential equation of linear S.H.M. Hence, obtain expression for : i. acceleration ii. velocity.",
+    "solution": "**The differential equation of linear S.H.M.**\n\nFor a particle of mass \\(m\\) performing linear S.H.M. with force constant \\(k\\), the displacement \\(x\\) from the mean position satisfies\n\n\\(\\dfrac{d^{2}x}{dt^{2}} + \\omega^{2}x = 0\\), where \\(\\omega^{2} = \\dfrac{k}{m}\\)\n\n**(i) Acceleration**\n\nThe equation may be written directly as\n\n\\(a = \\dfrac{d^{2}x}{dt^{2}}\\)\n\n\\(\\therefore a = -\\omega^{2}x\\)\n\nThe acceleration of a particle performing linear S.H.M. is therefore proportional to its displacement and directed opposite to it, that is, towards the mean position. At the mean position \\(x = 0\\) and \\(a = 0\\); at the extreme positions \\(x = \\pm A\\) the magnitude of the acceleration is maximum, \\(a_{\\max} = \\omega^{2}A\\).\n\n**(ii) Velocity**\n\nThe acceleration can be rewritten in terms of the displacement:\n\n\\(a = \\dfrac{dv}{dt} = \\dfrac{dv}{dx} \\cdot \\dfrac{dx}{dt} = v\\dfrac{dv}{dx}\\)\n\nSubstituting in the differential equation,\n\n\\(v\\dfrac{dv}{dx} = -\\omega^{2}x\\)\n\n\\(\\therefore v\\,dv = -\\omega^{2}x\\,dx\\)\n\nIntegrating both sides,\n\n\\(\\dfrac{v^{2}}{2} = -\\dfrac{\\omega^{2}x^{2}}{2} + C\\)\n\nTo find the constant of integration \\(C\\), use the fact that the particle is momentarily at rest at an extreme position, so \\(v = 0\\) when \\(x = A\\).\n\n\\(\\therefore 0 = -\\dfrac{\\omega^{2}A^{2}}{2} + C\\)\n\n\\(\\therefore C = \\dfrac{\\omega^{2}A^{2}}{2}\\)\n\n\\(\\therefore \\dfrac{v^{2}}{2} = \\dfrac{\\omega^{2}A^{2}}{2} - \\dfrac{\\omega^{2}x^{2}}{2}\\)\n\n\\(\\therefore v^{2} = \\omega^{2}\\left(A^{2} - x^{2}\\right)\\)\n\n\\(\\therefore v = \\pm\\,\\omega\\sqrt{A^{2} - x^{2}}\\)\n\nThe double sign shows that the particle passes through every point of its path twice in each oscillation, once moving in each direction. The speed is maximum at the mean position, where \\(v_{\\max} = \\omega A\\), and zero at the extreme positions.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#13",
+    "questionNumber": "Q. 6",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "Obtain the differential equation of linear simple harmonic motion.",
+    "solution": "**Definition**\n\nFor a particle performing linear S.H.M., the restoring force acting on it is always directed towards the mean position and its magnitude is directly proportional to the displacement from that position. If \\(x\\) is the displacement and \\(F\\) the restoring force,\n\n\\(F \\propto -x\\)\n\n\\(\\therefore F = -kx\\)\n\nwhere \\(k\\) is a positive constant called the force constant. The negative sign shows that the force is directed opposite to the displacement, that is, towards the mean position.\n\n**Applying Newton's second law**\n\nIf \\(m\\) is the mass of the particle and \\(a\\) its acceleration,\n\n\\(F = ma = m\\dfrac{d^{2}x}{dt^{2}}\\)\n\nEquating the two expressions for \\(F\\),\n\n\\(m\\dfrac{d^{2}x}{dt^{2}} = -kx\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\dfrac{k}{m}x\\)\n\n**Introducing the angular frequency**\n\nSince \\(k\\) and \\(m\\) are both positive constants, the ratio \\(\\dfrac{k}{m}\\) is a positive constant and may be written as\n\n\\(\\omega^{2} = \\dfrac{k}{m}\\), so that \\(\\omega = \\sqrt{\\dfrac{k}{m}}\\)\n\nwhere \\(\\omega\\) is the angular frequency of the motion.\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} = -\\omega^{2}x\\)\n\n\\(\\therefore \\dfrac{d^{2}x}{dt^{2}} + \\omega^{2}x = 0\\)\n\nThis is the differential equation of linear simple harmonic motion. It is a second-order differential equation whose general solution \\(x = A\\sin(\\omega t + \\phi)\\) describes the position of the particle at any instant.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#14",
+    "questionNumber": "Q. 4",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "stem": "Prove the law of conservation of energy for a particle performing simple harmonic motion. Hence graphically show the variation of kinetic energy and potential energy w. r. t. instantaneous displacement.",
+    "solution": "Consider a particle of mass \\(m\\) performing linear S.H.M. of amplitude \\(A\\) and angular frequency \\(\\omega\\), with force constant \\(k = m\\omega^{2}\\). Let \\(x\\) be its displacement from the mean position at some instant.\n\n**Kinetic energy**\n\nThe velocity of the particle at displacement \\(x\\) is \\(v = \\pm\\,\\omega\\sqrt{A^{2}-x^{2}}\\), so\n\n\\(v^{2} = \\omega^{2}\\left(A^{2} - x^{2}\\right)\\)\n\n\\(\\text{K.E.} = \\dfrac{1}{2}mv^{2}\\)\n\n\\(\\therefore \\text{K.E.} = \\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}\\right) = \\dfrac{1}{2}k\\left(A^{2}-x^{2}\\right)\\)\n\n**Potential energy**\n\nThe restoring force at displacement \\(x\\) is \\(F = -kx\\). To displace the particle further through a small distance \\(dx\\), an external agent must apply a force \\(+kx\\) against the restoring force, doing work \\(dW = kx\\,dx\\). The total work done in taking the particle from the mean position to a displacement \\(x\\) is\n\n\\(W = \\int_{0}^{x} kx\\,dx = \\dfrac{1}{2}kx^{2}\\)\n\nThis work is stored in the particle as its potential energy.\n\n\\(\\therefore \\text{P.E.} = \\dfrac{1}{2}kx^{2} = \\dfrac{1}{2}m\\omega^{2}x^{2}\\)\n\n**Total energy**\n\n\\(E = \\text{K.E.} + \\text{P.E.}\\)\n\n\\(\\therefore E = \\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}\\right) + \\dfrac{1}{2}m\\omega^{2}x^{2}\\)\n\n\\(\\therefore E = \\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}+x^{2}\\right)\\)\n\n\\(\\therefore E = \\dfrac{1}{2}m\\omega^{2}A^{2} = \\dfrac{1}{2}kA^{2}\\)\n\nThe displacement \\(x\\) has cancelled out completely. For a given particle performing a given S.H.M. the quantities \\(m\\), \\(\\omega\\) and \\(A\\) are all constants, so \\(E\\) is a constant: it depends neither on the position of the particle nor on the time. Hence the total energy of a particle performing S.H.M. is conserved, the two forms of energy being continually interconverted while their sum stays fixed.\n\n**Variation of K.E. and P.E. with displacement**\n\nBoth energies are plotted against the instantaneous displacement \\(x\\), which runs from \\(-A\\) to \\(+A\\) along the \\(X\\)-axis, with energy along the \\(Y\\)-axis.\n\n- \\(\\text{P.E.} = \\dfrac{1}{2}kx^{2}\\) is an upward parabola with its vertex at the origin. It is zero at the mean position and rises to \\(\\dfrac{1}{2}kA^{2}\\) at both extreme positions.\n- \\(\\text{K.E.} = \\dfrac{1}{2}k\\left(A^{2}-x^{2}\\right)\\) is an inverted parabola with its vertex at \\(\\left(0,\\ \\dfrac{1}{2}kA^{2}\\right)\\). It is maximum at the mean position and falls to zero at both extreme positions.\n- \\(E = \\dfrac{1}{2}kA^{2}\\) is a horizontal straight line, the same height as the two vertices.\n\nThe two parabolas are mirror images of each other in that horizontal line, and they cross where each energy is half the total, that is at\n\n\\(\\dfrac{1}{2}kx^{2} = \\dfrac{1}{2}k\\left(A^{2}-x^{2}\\right)\\)\n\n\\(\\therefore x = \\pm\\dfrac{A}{\\sqrt{2}}\\)\n\nTheir values at the landmark positions are:\n\n| Displacement \\(x\\) | \\(-A\\) | \\(-\\dfrac{A}{\\sqrt{2}}\\) | \\(0\\) | \\(+\\dfrac{A}{\\sqrt{2}}\\) | \\(+A\\) |\n|---|---|---|---|---|---|\n| K.E. | \\(0\\) | \\(\\dfrac{E}{2}\\) | \\(E\\) | \\(\\dfrac{E}{2}\\) | \\(0\\) |\n| P.E. | \\(E\\) | \\(\\dfrac{E}{2}\\) | \\(0\\) | \\(\\dfrac{E}{2}\\) | \\(E\\) |\n| Total energy | \\(E\\) | \\(E\\) | \\(E\\) | \\(E\\) | \\(E\\) |\n\nAt every displacement the two ordinates add up to the same height \\(E\\), which is the graphical statement of the conservation of energy in S.H.M.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#15",
+    "questionNumber": "Q. 28",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "stem": "Obtain an expression for potential energy of a particle performing S.H.M. What is the value of potential energy at (i) mean position and (ii) extreme position?",
+    "solution": "Consider a particle of mass \\(m\\) performing linear S.H.M. of amplitude \\(A\\) and angular frequency \\(\\omega\\), with force constant \\(k = m\\omega^{2}\\). Let \\(x\\) be its displacement from the mean position at some instant.\n\n**Expression for potential energy**\n\nThe restoring force acting on the particle at displacement \\(x\\) is\n\n\\(F = -kx\\)\n\nTo displace the particle further through a small distance \\(dx\\), an external agent must apply a force \\(+kx\\) against this restoring force. The small work done is\n\n\\(dW = kx\\,dx\\)\n\nThe total work done in displacing the particle from the mean position to a displacement \\(x\\) is obtained by integration:\n\n\\(W = \\int_{0}^{x} kx\\,dx = k\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{x}\\)\n\n\\(\\therefore W = \\dfrac{1}{2}kx^{2}\\)\n\nThis work is stored in the particle as its potential energy.\n\n\\(\\therefore \\text{P.E.} = \\dfrac{1}{2}kx^{2} = \\dfrac{1}{2}m\\omega^{2}x^{2}\\)\n\n**(i) At the mean position**\n\nAt the mean position the displacement is \\(x = 0\\).\n\n\\(\\therefore \\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}(0)^{2} = 0\\)\n\nThe potential energy at the mean position is zero, and the whole of the energy there is kinetic.\n\n**(ii) At an extreme position**\n\nAt an extreme position the displacement is maximum, \\(x = \\pm A\\).\n\n\\(\\therefore \\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}A^{2} = \\dfrac{1}{2}kA^{2}\\)\n\nThis is the maximum value of the potential energy, and it equals the total energy \\(E\\) of the particle, because the velocity, and hence the kinetic energy, is zero at an extreme position.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#16",
+    "questionNumber": "Q. 2(v)",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "stem": "At which position, the total energy of a particle executing linear S.H.M. is purely potential?",
+    "solution": "The total energy of a particle performing linear S.H.M. is the sum of its kinetic and potential energies at that instant:\n\n\\(E = \\text{K.E.} + \\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}\\right) + \\dfrac{1}{2}m\\omega^{2}x^{2}\\)\n\nThe energy is purely potential where the kinetic energy vanishes, that is where\n\n\\(\\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}\\right) = 0\\)\n\n\\(\\therefore A^{2} - x^{2} = 0\\)\n\n\\(\\therefore x = \\pm A\\)\n\nThe total energy of a particle executing linear S.H.M. is purely potential at the two extreme positions of its path, where the displacement from the mean position is equal to the amplitude.\n\nThe velocity there is \\(v = \\omega\\sqrt{A^{2}-A^{2}} = 0\\), so the particle is momentarily at rest and carries no kinetic energy, and its potential energy has its maximum value\n\n\\(\\therefore \\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}A^{2} = E\\)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#17",
+    "questionNumber": "Q. 29",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "stem": "The displacement of a particle performing simple harmonic motion is \\(\\frac{1}{3}\\) rd of its amplitude. What fraction of total energy will be its kinetic energy?",
+    "solution": "**Data:** \\(x = \\dfrac{A}{3}\\). **To find:** \\(\\dfrac{\\text{K.E.}}{E}\\).\n\nFor a particle of mass \\(m\\) performing linear S.H.M. of amplitude \\(A\\) and angular frequency \\(\\omega\\), at displacement \\(x\\)\n\n\\(\\text{K.E.} = \\dfrac{1}{2}m\\omega^{2}\\left(A^{2}-x^{2}\\right)\\)\n\nand the total energy is\n\n\\(E = \\dfrac{1}{2}m\\omega^{2}A^{2}\\)\n\nDividing,\n\n\\(\\dfrac{\\text{K.E.}}{E} = \\dfrac{A^{2}-x^{2}}{A^{2}} = 1 - \\dfrac{x^{2}}{A^{2}}\\)\n\nSubstituting \\(x = \\dfrac{A}{3}\\),\n\n\\(\\dfrac{\\text{K.E.}}{E} = 1 - \\dfrac{1}{9}\\)\n\n\\(\\therefore \\dfrac{\\text{K.E.}}{E} = \\dfrac{8}{9}\\)\n\nThe kinetic energy is \\(\\dfrac{8}{9}\\) of the total energy, that is about \\(88.9\\%\\) of it.\n\n*Check:* the potential energy at the same point is \\(\\dfrac{\\text{P.E.}}{E} = \\dfrac{x^{2}}{A^{2}} = \\dfrac{1}{9}\\), and \\(\\dfrac{8}{9} + \\dfrac{1}{9} = 1\\), so the two fractions account for the whole of the total energy.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#18",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Simple Pendulum",
+    "stem": "A simple pendulum of length 1 m has mass 10 g and oscillates freely with amplitude of 5 cm. Calculate its potential energy at extreme position.",
+    "solution": "**Data:** \\(L = 1\\ \\text{m}\\), \\(m = 10\\ \\text{g} = 0.01\\ \\text{kg}\\), \\(A = 5\\ \\text{cm} = 0.05\\ \\text{m}\\). The stem states no value for the acceleration due to gravity, and \\(g = 9.8\\ \\text{m/s}^{2}\\) is taken throughout. **To find:** potential energy at an extreme position.\n\nThe potential energy of a particle performing linear S.H.M. at displacement \\(x\\) is\n\n\\(\\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}x^{2}\\)\n\nAt an extreme position the displacement equals the amplitude, \\(x = A\\), so\n\n\\(\\text{P.E.} = \\dfrac{1}{2}m\\omega^{2}A^{2}\\)\n\nFor a simple pendulum of length \\(L\\) the angular frequency is given by\n\n\\(\\omega = \\sqrt{\\dfrac{g}{L}}\\)\n\n\\(\\therefore \\omega^{2} = \\dfrac{g}{L} = \\dfrac{9.8}{1} = 9.8\\ \\text{s}^{-2}\\)\n\nSubstituting,\n\n\\(\\text{P.E.} = \\dfrac{1}{2} \\times 0.01 \\times 9.8 \\times (0.05)^{2}\\)\n\n\\(= \\dfrac{1}{2} \\times 0.01 \\times 9.8 \\times 2.5 \\times 10^{-3}\\)\n\n\\(\\therefore \\text{P.E.} = 1.225 \\times 10^{-4}\\ \\text{J}\\)\n\n*Check:* at an extreme position the particle is at rest, so this is also the total energy of the oscillation. Its maximum speed would then be \\(v_{\\max} = \\sqrt{\\dfrac{2E}{m}} = \\sqrt{\\dfrac{2 \\times 1.225 \\times 10^{-4}}{0.01}} = 0.1565\\ \\text{m/s}\\), which agrees with \\(v_{\\max} = \\omega A = \\sqrt{9.8} \\times 0.05 = 0.1565\\ \\text{m/s}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#20",
+    "questionNumber": "Q. 1(ix)",
+    "pyqYear": 2024,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Simple Pendulum",
+    "stem": "The velocity of bob of a second's pendulum when it is 6 cm from its mean position and amplitude of 10 cm, is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(8\\pi\\text{ cm/s}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(6\\pi\\text{ cm/s}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4\\pi\\text{ cm/s}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\pi\\text{ cm/s}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(8\\pi\\text{ cm/s}\\)\n\nA second's pendulum is one whose period of oscillation is exactly two seconds, so\n\n\\(T = 2\\ \\text{s}\\)\n\n\\(\\therefore \\omega = \\dfrac{2\\pi}{T} = \\dfrac{2\\pi}{2} = \\pi\\ \\text{rad/s}\\)\n\nThe bob performs linear S.H.M., so its velocity at a displacement \\(x\\) from the mean position is\n\n\\(v = \\omega\\sqrt{A^{2}-x^{2}}\\)\n\nHere \\(A = 10\\ \\text{cm}\\) and \\(x = 6\\ \\text{cm}\\).\n\n\\(\\therefore v = \\pi\\sqrt{(10)^{2}-(6)^{2}} = \\pi\\sqrt{100-36} = \\pi\\sqrt{64}\\)\n\n\\(\\therefore v = 8\\pi\\ \\text{cm/s}\\)\n\n*Check:* the maximum speed of this bob is \\(v_{\\max} = \\omega A = 10\\pi\\ \\text{cm/s}\\), and the speed found is smaller than that, as it must be at a non-zero displacement.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#21",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Simple Pendulum",
+    "stem": "The length of the second's pendulum in a clock is increased to 4 times its initial length. Calculate the number of oscillations completed by the new pendulum in one minute.",
+    "solution": "**Data:** original pendulum is a second's pendulum, so \\(T_{1} = 2\\ \\text{s}\\); \\(L_{2} = 4L_{1}\\); time available \\(t = 1\\ \\text{minute} = 60\\ \\text{s}\\). **To find:** number of oscillations \\(N\\) completed by the new pendulum in one minute.\n\nThe period of a simple pendulum of length \\(L\\) is\n\n\\(T = 2\\pi\\sqrt{\\dfrac{L}{g}}\\)\n\nAt a given place \\(g\\) is constant, so\n\n\\(T \\propto \\sqrt{L}\\)\n\n\\(\\therefore \\dfrac{T_{2}}{T_{1}} = \\sqrt{\\dfrac{L_{2}}{L_{1}}} = \\sqrt{\\dfrac{4L_{1}}{L_{1}}} = \\sqrt{4} = 2\\)\n\n\\(\\therefore T_{2} = 2 \\times T_{1} = 2 \\times 2 = 4\\ \\text{s}\\)\n\nThe number of oscillations completed in one minute is\n\n\\(N = \\dfrac{t}{T_{2}} = \\dfrac{60}{4}\\)\n\n\\(\\therefore N = 15\\)\n\n*Check:* the original second's pendulum would complete \\(\\dfrac{60}{2} = 30\\) oscillations in the same minute. Quadrupling the length doubles the period and so halves the count, and \\(\\dfrac{30}{2} = 15\\), the value obtained.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#22",
+    "questionNumber": "Q. 2(ii)",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "stem": "Two springs of force constants \\(K_{1}\\) and \\(K_{2}\\) (\\(K_{1} > K_{2}\\)) are stretched by same force. If \\(W_{1}\\) and \\(W_{2}\\) be the work done stretching the springs then ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(W_{1} = W_{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(W_{1} < W_{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(W_{1} > W_{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(W_{1} = W_{2} = 0\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(W_{1} < W_{2}\\)\n\nLet each spring be stretched by the same force \\(F\\). For a spring of force constant \\(K\\), the stretching force and the extension \\(x\\) are related by\n\n\\(F = Kx\\)\n\n\\(\\therefore x = \\dfrac{F}{K}\\)\n\nThe work done in stretching a spring through \\(x\\) is stored in it as elastic potential energy:\n\n\\(W = \\dfrac{1}{2}Kx^{2}\\)\n\nSubstituting \\(x = \\dfrac{F}{K}\\),\n\n\\(W = \\dfrac{1}{2}K\\left(\\dfrac{F}{K}\\right)^{2}\\)\n\n\\(\\therefore W = \\dfrac{F^{2}}{2K}\\)\n\nFor a given stretching force \\(F\\), the numerator \\(F^{2}\\) is the same for both springs, so\n\n\\(W \\propto \\dfrac{1}{K}\\)\n\n\\(\\therefore \\dfrac{W_{1}}{W_{2}} = \\dfrac{K_{2}}{K_{1}}\\)\n\nIt is given that \\(K_{1} > K_{2}\\), so \\(\\dfrac{K_{2}}{K_{1}} < 1\\).\n\n\\(\\therefore W_{1} < W_{2}\\)\n\nThe stiffer spring stretches less under the same force and therefore stores less energy.\n\n*Check:* taking \\(K_{1} = 200\\ \\text{N/m}\\), \\(K_{2} = 100\\ \\text{N/m}\\) and \\(F = 10\\ \\text{N}\\) gives \\(W_{1} = \\dfrac{100}{400} = 0.25\\ \\text{J}\\) and \\(W_{2} = \\dfrac{100}{200} = 0.5\\ \\text{J}\\), so the work done on the softer spring is the greater.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "oscillations-12-pyq#23",
+    "questionNumber": "Q. 11 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Amplitude, Period and Frequency of S.H.M.",
+    "stem": "A body of mass 1 kg is made to oscillate on a spring of force constant 15 N/m. Calculate (i) angular frequency (ii) frequency of vibrations.",
+    "solution": "**Data:** \\(m = 1\\ \\text{kg}\\), \\(k = 15\\ \\text{N/m}\\). **To find:** angular frequency \\(\\omega\\) and frequency \\(n\\).\n\n**(i) Angular frequency**\n\nFor a body of mass \\(m\\) oscillating on a spring of force constant \\(k\\),\n\n\\(\\omega = \\sqrt{\\dfrac{k}{m}}\\)\n\n\\(\\therefore \\omega = \\sqrt{\\dfrac{15}{1}} = \\sqrt{15}\\)\n\n\\(\\therefore \\omega = 3.873\\ \\text{rad/s}\\)\n\n**(ii) Frequency of vibrations**\n\n\\(\\omega = 2\\pi n\\)\n\n\\(\\therefore n = \\dfrac{\\omega}{2\\pi} = \\dfrac{3.873}{6.283}\\)\n\n\\(\\therefore n = 0.6164\\ \\text{Hz}\\)\n\n*Check:* the corresponding period is \\(T = \\dfrac{1}{n} = 1.622\\ \\text{s}\\), and \\(2\\pi\\sqrt{\\dfrac{m}{k}} = 6.283 \\times \\sqrt{\\dfrac{1}{15}} = 6.283 \\times 0.2582 = 1.622\\ \\text{s}\\), the same value.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#24",
+    "questionNumber": "Q. 1(iv)",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "In a damped harmonic oscillator, periodic oscillations have ________ amplitude.",
+    "options": [
+      {
+        "label": "A",
+        "text": "gradually increasing"
+      },
+      {
+        "label": "B",
+        "text": "suddenly increasing"
+      },
+      {
+        "label": "C",
+        "text": "suddenly decreasing"
+      },
+      {
+        "label": "D",
+        "text": "gradually decreasing"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** gradually decreasing\n\nIn a damped harmonic oscillator the body performs its oscillations against a resistive force, such as the viscous drag of the surrounding air or liquid, which opposes its motion at every instant. This force does negative work on the oscillator throughout each swing, so a part of the mechanical energy of the oscillator is continuously dissipated as heat.\n\nThe total energy of the oscillation is related to its amplitude by\n\n\\(E = \\dfrac{1}{2}kA^{2}\\), so that \\(A \\propto \\sqrt{E}\\)\n\nSince \\(E\\) falls steadily, the amplitude \\(A\\) must fall steadily as well. For a damping force proportional to the velocity, the amplitude at time \\(t\\) is\n\n\\(A = A_{0}\\,e^{-bt/2m}\\)\n\nwhere \\(A_{0}\\) is the initial amplitude and \\(b\\) the damping constant. The exponential factor decreases smoothly and continuously with time, never abruptly.\n\n\\(\\therefore\\) the periodic oscillations of a damped harmonic oscillator have a gradually decreasing amplitude, and the oscillator finally comes to rest at its mean position.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "oscillations-12-pyq#25",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2023,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "stem": "Distinguish between free vibrations and forced vibrations (Two points).",
+    "solution": "| Free vibrations | Forced vibrations |\n|---|---|\n| The body is given a single initial displacement or push and is then left to itself, so that it oscillates only under its own restoring force, with no external periodic force acting on it. | The body is acted upon by an external periodic force applied continuously, and it oscillates under the action of that force. |\n| The body vibrates with its own natural frequency \\(n_{0} = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{k}{m}}\\), which is decided only by its own mass, dimensions and force constant. | The body vibrates with the frequency of the applied periodic force, whatever its own natural frequency may be. |\n| In the absence of damping the amplitude and the energy remain constant; in practice, damping makes the amplitude die away and the vibrations stop after some time. | The amplitude stays constant for as long as the external force continues to act, since the force supplies the energy lost in damping, and it becomes very large when the frequency of the applied force approaches the natural frequency of the body. |\n\nAn example of free vibrations is the bob of a simple pendulum swinging after being displaced once from its mean position; an example of forced vibrations is the body of a machine set into vibration by the periodic force of its running motor.",
+    "difficulty": "EASY"
+  }
+]

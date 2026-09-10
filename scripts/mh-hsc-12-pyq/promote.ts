@@ -22,6 +22,7 @@ import { join } from "node:path";
 import { OUT, DATA, requireChapter } from "./config";
 import type { Draft } from "./extract";
 import { probeRow } from "./textProbes";
+import { probeBoardAnswer, isNumericalStem } from "../lib/boardAnswerStyle";
 
 type Assigned = { ref: string; subtopic: string; why?: string };
 type Sol = { ref: string; answer: string; key?: string | null; difficulty: string; twin?: string | null; flag?: string };
@@ -43,6 +44,7 @@ function main() {
 
   const byRef = new Map(draft.map((d) => [d.ref, d]));
   const problems: string[] = [];
+  const styleWarnings: string[] = [];
 
   // Diff the SETS, both ways. A count matches under a permutation, and a
   // permutation here would silently file every question under its neighbour's
@@ -87,6 +89,19 @@ function main() {
     for (const p of probeRow(d.ref, [["answer", s.answer ?? ""]])) {
       problems.push(`${p.ref} ${p.field}: ${p.reason}`);
     }
+    // The BOARD-ANSWER convention. A stored solution is read by a student
+    // preparing for the board exam, so it must read as the answer they would
+    // write — not as a note to whoever is marking it. Errors block; the
+    // \therefore convention is only reported, since it fires on 12% of the
+    // shipped corpus and refusing there would be noise.
+    for (const p of probeBoardAnswer(d.ref, s.answer ?? "", {
+      mcq: d.format === "mcq",
+      numerical: isNumericalStem(d.stem),
+    })) {
+      const line = `${p.ref}: ${p.reason}${p.quote ? ` -> ${JSON.stringify(p.quote)}` : ""}`;
+      if (p.severity === "error") problems.push(line);
+      else styleWarnings.push(line);
+    }
   }
 
   // A field where every row carries the same value is a judgement nobody made.
@@ -96,6 +111,8 @@ function main() {
   }
 
   if (problems.length) throw new Error(`REFUSING (${problems.length}):\n  ${problems.join("\n  ")}`);
+
+  for (const w of styleWarnings) console.log(`  style: ${w}`);
 
   const subtopics: Record<string, string> = {};
   for (const a of assigned) subtopics[a.ref] = a.subtopic;
