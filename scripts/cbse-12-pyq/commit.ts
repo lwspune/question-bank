@@ -28,13 +28,10 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel } from "../../src/lib/upload/validate";
 import {
-  DATA, ORG_ID, CREATED_BY, EXAM_ID_CBSE_12, SUBJECTS, pyqNote, sourceFile,
+  DATA, ORG_ID, CREATED_BY, EXAM_ID_CBSE_12, subjectForPaperId, pyqNote, sourceFile,
+  type SubjectSpec,
 } from "./config";
 
-// ⚠ MATHS ONLY. Phase 1 (2026-09-10) parameterised discovery for Physics and
-// Chemistry; the commit path still assumes one subject and says so explicitly
-// rather than reading an ambient constant that would quietly serve the wrong one.
-const SUBJECT = SUBJECTS.maths;
 
 type Q = {
   ref: string; questionNumber: string; format: "mcq" | "subjective";
@@ -46,7 +43,7 @@ type Q = {
 };
 type Paper = { paper: string; year: number; questions: Q[] };
 
-function buildRows(paper: Paper): ParsedRowPayload[] {
+function buildRows(paper: Paper, SUBJECT: SubjectSpec): ParsedRowPayload[] {
   const rows: ParsedRowPayload[] = [];
   const seen = new Set<string>();
   let sourceRow = 0;
@@ -117,14 +114,19 @@ function buildRows(paper: Paper): ParsedRowPayload[] {
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
-  if (!id) throw new Error("usage: commit.ts <paperId> [--apply]");
+  if (!id) throw new Error("usage: commit.ts <paperId> [--apply] [--subject=<key>]");
+  // Derived from the paper code, never defaulted — see subjectForPaperId.
+  const SUBJECT = subjectForPaperId(
+    id,
+    process.argv.find((a) => a.startsWith("--subject="))?.split("=")[1]
+  );
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const paper = JSON.parse(readFileSync(join(DATA, `${id}.questions.json`), "utf8")) as Paper;
-  const rows = buildRows(paper);
+  const rows = buildRows(paper, SUBJECT);
   const src = sourceFile(paper.year, paper.paper);
 
-  console.log(`${paper.paper} (${paper.year}) — ${rows.length} rows`);
+  console.log(`${SUBJECT.subjectName} ${paper.paper} (${paper.year}) — ${rows.length} rows`);
   console.log(`  source_file : ${src}`);
   console.log(`  mcq ${rows.filter((r) => r.questionFormat === "mcq").length} | subjective ${rows.filter((r) => r.questionFormat === "subjective").length}`);
   console.log(`  distinct content_hash: ${new Set(rows.map((r) => r.contentHash)).size} of ${rows.length}`);

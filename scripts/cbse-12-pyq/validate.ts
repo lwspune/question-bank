@@ -23,31 +23,9 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, SUBJECTS, EXAM_ID_CBSE_12, subjectFromArg, type SubjectSpec } from "./config";
+import { DATA, EXAM_ID_CBSE_12, subjectForPaperId } from "./config";
 import { sectionForQuestion, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-
-/**
- * Which subject's taxonomy to validate against.
- *
- * DERIVED FROM THE PAPER CODE, not defaulted: 65 -> maths, 55 -> physics,
- * 56 -> chemistry. A default would validate a Chemistry paper against the Maths
- * chapter list and report one "unknown chapter" per row — which reads as a
- * transcription fault rather than a mis-scoped run, and buries every other
- * finding under it. --subject= overrides.
- */
-function subjectForPaperId(id: string, override?: string): SubjectSpec {
-  if (override) return subjectFromArg(override);
-  const prefix = /^\d{4}-(\d{2})-/.exec(id)?.[1];
-  const found = Object.values(SUBJECTS).find((s) => s.paperPrefix === prefix);
-  if (!found) {
-    throw new Error(
-      `cannot tell which subject "${id}" belongs to (expected a paper prefix of ` +
-        `${Object.values(SUBJECTS).map((s) => s.paperPrefix).join("/")}). Pass --subject=<key>.`
-    );
-  }
-  return found;
-}
 
 /** Does ANY chapter of this subject carry this subtopic? */
 function subtopicExistsAnywhere(axis: Map<string, Set<string>>, subtopic: string): boolean {
