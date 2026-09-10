@@ -23,7 +23,10 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, CHAPTERS, EXAM_ID_CBSE_12, SUBJECT_NAME } from "./config";
+import { DATA, SUBJECTS, EXAM_ID_CBSE_12 } from "./config";
+
+// ⚠ MATHS ONLY — see the note in commit.ts.
+const SUBJECT = SUBJECTS.maths;
 import { sectionForQuestion, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
@@ -88,7 +91,7 @@ async function main() {
     .from("subtopics")
     .select("name, chapters!inner(name, subjects!inner(name, exam_id))")
     .eq("chapters.subjects.exam_id", EXAM_ID_CBSE_12)
-    .eq("chapters.subjects.name", SUBJECT_NAME);
+    .eq("chapters.subjects.name", SUBJECT.subjectName);
   if (error) throw new Error(`subtopic load failed: ${error.message}`);
   const axis = new Map<string, Set<string>>();
   for (const r of rows as unknown as { name: string; chapters: { name: string } }[]) {
@@ -113,7 +116,7 @@ async function main() {
       note(q.ref, `marks ${q.marks} but the band says ${expect.marks}`);
     }
 
-    if (!(CHAPTERS as readonly string[]).includes(q.chapter)) note(q.ref, `unknown chapter "${q.chapter}"`);
+    if (!SUBJECT.chapters.includes(q.chapter)) note(q.ref, `unknown chapter "${q.chapter}"`);
     else if (!axis.get(q.chapter)?.has(q.subtopic)) {
       note(q.ref, `subtopic "${q.subtopic}" is not on the live axis for "${q.chapter}"`);
     }
