@@ -49,6 +49,27 @@ CBSE prints either case by year).
 > vector arrow vanishes. Use the letter. If CBSE also prints the answer's value,
 > use it only as a sanity check that you matched the right option.
 
+### How far the machine-readable key actually reaches — measured 2026-09-10
+
+`npx tsx scripts/cbse-12-pyq/keys.ts --subject=<s>` is the live answer; this is
+the shape of it, so nobody re-investigates a known gap.
+
+| year | Physics | why the gaps |
+|---|---|---|
+| 2022 | 0 of 15 | Term-II paper — **no MCQs at all**, so there is no key to read. Not a failure. |
+| 2023 | 9 of 15 | 3 refuse on a medium-scoped award; 3 lost entries to a collapsed two-column layout. |
+| 2024 | 14 of 15 | |
+| 2025 | 18 of 18 | |
+| 2026 | 0 of 15 | **The whole marking scheme is page IMAGES.** |
+
+⚠ **2026 is the one to understand before you open it.** Its text layer is not
+empty — it runs ~350 chars/page — but what it contains is the *numbering
+scaffold only*: a `SECTION-A` heading followed by `1.` `2.` … `16.` with **no
+answers**, plus a contents page and repeated `HOME` navigation furniture. Every
+answer is inside the page image. So `keys.ts` correctly reports "read 0 of 16"
+and the key must be read by vision from `ms/` — the numbers being present is not
+evidence the answers are.
+
 ### ⚠ CBSE sometimes VOIDS its own question — capture it, do not silently key it
 
 Real, and on the pilot paper. The marking scheme prints:
@@ -172,9 +193,26 @@ so the discrimination the question tests survives. Say which you did.
 
 ## 5. Chapters
 
-Use the exam's existing chapter list **verbatim** — `commit.ts` validates against
-it and refuses an unknown name rather than creating one, because a chapter name
+Use the exam's existing chapter list **verbatim**, because a chapter name
 differing by a single space silently forks the corpus in two.
+
+> ⚠ **NOTHING AT COMMIT TIME WILL SAVE YOU FROM A TYPO HERE.** An earlier
+> version of this file claimed `commit.ts` "validates against it and refuses an
+> unknown name". It does not — its own header says the opposite: *"this script
+> does not re-check chapter/subtopic names, and a bad chapter name AUTO-CREATES
+> a duplicate chapter rather than failing."* The only thing that catches it is
+> **`validate.ts`, and only if you run it**, which is why running it and
+> reporting its output verbatim is a required step rather than a courtesy.
+> Subtopics are worse: they auto-create with no check anywhere.
+
+**Get the live chapter AND subtopic axis from the database rather than from a
+list in a document** — a hand-copied taxonomy is exactly what goes stale:
+
+```
+npx tsx scripts/cbse-12-pyq/axis.ts --subject=physics
+```
+
+The chapter list below is kept for orientation. The script is the truth.
 
 **Chemistry (10):** Alcohols, Phenols and Ethers · Aldehydes, Ketones and
 Carboxylic Acids · Amines · Biomolecules · Chemical Kinetics · Coordination
