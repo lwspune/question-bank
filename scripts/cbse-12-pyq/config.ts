@@ -168,12 +168,21 @@ export const CHAPTERS_PHYSICS = [
  * (450 practice rows, 0 pyq).
  *
  * ⚠ The 2022 COVID Term-II paper predates NCERT's rationalisation and examines
- * content these ten chapters no longer cover — MEASURED, not anticipated: 2022
- * 56/1/1 Q10 asks about lyophilic/lyophobic colloids and coagulation, and its
- * OR-branch about physisorption vs chemisorption. Both are Surface Chemistry,
- * a chapter that no longer exists. Such chapters are added explicitly and
- * marked "[Outdated]" so a student browsing can tell dropped syllabus from
- * current, rather than being filed onto a plausible-but-wrong neighbour.
+ * content these ten chapters no longer cover. MEASURED across all 15 of that
+ * year's marking schemes, word-boundary matched: the ONLY dropped chapter the
+ * papers actually examine is SURFACE CHEMISTRY — colloid/colloidal 47,
+ * adsorption 13, physisorption 6, chemisorption 6, lyophilic 6, lyophobic 6,
+ * coagulation 3. Solid State, Polymers, p-Block, Metallurgy, Everyday-Life
+ * Chemistry and Environmental Chemistry are all ABSENT.
+ *
+ * (A first pass with substring matching reported Solid State too, on 15 hits
+ * for "void" — every one of them the word "avoid". The identical count showed
+ * up in PHYSICS, which has no Solid State chapter at all, which is what gave it
+ * away. Word-boundary match anything you intend to act on.)
+ *
+ * PHYSICS needs no such chapter: every topic its 2022 papers examine has a live
+ * chapter. Its one "lattice" hit is "ionised cores in the lattice" inside a
+ * semiconductor question — the live Semiconductor Electronics chapter.
  */
 export const CHAPTERS_CHEMISTRY = [
   "Alcohols, Phenols and Ethers",
@@ -186,6 +195,24 @@ export const CHAPTERS_CHEMISTRY = [
   "Haloalkanes and Haloarenes",
   "Solutions",
   "The d-and f-Block Elements",
+  // ── dropped from the syllabus; 2022 Term-II only ──────────────────────────
+  //
+  // The "[Outdated]" marker is deliberate and load-bearing (user's call,
+  // 2026-09-10). The alternative — filing colloid questions onto Solutions or
+  // Electrochemistry because they look adjacent — would be quietly wrong, and a
+  // student practising them would have no way to know the content was dropped.
+  // The marker rides the CHAPTER NAME so it shows in the /browse chapter filter
+  // and on each question's chapter chip, i.e. before a student starts rather
+  // than after.
+  //
+  // ⚠ NEVER put "[Outdated]" in a question's STEM. The stem is the faithful
+  // transcription of a real board paper and is part of content_hash, so editing
+  // it would both falsify the record and change the row's identity.
+  //
+  // ⚠ EXACT STRING. Chapters AUTO-CREATE on commit, so a name differing by one
+  // space silently forks the corpus in two (the mh-ssc-10-text lesson). Slugs
+  // to `surface-chemistry-outdated`.
+  "Surface Chemistry [Outdated]",
 ] as const;
 
 /**
@@ -246,9 +273,23 @@ export function subjectFromArg(arg: string | undefined): SubjectSpec {
   return spec;
 }
 
-/** questions.pyq_note — provenance stamped on every row. */
+/**
+ * questions.pyq_note — provenance stamped on every row.
+ *
+ * 2022 gets an extra clause because that paper is genuinely not comparable to
+ * the others: it is the COVID Term-II examination, a 12-question / 35-mark
+ * paper covering half the syllabus, and a reader seeing "CBSE 2022 board
+ * examination" beside a 33-question 2024 paper would reasonably assume the two
+ * are the same exam. The note is per-PAPER, which is the right grain for a fact
+ * true of every row on it.
+ */
 export function pyqNote(subject: SubjectSpec, year: number, code: string): string {
-  return `CBSE Class 12 ${subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}. Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
+  const base = `CBSE Class 12 ${subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}.`;
+  const term2 =
+    year === 2022
+      ? ` This is the COVID-era Term-II paper (12 questions, 35 marks), covering part of the syllabus only, and it predates NCERT's rationalisation — some questions examine content the current syllabus no longer includes.`
+      : "";
+  return `${base}${term2} Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
 }
 
 /** questions.source_file / upload_jobs.filename — the dedup + rollback key. */

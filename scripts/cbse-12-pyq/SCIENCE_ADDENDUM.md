@@ -120,15 +120,31 @@ Circuits · Wave Optics
 
 ### ⚠ The 2022 Term-II paper predates NCERT's rationalisation
 
-It examines content these chapters no longer cover. **Measured**: 2022 56/1/1
-Q10 asks about lyophilic/lyophobic colloids and coagulation, and its OR-branch
-about physisorption vs chemisorption — both **Surface Chemistry**, a chapter
-that no longer exists.
+It examines content the current chapters no longer cover, and there is exactly
+**one** such chapter — measured across all 15 of that year's marking schemes,
+word-boundary matched:
 
-Do **not** file such a question onto a plausible-looking neighbour. Flag it
-`_outOfSyllabus: "<the topic>"` and leave `chapter` empty. Those rows get an
-explicitly `[Outdated]`-marked chapter so a student can tell dropped syllabus
-from current, rather than being quietly misled.
+**Chemistry → `Surface Chemistry [Outdated]`.** Use that string verbatim; it is
+in the chapter list above. It covers colloids (lyophilic/lyophobic, coagulation,
+Tyndall, emulsions, micelles), adsorption, and physisorption vs chemisorption.
+
+**Physics needs no such chapter** — every topic its 2022 papers examine has a
+live chapter. If you believe you have found an exception, say so rather than
+inventing a name.
+
+Do **not** file one of these onto a plausible-looking neighbour like Solutions
+or Electrochemistry because it looks adjacent: that is quietly wrong, and a
+student practising it would have no way to know the content was dropped.
+
+> ⚠ **Never put `[Outdated]` in a question's STEM.** The stem is the faithful
+> transcription of a real board paper and is part of `content_hash`, so editing
+> it would both falsify the record and change the row's identity. The marker
+> lives in the CHAPTER NAME (where a student sees it before starting) and the
+> 2022 provenance note is added automatically at commit.
+
+If you meet a 2022 question whose topic fits **neither** the ten live chapters
+nor Surface Chemistry, do not guess: flag it `_outOfSyllabus: "<the topic>"`,
+leave `chapter` empty, and report it. That is a finding, not a blocker.
 
 ---
 
