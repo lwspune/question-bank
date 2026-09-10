@@ -9,6 +9,7 @@ import {
   splitMergedMs,
   codesInMsFilename,
   parseInternalPage,
+  parseSectionAKey,
 } from "../scripts/cbse-12-pyq/lib";
 
 // Every filename below is a REAL name from the official CBSE ZIPs (measured
@@ -77,6 +78,7 @@ describe("paper patterns", () => {
       "full70_phy_2023",
       "full80",
       "term2",
+      "term2_sci",
     ]);
   });
 
@@ -424,6 +426,211 @@ describe("the two 2023 patterns, which are not interchangeable", () => {
   });
 });
 
+// 2022 is the COVID Term-II paper for the sciences too — but it is NOT Maths'
+// Term-II paper. Measured 2026-09-10 from the printed instructions of 2022
+// 55/1/1 and 56/1/1, which agree with each other exactly:
+//   12 questions / THREE sections / 35 marks
+// against Maths' 14 questions / 40 marks. Corroborated independently by the
+// marking scheme, which instructs "A full scale of marks 0-35 has to be used".
+describe("term2_sci — the 2022 Term-II paper, shared by Physics and Chemistry", () => {
+  it("reconstructs the printed 35 marks — NOT Maths' 40", () => {
+    expect(totalMarks("term2_sci")).toBe(35);
+    expect(totalMarks("term2")).toBe(40);
+  });
+
+  it("has NO MCQs anywhere, so the blind-MCQ control is unavailable for 2022", () => {
+    for (let q = 1; q <= 12; q++) {
+      expect(sectionForQuestion(q, "term2_sci").kind).not.toBe("mcq");
+      expect(sectionForQuestion(q, "term2_sci").kind).not.toBe("assertion_reason");
+    }
+  });
+
+  it("puts Q1-3 in Section A at 2 marks", () => {
+    expect(sectionForQuestion(1, "term2_sci")).toEqual({
+      section: "A",
+      marks: 2,
+      kind: "subjective",
+    });
+    expect(sectionForQuestion(3, "term2_sci")).toEqual({
+      section: "A",
+      marks: 2,
+      kind: "subjective",
+    });
+  });
+
+  it("puts Q4-11 in Section B at 3 marks", () => {
+    expect(sectionForQuestion(4, "term2_sci")).toEqual({
+      section: "B",
+      marks: 3,
+      kind: "subjective",
+    });
+    expect(sectionForQuestion(11, "term2_sci")).toEqual({
+      section: "B",
+      marks: 3,
+      kind: "subjective",
+    });
+  });
+
+  it("makes Q12 the single 5-mark case study", () => {
+    // "Section C - question number 12 is a case study based question,
+    //  this question carries 5 marks."
+    expect(sectionForQuestion(12, "term2_sci")).toEqual({
+      section: "C",
+      marks: 5,
+      kind: "case_study",
+    });
+  });
+
+  it("refuses a question number outside the 12-question paper", () => {
+    expect(() => sectionForQuestion(13, "term2_sci")).toThrow(/out of range/i);
+  });
+});
+
+// THE OFFICIAL MCQ KEY — the single biggest quality difference between this
+// ingest and its key-less predecessors, and the one thing here that is machine
+// readable where everything else needs vision. Measured: the corruption in
+// these marking schemes hits SYMBOLS, so the option LETTER survives intact
+// while the answer's value text does not ("8 μF" extracts as "8 F").
+//
+// ⚠ It is NOT uniform. Some papers' Section-A block extracts perfectly and
+// others are scrambled by their two-column layout, so the parser must REFUSE a
+// bad parse rather than return a short list that reads as a complete key.
+describe("parseSectionAKey", () => {
+  it("reads the plain form (Chemistry 2026: uppercase, numbered with a dot)", () => {
+    const t = `Q.No.\nEXPECTED OUTCOMES\nMarks\n\nSECTION - A\n\n1. \n(B) \n1 \n2. \n(B) \n1 \n3. \n(C) \n1 \n\nSECTION - B\n\n17. \nNegative deviation`;
+    expect(parseSectionAKey(t)).toEqual([
+      { q: 1, answer: "B" },
+      { q: 2, answer: "B" },
+      { q: 3, answer: "C" },
+    ]);
+  });
+
+  it("reads the lowercase form and UPPERCASES it (Chemistry 2023)", () => {
+    // The bank stores A/B/C/D uppercase; CBSE prints either case by year.
+    const t = `SECTION-A \n \n1. \n(a) \n1 \n2. \n(c) \n1 \n \nSECTION- B \n \n19. \nHenry's law`;
+    expect(parseSectionAKey(t)).toEqual([
+      { q: 1, answer: "A" },
+      { q: 2, answer: "C" },
+    ]);
+  });
+
+  it("reads a number with NO trailing dot (Chemistry 2025 56/1/1)", () => {
+    const t = `SECTION A \n \n1 \n(A) \n1 \n2 \n(B) \n1 \n \nSECTION B  \n \n17 \n(A) (a) Due to high pressure`;
+    expect(parseSectionAKey(t)).toEqual([
+      { q: 1, answer: "A" },
+      { q: 2, answer: "B" },
+    ]);
+  });
+
+  it("keeps the answer's VALUE TEXT where CBSE prints it (Physics 2024)", () => {
+    // Worth keeping as an independent cross-check on the letter — though it is
+    // exactly the part the Symbol-font corruption eats, so it is advisory.
+    const t = `Section  A \n \n \n1. \n(B)     Zero \n1 \n1 \n2. \n(D)     5.0 J \n1 \n1 \n \nSection B\n\n17. \nsomething`;
+    expect(parseSectionAKey(t)).toEqual([
+      { q: 1, answer: "B", valueText: "Zero" },
+      { q: 2, answer: "D", valueText: "5.0 J" },
+    ]);
+  });
+
+  it("captures CBSE's OWN inline errata — questions the Board itself voided", () => {
+    // REAL, Chemistry 2023 56/1/1. These are questions CBSE declared broken and
+    // awarded to everyone. Losing them would mean transcribing a defective
+    // question with a key that cannot be right, and never knowing why.
+    const plain = [1, 2, 3, 4, 5].map((n) => `${n}. \n(a) \n1 `).join("\n");
+    const t =
+      `SECTION-A \n \n${plain}\n` +
+      `6. \n(c) / Full mark to be awarded for any option \n1 \n` +
+      [7, 8, 9, 10, 11, 12].map((n) => `${n}. \n(b) \n1 `).join("\n") +
+      `\n13. \n(c) / Award full mark if attempted (Printing error) \n1 \n \nSECTION- B \n \n19. \nx`;
+    const key = parseSectionAKey(t);
+    expect(key).toHaveLength(13);
+    expect(key[5]).toEqual({
+      q: 6,
+      answer: "C",
+      valueText: "/ Full mark to be awarded for any option",
+      graceNote: "/ Full mark to be awarded for any option",
+    });
+    expect(key[12]).toEqual({
+      q: 13,
+      answer: "C",
+      valueText: "/ Award full mark if attempted (Printing error)",
+      graceNote: "/ Award full mark if attempted (Printing error)",
+    });
+    // …and the ordinary entries carry no grace note.
+    expect(key.filter((e) => e.graceNote).map((e) => e.q)).toEqual([6, 13]);
+  });
+
+  it("stops at Section B — a later '(a)' sub-part is NOT a Section-A answer", () => {
+    // Section E prints "31 (a)" for sub-parts; sweeping the whole document
+    // would read those as MCQ answers for questions 31+.
+    const t = `SECTION A\n\n1. \n(A) \n1 \n\nSECTION B\n\n17. \nprose\n\nSECTION E \n \n31 \n(a) (i) E = ...\n32 \n(b) x`;
+    expect(parseSectionAKey(t)).toEqual([{ q: 1, answer: "A" }]);
+  });
+
+  it("returns NOTHING when there is no Section-A block at all", () => {
+    expect(parseSectionAKey("Marking Scheme\nGeneral Instructions:\n1 You are aware")).toEqual([]);
+  });
+
+  it("refuses a block whose question numbers are not 1..N ascending", () => {
+    // A scrambled two-column extraction yields plausible-looking pairs in the
+    // wrong order. Returning them would hand on a key that is confidently wrong.
+    const t = `SECTION A\n\n1. \n(A) \n1 \n5. \n(B) \n1 \n2. \n(C) \n1 \n\nSECTION B\n\n19. x`;
+    expect(() => parseSectionAKey(t)).toThrow(/ascending|1\.\.N|order/i);
+  });
+
+  it("refuses a duplicate question number", () => {
+    const t = `SECTION A\n\n1. \n(A) \n1 \n1. \n(B) \n1 \n\nSECTION B\n\n19. x`;
+    expect(() => parseSectionAKey(t)).toThrow(/ascending|duplicate|order/i);
+  });
+
+  // The paper's measured pattern already states how many Section-A questions
+  // there are, so that count is a second bound — and a useful one, because in
+  // several real marking schemes the "SECTION B" header does not survive
+  // extraction and the scan runs on into Section E's "31 (a)" sub-parts.
+  describe("bounded by the expected count", () => {
+    it("takes exactly N when the Section-B header is missing and the scan runs on", () => {
+      // REAL shape: the first 16 read cleanly, then the boundary is lost and
+      // sub-part labels follow. The first 16 ARE the key.
+      const head = Array.from({ length: 16 }, (_, i) => `${i + 1}. \n(A) \n1 `).join("\n");
+      const spill = `\n19 \n(a) x\n21 \n(b) y\n31 \n(a) z`;
+      const t = `SECTION A\n\n${head}${spill}`;
+      expect(parseSectionAKey(t, 16)).toHaveLength(16);
+      expect(parseSectionAKey(t, 16)[15]).toEqual({ q: 16, answer: "A" });
+    });
+
+    it("still REFUSES when the first N are not 1..N — a gap is not a boundary problem", () => {
+      // Missing Q9: [1..8, 10..17]. Truncating to 16 would hand on a key whose
+      // Q9 answer is really Q10's, which is the worst outcome available here.
+      const nums = [...Array.from({ length: 8 }, (_, i) => i + 1), ...Array.from({ length: 9 }, (_, i) => i + 10)];
+      const t = `SECTION A\n\n${nums.map((n) => `${n}. \n(A) \n1 `).join("\n")}\n\nSECTION B\n\n19. x`;
+      expect(() => parseSectionAKey(t, 16)).toThrow(/ascending/i);
+    });
+
+    it("refuses when FEWER than N are present, rather than returning a short key", () => {
+      const t = `SECTION A\n\n1. \n(A) \n1 \n2. \n(B) \n1 \n\nSECTION B\n\n19. x`;
+      expect(() => parseSectionAKey(t, 16)).toThrow(/2 of 16|expected/i);
+    });
+
+    it("is unchanged when no count is supplied", () => {
+      const t = `SECTION A\n\n1. \n(A) \n1 \n2. \n(B) \n1 \n\nSECTION B\n\n19. x`;
+      expect(parseSectionAKey(t)).toHaveLength(2);
+    });
+  });
+
+  it("skips a TABLE OF CONTENTS entry and finds the real Section A", () => {
+    // REAL: Physics 2026's marking scheme opens with a contents page whose
+    // "SECTION-A ........ 4" line matches first. Anchoring there finds nothing
+    // but dot leaders, and the paper reads as keyless when it is not.
+    const toc =
+      `SECTION-A ${".".repeat(90)} 4 \n1. ${".".repeat(90)} 4 \n2. ${".".repeat(90)} 4 \n`;
+    const real = `SECTION-A \n \n1. \n(B) \n1 \n2. \n(D) \n1 \n \nSECTION-B \n \n17. \nprose`;
+    expect(parseSectionAKey(toc + real)).toEqual([
+      { q: 1, answer: "B" },
+      { q: 2, answer: "D" },
+    ]);
+  });
+});
+
 describe("patternForYear is per SUBJECT, not global", () => {
   it("knows the Physics years that have been measured", () => {
     expect(patternForYear("physics", 2026)).toBe("full70");
@@ -432,6 +639,10 @@ describe("patternForYear is per SUBJECT, not global", () => {
     expect(patternForYear("chemistry", 2024)).toBe("full70");
     expect(patternForYear("physics", 2023)).toBe("full70_phy_2023");
     expect(patternForYear("chemistry", 2023)).toBe("full70_chem_2023");
+    expect(patternForYear("physics", 2025)).toBe("full70");
+    expect(patternForYear("chemistry", 2025)).toBe("full70");
+    expect(patternForYear("physics", 2022)).toBe("term2_sci");
+    expect(patternForYear("chemistry", 2022)).toBe("term2_sci");
   });
 
   it("THROWS for a subject-year nobody has read off the page", () => {
@@ -445,13 +656,8 @@ describe("patternForYear is per SUBJECT, not global", () => {
       expect(() => patternForYear(s, 2021)).toThrow(/not measured/i);
       expect(() => patternForYear(s, 2027)).toThrow(/not measured/i);
     }
-    // 2022 and 2025 science papers are pure SCANS with a zero-character text
-    // layer, so their section tables have not been read. They must throw until
-    // someone opens them, rather than inheriting a neighbouring year.
-    for (const s of ["physics", "chemistry"] as const) {
-      expect(() => patternForYear(s, 2022)).toThrow(/not measured/i);
-      expect(() => patternForYear(s, 2025)).toThrow(/not measured/i);
-    }
+    // All ten science subject-years are now measured (2022 and 2025 by vision,
+    // being pure scans). The guard still protects any year CBSE adds next.
   });
 
   it("keeps Maths answering exactly as before", () => {
