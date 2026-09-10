@@ -107,6 +107,9 @@ async function main() {
     axis.get(ch)!.add(r.name);
   }
 
+  // chapter -> subtopics it will AUTO-CREATE at commit (declared, not yet live).
+  const pending = new Map<string, Set<string>>();
+
   const seen = new Set<string>();
   for (const q of paper.questions) {
     if (seen.has(q.ref)) note(q.ref, "duplicate ref");
@@ -135,7 +138,17 @@ async function main() {
     // rather than accepting the expected-looking failure.
     const chapterKnown = SUBJECT.chapters.includes(q.chapter);
     if (!chapterKnown) note(q.ref, `unknown chapter "${q.chapter}"`);
-    if (chapterKnown && !axis.get(q.chapter)?.has(q.subtopic)) {
+
+    // A chapter DECLARED in config but absent from the live DB is the normal
+    // state of the first paper to use a new chapter — commit.ts auto-creates it,
+    // and its subtopics, on write. Blocking there is a false failure: no
+    // subtopic name could ever pass, so the transcriber has nothing to fix.
+    // Reported as a WARNING carrying the names, so the taxonomy decision is
+    // visible and reviewable before the first commit rather than after.
+    const chapterLive = axis.has(q.chapter);
+    if (chapterKnown && !chapterLive) {
+      pending.set(q.chapter, (pending.get(q.chapter) ?? new Set()).add(q.subtopic));
+    } else if (chapterKnown && !axis.get(q.chapter)?.has(q.subtopic)) {
       note(q.ref, `subtopic "${q.subtopic}" is not on the live axis for "${q.chapter}"`);
     }
     if (!chapterKnown && !subtopicExistsAnywhere(axis, q.subtopic)) {
@@ -208,6 +221,16 @@ async function main() {
   console.log(`  mcq ${mcq} (all answered: ${answered === mcq}) | subjective ${paper.questions.length - mcq}`);
   console.log(`  distinct base question numbers: ${new Set(paper.questions.map((q) => baseNumber(q.ref))).size}`);
   console.log(`  chapters touched: ${new Set(paper.questions.map((q) => q.chapter)).size}`);
+
+  if (pending.size) {
+    console.log(`
+⚠ ${pending.size} chapter(s) declared in config but NOT YET in the DB.`);
+    console.log("  commit.ts will CREATE these, and their subtopics, on write — review before committing:");
+    for (const [ch, subs] of pending) {
+      console.log(`  - "${ch}"`);
+      for (const s of [...subs].sort()) console.log(`      subtopic: "${s}"`);
+    }
+  }
 
   if (problems.length) {
     console.log(`\n${problems.length} PROBLEM(S):`);
