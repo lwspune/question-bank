@@ -37,7 +37,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { SUBJECTS, subjectFromArg, EXAM_ID_CBSE_12, type SubjectSpec } from "./config";
+import { SUBJECTS, subjectFromArg, EXAM_ID_CBSE_12, declaredSubtopics, type SubjectSpec } from "./config";
 
 type Row = { name: string; chapters: { name: string } };
 
@@ -81,19 +81,35 @@ async function main() {
   const stray = live.filter((c) => !declared.includes(c));
 
   console.log(`\n### ${subject.subjectName} — chapters and their subtopics (LIVE, ${new Date().toISOString().slice(0, 10)})\n`);
-  console.log(
-    `Use these names CHARACTER FOR CHARACTER. Chapters are validated and an unknown`
-  );
-  console.log(`one is REFUSED; subtopics AUTO-CREATE, so a near-miss there does not error —`);
-  console.log(`it silently splits a subtopic in two, each holding half the questions.\n`);
+  console.log(`Use these names CHARACTER FOR CHARACTER.`);
+  console.log(`NOTHING at commit time catches a typo: commit.ts AUTO-CREATES on a mismatch,`);
+  console.log(`validate.ts checks chapters only, and a subtopic near-miss is checked by`);
+  console.log(`nothing at all — it silently splits a subtopic in two, each holding half the`);
+  console.log(`questions and each rendering as its own /browse filter.\n`);
+  // ⚠ LIVE ∪ DECLARED, and printing only the live half was a real defect.
+  //
+  // A subtopic reaches the DB only once a question is filed on it, so a name the
+  // NCERT ingest authored but no textbook exercise used is absent from a live
+  // query while being exactly the right answer. Printing only the live half told
+  // the Physics pilot that Wave Optics has no `Diffraction` — a subtopic that
+  // has existed in config all along — so it filed three diffraction questions
+  // under Interference and reported a taxonomy gap that does not exist. CBSE
+  // sets diffraction every year, so that would have repeated on all 78 papers.
+  const declaredSubs = declaredSubtopics(subject);
   for (const ch of declared) {
-    const subs = axis.get(ch);
-    if (!subs) {
+    const liveSubs = axis.get(ch);
+    if (!liveSubs) {
       console.log(`- **${ch}** — NOT YET IN THE DB; it and its subtopics are created on first commit.`);
+      for (const s of declaredSubs.get(ch) ?? []) console.log(`    - ${s}   (declared)`);
       continue;
     }
+    const dec = declaredSubs.get(ch) ?? [];
+    const unused = dec.filter((s) => !liveSubs.includes(s)).sort((a, b) => a.localeCompare(b));
     console.log(`- **${ch}**`);
-    for (const s of subs) console.log(`    - ${s}`);
+    for (const s of liveSubs) console.log(`    - ${s}`);
+    // Marked, not hidden: they are equally valid to file on, and saying so is
+    // what stops an agent inventing a near-duplicate of a name that exists.
+    for (const s of unused) console.log(`    - ${s}   ← declared, no rows yet — USE IT if it fits`);
   }
   console.log(
     `\nIf a question genuinely fits NONE of its chapter's subtopics, file it on the` +

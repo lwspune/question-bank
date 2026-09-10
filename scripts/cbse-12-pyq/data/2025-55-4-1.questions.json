@@ -1,744 +1,1056 @@
 {
-  "paper": "55/4/1",
-  "year": 2025,
-  "pattern": "full70",
-  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 (printed folios 3, 5, 7 ... 31 — folio = idx + 1). idx 0 is the bilingual cover; idx 1 is the Hindi General Instructions; EVERY ODD index 1..29 is a Hindi facing page. The alternating hypothesis held EXACTLY and did NOT invert: the last page (idx 30, folio 31) is EVEN and English, so no English-only tail page. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE — each page carries exactly one language's block and nothing spills across a language boundary. Verified at full size on the three riskiest odd pages: idx 19 (the Hindi of Q29's sub-parts, mirroring idx 20 option-for-option), idx 27 (the Hindi of the Q32(a)(ii)->(b) spill, mirroring idx 28) and idx 29 (the Hindi of Q33(b), the last odd page). All three are pure Devanagari from the first line. Both cross-page continuations are ENGLISH-to-ENGLISH: Q29's passage+figure sit on idx 18 with its sub-parts on idx 20, and Q32(a)(ii)'s stem+figure sit on idx 26 with its (I)/(II) on idx 28. STRUCTURE read off the paper's own printed General Instructions on idx 2 and it matches `full70`: 33 questions, five sections, Section A Q1-16 1 mark, Section B Q17-21 2 marks, Section C Q22-28 3 marks, Section D Q29-30 case study-based 4 marks, Section E Q31-33 long answer 5 marks. 16 + 10 + 21 + 8 + 15 = 70. ⚠ The General Instructions call ALL of Q1-16 'Multiple Choice type questions' and do NOT name an assertion-reason band; the paper declares that separately in a printed block on idx 10 ('Questions number 13 to 16 are Assertion (A) and Reason (R) type questions'), which is where the pattern's Q13-16 band comes from. INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section A'), so the inventory was established by walking the marking scheme, which reprints both branches and prints a bare 'OR' between them. SEVEN questions carry an OR — Q17, Q22, Q29(iv), Q30(iv), Q31, Q32, Q33 — each confirmed BOTH by a printed OR on the paper AND by an OR block in the scheme (ms text layer: OR appears on ms pages 3, 6, 10 twice, 12, 15, 18 and nowhere else). Q18-Q21, Q23-Q28 carry none. 46 rows for 33 questions. SECTION-A ANSWERS taken VERBATIM from the official marking scheme's Section-A table (XII_042_Physics_MS_55_4_1,2,3.pdf, page index 2, header 'MARKING SCHEME: PHYSICS(042) / Code: 55/4/1'), uppercased: 1C 2C 3B 4C 5B 6A 7D 8B 9C 10B 11A 12C 13A 14A 15C 16B. Read by VISION off ms/p02.png and independently cross-checked against the machine parse in data/_keys.physics.json — the two agree on all 16 letters. The value text printed beside each letter matches the option text I transcribed for that letter in every one of the 16 rows. Q29 and Q30's ten case-study MCQ answers likewise come from the scheme's SECTION-D block (ms page index 10) and each printed value matches the transcribed option. NO QUESTION IS VOIDED BY CBSE on this paper: the Section-A table prints a bare '(letter) 1 1' on every row with no grace note, `grace` is [] in the machine parse, and a whole-document scan of all 62 pages of the merged scheme for 'full mark', 'any option', 'printing error', 'misprint', 'no option is correct', 'bonus', 'deleted', 'Hindi', 'English version', 'medium only', 'award 1 mark' and 'not correct' returns ONLY the boilerplate 'Please do not hesitate to award full marks if the answer deserves it' from the three papers' front matter. In particular there is NO medium-scoped award clause anywhere in this scheme, so the STOP-and-report case did not arise. DECIMAL POINTS ARE RAISED DOTS ON THIS PAPER — verified on the constants block (6·63, 1·6, 8·854, 9·1, 1·675, 1·673, 6·023, 1·38) and in the questions (8·0, 4·55, 3·33, 0·55, 1·55, 15·0, 4·002603, 1·9926, 2·0, 2·48, 0·53, 1·06, 1·59, 2·12, 0·2, 5·0, 0·6) — so every decimal is written 0{\\cdot}55 inside a math zone. Minus signs printed as en-dashes in numbers are transcribed as ASCII '-'; curly quotes around 'L', 'K', '1', '2' are transcribed as ASCII apostrophes; spacing artifacts of CBSE's justification (a double space in Q30's passage, a missing space after the comma in Q26) are normalised. plan.txt gives no reference paper, so every question was transcribed. FIGURE LOAD IS HEAVY, as expected for Physics: 8 distinct printed figures back 13 rows — Q3 (charge in a field region), Q17(a) and Q17(b) (two circuits), Q22(a) (an I-t plot), Q23 (two current-carrying axes), Q24 (two coils), Q29 (three plates, shared by all FIVE case-study siblings) and Q32(a) (a loop entering a field region). Every one is REQUIRED, none is decorative, and none was approximated in ASCII. See each row's `_figure` for whether the setup was described in words and why.",
-  "questions": [
+ "paper": "55/4/1",
+ "year": 2025,
+ "pattern": "full70",
+ "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 (printed folios 3, 5, 7 ... 31 — folio = idx + 1). idx 0 is the bilingual cover; idx 1 is the Hindi General Instructions; EVERY ODD index 1..29 is a Hindi facing page. The alternating hypothesis held EXACTLY and did NOT invert: the last page (idx 30, folio 31) is EVEN and English, so no English-only tail page. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE — each page carries exactly one language's block and nothing spills across a language boundary. Verified at full size on the three riskiest odd pages: idx 19 (the Hindi of Q29's sub-parts, mirroring idx 20 option-for-option), idx 27 (the Hindi of the Q32(a)(ii)->(b) spill, mirroring idx 28) and idx 29 (the Hindi of Q33(b), the last odd page). All three are pure Devanagari from the first line. Both cross-page continuations are ENGLISH-to-ENGLISH: Q29's passage+figure sit on idx 18 with its sub-parts on idx 20, and Q32(a)(ii)'s stem+figure sit on idx 26 with its (I)/(II) on idx 28. STRUCTURE read off the paper's own printed General Instructions on idx 2 and it matches `full70`: 33 questions, five sections, Section A Q1-16 1 mark, Section B Q17-21 2 marks, Section C Q22-28 3 marks, Section D Q29-30 case study-based 4 marks, Section E Q31-33 long answer 5 marks. 16 + 10 + 21 + 8 + 15 = 70. ⚠ The General Instructions call ALL of Q1-16 'Multiple Choice type questions' and do NOT name an assertion-reason band; the paper declares that separately in a printed block on idx 10 ('Questions number 13 to 16 are Assertion (A) and Reason (R) type questions'), which is where the pattern's Q13-16 band comes from. INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section A'), so the inventory was established by walking the marking scheme, which reprints both branches and prints a bare 'OR' between them. SEVEN questions carry an OR — Q17, Q22, Q29(iv), Q30(iv), Q31, Q32, Q33 — each confirmed BOTH by a printed OR on the paper AND by an OR block in the scheme (ms text layer: OR appears on ms pages 3, 6, 10 twice, 12, 15, 18 and nowhere else). Q18-Q21, Q23-Q28 carry none. 46 rows for 33 questions. SECTION-A ANSWERS taken VERBATIM from the official marking scheme's Section-A table (XII_042_Physics_MS_55_4_1,2,3.pdf, page index 2, header 'MARKING SCHEME: PHYSICS(042) / Code: 55/4/1'), uppercased: 1C 2C 3B 4C 5B 6A 7D 8B 9C 10B 11A 12C 13A 14A 15C 16B. Read by VISION off ms/p02.png and independently cross-checked against the machine parse in data/_keys.physics.json — the two agree on all 16 letters. The value text printed beside each letter matches the option text I transcribed for that letter in every one of the 16 rows. Q29 and Q30's ten case-study MCQ answers likewise come from the scheme's SECTION-D block (ms page index 10) and each printed value matches the transcribed option. NO QUESTION IS VOIDED BY CBSE on this paper: the Section-A table prints a bare '(letter) 1 1' on every row with no grace note, `grace` is [] in the machine parse, and a whole-document scan of all 62 pages of the merged scheme for 'full mark', 'any option', 'printing error', 'misprint', 'no option is correct', 'bonus', 'deleted', 'Hindi', 'English version', 'medium only', 'award 1 mark' and 'not correct' returns ONLY the boilerplate 'Please do not hesitate to award full marks if the answer deserves it' from the three papers' front matter. In particular there is NO medium-scoped award clause anywhere in this scheme, so the STOP-and-report case did not arise. DECIMAL POINTS ARE RAISED DOTS ON THIS PAPER — verified on the constants block (6·63, 1·6, 8·854, 9·1, 1·675, 1·673, 6·023, 1·38) and in the questions (8·0, 4·55, 3·33, 0·55, 1·55, 15·0, 4·002603, 1·9926, 2·0, 2·48, 0·53, 1·06, 1·59, 2·12, 0·2, 5·0, 0·6) — so every decimal is written 0{\\cdot}55 inside a math zone. Minus signs printed as en-dashes in numbers are transcribed as ASCII '-'; curly quotes around 'L', 'K', '1', '2' are transcribed as ASCII apostrophes; spacing artifacts of CBSE's justification (a double space in Q30's passage, a missing space after the comma in Q26) are normalised. plan.txt gives no reference paper, so every question was transcribed. FIGURE LOAD IS HEAVY, as expected for Physics: 8 distinct printed figures back 13 rows — Q3 (charge in a field region), Q17(a) and Q17(b) (two circuits), Q22(a) (an I-t plot), Q23 (two current-carrying axes), Q24 (two coils), Q29 (three plates, shared by all FIVE case-study siblings) and Q32(a) (a loop entering a field region). Every one is REQUIRED, none is decorative, and none was approximated in ASCII. See each row's `_figure` for whether the setup was described in words and why.",
+ "questions": [
+  {
+   "ref": "Q1",
+   "questionNumber": "1",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Charge and its Basic Properties",
+   "difficulty": "MODERATE",
+   "stem": "A body acquires charge \\(8{\\cdot}0 \\times 10^{-12}\\) C. The mass of the body :",
+   "options": [
     {
-      "ref": "Q1",
-      "questionNumber": "1",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electric Charges and Fields",
-      "subtopic": "Electric Charge and its Basic Properties",
-      "difficulty": "MODERATE",
-      "stem": "A body acquires charge \\(8{\\cdot}0 \\times 10^{-12}\\) C. The mass of the body :",
-      "options": [
-        { "label": "A", "text": "increases by \\(4{\\cdot}5 \\times 10^{-7}\\) kg" },
-        { "label": "B", "text": "decreases by \\(1{\\cdot}0 \\times 10^{-6}\\) kg" },
-        { "label": "C", "text": "decreases by \\(4{\\cdot}55 \\times 10^{-23}\\) kg" },
-        { "label": "D", "text": "increases by \\(9{\\cdot}1 \\times 10^{-23}\\) kg" }
-      ],
-      "answer": "C"
+     "label": "A",
+     "text": "increases by \\(4{\\cdot}5 \\times 10^{-7}\\) kg"
     },
     {
-      "ref": "Q2",
-      "questionNumber": "2",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Ohm's Law",
-      "difficulty": "MODERATE",
-      "stem": "A current flows through a cylindrical conductor of radius R. The current density at a point in the conductor is \\(j = \\alpha r\\) (along its axis), here \\(\\alpha\\) is a constant and r is distance from the axis of the conductor. The current flowing through the portion of the conductor from \\(r = 0\\) to \\(r = \\dfrac{R}{2}\\) is proportional to :",
-      "options": [
-        { "label": "A", "text": "\\(R\\)" },
-        { "label": "B", "text": "\\(R^2\\)" },
-        { "label": "C", "text": "\\(R^3\\)" },
-        { "label": "D", "text": "\\(R^4\\)" }
-      ],
-      "answer": "C"
+     "label": "B",
+     "text": "decreases by \\(1{\\cdot}0 \\times 10^{-6}\\) kg"
     },
     {
-      "ref": "Q3",
-      "questionNumber": "3",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
-      "difficulty": "MODERATE",
-      "stem": "A particle having charge +q enters a uniform magnetic field \\(\\vec{B}\\) as shown in the figure. The particle will describe :",
-      "options": [
-        { "label": "A", "text": "a circular path in XZ plane" },
-        { "label": "B", "text": "a semicircular path in XY plane" },
-        { "label": "C", "text": "a helical path with its axis parallel to Y-axis" },
-        { "label": "D", "text": "a semicircular path in YZ plane" }
-      ],
-      "answer": "B",
-      "_figure": "REQUIRED — the stem says only 'as shown in the figure' and every option names a PLANE, so the whole question is the geometry of the drawing. Deliberately NOT described in words: the figure fixes the field's direction relative to the axes and the particle's velocity direction, and naming either states the answer. What is drawn: a right-handed X-Y-Z axis triad with X horizontal, Y vertical and Z toward the lower-left, a field region marked by a grid of crosses filling the plane of the page, and the charge q sitting on the +X axis with a velocity arrow v. Page idx 4."
+     "label": "C",
+     "text": "decreases by \\(4{\\cdot}55 \\times 10^{-23}\\) kg"
     },
     {
-      "ref": "Q4",
-      "questionNumber": "4",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Magnetism and Matter",
-      "subtopic": "The Bar Magnet",
-      "difficulty": "MODERATE",
-      "stem": "A bar magnet is initially at right angles to a uniform magnetic field. The magnet is rotated till the torque acting on it becomes one-half of its initial value. The angle through which the bar magnet is rotated is :",
-      "options": [
-        { "label": "A", "text": "\\(30^{\\circ}\\)" },
-        { "label": "B", "text": "\\(45^{\\circ}\\)" },
-        { "label": "C", "text": "\\(60^{\\circ}\\)" },
-        { "label": "D", "text": "\\(75^{\\circ}\\)" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q5",
-      "questionNumber": "5",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Magnetism and Matter",
-      "subtopic": "Magnetisation and Magnetic Intensity",
-      "difficulty": "EASY",
-      "stem": "Which one out of the following materials is **not** paramagnetic ?",
-      "options": [
-        { "label": "A", "text": "Aluminium" },
-        { "label": "B", "text": "Sodium Chloride" },
-        { "label": "C", "text": "Calcium" },
-        { "label": "D", "text": "Copper Chloride" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q6",
-      "questionNumber": "6",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Alternating Current",
-      "subtopic": "AC Voltage Applied to a Resistor",
-      "difficulty": "EASY",
-      "stem": "An ammeter connected in series in an ac circuit reads 10 A. The maximum value of current at any instant in the circuit is :",
-      "options": [
-        { "label": "A", "text": "\\(10\\sqrt{2}\\) A" },
-        { "label": "B", "text": "\\(\\dfrac{10}{\\sqrt{2}}\\) A" },
-        { "label": "C", "text": "\\(\\dfrac{10}{\\pi}\\) A" },
-        { "label": "D", "text": "\\(\\dfrac{10}{\\sqrt{2}\\,\\pi}\\) A" }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q7",
-      "questionNumber": "7",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electromagnetic Waves",
-      "subtopic": "Electromagnetic Waves and their Properties",
-      "difficulty": "EASY",
-      "stem": "The amplitude of electric field in an electromagnetic wave in free space is 1000 \\(\\mathrm{Vm^{-1}}\\). The amplitude of the magnetic field in this electromagnetic wave is :",
-      "options": [
-        { "label": "A", "text": "\\(3{\\cdot}0 \\times 10^{-3}\\) T" },
-        { "label": "B", "text": "\\(3{\\cdot}33 \\times 10^{-8}\\) T" },
-        { "label": "C", "text": "\\(3{\\cdot}0 \\times 10^{11}\\) T" },
-        { "label": "D", "text": "\\(3{\\cdot}33 \\times 10^{-6}\\) T" }
-      ],
-      "answer": "D"
-    },
-    {
-      "ref": "Q8",
-      "questionNumber": "8",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Reflection by Spherical Mirrors",
-      "difficulty": "EASY",
-      "stem": "The magnification produced by a spherical mirror is \\(-2{\\cdot}0\\). The mirror used and the nature of the image formed will be",
-      "options": [
-        { "label": "A", "text": "Convex and virtual" },
-        { "label": "B", "text": "Concave and real" },
-        { "label": "C", "text": "Concave and virtual" },
-        { "label": "D", "text": "Convex and real" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q9",
-      "questionNumber": "9",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Wave Nature of Matter",
-      "difficulty": "EASY",
-      "stem": "Choose the correct statement :",
-      "options": [
-        { "label": "A", "text": "Photons of light show diffraction whereas electrons do not show diffraction." },
-        { "label": "B", "text": "Electrons have momentum whereas photons do not have momentum." },
-        { "label": "C", "text": "Photons of light and electrons both exhibit dual nature." },
-        { "label": "D", "text": "All electromagnetic radiations do not have photons." }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q10",
-      "questionNumber": "10",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "A beam of red light and a beam of blue light have equal intensities. Which of the following statements is true ?",
-      "options": [
-        { "label": "A", "text": "The blue beam has more number of photons than the red beam." },
-        { "label": "B", "text": "The red beam has more number of photons than the blue beam." },
-        { "label": "C", "text": "Wavelength of red light is lesser than wavelength of blue light." },
-        { "label": "D", "text": "The blue light beam has lesser energy per photon than that in the red light beam." }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q11",
-      "questionNumber": "11",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Classification of Metals, Conductors and Semiconductors",
-      "difficulty": "EASY",
-      "stem": "Which of the following is an electrical conductor at room temperature ?",
-      "options": [
-        { "label": "A", "text": "Sn" },
-        { "label": "B", "text": "Mica" },
-        { "label": "C", "text": "Si" },
-        { "label": "D", "text": "C" }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q12",
-      "questionNumber": "12",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Ampere's Circuital Law and the Solenoid",
-      "difficulty": "EASY",
-      "stem": "A long straight wire is held vertically and carries a steady current in upward direction. The shape of magnetic field lines produced by the current-carrying wire are :",
-      "options": [
-        { "label": "A", "text": "horizontal straight lines directed radially out from the wire." },
-        { "label": "B", "text": "straight lines parallel to the current-carrying wire." },
-        { "label": "C", "text": "concentric horizontal circles around the wire." },
-        { "label": "D", "text": "coaxial helixes around the wire." }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q13",
-      "questionNumber": "13",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : n-type semiconductor is not negatively charged.\nReason (R) : Neutral pentavalent impurity atom doped in intrinsic semiconductor (neutral) donates its fifth unpaired electron to the crystal lattice and becomes a positive donor.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q14",
-      "questionNumber": "14",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Alternating Current",
-      "subtopic": "Series LCR Circuit and Resonance",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : A series LCR circuit behaves as a pure resistive circuit at resonance.\nReason (R) : At resonance, \\(X_L = X_C\\) gives \\(\\omega = \\dfrac{1}{\\sqrt{LC}}\\).",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "A"
-    },
-    {
-      "ref": "Q15",
-      "questionNumber": "15",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : In double slit experiment if one slit is closed, diffraction pattern due to the other slit will appear on the screen.\nReason (R) : For interference, at least two waves are required.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "C",
-      "_flag": "TAXONOMY GAP — this question is about DIFFRACTION, and the live Wave Optics axis has no diffraction subtopic (Huygens Principle / Interference and Young's Experiment / Polarisation / Refraction and Reflection of Plane Waves). Filed on the closest, 'Interference and Young's Experiment', which is where NCERT places single-slit diffraction (§10.6, immediately after Young's experiment). Same gap hits Q18 and Q33(b)(ii) on this paper alone."
-    },
-    {
-      "ref": "Q16",
-      "questionNumber": "16",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : For monochromatic incident radiation, the emitted photoelectrons from a given metal have speed ranging from zero to a certain maximum value.\nReason (R) : Each metal has a definite work function.",
-      "options": [
-        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
-        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
-        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
-        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q17a",
-      "questionNumber": "17 (a)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Ohm's Law",
-      "difficulty": "MODERATE",
-      "stem": "In the given figure, three identical bulbs P, Q and S are connected to a battery.\n(i) Compare the brightness of bulbs P and Q with that of bulb S when key K is closed.\n(ii) Compare the brightness of the bulbs S and Q when the key K is opened.\nJustify your answer in both cases.",
-      "_figure": "REQUIRED — the whole question is the circuit topology and the stem names none of it. Deliberately NOT described in words: saying which bulbs are in series and which in parallel, and which branch the key K sits in, IS the answer to both sub-parts. What is drawn: a battery, three identical bulbs drawn as circles containing a resistor zig-zag and labelled P, Q and S, and a key K drawn as an open switch, wired into a single loop with one two-branch section. Page idx 12.",
-      "_flag": "TAXONOMY GAP (minor) — this is a series/parallel combination-of-resistors question. The live Current Electricity axis has no 'Combination of Resistors' subtopic (NCERT §3.9), so it is filed on the chapter's nearest fit, 'Electric Current and Ohm's Law'."
-    },
-    {
-      "ref": "Q17b",
-      "questionNumber": "17 (b)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
-      "difficulty": "MODERATE",
-      "stem": "Two cells of emf 10 V each, two resistors of 20 \\(\\Omega\\) and 10 \\(\\Omega\\) and a bulb B of 10 \\(\\Omega\\) resistance are connected together as shown in the figure. Find the current that flows through the bulb.",
-      "_alternativeTo": "Q17a",
-      "_figure": "REQUIRED — the stem lists the five components and their values but explicitly defers the wiring to 'as shown in the figure', and the current through the bulb depends entirely on that topology. Deliberately NOT described in words, for the same reason as Q17(a). What is drawn: a left-hand branch carrying the two 10 V cells one above the other, a right-hand branch carrying the 20 \\(\\Omega\\) above the 10 \\(\\Omega\\), and the bulb B (labelled 10 \\(\\Omega\\)) bridging the two branches. Page idx 12."
-    },
-    {
-      "ref": "Q18",
-      "questionNumber": "18",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "MODERATE",
-      "stem": "Find the angle of diffraction (in degrees) for first secondary maximum of the pattern due to diffraction at a single slit. The width of the slit and wavelength of light used are \\(0{\\cdot}55\\) mm and 550 nm, respectively.",
-      "_flag": "TAXONOMY GAP — single-slit DIFFRACTION, and the Wave Optics axis has no diffraction subtopic. See the note on Q15."
-    },
-    {
-      "ref": "Q19",
-      "questionNumber": "19",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
-      "difficulty": "EASY",
-      "stem": "An equiconvex lens is made of glass of refractive index \\(1{\\cdot}55\\). If the focal length of the lens is \\(15{\\cdot}0\\) cm, calculate the radius of curvature of its surfaces."
-    },
-    {
-      "ref": "Q20",
-      "questionNumber": "20",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Nuclei",
-      "subtopic": "Mass-Energy and Nuclear Binding Energy",
-      "difficulty": "MODERATE",
-      "stem": "Calculate the mass of an \\(\\alpha\\)-particle in atomic mass unit (u). Given,\nMass of a normal helium atom = \\(4{\\cdot}002603\\) u\nMass of carbon atom = \\(1{\\cdot}9926 \\times 10^{-26}\\) kg",
-      "_flag": "TAXONOMY GAP (minor) — this is the definition of the atomic mass unit (NCERT §13.2, 'Atomic Masses and Composition of Nucleus'), and the live Nuclei axis has only 'Size of the Nucleus', 'Mass-Energy and Nuclear Binding Energy' and 'Nuclear Energy'. Filed on 'Mass-Energy and Nuclear Binding Energy', which is where the u and mass-defect arithmetic lives."
-    },
-    {
-      "ref": "Q21",
-      "questionNumber": "21",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "MODERATE",
-      "stem": "In an intrinsic semiconductor, carrier's concentration is \\(5 \\times 10^{8}\\ \\mathrm{m^{-3}}\\). On doping with impurity atoms, the hole concentration becomes \\(8 \\times 10^{12}\\ \\mathrm{m^{-3}}\\).\n(a) Identify (i) the type of dopant and (ii) the extrinsic semiconductor so formed.\n(b) Calculate the electron concentration in the extrinsic semiconductor."
-    },
-    {
-      "ref": "Q22a",
-      "questionNumber": "22 (a)",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Drift of Electrons and Resistivity",
-      "difficulty": "MODERATE",
-      "stem": "(i) Derive an expression for the resistivity of a conductor in terms of number density of free electrons and relaxation time.\n(ii) The figure shows the plot of current through a cross-section of wire over two different time intervals. Compare the charges (\\(Q_1\\) and \\(Q_2\\)) that pass through the cross-section during these time intervals.",
-      "_figure": "REQUIRED for sub-part (ii) — the charges are the AREAS under the plotted current, and the stem gives no equation, no values and no shape. The graph is described here without giving the comparison away: an I (A) versus t (s) plot with the current axis ticked at 0{\\cdot}5, 1{\\cdot}0, 1{\\cdot}5 and 2{\\cdot}0 and the time axis at 1..9, carrying a rectangular pulse labelled \\(Q_1\\) and, later, a rising ramp labelled \\(Q_2\\) that drops back to zero. Page idx 14."
-    },
-    {
-      "ref": "Q22b",
-      "questionNumber": "22 (b)",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Cells, EMF and Internal Resistance",
-      "difficulty": "MODERATE",
-      "stem": "(i) A battery of emf E and internal resistance r is connected to a variable external resistance R.\n(I) Obtain the expression for current I in the circuit and the value of maximum current the battery can supply.\n(II) Obtain the terminal voltage V across the battery and its maximum possible value.\n(ii) The above battery sends a current \\(I_1\\) when \\(R = R_1\\) and a current \\(I_2\\) when \\(R = R_2\\). Obtain the internal resistance of the battery in terms of \\(I_1\\), \\(I_2\\), \\(R_1\\) and \\(R_2\\).",
-      "_alternativeTo": "Q22a"
-    },
-    {
-      "ref": "Q23",
-      "questionNumber": "23",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
-      "difficulty": "MODERATE",
-      "stem": "(a) Write vector form of Biot-Savart law.\n(b) Two insulated long straight wires, each carrying \\(2{\\cdot}0\\) A current are kept along \\(xx'\\) and \\(yy'\\) axis as shown in the figure. Find the magnitude and direction of resultant magnetic field at point P (4m, 5m).",
-      "_figure": "REQUIRED for sub-part (b) — the stem names the two axes and the point but NOT the sense in which each current flows, and the resultant's magnitude and direction both depend on that. The two current arrows are therefore deliberately not described. What is drawn: an x-y axis pair labelled \\(x'\\), x, y and \\(y'\\), a dashed z axis to the lower-left, a heavy line along each axis with an arrowhead labelled I, and the point P marked at (4, 5) in the first quadrant. Page idx 16."
-    },
-    {
-      "ref": "Q24",
-      "questionNumber": "24",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Lenz's Law and Conservation of Energy",
-      "difficulty": "MODERATE",
-      "stem": "Two coils '1' and '2' are placed close to each other as shown in the figure. Find the direction of induced current in coil '1' in each of the following situations, justifying your answers :\n(a) Coil '2' is moving towards coil '1'.\n(b) Coil '2' is moving away from coil '1'.\n(c) The resistance connected with coil '2' is increased keeping both the coils stationary.",
-      "_figure": "REQUIRED — the answer to all three sub-parts is a direction (M to N, O to P, or the reverse), and both the winding sense of each coil and the terminal labels exist ONLY in the drawing. Not described beyond its labelling, because the winding sense IS the answer. What is drawn: two solenoid-like coils side by side, the left one captioned 'Coil 2' with its two ends brought down to terminals M and N through a rheostat \\(R_2\\) and a cell, the right one captioned 'Coil 1' with its ends brought down to terminals O and P through a resistor \\(R_1\\). Page idx 16."
-    },
-    {
-      "ref": "Q25",
-      "questionNumber": "25",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Electromagnetic Waves",
-      "subtopic": "Electromagnetic Waves and their Properties",
-      "difficulty": "MODERATE",
-      "stem": "(a) State any three characteristics of electromagnetic waves.\n(b) Briefly explain how and where the displacement current exists during the charging of a capacitor."
-    },
-    {
-      "ref": "Q26",
-      "questionNumber": "26",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "MODERATE",
-      "stem": "A double slit set-up was initially placed in a tank filled with water and the interference pattern was obtained using a laser light. When water is replaced by a transparent liquid of refractive index \\(n > n_{\\text{water}}\\), what will be the effect on the following ?\n(a) Speed, frequency and wavelength of the light of laser beam.\n(b) The fringe width, shape of interference fringes and shift in the position of central maximum."
-    },
-    {
-      "ref": "Q27",
-      "questionNumber": "27",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "Explain the following observations using Einstein's photoelectric equation :\n(a) Photoelectric emission does not occur from a surface when the frequency of the light incident on it is less than a certain minimum value.\n(b) It is the frequency, and not the intensity of the incident light which affects the maximum kinetic energy of the photoelectrons.\n(c) The cut-off voltage (\\(V_0\\)) versus frequency (\\(\\nu\\)) of the incident light curve is a straight line with a slope \\(\\dfrac{h}{e}\\)."
-    },
-    {
-      "ref": "Q28",
-      "questionNumber": "28",
-      "section": "C",
-      "marks": 3,
-      "format": "subjective",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "p-n Junction and the Semiconductor Diode",
-      "difficulty": "MODERATE",
-      "stem": "(a) What are majority and minority charge carriers of p-type and n-type semiconductors ?\n(b) Explain briefly the formation of diffusion current and drift current in a p-n junction diode."
-    },
-    {
-      "ref": "Q29i",
-      "questionNumber": "29 (i)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS1",
-      "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
-      "stem": "The capacitance of the system between A and B will be :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{\\varepsilon_0 K L^2}{d}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{\\varepsilon_0 K L^2}{2d}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{2\\varepsilon_0 K L^2}{d}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{2\\varepsilon_0 K d}{L^2}\\)" }
-      ],
-      "answer": "C",
-      "_figure": "REQUIRED — the symbol \\(d\\) appears in EVERY option of every sub-part of this case study and is defined NOWHERE in the passage, which says only that the plates are 'held parallel and equidistant from each other'. The figure is the sole place the plate separation is named. What is drawn: three horizontal plates labelled \\(P_1\\), \\(P_2\\), \\(P_3\\) from the top, each adjacent pair separated by a distance marked with a double-headed arrow labelled d, with \\(P_2\\) wired left to a terminal A and \\(P_1\\) and \\(P_3\\) wired right to a common terminal B. Page idx 18."
-    },
-    {
-      "ref": "Q29ii",
-      "questionNumber": "29 (ii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS1",
-      "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
-      "stem": "The charge on plate \\(P_1\\) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{2d}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{d}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{2\\varepsilon_0 V K L^2}{d}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{4d}\\)" }
-      ],
-      "answer": "B",
-      "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
-    },
-    {
-      "ref": "Q29iii",
-      "questionNumber": "29 (iii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS1",
-      "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
-      "stem": "The electric field in the region between \\(P_1\\) and \\(P_2\\) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{V}{d}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{2V}{d}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{V}{2d}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{d}{V}\\)" }
-      ],
-      "answer": "A",
-      "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
-    },
-    {
-      "ref": "Q29iva",
-      "questionNumber": "29 (iv) (a)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS1",
-      "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
-      "stem": "The separation between the plates of same area (\\(L^2\\)) of a parallel plate air capacitor having capacitance equal to that of this system, will be :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{d}{K}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{2d}{K}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{d}{2K}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{d}{4K}\\)" }
-      ],
-      "answer": "C",
-      "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
-    },
-    {
-      "ref": "Q29ivb",
-      "questionNumber": "29 (iv) (b)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Capacitors, Capacitance and their Combinations",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS1",
-      "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
-      "stem": "If the source of potential difference applied between A and B is removed, and then A and B are connected by a conducting wire, the net charge on the system will be :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{4d}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{2d}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{d}\\)" },
-        { "label": "D", "text": "Zero" }
-      ],
-      "answer": "D",
-      "_alternativeTo": "Q29iva",
-      "_figure": "REQUIRED — \\(d\\) appears in three of the four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
-    },
-    {
-      "ref": "Q30i",
-      "questionNumber": "30 (i)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS2",
-      "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
-      "stem": "The expression for the speed of electron v in terms of radius of the orbit (r) and physical constant (\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\)) is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{Ke^2}{mr}\\)" },
-        { "label": "B", "text": "\\(\\dfrac{Ke^2}{mr^2}\\)" },
-        { "label": "C", "text": "\\(\\sqrt{\\dfrac{Ke^2}{mr}}\\)" },
-        { "label": "D", "text": "\\(\\sqrt{\\dfrac{Ke^2}{mr^2}}\\)" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q30ii",
-      "questionNumber": "30 (ii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS2",
-      "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
-      "stem": "The total energy of the atom in terms of r and physical constant K is :",
-      "options": [
-        { "label": "A", "text": "\\(\\dfrac{Ke^2}{r}\\)" },
-        { "label": "B", "text": "\\(-\\dfrac{Ke^2}{2r}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{Ke^2}{2r}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{3}{2}\\,\\dfrac{Ke^2}{r}\\)" }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q30iii",
-      "questionNumber": "30 (iii)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "HARD",
-      "setId": "2025-55-4-1-CS2",
-      "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
-      "stem": "A photon of wavelength 500 nm is emitted when an electron makes a transition from one state to the other state in an atom. The change in the total energy of the electron and change in its kinetic energy in eV as per Bohr's model, respectively will be :",
-      "options": [
-        { "label": "A", "text": "\\(2{\\cdot}48,\\ -2{\\cdot}48\\)" },
-        { "label": "B", "text": "\\(-1{\\cdot}24,\\ 1{\\cdot}24\\)" },
-        { "label": "C", "text": "\\(-2{\\cdot}48,\\ 2{\\cdot}48\\)" },
-        { "label": "D", "text": "\\(1{\\cdot}24,\\ -1{\\cdot}24\\)" }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q30iva",
-      "questionNumber": "30 (iv) (a)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS2",
-      "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
-      "stem": "In Bohr's model of hydrogen atom, the frequency of revolution of electron in its \\(n^{\\text{th}}\\) orbit is proportional to :",
-      "options": [
-        { "label": "A", "text": "\\(n\\)" },
-        { "label": "B", "text": "\\(\\dfrac{1}{n}\\)" },
-        { "label": "C", "text": "\\(\\dfrac{1}{n^2}\\)" },
-        { "label": "D", "text": "\\(\\dfrac{1}{n^3}\\)" }
-      ],
-      "answer": "D"
-    },
-    {
-      "ref": "Q30ivb",
-      "questionNumber": "30 (iv) (b)",
-      "section": "D",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Bohr Model of the Hydrogen Atom",
-      "difficulty": "MODERATE",
-      "setId": "2025-55-4-1-CS2",
-      "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
-      "stem": "An electron makes a transition from \\(-3{\\cdot}4\\) eV state to the ground state in hydrogen atom. Its radius of orbit changes by : (radius of orbit of electron in ground state = \\(0{\\cdot}53\\) Å)",
-      "options": [
-        { "label": "A", "text": "\\(0{\\cdot}53\\) Å" },
-        { "label": "B", "text": "\\(1{\\cdot}06\\) Å" },
-        { "label": "C", "text": "\\(1{\\cdot}59\\) Å" },
-        { "label": "D", "text": "\\(2{\\cdot}12\\) Å" }
-      ],
-      "answer": "C",
-      "_alternativeTo": "Q30iva"
-    },
-    {
-      "ref": "Q31a",
-      "questionNumber": "31 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electric Charges and Fields",
-      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
-      "difficulty": "HARD",
-      "stem": "(i) Two point charges +q and -q are held at (a, 0) and (-a, 0) in x-y plane. Obtain an expression for the net electric field due to the charges at a point (0, y). Hence, find electric field at a far off point (y >> a).\n(ii) Three point charges of -2 nC, -1 nC, and +5 nC are kept at the vertices A, B and C of an equilateral triangle of side \\(0{\\cdot}2\\) m. Find the total amount of work done in shifting the charges from A to \\(A_1\\), B to \\(B_1\\) and C to \\(C_1\\). Here \\(A_1\\), \\(B_1\\) and \\(C_1\\) are the midpoints of sides AB, BC and CA, respectively."
-    },
-    {
-      "ref": "Q31b",
-      "questionNumber": "31 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electric Charges and Fields",
-      "subtopic": "Applications of Gauss's Law",
-      "difficulty": "HARD",
-      "stem": "(i) Show that Gauss's theorem is consistent with Coulomb's law. Using it, derive an expression for the electric field due to a uniformly charged thin spherical shell of radius r at a point at a distance y from the centre of the shell such that (I) \\(y > r\\), and (II) \\(y < r\\).\n(ii) A point charge of \\(+2\\) nC is kept at the origin of a three-dimensional coordinate system. Find the type and magnitude of the charge which should be kept at (0, 0, -6m) so that the potential due to the system becomes zero at (0, 0, 2m).",
-      "_alternativeTo": "Q31a"
-    },
-    {
-      "ref": "Q32a",
-      "questionNumber": "32 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Lenz's Law and Conservation of Energy",
-      "difficulty": "HARD",
-      "stem": "(i) State Lenz's law and explain how this law is a consequence of conservation of energy principle.\n(ii) A square shaped loop of side \\(\\dfrac{l}{2}\\) is initially lying outside a region of uniform magnetic field \\(\\vec{B}\\) as shown in the figure. The loop is moved towards right with a constant velocity \\(\\vec{v}\\) till it goes out of the region of magnetic field.\n(I) What will be the directions of induced current when the loop enters the field and when it leaves the field ?\n(II) Draw the plots showing the variation of magnetic flux \\(\\phi\\) linked with the loop with time t and variation of induced emf E with time t. Mark the relevant values of E, \\(\\phi\\) and t on the graphs.",
-      "_figure": "REQUIRED — sub-part (II) asks for the RELEVANT VALUES of \\(\\phi\\), E and t to be marked, and those depend on two lengths the stem never states: the width of the field region and how far the loop starts from its left boundary. Both exist only in the drawing. What is drawn: a vertical band of crosses (field into the page) captioned \\(\\vec{B}\\) and marked \\(l\\) wide at its foot, a small square of side \\(\\dfrac{l}{2}\\) to its left with a velocity arrow \\(\\vec{v}\\) pointing right and a horizontal dimension \\(l\\) measured from the square to the band's left edge, and a dashed square to the right of the band with an arrow, showing the loop after it has emerged. Page idx 26."
-    },
-    {
-      "ref": "Q32b",
-      "questionNumber": "32 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Alternating Current",
-      "subtopic": "Series LCR Circuit and Resonance",
-      "difficulty": "HARD",
-      "stem": "(i) Differentiate between peak and rms values of alternating current. How are they related ?\n(ii) A current element X is connected across an ac source of emf \\(V = V_0 \\sin 2\\pi\\nu t\\). It is found that the voltage leads the current in phase by \\(\\dfrac{\\pi}{2}\\) radian. If element X was replaced by element Y, the voltage lags behind the current in phase by \\(\\dfrac{\\pi}{2}\\) radian.\n(I) Identify elements X and Y by drawing phasor diagrams.\n(II) Obtain the condition of resonance when both elements X and Y are connected in series to the source and obtain expression for resonant frequency. What is the impedance value in this case ?",
-      "_alternativeTo": "Q32a"
-    },
-    {
-      "ref": "Q33a",
-      "questionNumber": "33 (a)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
-      "difficulty": "HARD",
-      "stem": "(i) An object is placed 30 cm from a thin convex lens of focal length 10 cm. The lens forms a sharp image on a screen. If a thin concave lens is placed in contact with the convex lens, the sharp image on the screen is formed when the screen is moved by 45 cm from its initial position. Calculate the focal length of the concave lens.\n(ii) Calculate the angle of minimum deviation of an equilateral prism. The refractive index of the prism is \\(\\sqrt{3}\\). Calculate the angle of incidence for this case of minimum deviation also."
-    },
-    {
-      "ref": "Q33b",
-      "questionNumber": "33 (b)",
-      "section": "E",
-      "marks": 5,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Interference and Young's Experiment",
-      "difficulty": "HARD",
-      "stem": "(i) A physics teacher wants to demonstrate interference with the help of double slit experiment using a laser beam of 633 nm wavelength. Since the hall is large enough, interference pattern is formed on the wall \\(5{\\cdot}0\\) m from the slits. For clear and comfortable view by all the students they want the fringe width 5 mm.\n(I) Find the slit separation for obtaining the desired interference pattern.\n(II) How far will the first minimum be from the central maximum ?\n(ii) A parallel beam of light of wavelength 650 nm passes through a slit of width \\(0{\\cdot}6\\) mm. The diffraction pattern is obtained on a screen kept 60 cm away from the slit. Find the distance between first order minima on both sides of the central maximum.",
-      "_alternativeTo": "Q33a",
-      "_flag": "TAXONOMY GAP — sub-part (ii) is single-slit DIFFRACTION and the Wave Optics axis has no diffraction subtopic. Filed on 'Interference and Young's Experiment', which also covers sub-part (i). See the note on Q15."
+     "label": "D",
+     "text": "increases by \\(9{\\cdot}1 \\times 10^{-23}\\) kg"
     }
-  ]
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q2",
+   "questionNumber": "2",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Electric Current and Ohm's Law",
+   "difficulty": "MODERATE",
+   "stem": "A current flows through a cylindrical conductor of radius R. The current density at a point in the conductor is \\(j = \\alpha r\\) (along its axis), here \\(\\alpha\\) is a constant and r is distance from the axis of the conductor. The current flowing through the portion of the conductor from \\(r = 0\\) to \\(r = \\dfrac{R}{2}\\) is proportional to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(R\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(R^2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(R^3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(R^4\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q3",
+   "questionNumber": "3",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "difficulty": "MODERATE",
+   "stem": "A particle having charge +q enters a uniform magnetic field \\(\\vec{B}\\) as shown in the figure. The particle will describe :",
+   "options": [
+    {
+     "label": "A",
+     "text": "a circular path in XZ plane"
+    },
+    {
+     "label": "B",
+     "text": "a semicircular path in XY plane"
+    },
+    {
+     "label": "C",
+     "text": "a helical path with its axis parallel to Y-axis"
+    },
+    {
+     "label": "D",
+     "text": "a semicircular path in YZ plane"
+    }
+   ],
+   "answer": "B",
+   "_figure": "REQUIRED — the stem says only 'as shown in the figure' and every option names a PLANE, so the whole question is the geometry of the drawing. Deliberately NOT described in words: the figure fixes the field's direction relative to the axes and the particle's velocity direction, and naming either states the answer. What is drawn: a right-handed X-Y-Z axis triad with X horizontal, Y vertical and Z toward the lower-left, a field region marked by a grid of crosses filling the plane of the page, and the charge q sitting on the +X axis with a velocity arrow v. Page idx 4."
+  },
+  {
+   "ref": "Q4",
+   "questionNumber": "4",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "The Bar Magnet",
+   "difficulty": "MODERATE",
+   "stem": "A bar magnet is initially at right angles to a uniform magnetic field. The magnet is rotated till the torque acting on it becomes one-half of its initial value. The angle through which the bar magnet is rotated is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(30^{\\circ}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(45^{\\circ}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(60^{\\circ}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(75^{\\circ}\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q5",
+   "questionNumber": "5",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "Magnetisation and Magnetic Intensity",
+   "difficulty": "EASY",
+   "stem": "Which one out of the following materials is **not** paramagnetic ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Aluminium"
+    },
+    {
+     "label": "B",
+     "text": "Sodium Chloride"
+    },
+    {
+     "label": "C",
+     "text": "Calcium"
+    },
+    {
+     "label": "D",
+     "text": "Copper Chloride"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q6",
+   "questionNumber": "6",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "AC Voltage Applied to a Resistor",
+   "difficulty": "EASY",
+   "stem": "An ammeter connected in series in an ac circuit reads 10 A. The maximum value of current at any instant in the circuit is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(10\\sqrt{2}\\) A"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{10}{\\sqrt{2}}\\) A"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{10}{\\pi}\\) A"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{10}{\\sqrt{2}\\,\\pi}\\) A"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q7",
+   "questionNumber": "7",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Waves and their Properties",
+   "difficulty": "EASY",
+   "stem": "The amplitude of electric field in an electromagnetic wave in free space is 1000 \\(\\mathrm{Vm^{-1}}\\). The amplitude of the magnetic field in this electromagnetic wave is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(3{\\cdot}0 \\times 10^{-3}\\) T"
+    },
+    {
+     "label": "B",
+     "text": "\\(3{\\cdot}33 \\times 10^{-8}\\) T"
+    },
+    {
+     "label": "C",
+     "text": "\\(3{\\cdot}0 \\times 10^{11}\\) T"
+    },
+    {
+     "label": "D",
+     "text": "\\(3{\\cdot}33 \\times 10^{-6}\\) T"
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q8",
+   "questionNumber": "8",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Reflection by Spherical Mirrors",
+   "difficulty": "EASY",
+   "stem": "The magnification produced by a spherical mirror is \\(-2{\\cdot}0\\). The mirror used and the nature of the image formed will be",
+   "options": [
+    {
+     "label": "A",
+     "text": "Convex and virtual"
+    },
+    {
+     "label": "B",
+     "text": "Concave and real"
+    },
+    {
+     "label": "C",
+     "text": "Concave and virtual"
+    },
+    {
+     "label": "D",
+     "text": "Convex and real"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q9",
+   "questionNumber": "9",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Wave Nature of Matter",
+   "difficulty": "EASY",
+   "stem": "Choose the correct statement :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Photons of light show diffraction whereas electrons do not show diffraction."
+    },
+    {
+     "label": "B",
+     "text": "Electrons have momentum whereas photons do not have momentum."
+    },
+    {
+     "label": "C",
+     "text": "Photons of light and electrons both exhibit dual nature."
+    },
+    {
+     "label": "D",
+     "text": "All electromagnetic radiations do not have photons."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q10",
+   "questionNumber": "10",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "stem": "A beam of red light and a beam of blue light have equal intensities. Which of the following statements is true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "The blue beam has more number of photons than the red beam."
+    },
+    {
+     "label": "B",
+     "text": "The red beam has more number of photons than the blue beam."
+    },
+    {
+     "label": "C",
+     "text": "Wavelength of red light is lesser than wavelength of blue light."
+    },
+    {
+     "label": "D",
+     "text": "The blue light beam has lesser energy per photon than that in the red light beam."
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q11",
+   "questionNumber": "11",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Classification of Metals, Conductors and Semiconductors",
+   "difficulty": "EASY",
+   "stem": "Which of the following is an electrical conductor at room temperature ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Sn"
+    },
+    {
+     "label": "B",
+     "text": "Mica"
+    },
+    {
+     "label": "C",
+     "text": "Si"
+    },
+    {
+     "label": "D",
+     "text": "C"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q12",
+   "questionNumber": "12",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Ampere's Circuital Law and the Solenoid",
+   "difficulty": "EASY",
+   "stem": "A long straight wire is held vertically and carries a steady current in upward direction. The shape of magnetic field lines produced by the current-carrying wire are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "horizontal straight lines directed radially out from the wire."
+    },
+    {
+     "label": "B",
+     "text": "straight lines parallel to the current-carrying wire."
+    },
+    {
+     "label": "C",
+     "text": "concentric horizontal circles around the wire."
+    },
+    {
+     "label": "D",
+     "text": "coaxial helixes around the wire."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q13",
+   "questionNumber": "13",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : n-type semiconductor is not negatively charged.\nReason (R) : Neutral pentavalent impurity atom doped in intrinsic semiconductor (neutral) donates its fifth unpaired electron to the crystal lattice and becomes a positive donor.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q14",
+   "questionNumber": "14",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Series LCR Circuit and Resonance",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : A series LCR circuit behaves as a pure resistive circuit at resonance.\nReason (R) : At resonance, \\(X_L = X_C\\) gives \\(\\omega = \\dfrac{1}{\\sqrt{LC}}\\).",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q15",
+   "questionNumber": "15",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Wave Optics",
+   "subtopic": "Diffraction",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : In double slit experiment if one slit is closed, diffraction pattern due to the other slit will appear on the screen.\nReason (R) : For interference, at least two waves are required.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C",
+   "_flag": "TAXONOMY GAP — this question is about DIFFRACTION, and the live Wave Optics axis has no diffraction subtopic (Huygens Principle / Interference and Young's Experiment / Polarisation / Refraction and Reflection of Plane Waves). Filed on the closest, 'Interference and Young's Experiment', which is where NCERT places single-slit diffraction (§10.6, immediately after Young's experiment). Same gap hits Q18 and Q33(b)(ii) on this paper alone."
+  },
+  {
+   "ref": "Q16",
+   "questionNumber": "16",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "Assertion (A) : For monochromatic incident radiation, the emitted photoelectrons from a given metal have speed ranging from zero to a certain maximum value.\nReason (R) : Each metal has a definite work function.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q17a",
+   "questionNumber": "17 (a)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Electric Current and Ohm's Law",
+   "difficulty": "MODERATE",
+   "stem": "In the given figure, three identical bulbs P, Q and S are connected to a battery.\n(i) Compare the brightness of bulbs P and Q with that of bulb S when key K is closed.\n(ii) Compare the brightness of the bulbs S and Q when the key K is opened.\nJustify your answer in both cases.",
+   "_figure": "REQUIRED — the whole question is the circuit topology and the stem names none of it. Deliberately NOT described in words: saying which bulbs are in series and which in parallel, and which branch the key K sits in, IS the answer to both sub-parts. What is drawn: a battery, three identical bulbs drawn as circles containing a resistor zig-zag and labelled P, Q and S, and a key K drawn as an open switch, wired into a single loop with one two-branch section. Page idx 12.",
+   "_flag": "TAXONOMY GAP (minor) — this is a series/parallel combination-of-resistors question. The live Current Electricity axis has no 'Combination of Resistors' subtopic (NCERT §3.9), so it is filed on the chapter's nearest fit, 'Electric Current and Ohm's Law'."
+  },
+  {
+   "ref": "Q17b",
+   "questionNumber": "17 (b)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+   "difficulty": "MODERATE",
+   "stem": "Two cells of emf 10 V each, two resistors of 20 \\(\\Omega\\) and 10 \\(\\Omega\\) and a bulb B of 10 \\(\\Omega\\) resistance are connected together as shown in the figure. Find the current that flows through the bulb.",
+   "_alternativeTo": "Q17a",
+   "_figure": "REQUIRED — the stem lists the five components and their values but explicitly defers the wiring to 'as shown in the figure', and the current through the bulb depends entirely on that topology. Deliberately NOT described in words, for the same reason as Q17(a). What is drawn: a left-hand branch carrying the two 10 V cells one above the other, a right-hand branch carrying the 20 \\(\\Omega\\) above the 10 \\(\\Omega\\), and the bulb B (labelled 10 \\(\\Omega\\)) bridging the two branches. Page idx 12."
+  },
+  {
+   "ref": "Q18",
+   "questionNumber": "18",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Diffraction",
+   "difficulty": "MODERATE",
+   "stem": "Find the angle of diffraction (in degrees) for first secondary maximum of the pattern due to diffraction at a single slit. The width of the slit and wavelength of light used are \\(0{\\cdot}55\\) mm and 550 nm, respectively.",
+   "_flag": "TAXONOMY GAP — single-slit DIFFRACTION, and the Wave Optics axis has no diffraction subtopic. See the note on Q15."
+  },
+  {
+   "ref": "Q19",
+   "questionNumber": "19",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "EASY",
+   "stem": "An equiconvex lens is made of glass of refractive index \\(1{\\cdot}55\\). If the focal length of the lens is \\(15{\\cdot}0\\) cm, calculate the radius of curvature of its surfaces."
+  },
+  {
+   "ref": "Q20",
+   "questionNumber": "20",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Atomic Masses and Composition of the Nucleus",
+   "difficulty": "MODERATE",
+   "stem": "Calculate the mass of an \\(\\alpha\\)-particle in atomic mass unit (u). Given,\nMass of a normal helium atom = \\(4{\\cdot}002603\\) u\nMass of carbon atom = \\(1{\\cdot}9926 \\times 10^{-26}\\) kg",
+   "_flag": "TAXONOMY GAP (minor) — this is the definition of the atomic mass unit (NCERT §13.2, 'Atomic Masses and Composition of Nucleus'), and the live Nuclei axis has only 'Size of the Nucleus', 'Mass-Energy and Nuclear Binding Energy' and 'Nuclear Energy'. Filed on 'Mass-Energy and Nuclear Binding Energy', which is where the u and mass-defect arithmetic lives."
+  },
+  {
+   "ref": "Q21",
+   "questionNumber": "21",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "stem": "In an intrinsic semiconductor, carrier's concentration is \\(5 \\times 10^{8}\\ \\mathrm{m^{-3}}\\). On doping with impurity atoms, the hole concentration becomes \\(8 \\times 10^{12}\\ \\mathrm{m^{-3}}\\).\n(a) Identify (i) the type of dopant and (ii) the extrinsic semiconductor so formed.\n(b) Calculate the electron concentration in the extrinsic semiconductor."
+  },
+  {
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "difficulty": "MODERATE",
+   "stem": "(i) Derive an expression for the resistivity of a conductor in terms of number density of free electrons and relaxation time.\n(ii) The figure shows the plot of current through a cross-section of wire over two different time intervals. Compare the charges (\\(Q_1\\) and \\(Q_2\\)) that pass through the cross-section during these time intervals.",
+   "_figure": "REQUIRED for sub-part (ii) — the charges are the AREAS under the plotted current, and the stem gives no equation, no values and no shape. The graph is described here without giving the comparison away: an I (A) versus t (s) plot with the current axis ticked at 0{\\cdot}5, 1{\\cdot}0, 1{\\cdot}5 and 2{\\cdot}0 and the time axis at 1..9, carrying a rectangular pulse labelled \\(Q_1\\) and, later, a rising ramp labelled \\(Q_2\\) that drops back to zero. Page idx 14."
+  },
+  {
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "difficulty": "MODERATE",
+   "stem": "(i) A battery of emf E and internal resistance r is connected to a variable external resistance R.\n(I) Obtain the expression for current I in the circuit and the value of maximum current the battery can supply.\n(II) Obtain the terminal voltage V across the battery and its maximum possible value.\n(ii) The above battery sends a current \\(I_1\\) when \\(R = R_1\\) and a current \\(I_2\\) when \\(R = R_2\\). Obtain the internal resistance of the battery in terms of \\(I_1\\), \\(I_2\\), \\(R_1\\) and \\(R_2\\).",
+   "_alternativeTo": "Q22a"
+  },
+  {
+   "ref": "Q23",
+   "questionNumber": "23",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+   "difficulty": "MODERATE",
+   "stem": "(a) Write vector form of Biot-Savart law.\n(b) Two insulated long straight wires, each carrying \\(2{\\cdot}0\\) A current are kept along \\(xx'\\) and \\(yy'\\) axis as shown in the figure. Find the magnitude and direction of resultant magnetic field at point P (4m, 5m).",
+   "_figure": "REQUIRED for sub-part (b) — the stem names the two axes and the point but NOT the sense in which each current flows, and the resultant's magnitude and direction both depend on that. The two current arrows are therefore deliberately not described. What is drawn: an x-y axis pair labelled \\(x'\\), x, y and \\(y'\\), a dashed z axis to the lower-left, a heavy line along each axis with an arrowhead labelled I, and the point P marked at (4, 5) in the first quadrant. Page idx 16."
+  },
+  {
+   "ref": "Q24",
+   "questionNumber": "24",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Lenz's Law and Conservation of Energy",
+   "difficulty": "MODERATE",
+   "stem": "Two coils '1' and '2' are placed close to each other as shown in the figure. Find the direction of induced current in coil '1' in each of the following situations, justifying your answers :\n(a) Coil '2' is moving towards coil '1'.\n(b) Coil '2' is moving away from coil '1'.\n(c) The resistance connected with coil '2' is increased keeping both the coils stationary.",
+   "_figure": "REQUIRED — the answer to all three sub-parts is a direction (M to N, O to P, or the reverse), and both the winding sense of each coil and the terminal labels exist ONLY in the drawing. Not described beyond its labelling, because the winding sense IS the answer. What is drawn: two solenoid-like coils side by side, the left one captioned 'Coil 2' with its two ends brought down to terminals M and N through a rheostat \\(R_2\\) and a cell, the right one captioned 'Coil 1' with its ends brought down to terminals O and P through a resistor \\(R_1\\). Page idx 16."
+  },
+  {
+   "ref": "Q25",
+   "questionNumber": "25",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Waves and their Properties",
+   "difficulty": "MODERATE",
+   "stem": "(a) State any three characteristics of electromagnetic waves.\n(b) Briefly explain how and where the displacement current exists during the charging of a capacitor."
+  },
+  {
+   "ref": "Q26",
+   "questionNumber": "26",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "difficulty": "MODERATE",
+   "stem": "A double slit set-up was initially placed in a tank filled with water and the interference pattern was obtained using a laser light. When water is replaced by a transparent liquid of refractive index \\(n > n_{\\text{water}}\\), what will be the effect on the following ?\n(a) Speed, frequency and wavelength of the light of laser beam.\n(b) The fringe width, shape of interference fringes and shift in the position of central maximum."
+  },
+  {
+   "ref": "Q27",
+   "questionNumber": "27",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "stem": "Explain the following observations using Einstein's photoelectric equation :\n(a) Photoelectric emission does not occur from a surface when the frequency of the light incident on it is less than a certain minimum value.\n(b) It is the frequency, and not the intensity of the incident light which affects the maximum kinetic energy of the photoelectrons.\n(c) The cut-off voltage (\\(V_0\\)) versus frequency (\\(\\nu\\)) of the incident light curve is a straight line with a slope \\(\\dfrac{h}{e}\\)."
+  },
+  {
+   "ref": "Q28",
+   "questionNumber": "28",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "stem": "(a) What are majority and minority charge carriers of p-type and n-type semiconductors ?\n(b) Explain briefly the formation of diffusion current and drift current in a p-n junction diode."
+  },
+  {
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS1",
+   "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
+   "stem": "The capacitance of the system between A and B will be :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\varepsilon_0 K L^2}{d}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\varepsilon_0 K L^2}{2d}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{2\\varepsilon_0 K L^2}{d}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{2\\varepsilon_0 K d}{L^2}\\)"
+    }
+   ],
+   "answer": "C",
+   "_figure": "REQUIRED — the symbol \\(d\\) appears in EVERY option of every sub-part of this case study and is defined NOWHERE in the passage, which says only that the plates are 'held parallel and equidistant from each other'. The figure is the sole place the plate separation is named. What is drawn: three horizontal plates labelled \\(P_1\\), \\(P_2\\), \\(P_3\\) from the top, each adjacent pair separated by a distance marked with a double-headed arrow labelled d, with \\(P_2\\) wired left to a terminal A and \\(P_1\\) and \\(P_3\\) wired right to a common terminal B. Page idx 18."
+  },
+  {
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS1",
+   "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
+   "stem": "The charge on plate \\(P_1\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{2d}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{d}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{2\\varepsilon_0 V K L^2}{d}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{4d}\\)"
+    }
+   ],
+   "answer": "B",
+   "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
+  },
+  {
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS1",
+   "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
+   "stem": "The electric field in the region between \\(P_1\\) and \\(P_2\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{V}{d}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{2V}{d}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{V}{2d}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{d}{V}\\)"
+    }
+   ],
+   "answer": "A",
+   "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
+  },
+  {
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS1",
+   "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
+   "stem": "The separation between the plates of same area (\\(L^2\\)) of a parallel plate air capacitor having capacitance equal to that of this system, will be :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{d}{K}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{2d}{K}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{d}{2K}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{d}{4K}\\)"
+    }
+   ],
+   "answer": "C",
+   "_figure": "REQUIRED — \\(d\\) appears in all four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
+  },
+  {
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS1",
+   "context": "A parallel plate capacitor consists of two conducting plates kept generally parallel to each other at a distance. When the capacitor is charged, the charge resides on the inner surfaces of the plates and an electric field is set up between them. Thus, electrostatic energy is stored in the capacitor. The figure shows three large square metallic plates, each of side 'L' held parallel and equidistant from each other. The space between \\(P_1\\) and \\(P_2\\) and \\(P_2\\) and \\(P_3\\) is completely filled with mica sheets of dielectric constant 'K'. The plate \\(P_2\\) is connected to point A and other plates \\(P_1\\) and \\(P_3\\) are connected to point B. Point A is maintained at a positive potential with respect to point B and the potential difference between A and B is V.",
+   "stem": "If the source of potential difference applied between A and B is removed, and then A and B are connected by a conducting wire, the net charge on the system will be :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{4d}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{2d}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\varepsilon_0 V K L^2}{d}\\)"
+    },
+    {
+     "label": "D",
+     "text": "Zero"
+    }
+   ],
+   "answer": "D",
+   "_alternativeTo": "Q29iva",
+   "_figure": "REQUIRED — \\(d\\) appears in three of the four options and is defined only in the figure, not in the passage. Same drawing as Q29 (i). Page idx 18."
+  },
+  {
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS2",
+   "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
+   "stem": "The expression for the speed of electron v in terms of radius of the orbit (r) and physical constant (\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\)) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{Ke^2}{mr}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{Ke^2}{mr^2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{\\dfrac{Ke^2}{mr}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sqrt{\\dfrac{Ke^2}{mr^2}}\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS2",
+   "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
+   "stem": "The total energy of the atom in terms of r and physical constant K is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{Ke^2}{r}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\dfrac{Ke^2}{2r}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{Ke^2}{2r}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{3}{2}\\,\\dfrac{Ke^2}{r}\\)"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q30iii",
+   "questionNumber": "30 (iii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "HARD",
+   "setId": "2025-55-4-1-CS2",
+   "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
+   "stem": "A photon of wavelength 500 nm is emitted when an electron makes a transition from one state to the other state in an atom. The change in the total energy of the electron and change in its kinetic energy in eV as per Bohr's model, respectively will be :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2{\\cdot}48,\\ -2{\\cdot}48\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1{\\cdot}24,\\ 1{\\cdot}24\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-2{\\cdot}48,\\ 2{\\cdot}48\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1{\\cdot}24,\\ -1{\\cdot}24\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q30iva",
+   "questionNumber": "30 (iv) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS2",
+   "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
+   "stem": "In Bohr's model of hydrogen atom, the frequency of revolution of electron in its \\(n^{\\text{th}}\\) orbit is proportional to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(n\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{n}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{n^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{n^3}\\)"
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q30ivb",
+   "questionNumber": "30 (iv) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "setId": "2025-55-4-1-CS2",
+   "context": "A hydrogen atom consists of an electron revolving in a circular orbit of radius r with certain velocity v around a proton located at the nucleus of the atom. The electrostatic force of attraction between the revolving electron and the proton provides the requisite centripetal force to keep it in the orbit. According to Bohr's model, an electron can revolve only in certain stable orbits. The angular momentum of the electron in these orbits is some integral multiple of \\(\\dfrac{h}{2\\pi}\\), where h is the Planck's constant.\nFurther, when an electron makes a transition from one orbit of higher energy to that of lower energy, a photon is emitted having energy equal to the difference between energies of the initial and final states. Assuming the mass and charge of an electron as m and e respectively, answer the following questions.",
+   "stem": "An electron makes a transition from \\(-3{\\cdot}4\\) eV state to the ground state in hydrogen atom. Its radius of orbit changes by : (radius of orbit of electron in ground state = \\(0{\\cdot}53\\) Å)",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}53\\) Å"
+    },
+    {
+     "label": "B",
+     "text": "\\(1{\\cdot}06\\) Å"
+    },
+    {
+     "label": "C",
+     "text": "\\(1{\\cdot}59\\) Å"
+    },
+    {
+     "label": "D",
+     "text": "\\(2{\\cdot}12\\) Å"
+    }
+   ],
+   "answer": "C",
+   "_alternativeTo": "Q30iva"
+  },
+  {
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+   "difficulty": "HARD",
+   "stem": "(i) Two point charges +q and -q are held at (a, 0) and (-a, 0) in x-y plane. Obtain an expression for the net electric field due to the charges at a point (0, y). Hence, find electric field at a far off point (y >> a).\n(ii) Three point charges of -2 nC, -1 nC, and +5 nC are kept at the vertices A, B and C of an equilateral triangle of side \\(0{\\cdot}2\\) m. Find the total amount of work done in shifting the charges from A to \\(A_1\\), B to \\(B_1\\) and C to \\(C_1\\). Here \\(A_1\\), \\(B_1\\) and \\(C_1\\) are the midpoints of sides AB, BC and CA, respectively."
+  },
+  {
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Applications of Gauss's Law",
+   "difficulty": "HARD",
+   "stem": "(i) Show that Gauss's theorem is consistent with Coulomb's law. Using it, derive an expression for the electric field due to a uniformly charged thin spherical shell of radius r at a point at a distance y from the centre of the shell such that (I) \\(y > r\\), and (II) \\(y < r\\).\n(ii) A point charge of \\(+2\\) nC is kept at the origin of a three-dimensional coordinate system. Find the type and magnitude of the charge which should be kept at (0, 0, -6m) so that the potential due to the system becomes zero at (0, 0, 2m).",
+   "_alternativeTo": "Q31a"
+  },
+  {
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Lenz's Law and Conservation of Energy",
+   "difficulty": "HARD",
+   "stem": "(i) State Lenz's law and explain how this law is a consequence of conservation of energy principle.\n(ii) A square shaped loop of side \\(\\dfrac{l}{2}\\) is initially lying outside a region of uniform magnetic field \\(\\vec{B}\\) as shown in the figure. The loop is moved towards right with a constant velocity \\(\\vec{v}\\) till it goes out of the region of magnetic field.\n(I) What will be the directions of induced current when the loop enters the field and when it leaves the field ?\n(II) Draw the plots showing the variation of magnetic flux \\(\\phi\\) linked with the loop with time t and variation of induced emf E with time t. Mark the relevant values of E, \\(\\phi\\) and t on the graphs.",
+   "_figure": "REQUIRED — sub-part (II) asks for the RELEVANT VALUES of \\(\\phi\\), E and t to be marked, and those depend on two lengths the stem never states: the width of the field region and how far the loop starts from its left boundary. Both exist only in the drawing. What is drawn: a vertical band of crosses (field into the page) captioned \\(\\vec{B}\\) and marked \\(l\\) wide at its foot, a small square of side \\(\\dfrac{l}{2}\\) to its left with a velocity arrow \\(\\vec{v}\\) pointing right and a horizontal dimension \\(l\\) measured from the square to the band's left edge, and a dashed square to the right of the band with an arrow, showing the loop after it has emerged. Page idx 26."
+  },
+  {
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Series LCR Circuit and Resonance",
+   "difficulty": "HARD",
+   "stem": "(i) Differentiate between peak and rms values of alternating current. How are they related ?\n(ii) A current element X is connected across an ac source of emf \\(V = V_0 \\sin 2\\pi\\nu t\\). It is found that the voltage leads the current in phase by \\(\\dfrac{\\pi}{2}\\) radian. If element X was replaced by element Y, the voltage lags behind the current in phase by \\(\\dfrac{\\pi}{2}\\) radian.\n(I) Identify elements X and Y by drawing phasor diagrams.\n(II) Obtain the condition of resonance when both elements X and Y are connected in series to the source and obtain expression for resonant frequency. What is the impedance value in this case ?",
+   "_alternativeTo": "Q32a"
+  },
+  {
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "HARD",
+   "stem": "(i) An object is placed 30 cm from a thin convex lens of focal length 10 cm. The lens forms a sharp image on a screen. If a thin concave lens is placed in contact with the convex lens, the sharp image on the screen is formed when the screen is moved by 45 cm from its initial position. Calculate the focal length of the concave lens.\n(ii) Calculate the angle of minimum deviation of an equilateral prism. The refractive index of the prism is \\(\\sqrt{3}\\). Calculate the angle of incidence for this case of minimum deviation also."
+  },
+  {
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "difficulty": "HARD",
+   "stem": "(i) A physics teacher wants to demonstrate interference with the help of double slit experiment using a laser beam of 633 nm wavelength. Since the hall is large enough, interference pattern is formed on the wall \\(5{\\cdot}0\\) m from the slits. For clear and comfortable view by all the students they want the fringe width 5 mm.\n(I) Find the slit separation for obtaining the desired interference pattern.\n(II) How far will the first minimum be from the central maximum ?\n(ii) A parallel beam of light of wavelength 650 nm passes through a slit of width \\(0{\\cdot}6\\) mm. The diffraction pattern is obtained on a screen kept 60 cm away from the slit. Find the distance between first order minima on both sides of the central maximum.",
+   "_alternativeTo": "Q33a",
+   "_flag": "TAXONOMY GAP — sub-part (ii) is single-slit DIFFRACTION and the Wave Optics axis has no diffraction subtopic. Filed on 'Interference and Young's Experiment', which also covers sub-part (i). See the note on Q15."
+  }
+ ]
 }
