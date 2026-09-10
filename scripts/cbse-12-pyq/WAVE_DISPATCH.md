@@ -84,10 +84,17 @@ Each earned its place from a real incident in this repo.
 > (EASY|MODERATE|HARD), `stem`, optional `context`, `options`, `answer`,
 > optional `setId`.
 >
-> Use ONLY the chapter names in the addendum, character for character —
-> chapters AUTO-CREATE on commit, so one wrong space forks the corpus in two.
-> Note `Werner’s Theory of Coordination Compounds` uses **U+2019**, not an ASCII
-> apostrophe.
+> ### Taxonomy — use these names CHARACTER FOR CHARACTER
+> «TAXONOMY»
+>
+> Nothing at commit time catches a typo here. `commit.ts` does not re-check
+> either name and AUTO-CREATES on a mismatch; `validate.ts` checks chapters only,
+> and only when run. A subtopic near-miss is checked by nothing at all and
+> silently splits a subtopic in two. Note `Werner’s Theory of Coordination
+> Compounds` uses **U+2019**, not an ASCII apostrophe.
+>
+> If a question fits none of its chapter's subtopics, file it on the closest and
+> FLAG it — do not invent a name. A gap is a finding.
 >
 > ### House rules that have cost this project real time
 > - **Write the file with the editor, never a shell heredoc.** Heredocs eat
@@ -134,6 +141,7 @@ Each earned its place from a real incident in this repo.
 |---|---|
 | `«KEY_INSTRUCTION»` | `wave.ts` key column — see below |
 | `«SECTION_TABLE»` | the pattern's row in `SCIENCE_ADDENDUM.md` §1 |
+| `«TAXONOMY»` | `npx tsx scripts/cbse-12-pyq/axis.ts --subject=<s>` — paste its output. **Generated, never copied from a doc**: the subtopic axis is the one thing no gate checks, and a markdown copy drifts silently the moment a subtopic is added. |
 | `«FOLLOWER_BLOCK»` | empty for an opener; see below for a follower |
 
 **`official (N)`** → *"Take the answer from the marking scheme's Section-A table,
