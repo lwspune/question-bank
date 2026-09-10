@@ -17,10 +17,32 @@ right table; what you must not do is assume a band from a neighbouring year.
 
 | pattern | who | shape |
 |---|---|---|
-| `term2_sci` | **2022**, both subjects | 12 q / 35 marks / 3 sections. A: Q1-3 (2 mk) · B: Q4-11 (3 mk) · C: Q12 case study (5 mk). **NO MCQs at all.** |
+| `term2_sci` | **2022**, both subjects | 12 q / 35 marks / 3 sections. A: Q1-3 (2 mk) · B: Q4-11 (3 mk) · C: Q12 case study (5 mk). **Section A and B are subjective — but see the warning below: in PHYSICS the Q12 case study is FIVE keyed MCQs.** |
 | `full70_phy_2023` | **Physics 2023** | 35 q. A: Q1-15 MCQ, **Q16-18 assertion-reason** · B: 19-25 (2) · C: 26-30 (3) · **D: 31-33 LONG ANSWER (5)** · **E: 34-35 case (4)** |
 | `full70_chem_2023` | **Chemistry 2023** | 35 q. A: Q1-14 MCQ, **Q15-18 assertion-reason** · B: 19-25 (2) · C: 26-30 (3) · **D: 31-32 CASE (4)** · **E: 33-35 long answer (5)** |
 | `full70` | **2024, 2025, 2026**, both subjects | 33 q. A: Q1-12 MCQ, **Q13-16 assertion-reason** · B: 17-21 (2) · C: 22-28 (3) · D: 29-30 case (4) · E: 31-33 LA (5) |
+
+⚠ **AND THE 2022 PAPERS ARE NOT THE SAME EXAM EITHER — the same trap, a year
+earlier.** `term2_sci` is shared by Physics and Chemistry, and its Q12 case
+study differs by SUBJECT:
+
+* **Physics** — Q12 is **FIVE 1-mark MCQs** with four printed options each, and
+  the marking scheme KEYS all five in its own **SECTION-C** table. Measured on
+  all five openers: 5 keyed answers per paper, so **75 across the 15 papers**.
+* **Chemistry** — Q12 is five SUBJECTIVE sub-parts. Verified against the
+  committed `2022-56-*` files: 0 MCQs.
+* **Maths** — subjective, 1-2 rows.
+
+Both totals are 35, so a marks check cannot catch it. **An earlier version of
+this file, and `lib.ts`'s own `term2_sci` comment, both asserted "NO MCQs at
+all" for 2022** — measured on Chemistry and generalised. Five agents met the
+Physics MCQs independently and each refused to force them subjective, which
+would have discarded CBSE's own keys.
+
+⚠ **The Section-C key uses a DIFFERENT labelling convention in every series**,
+so no single pattern reads them all — measured: `I (B)`, `(I) ( B )`,
+`a) (iii)`, `(a) (iv)`, `(i)—a`. Where the options are printed `(i)-(iv)` or
+`a-d`, map them POSITIONALLY onto A-D.
 
 ⚠ **The two 2023 papers are not the same exam.** Sections D and E are swapped
 between the subjects and the assertion-reason band starts a question earlier in
@@ -63,7 +85,7 @@ returns nothing — read the marking scheme page.
 
 | year | Physics PAPERS keyed | why the gaps |
 |---|---|---|
-| 2022 | 0 of 15 | Term-II paper — **no MCQs at all**, so there is no key to read. Not a failure. |
+| 2022 | 0 of 15 | ⚠ **A REAL GAP, not a true negative.** `expectedSectionA` counts only `mcq`/`assertion_reason` BANDS, and `term2_sci` declares none — so keys.ts never looks at SECTION C, where Physics prints **5 keyed answers per paper (75 in all)**. Read them off the scheme's Section-C table. |
 | 2023 | 9 of 15 | 3 refuse on a medium-scoped award; 3 lost entries to a collapsed two-column layout. |
 | 2024 | 14 of 15 | |
 | 2025 | 18 of 18 | |
@@ -107,9 +129,14 @@ answer (which `validate.ts` catches) or a DERIVED one (which nothing catches).
 
 Two consequences worth stating outright:
 
-- **Section-D case-study sub-parts are ALSO keyed MCQs.** The addendum used to
-  discuss only Section A, and that is where their ten answers per paper come
-  from too — the scheme's Section-D block. Take them verbatim, same rules.
+- **Case-study sub-parts may ALSO be keyed MCQs — but ONLY on `full70`.** On
+  2024/2025/2026 papers the case studies are Section D and their sub-parts
+  are MCQs, so the scheme's Section-D block holds ten more answers per paper:
+  take them verbatim, same rules. **On `full70_phy_2023` this is FALSE** —
+  the case studies are Section E and their sub-parts are SUBJECTIVE, answered
+  with mark splits and worked working rather than option letters. Such a
+  paper has exactly 18 keyed answers, all in Section A. An earlier version of
+  this bullet stated the `full70` shape as though it were universal.
 - **A merged scheme renumbers the same void.** 2024 55/2/1's void is Q30(i);
   in its siblings the identical question is Q29(i). A page-range slip therefore
   attaches a void to the wrong question rather than failing loudly.
@@ -158,18 +185,6 @@ report** — do not resolve it quietly.
 
 ---
 
-## 3. Chemistry notation
-
-- **Formulas go in maths zones**: `\(\mathrm{C_2H_5NH_2}\)`, `\(\mathrm{NH_4^+}\)`,
-  `\(\mathrm{[Co(NH_3)_6]^{3+}}\)`. Use `\mathrm{}` so they do not render
-  italic — an italic `\(C\)` reads as a variable, not carbon.
-- **Charges and oxidation states**: `\(\mathrm{Fe^{2+}}\)`, `\(\mathrm{Cr_2O_7^{2-}}\)`.
-- **Reaction arrows**: `\(\rightarrow\)`, `\(\xrightarrow{\text{reagent}}\)`,
-  equilibrium `\(\rightleftharpoons\)`.
-- **Greek**: `\(\alpha\)`, `\(\beta\)`, `\(\Delta\)`, `\(\lambda\)`, `\(\pi\)`.
-- **Units** stay plain text outside the maths zone where they follow a number in
-  prose, exactly as the Maths brief says.
-
 **(c) The DUAL KEY — CBSE accepts EITHER of two options.** The Section-A cell
 prints two letters and no prose note, in any of four measured spellings:
 `(A) resistor / (C) capacitor` · `(A) / (B)` · `(a) / (b)` · `A OR B`.
@@ -188,6 +203,19 @@ displays a single answer and that choice is a teaching decision.
 > committed Chemistry corpus predate this rule and ship the first-printed
 > letter** — re-adjudicating them is a logged backfill candidate, not something
 > to change in passing.
+
+## 3. Chemistry notation
+
+- **Formulas go in maths zones**: `\(\mathrm{C_2H_5NH_2}\)`, `\(\mathrm{NH_4^+}\)`,
+  `\(\mathrm{[Co(NH_3)_6]^{3+}}\)`. Use `\mathrm{}` so they do not render
+  italic — an italic `\(C\)` reads as a variable, not carbon.
+- **Charges and oxidation states**: `\(\mathrm{Fe^{2+}}\)`, `\(\mathrm{Cr_2O_7^{2-}}\)`.
+- **Reaction arrows**: `\(\rightarrow\)`, `\(\xrightarrow{\text{reagent}}\)`,
+  equilibrium `\(\rightleftharpoons\)`.
+- **Greek**: `\(\alpha\)`, `\(\beta\)`, `\(\Delta\)`, `\(\lambda\)`, `\(\pi\)`.
+- **Units** stay plain text outside the maths zone where they follow a number in
+  prose, exactly as the Maths brief says.
+
 
 ### Structures and mechanisms are FIGURES
 

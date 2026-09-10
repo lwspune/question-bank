@@ -228,8 +228,29 @@ export const PAPER_PATTERNS: Record<string, Band[]> = {
    * ⚠ NOT Maths' `term2`, which is 14 questions and 40 marks. Same COVID year,
    * same "Term-II" name, different paper.
    *
-   * Like Maths' Term-II it contains NO MCQs at all, so the blind MCQ
-   * re-derivation that anchors the other four years cannot run on 2022.
+   * ⚠ THIS COMMENT USED TO SAY "Like Maths' Term-II it contains NO MCQs at all,
+   * so the blind MCQ re-derivation that anchors the other four years cannot run
+   * on 2022". THAT IS TRUE OF CHEMISTRY AND FALSE OF PHYSICS — measured
+   * 2026-09-11 across all five Physics openers and verified against the five
+   * committed Chemistry ones:
+   *
+   *   Physics    Q12 is FIVE 1-mark MCQs with four printed options, and the
+   *              marking scheme KEYS all five in its own SECTION-C table.
+   *              5 keyed answers per paper, 75 across the 15 papers.
+   *   Chemistry  Q12 is five SUBJECTIVE sub-parts. 0 MCQs. (The original claim
+   *              was measured here and generalised to the pattern.)
+   *
+   * Same subject-split-inside-one-pattern trap as 2023, where Physics and
+   * Chemistry swap sections D and E. Both totals are 35, so a marks check
+   * cannot catch it.
+   *
+   * The band below still says `case_study` for Q12, which is right — the
+   * question IS a case study; on Physics its sub-parts happen to be MCQs, and
+   * `validate.ts` accepts an mcq row inside a case_study band. But note
+   * `expectedSectionA` counts only mcq/assertion_reason BANDS, so `keys.ts`
+   * reports 2022 as "no MCQs" and never looks at Section C. That is a real gap
+   * in the key coverage, not a true negative.
+   *
    * 6 + 24 + 5 = 35.
    */
   term2_sci: [

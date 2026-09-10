@@ -114,7 +114,16 @@ Project convention, bank-wide. Not `$…$`, not bare unicode.
 - Matrices `\begin{bmatrix}`; determinants `\begin{vmatrix}` — the printed
   brackets tell you which.
 - Vectors `\vec{a}`, `\overrightarrow{AB}`; unit vectors `\hat{i}`.
-- The paper prints decimal points as a RAISED dot: `0·7`. Write `0{\cdot}7`.
+- **Decimal points are PER-ARTIFACT — read them off the paper in front of you.**
+  Where a paper prints a RAISED dot (`0·7`) write `0{\cdot}7`; where it prints
+  an ordinary full stop (`0.7`) leave it. This line used to assert the raised
+  dot as a flat fact about the corpus, which is false and is one root of a
+  confusion this project corrected five separate times. Measured across the
+  Physics papers it is roughly an even split, it does NOT follow the year or the
+  series, and **one paper disagrees with its own marking scheme** (2025 55/5/1
+  prints raised dots while its scheme prints ordinary ones). Checking precedent
+  instead of the page gets it backwards: 2024 55/4/1 uses ordinary dots and
+  2025 55/4/1 uses raised ones.
 - **Never author through a shell heredoc.** The shell eats one backslash and
   `\theta` arrives as a TAB character. Write the file directly.
 - Balance every `\(` with a `\)`. The validator rejects unbalanced zones.

@@ -1986,6 +1986,16 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Intrinsic and Extrinsic Semiconductors",
       "p-n Junction and the Semiconductor Diode",
       "Application of Junction Diode as a Rectifier",
+      // NOT an NCERT section — rationalisation removed "Special Purpose p-n
+      // Junction Diodes" entirely, and that is MEASURED rather than inferred:
+      // "special purpose", "light emitting", "photodiode", "solar cell" and
+      // "zener" each occur ZERO times in the whole chapter. Added 2026-09-11
+      // because THE BOARD STILL SETS IT — every one of the five 2022 Term-II
+      // Physics openers carries one (LED ×2, solar cell ×2, photodiode), each
+      // found independently and each filed on "p-n Junction and the
+      // Semiconductor Diode" while flagging that it is the wrong home.
+      // Editorial addition, like "Combination of Resistors", not a restoration.
+      "Special Purpose p-n Junction Diodes",
     ],
   },
 
