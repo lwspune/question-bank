@@ -1712,8 +1712,20 @@ export const CHAPTERS: Record<string, Chapter> = {
     // is the book's structure rather than an arbitrary cut.
     subtopics: [
       "Electric Current and Ohm's Law",
+      // NOT an NCERT section — the rationalised edition dropped resistor
+      // combination, and §3.11 "Cells" covers cells in series/parallel, not
+      // resistors. Added 2026-09-11 because THE BOARD STILL ASKS IT: four
+      // independent transcription agents met it on 2025 55/2/1, 55/5/1, 55/7/1
+      // and 2024 55/4/1 and each filed it on Ohm's Law while flagging the gap.
+      // A board-PYQ corpus has to be able to file what the board sets, so this
+      // is the one name here that is an editorial addition rather than the
+      // restoration of an omitted section.
+      "Combination of Resistors",
       "Drift of Electrons and Resistivity",
       "Temperature Dependence of Resistivity",
+      // NCERT §3.9 "ELECTRICAL ENERGY, POWER" — a real section the original
+      // subtopic authoring omitted, so power questions had no home at all.
+      "Electrical Energy and Power",
       "Cells, EMF and Internal Resistance",
       "Kirchhoff's Rules and Wheatstone Bridge",
     ],
@@ -1764,6 +1776,12 @@ export const CHAPTERS: Record<string, Chapter> = {
       "The Bar Magnet",
       "Magnetism and Gauss's Law",
       "Magnetisation and Magnetic Intensity",
+      // NCERT §5.5 "MAGNETIC PROPERTIES OF MATERIALS" (dia/para/ferromagnetism,
+      // §5.5.1-5.5.3) — a real section the original subtopic authoring omitted.
+      // Flagged by the Physics board-PYQ pilot, which had to file a dia/para/
+      // ferro question on Magnetisation and Magnetic Intensity and called that
+      // "defensible but a stretch". Restored 2026-09-11.
+      "Magnetic Properties of Materials",
     ],
   },
 
@@ -1811,6 +1829,12 @@ export const CHAPTERS: Record<string, Chapter> = {
       "AC Voltage Applied to an Inductor and a Capacitor",
       "Series LCR Circuit and Resonance",
       "Power in AC Circuits and the Power Factor",
+      // NCERT §7.8 "TRANSFORMERS" — a real section the original subtopic
+      // authoring omitted, and the most-reported gap of the Physics board-PYQ
+      // ingest: FIVE independent agents met a transformer question and each
+      // filed it on Power/Power Factor or Series LCR while flagging that
+      // neither is right. CBSE sets it most years. Restored 2026-09-11.
+      "Transformers",
     ],
   },
 
