@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, History, Loader2, Plus, Search } from "lucide-react";
+import { Check, History, Loader2, Plus, Search, Users } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,7 @@ import {
   type SearchRow,
 } from "../actions";
 import { formatUsageLabel } from "@/lib/papers/usage";
+import { formatConductedLabel } from "@/lib/papers/conducted";
 import type { PaperSection } from "@/lib/papers/types";
 
 const SELECT_CLASS =
@@ -64,6 +65,10 @@ export default function AddQuestionsPanel({
   const [page, setPage] = useState(1);
 
   const [rows, setRows] = useState<SearchRow[]>([]);
+  // The batch NAME comes back with the search rather than being derived here:
+  // exposure is matched against the name the tracker recorded, and only the
+  // server can resolve the id to it.
+  const [batchName, setBatchName] = useState<string | null>(null);
   const [totalCount, setTotalCount] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [loading, setLoading] = useState(false);
@@ -111,6 +116,7 @@ export default function AddQuestionsPanel({
     setLoading(false);
     if (res.ok) {
       setRows(res.rows);
+      setBatchName(res.batchName);
       setTotalCount(res.totalCount);
       setPageSize(res.pageSize);
       setPage(toPage);
@@ -267,6 +273,22 @@ export default function AddQuestionsPanel({
                         >
                           <History className="h-3 w-3" aria-hidden />
                           {formatUsageLabel(r.usedIn, { batchScoped: !!batchId })}
+                        </p>
+                      )}
+                      {r.satBy.length > 0 && (
+                        <p
+                          className={cn(
+                            "mt-1 inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium",
+                            // Amber only when THIS paper's cohort has already sat
+                            // it. A question recurring across cohorts is normal.
+                            batchName && r.satBy.some((s) => s.cohorts.includes(batchName))
+                              ? "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
+                              : "bg-muted text-muted-foreground"
+                          )}
+                          title={r.satBy.map((s) => s.cohorts.join(", ")).join(" · ")}
+                        >
+                          <Users className="h-3 w-3" aria-hidden />
+                          {formatConductedLabel(r.satBy, { batchName })}
                         </p>
                       )}
                     </div>

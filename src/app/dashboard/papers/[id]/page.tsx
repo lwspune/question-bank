@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AppHeader from "@/components/AppHeader";
 import { getPaperDetail } from "@/lib/papers/admin";
 import { getQuestionUsage } from "@/lib/papers/usage";
+import { getConductedExposure } from "@/lib/papers/conducted";
 import { listBatches } from "@/lib/batches/admin";
 import { splitBatches } from "@/lib/batches/validate";
 import { listMembers } from "@/lib/members/admin";
@@ -43,6 +44,22 @@ export default async function PaperEditorPage({
   // Active batches feed the paper's batch selector (archived cohorts hidden).
   const { active: batches } = splitBatches(await listBatches(client));
 
+  // The OTHER kind of repeat: papers the institute actually CONDUCTED, from the
+  // nda-tracker item-statistics export. `usage` above answers "is this in
+  // another vault paper" — a question can be there without a student ever
+  // seeing it. Both matter and neither substitutes for the other.
+  //
+  // Degrades to no chips rather than failing the page: this is advisory, and a
+  // teacher must still be able to edit a paper when the stats table is empty or
+  // unreachable.
+  const conducted = Object.fromEntries(
+    await getConductedExposure(client, membershipIds, member.orgId).catch(() => new Map())
+  );
+  // The paper's batch NAME, because exposure is matched by the name the tracker
+  // recorded. Resolved server-side; the client never supplies it.
+  const paperBatchName =
+    batches.find((b) => b.id === detail.batchId)?.name ?? null;
+
   const { data: exams } = await client.from("exams").select("id, name").order("name");
 
   // Org members (service-role, scoped to this org) — for the section-assignee
@@ -72,6 +89,8 @@ export default async function PaperEditorPage({
           detail={detail}
           questions={questions}
           usage={usage}
+          conducted={conducted}
+          paperBatchName={paperBatchName}
           exams={(exams ?? []) as { id: string; name: string }[]}
           defaultExamId={dominantExamId(questions)}
           canEditContent={canEditContent}
