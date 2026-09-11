@@ -7,6 +7,7 @@ import {
   ArrowRight,
   BookOpen,
   Building2,
+  CalendarClock,
   ChevronRight,
   FileSpreadsheet,
   FileText,
@@ -243,6 +244,14 @@ function QuickActions({
         icon={<Table2 className="h-5 w-5" aria-hidden />}
         title="Syllabus map"
         description="Which Std XI/XII Chemistry concepts each exam requires."
+      />
+      {/* Unconditional, like the syllabus map: teachers are the audience, and
+          a TEACHER has no `isAdmin`. */}
+      <ActionCard
+        href="/dashboard/planner"
+        icon={<CalendarClock className="h-5 w-5" aria-hidden />}
+        title="Session plan"
+        description="The Std XI Maths book cut into one-hour classes, with NDA and CBSE gaps folded in."
       />
       {isAdmin && (
         <ActionCard
