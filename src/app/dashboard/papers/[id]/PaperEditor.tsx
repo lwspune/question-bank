@@ -50,6 +50,7 @@ import {
   type BatchPick,
 } from "@/lib/batches/validate";
 import { formatUsageLabel, type UsageRef } from "@/lib/papers/usage";
+import { formatConductedLabel, type ConductedRef } from "@/lib/papers/conducted";
 import type { SectionTemplate } from "@/lib/papers/types";
 import type { QuestionRow } from "@/lib/questions/query";
 import QuestionCard from "@/app/browse/QuestionCard";
@@ -76,6 +77,8 @@ export default function PaperEditor({
   detail,
   questions,
   usage,
+  conducted,
+  paperBatchName,
   exams,
   defaultExamId,
   canEditContent,
@@ -89,6 +92,10 @@ export default function PaperEditor({
   questions: QuestionRow[];
   /** question_id → other papers using it (this paper excluded). Soft-warn. */
   usage: Record<string, UsageRef[]>;
+  /** Sittings this org actually CONDUCTED the question in (tracker export). */
+  conducted: Record<string, ConductedRef[]>;
+  /** This paper's batch NAME, for matching against a sitting's cohorts. */
+  paperBatchName: string | null;
   exams: { id: string; name: string }[];
   /** The exam this paper is mostly about — seeds the Add-questions filter. */
   defaultExamId: string | null;
@@ -422,6 +429,12 @@ export default function PaperEditor({
                       const q = questionMap.get(m.questionId);
                       const addedBy = memberLabel(m.addedBy);
                       const usedIn = usage[m.questionId] ?? [];
+                      const satBy = conducted[m.questionId] ?? [];
+                      // Highlighted only when THIS paper's cohort has already
+                      // sat it — a repeat for another batch is legitimate.
+                      const ownBatchSat =
+                        !!paperBatchName &&
+                        satBy.some((s) => s.cohorts.includes(paperBatchName));
                       return (
                         <li key={m.questionId}>
                           {q ? (
@@ -455,6 +468,22 @@ export default function PaperEditor({
                               >
                                 <History className="h-3 w-3" aria-hidden />
                                 {formatUsageLabel(usedIn)}
+                              </span>
+                            )}
+                            {satBy.length > 0 && (
+                              <span
+                                className={cn(
+                                  "inline-flex items-center gap-1 rounded px-1.5 py-0.5 font-medium",
+                                  ownBatchSat
+                                    ? "bg-amber-500/15 text-amber-800 dark:text-amber-400"
+                                    : "bg-muted"
+                                )}
+                                title={satBy
+                                  .map((s) => s.cohorts.join(", "))
+                                  .join(" · ")}
+                              >
+                                <Users className="h-3 w-3" aria-hidden />
+                                {formatConductedLabel(satBy, { batchName: paperBatchName })}
                               </span>
                             )}
                             {!finalized && (

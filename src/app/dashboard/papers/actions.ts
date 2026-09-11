@@ -28,6 +28,7 @@ import { queryQuestions } from "@/lib/questions/query";
 import { EMPTY_FILTERS, type Difficulty } from "@/lib/questions/filters";
 import type { SectionTemplate } from "@/lib/papers/types";
 import { getQuestionUsage, type UsageRef } from "@/lib/papers/usage";
+import { getConductedExposure, type ConductedRef } from "@/lib/papers/conducted";
 import { setPaperBatch, listBatches } from "@/lib/batches/admin";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { queryQuestionsByIds } from "@/lib/questions/query";
@@ -313,6 +314,8 @@ export type SearchRow = {
   difficulty: Difficulty;
   /** Other papers in the org that already use this question (soft-warn). */
   usedIn: UsageRef[];
+  /** Sittings this org actually CONDUCTED it in — a different fact from usedIn. */
+  satBy: ConductedRef[];
 };
 
 /** Cross-paper usage for a set of questions, excluding the current paper.
@@ -363,7 +366,15 @@ export async function searchQuestionsAction(input: {
   paperId?: string;
   /** The paper's batch — scopes the repeat warning to that cohort (0054). */
   batchId?: string | null;
-}): Promise<Result<{ rows: SearchRow[]; totalCount: number; pageSize: number }>> {
+}): Promise<
+  Result<{
+    rows: SearchRow[];
+    totalCount: number;
+    pageSize: number;
+    /** The target batch's name, for labelling an exposure chip. */
+    batchName: string | null;
+  }>
+> {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
   try {
@@ -391,6 +402,24 @@ export async function searchQuestionsAction(input: {
       input.paperId,
       input.batchId ?? null
     );
+    // The other kind of repeat: sittings the institute actually conducted.
+    // Advisory, so a failure costs chips rather than the search.
+    const conducted = await getConductedExposure(
+      client,
+      result.rows.map((r) => r.id),
+      member.orgId
+    ).catch(() => new Map<string, ConductedRef[]>());
+    // The batch NAME, resolved server-side — exposure is matched against the
+    // name the tracker recorded, and the client must not be able to supply it.
+    let batchName: string | null = null;
+    if (input.batchId) {
+      const { data: b } = await client
+        .from("batches")
+        .select("name")
+        .eq("id", input.batchId)
+        .maybeSingle();
+      batchName = (b as { name: string } | null)?.name ?? null;
+    }
     const rows: SearchRow[] = result.rows.map((r) => ({
       id: r.id,
       text: r.text,
@@ -398,8 +427,9 @@ export async function searchQuestionsAction(input: {
       chapter: r.chapter.name,
       difficulty: r.difficulty,
       usedIn: usage.get(r.id) ?? [],
+      satBy: conducted.get(r.id) ?? [],
     }));
-    return { ok: true, rows, totalCount: result.totalCount, pageSize };
+    return { ok: true, rows, totalCount: result.totalCount, pageSize, batchName };
   } catch (e) {
     return { ok: false, error: msg(e) };
   }
