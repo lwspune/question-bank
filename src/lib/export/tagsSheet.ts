@@ -46,12 +46,25 @@ export type TagRow = {
   subtopicSlug: string;
   /** Notes concept slug (the question's primary concept tag), "" when untagged. */
   conceptSlug: string;
+  /**
+   * The PYQ Vault `questions.id` this row was printed from - cross-app
+   * provenance, so a tracker exam result can be traced back to the bank item
+   * (measured difficulty, exposure control, key corrections).
+   *
+   * A SOFT reference: the two apps live in different Supabase projects, so no
+   * FK is possible and a dangling id must always degrade to today's name-based
+   * behaviour. It is provenance for linking and reporting ONLY - nda-tracker's
+   * stored copy of the text stays the record of what the student actually sat.
+   */
+  questionId: string;
 };
 
 /**
  * Column order for the emitted sheet. parseTagsFile finds columns by header
  * NAME (case-insensitive), so order is cosmetic for it — but a stable, readable
- * order helps a human eyeballing the file. `Context` is the new column.
+ * order helps a human eyeballing the file. The machine-only columns
+ * (SubtopicSlug, ConceptSlug, QuestionId) sit at the end, after everything a
+ * teacher reads.
  */
 export const TAG_COLUMNS = [
   "Q",
@@ -69,6 +82,7 @@ export const TAG_COLUMNS = [
   "Context",
   "SubtopicSlug",
   "ConceptSlug",
+  "QuestionId",
 ] as const;
 
 /**
@@ -92,6 +106,26 @@ const DIFFICULTY_LABEL: Record<Difficulty, string> = {
   MODERATE: "Moderate",
   HARD: "Hard",
 };
+
+/**
+ * `questions.id` is a `uuid` column, so anything else is NOT a bank id.
+ *
+ * This matters because `recToQuestionRow` (scripts/practice-paper/config.ts)
+ * feeds this same builder rows SYNTHESIZED from a JSON paper spec, with ids like
+ * "eng-geo-19aug-7" - those questions are not in the bank at sheet-build time.
+ * Emitting one as QuestionId would hand nda-tracker provenance that resolves to
+ * nothing. Blank is the honest answer, and it degrades to today's name-based
+ * behaviour exactly like an empty slug cell does.
+ *
+ * Gate the EMITTED column only - `buildTagRows` still joins concept tags on the
+ * raw id, synthetic or not.
+ */
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+function bankIdOrBlank(id: string): string {
+  return UUID_RE.test(id) ? id : "";
+}
 
 function optionText(q: QuestionRow, label: "A" | "B" | "C" | "D"): string {
   return q.options.find((o) => o.label === label)?.text ?? "";
@@ -119,6 +153,7 @@ function toTagRow(
     context,
     subtopicSlug: tag?.subtopicSlug ?? "",
     conceptSlug: tag?.conceptSlug ?? "",
+    questionId: bankIdOrBlank(q.id),
   };
 }
 
@@ -171,6 +206,7 @@ export function tagRowsToAoa(rows: TagRow[]): (string | number)[][] {
     r.context,
     r.subtopicSlug,
     r.conceptSlug,
+    r.questionId,
   ]);
   return [header, ...body];
 }

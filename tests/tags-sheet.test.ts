@@ -243,6 +243,7 @@ describe("tagRowsToAoa — sheet shape", () => {
       "data set",
       "", // SubtopicSlug — empty when untagged
       "", // ConceptSlug
+      "", // QuestionId - blank: "a" is not a bank uuid (see the gate below)
     ]);
   });
 });
@@ -279,5 +280,55 @@ describe("buildTagRows — concept tags", () => {
     );
     expect(rows[0].conceptSlug).toBe(""); // a untagged
     expect(rows[1].conceptSlug).toBe("c-x"); // b tagged
+  });
+});
+
+const U1 = "11111111-1111-4111-8111-111111111111";
+const U2 = "22222222-2222-4222-8222-222222222222";
+
+describe("buildTagRows - question id (cross-app provenance)", () => {
+  it("carries the PYQ Vault question id onto every row", () => {
+    const rows = buildTagRows([q({ id: U1 }), q({ id: U2 })]);
+    expect(rows.map((r) => r.questionId)).toEqual([U1, U2]);
+  });
+
+  it("gives each set sibling its OWN id, not the lead question's", () => {
+    const rows = buildTagRows([
+      q({ id: U1, setId: "S1", context: "Passage" }),
+      q({ id: U2, setId: "S1" }),
+    ]);
+    expect(rows.map((r) => r.questionId)).toEqual([U1, U2]);
+  });
+
+  it("emits a QuestionId header nda-tracker can find", () => {
+    const aoa = tagRowsToAoa(buildTagRows([q({ id: U1 })]));
+    const header = aoa[0] as string[];
+    expect(header).toContain("QuestionId");
+    // the id must land in the QuestionId column, not merely somewhere in the row
+    expect(aoa[1][header.indexOf("QuestionId")]).toBe(U1);
+  });
+});
+
+describe("buildTagRows - question id is a BANK id or nothing", () => {
+  // `recToQuestionRow` (scripts/practice-paper/config.ts) synthesizes ids like
+  // "eng-geo-19aug-7" for rows that are not in the bank yet. Emitting those as
+  // QuestionId would hand nda-tracker provenance that resolves to nothing.
+  it("blanks a synthetic (non-uuid) id rather than emitting it", () => {
+    const rows = buildTagRows([q({ id: "eng-geo-19aug-7" })]);
+    expect(rows[0].questionId).toBe("");
+  });
+
+  it("still passes a real uuid through", () => {
+    const rows = buildTagRows([q({ id: "7f3c1e2a-0000-4000-8000-000000000001" })]);
+    expect(rows[0].questionId).toBe("7f3c1e2a-0000-4000-8000-000000000001");
+  });
+
+  it("keeps using the raw id for the concept-tag lookup", () => {
+    // the synthetic id must still find its concept tag - only the emitted
+    // provenance column is gated, not the internal join
+    const tags = new Map([["eng-geo-19aug-7", { subtopicSlug: "st", conceptSlug: "c" }]]);
+    const rows = buildTagRows([q({ id: "eng-geo-19aug-7" })], tags);
+    expect(rows[0].subtopicSlug).toBe("st");
+    expect(rows[0].questionId).toBe("");
   });
 });
