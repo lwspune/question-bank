@@ -46,6 +46,7 @@ function row(over: Partial<ItemStatRow> = {}): ItemStatRow {
     discBottomCorrect: null,
     discBottomN: null,
     keyAtMeasurement: "A",
+    verdictMismatch: null,
     measuredContentHash: HASH,
     measuredAt: "2026-09-01T00:00:00Z",
     ...over,
@@ -270,6 +271,10 @@ describe("rankLeads", () => {
       topDistractor: { label: "B" as const, count: top },
       ratio: keyCount === 0 ? null : top / keyCount,
       discrimination: null,
+      verdictMismatch: 0,
+      reason: (keyCount === 0 ? "key-never-chosen" : "distractor") as
+        | "key-never-chosen"
+        | "distractor",
     });
     const ranked = rankLeads([
       mk("ratio2", 5, 10, 20),
@@ -283,5 +288,90 @@ describe("rankLeads", () => {
       "ratio2-bigger-n",
       "ratio2",
     ]);
+  });
+});
+
+describe("verdict mismatch — the one signal that is not ambiguous", () => {
+  const withMismatch = (mismatch: number | null, counts: Record<string, number>, correct: number) =>
+    aggregateItemStats(
+      [
+        row({
+          source: "tracker",
+          orgId: "org-1",
+          seen: Object.values(counts).reduce((a, b) => a + b, 0),
+          attempted: Object.values(counts).reduce((a, b) => a + b, 0),
+          correct,
+          choiceCounts: counts,
+          verdictMismatch: mismatch,
+        }),
+      ],
+      HASH
+    );
+
+  it("sums across the rows that carry one", () => {
+    const agg = aggregateItemStats(
+      [
+        row({ sourceRef: "s1", source: "tracker", orgId: "o", verdictMismatch: 3 }),
+        row({ sourceRef: "s2", source: "tracker", orgId: "o", verdictMismatch: 4 }),
+      ],
+      HASH
+    );
+    expect(agg?.verdictMismatch).toBe(7);
+  });
+
+  it("stays NULL when no source could measure it — null is not zero", () => {
+    // The vault stores responses, not marks, so it has nothing to disagree with.
+    // Reporting 0 would claim "compared, none found".
+    const agg = aggregateItemStats([row({ verdictMismatch: null })], HASH);
+    expect(agg?.verdictMismatch).toBeNull();
+  });
+
+  it("counts a real zero as measured", () => {
+    const agg = aggregateItemStats(
+      [
+        row({ sourceRef: "s1", source: "tracker", orgId: "o", verdictMismatch: 0 }),
+        row({ sourceRef: "s2", verdictMismatch: null }),
+      ],
+      HASH
+    );
+    expect(agg?.verdictMismatch).toBe(0);
+  });
+
+  it("raises a lead even when the key outpulls every distractor", () => {
+    // THE POINT. Without this the row never surfaces: its distribution looks
+    // healthy and only the mark/key disagreement says anything is wrong.
+    const agg = withMismatch(2, { A: 14, B: 3, C: 2, D: 1 }, 14);
+    const lead = computeLead("q1", agg, "A");
+    expect(lead).not.toBeNull();
+    expect(lead?.reason).toBe("verdict-mismatch");
+    expect(lead?.verdictMismatch).toBe(2);
+  });
+
+  it("is not gated on the attempt threshold — one mis-marked student is one too many", () => {
+    const agg = withMismatch(1, { A: 3 }, 3);
+    expect(agg!.attempted).toBeLessThan(MIN_N_LEAD);
+    expect(computeLead("q1", agg, "A")?.reason).toBe("verdict-mismatch");
+  });
+
+  it("still raises one when the question has no current key to compare against", () => {
+    // The key was there when it was measured (that is how a mismatch arose) and
+    // is gone or ambiguous now. The defect does not stop existing.
+    const agg = withMismatch(2, { A: 6, B: 4 }, 6);
+    expect(computeLead("q1", agg, null)?.reason).toBe("verdict-mismatch");
+  });
+
+  it("outranks key-never-chosen and every ratio", () => {
+    const base = {
+      attempted: 20,
+      topDistractor: { label: "B" as const, count: 10 },
+      discrimination: null,
+    };
+    const ranked = rankLeads([
+      { ...base, questionId: "ratio5", keyCount: 2, ratio: 5, verdictMismatch: 0, reason: "distractor" },
+      { ...base, questionId: "nokey", keyCount: 0, ratio: null, verdictMismatch: 0, reason: "key-never-chosen" },
+      { ...base, questionId: "mismatch1", keyCount: 9, ratio: null, verdictMismatch: 1, reason: "verdict-mismatch" },
+      { ...base, questionId: "mismatch9", keyCount: 9, ratio: null, verdictMismatch: 9, reason: "verdict-mismatch" },
+    ]);
+    expect(ranked.map((l) => l.questionId)).toEqual(["mismatch9", "mismatch1", "nokey", "ratio5"]);
   });
 });

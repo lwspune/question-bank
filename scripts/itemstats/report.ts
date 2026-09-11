@@ -58,7 +58,7 @@ async function main() {
     db
       .from("question_item_stats")
       .select(
-        "question_id, source, source_ref, org_id, cohort_label, seen, attempted, correct, skipped, choice_counts, disc_top_correct, disc_top_n, disc_bottom_correct, disc_bottom_n, key_at_measurement, measured_content_hash, measured_at"
+        "question_id, source, source_ref, org_id, cohort_label, seen, attempted, correct, skipped, choice_counts, disc_top_correct, disc_top_n, disc_bottom_correct, disc_bottom_n, key_at_measurement, verdict_mismatch, measured_content_hash, measured_at"
       )
       .order("question_id", { ascending: true })
       .range(f, t)
@@ -78,6 +78,7 @@ async function main() {
     disc_bottom_correct: number | null;
     disc_bottom_n: number | null;
     key_at_measurement: OptionLabel | null;
+    verdict_mismatch: number | null;
     measured_content_hash: string;
     measured_at: string;
   }[];
@@ -101,6 +102,7 @@ async function main() {
       discBottomCorrect: r.disc_bottom_correct,
       discBottomN: r.disc_bottom_n,
       keyAtMeasurement: r.key_at_measurement,
+      verdictMismatch: r.verdict_mismatch,
       measuredContentHash: r.measured_content_hash,
       measuredAt: r.measured_at,
     });
@@ -181,13 +183,19 @@ async function main() {
 
   console.log(`\nLEADS  (ratio >= ${minRatio || "any"}; a lead is not a verdict)`);
   console.log(`  total leads                  ${ranked.length}`);
+  console.log(`  VERDICT MISMATCH             ${ranked.filter((l) => l.reason === "verdict-mismatch").length}   (the mark and the key disagree — not ambiguous)`);
   console.log(`  key chosen by NOBODY         ${ranked.filter((l) => l.ratio === null).length}`);
   console.log(`  ratio >= 2                   ${ranked.filter((l) => l.ratio !== null && l.ratio >= 2).length}`);
   console.log(`  ratio >= 3                   ${ranked.filter((l) => l.ratio !== null && l.ratio >= 3).length}`);
 
   console.log(`\n  top ${Math.min(15, shown.length)} of ${shown.length}:`);
   for (const l of shown.slice(0, 15)) {
-    const ratio = l.ratio === null ? "KEY NEVER CHOSEN" : `${l.ratio.toFixed(1)}x`;
+    const ratio =
+      l.reason === "verdict-mismatch"
+        ? `MARK!=KEY x${l.verdictMismatch}`
+        : l.reason === "key-never-chosen"
+          ? "KEY NEVER CHOSEN"
+          : `${(l.ratio as number).toFixed(1)}x`;
     const stem = (textById.get(l.questionId) ?? "").replace(/\s+/g, " ").slice(0, 60);
     console.log(
       `    ${ratio.padEnd(17)} n=${String(l.attempted).padEnd(4)} key=${l.keyCount} vs ${l.topDistractor?.label}=${l.topDistractor?.count}  ${l.questionId.slice(0, 8)}  ${stem}`

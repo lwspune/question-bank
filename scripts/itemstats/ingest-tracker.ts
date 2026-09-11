@@ -50,6 +50,7 @@ type ExportRow = {
   discBottomCorrect: number | null;
   discBottomN: number | null;
   keyAtMeasurement: "A" | "B" | "C" | "D" | null;
+  verdictMismatch?: number | null;
   measuredAt: string | null;
 };
 
@@ -154,6 +155,9 @@ async function main() {
         disc_bottom_correct: r.discBottomCorrect,
         disc_bottom_n: r.discBottomN,
         key_at_measurement: r.keyAtMeasurement,
+        // An export that does not carry the field has NOT measured it; `?? null`
+        // rather than `?? 0`, which would claim "compared, none found".
+        verdict_mismatch: r.verdictMismatch ?? null,
         measured_content_hash: hashById.get(r.questionId)!,
         measured_at: r.measuredAt
           ? new Date(`${r.measuredAt}T00:00:00Z`).toISOString()

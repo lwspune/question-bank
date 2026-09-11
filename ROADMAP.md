@@ -6,36 +6,40 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
-## Item statistics — the tracker half
+## Item statistics — what remains
 
-Shipped 2026-09-11: `question_item_stats` (0095), the pure pooling core, the vault rollup,
-the `/browse` staff chip and `/dashboard/item-stats`. Spec: [ITEM_STATS.md](ITEM_STATS.md).
-What remains:
+Shipped 2026-09-11: `question_item_stats` (0095) + `verdict_mismatch` (0096), the pure pooling
+core, the vault rollup, the tracker export (`nda-tracker/item_stats.js`) and its ingest, the
+`/browse` staff chip and `/dashboard/item-stats`. Both sources are live — **8,984 sitting rows
+over 8,245 questions; 1,462 at n>=10, 625 at n>=20; 319 leads**. Spec:
+[ITEM_STATS.md](ITEM_STATS.md).
 
-- **The tracker export (their repo) — the blocker, and the biggest prize.** `nda-tracker`'s
-  own `ITEM_STATS.md` is still spec-only, so **1,259 items at n>=20 and all 122 wrong-key
-  leads are unavailable**. The vault contributes 50 items at that threshold; this is ~25x
-  the usable data. **Ask: emit PER RECORD, not pooled by `questionId`** — the bank needs the
-  transactions, not the balance (ITEM_STATS.md decision 6). Cheap for them; the per-record
-  counts are already the input to their discrimination metric.
-- **The ingest CLI (here).** Writable against the contract before their export exists, but
-  untestable until it does.
-- **Exposure — "your batch has already sat this".** Needs `cohort_label`, which only tracker
-  rows carry. The vault half already exists as the per-batch no-repeat soft-warn; this
-  extends it to everything the institute has actually conducted. The one cohort-scoped thing
-  on an otherwise global card, and that is correct — exposure is a constraint on selection,
-  not analytics.
-- **Weekly cadence.** Decision 7 says the Monday `db:backup` slot. Today `itemstats:rollup`
-  runs only when someone types it, and it goes stale with every mock submitted.
-- **The `/browse` leads filter**, deferred with reason: narrowing to leads needs the
-  aggregate *before* the question query, i.e. an RPC or a 7,100-row fetch on the hottest
-  public page. Viable once a maintained aggregate exists — which decision 6 already
-  anticipates for the read-path ceiling (~30-40 sittings on one question; ~1.001 today).
+- **Exposure — "your batch has already sat this".** Now UNBLOCKED: every tracker row carries a
+  `cohort_label` (4 cohorts live). The vault half already exists as the per-batch no-repeat
+  soft-warn; this extends it to everything the institute actually conducted. The one
+  cohort-scoped thing on an otherwise global card, and that is correct — exposure is a
+  constraint on selection, not analytics.
+- **Weekly cadence.** Decision 7 says the Monday `db:backup` slot, and it is honestly a
+  TWO-REPO step: `node item_stats.js --out=…` in nda-tracker, then `itemstats:ingest` and
+  `itemstats:rollup` here. Wants one runbook entry rather than pretending a single cron covers
+  it.
+- **The browser click-through — owed, never done.** Both surfaces are auth-gated `ƒ`, so the
+  gate proves they compile and `itemstats:smoke` proves the loaders. Neither proves layout:
+  the card's expanded distribution bars, the chip at 360px, and the dashboard list now that it
+  is 319 rows rather than 57.
+- **The `/browse` leads filter**, deferred with reason: narrowing to leads needs the aggregate
+  *before* the question query, i.e. an RPC or a full-table fetch on the hottest public page.
+  Viable once a maintained aggregate exists — which decision 6 already anticipates for the
+  read-path ceiling.
 - **Difficulty promotion: deliberately NOT on this list as work.** `questions.difficulty`
   drives `selectByQuota` in every mock blueprint and is quoted as %HARD in 11 shipped guides;
   overwriting it from measurement would silently change which papers get built. If ever
-  revisited, bands must be **per-format** — an MCQ p-value carries a ~25% guessing floor and
-  a NAT one ~0%, so a 30% NAT item is much harder than a 30% MCQ item.
+  revisited, bands must be **per-format** — an MCQ p-value carries a ~25% guessing floor and a
+  NAT one ~0%.
+- **Adjudicate the two MARK ≠ KEY findings.** `∫₀⁴|x−1|dx` (bank key B = 5 is correct; one
+  sitting marked 10 students against a different answer) and an English S1 item. An adjudicated
+  outcome belongs in `question_reviews` (0074). This is institute-side grading, not a bank
+  defect — worth telling LWS.
 
 ---
 

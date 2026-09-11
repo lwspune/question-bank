@@ -112,7 +112,13 @@ export default async function ItemStatsPage({
               <span className="font-medium text-foreground">These are leads, not verdicts.</span>{" "}
               A distractor outpulling the key can mean the key is wrong, that the distractor is a
               well-built trap, or that a misconception is widespread. Read the question before
-              concluding anything, and record what you conclude.
+              concluding anything, and record what you conclude.{" "}
+              <span className="font-medium text-foreground">
+                MARK ≠ KEY is the exception:
+              </span>{" "}
+              it means students were marked against a different answer than the paper records —
+              a mis-keyed or dropped question. Which of those is still yours to decide, but that
+              something is wrong is not in doubt. It is scoped to the sitting it happened in.
             </p>
           </div>
 
@@ -128,8 +134,18 @@ export default async function ItemStatsPage({
                   className="rounded-lg border bg-card p-3 text-sm"
                 >
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-mono text-xs font-semibold tabular-nums">
-                      {lead.ratio === null ? "KEY NEVER CHOSEN" : `${lead.ratio.toFixed(1)}×`}
+                    <span
+                      className={
+                        lead.reason === "verdict-mismatch"
+                          ? "rounded bg-amber-500/15 px-1.5 font-mono text-xs font-semibold tabular-nums text-amber-700 dark:text-amber-400"
+                          : "font-mono text-xs font-semibold tabular-nums"
+                      }
+                    >
+                      {lead.reason === "verdict-mismatch"
+                        ? `MARK ≠ KEY on ${lead.verdictMismatch}`
+                        : lead.reason === "key-never-chosen"
+                          ? "KEY NEVER CHOSEN"
+                          : `${(lead.ratio as number).toFixed(1)}×`}
                     </span>
                     <span className="text-xs tabular-nums text-muted-foreground">
                       key {lead.topDistractor && `vs ${lead.topDistractor.label}`}:{" "}

@@ -47,6 +47,11 @@ export function aggregateItemStats(
   let bottomN = 0;
   let discSittings = 0;
 
+  // Summed only over rows that could measure it. If none could, the result is
+  // NULL rather than 0 — "not measurable" and "compared, none found" are
+  // different claims, and a 0 here would assert the second.
+  let mismatch: number | null = null;
+
   const bySourceMap = new Map<
     ItemStatSource,
     { sittings: number; attempted: number; correct: number }
@@ -76,6 +81,8 @@ export function aggregateItemStats(
       bottomN += r.discBottomN;
       discSittings++;
     }
+
+    if (r.verdictMismatch !== null) mismatch = (mismatch ?? 0) + r.verdictMismatch;
 
     const bucket = bySourceMap.get(r.source) ?? {
       sittings: 0,
@@ -119,6 +126,7 @@ export function aggregateItemStats(
     choiceCounts,
     discrimination,
     sittings: live.length,
+    verdictMismatch: mismatch,
     bySource,
     staleDropped,
   };
