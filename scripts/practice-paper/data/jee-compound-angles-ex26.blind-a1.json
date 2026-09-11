@@ -1,0 +1,269 @@
+[
+  {
+    "n": 1,
+    "answer": "C",
+    "solution": "The condition \\(\\sin x + \\sin^2 x = 1\\) rearranges to \\(\\sin x = 1 - \\sin^2 x = \\cos^2 x\\). Substituting this into the required expression, \\(\\cos^2 x + \\cos^4 x = \\cos^2 x + (\\cos^2 x)^2 = \\sin x + \\sin^2 x = 1\\). Matches option C.",
+    "workings": [
+      "Given \\(\\sin x + \\sin^2 x = 1\\)",
+      "\\[\\sin x = 1 - \\sin^2 x = \\cos^2 x\\]",
+      "\\[\\cos^2 x + \\cos^4 x = \\cos^2 x + (\\cos^2 x)^2\\]",
+      "\\[= \\sin x + \\sin^2 x = 1\\]"
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 2,
+    "answer": "B",
+    "solution": "Write \\(p = \\sin^2\\theta\\cos^2\\theta\\). Then \\(\\sin^4\\theta + \\cos^4\\theta = (\\sin^2\\theta+\\cos^2\\theta)^2 - 2p = 1 - 2p\\), and \\(\\sin^6\\theta + \\cos^6\\theta = (\\sin^2\\theta+\\cos^2\\theta)^3 - 3p(\\sin^2\\theta+\\cos^2\\theta) = 1 - 3p\\). So the expression equals \\(2(1-3p) - 3(1-2p) + 1 = 2 - 6p - 3 + 6p + 1 = 0\\), independent of \\(\\theta\\). Matches option B.",
+    "workings": [
+      "\\(2(\\sin^6\\theta + \\cos^6\\theta) - 3(\\sin^4\\theta + \\cos^4\\theta) + 1\\)",
+      "Let \\(p = \\sin^2\\theta\\cos^2\\theta\\), with \\(\\sin^2\\theta + \\cos^2\\theta = 1\\):",
+      "\\[\\sin^4\\theta + \\cos^4\\theta = (\\sin^2\\theta+\\cos^2\\theta)^2 - 2p = 1 - 2p\\]",
+      "\\[\\sin^6\\theta + \\cos^6\\theta = (\\sin^2\\theta+\\cos^2\\theta)^3 - 3p(\\sin^2\\theta+\\cos^2\\theta) = 1 - 3p\\]",
+      "\\[= 2(1-3p) - 3(1-2p) + 1\\]",
+      "\\[= 2 - 6p - 3 + 6p + 1 = 0\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 3,
+    "answer": "B",
+    "solution": "Both cosines take the same value: \\(\\cos\\frac{2\\pi}{3} = \\cos\\frac{4\\pi}{3} = -\\frac{1}{2}\\). The given chain therefore reads \\(x = -\\frac{y}{2} = -\\frac{z}{2}\\), so \\(y = z = -2x\\). Hence \\(xy + yz + zx = x(-2x) + (-2x)(-2x) + (-2x)x = -2x^2 + 4x^2 - 2x^2 = 0\\). Matches option B.",
+    "workings": [
+      "\\[\\cos\\dfrac{2\\pi}{3} = \\cos\\dfrac{4\\pi}{3} = -\\dfrac{1}{2}\\]",
+      "The given chain therefore reads \\(x = -\\dfrac{y}{2} = -\\dfrac{z}{2}\\), so \\(y = z = -2x\\).",
+      "\\[xy + yz + zx = x(-2x) + (-2x)(-2x) + (-2x)x\\]",
+      "\\[= -2x^2 + 4x^2 - 2x^2 = 0\\]"
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The stem's chained equality is ambiguous as printed, but the standard textbook form of this question (x cos(theta) = y cos(theta + 2pi/3) = z cos(theta + 4pi/3)) also yields 0, so the answer is the same under either reading."
+  },
+  {
+    "n": 4,
+    "answer": "A",
+    "solution": "The sum is \\(\\sum_{k=1}^{36}\\sin(10k)^\\circ\\), i.e. 36 equally spaced angles covering one complete revolution. Pair the \\(k\\)-th term with the \\((k+18)\\)-th for \\(k = 1,2,\\ldots,18\\): since \\(\\sin(\\theta + 180^\\circ) = -\\sin\\theta\\), each pair \\(\\sin(10k)^\\circ + \\sin(10k + 180)^\\circ = 0\\). All 18 pairs vanish, so the total is \\(0\\). Matches option A.",
+    "workings": [
+      "\\[S = \\sin 10^\\circ + \\sin 20^\\circ + \\cdots + \\sin 360^\\circ = \\sum_{k=1}^{36}\\sin(10k)^\\circ\\]",
+      "These are 36 equally spaced angles covering one complete revolution. Pair the \\(k\\)-th term with the \\((k+18)\\)-th, using \\(\\sin(\\theta + 180^\\circ) = -\\sin\\theta\\):",
+      "\\[\\sin(10k)^\\circ + \\sin(10k + 180)^\\circ = 0 \\qquad (k = 1,2,\\ldots,18)\\]",
+      "All 18 pairs vanish, so \\(S = 0\\)."
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 5,
+    "answer": "B",
+    "solution": "Expanding, \\(\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta + \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = 0\\). Group the terms as \\(\\cos\\alpha(\\cos\\beta - \\sin\\beta) + \\sin\\alpha(\\cos\\beta - \\sin\\beta) = 0\\), that is \\((\\cos\\beta - \\sin\\beta)(\\cos\\alpha + \\sin\\alpha) = 0\\). The second condition gives \\(\\tan\\beta = -\\frac{1}{2010}\\), and \\(\\cos\\beta - \\sin\\beta = 0\\) would require \\(\\tan\\beta = 1\\), so that factor is non-zero. Hence \\(\\cos\\alpha + \\sin\\alpha = 0\\), giving \\(\\tan\\alpha = -1\\). Matches option B.",
+    "workings": [
+      "\\[\\cos(\\alpha + \\beta) + \\sin(\\alpha - \\beta) = 0\\]",
+      "\\[\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta + \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = 0\\]",
+      "\\[\\cos\\alpha(\\cos\\beta - \\sin\\beta) + \\sin\\alpha(\\cos\\beta - \\sin\\beta) = 0\\]",
+      "\\[(\\cos\\beta - \\sin\\beta)(\\cos\\alpha + \\sin\\alpha) = 0\\]",
+      "From \\(2010\\tan\\beta + 1 = 0\\), \\(\\tan\\beta = -\\dfrac{1}{2010}\\). But \\(\\cos\\beta - \\sin\\beta = 0\\) needs \\(\\tan\\beta = 1\\), so that factor is non-zero.",
+      "\\[\\cos\\alpha + \\sin\\alpha = 0 \\;\\Rightarrow\\; \\tan\\alpha = -1\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 6,
+    "answer": "C",
+    "solution": "The conditions give \\(\\cos x + \\cos y = -\\cos\\alpha\\) and \\(\\sin x + \\sin y = -\\sin\\alpha\\). Applying the sum-to-product formulae, \\(2\\cos\\frac{x+y}{2}\\cos\\frac{x-y}{2} = -\\cos\\alpha\\) and \\(2\\sin\\frac{x+y}{2}\\cos\\frac{x-y}{2} = -\\sin\\alpha\\). Dividing the first by the second cancels the common factor \\(2\\cos\\frac{x-y}{2}\\) and gives \\(\\cot\\frac{x+y}{2} = \\frac{\\cos\\alpha}{\\sin\\alpha} = \\cot\\alpha\\). Matches option C.",
+    "workings": [
+      "\\[\\cos x + \\cos y = -\\cos\\alpha, \\qquad \\sin x + \\sin y = -\\sin\\alpha\\]",
+      "Using \\(\\cos C + \\cos D = 2\\cos\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\) and \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):",
+      "\\[2\\cos\\dfrac{x+y}{2}\\cos\\dfrac{x-y}{2} = -\\cos\\alpha\\]",
+      "\\[2\\sin\\dfrac{x+y}{2}\\cos\\dfrac{x-y}{2} = -\\sin\\alpha\\]",
+      "Dividing the first by the second cancels \\(2\\cos\\dfrac{x-y}{2}\\):",
+      "\\[\\cot\\dfrac{x+y}{2} = \\dfrac{\\cos\\alpha}{\\sin\\alpha} = \\cot\\alpha\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 7,
+    "answer": "B",
+    "solution": "Use \\(\\sin(P-Q) + \\sin(P+Q) = 2\\sin P\\cos Q\\). The numerator becomes \\(2\\sin A\\cos C + 2\\sin A = 2\\sin A(1 + \\cos C)\\), and in exactly the same way the denominator becomes \\(2\\sin B(1 + \\cos C)\\). The common factor \\(2(1 + \\cos C)\\) cancels, leaving \\(\\frac{\\sin A}{\\sin B}\\). Matches option B.",
+    "workings": [
+      "\\(\\dfrac{\\sin(A-C) + 2\\sin A + \\sin(A+C)}{\\sin(B-C) + 2\\sin B + \\sin(B+C)}\\)",
+      "Using \\(\\sin(P-Q) + \\sin(P+Q) = 2\\sin P\\cos Q\\):",
+      "\\[\\text{Nr} = 2\\sin A\\cos C + 2\\sin A = 2\\sin A(1 + \\cos C)\\]",
+      "\\[\\text{Dr} = 2\\sin B\\cos C + 2\\sin B = 2\\sin B(1 + \\cos C)\\]",
+      "\\[= \\dfrac{2\\sin A(1+\\cos C)}{2\\sin B(1+\\cos C)} = \\dfrac{\\sin A}{\\sin B}\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 8,
+    "answer": "B",
+    "solution": "Convert every product to a sum. Numerator: \\(\\sin 8\\theta\\cos\\theta = \\tfrac{1}{2}(\\sin 9\\theta + \\sin 7\\theta)\\) and \\(\\sin 6\\theta\\cos 3\\theta = \\tfrac{1}{2}(\\sin 9\\theta + \\sin 3\\theta)\\), so their difference is \\(\\tfrac{1}{2}(\\sin 7\\theta - \\sin 3\\theta) = \\cos 5\\theta\\sin 2\\theta\\). Denominator: \\(\\cos 2\\theta\\cos\\theta = \\tfrac{1}{2}(\\cos 3\\theta + \\cos\\theta)\\) and \\(\\sin 3\\theta\\sin 4\\theta = \\tfrac{1}{2}(\\cos\\theta - \\cos 7\\theta)\\), so their difference is \\(\\tfrac{1}{2}(\\cos 3\\theta + \\cos 7\\theta) = \\cos 5\\theta\\cos 2\\theta\\). Cancelling \\(\\cos 5\\theta\\) leaves \\(\\frac{\\sin 2\\theta}{\\cos 2\\theta} = \\tan 2\\theta\\). Matches option B.",
+    "workings": [
+      "\\(\\dfrac{\\sin 8\\theta\\cos\\theta - \\sin 6\\theta\\cos 3\\theta}{\\cos 2\\theta\\cos\\theta - \\sin 3\\theta\\sin 4\\theta}\\)",
+      "Convert every product to a sum, using \\(2\\sin P\\cos Q = \\sin(P+Q) + \\sin(P-Q)\\):",
+      "\\[\\text{Nr} = \\tfrac{1}{2}(\\sin 9\\theta + \\sin 7\\theta) - \\tfrac{1}{2}(\\sin 9\\theta + \\sin 3\\theta) = \\tfrac{1}{2}(\\sin 7\\theta - \\sin 3\\theta)\\]",
+      "\\[\\text{Nr} = \\cos 5\\theta\\sin 2\\theta\\]",
+      "Using \\(2\\cos P\\cos Q = \\cos(P+Q) + \\cos(P-Q)\\) and \\(2\\sin P\\sin Q = \\cos(P-Q) - \\cos(P+Q)\\):",
+      "\\[\\text{Dr} = \\tfrac{1}{2}(\\cos 3\\theta + \\cos\\theta) - \\tfrac{1}{2}(\\cos\\theta - \\cos 7\\theta) = \\tfrac{1}{2}(\\cos 3\\theta + \\cos 7\\theta)\\]",
+      "\\[\\text{Dr} = \\cos 5\\theta\\cos 2\\theta\\]",
+      "\\[= \\dfrac{\\cos 5\\theta\\sin 2\\theta}{\\cos 5\\theta\\cos 2\\theta} = \\tan 2\\theta\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 9,
+    "answer": "D",
+    "solution": "Use \\(1 + \\cos 2\\theta = 2\\cos^2\\theta\\), \\(1 - \\cos 2\\theta = 2\\sin^2\\theta\\) and \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\). The numerator is \\((1 + \\cos 2\\theta) + \\sin 2\\theta = 2\\cos^2\\theta + 2\\sin\\theta\\cos\\theta = 2\\cos\\theta(\\cos\\theta + \\sin\\theta)\\), and the denominator is \\((1 - \\cos 2\\theta) + \\sin 2\\theta = 2\\sin^2\\theta + 2\\sin\\theta\\cos\\theta = 2\\sin\\theta(\\sin\\theta + \\cos\\theta)\\). Cancelling \\(2(\\sin\\theta + \\cos\\theta)\\) gives \\(\\frac{\\cos\\theta}{\\sin\\theta} = \\cot\\theta\\). Matches option D.",
+    "workings": [
+      "\\(\\dfrac{1 + \\sin 2\\theta + \\cos 2\\theta}{1 + \\sin 2\\theta - \\cos 2\\theta}\\)",
+      "Using \\(1 + \\cos 2\\theta = 2\\cos^2\\theta\\), \\(1 - \\cos 2\\theta = 2\\sin^2\\theta\\) and \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\):",
+      "\\[\\text{Nr} = 2\\cos^2\\theta + 2\\sin\\theta\\cos\\theta = 2\\cos\\theta(\\cos\\theta + \\sin\\theta)\\]",
+      "\\[\\text{Dr} = 2\\sin^2\\theta + 2\\sin\\theta\\cos\\theta = 2\\sin\\theta(\\sin\\theta + \\cos\\theta)\\]",
+      "\\[= \\dfrac{2\\cos\\theta(\\cos\\theta + \\sin\\theta)}{2\\sin\\theta(\\sin\\theta + \\cos\\theta)} = \\dfrac{\\cos\\theta}{\\sin\\theta} = \\cot\\theta\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 10,
+    "answer": "A",
+    "solution": "\\(\\cot x + \\cot y = \\frac{1}{\\tan x} + \\frac{1}{\\tan y} = \\frac{\\tan x + \\tan y}{\\tan x\\tan y} = \\frac{25}{\\tan x\\tan y}\\). Setting this equal to \\(30\\) gives \\(\\tan x\\tan y = \\frac{25}{30} = \\frac{5}{6}\\). Then \\(\\tan(x+y) = \\frac{\\tan x + \\tan y}{1 - \\tan x\\tan y} = \\frac{25}{1 - \\frac{5}{6}} = \\frac{25}{\\frac{1}{6}} = 150\\). Matches option A.",
+    "workings": [
+      "Given \\(\\tan x + \\tan y = 25\\) and \\(\\cot x + \\cot y = 30\\)",
+      "\\[\\cot x + \\cot y = \\dfrac{1}{\\tan x} + \\dfrac{1}{\\tan y} = \\dfrac{\\tan x + \\tan y}{\\tan x\\tan y} = \\dfrac{25}{\\tan x\\tan y}\\]",
+      "\\[\\dfrac{25}{\\tan x\\tan y} = 30 \\;\\Rightarrow\\; \\tan x\\tan y = \\dfrac{25}{30} = \\dfrac{5}{6}\\]",
+      "\\[\\tan(x+y) = \\dfrac{\\tan x + \\tan y}{1 - \\tan x\\tan y} = \\dfrac{25}{1 - \\frac{5}{6}}\\]",
+      "\\[= \\dfrac{25}{\\frac{1}{6}} = 150\\]"
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 11,
+    "answer": "C",
+    "solution": "Use the product form of the triple angle formula, \\(\\tan 3\\theta = \\tan\\theta\\,\\tan(60^\\circ - \\theta)\\,\\tan(60^\\circ + \\theta)\\). Taking \\(\\theta = 6^\\circ\\) gives \\(\\tan 18^\\circ = \\tan 6^\\circ\\tan 54^\\circ\\tan 66^\\circ\\), and taking \\(\\theta = 18^\\circ\\) gives \\(\\tan 54^\\circ = \\tan 18^\\circ\\tan 42^\\circ\\tan 78^\\circ\\). Substituting the second relation into the first and cancelling \\(\\tan 18^\\circ\\) yields \\(\\tan 6^\\circ\\tan 42^\\circ\\tan 66^\\circ\\tan 78^\\circ = 1\\). Therefore \\(\\tan 6^\\circ\\tan 42^\\circ = \\frac{1}{\\tan 66^\\circ\\tan 78^\\circ} = \\cot 66^\\circ\\cot 78^\\circ\\), i.e. the two given quantities are equal (both are \\(0.09464\\ldots\\)). Matches option C.",
+    "workings": [
+      "Use the product form of the triple angle formula \\(\\tan 3\\theta = \\tan\\theta\\,\\tan(60^\\circ - \\theta)\\,\\tan(60^\\circ + \\theta)\\):",
+      "\\[\\theta = 6^\\circ: \\quad \\tan 18^\\circ = \\tan 6^\\circ\\tan 54^\\circ\\tan 66^\\circ\\]",
+      "\\[\\theta = 18^\\circ: \\quad \\tan 54^\\circ = \\tan 18^\\circ\\tan 42^\\circ\\tan 78^\\circ\\]",
+      "Substituting the second into the first and cancelling \\(\\tan 18^\\circ\\):",
+      "\\[\\tan 6^\\circ\\tan 42^\\circ\\tan 66^\\circ\\tan 78^\\circ = 1\\]",
+      "\\[\\tan 6^\\circ\\tan 42^\\circ = \\dfrac{1}{\\tan 66^\\circ\\tan 78^\\circ} = \\cot 66^\\circ\\cot 78^\\circ\\]",
+      "The two given quantities are therefore exactly equal, both being \\(0.09464\\ldots\\)"
+    ],
+    "difficulty": "HARD",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The printed second alternative reads \"A = 1/3B\" with no bracketing, so it is ambiguous between (1/3)B and 1/(3B); neither reading is satisfied, since the two quantities are exactly equal."
+  },
+  {
+    "n": 12,
+    "answer": "B",
+    "solution": "Let the hypotenuse be \\(c\\) and one acute angle be \\(\\theta\\); the legs are then \\(c\\sin\\theta\\) and \\(c\\cos\\theta\\). Computing the area two ways, the perpendicular dropped from the right angle onto the hypotenuse has length \\(p = \\frac{(c\\sin\\theta)(c\\cos\\theta)}{c} = c\\sin\\theta\\cos\\theta = \\frac{c\\sin 2\\theta}{2}\\). The condition \\(c = 2\\sqrt{2}\\,p\\) gives \\(1 = 2\\sqrt{2}\\cdot\\frac{\\sin 2\\theta}{2}\\), so \\(\\sin 2\\theta = \\frac{1}{\\sqrt{2}}\\) and \\(2\\theta = 45^\\circ\\) or \\(135^\\circ\\). Hence \\(\\theta = \\frac{\\pi}{8}\\) or \\(\\frac{3\\pi}{8}\\), and since these two are complementary they are precisely the two acute angles of the triangle. Matches option B.",
+    "workings": [
+      "Let the hypotenuse be \\(c\\) and one acute angle be \\(\\theta\\), so the legs are \\(c\\sin\\theta\\) and \\(c\\cos\\theta\\).",
+      "Computing the area two ways, the perpendicular \\(p\\) from the right angle onto the hypotenuse is:",
+      "\\[p = \\dfrac{(c\\sin\\theta)(c\\cos\\theta)}{c} = c\\sin\\theta\\cos\\theta = \\dfrac{c\\sin 2\\theta}{2}\\]",
+      "\\[c = 2\\sqrt{2}\\,p \\;\\Rightarrow\\; 1 = 2\\sqrt{2}\\cdot\\dfrac{\\sin 2\\theta}{2}\\]",
+      "\\[\\sin 2\\theta = \\dfrac{1}{\\sqrt{2}} \\;\\Rightarrow\\; 2\\theta = 45^\\circ \\text{ or } 135^\\circ\\]",
+      "\\[\\theta = \\dfrac{\\pi}{8} \\text{ or } \\dfrac{3\\pi}{8}\\]",
+      "These two are complementary, so they are precisely the two acute angles of the triangle."
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 13,
+    "answer": "B",
+    "solution": "Put \\(u = 2^{-x}\\), so that \\(2^{x+1} = \\frac{2}{u}\\). Then \\(\\tan\\alpha = \\frac{1}{1+u}\\) and \\(\\tan\\beta = \\frac{1}{1 + \\frac{2}{u}} = \\frac{u}{u+2}\\). Now \\(\\tan\\alpha + \\tan\\beta = \\frac{(u+2) + u(1+u)}{(1+u)(u+2)} = \\frac{u^2 + 2u + 2}{(1+u)(u+2)}\\), while \\(1 - \\tan\\alpha\\tan\\beta = \\frac{(1+u)(u+2) - u}{(1+u)(u+2)} = \\frac{u^2 + 2u + 2}{(1+u)(u+2)}\\). These are identical, so \\(\\tan(\\alpha+\\beta) = 1\\). Since both \\(\\tan\\alpha\\) and \\(\\tan\\beta\\) lie in \\((0,1)\\), the angles are acute and \\(\\alpha + \\beta = \\frac{\\pi}{4}\\). Matches option B.",
+    "workings": [
+      "Put \\(u = 2^{-x}\\), so that \\(2^{x+1} = \\dfrac{2}{u}\\).",
+      "\\[\\tan\\alpha = \\dfrac{1}{1+u}, \\qquad \\tan\\beta = \\dfrac{1}{1 + \\frac{2}{u}} = \\dfrac{u}{u+2}\\]",
+      "\\[\\tan\\alpha + \\tan\\beta = \\dfrac{(u+2) + u(1+u)}{(1+u)(u+2)} = \\dfrac{u^2 + 2u + 2}{(1+u)(u+2)}\\]",
+      "\\[1 - \\tan\\alpha\\tan\\beta = \\dfrac{(1+u)(u+2) - u}{(1+u)(u+2)} = \\dfrac{u^2 + 2u + 2}{(1+u)(u+2)}\\]",
+      "\\[\\tan(\\alpha+\\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} = 1\\]",
+      "Both \\(\\tan\\alpha\\) and \\(\\tan\\beta\\) lie in \\((0,1)\\), so the angles are acute:",
+      "\\[\\alpha + \\beta = \\dfrac{\\pi}{4}\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 14,
+    "answer": "D",
+    "solution": "From \\(3\\sin\\alpha = 5\\sin\\beta\\) we get \\(\\frac{\\sin\\alpha}{\\sin\\beta} = \\frac{5}{3}\\). By componendo and dividendo, \\(\\frac{\\sin\\alpha + \\sin\\beta}{\\sin\\alpha - \\sin\\beta} = \\frac{5+3}{5-3} = 4\\). Now apply the sum-to-product formulae: \\(\\frac{\\sin\\alpha + \\sin\\beta}{\\sin\\alpha - \\sin\\beta} = \\frac{2\\sin\\frac{\\alpha+\\beta}{2}\\cos\\frac{\\alpha-\\beta}{2}}{2\\cos\\frac{\\alpha+\\beta}{2}\\sin\\frac{\\alpha-\\beta}{2}} = \\frac{\\tan\\frac{\\alpha+\\beta}{2}}{\\tan\\frac{\\alpha-\\beta}{2}}\\). Hence the required ratio is \\(4\\). Matches option D.",
+    "workings": [
+      "\\[3\\sin\\alpha = 5\\sin\\beta \\;\\Rightarrow\\; \\dfrac{\\sin\\alpha}{\\sin\\beta} = \\dfrac{5}{3}\\]",
+      "By componendo and dividendo:",
+      "\\[\\dfrac{\\sin\\alpha + \\sin\\beta}{\\sin\\alpha - \\sin\\beta} = \\dfrac{5+3}{5-3} = 4\\]",
+      "Applying the sum-to-product formulae to the left side:",
+      "\\[\\dfrac{\\sin\\alpha + \\sin\\beta}{\\sin\\alpha - \\sin\\beta} = \\dfrac{2\\sin\\frac{\\alpha+\\beta}{2}\\cos\\frac{\\alpha-\\beta}{2}}{2\\cos\\frac{\\alpha+\\beta}{2}\\sin\\frac{\\alpha-\\beta}{2}} = \\dfrac{\\tan\\frac{\\alpha+\\beta}{2}}{\\tan\\frac{\\alpha-\\beta}{2}}\\]",
+      "\\[\\dfrac{\\tan\\frac{\\alpha+\\beta}{2}}{\\tan\\frac{\\alpha-\\beta}{2}} = 4\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "n": 15,
+    "answer": "D",
+    "solution": "Use \\(\\tan^2\\frac{\\alpha}{2} = \\frac{1 - \\cos\\alpha}{1 + \\cos\\alpha}\\). With \\(\\cos\\alpha = \\frac{2\\cos\\beta - 1}{2 - \\cos\\beta}\\), \\(1 - \\cos\\alpha = \\frac{(2 - \\cos\\beta) - (2\\cos\\beta - 1)}{2 - \\cos\\beta} = \\frac{3(1 - \\cos\\beta)}{2 - \\cos\\beta}\\) and \\(1 + \\cos\\alpha = \\frac{(2 - \\cos\\beta) + (2\\cos\\beta - 1)}{2 - \\cos\\beta} = \\frac{1 + \\cos\\beta}{2 - \\cos\\beta}\\). Dividing, \\(\\tan^2\\frac{\\alpha}{2} = \\frac{3(1 - \\cos\\beta)}{1 + \\cos\\beta} = 3\\tan^2\\frac{\\beta}{2}\\), so \\(\\tan^2\\frac{\\alpha}{2}\\cot^2\\frac{\\beta}{2} = 3\\). Because \\(\\alpha,\\beta \\in (0,\\pi)\\), both half angles lie in \\(\\left(0,\\frac{\\pi}{2}\\right)\\) and their tangents are positive, so the positive root is taken: \\(\\tan\\frac{\\alpha}{2}\\cot\\frac{\\beta}{2} = \\sqrt{3}\\). Matches option D.",
+    "workings": [
+      "Use \\(\\tan^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{1 + \\cos\\alpha}\\) with \\(\\cos\\alpha = \\dfrac{2\\cos\\beta - 1}{2 - \\cos\\beta}\\):",
+      "\\[1 - \\cos\\alpha = \\dfrac{(2 - \\cos\\beta) - (2\\cos\\beta - 1)}{2 - \\cos\\beta} = \\dfrac{3(1 - \\cos\\beta)}{2 - \\cos\\beta}\\]",
+      "\\[1 + \\cos\\alpha = \\dfrac{(2 - \\cos\\beta) + (2\\cos\\beta - 1)}{2 - \\cos\\beta} = \\dfrac{1 + \\cos\\beta}{2 - \\cos\\beta}\\]",
+      "\\[\\tan^2\\dfrac{\\alpha}{2} = \\dfrac{3(1 - \\cos\\beta)}{1 + \\cos\\beta} = 3\\tan^2\\dfrac{\\beta}{2}\\]",
+      "\\[\\tan^2\\dfrac{\\alpha}{2}\\cot^2\\dfrac{\\beta}{2} = 3\\]",
+      "Since \\(\\alpha,\\beta \\in (0,\\pi)\\), both half angles lie in \\(\\left(0,\\dfrac{\\pi}{2}\\right)\\) and their tangents are positive, so the positive root is taken:",
+      "\\[\\tan\\dfrac{\\alpha}{2}\\cot\\dfrac{\\beta}{2} = \\sqrt{3}\\]"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  }
+]

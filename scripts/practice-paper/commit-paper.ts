@@ -27,7 +27,7 @@ import { createPaper, addQuestion } from "../../src/lib/papers/admin";
 import type { SectionTemplate } from "../../src/lib/papers/types";
 import {
   ORG_ID, CREATED_BY,
-  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf, examIdOf, chaptersOf,
+  requirePaper, loadRecords, validateRecords, recToParsedRow, statusOf, kindOf, formatOf, examIdOf, chaptersOf,
 } from "./config";
 
 function loadEnv() {
@@ -61,11 +61,18 @@ async function main() {
   console.log(`  new   (-> PUBLIC-eligible): ${byStatus("new").length}  [${byStatus("new").join(", ")}]`);
   console.log(`  dup   (stay PRIVATE):       ${byStatus("dup").length}  [${byStatus("dup").join(", ")}]`);
   console.log(`  flawed(stay PRIVATE):       ${byStatus("flawed").length}  [${byStatus("flawed").join(", ")}]`);
+  const numericNums = recs.filter((r) => formatOf(r) === "numeric").map((r) => r.n);
+  const pyqRecs = recs.filter((r) => kindOf(r) === "pyq");
+  if (numericNums.length) console.log(`  numeric (NAT, no options):   ${numericNums.length}  [${numericNums.join(", ")}]`);
+  if (pyqRecs.length) {
+    const years = [...new Set(pyqRecs.map((r) => r.pyqYear))].sort();
+    console.log(`  question_kind='pyq':         ${pyqRecs.length}  [${pyqRecs.map((r) => r.n).join(", ")}]  years ${years.join(", ")}`);
+  }
   console.log(`  bankAdd: ${spec.bankAdd}`);
 
   const latexErrors: string[] = [];
   for (const r of rows) {
-    const fields: [string, string | undefined][] = [["stem", r.text], ["solution", r.solution], ...r.options.map((o) => [`opt ${o.label}`, o.text] as [string, string])];
+    const fields: [string, string | undefined][] = [["stem", r.text], ["solution", r.solution], ["context", r.context], ...r.options.map((o) => [`opt ${o.label}`, o.text] as [string, string])];
     for (const [name, val] of fields) {
       const bad = val ? findLatexImbalance(val) : null;
       if (bad) latexErrors.push(`Q${r.sourceRow} ${name}: ${bad}`);
@@ -109,6 +116,38 @@ async function main() {
     .eq("exam_id", examId).eq("source_file", spec.sourceFile);
   if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
+
+  // Re-stamp the rows that are REPRINTED past-year questions. A booklet can carry
+  // both its own authored practice and real PYQs (e.g. an Allen module's
+  // "EXERCISE # JEE-MAIN"); filing the latter as practice would keep them out of the
+  // /browse PYQ toggle and out of the weightage analysis for years the bank may have
+  // none of. Grouped by (year, note) so this is one statement per distinct sitting,
+  // not per row. SCOPED BY source_file, which is also the safety: a BANK-MIRRORED
+  // record (its content_hash already existed, so commitStaged inserted nothing) owns
+  // no row here and therefore cannot have another ingest's row re-stamped under it.
+  const stampRecs = commitRecs.filter((r) => kindOf(r) === "pyq" || r.pyqNote);
+  if (stampRecs.length) {
+    const groups = new Map<string, { kind: string; year: number | null; note: string | null; nums: string[] }>();
+    for (const r of stampRecs) {
+      const kind = kindOf(r);
+      const year = r.pyqYear ?? null;
+      const note = r.pyqNote ?? null;
+      const key = `${kind}|${year}|${note}`;
+      const g = groups.get(key) ?? { kind, year, note, nums: [] };
+      g.nums.push(String(r.n));
+      groups.set(key, g);
+    }
+    for (const g of groups.values()) {
+      const patch: Record<string, unknown> = { question_kind: g.kind };
+      if (g.year !== null) patch.pyq_year = g.year;
+      if (g.note !== null) patch.pyq_note = g.note;
+      const { error: sErr, count: sCount } = await client
+        .from("questions").update(patch, { count: "exact" })
+        .eq("exam_id", examId).eq("source_file", spec.sourceFile).in("question_number", g.nums);
+      if (sErr) throw new Error(`kind/year stamp failed: ${sErr.message}`);
+      console.log(`  stamped ${sCount}/${g.nums.length} row(s) kind='${g.kind}'${g.year ? ` pyq_year=${g.year}` : ""} [Q${g.nums.join(", Q")}]`);
+    }
+  }
 
   await client.from("upload_jobs").update({ status: "COMPLETED", total_rows: count ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() }).eq("id", jobId);
 

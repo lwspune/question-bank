@@ -21,8 +21,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { contentHash } from "../../src/lib/upload/hash";
-import { PAPERS, DATA, type PaperRec } from "./config";
+import { PAPERS, DATA, recToParsedRow, type PaperRec } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -35,9 +34,12 @@ async function main() {
   const recs: PaperRec[] = JSON.parse(
     readFileSync(join(DATA, spec.recordsFile ?? `${slug}.records.json`), "utf-8"),
   );
-  const expected = new Set(
-    recs.map((r) => contentHash(r.stem, [r.optA, r.optB, r.optC, r.optD], r.answer)),
-  );
+  // Through the REAL adapter, not a hand-rolled call to one hash helper: a numeric
+  // (NAT) record is hashed in the NUMERIC namespace, so hashing it as an MCQ yields
+  // a value no row carries and this script — which DELETES — would read a perfectly
+  // correct question as stale. recToParsedRow picks the right hash per format, and
+  // is byte-identical to the old call for every MCQ record.
+  const expected = new Set(recs.map((r) => recToParsedRow(spec, r).contentHash));
 
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
