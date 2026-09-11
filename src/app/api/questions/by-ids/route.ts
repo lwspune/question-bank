@@ -30,6 +30,14 @@ export const dynamic = "force-dynamic";
  * uuid — so a tracker exam can hold a dead id through nobody's error. Silently
  * returning fewer questions would hide a repaired question instead of reporting
  * one.
+ *
+ * `missing` carries TWO causes on purpose, and a reader chasing one must know
+ * about the other: an id is missing when it names no row at all (the repair
+ * case above), AND when it names another institute's PRIVATE row. They are
+ * deliberately indistinguishable, for the same reason an unknown secret returns
+ * the same 401 as no secret — a caller must not be able to probe this bank for
+ * the existence of content it may not read. Inert while one org owns the bank;
+ * live the day a second institute is provisioned.
  */
 export async function GET(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
