@@ -1,7 +1,18 @@
 import type { QuestionRow } from "@/lib/questions/query";
-import type { Difficulty } from "@/lib/questions/filters";
 import type { ConceptTagRef } from "@/lib/links/getResourceTagsForQuestions";
 import { groupBySet } from "./groupBySet";
+import {
+  answerLabel,
+  difficultyLabel,
+  mapSubjectToTracker,
+  optionText,
+  subtopicName,
+} from "@/lib/sync/questionPayload";
+
+// Re-exported: this module was the original home and callers + tests import it
+// from here. The definition now lives beside the shared payload so the sheet and
+// the JSON transports cannot disagree about what a subject maps to.
+export { mapSubjectToTracker };
 
 /**
  * Builds the "tagged sheet" that nda-tracker's `parseTagsFile` consumes — the
@@ -86,28 +97,6 @@ export const TAG_COLUMNS = [
 ] as const;
 
 /**
- * PYQ Vault subject name → nda-tracker exam-subject key.
- * Most NDA subjects share the name; only Mathematics ("Maths") and Current
- * Affairs (no CA key → "Others", an accepted empty-list subject) differ.
- * Unknown subjects pass through unchanged (validateTags accepts any chapter for
- * a subject with no configured list).
- */
-const SUBJECT_MAP: Record<string, string> = {
-  Mathematics: "Maths",
-  "Current Affairs": "Others",
-};
-
-export function mapSubjectToTracker(subjectName: string): string {
-  return SUBJECT_MAP[subjectName] ?? subjectName;
-}
-
-const DIFFICULTY_LABEL: Record<Difficulty, string> = {
-  EASY: "Easy",
-  MODERATE: "Moderate",
-  HARD: "Hard",
-};
-
-/**
  * `questions.id` is a `uuid` column, so anything else is NOT a bank id.
  *
  * This matters because `recToQuestionRow` (scripts/practice-paper/config.ts)
@@ -127,10 +116,6 @@ function bankIdOrBlank(id: string): string {
   return UUID_RE.test(id) ? id : "";
 }
 
-function optionText(q: QuestionRow, label: "A" | "B" | "C" | "D"): string {
-  return q.options.find((o) => o.label === label)?.text ?? "";
-}
-
 function toTagRow(
   q: QuestionRow,
   position: number,
@@ -141,15 +126,15 @@ function toTagRow(
     q: position,
     subject: mapSubjectToTracker(q.subject.name),
     chapter: q.chapter.name,
-    subtopic: q.subtopic?.name ?? "General",
+    subtopic: subtopicName(q),
     question: q.text,
     optionA: optionText(q, "A"),
     optionB: optionText(q, "B"),
     optionC: optionText(q, "C"),
     optionD: optionText(q, "D"),
-    answer: q.options.find((o) => o.isCorrect)?.label ?? "",
+    answer: answerLabel(q) ?? "", // the sheet writes "" where JSON writes null
     solution: q.solution ?? "",
-    difficulty: DIFFICULTY_LABEL[q.difficulty],
+    difficulty: difficultyLabel(q.difficulty),
     context,
     subtopicSlug: tag?.subtopicSlug ?? "",
     conceptSlug: tag?.conceptSlug ?? "",
