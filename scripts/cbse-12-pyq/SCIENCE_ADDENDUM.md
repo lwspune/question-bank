@@ -44,6 +44,41 @@ so no single pattern reads them all — measured: `I (B)`, `(I) ( B )`,
 `a) (iii)`, `(a) (iv)`, `(i)—a`. Where the options are printed `(i)-(iv)` or
 `a-d`, map them POSITIONALLY onto A-D.
 
+### Where the keyed MCQs live, per (pattern, subject) — MEASURED across all 52 openers, 2026-09-11
+
+The count a dispatch quotes for "Section A" is a FLOOR, not the total. A brief
+that says "there should be 16 entries" is right about Section A and wrong about
+the paper, and an agent that stops there **discards CBSE's own keys** — which
+`validate.ts` catches only if the rows ship answerless, and nothing catches if
+they ship derived.
+
+| pattern | Physics | Chemistry |
+|---|---|---|
+| `term2_sci` (2022) | Section A **none** + **Section C = 5** ⇒ 5 keyed | **0 keyed** — no MCQs anywhere |
+| `full70_phy_2023` | Section A 18, **nothing outside it** | — |
+| `full70_chem_2023` | — | Section A 18, **nothing outside it** |
+| `full70` (2024/25/26) | Section A 16 + **Section D = 10** ⇒ 26 keyed | Section A 16, **nothing outside it** |
+
+So: **Physics keeps keyed MCQs outside Section A in `term2_sci` (C) and `full70`
+(D) but NOT in `full70_phy_2023`; Chemistry never does.** Derived by counting
+`format:"mcq"` rows outside section A in every committed opener — the split is
+clean, with no paper deviating from its (pattern, subject) cell.
+
+Row shapes to expect, also measured (primary-branch marks in brackets):
+`term2_sci` Chem A3/B12/C5 = 20 rows [35] · `full70_phy_2023` A18/B9/C7/D6/E8 =
+48 rows [70] · `full70` Phy A16/B6/C8/D10/E6 = 46 rows [70] · `full70` Chem
+A16/B6/C7-8/D8/E5-6 = 42-44 rows [70].
+
+### The decimal convention is PER PAPER, and the paper may disagree with its own scheme
+
+Do not carry it from a sibling, a year or a pattern. Measured in wave 1:
+2023 56/2/2 and 56/5/2 print ordinary baseline dots while 56/4/2 prints raised
+ones — same year, same pattern. Physics 2026 splits by series: 55/1 and 55/2
+ordinary, 55/3 55/4 55/5 raised. **Four papers print ordinary dots while their
+own marking scheme prints raised ones.** The stem is hashed, so guessing wrong
+silently blocks dedup against the sibling that guessed right. Read it off the
+page at magnification, per paper, and follow the PAPER.
+
 ⚠ **The two 2023 papers are not the same exam.** Sections D and E are swapped
 between the subjects and the assertion-reason band starts a question earlier in
 Chemistry. **Both total 70**, so a marks check cannot catch a mix-up — only the
