@@ -46,6 +46,7 @@ import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuest
 import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
+import { getItemStatsForQuestions } from "@/lib/itemStats/query";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
@@ -224,6 +225,19 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         questionsResult.rows.map((r) => r.id)
       ).catch(() => new Map());
 
+  // Pooled student performance, for the same 25 ids. STAFF ONLY — skipped
+  // outright for anon and students, so the hot path and the cached landing
+  // panel are untouched. That is a PERFORMANCE gate; the security boundary is
+  // the RLS policy on `question_item_stats`, which admits org members and
+  // superadmins and refuses everyone else independently of this line.
+  const itemStats =
+    landing || !isStaff
+      ? undefined
+      : await getItemStatsForQuestions(
+          supabase,
+          questionsResult.rows.map((r) => r.id)
+        ).catch(() => undefined);
+
   const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
 
@@ -360,6 +374,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}
                 resourceTags={resourceTags}
+                itemStats={itemStats}
               />
             )}
 

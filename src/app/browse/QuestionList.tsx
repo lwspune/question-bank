@@ -5,6 +5,7 @@ import type { QuestionRow } from "@/lib/questions/query";
 import { getQuestionResources } from "@/lib/links/questionResources";
 import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
 import QuestionCard from "./QuestionCard";
+import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
 function resourcesFor(q: QuestionRow, tags?: ResourceTags) {
   return getQuestionResources(
@@ -27,6 +28,11 @@ type Props = {
   /** True when ANY signed-in user (TEACHER or ADMIN) — drives the Report dialog. */
   isLoggedIn: boolean;
   supabaseUrl: string;
+  /**
+   * Pooled student performance per question. Staff only — the page does not
+   * fetch it for anyone else. Absent for most questions by design.
+   */
+  itemStats?: Map<string, ItemStatAggregate>;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
   /** Per-question principle + concept tags for the backlink chip row.
@@ -51,6 +57,7 @@ export default function QuestionList({
   supabaseUrl,
   includeExam,
   resourceTags,
+  itemStats,
 }: Props) {
   const groups = groupBySet(questions);
   const idToIndex = new Map<string, number>();
@@ -73,6 +80,7 @@ export default function QuestionList({
                   group.question,
                   resourceTags?.get(group.question.id)
                 )}
+                itemStats={itemStats?.get(group.question.id)}
               />
             </li>
           );
@@ -95,6 +103,7 @@ export default function QuestionList({
                       hideContext
                       includeExam={includeExam}
                       resources={resourcesFor(q, resourceTags?.get(q.id))}
+                      itemStats={itemStats?.get(q.id)}
                     />
                   </li>
                 ))}

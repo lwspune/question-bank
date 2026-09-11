@@ -6,6 +6,39 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Item statistics — the tracker half
+
+Shipped 2026-09-11: `question_item_stats` (0095), the pure pooling core, the vault rollup,
+the `/browse` staff chip and `/dashboard/item-stats`. Spec: [ITEM_STATS.md](ITEM_STATS.md).
+What remains:
+
+- **The tracker export (their repo) — the blocker, and the biggest prize.** `nda-tracker`'s
+  own `ITEM_STATS.md` is still spec-only, so **1,259 items at n>=20 and all 122 wrong-key
+  leads are unavailable**. The vault contributes 50 items at that threshold; this is ~25x
+  the usable data. **Ask: emit PER RECORD, not pooled by `questionId`** — the bank needs the
+  transactions, not the balance (ITEM_STATS.md decision 6). Cheap for them; the per-record
+  counts are already the input to their discrimination metric.
+- **The ingest CLI (here).** Writable against the contract before their export exists, but
+  untestable until it does.
+- **Exposure — "your batch has already sat this".** Needs `cohort_label`, which only tracker
+  rows carry. The vault half already exists as the per-batch no-repeat soft-warn; this
+  extends it to everything the institute has actually conducted. The one cohort-scoped thing
+  on an otherwise global card, and that is correct — exposure is a constraint on selection,
+  not analytics.
+- **Weekly cadence.** Decision 7 says the Monday `db:backup` slot. Today `itemstats:rollup`
+  runs only when someone types it, and it goes stale with every mock submitted.
+- **The `/browse` leads filter**, deferred with reason: narrowing to leads needs the
+  aggregate *before* the question query, i.e. an RPC or a 7,100-row fetch on the hottest
+  public page. Viable once a maintained aggregate exists — which decision 6 already
+  anticipates for the read-path ceiling (~30-40 sittings on one question; ~1.001 today).
+- **Difficulty promotion: deliberately NOT on this list as work.** `questions.difficulty`
+  drives `selectByQuota` in every mock blueprint and is quoted as %HARD in 11 shipped guides;
+  overwriting it from measurement would silently change which papers get built. If ever
+  revisited, bands must be **per-format** — an MCQ p-value carries a ~25% guessing floor and
+  a NAT one ~0%, so a 30% NAT item is much harder than a 30% MCQ item.
+
+---
+
 ## Data model
 
 ### Cross-topic questions — decouple concept tags from the home subtopic (2-phase)
