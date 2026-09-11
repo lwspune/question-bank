@@ -116,6 +116,43 @@ It always returns **200 with `{}`** — deliberately, to prevent email enumerati
 
 **⚠️ Known: auth mail lands in SPAM with a Gmail phishing banner.** Not a deliverability fault — auth is PASS/PASS/PASS and the campaign from the same domain reaches the inbox. Supabase's stock template links to `<project-ref>.supabase.co` while the From says `pyqvault.com`, and a password-reset email whose link domain ≠ From domain is the classic credential-harvesting shape. Fix = point the template at `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}` + build that route. Deferred — see ROADMAP "Password reset flow".
 
+### Refreshing item statistics (weekly, Monday)
+
+How hard each bank question really is, and where a distractor outpulls the key. Spec:
+[ITEM_STATS.md](ITEM_STATS.md). **THIS IS A TWO-REPO STEP** — the tracker has no endpoint to
+pull from (it sits at 12/12 Vercel Hobby functions), so the contract is a JSON file, and no
+single cron covers it.
+
+```sh
+# 1. nda-tracker — read-only, writes to neither database
+cd ../nda-tracker && node item_stats.js --out=item-stats.json
+
+# 2. PYQ Vault — ingest it, then roll up our own /mock responses
+cd ../Question_Bank
+npm run itemstats:ingest -- --file=../nda-tracker/item-stats.json          # dry run
+npm run itemstats:ingest -- --file=../nda-tracker/item-stats.json --apply
+npm run itemstats:rollup -- --apply
+npm run itemstats:report                                                   # coverage + leads
+```
+
+Both writes are **idempotent** upserts keyed on (question, source, sitting), so a re-run is
+safe and a half-finished run is fixed by running it again. Nothing here re-grades anything.
+
+**Why weekly rather than on upload:** results arrive at roughly one exam a week, the numbers
+are advisory rather than transactional, and with no endpoint on either side "after each
+upload" is a human step regardless. The Monday `db:backup` slot is the anchor.
+
+**What to look at afterwards:** `/dashboard/item-stats` (superadmin). The queue is ranked
+**MARK ≠ KEY first** — the only unambiguous finding, meaning students were marked against a
+different answer than the paper records — then keys nobody chose, then distractor ratios.
+Everything below the first group is a **lead, not a verdict**: a distractor outpulls the key
+when the key is wrong AND when the trap is well built, and measured on this corpus the trap is
+the commoner case. Record what you conclude in `question_reviews` (migration 0074).
+
+**If the ingest refuses the file** with a `grain` error, the tracker export was changed to pool
+by question. It must stay one row per (question, exam record) — a pooled figure cannot be
+un-pooled when a sitting turns out to be bad.
+
 ### Managing members (admins + teachers)
 
 `/dashboard/members` is the admin UI as of 2026-05-26. Add new admins/teachers with name + email + password + role; reset passwords; change roles; remove members. Last-admin protection + self-protection prevent locking yourself out. The page is admin-only; teachers are redirected to /browse.

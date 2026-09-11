@@ -6,6 +6,7 @@ import {
   type OptionLabel,
   type SourceBreakdown,
 } from "./types";
+import { parseCohortLabel, type Exposure } from "./exposure";
 
 /**
  * Pool per-sitting evidence into the one number a card shows.
@@ -52,6 +53,9 @@ export function aggregateItemStats(
   // different claims, and a 0 here would assert the second.
   let mismatch: number | null = null;
 
+  const cohorts = new Set<string>();
+  let lastSatAt: string | null = null;
+
   const bySourceMap = new Map<
     ItemStatSource,
     { sittings: number; attempted: number; correct: number }
@@ -83,6 +87,12 @@ export function aggregateItemStats(
     }
 
     if (r.verdictMismatch !== null) mismatch = (mismatch ?? 0) + r.verdictMismatch;
+
+    const named = parseCohortLabel(r.cohortLabel);
+    for (const c of named) cohorts.add(c);
+    if (named.length > 0 && (lastSatAt === null || r.measuredAt > lastSatAt)) {
+      lastSatAt = r.measuredAt;
+    }
 
     const bucket = bySourceMap.get(r.source) ?? {
       sittings: 0,
@@ -127,6 +137,10 @@ export function aggregateItemStats(
     discrimination,
     sittings: live.length,
     verdictMismatch: mismatch,
+    exposure:
+      cohorts.size > 0
+        ? ({ cohorts: [...cohorts].sort(), lastSatAt } satisfies Exposure)
+        : null,
     bySource,
     staleDropped,
   };

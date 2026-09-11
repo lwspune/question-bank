@@ -7,6 +7,8 @@
  * to be bad.
  */
 
+import type { Exposure } from "./exposure";
+
 export const OPTION_LABELS = ["A", "B", "C", "D"] as const;
 export type OptionLabel = (typeof OPTION_LABELS)[number];
 
@@ -76,4 +78,11 @@ export type ItemStatAggregate = {
   bySource: SourceBreakdown[];
   /** Rows excluded because the question has changed since they were measured. */
   staleDropped: number;
+  /**
+   * Which cohorts have already sat this, from the sittings that name one. NULL
+   * (not an empty list) when none does — "nobody has sat it in a class" and "we
+   * do not record who sat it" are different claims, and an online mock records
+   * no cohort at all.
+   */
+  exposure: Exposure | null;
 };

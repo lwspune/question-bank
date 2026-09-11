@@ -151,6 +151,20 @@ export function ItemStatDetail({
               .join(" · ")}
           </dd>
         </div>
+        {agg.exposure && (
+          <div className="flex gap-2">
+            <dt className="w-28 shrink-0">Already sat by</dt>
+            <dd>
+              {agg.exposure.cohorts.join(" · ")}
+              {agg.exposure.lastSatAt &&
+                ` — last ${new Date(agg.exposure.lastSatAt).toLocaleDateString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}`}
+            </dd>
+          </div>
+        )}
         {agg.staleDropped > 0 && (
           <div className="flex gap-2">
             <dt className="w-28 shrink-0">Excluded</dt>
