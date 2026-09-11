@@ -247,6 +247,27 @@ async function main() {
       } as Bucket);
 
     b.seen += 1;
+    const verdict = verdictFor(
+      keyById.get(a.question_id) ?? null,
+      { selectedLabel: a.selected_label, numericResponse: a.numeric_response },
+      false
+    );
+
+    // DISCRIMINATION COUNTS EVERYONE IN THE GROUP WHO SAW THE QUESTION, not
+    // just those who attempted it — a skip is not a correct answer, and an
+    // attempted-only denominator inflates the index for exactly the items the
+    // weaker half avoids. This must match the tracker export's definition
+    // (`src/lib/itemStats.js` there) because the two pool into ONE number; a
+    // definition that differs by source is a silent bias, not a rounding
+    // difference. Hence it sits ABOVE the answered branch.
+    if (topAttempts.has(a.attempt_id)) {
+      b.topN += 1;
+      if (verdict === 1) b.topCorrect += 1;
+    } else if (bottomAttempts.has(a.attempt_id)) {
+      b.bottomN += 1;
+      if (verdict === 1) b.bottomCorrect += 1;
+    }
+
     const answered = a.selected_label !== null || a.numeric_response !== null;
     if (!answered) {
       b.skipped += 1;
@@ -255,21 +276,7 @@ async function main() {
     }
     b.attempted += 1;
     if (a.selected_label) b.choice[a.selected_label] = (b.choice[a.selected_label] ?? 0) + 1;
-
-    const verdict = verdictFor(
-      keyById.get(a.question_id) ?? null,
-      { selectedLabel: a.selected_label, numericResponse: a.numeric_response },
-      false
-    );
     if (verdict === 1) b.correct += 1;
-
-    if (topAttempts.has(a.attempt_id)) {
-      b.topN += 1;
-      if (verdict === 1) b.topCorrect += 1;
-    } else if (bottomAttempts.has(a.attempt_id)) {
-      b.bottomN += 1;
-      if (verdict === 1) b.bottomCorrect += 1;
-    }
     buckets.set(bk, b);
   }
 
