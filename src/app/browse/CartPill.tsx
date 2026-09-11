@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Download, FilePlus2, ShoppingCart, Trash2, X } from "lucide-react";
+import Link from "next/link";
+import { FilePlus2, ListPlus, ShoppingCart, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -21,9 +22,8 @@ import { cn } from "@/lib/utils";
 import { useCart } from "@/lib/cart/CartProvider";
 import { safeSnippet } from "@/lib/text/safeSnippet";
 import KatexRenderer from "@/components/math/KatexRenderer";
-import DownloadDialog from "./DownloadDialog";
 import AddToPaperDialog from "./AddToPaperDialog";
-import type { Filters } from "@/lib/questions/filters";
+import CreatePaperDialog from "./CreatePaperDialog";
 
 type Preview = {
   id: string;
@@ -40,24 +40,31 @@ type SortMode = "insertion" | "by-chapter";
 
 /**
  * Floating "open paper" pill (bottom-right) + a Sheet that lists the cart's
- * questions with a sort toggle and a Download button. Hidden until the cart
- * has at least one item; never appears server-rendered (avoids the SSR-vs-
- * localStorage hydration mismatch — render only after CartProvider hydrates).
+ * questions with a sort toggle, and the two ways out of it: add the selection to
+ * an existing draft, or create a new paper from it. Hidden until the cart has at
+ * least one item; never appears server-rendered (avoids the SSR-vs-localStorage
+ * hydration mismatch — render only after CartProvider hydrates).
+ *
+ * There is deliberately NO download button here. Downloads are teacher-gated, so
+ * for a student or an anon visitor that button was only ever the
+ * "request teacher access" funnel — which "Create paper" now carries directly.
+ * Staff still reach the cart export in one click from the top-of-page Download
+ * button, which offers a "Selected · N" mode whenever the cart is non-empty, and
+ * in full from the paper page itself.
  */
-export default function CartPill({
-  filters,
-  isOrgMember = false,
-  isSignedIn = false,
-}: {
-  filters: Filters;
-  /** Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper" + tagged sheet. */
+export default function CartPill({ isOrgMember = false }: {
+  /**
+   * Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper" and lets
+   * "Create paper" actually create one. Everyone else gets the same "Create
+   * paper" button pointed at /request-access: `papers.org_id` is NOT NULL and
+   * every RLS policy on papers scopes to the caller's org (0039), so a student
+   * cannot own a paper at all.
+   */
   isOrgMember?: boolean;
-  /** Signed-in (any account) — unlocks the paper + key downloads. */
-  isSignedIn?: boolean;
 }) {
   const cart = useCart();
   const [open, setOpen] = useState(false);
-  const [downloadOpen, setDownloadOpen] = useState(false);
+  const [createPaperOpen, setCreatePaperOpen] = useState(false);
   const [addPaperOpen, setAddPaperOpen] = useState(false);
   const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
   const [previews, setPreviews] = useState<Preview[]>([]);
@@ -231,41 +238,56 @@ export default function CartPill({
                 onClick={() => setAddPaperOpen(true)}
                 disabled={cart.count === 0}
               >
-                <FilePlus2 className="h-4 w-4" aria-hidden />
+                <ListPlus className="h-4 w-4" aria-hidden />
                 Add to paper
               </Button>
             )}
-            <Button
-              className="flex-1"
-              onClick={() => setDownloadOpen(true)}
-              disabled={cart.count === 0}
-            >
-              <Download className="h-4 w-4" aria-hidden />
-              Download paper
-            </Button>
+            {/* Same label and icon for everyone — only the destination differs.
+                A non-member can't create a paper, so they get the access funnel
+                rather than a dialog that would fail at the server action. */}
+            {isOrgMember ? (
+              <Button
+                className="flex-1"
+                onClick={() => setCreatePaperOpen(true)}
+                disabled={cart.count === 0}
+              >
+                <FilePlus2 className="h-4 w-4" aria-hidden />
+                Create paper
+              </Button>
+            ) : (
+              <Button className="flex-1" asChild>
+                <Link href="/request-access">
+                  <FilePlus2 className="h-4 w-4" aria-hidden />
+                  Create paper
+                </Link>
+              </Button>
+            )}
           </div>
         </SheetContent>
       </Sheet>
 
       {isOrgMember && (
-        <AddToPaperDialog
-          questionIds={cart.ids}
-          open={addPaperOpen}
-          onOpenChange={setAddPaperOpen}
-          onCommitted={() => cart.clear()}
-        />
+        <>
+          <AddToPaperDialog
+            questionIds={cart.ids}
+            open={addPaperOpen}
+            onOpenChange={setAddPaperOpen}
+            onCommitted={() => cart.clear()}
+          />
+          <CreatePaperDialog
+            questionIds={cart.ids}
+            open={createPaperOpen}
+            onOpenChange={setCreatePaperOpen}
+            // Close the Sheet too: we navigate away, and leaving an open Sheet
+            // mounted while the route changes is how a body scroll-lock gets
+            // stranded on the page we land on.
+            onCreated={() => {
+              cart.clear();
+              setOpen(false);
+            }}
+          />
+        </>
       )}
-
-      <DownloadDialog
-        filters={filters}
-        totalCount={0}
-        initialMode="cart"
-        externalOpen={downloadOpen}
-        onExternalOpenChange={setDownloadOpen}
-        hideTrigger
-        isSignedIn={isSignedIn}
-        isStaff={isOrgMember}
-      />
 
       <Dialog open={clearConfirmOpen} onOpenChange={setClearConfirmOpen}>
         <DialogContent className="sm:max-w-md">
