@@ -1,10 +1,11 @@
 # Handoff — nda-tracker question sync (vault side)
 
-**Written 2026-09-11 by the nda-tracker session.** Both halves of the bridge are written and
-tested; the whole thing is inert until three things happen, two of them here.
+**Written 2026-09-11 by the nda-tracker session; the vault side was completed the same day.**
+The read bridge is live end to end except for one env setting, which only the account owner can do.
 
 The contract both apps implement is nda-tracker's **`CROSS_APP_SYNC.md`** — read that for the
-payload shape and the paper-push design. This file is only what is left to do.
+payload shape and the paper-push design. This file is the vault side's state and the reasoning
+that must not be simplified away.
 
 ---
 
@@ -12,92 +13,92 @@ payload shape and the paper-push design. This file is only what is left to do.
 
 | Piece | Where | State |
 |---|---|---|
-| `GET /api/questions/by-ids` | this repo, commit `b31895cc` | **written, tested, committed — NOT pushed** |
-| `src/lib/sync/questionPayload.ts` (THE shape) | this repo, same commit | done |
-| Migration `0094_tracker_sync_targets` | `supabase/migrations/` | **written, NOT applied** ← you |
-| `tracker_sync_targets` row for LWS Pune | vault DB | **not provisioned** ← you |
+| `GET /api/questions/by-ids` | this repo | **done, deployed** |
+| `src/lib/sync/questionPayload.ts` (THE shape) | this repo | done |
+| Migration `tracker_sync_targets` | prod ledger `20260911102415` | **applied** |
+| `tracker_sync_targets` row for LWS Pune | vault DB | **provisioned** |
+| Route integration test | `tests/sync-by-ids-route.test.ts` | **done — 8 cases, fault-proven** |
 | Tracker's outbound fetch | nda-tracker `716d3e2` (pushed, live) | done; fails closed until env is set |
 | `VAULT_API_URL` + `VAULT_SYNC_SECRET` | nda-tracker Vercel env | **not set** ← the user, via dashboard |
 | Paper push | — | **not built.** Specced only. |
 
-`b31895cc` is **one commit ahead of origin** and was left unpushed deliberately: this repo had six
-modified `scripts/practice-paper/` files in flight at the time, and the pre-push gate runs the full
-suite against the shared prod DB. Push it when your tree is in a state you are happy to gate.
+### The one remaining step
 
----
+Set two variables in the **nda-tracker** Vercel project (Settings → Environment Variables), then
+redeploy it:
 
-## 1. Apply the migration + provision LWS Pune
+    VAULT_API_URL     = https://www.pyqvault.com
+    VAULT_SYNC_SECRET = <LWS Pune's shared_secret>
 
-The nda-tracker session has `SUPABASE_DB_URL` access here but its write was blocked by a safety
-classifier, so this never ran. Either apply `supabase/migrations/0094_tracker_sync_targets.sql`
-through your normal path, or paste this:
+Read the secret out of the vault DB with service-role access — it is deliberately never written
+into this repo, a transcript, or a `.env` file here:
 
 ```sql
--- the table (identical to 0094_tracker_sync_targets.sql)
-create table tracker_sync_targets (
-  org_id        uuid primary key references organizations(id) on delete cascade,
-  tracker_url   text not null,
-  shared_secret text not null,
-  created_at    timestamptz not null default now(),
-  updated_at    timestamptz not null default now()
-);
-create unique index tracker_sync_targets_secret_idx
-  on tracker_sync_targets (shared_secret);
-alter table tracker_sync_targets enable row level security;
-
--- provision LWS Pune ONLY (see section 2). Secret generated inside Postgres so
--- it is never constructed in a terminal or a transcript.
-insert into tracker_sync_targets (org_id, tracker_url, shared_secret)
-select id,
-       'https://nda-tracker.vercel.app',
-       replace(gen_random_uuid()::text,'-','') || replace(gen_random_uuid()::text,'-','')
-  from organizations where name = 'LWS Pune';
-
--- read it back — this value is VAULT_SYNC_SECRET in the tracker's Vercel env
 select o.name, t.tracker_url, t.shared_secret
   from tracker_sync_targets t join organizations o on o.id = t.org_id;
 ```
 
-**RLS is enabled with NO policies on purpose** — the locked `platform_admins` pattern. Nothing
-holding an anon or authenticated JWT can read it, including a signed-in org admin: a tracker
-credential is platform configuration, not org-visible data.
+Until both are set the tracker's fetch **fails closed** — it does not degrade to a partial sync.
+
+---
+
+## What was applied
+
+The table, exactly as `supabase/migrations/0094_tracker_sync_targets.sql`, through the MCP
+`apply_migration` path so the DDL and the ledger row land together. **Apply by hand only as a last
+resort:** this DB records migrations as timestamp versions in
+`supabase_migrations.schema_migrations`, and a hand-applied migration leaves the ledger a false
+record of prod's schema — the inverse of the migration-0021 defect this project already carries.
+(Nothing *re-applies* it on a push: `prepush` and CI never touch prod schema, and `testdb:migrate`
+tracks the TEST project separately by filename in `public.testdb_migrations`.)
+
+**The lock was verified against a NON-EMPTY table**, which is the only way the check means
+anything: `service_role=1, anon=0, authenticated=0`. RLS is on with **no policies** — the locked
+`platform_admins` pattern. Nothing holding an anon or authenticated JWT can read it, including a
+signed-in org admin: a tracker credential is platform configuration, not org-visible data.
 
 **The secret is plaintext on purpose.** The push direction has to *send* it, so a one-way hash
-would break that. Which is exactly why the table is service-role only.
+would break that. Which is exactly why the table is service-role only. It was generated inside
+Postgres (`gen_random_uuid()` ×2, 64 hex chars) so it was never constructed in a terminal.
 
-**Ledger:** this DB records migrations as timestamp versions in
-`supabase_migrations.schema_migrations` (e.g. `20260908080329`) — what the MCP `apply_migration`
-path writes, not the `0094_` file numbering. If you apply the SQL by hand, add a ledger row too, or
-a later push may try to re-apply it.
+## ONLY LWS Pune has a row
 
-## 2. ONLY LWS Pune gets a row
-
-This DB already has **five orgs**: Arjunaa Foundation, Devendra Kumar, Eswar, LWS Pune, Modulus
-Classes. Every institute is getting its **own** tracker deployment (decided 2026-09-11; the
-shared-DB tracker rebuild is a stated direction but unbuilt). Until an institute has a tracker
-provisioned it gets no row — which is also the gate for the Push button when you build it:
+This DB has **five orgs**: Arjunaa Foundation, Devendra Kumar, Eswar, LWS Pune, Modulus Classes.
+Every institute is getting its **own** tracker deployment (decided 2026-09-11; the shared-DB
+tracker rebuild is a stated direction but unbuilt). Until an institute has a tracker provisioned it
+gets no row — which is also the gate for the Push button when you build it:
 
 > **The Push button is enabled IF AND ONLY IF that org has a `tracker_sync_targets` row.**
 > Not an allow-list of institute names — this repo already carries a hardcoded
 > `DESTINATION_ORG_NAME = "LWS Pune"` in `api/sync/mock`, and that is the wart this avoids
 > repeating. A disabled button must say *why* ("no tracker configured for this institute").
 
-## 3. Verify
+## Verification
 
-Once applied and pushed/deployed, call the route with the secret and a real question id:
+`tests/sync-by-ids-route.test.ts` owns the security boundary — what used to be a manual curl
+checklist. It builds **two** throwaway orgs, so "my PRIVATE row" and "their PRIVATE row" are
+genuinely different rows, and asserts:
+
+1. the presenting org's own **PRIVATE** question resolves (the entire reason this route is authed);
+2. a **PUBLIC** question resolves whoever owns it;
+3. **another org's PRIVATE question does NOT**, and is reported as `missing` — the assertion the
+   original checklist omitted, and the one that matters at institute #2;
+4. a mixed request scopes per-id rather than all-or-nothing;
+5. an unknown uuid lands in `missing[]` rather than being silently dropped;
+6. `imageUrl` is an absolute `https://…/storage/v1/object/public/question-images/…` url;
+7. a wrong secret returns **401 with a body byte-identical to no secret at all**;
+8. 101 ids returns **400**, not a truncated 200.
+
+**Both halves of the boundary were fault-proven rather than trusted for passing**: deleting the
+route's org-scoping turns exactly 3 and 4 red and nothing else; making the unknown-secret branch
+return `403 {"error":"unknown secret"}` turns exactly 7 red. A check that has never gone red proves
+nothing.
+
+Still worth one real curl against production once the tracker env is set, since the test exercises
+the handler in-process and not the deployed edge:
 
     curl -s -H "Authorization: Bearer <secret>" \
       "https://www.pyqvault.com/api/questions/by-ids?ids=<question uuid>"
-
-Expect `{"questions":[...],"missing":[]}`. Then check, in order:
-
-1. **A PRIVATE LWS Pune question resolves.** This is the entire reason the route is authenticated.
-2. **A made-up uuid comes back in `missing[]`** rather than being silently dropped.
-3. **101 ids returns 400**, not a truncated 200.
-4. **A wrong secret returns 401**, indistinguishable from no secret.
-5. **`imageUrl` is an absolute `https://.../storage/v1/object/public/question-images/...` URL**, not
-   a bare storage path — the tracker stores what it receives and must render it years later without
-   knowing our Supabase host.
 
 ---
 
@@ -107,11 +108,14 @@ Expect `{"questions":[...],"missing":[]}`. Then check, in order:
   public over PUBLIC rows. That is wrong: anon RLS sees only PUBLIC rows and much of this bank is
   PRIVATE, so an anonymous endpoint returns **nothing** for exactly the papers that matter, with no
   error — and cannot serve a second institute at all.
-- **`missing[]` is contract, not courtesy.** A stem repair here is a delete-and-re-commit
-  (`content_hash` covers the stem) which mints a **new uuid**, so a tracker exam can hold a dead id
-  through nobody's error. That is signal about a repaired question, not an absence of content.
+- **`missing[]` is contract, not courtesy — and it carries TWO causes deliberately.** An id is
+  missing when it names no row (a stem repair here is a delete-and-re-commit, which mints a new
+  uuid, so a tracker exam can hold a dead id through nobody's error) **and** when it names another
+  institute's PRIVATE row. Those are indistinguishable on purpose, for the same reason an unknown
+  secret returns the same 401 as no secret: a caller must not be able to probe this bank for the
+  existence of content it may not read.
 - **Over-cap requests are REFUSED, not truncated** (`MAX_IDS = 100`). The known `.in()` failure in
-  this repo was 833 ids ~= 31 kB, and `/guide/nda-maths/principles` still passes 488 while
+  this repo was 833 ids ≈ 31 kB, and `/guide/nda-maths/principles` still passes 488 while
   discarding the error, rendering an empty map with no signal.
 - **One payload shape, three transports.** `src/lib/sync/questionPayload.ts` is it — the Tags xlsx,
   this route, and the paper push. `tagsSheet.ts` now consumes its derivations rather than redefining
@@ -121,12 +125,22 @@ Expect `{"questions":[...],"missing":[]}`. Then check, in order:
 - **Routing is per-org config, never a payload field.** A caller-chosen destination means one wrong
   value delivers institute B's paper into institute A's tracker.
 
+## Known gaps, accepted
+
+- **No rate limit and no per-call logging.** Every other guarded route here uses `checkAndIncrement`
+  ([export](src/app/api/export/route.ts), [teacher-access](src/app/api/teacher-access/route.ts),
+  the batch routes). This one is bearer-gated server-to-server, so the exposure is lower — but the
+  secret sits in another app's env indefinitely and there is currently no signal of *which* org
+  called, or how often. Rotation today means an `update` on the row plus a redeploy there.
+- **Response order is arbitrary.** `queryQuestionsByIds` does not reorder (`/browse` does it at the
+  call site). Harmless because the tracker merges by `questionId` — but do not start depending on it.
+
 ## Not built
 
-**The paper push** (vault -> tracker). Specced in nda-tracker's `CROSS_APP_SYNC.md`: the payload,
+**The paper push** (vault → tracker). Specced in nda-tracker's `CROSS_APP_SYNC.md`: the payload,
 the `kind` discriminator it folds into on the tracker side (that app is at 12/12 Vercel Hobby
 functions and cannot take a 13th file), and two hard guards — a re-push **refuses** an exam that
 already has results, and a paper deleted here must **not** delete a tracker exam that has results.
 
-Its prize: build the paper here -> push -> the exam exists in the tracker *with diagrams* ->
-conduct -> upload only the Evalbee results. **No Tags file at all** for vault-built papers.
+Its prize: build the paper here → push → the exam exists in the tracker *with diagrams* →
+conduct → upload only the Evalbee results. **No Tags file at all** for vault-built papers.
