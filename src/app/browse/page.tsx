@@ -376,11 +376,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         </div>
       </main>
       <BackToNotes />
-      <CartPill
-        filters={filters}
-        isOrgMember={isStaff}
-        isSignedIn={isSignedIn}
-      />
+      <CartPill isOrgMember={isStaff} />
       <Footer />
     </>
   );
