@@ -21,6 +21,7 @@ import {
   Timer,
   Upload,
   Users,
+  Target,
 } from "lucide-react";
 import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -308,6 +309,14 @@ function QuickActions({
           icon={<Timer className="h-5 w-5" aria-hidden />}
           title="Mock Performance"
           description="See how students scored on each timed mock test, attempt by attempt."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/item-stats"
+          icon={<Target className="h-5 w-5" aria-hidden />}
+          title="Item statistics"
+          description="How hard each question really is, and where a distractor outpulls the key."
         />
       )}
       {isSuperadmin && (

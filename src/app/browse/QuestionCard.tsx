@@ -34,6 +34,8 @@ import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
+import { ItemStatChip, ItemStatDetail } from "./ItemStats";
+import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
 type OptionLabel = OptionRow["label"];
 
@@ -53,6 +55,7 @@ export default function QuestionCard({
   includeExam = false,
   hideCart = false,
   resources,
+  itemStats,
 }: {
   question: QuestionRow;
   index: number;
@@ -73,6 +76,13 @@ export default function QuestionCard({
   hideCart?: boolean;
   /** Optional links to strategy guide + concept notes that explain this question's lever. */
   resources?: QuestionResources;
+  /**
+   * Pooled student performance. STAFF ONLY — the page does not fetch it for
+   * anyone else, and the RLS policy on `question_item_stats` refuses it
+   * independently. Undefined means no usable evidence, which is the normal
+   * case: ~2% of the bank clears the threshold today.
+   */
+  itemStats?: ItemStatAggregate;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
@@ -180,6 +190,7 @@ export default function QuestionCard({
               <span className="min-w-0 truncate">{breadcrumb}</span>
               <span className="shrink-0" aria-hidden>·</span>
               <span className="shrink-0">{DIFFICULTY_LABEL[question.difficulty]}</span>
+              <ItemStatChip agg={itemStats} />
               {question.imageUrl && (
                 <>
                   <span className="shrink-0" aria-hidden>·</span>
@@ -262,6 +273,19 @@ export default function QuestionCard({
               expanded && "animate-fade-in-up"
             )}
           >
+            {itemStats && (
+              <div className="pt-3">
+                <ItemStatDetail
+                  agg={itemStats}
+                  keyLabel={
+                    question.options.filter((o) => o.isCorrect).length === 1
+                      ? (question.options.find((o) => o.isCorrect)?.label ?? null)
+                      : null
+                  }
+                />
+              </div>
+            )}
+
             {question.context && !hideContext && (
               <div className="pt-3 text-sm italic text-muted-foreground">
                 <BlockText text={question.context} />
