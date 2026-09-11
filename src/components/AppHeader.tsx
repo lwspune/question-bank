@@ -2,7 +2,7 @@ import HeaderBar from "@/components/header/HeaderBar";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 
 /**
- * Site header — a thin, CACHEABLE server shell around a client bar.
+ * Site navigation — a thin, CACHEABLE server shell around the client navs.
  *
  * This component is on every page, and it used to resolve the session and read
  * the `qb_exam` cookie during server render. Both are per-request operations, so
@@ -12,7 +12,8 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
  * once taken effect. Every page served
  * `Cache-Control: private, no-cache, no-store`.
  *
- * All of that moved into HeaderBar, which runs in the browser. What remains here
+ * All of that moved into HeaderBar, which runs in the browser and renders both
+ * the top header and the phone tab bar. What remains here
  * is the exam-id map — public taxonomy, identical for every visitor, cached — so
  * nothing this component renders depends on WHO is asking. That is what makes a
  * shared cached copy both possible and safe.
@@ -20,9 +21,8 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 export default async function AppHeader() {
   const examIds = await getExamIdMap();
 
-  return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <HeaderBar examIds={examIds} />
-    </header>
-  );
+  // HeaderBar owns the <header> element itself, because it also renders the
+  // phone tab bar pinned to the bottom of the viewport — the two are siblings
+  // sharing one resolution of the session and the exam cookie.
+  return <HeaderBar examIds={examIds} />;
 }

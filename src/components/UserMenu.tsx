@@ -4,18 +4,21 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { Bookmark, CreditCard, LayoutDashboard, LogOut, ShieldCheck, User } from "lucide-react";
+import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, ShieldCheck, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export default function UserMenu({
   email,
   role,
+  isStaff = false,
   isSuperadmin = false,
 }: {
   email: string;
   // null = signed-in student (no org membership).
   role: "ADMIN" | "TEACHER" | null;
+  /** Holds an org_members row — same source PrimaryNav uses for the Papers tab. */
+  isStaff?: boolean;
   isSuperadmin?: boolean;
 }) {
   const router = useRouter();
@@ -72,8 +75,32 @@ export default function UserMenu({
               Superadmin console
             </Link>
           )}
-          {/* Papers (the collaborative builder) is reached from the primary
-              nav tab now — org members get it there. */}
+          {/*
+            Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm up
+            they are tabs in PrimaryNav, and duplicating them here would give
+            two answers to "where do I go?". Below sm they are deliberately not
+            in the tab bar — that bar is a fixed five for every visitor, and
+            these two are desktop work for ten staff against three hundred
+            students. See lib/nav/mobileTabs.ts.
+          */}
+          {isStaff && (
+            <Link
+              href="/dashboard/papers"
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            >
+              <FileText className="h-4 w-4" aria-hidden />
+              Papers
+            </Link>
+          )}
+          {isSuperadmin && (
+            <Link
+              href="/books"
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            >
+              <BookMarked className="h-4 w-4" aria-hidden />
+              Books
+            </Link>
+          )}
           {role === null && (
             <Link
               href="/me"

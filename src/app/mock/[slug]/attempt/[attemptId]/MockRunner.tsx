@@ -237,6 +237,13 @@ export default function MockRunner({
 
   return (
     <div className="flex min-h-screen flex-col">
+      {/*
+        The runner renders no AppHeader, so no phone tab bar — but globals.css
+        pads the body for that bar by default (it fails safe that way). This
+        marker switches the padding off, because min-h-screen plus 56px of
+        padding would add real scroll to a page someone is sitting an exam on.
+      */}
+      <div data-no-tabbar-pad hidden aria-hidden />
       {/* Timer + submit bar */}
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-3 py-2 sm:px-6">

@@ -143,13 +143,14 @@ export default function CartPill({ isOrgMember = false }: {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        // Position respects iOS home-indicator safe area: pin to max(1rem,
-        // env(safe-area-inset-bottom)) on phone, larger fixed offset on sm+.
-        style={{
-          bottom: "max(1rem, env(safe-area-inset-bottom))",
-        }}
+        // Vertical offset lives in globals.css (.cart-pill-offset): it respects
+        // the iOS home-indicator safe area AND, below sm, clears MobileTabBar —
+        // the one genuine collision the phone bar introduces. It is a class
+        // rather than an inline style because the sm+ value differs, and an
+        // inline style cannot carry a media query (it would also outrank any
+        // class trying to correct it).
         className={cn(
-          "fixed right-4 z-40 flex animate-pill-in items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:right-6"
+          "cart-pill-offset fixed right-4 z-50 flex animate-pill-in items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:right-6"
         )}
         aria-label={`Open paper (${cart.count} questions)`}
       >

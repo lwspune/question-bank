@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import UserMenu from "@/components/UserMenu";
 import ThemeToggle from "@/components/ThemeToggle";
 import PrimaryNav from "@/components/PrimaryNav";
+import MobileTabBar from "@/components/MobileTabBar";
 import {
   resolveExamNav,
   readExamSlugFromCookieString,
@@ -74,58 +75,68 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
   const nav = resolveExamNav(examSlug, examIds);
 
   return (
-    <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
-      <Link
-        href={resolveHomeHref(session)}
-        className="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-tight"
-      >
-        <BookOpen className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
-        {/* Wordmark hides on narrow phones so the nav + account fit at 360px. */}
-        <span className="hidden sm:inline">PYQ Vault</span>
-      </Link>
+    <>
+      <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
+          <Link
+            href={resolveHomeHref(session)}
+            className="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-tight"
+          >
+            <BookOpen className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
+            {/* The wordmark used to hide below sm so the icon row could fit; the nav
+                has moved to MobileTabBar, so there is room for it again. */}
+            <span>PYQ Vault</span>
+          </Link>
 
-      <PrimaryNav
-        bankHref={nav.bankHref}
-        guidesHref={nav.guidesHref}
-        notesHref={nav.notesHref}
-        boardHref={nav.boardHref}
-        showPapers={!!session?.isStaff}
-        showBooks={!!session?.isSuperadmin}
-      />
-
-      <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
-        {/* Theme toggle is visible to everyone, anon included. */}
-        <ThemeToggle />
-        {sessionLoading ? (
-          // Fixed-size placeholder so the row doesn't jump when identity lands.
-          <div
-            className="h-9 w-9 shrink-0 rounded-full bg-muted/60"
-            aria-hidden
+          <PrimaryNav
+            bankHref={nav.bankHref}
+            guidesHref={nav.guidesHref}
+            notesHref={nav.notesHref}
+            boardHref={nav.boardHref}
+            showPapers={!!session?.isStaff}
+            showBooks={!!session?.isSuperadmin}
           />
-        ) : session ? (
-          <>
-            {/* Org chip only for org members; hidden below md so brand + nav
-                + avatar all fit. */}
-            {session.orgName && (
-              <span
-                className="hidden max-w-[12rem] truncate text-xs text-muted-foreground md:inline md:max-w-none"
-                title={session.orgName}
-              >
-                {session.orgName}
-              </span>
+
+          <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
+            {/* Theme toggle is visible to everyone, anon included. */}
+            <ThemeToggle />
+            {sessionLoading ? (
+              // Fixed-size placeholder so the row doesn't jump when identity lands.
+              <div
+                className="h-9 w-9 shrink-0 rounded-full bg-muted/60"
+                aria-hidden
+              />
+            ) : session ? (
+              <>
+                {/* Org chip only for org members; hidden below md so brand + nav
+                    + avatar all fit. */}
+                {session.orgName && (
+                  <span
+                    className="hidden max-w-[12rem] truncate text-xs text-muted-foreground md:inline md:max-w-none"
+                    title={session.orgName}
+                  >
+                    {session.orgName}
+                  </span>
+                )}
+                <UserMenu
+                  email={session.email}
+                  role={session.role}
+                  isStaff={session.isStaff}
+                  isSuperadmin={session.isSuperadmin}
+                />
+              </>
+            ) : (
+              <Button asChild variant="outline" size="sm">
+                <Link href="/login">Sign in</Link>
+              </Button>
             )}
-            <UserMenu
-              email={session.email}
-              role={session.role}
-              isSuperadmin={session.isSuperadmin}
-            />
-          </>
-        ) : (
-          <Button asChild variant="outline" size="sm">
-            <Link href="/login">Sign in</Link>
-          </Button>
-        )}
-      </div>
-    </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Phone navigation. Rendered here so both navs share one resolution of
+          the exam cookie and the session — see MobileTabBar. */}
+      <MobileTabBar nav={nav} />
+    </>
   );
 }
