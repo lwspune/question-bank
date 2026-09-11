@@ -17,6 +17,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { aggregateItemStats } from "@/lib/itemStats/aggregate";
+import { parseCohortLabel } from "@/lib/itemStats/exposure";
 import {
   computeLead,
   rankLeads,
@@ -373,5 +374,52 @@ describe("verdict mismatch — the one signal that is not ambiguous", () => {
       { ...base, questionId: "mismatch9", keyCount: 9, ratio: null, verdictMismatch: 9, reason: "verdict-mismatch" },
     ]);
     expect(ranked.map((l) => l.questionId)).toEqual(["mismatch9", "mismatch1", "nokey", "ratio5"]);
+  });
+});
+
+describe("exposure — which cohorts have already sat this", () => {
+  it("splits the tracker's comma-separated batch list", () => {
+    // One exam record is routinely conducted for several batches at once, and
+    // `exams.batch` is free text carrying all of them.
+    expect(parseCohortLabel("APJ_NDA_12th_(26-27), APJ_NDA_6M_(Sep26)")).toEqual([
+      "APJ_NDA_12th_(26-27)",
+      "APJ_NDA_6M_(Sep26)",
+    ]);
+  });
+
+  it("tolerates ragged spacing, empties and a null", () => {
+    expect(parseCohortLabel("  A ,, B  ,")).toEqual(["A", "B"]);
+    expect(parseCohortLabel(null)).toEqual([]);
+    expect(parseCohortLabel("   ")).toEqual([]);
+  });
+
+  it("collects the distinct cohorts and the most recent sitting", () => {
+    const agg = aggregateItemStats(
+      [
+        row({
+          sourceRef: "e1",
+          source: "tracker",
+          orgId: "o",
+          cohortLabel: "B1, B2",
+          measuredAt: "2026-08-01T00:00:00Z",
+        }),
+        row({
+          sourceRef: "e2",
+          source: "tracker",
+          orgId: "o",
+          cohortLabel: "B2, B3",
+          measuredAt: "2026-09-07T00:00:00Z",
+        }),
+      ],
+      HASH
+    );
+    expect(agg?.exposure?.cohorts).toEqual(["B1", "B2", "B3"]);
+    expect(agg?.exposure?.lastSatAt).toBe("2026-09-07T00:00:00Z");
+  });
+
+  it("is null when no sitting names a cohort — online mocks have none", () => {
+    // NOT an empty list: "nobody has sat it in a class" and "we do not record
+    // who sat it" are different claims.
+    expect(aggregateItemStats([row()], HASH)?.exposure).toBeNull();
   });
 });
