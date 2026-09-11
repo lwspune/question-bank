@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, Key, Loader2, Presentation, Table } from "lucide-react";
+import { Download, FileText, Key, Loader2, Presentation, Send, Table } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { pushPaperToTrackerAction } from "../actions";
+import { pushDisabledReason, PUSH_CAP } from "@/lib/sync/paperPush";
 import {
   Dialog,
   DialogContent,
@@ -31,16 +33,46 @@ const KIND_META: Record<Kind, { prefix: string; ext: string; label: string }> = 
 export default function PaperDownload({
   title,
   questionIds,
+  paperId,
+  hasTracker,
 }: {
   title: string;
   questionIds: string[];
+  paperId: string;
+  /**
+   * Whether this institute has an nda-tracker configured (a tracker_sync_targets
+   * row). The gate for the Push button — deliberately NOT an allow-list of
+   * institute names, so it lights up by itself the day one is provisioned.
+   */
+  hasTracker: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [includeSourceTag, setIncludeSourceTag] = useState(false);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const busy = busyKind !== null;
+  const [pushing, setPushing] = useState(false);
   const count = questionIds.length;
   const overCap = count > 200;
+  const pushBlocked = pushDisabledReason({ hasTarget: hasTracker, count, cap: PUSH_CAP });
+
+  async function onPush() {
+    setPushing(true);
+    try {
+      const res = await pushPaperToTrackerAction(paperId);
+      if (!res.ok) {
+        toast.error(res.error);
+        return;
+      }
+      toast.success(
+        `Pushed ${res.questionCount} question${res.questionCount === 1 ? "" : "s"} — a draft exam in the tracker. Set its date, batch and marking there.`
+      );
+      if (res.warning) toast.warning(res.warning);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Push failed");
+    } finally {
+      setPushing(false);
+    }
+  }
 
   async function onDownload(kind: Kind) {
     setBusyKind(kind);
@@ -120,6 +152,49 @@ export default function PaperDownload({
             </span>
           </span>
         </label>
+        <div className="rounded-md border bg-muted/40 p-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="text-sm">
+              <span className="font-medium">Push to nda-tracker</span>
+              <span className="block text-xs text-muted-foreground">
+                Creates a draft exam with the diagrams — the tagged sheet drops those.
+              </span>
+            </div>
+            <Button
+              variant="outline"
+              onClick={onPush}
+              disabled={busy || pushing || pushBlocked !== null}
+              title={pushBlocked ?? undefined}
+            >
+              {pushing ? (
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+              ) : (
+                <Send className="h-4 w-4" aria-hidden />
+              )}
+              Push
+            </Button>
+          </div>
+          {/*
+            A disabled control must say WHY rather than sit dead — above all the
+            "no tracker configured" case, which the user cannot fix by editing
+            the paper.
+          */}
+          {pushBlocked && (
+            <p className="mt-2 text-xs text-muted-foreground" role="status">
+              {pushBlocked}
+            </p>
+          )}
+          {/*
+            Said out loud so nobody assumes pushing replaced the sheet. The push
+            is new and unproven end to end; Tags + docx remain the path that
+            works, and a failed push costs nothing.
+          */}
+          <p className="mt-2 text-xs text-muted-foreground">
+            The tagged sheet below still works exactly as before — keep using it.
+            Pushing is additive, and the tracker exam stays a draft until faculty
+            set its date, batch and marking.
+          </p>
+        </div>
         <DialogFooter className="flex-col gap-2 sm:flex-row sm:flex-wrap">
           <Button variant="outline" onClick={() => onDownload("tags")} disabled={busy || overCap || count === 0}>
             {busyKind === "tags" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Table className="h-4 w-4" aria-hidden />}

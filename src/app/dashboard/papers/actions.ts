@@ -29,6 +29,15 @@ import { EMPTY_FILTERS, type Difficulty } from "@/lib/questions/filters";
 import type { SectionTemplate } from "@/lib/papers/types";
 import { getQuestionUsage, type UsageRef } from "@/lib/papers/usage";
 import { setPaperBatch, listBatches } from "@/lib/batches/admin";
+import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
+import { queryQuestionsByIds } from "@/lib/questions/query";
+import {
+  buildPaperPushPayload,
+  pushDisabledReason,
+  trackerExamId,
+  PUSH_CAP,
+} from "@/lib/sync/paperPush";
+import { getTrackerTarget, paperImportUrl } from "@/lib/sync/trackerTarget";
 
 type Ok<T = unknown> = { ok: true } & T;
 type Err = { ok: false; error: string };
@@ -398,4 +407,112 @@ export async function searchQuestionsAction(input: {
 
 function msg(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
+}
+
+/**
+ * Push a paper to this institute's nda-tracker as a DRAFT exam.
+ *
+ * ADDITIVE — this does not replace the tagged sheet, and is not allowed to
+ * become load-bearing. A failure here leaves the paper fully deliverable via
+ * Tags + docx, which remain the proven path; the push exists to carry the
+ * DIAGRAMS a text-only sheet drops.
+ *
+ * Reads run through the cookie-bound client so RLS scopes the paper and its
+ * questions to the caller's org exactly as the rest of this file does. Only the
+ * tracker credential is read service-role, because `tracker_sync_targets` is
+ * deliberately unreadable to any JWT.
+ */
+export async function pushPaperToTrackerAction(
+  paperId: string
+): Promise<Result<{ examId: string; questionCount: number; warning?: string }>> {
+  const member = await requireMember();
+  if (!member) return { ok: false, error: "Not authorized." };
+
+  try {
+    const client = createSupabaseServerClient();
+    const detail = await getPaperDetail(client, paperId);
+    if (!detail) return { ok: false, error: "Paper not found." };
+
+    const ids = detail.membership.map((m) => m.questionId);
+
+    // Resolve the target BEFORE validating the paper, so this agrees with
+    // `pushDisabledReason`'s own precedence — "no tracker configured" outranks
+    // "no questions", because it is the reason the user cannot fix by editing.
+    // Checking the paper first would tell someone to add questions when the real
+    // problem is that their institute has no tracker, and the button's tooltip
+    // would then disagree with the error the click produces.
+    const target = await getTrackerTarget(member.orgId);
+    const reason = pushDisabledReason({
+      hasTarget: !!target,
+      count: ids.length,
+      cap: PUSH_CAP,
+    });
+    if (reason || !target) {
+      return { ok: false, error: reason ?? "No tracker configured for this institute." };
+    }
+
+    // Same ordered rows the docx and the tags sheet are built from — so the
+    // pushed Q-numbers match the printed paper by construction.
+    const questions = await queryQuestionsByIds(client, ids);
+    const byId = new Map(questions.map((q) => [q.id, q]));
+    const ordered = ids.map((id) => byId.get(id)).filter((q): q is NonNullable<typeof q> => !!q);
+
+    // A question the caller cannot read is a question the tracker must not be
+    // told about. Report rather than silently push a short paper.
+    if (ordered.length !== ids.length) {
+      return {
+        ok: false,
+        error: `${ids.length - ordered.length} of ${ids.length} questions could not be read — not pushing a partial paper.`,
+      };
+    }
+
+    const tagMap = await getResourceTagsForQuestions(client, ids);
+    const conceptTags = new Map(
+      Array.from(tagMap.entries())
+        .filter(([, t]) => t.conceptTags.length > 0)
+        .map(([id, t]) => [id, t.conceptTags[0]] as const)
+    );
+
+    const body = buildPaperPushPayload({
+      questions: ordered,
+      paperId,
+      title: detail.title,
+      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      conceptTags,
+    });
+
+    const res = await fetch(paperImportUrl(target), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${target.sharedSecret}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const json = (await res.json().catch(() => ({}))) as {
+      error?: string;
+      examId?: string;
+      questionCount?: number;
+      warning?: string;
+    };
+
+    if (!res.ok) {
+      // Surface the tracker's own words — a 409 here means the exam already has
+      // results, and the operator needs to know WHICH exam, not a generic failure.
+      return {
+        ok: false,
+        error: json.error ?? `Tracker returned ${res.status}.`,
+      };
+    }
+
+    return {
+      ok: true,
+      examId: json.examId ?? trackerExamId(paperId),
+      questionCount: json.questionCount ?? body.questions.length,
+      warning: json.warning,
+    };
+  } catch (e) {
+    return { ok: false, error: msg(e) };
+  }
 }

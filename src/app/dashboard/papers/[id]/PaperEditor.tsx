@@ -79,6 +79,7 @@ export default function PaperEditor({
   exams,
   defaultExamId,
   canEditContent,
+  hasTracker,
   supabaseUrl,
   orgMembers,
   batches,
@@ -93,6 +94,8 @@ export default function PaperEditor({
   defaultExamId: string | null;
   /** Superadmin — drives the per-question Edit affordance (migration 0056). */
   canEditContent: boolean;
+  /** Whether this institute has an nda-tracker configured — gates the Push button. */
+  hasTracker: boolean;
   supabaseUrl: string;
   orgMembers: { id: string; label: string }[];
   /** Active org batches for the paper's batch selector (0054). */
@@ -344,7 +347,7 @@ export default function PaperEditor({
               Sections
             </Button>
           )}
-          <PaperDownload title={detail.title} questionIds={orderedIds} />
+          <PaperDownload title={detail.title} questionIds={orderedIds} paperId={detail.id} hasTracker={hasTracker} />
           {finalized ? (
             <Button
               variant="outline"
