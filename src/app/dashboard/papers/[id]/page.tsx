@@ -9,6 +9,7 @@ import { splitBatches } from "@/lib/batches/validate";
 import { listMembers } from "@/lib/members/admin";
 import { queryQuestionsByIds } from "@/lib/questions/query";
 import { dominantExamId } from "@/lib/papers/exam";
+import { hasTrackerTarget } from "@/lib/sync/trackerTarget";
 import PaperEditor from "./PaperEditor";
 
 export const dynamic = "force-dynamic";
@@ -57,6 +58,12 @@ export default async function PaperEditorPage({
   // gates the per-question Edit affordance the same way.
   const canEditContent = !!(await getSessionSuperadmin());
 
+  // Gates the Push-to-tracker button. Presence of a tracker_sync_targets row is
+  // the whole gate (migration 0094) — never an allow-list of institute names, so
+  // it lights up by itself the day an institute is provisioned. The SECRET is
+  // deliberately not read here; only at the moment of a push.
+  const hasTracker = await hasTrackerTarget(member.orgId);
+
   return (
     <>
       <AppHeader />
@@ -68,6 +75,7 @@ export default async function PaperEditorPage({
           exams={(exams ?? []) as { id: string; name: string }[]}
           defaultExamId={dominantExamId(questions)}
           canEditContent={canEditContent}
+          hasTracker={hasTracker}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           orgMembers={orgMembers}
           batches={batches.map((b) => ({
