@@ -74,9 +74,12 @@ export default function PrimaryNav({
   ];
 
   return (
+    // Tablet and desktop only. Below sm the phone bar (MobileTabBar) takes
+    // over, so exactly one nav is ever displayed — which is also why both can
+    // carry the "Primary" label without ambiguity.
     <nav
       aria-label="Primary"
-      className="flex min-w-0 shrink items-center gap-0.5 sm:gap-1"
+      className="hidden min-w-0 shrink items-center gap-1 sm:flex"
     >
       {tabs.map(({ id, label, href, Icon }) => {
         const isActive = active === id;
@@ -87,23 +90,19 @@ export default function PrimaryNav({
             aria-current={isActive ? "page" : undefined}
             aria-label={label}
             className={
-              // Icon-only on phones (label hidden) so the tabs + account fit
-              // at 360px; label returns from sm: up. Removing the exam pill
-              // freed ~70px, which is what affords Mocks being unconditional.
-              // (Papers only shows for org members, and Books only for a
-              // superadmin — both skew desktop. A superadmin who is ALSO org
-              // staff sees seven tabs, which is the widest this row ever gets:
-              // ~264px of tabs at 360px. It shrinks rather than overflowing
-              // (`min-w-0 shrink` on the nav), but that combination is the one
-              // to check first if this row ever needs to lose something.)
-              "group inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 sm:py-1.5 " +
+              // Labels are unconditional here: this nav no longer renders on a
+              // phone, so there is nothing to win by hiding them. It used to go
+              // icon-only below sm, which left every mobile visitor decoding
+              // glyphs — Bank as a compass, and three book-ish icons in a row.
+              // That is what MobileTabBar exists to fix.
+              "group inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
               (isActive
                 ? "bg-brand-accent/10 text-brand-accent"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground")
             }
           >
-            <Icon className="h-4 w-4 shrink-0 sm:h-3.5 sm:w-3.5" aria-hidden />
-            <span className="hidden sm:inline">{label}</span>
+            <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <span>{label}</span>
           </Link>
         );
       })}

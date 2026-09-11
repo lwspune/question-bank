@@ -63,4 +63,34 @@
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
+
+  /*
+    Clearance for MobileTabBar, which is `fixed` and would otherwise cover the
+    foot of every page below sm. Applied to body so it covers all 56 AppHeader
+    call sites and the Footer in one rule, rather than per-page.
+
+    DEFAULT ON, opt out by marker — the polarity matters. A few routes render
+    no AppHeader (the mock runner, print pages, /login, /signup, /welcome) and
+    so have no bar; for them this is harmless slack, except the runner, which
+    is min-h-screen and would gain real scroll mid-exam. That one opts out with
+    a [data-no-tabbar-pad] marker.
+
+    Doing it the other way round — padding only when :has() finds the bar —
+    fails UNSAFE on a browser without :has() support (content hidden under the
+    bar). This way the fallback is 56px of empty space on one page.
+  */
+  body { padding-bottom: calc(3.5rem + env(safe-area-inset-bottom)); }
+  body:has([data-no-tabbar-pad]) { padding-bottom: 0; }
+  @media (min-width: 640px) { body { padding-bottom: 0; } }
+  @media print { body { padding-bottom: 0; } }
+
+  /*
+    The /browse cart pill is the only fixed element that collides with the bar.
+    Same two-value shape as the body clearance above: lifted clear below sm,
+    unchanged from sm up, where no bar renders.
+  */
+  .cart-pill-offset { bottom: calc(3.5rem + max(1rem, env(safe-area-inset-bottom))); }
+  @media (min-width: 640px) {
+    .cart-pill-offset { bottom: max(1rem, env(safe-area-inset-bottom)); }
+  }
 }
