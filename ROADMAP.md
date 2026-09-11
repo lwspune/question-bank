@@ -34,15 +34,23 @@ Nothing here is blocked on code. What is left:
   revisited, bands must be **per-format** — an MCQ p-value carries a ~25% guessing floor and a
   NAT one ~0%.
 
-### Not a bank task — an LWS one
+### Closed — the two MARK != KEY findings
 
-Both MARK ≠ KEY findings were adjudicated 2026-09-12 (`question_reviews`, run
-`item-stats-leads:2026-09-12`): **both bank keys are CORRECT and both defects are institute-side
-grading.** `∫₀⁴|x−1|dx` was credited to every attempter in the APJ sitting and marked normally
-in the LWS 2Y sitting — the same paper, same date, same key, two standards; and GAT MOCK W011
-q25 denied **every** attempter including the four who chose the recorded key. Roughly 44 marks
-across ~24 students. The tracker's re-grade action is still unbuilt, so correcting them is a
-decision plus a manual pass.
+Adjudicated 2026-09-12 (`question_reviews`, run `item-stats-leads:2026-09-12`): **both bank
+keys are CORRECT**, verified by independent derivation. `∫₀⁴|x−1|dx` is 5, and the sentence
+rearrangement's SPRQ is uniquely correct among its four options. Nothing in the bank needed
+changing, and those two verdicts stand on their own.
+
+The defects were institute-side grading — `Blueprint mock 1` q108 credited every attempter
+though nobody chose the key, and `GAT MOCK W011` q25 denied every attempter including the four
+who chose it. Measured impact: **14 student-questions, net −11.98 marks** (10 over-credited
+3.33 each, 4 under-credited 5.33 each).
+
+**Correcting those marks was considered and DELIBERATELY NOT DONE (user's call, 2026-09-12).**
+Recorded here so it does not resurface as outstanding work. `nda-tracker/regrade_impact.js`
+stays: it is read-only, wired into nothing, and reusable for the next finding —
+`node regrade_impact.js --exam=<id> --q=<n>` reports who is mis-marked and by how much without
+writing anything.
 
 ---
 
