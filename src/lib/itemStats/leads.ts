@@ -52,18 +52,34 @@ export function itemStatChip(agg: ItemStatAggregate | null): ItemStatChip | null
  * worth teaching to. Adjudication is a human reading the question, and the
  * outcome belongs in `question_reviews` (migration 0074).
  */
+/**
+ * Why this question is in the queue. Explicit rather than inferred from which
+ * fields are null, because the three mean genuinely different things and rank
+ * differently.
+ *
+ * - `verdict-mismatch` — the recorded mark and the key disagree on some
+ *   attempts. The ONLY unambiguous one: a mis-keyed or dropped question. Which
+ *   of those a human still decides, but that there is a defect is not in doubt.
+ * - `key-never-chosen` — nobody picked the keyed answer. Very strong, still
+ *   ambiguous: an entire cohort can fall for one well-built trap (measured,
+ *   repeatedly).
+ * - `distractor` — a distractor outpulled the key.
+ */
+export type LeadReason = "verdict-mismatch" | "key-never-chosen" | "distractor";
+
 export type Lead = {
   questionId: string;
   attempted: number;
   keyCount: number;
   topDistractor: { label: OptionLabel; count: number } | null;
   /**
-   * topDistractor / keyCount. NULL when the key was chosen by NOBODY — the
-   * sharpest signal in the dataset, and the reason this is not a number: an
-   * infinite ratio must sort first rather than divide by zero.
+   * topDistractor / keyCount. NULL when the key was chosen by NOBODY, or when
+   * there is no current key at all — `reason` says which.
    */
   ratio: number | null;
   discrimination: number | null;
+  verdictMismatch: number | null;
+  reason: LeadReason;
 };
 
 export function computeLead(
@@ -72,25 +88,46 @@ export function computeLead(
   keyLabel: OptionLabel | null
 ): Lead | null {
   if (!agg) return null;
+
+  const mismatch = agg.verdictMismatch ?? 0;
+  const keyCount = keyLabel ? agg.choiceCounts[keyLabel] : 0;
+
+  let top: { label: OptionLabel; count: number } | null = null;
+  if (keyLabel !== null) {
+    for (const label of OPTION_LABELS) {
+      if (label === keyLabel) continue;
+      const count = agg.choiceCounts[label];
+      if (count > 0 && (top === null || count > top.count)) {
+        top = { label, count };
+      }
+    }
+  }
+  const distractorWins = top !== null && top.count > keyCount;
+
+  // A MISMATCH IS NOT GATED ON THE ATTEMPT THRESHOLD. That threshold exists
+  // because a RATIO needs volume to mean anything; a mark that disagrees with
+  // the key is one mis-marked student whatever the sample size. It also raises
+  // a lead on a row whose distribution looks perfectly healthy — which is
+  // exactly the row nothing else would ever surface.
+  if (mismatch > 0) {
+    return {
+      questionId,
+      attempted: agg.attempted,
+      keyCount,
+      topDistractor: top,
+      ratio: distractorWins && keyCount > 0 ? (top as { count: number }).count / keyCount : null,
+      discrimination: agg.discrimination,
+      verdictMismatch: agg.verdictMismatch,
+      reason: "verdict-mismatch",
+    };
+  }
+
   // No key, nothing to outpull. Covers numeric (NAT) items, which have no
   // options at all, and any row where no option is flagged correct.
   if (keyLabel === null) return null;
   if (agg.attempted < MIN_N_LEAD) return null;
-
-  const keyCount = agg.choiceCounts[keyLabel];
-
-  let top: { label: OptionLabel; count: number } | null = null;
-  for (const label of OPTION_LABELS) {
-    if (label === keyLabel) continue;
-    const count = agg.choiceCounts[label];
-    if (count > 0 && (top === null || count > top.count)) {
-      top = { label, count };
-    }
-  }
-
   // Also the numeric case: an empty distribution leaves `top` null.
-  if (top === null) return null;
-  if (top.count <= keyCount) return null;
+  if (!distractorWins || top === null) return null;
 
   return {
     questionId,
@@ -99,20 +136,31 @@ export function computeLead(
     topDistractor: top,
     ratio: keyCount === 0 ? null : top.count / keyCount,
     discrimination: agg.discrimination,
+    verdictMismatch: agg.verdictMismatch,
+    reason: keyCount === 0 ? "key-never-chosen" : "distractor",
   };
 }
 
 /**
- * Work-list order: key-never-chosen first, then hardest-pulling ratio, then the
- * best-evidenced. The final tiebreak on id exists so the queue does not reshuffle
- * between page loads.
+ * Work-list order: the unambiguous first, then the very strong, then the
+ * merely suspicious. Within each, the best-evidenced. The final tiebreak on id
+ * exists so the queue does not reshuffle between page loads.
  */
+const REASON_RANK: Record<LeadReason, number> = {
+  "verdict-mismatch": 0,
+  "key-never-chosen": 1,
+  distractor: 2,
+};
+
 export function rankLeads(leads: Lead[]): Lead[] {
   return [...leads].sort((a, b) => {
-    const aNoKey = a.ratio === null;
-    const bNoKey = b.ratio === null;
-    if (aNoKey !== bNoKey) return aNoKey ? -1 : 1;
-    if (!aNoKey && !bNoKey && a.ratio !== b.ratio) {
+    if (a.reason !== b.reason) return REASON_RANK[a.reason] - REASON_RANK[b.reason];
+    if (a.reason === "verdict-mismatch") {
+      const am = a.verdictMismatch ?? 0;
+      const bm = b.verdictMismatch ?? 0;
+      if (am !== bm) return bm - am;
+    }
+    if (a.reason === "distractor" && a.ratio !== b.ratio) {
       return (b.ratio as number) - (a.ratio as number);
     }
     if (a.attempted !== b.attempted) return b.attempted - a.attempted;

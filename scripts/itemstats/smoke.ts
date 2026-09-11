@@ -44,7 +44,14 @@ async function main() {
     if (missing > 0) console.log(`  WARNING: ${missing} lead(s) resolve to no readable question`);
 
     for (const l of leads.slice(0, 5)) {
-      const r = l.lead.ratio === null ? "KEY NEVER CHOSEN" : `${l.lead.ratio.toFixed(1)}x`;
+      // `reason`, not the null-ness of `ratio` — a verdict-mismatch row also has
+      // no ratio, and labelling it KEY NEVER CHOSEN would be simply wrong.
+      const r =
+        l.lead.reason === "verdict-mismatch"
+          ? `MARK!=KEY x${l.lead.verdictMismatch}`
+          : l.lead.reason === "key-never-chosen"
+            ? "KEY NEVER CHOSEN"
+            : `${(l.lead.ratio as number).toFixed(1)}x`;
       console.log(
         `  ${r.padEnd(17)} n=${String(l.lead.attempted).padEnd(4)} ${l.pct}%  ${(l.question?.text ?? "").replace(/\s+/g, " ").slice(0, 56)}`
       );

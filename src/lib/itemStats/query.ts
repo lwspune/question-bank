@@ -32,7 +32,7 @@ export async function getItemStatsForQuestions(
     supabase
       .from("question_item_stats")
       .select(
-        "question_id, source, source_ref, org_id, cohort_label, seen, attempted, correct, skipped, choice_counts, disc_top_correct, disc_top_n, disc_bottom_correct, disc_bottom_n, key_at_measurement, measured_content_hash, measured_at"
+        "question_id, source, source_ref, org_id, cohort_label, seen, attempted, correct, skipped, choice_counts, disc_top_correct, disc_top_n, disc_bottom_correct, disc_bottom_n, key_at_measurement, verdict_mismatch, measured_content_hash, measured_at"
       )
       .in("question_id", questionIds),
     supabase.from("questions").select("id, content_hash").in("id", questionIds),
@@ -62,6 +62,7 @@ export async function getItemStatsForQuestions(
     disc_bottom_correct: number | null;
     disc_bottom_n: number | null;
     key_at_measurement: OptionLabel | null;
+    verdict_mismatch: number | null;
     measured_content_hash: string;
     measured_at: string;
   }[]) {
@@ -82,6 +83,7 @@ export async function getItemStatsForQuestions(
       discBottomCorrect: r.disc_bottom_correct,
       discBottomN: r.disc_bottom_n,
       keyAtMeasurement: r.key_at_measurement,
+      verdictMismatch: r.verdict_mismatch,
       measuredContentHash: r.measured_content_hash,
       measuredAt: r.measured_at,
     });

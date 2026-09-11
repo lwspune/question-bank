@@ -32,6 +32,14 @@ export type ItemStatRow = {
   discBottomCorrect: number | null;
   discBottomN: number | null;
   keyAtMeasurement: OptionLabel | null;
+  /**
+   * Attempts where the RECORDED MARK disagreed with the key — a mis-keyed or
+   * dropped question. NULL means the source cannot measure it, never "none
+   * found": only a source storing a mark SEPARATELY from the response can
+   * compare the two, which the tracker does and the vault structurally cannot
+   * (it stores responses and derives correctness from the key). Migration 0096.
+   */
+  verdictMismatch: number | null;
   /** The question AS MEASURED. A mismatch against the live hash makes this row STALE. */
   measuredContentHash: string;
   measuredAt: string;
@@ -63,6 +71,8 @@ export type ItemStatAggregate = {
   /** Top-27% rate minus bottom-27%, pooled as counts. Null when no sitting carried the split. */
   discrimination: number | null;
   sittings: number;
+  /** Summed over the rows that could measure it; NULL when none could. */
+  verdictMismatch: number | null;
   bySource: SourceBreakdown[];
   /** Rows excluded because the question has changed since they were measured. */
   staleDropped: number;

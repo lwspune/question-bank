@@ -118,6 +118,17 @@ export function ItemStatDetail({
         </p>
       )}
 
+      {agg.verdictMismatch !== null && agg.verdictMismatch > 0 && (
+        <p className="mt-2 rounded bg-amber-500/10 px-2 py-1 text-amber-800 dark:text-amber-400">
+          <span className="font-medium">
+            {agg.verdictMismatch} attempt{agg.verdictMismatch === 1 ? "" : "s"} were marked
+            against a different answer than the key.
+          </span>{" "}
+          A mis-keyed or dropped question in the sitting it came from — unlike a winning
+          distractor, this one is not ambiguous.
+        </p>
+      )}
+
       <dl className="mt-2 space-y-0.5 text-muted-foreground">
         {agg.discrimination !== null && (
           <div className="flex gap-2">
