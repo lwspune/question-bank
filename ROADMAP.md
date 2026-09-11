@@ -8,38 +8,41 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ## Item statistics — what remains
 
-Shipped 2026-09-11: `question_item_stats` (0095) + `verdict_mismatch` (0096), the pure pooling
-core, the vault rollup, the tracker export (`nda-tracker/item_stats.js`) and its ingest, the
-`/browse` staff chip and `/dashboard/item-stats`. Both sources are live — **8,984 sitting rows
-over 8,245 questions; 1,462 at n>=10, 625 at n>=20; 319 leads**. Spec:
-[ITEM_STATS.md](ITEM_STATS.md).
+**Built and live (2026-09-11/12).** Migrations 0095 + 0096, the pure core, the vault rollup,
+the nda-tracker export + ingest, the `/browse` staff chip, `/dashboard/item-stats`, and
+exposure in the paper builder. **8,984 sitting rows over 8,245 questions; 1,462 at n>=10, 625
+at n>=20; 319 leads.** Spec: [ITEM_STATS.md](ITEM_STATS.md). Runbook: OPERATIONS.md.
 
-- **Exposure — "your batch has already sat this".** Now UNBLOCKED: every tracker row carries a
-  `cohort_label` (4 cohorts live). The vault half already exists as the per-batch no-repeat
-  soft-warn; this extends it to everything the institute actually conducted. The one
-  cohort-scoped thing on an otherwise global card, and that is correct — exposure is a
-  constraint on selection, not analytics.
-- **Weekly cadence.** Decision 7 says the Monday `db:backup` slot, and it is honestly a
-  TWO-REPO step: `node item_stats.js --out=…` in nda-tracker, then `itemstats:ingest` and
-  `itemstats:rollup` here. Wants one runbook entry rather than pretending a single cron covers
-  it.
-- **The browser click-through — owed, never done.** Both surfaces are auth-gated `ƒ`, so the
-  gate proves they compile and `itemstats:smoke` proves the loaders. Neither proves layout:
-  the card's expanded distribution bars, the chip at 360px, and the dashboard list now that it
-  is 319 rows rather than 57.
+Nothing here is blocked on code. What is left:
+
+- **The browser click-through — owed, and only a human can do it.** Every surface is auth-gated
+  `ƒ`, so the gate proves compilation and the two smokes prove the loaders; neither proves
+  layout. Worth checking: the `/browse` card's expanded panel (five blocks now), the chip at
+  360px, `/dashboard/item-stats` at 319 rows, and the two chips side by side in the paper
+  editor and add panel — a question carrying both is the interesting case.
+- **The weekly refresh is documented but NOT scheduled.** It is a genuine two-repo manual step
+  (`node item_stats.js --out=…` there, then `itemstats:ingest` + `itemstats:rollup` here) and
+  no single cron spans two repos. Either accept it as a Monday habit alongside `db:backup`, or
+  decide to automate it — which needs the export committed somewhere both sides can reach.
 - **The `/browse` leads filter**, deferred with reason: narrowing to leads needs the aggregate
   *before* the question query, i.e. an RPC or a full-table fetch on the hottest public page.
   Viable once a maintained aggregate exists — which decision 6 already anticipates for the
-  read-path ceiling.
-- **Difficulty promotion: deliberately NOT on this list as work.** `questions.difficulty`
-  drives `selectByQuota` in every mock blueprint and is quoted as %HARD in 11 shipped guides;
+  read-path ceiling (~30-40 sittings on one question; ~1.3 today).
+- **Difficulty promotion: deliberately NOT work.** `questions.difficulty` drives
+  `selectByQuota` in every mock blueprint and is quoted as %HARD in 11 shipped guides;
   overwriting it from measurement would silently change which papers get built. If ever
   revisited, bands must be **per-format** — an MCQ p-value carries a ~25% guessing floor and a
   NAT one ~0%.
-- **Adjudicate the two MARK ≠ KEY findings.** `∫₀⁴|x−1|dx` (bank key B = 5 is correct; one
-  sitting marked 10 students against a different answer) and an English S1 item. An adjudicated
-  outcome belongs in `question_reviews` (0074). This is institute-side grading, not a bank
-  defect — worth telling LWS.
+
+### Not a bank task — an LWS one
+
+Both MARK ≠ KEY findings were adjudicated 2026-09-12 (`question_reviews`, run
+`item-stats-leads:2026-09-12`): **both bank keys are CORRECT and both defects are institute-side
+grading.** `∫₀⁴|x−1|dx` was credited to every attempter in the APJ sitting and marked normally
+in the LWS 2Y sitting — the same paper, same date, same key, two standards; and GAT MOCK W011
+q25 denied **every** attempter including the four who chose the recorded key. Roughly 44 marks
+across ~24 students. The tracker's re-grade action is still unbuilt, so correcting them is a
+decision plus a manual pass.
 
 ---
 

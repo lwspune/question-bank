@@ -1,9 +1,20 @@
 # Item statistics — vault side
 
-**Status:** spec, nothing built. Written 2026-09-11.
-**Counterpart:** `nda-tracker/ITEM_STATS.md` (their side, also spec-only) and
-`nda-tracker/CROSS_APP_SYNC.md` (the question-payload contract that already shipped).
+**Status: BUILT and LIVE (2026-09-11/12).** Migrations 0095 + 0096, the pure core
+(`src/lib/itemStats/`), the vault rollup, the nda-tracker export and its ingest, the staff chip
+on `/browse`, the leads queue at `/dashboard/item-stats`, and exposure in the paper builder
+(`src/lib/papers/conducted.ts`). **8,984 sitting rows over 8,245 questions; 1,462 at n>=10, 625
+at n>=20; 319 leads.**
+
+> This header said "spec, nothing built" for a day after the first half shipped. The identical
+> staleness in `nda-tracker/ITEM_STATS.md` cost real work — a session read it, believed it, and
+> overwrote a shipped pure core and its 19 tests before noticing the files were tracked.
+> **Update this line when the thing it describes changes.**
+
+**Counterpart:** `nda-tracker/ITEM_STATS.md` (their side — the Question Stats page and the
+export) and `nda-tracker/CROSS_APP_SYNC.md` (the question-payload contract).
 **Audience:** both repos. The tracker produces the export; the vault stores, pools and displays.
+**Runbook:** OPERATIONS.md, "Refreshing item statistics".
 
 ## The division of labour
 
@@ -346,11 +357,10 @@ Sort key-never-chosen to the top.**
 (decision 7), lead thresholds and numeric items (their own sections above), and overlap
 (below).
 
-### Answered by the first ingest, blocks nothing
+### Answered by the first ingest
 
-**True overlap between the two sources.** It needs a question-id join against their database,
-which this repo cannot reach — but their export carries the `questionId`s, so run #1 answers it
-for free. Deliberately not chased, because **neither answer changes the design**: high overlap
-means pooling mostly adds `n` to items already measured; low overlap means the vault mainly
-extends coverage. Both are fine. The recorded proxy is 1,736 questions appearing in both an LWS
-paper and a vault mock attempt, which is not the number.
+**True overlap between the two sources: 283 questions**, measured on the first ingest as
+predicted. The proxy recorded beforehand (1,736 questions appearing in both an LWS paper and a
+vault mock attempt) was far too high. Neither answer would have changed the design — high
+overlap means pooling mostly adds `n` to items already measured, low overlap means the vault
+mainly extends coverage — which is why it was never worth chasing separately.
