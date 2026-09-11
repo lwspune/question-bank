@@ -24,7 +24,9 @@ function main() {
   // LaTeX delimiter sanity across every emitted field.
   const latexErrors: string[] = [];
   for (const r of recs) {
-    for (const [name, val] of [["stem", r.stem], ["solution", r.solution], ["optA", r.optA], ["optB", r.optB], ["optC", r.optC], ["optD", r.optD]] as const) {
+    const fields: [string, string | undefined][] = [["stem", r.stem], ["solution", r.solution], ["context", r.context], ["optA", r.optA], ["optB", r.optB], ["optC", r.optC], ["optD", r.optD]];
+    for (const [name, val] of fields) {
+      if (val === undefined) continue; // a numeric (NAT) row has no options
       const bad = findLatexImbalance(val);
       if (bad) latexErrors.push(`Q${r.n} ${name}: ${bad}`);
     }

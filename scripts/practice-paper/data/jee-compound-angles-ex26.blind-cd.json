@@ -1,0 +1,303 @@
+[
+  {
+    "ex": "O-III",
+    "n": 1,
+    "answer": "A",
+    "workings": [
+      "\\(P(x) = (x - \\cos 36^\\circ)(x - \\cos 84^\\circ)(x - \\cos 156^\\circ)\\), so the coefficient of \\(x^2\\) is \\(-(\\cos 36^\\circ + \\cos 84^\\circ + \\cos 156^\\circ)\\).",
+      "Put \\(\\theta = 36^\\circ\\); the three angles are \\(\\theta,\\ 120^\\circ - \\theta,\\ 120^\\circ + \\theta\\).",
+      "\\(\\cos(120^\\circ - \\theta) + \\cos(120^\\circ + \\theta) = 2\\cos 120^\\circ \\cos\\theta = -\\cos\\theta\\)",
+      "Hence \\(\\cos 36^\\circ + \\cos 84^\\circ + \\cos 156^\\circ = \\cos\\theta - \\cos\\theta = 0\\).",
+      "Coefficient of \\(x^2 = -0 = 0\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "ex": "O-III",
+    "n": 2,
+    "answer": "C",
+    "workings": [
+      "Coefficient of \\(x = \\cos 36^\\circ\\cos 84^\\circ + \\cos 36^\\circ\\cos 156^\\circ + \\cos 84^\\circ\\cos 156^\\circ\\).",
+      "From the previous part \\(\\cos 36^\\circ + \\cos 84^\\circ + \\cos 156^\\circ = 0\\).",
+      "Squaring that sum: \\(0 = \\sum\\cos^2 + 2\\sum\\cos\\cos\\), so the coefficient of \\(x\\) equals \\(-\\dfrac{1}{2}\\sum\\cos^2\\).",
+      "\\(\\sum\\cos^2 = \\dfrac{3 + \\cos 72^\\circ + \\cos 168^\\circ + \\cos 312^\\circ}{2}\\)",
+      "Since \\(168^\\circ = 240^\\circ - 72^\\circ\\) and \\(312^\\circ = 240^\\circ + 72^\\circ\\): \\(\\cos 168^\\circ + \\cos 312^\\circ = 2\\cos 240^\\circ\\cos 72^\\circ = -\\cos 72^\\circ\\).",
+      "So \\(\\cos 72^\\circ + \\cos 168^\\circ + \\cos 312^\\circ = 0\\) and \\(\\sum\\cos^2 = \\dfrac{3}{2}\\).",
+      "Coefficient of \\(x = -\\dfrac{1}{2}\\cdot\\dfrac{3}{2} = -\\dfrac{3}{4}\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "ex": "O-III",
+    "n": 3,
+    "answer": "B",
+    "workings": [
+      "Absolute term \\(= P(0) = -\\cos 36^\\circ\\cos 84^\\circ\\cos 156^\\circ\\).",
+      "With \\(\\theta = 36^\\circ\\) the angles are \\(\\theta,\\ 120^\\circ - \\theta,\\ 120^\\circ + \\theta\\), and \\(\\cos\\theta\\cos(120^\\circ - \\theta)\\cos(120^\\circ + \\theta) = \\dfrac{\\cos 3\\theta}{4}\\).",
+      "\\(\\cos 36^\\circ\\cos 84^\\circ\\cos 156^\\circ = \\dfrac{\\cos 108^\\circ}{4} = \\dfrac{-\\sin 18^\\circ}{4}\\)",
+      "\\(\\sin 18^\\circ = \\dfrac{\\sqrt{5} - 1}{4}\\), so the product \\(= -\\dfrac{\\sqrt{5} - 1}{16}\\).",
+      "Absolute term \\(= -\\left(-\\dfrac{\\sqrt{5} - 1}{16}\\right) = \\dfrac{\\sqrt{5} - 1}{16}\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": ""
+  },
+  {
+    "ex": "O-III",
+    "n": 4,
+    "answer": "C",
+    "workings": [
+      "\\(a = \\cos\\alpha + \\cos\\beta = 2\\cos\\dfrac{\\alpha+\\beta}{2}\\cos\\dfrac{\\alpha-\\beta}{2}\\) and \\(b = \\sin\\alpha + \\sin\\beta = 2\\sin\\dfrac{\\alpha+\\beta}{2}\\cos\\dfrac{\\alpha-\\beta}{2}\\).",
+      "\\(\\theta\\) is the arithmetic mean of \\(\\alpha,\\beta\\), so \\(\\theta = \\dfrac{\\alpha+\\beta}{2}\\) and \\(\\tan\\theta = \\dfrac{b}{a}\\).",
+      "\\(\\sin 2\\theta = \\dfrac{2\\tan\\theta}{1+\\tan^2\\theta} = \\dfrac{2ab}{a^2+b^2}\\) and \\(\\cos 2\\theta = \\dfrac{1-\\tan^2\\theta}{1+\\tan^2\\theta} = \\dfrac{a^2-b^2}{a^2+b^2}\\).",
+      "\\(\\sin 2\\theta + \\cos 2\\theta = \\dfrac{a^2 + 2ab - b^2}{a^2+b^2} = 1 + \\dfrac{2ab - 2b^2}{a^2+b^2} = 1 + \\dfrac{2b(a-b)}{a^2+b^2}\\)",
+      "Comparing with \\(1 + \\dfrac{nb(a-b)}{a^2+b^2}\\) gives \\(n = 2\\)."
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Checked at three awkward (alpha, beta) pairs; the recovered n is 2.0 to 25 digits each time, so the matching is an identity in a and b, not a coincidence."
+  },
+  {
+    "ex": "O-III",
+    "n": 5,
+    "answer": "A",
+    "workings": [
+      "From the previous part \\(n = 2\\), so \\(x = \\sin^2 A\\).",
+      "\\(\\sin 2A = 2\\sin A\\cos A\\), \\(\\sin 3A = \\sin A\\,(3 - 4\\sin^2 A)\\), \\(\\sin 4A = 4\\sin A\\cos A\\cos 2A\\).",
+      "\\(\\sin A\\,\\sin 2A\\,\\sin 3A\\,\\sin 4A = 8\\sin^4 A\\,\\cos^2 A\\,(3 - 4\\sin^2 A)\\,\\cos 2A\\)",
+      "Now \\(\\sin^4 A = x^2\\), \\(\\cos^2 A = 1 - x\\), \\(3 - 4\\sin^2 A = 3 - 4x\\), \\(\\cos 2A = 1 - 2x\\).",
+      "\\(\\sin A\\,\\sin 2A\\,\\sin 3A\\,\\sin 4A = 8x^2(1-x)(3-4x)(1-2x)\\)",
+      "Degree in \\(x = 2 + 1 + 1 + 1 = 5\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The polynomial form was checked against the trigonometric product at four awkward values of the angle; the two agree to 50 digits."
+  },
+  {
+    "ex": "O-III",
+    "n": 6,
+    "answer": "B",
+    "workings": [
+      "From the previous part the degree is \\(p = 5\\), so the first term \\((p-5) + \\sin\\theta = \\sin\\theta\\); the G.P. is \\(\\sin\\theta,\\ \\cos\\theta,\\ \\tan\\theta\\).",
+      "G.P. condition: \\(\\cos^2\\theta = \\sin\\theta\\,\\tan\\theta = \\dfrac{\\sin^2\\theta}{\\cos\\theta}\\).",
+      "\\(\\cos^3\\theta = \\sin^2\\theta = 1 - \\cos^2\\theta\\). Write \\(c = \\cos\\theta\\), so \\(c^3 = 1 - c^2\\).",
+      "\\(c^9 = (1-c^2)^3 = 1 - 3c^2 + 3c^4 - c^6\\), \\(c^6 = (1-c^2)^2 = 1 - 2c^2 + c^4\\), \\(3c^5 = 3c^2(1-c^2) = 3c^2 - 3c^4\\).",
+      "Adding: \\(c^9 + c^6 + 3c^5 = 2 - 2c^2 + c^4 - c^6\\).",
+      "Substituting \\(c^6 = 1 - 2c^2 + c^4\\): \\(c^9 + c^6 + 3c^5 = 2 - 2c^2 + c^4 - 1 + 2c^2 - c^4 = 1\\).",
+      "\\(\\cos^9\\theta + \\cos^6\\theta + 3\\cos^5\\theta - 1 = 1 - 1 = 0\\)"
+    ],
+    "difficulty": "HARD",
+    "subtopic": "Conditional Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The printed '+' joining the bracket to the sine is the only coherent reading: if it were a comma the G.P. would open with (p-5) = 0, and a G.P. cannot carry a zero term. With p = 5 the first term collapses to sin(theta) and the condition is the standard one. Verified by solving c^3 + c^2 - 1 = 0 numerically (c = 0.7548776662...) and evaluating the expression directly: 0 to 30 digits."
+  },
+  {
+    "ex": "O-III",
+    "n": 9,
+    "answer": "A",
+    "workings": [
+      "(I) Using \\(\\tan\\theta\\,\\tan(60^\\circ - \\theta)\\,\\tan(60^\\circ + \\theta) = \\tan 3\\theta\\) with \\(\\theta = 20^\\circ\\): \\(\\tan 20^\\circ\\tan 40^\\circ\\tan 80^\\circ = \\tan 60^\\circ = \\sqrt{3}\\).",
+      "So (I) \\(= \\sqrt{3}\\cdot\\tan 60^\\circ = \\sqrt{3}\\cdot\\sqrt{3} = 3\\), which is an odd natural number and equals three.",
+      "(II) \\(\\sin^4 t = \\dfrac{1 - 2\\cos 2t + \\cos^2 2t}{4}\\). Over \\(t = \\dfrac{\\pi}{16},\\dfrac{3\\pi}{16},\\dfrac{5\\pi}{16},\\dfrac{7\\pi}{16}\\) the angles \\(2t\\) are \\(\\dfrac{\\pi}{8},\\dfrac{3\\pi}{8},\\dfrac{5\\pi}{8},\\dfrac{7\\pi}{8}\\), which cancel in pairs so \\(\\sum\\cos 2t = 0\\).",
+      "\\(\\sum\\cos^2 2t = \\dfrac{4 + \\sum\\cos 4t}{2}\\), and \\(4t\\) runs over \\(\\dfrac{\\pi}{4},\\dfrac{3\\pi}{4},\\dfrac{5\\pi}{4},\\dfrac{7\\pi}{4}\\) so \\(\\sum\\cos 4t = 0\\) and \\(\\sum\\cos^2 2t = 2\\).",
+      "\\(\\sum\\sin^4 t = \\dfrac{4 - 0 + 2}{4} = \\dfrac{3}{2}\\), so (II) \\(= 4\\cdot\\dfrac{3}{2} = 6\\), an even natural number and equal to six.",
+      "(III) From \\(\\cot\\phi - \\tan\\phi = 2\\cot 2\\phi\\) we get \\(\\tan\\phi = \\cot\\phi - 2\\cot 2\\phi\\). Telescoping, \\(\\tan\\alpha + 2\\tan 2\\alpha + 4\\tan 4\\alpha = \\cot\\alpha - 8\\cot 8\\alpha\\).",
+      "So \\(\\tan\\alpha + 2\\tan 2\\alpha + 4\\tan 4\\alpha + 8\\cot 8\\alpha = \\cot\\alpha = 1\\cdot\\cot(1\\cdot\\alpha)\\), giving \\(\\lambda = 1\\), an odd natural number and equal to one.",
+      "(IV) \\(\\cos 3\\phi = \\cos\\phi\\,(4\\cos^2\\phi - 3)\\), so \\(4\\cos^2\\phi - 3 = \\dfrac{\\cos 3\\phi}{\\cos\\phi}\\).",
+      "\\((4\\cos^2 9^\\circ - 3)(4\\cos^2 27^\\circ - 3) = \\dfrac{\\cos 27^\\circ}{\\cos 9^\\circ}\\cdot\\dfrac{\\cos 81^\\circ}{\\cos 27^\\circ} = \\dfrac{\\cos 81^\\circ}{\\cos 9^\\circ} = \\dfrac{\\sin 9^\\circ}{\\cos 9^\\circ} = \\tan 9^\\circ\\), so \\(k = 9\\), an odd natural number and equal to nine.",
+      "Required pairings: (I) odd natural and three; (II) even natural and six; (III) odd natural and one; (IV) odd natural and nine. Exactly one printed alternative carries all four."
+    ],
+    "difficulty": "HARD",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "All four rows evaluated numerically at 50 digits: (I) = 3.0, (II) = 6.0, (III) lhs/cot(alpha) = 1.0 at three awkward alpha values, (IV) product = tan 9 deg to 25 digits. Only one printed alternative reproduces every pairing; the other three each break on the first row or the second."
+  },
+  {
+    "ex": "O-IV",
+    "n": 1,
+    "answer": 5,
+    "workings": [
+      "\\(A\\) is acute with \\(\\sin A = \\dfrac{4}{5}\\), so \\(\\cos A = \\dfrac{3}{5}\\); since \\(A = 3B\\) this reads \\(\\sin 3B = \\dfrac{4}{5}\\), \\(\\cos 3B = \\dfrac{3}{5}\\).",
+      "Equivalently \\(3 = 5\\cos 3B\\) and \\(4 = 5\\sin 3B\\).",
+      "\\(3\\sin B - 4\\cos B = 5\\left(\\cos 3B\\,\\sin B - \\sin 3B\\,\\cos B\\right) = 5\\sin(B - 3B) = -5\\sin 2B\\)",
+      "\\(-5\\sin 2B = -10\\sin B\\cos B\\)",
+      "\\(3\\sec B - 4\\operatorname{cosec} B = \\dfrac{3\\sin B - 4\\cos B}{\\sin B\\cos B} = \\dfrac{-10\\sin B\\cos B}{\\sin B\\cos B} = -10\\)",
+      "\\(\\left|\\dfrac{-10}{2}\\right| = 5\\)"
+    ],
+    "difficulty": "HARD",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Confirmed numerically: with B = 17.710034118052 deg the quantity 3 sec B - 4 cosec B is -10.0 to 30 digits, and the identity 3 sin B - 4 cos B + 5 sin 2B evaluates to 0."
+  },
+  {
+    "ex": "O-IV",
+    "n": 2,
+    "answer": 3,
+    "workings": [
+      "The seventh roots of unity give \\(1 + 2\\left(\\cos\\dfrac{2\\pi}{7} + \\cos\\dfrac{4\\pi}{7} + \\cos\\dfrac{6\\pi}{7}\\right) = 0\\), so \\(\\cos\\dfrac{2\\pi}{7} + \\cos\\dfrac{4\\pi}{7} + \\cos\\dfrac{6\\pi}{7} = -\\dfrac{1}{2}\\).",
+      "The fourth printed term is \\(\\cos\\dfrac{7\\pi}{7} = \\cos\\pi = -1\\).",
+      "Total \\(= -\\dfrac{1}{2} + (-1) = -\\dfrac{3}{2}\\)",
+      "\\(-\\dfrac{\\ell}{2} = -\\dfrac{3}{2}\\), so \\(\\ell = 3\\)."
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The fourth term matters: the familiar three-term sum alone is -1/2, which would give a different value. The four-term sum evaluates to -1.5 exactly at 30 digits."
+  },
+  {
+    "ex": "O-IV",
+    "n": 3,
+    "answer": 3,
+    "workings": [
+      "A.P. condition: \\(2\\,(3\\cot\\theta) = \\cot(\\theta-\\alpha) + \\cot(\\theta+\\alpha)\\).",
+      "\\(\\cot(\\theta-\\alpha) + \\cot(\\theta+\\alpha) = \\dfrac{\\sin\\big((\\theta+\\alpha) + (\\theta-\\alpha)\\big)}{\\sin(\\theta-\\alpha)\\sin(\\theta+\\alpha)} = \\dfrac{\\sin 2\\theta}{\\sin^2\\theta - \\sin^2\\alpha}\\)",
+      "\\(\\dfrac{6\\cos\\theta}{\\sin\\theta} = \\dfrac{2\\sin\\theta\\cos\\theta}{\\sin^2\\theta - \\sin^2\\alpha}\\)",
+      "The restriction \\(\\theta \\neq \\dfrac{n\\pi}{2}\\) makes \\(\\cos\\theta \\neq 0\\) and \\(\\sin\\theta \\neq 0\\), so cancelling gives \\(6\\left(\\sin^2\\theta - \\sin^2\\alpha\\right) = 2\\sin^2\\theta\\).",
+      "\\(4\\sin^2\\theta = 6\\sin^2\\alpha\\), so \\(\\dfrac{\\sin^2\\theta}{\\sin^2\\alpha} = \\dfrac{3}{2}\\).",
+      "\\(\\dfrac{2\\sin^2\\theta}{\\sin^2\\alpha} = 3\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Conditional Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Checked by solving the A.P. condition for alpha at three awkward values of theta and evaluating the required ratio: 3.0 to 25 digits each time."
+  },
+  {
+    "ex": "O-IV",
+    "n": 4,
+    "answer": 2,
+    "workings": [
+      "\\(\\tan 3x - \\tan x = \\dfrac{\\sin 3x\\cos x - \\cos 3x\\sin x}{\\cos x\\cos 3x} = \\dfrac{\\sin 2x}{\\cos x\\cos 3x} = \\dfrac{2\\sin x\\cos x}{\\cos x\\cos 3x} = \\dfrac{2\\sin x}{\\cos 3x}\\)",
+      "So \\(\\dfrac{\\sin x}{\\cos 3x} = \\dfrac{\\tan 3x - \\tan x}{2}\\).",
+      "Applying this with \\(x = \\theta,\\ 3\\theta,\\ 9\\theta\\): \\(k_2 = \\dfrac{(\\tan 3\\theta - \\tan\\theta) + (\\tan 9\\theta - \\tan 3\\theta) + (\\tan 27\\theta - \\tan 9\\theta)}{2}\\).",
+      "The sum telescopes: \\(k_2 = \\dfrac{\\tan 27\\theta - \\tan\\theta}{2} = \\dfrac{k_1}{2}\\).",
+      "\\(\\dfrac{k_1}{k_2} = 2\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Ratio evaluated at three awkward values of theta: 2.0 to 30 digits each time."
+  },
+  {
+    "ex": "O-IV",
+    "n": 5,
+    "answer": 1,
+    "workings": [
+      "\\(4\\sin 10^\\circ\\sin 70^\\circ = 2\\left(2\\sin 10^\\circ\\sin 70^\\circ\\right) = 2\\left(\\cos 60^\\circ - \\cos 80^\\circ\\right)\\)",
+      "\\(= 2\\left(\\dfrac{1}{2} - \\cos 80^\\circ\\right) = 1 - 2\\cos 80^\\circ\\)",
+      "\\(1 - 4\\sin 10^\\circ\\sin 70^\\circ = 1 - \\left(1 - 2\\cos 80^\\circ\\right) = 2\\cos 80^\\circ = 2\\sin 10^\\circ\\)",
+      "\\(\\dfrac{2\\sin 10^\\circ}{2\\sin 10^\\circ} = 1\\)"
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Evaluates to 1.0 at 30 digits."
+  },
+  {
+    "ex": "O-IV",
+    "n": 6,
+    "answer": 1.697,
+    "workings": [
+      "\\(0 < \\alpha,\\ \\beta < \\dfrac{\\pi}{4}\\), so \\(\\alpha+\\beta \\in \\left(0,\\dfrac{\\pi}{2}\\right)\\) and \\(\\alpha-\\beta \\in \\left(-\\dfrac{\\pi}{4},\\dfrac{\\pi}{4}\\right)\\); both branches are therefore forced.",
+      "\\(\\cos(\\alpha+\\beta) = \\dfrac{4}{5} \\Rightarrow \\sin(\\alpha+\\beta) = \\dfrac{3}{5}\\) and \\(\\tan(\\alpha+\\beta) = \\dfrac{3}{4}\\).",
+      "\\(\\sin(\\alpha-\\beta) = \\dfrac{5}{13} \\Rightarrow \\cos(\\alpha-\\beta) = \\dfrac{12}{13}\\) and \\(\\tan(\\alpha-\\beta) = \\dfrac{5}{12}\\).",
+      "\\(2\\alpha = (\\alpha+\\beta) + (\\alpha-\\beta)\\)",
+      "\\(\\tan 2\\alpha = \\dfrac{\\tan(\\alpha+\\beta) + \\tan(\\alpha-\\beta)}{1 - \\tan(\\alpha+\\beta)\\tan(\\alpha-\\beta)} = \\dfrac{\\dfrac{3}{4} + \\dfrac{5}{12}}{1 - \\dfrac{3}{4}\\cdot\\dfrac{5}{12}} = \\dfrac{\\dfrac{14}{12}}{\\dfrac{33}{48}}\\)",
+      "\\(\\tan 2\\alpha = \\dfrac{14}{12}\\cdot\\dfrac{48}{33} = \\dfrac{56}{33} = 1.6969\\ldots\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Exact value 56/33 = 1.696969...; recorded as a decimal only because this field must be a number. The branch choice is forced, not assumed: solving gives alpha = 29.7448812969 deg and beta = 7.1250163489 deg, both confirmed strictly inside (0, 45 deg). If the key records a fraction it will read 56/33; to two decimals it is 1.70."
+  },
+  {
+    "ex": "O-IV",
+    "n": 7,
+    "answer": 1.333,
+    "workings": [
+      "\\(35^\\circ = 60^\\circ - 25^\\circ\\) and \\(85^\\circ = 60^\\circ + 25^\\circ\\), so the three angles are \\(\\theta,\\ 60^\\circ - \\theta,\\ 60^\\circ + \\theta\\) with \\(\\theta = 25^\\circ\\).",
+      "\\(\\sin\\theta\\,\\sin(60^\\circ-\\theta)\\,\\sin(60^\\circ+\\theta) = \\dfrac{\\sin 3\\theta}{4}\\)",
+      "\\(\\sin 25^\\circ\\sin 35^\\circ\\sin 85^\\circ = \\dfrac{\\sin 75^\\circ}{4} = \\dfrac{1}{4}\\cdot\\dfrac{\\sqrt{6} + \\sqrt{2}}{4} = \\dfrac{\\sqrt{6} + \\sqrt{2}}{16}\\)",
+      "Hence \\(a = 6,\\ b = 2,\\ c = 16\\) and \\(a + b + c = 24\\).",
+      "\\(\\dfrac{a+b+c}{18} = \\dfrac{24}{18} = \\dfrac{4}{3} = 1.333\\ldots\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "MED",
+    "runnerUp": "3 - if the printed divisor is 8 rather than 18, since a + b + c = 24 and 24 divided by 8 is 3, which is the single-digit grid value this artificial divisor is evidently there to produce.",
+    "note": "FLAGGED, and the flag is on the divisor, not on the value. The product is exactly (sqrt6 + sqrt2)/16 (verified to 30 digits), and an exhaustive search over every c below 60 with a, b below 400 returns only three representations - (6, 2, 16), (24, 8, 32) and (54, 18, 48) - of which only the first is in lowest form. So a + b + c = 24 is settled. But 18 does not divide 24, so the printed divisor yields 4/3 rather than the integer this construction is aiming at. Recorded as 1.333; if the key carries an integer, the divisor is the thing to re-read on the page."
+  },
+  {
+    "ex": "O-IV",
+    "n": 8,
+    "answer": 5.75,
+    "workings": [
+      "If \\(u + v = 45^\\circ\\) then \\(\\tan(u+v) = 1\\) gives \\(\\tan u + \\tan v = 1 - \\tan u\\tan v\\), i.e. \\(\\tan u + \\tan v + \\tan u\\tan v = 1\\).",
+      "Hence \\((1 + \\tan u)(1 + \\tan v) = 1 + \\tan u + \\tan v + \\tan u\\tan v = 2\\).",
+      "Pair the factors \\(1^\\circ\\) with \\(44^\\circ\\), \\(2^\\circ\\) with \\(43^\\circ\\), and so on down to \\(22^\\circ\\) with \\(23^\\circ\\): that is \\(22\\) pairs covering every angle from \\(1^\\circ\\) to \\(44^\\circ\\), each pair contributing \\(2\\).",
+      "The one unpaired factor is \\(1 + \\tan 45^\\circ = 2\\).",
+      "Product \\(= 2^{22}\\cdot 2 = 2^{23}\\), so \\(n = 23\\).",
+      "\\(\\dfrac{n}{4} = \\dfrac{23}{4} = 5.75\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "MED",
+    "runnerUp": "23 - if the key records n itself rather than n divided by 4. n = 23 is certain, so an integer key can only come from a different divisor (or from no divisor at all).",
+    "note": "FLAGGED, again on the divisor rather than the value. The product was evaluated directly at 50 digits and equals 8388608 = 2^23 to the last place, so n = 23 is not in doubt. 23 is prime, so 4 cannot divide it for any correct n and the printed divisor cannot produce an integer. Recorded as 5.75, which a two-decimal numerical grid does accept."
+  },
+  {
+    "ex": "O-IV",
+    "n": 9,
+    "answer": 0.04,
+    "workings": [
+      "\\(\\tan 81^\\circ = \\cot 9^\\circ\\) and \\(\\tan 63^\\circ = \\cot 27^\\circ\\).",
+      "Bracket \\(= \\left(\\tan 9^\\circ + \\cot 9^\\circ\\right) - \\left(\\tan 27^\\circ + \\cot 27^\\circ\\right)\\)",
+      "\\(\\tan\\phi + \\cot\\phi = \\dfrac{\\sin^2\\phi + \\cos^2\\phi}{\\sin\\phi\\cos\\phi} = \\dfrac{2}{\\sin 2\\phi}\\), so the bracket \\(= \\dfrac{2}{\\sin 18^\\circ} - \\dfrac{2}{\\sin 54^\\circ}\\).",
+      "\\(\\sin 18^\\circ = \\dfrac{\\sqrt{5}-1}{4}\\) and \\(\\sin 54^\\circ = \\dfrac{\\sqrt{5}+1}{4}\\).",
+      "Bracket \\(= \\dfrac{8}{\\sqrt{5}-1} - \\dfrac{8}{\\sqrt{5}+1} = 8\\cdot\\dfrac{(\\sqrt{5}+1) - (\\sqrt{5}-1)}{5-1} = 8\\cdot\\dfrac{2}{4} = 4\\)",
+      "\\(\\dfrac{1}{100}\\cdot 4 = 0.04\\)"
+    ],
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Bracket evaluates to 4.0 at 30 digits, so the stated value is exactly 0.04."
+  },
+  {
+    "ex": "O-IV",
+    "n": 10,
+    "answer": 1.732,
+    "workings": [
+      "\\(\\cos 20^\\circ - \\cos 40^\\circ = 2\\sin 30^\\circ\\sin 10^\\circ = \\sin 10^\\circ\\)",
+      "\\(2\\cos 40^\\circ - \\cos 20^\\circ = \\cos 40^\\circ - \\left(\\cos 20^\\circ - \\cos 40^\\circ\\right) = \\cos 40^\\circ - \\sin 10^\\circ\\)",
+      "\\(\\sin 10^\\circ = \\cos 80^\\circ\\), so \\(2\\cos 40^\\circ - \\cos 20^\\circ = \\cos 40^\\circ - \\cos 80^\\circ = 2\\sin 60^\\circ\\sin 20^\\circ = \\sqrt{3}\\,\\sin 20^\\circ\\).",
+      "\\(\\dfrac{\\sqrt{3}\\,\\sin 20^\\circ}{\\sin 20^\\circ} = \\sqrt{3} = 1.7320508\\ldots\\)"
+    ],
+    "difficulty": "EASY",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "Exact value is the square root of 3; recorded as a decimal only because this field must be a number. Matches sqrt(3) to 30 digits. To two decimals a grid would carry 1.73."
+  }
+]

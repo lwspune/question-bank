@@ -1,0 +1,269 @@
+[
+  {
+    "n": 16,
+    "answer": "A",
+    "solution": "Use \\(\\tan(A+B)=\\dfrac{\\tan A+\\tan B}{1-\\tan A\\tan B}\\) with \\(\\tan A=\\dfrac{\\sin A}{\\cos A}\\). Numerator: \\(\\dfrac{\\sin A}{\\cos A}+\\dfrac{n\\sin A\\cos A}{1-n\\cos^2 A}=\\dfrac{\\sin A\\left[(1-n\\cos^2 A)+n\\cos^2 A\\right]}{\\cos A\\,(1-n\\cos^2 A)}=\\dfrac{\\sin A}{\\cos A\\,(1-n\\cos^2 A)}\\). Denominator: \\(1-\\dfrac{n\\sin^2 A}{1-n\\cos^2 A}=\\dfrac{1-n\\cos^2 A-n\\sin^2 A}{1-n\\cos^2 A}=\\dfrac{1-n}{1-n\\cos^2 A}\\). Dividing, the factor \\(1-n\\cos^2 A\\) cancels and \\(\\tan(A+B)=\\dfrac{\\sin A}{(1-n)\\cos A}\\). Verified numerically at \\((n,A)=(3,0.5),\\ (2.7,1.19),\\ (-1.4,0.73),\\ (5,0.31)\\); the variants carrying \\(n-1\\) or \\(n+1\\) in the denominator disagree at every one of them. Matches option A.",
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\tan B = \\dfrac{n\\sin A\\cos A}{1-n\\cos^2 A}\\), and \\(\\tan A = \\dfrac{\\sin A}{\\cos A}\\)",
+      "Using \\(\\tan(A+B)=\\dfrac{\\tan A+\\tan B}{1-\\tan A\\tan B}\\):",
+      "\\[\\text{Nr} = \\dfrac{\\sin A}{\\cos A}+\\dfrac{n\\sin A\\cos A}{1-n\\cos^2 A} = \\dfrac{\\sin A\\left[\\left(1-n\\cos^2 A\\right)+n\\cos^2 A\\right]}{\\cos A\\left(1-n\\cos^2 A\\right)} = \\dfrac{\\sin A}{\\cos A\\left(1-n\\cos^2 A\\right)}\\]",
+      "\\[\\text{Dr} = 1-\\dfrac{n\\sin^2 A}{1-n\\cos^2 A} = \\dfrac{1-n\\cos^2 A-n\\sin^2 A}{1-n\\cos^2 A} = \\dfrac{1-n}{1-n\\cos^2 A}\\]",
+      "\\[\\tan(A+B) = \\dfrac{\\sin A}{\\cos A\\left(1-n\\cos^2 A\\right)}\\times\\dfrac{1-n\\cos^2 A}{1-n} = \\dfrac{\\sin A}{(1-n)\\cos A}\\]"
+    ]
+  },
+  {
+    "n": 17,
+    "answer": "D",
+    "solution": "\\(\\frac{\\pi}{18}=10^\\circ\\), so the expression is \\(\\dfrac{1}{\\sin 10^\\circ}-\\dfrac{\\sqrt{3}}{\\cos 10^\\circ}=\\dfrac{\\cos 10^\\circ-\\sqrt{3}\\sin 10^\\circ}{\\sin 10^\\circ\\cos 10^\\circ}\\). The numerator is \\(2\\left(\\tfrac{1}{2}\\cos 10^\\circ-\\tfrac{\\sqrt{3}}{2}\\sin 10^\\circ\\right)=2\\left(\\cos 60^\\circ\\cos 10^\\circ-\\sin 60^\\circ\\sin 10^\\circ\\right)=2\\cos 70^\\circ=2\\sin 20^\\circ\\), and the denominator is \\(\\tfrac{1}{2}\\sin 20^\\circ\\). Hence the value is \\(\\dfrac{2\\sin 20^\\circ}{\\tfrac{1}{2}\\sin 20^\\circ}=4\\), confirmed numerically as \\(4.000\\ldots\\) to 25 decimal places. Since \\(4\\) is a positive integer it is a natural number; it is therefore not a surd, not non-integral, and not negative. Matches option D.",
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\dfrac{\\pi}{18}=10^\\circ\\), so the expression is \\(\\dfrac{1}{\\sin 10^\\circ}-\\dfrac{\\sqrt{3}}{\\cos 10^\\circ}\\)",
+      "\\[= \\dfrac{\\cos 10^\\circ-\\sqrt{3}\\sin 10^\\circ}{\\sin 10^\\circ\\cos 10^\\circ}\\]",
+      "Take \\(2\\) out of the numerator and use \\(\\cos 60^\\circ=\\tfrac{1}{2}\\), \\(\\sin 60^\\circ=\\tfrac{\\sqrt{3}}{2}\\):",
+      "\\[\\text{Nr} = 2\\left(\\cos 60^\\circ\\cos 10^\\circ-\\sin 60^\\circ\\sin 10^\\circ\\right) = 2\\cos 70^\\circ = 2\\sin 20^\\circ\\]",
+      "\\[\\text{Dr} = \\sin 10^\\circ\\cos 10^\\circ = \\tfrac{1}{2}\\sin 20^\\circ\\]",
+      "\\[= \\dfrac{2\\sin 20^\\circ}{\\tfrac{1}{2}\\sin 20^\\circ} = 4,\\ \\text{a natural number}\\]"
+    ]
+  },
+  {
+    "n": 18,
+    "answer": "D",
+    "solution": "Put \\(y=30^\\circ-x\\). Then \\(\\cot x=\\tan(90^\\circ-x)=\\tan(60^\\circ+y)\\), \\(\\cot(60^\\circ+x)=\\tan(30^\\circ-x)=\\tan y\\), and \\(\\cot(120^\\circ+x)=\\tan(-30^\\circ-x)=\\tan(y-60^\\circ)=\\tan(y+120^\\circ)\\) by the period \\(180^\\circ\\). So the sum is \\(\\tan y+\\tan(y+60^\\circ)+\\tan(y+120^\\circ)=3\\tan 3y\\), and \\(3y=90^\\circ-3x\\) gives \\(\\tan 3y=\\cot 3x\\). Hence the sum equals \\(3\\cot 3x\\). Substituting \\(\\tan 3x=\\dfrac{3\\tan x-\\tan^3 x}{1-3\\tan^2 x}\\) gives \\(3\\cot 3x=\\dfrac{3-9\\tan^2 x}{3\\tan x-\\tan^3 x}\\), which is the printed form. Numerical check at \\(x=10^\\circ,\\ 17.3^\\circ,\\ 41.9^\\circ,\\ 7.1^\\circ\\) matches that form exactly. Note that the bare value \\(\\tan 3x\\) agrees only by coincidence at \\(x=20^\\circ\\), where \\(3\\cot 60^\\circ=\\sqrt{3}=\\tan 60^\\circ\\): at \\(x=10^\\circ\\) the sum is \\(5.19615\\) while \\(\\tan 3x=0.57735\\). The value \\(\\cot 3x\\) is out by a factor of \\(3\\). Matches option D.",
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\cot x+\\cot\\left(60^\\circ+x\\right)+\\cot\\left(120^\\circ+x\\right)\\)",
+      "Put \\(y=30^\\circ-x\\). Then \\(\\cot x=\\tan\\left(90^\\circ-x\\right)=\\tan\\left(60^\\circ+y\\right)\\), \\(\\cot\\left(60^\\circ+x\\right)=\\tan\\left(30^\\circ-x\\right)=\\tan y\\), and \\(\\cot\\left(120^\\circ+x\\right)=\\tan\\left(-30^\\circ-x\\right)=\\tan\\left(y+120^\\circ\\right)\\) by the period \\(180^\\circ\\).",
+      "\\[\\text{Sum} = \\tan y+\\tan\\left(y+60^\\circ\\right)+\\tan\\left(y+120^\\circ\\right) = 3\\tan 3y\\]",
+      "\\(3y=90^\\circ-3x\\), so \\(\\tan 3y=\\cot 3x\\) and the sum is \\(3\\cot 3x\\).",
+      "Substituting \\(\\tan 3x=\\dfrac{3\\tan x-\\tan^3 x}{1-3\\tan^2 x}\\):",
+      "\\[3\\cot 3x = \\dfrac{3\\left(1-3\\tan^2 x\\right)}{3\\tan x-\\tan^3 x} = \\dfrac{3-9\\tan^2 x}{3\\tan x-\\tan^3 x}\\]"
+    ]
+  },
+  {
+    "n": 19,
+    "answer": "D",
+    "solution": "Use \\(1-\\sin x=\\left(\\sin\\frac{x}{2}-\\cos\\frac{x}{2}\\right)^2\\) and \\(1+\\sin x=\\left(\\sin\\frac{x}{2}+\\cos\\frac{x}{2}\\right)^2\\). For \\(\\frac{5\\pi}{2}<x<3\\pi\\) we have \\(\\frac{x}{2}\\in\\left(\\frac{5\\pi}{4},\\frac{3\\pi}{2}\\right)\\), a third-quadrant angle in which \\(\\left|\\sin\\frac{x}{2}\\right|\\ge\\left|\\cos\\frac{x}{2}\\right|\\); hence \\(\\sin\\frac{x}{2}<0\\), \\(\\cos\\frac{x}{2}<0\\), \\(\\sin\\frac{x}{2}-\\cos\\frac{x}{2}\\le 0\\) and \\(\\sin\\frac{x}{2}+\\cos\\frac{x}{2}<0\\). Taking the positive square roots, \\(\\sqrt{1-\\sin x}=\\cos\\frac{x}{2}-\\sin\\frac{x}{2}\\) and \\(\\sqrt{1+\\sin x}=-\\left(\\sin\\frac{x}{2}+\\cos\\frac{x}{2}\\right)\\). The numerator becomes \\(-2\\sin\\frac{x}{2}\\) and the denominator \\(2\\cos\\frac{x}{2}\\), so the expression is \\(-\\tan\\frac{x}{2}\\). Checked at \\(x=2.55\\pi,\\ 2.6\\pi,\\ 2.75\\pi,\\ 2.9\\pi,\\ 2.99\\pi\\): the expression is negative throughout and equals \\(-\\tan\\frac{x}{2}\\) exactly, whereas \\(\\tan\\frac{x}{2}\\) has the wrong sign and both cotangent forms have the wrong magnitude. Matches option D.",
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\dfrac{\\sqrt{1-\\sin x}+\\sqrt{1+\\sin x}}{\\sqrt{1-\\sin x}-\\sqrt{1+\\sin x}}\\), where \\(1-\\sin x=\\left(\\sin\\tfrac{x}{2}-\\cos\\tfrac{x}{2}\\right)^2\\) and \\(1+\\sin x=\\left(\\sin\\tfrac{x}{2}+\\cos\\tfrac{x}{2}\\right)^2\\)",
+      "For \\(\\tfrac{5\\pi}{2}<x<3\\pi\\) we have \\(\\tfrac{x}{2}\\in\\left(\\tfrac{5\\pi}{4},\\tfrac{3\\pi}{2}\\right)\\), a third-quadrant angle with \\(\\left|\\sin\\tfrac{x}{2}\\right|\\ge\\left|\\cos\\tfrac{x}{2}\\right|\\), so \\(\\sin\\tfrac{x}{2}-\\cos\\tfrac{x}{2}\\le 0\\) and \\(\\sin\\tfrac{x}{2}+\\cos\\tfrac{x}{2}<0\\).",
+      "Taking the positive square roots: \\(\\sqrt{1-\\sin x}=\\cos\\tfrac{x}{2}-\\sin\\tfrac{x}{2}\\) and \\(\\sqrt{1+\\sin x}=-\\sin\\tfrac{x}{2}-\\cos\\tfrac{x}{2}\\).",
+      "\\[\\text{Nr} = \\left(\\cos\\tfrac{x}{2}-\\sin\\tfrac{x}{2}\\right)+\\left(-\\sin\\tfrac{x}{2}-\\cos\\tfrac{x}{2}\\right) = -2\\sin\\tfrac{x}{2}\\]",
+      "\\[\\text{Dr} = \\left(\\cos\\tfrac{x}{2}-\\sin\\tfrac{x}{2}\\right)-\\left(-\\sin\\tfrac{x}{2}-\\cos\\tfrac{x}{2}\\right) = 2\\cos\\tfrac{x}{2}\\]",
+      "\\[= \\dfrac{-2\\sin\\frac{x}{2}}{2\\cos\\frac{x}{2}} = -\\tan\\dfrac{x}{2}\\]"
+    ]
+  },
+  {
+    "n": 20,
+    "answer": "B",
+    "solution": "Pair the terms. From \\(\\cot\\theta-\\tan\\theta=2\\cot 2\\theta\\), \\(\\cot 7\\tfrac{1}{2}^\\circ-\\tan 7\\tfrac{1}{2}^\\circ=2\\cot 15^\\circ=2\\left(2+\\sqrt{3}\\right)=4+2\\sqrt{3}\\). From \\(\\tan\\theta-\\cot\\theta=-2\\cot 2\\theta\\), \\(\\tan 67\\tfrac{1}{2}^\\circ-\\cot 67\\tfrac{1}{2}^\\circ=-2\\cot 135^\\circ=2\\). The total is \\(6+2\\sqrt{3}=2\\left(3+\\sqrt{3}\\right)\\approx 9.4641016\\), confirmed numerically to 25 decimal places. That value is irrational, so it is not a rational number; and as printed, \\(2\\left(3+2\\sqrt{3}\\right)\\approx 12.9282\\) and \\(2\\left(3-\\sqrt{3}\\right)\\approx 2.5359\\) are both different from it. The only statement that is true of the value is that it is irrational. Matches option B.",
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "MED",
+    "runnerUp": "C - if the printed \\(2(3+2\\sqrt{3})\\) is a misprint for \\(2(3+\\sqrt{3})\\), that option would equal the derived value \\(6+2\\sqrt{3}\\) exactly and would then be the intended key (both it and the irrationality statement would be true, and a value option normally outranks a type option).",
+    "note": "The exact value is \\(6+2\\sqrt{3}=2(3+\\sqrt{3})\\approx 9.4641\\). Neither printed numeric option equals it: \\(2(3+2\\sqrt{3})\\approx 12.9282\\) and \\(2(3-\\sqrt{3})\\approx 2.5359\\). As printed, only the irrationality statement is true, hence the answer given. The near-miss between the derived \\(2(3+\\sqrt{3})\\) and the printed \\(2(3+2\\sqrt{3})\\) looks like a possible print defect in the option and is worth checking against the page.",
+    "workings": [
+      "\\(\\left(\\cot 7\\tfrac{1}{2}^\\circ-\\tan 7\\tfrac{1}{2}^\\circ\\right)+\\left(\\tan 67\\tfrac{1}{2}^\\circ-\\cot 67\\tfrac{1}{2}^\\circ\\right)\\)",
+      "Using \\(\\cot\\theta-\\tan\\theta=2\\cot 2\\theta\\):",
+      "\\[\\cot 7\\tfrac{1}{2}^\\circ-\\tan 7\\tfrac{1}{2}^\\circ = 2\\cot 15^\\circ = 2\\left(2+\\sqrt{3}\\right) = 4+2\\sqrt{3}\\]",
+      "\\[\\tan 67\\tfrac{1}{2}^\\circ-\\cot 67\\tfrac{1}{2}^\\circ = -2\\cot 135^\\circ = 2\\]",
+      "\\[= \\left(4+2\\sqrt{3}\\right)+2 = 6+2\\sqrt{3}\\approx 9.4641\\]",
+      "\\(6+2\\sqrt{3}\\) is irrational, so the value is an irrational number."
+    ]
+  },
+  {
+    "n": 21,
+    "answer": "D",
+    "solution": "\\(\\cos 4\\theta=1-2\\sin^2 2\\theta\\), so \\(x+y=3-\\cos 4\\theta=2+2\\sin^2 2\\theta\\) while \\(x-y=4\\sin 2\\theta\\). Adding and subtracting, \\(x=1+2\\sin 2\\theta+\\sin^2 2\\theta=\\left(1+\\sin 2\\theta\\right)^2\\) and \\(y=1-2\\sin 2\\theta+\\sin^2 2\\theta=\\left(1-\\sin 2\\theta\\right)^2\\). Since \\(\\left|\\sin 2\\theta\\right|\\le 1\\), both bases are non-negative, so the positive square roots are \\(\\sqrt{x}=1+\\sin 2\\theta\\) and \\(\\sqrt{y}=1-\\sin 2\\theta\\), giving \\(\\sqrt{x}+\\sqrt{y}=2\\) for every \\(\\theta\\). Checked at \\(\\theta=0.31,\\ 0.73,\\ 1.19,\\ 2.4,\\ -0.5\\): \\(\\sqrt{x}+\\sqrt{y}=2\\) every time and never \\(16\\), whereas \\(x^4+y^4\\) takes the values \\(39.04,\\ 249.79,\\ 66.57,\\ 252.10,\\ 132.23\\) and so is not the constant \\(9\\), and \\(x^3+y^3\\ne 2\\left(x^2+y^2\\right)\\) at any of them. Matches option D.",
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The option printed as \\(\\sqrt{x}+\\sqrt{y}=16\\) is false as printed (the sum is identically \\(2\\)); it reads as a distractor for the correct relation, which is printed separately, so the question is answerable either way.",
+    "workings": [
+      "\\(x+y=3-\\cos 4\\theta\\) and \\(x-y=4\\sin 2\\theta\\)",
+      "Using \\(\\cos 4\\theta=1-2\\sin^2 2\\theta\\):",
+      "\\[x+y = 3-\\left(1-2\\sin^2 2\\theta\\right) = 2+2\\sin^2 2\\theta\\]",
+      "Adding and subtracting \\(x-y=4\\sin 2\\theta\\):",
+      "\\[x = 1+2\\sin 2\\theta+\\sin^2 2\\theta = \\left(1+\\sin 2\\theta\\right)^2,\\qquad y = 1-2\\sin 2\\theta+\\sin^2 2\\theta = \\left(1-\\sin 2\\theta\\right)^2\\]",
+      "\\(\\left|\\sin 2\\theta\\right|\\le 1\\), so both bases are non-negative and the positive square roots are \\(\\sqrt{x}=1+\\sin 2\\theta\\), \\(\\sqrt{y}=1-\\sin 2\\theta\\).",
+      "\\[\\sqrt{x}+\\sqrt{y} = \\left(1+\\sin 2\\theta\\right)+\\left(1-\\sin 2\\theta\\right) = 2\\ \\text{for every}\\ \\theta\\]"
+    ]
+  },
+  {
+    "n": 22,
+    "answer": "B",
+    "solution": "Expanding the squares and using \\(\\sin\\alpha\\sin\\beta+\\cos\\alpha\\cos\\beta=\\cos(\\alpha-\\beta)\\) on the three cross terms, \\(A^2+B^2=3+2\\left[\\cos\\tfrac{2\\pi}{7}+\\cos\\tfrac{6\\pi}{7}+\\cos\\tfrac{4\\pi}{7}\\right]\\). Those three cosines are in arithmetic progression, and \\(\\sum_{k=0}^{N-1}\\cos(a+kd)=\\dfrac{\\sin\\frac{Nd}{2}}{\\sin\\frac{d}{2}}\\cos\\left(a+\\tfrac{(N-1)d}{2}\\right)\\) with \\(a=\\tfrac{2\\pi}{7}\\), \\(d=\\tfrac{2\\pi}{7}\\), \\(N=3\\) gives \\(\\cos\\tfrac{2\\pi}{7}+\\cos\\tfrac{4\\pi}{7}+\\cos\\tfrac{6\\pi}{7}=-\\tfrac{1}{2}\\). Hence \\(A^2+B^2=3-1=2\\) and \\(\\sqrt{A^2+B^2}=\\sqrt{2}\\). Numerically \\(A=1.3228756555\\) and \\(B=-0.5\\), so \\(A^2+B^2=2\\) exactly and the root is \\(1.4142135624\\). Matches option B.",
+    "difficulty": "HARD",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\sqrt{A^2+B^2}\\), where the two given sums are the sine sum and the cosine sum of \\(\\tfrac{2\\pi}{7},\\tfrac{4\\pi}{7},\\tfrac{8\\pi}{7}\\).",
+      "Squaring and adding, each of the three cross-term pairs gives \\(\\sin\\alpha\\sin\\beta+\\cos\\alpha\\cos\\beta=\\cos(\\alpha-\\beta)\\):",
+      "\\[A^2+B^2 = 3+2\\left[\\cos\\tfrac{2\\pi}{7}+\\cos\\tfrac{6\\pi}{7}+\\cos\\tfrac{4\\pi}{7}\\right]\\]",
+      "These three cosines are in arithmetic progression; with \\(a=d=\\tfrac{2\\pi}{7}\\) and \\(N=3\\) in \\(\\sum_{k=0}^{N-1}\\cos(a+kd)=\\dfrac{\\sin\\frac{Nd}{2}}{\\sin\\frac{d}{2}}\\cos\\left(a+\\tfrac{(N-1)d}{2}\\right)\\):",
+      "\\[\\cos\\tfrac{2\\pi}{7}+\\cos\\tfrac{4\\pi}{7}+\\cos\\tfrac{6\\pi}{7} = -\\tfrac{1}{2}\\]",
+      "\\[A^2+B^2 = 3+2\\left(-\\tfrac{1}{2}\\right) = 2\\]",
+      "\\[\\sqrt{A^2+B^2} = \\sqrt{2}\\]"
+    ]
+  },
+  {
+    "n": 23,
+    "answer": "C",
+    "solution": "Expanding the tangent of a three-term sum, \\(\\tan(A+B+C)=\\dfrac{\\tan A+\\tan B+\\tan C-\\tan A\\tan B\\tan C}{1-\\left(\\tan A\\tan B+\\tan B\\tan C+\\tan C\\tan A\\right)}\\). The given relation makes the numerator vanish, so \\(\\tan(A+B+C)=0\\) and \\(A+B+C\\) is an integral multiple of \\(\\pi\\). The degenerate case in which the denominator vanishes as well cannot occur over the reals: writing \\(e_1,e_2,e_3\\) for the elementary symmetric functions of \\(\\tan A,\\tan B,\\tan C\\), the two conditions \\(e_1=e_3\\) and \\(e_2=1\\) turn the cubic \\(z^3-e_1z^2+e_2z-e_3\\) into \\(\\left(z-e_1\\right)\\left(z^2+1\\right)\\), whose only real root is \\(z=e_1\\); all three tangents are then equal to \\(e_1=3\\tan A\\), which forces \\(\\tan A=0\\) and contradicts \\(e_2=1\\). Being the angles of a triangle is only the case \\(n=1\\) and so is not forced, and requiring the sum of two of the angles to equal the third would force all three to vanish. Numerically the relation holds exactly for sums \\(0,\\ \\pi,\\ 2\\pi,\\ -\\pi\\) and fails (residual \\(2.326\\)) for a sum of \\(2.04\\). Matches option C.",
+    "difficulty": "MODERATE",
+    "subtopic": "Conditional Identities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "The chosen option is printed 'must be n integral multiple of \\(\\pi\\)' - a bare 'n' where 'an' is evidently intended. Read as 'an integral multiple of \\(\\pi\\)' the statement is exactly the correct condition, so the misprint does not change the answer.",
+    "workings": [
+      "\\(\\tan A+\\tan B+\\tan C=\\tan A\\cdot\\tan B\\cdot\\tan C\\)",
+      "Using \\(\\tan(A+B+C)=\\dfrac{\\tan A+\\tan B+\\tan C-\\tan A\\tan B\\tan C}{1-\\left(\\tan A\\tan B+\\tan B\\tan C+\\tan C\\tan A\\right)}\\):",
+      "\\[\\text{Nr} = \\tan A+\\tan B+\\tan C-\\tan A\\tan B\\tan C = 0\\]",
+      "The denominator cannot vanish at the same time over the reals: writing \\(e_1,e_2,e_3\\) for the elementary symmetric functions of the three tangents, \\(e_1=e_3\\) and \\(e_2=1\\) turn \\(z^3-e_1z^2+e_2z-e_3\\) into \\(\\left(z-e_1\\right)\\left(z^2+1\\right)\\), whose only real root is \\(z=e_1\\); all three tangents are then equal to \\(e_1=3\\tan A\\), which forces \\(\\tan A=0\\) and contradicts \\(e_2=1\\).",
+      "\\[\\tan(A+B+C) = \\dfrac{0}{1-e_2} = 0\\]",
+      "Hence the sum of the three angles is an integral multiple of \\(\\pi\\)."
+    ]
+  },
+  {
+    "n": 24,
+    "answer": "D",
+    "solution": "Since \\(\\sin 3x=3\\sin x-4\\sin^3 x\\), for \\(x\\ne n\\pi\\) we get \\(f(x)=\\dfrac{\\sin 3x}{\\sin x}=3-4\\sin^2 x\\). Here \\(\\sin^2 x\\) runs over \\((0,1]\\): it equals \\(1\\) at \\(x=\\frac{\\pi}{2}\\), but it can never equal \\(0\\) precisely because \\(x\\ne n\\pi\\) is excluded. Hence \\(f\\) attains its least value \\(3-4=-1\\), and rises towards \\(3\\) as \\(\\sin^2 x\\to 0\\) without ever reaching it. The range is therefore \\([-1,3)\\), closed at the lower end and open at the upper. A dense scan of \\((0,\\pi)\\) returns a minimum of exactly \\(-1\\) and values climbing to \\(2.999999999\\) while never attaining \\(3\\), which rules out the closed interval \\([-1,3]\\). Matches option D.",
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Inequalities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(f(x)=\\dfrac{\\sin 3x}{\\sin x}\\), \\(x\\ne n\\pi\\)",
+      "Using \\(\\sin 3x=3\\sin x-4\\sin^3 x\\):",
+      "\\[f(x) = \\dfrac{3\\sin x-4\\sin^3 x}{\\sin x} = 3-4\\sin^2 x\\]",
+      "Since \\(x\\ne n\\pi\\) is excluded, \\(\\sin^2 x\\) runs over \\(\\left(0,1\\right]\\): it reaches \\(1\\) at \\(x=\\tfrac{\\pi}{2}\\) but can never reach \\(0\\).",
+      "\\[\\sin^2 x=1\\ \\Rightarrow\\ f(x)=3-4=-1\\ \\text{(attained)};\\qquad \\sin^2 x\\to 0\\ \\Rightarrow\\ f(x)\\to 3\\ \\text{(never attained)}\\]",
+      "\\[\\text{Range} = \\left[-1,\\,3\\right)\\]"
+    ]
+  },
+  {
+    "n": 25,
+    "answer": "D",
+    "solution": "Put \\(t=\\sin\\theta\\in[-1,1]\\), so the expression is \\(g(t)=2t^2-3t+2\\), an upward parabola whose vertex \\(t=\\frac{3}{4}\\) lies inside \\([-1,1]\\). The minimum is therefore \\(g\\left(\\frac{3}{4}\\right)=\\frac{9}{8}-\\frac{9}{4}+2=\\frac{7}{8}\\), and the maximum is at an endpoint: \\(g(-1)=2+3+2=7\\) and \\(g(1)=2-3+2=1\\), so the maximum is \\(7\\). A dense scan over \\(\\theta\\in[0,2\\pi]\\) returns a maximum of \\(7\\) and a minimum of \\(0.875\\). Note the minimum is positive, so no option carrying a negative minimum can be right. Matches option D.",
+    "difficulty": "EASY",
+    "subtopic": "Trigonometric Inequalities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(2\\sin^2\\theta-3\\sin\\theta+2\\); put \\(t=\\sin\\theta\\in\\left[-1,1\\right]\\), so \\(g(t)=2t^2-3t+2\\).",
+      "\\(g\\) is an upward parabola with vertex at \\(t=\\dfrac{-(-3)}{2\\cdot 2}=\\dfrac{3}{4}\\), which lies inside \\(\\left[-1,1\\right]\\), so the minimum is attained there:",
+      "\\[g\\left(\\tfrac{3}{4}\\right) = 2\\cdot\\tfrac{9}{16}-3\\cdot\\tfrac{3}{4}+2 = \\tfrac{9}{8}-\\tfrac{9}{4}+2 = \\tfrac{7}{8}\\]",
+      "The maximum is at an endpoint:",
+      "\\[g(-1) = 2+3+2 = 7,\\qquad g(1) = 2-3+2 = 1\\]",
+      "\\[\\text{Maximum} = 7,\\qquad \\text{Minimum} = \\tfrac{7}{8}\\]"
+    ]
+  },
+  {
+    "n": 26,
+    "answer": "A",
+    "solution": "With \\(u=\\theta+\\frac{\\pi}{6}\\), \\(\\sin u+\\cos u=\\sqrt{2}\\sin\\left(u+\\frac{\\pi}{4}\\right)\\), which is greatest when \\(u+\\frac{\\pi}{4}=\\frac{\\pi}{2}\\), that is \\(u=\\frac{\\pi}{4}\\). Then \\(\\theta=\\frac{\\pi}{4}-\\frac{\\pi}{6}=\\frac{3\\pi-2\\pi}{12}=\\frac{\\pi}{12}\\), which lies in \\(\\left(0,\\frac{\\pi}{2}\\right)\\), so the maximum value \\(\\sqrt{2}\\) is genuinely attained inside the interval rather than at an endpoint. A dense scan of \\(\\left(0,\\frac{\\pi}{2}\\right)\\) places the maximiser at \\(0.2618007\\) against \\(\\frac{\\pi}{12}=0.2617994\\), with maximum value \\(1.4142136\\). Matches option A.",
+    "difficulty": "EASY",
+    "subtopic": "Trigonometric Inequalities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\sin\\left(\\theta+\\tfrac{\\pi}{6}\\right)+\\cos\\left(\\theta+\\tfrac{\\pi}{6}\\right)\\); put \\(u=\\theta+\\dfrac{\\pi}{6}\\).",
+      "\\[\\sin u+\\cos u = \\sqrt{2}\\left(\\tfrac{1}{\\sqrt{2}}\\sin u+\\tfrac{1}{\\sqrt{2}}\\cos u\\right) = \\sqrt{2}\\sin\\left(u+\\tfrac{\\pi}{4}\\right)\\]",
+      "This is greatest when \\(u+\\dfrac{\\pi}{4}=\\dfrac{\\pi}{2}\\), that is \\(u=\\dfrac{\\pi}{4}\\).",
+      "\\[\\theta = \\dfrac{\\pi}{4}-\\dfrac{\\pi}{6} = \\dfrac{3\\pi-2\\pi}{12} = \\dfrac{\\pi}{12}\\]",
+      "\\(\\dfrac{\\pi}{12}\\) lies in \\(\\left(0,\\dfrac{\\pi}{2}\\right)\\), so the maximum \\(\\sqrt{2}\\) is genuinely attained inside the interval, at \\(\\theta=\\dfrac{\\pi}{12}\\)."
+    ]
+  },
+  {
+    "n": 27,
+    "answer": "B",
+    "solution": "Use \\(\\cos^2\\theta+3\\sin^2\\theta=1+2\\sin^2\\theta=2-\\cos 2\\theta\\) and \\(6\\sin\\theta\\cos\\theta=3\\sin 2\\theta\\). The expression becomes \\(2-\\cos 2\\theta-3\\sin 2\\theta+2=4-\\left(\\cos 2\\theta+3\\sin 2\\theta\\right)\\). Since \\(a\\cos\\phi+b\\sin\\phi\\) ranges over \\(\\left[-\\sqrt{a^2+b^2},\\ \\sqrt{a^2+b^2}\\right]\\), here \\(\\cos 2\\theta+3\\sin 2\\theta\\in\\left[-\\sqrt{10},\\ \\sqrt{10}\\right]\\), so the expression ranges over \\(\\left[4-\\sqrt{10},\\ 4+\\sqrt{10}\\right]\\) and its minimum is \\(4-\\sqrt{10}\\approx 0.8377223\\). A dense scan over a full period returns \\(0.8377223\\); note \\(4+\\sqrt{10}\\) is the maximum, not the minimum, and the value never reaches \\(0\\). Matches option B.",
+    "difficulty": "MODERATE",
+    "subtopic": "Trigonometric Inequalities",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\cos^2\\theta-6\\sin\\theta\\cos\\theta+3\\sin^2\\theta+2\\)",
+      "Using \\(\\cos^2\\theta+3\\sin^2\\theta=1+2\\sin^2\\theta=2-\\cos 2\\theta\\) and \\(6\\sin\\theta\\cos\\theta=3\\sin 2\\theta\\):",
+      "\\[= \\left(2-\\cos 2\\theta\\right)-3\\sin 2\\theta+2 = 4-\\left(\\cos 2\\theta+3\\sin 2\\theta\\right)\\]",
+      "Since \\(a\\cos\\phi+b\\sin\\phi\\) ranges over \\(\\left[-\\sqrt{a^2+b^2},\\ \\sqrt{a^2+b^2}\\right]\\), here \\(\\cos 2\\theta+3\\sin 2\\theta\\in\\left[-\\sqrt{10},\\ \\sqrt{10}\\right]\\).",
+      "\\[\\text{Expression}\\in\\left[4-\\sqrt{10},\\ 4+\\sqrt{10}\\right]\\]",
+      "\\[\\text{Minimum} = 4-\\sqrt{10}\\approx 0.8377\\]"
+    ]
+  },
+  {
+    "n": 28,
+    "answer": "B",
+    "solution": "Convert to cosines: \\(\\sin\\frac{\\pi}{14}=\\cos\\frac{3\\pi}{7}\\), \\(\\sin\\frac{3\\pi}{14}=\\cos\\frac{2\\pi}{7}\\), \\(\\sin\\frac{5\\pi}{14}=\\cos\\frac{\\pi}{7}\\), and \\(\\cos\\frac{3\\pi}{7}=-\\cos\\frac{4\\pi}{7}\\). The product therefore equals \\(-\\cos\\frac{\\pi}{7}\\cos\\frac{2\\pi}{7}\\cos\\frac{4\\pi}{7}\\). By the doubling identity \\(\\cos\\alpha\\cos 2\\alpha\\cos 4\\alpha=\\dfrac{\\sin 8\\alpha}{8\\sin\\alpha}\\) with \\(\\alpha=\\frac{\\pi}{7}\\), that triple product is \\(\\dfrac{\\sin\\frac{8\\pi}{7}}{8\\sin\\frac{\\pi}{7}}=\\dfrac{-\\sin\\frac{\\pi}{7}}{8\\sin\\frac{\\pi}{7}}=-\\dfrac{1}{8}\\). Hence the required value is \\(\\dfrac{1}{8}\\), confirmed numerically as \\(0.125\\) to 25 decimal places, which rules out \\(\\frac{1}{16}=0.0625\\). Matches option B.",
+    "difficulty": "MODERATE",
+    "subtopic": "Compound Angle Formulae and Values",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\sin\\dfrac{\\pi}{14}\\sin\\dfrac{3\\pi}{14}\\sin\\dfrac{5\\pi}{14}\\)",
+      "Convert to cosines: \\(\\sin\\tfrac{\\pi}{14}=\\cos\\tfrac{3\\pi}{7}\\), \\(\\sin\\tfrac{3\\pi}{14}=\\cos\\tfrac{2\\pi}{7}\\), \\(\\sin\\tfrac{5\\pi}{14}=\\cos\\tfrac{\\pi}{7}\\), and \\(\\cos\\tfrac{3\\pi}{7}=-\\cos\\tfrac{4\\pi}{7}\\).",
+      "\\[= -\\cos\\tfrac{\\pi}{7}\\cos\\tfrac{2\\pi}{7}\\cos\\tfrac{4\\pi}{7}\\]",
+      "Using the doubling identity \\(\\cos\\alpha\\cos 2\\alpha\\cos 4\\alpha=\\dfrac{\\sin 8\\alpha}{8\\sin\\alpha}\\) with \\(\\alpha=\\tfrac{\\pi}{7}\\):",
+      "\\[\\cos\\tfrac{\\pi}{7}\\cos\\tfrac{2\\pi}{7}\\cos\\tfrac{4\\pi}{7} = \\dfrac{\\sin\\frac{8\\pi}{7}}{8\\sin\\frac{\\pi}{7}} = \\dfrac{-\\sin\\frac{\\pi}{7}}{8\\sin\\frac{\\pi}{7}} = -\\dfrac{1}{8}\\]",
+      "\\[= -\\left(-\\tfrac{1}{8}\\right) = \\dfrac{1}{8}\\]"
+    ]
+  },
+  {
+    "n": 29,
+    "answer": "B",
+    "solution": "The denominator's angles satisfy \\(20^\\circ+50^\\circ+110^\\circ=180^\\circ\\), so the identity \\(\\sin A+\\sin B+\\sin C=4\\cos\\frac{A}{2}\\cos\\frac{B}{2}\\cos\\frac{C}{2}\\), which holds whenever \\(A+B+C=180^\\circ\\), gives \\(\\sin 20^\\circ+\\sin 50^\\circ+\\sin 110^\\circ=4\\cos 10^\\circ\\cos 25^\\circ\\cos 55^\\circ=4\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ\\). The numerator is \\(96\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ\\), so the entire product of sines cancels and the quotient is \\(\\dfrac{96}{4}=24\\). Numerically the numerator is \\(49.146173\\) and the denominator \\(2.0477572\\), whose quotient is \\(24\\) to 25 decimal places; the value is positive, so the negative option is excluded on sign alone. Matches option B.",
+    "difficulty": "HARD",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(\\dfrac{96\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ}{\\sin 20^\\circ+\\sin 50^\\circ+\\sin 110^\\circ}\\)",
+      "The denominator's angles satisfy \\(20^\\circ+50^\\circ+110^\\circ=180^\\circ\\), so \\(\\sin P+\\sin Q+\\sin R=4\\cos\\tfrac{P}{2}\\cos\\tfrac{Q}{2}\\cos\\tfrac{R}{2}\\) applies:",
+      "\\[\\text{Dr} = 4\\cos 10^\\circ\\cos 25^\\circ\\cos 55^\\circ = 4\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ\\]",
+      "\\[= \\dfrac{96\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ}{4\\sin 80^\\circ\\sin 65^\\circ\\sin 35^\\circ} = \\dfrac{96}{4} = 24\\]"
+    ]
+  },
+  {
+    "n": 30,
+    "answer": "C",
+    "solution": "The left side is \\(\\sum_{k=0}^{5}\\cos 2k\\theta\\), a sum of cosines in arithmetic progression with first term \\(0\\), common difference \\(d=2\\theta\\) and \\(N=6\\) terms. By \\(\\sum_{k=0}^{N-1}\\cos(a+kd)=\\dfrac{\\sin\\frac{Nd}{2}}{\\sin\\frac{d}{2}}\\cos\\left(a+\\tfrac{(N-1)d}{2}\\right)\\) this equals \\(\\dfrac{\\sin 6\\theta}{\\sin\\theta}\\cos 5\\theta\\), so \\(m=5\\), \\(n=6\\) and \\(m+n=11\\). The pair is unique in positive integers: \\(\\cos m\\theta\\sin n\\theta=\\tfrac{1}{2}\\left[\\sin(n+m)\\theta+\\sin(n-m)\\theta\\right]\\) must equal \\(\\tfrac{1}{2}\\left[\\sin 11\\theta+\\sin\\theta\\right]\\), forcing \\(n+m=11\\) and \\(n-m=1\\) (the alternative \\(n+m=1,\\ n-m=11\\) gives a negative \\(m\\)). Verified at \\(\\theta=0.3,\\ 0.31,\\ 0.73,\\ 1.19,\\ 2.4\\), where among the candidate pairs only \\((5,6)\\) reproduces the sum. Matches option C.",
+    "difficulty": "MODERATE",
+    "subtopic": "Sum-Product Transformations",
+    "confidence": "HIGH",
+    "runnerUp": "",
+    "note": "",
+    "workings": [
+      "\\(1+\\cos 2\\theta+\\cos 4\\theta+\\cos 6\\theta+\\cos 8\\theta+\\cos 10\\theta = \\sum_{k=0}^{5}\\cos 2k\\theta\\)",
+      "Cosines in arithmetic progression with first term \\(0\\), common difference \\(d=2\\theta\\) and \\(N=6\\) terms; using \\(\\sum_{k=0}^{N-1}\\cos(a+kd)=\\dfrac{\\sin\\frac{Nd}{2}}{\\sin\\frac{d}{2}}\\cos\\left(a+\\tfrac{(N-1)d}{2}\\right)\\):",
+      "\\[\\sum_{k=0}^{5}\\cos 2k\\theta = \\dfrac{\\sin 6\\theta}{\\sin\\theta}\\cos 5\\theta = \\dfrac{\\cos 5\\theta\\cdot\\sin 6\\theta}{\\sin\\theta}\\]",
+      "Comparing with \\(\\dfrac{\\cos m\\theta\\cdot\\sin n\\theta}{\\sin\\theta}\\) gives \\(m=5\\), \\(n=6\\). The pair is unique in positive integers, since \\(\\cos m\\theta\\sin n\\theta=\\tfrac{1}{2}\\left[\\sin(n+m)\\theta+\\sin(n-m)\\theta\\right]\\) must equal \\(\\tfrac{1}{2}\\left[\\sin 11\\theta+\\sin\\theta\\right]\\), forcing \\(n+m=11\\) and \\(n-m=1\\).",
+      "\\[m+n = 5+6 = 11\\]"
+    ]
+  }
+]

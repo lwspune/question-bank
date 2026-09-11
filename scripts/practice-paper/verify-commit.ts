@@ -14,7 +14,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { PAPERS, loadRecords, examIdOf, statusOf, recToParsedRow } from "./config";
+import { PAPERS, loadRecords, examIdOf, statusOf, kindOf, formatOf, recToParsedRow } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -40,7 +40,7 @@ async function main() {
   console.log(`\nverifying "${spec.title}"  (${recs.length} records, source_file=${spec.sourceFile})\n`);
 
   const SELECT =
-    "id,question_number,visibility,question_kind,solution,context,set_id,subtopic_id,source_file,content_hash,chapters(name,subjects(name))";
+    "id,question_number,visibility,question_kind,question_format,numeric_answer,pyq_year,solution,context,set_id,subtopic_id,source_file,content_hash,chapters(name,subjects(name))";
 
   // Rows this ingest OWNS — inserted under its own source_file.
   const { data: qData, error: qErr } = await c
@@ -88,9 +88,30 @@ async function main() {
 
   check(rows.length === expected.length, "every expected record resolves to a bank row",
     `${rows.length} resolved (${owned.length} own, ${mirrored.length} mirrored) vs ${expected.length} expected of ${recs.length} records`);
-  check(owned.every((q) => q.question_kind === "practice"),
-    "every row this ingest created is question_kind='practice'",
-    `${owned.length} own row(s)`);
+  // Per-RECORD kind: a booklet may reprint real past-year questions beside its own
+  // authored practice. A blanket 'practice' assertion would either fail on a correct
+  // mixed paper or, worse, pass while a PYQ sat mis-filed as practice.
+  const kindMismatch = expected
+    .map((r) => ({ r, q: rowOf.get(r.n) }))
+    .filter(({ r, q }) => q && q.source_file === spec.sourceFile && q.question_kind !== kindOf(r))
+    .map(({ r, q }) => `Q${r.n} want ${kindOf(r)} got ${q.question_kind}`);
+  check(kindMismatch.length === 0, "every row this ingest created carries its record's question_kind",
+    kindMismatch.length ? kindMismatch.join("; ") : `${owned.length} own row(s)`);
+
+  const yearMismatch = expected
+    .filter((r) => kindOf(r) === "pyq")
+    .map((r) => ({ r, q: rowOf.get(r.n) }))
+    .filter(({ r, q }) => q && q.source_file === spec.sourceFile && q.pyq_year !== r.pyqYear)
+    .map(({ r, q }) => `Q${r.n} want ${r.pyqYear} got ${q.pyq_year}`);
+  check(yearMismatch.length === 0, "every pyq row carries its printed sitting year",
+    yearMismatch.length ? yearMismatch.join("; ") : `${expected.filter((r) => kindOf(r) === "pyq").length} pyq row(s)`);
+
+  const fmtMismatch = expected
+    .map((r) => ({ r, q: rowOf.get(r.n) }))
+    .filter(({ r, q }) => q && q.source_file === spec.sourceFile && (q.question_format ?? "mcq") !== formatOf(r))
+    .map(({ r, q }) => `Q${r.n} want ${formatOf(r)} got ${q.question_format}`);
+  check(fmtMismatch.length === 0, "every row carries its record's question_format",
+    fmtMismatch.length ? fmtMismatch.join("; ") : "");
   check(rows.every((q) => q.solution && q.solution.trim()), "every row has a solution",
     `${rows.filter((q) => !q.solution || !q.solution.trim()).length} missing`);
   check(rows.every((q) => q.subtopic_id), "every row has a subtopic",
@@ -120,7 +141,13 @@ async function main() {
   // Options — chunk the .in() FILTER at 200; that is a URL-length limit and is a
   // different limit from the 1000-row cap on a result. Paging one does not fix the other.
   const per = new Map<string, { n: number; correct: number }>();
-  const ids = rows.map((q) => q.id);
+  // A NAT question has no options by construction, so the 4-options/1-correct
+  // invariants apply to the MCQ rows only — asserting them over numeric rows would
+  // be a permanent false alarm, and asserting nothing would let an optionless MCQ
+  // through. Both sets are checked, each against its own contract.
+  const mcqRows = expected.filter((r) => formatOf(r) === "mcq").map((r) => rowOf.get(r.n)).filter(Boolean) as any[];
+  const numRows = expected.filter((r) => formatOf(r) === "numeric").map((r) => rowOf.get(r.n)).filter(Boolean) as any[];
+  const ids = mcqRows.map((q) => q.id);
   for (let i = 0; i < ids.length; i += 200) {
     const { data: opts, error: oErr } = await c
       .from("options").select("question_id,is_correct").in("question_id", ids.slice(i, i + 200));
@@ -131,12 +158,27 @@ async function main() {
       per.set(o.question_id, e);
     }
   }
-  check(per.size === rows.length, "every row has options",
-    `${rows.length - per.size} row(s) with none`);
-  check([...per.values()].every((v) => v.n === 4), "every row has exactly 4 options",
+  check(per.size === mcqRows.length, "every MCQ row has options",
+    `${mcqRows.length - per.size} row(s) with none`);
+  check([...per.values()].every((v) => v.n === 4), "every MCQ row has exactly 4 options",
     `${[...per.values()].filter((v) => v.n !== 4).length} bad`);
-  check([...per.values()].every((v) => v.correct === 1), "every row has exactly 1 correct option",
+  check([...per.values()].every((v) => v.correct === 1), "every MCQ row has exactly 1 correct option",
     `${[...per.values()].filter((v) => v.correct !== 1).length} bad`);
+
+  if (numRows.length) {
+    const numIds = numRows.map((q) => q.id);
+    let strayOpts = 0;
+    for (let i = 0; i < numIds.length; i += 200) {
+      const { data: o, error: nErr } = await c
+        .from("options").select("question_id").in("question_id", numIds.slice(i, i + 200));
+      if (nErr) throw new Error(`numeric options: ${nErr.message}`);
+      strayOpts += (o ?? []).length;
+    }
+    check(strayOpts === 0, "no numeric row has options", `${strayOpts} stray option row(s)`);
+    const missingVal = numRows.filter((q) => q.numeric_answer === null || q.numeric_answer === undefined);
+    check(missingVal.length === 0, "every numeric row has a stored numeric_answer",
+      `${missingVal.length} null of ${numRows.length}`);
+  }
 
   // Set-based questions (a shared comprehension passage) must share ONE set_id.
   const wantSets = new Set(recs.filter((r) => r.setLabel).map((r) => r.setLabel!));

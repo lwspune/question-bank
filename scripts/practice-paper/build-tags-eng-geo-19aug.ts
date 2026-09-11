@@ -108,6 +108,9 @@ function main() {
   const overridden: { n: number; ours: string; official: string }[] = [];
   const out = recs.map((r) => {
     const official = key.get(r.n)!;
+    // This one-off applies an official MCQ letter key. A numeric (NAT) record has no
+    // letter to override, so refuse rather than silently write one onto it.
+    if (r.answer === undefined) throw new Error(`Q${r.n}: no MCQ answer to override (numeric record?)`);
     if (official === r.answer) return r;
     overridden.push({ n: r.n, ours: r.answer, official });
     return { ...r, answer: official as PaperRec["answer"], solution: "" };

@@ -17,7 +17,7 @@
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { contentHash } from "../../src/lib/upload/hash";
+import { contentHash, numericContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 import type { QuestionRow, OptionRow } from "../../src/lib/questions/query";
 
@@ -30,12 +30,36 @@ export const DATA = join(__dirname, "data"); // committed transcriptions (source
 const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
 const DIFFICULTIES = new Set<Difficulty>(["EASY", "MODERATE", "HARD"]);
 
-/** One transcribed MCQ from the printed paper, in PRINTED option order. */
+/** One transcribed question from the printed paper, in PRINTED option order.
+ *
+ *  Two per-record axes, both defaulting to what every paper before them did:
+ *   - `format`: "mcq" (4 options + a letter key) or "numeric" (a NAT / "numerical
+ *     grid" question — NO options, the exact value in `numericAnswer`). Absent => mcq.
+ *   - `kind`: "practice" or "pyq". A booklet that REPRINTS real past-year questions
+ *     alongside its own authored ones must not file the former as practice — they
+ *     would never reach the /browse PYQ toggle or the weightage analysis. Absent =>
+ *     practice, so every existing paper is unaffected.
+ */
 export type PaperRec = {
   n: number; // printed question number (drives OMR Q-order)
   stem: string; // LaTeX-bearing (\(...\))
-  optA: string; optB: string; optC: string; optD: string;
-  answer: "A" | "B" | "C" | "D"; // key for THIS paper's option order (derived if the PDF has no key)
+  /** MCQ options in PRINTED order. Required for format "mcq", absent for "numeric". */
+  optA?: string; optB?: string; optC?: string; optD?: string;
+  /** Key for THIS paper's option order (derived if the PDF has no key). MCQ only. */
+  answer?: "A" | "B" | "C" | "D";
+  /** "numeric" = a NAT question: zero options, exact value in `numericAnswer`
+   *  (migration 0061, hashed in the NUMERIC namespace). Absent => "mcq". */
+  format?: "mcq" | "numeric";
+  /** The exact answer for a `numeric` question. Required iff format === "numeric".
+   *  0 is legal, so validation tests for finiteness, never truthiness. */
+  numericAnswer?: number;
+  /** "pyq" files the row as a past-year question and REQUIRES `pyqYear`. Absent => "practice". */
+  kind?: "practice" | "pyq";
+  /** The sitting's year, for `kind: "pyq"`. Stamped onto questions.pyq_year. */
+  pyqYear?: number;
+  /** Per-record questions.pyq_note override — a mixed paper cannot describe its
+   *  practice and its reprinted-PYQ rows with one spec-level sentence. */
+  pyqNote?: string;
   solution: string;
   difficulty: Difficulty;
   subtopic: string; // one of spec.subtopics
@@ -93,6 +117,64 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // --- JEE Mains: Allen "Compound Angles" module exercise ---------------------
+  // A Nurture-course module exercise set, NOT a single printed test: six independently
+  // numbered exercises. Only the four that the bank can represent as single-correct
+  // 4-option MCQs or numeric (NAT) questions are ingested, renumbered into one printed
+  // 1..63 sequence:
+  //   n 1-30  = EXERCISE # O-I   Q1-Q30  (straight objective)
+  //   n 31-37 = EXERCISE # O-III Q1-Q6, Q9 (linked comprehension + one list-match MCQ)
+  //   n 38-47 = EXERCISE # O-IV  Q1-Q10 (Numerical Grid -> question_format 'numeric')
+  //   n 48-63 = EXERCISE # JEE-MAIN Q1-Q16 (REAL past-year questions -> question_kind 'pyq')
+  // DELIBERATELY EXCLUDED, because the bank models exactly one correct option:
+  //   EXERCISE # O-II (all 20 are multiple-correct), O-III Q7+Q8 (multiple-correct, and
+  //   they share a paragraph so dropping both leaves no half-set), O-III Q10 (a true
+  //   matrix match), and EXERCISE # JEE-ADVANCED (multi-correct / subjective / multi-part).
+  //
+  // The 16 JEE-MAIN questions are year-tagged in the booklet (AIEEE-2012 ... JEE-Main
+  // 2024) and are filed as question_kind='pyq' with that year: filing a real past-year
+  // question as practice would keep it out of the /browse PYQ toggle and out of the
+  // weightage analysis, and the bank holds NOTHING before 2021, so the nine pre-2021
+  // ones are content it does not otherwise have.
+  //
+  // The booklet prints a complete ANSWER KEY and NO worked solutions anywhere, so every
+  // solution here is derived. Each derivation was made BLIND (the key withheld from the
+  // deriving agent) and then crosstabbed against the printed key by _tmp_assemble_ca26.ts,
+  // which REFUSES to emit a record whose blind answer and printed key disagree.
+  //
+  // NOTE subjectName is "Maths" - JEE's subject row is spelled that way, not
+  // "Mathematics" like NDA's. A near-miss there does not error; it resolves to nothing.
+  "jee-compound-angles-ex26": {
+    slug: "jee-compound-angles-ex26",
+    title: "JEE Mains Maths - Compound Angles (Exercise Set)",
+    recordsFile: "jee-compound-angles-ex26.records.json",
+    outName: "Tags_JEE_Compound_Angles_Ex26",
+    sourceFile: "Compound_Angles_Ex_26.pdf",
+    subjectName: "Maths",
+    // MULTI-CHAPTER, and not by choice: two of the mirrored JEE-Main duplicates are filed
+    // in the bank under "Trigonometric Equations", not "Trigonometric Identities". A
+    // mirrored record inserts nothing, but it must still name the chapter its row really
+    // lives in - check-taxonomy validates every record, and a name that resolves nowhere
+    // would auto-create a duplicate chapter if the row ever WERE created.
+    chapters: {
+      "Trigonometric Identities": [
+        "Compound Angle Formulae and Values",
+        "Conditional Identities",
+        "Sum-Product Transformations",
+        "Trigonometric Identities",
+        "Trigonometric Inequalities",
+      ],
+      "Trigonometric Equations": ["Trigonometric Equations"],
+    },
+    pyqNote:
+      "JEE Maths practice - Allen \"Compound Angles\" module exercise (Nurture course), " +
+      "Exercises O-I / O-III / O-IV. Answers derived; the booklet prints a key but no worked solutions.",
+    examName: "JEE Mains",
+    examId: "56360311-614d-43ea-9cd9-8ca8178dd679",
+    section: { key: "compound-angles", label: "Compound Angles" },
+    bankAdd: true,
+  },
+
   // --- LWS NDA-II 2026 Maths test series: the genuinely-NEW questions only ---
   // Five 120-question papers whose dedup gate came back ~98% already in the bank
   // (585 of 600). These three specs carry ONLY the questions that are new AND
@@ -5546,6 +5628,16 @@ export function loadRecords(spec: PaperSpec): PaperRec[] {
 
 export const statusOf = (r: PaperRec): "new" | "dup" | "flawed" => r.status ?? "new";
 
+/** MCQ unless the record says otherwise — every paper before the mixed-format ones. */
+export const formatOf = (r: PaperRec): "mcq" | "numeric" => r.format ?? "mcq";
+
+/** Practice unless the record says otherwise (a reprinted past-year question). */
+export const kindOf = (r: PaperRec): "practice" | "pyq" => r.kind ?? "practice";
+
+/** Plausible sitting years — wide enough for any reprint, narrow enough to catch a typo. */
+const MIN_PYQ_YEAR = 1990;
+const MAX_PYQ_YEAR = new Date().getFullYear() + 1;
+
 /** The DB exam id for a paper — its own examId override, else the default NDA EXAM_ID. */
 export const examIdOf = (spec: PaperSpec): string => spec.examId ?? EXAM_ID;
 
@@ -5607,25 +5699,57 @@ export function validateRecords(spec: PaperSpec, recs: PaperRec[]): void {
   for (const r of recs) {
     if (seen.has(r.n)) throw new Error(`duplicate question number ${r.n}`);
     seen.add(r.n);
-    if (!LABELS.includes(r.answer as OptionLabel)) throw new Error(`Q${r.n}: bad answer "${r.answer}"`);
     if (!DIFFICULTIES.has(r.difficulty)) throw new Error(`Q${r.n}: bad difficulty "${r.difficulty}"`);
     subjectOf(spec, r); // throws on a record with no resolvable subject
     const ch = chapterOf(spec, r);
     if (spec.chapters && !spec.subjects && !spec.chapters[ch]) throw new Error(`Q${r.n}: chapter not in spec.chapters: "${ch}"`);
     const subs = new Set(validSubtopicsFor(spec, r));
     if (!subs.has(r.subtopic)) throw new Error(`Q${r.n}: subtopic not valid for "${subjectOf(spec, r)} › ${ch}": "${r.subtopic}"`);
-    for (const [lab, val] of [["A", r.optA], ["B", r.optB], ["C", r.optC], ["D", r.optD]] as const) {
-      if (!val || !val.trim()) throw new Error(`Q${r.n}: empty option ${lab}`);
+    const opts = [["A", r.optA], ["B", r.optB], ["C", r.optC], ["D", r.optD]] as const;
+    if (formatOf(r) === "numeric") {
+      // A NAT question has NO options and NO letter key. Rejecting a half-converted
+      // record matters: an orphan option would be dropped silently at commit, and a
+      // stray `answer` would read as a key nobody can act on.
+      if (r.numericAnswer === undefined || !Number.isFinite(r.numericAnswer)) {
+        throw new Error(`Q${r.n}: numeric record needs a finite numericAnswer (got ${r.numericAnswer})`);
+      }
+      const stray = opts.filter(([, v]) => v !== undefined).map(([lab]) => lab);
+      if (stray.length) throw new Error(`Q${r.n}: numeric record still carries option(s) ${stray.join(", ")}`);
+      if (r.answer !== undefined) throw new Error(`Q${r.n}: numeric record carries an MCQ answer "${r.answer}"`);
+    } else {
+      if (!LABELS.includes(r.answer as OptionLabel)) throw new Error(`Q${r.n}: bad answer "${r.answer}"`);
+      if (r.numericAnswer !== undefined) throw new Error(`Q${r.n}: mcq record carries a numericAnswer`);
+      for (const [lab, val] of opts) {
+        if (!val || !val.trim()) throw new Error(`Q${r.n}: empty option ${lab}`);
+      }
+    }
+
+    // The year IS the point of filing a row as pyq — without it the row is a past-year
+    // question the PYQ-year filter and the weightage analysis cannot see.
+    if (kindOf(r) === "pyq") {
+      const y = r.pyqYear;
+      if (y === undefined || !Number.isInteger(y) || y < MIN_PYQ_YEAR || y > MAX_PYQ_YEAR) {
+        throw new Error(`Q${r.n}: pyq record needs a pyqYear in ${MIN_PYQ_YEAR}..${MAX_PYQ_YEAR} (got ${y})`);
+      }
+    } else if (r.pyqYear !== undefined) {
+      throw new Error(`Q${r.n}: practice record carries a pyqYear (${r.pyqYear}) — set kind:"pyq" or drop the year`);
     }
   }
 }
 
 /** Record -> a QuestionRow for buildTagRows (the OMR/tagged-Excel path). */
 export function recToQuestionRow(spec: PaperSpec, r: PaperRec): QuestionRow {
-  const texts: Record<OptionLabel, string> = { A: r.optA, B: r.optB, C: r.optC, D: r.optD };
-  const options: OptionRow[] = LABELS.map((label) => ({
-    label, text: texts[label], isCorrect: label === r.answer, imageUrl: null,
-  }));
+  const numeric = formatOf(r) === "numeric";
+  // A NAT question has no options at all — not four blank ones, which would render
+  // as an empty A-D block on every surface and put four empty bubbles on an OMR sheet.
+  const options: OptionRow[] = numeric
+    ? []
+    : LABELS.map((label) => ({
+        label,
+        text: { A: r.optA, B: r.optB, C: r.optC, D: r.optD }[label] ?? "",
+        isCorrect: label === r.answer,
+        imageUrl: null,
+      }));
   const subjectName = subjectOf(spec, r);
   return {
     id: `${spec.slug}-${r.n}`,
@@ -5635,10 +5759,12 @@ export function recToQuestionRow(spec: PaperSpec, r: PaperRec): QuestionRow {
     solution: r.solution,
     imageUrl: null,
     setId: r.setLabel ? `${spec.slug}:${r.setLabel}` : null,
+    questionFormat: numeric ? "numeric" : "mcq",
+    numericAnswer: numeric ? r.numericAnswer ?? null : null,
     questionNumber: String(r.n),
-    pyqYear: null,
+    pyqYear: r.pyqYear ?? null,
     pyqMonth: null,
-    pyqNote: null,
+    pyqNote: r.pyqNote ?? null,
     exam: { id: spec.examName.toLowerCase(), name: spec.examName },
     subject: { id: subjectName.toLowerCase(), name: subjectName },
     chapter: { id: chapterOf(spec, r).toLowerCase().replace(/[^a-z0-9]+/g, "-"), name: chapterOf(spec, r) },
@@ -5649,8 +5775,14 @@ export function recToQuestionRow(spec: PaperSpec, r: PaperRec): QuestionRow {
 
 /** Record -> a ParsedRowPayload for commitStaged (the bank-ingestion path). */
 export function recToParsedRow(spec: PaperSpec, r: PaperRec): ParsedRowPayload {
-  const texts: Record<OptionLabel, string> = { A: r.optA, B: r.optB, C: r.optC, D: r.optD };
-  const options = LABELS.map((label) => ({ label, text: texts[label], isCorrect: label === r.answer }));
+  const numeric = formatOf(r) === "numeric";
+  const options = numeric
+    ? []
+    : LABELS.map((label) => ({
+        label,
+        text: { A: r.optA, B: r.optB, C: r.optC, D: r.optD }[label] ?? "",
+        isCorrect: label === r.answer,
+      }));
   return {
     sourceRow: r.n,
     questionNumber: String(r.n),
@@ -5663,6 +5795,13 @@ export function recToParsedRow(spec: PaperSpec, r: PaperRec): ParsedRowPayload {
     difficulty: r.difficulty,
     solution: r.solution,
     options,
-    contentHash: contentHash(r.stem, [r.optA, r.optB, r.optC, r.optD], r.answer),
+    questionFormat: numeric ? "numeric" : undefined,
+    numericAnswer: numeric ? r.numericAnswer : undefined,
+    // A numeric row is hashed in the NUMERIC namespace (excludes the answer, so a
+    // re-key never orphans the row); an MCQ row keeps the byte-identical hash it
+    // has always had, so no existing paper's ids move.
+    contentHash: numeric
+      ? numericContentHash(r.stem, r.context ?? null)
+      : contentHash(r.stem, [r.optA!, r.optB!, r.optC!, r.optD!], r.answer!),
   };
 }

@@ -1,0 +1,167 @@
+[
+ {
+  "n": 1,
+  "answer": "C",
+  "workings": [
+   "Given \\(3\\sin P + 4\\cos Q = 6\\) and \\(4\\sin Q + 3\\cos P = 1\\), with \\(P + Q + R = \\pi\\).",
+   "Square the first: \\(9\\sin^2 P + 24\\sin P\\cos Q + 16\\cos^2 Q = 36\\)",
+   "Square the second: \\(16\\sin^2 Q + 24\\sin Q\\cos P + 9\\cos^2 P = 1\\)",
+   "Add them: \\(9(\\sin^2 P + \\cos^2 P) + 16(\\sin^2 Q + \\cos^2 Q) + 24(\\sin P\\cos Q + \\cos P\\sin Q) = 37\\)",
+   "Using \\(\\sin^2\\theta + \\cos^2\\theta = 1\\) and \\(\\sin(P+Q) = \\sin P\\cos Q + \\cos P\\sin Q\\): \\(9 + 16 + 24\\sin(P+Q) = 37\\)",
+   "\\(\\sin(P+Q) = \\frac{1}{2}\\), so \\(P + Q = \\frac{\\pi}{6}\\) or \\(P + Q = \\frac{5\\pi}{6}\\)",
+   "Reject \\(P+Q = \\frac{\\pi}{6}\\): then \\(P < \\frac{\\pi}{6}\\), so \\(3\\sin P < \\frac{3}{2}\\), while \\(4\\cos Q \\le 4\\), giving \\(3\\sin P + 4\\cos Q < \\frac{11}{2} < 6\\), contradicting the first equation.",
+   "Hence \\(P + Q = \\frac{5\\pi}{6}\\), and \\(R = \\pi - (P+Q) = \\frac{\\pi}{6}\\)"
+  ],
+  "difficulty": "HARD",
+  "subtopic": "Compound Angle Formulae and Values",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Solving the original two-equation system numerically gives \\(P = 2.0115387682\\), \\(Q = 0.6064551098\\), \\(R = 0.5235987756 = \\frac{\\pi}{6}\\), satisfying both equations exactly. A numerical scan confirms the rejected branch caps at \\(5.5 < 6\\)."
+ },
+ {
+  "n": 2,
+  "answer": "B",
+  "workings": [
+   "\\(E = \\frac{\\tan A}{1 - \\cot A} + \\frac{\\cot A}{1 - \\tan A}\\)",
+   "Put \\(t = \\tan A\\), so \\(\\cot A = \\frac{1}{t}\\): \\(E = \\frac{t}{1 - \\frac{1}{t}} + \\frac{\\frac{1}{t}}{1 - t}\\)",
+   "\\(E = \\frac{t^2}{t-1} + \\frac{1}{t(1-t)} = \\frac{t^2}{t-1} - \\frac{1}{t(t-1)}\\)",
+   "Combine over \\(t(t-1)\\): \\(E = \\frac{t^3 - 1}{t(t-1)}\\)",
+   "Factor \\(t^3 - 1 = (t-1)(t^2+t+1)\\) and cancel \\((t-1)\\): \\(E = \\frac{t^2+t+1}{t} = t + 1 + \\frac{1}{t}\\)",
+   "\\(E = \\tan A + \\cot A + 1 = \\frac{\\sin^2 A + \\cos^2 A}{\\sin A\\cos A} + 1\\)",
+   "\\(E = \\frac{1}{\\sin A\\cos A} + 1 = \\sec A\\,\\operatorname{cosec} A + 1\\)"
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Trigonometric Identities",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Note \\(\\tan A + \\cot A\\) alone is short by exactly \\(1\\); the printed value \\(\\tan A + \\cot A\\) is the trap for anyone who drops the \\(+1\\)."
+ },
+ {
+  "n": 3,
+  "answer": "D",
+  "workings": [
+   "\\(f_4(x) = \\frac{1}{4}\\left(\\sin^4 x + \\cos^4 x\\right)\\) and \\(f_6(x) = \\frac{1}{6}\\left(\\sin^6 x + \\cos^6 x\\right)\\)",
+   "\\(\\sin^4 x + \\cos^4 x = (\\sin^2 x + \\cos^2 x)^2 - 2\\sin^2 x\\cos^2 x = 1 - 2\\sin^2 x\\cos^2 x\\)",
+   "\\(\\sin^6 x + \\cos^6 x = (\\sin^2 x + \\cos^2 x)^3 - 3\\sin^2 x\\cos^2 x(\\sin^2 x + \\cos^2 x) = 1 - 3\\sin^2 x\\cos^2 x\\)",
+   "\\(f_4(x) - f_6(x) = \\frac{1 - 2\\sin^2 x\\cos^2 x}{4} - \\frac{1 - 3\\sin^2 x\\cos^2 x}{6}\\)",
+   "\\(= \\left(\\frac{1}{4} - \\frac{1}{6}\\right) - \\left(\\frac{2}{4} - \\frac{3}{6}\\right)\\sin^2 x\\cos^2 x\\)",
+   "The coefficient of \\(\\sin^2 x\\cos^2 x\\) is \\(\\frac{1}{2} - \\frac{1}{2} = 0\\), so the difference is a constant, independent of \\(x\\).",
+   "\\(f_4(x) - f_6(x) = \\frac{1}{4} - \\frac{1}{6} = \\frac{1}{12}\\)"
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Trigonometric Identities",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": ""
+ },
+ {
+  "n": 4,
+  "answer": "A",
+  "workings": [
+   "\\(5\\left(\\tan^2 x - \\cos^2 x\\right) = 2\\cos 2x + 9\\)",
+   "Let \\(c = \\cos 2x\\). Then \\(\\cos^2 x = \\frac{1+c}{2}\\), \\(\\sin^2 x = \\frac{1-c}{2}\\), so \\(\\tan^2 x = \\frac{1-c}{1+c}\\).",
+   "\\(5\\left(\\frac{1-c}{1+c} - \\frac{1+c}{2}\\right) = 2c + 9\\)",
+   "Multiply through by \\(2(1+c)\\): \\(10(1-c) - 5(1+c)^2 = (2c+9)\\cdot 2(1+c)\\)",
+   "\\(10 - 10c - 5 - 10c - 5c^2 = 4c^2 + 22c + 18\\)",
+   "\\(5 - 20c - 5c^2 = 4c^2 + 22c + 18 \\Rightarrow 9c^2 + 42c + 13 = 0\\)",
+   "\\(c = \\frac{-42 \\pm \\sqrt{1764 - 468}}{18} = \\frac{-42 \\pm 36}{18}\\), giving \\(c = -\\frac{1}{3}\\) or \\(c = -\\frac{13}{3}\\)",
+   "Reject \\(c = -\\frac{13}{3}\\) since \\(|\\cos 2x| \\le 1\\); hence \\(\\cos 2x = -\\frac{1}{3}\\).",
+   "\\(\\cos 4x = 2\\cos^2 2x - 1 = 2\\cdot\\frac{1}{9} - 1 = -\\frac{7}{9}\\)"
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Compound Angle Formulae and Values",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "A numerical root scan over \\(\\left(0, \\frac{\\pi}{2}\\right)\\) finds exactly one solution, \\(x = 0.955316618\\), at which \\(\\cos 2x = -\\frac{1}{3}\\) and \\(\\cos 4x = -0.7777777778\\)."
+ },
+ {
+  "n": 5,
+  "answer": "A",
+  "workings": [
+   "\\(E = 3(\\sin\\theta - \\cos\\theta)^4 + 6(\\sin\\theta + \\cos\\theta)^2 + 4\\sin^6\\theta\\)",
+   "\\((\\sin\\theta - \\cos\\theta)^2 = 1 - 2\\sin\\theta\\cos\\theta\\), so \\((\\sin\\theta - \\cos\\theta)^4 = 1 - 4\\sin\\theta\\cos\\theta + 4\\sin^2\\theta\\cos^2\\theta\\)",
+   "\\((\\sin\\theta + \\cos\\theta)^2 = 1 + 2\\sin\\theta\\cos\\theta\\)",
+   "\\(E = \\left(3 - 12\\sin\\theta\\cos\\theta + 12\\sin^2\\theta\\cos^2\\theta\\right) + \\left(6 + 12\\sin\\theta\\cos\\theta\\right) + 4\\sin^6\\theta\\)",
+   "The \\(\\sin\\theta\\cos\\theta\\) terms cancel: \\(E = 9 + 12\\sin^2\\theta\\cos^2\\theta + 4\\sin^6\\theta\\)",
+   "Write \\(c = \\cos^2\\theta\\), so \\(\\sin^2\\theta = 1 - c\\): \\(E = 9 + 12c(1-c) + 4(1-c)^3\\)",
+   "\\(E = 9 + 12c - 12c^2 + 4 - 12c + 12c^2 - 4c^3 = 13 - 4c^3\\)",
+   "\\(E = 13 - 4\\cos^6\\theta\\), valid for every \\(\\theta\\) (the restriction to \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\) is not needed)."
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Trigonometric Identities",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Two of the printed alternatives, \\(13 - 4\\cos^4\\theta + 2\\sin^2\\theta\\cos^2\\theta\\) and \\(13 - 4\\cos^2\\theta + 6\\sin^2\\theta\\cos^2\\theta\\), are algebraically IDENTICAL to each other: their difference is \\(4\\cos^2\\theta\\left(1 - \\sin^2\\theta - \\cos^2\\theta\\right) = 0\\). They agree to 15 decimal places at all six test angles. Neither equals the expression, so the answer is still unambiguous, but the option set contains a printed twin."
+ },
+ {
+  "n": 6,
+  "answer": "C",
+  "workings": [
+   "\\(P = \\cos\\frac{\\pi}{2^2}\\cos\\frac{\\pi}{2^3}\\cdots\\cos\\frac{\\pi}{2^{10}}\\cdot\\sin\\frac{\\pi}{2^{10}}\\), which has nine cosine factors (\\(k = 2\\) to \\(k = 10\\)).",
+   "Use \\(2\\sin\\alpha\\cos\\alpha = \\sin 2\\alpha\\), starting at the right-hand end.",
+   "\\(\\cos\\frac{\\pi}{2^{10}}\\sin\\frac{\\pi}{2^{10}} = \\frac{1}{2}\\sin\\frac{\\pi}{2^{9}}\\)",
+   "\\(\\cos\\frac{\\pi}{2^{9}}\\cdot\\frac{1}{2}\\sin\\frac{\\pi}{2^{9}} = \\frac{1}{2^{2}}\\sin\\frac{\\pi}{2^{8}}\\)",
+   "Each cosine is absorbed the same way: the coefficient halves and the angle doubles.",
+   "After all nine cosines: \\(P = \\frac{1}{2^{9}}\\sin\\frac{\\pi}{2}\\)",
+   "\\(P = \\frac{1}{512}\\cdot 1 = \\frac{1}{512}\\)"
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Compound Angle Formulae and Values",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Direct evaluation gives \\(0.001953125 = \\frac{1}{512}\\) to 40 decimal places. Counting the cosine factors is the whole question: \\(k = 2,3,\\ldots,10\\) is nine factors, not ten, so the power is \\(2^{9}\\)."
+ },
+ {
+  "n": 7,
+  "answer": "A",
+  "workings": [
+   "\\(E(\\theta) = 3\\cos\\theta + 5\\sin\\left(\\theta - \\frac{\\pi}{6}\\right)\\)",
+   "Expand the compound angle: \\(\\sin\\left(\\theta - \\frac{\\pi}{6}\\right) = \\sin\\theta\\cos\\frac{\\pi}{6} - \\cos\\theta\\sin\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}\\sin\\theta - \\frac{1}{2}\\cos\\theta\\)",
+   "\\(E = 3\\cos\\theta + \\frac{5\\sqrt{3}}{2}\\sin\\theta - \\frac{5}{2}\\cos\\theta = \\frac{5\\sqrt{3}}{2}\\sin\\theta + \\frac{1}{2}\\cos\\theta\\)",
+   "For \\(a\\sin\\theta + b\\cos\\theta\\) the maximum over real \\(\\theta\\) is \\(\\sqrt{a^2 + b^2}\\).",
+   "\\(\\max E = \\sqrt{\\left(\\frac{5\\sqrt{3}}{2}\\right)^2 + \\left(\\frac{1}{2}\\right)^2} = \\sqrt{\\frac{75}{4} + \\frac{1}{4}} = \\sqrt{\\frac{76}{4}} = \\sqrt{19}\\)"
+  ],
+  "difficulty": "EASY",
+  "subtopic": "Trigonometric Inequalities",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "A fine scan over \\([0, 2\\pi]\\) plus a refined stationary point gives \\(4.3588989435406740 = \\sqrt{19}\\). The value \\(\\sqrt{34}\\) is what a careless \\(\\sqrt{3^2 + 5^2}\\) gives, ignoring the phase shift."
+ },
+ {
+  "n": 8,
+  "answer": "B",
+  "workings": [
+   "Write the equation as \\((k+1)\\tan^2 x - \\sqrt{2}\\lambda\\tan x - (1-k) = 0\\), a quadratic in \\(\\tan x\\) whose roots are \\(\\tan\\alpha\\) and \\(\\tan\\beta\\).",
+   "Sum of roots: \\(\\tan\\alpha + \\tan\\beta = \\frac{\\sqrt{2}\\lambda}{k+1}\\)",
+   "Product of roots: \\(\\tan\\alpha\\tan\\beta = \\frac{-(1-k)}{k+1} = \\frac{k-1}{k+1}\\)",
+   "\\(\\tan(\\alpha+\\beta) = \\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}\\)",
+   "Denominator: \\(1 - \\frac{k-1}{k+1} = \\frac{(k+1) - (k-1)}{k+1} = \\frac{2}{k+1}\\)",
+   "\\(\\tan(\\alpha+\\beta) = \\frac{\\sqrt{2}\\lambda}{k+1}\\cdot\\frac{k+1}{2} = \\frac{\\sqrt{2}\\lambda}{2} = \\frac{\\lambda}{\\sqrt{2}}\\), independent of \\(k\\).",
+   "\\(\\tan^2(\\alpha+\\beta) = \\frac{\\lambda^2}{2} = 50 \\Rightarrow \\lambda^2 = 100\\)",
+   "\\(\\lambda = \\pm 10\\), so a value of \\(\\lambda\\) is \\(10\\)."
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Compound Angle Formulae and Values",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Checked numerically across several values of \\(k\\): \\(\\lambda = 10\\) gives \\(\\tan^2(\\alpha+\\beta) = 50\\) for every admissible \\(k\\), while \\(5\\) gives \\(12.5\\), \\(5\\sqrt{2}\\) gives \\(25\\) and \\(10\\sqrt{2}\\) gives \\(100\\). The \\(k\\)-independence is what makes the question well posed."
+ },
+ {
+  "n": 9,
+  "answer": "C",
+  "workings": [
+   "\\(E = \\cos^3\\frac{\\pi}{8}\\cos\\frac{3\\pi}{8} + \\sin^3\\frac{\\pi}{8}\\sin\\frac{3\\pi}{8}\\)",
+   "Since \\(\\frac{3\\pi}{8} = \\frac{\\pi}{2} - \\frac{\\pi}{8}\\): \\(\\cos\\frac{3\\pi}{8} = \\sin\\frac{\\pi}{8}\\) and \\(\\sin\\frac{3\\pi}{8} = \\cos\\frac{\\pi}{8}\\)",
+   "\\(E = \\cos^3\\frac{\\pi}{8}\\sin\\frac{\\pi}{8} + \\sin^3\\frac{\\pi}{8}\\cos\\frac{\\pi}{8}\\)",
+   "Take out \\(\\sin\\frac{\\pi}{8}\\cos\\frac{\\pi}{8}\\): \\(E = \\sin\\frac{\\pi}{8}\\cos\\frac{\\pi}{8}\\left(\\cos^2\\frac{\\pi}{8} + \\sin^2\\frac{\\pi}{8}\\right)\\)",
+   "\\(\\cos^2\\frac{\\pi}{8} + \\sin^2\\frac{\\pi}{8} = 1\\), so \\(E = \\sin\\frac{\\pi}{8}\\cos\\frac{\\pi}{8}\\)",
+   "\\(E = \\frac{1}{2}\\sin\\frac{\\pi}{4} = \\frac{1}{2}\\cdot\\frac{1}{\\sqrt{2}}\\)",
+   "\\(E = \\frac{1}{2\\sqrt{2}}\\)"
+  ],
+  "difficulty": "MODERATE",
+  "subtopic": "Compound Angle Formulae and Values",
+  "confidence": "HIGH",
+  "runnerUp": "",
+  "note": "Direct evaluation gives \\(0.3535533906 = \\frac{1}{2\\sqrt{2}}\\) to 40 decimal places."
+ }
+]
