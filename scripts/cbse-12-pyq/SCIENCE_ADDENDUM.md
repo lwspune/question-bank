@@ -239,6 +239,44 @@ displays a single answer and that choice is a teaching decision.
 > letter** — re-adjudicating them is a logged backfill candidate, not something
 > to change in passing.
 
+---
+
+**(d) THE GRACE NOTE ON A SUBJECTIVE SUB-PART — and the one rule that decides
+every case above.** The commonest award-regardless wording is not about an MCQ
+at all. It sits under a worked answer in Section B, D or E:
+
+```
+Note: Full credit to be given for part (b) for mere attempt.
+Note: Full credit of 1 1/2 marks is to be awarded for part (iii) even if a
+      student does not attempt this part.
+(Note : Award full credit of this part if a student merely attempts this part.)
+```
+
+There is no key to void and the scheme still prints a correct worked answer, so
+it is tempting to treat these as prose and leave them in `_flag`. **Do not.**
+Measured across the Physics corpus 2026-09-12, that judgement call had already
+been made both ways on ONE PRINTED QUESTION: 2024 55/1/1 Q26, 55/1/2 Q27 and
+55/1/3 Q28 are byte-identical stems carrying the identical note, and two of the
+three shipped without `_cbseVoided`.
+
+**THE RULE, and it is the same axis for all four shapes — it is not a new one:**
+
+| the note is... | example | field |
+|---|---|---|
+| **UNCONDITIONAL** — credit irrespective of correctness or of attempt | *"for mere attempt"* · *"even if a student does not attempt"* · *"no option is correct, award 1 mark"* | **`_cbseVoided`** (verbatim) |
+| **CONDITIONAL** on the student's work being right | *"if a student writes only one value of angle"* · *"if the student takes A other than 60 degrees and traces the path correctly"* | `_flag` only |
+| **EITHER OF TWO answers accepted** (dual key, any format) | *"(A) resistor / (C) capacitor"* · *"full credit for taking n = 3 or n = 4"* | **`_cbseVoided`** + ship one answer |
+
+An unconditional award is the Board declaring the question defective — usually
+because the paper omitted data the question needed — **even when the scheme
+prints a full worked answer beside it**. A conditional one is ordinary marking
+latitude and asserts nothing about the question. Scope the note to the SUB-PART
+it names: *"full credit for part (b)"* voids 2 of 3 marks, not the row.
+
+`_cbseVoided` is read by no code today and is not hashed, so it is documentation
+— which is exactly why it has to be applied mechanically off the wording rather
+than re-derived per row. Nothing will catch you getting it wrong.
+
 ## 3. Chemistry notation
 
 - **Formulas go in maths zones**: `\(\mathrm{C_2H_5NH_2}\)`, `\(\mathrm{NH_4^+}\)`,

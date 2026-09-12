@@ -105,20 +105,39 @@ async function main() {
   // under Interference and reported a taxonomy gap that does not exist. CBSE
   // sets diffraction every year, so that would have repeated on all 78 papers.
   const declaredSubs = declaredSubtopics(subject);
+  // ⚠ COUNT WHAT IS PRINTED, NOT WHAT IS LIVE. The footer used to report
+  // `axis.values()` — the LIVE map alone — while the listing above also prints
+  // declared-but-empty subtopics. So Physics printed 72 bullets under a footer
+  // that said 71, and a reader checking the two against each other found a
+  // discrepancy with nothing to explain it. These counters are incremented at
+  // the point of printing, which is the only way the two cannot drift.
+  let chaptersPrinted = 0;
+  let subsLivePrinted = 0;
+  let subsDeclaredOnlyPrinted = 0;
   for (const ch of declared) {
+    chaptersPrinted++;
     const liveSubs = axis.get(ch);
     if (!liveSubs) {
       console.log(`- **${ch}** — NOT YET IN THE DB; it and its subtopics are created on first commit.`);
-      for (const s of declaredSubs.get(ch) ?? []) console.log(`    - ${s}   (declared)`);
+      for (const s of declaredSubs.get(ch) ?? []) {
+        console.log(`    - ${s}   (declared)`);
+        subsDeclaredOnlyPrinted++;
+      }
       continue;
     }
     const dec = declaredSubs.get(ch) ?? [];
     const unused = dec.filter((s) => !liveSubs.includes(s)).sort((a, b) => a.localeCompare(b));
     console.log(`- **${ch}**`);
-    for (const s of liveSubs) console.log(`    - ${s}`);
+    for (const s of liveSubs) {
+      console.log(`    - ${s}`);
+      subsLivePrinted++;
+    }
     // Marked, not hidden: they are equally valid to file on, and saying so is
     // what stops an agent inventing a near-duplicate of a name that exists.
-    for (const s of unused) console.log(`    - ${s}   ← declared, no rows yet — USE IT if it fits`);
+    for (const s of unused) {
+      console.log(`    - ${s}   ← declared, no rows yet — USE IT if it fits`);
+      subsDeclaredOnlyPrinted++;
+    }
   }
   console.log(
     `\nIf a question genuinely fits NONE of its chapter's subtopics, file it on the` +
@@ -127,8 +146,12 @@ async function main() {
       `\nfinding worth having — Chemistry surfaced four real ones this way.`
   );
 
+  const subsPrinted = subsLivePrinted + subsDeclaredOnlyPrinted;
   console.log(
-    `\n(${live.length} chapters live, ${[...axis.values()].reduce((n, v) => n + v.length, 0)} subtopics)`
+    `\n(${chaptersPrinted} chapters printed, ${subsPrinted} subtopics printed` +
+      (subsDeclaredOnlyPrinted
+        ? ` — ${subsLivePrinted} live, ${subsDeclaredOnlyPrinted} declared with no rows yet)`
+        : `, all live)`)
   );
   if (pending.length) console.log(`pending (declared, not yet live): ${pending.join(", ")}`);
   if (stray.length) {
