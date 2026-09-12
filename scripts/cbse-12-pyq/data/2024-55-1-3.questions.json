@@ -1,8 +1,8 @@
 {
-  "paper": "55/1/1",
+  "paper": "55/1/3",
   "year": 2024,
   "pattern": "full70",
-  "_transcription": "ENGLISH pages are the EVEN 0-based indices 2,4,6,8,10,12,14,16,18,20,22,24,26 of a 27-page booklet. Layout is HINDI-page-then-ENGLISH-page pairs (idx 0 = bilingual cover, idx 1 = Hindi instructions, idx 2 = English instructions, then pairs 3/4, 5/6, ... 25/26). Every odd index was checked at full size and is pure Hindi top-to-bottom: each language's block fits inside its own page, so there is NO overflow onto the top of an odd page and no parity inversion. Printed General Instructions confirm the full70 shape (33 q, five sections, A=1-16 'Multiple Choice type' @1, B=17-21 @2, C=22-28 @3, D=29-30 case study @4, E=31-33 long answer @5; primary-branch marks sum to 70). The assertion-reason band (13-16) is declared in a SEPARATE in-body block on idx 8, not in the General Instructions. Instruction (viii) prints NO internal-choice counts, so the OR set was established by walking the marking scheme: SEVEN internal choices — Q18, Q23, Q29(iv), Q30(iv), Q31, Q32, Q33 — matching the printed paper exactly. Two of the marking scheme's 'OR' markers are FALSE POSITIVES and are not internal choices: ms p8 'P = V I cos phi OR P = I^2 Z cos phi' sits inside Q25's ANSWER, and ms p19's OR offers an alternative wording inside Q32(b)(i)'s answer. Decimal points are printed RAISED on this paper throughout (0.5, 6.63, 3.3 eV, 2.0 mT, 6.6 D), so every decimal is written {\\cdot}. Section-A key read by vision off marking-scheme page idx 2 (merged file '55-1-1,2,3 English Version.pdf', pages 0-23 are this paper): 16 entries, all carrying a letter, NO void notes and NO medium-scoped clauses. Case-study MCQ keys (Q29, Q30) read off marking-scheme page idx 10.",
+  "_transcription": "ENGLISH pages are the EVEN 0-based indices 2,4,6,8,10,12,14,16,18,20,22,24,26 of a 27-page booklet. Layout is HINDI-page-then-ENGLISH-page pairs (idx 0 = bilingual cover, idx 1 = Hindi instructions, idx 2 = English instructions, then pairs 3/4, 5/6, ... 25/26). Odd indices were checked and are pure Hindi top-to-bottom, question boundaries aligning exactly with their English facing page (idx 25 confirmed at full size: it carries the Hindi of Q33 (iii) and (b), exactly matching idx 26), so there is NO overflow onto the top of an odd page, no English-only final page and no parity inversion. Printed General Instructions confirm the full70 shape (33 q, five sections, A = 1-16 Multiple Choice @1, B = 17-21 @2, C = 22-28 @3, D = 29-30 case study @4, E = 31-33 Long Answer @5; primary-branch marks sum to 70). The assertion-reason band (13-16) is declared in a SEPARATE in-body block on idx 8, not in the General Instructions. Instruction (viii) prints NO internal-choice counts, so the OR set was established by walking the marking scheme for a bare OR on its own line: EIGHT were found, of which SEVEN are real internal choices - Q20, Q23, Q29(iv), Q30(iv), Q31, Q32, Q33 - matching the printed paper exactly. The eighth is a FALSE POSITIVE and was confirmed as such by vision on ms idx 14: it sits INSIDE Q31(b)(i)'s ANSWER, where the scheme prints two alternative labelled transformer diagrams (a) and (b) separated by OR. (The opener recorded the same false positive on its Q32(b)(i), which is this paper's Q31(b)(i).) Decimal points are printed RAISED on this paper throughout - verified at 9x magnification on '6.6 D' (idx 16), where the dot sits at mid-x-height rather than on the baseline - so every decimal is written {\\cdot}. MARKING SCHEME: the source file '55-1-1,2,3 English Version.pdf' is a merged 3-in-1 (71 pages); prep.py has already split it and out/2024-55-1-3/ms/ holds the 55/1/3 block alone (pdf pages 46-70 = 25 pages). Block identity confirmed THREE ways: its own inner cover reads 'SUBJECT NAME PHYSICS (Theory) ( CODE 55/1/3)', every footer reads '55/1/3 Page N of 25', and every worked answer matches this paper's printed questions (Q17 -> 56.25%, Q18 -> v = -60 cm and m = -2, Q24 -> f_avg = 10^-23 N, Q25 -> the three reactance graphs, Q27 -> nu = alpha/n^3, Q28 -> short-wave bands and X-ray astronomy, Q31 -> impedance/transformer). Section-A key read off ms idx 2: 16 entries, every one carrying a letter, NO void notes and NO medium-scoped clauses. Section-D case-study MCQ keys read off ms idx 11: 10 more entries, so 26 keyed MCQs in all. The WHOLE 25-page scheme was scanned for award-regardless wording (both by text layer, which is present and dense on all 25 pages - 314 to 3259 chars, no image-only page - and by vision on the hit): exactly ONE such note exists, on Q28, recorded in _cbseVoided. It names no language edition, so it governs BOTH. A second, non-void clause sits on Q23(b) ('If the figure is explained in words full credit to be given') and is ordinary marking latitude about how an answer may be expressed, not an award-regardless clause.",
   "questions": [
     {
       "ref": "Q1",
@@ -40,29 +40,30 @@
       "section": "A",
       "marks": 1,
       "format": "mcq",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Energy Stored in a Capacitor",
-      "difficulty": "EASY",
-      "stem": "Ten capacitors, each of capacitance 1 \\(\\mu\\mathrm{F}\\), are connected in parallel to a source of 100 V. The total energy stored in the system is equal to :",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "difficulty": "MODERATE",
+      "stem": "Three small charged spheres X, Y and Z carrying charges \\(+ q\\), \\(- q\\) and \\(+ q\\) respectively are placed equidistant from each other, as shown in the figure. The spheres Y and Z are held in place. Initially X is also held in place, but is otherwise free to move. When X is released, the path followed by it will be :",
       "options": [
         {
           "label": "A",
-          "text": "\\(10^{-2}\\) J"
+          "text": "A"
         },
         {
           "label": "B",
-          "text": "\\(10^{-3}\\) J"
+          "text": "B"
         },
         {
           "label": "C",
-          "text": "\\(0{\\cdot}5 \\times 10^{-3}\\) J"
+          "text": "C"
         },
         {
           "label": "D",
-          "text": "\\(5{\\cdot}0 \\times 10^{-2}\\) J"
+          "text": "D"
         }
       ],
-      "answer": "D"
+      "answer": "B",
+      "_figure": "REQUIRED — the four options are bare labels A, B, C and D that name paths drawn ONLY in the figure, so the question is meaningless without it. Described: a filled dot labelled X sits above two filled dots labelled Y and Z; four dashed paths, each carrying an arrowhead at its far end, leave X and are labelled A, B, C and D — two of them straight and two of them curved. Withheld: the direction each of the four paths takes, which is the entire discrimination the question tests. Page idx 4."
     },
     {
       "ref": "Q3",
@@ -71,29 +72,28 @@
       "marks": 1,
       "format": "mcq",
       "chapter": "Current Electricity",
-      "subtopic": "Cells, EMF and Internal Resistance",
+      "subtopic": "Drift of Electrons and Resistivity",
       "difficulty": "MODERATE",
-      "stem": "Consider the circuit shown in the figure. The potential difference between points A and B is :",
+      "stem": "In a uniform straight wire, conduction electrons move along \\(+ x\\) direction. Let \\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) be the electric field and current density in the wire, respectively. Then :",
       "options": [
         {
           "label": "A",
-          "text": "6 V"
+          "text": "\\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) both are along \\(+ x\\) direction."
         },
         {
           "label": "B",
-          "text": "8 V"
+          "text": "\\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) both are along \\(- x\\) direction."
         },
         {
           "label": "C",
-          "text": "9 V"
+          "text": "\\(\\vec{\\mathrm{E}}\\) is along \\(+ x\\) direction, but \\(\\vec{j}\\) is along \\(- x\\) direction."
         },
         {
           "label": "D",
-          "text": "12 V"
+          "text": "\\(\\vec{\\mathrm{E}}\\) is along \\(- x\\) direction, but \\(\\vec{j}\\) is along \\(+ x\\) direction."
         }
       ],
-      "answer": "B",
-      "_figure": "REQUIRED — two parallel branches drawn between nodes A and B, each branch a cell in series with a resistor. EVERY numeric value (both emfs and both resistances) and the cells' relative polarity appear only in the drawing; the stem names none of them, so the question is unanswerable from text. Described: that there are two parallel branches between labelled nodes A and B, each carrying one cell and one resistor. Withheld: the four values and the polarity sense, which are exactly what the question tests. Page idx 4."
+      "answer": "B"
     },
     {
       "ref": "Q4",
@@ -102,25 +102,25 @@
       "marks": 1,
       "format": "mcq",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
       "difficulty": "MODERATE",
-      "stem": "A loop carrying a current I clockwise is placed in \\(x - y\\) plane, in a uniform magnetic field directed along z-axis. The tendency of the loop will be to :",
+      "stem": "Two charged particles, P and Q, each having charge q but of masses \\(\\mathrm{m}_1\\) and \\(\\mathrm{m}_2\\), are accelerated through the same potential difference V. They enter a region of magnetic field \\(\\vec{\\mathrm{B}}\\ (\\perp \\vec{v})\\) and describe the circular paths of radii a and b respectively. Then \\(\\left(\\dfrac{\\mathrm{m}_1}{\\mathrm{m}_2}\\right)\\) is equal to :",
       "options": [
         {
           "label": "A",
-          "text": "move along x-axis"
+          "text": "\\(\\dfrac{a}{b}\\)"
         },
         {
           "label": "B",
-          "text": "move along y-axis"
+          "text": "\\(\\dfrac{b}{a}\\)"
         },
         {
           "label": "C",
-          "text": "shrink"
+          "text": "\\(\\left(\\dfrac{a}{b}\\right)^2\\)"
         },
         {
           "label": "D",
-          "text": "expand"
+          "text": "\\(\\left(\\dfrac{b}{a}\\right)^2\\)"
         }
       ],
       "answer": "C"
@@ -128,36 +128,6 @@
     {
       "ref": "Q5",
       "questionNumber": "5",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
-      "difficulty": "MODERATE",
-      "stem": "A 10 cm long wire lies along y-axis. It carries a current of \\(1{\\cdot}0\\) A in positive y-direction. A magnetic field \\(\\vec{\\mathrm{B}} = (5\\ \\mathrm{mT})\\hat{j} - (8\\ \\mathrm{mT})\\hat{k}\\) exists in the region. The force on the wire is :",
-      "options": [
-        {
-          "label": "A",
-          "text": "\\((0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
-        },
-        {
-          "label": "B",
-          "text": "\\(-\\ (0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
-        },
-        {
-          "label": "C",
-          "text": "\\((80\\ \\mathrm{mN})\\hat{i}\\)"
-        },
-        {
-          "label": "D",
-          "text": "\\(-\\ (80\\ \\mathrm{mN})\\hat{i}\\)"
-        }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q6",
-      "questionNumber": "6",
       "section": "A",
       "marks": 1,
       "format": "mcq",
@@ -186,34 +156,64 @@
       "answer": "B"
     },
     {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "difficulty": "MODERATE",
+      "stem": "A 10 cm long wire lies along y-axis. It carries a current of \\(1{\\cdot}0\\) A in positive y-direction. A magnetic field \\(\\vec{\\mathrm{B}} = (5\\ \\mathrm{mT})\\hat{j} - (8\\ \\mathrm{mT})\\hat{k}\\) exists in the region. The force on the wire is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\ (0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((80\\ \\mathrm{mN})\\hat{i}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\ (80\\ \\mathrm{mN})\\hat{i}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
       "ref": "Q7",
       "questionNumber": "7",
       "section": "A",
       "marks": 1,
       "format": "mcq",
       "chapter": "Alternating Current",
-      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "subtopic": "Transformers",
       "difficulty": "EASY",
-      "stem": "The reactance of a capacitor of capacitance C connected to an ac source of frequency \\(\\omega\\) is ‘X’. If the capacitance of the capacitor is doubled and the frequency of the source is tripled, the reactance will become :",
+      "stem": "The primary and secondary coils of a transformer have 500 turns and 5000 turns respectively. The primary coil is connected to an ac source of 220 V – 50 Hz. The output across the secondary coil is :",
       "options": [
         {
           "label": "A",
-          "text": "\\(\\dfrac{\\mathrm{X}}{6}\\)"
+          "text": "220 V – 50 Hz"
         },
         {
           "label": "B",
-          "text": "6X"
+          "text": "1100 V – 50 Hz"
         },
         {
           "label": "C",
-          "text": "\\(\\dfrac{2}{3}\\mathrm{X}\\)"
+          "text": "2200 V – 5 Hz"
         },
         {
           "label": "D",
-          "text": "\\(\\dfrac{3}{2}\\mathrm{X}\\)"
+          "text": "2200 V – 50 Hz"
         }
       ],
-      "answer": "A"
+      "answer": "D"
     },
     {
       "ref": "Q8",
@@ -222,122 +222,32 @@
       "marks": 1,
       "format": "mcq",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Displacement Current",
-      "difficulty": "MODERATE",
-      "stem": "In the four regions, I, II, III and IV, the electric fields are described as :\nRegion I : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\sin (kz - \\omega t)\\)\nRegion II : \\(\\mathrm{E}_x = \\mathrm{E}_0\\)\nRegion III : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\sin kz\\)\nRegion IV : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\cos kz\\)\nThe displacement current will exist in the region :",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "difficulty": "EASY",
+      "stem": "The first scientist who produced and observed electromagnetic waves of wavelengths in the range 25 mm – 5 mm was :",
       "options": [
         {
           "label": "A",
-          "text": "I"
+          "text": "J.C. Maxwell"
         },
         {
           "label": "B",
-          "text": "IV"
+          "text": "H.R. Hertz"
         },
         {
           "label": "C",
-          "text": "II"
+          "text": "J.C. Bose"
         },
         {
           "label": "D",
-          "text": "III"
+          "text": "G. Marconi"
         }
       ],
-      "answer": "A"
+      "answer": "C"
     },
     {
       "ref": "Q9",
       "questionNumber": "9",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Atoms",
-      "subtopic": "Line Spectra of the Hydrogen Atom",
-      "difficulty": "EASY",
-      "stem": "The transition of electron that gives rise to the formation of the second spectral line of the Balmer series in the spectrum of hydrogen atom corresponds to :",
-      "options": [
-        {
-          "label": "A",
-          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 3\\)"
-        },
-        {
-          "label": "B",
-          "text": "\\(\\mathrm{n}_f = 3\\) and \\(\\mathrm{n}_i = 4\\)"
-        },
-        {
-          "label": "C",
-          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 4\\)"
-        },
-        {
-          "label": "D",
-          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = \\infty\\)"
-        }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q10",
-      "questionNumber": "10",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors",
-      "difficulty": "EASY",
-      "stem": "Ge is doped with As. Due to doping,",
-      "options": [
-        {
-          "label": "A",
-          "text": "the structure of Ge lattice is distorted."
-        },
-        {
-          "label": "B",
-          "text": "the number of conduction electrons increases."
-        },
-        {
-          "label": "C",
-          "text": "the number of holes increases."
-        },
-        {
-          "label": "D",
-          "text": "the number of conduction electrons decreases."
-        }
-      ],
-      "answer": "B"
-    },
-    {
-      "ref": "Q11",
-      "questionNumber": "11",
-      "section": "A",
-      "marks": 1,
-      "format": "mcq",
-      "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Einstein's Photoelectric Equation and the Photon",
-      "difficulty": "MODERATE",
-      "stem": "Two beams, A and B whose photon energies are \\(3{\\cdot}3\\) eV and \\(11{\\cdot}3\\) eV respectively, illuminate a metallic surface (work function \\(2{\\cdot}3\\) eV) successively. The ratio of maximum speed of electrons emitted due to beam A to that due to beam B is :",
-      "options": [
-        {
-          "label": "A",
-          "text": "3"
-        },
-        {
-          "label": "B",
-          "text": "9"
-        },
-        {
-          "label": "C",
-          "text": "\\(\\dfrac{1}{3}\\)"
-        },
-        {
-          "label": "D",
-          "text": "\\(\\dfrac{1}{9}\\)"
-        }
-      ],
-      "answer": "C"
-    },
-    {
-      "ref": "Q12",
-      "questionNumber": "12",
       "section": "A",
       "marks": 1,
       "format": "mcq",
@@ -366,70 +276,98 @@
       "answer": "A"
     },
     {
-      "ref": "Q13",
-      "questionNumber": "13",
+      "ref": "Q10",
+      "questionNumber": "10",
       "section": "A",
       "marks": 1,
       "format": "mcq",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
       "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : In photoelectric effect, the kinetic energy of the emitted photoelectrons increases with increase in the intensity of the incident light.\nReason (R) : Photoelectric current depends on the wavelength of the incident light.",
+      "stem": "Two beams, A and B whose photon energies are \\(3{\\cdot}3\\) eV and \\(11{\\cdot}3\\) eV respectively, illuminate a metallic surface (work function \\(2{\\cdot}3\\) eV) successively. The ratio of maximum speed of electrons emitted due to beam A to that due to beam B is :",
       "options": [
         {
           "label": "A",
-          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+          "text": "3"
         },
         {
           "label": "B",
-          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+          "text": "9"
         },
         {
           "label": "C",
-          "text": "Assertion (A) is true, but Reason (R) is false."
+          "text": "\\(\\dfrac{1}{3}\\)"
         },
         {
           "label": "D",
-          "text": "Assertion (A) is false and Reason (R) is also false."
+          "text": "\\(\\dfrac{1}{9}\\)"
         }
       ],
-      "answer": "D"
+      "answer": "C"
     },
     {
-      "ref": "Q14",
-      "questionNumber": "14",
+      "ref": "Q11",
+      "questionNumber": "11",
       "section": "A",
       "marks": 1,
       "format": "mcq",
-      "chapter": "Electromagnetic Induction",
-      "subtopic": "Inductance",
-      "difficulty": "MODERATE",
-      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
-      "stem": "Assertion (A) : The mutual inductance between two coils is maximum when the coils are wound on each other.\nReason (R) : The flux linkage between two coils is maximum when they are wound on each other.",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "difficulty": "EASY",
+      "stem": "The transition of electron that gives rise to the formation of the second spectral line of the Balmer series in the spectrum of hydrogen atom corresponds to :",
       "options": [
         {
           "label": "A",
-          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 3\\)"
         },
         {
           "label": "B",
-          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+          "text": "\\(\\mathrm{n}_f = 3\\) and \\(\\mathrm{n}_i = 4\\)"
         },
         {
           "label": "C",
-          "text": "Assertion (A) is true, but Reason (R) is false."
+          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 4\\)"
         },
         {
           "label": "D",
-          "text": "Assertion (A) is false and Reason (R) is also false."
+          "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = \\infty\\)"
         }
       ],
-      "answer": "A"
+      "answer": "C"
     },
     {
-      "ref": "Q15",
-      "questionNumber": "15",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "difficulty": "EASY",
+      "stem": "Ge is doped with As. Due to doping,",
+      "options": [
+        {
+          "label": "A",
+          "text": "the structure of Ge lattice is distorted."
+        },
+        {
+          "label": "B",
+          "text": "the number of conduction electrons increases."
+        },
+        {
+          "label": "C",
+          "text": "the number of holes increases."
+        },
+        {
+          "label": "D",
+          "text": "the number of conduction electrons decreases."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
       "section": "A",
       "marks": 1,
       "format": "mcq",
@@ -459,8 +397,8 @@
       "answer": "A"
     },
     {
-      "ref": "Q16",
-      "questionNumber": "16",
+      "ref": "Q14",
+      "questionNumber": "14",
       "section": "A",
       "marks": 1,
       "format": "mcq",
@@ -490,42 +428,81 @@
       "answer": "D"
     },
     {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : The mutual inductance between two coils is maximum when the coils are wound on each other.\nReason (R) : The flux linkage between two coils is maximum when they are wound on each other.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is also false."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : In photoelectric effect, the kinetic energy of the emitted photoelectrons increases with increase in the intensity of the incident light.\nReason (R) : Photoelectric current depends on the wavelength of the incident light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is also false."
+        }
+      ],
+      "answer": "D"
+    },
+    {
       "ref": "Q17",
       "questionNumber": "17",
       "section": "B",
       "marks": 2,
       "format": "subjective",
       "chapter": "Current Electricity",
-      "subtopic": "Temperature Dependence of Resistivity",
+      "subtopic": "Electric Current and Ohm's Law",
       "difficulty": "MODERATE",
-      "stem": "Find the temperature at which the resistance of a wire made of silver will be twice its resistance at 20°C. Take 20°C as the reference temperature and temperature coefficient of resistance of silver at 20°C = \\(4{\\cdot}0 \\times 10^{-3}\\ \\mathrm{K^{-1}}\\)."
+      "stem": "A uniform wire of length L and area of cross-section A has resistance R. The wire is uniformly stretched so that its length increases by 25%. Calculate the percentage increase in the resistance of the wire."
     },
     {
-      "ref": "Q18a",
-      "questionNumber": "18 (a)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Wave Optics",
-      "subtopic": "Refraction and Reflection of Plane Waves",
-      "difficulty": "MODERATE",
-      "stem": "Monochromatic light of frequency \\(5{\\cdot}0 \\times 10^{14}\\) Hz passes from air into a medium of refractive index \\(1{\\cdot}5\\). Find the wavelength of the light (i) reflected, and (ii) refracted at the interface of the two media."
-    },
-    {
-      "ref": "Q18b",
-      "questionNumber": "18 (b)",
-      "section": "B",
-      "marks": 2,
-      "format": "subjective",
-      "chapter": "Ray Optics and Optical Instruments",
-      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
-      "difficulty": "MODERATE",
-      "stem": "A plano-convex lens of focal length 16 cm is made of a material of refractive index \\(1{\\cdot}4\\). Calculate the radius of the curved surface of the lens.",
-      "_alternativeTo": "Q18a"
-    },
-    {
-      "ref": "Q19",
-      "questionNumber": "19",
+      "ref": "Q18",
+      "questionNumber": "18",
       "section": "B",
       "marks": 2,
       "format": "subjective",
@@ -535,8 +512,8 @@
       "stem": "An object is placed 30 cm in front of a concave mirror of radius of curvature 40 cm. Find the (i) position of the image formed and (ii) magnification of the image."
     },
     {
-      "ref": "Q20",
-      "questionNumber": "20",
+      "ref": "Q19",
+      "questionNumber": "19",
       "section": "B",
       "marks": 2,
       "format": "subjective",
@@ -546,15 +523,38 @@
       "stem": "Consider a neutron (mass m) of kinetic energy E and a photon of the same energy. Let \\(\\lambda_n\\) and \\(\\lambda_p\\) be the de Broglie wavelength of neutron and the wavelength of photon respectively. Obtain an expression for \\(\\dfrac{\\lambda_n}{\\lambda_p}\\)."
     },
     {
+      "ref": "Q20a",
+      "questionNumber": "20 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "difficulty": "MODERATE",
+      "stem": "Monochromatic light of frequency \\(5{\\cdot}0 \\times 10^{14}\\) Hz passes from air into a medium of refractive index \\(1{\\cdot}5\\). Find the wavelength of the light (i) reflected, and (ii) refracted at the interface of the two media."
+    },
+    {
+      "ref": "Q20b",
+      "questionNumber": "20 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "A plano-convex lens of focal length 16 cm is made of a material of refractive index \\(1{\\cdot}4\\). Calculate the radius of the curved surface of the lens.",
+      "_alternativeTo": "Q20a"
+    },
+    {
       "ref": "Q21",
       "questionNumber": "21",
       "section": "B",
       "marks": 2,
       "format": "subjective",
-      "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Ohm's Law",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
       "difficulty": "MODERATE",
-      "stem": "Plot a graph showing the variation of current with voltage for the material GaAs. On the graph, mark the region where :\n(a) resistance is negative, and\n(b) Ohm's law is obeyed."
+      "stem": "Differentiate between ‘diffusion current’ and ‘drift current’. Explain their role in the formation of p-n junction."
     },
     {
       "ref": "Q22",
@@ -562,11 +562,10 @@
       "section": "C",
       "marks": 3,
       "format": "subjective",
-      "chapter": "Electric Charges and Fields",
-      "subtopic": "Electric Flux and Gauss's Law",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Energy Stored in a Capacitor",
       "difficulty": "MODERATE",
-      "stem": "A cube of side \\(0{\\cdot}1\\) m is placed, as shown in the figure, in a region where electric field \\(\\vec{\\mathrm{E}} = 500\\,x\\,\\hat{i}\\) exists. Here x is in meters and E in \\(\\mathrm{NC^{-1}}\\). Calculate :\n(a) the flux passing through the cube, and\n(b) the charge within the cube.",
-      "_figure": "REQUIRED — a cube drawn on x, y, z axes with origin O marked and a dimension arrow labelled 0·1 m. The cube's POSITION along the x-axis relative to the origin is shown only in the drawing, and since the field is x-dependent the flux cannot be found without it. Described: that there are labelled x, y, z axes, an origin O and a cube with one 0·1 m dimension marked. Withheld: where the cube's faces sit relative to the origin. Page idx 12."
+      "stem": "An air-filled parallel plate capacitor with plate separation 1 mm has a capacitance of 20 pF. It is charged to \\(4{\\cdot}0\\ \\mu\\mathrm{C}\\). Calculate the amount of work done to pull its plates to a separation of 5 mm. Assume the charge on the plates remains the same."
     },
     {
       "ref": "Q23a",
@@ -598,9 +597,9 @@
       "marks": 3,
       "format": "subjective",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
       "difficulty": "MODERATE",
-      "stem": "A proton with kinetic energy \\(1{\\cdot}3384 \\times 10^{-14}\\) J moving horizontally from north to south, enters a uniform magnetic field B of \\(2{\\cdot}0\\) mT directed eastward. Calculate :\n(a) the speed of the proton\n(b) the magnitude of acceleration of the proton\n(c) the radius of the path traced by the proton\n[Take (q/m) for proton = \\(1{\\cdot}0 \\times 10^{8}\\) C/kg]"
+      "stem": "A circular coil with cross-sectional area \\(0{\\cdot}2\\ \\mathrm{cm^2}\\) carries a current of 4 A. It is kept in a uniform magnetic field of magnitude \\(0{\\cdot}5\\) T normal to the plane of the coil. Calculate :\n(a) the net force on the coil.\n(b) the torque on the coil.\n(c) the average force on each electron in the coil due to the magnetic field. The free electron density in the material of the coil is \\(10^{28}\\ \\mathrm{m^{-3}}\\)."
     },
     {
       "ref": "Q25",
@@ -609,9 +608,10 @@
       "marks": 3,
       "format": "subjective",
       "chapter": "Alternating Current",
-      "subtopic": "Power in AC Circuits and the Power Factor",
-      "difficulty": "HARD",
-      "stem": "An inductor, a capacitor and a resistor are connected in series with an ac source \\(v = v_m \\sin \\omega t\\). Derive an expression for the average power dissipated in the circuit. Also obtain the expression for the resonant frequency of the circuit."
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "difficulty": "MODERATE",
+      "stem": "(a) Draw the graphs showing the variation of the following with the frequency of ac source in a circuit :\n(i) Resistance\n(ii) Capacitive reactance\n(iii) Inductive reactance\n(b) Can the voltage drop across the inductor or the capacitor in a series LCR circuit be greater than the applied voltage of the ac source ? Justify your answer.",
+      "_flag": "NOT an internal choice, despite the (a)/(b) labelling: the paper prints no OR between the parts and only ONE marks figure (3) after (b), and the whole-scheme bare-OR scan finds no OR anywhere in this question's block. Subtopic is a genuine TIE and is flagged rather than resolved silently — the marking scheme splits the 3 marks exactly 1½ / 1½ (a: ½ + ½ + ½ for the three graphs; b: ½ + 1 for answer and justification). Part (a) is reactance-versus-frequency (NCERT §7.4/§7.5, the subtopic filed) and part (b) is explicitly about a series LCR circuit (`Series LCR Circuit and Resonance`, the equally defensible alternative). Filed on the reactance subtopic because (a) carries the three enumerated items and because the reactance behaviour in (a) is what makes (b) answerable."
     },
     {
       "ref": "Q26",
@@ -619,12 +619,10 @@
       "section": "C",
       "marks": 3,
       "format": "subjective",
-      "chapter": "Electromagnetic Waves",
-      "subtopic": "Electromagnetic Spectrum",
+      "chapter": "Nuclei",
+      "subtopic": "Size of the Nucleus",
       "difficulty": "MODERATE",
-      "stem": "(a) “The wavelength of the electromagnetic wave is often correlated with the characteristic size of the system that radiates.” Give two examples to justify this statement.\n(b) (i) Long distance radio broadcasts use short-wave bands. Why ?\n(ii) Optical and radio telescopes are built on the ground, but X-ray astronomy is possible only from satellites orbiting the Earth. Why ?",
-      "_flag": "NOT an internal choice, despite the (a)/(b) labelling: the paper prints no OR between the parts and only ONE marks figure (3) after (b)(ii), and the marking scheme awards a) ½+½ plus b) 1+1 = 3 for the whole question. Separately, the marking scheme carries a concession on this question that has no equivalent elsewhere on the paper: “Note: Full credit to be given for part (b) for mere attempt.” Recorded because it is a CBSE grace instruction, not a defect in the question. RULED 2026-09-12: this is an UNCONDITIONAL award — credit for mere attempt, irrespective of correctness — so it is a defect declaration by the Board and belongs in _cbseVoided, not in _flag alone. The sibling 2024-55-1-3 Q28 is the SAME PRINTED QUESTION (stems byte-identical across all three sets) carrying the SAME note, and was already encoded that way; this row was not. The dividing line is unconditional vs conditional-on-correct-work, which is the taxonomy SCIENCE_ADDENDUM.md already states — see its 'CBSE sometimes VOIDS its own question' section. It voids 2 of the question's 3 marks (part (b) only), not the whole row, and names no language edition, so it governs both.",
-      "_cbseVoided": "Note: Full credit to be given for part (b) for mere attempt."
+      "stem": "(a) State any two properties of a nucleus.\n(b) Why is the density of a nucleus much more than that of an atom ?\n(c) Show that the density of the nuclear matter is the same for all nuclei."
     },
     {
       "ref": "Q27",
@@ -635,7 +633,7 @@
       "chapter": "Atoms",
       "subtopic": "Bohr Model of the Hydrogen Atom",
       "difficulty": "MODERATE",
-      "stem": "Write the drawbacks of Rutherford's atomic model. How did Bohr remove them ? Show that different orbits in Bohr's atom are not equally spaced."
+      "stem": "State the three postulates of Bohr's theory of hydrogen atom.\nA hydrogen atom de-excites from level n to level (n – 1). Show that, according to Bohr's theory, the frequency of radiation emitted \\(\\nu \\cong \\dfrac{\\alpha}{\\mathrm{n}^3}\\), for large values of n, where \\(\\alpha\\) is a constant. This result exactly agrees with that obtained from classical physics – one of the successes of Bohr's theory."
     },
     {
       "ref": "Q28",
@@ -643,10 +641,12 @@
       "section": "C",
       "marks": 3,
       "format": "subjective",
-      "chapter": "Nuclei",
-      "subtopic": "Size of the Nucleus",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
       "difficulty": "MODERATE",
-      "stem": "(a) State any two properties of a nucleus.\n(b) Why is the density of a nucleus much more than that of an atom ?\n(c) Show that the density of the nuclear matter is the same for all nuclei."
+      "stem": "(a) “The wavelength of the electromagnetic wave is often correlated with the characteristic size of the system that radiates.” Give two examples to justify this statement.\n(b) (i) Long distance radio broadcasts use short-wave bands. Why ?\n(ii) Optical and radio telescopes are built on the ground, but X-ray astronomy is possible only from satellites orbiting the Earth. Why ?",
+      "_cbseVoided": "Note: Full credit to be given for part (b) for mere attempt.",
+      "_flag": "The ONLY award-regardless clause in the whole 25-page marking scheme, printed at the foot of this question's answer on ms idx 10 and verified verbatim by vision. It is UNCONDITIONAL (credit for mere attempt, irrespective of correctness) and so is recorded in _cbseVoided; it is scoped to part (b) only, i.e. it voids 2 of the question's 3 marks rather than the whole question. It names no language edition — no Hindi/English-version clause appears anywhere in this scheme — so it governs BOTH editions. FLAGGED FOR A HUMAN: the opener (2024 55/1/1, where this same question is Q26) recorded the identical note as a `_flag` only, calling it 'a CBSE grace instruction, not a defect in the question'. The two papers therefore disagree on classification; _cbseVoided is used here because the dispatch's own test is award-regardless wording, which this is. Nothing downstream reads _cbseVoided, so the divergence is inert, and the two rows dedup on content_hash regardless."
     },
     {
       "ref": "Q29i",
@@ -657,7 +657,7 @@
       "chapter": "Ray Optics and Optical Instruments",
       "subtopic": "Refraction at Spherical Surfaces and by Lenses",
       "difficulty": "EASY",
-      "setId": "2024-55-1-1-CS1",
+      "setId": "2024-55-1-3-CS1",
       "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
       "stem": "A double-convex lens, with each face having same radius of curvature R, is made of glass of refractive index n. Its power is :",
       "options": [
@@ -689,7 +689,7 @@
       "chapter": "Ray Optics and Optical Instruments",
       "subtopic": "Refraction at Spherical Surfaces and by Lenses",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS1",
+      "setId": "2024-55-1-3-CS1",
       "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
       "stem": "A double-convex lens of power P, with each face having same radius of curvature, is cut into two equal parts perpendicular to its principal axis. The power of one part of the lens will be :",
       "options": [
@@ -721,7 +721,7 @@
       "chapter": "Ray Optics and Optical Instruments",
       "subtopic": "Refraction at Spherical Surfaces and by Lenses",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS1",
+      "setId": "2024-55-1-3-CS1",
       "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
       "stem": "The above two parts are kept in contact with each other as shown in the figure. The power of the combination will be :",
       "options": [
@@ -754,7 +754,7 @@
       "chapter": "Ray Optics and Optical Instruments",
       "subtopic": "Refraction at Spherical Surfaces and by Lenses",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS1",
+      "setId": "2024-55-1-3-CS1",
       "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
       "stem": "A double-convex lens of power P, with each face having same radius of curvature, is cut along its principal axis. The two parts are arranged as shown in the figure. The power of the combination will be :",
       "options": [
@@ -787,7 +787,7 @@
       "chapter": "Ray Optics and Optical Instruments",
       "subtopic": "Refraction at Spherical Surfaces and by Lenses",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS1",
+      "setId": "2024-55-1-3-CS1",
       "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
       "stem": "Two convex lenses of focal lengths 60 cm and 20 cm are held coaxially in contact with each other. The power of the combination is :",
       "options": [
@@ -820,7 +820,7 @@
       "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
       "subtopic": "Application of Junction Diode as a Rectifier",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS2",
+      "setId": "2024-55-1-3-CS2",
       "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
       "stem": "The root mean square value of an alternating voltage applied to a full-wave rectifier is \\(\\dfrac{\\mathrm{V}_0}{\\sqrt{2}}\\). Then the root mean square value of the rectified output voltage is :",
       "options": [
@@ -852,7 +852,7 @@
       "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
       "subtopic": "Application of Junction Diode as a Rectifier",
       "difficulty": "EASY",
-      "setId": "2024-55-1-1-CS2",
+      "setId": "2024-55-1-3-CS2",
       "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
       "stem": "In a full-wave rectifier, the current in each of the diodes flows for :",
       "options": [
@@ -884,7 +884,7 @@
       "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
       "subtopic": "Application of Junction Diode as a Rectifier",
       "difficulty": "EASY",
-      "setId": "2024-55-1-1-CS2",
+      "setId": "2024-55-1-3-CS2",
       "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
       "stem": "In a full-wave rectifier :",
       "options": [
@@ -916,7 +916,7 @@
       "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
       "subtopic": "Application of Junction Diode as a Rectifier",
       "difficulty": "EASY",
-      "setId": "2024-55-1-1-CS2",
+      "setId": "2024-55-1-3-CS2",
       "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
       "stem": "An alternating voltage of frequency of 50 Hz is applied to a half-wave rectifier. Then the ripple frequency of the output will be :",
       "options": [
@@ -948,7 +948,7 @@
       "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
       "subtopic": "Application of Junction Diode as a Rectifier",
       "difficulty": "MODERATE",
-      "setId": "2024-55-1-1-CS2",
+      "setId": "2024-55-1-3-CS2",
       "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
       "stem": "A signal, as shown in the figure, is applied to a p-n junction diode. Identify the output across resistance \\(\\mathrm{R_L}\\) :",
       "options": [
@@ -979,10 +979,11 @@
       "section": "E",
       "marks": 5,
       "format": "subjective",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Potential Energy of a System of Charges",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
       "difficulty": "HARD",
-      "stem": "(i) Derive an expression for potential energy of an electric dipole \\(\\vec{p}\\) in an external uniform electric field \\(\\vec{\\mathrm{E}}\\). When is the potential energy of the dipole (1) maximum, and (2) minimum ?\n(ii) An electric dipole consists of point charges \\(- 1{\\cdot}0\\) pC and \\(+ 1{\\cdot}0\\) pC located at (0, 0) and (3 mm, 4 mm) respectively in \\(x - y\\) plane. An electric field \\(\\vec{\\mathrm{E}} = \\left(\\dfrac{1000\\ \\mathrm{V}}{\\mathrm{m}}\\right)\\hat{i}\\) is switched on in the region. Find the torque \\(\\vec{\\tau}\\) acting on the dipole."
+      "stem": "(i) A resistor and a capacitor are connected in series to an ac source \\(v = v_m \\sin \\omega t\\). Derive an expression for the impedance of the circuit.\n(ii) When does an inductor act as a conductor in a circuit ? Give reason for it.\n(iii) An electric lamp is designed to operate at 110 V dc and 11 A current. If the lamp is operated on 220 V, 50 Hz ac source with a coil in series, then find the inductance of the coil.",
+      "_flag": "Subtopic is approximate. This is a series R-C ac circuit (impedance derivation) plus a series L-R numeric, and the live Alternating Current axis has no R-C or general series-ac-circuit subtopic; `Series LCR Circuit and Resonance` is the closest available since it is the only one covering impedance of a series ac circuit. Same call, for the same reason, as the opener made on its Q32(a) — this is that question, renumbered."
     },
     {
       "ref": "Q31b",
@@ -990,11 +991,12 @@
       "section": "E",
       "marks": 5,
       "format": "subjective",
-      "chapter": "Electrostatic Potential and Capacitance",
-      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
       "difficulty": "HARD",
-      "stem": "(i) An electric dipole (dipole moment \\(\\vec{p} = p\\,\\hat{i}\\)), consisting of charges \\(- q\\) and q, separated by distance 2a, is placed along the x-axis, with its centre at the origin. Show that the potential V, due to this dipole, at a point x, (x >> a) is equal to \\(\\dfrac{1}{4\\pi\\varepsilon_0} \\cdot \\dfrac{\\vec{p} \\cdot \\hat{i}}{x^2}\\).\n(ii) Two isolated metallic spheres \\(\\mathrm{S_1}\\) and \\(\\mathrm{S_2}\\) of radii 1 cm and 3 cm respectively are charged such that both have the same charge density \\(\\left(\\dfrac{2}{\\pi} \\times 10^{-9}\\right) \\mathrm{C/m^2}\\). They are placed far away from each other and connected by a thin wire. Calculate the new charge on sphere \\(\\mathrm{S_1}\\).",
-      "_alternativeTo": "Q31a"
+      "stem": "(i) Draw a labelled diagram of a step-up transformer and describe its working principle. Explain any three causes for energy losses in a real transformer.\n(ii) A step-up transformer converts a low voltage into high voltage. Does it violate the principle of conservation of energy ? Explain.\n(iii) A step-up transformer has 200 and 3000 turns in its primary and secondary coils respectively. The input voltage given to the primary coil is 90 V. Calculate :\n(1) The output voltage across the secondary coil\n(2) The current in the primary coil if the current in the secondary coil is \\(2{\\cdot}0\\) A.",
+      "_alternativeTo": "Q31a",
+      "_flag": "GAP-CLOSURE BOOKKEEPING, 2026-09-12 — the sibling flags this note was written to warn about have themselves been corrected, so the warning is no longer needed; it is kept as a record of when the gap closed. Every paper in this series now files this question on its correct live subtopic. ORIGINAL NOTE: TAXONOMY GAP NOW CLOSED — recorded so nobody re-opens it. The opener (2024 55/1/1) met this exact question as its Q32(b), found no `Transformers` subtopic on the live Alternating Current axis, filed it on `Power in AC Circuits and the Power Factor` and raised a gap naming `Transformers` as the name it wanted. That subtopic now EXISTS on the live axis and is used here, as it also is on this paper's Q7. Consequence worth a human's attention: the two rows dedup on content_hash and the opener's row was committed first, so the opener's less-accurate subtopic is the one that survives — re-filing that shipped row onto `Transformers` is a backfill candidate, not something to change in passing."
     },
     {
       "ref": "Q32a",
@@ -1002,11 +1004,10 @@
       "section": "E",
       "marks": 5,
       "format": "subjective",
-      "chapter": "Alternating Current",
-      "subtopic": "Series LCR Circuit and Resonance",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
       "difficulty": "HARD",
-      "stem": "(i) A resistor and a capacitor are connected in series to an ac source \\(v = v_m \\sin \\omega t\\). Derive an expression for the impedance of the circuit.\n(ii) When does an inductor act as a conductor in a circuit ? Give reason for it.\n(iii) An electric lamp is designed to operate at 110 V dc and 11 A current. If the lamp is operated on 220 V, 50 Hz ac source with a coil in series, then find the inductance of the coil.",
-      "_flag": "Subtopic is approximate. This is a series R-C ac circuit (impedance derivation), and the live Alternating Current axis has no R-C or general series-ac-circuit subtopic; `Series LCR Circuit and Resonance` is the closest available since it is the only one covering impedance of a series ac circuit."
+      "stem": "(i) Derive an expression for potential energy of an electric dipole \\(\\vec{p}\\) in an external uniform electric field \\(\\vec{\\mathrm{E}}\\). When is the potential energy of the dipole (1) maximum, and (2) minimum ?\n(ii) An electric dipole consists of point charges \\(- 1{\\cdot}0\\) pC and \\(+ 1{\\cdot}0\\) pC located at (0, 0) and (3 mm, 4 mm) respectively in \\(x - y\\) plane. An electric field \\(\\vec{\\mathrm{E}} = \\left(\\dfrac{1000\\ \\mathrm{V}}{\\mathrm{m}}\\right)\\hat{i}\\) is switched on in the region. Find the torque \\(\\vec{\\tau}\\) acting on the dipole."
     },
     {
       "ref": "Q32b",
@@ -1014,13 +1015,11 @@
       "section": "E",
       "marks": 5,
       "format": "subjective",
-      "chapter": "Alternating Current",
-      "subtopic": "Transformers",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
       "difficulty": "HARD",
-      "stem": "(i) Draw a labelled diagram of a step-up transformer and describe its working principle. Explain any three causes for energy losses in a real transformer.\n(ii) A step-up transformer converts a low voltage into high voltage. Does it violate the principle of conservation of energy ? Explain.\n(iii) A step-up transformer has 200 and 3000 turns in its primary and secondary coils respectively. The input voltage given to the primary coil is 90 V. Calculate :\n(1) The output voltage across the secondary coil\n(2) The current in the primary coil if the current in the secondary coil is \\(2{\\cdot}0\\) A.",
-      "_alternativeTo": "Q32a",
-      "_flag": "SUBTOPIC GAP CLOSED 2026-09-12 — this row is filed on 'Transformers', which IS live on the Physics axis (verified by running axis.ts, not assumed). The note that follows was written when it was not, and its claim that the axis has no such subtopic is STALE. Do NOT re-raise this gap. The note is kept verbatim rather than deleted because it records why the row moved and what else was considered. ORIGINAL NOTE: TAXONOMY GAP. This is a pure TRANSFORMER question and the live axis has no `Transformers` subtopic under Alternating Current — nor anywhere else (Electromagnetic Induction offers only AC Generator / Inductance / Lenz's Law / Magnetic Flux and Faraday's Law / Motional EMF). NCERT places transformers in Ch.7 Alternating Current (§7.8), so the CHAPTER is right. Filed on `Power in AC Circuits and the Power Factor` as the least-wrong of the four available, since the question's quantitative core is the power relation V_p I_p = V_s I_s and the energy losses. The name wanted is `Transformers` under Alternating Current.",
-      "_subtopicWas": "Power in AC Circuits and the Power Factor"
+      "stem": "(i) An electric dipole (dipole moment \\(\\vec{p} = p\\,\\hat{i}\\)), consisting of charges \\(- q\\) and q, separated by distance 2a, is placed along the x-axis, with its centre at the origin. Show that the potential V, due to this dipole, at a point x, (x >> a) is equal to \\(\\dfrac{1}{4\\pi\\varepsilon_0} \\cdot \\dfrac{\\vec{p} \\cdot \\hat{i}}{x^2}\\).\n(ii) Two isolated metallic spheres \\(\\mathrm{S_1}\\) and \\(\\mathrm{S_2}\\) of radii 1 cm and 3 cm respectively are charged such that both have the same charge density \\(\\left(\\dfrac{2}{\\pi} \\times 10^{-9}\\right) \\mathrm{C/m^2}\\). They are placed far away from each other and connected by a thin wire. Calculate the new charge on sphere \\(\\mathrm{S_1}\\).",
+      "_alternativeTo": "Q32a"
     },
     {
       "ref": "Q33a",
@@ -1044,7 +1043,7 @@
       "difficulty": "HARD",
       "stem": "(i) State Huygens' principle. A plane wave is incident at an angle i on a reflecting surface. Construct the corresponding reflected wavefront. Using this diagram, prove that the angle of reflection is equal to the angle of incidence.\n(ii) What are the coherent sources of light ? Can two independent sodium lamps act like coherent sources ? Explain.\n(iii) A beam of light consisting of a known wavelength 520 nm and an unknown wavelength \\(\\lambda\\), used in Young's double slit experiment produces two interference patterns such that the fourth bright fringe of unknown wavelength coincides with the fifth bright fringe of known wavelength. Find the value of \\(\\lambda\\).",
       "_alternativeTo": "Q33a",
-      "_flag": "Subtopic chosen by LARGEST SINGLE SUB-PART. The marking scheme splits this 5-mark row as (i) ½ + ½ + 1 = 2 marks (Huygens' principle, reflected-wavefront construction, proof), (ii) ½ + 1 = 1½ (coherent sources) and (iii) 1½ (YDSE numeric) — so (i) is the biggest single part and gives the row its identity, while interference content totals 3 of 5 marks. `Interference and Young's Experiment` is the defensible alternative."
+      "_flag": "Subtopic chosen by LARGEST SINGLE SUB-PART, matching the opener's call on this same question. The marking scheme splits this 5-mark row as (i) ½ + ½ + 1 = 2 marks (Huygens' principle, reflected-wavefront construction, proof), (ii) ½ + 1 = 1½ (coherent sources) and (iii) 1½ (YDSE numeric) — so (i) is the biggest single part and gives the row its identity, while interference content totals 3 of 5 marks. `Interference and Young's Experiment` is the defensible alternative."
     }
   ]
 }

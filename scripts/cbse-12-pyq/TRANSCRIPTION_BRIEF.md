@@ -244,6 +244,24 @@ Two cautions:
   ⚠ Confirm against the PAGE, never by trusting the reference file alone — that
   is what keeps a reference transcription error from propagating silently.
 
+⚠ **`_figure` IS EXEMPT FROM THAT REUSE RULE — READ IT ON YOUR OWN PAGE, EVERY
+TIME.** The reuse rule works because `stem`, `options` and `answer` are HASHED,
+so a drift shows up at commit as a near-duplicate row. **`_figure` is not
+hashed**, so nothing anywhere compares it, and copying it forward propagates the
+reference's mistakes in perfect silence — and it is a claim about a DRAWING,
+which each set typesets separately.
+
+Measured, and the reason this rule exists: 2024 55/5/1 Q13 described the charged
+ring as *"one semicircular half drawn as a solid arc … the other half as a dashed
+arc"*. Both papers' own pages show ONE CONTINUOUS SOLID CIRCLE — the only dashed
+elements are the two diameters, and the "dashed arc" is a row of minus signs
+drawn radially. 55/5/3 Q15 inherited the wrong sentence byte-for-byte and shipped
+it. 55/5/2, whose agent read its own page instead, got it right. Corrected
+2026-09-12.
+
+The same caution applies to the **page index** inside `_figure`: it is a fact
+about YOUR PDF, and sibling sets put the same question on different pages.
+
 **What is NOT acceptable is skipping on the number**, and `plan.txt`'s own labels
 are not safe for this either: on 65/6/2 it claimed `Q4 = 65/6/1 Q6` when Q4 is
 actually 65/6/1's **Q1**. The block→number attribution is best-effort; only the
