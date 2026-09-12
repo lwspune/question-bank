@@ -153,10 +153,24 @@ Three structural things that are easy to miss:
   Refs are `Q23a` / `Q23b`, questionNumber `"23 (a)"` / `"23 (b)"`, and the
   alternative carries `"_alternativeTo": "Q23a"`.
 
-  **How many there are is a per-PAPER fact, and the paper's own internal-choice
-  instruction is the only authority. Its NUMBER differs by year: it is (viii) on
-  a `full80` paper and (vi) on a 2022 `term2` paper**, which prints only seven
-  instructions in total. Find the line by its wording, not its number. Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
+  **How many there are is a per-PAPER fact.** Where the paper prints an
+  internal-choice instruction, that line is the authority, and its NUMBER
+  differs by year: it is (viii) on a `full80` paper and (vi) on a 2022 Maths
+  `term2` paper, which prints only seven instructions in total. Find the line by
+  its wording, not its number.
+
+  > ⚠ **THE SCIENCE `term2_sci` PAPERS PRINT NO SUCH LINE AT ALL, so "the
+  > instruction is the only authority" is false for them.** Measured on 8 of 8
+  > Chemistry 2022 papers: each prints **six** instructions, not seven, and (vi)
+  > is *"Use of log tables and calculators is NOT allowed"* — yet every one of
+  > them carries five `OR` alternatives. An agent that goes looking for the count
+  > this paragraph promised will either hunt for a line that does not exist or
+  > conclude there are no alternatives. **On `term2_sci`, build the roster by
+  > walking the marking scheme for a bare `OR` on its own line and confirming
+  > each against a printed `OR` / `अथवा` on the page.** `full70_phy_2023` and
+  > `full70` DO print counts, so this exception is specific to 2022.
+
+  Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
   series 65/1 and 65/2 print NO COUNTS AT ALL (`"in few questions in all the
   Sections except Section - A"`) while 65/3, 65/4 and 65/5 of that same year do
   print them, and 65/3 says three in Section E where 65/4 and 65/5 say two.
