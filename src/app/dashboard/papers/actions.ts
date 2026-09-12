@@ -35,9 +35,12 @@ import { queryQuestionsByIds } from "@/lib/questions/query";
 import {
   buildPaperPushPayload,
   pushDisabledReason,
+  planPush,
   trackerExamId,
   PUSH_CAP,
+  type PriorSitting,
 } from "@/lib/sync/paperPush";
+import { listPaperSittings, recordPaperSitting } from "@/lib/sync/paperSittings";
 import { getTrackerTarget, paperImportUrl } from "@/lib/sync/trackerTarget";
 
 type Ok<T = unknown> = { ok: true } & T;
@@ -452,9 +455,42 @@ function msg(e: unknown): string {
  * tracker credential is read service-role, because `tracker_sync_targets` is
  * deliberately unreadable to any JWT.
  */
+/**
+ * What a Push click produced.
+ *
+ * `needs_choice` is the third outcome and the reason this is not a plain
+ * `Result`: the paper has been pushed before, so the click is ambiguous between
+ * "update that draft" and "I am conducting it again". The UI must ASK, and it
+ * needs the facts to ask with.
+ */
+export type PushOutcome =
+  | {
+      ok: true;
+      examId: string;
+      questionCount: number;
+      sittingNo: number;
+      warning?: string;
+    }
+  | { ok: false; needsChoice: true; sittings: PriorSitting[]; nextSittingNo: number; conducted: boolean; note: string }
+  | { ok: false; error: string };
+
+/**
+ * Push a paper to this institute's nda-tracker as a DRAFT exam.
+ *
+ * Called with no `choice` this is the FIRST click: it pushes straight through
+ * when the paper has never been pushed, and otherwise returns `needsChoice`
+ * without touching the tracker. The UI then calls again with an explicit
+ * sitting.
+ */
 export async function pushPaperToTrackerAction(
-  paperId: string
-): Promise<Result<{ examId: string; questionCount: number; warning?: string }>> {
+  paperId: string,
+  /**
+   * INTENT, never a sitting number. The server allocates the number from data
+   * it reads itself, so a tab left open since before someone else pushed cannot
+   * name a sitting that has since been taken — it simply gets the next one.
+   */
+  choice?: { intent: "new" | "update"; label?: string | null }
+): Promise<PushOutcome> {
   const member = await requireMember();
   if (!member) return { ok: false, error: "Not authorized." };
 
@@ -503,12 +539,57 @@ export async function pushPaperToTrackerAction(
         .map(([id, t]) => [id, t.conceptTags[0]] as const)
     );
 
+    // ── Which SITTING is this? ──────────────────────────────────────────
+    // Re-derived server-side even when the UI supplied a choice: a tab left
+    // open since before someone else pushed must not be able to allocate a
+    // sitting number that has since been taken.
+    const sittings = await listPaperSittings(client, paperId);
+    const plan = planPush(sittings);
+
+    if (!choice && plan.kind === "ask") {
+      // THE TRIGGER IS "A SITTING EXISTS", NOT "IT HAS RESULTS", and that is
+      // forced rather than chosen. The tracker cannot know a conduct happened
+      // until the Evalbee sheet arrives days later — `date` defaults to the
+      // push date and `batch` is only set at results upload — so results lag
+      // the conduct, and keying on them leaves a window in which a push
+      // silently overwrites an exam students have already sat.
+      return {
+        ok: false,
+        needsChoice: true,
+        sittings,
+        nextSittingNo: plan.nextSittingNo,
+        conducted: false,
+        note: "",
+      };
+    }
+
+    // Numbers are ALLOCATED HERE, from the rows just read. "update" targets the
+    // latest existing sitting; "new" takes one past the highest ever used, never
+    // a recycled number — a sitting deleted tracker-side must not free its id,
+    // because the exam may still be there.
+    const sittingNo =
+      plan.kind === "create"
+        ? 1
+        : choice?.intent === "update"
+          ? plan.latest.sittingNo
+          : plan.nextSittingNo;
+    // Updating without typing a new label KEEPS the existing one — otherwise a
+    // re-push to fix a typo would silently blank the exam's name, and nothing
+    // downstream could put it back.
+    const keepExistingLabel =
+      choice?.intent === "update" && !choice.label?.trim() && plan.kind === "ask";
+    const label = keepExistingLabel
+      ? plan.latest.label
+      : choice?.label?.trim() || null;
+
     const body = buildPaperPushPayload({
       questions: ordered,
       paperId,
       title: detail.title,
       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
       conceptTags,
+      sittingNo,
+      label,
     });
 
     const res = await fetch(paperImportUrl(target), {
@@ -522,24 +603,64 @@ export async function pushPaperToTrackerAction(
 
     const json = (await res.json().catch(() => ({}))) as {
       error?: string;
+      code?: string;
       examId?: string;
       questionCount?: number;
+      resultCount?: number;
       warning?: string;
     };
 
     if (!res.ok) {
-      // Surface the tracker's own words — a 409 here means the exam already has
-      // results, and the operator needs to know WHICH exam, not a generic failure.
+      // A 409 with `has_results` is NOT a dead end — it is the tracker telling
+      // us this sitting was conducted. Two things follow. First, it is the only
+      // evidence we get that a PRE-SITTINGS push exists (the vault kept no
+      // record before migration 0097 and the tracker exposes no list endpoint),
+      // so record it now — that is the whole backfill. Second, offer the next
+      // sitting rather than making the operator read a refusal and guess.
+      if (res.status === 409 && json.code === "has_results") {
+        await recordPaperSitting(client, {
+          paperId,
+          sittingNo,
+          trackerExamId: json.examId ?? trackerExamId(paperId, sittingNo),
+          label,
+          pushedBy: member.user.id ?? null,
+        });
+        const known = await listPaperSittings(client, paperId);
+        const next = planPush(known);
+        return {
+          ok: false,
+          needsChoice: true,
+          sittings: known,
+          nextSittingNo: next.kind === "ask" ? next.nextSittingNo : 1,
+          conducted: true,
+          note: json.error ?? "",
+        };
+      }
+      // Otherwise surface the tracker's own words — the operator needs to know
+      // WHICH exam, not a generic failure.
       return {
         ok: false,
         error: json.error ?? `Tracker returned ${res.status}.`,
       };
     }
 
+    const examId = json.examId ?? trackerExamId(paperId, sittingNo);
+    // Recorded AFTER the tracker confirms, never before: a row here claims an
+    // exam exists, and claiming one that does not would make the next push
+    // allocate around a sitting nobody can find.
+    await recordPaperSitting(client, {
+      paperId,
+      sittingNo,
+      trackerExamId: examId,
+      label,
+      pushedBy: member.user.id ?? null,
+    });
+
     return {
       ok: true,
-      examId: json.examId ?? trackerExamId(paperId),
+      examId,
       questionCount: json.questionCount ?? body.questions.length,
+      sittingNo,
       warning: json.warning,
     };
   } catch (e) {

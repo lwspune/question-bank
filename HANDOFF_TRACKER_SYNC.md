@@ -1,6 +1,10 @@
 # Handoff — nda-tracker question sync (vault side)
 
 **Written 2026-09-11 by the nda-tracker session; the vault side was completed the same day.**
+
+> **STATUS TABLES GO STALE — READ THE CODE.** This table said *"Paper push — not built. Specced only"*
+> for a day after the push shipped end to end, and a later session took it at face value. `ls` what a
+> status line describes before believing it.
 The read bridge is live end to end except for one env setting, which only the account owner can do.
 
 The contract both apps implement is nda-tracker's **`CROSS_APP_SYNC.md`** — read that for the
@@ -20,7 +24,8 @@ that must not be simplified away.
 | Route integration test | `tests/sync-by-ids-route.test.ts` | **done — 8 cases, fault-proven** |
 | Tracker's outbound fetch | nda-tracker `716d3e2` (pushed, live) | done; fails closed until env is set |
 | `VAULT_API_URL` + `VAULT_SYNC_SECRET` | nda-tracker Vercel env | **not set** ← the user, via dashboard |
-| Paper push | — | **not built.** Specced only. |
+| Paper push | `src/lib/sync/paperPush.ts` + `pushPaperToTrackerAction` + `PaperDownload` | **BUILT.** |
+| Paper SITTINGS (one paper, many conducts) | migration `0097_paper_pushes` + `src/lib/sync/paperSittings.ts` | **BUILT 2026-09-12.** |
 
 ### The one remaining step
 

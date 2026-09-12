@@ -32,23 +32,108 @@ export type PaperPushQuestion = QuestionPayload & { q: number };
 export type PaperPushPayload = {
   /** Discriminator — the tracker hosts this on POST /api/quiz-import (12/12 Hobby functions). */
   kind: "paper";
-  /** The vault `papers.id`. The IDEMPOTENCY KEY: a re-push updates, never duplicates. */
+  /** The vault `papers.id`. With `sittingNo`, the IDEMPOTENCY KEY. */
   paperId: string;
+  /**
+   * Which conduct of this paper. 1 unless the paper is being run again for
+   * another batch or on another day. The tracker derives its `exams.id` from
+   * (paperId, sittingNo), so this is what makes a second conduct a NEW exam
+   * instead of an overwrite of the first.
+   */
+  sittingNo: number;
+  /** Already carries the sitting label / number -- see `pushTitle`. */
   title: string;
   subject: string;
   questions: PaperPushQuestion[];
 };
 
 /**
- * The tracker's `exams.id` for a vault paper — deterministic, so a re-push
- * upserts onto the same row instead of creating a second exam.
+ * The tracker's `exams.id` for a vault paper SITTING.
  *
  * NAMESPACED deliberately. Tracker ids are hand-made `exam_<timestamp>`; a
  * vault-sourced exam must be identifiable at a glance and must never be able to
  * collide with one, in either direction.
+ *
+ * SITTING 1 IS BYTE-IDENTICAL TO THE PRE-SITTINGS ID and must stay that way:
+ * nine pushed drafts are live in production on `exam_vault_<paperId>`
+ * (nda-tracker RESULTS_REUPLOAD.md section 1, measured 2026-09-12). Suffixing
+ * them would orphan every one. Only sitting 2+ carries `_s<N>`.
+ *
+ * Within a sitting this is still deterministic, so a re-push of THAT sitting
+ * upserts its own row rather than creating another.
  */
-export function trackerExamId(paperId: string): string {
-  return `exam_vault_${paperId}`;
+export function trackerExamId(paperId: string, sittingNo: number = 1): string {
+  if (!Number.isInteger(sittingNo) || sittingNo < 1) {
+    // A bad value does not fail loudly downstream -- it silently mints an exam
+    // nobody can find. Refuse at the boundary.
+    throw new Error(`sittingNo must be a positive integer, got ${sittingNo}`);
+  }
+  return sittingNo === 1
+    ? `exam_vault_${paperId}`
+    : `exam_vault_${paperId}_s${sittingNo}`;
+}
+
+/**
+ * The exam NAME as the tracker will hold it, forever.
+ *
+ * This is the only place two sittings of one paper can be told apart, and that
+ * is a hard constraint rather than a preference: the tracker's Update Results
+ * modal edits date, marking, subject, batch and branch -- NOT name -- and every
+ * push overwrites name from the vault. Left undistinguished, two sittings are
+ * two rows carrying the same name, the same (push-date) date and both batch
+ * null, at exactly the moment faculty must pick one to file results into.
+ *
+ * A teacher-supplied label wins because the push is the one moment a human
+ * knows what the sitting is FOR ("Batch B"); the sitting number is the fallback
+ * so the name is never ambiguous even when nobody typed anything.
+ *
+ * An unlabelled sitting 1 returns the title verbatim -- today's behaviour, and
+ * what the nine live drafts already carry.
+ */
+export function pushTitle(
+  title: string,
+  sittingNo: number,
+  label: string | null | undefined
+): string {
+  const base = title.trim();
+  const tag = (label ?? "").trim();
+  if (tag) return `${base} — ${tag}`;
+  return sittingNo === 1 ? base : `${base} (sitting ${sittingNo})`;
+}
+
+/** A sitting of this paper that has already been pushed. */
+export type PriorSitting = {
+  sittingNo: number;
+  examId: string;
+  label: string | null;
+  pushedAt: string;
+};
+
+/**
+ * What a Push click should do, given what has already been pushed.
+ *
+ * THE TRIGGER IS "A SITTING EXISTS", NOT "IT HAS RESULTS", and that is forced
+ * rather than chosen. The tracker cannot know a conduct happened until the
+ * Evalbee sheet arrives, which is routinely days later: `date` defaults to the
+ * PUSH date (all nine live drafts read 2026-09-12) and `batch` is only set at
+ * results upload. Results are therefore the sole real signal and they LAG the
+ * conduct -- so keying on them leaves a window in which a push silently
+ * overwrites an exam students have already sat. Asking whenever a sitting
+ * exists closes that window; the cost is one confirmation on the re-push of a
+ * draft nobody has sat.
+ *
+ * Numbers are ALLOCATED, never recycled: the next sitting is one past the
+ * highest ever used, so deleting a sitting tracker-side cannot make us reuse an
+ * id that may still exist there.
+ */
+export type PushPlan =
+  | { kind: "create"; sittingNo: 1 }
+  | { kind: "ask"; latest: PriorSitting; nextSittingNo: number };
+
+export function planPush(existing: PriorSitting[]): PushPlan {
+  if (existing.length === 0) return { kind: "create", sittingNo: 1 };
+  const latest = existing.reduce((a, b) => (b.sittingNo > a.sittingNo ? b : a));
+  return { kind: "ask", latest, nextSittingNo: latest.sittingNo + 1 };
 }
 
 /**
@@ -82,6 +167,10 @@ export type BuildPaperPushInput = {
   supabaseUrl: string;
   /** questionId → primary concept tag, for the /go remediation links. Optional. */
   conceptTags?: Map<string, ConceptTagRef>;
+  /** Which conduct. Omitted = 1, so every pre-sittings caller is unchanged. */
+  sittingNo?: number;
+  /** What this sitting is for ("Batch B"). Falls back to "(sitting N)". */
+  label?: string | null;
 };
 
 /**
@@ -105,6 +194,10 @@ export function buildPaperPushPayload(
   input: BuildPaperPushInput
 ): PaperPushPayload {
   const { questions, paperId, title, supabaseUrl, conceptTags } = input;
+  const sittingNo = input.sittingNo ?? 1;
+  // Build the id here too, purely to reject a bad sittingNo before we emit a
+  // payload the tracker would file under an id we never recorded.
+  trackerExamId(paperId, sittingNo);
   if (questions.length === 0) {
     throw new Error("cannot push a paper with no questions");
   }
@@ -143,7 +236,10 @@ export function buildPaperPushPayload(
   return {
     kind: "paper",
     paperId,
-    title: title.trim(),
+    sittingNo,
+    // The BUILDER owns the title so it cannot drift from the sitting id it
+    // belongs to -- they are two halves of one identity.
+    title: pushTitle(title, sittingNo, input.label),
     subject: dominantSubject(questions),
     questions: out,
   };
