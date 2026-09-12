@@ -338,7 +338,7 @@ export const CADET_VOCAB: VocabBookDefinition = {
       ordinal: "Part 5",
       title: "Homonyms (Confusing Words)",
       blurb:
-        "Words a paper sets against each other. Each is already defined in its own part — this is here so you can see which ones get confused, which is the one thing an A-Z list cannot show you.",
+        "Words that get confused with each other — some because a paper has set them against each other, the rest because they sit close enough in spelling and sense to invite the mistake. Each is already defined in its own part; this is here so you can see which ones collide, which is the one thing an A-Z list cannot show you.",
     },
   ],
   /**
@@ -378,7 +378,7 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "papers-cds-m-r", label: "M-R", part: "pyq", section: "cds", letters: band("M", "R"), expected: 195 },
     { slug: "papers-cds-s-z", label: "S-Z", part: "pyq", section: "cds", letters: band("S", "Z"), expected: 192 },
 
-    // ── Part 3 · practice material (1,414) ──
+    // ── Part 3 · practice material (1,411) ──
     //
     // RECUT TWICE ON 2026-09-12, and the second recut is why these are sized
     // with HEADROOM rather than to fit. Four bands (sized for 640) became six
@@ -394,14 +394,14 @@ export const CADET_VOCAB: VocabBookDefinition = {
     //
     // Re-derive, do not trust: `plan-chapters.ts --cap=200`, then diff.
     { slug: "practice-a-b", label: "A-B", part: "practice", letters: band("A", "B"), expected: 159 },
-    { slug: "practice-c", label: "C", part: "practice", letters: band("C", "C"), expected: 104 },
+    { slug: "practice-c", label: "C", part: "practice", letters: band("C", "C"), expected: 102 },
     { slug: "practice-d-e", label: "D-E", part: "practice", letters: band("D", "E"), expected: 167 },
     { slug: "practice-f-h", label: "F-H", part: "practice", letters: band("F", "H"), expected: 142 },
     { slug: "practice-i-k", label: "I-K", part: "practice", letters: band("I", "K"), expected: 162 },
     { slug: "practice-l-o", label: "L-O", part: "practice", letters: band("L", "O"), expected: 161 },
     { slug: "practice-p-q", label: "P-Q", part: "practice", letters: band("P", "Q"), expected: 135 },
     { slug: "practice-r", label: "R", part: "practice", letters: band("R", "R"), expected: 92 },
-    { slug: "practice-s", label: "S", part: "practice", letters: band("S", "S"), expected: 119 },
+    { slug: "practice-s", label: "S", part: "practice", letters: band("S", "S"), expected: 118 },
     { slug: "practice-t-z", label: "T-Z", part: "practice", letters: band("T", "Z"), expected: 173 },
 
     // ── Part 1 · the class ladder ──

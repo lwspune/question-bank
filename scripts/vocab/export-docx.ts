@@ -405,12 +405,20 @@ function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[]
       sections.push({
         properties: cols(2),
         children: homonymSets.map(
-          (h) =>
+          (h, i) =>
             new Paragraph({
               spacing: { after: 40 },
-              // The separator is a spaced slash rather than a comma so a set
-              // reads as one unit; a comma would look like a list of entries.
-              children: [run(h.words.join("  /  "))],
+              children: [
+                // NUMBERED, like every other part. Entries are numbered within
+                // their chapter throughout this book, and a bare unnumbered run
+                // here read as a different kind of object rather than as Part 5
+                // of the same book. The number also gives a teacher something
+                // to set work against ("Part 5, 40-60").
+                run(`${i + 1}. `, { size: SMALL }),
+                // The separator is a spaced slash rather than a comma so a set
+                // reads as one unit; a comma would look like a list of entries.
+                run(h.words.join("  /  ")),
+              ],
             })
         ),
       });
