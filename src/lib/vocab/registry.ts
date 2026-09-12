@@ -409,7 +409,37 @@ export const CADET_VOCAB: VocabBookDefinition = {
      */
     { slug: "idioms-papers-a-s", label: "A-S", part: "idiom", section: "papers", letters: band("A", "S"), expected: 170 },
     { slug: "idioms-papers-t-z", label: "T-Z", part: "idiom", section: "papers", letters: band("T", "Z"), expected: 47 },
-    { slug: "idioms-practice-a-z", label: "A-Z", part: "idiom", section: "practice-set", letters: band("A", "Z"), expected: 79 },
+    /**
+     * ═══ THE ONE CHAPTER OVER THE 200 CAP, AND IT IS DELIBERATE ═══
+     *
+     * `idioms-practice-t` holds 280. That breaks the cap documented above, and
+     * the alternative was worse: the only ways under 200 are to SPLIT T (which
+     * the same rule forbids, and which would put "take heart" and "throw in the
+     * towel" in different chapters) or to drop the infinitive "To" from 180
+     * headwords — overriding the recorded call that this part files on the
+     * LITERAL first word, as printed.
+     *
+     * The two coaching decks are what forced it: they teach 183 idioms written
+     * as "To <verb>", against 28 in the whole of the existing part. Filing on
+     * the first CONTENT word would spread T to 100, and that option was
+     * measured, offered and DECLINED (user's call, 2026-09-12) — a reader who
+     * has just met "to pull your weight" in a paper looks under T.
+     *
+     * So the cap yields and the filing rule holds. Note which rule broke: the
+     * cap is about chapter LENGTH, the filing rule is about whether a reader
+     * can find the entry at all, and only one of those is worth a wrong lookup.
+     * Do not "fix" this chapter by splitting it.
+     */
+    { slug: "idioms-practice-a", label: "A", part: "idiom", section: "practice-set", letters: band("A", "A"), expected: 163 },
+    { slug: "idioms-practice-b", label: "B", part: "idiom", section: "practice-set", letters: band("B", "B"), expected: 114 },
+    { slug: "idioms-practice-c-e", label: "C-E", part: "idiom", section: "practice-set", letters: band("C", "E"), expected: 173 },
+    { slug: "idioms-practice-f-g", label: "F-G", part: "idiom", section: "practice-set", letters: band("F", "G"), expected: 137 },
+    { slug: "idioms-practice-h-k", label: "H-K", part: "idiom", section: "practice-set", letters: band("H", "K"), expected: 159 },
+    { slug: "idioms-practice-l-n", label: "L-N", part: "idiom", section: "practice-set", letters: band("L", "N"), expected: 125 },
+    { slug: "idioms-practice-o-r", label: "O-R", part: "idiom", section: "practice-set", letters: band("O", "R"), expected: 166 },
+    { slug: "idioms-practice-s", label: "S", part: "idiom", section: "practice-set", letters: band("S", "S"), expected: 60 },
+    { slug: "idioms-practice-t", label: "T", part: "idiom", section: "practice-set", letters: band("T", "T"), expected: 280 },
+    { slug: "idioms-practice-u-z", label: "U-Z", part: "idiom", section: "practice-set", letters: band("U", "Z"), expected: 60 },
   ],
 };
 
