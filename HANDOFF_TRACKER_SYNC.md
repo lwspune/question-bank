@@ -23,11 +23,15 @@ that must not be simplified away.
 | `tracker_sync_targets` row for LWS Pune | vault DB | **provisioned** |
 | Route integration test | `tests/sync-by-ids-route.test.ts` | **done — 8 cases, fault-proven** |
 | Tracker's outbound fetch | nda-tracker `716d3e2` (pushed, live) | done; fails closed until env is set |
-| `VAULT_API_URL` + `VAULT_SYNC_SECRET` | nda-tracker Vercel env | **not set** ← the user, via dashboard |
+| `VAULT_API_URL` + `VAULT_SYNC_SECRET` | nda-tracker Vercel env | **UNKNOWN FROM THIS REPO — do not assert either way.** Nothing here can observe it: `by-ids/route.ts` logs only on error, so a successful hydrate leaves no trace in the vault, and the Vercel MCP 404s on `question-bank`. Check nda-tracker → Settings → Environment Variables, or just run a hydrate (it fails closed). This row said "not set" long after it may have stopped being true, and was then repeated as fact. |
 | Paper push | `src/lib/sync/paperPush.ts` + `pushPaperToTrackerAction` + `PaperDownload` | **BUILT.** |
 | Paper SITTINGS (one paper, many conducts) | migration `0097_paper_pushes` + `src/lib/sync/paperSittings.ts` | **BUILT 2026-09-12.** |
 
-### The one remaining step
+### If hydrate is not working — check these two first
+
+**This section does NOT claim they are unset** (see the table above — nothing in this repo can tell).
+It is here so that whoever finds hydrate failing knows exactly what to set. If it already works,
+skip it.
 
 Set two variables in the **nda-tracker** Vercel project (Settings → Environment Variables), then
 redeploy it:
