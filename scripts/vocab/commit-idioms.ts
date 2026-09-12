@@ -4,16 +4,32 @@
  *   npx tsx scripts/vocab/commit-idioms.ts            # dry run
  *   npx tsx scripts/vocab/commit-idioms.ts --apply
  *
- * NOTHING HERE IS AUTHORED. The idiom is what the paper printed and the meaning
- * is the option the paper keyed as correct, so this script EXTRACTS and tidies;
- * it never writes a definition. That is the point of the part: elsewhere in the
- * book we author a meaning and the exam merely confirms a synonym, whereas here
- * the exam publishes the definition itself.
+ * TWO LANES, AND THE DIFFERENCE BETWEEN THEM IS THE PART'S INTEGRITY CLAIM.
+ *
+ * BANK LANE (`idiom-words.json`) — the idiom is what a question printed and the
+ * meaning is the option it keyed as correct. Nothing is authored: the exam
+ * publishes the definition itself, which is what makes Part 4 unlike every other
+ * part of this book.
+ *
+ * ROSTER LANE (`idiom-coaching.json` + `idioms-<band>.json`) — an idiom a
+ * commercial prep deck teaches. No question printed it, so there is no key and
+ * NOTHING TO EXTRACT; the meaning is authored by us, exactly as Part 3's
+ * coaching words are. The deck's own wording is never copied.
+ *
+ * The two are distinguishable in the data, not just here: a roster idiom carries
+ * `timesAsked: 0`, so `idiomSectionOf` files it under "Practice Material",
+ * whose blurb already says "set only in mocks and coaching books, never yet in a
+ * paper". The book therefore makes the weaker claim on the page, in the place a
+ * reader sees it.
+ *
+ * ONE WRITER FOR THIS TABLE, deliberately. A second script committing authored
+ * idioms would duplicate the row shaping, the 0091 rules and the renumbering,
+ * and the two would drift.
  *
  * The only judgement is `MEANING_CHOICE` below, and it exists because two
  * papers sometimes key the same idiom differently.
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
@@ -73,8 +89,86 @@ const tidyMeaning = (s: string) => {
 /** Printed as the paper printed it, but with sentence-case capitalisation. */
 const tidyIdiom = (s: string) => s.trim().replace(/\s+/g, " ");
 
+/** One line of the coaching roster: an idiom only a prep deck teaches. */
+type CoachingIdiom = { idiom: string; decks: string[]; pages: number[] };
+/** One authored chapter file: the meaning WE wrote for a roster idiom. */
+type AuthoredIdiom = { idiom: string; meaning: string };
+
+/**
+ * Fold the bank idioms and the roster idioms into ONE list before anything is
+ * shaped, so every rule below applies to both by construction rather than by
+ * being remembered twice.
+ */
+function loadAll(): IdiomWord[] {
+  const bank = JSON.parse(readFileSync(join(DATA, "idiom-words.json"), "utf8")) as IdiomWord[];
+  const rosterPath = join(DATA, "idiom-coaching.json");
+  if (!existsSync(rosterPath)) return bank;
+
+  const roster = JSON.parse(readFileSync(rosterPath, "utf8")) as CoachingIdiom[];
+  const held = new Map(bank.map((b) => [b.idiom.toLowerCase(), b]));
+
+  // Authored meanings live in one file per chapter, written by an agent against
+  // IDIOM_BRIEF.md. Picked up by shape, so a new band needs no edit here.
+  const meanings = new Map<string, string>();
+  for (const f of readdirSync(DATA).filter((f) => /^idioms-.+\.json$/.test(f))) {
+    for (const a of JSON.parse(readFileSync(join(DATA, f), "utf8")) as AuthoredIdiom[]) {
+      const k = a.idiom.toLowerCase();
+      if (meanings.has(k)) throw new Error(`${a.idiom}: authored twice across chapter files — REFUSING`);
+      meanings.set(k, a.meaning);
+    }
+  }
+
+  const out = [...bank];
+  let unauthored = 0;
+  const rosterKeys = new Set<string>();
+  for (const c of roster) {
+    const k = c.idiom.toLowerCase();
+    rosterKeys.add(k);
+    /**
+     * REFUSED ON COLLISION, like the vocabulary roster. An idiom a real question
+     * printed carries the paper's own keyed meaning; letting a deck entry
+     * overwrite it would replace evidence with an authored guess.
+     */
+    if (held.has(k)) {
+      throw new Error(
+        `${c.idiom}: in the coaching roster but a question already keyed it — ` +
+          `REFUSING (it belongs where the evidence is)`
+      );
+    }
+    const meaning = meanings.get(k);
+    if (!meaning) { unauthored++; continue; }   // not yet written; not an error
+    out.push({
+      idiom: c.idiom,
+      meanings: [meaning],
+      // EMPTY BY CONSTRUCTION, and it is what files the idiom under "Practice
+      // Material": no paper has printed it, so it cannot claim the papers section.
+      pyqExams: [],
+      // The DECK'S stated scope, never a per-idiom claim -- the same reading as
+      // `exams` on a Part 3 coaching word.
+      allExams: ["NDA", "CDS"],
+      timesAsked: 0,
+      uses: 0,
+    });
+  }
+
+  // A stale authored line is a silent no-op otherwise: the meaning would sit in
+  // a file doing nothing while the book prints without it.
+  const orphan = [...meanings.keys()].filter((k) => !rosterKeys.has(k));
+  if (orphan.length) {
+    throw new Error(
+      `${orphan.length} authored idiom(s) are not in the roster — REFUSING: ` +
+        orphan.slice(0, 8).join(" | ")
+    );
+  }
+  console.log(
+    `roster: ${roster.length} coaching idiom(s), ${roster.length - unauthored} authored, ` +
+      `${unauthored} still to write`
+  );
+  return out;
+}
+
 async function main() {
-  const idioms = JSON.parse(readFileSync(join(DATA, "idiom-words.json"), "utf8")) as IdiomWord[];
+  const idioms = loadAll();
   const usedChoice = new Set<string>();
   const warnings: string[] = [];
 
