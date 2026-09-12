@@ -15,10 +15,14 @@
  * natural opposite (bursar, commissary, eavesdropping), so that line reports a
  * count rather than asserting one.
  */
+import { readFileSync, existsSync } from "node:fs";
+import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { createClient } from "@supabase/supabase-js";
 import { CADET_VOCAB } from "../../src/lib/vocab/registry";
+
+const DATA = join(__dirname, "data");
 
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
@@ -138,6 +142,29 @@ Part 1 ladder: ${school.length} words`);
   // part being added without thinking about these columns.
   const strays = rows.filter((r) => r.part !== "school" && r.school_class != null);
   console.log(`   non-school rows carrying a class: ${strays.length}`);
+
+  /**
+   * PART 5 NAMES WORDS IT DOES NOT DEFINE, which makes it the one place in this
+   * book where a rot is possible and invisible. Every other part IS its entries;
+   * the homonym list is a separate file pointing AT entries, so a word renamed
+   * or withdrawn leaves a set pointing at nothing and the page still prints.
+   */
+  const hPath = join(DATA, "homonym-list.json");
+  if (existsSync(hPath)) {
+    const sets = JSON.parse(readFileSync(hPath, "utf8")) as { words: string[] }[];
+    const have = new Set(rows.map((r) => r.word.toLowerCase()));
+    const dangling: string[] = [];
+    for (const set of sets) {
+      for (const w of set.words) if (!have.has(w.toLowerCase())) dangling.push(w);
+    }
+    const slots = sets.reduce((n, x) => n + x.words.length, 0);
+    console.log(
+      `
+Part 5: ${sets.length} sets, ${slots} word slots, ` +
+        `${dangling.length} naming no entry` +
+        (dangling.length ? `  !! ${dangling.slice(0, 8).join(", ")}` : "")
+    );
+  }
 
   // per chapter, and position must be contiguous alphabetical
   for (const ch of CADET_VOCAB.chapters) {

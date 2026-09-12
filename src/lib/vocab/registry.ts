@@ -92,7 +92,7 @@
  * a paper and a mock simply belong to `pyq`. That is why it is a part and the
  * exam is only a tag.
  */
-export type VocabPartKey = "pyq" | "practice" | "school" | "idiom";
+export type VocabPartKey = "pyq" | "practice" | "school" | "idiom" | "homonym";
 
 /**
  * The exam sections inside Part 2. DERIVED FROM THE CORPUS, never authored —
@@ -311,6 +311,34 @@ export const CADET_VOCAB: VocabBookDefinition = {
        */
       blurb:
         "Every idiom an NDA or CDS paper or mock has set, with the meaning the exam itself keyed as correct.",
+    },
+    {
+      /**
+       * ═══ PART 5 HOLDS NO ENTRIES OF ITS OWN, AND THAT IS THE POINT ═══
+       *
+       * Every word named here is ALREADY defined in Part 1, 2 or 3 — measured,
+       * not assumed: all 245 word-slots resolve to a live entry (196 practice,
+       * 30 pyq, 25 school, 0 missing). So this part carries no meanings. It is a
+       * cross-reference: the one thing the rest of the book cannot show, because
+       * a word's entry sits alphabetically nowhere near the word it is confused
+       * with, and often in a different part entirely.
+       *
+       * IT IS THEREFORE NOT BACKED BY `vocab_entries`. Making each set a row
+       * would put "Ascent / Assent / Accent" in the `word` column — a headword
+       * that is not a word — where it would sort into the A-Z chapters beside
+       * the real `Ascent` entry and break the key that table rests on. The sets
+       * live in `scripts/vocab/data/homonym-list.json` and the renderers branch
+       * on this part key.
+       *
+       * THE COST OF THAT is a second place where words are named, which can
+       * drift from the entries: a word renamed or withdrawn leaves a set
+       * pointing at nothing, silently. `verify.ts` checks every member resolves.
+       */
+      key: "homonym",
+      ordinal: "Part 5",
+      title: "Homonyms (Confusing Words)",
+      blurb:
+        "Words a paper sets against each other. Each is already defined in its own part — this is here so you can see which ones get confused, which is the one thing an A-Z list cannot show you.",
     },
   ],
   /**

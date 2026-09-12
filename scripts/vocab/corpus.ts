@@ -243,10 +243,25 @@ export function loadCorpus(): CorpusWord[] {
      * which words a paper asks a student to tell apart, and carries none of the
      * source's own definitions or sentences.
      */
-    const hPath = join(DATA, "homonym-sets.json");
-    const partners: Record<string, string[]> = existsSync(hPath)
-      ? JSON.parse(readFileSync(hPath, "utf8"))
-      : {};
+    /**
+     * DERIVED FROM `homonym-list.json`, which is also what Part 5 prints. It was
+     * briefly a second hand-built file (`homonym-sets.json`) holding the same
+     * words in the other direction; two files naming one set of words is exactly
+     * the drift this book cannot afford, so the set list is canonical and the
+     * word -> partners map is computed from it.
+     */
+    const hPath = join(DATA, "homonym-list.json");
+    const partners: Record<string, string[]> = {};
+    if (existsSync(hPath)) {
+      const sets = JSON.parse(readFileSync(hPath, "utf8")) as { words: string[] }[];
+      for (const set of sets) {
+        for (const w of set.words) {
+          const k = w.toLowerCase();
+          const others = set.words.filter((o) => o.toLowerCase() !== k).map((o) => o.toLowerCase());
+          partners[k] = [...new Set([...(partners[k] ?? []), ...others])].sort();
+        }
+      }
+    }
     for (const c of coach) {
       const word = c.word.toLowerCase();
       if (seen.has(word)) {

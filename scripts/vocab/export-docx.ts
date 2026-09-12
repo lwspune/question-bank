@@ -47,7 +47,7 @@
  * per letter (~50 lines across the book) to repeat information the bold headword
  * already carries.
  */
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
@@ -55,6 +55,8 @@ import { createClient } from "@supabase/supabase-js";
 import {
   AlignmentType,
   Document,
+  Footer,
+  PageNumber,
   PageOrientation,
   Packer,
   Paragraph,
@@ -64,6 +66,7 @@ import {
 import { CADET_VOCAB, VOCAB_SECTIONS } from "../../src/lib/vocab/registry";
 
 const OUT = join(__dirname, "..", "..", "generated-papers");
+const DATA_DIR = join(__dirname, "data");
 
 // Identical to docxBuilder.ts — see the header.
 const MARGIN = 720;
@@ -105,6 +108,41 @@ type Row = {
   exams: string[];
   times_asked: number;
 };
+
+/**
+ * PART 5's CONTENT, and it does NOT come from `vocab_entries`. Every word in it
+ * is already an entry elsewhere in the book; what this file holds is which words
+ * a paper sets AGAINST each other, which no per-word row can express.
+ */
+type HomonymSet = { words: string[]; q: number };
+const homonymSets: HomonymSet[] = existsSync(join(DATA_DIR, "homonym-list.json"))
+  ? JSON.parse(readFileSync(join(DATA_DIR, "homonym-list.json"), "utf8"))
+  : [];
+
+/**
+ * PAGE NUMBERS, centred in the footer.
+ *
+ * ATTACHED TO EVERY SECTION, not once. A Word section carries its own
+ * headers/footers, and this book emits 94 of them (each chapter is two — a
+ * one-column heading and a two-column body). A footer on the first section only
+ * would number the front matter and then stop, which looks like a rendering
+ * fault rather than a missing setting.
+ *
+ * `PageNumber.CURRENT` is a FIELD, so Word computes it at open/print time; the
+ * numbers are not baked in and stay right if pagination shifts.
+ */
+const pageFooter = () => ({
+  default: new Footer({
+    children: [
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: SMALL }),
+        ],
+      }),
+    ],
+  }),
+});
 
 const run = (text: string, o: Partial<ConstructorParameters<typeof TextRun>[0]> = {}) =>
   new TextRun({ text, font: FONT, size: BODY, ...(o as object) });
@@ -270,6 +308,21 @@ function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[]
       }),
     ];
     for (const part of parts) {
+      // Part 5 is backed by a set list, not by chapters, so the chapter-count
+      // guard below would skip it and `countOf` would report "0 entries".
+      if (part.key === "homonym") {
+        if (!homonymSets.length) continue;
+        toc.push(
+          new Paragraph({
+            spacing: { before: 200, after: 60 },
+            children: [
+              run(`${part.ordinal} · ${part.title}`, { bold: true }),
+              run(`  ${homonymSets.length} sets`, { size: SMALL }),
+            ],
+          })
+        );
+        continue;
+      }
       const chapters = CADET_VOCAB.chapters.filter((c) => c.part === part.key);
       if (!chapters.length) continue;
       const total = chapters.reduce((n, c) => n + countOf(c.slug), 0);
@@ -321,6 +374,49 @@ function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[]
   }
 
   for (const part of parts) {
+    /**
+     * PART 5 IS A LIST OF SETS, not of entries, so it renders on its own path.
+     * The opener is identical to every other part's -- a reader should not be
+     * able to tell from the page that this one is built differently -- and the
+     * sets then run as a plain two-column list with no meanings, because every
+     * word in them is defined in its own part already.
+     */
+    if (part.key === "homonym") {
+      if (!homonymSets.length) continue;
+      sections.push({
+        properties: oneCol(SectionType.NEXT_PAGE),
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            spacing: { before: 1600, after: 120 },
+            children: [run(part.ordinal, { size: HEAD })],
+          }),
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            spacing: { after: 160 },
+            children: [run(part.title, { bold: true, size: TITLE })],
+          }),
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [run(part.blurb, { italics: true, size: SMALL })],
+          }),
+        ],
+      });
+      sections.push({
+        properties: cols(2),
+        children: homonymSets.map(
+          (h) =>
+            new Paragraph({
+              spacing: { after: 40 },
+              // The separator is a spaced slash rather than a comma so a set
+              // reads as one unit; a comma would look like a list of entries.
+              children: [run(h.words.join("  /  "))],
+            })
+        ),
+      });
+      continue;
+    }
+
     const chapters = CADET_VOCAB.chapters.filter((c) => c.part === part.key);
     if (!chapters.length) continue;
 
@@ -402,7 +498,10 @@ function entryParagraphs(r: Row, num: number, letterBreak: boolean): Paragraph[]
 
   const doc = new Document({
     styles: { default: { document: { run: { font: FONT, size: BODY } } } },
-    sections,
+    // The footer is attached HERE rather than at each of the seven
+    // `sections.push` sites, so a section added later cannot be the one that
+    // silently stops the numbering.
+    sections: sections.map((sec) => ({ ...sec, footers: pageFooter() })),
   });
 
   mkdirSync(OUT, { recursive: true });
