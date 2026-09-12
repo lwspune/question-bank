@@ -1,0 +1,820 @@
+{
+  "paper": "56/3/2",
+  "year": 2024,
+  "pattern": "full70",
+  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26 (printed folios 3, 5, 7, ..., 27). idx 0 is the bilingual cover (Series SSRR3/3, SET-2, Q.P. Code 56/3/2, CHEMISTRY (Theory), 27 printed pages, 33 questions, Max Marks 70); idx 1 is the Hindi general instructions; every ODD index 1..25 is the Hindi facing page. EVERY PAGE IS ACCOUNTED FOR: 1 cover + 13 Hindi (odd 1..25) + 13 English (even 2..26) = 27, and the printed folios run 1..27 with no gap. The alternating hypothesis held EXACTLY and there is NO mid-paper parity inversion and NO overflow of one language onto the other's page: a Hindi page and the English page after it carry the SAME questions, checked on the contact sheet for all 13 odd indices and then MEASURED - the Hindi is set in a legacy Kruti-Dev-style font mapped onto Latin codepoints, so a Devanagari-codepoint scan is useless here, but a scan of all 13 odd pages for English question words (Which/Write/Calculate/following/What/Give/Define/Assertion/Reason/Section/Attempt/Arrange/Name/State/When/the) returns ZERO hits on every one of them, and every EVEN page carries the 'P.T.O.' recto marker. Nothing was taken from a Hindi page, although they do carry Latin-script chemical formulae that read identically to English. English coverage by page: idx2 Q1-Q2, idx4 Q3-Q6, idx6 Q7-Q10, idx8 Q11-Q12 + the assertion-reason code block, idx10 Q13-Q19, idx12 Q20-Q23, idx14 Q24-Q28, idx16 Q29, idx18 Q30, idx20 Q31, idx22 Q32, idx24 Q33(a) and Q33(b)(i), idx26 Q33(b)(ii)-(iii) - continuous, Q1..Q33 with no gap. STRUCTURE agrees with the dispatch EXACTLY, verified against the paper's own printed General Instructions on idx 2: 33 questions, five sections, (iii) A = 1-16 MCQ @1, (iv) B = 17-21 @2, (v) C = 22-28 @3, (vi) D = 29-30 case-based @4, (vii) E = 31-33 long answer @5; the in-paper block on idx 8 puts assertion-reason at Q13-16, so Q1-12 are plain MCQs. Primary-branch marks: 16 + 10 + 21 + 8 + 15 = 70. Rows 42 = A16/B6/C7/D8/E5, 16 mcq - exactly the shape the dispatch measured on the five 2024 Chemistry openers. INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the sections except Section A'), so the roster was built by walking the marking scheme question by question for a bare OR on its own line and then confirming each against a printed OR on the paper. FIVE, and the two sources agree exactly: Q19 (a)/(b), Q29 (c), Q30 (c), Q32 (a)/(b), Q33 (a)/(b). Section A and Section C carry none. The scheme's other ORs are equivalent-answer forms, not alternatives - '(Or any other correct example)', '(or any other suitable method)', 'Due to stability of tertiary carbocation / due to stable...' - and were not counted. SECTION-A KEY: read by VISION off the official marking scheme's Section-A table (ms idx 2), 16 entries, uppercased - C A D B C B B A D B A B D A C D. The block is a clean bare-letter table with no prose in any cell; the scheme's text layer extracts the same 16 letters independently, so two reads agree and confidence is HIGH on all sixteen. NO question is voided: all nine marking-scheme pages were scanned (ms idx 0-1 are the standard evaluator preamble, idx 2-8 the answers) and NONE carries an award-regardless note of any kind - no 'Full mark to be awarded for any option', no 'Award full mark if attempted (Printing error)', no 'no option is correct', no Hindi-edition/English-edition clause, no dual key. NO keyed MCQ sits outside Section A: Sections B-E are worked subjective answers throughout, as the dispatch's (full70, Chemistry) cell predicts. DECIMAL CONVENTION: this paper prints RAISED dots throughout (34.2, 3.42, 0.30, 0.48, 0.60, 0.69, 0.2 M, 2.48, 73.5, 76.5, 31.84, 0.001, 0.1, 0.76, 0.40, 0.44, 0.80 all render as a mid-height dot), confirmed at 600 dpi and corroborated by the text layer, which extracts U+00B7 - so every decimal is written {\\cdot}. Its own marking scheme is MIXED (typed prose uses ordinary dots, 0.0069 and 230.3 and 0.826, while the image-set formulae use raised ones); the PAPER is followed. The marking scheme's body header reads 'MARKING SCHEME 2023' while its cover reads 'Senior School Certificate Examination,2024' and its footer 56_3_2 - a CBSE typo in the scheme, not in the paper; the QP CODE it prints (56/3/2) is this paper's. OVERLAP WITH THE OPENER 56/3/1: 24 of 42 rows are the SAME question, matched on CONTENT and then confirmed on my own page before the opener's text was reused byte-for-byte - Q10=opener Q11, Q19a/b=Q17a/b, Q21=Q18, Q22=Q28, Q23=Q27, Q24=Q26, Q25=Q24, Q26=Q25, Q27=Q23, Q28=Q22, Q29(a,b,ca,cb)=Q30(a,b,ca,cb), Q30(a,b,ca,cb)=Q29(a,b,ca,cb), Q31=Q33, Q32a/b=Q31a/b, Q33a/b=Q32a/b. TWENTY-THREE of those 24 are byte-identical on every field that reaches content_hash (stem, context, options, answer) and will dedup at commit; THE TWENTY-FOURTH, Q24, WILL NOT, and that is correct rather than a drift - CBSE RE-TYPESET the stem between the sets ('Write the EQUATIONS OF THE reactions involved' in 56/3/1 against 'Write the reactions involved' here), confirmed at 500 dpi off BOTH printed pages after a byte-comparison flagged it; see that row's _flag. The reshuffle is NOT positional in either direction: Section A is almost entirely new, Section C is a complete permutation (22<-28, 23<-27, 24<-26, 25<-24, 26<-25, 27<-23, 28<-22), the two Section-D case studies are SWAPPED, and Section E is rotated by one (31<-33, 32<-31, 33<-32). Every shared key agrees with the opener's (Q10 here = B, opener Q11 = B). THREE near-misses were checked and are GENUINELY DIFFERENT questions, not duplicates: Q5 asks for the HIGHEST pKa where the opener's Q5 asks for the LOWEST, with the options reordered; Q7 asks which forms a product INSOLUBLE in alkali where the opener's Q7 asks for an alkali-SOLUBLE precipitate; and Q15 carries the opener Q15's assertion word for word with the REASON INVERTED (here 'Dimethyl ether molecules are associated through hydrogen bonding', there 'Ethanol molecules are associated through hydrogen bonding whereas in dimethyl ether, it is not possible'), which moves the key from A to C. Q16 is the same shape - the opener asserts aniline does NOT undergo Friedel-Crafts and this paper asserts it DOES, with a different Reason and a different key. Q4's ring is a FOUR-SIDED figure and is NOT benzene: see that row's _flag.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Isomerism in Coordination Compounds",
+      "difficulty": "EASY",
+      "stem": "Which of the following ligands can show linkage isomerism in a coordination compound ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{NH_3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{SO_4^{2-}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{NO_2^{-}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{C_2O_4^{2-}}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Werner’s Theory of Coordination Compounds",
+      "difficulty": "MODERATE",
+      "stem": "On adding \\(\\mathrm{AgNO_3}\\) solution to 1 mole of complex \\(\\mathrm{NiCl_2 \\cdot 4NH_3}\\), two moles of AgCl are formed. The secondary valency of Ni in the complex will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "EASY",
+      "stem": "Transition elements form alloys easily because they have :",
+      "options": [
+        {
+          "label": "A",
+          "text": "same electronic configuration"
+        },
+        {
+          "label": "B",
+          "text": "same enthalpies of atomisation"
+        },
+        {
+          "label": "C",
+          "text": "same oxidation states"
+        },
+        {
+          "label": "D",
+          "text": "nearly the same atomic size"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Methods of Preparation of Haloalkanes",
+      "difficulty": "MODERATE",
+      "stem": "Consider the following reaction :\nMethylcyclobutane \\(\\xrightarrow{\\mathrm{Br_2},\\ \\text{UV light}}\\) ?\nThe major product obtained is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1-Bromo-2-methylcyclobutane"
+        },
+        {
+          "label": "B",
+          "text": "1-Bromo-1-methylcyclobutane"
+        },
+        {
+          "label": "C",
+          "text": "(Bromomethyl)cyclobutane"
+        },
+        {
+          "label": "D",
+          "text": "1-Bromo-3-methylcyclobutane"
+        }
+      ],
+      "answer": "B",
+      "_flag": "THE RING IS A FOUR-MEMBERED RING, NOT BENZENE, and the reactant and all four options are DRAWN structures that have been NAMED above (a lossless reading, per the addendum's naming-vs-describing rule; naming does not state the answer here, since the student must still know that free-radical bromination is selective for the tertiary C-H). Three independent lines of evidence agree, and they are recorded because a mis-read ring would be an authoritative-looking error: (1) the ring is drawn as a CLOSED RECTANGLE - four straight sides, four sharp right-angle corners, no inner double bonds, no circle - verified at 400 dpi off the page AND at 10x nearest-neighbour magnification of the native embedded JPEG, where no fifth or sixth vertex exists; (2) THE SAME PAPER DRAWS BENZENE AS A HEXAGON WITH THREE INNER DOUBLE BONDS - see Q8 option (D) (N-methylaniline), Q22(b) (nitrobenzene) and every ring in Q33 - so the typesetting plainly distinguishes the two and this is not a degraded hexagon; (3) CBSE's own key is (B), the geminal CH3/Br product, which is the free-radical product of an ALKANE; toluene under Br2/UV would give benzyl bromide, i.e. option (C), so the key itself rules out an aromatic reading. Substituent positions read off the page: (A) CH3 on the top-right corner and Br on the bottom-right corner (adjacent, 1,2); (B) CH3 and Br BOTH on the top-right corner (geminal, 1,1); (C) CH2Br on the top-right corner; (D) CH3 on the top-right corner and Br on the bottom-LEFT corner (diagonal, 1,3).",
+      "_figure": "REQUIRED — the reactant AND all four options are printed as drawn ring structures rather than as formulae. On the page: the reactant is a plain four-sided ring (a rectangle, no inner bonds) with a bond from its top-right corner to CH3, then an arrow labelled Br2, UV light. Option (A) is the same ring with CH3 off one corner and Br off the corner directly below it; (B) has CH3 and Br off the SAME corner; (C) has CH2Br off one corner; (D) has CH3 off one corner and Br off the diagonally opposite corner. The names above record the substituent identities and positions faithfully but cannot show that the ring is drawn square rather than hexagonal, which is the fact a reader most needs to check - attach the real crop. Page idx 4."
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "EASY",
+      "stem": "Which one of the following compounds has the highest \\(\\mathrm{pK_a}\\) value ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(p\\)-Nitrophenol"
+        },
+        {
+          "label": "B",
+          "text": "\\(m\\)-Nitrophenol"
+        },
+        {
+          "label": "C",
+          "text": "\\(p\\)-Cresol"
+        },
+        {
+          "label": "D",
+          "text": "2,4,6-Trinitrophenol"
+        }
+      ],
+      "answer": "C",
+      "_flag": "NOT the opener's Q5 despite carrying the same four option texts: 56/3/1 asks for the LOWEST pKa (answer 2,4,6-Trinitrophenol, key D) and this paper asks for the HIGHEST (answer p-Cresol, key C), with the options in a different order. Recorded because the two rows are one word apart and a position- or option-set-based match would merge them."
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Ethers",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\mathrm{C_6H_5-O-CH_3}\\) when treated with HI gives :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{C_6H_5-I + CH_3-OH}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{C_6H_5-OH + CH_3-I}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{C_6H_5-OH + CH_3-OH}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{C_6H_5-I + CH_3-I}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Amines",
+      "difficulty": "MODERATE",
+      "stem": "Which of the following compounds on treatment with benzene sulphonyl choride forms product insoluble in alkali ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{(CH_3)_3N}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{(CH_3)_2NH}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{CH_3CH_2NH_2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{C_6H_5NH_2}\\)"
+        }
+      ],
+      "answer": "B",
+      "_flag": "TWO things. (1) The paper prints 'choride' for 'chloride' - confirmed at magnification, the 'l' is genuinely absent - and it is transcribed as printed; the opener 56/3/1 carries the identical misprint in its own Q7. (2) NOT the opener's Q7: that one asks which compound forms an alkali-SOLUBLE precipitate (a primary amine, key D) and this one asks which forms a product INSOLUBLE in alkali (a secondary amine, key B), with a different option set. The stems differ by one word and the answers are opposite."
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Amines",
+      "difficulty": "EASY",
+      "stem": "Which of the following amines gives carbylamine reaction ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{C_2H_5NH_2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{(C_2H_5)_2NH}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{(C_2H_5)_3N}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{C_6H_5-NH-CH_3}\\)"
+        }
+      ],
+      "answer": "A",
+      "_figure": "ILLUSTRATIVE — option (D) alone is printed as a drawn structure: a hexagonal ring bearing three inner double bonds (a Kekule benzene ring) joined to -NH-CH3. It is named losslessly above as C6H5-NH-CH3, so the row is fully answerable from text; the drawing is worth showing because it is the paper's own way of setting this option apart from the three condensed formulae beside it. Options (A), (B) and (C) are printed as ordinary condensed formulae. Page idx 6."
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Biomolecules",
+      "subtopic": "Vitamins",
+      "difficulty": "EASY",
+      "stem": "‘Night-Blindness’ is caused by the deficiency of Vitamin :",
+      "options": [
+        {
+          "label": "A",
+          "text": "B"
+        },
+        {
+          "label": "B",
+          "text": "C"
+        },
+        {
+          "label": "C",
+          "text": "K"
+        },
+        {
+          "label": "D",
+          "text": "A"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Solutions",
+      "subtopic": "Colligative Properties and Determination of Molar Mass",
+      "difficulty": "MODERATE",
+      "stem": "A 1% solution of solute 'X' is isotonic with a 6% solution of sucrose (molar mass = 342 g \\(\\mathrm{mol^{-1}}\\)). The molar mass of solute 'X' is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(34{\\cdot}2\\) g \\(\\mathrm{mol^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "57 g \\(\\mathrm{mol^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "114 g \\(\\mathrm{mol^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3{\\cdot}42\\) g \\(\\mathrm{mol^{-1}}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Integrated Rate Equations",
+      "difficulty": "EASY",
+      "stem": "When the initial concentration of a reactant is doubled in the reaction, the half life period remains same. The order of reaction is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "First"
+        },
+        {
+          "label": "B",
+          "text": "Second"
+        },
+        {
+          "label": "C",
+          "text": "Zero"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{2}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrochemistry",
+      "subtopic": "Batteries",
+      "difficulty": "EASY",
+      "stem": "Which of the following is a secondary cell ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Dry cell"
+        },
+        {
+          "label": "B",
+          "text": "Lead storage cell"
+        },
+        {
+          "label": "C",
+          "text": "Mercury cell"
+        },
+        {
+          "label": "D",
+          "text": "Daniell cell"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Solutions",
+      "subtopic": "Ideal and Non-ideal Solutions",
+      "difficulty": "MODERATE",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : \\(\\Delta_{\\mathrm{mix}}\\mathrm{H}\\) and \\(\\Delta_{\\mathrm{mix}}\\mathrm{V}\\) are zero for non-ideal solutions.\nReason (R) : Solute-solvent interactions are not same as pure solute-solute and pure solvent-solvent interactions in non-ideal solutions.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Temperature Dependence of the Rate of a Reaction",
+      "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : Rate of reaction increases with increase in temperature.\nReason (R) : Number of effective collisions increase with increase in temperature.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : The boiling point of ethanol is higher than that of dimethyl ether.\nReason (R) : Dimethyl ether molecules are associated through hydrogen bonding.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "C",
+      "_flag": "NOT the opener's Q15. The Assertion is word for word identical to 56/3/1 Q15 and the REASON IS INVERTED: there it reads 'Ethanol molecules are associated through hydrogen bonding whereas in dimethyl ether, it is not possible' (a true reason that explains the assertion, key A), here it reads 'Dimethyl ether molecules are associated through hydrogen bonding' (a false reason, key C). Recorded because the two rows share their opening line and a skim would merge them."
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Amines",
+      "difficulty": "MODERATE",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : Aniline undergoes Friedel-Crafts reaction.\nReason (R) : Aniline forms salt with \\(\\mathrm{AlCl_3}\\), the Lewis acid in Friedel-Crafts reaction.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "D",
+      "_flag": "NOT the opener's Q16, and inverted in the same way as Q15: 56/3/1 asserts 'Aniline does not undergo Friedel-Crafts reaction' with Reason 'Friedel-Crafts reaction is an electrophilic substitution reaction' (key B), while this paper asserts that aniline DOES undergo it and gives the salt-formation reason (key D)."
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "MODERATE",
+      "stem": "Write the reactions of glucose with :\n(a) \\(\\mathrm{H_2N-OH}\\)\n(b) \\(\\mathrm{Br_2}\\) water"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "Some Important Compounds of Transition Elements",
+      "difficulty": "MODERATE",
+      "stem": "Complete and balance the following chemical equations :\n(a) \\(\\mathrm{KMnO_4} \\xrightarrow{\\text{heat}}\\)\n(b) \\(\\mathrm{2MnO_4^{-} + 5C_2O_4^{2-} + 16H^{+} \\longrightarrow}\\)",
+      "_flag": "Sub-part (a) is printed with NO stoichiometric coefficient on \\(\\mathrm{KMnO_4}\\) - transcribed as printed, and correctly so, since the instruction is 'Complete and BALANCE'; the marking scheme's answer supplies the 2. Sub-part (b) IS printed already balanced on the left-hand side."
+    },
+    {
+      "ref": "Q19a",
+      "questionNumber": "19 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Colligative Properties and Determination of Molar Mass",
+      "difficulty": "MODERATE",
+      "stem": "Define molal depression constant. How is it related to enthalpy of fusion ?"
+    },
+    {
+      "ref": "Q19b",
+      "questionNumber": "19 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Ideal and Non-ideal Solutions",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q19a",
+      "stem": "What type of deviation is shown by ethanol and acetone mixture ? Give reason. What type of azeotropic mixture is formed by that deviation ?"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Chemical Reactions",
+      "difficulty": "MODERATE",
+      "stem": "(a) Which halogen compound in the following pair will react faster in \\(\\mathrm{S_N1}\\) reaction and why ?\n\\(\\mathrm{CH_3-CH(Br)-CH_3}\\)   or   \\(\\mathrm{CH_3-C(CH_3)_2-Br}\\)\n(b) Why is the dipole moment of chlorobenzene lower than that of cyclohexyl chloride ?",
+      "_flag": "Two 1-mark sub-parts on different subtopics: (a) is 'Chemical Reactions' (SN1 reactivity) and (b) is 'Nature of C-X Bond' (hybridisation and bond polarity). Filed on 'Chemical Reactions'; the split is 1+1 so neither half is the larger. The pair in (a) is printed as two displayed structures with vertical bonds - CH3-CH-CH3 with Br hanging below the middle carbon, and CH3-C-Br with a CH3 above and a CH3 below the central carbon - which the bracketed condensed formulae above record losslessly, so no figure is needed. The lowercase 'or' between them is part of the printed stem, NOT an internal choice: the marking scheme answers both halves of one question and prints no OR line for Q20."
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Factors Influencing Rate of a Reaction",
+      "difficulty": "MODERATE",
+      "stem": "(a) In a reaction, if the concentration of reactant 'X' is tripled, the rate of reaction becomes twenty-seven times. What is the order of the reaction ?\n(b) State a condition under which a bimolecular reaction is kinetically a first-order reaction. Give an example of such a reaction.",
+      "_flag": "SUBTOPIC RE-FILED 2026-09-12 from 'Rate of a Chemical Reaction' to 'Factors Influencing Rate of a Reaction'. The axis grain is one subtopic per TOP-LEVEL NCERT section, and order (NCERT 3.2.3), molecularity (3.2.4), rate law (3.2.1) and rate expression/rate constant (3.2.2) are all sub-sections of 3.2, while 3.1 has no sub-sections and covers only average/instantaneous rate and rate in terms of different species. Verified against the NCERT spine rather than inferred, and corroborated by the shipped NCERT textbook corpus, whose PUBLIC rows already file this way (Ex 3.1, Eg 3.3, Eg 3.4, Ex 3.6, Ex 3.9, Ex 3.10, Ex 3.12, Intext 3.3, Intext 3.4 on Factors; Ex 3.3 on Rate of a Chemical Reaction)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Diazonium Salts",
+      "difficulty": "MODERATE",
+      "stem": "Give the structures of A, B and C in the following reactions :\n(a) \\(\\mathrm{CH_3CH_2Cl} \\xrightarrow{\\mathrm{KCN}} \\mathrm{A} \\xrightarrow{\\mathrm{LiAlH_4}} \\mathrm{B} \\xrightarrow[0^{\\circ}\\mathrm{C}]{\\mathrm{HNO_2}} \\mathrm{C}\\)\n(b) Nitrobenzene \\(\\xrightarrow{\\mathrm{Fe/HCl}} \\mathrm{A} \\xrightarrow[273\\ \\mathrm{K}]{\\mathrm{NaNO_2 + HCl}} \\mathrm{B} \\xrightarrow{\\mathrm{C_6H_5OH}} \\mathrm{C}\\)",
+      "_flag": "The chain spans two subtopics: the first arrow of each part is 'Preparation of Amines' (nitrile reduction; nitro reduction) while both parts END in diazonium chemistry (aliphatic diazonium giving the alcohol in (a); diazotisation then coupling with phenol in (b)). Filed on 'Chemical Reactions of Diazonium Salts'.",
+      "_figure": "REQUIRED — for sub-part (b) only: its starting material is printed as a DRAWN benzene ring (a hexagon with three inner double bonds) carrying an \\(\\mathrm{NO_2}\\) group, which is named 'Nitrobenzene' above rather than approximated. Sub-part (a) is printed entirely as a linear formula chain and is transcribed literally. Page idx 12."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Preparation of Aldehydes and Ketones",
+      "difficulty": "MODERATE",
+      "stem": "How will you bring about the following conversions ? (any three)\n(a) Benzoic acid to Benzaldehyde\n(b) Ethanal to Propanone\n(c) Acetophenone to Benzoic acid\n(d) Bromobenzene to 1-Phenylethanol",
+      "_flag": "The four conversions span three subtopics - (a) and (b) prepare a carbonyl compound, (c) prepares a carboxylic acid by oxidation of a ketone, (d) prepares an alcohol via a Grignard reagent. Filed on 'Preparation of Aldehydes and Ketones', which covers two of the four; the student attempts any three."
+    },
+    {
+      "ref": "Q24",
+      "questionNumber": "24",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "MODERATE",
+      "stem": "(a) Write the reactions involved in the following :\n(i) Reimer-Tiemann reaction\n(ii) Kolbe's reaction\n(b) Name the reagent used in the bromination of phenol to form 2,4,6-Tribromophenol.",
+      "_flag": "WILL NOT DEDUP against the opener's Q26, and that is CORRECT rather than a transcription drift: CBSE RE-TYPESET this stem between the two sets. 56/3/1 prints '(a) Write the EQUATIONS OF THE reactions involved in the following :' and 56/3/2 prints '(a) Write the reactions involved in the following :'. Both readings were confirmed at 500 dpi off their own printed pages after a byte-comparison flagged the difference; every other word of the question, both sub-parts and the mark split are identical. This is the only one of the 24 rows shared with the opener that is not byte-identical."
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Integrated Rate Equations",
+      "difficulty": "MODERATE",
+      "stem": "A first-order reaction is 25% complete in 40 minutes. Calculate the value of rate constant. In what time will the reaction be 80% complete ?\n[Given : log 2 = \\(0{\\cdot}30\\), log 3 = \\(0{\\cdot}48\\), log 4 = \\(0{\\cdot}60\\), log 5 = \\(0{\\cdot}69\\)]"
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Chemical Reactions",
+      "difficulty": "MODERATE",
+      "stem": "(a) What type of nucleophilic substitution (\\(\\mathrm{S_N1}\\) or \\(\\mathrm{S_N2}\\)) occurs in the hydrolysis of 2-Bromobutane to form \\((\\pm)\\)-Butan-2-ol ? Give reason.\n(b) What happens when chlorobenzene and methyl chloride are treated with sodium metal in dry ether ?"
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Conductance of Electrolytic Solutions",
+      "difficulty": "MODERATE",
+      "stem": "The conductivity of \\(0{\\cdot}2\\) M solution of KCl is \\(2{\\cdot}48 \\times 10^{-2}\\) S \\(\\mathrm{cm^{-1}}\\). Calculate its molar conductivity and degree of dissociation \\((\\alpha)\\).\nGiven :\n\\(\\lambda^{o}_{\\mathrm{K^{+}}} = 73{\\cdot}5\\) S \\(\\mathrm{cm^{2}\\,mol^{-1}}\\)\n\\(\\lambda^{o}_{\\mathrm{Cl^{-}}} = 76{\\cdot}5\\) S \\(\\mathrm{cm^{2}\\,mol^{-1}}\\)"
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Colligative Properties and Determination of Molar Mass",
+      "difficulty": "MODERATE",
+      "stem": "A solution is prepared by dissolving 5 g of a non-volatile solute in 200 g of water. It has a vapour pressure of \\(31{\\cdot}84\\) mm Hg at 300 K. Calculate the molar mass of the solute.\n(Vapour pressure of pure water at 300 K = 32 mm Hg)"
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Proteins",
+      "difficulty": "EASY",
+      "setId": "2024-56-3-2-CS1",
+      "context": "Proteins are the most abundant biomolecules of the living system. Proteins are the polymers of about twenty different \\(\\alpha\\)-amino acids which are linked by peptide bonds. Ten amino acids are called essential amino acids. In zwitter ionic form, amino acids show amphoteric behaviour as they react both with acids and bases.\nOn the basis of their molecular shape, proteins are classified into two types : Fibrous and Globular proteins. Structure and shape of proteins can be studied at four different levels i.e., primary, secondary, tertiary and quaternary, each level being more complex than the previous one. The secondary or tertiary structure of proteins get disturbed on change of pH or temperature and they are not able to perform their functions. This is called denaturation of proteins.",
+      "stem": "What are essential amino acids ?"
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Proteins",
+      "difficulty": "EASY",
+      "setId": "2024-56-3-2-CS1",
+      "context": "Proteins are the most abundant biomolecules of the living system. Proteins are the polymers of about twenty different \\(\\alpha\\)-amino acids which are linked by peptide bonds. Ten amino acids are called essential amino acids. In zwitter ionic form, amino acids show amphoteric behaviour as they react both with acids and bases.\nOn the basis of their molecular shape, proteins are classified into two types : Fibrous and Globular proteins. Structure and shape of proteins can be studied at four different levels i.e., primary, secondary, tertiary and quaternary, each level being more complex than the previous one. The secondary or tertiary structure of proteins get disturbed on change of pH or temperature and they are not able to perform their functions. This is called denaturation of proteins.",
+      "stem": "What is meant by zwitter ionic form of amino acids ?"
+    },
+    {
+      "ref": "Q29ca",
+      "questionNumber": "29 (c)",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Proteins",
+      "difficulty": "MODERATE",
+      "setId": "2024-56-3-2-CS1",
+      "context": "Proteins are the most abundant biomolecules of the living system. Proteins are the polymers of about twenty different \\(\\alpha\\)-amino acids which are linked by peptide bonds. Ten amino acids are called essential amino acids. In zwitter ionic form, amino acids show amphoteric behaviour as they react both with acids and bases.\nOn the basis of their molecular shape, proteins are classified into two types : Fibrous and Globular proteins. Structure and shape of proteins can be studied at four different levels i.e., primary, secondary, tertiary and quaternary, each level being more complex than the previous one. The secondary or tertiary structure of proteins get disturbed on change of pH or temperature and they are not able to perform their functions. This is called denaturation of proteins.",
+      "stem": "(i) Give one example each for Fibrous protein and Globular protein.\n(ii) What type of linkages hold monomers of proteins together ?"
+    },
+    {
+      "ref": "Q29cb",
+      "questionNumber": "29 (c) OR",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "MODERATE",
+      "setId": "2024-56-3-2-CS1",
+      "_alternativeTo": "Q29ca",
+      "context": "Proteins are the most abundant biomolecules of the living system. Proteins are the polymers of about twenty different \\(\\alpha\\)-amino acids which are linked by peptide bonds. Ten amino acids are called essential amino acids. In zwitter ionic form, amino acids show amphoteric behaviour as they react both with acids and bases.\nOn the basis of their molecular shape, proteins are classified into two types : Fibrous and Globular proteins. Structure and shape of proteins can be studied at four different levels i.e., primary, secondary, tertiary and quaternary, each level being more complex than the previous one. The secondary or tertiary structure of proteins get disturbed on change of pH or temperature and they are not able to perform their functions. This is called denaturation of proteins.",
+      "stem": "(i) What is the structural feature which characterises a reducing sugar ?\n(ii) What is the structural difference between nucleoside and nucleotide ?",
+      "_flag": "Two 1-mark halves on different subtopics: (i) is 'Carbohydrates' and (ii) is 'Nucleic Acids'. Filed on 'Carbohydrates'. Note also that this OR alternative leaves the case-study passage entirely - the passage is about proteins and neither half of this branch is answerable from it."
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "EASY",
+      "setId": "2024-56-3-2-CS2",
+      "context": "The involvement of \\((n-1)d\\) electrons in the behaviour of transition elements impart certain distinct characteristics to these elements. Thus, in addition to variable oxidation states, they exhibit paramagnetic behaviour, catalytic properties and tendency for the formation of coloured ions. The transition metals react with a number of non-metals like oxygen, nitrogen and halogens. \\(\\mathrm{KMnO_4}\\) and \\(\\mathrm{K_2Cr_2O_7}\\) are common examples.\nThe two series of inner transition elements, lanthanoids and actinoids, constitute the f-block of the periodic table. In the lanthanoids, there is regular decrease in atomic size with increase in atomic number due to the imperfect shielding effect of 4f-orbital electrons which causes contraction.",
+      "stem": "Why do transition metals and their compounds act as good catalysts ?"
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "The Lanthanoids",
+      "difficulty": "EASY",
+      "setId": "2024-56-3-2-CS2",
+      "context": "The involvement of \\((n-1)d\\) electrons in the behaviour of transition elements impart certain distinct characteristics to these elements. Thus, in addition to variable oxidation states, they exhibit paramagnetic behaviour, catalytic properties and tendency for the formation of coloured ions. The transition metals react with a number of non-metals like oxygen, nitrogen and halogens. \\(\\mathrm{KMnO_4}\\) and \\(\\mathrm{K_2Cr_2O_7}\\) are common examples.\nThe two series of inner transition elements, lanthanoids and actinoids, constitute the f-block of the periodic table. In the lanthanoids, there is regular decrease in atomic size with increase in atomic number due to the imperfect shielding effect of 4f-orbital electrons which causes contraction.",
+      "stem": "What is the cause of contraction in the atomic size of lanthanoids ?"
+    },
+    {
+      "ref": "Q30ca",
+      "questionNumber": "30 (c)",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "The Lanthanoids",
+      "difficulty": "MODERATE",
+      "setId": "2024-56-3-2-CS2",
+      "context": "The involvement of \\((n-1)d\\) electrons in the behaviour of transition elements impart certain distinct characteristics to these elements. Thus, in addition to variable oxidation states, they exhibit paramagnetic behaviour, catalytic properties and tendency for the formation of coloured ions. The transition metals react with a number of non-metals like oxygen, nitrogen and halogens. \\(\\mathrm{KMnO_4}\\) and \\(\\mathrm{K_2Cr_2O_7}\\) are common examples.\nThe two series of inner transition elements, lanthanoids and actinoids, constitute the f-block of the periodic table. In the lanthanoids, there is regular decrease in atomic size with increase in atomic number due to the imperfect shielding effect of 4f-orbital electrons which causes contraction.",
+      "stem": "Define lanthanoid contraction. How does it affect the atomic radii of the third transition series and the second transition series ?"
+    },
+    {
+      "ref": "Q30cb",
+      "questionNumber": "30 (c) OR",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "MODERATE",
+      "setId": "2024-56-3-2-CS2",
+      "_alternativeTo": "Q30ca",
+      "context": "The involvement of \\((n-1)d\\) electrons in the behaviour of transition elements impart certain distinct characteristics to these elements. Thus, in addition to variable oxidation states, they exhibit paramagnetic behaviour, catalytic properties and tendency for the formation of coloured ions. The transition metals react with a number of non-metals like oxygen, nitrogen and halogens. \\(\\mathrm{KMnO_4}\\) and \\(\\mathrm{K_2Cr_2O_7}\\) are common examples.\nThe two series of inner transition elements, lanthanoids and actinoids, constitute the f-block of the periodic table. In the lanthanoids, there is regular decrease in atomic size with increase in atomic number due to the imperfect shielding effect of 4f-orbital electrons which causes contraction.",
+      "stem": "In aqueous media, which is a stronger reducing agent — \\(\\mathrm{Cr^{2+}}\\) or \\(\\mathrm{Fe^{2+}}\\) and why ?"
+    },
+    {
+      "ref": "Q31",
+      "questionNumber": "31",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Bonding in Coordination Compounds",
+      "difficulty": "HARD",
+      "stem": "Attempt any five of the following :\n(a) Write the IUPAC name of the complex :\n\\([\\mathrm{Co(H_2O)(CN)(en)_2}]^{2+}\\)\n(b) Why is geometrical isomerism not possible in tetrahedral complexes having two different types of unidentate ligands coordinated with the central metal ion ?\n(c) Arrange the following complex ions in increasing order of their crystal field splitting energy \\((\\Delta_{\\mathrm{o}})\\) :\n\\([\\mathrm{Co(NH_3)_6}]^{3+}\\), \\([\\mathrm{CoF_6}]^{3-}\\), \\([\\mathrm{Co(CN)_6}]^{3-}\\)\n(d) Write the hybridization and magnetic character of the complex \\([\\mathrm{Ni(CO)_4}]\\) on the basis of valence bond theory.\n[Atomic No. : Ni = 28]\n(e) Out of \\([\\mathrm{CoF_6}]^{3-}\\) and \\([\\mathrm{Co(C_2O_4)_3}]^{3-}\\), which one complex is :\n(i) more stable ?\n(ii) the high spin complex ?\n(f) What is the difference between an ambidentate ligand and bidentate ligand ?\n(g) Write the electronic configuration of \\(\\mathrm{d^5}\\) in terms of \\(\\mathrm{t_{2g}}\\) and \\(\\mathrm{e_g}\\) in an octahedral field when :\n(i) \\(\\Delta_{\\mathrm{o}} > \\mathrm{P}\\),   and   (ii) \\(\\Delta_{\\mathrm{o}} < \\mathrm{P}\\)",
+      "_flag": "ONE printed question of 5 marks with SEVEN 1-mark parts of which the candidate attempts any five ('5x1=5'; the marking scheme prints '1x5' and '(Any Five)'). It is kept as a single row rather than split into seven, because the printed mark allocation belongs to the question and no sub-part carries a mark of its own that the band would accept. The seven parts span four subtopics - (a) Nomenclature, (b) Isomerism, (c)/(d)/(g) and the spin half of (e) Bonding (CFT and VBT), (f) Definitions of Some Important Terms. Filed on 'Bonding in Coordination Compounds', which covers four of the seven."
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Nernst Equation",
+      "difficulty": "HARD",
+      "stem": "(i) Calculate emf of the following cell at \\(25^{\\circ}\\mathrm{C}\\) :\n\\(\\mathrm{Zn\\,(s)}\\,|\\,\\mathrm{Zn^{2+}}\\,(0{\\cdot}001\\mathrm{M})\\,||\\,\\mathrm{Cd^{2+}}\\,(0{\\cdot}1\\ \\mathrm{M})\\,|\\,\\mathrm{Cd\\,(s)}\\)\nGiven : \\(\\mathrm{E^{o}_{Zn^{2+}/Zn}} = -\\,0{\\cdot}76\\) V, \\(\\mathrm{E^{o}_{Cd^{2+}/Cd}} = -\\,0{\\cdot}40\\) V   [log 10 = 1]\n(ii) State Faraday's second law of electrolysis. How will the pH of aqueous NaCl solution be affected when it is electrolysed ?",
+      "_flag": "The printed split is 3+2=5. Sub-part (ii) is 'Electrolytic Cells and Electrolysis' (2 marks); the row is filed on 'Nernst Equation' for the 3-mark part (i), the larger half."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Nernst Equation",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q32a",
+      "stem": "(i) Calculate the \\(\\Delta_{\\mathrm{r}}\\mathrm{G^{o}}\\) and \\(\\log \\mathrm{K_c}\\) for the following cell reaction :\n\\(\\mathrm{Fe\\,(s)} + \\mathrm{Ag^{+}\\,(aq)} \\rightleftharpoons \\mathrm{Fe^{2+}(aq)} + \\mathrm{Ag\\,(s)}\\)\nGiven : \\(\\mathrm{E^{o}_{Fe^{2+}/Fe}} = -\\,0{\\cdot}44\\) V, \\(\\mathrm{E^{o}_{Ag^{+}/Ag}} = +\\,0{\\cdot}80\\) V,\n1 F = 96500 C \\(\\mathrm{mol^{-1}}\\)\n(ii) Write any two advantages of the fuel cells over primary and secondary batteries ?\n(iii) How many Faradays are required for the oxidation of 1 mole of \\(\\mathrm{H_2O}\\) to \\(\\mathrm{O_2}\\) ?",
+      "_flag": "DEFECTIVE AS PRINTED, transcribed faithfully: the cell reaction in (i) is NOT BALANCED - it prints one \\(\\mathrm{Ag^{+}}\\) and one \\(\\mathrm{Ag}\\) against \\(\\mathrm{Fe} \\rightarrow \\mathrm{Fe^{2+}}\\), so charge and silver are unbalanced; it should carry \\(2\\mathrm{Ag^{+}}\\) and \\(2\\mathrm{Ag}\\). Confirmed at magnification - no coefficient is present on either silver species, and the opener 56/3/1 carries the identical defect in its own Q31(b). CBSE's own marking scheme then solves it with n = 2, i.e. the scheme uses the balanced equation the paper failed to print. Separately, the printed split is 3+1+1=5 and the three sub-parts span three subtopics: (i) 'Nernst Equation' (filed here, the largest at 3 marks), (ii) 'Fuel Cells', (iii) 'Electrolytic Cells and Electrolysis'."
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Chemical Reactions of Aldehydes and Ketones",
+      "difficulty": "HARD",
+      "stem": "(i) Write the major product(s) in the following reactions :\n(1) Ethylbenzene \\(\\xrightarrow[\\mathrm{b)\\ H^{+}}]{\\mathrm{a)\\ KMnO_4\\,,\\ KOH}}\\) ?\n(2) Benzaldehyde \\(+\\ \\mathrm{CH_3-CO-CH_3} \\xrightarrow{\\text{dil NaOH}}\\) ?\n(3) Benzoic acid \\(\\xrightarrow{\\mathrm{Br_2/FeBr_3}}\\) ?\n(ii) Give simple chemical tests to distinguish between the following pairs of compounds :\n(1) Acetophenone and Propiophenone\n(2) Pentanal and Pentan-3-one",
+      "_flag": "The printed split is 3+2=5 and the parts span two subtopics: (i)(1) and (i)(3) are reactions of/producing carboxylic acids and (i)(2) is an aldol condensation, while (ii) is distinguishing tests for aldehydes and ketones. Filed on 'Chemical Reactions of Aldehydes and Ketones'.",
+      "_figure": "REQUIRED — five of the compounds in this question are printed as DRAWN benzene-ring structures (hexagons with inner double bonds) and are NAMED above rather than approximated: in (i)(1) a ring bearing \\(\\mathrm{CH_2CH_3}\\) (ethylbenzene); in (i)(2) a ring bearing CHO (benzaldehyde), with its partner acetone printed out in full as \\(\\mathrm{CH_3-C(=O)-CH_3}\\); in (i)(3) a ring bearing COOH (benzoic acid); and in (ii)(1) a ring bearing \\(\\mathrm{COCH_3}\\) and a ring bearing \\(\\mathrm{COCH_2CH_3}\\) (acetophenone and propiophenone). The whole of (a), stem through (ii)(2), sits on one page. Page idx 24."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Chemical Reactions of Carboxylic Acids",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q33a",
+      "stem": "(i) Give reasons for the following :\n(1) In semicarbazide, only one \\(-\\mathrm{NH_2}\\) group is involved in the formation of semicarbazone.\n(2) Acetaldehyde is more reactive than acetone towards addition of HCN.\n(ii) (1) Arrange the following in decreasing order of their acidic strength :\n\\(\\mathrm{CH_3COOH}\\), \\(\\mathrm{O_2N-CH_2-COOH}\\), \\(\\mathrm{HCOOH}\\)\n(2) Name the reagent in the following reaction :\n\\(\\mathrm{CH_3-CH=CH-CH_2-CN} \\xrightarrow{?} \\mathrm{CH_3-CH=CH-CH_2-CHO}\\)\n(iii) Write the reaction involved in Hell-Volhard-Zelinsky reaction.",
+      "_flag": "The printed split is 2+2+1=5 and the parts span three subtopics: (i) is 'Chemical Reactions of Aldehydes and Ketones' (2 marks), (ii)(1) and (iii) are 'Chemical Reactions of Carboxylic Acids' (filed here, 3 marks in total counting (ii)'s share), and (ii)(2) is a nitrile-to-aldehyde reduction, i.e. 'Preparation of Aldehydes and Ketones'."
+    }
+  ]
+}

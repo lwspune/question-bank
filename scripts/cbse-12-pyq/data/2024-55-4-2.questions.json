@@ -1,0 +1,1056 @@
+{
+ "paper": "55/4/2",
+ "year": 2024,
+ "pattern": "full70",
+ "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 (printed folios 3, 5, 7 ... 23 — folio = idx + 1). idx 0 is the bilingual cover, idx 1 the Hindi General Instructions, EVERY ODD index 1..21 a Hindi facing page, and idx 23 a BLANK back cover (verified at full size: nothing but the header swoosh, '2155/4/2', the '221 B' badge and the folio '24' — no scanner show-through, no mirrored ghost). The alternating hypothesis HELD EXACTLY and did NOT invert. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE: the tops of all twelve odd indices 1,3,5,7,9,11,13,15,17,19,21,23 were cropped into one strip and read — every one is pure Devanagari (or blank, for idx 23) from its first line, and each Hindi page mirrors its English partner question-for-question. STRUCTURE read off the paper's own printed General Instructions on idx 2: it matches `full70` with NO disagreement — 33 questions, five sections, Section A Q1-16 @1 (instruction (iii) calls ALL of Q1-16 'Multiple Choice (MCQ) type' and names no assertion-reason band; the AR band is declared SEPARATELY by an in-body Note on idx 8 covering Q13-16), Section B Q17-21 @2, Section C Q22-28 @3, Section D Q29-30 case-based @4, Section E Q31-33 long answer @5. 16 + 10 + 21 + 8 + 15 = 70, and each section header prints its own arithmetic (16x1=16, 5x2=10, 7x3=21, 2x4=8, 3x5=15). 46 rows for 33 questions. INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section-A'), so the roster was built BY NUMBER by walking the marking scheme for a bare 'OR' on its own line and confirming each against a printed OR on the English page. Exactly SEVEN, at Q17, Q28, Q29(iv), Q30(iii), Q31, Q32 and Q33; no scheme OR sits inside an answer, and Q17-Q27 apart from Q17 carry none. MARKING SCHEME: the source PDF '55-4 -1,2,3 English Version.pdf' IS a merged 3-in-1, but our block is NOT ambiguous — its own inner answer-page header reads 'MARKING SCHEME : PHYSICS (042) / CODE : 55/4/2', its cover reads 'SUBJECT PHYSICS (CODE 55/4/2)' (a single code, not '55_4_1,2,3'), its footers read 55/4/2, and every worked answer matches a printed question of THIS paper (e.g. Q17's air bubble and Q27's 3/17 A and 4/17 A). The block is PDF pages 15..29 inclusive and its folios run 'Page 1 of 16' to 'Page 15 of 16'; PDF page 30 is 55/4/3's 'Page 1 of 16', so THE 'of 16' IS A STALE FOOTER TEMPLATE AND NO PAGE IS MISSING — the block really is 15 pages and all 15 are rendered under ms/. SECTION-A ANSWERS taken VERBATIM from that Section-A table (ms/p02.png) and uppercased: 1A 2D 3A 4A 5C 6A 7A 8C 9B 10B 11D 12 VOID 13C 14A 15D 16B. SECTION-D's ten case-study answers likewise come from the scheme's SECTION-D block (ms/p10.png): 29(i)B 29(ii)C 29(iii)A 29(iv)(a)B 29(iv)(b)A 30(i)B 30(ii)D 30(iii)(a)C 30(iii)(b)A 30(iv)D. That is 26 keyed answers, exactly as the (full70, Physics) cell predicts, and the value printed beside each letter matches the option text transcribed for that letter in every keyed row. CBSE VOIDS: exactly ONE, and it is a KEYLESS void — Q12 prints 'No option is correct, award 1 mark.' with no letter at all, so that row carries _noCorrectOption + _cbseVoided and NO answer. (The physics agrees: emf is proportional to sin(2 pi t / T), maximum at t = (2n-1)T/4, which is none of the four printed options.) A WHOLE-BLOCK scan of the marking scheme's text layer for 'Hindi', 'English medium', 'English version', 'misprint', 'printing error', 'full mark', 'any option', 'no option', 'award', 'void', 'deleted', 'bonus', 'not attempt', 'error in question', 'data given', 'does not support', 'or any other', 'deduct' and 'either' returns ONLY the Q12 void plus the front-matter boilerplate ('Please do not hesitate to award full marks if the answer deserves it'). So there is NO medium-scoped clause and NO dual key anywhere, and the STOP-and-report case did not arise. DECIMAL POINTS ARE ORDINARY FULL STOPS ON THIS PAPER, NOT RAISED DOTS — read at magnification on the constants block on idx 2 (6.63, 1.6, 8.854, 9.1, 1.675, 1.673, 6.023, 1.38) and again in the questions (1.5, 1.00, 0.1, 1.41, 0.001, 0.01, 0.72, 1.1, 2.0, 0.5, 1.0) — so NO \\cdot is used anywhere in this file. Minus signs printed as en-dashes are transcribed as ASCII '-', as is the trailing prose dash ending several MCQ stems; the ONE exception is the em-dash inside the Q13-16 assertion-reason instruction block, kept to match the sibling 55/4/1 file's context string. Curly quotes around 'K' and 't' are transcribed as ASCII apostrophes. THIS IS A FOLLOWER SET of 2024 55/4/1, matched on CONTENT and never on position: 36 of the 46 rows are the opener's, reshuffled, and the reshuffle shape is 'SECTION D's TWO CASE STUDIES SWAPPED WHOLE' — the opener's Q29 (semiconductors) is this paper's Q30 and the opener's Q30 (lenses) is this paper's Q29 — on top of a broad Section-A/C/E permutation (opener Q3->6, Q4->8, Q6->3, Q7->10, Q8->4, Q10->7, Q12->11, Q11->12, Q13->15, Q14->16, Q15->14, Q16->13, Q17->21, Q21->17, Q22->24, Q24->22, Q31->33, Q33->31). Q19, Q28 and Q32 happen to keep their numbers. Each shared row was CONFIRMED ON THIS PAPER'S OWN PAGE and then reused BYTE-FOR-BYTE from data/2024-55-4-1.questions.json so it dedups at commit. TEN rows are genuinely new: Q1, Q2, Q5, Q9 (Section A), Q18, Q20 (B), Q23, Q25, Q26, Q27 (C). Every one of the 22 keys shared with the opener AGREES with it, including the keyless void, which the opener carries as its own Q11. FIGURE LOAD: 7 distinct printed figures backing 7 rows — Q2 (an F-vs-1/r^2 plot), Q17(a) (a glass sphere with a trapped bubble), Q20 (an I-V plot), Q25 (two current-carrying wires on the XY axes), Q27 (a two-loop resistor network), Q29(iv)(a) (a lens-and-mirror layout) and Q32(b) (a cube in a field region). Every one is REQUIRED, none is decorative, none was approximated in ASCII, and none is shared by a case-study passage (Q29's passage carries no figure at all — its figure belongs to sub-part (iv)(a) alone — and Q30's passage carries none). See each row's _figure for what was described and what was deliberately withheld. Every 'draw / plot / show graphically' instruction (Q21, Q22, Q31(a)(i), Q31(b)(i), Q33(a)(i), Q33(b)(ii)) is the STUDENT drawing and is NOT flagged.",
+ "questions": [
+  {
+   "ref": "Q1",
+   "questionNumber": "1",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+   "difficulty": "MODERATE",
+   "stem": "Three point charges, each of charge q are placed on vertices of a triangle ABC, with AB = AC = 5L, BC = 6L. The electrostatic potential at midpoint of side BC will be",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{11}{48}\\dfrac{q}{\\pi\\varepsilon_0 L}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{8q}{36\\pi\\varepsilon_0 L}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{5q}{24\\pi\\varepsilon_0 L}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{16}\\dfrac{q}{\\pi\\varepsilon_0 L}\\)"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q2",
+   "questionNumber": "2",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+   "difficulty": "HARD",
+   "stem": "The Coulomb force (F) versus \\((1/r^2)\\) graphs for two pairs of point charges \\((q_1\\) and \\(q_2)\\) and \\((q_2\\) and \\(q_3)\\) are shown in figure. The charge \\(q_2\\) is positive and has least magnitude. Then",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(q_1 > q_2 > q_3\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(q_1 > q_3 > q_2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(q_3 > q_2 > q_1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(q_3 > q_1 > q_2\\)"
+    }
+   ],
+   "answer": "D",
+   "_figure": "REQUIRED — the stem gives no slope and no numbers; the entire question is the two lines drawn on the plot, whose SIGNS give the signs of the charge products and whose relative STEEPNESS gives the ratio of the magnitudes. Deliberately NOT stated here: which line is steeper and which quadrant each occupies, since between them those two facts are the answer. What is drawn: a pair of axes with the vertical axis labelled F and marked + above the origin and - below it, the horizontal axis labelled \\(\\dfrac{1}{r^2}\\), the origin marked 0, and two straight lines leaving the origin, one labelled \\((q_1, q_2)\\) and the other \\((q_2, q_3)\\). Page idx 4."
+  },
+  {
+   "ref": "Q3",
+   "questionNumber": "3",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "Magnetic Properties of Materials",
+   "difficulty": "EASY",
+   "stem": "The magnetic susceptibility for a diamagnetic material is",
+   "options": [
+    {
+     "label": "A",
+     "text": "small and negative"
+    },
+    {
+     "label": "B",
+     "text": "small and positive"
+    },
+    {
+     "label": "C",
+     "text": "large and negative"
+    },
+    {
+     "label": "D",
+     "text": "large and positive"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q4",
+   "questionNumber": "4",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Magnetic Flux and Faraday's Law",
+   "difficulty": "MODERATE",
+   "stem": "A circular loop A of radius R carries a current I. Another circular loop B of radius \\(r\\left(= \\dfrac{R}{20}\\right)\\) is placed concentrically in the plane of A. The magnetic flux linked with loop B is proportional to",
+   "options": [
+    {
+     "label": "A",
+     "text": "R"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sqrt{R}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(R^{\\frac{3}{2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(R^2\\)"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q5",
+   "questionNumber": "5",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "difficulty": "MODERATE",
+   "stem": "A particle of mass m and charge q is moving with velocity \\(\\vec{v} = v_x\\hat{i} + v_y\\hat{j}\\). If it is subjected to a magnetic field \\(\\vec{B} = B_0\\hat{i}\\), it will move in a -",
+   "options": [
+    {
+     "label": "A",
+     "text": "straight line path"
+    },
+    {
+     "label": "B",
+     "text": "circular path"
+    },
+    {
+     "label": "C",
+     "text": "helical path"
+    },
+    {
+     "label": "D",
+     "text": "parabolic path"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q6",
+   "questionNumber": "6",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "EASY",
+   "stem": "The quantum nature of light explains the observations on photoelectric effect as -",
+   "options": [
+    {
+     "label": "A",
+     "text": "there is a minimum frequency of incident radiation below which no electrons are emitted."
+    },
+    {
+     "label": "B",
+     "text": "the maximum kinetic energy of photoelectrons depends only on the frequency of incident radiation."
+    },
+    {
+     "label": "C",
+     "text": "when the metal surface is illuminated, electrons are ejected from the surface after sometime."
+    },
+    {
+     "label": "D",
+     "text": "the photoelectric current is independent of the intensity of incident radiation."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q7",
+   "questionNumber": "7",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Waves and their Properties",
+   "difficulty": "EASY",
+   "stem": "The phase difference between electric field \\(\\vec{E}\\) and magnetic field \\(\\vec{B}\\) in an electromagnetic wave propagating along z-axis is -",
+   "options": [
+    {
+     "label": "A",
+     "text": "zero"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\pi\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\pi}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\pi}{4}\\)"
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q8",
+   "questionNumber": "8",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "difficulty": "EASY",
+   "stem": "The radius \\((r_n)\\) of \\(n^{th}\\) orbit in Bohr model of hydrogen atom varies with n as",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(r_n \\propto n\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(r_n \\propto \\dfrac{1}{n}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(r_n \\propto n^2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(r_n \\propto \\dfrac{1}{n^2}\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q9",
+   "questionNumber": "9",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+   "difficulty": "MODERATE",
+   "stem": "An ac source \\(V = 282 \\sin(100\\ t)\\) volt is connected across a 1 \\(\\mu\\mathrm{F}\\) capacitor. The rms value of current in the circuit will be (take \\(\\sqrt{2} = 1.41\\))",
+   "options": [
+    {
+     "label": "A",
+     "text": "10 mA"
+    },
+    {
+     "label": "B",
+     "text": "20 mA"
+    },
+    {
+     "label": "C",
+     "text": "40 mA"
+    },
+    {
+     "label": "D",
+     "text": "80 mA"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q10",
+   "questionNumber": "10",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "The Moving Coil Galvanometer",
+   "difficulty": "MODERATE",
+   "stem": "A galvanometer of resistance 100 \\(\\Omega\\) is converted into an ammeter of range \\((0 - 1\\ \\mathrm{A})\\) using a resistance of 0.1 \\(\\Omega\\). The ammeter will show full scale deflection for a current of about",
+   "options": [
+    {
+     "label": "A",
+     "text": "0.1 mA"
+    },
+    {
+     "label": "B",
+     "text": "1 mA"
+    },
+    {
+     "label": "C",
+     "text": "10 mA"
+    },
+    {
+     "label": "D",
+     "text": "0.1 A"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q11",
+   "questionNumber": "11",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Line Spectra of the Hydrogen Atom",
+   "difficulty": "MODERATE",
+   "stem": "In Balmer series of hydrogen atom, as the wavelength of spectral lines decreases, they appear",
+   "options": [
+    {
+     "label": "A",
+     "text": "equally spaced and equally intense."
+    },
+    {
+     "label": "B",
+     "text": "further apart and stronger in intensity."
+    },
+    {
+     "label": "C",
+     "text": "closer together and stronger in intensity."
+    },
+    {
+     "label": "D",
+     "text": "closer together and weaker in intensity."
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q12",
+   "questionNumber": "12",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Magnetic Flux and Faraday's Law",
+   "difficulty": "MODERATE",
+   "stem": "A coil of N turns is placed in a magnetic field \\(\\vec{B}\\) such that \\(\\vec{B}\\) is perpendicular to the plane of the coil. \\(\\vec{B}\\) changes with time as \\(B = B_0 \\cos\\left(\\dfrac{2\\pi}{T}t\\right)\\) where T is time period. The magnitude of emf induced in the coil will be maximum at\nHere, n = 1, 2, 3, 4, ...",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(t = \\dfrac{nT}{8}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(t = \\dfrac{nT}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(t = \\dfrac{nT}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(t = nT\\)"
+    }
+   ],
+   "_noCorrectOption": true,
+   "_cbseVoided": "No option is correct, award 1 mark.",
+   "_flag": "LAYOUT — the line 'Here, n = 1, 2, 3, 4, ...' is printed BELOW the four options on the page, not inside the stem paragraph. It is transcribed as the last line of the stem because it qualifies the options and there is nowhere else for it to live. This is the opener's Q11, renumbered; CBSE voided it in both sets with the identical note."
+  },
+  {
+   "ref": "Q13",
+   "questionNumber": "13",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "difficulty": "MODERATE",
+   "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "stem": "Assertion (A) : In interference and diffraction of light, light energy reduces in one region producing a dark fringe. It increases in another region and produces a bright fringe.\nReason (R) : This happens because energy is not conserved in the phenomena of interference and diffraction.",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q14",
+   "questionNumber": "14",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "difficulty": "MODERATE",
+   "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "stem": "Assertion (A) : When electrons drift in a conductor, it does not mean that all free electrons in the conductor are moving in the same direction.\nReason (R) : The drift velocity is superposed over large random velocities of electrons.",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q15",
+   "questionNumber": "15",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "difficulty": "MODERATE",
+   "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "stem": "Assertion (A) : Electrons are ejected from the surface of zinc when it is irradiated by yellow light.\nReason (R) : Energy associated with a photon of yellow light is more than the work function of zinc.",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q16",
+   "questionNumber": "16",
+   "section": "A",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Temperature Dependence of Resistivity",
+   "difficulty": "MODERATE",
+   "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "stem": "Assertion (A) : The temperature coefficient of resistance is positive for metals and negative for p-type semiconductors.\nReason (R) : The charge carriers in metals are negatively charged, whereas the majority charge carriers in p-type semiconductors are positively charged.",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q17a",
+   "questionNumber": "17 (a)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "MODERATE",
+   "stem": "An air bubble is trapped at point B (CB = 20 cm) in a glass sphere of radius 40 cm and refractive index 1.5 as shown in figure. Find the nature and position of the image of the bubble as seen by an observer at point P.",
+   "_figure": "REQUIRED — the stem defers the geometry to 'as shown in figure', and which side of the centre the bubble lies on relative to the observer is what fixes the sign convention and therefore the answer. Described here without stating the result: a circle labelled \\(\\mu = 1.5\\) with its centre marked C, a point B inside the circle on a horizontal dashed line through C, and a point P outside the circle on that same dashed line; an arrow leaves C obliquely to indicate the sphere's radius. Page idx 10."
+  },
+  {
+   "ref": "Q17b",
+   "questionNumber": "17 (b)",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "difficulty": "MODERATE",
+   "stem": "In normal adjustment, for a refracting telescope, the distance between objective and eye piece lens is 1.00 m. If the magnifying power of the telescope is 19, find the focal length of the objective and the eyepiece lens.",
+   "_alternativeTo": "Q17a"
+  },
+  {
+   "ref": "Q18",
+   "questionNumber": "18",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Wave Nature of Matter",
+   "difficulty": "MODERATE",
+   "stem": "What are matter waves ? A proton, an electron and an \\(\\alpha\\)-particle have the same kinetic energy. Write the de Broglie wavelengths associated with them in increasing order."
+  },
+  {
+   "ref": "Q19",
+   "questionNumber": "19",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction Through a Prism",
+   "difficulty": "MODERATE",
+   "stem": "A ray of light is incident normally on one face of an equilateral glass prism of refractive index \\(\\mu\\). When the prism is completely immersed in a transparent medium, it is observed that the emergent ray just grazes the adjacent face. Find the refractive index of the medium."
+  },
+  {
+   "ref": "Q20",
+   "questionNumber": "20",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "difficulty": "MODERATE",
+   "stem": "Two wires A and B of different metals have their lengths in ratio 1 : 2 and their radii in ratio 2 : 1 respectively. I-V graphs for them is shown in the figure. Find the ratio of their\n(i) Resistances \\((R_A/R_B)\\) and\n(ii) Resistivities \\((\\sigma_A/\\sigma_B)\\)",
+   "_figure": "REQUIRED — the stem gives no slope and no angle; the two marked angles ARE the data, and the whole question is the ratio they fix. Deliberately NOT stated here: WHICH of the two lines makes which angle, since that pairing alone gives the ratio of the resistances and hence both answers. What is drawn: a first-quadrant plot with the vertical axis labelled I, the horizontal axis labelled V, the origin marked 0, and two straight lines rising from the origin, one labelled A and the other labelled B, with two angles measured from the V-axis and marked by arcs, one reading \\(45^\\circ\\) and the other \\(30^\\circ\\). Page idx 10.",
+   "_flag": "NOTATION — the paper writes the RESISTIVITIES as \\(\\sigma_A/\\sigma_B\\), using sigma where NCERT uses rho (sigma normally denotes conductivity). Transcribed as printed; the marking scheme uses the same symbol and solves it as a resistivity, giving \\(8\\sqrt{3}\\)."
+  },
+  {
+   "ref": "Q21",
+   "questionNumber": "21",
+   "section": "B",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "stem": "Draw the circuit diagram of a p-n junction diode in (i) forward biasing and (ii) reverse biasing. Also draw its I-V characteristics in the two cases."
+  },
+  {
+   "ref": "Q22",
+   "questionNumber": "22",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Atoms",
+   "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+   "difficulty": "MODERATE",
+   "stem": "Draw the graph showing variation of scattered particles detected (N) with the scattering angle \\((\\theta)\\) in Geiger-Marsden experiment. Write two conclusions that you can draw from this graph. Obtain the expression for the distance of closest approach in this experiment."
+  },
+  {
+   "ref": "Q23",
+   "questionNumber": "23",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatics of Conductors and Dielectrics",
+   "difficulty": "HARD",
+   "stem": "A thin spherical conducting shell of radius R has a charge q. A point charge Q is placed at the centre of the shell. Find (i) The charge density on the outer surface of the shell and (ii) the potential at a distance of (R/2) from the centre of the shell.",
+   "_flag": "MIXED SUBTOPIC — sub-part (i) is the induced-charge behaviour of a conductor ('Electrostatics of Conductors and Dielectrics') while (ii) is superposition of potentials ('Electrostatic Potential due to Charges and Dipoles'). The marking scheme splits the marks evenly (1 1/2 each). Filed on the conductor half, which is what makes the question non-routine."
+  },
+  {
+   "ref": "Q24",
+   "questionNumber": "24",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Nuclear Energy",
+   "difficulty": "MODERATE",
+   "stem": "(a) Differentiate between nuclear fission and fusion.\n(b) The fission properties of \\(_{94}\\mathrm{Pu}^{239}\\) are very similar to those of \\(_{92}\\mathrm{U}^{235}\\). How much energy (in MeV), is released if all the atoms in 1 g of pure \\(_{94}\\mathrm{Pu}^{239}\\) undergo fission ? The average energy released per fission is 180 MeV.",
+   "_flag": "LAYOUT — the printed '3' sits at the end of line (a) rather than after (b). This is NOT an internal choice: no OR is printed between the parts, and the marking scheme allots '(a) Difference between nuclear fission and fusion - 1' and '(b) Calculating energy released in fission - 2', i.e. one 3-mark question in two parts."
+  },
+  {
+   "ref": "Q25",
+   "questionNumber": "25",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+   "difficulty": "HARD",
+   "stem": "Two long insulated straight wires carrying currents of 3 A and 5 A are arranged in XY plane as shown in figure. Find the magnitude and direction of the net magnetic fields at points \\(P_1\\)(2m, 2m) and \\(P_2\\)(-1m, 1m).",
+   "_figure": "REQUIRED — the question asks for a DIRECTION, and which wire lies along which axis and which way each current flows are drawn and never stated. Deliberately NOT stated here: the sense of either current arrow, since those two senses fix both answers' directions. What is drawn: a pair of axes crossing at a point marked 0, with one long wire lying along each axis and labelled with its current (5 A on one, 3 A on the other) and carrying an arrowhead giving its sense; a dot labelled \\(P_1\\) in the quadrant where both coordinates are positive and a dot labelled \\(P_2\\) in the quadrant to its left; and, drawn clear of the wires, a right-handed axis triad labelled x (right), y (up) and z (toward the lower-left). Page idx 12.",
+   "_flag": "TAXONOMY — this is the superposed field of two long STRAIGHT current-carrying wires, \\(B = \\mu_0 I / 2\\pi r\\). The live Moving Charges and Magnetism axis has no straight-wire subtopic; NCERT derives this formula in its Ampere's-circuital-law section, so 'Ampere's Circuital Law and the Solenoid' is arguably the better NCERT home. Filed instead on 'Biot-Savart Law and Field of a Circular Loop' to match the SHIPPED sibling 2024 55/4/1 Q5, which is the same straight-wire-direction question and carries the same flag. Choosing consistency over the finer sectional reading is a deliberate call, not an oversight — see the report."
+  },
+  {
+   "ref": "Q26",
+   "questionNumber": "26",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Displacement Current",
+   "difficulty": "MODERATE",
+   "stem": "What is meant by displacement current ? How is this current different from the conduction current ? A capacitor is being charged by a source of emf. Justify the continuity of current in the circuit."
+  },
+  {
+   "ref": "Q27",
+   "questionNumber": "27",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+   "difficulty": "HARD",
+   "stem": "Find the currents flowing through the branches AB and BC in the network shown.",
+   "_figure": "REQUIRED — the stem names no component and no value; the entire question is the printed network. The layout and labelling are described because the answer is a pair of current values that no description states, but the CELL POLARITIES are visible only in the drawing and are NOT stated here. What is drawn: a two-loop network with nodes A, B, C along the top rail and N, M, D along the bottom rail; top-rail resistors of 5 \\(\\Omega\\) between A and B and 5 \\(\\Omega\\) between B and C; a vertical resistor \\(R_1\\) of 10 \\(\\Omega\\) from B down to M and a vertical resistor \\(R_2\\) of 20 \\(\\Omega\\) from C down to D; plain wires closing A to N and the top of \\(R_2\\) to C; and two cells on the bottom rail, one marked 5 V between N and M and one marked 10 V between M and D. Page idx 14."
+  },
+  {
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Inductance",
+   "difficulty": "MODERATE",
+   "stem": "(i) Define mutual inductance. Write its SI unit.\n(ii) Derive an expression for the mutual inductance of a system of two long coaxial solenoids of same length \\(l\\), having turns \\(N_1\\) and \\(N_2\\) and of radii \\(r_1\\) and \\(r_2\\ (> r_1)\\)."
+  },
+  {
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "section": "C",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "Magnetic Properties of Materials",
+   "difficulty": "MODERATE",
+   "stem": "What are ferromagnetic materials ? Explain ferromagnetism with the help of suitable diagrams, using the concept of magnetic domain.",
+   "_alternativeTo": "Q28a"
+  },
+  {
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS1",
+   "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+   "stem": "A thin converging lens of focal length 20 cm and a thin diverging lens of focal length 15 cm are placed coaxially in contact. The power of the combination is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{-5}{6}\\mathrm{D}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{-5}{3}\\mathrm{D}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{4}{3}\\mathrm{D}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{3}{2}\\mathrm{D}\\)"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS1",
+   "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+   "stem": "The radii of curvature of two surfaces of a convex lens are R and 2R. If the focal length of this lens is \\(\\left(\\dfrac{4}{3}\\right)\\mathrm{R}\\), the refractive index of the material of the lens is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{5}{3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{4}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{3}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{7}{5}\\)"
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS1",
+   "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+   "stem": "The focal length of an equiconvex lens",
+   "options": [
+    {
+     "label": "A",
+     "text": "increases when the lens is dipped in water."
+    },
+    {
+     "label": "B",
+     "text": "increases when the wavelength of incident light decreases."
+    },
+    {
+     "label": "C",
+     "text": "increases with decrease in radius of curvature of its surface."
+    },
+    {
+     "label": "D",
+     "text": "decreases when the lens is cut into two identical parts along its principal axis."
+    }
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "HARD",
+   "setId": "2024-55-4-2-CS1",
+   "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+   "stem": "A thin convex lens L of focal length 10 cm and a concave mirror M of focal length 15 cm are placed coaxially 40 cm apart as shown in figure. A beam of light coming parallel to the principal axis is incident on the lens. The final image will be formed at a distance of",
+   "options": [
+    {
+     "label": "A",
+     "text": "10 cm, left of lens"
+    },
+    {
+     "label": "B",
+     "text": "10 cm, right of lens"
+    },
+    {
+     "label": "C",
+     "text": "20 cm, left of lens"
+    },
+    {
+     "label": "D",
+     "text": "20 cm, right of lens"
+    }
+   ],
+   "answer": "B",
+   "_figure": "REQUIRED — every option is expressed as 'left of lens' or 'right of lens', and which way is left is fixed only by the drawn direction of the incoming beam. Described here without stating the result: a horizontal dashed principal axis; a biconvex lens labelled L drawn on the left with four horizontal ray arrows approaching it; a concave mirror labelled M drawn on the right with its reflecting side facing the lens; and the lens-to-mirror separation marked 40 cm by a double-headed arrow. Page idx 16."
+  },
+  {
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "difficulty": "HARD",
+   "setId": "2024-55-4-2-CS1",
+   "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+   "stem": "A beam of light coming parallel to the principal axis of a convex lens \\(L_1\\) of focal length 16 cm is incident on it. Another convex lens \\(L_2\\) of focal length 12 cm is placed coaxially at a distance 40 cm from \\(L_1\\). The nature and distance of the final image from \\(L_2\\) will be",
+   "options": [
+    {
+     "label": "A",
+     "text": "real, 24 cm"
+    },
+    {
+     "label": "B",
+     "text": "virtual, 12 cm"
+    },
+    {
+     "label": "C",
+     "text": "real, 32 cm"
+    },
+    {
+     "label": "D",
+     "text": "virtual, 18 cm"
+    }
+   ],
+   "answer": "A",
+   "_alternativeTo": "Q29iva"
+  },
+  {
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS2",
+   "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+   "stem": "When Ge is doped with pentavalent impurity, the energy required to free the weakly bound electron from the dopant is about",
+   "options": [
+    {
+     "label": "A",
+     "text": "0.001 eV"
+    },
+    {
+     "label": "B",
+     "text": "0.01 eV"
+    },
+    {
+     "label": "C",
+     "text": "0.72 eV"
+    },
+    {
+     "label": "D",
+     "text": "1.1 eV"
+    }
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS2",
+   "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+   "stem": "At a given temperature, the number of intrinsic charge carriers in a semiconductor is \\(2.0 \\times 10^{10}\\ \\mathrm{cm^{-3}}\\). It is doped with pentavalent impurity atoms. As a result, the number of holes in it becomes \\(8 \\times 10^{3}\\ \\mathrm{cm^{-3}}\\). The number of electrons in the semiconductor is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2 \\times 10^{24}\\ \\mathrm{m^{-3}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(4 \\times 10^{23}\\ \\mathrm{m^{-3}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1 \\times 10^{22}\\ \\mathrm{m^{-3}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(5 \\times 10^{22}\\ \\mathrm{m^{-3}}\\)"
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q30iiia",
+   "questionNumber": "30 (iii) (a)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS2",
+   "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+   "stem": "During the formation of a p-n junction -",
+   "options": [
+    {
+     "label": "A",
+     "text": "electrons diffuse from p-region into n-region and holes diffuse from n-region into p-region."
+    },
+    {
+     "label": "B",
+     "text": "both electrons and holes diffuse from n-region into p-region."
+    },
+    {
+     "label": "C",
+     "text": "electrons diffuse from n-region into p-region and holes diffuse from p-region into n-region."
+    },
+    {
+     "label": "D",
+     "text": "both electrons and holes diffuse from p-region into n-region."
+    }
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q30iiib",
+   "questionNumber": "30 (iii) (b)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS2",
+   "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+   "stem": "Initially during the formation of a p-n junction -",
+   "options": [
+    {
+     "label": "A",
+     "text": "diffusion current is large and drift current is small."
+    },
+    {
+     "label": "B",
+     "text": "diffusion current is small and drift current is large."
+    },
+    {
+     "label": "C",
+     "text": "both the diffusion and the drift currents are large."
+    },
+    {
+     "label": "D",
+     "text": "both the diffusion and the drift currents are small."
+    }
+   ],
+   "answer": "A",
+   "_alternativeTo": "Q30iiia"
+  },
+  {
+   "ref": "Q30iv",
+   "questionNumber": "30 (iv)",
+   "section": "D",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "difficulty": "MODERATE",
+   "setId": "2024-55-4-2-CS2",
+   "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+   "stem": "An ac voltage \\(V = 0.5 \\sin(100\\pi t)\\) volt is applied, in turn, across a half-wave rectifier and a full-wave rectifier. The frequency of the output voltage across them respectively will be",
+   "options": [
+    {
+     "label": "A",
+     "text": "25 Hz, 50 Hz"
+    },
+    {
+     "label": "B",
+     "text": "25 Hz, 100 Hz"
+    },
+    {
+     "label": "C",
+     "text": "50 Hz, 50 Hz"
+    },
+    {
+     "label": "D",
+     "text": "50 Hz, 100 Hz"
+    }
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "difficulty": "HARD",
+   "stem": "(i) Mention the factors on which the resonant frequency of a series LCR circuit depends. Plot a graph showing variation of impedance of a series LCR circuit with the frequency of the applied a.c. source.\n(ii) With the help of a suitable diagram, explain the working of a step-up transformer.\n(iii) Write two causes of energy loss in a real transformer.",
+   "_flag": "MIXED SUBTOPIC — sub-part (i) is 'Series LCR Circuit and Resonance' while (ii) and (iii) are 'Transformers'. The marking scheme allots (i) 1+1, (ii) 1+1, (iii) 1, so transformers carry 3 of the 5 marks; filed on that majority."
+  },
+  {
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "AC Generator",
+   "difficulty": "HARD",
+   "stem": "(i) With the help of a diagram, briefly explain the construction and working of ac generator.\n(ii) An electron is revolving around a proton in an orbit of radius r with a speed v. Obtain expression for magnetic moment associated with the electron.",
+   "_alternativeTo": "Q31a",
+   "_flag": "MIXED CHAPTER — sub-part (i) is Electromagnetic Induction / 'AC Generator' while (ii) is Moving Charges and Magnetism / 'Torque on a Current Loop and Magnetic Dipole'. Filed on sub-part (i), which the marking scheme weights at 3 of the 5 marks."
+  },
+  {
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "difficulty": "HARD",
+   "stem": "(i) A dielectric slab of dielectric constant 'K' and thickness 't' is inserted between plates of a parallel plate capacitor of plate separation d and plate area A. Obtain an expression for its capacitance.\n(ii) Two capacitors of different capacitances are connected first (1) in series and then (2) in parallel across a dc source of 100 V. If the total energy stored in the combination in the two cases are 40 mJ and 250 mJ respectively, find the capacitance of the capacitors."
+  },
+  {
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Applications of Gauss's Law",
+   "difficulty": "HARD",
+   "stem": "(i) Using Gauss's law, show that the electric field \\(\\vec{E}\\) at a point due to a uniformly charged infinite plane sheet is given by \\(\\vec{E} = \\dfrac{\\sigma}{2\\varepsilon_0}\\hat{n}\\) where symbols have their usual meanings.\n(ii) Electric field \\(\\vec{E}\\) in a region is given by\n\\(\\vec{E} = (5x^2 + 2)\\hat{i}\\)\nwhere E is in N/C and \\(x\\) is in meters.\nA cube of side 10 cm is placed in the region as shown in figure.\nCalculate (1) the electric flux through the cube, and (2) the net charge enclosed by the cube.",
+   "_alternativeTo": "Q32a",
+   "_figure": "REQUIRED for sub-part (ii) — the flux depends on WHERE along the x-axis the cube sits and how its faces are oriented, and the stem says only 'as shown in figure'. What is drawn: a right-handed axis triad with y up, x to the right and z toward the lower-left; a cube drawn in oblique projection with one vertex at the marked origin 0 and its edges parallel to the three axes; and, to the right of the cube, an arrow labelled \\(\\vec{E}\\) with a second arrow labelled \\(\\hat{i}\\) beneath it, both pointing along \\(+x\\). Page idx 22."
+  },
+  {
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "difficulty": "HARD",
+   "stem": "(i) Draw a ray diagram for the formation of the image of an object by a convex mirror. Hence, obtain the mirror equation.\n(ii) Why are multi-component lenses used for both the objective and the eyepiece in optical instruments ?\n(iii) The magnification of a small object produced by a compound microscope is 200. The focal length of the eyepiece is 2 cm and the final image is formed at infinity. Find the magnification produced by the objective.",
+   "_flag": "MIXED SUBTOPIC — sub-part (i) is 'Reflection by Spherical Mirrors' while (ii) and (iii) are 'Optical Instruments'. Filed on the majority, 'Optical Instruments'."
+  },
+  {
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "section": "E",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Huygens Principle",
+   "difficulty": "HARD",
+   "stem": "(i) Differentiate between a wavefront and a ray.\n(ii) State Huygen's principle and verify laws of reflection using suitable diagram.\n(iii) In Young's double slit experiment, the slits \\(S_1\\) and \\(S_2\\) are 3 mm apart and the screen is placed 1.0 m away from the slits. It is observed that the fourth bright fringe is at a distance of 5 mm from the second dark fringe. Find the wavelength of light used.",
+   "_alternativeTo": "Q33a",
+   "_flag": "MIXED SUBTOPIC — sub-parts (i) and (ii) are 'Huygens Principle' while (iii) is 'Interference and Young's Experiment'. Filed on the majority, 'Huygens Principle'."
+  }
+ ]
+}
