@@ -86,6 +86,15 @@ async function main() {
   console.log(`validate.ts checks chapters only, and a subtopic near-miss is checked by`);
   console.log(`nothing at all — it silently splits a subtopic in two, each holding half the`);
   console.log(`questions and each rendering as its own /browse filter.\n`);
+  console.log(`THE GRAIN IS ONE SUBTOPIC PER **TOP-LEVEL** NCERT SECTION, DELIBERATELY.`);
+  console.log(`So a question on an NCERT SUB-section belongs on its PARENT, and that is a`);
+  console.log(`correct filing, NOT a gap. Verified 2026-09-12 against the NCERT spine after`);
+  console.log(`five separate agents reported the same five "missing" subtopics: "Order of a`);
+  console.log(`Reaction" is §3.2.3 under "Factors Influencing Rate of a Reaction" (§3.2);`);
+  console.log(`"Optical Isomerism" is §5.4.2 under "Isomerism in Coordination Compounds"`);
+  console.log(`(§5.4); Chemical Kinetics carries exactly NCERT's §3.1–§3.5 and Coordination`);
+  console.log(`Compounds exactly its §5.1–§5.7. Report a gap only when NO top-level section`);
+  console.log(`of that chapter covers the question.\n`);
   // ⚠ LIVE ∪ DECLARED, and printing only the live half was a real defect.
   //
   // A subtopic reaches the DB only once a question is filed on it, so a name the

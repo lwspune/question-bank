@@ -43,10 +43,12 @@ import warnings
 # warning is silenced rather than the algorithm changed; migrate BOTH together.
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
+import json
+
 import fitz
 from PIL import Image
 
-SOURCE_ROOT = r"C:\tmp\PYQPs\CBSE\XII\Mathematics"
+DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 MIN_BLOCK_BYTES = 5000
 
 # U+1D7CE..U+1D7FF are the mathematical bold/sans digits; NFKC folds them to
@@ -76,16 +78,55 @@ def norm(s):
     return unicodedata.normalize("NFKC", s)
 
 
-def ms_path(year, code):
-    ms_dir = os.path.join(SOURCE_ROOT, str(year), "ms")
-    want = code.replace("/", "-")
-    for root, _, files in os.walk(ms_dir):
-        for fn in files:
-            if not fn.lower().endswith(".pdf"):
-                continue
-            if re.sub(r"[_\s]", "-", fn).find(want) >= 0:
-                return os.path.join(root, fn)
-    return None
+def load_index(subject):
+    """Resolve papers from the TS discovery's emitted index — never re-derive.
+
+    ⚠ THIS REPLACED A SECOND, DIVERGED MATCHER — the same one `prep.py` already
+    removed for exactly the same reasons, which is why that fix is quoted here
+    rather than re-learned. The old `ms_path()` walked a HARDCODED Mathematics
+    source root, so for every Physics and Chemistry paper it searched the wrong
+    tree and reported "no marking scheme found". That is non-fatal by design, so
+    the message was simply wrong on all 20 papers of the 2026-09-11/12 science
+    waves while the schemes sat in place — measured, not inferred.
+
+    Its matcher carried two further faults that would bite Maths too:
+      • it normalised [_\\s] to "-" WITHOUT collapsing runs, so
+        "XII_043_Chemistry_MS_56_2- 1-.pdf" became "...56-2--1-" and never
+        contained "56-2-1";
+      • it substring-matched the code, so a MERGED filename advertising
+        "55-1-1,2,3" could never match "55-1-2" or "55-1-3" — which is most of
+        the Physics corpus.
+
+    papers.ts already resolves all of this — including WHICH PAGE RANGE of a
+    merged scheme belongs to this paper — and is the half with tests. So this
+    reads its output rather than growing a third implementation to drift.
+    """
+    path = os.path.join(DATA, f"_papers.{subject}.json")
+    if not os.path.exists(path):
+        print(
+            f"  no paper index at {path}\n"
+            f"  Generate it first (it is derived from disk, so it is cheap to refresh):\n"
+            f"    npx tsx scripts/cbse-12-pyq/papers.ts --subject={subject} --emit-index",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+    with open(path, encoding="utf-8") as fh:
+        rows = json.load(fh)
+    return {r["paperId"]: r for r in rows}
+
+
+def ms_for(index, year, code):
+    """(path, pages) for one paper's marking scheme, or (None, None).
+
+    `pages` is an inclusive 0-based (from, to) into a MERGED scheme, or None for
+    a scheme that is wholly this paper's. Reading a merged file whole would
+    attribute another paper's question blocks to this one.
+    """
+    row = index.get(f"{year}-{code.replace('/', '-')}")
+    if row is None or not row.get("ms"):
+        return None, None
+    mp = row.get("msPages")
+    return row["ms"], ((mp["from"], mp["to"]) if mp else None)
 
 
 def dhash(im, h=12, w=13):
@@ -109,7 +150,7 @@ def hamming(a, b):
     return bin(a ^ b).count("1")
 
 
-def blocks_by_question(path):
+def blocks_by_question(path, pages=None):
     """[(label, sha)] in page order, e.g. ('Q27#1', 'ab12…').
 
     `current` is a LOCAL, deliberately. It was a function attribute in the first
@@ -126,7 +167,11 @@ def blocks_by_question(path):
     counts = {}
     current = None
     highest = 0
-    for page in doc:
+    # A merged scheme carries several papers; reading it whole would attribute
+    # a neighbour's blocks to this paper AND reset the non-decreasing guard.
+    pageset = range(len(doc)) if pages is None else range(pages[0], min(pages[1], len(doc) - 1) + 1)
+    for pno in pageset:
+        page = doc[pno]
         items = []
         for b in page.get_text("blocks"):
             t = norm(b[4]).strip()
@@ -175,24 +220,38 @@ def main():
         if a == "--against" and i + 1 < len(sys.argv):
             against = [c.strip() for c in sys.argv[i + 1].split(",") if c.strip()]
 
-    target = ms_path(year, code)
+    subject = "maths"
+    for a in sys.argv:
+        if a.startswith("--subject="):
+            subject = a.split("=", 1)[1].strip()
+    if subject not in ("maths", "physics", "chemistry"):
+        print(f"unknown --subject={subject!r}; expected maths, physics or chemistry", file=sys.stderr)
+        sys.exit(2)
+    index = load_index(subject)
+
+    target, target_pages = ms_for(index, year, code)
     if not target:
-        print(f"no marking scheme found for {year} {code}", file=sys.stderr)
+        print(
+            f"no marking scheme for {year} {code} in the {subject} index.\n"
+            f"  If the paper is on disk, the index predates it — refresh it:\n"
+            f"    npx tsx scripts/cbse-12-pyq/papers.ts --subject={subject} --emit-index",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     known = {}
     known_perceptual = []  # [(dhash, "65-1-1 Q7#1")]
     for other in against:
-        p = ms_path(year, other)
+        p, ppages = ms_for(index, year, other)
         if not p:
-            print(f"  WARN reference {other} not found — ignored", file=sys.stderr)
+            print(f"  WARN reference {other} not found in the {subject} index — ignored", file=sys.stderr)
             continue
-        for label, (sha, dh) in blocks_by_question(p):
+        for label, (sha, dh) in blocks_by_question(p, ppages):
             known.setdefault(sha, []).append(f"{other} {label}")
             if dh is not None:
                 known_perceptual.append((dh, f"{other} {label}"))
 
-    rows = blocks_by_question(target)
+    rows = blocks_by_question(target, target_pages)
     if not rows:
         # NEVER let an unreadable marking scheme render as "nothing is new".
         # A zero here is the absence of a measurement, not a finding.
