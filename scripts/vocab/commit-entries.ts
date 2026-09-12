@@ -161,6 +161,31 @@ async function main() {
     if (!w) throw new Error(`${a.word}: no exam has printed this word — REFUSING`);
 
     /**
+     * THE BOOK IS PRINTED IN ENGLISH. No Devanagari, in any field.
+     *
+     * It is a REFUSAL rather than a strip, for the reason the ingestion
+     * boundary refuses a literal newline: a silent repair leaves the stored
+     * text disagreeing with the file it was authored in, so the next re-commit
+     * reinstates it and nobody learns the source was wrong. Fix the JSON.
+     *
+     * The guard exists because the source deck for the 417 coaching words
+     * glosses every headword in Hindi, which makes a paste-through the single
+     * likeliest way non-English text reaches a page of this book.
+     */
+    const DEVANAGARI = /[\u0900-\u097F]/;
+    for (const [field, value] of [
+      ["meaning", a.meaning],
+      ["sentence", a.sentence ?? ""],
+      ["note", a.note ?? ""],
+      ["synonyms", a.synonyms.join(" ")],
+      ["antonyms", a.antonyms.join(" ")],
+    ] as const) {
+      if (DEVANAGARI.test(value)) {
+        throw new Error(`${a.word}: Devanagari in \`${field}\` — this book is English only, REFUSING`);
+      }
+    }
+
+    /**
      * PART IS DERIVED FROM THE CORPUS, never authored: a word is in `pyq` if a
      * REAL PAPER has asked it, otherwise `practice`. Letting the author choose
      * would put the book's central claim in the hands of whoever typed the

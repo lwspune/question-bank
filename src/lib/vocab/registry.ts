@@ -49,9 +49,19 @@
  * student to SKIP that section would be wrong far too often. It is a priority
  * ORDER, and each section's blurb says so in as many words.
  *
- * PART 3 IS NOT SPLIT, and that is measured rather than assumed: all 640
- * practice words come from NDA sources and ZERO from CDS, so an exam split
- * there would produce one full section and one empty one.
+ * PART 3 IS NOT SPLIT, and the reason CHANGED on 2026-09-12 — the original
+ * one is kept because it was measured and was true of the corpus it described.
+ *
+ * It read: all 640 practice words come from NDA sources and ZERO from CDS, so
+ * an exam split would produce one full section and one empty one. That held
+ * until the Shaktiman deck added 417 words. The deck is sold for NDA, CDS and
+ * AFCAT and tags NO WORD individually, so its words carry ["NDA","CDS"] as the
+ * DECK'S scope rather than as a per-word finding.
+ *
+ * So the part is still not split, on a different and weaker ground: an exam
+ * split needs per-word exam evidence, and for 417 of its 1,059 words that
+ * evidence does not exist. Splitting on a blanket tag would print a section
+ * heading asserting something nobody measured.
  *
  * ═══ THE BANDS ARE SIZED AGAINST THE FINAL CORPUS, NOT TODAY'S ═══
  *
@@ -340,10 +350,20 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "papers-cds-m-r", label: "M-R", part: "pyq", section: "cds", letters: band("M", "R"), expected: 195 },
     { slug: "papers-cds-s-z", label: "S-Z", part: "pyq", section: "cds", letters: band("S", "Z"), expected: 192 },
 
-    { slug: "practice-a-d", label: "A-D", part: "practice", letters: band("A", "D"), expected: 197 },
-    { slug: "practice-e-m", label: "E-M", part: "practice", letters: band("E", "M"), expected: 200 },
-    { slug: "practice-n-s", label: "N-S", part: "practice", letters: band("N", "S"), expected: 180 },
-    { slug: "practice-t-z", label: "T-Z", part: "practice", letters: band("T", "Z"), expected: 63 },
+    // ── Part 3 · practice material (1,059) ──
+    //
+    // RECUT FROM FOUR BANDS TO SIX when the Shaktiman coaching deck landed
+    // (2026-09-12, +414). The four bands were sized for 640; at 1,054 three of
+    // them blew the 200 cap outright — `practice-e-m` would have held 365 — so
+    // there was no version of this that kept the old slugs. Every Part 3
+    // chapter URL moved, which is the cost the header's own note anticipates
+    // for a band recomputed against a grown corpus.
+    { slug: "practice-a-c", label: "A-C", part: "practice", letters: band("A", "C"), expected: 179 },
+    { slug: "practice-d-g", label: "D-G", part: "practice", letters: band("D", "G"), expected: 192 },
+    { slug: "practice-h-l", label: "H-L", part: "practice", letters: band("H", "L"), expected: 195 },
+    { slug: "practice-m-q", label: "M-Q", part: "practice", letters: band("M", "Q"), expected: 187 },
+    { slug: "practice-r-t", label: "R-T", part: "practice", letters: band("R", "T"), expected: 197 },
+    { slug: "practice-u-z", label: "U-Z", part: "practice", letters: band("U", "Z"), expected: 104 },
 
     // ── Part 1 · the class ladder ──
     //

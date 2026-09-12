@@ -55,10 +55,15 @@ sentence under it, that word IS a tested word: use that sentence verbatim and
 set `sentenceSource` to the citation exactly as printed. None of the current
 chapters contain any.)
 
-## Three kinds of worksheet entry
+## Four kinds of worksheet entry
 
 - **`- [option] …`** — the exams printed it among the choices. No sentence, no
   key. Author the meaning and the sentence.
+- **`- [coaching] …`** — taught by a commercial NDA/CDS prep deck. **No paper
+  has printed it at all**, so the exams named on the line are the DECK'S stated
+  scope and not a claim about that word. Author everything. These carry the
+  highest risk of an invented citation precisely because the line names two
+  exams: there is no sentence to cite, ever.
 - **`- [school] …`** — from the Class 5-12 school list; neither exam has set it.
   It comes with a **`docx gloss`** line.
 - **`- [synonym] NDA 2019 (Apr)`** with a `>` sentence — a tested word (see
