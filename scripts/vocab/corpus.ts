@@ -27,6 +27,22 @@ import type { SchoolWord } from "./extract-docx";
 /** One line of the fill roster: the word, and the rung it was commissioned for. */
 export type FillWord = { word: string; class: number };
 
+/**
+ * One line of the coaching roster: a word a third-party coaching deck teaches.
+ *
+ * SEPARATE FROM `option-words.json` BECAUSE THE EVIDENCE IS WEAKER, and the
+ * book's parts are built on exactly that distinction. An option word was
+ * PRINTED BY A REAL PAPER among the four choices; a coaching word has only ever
+ * been set by a commercial prep deck. Both file into Part 3 when no paper has
+ * tested them, but merging the two files would make "printed by a paper"
+ * unrecoverable — and that is the fact `pyqExams` and Part 2 rest on.
+ *
+ * `exams` is the DECK'S OWN SCOPE, never a per-word claim. A deck sold for
+ * NDA/CDS/AFCAT tags no word individually, so every word it contributes carries
+ * the same list; `pyqExams` stays empty, which is what files it into Part 3.
+ */
+export type CoachingWord = { word: string; exams: string[]; page?: number };
+
 const DATA = join(__dirname, "data");
 
 export type CorpusWord = {
@@ -73,6 +89,19 @@ export type CorpusWord = {
   pyqExams: string[];
   /** Every exam that printed it in any material. Non-empty by construction. */
   allExams: string[];
+  /**
+   * TRUE for a word only a third-party coaching deck teaches.
+   *
+   * Needed because an option word and a coaching word are otherwise
+   * INDISTINGUISHABLE here — both are `source: "exam"`, `tested: false`,
+   * `pyqExams: []` — and they are not the same claim. An option word was
+   * printed by a real paper among the four choices; a coaching word has only
+   * ever been sold in a prep deck. Without this flag the worksheet told an
+   * author that a paper had offered the word among its choices, which is false
+   * for all 417 of them and is exactly the kind of default that quietly becomes
+   * an assertion.
+   */
+  coaching?: true;
 };
 
 export function loadCorpus(): CorpusWord[] {
@@ -165,6 +194,45 @@ export function loadCorpus(): CorpusWord[] {
         tested: false,
         pyqExams: [],
         allExams: [],
+      });
+      seen.add(word);
+    }
+  }
+
+  /**
+   * THE COACHING ROSTER. Optional, like the fill roster above.
+   *
+   * REFUSED ON ANY COLLISION, in either direction. A word the exam corpus
+   * already holds belongs to Part 2 or Part 3 on that stronger evidence, and a
+   * word the CBSE list holds was graded by a publisher — so accepting a
+   * coaching entry over either would overrule the better claim with the worse
+   * one. Part membership is frozen (see the registry), so this is the same
+   * refusal `school-fill-words.json` makes and for the same reason.
+   */
+  const coachPath = join(DATA, "coaching-words.json");
+  if (existsSync(coachPath)) {
+    const coach = JSON.parse(readFileSync(coachPath, "utf8")) as CoachingWord[];
+    for (const c of coach) {
+      const word = c.word.toLowerCase();
+      if (seen.has(word)) {
+        throw new Error(
+          `${word}: listed in the coaching roster but the corpus already has it — ` +
+            `REFUSING (it belongs where it already is)`
+        );
+      }
+      if (!c.exams.length) {
+        throw new Error(`${word}: a coaching word with no exam — REFUSING`);
+      }
+      out.push({
+        word,
+        source: "exam",
+        appearances: [],
+        tested: false,
+        // EMPTY BY CONSTRUCTION, and it is what files the word into Part 3: no
+        // paper has printed it, so it cannot claim Part 2.
+        pyqExams: [],
+        allExams: c.exams,
+        coaching: true,
       });
       seen.add(word);
     }

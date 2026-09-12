@@ -135,6 +135,18 @@ async function main() {
        */
       lines.push(`- [school] Class 5-12 list — never yet set by either exam`);
       lines.push(`  docx gloss: ${w.schoolMeaning ?? "(none)"}`);
+    } else if (w.coaching) {
+      /**
+       * A COACHING WORD IS NOT AN OPTION WORD, and saying so matters. No paper
+       * has printed it at all -- it comes from a commercial prep deck -- so the
+       * exams named here are the DECK'S stated scope, never a per-word finding.
+       * The line below used to read "offered among the choices in NDA + CDS",
+       * which asserted a paper appearance that never happened.
+       */
+      lines.push(
+        `- [coaching] taught by a ${w.allExams.join("/")} prep deck — no paper has printed it`
+      );
+      lines.push(`  no sentence and no key: the meaning must be authored`);
     } else if (!w.tested) {
       const where = w.pyqExams.length ? w.pyqExams.join(" + ") : w.allExams.join(" + ");
       lines.push(`- [option] offered among the choices in ${where} — never the target`);
