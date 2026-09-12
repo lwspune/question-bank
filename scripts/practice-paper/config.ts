@@ -5612,6 +5612,302 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "lws-pqrs-test-1", label: "Arrangement of Words (PQRS)" },
     bankAdd: true,
   },
+  // ===========================================================================
+  // LWS "11th Question paper" folder (ingested 2026-09-12) — nine printed tests
+  // from C:\Users\vilas\Downloads\LWS 11th Question paper.
+  //
+  // THREE of the folder's twelve PDFs are NOT here: they are printed re-issues of
+  // papers already ingested from .docx — "LWS PUNE PQRS TEST 1" (= lws-pqrs-test-1,
+  // 30/30 stems match), "LWS PUNE NDA Pressure Belt , POS" (= lws-pressure-belt-pos,
+  // 61/61 records present) and "Interior of Earth & POP 50 Q -11TH"
+  // (= interior-earth-pop-50, 46/50 positional match, the 4 differences being a page
+  // header injected mid-stem and a Directions line folded into the spec's stem).
+  //
+  // NONE of the nine prints an answer key, so every answer is DERIVED. The numerical
+  // papers (both Chemistry, Units & Measurement, Current Electricity, AP-GP) went
+  // through TWO independent blind passes reconciled by crosstab: 149 AGREE / 1
+  // CONFLICT over 150 rows, the conflict hand-adjudicated (chem-50 Q3, see its
+  // reviewNote). The English/Geography papers are single-pass, cross-checked against
+  // the 123 rows the dedup gate matched to live bank questions.
+  //
+  // Dedup ran BEFORE any derivation (the runbook's rule-one) and was worth it: AP-GP
+  // is 19/20 already in the bank, while the Chemistry papers are 77/80 new.
+  //
+  // THE KEY IS ALWAYS THIS PAPER'S OWN PRINTED OPTION ORDER, never a matched bank
+  // row's letter. Live instances: Cloud Test Q2 and Q25 are the same fact with
+  // Nimbostratus at C and at D; Current Electricity Q14's bank twin keys C for 3 ohm
+  // where this paper prints 3 ohm at (b). 5 of Cloud Test's 8 self-repeating pairs
+  // resolve to a different letter from their twin.
+  //
+  // 14 questions are `flawed` (no correct printed option, or identical option text)
+  // and stay PRIVATE. TWO of them additionally MIS-GRADE on the OMR and need an
+  // Evalbee-side fix, which this pipeline cannot express — the tagged sheet has one
+  // Answer column and does not grade (marks are Evalbee's verdict):
+  //   * chem-50 Q28  — the correct value is printed at BOTH (a) and (b); a correct
+  //                    student is marked wrong unless Evalbee accepts both.
+  //   * atmosphere Q54 — printed labels read A) B) B) D); a student choosing the
+  //                    wrong third option is credited unless Evalbee is corrected.
+  // ===========================================================================
+
+  // --- 1. NDA English — Parts of Speech, 125 Q -------------------------------
+  // The largest English paper in the folder. Its Directions blocks are preserved as
+  // 13 `setLabel` sets carrying 7 distinct Directions texts in `context` — the exact
+  // shape the bank's 125 CDS Parts-of-Speech rows already use (125 -> 13 -> 7).
+  // The stem is the BARE SENTENCE with the underline marked; the instruction lives in
+  // `context`, because 272 of the bank's 307 Parts-of-Speech rows store it that way
+  // and a prefix would break content_hash dedup against the 23 matched rows.
+  // Underlines were recovered geometrically from the PDF's underline rules (the text
+  // layer drops them entirely) and scored 24/24 against bank rows that already carry
+  // \underline markup.
+  "lws11-eng-parts-of-speech": {
+    slug: "lws11-eng-parts-of-speech",
+    title: "NDA English — Parts of Speech (125 Q)",
+    recordsFile: "lws11-eng-parts-of-speech.records.json",
+    outName: "Tags_LWS11_ENG_Parts_of_Speech",
+    sourceFile: "LWS_11th__QP_ENG_Parts_of_Speech.pdf",
+    subjectName: "English",
+    chapterName: "Grammar",
+    subtopics: ["Parts of Speech"],
+    pyqNote:
+      "NDA English practice — LWS Pune 11th-batch 'Parts of Speech' test (125 Q). Source prints no answer key; answers DERIVED. 8 questions are defective as printed (a generic four-option set that omits the correct grammatical class, or no word underlined at all) and are filed flawed.",
+    examName: "NDA",
+    section: { key: "lws11-eng-parts-of-speech", label: "Parts of Speech" },
+    bankAdd: true,
+  },
+
+  // --- 2. NDA GAT — Atmosphere + Parts of Speech, 90 Q ----------------------
+  // Two printed sections: Q1-40 physical geography, Q41-90 English. Q10 is
+  // off-chapter (absence of S-waves in the outer core) and carries a chapter
+  // override to Earth's Structure; the bank files that question shape under
+  // Earthquakes and Seismic Waves, not Earth's Interior.
+  // Section B keys D ZERO times in 50 questions — the setter put the weakest
+  // distractor last nearly every time. Verified as a property of the paper, not of
+  // the derivation.
+  "lws11-atmosphere-pos-p1": {
+    slug: "lws11-atmosphere-pos-p1",
+    title: "NDA GAT — Atmosphere & Parts of Speech P1 (90 Q)",
+    recordsFile: "lws11-atmosphere-pos-p1.records.json",
+    outName: "Tags_LWS11_Atmosphere_POS_P1",
+    sourceFile: "LWS_11th__NDA_Atmosphere_and_POS_P1.pdf",
+    pyqNote:
+      "NDA GAT practice — LWS Pune 'Atmosphere and POS P1' test (90 Q, two sections). Source prints no answer key; answers DERIVED and cross-checked against the 60 rows the dedup gate matched to live bank questions. Q54's printed option LABELS are defective (A/B/B/D).",
+    examName: "NDA",
+    section: { key: "lws11-atmosphere-pos-p1", label: "Atmosphere & Parts of Speech" },
+    bankAdd: true,
+    subjects: {
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora",
+          "Atmospheric Pressure and Winds",
+          "Humidity, Condensation, Clouds and Precipitation",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth's Structure, Landforms and Geological Time": ["Earthquakes and Seismic Waves"],
+      },
+      English: {
+        Grammar: ["Parts of Speech"],
+      },
+    },
+  },
+
+  // --- 3. NDA Geography — Cloud Test 1, 50 Q --------------------------------
+  // The paper asks the same fact twice in 8 confirmed pairs, and a further ~9
+  // statement-question pairs run parallel over the same ten cloud topics — roughly a
+  // third of the paper. Every question is nonetheless committed (OMR parity) and each
+  // pair member is keyed against ITS OWN printed option order; 5 of the 8 pairs
+  // resolve to different letters.
+  // Adds real coverage: the bank held only ~13 cloud-morphology rows and nothing on
+  // anvil tops, vertical development or hailstorms.
+  "lws11-cloud-test-1": {
+    slug: "lws11-cloud-test-1",
+    title: "NDA Geography — Cloud Test 1 (50 Q)",
+    recordsFile: "lws11-cloud-test-1.records.json",
+    outName: "Tags_LWS11_Cloud_Test_1",
+    sourceFile: "LWS_11th__Cloud_Test_1.pdf",
+    subjectName: "Geography",
+    chapterName: "Climatology, Atmosphere and Weather",
+    subtopics: ["Humidity, Condensation, Clouds and Precipitation"],
+    pyqNote:
+      "NDA Geography practice — LWS Pune 'Cloud Test 1' (50 Q). Source prints no answer key; answers DERIVED. The paper repeats itself in 8 confirmed pairs plus ~9 parallel statement pairs; all 50 are committed for OMR parity and only the non-duplicates flip PUBLIC.",
+    examName: "NDA",
+    section: { key: "lws11-cloud-test-1", label: "Clouds & Precipitation" },
+    bankAdd: true,
+  },
+
+  // --- 4. NDA English — Parts of Speech + Idioms, 50 Q ----------------------
+  // Two chapters in one printed test: Q1-20 grammar, Q21-50 idiom meaning.
+  // Q22 ("a damp squib") is defective twice over — two options carry identical text
+  // AND none of the four is the idiom's meaning — so it cannot be graded fairly on
+  // any key and is filed flawed.
+  "lws11-pos-idioms-t1": {
+    slug: "lws11-pos-idioms-t1",
+    title: "NDA English — Parts of Speech & Idioms Test 1 (50 Q)",
+    recordsFile: "lws11-pos-idioms-t1.records.json",
+    outName: "Tags_LWS11_POS_Idioms_T1",
+    sourceFile: "LWS_11th__POS_and_Idioms_Test_1_F2.pdf",
+    subjectName: "English",
+    chapters: {
+      Grammar: ["Parts of Speech"],
+      "Idioms and Phrases": ["Idiom Meaning"],
+    },
+    pyqNote:
+      "NDA English practice — LWS Pune 'POS & Idioms Test 1' (50 Q, two chapters). Source prints no answer key; answers DERIVED. Q22 is defective as printed (duplicate option text AND no option gives the idiom's meaning).",
+    examName: "NDA",
+    section: { key: "lws11-pos-idioms-t1", label: "Parts of Speech & Idioms" },
+    bankAdd: true,
+  },
+
+  // --- 5. NDA Physics — Units and Measurements, 30 Q ------------------------
+  // Dual-blind: 30/30 agreement. The chapter has exactly ONE subtopic in the bank.
+  // B is keyed 14/30 (47%) — re-derived individually and confirmed as a property of
+  // the source compilation, whose option order was never randomised.
+  // VISION-transcribed: the text layer tears exponents out of position (10^-9 m
+  // arrives as "mm 9 10"), so every value was read from the rendered page.
+  "lws11-units-measurement": {
+    slug: "lws11-units-measurement",
+    title: "NDA Physics — Units and Measurements (30 Q, 31-7-26)",
+    recordsFile: "lws11-units-measurement.records.json",
+    outName: "Tags_LWS11_Units_Measurement",
+    sourceFile: "LWS_11th__Physics_Units_and_Measurements_31_07_2026.pdf",
+    subjectName: "Physics",
+    chapterName: "Units, Measurement and Dimensions",
+    subtopics: ["Units and Dimensions"],
+    pyqNote:
+      "NDA Physics practice — LWS Pune 11th-batch test dated 31/07/2026, chapter 'Units and measurements' (30 Q). Source prints no answer key; answers DERIVED by two independent blind passes (30/30 agreement). Vision-transcribed: the PDF text layer scrambles exponents.",
+    examName: "NDA",
+    section: { key: "lws11-units-measurement", label: "Units and Measurements" },
+    bankAdd: true,
+  },
+
+  // --- 6. NDA Physics — Current Electricity, 20 Q ---------------------------
+  // Dual-blind: 20/20 agreement. THREE questions (Q6, Q7, Q10) are unanswerable
+  // without their circuit diagram; all three figures were extracted as native
+  // embedded PNGs. Q10's ladder is INFINITE, which the stem never says — only the
+  // figure's dotted continuation does.
+  // Q10's figure needed a soft-mask fix: extract_image returns the base image (solid
+  // black) without its SMask, so the artwork is in mask xref 9 and must be inverted.
+  // TWO flawed: Q3 (true answer 12.1 ohm, not among 10/1.2/13/11) and Q1 (two options
+  // print identical text, though the duplicate is a distractor so the key is safe).
+  "lws11-current-electricity": {
+    slug: "lws11-current-electricity",
+    title: "NDA Physics — Current Electricity (20 Q, 6-6-26)",
+    recordsFile: "lws11-current-electricity.records.json",
+    outName: "Tags_LWS11_Current_Electricity",
+    sourceFile: "LWS_11th__Physics_Current_Electricity_06_06_2026.pdf",
+    subjectName: "Physics",
+    chapterName: "Electricity and Magnetism",
+    subtopics: [
+      "Combination of Resistors",
+      "Electric Current and Ohm's Law",
+      "Electrical Power, Energy and Heating",
+      "Resistance and Resistivity",
+    ],
+    pyqNote:
+      "NDA Physics practice — LWS Pune test dated 06/06/2026, chapter 'Current Electricity' (20 Q). Source prints no answer key; answers DERIVED by two independent blind passes (20/20 agreement). Q6, Q7 and Q10 depend on a circuit diagram.",
+    examName: "NDA",
+    section: { key: "lws11-current-electricity", label: "Current Electricity" },
+    bankAdd: true,
+  },
+
+  // --- 7. NDA Mathematics — AP/GP, 20 Q -------------------------------------
+  // 19 of 20 are ALREADY IN THE BANK — the dedup gate's clearest win in this folder
+  // (a mechanical pre-scan had predicted 6). Only Q17 is new. All 19 duplicates were
+  // independently re-derived anyway and agree with their bank rows by value.
+  // Vision-transcribed: the text layer tears fractions apart and uses
+  // mathematical-italic unicode letters.
+  "lws11-ap-gp": {
+    slug: "lws11-ap-gp",
+    title: "NDA Mathematics — AP & GP Quiz (20 Q)",
+    recordsFile: "lws11-ap-gp.records.json",
+    outName: "Tags_LWS11_AP_GP",
+    sourceFile: "LWS_11th__NDA_AP_GP_Quiz.pdf",
+    subjectName: "Mathematics",
+    chapterName: "Sequence & Series",
+    subtopics: [
+      "Arithmetic Progressions",
+      "Geometric Progressions",
+      "Interrelating AP, GP and HP",
+      "Special Series and Special Sums",
+    ],
+    pyqNote:
+      "NDA Mathematics practice — LWS Pune 'AP-GP Quiz' (20 Q). Source prints no answer key; answers DERIVED by two independent blind passes (20/20 agreement). 19 of the 20 already exist in the bank and stay PRIVATE.",
+    examName: "NDA",
+    section: { key: "lws11-ap-gp", label: "AP & GP" },
+    bankAdd: true,
+  },
+
+  // --- 8 + 9. MHT-CET Chemistry — Some Basic Concepts ----------------------
+  // FILED UNDER MHT-CET, NOT NDA (user's call, 2026-09-12), even though both papers
+  // are headed "NDA Practice Test (Objective) / Batch:- 11th". The content is
+  // 11th-standard CET-tier chemistry — concentration terms, equivalent weight,
+  // iodometry, significant figures — none of which the NDA Chemistry bank carries
+  // (its Mole Concept chapter is 19 Class-9/10 recall questions). Dedup against the
+  // 2,190-row CET Chemistry corpus: 77 of 80 genuinely new.
+  //
+  // Both papers span TWO chapters: the redox molar-ratio questions and the iodometry
+  // question belong in CET's existing Redox Reactions chapter, not in Some Basic
+  // Concepts. Only ONE new subtopic was created for this ingest — "Empirical and
+  // Molecular Formula", which already exists under JEE Mains and NEET.
+  //
+  // NOTE reaction stoichiometry files under "Stoichiometry and Concentration", NOT
+  // under "Laws of Chemical Combination and Percentage Composition". That is measured
+  // from the live rows, not inferred from the names: every CET row in the former is
+  // reaction stoichiometry and none is a concentration question, while every row in
+  // the latter is a law or a percentage composition and none is reaction stoichiometry.
+  //
+  // VISION-ONLY. The text layer emits subscripts BEFORE their symbol and reverses
+  // formulae (C2H12O6 arrives as "6 12 2 O H C"), so every formula, value and option
+  // was read from the rendered page: 62 of 200 options and 23 stems rebuilt on the
+  // 50-Q paper alone.
+  "lws11-cet-chem-basic-50": {
+    slug: "lws11-cet-chem-basic-50",
+    title: "MHT-CET Chemistry — Some Basic Concepts of Chemistry (50 Q, 24-7-26)",
+    recordsFile: "lws11-cet-chem-basic-50.records.json",
+    outName: "Tags_LWS11_CET_Chem_Basic_50",
+    sourceFile: "LWS_11th__Chem_Some_Basic_Concepts_50Q_24_07_2026.pdf",
+    subjectName: "Chemistry",
+    chapters: {
+      "Some Basic Concepts of Chemistry": [
+        "Empirical and Molecular Formula",
+        "Laws of Chemical Combination and Percentage Composition",
+        "Mole Concept and Interconversions",
+        "SI Units, Physical Properties and Atomic Abundance",
+        "Stoichiometry and Concentration",
+      ],
+      "Redox Reactions": ["Balancing Redox Reactions and Oxidized/Reduced Species"],
+    },
+    pyqNote:
+      "MHT-CET Chemistry practice — LWS Pune 11th-batch test dated 24/07/2026, chapter 'Some basic concept of chemistry' (50 Q, 200 marks). Source prints no answer key; answers DERIVED by two independent blind passes. Q28 prints the correct value at TWO different options and Q31's data match no printed option; both are filed flawed.",
+    examName: "MHT-CET",
+    examId: "70e70f9d-c20c-45c6-a346-0c914d65035d",
+    section: { key: "lws11-cet-chem-basic-50", label: "Some Basic Concepts of Chemistry" },
+    bankAdd: true,
+  },
+
+  "lws11-cet-chem-basic-30": {
+    slug: "lws11-cet-chem-basic-30",
+    title: "MHT-CET Chemistry — Basic Concepts of Chemistry (30 Q, 24-7-26)",
+    recordsFile: "lws11-cet-chem-basic-30.records.json",
+    outName: "Tags_LWS11_CET_Chem_Basic_30",
+    sourceFile: "LWS_11th__Chem_Basic_Concepts_30Q_24_07_2026.pdf",
+    subjectName: "Chemistry",
+    chapters: {
+      "Some Basic Concepts of Chemistry": [
+        "Empirical and Molecular Formula",
+        "Laws of Chemical Combination and Percentage Composition",
+        "Mole Concept and Interconversions",
+        "SI Units, Physical Properties and Atomic Abundance",
+        "Stoichiometry and Concentration",
+      ],
+      "Redox Reactions": ["Reducing/Oxidizing Agents and Acidic/Basic Oxides"],
+    },
+    pyqNote:
+      "MHT-CET Chemistry practice — LWS Pune 11th-batch test dated 24/07/2026, chapter 'Some Basics concepts of Chemistry' (30 Q, 120 marks). A SECOND, distinct sitting on the same chapter and date as the 50-Q paper — zero overlap between the two. Source prints no answer key; answers DERIVED by two independent blind passes.",
+    examName: "MHT-CET",
+    examId: "70e70f9d-c20c-45c6-a346-0c914d65035d",
+    section: { key: "lws11-cet-chem-basic-30", label: "Basic Concepts of Chemistry" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
