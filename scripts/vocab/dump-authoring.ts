@@ -147,6 +147,19 @@ async function main() {
         `- [coaching] taught by a ${w.allExams.join("/")} prep deck — no paper has printed it`
       );
       lines.push(`  no sentence and no key: the meaning must be authored`);
+      /**
+       * THE PARTNER IS THE POINT OF A HOMONYM ENTRY. Without this line an
+       * author writes a correct definition of `imitated` that never mentions
+       * `intimated`, and the entry fails at the one thing its source paper
+       * exists to teach. Printed only where a partner exists, so it cannot read
+       * as a claim about an ordinary word.
+       */
+      if (w.homonymPartners?.length) {
+        lines.push(
+          `  homonym set: contrast with ${w.homonymPartners.join(", ")} — ` +
+            `the meaning must make the difference sharp`
+        );
+      }
     } else if (!w.tested) {
       const where = w.pyqExams.length ? w.pyqExams.join(" + ") : w.allExams.join(" + ");
       lines.push(`- [option] offered among the choices in ${where} — never the target`);

@@ -41,7 +41,19 @@ export type FillWord = { word: string; class: number };
  * NDA/CDS/AFCAT tags no word individually, so every word it contributes carries
  * the same list; `pyqExams` stays empty, which is what files it into Part 3.
  */
-export type CoachingWord = { word: string; exams: string[]; page?: number };
+export type CoachingWord = {
+  word: string;
+  exams: string[];
+  /**
+   * WHICH source taught it. Added when the second deck landed and `page` stopped
+   * identifying anything on its own -- page 35 means a different word in each.
+   * A word both decks carry reads "trishul+homonyms".
+   */
+  deck?: string;
+  page?: number;
+  /** Question numbers in the homonyms set, where the source is that paper. */
+  homonymSets?: number[];
+};
 
 const DATA = join(__dirname, "data");
 
@@ -102,6 +114,20 @@ export type CorpusWord = {
    * an assertion.
    */
   coaching?: true;
+  /**
+   * The OTHER members of every homonym set this word belongs to.
+   *
+   * Carried because a homonym is defined by its partner: `imitated` and
+   * `intimated`, `loath` and `loathe`, `judicial` and `judicious`. A meaning
+   * written without the contrast in view is a correct definition that fails at
+   * the one job the set exists to do, and the author cannot see the partner --
+   * it is a different word, usually in a different chapter, sometimes already
+   * in Part 2. So the worksheet names it.
+   *
+   * A partner may therefore be a word this book already holds; that is the
+   * common case and not a collision.
+   */
+  homonymPartners?: string[];
 };
 
 export function loadCorpus(): CorpusWord[] {
@@ -212,6 +238,15 @@ export function loadCorpus(): CorpusWord[] {
   const coachPath = join(DATA, "coaching-words.json");
   if (existsSync(coachPath)) {
     const coach = JSON.parse(readFileSync(coachPath, "utf8")) as CoachingWord[];
+    /**
+     * word -> the other members of its homonym sets. STRUCTURE ONLY: it records
+     * which words a paper asks a student to tell apart, and carries none of the
+     * source's own definitions or sentences.
+     */
+    const hPath = join(DATA, "homonym-sets.json");
+    const partners: Record<string, string[]> = existsSync(hPath)
+      ? JSON.parse(readFileSync(hPath, "utf8"))
+      : {};
     for (const c of coach) {
       const word = c.word.toLowerCase();
       if (seen.has(word)) {
@@ -233,6 +268,7 @@ export function loadCorpus(): CorpusWord[] {
         pyqExams: [],
         allExams: c.exams,
         coaching: true,
+        ...(partners[word]?.length ? { homonymPartners: partners[word] } : {}),
       });
       seen.add(word);
     }

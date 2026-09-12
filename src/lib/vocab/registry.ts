@@ -350,20 +350,31 @@ export const CADET_VOCAB: VocabBookDefinition = {
     { slug: "papers-cds-m-r", label: "M-R", part: "pyq", section: "cds", letters: band("M", "R"), expected: 195 },
     { slug: "papers-cds-s-z", label: "S-Z", part: "pyq", section: "cds", letters: band("S", "Z"), expected: 192 },
 
-    // ── Part 3 · practice material (1,059) ──
+    // ── Part 3 · practice material (1,414) ──
     //
-    // RECUT FROM FOUR BANDS TO SIX when the Shaktiman coaching deck landed
-    // (2026-09-12, +414). The four bands were sized for 640; at 1,054 three of
-    // them blew the 200 cap outright — `practice-e-m` would have held 365 — so
-    // there was no version of this that kept the old slugs. Every Part 3
-    // chapter URL moved, which is the cost the header's own note anticipates
-    // for a band recomputed against a grown corpus.
-    { slug: "practice-a-c", label: "A-C", part: "practice", letters: band("A", "C"), expected: 179 },
-    { slug: "practice-d-g", label: "D-G", part: "practice", letters: band("D", "G"), expected: 192 },
-    { slug: "practice-h-l", label: "H-L", part: "practice", letters: band("H", "L"), expected: 195 },
-    { slug: "practice-m-q", label: "M-Q", part: "practice", letters: band("M", "Q"), expected: 187 },
-    { slug: "practice-r-t", label: "R-T", part: "practice", letters: band("R", "T"), expected: 197 },
-    { slug: "practice-u-z", label: "U-Z", part: "practice", letters: band("U", "Z"), expected: 104 },
+    // RECUT TWICE ON 2026-09-12, and the second recut is why these are sized
+    // with HEADROOM rather than to fit. Four bands (sized for 640) became six
+    // when the Shaktiman deck landed (+414); six became ten hours later when
+    // Trishul and the homonyms paper landed (+362). Five of the six would have
+    // blown the 200 cap, so again no slug survived.
+    //
+    // Cutting to FIT is what made the second recut necessary: the six-band cut
+    // left `practice-r-t` at 197 of 200, so the very next word broke it. These
+    // ten are cut at ~170, leaving ~27 words of headroom in the largest band,
+    // and T-Z absorbs Z rather than leaving an 8-entry runt chapter. The cost
+    // is four more chapter openers, about four printed pages.
+    //
+    // Re-derive, do not trust: `plan-chapters.ts --cap=200`, then diff.
+    { slug: "practice-a-b", label: "A-B", part: "practice", letters: band("A", "B"), expected: 159 },
+    { slug: "practice-c", label: "C", part: "practice", letters: band("C", "C"), expected: 104 },
+    { slug: "practice-d-e", label: "D-E", part: "practice", letters: band("D", "E"), expected: 167 },
+    { slug: "practice-f-h", label: "F-H", part: "practice", letters: band("F", "H"), expected: 142 },
+    { slug: "practice-i-k", label: "I-K", part: "practice", letters: band("I", "K"), expected: 162 },
+    { slug: "practice-l-o", label: "L-O", part: "practice", letters: band("L", "O"), expected: 161 },
+    { slug: "practice-p-q", label: "P-Q", part: "practice", letters: band("P", "Q"), expected: 135 },
+    { slug: "practice-r", label: "R", part: "practice", letters: band("R", "R"), expected: 92 },
+    { slug: "practice-s", label: "S", part: "practice", letters: band("S", "S"), expected: 119 },
+    { slug: "practice-t-z", label: "T-Z", part: "practice", letters: band("T", "Z"), expected: 173 },
 
     // ── Part 1 · the class ladder ──
     //
