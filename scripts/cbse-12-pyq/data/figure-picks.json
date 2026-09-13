@@ -59,6 +59,53 @@
         0.165,
         0.695
       ]
+    },
+    "7447a9c23e62fc9f9afdd2cbbc70a5de1b5b6cf43e456732d85d3538610c536b": {
+      "pid": "2023-55-5-1",
+      "page": 6,
+      "mode": "region",
+      "note": "Q10. The note describes 'an energy-level diagram of four horizontal levels labelled n=4,3,2,1, crossed by four downward arrows labelled I, II, III, IV' — candidate [3] is exactly that. The page's other four regions are a different question's lambda-axis graphs, so union would have merged two questions.",
+      "index": 3
+    },
+    "ba113a7b0abc38e68365ddf51a82d5a76b1a064c31f1adc204293763bb2c890a": {
+      "pid": "2023-55-5-1",
+      "page": 22,
+      "mode": "region",
+      "note": "Q35(i). The note describes 'a capacitor network drawn between a terminal A on the left and B on the right, containing SIX capacitors, every one labelled C' — candidate [1]. Candidate [2] on the same page is Q35(iii)(b)'s dielectric slab.",
+      "index": 1
+    },
+    "db4460e60e1631cd234b09fe0a838bc1f9972ad51706dc1cb0568a074c2ec07c": {
+      "pid": "2023-55-5-1",
+      "page": 22,
+      "mode": "region",
+      "note": "Q35(iii)(b). The note describes 'a rectangle split by a vertical line into a left region hatched with diagonal lines labelled 2K and a right region hatched with horizontal lines labelled K, a dimension line beneath' — candidate [2]. Its page-mate [1] is Q35(i)'s capacitor network; the two sub-parts need DIFFERENT figures, which is why neither could be resolved automatically.",
+      "index": 2
+    },
+    "6fe8ae0c5a9240d7a3d690bb172274a29674bb3da4ce4c28dac019abd1bd9651": {
+      "pid": "2025-55-4-1",
+      "page": 12,
+      "mode": "region",
+      "note": "Q17(a). The note describes 'a battery, three identical bulbs drawn as circles containing a resistor zig-zag and labelled P, Q and S, and a key K drawn as an open switch, wired into a single loop with one two-branch section' — candidate [1]. Candidate [2] is Q17(b)'s two-cell network.",
+      "index": 1
+    },
+    "6d600ce0633d8933c747d020ba4e9b3a89cdd814c17c6c0505619767f48d2a18": {
+      "pid": "2025-55-4-1",
+      "page": 12,
+      "mode": "region",
+      "note": "Q17(b). The note describes 'a left-hand branch carrying the two 10 V cells one above the other, a right-hand branch carrying the 20 ohm above the 10 ohm, and the bulb B (labelled 10 ohm) bridging' — candidate [2]. Same page as Q17(a), different figure.",
+      "index": 2
+    },
+    "3bd58249d9a32c7576beac3eea77b98cc01dd757c04fe92fb74f153dce1a3a6e": {
+      "pid": "2024-55-1-1",
+      "page": 20,
+      "mode": "union",
+      "note": "Q30(iv)(b). The note says the INPUT signal and the CIRCUIT are both drawn AND 'all FOUR OPTIONS are themselves drawn waveforms', so the question is one visual block and the union of p20's five regions is the figure — the square-wave input plus diode/R_L circuit, then the four option waveforms. Union is safe here precisely because every region on the page belongs to this one question."
+    },
+    "2ae27f0419416f0c3a8fcacc4bedf0a7380ef6bedcd5f9c9ac1202b810d3be92": {
+      "pid": "2025-55-1-1",
+      "page": 8,
+      "mode": "union",
+      "note": "Q11. The note says 'the four options ARE four drawn graphs and the printed paper gives them no text at all', and p8's four regions are exactly those four binding-energy curves. Union, for the same reason as 3bd58249: the whole page's figure content is this question's."
     }
   },
   "_why_ms": "The 2024 QUESTION PAPERS store the lower slices of every figure as corrupt data: content repeated 3x horizontally with the remainder black. It is in the source bytes, not the renderer - the extracted PNG is corrupt too - and it is uniform across a series, so no sibling paper rescues it (all three members measure 0.39-0.55 black). The 2024 MARKING SCHEMES reprint the same figures cleanly (0.00 black), so they are the source of record for these."
