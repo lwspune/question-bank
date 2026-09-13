@@ -127,7 +127,7 @@ def main():
     if len(sys.argv) < 3:
         print(
             "usage: prep.py <year> <code> [--subject=maths|physics|chemistry] "
-            "[--against c1,c2] [--ms-pages from:to]",
+            "[--against c1,c2] [--ms-pages from:to] [--qp-only]",
             file=sys.stderr,
         )
         sys.exit(2)
@@ -135,6 +135,7 @@ def main():
     against = ""
     subject = "maths"
     ms_pages = None
+    qp_only = False
     for i, a in enumerate(sys.argv):
         if a == "--against" and i + 1 < len(sys.argv):
             against = sys.argv[i + 1]
@@ -143,6 +144,8 @@ def main():
         if a == "--ms-pages" and i + 1 < len(sys.argv):
             lo, hi = sys.argv[i + 1].split(":")
             ms_pages = (int(lo), int(hi))
+        if a == "--qp-only":
+            qp_only = True
     if subject not in SUBJECTS:
         print(f"unknown --subject={subject}; expected one of {', '.join(SUBJECTS)}", file=sys.stderr)
         sys.exit(2)
@@ -169,7 +172,7 @@ def main():
     # Belt and braces: if the filename still advertises several papers and we
     # have NO range, refuse. Rendering it whole hands the transcriber three
     # papers' Section-A keys stacked together with nothing to signal it.
-    if ms and ms_pages is None and MERGED_MS.search(os.path.basename(ms)):
+    if ms and not qp_only and ms_pages is None and MERGED_MS.search(os.path.basename(ms)):
         print(
             f"  REFUSING: {os.path.basename(ms)} is a MERGED marking scheme carrying several\n"
             f"  papers, and the index carries no page range for {code}. Re-emit the index\n"
@@ -181,14 +184,17 @@ def main():
     if not qp:
         print(f"no question paper found for {year} {code}", file=sys.stderr)
         sys.exit(1)
-    if not ms:
+    if not ms and not qp_only:
         # Not fatal, but it means Section-A answers cannot be taken from the
         # official key — which is the whole quality argument for this ingest.
         print(f"  WARN no marking scheme for {year} {code}", file=sys.stderr)
 
     dest = os.path.join(OUT, paper_id)
     n_qp = render(qp, dest)
-    n_ms = render(ms, os.path.join(dest, "ms"), ms_pages) if ms else 0
+    # --qp-only: the FIGURE track crops from the question paper's own pages and
+    # never opens the scheme, and a scheme render is roughly half the footprint
+    # of a paper. Disk is the binding constraint on that track, not time.
+    n_ms = render(ms, os.path.join(dest, "ms"), ms_pages) if (ms and not qp_only) else 0
     contact_sheet(qp, os.path.join(dest, "contact.png"))
 
     plan_path = os.path.join(dest, "plan.txt")
