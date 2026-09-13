@@ -141,6 +141,38 @@ inconsistency, so a careful student who spots it is not left doubting themselves
 - **Names option TEXTS, not letters**, for an MCQ: write "so the value is 6,
   which is option (A) 6" rather than "so the answer is (A)". Letters go stale if
   options are ever reordered, and a bare letter tells the reader nothing.
+> ### ⚠ ONE VOICE. Do NOT split the solution into "the scheme's part" and "our part".
+>
+> A solution reads as the answer a student would write, never as a document about
+> a document. Concretely, do **not** write any of these:
+>
+> ```
+> CBSE's marking scheme:  …
+> Marks: ½ for the field formula, ½ for the radius relation, …
+> Added here, and not from the marking scheme:  …
+> ```
+>
+> **This is measured, not a preference.** Across the CBSE Class-12 board corpus
+> on 2026-09-13:
+>
+> | | solved rows | opens with the scheme | "Added here" | mark splits |
+> |---|---|---|---|---|
+> | **Mathematics** (complete, shipped) | **1,766** | **1** | **0** | **0** |
+> | Chemistry (46-row pilot) | 46 | 44 | 24 | 0 |
+>
+> The scaffolding comes from the 46-row Chemistry pilot. An agent in the first
+> Physics wave read that as "the house style already committed" and carried it
+> onto 96 more rows — a 46-row precedent about to overwrite a convention set
+> across 1,766.
+>
+> **You do not lose the exam signal by writing one voice.** 84 of the Maths rows
+> (4.8%) mention the marking scheme INLINE, at the point where it carries
+> information — e.g. a solution that ends *"The direction must be stated: the
+> marking scheme deducts half a mark if it is left out."* That is the mark
+> signal delivered where a student needs it, inside the physics. A header block
+> is not more informative, only more scaffolded. **Mention the scheme inline when
+> it tells the student something; never as a structural heading.**
+
 - **Prose, not a bare chain.** One sentence of orientation beats three lines of
   unexplained algebra.
 
