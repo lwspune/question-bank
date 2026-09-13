@@ -1,0 +1,843 @@
+{
+  "paper": "56/4/2",
+  "year": 2026,
+  "pattern": "full70",
+  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 (printed folios 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23). idx 0 is the bilingual cover (Series 4SQRP, SET~2, Q.P. Code 56/4/2, CHEMISTRY (Theory), 3 hours, max 70) and every ODD index 1..21 is the Hindi facing page. EVERY PAGE ACCOUNTED FOR rather than assumed: a montage of the top 17% of all eleven odd indices (1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21) shows every one of them opening in HINDI - there is NO English overflow onto any odd top on this booklet - and each Hindi page opens on the same block as its English partner (idx 1 -> General Instructions, idx 3 -> Q4, idx 5 -> Q10, idx 7 -> Q14, idx 9 -> Q21, idx 11 -> Q24 (b), idx 13 -> Q28, idx 15 -> Q29 (b)(ii), idx 17 -> Section E / Q31, idx 19 -> Q32, idx 21 -> Q33), i.e. a clean 1:1 pairing with no block spilling across a language boundary. The booklet is 23 pages (idx 0..22) with idx 22 the last, English-only page carrying folio 23 and the end of Q33; there is no blank 24th folio. STRUCTURE read off the paper's own printed General Instructions on idx 2 and it matches `full70` EXACTLY: 33 questions, five sections, Section A Q1-16 multiple choice 1 mark each, Section B Q17-21 very short answer 2 marks, Section C Q22-28 short answer 3 marks, Section D Q29-30 case-based 4 marks, Section E Q31-33 long answer 5 marks (16 + 10 + 21 + 8 + 15 = 70). The assertion-reason band is NOT in the General Instructions; it is declared by a separate block PRINTED ON idx 6 - 'For Questions number 13 to 16, two statements are given...' - so the Q1-12 plain-MCQ / Q13-16 assertion-reason split is read off this paper rather than assumed from a sibling. ANSWERS: all 16 Section-A letters taken VERBATIM from the marking scheme's Section-A table (ms/p02.png) - B D B C A C C B D A C C B A D A - and uppercased. NONE was derived; my own independent derivation agreed with all 16, so there is no disagreement to flag. There are NO keyed MCQs outside Section A: Section D is case-based and every one of its sub-parts is subjective, exactly as the Chemistry `full70` cell predicts. VOIDED SWEEP: all eight marking-scheme pages were read end to end, and the whole document was additionally scanned as PAGE-JOINED text at 4x for award-regardless wording. There is NO 'full mark to be awarded for any option', NO 'award full mark if attempted', NO 'no option is correct', NO 'even if a student does not attempt', NO 'mere attempt' and NO medium-scoped (Hindi/English) clause anywhere in it, and NO Section-A entry carries a dual '(X) / (Y)' key - all 16 cells hold a single parenthesised letter. The scheme has no table of contents. INTERNAL CHOICE: instruction (viii) prints NO COUNTS ('in few questions in all the sections except Section A'), so the roster was built from the PAPER by walking every page for a centred printed OR (and corroborated against the Hindi 'athava' and against the marking scheme's own bare 'OR' rows, of which it has exactly SEVEN and no inline 'OR' at all, so the answer-equivalence ambiguity does not arise on this paper). It carries exactly SEVEN alternatives: FIVE whole-question (Q17, Q24, Q31, Q32, Q33) and TWO case-study sub-part (Q29 (b), Q30 (c)); the full list is Q17 (a)/(b), Q24 (a)/(b), Q29 (b)(i)/(b)(ii), Q30 (c)(i)/(c)(ii), Q31 (a)/(b), Q32 (a)/(b), Q33 (a)/(b). Q18, Q19, Q20, Q21, Q22, Q23, Q25, Q26, Q27 and Q28 have NO alternative - their (a)/(b)/(c) parts are all compulsory. RAISED DECIMAL POINTS: this paper DOES print them, so every decimal is written `{\\cdot}`, matching the opener 56/4/1. Established BOTH ways: the QP's own text layer carries 44 occurrences of U+00B7 between digits against 6 ordinary full stops, and all six of those were then run down individually - FOUR are the cover's clock times ('10.15 a.m.', '10.30 a.m.', Hindi and English) and are not decimals at all, one is the Hindi Q16 which is not transcribed, and the last is ENGLISH Q16's '+ 0.34 V'. THAT LAST ONE IS A TEXT-LAYER LIE: rendered at 6x, Q16 prints 0(raised dot)34, the dot sitting at digit mid-height exactly like the known-raised '0(raised dot)52' of Q8 on idx 4, and in clear contrast to the baseline-height full stop that ends the same sentence after 'V)'. So the page is uniform even though its text layer is not, and Q16 is written `0{\\cdot}34` like every other decimal. The MARKING SCHEME disagrees with the paper - 0 raised dots against 26 ordinary ones - which is the documented paper-vs-scheme split; the PAPER is followed. OVERLAP WITH THE OPENER 56/4/1, matched on CONTENT and never on position: 28 of the 44 rows are the same printed question, spanning 17 printed question numbers, RESHUFFLED (this Q7 = opener Q8, Q8 = Q7, Q9 = Q10, Q10 = Q9, Q17 = Q18, Q20 = Q17, Q22 = Q23, Q24 = Q25, Q25 = Q24, Q26 = Q28, Q27 = Q26, Q28 = Q27, Q29 = Q29, Q30 = Q30, Q31 = Q33, Q32 = Q31, Q33 = Q32). Each was READ ON THIS PAPER'S OWN PAGE first and only then had its stem/options/context reused byte-for-byte from the opener (mechanically, by ref, so no retyping drift is possible) so the rows dedup at commit. THE ANSWER WAS DIFFED TOO on all four shared Section-A rows and all four AGREE (C, B, D, A), which is the control that distinguishes a genuinely shared row from a re-authored one. CBSE RE-AUTHORED SIX QUESTIONS BETWEEN THE TWO SETS and every one was caught by that diff rather than by position: (1) this Q2 asks about the TETRAHEDRAL field where opener Q3 asks about the OCTAHEDRAL one, with a different option set and key D vs B; (2) this Q6 orders the METHYL amines where opener Q6 orders the ETHYL amines, which genuinely changes the answer (C here, D there, because (C2H5)3N outranks C2H5NH2 while (CH3)3N does not); (3) this Q13 keeps opener Q13's assertion and replaces its reason ('Alcohols react as both nucleophiles and electrophiles' vs 'It is due to the presence of unshared electron pairs on oxygen atom and presence of polar O - H bond'), flipping the key A -> B; (4) this Q14 INVERTS opener Q14's reason ('Diazonium salts of AROMATIC amines undergo resonance' vs 'of ALIPHATIC amines'), flipping the key C -> A; (5) this Q15 INVERTS opener Q15's assertion ('order of reaction is given by the FAST step' vs 'the SLOWEST step') and rewords its reason, flipping the key B -> D; (6) this Q16 is about E(Cu2+/Cu) where opener Q16 is about E(Sc3+/Sc2+). Each was re-read at 3x on this paper's page and corroborated against the Hindi facing page before being declared different, and NONE of their text was reused. Q1, Q3, Q4, Q5, Q11, Q12, Q18, Q19, Q21 and Q23 have no counterpart on the opener at all. SUB-PART LABELLING: Q29 and Q30 are the SAME two case studies as the opener's with the SAME passages and the SAME sub-questions, but this set labels the choice pair (b)(i)/(b)(ii) and (c)(i)/(c)(ii) where the opener repeats (b) and (c). Only questionNumber differs; the stems and contexts are byte-identical, so the rows still dedup. FIGURES: three rows carry drawn structures (Q3, Q21, Q23), all classified ILLUSTRATIVE because every drawn compound is NAMED losslessly in the stem and each is a REACTANT of a question asking for a product or a classification, so naming cannot state the answer. No MCQ on this paper has drawn options, so nothing needed describing-without-naming.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "EASY",
+      "stem": "Which property of transition metals enables them to form alloys ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "High ionization enthalpy"
+        },
+        {
+          "label": "B",
+          "text": "Similar atomic radii"
+        },
+        {
+          "label": "C",
+          "text": "Catalytic property"
+        },
+        {
+          "label": "D",
+          "text": "Complex formation"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Bonding in Coordination Compounds",
+      "difficulty": "MODERATE",
+      "stem": "Which of the following d-orbitals experience more repulsion in the crystal field splitting of tetrahedral complex ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{d_{x^2-y^2}}\\), \\(\\mathrm{d_{z^2}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{d_{x^2-y^2}}\\), \\(\\mathrm{d_{xy}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{d_{xy}}\\), \\(\\mathrm{d_{yz}}\\), \\(\\mathrm{d_{z^2}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{d_{xy}}\\), \\(\\mathrm{d_{yz}}\\), \\(\\mathrm{d_{xz}}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Classification",
+      "difficulty": "EASY",
+      "stem": "The position of – Br in the compound \\(\\mathrm{C_6H_5 - CH = CH - CH(Br) - CH_3}\\) can be classified as :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vinylic"
+        },
+        {
+          "label": "B",
+          "text": "Allylic"
+        },
+        {
+          "label": "C",
+          "text": "Benzylic"
+        },
+        {
+          "label": "D",
+          "text": "Aryl"
+        }
+      ],
+      "answer": "B",
+      "_figure": "ILLUSTRATIVE – the compound is printed with its benzene ring as a SKELETAL DRAWING carrying the typed chain – CH = CH – CH(Br) – CH3 (the Br hangs below the third chain carbon on a vertical bond; confirmed at 3x). It is NAMED losslessly in the stem as C6H5 – CH = CH – CH(Br) – CH3, so the row is answerable from text: the reader must still classify the position, which no option letter is stated by. Page idx 2."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Ethers",
+      "difficulty": "EASY",
+      "stem": "Williamson synthesis is an example of :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nucleophilic addition reaction"
+        },
+        {
+          "label": "B",
+          "text": "Electrophilic substitution reaction"
+        },
+        {
+          "label": "C",
+          "text": "Nucleophilic substitution reaction"
+        },
+        {
+          "label": "D",
+          "text": "Electrophilic addition reaction"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Isomerism in Coordination Compounds",
+      "difficulty": "MODERATE",
+      "stem": "Number of possible stereoisomers for the complex \\(\\mathrm{[Co(en)_2Cl_2]Cl}\\) will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "4"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Amines",
+      "difficulty": "MODERATE",
+      "stem": "The correct order of decreasing basic strength of \\(\\mathrm{CH_3 - NH_2}\\), \\(\\mathrm{(CH_3)_2NH}\\) and \\(\\mathrm{(CH_3)_3N}\\) in aqueous solution is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{(CH_3)_3N}\\) > \\(\\mathrm{(CH_3)_2NH}\\) > \\(\\mathrm{CH_3 - NH_2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{CH_3 - NH_2}\\) > \\(\\mathrm{(CH_3)_2NH}\\) > \\(\\mathrm{(CH_3)_3N}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{(CH_3)_2NH}\\) > \\(\\mathrm{CH_3 - NH_2}\\) > \\(\\mathrm{(CH_3)_3N}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{(CH_3)_2NH}\\) > \\(\\mathrm{(CH_3)_3N}\\) > \\(\\mathrm{CH_3 - NH_2}\\)"
+        }
+      ],
+      "answer": "C",
+      "_flag": "Filed on 'Chemical Reactions of Amines' because NCERT teaches the basic character of amines at 9.6.1, a sub-section of 9.6 Chemical Reactions; same filing as the opener 56/4/1 Q6, which asks the identical question for the ETHYL series."
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Solutions",
+      "subtopic": "Vapour Pressure of Liquid Solutions",
+      "difficulty": "MODERATE",
+      "stem": "When a liquid and its vapour are at equilibrium and the pressure is suddenly decreased :",
+      "options": [
+        {
+          "label": "A",
+          "text": "vapour pressure of the solution increases"
+        },
+        {
+          "label": "B",
+          "text": "heating occurs"
+        },
+        {
+          "label": "C",
+          "text": "cooling occurs"
+        },
+        {
+          "label": "D",
+          "text": "equilibrium remains unaffected"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Solutions",
+      "subtopic": "Abnormal Molar Masses",
+      "difficulty": "MODERATE",
+      "stem": "The boiling point of one molal NaCl solution, assuming NaCl to be completely dissociated in water is : (\\(\\mathrm{K_b}\\) for water = \\(0{\\cdot}52\\) K kg \\(\\mathrm{mol^{-1}}\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(100{\\cdot}52\\ ^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(101{\\cdot}04\\ ^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(100{\\cdot}04\\ ^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(101{\\cdot}52\\ ^{\\circ}\\mathrm{C}\\)"
+        }
+      ],
+      "answer": "B",
+      "_flag": "Filed on 'Abnormal Molar Masses' rather than 'Colligative Properties and Determination of Molar Mass' because the discriminating step is the van't Hoff factor (i = 2 for completely dissociated NaCl); the elevation formula alone would give option (A). Both subtopics are defensible."
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Factors Influencing Rate of a Reaction",
+      "difficulty": "MODERATE",
+      "stem": "The rate of a first order reaction is \\(5{\\cdot}6 \\times 10^{-4}\\) mol \\(\\mathrm{L^{-1}}\\) \\(\\mathrm{s^{-1}}\\), when the concentration of reactant is \\(0{\\cdot}2\\) mol \\(\\mathrm{L^{-1}}\\). The rate constant ‘k’ is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(5{\\cdot}6 \\times 10^{-3}\\) \\(\\mathrm{s^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2{\\cdot}8 \\times 10^{-4}\\) \\(\\mathrm{s^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2{\\cdot}8 \\times 10^{-5}\\) \\(\\mathrm{s^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2{\\cdot}8 \\times 10^{-3}\\) \\(\\mathrm{s^{-1}}\\)"
+        }
+      ],
+      "answer": "D",
+      "_flag": "Filed on 'Factors Influencing Rate of a Reaction' rather than 'Rate of a Chemical Reaction' because the axis grain is one subtopic per TOP-LEVEL NCERT section and 'Order of a Reaction' is NCERT 3.2.3, a sub-section of 3.2. Matches the filing of the same topic on the opener 56/4/1."
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrochemistry",
+      "subtopic": "Nernst Equation",
+      "difficulty": "MODERATE",
+      "stem": "Consider the following cell at 298 K :\n\\(\\mathrm{Mg\\,(s)\\,|\\,Mg^{2+}\\,(1{\\cdot}0\\ M)\\,||\\,Cu^{2+}\\,(1{\\cdot}0\\ M)\\,|\\,Cu\\,(s)}\\)\nHow can we increase the emf of the cell using the same substances ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "By decreasing only the \\(\\mathrm{[Mg^{2+}]}\\) to \\(0{\\cdot}1\\) M"
+        },
+        {
+          "label": "B",
+          "text": "By decreasing only the \\(\\mathrm{[Cu^{2+}]}\\) to \\(0{\\cdot}1\\) M"
+        },
+        {
+          "label": "C",
+          "text": "By increasing both \\(\\mathrm{[Mg^{2+}]}\\) and \\(\\mathrm{[Cu^{2+}]}\\) to \\(2{\\cdot}0\\) M"
+        },
+        {
+          "label": "D",
+          "text": "By increasing only the \\(\\mathrm{[Mg^{2+}]}\\) to \\(2{\\cdot}0\\) M"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Diazonium Salts",
+      "difficulty": "EASY",
+      "stem": "Which of the following reagent is used to convert benzene diazonium chloride to benzene ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{H_2O}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{LiAlH_4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{C_2H_5OH}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{CuCN}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Biomolecules",
+      "subtopic": "Vitamins",
+      "difficulty": "EASY",
+      "stem": "Which of the following is a water-soluble vitamin ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Vitamin K"
+        },
+        {
+          "label": "B",
+          "text": "Vitamin A"
+        },
+        {
+          "label": "C",
+          "text": "Vitamin B"
+        },
+        {
+          "label": "D",
+          "text": "Vitamin D"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : Alcohols act as Bronsted bases as well as Bronsted acids.\nReason (R) : Alcohols react as both nucleophiles and electrophiles.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "B",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below."
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Diazonium Salts",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : Diazonium salts of aromatic amines are more stable than those of aliphatic amines.\nReason (R) : Diazonium salts of aromatic amines undergo resonance.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "_flag": "This question is about the STABILITY of diazonium salts, which NCERT states in its introduction to them. The live Amines axis has no general 'Diazonium Salts' or 'Stability' subtopic, so it is filed on the closest fit rather than a new name being invented — the same filing the opener 56/4/1 Q14 used for its (differently worded) version of this question."
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Factors Influencing Rate of a Reaction",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : For complex reaction, order of reaction is given by the fast step.\nReason (R) : Order of reaction is determined experimentally.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "D",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "_flag": "Filed on 'Factors Influencing Rate of a Reaction' rather than 'Rate of a Chemical Reaction' because the axis grain is one subtopic per TOP-LEVEL NCERT section and 'Order of a Reaction' is NCERT 3.2.3, a sub-section of 3.2. Matches the filing of the same topic on the opener 56/4/1."
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : \\(\\mathrm{E^{o}_{Cu^{2+}/Cu}}\\) has positive value (+ \\(0{\\cdot}34\\) V).\nReason (R) : It is due to low \\(\\mathrm{\\Delta_{hyd}H^{o}}\\) and high \\(\\mathrm{\\Delta_{a}H^{o}}\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A",
+      "context": "For Questions number 13 to 16, two statements are given — one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below."
+    },
+    {
+      "ref": "Q17a",
+      "questionNumber": "17 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Solubility",
+      "difficulty": "MODERATE",
+      "stem": "Explain the following with the help of Henry’s law :\n(i) Bends\n(ii) Anoxia"
+    },
+    {
+      "ref": "Q17b",
+      "questionNumber": "17 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Colligative Properties and Determination of Molar Mass",
+      "difficulty": "MODERATE",
+      "stem": "How does sprinkling of salt help in clearing the snow covered roads in hilly areas ? Write the name of the colligative property involved in this process.",
+      "_alternativeTo": "Q17a"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Nomenclature of Coordination Compounds",
+      "difficulty": "MODERATE",
+      "stem": "Write the formulas for the following coordination compounds :\n(a) Mercury(I) tetrathiocyanato-S-cobaltate(III)\n(b) Dichloridobis (ethane-1,2-diamine) platinum(IV) nitrate"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "EASY",
+      "stem": "Name the sugar present in sugarcane. What are the hydrolysis products of this sugar ? Is this sugar a reducing sugar ?"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Integrated Rate Equations",
+      "difficulty": "MODERATE",
+      "stem": "(a) Reactions of which order will show the rate to be independent of the concentration of the reactant ? Give one example of this order.\n(b) State the condition under which a bimolecular reaction may be kinetically a first order reaction."
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Chemical Reactions",
+      "difficulty": "MODERATE",
+      "stem": "Draw the structures of major products in each of the following reactions :\n(a) Chlorobenzene \\(\\mathrm{+\\ CH_3 - Cl}\\) \\(\\xrightarrow[\\text{Dry Ether}]{\\mathrm{Na}}\\)\n(b) 4-(2-hydroxyethyl)phenol \\(\\mathrm{+\\ HBr \\longrightarrow}\\)",
+      "_flag": "Part (b) converts an alcoholic – OH to a bromide with HBr, which belongs to 'Methods of Preparation of Haloalkanes'; the row is filed on 'Chemical Reactions' for part (a), the Wurtz–Fittig reaction of a haloarene.",
+      "_figure": "ILLUSTRATIVE – both substrates are printed as SKELETAL DRAWINGS: (a) a benzene ring carrying Cl, and (b) a benzene ring carrying HO and CH2CH2OH at PARA positions (1,4 confirmed at 3x by counting ring vertices). Both are NAMED losslessly in the stem (chlorobenzene; 4-(2-hydroxyethyl)phenol, equivalently 2-(4-hydroxyphenyl)ethanol), so the row is answerable from text, and the question asks for the PRODUCTS, so naming a reactant cannot state the answer. Page idx 10."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Preparation of Aldehydes and Ketones",
+      "difficulty": "HARD",
+      "stem": "What happens when :\n(a) Propanenitrile is treated with phenyl magnesium bromide followed by hydrolysis ?\n(b) p-fluorotoluene is treated with \\(\\mathrm{CrO_3}\\) in the presence of acetic anhydride followed by hydrolysis with aqueous acid.\n(c) Phthalic acid is treated with \\(\\mathrm{NH_3}\\) followed by heating ?\nWrite chemical reactions in support of your answer.",
+      "_flag": "Part (c) is a reaction of a carboxylic acid and belongs to 'Chemical Reactions of Carboxylic Acids'; parts (a) and (b) are preparations of a ketone and an aldehyde, which is the subtopic used."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Amines",
+      "subtopic": "Chemical Reactions of Amines",
+      "difficulty": "HARD",
+      "stem": "Give the structures of A, B and C in the following reactions :\n(a) Aniline \\(\\xrightarrow[\\mathrm{H_2O}]{\\mathrm{Br_2}}\\) A \\(\\xrightarrow[0 - 5\\ ^{\\circ}\\mathrm{C}]{\\mathrm{NaNO_2 + HCl}}\\) B \\(\\xrightarrow{\\mathrm{H_3PO_2 + H_2O}}\\) C\n(b) \\(\\mathrm{CH_3 - Cl}\\) \\(\\xrightarrow{\\mathrm{KCN}}\\) A \\(\\xrightarrow{\\mathrm{LiAlH_4}}\\) B \\(\\xrightarrow[\\Delta]{\\mathrm{CHCl_3 + alc.\\ KOH}}\\) C",
+      "_flag": "The parts span three subtopics of the same chapter: (a)'s diazotisation and its replacement by hydrogen are 'Chemical Reactions of Diazonium Salts', (b)'s first two steps are 'Preparation of Amines' (cyanide then reduction), and (b)'s last step is the carbylamine reaction, 'Chemical Reactions of Amines', the subtopic used.",
+      "_figure": "ILLUSTRATIVE – part (a)'s substrate is printed as a SKELETAL DRAWING of a benzene ring carrying NH2. It is NAMED losslessly in the stem as Aniline, so the row is answerable from text; the question asks for A, B and C, so naming the reactant cannot state the answer. Part (b) is fully typed and carries no drawing. Page idx 10."
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Bonding in Coordination Compounds",
+      "difficulty": "HARD",
+      "stem": "When a coordination compound \\(\\mathrm{CoCl_3 \\cdot 6NH_3}\\) is mixed with excess of \\(\\mathrm{AgNO_3}\\) solution, 3 moles of AgCl are precipitated per mole of the compound. Write the structural formula of the complex, IUPAC name, its hybridisation and magnetic behaviour on the basis of valence bond theory."
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Coordination Compounds",
+      "subtopic": "Isomerism in Coordination Compounds",
+      "difficulty": "HARD",
+      "stem": "(i) How many geometrical isomers are possible in each of the following complexes ?\n(I) \\(\\mathrm{[Cr(C_2O_4)_3]^{3-}}\\)\n(II) \\(\\mathrm{[Co(NH_3)_3Cl_3]}\\)\n(ii) \\(\\mathrm{[Co(NH_3)_6]^{3+}}\\) is an inner orbital complex whereas \\(\\mathrm{[Ni(NH_3)_6]^{2+}}\\) is an outer orbital complex. Why ?\n[Atomic number : Co = 27, Ni = 28]\n(iii) Write the formula of Wilkinson catalyst and its use.",
+      "_alternativeTo": "Q24a",
+      "_flag": "The three 1-mark parts sit on three DIFFERENT subtopics of the same chapter: (i) 'Isomerism in Coordination Compounds' (used here), (ii) 'Bonding in Coordination Compounds', (iii) 'Importance and Applications of Coordination Compounds'."
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Conductance of Electrolytic Solutions",
+      "difficulty": "MODERATE",
+      "stem": "Answer the following questions :\n(a) Why is direct current (DC) not used to measure the resistance of an ionic solution ?\n(b) Why are the products of electrolysis different for the electrolysis of aqueous solution of \\(\\mathrm{AgNO_3}\\) with silver electrodes and electrolysis of aqueous solution of \\(\\mathrm{AgNO_3}\\) with platinum electrodes ?\n(c) Why are magnesium blocks fixed to the iron pipelines carrying water ?",
+      "_flag": "The three 1-mark parts sit on three DIFFERENT subtopics of the same chapter: (a) 'Conductance of Electrolytic Solutions' (used here), (b) 'Electrolytic Cells and Electrolysis', (c) 'Corrosion'."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Haloalkanes and Haloarenes",
+      "subtopic": "Chemical Reactions",
+      "difficulty": "HARD",
+      "stem": "Answer the following :\n(a) Which isomer of \\(\\mathrm{C_4H_9Br}\\) is most reactive towards \\(\\mathrm{S_N1}\\) reaction ?\n(b) Predict the alkene that would be formed by dehydrohalogenation of 1-Bromo-1-methylcyclohexane.\n(c) Although chlorine shows strong – I effect, yet it is ortho- and para-directing in electrophilic aromatic substitution reactions. Why ?"
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Solutions",
+      "subtopic": "Abnormal Molar Masses",
+      "difficulty": "HARD",
+      "stem": "Calculate the vapour pressure of a solution containing 61 g of benzoic acid (molar mass = 122 g \\(\\mathrm{mol^{-1}}\\)) dissolved in 500 g of benzene when the vapour pressure of pure benzene at this temperature of experiment is 66 torr. Assume complete dimerization of benzoic acid in benzene."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Chemical Kinetics",
+      "subtopic": "Factors Influencing Rate of a Reaction",
+      "difficulty": "HARD",
+      "stem": "Consider the decomposition of hydrogen peroxide \\(\\mathrm{(H_2O_2)}\\) as per the equation given below :\n\\(\\mathrm{2H_2O_2} \\xrightarrow[\\text{Alkaline medium}]{\\mathrm{I^{-}}} \\mathrm{2H_2O + O_2}\\)\nThe mechanism for this reaction was found to be :\nStep I : \\(\\mathrm{H_2O_2 + I^{-} \\longrightarrow H_2O + IO^{-}}\\) (slow)\nStep II : \\(\\mathrm{H_2O_2 + IO^{-} \\longrightarrow H_2O + I^{-} + O_2}\\) (fast)\n(a) Write the rate law expression.\n(b) Determine the order of reaction with respect to \\(\\mathrm{H_2O_2}\\), \\(\\mathrm{I^{-}}\\) and overall order of reaction.\n(c) What is the molecularity of the reaction in Step II ?",
+      "_flag": "Filed on 'Factors Influencing Rate of a Reaction' rather than 'Rate of a Chemical Reaction' because the axis grain is one subtopic per TOP-LEVEL NCERT section and 'Order of a Reaction' is NCERT 3.2.3, a sub-section of 3.2. Matches the filing of the same topic on the opener 56/4/1."
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "HARD",
+      "stem": "Write the mechanism of acid dehydration of ethanol to yield ethene.",
+      "context": "Alcohols and Phenols are acidic in nature. Electron withdrawing groups in phenol increase its acidic strength and electron releasing groups decrease it. Alcohols undergo nucleophilic substitution with hydrogen halides to yield alkyl halides. Dehydration of alcohols gives alkenes. On oxidation, primary alcohols yield aldehydes with mild oxidising agents and carboxylic acids with strong oxidising agents, while secondary alcohols yield ketones. Tertiary alcohols are resistant to oxidation. The presence of – OH group in phenols activates the aromatic ring towards electrophilic substitution and directs the incoming group to ortho and para positions due to resonance effect.",
+      "setId": "2026-56-4-2-CS1"
+    },
+    {
+      "ref": "Q29bi",
+      "questionNumber": "29 (b) (i)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "MODERATE",
+      "stem": "Why are tertiary alcohols resistant to oxidation ?",
+      "context": "Alcohols and Phenols are acidic in nature. Electron withdrawing groups in phenol increase its acidic strength and electron releasing groups decrease it. Alcohols undergo nucleophilic substitution with hydrogen halides to yield alkyl halides. Dehydration of alcohols gives alkenes. On oxidation, primary alcohols yield aldehydes with mild oxidising agents and carboxylic acids with strong oxidising agents, while secondary alcohols yield ketones. Tertiary alcohols are resistant to oxidation. The presence of – OH group in phenols activates the aromatic ring towards electrophilic substitution and directs the incoming group to ortho and para positions due to resonance effect.",
+      "setId": "2026-56-4-2-CS1"
+    },
+    {
+      "ref": "Q29bii",
+      "questionNumber": "29 (b) (ii)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "MODERATE",
+      "stem": "Write the structure of the major product expected from the dinitration of 3-methylphenol.",
+      "context": "Alcohols and Phenols are acidic in nature. Electron withdrawing groups in phenol increase its acidic strength and electron releasing groups decrease it. Alcohols undergo nucleophilic substitution with hydrogen halides to yield alkyl halides. Dehydration of alcohols gives alkenes. On oxidation, primary alcohols yield aldehydes with mild oxidising agents and carboxylic acids with strong oxidising agents, while secondary alcohols yield ketones. Tertiary alcohols are resistant to oxidation. The presence of – OH group in phenols activates the aromatic ring towards electrophilic substitution and directs the incoming group to ortho and para positions due to resonance effect.",
+      "setId": "2026-56-4-2-CS1",
+      "_alternativeTo": "Q29bi"
+    },
+    {
+      "ref": "Q29c",
+      "questionNumber": "29 (c)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Alcohols, Phenols and Ethers",
+      "subtopic": "Alcohols and Phenols",
+      "difficulty": "MODERATE",
+      "stem": "Why is ortho-nitrophenol more acidic than ortho-methoxyphenol ?",
+      "context": "Alcohols and Phenols are acidic in nature. Electron withdrawing groups in phenol increase its acidic strength and electron releasing groups decrease it. Alcohols undergo nucleophilic substitution with hydrogen halides to yield alkyl halides. Dehydration of alcohols gives alkenes. On oxidation, primary alcohols yield aldehydes with mild oxidising agents and carboxylic acids with strong oxidising agents, while secondary alcohols yield ketones. Tertiary alcohols are resistant to oxidation. The presence of – OH group in phenols activates the aromatic ring towards electrophilic substitution and directs the incoming group to ortho and para positions due to resonance effect.",
+      "setId": "2026-56-4-2-CS1"
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "D",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "MODERATE",
+      "stem": "How do you explain the following ?\n(i) Presence of a carbonyl group in glucose\n(ii) Presence of five – OH groups in glucose which are attached to different carbon atoms.",
+      "context": "Carbohydrates are optically active polyhydroxy aldehydes or ketones or the compounds which produce such units on hydrolysis. They have been broadly classified into three groups — monosaccharides, oligosaccharides and polysaccharides. The carbohydrates may also be classified as either reducing or non-reducing sugars. An important monosaccharide glucose is an aldohexose and is correctly named as D(+)–glucose. It was assigned the open structure on the basis of its reactions with HI, \\(\\mathrm{NH_2OH}\\), \\(\\mathrm{Br_2}\\) water, \\(\\mathrm{(CH_3CO)_2O}\\) and nitric acid.\nDespite having the – CHO group, glucose does not give Schiff’s test and hydrogen sulphite addition product with \\(\\mathrm{NaHSO_3}\\). It was found that glucose forms a six-membered ring in which one of the – OH groups add to the – CHO group and form a cyclic hemiacetal structure.",
+      "setId": "2026-56-4-2-CS2"
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "EASY",
+      "stem": "What type of carbohydrates are called reducing sugars ?",
+      "context": "Carbohydrates are optically active polyhydroxy aldehydes or ketones or the compounds which produce such units on hydrolysis. They have been broadly classified into three groups — monosaccharides, oligosaccharides and polysaccharides. The carbohydrates may also be classified as either reducing or non-reducing sugars. An important monosaccharide glucose is an aldohexose and is correctly named as D(+)–glucose. It was assigned the open structure on the basis of its reactions with HI, \\(\\mathrm{NH_2OH}\\), \\(\\mathrm{Br_2}\\) water, \\(\\mathrm{(CH_3CO)_2O}\\) and nitric acid.\nDespite having the – CHO group, glucose does not give Schiff’s test and hydrogen sulphite addition product with \\(\\mathrm{NaHSO_3}\\). It was found that glucose forms a six-membered ring in which one of the – OH groups add to the – CHO group and form a cyclic hemiacetal structure.",
+      "setId": "2026-56-4-2-CS2"
+    },
+    {
+      "ref": "Q30ci",
+      "questionNumber": "30 (c) (i)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "MODERATE",
+      "stem": "In D(+)–glucose, what do the letter ‘D’ and sign ‘(+)’ represent ?",
+      "context": "Carbohydrates are optically active polyhydroxy aldehydes or ketones or the compounds which produce such units on hydrolysis. They have been broadly classified into three groups — monosaccharides, oligosaccharides and polysaccharides. The carbohydrates may also be classified as either reducing or non-reducing sugars. An important monosaccharide glucose is an aldohexose and is correctly named as D(+)–glucose. It was assigned the open structure on the basis of its reactions with HI, \\(\\mathrm{NH_2OH}\\), \\(\\mathrm{Br_2}\\) water, \\(\\mathrm{(CH_3CO)_2O}\\) and nitric acid.\nDespite having the – CHO group, glucose does not give Schiff’s test and hydrogen sulphite addition product with \\(\\mathrm{NaHSO_3}\\). It was found that glucose forms a six-membered ring in which one of the – OH groups add to the – CHO group and form a cyclic hemiacetal structure.",
+      "setId": "2026-56-4-2-CS2"
+    },
+    {
+      "ref": "Q30cii",
+      "questionNumber": "30 (c) (ii)",
+      "section": "D",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Biomolecules",
+      "subtopic": "Carbohydrates",
+      "difficulty": "MODERATE",
+      "stem": "Draw the six-membered ring structure of \\(\\alpha\\)–D(+)–glucose.",
+      "context": "Carbohydrates are optically active polyhydroxy aldehydes or ketones or the compounds which produce such units on hydrolysis. They have been broadly classified into three groups — monosaccharides, oligosaccharides and polysaccharides. The carbohydrates may also be classified as either reducing or non-reducing sugars. An important monosaccharide glucose is an aldohexose and is correctly named as D(+)–glucose. It was assigned the open structure on the basis of its reactions with HI, \\(\\mathrm{NH_2OH}\\), \\(\\mathrm{Br_2}\\) water, \\(\\mathrm{(CH_3CO)_2O}\\) and nitric acid.\nDespite having the – CHO group, glucose does not give Schiff’s test and hydrogen sulphite addition product with \\(\\mathrm{NaHSO_3}\\). It was found that glucose forms a six-membered ring in which one of the – OH groups add to the – CHO group and form a cyclic hemiacetal structure.",
+      "setId": "2026-56-4-2-CS2",
+      "_alternativeTo": "Q30ci"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Nernst Equation",
+      "difficulty": "HARD",
+      "stem": "(i) Calculate \\(\\mathrm{E^{o}_{cell}}\\) for the following reaction which is at equilibrium :\n\\(\\mathrm{Cu\\,(s) + 2Ag^{+}\\,(aq) \\rightleftharpoons Cu^{2+}\\,(aq) + 2Ag\\,(s)}\\)\nEquilibrium constant \\(\\mathrm{(K_c)}\\) for the cell is \\(10^{15}\\).\n[Given : log 10 = 1]\n(ii) Write anode, cathode and overall reaction of lead storage battery when it is in use.\n(iii) How much electricity is required in coulombs for the oxidation of 1 mol of FeO to \\(\\mathrm{Fe_2O_3}\\) ?",
+      "_flag": "The three parts span three subtopics of the same chapter: (i) 'Nernst Equation' (used here), (ii) 'Batteries', (iii) 'Electrolytic Cells and Electrolysis' (Faraday's laws)."
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrochemistry",
+      "subtopic": "Conductance of Electrolytic Solutions",
+      "difficulty": "HARD",
+      "stem": "(i) Conductivity of \\(0{\\cdot}0024\\) M acetic acid is \\(7{\\cdot}2 \\times 10^{-5}\\) S \\(\\mathrm{cm^{-1}}\\). If \\(\\Lambda^{\\circ}_{m}\\) for acetic acid is \\(390{\\cdot}5\\) S \\(\\mathrm{cm^{2}}\\) \\(\\mathrm{mol^{-1}}\\), then calculate the degree of dissociation \\((\\alpha)\\) of acetic acid.\n(ii) Calculate the cell potential for the following half cell reaction at \\(25\\ ^{\\circ}\\mathrm{C}\\) :\n\\(\\mathrm{Ag^{+}\\,(aq) + 1\\,e^{-} \\longrightarrow Ag\\,(s)}\\)\nGiven that : \\(\\mathrm{[Ag^{+}]}\\) = \\(0{\\cdot}01\\) M and\n\\(\\mathrm{E^{o}_{Ag^{+}/Ag}}\\) = + \\(0{\\cdot}80\\) V\n[log 10 = 1]\n(iii) Write the name of the electrolyte used in :\n(I) Dry cell\n(II) Fuel cell \\(\\mathrm{(H_2 - O_2)}\\)",
+      "_alternativeTo": "Q31a",
+      "_flag": "The three parts span three subtopics of the same chapter: (i) 'Conductance of Electrolytic Solutions' (used here), (ii) 'Nernst Equation', (iii) 'Batteries' and 'Fuel Cells'."
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "HARD",
+      "stem": "(i) Account for the following :\n(I) MnO is basic while \\(\\mathrm{Mn_2O_7}\\) is acidic.\n(II) Iron has higher enthalpy of atomization than that of copper.\n(III) \\(\\mathrm{Mn^{3+}}\\) is a stronger oxidising agent than \\(\\mathrm{Cr^{3+}}\\).\n(ii) How do you prepare potassium dichromate from sodium chromate ? Write balanced chemical equation for each step.",
+      "_flag": "Part (ii) is the preparation of \\(\\mathrm{K_2Cr_2O_7}\\) and belongs to 'Some Important Compounds of Transition Elements'; the row is filed on 'General Properties of the Transition Elements (d-Block)' for the three 1-mark parts of (i)."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "The d-and f-Block Elements",
+      "subtopic": "General Properties of the Transition Elements (d-Block)",
+      "difficulty": "HARD",
+      "stem": "Answer the following questions :\n(i) Why is chemistry of actinoids more complicated as compared to lanthanoids ?\n(ii) \\(\\mathrm{E^{o}_{M^{2+}/M}}\\) values are not regular for first row transition elements (3d series). Why ?\n(iii) Identify the following :\n(I) Oxoanion of chromium which is stable in acidic medium.\n(II) The lanthanoid element that exhibits +4 oxidation state.\n(iv) Write the products obtained on heating \\(\\mathrm{KMnO_4}\\).\n(v) Predict which of the following ions will be coloured in aqueous solution :\n\\(\\mathrm{Cu^{+}}\\), \\(\\mathrm{Sc^{3+}}\\), \\(\\mathrm{Fe^{2+}}\\), \\(\\mathrm{Ti^{3+}}\\), \\(\\mathrm{Zn^{2+}}\\)",
+      "_alternativeTo": "Q32a",
+      "_flag": "The five 1-mark parts span four subtopics of the same chapter: (i) 'The Actinoids', (ii) and (v) 'General Properties of the Transition Elements (d-Block)' (used here), (iii)(II) 'The Lanthanoids', (iii)(I) and (iv) 'Some Important Compounds of Transition Elements'."
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Chemical Reactions of Aldehydes and Ketones",
+      "difficulty": "HARD",
+      "stem": "(i) How will you bring about the following conversions :\n(I) Bromobenzene to 1-phenylethanol\n(II) Benzene to m-nitroacetophenone\n(ii) An organic compound with the molecular formula \\(\\mathrm{C_8H_8O}\\) forms 2,4-DNP derivative, reduces Tollens’ reagent and undergoes Cannizzaro reaction. On vigorous oxidation with acidic or alkaline \\(\\mathrm{KMnO_4}\\) it gives Benzene-1,2-dicarboxylic acid. Identify the compound and write the products when it undergoes Cannizzaro reaction.\n(iii) Arrange the following compounds in increasing order of their acid strength :\n\\(\\mathrm{C_6H_5COOH}\\), \\(\\mathrm{O_2N - CH_2 - COOH}\\), \\(\\mathrm{CF_3 - COOH}\\), \\(\\mathrm{HCOOH}\\)",
+      "_flag": "The parts span three subtopics of the same chapter: (i)(II) 'Preparation of Aldehydes and Ketones', (i)(I) and (ii) 'Chemical Reactions of Aldehydes and Ketones' (used here), (iii) 'Chemical Reactions of Carboxylic Acids'."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+      "subtopic": "Chemical Reactions of Aldehydes and Ketones",
+      "difficulty": "HARD",
+      "stem": "(i) Write the products formed when benzaldehyde reacts with the following reagents :\n(I) 2,4-Dinitrophenylhydrazine\n(II) Acetophenone in the presence of dilute NaOH followed by heating\n(ii) Give reasons for the following :\n(I) Benzoic acid does not undergo Friedel-Crafts reaction.\n(II) Carboxylic acids have higher boiling point than alcohols of comparable molecular mass.\n(iii) Write simple chemical test to distinguish between propanal and propanone.",
+      "_alternativeTo": "Q33a",
+      "_flag": "Part (ii) is entirely about carboxylic acids and belongs to 'Chemical Reactions of Carboxylic Acids'; parts (i) and (iii) are 'Chemical Reactions of Aldehydes and Ketones', the subtopic used."
+    }
+  ]
+}

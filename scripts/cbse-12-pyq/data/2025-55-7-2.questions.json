@@ -1,0 +1,1045 @@
+{
+  "paper": "55/7/2",
+  "year": 2025,
+  "pattern": "full70",
+  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 (printed folio = idx + 1). idx 0 is the bilingual cover, idx 1 the Hindi General Instructions, idx 2 the English General Instructions; EVERY ODD index 1..29 is a pure Hindi facing page. The booklet is 31 pages, so the LAST page (idx 30, folio 'Page 31 of 31') is EVEN and English — there is no English-only tail page and NO parity inversion. NO ENGLISH OVERFLOW ONTO ANY ODD PAGE, verified MECHANICALLY rather than by eye: the Hindi is set in a legacy non-Unicode font so a Devanagari codepoint scan is useless (it reports 0 on every page), but the LATIN-character counts are cleanly bimodal — every odd page 16..76 characters against every even page 301..1215, with no overlap — and extracting every Latin word of 4+ characters from all fifteen odd pages returns exactly one word, the footer 'Page', on each. So no odd page carries any English beyond its page furniture. Structurally the even pages also carry Q1..Q33 with zero gaps and every page boundary is a clean handoff (p04 ends Q3 / p06 opens Q4; p08 ends Q12 / p10 opens the A-R instruction block + Q13; p10 ends Q15 / p12 opens Q16; p12 ends Q21 / p14 opens Section C; p16 ends Q28 / p18 opens Section D; p18 ends Q29(i) / p20 opens Q29(ii); p20 ends Q29(iv) / p22 opens Q30; p24 ends Q30(iv)(b) / p26 opens Section E; p28 ends Q33(a) / p30 opens Q33(b)). STRUCTURE read off the paper's own printed General Instructions on idx 2, and it matches `full70` EXACTLY: 33 questions, all compulsory, five sections; Section A Q1-16 Multiple Choice 1 mark; Section B Q17-21 Very Short Answer 2 marks; Section C Q22-28 Short Answer 3 marks; Section D Q29-30 case study-based 4 marks; Section E Q31-33 Long Answer 5 marks. 16 + 10 + 21 + 8 + 15 = 70. As on the sibling sets, those instructions call ALL of Q1-16 'Multiple Choice type questions' and name NO assertion-reason band; the paper declares that separately in a printed block on idx 10 ('Questions number 13 to 16 are Assertion (A) and Reason (R) type questions'), which is where the Q13-16 band comes from. Those four rows are filed as format 'mcq' with the four codes repeated on each and the instruction block in `context`, per the committed corpus. INTERNAL CHOICE: instruction (viii) prints NO COUNT ('an internal choice has been provided in few questions in all the Sections except Section A'), so the roster was built by walking BOTH the paper and the marking scheme. SEVEN questions carry an OR — Q20, Q24, Q29(ii), Q30(iv), Q31, Q32, Q33 — each confirmed by a printed bold OR on the English page AND, independently, by one of exactly SEVEN bare-OR-on-its-own-line occurrences in the scheme. Q17, Q18, Q19, Q21, Q22, Q23, Q25, Q26, Q27 and Q28 carry NONE; note especially that Q22, Q23, Q26 and Q28 print sub-parts (a)/(b) with NO OR between them and a single mark value at the end, so they are one question in two parts and NOT a choice. 46 rows for 33 questions (A16 / B6 / C8 / D10 / E6). ANSWERS — 26 of them, all taken VERBATIM from the official marking scheme and none derived. Section A's sixteen come from its SECTION-A table (scheme page 3 of 16): 1B 2D 3B 4B 5B 6C 7C 8C 9A 10D 11C 12A 13C 14D 15B 16B. The case studies add TEN more from the scheme's SECTION-D block (scheme pages 10 and 11), because on `full70` Physics every case-study sub-part is itself a keyed MCQ: 29(i) A, 29(ii)(a) B, 29(ii)(b) D, 29(iii) C, 29(iv) A, 30(i) D, 30(ii) C, 30(iii) B, 30(iv)(a) D, 30(iv)(b) D. In all 26 the value printed beside the letter matches the option text transcribed for that letter. ⚠ THE RENDERED ms/ DIRECTORY IS OFF BY ONE FOR THIS PAPER AND MUST NOT BE TRUSTED AS GIVEN. data/_papers.physics.json records msPages 17..32 (1-based) for 55/7/2, but in the merged file XII_042_Physics_MS_55_7_1,2,3.pdf this paper's scheme is 1-based pages 18..33 (0-based idx 17..32): 0-based idx 16 is 55/7/1's own last page ('Page 17 of 17') and 55/7/2's header ('Page 1 of 16', 'PAPER CODE 55/7/2') is at idx 17. So out/2025-55-7-2/ms/p00.png BELONGS TO 55/7/1, ms/p01..p15 are this paper's scheme pages 1..15, and this paper's scheme PAGE 16 OF 16 WAS NEVER RENDERED. The key was therefore read from a correct re-render of 0-based idx 17..32 made for this transcription; the missing page 16 is the tail of Q33 and carries no key. This is the merged-scheme page-range slip the addendum warns about, and it is a real defect in the index, not in this reading. NO QUESTION IS VOIDED BY CBSE ON THIS PAPER. All sixteen Section-A rows print a bare '(letter) <value> 1 1' with no note, and the Section-D block likewise. A scan of ALL SIXTEEN scheme pages for award-regardless wording ('award', 'full credit', 'full mark', 'no option', 'even if', 'mere attempt', 'misprint', 'printing error', 'medium', 'Hindi') returns only (1) the generic front-matter evaluation instructions on scheme pages 1-2, which are boilerplate printed on every CBSE scheme and are not question-specific, and (2) three question-level notes, every one of them CONDITIONAL on the student's work being right and therefore ordinary marking latitude, not a void: Q20(a) '(Note: Please award full credit if correctly concluded by any other method)', Q27 '(Note : Award full credit of formation of depletion layer even if a student draws above diagram)', and Q31(b)(i) 'Alternatively: If student writes I = I1+I2+2*sqrt(I1*I2)*cos(phi) (award one mark)'. Q31(a) additionally prints '(Note: Deduct 1/2 mark, for not showing arrows with the rays)', which is a DEDUCTION and the opposite of an award. There is no keyless void, no dual key and no medium-scoped clause anywhere, so the STOP-and-report case did not arise. DECIMAL POINTS ARE RAISED DOTS ON THIS PAPER, settled mechanically and not by eye: across the whole booklet the text layer carries 80 occurrences of U+00B7 between digits and ZERO ordinary digit-dot-digit, on every one of the fifteen question pages. The only ordinary dots in the file sit on idx 0 (the cover's '10.15 a.m.') and on idx 1-2, the instruction pages — and those render on the page as RAISED dots (6*63, 1*6, 8*854, 9*1, 1*675, 1*673, 6*023, 1*38), so the text layer merely mis-encodes that one font. Every decimal is therefore written 0{\\cdot}5 inside a math zone. OVERLAP WITH THE OPENER 55/7/1: 36 of these 46 rows are the same question, matched ON CONTENT and never on position — the sets are heavily reshuffled and NOT ONE shared row kept its number. The two CASE STUDIES are swapped whole (my Q29 refraction = the opener's Q30; my Q30 drift = its Q29, each with its OR in the same sub-part), and Section E is rotated (my 31/32/33 = its 33/31/32). Section A shares 13 (my 2,4,5,6,7,8,9,11,12,13,14,15,16 = its 7,8,6,9,2,5,4,12,11,14,13,16,15). For every shared row the question was read on THIS paper's page first and then the opener's stem and option text were reused byte-for-byte so content_hash collapses the pair at commit; a mechanical diff of all 36 against the opener reports 0 drift. The 10 rows that are genuinely NEW here are Q1, Q3, Q10, Q17, Q19, Q21, Q23, Q25, Q26 and Q28. `_figure` was deliberately NOT reused: both figure notes were written from this paper's own pages, with this paper's page indices. FIGURES: exactly TWO printed figures, both in Section A and both REQUIRED — Q3's circular loop (idx 4) and Q7's resistor network (idx 6). Everything else this paper calls a diagram is one the STUDENT is asked to draw — Q18 'draw energy band diagrams', Q24(b)(i) 'show its direction in a diagram', Q27 'with the help of a suitable diagram', Q31(a)(i) 'labelled ray diagram', Q33(a)(i) 'with the help of a labelled diagram' — and none of those has a printed figure. Neither case study carries a figure, so no shared-figure flag was needed on any sibling. TWO PRINTED DEFECTS, both transcribed as printed and flagged, neither affecting an answer: Q26(a)'s '(r2 >> r)' with a missing subscript, and the case-study passage's \\hat{j} for current density.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "difficulty": "EASY",
+      "stem": "The electric field (E) and electric potential (V) at a point inside a charged hollow metallic sphere are respectively :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{E} = 0,\\ \\mathrm{V} = 0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{E} = 0,\\ \\mathrm{V} = \\mathrm{V_0}\\) (a constant)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{E} \\neq 0,\\ \\mathrm{V} \\neq 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{E} = \\mathrm{E_0}\\) (a constant), \\(\\mathrm{V} = 0\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "difficulty": "MODERATE",
+      "stem": "The dimensions of 'self-inductance' are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\([\\mathrm{M\\,L\\,T^{-2}\\,A^{-2}}]\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\([\\mathrm{M\\,L^{2}\\,T^{-1}\\,A^{-1}}]\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\([\\mathrm{M\\,L^{-1}\\,T^{-2}\\,A^{-2}}]\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\([\\mathrm{M\\,L^{2}\\,T^{-2}\\,A^{-2}}]\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "difficulty": "MODERATE",
+      "stem": "In a circular loop of radius R, current I enters at point A and exits at point B, as shown in the figure. The value of the magnetic field at the centre O of the loop is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}}{\\mathrm{R}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "zero"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}}{2\\mathrm{R}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}}{4\\mathrm{R}}\\)"
+        }
+      ],
+      "answer": "B",
+      "_figure": "REQUIRED — the stem names the points A, B and O but says nothing about where they sit on the loop, so the geometry exists only in the drawing. What is drawn: a single circle with its centre marked O; a point A on the circle at the left end of the horizontal radius, reached by a straight lead carrying an arrow labelled I that points towards the loop; a point B on the circle at the top of the vertical radius, with a straight lead leaving upward under an arrow. The two radii OA and OB are drawn dashed and carry a right-angle mark at O. DESCRIBED: the labelling and the layout. WITHHELD: the resulting field at O, which is what the four options offer. Page idx 4."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "EASY",
+      "stem": "The frequency of a photon of energy \\(1{\\cdot}326\\) eV is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1{\\cdot}18 \\times 10^{14}\\) Hz"
+        },
+        {
+          "label": "B",
+          "text": "\\(3{\\cdot}20 \\times 10^{14}\\) Hz"
+        },
+        {
+          "label": "C",
+          "text": "\\(4{\\cdot}20 \\times 10^{15}\\) Hz"
+        },
+        {
+          "label": "D",
+          "text": "\\(4{\\cdot}80 \\times 10^{15}\\) Hz"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Motional Electromotive Force",
+      "difficulty": "MODERATE",
+      "stem": "A metal rod of length 50 cm is held vertically and moved with a velocity of 10 m/s towards east. The horizontal component of the Earth's magnetic field at the place is \\(0{\\cdot}4\\) G. The emf induced across the ends of the rod is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}1\\) mV"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}2\\) mV"
+        },
+        {
+          "label": "C",
+          "text": "\\(0{\\cdot}8\\) mV"
+        },
+        {
+          "label": "D",
+          "text": "\\(1{\\cdot}6\\) mV"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "difficulty": "MODERATE",
+      "stem": "Germanium crystal is doped at room temperature with a minute quantity of boron. The charge carriers in the doped semiconductors will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "electrons only"
+        },
+        {
+          "label": "B",
+          "text": "holes only"
+        },
+        {
+          "label": "C",
+          "text": "holes and few electrons"
+        },
+        {
+          "label": "D",
+          "text": "electrons and few holes"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "difficulty": "HARD",
+      "stem": "The effective resistance between points A and B in the given circuit is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(6\\,\\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{8}{3}\\,\\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{16}{3}\\,\\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2\\,\\Omega\\)"
+        }
+      ],
+      "answer": "C",
+      "_figure": "REQUIRED — the stem names nothing about the network; the whole circuit exists only in the drawing. What is drawn: a resistor network between a terminal A at the left and a terminal B at the right, laid out as two diamond-shaped meshes side by side that share a central vertical branch, with a rectangular loop closed over the top. Nine resistors are labelled — \\(2\\,\\Omega\\) and \\(3\\,\\Omega\\) along the top, \\(4\\,\\Omega\\) and \\(6\\,\\Omega\\) on the outer verticals, \\(3\\,\\Omega\\) and \\(18\\,\\Omega\\) on the upper inner diagonals, \\(7\\,\\Omega\\) on the central vertical branch, and \\(4\\,\\Omega\\) and \\(12\\,\\Omega\\) on the lower diagonals. DESCRIBED: the labelling, the resistor values and the overall shape. WITHHELD: which resistor sits in which arm and how the nodes connect — that topology IS the question, and every option is a single reduced resistance. Page idx 6."
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "difficulty": "MODERATE",
+      "stem": "A capacitor and an inductor are connected in series across an ac source of voltage of variable frequency. The frequency is increased continuously. The nature of the circuit before and after the resonance will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "inductive only"
+        },
+        {
+          "label": "B",
+          "text": "capacitive only"
+        },
+        {
+          "label": "C",
+          "text": "capacitive and inductive respectively"
+        },
+        {
+          "label": "D",
+          "text": "inductive and capacitive respectively"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to a Resistor",
+      "difficulty": "MODERATE",
+      "stem": "An alternating current is given by \\(I = I_0 \\cos (100\\pi)t\\). The least time the current takes to decrease from its maximum value to zero will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\left(\\dfrac{1}{200}\\right)\\) s"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\left(\\dfrac{1}{150}\\right)\\) s"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\left(\\dfrac{1}{100}\\right)\\) s"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\left(\\dfrac{1}{50}\\right)\\) s"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Size of the Nucleus",
+      "difficulty": "EASY",
+      "stem": "The mass numbers of two nuclei A and B are 27 and 64 respectively. The ratio of their radii \\(\\left(\\dfrac{r_{\\mathrm{A}}}{r_{\\mathrm{B}}}\\right)\\) will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{27}{64}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{9}{16}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{3\\sqrt{3}}{8}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{3}{4}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "difficulty": "EASY",
+      "stem": "Isotones are the nuclides having :",
+      "options": [
+        {
+          "label": "A",
+          "text": "same mass numbers"
+        },
+        {
+          "label": "B",
+          "text": "same atomic numbers"
+        },
+        {
+          "label": "C",
+          "text": "same neutron number, but different atomic number"
+        },
+        {
+          "label": "D",
+          "text": "different neutron number, and different mass number"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "difficulty": "MODERATE",
+      "stem": "A p-n junction diode is forward biased. As a result,",
+      "options": [
+        {
+          "label": "A",
+          "text": "both the potential barrier height and the width of depletion layer decrease."
+        },
+        {
+          "label": "B",
+          "text": "both the potential barrier height and the width of depletion layer increase."
+        },
+        {
+          "label": "C",
+          "text": "the potential barrier height decreases and the width of depletion layer increases."
+        },
+        {
+          "label": "D",
+          "text": "the potential barrier height increases and the width of depletion layer decreases."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : A ray of light is incident normally on the face of a prism. The emergent ray will graze along the opposite face of the prism when the critical angle at glass-air interface is equal to the angle of the prism.\nReason (R) : The refractive index of a prism depends on angle of the prism.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : A charged particle is moving with velocity v in x-y plane, making an angle \\(\\theta\\ \\left(0 < \\theta < \\dfrac{\\pi}{2}\\right)\\) with x-axis. If a uniform magnetic field \\(\\vec{B}\\) is applied in the region, along y-axis, the particle will move in a helical path with its axis parallel to x-axis.\nReason (R) : The direction of the magnetic force acting on a charged particle moving in a magnetic field is along the velocity of the particle.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : The minimum negative potential applied to the anode in a photoelectric experiment at which photoelectric current becomes zero, is called cut-off voltage.\nReason (R) : The threshold frequency for a metal is the minimum frequency of incident radiation below which emission of photoelectrons does not take place.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "difficulty": "EASY",
+      "stem": "Assertion (A) : EM waves do not require a medium for their propagation.\nReason (R) : EM waves are transverse waves.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "Two wires made of the same material have the same length (\\(l\\)) but different cross-sectional areas \\(\\mathrm{A_1}\\) and \\(\\mathrm{A_2}\\). They are connected together with a cell of voltage V. Find the ratio of the drift velocities of free electrons in the two wires when they are joined in (i) series, and (ii) parallel."
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "difficulty": "MODERATE",
+      "stem": "Draw energy band diagrams of n-type and p-type semiconductors at temperature T > 0 K. Show the donor/acceptor energy levels with the order of difference of their energies from the bands."
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "MODERATE",
+      "stem": "The ratio of the intensities at maxima to minima in Young's double-slit experiment is 25 : 9. Calculate the ratio of intensities of the interfering waves."
+    },
+    {
+      "ref": "Q20a",
+      "questionNumber": "20 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Reflection by Spherical Mirrors",
+      "difficulty": "MODERATE",
+      "stem": "Using the mirror equation and the formula of magnification, deduce that \"the virtual image produced by a convex mirror is always diminished in size and is located between the pole and the focus.\"",
+      "_flag": "The marking scheme prints under this answer: '(Note: Please award full credit if correctly concluded by any other method)'. Recorded as a _flag and NOT as _cbseVoided, because the award is CONDITIONAL on the student's work being right ('if correctly concluded') — ordinary marking latitude about the METHOD, asserting nothing about the question. The scheme still prints a full worked answer. Scheme page 4 of 16."
+    },
+    {
+      "ref": "Q20b",
+      "questionNumber": "20 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "A convex lens of focal length 10 cm, a concave lens of focal length 15 cm and a third lens of unknown focal length are placed coaxially in contact. If the focal length of the combination is +12 cm, find the nature and focal length of the third lens, if all lenses are thin. Will the answer change if the lenses were thick ?",
+      "_alternativeTo": "Q20a"
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "difficulty": "MODERATE",
+      "stem": "Calculate the binding energy per nucleon (in MeV) of a helium nucleus \\((^{4}_{2}\\mathrm{He})\\).\nGiven : \\(\\mathrm{m}(^{4}_{2}\\mathrm{He}) = 4{\\cdot}002603\\) u\n\\(\\mathrm{m_n} = 1{\\cdot}008665\\) u\n\\(\\mathrm{m_H} = 1{\\cdot}007825\\) u\n\\(1\\ \\mathrm{u} = 931{\\cdot}5\\) MeV/c\\(^2\\)"
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "difficulty": "HARD",
+      "stem": "Write the mathematical forms of three postulates of Bohr's theory of the hydrogen atom. Using them prove that, for an electron revolving in the \\(n^{\\mathrm{th}}\\) orbit,\n(a) the radius of the orbit is proportional to \\(n^2\\), and\n(b) the total energy of the atom is proportional to \\(\\left(\\dfrac{1}{n^2}\\right)\\)."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "stem": "(a) Briefly explain Einstein's photoelectric equation.\n(b) Four metals with their work functions are listed below :\nK = \\(2{\\cdot}3\\) eV, Na = \\(2{\\cdot}75\\) eV, Mo = \\(4{\\cdot}17\\) eV and Ni = \\(5{\\cdot}15\\) eV.\nThe radiation of wavelength 330 nm from a laser source placed 1 m away, falls on these metals. Which of these metals will not show photoelectric emission ? What will happen if the laser source is brought closer to a distance of 50 cm ?"
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "difficulty": "HARD",
+      "stem": "(i) Write Biot-Savart's law in vector form.\n(ii) Two identical circular coils A and B, each of radius R, carrying currents I and \\(\\sqrt{3}\\,\\mathrm{I}\\) respectively, are placed concentrically in XY and YZ planes respectively. Find the magnitude and direction of the net magnetic field at their common centre."
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "difficulty": "HARD",
+      "stem": "(i) A rectangular loop of sides \\(l\\) and b carries a current I clockwise. Write the magnetic moment \\(\\vec{m}\\) of the loop and show its direction in a diagram.\n(ii) The loop is placed in a uniform magnetic field \\(\\vec{B}\\) and is free to rotate about an axis which is perpendicular to \\(\\vec{B}\\). Prove that the loop experiences no net force, but a torque \\(\\vec{\\tau} = \\vec{m} \\times \\vec{B}\\).",
+      "_alternativeTo": "Q24a"
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "difficulty": "MODERATE",
+      "stem": "(a) How are electromagnetic waves produced ?\n(b) Write the wavelength range and one use of :\n(i) Microwaves, and\n(ii) Ultraviolet waves."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "difficulty": "MODERATE",
+      "stem": "(a) Two concentric circular coils of radii \\(\\mathrm{r_1}\\) and \\(\\mathrm{r_2}\\) \\((\\mathrm{r_2} \\gg \\mathrm{r})\\) are placed coaxially with their centres coinciding. If a current I is passed through the outer coil, obtain the expression for mutual inductance of the arrangement.\n(b) The current in a solenoid decreases steadily from 6 mA to 2 mA in 50 ms. If an average emf of \\(0{\\cdot}4\\) V is induced, find the self-inductance of the solenoid.",
+      "_flag": "PRINTED DEFECT, transcribed as printed. Part (a) prints the condition as \\((\\mathrm{r_2} \\gg \\mathrm{r})\\) — a bare \\(r\\) with NO subscript — where \\(\\mathrm{r_2} \\gg \\mathrm{r_1}\\) is plainly meant, since the sentence has just named the two radii \\(\\mathrm{r_1}\\) and \\(\\mathrm{r_2}\\) and no third radius exists. Verified on the page at 500 dpi: the neighbouring \\(\\mathrm{r_1}\\) and \\(\\mathrm{r_2}\\) both carry clear subscripts and this one carries none, and the text layer likewise reads 'r1 and r2 (r2 >> r)'. Page idx 16. The intended reading is unambiguous, so no answer is affected."
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "difficulty": "MODERATE",
+      "stem": "Explain the process of formation of 'depletion layer' and 'potential barrier' in a p-n junction region of a diode, with the help of a suitable diagram. Which feature of junction diode makes it suitable for its use as a rectifier ?",
+      "_flag": "The marking scheme prints under this answer: '(Note : Award full credit of formation of depletion layer even if a student draws above diagram)', beside a labelled p-n junction diagram. Recorded as a _flag and NOT as _cbseVoided: the award is CONDITIONAL on the student producing that (correct) diagram, i.e. latitude about the FORM the answer may take, not credit irrespective of correctness or of attempt. Scheme page 10 of 16."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "difficulty": "MODERATE",
+      "stem": "Two point charges of \\(-5\\ \\mu\\mathrm{C}\\) and \\(2\\ \\mu\\mathrm{C}\\) are located in free space at \\((-4\\ \\mathrm{cm}, 0)\\) and \\((6\\ \\mathrm{cm}, 0)\\) respectively.\n(a) Calculate the amount of work done to separate the two charges at infinite distance.\n(b) If this system of charges was initially kept in an electric field \\(\\mathrm{E} = \\dfrac{\\mathrm{A}}{r^2}\\), where \\(\\mathrm{A} = 8 \\times 10^4\\) N C\\(^{-1}\\) m\\(^2\\), calculate the electrostatic potential energy of the system."
+    },
+    {
+      "ref": "Q29i",
+      "questionNumber": "29 (i)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "difficulty": "MODERATE",
+      "stem": "A small bulb is placed at the bottom of a tank containing a transparent liquid (refractive index n) to a depth H. The radius of the circular area of the surface of liquid, through which light from the bulb can emerge out, is R. Then \\(\\left(\\dfrac{\\mathrm{R}}{\\mathrm{H}}\\right)\\) is :",
+      "context": "When light travels from an optically denser medium to an optically rarer medium, at the interface it is partly reflected back into the same medium and partly refracted to the second medium. The angle of incidence corresponding to an angle of refraction \\(90^{\\circ}\\) is called the critical angle \\((i_c)\\) for the given pair of media. This angle is related to the refractive index of medium 1 with respect to medium 2.\nRefraction of light through a prism involves refraction at two plane interfaces. A relation for the refractive index of the material of the prism can be obtained in terms of the refracting angle of the prism and the angle of minimum deviation. For a thin prism, this relation reduces to a simple equation.\nLaws of refraction are also valid for refraction of light at a spherical interface. When an object is placed in front of a spherical surface separating two media, its image is formed. A relation between object and image distance, in terms of refractive indices of two media and the radius of curvature of the spherical surface can be obtained. Using this relation for two surfaces of a lens, 'lens maker formula' is obtained.",
+      "setId": "2025-55-7-2-CS1",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{\\sqrt{n^2 - 1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sqrt{n^2 - 1}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{\\sqrt{n^2 + 1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\sqrt{n^2 + 1}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q29iia",
+      "questionNumber": "29 (ii) (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "difficulty": "MODERATE",
+      "stem": "A parallel beam of light is incident on a face of a prism with refracting angle \\(60^{\\circ}\\). The angle of minimum deviation is found to be \\(30^{\\circ}\\). The refractive index of the material of the prism is close to :",
+      "context": "When light travels from an optically denser medium to an optically rarer medium, at the interface it is partly reflected back into the same medium and partly refracted to the second medium. The angle of incidence corresponding to an angle of refraction \\(90^{\\circ}\\) is called the critical angle \\((i_c)\\) for the given pair of media. This angle is related to the refractive index of medium 1 with respect to medium 2.\nRefraction of light through a prism involves refraction at two plane interfaces. A relation for the refractive index of the material of the prism can be obtained in terms of the refracting angle of the prism and the angle of minimum deviation. For a thin prism, this relation reduces to a simple equation.\nLaws of refraction are also valid for refraction of light at a spherical interface. When an object is placed in front of a spherical surface separating two media, its image is formed. A relation between object and image distance, in terms of refractive indices of two media and the radius of curvature of the spherical surface can be obtained. Using this relation for two surfaces of a lens, 'lens maker formula' is obtained.",
+      "setId": "2025-55-7-2-CS1",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1{\\cdot}3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}4\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}5\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(1{\\cdot}6\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q29iib",
+      "questionNumber": "29 (ii) (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "difficulty": "MODERATE",
+      "stem": "The angle of minimum deviation for a ray of light incident on a thin prism, made of crown glass (n = \\(1{\\cdot}52\\)) is \\(\\mathrm{D_m}\\). If the prism was made of dense flint glass (n = \\(1{\\cdot}62\\)) instead of crown glass, the angle of minimum deviation will :",
+      "context": "When light travels from an optically denser medium to an optically rarer medium, at the interface it is partly reflected back into the same medium and partly refracted to the second medium. The angle of incidence corresponding to an angle of refraction \\(90^{\\circ}\\) is called the critical angle \\((i_c)\\) for the given pair of media. This angle is related to the refractive index of medium 1 with respect to medium 2.\nRefraction of light through a prism involves refraction at two plane interfaces. A relation for the refractive index of the material of the prism can be obtained in terms of the refracting angle of the prism and the angle of minimum deviation. For a thin prism, this relation reduces to a simple equation.\nLaws of refraction are also valid for refraction of light at a spherical interface. When an object is placed in front of a spherical surface separating two media, its image is formed. A relation between object and image distance, in terms of refractive indices of two media and the radius of curvature of the spherical surface can be obtained. Using this relation for two surfaces of a lens, 'lens maker formula' is obtained.",
+      "setId": "2025-55-7-2-CS1",
+      "options": [
+        {
+          "label": "A",
+          "text": "decrease by 4%"
+        },
+        {
+          "label": "B",
+          "text": "increase by 4%"
+        },
+        {
+          "label": "C",
+          "text": "decrease by 19%"
+        },
+        {
+          "label": "D",
+          "text": "increase by 19%"
+        }
+      ],
+      "answer": "D",
+      "_alternativeTo": "Q29iia"
+    },
+    {
+      "ref": "Q29iii",
+      "questionNumber": "29 (iii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "HARD",
+      "stem": "An object is placed in front of a convex spherical glass surface (n = \\(1{\\cdot}5\\) and radius of curvature R) at a distance of 4R from it. As the object is moved slowly close to the surface, the image formed is :",
+      "context": "When light travels from an optically denser medium to an optically rarer medium, at the interface it is partly reflected back into the same medium and partly refracted to the second medium. The angle of incidence corresponding to an angle of refraction \\(90^{\\circ}\\) is called the critical angle \\((i_c)\\) for the given pair of media. This angle is related to the refractive index of medium 1 with respect to medium 2.\nRefraction of light through a prism involves refraction at two plane interfaces. A relation for the refractive index of the material of the prism can be obtained in terms of the refracting angle of the prism and the angle of minimum deviation. For a thin prism, this relation reduces to a simple equation.\nLaws of refraction are also valid for refraction of light at a spherical interface. When an object is placed in front of a spherical surface separating two media, its image is formed. A relation between object and image distance, in terms of refractive indices of two media and the radius of curvature of the spherical surface can be obtained. Using this relation for two surfaces of a lens, 'lens maker formula' is obtained.",
+      "setId": "2025-55-7-2-CS1",
+      "options": [
+        {
+          "label": "A",
+          "text": "always real"
+        },
+        {
+          "label": "B",
+          "text": "always virtual"
+        },
+        {
+          "label": "C",
+          "text": "first real and then virtual"
+        },
+        {
+          "label": "D",
+          "text": "first virtual and then real"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q29iv",
+      "questionNumber": "29 (iv)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "A double-convex lens, made of glass of refractive index \\(1{\\cdot}5\\), has focal length 10 cm. The radius of curvature of its each face, is :",
+      "context": "When light travels from an optically denser medium to an optically rarer medium, at the interface it is partly reflected back into the same medium and partly refracted to the second medium. The angle of incidence corresponding to an angle of refraction \\(90^{\\circ}\\) is called the critical angle \\((i_c)\\) for the given pair of media. This angle is related to the refractive index of medium 1 with respect to medium 2.\nRefraction of light through a prism involves refraction at two plane interfaces. A relation for the refractive index of the material of the prism can be obtained in terms of the refracting angle of the prism and the angle of minimum deviation. For a thin prism, this relation reduces to a simple equation.\nLaws of refraction are also valid for refraction of light at a spherical interface. When an object is placed in front of a spherical surface separating two media, its image is formed. A relation between object and image distance, in terms of refractive indices of two media and the radius of curvature of the spherical surface can be obtained. Using this relation for two surfaces of a lens, 'lens maker formula' is obtained.",
+      "setId": "2025-55-7-2-CS1",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 cm"
+        },
+        {
+          "label": "B",
+          "text": "15 cm"
+        },
+        {
+          "label": "C",
+          "text": "20 cm"
+        },
+        {
+          "label": "D",
+          "text": "40 cm"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q30i",
+      "questionNumber": "30 (i)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "Consider two cylindrical conductors A and B, made of the same metal connected in series to a battery. The length and the radius of B are twice that of A. If \\(\\mu_{\\mathrm{A}}\\) and \\(\\mu_{\\mathrm{B}}\\) are the mobility of electrons in A and B respectively, then \\(\\dfrac{\\mu_{\\mathrm{A}}}{\\mu_{\\mathrm{B}}}\\) is :",
+      "context": "In a metallic conductor, an electron, moving due to thermal motion, suffers collisions with the heavy fixed ions but after collision, it will emerge out with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero. When an electric field is applied, electrons move with an average velocity, known as drift velocity \\((v_d)\\). The average time between successive collisions is known as relaxation time \\((\\tau)\\). The magnitude of drift velocity per unit electric field is called mobility \\((\\mu)\\).\nAn expression for current through the conductor can be obtained in terms of drift velocity, number of electrons per unit volume (n), electronic charge (– e), and the cross-sectional area (A) of the conductor. This expression leads to an expression between current density \\((\\hat{j})\\) and the electric field \\((\\vec{E})\\). Hence, an expression for resistivity \\((\\rho)\\) of a metal is obtained. This expression helps us to understand increase in resistivity of a metal with increase in its temperature, in terms of change in the relaxation time \\((\\tau)\\) and change in the number density of electrons (n).",
+      "setId": "2025-55-7-2-CS2",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "answer": "D",
+      "_flag": "The shared passage prints current density with a UNIT-VECTOR HAT, \\(\\hat{j}\\), where a vector arrow belongs — current density is a vector, and the very same sentence prints the electric field correctly as \\(\\vec{E}\\). Transcribed as printed; page idx 22. Affects no answer. Noted so a later reader does not read it as a transcription error."
+    },
+    {
+      "ref": "Q30ii",
+      "questionNumber": "30 (ii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "A wire of length \\(0{\\cdot}5\\) m and cross-sectional area \\(1{\\cdot}0 \\times 10^{-7}\\) m\\(^2\\) is connected to a battery of 2 V that maintains a current of \\(1{\\cdot}5\\) A in it. The conductivity of the material of the wire (in \\(\\Omega^{-1}\\,\\mathrm{m}^{-1}\\)) is :",
+      "context": "In a metallic conductor, an electron, moving due to thermal motion, suffers collisions with the heavy fixed ions but after collision, it will emerge out with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero. When an electric field is applied, electrons move with an average velocity, known as drift velocity \\((v_d)\\). The average time between successive collisions is known as relaxation time \\((\\tau)\\). The magnitude of drift velocity per unit electric field is called mobility \\((\\mu)\\).\nAn expression for current through the conductor can be obtained in terms of drift velocity, number of electrons per unit volume (n), electronic charge (– e), and the cross-sectional area (A) of the conductor. This expression leads to an expression between current density \\((\\hat{j})\\) and the electric field \\((\\vec{E})\\). Hence, an expression for resistivity \\((\\rho)\\) of a metal is obtained. This expression helps us to understand increase in resistivity of a metal with increase in its temperature, in terms of change in the relaxation time \\((\\tau)\\) and change in the number density of electrons (n).",
+      "setId": "2025-55-7-2-CS2",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2{\\cdot}5 \\times 10^{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3{\\cdot}0 \\times 10^{5}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3{\\cdot}75 \\times 10^{6}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(5{\\cdot}0 \\times 10^{7}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q30iii",
+      "questionNumber": "30 (iii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "The temperature coefficient of resistance of nichrome is \\(1{\\cdot}70 \\times 10^{-4}\\ ^{\\circ}\\mathrm{C}^{-1}\\). In order to increase resistance of a nichrome wire by \\(8{\\cdot}5\\%\\), the temperature of the wire should be increased by :",
+      "context": "In a metallic conductor, an electron, moving due to thermal motion, suffers collisions with the heavy fixed ions but after collision, it will emerge out with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero. When an electric field is applied, electrons move with an average velocity, known as drift velocity \\((v_d)\\). The average time between successive collisions is known as relaxation time \\((\\tau)\\). The magnitude of drift velocity per unit electric field is called mobility \\((\\mu)\\).\nAn expression for current through the conductor can be obtained in terms of drift velocity, number of electrons per unit volume (n), electronic charge (– e), and the cross-sectional area (A) of the conductor. This expression leads to an expression between current density \\((\\hat{j})\\) and the electric field \\((\\vec{E})\\). Hence, an expression for resistivity \\((\\rho)\\) of a metal is obtained. This expression helps us to understand increase in resistivity of a metal with increase in its temperature, in terms of change in the relaxation time \\((\\tau)\\) and change in the number density of electrons (n).",
+      "setId": "2025-55-7-2-CS2",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(250\\,^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(500\\,^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(850\\,^{\\circ}\\mathrm{C}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(1000\\,^{\\circ}\\mathrm{C}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q30iva",
+      "questionNumber": "30 (iv) (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "Consider the contribution of the following two factors I and II in resistivity of a metal :\nI. Relaxation time of electrons\nII. Number of electrons per unit volume\nThe resistivity of a metal increases with increase in its temperature because :",
+      "context": "In a metallic conductor, an electron, moving due to thermal motion, suffers collisions with the heavy fixed ions but after collision, it will emerge out with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero. When an electric field is applied, electrons move with an average velocity, known as drift velocity \\((v_d)\\). The average time between successive collisions is known as relaxation time \\((\\tau)\\). The magnitude of drift velocity per unit electric field is called mobility \\((\\mu)\\).\nAn expression for current through the conductor can be obtained in terms of drift velocity, number of electrons per unit volume (n), electronic charge (– e), and the cross-sectional area (A) of the conductor. This expression leads to an expression between current density \\((\\hat{j})\\) and the electric field \\((\\vec{E})\\). Hence, an expression for resistivity \\((\\rho)\\) of a metal is obtained. This expression helps us to understand increase in resistivity of a metal with increase in its temperature, in terms of change in the relaxation time \\((\\tau)\\) and change in the number density of electrons (n).",
+      "setId": "2025-55-7-2-CS2",
+      "options": [
+        {
+          "label": "A",
+          "text": "I decreases and II increases."
+        },
+        {
+          "label": "B",
+          "text": "I increases and II is almost constant."
+        },
+        {
+          "label": "C",
+          "text": "Both I and II increase."
+        },
+        {
+          "label": "D",
+          "text": "I decreases and II is almost constant."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q30ivb",
+      "questionNumber": "30 (iv) (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "MODERATE",
+      "stem": "A steady current flows in a copper wire of non-uniform cross-section. Consider the following three physical quantities :\nI. Electric field\nII. Current density\nIII. Drift speed\nThen at the different points along the wire :",
+      "context": "In a metallic conductor, an electron, moving due to thermal motion, suffers collisions with the heavy fixed ions but after collision, it will emerge out with the same speed but in random directions. If we consider all the electrons, their average velocity will be zero. When an electric field is applied, electrons move with an average velocity, known as drift velocity \\((v_d)\\). The average time between successive collisions is known as relaxation time \\((\\tau)\\). The magnitude of drift velocity per unit electric field is called mobility \\((\\mu)\\).\nAn expression for current through the conductor can be obtained in terms of drift velocity, number of electrons per unit volume (n), electronic charge (– e), and the cross-sectional area (A) of the conductor. This expression leads to an expression between current density \\((\\hat{j})\\) and the electric field \\((\\vec{E})\\). Hence, an expression for resistivity \\((\\rho)\\) of a metal is obtained. This expression helps us to understand increase in resistivity of a metal with increase in its temperature, in terms of change in the relaxation time \\((\\tau)\\) and change in the number density of electrons (n).",
+      "setId": "2025-55-7-2-CS2",
+      "options": [
+        {
+          "label": "A",
+          "text": "II and III change, but I is constant."
+        },
+        {
+          "label": "B",
+          "text": "I and II change, but III is constant."
+        },
+        {
+          "label": "C",
+          "text": "I and III change, but II is constant."
+        },
+        {
+          "label": "D",
+          "text": "All I, II and III change."
+        }
+      ],
+      "answer": "D",
+      "_alternativeTo": "Q30iva"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "HARD",
+      "stem": "(i) Explain with the help of a labelled ray diagram the formation of final image by an astronomical telescope at infinity. Write the expression for its magnifying power.\n(ii) The total magnification produced by a compound microscope is 20. The magnification produced by the eyepiece is 5. When the microscope is focussed on a certain object, the distance between the objective and eyepiece is observed to be 14 cm. Calculate the focal lengths of the objective and the eyepiece. (Given that the least distance of distinct vision = 25 cm)"
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "HARD",
+      "stem": "(i) Two coherent light waves, each of intensity \\(\\mathrm{I_0}\\) superpose each other and produce interference pattern on a screen. Obtain the expression for the resultant intensity at a point where the phase difference between the waves is \\(\\phi\\). Write its maximum and minimum possible values.\n(ii) In a single slit diffraction experiment, the aperture of the slit is 3 mm and the separation between the slit and the screen is \\(1{\\cdot}5\\) m. A monochromatic light of wavelength 600 nm is normally incident on the slit. Calculate the distance of (I) first order minimum, and (II) second order maximum, from the centre of the screen.",
+      "_alternativeTo": "Q31a"
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "difficulty": "HARD",
+      "stem": "(i) A parallel plate capacitor with plate area A and plate separation d has a capacitance \\(\\mathrm{C_0}\\). A slab of dielectric constant K having area A and thickness \\(\\left(\\dfrac{d}{4}\\right)\\) is inserted in the capacitor, parallel to the plates. Find the new value of its capacitance.\n(ii) You are provided with a large number of 1 \\(\\mu\\mathrm{F}\\) identical capacitors and a power supply of 1200 V. The dielectric medium used in each capacitor can withstand up to 200 V only. Find the minimum number of capacitors and their arrangement, required to build a capacitor system of equivalent capacitance of 2 \\(\\mu\\mathrm{F}\\) for use with this supply."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "difficulty": "HARD",
+      "stem": "(i) An electric dipole of dipole moment p consists of point charges q and – q, separated by 2a. Derive an expression for electric potential in terms of its dipole moment at a point at a distance x (>> a) from its centre and lying (I) along its axis, and (II) along its bisector line.\n(ii) An electric dipole of dipole moment \\(\\vec{p} = (0{\\cdot}8\\,\\hat{i} + 0{\\cdot}6\\,\\hat{j})10^{-29}\\) Cm is placed in an electric field \\(\\vec{E} = 1{\\cdot}0 \\times 10^{7}\\,\\hat{k}\\ \\dfrac{\\mathrm{V}}{\\mathrm{m}}\\). Calculate the magnitude of the torque acting on it and the angle it makes with the x-axis, at this instant.",
+      "_alternativeTo": "Q32a"
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "difficulty": "HARD",
+      "stem": "(i) With the help of a labelled diagram, explain the principle of working of a moving coil galvanometer. Write the purpose of using (i) radial magnetic field, and (ii) soft iron core, in it.\n(ii) Define current sensitivity of a galvanometer. \"Increasing the current sensitivity may not necessarily increase the voltage sensitivity.\" Give reason."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Ampere's Circuital Law and the Solenoid",
+      "difficulty": "HARD",
+      "stem": "(i) (I) Write Ampere's circuital law in mathematical form and explain the terms used.\n(II) As the current carrying solenoid is made longer, the magnetic field produced outside it approaches zero. Why ?\n(III) A flexible loop of irregular shape carrying current when located in an external magnetic field, changes to a circular shape. Give reason.\n(ii) A galvanometer of resistance G is converted into a voltmeter to measure up to V volts, by connecting a resistance \\(\\mathrm{R_1}\\) in series with the coil. If \\(\\mathrm{R_1}\\) is replaced by \\(\\mathrm{R_2}\\), then it can only measure up to \\(\\dfrac{\\mathrm{V}}{2}\\) volt. Find the value of the resistance \\(\\mathrm{R_3}\\) (in terms of \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\)) needed to convert it into a voltmeter that can read up to 2 V.",
+      "_alternativeTo": "Q33a"
+    }
+  ]
+}

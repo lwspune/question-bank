@@ -160,8 +160,23 @@ the ENGLISH paper. Read the marking scheme page and work out whether the printed
 letter is the English answer or the Hindi one — the two cases exist and look
 alike. Report what you found and why; do not resolve it silently."*
 
-**`n/a (no MCQs)`** → *"This is the 2022 Term-II paper: 12 questions, 35 marks,
-and NO MCQs at all. Every row is subjective."*
+**`n/a (no MCQs)`** → ⚠ **TRUE FOR CHEMISTRY, FALSE FOR PHYSICS. Measured
+2026-09-12 over every committed 2022 paper: Chemistry 15 papers / 0 MCQs,
+Physics 5 papers / 25 MCQs — exactly 5 per paper, on every one.** The column is
+computed from MCQ *bands*, and `term2_sci` declares none, so `wave.ts`
+under-reports Physics. Do not trust that cell for Physics; it is the same shape
+of error as carrying a Chemistry marking-scheme fact to Physics.
+
+- **Chemistry 2022** → *"This is the 2022 Term-II paper: 12 questions, 35 marks,
+  and NO MCQs at all. Every row is subjective."*
+- **Physics 2022** → *"This is the 2022 Term-II paper: 12 questions, 35 marks.
+  Sections A and B are subjective — BUT the Section-C case study, question 12,
+  has FIVE 1-mark MCQ sub-parts, Q12(i)–(v). They are real keyed MCQs and their
+  answers are in the marking scheme's Section-C block, which `keys.ts` never
+  reads because it only looks at Section-A MCQ bands. Read those five by VISION
+  from the `ms/` images. If a key is unreadable, say so rather than deriving —
+  an answer that arrives without saying it was derived is indistinguishable from
+  an official key, and nothing downstream catches it."*
 
 **Follower block:**
 
