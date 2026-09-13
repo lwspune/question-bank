@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { BookOpen, Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
@@ -11,7 +11,15 @@ import { cn } from "@/lib/utils";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
-import { defaultOpenGroups, type BoardBlock, type BoardQuestion, type BoardSectionGroup, type SectionKind } from "@/lib/board/query";
+import {
+  defaultOpenGroups,
+  pyqYearCounts,
+  type BoardBlock,
+  type BoardPyqSitting,
+  type BoardQuestion,
+  type BoardSectionGroup,
+  type SectionKind,
+} from "@/lib/board/query";
 
 const KIND_TAG: Record<SectionKind, string> = {
   solved_example: "Worked",
@@ -41,9 +49,13 @@ function questionHasAnswer(q: BoardQuestion): boolean {
  */
 export default function BoardReader({
   groups,
+  pyqSittings,
   supabaseUrl,
 }: {
   groups: BoardSectionGroup[];
+  /** The chapter's board past-year questions, newest sitting first. Empty for a
+   *  chapter the board has no published PYQs for — 24 of CBSE's 37 today. */
+  pyqSittings: BoardPyqSitting[];
   supabaseUrl: string;
 }) {
   // Reveal state lives HERE (single source of truth) so per-question toggles
@@ -51,6 +63,9 @@ export default function BoardReader({
   // including worked examples; tap "Show answer" to reveal (attempt-first).
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [blocked, setBlocked] = useState<Set<string>>(new Set());
+  // Which corpus is on screen. Opens on the textbook — /board is the book
+  // reader and the URL names a chapter of it.
+  const [showPyqs, setShowPyqs] = useState(false);
   const meter = useRevealMeter();
   const mobilePrompt = useMobilePrompt();
   // Which sections open on load. Decided HERE rather than inside GroupSection
@@ -79,20 +94,229 @@ export default function BoardReader({
     setRevealed((prev) => new Set(prev).add(id));
   };
 
+  const textbookTotal = groups.reduce(
+    (n, g) => n + g.blocks.reduce((m, b) => m + b.questions.length, 0),
+    0
+  );
+  const pyqTotal = pyqSittings.reduce((n, s) => n + s.questions.length, 0);
+
   return (
-    <div className="space-y-8">
-      {groups.map((group, i) => (
-        <GroupSection
-          key={group.group}
-          group={group}
-          defaultOpen={openByDefault[i]}
-          supabaseUrl={supabaseUrl}
-          revealed={revealed}
-          blocked={blocked}
-          onToggleReveal={toggleOne}
+    <div className="space-y-6">
+      {pyqTotal > 0 && (
+        <SourceTabs
+          textbookTotal={textbookTotal}
+          sectionCount={groups.length}
+          pyqTotal={pyqTotal}
+          pyqSittings={pyqSittings}
+          showPyqs={showPyqs}
+          onSelect={setShowPyqs}
         />
-      ))}
+      )}
+
+      {/* BOTH panels stay mounted; the inactive one is hidden. Conditional
+          rendering would drop half the chapter out of the DOM, and a stem is the
+          only indexable text on these pages (solutions are reveal-gated). */}
+      <div className="space-y-8" id="board-textbook" hidden={showPyqs}>
+        {groups.map((group, i) => (
+          <GroupSection
+            key={group.group}
+            group={group}
+            defaultOpen={openByDefault[i]}
+            supabaseUrl={supabaseUrl}
+            revealed={revealed}
+            blocked={blocked}
+            onToggleReveal={toggleOne}
+          />
+        ))}
+      </div>
+
+      {pyqTotal > 0 && (
+        <div className="space-y-6" id="board-pyqs" hidden={!showPyqs}>
+          <RecurrenceStrip sittings={pyqSittings} />
+          {pyqSittings.map((sitting, i) => (
+            <PyqSitting
+              key={sitting.key}
+              sitting={sitting}
+              // Only the newest sitting opens. The rest are a table of contents —
+              // a chapter can hold ten years of papers.
+              defaultOpen={i === 0}
+              supabaseUrl={supabaseUrl}
+              revealed={revealed}
+              blocked={blocked}
+              onToggleReveal={toggleOne}
+            />
+          ))}
+        </div>
+      )}
     </div>
+  );
+}
+
+/**
+ * Textbook / Board PYQs. Two peers, not a primary and an appendix — on MH SSC
+ * 10 the board questions outnumber the textbook in 38 of 68 chapters.
+ *
+ * Selection is REACT STATE, deliberately not a search param: useSearchParams
+ * bails a static prerender out to client rendering, and these pages are cached.
+ * The cost is that the choice isn't linkable.
+ */
+function SourceTabs({
+  textbookTotal,
+  sectionCount,
+  pyqTotal,
+  pyqSittings,
+  showPyqs,
+  onSelect,
+}: {
+  textbookTotal: number;
+  sectionCount: number;
+  pyqTotal: number;
+  pyqSittings: BoardPyqSitting[];
+  showPyqs: boolean;
+  onSelect: (showPyqs: boolean) => void;
+}) {
+  const years = pyqSittings.map((s) => s.year);
+  const first = Math.min(...years);
+  const last = Math.max(...years);
+  const span = first === last ? `${first}` : `${first}–${last}`;
+
+  const tab = (active: boolean) =>
+    cn(
+      "flex min-w-[9rem] flex-1 flex-col gap-0.5 rounded-lg border px-4 py-2.5 text-left transition-colors",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      active
+        ? "border-brand-accent bg-brand-accent/10 ring-1 ring-inset ring-brand-accent"
+        : "bg-card hover:border-muted-foreground/40"
+    );
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      <button
+        type="button"
+        aria-pressed={!showPyqs}
+        aria-controls="board-textbook"
+        onClick={() => onSelect(false)}
+        className={tab(!showPyqs)}
+      >
+        <span className={cn("text-sm font-semibold", !showPyqs && "text-brand-accent")}>Textbook</span>
+        <span className="text-xs text-muted-foreground">
+          {textbookTotal} questions · {sectionCount} book sections
+        </span>
+      </button>
+      <button
+        type="button"
+        aria-pressed={showPyqs}
+        aria-controls="board-pyqs"
+        onClick={() => onSelect(true)}
+        className={tab(showPyqs)}
+      >
+        <span className={cn("text-sm font-semibold", showPyqs && "text-brand-accent")}>Board PYQs</span>
+        <span className="text-xs text-muted-foreground">
+          {pyqTotal} questions · {span}
+        </span>
+      </button>
+    </div>
+  );
+}
+
+/**
+ * Questions per year. Bars are drawn from OBSERVED years only — a year the
+ * board held no paper (March 2021, cancelled) has no bar rather than a zero
+ * one, which would assert a paper this chapter was absent from.
+ */
+function RecurrenceStrip({ sittings }: { sittings: BoardPyqSitting[] }) {
+  const counts = pyqYearCounts(sittings);
+  if (counts.length < 2) return null;
+  const peak = Math.max(...counts.map((c) => c.count));
+
+  return (
+    <section className="rounded-lg border border-brand-accent/30 bg-brand-accent/5 p-4">
+      <h2 className="text-sm font-semibold text-brand-accent">What the board has asked from this chapter</h2>
+      <p className="mt-0.5 text-xs text-muted-foreground">
+        {counts.length} papers · {counts[0].year} to {counts[counts.length - 1].year}
+      </p>
+      <ol className="mt-3 flex items-end gap-1.5" aria-hidden>
+        {counts.map((c) => (
+          <li key={c.year} className="flex flex-1 flex-col items-center gap-1">
+            <span
+              className="w-full rounded-t-sm bg-brand-accent/70"
+              style={{ height: `${Math.max(4, Math.round((c.count / peak) * 44))}px` }}
+            />
+            <span className="text-[10px] tabular-nums text-muted-foreground">
+              {String(c.year).slice(-2)}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p className="sr-only">
+        {counts.map((c) => `${c.year}: ${c.count} questions`).join(". ")}
+      </p>
+    </section>
+  );
+}
+
+function PyqSitting({
+  sitting,
+  defaultOpen,
+  supabaseUrl,
+  revealed,
+  blocked,
+  onToggleReveal,
+}: {
+  sitting: BoardPyqSitting;
+  defaultOpen: boolean;
+  supabaseUrl: string;
+  revealed: Set<string>;
+  blocked: Set<string>;
+  onToggleReveal: (id: string) => void;
+}) {
+  return (
+    <details className="group/sit space-y-4" open={defaultOpen}>
+      <summary className="flex cursor-pointer list-none items-center gap-2 border-b-2 border-brand-accent/30 pb-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+        <ChevronDown
+          className="h-4 w-4 shrink-0 -rotate-90 text-muted-foreground transition-transform group-open/sit:rotate-0"
+          aria-hidden
+        />
+        <h2 className="flex-1 text-lg font-semibold tracking-tight text-foreground">{sitting.label}</h2>
+        <span className="shrink-0 text-xs font-normal text-muted-foreground">
+          {sitting.questions.length} q
+        </span>
+      </summary>
+
+      <ol className="space-y-3">
+        {sitting.questions.map((q, i) => {
+          const prev = sitting.questions[i - 1];
+          const showContext = !!q.context && (!q.setId || q.setId !== prev?.setId);
+          return (
+            <li key={q.id}>
+              {showContext && (
+                <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm italic text-muted-foreground">
+                  <BlockText text={q.context as string} />
+                </div>
+              )}
+              <BoardQuestionItem
+                q={q}
+                supabaseUrl={supabaseUrl}
+                revealed={revealed.has(q.id)}
+                blocked={blocked.has(q.id)}
+                onToggleReveal={() => onToggleReveal(q.id)}
+                // The one honest bridge back to the book half. A PYQ has exactly
+                // ONE subtopic; a book section spans several, so the link only
+                // works in this direction.
+                meta={
+                  q.subtopicName ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
+                      <BookOpen className="h-3 w-3 text-brand-accent" aria-hidden />
+                      {q.subtopicName}
+                    </span>
+                  ) : null
+                }
+              />
+            </li>
+          );
+        })}
+      </ol>
+    </details>
   );
 }
 
@@ -208,12 +432,17 @@ function BoardQuestionItem({
   revealed,
   blocked,
   onToggleReveal,
+  meta,
 }: {
   q: BoardQuestion;
   supabaseUrl: string;
   revealed: boolean;
   blocked: boolean;
   onToggleReveal: () => void;
+  /** Optional provenance shown under the question and ABOVE the reveal — it
+   *  describes the question, never the answer, so it must not sit inside the
+   *  reveal-gated block. */
+  meta?: ReactNode;
 }) {
   const hasAnswer = questionHasAnswer(q);
 
@@ -260,6 +489,8 @@ function BoardQuestionItem({
           })}
         </ol>
       )}
+
+      {meta && <div className="mt-2.5">{meta}</div>}
 
       {hasAnswer ? (
         <div className="mt-3">
