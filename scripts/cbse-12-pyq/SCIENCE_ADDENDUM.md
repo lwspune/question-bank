@@ -379,6 +379,27 @@ false defect reports.
 concern and nothing else, and an agent on a Chemistry paper who goes looking for
 a page range is looking for something that does not exist.
 
+> ⚠ **A CORRECTLY-EXTRACTED BLOCK MAKES THE MERGE INVISIBLE, so an author will
+> report the scheme as single-paper — and be wrong. TWO agents reported it
+> independently on 2026-09-13, on two different papers, so treat it as the
+> expected reading rather than a slip.**
+>
+> | they saw | the file actually is |
+> |---|---|
+> | 2023 55/1/1 — cover `(PAPER CODE 55/1/1)`, header `Code: 55/1/1`, 22 pages, Q1-35 | `…55-1-1,2,3 meged.pdf`, **66 pages**, carved 0-21 / 22-43 / 44-65 |
+> | 2023 55/2/1 — cover `(PAPER CODE 55/2/1)`, header `Code:55/2/1`, 15 pages, Q1-35 | `…55-2-1,2,3 merged.pdf`, **44 pages**, carved 0-14 / 15-28 / 29-43 |
+>
+> Every one of those observations is correct. They saw one set BECAUSE `msPages`
+> did its job. **The absence of a sibling's pages is evidence the extraction
+> WORKED, not evidence the file was never merged** — the exact inverse of the
+> 0-based trap in (a), where a wrong range pulls a sibling's page IN. Neither is
+> visible from the rendered pages; both are visible in the index, which is the
+> only place to settle it.
+>
+> Corollary, because it also read as a defect: **block sizes differ legitimately
+> between series** — 55/1 is 22/22/22 while 55/2 is 15/14/15. A "short" scheme is
+> not a truncated one. Check that every question is answered, not the page count.
+
 **Verify a merged scheme PER PAGE by its own printed footer.** Every
 rendered page of a merged scheme prints its own set id — `042_55/2/2_Physics #
 Page-N`. Map all of them before reading a single key. On 55/2/2 that gave
