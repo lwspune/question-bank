@@ -159,16 +159,28 @@ Three structural things that are easy to miss:
   `term2` paper, which prints only seven instructions in total. Find the line by
   its wording, not its number.
 
-  > ⚠ **THE SCIENCE `term2_sci` PAPERS PRINT NO SUCH LINE AT ALL, so "the
-  > instruction is the only authority" is false for them.** Measured on 8 of 8
-  > Chemistry 2022 papers: each prints **six** instructions, not seven, and (vi)
-  > is *"Use of log tables and calculators is NOT allowed"* — yet every one of
-  > them carries five `OR` alternatives. An agent that goes looking for the count
-  > this paragraph promised will either hunt for a line that does not exist or
-  > conclude there are no alternatives. **On `term2_sci`, build the roster by
-  > walking the marking scheme for a bare `OR` on its own line and confirming
-  > each against a printed `OR` / `अथवा` on the page.** `full70_phy_2023` and
-  > `full70` DO print counts, so this exception is specific to 2022.
+  > ⚠ **ON `term2_sci` THE INSTRUCTION BLOCK IS NOT AN AUTHORITY, AND IT
+  > DIFFERS BY SUBJECT — do not read one subject's block onto the other.**
+  >
+  > | | instructions printed | what (vi) says | internal-choice line? | log tables |
+  > |---|---|---|---|---|
+  > | **Chemistry 2022** (8 of 8 measured) | **six** | *"Use of log tables and calculators is NOT allowed"* | **absent entirely** | forbidden |
+  > | **Physics 2022** (2 papers, independently) | **seven** | *"There is no overall choice… However, internal choice has been provided is some of the questions"* (`is` is CBSE's own typo) | **(vi) IS it** | **permitted** — demoted to (vii) |
+  >
+  > An earlier version of this brief said *"the science `term2_sci` papers print
+  > no such line at all"*, which was measured on Chemistry and generalised. An
+  > agent told there is no such line stops looking for one that exists — and the
+  > two subjects also differ in the RULE, not merely its position: Chemistry
+  > forbids log tables where Physics permits them. (That is load-bearing
+  > elsewhere: one Physics void is explained by the candidate being unable to
+  > reach a value without both a constant and a calculator.)
+  >
+  > **Either way the line carries no COUNT**, so on `term2_sci` build the roster
+  > by walking the marking scheme for a bare `OR` on its own line and confirming
+  > each against a printed `OR` / `अथवा` on the page. Measured: Chemistry 2022
+  > carries five alternatives per paper, Physics 2022 three.
+  > `full70_phy_2023` and `full70` DO print counts, so this exception is
+  > specific to 2022.
 
   Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
   series 65/1 and 65/2 print NO COUNTS AT ALL (`"in few questions in all the
