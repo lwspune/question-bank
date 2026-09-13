@@ -245,12 +245,33 @@ def main():
                 if not rs:
                     problems.append(f"{g['hash'][:8]}: pick names a page with no figure at all")
                     continue
-                if pick.get("mode") != "union":
-                    problems.append(f"{g['hash'][:8]}: unknown pick mode {pick.get('mode')!r}")
+                mode = pick.get("mode")
+                if mode == "region":
+                    # The commonest refusal is "N regions (ambiguous - which one?)",
+                    # and until now the picks file had no way to answer it: union
+                    # would merge a neighbouring question's figure in. `index` is
+                    # 1-BASED, matching the [N] labels the candidate sheets print.
+                    #
+                    # It is POSITIONAL, so it depends on page_regions() returning
+                    # the same order -- deterministic today (merge+filter of the
+                    # page's image rects) but it is an ordering, not an identity.
+                    # Hence the bounds check below is an error, never a clamp: a
+                    # silently shifted index would attach the wrong figure, which
+                    # nothing downstream can detect.
+                    i = pick.get("index")
+                    if not isinstance(i, int) or not (1 <= i <= len(rs)):
+                        problems.append(
+                            f"{g['hash'][:8]}: pick index {i!r} outside 1..{len(rs)} on {pick['pid']} p{pick['page']}")
+                        continue
+                    rect = rs[i - 1]
+                    label = f"{pick['pid']}:picked[{i}]"
+                elif mode == "union":
+                    rect = (min(r[0] for r in rs), min(r[1] for r in rs),
+                            max(r[2] for r in rs), max(r[3] for r in rs))
+                    label = f"{pick['pid']}:picked"
+                else:
+                    problems.append(f"{g['hash'][:8]}: unknown pick mode {mode!r}")
                     continue
-                rect = (min(r[0] for r in rs), min(r[1] for r in rs),
-                        max(r[2] for r in rs), max(r[3] for r in rs))
-                label = f"{pick['pid']}:picked"
             # A band is a deliberate trim, so it must NOT be padded back out —
             # the first run re-added PAD and pulled the text line the band had
             # just removed straight back into the crop.
