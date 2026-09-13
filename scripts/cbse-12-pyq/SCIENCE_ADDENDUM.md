@@ -6,7 +6,36 @@ bilingual page-parity rules, the "read the page, never the text layer" rule, the
 (`OR`) handling and the JSON shape are all unchanged.
 
 This file records only what is **different for the two sciences**, and every
-item was measured off the real papers on 2026-09-10.
+item was measured off the real papers.
+
+---
+
+## 0. ⚠ READ THIS FIRST: every measurement here is per (SUBJECT, PATTERN), and often per YEAR
+
+**The recurring defect in this file has never been a wrong fact. It is a fact
+measured on ONE SUBJECT and written as though it described the pattern.** Five
+separate instances were found and fixed during the wave-4 ingest, and they ran
+in BOTH directions:
+
+| the claim | measured on | false for |
+|---|---|---|
+| *"`term2_sci` has no MCQs at all"* | Chemistry | **Physics** — Q12 is five keyed MCQs |
+| *"`term2_sci` papers print no internal-choice instruction"* | Chemistry (8 of 8) | **Physics** — it is instruction (vi) |
+| *"the marking scheme is one merged 3-in-1 PDF"* | Physics | **Chemistry** — never merged, 0 of 78 |
+| *"the case-study sub-parts are keyed MCQs"* | `full70` | **`full70_phy_2023`** — they are subjective |
+| *"2026 marking schemes are page images with no answers in the text layer"* | Physics | **Chemistry** — its 2026 schemes extract ~13k chars INCLUDING every answer |
+
+Each cost an agent real time, and two of them would have DISCARDED CBSE's own
+keys had the agents not refused the instruction and read the page.
+
+> **So: a claim in this file without a subject attached is a bug in this file.**
+> If you are about to write one, either measure the other subject or say
+> outright which one you measured. *"Measured on Chemistry; Physics unchecked"*
+> is a useful sentence. *"The science papers do X"* usually is not.
+
+The same applies to YEAR. `full70` covers 2024, 2025 and 2026, and Chemistry's
+row shape is **not constant across them** (§1). Nothing in the pipeline notices
+when a year-specific number is applied to the wrong year.
 
 ---
 
@@ -29,8 +58,9 @@ study differs by SUBJECT:
 * **Physics** — Q12 is **FIVE 1-mark MCQs** with four printed options each, and
   the marking scheme KEYS all five in its own **SECTION-C** table. Measured on
   all five openers: 5 keyed answers per paper, so **75 across the 15 papers**.
-* **Chemistry** — Q12 is five SUBJECTIVE sub-parts. Verified against the
-  committed `2022-56-*` files: 0 MCQs.
+* **Chemistry** — Q12 is **four** SUBJECTIVE sub-parts (a)-(d), with (d)
+  carrying an `OR`. Verified against all 15 committed `2022-56-*` files: 0 MCQs,
+  and four sub-parts in every one. (An earlier version said five.)
 * **Maths** — subjective, 1-2 rows.
 
 Both totals are 35, so a marks check cannot catch it. **An earlier version of
@@ -57,17 +87,49 @@ they ship derived.
 | `term2_sci` (2022) | Section A **none** + **Section C = 5** ⇒ 5 keyed | **0 keyed** — no MCQs anywhere |
 | `full70_phy_2023` | Section A 18, **nothing outside it** | — |
 | `full70_chem_2023` | — | Section A 18, **nothing outside it** |
-| `full70` (2024/25/26) | Section A 16 + **Section D = 10** ⇒ 26 keyed | Section A 16, **nothing outside it** |
+| `full70` (2024/25/26) | Section A 16 + **Section D = 10** (8 sub-parts + 2 keyed OR-branches) ⇒ 26 keyed | Section A 16, **nothing outside it** |
 
 So: **Physics keeps keyed MCQs outside Section A in `term2_sci` (C) and `full70`
 (D) but NOT in `full70_phy_2023`; Chemistry never does.** Derived by counting
 `format:"mcq"` rows outside section A in every committed opener — the split is
 clean, with no paper deviating from its (pattern, subject) cell.
 
-Row shapes to expect, also measured (primary-branch marks in brackets):
-`term2_sci` Chem A3/B12/C5 = 20 rows [35] · `full70_phy_2023` A18/B9/C7/D6/E8 =
-48 rows [70] · `full70` Phy A16/B6/C8/D10/E6 = 46 rows [70] · `full70` Chem
-A16/B6/C7-8/D8/E5-6 = 42-44 rows [70].
+### Row shapes, per (subject, YEAR) — RE-MEASURED 2026-09-13 across all 156 committed science papers
+
+Counted off all 78 Physics + 78 Chemistry committed JSONs, not off a sample.
+**Every one of the ten cells is uniform across all 15 (or 18) papers of its
+year**, so a paper that does not match its cell is a finding, not a variant.
+
+| subject | year | primary rows by section | primary | alts | ROWS | keyed MCQs |
+|---|---|---|---|---|---|---|
+| Physics | 2022 | A3/B8/C5 | 16 | 3 | **19** | 5 (all in **C**) |
+| Physics | 2023 | A18/B7/C5/D3/E6 | 39 | 9 | **48** | 18 (all in A) |
+| Physics | 2024 · 2025 · 2026 | A16/B5/C7/D8/E3 | 39 | 7 | **46** | 24 primary + 2 alt = **26 rows** (A16 + D10) |
+| Chemistry | 2022 | A3/B8/C4 | 15 | 5 | **20** | 0 |
+| Chemistry | 2023 | A18/B7/C5/D6/E3 | 39 | 7 | **46** | 18 (all in A) |
+| Chemistry | 2024 | A16/B5/C7/D6/E3 | 37 | 5 | **42** | 16 (all in A) |
+| Chemistry | 2025 · 2026 | A16/B5/C7/D6/E3 | 37 | 7 | **44** | 16 (all in A) |
+
+Three things this table corrects, each of which had been quoted as fact:
+
+- **Chemistry `full70` is 42 rows in 2024 and 44 in 2025/2026** — a clean YEAR
+  split, not the *"42-44"* range the previous version printed. The primary
+  shape is identical in all three years; only the alternative count moves
+  (5 → 7). A 2025 paper coming in at 42 has dropped two alternatives, and §5b
+  explains why the marks sum cannot see that.
+- **Chemistry 2022 Q12 has FOUR sub-parts, not five** — (a), (b), (c), (d),
+  with (d) carrying the `OR`. The previous version said five.
+- **Physics `full70` Section D is 10 ROWS = 8 MCQ sub-parts + 2 keyed
+  alternatives.** Both branches of a case-study internal choice are printed and
+  keyed, so 26 keyed rows over 24 distinct questions. Which leads to:
+
+> ⚠ **A `full70` Physics case study carries an internal choice ON AN MCQ
+> SUB-PART, and it is in every paper measured.** 2025 55/1/1 prints Q29 (iv)(a)
+> *OR* (iv)(b) and Q30 (iii)(a) *OR* (iii)(b) — four printed options each, both
+> branches keyed in the scheme's Section-D block. Ingest both as ordinary
+> alternatives (`_alternativeTo`). An agent expecting "case studies are 5
+> sub-parts" will read (iv)(a) and (iv)(b) as sub-parts (iv) and (v), which
+> mis-numbers the tail of the paper and loses the alternative relationship.
 
 ### The decimal convention is PER PAPER, and the paper may disagree with its own scheme
 
@@ -126,13 +188,26 @@ returns nothing — read the marking scheme page.
 | 2025 | 18 of 18 | |
 | 2026 | 0 of 15 | **The whole marking scheme is page IMAGES.** |
 
-⚠ **2026 is the one to understand before you open it.** Its text layer is not
-empty — it runs ~350 chars/page — but what it contains is the *numbering
-scaffold only*: a `SECTION-A` heading followed by `1.` `2.` … `16.` with **no
-answers**, plus a contents page and repeated `HOME` navigation furniture. Every
-answer is inside the page image. So `keys.ts` correctly reports "read 0 of 16"
-and the key must be read by vision from `ms/` — the numbers being present is not
-evidence the answers are.
+⚠ **2026 is the one to understand before you open it — AND IT SPLITS BY
+SUBJECT.** This was written as a pattern-wide fact and is a **Physics** one.
+
+* **PHYSICS 2026 — genuinely image-only.** The text layer is not empty; it runs
+  ~350 chars/page and contains the *numbering scaffold only*: a `SECTION-A`
+  heading followed by `1.` `2.` … `16.` with **no answers**, plus a contents
+  page and repeated `HOME` navigation furniture. Every answer is inside the page
+  image, so `keys.ts` correctly reports "read 0 of 16". **The numbers being
+  present is not evidence the answers are.**
+* **CHEMISTRY 2026 — the text layer carries the answers.** Measured
+  independently by three papers (`2026-56-1-3`, `2026-56-2-3`, `2026-56-5-2`):
+  the scheme extracts at **~13,000 chars including every Section-A letter and
+  the answer prose**. So it is the rule for 2026 Chemistry, not an exception.
+
+**Routing is unchanged — read the key by VISION first on both subjects**, since
+vision is correct either way and the text layer is not available on Physics. But
+on Chemistry the text layer is a **free second independent read**: extract it
+and diff the 16 letters against what you read off the image. Where the two agree
+the key is corroborated twice; where they disagree, stop and report. Papers that
+did this reported 16 of 16 agreement.
 
 ### ⚠ CBSE sometimes VOIDS its own question — capture it, do not silently key it
 
@@ -276,6 +351,78 @@ it names: *"full credit for part (b)"* voids 2 of 3 marks, not the row.
 `_cbseVoided` is read by no code today and is not hashed, so it is documentation
 — which is exactly why it has to be applied mechanically off the wording rather
 than re-derived per row. Nothing will catch you getting it wrong.
+
+## 2c. Reading the scheme: four disciplines, each of which cost a real investigation
+
+None of these is about what the marking scheme SAYS. They are about how it is
+read, and every one produced a confident wrong answer before it was written down.
+
+**(a) `msPages` in `_papers.<subject>.json` is 0-BASED, and nothing said so.**
+`2022-55-3-2` records `msPages {from: 8, to: 15}`. Read as 1-based, that pulls
+in the SIBLING 55/3/1's page and drops this paper's own — and the agent that did
+so manufactured a phantom finding, briefly concluding CBSE had mis-printed a
+footer. `prep.py` extracts correctly, so the rendered `ms/p00…` were right all
+along; **the trap only bites an agent that goes back to the raw index**, which
+is exactly what an agent chasing a discrepancy does. This has now produced two
+false defect reports.
+
+**(b) Whether the scheme is MERGED is a (subject, year) fact — measured
+2026-09-13 across all 156 science papers:**
+
+| | 2022 | 2023 | 2024 | 2025 | 2026 |
+|---|---|---|---|---|---|
+| **Physics** | merged | merged | merged | merged | **per-set** |
+| **Chemistry** | per-set | per-set | per-set | per-set | per-set |
+
+**Chemistry marking schemes are NEVER merged — 0 of 78.** Physics is merged in
+63 of 78, everything except 2026. So `msPages` is a Physics-2022-to-2025
+concern and nothing else, and an agent on a Chemistry paper who goes looking for
+a page range is looking for something that does not exist.
+
+**Verify a merged scheme PER PAGE by its own printed footer.** Every
+rendered page of a merged scheme prints its own set id — `042_55/2/2_Physics #
+Page-N`. Map all of them before reading a single key. On 55/2/2 that gave
+`55/2/2` on 10 of 10 pages and zero occurrences of either sibling, which is
+positive proof no key or void came off the wrong set. It is also the check that
+would have caught (a) immediately, and it costs one pass over the text layer.
+This matters because §2's own warning is that a page-range slip **attaches a
+void to the wrong question rather than failing loudly** — the sets are
+reshuffled, so the same printed question carries a different number in each.
+
+**(c) The contact sheet is a MAP, not a SOURCE. Use it to decide WHERE to look,
+never WHAT is there.** Measured misreads at thumbnail size, on real papers:
+`6.5 × 10⁻¹⁹ J` reading as `10⁻¹⁵`; a page count off by five; and — the one
+that matters most — **a digit inside a stem**. At least eight separate
+thumbnail misreads were logged across the wave, several of which would have
+changed a number in a committed question or a formula in a solution. Re-render
+the single page at full size before recording anything you read off a sheet.
+
+**(d) FIXTURE-VALIDATE a void scanner BEFORE you trust its output. Five of five
+failed.** Every void-detection scanner examined during the wave — five, written
+independently by five agents — **was defective on its first fixture run**, and
+four of the five would have shipped a paper as "no voids found". The natural
+blind spots turned out to be shared rather than random:
+
+* `even if **a** student does not attempt` vs `even if student does not attempt`
+  (two scanners, independently);
+* a note **split across a page break**, so it exists in neither page's text;
+* the either-of-two-answers shape, which carries no *award* wording at all.
+
+**This file's own printed examples are a ready-made fixture set** — there are 16
+of them, all verbatim from real schemes. Run your scanner over those plus a
+handful of NEGATIVE controls (conditional notes from §2's rule table, which must
+NOT fire), page-joined and whitespace-flattened, and only then over the paper.
+A scanner that has never been shown to go red on a known positive is evidence of
+nothing.
+
+> The same rule applies to the decimal check. A mechanical scan for `·`
+> (U+00B7) is cheaper and better than eyeballing dot height — but it has been
+> wrong twice: one paper encodes its raised dots as **U+F0D7** (a private-use
+> Symbol-font codepoint) and another mis-encodes a single token while the rest
+> of the page is clean. Treat a U+00B7 hit as proof of raised dots; treat its
+> ABSENCE as unproven, and go to the page.
+
+---
 
 ## 3. Chemistry notation
 
@@ -492,3 +639,34 @@ commit — whereas a wrongly-skipped question is lost silently.
 When you are given an opener set's JSON to compare against, match on **content**
 and report the overlap you found. Do not compare position-by-position: the sets
 are RESHUFFLED, so block 1 against block 1 can only match by coincidence.
+
+### ⚠ CBSE RE-AUTHORS questions between sets — a follower is not a shuffled opener
+
+This is the single most consequential thing the wave-4 follower ingest measured,
+and it governs how much of an opener you may reuse: **none of it.** Across the
+44 follower papers transcribed, ten reported substantive re-authoring, and
+**not one Chemistry follower turned out to be a pure reshuffle of its opener.**
+A follower set routinely carries the same *topic* with different numbers,
+different options, a different sub-part split, or a different question entirely.
+
+So the comparison is a DEDUP AID, never a transcription shortcut. Transcribe
+the paper in front of you. Three refinements earned the hard way:
+
+- **Matching on an assertion alone is a trap.** An assertion-reason pair reuses
+  a stock assertion across sets while changing the REASON, which is the half the
+  question actually tests. Two rows matching on assertion text can be different
+  questions with different keys. Match on the pair.
+- **A key DISAGREEMENT is strong evidence the questions DIFFER.** If two rows
+  look identical and the two schemes key different letters, the default reading
+  is *different question, or reordered options* — not *one scheme is wrong*.
+  Check the option ORDER before you consider a key error.
+- **A key AGREEMENT means nothing.** With four options a coincidental match runs
+  at 25%, and stock topics cluster on the same answer. Agreement is not evidence
+  of identity; only the stem and option TEXTS are.
+
+Where two rows are genuinely the same question, `content_hash` collapses them at
+commit and you need do nothing. **The exception is a figure-dependent row** —
+see §3's `REQUIRED` guard, which exists precisely because two genuinely
+different questions can carry a byte-identical hash when the discriminator is in
+the drawing. Those must be adjudicated in `data/hash-collisions.json` rather
+than deduped on sight.

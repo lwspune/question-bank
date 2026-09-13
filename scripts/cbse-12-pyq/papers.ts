@@ -56,7 +56,19 @@ export type Paper = {
   pattern: PatternName | null;
   qp: string; // absolute path to the question paper
   ms: string | null; // absolute path to its marking scheme
-  /** Set when the marking scheme is a merged multi-paper PDF: the page range to use. */
+  /**
+   * Set when the marking scheme is a merged multi-paper PDF: the page range to use.
+   *
+   * ⚠ **THESE ARE 0-BASED, INCLUSIVE** — raw PyMuPDF page indices, so `{from: 8}`
+   * is the NINTH printed page. `prep.py` consumes them correctly, so the rendered
+   * `ms/p00…` are right; the trap only bites someone who comes back to this index
+   * by hand to chase a discrepancy, which has now produced TWO false defect
+   * reports (one of which briefly concluded CBSE had mis-printed a page footer).
+   * Reading them as 1-based pulls in the SIBLING set's page and drops your own —
+   * and because the sets are reshuffled, that attaches a void to the wrong
+   * question rather than failing loudly. Cheap check: every page of a merged
+   * scheme prints its own set id in the footer (`042_55/2/2_Physics # Page-N`).
+   */
   msPages: { from: number; to: number } | null;
   sourceFile: string;
 };
