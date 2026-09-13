@@ -6,36 +6,64 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamBySlug } from "@/lib/exam/examContext";
-import { resolveBoardChapter, getBoardChapter, type BoardChapter } from "@/lib/board/query";
+import {
+  resolveBoardChapter,
+  getBoardChapter,
+  getBoardChapterPyqs,
+  type BoardChapter,
+  type BoardPyqSitting,
+} from "@/lib/board/query";
 import BoardReader from "@/app/board/BoardReader";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
-async function load(params: Params): Promise<{ examName: string; displayName: string; chapter: BoardChapter } | null> {
+type Loaded = {
+  examName: string;
+  displayName: string;
+  chapter: BoardChapter;
+  pyqSittings: BoardPyqSitting[];
+};
+
+async function load(params: Params): Promise<Loaded | null> {
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) return null;
   const client = createSupabaseAnonClient();
   const resolved = await resolveBoardChapter(client, exam.examName, params.subjectRoute, params.chapterSlug);
   if (!resolved) return null;
-  const chapter = await getBoardChapter(client, {
-    examId: resolved.examId,
-    chapterId: resolved.chapterId,
-    examName: exam.examName,
-    subjectName: resolved.subjectName,
-    chapterName: resolved.chapterName,
-  });
+
+  const [chapter, pyqSittings] = await Promise.all([
+    getBoardChapter(client, {
+      examId: resolved.examId,
+      chapterId: resolved.chapterId,
+      examName: exam.examName,
+      subjectName: resolved.subjectName,
+      chapterName: resolved.chapterName,
+    }),
+    getBoardChapterPyqs(client, { examId: resolved.examId, chapterId: resolved.chapterId }),
+  ]);
+
+  // TEXTBOOK presence still decides whether this page exists — /board is the
+  // book reader, and a chapter with PYQs and no textbook rows is one the
+  // current book does not have. That is what keeps the 12 old-syllabus MH SSC
+  // 10 chapters (Metallurgy, Surds, Carbon Compounds …) off /board without a
+  // hand-maintained exclusion list. They stay reachable on /browse.
   if (!chapter) return null;
-  return { examName: exam.examName, displayName: exam.displayName, chapter };
+  return { examName: exam.examName, displayName: exam.displayName, chapter, pyqSittings };
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const data = await load(params);
   if (!data) return { title: "Board textbook solutions" };
-  const { chapter } = data;
+  const { chapter, pyqSittings } = data;
   const title = `${chapter.chapterName} — ${chapter.subjectName} textbook solutions`;
+  const pyqCount = pyqSittings.reduce((n, s) => n + s.questions.length, 0);
+  const years = pyqSittings.map((s) => s.year);
+  const pyqLine = pyqCount
+    ? ` Plus ${pyqCount} solved board past-year questions from ${Math.min(...years)}–${Math.max(...years)}.`
+    : "";
   return {
     title,
-    description: `${chapter.chapterName}: every solved example, exercise, and miscellaneous question with model answers — in ${data.displayName} textbook order.`,
+    description: `${chapter.chapterName}: every solved example, exercise, and miscellaneous question with model answers — in ${data.displayName} textbook order.${pyqLine}`,
     alternates: { canonical: `/board/${params.examSlug}/${params.subjectRoute}/${params.chapterSlug}` },
   };
 }
@@ -44,6 +72,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
   const data = await load(params);
   if (!data) notFound();
   const { chapter } = data;
+  const pyqCount = data.pyqSittings.reduce((n, s) => n + s.questions.length, 0);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 
   return (
@@ -69,11 +98,12 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground">{chapter.chapterName}</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
             Every solved example, exercise, and miscellaneous question — in the order the textbook teaches them.
+            {pyqCount > 0 && " Plus every board question asked from this chapter."}
             <span className="text-muted-foreground/70"> · {chapter.total} questions</span>
           </p>
         </header>
 
-        <BoardReader groups={chapter.groups} supabaseUrl={supabaseUrl} />
+        <BoardReader groups={chapter.groups} pyqSittings={data.pyqSittings} supabaseUrl={supabaseUrl} />
       </main>
       <Footer />
     </>

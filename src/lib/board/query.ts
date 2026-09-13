@@ -336,3 +336,215 @@ export async function listBoardChapters(
       .map(({ order: _order, ...link }) => link),
   }));
 }
+
+/* ------------------------------------------------------------------ *
+ * Board PYQs — the SECOND corpus on a board chapter.
+ *
+ * A board past-year question sits in the same chapter as the textbook rows but
+ * has NO position in the book, so it carries no section_* fields and never
+ * touches the section_seq axis (board:lint exempts question_kind='pyq' for
+ * exactly this reason). Its native axis is the SITTING it was asked in, which
+ * every board PYQ already carries as (pyq_year, pyq_month) — so this whole
+ * surface is derived at read time, with no migration and no backfill.
+ * ------------------------------------------------------------------ */
+
+export type BoardPyqQuestion = BoardQuestion & {
+  pyqYear: number;
+  pyqMonth: string | null;
+  sourceRow: number | null;
+  /** The conceptual axis, and the one honest bridge back to the textbook half:
+   *  a PYQ has exactly ONE subtopic, whereas a book section spans several — so
+   *  the link reads PYQ → subtopic, never section → PYQs (measured: that
+   *  direction duplicates ~3.3x and buries 42 of 50 under a closing problem set). */
+  subtopicName: string | null;
+};
+
+/** One sitting of the board exam — "March 2026", or a bare "2024" where the
+ *  paper's month was never recorded. NOT one per year: see MONTH_RANK. */
+export type BoardPyqSitting = {
+  key: string;
+  label: string;
+  year: number;
+  month: string | null;
+  questions: BoardPyqQuestion[];
+};
+
+/**
+ * Rank a stored month name so sittings sort chronologically.
+ *
+ * Keyed on the first three letters because the bank spells months BOTH ways —
+ * "Apr" and "April" are both live, as are "Sep" and "September" — so a
+ * full-name lookup would silently drop half of them to rank 0 and scramble the
+ * order. 0 means undated or unrecognised, which sorts LAST within its year: an
+ * undated row declares no sitting, so it is the least specific thing there.
+ */
+const MONTH_RANK: Record<string, number> = {
+  jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+  jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+};
+
+function monthRank(month: string | null): number {
+  return MONTH_RANK[(month ?? "").trim().slice(0, 3).toLowerCase()] ?? 0;
+}
+
+/**
+ * Name a sitting. PURE.
+ *
+ * Degrades to the bare year when no month is stored — which is not an edge
+ * case: CBSE Class 12 carries pyq_month NULL on all 1,766 of its board PYQs,
+ * so a naive `${month} ${year}` would print "undefined 2024" on every CBSE
+ * block. The month is printed VERBATIM rather than normalised, so a label can
+ * never disagree with the row it came from.
+ */
+export function pyqSittingLabel(year: number, month: string | null): string {
+  const m = (month ?? "").trim();
+  return m ? `${m} ${year}` : String(year);
+}
+
+/**
+ * Fold board PYQs into sittings, newest first. PURE — and unlike
+ * groupBoardSections this does its OWN sorting rather than trusting the caller,
+ * because month order cannot be expressed in SQL (the column holds a name, not
+ * a number).
+ *
+ * The sitting key is (year, month), never year alone: MH SSC 10 really does
+ * hold two sittings in one year — July AND March 2020, April AND March 2022 —
+ * and MH HSC 12 holds February AND March. Keying on the year would merge two
+ * different question papers into one block, which no count downstream would
+ * reveal.
+ */
+export function groupBoardPyqSittings(rows: BoardPyqQuestion[]): BoardPyqSitting[] {
+  const bySitting = new Map<string, BoardPyqSitting>();
+
+  for (const r of rows) {
+    const key = `${r.pyqYear}-${r.pyqMonth ?? ""}`;
+    let sitting = bySitting.get(key);
+    if (!sitting) {
+      sitting = {
+        key,
+        label: pyqSittingLabel(r.pyqYear, r.pyqMonth),
+        year: r.pyqYear,
+        month: r.pyqMonth,
+        questions: [],
+      };
+      bySitting.set(key, sitting);
+    }
+    sitting.questions.push(r);
+  }
+
+  const sittings = [...bySitting.values()];
+  sittings.sort(
+    (a, b) =>
+      b.year - a.year ||
+      monthRank(b.month) - monthRank(a.month) ||
+      a.label.localeCompare(b.label)
+  );
+  // Within a sitting, the paper's own order. A row with no source_row goes last
+  // rather than first — nullsFirst is the wrong default for a question paper.
+  for (const s of sittings) {
+    s.questions.sort(
+      (a, b) =>
+        (a.sourceRow ?? Number.POSITIVE_INFINITY) - (b.sourceRow ?? Number.POSITIVE_INFINITY) ||
+        a.id.localeCompare(b.id)
+    );
+  }
+  return sittings;
+}
+
+/**
+ * Questions per YEAR for the recurrence strip, oldest first so it reads left to
+ * right as a timeline. Both sittings of a year fold into one bar — the question
+ * the strip answers is "does the board come back to this chapter", which is a
+ * per-year question.
+ *
+ * Reports OBSERVED years only and never zero-fills the gaps. The March 2021 SSC
+ * exams were cancelled, so a 2021 bar would assert a paper this chapter was
+ * absent from — the opposite of true.
+ */
+export function pyqYearCounts(sittings: BoardPyqSitting[]): { year: number; count: number }[] {
+  const byYear = new Map<number, number>();
+  for (const s of sittings) byYear.set(s.year, (byYear.get(s.year) ?? 0) + s.questions.length);
+  return [...byYear.entries()]
+    .map(([year, count]) => ({ year, count }))
+    .sort((a, b) => a.year - b.year);
+}
+
+type RawPyqRow = {
+  id: string;
+  question_number: string | null;
+  text: string;
+  context: string | null;
+  solution: string | null;
+  image_url: string | null;
+  solution_image_url: string | null;
+  question_format: "mcq" | "subjective";
+  set_id: string | null;
+  pyq_year: number;
+  pyq_month: string | null;
+  source_row: number | null;
+  subtopic: { name: string } | { name: string }[] | null;
+  options: RawOption[] | null;
+};
+
+/**
+ * Load one chapter's board PYQs, grouped into sittings. Returns [] when the
+ * chapter has none — which is the normal state for 24 of CBSE's 37 chapters,
+ * whose Physics and Chemistry PYQ corpora are ingested but still PRIVATE while
+ * their solutions are authored.
+ *
+ * Two filters carry weight:
+ *  • anon client + RLS ⇒ PUBLIC only, so a staged corpus cannot leak here.
+ *  • `solution` must be present. Every PUBLIC board PYQ is solved today
+ *    (1,459 / 1,050 / 1,766 across the three exams), so this changes nothing
+ *    now; it exists so a future partial flip hides unsolved rows from a
+ *    SOLUTIONS reader rather than shipping questions with blank answers.
+ *
+ * Deliberately unpaged, matching getBoardChapter: PostgREST caps a raw select
+ * at 1000 and the largest chapter in the bank holds 242 board PYQs (CBSE
+ * Application of Integrals), growing by at most ~50 a year.
+ */
+export async function getBoardChapterPyqs(
+  client: SupabaseClient,
+  opts: { examId: string; chapterId: string }
+): Promise<BoardPyqSitting[]> {
+  const { data, error } = await client
+    .from("questions")
+    .select(
+      `id, question_number, text, context, solution, image_url, solution_image_url,
+       question_format, set_id, pyq_year, pyq_month, source_row,
+       subtopic:subtopics!subtopic_id(name),
+       options(label, text, is_correct, image_url)`
+    )
+    .eq("exam_id", opts.examId)
+    .eq("chapter_id", opts.chapterId)
+    .eq("question_kind", "pyq")
+    .not("pyq_year", "is", null)
+    .not("solution", "is", null)
+    .neq("solution", "");
+  if (error) throw new Error(`board chapter PYQs: ${error.message}`);
+
+  const rows = (data ?? []) as RawPyqRow[];
+  return groupBoardPyqSittings(
+    rows.map((r) => {
+      const sub = Array.isArray(r.subtopic) ? r.subtopic[0] : r.subtopic;
+      return {
+        id: r.id,
+        questionNumber: r.question_number,
+        text: r.text,
+        context: r.context,
+        solution: r.solution,
+        imageUrl: r.image_url,
+        solutionImageUrl: r.solution_image_url,
+        format: r.question_format,
+        setId: r.set_id,
+        options: (r.options ?? [])
+          .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
+          .sort((a, b) => a.label.localeCompare(b.label)),
+        pyqYear: r.pyq_year,
+        pyqMonth: r.pyq_month,
+        sourceRow: r.source_row,
+        subtopicName: sub?.name ?? null,
+      };
+    })
+  );
+}
