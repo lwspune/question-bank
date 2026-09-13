@@ -6,6 +6,7 @@ import {
   type TQ,
 } from "../scripts/cds-maths/lib";
 import { diffAgainstKey, sortForReview, type KeyEntry } from "../scripts/nda-pyq/lib";
+import { parseKeyTokens } from "../scripts/nda-pyq/parse-key";
 
 const q = (over: Partial<TQ> = {}): TQ => ({
   number: 1,
@@ -156,5 +157,46 @@ describe("sortForReview", () => {
     const before = rows.map((r) => r.number);
     sortForReview(rows);
     expect(rows.map((r) => r.number)).toEqual(before);
+  });
+});
+
+describe("parseKeyTokens — the multi-series key parser", () => {
+  // Three blocks of 2 => 6 questions. Row shape: N. a b c d  N+2. a b c d  N+4. a b c d
+  const tokens = [
+    "ANSWER-KEY", "SET-A", "SET-B", "SET-C", "SET-D",
+    "1.", "A", "B", "C", "D", "3.", "B", "C", "D", "A", "5.", "C", "D", "A", "B",
+    "2.", "D", "A", "B", "C", "4.", "A", "A", "B", "B", "6.", "B", "B", "C", "C",
+  ];
+
+  it("reads the requested series column, not the first one", () => {
+    const a = parseKeyTokens(tokens, 0, 6, 3);
+    const c = parseKeyTokens(tokens, 2, 6, 3);
+    expect(a.errors).toHaveLength(0);
+    expect(a.entries.map((e) => e.answer)).toEqual(["A", "D", "B", "A", "C", "B"]);
+    // The four series are independently scrambled — this is the whole risk.
+    expect(c.entries.map((e) => e.answer)).toEqual(["C", "B", "D", "B", "A", "C"]);
+  });
+
+  it("returns entries sorted by question number across the three blocks", () => {
+    const { entries } = parseKeyTokens(tokens, 0, 6, 3);
+    expect(entries.map((e) => e.number)).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+
+  it("REFUSES when the block arithmetic does not hold, rather than shifting answers", () => {
+    // Q5 mislabelled as Q7: a silent accept here would misalign every later row.
+    const bad = tokens.map((t) => (t === "5." ? "7." : t));
+    const { errors } = parseKeyTokens(bad, 0, 6, 3);
+    expect(errors.join(" ")).toMatch(/expected "5\."/);
+  });
+
+  it("REFUSES a row that does not carry four A-D letters", () => {
+    const bad = tokens.map((t, i) => (i === 7 ? "X" : t));
+    const { errors } = parseKeyTokens(bad, 0, 6, 3);
+    expect(errors.join(" ")).toMatch(/four A-D letters/);
+  });
+
+  it("reports when it cannot find the table at all", () => {
+    const { errors } = parseKeyTokens(["no", "table", "here"], 0, 6, 3);
+    expect(errors.join(" ")).toMatch(/could not find the start/);
   });
 });
