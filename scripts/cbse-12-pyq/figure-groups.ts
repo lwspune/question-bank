@@ -4,14 +4,27 @@
  *   npx tsx scripts/cbse-12-pyq/figure-groups.ts          # report
  *   npx tsx scripts/cbse-12-pyq/figure-groups.ts --write  # -> data/figure-groups.json
  *
- * 96 transcribed rows carry a REQUIRED figure, but the series share questions,
- * so they commit as far fewer rows. Grouping by content_hash — computed with the
- * REAL hash functions, never a re-implementation — is what turns "96 figures"
- * into the true unit of work.
+ * Hundreds of transcribed rows carry a figure note, but the series share
+ * questions, so they commit as far fewer rows. Grouping by content_hash —
+ * computed with the REAL hash functions, never a re-implementation — is what
+ * turns a row count into the true unit of work.
  *
- * ILLUSTRATIVE and DECORATIVE rows are deliberately excluded: all 8 ILLUSTRATIVE
- * notes say "NOT attached" in as many words, and that was a judgement made with
- * the page open. Re-deciding it here from a keyword would silently overturn it.
+ * DECORATIVE stays excluded: SCIENCE_ADDENDUM §3 says a captioned photograph
+ * carries no data and is not attached.
+ *
+ * ⚠ ILLUSTRATIVE IS NOW INCLUDED (2026-09-13, on the maintainer's call). This
+ * file previously excluded it, and its reason was sound WHEN WRITTEN: "all 8
+ * ILLUSTRATIVE notes say 'NOT attached' in as many words, and that was a
+ * judgement made with the page open." There are now 142 such notes, so that is a
+ * fact measured on 8 cases generalised to a class — the same defect this
+ * pipeline's own addendum was restructured to remove. The addendum's §3 table
+ * always said ILLUSTRATIVE is "cropped and attached", so the tool and the
+ * contract had silently disagreed.
+ *
+ * The two are still reported and stored SEPARATELY, because they are different
+ * claims about the row: REQUIRED means the question is unanswerable without the
+ * drawing, ILLUSTRATIVE means it reads fine and the drawing is worth showing.
+ * Anything that ever has to triage by urgency needs that distinction kept.
  *
  * A group of size >1 is normally one question printed in several series. It can
  * ALSO be two different questions the hash cannot separate — `image_url` is not
@@ -30,8 +43,9 @@ type Q = {
   stem: string; context?: string; options?: { label: string; text: string }[];
   answer?: string; _figure?: string;
 };
-export type Member = { pid: string; year: number; ref: string; page: number | null; note: string };
-export type Group = { hash: string; members: Member[]; stem: string; digital: boolean };
+export type FigureKind = "REQUIRED" | "ILLUSTRATIVE";
+export type Member = { pid: string; year: number; ref: string; page: number | null; note: string; kind: FigureKind };
+export type Group = { hash: string; members: Member[]; stem: string; digital: boolean; kind: FigureKind };
 
 const PAGE_RE = /[Pp]age\s*(?:idx|index)\s*(\d+)/;
 
@@ -79,15 +93,30 @@ export function loadGroups(): Group[] {
     const d = JSON.parse(readFileSync(join(DATA, f), "utf8")) as { year: number; questions: Q[] };
     for (const q of d.questions) {
       const fg = q._figure ?? "";
-      if (!fg.trim().toUpperCase().startsWith("REQUIRED")) continue;
+      const head = fg.trim().toUpperCase();
+      // DECORATIVE stays out — SCIENCE_ADDENDUM §3 says a captioned photograph
+      // carries no data and is not attached. REQUIRED and ILLUSTRATIVE are both in.
+      const kind: FigureKind | null = head.startsWith("REQUIRED")
+        ? "REQUIRED"
+        : head.startsWith("ILLUSTRATIVE")
+          ? "ILLUSTRATIVE"
+          : null;
+      if (!kind) continue;
       const hash = q.format === "subjective"
         ? subjectiveContentHash(q.stem, q.context ?? null)
         : contentHash(q.stem, (q.options ?? []).map((o) => o.text), q.answer ?? "");
       const m = PAGE_RE.exec(fg);
-      const member: Member = { pid, year: d.year, ref: q.ref, page: m ? Number(m[1]) : null, note: fg };
+      const member: Member = { pid, year: d.year, ref: q.ref, page: m ? Number(m[1]) : null, note: fg, kind };
       const g = groups.get(hash);
-      if (g) g.members.push(member);
-      else groups.set(hash, { hash, members: [member], stem: q.stem, digital: false });
+      if (g) {
+        g.members.push(member);
+        // One printed question can be classified differently by two transcribers.
+        // Take the STRONGEST: REQUIRED means the row is unanswerable without the
+        // drawing, and that claim must not be weakened by a sibling's milder read.
+        if (kind === "REQUIRED") g.kind = "REQUIRED";
+      } else {
+        groups.set(hash, { hash, members: [member], stem: q.stem, digital: false, kind });
+      }
     }
   }
   const digital = digitalByPaperId();
@@ -103,7 +132,10 @@ export function loadGroups(): Group[] {
 function main() {
   const groups = loadGroups();
   const rows = groups.reduce((n, g) => n + g.members.length, 0);
-  console.log(`REQUIRED rows ${rows}  ->  distinct figures to attach: ${groups.length}`);
+  const req = groups.filter((g) => g.kind === "REQUIRED").length;
+  console.log(`figure rows ${rows}  ->  distinct figures to attach: ${groups.length}`);
+  console.log(`  REQUIRED (row is unanswerable without it): ${req}`);
+  console.log(`  ILLUSTRATIVE (answerable from text, shown anyway): ${groups.length - req}`);
   // Deliberately NOT labelled by year any more: scanned-ness is per-SERIES and
   // every year but 2026 is mixed in at least one subject.
   console.log(`  reachable from a born-digital paper: ${groups.filter((g) => g.digital).length}`);
