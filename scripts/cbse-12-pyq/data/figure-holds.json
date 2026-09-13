@@ -1,0 +1,28 @@
+{
+  "_why": "Crops HELD from attachment by the contact-sheet verification gate (2026-09-13). A wrong or incomplete figure on a question is WORSE than no figure and is invisible afterwards, because image_url is not part of content_hash, so nothing downstream can detect it. Each of these was found by LOOKING at all 22 contact sheets; none was caught by any automated check. Re-crop and re-adjudicate rather than deleting the question.",
+  "_howToUse": "scripts/cbse-12-pyq/_tmp/filter-holds.js drops these hashes from data/figures.json before attach-images.ts runs. Remove an entry here once its crop is fixed.",
+  "holds": [
+    {
+      "hash": "5d18420e",
+      "row": "2022-55-5-1:Q10",
+      "reason": "WHOLE PAGE, not a figure. 1076x1520 px / 803 KB against a ~40 KB median. 2022 Physics papers are SCANS, so there are no vector regions to union and the crop fell back to the entire scanned page image.",
+      "alsoNote": "This is one of the 16 groups the crop-comparison flagged as a content_hash COLLISION. That verdict is an ARTEFACT: it compared two whole-page scans, not two figures. Do not adjudicate it as a collision until the crop is real."
+    },
+    {
+      "hash": "60f507ac",
+      "row": "2022-55-5-1:Q12i",
+      "reason": "WHOLE PAGE, same cause as 5d18420e — 1076x1520 px / 763 KB.",
+      "alsoNote": "Also flagged as a collision; same artefact."
+    },
+    {
+      "hash": "6a17bc92",
+      "row": "2023-55-5-3:Q3",
+      "reason": "INCOMPLETE OPTION SET. The stem is 'Which of the following cannot modify an external magnetic field as shown in the figure?', so the OPTIONS are themselves drawings and all four must be visible. The crop shows one field-line diagram plus a sliced '(B)' label at its edge, i.e. it captured part of the option block. Attaching it would show the student one option and hide three."
+    },
+    {
+      "hash": "786c7785",
+      "row": "2026-56-3-1:Q1",
+      "reason": "INCOMPLETE OPTION SET. 'Which of the following will be the least reactive towards nucleophilic substitution reaction?' names no compound in words, so the four candidate structures ARE the options. The crop shows a single structure (4-chlorotoluene). Its sibling rows on the same sheet (48f70b01, 3c74678d) correctly show all four, which is what identifies this one as truncated rather than a one-structure question."
+    }
+  ]
+}
