@@ -1,7 +1,21 @@
-# CBSE Class-12 Maths board PYQ — solution-authoring contract
+# CBSE Class-12 board PYQ — solution-authoring contract (Maths · Physics · Chemistry)
 
 You are writing the worked solution for questions from ONE board paper, using
 that paper's **official CBSE marking scheme**. Read this in full before starting.
+
+> ⚠ **THIS FILE WAS TITLED "Maths" UNTIL 2026-09-13 AND IS NOT MATHS-SPECIFIC.**
+> Everything in it — read the scheme as an IMAGE, the scheme is a source and not
+> an authority, judge in both directions, the `\( … \)` convention, the
+> heredoc and control-character traps — was measured on Maths papers and applies
+> unchanged to all three subjects. The retitle is deliberate: a subject in the
+> title of a general contract is how a rule gets read as someone else's problem.
+>
+> **If you are on PHYSICS or CHEMISTRY, read `SCIENCE_ADDENDUM.md` as well.** It
+> carries what genuinely differs and none of it is here: the per-subject notation
+> (vectors and units in §4, formulae and structures in §3), the VOID and
+> grace-note rules that decide whether a scheme's "award full marks" note belongs
+> in `_cbseVoided` or only in `_flag` (§2), and the fact that a `full70` PHYSICS
+> paper keys ten more MCQs in Section D than its Section-A count implies (§1).
 
 ---
 
