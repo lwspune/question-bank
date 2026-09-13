@@ -1,0 +1,752 @@
+{
+  "paper": "55/5/3",
+  "year": 2025,
+  "pattern": "full70",
+  "_transcription": "27 pages. ENGLISH = EVEN 0-based indices 2,4,6,8,10,12,14,16,18,20,22,24,26; HINDI = ODD indices 1..25; idx 0 is the bilingual cover. The alternating hypothesis HELD, and it was checked rather than assumed: every English page opens with a complete fresh block (no question is stranded on an odd page) and the question numbers run 1..33 unbroken. A per-page structural scan of the source PDF corroborates it — the odd pages carry only 17-73 extractable Latin characters (footer plus shared numerals/labels) against 500-1143 on the even pages, and a full-size read of idx 23 and the dumped text of idx 1/7/15/23/25 confirm no English prose anywhere on an odd page. NOTE for whoever writes the next such probe: a DEVANAGARI-RATIO test is USELESS on this PDF — the Hindi is set in a font with no usable ToUnicode map, so every page scores 0.0% Devanagari and the Hindi prose extracts as nothing at all. DECIMAL POINTS: this paper prints RAISED dots (0·4, 6·63, 0·196) so they are written {\\cdot}. Its own MARKING SCHEME prints ordinary dots (0.196) — the documented paper-disagrees-with-its-own-scheme case; the PAPER is followed. MARKING SCHEME page range: the merged file XII_042_Physics_MS_55_5_1,2,3.pdf carries 55/5/3 at 0-based pdf pages 32-47 (labelled 'Page 1 of 16'..'Page 16 of 16'); an off-by-one in my first text dump pulled in a page of 55/5/2 and dropped page 16, which would have attached a foreign NOTE to this paper — caught and corrected before any answer was taken.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "difficulty": "EASY",
+      "stem": "A beam of light of wavelength 720 nm in air enters water (refractive index = \\(\\dfrac{4}{3}\\)). Its wavelength in water will be :",
+      "options": [
+        { "label": "A", "text": "540 nm" },
+        { "label": "B", "text": "480 nm" },
+        { "label": "C", "text": "420 nm" },
+        { "label": "D", "text": "720 nm" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "difficulty": "MODERATE",
+      "stem": "A capacitor of capacitance C has reactance X in an ac circuit. If the capacitance and the frequency of the applied voltage are doubled, the new reactance will become :",
+      "options": [
+        { "label": "A", "text": "4X" },
+        { "label": "B", "text": "2X" },
+        { "label": "C", "text": "\\(\\dfrac{X}{2}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{X}{4}\\)" }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "difficulty": "MODERATE",
+      "stem": "Four point charges Q each, are held at the four corners of a square of side \\(l\\). The amount of work done in bringing a charge Q from infinity to the centre of the square will be :",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{Q^2}{\\pi \\varepsilon_0 l}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{\\sqrt{2}\\,Q^2}{\\pi \\varepsilon_0 l}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{Q^2}{2\\pi \\varepsilon_0 l}\\)" },
+        { "label": "D", "text": "Zero" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "difficulty": "MODERATE",
+      "stem": "A metal sheet is inserted between the plates of a parallel plate capacitor of capacitance C. If the sheet partly occupies the space between the plates, the capacitance :",
+      "options": [
+        { "label": "A", "text": "remains C" },
+        { "label": "B", "text": "becomes greater than C" },
+        { "label": "C", "text": "becomes less than C" },
+        { "label": "D", "text": "becomes zero" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Combination of Resistors",
+      "difficulty": "MODERATE",
+      "stem": "Four resistors, each of resistance R and a key K are connected as shown in the figure. The equivalent resistance between points A and B when key K is open, will be :",
+      "options": [
+        { "label": "A", "text": "4R" },
+        { "label": "B", "text": "\\(\\infty\\)" },
+        { "label": "C", "text": "\\(\\dfrac{R}{4}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{4R}{3}\\)" }
+      ],
+      "answer": "D",
+      "_figure": "REQUIRED — the stem defers entirely to the drawing ('as shown in the figure') and every option is an equivalent resistance, so the NETWORK TOPOLOGY is the whole question. Read off page idx 4 of THIS paper: a large circle is drawn as the outer conductor; inside it a horizontal chord and a vertical chord cross at the centre, and the four resistors labelled R sit one on each of the four half-chords; a key K is drawn in the right-hand part of the horizontal chord, with the terminal A marked just inside it and the terminal B marked where that chord meets the circle. HOW the four resistors, the key and the circle connect to A and B is DELIBERATELY WITHHELD — that wiring is exactly what the question tests, and stating it gives the answer. Page idx 4."
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "difficulty": "MODERATE",
+      "stem": "A charged particle gains a speed of \\(10^6\\ \\mathrm{ms^{-1}}\\), when accelerated from rest through a potential difference 10 kV. It enters a region of magnetic field of \\(0{\\cdot}4\\) T such that \\(\\vec{v} \\perp \\vec{B}\\). The radius of circular path described by it is :",
+      "options": [
+        { "label": "A", "text": "\\(2{\\cdot}5\\) cm" },
+        { "label": "B", "text": "5 cm" },
+        { "label": "C", "text": "8 cm" },
+        { "label": "D", "text": "10 cm" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "difficulty": "EASY",
+      "stem": "A current of \\(\\left(\\dfrac{10}{\\pi}\\right)\\) A is maintained in a circular loop of radius 14 cm. The value of dipole moment associated with the loop is :",
+      "options": [
+        { "label": "A", "text": "\\(0{\\cdot}019\\ \\mathrm{Am^2}\\)" },
+        { "label": "B", "text": "\\(0{\\cdot}14\\ \\mathrm{Am^2}\\)" },
+        { "label": "C", "text": "\\(0{\\cdot}196\\ \\mathrm{Am^2}\\)" },
+        { "label": "D", "text": "\\(0{\\cdot}615\\ \\mathrm{Am^2}\\)" }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "difficulty": "EASY",
+      "stem": "Which of the following rays coming from the Sun plays an important role in maintaining the Earth's warmth ?",
+      "options": [
+        { "label": "A", "text": "Infrared rays" },
+        { "label": "B", "text": "\\(\\gamma\\) rays" },
+        { "label": "C", "text": "UV rays" },
+        { "label": "D", "text": "Visible light rays" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "difficulty": "MODERATE",
+      "stem": "The dimensions of \\((\\mu\\varepsilon)^{-1}\\), where \\(\\varepsilon\\) is permittivity and \\(\\mu\\) is permeability of a medium, are :",
+      "options": [
+        { "label": "A", "text": "\\([\\mathrm{M^0 L^1 T^{-1}}]\\)" },
+        { "label": "B", "text": "\\([\\mathrm{M^0 L^2 T^{-2}}]\\)" },
+        { "label": "C", "text": "\\([\\mathrm{M^1 L^2 T^{-2}}]\\)" },
+        { "label": "D", "text": "\\([\\mathrm{M^1 L^{-1} T^1}]\\)" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "EASY",
+      "stem": "Which of the following electromagnetic waves has photons of largest momentum ?",
+      "options": [
+        { "label": "A", "text": "X-rays" },
+        { "label": "B", "text": "AM radio waves" },
+        { "label": "C", "text": "Microwaves" },
+        { "label": "D", "text": "TV waves" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "difficulty": "MODERATE",
+      "stem": "The kinetic energy of an alpha particle is four times the kinetic energy of a proton. The ratio \\(\\left(\\dfrac{\\lambda_\\alpha}{\\lambda_p}\\right)\\) of de Broglie wavelengths associated with them will be :",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{1}{16}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{1}{8}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{1}{4}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{1}{2}\\)" }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "EASY",
+      "stem": "Two coherent light waves, each having amplitude 'a', superpose to produce an interference pattern on a screen. The intensity of light as seen on the screen varies between :",
+      "options": [
+        { "label": "A", "text": "0 and \\(2a^2\\)" },
+        { "label": "B", "text": "0 and \\(4a^2\\)" },
+        { "label": "C", "text": "\\(a^2\\) and \\(2a^2\\)" },
+        { "label": "D", "text": "\\(2a^2\\) and \\(4a^2\\)" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : During formation of a nucleus, the mass defect produced is the source of the binding energy of the nucleus.\nReason (R) : For all nuclei, the value of binding energy per nucleon increases with mass number.",
+      "options": [
+        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
+        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
+        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
+        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : In Rutherford's alpha particle scattering experiment, the presence of only few alpha particles at angle of scattering \\(\\pi\\) led him to the discovery of nucleus.\nReason (R) : The size of nucleus is approximately \\(10^{-5}\\) times the size of an atom and therefore only few alpha particles are rebounded.",
+      "options": [
+        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
+        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
+        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
+        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : The impurities in p-type Si are not pentavalent atoms.\nReason (R) : The hole density in valance band in p-type semiconductor is almost equal to the acceptor density.",
+      "options": [
+        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
+        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
+        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
+        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
+      ],
+      "answer": "B",
+      "_flag": "The paper prints 'valance band' for 'valence band' in the Reason. Transcribed as printed. (The opener 55/5/1 prints the same misspelling on the same question, so it is CBSE's, not an artefact of one typesetting.)"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "difficulty": "MODERATE",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : The Balmer series in hydrogen atom spectrum is formed when the electron jumps from higher energy state to the ground state.\nReason (R) : In Bohr's model of hydrogen atom, the electron can jump between successive orbits only.",
+      "options": [
+        { "label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)." },
+        { "label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)." },
+        { "label": "C", "text": "Assertion (A) is true, but Reason (R) is false." },
+        { "label": "D", "text": "Both Assertion (A) and Reason (R) are false." }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Combination of Resistors",
+      "difficulty": "MODERATE",
+      "stem": "Find the effective resistance of the network of resistors between points A and F as shown in the figure.",
+      "_figure": "REQUIRED — the stem names no resistor value and no connection; every number the question needs is inside the drawing. Read off page idx 10 of THIS paper: six labelled nodes A, B, C, D, E, F. A horizontal run goes A — 7 Ω — B — 40 Ω — E — 5 Ω — F. Above it, B — 2 Ω — C along the left upright, C — 4 Ω — D along the top, D — 8 Ω — E along the right upright, and a diagonal B — 3 Ω — D across that rectangle. The topology and the values are stated in full because this is a computation: the answer is a single effective resistance the student must still reduce the network to obtain, so reading the picture gives away nothing the question tests. Page idx 10."
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "difficulty": "MODERATE",
+      "stem": "A current of 5 A is passing along +X direction through a wire lying along X-axis. Find the magnetic field \\(\\vec{B}\\) at a point \\(\\vec{r} = (3\\hat{i} + 4\\hat{j})\\) m due to 1 cm element of the wire, centered at origin."
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "difficulty": "MODERATE",
+      "stem": "Define the term, 'distance of closest approach'. A proton of \\(3{\\cdot}95\\) MeV energy approaches a target nucleus Z = 79 in head-on position. Calculate its distance of closest approach."
+    },
+    {
+      "ref": "Q20a",
+      "questionNumber": "20 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "stem": "A point object is placed in air at a distance R/3 in front of a convex surface of radius of curvature R, separating air from a medium of refractive index n (< 4). Find the nature and position of the image formed."
+    },
+    {
+      "ref": "Q20b",
+      "questionNumber": "20 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "MODERATE",
+      "stem": "In Young's double slit experimental set-up, the intensity of the central maximum is \\(I_0\\). Calculate the intensity at a point where the path difference between two interfering waves is \\(\\lambda/3\\).",
+      "_alternativeTo": "Q20a",
+      "_flag": "CONDITIONAL marking note, recorded not voided. The marking scheme prints, under this answer, 'Note: If a student attempt by using ... award full credit for correct answer' — latitude over the ROUTE taken, conditional on the answer being right, so per the addendum's table it is `_flag` only and NOT `_cbseVoided`."
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "stem": "The threshold frequency for a given metal is \\(3{\\cdot}6 \\times 10^{14}\\) Hz. If monochromatic radiations of frequency \\(6{\\cdot}8 \\times 10^{14}\\) Hz are incident on this metal, find the cut-off potential for the photoelectrons."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Energy Stored in a Capacitor",
+      "difficulty": "MODERATE",
+      "stem": "(a) \"There is a limit to the amount of charge that can be stored on a given capacitor.\" Explain.\n(b) A capacitor is charged by a battery to a potential difference V. It is disconnected from the battery and connected across another identical uncharged capacitor. Calculate the ratio of total energy stored in the combination to the initial energy stored in the capacitor."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction",
+      "difficulty": "MODERATE",
+      "stem": "(a) \"You cannot see a person standing on the other side of a boundary wall but can hear him.\" Explain with reason.\n(b) Light of wavelength 750 nm is incident normally on a slit of width \\(1{\\cdot}5\\) mm. Diffraction pattern is obtained on a screen \\(1{\\cdot}0\\) m away from the slit. Find the distance of the nearest point from the central maxima at which the intensity is zero."
+    },
+    {
+      "ref": "Q24",
+      "questionNumber": "24",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "The Bar Magnet",
+      "difficulty": "MODERATE",
+      "stem": "The magnetic moment (5J/T) of a bar magnet points along a uniform magnetic field \\(0{\\cdot}4\\) T.\n(a) Calculate (i) the potential energy of the bar magnet, and (ii) the work done in turning the magnet by \\(180^\\circ\\).\n(b) In which case is the potential energy of the magnet minimum ?"
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "difficulty": "MODERATE",
+      "stem": "A right-angled prism ABC (refractive index \\(\\sqrt{2}\\)) is kept on a plane mirror as shown in the figure. A ray of light is incident normally on the face AC.\n(a) Trace the path of the ray as it passes through the prism.\n(b) Find the angle of deviation produced by the prism.",
+      "_figure": "REQUIRED — the stem defers to the drawing for the prism's orientation and for which face rests on the mirror, and part (a) asks the student to TRACE the path, which is unanswerable without it. Read off page idx 12 of THIS paper: a right-angled triangle with vertex A at the top, B at the lower right and C at the lower left; the angle at A is marked \\(60^\\circ\\) and the angle at B is marked \\(90^\\circ\\) with a right-angle square, so AB is the vertical face and BC the horizontal base; the base CB rests on a plane mirror drawn as a hatched line. An arrow at the upper left strikes the slanted face AC with a small right-angle mark at the point of incidence, showing normal incidence. The subsequent path inside the prism and the deviation are NOT described — they are what the question asks for. Page idx 12.",
+      "_flag": "SUBTOPIC judgement, recorded so it is visible rather than silent. The ray enters NORMALLY, so no refraction occurs at any face and the physics is total internal reflection (critical angle \\(45^\\circ\\) for \\(n=\\sqrt{2}\\)) plus a plane-mirror reflection — NCERT's 'total internal reflection in prisms' treatment — hence 'Refraction and Total Internal Reflection'. The competing filing is 'Refraction Through a Prism', which the stem's own words ('prism', 'angle of deviation produced by the prism') would support. Both are live subtopics of this chapter; this is not a taxonomy gap."
+    },
+    {
+      "ref": "Q26a",
+      "questionNumber": "26 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "difficulty": "HARD",
+      "stem": "Two small solid metal balls A and B of radii R and 2R having charge densities \\(2\\sigma\\) and \\(3\\sigma\\) respectively are kept far apart. Find the charge densities on A and B after they are connected by a conducting wire."
+    },
+    {
+      "ref": "Q26b",
+      "questionNumber": "26 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "difficulty": "HARD",
+      "stem": "Two infinitely long straight wires '1' and '2' are placed d distance apart, parallel to each other, as shown in the figure. They are uniformly charged having charge densities \\(\\lambda\\) and \\(-\\dfrac{\\lambda}{2}\\) respectively. Locate the position of the point from wire '1' at which the net electric field is zero and identify the region in which it lies.",
+      "_alternativeTo": "Q26a",
+      "_figure": "REQUIRED — the question asks the student to 'identify the region', and the three regions exist only as labels in the drawing. Read off page idx 14 of THIS paper: two parallel vertical lines, the left one numbered '1' and annotated \\(\\lambda\\), the right one numbered '2' and annotated \\(-\\dfrac{\\lambda}{2}\\), with a dimension arrow marked d spanning the gap between them. The space to the LEFT of wire 1 is captioned 'Region A', the space BETWEEN the wires 'Region B', and the space to the RIGHT of wire 2 'Region C'. WHICH region contains the null point, and at what distance, is NOT stated — that is the answer. Page idx 14.",
+      "_flag": "CONDITIONAL marking note, recorded not voided. The marking scheme prints '(Note : Award full credit if a student finds the position by taking point in region C directly)' — latitude over the route, conditional on the work being right, so `_flag` only per the addendum's table."
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "difficulty": "MODERATE",
+      "stem": "(a) Draw the energy-band diagrams for conductors, semiconductors and insulators at \\(T = 0\\) K. How is an electron-hole pair formed in a semiconductor at room temperature ?\n(b) Carbon and silicon both, are members of IV group of periodic table and have the same lattice structure. Carbon is an insulator whereas silicon is a semiconductor. Explain."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate between half-wave and full-wave rectification. With the help of a circuit diagram, explain the working of a full-wave rectifier."
+    },
+    {
+      "ref": "Q29ia",
+      "questionNumber": "29 (i) (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS1",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "_caseStudyLabel": "Section D, Question 29",
+      "stem": "A galvanometer is converted into a voltmeter of range \\((0 - V)\\) by connecting with it, a resistance \\(R_1\\). If \\(R_1\\) is replaced by \\(R_2\\), the range becomes \\((0 - 2V)\\). The resistance of the galvanometer is :",
+      "options": [
+        { "label": "A", "text": "\\((R_2 - 2R_1)\\)" },
+        { "label": "B", "text": "\\((R_2 - R_1)\\)" },
+        { "label": "C", "text": "\\((R_1 + R_2)\\)" },
+        { "label": "D", "text": "\\((R_1 - 2R_2)\\)" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q29ib",
+      "questionNumber": "29 (i) (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS1",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "_caseStudyLabel": "Section D, Question 29",
+      "stem": "A current of 5 mA flows through a galvanometer. Its coil has 100 turns, each of area of cross-section \\(18\\ \\mathrm{cm^2}\\) and is suspended in a magnetic field \\(0{\\cdot}20\\) T. The deflecting torque acting on the coil will be :",
+      "options": [
+        { "label": "A", "text": "\\(3{\\cdot}6 \\times 10^{-3}\\) Nm" },
+        { "label": "B", "text": "\\(1{\\cdot}8 \\times 10^{-4}\\) Nm" },
+        { "label": "C", "text": "\\(2{\\cdot}4 \\times 10^{-3}\\) Nm" },
+        { "label": "D", "text": "\\(1{\\cdot}2 \\times 10^{-4}\\) Nm" }
+      ],
+      "answer": "B",
+      "_alternativeTo": "Q29ia"
+    },
+    {
+      "ref": "Q29ii",
+      "questionNumber": "29 (ii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS1",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "_caseStudyLabel": "Section D, Question 29",
+      "stem": "The value of resistance of the ammeter in case (ii) will be :",
+      "options": [
+        { "label": "A", "text": "\\(0{\\cdot}20\\) \\(\\Omega\\)" },
+        { "label": "B", "text": "\\(0{\\cdot}24\\) \\(\\Omega\\)" },
+        { "label": "C", "text": "\\(6{\\cdot}0\\) \\(\\Omega\\)" },
+        { "label": "D", "text": "\\(6{\\cdot}25\\) \\(\\Omega\\)" }
+      ],
+      "_noCorrectOption": true,
+      "_cbseVoided": "Award 1 mark for this question to all students .",
+      "_flag": "DEFECTIVE STEM, and the defect is explained by the reshuffle between sets. This sub-part is itself numbered (ii), so 'the ammeter in case (ii)' refers to ITSELF and names no ammeter — the question is unanswerable as printed, and CBSE voided it. In the opener 55/5/1 the SAME printed stem is sub-part (iii) and 'case (ii)' correctly points at that paper's (ii), the 6 \\(\\Omega\\) / \\(0{\\cdot}2\\) A shunt question; here the two were swapped and the cross-reference broke. Note it is the SHUNT question that is (iii) in this paper, and computing from it gives \\(0{\\cdot}24\\ \\Omega\\) = option (B) — but that is a reconstruction of the intent, NOT a key: the marking scheme prints no letter for this row, so `answer` is deliberately absent and `_noCorrectOption` is set."
+    },
+    {
+      "ref": "Q29iii",
+      "questionNumber": "29 (iii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS1",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "_caseStudyLabel": "Section D, Question 29",
+      "stem": "A galvanometer of resistance 6 \\(\\Omega\\) shows full scale deflection for a current of \\(0{\\cdot}2\\) A. The value of shunt to be used with this galvanometer to convert it into an ammeter of range \\((0 - 5\\) A\\()\\) is :",
+      "options": [
+        { "label": "A", "text": "\\(0{\\cdot}25\\) \\(\\Omega\\)" },
+        { "label": "B", "text": "\\(0{\\cdot}30\\) \\(\\Omega\\)" },
+        { "label": "C", "text": "\\(0{\\cdot}50\\) \\(\\Omega\\)" },
+        { "label": "D", "text": "\\(6{\\cdot}0\\) \\(\\Omega\\)" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q29iv",
+      "questionNumber": "29 (iv)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "difficulty": "EASY",
+      "setId": "2025-55-5-3-CS1",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "_caseStudyLabel": "Section D, Question 29",
+      "stem": "The value of the current sensitivity of a galvanometer is given by :",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{k}{\\mathrm{NBA}}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{\\mathrm{NBA}}{k}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{k\\mathrm{BA}}{\\mathrm{N}}\\)" },
+        { "label": "D", "text": "\\(\\dfrac{k\\mathrm{NB}}{\\mathrm{A}}\\)" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q30i",
+      "questionNumber": "30 (i)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS2",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "_caseStudyLabel": "Section D, Question 30",
+      "stem": "Which of the following graphs can be used to obtain the value of Planck's constant ?",
+      "options": [
+        { "label": "A", "text": "Photocurrent versus Intensity of incident light" },
+        { "label": "B", "text": "Photocurrent versus Frequency of incident light" },
+        { "label": "C", "text": "Cut-off potential versus Frequency of incident light" },
+        { "label": "D", "text": "Cut-off potential versus Intensity of incident light" }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q30iia",
+      "questionNumber": "30 (ii) (a)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS2",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "_caseStudyLabel": "Section D, Question 30",
+      "stem": "Red light, yellow light and blue light of the same intensity are incident on a metal surface successively. \\(K_R\\), \\(K_Y\\) and \\(K_B\\) represent the maximum kinetic energy of photoelectrons respectively, then :",
+      "options": [
+        { "label": "A", "text": "\\(K_R > K_Y > K_B\\)" },
+        { "label": "B", "text": "\\(K_Y > K_B > K_R\\)" },
+        { "label": "C", "text": "\\(K_B > K_Y > K_R\\)" },
+        { "label": "D", "text": "\\(K_R > K_B > K_Y\\)" }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q30iib",
+      "questionNumber": "30 (ii) (b)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Electron Emission",
+      "difficulty": "EASY",
+      "setId": "2025-55-5-3-CS2",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "_caseStudyLabel": "Section D, Question 30",
+      "stem": "Which of the following metals exhibits photoelectric effect with visible light ?",
+      "options": [
+        { "label": "A", "text": "Caesium" },
+        { "label": "B", "text": "Zinc" },
+        { "label": "C", "text": "Cadmium" },
+        { "label": "D", "text": "Magnesium" }
+      ],
+      "answer": "A",
+      "_alternativeTo": "Q30iia"
+    },
+    {
+      "ref": "Q30iii",
+      "questionNumber": "30 (iii)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "difficulty": "MODERATE",
+      "setId": "2025-55-5-3-CS2",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "_caseStudyLabel": "Section D, Question 30",
+      "stem": "When the frequency of the incident light is increased without changing its intensity, the saturation current :",
+      "options": [
+        { "label": "A", "text": "increases linearly" },
+        { "label": "B", "text": "decreases" },
+        { "label": "C", "text": "increases non-linearly" },
+        { "label": "D", "text": "remains the same" }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q30iv",
+      "questionNumber": "30 (iv)",
+      "section": "D",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "difficulty": "EASY",
+      "setId": "2025-55-5-3-CS2",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "_caseStudyLabel": "Section D, Question 30",
+      "stem": "Which of the following graphs shows the variation of photoelectric current I with the intensity of light ?",
+      "options": [
+        { "label": "A", "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a straight line starting on the I-axis and falling steadily to meet the Intensity-axis." },
+        { "label": "B", "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a horizontal straight line, parallel to the Intensity-axis and above it." },
+        { "label": "C", "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a straight line from the origin O rising with a constant positive slope." },
+        { "label": "D", "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a curve rising steeply from the origin O and then flattening to a horizontal asymptote." }
+      ],
+      "answer": "C",
+      "_figure": "REQUIRED — all four options are DRAWN GRAPHS and the stem names none of them. Read off page idx 20 of THIS paper: each option is a small plot with I on the arrowed vertical axis, 'Intensity' on the arrowed horizontal axis and the origin marked O; the four shapes are as written in the option texts. Describing the shapes is a lossless reading rather than an approximation and does not state the answer, because what the question tests is the PHYSICS (how photocurrent depends on intensity), not the reading of the picture. Page idx 20."
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "HARD",
+      "stem": "(i) Draw a ray diagram of a reflecting telescope (Cassegrain) and explain the formation of image. State two important advantages that a reflecting telescope has over a refracting telescope.\n(ii) In a refracting telescope, the focal length of the objective is 50 times the focal length of the eyepiece. When the final image is formed at infinity, the length of the tube is 102 cm. Find the focal lengths of the two lenses."
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "HARD",
+      "stem": "(i) Write any two advantages of a compound microscope over a simple microscope. Draw a ray diagram for the image formation at the near point by a compound microscope and explain it.\n(ii) A thin planoconcave lens with its curved face of radius of curvature R is made of glass of refractive index \\(n_1\\). It is placed coaxially in contact with a thin equiconvex lens of same radius of curvature of refractive index \\(n_2\\). Obtain the power of the combination lens.",
+      "_alternativeTo": "Q31a",
+      "_flag": "Sub-part (ii) is lens-maker's formula / power of a lens combination ('Refraction at Spherical Surfaces and by Lenses') while sub-part (i) is the compound microscope. Filed on 'Optical Instruments' to match the branch it is an alternative to. Not a defect."
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "difficulty": "HARD",
+      "stem": "(i) Three batteries \\(E_1\\), \\(E_2\\) and \\(E_3\\) of emfs and internal resistances \\((4\\) V, \\(2\\ \\Omega)\\), \\((2\\) V, \\(4\\ \\Omega)\\) and \\((6\\) V, \\(2\\ \\Omega)\\) respectively are connected as shown in the figure. Find the values of the currents passing through batteries \\(E_1\\), \\(E_2\\) and \\(E_3\\).\n(ii) The ends of six wires, each of resistance R \\((= 10\\ \\Omega)\\) are joined as shown in the figure. The points A and B of the arrangement are connected in a circuit. Find the value of the effective resistance offered by it to the circuit.",
+      "_figure": "REQUIRED — TWO figures back this one row and both stems defer entirely to them ('as shown in the figure'). In THIS paper they sit on DIFFERENT pages: sub-part (i)'s drawing is on page idx 22 and sub-part (ii)'s on page idx 24. Read off those pages: (i) a rectangular circuit whose left and right sides are bridged by three horizontal branches one above another, each carrying a battery cell symbol, labelled \\(E_1\\), \\(E_2\\) and \\(E_3\\) from top to bottom; (ii) six resistors each labelled R drawn as a triangle with a central node — one R on each of the three outer sides, the bottom side running between the marked terminals A and B, and three further R's from the central node out to the three vertices. The CELL POLARITIES in (i) and the exact vertex-to-node pairing in (ii) are DELIBERATELY WITHHELD, since the current directions and the network's symmetry are what the question tests. Page idx 22."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "difficulty": "HARD",
+      "stem": "(i) Current I \\((= 1\\) A\\()\\) is passing through a copper rod \\((n = 8{\\cdot}5 \\times 10^{28}\\ \\mathrm{m^{-3}})\\) of varying cross-sections as shown in the figure. The areas of cross-section at points A and B along its length are \\(1{\\cdot}0 \\times 10^{-7}\\ \\mathrm{m^2}\\) and \\(2{\\cdot}0 \\times 10^{-7}\\ \\mathrm{m^2}\\) respectively. Calculate :\n(I) the ratio of electric fields at points A and B.\n(II) the drift velocity of free electrons at point B.\n(ii) Two point charges \\(q_1\\) \\((= 16\\ \\mu\\mathrm{C})\\) and \\(q_2\\) \\((= 1\\ \\mu\\mathrm{C})\\) are placed at points \\(\\vec{r_1} = (3\\) m\\()\\hat{i}\\) and \\(\\vec{r_2} = (4\\) m\\()\\hat{j}\\). Find the net electric field \\(\\vec{E}\\) at point \\(\\vec{r} = (3\\) m\\()\\hat{i} + (4\\) m\\()\\hat{j}\\).",
+      "_alternativeTo": "Q32a",
+      "_figure": "ILLUSTRATIVE — read off page idx 24 of THIS paper: a tapering copper rod drawn in perspective, narrow at the left where the current I enters (arrow) and wider at the right where it leaves (arrow), with two hatched cross-sections marked A (nearer the narrow end) and B (nearer the wide end). Attached because it shows the geometry, but the row is answerable from the stem alone: BOTH cross-sectional areas are stated in words, so the drawing carries no quantity the text omits. Page idx 24.",
+      "_flag": "Two notes on this row. (1) TAXONOMY: sub-parts (i) and (ii) belong to DIFFERENT chapters — (i) is Current Electricity (drift velocity, current density) and (ii) is Electric Charges and Fields (superposition of point-charge fields). Filed on Current Electricity, which carries the larger share of the marks and matches the branch it is an alternative to. Not a defect. (2) CONDITIONAL marking note, recorded not voided: the scheme prints 'NOTE: Award full credit of this part if a student finds magnitude and direction separately.' against sub-part (ii) — latitude conditional on the work, so `_flag` only per the addendum's table."
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "difficulty": "HARD",
+      "stem": "(i) Define self-inductance of a coil. Derive the expression for the energy required to build up a current I in a coil of self-inductance L.\n(ii) The currents passing through two inductors of self-inductances 10 mH and 20 mH increase with time at the same rate.\nDraw graphs showing the variation of :\n(I) the magnitude of emf induced with the rate of change of current in each inductor.\n(II) the energy stored in each inductor with the current flowing through it."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "E",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "difficulty": "HARD",
+      "stem": "(i) Define the term mutual inductance. Deduce the expression for the mutual inductance of two long coaxial solenoids of the same length having different radii and different number of turns.\n(ii) The current through an inductor is uniformly increased from zero to 2 A in 40 s. An emf of 5 mV is induced during this period. Find the flux linked with the inductor at \\(t = 10\\) s.",
+      "_alternativeTo": "Q33a"
+    }
+  ]
+}

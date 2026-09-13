@@ -1,0 +1,330 @@
+{
+  "paper": "55/4/2",
+  "year": 2022,
+  "pattern": "term2_sci",
+  "_transcription": "ENGLISH pages are the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14; HINDI is the ODD indices 1, 3, 5, 7, 9, 11, 13; index 0 is the bilingual cover. Hindi comes FIRST in each pair. Every page was accounted for: the contact sheet was used only to decide where to look, and all seven English pages plus the odd pages around the Q12 page breaks were confirmed at full size. NO English overflow onto any odd page and NO parity inversion — idx 13 is Hindi-only (Q12 ङ) and idx 14 is its English twin. Folio check: English pages carry printed folios 3,5,7,9,11,13,15 and Hindi 2,4,6,8,10,12,14 — opposite parities, contiguous, and the cover's '15 printed pages / 12 questions' matches the 15 renders, so no page is missing. DECIMAL POINTS: measured by CODEPOINT off the source PDF (C:\\tmp\\PYQPs\\CBSE\\XII\\Physics\\2022\\qp\\Physics\\55-4-2 Physics.pdf), not by eye — every decimal inside a QUESTION is U+00B7 MIDDLE DOT (2·56 Q5, 1·5 Q7, 6·0/4·0/3·0 Q9, and 3·27 in Q4, whose dot the equation editor reorders out of digit-digit adjacency), so all are written {\\cdot}. Worth recording: the CONSTANTS page is the opposite — p01 (Hindi) and p02 (English) print 6.63, 1.6, 8.854, 9.1, 1.675, 1.673, 6.023, 1.38 with ORDINARY U+002E full stops. That page carries no question so nothing is transcribed from it, but at render resolution those dots LOOK raised, and the 55/4/1 _transcription note cites '6·63' as its evidence for the raised convention — by codepoint that particular example is wrong, though its conclusion for the transcribed rows is right. THE PAPER CONTAINS MCQs: Q12's five case-study sub-parts are 1-mark four-option MCQs keyed by the marking scheme, contrary to wave.ts's 'n/a (no MCQs)' for term2_sci. NOTE the paper labels them (a)-(e), NOT (i)-(v) as the dispatch said; their four options are labelled (i)-(iv) and map positionally onto A-D — and that mapping was VERIFIED rather than assumed, because the scheme prints the answer TEXT beside each roman numeral and all five texts match the option at that position. Marking scheme = pages 12-22 of the merged '55-4-1,2,3 ammended.pdf'; ms p00 header reads 'PAPER CODE – 55/4/2' and the merged file switches code at pages 12 and 23, so the 11-page slice is confirmed. NO VOIDS of any kind: a self-tested regex scan (5 known-bad fixtures fire, 4 known-good stay silent) over all 35 pages for 'no option is correct' / 'full mark' / 'full credit' / 'award … mark' / 'even if … not attempt' / 'mere attempt' / 'printing error' / 'misprint' / 'Hindi version' / 'English version' / '… medium' / 'bonus' / 'deleted' / 'any option' returns, within pages 12-22, ONLY the General-Instructions boilerplate repeated per paper code. The scan is demonstrably able to find real per-question notes in this very document — it caught two conditional 'Give full credit' notes in the 55/4/1 slice — so the negative is measured, not a silent failure. No medium-scoped clause anywhere in the file. INTERNAL CHOICE: THREE (Q3, Q9, Q10), each confirmed BOTH by a bare OR on its own line in the marking scheme (merged pages 15, 19, 20) AND by a printed OR on the English page (idx 4, 6, 8). Q4, Q5, Q6 and Q11 have an (a)/(b) shape with NO OR — the scheme prints one mark-split box per question totalling 3. Primary-branch marks: 2+2+2 + 3×8 + 5×1 = 35.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "difficulty": "EASY",
+      "stem": "What is meant by energy band gap in a solid ? Draw the energy band diagrams for a conductor, an insulator and a semiconductor."
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "difficulty": "EASY",
+      "stem": "Name the device which converts an ac input signal into a dc output signal. Write the principle of working of the device."
+    },
+    {
+      "ref": "Q3a",
+      "questionNumber": "3 (a)",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "difficulty": "MODERATE",
+      "stem": "Name the spectral series for a hydrogen atom which lies in the visible region. Find the ratio of the maximum to the minimum wavelengths of this series."
+    },
+    {
+      "ref": "Q3b",
+      "questionNumber": "3 (b)",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q3a",
+      "stem": "What are matter waves ? A proton and an alpha particle are accelerated through the same potential difference. Find the ratio of the de Broglie wavelength associated with the proton to that with the alpha particle."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "difficulty": "MODERATE",
+      "stem": "(a) Differentiate between nuclear fission and nuclear fusion.\n(b) Deuterium undergoes fusion as per the reaction :\n\\({}^{2}_{1}\\mathrm{H} + {}^{2}_{1}\\mathrm{H} \\longrightarrow {}^{3}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + 3{\\cdot}27\\ \\mathrm{MeV}\\)\nFind the duration for which an electric bulb of 500 W can be kept glowing by the fusion of 100 g of deuterium."
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "difficulty": "MODERATE",
+      "stem": "(a) In Geiger-Marsden experiment, calculate the distance of closest approach for an alpha particle with energy \\(2{\\cdot}56 \\times 10^{-12}\\) J. Consider that the particle approaches gold nucleus \\((\\mathrm{Z} = 79)\\) in head-on position.\n(b) If the above experiment is repeated with a proton of the same energy, then what will be the value of the distance of closest approach ?"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "difficulty": "MODERATE",
+      "_flag": "Three parts spanning three subtopics — (a) p-n junction biasing, (b) extrinsic semiconductors / doping, (c) photodiode in reverse bias. Filed on the dominant one, which is also where the identical question sits in 55/4/1. NOT a taxonomy gap: 'Special Purpose p-n Junction Diodes' IS live on the Physics axis (verified by running axis.ts), so part (c) has a home; it is simply not the dominant part. The 55/4/1 row's flag asserts that the axis has no such subtopic — that claim is STALE and should not be re-raised. Stem transcribed as printed, including the paper's 'reversed biased' for 'reverse biased'.",
+      "stem": "Answer the following, giving reason :\n(a) The resistance of a p-n junction is low when it is forward biased and is high when it is reversed biased.\n(b) Doping of intrinsic semiconductors is a necessity for making electronic devices.\n(c) Photodiodes are operated in reverse bias."
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "MODERATE",
+      "stem": "(a) The interference pattern is not observed in Young's double slit experiment when the two sources \\(\\mathrm{S_1}\\) and \\(\\mathrm{S_2}\\) are far apart. Explain.\n(b) Mention the conditions for the two sources to be coherent.\n(c) What is the effect on the interference pattern in a Young's double slit experiment, if the source of wavelength \\(\\lambda\\) is replaced by another source of wavelength \\(1{\\cdot}5\\ \\lambda\\), with the interference pattern still observable ?"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "difficulty": "MODERATE",
+      "stem": "The wavelength of the waves associated with a particle having kinetic energy E is \\(\\lambda\\). How and by what factor should its kinetic energy be changed so that the wavelength becomes \\(\\left(\\frac{\\lambda}{2}\\right)\\) ? Also, find the ratio of the final to the initial velocity of the particle."
+    },
+    {
+      "ref": "Q9a",
+      "questionNumber": "9 (a)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "MODERATE",
+      "stem": "(i) Draw a labelled ray diagram showing the formation of the image at infinity by an astronomical telescope.\n(ii) A telescope consists of an objective of focal length 150 cm and an eyepiece of focal length \\(6{\\cdot}0\\) cm. If the final image is formed at infinity, then calculate :\n(I) the length of the tube in this adjustment, and\n(II) the magnification produced."
+    },
+    {
+      "ref": "Q9b",
+      "questionNumber": "9 (b)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q9a",
+      "stem": "(i) Draw a labelled ray diagram showing the formation of the image at least distance of distinct vision by a compound microscope.\n(ii) A small object is placed at a distance of \\(3{\\cdot}0\\) cm from a magnifier of focal length \\(4{\\cdot}0\\) cm. Find :\n(I) the position of the image formed, and\n(II) the linear magnification produced."
+    },
+    {
+      "ref": "Q10a",
+      "questionNumber": "10 (a)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "difficulty": "MODERATE",
+      "stem": "Identify electromagnetic waves which :\n(i) are used in radar system.\n(ii) affect a photographic plate.\n(iii) are used in surgery.\nWrite their frequency range."
+    },
+    {
+      "ref": "Q10b",
+      "questionNumber": "10 (b)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q10a",
+      "stem": "A plane wavefront is propagating from a rarer into a denser medium. Use Huygens principle to show the refracted wavefront and verify Snell's law."
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "difficulty": "HARD",
+      "_flag": "SUBTOPIC — two defensible readings, recorded rather than silently picked. Filed on 'Refraction and Total Internal Reflection' because the marking scheme's PRIMARY solution is successive Snell's-law refraction at plane faces (at Q on BE, then at CF), which is NCERT §9.3. Its 'Alternatively' branch instead treats the wedge CFG as a prism and applies r1 + r2 = A, which would file it on 'Refraction Through a Prism'. The primary method decides the filing.",
+      "_figure": "REQUIRED — the stem gives only the 30 degree angle of incidence and the two refractive indices; the geometry that makes the question answerable (the 60 degree wedge at G and the right angle at F) is printed ONLY in the drawing. Drawing: a rectangle with A at the top-left and D at the bottom-left, crossed by two vertical lines BE and CF, so B and C sit on the top edge and E and F on the bottom edge. The left region ADEB is labelled with a circled 1; the middle region BCFE is labelled with a circled 2 and captioned 'Water'; a slanting line runs from C down to a point G on the bottom edge to the right of F, and the triangular region CFG is labelled with a circled 3, carries a right-angle mark at F, has its angle at G marked 60 degrees, and has 'mu = sqrt 2' printed beneath FG. A dot labelled S sits inside region 1; a ray runs from S up and to the right to a point Q on BE, where a dashed horizontal normal is drawn and the angle between the ray and that normal is marked 30 degrees. Described IN FULL, deliberately: nothing here states an answer, because the geometry is GIVEN data while what is asked — the traced path beyond Q and the angle of emergence — is not drawn, the printed figure showing the ray only as far as Q. Page idx 8.",
+      "stem": "The figure shows a water column BCFE surrounded by two media \\(\\textcircled{1}\\) and \\(\\textcircled{3}\\) of the same refractive index \\(\\sqrt{2}\\). A ray of light from a point source S is incident on surface BE at an angle of \\(30^\\circ\\).\n(a) Trace the path of ray through media \\(\\textcircled{2}\\) and \\(\\textcircled{3}\\) as it emerges out of face CG.\n(b) Find the angle of emergence at face CG."
+    },
+    {
+      "ref": "Q12a",
+      "questionNumber": "12 (a)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "setId": "2022-55-4-2-CS1",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "_figure": "REQUIRED — and the figure IS the discriminator, so it is described only in part. The point B named by the stem exists ONLY in the drawing, and which of the two media the object lies in is exactly what selects between the four options. Drawn: a single curved refracting surface running down the page, with the region on one side of it labelled n1 and the region on the other labelled n2, and the annotation '(n2 > n1)' printed beside them; a horizontal principal axis carrying two marked dots labelled C and B; and two dimension arrows along that axis, one labelled R spanning from C to the vertex of the surface and one labelled u spanning from the vertex to B. WITHHELD: which side of the surface C and B lie on, and therefore the direction in which the light travels. Read on THIS paper's own page rather than copied from the 55/4/1 file. Page idx 10.",
+      "stem": "An object is placed at the point B as shown in the figure. The object distance (u) and the image distance (v) are related as",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{v} - \\frac{1}{u} = \\left(\\frac{n_2 - n_1}{n_1}\\right)\\frac{1}{R}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{v} - \\frac{1}{u} = \\left(\\frac{n_1 - n_2}{n_2}\\right)\\frac{1}{R}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{n_2}{v} - \\frac{n_1}{u} = \\frac{(n_2 - n_1)}{R}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{n_1}{v} - \\frac{n_2}{u} = \\frac{(n_1 - n_2)}{R}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q12b",
+      "questionNumber": "12 (b)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "setId": "2022-55-4-2-CS1",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "stem": "A point object is placed in air at a distance 'R' in front of a convex spherical refracting surface of radius of curvature R. If the medium on the other side of the surface is glass, then the image is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "real and formed in glass."
+        },
+        {
+          "label": "B",
+          "text": "real and formed in air."
+        },
+        {
+          "label": "C",
+          "text": "virtual and formed in glass."
+        },
+        {
+          "label": "D",
+          "text": "virtual and formed in air."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q12c",
+      "questionNumber": "12 (c)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "EASY",
+      "setId": "2022-55-4-2-CS1",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "stem": "An object is kept at 2F in front of an equiconvex lens. The image formed is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "real and of the size of the object."
+        },
+        {
+          "label": "B",
+          "text": "virtual and of the size of the object."
+        },
+        {
+          "label": "C",
+          "text": "real and enlarged."
+        },
+        {
+          "label": "D",
+          "text": "virtual and diminished."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q12d",
+      "questionNumber": "12 (d)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "EASY",
+      "setId": "2022-55-4-2-CS1",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "stem": "A thin converging lens of focal length 10 cm and a thin diverging lens of focal length 20 cm are placed coaxially in contact. The power of the combination is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-5\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(+5\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(+15\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-15\\ \\mathrm{D}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12e",
+      "questionNumber": "12 (e)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "setId": "2022-55-4-2-CS1",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "_figure": "REQUIRED — and the figure IS the discriminator, so it is described only in part. 'Along the dotted line as shown in the figure' is the whole question: the ORIENTATION of the cut relative to the principal axis is what selects between f, f/2 and 2f, and the stem states it nowhere. Drawn: a biconcave lens in cross-section — an hourglass outline with flat top and bottom edges and two concave faces — with the letter R printed against each concave face near the top, and a single straight dashed line drawn right across the lens. WITHHELD: the orientation of that dashed line. Read on THIS paper's own page rather than copied from the 55/4/1 file. Page idx 14.",
+      "stem": "An equiconcave lens of focal length 'f' is cut into two identical parts along the dotted line as shown in the figure. The focal length of each part will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{f}{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{f}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(f\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2f\\)"
+        }
+      ],
+      "answer": "C"
+    }
+  ]
+}

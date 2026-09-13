@@ -1,0 +1,340 @@
+{
+  "paper": "55/3/2",
+  "year": 2022,
+  "pattern": "term2_sci",
+  "_transcription": "ENGLISH PAGES: idx 2, 4, 6, 8, 10 (idx 0 bilingual cover 'SET-2 / Q.P. Code 55/3/2', idx 1 Hindi General Instructions, idx 2 English General Instructions, idx 3/5/7/9 Hindi, idx 11 blank folio 12). The booklet is HINDI-FIRST: each Hindi page is immediately followed by its English twin covering exactly the same questions, so no block spills across a language boundary. Verified by cropping the top 320 px of every odd page into one strip and reading it at full size — idx 3 opens 'खण्ड - क' with Hindi Q1 and Q2(a), idx 5 opens Hindi Q7 and Q8, idx 7 opens the Hindi OR-alternative (a)/(b) of Q11, idx 9 opens Hindi 'III.' — so NO English overflow at the top of ANY odd page. idx 11 read at full size is genuinely blank (a lone asterisk, the QR block and the '.55/3/2  257 B  12' footer; no scanner show-through, mirrored or otherwise). The QP PDF is a pure image scan — the paper index records textChars=0 — so every reading of the paper here is by vision. PRINTED GENERAL INSTRUCTIONS AGREE with the term2_sci table: (i) 12 questions, (ii) three sections A/B/C, (iii) Section A Q1-3 @2, (iv) Section B Q4-11 @3, (v) Section C Q12 a case study of 5 marks; 6+24+5 = 35, matching the cover's 'Maximum Marks : 35' and the marking scheme's own 'A full scale of marks ___35___'. NOTE this paper prints SEVEN general instructions, with (vi) the internal-choice line and (vii) the log-tables line — the SCIENCE_ADDENDUM records that the 2022 CHEMISTRY papers print only six and put log tables at (vi), so the 'term2_sci papers print no internal-choice line at all' warning is a CHEMISTRY fact, not a pattern fact; this Physics paper does print one. It still gives NO COUNT ('internal choice has been provided in some of the questions'), so the roster was built the way the addendum prescribes. DECIMAL POINTS: this paper prints ORDINARY FULL STOPS throughout, confirmed at 3x magnification (6.5, 2.14, 1.33, 4.1 MeV, 41.1 degrees, 1.2, 1.2 cm, 3.0 cm, 1.25 cm, and the constants 6.63 / 8.854 / 1.675 / 1.673 / 6.023 / 1.38 on the instructions page). Its own MARKING SCHEME prints RAISED dots (4·1, 1·6, 1·673, 2·88) — the documented paper-disagrees-with-its-own-scheme case; the PAPER is what is transcribed. INTERNAL CHOICE: THREE (Q3, Q6, Q11), established two independent ways — a printed 'OR' on the English page with the matching 'अथवा' on its Hindi twin, AND exactly three bare 'OR' lines of their own in the marking scheme's text layer (no OR-inside-an-answer false positives). Primary branches sum to 35. ⚠ THIS PAPER HAS FIVE MCQs — Section C's case study is five 1-mark MCQs with four printed options each, marked '1 × 5 = 5' on the paper, and the marking scheme keys all five verbatim in its own SECTION—C table. See the _flag on Q12I. VOID SCAN: the marking scheme's text layer IS readable here (13,020 characters across our block) so the scan was programmatic as well as visual. All 8 rendered ms pages were read at full size, AND the text of PDF pages 8..15 (0-based) was scanned with a file-authored probe carrying a self-test that first proved it fires on six known-bad fixtures (CBSE's real void wordings, including the keyless and medium-scoped shapes) and stays silent on three known-good ones. ZERO question-level voids and ZERO medium-scoped clauses. The single regex hit is the boilerplate evaluator instruction 10 ('Please do not hesitate to award full marks if the answer deserves it'), which is not a void. ⚠ PAGE-RANGE NOTE for whoever reads this scheme next: `_papers.physics.json` records msPages {from: 8, to: 15} and those numbers are 0-BASED. Reading them as 1-based pulls in 55/3/1's page 8 and drops 55/3/2's, which is exactly the merged-scheme slip SCIENCE_ADDENDUM warns attaches a void to the wrong question. I made that error first; every page of the correct block (pdf 8..15) carries a '042_55/3/2_Physics # Page-N' footer, 10 occurrences of 55/3/2 and ZERO of either sibling, which is how it was settled. The rendered ms/p00..p07 are the CORRECT block.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "difficulty": "EASY",
+      "stem": "Explain the formation of the barrier potential in a p-n junction."
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Special Purpose p-n Junction Diodes",
+      "difficulty": "EASY",
+      "_flag": "PRINTED TYPO, transcribed as printed: part (a) reads 'its I-V charcteristics' where 'characteristics' is plainly meant. Confirmed at 3x magnification — the word is missing its first 'a'. Nothing was repaired. Note this question is NOT an internal choice: (a) and (b) are sub-parts carrying 1 mark each, confirmed against the marking scheme, which lists 'a) Circuit diagram and I-V characteristic 1 / b) To measure the light intensity using photodiode 1' with no OR between them. The 'Draw the circuit diagram' instruction is the STUDENT's drawing, not a printed figure, so no _figure is flagged.",
+      "stem": "(a) Draw the circuit diagram of an illuminated photodiode and its I-V charcteristics.\n(b) How can a photodiode be used to measure the light intensity ?"
+    },
+    {
+      "ref": "Q3a",
+      "questionNumber": "3 (a)",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "difficulty": "EASY",
+      "stem": "(i) Distinguish between isotopes and isobars.\n(ii) Two nuclei have different mass numbers \\(A_1\\) and \\(A_2\\). Are these nuclei necessarily the isotopes of the same element ? Explain."
+    },
+    {
+      "ref": "Q3b",
+      "questionNumber": "3 (b)",
+      "section": "A",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "difficulty": "EASY",
+      "_alternativeTo": "Q3a",
+      "stem": "(i) Name the factors on which photoelectric emission from a surface depends.\n(ii) Define the term 'threshold frequency' for a photosensitive material."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "difficulty": "MODERATE",
+      "_flag": "READING NOTE, not a defect. The exponent in part (a) is \\(10^{-19}\\), read at 3x magnification off the full-size page — the index contact sheet renders it small enough to be mistaken for \\(10^{-15}\\), which is how I first read it. Independently corroborated by the marking scheme, which computes \\(\\nu = E/h = 6.5 \\times 10^{-19} / 6.63 \\times 10^{-34} = 9.8 \\times 10^{14}\\) Hz and \\(E = 4.06\\) eV. Not an internal choice: (a) and (b) are sub-parts, and the scheme lists 'a) Calculation of frequency 1 / b) Determination of energy for electron emission 2' with no OR.",
+      "stem": "(a) Calculate the frequency of a photon of energy \\(6.5 \\times 10^{-19}\\) J.\n(b) Can this photon cause emission of an electron from the surface of Cs of work function 2.14 eV ? If yes, what will be maximum kinetic energy of the photoelectron ?"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "difficulty": "MODERATE",
+      "_flag": "FILING NOTE, not a defect. This question sits between two chapters and was filed on the closest fit rather than flagged as a gap. What it actually tests is which of wavelength, frequency and speed change when light crosses into a denser medium — the marking scheme's answer is 'No change in wavelength' and \\(c = 3 \\times 10^8\\) m/s for the reflected light, and \\(\\lambda' = \\lambda/\\mu = 451.1\\) nm, \\(v = c/\\mu = 2.26 \\times 10^8\\) m/s, \\(\\nu = 5 \\times 10^{14}\\) Hz unchanged for the refracted light. That frequency-is-conserved-while-wavelength-and-speed-scale result is derived in NCERT Ch.10 §10.2 (refraction and reflection of plane waves by Huygens' principle), hence Wave Optics. The rival home is Ray Optics / 'Refraction and Total Internal Reflection', which teaches the bending of rays by Snell's law rather than what happens to the wave's own parameters. No subtopic invented.",
+      "stem": "Monochromatic light of wavelength 600 nm is incident from air on a water surface. The refractive index of water is 1.33. Find the (i) wavelength, (ii) frequency and (iii) speed, of reflected and refracted light."
+    },
+    {
+      "ref": "Q6a",
+      "questionNumber": "6 (a)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "difficulty": "MODERATE",
+      "stem": "Electromagnetic waves of wavelengths \\(\\lambda_1\\), \\(\\lambda_2\\) and \\(\\lambda_3\\) are used in radar systems, in water purifiers and in remote switches of TV, respectively.\n(i) Identify the electromagnetic waves, and\n(ii) Write one source of each of them."
+    },
+    {
+      "ref": "Q6b",
+      "questionNumber": "6 (b)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q6a",
+      "_flag": "Filing note, not a defect. This question straddles two subtopics: (i) is the coherence condition (Interference and Young's Experiment) and (ii) asks for an interference-vs-diffraction comparison, which also touches 'Diffraction'. Filed on Interference and Young's Experiment because that is where coherence is taught and where the comparison is anchored. (Same call as the opener 55/3/1, where this identical question is Q11b.)",
+      "stem": "(i) State two conditions for two light sources to be coherent.\n(ii) Give two points of difference between an interference pattern due to a double – slit and a diffraction pattern due to a single slit."
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "difficulty": "MODERATE",
+      "stem": "State Bohr's postulate to explain stable orbits in a hydrogen atom. Prove that the speed with which the electron revolves in \\(n^{th}\\) orbit is proportional to \\((1/n)\\)."
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "difficulty": "MODERATE",
+      "stem": "Draw the energy band diagrams for conductors, semiconductors and insulators. Which band determines the electrical conductivity of a solid ? How is the electrical conductivity of a semiconductor affected with rise in its temperature ? Explain."
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "difficulty": "MODERATE",
+      "stem": "A narrow beam of protons, each having 4.1 MeV energy is approaching a sheet of lead \\((Z = 82)\\). Calculate :\n(i) the speed of a proton in the beam, and\n(ii) the distance of its closest approach"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "difficulty": "MODERATE",
+      "_flag": "TWO PRINTED TYPOS, both transcribed as printed and both confirmed at 3x magnification: part (iii) reads 'submerged in a oil' where 'an oil' is meant, and the closing instruction reads 'Justify your anwer in each case' where 'answer' is meant. Neither affects the physics and nothing was repaired.",
+      "stem": "How is the spacing between fringes in a double slit experiment affected if :\n(i) the slits separation is increased,\n(ii) the colour of light used is changed from red to blue,\n(iii) the whole apparatus is submerged in a oil of refractive index 1.2 ?\nJustify your anwer in each case."
+    },
+    {
+      "ref": "Q11a",
+      "questionNumber": "11 (a)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "difficulty": "MODERATE",
+      "_figure": "REQUIRED — the stem says 'as shown in figure' and states no geometry in words. Read off MY OWN page idx 6, not copied from the opener: two triangles share the horizontal face BC. In the upper triangle, A is at the top with B directly below it so that AB is drawn vertical, and C lies to the right of B; a 45 degree angle is marked at A, between AB and AC. A horizontal arrow enters from the left and meets face AB at a point carrying a small right-angle square, i.e. the ray is drawn striking AB normally. In the lower triangle D is at the bottom, with 60 degree angles marked at B (the angle DBC, drawn below BC) and at D (the angle BDC). Describing labelling and layout only: the path of the ray through the combination is what the question asks the student to trace and is NOT drawn on the question paper. Page idx 6.",
+      "_flag": "Numbering note. The printed paper labels (a) and (b) as SUB-PARTS inside each alternative and gives the two alternatives no letter of their own; the OR sits between the two blocks, at the foot of page idx 6 with the alternative overleaf on page idx 8. The a/b in this ref refers to the ALTERNATIVE, following the marking scheme, which labels them '11 a) ... OR b)'.",
+      "stem": "(a) Write two necessary conditions for total internal reflection.\n(b) Two prisms ABC and DBC are arranged as shown in figure. The critical angles for the two prisms with respect to air are \\(41.1^\\circ\\) and \\(45^\\circ\\) respectively. Trace the path of the ray through the combination."
+    },
+    {
+      "ref": "Q11b",
+      "questionNumber": "11 (b)",
+      "section": "B",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q11a",
+      "_figure": "REQUIRED — the object distance exists ONLY in the drawing; part (b)'s stem states no distance at all. Read off MY OWN page idx 8, not copied from the opener: a point marked by a filled dot and labelled O sits at the left, with a horizontal DASHED line running right from it, through the circle, to the circle's centre — the centre is a filled dot labelled C, and a SOLID segment continues from C to the circle's right edge, labelled r. Below the dashed line a dimension arrow, arrowheads at both ends, runs from directly beneath O to directly beneath the circle's LEFT edge and is labelled 3r; so 3r is the distance from O to the NEAR SURFACE of the sphere, not to its centre. Verified at 4x magnification. Page idx 8.",
+      "stem": "(a) An object is placed in front of a converging lens. Obtain the conditions under which the magnification produced by the lens is (i) negative and (ii) positive.\n(b) A point object is placed at O in front of a glass sphere as shown in figure. Show the formation of image by the sphere."
+    },
+    {
+      "ref": "Q12I",
+      "questionNumber": "12 (I)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "EASY",
+      "setId": "2022-55-3-2-CS1",
+      "_caseStudyLabel": "CASE STUDY",
+      "_flag": "⚠ THIS PAPER HAS MCQs. Section C's case study is FIVE 1-mark MCQs, each with four printed options (A)-(D), marked '1 × 5 = 5' on page idx 8. The official marking scheme keys all five verbatim under a 'SECTION—C' heading on its page 8 (pdf idx 15): '(I) ( B ) real , virtual / (II) ( A ) The aperture of the objective and the eye piece / (III) ( D ) The microscope can be used as a telescope by interchanging the two lenses. / (IV) ( D ) 200 / (V) ( C ) 200', one mark each, total 5. Answers here are taken from that key verbatim and uppercased; NONE is derived. Read TWO independent ways that agree exactly — by vision off the rendered ms/p07 at 2x, and from the marking scheme's own text layer, which extracts cleanly. Each keyed letter was also checked against the printed option TEXT on the paper and matches in all five cases. This confirms on 55/3/2 what the opener 55/3/1 found: the term2_sci 'NO MCQs at all' claim is true of the 2022 CHEMISTRY papers and FALSE of Physics.",
+      "context": "A compound microscope consists of two converging lenses. One of them, of smaller aperture and smaller focal length is called objective and the other of slightly larger aperture and slightly larger focal length is called eye-piece. Both the lenses are fitted in a tube with an arrangement to vary the distance between them. A tiny object is placed in front of the objective at a distance slightly greater than its focal length. The objective produces the image of the object which acts as an object for the eye-piece. The eye piece, in turn produces the final magnified image.",
+      "stem": "In a compound microscope the images formed by the objective and the eye-piece are respectively",
+      "options": [
+        {
+          "label": "A",
+          "text": "virtual, real"
+        },
+        {
+          "label": "B",
+          "text": "real, virtual"
+        },
+        {
+          "label": "C",
+          "text": "virtual, virtual"
+        },
+        {
+          "label": "D",
+          "text": "real, real"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12II",
+      "questionNumber": "12 (II)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "EASY",
+      "setId": "2022-55-3-2-CS1",
+      "_caseStudyLabel": "CASE STUDY",
+      "context": "A compound microscope consists of two converging lenses. One of them, of smaller aperture and smaller focal length is called objective and the other of slightly larger aperture and slightly larger focal length is called eye-piece. Both the lenses are fitted in a tube with an arrangement to vary the distance between them. A tiny object is placed in front of the objective at a distance slightly greater than its focal length. The objective produces the image of the object which acts as an object for the eye-piece. The eye piece, in turn produces the final magnified image.",
+      "stem": "The magnification due to a compound microscope does not depend upon",
+      "options": [
+        {
+          "label": "A",
+          "text": "the aperture of the objective and the eye-piece"
+        },
+        {
+          "label": "B",
+          "text": "the focal length of the objective and the eye-piece"
+        },
+        {
+          "label": "C",
+          "text": "the length of the tube"
+        },
+        {
+          "label": "D",
+          "text": "the colour of the light used"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q12III",
+      "questionNumber": "12 (III)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "MODERATE",
+      "setId": "2022-55-3-2-CS1",
+      "_caseStudyLabel": "CASE STUDY",
+      "_flag": "Option (C) is printed as '(fo + fe)' — plain roman letters, no subscripts, confirmed at full size on page idx 10. Transcribed as printed rather than normalised to \\(f_o + f_e\\). Note also that the Hindi twin of this option (page idx 9) reads 'फोकस दूरी' (focal distance) where the English reads simply 'distance'; we ingest the English.",
+      "context": "A compound microscope consists of two converging lenses. One of them, of smaller aperture and smaller focal length is called objective and the other of slightly larger aperture and slightly larger focal length is called eye-piece. Both the lenses are fitted in a tube with an arrangement to vary the distance between them. A tiny object is placed in front of the objective at a distance slightly greater than its focal length. The objective produces the image of the object which acts as an object for the eye-piece. The eye piece, in turn produces the final magnified image.",
+      "stem": "Which of the following is not correct in the context of a compound microscope ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both the lenses are of short focal lengths."
+        },
+        {
+          "label": "B",
+          "text": "The magnifying power increases by decreasing the focal lengths of the two lenses."
+        },
+        {
+          "label": "C",
+          "text": "The distance between the two lenses is more than (fo + fe)."
+        },
+        {
+          "label": "D",
+          "text": "The microscope can be used as a telescope by interchanging the two lenses."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q12IV",
+      "questionNumber": "12 (IV)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "EASY",
+      "setId": "2022-55-3-2-CS1",
+      "_caseStudyLabel": "CASE STUDY",
+      "context": "A compound microscope consists of two converging lenses. One of them, of smaller aperture and smaller focal length is called objective and the other of slightly larger aperture and slightly larger focal length is called eye-piece. Both the lenses are fitted in a tube with an arrangement to vary the distance between them. A tiny object is placed in front of the objective at a distance slightly greater than its focal length. The objective produces the image of the object which acts as an object for the eye-piece. The eye piece, in turn produces the final magnified image.",
+      "stem": "A compound microscope consists of an objective of 10X and an eye-piece of 20X. The magnification due to the microscope would be",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "10"
+        },
+        {
+          "label": "C",
+          "text": "30"
+        },
+        {
+          "label": "D",
+          "text": "200"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q12V",
+      "questionNumber": "12 (V)",
+      "section": "C",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "difficulty": "MODERATE",
+      "setId": "2022-55-3-2-CS1",
+      "_caseStudyLabel": "CASE STUDY",
+      "context": "A compound microscope consists of two converging lenses. One of them, of smaller aperture and smaller focal length is called objective and the other of slightly larger aperture and slightly larger focal length is called eye-piece. Both the lenses are fitted in a tube with an arrangement to vary the distance between them. A tiny object is placed in front of the objective at a distance slightly greater than its focal length. The objective produces the image of the object which acts as an object for the eye-piece. The eye piece, in turn produces the final magnified image.",
+      "stem": "The focal lengths of objective and eye-piece of a compound microscope are 1.2 cm and 3.0 cm respectively. The object is placed at a distance of 1.25 cm from the objective. If the final image is formed at infinity, the magnifying power of the microscope would be",
+      "options": [
+        {
+          "label": "A",
+          "text": "100"
+        },
+        {
+          "label": "B",
+          "text": "150"
+        },
+        {
+          "label": "C",
+          "text": "200"
+        },
+        {
+          "label": "D",
+          "text": "250"
+        }
+      ],
+      "answer": "C"
+    }
+  ]
+}
