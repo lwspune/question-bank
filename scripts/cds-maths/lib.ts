@@ -239,10 +239,18 @@ export function mergeBands(bands: Band[]): { questions: TQ[]; errors: string[] }
  * unlisted subtopic on an early paper is usually a real gap to add, not a typo
  * to reject, and failing the merge on it would stall the extension pass that is
  * supposed to find them.
+ *
+ * `strictSubtopics` INVERTS that second rule, and it is off by default so CDS is
+ * unaffected. It exists for a corpus whose taxonomy is already canonical and
+ * closed rather than seeded and growing — NDA Mathematics, whose 31 chapters and
+ * 111 subtopics went through a bank-wide cleanup pass. There an unlisted subtopic
+ * is not a gap to add, it is a near-miss that `commitStaged` will AUTO-CREATE,
+ * splitting one chapter's corpus across two subtopics with no error anywhere.
  */
 export function validateCatalog(
   questions: TQ[],
-  cat: Catalog
+  cat: Catalog,
+  opts: { strictSubtopics?: boolean } = {}
 ): { errors: string[]; warnings: string[] } {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -257,9 +265,9 @@ export function validateCatalog(
       continue;
     }
     if (q.subtopic && !subtopics.includes(q.subtopic)) {
-      warnings.push(
-        `Q${q.number}: subtopic "${q.subtopic}" is not listed under "${q.chapter}"`
-      );
+      const msg = `Q${q.number}: subtopic "${q.subtopic}" is not listed under "${q.chapter}"`;
+      if (opts.strictSubtopics) errors.push(msg);
+      else warnings.push(msg);
     }
   }
   return { errors, warnings };
@@ -363,10 +371,19 @@ export function crosstab(
  * an answer nobody derived must not be invented at assembly time, and the
  * coverage gate below turns the omission into a loud "missing Qn".
  */
+/**
+ * `sourceRowOffset` exists because `source_row` is a per-corpus CONVENTION, not
+ * a free-running counter. CDS runs 1..100 (the question number); every one of
+ * NDA Mathematics' 18 existing sittings runs 2..121, because they were bulk
+ * uploaded from .xlsx and carry the header-row offset. `/mock` orders within a
+ * section by `source_row`, so any monotonic sequence delivers the right paper —
+ * but a 19th sitting numbered differently from the other 18 would misalign every
+ * cross-sitting query that groups on it. Default 0 keeps CDS byte-identical.
+ */
 export function buildRecords(
   questions: TQ[],
   derivations: Derivation[],
-  opts: { reconciled?: Set<number>; keyed?: boolean } = {}
+  opts: { reconciled?: Set<number>; keyed?: boolean; sourceRowOffset?: number } = {}
 ): RawRow[] {
   const byNumber = new Map(derivations.map((d) => [d.number, d]));
   const rows: RawRow[] = [];
@@ -384,7 +401,7 @@ export function buildRecords(
     const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
     const agreed = !opts.reconciled?.has(q.number);
     rows.push({
-      sourceRow: q.number,
+      sourceRow: q.number + (opts.sourceRowOffset ?? 0),
       questionNumber: String(q.number),
       subject: "Mathematics",
       chapter: q.chapter,

@@ -1,0 +1,340 @@
+{
+  "band": "b4",
+  "pages": [26, 28, 30, 32],
+  "bandReport": {
+    "numbersFound": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band covers printed pages 27, 29, 31, 33 (0-based indices 26, 28, 30, 32) = Q66-Q90 contiguous, 25 questions, all complete on their own page.\n\nSEAMS — both checked, both clean. Page 24 (printed 25, band b3) ENDS at Q65, which is complete with all four options and is a standalone 3-D geometry item; no Directions block is left open there, so Q66 starts fresh. Page 34 (printed 35, band b5) OPENS at Q91, a standalone 'Consider the following statements' item with no carried-over premise, so Q90 does not continue overleaf. Neither page was transcribed here.\n\nNO DIRECTIONS SETS anywhere in this band. All 25 questions are standalone; none carries a context or setLabel.\n\nNO FIGURES. Consistent with the brief's expectation — every question in this stretch is stated in words. The heavy pen working on p28 (a sketched parabola and line crossing near the origin, plus algebra down the gutter) and on p30/p32 is STUDENT HANDWRITING, not printed content, and was not transcribed.\n\nSHOW-THROUGH confirmed and ignored on p30 as the brief warned: the foot of the right column carries faint MIRRORED ghosts — reversed '(b) 1/2', '(d) 0', a mirrored 'TFDD-A-HTM/37A' and a mirrored '87. lim (sqrt(x+...))' (the latter is question 87 bleeding through from printed p33). Verified at 4.5x: all are reversed and sit outside the column flow. No fifth option was transcribed anywhere.\n\nWATERMARK crossings read at 2.2x-4.5x rather than guessed: Q69 (p26), Q79 and Q83 (p30), Q89 (p32). All resolved cleanly.\n\nNO DEVANAGARI on any of the four pages — englishPages is correct for this band.\n\nONE MISPRINT FLAGGED, not repaired: Q72's denominator prints as (ax + bx + c)^2 with no superscript on the first x. See its flags entry.\n\nONE FORCED SUBTOPIC FIT, flagged on Q72 — the Definite Integration catalog has no subtopic for a plain evaluation-by-antiderivative, so the FTC subtopic was used as closest. No subtopic was invented; every chapter and subtopic here is copied verbatim from catalog.json."
+  },
+  "questions": [
+    {
+      "number": 66,
+      "stem": "Let \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) and \\(\\vec{d}\\) be the vectors.\nConsider the following :\nI. \\((\\vec{a} \\times \\vec{b}) \\cdot (\\vec{c} \\times \\vec{d})\\)\nII. \\((\\vec{a} \\times \\vec{b}) \\times (\\vec{c} \\times \\vec{d})\\)\nIII. \\((\\vec{a} \\cdot \\vec{b}) \\cdot (\\vec{c} \\cdot \\vec{d})\\)\nIV. \\((\\vec{a} \\cdot \\vec{b}) \\times (\\vec{c} \\cdot \\vec{d})\\)\nV. \\(\\{(\\vec{a} \\times \\vec{b}) \\cdot \\vec{c}\\} \\times \\vec{d}\\)\nwhere '\\(\\cdot\\)' represents dot product and '\\(\\times\\)' represents cross product of vectors. How many of the above are **not** well-defined?",
+      "options": [
+        { "label": "A", "text": "One" },
+        { "label": "B", "text": "Two" },
+        { "label": "C", "text": "Three" },
+        { "label": "D", "text": "Four" }
+      ],
+      "chapter": "Vectors",
+      "subtopic": "Cross Product and Triple Product",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 67,
+      "stem": "The scalar projection of \\(\\vec{a} = \\lambda\\hat{i} + \\hat{j} - 2\\hat{k}\\) on \\(\\vec{b} = 2\\hat{i} - \\hat{j} - \\lambda\\hat{k}\\) is \\(7/3\\). What is the value of \\(\\lambda\\)?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Vectors",
+      "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 68,
+      "stem": "How much angle does\n\\(\\vec{r} = (\\cos\\theta)\\hat{i} + (\\sin\\theta)\\hat{j} + \\hat{k}\\)\nmake with the positive direction of \\(z\\)-axis?",
+      "options": [
+        { "label": "A", "text": "\\(\\pi/2\\)" },
+        { "label": "B", "text": "\\(\\pi/3\\)" },
+        { "label": "C", "text": "\\(\\pi/4\\)" },
+        { "label": "D", "text": "\\(\\pi/6\\)" }
+      ],
+      "chapter": "Vectors",
+      "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 69,
+      "stem": "Let \\(\\vec{a}\\) and \\(\\vec{b}\\) be unit vectors inclined at \\(30^\\circ\\). What is the area of the parallelogram whose sides are represented by the vectors \\(\\vec{a} + 3\\vec{b}\\) and \\(3\\vec{a} + \\vec{b}\\)?",
+      "options": [
+        { "label": "A", "text": "\\(8\\sqrt{3}\\) square units" },
+        { "label": "B", "text": "8 square units" },
+        { "label": "C", "text": "\\(4\\sqrt{3}\\) square units" },
+        { "label": "D", "text": "4 square units" }
+      ],
+      "chapter": "Vectors",
+      "subtopic": "Cross Product and Triple Product",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 70,
+      "stem": "Let \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) be unit vectors such that \\(\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c} = 0\\). If the angle between \\(\\vec{b}\\) and \\(\\vec{c}\\) is \\(\\pi/6\\), then what is \\(\\vec{a}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\((\\vec{b} \\times \\vec{c})\\)" },
+        { "label": "B", "text": "\\(\\sqrt{2}(\\vec{b} \\times \\vec{c})\\)" },
+        { "label": "C", "text": "\\(2(\\vec{b} \\times \\vec{c})\\)" },
+        { "label": "D", "text": "\\(\\sqrt{3}(\\vec{b} \\times \\vec{c})\\)" }
+      ],
+      "chapter": "Vectors",
+      "subtopic": "Cross Product and Triple Product",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 71,
+      "stem": "What is \\(\\int \\frac{\\sqrt{x}}{\\sqrt{1 - x^3}}\\,dx\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{x^{3/2}}{3} + c\\)" },
+        { "label": "B", "text": "\\(\\frac{2x^{3/2}}{3} + c\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{3}\\sin^{-1}(x^{3/2}) + c\\)" },
+        { "label": "D", "text": "\\(\\frac{2}{3}\\sin^{-1}(x^{3/2}) + c\\)" }
+      ],
+      "chapter": "Indefinite Integration",
+      "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 72,
+      "stem": "What is \\(\\int_0^1 \\frac{dx}{(ax + bx + c)^2}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-\\frac{1}{a + b + c}\\)" },
+        { "label": "B", "text": "\\(-\\frac{1}{c(a + b + c)}\\)" },
+        { "label": "C", "text": "\\(\\frac{1}{a + b + c}\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{c(a + b + c)}\\)" }
+      ],
+      "chapter": "Definite Integration",
+      "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+      "difficulty": "MODERATE",
+      "flags": [
+        "PRINTED AS SHOWN: the denominator reads \\((ax + bx + c)^2\\) — 'ax' with NO superscript 2, verified at 6x. Almost certainly a misprint for \\((ax^2 + bx + c)^2\\); NOT repaired here. Also flagging a forced subtopic fit: this is a plain evaluation of a definite integral and none of the five Definite Integration subtopics names that, so the FTC subtopic was chosen as closest."
+      ]
+    },
+    {
+      "number": 73,
+      "stem": "What is \\(\\int e^{x \\ln 10} e^x \\, dx\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{(10e)^x}{1 + \\ln 10} + c\\)" },
+        { "label": "B", "text": "\\(\\frac{10e^x}{1 + \\ln 10} + c\\)" },
+        { "label": "C", "text": "\\(\\frac{e^{2x}}{2} + c\\)" },
+        { "label": "D", "text": "\\(\\frac{e^{2x}}{4} + c\\)" }
+      ],
+      "chapter": "Indefinite Integration",
+      "subtopic": "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 74,
+      "stem": "What is \\(\\int_1^2 x^x (1 + \\ln x)\\,dx\\) equal to?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Definite Integration",
+      "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 75,
+      "stem": "If \\(f(x + y) = f(x) + f(y)\\), then what is\n\\(\\int_{-1}^{1} f(x)\\,dx\\)\nequal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "\\(\\int_0^1 f(x)\\,dx\\)" },
+        { "label": "C", "text": "\\(2\\int_0^1 f(x)\\,dx\\)" },
+        { "label": "D", "text": "\\(2f(1)\\)" }
+      ],
+      "chapter": "Definite Integration",
+      "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 76,
+      "stem": "What is the area bounded by \\(y = e^{|x|}\\) and the lines \\(|x| = 1\\) and \\(y = 0\\)?",
+      "options": [
+        { "label": "A", "text": "\\((e - 1)\\) square units" },
+        { "label": "B", "text": "\\((2e - 2)\\) square units" },
+        { "label": "C", "text": "\\(2e\\) square units" },
+        { "label": "D", "text": "\\((2e - 1)\\) square units" }
+      ],
+      "chapter": "Applications of Integration",
+      "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 77,
+      "stem": "The slope of the tangent to the curve \\(y = f(x)\\) at \\((x, f(x))\\) is \\(2x\\). If the curve passes through the origin, then what is the area bounded by the curve, the \\(x\\)-axis and the line \\(x = 1\\)?",
+      "options": [
+        { "label": "A", "text": "\\(1/3\\) square unit" },
+        { "label": "B", "text": "\\(2/3\\) square unit" },
+        { "label": "C", "text": "1 square unit" },
+        { "label": "D", "text": "\\(4/3\\) square units" }
+      ],
+      "chapter": "Applications of Integration",
+      "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 78,
+      "stem": "What is the solution of\n\\(y\\,dx - x\\,dy - y^2\\cos x\\,dx = 0\\)?",
+      "options": [
+        { "label": "A", "text": "\\(y = \\frac{x}{c + \\sin x}\\)" },
+        { "label": "B", "text": "\\(y = \\frac{x}{c - \\sin x}\\)" },
+        { "label": "C", "text": "\\(y = \\frac{x}{1 + c\\sin x}\\)" },
+        { "label": "D", "text": "\\(y = \\frac{x}{1 - c\\sin x}\\)" }
+      ],
+      "chapter": "Differential Equations",
+      "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 79,
+      "stem": "What is the differential equation of the family of straight lines passing through the origin?",
+      "options": [
+        { "label": "A", "text": "\\(y\\frac{dy}{dx} - x = 0\\)" },
+        { "label": "B", "text": "\\(y\\frac{dy}{dx} + x = 0\\)" },
+        { "label": "C", "text": "\\(x\\frac{dy}{dx} - y = 0\\)" },
+        { "label": "D", "text": "\\(x\\frac{dy}{dx} + y = 0\\)" }
+      ],
+      "chapter": "Differential Equations",
+      "subtopic": "Formation of ODE from Curves and General Solutions",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 80,
+      "stem": "What is the degree of the differential equation representing the family of curves \\(y^2 = \\sqrt{c}\\,x\\), where \\(c\\) is a positive parameter?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Differential Equations",
+      "subtopic": "Order, Degree, and Solutions of ODE",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 81,
+      "stem": "What is the domain of the function\n\\(f(x) = \\log_x e\\)?",
+      "options": [
+        { "label": "A", "text": "\\((0, \\infty)\\)" },
+        { "label": "B", "text": "\\((0, \\infty) - \\{1\\}\\)" },
+        { "label": "C", "text": "\\((0, \\infty) - \\{e\\}\\)" },
+        { "label": "D", "text": "\\((0, \\infty) - \\{10\\}\\)" }
+      ],
+      "chapter": "Functions",
+      "subtopic": "Domain, Range, and Function Properties",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 82,
+      "stem": "If \\(f(x)\\) is the integral of\n\\(\\frac{1 + \\cos^2 x - 2\\cos x}{x\\sin^2 x\\tan x}\\)\nthen what is \\(\\lim_{x \\to 0} f'(x)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "\\(1/2\\)" },
+        { "label": "C", "text": "\\(1/3\\)" },
+        { "label": "D", "text": "\\(1/4\\)" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 83,
+      "stem": "Consider the following statements in respect of the function \\(f(x) = [3x]\\), where \\([\\cdot]\\) is the greatest integer function :\nI. \\(f(x)\\) is continuous at \\(x = 1/3\\).\nII. \\(f(x)\\) is differentiable at \\(x = 1/4\\).\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 84,
+      "stem": "What is \\(\\lim_{x \\to 0} \\frac{\\sin^2 x}{x|x|}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "Limit does not exist" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 85,
+      "stem": "Let \\(f(x) = p|x| + q\\), where \\(p\\) and \\(q\\) are real constants. If \\(f'(x)\\) exists at \\(x = 0\\), then what is the value of \\(p\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(q\\)" }
+      ],
+      "chapter": "Differentiation",
+      "subtopic": "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 86,
+      "stem": "Consider the following statements in respect of the given function :\n\\(f(x) = \\begin{cases} \\frac{x^3}{|x|}, & x \\ne 0 \\\\ 0, & x = 0 \\end{cases}\\)\nI. \\(f(x)\\) is continuous everywhere.\nII. \\(f(x)\\) is differentiable everywhere.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 87,
+      "stem": "What is \\(\\lim_{x \\to \\infty} (\\sqrt{x + \\sqrt{x}} - \\sqrt{x})\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1/2\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "\\(1/2\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 88,
+      "stem": "If \\(m\\) and \\(n\\) are the roots of the equation \\(x^2 - px + q = 0\\), then what is\n\\(\\lim_{x \\to m} \\frac{e^{x^2 - px + q} - 1}{(x - m)(x - n)}\\)\nequal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(e\\)" }
+      ],
+      "chapter": "Limits & Continuity",
+      "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 89,
+      "stem": "Let \\(f(x) = x^n + k\\), where \\(n\\) is a natural number and \\(k\\) is a positive real constant such that \\(f(x) + f\\left(\\frac{1}{x}\\right) = f(x)f\\left(\\frac{1}{x}\\right)\\) and \\(f(2) = 9\\). What is \\(f(-1)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-2\\)" },
+        { "label": "B", "text": "\\(-1\\)" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Functions",
+      "subtopic": "Functional Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 90,
+      "stem": "If \\(f(x) = \\cos\\left\\{\\frac{\\pi}{3}[x] + x\\right\\}\\) for \\(1 < x < 2\\), where \\([\\cdot]\\) is the greatest integer function, then what is \\(f\\left(\\frac{\\pi}{2}\\right)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "\\(-\\sqrt{3}/2\\)" },
+        { "label": "C", "text": "\\(-1/2\\)" },
+        { "label": "D", "text": "\\(1/2\\)" }
+      ],
+      "chapter": "Functions",
+      "subtopic": "Greatest Integer Function",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

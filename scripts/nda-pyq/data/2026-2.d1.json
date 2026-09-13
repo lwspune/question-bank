@@ -1,0 +1,242 @@
+[
+  {
+    "number": 1,
+    "answer": "A",
+    "value": "\\(\\dfrac{h^2\\cos^2\\alpha}{\\sin^2(\\beta-\\alpha)}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Observer at the top of the building, height H, horizontal distance D to the tower. Depression to the tower's FOOT (angle beta) gives tan(beta) = H/D; depression to the tower's TOP, which is h above the foot (angle alpha), gives tan(alpha) = (H-h)/D. Subtracting, h = D(tan beta - tan alpha) = D sin(beta-alpha)/(cos alpha cos beta), so D = h cos alpha cos beta / sin(beta-alpha) and H = D tan beta = h cos alpha sin beta / sin(beta-alpha). Then H^2 + D^2 = h^2 cos^2(alpha) (sin^2 beta + cos^2 beta)/sin^2(beta-alpha) = h^2 cos^2(alpha)/sin^2(beta-alpha). Note H^2+D^2 is the squared slant distance from the observer to the foot of the tower. Verified numerically at (alpha,beta,h) = (20,50,3), (15,45,1), (35,62,7.5): option A matched to 8 d.p. in all three and B, C, D did not. The alpha/beta assignment is fixed by the stem's 'top and bottom ... respectively' and is independently consistent (a depression angle to the higher point must be the smaller one, and the recovered alpha came back exactly). Stem and all four options checked against page image p02.",
+    "solution": "From the top of the building the line of sight to the FOOT of the tower gives \\(\\tan\\beta = \\dfrac{H}{D}\\), while the sight-line to its TOP, a point standing \\(h\\) higher, gives \\(\\tan\\alpha = \\dfrac{H-h}{D}\\). Subtracting, \\(h = D(\\tan\\beta - \\tan\\alpha) = \\dfrac{D\\sin(\\beta-\\alpha)}{\\cos\\alpha\\cos\\beta}\\), so \\(D = \\dfrac{h\\cos\\alpha\\cos\\beta}{\\sin(\\beta-\\alpha)}\\) and \\(H = D\\tan\\beta = \\dfrac{h\\cos\\alpha\\sin\\beta}{\\sin(\\beta-\\alpha)}\\). Hence \\(H^2 + D^2 = \\dfrac{h^2\\cos^2\\alpha\\left(\\sin^2\\beta+\\cos^2\\beta\\right)}{\\sin^2(\\beta-\\alpha)} = \\dfrac{h^2\\cos^2\\alpha}{\\sin^2(\\beta-\\alpha)}\\), which is just the square of the slant distance from the observer down to the foot of the tower."
+  },
+  {
+    "number": 2,
+    "answer": "D",
+    "value": "\\(H = D\\)",
+    "confidence": "HIGH",
+    "reasoning": "The depression angle to the FOOT of the tower satisfies tan(beta) = H/D directly, so beta = 45 degrees forces H/D = 1, i.e. H = D. The value of alpha is not needed for this relation; alpha = 15 degrees only fixes the tower height h = D(tan 45 - tan 15) = 0.732 D, and that is consistent (h < H, as a depression angle to the tower's top requires). Verified numerically: H = D = 1.36602540 for h = 1. The other options need H/D equal to sqrt(2), 1/sqrt(2) or sqrt(3)/2, i.e. beta = 54.7, 35.3 or 40.9 degrees, none of which is 45. The unused alpha is a deliberate distractor, not a sign of a misprint; stem verified on page image p02.",
+    "solution": "The angle of depression to the FOOT of the tower is measured over a vertical drop of \\(H\\) and a horizontal run of \\(D\\), so \\(\\tan\\beta = \\dfrac{H}{D}\\). Putting \\(\\beta = 45^\\circ\\) gives \\(\\dfrac{H}{D} = \\tan 45^\\circ = 1\\), so \\(H = D\\). The value \\(\\alpha = 15^\\circ\\) plays no part in this relation; it only fixes the tower's height, \\(h = D\\left(\\tan 45^\\circ - \\tan 15^\\circ\\right) \\approx 0.73\\,D\\), which is duly less than \\(H\\) as the geometry requires."
+  },
+  {
+    "number": 3,
+    "answer": "C",
+    "value": "\\((3+\\sqrt{5}) : 2\\)",
+    "confidence": "HIGH",
+    "reasoning": "A : B : C = 1 : 2 : 7 and A+B+C = 180 degrees give a unit of 18 degrees, so A = 18, B = 36, C = 126. By the sine rule the longest side is opposite the largest angle, so the required ratio is sin C : sin A = sin 126 : sin 18 = cos 36 : sin 18 = [(sqrt5+1)/4] : [(sqrt5-1)/4] = (sqrt5+1)/(sqrt5-1) = (6+2 sqrt5)/4 = (3+sqrt5)/2. Numerically 2.618033989, matching (3+sqrt5):2 = 2.618033989 exactly; option D gives 1.745 and option B gives 2.646, so neither is within reach. Options checked against page image p02.",
+    "solution": "Since \\(A:B:C = 1:2:7\\) and \\(A+B+C = 180^\\circ\\), one part is \\(18^\\circ\\), so \\(A = 18^\\circ,\\ B = 36^\\circ,\\ C = 126^\\circ\\). By the sine rule each side is proportional to the sine of its opposite angle, so the greatest side faces \\(C\\) and the least faces \\(A\\). Using \\(\\sin 126^\\circ = \\cos 36^\\circ = \\dfrac{\\sqrt5+1}{4}\\) and \\(\\sin 18^\\circ = \\dfrac{\\sqrt5-1}{4}\\), the required ratio is \\(\\dfrac{\\sqrt5+1}{\\sqrt5-1} = \\dfrac{6+2\\sqrt5}{4} = \\dfrac{3+\\sqrt5}{2} \\approx 2.618\\), that is \\(\\left(3+\\sqrt5\\right):2\\)."
+  },
+  {
+    "number": 4,
+    "answer": "A",
+    "value": "\\(1/4\\)",
+    "confidence": "HIGH",
+    "reasoning": "With A = 18 degrees and B = 36 degrees, sin A . cos B = sin 18 . cos 36 = [(sqrt5-1)/4][(sqrt5+1)/4] = (5-1)/16 = 1/4. Verified numerically: 0.309017 x 0.809017 = 0.250000000000. No other printed option is anywhere near 0.25.",
+    "solution": "From \\(A:B:C = 1:2:7\\) with \\(A+B+C=180^\\circ\\) we get \\(A = 18^\\circ\\) and \\(B = 36^\\circ\\). Using the exact values \\(\\sin 18^\\circ = \\dfrac{\\sqrt5-1}{4}\\) and \\(\\cos 36^\\circ = \\dfrac{\\sqrt5+1}{4}\\), the product collapses by the difference of two squares: \\(\\sin A\\cdot\\cos B = \\dfrac{\\left(\\sqrt5-1\\right)\\left(\\sqrt5+1\\right)}{16} = \\dfrac{5-1}{16} = \\dfrac14\\)."
+  },
+  {
+    "number": 5,
+    "answer": "B",
+    "value": "\\(7 : 6 : 5\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let each equal ratio be k. Then a+b = 13k, b+c = 11k, c+a = 12k; adding gives 2(a+b+c) = 36k, so a+b+c = 18k. Hence c = 18k - 13k = 5k, a = 18k - 11k = 7k, b = 18k - 12k = 6k. By the sine rule sin A : sin B : sin C = a : b : c = 7 : 6 : 5. Checked back into all three given fractions (each equals 1 when k=1), and 7,6,5 satisfies the triangle inequality. Option A is the same numbers reversed and would follow from pairing the denominators with the wrong sums.",
+    "solution": "Let \\(\\dfrac{a+b}{13} = \\dfrac{b+c}{11} = \\dfrac{c+a}{12} = k\\). Adding the three numerators gives \\(2(a+b+c) = 36k\\), so \\(a+b+c = 18k\\). Subtracting each given sum in turn from this total, \\(c = 18k-13k = 5k\\), \\(a = 18k-11k = 7k\\) and \\(b = 18k-12k = 6k\\). By the sine rule the sines are proportional to the opposite sides, so \\(\\sin A:\\sin B:\\sin C = a:b:c = 7:6:5\\)."
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "value": "\\(7 : 19 : 25\\)",
+    "confidence": "HIGH",
+    "reasoning": "From item 5, a : b : c = 7 : 6 : 5, so take a=7, b=6, c=5. Cosine rule with exact fractions: cos A = (36+25-49)/(2.6.5) = 12/60 = 1/5; cos B = (49+25-36)/(2.7.5) = 38/70 = 19/35; cos C = (49+36-25)/(2.7.6) = 60/84 = 5/7. Scaling all three by the common denominator 35 gives 7 : 19 : 25. Computed with exact rational arithmetic, so no rounding is involved. Option ordering on the page (7:19:25 first) checked on image p02.",
+    "solution": "From the previous item \\(a:b:c = 7:6:5\\), so take \\(a=7,\\ b=6,\\ c=5\\). The cosine rule then gives \\(\\cos A = \\dfrac{36+25-49}{2\\cdot 6\\cdot 5} = \\dfrac15\\), \\(\\cos B = \\dfrac{49+25-36}{2\\cdot 7\\cdot 5} = \\dfrac{19}{35}\\) and \\(\\cos C = \\dfrac{49+36-25}{2\\cdot 7\\cdot 6} = \\dfrac57\\). Multiplying each by \\(35\\) clears the denominators, giving \\(\\cos A:\\cos B:\\cos C = 7:19:25\\)."
+  },
+  {
+    "number": 7,
+    "answer": "B",
+    "value": "\\(\\dfrac{p+q}{1-pq}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Write u = A/2 and v = B/2, so tan(u+v) = p and tan(u-v) = q. Then A = 2u = (u+v) + (u-v), so tan A = [tan(u+v) + tan(u-v)] / [1 - tan(u+v)tan(u-v)] = (p+q)/(1-pq); the stated condition pq not equal to +/-1 is exactly what keeps this denominator non-zero. Verified numerically at (A,B) = (50,22), (70,10) and (31,17) degrees: option B reproduced tan A to 9 d.p. each time while A, C and D did not.",
+    "solution": "Put \\(u = \\dfrac{A}{2}\\) and \\(v = \\dfrac{B}{2}\\), so that \\(\\tan(u+v) = p\\) and \\(\\tan(u-v) = q\\). Then \\(A = 2u = (u+v)+(u-v)\\), and the addition formula gives \\(\\tan A = \\dfrac{\\tan(u+v)+\\tan(u-v)}{1-\\tan(u+v)\\tan(u-v)} = \\dfrac{p+q}{1-pq}\\). The restriction \\(pq \\ne \\pm 1\\) is precisely what keeps this denominator away from zero."
+  },
+  {
+    "number": 8,
+    "answer": "A",
+    "value": "\\(\\dfrac{p-q}{1+pq}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With u = A/2 and v = B/2 as before, B = 2v = (u+v) - (u-v), so tan B = [tan(u+v) - tan(u-v)] / [1 + tan(u+v)tan(u-v)] = (p-q)/(1+pq). Verified numerically at (A,B) = (50,22), (70,10) and (31,17) degrees: option A reproduced tan B to 9 d.p. each time. This is the companion of item 7 with both signs exchanged, which is the standing trap on this pair - the two items share an identical option block, so a sign slip lands on a printed option.",
+    "solution": "With \\(u = \\dfrac{A}{2}\\) and \\(v = \\dfrac{B}{2}\\) we again have \\(\\tan(u+v) = p\\) and \\(\\tan(u-v) = q\\). This time \\(B = 2v = (u+v)-(u-v)\\), so the subtraction formula gives \\(\\tan B = \\dfrac{\\tan(u+v)-\\tan(u-v)}{1+\\tan(u+v)\\tan(u-v)} = \\dfrac{p-q}{1+pq}\\). Note this is the mirror image of \\(\\tan A = \\dfrac{p+q}{1-pq}\\), with both signs reversed."
+  },
+  {
+    "number": 9,
+    "answer": "B",
+    "value": "\\(2\\)",
+    "confidence": "HIGH",
+    "reasoning": "4(A+B) = pi gives A+B = pi/4, so tan(A+B) = 1, i.e. (tan A + tan B)/(1 - tan A tan B) = 1, hence tan A + tan B + tan A tan B = 1. Expanding, (1+tan A)(1+tan B) = 1 + tan A + tan B + tan A tan B = 1 + 1 = 2, independent of how A+B is split. Verified numerically at A = 10, 22.5, 40 and -5 degrees: the product was 2.0000000000 in every case, including the negative one and the symmetric A=B=22.5 case, so the result is not an artifact of a convenient angle.",
+    "solution": "From \\(4(A+B) = \\pi\\) we get \\(A+B = \\dfrac{\\pi}{4}\\), so \\(\\tan(A+B) = 1\\), that is \\(\\dfrac{\\tan A + \\tan B}{1-\\tan A\\tan B} = 1\\). Cross-multiplying gives \\(\\tan A + \\tan B + \\tan A\\tan B = 1\\). Expanding the required product, \\((1+\\tan A)(1+\\tan B) = 1 + \\left(\\tan A + \\tan B + \\tan A\\tan B\\right) = 1 + 1 = 2\\), whatever the individual values of \\(A\\) and \\(B\\) happen to be."
+  },
+  {
+    "number": 10,
+    "answer": "D",
+    "value": "\\(2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let x = tan A and y = tan B. From A+B = pi/4 we have x + y + xy = 1, so x + y = 1 - xy. Then (cot A - 1)(cot B - 1) = (1/x - 1)(1/y - 1) = [1 - (x+y) + xy]/(xy) = [1 - (1-xy) + xy]/(xy) = 2xy/(xy) = 2. Verified numerically at A = 10, 22.5, 40 and -5 degrees: 2.0000000000 each time. The pairing with item 9 is deliberate; both evaluate to 2, and the natural expectation that the companion item must differ is the trap.",
+    "solution": "Let \\(x = \\tan A\\) and \\(y = \\tan B\\). Since \\(A+B = \\dfrac{\\pi}{4}\\), the relation \\(\\tan(A+B) = 1\\) gives \\(x + y + xy = 1\\), so \\(x+y = 1-xy\\). Then \\((\\cot A - 1)(\\cot B - 1) = \\left(\\dfrac1x - 1\\right)\\left(\\dfrac1y - 1\\right) = \\dfrac{1-(x+y)+xy}{xy} = \\dfrac{1-(1-xy)+xy}{xy} = \\dfrac{2xy}{xy} = 2\\)."
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "value": "\\(1\\)",
+    "confidence": "HIGH",
+    "reasoning": "Factor out 2: 6 sin t - 8 sin^3 t = 2(3 sin t - 4 sin^3 t) = 2 sin 3t by the triple-angle identity. With t = pi/18 = 10 degrees, 3t = 30 degrees, so the value is 2 sin 30 = 2 x (1/2) = 1. Verified numerically: 1.000000000000.",
+    "solution": "Take out a factor of \\(2\\): \\(6\\sin\\theta - 8\\sin^3\\theta = 2\\left(3\\sin\\theta - 4\\sin^3\\theta\\right) = 2\\sin 3\\theta\\), using the triple-angle identity. Here \\(\\theta = \\dfrac{\\pi}{18} = 10^\\circ\\), so \\(3\\theta = 30^\\circ\\) and the expression equals \\(2\\sin 30^\\circ = 2\\times\\dfrac12 = 1\\)."
+  },
+  {
+    "number": 12,
+    "answer": "C",
+    "value": "\\(4\\)",
+    "confidence": "HIGH",
+    "reasoning": "Put t = tan^2(theta), which is positive. The equation is t + 1/t = 2, i.e. t^2 - 2t + 1 = 0, i.e. (t-1)^2 = 0, so t = 1 is the only root - equivalently t + 1/t >= 2 by AM-GM with equality only at t = 1. Hence tan^2(theta) = 1, tan(theta) = +/-1, giving theta = 45, 135, 225, 315 degrees in the open interval (0, 360): four values. Confirmed by a numerical sweep of the interval, which found exactly those four. Options A and B would follow from restricting to one or two quadrants; D would need eight, which the double root rules out. The printed right-hand side is 2, confirmed on page image p04 - had it been any value above 2 the count would indeed be eight.",
+    "solution": "Let \\(t = \\tan^2\\theta\\), which is positive wherever the expression is defined. The equation becomes \\(t + \\dfrac1t = 2\\), i.e. \\(t^2 - 2t + 1 = 0\\), i.e. \\(\\left(t-1\\right)^2 = 0\\), so \\(t = 1\\) is the only possibility. Hence \\(\\tan^2\\theta = 1\\), giving \\(\\tan\\theta = \\pm 1\\), and within \\(0^\\circ < \\theta < 360^\\circ\\) that yields \\(\\theta = 45^\\circ,\\ 135^\\circ,\\ 225^\\circ,\\ 315^\\circ\\) - four values in all."
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "value": "\\(3/5\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let u = arctan(0.75) = arctan(3/4), which lies in (0, pi/2). A right triangle with opposite 3 and adjacent 4 has hypotenuse 5, so sin u = 3/5. Verified numerically: sin(atan(0.75)) = 0.600000000000. Option B (4/5) is cos u, the standard trap on this shape.",
+    "solution": "Let \\(u = \\tan^{-1}(0.75) = \\tan^{-1}\\!\\left(\\dfrac34\\right)\\), an angle in the first quadrant. A right triangle with opposite side \\(3\\) and adjacent side \\(4\\) has hypotenuse \\(\\sqrt{3^2+4^2} = 5\\), so \\(\\sin u = \\dfrac{3}{5}\\). Note that \\(\\dfrac45\\) is the cosine of this angle, not its sine."
+  },
+  {
+    "number": 14,
+    "answer": "A",
+    "value": "\\(1/2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let phi = arccos(1/3), so cos phi = 1/3 and phi lies in (0, pi), putting phi/2 in (0, pi/2). The half-angle identity gives tan^2(phi/2) = (1 - cos phi)/(1 + cos phi) = (1 - 1/3)/(1 + 1/3) = (2/3)/(4/3) = 1/2. Verified numerically: 0.500000000000.",
+    "solution": "Let \\(\\varphi = \\cos^{-1}\\dfrac13\\), so that \\(\\cos\\varphi = \\dfrac13\\). The half-angle identity \\(\\tan^2\\dfrac{\\varphi}{2} = \\dfrac{1-\\cos\\varphi}{1+\\cos\\varphi}\\) then gives \\(\\tan^2\\dfrac{\\varphi}{2} = \\dfrac{1-\\frac13}{1+\\frac13} = \\dfrac{2/3}{4/3} = \\dfrac12\\)."
+  },
+  {
+    "number": 15,
+    "answer": "C",
+    "value": "\\(0\\)",
+    "confidence": "HIGH",
+    "reasoning": "Reduce each angle modulo 360 degrees: 1125 - 720 = 405, minus 360 = 45, so tan 1125 = tan 45 = 1; 405 - 360 = 45, so cot 405 = cot 45 = 1; 765 - 720 = 45, so tan 765 = tan 45 = 1; 675 - 360 = 315, so cot 675 = cot 315 = -1, since at 315 degrees the cosine is positive and the sine negative. Hence the value is (1)(1) + (1)(-1) = 0. Verified numerically: 0.000000000000. The trap is 675, the only one of the four angles that does not reduce to 45 degrees; reading it as 45 too would give 2, which is a printed option.",
+    "solution": "Reduce each angle by whole turns of \\(360^\\circ\\): \\(1125^\\circ \\to 45^\\circ\\), \\(405^\\circ \\to 45^\\circ\\), \\(765^\\circ \\to 45^\\circ\\), but \\(675^\\circ \\to 315^\\circ\\). So \\(\\tan 1125^\\circ = \\tan 45^\\circ = 1\\), \\(\\cot 405^\\circ = \\cot 45^\\circ = 1\\) and \\(\\tan 765^\\circ = 1\\), while \\(\\cot 675^\\circ = \\cot 315^\\circ = -1\\) because \\(315^\\circ\\) lies in the fourth quadrant, where cosine is positive and sine negative. The expression is therefore \\(1\\times 1 + 1\\times(-1) = 0\\)."
+  },
+  {
+    "number": 16,
+    "answer": "C",
+    "value": "\\(2A\\)",
+    "confidence": "HIGH",
+    "reasoning": "For a square matrix of order n the standard identity is adj(adj A) = |A|^(n-2) A. With n = 3 and |A| = 2 this is |A|^1 A = 2A. Derivation: adj A = |A| A^(-1), and |adj A| = |A|^(n-1) = |A|^2, so adj(adj A) = |adj A| (adj A)^(-1) = |A|^2 . (|A| A^(-1))^(-1) = |A|^2 . A/|A| = |A| A = 2A. Confirmed on an explicit 3x3 test matrix of determinant 2 using exact rational arithmetic: adj(adj M) came back equal to 2M entry for entry. Option A (8A) would be |A|^3 A, i.e. the wrong exponent, and D confuses the result with a scalar multiple of the identity.",
+    "solution": "For a square matrix of order \\(n\\), the adjugate satisfies \\(\\text{adj}\\,A = |A|\\,A^{-1}\\) and \\(|\\text{adj}\\,A| = |A|^{n-1}\\). Applying the first identity twice, \\(\\text{adj}(\\text{adj}\\,A) = |\\text{adj}\\,A|\\,(\\text{adj}\\,A)^{-1} = |A|^{n-1}\\cdot\\dfrac{A}{|A|} = |A|^{n-2}A\\). With \\(n = 3\\) and \\(|A| = 2\\) this gives \\(\\text{adj}(\\text{adj}\\,A) = 2A\\)."
+  },
+  {
+    "number": 17,
+    "answer": "D",
+    "value": "\\(64\\)",
+    "confidence": "HIGH",
+    "reasoning": "The defining property of the adjugate is A(adj A) = |A| I. The given product is 64 I, so |A| I = 64 I and hence |A| = 64. A second route agrees: taking determinants of both sides, |A| . |adj A| = |A| . |A|^2 = |A|^3, while the determinant of the given diagonal matrix is 64^3, so |A|^3 = 64^3 and |A| = 64. Option A (4) would come from cube-rooting 64 once too often, which is the likely intended distractor.",
+    "solution": "The adjugate of a square matrix satisfies \\(A(\\text{adj}\\,A) = |A|\\,I\\). Here the product is given as \\(64I\\), so \\(|A|\\,I = 64I\\) and therefore \\(|A| = 64\\). Taking determinants confirms it: \\(|A|\\cdot|\\text{adj}\\,A| = |A|\\cdot|A|^{2} = |A|^{3}\\), while the determinant of the given diagonal matrix is \\(64^{3}\\), so \\(|A|^{3} = 64^{3}\\) and again \\(|A| = 64\\)."
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "value": "\\(\\pi/3\\)",
+    "confidence": "HIGH",
+    "reasoning": "Transposing swaps the two off-diagonal entries, so A^T has -sin(theta) in the top-right and +sin(theta) in the bottom-left. Adding, the off-diagonal terms cancel and A + A^T = diag(2 cos theta, 2 cos theta). Setting this equal to the 2x2 identity requires 2 cos(theta) = 1, i.e. cos(theta) = 1/2, whose least positive solution is theta = pi/3. Checking the other options: cos(pi/2) = 0, cos(pi/4) = 0.707, cos(pi/6) = 0.866, none of which is 0.5, so pi/3 is the only printed value that works at all - the word 'least' is not doing any separating work here.",
+    "solution": "Transposing \\(A\\) swaps its two off-diagonal entries, so \\(A^{T} = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\). Adding, the sine terms cancel and \\(A + A^{T} = \\begin{bmatrix} 2\\cos\\theta & 0 \\\\ 0 & 2\\cos\\theta \\end{bmatrix}\\). For this to equal the identity we need \\(2\\cos\\theta = 1\\), i.e. \\(\\cos\\theta = \\dfrac12\\), and the least positive angle satisfying it is \\(\\theta = \\dfrac{\\pi}{3}\\)."
+  },
+  {
+    "number": 19,
+    "answer": "C",
+    "value": "Both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "Statement II: if A is non-singular then A^(-1) exists, and left-multiplying AB = AC by A^(-1) gives B = C. True. Statement I: if A is singular, cancellation can fail - take A as the 2x2 zero matrix, for which AB = AC = 0 for every B and C, so B and C need not be equal. True. Note statement I is carefully hedged as 'not NECESSARILY equal', so it is not refuted by the fact that B = C sometimes also holds when A is singular; that hedge is what makes both statements correct rather than only the second. Both hold, so the code selecting both is right.",
+    "solution": "If \\(A\\) is non-singular then \\(A^{-1}\\) exists, and multiplying \\(AB = AC\\) on the left by \\(A^{-1}\\) gives \\(B = C\\), so the second statement is correct. If \\(A\\) is singular the cancellation can fail: taking \\(A\\) to be the zero matrix makes \\(AB = AC\\) true for every pair \\(B\\) and \\(C\\), so the two need not be equal, and the first statement - which says only that they are not necessarily equal - is correct as well. Both statements therefore hold."
+  },
+  {
+    "number": 20,
+    "answer": "B",
+    "value": "\\(16\\)",
+    "confidence": "HIGH",
+    "reasoning": "For a square matrix of order n, |adj A| = |A|^(n-1). With n = 3 and |A| = 4, |adj A| = 4^2 = 16. This follows from A(adj A) = |A| I: taking determinants gives |A| . |adj A| = |A|^n, so |adj A| = |A|^(n-1). Verified on an explicit 3x3 test matrix with exact rational arithmetic. Option A (64) is |A|^3, the exponent n rather than n-1.",
+    "solution": "Taking determinants in the identity \\(A(\\text{adj}\\,A) = |A|\\,I\\) for a matrix of order \\(n\\) gives \\(|A|\\cdot|\\text{adj}\\,A| = |A|^{n}\\), so \\(|\\text{adj}\\,A| = |A|^{\\,n-1}\\). Here \\(n = 3\\) and \\(|A| = 4\\), so \\(|\\text{adj}\\,A| = 4^{2} = 16\\)."
+  },
+  {
+    "number": 21,
+    "answer": "B",
+    "value": "Only the second statement is correct",
+    "confidence": "HIGH",
+    "reasoning": "A and B symmetric means A^T = A and B^T = B. Then (AB - BA)^T = (AB)^T - (BA)^T = B^T A^T - A^T B^T = BA - AB = -(AB - BA), so AB - BA is SKEW-symmetric, not symmetric, and statement I is false in general. The identical computation applied to BA - AB gives (BA - AB)^T = -(BA - AB), so statement II is true. Confirmed on a random pair of 3x3 symmetric integer matrices: AB - BA tested skew and not symmetric, and was non-zero, so the degenerate case does not arise. The one caveat is that if A and B commute then AB - BA is the zero matrix, which is both symmetric and skew - but statement I asserts symmetry in general, and it fails in general, so only the second statement is correct.",
+    "solution": "Symmetry of \\(A\\) and \\(B\\) means \\(A^{T} = A\\) and \\(B^{T} = B\\). Transposing the first expression, \\((AB - BA)^{T} = B^{T}A^{T} - A^{T}B^{T} = BA - AB = -(AB - BA)\\), so \\(AB - BA\\) is skew-symmetric rather than symmetric, and the first statement fails. The same computation on the second expression gives \\((BA - AB)^{T} = AB - BA = -(BA - AB)\\), which is exactly the skew-symmetry the second statement claims. So only the second statement is correct."
+  },
+  {
+    "number": 22,
+    "answer": "C",
+    "value": "\\(-1/2\\)",
+    "confidence": "HIGH",
+    "reasoning": "|A| = (-1)(-4) - (2)(3) = 4 - 6 = -2. Since A A^(-1) = I, taking determinants gives |A| . |A^(-1)| = 1, so |A^(-1)| = 1/|A| = -1/2. Computed with exact fractions. Option A (-2) is |A| itself, the likely trap; option D (2) flips the sign of that.",
+    "solution": "First \\(|A| = (-1)(-4) - (2)(3) = 4 - 6 = -2\\), which is non-zero, so the inverse exists. Taking determinants in \\(AA^{-1} = I\\) gives \\(|A|\\cdot|A^{-1}| = 1\\), so \\(|A^{-1}| = \\dfrac{1}{|A|} = -\\dfrac12\\)."
+  },
+  {
+    "number": 23,
+    "answer": "B",
+    "value": "transitive only",
+    "confidence": "HIGH",
+    "reasoning": "Reflexive would require |x| <= x for every real x. That fails at x = -1, where 1 <= -1 is false, so the relation is not reflexive. Transitive: suppose |x| <= y and |y| <= z. The first forces y >= 0, so y = |y|, and then |y| <= z gives y <= z; chaining, |x| <= y <= z, so |x| <= z. Hence transitive. A random search over 200000 real triples found zero counterexamples to transitivity, consistent with the proof. So transitive but not reflexive.",
+    "solution": "Reflexivity would require \\(|x| \\le x\\) for every real \\(x\\), and this fails at \\(x = -1\\), where \\(1 \\le -1\\) is false; so the relation is not reflexive. For transitivity, suppose \\(|x| \\le y\\) and \\(|y| \\le z\\). The first inequality forces \\(y \\ge 0\\), so \\(y = |y|\\), and the second then gives \\(y \\le z\\). Chaining them, \\(|x| \\le y \\le z\\), so \\(|x| \\le z\\). The relation is therefore transitive but not reflexive."
+  },
+  {
+    "number": 24,
+    "answer": "C",
+    "value": "\\(232\\)",
+    "confidence": "HIGH",
+    "reasoning": "Repetition is evidently allowed (otherwise the question would be vacuous), so each of the four places may hold any of the four digits: 4^4 = 256 numbers in all. A 4-digit number formed from four available digits with none repeated must use each exactly once, and there are 4! = 24 such numbers. At least one repeat therefore accounts for 256 - 24 = 232. Confirmed by brute-force enumeration of all 256 tuples: exactly 232 have a repeated digit. Option B (244) would follow from subtracting only the 12 arrangements of some smaller set, and option D (220) from subtracting 36.",
+    "solution": "Since repetition is permitted, each of the four places can be filled in \\(4\\) ways, giving \\(4^{4} = 256\\) such numbers altogether. A number with no digit repeated must use each of \\(1, 2, 3, 4\\) exactly once, and there are \\(4! = 24\\) of those. Subtracting, the count of 4-digit numbers in which at least one digit is repeated is \\(256 - 24 = 232\\)."
+  },
+  {
+    "number": 25,
+    "answer": "C",
+    "value": "\\(13\\)",
+    "confidence": "HIGH",
+    "reasoning": "210 = 2.3.5.7 is square-free. Ordered triples of positive integers with product 210: each of the 4 primes goes to one of 3 positions, so 3^4 = 81. Triples with a repeat need x = y for some pair, which requires x^2 dividing 210, forcing x = 1 and the triple (1,1,210); that has 3 ordered arrangements. So 81 - 3 = 78 ordered triples have all entries distinct, and each unordered set is counted 3! = 6 times, giving 78/6 = 13 triples with x < y < z. Confirmed by exhaustive enumeration over all divisor pairs, which returned exactly 13: (1,2,105), (1,3,70), (1,5,42), (1,6,35), (1,7,30), (1,10,21), (1,14,15), (2,3,35), (2,5,21), (2,7,15), (3,5,14), (3,7,10), (5,6,7). Note the stem writes the triples as elements of R^3 but then restricts to positive integers, so the real-coordinate framing is cosmetic and does not make the set infinite.",
+    "solution": "Since \\(210 = 2\\times3\\times5\\times7\\) is square-free, an ordered factorisation into three positive integers amounts to sending each of the four primes to one of the three positions, giving \\(3^{4} = 81\\) ordered triples. A repeated entry would need \\(x = y\\) with \\(x^{2}\\) dividing \\(210\\), which forces \\(x = 1\\) and the triple \\((1,1,210)\\), contributing \\(3\\) ordered arrangements. That leaves \\(81 - 3 = 78\\) ordered triples with all three entries distinct, and each unordered set is counted \\(3! = 6\\) times, so the number satisfying \\(x < y < z\\) is \\(\\dfrac{78}{6} = 13\\)."
+  },
+  {
+    "number": 26,
+    "answer": "C",
+    "value": "\\(1\\)",
+    "confidence": "HIGH",
+    "reasoning": "From x = 4 + i, x - 4 = i, so (x-4)^2 = -1, giving x^2 - 8x + 17 = 0. Dividing the cubic by this quadratic: x^3 + 2x^2 - 63x + 171 = (x + 10)(x^2 - 8x + 17) + 1, since (x+10)(x^2-8x+17) = x^3 + 2x^2 - 63x + 170. The quadratic factor vanishes at x = 4+i, so the expression equals 1. Confirmed by direct complex evaluation: (1+0j) exactly.",
+    "solution": "From \\(x = 4+i\\) we get \\(x - 4 = i\\), so \\((x-4)^{2} = -1\\), that is \\(x^{2} - 8x + 17 = 0\\). Dividing the given cubic by this quadratic gives \\(x^{3}+2x^{2}-63x+171 = (x+10)\\left(x^{2}-8x+17\\right) + 1\\). Since the bracket is zero at \\(x = 4+i\\), the whole expression reduces to the remainder, \\(1\\)."
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "value": "\\(1\\)",
+    "confidence": "HIGH",
+    "reasoning": "Shift by one. Put u = alpha + 1 and v = beta + 1. Substituting x = u - 1 into x^2 - p(x+1) - q = 0 gives u^2 - (p+2)u + (1-q) = 0, so u and v are the roots of that quadratic and uv = 1 - q. Now alpha^2 + 2 alpha + 1 = u^2, while alpha^2 + 2 alpha + q = (alpha+1)^2 - 1 + q = u^2 - (1-q) = u^2 - uv = u(u-v). So the first fraction is u^2/[u(u-v)] = u/(u-v), and the second is v/(v-u). Their sum is (u-v)/(u-v) = 1. Confirmed numerically for six random (p,q) pairs, including negative values: every one returned 1 to machine precision. The result is independent of p and q, which is what makes the constant option correct rather than a p-or-q expression.",
+    "solution": "Shift the variable by one. Put \\(u = \\alpha+1\\) and \\(v = \\beta+1\\); substituting \\(x = u-1\\) into \\(x^{2}-p(x+1)-q=0\\) gives \\(u^{2}-(p+2)u+(1-q)=0\\), so \\(u\\) and \\(v\\) are the roots of this quadratic and in particular \\(uv = 1-q\\). Each numerator is \\(\\left(\\alpha+1\\right)^{2} = u^{2}\\), while each denominator is \\(\\left(\\alpha+1\\right)^{2}-1+q = u^{2}-uv = u(u-v)\\). The two fractions are therefore \\(\\dfrac{u}{u-v}\\) and \\(\\dfrac{v}{v-u}\\), whose sum is \\(\\dfrac{u-v}{u-v} = 1\\), whatever \\(p\\) and \\(q\\) may be."
+  },
+  {
+    "number": 28,
+    "answer": "D",
+    "value": "\\((p+q)/2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Clear denominators: r[(2x+q) + (2x+p)] = (2x+p)(2x+q), i.e. r(4x + p + q) = 4x^2 + 2x(p+q) + pq. Rearranged, 4x^2 + [2(p+q) - 4r]x + [pq - r(p+q)] = 0. Sum of roots = -[2(p+q) - 4r]/4, and setting that to zero gives 4r = 2(p+q), so r = (p+q)/2. Verified numerically for five random (p,q) pairs: with r set to (p+q)/2 the resulting quadratic had roots summing to zero to machine precision, and each root satisfied the ORIGINAL equation (residuals of order 1e-14), so no spurious root was introduced by the clearing step. Option B (p+q) is the common slip of forgetting the factor 2 carried by the 2x terms.",
+    "solution": "Clearing the denominators gives \\(r\\left[(2x+q)+(2x+p)\\right] = (2x+p)(2x+q)\\), that is \\(r(4x+p+q) = 4x^{2}+2x(p+q)+pq\\). Rearranged, this is the quadratic \\(4x^{2} + \\left[2(p+q)-4r\\right]x + \\left[pq - r(p+q)\\right] = 0\\). Its sum of roots is \\(-\\dfrac{2(p+q)-4r}{4}\\), and setting that equal to zero gives \\(4r = 2(p+q)\\), so \\(r = \\dfrac{p+q}{2}\\)."
+  },
+  {
+    "number": 29,
+    "answer": "A",
+    "value": "\\(0\\)",
+    "confidence": "HIGH",
+    "reasoning": "Since alpha is a root, a alpha^2 + b alpha + c = 0. Multiplying through by alpha^(n-1) gives a alpha^(n+1) + b alpha^n + c alpha^(n-1) = 0, and the same holds with beta. Adding the two and grouping by power yields a p_(n+1) + b p_n + c p_(n-1) = 0. The condition n > 1 is what makes alpha^(n-1) a legitimate multiplication even when a root is zero. Verified numerically for a = 2, b = -3, c = 5 at n = 2, 3, 5, 8 (complex roots): every value came back 0 to within 3e-14.",
+    "solution": "Because \\(\\alpha\\) is a root, \\(a\\alpha^{2}+b\\alpha+c = 0\\). Multiplying this through by \\(\\alpha^{\\,n-1}\\) gives \\(a\\alpha^{\\,n+1}+b\\alpha^{\\,n}+c\\alpha^{\\,n-1} = 0\\), and the identical step with \\(\\beta\\) gives \\(a\\beta^{\\,n+1}+b\\beta^{\\,n}+c\\beta^{\\,n-1} = 0\\). Adding the two and collecting like powers, \\(a\\left(\\alpha^{\\,n+1}+\\beta^{\\,n+1}\\right)+b\\left(\\alpha^{\\,n}+\\beta^{\\,n}\\right)+c\\left(\\alpha^{\\,n-1}+\\beta^{\\,n-1}\\right) = 0\\), which is exactly \\(ap_{n+1}+bp_{n}+cp_{n-1} = 0\\)."
+  },
+  {
+    "number": 30,
+    "answer": "D",
+    "value": "\\(8q^3\\)",
+    "confidence": "HIGH",
+    "reasoning": "p, q, r in AP gives 2q = p + r. The printed expression is precisely the expansion of a cube: (p+r)^3 = p^3 + r^3 + 3pr(p+r). So p^3 + 3pr(p+r) + r^3 = (p+r)^3 = (2q)^3 = 8q^3. Verified numerically for five random APs including negative and decreasing ones: the expression matched 8q^3 to 8 d.p. every time, while q^3, 2q^3 and 3q^3 did not. The distractor 2q^3 comes from mistakenly writing (p+r)^3 as 2q^3 rather than cubing the 2.",
+    "solution": "Since \\(p, q, r\\) are in AP, the middle term is the average of the outer two, so \\(2q = p+r\\). The given expression is exactly the expansion of a cube, because \\((p+r)^{3} = p^{3}+r^{3}+3pr(p+r)\\). Hence \\(p^{3}+3pr(p+r)+r^{3} = (p+r)^{3} = (2q)^{3} = 8q^{3}\\)."
+  }
+]
