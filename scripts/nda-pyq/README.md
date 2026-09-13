@@ -4,7 +4,7 @@ Scanned UPSC NDA "Test Booklet — Mathematics" papers (image PDFs, **no text
 layer**, **no answer key**, **bilingual**) → the bank, `question_kind='pyq'`,
 under the existing **NDA / Mathematics** subject.
 
-**Status: `2026-2` in progress.**
+**Status: `2026-2` COMPLETE — 120 q PUBLIC + the 19th NDA Maths mock (`nda-2026-sep-maths`).**
 
 ## Why this pipeline exists
 
@@ -53,10 +53,24 @@ ours**.
 
 It is also weaker in one specific way, and the pipeline is built around that: a
 single pass measures **~95%** on UPSC papers in this repo — about **6 wrong in
-120**. So rows commit **PRIVATE** and stay there. `flip-public.ts` and the
-`/mock` build are gated on the reconciliation, because `/mock` grades real
-students against a FROZEN score and a later key fix would need every prior
-attempt re-graded by hand.
+120**. So rows commit **PRIVATE** and stay there until a key has been
+reconciled. `flip-public.ts` and the `/mock` build are gated on that, because
+`/mock` grades real students against a FROZEN score and a later key fix would
+need every prior attempt re-graded by hand.
+
+**What `2026-2` actually landed on.** Its key is an INDEPENDENT third-party one
+(Centurion, series A) and **there is no official UPSC key for this sitting and
+none is expected** — so the reconciliation is final, not interim. **117 of 120
+agreed. All 3 disagreements resolved AGAINST the key**, each read off the
+printed booklet: Q4 and Q11 are power-of-two factor slips on standard identities
+(and share an identical option set), Q62 is a reading in which the key excludes
+the axis-aligned endpoints where statement II's minimum is attained — and the
+blind pass had NAMED that runner-up in advance.
+
+The calibration held where it matters: **the two MED rows and the one LOW row
+all AGREE with the key**, and every disagreement is on a HIGH row. That includes
+Q106 (mutually inconsistent givens) and Q112 (both inequalities printed
+reversed) — the paper meant them as printed, vindicating solve-as-printed.
 
 ## Relationship to `scripts/cds-maths`
 
@@ -100,14 +114,20 @@ npx tsx scripts/nda-pyq/merge-answers.ts 2026-2 --apply  # -> <id>.answers.json
 npx tsx scripts/nda-pyq/commit.ts       2026-2 --apply   # PRIVATE
 npx tsx scripts/nda-pyq/audit-solutions.ts 2026-2
 
-# --- WHEN THE EXTERNAL KEY ARRIVES -------------------------------------------
-# write it to data/2026-2.sourcekey.json as [{ "number": 1, "answer": "C" }, ...]
+# --- WHEN AN ANSWER KEY ARRIVES ----------------------------------------------
+npx tsx scripts/nda-pyq/parse-key.ts        2026-2 "<key.pdf>" A --apply
 npx tsx scripts/nda-pyq/reconcile-key.ts    2026-2    # work list; applies NOTHING
-# [adjudicate each disagreement by hand against the page; edit <id>.answers.json]
-npx tsx scripts/nda-pyq/commit.ts           2026-2 --apply --allow-unpublish
+# [adjudicate each disagreement by hand AGAINST THE PRINTED PAGE]
+npx tsx scripts/nda-pyq/apply-adjudication.ts 2026-2 --apply
 npx tsx scripts/nda-pyq/stamp-provenance.ts 2026-2 --apply
 npx tsx scripts/nda-pyq/flip-public.ts      2026-2 --apply
 npx tsx scripts/mocks/build.ts --paper=maths --only=2026-Sep --apply --publish
+npx tsx scripts/reviews/record-nda-2026-2-key-crosscheck.ts --apply
+
+# NOTE: only re-commit if an ANSWER changed (it did not for 2026-2 — all three
+# adjudications kept ours). `reasoning` never reaches the DB; only `solution` does.
+# NOTE: pass --only= to the mock build. Without --publish a re-run DEMOTES the
+# whole NDA Maths family to draft.
 ```
 
 ## The mock needs no registry edit
@@ -127,6 +147,22 @@ remember.
 `count: 120` is a HARD count: a paper one question short does not degrade, it
 fails to build. That is the right behaviour — a mock is the real paper or it is
 nothing.
+
+## `parse-key.ts` — the series column is the whole risk
+
+A key of this shape prints SET-A..SET-D side by side and **the four series are
+independently scrambled**. Reading the wrong column does not fail: it produces
+120 confident WRONG entries and a mismatch list that reads as a catastrophe in
+the transcription. So the script REFUSES a series that disagrees with the
+booklet cover (`series` in config.ts), and ASSERTS the three-block row
+arithmetic rather than assuming it. For `2026-2` the extraction was additionally
+verified by a SECOND, independent method — spatial, by x-distance to the SET-A
+header — with 0 disagreements across all 120.
+
+That key's own disclaimer claims star marks on doubtful answers. **There are
+none on it** — checked on the RENDERED page, because a star drawn as vector art
+would be invisible to a text parse. The yellow bands that look like highlighting
+run at the same height across all three blocks, i.e. they are the watermark.
 
 ## Probes, and why each exists
 

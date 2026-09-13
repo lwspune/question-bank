@@ -34,19 +34,28 @@ function loadEnv() {
 }
 
 /**
- * ONE blind pass, and the string says so.
+ * ONE blind pass, THEN cross-checked against an independent answer key — and the
+ * string says exactly that, because it is the one field a later reader trusts to
+ * tell them how the answer was established.
  *
- * The sibling CDS pipelines stamp "(two independent blind passes)" because that
- * is what they ran. This corpus runs ONE, reconciled afterwards against an
- * external key. Carrying the CDS wording across would assert an evidence
- * standard this paper does not meet — in the one field a later reader would
- * trust to tell them how the answer was established.
+ * The sibling CDS pipelines stamp "(two independent blind passes)". Carrying that
+ * wording across would assert an evidence standard this paper does not meet. What
+ * it DOES meet is arguably stronger than a second blind pass on one point and
+ * weaker on another, and both halves matter:
  *
- * UPDATE THIS STRING when the key reconciliation is done, to name it: the row's
- * provenance then genuinely is "derived, then checked against a key", which is
- * stronger than either half alone and is what `question_reviews` records.
+ *  - STRONGER: the second opinion is a genuinely independent SOURCE (a coaching
+ *    institute's own key, not another run of the same model), so it cannot share
+ *    our failure modes. Two blind passes can be wrong the same way; this cannot
+ *    be wrong in the same way for the same reason.
+ *  - WEAKER: it is one derivation, not two, so a row where both we and the key
+ *    are wrong has no third voice. 117 of 120 agreed; the 3 that did not were
+ *    each adjudicated against the printed page and resolved AGAINST the key.
+ *
+ * There is no official UPSC key for this sitting and none is expected, so this is
+ * the final evidence standard rather than an interim one.
  */
-export const DERIVED_MODEL = "claude-opus-5 (single blind pass, pending key reconciliation)";
+export const DERIVED_MODEL =
+  "claude-opus-5 (blind derivation, cross-checked against an independent answer key)";
 
 /**
  * NOTHING is appended to pyq_note any more.
