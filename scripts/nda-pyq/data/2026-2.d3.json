@@ -1,0 +1,242 @@
+[
+  {
+    "number": 61,
+    "answer": "B",
+    "value": "84",
+    "confidence": "HIGH",
+    "reasoning": "Midpoints: D = midpoint(BC) = (0,3,2), E = midpoint(CA) = (1,0,2), F = midpoint(AB) = (1,3,0). AD^2 = 4+9+4 = 17, BE^2 = 1+36+4 = 41, CF^2 = 1+9+16 = 26, total 84. Independent second route: the identity AD^2+BE^2+CF^2 = (3/4)(AB^2+BC^2+CA^2) = (3/4)(40+52+20) = (3/4)(112) = 84. Both routes agree exactly, computed in exact integer arithmetic. No other option is within reach of either route.",
+    "solution": "The midpoints of the opposite sides are \\(D(0,3,2)\\), \\(E(1,0,2)\\) and \\(F(1,3,0)\\). Squaring each median gives \\(AD^2=4+9+4=17\\), \\(BE^2=1+36+4=41\\) and \\(CF^2=1+9+16=26\\), so the total is \\(84\\). The standard relation \\(AD^2+BE^2+CF^2=\\tfrac{3}{4}\\left(AB^2+BC^2+CA^2\\right)=\\tfrac{3}{4}(40+52+20)\\) gives the same value."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "Both I and II are correct",
+    "confidence": "HIGH",
+    "reasoning": "beta = 90 - alpha so cos beta = sin alpha, hence cos^2 alpha + cos^2 beta = 1 and the direction-cosine identity forces cos^2 gamma = 0, i.e. gamma = 90 and cos gamma = 0. Domain: alpha and beta are direction angles in [0,180] and beta = 90 - alpha, so alpha lies in [0,90]. On that closed interval cos alpha + sin alpha = sqrt(2) sin(alpha+45), with alpha+45 in [45,135], so the expression ranges over [1, sqrt(2)]. Max = sqrt(2) at alpha = 45 (direction cosines (1/sqrt2, 1/sqrt2, 0)) -> statement I true. Because cos gamma = 0 the second sum is the SAME expression, so its minimum is 1, attained at alpha = 0 (the x-axis, dc (1,0,0)) and alpha = 90 (the y-axis, dc (0,1,0)) -> statement II true. Maximum/minimum over [0, pi/2] confirmed symbolically as sqrt(2) and 1, and the three endpoint configurations were checked to satisfy the sum-of-squares identity. If a key disagrees the alternative is 'I only', which is what someone gets by refusing the degenerate endpoint cases where the line lies along a coordinate axis; but a coordinate axis is an ordinary line satisfying alpha+beta = 90, so the minimum is genuinely attained and both statements stand.",
+    "solution": "Since \\(\\beta=90^\\circ-\\alpha\\) we have \\(\\cos\\beta=\\sin\\alpha\\), so \\(\\cos^2\\alpha+\\cos^2\\beta=1\\) and the direction-cosine identity forces \\(\\cos\\gamma=0\\). Hence \\(\\cos\\alpha+\\cos\\beta=\\sqrt{2}\\,\\sin\\!\\left(\\alpha+45^\\circ\\right)\\), whose greatest value is \\(\\sqrt{2}\\), reached at \\(\\alpha=45^\\circ\\). Because \\(\\cos\\gamma=0\\), the second sum is the same expression, and its least value is \\(1\\), reached when the line lies along the \\(x\\)-axis or the \\(y\\)-axis. Both statements are therefore correct."
+  },
+  {
+    "number": 63,
+    "answer": "A",
+    "value": "9 square units",
+    "confidence": "HIGH",
+    "reasoning": "Edge vectors from (0,7,10): u = (-1,-1,-4), v = (-4,2,-4). u x v = (12, 12, -6), |u x v| = sqrt(144+144+36) = sqrt(324) = 18. Area = 18/2 = 9. Exact integer arithmetic throughout, confirmed symbolically. The distractors 12, 15, 18 include the full cross-product magnitude 18, which is the classic forgot-to-halve trap.",
+    "solution": "Taking the first vertex as base point, the two edge vectors are \\((-1,-1,-4)\\) and \\((-4,2,-4)\\). Their cross product is \\((12,12,-6)\\), whose magnitude is \\(\\sqrt{144+144+36}=18\\). The area of the triangle is half of this, namely \\(9\\) square units."
+  },
+  {
+    "number": 64,
+    "answer": "B",
+    "value": "\\(x-2y+3z-28=0\\)",
+    "confidence": "HIGH",
+    "reasoning": "The plane is perpendicular to OP, so the normal is OP = (2,-4,6). Plane through P: 2x - 4y + 6z = OP.OP = 4+16+36 = 56, i.e. 2x - 4y + 6z - 56 = 0, which on dividing by 2 is x - 2y + 3z - 28 = 0. Option D is the same left-hand side with 55 instead of 56 and is a pure arithmetic distractor; option A flips the sign of y; option C flips the sign of the constant.",
+    "solution": "The plane is perpendicular to \\(OP\\), so \\(\\vec{OP}=(2,-4,6)\\) serves as its normal. A plane with that normal passing through \\(P(2,-4,6)\\) satisfies \\(2x-4y+6z=2^2+(-4)^2+6^2=56\\). Dividing throughout by \\(2\\) gives \\(x-2y+3z-28=0\\)."
+  },
+  {
+    "number": 65,
+    "answer": "B",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "The segment joining a point to its mirror image is along the normal, so (A,B,C) is parallel to P'-P = (-3-1, 5-3, 2-4) = (-4,2,-2). Write (A,B,C) = s(-4,2,-2); then A+B+C = -4s = 2 gives s = -1/2 and (A,B,C) = (2,-1,1). The midpoint (-1,4,3) lies on the plane: 2(-1) + (-1)(4) + 1(3) + D = 0 -> D = 3. Verified by reflecting P(1,3,4) in 2x - y + z + 3 = 0: numerator 2-3+4+3 = 6, image = P - 2(6/6)(2,-1,1) = (-3,5,2), exactly the stated image. Option D ('cannot be determined') is the designed trap and is wrong here precisely because the components of P'-P sum to -4, which is non-zero, so the constraint A+B+C = 2 fixes the scale uniquely; had they summed to zero the constraint would have been inconsistent and D really would have been indeterminate.",
+    "solution": "The segment joining a point to its image is along the normal, so the normal is parallel to \\((-3-1,\\,5-3,\\,2-4)=(-4,2,-2)\\). Writing the normal as \\(s(-4,2,-2)\\), the condition \\(A+B+C=2\\) gives \\(-4s=2\\), so \\(s=-\\tfrac{1}{2}\\) and the normal is \\((2,-1,1)\\). The midpoint \\((-1,4,3)\\) lies on the plane, so \\(2(-1)-4+3+D=0\\), giving \\(D=3\\). The data is sufficient because the components of the normal direction do not add up to zero, so the scaling condition pins the plane down completely."
+  },
+  {
+    "number": 66,
+    "answer": "C",
+    "value": "Three (expressions III, IV and V)",
+    "confidence": "MED",
+    "reasoning": "The stem explicitly states that '.' is the DOT PRODUCT and 'x' is the CROSS PRODUCT of vectors, which is what settles the question. I: (a x b).(c x d) is vector.vector = scalar, well-defined. II: (a x b) x (c x d) is vector x vector = vector, well-defined. III: (a.b).(c.d) is a dot product of two SCALARS, and a dot product needs two vectors, so it is not well-defined. IV: (a.b) x (c.d) is a cross product of two scalars, not defined. V: {(a x b).c} x d is a cross product of a SCALAR with a vector, not defined. So three of the five fail. RUNNER-UP: option 'Two', which is what you get by reading III as ordinary multiplication of two real numbers and counting only IV and V. That reading is exactly what the stem's clarifying sentence exists to exclude - if III were meant to be legal, that sentence would be pointless - but it is a common way to set this question and the examiner's own intent is the only variable here, so this is marked MED rather than HIGH.",
+    "solution": "Both \\(\\vec{a}\\times\\vec{b}\\) and \\(\\vec{c}\\times\\vec{d}\\) are vectors, so their dot product and their cross product are both meaningful, and the first two expressions are fine. But \\(\\vec{a}\\cdot\\vec{b}\\) and \\(\\vec{c}\\cdot\\vec{d}\\) are scalars, and neither a dot product nor a cross product is defined between two scalars, so the third and fourth expressions fail. In the fifth, \\(\\{(\\vec{a}\\times\\vec{b})\\cdot\\vec{c}\\}\\) is a scalar and a cross product of a scalar with a vector is again undefined. Three of the five are therefore not well-defined."
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "value": "2",
+    "confidence": "HIGH",
+    "reasoning": "Scalar projection of a on b is (a.b)/|b| = (2L - 1 + 2L)/sqrt(4 + 1 + L^2) = (4L - 1)/sqrt(5 + L^2), where L is lambda. Setting this equal to 7/3 and clearing the radical gives 144L^2 - 72L + 9 = 49(5 + L^2), i.e. 95L^2 - 72L - 236 = 0, with discriminant 94864 = 308^2 and roots L = 2 and L = -118/95. The second is extraneous: it makes 12L - 3 negative while 7*sqrt(5+L^2) is positive. Substituting L = 2 back gives (8-1)/sqrt(9) = 7/3 exactly. Symbolic solve over the reals returns the single root 2, so no other listed value works.",
+    "solution": "The scalar projection is \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{\\left|\\vec{b}\\right|}=\\dfrac{4\\lambda-1}{\\sqrt{5+\\lambda^{2}}}=\\dfrac{7}{3}\\). Clearing the radical gives \\(95\\lambda^{2}-72\\lambda-236=0\\), whose roots are \\(\\lambda=2\\) and \\(\\lambda=-\\tfrac{118}{95}\\). The negative root makes the left-hand side negative and so is rejected, and substituting \\(\\lambda=2\\) does return \\(\\dfrac{7}{3}\\)."
+  },
+  {
+    "number": 68,
+    "answer": "C",
+    "value": "\\(\\pi/4\\)",
+    "confidence": "HIGH",
+    "reasoning": "|r| = sqrt(cos^2 t + sin^2 t + 1) = sqrt(2) for every t, and the component along k is 1. So cos(angle with the positive z-axis) = 1/sqrt(2), giving pi/4 independently of theta. Confirmed symbolically: the k-component over the norm simplifies to sqrt(2)/2 with no residual dependence on theta.",
+    "solution": "Here \\(\\left|\\vec{r}\\right|=\\sqrt{\\cos^{2}\\theta+\\sin^{2}\\theta+1}=\\sqrt{2}\\), and the component along \\(\\hat{k}\\) is \\(1\\). Hence the angle \\(\\gamma\\) with the positive \\(z\\)-axis satisfies \\(\\cos\\gamma=\\dfrac{1}{\\sqrt{2}}\\), so \\(\\gamma=\\dfrac{\\pi}{4}\\) whatever the value of \\(\\theta\\)."
+  },
+  {
+    "number": 69,
+    "answer": "D",
+    "value": "4 square units",
+    "confidence": "HIGH",
+    "reasoning": "(a + 3b) x (3a + b) = 3(a x a) + (a x b) + 9(b x a) + 3(b x b) = (a x b) - 9(a x b) = -8(a x b). Area = 8|a x b| = 8 * 1 * 1 * sin 30 = 8 * (1/2) = 4. Checked concretely with a = (1,0,0), b = (cos 30, sin 30, 0): the cross product of the two given sides has magnitude exactly 4. The distractor 8 is what you get by forgetting the sine factor; 4*sqrt(3) and 8*sqrt(3) come from using cos 30 instead of sin 30.",
+    "solution": "Expanding, \\(\\left(\\vec{a}+3\\vec{b}\\right)\\times\\left(3\\vec{a}+\\vec{b}\\right)=\\vec{a}\\times\\vec{b}+9\\left(\\vec{b}\\times\\vec{a}\\right)=-8\\left(\\vec{a}\\times\\vec{b}\\right)\\). Since both are unit vectors inclined at \\(30^\\circ\\), \\(\\left|\\vec{a}\\times\\vec{b}\\right|=\\sin 30^\\circ=\\tfrac{1}{2}\\). The area of the parallelogram is therefore \\(8\\times\\tfrac{1}{2}=4\\) square units."
+  },
+  {
+    "number": 70,
+    "answer": "C",
+    "value": "\\(2(\\vec{b}\\times\\vec{c})\\)",
+    "confidence": "HIGH",
+    "reasoning": "a is perpendicular to both b and c, so a is parallel to b x c. With b and c unit vectors at pi/6, |b x c| = sin(pi/6) = 1/2, so the unit vector along b x c is 2(b x c). Since |a| = 1, a = +/- 2(b x c). Only the magnitude-2 form is printed, and the other three options have magnitudes 1/2, sqrt(2)/2 and sqrt(3)/2, none of which is a unit vector. The stem is slightly loose in asking what a 'is equal to' when both senses satisfy every stated condition, but exactly one of the two is offered so the intended answer is unambiguous.",
+    "solution": "Since \\(\\vec{a}\\) is perpendicular to both \\(\\vec{b}\\) and \\(\\vec{c}\\), it must be parallel to \\(\\vec{b}\\times\\vec{c}\\). That cross product has magnitude \\(\\left|\\vec{b}\\times\\vec{c}\\right|=\\sin\\dfrac{\\pi}{6}=\\dfrac{1}{2}\\), so the unit vector in its direction is \\(2\\left(\\vec{b}\\times\\vec{c}\\right)\\). As \\(\\vec{a}\\) is itself a unit vector, \\(\\vec{a}=2\\left(\\vec{b}\\times\\vec{c}\\right)\\); the opposite sense \\(-2\\left(\\vec{b}\\times\\vec{c}\\right)\\) also meets every stated condition, but only one of the two is listed."
+  },
+  {
+    "number": 71,
+    "answer": "D",
+    "value": "\\(\\frac{2}{3}\\sin^{-1}\\left(x^{3/2}\\right)+c\\)",
+    "confidence": "HIGH",
+    "reasoning": "Substitute u = x^(3/2), so du = (3/2) x^(1/2) dx and sqrt(x) dx = (2/3) du. The integral becomes (2/3) * integral of du/sqrt(1-u^2) = (2/3) arcsin(u) + c = (2/3) arcsin(x^(3/2)) + c. Checked in the safe direction by differentiating the candidate: d/dx of (2/3) arcsin(x^(3/2)) returns sqrt(x)/sqrt(1-x^3) exactly, which is the integrand. Options A and B ignore the radical entirely; option C has the wrong constant.",
+    "solution": "Put \\(u=x^{3/2}\\), so that \\(du=\\tfrac{3}{2}\\sqrt{x}\\,dx\\) and hence \\(\\sqrt{x}\\,dx=\\tfrac{2}{3}\\,du\\). The integral becomes \\(\\dfrac{2}{3}\\displaystyle\\int\\dfrac{du}{\\sqrt{1-u^{2}}}=\\dfrac{2}{3}\\sin^{-1}u+c\\). Restoring \\(u\\) gives \\(\\dfrac{2}{3}\\sin^{-1}\\!\\left(x^{3/2}\\right)+c\\), and differentiating this does return \\(\\dfrac{\\sqrt{x}}{\\sqrt{1-x^{3}}}\\)."
+  },
+  {
+    "number": 72,
+    "answer": "D",
+    "value": "\\(\\frac{1}{c(a+b+c)}\\)",
+    "confidence": "HIGH",
+    "reasoning": "SOLVED AS PRINTED. The denominator is printed (ax + bx + c)^2, with NO superscript on the first x - confirmed by reading the page image at full size, so the transcription is faithful and this is not a misprint. ax + bx = (a+b)x, so with m = a+b the integral is the elementary one: integral from 0 to 1 of dx/(mx+c)^2 = [-1/(m(mx+c))] from 0 to 1 = (1/m)(1/c - 1/(m+c)) = 1/(c(m+c)) = 1/(c(a+b+c)). Symbolic integration with a,b,c positive returns exactly 1/(c(a+b+c)), and the numeric case a=1,b=2,c=3 gives 1/18 matching the option. CORROBORATION THAT THE PRINT IS INTENDED RATHER THAN A TYPO FOR ax^2+bx+c: under the quadratic reading the same integral with a=1,b=2,c=3 evaluates to 0.06008, while the four printed options evaluate to -0.1667, -0.0556, 0.1667 and 0.0556 - so the quadratic reading matches NO option at all, whereas the printed linear reading matches one exactly. The linear reading is therefore the only one under which the question is answerable.",
+    "solution": "The denominator contains \\(ax+bx\\), which is simply \\((a+b)x\\), so the integrand is \\(\\dfrac{1}{\\left((a+b)x+c\\right)^{2}}\\). Writing \\(m=a+b\\), \\(\\displaystyle\\int_{0}^{1}\\frac{dx}{(mx+c)^{2}}=\\left[\\frac{-1}{m(mx+c)}\\right]_{0}^{1}=\\frac{1}{m}\\left(\\frac{1}{c}-\\frac{1}{m+c}\\right)\\). Simplifying the bracket gives \\(\\dfrac{1}{c(a+b+c)}\\)."
+  },
+  {
+    "number": 73,
+    "answer": "A",
+    "value": "\\(\\frac{(10e)^x}{1+\\ln 10}+c\\)",
+    "confidence": "HIGH",
+    "reasoning": "e^(x ln 10) = 10^x, so the integrand is 10^x e^x = (10e)^x. Then the integral is (10e)^x / ln(10e) + c, and ln(10e) = ln 10 + ln e = ln 10 + 1. Symbolic integration returns (10e)^x/(1 + log 10) directly, and differentiating the candidate back gives residual exactly 0 against the integrand. Options C and D treat the integrand as e^x * e^x, which would need the first factor to be e^x rather than 10^x.",
+    "solution": "Since \\(e^{x\\ln 10}=10^{x}\\), the integrand is \\(10^{x}e^{x}=(10e)^{x}\\). Then \\(\\displaystyle\\int (10e)^{x}\\,dx=\\frac{(10e)^{x}}{\\ln(10e)}+c\\), and \\(\\ln(10e)=\\ln 10+1\\). Hence the value is \\(\\dfrac{(10e)^{x}}{1+\\ln 10}+c\\)."
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "value": "3",
+    "confidence": "HIGH",
+    "reasoning": "d/dx of x^x is x^x (1 + ln x), which is exactly the integrand, so the integral is [x^x] from 1 to 2 = 2^2 - 1^1 = 4 - 1 = 3. The derivative identity was confirmed symbolically. Option A (4) is the value of the antiderivative at the upper limit alone, i.e. forgetting to subtract the lower limit - the designed trap.",
+    "solution": "Differentiating \\(x^{x}\\) gives \\(x^{x}\\left(1+\\ln x\\right)\\), so the integrand is an exact derivative. Hence \\(\\displaystyle\\int_{1}^{2}x^{x}\\left(1+\\ln x\\right)dx=\\left[x^{x}\\right]_{1}^{2}=2^{2}-1^{1}=3\\)."
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Putting x = y = 0 in f(x+y) = f(x) + f(y) gives f(0) = 2f(0), so f(0) = 0. Putting y = -x gives f(0) = f(x) + f(-x) = 0, so f(-x) = -f(x) and f is odd. The integral of an odd function over an interval symmetric about the origin is 0, so the definite integral from -1 to 1 is 0. Option C is the even-function result and is the designed trap. (The question presupposes that the integral exists, which is what rules out the non-measurable additive functions that exist without a regularity assumption; given existence, oddness alone forces the value 0.)",
+    "solution": "Setting \\(x=y=0\\) gives \\(f(0)=2f(0)\\), so \\(f(0)=0\\); then replacing \\(y\\) by \\(-x\\) gives \\(f(x)+f(-x)=f(0)=0\\), so \\(f\\) is an odd function. The integral of an odd function over an interval symmetric about the origin vanishes, so \\(\\displaystyle\\int_{-1}^{1}f(x)\\,dx=0\\)."
+  },
+  {
+    "number": 76,
+    "answer": "B",
+    "value": "\\((2e-2)\\) square units",
+    "confidence": "HIGH",
+    "reasoning": "The condition |x| = 1 gives the two vertical lines x = -1 and x = 1, and y = 0 is the x-axis, so the region is -1 <= x <= 1 with 0 <= y <= e^|x|. Since e^|x| is even, the area is 2 * integral from 0 to 1 of e^x dx = 2(e - 1) = 2e - 2, confirmed symbolically. Option A is the half-region from 0 to 1 only, i.e. treating |x| = 1 as the single line x = 1 - the designed trap.",
+    "solution": "The condition \\(|x|=1\\) gives the two vertical lines \\(x=-1\\) and \\(x=1\\), and \\(y=0\\) is the \\(x\\)-axis, so the region is \\(-1\\le x\\le 1\\) with \\(0\\le y\\le e^{|x|}\\). Because \\(e^{|x|}\\) is an even function, the area is \\(2\\displaystyle\\int_{0}^{1}e^{x}\\,dx=2(e-1)\\), which is \\((2e-2)\\) square units."
+  },
+  {
+    "number": 77,
+    "answer": "A",
+    "value": "\\(1/3\\) square unit",
+    "confidence": "HIGH",
+    "reasoning": "dy/dx = 2x gives y = x^2 + k, and passing through the origin forces k = 0, so the curve is y = x^2. The region bounded by that curve, the x-axis and the line x = 1 is 0 <= x <= 1, 0 <= y <= x^2, whose area is the integral from 0 to 1 of x^2 dx = 1/3. Confirmed symbolically. Option B (2/3) is the complementary region between the curve and the line y = 1, which is not what the three stated boundaries enclose.",
+    "solution": "From \\(\\dfrac{dy}{dx}=2x\\) we get \\(y=x^{2}+k\\), and passing through the origin forces \\(k=0\\), so the curve is \\(y=x^{2}\\). The region enclosed by that curve, the \\(x\\)-axis and the line \\(x=1\\) has area \\(\\displaystyle\\int_{0}^{1}x^{2}\\,dx=\\dfrac{1}{3}\\) square unit."
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "value": "\\(y=\\frac{x}{c+\\sin x}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Write the equation as y dx - x dy = y^2 cos x dx and divide by y^2: (y dx - x dy)/y^2 = cos x dx. The left side is exactly d(x/y), so integrating gives x/y = sin x + c, i.e. y = x/(c + sin x). Verified by substitution: for y = x/(c + sin x) the residual y - x y' - y^2 cos x is identically 0, while for the sign-flipped option y = x/(c - sin x) the same residual is -2x^2 cos x/(c - sin x)^2, which is not identically zero. Options C and D put the constant on the wrong factor.",
+    "solution": "Dividing the equation by \\(y^{2}\\) gives \\(\\dfrac{y\\,dx-x\\,dy}{y^{2}}=\\cos x\\,dx\\), and the left-hand side is precisely \\(d\\!\\left(\\dfrac{x}{y}\\right)\\). Integrating both sides gives \\(\\dfrac{x}{y}=\\sin x+c\\), so \\(y=\\dfrac{x}{c+\\sin x}\\). Substituting this back into the original equation does reduce it to zero identically."
+  },
+  {
+    "number": 79,
+    "answer": "C",
+    "value": "\\(x\\frac{dy}{dx}-y=0\\)",
+    "confidence": "HIGH",
+    "reasoning": "A straight line through the origin is y = mx with m the single arbitrary constant. Differentiating gives dy/dx = m, and eliminating m by substituting m = y/x gives x dy/dx = y, i.e. x dy/dx - y = 0. Options A and B are the orthogonal-trajectory family (concentric circles / rectangular hyperbolas); option D is x dy/dx + y = 0, which integrates to xy = constant, the rectangular hyperbolas rather than lines through the origin.",
+    "solution": "A straight line through the origin is \\(y=mx\\), with \\(m\\) the single arbitrary constant. Differentiating gives \\(\\dfrac{dy}{dx}=m\\), and substituting \\(m=\\dfrac{y}{x}\\) eliminates the constant to leave \\(x\\dfrac{dy}{dx}-y=0\\)."
+  },
+  {
+    "number": 80,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Put k = sqrt(c), a single positive arbitrary constant, so the family is y^2 = kx. Differentiating gives 2y y' = k, and substituting back into y^2 = kx gives y^2 = 2x y y', i.e. y = 2x y'. The highest-order derivative y' appears to the first power, so the degree is 1. This was checked on concrete members of both branches: for y = sqrt(4x) and for y = -sqrt(4x) the residual y - 2xy' is identically 0, so the single first-degree equation covers the whole family and no squaring is needed. It is also robust to the alternative reading of the radical: if the family is y^2 = sqrt(cx), then y^4 = cx, 4y^3 y' = c and y = 4x y', again degree 1 (checked on y = (4x)^(1/4), residual 0). The trap answer is 2, obtained by squaring 2yy' = sqrt(c) into 4y^2 y'^2 = c before eliminating, which produces a non-minimal form.",
+    "solution": "Write \\(k=\\sqrt{c}\\), so the family is \\(y^{2}=kx\\) with one arbitrary constant. Differentiating gives \\(2y\\dfrac{dy}{dx}=k\\), and substituting this back gives \\(y^{2}=2xy\\dfrac{dy}{dx}\\), that is \\(y=2x\\dfrac{dy}{dx}\\). The highest-order derivative occurs to the first power, so the degree is \\(1\\); squaring before eliminating the constant is unnecessary and gives a non-minimal form."
+  },
+  {
+    "number": 81,
+    "answer": "B",
+    "value": "\\((0,\\infty)-\\{1\\}\\)",
+    "confidence": "HIGH",
+    "reasoning": "By change of base, log_x e = ln e / ln x = 1/(ln x). For a logarithm to a base x the base must be positive, so x > 0, and it must not equal 1 - which is also exactly the condition that keeps ln x non-zero so the reciprocal is defined. Hence the domain is (0, infinity) with 1 removed. Nothing excludes x = e (there log_x e = 1) or x = 10, so options C and D remove a perfectly good point.",
+    "solution": "By the change-of-base rule, \\(\\log_{x}e=\\dfrac{1}{\\ln x}\\). The base of a logarithm must be positive, so \\(x>0\\), and it must not equal \\(1\\), which is also what keeps \\(\\ln x\\) non-zero so that the reciprocal exists. The domain is therefore \\((0,\\infty)\\) with the single point \\(1\\) removed; the values \\(e\\) and \\(10\\) are perfectly admissible."
+  },
+  {
+    "number": 82,
+    "answer": "D",
+    "value": "\\(1/4\\)",
+    "confidence": "HIGH",
+    "reasoning": "By the fundamental theorem of calculus, f'(x) is the integrand itself. Its numerator is 1 - 2cos x + cos^2 x = (1 - cos x)^2, which behaves like (x^2/2)^2 = x^4/4 near 0, while the denominator x sin^2 x tan x behaves like x * x^2 * x = x^4. The limit is therefore 1/4. Confirmed symbolically (limit returns 1/4) and numerically at 40-digit precision from both sides: at x = +/-0.01 the integrand is 0.24999583, at +/-0.001 it is 0.249999958, at +/-0.0001 it is 0.2499999996, converging to 0.25 and identical for positive and negative x.",
+    "solution": "By the fundamental theorem of calculus, \\(f'(x)\\) is the integrand itself. Its numerator factors as \\(1-2\\cos x+\\cos^{2}x=\\left(1-\\cos x\\right)^{2}\\), which behaves like \\(\\dfrac{x^{4}}{4}\\) near \\(0\\), while the denominator \\(x\\sin^{2}x\\tan x\\) behaves like \\(x\\cdot x^{2}\\cdot x=x^{4}\\). The limit is therefore \\(\\dfrac{1}{4}\\)."
+  },
+  {
+    "number": 83,
+    "answer": "B",
+    "value": "II only",
+    "confidence": "HIGH",
+    "reasoning": "Statement I: at x = 1/3 the quantity 3x equals 1. For x just below 1/3, 3x is just below 1 so [3x] = 0, while f(1/3) = [1] = 1. The left limit 0 differs from the value 1, so the function jumps there and is NOT continuous - statement I is false. Statement II: near x = 1/4 we have 3x = 0.75, and 3x stays inside the open interval (0,1) for all x in (0, 1/3), so [3x] = 0 identically on a neighbourhood of 1/4. A locally constant function is differentiable with derivative 0, so statement II is true. Only II holds.",
+    "solution": "At \\(x=\\tfrac{1}{3}\\) the quantity \\(3x\\) reaches \\(1\\): just to the left \\([3x]=0\\), whereas \\(f\\!\\left(\\tfrac{1}{3}\\right)=[1]=1\\), so the function jumps there and the first statement fails. Near \\(x=\\tfrac{1}{4}\\), however, \\(3x\\) lies strictly between \\(0\\) and \\(1\\), so \\([3x]=0\\) throughout a whole neighbourhood and the function is constant there, hence differentiable with derivative \\(0\\). Only the second statement is correct."
+  },
+  {
+    "number": 84,
+    "answer": "D",
+    "value": "The limit does not exist",
+    "confidence": "HIGH",
+    "reasoning": "For x > 0, |x| = x and the expression is sin^2 x / x^2, which tends to 1. For x < 0, |x| = -x and the expression is sin^2 x / (-x^2) = -sin^2 x / x^2, which tends to -1. Symbolic one-sided limits return +1 and -1 respectively. The two one-sided limits differ, so the two-sided limit does not exist. Options A and C are each one of the two one-sided values, which is the designed trap.",
+    "solution": "For \\(x>0\\) we have \\(|x|=x\\), so the expression is \\(\\dfrac{\\sin^{2}x}{x^{2}}\\), which tends to \\(1\\). For \\(x<0\\) we have \\(|x|=-x\\), so the expression is \\(-\\dfrac{\\sin^{2}x}{x^{2}}\\), which tends to \\(-1\\). The two one-sided limits are \\(1\\) and \\(-1\\); since they disagree, the limit does not exist."
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "f(x) = p|x| + q. The right-hand derivative at 0 is the limit of (p h + q - q)/h = p, and the left-hand derivative is the limit of (-p h + q - q)/h = -p. For f'(0) to exist these must be equal, so p = -p and hence p = 0. (With p = 0 the function is the constant q, which is indeed differentiable.) The constant q is unrestricted, which is why option D is a distractor rather than an answer.",
+    "solution": "The right-hand derivative at \\(0\\) is \\(\\displaystyle\\lim_{h\\to 0^{+}}\\dfrac{p h}{h}=p\\), while the left-hand derivative is \\(\\displaystyle\\lim_{h\\to 0^{-}}\\dfrac{-p h}{h}=-p\\). For \\(f'(0)\\) to exist these must agree, so \\(p=-p\\) and hence \\(p=0\\). The function is then the constant \\(q\\), which is differentiable, and \\(q\\) itself is left unrestricted."
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "value": "Both I and II are correct",
+    "confidence": "HIGH",
+    "reasoning": "For x > 0, x^3/|x| = x^2; for x < 0, x^3/|x| = -x^2. So f(x) = x|x| away from 0, and f(0) = 0 matches the limit 0 from both sides, giving continuity everywhere - statement I is true. For differentiability at 0 the difference quotient is (h|h| - 0)/h = |h|, which tends to 0 from both sides, so f'(0) = 0 exists; away from 0 the function is a polynomial on each side (2x for x > 0, -2x for x < 0, both equal to 2|x|), so it is differentiable everywhere - statement II is also true. One-sided limits of the difference quotient confirmed symbolically as 0 and 0.",
+    "solution": "For \\(x>0\\) the function is \\(x^{2}\\) and for \\(x<0\\) it is \\(-x^{2}\\), so away from the origin \\(f(x)=x|x|\\); the limit at \\(0\\) is \\(0=f(0)\\), giving continuity everywhere. The difference quotient at the origin is \\(\\dfrac{h|h|}{h}=|h|\\), which tends to \\(0\\) from both sides, so \\(f'(0)=0\\) exists, and elsewhere \\(f'(x)=2|x|\\). Both statements are therefore correct."
+  },
+  {
+    "number": 87,
+    "answer": "C",
+    "value": "\\(1/2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Multiply and divide by the conjugate: sqrt(x + sqrt x) - sqrt x = ((x + sqrt x) - x)/(sqrt(x + sqrt x) + sqrt x) = sqrt(x)/(sqrt(x + sqrt x) + sqrt x). Dividing numerator and denominator by sqrt x gives 1/(sqrt(1 + 1/sqrt x) + 1), which tends to 1/(1 + 1) = 1/2 as x tends to infinity. Confirmed symbolically as 1/2. Option B (0) is the trap for treating it as an infinity-minus-infinity form that collapses.",
+    "solution": "Multiplying and dividing by the conjugate gives \\(\\sqrt{x+\\sqrt{x}}-\\sqrt{x}=\\dfrac{\\sqrt{x}}{\\sqrt{x+\\sqrt{x}}+\\sqrt{x}}\\). Dividing numerator and denominator by \\(\\sqrt{x}\\) turns this into \\(\\dfrac{1}{\\sqrt{1+1/\\sqrt{x}}+1}\\), which tends to \\(\\dfrac{1}{2}\\)."
+  },
+  {
+    "number": 88,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Since m and n are the roots of x^2 - px + q = 0, we have x^2 - px + q = (x - m)(x - n) identically. So the expression is (e^t - 1)/t with t = (x - m)(x - n), and t tends to 0 as x tends to m. The standard limit (e^t - 1)/t -> 1 gives the value 1. Checked symbolically for distinct roots (m = 2, n = 5) and for the repeated-root case (m = n = 3, where t = (x - m)^2 still tends to 0); both return 1, so the answer does not depend on the discriminant.",
+    "solution": "Because \\(m\\) and \\(n\\) are the roots, \\(x^{2}-px+q=(x-m)(x-n)\\) identically, so the expression is \\(\\dfrac{e^{(x-m)(x-n)}-1}{(x-m)(x-n)}\\). Writing \\(t=(x-m)(x-n)\\), we have \\(t\\to 0\\) as \\(x\\to m\\), and the standard limit \\(\\displaystyle\\lim_{t\\to 0}\\dfrac{e^{t}-1}{t}=1\\) gives the value \\(1\\). This holds whether or not the two roots are distinct."
+  },
+  {
+    "number": 89,
+    "answer": "C",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "With f(x) = x^n + k, f(x)f(1/x) = (x^n + k)(x^(-n) + k) = 1 + k(x^n + x^(-n)) + k^2, while f(x) + f(1/x) = x^n + x^(-n) + 2k. Equating these for all x forces the coefficient of (x^n + x^(-n)) to match, giving k = 1, and the constant terms then give 1 + k^2 = 2k, i.e. (k-1)^2 = 0, which is consistent with k = 1. So f(x) = x^n + 1. Then f(2) = 2^n + 1 = 9 gives 2^n = 8 and n = 3 (a natural number, as required). Hence f(-1) = (-1)^3 + 1 = -1 + 1 = 0. The coefficient comparison was confirmed symbolically: substituting k = 1 reduces the difference to 1 - x^n x^(-n), which is identically zero for x non-zero.",
+    "solution": "Expanding, \\(f(x)f\\!\\left(\\tfrac{1}{x}\\right)=\\left(x^{n}+k\\right)\\left(x^{-n}+k\\right)=1+k\\left(x^{n}+x^{-n}\\right)+k^{2}\\), while \\(f(x)+f\\!\\left(\\tfrac{1}{x}\\right)=x^{n}+x^{-n}+2k\\). Matching these for all \\(x\\) forces \\(k=1\\), and then \\(f(2)=2^{n}+1=9\\) gives \\(2^{n}=8\\), so \\(n=3\\). Hence \\(f(-1)=(-1)^{3}+1=0\\)."
+  },
+  {
+    "number": 90,
+    "answer": "B",
+    "value": "\\(-\\sqrt{3}/2\\)",
+    "confidence": "HIGH",
+    "reasoning": "Since 1 < pi/2 = 1.5708 < 2, the point lies inside the stated interval and the greatest integer part is [pi/2] = 1. Substituting, f(pi/2) = cos(pi/3 * 1 + pi/2) = cos(pi/3 + pi/2) = cos(5pi/6) = -cos(pi/6) = -sqrt(3)/2. Confirmed symbolically: floor(pi/2) = 1 and cos(pi/3 + pi/2) evaluates to -sqrt(3)/2 = -0.8660254. Option C (-1/2) is what you get by mistakenly using cos(2pi/3), i.e. dropping the greatest-integer term.",
+    "solution": "Since \\(1<\\dfrac{\\pi}{2}<2\\), the greatest integer part is \\(\\left[\\dfrac{\\pi}{2}\\right]=1\\). Substituting into the rule gives \\(f\\!\\left(\\dfrac{\\pi}{2}\\right)=\\cos\\!\\left(\\dfrac{\\pi}{3}+\\dfrac{\\pi}{2}\\right)=\\cos\\dfrac{5\\pi}{6}\\), which equals \\(-\\dfrac{\\sqrt{3}}{2}\\)."
+  }
+]

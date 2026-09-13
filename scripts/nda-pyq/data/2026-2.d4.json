@@ -1,0 +1,242 @@
+[
+  {
+    "number": 91,
+    "answer": "B",
+    "value": "II only",
+    "confidence": "HIGH",
+    "reasoning": "For x < 0, ln|x| = ln(-x), and the chain rule gives (1/(-x))*(-1) = +1/x, not -1/x. So statement I has the wrong sign and is false. For x > 0, ln|x| = ln x, whose derivative is 1/x, so statement II is true. In fact d/dx ln|x| = 1/x on the whole of x != 0, so the only thing at issue is the sign in I. No other option is defensible. Stem confirmed against page image p34.",
+    "solution": "For \\(x>0\\) we have \\(\\ln|x|=\\ln x\\), whose derivative is \\(\\frac{1}{x}\\). For \\(x<0\\) we have \\(\\ln|x|=\\ln(-x)\\), and the chain rule gives \\(\\frac{1}{-x}\\cdot(-1)=\\frac{1}{x}\\) — again \\(+\\frac{1}{x}\\), not \\(-\\frac{1}{x}\\). So \\(\\frac{d}{dx}\\ln|x|=\\frac{1}{x}\\) for every \\(x\\ne 0\\): the second statement is correct and the first carries the wrong sign."
+  },
+  {
+    "number": 92,
+    "answer": "D",
+    "value": "the derivative does not exist at x = pi/4",
+    "confidence": "HIGH",
+    "reasoning": "Put h = x - pi/4. Then sin(pi/4 - x) = sin(-h) = -sin h, so y = |sin h|, which is 0 at h = 0. For small h > 0, y = sin h with derivative cos h -> +1; for small h < 0, y = -sin h with derivative -cos h -> -1. The one-sided derivatives are +1 and -1, so there is a corner and dy/dx does not exist. Confirmed with sympy one-sided limits (right = 1, left = -1). Options -1, 0, 1 each correspond to picking one side or to forgetting the modulus; none is the two-sided derivative. Stem confirmed against page image p34.",
+    "solution": "Write \\(h=x-\\frac{\\pi}{4}\\); then \\(\\sin\\!\\left(\\frac{\\pi}{4}-x\\right)=-\\sin h\\), so \\(y=|\\sin h|\\), which is \\(0\\) at \\(h=0\\). Just to the right the function equals \\(\\sin h\\), giving slope \\(+1\\), and just to the left it equals \\(-\\sin h\\), giving slope \\(-1\\). The two one-sided derivatives disagree, so the graph has a corner at \\(x=\\frac{\\pi}{4}\\) and \\(\\frac{dy}{dx}\\) does not exist there."
+  },
+  {
+    "number": 93,
+    "answer": "C",
+    "value": "Both I and II",
+    "confidence": "HIGH",
+    "reasoning": "Additivity gives f(0) = 0 and f(x+h) - f(x) = f(h), so f'(x) = lim_{h->0} f(h)/h for EVERY x. I: f(h) = h g(h), so f'(x) = lim g(h) = g(0) by continuity of g — true. II: f(h) = h^2 g(h), so f'(x) = lim h g(h) = 0*g(0) = 0 — true. Cross-check: a differentiable additive f is f(x) = cx; then I forces g = c off 0 and g(0) = c by continuity, giving f' = c = g(0); and II forces c/x to extend continuously to 0, which requires c = 0, hence f' = 0. Both routes agree. TRANSCRIPTION FLAG (solved as printed): the statements name no point of evaluation, but f' is CONSTANT here, so the omission does not change the answer — the conclusion holds at every x.",
+    "solution": "Additivity gives \\(f(0)=0\\) and \\(f(x+h)-f(x)=f(h)\\), so \\(f'(x)=\\lim_{h\\to 0}\\frac{f(h)}{h}\\) at every \\(x\\). With \\(f(x)=x\\,g(x)\\) that limit is \\(\\lim_{h\\to 0} g(h)=g(0)\\) because \\(g\\) is continuous, and with \\(f(x)=x^{2}g(x)\\) it is \\(\\lim_{h\\to 0} h\\,g(h)=0\\). Both statements are therefore correct, and since \\(f'\\) takes the same value at every point, no particular point of evaluation is needed."
+  },
+  {
+    "number": 94,
+    "answer": "A",
+    "value": "\\(n2^{n-1}-2^{n}+1\\)",
+    "confidence": "HIGH",
+    "reasoning": "f(x) = sum_{k=0}^{n-1} x^k, so f'(x) = sum_{k=1}^{n-1} k x^{k-1} and f'(2) = sum_{k=1}^{n-1} k 2^{k-1}. Using sum_{k=1}^{m} k 2^{k-1} = (m-1)2^m + 1 with m = n-1 gives (n-2)2^{n-1} + 1 = n2^{n-1} - 2^n + 1. Verified in sympy by differentiating the explicit polynomial for n = 2..8: option A matched f'(2) at every n (1, 5, 17, 49, 129, 321, 769) and B, C, D failed at every n. Stem confirmed against page image p34.",
+    "solution": "Here \\(f(x)=x^{n-1}+x^{n-2}+\\cdots+x+1\\), so \\(f'(x)=(n-1)x^{n-2}+(n-2)x^{n-3}+\\cdots+1=\\sum_{k=1}^{n-1}kx^{k-1}\\). At \\(x=2\\) this is \\(\\sum_{k=1}^{n-1}k\\,2^{k-1}\\), and the standard sum \\(\\sum_{k=1}^{m}k\\,2^{k-1}=(m-1)2^{m}+1\\) with \\(m=n-1\\) gives \\((n-2)2^{n-1}+1\\). Expanding, \\(f'(2)=n2^{n-1}-2^{n}+1\\)."
+  },
+  {
+    "number": 95,
+    "answer": "C",
+    "value": "16 square units",
+    "confidence": "HIGH",
+    "reasoning": "The right angle is at B, so AC = 8 is the hypotenuse and the legs a = AB, b = BC satisfy a^2 + b^2 = 64. Area = ab/2, and by AM-GM ab <= (a^2+b^2)/2 = 32, so area <= 16, with equality when a = b = 4*sqrt(2) (the isosceles right triangle). Maximum area 16 square units. Option 32 is ab rather than ab/2; 24 and 12 come from 6-8-10-style guesses that do not satisfy the constraint.",
+    "solution": "The right angle is at \\(B\\), so \\(AC=8\\) is the hypotenuse and the legs satisfy \\(a^{2}+b^{2}=64\\). The area is \\(\\frac{ab}{2}\\), and since \\(ab\\le\\frac{a^{2}+b^{2}}{2}=32\\), the area is at most \\(16\\). Equality holds when \\(a=b=4\\sqrt{2}\\), so the largest possible area is \\(16\\) square units."
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "value": "minimum occurs at x = -1/2",
+    "confidence": "HIGH",
+    "reasoning": "y = x e^{2x}, y' = e^{2x}(1 + 2x), which vanishes only at x = -1/2 (sympy: critical point [-1/2]). y'' = e^{2x}(4x + 4), and y''(-1/2) = 2/e > 0, so x = -1/2 is a local minimum. There is no maximum since y -> +infinity as x -> +infinity, which rules out the maximum-at--1/2 option; x = -1 and x = -2 are not critical points at all.",
+    "solution": "Differentiating, \\(\\frac{dy}{dx}=e^{2x}(1+2x)\\), and since \\(e^{2x}>0\\) the only critical point is \\(x=-\\frac{1}{2}\\). The second derivative is \\(\\frac{d^{2}y}{dx^{2}}=e^{2x}(4x+4)\\), which at \\(x=-\\frac{1}{2}\\) equals \\(\\frac{2}{e}>0\\), so the curve has a minimum there. It has no maximum at all, because \\(y\\to\\infty\\) as \\(x\\to\\infty\\)."
+  },
+  {
+    "number": 97,
+    "answer": "A",
+    "value": "\\((-\\infty, 0)\\)",
+    "confidence": "HIGH",
+    "reasoning": "f(x) = integral of x e^x dx = (x-1)e^x + C (sympy). Then f'(x) = x e^x directly, and since e^x > 0 for all x, f'(x) < 0 exactly when x < 0. So f decreases precisely on (-infinity, 0). The options built on x = -1 come from the critical point of the INTEGRAND x e^x (its minimum), not of f; they are the classic trap here.",
+    "solution": "Since \\(f(x)=\\int x e^{x}\\,dx=(x-1)e^{x}+C\\), the derivative is simply the integrand, \\(f'(x)=xe^{x}\\). As \\(e^{x}>0\\) for every \\(x\\), the sign of \\(f'\\) is the sign of \\(x\\), so \\(f'(x)<0\\) exactly when \\(x<0\\). Hence \\(f\\) decreases on \\((-\\infty,0)\\); the point \\(x=-1\\) is where the integrand turns, not \\(f\\)."
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "value": "\\(\\sec(y-x)=ce^{x^{2}/2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Substitute v = y - x, so dv/dx = dy/dx - 1 = x cot v. Separating, tan v dv = x dx, giving -ln|cos v| = x^2/2 + C, i.e. ln|sec v| = x^2/2 + C, so sec(y-x) = c e^{x^2/2}. Independently checked by differentiating each printed option implicitly and eliminating c (sympy): sec gives v' = x cot v (matches), cos gives -x cot v, cosec gives -x tan v, sin gives x tan v. Only the secant form reproduces the equation; the other three are ruled out explicitly.",
+    "solution": "Put \\(v=y-x\\), so that \\(\\frac{dv}{dx}=\\frac{dy}{dx}-1=x\\cot v\\). Separating the variables gives \\(\\tan v\\,dv=x\\,dx\\), and integrating, \\(-\\ln|\\cos v|=\\frac{x^{2}}{2}+C\\), i.e. \\(\\ln|\\sec v|=\\frac{x^{2}}{2}+C\\). Exponentiating, \\(\\sec(y-x)=ce^{x^{2}/2}\\)."
+  },
+  {
+    "number": 99,
+    "answer": "C",
+    "value": "Both I and II",
+    "confidence": "HIGH",
+    "reasoning": "f(f(x)) = ((3(3x+2)/(5x-3)) + 2)/((5(3x+2)/(5x-3)) - 3) = (19x)/19 = x (confirmed by sympy). So f is an involution on its domain: it is its own inverse, and a function equal to its own inverse is necessarily bijective. Hence both statements hold. The stated domain and codomain are exactly right: the vertical asymptote is at 5x - 3 = 0, i.e. x = 3/5, and the horizontal asymptote is y = 3/5, so f maps R - {3/5} onto R - {3/5}.",
+    "solution": "Composing, \\(f(f(x))=\\dfrac{3\\cdot\\frac{3x+2}{5x-3}+2}{5\\cdot\\frac{3x+2}{5x-3}-3}=\\dfrac{9x+6+10x-6}{15x+10-15x+9}=\\dfrac{19x}{19}=x\\). So \\(f\\) is its own inverse, which means \\(f^{-1}(x)=f(x)\\), and any function equal to its own inverse must be one-one and onto. Both statements are therefore correct."
+  },
+  {
+    "number": 100,
+    "answer": "D",
+    "value": "9",
+    "confidence": "HIGH",
+    "reasoning": "A mapping from A to B assigns to each of the |A| = 2 elements of A one of the |B| = 3 elements of B, independently. Number of mappings = 3^2 = 9. The distractor 8 = 2^3 reverses the roles of domain and codomain; 6 = 3P2 counts only injections.",
+    "solution": "A mapping sends each element of \\(A\\) to some element of \\(B\\), and the two choices are made independently. Each of the \\(2\\) elements of \\(A\\) has \\(3\\) possible images, so the total number of mappings is \\(3^{2}=9\\). Note the base is the size of the codomain and the exponent the size of the domain, not the other way round."
+  },
+  {
+    "number": 101,
+    "answer": "B",
+    "value": "100",
+    "confidence": "HIGH",
+    "reasoning": "If y_i = 2x_i - 7 then Var(y) = 2^2 * Var(x) = 4 * 25 = 100. Subtracting a constant shifts every observation equally and leaves the variance unchanged; only the multiplier matters, and it enters squared. The count 10 is not needed. The distractor 50 comes from multiplying the variance by 2 instead of 4; 125 from 25*(2^2)+25 or similar.",
+    "solution": "Writing the new observations as \\(y_i=2x_i-7\\), a change of origin leaves the spread untouched while a change of scale multiplies it. So \\(\\operatorname{Var}(y)=2^{2}\\operatorname{Var}(x)=4\\times 25=100\\); the subtraction of \\(7\\) has no effect at all. The new variance is \\(100\\)."
+  },
+  {
+    "number": 102,
+    "answer": "B",
+    "value": "12",
+    "confidence": "HIGH",
+    "reasoning": "SD(Y) = SD(3X + 4) = |3| * SD(X) = 3 * 4 = 12. The additive constant 4 does not affect dispersion and the mean 5 is irrelevant. The distractor 16 uses 3*5+... or the variance; 19 = 3*5+4 would be the MEAN of Y, which the question does not ask for.",
+    "solution": "For a linear change \\(Y=aX+b\\), the standard deviation scales by \\(|a|\\) and is unaffected by \\(b\\). Here \\(a=3\\) and \\(b=4\\), so \\(\\sigma_Y=|3|\\times\\sigma_X=3\\times 4=12\\). The mean of \\(X\\) plays no part in this."
+  },
+  {
+    "number": 103,
+    "answer": "B",
+    "value": "\\(\\left(\\frac{3}{4}\\right)^{16}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Mean np = 4 and variance npq = (sqrt 3)^2 = 3, so q = npq/np = 3/4, hence p = 1/4 and n = 4/p = 16 (sympy solve confirms n = 16, p = 1/4). Then P(X = 0) = C(16,0) p^0 q^16 = (3/4)^16. The distractor (1/4)^16 is P(X = n), i.e. all successes.",
+    "solution": "For a binomial distribution the mean is \\(np\\) and the variance is \\(npq\\), so \\(np=4\\) and \\(npq=(\\sqrt{3})^{2}=3\\). Dividing, \\(q=\\frac{3}{4}\\), hence \\(p=\\frac{1}{4}\\) and \\(n=\\frac{4}{p}=16\\). Then \\(P(X=0)=q^{n}=\\left(\\frac{3}{4}\\right)^{16}\\)."
+  },
+  {
+    "number": 104,
+    "answer": "B",
+    "value": "\\(X=\\overline{X}\\) and \\(Y=\\overline{Y}\\)",
+    "confidence": "HIGH",
+    "reasoning": "The regression coefficients are b_YX = r*(sigma_Y/sigma_X) and b_XY = r*(sigma_X/sigma_Y). If r = 0 both vanish, so the line of Y on X is Y - Ybar = 0, i.e. Y = Ybar, and the line of X on Y is X = Xbar. These are two perpendicular lines through the means. The option with bars on BOTH sides is not a pair of lines at all (it contains no variables), and the two numeric option pairs have non-zero slopes so they imply r != 0.",
+    "solution": "The regression coefficients are \\(b_{YX}=r\\frac{\\sigma_Y}{\\sigma_X}\\) and \\(b_{XY}=r\\frac{\\sigma_X}{\\sigma_Y}\\), so when \\(r=0\\) both are zero. The line of \\(Y\\) on \\(X\\) then reduces to \\(Y-\\overline{Y}=0\\) and the line of \\(X\\) on \\(Y\\) to \\(X-\\overline{X}=0\\). The two regression lines are therefore \\(X=\\overline{X}\\) and \\(Y=\\overline{Y}\\), which are perpendicular and meet at \\((\\overline{X},\\overline{Y})\\)."
+  },
+  {
+    "number": 105,
+    "answer": "D",
+    "value": "5/324",
+    "confidence": "HIGH",
+    "reasoning": "Number of ordered quadruples (a,b,c,d) with each in 1..6 summing to 7 = number of solutions of a'+b'+c'+d' = 3 with a' >= 0, which is C(6,3) = 20 (the upper bound 6 never binds since 3 < 6). Total outcomes 6^4 = 1296, so P = 20/1296 = 5/324. Brute-force enumeration over all 1296 outcomes confirmed exactly 20 favourable cases.",
+    "solution": "Each die shows at least \\(1\\), so writing the four faces as \\(1+a'\\) etc. the requirement becomes \\(a'+b'+c'+d'=3\\) with each \\(a'\\ge 0\\); the ceiling of \\(6\\) never binds because \\(3<6\\). The number of such quadruples is \\(\\binom{3+3}{3}=20\\), out of \\(6^{4}=1296\\) equally likely outcomes. Hence the probability is \\(\\frac{20}{1296}=\\frac{5}{324}\\)."
+  },
+  {
+    "number": 106,
+    "answer": "D",
+    "value": "2/3",
+    "confidence": "LOW",
+    "reasoning": "STEM IS DEFECTIVE — solved as printed. GLYPHS VERIFIED: I cropped the stem from page image p38 and enlarged it 3.2x; both symbols are unambiguously intersection (cap), so the stem really does read P(A and B) = 1/2 AND P(notA and notB) = 1/2 with 2P(A) = P(B) = k. The three conditions are mutually inconsistent: P(notA and notB) = 1/2 gives P(A or B) = 1/2, and together with P(A and B) = 1/2 that forces P(A and B) = P(A or B), so A and B coincide up to a null set and P(A) = P(B) = 1/2 — contradicting 2P(A) = P(B). ROUTE TAKEN (uses all three givens): inclusion-exclusion, 1/2 = k/2 + k - 1/2, so k = 2/3. That value is itself infeasible, since it makes P(A) = 1/3 while P(A and B) = 1/2 > min(P(A), P(B)) = 1/3. RUNNER-UP: 1/3. It arises from 1/2 = k/2 + k, i.e. dropping the intersection term — equivalently, reading the first given as P(A or B) = 1/2 and taking A and B disjoint. That reading is the ONLY self-consistent one (P(A) = 1/6, P(B) = 1/3, disjoint, P(A or B) = 1/2, P(notA and notB) = 1/2 all hold), which makes it a real contender and is why this is not a comfortable call. I prefer 2/3 because it is the only route that uses the explicitly-given P(A and B) = 1/2 rather than discarding it, and discarding a stated datum would make that given pointless. Independence instead gives k^2/2 = 1/2, i.e. k = 1, which is not offered; nothing reaches 1/4 or 1/2. LOW because the stem is defective and a consistent rival reading lands on another printed option.",
+    "solution": "From \\(P(\\overline{A}\\cap\\overline{B})=\\frac{1}{2}\\) we get \\(P(A\\cup B)=1-\\frac{1}{2}=\\frac{1}{2}\\), and \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\) then gives \\(\\frac{1}{2}=\\frac{k}{2}+k-\\frac{1}{2}\\), so \\(k=\\frac{2}{3}\\). The question is defective, however: \\(P(A\\cap B)=\\frac{1}{2}\\) together with \\(P(A\\cup B)=\\frac{1}{2}\\) forces \\(P(A)=P(B)=\\frac{1}{2}\\), which contradicts \\(2P(A)=P(B)\\); and \\(k=\\frac{2}{3}\\) makes \\(P(A)=\\frac{1}{3}\\) while \\(P(A\\cap B)=\\frac{1}{2}\\), an intersection larger than an event containing it. No probabilities can satisfy all three given conditions, so \\(\\frac{2}{3}\\) is only the value the standard route returns."
+  },
+  {
+    "number": 107,
+    "answer": "B",
+    "value": "1/2",
+    "confidence": "HIGH",
+    "reasoning": "The draw is conditioned on the member being a woman, so the sample space is the 4 women, of whom 2 form the senior subgroup: P = 2/4 = 1/2. The wording 'which is woman only' is broken English but can only mean this conditioning. Robustness check on the alternative reading: if instead one asks for the chance that the drawn woman lies in a randomly chosen pair of the 4 women, that is C(3,1)/C(4,2) = 3/6 = 1/2 as well — both readings give the same value. An unconditioned reading (drawing from all 10 and wanting a senior woman) gives 2/10 = 1/5, which is not printed and is therefore excluded by the option set. No other option is defensible.",
+    "solution": "The member drawn is known to be a woman, so the relevant sample space is just the \\(4\\) women on the committee. Of those \\(4\\), exactly \\(2\\) make up the senior subgroup. The required probability is therefore \\(\\frac{2}{4}=\\frac{1}{2}\\); the \\(6\\) men play no part once the draw is known to have produced a woman."
+  },
+  {
+    "number": 108,
+    "answer": "D",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "b_YX = r * (sigma_Y / sigma_X) = 0.8 * (5/4) = 1.0 exactly. The negative options are impossible here: a regression coefficient carries the sign of r, and r = 0.8 > 0, so b_YX must be positive. The option 0 would require r = 0.",
+    "solution": "The regression coefficient of \\(Y\\) on \\(X\\) is \\(b_{YX}=r\\,\\frac{\\sigma_Y}{\\sigma_X}\\). Substituting \\(r=0.8\\), \\(\\sigma_Y=5\\) and \\(\\sigma_X=4\\) gives \\(0.8\\times\\frac{5}{4}=1\\). Note the sign of a regression coefficient always matches the sign of \\(r\\), so a positive correlation cannot give a negative coefficient."
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "value": "5/7",
+    "confidence": "HIGH",
+    "reasoning": "P(S | M) = P(S and M) / P(M) = 0.5 / 0.7 = 5/7. Both given numbers are used directly; no independence assumption is needed. The other options do not arise from any sensible manipulation of 0.5 and 0.7.",
+    "solution": "By the definition of conditional probability, \\(P(S\\mid M)=\\dfrac{P(S\\cap M)}{P(M)}\\). Here the probability of passing Mathematics is \\(P(M)=0.7\\) and the probability of passing both is \\(P(S\\cap M)=0.5\\). Hence \\(P(S\\mid M)=\\dfrac{0.5}{0.7}=\\dfrac{5}{7}\\)."
+  },
+  {
+    "number": 110,
+    "answer": "B",
+    "value": "20%",
+    "confidence": "HIGH",
+    "reasoning": "Coefficient of variation = (sigma / mean) * 100 = (8/40) * 100 = 20%. The count of 50 observations is a distractor and does not enter the formula. No other option is reachable.",
+    "solution": "The coefficient of variation is \\(\\dfrac{\\sigma}{\\bar{x}}\\times 100\\). With \\(\\sigma=8\\) and \\(\\bar{x}=40\\) this is \\(\\dfrac{8}{40}\\times 100=20\\%\\). The number of observations does not appear in the formula and is not needed."
+  },
+  {
+    "number": 111,
+    "answer": "C",
+    "value": "13/18",
+    "confidence": "HIGH",
+    "reasoning": "Of the 36 equally likely ordered outcomes, sum 5 occurs in 4 ways and sum 7 in 6 ways; the two events are disjoint, so 10 outcomes are excluded. P(neither) = 26/36 = 13/18. Brute-force enumeration over all 36 outcomes confirmed exactly 10 bad cases. The option 5/6 would follow from excluding only the six ways of making 7; 11/18 from excluding 14.",
+    "solution": "There are \\(36\\) equally likely outcomes. The sum is \\(5\\) in \\(4\\) of them and \\(7\\) in \\(6\\) of them, and no outcome can give both, so \\(10\\) outcomes are ruled out. The remaining \\(26\\) give \\(P=\\dfrac{26}{36}=\\dfrac{13}{18}\\)."
+  },
+  {
+    "number": 112,
+    "answer": "D",
+    "value": "Neither I nor II",
+    "confidence": "MED",
+    "reasoning": "Both printed inequalities are the REVERSE of the standard results, and both are false as printed. Take A = B = C with P = 1/2. Statement I as printed asks 1/2 <= 1/2+1/2+1/2-2 = -1/2, which is false; the true Bonferroni bound runs the other way, P(A and B and C) >= P(A)+P(B)+P(C)-2. Statement II as printed asks 1/2 >= 3/2, which is false; the true subadditivity bound is P(A or B or C) <= P(A)+P(B)+P(C). Both counterexamples checked with exact Fractions. GLYPHS VERIFIED: I cropped the two statement lines from page image p40 and enlarged them 3x — the first sign is unambiguously '<=' and the second unambiguously '>=', so the transcription is faithful and this is solved as printed. RUNNER-UP: 'Both I and II'. It would win if the paper misprinted both signs and the official key was set for the standard inequalities — that is exactly what a simultaneous reversal of two textbook results suggests, and it is the single reason this is MED rather than HIGH. There is no alternative READING of the printed page; the risk is entirely that the source is defective.",
+    "solution": "The standard results run the other way round: \\(P(A\\cap B\\cap C)\\ge P(A)+P(B)+P(C)-2\\) and \\(P(A\\cup B\\cup C)\\le P(A)+P(B)+P(C)\\). As printed here both inequalities are reversed, and a single example breaks both — take the three events to be the same event of probability \\(\\frac{1}{2}\\). The first would then require \\(\\frac{1}{2}\\le-\\frac{1}{2}\\) and the second \\(\\frac{1}{2}\\ge\\frac{3}{2}\\), so neither statement is correct as it stands."
+  },
+  {
+    "number": 113,
+    "answer": "C",
+    "value": "37/55",
+    "confidence": "HIGH",
+    "reasoning": "Odds IN FAVOUR of X are 6 to 9, so P(X solves) = 6/(6+9) = 2/5. Odds AGAINST Y are 6 to 5, so P(Y solves) = 5/(6+5) = 5/11 (the 5 is the favourable part because the odds are quoted against). Assuming the two attempts are independent, P(unsolved) = (3/5)(6/11) = 18/55, so P(solved) = 1 - 18/55 = 37/55. The trap is reading the second ratio as odds in favour, which would give P(Y) = 6/11 and P(solved) = 1 - (3/5)(5/11) = 1 - 15/55 = 40/55 = 8/11 — not printed, so the option set confirms the intended reading.",
+    "solution": "Odds in favour of \\(X\\) of \\(6\\) to \\(9\\) give \\(P(X)=\\frac{6}{15}=\\frac{2}{5}\\), while odds against \\(Y\\) of \\(6\\) to \\(5\\) give \\(P(Y)=\\frac{5}{11}\\) — note the second ratio is quoted against, so the favourable part is the \\(5\\). The problem goes unsolved only if both fail, which has probability \\(\\frac{3}{5}\\times\\frac{6}{11}=\\frac{18}{55}\\). Hence the probability that it is solved is \\(1-\\frac{18}{55}=\\frac{37}{55}\\)."
+  },
+  {
+    "number": 114,
+    "answer": "B",
+    "value": "0.84",
+    "confidence": "HIGH",
+    "reasoning": "P(D | A and B) = P(A and B and D) / P(A and B), so P(A and B) = 0.04 / 0.25 = 0.16. Independence of A and B gives P(A)P(B) = 0.16; with P(B) = 4P(A) this is 4P(A)^2 = 0.16, so P(A) = 0.2 and P(B) = 0.8 (the negative root is discarded). Then P(A or B) = 0.2 + 0.8 - 0.16 = 0.84. Verified symbolically (sympy returned P(A) = 1/5 and P(A or B) = 21/25 = 0.84). The distractor 0.88 is 1 - 0.04/(1/3)-style arithmetic; 0.16 is P(A and B) itself. The third event D is a red herring once P(A and B) has been recovered.",
+    "solution": "Since \\(P(D\\mid A\\cap B)=\\dfrac{P(A\\cap B\\cap D)}{P(A\\cap B)}\\), we get \\(P(A\\cap B)=\\dfrac{0.04}{0.25}=0.16\\). Independence of \\(A\\) and \\(B\\) gives \\(P(A)P(B)=0.16\\), and substituting \\(P(B)=4P(A)\\) yields \\(4P(A)^{2}=0.16\\), so \\(P(A)=0.2\\) and \\(P(B)=0.8\\). Therefore \\(P(A\\cup B)=0.2+0.8-0.16=0.84\\)."
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "value": "6/7",
+    "confidence": "HIGH",
+    "reasoning": "Let each ratio equal t, so P(A) = 6t, P(B) = 3t, P(C) = 4t, P(D) = 2t. Mutual exclusivity and exhaustiveness give 15t = 1, t = 1/15, i.e. P(A) = 2/5, P(B) = 1/5, P(C) = 4/15, P(D) = 2/15. Then (P(A)+2P(B))/(3P(C)+P(D)) = (6t+6t)/(12t+2t) = 12/14 = 6/7. The value of t cancels, so the answer does not even need the exhaustiveness condition — a useful cross-check that the ratio is robust. Confirmed with exact Fractions.",
+    "solution": "Let the common ratio be \\(t\\), so that \\(P(A)=6t\\), \\(P(B)=3t\\), \\(P(C)=4t\\) and \\(P(D)=2t\\). Because the events are mutually exclusive and exhaustive, \\(6t+3t+4t+2t=1\\), giving \\(t=\\frac{1}{15}\\). Then \\(\\dfrac{P(A)+2P(B)}{3P(C)+P(D)}=\\dfrac{6t+6t}{12t+2t}=\\dfrac{12t}{14t}=\\dfrac{6}{7}\\), and note the \\(t\\) cancels, so the ratio is the same whatever the common value."
+  },
+  {
+    "number": 116,
+    "answer": "B",
+    "value": "\\(\\frac{2}{5\\sqrt{3}}=\\frac{2\\sqrt{3}}{15}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With t = 1/15 the probabilities are 6/15, 3/15, 4/15, 2/15. G = (6*3*4*2 / 15^4)^(1/4) = (144)^(1/4) / 15. Since 144^(1/4) = sqrt(12) = 2*sqrt(3), G = 2*sqrt(3)/15 = 0.2309401... Rationalising, 2/(5*sqrt(3)) = 2*sqrt(3)/15 — same number, so the printed option matches exactly (sympy: simplify(option - G) == 0 for this option only; the other three evaluate to 1.4434, 0.3464 and 0.1155 against G = 0.2309).",
+    "solution": "The probabilities are \\(P(A)=\\frac{6}{15}\\), \\(P(B)=\\frac{3}{15}\\), \\(P(C)=\\frac{4}{15}\\) and \\(P(D)=\\frac{2}{15}\\). Their geometric mean is \\(G=\\left(\\frac{6\\cdot 3\\cdot 4\\cdot 2}{15^{4}}\\right)^{1/4}=\\frac{144^{1/4}}{15}\\). Since \\(144^{1/4}=\\sqrt{12}=2\\sqrt{3}\\), we get \\(G=\\frac{2\\sqrt{3}}{15}\\), which rationalises to \\(\\frac{2}{5\\sqrt{3}}\\)."
+  },
+  {
+    "number": 117,
+    "answer": "C",
+    "value": "16/75",
+    "confidence": "HIGH",
+    "reasoning": "With P(A) = 6/15, P(B) = 3/15, P(C) = 4/15, P(D) = 2/15, the reciprocals are 15/6, 15/3, 15/4, 15/2, whose sum is 15*(1/6+1/3+1/4+1/2) = 15*(15/12) = 75/4. So H = 4 / (75/4) = 16/75 = 0.21333. Exact Fractions used throughout. TRANSCRIPTION NOTE (solved as printed): the second option is printed 15/76 where its siblings use denominator 75 — verified on page image p42, where the options really read 14/75, 15/76, 16/75, 16/15. It looks like a misprint of a distractor, but it does not touch the answer, which is 16/75 and matches a printed option exactly. Numeric separation is comfortable: 0.1867, 0.1974, 0.2133, 1.0667.",
+    "solution": "The probabilities are \\(\\frac{6}{15},\\frac{3}{15},\\frac{4}{15},\\frac{2}{15}\\), so their reciprocals are \\(\\frac{15}{6},\\frac{15}{3},\\frac{15}{4},\\frac{15}{2}\\). These add to \\(15\\left(\\frac{1}{6}+\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{2}\\right)=15\\cdot\\frac{5}{4}=\\frac{75}{4}\\). The harmonic mean of four numbers is \\(H=\\dfrac{4}{\\sum 1/P}\\), so \\(H=\\dfrac{4}{75/4}=\\dfrac{16}{75}\\)."
+  },
+  {
+    "number": 118,
+    "answer": "A",
+    "value": "5/84",
+    "confidence": "HIGH",
+    "reasoning": "There are C(10,5) = 252 equally likely 5-element subsets. The smallest element is 4 exactly when 4 is chosen and the remaining four come from {5,...,10}, i.e. C(6,4) = 15 subsets. P = 15/252 = 5/84. Brute-force enumeration of all 252 subsets confirmed exactly 15 with minimum 4 and the reduced fraction 5/84.",
+    "solution": "Choosing \\(5\\) numbers from \\(10\\) gives \\(\\binom{10}{5}=252\\) equally likely selections. The smallest selected number is \\(4\\) precisely when \\(4\\) is included and the other four are all drawn from \\(\\{5,6,7,8,9,10\\}\\), which can happen in \\(\\binom{6}{4}=15\\) ways. Hence \\(P(x_1=4)=\\dfrac{15}{252}=\\dfrac{5}{84}\\)."
+  },
+  {
+    "number": 119,
+    "answer": "A",
+    "value": "5/21",
+    "confidence": "HIGH",
+    "reasoning": "x_3 = 6 means 6 is the median of the five chosen numbers: exactly two must come from {1,...,5} and exactly two from {7,...,10}. That is C(5,2)*C(4,2) = 10*6 = 60 subsets out of 252, so P = 60/252 = 5/21. Brute-force enumeration of all 252 subsets confirmed exactly 60 with third-smallest element 6.",
+    "solution": "For \\(6\\) to be the third smallest of the five numbers, \\(6\\) must be chosen along with exactly two numbers below it and exactly two above it. The two smaller ones come from \\(\\{1,2,3,4,5\\}\\) and the two larger from \\(\\{7,8,9,10\\}\\), giving \\(\\binom{5}{2}\\binom{4}{2}=10\\times 6=60\\) selections. Out of \\(\\binom{10}{5}=252\\), this gives \\(P(x_3=6)=\\dfrac{60}{252}=\\dfrac{5}{21}\\)."
+  },
+  {
+    "number": 120,
+    "answer": "C",
+    "value": "1/252",
+    "confidence": "HIGH",
+    "reasoning": "x_1 = 2 excludes 1; x_2 = 3 means nothing lies strictly between 2 and 3 (automatic); x_3 = 8 means nothing chosen lies strictly between 3 and 8, so 4, 5, 6, 7 are all excluded. The remaining two numbers must exceed 8, and only 9 and 10 are available, so both are forced: the unique subset is {2,3,8,9,10}. P = 1/252. Brute-force enumeration over all 252 subsets returned exactly one qualifying subset, (2,3,8,9,10), confirming both the count and that the event is not impossible — which rules out the printed 0.",
+    "solution": "Fixing \\(x_1=2\\) rules out \\(1\\), and \\(x_3=8\\) means none of \\(4,5,6,7\\) may be chosen, since anything there would sit between \\(3\\) and \\(8\\) in the ordering. The two remaining numbers must therefore both be larger than \\(8\\), and only \\(9\\) and \\(10\\) are left, so the selection \\(\\{2,3,8,9,10\\}\\) is the only one that works. Out of \\(\\binom{10}{5}=252\\) equally likely selections the probability is \\(\\dfrac{1}{252}\\) — small, but not zero."
+  }
+]

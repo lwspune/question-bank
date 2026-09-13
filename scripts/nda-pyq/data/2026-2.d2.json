@@ -1,0 +1,242 @@
+[
+  {
+    "number": 31,
+    "answer": "C",
+    "value": "HP (harmonic progression)",
+    "confidence": "HIGH",
+    "reasoning": "Clearing denominators: b[(b-c)+(b-a)] = 2(b-a)(b-c) gives 2b^2 - ab - bc = 2b^2 - 2ab - 2bc + 2ac, i.e. ab + bc = 2ac, so b = 2ac/(a+c) — exactly the harmonic mean of a and c. Hence a, b, c are in HP. sympy's solve for b returns the single root 2*a*c/(a+c). Spot-checked with (a,c) = (2,6) giving b = 3: 1/(3-2) + 1/(3-6) = 2/3 = 2/b, and 1/2, 1/3, 1/6 is an AP. Also checked (1,3), (5,20) and (-4,7). No other option survives: b is neither (a+c)/2 nor sqrt(ac) in general.",
+    "solution": "Combining the left-hand side gives \\(\\frac{2b-a-c}{(b-a)(b-c)}=\\frac{2}{b}\\). Cross-multiplying and cancelling \\(2b^2\\) leaves \\(ab+bc=2ac\\), that is \\(b=\\frac{2ac}{a+c}\\). Since \\(b\\) is then the harmonic mean of \\(a\\) and \\(c\\), the three numbers are in harmonic progression."
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "value": "\\(5R = 3S\\)",
+    "confidence": "HIGH",
+    "reasoning": "With first term a and common difference d, Q = 3P gives 2(2a + (2n-1)d) = 3(2a + (n-1)d), which reduces to 2a = (n+1)d. Substituting: R = (3n/2)(2a + (3n-1)d) = 6n^2 d and S = (4n/2)(2a + (4n-1)d) = 10n^2 d, so R/S = 3/5. sympy: 5R - 3S = 0 exactly, while 6R - 5S = -14n^2 d, 8R - 7S = -22n^2 d and 9R - 8S = -26n^2 d are all non-zero, so the other three options fail identically.",
+    "solution": "Writing the sums with first term \\(a\\) and common difference \\(d\\), the condition \\(Q=3P\\) reduces to \\(2a=(n+1)d\\). Substituting this into \\(R=\\frac{3n}{2}\\left(2a+(3n-1)d\\right)\\) and \\(S=\\frac{4n}{2}\\left(2a+(4n-1)d\\right)\\) gives \\(R=6n^2d\\) and \\(S=10n^2d\\). Hence \\(\\frac{R}{S}=\\frac{3}{5}\\), which is the relation \\(5R=3S\\)."
+  },
+  {
+    "number": 33,
+    "answer": "B",
+    "value": "\\(18\\sqrt{3}\\)",
+    "confidence": "HIGH",
+    "reasoning": "The 3rd, 5th and 7th terms of a GP are themselves in GP (common ratio r^2), so T5^2 = T3*T7: (x^2+2)^2 = x(x^3+10), which collapses to 2x^2 - 5x + 2 = 0 with roots 2 and 1/2; x > 1 forces x = 2. Then T3 = 2, T5 = 6, T7 = 18, so r^2 = 3 and a = 2/3, giving T8 = a*r^7 = 18*sqrt(3) (sympy). NOTE: r = -sqrt(3) is algebraically admissible and would give -18*sqrt(3), which is not printed, so only the positive-ratio value is reachable among the options and no alternative option is defensible.",
+    "solution": "In a geometric progression the 3rd, 5th and 7th terms are themselves in geometric progression, so \\((x^2+2)^2=x(x^3+10)\\). This simplifies to \\(2x^2-5x+2=0\\), and \\(x>1\\) gives \\(x=2\\). The three terms are then \\(2\\), \\(6\\) and \\(18\\), so \\(r^2=3\\) and the 8th term is \\(18r=18\\sqrt{3}\\)."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "8",
+    "confidence": "HIGH",
+    "reasoning": "(1+i) = sqrt(2) * exp(i*pi/4), so (1+i)^n = 2^(n/2) * exp(i*n*pi/4). Requiring the value 16 (real, positive) forces 2^(n/2) = 16, i.e. n = 8, and then exp(i*2*pi) = 1, which is consistent. Direct check: (1+i)^8 = ((1+i)^2)^4 = (2i)^4 = 16. A loop over n = 1..19 in sympy finds n = 8 as the only solution, hence the least. n = 2 gives 2i, n = 4 gives -4, n = 16 gives 256.",
+    "solution": "Since \\((1+i)^2=2i\\), an even power gives \\((1+i)^n=(2i)^{n/2}\\). Taking modulus, \\(\\left|1+i\\right|^n=\\left(\\sqrt{2}\\right)^n=16\\) forces \\(n=8\\), and then \\((1+i)^8=(2i)^4=16i^4=16\\), which checks out. So the least value is \\(8\\)."
+  },
+  {
+    "number": 35,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "The exponents are the perfect squares 1^2, 2^2, ..., 24^2 (since 576 = 24^2), so the product is i^S with S = sum of k^2 for k = 1..24 = 24*25*49/6 = 4900. 4900 = 4*1225 is exactly divisible by 4, so i^4900 = 1 (confirmed by sympy). The only way to land on another option would be a different exponent count, and 576 pins the upper limit at k = 24.",
+    "solution": "The exponents are the perfect squares \\(1^2,2^2,\\ldots,24^2\\), since \\(576=24^2\\). The product is therefore \\(i^{\\,S}\\) where \\(S=\\sum_{k=1}^{24}k^2=\\frac{24\\cdot 25\\cdot 49}{6}=4900\\). As \\(4900\\) is a multiple of \\(4\\), the value is \\(i^{4900}=1\\)."
+  },
+  {
+    "number": 36,
+    "answer": "D",
+    "value": "Neither statement is correct",
+    "confidence": "HIGH",
+    "reasoning": "The condition is |z + li| = |z - li|, i.e. x^2 + (y+l)^2 = x^2 + (y-l)^2, which sympy reduces to 4*l*y = 0; since l > 0 this forces y = 0. So z lies on the REAL axis. Statement I (z on y = x) is false — the only point common to y = 0 and y = x is the origin, and z = 0 is one admissible value but not the locus. Statement II is false too: with y = 0 the amplitude is 0 (x > 0) or pi (x < 0), never pi/4. Both fail, so the code is 'Neither'.",
+    "solution": "The condition means \\(\\left|z+\\lambda i\\right|=\\left|z-\\lambda i\\right|\\), so \\(x^2+(y+\\lambda)^2=x^2+(y-\\lambda)^2\\), which reduces to \\(4\\lambda y=0\\). As \\(\\lambda>0\\), this forces \\(y=0\\), so \\(z\\) lies on the real axis and not on the line \\(y=x\\). Its amplitude is then \\(0\\) or \\(\\pi\\), never \\(\\frac{\\pi}{4}\\), so neither statement is correct."
+  },
+  {
+    "number": 37,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "Apply R2 -> R2 - R1 and R3 -> R3 - R2. The rows become (1/a, bc, a^3), (1/b, ca, b^3), (1/c, ab, c^3). Now multiply row 1 by a, row 2 by b, row 3 by c (scaling the determinant by abc, non-zero since 1/a, 1/b, 1/c appear in the stem): the rows are (1, abc, a^4), (1, abc, b^4), (1, abc, c^4), whose first two columns are proportional (C2 = abc*C1), so the determinant is 0. sympy returns det = 0 symbolically and at four random integer substitutions for (a,b,c). Options C and D are the standard factorisations of unrelated determinants and are non-zero in general.",
+    "solution": "Subtracting the first row from the second and the second from the third turns the rows into \\(\\left(\\frac{1}{a},\\,bc,\\,a^3\\right)\\), \\(\\left(\\frac{1}{b},\\,ca,\\,b^3\\right)\\) and \\(\\left(\\frac{1}{c},\\,ab,\\,c^3\\right)\\). Multiplying these rows by \\(a\\), \\(b\\) and \\(c\\) respectively makes the first column all \\(1\\) and the second column all \\(abc\\), so those two columns become proportional. A determinant with two proportional columns is \\(0\\)."
+  },
+  {
+    "number": 38,
+    "answer": "D",
+    "value": "\\(p^2 - q^2\\)",
+    "confidence": "HIGH",
+    "reasoning": "The four given quantities are exactly the entries of the matrix product: [a b; c d][e f; g h] = [ae+bg, af+bh; ce+dg, cf+dh] = [p, q; q, p]. Since det(MN) = det(M)det(N), the asked product of determinants equals det[p q; q p] = p^2 - q^2. Numeric check: with a,b,c,d,e,f = 2,3,5,7,11,13 and g,h solved from the two constraints (g = -83/10, h = -97/10), p = -29/10, q = -31/10, det(M)*det(N) = -6/5 and p^2 - q^2 = -6/5.",
+    "solution": "The four given quantities are precisely the entries of the matrix product: \\(\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\begin{pmatrix}e&f\\\\g&h\\end{pmatrix}=\\begin{pmatrix}p&q\\\\q&p\\end{pmatrix}\\). The determinant of a product equals the product of the determinants, so the required value is \\(\\begin{vmatrix}p&q\\\\q&p\\end{vmatrix}=p^2-q^2\\)."
+  },
+  {
+    "number": 39,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "The three equations say that t = a, t = b and t = c all satisfy z*t^2 + y*t + (x-1) = 0. A quadratic cannot have three DISTINCT roots unless it is identically zero, so z = 0, y = 0, x = 1 and x + y + z = 1. Solved explicitly with (a,b,c) = (2,3,5): sympy returns x = 1, y = 0, z = 0. CAVEAT for the reviewer: 'a != b != c' read literally permits a = c, in which case equations 1 and 3 coincide, the system is underdetermined and x + y + z = 1 + z(a-1)(b-1) is not fixed. The standard reading (all three distinct) is assumed, and only under it does the question have a determinate answer at all.",
+    "solution": "Each equation says that \\(t=a\\), \\(t=b\\) and \\(t=c\\) satisfies \\(zt^2+yt+(x-1)=0\\). A quadratic cannot have three distinct roots unless every coefficient vanishes, so \\(z=0\\), \\(y=0\\) and \\(x=1\\). Therefore \\(x+y+z=1\\)."
+  },
+  {
+    "number": 40,
+    "answer": "D",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "det(A) = 1 - (-tan(t))(tan(t)) = 1 + tan^2(t) = sec^2(t), and det(B) = 1 - (tan(t))(-tan(t)) = 1 + tan^2(t) = sec^2(t) as well. Hence det(C) = det(A)/det(B) = 1. sympy computes AB^(-1) explicitly and returns det = 1. The distractors sec^2 and sec^4 are what you get by forgetting the inverse or multiplying rather than dividing.",
+    "solution": "Both determinants are the same: \\(\\det A=1+\\tan^2\\theta=\\sec^2\\theta\\) and \\(\\det B=1+\\tan^2\\theta=\\sec^2\\theta\\). Since \\(\\det\\!\\left(AB^{-1}\\right)=\\frac{\\det A}{\\det B}\\), the value is \\(\\frac{\\sec^2\\theta}{\\sec^2\\theta}=1\\)."
+  },
+  {
+    "number": 41,
+    "answer": "B",
+    "value": "\\((1000011100)_2\\), i.e. 540",
+    "confidence": "HIGH",
+    "reasoning": "(11110)_2 = 30, (10100)_2 = 20, (11011)_2 = 27. Factorising: 30 = 2*3*5, 20 = 2^2*5, 27 = 3^3, so LCM = 2^2*3^3*5 = 540 (confirmed by math.gcd chaining). 540 = 512 + 16 + 8 + 4 = (1000011100)_2. The other options decode to 524, 572 and 541, none a multiple of all three.",
+    "solution": "The three numbers are \\((11110)_2=30\\), \\((10100)_2=20\\) and \\((11011)_2=27\\). Factorising, \\(30=2\\cdot3\\cdot5\\), \\(20=2^2\\cdot5\\) and \\(27=3^3\\), so the LCM is \\(2^2\\cdot3^3\\cdot5=540\\). Writing \\(540=512+16+8+4\\) converts it to \\((1000011100)_2\\)."
+  },
+  {
+    "number": 42,
+    "answer": "A",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Since (1 + 1/x)^(2n) = (1+x)^(2n) / x^(2n), the product is (1+x)^(4n) * x^(-2n). Its general term is C(4n, k) * x^(k-2n), and k - 2n = 2n gives k = 4n, so the coefficient is C(4n, 4n) = 1. This is also the HIGHEST power present, which is why the answer is the trivial-looking 1. Expanded explicitly for n = 1, 2, 3 — coefficient 1 in every case. Option D fails because the term plainly exists; options B and C are products that do not equal any binomial coefficient here.",
+    "solution": "Since \\(\\left(1+\\frac{1}{x}\\right)^{2n}=\\frac{(1+x)^{2n}}{x^{2n}}\\), the whole product is \\(\\frac{(1+x)^{4n}}{x^{2n}}\\). Its general term is \\(\\binom{4n}{k}x^{k-2n}\\), and \\(k-2n=2n\\) gives \\(k=4n\\). The coefficient is therefore \\(\\binom{4n}{4n}=1\\), which is also the highest power occurring in the expansion."
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "value": "Only statement II is correct",
+    "confidence": "HIGH",
+    "reasoning": "x^2 + x^(-2) + 2 = (x + 1/x)^2, so the expression is (x + 1/x)^8 (sympy confirms the difference is 0). Its expansion is the sum of C(8,k) x^(8-2k) for k = 0..8, giving 9 distinct terms with powers 8, 6, 4, 2, 0, -2, -4, -6, -8. Statement I (5 terms) is FALSE. The coefficients are 1, 8, 28, 56, 70, 56, 28, 8, 1, whose maximum is C(8,4) = 70, so statement II is TRUE.",
+    "solution": "Note that \\(x^2+x^{-2}+2=\\left(x+\\frac{1}{x}\\right)^2\\), so the expression is \\(\\left(x+\\frac{1}{x}\\right)^8\\). Its expansion runs over the powers \\(x^8,x^6,\\ldots,x^{-8}\\), giving \\(9\\) terms and not \\(5\\), so the first statement is wrong. The coefficients are \\(1,8,28,56,70,56,28,8,1\\), whose largest value is \\(\\binom{8}{4}=70\\), so only the second statement is correct."
+  },
+  {
+    "number": 44,
+    "answer": "B",
+    "value": "Only relation IV is a function",
+    "confidence": "HIGH",
+    "reasoning": "A function from A = {1,3,5} must give EACH element of A exactly one image in B. I: 3 is paired with both 2 and 6 — not a function. II: 3 is paired with both 4 and 2 — not a function. III: {(1,2),(3,6)} leaves 5 with no image — not total, so not a function from A. IV: 1 -> 6, 3 -> 2, 5 -> 2 covers all of A with one image each — a function (two elements sharing the image 2 is fine; that only fails injectivity, which is not asked). Hence IV only.",
+    "solution": "A function from \\(A\\) to \\(B\\) must give every element of \\(A\\) exactly one image. The first relation sends \\(3\\) to both \\(2\\) and \\(6\\), and the second sends \\(3\\) to both \\(4\\) and \\(2\\), so neither qualifies. The third leaves \\(5\\) with no image at all. The fourth assigns \\(1\\to 6\\), \\(3\\to 2\\) and \\(5\\to 2\\), one image each, so it alone is a function — two elements sharing an image is permitted."
+  },
+  {
+    "number": 45,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "x = cos(t) +/- sqrt(cos^2(t) - 1) = cos(t) +/- i*sin(t), so |x| = sqrt(cos^2 t + sin^2 t) = 1. Equivalently, the product of the roots is 1 and the roots are complex conjugates, so each has modulus 1. Checked numerically at t = 0.3, 1.0, 2.5, 0 and pi: |x| = 1 in every case, including the degenerate cos t = +/-1 where x = +/-1. Option A (-1) cannot be a magnitude at all.",
+    "solution": "Solving the quadratic gives \\(x=\\cos\\theta\\pm\\sqrt{\\cos^2\\theta-1}=\\cos\\theta\\pm i\\sin\\theta\\). Its magnitude is therefore \\(\\sqrt{\\cos^2\\theta+\\sin^2\\theta}=1\\). The same follows from the product of the roots being \\(1\\) with the two roots conjugate to each other."
+  },
+  {
+    "number": 46,
+    "answer": "B",
+    "value": "Only statement II is correct",
+    "confidence": "HIGH",
+    "reasoning": "I is FALSE: set membership is not transitive. Counterexample A = {1}, B = {{1}}: then 1 is in A and A is in B, but the only element of B is the set {1}, so 1 is not in B. II is TRUE: it is the contrapositive of the definition of A being a subset of B — if every element of A lies in B, then anything outside B cannot lie in A. So II only.",
+    "solution": "The first statement fails because membership is not transitive: taking \\(A=\\{1\\}\\) and \\(B=\\{\\{1\\}\\}\\) gives \\(1\\in A\\) and \\(A\\in B\\), yet the only element of \\(B\\) is the set \\(\\{1\\}\\), so \\(1\\notin B\\). The second is simply the contrapositive of \\(A\\subset B\\): every element of \\(A\\) lies in \\(B\\), so anything outside \\(B\\) must lie outside \\(A\\). Only the second statement is correct."
+  },
+  {
+    "number": 47,
+    "answer": "C",
+    "value": "110",
+    "confidence": "HIGH",
+    "reasoning": "n(X union Y) is at most 500, so n(X intersect Y) = n(X) + n(Y) - n(X union Y) >= 370 + 240 - 500 = 110. Equality holds when every one of the 500 surveyed prefers at least one product, which is an attainable configuration (370 + 240 - 110 = 500), so 110 is achieved and is the least. Option D is wrong because the bound is forced by the totals alone; 90 and 100 are below the feasible minimum.",
+    "solution": "Since \\(n(X\\cup Y)\\le 500\\), we get \\(n(X\\cap Y)=n(X)+n(Y)-n(X\\cup Y)\\ge 370+240-500=110\\). The value \\(110\\) is actually attained, because \\(370+240-110=500\\) means every consumer surveyed prefers at least one of the two products. So at least \\(110\\) must have preferred both."
+  },
+  {
+    "number": 48,
+    "answer": "A",
+    "value": "Only statement I is correct",
+    "confidence": "HIGH",
+    "reasoning": "|A x A| = 25 forces |A| = 5. The listed pairs (3,1), (6,2), (5,3) put 3, 1, 6, 2 and 5 into A — five DISTINCT elements, which already exhausts A. So A = {1,2,3,5,6} is fully determined and every one of the 25 elements of A x A can be written down: statement I is TRUE. Statement II is a conjunction: (5,5) is indeed in A x A, but 1 and 3 both lie in A so (1,3) IS in A x A, contradicting the second half. Hence II is FALSE and the code is 'I only'.",
+    "solution": "From \\(|A\\times A|=25\\) we get \\(|A|=5\\), and the three listed pairs already force \\(3,1,6,2,5\\) into \\(A\\). These are five distinct elements, so \\(A=\\{1,2,3,5,6\\}\\) exactly and all \\(25\\) elements of \\(A\\times A\\) can be listed — the first statement holds. In the second, \\((5,5)\\) does belong to \\(A\\times A\\), but so does \\((1,3)\\), since both \\(1\\) and \\(3\\) lie in \\(A\\); that statement therefore fails."
+  },
+  {
+    "number": 49,
+    "answer": "A",
+    "value": "Only statement I is correct",
+    "confidence": "HIGH",
+    "reasoning": "For a relation R contained in A x B: I is the standard definition of codomain — TRUE. II is FALSE: the range is the set of second elements that actually occur, a subset of B that need not exhaust it (R = {(1,2)} into B = {2,4} has range {2}). III is FALSE for the same reason on the other side: the domain is the set of first elements that actually occur, and R = {(1,2)} from A = {1,3} has domain {1}, a proper subset of A. So I only.",
+    "solution": "For a relation \\(R\\subseteq A\\times B\\), the set \\(B\\) is by definition the codomain, so the first statement is correct. The range is only the set of second elements that actually occur, so it is a subset of the codomain and need not equal it. Likewise the domain is the set of first elements that actually occur, and \\(R=\\{(1,2)\\}\\) with \\(A=\\{1,3\\}\\) has domain \\(\\{1\\}\\), a proper subset of \\(A\\). So only the first statement is correct."
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "value": "Both the first and second quadrants only",
+    "confidence": "HIGH",
+    "reasoning": "The system is y >= x - 3 and y >= 5 - x, i.e. the wedge lying above both lines with vertex at their intersection (4,1). Third quadrant: x < 0 and y < 0 give x + y < 0, which cannot be at least 5 — impossible. Fourth quadrant: y < 0 forces x >= 5 - y > 5 from the second inequality and x <= 3 + y < 3 from the first — contradiction. First quadrant is met at (4,2) and second at (-1,10). A 400,000-point uniform sample over [-60,60]^2 landed 54,591 hits in quadrant I, 41,640 in quadrant II and exactly 0 in quadrants III and IV.",
+    "solution": "The inequalities say \\(y\\ge x-3\\) and \\(y\\ge 5-x\\), so the region is the wedge above both lines with vertex at \\((4,1)\\). In the third quadrant \\(x+y<0\\), which can never reach \\(5\\). In the fourth quadrant \\(y<0\\) forces \\(x\\ge 5-y>5\\) from one inequality and \\(x\\le 3+y<3\\) from the other, a contradiction. Points such as \\((4,2)\\) and \\((-1,10)\\) show the first and second quadrants are both occupied, so the solution lies in those two only."
+  },
+  {
+    "number": 51,
+    "answer": "A",
+    "value": "\\(\\left(\\sqrt{2},\\,0\\right)\\)",
+    "confidence": "HIGH",
+    "reasoning": "The two lines meet at the origin and are perpendicular, so a circle touching both has its centre on a bisector, i.e. on a coordinate axis; write it (h,0). The foot of the perpendicular from (h,0) to x - y = 0 is (h/2, h/2), at distance |h|/sqrt(2) from the origin. Setting that unit distance to 1 gives h = sqrt(2); the radius is then sqrt(2)/sqrt(2) = 1 and the same holds for x + y = 0 by symmetry. Checked all four options: (sqrt2,0) gives tangency distances 1 and 1; (sqrt3,0) gives sqrt(6)/2 = 1.2247; (1,0) gives 0.7071; and (1,1) LIES ON the line x - y = 0, so its distance to that line is 0 and no tangency is possible.",
+    "solution": "The two lines pass through the origin, so the centre of a circle touching both lies on one of their bisectors, that is on a coordinate axis — say \\((h,0)\\). The foot of the perpendicular from \\((h,0)\\) to \\(x-y=0\\) is \\(\\left(\\frac{h}{2},\\frac{h}{2}\\right)\\), whose distance from the origin is \\(\\frac{|h|}{\\sqrt{2}}\\). Setting this equal to \\(1\\) gives \\(h=\\sqrt{2}\\), and the radius is then \\(\\frac{\\sqrt{2}}{\\sqrt{2}}=1\\). So the centre may be at \\(\\left(\\sqrt{2},0\\right)\\)."
+  },
+  {
+    "number": 52,
+    "answer": "B",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "Setting y = 0 gives x = sin(2t)/sin(t) = 2cos(t), and setting x = 0 gives y = sin(2t)/cos(t) = 2sin(t). So P = (2cos t, 0) and Q = (0, 2sin t), and M = (cos t, sin t). Then |OM| = sqrt(cos^2 t + sin^2 t) = 1, independent of the angle (sympy simplifies it to 1). Options C and D are the sums/differences that would appear if the intercepts were mishandled; neither is constant.",
+    "solution": "Setting \\(y=0\\) gives \\(x=\\frac{\\sin 2\\theta}{\\sin\\theta}=2\\cos\\theta\\), and setting \\(x=0\\) gives \\(y=\\frac{\\sin 2\\theta}{\\cos\\theta}=2\\sin\\theta\\). So the intercepts are \\(P\\left(2\\cos\\theta,0\\right)\\) and \\(Q\\left(0,2\\sin\\theta\\right)\\), whose midpoint is \\(M\\left(\\cos\\theta,\\sin\\theta\\right)\\). Its distance from the origin is \\(\\sqrt{\\cos^2\\theta+\\sin^2\\theta}=1\\), whatever the angle."
+  },
+  {
+    "number": 53,
+    "answer": "D",
+    "value": "\\(a + \\frac{cx}{a}\\)",
+    "confidence": "HIGH",
+    "reasoning": "With e = c/a and b^2 = a^2(1 - e^2), a point on the ellipse has y^2 = b^2(1 - x^2/a^2). Then PF^2 = (x + c)^2 + y^2, and sympy factors this exactly as (a + e*x)^2, so PF = a + e*x = a + c*x/a for the focus at (-c, 0). Numeric check with a = 5, c = 3: at x = 2, PF = 31/5 = a + cx/a while a - cx/a = 19/5 (that is the distance to the OTHER focus (c,0)); at x = -5, PF = 2 = a + cx/a. Option A is the focal radius for the focus at (+c,0), the natural trap.",
+    "solution": "Write \\(e=\\frac{c}{a}\\) and \\(b^2=a^2\\left(1-e^2\\right)\\), so a point on the ellipse satisfies \\(y^2=b^2\\left(1-\\frac{x^2}{a^2}\\right)\\). Then \\(PF^2=(x+c)^2+y^2\\) simplifies exactly to \\(\\left(a+ex\\right)^2\\). Hence \\(PF=a+ex=a+\\frac{cx}{a}\\); the expression \\(a-\\frac{cx}{a}\\) is the distance to the other focus."
+  },
+  {
+    "number": 54,
+    "answer": "C",
+    "value": "\\(3x - 6y - 5 = 0\\)",
+    "confidence": "HIGH",
+    "reasoning": "Dividing 6x - 12y + 1 = 0 by 3 gives 2x - 4y + 1/3 = 0, parallel to 2x - 4y - 7 = 0. The equidistant line is midway, so its constant is the average of -7 and 1/3, namely -10/3: 2x - 4y - 10/3 = 0, i.e. 3x - 6y - 5 = 0. Verified by distances: the point (5/3, 0) on this line is 11*sqrt(5)/30 from BOTH given lines. The other options fail the same test — (7/4,0) on A gives 7sqrt5/20 vs 23sqrt5/60; (19/12,0) on B gives 23sqrt5/60 vs 7sqrt5/20 (B is the mirror-image error, averaging with the wrong normalisation); (3/4,0) on D gives 11sqrt5/20 vs 11sqrt5/60.",
+    "solution": "Dividing \\(6x-12y+1=0\\) by \\(3\\) gives \\(2x-4y+\\frac{1}{3}=0\\), which is parallel to \\(2x-4y-7=0\\). A line equidistant from two parallel lines runs midway between them, so its constant term is the average \\(\\frac{-7+\\frac{1}{3}}{2}=-\\frac{10}{3}\\), giving \\(2x-4y-\\frac{10}{3}=0\\). Multiplying through by \\(\\frac{3}{2}\\) puts this as \\(3x-6y-5=0\\)."
+  },
+  {
+    "number": 55,
+    "answer": "C",
+    "value": "\\(\\frac{13}{5}\\) units",
+    "confidence": "HIGH",
+    "reasoning": "Reflect P(1,2) in the x-axis to get P'(1,-2). The reflected ray produced backwards passes through P', so N is where the line P'Q meets the x-axis. That line has slope (3 - (-2))/(5 - 1) = 5/4, and y = 0 gives x = 1 + 8/5 = 13/5. Hence ON = 13/5. Consistency check: the incident segment PN has slope (2-0)/(1 - 13/5) = -5/4 and the reflected segment NQ has slope (3-0)/(5 - 13/5) = +5/4, equal and opposite as reflection in the x-axis requires. Option B (14/5) is what you get by reflecting Q instead and mis-solving.",
+    "solution": "Reflect \\(P(1,2)\\) in the \\(x\\)-axis to get \\(P'(1,-2)\\); the reflected ray produced backwards passes through \\(P'\\), so \\(N\\) is where \\(P'Q\\) meets the \\(x\\)-axis. The line through \\((1,-2)\\) and \\((5,3)\\) has slope \\(\\frac{5}{4}\\), and putting \\(y=0\\) gives \\(x=1+\\frac{8}{5}=\\frac{13}{5}\\). So \\(N\\left(\\frac{13}{5},0\\right)\\) lies \\(\\frac{13}{5}\\) units from the origin, and the incident and reflected slopes \\(-\\frac{5}{4}\\) and \\(\\frac{5}{4}\\) confirm equal angles."
+  },
+  {
+    "number": 56,
+    "answer": "A",
+    "value": "\\(3x - 5y - 15 = 0\\)",
+    "confidence": "HIGH",
+    "reasoning": "p and q are the roots of t^2 - 2t - 15 = 0, namely 5 and -3. The condition p > q fixes p = 5 (x-intercept) and q = -3 (y-intercept). The intercept form x/5 + y/(-3) = 1, multiplied by 15, gives 3x - 5y = 15, i.e. 3x - 5y - 15 = 0. Option C is the same pair of roots with p and q swapped (which violates p > q), and B/D have the wrong sign.",
+    "solution": "The two intercepts are the roots of \\(t^2-2t-15=0\\), namely \\(5\\) and \\(-3\\), and \\(p>q\\) fixes \\(p=5\\) and \\(q=-3\\). The intercept form is then \\(\\frac{x}{5}+\\frac{y}{-3}=1\\). Multiplying through by \\(15\\) gives \\(3x-5y=15\\), that is \\(3x-5y-15=0\\)."
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "value": "\\(x + y - 3 = 0\\)",
+    "confidence": "HIGH",
+    "reasoning": "Take P = (p, 0) on the positive x-axis and Q = (0, q) on the positive y-axis. The point dividing PQ in the ratio 1:2 (measured from P) is ((1*0 + 2p)/3, (1*q + 2*0)/3) = (2p/3, q/3). Equating to N(2,1) gives p = 3 and q = 3, so the line is x/3 + y/3 = 1, i.e. x + y - 3 = 0. Direct check: P(3,0) + (1/3)(Q - P) = (2,1). The opposite convention (dividing from Q) gives p = 6, q = 3/2 and the line x + 4y = 6, which is NOT among the options, so the intended reading is unambiguous here.",
+    "solution": "Let \\(P(p,0)\\) and \\(Q(0,q)\\) with \\(p,q>0\\). The point dividing \\(PQ\\) in the ratio \\(1:2\\) is \\(\\left(\\frac{2p}{3},\\frac{q}{3}\\right)\\), and equating this to \\(N(2,1)\\) gives \\(p=3\\) and \\(q=3\\). The line is therefore \\(\\frac{x}{3}+\\frac{y}{3}=1\\), that is \\(x+y-3=0\\)."
+  },
+  {
+    "number": 58,
+    "answer": "B",
+    "value": "\\(x - y = 0\\)",
+    "confidence": "HIGH",
+    "reasoning": "The vertex A is where y = 0 meets x = 0, so A = (0,0). B lies on y = 0 and on the diagonal x + y - 4 = 0, giving B = (4,0); D lies on x = 0 and the same diagonal, giving D = (0,4). Sides AB = AD = 4 and they are perpendicular, so ABCD really is a square and C = B + D - A = (4,4). The other diagonal AC joins (0,0) to (4,4), so its equation is y = x, i.e. x - y = 0. Options C and D are the two lines of slope 1 through (4,0) and (0,4), which are SIDES-parallel offsets, not the diagonal through the origin.",
+    "solution": "The vertex common to \\(AB\\) and \\(AD\\) is where \\(y=0\\) meets \\(x=0\\), namely \\((0,0)\\). The diagonal \\(x+y-4=0\\) meets \\(y=0\\) at \\((4,0)\\) and meets \\(x=0\\) at \\((0,4)\\), so those are the two adjacent vertices; both sides have length \\(4\\) and are perpendicular, confirming a square. The remaining vertex is \\((4,0)+(0,4)-(0,0)=(4,4)\\), so the other diagonal joins \\((0,0)\\) to \\((4,4)\\) and has equation \\(x-y=0\\)."
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "value": "\\(y = 10k\\)",
+    "confidence": "HIGH",
+    "reasoning": "Place the fixed vertices at (0,0) and (10,0) and let C = (x, y). Dropping the perpendicular from C to the x-axis, cot A = x/y and cot B = (10 - x)/y, so cot A + cot B = 10/y — independent of x. Setting this equal to 1/k gives y = 10k. sympy, using cot = (u.w)/(u x w) on the actual vertex vectors, returns the same sum 10/y and solves the locus to y = 10k. NOTE: if C is allowed below the axis the locus is strictly |y| = 10k, i.e. two lines; the printed option gives the standard single-branch form.",
+    "solution": "Place the fixed vertices at \\((0,0)\\) and \\((10,0)\\) and let \\(C=(x,y)\\). Dropping the perpendicular from \\(C\\) to the \\(x\\)-axis gives \\(\\cot A=\\frac{x}{y}\\) and \\(\\cot B=\\frac{10-x}{y}\\), so \\(\\cot A+\\cot B=\\frac{10}{y}\\), which does not depend on \\(x\\). The given condition therefore reads \\(\\frac{10}{y}=\\frac{1}{k}\\), so the locus is the line \\(y=10k\\), parallel to \\(AB\\) at distance \\(10k\\) from it."
+  },
+  {
+    "number": 60,
+    "answer": "C",
+    "value": "\\(e = 1\\)",
+    "confidence": "HIGH",
+    "reasoning": "4x^2 + y = 0 rearranges to x^2 = -y/4, a genuine parabola with vertex at the origin opening downwards (4a = 1/4). Every parabola has eccentricity exactly 1 by definition, since each of its points is equidistant from the focus and the directrix. The stem itself calls the curve a parabola, and the equation confirms it, so no other band is defensible.",
+    "solution": "The equation \\(4x^2+y=0\\) rearranges to \\(x^2=-\\frac{y}{4}\\), a parabola with vertex at the origin opening downwards. By definition every point of a parabola is equidistant from its focus and its directrix, so the ratio of those two distances is \\(1\\). Hence \\(e=1\\)."
+  }
+]

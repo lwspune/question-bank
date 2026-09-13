@@ -1,0 +1,965 @@
+{
+  "reconciled": [],
+  "derivations": [
+    {
+      "number": 1,
+      "answer": "A",
+      "value": "\\(\\dfrac{h^2\\cos^2\\alpha}{\\sin^2(\\beta-\\alpha)}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Observer at the top of the building, height H, horizontal distance D to the tower. Depression to the tower's FOOT (angle beta) gives tan(beta) = H/D; depression to the tower's TOP, which is h above the foot (angle alpha), gives tan(alpha) = (H-h)/D. Subtracting, h = D(tan beta - tan alpha) = D sin(beta-alpha)/(cos alpha cos beta), so D = h cos alpha cos beta / sin(beta-alpha) and H = D tan beta = h cos alpha sin beta / sin(beta-alpha). Then H^2 + D^2 = h^2 cos^2(alpha) (sin^2 beta + cos^2 beta)/sin^2(beta-alpha) = h^2 cos^2(alpha)/sin^2(beta-alpha). Note H^2+D^2 is the squared slant distance from the observer to the foot of the tower. Verified numerically at (alpha,beta,h) = (20,50,3), (15,45,1), (35,62,7.5): option A matched to 8 d.p. in all three and B, C, D did not. The alpha/beta assignment is fixed by the stem's 'top and bottom ... respectively' and is independently consistent (a depression angle to the higher point must be the smaller one, and the recovered alpha came back exactly). Stem and all four options checked against page image p02.",
+      "solution": "From the top of the building the line of sight to the FOOT of the tower gives \\(\\tan\\beta = \\dfrac{H}{D}\\), while the sight-line to its TOP, a point standing \\(h\\) higher, gives \\(\\tan\\alpha = \\dfrac{H-h}{D}\\). Subtracting, \\(h = D(\\tan\\beta - \\tan\\alpha) = \\dfrac{D\\sin(\\beta-\\alpha)}{\\cos\\alpha\\cos\\beta}\\), so \\(D = \\dfrac{h\\cos\\alpha\\cos\\beta}{\\sin(\\beta-\\alpha)}\\) and \\(H = D\\tan\\beta = \\dfrac{h\\cos\\alpha\\sin\\beta}{\\sin(\\beta-\\alpha)}\\). Hence \\(H^2 + D^2 = \\dfrac{h^2\\cos^2\\alpha\\left(\\sin^2\\beta+\\cos^2\\beta\\right)}{\\sin^2(\\beta-\\alpha)} = \\dfrac{h^2\\cos^2\\alpha}{\\sin^2(\\beta-\\alpha)}\\), which is just the square of the slant distance from the observer down to the foot of the tower."
+    },
+    {
+      "number": 2,
+      "answer": "D",
+      "value": "\\(H = D\\)",
+      "confidence": "HIGH",
+      "reasoning": "The depression angle to the FOOT of the tower satisfies tan(beta) = H/D directly, so beta = 45 degrees forces H/D = 1, i.e. H = D. The value of alpha is not needed for this relation; alpha = 15 degrees only fixes the tower height h = D(tan 45 - tan 15) = 0.732 D, and that is consistent (h < H, as a depression angle to the tower's top requires). Verified numerically: H = D = 1.36602540 for h = 1. The other options need H/D equal to sqrt(2), 1/sqrt(2) or sqrt(3)/2, i.e. beta = 54.7, 35.3 or 40.9 degrees, none of which is 45. The unused alpha is a deliberate distractor, not a sign of a misprint; stem verified on page image p02.",
+      "solution": "The angle of depression to the FOOT of the tower is measured over a vertical drop of \\(H\\) and a horizontal run of \\(D\\), so \\(\\tan\\beta = \\dfrac{H}{D}\\). Putting \\(\\beta = 45^\\circ\\) gives \\(\\dfrac{H}{D} = \\tan 45^\\circ = 1\\), so \\(H = D\\). The value \\(\\alpha = 15^\\circ\\) plays no part in this relation; it only fixes the tower's height, \\(h = D\\left(\\tan 45^\\circ - \\tan 15^\\circ\\right) \\approx 0.73\\,D\\), which is duly less than \\(H\\) as the geometry requires."
+    },
+    {
+      "number": 3,
+      "answer": "C",
+      "value": "\\((3+\\sqrt{5}) : 2\\)",
+      "confidence": "HIGH",
+      "reasoning": "A : B : C = 1 : 2 : 7 and A+B+C = 180 degrees give a unit of 18 degrees, so A = 18, B = 36, C = 126. By the sine rule the longest side is opposite the largest angle, so the required ratio is sin C : sin A = sin 126 : sin 18 = cos 36 : sin 18 = [(sqrt5+1)/4] : [(sqrt5-1)/4] = (sqrt5+1)/(sqrt5-1) = (6+2 sqrt5)/4 = (3+sqrt5)/2. Numerically 2.618033989, matching (3+sqrt5):2 = 2.618033989 exactly; option D gives 1.745 and option B gives 2.646, so neither is within reach. Options checked against page image p02.",
+      "solution": "Since \\(A:B:C = 1:2:7\\) and \\(A+B+C = 180^\\circ\\), one part is \\(18^\\circ\\), so \\(A = 18^\\circ,\\ B = 36^\\circ,\\ C = 126^\\circ\\). By the sine rule each side is proportional to the sine of its opposite angle, so the greatest side faces \\(C\\) and the least faces \\(A\\). Using \\(\\sin 126^\\circ = \\cos 36^\\circ = \\dfrac{\\sqrt5+1}{4}\\) and \\(\\sin 18^\\circ = \\dfrac{\\sqrt5-1}{4}\\), the required ratio is \\(\\dfrac{\\sqrt5+1}{\\sqrt5-1} = \\dfrac{6+2\\sqrt5}{4} = \\dfrac{3+\\sqrt5}{2} \\approx 2.618\\), that is \\(\\left(3+\\sqrt5\\right):2\\)."
+    },
+    {
+      "number": 4,
+      "answer": "A",
+      "value": "\\(1/4\\)",
+      "confidence": "HIGH",
+      "reasoning": "With A = 18 degrees and B = 36 degrees, sin A . cos B = sin 18 . cos 36 = [(sqrt5-1)/4][(sqrt5+1)/4] = (5-1)/16 = 1/4. Verified numerically: 0.309017 x 0.809017 = 0.250000000000. No other printed option is anywhere near 0.25.",
+      "solution": "From \\(A:B:C = 1:2:7\\) with \\(A+B+C=180^\\circ\\) we get \\(A = 18^\\circ\\) and \\(B = 36^\\circ\\). Using the exact values \\(\\sin 18^\\circ = \\dfrac{\\sqrt5-1}{4}\\) and \\(\\cos 36^\\circ = \\dfrac{\\sqrt5+1}{4}\\), the product collapses by the difference of two squares: \\(\\sin A\\cdot\\cos B = \\dfrac{\\left(\\sqrt5-1\\right)\\left(\\sqrt5+1\\right)}{16} = \\dfrac{5-1}{16} = \\dfrac14\\)."
+    },
+    {
+      "number": 5,
+      "answer": "B",
+      "value": "\\(7 : 6 : 5\\)",
+      "confidence": "HIGH",
+      "reasoning": "Let each equal ratio be k. Then a+b = 13k, b+c = 11k, c+a = 12k; adding gives 2(a+b+c) = 36k, so a+b+c = 18k. Hence c = 18k - 13k = 5k, a = 18k - 11k = 7k, b = 18k - 12k = 6k. By the sine rule sin A : sin B : sin C = a : b : c = 7 : 6 : 5. Checked back into all three given fractions (each equals 1 when k=1), and 7,6,5 satisfies the triangle inequality. Option A is the same numbers reversed and would follow from pairing the denominators with the wrong sums.",
+      "solution": "Let \\(\\dfrac{a+b}{13} = \\dfrac{b+c}{11} = \\dfrac{c+a}{12} = k\\). Adding the three numerators gives \\(2(a+b+c) = 36k\\), so \\(a+b+c = 18k\\). Subtracting each given sum in turn from this total, \\(c = 18k-13k = 5k\\), \\(a = 18k-11k = 7k\\) and \\(b = 18k-12k = 6k\\). By the sine rule the sines are proportional to the opposite sides, so \\(\\sin A:\\sin B:\\sin C = a:b:c = 7:6:5\\)."
+    },
+    {
+      "number": 6,
+      "answer": "A",
+      "value": "\\(7 : 19 : 25\\)",
+      "confidence": "HIGH",
+      "reasoning": "From item 5, a : b : c = 7 : 6 : 5, so take a=7, b=6, c=5. Cosine rule with exact fractions: cos A = (36+25-49)/(2.6.5) = 12/60 = 1/5; cos B = (49+25-36)/(2.7.5) = 38/70 = 19/35; cos C = (49+36-25)/(2.7.6) = 60/84 = 5/7. Scaling all three by the common denominator 35 gives 7 : 19 : 25. Computed with exact rational arithmetic, so no rounding is involved. Option ordering on the page (7:19:25 first) checked on image p02.",
+      "solution": "From the previous item \\(a:b:c = 7:6:5\\), so take \\(a=7,\\ b=6,\\ c=5\\). The cosine rule then gives \\(\\cos A = \\dfrac{36+25-49}{2\\cdot 6\\cdot 5} = \\dfrac15\\), \\(\\cos B = \\dfrac{49+25-36}{2\\cdot 7\\cdot 5} = \\dfrac{19}{35}\\) and \\(\\cos C = \\dfrac{49+36-25}{2\\cdot 7\\cdot 6} = \\dfrac57\\). Multiplying each by \\(35\\) clears the denominators, giving \\(\\cos A:\\cos B:\\cos C = 7:19:25\\)."
+    },
+    {
+      "number": 7,
+      "answer": "B",
+      "value": "\\(\\dfrac{p+q}{1-pq}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Write u = A/2 and v = B/2, so tan(u+v) = p and tan(u-v) = q. Then A = 2u = (u+v) + (u-v), so tan A = [tan(u+v) + tan(u-v)] / [1 - tan(u+v)tan(u-v)] = (p+q)/(1-pq); the stated condition pq not equal to +/-1 is exactly what keeps this denominator non-zero. Verified numerically at (A,B) = (50,22), (70,10) and (31,17) degrees: option B reproduced tan A to 9 d.p. each time while A, C and D did not.",
+      "solution": "Put \\(u = \\dfrac{A}{2}\\) and \\(v = \\dfrac{B}{2}\\), so that \\(\\tan(u+v) = p\\) and \\(\\tan(u-v) = q\\). Then \\(A = 2u = (u+v)+(u-v)\\), and the addition formula gives \\(\\tan A = \\dfrac{\\tan(u+v)+\\tan(u-v)}{1-\\tan(u+v)\\tan(u-v)} = \\dfrac{p+q}{1-pq}\\). The restriction \\(pq \\ne \\pm 1\\) is precisely what keeps this denominator away from zero."
+    },
+    {
+      "number": 8,
+      "answer": "A",
+      "value": "\\(\\dfrac{p-q}{1+pq}\\)",
+      "confidence": "HIGH",
+      "reasoning": "With u = A/2 and v = B/2 as before, B = 2v = (u+v) - (u-v), so tan B = [tan(u+v) - tan(u-v)] / [1 + tan(u+v)tan(u-v)] = (p-q)/(1+pq). Verified numerically at (A,B) = (50,22), (70,10) and (31,17) degrees: option A reproduced tan B to 9 d.p. each time. This is the companion of item 7 with both signs exchanged, which is the standing trap on this pair - the two items share an identical option block, so a sign slip lands on a printed option.",
+      "solution": "With \\(u = \\dfrac{A}{2}\\) and \\(v = \\dfrac{B}{2}\\) we again have \\(\\tan(u+v) = p\\) and \\(\\tan(u-v) = q\\). This time \\(B = 2v = (u+v)-(u-v)\\), so the subtraction formula gives \\(\\tan B = \\dfrac{\\tan(u+v)-\\tan(u-v)}{1+\\tan(u+v)\\tan(u-v)} = \\dfrac{p-q}{1+pq}\\). Note this is the mirror image of \\(\\tan A = \\dfrac{p+q}{1-pq}\\), with both signs reversed."
+    },
+    {
+      "number": 9,
+      "answer": "B",
+      "value": "\\(2\\)",
+      "confidence": "HIGH",
+      "reasoning": "4(A+B) = pi gives A+B = pi/4, so tan(A+B) = 1, i.e. (tan A + tan B)/(1 - tan A tan B) = 1, hence tan A + tan B + tan A tan B = 1. Expanding, (1+tan A)(1+tan B) = 1 + tan A + tan B + tan A tan B = 1 + 1 = 2, independent of how A+B is split. Verified numerically at A = 10, 22.5, 40 and -5 degrees: the product was 2.0000000000 in every case, including the negative one and the symmetric A=B=22.5 case, so the result is not an artifact of a convenient angle.",
+      "solution": "From \\(4(A+B) = \\pi\\) we get \\(A+B = \\dfrac{\\pi}{4}\\), so \\(\\tan(A+B) = 1\\), that is \\(\\dfrac{\\tan A + \\tan B}{1-\\tan A\\tan B} = 1\\). Cross-multiplying gives \\(\\tan A + \\tan B + \\tan A\\tan B = 1\\). Expanding the required product, \\((1+\\tan A)(1+\\tan B) = 1 + \\left(\\tan A + \\tan B + \\tan A\\tan B\\right) = 1 + 1 = 2\\), whatever the individual values of \\(A\\) and \\(B\\) happen to be."
+    },
+    {
+      "number": 10,
+      "answer": "D",
+      "value": "\\(2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Let x = tan A and y = tan B. From A+B = pi/4 we have x + y + xy = 1, so x + y = 1 - xy. Then (cot A - 1)(cot B - 1) = (1/x - 1)(1/y - 1) = [1 - (x+y) + xy]/(xy) = [1 - (1-xy) + xy]/(xy) = 2xy/(xy) = 2. Verified numerically at A = 10, 22.5, 40 and -5 degrees: 2.0000000000 each time. The pairing with item 9 is deliberate; both evaluate to 2, and the natural expectation that the companion item must differ is the trap.",
+      "solution": "Let \\(x = \\tan A\\) and \\(y = \\tan B\\). Since \\(A+B = \\dfrac{\\pi}{4}\\), the relation \\(\\tan(A+B) = 1\\) gives \\(x + y + xy = 1\\), so \\(x+y = 1-xy\\). Then \\((\\cot A - 1)(\\cot B - 1) = \\left(\\dfrac1x - 1\\right)\\left(\\dfrac1y - 1\\right) = \\dfrac{1-(x+y)+xy}{xy} = \\dfrac{1-(1-xy)+xy}{xy} = \\dfrac{2xy}{xy} = 2\\)."
+    },
+    {
+      "number": 11,
+      "answer": "C",
+      "value": "\\(1\\)",
+      "confidence": "HIGH",
+      "reasoning": "Factor out 2: 6 sin t - 8 sin^3 t = 2(3 sin t - 4 sin^3 t) = 2 sin 3t by the triple-angle identity. With t = pi/18 = 10 degrees, 3t = 30 degrees, so the value is 2 sin 30 = 2 x (1/2) = 1. Verified numerically: 1.000000000000.",
+      "solution": "Take out a factor of \\(2\\): \\(6\\sin\\theta - 8\\sin^3\\theta = 2\\left(3\\sin\\theta - 4\\sin^3\\theta\\right) = 2\\sin 3\\theta\\), using the triple-angle identity. Here \\(\\theta = \\dfrac{\\pi}{18} = 10^\\circ\\), so \\(3\\theta = 30^\\circ\\) and the expression equals \\(2\\sin 30^\\circ = 2\\times\\dfrac12 = 1\\)."
+    },
+    {
+      "number": 12,
+      "answer": "C",
+      "value": "\\(4\\)",
+      "confidence": "HIGH",
+      "reasoning": "Put t = tan^2(theta), which is positive. The equation is t + 1/t = 2, i.e. t^2 - 2t + 1 = 0, i.e. (t-1)^2 = 0, so t = 1 is the only root - equivalently t + 1/t >= 2 by AM-GM with equality only at t = 1. Hence tan^2(theta) = 1, tan(theta) = +/-1, giving theta = 45, 135, 225, 315 degrees in the open interval (0, 360): four values. Confirmed by a numerical sweep of the interval, which found exactly those four. Options A and B would follow from restricting to one or two quadrants; D would need eight, which the double root rules out. The printed right-hand side is 2, confirmed on page image p04 - had it been any value above 2 the count would indeed be eight.",
+      "solution": "Let \\(t = \\tan^2\\theta\\), which is positive wherever the expression is defined. The equation becomes \\(t + \\dfrac1t = 2\\), i.e. \\(t^2 - 2t + 1 = 0\\), i.e. \\(\\left(t-1\\right)^2 = 0\\), so \\(t = 1\\) is the only possibility. Hence \\(\\tan^2\\theta = 1\\), giving \\(\\tan\\theta = \\pm 1\\), and within \\(0^\\circ < \\theta < 360^\\circ\\) that yields \\(\\theta = 45^\\circ,\\ 135^\\circ,\\ 225^\\circ,\\ 315^\\circ\\) - four values in all."
+    },
+    {
+      "number": 13,
+      "answer": "C",
+      "value": "\\(3/5\\)",
+      "confidence": "HIGH",
+      "reasoning": "Let u = arctan(0.75) = arctan(3/4), which lies in (0, pi/2). A right triangle with opposite 3 and adjacent 4 has hypotenuse 5, so sin u = 3/5. Verified numerically: sin(atan(0.75)) = 0.600000000000. Option B (4/5) is cos u, the standard trap on this shape.",
+      "solution": "Let \\(u = \\tan^{-1}(0.75) = \\tan^{-1}\\!\\left(\\dfrac34\\right)\\), an angle in the first quadrant. A right triangle with opposite side \\(3\\) and adjacent side \\(4\\) has hypotenuse \\(\\sqrt{3^2+4^2} = 5\\), so \\(\\sin u = \\dfrac{3}{5}\\). Note that \\(\\dfrac45\\) is the cosine of this angle, not its sine."
+    },
+    {
+      "number": 14,
+      "answer": "A",
+      "value": "\\(1/2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Let phi = arccos(1/3), so cos phi = 1/3 and phi lies in (0, pi), putting phi/2 in (0, pi/2). The half-angle identity gives tan^2(phi/2) = (1 - cos phi)/(1 + cos phi) = (1 - 1/3)/(1 + 1/3) = (2/3)/(4/3) = 1/2. Verified numerically: 0.500000000000.",
+      "solution": "Let \\(\\varphi = \\cos^{-1}\\dfrac13\\), so that \\(\\cos\\varphi = \\dfrac13\\). The half-angle identity \\(\\tan^2\\dfrac{\\varphi}{2} = \\dfrac{1-\\cos\\varphi}{1+\\cos\\varphi}\\) then gives \\(\\tan^2\\dfrac{\\varphi}{2} = \\dfrac{1-\\frac13}{1+\\frac13} = \\dfrac{2/3}{4/3} = \\dfrac12\\)."
+    },
+    {
+      "number": 15,
+      "answer": "C",
+      "value": "\\(0\\)",
+      "confidence": "HIGH",
+      "reasoning": "Reduce each angle modulo 360 degrees: 1125 - 720 = 405, minus 360 = 45, so tan 1125 = tan 45 = 1; 405 - 360 = 45, so cot 405 = cot 45 = 1; 765 - 720 = 45, so tan 765 = tan 45 = 1; 675 - 360 = 315, so cot 675 = cot 315 = -1, since at 315 degrees the cosine is positive and the sine negative. Hence the value is (1)(1) + (1)(-1) = 0. Verified numerically: 0.000000000000. The trap is 675, the only one of the four angles that does not reduce to 45 degrees; reading it as 45 too would give 2, which is a printed option.",
+      "solution": "Reduce each angle by whole turns of \\(360^\\circ\\): \\(1125^\\circ \\to 45^\\circ\\), \\(405^\\circ \\to 45^\\circ\\), \\(765^\\circ \\to 45^\\circ\\), but \\(675^\\circ \\to 315^\\circ\\). So \\(\\tan 1125^\\circ = \\tan 45^\\circ = 1\\), \\(\\cot 405^\\circ = \\cot 45^\\circ = 1\\) and \\(\\tan 765^\\circ = 1\\), while \\(\\cot 675^\\circ = \\cot 315^\\circ = -1\\) because \\(315^\\circ\\) lies in the fourth quadrant, where cosine is positive and sine negative. The expression is therefore \\(1\\times 1 + 1\\times(-1) = 0\\)."
+    },
+    {
+      "number": 16,
+      "answer": "C",
+      "value": "\\(2A\\)",
+      "confidence": "HIGH",
+      "reasoning": "For a square matrix of order n the standard identity is adj(adj A) = |A|^(n-2) A. With n = 3 and |A| = 2 this is |A|^1 A = 2A. Derivation: adj A = |A| A^(-1), and |adj A| = |A|^(n-1) = |A|^2, so adj(adj A) = |adj A| (adj A)^(-1) = |A|^2 . (|A| A^(-1))^(-1) = |A|^2 . A/|A| = |A| A = 2A. Confirmed on an explicit 3x3 test matrix of determinant 2 using exact rational arithmetic: adj(adj M) came back equal to 2M entry for entry. Option A (8A) would be |A|^3 A, i.e. the wrong exponent, and D confuses the result with a scalar multiple of the identity.",
+      "solution": "For a square matrix of order \\(n\\), the adjugate satisfies \\(\\text{adj}\\,A = |A|\\,A^{-1}\\) and \\(|\\text{adj}\\,A| = |A|^{n-1}\\). Applying the first identity twice, \\(\\text{adj}(\\text{adj}\\,A) = |\\text{adj}\\,A|\\,(\\text{adj}\\,A)^{-1} = |A|^{n-1}\\cdot\\dfrac{A}{|A|} = |A|^{n-2}A\\). With \\(n = 3\\) and \\(|A| = 2\\) this gives \\(\\text{adj}(\\text{adj}\\,A) = 2A\\)."
+    },
+    {
+      "number": 17,
+      "answer": "D",
+      "value": "\\(64\\)",
+      "confidence": "HIGH",
+      "reasoning": "The defining property of the adjugate is A(adj A) = |A| I. The given product is 64 I, so |A| I = 64 I and hence |A| = 64. A second route agrees: taking determinants of both sides, |A| . |adj A| = |A| . |A|^2 = |A|^3, while the determinant of the given diagonal matrix is 64^3, so |A|^3 = 64^3 and |A| = 64. Option A (4) would come from cube-rooting 64 once too often, which is the likely intended distractor.",
+      "solution": "The adjugate of a square matrix satisfies \\(A(\\text{adj}\\,A) = |A|\\,I\\). Here the product is given as \\(64I\\), so \\(|A|\\,I = 64I\\) and therefore \\(|A| = 64\\). Taking determinants confirms it: \\(|A|\\cdot|\\text{adj}\\,A| = |A|\\cdot|A|^{2} = |A|^{3}\\), while the determinant of the given diagonal matrix is \\(64^{3}\\), so \\(|A|^{3} = 64^{3}\\) and again \\(|A| = 64\\)."
+    },
+    {
+      "number": 18,
+      "answer": "B",
+      "value": "\\(\\pi/3\\)",
+      "confidence": "HIGH",
+      "reasoning": "Transposing swaps the two off-diagonal entries, so A^T has -sin(theta) in the top-right and +sin(theta) in the bottom-left. Adding, the off-diagonal terms cancel and A + A^T = diag(2 cos theta, 2 cos theta). Setting this equal to the 2x2 identity requires 2 cos(theta) = 1, i.e. cos(theta) = 1/2, whose least positive solution is theta = pi/3. Checking the other options: cos(pi/2) = 0, cos(pi/4) = 0.707, cos(pi/6) = 0.866, none of which is 0.5, so pi/3 is the only printed value that works at all - the word 'least' is not doing any separating work here.",
+      "solution": "Transposing \\(A\\) swaps its two off-diagonal entries, so \\(A^{T} = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\). Adding, the sine terms cancel and \\(A + A^{T} = \\begin{bmatrix} 2\\cos\\theta & 0 \\\\ 0 & 2\\cos\\theta \\end{bmatrix}\\). For this to equal the identity we need \\(2\\cos\\theta = 1\\), i.e. \\(\\cos\\theta = \\dfrac12\\), and the least positive angle satisfying it is \\(\\theta = \\dfrac{\\pi}{3}\\)."
+    },
+    {
+      "number": 19,
+      "answer": "C",
+      "value": "Both statements are correct",
+      "confidence": "HIGH",
+      "reasoning": "Statement II: if A is non-singular then A^(-1) exists, and left-multiplying AB = AC by A^(-1) gives B = C. True. Statement I: if A is singular, cancellation can fail - take A as the 2x2 zero matrix, for which AB = AC = 0 for every B and C, so B and C need not be equal. True. Note statement I is carefully hedged as 'not NECESSARILY equal', so it is not refuted by the fact that B = C sometimes also holds when A is singular; that hedge is what makes both statements correct rather than only the second. Both hold, so the code selecting both is right.",
+      "solution": "If \\(A\\) is non-singular then \\(A^{-1}\\) exists, and multiplying \\(AB = AC\\) on the left by \\(A^{-1}\\) gives \\(B = C\\), so the second statement is correct. If \\(A\\) is singular the cancellation can fail: taking \\(A\\) to be the zero matrix makes \\(AB = AC\\) true for every pair \\(B\\) and \\(C\\), so the two need not be equal, and the first statement - which says only that they are not necessarily equal - is correct as well. Both statements therefore hold."
+    },
+    {
+      "number": 20,
+      "answer": "B",
+      "value": "\\(16\\)",
+      "confidence": "HIGH",
+      "reasoning": "For a square matrix of order n, |adj A| = |A|^(n-1). With n = 3 and |A| = 4, |adj A| = 4^2 = 16. This follows from A(adj A) = |A| I: taking determinants gives |A| . |adj A| = |A|^n, so |adj A| = |A|^(n-1). Verified on an explicit 3x3 test matrix with exact rational arithmetic. Option A (64) is |A|^3, the exponent n rather than n-1.",
+      "solution": "Taking determinants in the identity \\(A(\\text{adj}\\,A) = |A|\\,I\\) for a matrix of order \\(n\\) gives \\(|A|\\cdot|\\text{adj}\\,A| = |A|^{n}\\), so \\(|\\text{adj}\\,A| = |A|^{\\,n-1}\\). Here \\(n = 3\\) and \\(|A| = 4\\), so \\(|\\text{adj}\\,A| = 4^{2} = 16\\)."
+    },
+    {
+      "number": 21,
+      "answer": "B",
+      "value": "Only the second statement is correct",
+      "confidence": "HIGH",
+      "reasoning": "A and B symmetric means A^T = A and B^T = B. Then (AB - BA)^T = (AB)^T - (BA)^T = B^T A^T - A^T B^T = BA - AB = -(AB - BA), so AB - BA is SKEW-symmetric, not symmetric, and statement I is false in general. The identical computation applied to BA - AB gives (BA - AB)^T = -(BA - AB), so statement II is true. Confirmed on a random pair of 3x3 symmetric integer matrices: AB - BA tested skew and not symmetric, and was non-zero, so the degenerate case does not arise. The one caveat is that if A and B commute then AB - BA is the zero matrix, which is both symmetric and skew - but statement I asserts symmetry in general, and it fails in general, so only the second statement is correct.",
+      "solution": "Symmetry of \\(A\\) and \\(B\\) means \\(A^{T} = A\\) and \\(B^{T} = B\\). Transposing the first expression, \\((AB - BA)^{T} = B^{T}A^{T} - A^{T}B^{T} = BA - AB = -(AB - BA)\\), so \\(AB - BA\\) is skew-symmetric rather than symmetric, and the first statement fails. The same computation on the second expression gives \\((BA - AB)^{T} = AB - BA = -(BA - AB)\\), which is exactly the skew-symmetry the second statement claims. So only the second statement is correct."
+    },
+    {
+      "number": 22,
+      "answer": "C",
+      "value": "\\(-1/2\\)",
+      "confidence": "HIGH",
+      "reasoning": "|A| = (-1)(-4) - (2)(3) = 4 - 6 = -2. Since A A^(-1) = I, taking determinants gives |A| . |A^(-1)| = 1, so |A^(-1)| = 1/|A| = -1/2. Computed with exact fractions. Option A (-2) is |A| itself, the likely trap; option D (2) flips the sign of that.",
+      "solution": "First \\(|A| = (-1)(-4) - (2)(3) = 4 - 6 = -2\\), which is non-zero, so the inverse exists. Taking determinants in \\(AA^{-1} = I\\) gives \\(|A|\\cdot|A^{-1}| = 1\\), so \\(|A^{-1}| = \\dfrac{1}{|A|} = -\\dfrac12\\)."
+    },
+    {
+      "number": 23,
+      "answer": "B",
+      "value": "transitive only",
+      "confidence": "HIGH",
+      "reasoning": "Reflexive would require |x| <= x for every real x. That fails at x = -1, where 1 <= -1 is false, so the relation is not reflexive. Transitive: suppose |x| <= y and |y| <= z. The first forces y >= 0, so y = |y|, and then |y| <= z gives y <= z; chaining, |x| <= y <= z, so |x| <= z. Hence transitive. A random search over 200000 real triples found zero counterexamples to transitivity, consistent with the proof. So transitive but not reflexive.",
+      "solution": "Reflexivity would require \\(|x| \\le x\\) for every real \\(x\\), and this fails at \\(x = -1\\), where \\(1 \\le -1\\) is false; so the relation is not reflexive. For transitivity, suppose \\(|x| \\le y\\) and \\(|y| \\le z\\). The first inequality forces \\(y \\ge 0\\), so \\(y = |y|\\), and the second then gives \\(y \\le z\\). Chaining them, \\(|x| \\le y \\le z\\), so \\(|x| \\le z\\). The relation is therefore transitive but not reflexive."
+    },
+    {
+      "number": 24,
+      "answer": "C",
+      "value": "\\(232\\)",
+      "confidence": "HIGH",
+      "reasoning": "Repetition is evidently allowed (otherwise the question would be vacuous), so each of the four places may hold any of the four digits: 4^4 = 256 numbers in all. A 4-digit number formed from four available digits with none repeated must use each exactly once, and there are 4! = 24 such numbers. At least one repeat therefore accounts for 256 - 24 = 232. Confirmed by brute-force enumeration of all 256 tuples: exactly 232 have a repeated digit. Option B (244) would follow from subtracting only the 12 arrangements of some smaller set, and option D (220) from subtracting 36.",
+      "solution": "Since repetition is permitted, each of the four places can be filled in \\(4\\) ways, giving \\(4^{4} = 256\\) such numbers altogether. A number with no digit repeated must use each of \\(1, 2, 3, 4\\) exactly once, and there are \\(4! = 24\\) of those. Subtracting, the count of 4-digit numbers in which at least one digit is repeated is \\(256 - 24 = 232\\)."
+    },
+    {
+      "number": 25,
+      "answer": "C",
+      "value": "\\(13\\)",
+      "confidence": "HIGH",
+      "reasoning": "210 = 2.3.5.7 is square-free. Ordered triples of positive integers with product 210: each of the 4 primes goes to one of 3 positions, so 3^4 = 81. Triples with a repeat need x = y for some pair, which requires x^2 dividing 210, forcing x = 1 and the triple (1,1,210); that has 3 ordered arrangements. So 81 - 3 = 78 ordered triples have all entries distinct, and each unordered set is counted 3! = 6 times, giving 78/6 = 13 triples with x < y < z. Confirmed by exhaustive enumeration over all divisor pairs, which returned exactly 13: (1,2,105), (1,3,70), (1,5,42), (1,6,35), (1,7,30), (1,10,21), (1,14,15), (2,3,35), (2,5,21), (2,7,15), (3,5,14), (3,7,10), (5,6,7). Note the stem writes the triples as elements of R^3 but then restricts to positive integers, so the real-coordinate framing is cosmetic and does not make the set infinite.",
+      "solution": "Since \\(210 = 2\\times3\\times5\\times7\\) is square-free, an ordered factorisation into three positive integers amounts to sending each of the four primes to one of the three positions, giving \\(3^{4} = 81\\) ordered triples. A repeated entry would need \\(x = y\\) with \\(x^{2}\\) dividing \\(210\\), which forces \\(x = 1\\) and the triple \\((1,1,210)\\), contributing \\(3\\) ordered arrangements. That leaves \\(81 - 3 = 78\\) ordered triples with all three entries distinct, and each unordered set is counted \\(3! = 6\\) times, so the number satisfying \\(x < y < z\\) is \\(\\dfrac{78}{6} = 13\\)."
+    },
+    {
+      "number": 26,
+      "answer": "C",
+      "value": "\\(1\\)",
+      "confidence": "HIGH",
+      "reasoning": "From x = 4 + i, x - 4 = i, so (x-4)^2 = -1, giving x^2 - 8x + 17 = 0. Dividing the cubic by this quadratic: x^3 + 2x^2 - 63x + 171 = (x + 10)(x^2 - 8x + 17) + 1, since (x+10)(x^2-8x+17) = x^3 + 2x^2 - 63x + 170. The quadratic factor vanishes at x = 4+i, so the expression equals 1. Confirmed by direct complex evaluation: (1+0j) exactly.",
+      "solution": "From \\(x = 4+i\\) we get \\(x - 4 = i\\), so \\((x-4)^{2} = -1\\), that is \\(x^{2} - 8x + 17 = 0\\). Dividing the given cubic by this quadratic gives \\(x^{3}+2x^{2}-63x+171 = (x+10)\\left(x^{2}-8x+17\\right) + 1\\). Since the bracket is zero at \\(x = 4+i\\), the whole expression reduces to the remainder, \\(1\\)."
+    },
+    {
+      "number": 27,
+      "answer": "C",
+      "value": "\\(1\\)",
+      "confidence": "HIGH",
+      "reasoning": "Shift by one. Put u = alpha + 1 and v = beta + 1. Substituting x = u - 1 into x^2 - p(x+1) - q = 0 gives u^2 - (p+2)u + (1-q) = 0, so u and v are the roots of that quadratic and uv = 1 - q. Now alpha^2 + 2 alpha + 1 = u^2, while alpha^2 + 2 alpha + q = (alpha+1)^2 - 1 + q = u^2 - (1-q) = u^2 - uv = u(u-v). So the first fraction is u^2/[u(u-v)] = u/(u-v), and the second is v/(v-u). Their sum is (u-v)/(u-v) = 1. Confirmed numerically for six random (p,q) pairs, including negative values: every one returned 1 to machine precision. The result is independent of p and q, which is what makes the constant option correct rather than a p-or-q expression.",
+      "solution": "Shift the variable by one. Put \\(u = \\alpha+1\\) and \\(v = \\beta+1\\); substituting \\(x = u-1\\) into \\(x^{2}-p(x+1)-q=0\\) gives \\(u^{2}-(p+2)u+(1-q)=0\\), so \\(u\\) and \\(v\\) are the roots of this quadratic and in particular \\(uv = 1-q\\). Each numerator is \\(\\left(\\alpha+1\\right)^{2} = u^{2}\\), while each denominator is \\(\\left(\\alpha+1\\right)^{2}-1+q = u^{2}-uv = u(u-v)\\). The two fractions are therefore \\(\\dfrac{u}{u-v}\\) and \\(\\dfrac{v}{v-u}\\), whose sum is \\(\\dfrac{u-v}{u-v} = 1\\), whatever \\(p\\) and \\(q\\) may be."
+    },
+    {
+      "number": 28,
+      "answer": "D",
+      "value": "\\((p+q)/2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Clear denominators: r[(2x+q) + (2x+p)] = (2x+p)(2x+q), i.e. r(4x + p + q) = 4x^2 + 2x(p+q) + pq. Rearranged, 4x^2 + [2(p+q) - 4r]x + [pq - r(p+q)] = 0. Sum of roots = -[2(p+q) - 4r]/4, and setting that to zero gives 4r = 2(p+q), so r = (p+q)/2. Verified numerically for five random (p,q) pairs: with r set to (p+q)/2 the resulting quadratic had roots summing to zero to machine precision, and each root satisfied the ORIGINAL equation (residuals of order 1e-14), so no spurious root was introduced by the clearing step. Option B (p+q) is the common slip of forgetting the factor 2 carried by the 2x terms.",
+      "solution": "Clearing the denominators gives \\(r\\left[(2x+q)+(2x+p)\\right] = (2x+p)(2x+q)\\), that is \\(r(4x+p+q) = 4x^{2}+2x(p+q)+pq\\). Rearranged, this is the quadratic \\(4x^{2} + \\left[2(p+q)-4r\\right]x + \\left[pq - r(p+q)\\right] = 0\\). Its sum of roots is \\(-\\dfrac{2(p+q)-4r}{4}\\), and setting that equal to zero gives \\(4r = 2(p+q)\\), so \\(r = \\dfrac{p+q}{2}\\)."
+    },
+    {
+      "number": 29,
+      "answer": "A",
+      "value": "\\(0\\)",
+      "confidence": "HIGH",
+      "reasoning": "Since alpha is a root, a alpha^2 + b alpha + c = 0. Multiplying through by alpha^(n-1) gives a alpha^(n+1) + b alpha^n + c alpha^(n-1) = 0, and the same holds with beta. Adding the two and grouping by power yields a p_(n+1) + b p_n + c p_(n-1) = 0. The condition n > 1 is what makes alpha^(n-1) a legitimate multiplication even when a root is zero. Verified numerically for a = 2, b = -3, c = 5 at n = 2, 3, 5, 8 (complex roots): every value came back 0 to within 3e-14.",
+      "solution": "Because \\(\\alpha\\) is a root, \\(a\\alpha^{2}+b\\alpha+c = 0\\). Multiplying this through by \\(\\alpha^{\\,n-1}\\) gives \\(a\\alpha^{\\,n+1}+b\\alpha^{\\,n}+c\\alpha^{\\,n-1} = 0\\), and the identical step with \\(\\beta\\) gives \\(a\\beta^{\\,n+1}+b\\beta^{\\,n}+c\\beta^{\\,n-1} = 0\\). Adding the two and collecting like powers, \\(a\\left(\\alpha^{\\,n+1}+\\beta^{\\,n+1}\\right)+b\\left(\\alpha^{\\,n}+\\beta^{\\,n}\\right)+c\\left(\\alpha^{\\,n-1}+\\beta^{\\,n-1}\\right) = 0\\), which is exactly \\(ap_{n+1}+bp_{n}+cp_{n-1} = 0\\)."
+    },
+    {
+      "number": 30,
+      "answer": "D",
+      "value": "\\(8q^3\\)",
+      "confidence": "HIGH",
+      "reasoning": "p, q, r in AP gives 2q = p + r. The printed expression is precisely the expansion of a cube: (p+r)^3 = p^3 + r^3 + 3pr(p+r). So p^3 + 3pr(p+r) + r^3 = (p+r)^3 = (2q)^3 = 8q^3. Verified numerically for five random APs including negative and decreasing ones: the expression matched 8q^3 to 8 d.p. every time, while q^3, 2q^3 and 3q^3 did not. The distractor 2q^3 comes from mistakenly writing (p+r)^3 as 2q^3 rather than cubing the 2.",
+      "solution": "Since \\(p, q, r\\) are in AP, the middle term is the average of the outer two, so \\(2q = p+r\\). The given expression is exactly the expansion of a cube, because \\((p+r)^{3} = p^{3}+r^{3}+3pr(p+r)\\). Hence \\(p^{3}+3pr(p+r)+r^{3} = (p+r)^{3} = (2q)^{3} = 8q^{3}\\)."
+    },
+    {
+      "number": 31,
+      "answer": "C",
+      "value": "HP (harmonic progression)",
+      "confidence": "HIGH",
+      "reasoning": "Clearing denominators: b[(b-c)+(b-a)] = 2(b-a)(b-c) gives 2b^2 - ab - bc = 2b^2 - 2ab - 2bc + 2ac, i.e. ab + bc = 2ac, so b = 2ac/(a+c) — exactly the harmonic mean of a and c. Hence a, b, c are in HP. sympy's solve for b returns the single root 2*a*c/(a+c). Spot-checked with (a,c) = (2,6) giving b = 3: 1/(3-2) + 1/(3-6) = 2/3 = 2/b, and 1/2, 1/3, 1/6 is an AP. Also checked (1,3), (5,20) and (-4,7). No other option survives: b is neither (a+c)/2 nor sqrt(ac) in general.",
+      "solution": "Combining the left-hand side gives \\(\\frac{2b-a-c}{(b-a)(b-c)}=\\frac{2}{b}\\). Cross-multiplying and cancelling \\(2b^2\\) leaves \\(ab+bc=2ac\\), that is \\(b=\\frac{2ac}{a+c}\\). Since \\(b\\) is then the harmonic mean of \\(a\\) and \\(c\\), the three numbers are in harmonic progression."
+    },
+    {
+      "number": 32,
+      "answer": "A",
+      "value": "\\(5R = 3S\\)",
+      "confidence": "HIGH",
+      "reasoning": "With first term a and common difference d, Q = 3P gives 2(2a + (2n-1)d) = 3(2a + (n-1)d), which reduces to 2a = (n+1)d. Substituting: R = (3n/2)(2a + (3n-1)d) = 6n^2 d and S = (4n/2)(2a + (4n-1)d) = 10n^2 d, so R/S = 3/5. sympy: 5R - 3S = 0 exactly, while 6R - 5S = -14n^2 d, 8R - 7S = -22n^2 d and 9R - 8S = -26n^2 d are all non-zero, so the other three options fail identically.",
+      "solution": "Writing the sums with first term \\(a\\) and common difference \\(d\\), the condition \\(Q=3P\\) reduces to \\(2a=(n+1)d\\). Substituting this into \\(R=\\frac{3n}{2}\\left(2a+(3n-1)d\\right)\\) and \\(S=\\frac{4n}{2}\\left(2a+(4n-1)d\\right)\\) gives \\(R=6n^2d\\) and \\(S=10n^2d\\). Hence \\(\\frac{R}{S}=\\frac{3}{5}\\), which is the relation \\(5R=3S\\)."
+    },
+    {
+      "number": 33,
+      "answer": "B",
+      "value": "\\(18\\sqrt{3}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The 3rd, 5th and 7th terms of a GP are themselves in GP (common ratio r^2), so T5^2 = T3*T7: (x^2+2)^2 = x(x^3+10), which collapses to 2x^2 - 5x + 2 = 0 with roots 2 and 1/2; x > 1 forces x = 2. Then T3 = 2, T5 = 6, T7 = 18, so r^2 = 3 and a = 2/3, giving T8 = a*r^7 = 18*sqrt(3) (sympy). NOTE: r = -sqrt(3) is algebraically admissible and would give -18*sqrt(3), which is not printed, so only the positive-ratio value is reachable among the options and no alternative option is defensible.",
+      "solution": "In a geometric progression the 3rd, 5th and 7th terms are themselves in geometric progression, so \\((x^2+2)^2=x(x^3+10)\\). This simplifies to \\(2x^2-5x+2=0\\), and \\(x>1\\) gives \\(x=2\\). The three terms are then \\(2\\), \\(6\\) and \\(18\\), so \\(r^2=3\\) and the 8th term is \\(18r=18\\sqrt{3}\\)."
+    },
+    {
+      "number": 34,
+      "answer": "C",
+      "value": "8",
+      "confidence": "HIGH",
+      "reasoning": "(1+i) = sqrt(2) * exp(i*pi/4), so (1+i)^n = 2^(n/2) * exp(i*n*pi/4). Requiring the value 16 (real, positive) forces 2^(n/2) = 16, i.e. n = 8, and then exp(i*2*pi) = 1, which is consistent. Direct check: (1+i)^8 = ((1+i)^2)^4 = (2i)^4 = 16. A loop over n = 1..19 in sympy finds n = 8 as the only solution, hence the least. n = 2 gives 2i, n = 4 gives -4, n = 16 gives 256.",
+      "solution": "Since \\((1+i)^2=2i\\), an even power gives \\((1+i)^n=(2i)^{n/2}\\). Taking modulus, \\(\\left|1+i\\right|^n=\\left(\\sqrt{2}\\right)^n=16\\) forces \\(n=8\\), and then \\((1+i)^8=(2i)^4=16i^4=16\\), which checks out. So the least value is \\(8\\)."
+    },
+    {
+      "number": 35,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "The exponents are the perfect squares 1^2, 2^2, ..., 24^2 (since 576 = 24^2), so the product is i^S with S = sum of k^2 for k = 1..24 = 24*25*49/6 = 4900. 4900 = 4*1225 is exactly divisible by 4, so i^4900 = 1 (confirmed by sympy). The only way to land on another option would be a different exponent count, and 576 pins the upper limit at k = 24.",
+      "solution": "The exponents are the perfect squares \\(1^2,2^2,\\ldots,24^2\\), since \\(576=24^2\\). The product is therefore \\(i^{\\,S}\\) where \\(S=\\sum_{k=1}^{24}k^2=\\frac{24\\cdot 25\\cdot 49}{6}=4900\\). As \\(4900\\) is a multiple of \\(4\\), the value is \\(i^{4900}=1\\)."
+    },
+    {
+      "number": 36,
+      "answer": "D",
+      "value": "Neither statement is correct",
+      "confidence": "HIGH",
+      "reasoning": "The condition is |z + li| = |z - li|, i.e. x^2 + (y+l)^2 = x^2 + (y-l)^2, which sympy reduces to 4*l*y = 0; since l > 0 this forces y = 0. So z lies on the REAL axis. Statement I (z on y = x) is false — the only point common to y = 0 and y = x is the origin, and z = 0 is one admissible value but not the locus. Statement II is false too: with y = 0 the amplitude is 0 (x > 0) or pi (x < 0), never pi/4. Both fail, so the code is 'Neither'.",
+      "solution": "The condition means \\(\\left|z+\\lambda i\\right|=\\left|z-\\lambda i\\right|\\), so \\(x^2+(y+\\lambda)^2=x^2+(y-\\lambda)^2\\), which reduces to \\(4\\lambda y=0\\). As \\(\\lambda>0\\), this forces \\(y=0\\), so \\(z\\) lies on the real axis and not on the line \\(y=x\\). Its amplitude is then \\(0\\) or \\(\\pi\\), never \\(\\frac{\\pi}{4}\\), so neither statement is correct."
+    },
+    {
+      "number": 37,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "Apply R2 -> R2 - R1 and R3 -> R3 - R2. The rows become (1/a, bc, a^3), (1/b, ca, b^3), (1/c, ab, c^3). Now multiply row 1 by a, row 2 by b, row 3 by c (scaling the determinant by abc, non-zero since 1/a, 1/b, 1/c appear in the stem): the rows are (1, abc, a^4), (1, abc, b^4), (1, abc, c^4), whose first two columns are proportional (C2 = abc*C1), so the determinant is 0. sympy returns det = 0 symbolically and at four random integer substitutions for (a,b,c). Options C and D are the standard factorisations of unrelated determinants and are non-zero in general.",
+      "solution": "Subtracting the first row from the second and the second from the third turns the rows into \\(\\left(\\frac{1}{a},\\,bc,\\,a^3\\right)\\), \\(\\left(\\frac{1}{b},\\,ca,\\,b^3\\right)\\) and \\(\\left(\\frac{1}{c},\\,ab,\\,c^3\\right)\\). Multiplying these rows by \\(a\\), \\(b\\) and \\(c\\) respectively makes the first column all \\(1\\) and the second column all \\(abc\\), so those two columns become proportional. A determinant with two proportional columns is \\(0\\)."
+    },
+    {
+      "number": 38,
+      "answer": "D",
+      "value": "\\(p^2 - q^2\\)",
+      "confidence": "HIGH",
+      "reasoning": "The four given quantities are exactly the entries of the matrix product: [a b; c d][e f; g h] = [ae+bg, af+bh; ce+dg, cf+dh] = [p, q; q, p]. Since det(MN) = det(M)det(N), the asked product of determinants equals det[p q; q p] = p^2 - q^2. Numeric check: with a,b,c,d,e,f = 2,3,5,7,11,13 and g,h solved from the two constraints (g = -83/10, h = -97/10), p = -29/10, q = -31/10, det(M)*det(N) = -6/5 and p^2 - q^2 = -6/5.",
+      "solution": "The four given quantities are precisely the entries of the matrix product: \\(\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\begin{pmatrix}e&f\\\\g&h\\end{pmatrix}=\\begin{pmatrix}p&q\\\\q&p\\end{pmatrix}\\). The determinant of a product equals the product of the determinants, so the required value is \\(\\begin{vmatrix}p&q\\\\q&p\\end{vmatrix}=p^2-q^2\\)."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "The three equations say that t = a, t = b and t = c all satisfy z*t^2 + y*t + (x-1) = 0. A quadratic cannot have three DISTINCT roots unless it is identically zero, so z = 0, y = 0, x = 1 and x + y + z = 1. Solved explicitly with (a,b,c) = (2,3,5): sympy returns x = 1, y = 0, z = 0. CAVEAT for the reviewer: 'a != b != c' read literally permits a = c, in which case equations 1 and 3 coincide, the system is underdetermined and x + y + z = 1 + z(a-1)(b-1) is not fixed. The standard reading (all three distinct) is assumed, and only under it does the question have a determinate answer at all.",
+      "solution": "Each equation says that \\(t=a\\), \\(t=b\\) and \\(t=c\\) satisfies \\(zt^2+yt+(x-1)=0\\). A quadratic cannot have three distinct roots unless every coefficient vanishes, so \\(z=0\\), \\(y=0\\) and \\(x=1\\). Therefore \\(x+y+z=1\\)."
+    },
+    {
+      "number": 40,
+      "answer": "D",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "det(A) = 1 - (-tan(t))(tan(t)) = 1 + tan^2(t) = sec^2(t), and det(B) = 1 - (tan(t))(-tan(t)) = 1 + tan^2(t) = sec^2(t) as well. Hence det(C) = det(A)/det(B) = 1. sympy computes AB^(-1) explicitly and returns det = 1. The distractors sec^2 and sec^4 are what you get by forgetting the inverse or multiplying rather than dividing.",
+      "solution": "Both determinants are the same: \\(\\det A=1+\\tan^2\\theta=\\sec^2\\theta\\) and \\(\\det B=1+\\tan^2\\theta=\\sec^2\\theta\\). Since \\(\\det\\!\\left(AB^{-1}\\right)=\\frac{\\det A}{\\det B}\\), the value is \\(\\frac{\\sec^2\\theta}{\\sec^2\\theta}=1\\)."
+    },
+    {
+      "number": 41,
+      "answer": "B",
+      "value": "\\((1000011100)_2\\), i.e. 540",
+      "confidence": "HIGH",
+      "reasoning": "(11110)_2 = 30, (10100)_2 = 20, (11011)_2 = 27. Factorising: 30 = 2*3*5, 20 = 2^2*5, 27 = 3^3, so LCM = 2^2*3^3*5 = 540 (confirmed by math.gcd chaining). 540 = 512 + 16 + 8 + 4 = (1000011100)_2. The other options decode to 524, 572 and 541, none a multiple of all three.",
+      "solution": "The three numbers are \\((11110)_2=30\\), \\((10100)_2=20\\) and \\((11011)_2=27\\). Factorising, \\(30=2\\cdot3\\cdot5\\), \\(20=2^2\\cdot5\\) and \\(27=3^3\\), so the LCM is \\(2^2\\cdot3^3\\cdot5=540\\). Writing \\(540=512+16+8+4\\) converts it to \\((1000011100)_2\\)."
+    },
+    {
+      "number": 42,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Since (1 + 1/x)^(2n) = (1+x)^(2n) / x^(2n), the product is (1+x)^(4n) * x^(-2n). Its general term is C(4n, k) * x^(k-2n), and k - 2n = 2n gives k = 4n, so the coefficient is C(4n, 4n) = 1. This is also the HIGHEST power present, which is why the answer is the trivial-looking 1. Expanded explicitly for n = 1, 2, 3 — coefficient 1 in every case. Option D fails because the term plainly exists; options B and C are products that do not equal any binomial coefficient here.",
+      "solution": "Since \\(\\left(1+\\frac{1}{x}\\right)^{2n}=\\frac{(1+x)^{2n}}{x^{2n}}\\), the whole product is \\(\\frac{(1+x)^{4n}}{x^{2n}}\\). Its general term is \\(\\binom{4n}{k}x^{k-2n}\\), and \\(k-2n=2n\\) gives \\(k=4n\\). The coefficient is therefore \\(\\binom{4n}{4n}=1\\), which is also the highest power occurring in the expansion."
+    },
+    {
+      "number": 43,
+      "answer": "B",
+      "value": "Only statement II is correct",
+      "confidence": "HIGH",
+      "reasoning": "x^2 + x^(-2) + 2 = (x + 1/x)^2, so the expression is (x + 1/x)^8 (sympy confirms the difference is 0). Its expansion is the sum of C(8,k) x^(8-2k) for k = 0..8, giving 9 distinct terms with powers 8, 6, 4, 2, 0, -2, -4, -6, -8. Statement I (5 terms) is FALSE. The coefficients are 1, 8, 28, 56, 70, 56, 28, 8, 1, whose maximum is C(8,4) = 70, so statement II is TRUE.",
+      "solution": "Note that \\(x^2+x^{-2}+2=\\left(x+\\frac{1}{x}\\right)^2\\), so the expression is \\(\\left(x+\\frac{1}{x}\\right)^8\\). Its expansion runs over the powers \\(x^8,x^6,\\ldots,x^{-8}\\), giving \\(9\\) terms and not \\(5\\), so the first statement is wrong. The coefficients are \\(1,8,28,56,70,56,28,8,1\\), whose largest value is \\(\\binom{8}{4}=70\\), so only the second statement is correct."
+    },
+    {
+      "number": 44,
+      "answer": "B",
+      "value": "Only relation IV is a function",
+      "confidence": "HIGH",
+      "reasoning": "A function from A = {1,3,5} must give EACH element of A exactly one image in B. I: 3 is paired with both 2 and 6 — not a function. II: 3 is paired with both 4 and 2 — not a function. III: {(1,2),(3,6)} leaves 5 with no image — not total, so not a function from A. IV: 1 -> 6, 3 -> 2, 5 -> 2 covers all of A with one image each — a function (two elements sharing the image 2 is fine; that only fails injectivity, which is not asked). Hence IV only.",
+      "solution": "A function from \\(A\\) to \\(B\\) must give every element of \\(A\\) exactly one image. The first relation sends \\(3\\) to both \\(2\\) and \\(6\\), and the second sends \\(3\\) to both \\(4\\) and \\(2\\), so neither qualifies. The third leaves \\(5\\) with no image at all. The fourth assigns \\(1\\to 6\\), \\(3\\to 2\\) and \\(5\\to 2\\), one image each, so it alone is a function — two elements sharing an image is permitted."
+    },
+    {
+      "number": 45,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "x = cos(t) +/- sqrt(cos^2(t) - 1) = cos(t) +/- i*sin(t), so |x| = sqrt(cos^2 t + sin^2 t) = 1. Equivalently, the product of the roots is 1 and the roots are complex conjugates, so each has modulus 1. Checked numerically at t = 0.3, 1.0, 2.5, 0 and pi: |x| = 1 in every case, including the degenerate cos t = +/-1 where x = +/-1. Option A (-1) cannot be a magnitude at all.",
+      "solution": "Solving the quadratic gives \\(x=\\cos\\theta\\pm\\sqrt{\\cos^2\\theta-1}=\\cos\\theta\\pm i\\sin\\theta\\). Its magnitude is therefore \\(\\sqrt{\\cos^2\\theta+\\sin^2\\theta}=1\\). The same follows from the product of the roots being \\(1\\) with the two roots conjugate to each other."
+    },
+    {
+      "number": 46,
+      "answer": "B",
+      "value": "Only statement II is correct",
+      "confidence": "HIGH",
+      "reasoning": "I is FALSE: set membership is not transitive. Counterexample A = {1}, B = {{1}}: then 1 is in A and A is in B, but the only element of B is the set {1}, so 1 is not in B. II is TRUE: it is the contrapositive of the definition of A being a subset of B — if every element of A lies in B, then anything outside B cannot lie in A. So II only.",
+      "solution": "The first statement fails because membership is not transitive: taking \\(A=\\{1\\}\\) and \\(B=\\{\\{1\\}\\}\\) gives \\(1\\in A\\) and \\(A\\in B\\), yet the only element of \\(B\\) is the set \\(\\{1\\}\\), so \\(1\\notin B\\). The second is simply the contrapositive of \\(A\\subset B\\): every element of \\(A\\) lies in \\(B\\), so anything outside \\(B\\) must lie outside \\(A\\). Only the second statement is correct."
+    },
+    {
+      "number": 47,
+      "answer": "C",
+      "value": "110",
+      "confidence": "HIGH",
+      "reasoning": "n(X union Y) is at most 500, so n(X intersect Y) = n(X) + n(Y) - n(X union Y) >= 370 + 240 - 500 = 110. Equality holds when every one of the 500 surveyed prefers at least one product, which is an attainable configuration (370 + 240 - 110 = 500), so 110 is achieved and is the least. Option D is wrong because the bound is forced by the totals alone; 90 and 100 are below the feasible minimum.",
+      "solution": "Since \\(n(X\\cup Y)\\le 500\\), we get \\(n(X\\cap Y)=n(X)+n(Y)-n(X\\cup Y)\\ge 370+240-500=110\\). The value \\(110\\) is actually attained, because \\(370+240-110=500\\) means every consumer surveyed prefers at least one of the two products. So at least \\(110\\) must have preferred both."
+    },
+    {
+      "number": 48,
+      "answer": "A",
+      "value": "Only statement I is correct",
+      "confidence": "HIGH",
+      "reasoning": "|A x A| = 25 forces |A| = 5. The listed pairs (3,1), (6,2), (5,3) put 3, 1, 6, 2 and 5 into A — five DISTINCT elements, which already exhausts A. So A = {1,2,3,5,6} is fully determined and every one of the 25 elements of A x A can be written down: statement I is TRUE. Statement II is a conjunction: (5,5) is indeed in A x A, but 1 and 3 both lie in A so (1,3) IS in A x A, contradicting the second half. Hence II is FALSE and the code is 'I only'.",
+      "solution": "From \\(|A\\times A|=25\\) we get \\(|A|=5\\), and the three listed pairs already force \\(3,1,6,2,5\\) into \\(A\\). These are five distinct elements, so \\(A=\\{1,2,3,5,6\\}\\) exactly and all \\(25\\) elements of \\(A\\times A\\) can be listed — the first statement holds. In the second, \\((5,5)\\) does belong to \\(A\\times A\\), but so does \\((1,3)\\), since both \\(1\\) and \\(3\\) lie in \\(A\\); that statement therefore fails."
+    },
+    {
+      "number": 49,
+      "answer": "A",
+      "value": "Only statement I is correct",
+      "confidence": "HIGH",
+      "reasoning": "For a relation R contained in A x B: I is the standard definition of codomain — TRUE. II is FALSE: the range is the set of second elements that actually occur, a subset of B that need not exhaust it (R = {(1,2)} into B = {2,4} has range {2}). III is FALSE for the same reason on the other side: the domain is the set of first elements that actually occur, and R = {(1,2)} from A = {1,3} has domain {1}, a proper subset of A. So I only.",
+      "solution": "For a relation \\(R\\subseteq A\\times B\\), the set \\(B\\) is by definition the codomain, so the first statement is correct. The range is only the set of second elements that actually occur, so it is a subset of the codomain and need not equal it. Likewise the domain is the set of first elements that actually occur, and \\(R=\\{(1,2)\\}\\) with \\(A=\\{1,3\\}\\) has domain \\(\\{1\\}\\), a proper subset of \\(A\\). So only the first statement is correct."
+    },
+    {
+      "number": 50,
+      "answer": "C",
+      "value": "Both the first and second quadrants only",
+      "confidence": "HIGH",
+      "reasoning": "The system is y >= x - 3 and y >= 5 - x, i.e. the wedge lying above both lines with vertex at their intersection (4,1). Third quadrant: x < 0 and y < 0 give x + y < 0, which cannot be at least 5 — impossible. Fourth quadrant: y < 0 forces x >= 5 - y > 5 from the second inequality and x <= 3 + y < 3 from the first — contradiction. First quadrant is met at (4,2) and second at (-1,10). A 400,000-point uniform sample over [-60,60]^2 landed 54,591 hits in quadrant I, 41,640 in quadrant II and exactly 0 in quadrants III and IV.",
+      "solution": "The inequalities say \\(y\\ge x-3\\) and \\(y\\ge 5-x\\), so the region is the wedge above both lines with vertex at \\((4,1)\\). In the third quadrant \\(x+y<0\\), which can never reach \\(5\\). In the fourth quadrant \\(y<0\\) forces \\(x\\ge 5-y>5\\) from one inequality and \\(x\\le 3+y<3\\) from the other, a contradiction. Points such as \\((4,2)\\) and \\((-1,10)\\) show the first and second quadrants are both occupied, so the solution lies in those two only."
+    },
+    {
+      "number": 51,
+      "answer": "A",
+      "value": "\\(\\left(\\sqrt{2},\\,0\\right)\\)",
+      "confidence": "HIGH",
+      "reasoning": "The two lines meet at the origin and are perpendicular, so a circle touching both has its centre on a bisector, i.e. on a coordinate axis; write it (h,0). The foot of the perpendicular from (h,0) to x - y = 0 is (h/2, h/2), at distance |h|/sqrt(2) from the origin. Setting that unit distance to 1 gives h = sqrt(2); the radius is then sqrt(2)/sqrt(2) = 1 and the same holds for x + y = 0 by symmetry. Checked all four options: (sqrt2,0) gives tangency distances 1 and 1; (sqrt3,0) gives sqrt(6)/2 = 1.2247; (1,0) gives 0.7071; and (1,1) LIES ON the line x - y = 0, so its distance to that line is 0 and no tangency is possible.",
+      "solution": "The two lines pass through the origin, so the centre of a circle touching both lies on one of their bisectors, that is on a coordinate axis — say \\((h,0)\\). The foot of the perpendicular from \\((h,0)\\) to \\(x-y=0\\) is \\(\\left(\\frac{h}{2},\\frac{h}{2}\\right)\\), whose distance from the origin is \\(\\frac{|h|}{\\sqrt{2}}\\). Setting this equal to \\(1\\) gives \\(h=\\sqrt{2}\\), and the radius is then \\(\\frac{\\sqrt{2}}{\\sqrt{2}}=1\\). So the centre may be at \\(\\left(\\sqrt{2},0\\right)\\)."
+    },
+    {
+      "number": 52,
+      "answer": "B",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Setting y = 0 gives x = sin(2t)/sin(t) = 2cos(t), and setting x = 0 gives y = sin(2t)/cos(t) = 2sin(t). So P = (2cos t, 0) and Q = (0, 2sin t), and M = (cos t, sin t). Then |OM| = sqrt(cos^2 t + sin^2 t) = 1, independent of the angle (sympy simplifies it to 1). Options C and D are the sums/differences that would appear if the intercepts were mishandled; neither is constant.",
+      "solution": "Setting \\(y=0\\) gives \\(x=\\frac{\\sin 2\\theta}{\\sin\\theta}=2\\cos\\theta\\), and setting \\(x=0\\) gives \\(y=\\frac{\\sin 2\\theta}{\\cos\\theta}=2\\sin\\theta\\). So the intercepts are \\(P\\left(2\\cos\\theta,0\\right)\\) and \\(Q\\left(0,2\\sin\\theta\\right)\\), whose midpoint is \\(M\\left(\\cos\\theta,\\sin\\theta\\right)\\). Its distance from the origin is \\(\\sqrt{\\cos^2\\theta+\\sin^2\\theta}=1\\), whatever the angle."
+    },
+    {
+      "number": 53,
+      "answer": "D",
+      "value": "\\(a + \\frac{cx}{a}\\)",
+      "confidence": "HIGH",
+      "reasoning": "With e = c/a and b^2 = a^2(1 - e^2), a point on the ellipse has y^2 = b^2(1 - x^2/a^2). Then PF^2 = (x + c)^2 + y^2, and sympy factors this exactly as (a + e*x)^2, so PF = a + e*x = a + c*x/a for the focus at (-c, 0). Numeric check with a = 5, c = 3: at x = 2, PF = 31/5 = a + cx/a while a - cx/a = 19/5 (that is the distance to the OTHER focus (c,0)); at x = -5, PF = 2 = a + cx/a. Option A is the focal radius for the focus at (+c,0), the natural trap.",
+      "solution": "Write \\(e=\\frac{c}{a}\\) and \\(b^2=a^2\\left(1-e^2\\right)\\), so a point on the ellipse satisfies \\(y^2=b^2\\left(1-\\frac{x^2}{a^2}\\right)\\). Then \\(PF^2=(x+c)^2+y^2\\) simplifies exactly to \\(\\left(a+ex\\right)^2\\). Hence \\(PF=a+ex=a+\\frac{cx}{a}\\); the expression \\(a-\\frac{cx}{a}\\) is the distance to the other focus."
+    },
+    {
+      "number": 54,
+      "answer": "C",
+      "value": "\\(3x - 6y - 5 = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "Dividing 6x - 12y + 1 = 0 by 3 gives 2x - 4y + 1/3 = 0, parallel to 2x - 4y - 7 = 0. The equidistant line is midway, so its constant is the average of -7 and 1/3, namely -10/3: 2x - 4y - 10/3 = 0, i.e. 3x - 6y - 5 = 0. Verified by distances: the point (5/3, 0) on this line is 11*sqrt(5)/30 from BOTH given lines. The other options fail the same test — (7/4,0) on A gives 7sqrt5/20 vs 23sqrt5/60; (19/12,0) on B gives 23sqrt5/60 vs 7sqrt5/20 (B is the mirror-image error, averaging with the wrong normalisation); (3/4,0) on D gives 11sqrt5/20 vs 11sqrt5/60.",
+      "solution": "Dividing \\(6x-12y+1=0\\) by \\(3\\) gives \\(2x-4y+\\frac{1}{3}=0\\), which is parallel to \\(2x-4y-7=0\\). A line equidistant from two parallel lines runs midway between them, so its constant term is the average \\(\\frac{-7+\\frac{1}{3}}{2}=-\\frac{10}{3}\\), giving \\(2x-4y-\\frac{10}{3}=0\\). Multiplying through by \\(\\frac{3}{2}\\) puts this as \\(3x-6y-5=0\\)."
+    },
+    {
+      "number": 55,
+      "answer": "C",
+      "value": "\\(\\frac{13}{5}\\) units",
+      "confidence": "HIGH",
+      "reasoning": "Reflect P(1,2) in the x-axis to get P'(1,-2). The reflected ray produced backwards passes through P', so N is where the line P'Q meets the x-axis. That line has slope (3 - (-2))/(5 - 1) = 5/4, and y = 0 gives x = 1 + 8/5 = 13/5. Hence ON = 13/5. Consistency check: the incident segment PN has slope (2-0)/(1 - 13/5) = -5/4 and the reflected segment NQ has slope (3-0)/(5 - 13/5) = +5/4, equal and opposite as reflection in the x-axis requires. Option B (14/5) is what you get by reflecting Q instead and mis-solving.",
+      "solution": "Reflect \\(P(1,2)\\) in the \\(x\\)-axis to get \\(P'(1,-2)\\); the reflected ray produced backwards passes through \\(P'\\), so \\(N\\) is where \\(P'Q\\) meets the \\(x\\)-axis. The line through \\((1,-2)\\) and \\((5,3)\\) has slope \\(\\frac{5}{4}\\), and putting \\(y=0\\) gives \\(x=1+\\frac{8}{5}=\\frac{13}{5}\\). So \\(N\\left(\\frac{13}{5},0\\right)\\) lies \\(\\frac{13}{5}\\) units from the origin, and the incident and reflected slopes \\(-\\frac{5}{4}\\) and \\(\\frac{5}{4}\\) confirm equal angles."
+    },
+    {
+      "number": 56,
+      "answer": "A",
+      "value": "\\(3x - 5y - 15 = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "p and q are the roots of t^2 - 2t - 15 = 0, namely 5 and -3. The condition p > q fixes p = 5 (x-intercept) and q = -3 (y-intercept). The intercept form x/5 + y/(-3) = 1, multiplied by 15, gives 3x - 5y = 15, i.e. 3x - 5y - 15 = 0. Option C is the same pair of roots with p and q swapped (which violates p > q), and B/D have the wrong sign.",
+      "solution": "The two intercepts are the roots of \\(t^2-2t-15=0\\), namely \\(5\\) and \\(-3\\), and \\(p>q\\) fixes \\(p=5\\) and \\(q=-3\\). The intercept form is then \\(\\frac{x}{5}+\\frac{y}{-3}=1\\). Multiplying through by \\(15\\) gives \\(3x-5y=15\\), that is \\(3x-5y-15=0\\)."
+    },
+    {
+      "number": 57,
+      "answer": "B",
+      "value": "\\(x + y - 3 = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "Take P = (p, 0) on the positive x-axis and Q = (0, q) on the positive y-axis. The point dividing PQ in the ratio 1:2 (measured from P) is ((1*0 + 2p)/3, (1*q + 2*0)/3) = (2p/3, q/3). Equating to N(2,1) gives p = 3 and q = 3, so the line is x/3 + y/3 = 1, i.e. x + y - 3 = 0. Direct check: P(3,0) + (1/3)(Q - P) = (2,1). The opposite convention (dividing from Q) gives p = 6, q = 3/2 and the line x + 4y = 6, which is NOT among the options, so the intended reading is unambiguous here.",
+      "solution": "Let \\(P(p,0)\\) and \\(Q(0,q)\\) with \\(p,q>0\\). The point dividing \\(PQ\\) in the ratio \\(1:2\\) is \\(\\left(\\frac{2p}{3},\\frac{q}{3}\\right)\\), and equating this to \\(N(2,1)\\) gives \\(p=3\\) and \\(q=3\\). The line is therefore \\(\\frac{x}{3}+\\frac{y}{3}=1\\), that is \\(x+y-3=0\\)."
+    },
+    {
+      "number": 58,
+      "answer": "B",
+      "value": "\\(x - y = 0\\)",
+      "confidence": "HIGH",
+      "reasoning": "The vertex A is where y = 0 meets x = 0, so A = (0,0). B lies on y = 0 and on the diagonal x + y - 4 = 0, giving B = (4,0); D lies on x = 0 and the same diagonal, giving D = (0,4). Sides AB = AD = 4 and they are perpendicular, so ABCD really is a square and C = B + D - A = (4,4). The other diagonal AC joins (0,0) to (4,4), so its equation is y = x, i.e. x - y = 0. Options C and D are the two lines of slope 1 through (4,0) and (0,4), which are SIDES-parallel offsets, not the diagonal through the origin.",
+      "solution": "The vertex common to \\(AB\\) and \\(AD\\) is where \\(y=0\\) meets \\(x=0\\), namely \\((0,0)\\). The diagonal \\(x+y-4=0\\) meets \\(y=0\\) at \\((4,0)\\) and meets \\(x=0\\) at \\((0,4)\\), so those are the two adjacent vertices; both sides have length \\(4\\) and are perpendicular, confirming a square. The remaining vertex is \\((4,0)+(0,4)-(0,0)=(4,4)\\), so the other diagonal joins \\((0,0)\\) to \\((4,4)\\) and has equation \\(x-y=0\\)."
+    },
+    {
+      "number": 59,
+      "answer": "A",
+      "value": "\\(y = 10k\\)",
+      "confidence": "HIGH",
+      "reasoning": "Place the fixed vertices at (0,0) and (10,0) and let C = (x, y). Dropping the perpendicular from C to the x-axis, cot A = x/y and cot B = (10 - x)/y, so cot A + cot B = 10/y — independent of x. Setting this equal to 1/k gives y = 10k. sympy, using cot = (u.w)/(u x w) on the actual vertex vectors, returns the same sum 10/y and solves the locus to y = 10k. NOTE: if C is allowed below the axis the locus is strictly |y| = 10k, i.e. two lines; the printed option gives the standard single-branch form.",
+      "solution": "Place the fixed vertices at \\((0,0)\\) and \\((10,0)\\) and let \\(C=(x,y)\\). Dropping the perpendicular from \\(C\\) to the \\(x\\)-axis gives \\(\\cot A=\\frac{x}{y}\\) and \\(\\cot B=\\frac{10-x}{y}\\), so \\(\\cot A+\\cot B=\\frac{10}{y}\\), which does not depend on \\(x\\). The given condition therefore reads \\(\\frac{10}{y}=\\frac{1}{k}\\), so the locus is the line \\(y=10k\\), parallel to \\(AB\\) at distance \\(10k\\) from it."
+    },
+    {
+      "number": 60,
+      "answer": "C",
+      "value": "\\(e = 1\\)",
+      "confidence": "HIGH",
+      "reasoning": "4x^2 + y = 0 rearranges to x^2 = -y/4, a genuine parabola with vertex at the origin opening downwards (4a = 1/4). Every parabola has eccentricity exactly 1 by definition, since each of its points is equidistant from the focus and the directrix. The stem itself calls the curve a parabola, and the equation confirms it, so no other band is defensible.",
+      "solution": "The equation \\(4x^2+y=0\\) rearranges to \\(x^2=-\\frac{y}{4}\\), a parabola with vertex at the origin opening downwards. By definition every point of a parabola is equidistant from its focus and its directrix, so the ratio of those two distances is \\(1\\). Hence \\(e=1\\)."
+    },
+    {
+      "number": 61,
+      "answer": "B",
+      "value": "84",
+      "confidence": "HIGH",
+      "reasoning": "Midpoints: D = midpoint(BC) = (0,3,2), E = midpoint(CA) = (1,0,2), F = midpoint(AB) = (1,3,0). AD^2 = 4+9+4 = 17, BE^2 = 1+36+4 = 41, CF^2 = 1+9+16 = 26, total 84. Independent second route: the identity AD^2+BE^2+CF^2 = (3/4)(AB^2+BC^2+CA^2) = (3/4)(40+52+20) = (3/4)(112) = 84. Both routes agree exactly, computed in exact integer arithmetic. No other option is within reach of either route.",
+      "solution": "The midpoints of the opposite sides are \\(D(0,3,2)\\), \\(E(1,0,2)\\) and \\(F(1,3,0)\\). Squaring each median gives \\(AD^2=4+9+4=17\\), \\(BE^2=1+36+4=41\\) and \\(CF^2=1+9+16=26\\), so the total is \\(84\\). The standard relation \\(AD^2+BE^2+CF^2=\\tfrac{3}{4}\\left(AB^2+BC^2+CA^2\\right)=\\tfrac{3}{4}(40+52+20)\\) gives the same value."
+    },
+    {
+      "number": 62,
+      "answer": "C",
+      "value": "Both I and II are correct",
+      "confidence": "HIGH",
+      "reasoning": "beta = 90 - alpha so cos beta = sin alpha, hence cos^2 alpha + cos^2 beta = 1 and the direction-cosine identity forces cos^2 gamma = 0, i.e. gamma = 90 and cos gamma = 0. Domain: alpha and beta are direction angles in [0,180] and beta = 90 - alpha, so alpha lies in [0,90]. On that closed interval cos alpha + sin alpha = sqrt(2) sin(alpha+45), with alpha+45 in [45,135], so the expression ranges over [1, sqrt(2)]. Max = sqrt(2) at alpha = 45 (direction cosines (1/sqrt2, 1/sqrt2, 0)) -> statement I true. Because cos gamma = 0 the second sum is the SAME expression, so its minimum is 1, attained at alpha = 0 (the x-axis, dc (1,0,0)) and alpha = 90 (the y-axis, dc (0,1,0)) -> statement II true. Maximum/minimum over [0, pi/2] confirmed symbolically as sqrt(2) and 1, and the three endpoint configurations were checked to satisfy the sum-of-squares identity. If a key disagrees the alternative is 'I only', which is what someone gets by refusing the degenerate endpoint cases where the line lies along a coordinate axis; but a coordinate axis is an ordinary line satisfying alpha+beta = 90, so the minimum is genuinely attained and both statements stand.",
+      "solution": "Since \\(\\beta=90^\\circ-\\alpha\\) we have \\(\\cos\\beta=\\sin\\alpha\\), so \\(\\cos^2\\alpha+\\cos^2\\beta=1\\) and the direction-cosine identity forces \\(\\cos\\gamma=0\\). Hence \\(\\cos\\alpha+\\cos\\beta=\\sqrt{2}\\,\\sin\\!\\left(\\alpha+45^\\circ\\right)\\), whose greatest value is \\(\\sqrt{2}\\), reached at \\(\\alpha=45^\\circ\\). Because \\(\\cos\\gamma=0\\), the second sum is the same expression, and its least value is \\(1\\), reached when the line lies along the \\(x\\)-axis or the \\(y\\)-axis. Both statements are therefore correct."
+    },
+    {
+      "number": 63,
+      "answer": "A",
+      "value": "9 square units",
+      "confidence": "HIGH",
+      "reasoning": "Edge vectors from (0,7,10): u = (-1,-1,-4), v = (-4,2,-4). u x v = (12, 12, -6), |u x v| = sqrt(144+144+36) = sqrt(324) = 18. Area = 18/2 = 9. Exact integer arithmetic throughout, confirmed symbolically. The distractors 12, 15, 18 include the full cross-product magnitude 18, which is the classic forgot-to-halve trap.",
+      "solution": "Taking the first vertex as base point, the two edge vectors are \\((-1,-1,-4)\\) and \\((-4,2,-4)\\). Their cross product is \\((12,12,-6)\\), whose magnitude is \\(\\sqrt{144+144+36}=18\\). The area of the triangle is half of this, namely \\(9\\) square units."
+    },
+    {
+      "number": 64,
+      "answer": "B",
+      "value": "\\(x-2y+3z-28=0\\)",
+      "confidence": "HIGH",
+      "reasoning": "The plane is perpendicular to OP, so the normal is OP = (2,-4,6). Plane through P: 2x - 4y + 6z = OP.OP = 4+16+36 = 56, i.e. 2x - 4y + 6z - 56 = 0, which on dividing by 2 is x - 2y + 3z - 28 = 0. Option D is the same left-hand side with 55 instead of 56 and is a pure arithmetic distractor; option A flips the sign of y; option C flips the sign of the constant.",
+      "solution": "The plane is perpendicular to \\(OP\\), so \\(\\vec{OP}=(2,-4,6)\\) serves as its normal. A plane with that normal passing through \\(P(2,-4,6)\\) satisfies \\(2x-4y+6z=2^2+(-4)^2+6^2=56\\). Dividing throughout by \\(2\\) gives \\(x-2y+3z-28=0\\)."
+    },
+    {
+      "number": 65,
+      "answer": "B",
+      "value": "3",
+      "confidence": "HIGH",
+      "reasoning": "The segment joining a point to its mirror image is along the normal, so (A,B,C) is parallel to P'-P = (-3-1, 5-3, 2-4) = (-4,2,-2). Write (A,B,C) = s(-4,2,-2); then A+B+C = -4s = 2 gives s = -1/2 and (A,B,C) = (2,-1,1). The midpoint (-1,4,3) lies on the plane: 2(-1) + (-1)(4) + 1(3) + D = 0 -> D = 3. Verified by reflecting P(1,3,4) in 2x - y + z + 3 = 0: numerator 2-3+4+3 = 6, image = P - 2(6/6)(2,-1,1) = (-3,5,2), exactly the stated image. Option D ('cannot be determined') is the designed trap and is wrong here precisely because the components of P'-P sum to -4, which is non-zero, so the constraint A+B+C = 2 fixes the scale uniquely; had they summed to zero the constraint would have been inconsistent and D really would have been indeterminate.",
+      "solution": "The segment joining a point to its image is along the normal, so the normal is parallel to \\((-3-1,\\,5-3,\\,2-4)=(-4,2,-2)\\). Writing the normal as \\(s(-4,2,-2)\\), the condition \\(A+B+C=2\\) gives \\(-4s=2\\), so \\(s=-\\tfrac{1}{2}\\) and the normal is \\((2,-1,1)\\). The midpoint \\((-1,4,3)\\) lies on the plane, so \\(2(-1)-4+3+D=0\\), giving \\(D=3\\). The data is sufficient because the components of the normal direction do not add up to zero, so the scaling condition pins the plane down completely."
+    },
+    {
+      "number": 66,
+      "answer": "C",
+      "value": "Three (expressions III, IV and V)",
+      "confidence": "MED",
+      "reasoning": "The stem explicitly states that '.' is the DOT PRODUCT and 'x' is the CROSS PRODUCT of vectors, which is what settles the question. I: (a x b).(c x d) is vector.vector = scalar, well-defined. II: (a x b) x (c x d) is vector x vector = vector, well-defined. III: (a.b).(c.d) is a dot product of two SCALARS, and a dot product needs two vectors, so it is not well-defined. IV: (a.b) x (c.d) is a cross product of two scalars, not defined. V: {(a x b).c} x d is a cross product of a SCALAR with a vector, not defined. So three of the five fail. RUNNER-UP: option 'Two', which is what you get by reading III as ordinary multiplication of two real numbers and counting only IV and V. That reading is exactly what the stem's clarifying sentence exists to exclude - if III were meant to be legal, that sentence would be pointless - but it is a common way to set this question and the examiner's own intent is the only variable here, so this is marked MED rather than HIGH.",
+      "solution": "Both \\(\\vec{a}\\times\\vec{b}\\) and \\(\\vec{c}\\times\\vec{d}\\) are vectors, so their dot product and their cross product are both meaningful, and the first two expressions are fine. But \\(\\vec{a}\\cdot\\vec{b}\\) and \\(\\vec{c}\\cdot\\vec{d}\\) are scalars, and neither a dot product nor a cross product is defined between two scalars, so the third and fourth expressions fail. In the fifth, \\(\\{(\\vec{a}\\times\\vec{b})\\cdot\\vec{c}\\}\\) is a scalar and a cross product of a scalar with a vector is again undefined. Three of the five are therefore not well-defined."
+    },
+    {
+      "number": 67,
+      "answer": "B",
+      "value": "2",
+      "confidence": "HIGH",
+      "reasoning": "Scalar projection of a on b is (a.b)/|b| = (2L - 1 + 2L)/sqrt(4 + 1 + L^2) = (4L - 1)/sqrt(5 + L^2), where L is lambda. Setting this equal to 7/3 and clearing the radical gives 144L^2 - 72L + 9 = 49(5 + L^2), i.e. 95L^2 - 72L - 236 = 0, with discriminant 94864 = 308^2 and roots L = 2 and L = -118/95. The second is extraneous: it makes 12L - 3 negative while 7*sqrt(5+L^2) is positive. Substituting L = 2 back gives (8-1)/sqrt(9) = 7/3 exactly. Symbolic solve over the reals returns the single root 2, so no other listed value works.",
+      "solution": "The scalar projection is \\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{\\left|\\vec{b}\\right|}=\\dfrac{4\\lambda-1}{\\sqrt{5+\\lambda^{2}}}=\\dfrac{7}{3}\\). Clearing the radical gives \\(95\\lambda^{2}-72\\lambda-236=0\\), whose roots are \\(\\lambda=2\\) and \\(\\lambda=-\\tfrac{118}{95}\\). The negative root makes the left-hand side negative and so is rejected, and substituting \\(\\lambda=2\\) does return \\(\\dfrac{7}{3}\\)."
+    },
+    {
+      "number": 68,
+      "answer": "C",
+      "value": "\\(\\pi/4\\)",
+      "confidence": "HIGH",
+      "reasoning": "|r| = sqrt(cos^2 t + sin^2 t + 1) = sqrt(2) for every t, and the component along k is 1. So cos(angle with the positive z-axis) = 1/sqrt(2), giving pi/4 independently of theta. Confirmed symbolically: the k-component over the norm simplifies to sqrt(2)/2 with no residual dependence on theta.",
+      "solution": "Here \\(\\left|\\vec{r}\\right|=\\sqrt{\\cos^{2}\\theta+\\sin^{2}\\theta+1}=\\sqrt{2}\\), and the component along \\(\\hat{k}\\) is \\(1\\). Hence the angle \\(\\gamma\\) with the positive \\(z\\)-axis satisfies \\(\\cos\\gamma=\\dfrac{1}{\\sqrt{2}}\\), so \\(\\gamma=\\dfrac{\\pi}{4}\\) whatever the value of \\(\\theta\\)."
+    },
+    {
+      "number": 69,
+      "answer": "D",
+      "value": "4 square units",
+      "confidence": "HIGH",
+      "reasoning": "(a + 3b) x (3a + b) = 3(a x a) + (a x b) + 9(b x a) + 3(b x b) = (a x b) - 9(a x b) = -8(a x b). Area = 8|a x b| = 8 * 1 * 1 * sin 30 = 8 * (1/2) = 4. Checked concretely with a = (1,0,0), b = (cos 30, sin 30, 0): the cross product of the two given sides has magnitude exactly 4. The distractor 8 is what you get by forgetting the sine factor; 4*sqrt(3) and 8*sqrt(3) come from using cos 30 instead of sin 30.",
+      "solution": "Expanding, \\(\\left(\\vec{a}+3\\vec{b}\\right)\\times\\left(3\\vec{a}+\\vec{b}\\right)=\\vec{a}\\times\\vec{b}+9\\left(\\vec{b}\\times\\vec{a}\\right)=-8\\left(\\vec{a}\\times\\vec{b}\\right)\\). Since both are unit vectors inclined at \\(30^\\circ\\), \\(\\left|\\vec{a}\\times\\vec{b}\\right|=\\sin 30^\\circ=\\tfrac{1}{2}\\). The area of the parallelogram is therefore \\(8\\times\\tfrac{1}{2}=4\\) square units."
+    },
+    {
+      "number": 70,
+      "answer": "C",
+      "value": "\\(2(\\vec{b}\\times\\vec{c})\\)",
+      "confidence": "HIGH",
+      "reasoning": "a is perpendicular to both b and c, so a is parallel to b x c. With b and c unit vectors at pi/6, |b x c| = sin(pi/6) = 1/2, so the unit vector along b x c is 2(b x c). Since |a| = 1, a = +/- 2(b x c). Only the magnitude-2 form is printed, and the other three options have magnitudes 1/2, sqrt(2)/2 and sqrt(3)/2, none of which is a unit vector. The stem is slightly loose in asking what a 'is equal to' when both senses satisfy every stated condition, but exactly one of the two is offered so the intended answer is unambiguous.",
+      "solution": "Since \\(\\vec{a}\\) is perpendicular to both \\(\\vec{b}\\) and \\(\\vec{c}\\), it must be parallel to \\(\\vec{b}\\times\\vec{c}\\). That cross product has magnitude \\(\\left|\\vec{b}\\times\\vec{c}\\right|=\\sin\\dfrac{\\pi}{6}=\\dfrac{1}{2}\\), so the unit vector in its direction is \\(2\\left(\\vec{b}\\times\\vec{c}\\right)\\). As \\(\\vec{a}\\) is itself a unit vector, \\(\\vec{a}=2\\left(\\vec{b}\\times\\vec{c}\\right)\\); the opposite sense \\(-2\\left(\\vec{b}\\times\\vec{c}\\right)\\) also meets every stated condition, but only one of the two is listed."
+    },
+    {
+      "number": 71,
+      "answer": "D",
+      "value": "\\(\\frac{2}{3}\\sin^{-1}\\left(x^{3/2}\\right)+c\\)",
+      "confidence": "HIGH",
+      "reasoning": "Substitute u = x^(3/2), so du = (3/2) x^(1/2) dx and sqrt(x) dx = (2/3) du. The integral becomes (2/3) * integral of du/sqrt(1-u^2) = (2/3) arcsin(u) + c = (2/3) arcsin(x^(3/2)) + c. Checked in the safe direction by differentiating the candidate: d/dx of (2/3) arcsin(x^(3/2)) returns sqrt(x)/sqrt(1-x^3) exactly, which is the integrand. Options A and B ignore the radical entirely; option C has the wrong constant.",
+      "solution": "Put \\(u=x^{3/2}\\), so that \\(du=\\tfrac{3}{2}\\sqrt{x}\\,dx\\) and hence \\(\\sqrt{x}\\,dx=\\tfrac{2}{3}\\,du\\). The integral becomes \\(\\dfrac{2}{3}\\displaystyle\\int\\dfrac{du}{\\sqrt{1-u^{2}}}=\\dfrac{2}{3}\\sin^{-1}u+c\\). Restoring \\(u\\) gives \\(\\dfrac{2}{3}\\sin^{-1}\\!\\left(x^{3/2}\\right)+c\\), and differentiating this does return \\(\\dfrac{\\sqrt{x}}{\\sqrt{1-x^{3}}}\\)."
+    },
+    {
+      "number": 72,
+      "answer": "D",
+      "value": "\\(\\frac{1}{c(a+b+c)}\\)",
+      "confidence": "HIGH",
+      "reasoning": "SOLVED AS PRINTED. The denominator is printed (ax + bx + c)^2, with NO superscript on the first x - confirmed by reading the page image at full size, so the transcription is faithful and this is not a misprint. ax + bx = (a+b)x, so with m = a+b the integral is the elementary one: integral from 0 to 1 of dx/(mx+c)^2 = [-1/(m(mx+c))] from 0 to 1 = (1/m)(1/c - 1/(m+c)) = 1/(c(m+c)) = 1/(c(a+b+c)). Symbolic integration with a,b,c positive returns exactly 1/(c(a+b+c)), and the numeric case a=1,b=2,c=3 gives 1/18 matching the option. CORROBORATION THAT THE PRINT IS INTENDED RATHER THAN A TYPO FOR ax^2+bx+c: under the quadratic reading the same integral with a=1,b=2,c=3 evaluates to 0.06008, while the four printed options evaluate to -0.1667, -0.0556, 0.1667 and 0.0556 - so the quadratic reading matches NO option at all, whereas the printed linear reading matches one exactly. The linear reading is therefore the only one under which the question is answerable.",
+      "solution": "The denominator contains \\(ax+bx\\), which is simply \\((a+b)x\\), so the integrand is \\(\\dfrac{1}{\\left((a+b)x+c\\right)^{2}}\\). Writing \\(m=a+b\\), \\(\\displaystyle\\int_{0}^{1}\\frac{dx}{(mx+c)^{2}}=\\left[\\frac{-1}{m(mx+c)}\\right]_{0}^{1}=\\frac{1}{m}\\left(\\frac{1}{c}-\\frac{1}{m+c}\\right)\\). Simplifying the bracket gives \\(\\dfrac{1}{c(a+b+c)}\\)."
+    },
+    {
+      "number": 73,
+      "answer": "A",
+      "value": "\\(\\frac{(10e)^x}{1+\\ln 10}+c\\)",
+      "confidence": "HIGH",
+      "reasoning": "e^(x ln 10) = 10^x, so the integrand is 10^x e^x = (10e)^x. Then the integral is (10e)^x / ln(10e) + c, and ln(10e) = ln 10 + ln e = ln 10 + 1. Symbolic integration returns (10e)^x/(1 + log 10) directly, and differentiating the candidate back gives residual exactly 0 against the integrand. Options C and D treat the integrand as e^x * e^x, which would need the first factor to be e^x rather than 10^x.",
+      "solution": "Since \\(e^{x\\ln 10}=10^{x}\\), the integrand is \\(10^{x}e^{x}=(10e)^{x}\\). Then \\(\\displaystyle\\int (10e)^{x}\\,dx=\\frac{(10e)^{x}}{\\ln(10e)}+c\\), and \\(\\ln(10e)=\\ln 10+1\\). Hence the value is \\(\\dfrac{(10e)^{x}}{1+\\ln 10}+c\\)."
+    },
+    {
+      "number": 74,
+      "answer": "B",
+      "value": "3",
+      "confidence": "HIGH",
+      "reasoning": "d/dx of x^x is x^x (1 + ln x), which is exactly the integrand, so the integral is [x^x] from 1 to 2 = 2^2 - 1^1 = 4 - 1 = 3. The derivative identity was confirmed symbolically. Option A (4) is the value of the antiderivative at the upper limit alone, i.e. forgetting to subtract the lower limit - the designed trap.",
+      "solution": "Differentiating \\(x^{x}\\) gives \\(x^{x}\\left(1+\\ln x\\right)\\), so the integrand is an exact derivative. Hence \\(\\displaystyle\\int_{1}^{2}x^{x}\\left(1+\\ln x\\right)dx=\\left[x^{x}\\right]_{1}^{2}=2^{2}-1^{1}=3\\)."
+    },
+    {
+      "number": 75,
+      "answer": "A",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "Putting x = y = 0 in f(x+y) = f(x) + f(y) gives f(0) = 2f(0), so f(0) = 0. Putting y = -x gives f(0) = f(x) + f(-x) = 0, so f(-x) = -f(x) and f is odd. The integral of an odd function over an interval symmetric about the origin is 0, so the definite integral from -1 to 1 is 0. Option C is the even-function result and is the designed trap. (The question presupposes that the integral exists, which is what rules out the non-measurable additive functions that exist without a regularity assumption; given existence, oddness alone forces the value 0.)",
+      "solution": "Setting \\(x=y=0\\) gives \\(f(0)=2f(0)\\), so \\(f(0)=0\\); then replacing \\(y\\) by \\(-x\\) gives \\(f(x)+f(-x)=f(0)=0\\), so \\(f\\) is an odd function. The integral of an odd function over an interval symmetric about the origin vanishes, so \\(\\displaystyle\\int_{-1}^{1}f(x)\\,dx=0\\)."
+    },
+    {
+      "number": 76,
+      "answer": "B",
+      "value": "\\((2e-2)\\) square units",
+      "confidence": "HIGH",
+      "reasoning": "The condition |x| = 1 gives the two vertical lines x = -1 and x = 1, and y = 0 is the x-axis, so the region is -1 <= x <= 1 with 0 <= y <= e^|x|. Since e^|x| is even, the area is 2 * integral from 0 to 1 of e^x dx = 2(e - 1) = 2e - 2, confirmed symbolically. Option A is the half-region from 0 to 1 only, i.e. treating |x| = 1 as the single line x = 1 - the designed trap.",
+      "solution": "The condition \\(|x|=1\\) gives the two vertical lines \\(x=-1\\) and \\(x=1\\), and \\(y=0\\) is the \\(x\\)-axis, so the region is \\(-1\\le x\\le 1\\) with \\(0\\le y\\le e^{|x|}\\). Because \\(e^{|x|}\\) is an even function, the area is \\(2\\displaystyle\\int_{0}^{1}e^{x}\\,dx=2(e-1)\\), which is \\((2e-2)\\) square units."
+    },
+    {
+      "number": 77,
+      "answer": "A",
+      "value": "\\(1/3\\) square unit",
+      "confidence": "HIGH",
+      "reasoning": "dy/dx = 2x gives y = x^2 + k, and passing through the origin forces k = 0, so the curve is y = x^2. The region bounded by that curve, the x-axis and the line x = 1 is 0 <= x <= 1, 0 <= y <= x^2, whose area is the integral from 0 to 1 of x^2 dx = 1/3. Confirmed symbolically. Option B (2/3) is the complementary region between the curve and the line y = 1, which is not what the three stated boundaries enclose.",
+      "solution": "From \\(\\dfrac{dy}{dx}=2x\\) we get \\(y=x^{2}+k\\), and passing through the origin forces \\(k=0\\), so the curve is \\(y=x^{2}\\). The region enclosed by that curve, the \\(x\\)-axis and the line \\(x=1\\) has area \\(\\displaystyle\\int_{0}^{1}x^{2}\\,dx=\\dfrac{1}{3}\\) square unit."
+    },
+    {
+      "number": 78,
+      "answer": "A",
+      "value": "\\(y=\\frac{x}{c+\\sin x}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Write the equation as y dx - x dy = y^2 cos x dx and divide by y^2: (y dx - x dy)/y^2 = cos x dx. The left side is exactly d(x/y), so integrating gives x/y = sin x + c, i.e. y = x/(c + sin x). Verified by substitution: for y = x/(c + sin x) the residual y - x y' - y^2 cos x is identically 0, while for the sign-flipped option y = x/(c - sin x) the same residual is -2x^2 cos x/(c - sin x)^2, which is not identically zero. Options C and D put the constant on the wrong factor.",
+      "solution": "Dividing the equation by \\(y^{2}\\) gives \\(\\dfrac{y\\,dx-x\\,dy}{y^{2}}=\\cos x\\,dx\\), and the left-hand side is precisely \\(d\\!\\left(\\dfrac{x}{y}\\right)\\). Integrating both sides gives \\(\\dfrac{x}{y}=\\sin x+c\\), so \\(y=\\dfrac{x}{c+\\sin x}\\). Substituting this back into the original equation does reduce it to zero identically."
+    },
+    {
+      "number": 79,
+      "answer": "C",
+      "value": "\\(x\\frac{dy}{dx}-y=0\\)",
+      "confidence": "HIGH",
+      "reasoning": "A straight line through the origin is y = mx with m the single arbitrary constant. Differentiating gives dy/dx = m, and eliminating m by substituting m = y/x gives x dy/dx = y, i.e. x dy/dx - y = 0. Options A and B are the orthogonal-trajectory family (concentric circles / rectangular hyperbolas); option D is x dy/dx + y = 0, which integrates to xy = constant, the rectangular hyperbolas rather than lines through the origin.",
+      "solution": "A straight line through the origin is \\(y=mx\\), with \\(m\\) the single arbitrary constant. Differentiating gives \\(\\dfrac{dy}{dx}=m\\), and substituting \\(m=\\dfrac{y}{x}\\) eliminates the constant to leave \\(x\\dfrac{dy}{dx}-y=0\\)."
+    },
+    {
+      "number": 80,
+      "answer": "A",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Put k = sqrt(c), a single positive arbitrary constant, so the family is y^2 = kx. Differentiating gives 2y y' = k, and substituting back into y^2 = kx gives y^2 = 2x y y', i.e. y = 2x y'. The highest-order derivative y' appears to the first power, so the degree is 1. This was checked on concrete members of both branches: for y = sqrt(4x) and for y = -sqrt(4x) the residual y - 2xy' is identically 0, so the single first-degree equation covers the whole family and no squaring is needed. It is also robust to the alternative reading of the radical: if the family is y^2 = sqrt(cx), then y^4 = cx, 4y^3 y' = c and y = 4x y', again degree 1 (checked on y = (4x)^(1/4), residual 0). The trap answer is 2, obtained by squaring 2yy' = sqrt(c) into 4y^2 y'^2 = c before eliminating, which produces a non-minimal form.",
+      "solution": "Write \\(k=\\sqrt{c}\\), so the family is \\(y^{2}=kx\\) with one arbitrary constant. Differentiating gives \\(2y\\dfrac{dy}{dx}=k\\), and substituting this back gives \\(y^{2}=2xy\\dfrac{dy}{dx}\\), that is \\(y=2x\\dfrac{dy}{dx}\\). The highest-order derivative occurs to the first power, so the degree is \\(1\\); squaring before eliminating the constant is unnecessary and gives a non-minimal form."
+    },
+    {
+      "number": 81,
+      "answer": "B",
+      "value": "\\((0,\\infty)-\\{1\\}\\)",
+      "confidence": "HIGH",
+      "reasoning": "By change of base, log_x e = ln e / ln x = 1/(ln x). For a logarithm to a base x the base must be positive, so x > 0, and it must not equal 1 - which is also exactly the condition that keeps ln x non-zero so the reciprocal is defined. Hence the domain is (0, infinity) with 1 removed. Nothing excludes x = e (there log_x e = 1) or x = 10, so options C and D remove a perfectly good point.",
+      "solution": "By the change-of-base rule, \\(\\log_{x}e=\\dfrac{1}{\\ln x}\\). The base of a logarithm must be positive, so \\(x>0\\), and it must not equal \\(1\\), which is also what keeps \\(\\ln x\\) non-zero so that the reciprocal exists. The domain is therefore \\((0,\\infty)\\) with the single point \\(1\\) removed; the values \\(e\\) and \\(10\\) are perfectly admissible."
+    },
+    {
+      "number": 82,
+      "answer": "D",
+      "value": "\\(1/4\\)",
+      "confidence": "HIGH",
+      "reasoning": "By the fundamental theorem of calculus, f'(x) is the integrand itself. Its numerator is 1 - 2cos x + cos^2 x = (1 - cos x)^2, which behaves like (x^2/2)^2 = x^4/4 near 0, while the denominator x sin^2 x tan x behaves like x * x^2 * x = x^4. The limit is therefore 1/4. Confirmed symbolically (limit returns 1/4) and numerically at 40-digit precision from both sides: at x = +/-0.01 the integrand is 0.24999583, at +/-0.001 it is 0.249999958, at +/-0.0001 it is 0.2499999996, converging to 0.25 and identical for positive and negative x.",
+      "solution": "By the fundamental theorem of calculus, \\(f'(x)\\) is the integrand itself. Its numerator factors as \\(1-2\\cos x+\\cos^{2}x=\\left(1-\\cos x\\right)^{2}\\), which behaves like \\(\\dfrac{x^{4}}{4}\\) near \\(0\\), while the denominator \\(x\\sin^{2}x\\tan x\\) behaves like \\(x\\cdot x^{2}\\cdot x=x^{4}\\). The limit is therefore \\(\\dfrac{1}{4}\\)."
+    },
+    {
+      "number": 83,
+      "answer": "B",
+      "value": "II only",
+      "confidence": "HIGH",
+      "reasoning": "Statement I: at x = 1/3 the quantity 3x equals 1. For x just below 1/3, 3x is just below 1 so [3x] = 0, while f(1/3) = [1] = 1. The left limit 0 differs from the value 1, so the function jumps there and is NOT continuous - statement I is false. Statement II: near x = 1/4 we have 3x = 0.75, and 3x stays inside the open interval (0,1) for all x in (0, 1/3), so [3x] = 0 identically on a neighbourhood of 1/4. A locally constant function is differentiable with derivative 0, so statement II is true. Only II holds.",
+      "solution": "At \\(x=\\tfrac{1}{3}\\) the quantity \\(3x\\) reaches \\(1\\): just to the left \\([3x]=0\\), whereas \\(f\\!\\left(\\tfrac{1}{3}\\right)=[1]=1\\), so the function jumps there and the first statement fails. Near \\(x=\\tfrac{1}{4}\\), however, \\(3x\\) lies strictly between \\(0\\) and \\(1\\), so \\([3x]=0\\) throughout a whole neighbourhood and the function is constant there, hence differentiable with derivative \\(0\\). Only the second statement is correct."
+    },
+    {
+      "number": 84,
+      "answer": "D",
+      "value": "The limit does not exist",
+      "confidence": "HIGH",
+      "reasoning": "For x > 0, |x| = x and the expression is sin^2 x / x^2, which tends to 1. For x < 0, |x| = -x and the expression is sin^2 x / (-x^2) = -sin^2 x / x^2, which tends to -1. Symbolic one-sided limits return +1 and -1 respectively. The two one-sided limits differ, so the two-sided limit does not exist. Options A and C are each one of the two one-sided values, which is the designed trap.",
+      "solution": "For \\(x>0\\) we have \\(|x|=x\\), so the expression is \\(\\dfrac{\\sin^{2}x}{x^{2}}\\), which tends to \\(1\\). For \\(x<0\\) we have \\(|x|=-x\\), so the expression is \\(-\\dfrac{\\sin^{2}x}{x^{2}}\\), which tends to \\(-1\\). The two one-sided limits are \\(1\\) and \\(-1\\); since they disagree, the limit does not exist."
+    },
+    {
+      "number": 85,
+      "answer": "B",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "f(x) = p|x| + q. The right-hand derivative at 0 is the limit of (p h + q - q)/h = p, and the left-hand derivative is the limit of (-p h + q - q)/h = -p. For f'(0) to exist these must be equal, so p = -p and hence p = 0. (With p = 0 the function is the constant q, which is indeed differentiable.) The constant q is unrestricted, which is why option D is a distractor rather than an answer.",
+      "solution": "The right-hand derivative at \\(0\\) is \\(\\displaystyle\\lim_{h\\to 0^{+}}\\dfrac{p h}{h}=p\\), while the left-hand derivative is \\(\\displaystyle\\lim_{h\\to 0^{-}}\\dfrac{-p h}{h}=-p\\). For \\(f'(0)\\) to exist these must agree, so \\(p=-p\\) and hence \\(p=0\\). The function is then the constant \\(q\\), which is differentiable, and \\(q\\) itself is left unrestricted."
+    },
+    {
+      "number": 86,
+      "answer": "C",
+      "value": "Both I and II are correct",
+      "confidence": "HIGH",
+      "reasoning": "For x > 0, x^3/|x| = x^2; for x < 0, x^3/|x| = -x^2. So f(x) = x|x| away from 0, and f(0) = 0 matches the limit 0 from both sides, giving continuity everywhere - statement I is true. For differentiability at 0 the difference quotient is (h|h| - 0)/h = |h|, which tends to 0 from both sides, so f'(0) = 0 exists; away from 0 the function is a polynomial on each side (2x for x > 0, -2x for x < 0, both equal to 2|x|), so it is differentiable everywhere - statement II is also true. One-sided limits of the difference quotient confirmed symbolically as 0 and 0.",
+      "solution": "For \\(x>0\\) the function is \\(x^{2}\\) and for \\(x<0\\) it is \\(-x^{2}\\), so away from the origin \\(f(x)=x|x|\\); the limit at \\(0\\) is \\(0=f(0)\\), giving continuity everywhere. The difference quotient at the origin is \\(\\dfrac{h|h|}{h}=|h|\\), which tends to \\(0\\) from both sides, so \\(f'(0)=0\\) exists, and elsewhere \\(f'(x)=2|x|\\). Both statements are therefore correct."
+    },
+    {
+      "number": 87,
+      "answer": "C",
+      "value": "\\(1/2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Multiply and divide by the conjugate: sqrt(x + sqrt x) - sqrt x = ((x + sqrt x) - x)/(sqrt(x + sqrt x) + sqrt x) = sqrt(x)/(sqrt(x + sqrt x) + sqrt x). Dividing numerator and denominator by sqrt x gives 1/(sqrt(1 + 1/sqrt x) + 1), which tends to 1/(1 + 1) = 1/2 as x tends to infinity. Confirmed symbolically as 1/2. Option B (0) is the trap for treating it as an infinity-minus-infinity form that collapses.",
+      "solution": "Multiplying and dividing by the conjugate gives \\(\\sqrt{x+\\sqrt{x}}-\\sqrt{x}=\\dfrac{\\sqrt{x}}{\\sqrt{x+\\sqrt{x}}+\\sqrt{x}}\\). Dividing numerator and denominator by \\(\\sqrt{x}\\) turns this into \\(\\dfrac{1}{\\sqrt{1+1/\\sqrt{x}}+1}\\), which tends to \\(\\dfrac{1}{2}\\)."
+    },
+    {
+      "number": 88,
+      "answer": "C",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "Since m and n are the roots of x^2 - px + q = 0, we have x^2 - px + q = (x - m)(x - n) identically. So the expression is (e^t - 1)/t with t = (x - m)(x - n), and t tends to 0 as x tends to m. The standard limit (e^t - 1)/t -> 1 gives the value 1. Checked symbolically for distinct roots (m = 2, n = 5) and for the repeated-root case (m = n = 3, where t = (x - m)^2 still tends to 0); both return 1, so the answer does not depend on the discriminant.",
+      "solution": "Because \\(m\\) and \\(n\\) are the roots, \\(x^{2}-px+q=(x-m)(x-n)\\) identically, so the expression is \\(\\dfrac{e^{(x-m)(x-n)}-1}{(x-m)(x-n)}\\). Writing \\(t=(x-m)(x-n)\\), we have \\(t\\to 0\\) as \\(x\\to m\\), and the standard limit \\(\\displaystyle\\lim_{t\\to 0}\\dfrac{e^{t}-1}{t}=1\\) gives the value \\(1\\). This holds whether or not the two roots are distinct."
+    },
+    {
+      "number": 89,
+      "answer": "C",
+      "value": "0",
+      "confidence": "HIGH",
+      "reasoning": "With f(x) = x^n + k, f(x)f(1/x) = (x^n + k)(x^(-n) + k) = 1 + k(x^n + x^(-n)) + k^2, while f(x) + f(1/x) = x^n + x^(-n) + 2k. Equating these for all x forces the coefficient of (x^n + x^(-n)) to match, giving k = 1, and the constant terms then give 1 + k^2 = 2k, i.e. (k-1)^2 = 0, which is consistent with k = 1. So f(x) = x^n + 1. Then f(2) = 2^n + 1 = 9 gives 2^n = 8 and n = 3 (a natural number, as required). Hence f(-1) = (-1)^3 + 1 = -1 + 1 = 0. The coefficient comparison was confirmed symbolically: substituting k = 1 reduces the difference to 1 - x^n x^(-n), which is identically zero for x non-zero.",
+      "solution": "Expanding, \\(f(x)f\\!\\left(\\tfrac{1}{x}\\right)=\\left(x^{n}+k\\right)\\left(x^{-n}+k\\right)=1+k\\left(x^{n}+x^{-n}\\right)+k^{2}\\), while \\(f(x)+f\\!\\left(\\tfrac{1}{x}\\right)=x^{n}+x^{-n}+2k\\). Matching these for all \\(x\\) forces \\(k=1\\), and then \\(f(2)=2^{n}+1=9\\) gives \\(2^{n}=8\\), so \\(n=3\\). Hence \\(f(-1)=(-1)^{3}+1=0\\)."
+    },
+    {
+      "number": 90,
+      "answer": "B",
+      "value": "\\(-\\sqrt{3}/2\\)",
+      "confidence": "HIGH",
+      "reasoning": "Since 1 < pi/2 = 1.5708 < 2, the point lies inside the stated interval and the greatest integer part is [pi/2] = 1. Substituting, f(pi/2) = cos(pi/3 * 1 + pi/2) = cos(pi/3 + pi/2) = cos(5pi/6) = -cos(pi/6) = -sqrt(3)/2. Confirmed symbolically: floor(pi/2) = 1 and cos(pi/3 + pi/2) evaluates to -sqrt(3)/2 = -0.8660254. Option C (-1/2) is what you get by mistakenly using cos(2pi/3), i.e. dropping the greatest-integer term.",
+      "solution": "Since \\(1<\\dfrac{\\pi}{2}<2\\), the greatest integer part is \\(\\left[\\dfrac{\\pi}{2}\\right]=1\\). Substituting into the rule gives \\(f\\!\\left(\\dfrac{\\pi}{2}\\right)=\\cos\\!\\left(\\dfrac{\\pi}{3}+\\dfrac{\\pi}{2}\\right)=\\cos\\dfrac{5\\pi}{6}\\), which equals \\(-\\dfrac{\\sqrt{3}}{2}\\)."
+    },
+    {
+      "number": 91,
+      "answer": "B",
+      "value": "II only",
+      "confidence": "HIGH",
+      "reasoning": "For x < 0, ln|x| = ln(-x), and the chain rule gives (1/(-x))*(-1) = +1/x, not -1/x. So statement I has the wrong sign and is false. For x > 0, ln|x| = ln x, whose derivative is 1/x, so statement II is true. In fact d/dx ln|x| = 1/x on the whole of x != 0, so the only thing at issue is the sign in I. No other option is defensible. Stem confirmed against page image p34.",
+      "solution": "For \\(x>0\\) we have \\(\\ln|x|=\\ln x\\), whose derivative is \\(\\frac{1}{x}\\). For \\(x<0\\) we have \\(\\ln|x|=\\ln(-x)\\), and the chain rule gives \\(\\frac{1}{-x}\\cdot(-1)=\\frac{1}{x}\\) — again \\(+\\frac{1}{x}\\), not \\(-\\frac{1}{x}\\). So \\(\\frac{d}{dx}\\ln|x|=\\frac{1}{x}\\) for every \\(x\\ne 0\\): the second statement is correct and the first carries the wrong sign."
+    },
+    {
+      "number": 92,
+      "answer": "D",
+      "value": "the derivative does not exist at x = pi/4",
+      "confidence": "HIGH",
+      "reasoning": "Put h = x - pi/4. Then sin(pi/4 - x) = sin(-h) = -sin h, so y = |sin h|, which is 0 at h = 0. For small h > 0, y = sin h with derivative cos h -> +1; for small h < 0, y = -sin h with derivative -cos h -> -1. The one-sided derivatives are +1 and -1, so there is a corner and dy/dx does not exist. Confirmed with sympy one-sided limits (right = 1, left = -1). Options -1, 0, 1 each correspond to picking one side or to forgetting the modulus; none is the two-sided derivative. Stem confirmed against page image p34.",
+      "solution": "Write \\(h=x-\\frac{\\pi}{4}\\); then \\(\\sin\\!\\left(\\frac{\\pi}{4}-x\\right)=-\\sin h\\), so \\(y=|\\sin h|\\), which is \\(0\\) at \\(h=0\\). Just to the right the function equals \\(\\sin h\\), giving slope \\(+1\\), and just to the left it equals \\(-\\sin h\\), giving slope \\(-1\\). The two one-sided derivatives disagree, so the graph has a corner at \\(x=\\frac{\\pi}{4}\\) and \\(\\frac{dy}{dx}\\) does not exist there."
+    },
+    {
+      "number": 93,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "Additivity gives f(0) = 0 and f(x+h) - f(x) = f(h), so f'(x) = lim_{h->0} f(h)/h for EVERY x. I: f(h) = h g(h), so f'(x) = lim g(h) = g(0) by continuity of g — true. II: f(h) = h^2 g(h), so f'(x) = lim h g(h) = 0*g(0) = 0 — true. Cross-check: a differentiable additive f is f(x) = cx; then I forces g = c off 0 and g(0) = c by continuity, giving f' = c = g(0); and II forces c/x to extend continuously to 0, which requires c = 0, hence f' = 0. Both routes agree. TRANSCRIPTION FLAG (solved as printed): the statements name no point of evaluation, but f' is CONSTANT here, so the omission does not change the answer — the conclusion holds at every x.",
+      "solution": "Additivity gives \\(f(0)=0\\) and \\(f(x+h)-f(x)=f(h)\\), so \\(f'(x)=\\lim_{h\\to 0}\\frac{f(h)}{h}\\) at every \\(x\\). With \\(f(x)=x\\,g(x)\\) that limit is \\(\\lim_{h\\to 0} g(h)=g(0)\\) because \\(g\\) is continuous, and with \\(f(x)=x^{2}g(x)\\) it is \\(\\lim_{h\\to 0} h\\,g(h)=0\\). Both statements are therefore correct, and since \\(f'\\) takes the same value at every point, no particular point of evaluation is needed."
+    },
+    {
+      "number": 94,
+      "answer": "A",
+      "value": "\\(n2^{n-1}-2^{n}+1\\)",
+      "confidence": "HIGH",
+      "reasoning": "f(x) = sum_{k=0}^{n-1} x^k, so f'(x) = sum_{k=1}^{n-1} k x^{k-1} and f'(2) = sum_{k=1}^{n-1} k 2^{k-1}. Using sum_{k=1}^{m} k 2^{k-1} = (m-1)2^m + 1 with m = n-1 gives (n-2)2^{n-1} + 1 = n2^{n-1} - 2^n + 1. Verified in sympy by differentiating the explicit polynomial for n = 2..8: option A matched f'(2) at every n (1, 5, 17, 49, 129, 321, 769) and B, C, D failed at every n. Stem confirmed against page image p34.",
+      "solution": "Here \\(f(x)=x^{n-1}+x^{n-2}+\\cdots+x+1\\), so \\(f'(x)=(n-1)x^{n-2}+(n-2)x^{n-3}+\\cdots+1=\\sum_{k=1}^{n-1}kx^{k-1}\\). At \\(x=2\\) this is \\(\\sum_{k=1}^{n-1}k\\,2^{k-1}\\), and the standard sum \\(\\sum_{k=1}^{m}k\\,2^{k-1}=(m-1)2^{m}+1\\) with \\(m=n-1\\) gives \\((n-2)2^{n-1}+1\\). Expanding, \\(f'(2)=n2^{n-1}-2^{n}+1\\)."
+    },
+    {
+      "number": 95,
+      "answer": "C",
+      "value": "16 square units",
+      "confidence": "HIGH",
+      "reasoning": "The right angle is at B, so AC = 8 is the hypotenuse and the legs a = AB, b = BC satisfy a^2 + b^2 = 64. Area = ab/2, and by AM-GM ab <= (a^2+b^2)/2 = 32, so area <= 16, with equality when a = b = 4*sqrt(2) (the isosceles right triangle). Maximum area 16 square units. Option 32 is ab rather than ab/2; 24 and 12 come from 6-8-10-style guesses that do not satisfy the constraint.",
+      "solution": "The right angle is at \\(B\\), so \\(AC=8\\) is the hypotenuse and the legs satisfy \\(a^{2}+b^{2}=64\\). The area is \\(\\frac{ab}{2}\\), and since \\(ab\\le\\frac{a^{2}+b^{2}}{2}=32\\), the area is at most \\(16\\). Equality holds when \\(a=b=4\\sqrt{2}\\), so the largest possible area is \\(16\\) square units."
+    },
+    {
+      "number": 96,
+      "answer": "C",
+      "value": "minimum occurs at x = -1/2",
+      "confidence": "HIGH",
+      "reasoning": "y = x e^{2x}, y' = e^{2x}(1 + 2x), which vanishes only at x = -1/2 (sympy: critical point [-1/2]). y'' = e^{2x}(4x + 4), and y''(-1/2) = 2/e > 0, so x = -1/2 is a local minimum. There is no maximum since y -> +infinity as x -> +infinity, which rules out the maximum-at--1/2 option; x = -1 and x = -2 are not critical points at all.",
+      "solution": "Differentiating, \\(\\frac{dy}{dx}=e^{2x}(1+2x)\\), and since \\(e^{2x}>0\\) the only critical point is \\(x=-\\frac{1}{2}\\). The second derivative is \\(\\frac{d^{2}y}{dx^{2}}=e^{2x}(4x+4)\\), which at \\(x=-\\frac{1}{2}\\) equals \\(\\frac{2}{e}>0\\), so the curve has a minimum there. It has no maximum at all, because \\(y\\to\\infty\\) as \\(x\\to\\infty\\)."
+    },
+    {
+      "number": 97,
+      "answer": "A",
+      "value": "\\((-\\infty, 0)\\)",
+      "confidence": "HIGH",
+      "reasoning": "f(x) = integral of x e^x dx = (x-1)e^x + C (sympy). Then f'(x) = x e^x directly, and since e^x > 0 for all x, f'(x) < 0 exactly when x < 0. So f decreases precisely on (-infinity, 0). The options built on x = -1 come from the critical point of the INTEGRAND x e^x (its minimum), not of f; they are the classic trap here.",
+      "solution": "Since \\(f(x)=\\int x e^{x}\\,dx=(x-1)e^{x}+C\\), the derivative is simply the integrand, \\(f'(x)=xe^{x}\\). As \\(e^{x}>0\\) for every \\(x\\), the sign of \\(f'\\) is the sign of \\(x\\), so \\(f'(x)<0\\) exactly when \\(x<0\\). Hence \\(f\\) decreases on \\((-\\infty,0)\\); the point \\(x=-1\\) is where the integrand turns, not \\(f\\)."
+    },
+    {
+      "number": 98,
+      "answer": "A",
+      "value": "\\(\\sec(y-x)=ce^{x^{2}/2}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Substitute v = y - x, so dv/dx = dy/dx - 1 = x cot v. Separating, tan v dv = x dx, giving -ln|cos v| = x^2/2 + C, i.e. ln|sec v| = x^2/2 + C, so sec(y-x) = c e^{x^2/2}. Independently checked by differentiating each printed option implicitly and eliminating c (sympy): sec gives v' = x cot v (matches), cos gives -x cot v, cosec gives -x tan v, sin gives x tan v. Only the secant form reproduces the equation; the other three are ruled out explicitly.",
+      "solution": "Put \\(v=y-x\\), so that \\(\\frac{dv}{dx}=\\frac{dy}{dx}-1=x\\cot v\\). Separating the variables gives \\(\\tan v\\,dv=x\\,dx\\), and integrating, \\(-\\ln|\\cos v|=\\frac{x^{2}}{2}+C\\), i.e. \\(\\ln|\\sec v|=\\frac{x^{2}}{2}+C\\). Exponentiating, \\(\\sec(y-x)=ce^{x^{2}/2}\\)."
+    },
+    {
+      "number": 99,
+      "answer": "C",
+      "value": "Both I and II",
+      "confidence": "HIGH",
+      "reasoning": "f(f(x)) = ((3(3x+2)/(5x-3)) + 2)/((5(3x+2)/(5x-3)) - 3) = (19x)/19 = x (confirmed by sympy). So f is an involution on its domain: it is its own inverse, and a function equal to its own inverse is necessarily bijective. Hence both statements hold. The stated domain and codomain are exactly right: the vertical asymptote is at 5x - 3 = 0, i.e. x = 3/5, and the horizontal asymptote is y = 3/5, so f maps R - {3/5} onto R - {3/5}.",
+      "solution": "Composing, \\(f(f(x))=\\dfrac{3\\cdot\\frac{3x+2}{5x-3}+2}{5\\cdot\\frac{3x+2}{5x-3}-3}=\\dfrac{9x+6+10x-6}{15x+10-15x+9}=\\dfrac{19x}{19}=x\\). So \\(f\\) is its own inverse, which means \\(f^{-1}(x)=f(x)\\), and any function equal to its own inverse must be one-one and onto. Both statements are therefore correct."
+    },
+    {
+      "number": 100,
+      "answer": "D",
+      "value": "9",
+      "confidence": "HIGH",
+      "reasoning": "A mapping from A to B assigns to each of the |A| = 2 elements of A one of the |B| = 3 elements of B, independently. Number of mappings = 3^2 = 9. The distractor 8 = 2^3 reverses the roles of domain and codomain; 6 = 3P2 counts only injections.",
+      "solution": "A mapping sends each element of \\(A\\) to some element of \\(B\\), and the two choices are made independently. Each of the \\(2\\) elements of \\(A\\) has \\(3\\) possible images, so the total number of mappings is \\(3^{2}=9\\). Note the base is the size of the codomain and the exponent the size of the domain, not the other way round."
+    },
+    {
+      "number": 101,
+      "answer": "B",
+      "value": "100",
+      "confidence": "HIGH",
+      "reasoning": "If y_i = 2x_i - 7 then Var(y) = 2^2 * Var(x) = 4 * 25 = 100. Subtracting a constant shifts every observation equally and leaves the variance unchanged; only the multiplier matters, and it enters squared. The count 10 is not needed. The distractor 50 comes from multiplying the variance by 2 instead of 4; 125 from 25*(2^2)+25 or similar.",
+      "solution": "Writing the new observations as \\(y_i=2x_i-7\\), a change of origin leaves the spread untouched while a change of scale multiplies it. So \\(\\operatorname{Var}(y)=2^{2}\\operatorname{Var}(x)=4\\times 25=100\\); the subtraction of \\(7\\) has no effect at all. The new variance is \\(100\\)."
+    },
+    {
+      "number": 102,
+      "answer": "B",
+      "value": "12",
+      "confidence": "HIGH",
+      "reasoning": "SD(Y) = SD(3X + 4) = |3| * SD(X) = 3 * 4 = 12. The additive constant 4 does not affect dispersion and the mean 5 is irrelevant. The distractor 16 uses 3*5+... or the variance; 19 = 3*5+4 would be the MEAN of Y, which the question does not ask for.",
+      "solution": "For a linear change \\(Y=aX+b\\), the standard deviation scales by \\(|a|\\) and is unaffected by \\(b\\). Here \\(a=3\\) and \\(b=4\\), so \\(\\sigma_Y=|3|\\times\\sigma_X=3\\times 4=12\\). The mean of \\(X\\) plays no part in this."
+    },
+    {
+      "number": 103,
+      "answer": "B",
+      "value": "\\(\\left(\\frac{3}{4}\\right)^{16}\\)",
+      "confidence": "HIGH",
+      "reasoning": "Mean np = 4 and variance npq = (sqrt 3)^2 = 3, so q = npq/np = 3/4, hence p = 1/4 and n = 4/p = 16 (sympy solve confirms n = 16, p = 1/4). Then P(X = 0) = C(16,0) p^0 q^16 = (3/4)^16. The distractor (1/4)^16 is P(X = n), i.e. all successes.",
+      "solution": "For a binomial distribution the mean is \\(np\\) and the variance is \\(npq\\), so \\(np=4\\) and \\(npq=(\\sqrt{3})^{2}=3\\). Dividing, \\(q=\\frac{3}{4}\\), hence \\(p=\\frac{1}{4}\\) and \\(n=\\frac{4}{p}=16\\). Then \\(P(X=0)=q^{n}=\\left(\\frac{3}{4}\\right)^{16}\\)."
+    },
+    {
+      "number": 104,
+      "answer": "B",
+      "value": "\\(X=\\overline{X}\\) and \\(Y=\\overline{Y}\\)",
+      "confidence": "HIGH",
+      "reasoning": "The regression coefficients are b_YX = r*(sigma_Y/sigma_X) and b_XY = r*(sigma_X/sigma_Y). If r = 0 both vanish, so the line of Y on X is Y - Ybar = 0, i.e. Y = Ybar, and the line of X on Y is X = Xbar. These are two perpendicular lines through the means. The option with bars on BOTH sides is not a pair of lines at all (it contains no variables), and the two numeric option pairs have non-zero slopes so they imply r != 0.",
+      "solution": "The regression coefficients are \\(b_{YX}=r\\frac{\\sigma_Y}{\\sigma_X}\\) and \\(b_{XY}=r\\frac{\\sigma_X}{\\sigma_Y}\\), so when \\(r=0\\) both are zero. The line of \\(Y\\) on \\(X\\) then reduces to \\(Y-\\overline{Y}=0\\) and the line of \\(X\\) on \\(Y\\) to \\(X-\\overline{X}=0\\). The two regression lines are therefore \\(X=\\overline{X}\\) and \\(Y=\\overline{Y}\\), which are perpendicular and meet at \\((\\overline{X},\\overline{Y})\\)."
+    },
+    {
+      "number": 105,
+      "answer": "D",
+      "value": "5/324",
+      "confidence": "HIGH",
+      "reasoning": "Number of ordered quadruples (a,b,c,d) with each in 1..6 summing to 7 = number of solutions of a'+b'+c'+d' = 3 with a' >= 0, which is C(6,3) = 20 (the upper bound 6 never binds since 3 < 6). Total outcomes 6^4 = 1296, so P = 20/1296 = 5/324. Brute-force enumeration over all 1296 outcomes confirmed exactly 20 favourable cases.",
+      "solution": "Each die shows at least \\(1\\), so writing the four faces as \\(1+a'\\) etc. the requirement becomes \\(a'+b'+c'+d'=3\\) with each \\(a'\\ge 0\\); the ceiling of \\(6\\) never binds because \\(3<6\\). The number of such quadruples is \\(\\binom{3+3}{3}=20\\), out of \\(6^{4}=1296\\) equally likely outcomes. Hence the probability is \\(\\frac{20}{1296}=\\frac{5}{324}\\)."
+    },
+    {
+      "number": 106,
+      "answer": "D",
+      "value": "2/3",
+      "confidence": "LOW",
+      "reasoning": "STEM IS DEFECTIVE — solved as printed. GLYPHS VERIFIED: I cropped the stem from page image p38 and enlarged it 3.2x; both symbols are unambiguously intersection (cap), so the stem really does read P(A and B) = 1/2 AND P(notA and notB) = 1/2 with 2P(A) = P(B) = k. The three conditions are mutually inconsistent: P(notA and notB) = 1/2 gives P(A or B) = 1/2, and together with P(A and B) = 1/2 that forces P(A and B) = P(A or B), so A and B coincide up to a null set and P(A) = P(B) = 1/2 — contradicting 2P(A) = P(B). ROUTE TAKEN (uses all three givens): inclusion-exclusion, 1/2 = k/2 + k - 1/2, so k = 2/3. That value is itself infeasible, since it makes P(A) = 1/3 while P(A and B) = 1/2 > min(P(A), P(B)) = 1/3. RUNNER-UP: 1/3. It arises from 1/2 = k/2 + k, i.e. dropping the intersection term — equivalently, reading the first given as P(A or B) = 1/2 and taking A and B disjoint. That reading is the ONLY self-consistent one (P(A) = 1/6, P(B) = 1/3, disjoint, P(A or B) = 1/2, P(notA and notB) = 1/2 all hold), which makes it a real contender and is why this is not a comfortable call. I prefer 2/3 because it is the only route that uses the explicitly-given P(A and B) = 1/2 rather than discarding it, and discarding a stated datum would make that given pointless. Independence instead gives k^2/2 = 1/2, i.e. k = 1, which is not offered; nothing reaches 1/4 or 1/2. LOW because the stem is defective and a consistent rival reading lands on another printed option.",
+      "solution": "From \\(P(\\overline{A}\\cap\\overline{B})=\\frac{1}{2}\\) we get \\(P(A\\cup B)=1-\\frac{1}{2}=\\frac{1}{2}\\), and \\(P(A\\cup B)=P(A)+P(B)-P(A\\cap B)\\) then gives \\(\\frac{1}{2}=\\frac{k}{2}+k-\\frac{1}{2}\\), so \\(k=\\frac{2}{3}\\). The question is defective, however: \\(P(A\\cap B)=\\frac{1}{2}\\) together with \\(P(A\\cup B)=\\frac{1}{2}\\) forces \\(P(A)=P(B)=\\frac{1}{2}\\), which contradicts \\(2P(A)=P(B)\\); and \\(k=\\frac{2}{3}\\) makes \\(P(A)=\\frac{1}{3}\\) while \\(P(A\\cap B)=\\frac{1}{2}\\), an intersection larger than an event containing it. No probabilities can satisfy all three given conditions, so \\(\\frac{2}{3}\\) is only the value the standard route returns."
+    },
+    {
+      "number": 107,
+      "answer": "B",
+      "value": "1/2",
+      "confidence": "HIGH",
+      "reasoning": "The draw is conditioned on the member being a woman, so the sample space is the 4 women, of whom 2 form the senior subgroup: P = 2/4 = 1/2. The wording 'which is woman only' is broken English but can only mean this conditioning. Robustness check on the alternative reading: if instead one asks for the chance that the drawn woman lies in a randomly chosen pair of the 4 women, that is C(3,1)/C(4,2) = 3/6 = 1/2 as well — both readings give the same value. An unconditioned reading (drawing from all 10 and wanting a senior woman) gives 2/10 = 1/5, which is not printed and is therefore excluded by the option set. No other option is defensible.",
+      "solution": "The member drawn is known to be a woman, so the relevant sample space is just the \\(4\\) women on the committee. Of those \\(4\\), exactly \\(2\\) make up the senior subgroup. The required probability is therefore \\(\\frac{2}{4}=\\frac{1}{2}\\); the \\(6\\) men play no part once the draw is known to have produced a woman."
+    },
+    {
+      "number": 108,
+      "answer": "D",
+      "value": "1",
+      "confidence": "HIGH",
+      "reasoning": "b_YX = r * (sigma_Y / sigma_X) = 0.8 * (5/4) = 1.0 exactly. The negative options are impossible here: a regression coefficient carries the sign of r, and r = 0.8 > 0, so b_YX must be positive. The option 0 would require r = 0.",
+      "solution": "The regression coefficient of \\(Y\\) on \\(X\\) is \\(b_{YX}=r\\,\\frac{\\sigma_Y}{\\sigma_X}\\). Substituting \\(r=0.8\\), \\(\\sigma_Y=5\\) and \\(\\sigma_X=4\\) gives \\(0.8\\times\\frac{5}{4}=1\\). Note the sign of a regression coefficient always matches the sign of \\(r\\), so a positive correlation cannot give a negative coefficient."
+    },
+    {
+      "number": 109,
+      "answer": "A",
+      "value": "5/7",
+      "confidence": "HIGH",
+      "reasoning": "P(S | M) = P(S and M) / P(M) = 0.5 / 0.7 = 5/7. Both given numbers are used directly; no independence assumption is needed. The other options do not arise from any sensible manipulation of 0.5 and 0.7.",
+      "solution": "By the definition of conditional probability, \\(P(S\\mid M)=\\dfrac{P(S\\cap M)}{P(M)}\\). Here the probability of passing Mathematics is \\(P(M)=0.7\\) and the probability of passing both is \\(P(S\\cap M)=0.5\\). Hence \\(P(S\\mid M)=\\dfrac{0.5}{0.7}=\\dfrac{5}{7}\\)."
+    },
+    {
+      "number": 110,
+      "answer": "B",
+      "value": "20%",
+      "confidence": "HIGH",
+      "reasoning": "Coefficient of variation = (sigma / mean) * 100 = (8/40) * 100 = 20%. The count of 50 observations is a distractor and does not enter the formula. No other option is reachable.",
+      "solution": "The coefficient of variation is \\(\\dfrac{\\sigma}{\\bar{x}}\\times 100\\). With \\(\\sigma=8\\) and \\(\\bar{x}=40\\) this is \\(\\dfrac{8}{40}\\times 100=20\\%\\). The number of observations does not appear in the formula and is not needed."
+    },
+    {
+      "number": 111,
+      "answer": "C",
+      "value": "13/18",
+      "confidence": "HIGH",
+      "reasoning": "Of the 36 equally likely ordered outcomes, sum 5 occurs in 4 ways and sum 7 in 6 ways; the two events are disjoint, so 10 outcomes are excluded. P(neither) = 26/36 = 13/18. Brute-force enumeration over all 36 outcomes confirmed exactly 10 bad cases. The option 5/6 would follow from excluding only the six ways of making 7; 11/18 from excluding 14.",
+      "solution": "There are \\(36\\) equally likely outcomes. The sum is \\(5\\) in \\(4\\) of them and \\(7\\) in \\(6\\) of them, and no outcome can give both, so \\(10\\) outcomes are ruled out. The remaining \\(26\\) give \\(P=\\dfrac{26}{36}=\\dfrac{13}{18}\\)."
+    },
+    {
+      "number": 112,
+      "answer": "D",
+      "value": "Neither I nor II",
+      "confidence": "MED",
+      "reasoning": "Both printed inequalities are the REVERSE of the standard results, and both are false as printed. Take A = B = C with P = 1/2. Statement I as printed asks 1/2 <= 1/2+1/2+1/2-2 = -1/2, which is false; the true Bonferroni bound runs the other way, P(A and B and C) >= P(A)+P(B)+P(C)-2. Statement II as printed asks 1/2 >= 3/2, which is false; the true subadditivity bound is P(A or B or C) <= P(A)+P(B)+P(C). Both counterexamples checked with exact Fractions. GLYPHS VERIFIED: I cropped the two statement lines from page image p40 and enlarged them 3x — the first sign is unambiguously '<=' and the second unambiguously '>=', so the transcription is faithful and this is solved as printed. RUNNER-UP: 'Both I and II'. It would win if the paper misprinted both signs and the official key was set for the standard inequalities — that is exactly what a simultaneous reversal of two textbook results suggests, and it is the single reason this is MED rather than HIGH. There is no alternative READING of the printed page; the risk is entirely that the source is defective.",
+      "solution": "The standard results run the other way round: \\(P(A\\cap B\\cap C)\\ge P(A)+P(B)+P(C)-2\\) and \\(P(A\\cup B\\cup C)\\le P(A)+P(B)+P(C)\\). As printed here both inequalities are reversed, and a single example breaks both — take the three events to be the same event of probability \\(\\frac{1}{2}\\). The first would then require \\(\\frac{1}{2}\\le-\\frac{1}{2}\\) and the second \\(\\frac{1}{2}\\ge\\frac{3}{2}\\), so neither statement is correct as it stands."
+    },
+    {
+      "number": 113,
+      "answer": "C",
+      "value": "37/55",
+      "confidence": "HIGH",
+      "reasoning": "Odds IN FAVOUR of X are 6 to 9, so P(X solves) = 6/(6+9) = 2/5. Odds AGAINST Y are 6 to 5, so P(Y solves) = 5/(6+5) = 5/11 (the 5 is the favourable part because the odds are quoted against). Assuming the two attempts are independent, P(unsolved) = (3/5)(6/11) = 18/55, so P(solved) = 1 - 18/55 = 37/55. The trap is reading the second ratio as odds in favour, which would give P(Y) = 6/11 and P(solved) = 1 - (3/5)(5/11) = 1 - 15/55 = 40/55 = 8/11 — not printed, so the option set confirms the intended reading.",
+      "solution": "Odds in favour of \\(X\\) of \\(6\\) to \\(9\\) give \\(P(X)=\\frac{6}{15}=\\frac{2}{5}\\), while odds against \\(Y\\) of \\(6\\) to \\(5\\) give \\(P(Y)=\\frac{5}{11}\\) — note the second ratio is quoted against, so the favourable part is the \\(5\\). The problem goes unsolved only if both fail, which has probability \\(\\frac{3}{5}\\times\\frac{6}{11}=\\frac{18}{55}\\). Hence the probability that it is solved is \\(1-\\frac{18}{55}=\\frac{37}{55}\\)."
+    },
+    {
+      "number": 114,
+      "answer": "B",
+      "value": "0.84",
+      "confidence": "HIGH",
+      "reasoning": "P(D | A and B) = P(A and B and D) / P(A and B), so P(A and B) = 0.04 / 0.25 = 0.16. Independence of A and B gives P(A)P(B) = 0.16; with P(B) = 4P(A) this is 4P(A)^2 = 0.16, so P(A) = 0.2 and P(B) = 0.8 (the negative root is discarded). Then P(A or B) = 0.2 + 0.8 - 0.16 = 0.84. Verified symbolically (sympy returned P(A) = 1/5 and P(A or B) = 21/25 = 0.84). The distractor 0.88 is 1 - 0.04/(1/3)-style arithmetic; 0.16 is P(A and B) itself. The third event D is a red herring once P(A and B) has been recovered.",
+      "solution": "Since \\(P(D\\mid A\\cap B)=\\dfrac{P(A\\cap B\\cap D)}{P(A\\cap B)}\\), we get \\(P(A\\cap B)=\\dfrac{0.04}{0.25}=0.16\\). Independence of \\(A\\) and \\(B\\) gives \\(P(A)P(B)=0.16\\), and substituting \\(P(B)=4P(A)\\) yields \\(4P(A)^{2}=0.16\\), so \\(P(A)=0.2\\) and \\(P(B)=0.8\\). Therefore \\(P(A\\cup B)=0.2+0.8-0.16=0.84\\)."
+    },
+    {
+      "number": 115,
+      "answer": "B",
+      "value": "6/7",
+      "confidence": "HIGH",
+      "reasoning": "Let each ratio equal t, so P(A) = 6t, P(B) = 3t, P(C) = 4t, P(D) = 2t. Mutual exclusivity and exhaustiveness give 15t = 1, t = 1/15, i.e. P(A) = 2/5, P(B) = 1/5, P(C) = 4/15, P(D) = 2/15. Then (P(A)+2P(B))/(3P(C)+P(D)) = (6t+6t)/(12t+2t) = 12/14 = 6/7. The value of t cancels, so the answer does not even need the exhaustiveness condition — a useful cross-check that the ratio is robust. Confirmed with exact Fractions.",
+      "solution": "Let the common ratio be \\(t\\), so that \\(P(A)=6t\\), \\(P(B)=3t\\), \\(P(C)=4t\\) and \\(P(D)=2t\\). Because the events are mutually exclusive and exhaustive, \\(6t+3t+4t+2t=1\\), giving \\(t=\\frac{1}{15}\\). Then \\(\\dfrac{P(A)+2P(B)}{3P(C)+P(D)}=\\dfrac{6t+6t}{12t+2t}=\\dfrac{12t}{14t}=\\dfrac{6}{7}\\), and note the \\(t\\) cancels, so the ratio is the same whatever the common value."
+    },
+    {
+      "number": 116,
+      "answer": "B",
+      "value": "\\(\\frac{2}{5\\sqrt{3}}=\\frac{2\\sqrt{3}}{15}\\)",
+      "confidence": "HIGH",
+      "reasoning": "With t = 1/15 the probabilities are 6/15, 3/15, 4/15, 2/15. G = (6*3*4*2 / 15^4)^(1/4) = (144)^(1/4) / 15. Since 144^(1/4) = sqrt(12) = 2*sqrt(3), G = 2*sqrt(3)/15 = 0.2309401... Rationalising, 2/(5*sqrt(3)) = 2*sqrt(3)/15 — same number, so the printed option matches exactly (sympy: simplify(option - G) == 0 for this option only; the other three evaluate to 1.4434, 0.3464 and 0.1155 against G = 0.2309).",
+      "solution": "The probabilities are \\(P(A)=\\frac{6}{15}\\), \\(P(B)=\\frac{3}{15}\\), \\(P(C)=\\frac{4}{15}\\) and \\(P(D)=\\frac{2}{15}\\). Their geometric mean is \\(G=\\left(\\frac{6\\cdot 3\\cdot 4\\cdot 2}{15^{4}}\\right)^{1/4}=\\frac{144^{1/4}}{15}\\). Since \\(144^{1/4}=\\sqrt{12}=2\\sqrt{3}\\), we get \\(G=\\frac{2\\sqrt{3}}{15}\\), which rationalises to \\(\\frac{2}{5\\sqrt{3}}\\)."
+    },
+    {
+      "number": 117,
+      "answer": "C",
+      "value": "16/75",
+      "confidence": "HIGH",
+      "reasoning": "With P(A) = 6/15, P(B) = 3/15, P(C) = 4/15, P(D) = 2/15, the reciprocals are 15/6, 15/3, 15/4, 15/2, whose sum is 15*(1/6+1/3+1/4+1/2) = 15*(15/12) = 75/4. So H = 4 / (75/4) = 16/75 = 0.21333. Exact Fractions used throughout. TRANSCRIPTION NOTE (solved as printed): the second option is printed 15/76 where its siblings use denominator 75 — verified on page image p42, where the options really read 14/75, 15/76, 16/75, 16/15. It looks like a misprint of a distractor, but it does not touch the answer, which is 16/75 and matches a printed option exactly. Numeric separation is comfortable: 0.1867, 0.1974, 0.2133, 1.0667.",
+      "solution": "The probabilities are \\(\\frac{6}{15},\\frac{3}{15},\\frac{4}{15},\\frac{2}{15}\\), so their reciprocals are \\(\\frac{15}{6},\\frac{15}{3},\\frac{15}{4},\\frac{15}{2}\\). These add to \\(15\\left(\\frac{1}{6}+\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{2}\\right)=15\\cdot\\frac{5}{4}=\\frac{75}{4}\\). The harmonic mean of four numbers is \\(H=\\dfrac{4}{\\sum 1/P}\\), so \\(H=\\dfrac{4}{75/4}=\\dfrac{16}{75}\\)."
+    },
+    {
+      "number": 118,
+      "answer": "A",
+      "value": "5/84",
+      "confidence": "HIGH",
+      "reasoning": "There are C(10,5) = 252 equally likely 5-element subsets. The smallest element is 4 exactly when 4 is chosen and the remaining four come from {5,...,10}, i.e. C(6,4) = 15 subsets. P = 15/252 = 5/84. Brute-force enumeration of all 252 subsets confirmed exactly 15 with minimum 4 and the reduced fraction 5/84.",
+      "solution": "Choosing \\(5\\) numbers from \\(10\\) gives \\(\\binom{10}{5}=252\\) equally likely selections. The smallest selected number is \\(4\\) precisely when \\(4\\) is included and the other four are all drawn from \\(\\{5,6,7,8,9,10\\}\\), which can happen in \\(\\binom{6}{4}=15\\) ways. Hence \\(P(x_1=4)=\\dfrac{15}{252}=\\dfrac{5}{84}\\)."
+    },
+    {
+      "number": 119,
+      "answer": "A",
+      "value": "5/21",
+      "confidence": "HIGH",
+      "reasoning": "x_3 = 6 means 6 is the median of the five chosen numbers: exactly two must come from {1,...,5} and exactly two from {7,...,10}. That is C(5,2)*C(4,2) = 10*6 = 60 subsets out of 252, so P = 60/252 = 5/21. Brute-force enumeration of all 252 subsets confirmed exactly 60 with third-smallest element 6.",
+      "solution": "For \\(6\\) to be the third smallest of the five numbers, \\(6\\) must be chosen along with exactly two numbers below it and exactly two above it. The two smaller ones come from \\(\\{1,2,3,4,5\\}\\) and the two larger from \\(\\{7,8,9,10\\}\\), giving \\(\\binom{5}{2}\\binom{4}{2}=10\\times 6=60\\) selections. Out of \\(\\binom{10}{5}=252\\), this gives \\(P(x_3=6)=\\dfrac{60}{252}=\\dfrac{5}{21}\\)."
+    },
+    {
+      "number": 120,
+      "answer": "C",
+      "value": "1/252",
+      "confidence": "HIGH",
+      "reasoning": "x_1 = 2 excludes 1; x_2 = 3 means nothing lies strictly between 2 and 3 (automatic); x_3 = 8 means nothing chosen lies strictly between 3 and 8, so 4, 5, 6, 7 are all excluded. The remaining two numbers must exceed 8, and only 9 and 10 are available, so both are forced: the unique subset is {2,3,8,9,10}. P = 1/252. Brute-force enumeration over all 252 subsets returned exactly one qualifying subset, (2,3,8,9,10), confirming both the count and that the event is not impossible — which rules out the printed 0.",
+      "solution": "Fixing \\(x_1=2\\) rules out \\(1\\), and \\(x_3=8\\) means none of \\(4,5,6,7\\) may be chosen, since anything there would sit between \\(3\\) and \\(8\\) in the ordering. The two remaining numbers must therefore both be larger than \\(8\\), and only \\(9\\) and \\(10\\) are left, so the selection \\(\\{2,3,8,9,10\\}\\) is the only one that works. Out of \\(\\binom{10}{5}=252\\) equally likely selections the probability is \\(\\dfrac{1}{252}\\) — small, but not zero."
+    }
+  ]
+}

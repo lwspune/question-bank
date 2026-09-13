@@ -1,0 +1,437 @@
+{
+  "band": "b5",
+  "pages": [34, 36, 38, 40, 42],
+  "bandReport": {
+    "numbersFound": [91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "COMPLETE — 30 questions, Q91-Q120 contiguous, five pages at 7/6/7/5/5. Printed page = 0-based index + 1 (p34=35, p36=37, p38=39, p40=41, p42=43).\n\nSEAM BEFORE: opened p32 (printed 33). It carries Q85-Q90, ends cleanly at Q90 with all four options and [P.T.O.], and Q90 is a standalone item. No question and no Directions block straddles the p32/p34 seam, so firstComplete is true and Q91 opens this band.\n\nSEAM AFTER: none — Q120 is the last question of the paper. Printed p43 still prints [P.T.O.] in its footer, but 0-based index 43 is the coaching-institute advertisement, not content, so the marker points at nothing and lastComplete is true.\n\nTWO DIRECTIONS SETS, both owned by this band because both blocks START inside it:\n- D115-117 opens on p40 (printed 41, right column, below Q114) and its members run Q115 on p40 plus Q116-Q117 on p42. All three carry the identical context.\n- D118-120 opens on p42 (printed 43, right column, above Q118) and all three members sit on that page.\nNo other set intrudes; both sets are contiguous in question number.\n\nHANDWRITING NOT TRANSCRIBED — one case worth naming because it changes a set's premise. On p40 the D115-117 equation is followed by what reads as '= k'. It is STUDENT PEN, not print: the three '=' signs inside the printed chain are thin, level and evenly barred, while this fourth one is thicker, slanted and uneven, and the character after it matches the student's own 'k' in the margin working '6k + 6k / 12k + 2k' beside Q115 (same glyph shape, same ink weight, compared side by side at 5-8x). The printed premise therefore ENDS at P(D)/2, and the context is stored that way. A chain of equalities with nothing on its right is complete as printed, and nothing in the three questions needs the constant.\n\nOther pen working ignored as instructed: p36 margin (np = 5, sigma^2 = npq etc. beside Q101-Q103), p38 (R/2, R = 1/2 beside Q109), p40 (a column of numbers beside Q114), p42 (scribbles across the right margin of Q118-Q120). No printed figure or diagram anywhere in the band — every question is stated in words, matching the expectation in the brief.\n\nNO DEVANAGARI PAGE. All five pages are English. Devanagari appears only inside the yellow CENTURION watermark slogan that crosses every page, which is the documented hazard, not a Hindi page — englishPages looks correct for this band."
+  },
+  "questions": [
+    {
+      "number": 91,
+      "stem": "Consider the following statements :\n\nI. \\(\\frac{d}{dx}\\ln|x| = -\\frac{1}{x}\\) if \\(x < 0\\)\n\nII. \\(\\frac{d}{dx}\\ln|x| = \\frac{1}{x}\\) if \\(x > 0\\)\n\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Differentiation",
+      "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 92,
+      "stem": "If \\(y = \\left| \\sin\\left(\\frac{\\pi}{4} - x\\right) \\right|\\), then what is \\(\\frac{dy}{dx}\\) at \\(x = \\frac{\\pi}{4}\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "\\(0\\)" },
+        { "label": "C", "text": "\\(1\\)" },
+        { "label": "D", "text": "It does not exist" }
+      ],
+      "chapter": "Differentiation",
+      "subtopic": "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 93,
+      "stem": "Let \\(f\\) be a differentiable function such that \\(f(x + y) = f(x) + f(y)\\) for all \\(x, y \\in R\\). Which of the following statements is/are correct?\n\nI. If \\(f(x) = x\\, g(x)\\), then the derivative of \\(f(x)\\) with respect to \\(x\\) is equal to \\(g(0)\\).\n\nII. If \\(f(x) = x^2 g(x)\\), then the derivative of \\(f(x)\\) with respect to \\(x\\) is equal to 0.\n\n(Here \\(g\\) is a continuous function)\n\nSelect the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Functions",
+      "subtopic": "Functional Equations",
+      "difficulty": "HARD",
+      "flags": [
+        "Both statements say 'the derivative of f(x) with respect to x is equal to ...' without naming the point of evaluation; transcribed exactly as printed. g(0) and 0 are point values, so a point (presumably x = 0) appears to be missing from the printed statements.",
+        "Subtopic fit is arguable: the premise is a Cauchy functional equation (Functions → Functional Equations) but the statements are about differentiating a product. None of the three Differentiation subtopics names this shape either."
+      ]
+    },
+    {
+      "number": 94,
+      "stem": "If\n\n\\(f(x) = x^{n-1} + x^{n-2} + x^{n-3} + \\ldots + 1\\)\n\nthen what is \\(f'(2)\\) equal to?",
+      "options": [
+        { "label": "A", "text": "\\(n2^{n-1} - 2^n + 1\\)" },
+        { "label": "B", "text": "\\(n2^n - 2^{n-1} + 1\\)" },
+        { "label": "C", "text": "\\(n2^{n-1} - 2^n - 1\\)" },
+        { "label": "D", "text": "\\((n-1)2^{n-2} - 2^{n-1} + 1\\)" }
+      ],
+      "chapter": "Differentiation",
+      "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+      "difficulty": "HARD",
+      "flags": [
+        "Forced subtopic fit. The differentiation is a plain power rule; the actual work is summing an arithmetico-geometric series, which no Differentiation subtopic names. Sequence & Series → 'Special Series and Special Sums' is an equally defensible home."
+      ]
+    },
+    {
+      "number": 95,
+      "stem": "\\(ABC\\) is a triangle right angled at \\(B\\). If \\(AC = 8\\) units, then what is the area of the triangle of maximum area?",
+      "options": [
+        { "label": "A", "text": "32 square units" },
+        { "label": "B", "text": "24 square units" },
+        { "label": "C", "text": "16 square units" },
+        { "label": "D", "text": "12 square units" }
+      ],
+      "chapter": "Application of Derivatives",
+      "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 96,
+      "stem": "For the curve \\(y = xe^{2x}\\)",
+      "options": [
+        { "label": "A", "text": "minimum occurs at \\(x = -2\\)" },
+        { "label": "B", "text": "minimum occurs at \\(x = -1\\)" },
+        { "label": "C", "text": "minimum occurs at \\(x = -1/2\\)" },
+        { "label": "D", "text": "maximum occurs at \\(x = -1/2\\)" }
+      ],
+      "chapter": "Application of Derivatives",
+      "subtopic": "Monotonicity, Extrema, and Critical Points",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The stem is printed as a bare phrase 'For the curve y = xe^{2x}' with no interrogative; the four options are complete statements. Transcribed as printed."
+      ]
+    },
+    {
+      "number": 97,
+      "stem": "Let \\(f(x) = \\int xe^x dx\\). Then \\(f(x)\\) decreases in the interval",
+      "options": [
+        { "label": "A", "text": "\\((-\\infty, 0)\\)" },
+        { "label": "B", "text": "\\((0, \\infty)\\)" },
+        { "label": "C", "text": "\\((-\\infty, -1)\\)" },
+        { "label": "D", "text": "\\((-1, \\infty)\\)" }
+      ],
+      "chapter": "Application of Derivatives",
+      "subtopic": "Monotonicity, Extrema, and Critical Points",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 98,
+      "stem": "What is the solution of the differential equation \\(\\frac{dy}{dx} = 1 + x \\cot(y - x)\\)?",
+      "options": [
+        { "label": "A", "text": "\\(\\sec(y - x) = ce^{\\frac{x^2}{2}}\\)" },
+        { "label": "B", "text": "\\(\\cos(y - x) = ce^{\\frac{x^2}{2}}\\)" },
+        { "label": "C", "text": "\\(\\operatorname{cosec}(y - x) = ce^{\\frac{x^2}{2}}\\)" },
+        { "label": "D", "text": "\\(\\sin(y - x) = ce^{\\frac{x^2}{2}}\\)" }
+      ],
+      "chapter": "Differential Equations",
+      "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 99,
+      "stem": "Consider the following statements in respect of the function\n\n\\(f : R - \\left\\{\\frac{3}{5}\\right\\} \\to R - \\left\\{\\frac{3}{5}\\right\\}\\)\n\nsuch that \\(f(x) = \\frac{3x + 2}{5x - 3}\\) :\n\nI. \\(f(x)\\) is a bijective function.\n\nII. \\(f^{-1}(x) = f(x)\\)\n\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Functions",
+      "subtopic": "Composition and Inverse of Functions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 100,
+      "stem": "Let \\(A\\) and \\(B\\) be the sets having only 2 and 3 elements respectively. What is the total number of mappings from \\(A\\) to \\(B\\)?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "9" }
+      ],
+      "chapter": "Sets & Relations",
+      "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+      "difficulty": "EASY",
+      "flags": [
+        "Subtopic fit is arguable: the question counts MAPPINGS (functions) rather than relations. Filed under the Sets & Relations counting subtopic because a mapping is a subset of the Cartesian product; Functions → 'Function Definition and Classification — Injectivity, Surjectivity, Bijectivity' is the alternative, but that subtopic names classification rather than counting."
+      ]
+    },
+    {
+      "number": 101,
+      "stem": "The variance of 10 observations is 25. If 2 is multiplied to each of the observations and subsequently 7 is subtracted from each multiplied observation, then what is the new variance?",
+      "options": [
+        { "label": "A", "text": "125" },
+        { "label": "B", "text": "100" },
+        { "label": "C", "text": "50" },
+        { "label": "D", "text": "25" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 102,
+      "stem": "If the random variable \\(X\\) has mean 5 and standard deviation 4, then what is the standard deviation of the random variable \\(Y = 3X + 4\\)?",
+      "options": [
+        { "label": "A", "text": "16" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "6" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 103,
+      "stem": "For a binomial distribution with mean 4 and standard deviation \\(\\sqrt{3}\\), what is the value of \\(P(X = 0)\\)?",
+      "options": [
+        { "label": "A", "text": "\\(\\left(\\frac{1}{4}\\right)^{16}\\)" },
+        { "label": "B", "text": "\\(\\left(\\frac{3}{4}\\right)^{16}\\)" },
+        { "label": "C", "text": "\\(\\left(\\frac{1}{4}\\right)^{12}\\)" },
+        { "label": "D", "text": "\\(\\left(\\frac{3}{4}\\right)^{12}\\)" }
+      ],
+      "chapter": "Binomial Distribution",
+      "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 104,
+      "stem": "If the correlation coefficient between the variables \\(X\\) and \\(Y\\) is zero, then the two lines of regression are",
+      "options": [
+        { "label": "A", "text": "\\(X + Y + 11 = 0\\) and \\(2X + 3Y + 4 = 0\\)" },
+        { "label": "B", "text": "\\(X = \\overline{X}\\) and \\(Y = \\overline{Y}\\)" },
+        { "label": "C", "text": "\\(X = 0.4Y + 10\\) and \\(Y = 1.6X + 20\\)" },
+        { "label": "D", "text": "\\(\\overline{X} + \\overline{Y} + 11 = 0\\) and \\(2\\overline{X} + 3\\overline{Y} + 4 = 0\\)" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Regression and Correlation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 105,
+      "stem": "Four dice are rolled. What is the probability of getting a total of the numbers on the dice as 7?",
+      "options": [
+        { "label": "A", "text": "5/1296" },
+        { "label": "B", "text": "7/324" },
+        { "label": "C", "text": "7/1296" },
+        { "label": "D", "text": "5/324" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Probability via Counting",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 106,
+      "stem": "If \\(P(A \\cap B) = 1/2\\) and \\(P(\\overline{A} \\cap \\overline{B}) = 1/2\\), and \\(2P(A) = P(B) = k\\), then what is the value of \\(k\\)?",
+      "options": [
+        { "label": "A", "text": "1/4" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "1/3" },
+        { "label": "D", "text": "2/3" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 107,
+      "stem": "A committee has 6 men and 4 women. One member is selected randomly which is woman only. What is the probability that she belongs to a subgroup of 2 senior women?",
+      "options": [
+        { "label": "A", "text": "1/3" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "2/3" },
+        { "label": "D", "text": "3/4" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+      "difficulty": "EASY",
+      "flags": [
+        "The phrase 'One member is selected randomly which is woman only' is printed exactly as transcribed; it is ungrammatical in the booklet and should not be repaired. The stem also never states that the 2 senior women are among the 4 women — that is left implicit."
+      ]
+    },
+    {
+      "number": 108,
+      "stem": "The standard deviation of \\(X\\) is 4 and the standard deviation of \\(Y\\) is 5. If the correlation coefficient \\(r\\) is 0.8, then what is the regression coefficient of \\(Y\\) on \\(X\\)?",
+      "options": [
+        { "label": "A", "text": "\\(-2\\)" },
+        { "label": "B", "text": "\\(-1\\)" },
+        { "label": "C", "text": "\\(0\\)" },
+        { "label": "D", "text": "\\(1\\)" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Regression and Correlation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 109,
+      "stem": "In a class, the probability of passing students in Mathematics is 0.7 and the probability of passing both Mathematics and Statistics is 0.5. What is the probability that a student passes Statistics given that the student passed Mathematics?",
+      "options": [
+        { "label": "A", "text": "5/7" },
+        { "label": "B", "text": "4/7" },
+        { "label": "C", "text": "3/7" },
+        { "label": "D", "text": "2/7" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 110,
+      "stem": "If the mean of 50 observations is 40 and the standard deviation is 8, then what is the coefficient of variation?",
+      "options": [
+        { "label": "A", "text": "15%" },
+        { "label": "B", "text": "20%" },
+        { "label": "C", "text": "25%" },
+        { "label": "D", "text": "30%" }
+      ],
+      "chapter": "Statistics",
+      "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 111,
+      "stem": "If two fair dice are tossed, then what is the probability that the sum of the numbers on the faces of the dice is neither 5 nor 7?",
+      "options": [
+        { "label": "A", "text": "11/18" },
+        { "label": "B", "text": "2/3" },
+        { "label": "C", "text": "13/18" },
+        { "label": "D", "text": "5/6" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Probability via Counting",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 112,
+      "stem": "Consider the following statements for three events \\(A\\), \\(B\\) and \\(C\\) :\n\nI. \\(P(A \\cap B \\cap C) \\le P(A) + P(B) + P(C) - 2\\)\n\nII. \\(P(A \\cup B \\cup C) \\ge P(A) + P(B) + P(C)\\)\n\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Bounds on Probability",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 113,
+      "stem": "A Mathematics problem is given to two students \\(X\\) and \\(Y\\) to solve. The odds in favour of \\(X\\) solving the problem are 6 to 9 and the odds against \\(Y\\) in solving the problem are 6 to 5. What is the probability that the problem will be solved if both \\(X\\) and \\(Y\\) try to solve the problem?",
+      "options": [
+        { "label": "A", "text": "27/55" },
+        { "label": "B", "text": "31/55" },
+        { "label": "C", "text": "37/55" },
+        { "label": "D", "text": "39/55" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 114,
+      "stem": "The events \\(A\\) and \\(B\\) are independent among three events \\(A\\), \\(B\\) and \\(D\\). If \\(P(A \\cap B \\cap D) = 0.04\\), \\(P(D \\mid A \\cap B) = 0.25\\) and \\(P(B) = 4P(A)\\), then what is the value of \\(P(A \\cup B)\\)?",
+      "options": [
+        { "label": "A", "text": "0.88" },
+        { "label": "B", "text": "0.84" },
+        { "label": "C", "text": "0.28" },
+        { "label": "D", "text": "0.16" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 115,
+      "stem": "What is \\(\\frac{P(A) + 2P(B)}{3P(C) + P(D)}\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nLet \\(A\\), \\(B\\), \\(C\\) and \\(D\\) be mutually exclusive and exhaustive events such that\n\n\\(\\frac{P(A)}{6} = \\frac{P(B)}{3} = \\frac{P(C)}{4} = \\frac{P(D)}{2}\\)",
+      "setLabel": "D115-117",
+      "options": [
+        { "label": "A", "text": "5/4" },
+        { "label": "B", "text": "6/7" },
+        { "label": "C", "text": "2/5" },
+        { "label": "D", "text": "17/6" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 116,
+      "stem": "If \\(G\\) is the geometric mean of \\(P(A)\\), \\(P(B)\\), \\(P(C)\\) and \\(P(D)\\), then what is \\(G\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nLet \\(A\\), \\(B\\), \\(C\\) and \\(D\\) be mutually exclusive and exhaustive events such that\n\n\\(\\frac{P(A)}{6} = \\frac{P(B)}{3} = \\frac{P(C)}{4} = \\frac{P(D)}{2}\\)",
+      "setLabel": "D115-117",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{5}{2\\sqrt{3}}\\)" },
+        { "label": "B", "text": "\\(\\frac{2}{5\\sqrt{3}}\\)" },
+        { "label": "C", "text": "\\(\\frac{\\sqrt{3}}{5}\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{5\\sqrt{3}}\\)" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Filed with its set under Probability because the shared premise (mutually exclusive and exhaustive) is what makes it solvable; the second half of the work is a geometric mean, which Sequence & Series → 'Harmonic Progressions and the Three Means' also covers."
+      ]
+    },
+    {
+      "number": 117,
+      "stem": "If \\(H\\) is the harmonic mean of \\(P(A)\\), \\(P(B)\\), \\(P(C)\\) and \\(P(D)\\), then what is \\(H\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nLet \\(A\\), \\(B\\), \\(C\\) and \\(D\\) be mutually exclusive and exhaustive events such that\n\n\\(\\frac{P(A)}{6} = \\frac{P(B)}{3} = \\frac{P(C)}{4} = \\frac{P(D)}{2}\\)",
+      "setLabel": "D115-117",
+      "options": [
+        { "label": "A", "text": "14/75" },
+        { "label": "B", "text": "15/76" },
+        { "label": "C", "text": "16/75" },
+        { "label": "D", "text": "16/15" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Filed with its set under Probability for the same reason as Q116; the second half of the work is a harmonic mean, which Sequence & Series → 'Harmonic Progressions and the Three Means' also covers.",
+        "Option (b) is printed as 15/76 — verified at 4x. The denominator 76 breaks the 75/75 pattern of options (a) and (c), so it looks like it could be a typographic slip for 15/75, but 76 is what the page prints and it is transcribed unchanged."
+      ]
+    },
+    {
+      "number": 118,
+      "stem": "What is \\(P(x_1 = 4)\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nFive numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [\\(x_1 < x_2 < x_3 < x_4 < x_5\\); \\(x_1\\) being the smallest number and \\(x_5\\) being the largest number selected].",
+      "setLabel": "D118-120",
+      "options": [
+        { "label": "A", "text": "5/84" },
+        { "label": "B", "text": "1/14" },
+        { "label": "C", "text": "1/7" },
+        { "label": "D", "text": "19/84" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Probability via Counting",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 119,
+      "stem": "What is \\(P(x_3 = 6)\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nFive numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [\\(x_1 < x_2 < x_3 < x_4 < x_5\\); \\(x_1\\) being the smallest number and \\(x_5\\) being the largest number selected].",
+      "setLabel": "D118-120",
+      "options": [
+        { "label": "A", "text": "5/21" },
+        { "label": "B", "text": "10/21" },
+        { "label": "C", "text": "11/21" },
+        { "label": "D", "text": "17/21" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Probability via Counting",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 120,
+      "stem": "What is \\(P(x_1 = 2, x_2 = 3, x_3 = 8)\\) equal to?",
+      "context": "For the next three (03) items that follow :\n\nFive numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [\\(x_1 < x_2 < x_3 < x_4 < x_5\\); \\(x_1\\) being the smallest number and \\(x_5\\) being the largest number selected].",
+      "setLabel": "D118-120",
+      "options": [
+        { "label": "A", "text": "1/12" },
+        { "label": "B", "text": "1/60" },
+        { "label": "C", "text": "1/252" },
+        { "label": "D", "text": "0" }
+      ],
+      "chapter": "Probability",
+      "subtopic": "Probability via Counting",
+      "difficulty": "HARD"
+    }
+  ]
+}
