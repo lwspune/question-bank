@@ -426,7 +426,57 @@ const MEDIUM_SCOPED = /(hindi|english)\s*(medium|version)/i;
  * "31 (a)" for its sub-parts, and a whole-document sweep reads those as MCQ
  * answers for questions that are not MCQs at all.
  */
+/**
+ * Read the Section-A key, trying the STRICT letter rule first and only falling
+ * back to the bare-letter layout if that yields nothing.
+ *
+ * WHY A FALLBACK AND NOT A WIDER RULE. Chemistry 2025/2026 print the entry as
+ * three separate lines (`1.` / `C` / `1`) with no parentheses, so the strict
+ * rule reads 0 of 16 and nineteen papers were routed to vision for a key that
+ * is machine-readable. The obvious fix -- also accept a letter alone on its
+ * line -- was measured on BOTH subjects and REGRESSED Physics from 41 papers to
+ * 36, because Physics schemes are prose-rich and a value-point line that is a
+ * single letter got promoted, breaking the ascending run ([1,2,2,3,…]).
+ * Tightening the bare branch to require a following marks line still left
+ * Physics at 37. So the permissive rule is genuinely worse for one subject and
+ * genuinely necessary for the other.
+ *
+ * Ordering them makes that a non-question: a paper the strict rule already
+ * parses never reaches the fallback, so the fallback can only ADD papers.
+ */
 export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
+  const strict = parseSectionAKeyWith(text, expected, false);
+  if (strict.ok) return strict.key;
+  const bare = parseSectionAKeyWith(text, expected, true);
+  if (bare.ok) return bare.key;
+  // Report the STRICT failure: it describes the layout we expected, and the
+  // fallback's complaint about a layout this paper never had would mislead.
+  throw strict.error;
+}
+
+function parseSectionAKeyWith(
+  text: string,
+  expected: number | undefined,
+  allowBare: boolean
+): { ok: true; key: KeyEntry[] } | { ok: false; key: KeyEntry[]; error: Error } {
+  try {
+    const { anchored, key } = parseSectionAKeyStrictly(text, expected, allowBare);
+    // NO ANCHOR is a legitimate empty answer -- a Term-II paper has no MCQ
+    // section at all -- and must stay `[]` rather than become an error.
+    // An anchor with ZERO entries is the failure worth retrying permissively:
+    // with no `expected` to check against it would otherwise return [] silently.
+    if (!anchored) return { ok: true, key };
+    return key.length ? { ok: true, key } : { ok: false, key, error: new Error("no Section-A entries parsed") };
+  } catch (e) {
+    return { ok: false, key: [], error: e as Error };
+  }
+}
+
+function parseSectionAKeyStrictly(
+  text: string,
+  expected: number | undefined,
+  allowBare: boolean
+): { anchored: boolean; key: KeyEntry[] } {
   // Find the Section-A header, SKIPPING any table-of-contents entry. Physics
   // 2026's marking scheme opens with a contents page whose "SECTION-A ..... 4"
   // line matches first; anchoring there finds nothing but dot leaders and the
@@ -439,7 +489,7 @@ export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
     a = m;
     break;
   }
-  if (!a) return [];
+  if (!a) return { anchored: false, key: [] };
   const rest = text.slice(a.index + a[0].length);
   const b = SECTION_B_START.exec(rest);
   const block = b ? rest.slice(0, b.index) : rest;
@@ -457,9 +507,29 @@ export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
   // promoted to an entry when the text BEFORE the next candidate carries either
   // an option letter or a void note. That is what keeps the marks columns out.
   const CANDIDATE = /(?:^|\n)[ \t]*Q?[ \t]*(\d{1,2})[ \t]*[.)]?[ \t]*/g;
-  // "(A)" and, because CBSE typos it, "A)". The CLOSING paren stays REQUIRED:
-  // without it "Award one mark" reads as answer "A".
-  const LETTER = /^\s*\(?[ \t]*([A-Da-d])[ \t]*\)([^\n]*)/;
+  // "(A)" and, because CBSE typos it, "A)" — OR a BARE letter that stands
+  // ALONE on its line.
+  //
+  // The closing paren used to be unconditionally required, to stop "Award one
+  // mark" reading as answer "A". That guard is real and is still pinned by a
+  // test — but it also refused a whole layout: Chemistry 2025/2026 print the
+  // number, the letter and the mark on three SEPARATE lines with no parens at
+  // all, so the parser read 0 of 16 and nineteen papers went to vision for a
+  // key that is perfectly machine-readable (measured 2026-09-13 on 2026-56-1-2,
+  // whose text layer is pristine).
+  //
+  // ⚠ "alone on its line" is NOT a sufficient discriminator, and assuming it
+  // was cost Physics five papers on first measurement (41 -> 36, with runs like
+  // [1,2,2,3,…]): Physics schemes are prose-rich, so a value-point line that
+  // happens to be a single letter got promoted, and the spurious entry broke
+  // the ascending check. Measuring BOTH subjects is what caught it.
+  //
+  // The sound discriminator is the TABLE'S OWN STRUCTURE — a Section-A entry is
+  // <number> / <letter> / <marks>, so the bare letter must be followed by a
+  // lone-number line. Prose is not, and a stray letter in a value point is not.
+  const LETTER = allowBare
+    ? /^\s*\(?[ \t]*([A-Da-d])[ \t]*(?:\)|(?=[ \t]*\r?\n[ \t]*\d{1,2}[ \t]*(?:\r?\n|$)))([^\n]*)/
+    : /^\s*\(?[ \t]*([A-Da-d])[ \t]*\)([^\n]*)/;
 
   const cands: { q: number; from: number; to: number }[] = [];
   for (let m = CANDIDATE.exec(block); m; m = CANDIDATE.exec(block)) {
@@ -534,7 +604,7 @@ export function parseSectionAKey(text: string, expected?: number): KeyEntry[] {
         `than returning a partial key, which downstream would read as complete.`
     );
   }
-  return all;
+  return { anchored: true, key: all };
 }
 
 // ─── merged marking schemes ──────────────────────────────────────────────────

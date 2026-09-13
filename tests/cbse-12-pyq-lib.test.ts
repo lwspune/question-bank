@@ -1086,3 +1086,52 @@ describe("parsePaperCode — the alternate subject-code anchor", () => {
     expect(parsePaperCode("55-3-1.pdf", "55")).toEqual({ series: "3", set: "1" });
   });
 });
+
+describe("parseSectionAKey — the BARE-LETTER layout (Chemistry 2025/2026)", () => {
+  // REAL, measured 2026-09-13 off 2026-56-1-2's marking scheme. Its text layer
+  // is pristine (12,975 chars, header "SECTION – A" with a true en-dash) and
+  // the key is trivially legible -- but the number, the letter and the MARK are
+  // each on their OWN LINE:
+  //
+  //     1.        2.
+  //     C         B
+  //     1         1
+  //
+  // The old LETTER rule required a CLOSING PAREN, so it matched nothing here
+  // and the paper was refused as "read 0 of 16". Four 2026 Chemistry papers and
+  // fifteen more across other years were routed to vision for this alone, even
+  // though their keys are machine-readable.
+  const CHEM_2026 = `MARKING SCHEME\nCHEMISTRY (Subject Code-043)\nQ.No.\nEXPECTED OUTCOMES/VALUE POINTS\nMarks\n \nSECTION – A\n \n1.  \nC \n1 \n2. \nB \n1 \n3. \nD \n1 \n \nSECTION – B \n17. \nPositive Deviation`;
+
+  it("reads a bare letter that stands alone on its line", () => {
+    expect(parseSectionAKey(CHEM_2026, 3).map((e) => [e.q, e.answer])).toEqual([
+      [1, "C"],
+      [2, "B"],
+      [3, "D"],
+    ]);
+  });
+
+  it("does not mistake the MARKS column for an answer", () => {
+    // Every entry is followed by a line reading just "1". If those were read as
+    // candidates the run would not ascend 1..N and the paper would be refused.
+    const key = parseSectionAKey(CHEM_2026, 3);
+    expect(key).toHaveLength(3);
+    expect(key.every((e) => e.valueText === undefined || e.valueText === "")).toBe(true);
+  });
+
+  it("STILL refuses to read 'Award one mark' as answer A", () => {
+    // The regression guard. The closing paren was required precisely to stop
+    // prose keying itself; the bare-letter form is admitted ONLY when the
+    // letter is alone on its line, which prose never is.
+    const t = `SECTION A \n1 \nAward one mark to each student \n1 \n \nSECTION B \n17 \nprose`;
+    expect(() => parseSectionAKey(t, 1)).toThrow(/short|expected|no option/i);
+  });
+
+  it("STILL reads the parenthesised forms unchanged", () => {
+    const t = `SECTION A \n1 \n(C) zero \n1 \n2 \nA)   Both are true \n1 \n \nSECTION - B \n17 \nprose`;
+    expect(parseSectionAKey(t).map((e) => [e.q, e.answer])).toEqual([
+      [1, "C"],
+      [2, "A"],
+    ]);
+  });
+});
