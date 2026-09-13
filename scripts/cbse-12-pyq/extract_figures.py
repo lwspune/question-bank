@@ -43,7 +43,24 @@ from regions import merge, big  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(HERE, "out", "figures")
-SOURCE_ROOT = r"C:\tmp\PYQPs\CBSE\XII\Mathematics"
+SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
+
+# Which subject a paper belongs to is carried by its CODE, not by a flag: one
+# run's group list spans all three subjects at once, because a content_hash
+# group is a question and questions do not know about subjects. 55/56/65 are
+# the same three digits rearranged, so this mirrors prep.py's SUBJECTS registry
+# rather than guessing from the filename.
+SUBJECT_BY_PREFIX = {"55": "Physics", "56": "Chemistry", "65": "Mathematics"}
+
+
+def source_root(code):
+    """...\\XII\\<Subject> for a paper code like "55-4-1"."""
+    prefix = str(code).split("-")[0].strip()
+    subject = SUBJECT_BY_PREFIX.get(prefix)
+    if subject is None:
+        return None
+    return os.path.join(SOURCE_BASE, subject)
+
 
 REPRINT_MAX = 8      # measured: worst genuine reprint 8, known collision 42
 COLLISION_SURE = 20  # above this it is certainly a different figure
@@ -74,7 +91,10 @@ def hamming(a, b):
 
 
 def find_pdf(year, code, kind="qp"):
-    root = os.path.join(SOURCE_ROOT, str(year), kind)
+    base = source_root(code)
+    if base is None:
+        return None
+    root = os.path.join(base, str(year), kind)
     want = code.replace("/", "-")
     for dirpath, _, files in os.walk(root):
         for fn in files:
