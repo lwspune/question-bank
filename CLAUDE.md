@@ -298,6 +298,12 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > “why didn’t we just…?”; the full post-mortem for every one of them is in
 > [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md) under `### 2026-09-01 to 2026-09-14`. Nothing was deleted.
 
+- **2026-09-14 (fourth) — the twenty UPSC NDA & NA cut-off PDFs (2016-2025, both sittings, no gaps) extracted into a typed registry at `src/lib/exam/cutoffs/`: 34 tests, an in-repo evidence file, no page and no DB table.**
+  - **The "at least 25% in each subject" rule every source quotes is wrong for four of the twenty sittings** — 2016-II, 2022-II, 2023-II and 2024-I published 20%. Stored per sitting and pinned BY NAME, so a later "simplify it to a constant" fails loudly instead of quietly making a fifth of the corpus wrong.
+  - **NDA II 2025 broke the one-cut-off-per-stage assumption** — first with separate male/female figures (304.90 / 358.84 written), first with decimals. Hence a LIST of (audience, marks) pairs; `cutoffFor` falls back to a sitting's single figure but THROWS when asked for one `"all"` number from a split sitting, because picking the male figure is the flattening the shape exists to prevent.
+  - **Eight sittings publish no recommendation table**, so those fields are null, never 0 — a 0 asserts nobody was recommended ([[default-becomes-assertion]]). Same reason `airForceShape` records `lumped` vs `split`: the wing table does not survive the 2021-II seam.
+  - **The provenance probe was fault-injected before it was believed** — 288→289 and 2024-I's 20%→25% each failed it, the second caught by two tests independently.
+
 - **2026-09-14 (third) — NDA II 2026 Paper II (GAT) ingested: 150 q committed PRIVATE via a new `scripts/nda-gat/`, and Set D transcribed a SECOND time as a fidelity check that came back 134/134 with ZERO option permutations.** The first GAT sitting with a source of record; the other 18 came from untracked `.xlsx`.
   - **NOT a fork of `scripts/nda-pyq`** — a GAT paper carries NINE subjects and decides `subject` per question, so the catalog is THREE levels, a type change. Measured rather than assumed: 7 of the 9 `cds-maths` pure functions re-export verbatim; only `validateCatalog` and `buildRecords` fork (~90 lines).
   - **The bilingual rule is NOT a parity.** Part A (English, Q1-50) is printed ENGLISH-ONLY over six CONSECUTIVE pages 2-7; only Part B alternates even=Hindi/odd=English. Carrying the sibling Maths booklet's pure-alternation assumption across would silently feed an agent Devanagari.
