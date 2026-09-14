@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Biology — Strategy Guide",
   description:
-    "How NDA PART B Biology actually works. A 190-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Verify strands, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses.",
+    "How NDA PART B Biology actually works. A 199-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Verify strands, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-biology" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaBiologyLanding() {
         type="CollectionPage"
         path="/guide/nda-biology"
         headline="NDA Biology — Strategy Guide"
-        description="A 190-question analysis of the Biology half of GAT PART B, 2017–2026. Recall vs Apply vs Verify strands, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses."
+        description="A 199-question analysis of the Biology half of GAT PART B, 2017–2026. Recall vs Apply vs Verify strands, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA Biology Guide"

@@ -82,8 +82,8 @@ export const STRATEGY_HEADLINE = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label: "Recall — Sound · Modern Physics · Astronomy · Energy · Units (79 q · 18% of bank)",
-  qCount: 79,
-  pctOfBank: 18,
+  qCount: 80,
+  pctOfBank: 17,
   pitch:
     "Pure fact recall — definitions, names, units, instrument identification, scientist–discovery pairs, EM spectrum order. 79 q at an average of 2% HARD. The single highest marks-per-hour strand in the bank. Don't be too cool to drill these — Modern Physics has 0 HARD across 10 years, Astronomy has 0 HARD across 4 q.",
   approach: [
@@ -94,7 +94,7 @@ export const RECALL_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Sound",
-      qCount: 34,
+      qCount: 35,
       pctHard: 3,
       posture: "drill-all",
       mustDrill: [
@@ -165,8 +165,8 @@ export const RECALL_STRAND: StrategyStrand = {
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
   label: "Apply — Light · Laws of Motion · Kinematics · WEP · Gravitation · Oscillations (215 q · 48%)",
-  qCount: 215,
-  pctOfBank: 48,
+  qCount: 232,
+  pctOfBank: 49,
   pitch:
     "The formula-engine strand. Almost half the bank. Each chapter is anchored on 1–3 named formulas (mirror formula, lens formula, Snell's law, F=ma, p=mv, KE=½mv², F=Gm₁m₂/r², T=2π√(L/g)). The work is recognising which formula a question wants, plugging in the numbers, watching the sign convention. %HARD varies 9–25% across chapters but the lever is the same: know the formula, watch the units, do the algebra.",
   approach: [
@@ -177,8 +177,8 @@ export const APPLY_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Light and Optics",
-      qCount: 97,
-      pctHard: 10,
+      qCount: 102,
+      pctHard: 12,
       posture: "drill-all-target-hard",
       mustDrill: [
         "Light Phenomena and Spectrum",
@@ -196,8 +196,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Laws of Motion and Forces",
-      qCount: 41,
-      pctHard: 10,
+      qCount: 44,
+      pctHard: 9,
       posture: "drill-all",
       mustDrill: [
         "Newton's Laws of Motion",
@@ -213,8 +213,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Kinematics and Motion",
-      qCount: 24,
-      pctHard: 25,
+      qCount: 27,
+      pctHard: 26,
       posture: "cherry-pick-easy-mod",
       mustDrill: [
         "Equations of Motion and Graphs",
@@ -228,8 +228,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Work, Energy and Power",
-      qCount: 23,
-      pctHard: 9,
+      qCount: 26,
+      pctHard: 12,
       posture: "drill-all",
       mustDrill: [
         "Energy and Conservation",
@@ -244,8 +244,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Gravitation",
-      qCount: 17,
-      pctHard: 12,
+      qCount: 19,
+      pctHard: 11,
       posture: "drill-all",
       mustDrill: [
         "Gravitational Field and Potential",
@@ -259,8 +259,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Oscillations and Waves",
-      qCount: 13,
-      pctHard: 15,
+      qCount: 14,
+      pctHard: 21,
       posture: "drill-all",
       mustDrill: [
         "Simple Pendulum",
@@ -277,8 +277,8 @@ export const APPLY_STRAND: StrategyStrand = {
 export const REASON_STRAND: StrategyStrand = {
   id: "reason",
   label: "Reason — Electricity & Magnetism · Heat · Fluid Mechanics (155 q · 35%)",
-  qCount: 155,
-  pctOfBank: 35,
+  qCount: 161,
+  pctOfBank: 34,
   pitch:
     "The HARD-concentrated strand. 3 chapters, 35% of the bank, 22% average HARD share — and the dominant HARD subtopics here (Resistance & Circuits 42%, Calorimetry 31%, Thermo Processes 33%, Buoyancy 31%, Pressure 29%) are where the candidates who 'know the formula' still fail. The lever is multi-step computational reasoning: heat balance with phase change, series-vs-parallel resistor combinatorics, density-mixing with ratio inversion.",
   approach: [
@@ -290,8 +290,8 @@ export const REASON_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Electricity and Magnetism",
-      qCount: 93,
-      pctHard: 22,
+      qCount: 97,
+      pctHard: 23,
       posture: "drill-all-target-hard",
       mustDrill: [
         "Combination of Resistors",
@@ -315,8 +315,8 @@ export const REASON_STRAND: StrategyStrand = {
     },
     {
       chapter: "Heat and Thermodynamics",
-      qCount: 39,
-      pctHard: 21,
+      qCount: 40,
+      pctHard: 20,
       posture: "drill-all-target-hard",
       mustDrill: [
         "Heat, Calorimetry and Specific Heat",
@@ -335,8 +335,8 @@ export const REASON_STRAND: StrategyStrand = {
     },
     {
       chapter: "Fluid Mechanics and Properties of Matter",
-      qCount: 23,
-      pctHard: 30,
+      qCount: 24,
+      pctHard: 29,
       posture: "drill-all-target-hard",
       mustDrill: [
         "Buoyancy, Density and Flotation",

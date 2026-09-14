@@ -24,7 +24,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA English Strategy — Recall, Rule, Reason",
   description:
-    "Evidence-led NDA English (GAT) preparation: three skill buckets (Recall vs Rule vs Reason), per-chapter must-drill subtopics, test-day attempt order, and a 48-hour time-budget plan. Backed by 900 past-year questions across 18 papers.",
+    "Evidence-led NDA English (GAT) preparation: three skill buckets (Recall vs Rule vs Reason), per-chapter must-drill subtopics, test-day attempt order, and a 48-hour time-budget plan. Backed by 950 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-english/strategy" },
 };
 

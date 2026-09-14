@@ -8,7 +8,7 @@
  * playbook, resolved via loadWorkedExamples at request time), and
  * relatedSlugs (cross-links to other playbooks).
  *
- * UUIDs SQL-picked 2026-05-18 against the live 345-q NDA Geography PUBLIC
+ * UUIDs SQL-picked 2026-05-18 against the live 367-q NDA Geography PUBLIC
  * bank — most-recent year first, HARD picked when the chapter has a HARD
  * pool, else MOD/EASY. All 7 chapters have details.
  */

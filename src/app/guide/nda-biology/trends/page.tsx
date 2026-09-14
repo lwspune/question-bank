@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Biology Trends — How the paper drifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA PART B Biology across 18 papers. UNLIKE Physics, the paper has NOT hardened — only 4 HARDs across 190 q. Cell Biology grew 2022–24, Microbiology faded after 2019, Reproduction had a 2023 spike. Drill all 10 years equally.",
+    "Year-by-year chapter drift in NDA PART B Biology across 19 papers. UNLIKE Physics, the paper has NOT hardened — only 4 HARDs across 199 q. Cell Biology grew 2022–24, Microbiology faded after 2019, Reproduction had a 2023 spike. Drill all 10 years equally.",
   alternates: { canonical: "/guide/nda-biology/trends" },
 };
 
@@ -58,12 +58,12 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-biology/trends"
         headline="NDA Biology Trends — How the paper drifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA PART B Biology across 18 papers. The paper has NOT hardened. Cell Biology grew 2022–24, Microbiology faded after 2019, Reproduction had a 2023 spike."
+        description="Year-by-year chapter drift in NDA PART B Biology across 19 papers. The paper has NOT hardened. Cell Biology grew 2022–24, Microbiology faded after 2019, Reproduction had a 2023 spike."
       />
       <GuideHero
         eyebrow="Trends"
         title="NDA Biology 2026 is structurally similar to NDA Biology 2017"
-        subtitle="The most important pattern in NDA Biology trends is the ABSENCE of one — UNLIKE Physics (which hardened 22× per question), Biology has stayed remarkably stable. Only 4 HARDs across 190 q over 10 years. Chapter mix has shifted (Cell Biology grew, Microbiology faded), but the paper's recall-heavy character is the same. Drill all 10 years equally."
+        subtitle="The most important pattern in NDA Biology trends is the ABSENCE of one — UNLIKE Physics (which hardened 22× per question), Biology has stayed remarkably stable. Only 4 HARDs across 199 q over 10 years. Chapter mix has shifted (Cell Biology grew, Microbiology faded), but the paper's recall-heavy character is the same. Drill all 10 years equally."
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -198,7 +198,7 @@ export default async function Trends() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Counts per year (NDA-1 + NDA-2 combined; 2020 NDA-2 COVID-cancelled,
-          2026 NDA-2 not yet held — so those columns hold ~half a normal
+          2026 is now complete (NDA-2 written 2026-09-14) — so only 2020 holds ~half a normal
           year). Cells are tinted by row magnitude.
         </p>
         <div className="mt-4">

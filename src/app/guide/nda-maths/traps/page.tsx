@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "NDA Maths Traps — Distractor patterns NDA reuses",
   description:
-    "How students who know the math still lose marks. Factor-of-2 errors, sign-flip distractors, quadrant confusion, domain misses on the last step — measured against the live 2,160-question bank with worked examples.",
+    "How students who know the math still lose marks. Factor-of-2 errors, sign-flip distractors, quadrant confusion, domain misses on the last step — measured against the live 2,280-question bank with worked examples.",
   alternates: { canonical: "/guide/nda-maths/traps" },
 };
 
@@ -102,7 +102,7 @@ export default async function Traps() {
       <GuideHero
         eyebrow="Traps"
         title="Why students who know the math still lose marks"
-        subtitle="Most NDA Maths losses aren't from not knowing the formula — they're from factor-of-2 slips, sign-flips, quadrant confusion, and domain misses on the last step. Every claim on this page is measured against the live 2,160-question bank."
+        subtitle="Most NDA Maths losses aren't from not knowing the formula — they're from factor-of-2 slips, sign-flips, quadrant confusion, and domain misses on the last step. Every claim on this page is measured against the live 2,280-question bank."
       >
         <StatBlock stats={stats} />
       </GuideHero>

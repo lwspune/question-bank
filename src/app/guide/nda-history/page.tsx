@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA History — Strategy Guide",
   description:
-    "How NDA PART A History actually works. A 260-question analysis of every paper from 2017 to 2026 — Cornerstone vs Foundation Recall vs Quick-Win strands, 4 chapter playbooks, ~95-entry timeline + named-pairs reference, and the trap shapes NDA reuses.",
+    "How NDA PART A History actually works. A 269-question analysis of every paper from 2017 to 2026 — Cornerstone vs Foundation Recall vs Quick-Win strands, 4 chapter playbooks, ~95-entry timeline + named-pairs reference, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-history" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaHistoryLanding() {
         type="CollectionPage"
         path="/guide/nda-history"
         headline="NDA History — Strategy Guide"
-        description="A 260-question analysis of the History half of GAT PART A, 2017–2026. Cornerstone vs Foundation Recall vs Quick-Win strands, 4 chapter playbooks, ~95-entry timeline + named-pairs reference, and the trap shapes NDA reuses."
+        description="A 269-question analysis of the History half of GAT PART A, 2017–2026. Cornerstone vs Foundation Recall vs Quick-Win strands, 4 chapter playbooks, ~95-entry timeline + named-pairs reference, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA History Guide"

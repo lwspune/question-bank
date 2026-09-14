@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA English (GAT) — Strategy Guide",
   description:
-    "How NDA English actually works. A 900-question analysis of every GAT paper from 2017 to 2026 — Recall vs Rule vs Reason buckets, 16 chapter playbooks, vocabulary word families, and the trap shapes NDA reuses.",
+    "How NDA English actually works. A 950-question analysis of every GAT paper from 2017 to 2026 — Recall vs Rule vs Reason buckets, 16 chapter playbooks, vocabulary word families, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-english" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaEnglishLanding() {
         type="CollectionPage"
         path="/guide/nda-english"
         headline="NDA English (GAT) — Strategy Guide"
-        description="A 900-question analysis of the English half of GAT, 2017–2026. Recall vs Rule vs Reason buckets, 16 chapter playbooks, vocabulary word families, and the distractor traps NDA reuses."
+        description="A 950-question analysis of the English half of GAT, 2017–2026. Recall vs Rule vs Reason buckets, 16 chapter playbooks, vocabulary word families, and the distractor traps NDA reuses."
       />
       <GuideHero
         eyebrow="NDA English Guide"

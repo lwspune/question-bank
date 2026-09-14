@@ -13,7 +13,7 @@ import { COMPOUNDS } from "../_data/compounds";
 export const metadata: Metadata = {
   title: "NDA Maths Compound Tricks — 4 principle pairs that spike HARD",
   description:
-    "When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.5% bank average). Drill the recipe, not the silos.",
+    "When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.1% bank average). Drill the recipe, not the silos.",
   alternates: { canonical: "/guide/nda-maths/compound-tricks" },
 };
 
@@ -50,7 +50,7 @@ export default async function CompoundTricks() {
   const stats = [
     { value: String(COMPOUNDS.length), label: "compound recipes" },
     { value: String(totalCompound), label: "compound questions" },
-    { value: "40–67%", label: "HARD rate (vs 22.5% bank avg)" },
+    { value: "40–67%", label: "HARD rate (vs 22.1% bank avg)" },
     { value: "1.8–3×", label: "harder than average" },
   ];
 
@@ -68,21 +68,21 @@ export default async function CompoundTricks() {
         type="Article"
         path="/guide/nda-maths/compound-tricks"
         headline="NDA Maths Compound Tricks — 4 principle pairs that spike HARD"
-        description="When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.5% bank average). Drill the recipe, not the silos."
+        description="When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.1% bank average). Drill the recipe, not the silos."
       />
       <GuideHero
         eyebrow="Compound Tricks"
         title="4 principle pairs that spike HARD"
-        subtitle="When two principles appear together, the question is reliably hard — these compounds run 40–67% HARD vs the 22.5% bank average. Most students lose marks here not because they don't know either principle — but because they didn't see them chained. Drill the recipe, not the silos."
+        subtitle="When two principles appear together, the question is reliably hard — these compounds run 40–67% HARD vs the 22.1% bank average. Most students lose marks here not because they don't know either principle — but because they didn't see them chained. Drill the recipe, not the silos."
       >
         <StatBlock stats={stats} />
       </GuideHero>
 
       <section className="mt-12">
         <p className="font-serif leading-relaxed text-muted-foreground">
-          Across the 487 HARD questions in the 2,160-q bank, four principle
+          Across the 505 HARD questions in the 2,280-q bank, four principle
           pairings recur with markedly elevated HARD rates. Each compound
-          below runs 1.8× to 3× the bank-average HARD rate (22.5%), and the
+          below runs 1.8× to 3× the bank-average HARD rate (22.1%), and the
           questions that match almost always require <em>both</em> tricks
           in sequence. The chain is the skill — drill them as compounds.
         </p>

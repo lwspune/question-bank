@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA English Traps — Distractor patterns NDA reuses",
   description:
-    "How students who know the answer still lose marks. Near-synonym confusion, opposite-direction antonyms, literal-idiom interpretation, S-V proximity errors, PQRS opener mismatches — measured against the live 900-question bank.",
+    "How students who know the answer still lose marks. Near-synonym confusion, opposite-direction antonyms, literal-idiom interpretation, S-V proximity errors, PQRS opener mismatches — measured against the live 950-question bank.",
   alternates: { canonical: "/guide/nda-english/traps" },
 };
 

@@ -20,7 +20,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Economics — Strategy Guide",
   description:
-    "How NDA Economics actually works. A 24-question analysis of every paper from 2017 to 2026 — Five Year Plans dominate (75% of bank), schemes and trade are thin. The honest stance, the Plan timeline reference, and a single drill link to the full bank.",
+    "How NDA Economics actually works. A 25-question analysis of every paper from 2017 to 2026 — Five Year Plans dominate (75% of bank), schemes and trade are thin. The honest stance, the Plan timeline reference, and a single drill link to the full bank.",
   alternates: { canonical: "/guide/nda-economics" },
 };
 
@@ -55,7 +55,7 @@ export default async function NdaEconomicsLanding() {
           type="CollectionPage"
           path="/guide/nda-economics"
           headline="NDA Economics — Strategy Guide"
-          description="A 24-question analysis of NDA Economics across every paper 2017–2026. Five Year Plans dominate at 75% of the bank; schemes and trade are thin and current-affairs-heavy. The Plan timeline + an honest strategic cap on a single page."
+          description="A 25-question analysis of NDA Economics across every paper 2017–2026. Five Year Plans dominate at 75% of the bank; schemes and trade are thin and current-affairs-heavy. The Plan timeline + an honest strategic cap on a single page."
         />
 
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
@@ -276,7 +276,7 @@ export default async function NdaEconomicsLanding() {
               </strong>{" "}
               If a question is multi-statement or asks for a specific 12th
               Plan target / Nehru–Mahalanobis component, judge each statement
-              independently and use elimination — 41.7% HARD means distractors
+              independently and use elimination — 40% HARD means distractors
               are engineered.
             </li>
             <li>
@@ -305,7 +305,7 @@ export default async function NdaEconomicsLanding() {
             Drill the bank
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
-            One pass through all 24 questions is enough — the bank is small
+            One pass through all 25 questions is enough — the bank is small
             and the recall doesn&rsquo;t compound. Bookmark the timeline
             above and come back to it the morning of the exam.
           </p>

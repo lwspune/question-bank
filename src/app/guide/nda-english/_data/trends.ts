@@ -1,12 +1,12 @@
 /**
  * Content for /guide/nda-english/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 900-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 950-q
  * PUBLIC NDA English bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA GAT English half is ~50 q per paper, with NDA-1 +
  * NDA-2 each year except 2020 (COVID-cancelled NDA-2). So most years have
- * ~100 q tagged; 2020 has ~50; 2026 has 50 (NDA-1 only).
+ * ~100 q tagged; 2020 has ~50 (NDA-2 COVID-cancelled). 2026 is complete at 100.
  *
  * The notable shifts (in the bank window):
  *   1. Grammar EXPLODED 2024+ — 0 q 2017–2018, 10 q 2019–2020, then 30/40/18.
@@ -65,7 +65,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "down",
     title: "Spotting Errors went silent in 2024–25, returned in 2026",
     description:
-      "After holding a steady 10–20 q/paper-set for 2017–2023, Spotting Errors completely disappeared in 2024 and 2025 — zero questions both years. The 2026 NDA-1 brought it back with 5 q. The likely explanation: the format-change that expanded Grammar absorbed the Errors-style rule-testing questions into the new Sentence Completion format. If 2026 NDA-2 doubles down, expect Spotting Errors to land at ~10 q again.",
+      "After holding a steady 10–20 q/paper-set for 2017–2023, Spotting Errors completely disappeared in 2024 and 2025 — zero questions both years. The 2026 NDA-1 brought it back with 5 q and NDA-2 added 2, for 7 in the year. The likely explanation: the format-change that expanded Grammar absorbed the Errors-style rule-testing questions into the new Sentence Completion format. NDA-2 2026 did NOT double down — it added only 2 — so the chapter is back but at roughly a third of its old weight, not at the ~10 q the previous version of this page predicted.",
     drill: {
       chapter: "Spotting Errors",
       pyqYears: [2021, 2022, 2023],
@@ -89,6 +89,6 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "down",
     title: "Fill in the Blanks faded after 2023",
     description:
-      "FIB had a 2017–2023 baseline of 10–15 q/year, then dropped to 0 across 2024, 2025, and 2026 NDA-1. The likely cause: Sentence Completion (new in 2024) tests the same vocab-in-context skill in a slightly different format. If FIB returns, the Synonyms playbook word work covers it.",
+      "FIB had a 2017–2023 baseline of 10–15 q/year, then dropped to 0 across 2024, 2025 and 2026 NDA-1 — before NDA-2 2026 brought back 2. The likely cause: Sentence Completion (new in 2024) tests the same vocab-in-context skill in a slightly different format. If FIB returns, the Synonyms playbook word work covers it.",
   },
 ];

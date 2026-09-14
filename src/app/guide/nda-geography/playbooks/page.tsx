@@ -29,17 +29,17 @@ const BUCKET_INFO = {
     label:
       "Recall — Indian Geography Economy · Indian Geography Physical · World and Human Geography",
     blurb:
-      "Pure named-fact recall — rivers ↔ states ↔ tributaries, peaks ↔ ranges, minerals ↔ producer states, crops ↔ soils ↔ kharif/rabi, ports ↔ coast, world rivers ↔ countries, megacities ↔ population. 3 chapters, 173 questions, 17% average HARD. The marks-per-hour leader.",
+      "Pure named-fact recall — rivers ↔ states ↔ tributaries, peaks ↔ ranges, minerals ↔ producer states, crops ↔ soils ↔ kharif/rabi, ports ↔ coast, world rivers ↔ countries, megacities ↔ population. 3 chapters, 178 questions, 17% average HARD. The marks-per-hour leader.",
   },
   apply: {
     label: "Apply — Climatology, Atmosphere and Weather · Earth's Structure, Landforms and Geological Time",
     blurb:
-      "Mechanism-tracing — cyclogenesis (tropical vs extratropical), monsoon dynamics, pressure-belt formation, plate-boundary types, weathering chemistry, rock-cycle classification. 2 chapters, 131 q at 23% HARD — the densest-HARD strand.",
+      "Mechanism-tracing — cyclogenesis (tropical vs extratropical), monsoon dynamics, pressure-belt formation, plate-boundary types, weathering chemistry, rock-cycle classification. 2 chapters, 145 q at 23% HARD — the densest-HARD strand.",
   },
   verify: {
     label: "Verify — Earth in Space, Maps and Coordinates · Oceanography",
     blurb:
-      "Multi-statement true/false evaluation. 'Consider the following statements about terrestrial planets / cold ocean currents / mid-oceanic ridges...' shape dominates. 2 chapters, 41 q at 15% HARD. Slower per attempt — methodical evaluation pays.",
+      "Multi-statement true/false evaluation. 'Consider the following statements about terrestrial planets / cold ocean currents / mid-oceanic ridges...' shape dominates. 2 chapters, 44 q at 15% HARD. Slower per attempt — methodical evaluation pays.",
   },
 } as const;
 

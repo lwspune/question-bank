@@ -8,7 +8,7 @@
  * UUIDs (2 per playbook, resolved via loadWorkedExamples at request time),
  * and relatedSlugs (cross-links to other playbooks).
  *
- * UUIDs SQL-picked 2026-05-19 against the live 90-q NDA Polity PUBLIC
+ * UUIDs SQL-picked 2026-05-19 against the live 99-q NDA Polity PUBLIC
  * bank — most-recent year first, HARD picked when the chapter has a HARD
  * pool. All 4 chapters have details.
  */

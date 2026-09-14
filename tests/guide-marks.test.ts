@@ -16,20 +16,37 @@ import {
   OVERVIEW,
 } from "@/app/guide/nda-maths/_data/nda-maths";
 
+/**
+ * A FIXED marking scheme for the pure-arithmetic cases below.
+ *
+ * These cases previously passed the live `MARKING`, which meant an ingest
+ * that changed `papers` broke a test of the helper's ARITHMETIC even though
+ * the arithmetic was still correct — exactly what happened when NDA-2 2026
+ * took the bank from 18 papers to 19 on 2026-09-14. The helper's behaviour
+ * and the bank's current shape are separate claims, so they get separate
+ * tests: these use a frozen fixture, and the live-data invariants further
+ * down still read `MARKING`/`OVERVIEW` and SHOULD move when the bank does.
+ */
+const FIXTURE_MARKING = {
+  papers: 18,
+  marksPerQuestion: 2.5,
+  paperMarks: 300,
+} as const;
+
 describe("marksPerPaper", () => {
   it("converts a bank question count into marks in one paper", () => {
     // 170 questions across 18 papers = 9.44 q/paper x 2.5 marks = 23.6
-    expect(marksPerPaper(170, MARKING)).toBe(23.6);
+    expect(marksPerPaper(170, FIXTURE_MARKING)).toBe(23.6);
   });
 
   it("rounds to one decimal", () => {
-    expect(marksPerPaper(162, MARKING)).toBe(22.5);
-    expect(marksPerPaper(89, MARKING)).toBe(12.4);
+    expect(marksPerPaper(162, FIXTURE_MARKING)).toBe(22.5);
+    expect(marksPerPaper(89, FIXTURE_MARKING)).toBe(12.4);
   });
 
   it("keeps sub-1-mark chapters visible rather than rounding them to zero", () => {
-    // Linear Inequalities: 5 q across 18 papers is real but negligible.
-    expect(marksPerPaper(5, MARKING)).toBe(0.7);
+    // A 5-question chapter across 18 papers is real but negligible.
+    expect(marksPerPaper(5, FIXTURE_MARKING)).toBe(0.7);
   });
 
   it("returns 0 for an empty chapter", () => {
@@ -41,7 +58,9 @@ describe("marksPerPaper", () => {
   });
 
   it("maps the whole bank onto exactly one paper's marks", () => {
-    // The bank IS 18 complete papers, so the full count must map to 300.
+    // The bank IS `MARKING.papers` complete papers, so the full count must
+    // map to 300. This one READS LIVE DATA on purpose — it is the invariant
+    // that catches totalQ and papers drifting apart after an ingest.
     expect(marksPerPaper(OVERVIEW.totalQ, MARKING)).toBe(MARKING.paperMarks);
   });
 });

@@ -27,7 +27,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Chemistry Strategy — Recall, Rule, Calculate",
   description:
-    "Evidence-led NDA PART B Chemistry preparation: three skill strands (Recall vs Rule vs Calculate) matched to the bank's 63%-recall shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~36-hour time-budget plan. Backed by 262 past-year questions across 18 papers.",
+    "Evidence-led NDA PART B Chemistry preparation: three skill strands (Recall vs Rule vs Calculate) matched to the bank's 63%-recall shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~36-hour time-budget plan. Backed by 277 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-chemistry/strategy" },
 };
 

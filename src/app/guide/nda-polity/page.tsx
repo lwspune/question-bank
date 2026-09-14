@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Polity — Strategy Guide",
   description:
-    "How NDA PART A Polity actually works. A 90-question analysis of every paper from 2017 to 2026 — Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses.",
+    "How NDA PART A Polity actually works. A 99-question analysis of every paper from 2017 to 2026 — Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-polity" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaPolityLanding() {
         type="CollectionPage"
         path="/guide/nda-polity"
         headline="NDA Polity — Strategy Guide"
-        description="A 90-question analysis of the Polity section of GAT PART A, 2017–2026. Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses."
+        description="A 99-question analysis of the Polity section of GAT PART A, 2017–2026. Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA Polity Guide"

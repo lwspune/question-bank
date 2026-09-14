@@ -8,7 +8,7 @@
  * resolved via loadWorkedExamples at request time), and relatedSlugs
  * (cross-links to other playbooks).
  *
- * UUIDs SQL-picked 2026-05-19 against the live 260-q NDA History PUBLIC
+ * UUIDs SQL-picked 2026-05-19 against the live 269-q NDA History PUBLIC
  * bank — most-recent year first, HARD picked when the chapter has a HARD
  * pool. All 4 chapters have details.
  */

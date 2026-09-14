@@ -6,20 +6,25 @@ import {
 
 /**
  * Integrity guard for the hand-transcribed chapter × exam-paper matrix on
- * /guide/nda-maths/trends. The 30 rows × 18 columns are a SQL-derived
+ * /guide/nda-maths/trends. The 30 rows × 19 columns are a SQL-derived
  * snapshot typed by hand, so these invariants catch any transcription slip:
  *   - every row's `total` equals the sum of its cells,
  *   - every cell row is aligned to the paper columns,
  *   - every paper column sums to exactly 120 (each NDA Maths paper is 120 q),
- *   - the whole matrix sums to 2,160 (the PUBLIC bank).
+ *   - the whole matrix sums to 2,280 (the PUBLIC bank).
+ *
+ * NDA-2 2026 was written on 2026-09-14 and ingested the same day, so 2026 is
+ * a COMPLETE year for the first time and the matrix grew 18 -> 19 columns.
+ * 2020 remains the only Apr-only year (NDA-2 2020 was COVID-cancelled).
  */
 describe("EXAM_MATRIX — chapter × exam-paper integrity", () => {
-  it("has 18 paper columns (Apr=NDA-1, Sep=NDA-2; 2020 + 2026 are Apr-only)", () => {
-    expect(EXAM_PAPERS).toHaveLength(18);
-    // 2020 and 2026 have only an April paper.
-    const aprOnly = EXAM_PAPERS.filter((p) => p.sitting === "2").map((p) => p.year);
-    expect(aprOnly).not.toContain(2020);
-    expect(aprOnly).not.toContain(2026);
+  it("has 19 paper columns (Apr=NDA-1, Sep=NDA-2; only 2020 is Apr-only)", () => {
+    expect(EXAM_PAPERS).toHaveLength(19);
+    // 2020 is now the ONLY year with a single paper (NDA-2 2020 COVID-cancelled).
+    const sittingTwoYears = EXAM_PAPERS.filter((p) => p.sitting === "2").map((p) => p.year);
+    expect(sittingTwoYears).not.toContain(2020);
+    // NDA-2 2026 was held on 2026-09-14 — it MUST now be present.
+    expect(sittingTwoYears).toContain(2026);
   });
 
   it("every row's counts align to the paper columns", () => {
@@ -42,11 +47,11 @@ describe("EXAM_MATRIX — chapter × exam-paper integrity", () => {
     });
   });
 
-  it("the whole matrix sums to the 2,160-question bank", () => {
+  it("the whole matrix sums to the 2,280-question bank", () => {
     const grand = EXAM_MATRIX.reduce(
       (a, row) => a + row.counts.reduce((x, y) => x + y, 0),
       0
     );
-    expect(grand).toBe(2160);
+    expect(grand).toBe(2280);
   });
 });

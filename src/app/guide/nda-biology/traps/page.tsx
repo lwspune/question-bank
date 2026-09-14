@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Biology Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know biology still lose marks. Disease↔pathogen swap (malaria-Mycobacterium), vitamin↔deficiency swap, hormone↔gland swap, RNA-vs-DNA virus identity, monocot↔dicot trait flip, multi-statement partial-credit traps — measured against the live 190-question bank.",
+    "How candidates who know biology still lose marks. Disease↔pathogen swap (malaria-Mycobacterium), vitamin↔deficiency swap, hormone↔gland swap, RNA-vs-DNA virus identity, monocot↔dicot trait flip, multi-statement partial-credit traps — measured against the live 199-question bank.",
   alternates: { canonical: "/guide/nda-biology/traps" },
 };
 

@@ -27,7 +27,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Geography Strategy — Recall, Apply, Verify",
   description:
-    "Evidence-led NDA PART A Geography preparation: three skill strands (Recall vs Apply vs Verify) matched to the bank's actual shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~40-hour time-budget plan. Backed by 345 past-year questions across 18 papers.",
+    "Evidence-led NDA PART A Geography preparation: three skill strands (Recall vs Apply vs Verify) matched to the bank's actual shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~40-hour time-budget plan. Backed by 367 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-geography/strategy" },
 };
 

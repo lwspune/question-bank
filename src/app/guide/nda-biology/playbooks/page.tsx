@@ -29,17 +29,17 @@ const BUCKET_INFO = {
     label:
       "Recall — Human Physiology · Cell Biology · Microbiology · Biodiversity · Genetics",
     blurb:
-      "Pure fact recall — vitamin↔deficiency, organ↔function, organelle role, kingdom classification, disease↔pathogen, scientist↔discovery. 5 chapters, 132 questions, 1.5% average HARD. The marks-per-hour leader.",
+      "Pure fact recall — vitamin↔deficiency, organ↔function, organelle role, kingdom classification, disease↔pathogen, scientist↔discovery. 5 chapters, 138 questions, 1.5% average HARD. The marks-per-hour leader.",
   },
   apply: {
     label: "Apply — Plant Biology · Reproduction",
     blurb:
-      "Mechanism-tracing — photosynthesis flow, transpiration physics, osmosis direction, inheritance ratios, pollination genetics. 2 chapters, 42 q at 4% HARD — including 4 of the bank's 5 HARDs.",
+      "Mechanism-tracing — photosynthesis flow, transpiration physics, osmosis direction, inheritance ratios, pollination genetics. 2 chapters, 46 q at 4% HARD — including 4 of the bank's 5 HARDs.",
   },
   verify: {
     label: "Verify — Ecology + Environment · Biochemistry",
     blurb:
-      "Multi-statement true/false evaluation. 'Consider the following statements about X. Which are correct?' shape dominates. 2 chapters, 16 q at 0% HARD. Slower per attempt — methodical evaluation pays.",
+      "Multi-statement true/false evaluation. 'Consider the following statements about X. Which are correct?' shape dominates. 2 chapters, 15 q at 0% HARD. Slower per attempt — methodical evaluation pays.",
   },
 } as const;
 

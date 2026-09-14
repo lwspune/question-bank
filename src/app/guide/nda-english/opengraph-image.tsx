@@ -91,7 +91,7 @@ export default function NdaEnglishOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 900-question analysis of every GAT paper from 2017 to 2026 —
+            A 950-question analysis of every GAT paper from 2017 to 2026 —
             16 playbooks, vocabulary families, trends, and traps.
           </div>
         </div>

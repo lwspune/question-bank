@@ -5,8 +5,9 @@
  * Chapter / subtopic names are resolved to UUIDs at request time via
  * resolveTaxonomy so the file stays env-agnostic.
  *
- * Number provenance (refreshed 2026-05-17 against the 2,160-q bank):
- *   - `bankPctHard` is bank-wide HARD% (live 487/2160 = 22.5%).
+ * Number provenance (bankPctHard refreshed 2026-09-14 against the 2,280-q
+ * bank; the editorial compound estimates below are NOT re-derived):
+ *   - `bankPctHard` is bank-wide HARD% (live 505/2280 = 22.1%).
  *   - `soloA.qCount` / `soloB.qCount` are live subtopic q-counts.
  *   - `qCount` + `pctHard`: ω + Vieta is DB-derived (intersection of
  *     `question_principle_tags` for both slugs); the other three remain
@@ -54,7 +55,7 @@ export const COMPOUNDS: CompoundRecipe[] = [
     principleB: "GP",
     qCount: 20,
     pctHard: 35,
-    bankPctHard: 22.5,
+    bankPctHard: 22.1,
     description:
       "When a question asks for a minimum or maximum given a GP constraint, direct calculus rarely works — you need AM ≥ GM with equality at x = y = z. The GP relation b² = ac then closes the system. The chapter label might say Sequence & Series or Logarithms, but the technique is the same compound.",
     examples: [
@@ -83,7 +84,7 @@ export const COMPOUNDS: CompoundRecipe[] = [
     principleB: "GP",
     qCount: 10,
     pctHard: 40,
-    bankPctHard: 22.5,
+    bankPctHard: 22.1,
     description:
       "Two sequences interleaved. Common pattern: 'if a, b, c are in AP and b, c, d are in GP, find d'. The trick is to spot the chain — applying 2b = a+c and c² = bd gives a system of two equations in three unknowns, which closes via ratios.",
     examples: [
@@ -111,7 +112,7 @@ export const COMPOUNDS: CompoundRecipe[] = [
     principleB: "Vieta",
     qCount: 6,
     pctHard: 67,
-    bankPctHard: 22.5,
+    bankPctHard: 22.1,
     description:
       "Cube roots of unity treated as polynomial roots. The classic shape: 'if α, β are roots of x² + x + 1 = 0, find α^n + β^n'. The roots are ω, ω² — and ω satisfies 1 + ω + ω² = 0 with ω³ = 1. Powers cycle every 3, so the answer is a small case match. DB-tagged intersection: 6 q · 67% HARD (4 of 6) — the most HARD-concentrated compound on this page.",
     examples: [
@@ -140,7 +141,7 @@ export const COMPOUNDS: CompoundRecipe[] = [
     principleB: "Log",
     qCount: 5,
     pctHard: 40,
-    bankPctHard: 22.5,
+    bankPctHard: 22.1,
     description:
       "Finding the minimum or maximum of a logarithmic expression. Standard mistake: differentiate, set f'(x) = 0, lose to bad algebra. The shorter path is AM-GM on the arguments inside the log, then apply log monotonicity. log(AM) ≥ log(GM) gives the bound for free.",
     examples: [

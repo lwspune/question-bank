@@ -1,12 +1,12 @@
 /**
  * Content for /guide/nda-polity/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 90-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 99-q
  * PUBLIC NDA Polity bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA PART A Polity is ~5 q per single paper (range 2–10
- * across 18 papers in the bank; avg 5.0). NDA-1 + NDA-2 each year except
- * 2020 (NDA-2 COVID-cancelled — single paper) and 2026 NDA-2 (not yet
+ * across 19 papers in the bank; avg 5.2). NDA-1 + NDA-2 each year except
+ * 2020 (NDA-2 COVID-cancelled — the only single-paper year; 2026 completed
  * held — also single paper). Year totals below = sum across both papers
  * of the year (so 2020 + 2026 are roughly half a normal year).
  *
@@ -37,10 +37,10 @@ export type DriftRow = {
 };
 
 export const DRIFT_ROWS: DriftRow[] = [
-  { chapter: "Government Structure — Parliament, Judiciary and Constitutional Bodies", counts: { 2017: 5, 2018: 6, 2019: 2, 2020: 2, 2021: 2, 2022: 5, 2023: 2, 2024: 4, 2025: 1, 2026: 7 } },
-  { chapter: "Fundamental Rights, DPSP and Local Governance", counts: { 2017: 2, 2018: 2, 2019: 3, 2020: 1, 2021: 7, 2022: 2, 2023: 1, 2024: 1, 2025: 3, 2026: 0 } },
-  { chapter: "Indian Constitution — Making, Foundation and Amendments", counts: { 2017: 1, 2018: 5, 2019: 1, 2020: 0, 2021: 4, 2022: 2, 2023: 1, 2024: 3, 2025: 2, 2026: 1 } },
-  { chapter: "World Polity, Democracy and International Relations", counts: { 2017: 1, 2018: 0, 2019: 0, 2020: 0, 2021: 1, 2022: 2, 2023: 1, 2024: 2, 2025: 3, 2026: 2 } },
+  { chapter: "Government Structure — Parliament, Judiciary and Constitutional Bodies", counts: { 2017: 5, 2018: 6, 2019: 2, 2020: 2, 2021: 2, 2022: 5, 2023: 2, 2024: 4, 2025: 1, 2026: 8 } },
+  { chapter: "Fundamental Rights, DPSP and Local Governance", counts: { 2017: 2, 2018: 2, 2019: 3, 2020: 1, 2021: 7, 2022: 2, 2023: 1, 2024: 1, 2025: 3, 2026: 2 } },
+  { chapter: "Indian Constitution — Making, Foundation and Amendments", counts: { 2017: 1, 2018: 5, 2019: 1, 2020: 0, 2021: 4, 2022: 2, 2023: 1, 2024: 3, 2025: 2, 2026: 3 } },
+  { chapter: "World Polity, Democracy and International Relations", counts: { 2017: 1, 2018: 0, 2019: 0, 2020: 0, 2021: 1, 2022: 2, 2023: 1, 2024: 2, 2025: 3, 2026: 6 } },
 ];
 
 export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
@@ -59,16 +59,16 @@ export type HardByYear = {
 };
 
 export const HARD_BY_YEAR: HardByYear[] = [
-  { year: 2017, totalQ: 9, hardQ: 4, pctHard: 44 },
-  { year: 2018, totalQ: 13, hardQ: 2, pctHard: 15 },
-  { year: 2019, totalQ: 6, hardQ: 1, pctHard: 17 },
-  { year: 2020, totalQ: 3, hardQ: 0, pctHard: 0 },
-  { year: 2021, totalQ: 14, hardQ: 0, pctHard: 0 },
-  { year: 2022, totalQ: 11, hardQ: 1, pctHard: 9 },
-  { year: 2023, totalQ: 5, hardQ: 1, pctHard: 20 },
-  { year: 2024, totalQ: 10, hardQ: 2, pctHard: 20 },
-  { year: 2025, totalQ: 9, hardQ: 1, pctHard: 11 },
-  { year: 2026, totalQ: 10, hardQ: 5, pctHard: 50 },
+  { year: 2017, totalQ:  9, hardQ:  4, pctHard: 44 },
+  { year: 2018, totalQ: 13, hardQ:  2, pctHard: 15 },
+  { year: 2019, totalQ:  6, hardQ:  1, pctHard: 17 },
+  { year: 2020, totalQ:  3, hardQ:  0, pctHard:  0 },
+  { year: 2021, totalQ: 14, hardQ:  0, pctHard:  0 },
+  { year: 2022, totalQ: 11, hardQ:  1, pctHard:  9 },
+  { year: 2023, totalQ:  5, hardQ:  1, pctHard: 20 },
+  { year: 2024, totalQ: 10, hardQ:  2, pctHard: 20 },
+  { year: 2025, totalQ:  9, hardQ:  1, pctHard: 11 },
+  { year: 2026, totalQ: 19, hardQ:  7, pctHard: 37 },
 ];
 
 export type DriftCallout = {
@@ -91,7 +91,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     title:
       "The headline: paper has NOT consistently hardened — drill all 10 years equally",
     description:
-      "%HARD bounces 0% (2020 + 2021 small samples) → 9% (2022) → 50% (2026 NDA-1 outlier high) → 44% (2017 outlier high). No monotonic trajectory. The bank is genuinely wavy year-to-year — partly because per-paper sample size is small (avg 5 q/paper, range 2–10), so a single HARD multi-statement question can swing a year's %HARD by 20+ percentage points. Translation: drill 2017 papers as seriously as 2024 papers. Contrast NDA Physics (2% → 44% over the same window, monotonic hardening) — Polity doesn't behave that way. The difficulty FLOOR is stable; the variance is high.",
+      "%HARD bounces 0% (2020 + 2021 small samples) → 9% (2022) → 37% (2026, the second-highest year) → 44% (2017 outlier high). No monotonic trajectory. The bank is genuinely wavy year-to-year — partly because per-paper sample size is small (avg 5 q/paper, range 2–10), so a single HARD multi-statement question can swing a year's %HARD by 20+ percentage points. Translation: drill 2017 papers as seriously as 2024 papers. Contrast NDA Physics (2% → 37% over the same window, monotonic hardening) — Polity doesn't behave that way. The difficulty FLOOR is stable; the variance is high.",
     drill: {
       chapter:
         "Government Structure — Parliament, Judiciary and Constitutional Bodies",

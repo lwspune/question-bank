@@ -91,7 +91,7 @@ export default function NdaChemistryOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 262-question analysis of every paper from 2017 to 2026 —
+            A 277-question analysis of every paper from 2017 to 2026 —
             12 chapter playbooks, 50-compound reference, trends, traps.
           </div>
         </div>

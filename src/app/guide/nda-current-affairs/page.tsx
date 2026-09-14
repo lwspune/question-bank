@@ -33,7 +33,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Current Affairs — Strategy Guide",
   description:
-    "How NDA Current Affairs actually works. A 180-question shape analysis of every paper from 2017 to 2026 — 90% of CA questions reference events within 12 months of the paper, so this guide teaches the recurring question SHAPES, not the historical facts. Eight anchor themes, a half-life directive, and a single drill link into the full bank.",
+    "How NDA Current Affairs actually works. A 191-question shape analysis of every paper from 2017 to 2026 — 90% of CA questions reference events within 12 months of the paper, so this guide teaches the recurring question SHAPES, not the historical facts. Eight anchor themes, a half-life directive, and a single drill link into the full bank.",
   alternates: { canonical: "/guide/nda-current-affairs" },
 };
 
@@ -68,7 +68,7 @@ export default async function NdaCurrentAffairsLanding() {
           type="CollectionPage"
           path="/guide/nda-current-affairs"
           headline="NDA Current Affairs — Strategy Guide"
-          description="A 180-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of CA questions reference events within 12 months of their paper, so this guide is built around stable question shapes — eight anchor themes with prep checklists, sixteen recurring themes, and seven occasional themes. Drill the bank for shape, harvest the facts externally."
+          description="A 191-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of CA questions reference events within 12 months of their paper, so this guide is built around stable question shapes — eight anchor themes with prep checklists, sixteen recurring themes, and seven occasional themes. Drill the bank for shape, harvest the facts externally."
         />
 
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
@@ -343,7 +343,7 @@ export default async function NdaCurrentAffairsLanding() {
             Drill the bank for shape
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
-            One pass through all 180 questions gives you the shape calibration
+            One pass through all 191 questions gives you the shape calibration
             — the kinds of stems, the multi-statement traps, the partial-credit
             distractor patterns. Don&rsquo;t memorise the answers; they&rsquo;re
             historical.

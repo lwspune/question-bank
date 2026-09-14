@@ -27,7 +27,7 @@
  *     no analog; maths embeds formulas in principle deep-dive pages.
  *
  *   - Sharper trends story than English — NDA Physics paper hardened
- *     dramatically: HARD ratio 2% in 2021 → 44% in 2026 NDA-1. Paper is
+ *     dramatically: HARD ratio 2% in 2021 → 37% in 2026. Paper is
  *     ~22× more difficulty-dense per q. Honest framing matters here.
  */
 
@@ -43,7 +43,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How NDA Physics actually works — what the 449-question bank reveals.",
+      "How NDA Physics actually works — what the 473-question bank reveals.",
   },
   {
     slug: "strategy",
@@ -86,7 +86,7 @@ export const ROUTES: GuideRoute[] = [
 export type Overview = {
   totalQ: number;
   /** GAT papers covered. PART B Physics is asked on NDA-1 + NDA-2 each year
-   *  except 2020 (COVID-cancelled NDA-2) and 2026 NDA-2 (not yet held). */
+   *  except 2020 (COVID-cancelled NDA-2). 2026 completed 2026-09-14. */
   papers: number;
   yearsCovered: number;
   chapters: number;
@@ -100,17 +100,17 @@ export type Overview = {
 
 /** Snapshot of the bank's shape as of the date below. */
 export const OVERVIEW: Overview = {
-  totalQ: 449,
-  // 2017–2025: 2 papers each except 2020 (1, NDA-2 cancelled) = 17 papers
-  // 2026: 1 paper (NDA-1 only). Total: 18.
-  papers: 18,
+  totalQ: 473,
+  // 2017–2026: 2 papers each except 2020 (1, NDA-2 COVID-cancelled) = 19.
+  // NDA-2 2026 was written 2026-09-14, so 2026 is a complete year.
+  papers: 19,
   yearsCovered: 10,
   chapters: 14,
   playbooks: 14,
   formulas: 32,
   // SQL-derived 2026-05-18 — sum of EASY+MOD+HARD across all 14 chapters.
-  difficulty: { easy: 226, moderate: 160, hard: 63 },
-  asOf: "2026-05-18",
+  difficulty: { easy: 229, moderate: 174, hard: 70 },
+  asOf: "2026-09-14",
 };
 
 export type ChapterRow = {
@@ -125,45 +125,45 @@ export type ChapterRow = {
 };
 
 /** 14 NDA Physics chapters, sorted by question count descending. SQL-derived
- *  against the 449-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
+ *  against the 473-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
  *  drift as new papers land — refresh in lockstep. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Light and Optics",
-    qCount: 97,
+    qCount: 102,
     pctTotal: 21.6,
-    pctHard: 10,
+    pctHard: 12,
     focus:
       "Light Phenomena+Spectrum (29 · recall), Reflection+Mirrors (18 · 17% HARD), Refraction+TIR (17), Optical Instruments (13), Lenses+Lens formula (12 · 25% HARD), Prisms (8).",
   },
   {
     chapter: "Electricity and Magnetism",
-    qCount: 93,
-    pctTotal: 20.7,
-    pctHard: 22,
+    qCount: 97,
+    pctTotal: 20.5,
+    pctHard: 23,
     focus:
-      "Magnetism+Effects (16 · 13%), Combination of Resistors (16 · 38% HARD — the bank's biggest HARD pool), Electrical Devices (15 · recall), Electrostatics (13), Power+Energy+Heating (10 · 30%), Current+Ohm's Law (9), Resistance+Resistivity (6), Magnetic Force+Fleming (5 · 40%), Cells+EMF+Kirchhoff (3).",
+      "Magnetism+Effects (16 · 13%), Combination of Resistors (16 · 38% HARD — the bank's biggest HARD pool), Electrical Devices (15 · recall), Electrostatics (14), Power+Energy+Heating (10 · 30%), Current+Ohm's Law (9), Resistance+Resistivity (6), Magnetic Force+Fleming (5 · 40%), Cells+EMF+Kirchhoff (3).",
   },
   {
     chapter: "Laws of Motion and Forces",
-    qCount: 41,
-    pctTotal: 9.1,
-    pctHard: 10,
+    qCount: 44,
+    pctTotal: 9.3,
+    pctHard: 9,
     focus:
       "Newton's Laws (19), Conservation of Momentum+Collisions (8), Types of Forces (6), Impulse+Momentum (5), Friction (3).",
   },
   {
     chapter: "Heat and Thermodynamics",
-    qCount: 39,
-    pctTotal: 8.7,
-    pctHard: 21,
+    qCount: 40,
+    pctTotal: 8.5,
+    pctHard: 20,
     focus:
       "Heat+Calorimetry+Specific Heat (13 · 31% HARD), Temperature+Thermometry (11), Phase Change+Boiling (9), Thermodynamic Processes (6 · 33% HARD).",
   },
   {
     chapter: "Sound",
-    qCount: 34,
-    pctTotal: 7.6,
+    qCount: 35,
+    pctTotal: 7.4,
     pctHard: 3,
     focus:
       "Foundations—sound/perception/ear (11), Wave Equation+Speed+Bands (13), Sound Behaviours—echo/reverb/beats (5), Applications—SONAR/transducers/instruments (5). The bank's lowest-HARD chapter.",
@@ -171,63 +171,63 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Modern Physics",
     qCount: 25,
-    pctTotal: 5.6,
+    pctTotal: 5.3,
     pctHard: 0,
     focus:
-      "Atomic Structure (7), Nuclear Physics (5), Photoelectric Effect (4), Quantum+Modern EM (4), Scientists+Discoveries (3), Scientific Acronyms (2). Zero HARD across the whole chapter.",
+      "Atomic Structure (6), Nuclear Physics (5), Photoelectric Effect (4), Quantum+Modern EM (4), Scientists+Discoveries (3), Scientific Acronyms (2). Zero HARD across the whole chapter.",
   },
   {
     chapter: "Kinematics and Motion",
-    qCount: 24,
-    pctTotal: 5.3,
-    pctHard: 25,
+    qCount: 27,
+    pctTotal: 5.7,
+    pctHard: 26,
     focus:
-      "Equations of Motion+Graphs (15 · 20% HARD), Circular Motion (3 · 33%), Projectile+Vertical (3), Vectors+Position (3 · 67%). Small chapter, heavy HARD load.",
+      "Equations of Motion+Graphs (15 · 20% HARD), Circular Motion (5 · 33%), Projectile+Vertical (3), Vectors+Position (3 · 67%). Small chapter, heavy HARD load.",
   },
   {
     chapter: "Work, Energy and Power",
-    qCount: 23,
-    pctTotal: 5.1,
-    pctHard: 9,
+    qCount: 26,
+    pctTotal: 5.5,
+    pctHard: 12,
     focus:
       "Energy+Conservation (10), Work-Energy Theorem+Power (6), Work+Work Done (5), Simple Machines (2).",
   },
   {
     chapter: "Fluid Mechanics and Properties of Matter",
-    qCount: 23,
+    qCount: 24,
     pctTotal: 5.1,
-    pctHard: 30,
+    pctHard: 29,
     focus:
       "Buoyancy+Density+Flotation (16 · 31% HARD), Pressure+Surface Tension (7 · 29% HARD). Smallest chapter by subtopic count, highest %HARD by chapter.",
   },
   {
     chapter: "Gravitation",
-    qCount: 17,
-    pctTotal: 3.8,
-    pctHard: 12,
+    qCount: 19,
+    pctTotal: 4.0,
+    pctHard: 11,
     focus:
-      "Gravitational Field+Potential (7), Newton's Law of Gravitation (6), Orbits+Kepler+Escape (4 · 25%).",
+      "Gravitational Field+Potential (7), Newton's Law of Gravitation (8), Orbits+Kepler+Escape (4 · 25%).",
   },
   {
     chapter: "Units, Measurement and Dimensions",
     qCount: 14,
-    pctTotal: 3.1,
+    pctTotal: 3.0,
     pctHard: 7,
     focus:
       "Units and Dimensions (14 — single subtopic). Mostly EASY definitional recall + a few dimensional-analysis traps.",
   },
   {
     chapter: "Oscillations and Waves",
-    qCount: 13,
-    pctTotal: 2.9,
-    pctHard: 15,
+    qCount: 14,
+    pctTotal: 3.0,
+    pctHard: 21,
     focus:
       "Simple Pendulum (7), SHM+General Waves (6 · 33% HARD). Bridges Sound and Light — same v=fλ machinery in a different setting.",
   },
   {
     chapter: "Astronomy and Space",
     qCount: 4,
-    pctTotal: 0.9,
+    pctTotal: 0.8,
     pctHard: 0,
     focus:
       "Astronomy and Space (4 — single subtopic). Pure recall: light year, parsec, black hole, largest planet. Easiest marks in the bank.",

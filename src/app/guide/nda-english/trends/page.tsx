@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA English Trends — How the GAT shifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA English across 18 papers. Grammar exploded post-2024 (0 to 40 q/year). Spotting Errors went silent 2024–25. Cloze returned in 2024 after a 6-year gap. Practice the recent papers first.",
+    "Year-by-year chapter drift in NDA English across 19 papers. Grammar exploded post-2024 (0 to 40 q/year). Spotting Errors went silent 2024–25. Cloze returned in 2024 after a 6-year gap. Practice the recent papers first.",
   alternates: { canonical: "/guide/nda-english/trends" },
 };
 
@@ -59,7 +59,7 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-english/trends"
         headline="NDA English Trends — How the GAT shifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA English across 18 papers. Grammar exploded post-2024. Spotting Errors went silent 2024–25. Cloze returned in 2024 after a 6-year gap."
+        description="Year-by-year chapter drift in NDA English across 19 papers. Grammar exploded post-2024. Spotting Errors went silent 2024–25. Cloze returned in 2024 after a 6-year gap."
       />
       <GuideHero
         eyebrow="Trends"
@@ -130,7 +130,7 @@ export default async function Trends() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Counts per year (NDA-1 + NDA-2 combined; 2020 NDA-2 was
-          COVID-cancelled, 2026 NDA-2 not yet held). Cells are tinted by row
+          COVID-cancelled; 2026 is complete). Cells are tinted by row
           magnitude — your eye picks up the slope without a chart.
         </p>
         <div className="mt-4">

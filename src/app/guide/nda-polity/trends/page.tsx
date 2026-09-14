@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Polity Trends — How the paper drifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA PART A Polity across 18 papers. The paper has NOT consistently hardened — %HARD bounces 0% to 50% with no monotonic trajectory. 2026 NDA-1 was the hardest (50% HARD); 2020/2021 the easiest (0%). Govt Structure dominated 2026 (7 of 10 q), FR/DPSP dominated 2021 (7 of 14 q). Drill all 10 years equally.",
+    "Year-by-year chapter drift in NDA PART A Polity across 19 papers. The paper has NOT consistently hardened — %HARD bounces 0% to 50% with no monotonic trajectory. 2026 NDA-1 was the hardest (50% HARD); 2020/2021 the easiest (0%). Govt Structure dominated 2026 (7 of 10 q), FR/DPSP dominated 2021 (7 of 14 q). Drill all 10 years equally.",
   alternates: { canonical: "/guide/nda-polity/trends" },
 };
 
@@ -58,7 +58,7 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-polity/trends"
         headline="NDA Polity Trends — How the paper drifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA PART A Polity across 18 papers. The paper has NOT consistently hardened. 2026 NDA-1 was the hardest; 2021 was the FR/DPSP outlier."
+        description="Year-by-year chapter drift in NDA PART A Polity across 19 papers. The paper has NOT consistently hardened. 2026 NDA-1 was the hardest; 2021 was the FR/DPSP outlier."
       />
       <GuideHero
         eyebrow="Trends"
@@ -205,7 +205,7 @@ export default async function Trends() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Counts per year (NDA-1 + NDA-2 combined; 2020 NDA-2 COVID-cancelled,
-          2026 NDA-2 not yet held — so those columns hold ~half a normal
+          2026 is now complete (NDA-2 written 2026-09-14) — so only 2020 holds ~half a normal
           year). Cells are tinted by row magnitude.
         </p>
         <div className="mt-4">

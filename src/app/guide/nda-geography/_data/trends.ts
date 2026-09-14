@@ -1,7 +1,7 @@
 /**
  * Content for /guide/nda-geography/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 345-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 367-q
  * PUBLIC NDA Geography bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA PART A Geography is ~19 q per single paper (range
@@ -38,13 +38,13 @@ export type DriftRow = {
 };
 
 export const DRIFT_ROWS: DriftRow[] = [
-  { chapter: "Indian Geography — Economy, Resources and Transport", counts: { 2017: 17, 2018: 11, 2019: 5, 2020: 6, 2021: 9, 2022: 4, 2023: 8, 2024: 6, 2025: 11, 2026: 4 } },
-  { chapter: "Earth's Structure, Landforms and Geological Time", counts: { 2017: 1, 2018: 7, 2019: 8, 2020: 0, 2021: 12, 2022: 12, 2023: 10, 2024: 7, 2025: 8, 2026: 9 } },
-  { chapter: "Indian Geography — Physical Features", counts: { 2017: 14, 2018: 8, 2019: 6, 2020: 4, 2021: 5, 2022: 7, 2023: 7, 2024: 10, 2025: 5, 2026: 1 } },
-  { chapter: "Climatology, Atmosphere and Weather", counts: { 2017: 2, 2018: 10, 2019: 7, 2020: 2, 2021: 5, 2022: 3, 2023: 4, 2024: 11, 2025: 8, 2026: 5 } },
-  { chapter: "World and Human Geography", counts: { 2017: 3, 2018: 1, 2019: 3, 2020: 8, 2021: 1, 2022: 5, 2023: 3, 2024: 1, 2025: 0, 2026: 0 } },
-  { chapter: "Earth in Space, Maps and Coordinates", counts: { 2017: 1, 2018: 0, 2019: 3, 2020: 0, 2021: 4, 2022: 5, 2023: 4, 2024: 2, 2025: 2, 2026: 1 } },
-  { chapter: "Oceanography", counts: { 2017: 1, 2018: 1, 2019: 4, 2020: 1, 2021: 2, 2022: 0, 2023: 2, 2024: 2, 2025: 6, 2026: 0 } },
+  { chapter: "Indian Geography — Economy, Resources and Transport", counts: { 2017: 17, 2018: 11, 2019: 5, 2020: 6, 2021: 9, 2022: 4, 2023: 8, 2024: 6, 2025: 11, 2026: 6 } },
+  { chapter: "Earth's Structure, Landforms and Geological Time", counts: { 2017: 1, 2018: 7, 2019: 8, 2020: 0, 2021: 12, 2022: 12, 2023: 10, 2024: 7, 2025: 8, 2026: 15 } },
+  { chapter: "Indian Geography — Physical Features", counts: { 2017: 14, 2018: 8, 2019: 6, 2020: 4, 2021: 5, 2022: 7, 2023: 7, 2024: 10, 2025: 5, 2026: 3 } },
+  { chapter: "Climatology, Atmosphere and Weather", counts: { 2017: 3, 2018: 10, 2019: 7, 2020: 2, 2021: 5, 2022: 3, 2023: 5, 2024: 11, 2025: 8, 2026: 11 } },
+  { chapter: "World and Human Geography", counts: { 2017: 3, 2018: 1, 2019: 3, 2020: 8, 2021: 1, 2022: 5, 2023: 3, 2024: 1, 2025: 0, 2026: 1 } },
+  { chapter: "Earth in Space, Maps and Coordinates", counts: { 2017: 1, 2018: 0, 2019: 3, 2020: 0, 2021: 4, 2022: 5, 2023: 4, 2024: 2, 2025: 2, 2026: 3 } },
+  { chapter: "Oceanography", counts: { 2017: 1, 2018: 1, 2019: 4, 2020: 1, 2021: 2, 2022: 0, 2023: 2, 2024: 2, 2025: 6, 2026: 1 } },
 ];
 
 export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
@@ -60,16 +60,16 @@ export type HardByYear = {
 };
 
 export const HARD_BY_YEAR: HardByYear[] = [
-  { year: 2017, totalQ: 39, hardQ: 8, pctHard: 21 },
+  { year: 2017, totalQ: 40, hardQ:  8, pctHard: 20 },
   { year: 2018, totalQ: 38, hardQ: 16, pctHard: 42 },
-  { year: 2019, totalQ: 36, hardQ: 2, pctHard: 6 },
-  { year: 2020, totalQ: 21, hardQ: 3, pctHard: 14 },
-  { year: 2021, totalQ: 38, hardQ: 3, pctHard: 8 },
-  { year: 2022, totalQ: 36, hardQ: 7, pctHard: 19 },
-  { year: 2023, totalQ: 38, hardQ: 5, pctHard: 13 },
-  { year: 2024, totalQ: 39, hardQ: 8, pctHard: 21 },
+  { year: 2019, totalQ: 36, hardQ:  2, pctHard:  6 },
+  { year: 2020, totalQ: 21, hardQ:  3, pctHard: 14 },
+  { year: 2021, totalQ: 38, hardQ:  3, pctHard:  8 },
+  { year: 2022, totalQ: 36, hardQ:  7, pctHard: 19 },
+  { year: 2023, totalQ: 39, hardQ:  5, pctHard: 13 },
+  { year: 2024, totalQ: 39, hardQ:  8, pctHard: 21 },
   { year: 2025, totalQ: 40, hardQ: 12, pctHard: 30 },
-  { year: 2026, totalQ: 20, hardQ: 4, pctHard: 20 },
+  { year: 2026, totalQ: 40, hardQ:  7, pctHard: 18 },
 ];
 
 export type DriftCallout = {

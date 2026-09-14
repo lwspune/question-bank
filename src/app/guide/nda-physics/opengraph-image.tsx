@@ -91,7 +91,7 @@ export default function NdaPhysicsOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 449-question analysis of every paper from 2017 to 2026 —
+            A 473-question analysis of every paper from 2017 to 2026 —
             14 chapter playbooks, formula compendium, trends, traps.
           </div>
         </div>

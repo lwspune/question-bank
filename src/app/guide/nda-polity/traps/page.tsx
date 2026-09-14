@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Polity Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know Polity still lose marks. Article↔subject swap, Amendment↔year confusion, body↔function swap, Money Bill vs Finance Bill, Speaker vs President powers, original vs appellate jurisdiction, multi-statement partial-credit — measured against the live 90-question bank.",
+    "How candidates who know Polity still lose marks. Article↔subject swap, Amendment↔year confusion, body↔function swap, Money Bill vs Finance Bill, Speaker vs President powers, original vs appellate jurisdiction, multi-statement partial-credit — measured against the live 99-question bank.",
   alternates: { canonical: "/guide/nda-polity/traps" },
 };
 

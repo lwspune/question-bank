@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Physics — Strategy Guide",
   description:
-    "How NDA PART B Physics actually works. A 449-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Reason strands, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses.",
+    "How NDA PART B Physics actually works. A 473-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Reason strands, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-physics" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaPhysicsLanding() {
         type="CollectionPage"
         path="/guide/nda-physics"
         headline="NDA Physics — Strategy Guide"
-        description="A 449-question analysis of the Physics half of GAT PART B, 2017–2026. Recall vs Apply vs Reason strands, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses."
+        description="A 473-question analysis of the Physics half of GAT PART B, 2017–2026. Recall vs Apply vs Reason strands, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA Physics Guide"

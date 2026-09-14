@@ -1,11 +1,19 @@
 /**
  * Content for /guide/nda-maths/traps. Distractor design patterns measured
- * against the live NDA Mathematics PUBLIC bank (2,160 q across 18 papers).
+ * against the live NDA Mathematics PUBLIC bank (2,280 q across 19 papers).
  *
  * Every number here is derived from a SQL query, not a hand-estimate.
- * Refreshed 2026-05-17 after the 2017–2020 PYQ uploads expanded the bank
- * from 1,320 → 2,160 q. Detector definitions are unchanged from the
- * 2026-05-15 ship; the cells just got bigger samples and the rates shifted.
+ *
+ * PROVENANCE IS SPLIT as of 2026-09-14, and the split is deliberate:
+ *   - ANSWER_KEY_SPREAD and KEY_BY_DIFFICULTY were RE-DERIVED against the
+ *     full 2,280-q / 19-paper bank on 2026-09-14 (they reconcile exactly:
+ *     552+643+626+459 = 2,280, and the difficulty columns sum to
+ *     677/1,098/505).
+ *   - The sign-flip and factor-of-2 DETECTOR cells below still carry their
+ *     2026-05-17 values, measured when the bank was 2,280 q across 18
+ *     papers. Re-running them needs the detector SQL, not a count, so they
+ *     are left labelled rather than silently restated over a bigger bank.
+ * Detector definitions are unchanged from the 2026-05-15 ship.
  *
  * Sign-flip detector: per question, a wrong option whose text == "-"
  * prepended to the correct option's text (or vice versa), after stripping
@@ -26,10 +34,10 @@ export type PositionalBiasRow = {
 
 /** Correct-answer position distribution across the bank, overall. */
 export const POSITIONAL_BIAS: PositionalBiasRow[] = [
-  { label: "A", count: 537, pct: 24.9 },
-  { label: "B", count: 613, pct: 28.4 },
-  { label: "C", count: 592, pct: 27.4 },
-  { label: "D", count: 418, pct: 19.4 },
+  { label: "A", count: 552, pct: 24.2 },
+  { label: "B", count: 643, pct: 28.2 },
+  { label: "C", count: 626, pct: 27.5 },
+  { label: "D", count: 459, pct: 20.1 },
 ];
 
 /** Same distribution, broken out by difficulty. On HARD, A catches up
@@ -43,10 +51,10 @@ export type PositionalBiasByDifficulty = {
 };
 
 export const POSITIONAL_BIAS_BY_DIFFICULTY: PositionalBiasByDifficulty[] = [
-  { label: "A", easy: 152, moderate: 253, hard: 132 },
-  { label: "B", easy: 197, moderate: 295, hard: 121 },
-  { label: "C", easy: 184, moderate: 274, hard: 134 },
-  { label: "D", easy: 129, moderate: 189, hard: 100 },
+  { label: "A", easy: 154, moderate: 266, hard: 132 },
+  { label: "B", easy: 203, moderate: 310, hard: 130 },
+  { label: "C", easy: 184, moderate: 307, hard: 135 },
+  { label: "D", easy: 136, moderate: 215, hard: 108 },
 ];
 
 // ─────────────────────────────────────────────────────────────────────
