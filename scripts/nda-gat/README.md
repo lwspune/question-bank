@@ -4,8 +4,22 @@ Scanned UPSC NDA "General Ability Test" booklets (image PDFs, **no text layer**,
 **no answer key**, **partly bilingual**) → the bank, `question_kind='pyq'`, under
 the existing **NDA** exam across **nine subjects**.
 
-**Status: `2026-2` transcribed (150/150) and fidelity-checked against Series D.
-Derivation in progress. Nothing committed, nothing PUBLIC.**
+**Status: `2026-2` COMPLETE and committed PRIVATE — 150 q. Awaiting an external
+answer key; nothing is PUBLIC and no mock exists.**
+
+| | |
+|---|---|
+| Transcribed | 150/150, English 50 / GK 100 exactly |
+| Fidelity (Series D) | **134/134 MATCH, 0 PERMUTED, 0 OPTION_MISMATCH** |
+| Derived | 150/150 — **HIGH 127 · MED 19 · LOW 4**, 0 nulls |
+| Committed | inserted=150 skipped=0 failed=0, all PRIVATE |
+
+All four LOW and three of the MED sit in **Q141-150**. That is not scatter: the
+paper's difficulty cliff lands exactly there. Q121-140 is near-verbatim textbook
+recall (19 of 20 HIGH); Q141-150 is 2025-26 current affairs — a uranium supply
+agreement, an IBCA membership list, a Khelo India mascot. **If you are rationing
+review effort when the key arrives, the last ten questions are where all of it
+belongs**, followed by the 19 MED rows, each of which names its runner-up.
 
 ## Why this pipeline exists
 
