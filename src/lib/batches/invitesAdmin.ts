@@ -42,7 +42,7 @@ type AuthUserLite = {
  * gets away with one page because it hydrates STAFF (7 rows). Both callers here
  * hydrate across ALL accounts — 156 today and growing with every signup — so a
  * single page would eventually render enrolled students as "(unknown)" and let
- * an already-enrolled student be re-invited. Paged, like listStudents.
+ * an already-enrolled student be re-invited. Paged, like the other auth-user reads.
  */
 async function listAllAuthUsers(admin: SupabaseClient): Promise<AuthUserLite[]> {
   const out: AuthUserLite[] = [];

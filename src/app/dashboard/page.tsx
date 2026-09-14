@@ -284,7 +284,7 @@ function QuickActions({
           href="/dashboard/students"
           icon={<GraduationCap className="h-5 w-5" aria-hidden />}
           title="Registered Students"
-          description="See who has signed up — self-serve student accounts, when they joined."
+          description="Who has signed up and how they use the app — mocks, notes, scores. Filter by exam and activity."
         />
       )}
       {isSuperadmin && (
