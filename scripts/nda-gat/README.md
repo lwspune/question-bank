@@ -189,6 +189,27 @@ the real parser when that last bit, and backslash-escaping the bare character
 **does not work** — there is no escape handling outside a math zone. `\(\$\)` is
 the form that survives, and `render-check`'s self-test pins it.
 
+## A script starting with `_` is INVISIBLE to git in this repo
+
+`.gitignore` line 116 is `scripts/*/_*`. It exists for a good reason — it keeps
+agents' in-flight probes out of commits, after `git add -A scripts/ncert` once
+swept one in — and it silently swallowed this pipeline's two data-repair scripts
+across two commits while `git add` reported success for every other file.
+
+They were not scratch. `fix-glyphs.py` and `fix-negation.py` are the auditable
+record of edits made to **already-committed data**, each asserting its
+before-state and refusing a re-run. If a script changes committed data, it
+belongs in the repo — so name it without the underscore, and do not reach for
+`git add -f`, which fights the rule instead of acknowledging the file is not
+scratch.
+
+**The tell is that nothing tells you.** `git add <path>` on an ignored path exits
+non-zero with a hint; `git add <many paths>` where only some are ignored exits
+non-zero too — but a commit staged earlier in the session simply lacks the file,
+and the `A scripts/…` list is long enough that one absence does not stand out.
+Diff the file list you intended against `git ls-files` before believing a commit
+is complete.
+
 ## Conventions this paper needed
 
 - **Underlines are load-bearing.** Roughly half the Part A questions turn on which
