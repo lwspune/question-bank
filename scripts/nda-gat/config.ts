@@ -196,6 +196,122 @@ const SET_A: Booklet = {
 };
 
 /**
+ * Series B -- the FULL BILINGUAL booklet, and the only one of the four whose
+ * English pages have to be SELECTED rather than taken whole.
+ *
+ * 47 images, ONE printed page each. idx 0 is the cover (printed 1). Part A is
+ * ENGLISH ONLY across six CONSECUTIVE pages, idx 1..6 -- there is no Hindi
+ * counterpart for an English test, so this stretch is NOT a parity and the
+ * alternation rule does not apply to it. From idx 7 Part B alternates
+ * HINDI first, then English, so English is every EVEN index 8..46.
+ *
+ * A DEVANAGARI PAGE HANDED TO A TRANSCRIBER COSTS QUESTIONS SILENTLY -- it
+ * yields a missing item, never an error -- so this list was established by
+ * READING each rendered page and its footer, not by a Devanagari pixel-density
+ * heuristic. That heuristic was measured on the sibling Maths booklet and does
+ * NOT separate: the long-run counts for English and Hindi pages overlap once
+ * handwriting and dark scan edges are in play.
+ *
+ * Footer anchors, read page by page: idx 1 = (2-B), idx 46 = (47-B). The
+ * English PART - A heading is on idx 1 (printed 2) and PART - B on idx 8
+ * (printed 9); the Hindi Part B heading is on idx 7.
+ *
+ * NOTE the foot-LEFT code TFDD-B-AGT is the PAPER code and is IDENTICAL in all
+ * four booklets -- the series is only the letter in ( N - X ) at foot centre.
+ * Do not read a "B" in the paper code as a series marker.
+ *
+ * PART A PAGINATES DIFFERENTLY FROM SET C (B: 5/10/8/7/10/10 questions per
+ * page, C: 10/6/6/8/10/10), so a band plan written for one series must never be
+ * reused for the other.
+ */
+const SET_B: Booklet = {
+  series: "B",
+  pdf: "C:/Users/vilas/Downloads/NDA-NAII-GAT-SET-B-Question-Paper.pdf",
+  pages: [
+    // Part A -- six consecutive English pages (no Hindi counterpart exists).
+    { idx: 1, printed: 2 },
+    { idx: 2, printed: 3 },
+    { idx: 3, printed: 4 },
+    { idx: 4, printed: 5 },
+    { idx: 5, printed: 6 },
+    { idx: 6, printed: 7 },
+    // Part B -- the English page of each Hindi/English pair (even indices).
+    { idx: 8, printed: 9 },
+    { idx: 10, printed: 11 },
+    { idx: 12, printed: 13 },
+    { idx: 14, printed: 15 },
+    { idx: 16, printed: 17 },
+    { idx: 18, printed: 19 },
+    { idx: 20, printed: 21 },
+    { idx: 22, printed: 23 },
+    { idx: 24, printed: 25 },
+    { idx: 26, printed: 27 },
+    { idx: 28, printed: 29 },
+    { idx: 30, printed: 31 },
+    { idx: 32, printed: 33 },
+    { idx: 34, printed: 35 },
+    { idx: 36, printed: 37 },
+    { idx: 38, printed: 39 },
+    { idx: 40, printed: 41 },
+    { idx: 42, printed: 43 },
+    { idx: 44, printed: 45 },
+    { idx: 46, printed: 47 },
+  ],
+};
+
+/**
+ * Series C -- an ENGLISH-ONLY extract, the same shape as Set D: 26 images, one
+ * printed page each, cover and every Hindi page already dropped upstream. So
+ * `printed` is simply the English page list in order and no Hindi verso is ever
+ * rendered.
+ *
+ * The tell that it is an extract rather than a full booklet: printed 8 (the
+ * Hindi Part B page) is absent, so idx 5 = (7-C) is followed directly by
+ * idx 6 = (9-C). Footer anchors: idx 0 = (2-C), idx 25 = (47-C). PART - A is on
+ * idx 0 and PART - B on idx 6.
+ *
+ * It is also the HIGHEST-RESOLUTION scan of the four -- roughly 2600-2800 x
+ * 3400-3800 real pixels a page against Set A's ~1239x1632 -- which makes it the
+ * best booklet to re-read a Set A region that is defocused near the binding,
+ * under the same rule FIDELITY_BRIEF.md sets for Set D: only AFTER a question
+ * has been matched on independently legible content.
+ */
+const SET_C: Booklet = {
+  series: "C",
+  pdf: "C:/Users/vilas/Downloads/NDA-NAII-GAT-SET-C-Question-Paper.pdf",
+  pages: [
+    // Part A -- six consecutive English pages.
+    { idx: 0, printed: 2 },
+    { idx: 1, printed: 3 },
+    { idx: 2, printed: 4 },
+    { idx: 3, printed: 5 },
+    { idx: 4, printed: 6 },
+    { idx: 5, printed: 7 },
+    // Part B -- the odd (English) pages.
+    { idx: 6, printed: 9 },
+    { idx: 7, printed: 11 },
+    { idx: 8, printed: 13 },
+    { idx: 9, printed: 15 },
+    { idx: 10, printed: 17 },
+    { idx: 11, printed: 19 },
+    { idx: 12, printed: 21 },
+    { idx: 13, printed: 23 },
+    { idx: 14, printed: 25 },
+    { idx: 15, printed: 27 },
+    { idx: 16, printed: 29 },
+    { idx: 17, printed: 31 },
+    { idx: 18, printed: 33 },
+    { idx: 19, printed: 35 },
+    { idx: 20, printed: 37 },
+    { idx: 21, printed: 39 },
+    { idx: 22, printed: 41 },
+    { idx: 23, printed: 43 },
+    { idx: 24, printed: 45 },
+    { idx: 25, printed: 47 },
+  ],
+};
+
+/**
  * Set D -- the fidelity check, and the second half of a four-series solution
  * document.
  *
@@ -280,9 +396,9 @@ export const PAPERS: Paper[] = [
     pyqNote: "NDA 2",
     tbc: "TFDD-B-AGT",
     base: SET_A,
-    // Series B and C are not in hand. When they arrive, add a Booklet here and
-    // run render-variant + match-variant; nothing else changes.
-    variants: [SET_D],
+    // All four series are in hand. Order is the printed one (B, C, D), which is
+    // also the order the four-series solution document prints them in.
+    variants: [SET_B, SET_C, SET_D],
   },
 ];
 

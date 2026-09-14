@@ -134,7 +134,72 @@ npm run audit:underlines
 # --- WHEN AN ANSWER KEY ARRIVES ----------------------------------------------
 # parse-key / reconcile-key / apply-adjudication / stamp-provenance / flip-public
 # then:  npx tsx scripts/mocks/build.ts --paper=gat --only=2026-Sep --apply --publish
+
+# --- THE FOUR-SERIES SOLUTION BOOK (after the bank is published) --------------
+npx tsx scripts/nda-gat/render.ts             2026-2 --series=B
+npx tsx scripts/nda-gat/render.ts             2026-2 --series=C
+# [fidelity agents per band, per series — FIDELITY_BRIEF.md]
+npx tsx scripts/nda-gat/match-variant.ts      2026-2 B --apply
+npx tsx scripts/nda-gat/match-variant.ts      2026-2 C --apply
+npx tsx scripts/nda-gat/build-solution-book.ts  2026-2
+npx tsx scripts/nda-gat/verify-solution-book.ts 2026-2
 ```
+
+## The four-series solution book
+
+The four series carry the SAME 150 questions in a different printed order, so a
+student who sat Series C cannot follow a key printed in Series A's numbering.
+`build-solution-book.ts` prints all four, each in ITS OWN numbering.
+
+**Nothing is committed to the bank for a sibling series and nothing should be.**
+`content_hash` would dedup every row against the base, and forcing them in would
+mean 450 duplicate questions. What a sibling produces is a committed MAP.
+
+**Every series prints the BASE series' text.** The siblings were transcribed only
+well enough to be IDENTIFIED, so their stems are terse by design and must never
+reach a printed page. From its own map a series takes exactly two things: the
+question NUMBER and the option LABELLING.
+
+**The builder is NOT a copy of `scripts/nda-pyq`'s, and the reason is a trap.**
+That pipeline's map rows are `{ number, base, answer, labels, permuted }`; this
+one's are `{ variant, base, score, optionScore, labels, verdict }` plus a
+separate top-level `key`. Copying the Maths reader would read `undefined` for
+every question number and every answer — and `undefined` sorts and prints
+without erroring, so the failure is a silently mis-numbered book, not a crash.
+
+**The map's `key` is cross-checked, never trusted.** The builder re-derives each
+sibling answer from `labels` plus the base's own derived answer and REFUSES if
+that disagrees with the `key` match-variant wrote. `verify-solution-book.ts` then
+reads the .docx back and compares it against the `key` — deliberately the other
+route, so the two agreeing is two independent computations meeting at the printed
+page rather than one computation read twice.
+
+**What the verifier does not prove is that the document LAYS OUT.** It opens
+`word/document.xml`, not Word. Open the file by hand once.
+
+### A MAP'S `key` GOES STALE WHEN THE BASE ANSWERS CHANGE — re-run the matcher
+
+`match-variant.ts` derives its `key` from `<id>.answers.json` AT GENERATION TIME
+and stamps no fingerprint of it, so a map committed before an adjudication keeps
+asserting the superseded answers and nothing in the file says so.
+
+**This was live, not hypothetical.** Set D's map was generated at 05:08 on
+2026-09-14; `apply-adjudication.ts` then changed six base answers (Q90, Q91,
+Q124, Q144, Q145, Q149). Regenerating moved exactly six of D's key entries —
+Q51, Q75, Q104, Q105, Q109, Q134 — and they are precisely the six whose base was
+adjudicated, six for six with no others. A Series D solution document built from
+the committed map would have printed six wrong answers.
+
+**The guard that catches it is `build-solution-book.ts` refusing to trust the
+`key`.** It re-derives each answer from `labels` plus the base's CURRENT answer
+and refuses on any disagreement — fault-injected by restoring the stale map,
+which made it name exactly those six rows and nothing else. That is a stronger
+check than a staleness fingerprint would be, because it catches ANY disagreement
+rather than only an out-of-date one, which is why no extra machinery was added.
+
+**The residual risk is a reader who takes a map's `key` at face value.** Do not.
+**After any change to `<id>.answers.json`, re-run `match-variant.ts --apply` for
+every series** before building anything from a map.
 
 ## The fidelity pass, and what it measured
 
