@@ -36,6 +36,16 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "nda-2-2026-gat-paper-analysis",
+    title: "NDA II 2026 GAT: what changed in English and GK",
+    description:
+      "NDA II 2026 GAT against every paper since 2017: voice and speech questions are brand new, and Polity has finally drawn level with History.",
+    datePublished: "2026-09-14",
+    examSlug: "nda",
+    tags: ["NDA", "General Ability Test", "English", "Paper analysis"],
+    readingMinutes: 7,
+  },
+  {
     slug: "nda-2-2026-maths-paper-analysis",
     title: "NDA II 2026 Maths: what the paper actually asked for",
     description:
