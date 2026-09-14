@@ -113,17 +113,38 @@ export function gatNormText(s: string): string {
  * protecting 133 other questions in order to admit one is how a wrong pairing
  * gets in; teaching the normaliser a notation it genuinely did not know is not.
  *
- * Kept deliberately narrow — degree notation only. Every extra alias is a chance
- * to collapse two options that should stay distinct, and a test pins that the
- * four angles of that very question remain four different strings after the
- * fold.
+ * THE SAME SHAPE RECURRED ON SERIES C and is folded here too. The base stores
+ * `\(4020\ \text{Å}\)` where the terse pass wrote `4020 A` — which
+ * FIDELITY_BRIEF.md expressly permits ("keep symbols readable in plain text if
+ * you like ... Å"). The failure mode is worth stating precisely because it is
+ * not the obvious one: the imported fold's final strip keeps ASCII alphanumerics
+ * only, so `Å` is DROPPED ENTIRELY rather than surviving as a letter. The base
+ * side folded to `4020` and the variant side to `4020a`, so the two differed by
+ * a whole token and base Q66 was correctly REFUSED — the one unmatched row in an
+ * otherwise perfect 149/149.
+ *
+ * Kept deliberately narrow — degree and angstrom notation only, and the SYMBOL
+ * only. The word "angstrom" is deliberately NOT folded onto the symbol: no
+ * booklet has yet produced that pair, and an alias added on speculation is a
+ * chance to collapse two options that should stay distinct for no measured gain.
+ *
+ * Every extra alias carries that risk, so each is pinned in BOTH directions: a
+ * test asserts the fold makes the two notations agree, AND that the four angles
+ * of the degree question — and the four wavelength ranges of the angstrom one,
+ * which differ ONLY in their numbers — remain four different strings after it.
  */
 function foldUnits(s: string): string {
   return (s ?? "")
     .replace(/\^\s*\\circ/g, " degrees ")
     .replace(/\\circ/g, " degrees ")
     .replace(/°/g, " degrees ")
-    .replace(/\bdegree\b/gi, "degrees");
+    .replace(/\bdegree\b/gi, "degrees")
+    // Angstrom. `\AA` first — the LaTeX command form — then the bare sign, which
+    // is how the bank actually stores it inside `\text{...}`. U+212B (the
+    // ANGSTROM SIGN codepoint) is folded alongside U+00C5 (LATIN CAPITAL A WITH
+    // RING ABOVE): they render identically and a transcription may carry either.
+    .replace(/\\AA\b/g, " A ")
+    .replace(/[ÅåÅ]/g, " A ");
 }
 
 /**

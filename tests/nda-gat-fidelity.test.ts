@@ -63,6 +63,33 @@ describe("gatNormText", () => {
     const angles = ["\\(0^\\circ\\)", "\\(30^\\circ\\)", "\\(45^\\circ\\)", "\\(60^\\circ\\)"];
     expect(new Set(angles.map(gatNormText)).size).toBe(4);
   });
+
+  it("folds the angstrom sign onto the plain letter the terse pass writes", () => {
+    // MEASURED FAILURE, the same shape as the degree one above and found the
+    // same way. Set A stores `\(4020\ \text{Å}\)`; Series C's terse pass wrote
+    // `4020 A`, which FIDELITY_BRIEF.md expressly permits ("keep symbols
+    // readable in plain text if you like"). The two folded to `4020å` and
+    // `4020a`, so the option score for base Q66 was 0, the total fell under the
+    // floor, and the pair was correctly REFUSED rather than guessed — the one
+    // unmatched row in an otherwise perfect 149/149.
+    expect(gatNormText("\\(4020\\ \\text{Å}\\)")).toBe(gatNormText("4020 A"));
+    expect(gatNormText("5386 Å to 8978 Å")).toBe(gatNormText("5386 A to 8978 A"));
+    // The LaTeX command form, which a future transcription may well use.
+    expect(gatNormText("4020 \\AA")).toBe(gatNormText("4020 A"));
+  });
+
+  it("still tells one wavelength range from another after the fold", () => {
+    // The guard that matters: this question's four options differ ONLY in their
+    // numbers, so a fold that collapsed any two of them would let the matcher
+    // build a wrong label map — which is worse than the refusal it replaces.
+    const ranges = [
+      "\\(3000\\ \\text{Å}\\) to \\(5000\\ \\text{Å}\\)",
+      "\\(4020\\ \\text{Å}\\) to \\(6700\\ \\text{Å}\\)",
+      "\\(5000\\ \\text{Å}\\) to \\(7000\\ \\text{Å}\\)",
+      "\\(5386\\ \\text{Å}\\) to \\(8978\\ \\text{Å}\\)",
+    ];
+    expect(new Set(ranges.map(gatNormText)).size).toBe(4);
+  });
 });
 
 describe("matchVariant", () => {
