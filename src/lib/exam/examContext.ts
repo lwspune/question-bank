@@ -417,7 +417,8 @@ export type ActiveTab =
   | "board"
   | "papers"
   | "mock"
-  | "books";
+  | "books"
+  | "blog";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -439,6 +440,10 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   // superadmin, but the mapping is unconditional: whoever can reach the route
   // should see which tab owns it.
   if (matchesSegment(path, "/books")) return "books";
+  // Blog — public editorial. Unlike Books this owns no role gate; the tab is
+  // drawn for everyone from sm up, and below sm it lives in the account menu
+  // (see UserMenu) because the phone tab bar is a fixed five.
+  if (matchesSegment(path, "/blog")) return "blog";
   return null;
 }
 

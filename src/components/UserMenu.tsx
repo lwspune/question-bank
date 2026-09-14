@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, ShieldCheck, User } from "lucide-react";
+import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, PenLine, ShieldCheck, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -76,12 +76,21 @@ export default function UserMenu({
             </Link>
           )}
           {/*
-            Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm up
-            they are tabs in PrimaryNav, and duplicating them here would give
+            Papers, Books and Blog are PHONE-ONLY entries (`sm:hidden`): from sm
+            up they are tabs in PrimaryNav, and duplicating them here would give
             two answers to "where do I go?". Below sm they are deliberately not
             in the tab bar — that bar is a fixed five for every visitor, and
-            these two are desktop work for ten staff against three hundred
+            Papers/Books are desktop work for ten staff against three hundred
             students. See lib/nav/mobileTabs.ts.
+
+            BLOG IS THE ODD ONE AND THE GAP IS KNOWN. Papers and Books are
+            role-gated, so their audience is always signed in and this menu
+            always exists for them. Blog is PUBLIC, and this menu does not
+            render for anon visitors at all — HeaderBar draws a "Sign in" button
+            instead. So an anonymous phone reader reaches /blog only via the
+            Footer link, which is on every page. Accepted deliberately rather
+            than by oversight: the alternative is a sixth tab, and the five-tab
+            cap is a measured constraint.
           */}
           {isStaff && (
             <Link
@@ -101,6 +110,14 @@ export default function UserMenu({
               Books
             </Link>
           )}
+          {/* Not role-gated — public surface, unlike the two above. */}
+          <Link
+            href="/blog"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+          >
+            <PenLine className="h-4 w-4" aria-hidden />
+            Blog
+          </Link>
           {role === null && (
             <Link
               href="/me"
