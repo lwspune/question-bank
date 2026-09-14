@@ -53,12 +53,19 @@
     "read as highlighting are the watermark, at constant height across all blocks."
   ],
   "outcome": {
-    "ourAnswerStands": 14,
+    "ourAnswerStands": 15,
     "keysWin": 5,
-    "unresolved": 2,
-    "note": "21 rows where the three sources do not all agree: the original 16, plus 5 where our answer matched Dreamers and Centurion alone dissents."
+    "unresolved": 1,
+    "note": "21 rows where the three sources do not all agree: the original 16, plus 5 where our answer matched Dreamers and Centurion alone dissents. Q143 was settled by the maintainer on external knowledge rather than by our derivation — it is counted in ourAnswerStands because the stored answer does not change, but see its own note before reading it as a LOW-band success.",
+    "remaining": "Q144 only — it turns entirely on whether all six 2026 Goldman Prize winners are women."
   },
   "keepOurs": [
+    {
+      "number": 143, "ours": "A", "dreamers": "D", "centurion": "A", "confidence": "LOW",
+      "class": "RECALL — settled by the maintainer, NOT by our derivation",
+      "settledBy": "maintainer, 2026-09-14",
+      "why": "SETTLED AS A (France) on the maintainer's knowledge of International Big Cat Alliance membership, which resolves the split between the two keys. Recorded this way rather than as a win for our blind pass, because the distinction matters for calibration: the deriver marked this LOW and said in its own note that it does not hold IBCA membership as of 2026, choosing France on a range-state pattern argument alone. It landed on the right letter, but not by holding the fact — so this row is NOT evidence that the LOW band can be trusted, and it should not be counted as such when the calibration figures are next re-measured."
+    },
     {
       "number": 118, "ours": "D", "dreamers": "A", "centurion": "A", "confidence": "HIGH",
       "class": "SELF-REFUTING — and we depart from BOTH keys here",
@@ -157,10 +164,6 @@
     }
   ],
   "unresolved": [
-    {
-      "number": 143, "ours": "A", "dreamers": "D", "centurion": "A", "confidence": "LOW",
-      "why": "DO NOT APPLY without external verification. The two keys SPLIT, and our own pass is not a third voice: it was LOW and said in its own note that it does not hold IBCA membership as of 2026 and chose France on a range-state pattern argument alone. A guess agreeing with a key is not corroboration. The question needs the actual International Big Cat Alliance membership list; everything else here is inference."
-    },
     {
       "number": 144, "ours": "B", "dreamers": "B", "centurion": "D", "confidence": "LOW",
       "why": "DO NOT APPLY without external verification. Statement I is securely false (the Goldman Environmental Prize is annual, not biennial) and statement II is structurally safe (the prize gives six awards a year, one per region, so one winner is always from Asia). Everything turns on III — whether all six 2026 winners are women — which decides between our B and Centurion's D. Our pass was LOW and reasoned from a prior rather than from knowledge of the 2026 slate, so although ours and Dreamers agree, that is one piece of evidence and a guess, not two."
