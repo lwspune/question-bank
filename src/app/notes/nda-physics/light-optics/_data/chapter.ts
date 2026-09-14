@@ -4,7 +4,7 @@ export const LIGHT_OPTICS_CHAPTER: ChapterNote = {
   chapterName: "Light and Optics",
   title: "Light and Optics — NDA Physics",
   intro:
-    "Light and Optics is the biggest and most diagram-heavy chapter in NDA Physics — 97 PYQs across 2017–2026, and the chapter where a single sign convention makes or breaks a numeric answer. " +
+    "Light and Optics is the biggest and most diagram-heavy chapter in NDA Physics — 102 PYQs across 2017–2026, and the chapter where a single sign convention makes or breaks a numeric answer. " +
     "It teaches in six movements that follow the way light behaves when it meets a surface: " +
     "(1) Reflection and mirrors — light bouncing back: the laws of reflection, plane mirrors, and the spherical-mirror formula with its image-formation rules for concave and convex mirrors; " +
     "(2) Refraction, speed of light, and total internal reflection — light bending as it changes medium: Snell's law, refractive index as n = c/v, the critical angle, and the everyday effects (mirage, optical fibre, raised pool bottom); " +

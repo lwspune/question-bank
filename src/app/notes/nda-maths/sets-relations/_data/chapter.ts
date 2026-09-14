@@ -4,7 +4,7 @@ export const SETS_RELATIONS_CHAPTER: ChapterNote = {
   chapterName: "Sets & Relations",
   title: "Sets & Relations — NDA Mathematics",
   intro:
-    "Sets & Relations is among the most reliable scoring chapters in NDA Maths — 69 PYQs across 2017–2026, " +
+    "Sets & Relations is among the most reliable scoring chapters in NDA Maths — 75 PYQs across 2017–2026, " +
     "only ~13% HARD, and built on a small number of repeatable techniques. The chapter teaches in three movements, " +
     "ordered so each builds on the last: " +
     "(1) Set fundamentals and algebra — what a set is, the operations (union, intersection, complement, difference, symmetric difference), " +

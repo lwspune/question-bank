@@ -4,8 +4,8 @@ export const CELL_BIOLOGY_CHAPTER: ChapterNote = {
   chapterName: "Cell Biology",
   title: "Cell Biology — NDA Biology",
   intro:
-    "Cell Biology is one of the most reliably-tested NDA Biology chapters — 44 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall. " +
-    "The single biggest cluster is cell organelles (17 of 44 questions): which organelle has its own DNA, which one digests, which one builds lipids. Memorise that table and you bank a third of the chapter. " +
+    "Cell Biology is one of the most reliably-tested NDA Biology chapters — 46 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall. " +
+    "The single biggest cluster is cell organelles (17 of 46 questions): which organelle has its own DNA, which one digests, which one builds lipids. Memorise that table and you bank a third of the chapter. " +
     "The chapter teaches in eight movements, building from what a cell is up to how it divides: " +
     "(1) Cell structure fundamentals — what every living cell must have, the levels-of-organization ladder, and the cell theory; " +
     "(2) Microscopy — who discovered the cell and the parts of a compound microscope; " +

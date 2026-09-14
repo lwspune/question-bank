@@ -64,14 +64,12 @@ const stripBreaks = (zone: string) => zone.replace(/\\\\(\s*\[[^\]]*\])?/g, " ")
 
 // Derivative operators are a TECHNIQUE signal, but their giveaway macro
 // (`\frac{d}{dx}`) hides behind the allowlisted `\frac` — so detect the
-// derivative FORM directly and emit a synthetic `[d/dx]` token. Catches
-// Leibniz `\frac{d...}` / `d/dx`, partials, and function-prime `f'(` / `f''(`.
-// Prime MUST be followed by `(` so transpose notation `A'` (= Aᵀ) is NOT a
-// false positive. The Leibniz form requires BOTH numerator and denominator to
-// start with `d` (`\frac{d}{dx}`, `\frac{d^2}{dx^2}`, `\frac{dy}{dx}`) so a
-// fraction with a variable numerator named d — `\frac{d}{x}` — is not matched.
-// (Blind spots found 2026-06-07: determinant-derivative gap; 2026-06-07 \frac{d}/x.)
-const DERIV_RE = /frac\s*\{\s*d[^{}]*\}\s*\{\s*d|\bd\/dx|\\partial|[a-zA-Z]'+\(/;
+// derivative FORM directly and emit a synthetic `[d/dx]` token. The detector
+// moved to scripts/lib/derivProbe.ts on 2026-09-14 so it could be tested
+// (tests/deriv-probe.test.ts); see that file for the L'Hopital blind spot the
+// original prime-must-precede-`(` guard caused, and for the transpose guard
+// that is still load-bearing.
+import { DERIV_RE } from "./lib/derivProbe";
 
 function tokensFromZones(zones: string[]): { macros: Set<string>; frags: Set<string> } {
   const macros = new Set<string>();

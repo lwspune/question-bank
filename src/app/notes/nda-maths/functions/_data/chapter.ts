@@ -4,7 +4,7 @@ export const FUNCTIONS_CHAPTER: ChapterNote = {
   chapterName: "Functions",
   title: "Functions — NDA Mathematics",
   intro:
-    "Functions is a reliable scoring chapter in NDA Mathematics — around 109 past-year questions " +
+    "Functions is a reliable scoring chapter in NDA Mathematics — around 115 past-year questions " +
     "across 2017–2026, roughly five or six marks on a typical paper, and only about one in ten is HARD. " +
     "Most of it is bread-and-butter: read off a domain, find a range, test even/odd or periodicity, " +
     "compose two functions, invert one. The marks are lost not to difficulty but to a handful of " +

@@ -4,7 +4,7 @@ export const QUADRATIC_EQUATIONS_CHAPTER: ChapterNote = {
   chapterName: "Quadratic Equations",
   title: "Quadratic Equations — NDA Maths",
   intro:
-    "Quadratic Equations is a high-yield, high-difficulty chapter: 63 PYQs span 2017–2026 and 40% of them are HARD — " +
+    "Quadratic Equations is a high-yield, high-difficulty chapter: 67 PYQs span 2017–2026 and 37% of them are HARD — " +
     "the densest HARD profile of any NDA Maths topic this size. Almost nothing here is brute-force; the marks come from " +
     "recognising a structure (a vanishing coefficient sum, a symmetric function of the roots, a hidden cube root of unity) " +
     "and applying one clean relation. The notes teach in three movements, foundations first: " +

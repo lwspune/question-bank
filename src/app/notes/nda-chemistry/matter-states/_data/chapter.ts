@@ -4,7 +4,7 @@ export const MATTER_STATES_CHAPTER: ChapterNote = {
   chapterName: "Matter and Its States",
   title: "Matter and Its States — NDA Chemistry",
   intro:
-    "Matter and Its States is the foundation chapter of NDA Chemistry — 30 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall and classification. " +
+    "Matter and Its States is the foundation chapter of NDA Chemistry — 32 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall and classification. " +
     "The bank loves three shapes here: 'which is NOT a mixture / solution / chemical change', 'which phase change is this' (dry ice, sulphur crust), and 'match the separation method to the mixture'. The win comes from knowing the classification trees and the phase-change names cold, not from any calculation. " +
     "The chapter teaches in five movements, building from what matter is up to how we pull mixtures apart: " +
     "(1) States of matter, phase changes and diffusion — solid, liquid, gas, the six interconversion names (melting, freezing, vaporisation, condensation, sublimation, deposition), and why dry ice is the bank's favourite example; " +

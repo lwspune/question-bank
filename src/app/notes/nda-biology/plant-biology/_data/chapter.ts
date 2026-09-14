@@ -4,7 +4,7 @@ export const PLANT_BIOLOGY_CHAPTER: ChapterNote = {
   chapterName: "Plant Biology",
   title: "Plant Biology — NDA Biology",
   intro:
-    "Plant Biology is a 29-PYQ chapter spanning 2017–2026 — mostly EASY and MODERATE, with one HARD transpiration experiment. " +
+    "Plant Biology is a 30-PYQ chapter spanning 2017–2026 — mostly EASY and MODERATE, with one HARD transpiration experiment. " +
     "Unlike pure-recall chapters, it leans 'Apply': you trace mechanisms (how water splits in photosynthesis, why a shoot grows up, which embryo part becomes the root) as much as you memorise named facts. " +
     "The chapter teaches in five movements, building from the plant's raw building blocks up to how it grows and reproduces: " +
     "(1) Plant tissues and meristems — the dividing tissues that drive growth, the simple permanent tissues (parenchyma, collenchyma, sclerenchyma), and the conducting tissues (xylem, phloem); " +

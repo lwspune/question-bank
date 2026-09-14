@@ -15,6 +15,7 @@
 export const PROD_CONTRACT_FILES: string[] = [
   "tests/guide-*.test.ts", // playbook drill-target resolution vs live taxonomy
   "tests/cross-link-integrity.test.ts", // notes/guide cross-refs vs live DB
+  "tests/notes-intro-counts.test.ts", // /notes chapter-intro prose counts vs live bank
   "tests/resource-tags-batch.test.ts", // backlink chips vs live tags
   "tests/exam-home-stats.test.ts", // live-bank count shapes
   "tests/all-exam-stats.test.ts",

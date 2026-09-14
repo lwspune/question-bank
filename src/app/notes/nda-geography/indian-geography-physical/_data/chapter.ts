@@ -4,7 +4,7 @@ export const INDIAN_GEOGRAPHY_PHYSICAL_CHAPTER: ChapterNote = {
   chapterName: "Indian Geography — Physical Features",
   title: "Indian Geography — Physical Features — NDA Geography",
   intro:
-    "This is one of the two biggest chapters in NDA Geography — 67 PYQs across 2017–2026 — and it is pure named-fact recall: which peak, which river, which pass, which soil, which state. There is almost no process to trace here; the marks go to whoever has memorised the map of India cleanly. " +
+    "This is one of the two biggest chapters in NDA Geography — 69 PYQs across 2017–2026 — and it is pure named-fact recall: which peak, which river, which pass, which soil, which state. There is almost no process to trace here; the marks go to whoever has memorised the map of India cleanly. " +
     "So the chapter is built as a set of organised lookup tables rather than long explanations, and it teaches in the order a student should walk the country: " +
     "(1) Location, extent and frontiers of India — where India sits, its east-west sunrise gap, coastline and land neighbours; " +
     "(2) Mountains, plateaus and plains of India — the physiographic divisions, Himalayan ranges and passes, the Peninsular Plateau, the alluvial belts of the plains; " +

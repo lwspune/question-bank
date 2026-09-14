@@ -4,7 +4,7 @@ export const BIODIVERSITY_CHAPTER: ChapterNote = {
   chapterName: "Biodiversity and Classification",
   title: "Biodiversity and Classification — NDA Biology",
   intro:
-    "Biodiversity and Classification is pure recall — 11 PYQs across 2018–2024, every one EASY or MODERATE, and not a single HARD question. " +
+    "Biodiversity and Classification is pure recall — 12 PYQs across 2018–2026, every one EASY or MODERATE, and not a single HARD question. " +
     "There is nothing to derive here; the whole chapter is about knowing the right classification cold: which kingdom an organism belongs to, which phylum, which plant group. " +
     "The chapter teaches in three movements: " +
     "(1) Foundations of classification — the taxonomic hierarchy (Kingdom down to Species), the rules of binomial nomenclature, and Whittaker's five-kingdom system; " +

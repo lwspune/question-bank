@@ -5,8 +5,8 @@ export const STATISTICS_CHAPTER: ChapterNote = {
   title: "Statistics — NDA Mathematics",
   intro:
     "Statistics is one of the most predictable scoring chapters in NDA Mathematics. " +
-    "160 past-year questions across 2017–2026 cluster around a small set of techniques — " +
-    "central tendency and dispersion alone account for 119 of them. Each note below is " +
+    "165 past-year questions across 2017–2026 cluster around a small set of techniques — " +
+    "central tendency and dispersion alone account for 122 of them. Each note below is " +
     "built for the digital board: explain the formula, work two real PYQs side by side, " +
     "then drill the rest from the bank.",
   subtopicOrder: [
