@@ -4,7 +4,7 @@ export const LAWS_OF_MOTION_CHAPTER: ChapterNote = {
   chapterName: "Laws of Motion and Forces",
   title: "Laws of Motion and Forces — NDA Physics",
   intro:
-    "Laws of Motion is one of NDA Physics's most reliably-tested chapters — roughly 41 PYQs across 2018–2026, almost entirely EASY and MODERATE (only ~10% HARD). " +
+    "Laws of Motion is one of NDA Physics's most reliably-tested chapters — roughly 44 PYQs across 2018–2026, almost entirely EASY and MODERATE (only ~10% HARD). " +
     "The chapter teaches in five progressive movements: " +
     "(1) Types of forces — fundamental vs contact, conservative vs non-conservative, and the equilibrium types; the vocabulary the rest of the chapter assumes; " +
     "(2) Newton's three laws — inertia, F = ma, action-reaction, plus combining forces into a resultant (the chapter's single HARD-heavy idea); " +

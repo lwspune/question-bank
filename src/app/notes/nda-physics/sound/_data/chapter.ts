@@ -4,7 +4,7 @@ export const SOUND_CHAPTER: ChapterNote = {
   chapterName: "Sound",
   title: "Sound — NDA Physics",
   intro:
-    "Sound is NDA Physics's lowest-HARD chapter — 34 PYQs across 2017–2025, almost entirely EASY and MODERATE. " +
+    "Sound is NDA Physics's lowest-HARD chapter — 35 PYQs across 2017–2026, almost entirely EASY and MODERATE. " +
     "The chapter teaches in four progressive movements: " +
     "(1) Foundations — what sound IS (mechanical, longitudinal, needs medium), how we PERCEIVE it (pitch, loudness, quality), and the ear chain that does the conversion (cochlea = biological mic); " +
     "(2) Wave equation, speed, and bands — v = fλ, why speed depends on the medium alone, and the named frequency bands (infrasonic, audible, ultrasonic) plus the Mach scale; " +

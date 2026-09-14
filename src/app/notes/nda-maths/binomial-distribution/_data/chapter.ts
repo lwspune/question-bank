@@ -4,7 +4,7 @@ export const BINOMIAL_DISTRIBUTION_CHAPTER: ChapterNote = {
   chapterName: "Binomial Distribution",
   title: "Binomial Distribution — NDA Maths",
   intro:
-    "Binomial Distribution is one of the most reliable scorers in the NDA Maths paper: a tight topic with 30 PYQs " +
+    "Binomial Distribution is one of the most reliable scorers in the NDA Maths paper: a tight topic with 31 PYQs " +
     "spanning 2017 to 2026, mostly EASY and MODERATE, and the same handful of patterns repeat year after year. " +
     "The notes teach in two movements. " +
     "(1) The Binomial Setting and Computing Probabilities — what makes an experiment binomial, the formula for the " +

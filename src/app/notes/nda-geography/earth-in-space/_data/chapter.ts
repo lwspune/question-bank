@@ -4,7 +4,7 @@ export const EARTH_IN_SPACE_CHAPTER: ChapterNote = {
   chapterName: "Earth in Space, Maps and Coordinates",
   title: "Earth in Space, Maps and Coordinates — NDA Geography",
   intro:
-    "This chapter is the 'how the Earth sits in space and how we pin a point on it' chapter — 22 PYQs across 2017–2026, spatial and conceptual rather than recall-heavy. " +
+    "This chapter is the 'how the Earth sits in space and how we pin a point on it' chapter — 24 PYQs across 2017–2026, spatial and conceptual rather than recall-heavy. " +
     "Almost every question rewards a clear mental picture: a spinning, tilted, slightly-squashed ball going round the Sun, wrapped in a grid of latitude and longitude, sliced into 24 time zones. " +
     "Get those pictures right and the marks follow without memorising long lists. " +
     "The chapter teaches in a logical arc, from the planet's own motions outward to the wider Solar System: " +

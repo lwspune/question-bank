@@ -116,6 +116,22 @@ Step 4 of the post-upload ritual tagged 186 concepts across the 270 new rows and
 
 **How to apply:** decide per gap whether the bank now justifies a new ConceptUnit — this is the "revisit dropped-gap ConceptUnits" half of ritual step 4, and bank growth is exactly what matures a previously-dropped gap. Relative velocity in particular is a standard NDA Kinematics technique that may warrant a concept regardless of this single row; SQL-audit its live PYQ count first per [[bank-validate-notes-gaps]] rather than adding one on the strength of one question. Worth pairing with a standing per-subtopic count of untagged PYQs, which would make every future instance visible without a session having to remember.
 
+### Two NDA Maths chapters each call themselves the hardest, and neither is
+
+`quadratic-equations`' intro says it has "the densest HARD profile of any NDA Maths topic"; `properties-of-triangle`' says it is "the toughest yield in NDA Maths". Measured over chapters with >=20 PYQs, the ranking is **Height & Distance 69.2% HARD**, Properties of Triangle 42.3%, Circles 39.3%, Quadratic Equations 37.3%. So one claim is fourth, the other second, and the actual leader claims nothing. The stated percentages beside them (40% and 45%) were stale and have been corrected to 37% and 42%; the SUPERLATIVES were deliberately left alone, because rewording them is an editorial voice decision rather than a number substitution.
+
+**Why:** a superlative is the most quotable sentence in an intro and the least likely to be re-checked, and two of them are now mutually contradictory in shipped, indexed copy (chapter intros feed `metadata.description`). Unlike a count, no test can derive the right wording.
+
+**How to apply:** decide the editorial line first — either drop the superlative, scope it ("among the hardest"), or move it to Height & Distance where it is true — then consider a test asserting that at most ONE noted chapter per subject claims a superlative, which is checkable by phrase even though the wording is not derivable. Note Height & Distance is only 26 q, so "hardest" and "biggest" are different claims and the intro should not conflate them.
+
+### The /notes intro-count test cannot see a claim that names no unit
+
+`tests/notes-intro-counts.test.ts` (added 2026-09-14) matches `<N> PYQs|questions`, including the attributive `63-PYQ` form that initially hid two stale chapters. It still cannot see a bare count whose noun is elsewhere in the sentence — "central tendency and dispersion alone account for **119 of them**", "the hardest by raw HARD count (**47 of them**)", "only **6 of them** are EASY". Those were checked BY HAND this pass (2 of 12 were stale: Statistics 119 -> 122, plus the two percentages above) and are unguarded from here on.
+
+**Why:** they sit in the same sentence as the numbers that ARE guarded, so the guarded half will stay right while the unguarded half drifts — producing an intro that contradicts itself, which is worse than one that is uniformly stale.
+
+**How to apply:** these are derivable in principle but not from the number alone — "119 of them" needs to know WHICH subtopics are meant. The cheap version is a test that flags any `\d+ of them` / `\d+% ... HARD` in an intro and requires it to appear in an allowlist of adjudicated claims, so a NEW one cannot be added silently and an existing one is re-read whenever the allowlist is touched. The expensive version is structured data (a `counts:` block on `ChapterNote` interpolated into the prose), which would also close the guide-prose item above.
+
 ### `seo:dates` is not part of shipping a guide, so a shipped guide sat for three weeks with no `<lastmod>`
 
 Running `npm run seo:dates` after the ten-guide commit added `/guide/mht-cet-maths` to `contentDates.generated.ts` for the FIRST time. That guide shipped 2026-08-22, so it had been in the sitemap with no per-page `<lastmod>` ever since — nobody had run the script in between. CLAUDE.md's Commands table does say to run it after shipping a notes chapter or guide, but GUIDE_TEMPLATES.md's per-new-guide plumbing checklist — the list a person actually works through when shipping a guide — does not carry the step.

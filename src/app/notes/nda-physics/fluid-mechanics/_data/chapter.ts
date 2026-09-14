@@ -4,7 +4,7 @@ export const FLUID_MECHANICS_CHAPTER: ChapterNote = {
   chapterName: "Fluid Mechanics and Properties of Matter",
   title: "Fluid Mechanics and Properties of Matter — NDA Physics",
   intro:
-    "Fluid Mechanics is the toughest chapter in NDA Physics — about 23 PYQs across 2017–2026 and the bank's highest HARD share (~30%). " +
+    "Fluid Mechanics is the toughest chapter in NDA Physics — about 24 PYQs across 2017–2026 and the bank's highest HARD share (~30%). " +
     "It rewards a clean grasp of two foundations and one famous principle. " +
     "It teaches in two movements that follow the physics: " +
     "(1) Pressure and Surface Tension — what pressure is (force per unit area), how it grows with depth in a liquid (P = rho g h), Pascal's transmission of pressure through an enclosed fluid (the hydraulic press), the difference between gauge and absolute pressure, and surface tension (the skin of a liquid, capillary rise, and how it falls as temperature rises); " +

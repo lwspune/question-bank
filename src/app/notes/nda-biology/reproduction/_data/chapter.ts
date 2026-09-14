@@ -4,7 +4,7 @@ export const REPRODUCTION_CHAPTER: ChapterNote = {
   chapterName: "Reproduction",
   title: "Reproduction — NDA Biology",
   intro:
-    "Reproduction is a compact but high-concept NDA Biology chapter — 13 PYQs across 2020–2026, weighted toward the 'Apply' style where you have to trace a sequence or reason about chromosome numbers, not just recall a fact. " +
+    "Reproduction is a compact but high-concept NDA Biology chapter — 16 PYQs across 2020–2026, weighted toward the 'Apply' style where you have to trace a sequence or reason about chromosome numbers, not just recall a fact. " +
     "The chapter teaches in four movements, building from why sexual reproduction exists up to the specific machinery of flowering plants and mammals: " +
     "(1) Sexual reproduction and genetic principles — why two parents and meiosis create variation, and why chromosome number stays constant across generations; " +
     "(2) Meiosis and DNA in flowering plants — where in the plant life cycle the DNA gets halved; " +

@@ -4,7 +4,7 @@ export const CARBON_CHAPTER: ChapterNote = {
   chapterName: "Carbon and Its Compounds",
   title: "Carbon and Its Compounds — NDA Chemistry",
   intro:
-    "Carbon is the largest chapter in NDA Chemistry — 45 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall. " +
+    "Carbon is the largest chapter in NDA Chemistry — 46 PYQs across 2017–2026, almost all EASY or MODERATE, and almost all pure named-fact recall. " +
     "Two questions in three are 'which statement is NOT correct' about an allotrope or a common compound, so the win comes from knowing the table cold, not from a derivation. " +
     "The chapter teaches in six movements, building from why carbon is special up to its everyday products: " +
     "(1) Tetra-valency, catenation and isomerism — the two properties (four bonds + self-linking) that explain why carbon forms more compounds than every other element combined; " +

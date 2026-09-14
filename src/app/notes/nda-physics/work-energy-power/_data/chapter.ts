@@ -4,7 +4,7 @@ export const WORK_ENERGY_POWER_CHAPTER: ChapterNote = {
   chapterName: "Work, Energy and Power",
   title: "Work, Energy and Power — NDA Physics",
   intro:
-    "Work, Energy and Power is a steady, formula-light scorer in NDA Physics — 23 PYQs across 2017–2026, almost all EASY and MODERATE with only a couple of HARD outliers. " +
+    "Work, Energy and Power is a steady, formula-light scorer in NDA Physics — 26 PYQs across 2017–2026, almost all EASY and MODERATE with only a couple of HARD outliers. " +
     "The chapter teaches in four progressive movements that follow the physics itself: " +
     "(1) Work — the foundation: work is force times displacement times the cosine of the angle between them, which is why pushing perpendicular to motion does zero work and pulling against motion does negative work; " +
     "(2) Energy and conservation — kinetic energy (½mv²), gravitational potential energy (mgh), and the conservation law that lets a falling body trade one for the other; " +

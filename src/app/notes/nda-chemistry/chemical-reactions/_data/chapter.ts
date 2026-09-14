@@ -4,7 +4,7 @@ export const CHEMICAL_REACTIONS_CHAPTER: ChapterNote = {
   chapterName: "Chemical Reactions",
   title: "Chemical Reactions — NDA Chemistry",
   intro:
-    "Chemical Reactions is the most reasoning-heavy chapter in NDA Chemistry — 30 PYQs across 2017–2026 with the highest share of HARD questions, almost all of them carried by redox. " +
+    "Chemical Reactions is the most reasoning-heavy chapter in NDA Chemistry — 32 PYQs across 2017–2026 with the highest share of HARD questions, almost all of them carried by redox. " +
     "The bank rarely asks you to balance an equation; it asks you to CLASSIFY a reaction (combination / decomposition / displacement), to track oxidation numbers up and down, or to spot the one statement that is false. " +
     "The chapter teaches in six movements, building from what a reaction even is up to the redox reasoning that earns the hard marks: " +
     "(1) Physical vs chemical changes — the line between melting ice and burning magnesium, the test the bank uses; " +

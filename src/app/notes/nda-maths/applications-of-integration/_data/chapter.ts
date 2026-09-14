@@ -4,7 +4,7 @@ export const APPLICATIONS_OF_INTEGRATION_CHAPTER: ChapterNote = {
   chapterName: "Applications of Integration",
   title: "Applications of Integration — NDA Maths",
   intro:
-    "Applications of Integration is a compact, visual chapter: 25 PYQs span 2017-2026, and almost all of them ask one " +
+    "Applications of Integration is a compact, visual chapter: 27 PYQs span 2017-2026, and almost all of them ask one " +
     "thing — the AREA of a region in the plane. The integration itself is rarely hard; the marks live in the SETUP. " +
     "You win them by sketching the region, reading the boundary curve and the limit lines off the question, and choosing " +
     "the right model: area under one curve, area between two curves, or a known shape you never integrate at all. " +

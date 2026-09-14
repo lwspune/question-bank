@@ -4,7 +4,7 @@ export const CIRCLES_CHAPTER: ChapterNote = {
   chapterName: "Circles",
   title: "Circles — NDA Maths",
   intro:
-    "Circles is a compact but reliably tested chapter: 27 PYQs span 2017–2026, and the hard pockets are concentrated in " +
+    "Circles is a compact but reliably tested chapter: 28 PYQs span 2017–2026, and the hard pockets are concentrated in " +
     "the construction problems — building a circle through given points and reading off inscribed-angle facts. Almost every " +
     "question is one of three moves: convert the general equation to centre-and-radius form, build a circle from given data " +
     "(three points, a diameter, a centre on a line, or a family through a chord), or use a circle property (perpendicular " +

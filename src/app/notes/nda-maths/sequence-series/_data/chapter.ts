@@ -4,7 +4,7 @@ export const SEQUENCE_SERIES_CHAPTER: ChapterNote = {
   chapterName: "Sequence & Series",
   title: "Sequence & Series — NDA Mathematics",
   intro:
-    "Sequence & Series is one of the highest-yield chapters in NDA Mathematics — 89 past-year " +
+    "Sequence & Series is one of the highest-yield chapters in NDA Mathematics — 93 past-year " +
     "questions across 2017–2026, four to six marks on almost every paper, sitting mostly in the " +
     "EASY–MODERATE band. The whole chapter grows from two engines repeated in richer settings: the " +
     "arithmetic progression (constant difference) and the geometric progression (constant ratio). " +

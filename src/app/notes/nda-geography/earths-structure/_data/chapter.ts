@@ -4,7 +4,7 @@ export const EARTHS_STRUCTURE_CHAPTER: ChapterNote = {
   chapterName: "Earth's Structure, Landforms and Geological Time",
   title: "Earth's Structure, Landforms and Geological Time — NDA Geography",
   intro:
-    "This is the largest chapter in NDA Geography after the two Indian-Geography chapters — 74 PYQs across 2017–2026, and the workhorse of the 'Apply' strand, because almost every question asks you to TRACE A PROCESS rather than recall an isolated fact. " +
+    "This is the largest chapter in NDA Geography after the two Indian-Geography chapters — 80 PYQs across 2017–2026, and the workhorse of the 'Apply' strand, because almost every question asks you to TRACE A PROCESS rather than recall an isolated fact. " +
     "Where do mountains come from? Why is the outer core liquid? What turns sandstone into quartzite? The answers follow from the mechanism, not from a memorised list. " +
     "So the chapter teaches in one long arc, from the inside of the planet outward and from building forces to breaking forces: " +
     "(1) Earth's interior and plate tectonics — the layers, the discontinuities, and the moving plates that drive everything else; " +

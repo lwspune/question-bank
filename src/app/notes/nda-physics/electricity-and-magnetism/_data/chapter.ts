@@ -4,7 +4,7 @@ export const ELECTRICITY_AND_MAGNETISM_CHAPTER: ChapterNote = {
   chapterName: "Electricity and Magnetism",
   title: "Electricity and Magnetism — NDA Physics",
   intro:
-    "Electricity and Magnetism is the single biggest chapter in NDA Physics — 93 PYQs across 2017–2026 and the bank's #1 HARD pool. " +
+    "Electricity and Magnetism is the single biggest chapter in NDA Physics — 97 PYQs across 2017–2026 and the bank's #1 HARD pool. " +
     "It teaches in four movements that follow the physics itself: " +
     "(1) Electrostatics — charges at rest: what charge is, how things get charged, Coulomb's law, the electric field, potential, and how conductors behave (shielding, lightning rods); " +
     "(2) Current electricity — charges in motion: current and Ohm's law, resistance and resistivity, series-parallel networks, electrical power and heating, and cells with EMF and Kirchhoff's laws; " +

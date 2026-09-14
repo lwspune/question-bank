@@ -4,7 +4,7 @@ export const BINARY_NUMBERS_CHAPTER: ChapterNote = {
   chapterName: "Binary Numbers",
   title: "Binary Numbers — NDA Maths",
   intro:
-    "Binary Numbers is a small but reliable chapter: 13 PYQs span 2017–2025, and almost every one rewards the same first move — " +
+    "Binary Numbers is a small but reliable chapter: 14 PYQs span 2017–2026, and almost every one rewards the same first move — " +
     "translate the binary strings into ordinary decimal, do the easy arithmetic there, and (if asked) translate the answer back. " +
     "The marks are rarely in the binary itself; they are in spotting that a question dressed up in base 2 is really a one-line " +
     "place-value conversion, a simple division, or a familiar algebra identity. The notes teach in three movements, foundations first: " +
