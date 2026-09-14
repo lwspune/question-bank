@@ -27,7 +27,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Biology Strategy — Recall, Apply, Verify",
   description:
-    "Evidence-led NDA PART B Biology preparation: three skill strands (Recall vs Apply vs Verify) matched to the bank's 82%-recall shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~28-hour time-budget plan. Backed by 190 past-year questions across 18 papers.",
+    "Evidence-led NDA PART B Biology preparation: three skill strands (Recall vs Apply vs Verify) matched to the bank's 82%-recall shape. Per-chapter must-drill subtopics, test-day attempt order, and a ~28-hour time-budget plan. Backed by 199 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-biology/strategy" },
 };
 
@@ -363,7 +363,7 @@ export default async function NdaBiologyStrategy() {
           That&rsquo;s about 4 weeks at 7 hours/week. The Recall strand gets
           the most hours (because it&rsquo;s 5 chapters and the marks-per-hour
           leader); /reference-tables active recall sits alongside Recall as a
-          dedicated cross-chapter pass. Apply is small (29 + 13 = 42 q) but
+          dedicated cross-chapter pass. Apply is small (30 + 16 = 46 q) but
           carries 4 of the bank&rsquo;s 5 HARDs — don&rsquo;t skip the
           mechanism-tracing prep.
         </p>

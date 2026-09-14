@@ -29,18 +29,18 @@ const BUCKET_INFO = {
     label:
       "Recall — Carbon · Matter · Industrial · Metals · Hydrogen · Everyday · Practical",
     blurb:
-      "Pure fact recall — chemical names, formulas, uses, allotropes, alloy compositions. 7 chapters, 144 questions, 4% average HARD. The marks-per-hour leader.",
+      "Pure fact recall — chemical names, formulas, uses, allotropes, alloy compositions. 7 chapters, 150 questions, 4% average HARD. The marks-per-hour leader.",
   },
   rule: {
     label:
       "Rule — Atomic Structure · Acids/Bases/Salts · Reactions · Bonding",
     blurb:
-      "Apply specific rules — pH classification, oxidation-state assignment, periodic-trend prediction, redox identification. 4 chapters, 109 q at 7% average HARD.",
+      "Apply specific rules — pH classification, oxidation-state assignment, periodic-trend prediction, redox identification. 4 chapters, 117 q at 7% average HARD.",
   },
   calculate: {
     label: "Calculate — Mole Concept and Stoichiometry",
     blurb:
-      "Numeric work — mole/Avogadro/equivalent-weight/stoichiometry. 1 chapter, 9 q at 11% HARD. Small but distinct skill — don't skip.",
+      "Numeric work — mole/Avogadro/equivalent-weight/stoichiometry. 1 chapter, 10 q at 11% HARD. Small but distinct skill — don't skip.",
   },
 } as const;
 

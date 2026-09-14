@@ -83,7 +83,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How NDA History actually works — what the 260-question bank reveals.",
+      "How NDA History actually works — what the 269-question bank reveals.",
   },
   {
     slug: "strategy",
@@ -135,17 +135,17 @@ export type Overview = {
 /** Snapshot of the bank's shape as of the date below.
  *  SQL-derived 2026-05-19 — full-bank tally. */
 export const OVERVIEW: Overview = {
-  totalQ: 260,
-  // 2017–2025: 2 papers each except 2020 (1, NDA-2 cancelled) = 17 papers.
-  // 2026: 1 paper (NDA-1 only). Total: 18.
-  papers: 18,
+  totalQ: 269,
+  // 2017–2026: 2 papers each except 2020 (1, NDA-2 COVID-cancelled) = 19.
+  // NDA-2 2026 was written 2026-09-14, so 2026 is a complete year.
+  papers: 19,
   yearsCovered: 10,
   chapters: 4,
   playbooks: 4,
   referenceFacts: 95,
   // EASY 51, MODERATE 133, HARD 76 (≈29% HARD bank-wide).
-  difficulty: { easy: 51, moderate: 133, hard: 76 },
-  asOf: "2026-05-19",
+  difficulty: { easy: 52, moderate: 138, hard: 79 },
+  asOf: "2026-09-14",
 };
 
 export type ChapterRow = {
@@ -160,39 +160,39 @@ export type ChapterRow = {
 };
 
 /** 4 NDA History chapters, sorted by question count descending. SQL-derived
- *  against the 260-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
+ *  against the 269-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
  *  drift as new papers land — refresh in lockstep. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Modern India",
-    qCount: 122,
-    pctTotal: 46.9,
-    pctHard: 34,
+    qCount: 125,
+    pctTotal: 46.5,
+    pctHard: 33,
     focus:
       "Freedom Movement — INC, Gandhi and Independence (56 · 34% HARD — chapter giant; INC sessions, Gandhi's satyagrahas, Home Rule, Swaraj Party, partition), 19th Century Social and Religious Reform (17 · 41% HARD — densest %HARD subtopic; Brahmo, Arya, Theosophical, women's reform, abolition acts), British Administration, Acts and Legislation (16 · 38% HARD — Charter Acts 1813/1833, Regulating Act 1773, GoI Acts 1858/1909/1919/1935), Post-Independence India (14 · 21% HARD), European Trading and Early British Conquest (10 · 20% HARD — Plassey, Buxar, Diwani), British Economic Policy and Industrial India (9 · 44% HARD — drain of wealth, deindustrialization, railways).",
   },
   {
     chapter: "Medieval India",
     qCount: 53,
-    pctTotal: 20.4,
+    pctTotal: 19.7,
     pctHard: 28,
     focus:
       "Medieval Travellers, Trade and Crops (11 · 27% HARD — Ibn Battuta, Marco Polo, Nikitin, Monserrate, Mundy, Bernier; crop introductions: chilli, potato, tobacco), Mughal Empire and Administration (10 · 30% HARD — Akbar's mansabdari, Aurangzeb's expansion, Shah Jahan's architecture), Vijayanagara Empire (9 · 33% HARD — Krishnadevaraya's campaigns, Hampi, foreign accounts), Bhakti and Sufi Movements (9 · 22% HARD — Kabir, Tulsidas, Surdas, Mirabai, Shankardeva, Chaitanya, Chishti/Suhrawardi orders), Other Medieval Kingdoms — Chola, Rajput, Ahom, Sikh (8 · 38% HARD — Chola maritime, Rajput resistance, Ahom Battle of Saraighat, Sikh Guru lineage), Medieval Literature and Texts (6 · 17% HARD).",
   },
   {
     chapter: "Ancient India",
-    qCount: 44,
-    pctTotal: 16.9,
-    pctHard: 27,
+    qCount: 48,
+    pctTotal: 17.8,
+    pctHard: 31,
     focus:
-      "Ancient Indian Literature and Inscriptions (12 · 42% HARD — densest %HARD subtopic in chapter; Vedas, Upanishads, Sangam Tamil, Ashokan inscriptions, Kharosthi/Brahmi scripts, Sushruta Samhita), Harappan and Indus Valley Civilization (9 · 33% HARD — Mohenjo-daro Great Bath, Dholavira water systems, Lothal dockyard, town planning), Mahajanapadas, Magadha and Mauryan Empire (8 · 13% HARD — 16 mahajanapadas, Bimbisara/Ajatashatru, Ashoka's edicts, dhamma-mahamatta administration), Buddhism, Jainism and Religious Architecture (6 · 0% HARD — easy marks pocket; Buddha's life, 4 Noble Truths, Jain tirthankaras, stupas/chaityas), Society, Trade and Foreign Connections (5 · 40% HARD — Greek/Roman accounts, Indo-Greek coins, trade routes), Post-Mauryan, Gupta and Sangam Period (4 · 25% HARD).",
+      "Ancient Indian Literature and Inscriptions (14 · 42% HARD — densest %HARD subtopic in chapter; Vedas, Upanishads, Sangam Tamil, Ashokan inscriptions, Kharosthi/Brahmi scripts, Sushruta Samhita), Harappan and Indus Valley Civilization (10 · 33% HARD — Mohenjo-daro Great Bath, Dholavira water systems, Lothal dockyard, town planning), Mahajanapadas, Magadha and Mauryan Empire (8 · 13% HARD — 16 mahajanapadas, Bimbisara/Ajatashatru, Ashoka's edicts, dhamma-mahamatta administration), Buddhism, Jainism and Religious Architecture (6 · 0% HARD — easy marks pocket; Buddha's life, 4 Noble Truths, Jain tirthankaras, stupas/chaityas), Society, Trade and Foreign Connections (5 · 40% HARD — Greek/Roman accounts, Indo-Greek coins, trade routes), Post-Mauryan, Gupta and Sangam Period (4 · 25% HARD).",
   },
   {
     chapter: "World History",
-    qCount: 41,
-    pctTotal: 15.8,
-    pctHard: 20,
+    qCount: 43,
+    pctTotal: 16.0,
+    pctHard: 19,
     focus:
-      "Enlightenment and Political Revolutions (12 · 25% HARD — densest %HARD subtopic; American Revolution, French Revolution, Continental Congress, Magna Carta, Locke/Rousseau/Voltaire), Industrial Revolution (12 · 17% HARD — first use of the term, key inventions: spinning jenny, steam engine, telephone), 20th Century — World Wars, Modernity and Global Institutions (10 · 20% HARD — WWI causes/impact, Treaty of Versailles, League/UN, Cold War origins), Renaissance, Exploration and Scientific Revolution (7 · 14% HARD — Vasco da Gama, Magellan, Columbus, Da Vinci, Galileo, Copernicus, EIC founding dates). Lightest %HARD chapter — date-anchored (39% of chapter), drill the chronology cluster cold.",
+      "Enlightenment and Political Revolutions (12 · 25% HARD — densest %HARD subtopic; American Revolution, French Revolution, Continental Congress, Magna Carta, Locke/Rousseau/Voltaire), Industrial Revolution (14 · 17% HARD — first use of the term, key inventions: spinning jenny, steam engine, telephone), 20th Century — World Wars, Modernity and Global Institutions (10 · 20% HARD — WWI causes/impact, Treaty of Versailles, League/UN, Cold War origins), Renaissance, Exploration and Scientific Revolution (7 · 14% HARD — Vasco da Gama, Magellan, Columbus, Da Vinci, Galileo, Copernicus, EIC founding dates). Lightest %HARD chapter — date-anchored (39% of chapter), drill the chronology cluster cold.",
   },
 ];

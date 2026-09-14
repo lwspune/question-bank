@@ -28,17 +28,17 @@ const BUCKET_INFO = {
   recall: {
     label: "Recall — Sound · Modern · Astronomy · Energy · Units",
     blurb:
-      "Pure fact recall. Memorisation discipline + statement-truth practice. 5 chapters, 79 questions, 2% average HARD.",
+      "Pure fact recall. Memorisation discipline + statement-truth practice. 5 chapters, 80 questions, 2% average HARD.",
   },
   apply: {
     label: "Apply — Light · Laws of Motion · Kinematics · WEP · Gravitation · Oscillations",
     blurb:
-      "Formula plug-in. Each chapter anchored on 1–3 named formulas — recognise the formula, watch the sign and unit. 6 chapters, 215 q.",
+      "Formula plug-in. Each chapter anchored on 1–3 named formulas — recognise the formula, watch the sign and unit. 6 chapters, 232 q.",
   },
   reason: {
     label: "Reason — Electricity & Magnetism · Heat · Fluid Mechanics",
     blurb:
-      "Multi-step computational reasoning. 3 chapters, 155 q, 22% average HARD — the bank's HARD-concentrated strand.",
+      "Multi-step computational reasoning. 3 chapters, 161 q, 22% average HARD — the bank's HARD-concentrated strand.",
   },
 } as const;
 

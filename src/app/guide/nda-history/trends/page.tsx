@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA History Trends — How the paper drifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA PART A History across 18 papers. The paper has NOT consistently hardened — %HARD bounces 19% to 42% with no monotonic trajectory. Modern dominated 2017–2020 (~55% of paper), Ancient surged 2022–2024, recent papers spread more evenly. Drill all 10 years equally.",
+    "Year-by-year chapter drift in NDA PART A History across 19 papers. The paper has NOT consistently hardened — %HARD bounces 19% to 42% with no monotonic trajectory. Modern dominated 2017–2020 (~55% of paper), Ancient surged 2022–2024, recent papers spread more evenly. Drill all 10 years equally.",
   alternates: { canonical: "/guide/nda-history/trends" },
 };
 
@@ -58,7 +58,7 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-history/trends"
         headline="NDA History Trends — How the paper drifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA PART A History across 18 papers. The paper has NOT consistently hardened. Modern dominated 2017–2020, Ancient surged 2022–2024."
+        description="Year-by-year chapter drift in NDA PART A History across 19 papers. The paper has NOT consistently hardened. Modern dominated 2017–2020, Ancient surged 2022–2024."
       />
       <GuideHero
         eyebrow="Trends"

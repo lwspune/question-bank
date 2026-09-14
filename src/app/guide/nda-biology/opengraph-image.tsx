@@ -91,7 +91,7 @@ export default function NdaBiologyOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 190-question analysis of every paper from 2017 to 2026 —
+            A 199-question analysis of every paper from 2017 to 2026 —
             9 chapter playbooks, 50-fact reference, trends, traps.
           </div>
         </div>

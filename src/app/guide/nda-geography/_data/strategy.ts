@@ -8,7 +8,7 @@
  * Physics is. Per-chapter cherry-pick has weak leverage; strand-level
  * calibration matters more.
  *
- * Strand split (345 q):
+ * Strand split (367 q):
  *   - Recall  (173 q · 3 chapters · 50% of bank): named-fact recall —
  *     Indian rivers + peaks + states + crops + minerals + ports + world
  *     rivers + megacities. The marks-per-hour leader.
@@ -66,7 +66,7 @@ export type StrategyStrand = {
 };
 
 /** Headline numbers shown in the strategy hero. PART A Geography is ~19 q
- *  per single paper on the GAT (range 17–21 across 18 papers in the bank;
+ *  per single paper on the GAT (range 17–21 across 19 papers in the bank;
  *  avg 19.2). Max marks per paper ≈ 76 (19 × 4), penalty −1.33 per wrong. */
 export const STRATEGY_HEADLINE = {
   paperQ: 19,
@@ -81,21 +81,21 @@ export const STRATEGY_HEADLINE = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
-    "Recall — Indian Geography Economy · Indian Geography Physical · World and Human Geography (173 q · 50%)",
-  qCount: 173,
-  pctOfBank: 50,
+    "Recall — Indian Geography Economy · Indian Geography Physical · World and Human Geography (26 q · 50%)",
+  qCount: 178,
+  pctOfBank: 49,
   pitch:
     "Pure named-fact recall — Indian rivers ↔ states ↔ tributaries, peaks ↔ ranges ↔ elevations, minerals ↔ producer states, crops ↔ soils ↔ kharif/rabi, ports ↔ coast, world rivers ↔ countries, megacities ↔ population. 173 q at an average of 17% HARD. Half the entire bank, and the strand where Geography most rewards methodical prep. The Indian Geography Economy chapter (81 q · 24% HARD) is the densest-HARD recall chapter in the bank — the named-fact memorisation is precise (rare critical minerals, specific RAD-scheme components, identity of oil fields) but completely measurable. Drill /reference-tables → 'Indian Rivers' + 'Mountain Peaks' + 'Mineral & Crop Producer States' clusters side-by-side with this strand.",
   approach: [
     "Read /guide/nda-geography/reference-tables end-to-end first. That's the ~70 named-fact pairs the recall strand keeps re-testing. Active-recall it in 4 passes (cover the right column, read the name, write the pair).",
     "Indian Geography Economy is the bank's largest chapter (81 q · 24% HARD) AND the densest-HARD recall chapter. The Agriculture, Crops, Soils and Land Use subtopic is the biggest at 20 q (kharif vs rabi, leading-producer states per crop, soil-crop matching). Minerals and Mining (14 q · 36% HARD) is the bank's most-trap-aware named-fact subtopic — drill the critical-mineral list (lithium, cobalt, gallium, neodymium, dysprosium, tellurium) cold.",
     "Indian Geography Physical (67 q · 15% HARD) is the named-fact workhorse. Indian Rivers (27 q · 11% HARD) is the chapter's biggest subtopic — river↔state pairs, tributary identification (Yamuna's tributaries: Chambal, Betwa, Ken), alternative river names, confluences and dam↔river pairs. Forests and Natural Vegetation (14 q · 29% HARD) covers biodiversity hotspots, forest types and forest-cover rankings. Location, Extent and Frontiers (5 q) anchors the east-west sunrise gap, coastline and land-neighbour facts.",
-    "World and Human Geography (25 q · 8% HARD) is the lightest %HARD chapter — guaranteed marks pocket. Megacities + Population (15 q · 0% HARD) is pure recall. World Rivers + Canals (6 q · 33% HARD) tests Helmand/Hindu Kush, Suez/Panama, landlocked-water-body identification. Don't over-invest beyond the read.",
+    "World and Human Geography (26 q · 12% HARD) is the lightest %HARD chapter — guaranteed marks pocket. Megacities + Population (15 q · 0% HARD) is pure recall. World Rivers + Canals (6 q · 33% HARD) tests Helmand/Hindu Kush, Suez/Panama, landlocked-water-body identification. Don't over-invest beyond the read.",
   ],
   chapters: [
     {
       chapter: "Indian Geography — Economy, Resources and Transport",
-      qCount: 81,
+      qCount: 83,
       pctHard: 24,
       mustDrill: [
         "Agriculture, Crops, Soils and Land Use",
@@ -108,12 +108,12 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~12 marks",
       studyHours: 8,
       summary:
-        "81 q · 24% HARD. The bank's largest chapter. Agriculture (36 q) is the giant subtopic — drill leading-producer-state tables. Minerals and Mining (11 q · 36% HARD) is the trap pocket — drill critical minerals cold. Reference-tables 'Mineral & Crop Producer States' cluster compounds the value.",
+        "81 q · 24% HARD. The bank's largest chapter. Agriculture (36 q) is the giant subtopic — drill leading-producer-state tables. Minerals and Mining (14 q · 36% HARD) is the trap pocket — drill critical minerals cold. Reference-tables 'Mineral & Crop Producer States' cluster compounds the value.",
     },
     {
       chapter: "Indian Geography — Physical Features",
-      qCount: 67,
-      pctHard: 15,
+      qCount: 69,
+      pctHard: 14,
       mustDrill: [
         "Forests and Natural Vegetation of India",
         "Indian Rivers, Lakes and Water Bodies",
@@ -128,8 +128,8 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "World and Human Geography",
-      qCount: 25,
-      pctHard: 8,
+      qCount: 26,
+      pctHard: 12,
       mustDrill: [
         "Human Geography — Megacities and Population",
         "World — Rivers, Canals and Water Bodies",
@@ -145,9 +145,9 @@ export const RECALL_STRAND: StrategyStrand = {
 
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
-  label: "Apply — Climatology, Atmosphere and Weather · Earth's Structure, Landforms and Geological Time (131 q · 38%)",
-  qCount: 131,
-  pctOfBank: 38,
+  label: "Apply — Climatology, Atmosphere and Weather · Earth's Structure, Landforms and Geological Time (80 q · 38%)",
+  qCount: 145,
+  pctOfBank: 40,
   pitch:
     "Mechanism-tracing — follow a geographic process and predict the outcome. Climatology (57 q · 28% HARD) requires tracing cyclogenesis (tropical vs extratropical), monsoon dynamics, pressure-belt formation, Coriolis-driven wind deflection. Earth's Structure (74 q · 20% HARD) requires tracing plate-boundary processes (convergent → mountains/subduction; divergent → ridges; transform → faults), rock-cycle classification (igneous/sedimentary/metamorphic), weathering chemistry. 131 q at an average of 23% HARD — the densest-HARD strand in the bank. The skill is process-tracing, not pure recall: the answer follows from the mechanism, not from a memorised fact.",
   approach: [
@@ -159,8 +159,8 @@ export const APPLY_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Climatology, Atmosphere and Weather",
-      qCount: 57,
-      pctHard: 28,
+      qCount: 65,
+      pctHard: 26,
       mustDrill: [
         "Atmospheric Layers, Composition and Aurora",
         "Cyclones, Fronts and Local Winds",
@@ -176,8 +176,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Earth's Structure, Landforms and Geological Time",
-      qCount: 74,
-      pctHard: 20,
+      qCount: 80,
+      pctHard: 19,
       mustDrill: [
         "Earth's Interior, Crust and Plate Tectonics",
         "Landforms and Mass Movements",
@@ -197,8 +197,8 @@ export const APPLY_STRAND: StrategyStrand = {
 
 export const VERIFY_STRAND: StrategyStrand = {
   id: "verify",
-  label: "Verify — Earth in Space, Maps and Coordinates · Oceanography (41 q · 12%)",
-  qCount: 41,
+  label: "Verify — Earth in Space, Maps and Coordinates · Oceanography (20 q · 12%)",
+  qCount: 44,
   pctOfBank: 12,
   pitch:
     "Multi-statement true/false evaluation. The dominant question shape in these chapters is 'Consider the following statements about [terrestrial planets / cold ocean currents / mid-oceanic ridges]. Which are correct?' — 3 or 4 statements, each individually verifiable. 41 q across 2 chapters at an average of 15% HARD. The skill is methodical statement-by-statement evaluation: read each statement, judge it true/false against your knowledge, then match to the option that lists exactly the correct ones. Speed matters — these questions take longer per attempt than pure recall.",
@@ -212,8 +212,8 @@ export const VERIFY_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Earth in Space, Maps and Coordinates",
-      qCount: 22,
-      pctHard: 18,
+      qCount: 24,
+      pctHard: 17,
       mustDrill: [
         "Earth's Shape, Rotation and Motion",
         "Latitude, Longitude and Geographical Grid",
@@ -228,8 +228,8 @@ export const VERIFY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Oceanography",
-      qCount: 19,
-      pctHard: 11,
+      qCount: 20,
+      pctHard: 10,
       mustDrill: [
         "Ocean Currents",
         "Tides and Ocean Movements",
@@ -239,7 +239,7 @@ export const VERIFY_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "~2 marks",
       studyHours: 2,
       summary:
-        "19 q · 11% HARD. Ocean Currents (8 q · 13% HARD) tests warm/cold pairs + driving forces via multi-statement evaluation. Tides (5 q · 0% HARD) is pure recall — guaranteed marks. Ocean Waves and Sea-Floor Topography (5 q · 0% HARD) tests sea-floor zones + the Mariana Trench. Methodical statement evaluation matters.",
+        "19 q · 11% HARD. Ocean Currents (9 q · 11% HARD) tests warm/cold pairs + driving forces via multi-statement evaluation. Tides (5 q · 0% HARD) is pure recall — guaranteed marks. Ocean Waves and Sea-Floor Topography (5 q · 0% HARD) tests sea-floor zones + the Mariana Trench. Methodical statement evaluation matters.",
     },
   ],
 };

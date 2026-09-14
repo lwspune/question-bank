@@ -5,7 +5,7 @@
  * `OVERVIEW.asOf`; refresh per the post-upload ritual.
  *
  * SINGLE-PAGE LANDING — no /strategy /playbooks /trends /traps /reference
- * sub-routes. Bank is 24 q · 1 chapter · 3 subtopics · 1.5 q/paper · ~6 max
+ * sub-routes. Bank is 25 q · 1 chapter · 3 subtopics · 1.5 q/paper · ~6 max
  * marks/paper. At this scale, the bank IS the framework; a multi-route guide
  * would be parody. The honest stance — drill the bank, memorise the Plan
  * timeline, accept the ~6-mark cap — fits on one page.
@@ -41,19 +41,20 @@ export type Overview = {
 /** Snapshot of the bank's shape as of the date below.
  *  SQL-derived 2026-05-19 — full-bank tally. */
 export const OVERVIEW: Overview = {
-  totalQ: 24,
+  totalQ: 25,
   // 2017–2025 has near-uniform 2 papers/year (NDA-1 + NDA-2); 2020 missing
-  // NDA-2; 2019 missing NDA-1; 2022 missing NDA-2; 2026 NDA-1 only.
-  // 16 papers carry at least one Economics q in the live bank.
-  papers: 16,
+  // NDA-2; 2019 missing NDA-1; 2022 missing NDA-2. Both 2026 sittings
+  // carry Economics (NDA-2 2026 written 2026-09-14).
+  // 17 papers carry at least one Economics q in the live bank.
+  papers: 17,
   yearsCovered: 10,
   avgQPerPaper: 1.5,
   maxMarksPerPaper: 6,
   chapters: 1,
   subtopics: 3,
-  difficulty: { easy: 5, moderate: 9, hard: 10 },
-  pctHard: 41.7,
-  asOf: "2026-05-19",
+  difficulty: { easy: 5, moderate: 10, hard: 10 },
+  pctHard: 40.0,
+  asOf: "2026-09-14",
 };
 
 export type SubtopicRow = {
@@ -68,7 +69,7 @@ export type SubtopicRow = {
 };
 
 /** 3 NDA Economics subtopics, sorted by question count descending.
- *  SQL-derived against the 24-q PUBLIC bank as of OVERVIEW.asOf. */
+ *  SQL-derived against the 25-q PUBLIC bank as of OVERVIEW.asOf. */
 export const SUBTOPIC_TABLE: SubtopicRow[] = [
   {
     subtopic: "Five Year Plans and Indian Planning",
@@ -238,7 +239,7 @@ export const FIVE_YEAR_PLANS: PlanRow[] = [
 ];
 
 /** Post-12th-Plan strategic framework — NITI Aayog replaced the Planning
- *  Commission in 2015. NDA hasn't tested this yet in the 24-q bank, but a
+ *  Commission in 2015. NDA hasn't tested this yet in the 25-q bank, but a
  *  reader looking at the timeline needs to know the Plan series ended. */
 export const POST_PLAN_NOTE = {
   year: "2015",

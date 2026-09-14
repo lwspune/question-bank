@@ -27,7 +27,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA History Strategy — Cornerstone, Foundation, Quick-Win",
   description:
-    "Evidence-led NDA PART A History preparation: three chapter-tier strands (Cornerstone Modern India vs Foundation Recall Ancient+Medieval vs Quick-Win World History) matched to the bank's actual weights. Per-chapter must-drill subtopics, test-day attempt order, and a ~31-hour time-budget plan. Backed by 260 past-year questions across 18 papers.",
+    "Evidence-led NDA PART A History preparation: three chapter-tier strands (Cornerstone Modern India vs Foundation Recall Ancient+Medieval vs Quick-Win World History) matched to the bank's actual weights. Per-chapter must-drill subtopics, test-day attempt order, and a ~31-hour time-budget plan. Backed by 269 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-history/strategy" },
 };
 

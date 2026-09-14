@@ -4,9 +4,9 @@
  * The strategic axis in NDA English is NOT %HARD (almost flat — 6 of 8
  * chapters are 0–7% HARD). It's *skill type*. Three buckets cover the bank:
  *
- *   - Recall  (Vocab 316 + Idioms 86 = 402 q / 45%) — memorisation
- *   - Rule    (Errors 115 + Grammar 108 = 223 q / 25%) — rule application
- *   - Reason  (Rearr 114 + RC 61 + FIB 55 + Cloze 45 = 275 q / 31%) — context
+ *   - Recall  (Vocab 333 + Idioms 96 = 429 q / 45%) — memorisation
+ *   - Rule    (Errors 117 + Grammar 122 = 239 q / 25%) — rule application
+ *   - Reason  (Rearr 119 + RC 61 + FIB 57 + Cloze 45 = 282 q / 31%) — context
  *
  * Each bucket gets a distinct prep approach. Hours/yield are editorial
  * estimates calibrated against the cleaned bank as of OVERVIEW.asOf.
@@ -57,8 +57,8 @@ export const STRATEGY_HEADLINE = {
 
 export const RECALL_BUCKET: StrategyBucket = {
   id: "recall",
-  label: "Recall — Vocabulary and Idioms (402 q / 45% of bank)",
-  qCount: 402,
+  label: "Recall — Vocabulary and Idioms (429 q / 45% of bank)",
+  qCount: 429,
   pctOfBank: 45,
   pitch:
     "Pure recall — either you know the word/idiom or you don't. No partial credit, no reasoning route. The biggest bucket in the bank, the lowest-difficulty (Vocab 2% HARD, Idioms 3% HARD), and the most leverage per hour of focused word-list work.",
@@ -70,7 +70,7 @@ export const RECALL_BUCKET: StrategyBucket = {
   chapters: [
     {
       chapter: "Vocabulary",
-      qCount: 316,
+      qCount: 333,
       pctHard: 2,
       mustDrill: ["Synonyms", "Antonyms"],
       skipSubtopics: ["Confusable Word Pairs", "Word Definition"],
@@ -81,8 +81,8 @@ export const RECALL_BUCKET: StrategyBucket = {
     },
     {
       chapter: "Idioms and Phrases",
-      qCount: 86,
-      pctHard: 3,
+      qCount: 96,
+      pctHard: 4,
       mustDrill: ["Idiom Meaning"],
       expectedYieldPerPaper: "4–5 marks",
       studyHours: 4,
@@ -95,7 +95,7 @@ export const RECALL_BUCKET: StrategyBucket = {
 export const RULE_BUCKET: StrategyBucket = {
   id: "rule",
   label: "Rule — Grammar and Spotting Errors (223 q / 25%)",
-  qCount: 223,
+  qCount: 239,
   pctOfBank: 25,
   pitch:
     "Both chapters test the same ~10 grammar rules in different formats. Errors uses underline-the-mistake; Grammar uses fill-in-the-blank, identify-the-correct-sentence, or pick-the-right-connector. The rules are stable — they don't change year to year, so this bucket has the longest shelf life.",
@@ -107,7 +107,7 @@ export const RULE_BUCKET: StrategyBucket = {
   chapters: [
     {
       chapter: "Spotting Errors",
-      qCount: 115,
+      qCount: 117,
       pctHard: 3,
       mustDrill: [
         "Word Choice, Prepositions and Punctuation",
@@ -123,8 +123,8 @@ export const RULE_BUCKET: StrategyBucket = {
     },
     {
       chapter: "Grammar",
-      qCount: 108,
-      pctHard: 4,
+      qCount: 122,
+      pctHard: 3,
       mustDrill: [
         "Sentence Completion",
         "Discourse Markers and Connectors",
@@ -142,8 +142,8 @@ export const RULE_BUCKET: StrategyBucket = {
 export const REASON_BUCKET: StrategyBucket = {
   id: "reason",
   label: "Reason — RC, Rearrangement, FIB, Cloze (275 q / 31%)",
-  qCount: 275,
-  pctOfBank: 31,
+  qCount: 282,
+  pctOfBank: 30,
   pitch:
     "Context-driven. No vocabulary deficit and no rule lookup will save you here — these reward reading a passage carefully and following the logic of discourse. Sentence Rearrangement is the only chapter in NDA English with real HARD load (22% overall, Paragraph Sequencing at 36% HARD).",
   approach: [
@@ -154,8 +154,8 @@ export const REASON_BUCKET: StrategyBucket = {
   chapters: [
     {
       chapter: "Sentence Rearrangement",
-      qCount: 114,
-      pctHard: 22,
+      qCount: 119,
+      pctHard: 24,
       mustDrill: [
         "Sentence Part Rearrangement (PQRS)",
         "Paragraph Sequencing (S1–S6)",
@@ -177,7 +177,7 @@ export const REASON_BUCKET: StrategyBucket = {
     },
     {
       chapter: "Fill in the Blanks",
-      qCount: 55,
+      qCount: 57,
       pctHard: 2,
       mustDrill: ["Contextual Fill-in-Blank"],
       expectedYieldPerPaper: "2–3 marks",

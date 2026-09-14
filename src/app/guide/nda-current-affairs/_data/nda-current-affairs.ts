@@ -56,17 +56,17 @@ export type Overview = {
 /** Snapshot of the bank's shape as of the date below.
  *  SQL-derived 2026-05-19 — full-bank tally on PUBLIC questions. */
 export const OVERVIEW: Overview = {
-  totalQ: 180,
-  papers: 18,
+  totalQ: 191,
+  papers: 19,
   yearsCovered: 10,
-  avgQPerPaper: 10.0,
+  avgQPerPaper: 10.1,
   maxMarksPerPaper: 40,
   targetMarks: 24, // ~6 correct at ~80% on 7 attempts = 24 marks net of negative
   chapters: 8,
   subtopics: 31,
   difficulty: { easy: 76, moderate: 82, hard: 22 },
   pctHard: 12.2,
-  asOf: "2026-05-19",
+  asOf: "2026-09-14",
 };
 
 export type ChapterRow = {
@@ -82,65 +82,65 @@ export type ChapterRow = {
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "International Affairs and Relations",
-    qCount: 33,
+    qCount: 35,
     pctTotal: 18.3,
-    pctHard: 15.2,
+    pctHard: 14.3,
     focus:
       "India ↔ partner-country agreements + UN / multilateral bodies + world leaders and elections + summit hosting. The densest recurring theme on the paper — bilateral relations alone carries ~3 q per paper when it appears.",
   },
   {
     chapter: "Government Schemes, Policy and Governance",
-    qCount: 33,
-    pctTotal: 18.3,
-    pctHard: 6.1,
+    qCount: 34,
+    pctTotal: 17.8,
+    pctHard: 8.8,
     focus:
       "Recent scheme launches, governance and UT reform, Acts and policies, infrastructure connectivity projects. Lowest %HARD bank-wide — these are easy marks IF you've read the past year's scheme rollouts.",
   },
   {
     chapter: "Defence and Military Exercises",
-    qCount: 29,
-    pctTotal: 16.1,
-    pctHard: 10.3,
+    qCount: 33,
+    pctTotal: 17.3,
+    pctHard: 9.1,
     focus:
       "Bilateral and multilateral exercises (2.6 q per paper when present), Indian Navy ship inductions and naval policy, defence procurement deals, gallantry awards and service appointments.",
   },
   {
     chapter: "Sports",
-    qCount: 23,
-    pctTotal: 12.8,
-    pctHard: 8.7,
+    qCount: 24,
+    pctTotal: 12.6,
+    pctHard: 12.5,
     focus:
       "Cricket is the bank's most consistent CA theme (appears in 8 of 10 years). Non-cricket coverage skews to Olympic / Asian Games medallists and Khel Ratna recipients.",
   },
   {
     chapter: "Science and Technology",
-    qCount: 18,
-    pctTotal: 10.0,
-    pctHard: 11.1,
+    qCount: 19,
+    pctTotal: 9.9,
+    pctHard: 15.8,
     focus:
       "Space technology + astronomy is the only S&T theme that clocks 1 q per year. DRDO / marine tech, IT safety systems (KAVACH), health tech and science awards round out the chapter.",
   },
   {
     chapter: "Awards, Honours, Books and Culture",
-    qCount: 18,
-    pctTotal: 10.0,
-    pctHard: 16.7,
+    qCount: 19,
+    pctTotal: 9.9,
+    pctHard: 21.1,
     focus:
       "Civilian awards (Padma, Bharat Ratna, gallantry) + books and authors + Indian art and architecture + UNESCO recognitions. Recall-heavy but %HARD is on the higher side — distractors are well-engineered.",
   },
   {
     chapter: "National Events, Persons and India General Knowledge",
     qCount: 15,
-    pctTotal: 8.3,
+    pctTotal: 7.9,
     pctHard: 20.0,
     focus:
       "Indian economy / geography / resources reference + national days and observances + institutional milestones. Highest %HARD in CA — the obscure-fact-or-pair-swap zone.",
   },
   {
     chapter: "Environment, Ecology and Energy",
-    qCount: 11,
-    pctTotal: 6.1,
-    pctHard: 18.2,
+    qCount: 12,
+    pctTotal: 6.3,
+    pctHard: 16.7,
     focus:
       "Ramsar sites and wetlands + climate change summits + environmental campaigns + wildlife conservation. Small bank, high %HARD — single-q themes mostly.",
   },

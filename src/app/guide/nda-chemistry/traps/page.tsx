@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Chemistry Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know chemistry still lose marks. Acid-source swap (oxalic vs citric), diamond-vs-graphite property flip, scientist–discovery swap, reducing-vs-oxidising agent confusion, oxide-classification error, ionic-vs-covalent cutoff — measured against the live 262-question bank.",
+    "How candidates who know chemistry still lose marks. Acid-source swap (oxalic vs citric), diamond-vs-graphite property flip, scientist–discovery swap, reducing-vs-oxidising agent confusion, oxide-classification error, ionic-vs-covalent cutoff — measured against the live 277-question bank.",
   alternates: { canonical: "/guide/nda-chemistry/traps" },
 };
 

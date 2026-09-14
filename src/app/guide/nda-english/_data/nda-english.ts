@@ -28,7 +28,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How NDA English (GAT) actually works — what the 900-question bank reveals.",
+      "How NDA English (GAT) actually works — what the 950-question bank reveals.",
   },
   {
     slug: "strategy",
@@ -77,14 +77,14 @@ export type Overview = {
 
 /** Snapshot of the bank's shape as of the date below. */
 export const OVERVIEW: Overview = {
-  totalQ: 900,
-  papers: 18,
+  totalQ: 950,
+  papers: 19,
   yearsCovered: 10,
   chapters: 8,
   playbooks: 16,
   // 534 EASY + 320 MODERATE + 46 HARD = 900 (SQL-derived 2026-05-18)
-  difficulty: { easy: 534, moderate: 320, hard: 46 },
-  asOf: "2026-05-18",
+  difficulty: { easy: 542, moderate: 356, hard: 52 },
+  asOf: "2026-09-14",
 };
 
 export type ChapterRow = {
@@ -99,61 +99,61 @@ export type ChapterRow = {
 };
 
 /** 8 NDA English chapters, sorted by question count descending. SQL-derived
- *  against the 900-q PUBLIC bank as of OVERVIEW.asOf.
+ *  against the 950-q PUBLIC bank as of OVERVIEW.asOf.
  *  Numbers in `focus` may drift as new papers land — refresh in lockstep. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Vocabulary",
-    qCount: 316,
+    qCount: 333,
     pctTotal: 35.1,
     pctHard: 2,
     focus:
-      "Synonyms (150), Antonyms (135), Confusable pairs (20), Word defn (11). The largest chapter — pure recall, EASY-heavy.",
+      "Synonyms (155), Antonyms (145), Confusable pairs (20), Word defn (11). The largest chapter — pure recall, EASY-heavy.",
   },
   {
     chapter: "Spotting Errors",
-    qCount: 115,
-    pctTotal: 12.8,
+    qCount: 117,
+    pctTotal: 12.3,
     pctHard: 3,
     focus:
       "Word Choice/Prep/Punct (29), S-V Agreement (17), Tense (16), Articles/Pronouns/Mixed (43). Underline-the-error format.",
   },
   {
     chapter: "Sentence Rearrangement",
-    qCount: 114,
-    pctTotal: 12.7,
-    pctHard: 22,
+    qCount: 119,
+    pctTotal: 12.5,
+    pctHard: 24,
     focus:
       "PQRS (92), S1–S6 paragraphs (22 — 36% HARD). The only chapter that carries real difficulty load.",
   },
   {
     chapter: "Grammar",
-    qCount: 108,
-    pctTotal: 12.0,
-    pctHard: 4,
+    qCount: 122,
+    pctTotal: 12.8,
+    pctHard: 3,
     focus:
       "Sentence Completion (30), Connectors (20), PoS (15), S-V (10), Prep (10). Exploded from 0 to 40 q/yr after 2024.",
   },
   {
     chapter: "Idioms and Phrases",
-    qCount: 86,
-    pctTotal: 9.6,
-    pctHard: 3,
+    qCount: 96,
+    pctTotal: 10.1,
+    pctHard: 4,
     focus:
       "Single subtopic — Idiom Meaning. 85 unique idioms in 10 years (only 'sit on the fence' repeats).",
   },
   {
     chapter: "Reading Comprehension",
     qCount: 61,
-    pctTotal: 6.8,
+    pctTotal: 6.4,
     pctHard: 7,
     focus:
       "Inferential (43), Literal (14), Vocab-in-context (4). Set-bound — passages have 4–8 q each.",
   },
   {
     chapter: "Fill in the Blanks",
-    qCount: 55,
-    pctTotal: 6.1,
+    qCount: 57,
+    pctTotal: 6.0,
     pctHard: 2,
     focus:
       "Contextual (45), Phrasal/Collocation (10). Sentence-scoped (vs Cloze passages).",
@@ -161,7 +161,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Cloze Test",
     qCount: 45,
-    pctTotal: 5.0,
+    pctTotal: 4.7,
     pctHard: 0,
     focus:
       "Word Selection in Passage. Zero HARD across the bank — pure transition/connector reasoning.",

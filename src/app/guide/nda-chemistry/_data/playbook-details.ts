@@ -7,7 +7,7 @@
  * worked example UUIDs (2 per playbook, resolved via loadWorkedExamples at
  * request time), and relatedSlugs (cross-links to other playbooks).
  *
- * UUIDs SQL-picked 2026-05-18 against the live 262-q NDA Chemistry PUBLIC
+ * UUIDs SQL-picked 2026-05-18 against the live 277-q NDA Chemistry PUBLIC
  * bank — recent year first, HARD picked when the chapter has a HARD pool,
  * else MOD. All 12 chapters have details.
  */

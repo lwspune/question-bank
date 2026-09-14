@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Physics Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know the formulas still lose marks. Mirror/lens sign-flip, TIR direction, mass in pendulum, CGS/SI mix, parallel-vs-series swap, latent-heat omission, density mixing mean confusion — measured against the live 449-question bank.",
+    "How candidates who know the formulas still lose marks. Mirror/lens sign-flip, TIR direction, mass in pendulum, CGS/SI mix, parallel-vs-series swap, latent-heat omission, density mixing mean confusion — measured against the live 473-question bank.",
   alternates: { canonical: "/guide/nda-physics/traps" },
 };
 

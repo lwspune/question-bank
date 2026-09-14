@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Geography Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know geography still lose marks. Mineral↔state swap, river↔state misalignment, peak↔range swap, crop↔season swap, Coriolis-direction flip, warm/cold-current swap, rock-classification error, multi-statement partial-credit traps — measured against the live 345-question bank.",
+    "How candidates who know geography still lose marks. Mineral↔state swap, river↔state misalignment, peak↔range swap, crop↔season swap, Coriolis-direction flip, warm/cold-current swap, rock-classification error, multi-statement partial-credit traps — measured against the live 367-question bank.",
   alternates: { canonical: "/guide/nda-geography/traps" },
 };
 

@@ -56,7 +56,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How NDA Geography actually works — what the 345-question bank reveals.",
+      "How NDA Geography actually works — what the 367-question bank reveals.",
   },
   {
     slug: "strategy",
@@ -93,7 +93,7 @@ export const ROUTES: GuideRoute[] = [
 export type Overview = {
   totalQ: number;
   /** GAT papers covered. NDA Geography is asked on NDA-1 + NDA-2 each year
-   *  except 2020 (COVID-cancelled NDA-2) and 2026 NDA-2 (not yet held). */
+   *  except 2020 (COVID-cancelled NDA-2). 2026 completed 2026-09-14. */
   papers: number;
   yearsCovered: number;
   chapters: number;
@@ -107,17 +107,17 @@ export type Overview = {
 
 /** Snapshot of the bank's shape as of the date below. */
 export const OVERVIEW: Overview = {
-  totalQ: 345,
-  // 2017–2025: 2 papers each except 2020 (1, NDA-2 cancelled) = 17 papers.
-  // 2026: 1 paper (NDA-1 only). Total: 18.
-  papers: 18,
+  totalQ: 367,
+  // 2017–2026: 2 papers each except 2020 (1, NDA-2 COVID-cancelled) = 19.
+  // NDA-2 2026 was written 2026-09-14, so 2026 is a complete year.
+  papers: 19,
   yearsCovered: 10,
   chapters: 7,
   playbooks: 7,
   referenceFacts: 62,
   // SQL-derived 2026-05-18 — full-bank tally.
-  difficulty: { easy: 88, moderate: 189, hard: 68 },
-  asOf: "2026-05-18",
+  difficulty: { easy: 92, moderate: 204, hard: 71 },
+  asOf: "2026-09-14",
 };
 
 export type ChapterRow = {
@@ -132,63 +132,63 @@ export type ChapterRow = {
 };
 
 /** 7 NDA Geography chapters, sorted by question count descending. SQL-derived
- *  against the 345-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
+ *  against the 367-q PUBLIC bank as of OVERVIEW.asOf. Numbers in `focus` may
  *  drift as new papers land — refresh in lockstep. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Indian Geography — Economy, Resources and Transport",
-    qCount: 81,
-    pctTotal: 23.5,
+    qCount: 83,
+    pctTotal: 22.6,
     pctHard: 24,
     focus:
       "Agriculture, Crops, Soils and Land Use (20 · 10% HARD — kharif/rabi, RAD schemes, leading-producer states), Economic Sectors and Government Schemes (15 · 20% HARD), Energy and Industries — Power, Petroleum, Iron and Steel (14 · 21% HARD), Minerals and Mining (14 · 36% HARD — densest HARD pool, critical-mineral identifications), Highways, Railways and Transport Corridors (10 · 50% HARD), Ports and Maritime Infrastructure (8 · 13% HARD).",
   },
   {
     chapter: "Earth's Structure, Landforms and Geological Time",
-    qCount: 74,
-    pctTotal: 21.4,
-    pctHard: 20,
+    qCount: 80,
+    pctTotal: 21.8,
+    pctHard: 19,
     focus:
-      "Earth's Interior, Crust and Plate Tectonics (15 · 33% HARD — densest HARD subtopic), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (15 · 27% HARD), Weathering and Denudation (10 · 0% HARD — guaranteed marks pocket), Earthquakes and Seismic Waves (9 · 33% HARD), Soils (5 · 20% HARD), Volcanoes and Igneous Activity (5 · 0% HARD).",
+      "Earth's Interior, Crust and Plate Tectonics (15 · 33% HARD — densest HARD subtopic), Landforms and Mass Movements (15 · 13% HARD), Rocks, Minerals and Geological Time (15 · 27% HARD), Weathering and Denudation (12 · 0% HARD — guaranteed marks pocket), Earthquakes and Seismic Waves (10 · 33% HARD), Soils (5 · 20% HARD), Volcanoes and Igneous Activity (6 · 0% HARD).",
   },
   {
     chapter: "Indian Geography — Physical Features",
-    qCount: 67,
-    pctTotal: 19.4,
-    pctHard: 15,
+    qCount: 69,
+    pctTotal: 18.8,
+    pctHard: 14,
     focus:
-      "Indian Rivers, Lakes and Water Bodies (27 · 11% HARD — the chapter's biggest subtopic: river-state pairs, tributaries, alternative names, dams, lakes), Forests and Natural Vegetation of India (14 · 29% HARD — vegetation belts, forest-cover rankings, protected areas), Indian Soils and Climate-Agriculture (10 · 10% HARD — soil-crop pairs + monsoon), Mountains, Plateaus and Plains of India (7 · 14% HARD — Himalayan ranges + passes), Location, Extent and Frontiers of India (5 · 20% HARD — east-west sunrise gap, coastline, neighbours), Indian States and Islands (4 · 0% HARD).",
+      "Indian Rivers, Lakes and Water Bodies (27 · 11% HARD — the chapter's biggest subtopic: river-state pairs, tributaries, alternative names, dams, lakes), Forests and Natural Vegetation of India (15 · 29% HARD — vegetation belts, forest-cover rankings, protected areas), Indian Soils and Climate-Agriculture (10 · 10% HARD — soil-crop pairs + monsoon), Mountains, Plateaus and Plains of India (7 · 14% HARD — Himalayan ranges + passes), Location, Extent and Frontiers of India (5 · 20% HARD — east-west sunrise gap, coastline, neighbours), Indian States and Islands (5 · 0% HARD).",
   },
   {
     chapter: "Climatology, Atmosphere and Weather",
-    qCount: 57,
-    pctTotal: 16.5,
-    pctHard: 28,
+    qCount: 65,
+    pctTotal: 17.7,
+    pctHard: 26,
     focus:
-      "Cyclones, Fronts and Local Winds (16 · 25% HARD — tropical vs extratropical cyclones, cyclone-formation conditions, Loo/Chinook/Foehn identification), Atmospheric Layers, Composition and Aurora (12 · 25% HARD — troposphere/stratosphere/aurora basics), Humidity, Condensation, Clouds and Precipitation (10 · 20% HARD), Climate Classification and Zones (8 · 38% HARD), Atmospheric Pressure and Winds (6 · 50% HARD — Coriolis, trade winds, jet streams), Insolation, Temperature and Solar Geometry (5 · 20% HARD).",
+      "Cyclones, Fronts and Local Winds (16 · 25% HARD — tropical vs extratropical cyclones, cyclone-formation conditions, Loo/Chinook/Foehn identification), Atmospheric Layers, Composition and Aurora (12 · 25% HARD — troposphere/stratosphere/aurora basics), Humidity, Condensation, Clouds and Precipitation (10 · 20% HARD), Climate Classification and Zones (9 · 38% HARD), Atmospheric Pressure and Winds (8 · 50% HARD — Coriolis, trade winds, jet streams), Insolation, Temperature and Solar Geometry (5 · 20% HARD).",
   },
   {
     chapter: "World and Human Geography",
-    qCount: 25,
-    pctTotal: 7.2,
-    pctHard: 8,
+    qCount: 26,
+    pctTotal: 7.1,
+    pctHard: 12,
     focus:
-      "Human Geography — Megacities and Population (15 · 0% HARD — megacity identification, population basics), World — Rivers, Canals and Water Bodies (6 · 33% HARD), World — Coordinates, Time and Place (4). Lightest %HARD of any chapter — easy marks pocket.",
+      "Human Geography — Megacities and Population (16 · 0% HARD — megacity identification, population basics), World — Rivers, Canals and Water Bodies (6 · 33% HARD), World — Coordinates, Time and Place (4). Lightest %HARD of any chapter — easy marks pocket.",
   },
   {
     chapter: "Earth in Space, Maps and Coordinates",
-    qCount: 22,
-    pctTotal: 6.4,
-    pctHard: 18,
+    qCount: 24,
+    pctTotal: 6.5,
+    pctHard: 17,
     focus:
-      "Earth's Shape, Rotation and Motion (7 · 14% HARD), Latitude, Longitude and Geographical Grid (6 · 0% HARD), Planets and Solar System (4 · 50% HARD — chapter's HARD pool), Time Zones and International Date Line (3 · 33% HARD), Maps and GPS (2).",
+      "Earth's Shape, Rotation and Motion (7 · 14% HARD), Latitude, Longitude and Geographical Grid (6 · 0% HARD), Planets and Solar System (4 · 50% HARD — chapter's HARD pool), Time Zones and International Date Line (4 · 33% HARD), Maps and GPS (2).",
   },
   {
     chapter: "Oceanography",
-    qCount: 19,
-    pctTotal: 5.5,
-    pctHard: 11,
+    qCount: 20,
+    pctTotal: 5.4,
+    pctHard: 10,
     focus:
-      "Ocean Currents (7 · 14% HARD — cold vs warm currents), Tides and Ocean Movements (5 · 0% HARD), Ocean Waves and Sea-Floor Topography (4 · 25% HARD — mid-oceanic ridge), Marine Ecosystems — Coral Reefs (3 · 0% HARD).",
+      "Ocean Currents (9 · 14% HARD — cold vs warm currents), Tides and Ocean Movements (5 · 0% HARD), Ocean Waves and Sea-Floor Topography (5 · 25% HARD — mid-oceanic ridge), Marine Ecosystems — Coral Reefs (1 · 0% HARD).",
   },
 ];

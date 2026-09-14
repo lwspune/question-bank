@@ -8,7 +8,7 @@
  *     the Physics overlay needs simply doesn't exist for Biology.
  *   - 4 of 9 chapters have ZERO HARD across the entire 10-year window.
  *
- * Strand split (190 q):
+ * Strand split (199 q):
  *   - Recall  (132 q · 5 chapters): pure fact retrieval — vitamin↔disease,
  *     organ↔function, organelle↔role, kingdom↔example, scientist↔discovery,
  *     pathogen↔disease. The marks-per-hour leader.
@@ -62,7 +62,7 @@ export type StrategyStrand = {
 };
 
 /** Headline numbers shown in the strategy hero. PART B Biology is ~10–11 q
- *  per single paper on the GAT (range 9–13 across 18 papers in the bank;
+ *  per single paper on the GAT (range 9–13 across 19 papers in the bank;
  *  avg 10.6). Max marks per paper ≈ 44 (11 × 4), penalty −1.33 per wrong. */
 export const STRATEGY_HEADLINE = {
   paperQ: 11,
@@ -78,7 +78,7 @@ export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
     "Recall — Human Physiology · Cell Biology · Microbiology · Biodiversity · Genetics (132 q · 69%)",
-  qCount: 132,
+  qCount: 138,
   pctOfBank: 69,
   pitch:
     "Pure fact recall — vitamin↔disease, organ↔function, organelle↔role, kingdom↔example, scientist↔discovery, pathogen↔disease. 132 q at an average of 1.5% HARD. The highest marks-per-hour strand in the bank, and the strand where Biology most rewards methodical prep. 4 of these 5 chapters carry ZERO HARD across 10 years (only Cell Biology has 1 HARD across 44 q). Drill the /reference-tables page side-by-side with this strand — it covers the highest-leverage named-fact memorisation surface (50+ disease↔pathogen + vitamin↔deficiency + hormone↔gland + scientist↔discovery pairs).",
@@ -90,7 +90,7 @@ export const RECALL_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Human Physiology",
-      qCount: 52,
+      qCount: 55,
       pctHard: 2,
       mustDrill: [
         "Circulatory and Lymphatic System",
@@ -110,7 +110,7 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Cell Biology",
-      qCount: 44,
+      qCount: 46,
       pctHard: 2,
       mustDrill: [
         "Cell Organelles and Functions",
@@ -143,7 +143,7 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Biodiversity and Classification",
-      qCount: 11,
+      qCount: 12,
       pctHard: 0,
       mustDrill: [
         "Animal Kingdom Classification",
@@ -173,11 +173,11 @@ export const RECALL_STRAND: StrategyStrand = {
 
 export const APPLY_STRAND: StrategyStrand = {
   id: "apply",
-  label: "Apply — Plant Biology · Reproduction (42 q · 22%)",
-  qCount: 42,
-  pctOfBank: 22,
+  label: "Apply — Plant Biology · Reproduction (16 q · 22%)",
+  qCount: 46,
+  pctOfBank: 23,
   pitch:
-    "Mechanism-tracing — follow a biological process and predict the outcome. Plant Biology (29 q · 3% HARD) requires tracing photosynthesis flow, transpiration physics (vaseline-on-leaf), xylem-water-up vs phloem-food-bidirectional. Reproduction (13 q · 8% HARD) requires inheritance ratios, double-fertilisation arithmetic (2n + n = 3n endosperm), pollination genetics. 42 q at an average of 4% HARD — including 4 of the bank's 5 HARDs. The skill is process-tracing, not pure recall: the answer follows from the mechanism, not from a memorised fact.",
+    "Mechanism-tracing — follow a biological process and predict the outcome. Plant Biology (30 q · 3% HARD) requires tracing photosynthesis flow, transpiration physics (vaseline-on-leaf), xylem-water-up vs phloem-food-bidirectional. Reproduction (16 q · 6% HARD) requires inheritance ratios, double-fertilisation arithmetic (2n + n = 3n endosperm), pollination genetics. 42 q at an average of 4% HARD — including 4 of the bank's 5 HARDs. The skill is process-tracing, not pure recall: the answer follows from the mechanism, not from a memorised fact.",
   approach: [
     "Memorise the 4 master processes first: (1) Photosynthesis — light-dependent (thylakoid) → light-independent (stroma); inputs 6CO₂ + 6H₂O + light → outputs C₆H₁₂O₆ + 6O₂. (2) Cellular respiration — glycolysis (cytoplasm) → Krebs (mitochondrial matrix) → ETC (inner membrane); net 36–38 ATP per glucose. (3) Osmosis direction — water moves from LOW solute to HIGH solute (high water potential to low). RBC in 2% detergent → hypotonic to detergent solution but detergent disrupts membrane → cell bursts. (4) Pollination → double fertilisation: 1 male nucleus + egg = 2n zygote; 1 male nucleus + 2 polar nuclei = 3n endosperm.",
     "Plant Biology Transpiration subtopic (3 q · 33% HARD) is the hottest Apply pocket. The vaseline-on-leaf experiment (control + vaseline-upper + vaseline-lower) tests whether you can reason: stomata mostly on lower surface → vaseline-lower blocks most transpiration → that leaf loses least mass. Practice the experimental-design reasoning.",
@@ -186,7 +186,7 @@ export const APPLY_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Plant Biology",
-      qCount: 29,
+      qCount: 30,
       pctHard: 3,
       mustDrill: [
         "Plant Tissues and Meristems",
@@ -202,8 +202,8 @@ export const APPLY_STRAND: StrategyStrand = {
     },
     {
       chapter: "Reproduction",
-      qCount: 13,
-      pctHard: 8,
+      qCount: 16,
+      pctHard: 6,
       mustDrill: [
         "Angiosperm Reproduction — Pollination and Fertilization",
         "Sexual Reproduction — Genetic Principles",
@@ -220,20 +220,20 @@ export const APPLY_STRAND: StrategyStrand = {
 
 export const VERIFY_STRAND: StrategyStrand = {
   id: "verify",
-  label: "Verify — Ecology and Environment · Biochemistry (16 q · 8%)",
-  qCount: 16,
+  label: "Verify — Ecology and Environment · Biochemistry (4 q · 8%)",
+  qCount: 15,
   pctOfBank: 8,
   pitch:
     "Multi-statement true/false evaluation. The dominant question shape in these chapters is 'Consider the following statements about X. Which are correct?' — 3 or 4 statements, each individually verifiable. 16 q at 0% HARD across both chapters. The skill is methodical statement-by-statement evaluation: read each statement, judge it true/false against your knowledge, then match to the option that lists exactly the correct ones. Speed matters — these questions take longer per attempt than pure recall.",
   approach: [
     "Drill the statement-evaluation execution mode separately from pure recall. The trap is partial-credit thinking — you can't get 'half the statements right'; you must judge each one true/false correctly. The option that lists exactly 2 correct statements (when there are 3) is a distractor.",
-    "Ecology and Environment (12 q) has two big subtopics — Environment + Biodiversity (6 q) and Ecosystems + Biomes + Ecological Interactions (6 q). The biome-identification questions (tropical rainforest features, taiga features, savanna characteristics) test recall, but most others test statement-evaluation. Mutualism vs commensalism vs parasitism distinction is repeat-tested.",
+    "Ecology and Environment (11 q) has two big subtopics — Environment + Biodiversity (6 q) and Ecosystems + Biomes + Ecological Interactions (6 q). The biome-identification questions (tropical rainforest features, taiga features, savanna characteristics) test recall, but most others test statement-evaluation. Mutualism vs commensalism vs parasitism distinction is repeat-tested.",
     "Biochemistry (4 q) is tiny — read once in 20 min. Rancidity (oxidation of fats), browning (Maillard reaction), fermentation (anaerobic, ethanol + CO₂), peptide bonds in protein primary structure. Don't over-invest beyond the read.",
   ],
   chapters: [
     {
       chapter: "Ecology and Environment",
-      qCount: 12,
+      qCount: 11,
       pctHard: 0,
       mustDrill: [
         "Environment and Biodiversity",

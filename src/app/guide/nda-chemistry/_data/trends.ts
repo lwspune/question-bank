@@ -1,12 +1,12 @@
 /**
  * Content for /guide/nda-chemistry/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 262-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 277-q
  * PUBLIC NDA Chemistry bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA PART B Chemistry is ~15 q per single paper (range
  * 12–18 across the bank; avg 14.6). NDA-1 + NDA-2 each year except 2020
- * (NDA-2 COVID-cancelled — single paper) and 2026 NDA-2 (not yet held —
+ * (NDA-2 COVID-cancelled — the only single-paper year; 2026 completed on 2026-09-14 —
  * also single paper). Year totals below = sum across both papers of the
  * year (so 2020 + 2026 are roughly half a normal year).
  *
@@ -17,7 +17,7 @@
  *
  * Notable shifts (in the bank window):
  *   1. Paper has NOT hardened. %HARD bounces 0% (2018, 2025) to 14.3% (2019)
- *      with no trajectory. Average ~6%. Contrast Physics (2% → 44% over the
+ *      with no trajectory. Average ~6%. Contrast Physics (2% → 37% over the
  *      same window).
  *   2. Industrial and Applied Chemistry grew dramatically. 2017–2022 averaged
  *      ~2 q/yr; 2024–2026 averaged ~4 q/yr (Paints subtopic added 2024+).
@@ -33,17 +33,17 @@ export type DriftRow = {
 };
 
 export const DRIFT_ROWS: DriftRow[] = [
-  { chapter: "Carbon and Its Compounds",                       counts: { 2017: 4, 2018: 8, 2019: 3, 2020: 6, 2021: 1, 2022: 6, 2023: 7, 2024: 5, 2025: 3, 2026: 2 } },
+  { chapter: "Carbon and Its Compounds",                       counts: { 2017: 4, 2018: 8, 2019: 3, 2020: 6, 2021: 1, 2022: 6, 2023: 7, 2024: 5, 2025: 3, 2026: 3 } },
   { chapter: "Atomic Structure and Periodic Classification",   counts: { 2017: 6, 2018: 3, 2019: 2, 2020: 5, 2021: 4, 2022: 3, 2023: 2, 2024: 4, 2025: 5, 2026: 1 } },
-  { chapter: "Acids, Bases and Salts",                         counts: { 2017: 3, 2018: 7, 2019: 2, 2020: 3, 2021: 5, 2022: 3, 2023: 2, 2024: 2, 2025: 4, 2026: 2 } },
-  { chapter: "Matter and Its States",                          counts: { 2017: 3, 2018: 2, 2019: 5, 2020: 0, 2021: 3, 2022: 5, 2023: 3, 2024: 3, 2025: 4, 2026: 2 } },
-  { chapter: "Chemical Reactions",                             counts: { 2017: 1, 2018: 1, 2019: 4, 2020: 0, 2021: 5, 2022: 4, 2023: 5, 2024: 3, 2025: 5, 2026: 2 } },
-  { chapter: "Industrial and Applied Chemistry",               counts: { 2017: 3, 2018: 2, 2019: 4, 2020: 0, 2021: 3, 2022: 1, 2023: 3, 2024: 5, 2025: 2, 2026: 5 } },
-  { chapter: "Metals and Non-Metals",                          counts: { 2017: 2, 2018: 2, 2019: 2, 2020: 0, 2021: 2, 2022: 3, 2023: 6, 2024: 0, 2025: 0, 2026: 0 } },
-  { chapter: "Hydrogen and Water",                             counts: { 2017: 3, 2018: 1, 2019: 1, 2020: 0, 2021: 1, 2022: 1, 2023: 0, 2024: 2, 2025: 2, 2026: 0 } },
-  { chapter: "Chemical Bonding",                               counts: { 2017: 0, 2018: 0, 2019: 1, 2020: 1, 2021: 1, 2022: 2, 2023: 0, 2024: 5, 2025: 1, 2026: 0 } },
+  { chapter: "Acids, Bases and Salts",                         counts: { 2017: 3, 2018: 7, 2019: 2, 2020: 3, 2021: 5, 2022: 3, 2023: 2, 2024: 2, 2025: 4, 2026: 5 } },
+  { chapter: "Matter and Its States",                          counts: { 2017: 3, 2018: 2, 2019: 5, 2020: 0, 2021: 3, 2022: 5, 2023: 3, 2024: 3, 2025: 4, 2026: 4 } },
+  { chapter: "Chemical Reactions",                             counts: { 2017: 1, 2018: 1, 2019: 4, 2020: 0, 2021: 5, 2022: 4, 2023: 5, 2024: 3, 2025: 5, 2026: 4 } },
+  { chapter: "Industrial and Applied Chemistry",               counts: { 2017: 2, 2018: 2, 2019: 4, 2020: 0, 2021: 3, 2022: 1, 2023: 3, 2024: 5, 2025: 2, 2026: 6 } },
+  { chapter: "Metals and Non-Metals",                          counts: { 2017: 2, 2018: 2, 2019: 2, 2020: 0, 2021: 2, 2022: 3, 2023: 6, 2024: 0, 2025: 0, 2026: 1 } },
+  { chapter: "Hydrogen and Water",                             counts: { 2017: 3, 2018: 1, 2019: 1, 2020: 0, 2021: 1, 2022: 1, 2023: 0, 2024: 2, 2025: 2, 2026: 2 } },
+  { chapter: "Chemical Bonding",                               counts: { 2017: 0, 2018: 0, 2019: 1, 2020: 1, 2021: 1, 2022: 2, 2023: 0, 2024: 5, 2025: 1, 2026: 3 } },
   { chapter: "Chemistry in Everyday Life",                     counts: { 2017: 2, 2018: 0, 2019: 3, 2020: 0, 2021: 2, 2022: 1, 2023: 0, 2024: 0, 2025: 2, 2026: 0 } },
-  { chapter: "Mole Concept and Stoichiometry",                 counts: { 2017: 3, 2018: 1, 2019: 1, 2020: 0, 2021: 0, 2022: 0, 2023: 1, 2024: 1, 2025: 1, 2026: 1 } },
+  { chapter: "Mole Concept and Stoichiometry",                 counts: { 2017: 3, 2018: 1, 2019: 1, 2020: 0, 2021: 0, 2022: 0, 2023: 1, 2024: 1, 2025: 1, 2026: 2 } },
   { chapter: "Practical Chemistry",                            counts: { 2017: 0, 2018: 0, 2019: 0, 2020: 0, 2021: 0, 2022: 0, 2023: 3, 2024: 0, 2025: 0, 2026: 0 } },
 ];
 
@@ -59,16 +59,16 @@ export type HardByYear = {
 };
 
 export const HARD_BY_YEAR: HardByYear[] = [
-  { year: 2017, totalQ: 30, hardQ: 2, pctHard: 7  },
-  { year: 2018, totalQ: 27, hardQ: 0, pctHard: 0  },
-  { year: 2019, totalQ: 28, hardQ: 4, pctHard: 14 },
-  { year: 2020, totalQ: 15, hardQ: 1, pctHard: 7  },
-  { year: 2021, totalQ: 27, hardQ: 1, pctHard: 4  },
-  { year: 2022, totalQ: 29, hardQ: 1, pctHard: 3  },
-  { year: 2023, totalQ: 32, hardQ: 3, pctHard: 9  },
-  { year: 2024, totalQ: 30, hardQ: 2, pctHard: 7  },
-  { year: 2025, totalQ: 29, hardQ: 0, pctHard: 0  },
-  { year: 2026, totalQ: 15, hardQ: 2, pctHard: 13 },
+  { year: 2017, totalQ: 29, hardQ:  2, pctHard:  7 },
+  { year: 2018, totalQ: 27, hardQ:  0, pctHard:  0 },
+  { year: 2019, totalQ: 28, hardQ:  4, pctHard: 14 },
+  { year: 2020, totalQ: 15, hardQ:  1, pctHard:  7 },
+  { year: 2021, totalQ: 27, hardQ:  1, pctHard:  4 },
+  { year: 2022, totalQ: 29, hardQ:  1, pctHard:  3 },
+  { year: 2023, totalQ: 32, hardQ:  3, pctHard:  9 },
+  { year: 2024, totalQ: 30, hardQ:  2, pctHard:  7 },
+  { year: 2025, totalQ: 29, hardQ:  0, pctHard:  0 },
+  { year: 2026, totalQ: 31, hardQ:  3, pctHard: 10 },
 ];
 
 export type DriftCallout = {
@@ -90,7 +90,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "flat",
     title: "The headline: paper has NOT hardened — drill all 10 years equally",
     description:
-      "The most important pattern in NDA Chemistry trends is the absence of a pattern. %HARD oscillates 0% (2018, 2025) to 14% (2019, 2026 NDA-1) with no trajectory. Average across 10 years: ~6%. Contrast NDA Physics (2% → 44% over the same window). Translation: drill 2017 papers as seriously as 2024 papers. The 2026 paper is no harder per question than the 2017 paper. There's no 'recent papers are the new normal' calibration to worry about here — Chemistry's recall-heavy character keeps the difficulty floor stable.",
+      "The most important pattern in NDA Chemistry trends is the absence of a pattern. %HARD oscillates 0% (2018, 2025) to 14% (2019) with no trajectory; the completed 2026 pair sits at 10%. Average across 10 years: ~6%. Contrast NDA Physics (2% → 37% over the same window). Translation: drill 2017 papers as seriously as 2024 papers. The 2026 paper is no harder per question than the 2017 paper. There's no 'recent papers are the new normal' calibration to worry about here — Chemistry's recall-heavy character keeps the difficulty floor stable.",
     drill: {
       chapter: "Carbon and Its Compounds",
       pyqYears: [2017, 2018, 2019],
@@ -102,7 +102,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "up",
     title: "Industrial and Applied Chemistry grew — 2 q/yr → 4 q/yr post-2024",
     description:
-      "Through 2017–2022 the Industrial chapter held 1–4 q/year (avg ~2). 2024 jumped to 5, 2026 NDA-1 alone has 5. The growth concentrated in Paints and Coatings (a 4-q HARD-heavy subtopic added post-2024) and Industrial Gases (paper-pulp manufacture, gas applications). If your prep is from a coaching-class syllabus that pre-dates 2024, you're under-investing in this chapter by ~50%.",
+      "Through 2017–2022 the Industrial chapter held 1–4 q/year (avg ~2). 2024 jumped to 5, and 2026 carries 6 across both papers (5 in NDA-1, 1 in NDA-2). The growth concentrated in Paints and Coatings (a 4-q HARD-heavy subtopic added post-2024) and Industrial Gases (paper-pulp manufacture, gas applications). If your prep is from a coaching-class syllabus that pre-dates 2024, you're under-investing in this chapter by ~50%.",
     drill: {
       chapter: "Industrial and Applied Chemistry",
       pyqYears: [2024, 2025, 2026],
@@ -120,7 +120,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "spike",
     title: "Metals and Non-Metals — 2023 spike (6 q) then silence (0 q since)",
     description:
-      "2023 carried 6 of the chapter's 17 q in a single year — a freak high. 2024 + 2025 + 2026 NDA-1 each carried ZERO. Pattern is genuinely noisy; the chapter could come back in 2026 NDA-2 with another spike, or stay silent. Drill it for marks-on-the-table (zero HARD), but don't expect it as a guaranteed 2 q/paper.",
+      "2023 carried 6 of the chapter's 17 q in a single year — a freak high. 2024 + 2025 + 2026 NDA-1 each carried ZERO, and NDA-2 2026 brought it back with just 1. Pattern is genuinely noisy, but the answer to the open question is: it returns, thinly. Drill it for marks-on-the-table (zero HARD), but don't expect it as a guaranteed 2 q/paper.",
     drill: {
       chapter: "Metals and Non-Metals",
       pyqYears: [2023],

@@ -7,7 +7,7 @@
  * example UUIDs (2 per playbook, resolved via loadWorkedExamples at request
  * time), and relatedSlugs (cross-links to other playbooks).
  *
- * UUIDs SQL-picked against the live 449-q NDA Physics PUBLIC bank — recent
+ * UUIDs SQL-picked against the live 473-q NDA Physics PUBLIC bank — recent
  * year first, with at least one HARD where the chapter has a HARD pool to
  * illustrate. All 14 chapters have details; none ship as "coming soon."
  */

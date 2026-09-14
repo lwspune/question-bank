@@ -30,7 +30,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Physics Strategy — Recall, Apply, Reason",
   description:
-    "Evidence-led NDA PART B Physics preparation: three skill strands (Recall vs Apply vs Reason) with a %HARD-aware tier overlay (drill all / cherry-pick / target HARD). Per-chapter must-drill subtopics, test-day attempt order, and a ~50-hour time-budget plan. Backed by 449 past-year questions across 18 papers.",
+    "Evidence-led NDA PART B Physics preparation: three skill strands (Recall vs Apply vs Reason) with a %HARD-aware tier overlay (drill all / cherry-pick / target HARD). Per-chapter must-drill subtopics, test-day attempt order, and a ~50-hour time-budget plan. Backed by 473 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-physics/strategy" },
 };
 

@@ -8,7 +8,7 @@
  * loadWorkedExamples at request time), and relatedSlugs (cross-links to
  * other playbooks).
  *
- * UUIDs SQL-picked 2026-05-18 against the live 190-q NDA Biology PUBLIC
+ * UUIDs SQL-picked 2026-05-18 against the live 199-q NDA Biology PUBLIC
  * bank — most-recent year first, HARD picked when the chapter has a HARD
  * pool, else MOD/EASY. All 9 chapters have details.
  */

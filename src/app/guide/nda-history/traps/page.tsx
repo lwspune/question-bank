@@ -22,7 +22,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA History Traps — Distractor patterns NDA reuses",
   description:
-    "How candidates who know History still lose marks. Reformer↔movement swap, ruler↔dynasty swap, scholar↔text swap, Act↔year swap, traveller-by-era out-of-sequence, Gandhian satyagraha chronology, multi-statement partial-credit traps — measured against the live 260-question bank.",
+    "How candidates who know History still lose marks. Reformer↔movement swap, ruler↔dynasty swap, scholar↔text swap, Act↔year swap, traveller-by-era out-of-sequence, Gandhian satyagraha chronology, multi-statement partial-credit traps — measured against the live 269-question bank.",
   alternates: { canonical: "/guide/nda-history/traps" },
 };
 

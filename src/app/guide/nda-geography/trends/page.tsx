@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Geography Trends — How the paper drifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA PART A Geography across 18 papers. UNLIKE Physics, the paper has NOT consistently hardened — %HARD bounces 6% to 42% with no monotonic trajectory. Climatology grew 2024–25, Earth's Structure has dominated since 2021. Drill all 10 years equally.",
+    "Year-by-year chapter drift in NDA PART A Geography across 19 papers. UNLIKE Physics, the paper has NOT consistently hardened — %HARD bounces 6% to 42% with no monotonic trajectory. Climatology grew 2024–25, Earth's Structure has dominated since 2021. Drill all 10 years equally.",
   alternates: { canonical: "/guide/nda-geography/trends" },
 };
 
@@ -58,12 +58,12 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-geography/trends"
         headline="NDA Geography Trends — How the paper drifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA PART A Geography across 18 papers. The paper has NOT consistently hardened. Climatology grew 2024–25, Earth's Structure has dominated since 2021."
+        description="Year-by-year chapter drift in NDA PART A Geography across 19 papers. The paper has NOT consistently hardened. Climatology grew 2024–25, Earth's Structure has dominated since 2021."
       />
       <GuideHero
         eyebrow="Trends"
         title="NDA Geography 2026 is structurally similar to NDA Geography 2017"
-        subtitle="The most important pattern in NDA Geography trends is the ABSENCE of a monotonic one — UNLIKE Physics (which hardened 22× per question), Geography has bounced 6% to 42% HARD across the 10-year window with no trajectory. 2018 was an outlier high; 2025 hardened again; 2019 + 2021 were unusually easy. Chapter mix has shifted (Climatology + Earth's Structure grew, World/Human faded), but the difficulty floor is stable. Drill all 10 years equally."
+        subtitle="The most important pattern in NDA Geography trends is the ABSENCE of a monotonic one — UNLIKE Physics (which hardened ~19× per question), Geography has bounced 6% to 42% HARD across the 10-year window with no trajectory. 2018 was an outlier high; 2025 hardened again; 2019 + 2021 were unusually easy. Chapter mix has shifted (Climatology + Earth's Structure grew, World/Human faded), but the difficulty floor is stable. Drill all 10 years equally."
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -200,7 +200,7 @@ export default async function Trends() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Counts per year (NDA-1 + NDA-2 combined; 2020 NDA-2 COVID-cancelled,
-          2026 NDA-2 not yet held — so those columns hold ~half a normal
+          2026 is now complete (NDA-2 written 2026-09-14) — so only 2020 holds ~half a normal
           year). Cells are tinted by row magnitude.
         </p>
         <div className="mt-4">

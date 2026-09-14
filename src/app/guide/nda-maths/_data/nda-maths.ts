@@ -48,7 +48,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How NDA Mathematics actually works — what the 2,160-question bank reveals.",
+      "How NDA Mathematics actually works — what the 2,280-question bank reveals.",
   },
   {
     slug: "strategy",
@@ -65,7 +65,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "compound-tricks",
     label: "Compound Tricks",
     blurb:
-      "4 principle pairs that spike HARD — 40–67% HARD vs 22.5% bank average. The chains paper-setters love.",
+      "4 principle pairs that spike HARD — 40–67% HARD vs 22.1% bank average. The chains paper-setters love.",
   },
   {
     slug: "trends",
@@ -92,21 +92,21 @@ export type Overview = {
 
 /** Snapshot of the bank's shape as of the date below. */
 export const OVERVIEW: Overview = {
-  totalQ: 2160,
-  papers: 18,
+  totalQ: 2280,
+  papers: 19,
   chapters: 31,
   principles: 79,
-  difficulty: { easy: 662, moderate: 1011, hard: 487 },
-  asOf: "2026-05-17",
+  difficulty: { easy: 677, moderate: 1098, hard: 505 },
+  asOf: "2026-09-14",
 };
 
 /**
- * NDA Paper I marking. The bank is exactly 18 complete papers of 120
+ * NDA Paper I marking. The bank is exactly 19 complete papers of 120
  * questions, so a chapter's bank count divides cleanly into "marks in one
- * paper" — see marksPerPaper().
+ * paper" — see marksPerPaper(). NDA-2 2026 (written 2026-09-14) is the 19th.
  */
 export const MARKING = {
-  papers: 18,
+  papers: 19,
   marksPerQuestion: 2.5,
   paperMarks: 300,
 } as const;
@@ -132,78 +132,93 @@ export type ChapterRow = {
 };
 
 /** 31 NDA Maths chapters, ordered by question count descending. SQL-derived
- *  against the 2,160-q PUBLIC bank as of OVERVIEW.asOf. */
+ *  against the 2,280-q PUBLIC bank as of OVERVIEW.asOf. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Matrices & Determinants",
-    qCount: 170,
+    qCount: 181,
     pctTotal: 7.9,
-    pctHard: 31,
+    pctHard: 30,
     focus:
-      "Determinant Properties (59), Matrix Operations (33). Highest-reliability chapter — 8–11 q/paper.",
+      "Determinant Properties (61), Matrix Operations (34). " +
+      "Highest-reliability chapter — 8–11 q/paper.",
     subtopics: [
       {
         subtopic: "Determinant Properties, Operations, and Sums",
-        qCount: 59,
-        pctHard: 46,
+        qCount: 61,
+        pctHard: 48,
       },
       {
         subtopic: "Matrix Operations, Polynomials, and Equations",
-        qCount: 33,
+        qCount: 34,
         pctHard: 12,
       },
-      { subtopic: "Cofactors, Adjoint, and Inverse", qCount: 28, pctHard: 25 },
       {
-        subtopic:
-          "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
-        qCount: 22,
-        pctHard: 9,
+        subtopic: "Cofactors, Adjoint, and Inverse",
+        qCount: 33,
+        pctHard: 21,
       },
       {
-        subtopic:
-          "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+        subtopic: "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+        qCount: 24,
+        pctHard: 8,
+      },
+      {
+        subtopic: "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
         qCount: 20,
         pctHard: 50,
       },
       {
         subtopic: "Linear Systems — Consistency, Cramer's Rule, Solution Space",
-        qCount: 8,
-        pctHard: 25,
+        qCount: 9,
+        pctHard: 22,
       },
     ],
   },
   {
     chapter: "Probability",
-    qCount: 162,
-    pctTotal: 7.5,
-    pctHard: 17,
+    qCount: 176,
+    pctTotal: 7.7,
+    pctHard: 18,
     focus:
-      "Counting dominates (85); Conditional/Bayes (29) is the harder slice. Mostly classical.",
+      "Counting dominates (90); Conditional/Bayes (31) is the harder slice. " +
+      "Mostly classical.",
     subtopics: [
-      { subtopic: "Probability via Counting", qCount: 85, pctHard: 19 },
       {
-        subtopic:
-          "Conditional Probability, Total Probability, and Bayes' Theorem",
-        qCount: 29,
-        pctHard: 14,
+        subtopic: "Probability via Counting",
+        qCount: 90,
+        pctHard: 20,
       },
       {
-        subtopic:
-          "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
-        qCount: 21,
-        pctHard: 14,
+        subtopic: "Conditional Probability, Total Probability, and Bayes' Theorem",
+        qCount: 31,
+        pctHard: 13,
       },
-      { subtopic: "Independent Events", qCount: 15, pctHard: 13 },
-      { subtopic: "Bounds on Probability", qCount: 12, pctHard: 25 },
+      {
+        subtopic: "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+        qCount: 25,
+        pctHard: 12,
+      },
+      {
+        subtopic: "Independent Events",
+        qCount: 17,
+        pctHard: 18,
+      },
+      {
+        subtopic: "Bounds on Probability",
+        qCount: 13,
+        pctHard: 31,
+      },
     ],
   },
   {
     chapter: "Statistics",
-    qCount: 160,
-    pctTotal: 7.4,
-    pctHard: 13,
+    qCount: 165,
+    pctTotal: 7.2,
+    pctHard: 12,
     focus:
-      "Central Tendency (75), Dispersion (44). Gentlest chapter in the bank — best marks-per-hour.",
+      "Central Tendency (75), Dispersion (47). Gentlest chapter in the bank " +
+      "— best marks-per-hour.",
     subtopics: [
       {
         subtopic: "Measures of Central Tendency — Mean, Median, Mode",
@@ -212,10 +227,14 @@ export const CHAPTER_TABLE: ChapterRow[] = [
       },
       {
         subtopic: "Dispersion — Standard Deviation, Variance, Mean Deviation",
-        qCount: 44,
+        qCount: 47,
         pctHard: 9,
       },
-      { subtopic: "Regression and Correlation", qCount: 27, pctHard: 22 },
+      {
+        subtopic: "Regression and Correlation",
+        qCount: 29,
+        pctHard: 21,
+      },
       {
         subtopic: "Frequency Distributions and Graphical Representation",
         qCount: 14,
@@ -225,99 +244,99 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Trigonometric Identities",
-    qCount: 138,
+    qCount: 145,
     pctTotal: 6.4,
-    pctHard: 34,
+    pctHard: 32,
     focus:
-      "Compound Angle (38), Multi/Half-Angle (30), Product-to-Sum (27). High-HARD — cherry-pick by subtopic.",
+      "Compound Angle (42), Multi/Half-Angle (31), Product-to-Sum (27). " +
+      "High-HARD — cherry-pick by subtopic.",
     subtopics: [
-      { subtopic: "Compound Angle Formulas", qCount: 38, pctHard: 26 },
-      { subtopic: "Multiple and Half-Angle Formulas", qCount: 30, pctHard: 43 },
+      {
+        subtopic: "Compound Angle Formulas",
+        qCount: 42,
+        pctHard: 24,
+      },
+      {
+        subtopic: "Multiple and Half-Angle Formulas",
+        qCount: 31,
+        pctHard: 42,
+      },
       {
         subtopic: "Product-to-Sum and Sum-to-Product Identities",
         qCount: 27,
         pctHard: 44,
       },
       {
+        subtopic: "Specific Values and Quadrants",
+        qCount: 23,
+        pctHard: 26,
+      },
+      {
         subtopic: "Maximum and Minimum of Trigonometric Expressions",
         qCount: 22,
         pctHard: 27,
       },
-      { subtopic: "Specific Values and Quadrants", qCount: 21, pctHard: 29 },
     ],
   },
   {
     chapter: "Functions",
-    qCount: 109,
+    qCount: 115,
     pctTotal: 5.0,
     pctHard: 10,
     focus:
-      "Domain/Range (48) is 2% HARD — the cheapest marks in the bank. Skip Functional Equations.",
+      "Domain/Range (49) is 2% HARD — the cheapest marks in the bank. Skip " +
+      "Functional Equations.",
     subtopics: [
       {
         subtopic: "Domain, Range, and Function Properties",
-        qCount: 48,
+        qCount: 49,
         pctHard: 2,
       },
       {
         subtopic: "Composition and Inverse of Functions",
-        qCount: 28,
-        pctHard: 25,
+        qCount: 29,
+        pctHard: 24,
       },
-      { subtopic: "Functional Equations", qCount: 18, pctHard: 6 },
       {
-        subtopic:
-          "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
-        qCount: 8,
+        subtopic: "Functional Equations",
+        qCount: 20,
+        pctHard: 10,
+      },
+      {
+        subtopic: "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+        qCount: 9,
         pctHard: 0,
       },
-      { subtopic: "Greatest Integer Function", qCount: 7, pctHard: 29 },
-    ],
-  },
-  {
-    chapter: "Vectors",
-    qCount: 97,
-    pctTotal: 4.5,
-    pctHard: 20,
-    focus:
-      "Cross/Triple Product (37), Dot Product (32). Four formulas cover ~70%.",
-    subtopics: [
-      { subtopic: "Cross Product and Triple Product", qCount: 37, pctHard: 27 },
-      { subtopic: "Dot Product and Angle", qCount: 32, pctHard: 13 },
       {
-        subtopic:
-          "Magnitude, Components, Projection, and Direction Cosines",
-        qCount: 11,
-        pctHard: 9,
+        subtopic: "Greatest Integer Function",
+        qCount: 8,
+        pctHard: 25,
       },
-      {
-        subtopic:
-          "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
-        qCount: 11,
-        pctHard: 9,
-      },
-      { subtopic: "Position Vectors and Section", qCount: 6, pctHard: 50 },
     ],
   },
   {
     chapter: "Lines",
-    qCount: 97,
-    pctTotal: 4.5,
-    pctHard: 21,
+    qCount: 104,
+    pctTotal: 4.6,
+    pctHard: 20,
     focus:
-      "Triangles/Quads (32), Equation+Slope (27), Distance+Section (22).",
+      "Triangles/Quads (33), Equation+Slope (28), Distance+Section (27).",
     subtopics: [
       {
         subtopic: "Triangles, Quadrilaterals, and Polygons",
-        qCount: 32,
-        pctHard: 19,
+        qCount: 33,
+        pctHard: 18,
       },
       {
         subtopic: "Equation, Slope, and Family of Lines",
-        qCount: 27,
-        pctHard: 15,
+        qCount: 28,
+        pctHard: 14,
       },
-      { subtopic: "Distance, Section, and Locus", qCount: 22, pctHard: 27 },
+      {
+        subtopic: "Distance, Section, and Locus",
+        qCount: 27,
+        pctHard: 26,
+      },
       {
         subtopic: "Angle Between Lines, Parallelism, and Perpendicularity",
         qCount: 16,
@@ -326,17 +345,105 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     ],
   },
   {
-    chapter: "Sequence & Series",
-    qCount: 89,
-    pctTotal: 4.1,
-    pctHard: 21,
+    chapter: "Vectors",
+    qCount: 102,
+    pctTotal: 4.5,
+    pctHard: 20,
     focus:
-      "AP (42) carries half the chapter, then GP (19). AM-GM is the cross-chapter lever.",
+      "Cross/Triple Product (40), Dot Product (32). Four formulas cover ~70%.",
     subtopics: [
-      { subtopic: "Arithmetic Progressions", qCount: 42, pctHard: 14 },
-      { subtopic: "Geometric Progressions", qCount: 19, pctHard: 5 },
-      { subtopic: "Interrelating AP, GP and HP", qCount: 15, pctHard: 40 },
-      { subtopic: "Special Series and Special Sums", qCount: 8, pctHard: 38 },
+      {
+        subtopic: "Cross Product and Triple Product",
+        qCount: 40,
+        pctHard: 28,
+      },
+      {
+        subtopic: "Dot Product and Angle",
+        qCount: 32,
+        pctHard: 13,
+      },
+      {
+        subtopic: "Magnitude, Components, Projection, and Direction Cosines",
+        qCount: 13,
+        pctHard: 8,
+      },
+      {
+        subtopic: "Vector Geometry — Triangles, Parallelograms, Quadrilaterals",
+        qCount: 11,
+        pctHard: 9,
+      },
+      {
+        subtopic: "Position Vectors and Section",
+        qCount: 6,
+        pctHard: 50,
+      },
+    ],
+  },
+  {
+    chapter: "3D Geometry",
+    qCount: 94,
+    pctTotal: 4.1,
+    pctHard: 22,
+    focus:
+      "Direction Cosines (25) leads; the rest splits evenly across Sphere, " +
+      "Distance and the Plane.",
+    subtopics: [
+      {
+        subtopic: "Direction Cosines and Ratios",
+        qCount: 25,
+        pctHard: 28,
+      },
+      {
+        subtopic: "Distance, Section, and Collinearity in 3D",
+        qCount: 22,
+        pctHard: 27,
+      },
+      {
+        subtopic: "Sphere",
+        qCount: 20,
+        pctHard: 20,
+      },
+      {
+        subtopic: "The Plane",
+        qCount: 16,
+        pctHard: 19,
+      },
+      {
+        subtopic: "The Straight Line in 3D",
+        qCount: 11,
+        pctHard: 9,
+      },
+    ],
+  },
+  {
+    chapter: "Sequence & Series",
+    qCount: 93,
+    pctTotal: 4.1,
+    pctHard: 20,
+    focus:
+      "AP (42) carries half the chapter, then GP (19). AM-GM is the " +
+      "cross-chapter lever.",
+    subtopics: [
+      {
+        subtopic: "Arithmetic Progressions",
+        qCount: 44,
+        pctHard: 14,
+      },
+      {
+        subtopic: "Geometric Progressions",
+        qCount: 20,
+        pctHard: 5,
+      },
+      {
+        subtopic: "Interrelating AP, GP and HP",
+        qCount: 16,
+        pctHard: 38,
+      },
+      {
+        subtopic: "Special Series and Special Sums",
+        qCount: 8,
+        pctHard: 38,
+      },
       {
         subtopic: "Harmonic Progressions and the Three Means",
         qCount: 5,
@@ -345,37 +452,18 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     ],
   },
   {
-    chapter: "3D Geometry",
-    qCount: 89,
-    pctTotal: 4.1,
-    pctHard: 22,
-    focus:
-      "Direction Cosines (24) leads; the rest splits evenly across Sphere, Distance and the Plane.",
-    subtopics: [
-      { subtopic: "Direction Cosines and Ratios", qCount: 24, pctHard: 25 },
-      { subtopic: "Sphere", qCount: 20, pctHard: 20 },
-      {
-        subtopic: "Distance, Section, and Collinearity in 3D",
-        qCount: 20,
-        pctHard: 30,
-      },
-      { subtopic: "The Plane", qCount: 14, pctHard: 21 },
-      { subtopic: "The Straight Line in 3D", qCount: 11, pctHard: 9 },
-    ],
-  },
-  {
     chapter: "Differentiation",
-    qCount: 85,
+    qCount: 89,
     pctTotal: 3.9,
     pctHard: 24,
     focus:
-      "Chain Rule + Logarithmic (49), Parametric/Implicit (20). Differentiability questions overlap with Limits & Continuity.",
+      "Chain Rule + Logarithmic (51), Parametric/Implicit (20). " +
+      "Differentiability questions overlap with Limits & Continuity.",
     subtopics: [
       {
-        subtopic:
-          "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
-        qCount: 49,
-        pctHard: 14,
+        subtopic: "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+        qCount: 51,
+        pctHard: 16,
       },
       {
         subtopic: "Parametric, Implicit, and Higher-Order Derivatives",
@@ -383,144 +471,176 @@ export const CHAPTER_TABLE: ChapterRow[] = [
         pctHard: 50,
       },
       {
-        subtopic:
-          "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
-        qCount: 16,
-        pctHard: 19,
+        subtopic: "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+        qCount: 18,
+        pctHard: 17,
       },
     ],
   },
   {
     chapter: "Limits & Continuity",
-    qCount: 81,
+    qCount: 87,
     pctTotal: 3.8,
-    pctHard: 14,
+    pctHard: 15,
     focus:
-      "Continuity/Differentiability (34), Limit Techniques (31). Edge cases with |x|, ⌊x⌋ are the lever.",
+      "Continuity/Differentiability (36), Limit Techniques (34). Edge cases " +
+      "with |x|, ⌊x⌋ are the lever.",
     subtopics: [
       {
-        subtopic:
-          "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+        subtopic: "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+        qCount: 36,
+        pctHard: 11,
+      },
+      {
+        subtopic: "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
         qCount: 34,
-        pctHard: 12,
+        pctHard: 15,
       },
       {
-        subtopic:
-          "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
-        qCount: 31,
-        pctHard: 10,
-      },
-      {
-        subtopic:
-          "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
-        qCount: 16,
-        pctHard: 25,
+        subtopic: "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+        qCount: 17,
+        pctHard: 24,
       },
     ],
   },
   {
     chapter: "Permutation & Combination",
-    qCount: 78,
-    pctTotal: 3.6,
-    pctHard: 19,
+    qCount: 80,
+    pctTotal: 3.5,
+    pctHard: 20,
     focus:
-      "Digit-Forming (20), Factorials (17), Arrangements with Restrictions (17).",
+      "Digit-Forming (21), Factorials (17), Arrangements with Restrictions " +
+      "(17).",
     subtopics: [
-      { subtopic: "Forming Numbers from Digits", qCount: 20, pctHard: 20 },
-      { subtopic: "Arrangements with Restrictions", qCount: 17, pctHard: 24 },
+      {
+        subtopic: "Forming Numbers from Digits",
+        qCount: 21,
+        pctHard: 19,
+      },
+      {
+        subtopic: "Arrangements with Restrictions",
+        qCount: 17,
+        pctHard: 24,
+      },
       {
         subtopic: "Factorials and Binomial Coefficients",
         qCount: 17,
         pctHard: 29,
       },
-      { subtopic: "Geometric Counting", qCount: 13, pctHard: 8 },
-      { subtopic: "Combinations", qCount: 11, pctHard: 9 },
+      {
+        subtopic: "Geometric Counting",
+        qCount: 13,
+        pctHard: 8,
+      },
+      {
+        subtopic: "Combinations",
+        qCount: 12,
+        pctHard: 17,
+      },
     ],
   },
   {
     chapter: "Application of Derivatives",
-    qCount: 73,
-    pctTotal: 3.4,
+    qCount: 76,
+    pctTotal: 3.3,
     pctHard: 16,
     focus:
-      "Monotonicity/Extrema (38), Optimisation — AM-GM compound (30).",
+      "Monotonicity/Extrema (40), Optimisation — AM-GM compound (31).",
     subtopics: [
       {
         subtopic: "Monotonicity, Extrema, and Critical Points",
-        qCount: 38,
-        pctHard: 16,
+        qCount: 40,
+        pctHard: 15,
       },
       {
         subtopic: "Optimisation — Geometric, Trigonometric, AM-GM",
-        qCount: 30,
-        pctHard: 20,
+        qCount: 31,
+        pctHard: 19,
       },
-      { subtopic: "Tangents and Slopes", qCount: 5, pctHard: 0 },
+      {
+        subtopic: "Tangents and Slopes",
+        qCount: 5,
+        pctHard: 0,
+      },
     ],
   },
   {
     chapter: "Complex Numbers",
-    qCount: 72,
+    qCount: 76,
     pctTotal: 3.3,
-    pctHard: 22,
+    pctHard: 21,
     focus:
-      "Modulus/Argument (39), Cube Roots of Unity (18), Powers/Roots (15).",
+      "Modulus/Argument (40), Cube Roots of Unity (18), Powers/Roots (18).",
     subtopics: [
-      { subtopic: "Modulus, Argument, and Conjugate", qCount: 39, pctHard: 15 },
-      { subtopic: "Cube Roots of Unity", qCount: 18, pctHard: 33 },
-      { subtopic: "Powers and Roots", qCount: 15, pctHard: 27 },
+      {
+        subtopic: "Modulus, Argument, and Conjugate",
+        qCount: 40,
+        pctHard: 15,
+      },
+      {
+        subtopic: "Cube Roots of Unity",
+        qCount: 18,
+        pctHard: 33,
+      },
+      {
+        subtopic: "Powers and Roots",
+        qCount: 18,
+        pctHard: 22,
+      },
     ],
   },
   {
     chapter: "Sets & Relations",
-    qCount: 69,
-    pctTotal: 3.2,
-    pctHard: 13,
+    qCount: 75,
+    pctTotal: 3.3,
+    pctHard: 12,
     focus:
-      "Counting Sets + Inclusion-Exclusion (27), Set Operations (23). Easy 2–3 marks if given an hour.",
+      "Counting Sets + Inclusion-Exclusion (28), Set Operations (25). Easy " +
+      "2–3 marks if given an hour.",
     subtopics: [
       {
         subtopic: "Counting Sets, Subsets, and Inclusion-Exclusion",
-        qCount: 27,
+        qCount: 28,
         pctHard: 11,
       },
       {
-        subtopic:
-          "Set Operations, Identities, and Cartesian Products of Sets",
-        qCount: 23,
-        pctHard: 22,
+        subtopic: "Set Operations, Identities, and Cartesian Products of Sets",
+        qCount: 25,
+        pctHard: 20,
       },
       {
         subtopic: "Relations — Properties, Cartesian Product, and Counting",
-        qCount: 19,
+        qCount: 22,
         pctHard: 5,
       },
     ],
   },
   {
     chapter: "Definite Integration",
-    qCount: 66,
-    pctTotal: 3.1,
-    pctHard: 20,
+    qCount: 69,
+    pctTotal: 3.0,
+    pctHard: 19,
     focus:
       "Properties — King's, symmetry (32), |x|/floor integrals (17).",
     subtopics: [
       {
-        subtopic:
-          "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
-        qCount: 32,
-        pctHard: 28,
+        subtopic: "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+        qCount: 33,
+        pctHard: 27,
       },
       {
-        subtopic:
-          "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+        subtopic: "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
         qCount: 17,
         pctHard: 12,
       },
       {
-        subtopic:
-          "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
-        qCount: 11,
+        subtopic: "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+        qCount: 13,
+        pctHard: 0,
+      },
+      {
+        subtopic: "Area Under Curves",
+        qCount: 3,
         pctHard: 0,
       },
       {
@@ -528,21 +648,46 @@ export const CHAPTER_TABLE: ChapterRow[] = [
         qCount: 3,
         pctHard: 67,
       },
-      { subtopic: "Area Under Curves", qCount: 3, pctHard: 0 },
+    ],
+  },
+  {
+    chapter: "Differential Equations",
+    qCount: 67,
+    pctTotal: 2.9,
+    pctHard: 30,
+    focus:
+      "Separable/IVP (31), Order/Degree (23).",
+    subtopics: [
+      {
+        subtopic: "Solving and Verifying ODEs — Separable, IVP, and Applications",
+        qCount: 31,
+        pctHard: 32,
+      },
+      {
+        subtopic: "Order, Degree, and Solutions of ODE",
+        qCount: 23,
+        pctHard: 30,
+      },
+      {
+        subtopic: "Formation of ODE from Curves and General Solutions",
+        qCount: 13,
+        pctHard: 23,
+      },
     ],
   },
   {
     chapter: "Quadratic Equations",
-    qCount: 63,
+    qCount: 67,
     pctTotal: 2.9,
-    pctHard: 40,
+    pctHard: 37,
     focus:
-      "Vieta's Relations (26), Nature of Roots (21). High-HARD; AM-GM + ω compounds live here.",
+      "Vieta's Relations (29), Nature of Roots (21). High-HARD; AM-GM + ω " +
+      "compounds live here.",
     subtopics: [
       {
         subtopic: "Vieta's Relations and Root-Coefficient Identities",
-        qCount: 26,
-        pctHard: 42,
+        qCount: 29,
+        pctHard: 38,
       },
       {
         subtopic: "Nature of Roots and Boundary Conditions",
@@ -551,53 +696,26 @@ export const CHAPTER_TABLE: ChapterRow[] = [
       },
       {
         subtopic: "Special Quadratics — Parametric, Logarithmic, Constructed",
-        qCount: 16,
-        pctHard: 44,
-      },
-    ],
-  },
-  {
-    chapter: "Differential Equations",
-    qCount: 63,
-    pctTotal: 2.9,
-    pctHard: 29,
-    focus:
-      "Separable/IVP (29), Order/Degree (22).",
-    subtopics: [
-      {
-        subtopic:
-          "Solving and Verifying ODEs — Separable, IVP, and Applications",
-        qCount: 29,
-        pctHard: 28,
-      },
-      {
-        subtopic: "Order, Degree, and Solutions of ODE",
-        qCount: 22,
-        pctHard: 32,
-      },
-      {
-        subtopic: "Formation of ODE from Curves and General Solutions",
-        qCount: 12,
-        pctHard: 25,
+        qCount: 17,
+        pctHard: 41,
       },
     ],
   },
   {
     chapter: "Binomial Theorem",
-    qCount: 54,
+    qCount: 56,
     pctTotal: 2.5,
-    pctHard: 17,
+    pctHard: 18,
     focus:
-      "Coefficients & Specific Terms (29), Sum Identities (14).",
+      "Coefficients & Specific Terms (31), Sum Identities (14).",
     subtopics: [
       {
         subtopic: "Coefficients and Specific Terms in Expansion",
-        qCount: 29,
-        pctHard: 14,
+        qCount: 31,
+        pctHard: 16,
       },
       {
-        subtopic:
-          "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
+        subtopic: "Sums of Binomial Coefficients — Alternating, Weighted, and Symmetric",
         qCount: 14,
         pctHard: 14,
       },
@@ -615,20 +733,20 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Properties of Triangle",
-    qCount: 49,
+    qCount: 52,
     pctTotal: 2.3,
-    pctHard: 45,
+    pctHard: 42,
     focus:
-      "Sine/Cosine Rules (29), Triangle Identities (14). High-HARD — punishing yield.",
+      "Sine/Cosine Rules (32), Triangle Identities (14). High-HARD — " +
+      "punishing yield.",
     subtopics: [
       {
         subtopic: "Sine and Cosine Rules — Solving Triangles",
-        qCount: 29,
-        pctHard: 45,
+        qCount: 32,
+        pctHard: 41,
       },
       {
-        subtopic:
-          "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+        subtopic: "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
         qCount: 14,
         pctHard: 43,
       },
@@ -641,62 +759,71 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Indefinite Integration",
-    qCount: 40,
-    pctTotal: 1.9,
-    pctHard: 23,
+    qCount: 42,
+    pctTotal: 1.8,
+    pctHard: 21,
     focus:
-      "Substitution (17), Standard Forms — exp/log (13).",
+      "Substitution (18), Standard Forms — exp/log (13).",
     subtopics: [
       {
-        subtopic:
-          "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
-        qCount: 17,
-        pctHard: 24,
+        subtopic: "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+        qCount: 18,
+        pctHard: 22,
       },
       {
-        subtopic:
-          "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
-        qCount: 13,
-        pctHard: 23,
+        subtopic: "Standard Forms — Exponential, Logarithmic, and Paired Trigonometric Integrals",
+        qCount: 14,
+        pctHard: 21,
       },
-      { subtopic: "Integration by Partial Fractions", qCount: 7, pctHard: 29 },
-      { subtopic: "Integration by Parts", qCount: 3, pctHard: 0 },
+      {
+        subtopic: "Integration by Partial Fractions",
+        qCount: 7,
+        pctHard: 29,
+      },
+      {
+        subtopic: "Integration by Parts",
+        qCount: 3,
+        pctHard: 0,
+      },
     ],
   },
   {
     chapter: "Conics",
-    qCount: 38,
+    qCount: 40,
     pctTotal: 1.8,
-    pctHard: 21,
+    pctHard: 20,
     focus:
-      "Ellipse (14), Parabola (13).",
+      "Ellipse (15), Parabola (14).",
     subtopics: [
       {
         subtopic: "Ellipse — Foci, Eccentricity, and Focal Distances",
-        qCount: 14,
-        pctHard: 14,
+        qCount: 15,
+        pctHard: 13,
       },
       {
         subtopic: "Parabola — Equation, Properties, and Latus Rectum",
-        qCount: 13,
-        pctHard: 23,
+        qCount: 14,
+        pctHard: 21,
       },
       {
-        subtopic:
-          "Conic Sections — Identification and Eccentricity Comparison",
+        subtopic: "Conic Sections — Identification and Eccentricity Comparison",
         qCount: 7,
         pctHard: 43,
       },
-      { subtopic: "Hyperbola — Foci and Eccentricity", qCount: 4, pctHard: 0 },
+      {
+        subtopic: "Hyperbola — Foci and Eccentricity",
+        qCount: 4,
+        pctHard: 0,
+      },
     ],
   },
   {
     chapter: "Inverse Trigonometry",
-    qCount: 34,
+    qCount: 36,
     pctTotal: 1.6,
-    pctHard: 24,
+    pctHard: 22,
     focus:
-      "Identities + Sum-Difference (17), Composite Evaluation (11).",
+      "Identities + Sum-Difference (17), Composite Evaluation (13).",
     subtopics: [
       {
         subtopic: "Identities, Properties, and Sum-Difference Formulas",
@@ -704,14 +831,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
         pctHard: 12,
       },
       {
-        subtopic:
-          "Evaluation of Composite Inverse Trigonometric Expressions",
-        qCount: 11,
-        pctHard: 36,
+        subtopic: "Evaluation of Composite Inverse Trigonometric Expressions",
+        qCount: 13,
+        pctHard: 31,
       },
       {
-        subtopic:
-          "Solving Inverse Trigonometric Equations and Geometric Applications",
+        subtopic: "Solving Inverse Trigonometric Equations and Geometric Applications",
         qCount: 6,
         pctHard: 33,
       },
@@ -719,21 +844,19 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Trigonometric Equations",
-    qCount: 33,
+    qCount: 34,
     pctTotal: 1.5,
-    pctHard: 33,
+    pctHard: 32,
     focus:
-      "Specific Forms — double-angle, product (13), General Solutions (13).",
+      "Specific Forms — double-angle, product (13), General Solutions (14).",
     subtopics: [
       {
-        subtopic:
-          "General Solutions and Counting Solutions of Trigonometric Equations",
-        qCount: 13,
-        pctHard: 46,
+        subtopic: "General Solutions and Counting Solutions of Trigonometric Equations",
+        qCount: 14,
+        pctHard: 43,
       },
       {
-        subtopic:
-          "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
+        subtopic: "Solving Specific Forms — Double-Angle, Product, Logarithmic, and Vieta",
         qCount: 13,
         pctHard: 15,
       },
@@ -746,29 +869,75 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Binomial Distribution",
-    qCount: 30,
+    qCount: 31,
     pctTotal: 1.4,
     pctHard: 10,
     focus:
-      "Computing Probabilities (15), Mean/Variance (15). One chapter, two formulas — 60 minutes, 2 marks.",
+      "Computing Probabilities (15), Mean/Variance (16). One chapter, two " +
+      "formulas — 60 minutes, 2 marks.",
     subtopics: [
       {
         subtopic: "Mean, Variance, and Parameter Estimation in B(n, p)",
-        qCount: 15,
+        qCount: 16,
         pctHard: 13,
       },
       {
-        subtopic:
-          "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+        subtopic: "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
         qCount: 15,
         pctHard: 7,
       },
     ],
   },
   {
+    chapter: "Circles",
+    qCount: 28,
+    pctTotal: 1.2,
+    pctHard: 39,
+    focus:
+      "Circle Equation — centre/radius (11) is the soft half; Concyclicity " +
+      "(9) runs 78% HARD.",
+    subtopics: [
+      {
+        subtopic: "Circle Equation — Centre, Radius, Diameter, and Properties",
+        qCount: 12,
+        pctHard: 0,
+      },
+      {
+        subtopic: "Circles Through Given Points and Concyclicity",
+        qCount: 9,
+        pctHard: 78,
+      },
+      {
+        subtopic: "Inscribed Geometry, Tangents, and Segments",
+        qCount: 7,
+        pctHard: 57,
+      },
+    ],
+  },
+  {
+    chapter: "Applications of Integration",
+    qCount: 27,
+    pctTotal: 1.2,
+    pctHard: 19,
+    focus:
+      "Area Bounded by Curve (18).",
+    subtopics: [
+      {
+        subtopic: "Area Bounded by a Curve, Lines, and Axes",
+        qCount: 18,
+        pctHard: 17,
+      },
+      {
+        subtopic: "Area Between Two Curves and Intersection Points",
+        qCount: 9,
+        pctHard: 22,
+      },
+    ],
+  },
+  {
     chapter: "Logarithms",
     qCount: 27,
-    pctTotal: 1.3,
+    pctTotal: 1.2,
     pctHard: 19,
     focus:
       "Identities + Change of Base (16), Log Equations (11).",
@@ -786,62 +955,18 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     ],
   },
   {
-    chapter: "Circles",
-    qCount: 27,
-    pctTotal: 1.3,
-    pctHard: 41,
-    focus:
-      "Circle Equation — centre/radius (11) is the soft half; Concyclicity (9) runs 78% HARD.",
-    subtopics: [
-      {
-        subtopic: "Circle Equation — Centre, Radius, Diameter, and Properties",
-        qCount: 11,
-        pctHard: 0,
-      },
-      {
-        subtopic: "Circles Through Given Points and Concyclicity",
-        qCount: 9,
-        pctHard: 78,
-      },
-      {
-        subtopic: "Inscribed Geometry, Tangents, and Segments",
-        qCount: 7,
-        pctHard: 57,
-      },
-    ],
-  },
-  {
-    chapter: "Applications of Integration",
-    qCount: 25,
-    pctTotal: 1.2,
-    pctHard: 20,
-    focus:
-      "Area Bounded by Curve (16).",
-    subtopics: [
-      {
-        subtopic: "Area Bounded by a Curve, Lines, and Axes",
-        qCount: 16,
-        pctHard: 19,
-      },
-      {
-        subtopic: "Area Between Two Curves and Intersection Points",
-        qCount: 9,
-        pctHard: 22,
-      },
-    ],
-  },
-  {
     chapter: "Height & Distance",
-    qCount: 24,
+    qCount: 26,
     pctTotal: 1.1,
-    pctHard: 71,
+    pctHard: 69,
     focus:
-      "Angles of Elevation (16). Hardest chapter in the bank — 71% HARD, and no soft subtopic to retreat to.",
+      "Angles of Elevation (18). Hardest chapter in the bank — 71% HARD, " +
+      "and no soft subtopic to retreat to.",
     subtopics: [
       {
         subtopic: "Heights and Distances from Angles of Elevation",
-        qCount: 16,
-        pctHard: 69,
+        qCount: 18,
+        pctHard: 67,
       },
       {
         subtopic: "Shadows, Leaning Structures, and Special Geometry",
@@ -852,35 +977,40 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Binary Numbers",
-    qCount: 13,
+    qCount: 14,
     pctTotal: 0.6,
-    pctHard: 31,
-    focus: "Tiny chapter — 0.7 q/paper average.",
+    pctHard: 29,
+    focus:
+      "Tiny chapter — 0.7 q/paper average.",
     subtopics: [
       {
-        subtopic:
-          "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+        subtopic: "Binary Arithmetic — Addition, Division, and Algebraic Identities",
         qCount: 7,
         pctHard: 43,
       },
       {
         subtopic: "Binary Representation and Number Theory",
-        qCount: 3,
-        pctHard: 33,
+        qCount: 4,
+        pctHard: 25,
       },
-      { subtopic: "Binary to Decimal Conversion", qCount: 3, pctHard: 0 },
+      {
+        subtopic: "Binary to Decimal Conversion",
+        qCount: 3,
+        pctHard: 0,
+      },
     ],
   },
   {
     chapter: "Linear Inequalities",
-    qCount: 5,
-    pctTotal: 0.2,
+    qCount: 6,
+    pctTotal: 0.3,
     pctHard: 0,
-    focus: "Near-irrelevant — 0.3 q/paper, zero HARD across the bank.",
+    focus:
+      "Near-irrelevant — 0.3 q/paper, zero HARD across the bank.",
     subtopics: [
       {
         subtopic: "Linear Systems and Feasible Regions",
-        qCount: 5,
+        qCount: 6,
         pctHard: 0,
       },
     ],

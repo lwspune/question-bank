@@ -1,11 +1,11 @@
 /**
  * Content for /guide/nda-history/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 260-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 269-q
  * PUBLIC NDA History bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA PART A History is ~14 q per single paper (range
- * 10–19 across 18 papers in the bank; avg 14.4). NDA-1 + NDA-2 each year
+ * 9–19 across 19 papers in the bank; avg 14.2). NDA-1 + NDA-2 each year
  * except 2020 (NDA-2 COVID-cancelled — single paper) and 2026 NDA-2 (not
  * yet held — also single paper). Year totals below = sum across both
  * papers of the year (so 2020 + 2026 are roughly half a normal year).
@@ -44,10 +44,10 @@ export type DriftRow = {
 };
 
 export const DRIFT_ROWS: DriftRow[] = [
-  { chapter: "Modern India", counts: { 2017: 21, 2018: 11, 2019: 17, 2020: 13, 2021: 14, 2022: 15, 2023: 8, 2024: 11, 2025: 10, 2026: 2 } },
+  { chapter: "Modern India", counts: { 2017: 21, 2018: 11, 2019: 17, 2020: 13, 2021: 14, 2022: 15, 2023: 8, 2024: 11, 2025: 10, 2026: 5 } },
   { chapter: "Medieval India", counts: { 2017: 7, 2018: 10, 2019: 5, 2020: 0, 2021: 6, 2022: 4, 2023: 7, 2024: 7, 2025: 6, 2026: 1 } },
-  { chapter: "Ancient India", counts: { 2017: 3, 2018: 1, 2019: 2, 2020: 0, 2021: 2, 2022: 9, 2023: 10, 2024: 8, 2025: 6, 2026: 3 } },
-  { chapter: "World History", counts: { 2017: 1, 2018: 5, 2019: 13, 2020: 1, 2021: 4, 2022: 2, 2023: 6, 2024: 2, 2025: 3, 2026: 4 } },
+  { chapter: "Ancient India", counts: { 2017: 3, 2018: 1, 2019: 2, 2020: 0, 2021: 2, 2022: 9, 2023: 10, 2024: 8, 2025: 6, 2026: 7 } },
+  { chapter: "World History", counts: { 2017: 1, 2018: 5, 2019: 13, 2020: 1, 2021: 4, 2022: 2, 2023: 6, 2024: 2, 2025: 3, 2026: 6 } },
 ];
 
 export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
@@ -63,16 +63,16 @@ export type HardByYear = {
 };
 
 export const HARD_BY_YEAR: HardByYear[] = [
-  { year: 2017, totalQ: 32, hardQ: 6, pctHard: 19 },
+  { year: 2017, totalQ: 32, hardQ:  6, pctHard: 19 },
   { year: 2018, totalQ: 27, hardQ: 10, pctHard: 37 },
   { year: 2019, totalQ: 37, hardQ: 13, pctHard: 35 },
-  { year: 2020, totalQ: 14, hardQ: 4, pctHard: 29 },
+  { year: 2020, totalQ: 14, hardQ:  4, pctHard: 29 },
   { year: 2021, totalQ: 26, hardQ: 11, pctHard: 42 },
   { year: 2022, totalQ: 30, hardQ: 10, pctHard: 33 },
-  { year: 2023, totalQ: 31, hardQ: 8, pctHard: 26 },
-  { year: 2024, totalQ: 28, hardQ: 8, pctHard: 29 },
-  { year: 2025, totalQ: 25, hardQ: 5, pctHard: 20 },
-  { year: 2026, totalQ: 10, hardQ: 1, pctHard: 10 },
+  { year: 2023, totalQ: 31, hardQ:  8, pctHard: 26 },
+  { year: 2024, totalQ: 28, hardQ:  8, pctHard: 29 },
+  { year: 2025, totalQ: 25, hardQ:  5, pctHard: 20 },
+  { year: 2026, totalQ: 19, hardQ:  4, pctHard: 21 },
 ];
 
 export type DriftCallout = {

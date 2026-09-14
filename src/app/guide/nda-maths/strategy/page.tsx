@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "NDA Mathematics Strategy — Score 100+ in 50 hours",
   description:
-    "Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,160 past-year questions across 18 papers.",
+    "Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,280 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-maths/strategy" },
 };
 
@@ -85,7 +85,7 @@ export default async function NdaMathsStrategy() {
         type="Article"
         path="/guide/nda-maths/strategy"
         headline="NDA Mathematics Strategy — Score 100+ in 50 hours"
-        description="Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,160 past-year questions across 18 papers."
+        description="Evidence-led NDA Maths preparation: which chapters to drill, which to skip, and how to attempt the paper. Backed by 2,280 past-year questions across 19 papers."
       />
       <GuideHero
         eyebrow="Strategy"

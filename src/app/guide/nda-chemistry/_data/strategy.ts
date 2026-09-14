@@ -9,7 +9,7 @@
  *     4-q subtopic) — not enough to justify a whole strategy axis; called
  *     out in the relevant playbook (industrial-and-applied-chemistry).
  *
- * Strand split (262 q):
+ * Strand split (277 q):
  *   - Recall    (144 q · 7 chapters): memorise facts. Highest density of
  *     EASY questions; the marks-per-hour leader.
  *   - Rule      (109 q · 4 chapters): apply specific rules (pH classification,
@@ -53,7 +53,7 @@ export type StrategyStrand = {
 };
 
 /** Headline numbers shown in the strategy hero. PART B Chemistry is ~15 q
- *  per single paper on the GAT (range 12–18 across 18 papers in the bank;
+ *  per single paper on the GAT (range 12–18 across 19 papers in the bank;
  *  avg 14.6). Max marks per paper ≈ 60 (15 × 4), penalty −1.33 per wrong. */
 export const STRATEGY_HEADLINE = {
   paperQ: 15,
@@ -69,8 +69,8 @@ export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
     "Recall — Carbon · Matter · Industrial · Metals · Hydrogen · Everyday Life · Practical (144 q · 55%)",
-  qCount: 144,
-  pctOfBank: 55,
+  qCount: 150,
+  pctOfBank: 54,
   pitch:
     "Pure fact recall — chemical names, formulas, uses, allotropes, reactivity orderings, lab methods. 144 q at an average of 4% HARD. The highest marks-per-hour strand in the bank, and the strand most students under-invest in (it feels like 'memorisation, not chemistry'). 4 of these 7 chapters carry ZERO HARD across 10 years. Drill the /common-compounds reference page side-by-side with this strand — it covers the highest-leverage memorisation surface.",
   approach: [
@@ -81,7 +81,7 @@ export const RECALL_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Carbon and Its Compounds",
-      qCount: 45,
+      qCount: 46,
       pctHard: 4,
       mustDrill: [
         "Allotropes of Carbon",
@@ -98,7 +98,7 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Matter and Its States",
-      qCount: 30,
+      qCount: 32,
       pctHard: 3,
       mustDrill: [
         "Separation Techniques",
@@ -130,7 +130,7 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Metals and Non-Metals",
-      qCount: 17,
+      qCount: 18,
       pctHard: 0,
       mustDrill: [
         "Reactivity Series and Reactions with Water",
@@ -145,8 +145,8 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Hydrogen and Water",
-      qCount: 11,
-      pctHard: 9,
+      qCount: 13,
+      pctHard: 8,
       mustDrill: [
         "Hardness and Purity of Water",
         "Properties of Hydrogen",
@@ -187,13 +187,13 @@ export const RULE_STRAND: StrategyStrand = {
   id: "rule",
   label:
     "Rule — Atomic Structure · Acids/Bases/Salts · Reactions · Bonding (109 q · 42%)",
-  qCount: 109,
+  qCount: 117,
   pctOfBank: 42,
   pitch:
     "Apply specific rules — pH classification (acidic < 7), oxidation-state assignment (sum to zero), periodic-trend prediction (atomic radius decreases across, increases down), redox identification (LEO RGO — Loss of Electrons = Oxidation, Reduction = Gain of e⁻). Four chapters, 109 q at 7% average HARD. The skill is rule-application, not memorisation: the answer follows from the framework, not from a remembered fact.",
   approach: [
     "Memorise the 4 master rules first: (1) periodic trends — radius ↓ across, ↑ down; IE ↑ across, ↓ down; EN ↑ across, ↓ down; metallic character opposite. (2) Oxidation-state assignment sequence: H=+1, O=−2, group I=+1, group II=+2, sum to molecule charge. (3) Acid-base type: Arrhenius (water H⁺/OH⁻), Brønsted (H⁺ donor/acceptor), Lewis (e⁻ pair acceptor/donor). (4) Reaction type: A+B→AB combination; AB→A+B decomposition; A+BC→AC+B displacement; AB+CD→AD+CB double-displacement.",
-    "Chemical Reactions (30 q · 10% HARD) is the hottest Rule chapter. Redox subtopic (10 q at 20% HARD) is the marquee — learn LEO RGO + assign oxidation states + identify the species being oxidised (loses e⁻, ox-state ↑) and reduced. Practice with the bank's 5+ pair-property questions.",
+    "Chemical Reactions (32 q · 9% HARD) is the hottest Rule chapter. Redox subtopic (10 q at 20% HARD) is the marquee — learn LEO RGO + assign oxidation states + identify the species being oxidised (loses e⁻, ox-state ↑) and reduced. Practice with the bank's 5+ pair-property questions.",
     "Atomic Structure (35 q) gets confused because it mixes pure-recall pieces (atomic models history) with rule-application (periodic trends, electron config). When you drill, separate the subtopics — Periodic Trends + Atomic Number questions reward the rule lens; Atomic Models is mostly recall.",
   ],
   chapters: [
@@ -215,8 +215,8 @@ export const RULE_STRAND: StrategyStrand = {
     },
     {
       chapter: "Acids, Bases and Salts",
-      qCount: 33,
-      pctHard: 6,
+      qCount: 36,
+      pctHard: 8,
       mustDrill: [
         "pH Scale and Common Substances",
         "Common Acids: Names, Formulas and Uses",
@@ -231,8 +231,8 @@ export const RULE_STRAND: StrategyStrand = {
     },
     {
       chapter: "Chemical Reactions",
-      qCount: 30,
-      pctHard: 10,
+      qCount: 32,
+      pctHard: 9,
       mustDrill: [
         "Redox: Oxidation, Reduction and Reducing Agents",
         "Types of Reactions: Combination, Decomposition, Displacement",
@@ -248,7 +248,7 @@ export const RULE_STRAND: StrategyStrand = {
     },
     {
       chapter: "Chemical Bonding",
-      qCount: 11,
+      qCount: 14,
       pctHard: 0,
       mustDrill: [
         "Ionic and Covalent Bonding",
@@ -266,8 +266,8 @@ export const RULE_STRAND: StrategyStrand = {
 export const CALCULATE_STRAND: StrategyStrand = {
   id: "calculate",
   label: "Calculate — Mole Concept and Stoichiometry (9 q · 3%)",
-  qCount: 9,
-  pctOfBank: 3,
+  qCount: 10,
+  pctOfBank: 4,
   pitch:
     "The smallest strand, but a distinct skill. 9 q across 10 years, 1 HARD — but the q-yield is reliable (mole/Avogadro questions appear most years, especially NDA-2). Numeric work: mol = mass / molar mass; mol = particles / 6.022×10²³; equivalent weight = molar mass / valency factor; balanced equations → stoichiometric ratios. Don't skip the strand because it's small — it's 1–2 marks per paper, and the formulas are reusable from your Maths prep.",
   approach: [
@@ -278,8 +278,8 @@ export const CALCULATE_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Mole Concept and Stoichiometry",
-      qCount: 9,
-      pctHard: 11,
+      qCount: 10,
+      pctHard: 10,
       mustDrill: [
         "Mole Concept, Avogadro's Law and Molar Calculations",
         "Stoichiometry and Laws of Chemical Combination",

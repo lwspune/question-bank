@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Geography — Strategy Guide",
   description:
-    "How NDA PART A Geography actually works. A 345-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses.",
+    "How NDA PART A Geography actually works. A 367-question analysis of every paper from 2017 to 2026 — Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-geography" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaGeographyLanding() {
         type="CollectionPage"
         path="/guide/nda-geography"
         headline="NDA Geography — Strategy Guide"
-        description="A 345-question analysis of the Geography half of GAT PART A, 2017–2026. Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses."
+        description="A 367-question analysis of the Geography half of GAT PART A, 2017–2026. Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA Geography Guide"

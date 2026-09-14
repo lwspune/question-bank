@@ -17,7 +17,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Physics Trends — How the paper shifted (2017–2026)",
   description:
-    "Year-by-year chapter drift in NDA PART B Physics across 18 papers. The paper HARDENED 22× per question — HARD share went from 2% (2021) to 44% (2026 NDA-1). E&M tripled in 2022. Laws of Motion grew 3× in 2023–24.",
+    "Year-by-year chapter drift in NDA PART B Physics across 19 papers. The paper HARDENED ~19× per question — HARD share went from 2% (2021) to 37% (2026). E&M tripled in 2022. Laws of Motion grew 3× in 2023–24.",
   alternates: { canonical: "/guide/nda-physics/trends" },
 };
 
@@ -58,7 +58,7 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-physics/trends"
         headline="NDA Physics Trends — How the paper shifted (2017–2026)"
-        description="Year-by-year chapter drift in NDA PART B Physics across 18 papers. The paper hardened 22× per question. E&M tripled in 2022. Laws of Motion grew 3× in 2023–24."
+        description="Year-by-year chapter drift in NDA PART B Physics across 19 papers. The paper hardened ~19× per question. E&M tripled in 2022. Laws of Motion grew 3× in 2023–24."
       />
       <GuideHero
         eyebrow="Trends"
@@ -192,7 +192,7 @@ export default async function Trends() {
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Counts per year (NDA-1 + NDA-2 combined; 2020 NDA-2 COVID-cancelled,
-          2026 NDA-2 not yet held — so those columns hold ~half a normal
+          2026 is now complete (NDA-2 written 2026-09-14) — so only 2020 holds ~half a normal
           year). Cells are tinted by row magnitude.
         </p>
         <div className="mt-4">
@@ -218,7 +218,7 @@ export default async function Trends() {
             subjectId={taxonomy.subjectId}
             pyqYears={[2026]}
           >
-            Drill 2026 (25 q · 44% HARD)
+            Drill 2026 (49 q · 37% HARD)
           </BrowseLink>
           <BrowseLink
             examId={taxonomy.examId}

@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Chemistry — Strategy Guide",
   description:
-    "How NDA PART B Chemistry actually works. A 262-question analysis of every paper from 2017 to 2026 — Recall vs Rule vs Calculate strands, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses.",
+    "How NDA PART B Chemistry actually works. A 277-question analysis of every paper from 2017 to 2026 — Recall vs Rule vs Calculate strands, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses.",
   alternates: { canonical: "/guide/nda-chemistry" },
 };
 
@@ -53,7 +53,7 @@ export default async function NdaChemistryLanding() {
         type="CollectionPage"
         path="/guide/nda-chemistry"
         headline="NDA Chemistry — Strategy Guide"
-        description="A 262-question analysis of the Chemistry half of GAT PART B, 2017–2026. Recall vs Rule vs Calculate strands, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses."
+        description="A 277-question analysis of the Chemistry half of GAT PART B, 2017–2026. Recall vs Rule vs Calculate strands, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses."
       />
       <GuideHero
         eyebrow="NDA Chemistry Guide"

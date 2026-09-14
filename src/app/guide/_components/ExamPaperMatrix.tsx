@@ -10,7 +10,7 @@ type Props = {
 };
 
 /**
- * Chapter × exam-paper matrix. One column per individual sitting (18 papers),
+ * Chapter × exam-paper matrix. One column per individual sitting (19 papers),
  * grouped under a year header with an Apr/Sep ("1"/"2" = NDA-1/NDA-2) sub-row.
  * Cells are tinted by magnitude *within the row* so the eye reads each
  * chapter's per-paper rhythm without a chart. A footer row shows each column

@@ -22,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "NDA Mathematics Trends — How the exam shifted (2017–2026)",
   description:
-    "Year-by-year principle drift in NDA Maths across 18 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first.",
+    "Year-by-year principle drift in NDA Maths across 19 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first.",
   alternates: { canonical: "/guide/nda-maths/trends" },
 };
 
@@ -38,7 +38,7 @@ export default async function Trends() {
   const stats = [
     { value: "10", label: "years analysed" },
     { value: "18", label: "papers" },
-    { value: "2,160", label: "questions tagged" },
+    { value: "2,280", label: "questions tagged" },
     { value: "15", label: "principles tracked" },
   ];
 
@@ -56,7 +56,7 @@ export default async function Trends() {
         type="Article"
         path="/guide/nda-maths/trends"
         headline="NDA Mathematics Trends — How the exam shifted (2017–2026)"
-        description="Year-by-year principle drift in NDA Maths across 18 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first."
+        description="Year-by-year principle drift in NDA Maths across 19 papers. Modulus tripled in 2023 and stayed elevated. Vieta plunged 2025–26. Cube roots of unity spiked 2023–24. Practice recent papers first."
       />
       <GuideHero
         eyebrow="Trends"

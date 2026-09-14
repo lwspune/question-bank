@@ -1,18 +1,18 @@
 /**
  * Content for /guide/nda-physics/trends.
  *
- * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 449-q
+ * Per-chapter year-on-year volume, 2017–2026. SQL-derived against the 473-q
  * PUBLIC NDA Physics bank as of OVERVIEW.asOf.
  *
  * Paper-set sizes: NDA PART B Physics is ~25 q per paper (sometimes 20–28).
  * NDA-1 + NDA-2 each year except 2020 (NDA-2 COVID-cancelled — half-year) and
- * 2026 NDA-2 (not yet held — also half-year). Affects the year-vs-year
+ * 2026 is complete (NDA-2 written 2026-09-14). Affects the year-vs-year
  * comparison: 2020 and 2026 totals are ~half of other years; reason about
  * SHARES, not absolute counts in those years.
  *
  * The notable shifts (in the bank window):
  *   1. The paper HARDENED dramatically. HARD share went from 2% (2021)
- *      → 44% (2026 NDA-1). The 2026 paper has more HARD questions in
+ *      → 37% (2026, both papers). The 2026 papers have more HARD questions in
  *      25 questions than the 2021 paper had in 52.
  *   2. E&M tripled in 2022 (5→16 q) and held. The single biggest format shift.
  *   3. Laws of Motion grew 3× in 2023–24 (typical 3–5 → 7, 10).
@@ -25,26 +25,26 @@ export type DriftRow = {
 };
 
 export const DRIFT_ROWS: DriftRow[] = [
-  { chapter: "Light and Optics",                          counts: { 2017: 12, 2018: 10, 2019: 8,  2020: 9,  2021: 18, 2022: 7,  2023: 8,  2024: 9,  2025: 10, 2026: 6  } },
-  { chapter: "Electricity and Magnetism",                 counts: { 2017: 9,  2018: 10, 2019: 9,  2020: 8,  2021: 5,  2022: 16, 2023: 11, 2024: 12, 2025: 11, 2026: 2  } },
-  { chapter: "Laws of Motion and Forces",                 counts: { 2017: 0,  2018: 5,  2019: 5,  2020: 0,  2021: 3,  2022: 3,  2023: 7,  2024: 10, 2025: 4,  2026: 4  } },
-  { chapter: "Heat and Thermodynamics",                   counts: { 2017: 7,  2018: 7,  2019: 7,  2020: 0,  2021: 2,  2022: 4,  2023: 1,  2024: 2,  2025: 5,  2026: 4  } },
-  { chapter: "Sound",                                     counts: { 2017: 3,  2018: 4,  2019: 4,  2020: 2,  2021: 5,  2022: 8,  2023: 3,  2024: 1,  2025: 3,  2026: 1  } },
-  { chapter: "Modern Physics",                            counts: { 2017: 6,  2018: 1,  2019: 6,  2020: 0,  2021: 6,  2022: 0,  2023: 2,  2024: 3,  2025: 1,  2026: 0  } },
-  { chapter: "Kinematics and Motion",                     counts: { 2017: 2,  2018: 3,  2019: 4,  2020: 0,  2021: 2,  2022: 3,  2023: 4,  2024: 3,  2025: 2,  2026: 1  } },
-  { chapter: "Work, Energy and Power",                    counts: { 2017: 2,  2018: 0,  2019: 2,  2020: 0,  2021: 4,  2022: 3,  2023: 2,  2024: 3,  2025: 4,  2026: 3  } },
-  { chapter: "Fluid Mechanics and Properties of Matter",  counts: { 2017: 1,  2018: 3,  2019: 1,  2020: 1,  2021: 2,  2022: 4,  2023: 4,  2024: 2,  2025: 4,  2026: 1  } },
-  { chapter: "Gravitation",                               counts: { 2017: 3,  2018: 2,  2019: 2,  2020: 1,  2021: 0,  2022: 0,  2023: 2,  2024: 4,  2025: 1,  2026: 2  } },
-  { chapter: "Units, Measurement and Dimensions",         counts: { 2017: 3,  2018: 3,  2019: 2,  2020: 1,  2021: 2,  2022: 1,  2023: 0,  2024: 0,  2025: 2,  2026: 0  } },
-  { chapter: "Oscillations and Waves",                    counts: { 2017: 2,  2018: 3,  2019: 1,  2020: 0,  2021: 1,  2022: 2,  2023: 1,  2024: 1,  2025: 1,  2026: 1  } },
-  { chapter: "Astronomy and Space",                       counts: { 2017: 0,  2018: 0,  2019: 2,  2020: 0,  2021: 1,  2022: 0,  2023: 0,  2024: 0,  2025: 1,  2026: 0  } },
-  { chapter: "Energy Sources",                            counts: { 2017: 0,  2018: 0,  2019: 0,  2020: 0,  2021: 1,  2022: 0,  2023: 0,  2024: 0,  2025: 1,  2026: 0  } },
+  { chapter: "Light and Optics",                          counts: { 2017: 12, 2018: 10, 2019: 8, 2020: 9, 2021: 18, 2022: 7, 2023: 8, 2024: 9, 2025: 10, 2026: 11 } },
+  { chapter: "Electricity and Magnetism",                 counts: { 2017: 9, 2018: 10, 2019: 9, 2020: 8, 2021: 5, 2022: 16, 2023: 11, 2024: 12, 2025: 11, 2026: 6 } },
+  { chapter: "Laws of Motion and Forces",                 counts: { 2017: 0, 2018: 5, 2019: 5, 2020: 0, 2021: 3, 2022: 3, 2023: 7, 2024: 10, 2025: 4, 2026: 7 } },
+  { chapter: "Heat and Thermodynamics",                   counts: { 2017: 7, 2018: 7, 2019: 7, 2020: 0, 2021: 2, 2022: 4, 2023: 1, 2024: 2, 2025: 5, 2026: 5 } },
+  { chapter: "Sound",                                     counts: { 2017: 3, 2018: 4, 2019: 4, 2020: 2, 2021: 5, 2022: 8, 2023: 3, 2024: 1, 2025: 3, 2026: 2 } },
+  { chapter: "Modern Physics",                            counts: { 2017: 6, 2018: 1, 2019: 6, 2020: 0, 2021: 6, 2022: 0, 2023: 2, 2024: 3, 2025: 1, 2026: 0 } },
+  { chapter: "Kinematics and Motion",                     counts: { 2017: 2, 2018: 3, 2019: 4, 2020: 0, 2021: 2, 2022: 3, 2023: 4, 2024: 3, 2025: 2, 2026: 4 } },
+  { chapter: "Work, Energy and Power",                    counts: { 2017: 2, 2018: 0, 2019: 2, 2020: 0, 2021: 4, 2022: 3, 2023: 2, 2024: 3, 2025: 4, 2026: 6 } },
+  { chapter: "Fluid Mechanics and Properties of Matter",  counts: { 2017: 1, 2018: 3, 2019: 1, 2020: 1, 2021: 2, 2022: 4, 2023: 4, 2024: 2, 2025: 4, 2026: 2 } },
+  { chapter: "Gravitation",                               counts: { 2017: 3, 2018: 2, 2019: 2, 2020: 1, 2021: 0, 2022: 0, 2023: 2, 2024: 4, 2025: 1, 2026: 4 } },
+  { chapter: "Units, Measurement and Dimensions",         counts: { 2017: 3, 2018: 3, 2019: 2, 2020: 1, 2021: 2, 2022: 1, 2023: 0, 2024: 0, 2025: 2, 2026: 0 } },
+  { chapter: "Oscillations and Waves",                    counts: { 2017: 2, 2018: 3, 2019: 1, 2020: 0, 2021: 1, 2022: 2, 2023: 1, 2024: 1, 2025: 1, 2026: 2 } },
+  { chapter: "Astronomy and Space",                       counts: { 2017: 0, 2018: 0, 2019: 2, 2020: 0, 2021: 1, 2022: 0, 2023: 0, 2024: 0, 2025: 1, 2026: 0 } },
+  { chapter: "Energy Sources",                            counts: { 2017: 0, 2018: 0, 2019: 0, 2020: 0, 2021: 1, 2022: 0, 2023: 0, 2024: 0, 2025: 1, 2026: 0 } },
 ];
 
 export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
 
 /** SQL-derived %HARD by year. The headline drift in the bank — paper
- *  hardened 22× per question over the 10-year window. */
+ *  hardened ~19× per question over the 10-year window. */
 export type HardByYear = {
   year: number;
   totalQ: number;
@@ -53,16 +53,16 @@ export type HardByYear = {
 };
 
 export const HARD_BY_YEAR: HardByYear[] = [
-  { year: 2017, totalQ: 50, hardQ: 5,  pctHard: 10 },
-  { year: 2018, totalQ: 51, hardQ: 9,  pctHard: 18 },
-  { year: 2019, totalQ: 53, hardQ: 5,  pctHard: 9  },
-  { year: 2020, totalQ: 22, hardQ: 2,  pctHard: 9  },
-  { year: 2021, totalQ: 52, hardQ: 1,  pctHard: 2  },
-  { year: 2022, totalQ: 51, hardQ: 4,  pctHard: 8  },
+  { year: 2017, totalQ: 50, hardQ:  5, pctHard: 10 },
+  { year: 2018, totalQ: 51, hardQ:  9, pctHard: 18 },
+  { year: 2019, totalQ: 53, hardQ:  5, pctHard:  9 },
+  { year: 2020, totalQ: 22, hardQ:  2, pctHard:  9 },
+  { year: 2021, totalQ: 52, hardQ:  1, pctHard:  2 },
+  { year: 2022, totalQ: 51, hardQ:  4, pctHard:  8 },
   { year: 2023, totalQ: 45, hardQ: 10, pctHard: 22 },
   { year: 2024, totalQ: 50, hardQ: 14, pctHard: 28 },
-  { year: 2025, totalQ: 50, hardQ: 2,  pctHard: 4  },
-  { year: 2026, totalQ: 25, hardQ: 11, pctHard: 44 },
+  { year: 2025, totalQ: 50, hardQ:  2, pctHard:  4 },
+  { year: 2026, totalQ: 49, hardQ: 18, pctHard: 37 },
 ];
 
 export type DriftCallout = {
@@ -82,9 +82,9 @@ export type DriftCallout = {
 export const DRIFT_CALLOUTS: DriftCallout[] = [
   {
     icon: "spike",
-    title: "The paper hardened 22× per question — 2% HARD (2021) to 44% (2026)",
+    title: "The paper hardened ~19× per question — 2% HARD (2021) to 37% (2026)",
     description:
-      "The single most important shift in NDA Physics. 2021 was the easiest paper-year in the window (1 HARD across 52 q = 2%). 2024 jumped to 28%. 2026 NDA-1 alone has 11 HARD in 25 q = 44%. Per question, the 2026 paper is ~22× more difficulty-dense than 2021. Translation: if you've practiced 2017–2022 papers, the absolute number of HARD questions you've seen is dwarfed by what 2024–2026 throws at you in a single paper. Drill recent papers ruthlessly.",
+      "The single most important shift in NDA Physics. 2021 was the easiest paper-year in the window (1 HARD across 52 q = 2%). 2024 jumped to 28%. The completed 2026 pair carries 18 HARD in 49 q = 37%. Per question, 2026 is ~19× more difficulty-dense than 2021. (An earlier version of this page read 44% and ~22×, measured on NDA-1's 25 questions alone; the September paper was the gentler half, which is exactly why a half-year reading should never be quoted as a year.) Translation: if you've practiced 2017–2022 papers, the absolute number of HARD questions you've seen is dwarfed by what 2024–2026 throws at you in a single paper. Drill recent papers ruthlessly.",
     drill: {
       chapter: "Electricity and Magnetism",
       pyqYears: [2024, 2025, 2026],

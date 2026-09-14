@@ -28,7 +28,7 @@ const LIVE_SLUGS = new Set([
 export const metadata: Metadata = {
   title: "NDA Mathematics — Strategy Guide",
   description:
-    "How NDA Mathematics actually works. A 2,160-question analysis of the 2017–2026 papers — principles, strategy, traps, and how to score 100+.",
+    "How NDA Mathematics actually works. A 2,280-question analysis of the 2017–2026 papers — principles, strategy, traps, and how to score 100+.",
   alternates: { canonical: "/guide/nda-maths" },
 };
 
@@ -75,12 +75,12 @@ export default function NdaMathsLanding() {
         type="CollectionPage"
         path="/guide/nda-maths"
         headline="NDA Mathematics — Strategy Guide"
-        description="A 2,160-question analysis of every NDA Maths paper from 2017 to 2026 — principles, strategy, traps, and how to score 100+."
+        description="A 2,280-question analysis of every NDA Maths paper from 2017 to 2026 — principles, strategy, traps, and how to score 100+."
       />
       <GuideHero
         eyebrow="NDA Mathematics Guide"
         title="How NDA Mathematics actually works"
-        subtitle="A 2,160-question analysis of every paper from 2017 to 2026. We mapped the principles, the compound tricks, the year-on-year drift, and the distractor traps — so you can study what the exam actually tests, not what a textbook tells you to."
+        subtitle="A 2,280-question analysis of every paper from 2017 to 2026. We mapped the principles, the compound tricks, the year-on-year drift, and the distractor traps — so you can study what the exam actually tests, not what a textbook tells you to."
       >
         <StatBlock stats={stats} />
       </GuideHero>

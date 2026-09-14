@@ -33,12 +33,12 @@ const BUCKET_INFO = {
   foundation: {
     label: "Foundation Recall — Ancient India + Medieval India",
     blurb:
-      "Named-fact recall heavy (75% + 64% pure recall, only 5–6% date-anchored). Ruler↔dynasty, scholar↔text, traveller↔era, reformer↔movement pairs. 2 chapters, 97 q at 28% HARD avg — Medieval is genuinely DIFFUSE (3-3-3-3-2-1 HARD spread), drill all. The /timeline-and-pairs page does most of the work.",
+      "Named-fact recall heavy (75% + 64% pure recall, only 5–6% date-anchored). Ruler↔dynasty, scholar↔text, traveller↔era, reformer↔movement pairs. 2 chapters, 101 q at 28% HARD avg — Medieval is genuinely DIFFUSE (3-3-3-3-2-1 HARD spread), drill all. The /timeline-and-pairs page does most of the work.",
   },
   quickwin: {
     label: "Quick-Win — World History",
     blurb:
-      "Lightest %HARD (20%) — date-anchored quick-win pocket. 39% of the chapter q is date-anchored (highest in History). 1 chapter, 41 q. Drill the chronology cluster cold — once you have ~15 absolute dates, most questions answer themselves. Enlightenment + Political Revolutions is the densest %HARD subtopic.",
+      "Lightest %HARD (20%) — date-anchored quick-win pocket. 39% of the chapter q is date-anchored (highest in History). 1 chapter, 43 q. Drill the chronology cluster cold — once you have ~15 absolute dates, most questions answer themselves. Enlightenment + Political Revolutions is the densest %HARD subtopic.",
   },
 } as const;
 
