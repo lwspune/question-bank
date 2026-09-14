@@ -93,6 +93,16 @@ export type Booklet = {
   pages: PageRef[];
   /** Printed pages absent from this scan, with what they cost. */
   missing?: { printed: number[]; note: string };
+  /**
+   * An EARLIER scan of this same booklet that some committed bands were read
+   * from, once a better one supersedes it.
+   *
+   * Recorded rather than deleted because a band file's provenance is a claim
+   * about which photograph an agent actually read, and silently repointing `pdf`
+   * would make every earlier band report ("printed pages 2, 3, 6, 7") describe a
+   * file it never opened.
+   */
+  priorScan?: { pdf: string; note: string };
 };
 
 export type Paper = {
@@ -205,45 +215,56 @@ const SET_A: Booklet = {
  */
 const SET_D: Booklet = {
   series: "D",
-  pdf: "C:/Users/vilas/Downloads/NDA 2 2026 GAT Set D.pdf",
+  pdf: "C:/Users/vilas/Downloads/NDA-NAII-2026-GAT-SET-D-Question-Paper.pdf",
+  // ONE printed page per image, landscape, ENGLISH ONLY -- a curated scan of
+  // exactly the 26 English pages and nothing else, so `printed` is simply the
+  // English page list in order and no Hindi verso is ever rendered.
   pages: [
-    // Part A -- pages 4 and 5 are MISSING from this scan; see `missing`.
-    { idx: 1, printed: 2 },
-    { idx: 2, printed: 3 },
-    { idx: 3, printed: 6 },
-    { idx: 4, printed: 7 },
-    // Part B -- the odd (English) pages only. Even pages are the Hindi versos.
+    // Part A -- six consecutive English pages.
+    { idx: 0, printed: 2 },
+    { idx: 1, printed: 3 },
+    { idx: 2, printed: 4 },
+    { idx: 3, printed: 5 },
+    { idx: 4, printed: 6 },
+    { idx: 5, printed: 7 },
+    // Part B -- the odd (English) pages.
     { idx: 6, printed: 9 },
-    { idx: 8, printed: 11 },
-    { idx: 10, printed: 13 },
-    { idx: 12, printed: 15 },
-    { idx: 14, printed: 17 },
-    { idx: 16, printed: 19 },
-    { idx: 18, printed: 21 },
-    { idx: 20, printed: 23 },
-    { idx: 22, printed: 25 },
-    { idx: 24, printed: 27 },
-    { idx: 26, printed: 29 },
-    { idx: 28, printed: 31 },
-    { idx: 30, printed: 33 },
-    { idx: 31, printed: 35 },
-    { idx: 32, printed: 37 },
-    { idx: 34, printed: 39 },
-    { idx: 36, printed: 41 },
-    { idx: 38, printed: 43 },
-    { idx: 40, printed: 45 },
-    { idx: 42, printed: 47 },
+    { idx: 7, printed: 11 },
+    { idx: 8, printed: 13 },
+    { idx: 9, printed: 15 },
+    { idx: 10, printed: 17 },
+    { idx: 11, printed: 19 },
+    { idx: 12, printed: 21 },
+    { idx: 13, printed: 23 },
+    { idx: 14, printed: 25 },
+    { idx: 15, printed: 27 },
+    { idx: 16, printed: 29 },
+    { idx: 17, printed: 31 },
+    { idx: 18, printed: 33 },
+    { idx: 19, printed: 35 },
+    { idx: 20, printed: 37 },
+    { idx: 21, printed: 39 },
+    { idx: 22, printed: 41 },
+    { idx: 23, printed: 43 },
+    { idx: 24, printed: 45 },
+    { idx: 25, printed: 47 },
   ],
-  missing: {
-    printed: [4, 5, 34, 36],
+  priorScan: {
+    pdf: "C:/Users/vilas/Downloads/NDA 2 2026 GAT Set D.pdf",
     note:
-      "34 and 36 are the HINDI versos of 35 and 37, which are present, so they cost " +
-      "nothing. 4 and 5 are Part A and DO cost content: Part A is English-only, so " +
-      "there is no Hindi facing page to recover them from. Whichever of Set D's own " +
-      "Q1-50 sit on those two pages therefore have no source at all -- they cannot be " +
-      "cross-checked, and they will be a hole in any Set D solution document. Their " +
-      "NUMBERS are recoverable (the range between the last question on printed 3 and " +
-      "the first on printed 6); their identities are not.",
+      "Bands d1-d6 were transcribed from an EARLIER, INCOMPLETE scan of this same " +
+      "series -- 45 portrait images, one printed page each, missing printed 4, 5, 34 " +
+      "and 36. Only 4 and 5 cost content (34 and 36 are Hindi versos of pages that " +
+      "were present), and they cost exactly Series D's Q21-36: 16 questions with no " +
+      "source at all, because Part A is English-only and has no Hindi facing page to " +
+      "recover from. That gap was the one thing the fidelity pass could not close, " +
+      "and it was pinned from the numbering jump (printed 3 ends at Q20, printed 6 " +
+      "opens at Q37) and corroborated by the Directions blocks either side. " +
+      "THE SCAN ABOVE SUPERSEDES IT and carries all 26 English pages including 4 " +
+      "and 5, so band d7 closes the gap. d1-d6 are NOT re-transcribed: they already " +
+      "matched Set A 134/134 with zero option permutations, so re-reading them would " +
+      "buy nothing. Recorded here so their provenance stays honest -- those bands " +
+      "read a different photograph from the one `pdf` now names.",
   },
 };
 

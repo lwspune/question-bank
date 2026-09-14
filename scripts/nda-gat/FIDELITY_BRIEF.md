@@ -77,20 +77,29 @@ foot centre, with `TFDD-B-AGT` at the foot left. Two things it proves:
 - **The series is D.** If a footer reads `- A )`, you have been handed the wrong
   booklet — stop and report it.
 
-**PRINTED PAGES 4 AND 5 ARE ABSENT from this scan** (so are 34 and 36, but those
-are Hindi versos and cost nothing). Pages 4 and 5 are Part A and there is no
-Hindi facing page to recover them from, so whichever of Series D's own Q1–50 sit
-there simply have no source. **This is known and expected — do not hunt for
-them, and do not renumber around the gap.** If your band ends at printed page 3
-and the next begins at printed page 6, the question numbers will jump. Record the
-jump in your `notes`; that gap is a finding we want measured, not filled.
+**THE PAGE GAP IS CLOSED — this paragraph is history, kept so nobody re-opens it.**
+The FIRST Set D scan was missing printed pages 4 and 5, which are Part A and have
+no Hindi facing page to recover from, so 16 questions (Q21–36) had no source at
+all. A second, complete 26-page scan landed 2026-09-14 and carries both; band d7
+transcribed them and the match went 134/134 → **150/150**. `config.ts` records the
+earlier scan under `priorScan`, because bands d1–d6 were read off it.
+
+**The rule the gap taught is still live and still applies to any future booklet:**
+if your band ends at one printed page and the next begins two pages later, the
+question numbers will jump. **Record the jump in your `notes` — never renumber
+around it and never invent the missing items.** A measured gap is a finding; a
+silently-closed one is a corpus with 16 wrong answers in it.
 
 ## The page images
 
-Series D is **upright, one printed page per image, two columns**, and is
+Series D is **upright (portrait), one printed page per image, two columns**, and is
 materially cleaner than Series A. Expect:
 
-- A diagonal red watermark (`www.defenceguru.co.in`) across the middle.
+- A diagonal red watermark (`www.defenceguru.co.in`) across the middle — on the
+  FIRST scan. The complete 2026-09-14 scan carries none, so its ABSENCE is not a
+  reason to doubt the booklet. Trust the footer (`( N - D )` + `TFDD-B-AGT`),
+  which is printed by UPSC and is the same on both scans; a watermark is added by
+  whoever republished the paper and says nothing about which series you hold.
 - Warp toward the binding, uneven lighting, a thumb or a bright flare at an edge.
 - Heavy pen marking (see above).
 
