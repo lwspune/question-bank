@@ -6,21 +6,22 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 93
+ * Entries: 94
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
 export const CONTENT_DATES: ContentDateMap = {
-  "/guide/nda-biology": "2026-06-08T08:01:03+05:30",
-  "/guide/nda-chemistry": "2026-05-18T14:48:33+05:30",
-  "/guide/nda-current-affairs": "2026-05-19T14:07:06+05:30",
-  "/guide/nda-economics": "2026-05-19T12:47:59+05:30",
-  "/guide/nda-english": "2026-05-18T08:57:03+05:30",
-  "/guide/nda-geography": "2026-06-14T10:04:25+05:30",
-  "/guide/nda-history": "2026-05-19T01:01:18+05:30",
-  "/guide/nda-maths": "2026-07-29T23:44:31+05:30",
-  "/guide/nda-physics": "2026-06-14T19:56:54+05:30",
-  "/guide/nda-polity": "2026-05-19T08:21:10+05:30",
+  "/guide/mht-cet-maths": "2026-08-22T08:25:15+05:30",
+  "/guide/nda-biology": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-chemistry": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-current-affairs": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-economics": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-english": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-geography": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-history": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-maths": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
+  "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
   "/notes/jee-mains-maths/matrices": "2026-07-24T20:48:03+05:30",
   "/notes/mht-cet-chemistry/chemical-bonding": "2026-07-24T20:48:03+05:30",
   "/notes/mht-cet-chemistry/ionic-equilibria": "2026-07-24T20:48:03+05:30",
