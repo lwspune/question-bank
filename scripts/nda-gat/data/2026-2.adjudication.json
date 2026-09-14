@@ -29,13 +29,32 @@
     "    statement, or the stem's own words. The derivation wins where it is",
     "    decisive, whatever the keys say. Q70 is the clean case: it is arithmetic.",
     "  RECALL — history, polity, current affairs, defence exercises. Defer to the",
-    "    keys where they AGREE. Where they split and our own pass was LOW, the row",
-    "    is UNRESOLVED and is not applied at all.",
+    "    keys where they AGREE. Where they SPLIT and our own pass was LOW, the row",
+    "    is not decidable from anything in this repo: both such rows (143, 144) were",
+    "    left unresolved and then closed by the maintainer on external knowledge.",
     "",
-    "CALIBRATION of our blind pass, measured against Centurion (the larger sample):",
-    "HIGH 121/127 (95.3%), MED 12/19 (63.2%), LOW 1/4 (25.0%). The LOW band landing",
-    "at chance is the derivation brief's honesty rule working — the deriver said it",
-    "did not hold those facts, and it was right to.",
+    "CALIBRATION — and the first published figure for this paper was MISLABELLED.",
+    "An earlier version of this file printed HIGH 121/127, MED 12/19, LOW 1/4 and",
+    "called it \"measured against Centurion\". Those are the DREAMERS figures. The",
+    "MED band differs a lot between the two keys, so the mislabel mattered:",
+    "",
+    "  our blind pass vs DREAMERS    HIGH 121/127 95.3%  MED 12/19 63.2%  LOW 1/4 25.0%",
+    "  our blind pass vs CENTURION   HIGH 122/127 96.1%  MED 16/19 84.2%  LOW 1/4 25.0%",
+    "  our blind pass vs ADJUDICATED HIGH 127/127  100%  MED 16/19 84.2%  LOW 1/4 25.0%",
+    "                                TOTAL 144/150 96.0%",
+    "",
+    "READ THE ADJUDICATED ROW WITH CARE — IT IS PARTLY CIRCULAR. The adjudicator",
+    "used our derivation and its reasoning as evidence, so a row resolved in our",
+    "favour scores our band as correct. HIGH reaching 127/127 therefore means every",
+    "HIGH row was adjudicated to our answer, which is a statement about the",
+    "adjudication as much as about the pass. The least circular number is the one",
+    "against CENTURION, which never saw our reasoning: HIGH 96.1%. What is NOT",
+    "circular either way is that all 6 rows whose stored answer changes are MED or",
+    "LOW, and not one is HIGH.",
+    "",
+    "Against the same adjudicated answers: Centurion 145/150 (96.7%), OURS 144/150",
+    "(96.0%), Dreamers 138/150 (92.0%). Close enough that no source here is an",
+    "authority, which is why every row was decided on its own evidence.",
     "",
     "A SEPARATE RESULT THIS KEY MADE POSSIBLE, recorded because it validates the",
     "Set D fidelity match from OUTSIDE our own tooling: Centurion prints all four",
@@ -54,119 +73,205 @@
   ],
   "outcome": {
     "ourAnswerStands": 15,
-    "keysWin": 5,
-    "unresolved": 1,
-    "note": "21 rows where the three sources do not all agree: the original 16, plus 5 where our answer matched Dreamers and Centurion alone dissents. Q143 was settled by the maintainer on external knowledge rather than by our derivation — it is counted in ourAnswerStands because the stored answer does not change, but see its own note before reading it as a LOW-band success.",
-    "remaining": "Q144 only — it turns entirely on whether all six 2026 Goldman Prize winners are women."
+    "keysWin": 6,
+    "unresolved": 0,
+    "note": "21 rows where the three sources do not all agree: the original 16, plus 5 where our answer matched Dreamers and Centurion alone dissents. All 21 are now settled. Q143 and Q144 were closed by the maintainer on external knowledge rather than by derivation — see their own notes before reading either as a statement about our blind pass.",
+    "soloDissentPattern": "Centurion dissented alone on 5 rows (70, 107, 119, 128, 144) and the split is exactly the derivable-vs-recall axis this file adjudicates on: we won all four DERIVABLE rows, each re-derived rather than voted on (Q70 is arithmetic, the other three are textbook statements), and Centurion won the one RECALL row. That is the adjudication rule being confirmed by the outcomes rather than assumed, and it is the reason the four keep-ours verdicts stand despite being 2-1 votes against an independent key.",
+    "answersToChange": "Applying this adjudication changes 6 stored answers: Q90 C->D, Q91 C->A, Q124 C->D, Q144 B->D, Q145 A->B, Q149 A->C. The other 144 rows already hold the adjudicated answer, so no write is owed on them."
   },
   "keepOurs": [
     {
-      "number": 143, "ours": "A", "dreamers": "D", "centurion": "A", "confidence": "LOW",
+      "number": 143,
+      "ours": "A",
+      "dreamers": "D",
+      "centurion": "A",
+      "confidence": "LOW",
       "class": "RECALL — settled by the maintainer, NOT by our derivation",
       "settledBy": "maintainer, 2026-09-14",
       "why": "SETTLED AS A (France) on the maintainer's knowledge of International Big Cat Alliance membership, which resolves the split between the two keys. Recorded this way rather than as a win for our blind pass, because the distinction matters for calibration: the deriver marked this LOW and said in its own note that it does not hold IBCA membership as of 2026, choosing France on a range-state pattern argument alone. It landed on the right letter, but not by holding the fact — so this row is NOT evidence that the LOW band can be trusted, and it should not be counted as such when the calibration figures are next re-measured."
     },
     {
-      "number": 118, "ours": "D", "dreamers": "A", "centurion": "A", "confidence": "HIGH",
+      "number": 118,
+      "ours": "D",
+      "dreamers": "A",
+      "centurion": "A",
+      "confidence": "HIGH",
       "class": "SELF-REFUTING — and we depart from BOTH keys here",
       "why": "THE ONE ROW WHERE WE OVERRIDE A UNANIMOUS EXTERNAL VERDICT, so it is stated plainly. The stem asks which group of LANDLOCKED states borders Madhya Pradesh. MP's five neighbours are Rajasthan, Uttar Pradesh, Chhattisgarh, Maharashtra and Gujarat — and Maharashtra and Gujarat both have a coastline. Option A is all five, i.e. it answers 'which states border MP' and drops the stem's own qualifier. The option set is built to test exactly that qualifier: A ignores 'landlocked', B and C wrongly add Jharkhand (which does NOT border MP, Chhattisgarh separates them), D is the three landlocked ones. Two keys agreeing on A is consistent with two key-setters making the same highly available mistake — the correlated-error limit this project documents elsewhere. No amount of agreement makes Gujarat landlocked. Worth a human sanity-check precisely because it is unanimous against us."
     },
     {
-      "number": 70, "ours": "C", "dreamers": "C", "centurion": "D", "confidence": "HIGH",
+      "number": 70,
+      "ours": "C",
+      "dreamers": "C",
+      "centurion": "D",
+      "confidence": "HIGH",
       "class": "DERIVABLE — arithmetic",
       "why": "Re-derived rather than voted on. 252-250 = 2 g of steam condensed. Heat absorbed by the original water = 250 x 1 x (25-20) = 1250 Cal. Heat released = latent heat of condensation plus the cooling of that condensate from 100 to 25 = 2L + 2 x 1 x 75. Balancing, 2L = 1100 and L = 550 Cal/g, which is option C. No self-consistent reading of the stem returns Centurion's 560. A calculation is not a matter for majority vote."
     },
     {
-      "number": 107, "ours": "D", "dreamers": "D", "centurion": "A", "confidence": "HIGH",
+      "number": 107,
+      "ours": "D",
+      "dreamers": "D",
+      "centurion": "A",
+      "confidence": "HIGH",
       "class": "DERIVABLE — textbook statement",
       "why": "Statement III is the false one and Centurion's 'all three' requires it to be true. NCERT Class 11 Physical Geography has the wind blowing PARALLEL to the isobars once the pressure-gradient and Coriolis forces balance; III asserts the opposite. I and II are both near-verbatim from the same chapter, including II's 'directly proportional to the angle of latitude', which is the book's own wording."
     },
     {
-      "number": 119, "ours": "C", "dreamers": "C", "centurion": "B", "confidence": "HIGH",
+      "number": 119,
+      "ours": "C",
+      "dreamers": "C",
+      "centurion": "B",
+      "confidence": "HIGH",
       "class": "DERIVABLE — textbook fact",
       "why": "The stem asks which statements are NOT correct. II is false (soapstone is talc, the softest mineral on the Mohs scale, so granite is harder, not softer) and IV is false (foliation is a METAMORPHIC feature, not a sedimentary one), giving II and IV = C. Centurion's B would require rocks not to be aggregates of minerals and gabbro not to be black, both of which the same chapter states outright."
     },
     {
-      "number": 128, "ours": "D", "dreamers": "D", "centurion": "B", "confidence": "HIGH",
+      "number": 128,
+      "ours": "D",
+      "dreamers": "D",
+      "centurion": "B",
+      "confidence": "HIGH",
       "class": "DERIVABLE — textbook list",
       "why": "All three statements are items from the standard list of functions of political parties. Centurion's B excludes I — that in most democracies elections are fought mainly among party candidates — which is the first function the chapter lists."
     },
     {
-      "number": 93, "ours": "A", "dreamers": "D", "centurion": "A", "confidence": "HIGH",
+      "number": 93,
+      "ours": "A",
+      "dreamers": "D",
+      "centurion": "A",
+      "confidence": "HIGH",
       "class": "DERIVABLE — CONFIRMED by the second key",
       "why": "Complex permanent tissue in plants is xylem AND phloem. Tracheids and vessels are xylem; sieve tubes and companion cells are phloem. All four listed cells qualify. Dreamers' 'I and II only' is phloem alone and silently drops xylem."
     },
     {
-      "number": 104, "ours": "D", "dreamers": "B", "centurion": "D", "confidence": "HIGH",
+      "number": 104,
+      "ours": "D",
+      "dreamers": "B",
+      "centurion": "D",
+      "confidence": "HIGH",
       "class": "DERIVABLE — CONFIRMED by the second key",
       "why": "All three statements are near-verbatim NCERT Class 10 Geography (Agriculture): slash-and-burn IS primitive subsistence farming, it IS called jhumming in the North-Eastern states, and farmers shift to a fresh patch when fertility drops. Dreamers' 'III only' rejects two sentences the textbook prints."
     },
     {
-      "number": 43, "ours": "C", "dreamers": "D", "centurion": "C", "confidence": "HIGH",
+      "number": 43,
+      "ours": "C",
+      "dreamers": "D",
+      "centurion": "C",
+      "confidence": "HIGH",
       "class": "DERIVABLE — CONFIRMED by the second key",
       "why": "Both printed passive transformations are the canonical textbook forms. Dreamers' 'Neither' requires both to be wrong. Flagged in the first pass as the weakest keep-ours because it turns on a grammar convention rather than a fact; the second key removes that doubt."
     },
     {
-      "number": 146, "ours": "B", "dreamers": "A", "centurion": "B", "confidence": "HIGH",
+      "number": 146,
+      "ours": "B",
+      "dreamers": "A",
+      "centurion": "B",
+      "confidence": "HIGH",
       "class": "RECALL — CONFIRMED by the second key",
       "why": "Exercise DUSTLIK is the India-Uzbekistan joint exercise and has been since 2019; the India-UAE exercises are Desert Cyclone and Desert Flag. So statement I as printed is false and II (semi-mountainous terrain) is the true one, and Dreamers' 'I only' inverts both. In the first pass this was the one keep-ours resting on an external fact rather than the page; it no longer rests on our recall alone."
     }
   ],
   "flippedToOurs": [
     {
-      "number": 46, "ours": "B", "dreamers": "C", "centurion": "B", "confidence": "HIGH",
+      "number": 46,
+      "ours": "B",
+      "dreamers": "C",
+      "centurion": "B",
+      "confidence": "HIGH",
       "priorVerdict": "took the key",
       "why": "REVERSED. Pair II is the textbook exclamatory transformation and is correct. Pair I keeps 'here' where reported speech shifts it to 'there', so it is not correctly stated — giving 'II only'. The first pass deferred on the explicit reasoning that 'the key is the only external signal' for a question of convention. That premise is now false: there are two signals, they disagree, and the one agreeing with the mechanical rule also agrees with our derivation. Nothing in the stem establishes that speaker and reporter share a place, which is the only reading under which retaining 'here' is defensible."
     },
     {
-      "number": 69, "ours": "A", "dreamers": "B", "centurion": "A", "confidence": "MED",
+      "number": 69,
+      "ours": "A",
+      "dreamers": "B",
+      "centurion": "A",
+      "confidence": "MED",
       "priorVerdict": "took the key",
       "contested": true,
       "why": "REVERSED, and recorded as genuinely contested. C is false (a uniform massive rope has tension varying along its length) and D is false (the heavier side descends, so the centre of mass accelerates), so the answer is A or B and the two differ only in how 'same acceleration' is read. Under a scalar reading the inextensibility constraint gives every point the same magnitude of acceleration, which is A and is the standard result taught at this level; under a strict vector reading the two sides accelerate in opposite directions, which is B. The first pass asserted that B was 'plainly what the item is testing' — an assertion, not evidence. Against it: our blind pass derived A and named B as the runner-up under exactly the vector reading, the second key says A, and a vector subtlety is out of character for a paper pitched at this level, where the distinctive physics is that tension is NOT uniform. A rigorous reading still favours B, so this is the row in the set most worth a second opinion."
     },
     {
-      "number": 142, "ours": "B", "dreamers": "A", "centurion": "B", "confidence": "MED",
+      "number": 142,
+      "ours": "B",
+      "dreamers": "A",
+      "centurion": "B",
+      "confidence": "MED",
       "priorVerdict": "took the key",
       "why": "REVERSED. The Ramanujan Fellowship is a DST fellowship for returning researchers, and the Anusandhan National Research Foundation is the body that now houses DST's research-funding schemes. The Research, Development and Innovation Fund is a financing corpus aimed at private-sector deep-tech R&D, not a home for an individual fellowship. The first pass deferred to a lone key on a recall row; the second key agrees with our derivation and with the substantive reading."
     },
     {
-      "number": 147, "ours": "A", "dreamers": "B", "centurion": "A", "confidence": "MED",
+      "number": 147,
+      "ours": "A",
+      "dreamers": "B",
+      "centurion": "A",
+      "confidence": "MED",
       "priorVerdict": "took the key",
       "why": "REVERSED. Vayu Shakti is the IAF firepower demonstration held at the Pokhran range in Jaisalmer district, so I is correct, and Apache and Chinook are both in IAF service and routinely feature, so III is correct. The only doubt our deriver raised was whether Mirage 2000 took part, which is what would drop II and yield Dreamers' answer — but the upgraded Mirage 2000 remains in service and is a standing participant. All three correct."
     },
     {
-      "number": 148, "ours": "B", "dreamers": "C", "centurion": "B", "confidence": "MED",
+      "number": 148,
+      "ours": "B",
+      "dreamers": "C",
+      "centurion": "B",
+      "confidence": "MED",
       "priorVerdict": "took the key",
       "why": "REVERSED, and it is settleable after all — the first pass recorded it as unsettleable from the page and deferred. River Basin Management is a Central Sector Scheme under the Ministry of Jal Shakti, so I is true; the Brahmaputra Board is a statutory body under the same ministry and an implementing agency for its basin, so III is true; and the scheme's objectives are integrated basin planning, flood management and inter-state river data, NOT promoting water for domestic use, so II is the planted false statement. Dreamers' C requires I false and II true, which inverts both."
     }
   ],
   "acceptKeys": [
     {
-      "number": 90, "ours": "C", "dreamers": "D", "centurion": "D", "confidence": "MED",
+      "number": 90,
+      "ours": "C",
+      "dreamers": "D",
+      "centurion": "D",
+      "confidence": "MED",
       "why": "Both keys agree, and D was our deriver's own named runner-up. School colloid tables routinely list foam rubber under 'Foam' rather than distinguishing solid foam, so the examiner counts all four pairs matched."
     },
     {
-      "number": 91, "ours": "C", "dreamers": "A", "centurion": "A", "confidence": "MED",
+      "number": 91,
+      "ours": "C",
+      "dreamers": "A",
+      "centurion": "A",
+      "confidence": "MED",
       "contested": true,
       "why": "Both keys agree, so the deference rule applies — but this remains the most uncomfortable of them and is left flagged. The stem scopes itself to respiration in ANIMALS, and in animals anaerobic respiration yields lactic acid with no CO2, which would make statement III true and our 'I and III' right. The keys' 'I only' is the yeast/fermentation reading, which the stem's own scope excludes. Our deriver named this tension in advance and called it its least secure item in the range. Deferring on unanimity, not because the keys are clearly right."
     },
     {
-      "number": 124, "ours": "C", "dreamers": "D", "centurion": "D", "confidence": "MED",
+      "number": 124,
+      "ours": "C",
+      "dreamers": "D",
+      "centurion": "D",
+      "confidence": "MED",
       "why": "Both keys agree. Statement II dates the blast furnace to the beginning of the 18th century, matching the standard narrative of Darby's coke-smelting blast furnace of 1709 that Industrial-Revolution chapters teach. Recall item."
     },
     {
-      "number": 145, "ours": "A", "dreamers": "B", "centurion": "B", "confidence": "LOW",
+      "number": 145,
+      "ours": "A",
+      "dreamers": "B",
+      "centurion": "B",
+      "confidence": "LOW",
       "why": "Both keys agree and our own pass was LOW, stating outright that it held nothing about the March 2026 uranium agreement — not the parties, not the figure — and that India-Australia and India-Canada were both live and inseparable. Keys win; this is what LOW is for."
     },
     {
-      "number": 149, "ours": "A", "dreamers": "C", "centurion": "C", "confidence": "LOW",
+      "number": 149,
+      "ours": "A",
+      "dreamers": "C",
+      "centurion": "C",
+      "confidence": "LOW",
       "why": "Both keys agree and our own pass was LOW, holding neither the host States nor the mascot of the inaugural Khelo India Tribal Games, and taking all three statements rather than manufacture a falsehood."
+    },
+    {
+      "number": 144,
+      "ours": "B",
+      "dreamers": "B",
+      "centurion": "D",
+      "confidence": "LOW",
+      "class": "RECALL — OUR ANSWER WAS WRONG; Centurion alone was right",
+      "settledBy": "maintainer, 2026-09-14, citing reporting on the 2026 Goldman Environmental Prize",
+      "why": "SETTLED AS D (II and III). Statement I is false (the prize is annual) and II is true — six winners, one per region, with Borim Kim of South Korea representing Asia. III is TRUE: all six 2026 winners were women, reported as the first time this has happened in the prize’s history. Accepted on named, checkable sources plus a falsifiable specific, and independently corroborated by Centurion; NOT independently verified here. This is a genuine correction to our answer, and the way our pass failed is the useful part: the deriver reasoned from a BASE RATE — that an all-women slate is unlikely — and the sources say 2026 is the first year it ever happened. A base-rate argument against an unprecedented event is correct every year until the year it is not, and it carries no signal about which year that is. The deriver was right to mark this LOW and right to name III as the hinge; the error was answering at all rather than declining."
     }
   ],
-  "unresolved": [
-    {
-      "number": 144, "ours": "B", "dreamers": "B", "centurion": "D", "confidence": "LOW",
-      "why": "DO NOT APPLY without external verification. Statement I is securely false (the Goldman Environmental Prize is annual, not biennial) and statement II is structurally safe (the prize gives six awards a year, one per region, so one winner is always from Asia). Everything turns on III — whether all six 2026 winners are women — which decides between our B and Centurion's D. Our pass was LOW and reasoned from a prior rather than from knowledge of the 2026 slate, so although ours and Dreamers agree, that is one piece of evidence and a guess, not two."
-    }
-  ]
+  "unresolved": []
 }
