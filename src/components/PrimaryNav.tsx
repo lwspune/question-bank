@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, Timer } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, PenLine, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
@@ -51,6 +51,11 @@ export default function PrimaryNav({
     // Board reader — always visible (like Notes); boardHref resolves per-exam:
     // /board (index) normally, /board/<slug> when a board exam is active.
     { id: "board", label: "Board", href: boardHref, Icon: Library },
+    // Blog — public, so it sits with the open surfaces rather than after the
+    // role-gated pair below. It has no phone tab: MobileTabBar is a fixed five
+    // (lib/nav/mobileTabs.ts), so below sm it appears in the account menu, the
+    // same place Papers and Books go.
+    { id: "blog", label: "Blog", href: "/blog", Icon: PenLine },
     ...(showBooks
       ? [
           {

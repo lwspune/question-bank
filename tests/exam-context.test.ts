@@ -214,6 +214,12 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/mock/attempt/abc-123/result")).toBe("mock");
   });
 
+  it("returns 'blog' for /blog and sub-routes", () => {
+    expect(getActiveTab("/blog")).toBe("blog");
+    expect(getActiveTab("/blog/")).toBe("blog");
+    expect(getActiveTab("/blog/nda-2-2026-maths-paper-analysis")).toBe("blog");
+  });
+
   it("returns 'papers' for /dashboard/papers and sub-routes", () => {
     expect(getActiveTab("/dashboard/papers")).toBe("papers");
     expect(getActiveTab("/dashboard/papers/")).toBe("papers");
@@ -236,6 +242,7 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/browser-other")).toBeNull();
     expect(getActiveTab("/guides")).toBeNull(); // 's' suffix isn't a real route
     expect(getActiveTab("/notes-x")).toBeNull();
+    expect(getActiveTab("/blogroll")).toBeNull();
   });
 });
 

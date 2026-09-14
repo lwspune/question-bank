@@ -35,6 +35,17 @@ describe("mobile tab bar — shape", () => {
     }
   });
 
+  it("never carries Blog — it is public but still not one of the five", () => {
+    // Blog is a PrimaryNav tab from sm up and an account-menu entry below it.
+    // Unlike Papers/Books the reason is not permissions, it is the cap itself:
+    // a sixth tab puts touch targets near 60px at 360px. Pinned here so the
+    // next person to add an editorial surface has to make that trade openly.
+    for (const slug of [null, ...EXAM_REGISTRY.map((e) => e.slug)]) {
+      const ids = resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).map((t) => t.id);
+      expect(ids).not.toContain("blog");
+    }
+  });
+
   it("takes no session argument, so the bar cannot grow by role", () => {
     // The 10-tap-target row this replaces was caused by a nav whose SHAPE moved
     // with permissions. A single parameter is what makes that impossible here:
