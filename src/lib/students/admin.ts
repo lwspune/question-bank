@@ -1,47 +1,17 @@
 /**
- * Admin read for the /dashboard/students roster. Service-role: the student list
- * is the set of auth.users with no org_members row, and both auth.users +
- * org_members require the admin API / service role. Mirrors listMembers, but
- * INVERTS the filter (students = everyone who is NOT a member).
+ * Admin read for the /dashboard/students roster. Service-role: the roster spans
+ * auth.users plus every student's own-row-RLS engagement data, so it reads through
+ * the get_student_roster RPC (migration 0098), which is granted to service_role
+ * alone. The page itself is superadmin-gated.
+ *
+ * Thin wrapper: the query + mapping live in rosterQuery.ts so the smoke probe can
+ * drive them outside Next (this module's `server-only` guard cannot resolve there).
  */
 import "server-only";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { deriveStudents, type AuthUserLite, type StudentRow } from "./derive";
+import { fetchStudentRoster } from "./rosterQuery";
+import type { StudentRosterRow } from "./roster";
 
-export async function listStudents(): Promise<StudentRow[]> {
-  const admin = createSupabaseAdminClient();
-
-  // Staff to exclude.
-  const { data: members, error: mErr } = await admin.from("org_members").select("user_id");
-  if (mErr) throw new Error(`listStudents members: ${mErr.message}`);
-  const staff = new Set((members ?? []).map((m) => m.user_id as string));
-
-  // Captured contact mobiles (service-role reads all student_profiles).
-  const { data: profiles, error: pErr } = await admin
-    .from("student_profiles")
-    .select("user_id, mobile");
-  if (pErr) throw new Error(`listStudents profiles: ${pErr.message}`);
-  const mobileById = new Map(
-    (profiles ?? []).map((p) => [p.user_id as string, p.mobile as string])
-  );
-
-  // All auth users (paginate — the roster grows).
-  const users: AuthUserLite[] = [];
-  for (let page = 1; ; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
-    if (error) throw new Error(`listStudents users: ${error.message}`);
-    const batch = data?.users ?? [];
-    for (const uu of batch) {
-      users.push({
-        id: uu.id,
-        email: uu.email ?? null,
-        created_at: uu.created_at,
-        app_metadata: (uu.app_metadata as { provider?: string } | null) ?? null,
-        user_metadata: (uu.user_metadata as { full_name?: string; name?: string } | null) ?? null,
-      });
-    }
-    if (batch.length < 1000) break;
-  }
-
-  return deriveStudents(users, staff, mobileById);
+export async function listStudentRoster(): Promise<StudentRosterRow[]> {
+  return fetchStudentRoster(createSupabaseAdminClient());
 }
