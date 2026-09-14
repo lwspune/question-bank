@@ -18,6 +18,7 @@ import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/
 import { ROUTES as CET_MATHS_ROUTES } from "@/app/guide/mht-cet-maths/_data/mht-cet-maths";
 import { PLAYBOOK_SLUGS as CET_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-maths/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
@@ -464,6 +465,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     landingEntries = [];
   }
 
+  /**
+   * /blog — the index plus every post.
+   *
+   * Deliberately NOT routed through `withContentDates`: a post DECLARES its own
+   * datePublished/dateModified in the registry, those are validated by
+   * tests/blog-registry.test.ts, and they are the same dates the BlogPosting
+   * JSON-LD publishes. Deriving a second date from git would let the sitemap and
+   * the structured data disagree, and would move a post's date whenever someone
+   * fixed a typo in a code comment.
+   */
+  const posts = listPosts();
+  const blogEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/blog`,
+      // The index changes only when a post lands, so it inherits the newest.
+      lastModified: parseIsoDate(posts[0]?.dateModified ?? posts[0]?.datePublished, buildDate),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...posts.map((p) => ({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: parseIsoDate(p.dateModified ?? p.datePublished, buildDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
   return [
     {
       // The homepage — highest-authority URL, now a real landing page (was a
@@ -488,6 +516,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,
     ...mockUrlEntries,
+    ...blogEntries,
     {
       // Teacher-access lead page — a real acquisition surface for coaching staff.
       url: `${SITE_URL}/request-access`,

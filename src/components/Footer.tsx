@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, Scale, Sigma, TrendingUp } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, TrendingUp } from "lucide-react";
 import { CONTACT_EMAIL } from "@/lib/brand";
 
 const REPORT_EMAIL = CONTACT_EMAIL;
@@ -111,6 +111,13 @@ export default function Footer() {
           >
             <NotebookPen className="h-3 w-3" aria-hidden />
             MHT-CET Notes
+          </Link>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <PenLine className="h-3 w-3" aria-hidden />
+            Blog
           </Link>
           <a
             href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}
