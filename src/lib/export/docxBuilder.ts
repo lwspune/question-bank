@@ -767,16 +767,33 @@ async function patchZip(
 
   const docFile = zip.file("word/document.xml");
   if (docFile && ommlByIndex.length > 0) {
-    let xml = await docFile.async("text");
-    for (let i = 0; i < ommlByIndex.length; i++) {
-      const marker = `${MARKER_PREFIX}${i}`;
-      const re = new RegExp(
-        `<w:r>(?:<w:rPr>[\\s\\S]*?</w:rPr>)?<w:t[^>]*>${escapeRegex(marker)}</w:t></w:r>`,
-        "g"
-      );
-      xml = xml.replace(re, ommlByIndex[i]);
-    }
-    zip.file("word/document.xml", xml);
+    const xml = await docFile.async("text");
+    // ONE pass over the document, not one pass PER MARKER.
+    //
+    // The per-marker loop this replaces was quadratic: it compiled a regex and
+    // rescanned the whole of document.xml for each placeholder, allocating a
+    // fresh multi-megabyte string every time. Invisible on a question paper
+    // (the export route caps at 200 questions) and fatal on a four-series
+    // solution book at ~10,000 math zones — ~100 GB of scanning, and being
+    // SYNCHRONOUS it blocks the event loop, so it cannot even be timed out.
+    //
+    // Two incidental improvements come free with the callback form, and both
+    // are in the safe direction:
+    //  - a replacement is inserted VERBATIM, where the old string form gave
+    //    `$&`, `$1` and `$'` inside the OMML their special meaning;
+    //  - a replacement is never rescanned, so OMML that happened to contain
+    //    something marker-shaped cannot be substituted a second time.
+    const re = new RegExp(
+      `<w:r>(?:<w:rPr>[\\s\\S]*?</w:rPr>)?<w:t[^>]*>${escapeRegex(MARKER_PREFIX)}(\\d+)</w:t></w:r>`,
+      "g"
+    );
+    const patched = xml.replace(re, (whole, digits: string) => {
+      const i = Number(digits);
+      // Out of range: leave the run exactly as it was, as the old loop did —
+      // it only ever replaced markers it had payloads for.
+      return i >= 0 && i < ommlByIndex.length ? ommlByIndex[i] : whole;
+    });
+    zip.file("word/document.xml", patched);
   }
 
   const settingsFile = zip.file("word/settings.xml");
@@ -793,4 +810,246 @@ async function patchZip(
 
 function escapeRegex(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/* ------------------------------------------------------------------------- *
+ * Solution book — every series' answer key, then every series' solutions.
+ *
+ * Built for a paper issued as several SIBLING SERIES: the same questions in a
+ * different printed order (NDA prints four). A teacher wants one document that
+ * opens with all four keys side by side for marking, then carries a full set of
+ * solutions per series so a student holding any booklet can follow it by their
+ * OWN question numbers.
+ *
+ * It lives here, rather than in the script that calls it, for the reason
+ * `scripts/mh-sb-11/build-unit-test.ts` states in its own header: the LaTeX ->
+ * OMML pipeline (`mathRuns` -> `patchZip`) is module-internal, and a standalone
+ * builder would render every formula as raw LaTeX.
+ *
+ * Two things it deliberately does NOT reuse from `buildAnswerKey`:
+ *  - **Numbering.** That path rides Word's auto-numbering off a single shared
+ *    counter, which would run 1-480 straight through four 120-question sections
+ *    instead of restarting per series. Numbers are printed as text.
+ *  - **The question itself.** An answer key is a companion to a printed paper;
+ *    a solution book has to stand alone, so each entry restates the stem and
+ *    options before answering them.
+ * ------------------------------------------------------------------------- */
+
+export type SolutionBookQuestion = {
+  /** The number printed in THIS series. */
+  number: number;
+  /** Same question's number in the reference series, for cross-referencing. */
+  baseNumber?: number;
+  /** Shared passage. Printed once per unbroken run of questions that share it. */
+  context?: string | null;
+  stem: string;
+  options: { label: string; text: string }[];
+  /** Correct option label, in THIS series' lettering. */
+  answer: string;
+  solution?: string | null;
+};
+
+export type SolutionBookSeries = {
+  /** e.g. "A". Printed in headings as `Series A`. */
+  series: string;
+  questions: SolutionBookQuestion[];
+};
+
+export type SolutionBookInput = {
+  title: string;
+  subtitle?: string;
+  /** Printed under the title — provenance, method, caveats. */
+  note?: string;
+  series: SolutionBookSeries[];
+  /** Number-and-letter pairs per row in the key grid. */
+  keyPairsPerRow?: number;
+  /** Label for the reference series in cross-references. Defaults to the first. */
+  baseSeriesLabel?: string;
+};
+
+const KEY_GRID_BORDER = { style: BorderStyle.SINGLE, size: 4, color: "999999" } as const;
+
+function keyGridTable(
+  questions: SolutionBookQuestion[],
+  pairsPerRow: number
+): Table {
+  const sorted = [...questions].sort((a, b) => a.number - b.number);
+  const rows: TableRow[] = [];
+  // Row-major: a marker reading a key looks up a number, and numbers running
+  // left-to-right is how every printed key this bank has seen is laid out.
+  for (let i = 0; i < sorted.length; i += pairsPerRow) {
+    const slice = sorted.slice(i, i + pairsPerRow);
+    const cells: TableCell[] = [];
+    for (let j = 0; j < pairsPerRow; j++) {
+      const q = slice[j];
+      cells.push(
+        new TableCell({
+          width: { size: Math.floor(100 / (pairsPerRow * 2)), type: WidthType.PERCENTAGE },
+          borders: { top: KEY_GRID_BORDER, bottom: KEY_GRID_BORDER, left: KEY_GRID_BORDER, right: KEY_GRID_BORDER },
+          children: [
+            new Paragraph({
+              children: [new TextRun({ text: q ? String(q.number) : "", bold: true })],
+            }),
+          ],
+        })
+      );
+      cells.push(
+        new TableCell({
+          width: { size: Math.floor(100 / (pairsPerRow * 2)), type: WidthType.PERCENTAGE },
+          borders: { top: KEY_GRID_BORDER, bottom: KEY_GRID_BORDER, left: KEY_GRID_BORDER, right: KEY_GRID_BORDER },
+          children: [
+            new Paragraph({
+              children: [new TextRun({ text: q ? `(${q.answer.toLowerCase()})` : "" })],
+            }),
+          ],
+        })
+      );
+    }
+    rows.push(new TableRow({ children: cells }));
+  }
+  return new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows });
+}
+
+/** Prose + GFM-table blocks, as a run of paragraphs. */
+function richBlocks(
+  text: string,
+  builder: Builder,
+  lead: TextRun | null,
+  indent?: number
+): (Paragraph | Table)[] {
+  const out: (Paragraph | Table)[] = [];
+  const blocks = parseTableBlocks(text);
+  let ledIn = false;
+  for (const b of blocks) {
+    const props = indent ? { indent: { left: indent } } : {};
+    if (b.kind === "text") {
+      out.push(
+        new Paragraph({
+          ...props,
+          children: [...(!ledIn && lead ? [lead] : []), ...mathRuns(b.text, builder)],
+        })
+      );
+      ledIn = true;
+    } else {
+      if (!ledIn && lead) {
+        out.push(new Paragraph({ ...props, children: [lead] }));
+        ledIn = true;
+      }
+      out.push(docxTable(b, builder));
+    }
+  }
+  if (!out.length && lead) out.push(new Paragraph({ children: [lead] }));
+  return out;
+}
+
+function sectionHeading(text: string): Paragraph {
+  return new Paragraph({
+    spacing: { before: 240, after: 120 },
+    children: [new TextRun({ text, bold: true, size: SUBTITLE_SIZE })],
+  });
+}
+
+export async function buildSolutionBook(input: SolutionBookInput): Promise<Buffer> {
+  const builder: Builder = { ommlByIndex: [] };
+  const pairs = input.keyPairsPerRow ?? 6;
+  const baseLabel = input.baseSeriesLabel ?? input.series[0]?.series ?? "A";
+
+  // --- Section 1: the keys. Single column, because a 12-column grid cannot
+  // fit inside one half of the two-column solution layout.
+  const keyChildren: (Paragraph | Table)[] = [];
+  keyChildren.push(titleParagraph(input.title));
+  if (input.subtitle) {
+    keyChildren.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [new TextRun({ text: input.subtitle, bold: true, size: SUBTITLE_SIZE })],
+      })
+    );
+  }
+  if (input.note) {
+    keyChildren.push(blank());
+    keyChildren.push(...richBlocks(input.note, builder, null));
+  }
+  for (const s of input.series) {
+    keyChildren.push(sectionHeading(`Answer Key — Series ${s.series}`));
+    keyChildren.push(keyGridTable(s.questions, pairs));
+  }
+
+  // --- Section 2: the solutions, two columns like a printed paper.
+  const solChildren: (Paragraph | Table)[] = [];
+  for (const s of input.series) {
+    solChildren.push(sectionHeading(`Solutions — Series ${s.series}`));
+    let lastContext: string | null = null;
+    for (const q of [...s.questions].sort((a, b) => a.number - b.number)) {
+      const ctx = (q.context ?? "").trim() || null;
+      // A shared passage prints once at the top of each unbroken run that
+      // carries it, exactly as the paper prints it.
+      if (ctx && ctx !== lastContext) {
+        solChildren.push(
+          ...richBlocks(
+            stripPassageCountPhrase(ctx),
+            builder,
+            new TextRun({ text: "Common context: ", italics: true, bold: true })
+          )
+        );
+      }
+      lastContext = ctx;
+
+      const ref =
+        q.baseNumber != null && s.series !== baseLabel
+          ? ` [= Series ${baseLabel} Q${q.baseNumber}]`
+          : "";
+      solChildren.push(
+        ...richBlocks(
+          q.stem,
+          builder,
+          new TextRun({ text: `${q.number}. `, bold: true })
+        )
+      );
+      if (ref) {
+        solChildren.push(
+          new Paragraph({ children: [new TextRun({ text: ref.trim(), italics: true })] })
+        );
+      }
+      for (const o of q.options) {
+        solChildren.push(
+          new Paragraph({
+            children: [
+              new TextRun({ text: `(${o.label.toLowerCase()}) ` }),
+              ...mathRuns(o.text, builder),
+            ],
+          })
+        );
+      }
+      solChildren.push(
+        new Paragraph({
+          children: [
+            new TextRun({ text: "Answer: ", italics: true, bold: true }),
+            new TextRun({ text: `(${q.answer.toLowerCase()})`, bold: true }),
+          ],
+        })
+      );
+      if (q.solution) {
+        solChildren.push(
+          ...richBlocks(
+            q.solution,
+            builder,
+            new TextRun({ text: "Solution: ", italics: true, bold: true }),
+            720
+          )
+        );
+      }
+      solChildren.push(blank());
+    }
+  }
+
+  const singleColumn = { ...sectionProperties, column: { count: 1, space: COL_SPACE } };
+  const doc = new Document({
+    ...documentDefaults,
+    sections: [
+      { properties: singleColumn, children: keyChildren },
+      { properties: sectionProperties, children: solChildren },
+    ],
+  });
+  return finalize(doc, builder);
 }

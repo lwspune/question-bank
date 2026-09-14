@@ -1,0 +1,84 @@
+{
+  "series": "D",
+  "band": "b5",
+  "pages": [37],
+  "bandReport": {
+    "printedPages": [38],
+    "numbersFound": [101, 102, 103, 104, 105, 106, 107],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "READ FROM THE HINDI FACING PAGE. The English page carrying Q101-Q107 (printed 39) is absent from the source PDF; this band is transcribed from printed page 38, the Hindi page for the same seven questions. SEAM, established by reading footers rather than assuming index+1: PDF idx 36 = printed 37 = ENGLISH Q95-Q100 (ends [P.T.O., Q100 complete); PDF idx 37 = printed 38 = HINDI Q101-Q107 (this band); PDF idx 38 = printed 40 = HINDI Q108-Q114; PDF idx 39 = printed 41 = ENGLISH Q108-Q114 (ends [P.T.O.). So printed 39 is the only page missing and the PDF's printed-page sequence jumps 38 -> 40. Booklet layout is Hindi on the even printed page, English on the following odd page, SAME questions. No question straddles a seam: Q101 opens this page and Q107's option (d) is the last line above the footer. CORROBORATION THAT THE HINDI PAGE GIVES THE RIGHT OPTION ORDER: printed 40 (Hindi) and printed 41 (English) carry Q108-Q114, and their option values agree label-for-label (e.g. Q111 (0,inf) / (0,inf)-{1} / (0,inf)-{e} / (0,inf)-{10}; Q114 -1 / 0 / 1 / limit-does-not-exist). OPTION TEXTS: the prompt's premise that the options here are language-neutral is only half true - five of the seven questions carry Devanagari inside their options. Those are written here as English renderings, and that is REQUIRED FOR CORRECTNESS, not style: match-variant.ts's normText strips every non-[a-z0-9] character, so Devanagari is deleted outright, and left as printed Q101(c) 'I aur II donon' and Q101(d) 'na to I aur na hi II' would BOTH normalise to 'iii' - an undetectable label collision. Same for Q106(c)/(d), which differ only in nyuntam/adhiktam (minimum/maximum), and Q102(d), which would normalise to the empty string. Every rendering used is corroborated inside this same booklet, not invented: 'kewal I' -> 'I only', 'kewal II' -> 'II only', 'I aur II donon' -> 'Both I and II', 'na to I aur na hi II' -> 'Neither I nor II', 'upryukt kathnon mein se kaun-sa/kaun-se sahi hai/hain?' -> 'Which of the statements given above is/are correct?', 'avkalniya' -> 'differentiable', 'satat' -> 'continuous', 'kiske barabar hai?' -> 'equal to?' are all readable directly off the English page 41 against the identical Hindi on page 40; 'varg ikai' -> 'square units' and the whole Q105 frame are corroborated by the worked example in VARIANT_BRIEF.md itself. STEMS are likewise math-forward renderings from the Hindi, not transcriptions of an English page - stated here rather than implied. Latin mathematics available in the stem: Q101 FULL (both statements are pure math), Q102 FULL, Q103 FULL (functional equation and both statements are math; only the frame is Devanagari), Q104 FULL, Q105 PARTIAL (only 'ABC', 'AC = 8' are Latin; 'right angled at B' and 'maximum area' are Devanagari and are rendered), Q106 FULL (y = xe^(2x)), Q107 FULL (the integral). TWO LABEL-MAPPING HAZARDS THAT ARE NOT TRANSCRIPTION DOUBTS AND NEED A HUMAN EYE ON THE MAP: under normText, Q104 (a) 'n2^(n-1) - 2^n + 1' and (c) 'n2^(n-1) - 2^n - 1' both fold to 'n2n12n1', and Q102 (a) '-1' and (c) '1' both fold to '1', because + and - are stripped. labelMap() is greedy in variant order, so in each case it will pair variant (a) with whichever base label it meets first at similarity 1.0 and can silently invert the (a)/(c) mapping if the base booklet orders that pair the other way round. Both options were read at 9x and are exactly as recorded; the ambiguity is in the normaliser, and it affects the base series identically. Confirm these two label maps by hand before trusting their derived answers. Nothing on the page was unreadable. No answer was derived or looked up."
+  },
+  "questions": [
+    {
+      "number": 101,
+      "stem": "Consider the following statements: I. d/dx ln|x| = -1/x if x < 0. II. d/dx ln|x| = 1/x if x > 0. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 102,
+      "stem": "If y = |sin(pi/4 - x)|, then what is dy/dx at x = pi/4 equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "It does not exist" }
+      ]
+    },
+    {
+      "number": 103,
+      "stem": "Let f be a differentiable function such that f(x + y) = f(x) + f(y) for all x, y in R. Which of the following statements is/are correct? I. If f(x) = x g(x), then the derivative of f(x) with respect to x is equal to g(0). II. If f(x) = x^2 g(x), then the derivative of f(x) with respect to x is equal to 0. (Here g is a continuous function) Select the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 104,
+      "stem": "If f(x) = x^(n-1) + x^(n-2) + x^(n-3) + ... + 1, then what is f'(2) equal to?",
+      "options": [
+        { "label": "A", "text": "n2^(n-1) - 2^n + 1" },
+        { "label": "B", "text": "n2^n - 2^(n-1) + 1" },
+        { "label": "C", "text": "n2^(n-1) - 2^n - 1" },
+        { "label": "D", "text": "(n-1)2^(n-2) - 2^(n-1) + 1" }
+      ]
+    },
+    {
+      "number": 105,
+      "stem": "ABC is a triangle right angled at B. If AC = 8 units, then what is the area of the triangle of maximum area?",
+      "options": [
+        { "label": "A", "text": "32 square units" },
+        { "label": "B", "text": "24 square units" },
+        { "label": "C", "text": "16 square units" },
+        { "label": "D", "text": "12 square units" }
+      ]
+    },
+    {
+      "number": 106,
+      "stem": "For the curve y = x e^(2x)",
+      "options": [
+        { "label": "A", "text": "Minimum value is at x = -2" },
+        { "label": "B", "text": "Minimum value is at x = -1" },
+        { "label": "C", "text": "Minimum value is at x = -1/2" },
+        { "label": "D", "text": "Maximum value is at x = -1/2" }
+      ]
+    },
+    {
+      "number": 107,
+      "stem": "Let f(x) = integral x e^x dx. In which interval is f(x) decreasing?",
+      "options": [
+        { "label": "A", "text": "(-inf, 0)" },
+        { "label": "B", "text": "(0, inf)" },
+        { "label": "C", "text": "(-inf, -1)" },
+        { "label": "D", "text": "(-1, inf)" }
+      ]
+    }
+  ]
+}

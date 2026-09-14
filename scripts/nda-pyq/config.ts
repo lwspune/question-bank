@@ -122,6 +122,132 @@ export const PAPERS: Paper[] = [
   },
 ];
 
+/**
+ * A SIBLING BOOKLET SERIES of a paper already in the bank.
+ *
+ * UPSC issues one paper as four series (A/B/C/D) that hold the SAME 120
+ * questions in a different ORDER. A variant is therefore NEVER ingested —
+ * `content_hash` would dedup every row against the series already committed, and
+ * forcing them in would mean 360 duplicate questions. What a variant produces is
+ * a MAPPING: variant question number -> base question number, plus the mapping
+ * of its option LABELS, from which that series' answer key falls out.
+ */
+export type Variant = {
+  /** Booklet series letter printed on the cover. */
+  series: string;
+  pdf: string;
+  /** 0-based PDF page indices carrying ENGLISH questions. */
+  englishPages: number[];
+  /**
+   * Page rotation in degrees to apply before rendering. Set C was photographed
+   * sideways; without this an agent is handed 90-degree text.
+   */
+  rotate?: number;
+  /**
+   * True when ONE image holds a SPREAD of two printed pages rather than one.
+   * The English half is then cropped out — see render-variant.ts.
+   */
+  spread?: boolean;
+  /** Which half of a rotated spread carries the English page. */
+  spreadHalf?: "first" | "second";
+  /**
+   * Pages to render even though they are DEVANAGARI, because the English page
+   * carrying those questions is missing from the source. Their options are
+   * mathematical and language-neutral, which is all the matching pass needs.
+   * Rendered alongside englishPages; the agent is told which they are.
+   */
+  hindiFallbackPages?: number[];
+};
+
+/**
+ * Variants of `2026-2`. All three are PHOTOGRAPHS of the booklet rather than
+ * flatbed scans — warped, angled, and carrying a diagonal red
+ * `www.centuriondefenceacademy.com` watermark. Zero text layer in all three
+ * (Set B's is a converter's "Image to PDF" stamp, not content).
+ */
+export const VARIANTS: Record<string, Variant[]> = {
+  "2026-2": [
+    {
+      /**
+       * 43 images, ONE printed page each, footer TFDD-A-HTM/37B.
+       *
+       * PRINTED PAGE 10 IS ABSENT FROM THE PDF — the photographer skipped it.
+       * So the offset is index+1 through index 8 and index+2 from index 9 on,
+       * which moves English off even indices and onto ODD ones partway through:
+       * 2, 4, 6, 8 (printed 3, 5, 7, 9) then 9, 11, 13 … 41 (printed 11 … 43).
+       *
+       * THIS LIST WAS ORIGINALLY WRONG and the way it was wrong is worth
+       * keeping. It was set to [2,4,…,42] after spot-checking indices 1-4 — the
+       * START of the sequence, where the naive parity happens to hold. Every
+       * rendered page from index 10 on was therefore Devanagari. Three
+       * transcription agents caught it independently by reading the footers they
+       * were told to verify, and index 8/9/10 were then confirmed by eye: p9
+       * English, p11 English, p12 Hindi, with no p10 anywhere.
+       *
+       * A parity that holds at the front of a booklet is not a parity. Sweep
+       * every footer — which is what was done for Series C, where it found
+       * duplicates, and carelessly not done here.
+       */
+      series: "B",
+      pdf: "C:/Users/vilas/Downloads/NDA-2-2026-Maths-Set-B.pdf",
+      englishPages: [2, 4, 6, 8, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41],
+    },
+    {
+      /**
+       * 25 images, each a SPREAD of two printed pages, photographed SIDEWAYS.
+       * Rotation is 270, not 90 — at 90 the text renders upside down.
+       * Footer TFDD-A-HTM/37C. Hindi is the LEFT half, English the RIGHT.
+       *
+       * THE INDEX LIST IS NOT A FORMULA, and that is the point. The printed page
+       * numbers were read off every footer, and the sequence is irregular:
+       * index 7 is a DUPLICATE of index 6 (both pages 12|13) and index 16
+       * repeats page 30. Deriving the list arithmetically would hand an agent
+       * two duplicate spreads and silently skip a real page. The 21 indices
+       * below are the unique content spreads, covering printed pages 2-43 and
+       * therefore all 21 English pages (3, 5, ... 43).
+       */
+      series: "C",
+      pdf: "C:/Users/vilas/Downloads/NDA-2-2026-Maths-Set-C.pdf",
+      englishPages: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23],
+      rotate: 270,
+      spread: true,
+      spreadHalf: "second",
+    },
+    {
+      /**
+       * 43 images, ONE printed page each, footer TFDD-A-HTM/37D.
+       *
+       * PRINTED PAGE 39 IS ABSENT FROM THE PDF, and unlike Series B's missing
+       * page this one COSTS CONTENT: page 39 is the ENGLISH page carrying
+       * Q101-Q107. The offset is index+1 through index 37, then index 38 = p40,
+       * 39 = p41, 40 = p42, 41 = p43, 42 = advertisement.
+       *
+       * So only 20 of the 21 English pages exist here. Q101-Q107 are recovered
+       * from the HINDI facing page (printed 38 = index 37, listed in
+       * `hindiFallbackPages`): the four options of those seven questions are
+       * mathematical and language-neutral, which is all the matcher needs, and
+       * their order was confirmed against Series A by eye before being relied
+       * on. Verified by rendering indices 37/38/39: p38 Hindi, p40 Hindi,
+       * p41 English, no p39 anywhere.
+       */
+      series: "D",
+      pdf: "C:/Users/vilas/Downloads/NDA-2-2026-Maths-Set-D.pdf",
+      englishPages: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 39, 41],
+      hindiFallbackPages: [37],
+    },
+  ],
+};
+
+export function requireVariant(paperId: string, series: string): Variant {
+  const v = (VARIANTS[paperId] ?? []).find((x) => x.series === series.toUpperCase());
+  if (!v) {
+    throw new Error(
+      `unknown variant "${series}" for ${paperId} — known: ${(VARIANTS[paperId] ?? []).map((x) => x.series).join(", ")}`
+    );
+  }
+  return v;
+}
+
 export function requirePaper(id: string | undefined): Paper {
   const p = PAPERS.find((x) => x.id === id);
   if (!p) {
