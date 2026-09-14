@@ -1,0 +1,29 @@
+{
+  "series": "D",
+  "note": "Hand-adjudicated label maps for questions the matcher is RIGHT to refuse. Each entry asserts the option texts it was written against, on both sides, so it cannot survive a re-transcription of either booklet.",
+  "adjudications": [
+    {
+      "number": 106,
+      "base": 96,
+      "labels": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "D": "D"
+      },
+      "reason": "Same four statements, reworded. D's band was read off the HINDI facing page (printed p39, the English one, is absent from the source) and rendered into English, so it says 'Minimum value is at' where the base says 'minimum occurs at'. The discriminating parts agree exactly and one-to-one: x = -2, x = -1, x = -1/2 minimum, x = -1/2 maximum. Trigram similarity puts the correct pairing at the maximum of every row AND column (0.38/0.38/0.40/0.40) but only 0.06 clear of the runner-up, far below the 0.6 threshold protecting the other 119 questions.",
+      "assertVariantOptions": {
+        "A": "Minimum value is at x = -2",
+        "B": "Minimum value is at x = -1",
+        "C": "Minimum value is at x = -1/2",
+        "D": "Maximum value is at x = -1/2"
+      },
+      "assertBaseOptions": {
+        "A": "minimum occurs at \\(x = -2\\)",
+        "B": "minimum occurs at \\(x = -1\\)",
+        "C": "minimum occurs at \\(x = -1/2\\)",
+        "D": "maximum occurs at \\(x = -1/2\\)"
+      }
+    }
+  ]
+}

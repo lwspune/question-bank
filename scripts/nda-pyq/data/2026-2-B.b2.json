@@ -1,0 +1,294 @@
+{
+  "series": "B",
+  "band": "b2",
+  "pages": [11, 13, 15, 17, 19],
+  "bandReport": {
+    "printedPages": [13, 15, 17, 19, 21],
+    "numbersFound": [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "PAGES USED ARE NOT THE ONES ASSIGNED, and the assignment was wrong. The band was handed out/2026-2-B/p12,p14,p16,p18,p20 on config.ts's claim that Set B is 'ONE printed page each, index 2 = printed p3' with English on EVEN indices. Footers say otherwise: idx10=p12, idx12=p14 ... idx23=p25, and all of those are HINDI. PRINTED PAGE 10 IS ABSENT FROM THE Set B PDF, so the map is idx+1 for idx 0..8 and idx+2 from idx 9 on, which also flips English onto ODD indices. Verified off footers idx0..23: 1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25. English printed pages 13/15/17/19/21 are therefore PDF indices 11/13/15/17/19, rendered separately and transcribed here; every footer was read and matched. Seams both clean: printed p11 (idx 9, English) ends with Q30 complete + [P.T.O., and printed p23 (idx 21, English) opens at Q59, so nothing straddles either edge. SETS: Q45-47 share one 'For the next three (03) items' premise (P(A)/6 = P(B)/3 = P(C)/4 = P(D)/2) and Q48-50 share another (five numbers picked from 1..10, arranged ascending); the premise is repeated into each member's stem. Every option was read label by label off the page; nothing was copied between questions and no option was unreadable. ORPHANED PAGE — NOT MINE, NOT TRANSCRIBED HERE: printed page 11 (PDF idx 9) is English and carries Q26-30, ending with Q30 complete + [P.T.O. Band b1 was given p10 (= printed page 12, Hindi) in its place and stopped at printed page 9 / Q25, so NO BAND OWNS Q26-30. CONFIRMED against the sibling files, not predicted: b1 holds Q1-25, this band Q31-58, b3 Q59-87, b4 Q88-120 = 115 of 120, and the 5 missing are exactly Q26-30. Re-dispatching b1 against PDF index 9 closes it. Root cause for the whole series: config.ts VARIANTS['2026-2'] series B englishPages is [2,4,...,42] and should be [2,4,6,8,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41]; the +2 offset was verified to hold to the end of the booklet (idx 41 = printed 43, English; idx 42 is the advert)."
+  },
+  "questions": [
+    {
+      "number": 31,
+      "stem": "The variance of 10 observations is 25. If 2 is multiplied to each of the observations and subsequently 7 is subtracted from each multiplied observation, then what is the new variance?",
+      "options": [
+        { "label": "A", "text": "125" },
+        { "label": "B", "text": "100" },
+        { "label": "C", "text": "50" },
+        { "label": "D", "text": "25" }
+      ]
+    },
+    {
+      "number": 32,
+      "stem": "If the random variable X has mean 5 and standard deviation 4, then what is the standard deviation of the random variable Y = 3X + 4?",
+      "options": [
+        { "label": "A", "text": "16" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "6" }
+      ]
+    },
+    {
+      "number": 33,
+      "stem": "For a binomial distribution with mean 4 and standard deviation sqrt(3), what is the value of P(X = 0)?",
+      "options": [
+        { "label": "A", "text": "(1/4)^16" },
+        { "label": "B", "text": "(3/4)^16" },
+        { "label": "C", "text": "(1/4)^12" },
+        { "label": "D", "text": "(3/4)^12" }
+      ]
+    },
+    {
+      "number": 34,
+      "stem": "If the correlation coefficient between the variables X and Y is zero, then the two lines of regression are",
+      "options": [
+        { "label": "A", "text": "X + Y + 11 = 0 and 2X + 3Y + 4 = 0" },
+        { "label": "B", "text": "X = Xbar and Y = Ybar" },
+        { "label": "C", "text": "X = 0.4Y + 10 and Y = 1.6X + 20" },
+        { "label": "D", "text": "Xbar + Ybar + 11 = 0 and 2Xbar + 3Ybar + 4 = 0" }
+      ]
+    },
+    {
+      "number": 35,
+      "stem": "Four dice are rolled. What is the probability of getting a total of the numbers on the dice as 7?",
+      "options": [
+        { "label": "A", "text": "5/1296" },
+        { "label": "B", "text": "7/324" },
+        { "label": "C", "text": "7/1296" },
+        { "label": "D", "text": "5/324" }
+      ]
+    },
+    {
+      "number": 36,
+      "stem": "If P(A intersect B) = 1/2 and P(Abar intersect Bbar) = 1/2, and 2P(A) = P(B) = k, then what is the value of k?",
+      "options": [
+        { "label": "A", "text": "1/4" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "1/3" },
+        { "label": "D", "text": "2/3" }
+      ]
+    },
+    {
+      "number": 37,
+      "stem": "A committee has 6 men and 4 women. One member is selected randomly which is woman only. What is the probability that she belongs to a subgroup of 2 senior women?",
+      "options": [
+        { "label": "A", "text": "1/3" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "2/3" },
+        { "label": "D", "text": "3/4" }
+      ]
+    },
+    {
+      "number": 38,
+      "stem": "The standard deviation of X is 4 and the standard deviation of Y is 5. If the correlation coefficient r is 0.8, then what is the regression coefficient of Y on X?",
+      "options": [
+        { "label": "A", "text": "-2" },
+        { "label": "B", "text": "-1" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "1" }
+      ]
+    },
+    {
+      "number": 39,
+      "stem": "In a class, the probability of passing students in Mathematics is 0.7 and the probability of passing both Mathematics and Statistics is 0.5. What is the probability that a student passes Statistics given that the student passed Mathematics?",
+      "options": [
+        { "label": "A", "text": "5/7" },
+        { "label": "B", "text": "4/7" },
+        { "label": "C", "text": "3/7" },
+        { "label": "D", "text": "2/7" }
+      ]
+    },
+    {
+      "number": 40,
+      "stem": "If the mean of 50 observations is 40 and the standard deviation is 8, then what is the coefficient of variation?",
+      "options": [
+        { "label": "A", "text": "15%" },
+        { "label": "B", "text": "20%" },
+        { "label": "C", "text": "25%" },
+        { "label": "D", "text": "30%" }
+      ]
+    },
+    {
+      "number": 41,
+      "stem": "If two fair dice are tossed, then what is the probability that the sum of the numbers on the faces of the dice is neither 5 nor 7?",
+      "options": [
+        { "label": "A", "text": "11/18" },
+        { "label": "B", "text": "2/3" },
+        { "label": "C", "text": "13/18" },
+        { "label": "D", "text": "5/6" }
+      ]
+    },
+    {
+      "number": 42,
+      "stem": "Consider the following statements for three events A, B and C: I. P(A n B n C) <= P(A) + P(B) + P(C) - 2  II. P(A u B u C) >= P(A) + P(B) + P(C). Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 43,
+      "stem": "A Mathematics problem is given to two students X and Y to solve. The odds in favour of X solving the problem are 6 to 9 and the odds against Y in solving the problem are 6 to 5. What is the probability that the problem will be solved if both X and Y try to solve the problem?",
+      "options": [
+        { "label": "A", "text": "27/55" },
+        { "label": "B", "text": "31/55" },
+        { "label": "C", "text": "37/55" },
+        { "label": "D", "text": "39/55" }
+      ]
+    },
+    {
+      "number": 44,
+      "stem": "The events A and B are independent among three events A, B and D. If P(A n B n D) = 0.04, P(D | A n B) = 0.25 and P(B) = 4P(A), then what is the value of P(A u B)?",
+      "options": [
+        { "label": "A", "text": "0.88" },
+        { "label": "B", "text": "0.84" },
+        { "label": "C", "text": "0.28" },
+        { "label": "D", "text": "0.16" }
+      ]
+    },
+    {
+      "number": 45,
+      "stem": "For the next three (03) items that follow: Let A, B, C and D be mutually exclusive and exhaustive events such that P(A)/6 = P(B)/3 = P(C)/4 = P(D)/2. What is (P(A) + 2P(B)) / (3P(C) + P(D)) equal to?",
+      "options": [
+        { "label": "A", "text": "5/4" },
+        { "label": "B", "text": "6/7" },
+        { "label": "C", "text": "2/5" },
+        { "label": "D", "text": "17/6" }
+      ]
+    },
+    {
+      "number": 46,
+      "stem": "For the next three (03) items that follow: Let A, B, C and D be mutually exclusive and exhaustive events such that P(A)/6 = P(B)/3 = P(C)/4 = P(D)/2. If G is the geometric mean of P(A), P(B), P(C) and P(D), then what is G equal to?",
+      "options": [
+        { "label": "A", "text": "5/(2 sqrt(3))" },
+        { "label": "B", "text": "2/(5 sqrt(3))" },
+        { "label": "C", "text": "sqrt(3)/5" },
+        { "label": "D", "text": "1/(5 sqrt(3))" }
+      ]
+    },
+    {
+      "number": 47,
+      "stem": "For the next three (03) items that follow: Let A, B, C and D be mutually exclusive and exhaustive events such that P(A)/6 = P(B)/3 = P(C)/4 = P(D)/2. If H is the harmonic mean of P(A), P(B), P(C) and P(D), then what is H equal to?",
+      "options": [
+        { "label": "A", "text": "14/75" },
+        { "label": "B", "text": "15/76" },
+        { "label": "C", "text": "16/75" },
+        { "label": "D", "text": "16/15" }
+      ]
+    },
+    {
+      "number": 48,
+      "stem": "For the next three (03) items that follow: Five numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [x1 < x2 < x3 < x4 < x5; x1 being the smallest number and x5 being the largest number selected]. What is P(x1 = 4) equal to?",
+      "options": [
+        { "label": "A", "text": "5/84" },
+        { "label": "B", "text": "1/14" },
+        { "label": "C", "text": "1/7" },
+        { "label": "D", "text": "19/84" }
+      ]
+    },
+    {
+      "number": 49,
+      "stem": "For the next three (03) items that follow: Five numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [x1 < x2 < x3 < x4 < x5]. What is P(x3 = 6) equal to?",
+      "options": [
+        { "label": "A", "text": "5/21" },
+        { "label": "B", "text": "10/21" },
+        { "label": "C", "text": "11/21" },
+        { "label": "D", "text": "17/21" }
+      ]
+    },
+    {
+      "number": 50,
+      "stem": "For the next three (03) items that follow: Five numbers are randomly picked from the numbers 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 and arranged them in ascending order [x1 < x2 < x3 < x4 < x5]. What is P(x1 = 2, x2 = 3, x3 = 8) equal to?",
+      "options": [
+        { "label": "A", "text": "1/12" },
+        { "label": "B", "text": "1/60" },
+        { "label": "C", "text": "1/252" },
+        { "label": "D", "text": "0" }
+      ]
+    },
+    {
+      "number": 51,
+      "stem": "Let A and B be symmetric matrices of the same order. Which of the following statements is/are correct? I. (AB - BA) is also a symmetric matrix. II. (BA - AB) is a skew-symmetric matrix. Select the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 52,
+      "stem": "If A = [[-1, 2], [3, -4]], then what is |A^(-1)| equal to?",
+      "options": [
+        { "label": "A", "text": "-2" },
+        { "label": "B", "text": "-1" },
+        { "label": "C", "text": "-1/2" },
+        { "label": "D", "text": "2" }
+      ]
+    },
+    {
+      "number": 53,
+      "stem": "Let S be the set of all real numbers and R be a relation on S defined by xRy => |x| <= y. Then R is",
+      "options": [
+        { "label": "A", "text": "reflexive only" },
+        { "label": "B", "text": "transitive only" },
+        { "label": "C", "text": "both reflexive and transitive" },
+        { "label": "D", "text": "neither reflexive nor transitive" }
+      ]
+    },
+    {
+      "number": 54,
+      "stem": "4-digit numbers are formed with 1, 2, 3 and 4. What is the number of the 4-digit numbers in which at least one digit is repeated?",
+      "options": [
+        { "label": "A", "text": "256" },
+        { "label": "B", "text": "244" },
+        { "label": "C", "text": "232" },
+        { "label": "D", "text": "220" }
+      ]
+    },
+    {
+      "number": 55,
+      "stem": "Given S = {(x, y, z) in R^3 : xyz = 210, x < y < z, where x, y, z are positive integers}. What is the total number of elements in S?",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "13" },
+        { "label": "D", "text": "More than 13" }
+      ]
+    },
+    {
+      "number": 56,
+      "stem": "If x = 4 + i, where i = sqrt(-1), then what is x^3 + 2x^2 - 63x + 171 equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ]
+    },
+    {
+      "number": 57,
+      "stem": "Let alpha and beta be the roots of the equation x^2 - p(x + 1) - q = 0. What is (alpha^2 + 2alpha + 1)/(alpha^2 + 2alpha + q) + (beta^2 + 2beta + 1)/(beta^2 + 2beta + q) equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ]
+    },
+    {
+      "number": 58,
+      "stem": "If the sum of the roots of the equation 1/(2x + p) + 1/(2x + q) = 1/r is zero, then what is r equal to?",
+      "options": [
+        { "label": "A", "text": "p - q" },
+        { "label": "B", "text": "p + q" },
+        { "label": "C", "text": "(p - q)/2" },
+        { "label": "D", "text": "(p + q)/2" }
+      ]
+    }
+  ]
+}

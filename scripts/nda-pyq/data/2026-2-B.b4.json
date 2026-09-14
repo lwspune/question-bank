@@ -1,0 +1,348 @@
+{
+  "series": "B",
+  "band": "b4",
+  "pages": [31, 33, 35, 37, 39, 41],
+  "bandReport": {
+    "printedPages": [33, 35, 37, 39, 41, 43],
+    "numbersFound": [
+      88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+      101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
+      111, 112, 113, 114, 115, 116, 117, 118, 119, 120
+    ],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "PAGE INDICES DIFFER FROM THE ASSIGNMENT — read this before reconciling. I was assigned out/2026-2-B/p32,34,36,38,40,42.png as 'printed pages 33..43 (index+1)'. Every one of those is a HINDI page. Printed page 10 is ABSENT from the Set B PDF, so the index->printed offset changes from +1 to +2 at index 9, and from there English (the ODD printed pages) sits at ODD indices. Measured off the footers of all 43 pages: idx 0..8 -> printed 1..9; idx 9..42 -> printed 11..44. So config.ts VARIANTS['2026-2'] series B englishPages [2,4,...,42] is correct only for indices 2,4,6,8 and wrong from index 10 on; the real list is [2,4,6,8,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41]. Nothing is lost from the booklet: the missing printed page 10 is a Hindi page. I therefore rendered and transcribed indices 31,33,35,37,39,41 = printed 33,35,37,39,41,43, which are the six English pages this band was meant to cover. Footers read TFDD-A-HTM/37B on all six. SEAM: idx 29 (printed 31, English) holds Q83-Q87 complete and ends with Q87 option (d) plus [P.T.O., so b3 ends at Q87 and nothing straddles the opening seam. Q88 starts clean at the top of printed 33. CLOSING: Q120 is the last question, on printed 43; idx 42 is a Centurion Defence Academy advertisement with no questions, so the paper ends complete. Options were read label by label off each page; Q101 (binary strings), Q104 (relation sets), Q108, Q109, Q115, Q117 and Q120 were additionally re-read at 6-10x because the red watermark or handwritten rough-work show-through crosses them. No option was unreadable. Printed page 43's right column carries heavy pencil rough work from the candidate, but no printed character is obscured. CORROBORATION of option ORDER, which is what this pass exists to establish: the Hindi pages I was wrongly handed (indices 30,32,34,36,38,40 = printed 32,34,36,38,40,42) are the facing translations of exactly the questions in this band, and their option blocks are mostly language-neutral maths. I read all six of them back label by label against my English transcription. EVERY ONE OF THE 33 QUESTIONS AGREES on both option text and option ORDER - Q88-100 off printed 32/34, Q101-106 off 36, Q107-110 off 38, Q111-116 off the reverse-side show-through on 42, Q117-120 off 42 - so the (a)-(d) order recorded here is independently confirmed to be the order printed in this booklet. The highest-risk items were read three times: Q101's four 10-digit binary strings (page at 1x, a 10x crop, and the Hindi page), and Q104's four relation sets. Q109's unusual set (I only / III only / I and II / I and III) is confirmed distinct from the six ordinary 'I only / II only / Both I and II / Neither I nor II' questions in this band (Q93, 96, 103, 106, 108, 116), which is evidence those six were read rather than copied."
+  },
+  "questions": [
+    {
+      "number": 88,
+      "stem": "How much angle does r = (cos theta) i + (sin theta) j + k make with the positive direction of z-axis?",
+      "options": [
+        { "label": "A", "text": "pi/2" },
+        { "label": "B", "text": "pi/3" },
+        { "label": "C", "text": "pi/4" },
+        { "label": "D", "text": "pi/6" }
+      ]
+    },
+    {
+      "number": 89,
+      "stem": "Let a and b be unit vectors inclined at 30 degrees. What is the area of the parallelogram whose sides are represented by the vectors a + 3b and 3a + b?",
+      "options": [
+        { "label": "A", "text": "8 sqrt(3) square units" },
+        { "label": "B", "text": "8 square units" },
+        { "label": "C", "text": "4 sqrt(3) square units" },
+        { "label": "D", "text": "4 square units" }
+      ]
+    },
+    {
+      "number": 90,
+      "stem": "Let a, b and c be unit vectors such that a.b = a.c = 0. If the angle between b and c is pi/6, then what is a equal to?",
+      "options": [
+        { "label": "A", "text": "(b x c)" },
+        { "label": "B", "text": "sqrt(2) (b x c)" },
+        { "label": "C", "text": "2 (b x c)" },
+        { "label": "D", "text": "sqrt(3) (b x c)" }
+      ]
+    },
+    {
+      "number": 91,
+      "stem": "What is the domain of the function f(x) = log_x e?",
+      "options": [
+        { "label": "A", "text": "(0, infinity)" },
+        { "label": "B", "text": "(0, infinity) - {1}" },
+        { "label": "C", "text": "(0, infinity) - {e}" },
+        { "label": "D", "text": "(0, infinity) - {10}" }
+      ]
+    },
+    {
+      "number": 92,
+      "stem": "If f(x) is the integral of (1 + cos^2 x - 2 cos x)/(x sin^2 x tan x), then what is lim(x->0) f'(x) equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1/2" },
+        { "label": "C", "text": "1/3" },
+        { "label": "D", "text": "1/4" }
+      ]
+    },
+    {
+      "number": 93,
+      "stem": "Consider the following statements in respect of the function f(x) = [3x], where [.] is the greatest integer function : I. f(x) is continuous at x = 1/3. II. f(x) is differentiable at x = 1/4. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 94,
+      "stem": "What is lim(x->0) sin^2 x / (x |x|) equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "Limit does not exist" }
+      ]
+    },
+    {
+      "number": 95,
+      "stem": "Let f(x) = p|x| + q, where p and q are real constants. If f'(x) exists at x = 0, then what is the value of p?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "q" }
+      ]
+    },
+    {
+      "number": 96,
+      "stem": "Consider the following statements in respect of the given function : f(x) = x^3/|x| for x != 0, and 0 for x = 0. I. f(x) is continuous everywhere. II. f(x) is differentiable everywhere. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 97,
+      "stem": "What is lim(x->infinity) (sqrt(x + sqrt(x)) - sqrt(x)) equal to?",
+      "options": [
+        { "label": "A", "text": "-1/2" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1/2" },
+        { "label": "D", "text": "1" }
+      ]
+    },
+    {
+      "number": 98,
+      "stem": "If m and n are the roots of the equation x^2 - px + q = 0, then what is lim(x->m) (e^(x^2-px+q) - 1)/((x-m)(x-n)) equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "e" }
+      ]
+    },
+    {
+      "number": 99,
+      "stem": "Let f(x) = x^n + k, where n is a natural number and k is a positive real constant such that f(x) + f(1/x) = f(x) f(1/x) and f(2) = 9. What is f(-1) equal to?",
+      "options": [
+        { "label": "A", "text": "-2" },
+        { "label": "B", "text": "-1" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "1" }
+      ]
+    },
+    {
+      "number": 100,
+      "stem": "If f(x) = cos{(pi/3)[x] + x} for 1 < x < 2, where [.] is the greatest integer function, then what is f(pi/2) equal to?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "-sqrt(3)/2" },
+        { "label": "C", "text": "-1/2" },
+        { "label": "D", "text": "1/2" }
+      ]
+    },
+    {
+      "number": 101,
+      "stem": "What is the LCM of (11110)_2, (10100)_2 and (11011)_2?",
+      "options": [
+        { "label": "A", "text": "(1000001100)_2" },
+        { "label": "B", "text": "(1000011100)_2" },
+        { "label": "C", "text": "(1000111100)_2" },
+        { "label": "D", "text": "(1000011101)_2" }
+      ]
+    },
+    {
+      "number": 102,
+      "stem": "What is the coefficient of x^(2n) in the expansion of the following? (1+x)^(2n) (1 + 1/x)^(2n)",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2n(2n-1)(2n-2) ... (n+1)n" },
+        { "label": "C", "text": "4n(4n-1)(4n-2) ... (2n+1)(2n)" },
+        { "label": "D", "text": "Such term does not exist" }
+      ]
+    },
+    {
+      "number": 103,
+      "stem": "Consider the following statements in respect of the expansion of (x^2 + x^-2 + 2)^4 : I. The number of terms in the expansion is 5. II. One of the coefficients in the expansion has a maximum value equal to 70. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 104,
+      "stem": "Consider the following relations from A to B, where A = {1, 3, 5} and B = {2, 4, 6, 8} : I. {(1,2), (3,2), (3,6), (5,8)} II. {(3,4), (5,8), (1,6), (3,2)} III. {(1,2), (3,6)} IV. {(1,6), (3,2), (5,2)} Which of the above is/are function(s) from A to B?",
+      "options": [
+        { "label": "A", "text": "I, III and IV" },
+        { "label": "B", "text": "IV only" },
+        { "label": "C", "text": "II and IV" },
+        { "label": "D", "text": "III only" }
+      ]
+    },
+    {
+      "number": 105,
+      "stem": "If x^2 - 2x cos theta + 1 = 0, then what is the magnitude of x?",
+      "options": [
+        { "label": "A", "text": "-1" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "sqrt(2)" }
+      ]
+    },
+    {
+      "number": 106,
+      "stem": "Consider the following statements in respect of sets A and B : I. If x in A and A in B, then x in B. II. If A subset of B and x not in B, then x not in A. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 107,
+      "stem": "A research group conducted a survey of 500 consumers and reported that 370 consumers preferred product X and 240 consumers preferred product Y. What is the least number that must have preferred both the products?",
+      "options": [
+        { "label": "A", "text": "90" },
+        { "label": "B", "text": "100" },
+        { "label": "C", "text": "110" },
+        { "label": "D", "text": "Cannot be determined due to insufficient data" }
+      ]
+    },
+    {
+      "number": 108,
+      "stem": "The Cartesian product A x A has 25 elements among which are found (3,1), (6,2), (5,3). Which of the following statements is/are correct? I. It is possible to determine other elements of A x A. II. (5,5) in A x A and (1,3) not in A x A. Select the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 109,
+      "stem": "Consider the following statements in respect of a relation R from a set A to a set B : I. The set B is called codomain of the relation R. II. The range of the relation is always equal to codomain of the relation R. III. The domain of the relation R must be equal to the set A. Which of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "III only" },
+        { "label": "C", "text": "I and II" },
+        { "label": "D", "text": "I and III" }
+      ]
+    },
+    {
+      "number": 110,
+      "stem": "Consider the following system of linear inequalities : x - y <= 3 and x + y >= 5. The solution of the inequalities lies in",
+      "options": [
+        { "label": "A", "text": "first quadrant only" },
+        { "label": "B", "text": "second quadrant only" },
+        { "label": "C", "text": "both first quadrant and second quadrant only" },
+        { "label": "D", "text": "all the four quadrants" }
+      ]
+    },
+    {
+      "number": 111,
+      "stem": "If 1/(b-a) + 1/(b-c) = 2/b, then a, b and c are in",
+      "options": [
+        { "label": "A", "text": "AP" },
+        { "label": "B", "text": "GP" },
+        { "label": "C", "text": "HP" },
+        { "label": "D", "text": "Neither in AP nor in GP nor in HP" }
+      ]
+    },
+    {
+      "number": 112,
+      "stem": "Let P, Q, R and S be the sum of n terms, 2n terms, 3n terms and 4n terms respectively of an AP such that Q = 3P. Which one of the following is correct?",
+      "options": [
+        { "label": "A", "text": "5R = 3S" },
+        { "label": "B", "text": "6R = 5S" },
+        { "label": "C", "text": "8R = 7S" },
+        { "label": "D", "text": "9R = 8S" }
+      ]
+    },
+    {
+      "number": 113,
+      "stem": "In a GP, the 3rd, 5th and 7th terms are x, x^2 + 2 and x^3 + 10 respectively, where x > 1. What is the 8th term?",
+      "options": [
+        { "label": "A", "text": "18" },
+        { "label": "B", "text": "18 sqrt(3)" },
+        { "label": "C", "text": "54" },
+        { "label": "D", "text": "54 sqrt(3)" }
+      ]
+    },
+    {
+      "number": 114,
+      "stem": "If (1+i)^n - 16 = 0, where i = sqrt(-1) and n is a positive integer, then what is the least value of n?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "16" }
+      ]
+    },
+    {
+      "number": 115,
+      "stem": "What is i x i^4 x i^9 x i^16 x ... x i^576, where i = sqrt(-1), equal to?",
+      "options": [
+        { "label": "A", "text": "-i" },
+        { "label": "B", "text": "-1" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "i" }
+      ]
+    },
+    {
+      "number": 116,
+      "stem": "If z = x + iy be such that |(z + lambda i)/(z - lambda i)| = 1, where i = sqrt(-1) and lambda is a positive real number, then which of the following statements is/are correct? I. z lies on the line y = x. II. The amplitude of z is pi/4. Select the answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ]
+    },
+    {
+      "number": 117,
+      "stem": "What is the determinant with rows [1/a, bc, a^3], [1/a + 1/b, c(a+b), a^3 + b^3], [1/a + 1/b + 1/c, ab + bc + ca, a^3 + b^3 + c^3] equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "(a+b+c)(ab+bc+ca)" },
+        { "label": "D", "text": "a^3 + b^3 + c^3 - 3abc" }
+      ]
+    },
+    {
+      "number": 118,
+      "stem": "If ae + bg = cf + dh = p, af + bh = ce + dg = q, then what is det[a b; c d] x det[e f; g h] equal to?",
+      "options": [
+        { "label": "A", "text": "p^2 q^2" },
+        { "label": "B", "text": "pq" },
+        { "label": "C", "text": "p^2 + q^2" },
+        { "label": "D", "text": "p^2 - q^2" }
+      ]
+    },
+    {
+      "number": 119,
+      "stem": "If x + ay + a^2 z = 1, x + by + b^2 z = 1, x + cy + c^2 z = 1 where a != b != c, then what is x + y + z equal to?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "a + b + c" }
+      ]
+    },
+    {
+      "number": 120,
+      "stem": "Let A = [1, -tan theta; tan theta, 1] and B = [1, tan theta; -tan theta, 1]. If C = A B^-1, then what is det(C) equal to?",
+      "options": [
+        { "label": "A", "text": "sec^2 theta" },
+        { "label": "B", "text": "sec^4 theta" },
+        { "label": "C", "text": "cos^2 theta" },
+        { "label": "D", "text": "1" }
+      ]
+    }
+  ]
+}
