@@ -1,0 +1,473 @@
+{
+  "band": "b4",
+  "bandReport": {
+    "printedPages": [
+      9,
+      11,
+      13
+    ],
+    "numbersFound": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Footers read ( 9 - A ), ( 11 - A ), ( 13 - A ); TFDD-B-AGT at foot left on all three. Series A confirmed on every page. p11's footer is badly defocused -- the page digits are unreadable as glyphs, but the series glyph is an unmistakable triangle-with-crossbar (A), not a D bowl.\n\nBAND IS Q51-66, SIXTEEN questions -- NOT Q51-67 as the dispatch estimated. p9 = Q51-55, p11 = Q56-60, p13 = Q61-66. PART - B is headed on printed 9 and Q51 is its first question.\n\nSEAMS: BOTH CLEAN, no question straddles either boundary. p7 (before) ends with Q50 complete, all four options printed -- Part A closes on that page. p15 (after) opens with Q67 at the top of its left column, and Q66 on p13 is complete with all four options. b5 owns Q67 onward.\n\nFIGURES: NONE. No diagram anywhere on the three pages; every question is fully stated in words. Consistent with the brief's measured finding that this paper has none.\n\nSET D CROSS-READ (see the per-question flags on Q58 and Q60): printed pages 11 and 13 of Set A are photographed far worse than p9, and the Q58 and Q60 option blocks are backed by only ~109x73 and ~85x24 REAL source pixels, so no zoom adds information. Per config.ts ('Set D is the place to re-read any Set A region that is defocused near the binding ... ONLY after a question has been matched on independently legible content'), Set D was consulted. Every one of my sixteen questions has a legible Set A stem, so all sixteen were matched on independently legible content before any Set D option was read, and Set D was used to supply a CANDIDATE SET only -- each Set A label was then re-checked against its own glyphs. Note FIDELITY_BRIEF.md is referenced by config.ts but does not exist in scripts/nda-gat yet.\n\nEVIDENCE THAT THE TWO SERIES SHARE OPTION ORDER, for whoever builds the variant map: all sixteen of my questions appear in Set D and NOT ONE has its options permuted. Set A Q51-55 = Set D Q91-95, Q56-60 = Set D Q96-100, Q61-66 = Set D Q76-81, label for label. This is corroboration, not an assumption I relied on: Q51-57, Q59 and Q61-66 were read off Set A first and Set D agreed afterwards.\n\nAND THE SET D OFFSET IS NOT CONSTANT -- do not assume one. Within this Physics block it is +40 for Set A Q51-60 and +15 for Set A Q61-66 (and Set A Q67-70 = Set D Q82-85, also +15). Set D leads with Set A's Q61-75 and then takes Q51-60, i.e. a rotation WITHIN the block, not a shift. Set D's Part B also opens on a different subject entirely (Biology, not Physics)."
+  },
+  "questions": [
+    {
+      "number": 51,
+      "stem": "A bicycle racing track is a level circular road of radius 10 m. Three cyclists P, Q and R with identical cycles are cycling on the track with speeds 2 m/s, 3 m/s and 5 m/s respectively. If the coefficient of friction between the tyres and the road is \\(0.1\\), then which cyclist will slip ? (Take \\(g = 10\\ \\text{m/s}^2\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "P only"
+        },
+        {
+          "label": "B",
+          "text": "Q only"
+        },
+        {
+          "label": "C",
+          "text": "R only"
+        },
+        {
+          "label": "D",
+          "text": "All will slip"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Kinematics and Motion",
+      "subtopic": "Circular Motion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 52,
+      "stem": "The bob of a simple pendulum is displaced from its mean position and then released from rest \\(0.20\\) m above its mean position. What is the speed of the bob as it passes through the mean position ? (Take \\(g = 10\\ \\text{m/s}^2\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 m/s"
+        },
+        {
+          "label": "B",
+          "text": "1 m/s"
+        },
+        {
+          "label": "C",
+          "text": "2 m/s"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\sqrt{10}\\) m/s"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "subtopic": "Energy and Conservation",
+      "difficulty": "EASY",
+      "flags": [
+        "Taxonomy judgement: filed under Work, Energy and Power / Energy and Conservation because the technique tested is conservation of mechanical energy (mgh = 1/2 mv^2), per the bank's technique-canonical subtopic convention. Oscillations and Waves / Simple Pendulum is the rival fit on subject matter -- no period/length work appears in the question."
+      ]
+    },
+    {
+      "number": 53,
+      "stem": "A tennis ball of mass 350 g is thrown vertically upwards at a speed of 4 m/s. If M is the maximum gravitational potential energy of the ball and H is the maximum height it reaches, then which one of the following is correct ? (Take \\(g = 10\\ \\text{m/s}^2\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(M = 5.6\\) J, \\(H = 1.6\\) m"
+        },
+        {
+          "label": "B",
+          "text": "\\(M = 2.8\\) J, \\(H = 1.6\\) m"
+        },
+        {
+          "label": "C",
+          "text": "\\(M = 5.6\\) J, \\(H = 0.8\\) m"
+        },
+        {
+          "label": "D",
+          "text": "\\(M = 2.8\\) J, \\(H = 0.8\\) m"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "subtopic": "Energy and Conservation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 54,
+      "stem": "Which of the following is correct regarding the total internal reflection at the interface between two different optical media ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The phenomenon of total internal reflection can occur only if light is passing at any angle from a medium of low refractive index to a medium of high refractive index."
+        },
+        {
+          "label": "B",
+          "text": "The phenomenon of total internal reflection can occur only if light is passing from a medium of high refractive index to a medium of low refractive index and at an angle greater than the critical angle."
+        },
+        {
+          "label": "C",
+          "text": "The phenomenon of total internal reflection can occur only if light is passing at any angle from a medium of high refractive index to a medium of low refractive index."
+        },
+        {
+          "label": "D",
+          "text": "The phenomenon of total internal reflection can occur only if light is passing from a medium of low refractive index to a medium of high refractive index and at an angle greater than the critical angle."
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Light and Optics",
+      "subtopic": "Refraction, Speed of Light and TIR",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 55,
+      "stem": "Consider the following statements :\nI. The weight of an object is the same everywhere on the surface of the Earth, but its inertial mass could be different.\nII. The inertial mass and gravitational mass of an object are proportional and the proportionality constant is the same everywhere.\nIII. The inertial mass and weight of an object are the same at different places on Earth.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I only"
+        },
+        {
+          "label": "B",
+          "text": "II only"
+        },
+        {
+          "label": "C",
+          "text": "I and II"
+        },
+        {
+          "label": "D",
+          "text": "II and III"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Newton's Law of Gravitation",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Taxonomy: closest fit. The question is about inertial vs gravitational mass and the variation of weight over the Earth's surface; the Gravitation chapter has no 'mass and weight' subtopic, so it is filed under Newton's Law of Gravitation (where gravitational mass lives). Gravitational Field and Potential is the rival fit."
+      ]
+    },
+    {
+      "number": 56,
+      "stem": "Consider the following :\nI. Gravitational field due to a spherical body\nII. Electrostatic field due to a point charge\nIII. Strong nuclear force field due to a proton\nIV. Magnetic field due to a bar magnet\nHow many of the above follow the inverse square law ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "One"
+        },
+        {
+          "label": "B",
+          "text": "Two"
+        },
+        {
+          "label": "C",
+          "text": "Three"
+        },
+        {
+          "label": "D",
+          "text": "All four"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "subtopic": "Newton's Law of Gravitation",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Taxonomy: FORCED FIT. The question spans four different force fields (gravitational, electrostatic, strong nuclear, magnetic) and its actual subject is the inverse-square law itself, which no chapter owns. Filed under Gravitation / Newton's Law of Gravitation as the canonical home of the inverse-square law. Electricity and Magnetism / Electrostatics is an equally defensible rival."
+      ]
+    },
+    {
+      "number": 57,
+      "stem": "While pouring water slowly from a jug, a general observation is that a water layer usually flows along the side of the jug. Which property of water among the following is responsible for this phenomenon ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Surface tension"
+        },
+        {
+          "label": "B",
+          "text": "Relatively low vapour pressure at room temperature"
+        },
+        {
+          "label": "C",
+          "text": "Negligible compressibility"
+        },
+        {
+          "label": "D",
+          "text": "Low viscosity at room temperature"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Fluid Mechanics and Properties of Matter",
+      "subtopic": "Pressure and Surface Tension",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 58,
+      "stem": "A fish is at a depth \\(d\\) in water of refractive index \\(4/3\\). If a transparent slab of refractive index \\(3/2\\) and thickness \\(d/2\\) is placed on the surface of water, then which one of the following is the apparent depth of the fish as observed by an observer in air ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(d/2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(5d/8\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(13d/12\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(17d/24\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Light and Optics",
+      "subtopic": "Refraction, Speed of Light and TIR",
+      "difficulty": "HARD",
+      "flags": [
+        "LOW-LEGIBILITY OPTIONS on Set A. This option block is backed by only ~109x73 REAL source pixels (measured), so no zoom adds information. Set A's own glyphs give the glyph-count pattern 3/4/6/6 for A/B/C/D and resolve A='d/2' and B='5d/8' outright; for C and D the leading pair reads '13' vs '17' (rounded second glyph vs flat-topped diagonal). The exact texts were CONFIRMED against Set D Q98, which carries this question with the same four options in the same label order. Set D supplied the candidate set only -- each Set A label was matched against its own glyphs, never imported."
+      ]
+    },
+    {
+      "number": 59,
+      "stem": "A particle of mass \\(m\\) moves along x-direction under the force \\(F(x) = F_0\\left(1 - \\frac{x}{L}\\right)\\) for \\(0 \\le x \\le L\\). If the particle starts from rest at \\(x = 0\\), then what is the speed \\((v)\\) of the particle at \\(x = L\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(v = \\sqrt{\\frac{2F_0 L}{m}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(v = \\sqrt{\\frac{F_0 L}{m}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(v = \\sqrt{\\frac{F_0 L}{2m}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(v = 0\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "subtopic": "Work-Energy Theorem and Power",
+      "difficulty": "HARD",
+      "flags": [
+        "Read off Set A at high zoom: A's numerator is one glyph WIDER than B's and C's (the leading 2), and C's denominator is one glyph wider than A's and B's (the leading 2 of 2m). That mutual contrast is the discriminator and it is internally consistent. Independently confirmed against Set D Q99, same four options in the same label order."
+      ]
+    },
+    {
+      "number": 60,
+      "stem": "A narrow tunnel passes through the centre of a planet of radius \\(R\\) and uniform mass density \\(\\rho\\). A particle is released into the tunnel. What is the angular frequency of oscillation of the particle \\((\\omega)\\) equal to ? (Symbols carry their usual meaning)",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\omega = \\sqrt{\\frac{4\\pi G\\rho}{3}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\omega = \\sqrt{\\frac{2\\pi G\\rho}{3}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\omega = \\infty\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\omega = 0\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Oscillations and Waves",
+      "subtopic": "Simple Harmonic Motion and General Waves",
+      "difficulty": "HARD",
+      "flags": [
+        "WORST-LEGIBILITY BLOCK IN THE BAND. Faded ink + defocus + the red watermark. On Set A's own page I can establish: A and B each carry a radical with a FOUR-glyph numerator over a single-glyph denominator consistent with 3; C and D carry NO radical; and C's value is a wide two-lobed glyph (infinity), not a round 0. D's value is completely obscured by the watermark and is NOT independently visible on Set A -- it is the remaining member of a four-option set whose other three are placed, and Set D Q100 confirms it as 0. The 4 vs 2 in the A/B numerators is likewise below Set A's resolution and comes from Set D. See the band report for the Set A/Set D label-order evidence."
+      ]
+    },
+    {
+      "number": 61,
+      "stem": "On a rainy day, rain drops fall vertically with speed v. An observer is moving towards east with speed v, while another observer moves towards north with the same speed v. What is the angle between apparent rain directions observed by them ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0^\\circ\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(30^\\circ\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(45^\\circ\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(60^\\circ\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Kinematics and Motion",
+      "subtopic": "Vectors and Position",
+      "difficulty": "HARD",
+      "flags": [
+        "Taxonomy: relative velocity has no subtopic of its own under Kinematics and Motion; filed under Vectors and Position as the vector-addition-of-velocities fit."
+      ]
+    },
+    {
+      "number": 62,
+      "stem": "What is the minimum horizontal speed given to the bob of a simple pendulum of length 50 cm so that it describes a complete circle ? (Take \\(g = 10\\ \\text{m/s}^2\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "5 m/s"
+        },
+        {
+          "label": "B",
+          "text": "\\(7.5\\) m/s"
+        },
+        {
+          "label": "C",
+          "text": "10 m/s"
+        },
+        {
+          "label": "D",
+          "text": "\\(12.5\\) m/s"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Kinematics and Motion",
+      "subtopic": "Circular Motion",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 63,
+      "stem": "Two conducting wires made of the same material have lengths L and \\(1.2\\) L. If the volume of the longer wire is half that of the shorter wire, then what is the electric resistance of the longer wire in comparison with the shorter wire ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "288% larger"
+        },
+        {
+          "label": "B",
+          "text": "200% larger"
+        },
+        {
+          "label": "C",
+          "text": "188% larger"
+        },
+        {
+          "label": "D",
+          "text": "108% larger"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Electricity and Magnetism",
+      "subtopic": "Resistance and Resistivity",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 64,
+      "stem": "A biconvex lens is made of a material of refractive index 2 such that the ratio of the radii of curvature of its two faces is 1 : 2. A point source in air is placed on the principal axis of this lens at a distance u from the lens. Which one of the following is correct if the image is formed exactly at the same distance as that of the point source ?\n(where R is the radius of curvature of the first face)",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(u = R\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(u = 2R\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2u = 3R\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3u = 4R\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Light and Optics",
+      "subtopic": "Lenses and Lens Formula",
+      "difficulty": "HARD",
+      "flags": [
+        "The parenthetical '(where R is the radius of curvature of the first face)' is printed on its own line AFTER the question mark, in both Set A and Set D. Kept as its own line rather than folded into the preceding sentence."
+      ]
+    },
+    {
+      "number": 65,
+      "stem": "In a carrom game, a striker of mass 15 g hits a coin of mass 5 g head on and the coin moves with a speed of \\(0.36\\) m/s. If the time of contact between the striker and the coin is 3 milliseconds, then what is the average force applied by the striker on the coin ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0.72\\) N"
+        },
+        {
+          "label": "B",
+          "text": "\\(0.60\\) N"
+        },
+        {
+          "label": "C",
+          "text": "\\(0.54\\) N"
+        },
+        {
+          "label": "D",
+          "text": "\\(0.30\\) N"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Laws of Motion and Forces",
+      "subtopic": "Impulse and Momentum",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 66,
+      "stem": "A hollow prism is filled with water of refractive index \\(1.34\\) and white light is incident on the prism. The white light is assumed to have wavelengths ranging from \\(4020\\ \\text{Å}\\) to \\(6700\\ \\text{Å}\\). What is the corresponding wavelength range in water ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3000\\ \\text{Å}\\) to \\(5000\\ \\text{Å}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(4020\\ \\text{Å}\\) to \\(6700\\ \\text{Å}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(5000\\ \\text{Å}\\) to \\(7000\\ \\text{Å}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(5386\\ \\text{Å}\\) to \\(8978\\ \\text{Å}\\)"
+        }
+      ],
+      "subject": "Physics",
+      "chapter": "Light and Optics",
+      "subtopic": "Refraction, Speed of Light and TIR",
+      "difficulty": "MODERATE"
+    }
+  ]
+}
