@@ -228,13 +228,15 @@ type Tally = {
   weightedSum: number;
   weightTotal: number;
   secs: number[];
+  /** Ids of the questions answered WRONG, for the audit's drill-down link. */
+  wrongIds: string[];
   /** per attempt, oldest first: share correct of the questions in this bucket */
   perAttempt: Map<string, { correct: number; total: number; at: string }>;
 };
 
 const emptyTally = (): Tally => ({
   total: 0, answered: 0, correct: 0, wrong: 0, seenBlank: 0, neverReached: 0,
-  weightedSum: 0, weightTotal: 0, secs: [], perAttempt: new Map(),
+  weightedSum: 0, weightTotal: 0, secs: [], wrongIds: [], perAttempt: new Map(),
 });
 
 function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, at: string) {
@@ -249,7 +251,10 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
   } else {
     t.answered++;
     if (verdict === 1) t.correct++;
-    else if (verdict === -1) t.wrong++;
+    else if (verdict === -1) {
+      t.wrong++;
+      t.wrongIds.push(f.q);
+    }
     t.weightedSum += (verdict === 1 ? 1 : 0) * weight;
     t.weightTotal += weight;
     t.secs.push(f.ts);
@@ -293,6 +298,9 @@ export type SubtopicRow = {
   weightedScore: number;
   trend: Trend;
   medianSecs: number | null;
+  /** The questions they got wrong here, so the audit can open exactly those on
+   *  /browse rather than a filter that merely approximates them. */
+  wrongQuestionIds: string[];
 };
 
 export type ChapterRow = Omit<SubtopicRow, "subtopic"> & { subtopics: SubtopicRow[] };
@@ -317,6 +325,7 @@ function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
     weightedScore: t.weightTotal > 0 ? t.weightedSum / t.weightTotal : 0,
     trend: trendOf(t),
     medianSecs: median(t.secs),
+    wrongQuestionIds: t.wrongIds,
   };
 }
 

@@ -29,13 +29,21 @@ function typeLabel(a: UserAttempt): string | null {
 
 /** A signed-in student's attempts. `showMock` includes the paper title (history
  *  view); omit it on a single mock's page. Submitted/timed-out rows link to the
- *  result; an in-progress row links back into the runner to resume. */
+ *  result; an in-progress row links back into the runner to resume.
+ *
+ *  `reviewBase` repoints the finished rows at a different review surface. The
+ *  default is the student's own result page, which is own-row by construction —
+ *  so on an ADMIN page every row would 404 and bounce to /mock. The dashboard
+ *  passes its superadmin route instead. In-progress rows never repoint: only
+ *  the owner can resume a running attempt, and a superadmin must not. */
 export default function AttemptsList({
   attempts,
   showMock = true,
+  reviewBase,
 }: {
   attempts: UserAttempt[];
   showMock?: boolean;
+  reviewBase?: string;
 }) {
   return (
     <ul className="divide-y rounded-lg border bg-card">
@@ -43,7 +51,9 @@ export default function AttemptsList({
         const live = a.status === "in_progress";
         const href = live
           ? `/mock/${a.mockSlug}/attempt/${a.attemptId}`
-          : `/mock/attempt/${a.attemptId}/result`;
+          : reviewBase
+            ? `${reviewBase}/${a.attemptId}`
+            : `/mock/attempt/${a.attemptId}/result`;
         const s = STATUS[a.status];
         return (
           <li key={a.attemptId}>

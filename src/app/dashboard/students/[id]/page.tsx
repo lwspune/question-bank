@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
+import StudentTabs from "./StudentTabs";
 import AttemptsList from "@/app/mock/_components/AttemptsList";
 import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
@@ -59,15 +60,7 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl space-y-6 px-6 py-8">
-        <div>
-          <Link
-            href="/dashboard/students"
-            className="rounded text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            ← All students
-          </Link>
-          <h1 className="mt-2 text-2xl font-semibold tracking-tight">{profile.name}</h1>
-        </div>
+        <StudentTabs id={params.id} name={profile.name} active="profile" />
 
         {/* Account — who they are + how they got here */}
         <Section title="Account">
@@ -169,9 +162,20 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
           </p>
         </section>
 
-        {/* Mock performance */}
+        {/* Mock performance — the 3-stat summary stays here; the diagnosis
+            (chapters, audits, pacing, projection) lives on the Performance tab,
+            which is a separate route because it loads a far heavier aggregate
+            and wants a wider shell than this profile's field list. */}
         <section>
-          <h2 className="mb-3 text-sm font-semibold">Mock performance</h2>
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-sm font-semibold">Mock performance</h2>
+            <Link
+              href={`/dashboard/students/${params.id}/performance`}
+              className="rounded text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Full performance →
+            </Link>
+          </div>
           <div className="mb-3 grid grid-cols-3 gap-3">
             <StatCard kind="numeric" value={summary.taken} label="Mocks taken" />
             <StatCard kind="text" value={summary.bestPct != null ? `${summary.bestPct}%` : DASH} label="Best" />
@@ -182,7 +186,12 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
               This student hasn&apos;t attempted any mock yet.
             </p>
           ) : (
-            <AttemptsList attempts={attempts} />
+            <AttemptsList
+              attempts={attempts}
+              // Own-row: the student result page 404s for anyone but the owner,
+              // so every row here was a dead link until this route existed.
+              reviewBase={`/dashboard/students/${params.id}/attempt`}
+            />
           )}
         </section>
 

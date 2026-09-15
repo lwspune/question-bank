@@ -23,6 +23,7 @@ async function main() {
   const { createClient } = await import("@supabase/supabase-js");
   const { fetchStudentPerformance } = await import("@/lib/performance/query");
   const { buildPerformance } = await import("@/lib/performance/compute");
+  const { buildFocusAreas } = await import("@/lib/performance/focusAreas");
 
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -88,6 +89,18 @@ async function main() {
           `neverReached=${cov.neverReached} medianSecs=${cov.medianSecs ?? "—"} ` +
           `projected=${lane.projection ? `${lane.projection.total}/${lane.projection.ceiling}` : "—"}`
       );
+      // The focus card only exists for NDA Mathematics, so this is the only
+      // lane that exercises the concept graph against real chapter names — the
+      // path where a taxonomy rename shows up as a silently empty list.
+      const focus = buildFocusAreas(lane.exam, lane.subject, lane.chapters);
+      if (focus) {
+        console.log(
+          `        focus: startHere=${focus.startHere.map((f) => f.chapter).join(", ") || "none"}`
+        );
+        console.log(
+          `        readyToLearn=${focus.readyToLearn.slice(0, 5).map((r) => r.chapter).join(", ") || "none"}`
+        );
+      }
     }
   }
   console.log("\nOK");
