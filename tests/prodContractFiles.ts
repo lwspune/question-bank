@@ -26,4 +26,5 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/planner-data.test.ts", // session-plan section refs vs the live syllabus spine
   "tests/blog-nda2-2026-stats.test.ts", // blog post figures vs the live NDA Maths corpus
   "tests/blog-nda2-2026-gat-stats.test.ts", // GAT post figures vs the live NDA GAT corpus
+  "tests/performance-concept-graph-taxonomy.test.ts", // prereq-graph nodes vs live NDA Maths chapters
 ];
