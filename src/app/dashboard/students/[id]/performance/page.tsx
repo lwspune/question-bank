@@ -1,16 +1,19 @@
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BookOpen, Dumbbell, ExternalLink } from "lucide-react";
+import { BookOpen, Dumbbell } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import StudentTabs from "../StudentTabs";
 import ChapterAccordion from "./ChapterAccordion";
+import AuditList from "./AuditList";
+import ProjectionList from "./ProjectionList";
 import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getStudentDetail } from "@/lib/students/detail";
 import { getStudentPerformance } from "@/lib/performance/service";
-import { buildPerformance, type Lane } from "@/lib/performance/compute";
+import { buildPerformance, type Lane, type TimeAnalysis } from "@/lib/performance/compute";
+import { buildLaneNav } from "@/lib/performance/laneNav";
 import { buildFocusAreas } from "@/lib/performance/focusAreas";
 import { DASH } from "@/lib/students/profileView";
 
@@ -44,11 +47,17 @@ export default async function StudentPerformancePage({
   const perf = buildPerformance(payload, new Date());
   const { summary, lanes } = perf;
 
-  // Lanes are pre-sorted by evidence, so the first is the best default.
-  const selected =
-    lanes.find((l) => l.exam === searchParams.exam && l.subject === searchParams.subject) ??
-    lanes[0] ??
-    null;
+  // Two axes, not one row of (exam · subject) pills: on a multi-exam student
+  // the single list interleaves the exams, and the default lane was whichever
+  // they had answered most of rather than the one they last sat. Both rules
+  // live in buildLaneNav, where they are pinned by tests.
+  const nav = buildLaneNav(lanes, summary.latest?.exam ?? null, searchParams);
+  const selected = nav.selected;
+  const hrefFor = (exam: string, subject?: string) => {
+    const qs = new URLSearchParams({ exam });
+    if (subject) qs.set("subject", subject);
+    return `/dashboard/students/${params.id}/performance?${qs.toString()}`;
+  };
 
   return (
     <>
@@ -99,34 +108,43 @@ export default async function StudentPerformancePage({
               </p>
             </section>
 
-            {lanes.length > 1 && (
-              <nav aria-label="Subject" className="flex flex-wrap gap-2">
-                {lanes.map((l) => {
-                  const active = l === selected;
-                  return (
-                    <Link
-                      key={`${l.exam}-${l.subject}`}
-                      href={`/dashboard/students/${params.id}/performance?exam=${encodeURIComponent(l.exam)}&subject=${encodeURIComponent(l.subject)}`}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                        active
-                          ? "border-brand-accent bg-brand text-brand-foreground"
-                          : "hover:bg-accent"
-                      )}
-                    >
-                      {l.exam} · {l.subject}
-                      <span className={cn("ml-1.5", active ? "opacity-80" : "text-muted-foreground")}>
-                        {l.judged}
-                      </span>
-                    </Link>
-                  );
-                })}
+            {/* Exam first, subject second. The exam row appears only for a
+                student who has sat more than one — 112 of the 124 students with
+                submitted attempts have exactly one, and a single-option filter
+                is furniture. */}
+            {nav.exams.length > 1 && (
+              <nav aria-label="Exam" className="flex flex-wrap gap-2">
+                {nav.exams.map((e) => (
+                  <Pill
+                    key={e.exam}
+                    // No subject: switching exam lands on that exam's busiest
+                    // lane rather than carrying a subject the exam may not have.
+                    href={hrefFor(e.exam)}
+                    active={e.exam === nav.selectedExam}
+                    count={e.judged}
+                  >
+                    {e.exam}
+                  </Pill>
+                ))}
               </nav>
             )}
 
-            {selected && <LaneView lane={selected} studentId={params.id} />}
+            {nav.subjects.length > 1 && (
+              <nav aria-label="Subject" className="flex flex-wrap gap-2">
+                {nav.subjects.map((l) => (
+                  <Pill
+                    key={`${l.exam}-${l.subject}`}
+                    href={hrefFor(l.exam, l.subject)}
+                    active={l === selected}
+                    count={l.judged}
+                  >
+                    {l.subject}
+                  </Pill>
+                ))}
+              </nav>
+            )}
+
+            {selected && <LaneView lane={selected} />}
           </>
         )}
       </main>
@@ -134,14 +152,9 @@ export default async function StudentPerformancePage({
   );
 }
 
-function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
+function LaneView({ lane }: { lane: Lane }) {
   const focus = buildFocusAreas(lane.exam, lane.subject, lane.chapters);
   const cov = lane.coverage;
-  // Only claim a pacing finding when both ends of the paper were actually timed.
-  const rushed =
-    cov.headMedianSecs !== null &&
-    cov.tailMedianSecs !== null &&
-    cov.headMedianSecs >= 2 * cov.tailMedianSecs;
 
   return (
     <div className="space-y-6">
@@ -154,9 +167,11 @@ function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
         </span>
       </h2>
 
-      {/* Coverage & pacing — the readout nda-tracker cannot build, because an
-          OMR sheet cannot tell a deliberate skip from a question never reached. */}
-      <Section title="Coverage &amp; pacing">
+      {/* Coverage — the readout nda-tracker cannot build, because an OMR sheet
+          cannot tell a deliberate skip from a question never reached. Pacing
+          used to share this card and now has its own below: completion and the
+          clock are two different diagnoses. */}
+      <Section title="Coverage">
         <div className="rounded-lg border bg-card p-4">
           <div className="flex h-3 overflow-hidden rounded-full bg-muted" aria-hidden>
             <Segment n={cov.answered} total={cov.inPaper} className="bg-emerald-500" />
@@ -177,19 +192,11 @@ function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
             <span className="font-medium text-foreground">Never reached</span> means no answer row
             was written at all — a clock problem, not a knowledge gap, and it is kept out of the
             skipped audit for that reason.
-            {rushed && (
-              <>
-                {" "}
-                Pace fell from{" "}
-                <span className="font-medium text-foreground">{cov.headMedianSecs}s</span> per
-                question in the first fifth to{" "}
-                <span className="font-medium text-foreground">{cov.tailMedianSecs}s</span> in the
-                last — the paper was rushed at the end.
-              </>
-            )}
           </p>
         </div>
       </Section>
+
+      <TimeCard lane={lane} />
 
       <Section title="Accuracy by difficulty">
         <dl className="grid grid-cols-3 gap-3">
@@ -256,7 +263,7 @@ function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
 
       {lane.wrongAudit.length > 0 && (
         <Section title="Wrong-answer audit" note="Subtopics by wrong count — the highest-priority revision targets.">
-          <AuditList rows={lane.wrongAudit} kind="wrong" studentId={studentId} />
+          <AuditList rows={lane.wrongAudit} kind="wrong" />
         </Section>
       )}
 
@@ -265,7 +272,7 @@ function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
           title="Skipped audit"
           note="Questions they SAW and left blank. Questions never reached are excluded — those are a pacing problem, reported above."
         >
-          <AuditList rows={lane.skipAudit} kind="skipped" studentId={studentId} />
+          <AuditList rows={lane.skipAudit} kind="skipped" />
         </Section>
       )}
 
@@ -274,90 +281,197 @@ function LaneView({ lane, studentId }: { lane: Lane; studentId: string }) {
           title="Projected score"
           note={`Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
         >
-          <div className="rounded-lg border bg-card">
-            <div className="flex items-baseline justify-between border-b p-4">
-              <span className="text-sm text-muted-foreground">Projected</span>
-              <span className="text-2xl font-semibold tabular-nums">
-                {lane.projection.total}
-                <span className="text-sm font-normal text-muted-foreground">
-                  {" "}
-                  / {lane.projection.ceiling}
-                </span>
-              </span>
-            </div>
-            <ul className="divide-y">
-              {lane.projection.rows.slice(0, 10).map((r) => (
-                <li key={r.chapter} className="flex flex-wrap items-center gap-x-3 gap-y-1 p-3">
-                  <span className="min-w-0 flex-1 truncate text-sm">
-                    {r.chapter}
-                    {!r.tested && (
-                      <span className="ml-2 text-xs text-muted-foreground">never tested</span>
-                    )}
-                  </span>
-                  <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-                    {r.projected.toFixed(1)} of {r.marksAtStake.toFixed(1)} marks
-                  </span>
-                  <span className="shrink-0 text-sm font-semibold tabular-nums text-brand-accent">
-                    +{r.gap.toFixed(1)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ProjectionList projection={lane.projection} />
         </Section>
       )}
     </div>
   );
 }
 
-function AuditList({
-  rows,
-  kind,
-  studentId,
+/**
+ * Time analysis — where the sitting's clock actually went.
+ *
+ * This is the half of the diagnosis an OMR sheet cannot produce at all, and
+ * until now the page spent one number on it. The data earns the card: measured
+ * across 300 submitted attempts in production, per-question dwell sums to the
+ * attempt's own wall clock (median ratio 0.95, never above 1.01), so these
+ * shares partition the real sitting rather than sampling it.
+ *
+ * Every figure is a MEDIAN, because dwell is wall-clock and includes idle —
+ * production holds a single question at 6,131 seconds, which moves a mean and
+ * not a median.
+ */
+function TimeCard({ lane }: { lane: Lane }) {
+  const t: TimeAnalysis = lane.time;
+  const cov = lane.coverage;
+  if (t.totalSecs === 0) return null;
+
+  // Only claim a pacing finding when both ends of the paper were actually timed.
+  const rushed =
+    cov.headMedianSecs !== null &&
+    cov.tailMedianSecs !== null &&
+    cov.headMedianSecs >= 2 * cov.tailMedianSecs;
+
+  return (
+    <Section
+      title="Time analysis"
+      note="Where the clock went, and what it bought. Medians throughout — dwell is wall-clock on the question, so one abandoned tab would move a mean."
+    >
+      <div className="space-y-4 rounded-lg border bg-card p-4">
+        <div>
+          <div className="flex items-baseline justify-between">
+            <span className="text-xs text-muted-foreground">Where the clock went</span>
+            <span className="text-sm font-semibold tabular-nums">{fmtDuration(t.totalSecs)}</span>
+          </div>
+          <div className="mt-2 flex h-3 overflow-hidden rounded-full bg-muted" aria-hidden>
+            <Segment n={t.correctSecs} total={t.totalSecs} className="bg-emerald-500" />
+            <Segment n={t.wrongSecs} total={t.totalSecs} className="bg-red-500" />
+            <Segment n={t.blankSecs} total={t.totalSecs} className="bg-amber-500" />
+            <Segment n={t.unjudgedSecs} total={t.totalSecs} className="bg-muted-foreground/30" />
+          </div>
+          <dl className="mt-3 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
+            <TimeMetric
+              label="On correct answers"
+              secs={t.correctSecs}
+              total={t.totalSecs}
+              median={t.medianCorrectSecs}
+              tone="text-emerald-600 dark:text-emerald-400"
+            />
+            <TimeMetric
+              label="On wrong answers"
+              secs={t.wrongSecs}
+              total={t.totalSecs}
+              median={t.medianWrongSecs}
+              tone="text-red-600 dark:text-red-400"
+            />
+            <TimeMetric
+              label="On questions left blank"
+              secs={t.blankSecs}
+              total={t.totalSecs}
+              median={t.medianBlankSecs}
+              tone="text-amber-600 dark:text-amber-400"
+            />
+          </dl>
+        </div>
+
+        {/* The pace curve, always — not only when it crosses a threshold. Two
+            numbers a reader can judge beat a sentence that appears sometimes. */}
+        {(cov.headMedianSecs !== null || cov.tailMedianSecs !== null) && (
+          <p className="border-t pt-3 text-xs text-muted-foreground">
+            <span className="font-medium text-foreground">Pace.</span>{" "}
+            {cov.headMedianSecs ?? DASH}s per question in the first fifth of the paper →{" "}
+            {cov.tailMedianSecs ?? DASH}s in the last.
+            {rushed && " The paper was rushed at the end."}
+          </p>
+        )}
+
+        {t.slowest.length > 0 && (
+          <div className="border-t pt-3">
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Slowest chapters.</span> Seconds are
+              only a finding next to the accuracy they bought.
+            </p>
+            <ul className="mt-2 space-y-1.5">
+              {t.slowest.map((c) => (
+                <li key={c.chapter} className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <span className="min-w-0 flex-1 truncate">{c.chapter}</span>
+                  <span className="shrink-0 tabular-nums">
+                    <span className="font-semibold">{c.medianSecs}s</span>
+                    <span className="text-xs text-muted-foreground"> of {c.timedCount}</span>
+                  </span>
+                  <span
+                    className={cn(
+                      "w-20 shrink-0 text-right text-xs tabular-nums",
+                      c.thin && "text-muted-foreground"
+                    )}
+                  >
+                    {c.accuracy === null ? "not answered" : `${c.accuracy}% of ${c.judged}`}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {t.zeroDwell > 0 && (
+          // Absence is not zero: a reached question with no recorded dwell is a
+          // measurement gap, and counting it as a 0-second solve would assert
+          // something we never observed.
+          <p className="border-t pt-3 text-xs text-muted-foreground">
+            {t.zeroDwell} reached question{t.zeroDwell === 1 ? "" : "s"} recorded no time and{" "}
+            {t.zeroDwell === 1 ? "is" : "are"} excluded from these medians.
+          </p>
+        )}
+      </div>
+    </Section>
+  );
+}
+
+/** A time bucket: share of the clock, then the median question inside it. */
+function TimeMetric({
+  label,
+  secs,
+  total,
+  median,
+  tone,
 }: {
-  rows: Lane["wrongAudit"];
-  kind: "wrong" | "skipped";
-  studentId: string;
+  label: string;
+  secs: number;
+  total: number;
+  median: number | null;
+  tone: string;
 }) {
   return (
-    <ul className="divide-y rounded-lg border bg-card">
-      {rows.slice(0, 12).map((r) => (
-        <li key={`${r.chapter}-${r.subtopic}`} className="flex flex-wrap items-center gap-x-3 gap-y-1 p-3">
-          <span className="min-w-0 flex-1">
-            <span className="block truncate text-sm font-medium">{r.subtopic}</span>
-            <span className="block truncate text-xs text-muted-foreground">{r.chapter}</span>
-          </span>
-          <span
-            className={cn(
-              "shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums",
-              kind === "wrong"
-                ? "bg-red-500/10 text-red-600 dark:text-red-400"
-                : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-            )}
-          >
-            {kind === "wrong" ? `${r.wrong} wrong` : `${r.seenBlank} skipped`}
-          </span>
-          {kind === "wrong" && r.wrongQuestionIds.length > 0 && (
-            // The exact questions they missed, not a filter that approximates
-            // them — `extras` takes question ids directly.
-            <Chip
-              href={`/browse?extras=${r.wrongQuestionIds.slice(0, 50).join(",")}`}
-              icon={ExternalLink}
-            >
-              Open {r.wrongQuestionIds.length}
-            </Chip>
-          )}
-        </li>
-      ))}
-      {rows.length > 12 && (
-        <li className="p-3 text-xs text-muted-foreground">
-          Showing the 12 worst of {rows.length} subtopics.{" "}
-          <Link href={`/dashboard/students/${studentId}`} className="underline">
-            Back to profile
-          </Link>
-        </li>
+    <div>
+      <dt className="text-xs text-muted-foreground">{label}</dt>
+      <dd className={cn("text-lg font-semibold tabular-nums", tone)}>
+        {total > 0 ? `${Math.round((secs / total) * 100)}%` : DASH}
+      </dd>
+      <dd className="text-xs tabular-nums text-muted-foreground">
+        {fmtDuration(secs)}
+        {median !== null && ` · ${median}s each`}
+      </dd>
+    </div>
+  );
+}
+
+/** Seconds as something a teacher reads at a glance: 45s, 12m, 2h 34m. */
+function fmtDuration(secs: number): string {
+  if (secs < 60) return `${Math.round(secs)}s`;
+  const mins = Math.round(secs / 60);
+  if (mins < 60) return `${mins}m`;
+  return `${Math.floor(mins / 60)}h ${mins % 60}m`;
+}
+
+/** One filter pill, shared by the exam and subject rows so the two axes cannot
+ *  drift apart visually. `count` is judged answers — the same denominator both
+ *  rows report, which is what makes them comparable. */
+function Pill({
+  href,
+  active,
+  count,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  count: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        active ? "border-brand-accent bg-brand text-brand-foreground" : "hover:bg-accent"
       )}
-    </ul>
+    >
+      {children}
+      <span className={cn("ml-1.5", active ? "opacity-80" : "text-muted-foreground")}>
+        {count}
+      </span>
+    </Link>
   );
 }
 

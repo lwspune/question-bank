@@ -77,14 +77,30 @@ export type PerfFact = {
 export type PerfDims = { subjects: string[]; chapters: string[]; subtopics: string[] };
 
 /**
- * Live bank weightage — how many PUBLIC PYQs each chapter holds, for the
+ * Live bank weightage — how many PUBLIC PYQs each SUBTOPIC holds, for the
  * (exam, subject) pairs this student has touched.
  *
- * Derived per request rather than stored. nda-tracker's NDA_FREQ_BY_SUBJECT is
- * a hand-transcribed copy of these same counts frozen at 2026-05-17 and the
- * bank has grown since; importing it would bake in a number with an expiry date.
+ * Derived per request rather than stored. nda-tracker's NDA_FREQ_BY_SUBJECT and
+ * NDA_SUBTOPIC_SHARES are hand-transcribed copies of these same counts frozen at
+ * 2026-05-17 — and the subtopic table covers NDA Mathematics alone. The bank has
+ * grown since (NDA Maths 2,160 -> 2,280); importing either would bake in a
+ * number with an expiry date.
+ *
+ * GRAIN IS SUBTOPIC, and chapter totals are SUMMED from it (migration 0100).
+ * Never the reverse: a pooled figure is derivable from per-row detail and a
+ * per-row figure is not recoverable from a pool — the same rule
+ * question_item_stats follows.
  */
-export type PerfWeightRow = { exam: string; subject: string; chapter: string; q: number };
+export type PerfWeightRow = {
+  exam: string;
+  subject: string;
+  chapter: string;
+  /** `(unclassified)` where a bank row carries no subtopic. Today that is zero
+   *  of 34,676 PUBLIC PYQs, but a label keeps a future null VISIBLE instead of
+   *  silently removing its marks from the pool. */
+  subtopic: string;
+  q: number;
+};
 
 export type StudentPerformancePayload = {
   userId: string;

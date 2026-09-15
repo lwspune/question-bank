@@ -335,9 +335,14 @@ describe("projection", () => {
   // what `attempt()` really carries. The ceiling is DERIVED from the marks of
   // the questions in the lane, never read off `totalMarks`, so that a GAT
   // subject gets its own slice of 600 rather than the whole paper.
+  // Weightage arrives at SUBTOPIC grain (migration 0100); a chapter's share is
+  // the SUM of its subtopics. Conics is split across two subtopics and Vectors
+  // sits in one, so every chapter-level assertion below is also a parity check:
+  // the chapter numbers must not care how the bank rows were grained.
   const weightage = [
-    { exam: "NDA", subject: "Mathematics", chapter: "Conics", q: 50 },
-    { exam: "NDA", subject: "Mathematics", chapter: "Vectors", q: 50 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Parabola", q: 30 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Ellipse", q: 20 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "Dot Product", q: 50 },
   ];
 
   it("derives the lane ceiling from the questions sat, not from totalMarks", () => {
@@ -371,7 +376,9 @@ describe("projection", () => {
     const p = buildPerformance(
       {
         ...input([cet], cetFacts),
-        weightage: [{ exam: "MHT-CET", subject: "Mathematics", chapter: "Conics", q: 50 }],
+        weightage: [
+          { exam: "MHT-CET", subject: "Mathematics", chapter: "Conics", subtopic: "Parabola", q: 50 },
+        ],
       },
       NOW
     ).lanes[0].projection!;
@@ -411,6 +418,108 @@ describe("projection", () => {
     // Better no card than a projection out of an unknown denominator.
     const facts = [right({ p: 1 }), right({ p: 2 }), right({ p: 3 }), right({ p: 4 })];
     expect(buildPerformance(input([attempt()], facts), NOW).lanes[0].projection).toBeNull();
+  });
+});
+
+describe("projection — subtopic level", () => {
+  // Two chapters, three subtopics. The Conics split is uneven on purpose so a
+  // subtopic's marks cannot be mistaken for "chapter marks / subtopic count".
+  const weightage = [
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Parabola", q: 30 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Ellipse", q: 20 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "Dot Product", q: 50 },
+  ];
+
+  const dims = {
+    subjects: ["Mathematics"],
+    chapters: ["Conics", "Vectors"],
+    subtopics: ["Parabola", "Ellipse", "Dot Product"],
+  };
+
+  /** Four Conics questions: two Parabola (both wrong), two Ellipse (both right). */
+  const facts = [
+    wrong({ p: 1, c: 0, t: 0 }), wrong({ p: 2, c: 0, t: 0 }),
+    right({ p: 3, c: 0, t: 1 }), right({ p: 4, c: 0, t: 1 }),
+  ];
+
+  const projectionOf = () =>
+    buildPerformance({ ...input([attempt()], facts), dims, weightage }, NOW).lanes[0].projection!;
+
+  it("splits a chapter's marks across its subtopics in the bank's own proportion", () => {
+    // Conics is 50 of 100 bank questions on a 10-mark ceiling = 5 marks, and
+    // Parabola holds 30 of those 100, so 3 marks — NOT half of the chapter.
+    const p = projectionOf();
+    const parabola = p.subtopicRows.find((r) => r.subtopic === "Parabola")!;
+    const ellipse = p.subtopicRows.find((r) => r.subtopic === "Ellipse")!;
+    expect(parabola.marksAtStake).toBeCloseTo(3, 5);
+    expect(ellipse.marksAtStake).toBeCloseTo(2, 5);
+    expect(parabola.chapter).toBe("Conics");
+  });
+
+  it("makes a chapter's marks the EXACT sum of its subtopics'", () => {
+    // The two levels are one number read at two grains. If they disagree, one
+    // of the cards behind the same toggle is lying.
+    const p = projectionOf();
+    for (const chapter of p.rows) {
+      const subs = p.subtopicRows.filter((r) => r.chapter === chapter.chapter);
+      const summed = subs.reduce((n, r) => n + r.marksAtStake, 0);
+      expect(summed).toBeCloseTo(chapter.marksAtStake, 5);
+    }
+  });
+
+  it("ranks subtopics FLAT across chapters, not within them", () => {
+    // "Which subtopic anywhere is worth the most" — the one idea worth taking
+    // wholesale from nda-tracker's card. A per-chapter ranking cannot answer
+    // the question the card is for.
+    const p = projectionOf();
+    const gaps = p.subtopicRows.map((r) => r.gap);
+    expect([...gaps].sort((a, b) => b - a)).toEqual(gaps);
+    // The untested Dot Product (5 marks, none recoverable) outranks everything.
+    expect(p.subtopicRows[0].subtopic).toBe("Dot Product");
+  });
+
+  it("keeps an untested subtopic visible with its full marks at stake", () => {
+    const dot = projectionOf().subtopicRows.find((r) => r.subtopic === "Dot Product")!;
+    expect(dot.tested).toBe(false);
+    expect(dot.projected).toBe(0);
+    expect(dot.gap).toBeCloseTo(5, 5);
+  });
+
+  it("marks a subtopic resting on too little evidence as thin", () => {
+    // Ranking is by marks, so a subtopic scored off ONE answer can still sort
+    // high. The row has to say what it rests on — the same rule the chapter
+    // accordion follows.
+    const p = projectionOf();
+    const parabola = p.subtopicRows.find((r) => r.subtopic === "Parabola")!;
+    expect(parabola.judged).toBe(2);
+    expect(parabola.thin).toBe(true);
+    const dot = p.subtopicRows.find((r) => r.subtopic === "Dot Product")!;
+    expect(dot.judged).toBe(0);
+    expect(dot.thin).toBe(true);
+  });
+
+  it("reports a bank subtopic the student has never seen, not just ones they have", () => {
+    // The weightage side is the bank's taxonomy; the performance side is what
+    // they sat. A subtopic present only in the bank is the biggest gap there
+    // is, so it must come from the BANK list, not from the student's rows.
+    expect(projectionOf().subtopicRows.map((r) => r.subtopic).sort()).toEqual([
+      "Dot Product", "Ellipse", "Parabola",
+    ]);
+  });
+
+  it("is unaffected by how the bank rows were grained", () => {
+    // THE PARITY GUARANTEE. Feeding one row per chapter instead of one per
+    // subtopic must leave every chapter number byte-identical.
+    const asOneRowPerChapter = [
+      { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "All", q: 50 },
+      { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "All", q: 50 },
+    ];
+    const coarse = buildPerformance(
+      { ...input([attempt()], facts), dims, weightage: asOneRowPerChapter },
+      NOW
+    ).lanes[0].projection!;
+    expect(coarse.rows).toEqual(projectionOf().rows);
+    expect(coarse.total).toBe(projectionOf().total);
   });
 });
 
@@ -502,5 +611,160 @@ describe("thin evidence", () => {
     expect(lane.chapters[1].judged).toBe(0);
     // ...and the untouched chapter is still reported, via the skip audit.
     expect(lane.skipAudit.map((r) => r.chapter)).toContain("Untouched");
+  });
+});
+
+// ── time analysis ───────────────────────────────────────────────────────────
+
+describe("time analysis", () => {
+  it("splits the clock across the same buckets the coverage card counts", () => {
+    // The two cards read off one sitting, so a student who sees "654 left
+    // blank" above and a blank time share that excluded some of them would be
+    // looking at two different papers.
+    const facts = [
+      right({ p: 1, ts: 20 }),
+      wrong({ p: 2, ts: 60 }),
+      blank({ p: 3, ts: 10 }),
+      unseen({ p: 4 }),
+    ];
+    const t = buildPerformance(input([attempt()], facts), NOW).lanes[0].time;
+    expect(t.correctSecs).toBe(20);
+    expect(t.wrongSecs).toBe(60);
+    expect(t.blankSecs).toBe(10);
+    expect(t.totalSecs).toBe(90);
+  });
+
+  it("excludes never-reached questions from the clock entirely", () => {
+    // They carry ts 0 by construction (no answer row exists), so including
+    // them would not change the total — but it WOULD drag every median down.
+    const facts = [right({ p: 1, ts: 20 }), unseen({ p: 2 }), unseen({ p: 3 })];
+    const t = buildPerformance(input([attempt()], facts), NOW).lanes[0].time;
+    expect(t.totalSecs).toBe(20);
+    expect(t.medianCorrectSecs).toBe(20);
+  });
+
+  it("keeps the buckets summing to the total, including unjudgeable answers", () => {
+    // A question answered whose key the bank lost scores verdict 0. It is
+    // neither right nor wrong, but the student still spent the time — dropping
+    // it would make the bars under-account for the sitting.
+    const facts = [
+      right({ p: 1, ts: 10 }),
+      wrong({ p: 2, ts: 20 }),
+      blank({ p: 3, ts: 30 }),
+      fact({ p: 4, k: null, r: "B", ts: 40 }),
+    ];
+    const t = buildPerformance(input([attempt()], facts), NOW).lanes[0].time;
+    expect(t.unjudgedSecs).toBe(40);
+    expect(t.correctSecs + t.wrongSecs + t.blankSecs + t.unjudgedSecs).toBe(t.totalSecs);
+  });
+
+  it("reports medians per outcome, which is the finding a mean would hide", () => {
+    // Dwell is wall-clock on the question and includes idle: production holds
+    // a single question at 6,131 seconds. One such row moves a mean and not
+    // a median, so every reported figure here is a median.
+    const facts = [
+      right({ p: 1, ts: 10 }), right({ p: 2, ts: 20 }), right({ p: 3, ts: 6131 }),
+      wrong({ p: 4, ts: 40 }), wrong({ p: 5, ts: 60 }),
+    ];
+    const t = buildPerformance(input([attempt({ totalQuestions: 5 })], facts), NOW).lanes[0].time;
+    expect(t.medianCorrectSecs).toBe(20);
+    expect(t.medianWrongSecs).toBe(50);
+  });
+
+  it("counts reached-but-zero-dwell rows and keeps them out of the medians", () => {
+    // 3,577 production rows (6.8%) have an answer row and no recorded dwell.
+    // A zero there is a measurement gap, not a zero-second solve — reporting
+    // it as one would assert something we did not observe.
+    const facts = [
+      right({ p: 1, ts: 0 }), right({ p: 2, ts: 0 }), right({ p: 3, ts: 30 }),
+    ];
+    const t = buildPerformance(input([attempt()], facts), NOW).lanes[0].time;
+    expect(t.zeroDwell).toBe(2);
+    expect(t.medianCorrectSecs).toBe(30);
+  });
+
+  it("returns nulls, never zeros, when a bucket was never timed", () => {
+    const facts = [right({ p: 1, ts: 30 })];
+    const t = buildPerformance(input([attempt()], facts), NOW).lanes[0].time;
+    expect(t.medianWrongSecs).toBeNull();
+    expect(t.medianBlankSecs).toBeNull();
+  });
+
+  it("ranks the slowest chapters and carries the accuracy they bought", () => {
+    // The point of the card: 74s a question at 56% is a time sink, 74s at 90%
+    // is time well spent. The number is only a finding next to its accuracy.
+    const dims = {
+      subjects: ["Mathematics"],
+      chapters: ["Slow", "Fast"],
+      subtopics: ["S1", "S2"],
+    };
+    const facts = [
+      wrong({ p: 1, c: 0, t: 0, ts: 70 }), wrong({ p: 2, c: 0, t: 0, ts: 80 }),
+      right({ p: 3, c: 0, t: 0, ts: 90 }),
+      right({ p: 4, c: 1, t: 1, ts: 10 }), right({ p: 5, c: 1, t: 1, ts: 12 }),
+      right({ p: 6, c: 1, t: 1, ts: 14 }),
+    ];
+    const t = buildPerformance(
+      { ...input([attempt({ totalQuestions: 6 })], facts), dims },
+      NOW
+    ).lanes[0].time;
+    expect(t.slowest[0].chapter).toBe("Slow");
+    expect(t.slowest[0].medianSecs).toBe(80);
+    expect(t.slowest[0].accuracy).toBe(33);
+    expect(t.slowest[0].judged).toBe(3);
+  });
+
+  it("keeps a chapter with too few timed questions out of the slowest list", () => {
+    // One 600-second question is an abandoned tab, not the student's slowest
+    // topic, and it would otherwise top the ranking on every paper.
+    const dims = {
+      subjects: ["Mathematics"],
+      chapters: ["OneOff", "Real"],
+      subtopics: ["S1", "S2"],
+    };
+    const facts = [
+      right({ p: 1, c: 0, t: 0, ts: 600 }),
+      right({ p: 2, c: 1, t: 1, ts: 30 }), right({ p: 3, c: 1, t: 1, ts: 31 }),
+      right({ p: 4, c: 1, t: 1, ts: 32 }),
+    ];
+    const t = buildPerformance(
+      { ...input([attempt({ totalQuestions: 4 })], facts), dims },
+      NOW
+    ).lanes[0].time;
+    expect(t.slowest.map((s) => s.chapter)).toEqual(["Real"]);
+  });
+
+  it("times the pace curve on the paper's own positions, not the lane's", () => {
+    // A GAT subject can sit anywhere inside the 150, so head-vs-tail is a fact
+    // about the SITTING. Positions 1-2 of a 10-question paper are its head.
+    const facts = [
+      right({ p: 1, ts: 60 }), right({ p: 2, ts: 60 }),
+      right({ p: 9, ts: 10 }), right({ p: 10, ts: 10 }),
+    ];
+    const lane = buildPerformance(input([attempt({ totalQuestions: 10 })], facts), NOW).lanes[0];
+    expect(lane.coverage.headMedianSecs).toBe(60);
+    expect(lane.coverage.tailMedianSecs).toBe(10);
+  });
+
+  it("is present and empty rather than absent when a lane was never timed", () => {
+    // A GAT subject the student never got to. The lane exists — the paper
+    // carried its questions — but there is no clock to report, and an absent
+    // `time` block would make the card crash rather than say so.
+    const dims = {
+      subjects: ["Mathematics", "Physics"],
+      chapters: ["Conics", "Optics"],
+      subtopics: ["Parabola", "Lenses"],
+    };
+    const facts = [
+      right({ p: 1, s: 0, c: 0, t: 0, ts: 30 }),
+      right({ p: 2, s: 0, c: 0, t: 0, ts: 30 }),
+      unseen({ p: 3, s: 1, c: 1, t: 1 }),
+      unseen({ p: 4, s: 1, c: 1, t: 1 }),
+    ];
+    const lanes = buildPerformance({ ...input([attempt()], facts), dims }, NOW).lanes;
+    const untimed = lanes.find((l) => l.subject === "Physics")!;
+    expect(untimed.time.totalSecs).toBe(0);
+    expect(untimed.time.slowest).toEqual([]);
+    expect(untimed.time.medianCorrectSecs).toBeNull();
   });
 });
