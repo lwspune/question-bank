@@ -824,6 +824,19 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Worked Examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Eg 9."] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9."] },
   ],
+
+  // ── Ch.1 Real Numbers (10th) — the first Class-10 outline. TWO taught sections,
+  //    each with its own worked examples followed by its own exercise, and NO
+  //    Miscellaneous block (Class 10 has none in any of its 14 chapters).
+  //    Examples band to the exercise they precede, the Class-11/12 convention:
+  //    Examples 1-4 sit under §1.2 and precede Ex 1.1 → "1.1 Eg.N"; Examples 5-7
+  //    sit under §1.3 and precede Ex 1.2 → "1.2 Eg.N".
+  c10RealNumbers: [
+    { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
+    { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
+    { group: "1.3 Revisiting Irrational Numbers", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2 Eg"] },
+    { group: "1.3 Revisiting Irrational Numbers", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

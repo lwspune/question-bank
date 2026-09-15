@@ -271,8 +271,8 @@ describe("stdsForBoard", () => {
     expect(stdsForBoard("Maharashtra State Board")).toEqual([9, 10, 11, 12]);
   });
 
-  it("returns CBSE's stds ascending — 11 present since the NCERT Class-11 corpus landed", () => {
-    expect(stdsForBoard("CBSE")).toEqual([11, 12]);
+  it("returns CBSE's stds ascending — 10 present since the NCERT Class-10 corpus landed", () => {
+    expect(stdsForBoard("CBSE")).toEqual([10, 11, 12]);
   });
 
   it("returns [] for an unknown or empty board", () => {
@@ -297,8 +297,10 @@ describe("getExamForBoardStd", () => {
   });
 
   it("returns null for CBSE classes that have no corpus yet", () => {
+    // Class 9 is the only CBSE class still absent. Class 10 left this list on
+    // 2026-09-15 when the NCERT Class-10 Maths corpus landed — the assertion is
+    // "a class with no corpus resolves to null", not "these two classes forever".
     expect(getExamForBoardStd("CBSE", 9)).toBeNull();
-    expect(getExamForBoardStd("CBSE", 10)).toBeNull();
   });
 
   it("returns null for an unknown board or a missing argument", () => {
