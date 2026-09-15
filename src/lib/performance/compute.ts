@@ -596,7 +596,10 @@ export function buildPerformance(payload: PerfInput, now: Date): Performance {
   for (const f of facts) {
     const a = keptById.get(f.a)!;
     const subject = payload.dims.subjects[f.s] ?? "";
-    const key = `${a.examName} ${subject}`;
+    // The separator is the ESCAPE, never a raw NUL byte: a literal 0x00 in the
+    // source makes grep/ripgrep classify this whole file as binary, so every
+    // text probe in the repo — audit:text included — skips it in silence.
+    const key = `${a.examName}\u0000${subject}`;
     const lane = lanes.get(key) ?? { exam: a.examName, subject, facts: [] };
     lane.facts.push(f);
     lanes.set(key, lane);
