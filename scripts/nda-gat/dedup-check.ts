@@ -146,7 +146,7 @@ async function main() {
       opts.get(o.question_id)!.push(norm(o.text ?? ""));
     }
   }
-  const optKey = (xs: string[]) => [...xs].sort().join("");
+  const optKey = (xs: string[]) => [...xs].sort().join("\u0001");
 
   const collisions: string[] = [];
   const stemOnly: string[] = [];
