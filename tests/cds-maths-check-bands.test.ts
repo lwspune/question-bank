@@ -61,7 +61,7 @@ describe("checkBand — each rule goes red", () => {
   });
 
   it("a control character", () => {
-    expect(msgs(band([q({ stem: "heta" })]))).toMatch(/control character/);
+    expect(msgs(band([q({ stem: "\u000Bheta" })]))).toMatch(/control character/);
   });
 
   it("Unicode maths glyphs, naming the LaTeX form", () => {

@@ -22,7 +22,32 @@
  *
  * Tab, newline and carriage return are allowed; every other C0 control and DEL
  * are not. If a string genuinely needs one, write the ESCAPE — same value at
- * runtime, and it survives every tool in the chain.
+ * runtime, and it survives every tool in the chain. Always the `\uXXXX` form,
+ * never the shorthands: in a REGEX `\b` is a word boundary, not backspace.
+ *
+ * ── The allowlist that used to live here, and why it is gone ────────────────
+ *
+ * This shipped with 28 baselined pre-existing offenders, because fixing shipped
+ * code to apply a new learning is a decision to be asked for. Permission came
+ * the next day; all 28 were fixed (68 bytes, 8 distinct values) and the rule is
+ * now simply "none". Two things that pass was worth beyond the bytes:
+ *
+ * 1. THE ALLOWLIST BROKE CI, AND THE LOCAL GATE COULD NOT SEE IT. 16 of its 28
+ *    paths were gitignored scratch files that exist only on the machine that
+ *    wrote them. Its "every entry still offends" assertion therefore passed
+ *    here and failed on a clean checkout, from the commit that introduced it.
+ *    A list of PATHS is a claim about a working tree, not about the repository.
+ *    If one is ever needed again, assert its entries are git-tracked.
+ *
+ * 2. THE LEDGER'S DESCRIPTION OF THEM WAS WRONG. It recorded "every one is the
+ *    same pattern — a NUL separator". Measured: 0x00 x24, 0x01 x10, 0x08 x5,
+ *    0x0B x11, 0x0C x5, 0x0E x4, 0x1F x8, 0x7F x1, across THREE classes — key
+ *    separators, control-char DETECTOR regexes, and deliberate test FIXTURES.
+ *    Escaping is behaviour-preserving for all three, but that was shown rather
+ *    than assumed: 13 character classes were rebuilt from both forms and
+ *    compared over all 256 byte values (identical), and `lib/quiz/atoms.ts` —
+ *    whose separator feeds a STORED sha1 — was checked across 7 inputs before
+ *    and after (identical).
  */
 import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync } from "node:fs";
@@ -35,54 +60,6 @@ const SKIP_DIRS = new Set(["node_modules", ".next", "dist", "build", "__snapshot
 /** Tab (0x09), LF (0x0A) and CR (0x0D) are the only control bytes text needs. */
 const ALLOWED = new Set([0x09, 0x0a, 0x0d]);
 const isControl = (b: number) => (b < 0x20 && !ALLOWED.has(b)) || b === 0x7f;
-
-/**
- * PRE-EXISTING offenders, baselined 2026-09-15 when this guard was written.
- *
- * Every one of them is the SAME pattern the guard was built for — a NUL used as
- * a composite-key separator, written as a raw byte instead of `\u0000`:
- *
- *     `${chapterName}<NUL>${subtopicName}`
- *
- * They are listed rather than fixed because they are shipped code and a
- * behaviour-preserving byte swap across 28 files is still a change to shipped
- * code, which is the user's call and not this test's. The list is the BACKFILL
- * LEDGER; see ROADMAP.md. It is asserted to be exact in both directions below,
- * so it can only ever shrink — a fixed file must be removed from it, and a new
- * offender can never hide in it.
- */
-const BASELINE = new Set(
-  [
-    "src/lib/notes/goLinks.ts",
-    "src/lib/quiz/atoms.ts",
-    "src/lib/tags/conceptTags.ts",
-    "tests/cds-maths-check-bands.test.ts",
-    "scripts/cbse-12-pyq/_tmp/_tmp_2022-55-2-2_check.ts",
-    "scripts/cds-gs/lib.ts",
-    "scripts/jee/lib.ts",
-    "scripts/jee/promote-gaps.ts",
-    "scripts/mh-hsc-12-pyq/_tmp_verify_ionic_equilibria_12_pyq.ts",
-    "scripts/mh-sb-11/_kt_nuc_katex.mjs",
-    "scripts/mh-sb-11/_kt_nuc_solcheck.mjs",
-    "scripts/mh-sb-11/_kt_org_dbcheck.ts",
-    "scripts/mh-sb-11/_kt_sound_katex.mjs",
-    "scripts/mh-ssc-10-text/data/_sci-animal-classification-10.verify.ts",
-    "scripts/mh-ssc-10-text/data/_sci-heredity-10.verify.ts",
-    "scripts/mh-ssc-10-text/data/alg-linear-equations-10.rendercheck.ts",
-    "scripts/mh-ssc-10-text/fix-italics.ts",
-    "scripts/ncert/_tmp_c12PhyRayOptics_ctrltest.mjs",
-    "scripts/nda-gat/dedup-check.ts",
-    "scripts/practice-paper/check-taxonomy.ts",
-    "scripts/reviews/report.ts",
-    "scripts/stateboard/_cc_db_verify.ts",
-    "scripts/stateboard/_ck_db_render_check.ts",
-    "scripts/stateboard/_ec_db_check.ts",
-    "scripts/stateboard/_gc_db_render_check.ts",
-    "scripts/stateboard/_gc_pairing.ts",
-    "scripts/stateboard/_hd2_frag_render_check.ts",
-    "scripts/stateboard/_hd2_verify.ts",
-  ].map((p) => p.replace(/\\/g, "/"))
-);
 
 function sourceFiles(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -114,21 +91,12 @@ describe("no raw control bytes in source", () => {
     expect(files.length).toBeGreaterThan(400);
   });
 
-  it("finds no control byte outside the baseline", () => {
-    const fresh = [...offenders]
-      .filter(([f]) => !BASELINE.has(f))
-      .map(
-        ([f, at]) =>
-          `${f} — raw control byte at ${at}. Write the ESCAPE (e.g. \\u0000), not the byte; ` +
-          `a file containing one is invisible to grep, audit:text and git diff.`
-      );
-    expect(fresh).toEqual([]);
-  });
-
-  it("keeps the baseline honest — every entry still exists and still offends", () => {
-    // Forces a fixed file OUT of the list rather than letting it linger as
-    // permanent permission. This is what makes the ledger shrink-only.
-    const stale = [...BASELINE].filter((f) => !offenders.has(f));
-    expect(stale).toEqual([]);
+  it("finds no raw control byte anywhere in src, tests or scripts", () => {
+    const found = [...offenders].map(
+      ([f, at]) =>
+        `${f} — raw control byte at ${at}. Write the ESCAPE (e.g. \\u0000), not ` +
+        `the byte; a file containing one is invisible to grep, audit:text and git diff.`
+    );
+    expect(found).toEqual([]);
   });
 });

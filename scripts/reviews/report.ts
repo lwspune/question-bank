@@ -210,7 +210,7 @@ async function main() {
     const exam = subject ? examById.get(subject.exam_id as string) : null;
     const examName = (exam?.name as string) ?? "—";
     if (examFilter && examName.toLowerCase() !== examFilter.toLowerCase()) continue;
-    const key = `${examName} ${subject?.name ?? "—"}`;
+    const key = `${examName}\u0000${subject?.name ?? "—"}`;
     const bucket = bySubject.get(key) ?? {
       exam: examName,
       subject: (subject?.name as string) ?? "—",

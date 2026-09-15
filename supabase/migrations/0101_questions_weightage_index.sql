@@ -1,0 +1,46 @@
+-- 0101 — a covering index for the bank-weightage scan.
+--
+-- `get_student_performance`'s `wt` CTE (0099, widened to subtopic grain in 0100)
+-- counts how many PUBLIC PYQs each subtopic holds. It is the only part of that
+-- function that does NOT depend on p_user_id: it scans the same 34,676 rows and
+-- returns the same answer for every student on the platform, on every page view.
+--
+-- The obvious fix was to cache it — a materialized view refreshed after each
+-- ingest. That was REJECTED. 0100 derives this live on purpose, and its own
+-- comment says why: "A frozen share is a claim with an expiry date; a derived
+-- one cannot go stale." nda-tracker's hand-transcribed copy of these same counts
+-- is the cautionary case, and it has since drifted to the point where only 78.1%
+-- of its tagged questions resolve. Adding a refresh step here would buy speed by
+-- re-introducing exactly the failure mode we criticise there.
+--
+-- An index buys most of it with no staleness at all. The query needs exactly
+-- (exam_id, subject_id, chapter_id, subtopic_id) filtered by question_kind and
+-- visibility; putting all five in one partial index makes it an INDEX ONLY SCAN.
+--
+-- MEASURED on prod, the `wt` query in isolation:
+--
+--   before   Index Scan using questions_question_kind_idx   10,519 buffers
+--   after    Index Only Scan, Heap Fetches: 0                   191 buffers   (55x)
+--
+-- And the whole function: 62,269 -> 51,974 shared buffers, a 16.5% cut in its
+-- I/O per call.
+--
+-- WHAT IT DOES NOT DO, stated because the obvious inference is wrong: END-TO-END
+-- LATENCY DID NOT MOVE. Median of 10 sequential RPC round-trips reads 543 ms
+-- against a pre-index baseline of ~503-523 ms — inside the noise. The earlier
+-- "wt costs 123 ms of 367 ms" figure came from isolating the CTE, and isolating
+-- a CTE changes its plan (the real function auto-materialises `keyed`, which is
+-- referenced 5x), so those per-CTE timings were never additive. The remaining
+-- cost is the per-question `options` lookup (19,935 buffers across 4,945 loops)
+-- plus serialising and shipping 1.27 MB of JSON.
+--
+-- It is kept anyway: 10,300 fewer buffers per call is real I/O the disk does not
+-- have to serve, and buffer traffic — not wall time on an idle database — is
+-- what turned this query fatal in a crowd on 2026-09-15. The cost is 1.1 MB.
+--
+-- Built CONCURRENTLY in prod; written WITHOUT it here because migration replay
+-- wraps each file in a transaction and CREATE INDEX CONCURRENTLY cannot run in
+-- one. Same split as 0077.
+CREATE INDEX IF NOT EXISTS questions_public_weightage_idx
+  ON public.questions (question_kind, subject_id, exam_id, chapter_id, subtopic_id)
+  WHERE visibility = 'PUBLIC';

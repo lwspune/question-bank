@@ -115,7 +115,7 @@ const norm = (s: string) => (s ?? "").replace(/\s+/g, " ").trim().toLowerCase();
 
 /** A question's identity for the purposes of "are these two readings the same?". */
 function fingerprint(q: TQ): string {
-  return [norm(q.stem), ...q.options.map((o) => `${o.label}=${norm(o.text)}`)].join("");
+  return [norm(q.stem), ...q.options.map((o) => `${o.label}=${norm(o.text)}`)].join("\u0001");
 }
 
 /**

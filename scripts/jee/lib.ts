@@ -199,10 +199,10 @@ export function dropProseHardBreaks(s: string): string {
   const zones: string[] = [];
   const masked = s.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, (m) => {
     zones.push(m);
-    return ` ${zones.length - 1} `;
+    return `\u0000${zones.length - 1}\u0000`;
   });
   const cleaned = masked.replace(/(?<!\\)\\ (?=\S)/g, " ").replace(/ {2,}/g, " ");
-  return cleaned.replace(/ (\d+) /g, (_m, i) => zones[Number(i)]);
+  return cleaned.replace(/\u0000(\d+)\u0000/g, (_m, i) => zones[Number(i)]);
 }
 
 // The closing `**` is sometimes preceded by a leaked hard-break `\` (pandoc
