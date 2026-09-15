@@ -136,13 +136,37 @@ async function main() {
       if (lane.projection) {
         const { rows, subtopicRows } = lane.projection;
         for (const chapter of rows) {
-          const summed = subtopicRows
-            .filter((r) => r.chapter === chapter.chapter)
-            .reduce((n, r) => n + r.marksAtStake, 0);
+          const mine = subtopicRows.filter((r) => r.chapter === chapter.chapter);
+          const summed = mine.reduce((n, r) => n + r.marksAtStake, 0);
           if (Math.abs(summed - chapter.marksAtStake) > 1e-6) {
             throw new Error(
               `subtopic marks do not sum to their chapter for ${lane.exam}·${lane.subject}` +
                 ` / ${chapter.chapter}: ${summed} vs ${chapter.marksAtStake}`
+            );
+          }
+          // ...and so must the PROJECTION, which it did not until 2026-09-15:
+          // marks were summed while the projection was separately POOLED, and
+          // the card showed one headline over both. 94 vs 86.55 on the heaviest
+          // student. Unit-tested too; asserted here because only live data has
+          // chapters whose subtopics are mostly untested, which is the term
+          // that made the two diverge.
+          const summedProj = mine.reduce((n, r) => n + r.projected, 0);
+          if (Math.abs(summedProj - chapter.projected) > 1e-6) {
+            throw new Error(
+              `subtopic PROJECTION does not sum to its chapter for ${lane.exam}·${lane.subject}` +
+                ` / ${chapter.chapter}: ${summedProj} vs ${chapter.projected}`
+            );
+          }
+          // A chapter with real answers whose bank subtopics resolve to NONE of
+          // the student's would silently project 0 while still reporting an
+          // accuracy. It cannot happen while both sides read one taxonomy, and
+          // that is exactly the kind of assumption worth asserting against live
+          // data rather than believing. 899/899 clean at the last run.
+          if (chapter.judged > 0 && mine.length > 0 && mine.every((r) => !r.tested)) {
+            throw new Error(
+              `chapter ${chapter.chapter} (${lane.exam}·${lane.subject}) has ` +
+                `${chapter.judged} answers but NO bank subtopic resolved — the ` +
+                `projection would read 0 against a non-null accuracy`
             );
           }
         }
@@ -151,7 +175,7 @@ async function main() {
           console.log(
             `        projection: ${rows.length} chapters / ${subtopicRows.length} subtopics  ` +
               `top=${top.subtopic} (${top.chapter}) +${top.gap.toFixed(1)} of ${top.marksAtStake.toFixed(1)}` +
-              `${top.tested ? ` · ${top.accuracy}% of ${top.judged}` : " · never tested"}`
+              `${top.tested ? ` · ${top.accuracy}% of ${top.reached} reached` : " · never tested"}`
           );
         }
       }

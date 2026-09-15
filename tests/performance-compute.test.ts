@@ -356,11 +356,21 @@ describe("projection", () => {
 
   it("penalises a wrong answer on a negatively-marked paper", () => {
     const facts = [right({ p: 1 }), wrong({ p: 2 }), right({ p: 3 }), wrong({ p: 4 })];
-    const conics = buildPerformance({ ...input([attempt()], facts), weightage }, NOW)
-      .lanes[0].projection!.rows.find((r) => r.chapter === "Conics")!;
-    // 50% accuracy on 5 marks = 2.5, LESS 50% wrong-rate x 5 x (0.83/2.5).
-    expect(conics.projected).toBeCloseTo(2.5 - 0.5 * 5 * (0.83 / 2.5), 5);
-    expect(conics.projected).toBeLessThan(2.5);
+    const p = buildPerformance({ ...input([attempt()], facts), weightage }, NOW)
+      .lanes[0].projection!;
+    // All four sit in Conics/Parabola, which holds 30 of the 100 bank questions
+    // on a 10-mark ceiling = 3 marks. Two right, two wrong, nothing blank, so
+    // accuracy and wrong-rate are both 50% of the four REACHED.
+    const parabola = p.subtopicRows.find((r) => r.subtopic === "Parabola")!;
+    expect(parabola.projected).toBeCloseTo(0.5 * 3 - 0.5 * 3 * (0.83 / 2.5), 5);
+    expect(parabola.projected).toBeLessThan(0.5 * 3);
+    // REWRITTEN 2026-09-15. It read the CHAPTER and expected 50% spent across
+    // all 5 of its marks — that was the pooled behaviour, and pooling is what
+    // credited Ellipse, which this student has never been shown. A chapter is
+    // now its subtopics' SUM, so Conics is Parabola alone.
+    const conics = p.rows.find((r) => r.chapter === "Conics")!;
+    expect(conics.marksAtStake).toBe(5);
+    expect(conics.projected).toBeCloseTo(parabola.projected, 5);
   });
 
   it("does NOT penalise on MHT-CET, which has zero negative marking", () => {
@@ -467,6 +477,39 @@ describe("projection — subtopic level", () => {
     }
   });
 
+  it("makes a chapter's PROJECTED marks the sum of its subtopics'", () => {
+    // The marks POOL was already pinned above; the projection was not, and the
+    // two do not follow from each other. `expectedMarks` is linear in marks but
+    // accuracy is a RATIO, so pooling a chapter weights its subtopics by how
+    // much the student engaged, while summing them weights by bank share. The
+    // clamp then compounds it: Sum(max(0, x)) >= max(0, Sum(x)), so a negative
+    // subtopic is discarded on its own but eats a positive sibling once pooled.
+    //
+    // This fixture is the minimal case. Conics = 5 marks, Parabola 3 (two WRONG)
+    // and Ellipse 2 (two RIGHT). Pooled, the wrong pair drags the chapter down;
+    // summed, Parabola clamps to 0 and Ellipse keeps its 2 marks intact.
+    //
+    // On production this ran to 7.84 marks on one student — the card showed a
+    // headline of 94 over subtopic rows adding to 86.55.
+    const p = projectionOf();
+    for (const chapter of p.rows) {
+      const subs = p.subtopicRows.filter((r) => r.chapter === chapter.chapter);
+      const summed = subs.reduce((n, r) => n + r.projected, 0);
+      expect(summed).toBeCloseTo(chapter.projected, 5);
+    }
+  });
+
+  it("makes the headline total reconcile at BOTH grains", () => {
+    // The card renders one `projection.total` and lets the reader switch the
+    // rows underneath it. If the two grains sum differently, one of the two
+    // views is showing a total that its own rows do not support.
+    const p = projectionOf();
+    const fromChapters = p.rows.reduce((n, r) => n + r.projected, 0);
+    const fromSubtopics = p.subtopicRows.reduce((n, r) => n + r.projected, 0);
+    expect(fromSubtopics).toBeCloseTo(fromChapters, 5);
+    expect(Math.round(fromSubtopics)).toBe(p.total);
+  });
+
   it("ranks subtopics FLAT across chapters, not within them", () => {
     // "Which subtopic anywhere is worth the most" — the one idea worth taking
     // wholesale from nda-tracker's card. A per-chapter ranking cannot answer
@@ -507,19 +550,155 @@ describe("projection — subtopic level", () => {
     ]);
   });
 
-  it("is unaffected by how the bank rows were grained", () => {
-    // THE PARITY GUARANTEE. Feeding one row per chapter instead of one per
-    // subtopic must leave every chapter number byte-identical.
-    const asOneRowPerChapter = [
-      { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "All", q: 50 },
-      { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "All", q: 50 },
-    ];
-    const coarse = buildPerformance(
+  const asOneRowPerChapter = [
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "All", q: 50 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "All", q: 50 },
+  ];
+  const coarseProjection = () =>
+    buildPerformance(
       { ...input([attempt()], facts), dims, weightage: asOneRowPerChapter },
       NOW
     ).lanes[0].projection!;
-    expect(coarse.rows).toEqual(projectionOf().rows);
-    expect(coarse.total).toBe(projectionOf().total);
+
+  it("still splits a chapter's MARKS identically however the bank is grained", () => {
+    // What SURVIVES of the old "PARITY GUARANTEE". Marks are additive, so the
+    // pool a chapter plays for cannot care how the bank rows were grained.
+    const byName = (p: { rows: { chapter: string; marksAtStake: number }[] }) =>
+      p.rows.map((r) => [r.chapter, r.marksAtStake] as const).sort();
+    expect(byName(coarseProjection())).toEqual(byName(projectionOf()));
+    expect(coarseProjection().ceiling).toBe(projectionOf().ceiling);
+  });
+
+  it("no longer holds a chapter's PROJECTION steady when the bank is re-grained", () => {
+    // NARROWED 2026-09-15, deliberately. The old test asserted every chapter
+    // number byte-identical across grainings; that guarantee is gone, because
+    // it cannot coexist with scoring a subtopic from its own questions.
+    // `expectedMarks` is linear in marks but accuracy is a RATIO: pooling
+    // weights a chapter's subtopics by how much the STUDENT engaged with each,
+    // summing weights them by BANK SHARE. Only one can be the chapter's number,
+    // and pooling spends a tested subtopic's accuracy on subtopics the student
+    // has never been shown a question from.
+    //
+    // Here the coarse bank names a subtopic ("All") matching nothing in the
+    // student's taxonomy, so no subtopic row resolves and Conics projects 0
+    // though four questions were answered in it.
+    //
+    // The row is SELF-CONTRADICTORY, and that is the tell worth pinning: it
+    // still reports tested=true and a 50% accuracy off its own chapter tally,
+    // while projecting nothing — because only `projected` and `gap` come from
+    // the subtopics. A future reader seeing "50% accuracy, 0.0 of 5.0 marks"
+    // should land here rather than re-derive it.
+    //
+    // It does not occur on live data: `perf:smoke` asserts every answered
+    // chapter resolves at least one bank subtopic (899 of 899 at last run).
+    const coarse = coarseProjection();
+    const conics = coarse.rows.find((r) => r.chapter === "Conics")!;
+    expect(conics.marksAtStake).toBe(5);
+    expect(conics.projected).toBe(0);
+    expect(conics.gap).toBe(5);
+    expect({ tested: conics.tested, accuracy: conics.accuracy }).toEqual({
+      tested: true,
+      accuracy: 50,
+    });
+    expect(coarse.total).not.toBe(projectionOf().total);
+  });
+});
+
+describe("projection — blanks and the floor", () => {
+  const weightage = [
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Parabola", q: 30 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Conics", subtopic: "Ellipse", q: 20 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Vectors", subtopic: "Dot Product", q: 50 },
+  ];
+  const dims = {
+    subjects: ["Mathematics"],
+    chapters: ["Conics", "Vectors"],
+    subtopics: ["Parabola", "Ellipse", "Dot Product"],
+  };
+  const P = 0.83 / 2.5; // the fixture's own marking scheme
+  const projOf = (facts: PerfFact[]) =>
+    buildPerformance({ ...input([attempt()], facts), dims, weightage }, NOW).lanes[0].projection!;
+  const sub = (facts: PerfFact[], name: string) =>
+    projOf(facts).subtopicRows.find((r) => r.subtopic === name)!;
+
+  it("counts a reached-but-blank question in FULL, not at half weight", () => {
+    // The half weight came from nda-tracker, whose data is INVIGILATED OMR: one
+    // sitting, one hall, one clock, no retakes. There a blank means "couldn't do
+    // it under the same pressure as everyone else", and discounting it is fair.
+    // Here a student opens a paper at home and can answer the 35% they like the
+    // look of. A blank earns zero marks in the real paper; the projection is
+    // denominated in marks, so it counts as a zero.
+    //
+    // Parabola holds 30 of 100 bank questions on a 10-mark ceiling = 3 marks.
+    // Two right, two blank: accuracy is 2/4, NOT 2/3 (which is what the half
+    // weight gave — weightTotal 2 + 2x0.5 = 3).
+    const facts = [
+      right({ p: 1, c: 0, t: 0 }), right({ p: 2, c: 0, t: 0 }),
+      blank({ p: 3, c: 0, t: 0 }), blank({ p: 4, c: 0, t: 0 }),
+    ];
+    const r = sub(facts, "Parabola");
+    expect(r.accuracy).toBe(50);
+    expect(r.projected).toBeCloseTo(0.5 * 3, 5);
+  });
+
+  it("measures the wrong-rate over questions REACHED, not just answered", () => {
+    // The twin of the rule above, and they have to move together. Crediting a
+    // blank as a zero but then charging the penalty at the ANSWERED-only wrong
+    // rate models two different students in one expression: one who skips two
+    // thirds of the paper, and one who answers all of it badly.
+    //
+    // 1 right, 1 wrong, 2 blank => reached 4. Both rates are 1/4.
+    const facts = [
+      right({ p: 1, c: 0, t: 0 }), wrong({ p: 2, c: 0, t: 0 }),
+      blank({ p: 3, c: 0, t: 0 }), blank({ p: 4, c: 0, t: 0 }),
+    ];
+    const r = sub(facts, "Parabola");
+    expect(r.accuracy).toBe(25);
+    expect(r.wrongRate).toBe(25);
+    expect(r.projected).toBeCloseTo(0.25 * 3 - 0.25 * 3 * P, 5);
+  });
+
+  it("leaves a NEVER-REACHED question out of both rates", () => {
+    // Unchanged, and load-bearing: a question the clock ran out on says nothing
+    // about the subtopic. Only `seenBlank` is evidence.
+    const facts = [
+      right({ p: 1, c: 0, t: 0 }), right({ p: 2, c: 0, t: 0 }),
+      unseen({ p: 3, c: 0, t: 0 }), unseen({ p: 4, c: 0, t: 0 }),
+    ];
+    const r = sub(facts, "Parabola");
+    expect(r.accuracy).toBe(100);
+    expect(r.projected).toBeCloseTo(3, 5);
+  });
+
+  it("lets a row project NEGATIVE marks instead of flooring each one", () => {
+    // Math.max(0, ..) per row is not grain-invariant: Sum(max(0,x)) >= max(0,Sum(x)),
+    // so splitting a subtopic in two mechanically RAISES the projection. It also
+    // deletes the most actionable line the card can print — "attempting this at
+    // your current rate COSTS you marks" — and replaces it with an opportunity.
+    // Negative is real here: this student scored -0.33 on a CDS paper.
+    const facts = [
+      wrong({ p: 1, c: 0, t: 0 }), wrong({ p: 2, c: 0, t: 0 }),
+      wrong({ p: 3, c: 0, t: 0 }), wrong({ p: 4, c: 0, t: 0 }),
+    ];
+    const r = sub(facts, "Parabola");
+    expect(r.projected).toBeCloseTo(-1 * 3 * P, 5);
+    expect(r.projected).toBeLessThan(0);
+  });
+
+  it("floors the HEADLINE at zero, never a row", () => {
+    // One guard, at the one place a negative would be nonsense to read.
+    //
+    // NOT inert, which I assumed before measuring: one production lane (72
+    // answers at 17% accuracy on a negatively-marked paper) sums BELOW zero and
+    // floors to 0 here. Deleting this would put a negative headline out of 300
+    // in front of a student.
+    const facts = [
+      wrong({ p: 1, c: 0, t: 0 }), wrong({ p: 2, c: 0, t: 0 }),
+      wrong({ p: 3, c: 0, t: 0 }), wrong({ p: 4, c: 0, t: 0 }),
+    ];
+    const p = projOf(facts);
+    expect(p.subtopicRows.find((r) => r.subtopic === "Parabola")!.projected).toBeLessThan(0);
+    expect(p.total).toBe(0);
   });
 });
 

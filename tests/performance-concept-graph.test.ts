@@ -34,6 +34,10 @@ function chapter(name: string, weightedScore: number, judged = 10): ChapterRow {
     thin: judged < 3,
     accuracy: Math.round(weightedScore * 100),
     weightedScore,
+    // seenBlank is 0 in this fixture, so the ABILITY and MARKS scores
+    // coincide here by construction. The focus builder reads only the
+    // former; markScore exists for the projection.
+    markScore: weightedScore,
     trend: "stable",
     medianSecs: 30,
     timedCount: judged,
