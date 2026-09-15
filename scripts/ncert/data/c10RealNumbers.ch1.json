@@ -1,0 +1,273 @@
+[
+  {
+    "ref": "1.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "MODERATE",
+    "stem": "Consider the numbers \\(4^n\\), where \\(n\\) is a natural number. Check whether there is any value of \\(n\\) for which \\(4^n\\) ends with the digit zero.",
+    "solution": "If the number \\(4^n\\), for any \\(n\\), were to end with the digit zero, then it would be divisible by 5. That is, the prime factorisation of \\(4^n\\) would contain the prime 5. This is not possible because \\(4^n = (2)^{2n}\\); so the only prime in the factorisation of \\(4^n\\) is 2.\n\nSo, the uniqueness of the Fundamental Theorem of Arithmetic guarantees that there are no other primes in the factorisation of \\(4^n\\).\n\nSo, there is no natural number \\(n\\) for which \\(4^n\\) ends with the digit zero."
+  },
+  {
+    "ref": "1.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "stem": "Find the LCM and HCF of 6 and 20 by the prime factorisation method.",
+    "solution": "We have : \\(6 = 2^1 \\times 3^1\\) and \\(20 = 2 \\times 2 \\times 5 = 2^2 \\times 5^1\\).\n\nYou can find \\(\\text{HCF}(6, 20) = 2\\) and \\(\\text{LCM}(6, 20) = 2 \\times 2 \\times 3 \\times 5 = 60\\), as done in your earlier classes.\n\nNote that \\(\\text{HCF}(6, 20) = 2^1 = \\) **Product of the smallest power of each common prime factor in the numbers.**\n\n\\(\\text{LCM}(6, 20) = 2^2 \\times 3^1 \\times 5^1 = \\) **Product of the greatest power of each prime factor, involved in the numbers.**\n\nFrom the example above, you might have noticed that \\(\\text{HCF}(6, 20) \\times \\text{LCM}(6, 20) = 6 \\times 20\\). In fact, we can verify that for any two positive integers \\(a\\) and \\(b\\), \\(\\text{HCF}(a, b) \\times \\text{LCM}(a, b) = a \\times b\\)."
+  },
+  {
+    "ref": "1.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "stem": "Find the HCF of 96 and 404 by the prime factorisation method. Hence, find their LCM.",
+    "solution": "The prime factorisation of 96 and 404 gives :\n\n\\(96 = 2^5 \\times 3, \\quad 404 = 2^2 \\times 101\\)\n\nTherefore, the HCF of these two integers is \\(2^2 = 4\\).\n\nAlso, \\(\\text{LCM}(96, 404) = \\frac{96 \\times 404}{\\text{HCF}(96, 404)} = \\frac{96 \\times 404}{4} = 9696\\)"
+  },
+  {
+    "ref": "1.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "MODERATE",
+    "stem": "Find the HCF and LCM of 6, 72 and 120, using the prime factorisation method.",
+    "solution": "We have :\n\n\\(6 = 2 \\times 3, \\quad 72 = 2^3 \\times 3^2, \\quad 120 = 2^3 \\times 3 \\times 5\\)\n\nHere, \\(2^1\\) and \\(3^1\\) are the smallest powers of the common factors 2 and 3, respectively.\n\nSo, \\(\\text{HCF}(6, 72, 120) = 2^1 \\times 3^1 = 2 \\times 3 = 6\\)\n\n\\(2^3\\), \\(3^2\\) and \\(5^1\\) are the greatest powers of the prime factors 2, 3 and 5 respectively involved in the three numbers.\n\nSo, \\(\\text{LCM}(6, 72, 120) = 2^3 \\times 3^2 \\times 5^1 = 360\\)\n\n**Remark :** Notice, \\(6 \\times 72 \\times 120 \\neq \\text{HCF}(6, 72, 120) \\times \\text{LCM}(6, 72, 120)\\). So, the product of three numbers is not equal to the product of their HCF and LCM."
+  },
+  {
+    "ref": "Ex 1.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q1",
+    "context": "Express each number as a product of its prime factors:",
+    "stem": "140",
+    "solution": "Divide by the smallest prime each time:\n\n\\(140 = 2 \\times 70 = 2 \\times 2 \\times 35 = 2 \\times 2 \\times 5 \\times 7\\)\n\nSo \\(140 = 2^2 \\times 5 \\times 7\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q1",
+    "context": "Express each number as a product of its prime factors:",
+    "stem": "156",
+    "solution": "Divide by the smallest prime each time:\n\n\\(156 = 2 \\times 78 = 2 \\times 2 \\times 39 = 2 \\times 2 \\times 3 \\times 13\\)\n\nSo \\(156 = 2^2 \\times 3 \\times 13\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q1",
+    "context": "Express each number as a product of its prime factors:",
+    "stem": "3825",
+    "solution": "3825 is odd, so start at 3:\n\n\\(3825 = 3 \\times 1275 = 3 \\times 3 \\times 425 = 3 \\times 3 \\times 5 \\times 85 = 3 \\times 3 \\times 5 \\times 5 \\times 17\\)\n\nSo \\(3825 = 3^2 \\times 5^2 \\times 17\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q1",
+    "context": "Express each number as a product of its prime factors:",
+    "stem": "5005",
+    "solution": "5005 ends in 5, so start at 5:\n\n\\(5005 = 5 \\times 1001 = 5 \\times 7 \\times 143 = 5 \\times 7 \\times 11 \\times 13\\)\n\nSo \\(5005 = 5 \\times 7 \\times 11 \\times 13\\) (every prime occurs to the first power)."
+  },
+  {
+    "ref": "Ex 1.1 Q1 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.1 Q1",
+    "context": "Express each number as a product of its prime factors:",
+    "stem": "7429",
+    "solution": "7429 is not divisible by 2, 3, 5, 7, 11 or 13. Testing 17:\n\n\\(7429 = 17 \\times 437\\), and \\(437 = 19 \\times 23\\).\n\nSo \\(7429 = 17 \\times 19 \\times 23\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q2",
+    "context": "Find the LCM and HCF of the following pairs of integers and verify that LCM \\(\\times\\) HCF = product of the two numbers.",
+    "stem": "26 and 91",
+    "solution": "\\(26 = 2 \\times 13\\) and \\(91 = 7 \\times 13\\).\n\nHCF = product of the smallest power of each common prime \\(= 13\\).\n\nLCM = product of the greatest power of each prime involved \\(= 2 \\times 7 \\times 13 = 182\\).\n\nVerification: \\(\\text{LCM} \\times \\text{HCF} = 182 \\times 13 = 2366\\) and \\(26 \\times 91 = 2366\\). Verified."
+  },
+  {
+    "ref": "Ex 1.1 Q2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.1 Q2",
+    "context": "Find the LCM and HCF of the following pairs of integers and verify that LCM \\(\\times\\) HCF = product of the two numbers.",
+    "stem": "510 and 92",
+    "solution": "\\(510 = 2 \\times 3 \\times 5 \\times 17\\) and \\(92 = 2^2 \\times 23\\).\n\nThe only common prime is 2, to the smallest power \\(2^1\\), so HCF \\(= 2\\).\n\nLCM \\(= 2^2 \\times 3 \\times 5 \\times 17 \\times 23 = 23460\\).\n\nVerification: \\(23460 \\times 2 = 46920\\) and \\(510 \\times 92 = 46920\\). Verified."
+  },
+  {
+    "ref": "Ex 1.1 Q2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.1 Q2",
+    "context": "Find the LCM and HCF of the following pairs of integers and verify that LCM \\(\\times\\) HCF = product of the two numbers.",
+    "stem": "336 and 54",
+    "solution": "\\(336 = 2^4 \\times 3 \\times 7\\) and \\(54 = 2 \\times 3^3\\).\n\nCommon primes are 2 and 3, to the smallest powers \\(2^1\\) and \\(3^1\\), so HCF \\(= 2 \\times 3 = 6\\).\n\nLCM \\(= 2^4 \\times 3^3 \\times 7 = 16 \\times 27 \\times 7 = 3024\\).\n\nVerification: \\(3024 \\times 6 = 18144\\) and \\(336 \\times 54 = 18144\\). Verified."
+  },
+  {
+    "ref": "Ex 1.1 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q3",
+    "context": "Find the LCM and HCF of the following integers by applying the prime factorisation method.",
+    "stem": "12, 15 and 21",
+    "solution": "\\(12 = 2^2 \\times 3\\), \\(15 = 3 \\times 5\\), \\(21 = 3 \\times 7\\).\n\nThe only prime common to all three is 3, to the smallest power \\(3^1\\), so HCF \\(= 3\\).\n\nLCM \\(= 2^2 \\times 3 \\times 5 \\times 7 = 420\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q3",
+    "context": "Find the LCM and HCF of the following integers by applying the prime factorisation method.",
+    "stem": "17, 23 and 29",
+    "solution": "17, 23 and 29 are all primes, so each is its own prime factorisation and no prime is shared.\n\nHCF \\(= 1\\).\n\nLCM \\(= 17 \\times 23 \\times 29 = 11339\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "setLabel": "Ex 1.1 Q3",
+    "context": "Find the LCM and HCF of the following integers by applying the prime factorisation method.",
+    "stem": "8, 9 and 25",
+    "solution": "\\(8 = 2^3\\), \\(9 = 3^2\\), \\(25 = 5^2\\).\n\nNo prime is common to all three, so HCF \\(= 1\\).\n\nLCM \\(= 2^3 \\times 3^2 \\times 5^2 = 8 \\times 9 \\times 25 = 1800\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "EASY",
+    "stem": "Given that \\(\\text{HCF}(306, 657) = 9\\), find \\(\\text{LCM}(306, 657)\\).",
+    "solution": "For any two positive integers \\(a\\) and \\(b\\), \\(\\text{HCF}(a, b) \\times \\text{LCM}(a, b) = a \\times b\\).\n\nSo \\(\\text{LCM}(306, 657) = \\frac{306 \\times 657}{\\text{HCF}(306, 657)} = \\frac{306 \\times 657}{9} = \\frac{201042}{9} = 22338\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "MODERATE",
+    "stem": "Check whether \\(6^n\\) can end with the digit 0 for any natural number \\(n\\).",
+    "solution": "If \\(6^n\\) ended with the digit 0, it would be divisible by 10, and so by the prime 5. Then 5 would appear in the prime factorisation of \\(6^n\\).\n\nBut \\(6 = 2 \\times 3\\), so \\(6^n = 2^n \\times 3^n\\), and the only primes in this factorisation are 2 and 3.\n\nBy the uniqueness in the Fundamental Theorem of Arithmetic, no other prime can occur in the factorisation of \\(6^n\\). So 5 is not a factor of \\(6^n\\).\n\nHence \\(6^n\\) can never end with the digit 0, for any natural number \\(n\\)."
+  },
+  {
+    "ref": "Ex 1.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Theorem of Arithmetic",
+    "difficulty": "MODERATE",
+    "stem": "Explain why \\(7 \\times 11 \\times 13 + 13\\) and \\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 + 5\\) are composite numbers.",
+    "solution": "A number is composite if it has a factor other than 1 and itself.\n\nFor the first number, take 13 common:\n\n\\(7 \\times 11 \\times 13 + 13 = 13 \\times (7 \\times 11 + 1) = 13 \\times 78 = 1014\\)\n\nSo 13 is a factor of 1014 other than 1 and 1014 itself, and the number is composite.\n\nFor the second number, take 5 common:\n\n\\(7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 + 5 = 5 \\times (7 \\times 6 \\times 4 \\times 3 \\times 2 \\times 1 + 1) = 5 \\times 1009 = 5045\\)\n\nSo 5 is a factor of 5045 other than 1 and 5045 itself, and the number is composite."
+  },
+  {
+    "ref": "Ex 1.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "HCF and LCM by Prime Factorisation",
+    "difficulty": "MODERATE",
+    "stem": "There is a circular path around a sports field. Sonia takes 18 minutes to drive one round of the field, while Ravi takes 12 minutes for the same. Suppose they both start at the same point and at the same time, and go in the same direction. After how many minutes will they meet again at the starting point?",
+    "solution": "Sonia is back at the starting point after every multiple of 18 minutes, and Ravi after every multiple of 12 minutes. They are together at the starting point at the first common multiple, i.e. at the LCM of 18 and 12.\n\n\\(18 = 2 \\times 3^2\\) and \\(12 = 2^2 \\times 3\\).\n\n\\(\\text{LCM}(18, 12) = 2^2 \\times 3^2 = 36\\)\n\nSo they will meet again at the starting point after 36 minutes."
+  },
+  {
+    "ref": "1.2 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\sqrt{3}\\) is irrational.",
+    "solution": "Let us assume, to the contrary, that \\(\\sqrt{3}\\) is rational.\n\nThat is, we can find integers \\(a\\) and \\(b\\) (\\(\\neq 0\\)) such that \\(\\sqrt{3} = \\frac{a}{b}\\).\n\nSuppose \\(a\\) and \\(b\\) have a common factor other than 1, then we can divide by the common factor, and assume that \\(a\\) and \\(b\\) are coprime.\n\nSo, \\(b\\sqrt{3} = a\\).\n\nSquaring on both sides, and rearranging, we get \\(3b^2 = a^2\\).\n\nTherefore, \\(a^2\\) is divisible by 3, and by Theorem 1.2, it follows that \\(a\\) is also divisible by 3.\n\nSo, we can write \\(a = 3c\\) for some integer \\(c\\).\n\nSubstituting for \\(a\\), we get \\(3b^2 = 9c^2\\), that is, \\(b^2 = 3c^2\\).\n\nThis means that \\(b^2\\) is divisible by 3, and so \\(b\\) is also divisible by 3 (using Theorem 1.2 with \\(p = 3\\)).\n\nTherefore, \\(a\\) and \\(b\\) have at least 3 as a common factor.\n\nBut this contradicts the fact that \\(a\\) and \\(b\\) are coprime.\n\nThis contradiction has arisen because of our incorrect assumption that \\(\\sqrt{3}\\) is rational.\n\nSo, we conclude that \\(\\sqrt{3}\\) is irrational."
+  },
+  {
+    "ref": "1.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(5 - \\sqrt{3}\\) is irrational.",
+    "solution": "Let us assume, to the contrary, that \\(5 - \\sqrt{3}\\) is rational.\n\nThat is, we can find coprime \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(5 - \\sqrt{3} = \\frac{a}{b}\\).\n\nTherefore, \\(5 - \\frac{a}{b} = \\sqrt{3}\\).\n\nRearranging this equation, we get \\(\\sqrt{3} = 5 - \\frac{a}{b} = \\frac{5b - a}{b}\\).\n\nSince \\(a\\) and \\(b\\) are integers, we get \\(5 - \\frac{a}{b}\\) is rational, and so \\(\\sqrt{3}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{3}\\) is irrational.\n\nThis contradiction has arisen because of our incorrect assumption that \\(5 - \\sqrt{3}\\) is rational.\n\nSo, we conclude that \\(5 - \\sqrt{3}\\) is irrational."
+  },
+  {
+    "ref": "1.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(3\\sqrt{2}\\) is irrational.",
+    "solution": "Let us assume, to the contrary, that \\(3\\sqrt{2}\\) is rational.\n\nThat is, we can find coprime \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(3\\sqrt{2} = \\frac{a}{b}\\).\n\nRearranging, we get \\(\\sqrt{2} = \\frac{a}{3b}\\).\n\nSince 3, \\(a\\) and \\(b\\) are integers, \\(\\frac{a}{3b}\\) is rational, and so \\(\\sqrt{2}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{2}\\) is irrational.\n\nSo, we conclude that \\(3\\sqrt{2}\\) is irrational."
+  },
+  {
+    "ref": "Ex 1.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\sqrt{5}\\) is irrational.",
+    "solution": "Let us assume, to the contrary, that \\(\\sqrt{5}\\) is rational.\n\nThen we can find coprime integers \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(\\sqrt{5} = \\frac{a}{b}\\).\n\nSo \\(b\\sqrt{5} = a\\). Squaring both sides and rearranging, \\(5b^2 = a^2\\).\n\nTherefore 5 divides \\(a^2\\), and by Theorem 1.2 (with \\(p = 5\\)), 5 divides \\(a\\).\n\nSo we can write \\(a = 5c\\) for some integer \\(c\\). Substituting, \\(5b^2 = 25c^2\\), that is, \\(b^2 = 5c^2\\).\n\nThis means 5 divides \\(b^2\\), and so 5 divides \\(b\\) (again by Theorem 1.2).\n\nTherefore \\(a\\) and \\(b\\) have at least 5 as a common factor, which contradicts the fact that \\(a\\) and \\(b\\) are coprime.\n\nThis contradiction has arisen because of our incorrect assumption that \\(\\sqrt{5}\\) is rational.\n\nSo, we conclude that \\(\\sqrt{5}\\) is irrational."
+  },
+  {
+    "ref": "Ex 1.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(3 + 2\\sqrt{5}\\) is irrational.",
+    "solution": "We use the result of Question 1, that \\(\\sqrt{5}\\) is irrational.\n\nLet us assume, to the contrary, that \\(3 + 2\\sqrt{5}\\) is rational.\n\nThen we can find coprime integers \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(3 + 2\\sqrt{5} = \\frac{a}{b}\\).\n\nRearranging, \\(2\\sqrt{5} = \\frac{a}{b} - 3 = \\frac{a - 3b}{b}\\), so \\(\\sqrt{5} = \\frac{a - 3b}{2b}\\).\n\nSince \\(a\\) and \\(b\\) are integers, \\(\\frac{a - 3b}{2b}\\) is rational, and so \\(\\sqrt{5}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{5}\\) is irrational.\n\nThis contradiction has arisen because of our incorrect assumption that \\(3 + 2\\sqrt{5}\\) is rational.\n\nSo, we conclude that \\(3 + 2\\sqrt{5}\\) is irrational."
+  },
+  {
+    "ref": "Ex 1.2 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.2 Q3",
+    "context": "Prove that the following are irrationals :",
+    "stem": "\\(\\frac{1}{\\sqrt{2}}\\)",
+    "solution": "We use the fact, proved in Theorem 1.3, that \\(\\sqrt{2}\\) is irrational.\n\nLet us assume, to the contrary, that \\(\\frac{1}{\\sqrt{2}}\\) is rational.\n\nThen we can find coprime integers \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(\\frac{1}{\\sqrt{2}} = \\frac{a}{b}\\).\n\nNote \\(a \\neq 0\\), since \\(\\frac{1}{\\sqrt{2}} \\neq 0\\). Taking reciprocals, \\(\\sqrt{2} = \\frac{b}{a}\\).\n\nSince \\(a\\) and \\(b\\) are integers, \\(\\frac{b}{a}\\) is rational, and so \\(\\sqrt{2}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{2}\\) is irrational.\n\nSo, we conclude that \\(\\frac{1}{\\sqrt{2}}\\) is irrational."
+  },
+  {
+    "ref": "Ex 1.2 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.2 Q3",
+    "context": "Prove that the following are irrationals :",
+    "stem": "\\(7\\sqrt{5}\\)",
+    "solution": "We use the result of Question 1, that \\(\\sqrt{5}\\) is irrational.\n\nLet us assume, to the contrary, that \\(7\\sqrt{5}\\) is rational.\n\nThen we can find coprime integers \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(7\\sqrt{5} = \\frac{a}{b}\\).\n\nRearranging, \\(\\sqrt{5} = \\frac{a}{7b}\\).\n\nSince 7, \\(a\\) and \\(b\\) are integers, \\(\\frac{a}{7b}\\) is rational, and so \\(\\sqrt{5}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{5}\\) is irrational.\n\nSo, we conclude that \\(7\\sqrt{5}\\) is irrational."
+  },
+  {
+    "ref": "Ex 1.2 Q3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Irrational Numbers and Proof by Contradiction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 1.2 Q3",
+    "context": "Prove that the following are irrationals :",
+    "stem": "\\(6 + \\sqrt{2}\\)",
+    "solution": "We use the fact, proved in Theorem 1.3, that \\(\\sqrt{2}\\) is irrational.\n\nLet us assume, to the contrary, that \\(6 + \\sqrt{2}\\) is rational.\n\nThen we can find coprime integers \\(a\\) and \\(b\\) (\\(b \\neq 0\\)) such that \\(6 + \\sqrt{2} = \\frac{a}{b}\\).\n\nRearranging, \\(\\sqrt{2} = \\frac{a}{b} - 6 = \\frac{a - 6b}{b}\\).\n\nSince \\(a\\) and \\(b\\) are integers, \\(\\frac{a - 6b}{b}\\) is rational, and so \\(\\sqrt{2}\\) is rational.\n\nBut this contradicts the fact that \\(\\sqrt{2}\\) is irrational.\n\nSo, we conclude that \\(6 + \\sqrt{2}\\) is irrational."
+  }
+]

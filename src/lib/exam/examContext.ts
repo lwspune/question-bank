@@ -19,6 +19,7 @@ export type ExamSlug =
   | "foundation-course"
   | "neet"
   | "mh-hsc-12"
+  | "cbse-10"
   | "cbse-11"
   | "cbse-12"
   | "mh-sb-9"
@@ -180,6 +181,42 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
     std: 12,
+  },
+  {
+    slug: "cbse-10",
+    displayName: "CBSE Class 10",
+    examName: "CBSE Class 10", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/cbse-10", // exam hub: "coming soon" until notes ship
+    //
+    // `practiceOnly` HERE IS A "NOT YET", NOT THE PERMANENT PROPERTY IT IS FOR
+    // cbse-11. Class 10 IS a board year, so this exam CAN carry CBSE Class 10
+    // board PYQs later, exactly as cbse-12 did — and dropping the flag then is
+    // not cosmetic: `listChapterLandings` derives `kind = practiceOnly ?
+    // "practice" : "pyq"`, so it also switches every chapter landing page from
+    // textbook questions to board PYQs. Measure the landing-page impact before
+    // dropping it (scripts/cbse-12-pyq/flip-impact.ts is the precedent).
+    //
+    // Until then the NCERT textbook corpus is the whole bank, so /browse must
+    // default to the Practice toggle — without the flag the default view is an
+    // empty PYQ list.
+    practiceOnly: true,
+    boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
+    board: "CBSE",
+    std: 10,
+    //
+    // NO `mixedFormats` — and this is MEASURED, not assumed. The pilot chapter
+    // (Ch.1 Real Numbers) is 27 of 27 subjective, so the corpus holds ONE format
+    // and the flag would fail tests/format-mix-registry.test.ts in the
+    // "flagged but the bank holds only subjective" direction.
+    //
+    // EXPECT TO ADD IT. NCERT Class 10 Maths does contain genuine four-option
+    // MCQs — Ex 8.2 Q2 (i)-(iv) in Introduction to Trigonometry and the head of
+    // Ex 10.2 in Circles — ~7 in the whole book against ~600 subjective items.
+    // They are rival ANSWERS, not the sub-part either/or lists that made the
+    // Class-11 near-misses (see that entry below), so the flag becomes correct
+    // the day Ch.8 or Ch.10 lands. The prod-contract probe re-measures this in
+    // both directions, so it will say so.
   },
   {
     slug: "cbse-11",

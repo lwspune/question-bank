@@ -33,6 +33,11 @@ export const EXAM_ID_CBSE_12 = "9b11f033-14c3-4312-8f03-eca3c3d2c87c";
 // can never carry PYQs and the textbook corpus IS its whole bank (the mh-sb-11
 // shape). See src/lib/exam/examContext.ts.
 export const EXAM_ID_CBSE_11 = "383dd115-0583-40ac-9c07-81a5fdd8aa30";
+// CBSE Class 10 exam (seeded 2026-09-15). A THIRD exam on this pipeline, and the
+// first CBSE board year below 12. Class 10 IS a board year, so unlike Class 11
+// this exam CAN carry PYQs later — the `practiceOnly` flag on its registry entry
+// is a "not yet", not the permanent property it is for cbse-11.
+export const EXAM_ID_CBSE_10 = "defb4ad2-7ec8-42e4-ad2e-8fbe9c454e1c";
 
 /**
  * Every exam this pipeline writes to, newest class first. Used by the
@@ -43,6 +48,7 @@ export const EXAM_ID_CBSE_11 = "383dd115-0583-40ac-9c07-81a5fdd8aa30";
  * grouping across classes must carry the exam id, never the chapter name.
  */
 export const NCERT_EXAMS = [
+  { examId: "defb4ad2-7ec8-42e4-ad2e-8fbe9c454e1c", label: "CBSE Class 10" },
   { examId: "383dd115-0583-40ac-9c07-81a5fdd8aa30", label: "CBSE Class 11" },
   { examId: "9b11f033-14c3-4312-8f03-eca3c3d2c87c", label: "CBSE Class 12" },
 ] as const;
@@ -85,6 +91,42 @@ const cls12Maths = (p: string) => join(SOURCE_ROOT, "12th", "Maths", p);
 // Class 11 ships as 14 pre-split chapter PDFs in ONE folder (no Part 1/Part 2
 // split), with the end-of-book answers in kemh1an.pdf alongside them.
 const cls11Maths = (p: string) => join(SOURCE_ROOT, "11th", "Maths", p);
+// Class 10 ships as 14 pre-split chapter PDFs in ONE folder (no Part 1/Part 2),
+// with the end-of-book answers in jemh1an.pdf alongside them. Structurally the
+// SIMPLEST book on this pipeline, and four things differ from Class 11/12:
+//
+// 1. **NO MISCELLANEOUS EXERCISES — none, in any of the 14 chapters.** The
+//    `Misc Eg` / `Misc Q` ref lane and the "Miscellaneous Exercise on Chapter N"
+//    section kind are simply unused here. 31 numbered exercises total, 1-4 per
+//    chapter.
+//
+// 2. **CHAPTER NUMBER = FILE NUMBER**, like Chemistry and unlike Physics: the
+//    files are `01. Real Numbers.pdf` … `14. Probability.pdf` with no offset.
+//
+// 3. **THE KEY IS PARTIAL PER QUESTION, and the gap is not random — it tracks
+//    how PROOF-BASED the chapter is.** jemh1an.pdf carries a block for 30 of the
+//    31 exercises (Ex 1.2, the irrationality proofs, has none), but within a
+//    block only items with a computable final answer are keyed. Measured:
+//    Triangles ~9 of ~29 items (31%), Circles ~9 of ~17 (53%), Real Numbers
+//    5 of 10, everything else 89-100%. So the step-6 cross-check is a real gate
+//    on ten chapters and NEARLY INOPERATIVE on Triangles — every chapter must
+//    report its own denominator, because "0 wrong across 9 keyed" is a different
+//    claim from "across 29".
+//
+// 4. **THE APPENDICES ARE OUT OF SCOPE.** jemh1a1 (Proofs in Mathematics) and
+//    jemh1a2 (Mathematical Modelling) have 9 exercises between them and ARE
+//    keyed in jemh1an — but the book marks them "not from the examination point
+//    of view", so they are deliberately not ingested. Recorded because the key's
+//    coverage of them makes them look in-scope.
+//
+// Transcription is VISION-ONLY, measured on this book rather than inherited:
+// superscripts FLATTEN (`2⁵ × 3` extracts as `25 × 3` — well-formed, plausible,
+// and a different number), radicals VANISH (`√2, √3, √p` → `2 , 3`, `p`),
+// fractions interleave (`(96×404)/4` → `96 404 96 404 9696`), `π` disappears
+// from `take π = 22/7`, `≠` disappears, and `q ≠ 0` extracts as `q ¹ 0` (Symbol
+// font → Latin, the Std-XII Physics trap). The superscript class is the
+// dangerous one: nothing downstream can tell `25` from a mis-read `2⁵`.
+const cls10Maths = (p: string) => join(SOURCE_ROOT, "10th", "Maths", p);
 
 // ── PHYSICS path helpers (2026-09-07) ───────────────────────────────────────────
 // Physics ships as pre-split per-chapter PDFs under Part_1/Part_2, PLUS the
@@ -2536,6 +2578,48 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Alkynes",
       "Aromatic Hydrocarbon",
       "Carcinogenicity and Toxicity",
+    ],
+  },
+
+  // ── Ch.1 Real Numbers (10th). 9pp, Examples 1-7 + Ex 1.1 (7 items) + Ex 1.2
+  //    (3 items). The PILOT chapter for the Class-10 lane, picked to prove the
+  //    NEW EXAM end to end at the lowest cost: it has ZERO figures, ZERO tables
+  //    and ZERO MCQs, so it exercises the pipeline spine and none of this book's
+  //    three hazards (figure-DEPENDENT geometry, Ch.13's per-question frequency
+  //    tables, exercise-level preambles like Ex 12.2's "take π = 22/7"). Those
+  //    are proven on Ch.6 / Ch.13 / Ch.12 respectively, before any wide wave.
+  //
+  //    THE `c10` ID PREFIX IS LOAD-BEARING, for the same reason `c11` is: this
+  //    pipeline has ONE flat data/ directory, and Probability and Statistics
+  //    each exist in Class 10 AND Class 11/12.
+  //
+  //    Section→page map (0-based): §1.1 Introduction p0 · §1.2 Fundamental
+  //    Theorem of Arithmetic p1-2 · Examples 1-4 p3-4 · EXERCISE 1.1 p4-5 ·
+  //    §1.3 Revisiting Irrational Numbers p5-6 · Examples 5-7 p6-8 ·
+  //    EXERCISE 1.2 p8 · §1.4 Summary p8.
+  //
+  //    KEY COVERAGE 5 of 10 exercise items — the weakest of any non-geometry
+  //    chapter in the book, and structural rather than accidental: Ex 1.1 keys
+  //    Q1,2,3,4,7 and skips Q5/Q6 (both "explain why"), and EX 1.2 HAS NO KEY
+  //    BLOCK AT ALL because all three of its items are "prove that … is
+  //    irrational". So the step-6 gate covers Ex 1.1's computable half and
+  //    cannot speak to the other five items; their solutions are proofs checked
+  //    against the book's own Examples 5-7, which demonstrate the identical
+  //    contradiction argument.
+  c10RealNumbers: {
+    id: "c10RealNumbers",
+    chapterName: "Real Numbers",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__RealNumbers.pdf",
+    pdf: cls10Maths("01. Real Numbers.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [0], // Ex 1.1's block; Ex 1.2 is absent from the key entirely
+    note: "NCERT (CBSE Class 10) — Real Numbers (Chapter 1, NCERT Mathematics)",
+    subtopics: [
+      "Fundamental Theorem of Arithmetic",
+      "HCF and LCM by Prime Factorisation",
+      "Irrational Numbers and Proof by Contradiction",
     ],
   },
 };
