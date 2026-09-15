@@ -26,6 +26,8 @@ async function main() {
   const { buildFocusAreas } = await import("@/lib/performance/focusAreas");
   const { buildLaneNav } = await import("@/lib/performance/laneNav");
   const { pageOf, PERF_PAGE_SIZE } = await import("@/lib/paging");
+  const { fetchTaxonomyLinks } = await import("@/lib/performance/taxonomyQuery");
+  const { browseExtrasHref, topicHref, OPEN_LIMIT } = await import("@/lib/performance/links");
 
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -170,6 +172,69 @@ async function main() {
         }
         if (first.pageCount > 4) {
           console.log(`        ${noun}: ${rows.length} rows → ${first.pageCount} pages`);
+        }
+      }
+
+      // The audits' drill-down links, and the count/id agreement behind them.
+      // The badge reads the COUNT and the href reads the ID LIST; if those can
+      // disagree, a row reading "7 skipped" opens five questions and nothing
+      // anywhere reports it.
+      for (const [noun, rows] of [
+        ["wrong", lane.wrongAudit],
+        ["skipped", lane.skipAudit],
+      ] as const) {
+        for (const r of rows) {
+          const ids = noun === "wrong" ? r.wrongQuestionIds : r.seenBlankQuestionIds;
+          const count = noun === "wrong" ? r.wrong : r.seenBlank;
+          if (ids.length !== count) {
+            throw new Error(
+              `${noun} count and id list disagree for ${lane.exam}·${lane.subject}` +
+                ` / ${r.chapter} · ${r.subtopic}: ${count} vs ${ids.length}`
+            );
+          }
+          if (new Set(ids).size !== ids.length) {
+            throw new Error(`${noun} ids repeat for ${r.chapter} · ${r.subtopic}`);
+          }
+          if (ids.length > 0 && browseExtrasHref(ids) === null) {
+            throw new Error(`${noun} link vanished for ${r.chapter} · ${r.subtopic}`);
+          }
+        }
+        const over = rows.filter((r) =>
+          (noun === "wrong" ? r.wrongQuestionIds : r.seenBlankQuestionIds).length > OPEN_LIMIT
+        ).length;
+        const worst = Math.max(
+          0,
+          ...rows.map((r) => (noun === "wrong" ? r.wrong : r.seenBlank))
+        );
+        if (rows.length > 0) {
+          console.log(
+            `        ${noun} audit: ${rows.length} subtopics, worst holds ${worst}` +
+              (over > 0 ? `  ⚠ ${over} over the ${OPEN_LIMIT}-id cap (label discloses it)` : "")
+          );
+        }
+      }
+
+      // The PROJECTION links to the topic in the bank, and the join key is the
+      // NAME. Nothing but live data can test that: a chapter renamed since the
+      // attempt was sat resolves to nothing, and the row quietly loses its link.
+      // This reports the resolution rate rather than asserting one, because a
+      // genuinely-renamed chapter is a fact about the bank, not a bug here.
+      if (lane.projection) {
+        const links = await fetchTaxonomyLinks(db, lane.exam, lane.subject);
+        const chapters = lane.projection.rows;
+        const subtopics = lane.projection.subtopicRows;
+        const chapterHits = chapters.filter((r) => topicHref(links, r.chapter) !== null);
+        const subtopicHits = subtopics.filter((r) =>
+          (topicHref(links, r.chapter, r.subtopic) ?? "").includes("subtopicIds=")
+        );
+        console.log(
+          `        topic links: chapters ${chapterHits.length}/${chapters.length}, ` +
+            `subtopics ${subtopicHits.length}/${subtopics.length}` +
+            (links.examId === null ? "  ⚠ subject did not resolve" : "")
+        );
+        const missed = chapters.filter((r) => topicHref(links, r.chapter) === null).slice(0, 3);
+        if (missed.length > 0) {
+          console.log(`          unresolved chapters: ${missed.map((r) => r.chapter).join(", ")}`);
         }
       }
 

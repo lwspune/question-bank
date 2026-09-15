@@ -552,6 +552,64 @@ describe("audits", () => {
     expect(lane.skipAudit.map((r) => r.subtopic)).toEqual(["Parabola"]);
     expect(lane.skipAudit[0].seenBlank).toBe(1);
   });
+
+  it("carries the ids of both audits, and never crosses them", () => {
+    // Both audits open the exact questions on /browse rather than a filter that
+    // approximates them, so each row needs its own id list. Crossing the two
+    // would send a student to revise questions they actually answered.
+    const dims = { subjects: ["Mathematics"], chapters: ["Conics"], subtopics: ["Parabola"] };
+    const facts = [
+      blank({ p: 1, q: "seen-1" }),
+      blank({ p: 2, q: "seen-2" }),
+      wrong({ p: 3, q: "wrong-1" }),
+      right({ p: 4, q: "right-1" }),
+    ];
+    const lane = buildPerformance({ ...input([attempt()], facts), dims }, NOW).lanes[0];
+    expect(lane.skipAudit[0].seenBlankQuestionIds).toEqual(["seen-1", "seen-2"]);
+    expect(lane.wrongAudit[0].wrongQuestionIds).toEqual(["wrong-1"]);
+  });
+
+  it("keeps NEVER-REACHED questions out of the skipped ids", () => {
+    // The four-state model exists for exactly this. An id list that quietly
+    // folded unreached questions in would hand back a \"revision set\" that is
+    // really a record of where the clock ran out — and the card above it
+    // promises the opposite in so many words.
+    const dims = { subjects: ["Mathematics"], chapters: ["Conics"], subtopics: ["Parabola"] };
+    const facts = [
+      blank({ p: 1, q: "seen" }),
+      unseen({ p: 2, q: "never-1" }),
+      unseen({ p: 3, q: "never-2" }),
+      right({ p: 4, q: "right-1" }),
+    ];
+    const lane = buildPerformance({ ...input([attempt()], facts), dims }, NOW).lanes[0];
+    expect(lane.skipAudit[0].seenBlankQuestionIds).toEqual(["seen"]);
+  });
+
+  it("agrees with its own count at every grain", () => {
+    // The badge reads the COUNT and the link reads the ID LIST. If they can
+    // disagree, \"Open 7\" opens five questions and nothing reports it.
+    const dims = {
+      subjects: ["Mathematics"],
+      chapters: ["Conics", "Vectors"],
+      subtopics: ["Parabola", "Ellipse", "Dot Product"],
+    };
+    const facts = [
+      blank({ p: 1, c: 0, t: 0, q: "b1" }), blank({ p: 2, c: 0, t: 1, q: "b2" }),
+      wrong({ p: 3, c: 0, t: 0, q: "w1" }), wrong({ p: 4, c: 1, t: 2, q: "w2" }),
+      blank({ p: 5, c: 1, t: 2, q: "b3" }), right({ p: 6, c: 1, t: 2, q: "r1" }),
+      unseen({ p: 7, c: 0, t: 1, q: "u1" }),
+    ];
+    const lane = buildPerformance(
+      { ...input([attempt({ totalQuestions: 7 })], facts), dims },
+      NOW
+    ).lanes[0];
+    const rows = [...lane.chapters, ...lane.chapters.flatMap((c) => c.subtopics)];
+    expect(rows.length).toBeGreaterThan(2);
+    for (const r of rows) {
+      expect(r.seenBlankQuestionIds).toHaveLength(r.seenBlank);
+      expect(r.wrongQuestionIds).toHaveLength(r.wrong);
+    }
+  });
 });
 
 // ── difficulty ──────────────────────────────────────────────────────────────

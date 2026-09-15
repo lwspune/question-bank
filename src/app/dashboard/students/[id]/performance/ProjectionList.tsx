@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { pageOf, PERF_PAGE_SIZE } from "@/lib/paging";
+import { topicHref, type TaxonomyLinks } from "@/lib/performance/links";
 import type { Projection, ProjectionSubtopicRow } from "@/lib/performance/compute";
 import Pager from "./Pager";
 
@@ -23,10 +25,25 @@ import Pager from "./Pager";
  *
  * Both grains read one number — a chapter's marks are the SUM of its subtopics'
  * — so the toggle cannot show two stories. The headline total never changes.
+ *
+ * The row links to THE TOPIC IN THE BANK, not to the student's own mistakes —
+ * the one place on this page where that is the right target. Measured on
+ * production, 2,484 of 4,939 projection subtopic rows have `judged === 0`:
+ * they rank high precisely BECAUSE nothing has been scored there, so an
+ * "open their wrong answers" link would open nothing on half the card. The
+ * audits above are where a personal set belongs.
  */
 type Grain = "chapter" | "subtopic";
 
-export default function ProjectionList({ projection }: { projection: Projection }) {
+export default function ProjectionList({
+  projection,
+  links,
+}: {
+  projection: Projection;
+  /** Resolved from the live taxonomy by NAME, so a chapter renamed since the
+   *  attempt was sat simply yields no link. Empty when the read failed. */
+  links: TaxonomyLinks;
+}) {
   const [grain, setGrain] = useState<Grain>("chapter");
   const [page, setPage] = useState(1);
 
@@ -69,7 +86,11 @@ export default function ProjectionList({ projection }: { projection: Projection 
           >
             <span className="min-w-0 flex-1">
               <span className="block truncate text-sm">
-                {grain === "chapter" ? r.chapter : (r as ProjectionSubtopicRow).subtopic}
+                <TopicLink
+                  links={links}
+                  chapter={r.chapter}
+                  subtopic={grain === "subtopic" ? (r as ProjectionSubtopicRow).subtopic : undefined}
+                />
               </span>
               <span className="block truncate text-xs text-muted-foreground">
                 {grain === "subtopic" && r.chapter}
@@ -128,5 +149,37 @@ function GrainButton({
     >
       {children}
     </button>
+  );
+}
+
+/**
+ * The row's name, linked to that topic on /browse when the taxonomy resolves it.
+ *
+ * Degrades quietly and deliberately: an unresolved subtopic falls back to its
+ * chapter, an unresolved chapter renders as plain text. A ranking row that
+ * silently linked to the whole bank would be worse than one that does not link
+ * at all — the reader would read the destination as the topic they clicked.
+ */
+function TopicLink({
+  links,
+  chapter,
+  subtopic,
+}: {
+  links: TaxonomyLinks;
+  chapter: string;
+  subtopic?: string;
+}) {
+  const label = subtopic ?? chapter;
+  const href = topicHref(links, chapter, subtopic);
+  if (!href) return <>{label}</>;
+  return (
+    <Link
+      prefetch={false}
+      href={href}
+      aria-label={`Open ${label} on the question bank`}
+      className="rounded underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      {label}
+    </Link>
   );
 }
