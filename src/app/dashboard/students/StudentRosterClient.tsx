@@ -203,6 +203,11 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
                 <tr key={s.id} className="group hover:bg-accent/40">
                   <td className="max-w-[16rem] px-3 py-2">
                     <Link
+                      // One per student — 315 rows today, each pointing at a
+                      // page that re-reads that student whole. Prefetching the
+                      // visible ones is a thundering herd; see
+                      // tests/dashboard-students-no-prefetch.test.ts.
+                      prefetch={false}
                       href={`/dashboard/students/${s.id}`}
                       className="block min-w-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >

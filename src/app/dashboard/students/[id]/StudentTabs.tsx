@@ -31,6 +31,7 @@ export default function StudentTabs({
   return (
     <div>
       <Link
+        prefetch={false}
         href="/dashboard/students"
         className="rounded text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
@@ -42,6 +43,7 @@ export default function StudentTabs({
           const current = t.key === active;
           return (
             <Link
+              prefetch={false}
               key={t.key}
               href={t.href}
               // aria-current is what tells a screen reader which view is open;
