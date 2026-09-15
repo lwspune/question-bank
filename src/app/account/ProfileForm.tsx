@@ -14,7 +14,9 @@ import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
 import {
   MEDIUMS,
+  MEDIUM_LABELS,
   STREAMS,
+  STREAM_LABELS,
   profileCompletion,
   type Medium,
   type Stream,
@@ -23,14 +25,7 @@ import type { ProfileRow } from "@/lib/profile/service";
 
 const EXAM_OPTIONS = EXAM_CHIP_OPTIONS;
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
-const MEDIUM_OPTIONS = MEDIUMS.map((m) => ({ value: m, label: m === "hindi" ? "Hindi" : "English" }));
-const STREAM_LABELS: Record<Stream, string> = {
-  pcm: "Science (PCM)",
-  pcb: "Science (PCB)",
-  pcmb: "Science (PCMB)",
-  commerce: "Commerce",
-  arts: "Arts",
-};
+const MEDIUM_OPTIONS = MEDIUMS.map((m) => ({ value: m, label: MEDIUM_LABELS[m] }));
 const STREAM_OPTIONS = STREAMS.map((s) => ({ value: s, label: STREAM_LABELS[s] }));
 
 /**

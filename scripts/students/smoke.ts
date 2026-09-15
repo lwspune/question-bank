@@ -93,6 +93,80 @@ async function main() {
   if (/\d\.\d+E\+\d+/i.test(csv)) throw new Error("CSV already contains scientific notation");
   console.log(`\nCSV ok: ${lines.length} lines, mobiles written as text`);
 
+  // -- /dashboard/students/[id] -- the per-student detail loader ----------------
+  // The detail page reads its engagement counts from the SAME get_student_roster
+  // aggregate as the list above, filtered server-side to one row. That sharing is
+  // the fix for the defect this page had (the roster row carried more than the
+  // page it opened), so the invariant worth asserting is that the two AGREE.
+  const { fetchStudentDetail } = await import("@/lib/students/detailQuery");
+  const { examLabels, activityLabel, relativeTime } = await import("@/lib/students/profileView");
+
+  // Probe a spread, not one row: the most engaged student, one who has a mobile,
+  // and one who has never acted -- the three shapes that fail differently.
+  const mostEngaged = sortRoster(rows, "mocksSubmitted", "desc")[0];
+  const probes = [
+    mostEngaged,
+    // Explicitly NOT the row above: the top student usually has a mobile too, so
+    // an unguarded find() collapses two of the three shapes into one probe.
+    rows.find((r) => r.mobile !== null && r.id !== mostEngaged?.id),
+    rows.find((r) => r.lastActive === null),
+  ].filter((r): r is (typeof rows)[number] => Boolean(r));
+
+  console.log("");
+  console.log("detail loader:");
+  for (const row of probes) {
+    const detail = await fetchStudentDetail(db, row.id);
+    if (!detail) throw new Error(`fetchStudentDetail returned null for a live student (${row.id})`);
+
+    // The anti-drift assertion. A mismatch means the .eq() filter on the
+    // set-returning RPC stopped matching and the page silently fell back to zeros.
+    const drift = (
+      [
+        ["mocksSubmitted", detail.engagement.mocksSubmitted, row.mocksSubmitted],
+        ["qsAnswered", detail.engagement.qsAnswered, row.qsAnswered],
+        ["notesSubtopics", detail.engagement.notesSubtopics, row.notesSubtopics],
+        ["bookmarks", detail.engagement.bookmarks, row.bookmarks],
+        ["lastActive", detail.engagement.lastActive, row.lastActive],
+      ] as const
+    ).filter(([, a, b]) => a !== b);
+    if (drift.length) {
+      throw new Error(
+        `detail disagrees with the roster row for ${row.id}: ` +
+          drift.map(([k, a, b]) => `${k} ${String(a)} != ${String(b)}`).join(", ")
+      );
+    }
+
+    if (!Array.isArray(detail.capture.targetExams)) {
+      throw new Error("capture.targetExams is not an array -- the text[] mapping regressed");
+    }
+    // activityTotal comes from count:"exact"; the list is capped. If the total
+    // ever reads SMALLER than the page we rendered, the count is being derived
+    // from the truncated payload -- the 1000-row trap in miniature.
+    if (detail.activityTotal < detail.activity.length) {
+      throw new Error(`activityTotal ${detail.activityTotal} < ${detail.activity.length} rendered events`);
+    }
+    // Every kind must resolve to a human label, or the UI prints a raw enum.
+    const rawKinds = detail.activity.filter((e) => activityLabel(e.kind) === e.kind).map((e) => e.kind);
+    if (rawKinds.length) {
+      throw new Error(
+        `activity kinds with no label (ACTIVITY_LABELS has drifted): ${[...new Set(rawKinds)].join(", ")}`
+      );
+    }
+
+    console.log(
+      `  ${detail.profile.name.slice(0, 28).padEnd(28)} ` +
+        `exams=${examLabels(detail.capture.targetExams).join("/") || "-"} ` +
+        `mobile=${detail.capture.mobile ? "yes" : "-"} ` +
+        `mocks=${detail.engagement.mocksSubmitted} events=${detail.activityTotal} ` +
+        `last=${relativeTime(detail.engagement.lastActive, now)}`
+    );
+  }
+
+  // A deleted/unknown id must return null so the page can notFound() rather than throw.
+  if ((await fetchStudentDetail(db, "00000000-0000-0000-0000-000000000000")) !== null) {
+    throw new Error("fetchStudentDetail returned a detail for a non-existent user");
+  }
+
   console.log("\nSMOKE: PASS (loaders + pure core proven; page LAYOUT still owed to a browser)");
 }
 

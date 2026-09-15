@@ -96,17 +96,26 @@ type AttemptRow = {
   expires_at: string;
 };
 
-async function loadOwnAttempt(
+/**
+ * One attempt row.
+ *
+ * `userId` NULL means "do not filter by owner" — used only by the superadmin
+ * review path, which hands in the service-role client. That is not a hole: the
+ * security boundary is RLS plus WHICH CLIENT the caller supplies, and the
+ * `.eq(user_id)` is defence in depth on top of it. With the anon client a null
+ * here changes nothing, because own-row RLS still applies.
+ */
+async function loadAttemptRow(
   db: SupabaseClient,
-  userId: string,
+  userId: string | null,
   attemptId: string
 ): Promise<AttemptRow> {
-  const { data, error } = await db
+  let q = db
     .from("mock_attempts")
     .select("id, mock_id, user_id, status, started_at, expires_at")
-    .eq("id", attemptId)
-    .eq("user_id", userId)
-    .maybeSingle();
+    .eq("id", attemptId);
+  if (userId !== null) q = q.eq("user_id", userId);
+  const { data, error } = await q.maybeSingle();
   if (error) throw new MockError(500, error.message);
   if (!data) throw new MockError(404, "Attempt not found");
   return data as AttemptRow;
@@ -126,7 +135,7 @@ export async function saveAnswer(
     timeSpentSecs: number;
   }
 ): Promise<{ ok: true } | { ok: false; expired: true }> {
-  const attempt = await loadOwnAttempt(db, userId, attemptId);
+  const attempt = await loadAttemptRow(db, userId, attemptId);
   if (attempt.status !== "in_progress" || remainingSecs(attempt.expires_at, Date.now()) <= 0) {
     return { ok: false, expired: true };
   }
@@ -168,7 +177,7 @@ export async function submitAttempt(
   attemptId: string,
   reason: "manual" | "expired" = "manual"
 ): Promise<AttemptSummary> {
-  const attempt = await loadOwnAttempt(db, userId, attemptId);
+  const attempt = await loadAttemptRow(db, userId, attemptId);
   if (attempt.status !== "in_progress") {
     return readAttemptSummary(db, userId, attemptId);
   }
@@ -284,17 +293,18 @@ async function loadSavedAnswers(
   return out;
 }
 
+/** See loadAttemptRow for what a null `userId` means. */
 async function readAttemptSummary(
   db: SupabaseClient,
-  userId: string,
+  userId: string | null,
   attemptId: string
 ): Promise<AttemptSummary> {
-  const { data, error } = await db
+  let q = db
     .from("mock_attempts")
     .select("status, score, max_score, correct_count, wrong_count, skipped_count, section_scores")
-    .eq("id", attemptId)
-    .eq("user_id", userId)
-    .single();
+    .eq("id", attemptId);
+  if (userId !== null) q = q.eq("user_id", userId);
+  const { data, error } = await q.single();
   if (error || !data) throw new MockError(404, "Attempt not found");
   return {
     attemptId,
@@ -353,10 +363,10 @@ export type AttemptReview = {
 /** Post-submit result + per-question review (student pick vs key + solution). */
 export async function getAttemptReview(
   db: SupabaseClient,
-  userId: string,
+  userId: string | null,
   attemptId: string
 ): Promise<{ status: "in_progress" | "submitted" | "expired"; slug: string; review: AttemptReview | null }> {
-  const attempt = await loadOwnAttempt(db, userId, attemptId);
+  const attempt = await loadAttemptRow(db, userId, attemptId);
   const mock = await getMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
   if (attempt.status === "in_progress") return { status: "in_progress", slug: mock.slug, review: null };
@@ -425,13 +435,29 @@ export async function getAttemptReview(
   };
 }
 
+/**
+ * The same review, for a superadmin looking at ANOTHER student's attempt.
+ *
+ * Exists because the student path is own-row by construction — `.eq(user_id)`
+ * plus own-row RLS — so every attempt row the admin dashboard rendered linked
+ * to a page that 404'd and bounced the superadmin to /mock. This does not relax
+ * the student path: it is a separate entry point that must be handed the
+ * service-role client, and its ONLY route is superadmin-gated.
+ */
+export async function getAttemptReviewForAdmin(
+  db: SupabaseClient,
+  attemptId: string
+) {
+  return getAttemptReview(db, null, attemptId);
+}
+
 /** Everything the runner needs to render (or resume) an attempt. */
 export async function getRunnerState(
   db: SupabaseClient,
   userId: string,
   attemptId: string
 ): Promise<RunnerState> {
-  const attempt = await loadOwnAttempt(db, userId, attemptId);
+  const attempt = await loadAttemptRow(db, userId, attemptId);
   const mock = await getMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
   const [questions, answers] = await Promise.all([
