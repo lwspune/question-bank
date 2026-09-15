@@ -22,6 +22,25 @@ export type Medium = (typeof MEDIUMS)[number];
 export const STREAMS = ["pcm", "pcb", "pcmb", "commerce", "arts"] as const;
 export type Stream = (typeof STREAMS)[number];
 
+/**
+ * Human labels for the two closed enums. They live HERE rather than next to the
+ * form that renders them because two surfaces show the same value to different
+ * audiences — the student picks it on /account, staff read it back on
+ * /dashboard/students/[id] — and a second copy is how the two drift.
+ */
+export const MEDIUM_LABELS: Record<Medium, string> = {
+  hindi: "Hindi",
+  english: "English",
+};
+
+export const STREAM_LABELS: Record<Stream, string> = {
+  pcm: "Science (PCM)",
+  pcb: "Science (PCB)",
+  pcmb: "Science (PCMB)",
+  commerce: "Commerce",
+  arts: "Arts",
+};
+
 const MEDIUM_SET = new Set<string>(MEDIUMS);
 const STREAM_SET = new Set<string>(STREAMS);
 
