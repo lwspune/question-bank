@@ -40,7 +40,26 @@ export const ENGAGEMENT_FLOOR = 0.2;
 const RECENCY_SPAN_DAYS = 60;
 const MIN_RECENCY = 0.2;
 
-/** A skip is weaker evidence than an attempt, so it carries half the weight. */
+/**
+ * TWO scores, because a blank means two different things and one number cannot
+ * carry both. Split 2026-09-15; before that only the half-weighted one existed,
+ * inherited wholesale from nda-tracker.
+ *
+ * `weightedScore` — ABILITY. A skip is weaker evidence of not knowing something
+ * than a wrong answer is, so it carries HALF weight. Drives the mastery bar,
+ * the weak/mastered bands and the concept-graph focus list. UNCHANGED: moving
+ * it would have re-banded 18.2% of chapters across the 15 heaviest students
+ * (89 mid->weak, 53 mastered->mid), which is a different feature's calibration.
+ *
+ * `markScore` — MARKS. A blank earns zero in the real paper, so it carries FULL
+ * weight. Drives the projection alone.
+ *
+ * The tracker conflates them because its data is INVIGILATED OMR — one hall,
+ * one clock, no retakes — where "skipped" and "couldn't do it" nearly coincide.
+ * On a self-serve mock they do not: the heaviest student here answered 35% of
+ * two papers at 79% accuracy, and the half weight projected him ABOVE his own
+ * best-ever score.
+ */
 const SKIP_WEIGHT = 0.5;
 
 /** Mastery bands, shared by the chapter bars and the concept-graph focus list. */
@@ -245,7 +264,11 @@ type Tally = {
   seenBlank: number;
   neverReached: number;
   weightedSum: number;
+  /** Denominator for ABILITY: blanks at SKIP_WEIGHT. */
   weightTotal: number;
+  /** Denominator for MARKS: blanks in full. Shares `weightedSum` as its
+   *  numerator — only what counts as a zero differs. */
+  markTotal: number;
   secs: number[];
   /** Ids of the questions answered WRONG, for the audit's drill-down link. */
   wrongIds: string[];
@@ -258,7 +281,7 @@ type Tally = {
 
 const emptyTally = (): Tally => ({
   total: 0, answered: 0, correct: 0, wrong: 0, seenBlank: 0, neverReached: 0,
-  weightedSum: 0, weightTotal: 0, secs: [], wrongIds: [], seenBlankIds: [],
+  weightedSum: 0, weightTotal: 0, markTotal: 0, secs: [], wrongIds: [], seenBlankIds: [],
   perAttempt: new Map(),
 });
 
@@ -269,8 +292,9 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
   } else if (!isAnsweredFact(f) && !f.g) {
     t.seenBlank++;
     t.seenBlankIds.push(f.q);
-    // A skip is evidence, at half weight — the student saw it and passed.
+    // Half weight for ABILITY, full for MARKS — see SKIP_WEIGHT.
     t.weightTotal += weight * SKIP_WEIGHT;
+    t.markTotal += weight;
     if (isTimed(f)) t.secs.push(f.ts);
   } else {
     t.answered++;
@@ -281,6 +305,7 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
     }
     t.weightedSum += (verdict === 1 ? 1 : 0) * weight;
     t.weightTotal += weight;
+    t.markTotal += weight;
     if (isTimed(f)) t.secs.push(f.ts);
   }
 
@@ -318,8 +343,12 @@ export type SubtopicRow = {
   thin: boolean;
   /** correct / judged, 0-100. Null when nothing was judged. */
   accuracy: number | null;
-  /** recency-weighted 0-1, folding skips in at half weight */
+  /** ABILITY, recency-weighted 0-1, folding skips in at HALF weight. Mastery
+   *  bar + weak/mastered bands + concept-graph focus. */
   weightedScore: number;
+  /** MARKS, recency-weighted 0-1, counting a reached blank in FULL because that
+   *  is what it earns. The projection's accuracy, and nothing else. */
+  markScore: number;
   trend: Trend;
   /** Median seconds over the questions here with a usable dwell reading. */
   medianSecs: number | null;
@@ -357,6 +386,7 @@ function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
     // the same reasoning that makes verdictFor return 0 rather than -1.
     accuracy: pct(t.correct, t.correct + t.wrong),
     weightedScore: t.weightTotal > 0 ? t.weightedSum / t.weightTotal : 0,
+    markScore: t.markTotal > 0 ? t.weightedSum / t.markTotal : 0,
     trend: trendOf(t),
     medianSecs: median(t.secs),
     timedCount: t.secs.length,
@@ -450,8 +480,15 @@ export type ProjectionRow = {
   gap: number;
   accuracy: number | null;
   wrongRate: number | null;
-  /** Answers with a usable verdict behind `accuracy` — THE DENOMINATOR. */
+  /** Answers with a usable verdict — correct + wrong. NOT accuracy's
+   *  denominator (that is `reached`); this is what `thin` is gated on, because
+   *  an untouched blank is evidence about marks but not about ability. */
   judged: number;
+  /** Questions REACHED here — judged + seen-blank. The denominator behind BOTH
+   *  `accuracy` and `wrongRate`, which have to share one or the expression
+   *  models two different students: one who skips most of the paper (the credit
+   *  term) and one who answers all of it badly (the penalty term). */
+  reached: number;
   /** True below MIN_JUDGED_FOR_CLAIM. Ranking here is by MARKS, so a row scored
    *  off one answer can still sort high; it has to say what it rests on. */
   thin: boolean;
@@ -491,7 +528,20 @@ function expectedMarks(
   wrongRate: number,
   penaltyRatio: number
 ): number {
-  return Math.max(0, accuracy * marksAtStake - wrongRate * marksAtStake * penaltyRatio);
+  // DELIBERATELY UNCLAMPED. A row may project negative marks, and the floor
+  // lives once at the headline instead.
+  //
+  // Math.max per row is not grain-invariant — Sum(max(0,x)) >= max(0,Sum(x)) —
+  // so splitting one subtopic into two mechanically RAISES the projection. It
+  // was also worth 7.7 of one production student's visible 94, across three
+  // chapters whose own arithmetic said he would LOSE marks. The card then
+  // ranked one of them (-4.56 floored to 0) as his second-biggest OPPORTUNITY.
+  //
+  // And it contradicted the other half of this model: clamping assumes he would
+  // skip rather than lose marks, while the skip weight assumes he would convert
+  // his blanks. Both cannot hold. Negative is real here — this student scored
+  // -0.33 on a CDS paper the same week.
+  return accuracy * marksAtStake - wrongRate * marksAtStake * penaltyRatio;
 }
 
 // ── the whole page ──────────────────────────────────────────────────────────
@@ -831,12 +881,19 @@ function buildProjection(
         accuracy: null,
         wrongRate: null,
         judged: 0,
+        reached: perf ? perf.correct + perf.wrong + perf.seenBlank : 0,
         thin: true,
         tested: false,
       };
     }
-    const accuracy = perf.weightedScore;
-    const wrongRate = perf.wrong / judged;
+    // Reached, never `judged`. `weightedScore` already divides by the reached
+    // count (a blank carries full weight since 2026-09-15), so taking the
+    // wrong-rate over answers alone would leave the two halves of
+    // `expectedMarks` on different denominators — the credit term discounted
+    // for skipping, the penalty term charged as if he answered everything.
+    const reached = perf.correct + perf.wrong + perf.seenBlank;
+    const accuracy = perf.markScore;
+    const wrongRate = perf.wrong / reached;
     const projected = expectedMarks(marksAtStake, accuracy, wrongRate, penaltyRatio);
     return {
       chapter,
@@ -846,6 +903,7 @@ function buildProjection(
       accuracy: Math.round(accuracy * 100),
       wrongRate: Math.round(wrongRate * 100),
       judged,
+      reached,
       thin: judged < MIN_JUDGED_FOR_CLAIM,
       tested: true,
     };
@@ -853,16 +911,8 @@ function buildProjection(
 
   const byGap = (a: { gap: number }, b: { gap: number }) => b.gap - a.gap;
 
-  // Chapter totals are SUMMED from the subtopic rows, never stored alongside
-  // them. Two independently-supplied totals are two chances to disagree, and
-  // the card shows both behind one toggle.
   const chapterQ = new Map<string, number>();
   for (const w of shares) chapterQ.set(w.chapter, (chapterQ.get(w.chapter) ?? 0) + w.q);
-
-  const chapterByName = new Map(chapters.map((c) => [c.chapter, c]));
-  const rows: ProjectionRow[] = [...chapterQ.entries()]
-    .map(([chapter, q]) => rowFor(chapter, q, chapterByName.get(chapter)))
-    .sort(byGap);
 
   // Keyed on the PAIR: subtopic names are unique only within a chapter.
   const subByKey = new Map<string, SubtopicRow>();
@@ -870,8 +920,9 @@ function buildProjection(
     for (const st of c.subtopics) subByKey.set(`${c.chapter}||${st.subtopic}`, st);
   }
 
-  // Driven by the BANK's subtopics, not the student's — a subtopic they have
-  // never been shown is the largest gap there is, and it exists only on this side.
+  // THE SUBTOPIC GRAIN IS THE SOURCE. Driven by the BANK's subtopics, not the
+  // student's — a subtopic they have never been shown is the largest gap there
+  // is, and it exists only on this side.
   const subtopicRows: ProjectionSubtopicRow[] = shares
     .map((w) => ({
       ...rowFor(w.chapter, w.q, subByKey.get(`${w.chapter}||${w.subtopic}`)),
@@ -879,11 +930,48 @@ function buildProjection(
     }))
     .sort(byGap);
 
+  const projByChapter = new Map<string, number>();
+  for (const r of subtopicRows) {
+    projByChapter.set(r.chapter, (projByChapter.get(r.chapter) ?? 0) + r.projected);
+  }
+
+  /**
+   * A chapter's PROJECTION is summed from its subtopics, exactly as its marks
+   * already were — it is never pooled into a second, independent figure.
+   *
+   * Pooling gave a different answer, and not by rounding. `expectedMarks` is
+   * linear in marks but accuracy is a RATIO: pooling weights a chapter's
+   * subtopics by how much the STUDENT engaged with each, while summing weights
+   * them by BANK SHARE. The two coincide only if those happen to agree. Worse,
+   * pooling silently spends a tested subtopic's accuracy on the whole chapter's
+   * marks — including subtopics the student has never been shown a question
+   * from — which is the single largest term (measured: +8.85 of a 7.84-mark
+   * disagreement on one production student, 69 of whose 111 subtopics are
+   * untested while only 13 of 31 chapters are).
+   *
+   * The clamp pushes the other way and is minor (-1.02 there): Math.max is
+   * applied per row, and Sum(max(0, x)) >= max(0, Sum(x)), so a negative
+   * subtopic is discarded alone but eats a positive sibling once pooled.
+   *
+   * The accuracy/wrongRate/judged a chapter row carries stay POOLED — they
+   * describe the chapter as a whole and are read as counts, not as the inputs
+   * to this number. Only `projected` and `gap` are derived from the subtopics.
+   */
+  const chapterByName = new Map(chapters.map((c) => [c.chapter, c]));
+  const rows: ProjectionRow[] = [...chapterQ.entries()]
+    .map(([chapter, q]) => {
+      const base = rowFor(chapter, q, chapterByName.get(chapter));
+      const projected = projByChapter.get(chapter) ?? 0;
+      return { ...base, projected, gap: base.marksAtStake - projected };
+    })
+    .sort(byGap);
+
   return {
-    // The total is the CHAPTER sum. Summing subtopics instead would double-count
-    // nothing but would drift on rounding, and the chapter figure is the one the
-    // headline has always shown.
-    total: Math.round(rows.reduce((s, r) => s + r.projected, 0)),
+    // Reconciles at BOTH grains by construction: every chapter's projection IS
+    // its subtopics' sum, so this is also the subtopic sum. The card renders one
+    // headline over a toggle, and neither view can now contradict it.
+    // The ONE floor. A row may be negative; a headline out of 300 may not.
+    total: Math.max(0, Math.round(rows.reduce((s, r) => s + r.projected, 0))),
     ceiling: Math.round(ceiling),
     rows,
     subtopicRows,

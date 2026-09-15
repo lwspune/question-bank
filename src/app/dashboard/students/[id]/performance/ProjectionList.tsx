@@ -23,8 +23,14 @@ import Pager from "./Pager";
  * ACROSS CHAPTERS. "Which subtopic anywhere is worth the most" is the question a
  * student actually has tonight; "which subtopic within this chapter" is not.
  *
- * Both grains read one number — a chapter's marks are the SUM of its subtopics'
- * — so the toggle cannot show two stories. The headline total never changes.
+ * Both grains read one number and the headline never changes, because a chapter
+ * is the SUM of its subtopics in marks AND in projection.
+ *
+ * That was only half true until 2026-09-15: marks were summed, the projection
+ * was separately POOLED, and the two disagreed by 7.84 marks on the heaviest
+ * student — a headline of 94 sitting over subtopic rows adding to 86.55. The
+ * parity test pinned `marksAtStake` only, so nothing caught it. Pinned at both
+ * grains now in tests/performance-compute.test.ts.
  *
  * The row links to THE TOPIC IN THE BANK, not to the student's own mistakes —
  * the one place on this page where that is the right target. Measured on
@@ -100,7 +106,11 @@ export default function ProjectionList({
                 {r.tested && r.thin && (
                   <>
                     {grain === "subtopic" && " · "}
-                    {r.accuracy}% of {r.judged} · thin
+                    {/* REACHED, not judged: since 2026-09-15 a blank counts in
+                        full toward this accuracy, because a blank earns zero
+                        marks. `judged` is still what `thin` gates on — an
+                        untouched blank is evidence about marks, not ability. */}
+                    {r.accuracy}% of {r.reached} · thin
                   </>
                 )}
               </span>
