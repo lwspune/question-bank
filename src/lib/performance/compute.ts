@@ -209,6 +209,25 @@ function median(values: number[]): number | null {
   return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
 }
 
+/**
+ * Is this dwell reading usable?
+ *
+ * `time_spent_secs` is wall-clock on the question, accumulated across visits
+ * and committed on navigation. Measured across 300 submitted attempts in
+ * production, the per-question timer accounts for the whole sitting —
+ * sum(ts) / (submitted_at − started_at) has median 0.95 and never exceeds 1.01
+ * — so it partitions the clock rather than approximating it.
+ *
+ * But 6.8% of answer rows carry ZERO. A row exists, so the question was
+ * reached; no dwell was recorded, so we did not observe how long it took. That
+ * is a measurement gap, not a zero-second solve, and feeding it to a median
+ * asserts something we never saw. Excluded here, COUNTED as `zeroDwell`, and
+ * disclosed on the card.
+ */
+function isTimed(f: PerfFact): boolean {
+  return f.rc && f.ts > 0;
+}
+
 /** Percent, or null when the denominator is zero. NEVER 0 for "no data": a zero
  *  asserts they got everything wrong and sorts them last. */
 function pct(numerator: number, denominator: number): number | null {
@@ -247,7 +266,7 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
     t.seenBlank++;
     // A skip is evidence, at half weight — the student saw it and passed.
     t.weightTotal += weight * SKIP_WEIGHT;
-    t.secs.push(f.ts);
+    if (isTimed(f)) t.secs.push(f.ts);
   } else {
     t.answered++;
     if (verdict === 1) t.correct++;
@@ -257,7 +276,7 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
     }
     t.weightedSum += (verdict === 1 ? 1 : 0) * weight;
     t.weightTotal += weight;
-    t.secs.push(f.ts);
+    if (isTimed(f)) t.secs.push(f.ts);
   }
 
   // Trend is measured over ATTEMPTED questions only. Including unreached ones
@@ -297,7 +316,12 @@ export type SubtopicRow = {
   /** recency-weighted 0-1, folding skips in at half weight */
   weightedScore: number;
   trend: Trend;
+  /** Median seconds over the questions here with a usable dwell reading. */
   medianSecs: number | null;
+  /** How many readings that median rests on — THE DENOMINATOR behind it. One
+   *  600-second question is an abandoned tab, not a slow topic, and without
+   *  this count no consumer can tell the two apart. */
+  timedCount: number;
   /** The questions they got wrong here, so the audit can open exactly those on
    *  /browse rather than a filter that merely approximates them. */
   wrongQuestionIds: string[];
@@ -325,6 +349,7 @@ function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
     weightedScore: t.weightTotal > 0 ? t.weightedSum / t.weightTotal : 0,
     trend: trendOf(t),
     medianSecs: median(t.secs),
+    timedCount: t.secs.length,
     wrongQuestionIds: t.wrongIds,
   };
 }
@@ -344,6 +369,58 @@ export type Coverage = {
   tailMedianSecs: number | null;
 };
 
+// ── time ────────────────────────────────────────────────────────────────────
+
+/** A chapter that ate the clock, next to what the time bought. 74s a question
+ *  at 56% is a time sink; 74s at 90% is time well spent. The seconds are only
+ *  a finding beside the accuracy, so the two travel together. */
+export type SlowChapter = {
+  chapter: string;
+  medianSecs: number;
+  timedCount: number;
+  accuracy: number | null;
+  judged: number;
+  thin: boolean;
+};
+
+/**
+ * Where the sitting's clock actually went.
+ *
+ * The four second-buckets partition `totalSecs` exactly, using the SAME
+ * classification as the coverage card's counts — a page that said "654 left
+ * blank" above and excluded some of them from the blank time share would be
+ * describing two different papers.
+ *
+ * Every central figure is a MEDIAN. Dwell includes idle time (production holds
+ * one question at 6,131 seconds), and a single such row moves a mean but not a
+ * median.
+ */
+export type TimeAnalysis = {
+  /** Seconds across every reached question in the lane. */
+  totalSecs: number;
+  correctSecs: number;
+  wrongSecs: number;
+  blankSecs: number;
+  /** Answered, but the bank has no usable key — time spent, verdict 0. Kept as
+   *  its own bucket so the bars still account for the whole sitting. */
+  unjudgedSecs: number;
+  medianCorrectSecs: number | null;
+  medianWrongSecs: number | null;
+  medianBlankSecs: number | null;
+  /** Reached questions with no dwell recorded, excluded from every median. */
+  zeroDwell: number;
+  /** Slowest chapters first. Only chapters with enough readings to mean it. */
+  slowest: SlowChapter[];
+};
+
+/** Below this many timed questions, a chapter's median is one stray reading
+ *  rather than a pace. Set to the evidence floor the rest of the core uses. */
+const MIN_TIMED_FOR_SLOWEST = MIN_JUDGED_FOR_CLAIM;
+
+/** How many slow chapters the card names. Beyond this the list stops being a
+ *  shortlist and becomes the chapter table again. */
+const SLOWEST_LIMIT = 5;
+
 export type DifficultyRow = {
   difficulty: PerfDifficulty;
   answered: number;
@@ -362,13 +439,32 @@ export type ProjectionRow = {
   gap: number;
   accuracy: number | null;
   wrongRate: number | null;
+  /** Answers with a usable verdict behind `accuracy` — THE DENOMINATOR. */
+  judged: number;
+  /** True below MIN_JUDGED_FOR_CLAIM. Ranking here is by MARKS, so a row scored
+   *  off one answer can still sort high; it has to say what it rests on. */
+  thin: boolean;
   /** False when the student has never been tested on this chapter — the row
    *  stays, carrying its full marks as gap, because an untested chapter worth
    *  150 marks is the largest gap there is. */
   tested: boolean;
 };
 
-export type Projection = { total: number; ceiling: number; rows: ProjectionRow[] };
+/** The same row at the finer grain. Carries its parent chapter because subtopic
+ *  names are unique only WITHIN a chapter (`subtopics_chapter_id_name_key`), so
+ *  the pair is the key — nda-tracker matches on the bare name, which it can only
+ *  do because its taxonomy is a flattened copy of ours. */
+export type ProjectionSubtopicRow = ProjectionRow & { subtopic: string };
+
+export type Projection = {
+  total: number;
+  ceiling: number;
+  rows: ProjectionRow[];
+  /** Flat and CROSS-CHAPTER, ranked by recoverable marks. The question the card
+   *  answers is "which subtopic anywhere is worth the most", never "which
+   *  subtopic within this chapter". */
+  subtopicRows: ProjectionSubtopicRow[];
+};
 
 /**
  * Expected marks from an accuracy + wrong-rate against a marks pool.
@@ -400,6 +496,9 @@ export type Lane = {
   /** correct / judged across the lane, 0-100. Null when nothing was judged. */
   accuracy: number | null;
   coverage: Coverage;
+  /** Always present — an empty lane reports zeros and nulls, never an absent
+   *  block, so the card can say "never timed" instead of throwing. */
+  time: TimeAnalysis;
   difficulty: DifficultyRow[];
   chapters: ChapterRow[];
   /** Subtopics with at least one wrong answer, worst first. */
@@ -420,6 +519,8 @@ export type Summary = {
     attemptId: string;
     title: string;
     slug: string;
+    /** Which exam they last sat — the default the exam nav opens on. */
+    exam: string;
     at: string;
     score: number;
     maxScore: number;
@@ -469,6 +570,7 @@ export function buildPerformance(payload: PerfInput, now: Date): Performance {
           attemptId: last.attemptId,
           title: last.mockTitle,
           slug: last.mockSlug,
+          exam: last.examName,
           at: last.startedAt,
           score: last.score as number,
           maxScore: last.maxScore as number,
@@ -526,6 +628,11 @@ function buildLane(
   let marksSum = 0;
   let negSum = 0;
   let markedQuestions = 0;
+  // Time buckets, classified exactly as the coverage counts above are.
+  const time = { totalSecs: 0, correctSecs: 0, wrongSecs: 0, blankSecs: 0, unjudgedSecs: 0, zeroDwell: 0 };
+  const correctSecs: number[] = [];
+  const wrongSecs: number[] = [];
+  const blankSecs: number[] = [];
 
   for (const f of laneFacts) {
     const attempt = keptById.get(f.a)!;
@@ -549,12 +656,29 @@ function buildLane(
       cov.reached++;
       if (answered) cov.answered++;
       else cov.seenBlank++;
-      secs.push(f.ts);
-      // Position within the WHOLE paper, not within the lane — pacing is a fact
-      // about the sitting, and a GAT subject can sit anywhere in the 150.
-      const share = attempt.totalQuestions > 0 ? f.p / attempt.totalQuestions : 0;
-      if (share <= 0.2) headSecs.push(f.ts);
-      if (share > 0.8) tailSecs.push(f.ts);
+
+      // Where the clock went. The buckets mirror addToTally's classification
+      // one-for-one, including the grace case, so the time card and the
+      // coverage card can never describe different papers.
+      time.totalSecs += f.ts;
+      if (!answered && !f.g) time.blankSecs += f.ts;
+      else if (verdict === 1) time.correctSecs += f.ts;
+      else if (verdict === -1) time.wrongSecs += f.ts;
+      else time.unjudgedSecs += f.ts;
+
+      if (!isTimed(f)) {
+        time.zeroDwell++;
+      } else {
+        secs.push(f.ts);
+        if (!answered && !f.g) blankSecs.push(f.ts);
+        else if (verdict === 1) correctSecs.push(f.ts);
+        else if (verdict === -1) wrongSecs.push(f.ts);
+        // Position within the WHOLE paper, not within the lane — pacing is a
+        // fact about the sitting, and a GAT subject can sit anywhere in the 150.
+        const share = attempt.totalQuestions > 0 ? f.p / attempt.totalQuestions : 0;
+        if (share <= 0.2) headSecs.push(f.ts);
+        if (share > 0.8) tailSecs.push(f.ts);
+      }
     }
 
     if (answered || f.g) {
@@ -611,6 +735,24 @@ function buildLane(
       headMedianSecs: median(headSecs),
       tailMedianSecs: median(tailSecs),
     },
+    time: {
+      ...time,
+      medianCorrectSecs: median(correctSecs),
+      medianWrongSecs: median(wrongSecs),
+      medianBlankSecs: median(blankSecs),
+      slowest: chapters
+        .filter((c) => c.medianSecs !== null && c.timedCount >= MIN_TIMED_FOR_SLOWEST)
+        .map((c) => ({
+          chapter: c.chapter,
+          medianSecs: c.medianSecs as number,
+          timedCount: c.timedCount,
+          accuracy: c.accuracy,
+          judged: c.judged,
+          thin: c.thin,
+        }))
+        .sort((a, b) => b.medianSecs - a.medianSecs || a.chapter.localeCompare(b.chapter))
+        .slice(0, SLOWEST_LIMIT),
+    },
     difficulty: DIFFICULTIES.map((d) => {
       const row = diff.get(d);
       return {
@@ -655,40 +797,81 @@ function buildProjection(
   }
   if (ceiling <= 0) return null;
 
-  const byName = new Map(chapters.map((c) => [c.chapter, c]));
-  const rows: ProjectionRow[] = shares.map((w) => {
-    const marksAtStake = (w.q / bankTotal) * ceiling;
-    const c = byName.get(w.chapter);
-    if (!c || c.correct + c.wrong === 0) {
+  /**
+   * One row at either grain. `perf` is the student's tally for that slice of
+   * the bank, or undefined when they have never been tested on it.
+   *
+   * Shared by both levels on purpose: a chapter and a subtopic differ only in
+   * how many bank questions they hold, and two implementations of "expected
+   * marks" would eventually disagree behind the same toggle.
+   */
+  const rowFor = (chapter: string, q: number, perf: SubtopicRow | ChapterRow | undefined) => {
+    const marksAtStake = (q / bankTotal) * ceiling;
+    const judged = perf ? perf.correct + perf.wrong : 0;
+    if (!perf || judged === 0) {
       return {
-        chapter: w.chapter,
+        chapter,
         marksAtStake,
         projected: 0,
         gap: marksAtStake,
         accuracy: null,
         wrongRate: null,
+        judged: 0,
+        thin: true,
         tested: false,
       };
     }
-    const accuracy = c.weightedScore;
-    const judged = c.correct + c.wrong;
-    const wrongRate = judged > 0 ? c.wrong / judged : 0;
+    const accuracy = perf.weightedScore;
+    const wrongRate = perf.wrong / judged;
     const projected = expectedMarks(marksAtStake, accuracy, wrongRate, penaltyRatio);
     return {
-      chapter: w.chapter,
+      chapter,
       marksAtStake,
       projected,
       gap: marksAtStake - projected,
       accuracy: Math.round(accuracy * 100),
       wrongRate: Math.round(wrongRate * 100),
+      judged,
+      thin: judged < MIN_JUDGED_FOR_CLAIM,
       tested: true,
     };
-  });
+  };
 
-  rows.sort((a, b) => b.gap - a.gap);
+  const byGap = (a: { gap: number }, b: { gap: number }) => b.gap - a.gap;
+
+  // Chapter totals are SUMMED from the subtopic rows, never stored alongside
+  // them. Two independently-supplied totals are two chances to disagree, and
+  // the card shows both behind one toggle.
+  const chapterQ = new Map<string, number>();
+  for (const w of shares) chapterQ.set(w.chapter, (chapterQ.get(w.chapter) ?? 0) + w.q);
+
+  const chapterByName = new Map(chapters.map((c) => [c.chapter, c]));
+  const rows: ProjectionRow[] = [...chapterQ.entries()]
+    .map(([chapter, q]) => rowFor(chapter, q, chapterByName.get(chapter)))
+    .sort(byGap);
+
+  // Keyed on the PAIR: subtopic names are unique only within a chapter.
+  const subByKey = new Map<string, SubtopicRow>();
+  for (const c of chapters) {
+    for (const st of c.subtopics) subByKey.set(`${c.chapter}||${st.subtopic}`, st);
+  }
+
+  // Driven by the BANK's subtopics, not the student's — a subtopic they have
+  // never been shown is the largest gap there is, and it exists only on this side.
+  const subtopicRows: ProjectionSubtopicRow[] = shares
+    .map((w) => ({
+      ...rowFor(w.chapter, w.q, subByKey.get(`${w.chapter}||${w.subtopic}`)),
+      subtopic: w.subtopic,
+    }))
+    .sort(byGap);
+
   return {
+    // The total is the CHAPTER sum. Summing subtopics instead would double-count
+    // nothing but would drift on rounding, and the chapter figure is the one the
+    // headline has always shown.
     total: Math.round(rows.reduce((s, r) => s + r.projected, 0)),
     ceiling: Math.round(ceiling),
     rows,
+    subtopicRows,
   };
 }

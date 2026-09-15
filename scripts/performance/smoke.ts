@@ -24,6 +24,8 @@ async function main() {
   const { fetchStudentPerformance } = await import("@/lib/performance/query");
   const { buildPerformance } = await import("@/lib/performance/compute");
   const { buildFocusAreas } = await import("@/lib/performance/focusAreas");
+  const { buildLaneNav } = await import("@/lib/performance/laneNav");
+  const { pageOf, PERF_PAGE_SIZE } = await import("@/lib/paging");
 
   const db = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -80,6 +82,20 @@ async function main() {
         `belowFloor=${perf.summary.belowFloor} quality=${perf.summary.attemptQuality ?? "—"} ` +
         `consistency=${perf.summary.consistency?.label ?? "—"}`
     );
+    // The exam/subject nav, whose default is the exam of the most recent
+    // COUNTED attempt. Printed because the rule is only interesting where the
+    // student spans more than one exam, which no fixture can be.
+    const nav = buildLaneNav(perf.lanes, perf.summary.latest?.exam ?? null, {});
+    if (nav.exams.length > 0) {
+      console.log(
+        `   nav: exams=[${nav.exams.map((e) => `${e.exam}:${e.judged}`).join(" ")}] ` +
+          `latest=${perf.summary.latest?.exam ?? "—"} → default=${nav.selectedExam} · ${nav.selected?.subject ?? "—"}` +
+          (nav.exams.length > 1 && nav.selectedExam !== nav.exams[0].exam
+            ? "  (recency default differs from busiest)"
+            : "")
+      );
+    }
+
     for (const lane of perf.lanes) {
       const cov = lane.coverage;
       console.log(
@@ -89,6 +105,74 @@ async function main() {
           `neverReached=${cov.neverReached} medianSecs=${cov.medianSecs ?? "—"} ` +
           `projected=${lane.projection ? `${lane.projection.total}/${lane.projection.ceiling}` : "—"}`
       );
+      // Where the clock went. The buckets must partition the total exactly —
+      // a page whose bars under-account for the sitting is describing a
+      // different paper from the coverage card directly above it.
+      const t = lane.time;
+      const bucketSum = t.correctSecs + t.wrongSecs + t.blankSecs + t.unjudgedSecs;
+      if (bucketSum !== t.totalSecs) {
+        throw new Error(
+          `time buckets do not partition the clock for ${lane.exam}·${lane.subject}: ` +
+            `${bucketSum} vs ${t.totalSecs}`
+        );
+      }
+      if (t.totalSecs > 0) {
+        const share = (n: number) => `${Math.round((n / t.totalSecs) * 100)}%`;
+        console.log(
+          `        time: ${(t.totalSecs / 60).toFixed(0)}min  ` +
+            `correct=${share(t.correctSecs)}(${t.medianCorrectSecs === null ? "—" : `${t.medianCorrectSecs}s`}) ` +
+            `wrong=${share(t.wrongSecs)}(${t.medianWrongSecs === null ? "—" : `${t.medianWrongSecs}s`}) ` +
+            `blank=${share(t.blankSecs)}(${t.medianBlankSecs === null ? "—" : `${t.medianBlankSecs}s`}) ` +
+            `zeroDwell=${t.zeroDwell}  ` +
+            `slowest=${t.slowest.slice(0, 2).map((c) => `${c.chapter} ${c.medianSecs}s@${c.accuracy ?? "—"}%`).join(", ") || "none"}`
+        );
+      }
+
+      // Both projection grains. The chapter marks MUST be the exact sum of the
+      // subtopic marks beneath them — they are one number read at two grains,
+      // and the card puts them behind a single toggle.
+      if (lane.projection) {
+        const { rows, subtopicRows } = lane.projection;
+        for (const chapter of rows) {
+          const summed = subtopicRows
+            .filter((r) => r.chapter === chapter.chapter)
+            .reduce((n, r) => n + r.marksAtStake, 0);
+          if (Math.abs(summed - chapter.marksAtStake) > 1e-6) {
+            throw new Error(
+              `subtopic marks do not sum to their chapter for ${lane.exam}·${lane.subject}` +
+                ` / ${chapter.chapter}: ${summed} vs ${chapter.marksAtStake}`
+            );
+          }
+        }
+        if (subtopicRows.length > 0) {
+          const top = subtopicRows[0];
+          console.log(
+            `        projection: ${rows.length} chapters / ${subtopicRows.length} subtopics  ` +
+              `top=${top.subtopic} (${top.chapter}) +${top.gap.toFixed(1)} of ${top.marksAtStake.toFixed(1)}` +
+              `${top.tested ? ` · ${top.accuracy}% of ${top.judged}` : " · never tested"}`
+          );
+        }
+      }
+
+      // Paging over the real ranked lists — the cards that used to truncate
+      // silently. `total` must survive paging, since that is what the footer
+      // promises the reader.
+      const rankedLists: [string, readonly unknown[]][] = [
+        ["wrongAudit", lane.wrongAudit],
+        ["skipAudit", lane.skipAudit],
+        ["projection", lane.projection?.rows ?? []],
+      ];
+      for (const [noun, rows] of rankedLists) {
+        const first = pageOf(rows, 1, PERF_PAGE_SIZE);
+        const last = pageOf(rows, first.pageCount, PERF_PAGE_SIZE);
+        if (first.total !== rows.length || last.page !== first.pageCount) {
+          throw new Error(`paging lost rows in ${noun} for ${lane.exam}·${lane.subject}`);
+        }
+        if (first.pageCount > 4) {
+          console.log(`        ${noun}: ${rows.length} rows → ${first.pageCount} pages`);
+        }
+      }
+
       // The focus card only exists for NDA Mathematics, so this is the only
       // lane that exercises the concept graph against real chapter names — the
       // path where a taxonomy rename shows up as a silently empty list.

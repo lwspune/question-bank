@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { ChevronRight, TrendingUp, TrendingDown, Activity, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { pageOf, PERF_PAGE_SIZE } from "@/lib/paging";
 import type { ChapterRow, SubtopicRow, Trend } from "@/lib/performance/compute";
+import Pager from "./Pager";
 
 /**
  * Chapter performance, expandable to subtopics — the shape borrowed from
@@ -11,7 +13,11 @@ import type { ChapterRow, SubtopicRow, Trend } from "@/lib/performance/compute";
  *
  * Two rules this inherits from there, both of which stop it becoming a wall:
  * chapters are ordered weakest-measured-first, and an expanded chapter shows
- * only the subtopics with something to review.
+ * only the subtopics with something to review. Paged on top of both, at the
+ * same size as the audit cards — NDA Mathematics reaches 31 chapters, and a
+ * card that pages while the one below it does not is its own kind of wall.
+ * Expansion is keyed by chapter NAME, so a chapter left open stays open when
+ * the reader pages away and back.
  *
  * And one this does not: EVERY percentage ships with its denominator. A row
  * resting on one or two answers is marked `thin` by the core and rendered
@@ -71,6 +77,8 @@ function Score({ row }: { row: SubtopicRow | ChapterRow }) {
 
 export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] }) {
   const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [page, setPage] = useState(1);
+  const p = pageOf(chapters, page, PERF_PAGE_SIZE);
 
   if (chapters.length === 0) {
     return (
@@ -81,83 +89,94 @@ export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] 
   }
 
   return (
-    <ul className="divide-y rounded-lg border bg-card">
-      {chapters.map((c) => {
-        const isOpen = Boolean(open[c.chapter]);
-        // Only subtopics worth reviewing — a clean one has nothing to say here.
-        const worthShowing = c.subtopics.filter(
-          (s) => s.wrong > 0 || s.seenBlank > 0 || s.judged > 0
-        );
-        return (
-          <li key={c.chapter}>
-            <button
-              type="button"
-              onClick={() => setOpen((o) => ({ ...o, [c.chapter]: !o[c.chapter] }))}
-              aria-expanded={isOpen}
-              className="flex w-full items-center gap-3 p-3 text-left transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
-            >
-              <ChevronRight
-                className={cn(
-                  "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
-                  isOpen && "rotate-90"
-                )}
-                aria-hidden
-              />
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium">{c.chapter}</span>
-                <span className="mt-0.5 block text-xs text-muted-foreground">
-                  {c.subtopics.length} subtopic{c.subtopics.length === 1 ? "" : "s"}
-                  {c.neverReached > 0 && ` · ${c.neverReached} never reached`}
+    <div className="rounded-lg border bg-card">
+      <ul className="divide-y">
+        {p.rows.map((c) => {
+          const isOpen = Boolean(open[c.chapter]);
+          // Only subtopics worth reviewing — a clean one has nothing to say here.
+          const worthShowing = c.subtopics.filter(
+            (s) => s.wrong > 0 || s.seenBlank > 0 || s.judged > 0
+          );
+          return (
+            <li key={c.chapter}>
+              <button
+                type="button"
+                onClick={() => setOpen((o) => ({ ...o, [c.chapter]: !o[c.chapter] }))}
+                aria-expanded={isOpen}
+                className="flex w-full items-center gap-3 p-3 text-left transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+              >
+                <ChevronRight
+                  className={cn(
+                    "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
+                    isOpen && "rotate-90"
+                  )}
+                  aria-hidden
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-medium">{c.chapter}</span>
+                  <span className="mt-0.5 block text-xs text-muted-foreground">
+                    {c.subtopics.length} subtopic{c.subtopics.length === 1 ? "" : "s"}
+                    {c.neverReached > 0 && ` · ${c.neverReached} never reached`}
+                  </span>
                 </span>
-              </span>
-              <span className="hidden w-40 shrink-0 sm:block" aria-hidden>
-                <span className="block h-2 overflow-hidden rounded-full bg-muted">
-                  <span
-                    className={cn("block h-full rounded-full", barTone(c.weightedScore))}
-                    style={{ width: `${Math.max(2, Math.round(c.weightedScore * 100))}%` }}
-                  />
+                <span className="hidden w-40 shrink-0 sm:block" aria-hidden>
+                  <span className="block h-2 overflow-hidden rounded-full bg-muted">
+                    <span
+                      className={cn("block h-full rounded-full", barTone(c.weightedScore))}
+                      style={{ width: `${Math.max(2, Math.round(c.weightedScore * 100))}%` }}
+                    />
+                  </span>
                 </span>
-              </span>
-              <span className="shrink-0 text-right">
-                <Score row={c} />
-                <span className="mt-0.5 block">
-                  <TrendChip trend={c.trend} />
+                <span className="shrink-0 text-right">
+                  <Score row={c} />
+                  <span className="mt-0.5 block">
+                    <TrendChip trend={c.trend} />
+                  </span>
                 </span>
-              </span>
-            </button>
+              </button>
 
-            {isOpen && (
-              <ul className="space-y-1 border-t bg-muted/30 px-3 py-2 pl-10">
-                {worthShowing.length === 0 ? (
-                  <li className="py-2 text-xs text-muted-foreground">
-                    Nothing answered in this chapter yet.
-                  </li>
-                ) : (
-                  worthShowing.map((s) => (
-                    <li
-                      key={s.subtopic}
-                      className="flex flex-wrap items-center gap-x-3 gap-y-1 py-1.5"
-                    >
-                      <span className="min-w-0 flex-1 truncate text-xs">{s.subtopic}</span>
-                      <span className="flex shrink-0 items-center gap-2 text-xs tabular-nums">
-                        {s.wrong > 0 && (
-                          <span className="text-red-600 dark:text-red-400">{s.wrong} wrong</span>
-                        )}
-                        {s.seenBlank > 0 && (
-                          <span className="text-amber-600 dark:text-amber-400">
-                            {s.seenBlank} skipped
-                          </span>
-                        )}
-                        <Score row={s} />
-                      </span>
+              {isOpen && (
+                <ul className="space-y-1 border-t bg-muted/30 px-3 py-2 pl-10">
+                  {worthShowing.length === 0 ? (
+                    <li className="py-2 text-xs text-muted-foreground">
+                      Nothing answered in this chapter yet.
                     </li>
-                  ))
-                )}
-              </ul>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+                  ) : (
+                    worthShowing.map((s) => (
+                      <li
+                        key={s.subtopic}
+                        className="flex flex-wrap items-center gap-x-3 gap-y-1 py-1.5"
+                      >
+                        <span className="min-w-0 flex-1 truncate text-xs">{s.subtopic}</span>
+                        <span className="flex shrink-0 items-center gap-2 text-xs tabular-nums">
+                          {s.wrong > 0 && (
+                            <span className="text-red-600 dark:text-red-400">{s.wrong} wrong</span>
+                          )}
+                          {s.seenBlank > 0 && (
+                            <span className="text-amber-600 dark:text-amber-400">
+                              {s.seenBlank} skipped
+                            </span>
+                          )}
+                          <Score row={s} />
+                        </span>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      <Pager
+        page={p.page}
+        pageCount={p.pageCount}
+        from={p.from}
+        to={p.to}
+        total={p.total}
+        noun="chapters"
+        onPage={setPage}
+      />
+    </div>
   );
 }
