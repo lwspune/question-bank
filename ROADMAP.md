@@ -250,6 +250,42 @@ Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIE
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — 28 files carry a RAW control byte and are invisible to every text probe (logged 2026-09-15)
+
+`tests/no-control-bytes.test.ts` guards this from today forward, but it ships with a **baselined
+allowlist of 28 pre-existing files**, because fixing shipped code to apply a new learning is a
+decision to be asked for, not taken. The list is in that file and is asserted exact in both
+directions, so it can only shrink.
+
+**What they are.** Every one is the same pattern, and it is a legitimate design — a NUL used as a
+composite-key separator — written as a literal `0x00` instead of the `\u0000` escape:
+
+```ts
+const conceptKey = (t) => `${t.subtopicSlug}<NUL>${t.conceptSlug}`;
+```
+
+**Why it matters.** `grep`, `ripgrep` and `git` all classify a file containing one as BINARY. So
+`npm run audit:text` and every other text probe here SKIP those files reporting nothing, `git diff`
+prints `Bin 0 -> N bytes` instead of a reviewable diff, and a grep for a symbol defined in one comes
+back empty — which reads as "this code does not exist", not "this file was not searched".
+
+**Blast radius: three of them are `src/` production code** — `lib/notes/goLinks.ts`,
+`lib/quiz/atoms.ts`, `lib/tags/conceptTags.ts`. The other 25 are under `scripts/` and `tests/`.
+`quiz/atoms.ts` is the one to think about hardest: its NUL feeds a **sha1 content hash**
+(`parts.join(NUL)`), so the swap must be byte-identical or every quiz-atom hash changes. It is
+byte-identical — `"\u0000"` and a raw NUL are the same string in JS — but that is the claim to
+verify with a before/after hash rather than assert.
+
+**Risk / reversibility.** Behaviour-preserving by construction and trivially revertible; the whole
+change is one byte per file. The real risk is the hash claim above.
+
+**Cost.** Under an hour, most of it verification.
+
+**Recommendation: DO, as its own commit, but not bundled into a feature.** The value is that ~28
+files rejoin the searchable repo; the risk is concentrated in one file and is testable. Needs an
+explicit go-ahead first — it is shipped code.
+
+
 Deferred remainder of the 2026-06-01 (later) tech-debt pass. That session shipped the guide component de-dup (12 parallel files → 2 generics), the `questionResources.ts` resolver registry, and cross-link + billing test coverage (see CLAUDE.md Decisions log). These three are the lower-urgency items it explicitly left out.
 
 ### Split `EditQuestionForm` (1,154-line god-component)

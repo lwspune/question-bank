@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronRight, TrendingUp, TrendingDown, Activity, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pageOf, PERF_PAGE_SIZE } from "@/lib/paging";
+import { browseExtrasHref } from "@/lib/performance/links";
 import type { ChapterRow, SubtopicRow, Trend } from "@/lib/performance/compute";
 import Pager from "./Pager";
 
@@ -18,6 +20,11 @@ import Pager from "./Pager";
  * card that pages while the one below it does not is its own kind of wall.
  * Expansion is keyed by chapter NAME, so a chapter left open stays open when
  * the reader pages away and back.
+ *
+ * The wrong and skipped COUNTS are the drill-down here, rather than a sixth
+ * element on an already-dense row: this is where a reader browses BY CHAPTER,
+ * and without them the only way to open the three wrong answers in a subtopic
+ * was to find that same subtopic somewhere in the 14 pages of the audit below.
  *
  * And one this does not: EVERY percentage ships with its denominator. A row
  * resting on one or two answers is marked `thin` by the core and rendered
@@ -149,14 +156,20 @@ export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] 
                       >
                         <span className="min-w-0 flex-1 truncate text-xs">{s.subtopic}</span>
                         <span className="flex shrink-0 items-center gap-2 text-xs tabular-nums">
-                          {s.wrong > 0 && (
-                            <span className="text-red-600 dark:text-red-400">{s.wrong} wrong</span>
-                          )}
-                          {s.seenBlank > 0 && (
-                            <span className="text-amber-600 dark:text-amber-400">
-                              {s.seenBlank} skipped
-                            </span>
-                          )}
+                          <Drill
+                            ids={s.wrongQuestionIds}
+                            count={s.wrong}
+                            label="wrong"
+                            subtopic={s.subtopic}
+                            tone="text-red-600 dark:text-red-400"
+                          />
+                          <Drill
+                            ids={s.seenBlankQuestionIds}
+                            count={s.seenBlank}
+                            label="skipped"
+                            subtopic={s.subtopic}
+                            tone="text-amber-600 dark:text-amber-400"
+                          />
                           <Score row={s} />
                         </span>
                       </li>
@@ -178,5 +191,48 @@ export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] 
         onPage={setPage}
       />
     </div>
+  );
+}
+
+/**
+ * A count that opens exactly the questions behind it.
+ *
+ * Renders as plain text rather than a button when there is nothing to open —
+ * `browseExtrasHref` returns null for an empty list, and a link to the whole
+ * unfiltered bank under a "3 wrong" label would be worse than no link. Capping
+ * is not disclosed at this grain the way the audit card does it: the measured
+ * worst case is 34, and a "34 wrong (50 max)" here would cost more legibility
+ * than the case is worth. The audit card below is where the full count lives.
+ */
+function Drill({
+  ids,
+  count,
+  label,
+  subtopic,
+  tone,
+}: {
+  ids: string[];
+  count: number;
+  label: "wrong" | "skipped";
+  subtopic: string;
+  tone: string;
+}) {
+  if (count === 0) return null;
+  const href = browseExtrasHref(ids);
+  const text = `${count} ${label}`;
+  if (!href) return <span className={tone}>{text}</span>;
+  return (
+    <Link
+      prefetch={false}
+      href={href}
+      aria-label={`Open the ${label} questions in ${subtopic}`}
+      className={cn(
+        tone,
+        "rounded underline-offset-2 hover:underline",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      )}
+    >
+      {text}
+    </Link>
   );
 }

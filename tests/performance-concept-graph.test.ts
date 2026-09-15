@@ -38,6 +38,7 @@ function chapter(name: string, weightedScore: number, judged = 10): ChapterRow {
     medianSecs: 30,
     timedCount: judged,
     wrongQuestionIds: [],
+    seenBlankQuestionIds: [],
   };
 }
 

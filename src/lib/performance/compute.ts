@@ -249,13 +249,17 @@ type Tally = {
   secs: number[];
   /** Ids of the questions answered WRONG, for the audit's drill-down link. */
   wrongIds: string[];
+  /** Ids of the questions REACHED and left blank. Seen-blank only — a
+   *  never-reached question belongs to the clock, not to the subtopic. */
+  seenBlankIds: string[];
   /** per attempt, oldest first: share correct of the questions in this bucket */
   perAttempt: Map<string, { correct: number; total: number; at: string }>;
 };
 
 const emptyTally = (): Tally => ({
   total: 0, answered: 0, correct: 0, wrong: 0, seenBlank: 0, neverReached: 0,
-  weightedSum: 0, weightTotal: 0, secs: [], wrongIds: [], perAttempt: new Map(),
+  weightedSum: 0, weightTotal: 0, secs: [], wrongIds: [], seenBlankIds: [],
+  perAttempt: new Map(),
 });
 
 function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, at: string) {
@@ -264,6 +268,7 @@ function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, 
     t.neverReached++;
   } else if (!isAnsweredFact(f) && !f.g) {
     t.seenBlank++;
+    t.seenBlankIds.push(f.q);
     // A skip is evidence, at half weight — the student saw it and passed.
     t.weightTotal += weight * SKIP_WEIGHT;
     if (isTimed(f)) t.secs.push(f.ts);
@@ -325,6 +330,11 @@ export type SubtopicRow = {
   /** The questions they got wrong here, so the audit can open exactly those on
    *  /browse rather than a filter that merely approximates them. */
   wrongQuestionIds: string[];
+  /** The questions they SAW and left blank here. Same purpose, and the same
+   *  exclusion the skip audit itself makes: never-reached stays out, so this
+   *  list always holds exactly `seenBlank` entries. A count and a link that
+   *  can disagree is how a badge reading 7 opens five questions. */
+  seenBlankQuestionIds: string[];
 };
 
 export type ChapterRow = Omit<SubtopicRow, "subtopic"> & { subtopics: SubtopicRow[] };
@@ -351,6 +361,7 @@ function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
     medianSecs: median(t.secs),
     timedCount: t.secs.length,
     wrongQuestionIds: t.wrongIds,
+    seenBlankQuestionIds: t.seenBlankIds,
   };
 }
 
@@ -596,7 +607,10 @@ export function buildPerformance(payload: PerfInput, now: Date): Performance {
   for (const f of facts) {
     const a = keptById.get(f.a)!;
     const subject = payload.dims.subjects[f.s] ?? "";
-    const key = `${a.examName} ${subject}`;
+    // The separator is the ESCAPE, never a raw NUL byte: a literal 0x00 in the
+    // source makes grep/ripgrep classify this whole file as binary, so every
+    // text probe in the repo — audit:text included — skips it in silence.
+    const key = `${a.examName}\u0000${subject}`;
     const lane = lanes.get(key) ?? { exam: a.examName, subject, facts: [] };
     lane.facts.push(f);
     lanes.set(key, lane);

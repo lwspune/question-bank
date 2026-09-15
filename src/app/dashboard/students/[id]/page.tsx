@@ -170,6 +170,7 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-sm font-semibold">Mock performance</h2>
             <Link
+              prefetch={false}
               href={`/dashboard/students/${params.id}/performance`}
               className="rounded text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >

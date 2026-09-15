@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getStudentDetail } from "@/lib/students/detail";
 import { getStudentPerformance } from "@/lib/performance/service";
+import { getTaxonomyLinks } from "@/lib/performance/taxonomy";
+import { EMPTY_TAXONOMY_LINKS, type TaxonomyLinks } from "@/lib/performance/links";
 import { buildPerformance, type Lane, type TimeAnalysis } from "@/lib/performance/compute";
 import { buildLaneNav } from "@/lib/performance/laneNav";
 import { buildFocusAreas } from "@/lib/performance/focusAreas";
@@ -53,6 +55,16 @@ export default async function StudentPerformancePage({
   // live in buildLaneNav, where they are pinned by tests.
   const nav = buildLaneNav(lanes, summary.latest?.exam ?? null, searchParams);
   const selected = nav.selected;
+
+  // Only the SELECTED lane's taxonomy, and only for the links: the RPC returns
+  // chapters and subtopics as NAMES (the facts index into string arrays), which
+  // keeps a 1,270 kB payload from carrying a uuid per dim entry. This is a
+  // ~30-120 row read for one subject, independent of how much the student sat,
+  // and it FAILS SOFT — every number on the page comes from the RPC, so a
+  // taxonomy read that breaks must cost the links and nothing else.
+  const links: TaxonomyLinks = selected
+    ? await getTaxonomyLinks(selected.exam, selected.subject)
+    : EMPTY_TAXONOMY_LINKS;
   const hrefFor = (exam: string, subject?: string) => {
     const qs = new URLSearchParams({ exam });
     if (subject) qs.set("subject", subject);
@@ -144,7 +156,7 @@ export default async function StudentPerformancePage({
               </nav>
             )}
 
-            {selected && <LaneView lane={selected} />}
+            {selected && <LaneView lane={selected} links={links} />}
           </>
         )}
       </main>
@@ -152,7 +164,7 @@ export default async function StudentPerformancePage({
   );
 }
 
-function LaneView({ lane }: { lane: Lane }) {
+function LaneView({ lane, links }: { lane: Lane; links: TaxonomyLinks }) {
   const focus = buildFocusAreas(lane.exam, lane.subject, lane.chapters);
   const cov = lane.coverage;
 
@@ -281,7 +293,7 @@ function LaneView({ lane }: { lane: Lane }) {
           title="Projected score"
           note={`Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
         >
-          <ProjectionList projection={lane.projection} />
+          <ProjectionList projection={lane.projection} links={links} />
         </Section>
       )}
     </div>
@@ -459,6 +471,13 @@ function Pill({
 }) {
   return (
     <Link
+      // NEVER prefetch. These pills are query-param links on THIS route, so
+      // there is no loading boundary for a prefetch to stop at — each one is a
+      // FULL page render, and each render is a ~500 ms / 1.27 MB RPC. The
+      // heaviest student carries 13 of them; on 2026-09-15 that made 18 of 24
+      // calls in one minute time out (57014) and the page 500. Measured:
+      // 5 concurrent 0/5 fail, 9 concurrent 7/9, 12 concurrent 12/12.
+      prefetch={false}
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
@@ -518,6 +537,7 @@ function Chip({
 }) {
   return (
     <Link
+      prefetch={false}
       href={href}
       className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >

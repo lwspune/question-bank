@@ -112,6 +112,7 @@ export default async function AdminAttemptReviewPage({ params }: { params: Param
 function BackLink({ id, name }: { id: string; name: string }) {
   return (
     <Link
+      prefetch={false}
       href={`/dashboard/students/${id}`}
       className="rounded text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
