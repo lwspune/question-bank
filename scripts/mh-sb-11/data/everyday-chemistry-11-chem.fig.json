@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Ex Q.3 (A)",
+    "page": 8,
+    "bbox": [0.6214, 0.7916, 0.7854, 0.8663],
+    "_note": "Aspirin, drawn under `A. Aspirin` in the right column of printed p.269. VECTOR art plus text spans — the page carries no embedded raster here (get_image_info returns only the `Exercises` badge) — so the region is cropped off the rendered page. Ink measured at x 402.31-494.34, y 664.36-717.92 pt on a 637.276 x 835.701 page; padded 6 pt left/right and below, and only ~2.9 pt above, because the `A. Aspirin` label ends 5.88 pt higher."
+  },
+  {
+    "ref": "Ex Q.3 (B)",
+    "page": 9,
+    "bbox": [0.2197, 0.0936, 0.4174, 0.1741],
+    "_note": "Paracetamol, printed p.270 left column. Ink x 146.36-259.93, y 81.10-140.93 pt. Clearance is 5.88 pt above (the `B. Paracetamol` label) and 9.56 pt below (`C. Penicillin`), so the pad is ~2.9 pt above and ~4.6 pt below."
+  },
+  {
+    "ref": "Ex Q.3 (C)",
+    "page": 9,
+    "bbox": [0.1938, 0.1996, 0.4504, 0.2680],
+    "_note": "General structure of penicillin, printed p.270 left column. Ink x 129.43-281.06, y 169.72-219.39 pt; same 5.88 / 9.56 pt clearances as (B). NOTE the exercise's copy of this structure prints bare bond stubs where the chapter's own copy on p.266 labels them CH3, CH3 — transcribed as the exercise prints it, not silently completed from the other page."
+  },
+  {
+    "ref": "Ex Q.3 (D)",
+    "page": 9,
+    "bbox": [0.1726, 0.2935, 0.4708, 0.3560],
+    "_note": "Chloramphenicol, printed p.270 left column. Ink x 116.12-294.12, y 248.17-292.98 pt; same 5.88 / 9.56 pt clearances."
+  },
+  {
+    "ref": "Ex Q.3 (E)",
+    "page": 9,
+    "bbox": [0.2699, 0.3816, 0.3750, 0.4645],
+    "_note": "Sulphanilamide, printed p.270 left column. Ink x 178.95-232.59, y 321.76-387.79 pt. THE TIGHT ONE: `F. Glycerin` begins at y 388.79, i.e. 1.0 pt below the last ink (the subscript 2 of the lower NH2), so the bottom pad is 0.41 pt. Verified on the rendered crop — full ring, both substituents, no leak."
+  },
+  {
+    "ref": "Ex Q.10 (J)",
+    "page": 9,
+    "bbox": [0.6198, 0.4675, 0.7626, 0.5229],
+    "_note": "The unnamed structure the question asks the student to identify, printed p.270 right column. THE OTHER TIGHT ONE, and it needed a pixel scan rather than the text-span bboxes: the stem's own words `name of` sit to the LEFT of the structure and their span bbox (y 378.68-392.02) OVERLAPS the COOH span bbox (y 389.40-...), so a boundary taken from spans either clips COOH or leaks `of` — a first crop at y0 386.5 did leak it. A row-by-row ink scan puts the real gap at y 389.375 (last `of` ink) to y 392.000 (first COOH ink); the top edge is set at 390.7, mid-gap. Bottom clearance to `11. Answer the following` is 1.78 pt."
+  }
+]

@@ -66,10 +66,41 @@ async function main() {
   // Now: any non-scratch fragment, with SOLUTIONS FILES RANKED FIRST. The order
   // is load-bearing — the loop takes the first file carrying the ref, and for an
   // exercise row the authored solution is the one a re-commit reads back.
-  const SCRATCH = /\.(mcq-blind|mcq-verify|book-answers|review|topaper|xcheck|errata|anchors|solution-images|sections|diagram-specs|imgfig)\.json$|\.diagram-specs/;
-  const jsonFiles = readdirSync(DATA)
-    .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== `${id}.questions.json` && !SCRATCH.test(f))
-    .sort((a, b) => Number(b.endsWith(".solutions.json")) - Number(a.endsWith(".solutions.json")));
+  // `solved-fixes` added 2026-09-03, and it was a real leak: that file sorts
+  // BEFORE `.solved.json`, so a bracket on a solved example landed in the
+  // repair-SPEC file — which `commit.ts` never reads — while the script logged
+  // "mirrored" and reported success. A later re-merge would then silently revert
+  // the bracket. Reported independently by three Chemistry ingest agents.
+  // ⚠ `mcq-verify` is deliberately NOT in this list, and that is a 2026-09-03 fix.
+  // It used to be excluded, so an MCQ bracket mirrored into the TRANSCRIPTION
+  // fragment (`ex-mcq.json` / a band file) — but `apply-mcq-solutions.ts` reads
+  // an MCQ's solution from `<id>.blind.mcq-verify.json`, so the next run of that
+  // script silently DROPPED the bracket while everything reported success.
+  // Every Chemistry ingest agent hit this and repaired it by hand.
+  const SCRATCH = /\.(mcq-blind|book-answers|review|topaper|xcheck|errata|anchors|solution-images|sections|solved-fixes|diagram-specs|imgfig)\.json$|\.diagram-specs/;
+  const jsonFiles = readdirSync(DATA).filter(
+    (f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== `${id}.questions.json` && !SCRATCH.test(f)
+  );
+
+  /**
+   * Order the mirror candidates for ONE row. The loop takes the first file
+   * carrying the ref, so this ordering decides which file becomes the source of
+   * record — and the right answer depends on the row's FORMAT, because the two
+   * kinds of row are re-applied from different files:
+   *   - an MCQ's solution comes from `*.mcq-verify.json` (apply-mcq-solutions)
+   *   - everything else comes from `*.solutions.json` (apply-solutions)
+   * Mirror to the wrong one and the bracket survives in the DB but is reverted
+   * the next time that row's solution is re-applied.
+   */
+  const mirrorOrder = (format: string | null) => (a: string, b: string) => {
+    const rank = (f: string) => {
+      const isVerify = f.includes(".mcq-verify.");
+      const isSolutions = f.endsWith(".solutions.json");
+      if (format === "mcq") return isVerify ? 3 : isSolutions ? 2 : 1;
+      return isSolutions ? 3 : isVerify ? 1 : 2; // a verify file should never carry a subjective ref
+    };
+    return rank(b) - rank(a);
+  };
 
   let applied = 0;
   let skipped = 0;
@@ -79,7 +110,7 @@ async function main() {
   for (const e of errata) {
     const { data, error } = await db
       .from("questions")
-      .select("id, solution, content_hash")
+      .select("id, solution, content_hash, question_format")
       .eq("source_file", chapter.sourceFile)
       .eq("question_number", e.ref);
     if (error) throw error;
@@ -88,35 +119,48 @@ async function main() {
 
     const row = data[0];
     const current = row.solution ?? "";
-    if (current.trimStart().startsWith("[Textbook")) {
-      console.log(`  skip (already bracketed): ${e.ref}`);
+    // ⚠ THE DB WRITE IS SKIPPED WHEN ALREADY BRACKETED, BUT THE SOURCE MIRROR
+    // BELOW STILL RUNS. That separation is the whole point (the mh-sb-11
+    // precedent): a previous run could have written the bracket to the DB and
+    // mirrored it NOWHERE — or, before the 2026-09-03 format-aware ordering
+    // below, into a file that is not that row's source of record. `continue`-ing
+    // here would make the drift permanent, because the skip fires on exactly the
+    // rows that need healing. Measured on the Chemistry lane: 20 of 32 MCQ
+    // brackets were live in the DB and absent from their `mcq-verify` file.
+    const alreadyBracketed = current.trimStart().startsWith("[Textbook");
+    if (alreadyBracketed) {
+      console.log(`  skip DB write (already bracketed): ${e.ref} — still checking source mirror`);
       skipped++;
-      continue;
+    } else {
+      const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
+      console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     }
-    const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
-    console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     if (!apply) continue;
 
-    const { error: uerr, count } = await db
-      .from("questions")
-      .update({ solution: next }, { count: "exact" })
-      .eq("id", row.id)
-      .eq("exam_id", EXAM_ID);
-    if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
-    if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
-    applied++;
-    // An erratum edits the solution only, which is not part of content_hash, so
-    // the stored hash is unchanged by the write above.
-    recorded.push({
-      questionId: row.id,
-      ref: e.ref,
-      bracket: e.bracket,
-      contentHash: row.content_hash as string,
-    });
+    if (!alreadyBracketed) {
+      const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
+      const { error: uerr, count } = await db
+        .from("questions")
+        .update({ solution: next }, { count: "exact" })
+        .eq("id", row.id)
+        .eq("exam_id", EXAM_ID);
+      if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
+      if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
+      applied++;
+      // An erratum edits the solution only, which is not part of content_hash, so
+      // the stored hash is unchanged by the write above.
+      recorded.push({
+        questionId: row.id,
+        ref: e.ref,
+        bracket: e.bracket,
+        contentHash: row.content_hash as string,
+      });
+    }
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
+    // Candidates are ordered PER ROW by format — see `mirrorOrder` above.
     let mirrored = false;
-    for (const f of jsonFiles) {
+    for (const f of [...jsonFiles].sort(mirrorOrder(row.question_format as string | null))) {
       const path = join(DATA, f);
       const arr = JSON.parse(readFileSync(path, "utf8")) as any[];
       const hit = arr.find((r) => r.ref === e.ref);

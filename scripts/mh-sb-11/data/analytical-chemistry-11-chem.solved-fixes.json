@@ -1,0 +1,14 @@
+[
+  {
+    "ref": "Solved Ex.2.12",
+    "why": "The book's printed working contradicts its own stem. The question asks how much CaO is produced; the derivation correctly divides 56 parts of CaO by 100 parts of CaCO3 and reaches 2.8 g — but the last line then labels that mass 'of CaCO3'. The VALUE is right and the SPECIES is wrong, and as printed the line asserts that decomposing 5 g of calcium carbonate produces 2.8 g of calcium carbonate. Corrected to CaO; an errata bracket names the defect. (The find/replace spans the whole final line rather than just the formula, so that both sides carry balanced \\( \\) delimiters.)",
+    "find": "\\(= \\dfrac{56\\ \\mathrm{g}}{100\\ \\mathrm{g}} \\times 5\\,\\mathrm{g} = 2.8\\ \\mathrm{g}\\) of \\(\\mathrm{CaCO_3}\\)",
+    "replace": "\\(= \\dfrac{56\\ \\mathrm{g}}{100\\ \\mathrm{g}} \\times 5\\,\\mathrm{g} = 2.8\\ \\mathrm{g}\\) of \\(\\mathrm{CaO}\\)"
+  },
+  {
+    "ref": "Solved Ex.2.15",
+    "why": "The book sets the part labels (a) and (b) inline in the middle of a sentence, so the printed line reads 'because it produces (a) smaller amount of (NH2)2CO) (b) The molar mass ...' — the (a) displaces the article 'a', there is an unmatched closing bracket, and part (b) begins mid-sentence with no break. As printed the sentence does not parse. Re-laid out so the (a)/(b)/(c) parts read as parts; no number, quantity or claim is changed.",
+    "find": "because it produces (a) smaller amount of \\((\\mathrm{NH_2})_2\\mathrm{CO}\\)) (b) The molar mass",
+    "replace": "because it produces a smaller amount of \\((\\mathrm{NH_2})_2\\mathrm{CO}\\).\n\n(b) The molar mass"
+  }
+]

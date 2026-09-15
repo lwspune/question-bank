@@ -1,0 +1,779 @@
+[
+  {
+    "ref": "Solved Ex.6.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction",
+    "difficulty": "MODERATE",
+    "stem": "For the reaction \\(\\mathrm{2\\,N_2O_5(g) \\longrightarrow 4\\,NO_2(g) + O_2(g)}\\) in liquid bromine, \\(\\mathrm{N_2O_5}\\) disappears at a rate of \\(0.02\\) moles \\(\\mathrm{dm^{-3}\\ sec^{-1}}\\). At what rate \\(\\mathrm{NO_2}\\) and \\(\\mathrm{O_2}\\) are formed? What would be the rate of reaction?",
+    "solution": "Given : \\(-\\dfrac{d[\\mathrm{N_2O_5}]}{dt} = 0.02\\)\n\ni. Rate of reaction\n\n\\(= -\\dfrac{1}{2}\\dfrac{d[\\mathrm{N_2O_5}]}{dt} = \\dfrac{1}{4}\\dfrac{d[\\mathrm{NO_2}]}{dt} = \\dfrac{d[\\mathrm{O_2}]}{dt}\\)\n\n\\(= \\dfrac{1}{2}\\left(-\\dfrac{d[\\mathrm{N_2O_5}]}{dt}\\right) = \\dfrac{1}{2} \\times 0.02 = 0.01\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\)\n\nii. Rate of formation of \\(\\mathrm{O_2} = \\dfrac{d[\\mathrm{O_2}]}{dt} = \\dfrac{1}{2}\\left(-\\dfrac{d[\\mathrm{N_2O_5}]}{dt}\\right) = \\dfrac{1}{2} \\times 0.02\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}} = 0.01\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\)\n\niii. Rate of formation of \\(\\mathrm{NO_2} = \\dfrac{d[\\mathrm{NO_2}]}{dt} = \\dfrac{4}{2}\\left(-\\dfrac{d[\\mathrm{N_2O_5}]}{dt}\\right) = 2 \\times 0.02\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}} = 0.04\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "stem": "Write the rate law for the reaction, \\(\\mathrm{A + B \\longrightarrow P}\\) from the following data :\n\n| [A] mol dm\\(^{-3}\\) s\\(^{-1}\\) (Initial) | [B] mol dm\\(^{-3}\\) s\\(^{-1}\\) (Initial) | Initial rate mol dm\\(^{-3}\\) s\\(^{-1}\\) |\n|---|---|---|\n| (i) 0.4 | 0.2 | \\(4.0 \\times 10^{-5}\\) |\n| (ii) 0.6 | 0.2 | \\(6.0 \\times 10^{-5}\\) |\n| (iii) 0.8 | 0.4 | \\(3.2 \\times 10^{-4}\\) |",
+    "solution": "[Textbook misprint: the data table heads its two concentration columns \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\), but a concentration cannot carry \\(\\mathrm{s^{-1}}\\); the correct unit for both is \\(\\mathrm{mol\\ dm^{-3}}\\). Only the third column, the initial rate, is per second. The answer is unaffected, because the derivation uses only the ratios of the tabulated values.]\n\nRate \\(= k\\,[\\mathrm{A}]^x[\\mathrm{B}]^y\\)\n\na. From above data (i) and (ii), when \\([\\mathrm{A}]\\) increases by a factor \\(1.5\\) keeping \\([\\mathrm{B}]\\) as constant, the rate increases by a factor \\(1.5\\). It means rate \\(\\propto [\\mathrm{A}]\\) and \\(x = 1\\)\n\nb. From observations (i) and (iii), it can be seen that when concentrations of A and B are doubled, the rate increases by a factor \\(8\\). Due to doubling of \\([\\mathrm{A}]\\) the rate is doubled (because \\(x = 1\\)) that is rate increases by a factor \\(2\\).\n\nThis implies that doubling \\([\\mathrm{B}]\\), the rate increases by a factor \\(4\\), or rate \\(\\propto [\\mathrm{B}]^2\\) and \\(y = 2\\). Therefore, rate \\(= k\\,[\\mathrm{A}][\\mathrm{B}]^2\\)\n\n**Alternatively**\n\nThe rate law gives rate \\(= k\\,[\\mathrm{A}]^x[\\mathrm{B}]^y\\).\n\na. From above observations (i) and (ii)\n\n(i) \\(4 \\times 10^{-5} = (0.4)^x(0.2)^y\\)\n\n(ii) \\(6 \\times 10^{-5} = (0.6)^x(0.2)^y\\)\n\nDividing (ii) by (i), we have\n\n\\(\\dfrac{6 \\times 10^{-5}}{4 \\times 10^{-5}} = 1.5 = \\dfrac{(0.6)^x(0.2)^y}{(0.4)^x(0.2)^y} = \\left(\\dfrac{0.6}{0.4}\\right)^x = (1.5)^x\\)\n\nHence \\(x = 1\\)\n\nb. From observations (i) and (iii) separately in the rate law gives\n\n(iii) \\(4 \\times 10^{-5} = (0.4) \\times (0.2)^y\\) since \\(x = 1\\)\n\n(iv) \\(3.2 \\times 10^{-4} = 0.8 \\times (0.4)^y\\)\n\nDividing (iv) by (iii) we write\n\n\\(\\dfrac{3.2 \\times 10^{-4}}{4 \\times 10^{-5}} = \\dfrac{0.8\\,(0.4)^y}{0.4\\,(0.2)^y}\\)\n\nor \\(8 = 2 \\times \\left(\\dfrac{0.4}{0.2}\\right)^y\\)\n\nor \\(4 = 2^2 = 2^y\\)\n\nTherefore \\(y = 2\\).\n\nThe rate law is then rate \\(= k[\\mathrm{A}][\\mathrm{B}]^2\\)."
+  },
+  {
+    "ref": "Solved Ex.6.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "stem": "For the reaction, \\(\\mathrm{2\\,NOBr(g) \\longrightarrow 2\\,NO(g) + Br_2(g)}\\), the rate law is rate \\(= k[\\mathrm{NOBr}]^2\\). If the rate of the reaction is \\(6.5 \\times 10^{-6}\\ \\mathrm{mol\\ L^{-1}\\ s^{-1}}\\) when the concentration of \\(\\mathrm{NOBr}\\) is \\(2 \\times 10^{-3}\\ \\mathrm{mol\\ L^{-1}}\\). What would be the rate constant for the reaction?",
+    "solution": "[Textbook misprint: the book prints the final unit as \\(\\mathrm{mol^{-1}\\ L^{-1}\\ s^{-1}}\\), which contradicts its own substitution one line above — \\((\\mathrm{mol\\ L^{-1}\\ s^{-1}}) / (\\mathrm{mol\\ L^{-1}})^2\\) gives \\(\\mathrm{mol^{-1}\\ L\\ s^{-1}}\\), with \\(L\\) to the power \\(+1\\). The unit has been corrected here so the worked example does not teach the wrong dimensions for a second order rate constant; the value \\(1.625\\) is as printed and is correct.]\n\nrate \\(= k[\\mathrm{NOBr}]^2\\)  or  \\(k = \\dfrac{\\text{rate}}{[\\mathrm{NOBr}]^2}\\)\n\n\\(= \\dfrac{6.5 \\times 10^{-6}\\ \\mathrm{mol\\ L^{-1}s^{-1}}}{(2 \\times 10^{-3}\\ \\mathrm{mol\\ L^{-1}})^2}\\)\n\n\\(= 1.625\\ \\mathrm{mol^{-1}\\ L\\ s^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "EASY",
+    "stem": "For the reaction \\(\\mathrm{2NO(g) + 2H_2(g) \\longrightarrow N_2(g) + 2\\,H_2O(g)}\\), the rate law is rate \\(= k[\\mathrm{NO}]^2[\\mathrm{H_2}]\\). What is the order with respect to \\(\\mathrm{NO}\\) and \\(\\mathrm{H_2}\\)? What is the overall order of the reaction?",
+    "solution": "In the rate law expression, the exponent of \\([\\mathrm{NO}]\\) is \\(2\\) and that of \\([\\mathrm{H_2}]\\) is \\(1\\). Hence, reaction is second order in \\(\\mathrm{NO}\\), first order in \\(\\mathrm{H_2}\\) and the reaction is third order."
+  },
+  {
+    "ref": "Solved Ex.6.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "stem": "The rate of the reaction, \\(\\mathrm{A + B \\longrightarrow P}\\) is \\(3.6 \\times 10^{-2}\\ \\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) when \\([\\mathrm{A}] = 0.2\\ \\mathrm{mol\\ dm^{-3}}\\) and \\([\\mathrm{B}] = 0.1\\ \\mathrm{mol\\ dm^{-3}}\\). Calculate the rate constant if the reaction is first order in A and second order in B.",
+    "solution": "The reaction is first order in A and second order in B. Hence, the rate law gives\n\nrate \\(= k[\\mathrm{A}][\\mathrm{B}]^2\\)  or  \\(k = \\dfrac{\\text{rate}}{[\\mathrm{A}][\\mathrm{B}]^2}\\)\n\nrate \\(= 3.6 \\times 10^{-2}\\ \\mathrm{mol\\ dm^{-3}s^{-1}}\\), \\([\\mathrm{A}] = 0.2\\ \\mathrm{mol\\ dm^{-3}}\\) and \\([\\mathrm{B}] = 0.1\\ \\mathrm{mol\\ dm^{-3}}\\)\n\nSubstitution gives\n\n\\(k = \\dfrac{3.6 \\times 10^{-2}\\ \\mathrm{mol\\ dm^{-3}s^{-1}}}{0.2\\ \\mathrm{mol\\ dm^{-3}} \\times (0.1\\ \\mathrm{mol\\ dm^{-3}})^2}\\)\n\n\\(= \\dfrac{3.6 \\times 10^{-2}\\ \\mathrm{s^{-1}}}{0.2 \\times 0.01\\ \\mathrm{mol^2\\ dm^{-6}\\ s^{-1}}}\\)\n\n\\(= 18\\ \\mathrm{mol^{-2}\\ dm^{6}\\ s^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "stem": "Consider, \\(\\mathrm{A + B \\longrightarrow P}\\). If the concentration of A is doubled with \\([\\mathrm{B}]\\) being constant, the rate of the reaction doubles. If the concentration of A is tripled and that of B is doubled, the rate increases by a factor \\(6\\). What is order of the reaction with respect to each reactant? Determine the overall order of the reaction.",
+    "solution": "Rate of reaction : rate \\(= k[\\mathrm{A}]^x[\\mathrm{B}]^y\\) …… (i)\n\nIf \\([\\mathrm{A}]\\) is doubled, the rate doubles.\n\n\\(\\therefore\\ 2 \\times \\text{rate} = k\\,[2\\mathrm{A}]^x[\\mathrm{B}]^y = k\\,2^x\\,[\\mathrm{A}]^x[\\mathrm{B}]^y\\) …… (ii)\n\n\\(6 \\times \\text{rate} = k\\,[3\\mathrm{A}]^x[2\\mathrm{B}]^y\\) …… (iii)\n\n\\(\\dfrac{\\text{(ii)}}{\\text{(i)}}\\) gives \\(\\dfrac{2 \\times \\text{rate}}{\\text{rate}} = \\dfrac{k\\,2^x[\\mathrm{A}]^x[\\mathrm{B}]^y}{k\\,[\\mathrm{A}]^x[\\mathrm{B}]^y}\\)\n\n\\(\\dfrac{\\text{(iii)}}{\\text{(i)}}\\) gives \\(\\dfrac{6 \\times \\text{rate}}{\\text{rate}} = \\dfrac{3^x k[\\mathrm{A}]^x 2^y[\\mathrm{B}]^y}{k\\,[\\mathrm{A}]^x[\\mathrm{B}]^y} = 3^x \\times 2^y\\)\n\nsubstitute \\(x = 1\\)\n\n\\(\\therefore\\ 6 = 3 \\times 2^y\\) or \\(2 = 2^y\\) and \\(y = 1\\)\n\nThe reaction is first order in A and first order in B. The overall reaction is of the second order."
+  },
+  {
+    "ref": "Solved Ex.6.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "MODERATE",
+    "stem": "A reaction occurs in the following steps\n\ni. \\(\\mathrm{NO_2(g) + F_2(g) \\longrightarrow NO_2F(g) + F(g)}\\) (slow)\n\nii. \\(\\mathrm{F(g) + NO_2(g) \\longrightarrow NO_2F(g)}\\) (fast)\n\na. Write the equation of overall reaction.\n\nb. Write down rate law.\n\nc. Identify the reaction intermediate.",
+    "solution": "a. The addition of two steps gives the overall reaction as\n\n\\(\\mathrm{2NO_2(g) + F_2(g) \\longrightarrow 2\\,NO_2F(g)}\\)\n\nb. Step (i) is slow. The rate law of the reaction is predicted from its stoichiometry. Thus,\n\nrate \\(= k[\\mathrm{NO_2}]\\,[\\mathrm{F_2}]\\)\n\nc. F is produced in step (i) and consumed in step (ii) or F is the reaction intermediate."
+  },
+  {
+    "ref": "Solved Ex.6.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "stem": "The half life of first order reaction is \\(990\\ \\mathrm{s}\\). If the initial concentration of the reactant is \\(0.08\\ \\mathrm{mol\\ dm^{-3}}\\), what concentration would remain after \\(35\\) minutes?",
+    "solution": "\\(k = \\dfrac{0.693}{t_{1/2}} = \\dfrac{0.693}{990\\ \\mathrm{s}} = 7 \\times 10^{-4}\\ \\mathrm{s^{-1}}\\)\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n\\([\\mathrm{A}]_0 = 0.08\\ \\mathrm{mol\\ dm^{-3}}\\), \\(t = 35\\) min or \\(2100\\ \\mathrm{s}\\), \\([\\mathrm{A}]_t = ?\\)\n\n\\(\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\dfrac{k\\,t}{2.303} = \\dfrac{7 \\times 10^{-4}\\ \\mathrm{s^{-1}} \\times 2100\\ \\mathrm{s}}{2.303} = 0.6383\\)\n\n\\(\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\text{antilog } 0.6383 = 4.35\\)\n\nHence, \\([\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{4.35} = \\dfrac{0.08}{4.35} = 0.0184\\ \\mathrm{mol\\ dm^{-3}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "stem": "In a first order reaction \\(60\\%\\) of the reactant decomposes in \\(45\\) minutes. Calculate the half life for the reaction.",
+    "solution": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n\\([\\mathrm{A}]_0 = 100\\), \\([\\mathrm{A}]_t = 100 - 60 = 40\\), \\(t = 45\\) min\n\nSubstitution of these in above\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{100}{40}\\)\n\n\\(= \\dfrac{2.303}{45}\\log_{10} 2.5\\)\n\n\\(= \\dfrac{2.303}{45} \\times 0.3979 = 0.0204\\ \\mathrm{min^{-1}}\\)\n\n\\(t_{1/2} = \\dfrac{0.693}{k} = \\dfrac{0.693}{0.0204\\ \\mathrm{min^{-1}}} = 34\\) min"
+  },
+  {
+    "ref": "Solved Ex.6.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "HARD",
+    "stem": "Following data were obtained during the first order decomposition of \\(\\mathrm{SO_2Cl_2}\\) at the constant volume.\n\n\\(\\mathrm{SO_2Cl_2(g) \\longrightarrow SO_2(g) + Cl_2(g)}\\)\n\n| Times/s | Total pressure/bar |\n|---|---|\n| 0 | 0.5 |\n| 100 | 0.6 |\n\nCalculate the rate constant of the reaction.",
+    "solution": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}\\)\n\n\\(P_i = 0.5\\) bar, \\(P = 0.6\\) bar, \\(t = 100\\ \\mathrm{s}\\)\n\n\\(k = \\dfrac{2.303}{100}\\log_{10}\\left(\\dfrac{0.5\\ \\text{bar}}{2 \\times 0.5\\ \\text{bar} - 0.6\\ \\text{bar}}\\right)\\)\n\n\\(= \\dfrac{2.303}{100}\\log_{10}\\left(\\dfrac{0.5}{0.4}\\right) = 2.23 \\times 10^{-3}\\ \\mathrm{s^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "stem": "The rate constants for a first order reaction are \\(0.6\\ \\mathrm{s^{-1}}\\) at \\(313\\ \\mathrm{K}\\) and \\(0.045\\ \\mathrm{s^{-1}}\\) at \\(293\\ \\mathrm{K}\\). What is the activation energy?",
+    "solution": "[Textbook misprint: the last line prints the units as \\(\\mathrm{J/mol^{-1}}\\) and \\(\\mathrm{kJ/mol^{-1}}\\), which invert \"per mole\" twice; they should read \\(\\mathrm{J\\ mol^{-1}}\\) and \\(\\mathrm{kJ\\ mol^{-1}}\\) (equivalently \\(\\mathrm{J/mol}\\) and \\(\\mathrm{kJ/mol}\\)). The numerical result \\(98.8\\ \\mathrm{kJ\\ mol^{-1}}\\) is correct.]\n\n\\(\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R}\\left(\\dfrac{T_2 - T_1}{T_1T_2}\\right)\\)\n\n\\(k_1 = 0.045\\ \\mathrm{s^{-1}}\\), \\(k_2 = 0.6\\ \\mathrm{s^{-1}}\\), \\(T_1 = 293\\ \\mathrm{K}\\), \\(T_2 = 313\\ \\mathrm{K}\\), \\(R = 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}\\)\n\nSubstituting\n\n\\(\\log_{10}\\dfrac{0.6}{0.045} = \\dfrac{E_a}{2.303 \\times 8.314} \\times \\left[\\dfrac{313 - 293}{293 \\times 313}\\right]\\)\n\n\\(\\log_{10} 13.33 = \\dfrac{E_a}{2.303 \\times 8.314} \\times \\dfrac{20}{293 \\times 313}\\)\n\n\\(1.1248 = \\dfrac{E_a}{19.15} \\times 2.18 \\times 10^{-4}\\)\n\n\\(E_a = 1.1248 \\times 19.15\\ \\mathrm{J\\ mol^{-1}} / 2.18 \\times 10^{-4}\\)\n\n\\(= 98810\\ \\mathrm{J/mol^{-1}} = 98.8\\ \\mathrm{kJ/mol^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "stem": "A first order gas phase reaction has activation energy of \\(240\\ \\mathrm{kJ\\ mol^{-1}}\\). If the pre-exponential factor is \\(1.6 \\times 10^{13}\\ \\mathrm{s^{-1}}\\). what is the rate constant of the reaction at \\(600\\ \\mathrm{K}\\)?",
+    "solution": "Arrhenius equation\n\n\\(k = \\mathrm{A}\\,e^{-E_a/RT}\\) is written as\n\n\\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{E_a}{2.303\\,RT}\\)\n\n\\(E_a = 240\\ \\mathrm{kJ\\ mol^{-1}} = 240 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}\\),\n\n\\(T = 600\\ \\mathrm{K}\\), \\(\\mathrm{A} = 1.6 \\times 10^{13}\\ \\mathrm{s^{-1}}\\)\n\nHence \\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{240 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ mol^{-1}\\ K^{-1}} \\times 600\\ \\mathrm{K}} = 20.89\\)\n\n\\(\\dfrac{\\mathrm{A}}{k} = \\text{antilog } 20.89 = 7.78 \\times 10^{20}\\)\n\nand \\(k = \\dfrac{\\mathrm{A}}{7.78 \\times 10^{20}} = \\dfrac{1.6 \\times 10^{13}\\ \\mathrm{s^{-1}}}{7.78 \\times 10^{20}} = 2.055 \\times 10^{-8}\\ \\mathrm{s^{-1}}\\)"
+  },
+  {
+    "ref": "Solved Ex.6.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "HARD",
+    "stem": "The half life of a first order reaction is \\(900\\) min at \\(820\\ \\mathrm{K}\\). Estimate its half life at \\(720\\ \\mathrm{K}\\) if the activation energy is \\(250\\ \\mathrm{kJ\\ mol^{-1}}\\).",
+    "solution": "[Textbook misprint: the book writes the temperature-dependence relation with \\(2.303\\,RT\\) in the denominator, where \\(2.303\\,R\\) belongs — the temperature is already carried by the bracket \\((T_2 - T_1)/T_1T_2\\). The chapter's own Eq. (6.23) prints \\(E_a/(2.303\\,R)\\), and this example's own substitution divides by \\(2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}\\) with no \\(T\\), which is what gives its printed \\(2.212\\). The formula has been corrected here; the printed answer \\(1.464 \\times 10^{5}\\) min is correct.]\n\n\\(t_{1/2} = \\dfrac{0.693}{k}\\)\n\nRate constants at two different temperatures, \\(T_1\\) and \\(T_2\\) are \\(k_1\\) and \\(k_2\\) respectively, and the corresponding half lives \\((t_{1/2})_1\\) and \\((t_{1/2})_2\\).\n\n\\((t_{1/2})_1 = \\dfrac{0.693}{k}\\) and \\((t_{1/2})_2 = \\dfrac{0.693}{k}\\)\n\nHence, \\(\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{k_2}{k_1}\\)\n\nThe equation, \\(\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R} \\times \\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{E_a}{2.303\\,R}\\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(E_a = 250\\ \\mathrm{kJ\\ mol^{-1}}\\), \\(T_1 = 720\\ \\mathrm{K}\\),\n\n\\(T_2 = 820\\ \\mathrm{K}\\), \\((t_{1/2})_2 = 900\\) min\n\nThus, \\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{250 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}}\\left[\\dfrac{820\\ \\mathrm{K} - 720\\ \\mathrm{K}}{820\\ \\mathrm{K} \\times 720\\ \\mathrm{K}}\\right] = 2.212\\)\n\n\\(\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\text{antilog } 2.212 = 162.7\\)\n\n\\((t_{1/2})_1 = (t_{1/2})_2 \\times 162.7 = 900 \\times 162.7 = 1.464 \\times 10^{5}\\) min"
+  },
+  {
+    "ref": "Ex Q.1 (i)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "The rate law for the reaction \\(\\mathrm{aA + bB \\longrightarrow P}\\) is rate \\(= k[\\mathrm{A}]\\,[\\mathrm{B}]\\). The rate of reaction doubles if",
+    "options": [
+      {
+        "label": "A",
+        "text": "concentrations of A and B are both doubled."
+      },
+      {
+        "label": "B",
+        "text": "[A] is doubled and [B] is kept constant"
+      },
+      {
+        "label": "C",
+        "text": "[B] is doubled and [A] is halved"
+      },
+      {
+        "label": "D",
+        "text": "[A] is kept constant and [B] is halved."
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (ii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "The order of the reaction for which the units of rate constant are \\(\\mathrm{mol\\ dm^{-3}\\ s^{-1}}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (iii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "The rate constant for the reaction \\(\\mathrm{2\\,N_2O_5(g) \\longrightarrow 2\\,N_2O_4(g) + O_2(g)}\\) is \\(4.98 \\times 10^{-4}\\ \\mathrm{s^{-1}}\\). The order of reaction is",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex Q.1 (iv)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "Time required for \\(90\\ \\%\\) completion of a certain first order reaction is \\(t\\). The time required for \\(99.9\\ \\%\\) completion will be",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(t\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2t\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(t/2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3t\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (v)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "Slope of the graph \\(\\ln[\\mathrm{A}]_t\\) versus \\(t\\) for first order reaction is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-k\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(k\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(k/2.303\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-k/2.303\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex Q.1 (vi)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "What is the half life of a first order reaction if time required to decrease concentration of reactant from \\(0.8\\ \\mathrm{M}\\) to \\(0.2\\ \\mathrm{M}\\) is \\(12\\ \\mathrm{h}\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(12\\ \\mathrm{h}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3\\ \\mathrm{h}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1.5\\ \\mathrm{h}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(6\\ \\mathrm{h}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Ex Q.1 (vii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "The reaction, \\(\\mathrm{3\\,ClO^{\\ominus} \\longrightarrow ClO_3^{\\ominus} + 2\\,Cl^{\\ominus}}\\) occurs in two steps,\n\n(i) \\(\\mathrm{2\\,ClO^{-} \\longrightarrow ClO_2^{\\ominus}}\\)\n\n(ii) \\(\\mathrm{ClO_2^{\\ominus} + ClO^{\\ominus} \\longrightarrow ClO_3^{\\ominus} + Cl^{\\ominus}}\\)\n\nThe reaction intermediate is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathrm{Cl^{\\ominus}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathrm{ClO_2^{\\ominus}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\mathrm{ClO_3^{\\ominus}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathrm{ClO^{\\ominus}}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "[Textbook misprint: step (i) is printed as \\(\\mathrm{2\\,ClO^{-} \\longrightarrow ClO_2^{\\ominus}}\\), which is not balanced — two chlorine atoms enter and one leaves. The step intended is \\(\\mathrm{2\\,ClO^{\\ominus} \\longrightarrow ClO_2^{\\ominus} + Cl^{\\ominus}}\\), which balances and which, added to step (ii), reproduces the overall equation given. The answer is unaffected: \\(\\mathrm{ClO_2^{\\ominus}}\\) is the species formed in step (i) and consumed in step (ii) under either reading.]"
+  },
+  {
+    "ref": "Ex Q.1 (viii)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "The elementary reaction \\(\\mathrm{O_3(g) + O(g) \\longrightarrow 2\\,O_2(g)}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "unimolecular and second order"
+      },
+      {
+        "label": "B",
+        "text": "bimolecular and first order"
+      },
+      {
+        "label": "C",
+        "text": "bimolecular and second order"
+      },
+      {
+        "label": "D",
+        "text": "unimolecular and first order"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.1 (ix)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "Rate law for the reaction, \\(\\mathrm{2\\,NO + Cl_2 \\longrightarrow 2\\,NOCl}\\) is rate \\(= k[\\mathrm{NO_2}]^2[\\mathrm{Cl_2}]\\). Thus \\(k\\) would increase with",
+    "options": [
+      {
+        "label": "A",
+        "text": "increase of temperature"
+      },
+      {
+        "label": "B",
+        "text": "increase of concentration of \\(\\mathrm{NO}\\)"
+      },
+      {
+        "label": "C",
+        "text": "increase of concentration of \\(\\mathrm{Cl_2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "increase of concentrations of both \\(\\mathrm{Cl_2}\\) and \\(\\mathrm{NO}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "[Textbook misprint: the rate law is printed as rate \\(= k[\\mathrm{NO_2}]^2[\\mathrm{Cl_2}]\\), but the reaction given contains no \\(\\mathrm{NO_2}\\) at all; the intended concentration term is \\([\\mathrm{NO}]^2\\). The answer is unaffected, since the question asks what \\(k\\) depends on and no concentration term appears in \\(k\\).]"
+  },
+  {
+    "ref": "Ex Q.1 (x)",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Collision Theory of Bimolecular Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.1",
+    "context": "Choose the most correct option.",
+    "stem": "For an endothermic reaction, \\(\\mathrm{X \\rightleftharpoons Y}\\). If \\(E_f\\) is activation energy of the forward reaction and \\(E_r\\) that for reverse reaction, which of the following is correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(E_f = E_r\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(E_f < E_r\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(E_f > E_r\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\Delta H = E_f - E_r\\) is negative"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex Q.2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "For the reaction, \\(\\mathrm{N_2(g) + 3\\,H_2(g) \\longrightarrow 2\\,NH_3(g)}\\), what is the relationship among \\(\\dfrac{d[\\mathrm{N_2}]}{dt}\\), \\(\\dfrac{d[\\mathrm{H_2}]}{dt}\\) and \\(\\dfrac{d[\\mathrm{NH_3}]}{dt}\\)?"
+  },
+  {
+    "ref": "Ex Q.2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "For the reaction, \\(\\mathrm{CH_3Br(aq) + OH^{-}(aq) \\longrightarrow CH_3OH^{\\ominus}(aq) + Br^{\\ominus}(aq)}\\), rate law is rate \\(= k[\\mathrm{CH_3Br}][\\mathrm{OH^{\\ominus}}]\\)\n\na. How does reaction rate changes if \\([\\mathrm{OH^{\\ominus}}]\\) is decreased by a factor of \\(5\\) ?\n\nb. What is change in rate if concentrations of both reactants are doubled?"
+  },
+  {
+    "ref": "Ex Q.2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "What is the relationship between coefficients of reactants in a balanced equation for an overall reaction and exponents in rate law. In what case the coefficients are the exponents?"
+  },
+  {
+    "ref": "Ex Q.2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collision Theory of Bimolecular Reactions",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "Why all collisions between reactant molecules do not lead to a chemical reaction?"
+  },
+  {
+    "ref": "Ex Q.2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collision Theory of Bimolecular Reactions",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "What is the activation energy of a reaction?"
+  },
+  {
+    "ref": "Ex Q.2 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "What are the units for rate constants for zero order and second order reactions if time is expressed in seconds and concentration of reactants in \\(\\mathrm{mol/L}\\)?"
+  },
+  {
+    "ref": "Ex Q.2 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "Write Arrhenius equation and explain the terms involved in it."
+  },
+  {
+    "ref": "Ex Q.2 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "EASY",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "What is the rate determining step?"
+  },
+  {
+    "ref": "Ex Q.2 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "Write the relationships between rate constant and half life of first order and zeroth order reactions."
+  },
+  {
+    "ref": "Ex Q.2 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.2",
+    "context": "Answer the following in one or two sentences.",
+    "stem": "How do half lives of the first order and zero order reactions change with initial concentration of reactants?"
+  },
+  {
+    "ref": "Ex Q.3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "How instantaneous rate of reaction is determined?"
+  },
+  {
+    "ref": "Ex Q.3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Distinguish between order and molecularity of a reaction."
+  },
+  {
+    "ref": "Ex Q.3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Molecularity of Elementary Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "A reaction takes place in two steps,\n\n1. \\(\\mathrm{NO(g) + Cl_2(g) \\longrightarrow NOCl_2(g)}\\)\n\n2. \\(\\mathrm{NOCl_2(g) + NO(g) \\longrightarrow 2\\,NOCl(g)}\\)\n\na. Write the overall reaction. b. Identify reaction intermediate. c. What is the molecularity of each step?"
+  },
+  {
+    "ref": "Ex Q.3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Obtain the relationship between the rate constant and half life of a first order reaction."
+  },
+  {
+    "ref": "Ex Q.3 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "How will you represent zeroth order reaction graphically?"
+  },
+  {
+    "ref": "Ex Q.3 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "What are pseudo-first order reactions? Give one example and explain why it is pseudo-first order."
+  },
+  {
+    "ref": "Ex Q.3 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collision Theory of Bimolecular Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "What are requirements for the colliding reactant molecules to lead to products?"
+  },
+  {
+    "ref": "Ex Q.3 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Effect of a Catalyst on the Rate of Reaction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "How catalyst increases the rate of reaction? Explain with the help of potential energy diagram for catalyzed and uncatalyzed reactions."
+  },
+  {
+    "ref": "Ex Q.3 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Explain with the help of Arrhenius equation, how does the rate of reaction changes with (a) temperature and (b) activation energy."
+  },
+  {
+    "ref": "Ex Q.3 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Derive the integrated rate law for first order reaction."
+  },
+  {
+    "ref": "Ex Q.3 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "How will you represent first order reactions graphically."
+  },
+  {
+    "ref": "Ex Q.3 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Derive the integrated rate law for the first order reaction, \\(\\mathrm{A(g) \\longrightarrow B(g) + C(g)}\\) in terms of pressure."
+  },
+  {
+    "ref": "Ex Q.3 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "What is zeroth order reaction? Derive its integrated rate law. What are the units of rate constant?"
+  },
+  {
+    "ref": "Ex Q.3 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "How will you determine activation energy: (a) graphically using Arrhenius equation (b) from rate constants at two different temperatures?"
+  },
+  {
+    "ref": "Ex Q.3 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Explain graphically the effect of temperature on the rate of reaction."
+  },
+  {
+    "ref": "Ex Q.3 (xvi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Effect of a Catalyst on the Rate of Reaction",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "Explain graphically the effect of catalyst on the rate of reaction."
+  },
+  {
+    "ref": "Ex Q.3 (xvii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Reaction and Reactant Concentration",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.3",
+    "context": "Answer the following in brief.",
+    "stem": "For the reaction \\(\\mathrm{2A + B \\longrightarrow}\\) products, find the rate law from the following data.\n\n| [A]/M | [B]/M | rate/M s\\(^{-1}\\) |\n|---|---|---|\n| 0.3 | 0.05 | 0.15 |\n| 0.6 | 0.05 | 0.30 |\n| 0.6 | 0.2 | 1.20 |"
+  },
+  {
+    "ref": "Ex Q.4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "In a first order reaction, the concentration of reactant decreases from \\(20\\ \\mathrm{mmol\\ dm^{-3}}\\) to \\(8\\ \\mathrm{mmol\\ dm^{-3}}\\) in \\(38\\) minutes. What is the half life of reaction?",
+    "bookAnswer": "(28.7 min)"
+  },
+  {
+    "ref": "Ex Q.4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "The half life of a first order reaction is \\(1.7\\) hours. How long will it take for \\(20\\%\\) of the reactant to react?",
+    "bookAnswer": "(32.9 min)"
+  },
+  {
+    "ref": "Ex Q.4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "The energy of activation for a first order reaction is \\(104\\ \\mathrm{kJ/mol}\\). The rate constant at \\(25\\ ^\\circ\\mathrm{C}\\) is \\(3.7 \\times 10^{-5}\\ \\mathrm{s^{-1}}\\). What is the rate constant at \\(30\\ ^\\circ\\mathrm{C}\\)? \\((R = 8.314\\ \\mathrm{J/K\\ mol})\\)",
+    "bookAnswer": "(7.4 × 10-5)"
+  },
+  {
+    "ref": "Ex Q.4 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "What is the energy of activation of a reaction whose rate constant doubles when the temperature changes from \\(303\\ \\mathrm{K}\\) to \\(313\\ \\mathrm{K}\\)?",
+    "bookAnswer": "(54.66 kJ/mol)"
+  },
+  {
+    "ref": "Ex Q.4 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "The rate constant of a reaction at \\(500\\ ^\\circ\\mathrm{C}\\) is \\(1.6 \\times 10^{3}\\ \\mathrm{M^{-1}s^{-1}}\\). What is the frequency factor of the reaction if its activation energy is \\(56\\ \\mathrm{kJ/mol}\\).",
+    "bookAnswer": "(9.72 × 106 M-1s-1)"
+  },
+  {
+    "ref": "Ex Q.4 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "Show that time required for \\(99.9\\%\\) completion of a first order reaction is three times the time required for \\(90\\%\\) completion."
+  },
+  {
+    "ref": "Ex Q.4 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "A first order reaction takes \\(40\\) minutes for \\(30\\%\\) decomposition. Calculate its half life.",
+    "bookAnswer": "(77.66 min)"
+  },
+  {
+    "ref": "Ex Q.4 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Temperature Dependence of Reaction Rates",
+    "difficulty": "HARD",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "The rate constant for the first order reaction is given by \\(\\log_{10} k = 14.34 - 1.25 \\times 10^{4}\\ T\\). Calculate activation energy of the reaction.",
+    "bookAnswer": "(239.3 kJ/mol)"
+  },
+  {
+    "ref": "Ex Q.4 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Collision Theory of Bimolecular Reactions",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex Q.4",
+    "context": "Solve",
+    "stem": "What fraction of molecules in a gas at \\(300\\ \\mathrm{K}\\) collide with an energy equal to activation energy of \\(50\\ \\mathrm{kJ/mol}\\) ?",
+    "bookAnswer": "(2 × 10-9)"
+  }
+]

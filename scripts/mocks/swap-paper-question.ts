@@ -69,6 +69,19 @@ const PAPER: string = PAPER_ARG;
 type Swap = { out: string; in: string; why: string };
 
 const SWAP_SETS: Record<string, Swap[]> = {
+  // ── Confidence Mock 2 ─────────────────────────────────────────────────────
+  "6e806412-360e-4cd3-8562-3cd9cf5d6af9": [
+    {
+      // Sets & Relations, Set Operations / EASY — Venn stem with no image
+      out: "77940485-89e9-4a20-a78c-1c2487b35e3c",
+      in: "3a52d512-54f5-4feb-a3f5-0c5b2519ef19",
+      why:
+        "P4-figure-ref-no-image, the only BLOCKING violation across the three Confidence papers. The stem reads 'The shaded region in the figure ... represents' and `image_url` is null. " +
+        "Worth being precise about why it goes, because it is NOT strictly unanswerable: a parenthetical describes the diagram in full ('two overlapping circles A and B in universal set U, with the portion of A outside B shaded'), so a careful reader can still reach A minus B. " +
+        "It is replaced anyway, on the paper's own terms. This is a CONFIDENCE paper printed on paper, where a student cannot ask a question: telling them to look at a figure that is not on the page is precisely the small unfair shock the exercise exists to avoid, and a student who freezes on Q22 carries that into the next hundred questions. " +
+        "Replaced from the SAME cell (Sets & Relations / Set Operations, Identities, and Cartesian Products / EASY) with a self-contained row needing no figure at all: for disjoint A and B, A and (A' or B) reduces to the empty set — the same set-algebra skill, printable without a diagram.",
+    },
+  ],
   // ── Blueprint Mock 5 ──────────────────────────────────────────────────────
   "f918efd4-e03f-4392-8bbf-6f5a4783b698": [
     {

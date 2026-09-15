@@ -18,6 +18,9 @@
 // Refs follow the BOOK's numbering, which RESTARTS at 1 in Part 2 — see the
 // numbering note in ./config.ts. No collision results, because every chapter is
 // its own `source_file`.
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
@@ -785,10 +788,79 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
     { group: "Exercises", label: "Answer in detail", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
   ],
+
+  // ── CHEMISTRY ──────────────────────────────────────────────────────────────
+  // Ch.1 Some Basic Concepts of Chemistry — FIVE exercise blocks, more than any
+  // Physics chapter of this volume, and the labels are the book's own printed
+  // block headings ("Solve problems :", "Explain") rather than the Physics wording.
+  //
+  // Worked examples are `Problem 1.1`…`1.7` in the book, interleaved through the
+  // theory of §1.7–§1.9 rather than gathered under a banner, so they cannot be
+  // split into per-section solved blocks the way the Maths chapters are — they
+  // ship as ONE solved group in printed order.
+  //
+  // ⚠ The trailing " (" is LOAD-BEARING here for the same reason it is in the
+  // Physics chapters above: without it "Ex Q.1" is a prefix of nothing else today,
+  // but "Ex Q.4" would also match a future "Ex Q.4b". Keep the space+paren.
+  "basic-concepts-11-chem": [
+    { group: "1. Some Basic Concepts of Chemistry — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.1."] },
+    { group: "Exercises", label: "Choose the most correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    { group: "Exercises", label: "Give one example of each", kind: "exercise", refPrefixes: ["Ex Q.3 ("] },
+    { group: "Exercises", label: "Solve problems", kind: "exercise", refPrefixes: ["Ex Q.4 ("] },
+    { group: "Exercises", label: "Explain", kind: "exercise", refPrefixes: ["Ex Q.5 ("] },
+  ],
 };
+
+/**
+ * Per-chapter outline file — `data/<id>.sections.json`, same array shape as a
+ * `SECTIONS` entry. See the twin in scripts/stateboard/sections.ts for the full
+ * reasoning; in short, `SECTIONS` is ONE SHARED FILE and concurrent chapter
+ * agents appending to it is a read-modify-write race that fails QUIETLY — the
+ * losing outline vanishes, its rows commit unsectioned, and nothing says so
+ * until board:lint runs at the end.
+ *
+ * `SECTIONS` WINS when a key exists in both, so every shipped chapter is
+ * byte-identical regardless of what lands in data/.
+ */
+function sectionsFromFile(id: string): SectionSpec[] | null {
+  const p = join(__dirname, "data", `${id}.sections.json`);
+  if (!existsSync(p)) return null;
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(readFileSync(p, "utf8"));
+  } catch (e) {
+    throw new Error(`${id}.sections.json is not valid JSON: ${(e as Error).message}`);
+  }
+  // Fail CLOSED — a malformed outline returning [] would leave every row
+  // unsectioned, the exact silent failure this exists to prevent.
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    throw new Error(`${id}.sections.json must be a non-empty array of section specs`);
+  }
+  parsed.forEach((s: unknown, i: number) => {
+    const o = s as Partial<SectionSpec>;
+    if (
+      !o || typeof o.group !== "string" || typeof o.label !== "string" ||
+      typeof o.kind !== "string" || !Array.isArray(o.refPrefixes) ||
+      o.refPrefixes.length === 0 || !o.refPrefixes.every((r) => typeof r === "string")
+    ) {
+      throw new Error(
+        `${id}.sections.json[${i}] is not a section spec ` +
+          `(needs string group/label/kind and a non-empty string[] refPrefixes)`
+      );
+    }
+  });
+  return parsed as SectionSpec[];
+}
 
 export function sectionsFor(id: string): SectionSpec[] {
   const s = SECTIONS[id];
-  if (!s) throw new Error(`no section outline for chapter "${id}" — author one in scripts/mh-sb-11/sections.ts`);
-  return s;
+  if (s) return s;
+  const fromFile = sectionsFromFile(id);
+  if (fromFile) return fromFile;
+  throw new Error(
+    `no section outline for chapter "${id}" — author one in ` +
+      `scripts/mh-sb-11/data/${id}.sections.json (preferred; no shared-file race) ` +
+      `or in scripts/mh-sb-11/sections.ts`
+  );
 }

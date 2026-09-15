@@ -1,0 +1,39 @@
+[
+  {
+    "id": "bcefff4d-7b33-4120-8f8f-6f164e4ddf45",
+    "ref": "Ex Q.1 (A)",
+    "derived_answer": "B",
+    "why": "Section 4.6.2 gives the energy of a stationary state as \\(E_n = -R_H\\left(\\dfrac{1}{n^2}\\right)\\) with \\(R_H = 2.18 \\times 10^{-18}\\ \\mathrm{J}\\). The gap between two consecutive shells is therefore \\(E_{n+1} - E_n = R_H\\left(\\dfrac{1}{n^2} - \\dfrac{1}{(n+1)^2}\\right)\\), which shrinks rapidly as \\(n\\) grows:\n\n\\(E_2 - E_1 = 1.635 \\times 10^{-18}\\ \\mathrm{J}\\), \\(E_3 - E_2 = 3.03 \\times 10^{-19}\\ \\mathrm{J}\\), \\(E_4 - E_3 = 1.06 \\times 10^{-19}\\ \\mathrm{J}\\), \\(E_5 - E_4 = 4.91 \\times 10^{-20}\\ \\mathrm{J}\\).\n\nSo the energy difference between the shells goes on **decreasing** as one moves away from the nucleus, and the levels crowd together towards the series limit — exactly what Fig. 4.5 shows, where the emission lines \"get closer and closer together and eventually reach the series limit\".\n\nThe other three fail on the same arithmetic. It cannot be *increasing*, because the computed gaps fall monotonically. It cannot be *static*, because a constant spacing would require \\(E_n\\) to be linear in \\(n\\), whereas it goes as \\(1/n^2\\). And it cannot be *equalizing*, because the gaps do not tend to a common non-zero value — they tend to zero.",
+    "matches_current": true
+  },
+  {
+    "id": "ecae2f8a-c25a-4170-9423-b5efd824820f",
+    "ref": "Ex Q.1 (B)",
+    "derived_answer": "A",
+    "why": "Section 4.5.1(b) states the proportionality constant in \\(E = h\\nu\\) and gives its value directly: \"The proportionality constant \\(h\\) is called Plank's Constant. Later its value was found out to be \\(6.626 \\times 10^{-34}\\ \\mathrm{J\\ s}\\).\"\n\nThe magnitude can also be fixed from the chapter's own worked numbers: \\(6.626 \\times 10^{-34}\\) is the value substituted for \\(h\\) in the derivation of the Rydberg constant on printed page 43, where \\(\\dfrac{2.18 \\times 10^{-18}}{6.626 \\times 10^{-34} \\times 3 \\times 10^{10}}\\) returns \\(109677\\ \\mathrm{cm^{-1}}\\); no other exponent in the list reproduces that result.\n\nOf the remaining choices, \\(6.023 \\times 10^{-24}\\ \\mathrm{Js}\\) borrows the digits of the Avogadro number rather than of \\(h\\); \\(1.667 \\times 10^{-28}\\ \\mathrm{Js}\\) has neither the right digits nor the right exponent; and \\(6.626 \\times 10^{-28}\\ \\mathrm{Js}\\) carries the right digits with the exponent wrong by \\(10^{6}\\), which would make every photon energy in the chapter a million times too large.",
+    "matches_current": true,
+    "solution": "[Textbook misprint: the stem prints the physicist's name as \"Plank\". It is Max **Planck**, and the quantity is Planck's constant. The chapter misspells it the same way throughout section 4.5.1, so this is the book's house spelling rather than a one-off slip in this question. The value asked for is unaffected.]"
+  },
+  {
+    "id": "ac9356ad-2e55-49d4-80c5-7a5de6fbe3fa",
+    "ref": "Ex Q.1 (C)",
+    "derived_answer": "B",
+    "why": "Section 4.7.3 and Fig. 4.8 describe the three 2p orbitals: \"each p orbital has two lobes on the two sides of a nodal plane passing through the nucleus\", and the text then refers to \"the size and energy of the **dumbell** shaped three 2p orbitals\". A two-lobed shape is a dumb bell, so that is what a p-orbital looks like.\n\n*Spherical* belongs to the s orbitals — Fig. 4.7(b) draws 1s and 2s as spheres, and the text says \"The s orbitals are spherical in shape.\" *Double dumbell* is the four-lobed shape of the d orbitals \\(d_{xy}\\), \\(d_{yz}\\), \\(d_{xz}\\) and \\(d_{x^2-y^2}\\) in Fig. 4.9, which have twice as many lobes as a p orbital. *Diagonal* names no orbital shape anywhere in the chapter.",
+    "matches_current": true
+  },
+  {
+    "id": "b8d878ed-9dd0-40f8-aec6-5f19ceea7674",
+    "ref": "Ex Q.1 (D)",
+    "derived_answer": "A",
+    "why": "Section 4.7.5(ii) attributes exactly this statement: \"Wolfgang Pauli (1926) recognized that **No two electrons in an atom can have the same set of four quantum numbers**.\" The quoted stem is that rule, so it is Pauli's exclusion principle.\n\nEach of the others is a different rule stated elsewhere in the same section. Hund's rule of maximum multiplicity is about the ORDER of filling within one subshell — \"Pairing of electrons in the orbitals belonging to the same subshell does not occur unless each orbital belonging to that subshell has got one electron each\" — and says nothing about quantum-number sets. The aufbau principle is the recipe for building up a ground-state configuration by filling orbitals in increasing order of energy; the chapter lists Pauli's principle as one of the three inputs TO it, so the two cannot be the same statement. Heisenberg's uncertainty principle concerns the simultaneous determination of position and momentum and involves no quantum numbers at all.",
+    "matches_current": true
+  },
+  {
+    "id": "a8298638-6981-4e7a-9db3-a9d31b7fa57c",
+    "ref": "Ex Q.1 (E)",
+    "derived_answer": "B",
+    "why": "Section 4.7.2 says of \\(n\\): \"It identifies the shell\", and \"With an increase of \\(n\\), the distance from the nucleus and **size of the shell** increases\". Table 4.6 carries a column headed \"Size of shell\" against the principal quantum number, with an arrow marked *increases* down the \\(n\\) column. Section 4.7.3 adds that for the s orbitals \"their size increases with increase of \\(n\\)\", and 4.6.2 gives the radius as \\(r_n = n^2 a_0\\). So the principal quantum number is what fixes the size of the orbital.\n\nThe other three are the jobs of the other quantum numbers, as the same section sets out. Shape is fixed by the azimuthal quantum number \\(l\\), which distinguishes the spherical s from the dumb-bell p. Orientation in space is fixed by the magnetic quantum number \\(m_l\\), which \"gives information about the relative spatial orientation of the orbitals in a given subshell\". Spin is fixed by the spin quantum number \\(m_s\\), which takes only \\(+1/2\\) or \\(-1/2\\).",
+    "matches_current": true,
+    "solution": "[Textbook misprint: the fourth alternative is printed as \"orientation of in the orbital electron cloud\", which is not a grammatical phrase — the words have evidently been transposed, and the alternative intended is the orientation of the electron cloud in the orbital, i.e. the property fixed by the magnetic quantum number \\(m_l\\). It is transcribed exactly as printed. The reading does not change the answer: on either reading that alternative describes orientation, which is not what the principal quantum number describes.]"
+  }
+]

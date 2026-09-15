@@ -1,0 +1,28 @@
+[
+  {
+    "ref": "Solved Ex.3.3",
+    "why": "The printed line reads (12)^2 x 0.05 / 0.15 = 0.0048, which is self-refuting: (12)^2 x 0.05 / 0.15 = 48, not 0.0048. The value 0.0048 is what (0.12)^2 x 0.05 / 0.15 gives, and 0.12 is the alpha_1 the example itself defines two lines above as 12/100. So the base of the square has lost its decimal point. The printed final answer 6.93 % is correct.",
+    "find": "\\(\\alpha_2^2 = \\frac{(12)^2 \\times 0.05}{0.15} = 0.0048\\)",
+    "replace": "\\(\\alpha_2^2 = \\frac{(0.12)^2 \\times 0.05}{0.15} = 0.0048\\)",
+    "solution": "[Textbook misprint: the book's printed working carries two defects, both corrected below because a worked example must not teach an error. First, it prints the substitution as \"(12)^2 x 0.05 / 0.15 = 0.0048\", which contradicts itself — (12)^2 x 0.05 / 0.15 is 48, and 0.0048 is what (0.12)^2 x 0.05 / 0.15 gives, 0.12 being the alpha_1 the example defines two lines earlier as 12/100; the base of the square had lost its decimal point. Second, it prints \"alpha_2 = 0.0693 %\", but 0.0693 is the degree of dissociation, a fraction — the percentage is the 6.93 % printed on the very next line, so the stray per-cent sign made two consecutive lines disagree by a factor of 100. The book's final answer, 6.93 %, is correct and unchanged.]"
+  },
+  {
+    "ref": "Solved Ex.3.3",
+    "why": "The book prints alpha_2 = 0.0693 % with a per-cent sign, but 0.0693 is the degree of dissociation, a FRACTION; the percentage is the 6.93 % on the very next line, which is 0.0693 x 100. Carrying the stray % here would make the two consecutive lines contradict each other by a factor of 100.",
+    "find": "Hence \\(\\alpha_2 = 0.0693\\) %",
+    "replace": "Hence \\(\\alpha_2 = 0.0693\\)"
+  },
+  {
+    "ref": "Solved Ex.3.10",
+    "why": "The stem states the salt BA is 0.2 M, and the printed working then substitutes [salt] = 0.02 M, contradicting its own stem. It is also self-refuting one line later: the same line prints log(0.02/0.1) = log 2, but 0.02/0.1 = 0.2 and log 0.2 = -0.699, whereas the ratio 0.2/0.1 = 2 gives the log 2 = 0.3010 the book then uses. The printed pOH 5.0457 and pH 8.9543 follow only from the stem's 0.2 M, so the final answer is correct and only the two substitution lines are wrong. The label [acid] is corrected to [base] to match the Henderson-Hasselbalch equation printed directly above it, which is the basic-buffer form pOH = pKb + log([salt]/[base]).",
+    "find": "[salt] \\(= 0.02\\ \\mathrm{M}\\), [acid] \\(= 0.1\\ \\mathrm{M}\\)",
+    "replace": "[salt] \\(= 0.2\\ \\mathrm{M}\\), [base] \\(= 0.1\\ \\mathrm{M}\\)",
+    "solution": "[Textbook misprint: the printed working contradicts its own stem, and is corrected below. The stem gives the salt BA as 0.2 M, but the substitution line prints \"[salt] = 0.02 M\" and labels the second species \"[acid]\" where the Henderson-Hasselbalch equation printed directly above it — the basic-buffer form pOH = pKb + log([salt]/[base]) — requires [base]. The next line is self-refuting on the book's own numbers: it prints log(0.02/0.1) and equates it to log 2, but 0.02/0.1 = 0.2 and log 0.2 = -0.699, whereas the stem's ratio 0.2/0.1 = 2 gives the log 2 = 0.3010 the book then uses. The printed answers pOH = 5.0457 and pH = 8.9543 follow only from the stem's 0.2 M, so the final answer is correct and only the two substitution lines were wrong.]"
+  },
+  {
+    "ref": "Solved Ex.3.10",
+    "why": "Same defect, second occurrence: the substituted fraction is printed 0.02/0.1 while the term it is equated to on the same line, log 2, requires 0.2/0.1. Corrected so the line no longer contradicts itself.",
+    "find": "\\(\\mathrm{pOH} = 4.7447 + \\log \\frac{0.02}{0.1} = 4.7447 + \\log 2\\)",
+    "replace": "\\(\\mathrm{pOH} = 4.7447 + \\log \\frac{0.2}{0.1} = 4.7447 + \\log 2\\)"
+  }
+]

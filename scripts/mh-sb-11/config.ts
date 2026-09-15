@@ -119,6 +119,23 @@ const PHYSICS_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
 const phy11 = (p: string) => join(PHYSICS_ROOT, "11th_Topics", p);
 
+// ── CHEMISTRY (added 2026-09-03) ─────────────────────────────────────────────
+// A THIRD subject on this exam. 16 pre-split per-chapter PDFs (whole book 284pp);
+// chapter names match the `syllabus_concepts` MH-State-Board XI Chemistry spine
+// EXACTLY, all 16 — that spine was extracted from these very PDFs.
+// The volume-level facts (no ANSWERS section, the five printed answer forms, the
+// vision-only verdict) are IDENTICAL to Std XII and are documented in full in
+// scripts/stateboard/config.ts — read that comment before working a chapter here.
+//
+// The one thing that DIFFERS between the volumes, and it decides your refs:
+// ⚠ Std XI numbers its exercise items with UPPERCASE LETTERS (`A.` `B.` `C.`),
+//   unanimously across all 16 chapters, where Std XII uses roman numerals.
+//   Options within an MCQ are lowercase (`a.` `b.` `c.` `d.`).
+//   Worked examples are `Problem N.M` + `Solution :` (not Physics' `Example N.M`).
+const CHEMISTRY_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Book";
+const chem11 = (p: string) => join(CHEMISTRY_ROOT, "11th", p);
+
 /**
  * Model credited on an answer we derived, written to `questions.derived_model`
  * (with `derived_at`) for every AUTHORED row of a `derivedAnswers` chapter.
@@ -1534,6 +1551,515 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Mechanical Equilibrium",
       "Centre of Mass",
       "Centre of Gravity",
+    ],
+  },
+
+  // ══ CHEMISTRY ═══════════════════════════════════════════════════════════
+  // ── Ch.1 Some Basic Concepts of Chemistry. 12pp — the smallest chapter in the
+  //    volume. PILOT CHAPTER, chosen as the EASY half of the lane: it carries the
+  //    densest inline key in Std XI and so exercises the step-6 gate for real,
+  //    where its sibling pilot (Std XII Amines) has no gate at all.
+  //
+  //    MEASURED STRUCTURAL MAP (0-based page indices):
+  //      Worked examples: Problem 1.1 (p06), 1.2/1.3/1.4 (p07), 1.5 (p08),
+  //      1.6/1.7 (p09) — SEVEN, numbered 1.1–1.7 with no gaps.
+  //    ⚠ SEVEN `Problem` LABELS AGAINST SIX LINE-START `Solution :` LABELS, and
+  //      the gap is on p07, which carries three problems and two solution labels.
+  //      Establish what caused it from the page and say so. The Physics lane's
+  //      measured causes were a plural `Solutions:`, a worked example with no
+  //      label at all, and an `Example` hit that was only a prose cross-reference.
+  //      Treat the `Problem N.M` count as PRIMARY.
+  //      Note p08's `Ans : Number of moles = 0.0933 mol` sits INSIDE the
+  //      solved-example region — it belongs to Problem 1.5, and is NOT an
+  //      exercise answer. Do not let it inflate the keyed count.
+  //
+  //      Exercise opens p10 and runs to p11. Blocks:
+  //        `1. Choose the most correct option` (A–I, 9 MCQs)
+  //        `2. Answer the following questions` (A–I)
+  //        `3. Give one example of each`       (A–D)
+  //        `4. Solve problems :`               (A onward, spilling to p11)
+  //        `5. Explain`                        (p11)
+  //    ⚠ BLOCK 4 SPANS THE PAGE BREAK and is the chapter's whole numerical half.
+  //      Cut your bands at BLOCK boundaries, never at the page break.
+  //      ~17 exercise items carry an inline answer, in at least four of the five
+  //      printed forms — `(Ans. : 1:1)`, `(Ans : 6.022 x 1020)`, `(Ans. :10.81)`,
+  //      `(Ans. i. 2 mol ii. 0.25 mol)`. That is the real gate; report the KEYED
+  //      count, never the chapter total.
+  //
+  //    Subtopics are the book's own §1.x headings. §1.1 Introduction is
+  //    question-less prose and is deliberately NOT one — an empty subtopic ships
+  //    a /browse filter that returns nothing. 1.5 and 1.6 are merged because each
+  //    is a single thin section. Diff the committed `by subtopic` tally against
+  //    this list BEFORE --apply and report any that came out empty.
+  // ══ CHEMISTRY — waves 4-6 ═══════════════════════════════════════════════
+  // Registered 2026-09-03. EVERY chapter below measures keyed(est) ~= 0, i.e.
+  // the step-6 gate CANNOT run on any of them. That is the expected outcome, not
+  // a defect: this is the descriptive/organic half of the book. The compensating
+  // regime is the one the brief describes — answers grounded strictly in the
+  // chapter's own text, MCQ keys re-derived, derived-provenance stamped, and an
+  // explicit statement in the report that the gate could not run.
+  //
+  // ⚠ FIVE Std XI CHAPTERS PRINT **ZERO** `Problem N.M` LABELS — Ch.3, Ch.11 and
+  //   Ch.15 here, plus Ch.13 above (and Std XII Ch.8/Ch.16). The anchor the rest
+  //   of the lane relies on does not exist in them. Ch.15 Hydrocarbons has NO
+  //   worked examples at all (0 Problem labels AND 0 Solution labels across 28pp).
+  //   Establish the labelling from the page before planning bands.
+
+  // ── Ch.4 Structure of Atom. 20pp. 216 PYQ. Worked examples 4.1-4.12,
+  //    contiguous, 12 Problem labels against 12 Solution labels — they agree, so
+  //    no reconciliation is owed. Exercise opens p18.
+  //    Blocks: `1. Choose correct option.` · `2. Make the pairs:` ·
+  //    `3. Complete the following information` · `4. Match the following :` ·
+  //    `5. Answer in one sentence :` · `6. Answer the following questions.`
+  //    ⚠ 5,652 raster images — the second-heaviest image load in the book after
+  //      Std XII Solid State. Orbital shapes and spectra are the subject matter.
+  //      Match-the-pairs and complete-the-table blocks are GFM pipe tables, not
+  //      figures; only reach for a crop where the content needs 2-D layout.
+  "structure-of-atom-11-chem": {
+    id: "structure-of-atom-11-chem",
+    chapterName: "Structure of Atom",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Structure_of_Atom.pdf",
+    pdf: chem11("04. Structure of Atom.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Structure of Atom (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Subatomic Particles",
+      "Atomic Number and Atomic Mass Number",
+      "Isotopes, Isobars and Isotones",
+      "Drawbacks of Rutherford's Atomic Model",
+      "Developments Leading to the Bohr Model",
+      "Bohr's Model for the Hydrogen Atom",
+      "Quantum Mechanical Model of the Atom",
+    ],
+  },
+
+  // ── Ch.5 Chemical Bonding. 26pp. 261 PYQ. Worked examples 5.1-5.4 but only
+  //    TWO line-start `Solution :` labels — reconcile from the page.
+  //    Exercise opens p24. Blocks: `1. Select and write the most appropriate…` ·
+  //    `2. Draw` · `3. Answer the following questions` · `4. Using data from the
+  //    Table…` · `5. Complete the flow chart` · `6. Complete the following Table`
+  //    · `7. Answer in one sentence:`  — note 6 and 7 print OUT OF ORDER.
+  //    ⚠ `2. Draw` and `5. Complete the flow chart` are answer-is-a-drawing
+  //      blocks. Lewis structures and shapes are usually writable linearly; a
+  //      flow chart is not. Judge per question, per the brief's figure rule.
+  "chemical-bonding-11-chem": {
+    id: "chemical-bonding-11-chem",
+    chapterName: "Chemical Bonding",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemical_Bonding.pdf",
+    pdf: chem11("05. Chemical Bonding.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemical Bonding (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Kossel and Lewis Approach to Chemical Bonding",
+      "Valence Shell Electron Pair Repulsion Theory",
+      "Valence Bond Theory",
+      "Molecular Orbital Theory",
+      "Parameters of Covalent Bond",
+      "Dipole Moment",
+      "Resonance",
+    ],
+  },
+
+  // ── Ch.7 Modern Periodic Table. 17pp. 117 PYQ. Worked examples 7.1-7.9
+  //    contiguous, 9 labels against 7 Solution labels — reconcile from the page.
+  //    Exercise opens p15. ⚠ The MCQ block is NUMBERED 4, not 1: the printed
+  //    order is `1. Explain the following` · `2. Write the outer electronic
+  //    configuration…` · `3. Answer the following` · `4. Choose the correct
+  //    option` · `5. Answer the following questions`. Do not assume block 1.
+  "periodic-table-11-chem": {
+    id: "periodic-table-11-chem",
+    chapterName: "Modern Periodic Table",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Modern_Periodic_Table.pdf",
+    pdf: chem11("07. Modern Periodic Table.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Modern Periodic Table (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Structure of the Modern Periodic Table",
+      "Periodic Table and Electronic Configuration",
+      "Blockwise Characteristics of Elements",
+      "Periodic Trends in Elemental Properties",
+    ],
+  },
+
+  // ── Ch.14 Basic Principles of Organic Chemistry. 29pp — the largest Std XI
+  //    Chemistry chapter. 243 PYQ. Worked examples 14.1-14.11 contiguous
+  //    (11 labels / 9 Solution labels — reconcile). Exercise opens p26.
+  //    Blocks: `1. Answer the following :` · `2. Match the pairs` · `3. What is
+  //    meant by homologous series` · `4. Write IUPAC names of the following` ·
+  //    `6. Draw resonance structures…` (the book prints "srtuctures") ·
+  //    `7. Distinguish :` · `8. Write true or false…` · `9. Phytane…` ·
+  //    `10. Observe the following structures…`  — block 5 is not detected by a
+  //    text scan; find it on the page.
+  //    ⚠ IUPAC-naming answers are TEXT, not drawings — write them linearly.
+  //      Reserve figures for the resonance/structure-observation blocks.
+  "organic-basics-11-chem": {
+    id: "organic-basics-11-chem",
+    chapterName: "Basic Principles of Organic Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Basic_Principles_of_Organic_Chemistry.pdf",
+    pdf: chem11("14. Basic Principles of Organic Chemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Basic Principles of Organic Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Structural Representation of Organic Molecules",
+      "Classification of Organic Compounds",
+      "Nomenclature of Organic Compounds",
+      "Isomerism",
+      "Theoretical Basis of Organic Reactions",
+    ],
+  },
+
+  // ── Ch.15 Hydrocarbons. 28pp. 185 PYQ.
+  //    ⚠⚠ THIS CHAPTER HAS **NO WORKED EXAMPLES AT ALL** — zero `Problem`
+  //      labels AND zero `Solution` labels across all 28 pages. So it commits
+  //      with NO `solved` bucket, and its sections outline has no solved block.
+  //      That is correct, not an omission; say so rather than hunting for them.
+  //    Exercise opens p26. Blocks: `1. Choose correct options` · `2. Name the
+  //    following :` · `3. Identify the main product…` · `4. Read the following
+  //    reaction and…` · `5. Identify A, B, C in the following` · `6. Identify
+  //    giving reason…` · `7. Name two reagents…` · `8. Read the following…`
+  //    The spine's top-level sections for this chapter are unusually thin
+  //    (4 entries that read like sub-sections), so the subtopics below follow
+  //    the four hydrocarbon families the chapter actually teaches.
+  "hydrocarbons-11-chem": {
+    id: "hydrocarbons-11-chem",
+    chapterName: "Hydrocarbons",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Hydrocarbons.pdf",
+    pdf: chem11("15. Hydrocarbons.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Hydrocarbons (Balbharati Chemistry textbook)",
+    subtopics: ["Alkanes", "Alkenes", "Alkynes", "Aromatic Hydrocarbons"],
+  },
+
+  // ── Ch.3 Some Analytical Techniques. 8pp — the smallest chapter in the book.
+  //    ⚠ ZERO `Problem` labels (3 loose `Solution` hits, all prose — this
+  //      chapter teaches SOLVENT EXTRACTION, so "solution" is a chemical term).
+  //      Establish from the page whether it has worked examples at all.
+  //    Exercise opens p07. Blocks: `1. Choose the correct option` ·
+  //    `2. Answer the following` · `3. Label the diagram and explain the process`
+  //    ⚠ Block 3 is a LABEL-THE-DIAGRAM block — the question needs the apparatus
+  //      figure attached, and the answer is the labelling. A genuine figure case.
+  "analytical-techniques-11-chem": {
+    id: "analytical-techniques-11-chem",
+    chapterName: "Some Analytical Techniques",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Some_Analytical_Techniques.pdf",
+    pdf: chem11("03. Some Analytical Techniques.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Some Analytical Techniques (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Purification of Solids",
+      "Distillation",
+      "Solvent Extraction",
+      "Chromatographic Techniques",
+    ],
+  },
+
+  // ── Ch.8 Elements of Group 1 and 2. 13pp. Worked examples 8.1-8.7 contiguous.
+  //    Exercise opens p12. ⚠ The MCQ block is NUMBERED 5, not 1 — printed order
+  //    is `1. Explain the following` · `2. Write balanced chemical equations…` ·
+  //    `3. Answer the following questions` · `4. Name the following` ·
+  //    `5. Choose the correct option.` Two trailing `Activity`-style blocks
+  //    ("Collect the information…", "Find out the s block elements…") are
+  //    open-ended and NOT ingested.
+  "s-block-11-chem": {
+    id: "s-block-11-chem",
+    chapterName: "Elements of Group 1 and 2",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Elements_of_Group_1_and_2.pdf",
+    pdf: chem11("08. Elements of Group 1 and 2.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Elements of Group 1 and 2 (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Hydrogen",
+      "Alkali Metals and Alkaline Earth Metals",
+      "Some Important Compounds of s-Block Elements",
+    ],
+  },
+
+  // ── Ch.9 Elements of Group 13, 14 and 15. 12pp. Exercise opens p11.
+  //    ⚠ WORKED EXAMPLES ARE 9.1, 9.3, 9.4, 9.5, 9.6 — **9.2 IS MISSING** from
+  //      the text layer, and there are 7 Solution labels against 5 Problem
+  //      labels. Establish from the page whether the book skips 9.2 or the
+  //      extractor drops its label; do not assume either.
+  //    Blocks run 1-9 including `7. Draw the structure of the following` — a
+  //    genuine structure block; judge linear-vs-figure per question.
+  "p-block-11-chem": {
+    id: "p-block-11-chem",
+    chapterName: "Elements of Group 13, 14 and 15",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Elements_of_Group_13_14_and_15.pdf",
+    pdf: chem11("09. Elements of Group 13, 14 and 15.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Elements of Group 13, 14 and 15 (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Electronic Configuration of Groups 13, 14 and 15",
+      "Trends in Atomic and Physical Properties",
+      "Chemical Properties of the Elements",
+      "Catenation",
+      "Allotropy",
+      "Molecular Structures of Important Compounds",
+      "Chemistry of Notable Compounds",
+    ],
+  },
+
+  // ── Ch.11 Adsorption and Colloids. 14pp. Exercise opens p13.
+  //    ⚠ ZERO `Problem` labels against 3 line-start / 9 loose `Solution` hits —
+  //      and this chapter is about COLLOIDAL SOLUTIONS, so most loose hits are
+  //      the chemical term. Establish the worked-example labelling from the page.
+  //    Blocks run 1-9, mostly `Explain` / `Distinguish between`.
+  "adsorption-colloids-11-chem": {
+    id: "adsorption-colloids-11-chem",
+    chapterName: "Adsorption and Colloids",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Adsorption_and_Colloids.pdf",
+    pdf: chem11("11. Adsorption and Colloids.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Adsorption and Colloids (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Adsorption",
+      "Types of Adsorption",
+      "Factors Affecting Adsorption of Gases on Solids",
+      "Adsorption Isotherm",
+      "Applications of Adsorption",
+      "Catalysis",
+      "Adsorption Theory of Heterogeneous Catalysis",
+      "Colloids",
+    ],
+  },
+
+  // ── Ch.12 Chemical Equilibrium. 16pp. Worked examples 12.1-12.6 contiguous.
+  //    Exercise opens p15 — only three blocks: `1. Choose the correct option` ·
+  //    `2. Answer the following` · `3. Explain :`
+  //    ⚠ The book misspells its own stems repeatedly here ("equlilibrium",
+  //      "equlibrium", "concerntration"). Transcribe as printed and record them
+  //      as publisher-report items; they change no answer.
+  "chemical-equilibrium-11-chem": {
+    id: "chemical-equilibrium-11-chem",
+    chapterName: "Chemical Equilibrium",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemical_Equilibrium.pdf",
+    pdf: chem11("12. Chemical Equilibrium.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemical Equilibrium (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Equilibrium in Physical Processes",
+      "Equilibrium in Chemical Processes",
+      "Law of Mass Action and Equilibrium Constant",
+      "Homogeneous and Heterogeneous Equilibria",
+      "Characteristics of the Equilibrium Constant",
+      "Applications of the Equilibrium Constant",
+      "Le Chatelier's Principle",
+      "Industrial Application: The Haber Process",
+    ],
+  },
+
+  // ── Ch.16 Chemistry in Everyday Life. 10pp. Exercise opens p08 — one of the
+  //    largest exercises relative to chapter size.
+  //    One worked example, 16.1, standard label form (1 Problem / 1 Solution).
+  //    ⚠ CORRECTED 2026-09-03, both halves of the original note were wrong:
+  //      - The exercise has **ELEVEN** blocks, not the ten listed. `11. Answer
+  //        the following` (2 questions) is printed on p09 and my text scan missed
+  //        it — the seventh chapter in this lane where my block list was short.
+  //        Block 10's printed heading is `Answer in one senetence` (book's typo).
+  //      - "~1 keyed row" was a FALSE POSITIVE of the bare-parenthesis heuristic,
+  //        the exact class the Redox note warns about: the only parentheticals are
+  //        `(4.8 % w/v)`, which is STEM DATA in Ex Q.2 (E), and the date `(1908)`
+  //        in prose. The real count is **0** and the gate cannot run here at all.
+  //    ⚠ Two printed letter gaps, kept as the book prints them: block 10 runs
+  //      A-G then I, J (H skipped), and Ex Q.11 (A)'s sub-items are a, c, d, e.
+  //    Figure load is EIGHT, not the ~0 originally expected — block 3 prints a
+  //    2-D structure per item and Ex Q.10 (J)'s structure IS the question.
+  "everyday-chemistry-11-chem": {
+    id: "everyday-chemistry-11-chem",
+    chapterName: "Chemistry in Everyday Life",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Chemistry_in_Everyday_Life.pdf",
+    pdf: chem11("16. Chemistry in Everyday Life.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Chemistry in Everyday Life (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Basics of Food Chemistry",
+      "Compounds with Medicinal Properties",
+      "Cleansing Agents",
+    ],
+  },
+
+  // ── Ch.6 Redox Reactions. 12pp. Worked examples 6.1-6.9, contiguous.
+  //    Exercise opens p10, runs to p11. Blocks: `1. Choose the most correct
+  //    option`, `2. Write the formula for the following`, `3. Answer the
+  //    following questions`.
+  //    ⚠ THE MCQ BLOCK'S ITEM LETTERS SKIP H — printed A,B,C,D,E,F,G,I,J,K.
+  //      Keep the book's own numbering so the gap stays visible; do not close it
+  //      up. (Std XI Physics Sound had the same defect at item vi.)
+  //    ⚠ CORRECTED 2026-09-03: an earlier draft claimed "~8 keyed rows, all
+  //      standard-electrode-potential values (E0 = 1.36 V)". THAT WAS A FALSE
+  //      POSITIVE of my bare-parenthesis heuristic. Those `(E0 = 1.36 V)`
+  //      parentheticals are DATA SUPPLIED IN THE STEM of `Ex Q.3 (I)`/`(J)` —
+  //      the values the student is asked to compare — not printed answers.
+  //      **This chapter prints NO inline answer anywhere** (an `Ans` scan over
+  //      all 12 pages returns zero, and there is no bare-paren answer either),
+  //      so the gate CANNOT run and all 36 answers are derived.
+  //      General lesson for this lane: a parenthesised value inside a stem is
+  //      question data, not a key. Only count it if it answers the question.
+  //    Also corrected: the exercise has FIVE blocks, not the three named above —
+  //    `4. Balance the reactions/equations :` and `5. Complete the following
+  //    table :` are printed on p11.
+  "redox-11-chem": {
+    id: "redox-11-chem",
+    chapterName: "Redox Reactions",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Redox_Reactions.pdf",
+    pdf: chem11("06. Redox Reactions.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Redox Reactions (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Oxidation Number",
+      "Balancing of Redox Reactions",
+      "Redox Reaction and Electrode Potential",
+    ],
+  },
+
+  // ── Ch.10 States of Matter. 25pp — the largest Std XI Chemistry chapter.
+  //    Exercise opens p22, runs to p24. Blocks: `1. Select and write the most
+  //    appropriate answer`, `2. Answer in one sentence.`, then further blocks.
+  //    ~26 candidate keyed rows — the second-best gate in Std XI after Ch.2.
+  //    ⚠ EIGHT worked examples, and BOTH halves of the earlier note were wrong.
+  //      "10.1 IS ABSENT" was a COLON artefact — the book prints `Problem: 10.1 :`
+  //      and a `Problem\s+\d` scan cannot match it; the pink box is on p09, a
+  //      Boyle's-law calculation giving 20 mL. (Three chapters book-wide are hit
+  //      by this: here, XI Ch.13 and XII Ch.7.)
+  //      The REAL defect is at the other end: **the book prints `Problem 10.5`
+  //      TWICE** — the partial-pressure example and the water-Tc example — so the
+  //      run is 10.1, 10.2, 10.3, 10.4, 10.5, 10.5, 10.6, 10.7 and ships as
+  //      `Solved Ex.10.5` + `Solved Ex.10.5b`. That reconciles the "7 labels /
+  //      6 unique" count exactly: 7 matched labels + 10.1 hidden by its colon,
+  //      against 8 Solution labels.
+  "states-of-matter-11-chem": {
+    id: "states-of-matter-11-chem",
+    chapterName: "States of Matter",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__States_of_Matter.pdf",
+    pdf: chem11("10. States of Matter.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — States of Matter (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Intermolecular Forces",
+      "Characteristic Properties of Gases",
+      "Gas Laws",
+      "Ideal Gas Equation",
+      "Kinetic Molecular Theory of Gases",
+      "Liquefaction of Gases and Critical Constants",
+      "Liquid State",
+    ],
+  },
+
+  // ── Ch.13 Nuclear Chemistry and Radioactivity. 14pp. ~22 candidate keyed rows.
+  //    Exercise opens p12, runs to p13. Blocks: `1. Choose correct option.`,
+  //    `2. Explain`, `3. Answer the following questions`, `4. Solve the problems`.
+  //    ⚠ RESOLVED 2026-09-03 — AND THE CAUSE IS A COLON. An earlier draft said
+  //      this chapter prints ZERO `Problem` labels and that the `Solution` count
+  //      was therefore PRIMARY. Both claims came from a probe artefact: the book
+  //      prints **`Problem : 13.1 :`**, with a colon BEFORE the number, which a
+  //      `Problem\s+\d` scan cannot match. The real count is EIGHT worked
+  //      examples, 13.1-13.8, and the `Problem` and `Solution` counts reconcile
+  //      exactly (8 and 8). The `Problem` anchor works fine once the colon is
+  //      allowed for. This is the same failure as the shipped Electrostatics
+  //      `Example : 8.1` case — when a label scan returns zero, try the colon
+  //      form before concluding the labels are absent.
+  //      SCOPE OF THAT CLAIM, corrected the same day: I first wrote that the
+  //      colon form was "unique to this chapter, checked across the whole book".
+  //      It was not — I had probed only six chapters and stated it as if it
+  //      covered all 32. A proper sweep finds **THREE** affected:
+  //        XI Ch.10 States of Matter (`Problem: 10.1 :` — hides ONE example)
+  //        XI Ch.13 (this chapter, `Problem : 13.1 :` — hides ALL eight)
+  //        XII Ch.7 Elements of Groups 16/17/18 (hides 7.8)
+  //      XI Ch.3/11/15 and XII Ch.8/16 do return zero in BOTH forms, so those
+  //      zero counts are real. The lesson twice over: a label scan returning
+  //      zero is a hypothesis, and so is the SCOPE of any claim about it.
+  //      Its `Problem : 13.1` box ends with a SECOND, unsolved prompt carrying no
+  //      label and no printed solution — treated as an in-text practice prompt
+  //      (the Activity-box rule) rather than given an invented ref.
+  "nuclear-chemistry-11-chem": {
+    id: "nuclear-chemistry-11-chem",
+    chapterName: "Nuclear Chemistry and Radioactivity",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Nuclear_Chemistry.pdf",
+    pdf: chem11("13. Nuclear Chemistry and Radioactivity.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Nuclear Chemistry and Radioactivity (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Classification of Nuclides",
+      "Nuclear Stability",
+      "Radioactivity",
+      "Radioactive Decay",
+      "Modes of Decay",
+      "Nuclear Reactions",
+      "Applications of Radioisotopes",
+    ],
+  },
+
+  // ── Ch.2 Introduction to Analytical Chemistry. 14pp.
+  //    ⚠ THIS IS THE BEST-KEYED CHAPTER IN THE ENTIRE BOOK — ~46 candidate keyed
+  //      rows, against a book-wide average of ~14% coverage. If the step-6 gate is
+  //      ever going to earn its keep on Chemistry, it is here. Report the KEYED
+  //      count precisely; it is the headline result for this chapter.
+  //      Forms seen: `(Ans.: 249.5 g/mol)`, `(Ans. : 10.8 g)`, `(Ans.: Na2CO3)` —
+  //      note the last is a FORMULA, not a number, so a numeric-only scan misses it.
+  //
+  //    MEASURED (0-based): worked examples run 2.1-2.18 CONTIGUOUSLY across
+  //    p01-p09 (p01 4, p02, p03 2, p04 2, p05, p06 4, p07, p08 2, p09).
+  //    ⚠ p01 carries FOUR `Problem` labels and NO `Solution` label at all — those
+  //      four are significant-figures worked items whose working follows inline.
+  //      Do not read the missing label as a missing solution.
+  //    ⚠ p08 shows 3 line-start `Solution` labels against 8 loose hits: this
+  //      chapter teaches CONCENTRATION OF SOLUTIONS, so "solution" is a chemical
+  //      term in the prose. Anchor on `Problem N.M` only.
+  //    Exercise opens p10 and runs to p13. Blocks: `1. Choose correct option`
+  //    (A-L), `2. Answer the following questions` (A-J), `3. Solve the following
+  //    questions` (A-D), `4. Solve the following problems` (A-J, spilling to p13).
+  //    An atomic-mass preamble ("At. wt. : Ca = 40; C = 12; O = 16") is printed
+  //    for the p13 numericals — it MUST go into `context` on every row that needs
+  //    it, before commit.
+  "analytical-chemistry-11-chem": {
+    id: "analytical-chemistry-11-chem",
+    chapterName: "Introduction to Analytical Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Introduction_to_Analytical_Chemistry.pdf",
+    pdf: chem11("02. Introduction to Analytical Chemistry.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 11) — Introduction to Analytical Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Analysis",
+      "Mathematical Operations and Error Analysis",
+      "Determination of Molecular Formula",
+      "Chemical Reactions and Stoichiometric Calculations",
+      "Limiting Reagent",
+      "Concentration of Solution",
+      "Use of Graph in Analysis",
+    ],
+  },
+
+  "basic-concepts-11-chem": {
+    id: "basic-concepts-11-chem",
+    chapterName: "Some Basic Concepts of Chemistry",
+    subjectName: "Chemistry",
+    sourceFile: "StateBoard_11_Chemistry__Some_Basic_Concepts.pdf",
+    pdf: chem11("01. Some Basic Concepts of Chemistry.pdf"),
+    derivedAnswers: true, // no ANSWERS section in either Chemistry volume
+    note: "Maharashtra State Board (Class 11) — Some Basic Concepts of Chemistry (Balbharati Chemistry textbook)",
+    subtopics: [
+      "Nature of Matter and Its Classification",
+      "Properties of Matter and Measurement",
+      "Laws of Chemical Combination",
+      "Avogadro Law and Dalton's Atomic Theory",
+      "Atomic and Molecular Masses",
+      "Mole Concept and Molar Mass",
+      "Moles and Gases",
     ],
   },
 };

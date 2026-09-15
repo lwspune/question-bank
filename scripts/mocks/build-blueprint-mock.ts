@@ -76,7 +76,268 @@ type Fill = {
   why: string;
 };
 
+/**
+ * A CONFIDENCE PAPER — deliberately easier than the real NDA paper.
+ *
+ * WHAT IT CHANGES AND WHAT IT DOES NOT. The chapter/subtopic ALLOCATION is
+ * untouched, so the paper still tests the same 30 chapters in the same
+ * proportions as the real exam and remains a genuine syllabus rehearsal. Only
+ * the difficulty of each cell moves. Softening the allocation instead — picking
+ * whatever is easy — would produce a paper that is easier AND no longer NDA-
+ * shaped, which teaches a student nothing about where they stand.
+ *
+ * THE TWO RULES, both deterministic so a rebuild is reproducible:
+ *   1. HARD survives ONLY in the highest-weightage chapters. A student should
+ *      still meet a hard question where the marks actually are.
+ *   2. MODERATE is downshifted to EASY in the LONG TAIL first (the smallest
+ *      chapters), because that is where a student is least likely to have depth
+ *      and where an unfair-feeling question does the most damage to morale.
+ *
+ * THE HONEST COST, and it must be said to whoever sets this paper: a confidence
+ * paper is NOT a readiness predictor. A student will score materially higher
+ * here than on a real sitting, and the gap is the point of the exercise, not a
+ * measurement. Do not compare a score here against a Blueprint Mock score.
+ */
+export type DifficultyProfile = {
+  label: string;
+  /** Chapters allowed to keep their HARD cells. Everything else HARD -> MODERATE. */
+  keepHardIn: string[];
+  /** How many MODERATE cells to downshift to EASY, smallest chapters first. */
+  moderateToEasy: number;
+};
+
+const CONFIDENCE_PROFILE: DifficultyProfile = {
+  label: "confidence — softened, allocation unchanged",
+  // The five largest chapters by blueprint allocation (10 + 9 + 8 + 7 + 6 = 40
+  // of 120 questions), carrying H3 + H2 + H1 + H3 + H1 = 10 HARD between them.
+  keepHardIn: [
+    "Matrices & Determinants",
+    "Probability",
+    "Statistics",
+    "Trigonometric Identities",
+    "Functions",
+  ],
+  moderateToEasy: 25,
+};
+
+const DIFFICULTY_PROFILES: Record<string, DifficultyProfile> = {
+  "NDA Mathematics — Confidence Mock 1 (120 Q)": CONFIDENCE_PROFILE,
+  "NDA Mathematics — Confidence Mock 2 (120 Q)": CONFIDENCE_PROFILE,
+  "NDA Mathematics — Confidence Mock 3 (120 Q)": CONFIDENCE_PROFILE,
+};
+
+/**
+ * Apply a profile to the blueprint rows. Pure: same input, same output, so two
+ * builds of the same title plan the same paper.
+ */
+/**
+ * A planned cell, plus the blueprint difficulty it was softened FROM.
+ *
+ * Softening can create a cell that cannot exist: "Integer and Fractional Parts
+ * of Binomial Expressions" at EASY has zero supply in any bank, because those
+ * questions are inherently hard — the subtopic IS the difficulty. Downshifting
+ * by chapter size cannot know that. So the selector tries the softened
+ * difficulty first and falls back to the original, which keeps the paper as
+ * easy as the bank actually allows without opening a hole in the syllabus.
+ */
+export type PlanRow = AllocRow & { softenedFrom?: Difficulty };
+
+export function softenDifficulty(
+  alloc: AllocRow[],
+  profile: DifficultyProfile,
+): PlanRow[] {
+  // Chapter size drives the tail order, and is derived from the allocation
+  // itself rather than restated, so it cannot drift from the blueprint.
+  const size = new Map<string, number>();
+  for (const r of alloc) size.set(r.chapter, (size.get(r.chapter) ?? 0) + r.n);
+
+  const step1: PlanRow[] = alloc.map((r) =>
+    r.difficulty === "HARD" && !profile.keepHardIn.includes(r.chapter)
+      ? { ...r, difficulty: "MODERATE" as Difficulty, softenedFrom: "HARD" as Difficulty }
+      : { ...r },
+  );
+
+  // Smallest chapter first; ties broken by chapter name then subtopic so the
+  // order is total and stable.
+  const order = step1
+    .map((r, i) => ({ r, i }))
+    .filter((x) => x.r.difficulty === "MODERATE")
+    .sort(
+      (a, b) =>
+        (size.get(a.r.chapter) ?? 0) - (size.get(b.r.chapter) ?? 0) ||
+        a.r.chapter.localeCompare(b.r.chapter) ||
+        a.r.subtopic.localeCompare(b.r.subtopic),
+    );
+
+  let budget = profile.moderateToEasy;
+  for (const { i } of order) {
+    if (budget <= 0) break;
+    const take = Math.min(step1[i]!.n, budget);
+    const from = step1[i]!.softenedFrom ?? step1[i]!.difficulty;
+    if (take === step1[i]!.n) {
+      step1[i] = { ...step1[i]!, difficulty: "EASY", softenedFrom: from };
+    } else {
+      // Split the cell so a partial downshift is expressible.
+      step1.push({ ...step1[i]!, difficulty: "EASY", n: take, softenedFrom: from });
+      step1[i] = { ...step1[i]!, n: step1[i]!.n - take };
+    }
+    budget -= take;
+  }
+  return step1;
+}
+
 const FILL_SETS: Record<string, Fill[]> = {
+  // The PYQ fallback and the softening-undo ladder resolve every other cell
+  // automatically, so a Confidence paper declares only what genuinely crosses a
+  // boundary — a different chapter, or a level the cell was never softened from.
+  "NDA Mathematics — Confidence Mock 1 (120 Q)": [
+    {
+      chapter: "Probability",
+      subtopic: "Bounds on Probability",
+      difficulty: "HARD",
+      ids: ["28f57c4a-896a-4d2a-825a-cdcd2180137e"],
+      source: "NDA practice (LWS mock paper) at MODERATE",
+      why:
+        "NOTHING EXISTS AT THIS CELL. Probability is a keepHardIn chapter, so the profile never softened it and the undo ladder cannot fire; and the ONE free NDA row at Bounds/HARD carries a context, which RULE 1 makes unusable. This is the cell's own topic at one level down: P(A)=0.8, P(B)=0.9 forces 0.7 <= P(A and B) <= 0.8 — the upper bound from min(P(A),P(B)) and the lower from P(A or B) <= 1. Exactly the bounding argument the subtopic is named for, and a fair HARD-slot substitute in a paper whose whole point is to be gentler.",
+    },
+    {
+      chapter: "Differentiation",
+      subtopic:
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "EASY",
+      ids: ["f955c47c-6906-463a-b198-6f555eb79273"],
+      source: "NDA PYQ, Limits & Continuity chapter",
+      why:
+        "The EASY cell here was never softened (EASY is the floor), so no ladder applies, and NDA Differentiation holds zero free rows at this subtopic and level — the same structural gap Mocks 4 and 5 met. Filled from the SAME EXAM one chapter over, where 'Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory' is the same concept under another heading: f(x) = |x| + |x-1|, non-differentiable at 0 and 1. Same exam and same level, so RULE 2a needs no adjustment.",
+    },
+  ],
+  "NDA Mathematics — Confidence Mock 2 (120 Q)": [
+    {
+      chapter: "Probability",
+      subtopic: "Bounds on Probability",
+      difficulty: "HARD",
+      ids: ["76ffef24-a655-458e-9b10-21b1b7f5854f"],
+      source: "NDA PYQ at EASY",
+      why:
+        "Same structural gap as Confidence Mock 1: Probability is a keepHardIn chapter so nothing softens it, and Bounds/HARD has no usable row left. This is the Bonferroni bound stated outright — P(E and F) >= P(E) + P(F) - 1 — i.e. the subtopic's defining inequality, judged EASY only because the paper states it rather than making the student derive it. In a confidence paper that is the right trade.",
+    },
+    {
+      chapter: "Functions",
+      subtopic: "Composition and Inverse of Functions",
+      difficulty: "HARD",
+      ids: ["c5a63a7f-cc9c-469b-b1c3-c98185bb8f3b"],
+      source: "NDA PYQ at MODERATE",
+      why:
+        "Functions is keepHardIn, and Confidence Mock 1 took the last free HARD row at this subtopic. Same chapter, same subtopic, one level down: invert y = 5^(log x), which needs both a log rule and the inverse-swap step, so it still exercises the cell's own skill.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Sphere",
+      difficulty: "MODERATE",
+      ids: ["869503a3-53d5-43f3-af82-2c693c4370f0"],
+      source: "NDA PYQ at EASY",
+      why:
+        "The PYQ fallback drained Sphere/MODERATE building Confidence Mock 1. Same subtopic one level down, and not a trivial one: completing the square on x^2+y^2+z^2-6x-8y+10z+lambda = 0 and setting the radius to 1 gives lambda = 49.",
+    },
+    {
+      chapter: "Differentiation",
+      subtopic:
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "EASY",
+      ids: ["be3d95ae-b433-4205-9bdc-492230f0d991"],
+      source: "NDA PYQ, Limits & Continuity chapter",
+      why:
+        "The same structural gap as Mock 1 — NDA Differentiation holds no free row at this subtopic and level. Filled from the SAME EXAM one chapter over, where the identical concept lives under 'Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory': f(x) = |x-3|, continuous everywhere and non-differentiable at x = 3.",
+    },
+    {
+      chapter: "Binomial Theorem",
+      subtopic: "Integer and Fractional Parts of Binomial Expressions",
+      difficulty: "EASY",
+      ids: ["343d9b26-a649-40c7-81b1-b867755e5b27"],
+      source: "Worksheets, Binomial Expansion subtopic",
+      why:
+        "BENDS THE SUBTOPIC, DELIBERATELY, and it is the one fill in this set that does. 'Integer and Fractional Parts' questions are inherently hard — that is WHY no bank holds one at EASY, and why the softening-undo could not rescue the cell either once Mock 1 took the single free MODERATE row. Rather than drop Binomial Theorem to 2 of 3 and leave a chapter short, the slot takes a clean EASY question from the same CHAPTER: the coefficient of x^5 in (1+x)^12. The chapter's weight is preserved; the subtopic is not.",
+    },
+    {
+      chapter: "Binary Numbers",
+      subtopic: "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+      difficulty: "EASY",
+      ids: ["7562aa56-dbc7-4bb2-acc2-268f4c327578"],
+      source: "Worksheets, Binary Arithmetic subtopic",
+      why:
+        "Binary Numbers is an NDA-only chapter, so Worksheets is the ONLY other bank that carries one — neither board nor JEE has the topic at all. Mock 1 took NDA's last free EASY row here. Worksheets names 'Binary Arithmetic' as its own subtopic and this is addition, the first word of our cell's name: (1011)2 + (110)2.",
+    },
+  ],
+  // Paper 3 needs the most fills of the three, which is the expected shape: two
+  // papers have already drained the thin cells, so what remains needs a bank
+  // boundary crossed. Every one was chosen by READING it (RULE 2a).
+  "NDA Mathematics — Confidence Mock 3 (120 Q)": [
+    {
+      chapter: "Probability",
+      subtopic: "Bounds on Probability",
+      difficulty: "HARD",
+      ids: ["d7784b32-3c6b-4d81-a42c-640402e7a39a"],
+      source: "NDA PYQ, Conditional Probability subtopic",
+      why:
+        "BENDS THE SUBTOPIC. Bounds on Probability is now empty at EVERY level across every bank — Mocks 1 and 2 took the last two usable rows — and no other exam carries a subtopic of that name, because it is an NDA taxonomy label rather than a syllabus topic. The nearest live question is the same skill under another heading: given P(A) = 2/5 and P(A and B) = 3/20, derive P(A and not-B) by set algebra. Same chapter, same HARD level the cell asks for, and the same reasoning the subtopic exists to test.",
+    },
+    {
+      chapter: "Functions",
+      subtopic: "Composition and Inverse of Functions",
+      difficulty: "HARD",
+      ids: ["6662665f-f596-4522-a22e-ff37ebfde577"],
+      source: "Worksheets, Composite Functions subtopic at EASY",
+      why:
+        "NDA has no free row left at this subtopic at any level after Mocks 1 and 2. Worksheets names 'Composite Functions' as its own subtopic, which is a direct match; RULE 2a says its label does not carry across, and reading it confirms EASY is right — (f o g)(3) with f = 2x+1, g = x^2. That is a large drop for a HARD slot and is the single biggest softening in the three papers; it is taken deliberately, because the alternative is leaving Functions at 5 of 6 and losing a chapter slot.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Sphere",
+      difficulty: "MODERATE",
+      ids: ["4875bcaf-6e97-4ac4-afb3-89bbdcc79699"],
+      source: "NDA PYQ at EASY",
+      why:
+        "Sphere/MODERATE was drained by Mock 1's PYQ fallback and Mock 2's fill. Same subtopic one level down: write the equation of the sphere with centre (-2,3,4) and radius 6 — the defining form of the chapter's own object.",
+    },
+    {
+      chapter: "Differentiation",
+      subtopic:
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "EASY",
+      ids: ["3014a318-af29-465b-ba08-15fa08d400a9"],
+      source: "NDA PYQ, Limits & Continuity chapter",
+      why:
+        "Third paper running with this gap, filled the same way: the same exam one chapter over, where the concept lives under 'Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory'. f(x) = |x| + x^2 — continuous everywhere, non-differentiable only at 0, and a good confidence question because the x^2 term does not disturb the corner.",
+    },
+    {
+      chapter: "Definite Integration",
+      subtopic:
+        "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "MODERATE",
+      ids: ["c6afb94d-7e01-4261-8241-01e5847c187c"],
+      source: "MHT-CET, Symmetry/King's Property/Absolute Value subtopic",
+      why:
+        "NDA holds no free row at this subtopic. The MHT-CET question covers BOTH halves of our cell's name in one integral — the sum of int(0..2)[x]dx and int(0..2)|x-1|dx, greatest-integer and absolute-value together. Read before selecting: both pieces split at a single interior point, so it is genuinely MODERATE rather than the HARD its neighbours in that subtopic are.",
+    },
+    {
+      chapter: "Binomial Theorem",
+      subtopic: "Integer and Fractional Parts of Binomial Expressions",
+      difficulty: "EASY",
+      ids: ["bffd3d68-d6ca-47cf-b04a-e2584dc7e656"],
+      source: "Worksheets, Binomial Expansion subtopic",
+      why:
+        "Same deliberate subtopic bend as Mock 2, and for the same reason: 'Integer and Fractional Parts' cannot exist at EASY in any bank. Chapter weight preserved with a clean general-term question — the coefficient of x^7 y^3 in (x+y)^10.",
+    },
+    {
+      chapter: "Binary Numbers",
+      subtopic: "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+      difficulty: "EASY",
+      ids: ["80c1ddf9-c783-4aec-9bfa-a63b5d922141"],
+      source: "Worksheets, Binary Arithmetic subtopic",
+      why:
+        "NDA's Binary supply is exhausted and Worksheets is the only other bank with the chapter. Binary addition, the cell's own first named operation: (110)2 + (101)2.",
+    },
+  ],
   "NDA Mathematics — Blueprint Mock 2 (120 Q)": [
     {
       chapter: "Probability",
@@ -488,7 +749,7 @@ type Pick = AllocRow & {
   text: string;
   fill?: Fill;
 };
-type Family = "booklet" | "mock paper" | "declared fill";
+type Family = "booklet" | "mock paper" | "NDA PYQ" | "declared fill";
 
 /**
  * The `NDA_Maths_Practice__` prefix is NOT a reliable marker of the practice
@@ -515,7 +776,7 @@ function structurallyClean(r: Row): boolean {
   );
 }
 
-async function fetchPool(client: SupabaseClient): Promise<Row[]> {
+async function fetchPool(client: SupabaseClient, kind: "practice" | "pyq" = "practice"): Promise<Row[]> {
   const out: Row[] = [];
   const PAGE = 500;
   for (let from = 0; ; from += PAGE) {
@@ -526,7 +787,7 @@ async function fetchPool(client: SupabaseClient): Promise<Row[]> {
           "chapters!inner(name, subjects!inner(name, exams!inner(name))), " +
           "subtopics(name), options(label, text, is_correct)",
       )
-      .eq("question_kind", "practice")
+      .eq("question_kind", kind)
       .eq("visibility", "PUBLIC")
       .eq("question_format", "mcq")
       .eq("exam_id", EXAM_ID)
@@ -720,20 +981,43 @@ async function main() {
     `blueprint: ${alloc.length} allocation rows across ${chapterTotals.length} chapters, ${demand} questions`,
   );
 
+  // A CONFIDENCE paper softens difficulty WITHOUT touching the allocation, so
+  // it still covers the syllabus in real NDA proportions. Applied AFTER
+  // assertBlueprint so the 30/58/32 contract is still validated on the way in —
+  // the transform is a deliberate, reported departure from it, not a way round.
+  const profile = DIFFICULTY_PROFILES[TITLE];
+  const plan: PlanRow[] = profile ? softenDifficulty(alloc, profile) : alloc;
+  if (profile) {
+    const n = (d: Difficulty) => plan.filter((r) => r.difficulty === d).reduce((a, r) => a + r.n, 0);
+    console.log(
+      `difficulty profile "${profile.label}": E${n("EASY")} / M${n("MODERATE")} / H${n("HARD")}` +
+        `   (blueprint is E30 / M58 / H32)`,
+    );
+    console.log(`  HARD retained only in: ${profile.keepHardIn.join(", ")}`);
+  }
+
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
     { auth: { persistSession: false } },
   );
 
-  const [pool, used, unverifiable] = await Promise.all([
+  const [pool, pyqPool, used, unverifiable] = await Promise.all([
     fetchPool(client),
+    // Only a profiled (confidence) paper opens the PYQ fallback. A Blueprint
+    // Mock keeps the practice-only pool it has always had, so all five shipped
+    // papers plan byte-identically.
+    profile ? fetchPool(client, "pyq") : Promise.resolve([] as Row[]),
     fetchUsed(client),
     fetchUnverifiable(client),
   ]);
 
   const dropped = { used: 0, unverifiable: 0, structural: 0, setBound: 0, dashedTable: 0 };
-  const eligible = pool.filter((r) => {
+  // ONE definition of eligibility, shared by the practice pool and the PYQ
+  // fallback pool. Two copies would let a PYQ enter a paper under weaker rules
+  // than a practice question — and RULE 1 in particular is not optional for a
+  // PYQ, whose sets are if anything larger.
+  const eligibleRow = (r: Row): boolean => {
     if (used.has(r.id)) {
       dropped.used++;
       return false;
@@ -755,7 +1039,8 @@ async function main() {
       return false;
     }
     return true;
-  });
+  };
+  const eligible = pool.filter(eligibleRow);
   console.log(
     `pool ${pool.length} -> eligible ${eligible.length}  ` +
       `(dropped: ${dropped.used} already in a paper, ${dropped.unverifiable} review-rejected, ${dropped.structural} structural, ` +
@@ -769,6 +1054,13 @@ async function main() {
     return fa - fb || a.id.localeCompare(b.id);
   });
 
+  // The PYQ fallback pool takes the SAME four exclusions as the practice pool —
+  // already-used, review-rejected, structural, set/context-bound, dashed table.
+  // A PYQ is not exempt from RULE 1: a set member is as unusable here as there.
+  const pyqRanked = pyqPool
+    .filter(eligibleRow)
+    .sort((a, b) => a.id.localeCompare(b.id));
+
   // A blueprint name that matches NO taxonomy row yields zero candidates and
   // reads in the report as a supply gap. Those are completely different
   // problems — one is a broken reference, the other is an empty shelf — so
@@ -776,7 +1068,7 @@ async function main() {
   const liveNames = new Set(
     pool.map((r) => `${r.chapter}\u0000${r.subtopic ?? ""}`),
   );
-  const unresolved = alloc.filter(
+  const unresolved = plan.filter(
     (c) => !liveNames.has(`${c.chapter}\u0000${c.subtopic}`),
   );
   if (unresolved.length) {
@@ -858,7 +1150,8 @@ async function main() {
   const lent = new Set(SLOT_LENT.map(cellKey));
   const fillBy = new Map(FILLS.map((f) => [cellKey(f), f]));
 
-  for (const cell of alloc) {
+  const revertedCells: string[] = [];
+  for (const cell of plan) {
     // A slot lent to a set in the same chapter is intentionally left unfilled.
     if (lent.has(cellKey(cell))) continue;
 
@@ -901,25 +1194,102 @@ async function main() {
         text: r.text,
       });
     }
-    if (got.length < cell.n) shortfalls.push({ ...cell, got: got.length });
+    let have = got.length;
+
+    // PYQ FALLBACK — same exam, same chapter, same subtopic, same difficulty.
+    //
+    // The pool is practice-only, so a cell the practice bank has exhausted has
+    // always needed a hand-authored fill. For five papers running, most of
+    // those fills were an NDA PYQ at the SAME cell — which needs no RULE 2a
+    // judgement precisely because it is not a cross-exam borrow: the exam, the
+    // subtopic and the difficulty label all mean here what they mean there.
+    // A genuine cross-bank fill still has to be declared by id in FILL_SETS.
+    //
+    // Reported as its own family, so a PYQ can never enter a printed paper
+    // without the summary naming it.
+    if (have < cell.n && pyqRanked.length) {
+      const extra = pyqRanked.filter(
+        (r) =>
+          !taken.has(r.id) &&
+          r.chapter === cell.chapter &&
+          r.subtopic === cell.subtopic &&
+          r.difficulty === cell.difficulty,
+      );
+      for (const r of extra.slice(0, cell.n - have)) {
+        taken.add(r.id);
+        picks.push({
+          ...cell,
+          id: r.id,
+          actual: r.difficulty,
+          family: "NDA PYQ",
+          text: r.text,
+        });
+        have += 1;
+      }
+    }
+
+    // UNDO AN UNFILLABLE SOFTENING. If the softened cell has no supply anywhere
+    // but the blueprint's own difficulty does, take that rather than leave the
+    // syllabus short — a confidence paper should be as easy as the bank allows,
+    // not missing a topic because it could not be made easy.
+    // Gated on `softenedFrom`, which only a profiled paper ever sets — a
+    // Blueprint Mock keeps its strict cell matching and reports a real gap.
+    // Levels are tried EASIEST FIRST, not nearest: this is a confidence paper,
+    // so where a substitute is needed the gentler one is the right one. A cell
+    // softened HARD -> MODERATE -> EASY must be able to land on MODERATE, which
+    // is why this walks the whole ladder rather than only the original level.
+    if (have < cell.n && cell.softenedFrom) {
+      const LADDER: Difficulty[] = ["EASY", "MODERATE", "HARD"];
+      for (const d of LADDER) {
+        if (have >= cell.n) break;
+        if (d === cell.difficulty) continue;
+        const back = [...ranked, ...pyqRanked].filter(
+          (r) =>
+            !taken.has(r.id) &&
+            r.chapter === cell.chapter &&
+            r.subtopic === cell.subtopic &&
+            r.difficulty === d,
+        );
+        for (const r of back.slice(0, cell.n - have)) {
+          taken.add(r.id);
+          picks.push({
+            ...cell,
+            id: r.id,
+            actual: r.difficulty,
+            family: familyOf(r.source_file),
+            text: r.text,
+          });
+          have += 1;
+          revertedCells.push(`${cell.chapter} / ${cell.subtopic}: ${cell.difficulty} -> ${d}`);
+        }
+      }
+    }
+
+    if (have < cell.n) shortfalls.push({ ...cell, got: have });
   }
 
   // ── report ────────────────────────────────────────────────────────────────
   const byFam = (f: Family) => picks.filter((p) => p.family === f).length;
   const byDiff = (d: Difficulty) => picks.filter((p) => p.actual === d).length;
   console.log(`SELECTED ${picks.length} of ${demand}`);
+  if (revertedCells.length) {
+    console.log(
+      `  softening UNDONE in ${revertedCells.length} cell(s) - no supply at the easier level:`,
+    );
+    for (const c of revertedCells) console.log(`      ${c}`);
+  }
   console.log(
     `  difficulty  E${byDiff("EASY")} / M${byDiff("MODERATE")} / H${byDiff("HARD")}   (target E30 / M58 / H32)`,
   );
   console.log(
     `  source      booklet ${byFam("booklet")} · LWS mock papers ${byFam("mock paper")}` +
-      ` · declared fills ${byFam("declared fill")}`,
+      ` · NDA PYQ ${byFam("NDA PYQ")} · declared fills ${byFam("declared fill")}`,
   );
   // The three families must account for EVERY pick. A sum short of the total
   // means a question entered the paper through a path the report cannot name,
   // which is exactly the thing a printed paper must not do.
   const famTotal =
-    byFam("booklet") + byFam("mock paper") + byFam("declared fill");
+    byFam("booklet") + byFam("mock paper") + byFam("NDA PYQ") + byFam("declared fill");
   if (famTotal !== picks.length)
     console.log(`  !! source counts sum to ${famTotal}, not ${picks.length}`);
   for (const f of FILLS)
