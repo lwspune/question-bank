@@ -57,7 +57,24 @@ async function main() {
   const answers: Answers = JSON.parse(readFileSync(aPath, "utf8"));
   const reconciled = new Set(answers.reconciled ?? []);
 
-  const { errors: catErrors, warnings: catWarnings } = validateCatalog(questions, catalog());
+  // strictSubtopics: an unlisted subtopic is an ERROR here, not a warning.
+  //
+  // The soft default is right at MERGE time, where an unlisted subtopic on a
+  // fresh paper is extension work rather than a typo (see lib.ts). It is wrong
+  // HERE, because this is the step that writes the bank: "Number System" was
+  // re-cut from 12 classification subtopics into 12 teaching subtopics on
+  // 2026-09-15 (scripts/cds-maths/reshape-number-system.ts), and lib.ts already
+  // documents what a soft warning costs after a cleanup pass -- an auto-created
+  // stale name "splits one chapter's corpus across two subtopics with no error
+  // anywhere". A re-commit of an old name must refuse, not re-fragment.
+  //
+  // Consequence to expect, not to "fix" by reverting the catalog: the 50 b*.json
+  // BAND files still carry the pre-reshape names, deliberately, because they are
+  // transcription evidence. So re-merging a Number System paper writes stale
+  // names into questions.json and THIS gate is what catches it.
+  const { errors: catErrors, warnings: catWarnings } = validateCatalog(questions, catalog(), {
+    strictSubtopics: true,
+  });
   const setErrors = validateSets(questions);
 
   const built = buildRecords(questions, answers.derivations, { reconciled, keyed: Boolean(paper.answerKey) });
