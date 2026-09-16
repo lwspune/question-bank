@@ -19,6 +19,7 @@ import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { CONTACT_EMAIL } from "@/lib/brand";
+import ContactForm from "./ContactForm";
 
 export const revalidate = 86400;
 
@@ -146,16 +147,19 @@ export default function AboutPage() {
           of the list above got found in the first place.
         </P>
         <P>
-          Write to{" "}
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=PYQ%20Vault%20correction`}
-            className="text-brand-accent underline"
-          >
-            {CONTACT_EMAIL}
-          </a>
-          . Every page in the question bank and the notes also has a report
-          button, which is faster because it tells me which question you mean.
+          Every page in the question bank and the notes also has a report
+          button, which is faster than this form because it tells me exactly
+          which question you mean.
         </P>
+
+        <H2>Write to me</H2>
+        <P>
+          This goes straight to me. I read everything, though I am one person,
+          so a reply can take a few days.
+        </P>
+        <div className="mt-5 rounded-xl border bg-card p-5 sm:p-6">
+          <ContactForm />
+        </div>
 
         <div className="mt-10 rounded-xl border bg-muted/30 p-5 text-sm">
           <p className="font-semibold tracking-tight text-foreground">
@@ -164,6 +168,7 @@ export default function AboutPage() {
           <p className="mt-1 font-serif leading-relaxed text-muted-foreground">
             Vilas Shinde · Pune, Maharashtra, India
             <br />
+            Or by email:{" "}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="text-brand-accent underline"

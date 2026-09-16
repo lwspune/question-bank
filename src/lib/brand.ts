@@ -27,8 +27,16 @@
  * replies and inbound leads, with no error anywhere.
  *
  * So: confirm forwarding for hello@pyqvault.com is live at GoDaddy and that a
- * test message arrives, THEN push. Moved off the gmail address 2026-09-16
- * because a site asking teachers to trust its answer keys should not be
- * reachable only at a free mailbox.
+ * test message arrives, THEN change this line. Measured 2026-09-16:
+ * pyqvault.com has NO MX RECORD AT ALL, so mail to hello@ does not land in the
+ * wrong inbox, it BOUNCES. (Resend's records all sit on the `send.` subdomain,
+ * so adding a root MX for receiving cannot disturb outbound sending.)
+ *
+ * Until that MX exists this stays on the working gmail. The trust argument for
+ * moving off it is real — a site asking teachers to trust its answer keys
+ * should not be reachable only at a free mailbox — but a branded address that
+ * silently eats replies is strictly worse than an unbranded one that works.
+ * Meanwhile /about leads with the CONTACT FORM (`contact_messages`), which does
+ * not depend on email delivery at all.
  */
-export const CONTACT_EMAIL = "hello@pyqvault.com";
+export const CONTACT_EMAIL = "connect.pyqvault@gmail.com";

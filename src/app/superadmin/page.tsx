@@ -3,8 +3,10 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import { listOrgsWithStats } from "@/lib/superadmin/admin";
 import { listTeacherAccessRequests } from "@/lib/teacherAccess/service";
+import { listContactMessages } from "@/lib/contact/service";
 import SuperadminClient from "./SuperadminClient";
 import TeacherRequests from "./TeacherRequests";
+import ContactMessages from "./ContactMessages";
 
 export const dynamic = "force-dynamic";
 
@@ -12,9 +14,10 @@ export default async function SuperadminPage() {
   // Platform staff only — the cross-org console.
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
-  const [orgs, teacherRequests] = await Promise.all([
+  const [orgs, teacherRequests, contactMessages] = await Promise.all([
     listOrgsWithStats(),
     listTeacherAccessRequests(),
+    listContactMessages(),
   ]);
 
   return (
@@ -33,6 +36,8 @@ export default async function SuperadminPage() {
         <SuperadminClient initialOrgs={orgs} />
 
         <TeacherRequests initial={teacherRequests} />
+
+        <ContactMessages initial={contactMessages} />
       </main>
     </>
   );

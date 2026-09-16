@@ -455,7 +455,8 @@ export type ActiveTab =
   | "papers"
   | "mock"
   | "books"
-  | "blog";
+  | "blog"
+  | "about";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -481,6 +482,11 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   // drawn for everyone from sm up, and below sm it lives in the account menu
   // (see UserMenu) because the phone tab bar is a fixed five.
   if (matchesSegment(path, "/blog")) return "blog";
+  // About — public, and the only tab that is an identity page rather than a
+  // product surface. It owns a tab because "who is behind this?" is the
+  // question the page exists to answer, and a Footer link alone was where
+  // nobody looked.
+  if (matchesSegment(path, "/about")) return "about";
   return null;
 }
 

@@ -15,6 +15,10 @@ import {
   setTeacherAccessRequestStatus,
   type TeacherRequestStatus,
 } from "@/lib/teacherAccess/service";
+import {
+  setContactMessageStatus,
+  type ContactMessageStatus,
+} from "@/lib/contact/service";
 
 type Err = { ok: false; error: string };
 type Result<T = unknown> = ({ ok: true } & T) | Err;
@@ -91,6 +95,18 @@ export async function setTeacherRequestStatusAction(
   const denied = await gate();
   if (denied) return denied;
   const res = await setTeacherAccessRequestStatus(id, status);
+  if (!res.ok) return res;
+  revalidatePath("/superadmin");
+  return { ok: true };
+}
+
+export async function setContactMessageStatusAction(
+  id: string,
+  status: ContactMessageStatus
+): Promise<Result> {
+  const denied = await gate();
+  if (denied) return denied;
+  const res = await setContactMessageStatus(id, status);
   if (!res.ok) return res;
   revalidatePath("/superadmin");
   return { ok: true };
