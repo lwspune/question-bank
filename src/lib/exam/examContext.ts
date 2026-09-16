@@ -142,7 +142,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     displayName: "CDS",
     examName: "CDS", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
-    notesPath: "/notes/cds", // exam hub: "coming soon" until CDS notes ship
+    notesPath: "/notes/cds", // exam hub: live since 2026-09-15 (Mathematics — Number System)
     hasMocks: true, // CDS English mocks (2017-I … 2026-I) published at /mock
   },
   {

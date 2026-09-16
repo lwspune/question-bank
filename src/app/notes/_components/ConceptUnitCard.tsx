@@ -219,6 +219,8 @@ import EisTimeZonesIdl from "./visualizations/EisTimeZonesIdl";
 import OcnSeaFloorProfile from "./visualizations/OcnSeaFloorProfile";
 import OcnSpringNeapTides from "./visualizations/OcnSpringNeapTides";
 import OcnCoralReefTypes from "./visualizations/OcnCoralReefTypes";
+import CdsUnitDigitCycleWheel from "./visualizations/CdsUnitDigitCycleWheel";
+import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 export function renderVisualization(slug: VisualizationSlug) {
@@ -633,6 +635,10 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <OcnSpringNeapTides />;
     case "ocn-coral-reef-types":
       return <OcnCoralReefTypes />;
+    case "cds-unit-digit-cycle-wheel":
+      return <CdsUnitDigitCycleWheel />;
+    case "cds-rational-irrational-line":
+      return <CdsRationalIrrationalLine />;
   }
 }
 

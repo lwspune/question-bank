@@ -4,6 +4,8 @@ import {
   getNotesExamGroup,
   notesExamSlugs,
 } from "@/lib/notes/notesNav";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 /**
  * The /notes navigation model derives from the live NOTES_CHAPTERS registry,
@@ -47,12 +49,24 @@ describe("notesNav — cross-exam notes grouping", () => {
   });
 
   it("returns a valid exam with empty subjects (coming-soon), null for unknown slug", () => {
-    // cds is a registered exam with no notes yet. Keep this on a genuinely
-    // note-less exam — jee-mains gained notes (Matrices, 2026-07-24), which
-    // would silently flip a real chapter's negative case here.
-    const cds = getNotesExamGroup("cds");
-    expect(cds).not.toBeNull();
-    expect(cds!.subjects).toEqual([]);
+    // The invariant is "a registered exam with no notes resolves to a non-null
+    // group with no subjects", NOT a claim about any particular exam. Pinning it
+    // to a named exam has rotted TWICE — jee-mains gained notes 2026-07-24 and
+    // the case moved to cds, which then gained Number System notes 2026-09-15.
+    // So derive the subject instead: any registry exam absent from
+    // NOTES_CHAPTERS will do, and the assertion can never be flipped by
+    // shipping a chapter.
+    const noted = new Set(NOTES_CHAPTERS.map((c) => c.examName));
+    const noteless = EXAM_REGISTRY.find((e) => !noted.has(e.examName));
+    expect(
+      noteless,
+      "every registered exam now has notes — this negative case needs a synthetic fixture instead"
+    ).toBeDefined();
+
+    const group = getNotesExamGroup(noteless!.slug);
+    expect(group, noteless!.slug).not.toBeNull();
+    expect(group!.subjects, noteless!.slug).toEqual([]);
+
     // an unknown slug is a 404.
     expect(getNotesExamGroup("not-an-exam")).toBeNull();
   });

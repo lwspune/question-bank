@@ -428,6 +428,11 @@ import {
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/states-of-matter/_data";
+import {
+  CDS_NUMBER_SYSTEM_CHAPTER,
+  CDS_NUMBER_SYSTEM_NOTES,
+  CDS_NUMBER_SYSTEM_SLUGS,
+} from "@/app/notes/cds-maths/number-system/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -1381,6 +1386,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: OCEANOGRAPHY_CHAPTER,
     notes: OCEANOGRAPHY_NOTES,
     slugs: OCEANOGRAPHY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: CDS_NUMBER_SYSTEM_CHAPTER,
+    notes: CDS_NUMBER_SYSTEM_NOTES,
+    slugs: CDS_NUMBER_SYSTEM_SLUGS,
   },
 ];
 
