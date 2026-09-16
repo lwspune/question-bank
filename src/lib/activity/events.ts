@@ -18,11 +18,13 @@
  * engagement action — never a vanity metric. */
 export const ACTIVITY_KINDS = [
   "mock_submitted", // finished + graded a timed mock (metadata: score, maxScore, …)
+  "mock_started", // OPENED a timed mock (new attempt only — a resume must not re-fire)
   "answer_wrong", // missed a question in a graded mock (refId = questionId) — drill fuel
   "answer_correct", // got a question right in a graded mock (refId = questionId)
   "chapter_mastered", // marked a /notes subtopic mastered (refId = subtopicSlug)
   "note_checkpoint", // completed a /notes mastery checkpoint (metadata: score, total)
   "question_bookmarked", // saved a question (refId = questionId)
+  "question_practiced", // revealed a bank answer on /browse or /board (refId = questionId)
   "quiz_taken", // completed a public/daily quiz
   "drill_completed", // finished a personalised weak-area drill (future phase)
 ] as const;

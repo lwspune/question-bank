@@ -84,11 +84,16 @@ export default async function PmfPage() {
             What this page cannot see
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            {dark.length} product surfaces record nothing when a student uses them — including the
-            question bank itself. A student can read for an hour and register as silent here, so
-            treat every rate below as a <span className="font-medium">floor</span>, never a
-            measurement of engagement. Nothing on this page is evidence about anonymous visitors,
-            who are most of the traffic.
+            Two limits shape everything below.{" "}
+            <span className="font-medium">Anonymous visitors are not tracked at all</span> — bank
+            practice is recorded only for signed-in students, so most of the traffic leaves no row
+            anywhere and every rate here is a <span className="font-medium">floor</span>, never a
+            measurement of total engagement. And{" "}
+            <span className="font-medium">acquisition began on 2026-09-16</span>: the 330 accounts
+            that already existed have no channel and never will, so &ldquo;unknown&rdquo; must stay
+            its own bucket rather than being read as &ldquo;direct&rdquo;.{" "}
+            {dark.length > 0 && `${dark.length} surface(s) still record nothing at all.`} Full map
+            at the bottom of this page.
           </p>
         </section>
 
@@ -301,6 +306,7 @@ export default async function PmfPage() {
                   <span className={`rounded px-1.5 py-0.5 text-xs ${TRACKED_STYLE[s.tracked]}`}>
                     {TRACKED_LABEL[s.tracked]}
                   </span>
+                  <span className="text-xs text-muted-foreground">via {s.via}</span>
                 </div>
                 {s.lost && <p className="mt-1 text-xs text-muted-foreground">{s.lost}</p>}
               </div>

@@ -11,11 +11,13 @@ import type { ActivityKind } from "./events";
 
 export const KIND_LABELS: Record<ActivityKind, string> = {
   mock_submitted: "Mock completed",
+  mock_started: "Mock opened",
   answer_wrong: "Mock question missed",
   answer_correct: "Mock question correct",
   chapter_mastered: "Chapter mastered",
   note_checkpoint: "Notes checkpoint",
   question_bookmarked: "Question saved",
+  question_practiced: "Bank answer revealed",
   quiz_taken: "Quiz taken",
   drill_completed: "Drill completed",
 };

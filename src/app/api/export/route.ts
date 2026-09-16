@@ -3,6 +3,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
+import { recordExportEvent } from "@/lib/export/log";
 import {
   queryQuestions,
   queryQuestionsByIds,
@@ -242,6 +243,14 @@ export async function POST(request: NextRequest) {
         type: "buffer",
         bookType: "xlsx",
       }) as Buffer;
+      await recordExportEvent({
+        userId: user?.id ?? null,
+        orgId: member?.orgId ?? null,
+        kind,
+        questionCount: questions.length,
+        mode: isCartMode ? "cart" : "filters",
+        isStaff,
+      });
       return new NextResponse(xlsxBuf as unknown as ArrayBuffer, {
         status: 200,
         headers: {
@@ -262,6 +271,14 @@ export async function POST(request: NextRequest) {
         imageBytes,
         groupBySubtopic,
         includeSourceTag,
+      });
+      await recordExportEvent({
+        userId: user?.id ?? null,
+        orgId: member?.orgId ?? null,
+        kind,
+        questionCount: questions.length,
+        mode: isCartMode ? "cart" : "filters",
+        isStaff,
       });
       return new NextResponse(pptxBuf as unknown as ArrayBuffer, {
         status: 200,
@@ -295,6 +312,14 @@ export async function POST(request: NextRequest) {
       filename = `Answers_${safeName}.docx`;
     }
 
+    await recordExportEvent({
+      userId: user?.id ?? null,
+      orgId: member?.orgId ?? null,
+      kind,
+      questionCount: questions.length,
+      mode: isCartMode ? "cart" : "filters",
+      isStaff,
+    });
     return new NextResponse(docxBuf as unknown as ArrayBuffer, {
       status: 200,
       headers: {

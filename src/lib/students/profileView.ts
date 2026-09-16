@@ -46,16 +46,19 @@ export function examLabels(slugs: readonly string[] | null | undefined): string[
 }
 
 /**
- * Human label per activity kind. Typed as a total Record, so adding a 9th kind to
+ * Human label per activity kind. Typed as a total Record, so adding a kind to
  * ACTIVITY_KINDS fails typecheck here rather than rendering a raw enum in the UI.
+ * (It did exactly that when mock_started + question_practiced landed in 0105.)
  */
 const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   mock_submitted: "Submitted a mock",
+  mock_started: "Opened a mock",
   answer_wrong: "Missed a question",
   answer_correct: "Answered correctly",
   chapter_mastered: "Marked a subtopic mastered",
   note_checkpoint: "Completed a notes checkpoint",
   question_bookmarked: "Saved a question",
+  question_practiced: "Revealed a bank answer",
   quiz_taken: "Took a quiz",
   drill_completed: "Completed a drill",
 };

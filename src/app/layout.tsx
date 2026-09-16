@@ -3,6 +3,7 @@ import { Inter, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
+import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
@@ -96,6 +97,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             toastOptions={{ duration: 3500 }}
           />
           <Analytics />
+          {/* Client island: parks first-touch attribution in a cookie. Touches no
+              server API, so prerendered routes stay prerendered. */}
+          <AcquisitionCapture />
           </MobilePromptProvider>
           </BookmarksProvider>
         </CartProvider>
