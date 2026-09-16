@@ -23,13 +23,32 @@ type ExamGuide = {
   highlights: string[];
 };
 
+/**
+ * The ten cards render in one grid, so a reader takes the whole set in at a
+ * glance. Until 2026-09-16 that set was a template: 9 of 10 blurbs opened "A
+ * {N}-question analysis of…" and 7 of 10 closed with the identical six words
+ * "and the trap shapes NDA reuses."
+ *
+ * Two rules when editing one of these, both load-bearing:
+ *
+ * 1. DO NOT re-add the "A {N}-question analysis of {subject}, {years}" opener.
+ *    It is not merely repetitive, it is REDUNDANT — `qCount` and `yearWindow`
+ *    render as chips one line below the blurb, so that sentence spends the
+ *    card's most valuable words restating two fields already on screen.
+ * 2. A blurb earns its place by saying what is true of THIS subject and no
+ *    other. Shared openings and shared closings are what read as machine
+ *    written; the reader is choosing between ten cards, so the difference is
+ *    the only information the blurb can carry.
+ *
+ * Every figure below is one already asserted in that card's own `highlights`.
+ */
 const GUIDES: ExamGuide[] = [
   {
     href: "/guide/nda-maths",
     exam: "NDA Mathematics",
     title: "How NDA Maths actually works",
     blurb:
-      "A 2,280-question analysis of every Mathematics paper from 2017 to 2026. Principles, strategy, compound tricks, year-on-year drift, and the distractor traps.",
+      "The only NDA subject big enough to reward cross-chapter thinking: eleven principles that cut across the syllabus, plus a Tier A / B / Skip call on every chapter, each backed by its own %HARD.",
     qCount: 2280,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -44,7 +63,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA English (GAT)",
     title: "How NDA English actually works",
     blurb:
-      "A 950-question analysis of the English half of GAT, 2017–2026. Recall vs Rule vs Reason buckets, 16 chapter playbooks, vocabulary word families, and the trap shapes NDA reuses.",
+      "Vocabulary and idioms you recall, grammar you rule-check, comprehension you reason through. Sixteen playbooks split along those lines, and a word-family list mined from the 270 words NDA has actually tested.",
     qCount: 950,
     yearWindow: "2017–2026 · 10 years",
     highlights: [
@@ -59,7 +78,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART B Physics",
     title: "How NDA Physics actually works",
     blurb:
-      "A 473-question analysis of every PART B Physics paper, 2017–2026. Recall vs Apply vs Reason strands with a %HARD-aware drill posture, 14 chapter playbooks, formula compendium, and the trap shapes NDA reuses.",
+      "Physics is the one NDA subject that has genuinely got harder: 2% of questions were HARD in 2021, 37% by 2026. The strands and the drill posture here are built around that, not around syllabus order.",
     qCount: 473,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -74,7 +93,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART B Chemistry",
     title: "How NDA Chemistry actually works",
     blurb:
-      "A 277-question analysis of every PART B Chemistry paper, 2017–2026. Recall vs Rule vs Calculate strands matched to a Recall-heavy bank, 12 chapter playbooks, 50-compound reference, and the trap shapes NDA reuses.",
+      "Mostly recall, and unlike Physics it has not hardened at all, so a 2017 paper is worth as much as a 2026 one. The core of the guide is a fifty-compound name/formula/use reference in six themed clusters.",
     qCount: 277,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -89,7 +108,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART B Biology",
     title: "How NDA Biology actually works",
     blurb:
-      "A 199-question analysis of every PART B Biology paper, 2017–2026. Recall vs Apply vs Verify strands matched to an 82%-recall bank, 9 chapter playbooks, 50-fact reference, and the trap shapes NDA reuses.",
+      "Four questions in ten years have been rated HARD. Biology is 82% straight recall, so this guide is mostly a fifty-fact reference: diseases to pathogens, vitamins to deficiencies, hormones to glands.",
     qCount: 199,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -104,7 +123,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART A Geography",
     title: "How NDA Geography actually works",
     blurb:
-      "A 367-question analysis of every PART A Geography paper, 2017–2026. Recall vs Apply vs Verify strands, 7 chapter playbooks, 62-fact reference, and the trap shapes NDA reuses.",
+      "Rivers to states, peaks to ranges, crops to producer states. Sixty-two such pairings carry most of the marks, and the seven playbooks tell you which of them a given paper is likely to reach for.",
     qCount: 367,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -119,7 +138,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART A History",
     title: "How NDA History actually works",
     blurb:
-      "A 269-question analysis of every PART A History paper, 2017–2026. Cornerstone vs Foundation Recall vs Quick-Win chapter-tier strands, 4 chapter playbooks, ~95-entry timeline + named-pair reference, and the trap shapes NDA reuses.",
+      "Modern India alone is 47% of everything NDA has asked. That single fact sets the structure: one cornerstone chapter, two you learn for recall, one quick win, and a ninety-five-entry timeline underneath all four.",
     qCount: 269,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -134,7 +153,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART A Polity",
     title: "How NDA Polity actually works",
     blurb:
-      "A 99-question analysis of every PART A Polity paper, 2017–2026. Cornerstone vs Foundation Recall vs Specialist Wildcard tier-strands, 4 chapter playbooks, ~80-entry Articles + Amendments + Bodies + Schedules reference, and the trap shapes NDA reuses.",
+      "Small subject, sharply split. Government Structure is 40% of the bank and worth learning properly; World Polity is 42% HARD and worth a decision about whether you attempt it at all. Roughly eighty Articles, Amendments and Bodies sit behind both.",
     qCount: 99,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
@@ -149,7 +168,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA PART A Economics",
     title: "How NDA Economics actually works",
     blurb:
-      "A 25-question analysis of every PART A Economics paper, 2017–2026. The smallest GAT topic — about 1.5 q/paper, ~6 marks max. The honest stance, the Five Year Plans timeline, on a single page.",
+      "Twenty-five questions in ten years, and 42% of them HARD. This is a one-page guide because the honest advice is short: learn the twelve Five Year Plans, target three or four marks, and don't let it eat time from Geography or History.",
     qCount: 25,
     yearWindow: "2017–2026 · 17 papers",
     highlights: [
@@ -164,7 +183,7 @@ const GUIDES: ExamGuide[] = [
     exam: "NDA Current Affairs",
     title: "How NDA Current Affairs actually works",
     blurb:
-      "A 191-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of questions reference events within 12 months of their paper — so this guide teaches the recurring question SHAPES, not the historical facts. Eight anchor themes with prep checklists.",
+      "Ninety per cent of these questions are about something that happened within a year of the paper, which means the facts expire and the shapes don't. So this page teaches the eight themes NDA keeps returning to, with a checklist for each, and sends you elsewhere for this year's facts.",
     qCount: 191,
     yearWindow: "2017–2026 · 19 papers",
     highlights: [
