@@ -22,6 +22,7 @@ export type ExamSlug =
   | "cbse-10"
   | "cbse-11"
   | "cbse-12"
+  | "isc-12"
   | "mh-sb-9"
   | "mh-sb-11"
   | "mh-ssc-10"
@@ -31,7 +32,7 @@ export type ExamSlug =
  * School boards the bank carries content for. NOT every exam has one — a
  * coaching/entrance exam (NDA, NEET, the Foundation Course) has no board.
  */
-export type Board = "Maharashtra State Board" | "CBSE";
+export type Board = "Maharashtra State Board" | "CBSE" | "CISCE";
 
 /** School class. */
 export type Std = 9 | 10 | 11 | 12;
@@ -278,6 +279,40 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // textbook content → keeps the /board reader + "Board" nav tab
     board: "CBSE",
     std: 12,
+  },
+  {
+    slug: "isc-12",
+    displayName: "ISC Class 12",
+    examName: "ISC Class 12", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/isc-12", // exam hub: "coming soon" until notes ship
+    // NOT practiceOnly: Class 12 IS a board year and this corpus is PYQ-only by
+    // construction — CISCE's own past papers (question_kind='pyq'). Unlike
+    // cbse-12, there is no textbook layer here to default to, so the flag would
+    // be wrong in both directions.
+    //
+    // ⚠ NOT boardExam — AND "ISC is a school board, so boardExam: true" IS THE
+    // WRONG INFERENCE. The flag tracks whether an exam has a TEXTBOOK-STRUCTURED
+    // corpus (the `section_kind`/`section_seq` book axis behind the /board
+    // reader), not whether the exam belongs to a board. That distinction is
+    // recorded in the mh-ssc-10 entry above, which flipped to true only when its
+    // Balbharati textbook layer landed — six days AFTER its PYQs did. ISC ships
+    // papers and no textbook, so /board would render an exam with nothing to
+    // read, and board:lint (which iterates BOARD_EXAMS over question_kind=
+    // 'practice' rows) would widen its scope to an exam that owns none.
+    // If an ISC textbook corpus is ever ingested, flip this then, not now.
+    //
+    // mixedFormats is read from the PAPERS, not from the bank: all three PCM
+    // papers carry MCQ (Maths Q1(i)-(xi), Chemistry Q1(B)), fill-in-the-blanks
+    // (Chemistry Q1(A)) and long-form subjective in the same sitting.
+    // RE-MEASURE against the live bank after the first ingest — the cbse-11
+    // entry records what happens when this flag is set from one subject and
+    // then treated as a permanent property of the exam.
+    mixedFormats: true,
+    board: "CISCE",
+    std: 12,
+    // A CISCE family of one degrades to a flat picker entry (groupExamFamilies
+    // rule 2); it becomes a real family automatically when ICSE Class 10 lands.
   },
   {
     slug: "mh-sb-9",

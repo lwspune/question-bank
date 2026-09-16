@@ -13,6 +13,7 @@ import {
   BOARDS,
   stdsForBoard,
   getExamForBoardStd,
+  type Board,
 } from "@/lib/exam/examContext";
 
 describe("isPracticeOnlyExam", () => {
@@ -261,8 +262,30 @@ describe("getActiveTab", () => {
 // ---------------------------------------------------------------------------
 
 describe("BOARDS", () => {
-  it("lists each board once, in registry order", () => {
-    expect(BOARDS).toEqual(["Maharashtra State Board", "CBSE"]);
+  // Asserts the INVARIANT this block is named for, not the current board list.
+  // It previously read `toEqual(["Maharashtra State Board", "CBSE"])`, which
+  // tested neither uniqueness nor ordering and failed on 2026-09-16 purely
+  // because a third board (CISCE, for ISC Class 12) was added — a legitimate
+  // data addition breaking a test of data rather than of behaviour. Order is
+  // re-derived here by FIRST-APPEARANCE INDEX rather than by repeating the
+  // implementation's Set trick, so the two disagree if the impl changes.
+  it("lists each board exactly once", () => {
+    expect(new Set(BOARDS).size).toBe(BOARDS.length);
+  });
+
+  it("covers exactly the boards the registry declares", () => {
+    const declared = new Set(
+      EXAM_REGISTRY.map((e) => e.board).filter((b): b is Board => Boolean(b))
+    );
+    expect(new Set(BOARDS)).toEqual(declared);
+  });
+
+  it("is ordered by each board's first appearance in the registry", () => {
+    const firstIndex = (board: Board) =>
+      EXAM_REGISTRY.findIndex((e) => e.board === board);
+    const positions = BOARDS.map(firstIndex);
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+    expect(positions).not.toContain(-1);
   });
 });
 
