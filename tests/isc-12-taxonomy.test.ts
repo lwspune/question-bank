@@ -156,5 +156,9 @@ describe("registry wiring", () => {
     expect(entry.boardExam).toBeUndefined();
     // PYQ-only corpus, so /browse must default to the PYQ view.
     expect(entry.practiceOnly).toBeUndefined();
+    // And NO mixedFormats until the corpus exists to earn it. The flag
+    // describes the live bank, not the papers — tests/format-mix-registry
+    // measures it against the DB and an empty exam must stay unflagged.
+    expect(entry.mixedFormats).toBeUndefined();
   });
 });
