@@ -11,10 +11,9 @@ export const revalidate = 86400;
 
 const PAGE_TITLE = "Teaching Notes";
 const PAGE_INTRO =
-  "Free per-subtopic teaching notes across every exam we cover — built for digital-board " +
-  "lectures and student self-study side by side. Pick an exam, then a subject, to open " +
-  "concept-by-concept lessons with reference tables, worked examples, featured PYQs, traps, " +
-  "and one-click drills.";
+  "Notes written one subtopic at a time, for teaching off a board and for studying alone. " +
+  "Each page explains the idea, gives you the formula, works through a real past-year " +
+  "question, and names the mistakes that keep costing marks. Pick an exam to start.";
 
 export const metadata: Metadata = {
   title: `${PAGE_TITLE} — Notes for the digital board`,

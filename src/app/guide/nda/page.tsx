@@ -193,7 +193,7 @@ export default function NdaGuideIndex() {
           <GuideHero
             eyebrow="NDA Guides"
             title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs"
-            subtitle="Ten evidence-led guides — one per NDA-eligible subject — built from the live past-year question bank. Pick the subject you're preparing."
+            subtitle="One guide per NDA subject, ten in all, each built from that subject's own past papers rather than from the syllabus. Pick the one you're preparing."
           />
         </div>
 

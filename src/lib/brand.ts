@@ -16,5 +16,19 @@
  * it must never be the public face.
  */
 
-/** The public contact address. Monitored; students reply here. */
-export const CONTACT_EMAIL = "connect.pyqvault@gmail.com";
+/**
+ * The public contact address. Monitored; students reply here.
+ *
+ * ⚠ DEPLOY ORDER MATTERS. This constant is not just a `mailto:` on the Footer —
+ * it is also `REPLY_TO` on every outbound Resend email (`lib/email/templates`)
+ * and the fallback destination for teacher-access lead notifications
+ * (`lib/teacherAccess/service`, unless TEACHER_REQUESTS_NOTIFY_EMAIL is set).
+ * Shipping this value before the mailbox accepts mail silently drops student
+ * replies and inbound leads, with no error anywhere.
+ *
+ * So: confirm forwarding for hello@pyqvault.com is live at GoDaddy and that a
+ * test message arrives, THEN push. Moved off the gmail address 2026-09-16
+ * because a site asking teachers to trust its answer keys should not be
+ * reachable only at a free mailbox.
+ */
+export const CONTACT_EMAIL = "hello@pyqvault.com";
