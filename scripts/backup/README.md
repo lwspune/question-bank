@@ -144,3 +144,8 @@ and is never touched by retention (the pruner ignores names it cannot parse).
   mitigation for uploading them somewhere shared. They contain student mobiles,
   quiz-lead consent records and the full `auth.users` table — so if they ever do
   leave this machine, that decision changes.
+
+
+## Measured cost + the slow-run diagnosis (moved from CLAUDE.md 2026-09-16)
+
+npm run db:backup          # local pg_dump of ALL non-internal schemas (incl. auth) → backups/ (gitignored), **~36 MB / 30-75 s** (the long-standing "~25 MB / ~16 s" was measured at build time and has never matched a real run; derive the truth from a run's stamp vs its dump mtime). If it is running MINUTES rather than seconds the cause is almost never Postgres — check `pg_stat_activity.wait_event`, and `ClientWrite` means the server has the rows ready and is blocked pushing bytes to THIS machine, i.e. the network link (measured 2026-09-02: 8-16 KB/s against a ~900 KB/s norm, with cdnjs and github equally slow, so it was the local connection). Weekly via Task Scheduler, and BY HAND before any bulk-write script — the threat model is our own scripts, not Supabase. Verifies the dump before keeping it (pg_dump exit + size floor + every live table present in the pg_restore TOC) and DELETES a dump that fails, pruning nothing. Keeps the newest 5 runs; never deletes a filename it can't parse. `-- --dry` plans only. Needs PostgreSQL 17+ CLIENT tools + SUPABASE_DB_URL in .env.local. Runbook: scripts/backup/README.md
