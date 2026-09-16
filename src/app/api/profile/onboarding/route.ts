@@ -12,7 +12,8 @@ import { z } from "zod";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { validateOnboardingSubmission, primaryExam } from "@/lib/profile/onboarding";
-import { saveOnboarding } from "@/lib/profile/service";
+import { saveOnboarding, persistAcquisition } from "@/lib/profile/service";
+import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
 
 const BodySchema = z.object({
   targetExams: z.array(z.string()).max(20).optional().default([]),
@@ -40,6 +41,19 @@ export async function POST(request: NextRequest) {
   try {
     const db = createSupabaseServerClient();
     await saveOnboarding(db, user.id, clean);
+
+    // First-touch attribution (0106). The channel was parked in a cookie by the
+    // client island on the visitor's FIRST page load, possibly weeks ago; this
+    // is the earliest point at which a profile row exists to hang it on. The
+    // write is write-once at the query level, and its failure must never cost a
+    // student their onboarding — hence the inner catch.
+    try {
+      const acq = readAcquisitionCookie(request.cookies.get("qb_acq")?.value ?? null);
+      if (acq) await persistAcquisition(db, user.id, acq);
+    } catch (e) {
+      console.error("acquisition persist", e instanceof Error ? e.message : e);
+    }
+
     return NextResponse.json({ ok: true, primaryExam: primaryExam(clean.targetExams) });
   } catch (err) {
     console.error("profile onboarding save error", err);

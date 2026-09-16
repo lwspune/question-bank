@@ -13,11 +13,13 @@
  *     responses, is noise wearing a number's clothes. Below the floor the count
  *     is shown and the RATE is withheld.
  *  3. HONEST LABELS. Step 2 of the funnel is "recorded a signal", NOT
- *     "activated". Most of this product — the 70k-question bank on /browse and
- *     the 317 /questions landing pages — writes NOTHING when a student uses it,
- *     so a student can read for an hour and register as silent. SURFACE_COVERAGE
- *     puts that blind spot on the page instead of in a footnote, because a
- *     number whose denominator is partly invisible must say so where it is read.
+ *     "activated". Even after the 2026-09-16 instrumentation pass, coverage is
+ *     partial by design: bank practice is recorded only for SIGNED-IN students,
+ *     so an anonymous visitor can read for an hour and register as nothing at
+ *     all, and acquisition exists only for accounts created from that date on.
+ *     SURFACE_COVERAGE puts those limits on the page instead of in a footnote,
+ *     because a number whose denominator is partly invisible must say so where
+ *     it is read.
  *
  * Same discipline as lib/dbhealth/delta.ts, which refuses to extrapolate a rate
  * from a window too short to support one.
@@ -110,10 +112,19 @@ export function viewCohorts(rows: readonly CohortRow[]): CohortView[] {
  * once per QUESTION inside a mock, so listing them beside "Timed mocks" would
  * compare a surface to its own internals.
  */
-const TELEMETRY_KINDS: readonly string[] = ["answer_wrong", "answer_correct"];
+const TELEMETRY_KINDS: readonly string[] = [
+  "answer_wrong",
+  "answer_correct",
+  // mock_started is a LIFECYCLE state of the mock feature, not a second feature.
+  // Listing it beside "Timed mocks" would show the same surface twice and make
+  // mocks look twice as adopted; where it earns its keep is the abandonment
+  // figure, which is computed from attempt statuses.
+  "mock_started",
+];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
   mock_submitted: "Timed mocks",
+  question_practiced: "Bank practice",
   note_checkpoint: "Notes checkpoints",
   chapter_mastered: "Notes mastery",
   question_bookmarked: "Saved questions",
@@ -339,6 +350,13 @@ export type SurfaceCoverage = {
   /** Activity kinds this surface emits (validated against ACTIVITY_KINDS in the spec). */
   kinds: ActivityKind[];
   tracked: Tracked;
+  /**
+   * WHAT does the recording — the table or mechanism, named so a reader can go
+   * check. Not every tracked surface writes to user_activity (exports have their
+   * own table, acquisition is a profile column), so `kinds` alone cannot answer
+   * "how do we know this?" and a map that cannot answer it rots silently.
+   */
+  via: string;
   /** What a PMF read cannot see because of this gap. */
   lost: string;
 };
@@ -351,44 +369,59 @@ export type SurfaceCoverage = {
 export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   {
     surface: "Timed mocks (/mock)",
-    kinds: ["mock_submitted", "answer_wrong"],
-    tracked: "partial",
-    lost: "Starting a mock emits nothing — only submitting does, so a student who quits mid-paper looks like they never came.",
-  },
-  {
-    surface: "Notes (/notes)",
-    kinds: ["note_checkpoint", "chapter_mastered"],
-    tracked: "partial",
-    lost: "notes_progress is a STATE row, not an event log: last_viewed_at is overwritten, so reading history is lost — we know THAT a subtopic was read, never when it was read before.",
+    via: "user_activity + mock_attempts",
+    kinds: ["mock_started", "mock_submitted", "answer_wrong"],
+    tracked: "full",
+    lost: "",
   },
   {
     surface: "Saved questions (/saved)",
+    via: "user_activity + question_bookmarks",
     kinds: ["question_bookmarked"],
     tracked: "full",
     lost: "",
   },
   {
-    surface: "Question bank (/browse, /questions)",
+    surface: "Paper download / export",
+    via: "export_events (migration 0104)",
     kinds: [],
-    tracked: "none",
-    lost: "The core asset — 70k questions and 317 landing pages — writes nothing on view, filter or answer-reveal (the reveal meter is localStorage). Usage of the main product is invisible.",
+    tracked: "full",
+    lost: "",
   },
   {
-    surface: "Paper download / export",
-    kinds: [],
-    tracked: "none",
-    lost: "/api/export logs no row, so the teacher-gated payoff — who downloads, how often, whether the gate helps or blocks — cannot be measured at all.",
+    surface: "Question bank (/browse, /questions)",
+    via: "user_activity via the reveal beacon (0105)",
+    kinds: ["question_practiced"],
+    tracked: "partial",
+    lost: "Only a SIGNED-IN student's answer reveals are recorded. Anonymous visitors — most of the traffic, and the whole point of the 317 landing pages — leave nothing, by design: attributing them over time would need a persistent device id, on an audience that is largely under 18.",
+  },
+  {
+    surface: "Board reader (/board)",
+    via: "user_activity via the reveal beacon (0105)",
+    kinds: ["question_practiced"],
+    tracked: "partial",
+    lost: "Answer reveals are recorded (signed-in only); opening or reading a chapter is not.",
+  },
+  {
+    surface: "Notes (/notes)",
+    via: "user_activity + notes_progress",
+    kinds: ["note_checkpoint", "chapter_mastered"],
+    tracked: "partial",
+    lost: "notes_progress is a STATE row, not an event log: last_viewed_at is overwritten, so reading history is lost — we know THAT a subtopic was read, never when it was read before.",
   },
   {
     surface: "Acquisition / signup source",
+    via: "student_profiles.acq_* (migration 0106)",
     kinds: [],
-    tracked: "none",
-    lost: "No referrer, UTM or landing page is captured, so no cohort can be attributed to a channel and the top of the funnel has no denominator.",
+    tracked: "partial",
+    lost: "First-touch channel is captured for signups from 2026-09-16 onward. The 330 existing accounts have NULL and are not backfillable — the information was never collected, so 'unknown' must stay its own bucket and never be folded into 'direct'.",
   },
   {
-    surface: "Guides, board reader, blog",
+    surface: "Guides (/guide), blog (/blog)",
+    via: "nothing",
     kinds: [],
     tracked: "none",
     lost: "Read-only content surfaces emit nothing; their contribution to retention is unmeasurable.",
   },
 ];
+

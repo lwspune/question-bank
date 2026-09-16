@@ -255,10 +255,15 @@ describe("signalFunnel — steps named for what is actually measured", () => {
 });
 
 describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
-  it("marks the question bank as dark, because nothing writes a row when it is used", () => {
+  it("marks the question bank as PARTIAL — signed-in reveals land, anon does not", () => {
+    // Before 2026-09-16 this surface was fully dark. It is now partial, and the
+    // distinction matters: the anon half is excluded by DECISION (a persistent
+    // device id on an under-18 audience), not by oversight.
     const bank = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Question bank"));
     expect(bank).toBeDefined();
-    expect(bank!.tracked).toBe("none");
+    expect(bank!.tracked).toBe("partial");
+    expect(bank!.kinds).toContain("question_practiced");
+    expect(bank!.lost).toMatch(/anon/i);
   });
 
   it("marks notes as STATE-only — it records that you viewed, never when you viewed before", () => {
@@ -267,21 +272,37 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     expect(notes!.lost).toMatch(/histor/i);
   });
 
+  it("says acquisition is not backfillable, so 'unknown' cannot be read as 'direct'", () => {
+    const acq = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Acquisition"));
+    expect(acq!.tracked).toBe("partial");
+    expect(acq!.lost).toMatch(/backfill/i);
+  });
+
   it("every kind named by a surface is a real activity kind, so the map cannot rot", () => {
     for (const s of SURFACE_COVERAGE) {
       for (const k of s.kinds) expect(ACTIVITY_KINDS).toContain(k);
     }
   });
 
-  it("names the dark surfaces that most limit a PMF read", () => {
-    const dark = SURFACE_COVERAGE.filter((s) => s.tracked === "none").map((s) => s.surface);
-    expect(dark.some((s) => s.startsWith("Question bank"))).toBe(true);
-    expect(dark.some((s) => /download|export/i.test(s))).toBe(true);
-    expect(dark.some((s) => /acquisition|signup source/i.test(s))).toBe(true);
+  it("STRUCTURAL: any surface claiming full or partial tracking must say what records it", () => {
+    // A surface cannot claim coverage without either an activity kind or an
+    // explicit note — that combination is how a map silently stops being true.
+    for (const s of SURFACE_COVERAGE) {
+      if (s.tracked === "none") continue;
+      expect(s.via.length, s.surface).toBeGreaterThan(0);
+      expect(s.via, s.surface).not.toBe("nothing");
+    }
   });
 
-  it("covers both tracked and untracked surfaces", () => {
-    expect(SURFACE_COVERAGE.some((s) => s.tracked === "full")).toBe(true);
+  it("STRUCTURAL: every surface that is not fully tracked explains what is lost", () => {
+    for (const s of SURFACE_COVERAGE) {
+      if (s.tracked === "full") continue;
+      expect(s.lost.length, s.surface).toBeGreaterThan(0);
+    }
+  });
+
+  it("still names at least one fully dark surface — coverage is not complete", () => {
     expect(SURFACE_COVERAGE.some((s) => s.tracked === "none")).toBe(true);
+    expect(SURFACE_COVERAGE.some((s) => s.tracked === "full")).toBe(true);
   });
 });

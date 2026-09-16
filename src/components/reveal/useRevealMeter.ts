@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { revealDecision, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
+import { recordPractice } from "./practiceBeacon";
 
 const KEY = "qb_revealed";
 
@@ -49,6 +50,11 @@ export function useRevealMeter() {
         writeIds(decision.nextIds);
         setIds(decision.nextIds);
       }
+      // Persist the reveal as a practice signal (migration 0105). Signed-in only
+      // — recordPractice no-ops for anon. This is the ONLY place the bank tells
+      // the server it was used; everything else about /browse and /questions is
+      // invisible by construction.
+      if (decision.allow) recordPractice(questionId, signedIn);
       return decision.allow;
     },
     [signedIn, loading]

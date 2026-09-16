@@ -18,7 +18,7 @@ import {
 } from "./query";
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
 import { verdictFor, type OptionLabel, type SavedResponse } from "./answers";
-import { logActivityBatch } from "@/lib/activity/service";
+import { logActivity, logActivityBatch } from "@/lib/activity/service";
 import type { ActivityEvent } from "@/lib/activity/events";
 
 export class MockError extends Error {
@@ -84,6 +84,21 @@ export async function startOrResumeAttempt(
     }
     throw new MockError(500, `Could not start attempt: ${error.message}`);
   }
+
+  // Engagement spine (0052 + 0105): record that a paper was OPENED. Reached only
+  // on a genuinely new attempt — every resume path above returns before here, so
+  // a student who reloads mid-paper cannot inflate their own history. Without
+  // this, mock_submitted was the only mock signal and a student who opened a
+  // paper and walked away left no trace at all (33 such students at the time
+  // this shipped), which made the 26% abandonment rate invisible to the spine.
+  // Best-effort — never blocks the start.
+  await logActivity(db, userId, {
+    kind: "mock_started",
+    refId: created.id as string,
+    refKind: "mock_attempt",
+    metadata: { mockId: mock.id, slug },
+  });
+
   return { attemptId: created.id as string, expiresAt: created.expires_at as string, resumed: false };
 }
 

@@ -168,3 +168,34 @@ export async function saveOnboarding(
   );
   if (error) throw new Error(error.message);
 }
+
+/**
+ * Persist first-touch acquisition onto the student's profile (migration 0106).
+ *
+ * WRITE-ONCE, ENFORCED IN THE QUERY: the `.is("acq_source", null)` guard means a
+ * second call can never overwrite a stored first touch, even if a later visit
+ * somehow carried a different cookie. The rule lives here rather than in a
+ * read-then-write, which would race with itself.
+ *
+ * Best-effort by contract — the caller must not fail a student's onboarding
+ * because an attribution write did not land.
+ */
+export async function persistAcquisition(
+  db: SupabaseClient,
+  userId: string,
+  acq: { source: string; medium: string; campaign: string | null; landing: string; referrerHost: string | null }
+): Promise<void> {
+  const { error } = await db
+    .from("student_profiles")
+    .update({
+      acq_source: acq.source,
+      acq_medium: acq.medium,
+      acq_campaign: acq.campaign,
+      acq_landing: acq.landing,
+      acq_referrer_host: acq.referrerHost,
+      acq_captured_at: new Date().toISOString(),
+    })
+    .eq("user_id", userId)
+    .is("acq_source", null);
+  if (error) throw new Error(error.message);
+}
