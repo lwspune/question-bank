@@ -19,6 +19,7 @@ import {
   Search,
   Table2,
   Timer,
+  TrendingUp,
   Upload,
   Users,
   Target,
@@ -333,6 +334,14 @@ function QuickActions({
           icon={<Activity className="h-5 w-5" aria-hidden />}
           title="Usage shape"
           description="How students actually use the app — daily or in bursts — before we build engagement mechanics."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/pmf"
+          icon={<TrendingUp className="h-5 w-5" aria-hidden />}
+          title="Product/market fit"
+          description="Cohort retention, feature adoption and which exam segment is actually sticking — plus what we still cannot see."
         />
       )}
       {isSuperadmin && (

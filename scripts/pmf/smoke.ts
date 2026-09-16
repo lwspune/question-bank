@@ -1,0 +1,168 @@
+/**
+ * Drive /dashboard/pmf's OWN loader + the whole pure core against live data.
+ *
+ *   npm run pmf:smoke
+ *
+ * That page is superadmin-gated and `force-dynamic`, so `next build` never
+ * executes it: a green build proves it COMPILES and nothing more. This runs the
+ * loader the page actually calls, then every derived number, and THROWS on any
+ * internal contradiction — the class of failure that a type-check cannot see
+ * because the numbers are all just integers.
+ *
+ * The assertions below are the point. Each one is an invariant the RPC must
+ * satisfy for the page's rates to mean what their labels say:
+ *   · every subset count is <= its superset
+ *   · the two lift arms must PARTITION the mature pool (used + unused == pool);
+ *     if they ever disagree, a feature's "didn't use it" column is being drawn
+ *     from a different population than its "used it" column
+ *   · attempt statuses must partition the attempts
+ *   · a censored horizon must be reported as null, never as 0%
+ *
+ * It does NOT prove the page lays out. That is owed to a browser.
+ */
+import { join } from "node:path";
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
+
+function assert(cond: boolean, msg: string): void {
+  if (!cond) throw new Error(`INVARIANT VIOLATED — ${msg}`);
+}
+
+async function main() {
+  const { createClient } = await import("@supabase/supabase-js");
+  const { fetchPmfSnapshot } = await import("@/lib/pmf/query");
+  const {
+    viewCohorts,
+    viewFeatures,
+    viewSegments,
+    viewDifficulty,
+    abandonment,
+    viewNps,
+    signalFunnel,
+    SURFACE_COVERAGE,
+  } = await import("@/lib/pmf/snapshot");
+
+  const db = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false } }
+  );
+
+  const snap = await fetchPmfSnapshot(db, 12);
+
+  // ── Funnel ────────────────────────────────────────────────────────────────
+  const f = snap.funnel;
+  console.log(
+    `funnel: ${f.students} students → ${f.signalled} signalled → ${f.returned} returned → ${f.habit} habit`
+  );
+  assert(f.students > 0, "no students came back — the RPC or the grant is wrong");
+  assert(f.signalled <= f.students, "more signalled students than students exist");
+  assert(f.returned <= f.signalled, "a student returned without ever leaving a signal");
+  const steps = signalFunnel(f);
+  assert(steps.length === 4, "the funnel lost a step");
+  assert(
+    !steps[1].label.toLowerCase().includes("activated"),
+    "step 2 is labelled 'activated' — it measures recorded signals, not activation"
+  );
+
+  // ── Mature pool + feature lift arms ───────────────────────────────────────
+  const pool = snap.maturePool;
+  console.log(
+    `mature pool: ${pool.students} signed up 28d+ ago, ${pool.signalled} signalled, ${pool.retained} retained`
+  );
+  assert(pool.signalled <= pool.students, "mature signalled exceeds mature students");
+  assert(pool.retained <= pool.signalled, "retained exceeds the pool it is drawn from");
+
+  for (const row of snap.features) {
+    assert(
+      row.usedEligible + row.unusedEligible === pool.signalled,
+      `feature ${row.kind}: lift arms (${row.usedEligible}+${row.unusedEligible}) do not partition the mature pool (${pool.signalled})`
+    );
+    assert(
+      row.usedRetained + row.unusedRetained === pool.retained,
+      `feature ${row.kind}: retained arms do not partition the pool's retained (${pool.retained})`
+    );
+    assert(row.usedRetained <= row.usedEligible, `feature ${row.kind}: retained exceeds eligible`);
+  }
+
+  const features = viewFeatures(snap.features);
+  console.log(`\nfeatures (${features.length} after dropping per-question telemetry):`);
+  for (const v of features) {
+    const lift = v.liftPp === null ? `(${v.verdict})` : `${v.liftPp > 0 ? "+" : ""}${v.liftPp}pp`;
+    console.log(`  ${v.label.padEnd(20)} ${String(v.users).padStart(4)} students  ${lift}`);
+  }
+  assert(
+    !features.some((v) => v.kind === "answer_wrong" || v.kind === "answer_correct"),
+    "per-question telemetry leaked into the feature table"
+  );
+
+  // ── Cohorts + censoring ───────────────────────────────────────────────────
+  const cohorts = viewCohorts(snap.cohorts);
+  console.log(`\ncohorts: ${cohorts.length}`);
+  let censoredCells = 0;
+  for (const c of cohorts) {
+    assert(c.signalled <= c.signups, `cohort ${c.week}: signalled exceeds signups`);
+    for (const [name, cell] of [["d1", c.d1], ["d7", c.d7], ["d28", c.d28]] as const) {
+      if (cell.censored) {
+        censoredCells += 1;
+        assert(cell.pct === null, `cohort ${c.week} ${name}: censored cell still reported a percent`);
+      } else {
+        assert(cell.value !== null && cell.value <= c.signups, `cohort ${c.week} ${name}: retained exceeds signups`);
+      }
+    }
+    const show = (cell: { pct: number | null }) => (cell.pct === null ? "  — " : `${String(cell.pct).padStart(3)}%`);
+    console.log(
+      `  ${c.week}  n=${String(c.signups).padStart(3)}  signal ${String(c.signalPct).padStart(3)}%  d1 ${show(c.d1)}  d7 ${show(c.d7)}  d28 ${show(c.d28)}`
+    );
+  }
+  console.log(`  censored cells: ${censoredCells} (recent cohorts, correctly blank rather than 0%)`);
+
+  // ── Segments ──────────────────────────────────────────────────────────────
+  const segments = viewSegments(snap.segments);
+  console.log(`\nsegments (declared target exams, overlapping):`);
+  for (const s of segments) {
+    assert(s.signalled <= s.students, `segment ${s.exam}: signalled exceeds students`);
+    const rates = s.thin ? "too few to rate" : `signal ${s.signalPct}% · d28 ${s.d28Pct}%`;
+    console.log(`  ${s.exam.padEnd(20)} ${String(s.students).padStart(4)} students  ${rates}`);
+  }
+
+  // ── Attempts + difficulty + NPS ───────────────────────────────────────────
+  const a = snap.attempts;
+  assert(
+    a.submitted + a.expired + a.stranded + a.live === a.started,
+    `attempt statuses do not partition the attempts (${a.submitted}+${a.expired}+${a.stranded}+${a.live} != ${a.started})`
+  );
+  const ab = abandonment(a);
+  console.log(
+    `\nattempts: ${ab.started} started, ${ab.abandoned} abandoned of ${ab.resolved} resolved = ${ab.pct}%`
+  );
+
+  const d = viewDifficulty({ counts: snap.difficulty, submitted: a.submitted });
+  assert(
+    snap.difficulty.tooEasy + snap.difficulty.justRight + snap.difficulty.tooHard ===
+      snap.difficulty.responses,
+    "difficulty ratings do not sum to the response count"
+  );
+  console.log(
+    `difficulty: ${d.tooEasyPct}% easy / ${d.justRightPct}% right / ${d.tooHardPct}% hard, from ${snap.difficulty.responses} ratings (${d.responseRate}% of submissions)`
+  );
+
+  const nps = viewNps(snap.nps);
+  for (const s of snap.nps.scores) assert(s >= 0 && s <= 10, `NPS score out of range: ${s}`);
+  console.log(
+    `nps: ${nps.rollup.count} responses from ${nps.eligible} eligible (${nps.responseRate}%) — ${nps.reportable ? `score ${nps.rollup.score}` : "below the reporting floor, score withheld"}`
+  );
+
+  // ── Coverage map ──────────────────────────────────────────────────────────
+  const dark = SURFACE_COVERAGE.filter((s) => s.tracked === "none");
+  console.log(`\ncoverage: ${dark.length} of ${SURFACE_COVERAGE.length} surfaces record nothing:`);
+  for (const s of dark) console.log(`  · ${s.surface}`);
+
+  console.log("\nOK — every invariant held.");
+}
+
+main().catch((err) => {
+  console.error(err instanceof Error ? err.message : err);
+  process.exit(1);
+});
