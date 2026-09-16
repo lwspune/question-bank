@@ -319,7 +319,10 @@ export type VisualizationSlug =
   // NDA Geography — Oceanography chapter
   | "ocn-seafloor-profile"
   | "ocn-spring-neap-tides"
-  | "ocn-coral-reef-types";
+  | "ocn-coral-reef-types"
+  // CDS Elementary Mathematics — Number System chapter
+  | "cds-unit-digit-cycle-wheel"
+  | "cds-rational-irrational-line";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
