@@ -57,7 +57,7 @@
     "testdb:migrate": "tsx scripts/testdb/migrate.ts",
     "testdb:seed": "tsx scripts/testdb/seed.ts",
     "testdb:reset": "tsx scripts/testdb/reset.ts",
-    "prepush:quick": "npm run typecheck && npm run lint && npm run notes:lint && npm run notes:latex && npm run test",
+    "prepush:quick": "npm run typecheck && npm run lint && npm run docs:budget && npm run notes:lint && npm run notes:latex && npm run test",
     "prepush": "npm run prepush:quick && npm run build",
     "needs-build": "tsx scripts/needs-build.ts",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
@@ -72,7 +72,8 @@
     "reviews:report": "tsx scripts/reviews/report.ts",
     "reviews:backfill": "tsx scripts/reviews/backfill.ts",
     "reviews:resolve": "tsx scripts/reviews/resolve-report.ts",
-    "reviews:paper": "tsx scripts/reviews/paper.ts"
+    "reviews:paper": "tsx scripts/reviews/paper.ts",
+    "docs:budget": "tsx scripts/docs-budget.ts"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",
