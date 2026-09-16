@@ -302,13 +302,18 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // 'practice' rows) would widen its scope to an exam that owns none.
     // If an ISC textbook corpus is ever ingested, flip this then, not now.
     //
-    // mixedFormats is read from the PAPERS, not from the bank: all three PCM
-    // papers carry MCQ (Maths Q1(i)-(xi), Chemistry Q1(B)), fill-in-the-blanks
-    // (Chemistry Q1(A)) and long-form subjective in the same sitting.
-    // RE-MEASURE against the live bank after the first ingest — the cbse-11
-    // entry records what happens when this flag is set from one subject and
+    // ⚠ NO mixedFormats YET, and that is a correctness requirement rather than
+    // caution. `tests/format-mix-registry` measures this flag against the LIVE
+    // BANK in both directions, and its rule for an exam with no PUBLIC rows is
+    // "absent-and-unflagged is the correct state" — a flag an exam cannot yet
+    // earn. It was briefly set here from the PAPERS (all three PCM papers do
+    // carry MCQ, fill-in-the-blanks and long-form subjective in one sitting)
+    // and that failed the contract suite, which is right: the flag describes
+    // the corpus, and the corpus is empty.
+    //
+    // SET IT AT THE FIRST INGEST, from a live count, not from the papers — the
+    // cbse-11 entry records what happens when it is set from one subject and
     // then treated as a permanent property of the exam.
-    mixedFormats: true,
     board: "CISCE",
     std: 12,
     // A CISCE family of one degrades to a flat picker entry (groupExamFamilies
