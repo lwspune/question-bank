@@ -110,13 +110,20 @@ export default function UserMenu({
               Books
             </Link>
           )}
-          {/* Not role-gated — public surface, unlike the two above. */}
+          {/* Not role-gated — public surfaces, unlike the two above. */}
           <Link
             href="/blog"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
           >
             <PenLine className="h-4 w-4" aria-hidden />
             Blog
+          </Link>
+          <Link
+            href="/about"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+          >
+            <User className="h-4 w-4" aria-hidden />
+            About
           </Link>
           {role === null && (
             <Link

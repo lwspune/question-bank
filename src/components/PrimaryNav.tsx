@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, PenLine, Timer } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, PenLine, Timer, User } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
@@ -56,6 +56,11 @@ export default function PrimaryNav({
     // (lib/nav/mobileTabs.ts), so below sm it appears in the account menu, the
     // same place Papers and Books go.
     { id: "blog", label: "Blog", href: "/blog", Icon: PenLine },
+    // About — public, and last of the public tabs because it is an identity
+    // page, not a place you go to study. Same phone story as Blog: no tab in
+    // the fixed-five MobileTabBar, so below sm it lives in the account menu
+    // and, for anon visitors, the Footer.
+    { id: "about", label: "About", href: "/about", Icon: User },
     ...(showBooks
       ? [
           {
