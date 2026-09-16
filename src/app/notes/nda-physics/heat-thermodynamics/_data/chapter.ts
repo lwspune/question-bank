@@ -12,6 +12,10 @@ export const HEAT_THERMODYNAMICS_CHAPTER: ChapterNote = {
     "(4) Thermodynamic processes — the gas laws, the first law (ΔU = Q − W), isothermal / adiabatic / isochoric / isobaric processes, and the second law. " +
     "The single biggest marks pool is calorimetry: master 'heat lost = heat gained' with the specific-heat and latent-heat terms and you own the chapter's hardest numerics. " +
     "Drill the formula, drill the table, walk out with the marks.",
+  // The first sentence of `intro` runs 41w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Formula-rich and steady, and the HARD questions are nearly always calorimetry or gas-process algebra — grindable, as long as you keep your units straight.",
   subtopicOrder: [
     "ht-temperature-and-thermometry",
     "ht-heat-calorimetry-specific-heat",

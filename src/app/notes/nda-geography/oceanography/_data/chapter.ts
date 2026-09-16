@@ -12,6 +12,10 @@ export const OCEANOGRAPHY_CHAPTER: ChapterNote = {
     "(3) Ocean currents — why surface water flows in great loops, and the warm/cold named-current lists the NDA tests relentlessly; " +
     "(4) Marine ecosystems — coral reefs, reef bleaching, and the ocean's named features. " +
     "11 concepts, every PYQ tagged. The current lists carry the bulk of the questions; the tide and sea-floor mechanisms carry the HARD ones.",
+  // The first sentence of `intro` runs 51w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Splits cleanly in two: trace a mechanism, like why two tides arrive 12 h 26 min apart, or recall a list, like which named currents run cold.",
   subtopicOrder: [
     "ocn-waves-seafloor",
     "ocn-tides-movements",

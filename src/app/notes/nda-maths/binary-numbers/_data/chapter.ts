@@ -16,6 +16,10 @@ export const BINARY_NUMBERS_CHAPTER: ChapterNote = {
     "perfect-square recall items the chapter files here. " +
     "Convert-first is the chapter's centre of gravity: master decimal ↔ binary, and the rest is arithmetic you already know. " +
     "Every PYQ is tagged.",
+  // The first sentence of `intro` runs 41w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Small but reliable, and nearly every question rewards the same first move: convert to decimal, do the easy arithmetic there, and convert back if the answer asks for it.",
   subtopicOrder: [
     "bin-to-decimal-conversion",
     "bin-arithmetic",

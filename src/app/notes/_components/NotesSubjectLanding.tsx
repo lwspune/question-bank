@@ -8,6 +8,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
+import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 
 /**
  * Subject-level notes index (e.g. /notes/nda-biology) — lists every shipped
@@ -64,7 +65,11 @@ export default async function NotesSubjectLanding({
     slug: c.chapterSlug,
     chapterName: c.chapter.chapterName,
     title: c.chapter.title,
-    intro: c.chapter.intro,
+    // The short blurb, NOT the full intro: 30 cards x ~171 words rendered
+    // ~5,100 words of prose on /notes/nda-maths alone, and 18 of 84 intros say
+    // "below" — true in the chapter hero, false here, where what sits below is
+    // the next chapter's card.
+    blurb: chapterCardBlurb(c.chapter),
     subtopicCount: Object.keys(c.notes).length,
   }));
 
@@ -128,7 +133,7 @@ export default async function NotesSubjectLanding({
                     </span>
                   </div>
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-                    {c.intro}
+                    {c.blurb}
                   </p>
                   <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 group-hover:opacity-100">
                     Open chapter notes

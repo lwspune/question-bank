@@ -9,7 +9,8 @@
  * The guide tables are gated by their own integrity tests; the intros were not.
  *
  * CONTRACT (deliberately narrow so it cannot be brittle):
- *   1. Every "<N> PYQs/questions" claim in a noted NDA chapter intro must equal
+ *   1. Every "<N> PYQs/questions" claim in a noted NDA chapter intro OR its
+ *      optional `cardBlurb` must equal
  *      EITHER that chapter's live PUBLIC pyq count OR one of its subtopics'
  *      live counts. Intros legitimately cite both — Indefinite Integration
  *      quotes its chapter total AND "Integration by Substitution (18 PYQs)" —
@@ -39,6 +40,16 @@ const HAS_ENV =
 const CLAIM = /(\d{2,4})[\s-]+(?:past-year[\s-]+)?(?:PYQs?|questions)/gi;
 /** "2017–2026", "2017-2026" (en dash, em dash or hyphen) */
 const RANGE = /(\d{4})\s*[–—-]\s*(\d{4})/g;
+
+/**
+ * Both rules scan the intro AND the optional `cardBlurb` together. The blurb is
+ * the line that actually reaches the subject-landing card, <meta description>
+ * and JSON-LD, so a count stated there is MORE exposed than one in the intro,
+ * not less. (The 76 chapters with no authored blurb derive theirs from the
+ * intro's first sentence, which this already covers.)
+ */
+const claimText = (c: any) =>
+  [c.chapter.intro, c.chapter.cardBlurb].filter(Boolean).join(" ");
 
 type Live = {
   chapter: Map<string, number>;
@@ -101,11 +112,11 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
       const total = live.chapter.get(k);
       if (total === undefined) continue; // chapter resolution is another test's job
       const subs = live.subtopic.get(k) ?? new Set<number>();
-      for (const m of (c.chapter.intro ?? "").matchAll(CLAIM)) {
+      for (const m of claimText(c).matchAll(CLAIM)) {
         const n = Number(m[1]);
         if (n === total || subs.has(n)) continue;
         bad.push(
-          `${c.subjectRoute}/${c.chapterSlug}: intro claims ${n}, live chapter ${total}` +
+          `${c.subjectRoute}/${c.chapterSlug}: intro/cardBlurb claims ${n}, live chapter ${total}` +
             ` (subtopic counts: ${[...subs].sort((a, b) => b - a).join(", ")})`,
         );
       }
@@ -120,10 +131,10 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
       const k = key(c.subjectName, c.chapter.chapterName);
       const newest = live.maxYear.get(k);
       if (newest === undefined) continue;
-      for (const m of (c.chapter.intro ?? "").matchAll(RANGE)) {
+      for (const m of claimText(c).matchAll(RANGE)) {
         const end = Number(m[2]);
         if (end >= newest) continue;
-        bad.push(`${c.subjectRoute}/${c.chapterSlug}: intro says ${m[1]}–${end}, newest live PYQ ${newest}`);
+        bad.push(`${c.subjectRoute}/${c.chapterSlug}: intro/cardBlurb says ${m[1]}–${end}, newest live PYQ ${newest}`);
       }
     }
     expect(bad).toEqual([]);

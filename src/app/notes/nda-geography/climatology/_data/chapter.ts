@@ -13,6 +13,10 @@ export const CLIMATOLOGY_CHAPTER: ChapterNote = {
     "(5) Cyclones, fronts and local winds — tropical vs temperate cyclones, warm/cold fronts, and the named local winds; " +
     "(6) Climate classification and zones — Koppen's letter codes and the world's climatic regions. " +
     "Around 25 concepts, every PYQ tagged. The mechanism concepts (Coriolis, fronts, lapse rate, cyclogenesis) carry most of the HARD marks; the named-fact tables (layers, local winds, Koppen codes, cloud types) are pure recall you must drill to reflex.",
+  // The first sentence of `intro` runs 42w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "The paper wants two different things here: trace a process, like why the Coriolis force vanishes at the equator, then recall a named fact, like which local wind is the Mistral.",
   subtopicOrder: [
     "clim-layers",
     "clim-insolation",

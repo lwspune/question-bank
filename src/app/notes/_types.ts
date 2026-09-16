@@ -481,7 +481,29 @@ export type SubtopicNote = {
 export type ChapterNote = {
   chapterName: string;
   title: string;
+  /**
+   * The chapter-page hero opener. Long by design (mean 171 words across the
+   * shipped chapters) — it is read by someone who has already chosen this
+   * chapter, and it may safely say "below" about the notes beneath it.
+   *
+   * It is NOT what the subject-landing card, the <meta description> or the
+   * JSON-LD description render: those go through `chapterCardBlurb`, which
+   * takes `cardBlurb` if set and otherwise the first sentence of this. So a
+   * deictic reference here is fine; in `cardBlurb` it would be false.
+   */
   intro: string;
+  /**
+   * OPTIONAL override for the card / meta description. Set it only when the
+   * first sentence of `intro` is not card-sized — the 8-40 word band in
+   * tests/notes-card-blurb.test.ts is the gate, and it tells you. 8 of the
+   * first 84 chapters needed one.
+   *
+   * PLAIN TEXT, like `title` and `intro`: it feeds `<meta description>` and
+   * JSON-LD, so no LaTeX and no Markdown (see the notes:latex audit). Do not
+   * state a bank count here — the card already renders a LIVE count chip
+   * beside it, so a hardcoded number can visibly contradict it.
+   */
+  cardBlurb?: string;
   /** Ordered subtopic slugs for the chapter landing + side nav + prev/next. */
   subtopicOrder: string[];
 };
