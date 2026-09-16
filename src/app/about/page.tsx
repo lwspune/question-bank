@@ -8,13 +8,15 @@
  * shorthand for "I can't find anyone behind this", and anonymity is the part
  * of that no amount of copy-editing fixes.
  *
- * The "How the bank is built" section is the load-bearing one: the
- * verification story is both true and unfakeable, and it is the strongest
- * evidence the site has that a person did this work. Every figure in it is
- * asserted in CLAUDE.md and the Decisions log. If those numbers move, move
- * them here — they are deliberately conservative, stated as floors.
+ * A "How the bank is built" section (the blind-re-derivation story, with the
+ * NDA II 2026 117/120 figure and the ~235 corrected keys) shipped here on
+ * 2026-09-16 and was REMOVED the same day at the owner's request. It is not
+ * missing by oversight — do not restore it as a fix. If that story is wanted
+ * again, it belongs on a page of its own rather than in the middle of a
+ * who-am-I page; the figures are in CLAUDE.md and the Decisions log.
  */
 import type { Metadata } from "next";
+import { Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
@@ -26,8 +28,8 @@ export const revalidate = 86400;
 const PAGE_TITLE = "About PYQ Vault";
 const PAGE_DESCRIPTION =
   "PYQ Vault is a free past-year question bank for Indian entrance and board exams, " +
-  "built and maintained by Vilas Shinde in Pune. Every answer in the bank is worked " +
-  "out independently before a printed key is trusted.";
+  "built and maintained by Vilas Shinde in Pune. What the site costs to use, how to " +
+  "report a wrong answer, and how to get in touch.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -35,6 +37,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   openGraph: { title: PAGE_TITLE, description: PAGE_DESCRIPTION, type: "website" },
 };
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/vilas-shinde-26b98474/";
+const INSTAGRAM_URL = "https://www.instagram.com/vilasvshinde/";
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
@@ -86,38 +91,6 @@ export default function AboutPage() {
           are still here, timed and auto-graded, for when you want them.
         </P>
 
-        <H2>How the bank is built</H2>
-        <P>
-          Papers are collected, transcribed question by question, and then —
-          this is the part that takes the time — every answer is worked out
-          again from scratch, before anyone looks at the printed key. Only then
-          are the two compared. Where they disagree, the original booklet
-          settles it.
-        </P>
-        <P>
-          That sounds like excessive caution until you do it. Circulating answer
-          keys for Indian entrance exams are wrong more often than most teachers
-          expect, and a bank that copies them inherits every error. Working NDA
-          II 2026 Mathematics this way, all 120 questions were solved before any
-          key was available; 117 agreed with an independently produced key, and
-          all three disagreements resolved against the key, not against us.
-          Across the bank, roughly 235 wrong answer keys have been found and
-          corrected this way.
-        </P>
-        <P>
-          Textbooks get the same treatment. Checking the Balbharati Class 12
-          Mathematics chapters against the book&rsquo;s own answers section
-          turned up 151 corrections across 12 chapters, and the printed key was
-          wrong about four times as often as our working was. Where the book is
-          the one at fault we say so on the question rather than quietly
-          changing it, because a student sitting with the book open needs to
-          know which of you to believe.
-        </P>
-        <P>
-          Nothing here is scraped. If a question is in the bank, someone read
-          it, classified it and solved it.
-        </P>
-
         <H2>What is free, and what needs an account</H2>
         <P>
           Reading is free and needs no account at all: the whole question bank,
@@ -142,9 +115,8 @@ export default function AboutPage() {
         <H2>Corrections</H2>
         <P>
           If you find a wrong answer, a mangled question or a bad explanation,
-          please tell me. A correction from someone holding the actual paper is
-          worth more than any check we can run here, and it is how a good part
-          of the list above got found in the first place.
+          please tell me. A correction from someone holding the actual paper
+          is worth more than any check we can run from here.
         </P>
         <P>
           Every page in the question bank and the notes also has a report
@@ -174,6 +146,27 @@ export default function AboutPage() {
               className="text-brand-accent underline"
             >
               {CONTACT_EMAIL}
+            </a>
+          </p>
+          <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-serif text-muted-foreground">
+            <span>Follow me:</span>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-brand-accent underline"
+            >
+              <Linkedin aria-hidden className="h-3.5 w-3.5" />
+              LinkedIn
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-brand-accent underline"
+            >
+              <Instagram aria-hidden className="h-3.5 w-3.5" />
+              Instagram
             </a>
           </p>
         </div>
