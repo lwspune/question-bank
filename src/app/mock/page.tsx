@@ -16,9 +16,9 @@ export const revalidate = 3600;
 const EXAMS = mockExamNames();
 
 const PAGE_INTRO =
-  "Full-length papers, timed and auto-graded — real past papers served whole, plus practice " +
-  "papers built to the same blueprint. Official marking, a live timer, instant scoring. Pick " +
-  "your exam, then a paper, and sit it like the real thing.";
+  "Real past papers, served whole and timed the way they were sat. We use the official " +
+  "marking scheme, so the score you get is the score you would have got. Pick an exam to " +
+  "see what's available.";
 
 export const metadata: Metadata = {
   title: `${EXAMS} Mock Tests — past papers & practice, timed & auto-graded`,

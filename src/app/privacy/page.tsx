@@ -19,7 +19,8 @@ export default function PrivacyPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Privacy Policy</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            PYQ Vault is run by our team. This policy explains what we collect and why.
+            PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect
+            and why.
           </p>
         </header>
 

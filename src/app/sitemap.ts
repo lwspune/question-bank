@@ -525,6 +525,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      // Named-author / provenance page. Indexed deliberately: it is the page
+      // that answers "who is behind this", for readers and for E-E-A-T alike.
+      url: `${SITE_URL}/about`,
+      lastModified: buildDate,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,
       changeFrequency: "yearly",

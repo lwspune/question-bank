@@ -45,7 +45,10 @@ const GUIDES: ExamGuide[] = [
     exam: "MHT-CET Mathematics",
     title: "How MHT-CET Maths actually works",
     blurb:
-      "A 2,228-question analysis of every Mathematics shift from 2021 to 2025. Six chapters carry 47% of the paper, there is no negative marking, and you get 1.8 minutes per question — so the whole game is order and time, not selection.",
+      // Deliberately NOT phrased like the /guide picker's MHT-CET card: a
+      // reader arrives here straight from that card, and two near-identical
+      // sentences one click apart is exactly what reads as machine-written.
+      "Every Mathematics shift from 2021 to 2025, all 2,228 questions. The short version: nothing is deducted for a wrong answer and you have 1.8 minutes a question, so the order you attempt in matters more than what you leave out.",
     qCount: 2228,
     yearWindow: "2021-2025 · 45 shifts",
     highlights: [

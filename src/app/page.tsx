@@ -22,6 +22,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal } from "@/lib/exam/examFamily";
 
@@ -114,33 +115,40 @@ type SurfacePreview = {
   Icon: typeof BookOpen;
 };
 
+// These four render side by side in one grid, so a reader takes them in at a
+// glance. They are therefore written in four DELIBERATELY DIFFERENT shapes — a
+// declarative pair, a question, a colon-list, a short pair. The previous set
+// were all "noun phrase — tricolon of features", and four copies of one rhythm
+// in one eyeful is what reads as machine-written. Keep them structurally
+// unlike each other when editing.
 const SURFACES: SurfacePreview[] = [
   {
     href: "/browse",
     title: "Question bank",
     blurb:
-      "Filter by exam, chapter, subtopic, difficulty and PYQ year — then download a Question Paper + Answer Key as Word files.",
+      "Filter by exam, chapter, subtopic, difficulty and year. Teachers can export the result as a Word question paper with a separate answer key.",
     Icon: Compass,
   },
   {
     href: "/guide/nda",
     title: "Strategy guides",
     blurb:
-      "Evidence-led, per-subject guides built from the live bank — chapter strategy, playbooks, year-on-year drift and the traps that recur.",
+      "Which chapters actually carry the marks? Every weightage and difficulty figure in these guides was counted off the papers themselves, not taken from a syllabus.",
     Icon: BookOpen,
   },
   {
     href: "/notes",
     title: "Teaching notes",
+    // Chapter count is read from the registry, never typed.
     blurb:
-      "Concept-by-concept notes with intuition, formula, a worked PYQ and a one-click drill of every past-year question on that subtopic.",
+      `One page per subtopic: the idea in plain language, the formula, a solved past-year question, and the traps that catch people. ${NOTES_CHAPTERS.length} chapters so far.`,
     Icon: NotebookPen,
   },
   {
     href: "/board",
     title: "Board textbook reader",
     blurb:
-      "State Board textbooks read exercise-by-exercise in physical book order — solved examples, exercises and miscellaneous, with worked answers.",
+      "Balbharati and NCERT textbooks, read in book order. Solved examples, then the exercise, then miscellaneous, with worked answers throughout.",
     Icon: Library,
   },
 ];
@@ -172,10 +180,15 @@ export default async function Home() {
           description={PAGE_DESCRIPTION}
         />
 
+        {/*
+          Both figures are read from the catalog this page already fetches, so
+          the headline claim cannot drift from the bank the way a hand-typed
+          count does (see the /guide picker's old "8,259 questions" line).
+        */}
         <GuideHero
           eyebrow="PYQ Vault"
-          title="Everything you need to crack the exam — on real past-year questions."
-          subtitle="Browse the past-year question bank, take timed mock tests, and learn every concept with strategy guides and notes — across NDA, JEE Mains, NEET, MHT-CET, CDS and Boards. Free to browse, no sign-up."
+          title="Every past paper, sorted question by question."
+          subtitle={`${catalog.totalPublicQuestions.toLocaleString("en-IN")} questions from ${catalog.exams.length} exams. Every one is tagged by chapter, subtopic and difficulty, so you can drill the thing you keep getting wrong instead of sitting another whole paper. Browsing is free and needs no account.`}
         />
 
         {/* Live total + primary CTA */}
@@ -352,12 +365,12 @@ export default async function Home() {
         {/* Closing banner */}
         <section className="rounded-xl border border-dashed bg-muted/30 p-5 sm:p-6">
           <h2 className="text-base font-semibold tracking-tight">
-            Build a paper in two clicks
+            For teachers: build a paper in two clicks
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
-            Filter the bank by exam, chapter, difficulty and PYQ year, and
-            preview every question free. Teachers can download the Question Paper
-            + Answer Key as Word files.
+            Pick the chapters and difficulty you want. Check every question on
+            screen, then download two Word files, ready to print: the question
+            paper and a separate answer key.
           </p>
           <Link
             href="/browse"

@@ -16,9 +16,17 @@ export default function Footer() {
           while the Word download is the TEACHER-gated capability. Phrasing
           matches the /browse hero's stat band rather than coining a new one.
         */}
+        {/*
+          Names a person on every page. This line read "From the team at PYQ
+          Vault" until 2026-09-16, which is what a site with no team says — and
+          nothing else on the public site named a human at all. See /about.
+        */}
         <p>
-          From the team at <span className="font-medium">PYQ Vault</span> — free
-          to browse, forever.
+          <span className="font-medium">PYQ Vault</span> — built in Pune by{" "}
+          <Link href="/about" className="underline hover:text-foreground">
+            Vilas Shinde
+          </Link>
+          . Free to browse, forever.
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <Link

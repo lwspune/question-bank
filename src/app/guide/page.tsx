@@ -5,14 +5,15 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getGuideExamGroups, buildGuideSideNav } from "@/lib/guide/guidesNav";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 
 export const revalidate = 86400;
 
 const PAGE_TITLE = "Strategy Guides";
 const PAGE_INTRO =
-  "Evidence-led exam strategy guides. Every weightage, difficulty split and trend on these " +
-  "pages is measured against the live past-year question bank rather than a syllabus " +
-  "summary. Pick your exam, then a subject.";
+  "Every weightage, difficulty split and trend on these pages was counted off the papers " +
+  "themselves. Nothing here is copied from a syllabus. Pick your exam, then a subject.";
 
 export const metadata: Metadata = {
   title: `${PAGE_TITLE} — NDA and MHT-CET, built from the past-year bank`,
@@ -36,6 +37,18 @@ export const metadata: Metadata = {
 type GuideCopy = {
   title: string;
   blurb: string;
+  /**
+   * Static half of the meta line. The NDA card's QUESTION COUNT is NOT here —
+   * it is read live in the component below, because the hand-typed figure that
+   * used to sit in this slot ("8,259 questions · 2017-2026") had rotted to 70%
+   * understated and was mis-scoped besides: 8,259 counted PYQ **plus practice**
+   * rows under a PYQ year range. The live figure is PYQ-only, which is the
+   * corpus these guides are actually measured against.
+   *
+   * MHT-CET's count stays hand-written because it is SUBJECT-scoped (this card
+   * is the Maths guide alone, 2,228 of the exam's 7,000-odd PYQs) and there is
+   * no subject-aware helper yet. Verified against the bank 2026-09-16.
+   */
   meta: string;
   icon: typeof BookOpen;
 };
@@ -44,21 +57,27 @@ const COPY: Record<string, GuideCopy> = {
   nda: {
     title: "NDA — ten subject guides",
     blurb:
-      "Mathematics, English (GAT), Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs. Principles, per-chapter playbooks, year-on-year drift and the distractor traps NDA reuses.",
-    meta: "8,259 questions · 2017-2026",
+      "All ten GAT and Paper I subjects. For each one: what the chapter is worth, how to work it, how it has shifted since 2017, and the distractors NDA keeps reusing.",
+    meta: "2017-2026",
     icon: Shield,
   },
   "mht-cet": {
     title: "MHT-CET — Mathematics",
     blurb:
-      "Six chapters carry 47% of the Maths paper, there is no negative marking, and you get 1.8 minutes per question — so the guide is built around order and time rather than what to skip.",
+      "Six chapters carry 47% of the Maths paper. There is no negative marking and you get 1.8 minutes per question, so this guide is built around order and time rather than what to skip.",
     meta: "2,228 questions · 45 shifts · 2021-2025",
     icon: Sigma,
   },
 };
 
-export default function GuideIndex() {
+export default async function GuideIndex() {
   const exams = getGuideExamGroups();
+  // PYQ-only count for the NDA card's meta line. See the note on GuideCopy.meta
+  // for why this is read rather than typed. A failure here must not take the
+  // picker down, so a zero simply drops the count and leaves the year range.
+  const ndaPyqCount = await getExamHomeStats(createSupabaseAnonClient(), "NDA")
+    .then((s) => s.totalPublicQuestions)
+    .catch(() => 0);
 
   return (
     <GuideShell
@@ -75,7 +94,7 @@ export default function GuideIndex() {
 
       <GuideHero
         eyebrow="Strategy guides"
-        title="Guides built from real past papers, not a syllabus summary"
+        title="Strategy guides, built by counting the papers"
         subtitle={PAGE_INTRO}
       />
 
@@ -110,7 +129,9 @@ export default function GuideIndex() {
 
                 {copy?.meta ? (
                   <p className="mt-4 text-xs font-medium text-muted-foreground">
-                    {copy.meta}
+                    {exam.slug === "nda" && ndaPyqCount > 0
+                      ? `${ndaPyqCount.toLocaleString("en-IN")} questions · ${copy.meta}`
+                      : copy.meta}
                   </p>
                 ) : null}
 

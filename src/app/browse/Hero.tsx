@@ -20,9 +20,9 @@ export default function Hero({
         className="mt-2 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:mt-3 sm:text-base"
         style={{ animationDelay: "80ms" }}
       >
-        Filter thousands of real PYQs by exam, chapter, difficulty and year.
-        Preview free, reveal answers, save what matters — or download a full
-        paper + answer key.
+        Filter by exam, chapter, difficulty and year. Reveal answers as you go,
+        and bookmark anything worth coming back to. Teachers can export the
+        whole set as a printable paper with a separate answer key.
       </p>
 
       {/* Stat band — gives the hero weight + the brand accent its first
