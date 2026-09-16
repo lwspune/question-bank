@@ -12,6 +12,10 @@ export const ATOMIC_STRUCTURE_CHAPTER: ChapterNote = {
     "(4) Electron configuration and valence shells — the 2n² shell-filling rule and how the valence count decides bonding; " +
     "(5) Periodic trends, valency and atomicity — group valencies, atomicity of the elements, halogen reactivity, noble gases, and the most-fundamental property of an element. " +
     "Most concepts are reference tables: memorise the table, win the marks. The few calculation concepts (average atomic mass, abundance, electron counting) carry worked examples.",
+  // The first sentence of `intro` runs 42w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Mostly EASY and MODERATE, and split between pure recall — who discovered the neutron, how many electrons a shell holds — and short calculations like average atomic mass.",
   subtopicOrder: [
     "atom-models",
     "atom-particles",

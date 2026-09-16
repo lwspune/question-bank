@@ -91,6 +91,13 @@ for (const chapter of NOTES_CHAPTERS) {
     `${chapter.subjectRoute}/${chapter.chapterSlug} > chapter.intro`,
     chapter.chapter.intro
   );
+  // `cardBlurb` is the same class: it renders on the subject-landing card and
+  // feeds <meta description> + JSON-LD, none of which interpret Markdown.
+  if (chapter.chapter.cardBlurb)
+    checkPlain(
+      `${chapter.subjectRoute}/${chapter.chapterSlug} > chapter.cardBlurb`,
+      chapter.chapter.cardBlurb
+    );
 
   for (const [slug, note] of Object.entries(chapter.notes)) {
     const base = `${chapter.subjectRoute}/${chapter.chapterSlug}/${slug}`;

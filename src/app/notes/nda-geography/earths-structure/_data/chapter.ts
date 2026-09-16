@@ -15,6 +15,10 @@ export const EARTHS_STRUCTURE_CHAPTER: ChapterNote = {
     "(6) Landforms and mass movements — the surface features rivers, glaciers, wind, the sea and gravity carve and build; " +
     "(7) Soils — the thin living skin that weathering and climate produce on top. " +
     "30 concepts, every PYQ tagged. The endogenic half (1–3) carries the HARD questions; the exogenic half (4–7) is recall-friendly named-fact territory.",
+  // The first sentence of `intro` runs 41w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Where do mountains come from? Why is the outer core liquid? Nearly every question here wants the mechanism rather than a memorised list.",
   subtopicOrder: [
     "esl-interior-plate-tectonics",
     "esl-earthquakes-seismic",

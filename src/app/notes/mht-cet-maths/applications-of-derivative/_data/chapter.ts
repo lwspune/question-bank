@@ -17,6 +17,10 @@ export const APPLICATIONS_OF_DERIVATIVE_CHAPTER: ChapterNote = {
     "(6) Maxima, Minima & Optimisation — the first- and second-derivative tests, the extreme-value-at-a-given-point family, constrained-set extrema, and the classic optimisation word problems (tank, poster, wire-cut, number-splitting, AM-GM); " +
     "(7) Rolle's Theorem & the Mean Value Theorem — the two existence theorems, finding c, and solving for parameters from the hypotheses. " +
     "Every PYQ is tagged — learn the pattern, drill the bank, recover the marks.",
+  // The first sentence of `intro` runs 43w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Where the derivative stops being an abstract limit and starts doing work: finding slopes, estimating values, tracking rates of change, and locating the best answer available.",
   subtopicOrder: [
     "tangents-normals",
     "angle-between-curves",

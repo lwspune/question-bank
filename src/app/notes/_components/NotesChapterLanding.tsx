@@ -15,6 +15,7 @@ import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
 import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
 import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
+import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import NotesHandoutLink from "./NotesHandoutLink";
@@ -33,7 +34,10 @@ const routeBase = (c: NotesChapterRegistration) =>
 export function buildChapterMetadata(c: NotesChapterRegistration): Metadata {
   return {
     title: `${c.subjectDisplay} ${c.chapter.chapterName} — Notes for the digital board`,
-    description: c.chapter.intro,
+    // The SHORT line, not `intro`. The full intro averages 171 words (~1,100
+    // chars) against Google's ~155-char truncation, so it shipped cut mid-word
+    // on all 84 chapter pages.
+    description: chapterCardBlurb(c.chapter),
     alternates: { canonical: routeBase(c) },
   };
 }
@@ -144,9 +148,12 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         type="CollectionPage"
         path={base}
         headline={meta.title}
-        description={meta.intro}
+        description={chapterCardBlurb(chapter.chapter)}
       />
 
+      {/* The hero is the ONE surface written for the full intro — it is read by
+          someone who has already opened this chapter, and it may say "below"
+          about the notes beneath it. Card + metadata take the short blurb. */}
       <GuideHero
         eyebrow={`${chapter.subjectDisplay} · Teaching notes`}
         title={meta.title}

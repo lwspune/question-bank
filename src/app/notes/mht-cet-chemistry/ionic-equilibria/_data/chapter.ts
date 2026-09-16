@@ -13,6 +13,10 @@ export const IONIC_EQUILIBRIA_CHAPTER: ChapterNote = {
     "(5) buffer solutions and the Henderson-Hasselbalch equation; " +
     "(6) the solubility product Ksp — solubility, the common-ion effect and precipitation. " +
     "Formula concepts carry the computational core; the salt-type and Ksp-stoichiometry tables carry the recall. Every PYQ tagged.",
+  // The first sentence of `intro` runs 41w, past the 40-word card band,
+  // so the card / <meta description> line is authored instead.
+  cardBlurb:
+    "Almost all of this chapter is calculation, and four constants carry it — Ka, Kb, Kw and Ksp. Get those and you can predict the rest, down to whether a salt dissolves acidic.",
   subtopicOrder: [
     "cetie-acid-base-theories",
     "cetie-ka-kb-dissociation",
