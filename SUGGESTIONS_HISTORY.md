@@ -1,0 +1,2017 @@
+# Suggestions — archived review batches
+
+_Split out of SUGGESTIONS.md on 2026-09-16. That file was 552 KB; a single read of it cost more than a 200 KB context window could hold, so any question about one review batch dragged in every other one._
+
+**What is here:** dated review batches from **2026-05 through 2026-08** — the findings each review produced, in reverse-chronological order, exactly as written.
+
+**What is NOT here:** the **Backfill ledger** stays in [SUGGESTIONS.md](SUGGESTIONS.md) and is still the living queue. It is referenced by path from ~8 scripts and from the global CLAUDE.md, and moving it would rot every one of those references. The current month's batches also stay there.
+
+## 2026-08-28
+
+### Measure NDA's identical awards catch-all — 13 rows, shipped and PUBLIC
+
+The CDS GK awards subtopic was split on 2026-08-28: `Civilian Awards, Honours and Educational
+Institutions` held 18 rows doing two jobs — 14 awards, 3 pure institution-identification rows
+that never mention an award, 1 event — so it was renamed `Civilian Awards and Honours` and the
+three institutions re-filed onto `National Institutions, Milestones and History`, which already
+existed. **NDA carries a subtopic of the identical name, under an identically-named chapter,
+holding 13 rows of its own**, because the CDS catalog was generated from NDA's GAT-GK taxonomy.
+It was verified as a separate row (different subtopic under a different chapter under a
+different subject under a different exam) and deliberately left untouched.
+
+**Why:** if 3 of CDS's 18 were institutions filed under an awards subtopic, NDA's 13 very
+likely contain some too — and NDA is live, published content students are already filtering.
+The two exams now also diverge on this subtopic name, which is harmless but is a real
+difference rather than an oversight, and someone should know it is deliberate. Nobody has read
+NDA's 13.
+
+**How to apply:** read all 13 and report the awards/institutions split — measurement only, no
+writes. If the split mirrors CDS's, the fix is the same shape (`rename-awards.ts` is
+parameterisable: it resolves its target through exam → subject → chapter and asserts exactly
+one match, so pointing it at NDA is a config change, not a rewrite). Per the learning-
+propagation protocol this is shipped work, so it needs a 360 + explicit permission before any
+write.
+
+### `npm run audit:text` cannot run on a large corpus — it dies on the anon statement timeout
+
+Running `audit:text -- "CDS GK"` against the 2,280-row corpus on 2026-08-28 failed with
+`canceling statement due to statement timeout`. The four text-defect classes had to be checked
+by hand-written SQL instead. This is the same defect `audit:underlines` had and had fixed on
+2026-08-25 — it connects as `anon` (3,000 ms cap) rather than `service_role` (8 s), and its
+scan is unindexed.
+
+**Why:** the CLAUDE.md commands table says to run this after every ingest, and it is the only
+gate covering LITERAL_NEWLINE, TABLE_NO_SEPARATOR, DROPPED_SYMBOL and OPTION_LEAK. A gate that
+times out on anything large is a gate nobody runs — and the corpora keep growing, so the
+failure will spread rather than stay confined to CDS GK. Worse, the failure is loud enough to
+be dismissed as environmental rather than read as "this corpus was never audited".
+
+**How to apply:** port the `audit:underlines` fix — connect service-role, keep the existing
+source-substring filter, and consider paging. Then re-run it against `CDS GK` to confirm the
+corpus is genuinely clean rather than clean-by-hand-SQL. Note the hand SQL used on the day had
+its own bug worth avoiding: in Postgres **backslash is LIKE's default ESCAPE character**, so a
+literal-newline probe written `text LIKE '%\n%'` matches every row containing the letter *n*
+(it reported 2,253 of 2,280 as corrupt); use `position(chr(92)||'n' in text) > 0`.
+
+### Browser-verify the 2,280 published CDS General Knowledge rows
+
+The corpus went PUBLIC on 2026-08-28 with no render verification of any kind. Every check was
+data-level: `verify.ts` on all 19 papers, catalog conformance, control characters, math-delimiter
+balance, table separators. Nothing has been looked at in a browser.
+
+**Why:** this corpus carries shapes the data checks cannot judge — GFM pipe tables for every
+Match List (dozens of them), `[Diagram: …]` bracketed descriptions standing in for two printed
+maps, LaTeX in physics and chemistry stems, and a `pyq_note` provenance clause that is now
+student-visible on all 2,280 rows and has never been seen rendered. The provenance clause
+matters most: it is the thing telling a reader the answers are derived rather than official, and
+if it renders badly or is truncated, the disclosure silently fails. Related to the existing open
+item for the Batch J worksheet rows (2026-08-14) — same class, different corpus.
+
+**How to apply:** open `/browse` filtered to CDS → General Knowledge and spot-check ~15 rows
+spanning the range: a Match List (2016-2 Q34), a map question (2017-2 Q82 or Q101), a
+statement-code question, a LaTeX-bearing physics row (2019-1 Q62 carries `\neq`), and any row's
+answer reveal to confirm the provenance clause reads correctly. Also confirm the derived-answer
+note appears on the Word answer-key export, which is a different render path.
+
+---
+
+## 2026-08-22
+
+### `/browse` is hitting the same 8s statement-timeout wall — and unlike the dashboard, this one CAN reach students
+
+**MEASURED 2026-08-22 — the investigation is DONE, do not repeat it.** Deferred on the user's call ("leave it"): nobody has complained, and unlike the dashboard bug it is intermittent rather than a coin flip. What it currently costs is CI-gate flakes.
+
+Production, `pg_stat_statements` over the 3 days to 2026-08-22 — the `/browse` phase-A id query (`exam_id` + `question_kind`, `ORDER BY created_at DESC`):
+
+| Caller | Calls | Mean | Max | Cap |
+|---|---:|---:|---:|---:|
+| authenticated | 402 | **1,894 ms** | **7,460 ms** | 8,000 ms |
+| anon | 758 | 531 ms | 2,439 ms | 3,000 ms |
+| anon, no exam filter | — | — | **2,229 ms** (53,488 index entries read for 25 rows) | 3,000 ms |
+
+**THE CAUSE IS THE SORT, and that is isolated, not inferred.** Same query, same filters, only the ORDER BY varying (anon, JEE, `question_kind='pyq'`):
+
+| Sort | Plan | Buffers | Time |
+|---|---|---:|---:|
+| *(none)* | Index Only Scan, 25 rows read | 30 | **0.2 ms** |
+| `id ASC` | PK scan, no sort | 136 | 88.7 ms |
+| `created_at DESC` (shipped) | scan **10,493** rows + top-N sort | 2,242 | 7.6 ms - 2,229 ms |
+| `pyq_year DESC` | scan 10,493 rows + top-N sort | 8,118 | **3,116 ms** |
+| **The LWS mock `.docx` ingest turned en-dashes into `--` in text and left U+2013 inside math zones — measured 2026-08-29 while building Blueprint Mock 3.** A student sees an option printed as `-- A`; inside a math zone KaTeX renders U+2013 in warn mode, so it LOOKS like a minus on screen and nothing downstream complains. `render-check-paper` reports PASS and only emits a `strict:'warn'` line, which is why this survived every gate: it is a warning, not a failure. It is a pandoc conversion artifact, not a transcription error, so it is uniform and mechanically detectable. | **83 of the 1,694 rows ingested from `NDA_Maths_%Mock%` files (4.9%)** — 40 stems, 33 options, 45 solutions. Cheap and low-risk in principle: no answer moves, and every instance seen so far is unambiguously a minus (or, once, a hyphen in `non -- empty`). But `content_hash` covers stem AND option text, so a repair changes a row's identity — it needs the expect-then-set primitive plus a recomputed hash, and any row already placed in a paper must keep its id, so this is an UPDATE with a fresh hash, never delete-and-re-commit. Three of the 83 were repaired in-scope for Mock 3 (`scripts/reviews/apply-mock3-glyph-fixes.ts` is the working pattern); the other 80 are untouched. **A blanket `--` -> `-` sweep would be wrong** — `non -- empty` needs the spaces removed too, so the replacement is context-dependent and each row needs a look. | **Identified 2026-08-29; NOT swept.** Shipped content, so it needs a 360 + explicit permission. Worth pairing with a check of whether the same artifact reached the other `.docx`-sourced corpora, which was not measured. |
+| **A structural option check compares option TEXT and cannot see that two differently-written options denote the SAME thing — bit on 2026-08-29.** An NDA 2018 PYQ (`NDA1_2018_Maths_PYQ.xlsx` Q6, Sets & Relations) offers `(A u B) - (A n B)` at C and `(A' u B') - (A' n B')` at D; De Morgan makes the second `(A n B)' - (A u B)'`, which IS the first. Options A and B are likewise the same set as each other. Four distinct strings, four options, TWO correct answers — and `nopt=4`, `ncorr=1`, `ndist=4` and `audit:keys` are all green on it, because none of them evaluates the mathematics. It was caught only because a blind solver was asked to name the option matching its derived value and found two. | **One confirmed row, and the real count is unknown.** The question is live and PUBLIC in the bank; it was swapped OUT of Mock 3 rather than altered, since no key repair fixes a question with two right answers and the printed UPSC paper is what it is. The bank convention for a printed-paper defect is to PRESERVE the official key and say so in the solution, which would be hash-neutral (`content_hash` excludes `solution`) — but that is an edit to shipped content. **No probe exists for this class**: detecting it needs symbolic or exhaustive evaluation per question type (sets: exhaust a 4-element universe; algebra: sample at discriminating points), which is a real piece of tooling, not a SQL predicate. | **Identified 2026-08-29; NOT fixed and NOT measured bank-wide.** Two separable asks: (a) add an honest ambiguity note to this one row's solution, (b) build an equivalence probe and measure the class. Both need a 360 + permission. Until then the blind re-derivation pass is the only thing that catches it. |
+
+**Why migration 0077's index does not help, despite being exactly the right shape** (`(question_kind, exam_id, created_at DESC, source_row, id) WHERE visibility='PUBLIC'`, confirmed `indisvalid`): **PostgreSQL never turns the `question_kind =` equality into an Index Cond — it is always a Filter.** Verified three ways, including a probe where `question_kind` was the ONLY predicate (still a Filter; 53,488 entries scanned for 25 rows). Because the index's LEADING column is never pinned to one value, index order is not `created_at` order, so the sort cannot be skipped. **Root cause of that refusal is NOT established** — it is an enum column, the index is valid, and the leading column is correct. That is the one open question.
+
+Second finding: **authenticated is ~3.6x worse than anon** because a signed-in user may see PRIVATE rows, so no `WHERE visibility='PUBLIC'` partial index is usable at all. It falls back to `questions_filter_idx` (10,336 buffers).
+
+**How to apply — and the sequencing matters more than the fix.** Reordering the sort is a PRODUCT change, not a performance fix: every candidate ordering needs its own index, `pyq_year DESC` (the most useful to a student) currently measures WORST, and `id ASC` only looks cheap here because this filter matches ~18% of the table — on a selective filter (a 15-question chapter) that plan walks the entire primary key and is far worse. So **decide the ordering BEFORE building the index, or you will build one for an order you are about to change.** Then either lead the index with `exam_id` (which the planner demonstrably does use as an Index Cond) or move `question_kind` into the index PREDICATE rather than a key column, sidestepping the enum problem entirely. Cost either way: another index on the most heavily-written table in the schema, paid on every ingest — this project has declined that trade before, deliberately. Before committing, get the usage shape: the filter split is known (48% no filters, 31% exam-only, 11% chapter/subtopic) but not WHO — if `/browse` is mostly staff building papers, newest-first may simply be correct and the whole question is moot.
+
+### `get_format_mix` is being called ~17 times a day by something that no longer exists in `src/`
+
+Migration 0079 demoted `get_format_mix()` to service-role-only. The logs show **`permission denied for function get_format_mix` (SQLSTATE 42501) firing 17 times on 2026-08-22**, spread across most hours of the day (02:00, 03:00, 04:00, 06:00, 08:00, 11:00-16:00). A grep of `src/`, `scripts/` and `tests/` finds **no caller at all** — the only hits are the two migration files.
+
+**Why:** it is harmless in itself (the former call site caught the error and fell through to "mix unavailable", which is exactly why nobody noticed) — but *something is running code that no longer exists in the repo*. The likely explanations are a stale Vercel deployment still receiving traffic, or a preview deployment that was never torn down. Either would mean other retired behaviour is also still live, and that is the part worth knowing.
+
+**How to apply:** check Vercel for old production/preview deployments still serving. The spread across hours argues against a cron and for either steady low traffic or a warm serverless instance holding an old bundle. If nothing turns up there, add a temporary `raise log` inside the function recording `current_setting('request.jwt.claims', true)` and `application_name` to identify the caller. Do not "fix" it by re-granting EXECUTE — 0079 revoked it deliberately, because at ~4.4s against the anon 3s timeout the function could never have succeeded from a request path anyway.
+
+### Build the MHT-CET Physics and Chemistry guides — the template call is already measured for both
+
+MHT-CET Maths shipped as Template C (tier-style strands) on 2026-08-22. Its two sibling subjects have comparable banks — Physics 2,221 PYQ / 24 chapters, Chemistry 2,165 / 30 — and the analysis that chose Maths's template already measured both, so neither needs a fresh survey to START. They must NOT be copies of the Maths guide: the three subjects have genuinely different shapes.
+
+**Why:** Physics and Chemistry are Paper II (1 mark each) against Maths's Paper I (2 marks), so together they are half the exam and currently have no guide at all. The measurements are perishable — they were taken 2026-08-22 and the bank grows.
+
+**How to apply:** Chemistry is the cleaner call and the better pilot — %HARD is flat AND near-zero (3.3% overall; of 30 chapters only two exceed 15% and both are tiny), which is the textbook **pure Template B** entry condition, and 5 chapters already have shipped `/notes` to cross-link. Physics is **Template C** like Maths: 17 of 24 chapters exceed 15% HARD and the HARD is concentrated (top-2 subtopics carry 63-95% where a chapter has >=4 subtopics — Wave Optics 93%, Rotational Dynamics 90%), which is a live cherry-pick pattern. Both inherit the no-negative-marking axis: at 1 mark per question and 50 questions in the shared 90-minute paper, the order-and-time framing matters even more than it does for Maths. Reuse the two agent contracts from the Maths build (a data brief carrying every verified number, and a routes brief) — they are the reason that build had no fabricated statistics.
+
+### Guides have no subject-level registry, so every new exam hub is hand-written
+
+`/notes` derives its hubs from `NOTES_CHAPTERS`, which is why a new exam's notes hub costs nothing. Guides have no equivalent: each hub hardcodes its own `GUIDES` array (NDA 10 entries, MHT-CET 1), which is exactly why shipping MHT-CET required a hand-written `/guide/mht-cet/page.tsx`. The 2026-08-22 rail helper `src/lib/guide/guidesNav.ts` models the EXAM level only and says so in its header.
+
+**Why:** it is the difference between "a third exam's guides are a registry entry" and "a third exam's guides are another bespoke page". It also blocks two things that would otherwise be cheap: a rail that shows subjects under the active exam, and a data-driven check that every shipped guide subtree is actually linked from its hub.
+
+**How to apply:** add a `GUIDE_SUBJECTS` registry (exam slug, subject route, display name, template kind, q-count source) mirroring `NOTES_CHAPTERS`' role, then rewrite both hubs to render from it and extend `guidesNav.ts` with a `subjectsForExam()`. Worth doing BEFORE the Physics/Chemistry guides above, since those would add two more hardcoded entries to a list that should be data. Keep the per-guide editorial copy where it is — only the enumeration needs to move.
+
+### `tagNames.ts`'s principle map is exam-blind — latent today, live the moment a non-NDA guide adds principle tags
+
+`PRINCIPLE_BY_SLUG` in `src/lib/links/tagNames.ts` is a flat `slug -> name` map built ONLY from `nda-maths/_data/principles.ts`. `question_principle_tags` is `(question_id, principle_slug)` with a free-text slug and no exam column, so if a second exam ever defines a principle with a slug NDA also uses, an MHT-CET question's `/browse` chip would render NDA's name and link into the NDA guide.
+
+**Why:** it is a wrong cross-exam link, not a cosmetic miss, and it is invisible until it happens. It did NOT fire on 2026-08-22 only because MHT-CET Maths shipped as Template C, which has no principle axis — a deliberate choice, not a safeguard. The notes half of exactly this bug WAS live (a same-named subtopic across two exams produced a 404 for 9 NDA questions, fixed the same day in `a76f851`); the guide half is the same defect still armed.
+
+**How to apply:** key the map by `(examName, subjectName, slug)` the way `notesIndex`/`subtopicSlugRegistry` were keyed on 2026-08-22, and take the exam from the `ResourceInput` already threaded into `getQuestionResources`. Cheap now (one exam contributes principles); it gets expensive once a second catalog exists. Note the MHT-CET Maths lever survey DID confirm 5 genuine cross-chapter principles (perpendicularity-condition 83 q/7 ch, angle-between 87/7, extremum 115/16, tangent-normal 54/7, parallelism-condition 43/5) — so a future Template-A-style principles axis for that guide is plausible, and would trip this.
+
+---
+
+## 2026-08-17
+
+### ARCHITECTURE.md's `scripts/` tree is missing 15 of the pipelines it is supposed to map — **MAHARASHTRA GROUP DONE 2026-08-17, 10 remain**
+
+> **Progress 2026-08-17:** `ncert/` plus the whole Maharashtra family are now documented — `mh-sb-9/`, `mh-sb-11/`, `mh-ssc-10/`, `mh-ssc-10-text/`, `mh-hsc-12-pyq/`. **Remaining 10:** `neet/`, `worksheets/`, `pariksha/`, `syllabus/`, `grounding/`, `mocks/`, `dbhealth/`, `backup/`, `quiz/`, `testdb/`. Suggested next grouping — **ops** (`dbhealth`, `backup`, `testdb`, `mocks`; all small, 4 of 4 have READMEs) then **ingestion+tooling** (`neet`, `worksheets`, `pariksha`, `grounding`, `quiz`, and `syllabus` last — at 40 scripts it is the one that may want sub-bullets rather than a single paragraph). The five entries just written are the template: purpose · what the pure core is and whether it is shared · the step scripts in runbook order · the one gotcha that earned a comment · the `[[memory-link]]`.
+
+CLAUDE.md's file-layout section says outright: *"Append a new file/component/route there, not here."* So `ARCHITECTURE.md` is the authoritative map. Its `scripts/` tree documents `jee/`, `reviews/`, `relevance/`, `practice/`, `cds/`, `foundation/`, `practice-paper/`, `stateboard/` and the loose top-level scripts in careful detail — and **omits 15 directories entirely**: `ncert/` (added this run), `mh-sb-9/`, `mh-sb-11/`, `mh-ssc-10/`, `mh-ssc-10-text/`, `mh-hsc-12-pyq/`, `neet/`, `worksheets/`, `pariksha/`, `syllabus/`, `grounding/`, `mocks/`, `dbhealth/`, `backup/`, `quiz/`, `testdb/`.
+
+Between them those cover the bank's two largest exams (Worksheets 7,376 q; JEE is documented but NEET 1,536 q is not), the entire syllabus-map feature, the DB-health tracker, the backup runbook and the Quiz Factory. Several ARE described in CLAUDE.md prose or in a memory, so the information is not lost — but the file that claims to be the map is ~60% complete on that section, which quietly undermines the "append there, not here" rule and pushes detail back into CLAUDE.md.
+
+**Why:** a new session reading ARCHITECTURE.md to orient itself will conclude those pipelines don't exist, or will re-derive their shape from source. It also means the one habit CLAUDE.md relies on to stay lean isn't actually being followed.
+
+**How to apply:** one dense paragraph each, in the existing style (purpose · the pure core · the step scripts in runbook order · the gotcha that earned a comment · the `[[memory-link]]`). Cheapest source for each is its own memory file plus its `README.md` where one exists. Do it in two or three sittings rather than one — and consider whether `scripts/` has outgrown a single tree and wants a short index with per-pipeline subsections.
+
+### ~~The `/board` reader has never been click-verified for the 6 new NCERT chapters (29 diagrams, 4 figures)~~ — **DONE 2026-08-17** (user-verified in browser)
+
+Every headless gate passes — `board:lint` green over 8,175 rows, all 537 rows carrying `section_seq`, `audit:text`/`audit:omml` clean — but `/board` reveals a model answer **on click**, so nothing yet run proves the answer body lays out. This batch is the first on this pipeline to ship `solution_image` diagrams (29) and `image_url` figures (4), both of which render only inside that reveal.
+
+**Why:** this is the documented blind spot for click-gated UI — the build proves it compiles, never that it lays out ([[probe-must-reach-the-code]]). A malformed diagram URL, an oversized PNG or a KaTeX break inside a revealed solution would be invisible to every check that has run.
+
+**How to apply:** open `/board/cbse-12/mathematics/<chapter>` for **Application of Integrals** and **Linear Programming** (the two diagram chapters) and **Vector Algebra** (the figure chapter), expand a section, and click through several answers — confirm the diagram renders at a sensible size, the figure appears above the right question, and the LaTeX is typeset rather than raw. Ten minutes; the three chapters cover all four new render paths.
+
+### Measure whether any SHIPPED chapter has already lost errata brackets — the 5a defect is not new, only newly understood
+
+2026-08-16 found that `apply-errata.ts` mirrors an EXERCISE row's `[Textbook…]` bracket into the transcription *band* fragment, which `apply-solutions.ts` does not read — so any `apply-solutions` run **after** an errata pass silently rewrites those rows without the bracket. It destroyed 9 of 17 on `probability-11` and was repaired the same session. Nothing establishes that earlier runs were immune: the same script shape exists in `scripts/stateboard` (Class 12, ~76 brackets), `scripts/mh-sb-9`, `scripts/mh-ssc-10` and `scripts/ncert`, and any chapter whose author looped back to fix a solution after writing errata would have hit it.
+
+**Why:** the loss is invisible to every gate — `board:lint`, `audit:text`, `audit:keys` and `audit:omml` all pass with the brackets gone, because a missing erratum is not malformed, it is absent. So a shipped chapter can be carrying a book defect with no disclosure and nothing will ever say so. This is a **measurement, not a rework** — it needs no permission and no 360; only if it finds gaps does the repair become a backfill candidate (and the repair is trivial, since `apply-errata` is idempotent).
+
+**How to apply:** for every `<id>.errata.json` in `scripts/{stateboard,mh-sb-9,mh-sb-11,mh-ssc-10,mh-ssc-10-text,ncert,mh-hsc-12-pyq}/data/`, count its entries and compare against `select count(*) from questions where source_file = '<sourceFile>' and solution like '[Textbook%'`. Equal = clean. A shortfall names exactly which refs to re-apply. Worth wiring the same comparison into `flip-public.ts` as a pre-flip warning, so the class cannot ship again — that is a ~15-line check and the only mechanical defence that exists for it.
+
+### ~~Port the `--answers` flag from `scripts/mh-sb-9/render.ts` to the mh-sb-11 (and stateboard) copies~~ — **DONE 2026-08-16 (mh-sb-11 only)**
+
+Shipped in `scripts/mh-sb-11/render.ts`: `--answers` reads `answersPdf`/`answerPages` and writes to `out/_answers/<id>/`, additively (only the chapter render `rmSync`s its directory), refusing loudly when a chapter has no answers block configured. The interim warning is gone from the pipeline README, replaced by the command. **Still open for `scripts/stateboard/`** — that copy is untouched.
+
+`scripts/mh-sb-9/render.ts` takes `--answers` and rasterises a chapter's block of the end-of-book ANSWERS section into `out/_answers/<id>/`. The `mh-sb-11` copy has no such flag, so all four chapters this session rendered their answer pages with a hand-written one-off PyMuPDF call. The README now documents the gap (with the warning that re-running plain `render.ts <id>` rmSync's the chapter PNGs that in-flight transcription agents are reading) rather than closing it, because it is a shipped script and the run was mid-flight.
+
+**Why:** the step-6 answer-key cross-check is the mandatory gate for every chapter of these books, and its input is currently produced by retyping a command. That is a per-chapter opportunity to render the wrong page range, or to reach for `render.ts <id>` by reflex and destroy the working set. Eleven Class-11 chapters remain, plus whatever Class-12 and Class-9 work follows.
+
+**How to apply:** copy the `--answers` branch from `scripts/mh-sb-9/render.ts`, reading `answersPdf` + `answerPages` from the chapter config and writing to `out/_answers/<id>/` (a SIBLING of `out/<id>/`, never inside it). Make the flag refuse when a chapter has no `answersPdf` — the humanities chapters legitimately have none, and a silent no-op there would read as "the answers are missing". Then delete the interim warning from `scripts/mh-sb-11/README.md`.
+
+### Port the `apply-errata.ts` MIRROR-ORDER fix to the sibling pipelines — `mh-sb-9` and `mh-sb-11` have it, four others do not
+
+*(Related to but DISTINCT from the bracket-loss measurement above — that one is about running `apply-solutions` **after** errata; this one is about **where** the bracket lands in the first place. Both can be true of the same chapter.)*
+
+`apply-errata.ts` mirrors a bracket into the **first** `readdirSync` match and stops. For an exercise-subjective row two source files hold the ref: the transcription fragment, which has **no `solution` key** (exercise answers are authored later), and the authored `*.solutions.json`, which does. Alphabetically the fragment usually sorts first — so the applier **creates** a `solution` field on the fragment holding the bracket ALONE, and the real solution never records it. Found and fixed in `scripts/mh-sb-11` on 2026-08-16 *after* it had already fired on three chapters (6 rows, re-mirrored from the live DB text). `scripts/mh-sb-9` took this fix earlier; `scripts/stateboard`, `scripts/mh-ssc-10`, `scripts/mh-ssc-10-text`, `scripts/ncert` and `scripts/mh-hsc-12-pyq` have not been checked.
+
+**Why:** two independent harms, both silent. The authored solution keeps no record of the disclosure, and a later re-commit reads the fragment's bracket-only field as that question's **entire model answer** — a row that would ship a one-sentence erratum where a worked solution belongs. No gate sees either: a bracket in the wrong file is not malformed, and a fragment carrying an unexpected `solution` key is structurally valid.
+
+**How to apply:** in each pipeline's `apply-errata.ts`, sort the candidate file list so `*.solutions.json` ranks before transcription fragments (`const rank = (f) => f.endsWith(".solutions.json") ? 0 : 1`), keeping the glob wide so newly-named fragments are still found. Then audit for damage already done: any NON-`solved` row in a `*.band-*.json` / fragment whose `solution` starts with `[Textbook` is a hit. **Do not blanket-move them** — an MCQ row has no `*.solutions.json` entry at all, so the fragment genuinely is its only home (6 of the 12 rows found in the mh-sb-11 sweep were MCQs and correctly stayed). Classify by whether a solutions file owns the ref, and take the repair text from the LIVE DB row so the mirror is byte-exact rather than reconstructed.
+
+### Run an INDEPENDENT step-6 cross-check on the four chapters shipped 2026-08-16 (Conics · Binomial · Differentiation · Circle)
+
+Those four were cross-checked **by the authoring pass** — each agent derived its answers, then read the printed key and reported discrepancies — rather than by a separate `dump-review.ts` pass with fresh agents. The finding was strong (0 our-answer-wrong across every keyed row, ~40 book defects surfaced), and it is stated as such in the commit message and the Decisions log rather than dressed up as an independent gate.
+
+**Why:** the weakness is specific and worth closing rather than living with. A *systematic* error in an agent's own derivation would survive, because the same reasoning produced both the answer and the verdict on the answer — the check shares a failure mode with the thing it checks. The compensating control that DOES exist is the genuinely blind MCQ pass (48/48 triple-confirmed, zero mismatches), but that covers 48 of 472 rows; the 342 authored subjective answers have no independent second opinion. Every other chapter of this book got a separate pass.
+
+**How to apply:** `npx tsx scripts/mh-sb-11/dump-review.ts <chapterId>` per chapter, then dispatch cross-check agents that see the stored answer and the rendered answer-page images but NOT the authoring agent's reasoning. Two scope facts to hand them so a shortfall is visible: solved examples are outside the gate by construction (rule 6a), and Binomial `Ex 4.5` has no printed key at all (it is titled "Show That" and this key never answers a proof), so the expected covered count is well below the row count. Cheapest first pass would be the ~40 rows already carrying an errata bracket, since those are where a disagreement is most likely to be real.
+
+### Lint for merged sub-item solved rows — the convention is uniform only because an agent happened to ask
+
+The shipped convention across every completed chapter of these textbook pipelines is that a solved example with printed sub-items `i)/ii)/iii)` becomes ONE ROW PER SUB-ITEM sharing `context` + `setLabel`. On 2026-08-16 one transcription band instead merged all sub-items inline into a single row (three examples, eleven real questions), citing a shipped precedent that a one-line query disproved — across five completed chapters, *every* sub-item ref carries a `setLabel`. It surfaced only because a **different** band flagged the divergence and asked rather than silently conforming; nothing mechanical would have caught it.
+
+**Why:** a merged row is a worse artifact than the split — `/board` renders three questions as one, a student cannot attempt them separately, and the row's single `difficulty` and `subtopic` describe a set rather than a question. It is also invisible downstream: the rows commit, counts reconcile, and every audit passes. Relying on one agent noticing another's inconsistency is not a control.
+
+**How to apply:** add a check to `merge.ts` (or a standalone lint alongside `board:lint`) that flags any `bucket:"solved"` row whose `stem` contains an inline sub-item marker — `(^|\s)i\)\s`, `ii)`, `iii)` — while carrying no `setLabel`. Triage, not a gate, since a stem could legitimately quote a list; but it turns a convention into something checkable. Pin the three `trigonometry-2-11` rows that were re-split as regression fixtures.
+
+---
+
+## 2026-08-14
+
+### Stop `loadPrincipleStats` swallowing its error — the id count is the lesser problem
+
+`src/app/guide/nda-maths/principles/page.tsx` passes **all 488 principle-tagged question ids into a single `.in()`** (~18 kB of URL; the known failure in this repo was 833 ids ≈ 31 kB), and then does `if (error) return stats;` — discarding the error and returning an empty map. The page renders normally with no stats and no signal.
+
+**Why:** as of 2026-08-13 that page is **prerendered** (it moved off the cookie-bound client), so a single 400 at build time would bake an empty stats block into the artifact and serve it for the full 24-hour `revalidate` window — a silent content regression with a slow feedback loop. The id count itself is not urgent: principle tagging is curated and slow-growing (~20 principles, 488 tags), unlike question ingestion. It is the swallow that turns a loud failure into an invisible one.
+
+**How to apply:** log the error before returning (`console.error`) so it appears in Vercel's runtime logs and in the build output; then chunk the `.in()` at ~200 ids and merge the results, which removes the ceiling entirely. Both are small and independent — the log is the one that matters. While there, consider whether an empty stats map should fail the build rather than render a stats-less page.
+
+### Register migration 0077 in `schema_migrations` — hygiene, not risk
+
+`questions_public_kind_exam_created_idx` exists in production but has **no row in `supabase_migrations.schema_migrations`**, because it was built with `CREATE INDEX CONCURRENTLY` by hand and `apply_migration` cannot run that inside a transaction.
+
+**Why:** lower stakes than it first appears, and worth writing down so it is not re-escalated: the `.sql` file **does** exist in the repo and uses `CREATE INDEX IF NOT EXISTS`, so a replay against prod or the test project is a clean no-op. This is **not** the 0021/0066 class, where the *file* was missing and prod was genuinely unrebuildable. The only real cost is that `list_migrations` shows an incomplete history, so the index has no recorded provenance.
+
+**How to apply:** one INSERT into `supabase_migrations.schema_migrations` with the 0077 version stamp, or simply let the next `testdb:migrate` replay record it there and accept the prod gap. Do it opportunistically alongside the next migration.
+
+### Validate the `/browse` landing as a PRODUCT change — it was chosen on taste, not data
+
+The bare `/browse` page now shows exam start-pills instead of 25 questions. All three candidate designs saved **identical** compute, so the choice between "static front door" and "cache the existing list" was a product judgement made without product evidence, and it was labelled as such at the time.
+
+**Why:** the panel replaces the first thing an anonymous visitor sees on the site's most-visited page. If people were clicking into those 25 questions, showing navigation instead could raise bounce; if they were bouncing off an arbitrary list (it rendered 25 Maharashtra HSC Binomial-Distribution questions on 2026-08-13, being simply the newest ingest), it should improve. Nobody knows which, and the data to tell exists.
+
+**How to apply:** Vercel Analytics → **Routes** tab, filtered to `/browse` — compare bounce rate and click-through for the week before and after 2026-08-13. Pair it with the two outstanding measurements from the same change: whether the ~352 daily statement timeouts have gone to zero (Supabase postgres logs, `canceling statement due to statement timeout`), and whether Fluid Active CPU actually fell (`/browse` was 41% of it, but at a below-average 124 ms per invocation, so the saving is the *count* of renders, not their weight). If bounce worsens, "cache the list as-is" is the fallback and is a small diff.
+
+### Add a VALUE-equality twin probe to `audit:keys` — the Worksheets corpus's dominant defect is currently only findable by solving
+
+`audit:keys` flags `DUP_OPT` only for **byte-identical** options. The Cadetprep Worksheets source's most common defect is the **value-equal twin** — the correct answer printed a second time in a different dress, so the question offers one answer under two letters. Batch J alone produced **149 such rows** (3D Geometry: 65 in 235, 28%), and every one was found by an LLM agent *solving the question*, which is the most expensive detector available.
+
+**Why:** a large fraction of these are mechanically detectable and would not need an agent at all. The recurring dresses are narrow and enumerable: an unreduced fraction beside its reduced form (`10/32` / `5/16`, `26/52` / `1/2`), a rationalised surd beside its unrationalised twin (`2/√5` / `2√5/5`), **the square root of a perfect square written as a surd** (`6/√49` beside `6/7`, `20/√25` beside `4` — this one alone accounts for most of 3D Geometry's twins), a factored form beside its expanded one (`2(√2−1)` / `2√2−2`), and a plane/line equation scaled by a constant (`x+2y−2z=5` / `(1/3)x+(2/3)y−(2/3)z=5/3`). Beyond cost, this matters for **already-shipped** chapters: Batches A–I were adjudicated with the same agent-only detector, and a cheap probe run over all 7,376 rows would say whether twins were missed there.
+
+**How to apply:** extend `scripts/practice/audit-keys.ts` with a `TWIN_OPT` class. Two tiers, in order of effort: (1) **numeric** — parse options that reduce to a single number (via a small LaTeX→value evaluator or sympy) and flag any pair agreeing to ~10 significant figures; this catches the fraction, surd and perfect-square families outright. (2) **symbolic** — for options that are expressions or equations, normalise with sympy (`simplify(a - b) == 0`, and for equations compare the coefficient 4-vector up to a scalar) to catch the scaled-plane family. Run it over the whole Worksheets exam first as a *measurement* of how many twins the shipped chapters still carry, before deciding whether that becomes a backfill candidate. Beware the false-positive direction documented in the batch: **direction cosines are NOT twins when proportional** (only one member of a proportional family satisfies l²+m²+n²=1), unlike direction ratios and plane equations.
+
+### Mask function-call notation in `audit:keys`'s concluded-letter extractor
+
+`audit:keys` decides a solution's "concluded letter" by scanning its text, and it reads probability notation as an option reference: `P(A|B) = P(A)` yields `SOLN_A`, `P(B) × P(A|B)` yields `SOLN_B`. Batch J's post-commit run flagged 3 Probability rows this way; all three were correct and were dismissed by hand.
+
+**Why:** small but corrosive. This probe's whole value is that a hit means "look here", and it is the standing gate after every practice ingest. A recurring false-positive family in one subject trains the reader to skim exactly the output they should read closely — the same asymmetry as [[dismiss-bucket-strict-match]], one layer out. It will fire again on every future Probability or Sets chapter.
+
+**How to apply:** before extracting the letter, mask spans matching a single capital immediately preceded by a function-like name and an opening bracket — `P(`, `f(`, `g(`, `Var(`, `E(` — plus set-operation contexts (`A ∩ B`, `A ∪ B`, `A|B`). Keep the mask narrow: the genuine references the probe must still catch are `option C`, `answer is (B)`, `choice D`. Add the three Batch-J rows (`probability` 02-13, 02-19, 02-22) as regression fixtures so the fix is pinned.
+
+### Browser spot-check the Batch J rows — 1,255 questions shipped PUBLIC with no render verification
+
+Batch J's repairs are unusually LaTeX-heavy: ~180 rewritten option texts and ~25 rewritten solutions, including `\sqrt[3]{4}`, `\binom{5}{3}`, `\tfrac`, `\dfrac`, and mixed unicode (`∩`, `≥`, `°`) sitting beside KaTeX zones in the same option block. Every automated gate passed — `commit.ts`'s delimiter-balance check, `audit:text`, `audit:keys`, `board:lint`, the full pre-push gate — but **none of those renders anything**.
+
+**Why:** delimiter balance is not the same property as *renders correctly*. A balanced zone can still produce a KaTeX error node or lay out wrongly, and these rows are now PUBLIC on `/browse`. The documented rule in CLAUDE.md is that a green build proves compilation, never layout, and this batch has no browser evidence at all. The unicode-beside-LaTeX rows are the most exposed: Probability 02-21/02-28's replacement options were deliberately written in the row's existing unicode style rather than LaTeX, so they render as plain text next to KaTeX siblings.
+
+**How to apply:** open `/browse` filtered to exam *Worksheets - 11th+12th* and walk a handful per chapter with the answer revealed — prioritise Probability 02-21 / 02-28 (unicode options), Conics 02-26 (`\sqrt[3]{}`), DefInt 03-12 / 05-14 (rewritten log/ln twins), 3D 02-23 (direction-cosine triples in `\left(...\right)`), Properties 02-23 / 03-29 (repaired stem *and* solution — check the two now agree on the page, which is how the stale-solution defect was caught in the first place). Also confirm Statistics 07-26's `|r| = 0.0 to 0.3` list renders as prose lines rather than a mangled table — `audit:text` flags it as `TABLE_NO_SEPARATOR` and it is expected to be benign, but that has not been seen rendered.
+
+---
+
+## 2026-08-13
+
+### Measure the new `/browse` index's WRITE cost on the next ingest, and decide keep-or-drop
+
+Migration 0077 added `questions_public_kind_exam_created_idx` — the 17th index on the most heavily-written table here (index total 31 → 34 MB). The READ side is measured and large: kind+exam **1,986 → 5.3 ms**, kind-only **4,454 → 228 ms**. The WRITE side is **not measured at all**, and it is the exact objection on which this trade was declined before.
+
+**Why:** the decision to keep the index is currently half-evidenced. Ingests here run in batches of thousands, so a per-row cost that is invisible interactively is the one that actually matters — and nothing will surface it except an ingest. Left unmeasured, the index either sits there costing something nobody quantified, or gets dropped later on a hunch.
+
+**How to apply:** before the next bulk commit, note `pg_stat_user_tables.n_tup_ins` and the wall time; run the ingest; compare against a previous run of similar size from the git history of the same pipeline. If the slowdown is material, the honest options are (a) drop it and accept ~700 ms browse latency, or (b) keep it and accept the ingest cost — both defensible, but pick on the number. `DROP INDEX CONCURRENTLY` is non-blocking. Note also that `questions_public_filters_idx` may now be partially redundant (0077 covers exam + the sort key, with `question_kind` as a bonus); check `idx_scan` on both in `pg_stat_user_indexes` after a week before considering removing either — dropping the wrong one silently reverts this work.
+
+### Re-calibrate the visibility-map threshold once it has met a week of real data
+
+Migration 0076 warns below **80%** coverage on tables over 1,000 pages. That number is set from a **single reading** and fires on exactly two tables today (`questions` 67.4%, `options` 66.0%). After the manual `VACUUM (ANALYZE)` on 2026-08-13 `questions` sits at 100%, but it will decay under ingestion — and nobody yet knows what its steady state is.
+
+**Why:** if the steady state is ~67%, the rule prints the same two notes every single day, which is precisely how a report earns being ignored ([[monitor-threshold-calibration]] rule 2). If it holds near 100%, then 80% is a genuine alarm and worth keeping. Only elapsed time distinguishes those.
+
+**How to apply:** read a week of `db_health_snapshots` (`heapPages`/`allVisiblePages` now stored per table) and plot the decay for `questions` and `options`. If coverage settles well below 80%, either lower the threshold to just under the steady state, or — better — attack the cause: this is an INSERT-heavy workload, so the relevant knob is `autovacuum_vacuum_insert_scale_factor` (default 0.2, i.e. ~9,400 inserts before autovacuum fires on `questions`), **not** `autovacuum_vacuum_scale_factor` which only counts dead rows. Set it per-table via `ALTER TABLE public.questions SET (autovacuum_vacuum_insert_scale_factor = 0.05)`.
+
+### Carry-forward — relax `experimental.cpus: 4` + `staticPageGenerationTimeout: 180`
+
+Not a new suggestion: see the **2026-08-05** entry of the same name, still open. The case for it strengthened on 2026-08-13 — the `/questions` prerender contention those settings work around had two causes, and both are now fixed (the 2026-08-05 wide-sort, and the 0077 index gap plus the vacuum, which together took the browse query family from ~35 min of DB time per 4 days to a fraction of it). Three consecutive builds this session produced zero statement timeouts and zero SIGTERMs. Worth retesting the relaxation now rather than leaving a permanent build slowdown in place for a cause that no longer exists.
+
+---
+
+## 2026-08-11
+
+### Rotate the database password — it was pasted into a chat transcript, and it is weak
+
+The `postgres` password was shared in conversation while wiring up `npm run db:backup`, so it now lives in a session transcript. It is also pattern-guessable (org name + `@123`) on a database that is directly reachable from the internet on port 5432. This is the **superuser** credential: it bypasses RLS entirely, so it reads every student mobile, every PRIVATE question, and can drop any table.
+
+**Why:** every other credential in this project is an API key scoped by RLS; this one is not. The exposure is small in practice (a transcript, not a public repo) but the blast radius is total, and the cost of fixing it is about ninety seconds.
+
+**How to apply:** Dashboard → Settings → Database → Reset database password, choosing something non-patterned. Then update the single line in `.env.local`:
+`SUPABASE_DB_URL=postgresql://postgres:<new>@db.wunvtnqlzjrkvolslbnm.supabase.co:5432/postgres` (percent-encode `@ : / #`, e.g. `@` → `%40`). Verified safe to rotate: nothing on this machine uses the direct Postgres connection — the app authenticates with the anon/service-role keys, which a password reset does not touch. Only the backup script consumes it. Confirm with `npm run db:backup -- --dry`.
+
+### Rehearse a restore — it is the half of the backup that has never been exercised
+
+`npm run db:backup` is verified as far as *producing* a good archive: 71 tables present in the `pg_restore` TOC, and reading it back yields 85.3 MB of SQL with `questions` 45,351 and `auth.users` 102 matching live exactly. But **no dump has ever been loaded into a running database.** Restore is where the untested code lives — dependency ordering, `--disable-triggers`, whether the target schema matches.
+
+**Why:** a backup you have never restored is a folder of files you hope are good. This project has twice found a migration applied to prod but never committed (0021, 0066), which is exactly the kind of drift a restore rehearsal surfaces and nothing else does.
+
+**How to apply:** the natural target is the dedicated test project — but note two costs before doing it: it copies production PII (`auth.users`, student mobiles, quiz-lead consent records) into a second Supabase account, and it clobbers the seeded fixtures, so `npm run testdb:reset` is required afterwards or `npm test` breaks. Cheaper alternative that still exercises the risky path: restore **one table** into the test project (`pg_restore --data-only --table=chapters -d "$TEST_SUPABASE_DB_URL" <dump>`) and check the row count against the manifest. If the PII copy is unacceptable, the honest answer is to say so and treat restore as unproven rather than assume it works.
+
+### Decide whether backups should leave this machine
+
+`backups/` is local-only by explicit decision (encryption was dropped along with the Drive plan, since the mitigation existed for uploading somewhere shared). That is coherent, but it leaves `C:` as a single point of failure for more than the backups: it also holds the **only** copies of the ingestion source PDFs and the NDA/MHT-CET Excel uploads, none of which are in the repo.
+
+**Why:** the backup script closes the "a bad script deleted rows" hole completely. It does nothing for "the drive failed", and that exposure covers material that cannot be regenerated from anything.
+
+**How to apply:** if it moves off-machine, encrypt first — the dumps carry `auth.users`, student mobiles and DPDP consent records, and an unencrypted file in a personal Drive is one accidental share-link from a breach. AES-256-GCM via Node's built-in `crypto` needs no new dependency. Use **copy** semantics, never a synced folder: sync replicates deletions, so a rotation prune would erase the remote history too. And note the passphrase then becomes its own single point of failure — password manager, never in the repo, never beside the backups. Scope note: this is really a question about the source material, not just the dumps; sizing that first would change the answer.
+
+### Declare the pre-0074 audits as SCOPE, so the best-checked subjects stop reading 0.0%
+
+`question_reviews` (0074) now holds 952 rows / 943 questions, but `npm run reviews:report` shows **NDA and MHT-CET at 0.0%** — the two subjects that went through the 2026-06-03 bank-wide content audit (9,546 questions, ~235 wrong-key flips). That audit produced no machine-readable artifact, so nothing can be backfilled from it, and a reader who doesn't know the history will read the zero as "unexamined". The report's copy says "not recorded, not unreviewed", but copy is a weaker guard than data.
+
+The right shape here is a **registry, not per-question rows** — and that is a deliberate inversion of the reasoning that rejected a registry for recording reviews. There, the per-question verdict existed and was expensive to discard. Here it was never captured and cannot be recovered; only the scope claim survives ("these 13 subjects were audited to closure on this date, at the no-source-needed surface").
+
+**Why:** the report currently misrepresents its own strongest data. Left alone it will keep doing so as coverage grows elsewhere, and the temptation to "fix" it by reconstructing verdicts from the Decisions log gets stronger the longer it sits — which is exactly the prose-reconstruction the table exists to prevent.
+
+**How to apply:** a small TS registry (`src/lib/reviews/declaredAudits.ts`) listing subject + closure date + what the audit did and did not cover, mirroring the `REVIEWED_CHAPTERS` pattern in `src/lib/relevance/config.ts`. Render it in `reviews:report` as a **third state** — never merged into "recorded", because it is not per-question evidence — and credit it only to questions whose `created_at` predates the closure date. NDA is unchanged at 4,860 so it comes out clean; MHT-CET has grown by ~1,929 PYQ since (the April-2025 ingests), and those must correctly stay uncovered.
+
+### Wire the `scripts/ncert/` emitters — it is the one pipeline left unrecorded
+
+Nine scripts across five pipelines now emit review provenance as they run (2026-08-11). **`scripts/ncert/` was not among them**, because unlike its siblings it has no `apply-errata.ts` and no `mark-mcq-verify.ts` — it carries `errata.ts` and produces `*.crosscheck.json` / `*.mcq-verify.json` artifacts, but nothing writes rows at run time.
+
+**Why:** NCERT is an active pipeline (3 chapters shipped, more Class-12 Maths planned). Every chapter ingested from here will produce exactly the adjudications the table wants and drop them on the floor, so the gap this session closed re-opens quietly for one exam. It is also the pipeline whose artifacts were richest in the backfill (271 of 566 ref-based rows), which is the evidence that its passes are worth recording.
+
+**How to apply:** either port the sibling `apply-errata.ts` + `mark-mcq-verify.ts` into `scripts/ncert/` (they are near-identical across the other four pipelines — see the `emit.ts` call sites), or, if NCERT's errata genuinely flow through a different step, call `recordErrataReviews` / `recordMcqVerifyReviews` from whatever that step is. Either way the run label should follow `liveRunLabel("ncert", chapterId, kind)` so live rows stay distinguishable from the `backfill:ncert:*` ones already present.
+
+> **NARROWED 2026-08-17 — half done, and the remaining half is one call.** `scripts/ncert/mark-mcq-verify.ts` was ported WITH `recordMcqVerifyReviews` and is now live (52 rows recorded across the final-six batch + the Integrals backfill). **`scripts/ncert/apply-errata.ts` was written this session and does NOT emit** — every sibling (`mh-sb-9`, `mh-sb-11`, `mh-ssc-10-text`, …) calls `recordErrataReviews` from its `apply-errata.ts` and the NCERT copy is the lone exception, so **11 errata adjudications from this batch went unrecorded**. Deliberately not wired during a docs pass, since it writes rows. Fix = import `recordErrataReviews` from `src/lib/reviews/emit`, collect the `ErratumApplied[]` the loop already builds, and call it after the writes — copy `scripts/mh-sb-9/apply-errata.ts` verbatim.
+
+### Roll `reviews:paper` across the live papers, and click the triage dropdown once
+
+`npm run reviews:paper` shipped and works, but has been exercised on **one paper, three questions deep**. There are 50 papers / 3,054 distinct questions, of which only 2 now carry a paper-review row. Separately, the verdict picker on `/dashboard/reports` has still never been rendered in a browser — it is auth-gated `ƒ` with no headless proof available here, though `reviews:resolve` now covers the common path so this is a fallback rather than the main route.
+
+**Why:** the value of the table compounds only once real coverage accumulates — the skip logic (a confirmed question is not re-derived on its next paper) pays nothing at 2 questions. And the first real run of the paper tool already surfaced a genuine defect (an NDA 2023-I pair that is under-determined), which suggests the remaining 49 papers are worth the pass.
+
+**How to apply:** run `npm run reviews:paper -- --paper=<id>` on the papers actually being printed, fill in the verdicts, `--record --apply`. Prefer `--method=blind_rederivation` where the answers matter most — it withholds the key and stored solution so the derivation is genuinely blind, which a post-hoc check can never be (see [[blind-check-contamination]]). For the dropdown: sign in as superadmin, resolve one of the 2 open wrong-answer reports as *Resolved*, pick a verdict, and confirm a row appears in `question_reviews` with `method = 'report_triage'`.
+
+## 2026-08-09
+
+### ~~Finish the spill diagnosis — the other half is still unidentified~~ — **RESOLVED 2026-08-09 (there was no other half)**
+
+**Closed the same day it was raised, and the entry itself was based on a bad measurement.** A 56-minute idle window shows `temp_files`/`temp_bytes` **unchanged** from 5 minutes post-reset (5 files / 26 MB), across a period that included a full `prepush`. Spill is **zero**, not halved: clearing `pg_stat_statements` removed ~13 GB/day in full. No second culprit, no support ticket, no further logging session.
+
+The "halved" claim came from a **5.4-minute** sample — below the tracker's own `MIN_RATE_WINDOW_HOURS` floor — and the 5 files it counted were **self-inflicted** (`npm run db:health`, a `collect_db_health()` call, and several `pg_stat_statements` scans, each spilling ~5 MB by design). Lesson filed as rule 7 in [[monitor-threshold-calibration]]: *your own diagnostics are part of the system under test; idle out the window and probe with something that cannot perturb it.* Original entry follows.
+
+Clearing `pg_stat_statements` on 2026-08-09 took the disk spill from ~1.8 to ~0.9 temp files/min (~13 → ~5 GB/day) and confirmed the culprit process is Supabase's `postgres_exporter`. But the log showed the files arriving in **PAIRS**, and only one of each pair was the statement-store read. **The second ~5 GB/day is not diagnosed** — the exporter reads something else of similar size every minute.
+
+**Why:** it is the last unexplained consumer of the Supabase disk-IO allowance, and the one that set off the original alert.
+
+**How to apply:** (1) read the first FULL 24-hour `npm run db:health` window. (2) If still material, re-enable logging for ten minutes to name the second query: `npx supabase --experimental postgres-config update --project-ref wunvtnqlzjrkvolslbnm --config log_temp_files=4MB --no-restart`, read `get_logs(postgres)`, then `postgres-config delete … --config log_temp_files --no-restart`. Resolve the PID via `pg_stat_activity`. (3) Raise a Supabase support ticket. Full recipe in [[db-perf-diagnosis]].
+
+### Consider capping `pg_stat_statements.max` instead of clearing the store periodically
+
+The store refills in roughly three months (2,615 of 4,865 entries were one-off ingestion/audit queries run exactly once), so the 2026-08-09 reset is maintenance that will recur. Migration 0071 now warns at 80% full, which makes the recurrence visible — but the underlying ceiling is a tunable: `pg_stat_statements.max` is 5,000, and the exporter's per-minute read cost scales with how much of that is occupied.
+
+**Why:** lowering the ceiling would bound the exporter's cost permanently rather than relying on someone acting on a warning every quarter. It is a genuine trade-off, not a free win, which is why it needs a decision rather than a silent change. *(Still open after the 2026-08-09 fix proved total — the spill is zero today, but it returns as the store refills, so this is about whether to automate the remedy or keep acting on the 0071 warning.)*
+
+**How to apply:** decide first whether the history is worth more than the disk IO. Lowering to ~1,500 caps the store at roughly a third of the text, but Postgres then evicts far more aggressively — and eviction silently discards entries this tracker diffs, which is exactly what `statement-store-evicting` now warns about. A middle path is to leave `max` alone and simply act on the 0071 warning when it fires. If you do change it, it is the same CLI route as `log_temp_files` (`postgres-config update --config pg_stat_statements.max=…`) and **requires a restart**, unlike the logging flag — so it is not a quiet change.
+
+---
+
+## 2026-08-07
+
+### ~~Fold the per-subject ruling addendum into RULING_BRIEF.md~~ — **DONE 2026-08-07**
+
+**Shipped same day** — RULING_BRIEF.md gained a "A hit is not coverage" false-positive catalogue + "Per-subject addenda" (Chemistry/Physics/Mathematics blocks: corpus flag, ref quirks, trap lists, PDF paths, rationalised-NCERT deletion digests). Dispatch prompts now point at the brief. Original entry follows.
+
+The Maths ruling batches ran against `RULING_BRIEF.md` plus a substantial addendum that lived only in the agent dispatch PROMPTS: the corpus flag, the SB Part-2 renumbering rule, the confirmed trap list (stale NCERT intros, Rolle/"rolled", telescope-the-instrument, "orthocenter", appendix pointers, example-is-not-coverage), and the established-facts digest. The next subject's batch would re-type all of it from memory.
+
+**Why:** the learning-propagation rule — a durable artifact, not prompt archaeology. The trap list is exactly the part that prevents false verdicts, and it grew per subject (Chemistry's -s-/-z- → Physics' step-up/NOR → Maths' seven new ones).
+
+**How to apply:** add a "Per-subject addenda" section to `scripts/syllabus/RULING_BRIEF.md` (or a sibling `RULING_ADDENDA.md` the brief points at), one block per subject: corpus name, renumbering note, subject trap list, PDF paths. The generic trap catalogue in [[corpus-search-for-coverage-rulings]] is already updated; this is the agent-facing copy.
+
+### ~~Wire the syllabus audits into an npm script~~ — **DONE 2026-08-07**
+
+**Shipped same day** — `npm run syllabus:audit` (`scripts/syllabus/audit-all.ts`: directions --ci gate + per-subject alignment gate + spine triage). **Its FIRST run caught a real defect**: `audit-alignment` was subject-blind too (`ncertByKey` collides `class|section_no` across subjects — 82 manufactured "unbacked pair" failures on maths, and chemistry/physics had been passing on collision-order luck). Fixed by scoping the fetch to the subject; chemistry's split came back exactly its historical 129/39/25, proving the fix. All 7 probes green. Deliberately NOT wired into prepush (live-DB scans). Original entry follows.
+
+`audit-directions --ci`, `audit-alignment`, and `audit-spine` are run ad-hoc after each syllabus change. The 2026-08-07 session proved why standing execution matters: `audit-directions` had silently gone from 0 to 129 (false) contradictions the moment the Maths pointers landed, and nothing ran it until the end-of-phase pass. Note also `audit-directions` accepts but IGNORES `--subject` (it audits globally by design now that it's subject-scoped internally) — its docstring should say so.
+
+**Why:** a probe that only runs when someone remembers is a probe that catches drift late.
+
+**How to apply:** `"syllabus:audit": "tsx scripts/syllabus/audit-directions.ts --ci && tsx scripts/syllabus/audit-alignment.ts && tsx scripts/syllabus/audit-spine.ts"` in package.json (audit-alignment/audit-spine may need per-subject loops or an --all mode), run it after any syllabus commit; optionally fold into prepush-quick since it's DB-read-only and fast.
+
+### ~~Maths syllabus map — Phase 3b rulings + the two derived edges (deferred by scope decision)~~ — **DONE 2026-08-07**
+
+**All three numbered items shipped the same day** (commits `e12614b`, `5c32f6b`, `fbbb6a5`, `8500c6a`, `134f4ca`, pushed `b035c45..134f4ca`): (1) all 308 bank subtopics ruled (10 agent slices, 5/5 blind controls, ~25 claims re-verified); (2) `derive-board-status --subject=maths` → 903 matrix rows; (3) the NCERT→SB edge → 128 authored rulings, alignment table 0→153 NCERT cells / 89 backed pairings. En route: `audit-directions` was found subject-blind (129 manufactured contradictions) and fixed. **Signed-in browser eyeball of `/dashboard/syllabus/maths`: verified by the user 2026-08-07** — the ship is fully verified end-to-end. Original entry follows.
+
+Original scope note (superseded):
+
+The Mathematics syllabus map shipped Phases 0–3a on branch `syllabus-maths` (registry + bank-name alias seam · SB spine 408/33 · NCERT spine 244/27 · exam-bank spines JEE 112 + CET 85 + NDA 111 = 308 rows, ZERO rulings). `/dashboard/syllabus/maths` renders every cell honestly UNASSESSED. The user chose "spines only, rulings later", so the remaining work, in dependency order:
+
+1. **Phase 3b — rulings for the 308 bank subtopics** (JEE 112 → CET 85 → NDA 111), the dominant cost. Needs first: `dump_maths_corpus.py` for both books (NOTE: the SB Maths text layer garbles math — Sinhala glyphs for ∫, flattened 2-D math — so prose-term search works but formula-level evidence needs page renders; the NCERT Maths layer is cleaner), `dump-sections-handout.ts --subject=maths` (emits the renumbered SB refs — Part-2 chapters are stored +9/XI and +7/XII vs print, documented in `dump_sb_maths_sections.py`), and authoring per `RULING_BRIEF.md` in reviewed agent batches with blind controls (the Chemistry/Physics method). Rulings as DATA via `commit-bank-rulings.ts`.
+2. **`derive-board-status.ts --subject=maths`** after 3b — the chapter-matrix exam columns derive from the covered_by pointers (guarded: refuses to overwrite without --force).
+3. **NCERT→SB edge** (the alignment table's NCERT column; renders "not mapped yet" until authored — the shipped Physics posture). ~128 top-level NCERT sections.
+
+Reconciliation notes that will matter in 3b: JEE Maths has ONE subtopic with zero PUBLIC PYQ (Trigonometric Identities → Sum-Product Transformations, 11 practice rows) — correctly absent from the spine; JEE's 4 old-syllabus subtopics (Mathematical Reasoning + Height & Distance chapters, dead at liveFromYear 2024) are in the spine but excluded from live-gap analysis; and the JEE bank subject row is literally `"Maths"` (the `bankSubjectNames` alias seam in `subjects.ts` handles it — any NEW script joining the bank by subject name must use `bankSubjectNames()`, not `.eq`).
+
+
+
+### ~~Scope `validate-db` (and `cleanup-latex`) by paper — they take NO arguments and sweep the whole exam~~ — **DONE 2026-08-06, but NOT as specced**
+
+The measurements were right (verified independently: 10,634 rows, **10 MB** of JSON on the wire per run, ~0.19 MB scoped to a paper, so ~200 MB across ~20 runs). **The diagnosis was wrong.** The README documents `validate-db` at step 5 as *"Once at the END of a batch (NOT per paper)"* and invokes it with **no arguments** — so the whole-exam scan is BY DESIGN. The real defect was that the script **silently swallowed** arguments it never claimed to take, so a per-paper misuse reported a confident success and survived twenty runs. Had run 1 errored, the cost would have been 10 MB, not 200.
+
+The suggestion also wrongly bundled the two scripts. `cleanup-latex` must **not** get a paper scope: it is non-idempotent (eats a trailing `\ ` per run) and it **writes**, so a per-paper habit would corrode content and rewrite rows outside the pass — the `scan-flip` unscoped-write class, warned about two gotchas below it in the same README.
+
+**Shipped instead:** a shared `rejectUnknownArgs` in `scripts/jee/config.ts` (12 TDD cases, `tests/jee-cli-args.test.ts`) that refuses an unknown flag or unexpected positional. `validate-db` gains an **optional** `[paperId] [--subject=X]` — both genuinely narrowing the query (`--subject` resolves to `subject_id` and fails on a typo, rather than decorating the log line) — prints its scope on the first AND summary lines, and exits 1 when the scope matches nothing. `cleanup-latex` gets **rejection only**. Verified live: rejections fire on all three bad forms; scoped runs read 179 rows (paper) and 59 (paper+subject) against 10,634 unscoped, a 180× reduction; and the documented bare invocation still reports exactly 10,634.
+
+**Noticed while verifying, NOT fixed:** the whole-exam sweep now reports **KaTeX-broken: 1**, 13 dangling artifacts, 32 render-corruption and 57 soft "incomplete" flags. CLAUDE.md records KaTeX-broken at 0 of 7,436 as of 2026-08-01, so the 1 is new — most likely from the Chemistry ingest. Worth a look, separately from this item.
+
+`scripts/jee/validate-db.ts` contains **zero references to `argv`**: it silently ignores any arguments passed
+to it. Through the Chemistry ingest it was invoked ~20 times as `validate-db.ts <paperId> --subject=Chemistry`
+and every single run scanned the entire JEE exam. Measured: **10,634 rows × 960 B = ~10.2 MB per run**, versus
+**0.159 MB** scoped to one paper — a **64×** difference, ~0.20 GB across the session. `cleanup-latex.ts` has the
+same no-arg whole-bank behaviour (already noted in the README gotchas). The summary line prints
+`10634 questions checked` with no indication of scope, which is what let the misuse go unnoticed for twenty runs.
+
+Analysed and specced this session; implementation deliberately **not** done — the user chose to defer it.
+
+**Why:** the per-paper step of the documented loop pays a whole-bank cost it does not need, and the run happened
+to coincide with the Supabase project hitting `exceed_egress_quota` and being restricted. This was not the main
+cause (CLAUDE.md records 11.48 GB against a 5 GB allowance measured 2026-08-05, *before* the session) but it is
+avoidable waste that grows with every new exam. Silently swallowing an argument is also the same footgun class as
+`scan-flip` taking a filename rather than a paper id — both report a confident, wrong-scoped success.
+
+**How to apply:** make the arguments work — optional `<paperId>` positional plus `--subject=`, scoping the query
+by `source_file` (resolved from the paper JSON) and subject. **Keep unfiltered as the default**, because the
+bank-wide sweep has twice earned its keep (it caught the pre-existing `2025-apr07` Q106 and a `2021-p16` Q29 break
+that `scan-flip` passed). Print the scope on the summary line and warn when unfiltered, mirroring `audit:omml`,
+which CLAUDE.md already documents as "PASS THE FILTER after an ingest". Then update the README per-paper loop and
+`AGENT_BRIEF.md` step 4 to pass the paper id, leaving the batch-end sweep full.
+
+### Push the test-isolation merge + add the TEST_* secrets + watch the first CI run
+
+*Partially stale, corrected 2026-08-07: the merge **was** pushed — `push.log` records `f264852..9cbdd80`, and several pushes have landed since. Only the secrets + first-CI-run half of this item is still open; if CI has been green meanwhile, the secrets already exist and this can be struck entirely.*
+
+The test-isolation work (merge `9cbdd80`: dedicated test project `rjwuwmrzkyergflmmfxq`, prod-guard, prod-contract split, CI changes) is merged to local `main` but **not pushed**, because CI's test step will fail until the three `TEST_SUPABASE_URL` / `TEST_SUPABASE_ANON_KEY` / `TEST_SUPABASE_SERVICE_ROLE_KEY` repo secrets exist (values = `.env.test.local`; steps were given in-chat 2026-08-06).
+
+**Why:** until pushed, CI and Vercel still run against the pre-isolation code; and if anything ELSE is pushed first without the secrets, CI goes red on the guard doing its job — which would look like a regression.
+
+**How to apply:** add the 3 secrets (repo → Settings → Secrets and variables → Actions) → push `main` → watch the run: the "Tests (fixture-writing)" step should target the test project and the "Prod-contract" step prod. Also note this partially supersedes ledger row 32's "staging is NOT recommended" verdict — a separate test project WAS built, but for the fixture-leak class (which row 32 correctly identified as the one failure mode only a separate DB fixes), not for the flake/egress symptoms row 32 resolved at their causes.
+
+### Fix the three test files with missing/conditional cleanup (now low-stakes)
+
+`export-route-kind.test.ts` has **no afterAll at all** (leaks `rate_limits` rows every run — 9,305 accumulated in prod since May, now swept); `quiz-snapshot` + `quiz-slug-numbering` clean up **only if their first test succeeded** (delete-by-captured-variable instead of delete-by-stamp-pattern). Since 2026-08-06 these leak into the **test** project only, and `npm run testdb:reset` re-baselines it — so this went from prod-pollution to hygiene.
+
+**Why:** a test DB that silently accumulates crumbs eventually produces confusing assertion drift (the browse-query ≥150-count class), and the reset is a manual step someone has to remember.
+
+**How to apply:** on the next touch of each file: add an afterAll to export-route-kind deleting `rate_limits` rows matching its `kind-test-<RUN_ID>-` stem; switch the two quiz files' afterAll to delete by their `snaptest<stamp>`/`slugtest<stamp>` slug patterns rather than captured ids. No urgency — fold in, don't make a dedicated pass.
+
+### Know the test project's idle-pause failure mode (and consider a keep-alive)
+
+The free-tier test project **pauses after ~7 days of inactivity**. Regular CI pushes normally prevent it, but after a quiet week (holiday, work paused) the next `npm test` / CI run fails with connection errors that look like an outage.
+
+**Why:** the failure is confusing precisely when context has been lost (returning after a break); the fix is a 30-second dashboard unpause, data intact — but only if you remember this is the cause. `scripts/testdb/README.md` documents it.
+
+**How to apply:** either just remember (README covers it), or add a weekly keep-alive: a scheduled GitHub Action hitting the test project's REST endpoint (one `select 1` via anon key) — ~5 lines of workflow. Decide only if the pause actually bites once.
+
+### Recover the 5 straggler questions whose option blocks never parsed
+
+`npx tsx scripts/jee/coverage.ts --subject=Chemistry` reports every short paper's gap as explained by its own
+`skip[]` except five, which are logged in `scripts/jee/CHEMISTRY_RESHAPE_NOTES.md`: 2023-apr08 Q38,
+2025-apr03 Q32 + Q37, 2025-jan22 Q44, 2026-apr04-s2 Q38. All are the same defect — the option block extracted
+empty (structures/graphs drawn as pictures), so `commit.ts` had nothing to insert and the row was silently absent
+rather than skipped.
+
+**Why:** they are the only unexplained gaps in an otherwise fully-reconciled subject, so leaving them keeps a
+permanent asterisk on the completion claim. Now cheap: `apply-option-fixes.ts` exists and the workflow for
+recovering an image-only option block is established.
+
+**How to apply:** for each, render its page, read the four options, write them as a structured
+`optionFix` block into the paper's `_sol_chem.json` (all four labels or none), then
+`apply-option-fixes.ts --apply` → `commit` → `attach-images` → `validate-db` → `scan-flip`. Re-run `coverage.ts`
+afterwards; the SHORT list should then be fully explained by `skip[]` alone.
+
+### Teach `audit:keys`'s `concludedLetter` to prefer an AFFIRMATIVE conclusion
+
+**Revised 2026-08-06 after measuring.** The related *coverage* half of this is now **DONE** — `auditRow` returned ONE flag per row and `IMAGE_OPTIONS` returned BEFORE the key check, so **325 JEE Chemistry picture-option rows had no key cross-check at all**. Fixed by treating `IMAGE_OPTIONS` as informational rather than short-circuiting (genuine defects `BLANK_OPTIONS`/`DUP_OPT`/`DUP_OPT_IMAGE` still outrank the key check). That surfaced 21 previously-invisible mismatches exam-wide (18 Chemistry, 3 Physics) and **+2 in the practice bank**; all 21 were read and every one was a false positive, so no wrong answer had been shipped behind the hole. Chemistry `SOLN≠KEY` went 50 → 67.
+
+**What remains is the NOISE, and the original spec targeted the wrong family.** Classifying all 68: **46 are trailing distractor-dismissal** (“… which is option (B); option (D) is wrong because …”), 15 are statement-set, 7 are match-list. So the proposed match-list + statement-set + `Answer:` fix would catch only 22 of 68 — under a third.
+
+`audit-keys Chemistry` reports 50 `SOLN≠KEY` flags; a ~26-row sample was **entirely false positives** in three
+recognisable families: solutions that end by dismissing the distractors, match-list solutions that end with the
+mapping (`(A)-(III), (B)-(II)…`), and statement-set solutions ending "Hence (A), (C) and (D) only" — where those
+letters are **statement labels in the stem, not option letters**. `Answer: A.` is also missed, because the regex
+expects a space or "is" after the cue word, not a colon.
+
+**Why:** 50 benign flags in one subject is enough to hide a real key error, which is the failure the probe exists
+to catch — the same argument that justified the (now shipped) `IMAGE_OPTIONS` exemption. Not all 50 were checked
+individually, so a real one could already be sitting in there.
+
+**How to apply (revised):** the root error is taking the LAST match. These solutions state the answer
+affirmatively and *then* dismiss the rest, so extend `concludedLetter` to prefer an AFFIRMATIVE construction
+(`is option X`, `which is option X`, `Hence X`, `answer is X`, `Answer: X`) and ignore any letter that follows
+a dismissal cue. Do NOT keep extending the existing reject-phrase list (`fails|is wrong|cannot|does not|would
+not`) — it already misses "ruling out (D)", "is wrong for exactly this reason" and "would require", and that
+is a losing game. Superseded original spec: prefer a terminal `Answer: X`; otherwise ignore a trailing match-list mapping
+(`\([A-D]\)\s*-\s*\(?[IVX]`) and a trailing "Hence …only" statement set. Guard the change by re-running the
+practice probe and confirming its 7 genuine `SOLN≠KEY` still fire — that check caught a prior over-tightening.
+
+### Read the first real `db:health` window and decide whether alerting is warranted
+
+The health tracker shipped 2026-08-07 (merge `da90f24`) with exactly one stored snapshot, so its first report
+could only say "first run — no window to compare". The **second** snapshot, from the daily 02:30 UTC Action, is
+the first that produces a genuine ~24 h delta — and it finally answers the question this whole thread started
+from: **did the `/browse` disk spill actually stop on 2026-08-05, or is it still running?** Cumulative counters
+cannot answer that; only the delta can.
+
+**Why:** the tracker is worthless until someone reads it once and confirms the numbers are believable. This is
+also the moment to judge whether the thresholds are calibrated (see [[monitor-threshold-calibration]]) — the
+first two runs already forced two rule changes, so a third is plausible.
+
+**How to apply:** open the "Database health" workflow run, or `npm run db:health -- --dry` locally. Check that
+`FINDINGS` is empty or explicable, that `disk spill` for the window is small, and that no query shows a per-call
+spill. If the numbers hold for ~a week, consider whether any rule deserves to become an alert; until then keep
+it report-only, deliberately. Note `largest chapter` is currently **531** against the 1000-row PostgREST cap —
+worth watching as JEE/State Board chapters grow.
+
+### Commit or discard the three uncommitted LWS mock papers
+
+`scripts/practice-paper/config.ts` carries ~457 uncommitted lines (GAT Mock W1, GAT Mock G1, English Mock PK1,
+built 2026-08-07 afternoon), with their `*.records.json` untracked in `scripts/practice-paper/data/` and tagged
+`.xlsx` in `generated-papers/`. There are also uncommitted edits to `scripts/practice/data/*.json` dated
+2026-08-06. None of it was swept into the db-health commit, deliberately.
+
+**Why:** untracked ingestion records are the artifact that makes a paper reproducible; `generated-papers/` is
+gitignored by convention, so if the records are lost the paper cannot be rebuilt. The longer they sit, the less
+certain their provenance.
+
+**How to apply:** confirm the three papers are final, then commit `config.ts` + the three `data/*.records.json`
+together (no `.xlsx` — see [[no-commit-generated-xlsx]]). Review the `scripts/practice/data/*.json` edits
+separately; their origin was not established this session.
+
+### Fix the `/api/export` 500 on a malformed cart id
+
+A malformed id in the `localStorage` `qb_cart` blob 500s the entire export with a bare "internal error" — the
+ids go straight into a Postgres `uuid` column with no format check (`parseCart` in `src/lib/cart/storage.ts`
+accepts any string). Proven in an earlier session, still unfixed. Recorded here because its only prior home was
+the notes-egress memory, which is now marked CLOSED and may stop being read.
+
+**Why:** it is user-facing and silent — a teacher whose cart got corrupted sees only "internal error" with no
+route to recovery, and the cart is the one piece of state that survives an OAuth round-trip.
+
+**How to apply:** validate ids in `parseCart` (drop non-uuid entries rather than throwing, so a partially
+corrupted cart still exports), and return a 400 with a usable message if nothing valid remains.
+
+---
+
+## 2026-08-05
+
+### Fix or retire `export-chapter-map-docx.ts` — it queries with NO subject filter
+
+`scripts/syllabus/export-chapter-map-docx.ts` builds the NCERT→State Board chapter map as a Word file, and it pages `syllabus_concepts` and `syllabus_concept_exams` with **no `subject` filter at all** (`db.from(table).select(cols).range(...)`). It then keys State Board chapters by `class|chapter_no` and NCERT chapter names by `chapter_no`. Now that Physics shares those `source` values, class numbers and chapter numbers, **re-running it would emit Chemistry mappings carrying Physics chapter labels**. Its sibling `export-chapter-map-xlsx.ts` already takes `--subject`; this one only guards against `--subject` being misread as its class positional.
+
+**Why:** this is the exact bug class Phase 0 fixed in `src/lib/syllabus/query.ts` on 2026-08-03 — "source alone merges two subjects' Ch.1" — but that pass only covered the loaders, and this exporter does its own fetching. The two shipped Chemistry docx in `…/State-Board/03. 11th/` are **clean** (verified against 18 Physics chapter names; they predate the Physics seed), so nothing is wrong today — but the script is a loaded gun for whoever regenerates them next, and the failure is silent: a plausible-looking document with the wrong labels.
+
+**How to apply:** decide between two options. **(a) Fix it** — add `requireSubjectArg` and `.eq("subject", cfg.subject)` to both fetches, and put the subject in the title instead of the hardcoded "Chemistry" string at line ~186. Cheap, and it keeps the WEIGHT column plus the fact that it reads the hand-authored NCERT→State Board edge directly, which is stronger evidence than a derivation. **(b) Retire it** in favour of `export-chapter-maps.ts` (added 2026-08-05), which is subject-scoped and emits BOTH teacher documents — but note it derives NCERT↔State Board from the exam rulings rather than reading edge B, so for a subject that HAS edge B authored (now both) option (a) is the more precise document. Prefer (a), then consider teaching `export-chapter-maps.ts` to prefer edge B when it exists.
+
+### Relax `experimental.cpus: 4` + `staticPageGenerationTimeout: 180` now the query spill is gone
+
+`next.config.mjs` carries both settings solely to throttle around the `/questions` prerender statement timeouts of 2026-08-03. Those were caused by `queryQuestions` spilling ~14 MB to disk per call, which was fixed at the cause on 2026-08-05 (`fa9b627`, production-verified at 0 temp writes and 44 ms). The throttles are now treating a symptom that no longer exists, and `cpus: 4` caps build parallelism on every build.
+
+**Why:** builds are the dominant cost of the gate (~25 MB egress and a couple of minutes each, three per push), so a faster build is felt on every push. Low urgency — the conditional build skip means builds run roughly half as often, which shrank the payoff while this sat in the queue.
+
+**How to apply:** remove both lines, run `npm run gate` twice and confirm zero `statement timeout` / SIGTERM lines and 62x prerendered `.html` files on disk (`find .next/server/app -name '*.html' | wc -l`). If timeouts reappear, restore `staticPageGenerationTimeout` alone first — it was the SIGTERM-mid-retry fix — and only then `cpus`. Do NOT do this in the same push as other risky work; it wants a clean signal.
+
+**ATTEMPTED 2026-08-05 — INCONCLUSIVE, still open.** Half of it is resolved and half is not. **`staticPageGenerationTimeout: 180` is now deliberately KEPT** (comment updated in `next.config.mjs`): it is a ceiling, not a delay, so it costs nothing when nothing is slow, and dropping to the 60s default would only re-expose the SIGTERM-mid-retry edge — there is no upside to removing it. **`experimental.cpus: 4` remains unsettled.** Clean-`.next` A/B gave `cpus:4` 177s → no-cap 527s → `cpus:4` **484s** — the CONTROL failed to reproduce, so the middle number measures nothing. The confound was a concurrent ingestion session loading both the machine and the shared Postgres (3 node processes, 17 DB connections observed mid-run). All three runs produced 623 pages with zero timeout/SIGTERM/ECONNRESET, so removing the cap is not dangerous, merely unproven. **To close it:** re-run on an IDLE machine — no ingestion, no MCP traffic, no dev server — alternating **A-B-A-B** and accepting a result only if the two A runs agree within ~10%. Each build is ~25 MB egress and ~3–9 min, so budget ~100 MB for a four-run experiment and decide whether the build-time saving is worth that before starting.
+
+### ~~Extend the ECONNRESET/fetch-failure retry to the prerender path~~ — **DECLINED 2026-08-05: the library already does it**
+
+**Do not re-propose this.** The premise — "an ECONNRESET is a thrown fetch-level network error and nothing retries it" — is FALSE. Reading the installed `@supabase/postgrest-js` **2.105.3** (pinned in `package-lock.json`, last touched 2026-05-10, so it was active *during* the incident):
+
+- `this.retryEnabled = builder.retry ?? true` — network retry is **ON by default**
+- `RETRYABLE_METHODS = ['GET','HEAD','OPTIONS']` — covers every read we make
+- `DEFAULT_MAX_RETRIES = 3`, exponential backoff 1s → 2s → 4s
+
+So each of the 344 ECONNRESETs in the failing build had **already been retried three times across ~7s of backoff**. They were not transient blips a retry could absorb — the pool was saturated for far longer than any backoff covers. A fourth layer would only multiply attempts (2 × 3 = 6+ per query) and lengthen a build that is already failing. The proposed *implementation* was also wrong: a fetch failure does **not** throw. `PostgrestBuilder.ts:372` catches it and returns `{ error: {message, details, hint:'', code:''} }`, i.e. through the same `error` channel `queryQuestions` already inspects — so "wrap the await in try/catch" would have caught nothing. The real fix for that build was the sort spill (`fa9b627`), and zero ECONNRESETs have occurred since.
+
+<!-- superseded original text below -->
+### ~~Extend the ECONNRESET/fetch-failure retry to the prerender path (original)~~
+
+`isStatementTimeout` in `src/lib/questions/query.ts` matches SQLSTATE 57014 only. An ECONNRESET surfaces as a *thrown* fetch-level network error and is not retried anywhere.
+
+**Why:** demoted from "urgent" on 2026-08-05 — the spill fix removed the cause and there have been zero occurrences since. But Vercel's deploy build still prerenders 689 pages against production by necessity, so a connection-reset burst there can fail a real deploy, and nothing protects it. Cheap insurance rather than a live-failure fix.
+
+**How to apply:** widen the retry predicate to also catch a thrown `TypeError: fetch failed` / `ECONNRESET` (wrap the awaited query in try/catch rather than only inspecting the PostgREST error object), keeping the same 2-attempt budget and backoff. Add cases to the existing query tests. Apply the same guard to the `/questions` landing-page loaders.
+
+### ~~Consider scoping `audit:omml` and `audit:underlines` by `source_file`~~ — **DONE (omml) / NOT NEEDED (underlines) 2026-08-05**
+
+Split on measurement. **`audit:omml` — DONE:** it really did page all 37,636 rows selecting `text, context, solution, options(label, text)` (~16 MB of text alone, ~30 MB with overhead — about a full `next build`). Now takes an optional `source_file` substring applied **in the query** (`ilike`, matching `audit:text`/`audit:keys`), plus the `⚠ NOTHING SCANNED` guard that exits 1 and — importantly — **refuses to overwrite the existing report**, since an empty scoped report replacing a bank-wide one is worse than no report. The markdown heading now states the scope (`SCOPED to source_file ~ "x" (NOT bank-wide)`), because a filtered report titled "Bank-wide" reads as an all-clear for rows it never looked at. Verified: nonsense filter → warns/exits 1/report untouched; lowercase `jee_2023` → 1,725 rows (proving `ilike` against mixed-case `JEE_2023_*.docx`), 0 failing zones, scoped heading rendered.
+
+**`audit:underlines` — NOT NEEDED, the suggestion was wrong.** It does not sweep the bank: it already filters server-side with `.or("text.like.*underline*,…")` on questions and `.like("text","%underline%")` on options. Measured: **607 questions + 11 options** out of 37,636, ~0.6 MB. Adding a `source_file` filter would be complexity for no saving.
+
+<!-- superseded original text below -->
+### ~~Consider scoping `audit:omml` and `audit:underlines` by `source_file` (original)~~
+
+`audit:text` and `audit:keys` both take a `source_file` substring (fixed 2026-08-05 to be case-insensitive and to fail loudly on a zero-row scan). `audit:omml` and `audit:underlines` accept no argument and always sweep the whole 37k-row bank.
+
+**Why:** an unfiltered bank-wide sweep is ~50 MB of egress — about two full builds — and after an ingest only the new rows are unvetted. Not urgent: unlike `audit:text`, neither is part of the documented post-ingest ritual, so they run rarely.
+
+**How to apply:** mirror the `audit:text` pattern exactly — `process.argv[2]` → `.ilike("source_file", '%'+filter+'%')` on the paged query, plus the `⚠ NOTHING SCANNED` guard and non-zero exit when a filter matches nothing. Both scripts already page correctly, so it is a two-line change each.
+
+## 2026-08-04
+
+### ~~Remove the `?? "full"` default from `ingest-exam-spine.ts`, or retire the script~~ — **DONE 2026-08-04**
+
+**Took option (a) — retired.** `scripts/syllabus/ingest-exam-spine.ts` (1,186 lines) deleted; its 226 inline rulings exported to `scripts/syllabus/data/chem-jee-rulings.json`. Three things proven before deleting: the replacement rebuilds the spine **318/318 identical, 0 drift** (both scripts number continuously across exams, so the feared ref-shift was unfounded); the port re-applies **checksum-identical**, 298 rows unchanged; and — correcting my own account — **JEE Chemistry had ZERO defaulted rulings**, not the ~72 I assumed. All 298 rows either cite a section or carry a deliberate note, including the 4 uncited-`full` rows, which are the two `Organic Reaction Mechanisms` catch-alls whose notes say a catch-all maps to no single section. So the original "the author adjudicated the corpus" claim was true *of JEE*; only its extension to MHT-CET and NDA was false. One exam-spine path and one ruling format remain.
+
+The Chemistry **data** was fixed on 2026-08-04 — all 169 MHT-CET + NDA subtopics are now adjudicated with cited sections. The **script that created the problem is untouched.** `scripts/syllabus/ingest-exam-spine.ts` line ~1109 still writes `status: cov?.status ?? (adj ? adj[0] : "full")`, so the next exam spine ingested through it inherits the identical defect: every unruled subtopic ships as a confident `full` that renders indistinguishably from a real ruling. Its replacement, `ingest-bank-spine.ts`, already does the right thing (writes concepts, **no** link rows) and is what Physics used.
+
+**Why:** this is the only remaining copy of a default that has already shipped a false verdict across 169 subtopics carrying 2,427 PYQ, 14 of which were wrong. The data fix does not prevent recurrence — the next subject or exam added through the old script reproduces it exactly, and the failure is silent by construction (see [[default-becomes-assertion]]). Leaving both scripts in the tree also makes it a coin-flip which one a future session reaches for.
+
+**How to apply:** decide between two options. **(a) Retire it** — `ingest-exam-spine.ts` is now only needed for its 226 inline JEE Chemistry rulings; port those to `data/chem-jee-rulings.json` (the format `commit-bank-rulings.ts` already validates under four guards) and delete the script, leaving one spine-ingest path for every subject. **(b) Narrow it** — change the default to omit the link row entirely and re-run, accepting that JEE Chemistry's "everything else is covered" conclusion then has to be re-stated explicitly rather than inferred. Prefer (a): it removes the fork, and it puts JEE Chemistry's rulings under the same guards and the same reviewability as Physics and the two exams fixed today.
+
+### Feed the State Board "Plank" misspelling into `errata.ts`
+
+The Balbharati **Std XI Chemistry** Structure-of-Atom chapter spells Max Planck's name **"Plank"** throughout — 5 occurrences in the chapter, and the correct spelling scores **zero** across the whole book. Found incidentally while ruling MHT-CET Chemistry MHT-259 (Electromagnetic Radiation), and verified against the corpus: NCERT has 19 correct "Planck", the State Board has 0.
+
+**Why:** the project already runs a publisher-erratum pipeline (`scripts/stateboard/errata.ts`, 151 items across 12 chapters) whose whole point is feeding defects back to Balbharati, and a physicist's name misspelled throughout a chapter is exactly the class of item it collects. It costs nothing to add and it is the kind of thing a publisher can actually fix in a reprint. It also has a small student-facing cost: a student searching "Plank's constant" finds nothing.
+
+**How to apply:** this is a *textbook* defect, not a bank defect — no question is wrong, so there is nothing to re-key and no `content_hash` to recompute. The errata convention attaches to a question's `solution` via a `[Textbook …]` bracket, which does not fit a book-wide spelling error, so decide the shape first: either add a chapter-level errata entry if `errata.ts` supports one, or attach a single `[Textbook misprint: the book prints "Plank" for Planck throughout Std XI Ch.4]` note to one representative Structure-of-Atom question. Do **not** bracket all five occurrences — that is noise, not an erratum.
+
+### Rule the remaining JEE Chemistry subtopics against the *NCERT* column with the new tooling
+
+JEE Chemistry's 149 subtopics were adjudicated long before `search_corpus.py` and the per-chapter corpus existed, and **41 of them carry no NCERT home** — a number that has never been re-verified against book text with the current method. The two exams ruled on 2026-08-04 used the corpus for every single verdict; JEE Chemistry did not.
+
+**Why:** the 2026-08-04 batch found that five separate spelling and naming traps (`-s-`/`-z-`, `bisulphite`/`hydrogensulphite`, `bidentate`/`didentate`, the umlaut in `Huckel`, the book's own `Plank`) each produce a *false absence* — and a false `not` is the most damaging verdict this map can carry, because it tells a teacher a topic is missing when it is taught under another name. JEE Chemistry's 41 no-NCERT-home rulings were authored without that tooling, so some fraction of them are plausibly naming artefacts rather than real gaps. This is a *verification* pass over shipped work, not new authoring.
+
+**How to apply:** permission-gated (it touches shipped rulings). Dump the 41 subtopics whose `CBSE Class 12` ruling is `not`, and for each run the varied-vocabulary check the brief prescribes — both spellings, the alternate reagent name, and the topic's synonyms — against `chem-corpus.json`. Expect most to hold (NCERT genuinely deleted seven chapters), but any that flips is a `not` → `partial`/`full` correction with a citation. Cheap: no new corpus, no new agents necessarily, and the 500-char note guard now catches over-long notes in the dry run.
+
+---
+
+## 2026-08-03
+
+### ~~Re-derive the stale State Board `status` rulings, or retire the column's authority~~ — **DONE 2026-08-03**
+
+**Shipped (`0d3b0a1`).** Option (a) — full derivation — turned out to be IMPOSSIBLE and the entry was wrong to lead with it: the NDA (47) and MHT-CET (122) spines carry **zero** `covered_by` pointers, so half the exams have nothing to derive from. Took option (b) instead. Generalising the probe beyond JEE found **2 more contradictions I had not seen** (CBSE Class 12, States of Matter 10.2/10.2.1 vs NCERT's Hydrogen Bonding), so 13 distinct (concept, exam) rulings were corrected `not` → `partial`, each with a dated note. `partial` not `full`: a pointer proves the exam asks *something* in that section, not that the whole section is needed. New standing probe `scripts/syllabus/audit-directions.ts` (`--ci` exits 1); negative-controlled by planting a contradiction and confirming it fires. Note: my earlier "16" counted pointer HITS, not concepts.
+
+`syllabus_concept_exams.status` on the **State Board spine** answers "does exam X require this concept?" and was authored *before* the `covered_by` mappings existed. Nothing keeps the two directions in agreement, and they have drifted: a probe found **33 State Board concepts marked `status='not'` for JEE that a JEE subtopic explicitly points at** — 16 of them from chapters JEE still sets (Std XI Ch.8 Elements of Group 1 and 2 ×14, Ch.10 States of Matter ×2). The view that surfaced this contradiction was removed on 2026-08-03, so **nothing renders these rows today** — but the data is still wrong.
+
+**Why:** the defect is latent, not fixed. Any future surface that reads the State Board `status` column inherits it, and the failure mode is the worst kind: a confident, plausible, wrong verdict ("Ch.8 is not required by JEE") that a teacher could act on by dropping a chapter JEE actively examines. It also blocks ever re-introducing an honest "what can I skip?" view, which is a genuinely useful question the page currently cannot answer.
+
+**How to apply:** two honest options. **(a) Derive it** — replace the stored `status` for the State Board spine with a value computed from the `covered_by` pointers (pointed-at by a live exam subtopic ⇒ required; pointed-at only by a retired chapter ⇒ no longer required; unpointed ⇒ not required *by the bank*), so the two directions cannot disagree by construction. This is the structural fix and matches how the alignment table already works. **(b) Patch the 16** back to `partial` and add `scripts/syllabus/audit-alignment.ts`-style standing probe asserting no `status='not'` row is pointed at by a live exam subtopic — cheaper, but leaves two datasets that must be kept in step by discipline. Prefer (a). Either way, keep the probe: it is what found this.
+
+### ~~Load the syllabus tables once per request instead of ten times~~ — **DONE 2026-08-03**
+
+**Shipped (`0d3b0a1`).** New `loadSyllabusData(db)` + an optional `data` on every loader's opts; `/dashboard/syllabus` loads once and threads it through all six. Direct `fetchAll` sites in `query.ts`: **10 → 2** (the pair inside the shared loader). Loaders still fetch for themselves when `data` is omitted, so scripts and tests calling one loader are unaffected. Verified by running every loader BOTH ways and diffing the serialised output — byte-identical.
+
+`/dashboard/syllabus` runs five loaders — `loadSyllabusMatrix`, `loadMappingRows` ×2, `loadExamSpineSummaries`, `loadAlignmentRows`, `loadNcertGaps` — and **each independently pages the full `syllabus_concepts` and `syllabus_concept_exams` tables**. That is roughly ten full-table fetches of the same ~1,600 concepts and ~3,400 links on every page load.
+
+**Why:** collapsing the tables behind `<details>` on 2026-08-03 made the page shorter to *scroll*, and explicitly did not make it faster to *arrive* — this is why. The page is admin-only and `ƒ`, so it is not a public-traffic cost, but it is the kind of waste that quietly triples when a fourth book or a second subject is added, and the fix is mechanical rather than clever.
+
+**How to apply:** hoist the two `fetchAll` calls to the page (or a small `loadSyllabusData(db)` returning `{concepts, links}`), and change each builder to take that payload instead of a `db` handle. The builders are already pure below the fetch, so this is a signature change plus deleting the fetches — no logic moves. Verify by counting queries in the Supabase log before and after, not by timing (the tables are small enough that wall-clock may barely move while the query count drops 10× — the point is the shape, not today's latency).
+
+### Investigate the elevated DB-integration flake rate
+
+Three consecutive full-gate runs failed on 2026-08-03, each on a **different** DB-integration file (`principle-tags-rls` ×2 assertions, then `batches-rls` ×5 with `new row violates row-level security policy`), and **every one passed in isolation immediately afterwards** (14/14, then 13/13). The fourth run was clean. This is the known shared-prod-DB contention pattern, but three in a row is more than the usual one-in-several.
+
+**Why:** the flake is currently absorbed by re-running, which works but trains the reflex "gate failed, run it again" — and that reflex is exactly what would let a *real* regression through. It also costs ~4 minutes per spurious failure, and it happened during a session that already had a genuine build failure, making triage slower than it should have been.
+
+**How to apply:** first establish whether the rate actually rose or the sample is small — count failures per gate run over the last ~20 runs before concluding anything. If real, the likely causes in order: (1) fixture-org collisions between files running in parallel (the `batches-rls` symptom, an RLS *policy* rejection, points at a teacher/branch fixture from another file being swept mid-run — see [[test-data-leak-org-signal]]); (2) contention with the same Postgres the `/questions` prerender hammers, now that `next build` runs in the same gate; (3) genuinely slower prod DB. Cheapest mitigation if (1): give the DB-integration files a shared serial pool (`poolOptions.threads.singleThread` or a vitest `sequence.concurrent: false` on that glob) so they cannot race each other.
+
+## 2026-08-01
+
+### ~~Make the `/questions` prerender resilient at the source, not just via a retry~~ — **DONE 2026-08-03**
+
+**Shipped (`5a11ef4`):** option (a). `next.config.mjs` gains `experimental: { cpus: 4 }` (caps the prerender burst — the actual cause) + `staticPageGenerationTimeout: 180`. The second turned out to matter as much as the first: Next's 60s worker limit was SIGTERMing pages **between** `queryQuestions`' 57014 retries, converting a recovering page into a hard build failure. Before: 4–6 statement timeouts + 2 SIGTERMs per build. After: **zero of both, across two consecutive builds.** The retry is kept as defence-in-depth, as the entry recommended. Option (c) — serving the landing pages from a cached aggregate — remains the durable fix if the burst widens again.
+
+`next build` began failing while prerendering the 317 `/questions/<exam>/<subject>/<chapter>` landing pages with `canceling statement due to statement timeout` — a *different* handful of pages on each run, spanning three exams. `EXPLAIN (ANALYZE)` showed the chapter query runs in **13 ms**, so this is not a slow plan: Next prerenders those pages concurrently and this session's ~1,600 new rows tipped the burst past Postgres' `statement_timeout`. Shipped mitigation is a bounded retry on SQLSTATE 57014 in `queryQuestions` (2 attempts, short backoff), which took the build from failing twice consecutively to clean.
+
+**Why:** the retry treats the symptom. As the bank keeps growing (Chemistry, more exams), the burst gets wider and two retries will eventually not be enough — and this build runs on **Vercel deploys**, so a failure there blocks the site from updating, not just a local gate. It also silently lengthens every build that hits it.
+
+**How to apply:** pick one of — (a) cap static-generation concurrency in `next.config.js` (`experimental.cpus` / `workerThreads:false`) so the prerender stops stampeding the DB, measuring the build-time cost; (b) raise `statement_timeout` for the build's role only; or (c) reduce the per-page cost by serving the landing pages from a cached aggregate rather than a live `questions` query. Option (a) is the smallest change; (c) is the durable one. Keep the retry regardless — it is correct defence-in-depth.
+
+### ~~Give `audit:keys` a picture-option exemption so `DUP_OPT` stays a real signal~~ — **DONE (verified 2026-08-06)**
+
+Found already implemented in `scripts/practice/audit-keys.ts` (the option-shape branch returns `IMAGE_OPTIONS` rather than `DUP_OPT` when every option is a picture). Confirmed on the now-complete Chemistry corpus, which is exactly the case this entry predicted would get worse: `audit-keys Chemistry` reports **325 IMAGE_OPTIONS separately from 5 DUP_OPT** across 2,539 MCQs, so the duplicate-option signal survives the picture-heavy organic questions. Struck on verification, not on new work. (Original spec kept below.)
+
+`npx tsx scripts/jee/audit-keys.ts Physics` now reports **49 `DUP_OPT`** flags, every one a false positive: they are picture-option rows whose four option *texts* are empty by construction (the options are attached images), so the probe sees four identical blank strings and calls them duplicates. Verified all four option images are attached on every flagged row, i.e. the questions render correctly.
+
+**Why:** 49 known-benign flags is enough noise to hide a real duplicate-option defect in the same subject — precisely the failure the probe exists to catch. The signal-to-noise will get worse when Chemistry (whose organic-structure questions are heavily picture-option) is ingested.
+
+**How to apply:** in `auditRow`, skip the duplicate-option check when every option has empty/whitespace text AND `image_url IS NOT NULL` — i.e. classify the row as `IMAGE_OPTIONS` rather than `DUP_OPT`, reported separately (or not at all). Keep flagging the genuinely broken case: blank option text with **no** image, which is the real "unusable row" defect that the separate legacy-2021 restore item covers.
+
+### Triage the residual `validate-db` counters — 37 dangling artifacts, 31 soft "incomplete?", 6 render-corruption
+
+**The urgent half of this was DONE 2026-08-01** (`6cee84b`): triaging the then-46 `dangling artifacts` showed 8 of them were NOT hygiene but 4 PUBLIC rows whose options had been shredded by the option splitter — a `\[…\]` block straddling options B..D, leaving the middle options with no delimiters at all, and in two rows **the unreadable option was the keyed answer**. Fixed and pushed; the counter is now 37. What remains is genuinely low-priority.
+
+**Why:** the residue is ~36 cosmetic trailing backslashes plus `JEE_2021_Paper12` Q54 (truncated in source, already deliberately PRIVATE), and 31 soft "visual-ref stem but no image" flags where the probe cannot distinguish a genuinely missing figure from a stem that merely says "shown". Left permanently un-triaged, both counters stop being watched and a real regression hides in a stable-looking number.
+
+**How to apply:** for the trailing backslashes, extend the existing zone-repair sweep to strip a field-final `\` outside math (safe — it renders as a stray character). For the 31 `incomplete?`, dump them with `source_file`/`question_number` and split into (a) figure genuinely missing → recover from the source `media/` via `attach-images.ts`, (b) stem is self-contained despite the wording → teach `VISUAL_REF` to exclude the shape, so the counter can reach a meaningful zero. **Lesson from the completed half: do not assume a counter is benign because it is stable — sample it before deciding.**
+
+## 2026-07-29
+
+### `/browse` is still uncached — decide whether to give its common filters real paths
+
+The 2026-07-29 work made 622 pages cacheable, but `/browse` reads `searchParams` and is therefore **permanently dynamic in the App Router** — no `revalidate` can ever apply. It is the site's single most-visited page (1.9K of 7,638 page views last month) and now the largest remaining compute line.
+
+**Why:** every other surface is now served from cache in 13–236ms while `/browse` still costs a full server render on every hit, including every crawler pass. The 317 landing pages give students a cached path to most of what they'd use Browse for, so this may be acceptable indefinitely — but it should be a *decision*, not a default. Re-check the Vercel Active-CPU chart about a week after the 2026-07-29 deploy: if the daily bars have not fallen materially, the residue is `/browse` and this becomes the next piece of work.
+
+**How to apply:** three options, in ascending cost. (1) **Accept it** and rely on the landing pages — cheapest, likely right for now. (2) **Extend the landing-page family** to cover the next-most-common filter combinations (e.g. chapter + difficulty, or chapter + PYQ year) so more traffic lands on a cached path. (3) **Move the interactive list behind a CDN-cached Route Handler** returning JSON with `s-maxage`, leaving `/browse` a thin client shell — effective but costs server-rendered HTML on the most-indexed interactive surface, so weigh the SEO trade first.
+
+### Make the seven OG-image routes static instead of edge functions
+
+`src/app/**/opengraph-image.tsx` (7 routes) all declare `runtime = "edge"` and render PNGs at request time via satori/resvg — CPU-dense work whose cache is busted on every deploy. Subtracting the middleware line from the edge line in the Vercel Active-CPU breakdown puts them at **~11 minutes/month, roughly 4.5%** of the whole compute budget.
+
+**Why:** these are social-preview cards that almost nobody requests interactively — they are generated for crawlers and link unfurlers. Paying runtime CPU for an image that changes only when the guide's title changes is pure waste, and this project deploys frequently enough that the cache rarely survives.
+
+**How to apply:** render each card once at build (or check a PNG into `public/`) and reference it via the `openGraph.images` metadata field instead of the dynamic `opengraph-image` convention. Keep the dynamic route only where the image genuinely varies per record (`/quiz/[slug]/opengraph-image` is the one plausible keeper). Verify afterwards that the edge line in the Active-CPU breakdown drops to roughly the middleware line.
+
+### Audit Google Search Console before adding more content
+
+Web Analytics for Jun 28 – Jul 28 shows **~196 of 7,638 page views (2.5%) arriving from Google search** — roughly six visits a day — against a corpus of ~24k public questions, 77 notes chapters and 10 guides. The 317 new landing pages address the *structural* half of the problem (Google previously had one URL for the whole bank), but they cannot fix an indexing problem.
+
+**Why:** the entire content strategy is SEO-led. If the existing pages are not indexed, adding another exam or another 500 questions changes nothing — and that is a different diagnosis with a different fix than "not ranking". This is plausibly the highest-leverage open question in the project, and it is cheap to answer.
+
+**How to apply:** open Search Console for `pyqvault.com` and check three things — Coverage (how many of the ~908 sitemap URLs are actually indexed vs excluded, and why), Performance (which queries produce impressions, and average position), and whether the 2026-06-04 rebrand from the old Vercel domain left the site with a young-domain penalty or unconsolidated signals. **Submit the new sitemap only after confirming the 2026-07-29 caching fix is live in production** — 317 fresh crawlable URLs against an uncached site would have raised compute rather than lowered it, and that risk is only retired once `x-nextjs-cache: HIT` is confirmed on the deployed site.
+
+### Source the English-medium 2023 Social Sciences papers
+
+The MH-SSC-10 Geography and History ingestion covers 2020, 2022, 2024, 2025 and 2026 — **2023 is missing from both** because the only 2023 PDFs on disk are Marathi-medium prints (`N 964` GEOGRAPHY PAPER-II **(M)**, `N 956` HISTORY & POLITICAL SCIENCE PAPER-I **(M)**), wholly Devanagari, with no English sibling anywhere in `PYQPs/`.
+
+**Why:** it is the only year-gap in an otherwise complete revised-course run, and it is a sourcing problem rather than a work problem — the pipeline, catalogs and briefs are all built and proven, so adding the year is two lines in `PAPER_SPECS` plus a standard transcription pass. A full English translation of geog-2023 was drafted this session and **deliberately discarded**: `content_hash` is stem-derived, so translated rows could never dedup against the real English paper and would permanently duplicate the sitting the day it is sourced.
+
+**How to apply:** obtain the `(E)` prints for the March 2023 Social Sciences Paper I and Paper II (the board publishes both media; the English codes will differ from `N 956`/`N 964`). Drop them into `PYQPs/` as `MH_SSC_10_{Geography,History}_2023.pdf`, re-add `["Geography", 2023]` and `["History", 2023]` to `PAPER_SPECS` in `scripts/mh-ssc-10/config.ts` (the exclusion comment there explains why they were removed), then run the standard pipeline. **Verify the cover says `(E)` before transcribing** — the medium is on the cover, never in the filename.
+
+### Spot-check the two unlabelled-graph answers in `geog-2026`
+
+`Q6(B)(4)` and `Q6(B)(5)` ask for percentages read off a bar graph that prints **no numeric labels on its bars** — only a 0–12% axis. The stored answers ("about 9.5 per cent", and a ~2-point difference) come from a pixel measurement made by the transcribing agent.
+
+**Why:** these are the weakest rows in the 372-question Social Sciences set. I attempted to verify them independently twice and **both probes failed** — they locked onto the graph-paper grid instead of the bold tick dashes and returned impossible values (22–32% on a 0–12% axis) — so rather than manufacture a correction from a broken probe I left the hedged reading in place. The qualitative answers are unambiguous and match the textbook; only the two numbers are soft.
+
+**How to apply:** open `scripts/mh-ssc-10/out/geog-2026/p-05.png` (or the attached crop) and read India's hatched bar and Brazil's plus-filled bar against the axis by eye — a human glance settles in seconds what the probe could not. If they differ from ~9.5% / ~2 points, update the two `solution` fields only (solution-only edits are hash-neutral, so no recompute or re-commit is needed) and sync `data/geog-2026.q567.json`.
+
+### Decide whether answer keys should carry the question figure
+
+A `_PYQ_Key.docx` contains **no question images at all** — `buildAnswerKey` emits none, so a Geography map-reading key shows the questions and the answers but not the map they refer to. This is long-standing behaviour (the shipped Circle chapter has 26 media in the paper and 0 in the key), not a regression, and it is the same shared path behind every `/browse` "Answer Key" download.
+
+**Why:** it never mattered much when figures were small geometry diagrams that a teacher could reconstruct mentally, but Geography leans on figures far harder — 55 of its 203 questions hang off a printed map, pyramid, bar/line/pie graph, and "Name the lake to the far North of India" is unanswerable from the key alone. A teacher marking from the key has to hold the paper open beside it.
+
+**How to apply:** this touches the shared export path, so decide the scope first — key-only-for-figure-questions vs always, and whether it applies to `/browse` downloads or only the chapter handouts. The mechanical change is in `buildAnswerKey` in `src/lib/export/docxBuilder.ts` (mirror the paper path's `fetchImageBytes` + `ImageRun`); the cost is key file size (the Circle paper is ~26 images) and a re-run of `build-chapter-pyq.ts --apply`. Note the existing golden test asserts the key omits figures — that assertion must be inverted deliberately, not deleted.
+
+
+---
+
+## 2026-07-28
+
+- **NEET figures: DONE — all 8 papers / 175 figures, 0 clipped, 0 answer leaks.** The 4 crops `clipprobe.py` still flags are confirmed **false positives**, so don't chase them: *2021 Q48/Q138* report `LEFT` with **identical** in/out density, which is the adjacent column's text in a two-column paper, not the figure continuing; *2023 Q21/Q37* report `TOP` with in > out, where the ink above is the stem line the crop correctly excludes. Both shapes are worth teaching the probe eventually — an equal in/out density on one edge, and a `TOP` flag whose outside-ink is a text line — but each crop was verified by eye.
+- **Do NOT use `auto_anchor` on a continuous-flow paper.** It was tried on NEET 2023 and reverted. That paper has tight line spacing, so block-merging fused stem + figure + options into one "figure block" and emitted full-page-width crops that swallowed the option list and, on Q169, the **"Answer (2)"** line — strictly worse than the clipping it was fixing. Anchors there must be placed by hand: `profile_page` the column → put `top`/`bottom` in real whitespace gaps → `snap-crop` → confirm with BOTH montages. That procedure fixed all 31.
+- **The two figure montages answer different questions — use both.** `context_montage.py` (bbox drawn against its surroundings) is authoritative for what a crop **excludes** — it is the only thing that catches a detached label like the `P`/`Q` on a wheel. The bottom-band leak montage is authoritative for what a crop **includes**. This session proved they are not interchangeable: a context-montage read cleared 2022 Q69, and the bottom-band render then showed "Answer (3)" plainly inside the crop.
+- **Per-option figure crops for NEET option-figure questions (3 rows).** `NEET_UG_2024.pdf` Q42, Q53, Q87 are questions whose four OPTIONS are figures. They ship as one combined question image plus placeholder option text (`"Circuit option 1"…`), so a student sees four meaningless buttons and has to map them to the `(1)-(4)` labels inside the picture. The bank already supports per-option images (`options.image_url`, 360 rows bank-wide, rendered by [QuestionCard.tsx](src/app/browse/QuestionCard.tsx)) — the NEET pipeline just never used it; `scripts/neet/attach-images.ts` only writes `questions.image_url`. Work needed: extend the attach script with an option-level manifest, derive 4 sub-bboxes each (their layout is a clean 2×2 / 4-row grid — profiled Q42 already: rows y 0.672-0.756 / 0.761-0.834, cols x 0.143-0.334 / 0.513-0.704), crop, verify, write. Usable today, so this is a modelling improvement rather than a defect. *(The combined crops were trimmed of duplicated stem text on 2026-07-28.)*
+- **`audit:text` OPTION_LEAK has 1 known false positive.** `NDA_GAT_Practice__APJ_GAT_Mock_8.docx` Q19 — *"Where are you coming from? (a) Are you (b) an American? (c) No error. (d)"*. It's a spot-the-error question whose first segment happens to end in `?`, which is exactly the terminator the probe uses to tell a leaked option block from inline sentence labels. 1 in 32,291 rows; not worth contorting the rule. Read past it.
+- **Featured-PYQ solutions are prose, not step-wise** (concept report `regression-correlation / correlation-coefficient-properties`, still OPEN). A student asked that the featured PYQ solution be worked step-by-step like the authored `authoredExample.steps`. The solutions there are correct and do carry reasoning + a common-mistake note, so this is an editorial enhancement, not a defect — but it applies bank-wide (every `/notes` featured PYQ pulls the bank's `solution` field), so it needs a deliberate decision on scope before anyone starts rewriting.
+- **`/notes` key terms are ALL-CAPS in places where the house convention is `**bold**`** — e.g. `central-tendency / what-is-data` renders POPULATION, SAMPLE, SPREAD in caps. Surfaced while triaging an anonymous "typo-or-formatting" concept report that carried no details (resolved `wont-fix`, not reproducible). Cosmetic; a sweep would touch many chapters.
+
+### Sweep every scrolling dialog/sheet for the missing `min-h-0`
+
+`/browse`'s `DownloadDialog` shipped for months with a scroll body that never clipped: a flex item's default `min-height:auto` won't shrink below its content, so the dialog outgrew `max-h-[90dvh]` and its `sticky bottom-0` footer rode up over the last control. Invisible until a third checkbox pushed it past the threshold, at which point a control vanished outright. Fixed on `DownloadDialog` only (`b2ac57e`).
+
+**Why:** the defect is **silent and content-dependent** — it appears when a body grows, not when the code changes, so nothing in the gate will ever catch it and it will keep surfacing as "the UI is broken" bug reports one dialog at a time. The same `max-h` + `flex-col` + `overflow-y-auto` shape is used by several other surfaces (`CartPanel`, the paper-editor Sections dialog, `AddQuestionsPanel`'s sheet, `MobilePromptProvider`'s bottom sheet, the quiz gate), and `ui/sheet.tsx` / `ui/dialog.tsx` are shared primitives.
+
+**How to apply:** `grep -rn "max-h-\[" src/` and, for each hit that is a flex column containing an `overflow-y-auto` child, check the child carries `min-h-0` and the footer is `shrink-0` rather than `sticky bottom-0`. Also check any footer holding ≥3 buttons for `flex-wrap` — shadcn's default `max-w-lg` is 512px and `sm:justify-end` overflows the *left* edge rather than wrapping. Consider baking `min-h-0` into a shared scroll-body class so new dialogs inherit it. Each check is seconds; verification needs a real browser click per dialog (see the note below).
+
+### Cite the source in the Answer Key too
+
+The 2026-07-28 source tag (`[JEE Mains 2016]`) ships on the **Question Paper only** — the user scoped it that way. The Answer Key prints just `(a)` per question, so adding a citation there needs its own placement decision.
+
+**Why:** a teacher filing keys separately from papers has no provenance on the key at all; and once a decision is made the machinery is already built (`formatSourceTag` is exported and pure, `AnswerKeyInput` just needs the flag).
+
+**How to apply:** decide placement first — inline after the letter (`1. (b) [JEE Mains 2016]`) reads tightest given the key's one-paragraph-per-question rhythm, versus its own run in solutions mode. Then thread `includeSourceTag` into `buildAnswerKey`, extend `tests/docx-source-tag.test.ts` (which currently **asserts the key never carries it** — that test must be inverted deliberately, not deleted), and reuse the same checkbox rather than adding a second one.
+
+### Opt the MH-SSC-10 chapter-PYQ handouts into the source tag
+
+`scripts/mh-ssc-10/build-chapter-pyq.ts` builds per-chapter Board-PYQ handouts that deliberately span **2016–2026 in one document**, which is the single highest-value place for a per-question year citation — a student practising a chapter sees which sitting each question came from and how the board's phrasing drifted.
+
+**Why:** it is now a one-word change (`includeSourceTag: true` on the `buildQuestionPaper` call), and these handouts are already-distributed teacher artifacts.
+
+**How to apply:** this is **shipped output**, so per the learning-propagation protocol it needs a 360 + explicit go-ahead before regenerating. Scope: one flag, one script, regenerates both `.docx` per chapter; blast radius is anyone holding an already-printed copy (the questions don't change, only the citation appears). Worth checking one rendered chapter first — the SSC exam name is long (`[Maharashtra State Board Class 10 2019]`, 38 chars) and may wrap in the 2-column layout, in which case shortening the printed exam label for this exam is the prerequisite decision.
+
+### Open verification owed: the DownloadDialog fix was never seen in a browser
+
+`b2ac57e` fixes the dialog layout, but this repo has **no headless render for a click-gated component** — the gate proves it compiles, nothing more.
+
+**Why:** the bug it fixes was itself shipped through a green gate. Re-checking is one click and closes the loop.
+
+**How to apply:** open `/browse` → Download, confirm all three checkboxes render, "Done" sits inside the dialog, and nothing overlaps the button row. If a longer options list is ever added, re-check at a short viewport (the `max-h-[90dvh]` path only engages when the body actually overflows).
+
+---
+
+## 2026-07-27
+
+### ~~Ingest the 5 un-ingested MH-SSC-10 subjects — Geography and History first~~ — **PARTLY DONE 2026-07-29**
+
+**Geography and History are DONE** (`0641acd` + `12e08b5`): 10 English-medium revised-course papers → **372 q PUBLIC** across three subjects — Geography 203, History 114, **Political Science 55** — taking mh-ssc-10 from 1,147 to **1,519**. The Social Sciences Paper I turned out to carry **two bank subjects in one printed paper**, so `subject` became a per-question field validated against its own subject's catalog; every one of the 5 History sittings split 23/11 and summed to the printed 40 marks. Per-chapter handouts followed (registry 33 → 56 chapters, 112 files). **Two papers were deliberately excluded: the only 2023 Social Sciences PDFs on disk are Marathi-medium prints** (`N 964` PAPER-II (M), `N 956` PAPER-I (M)) — a translation was drafted and discarded because `content_hash` is stem-derived, so translated rows could never dedup against the real English paper. **Still open: the 3 LANGUAGE subjects** (Hindi 5 · English 3 · Marathi 3) — the scope question below is unchanged and undecided.
+
+<details><summary>original</summary>
+
+Class 10 stores 4 subjects (Algebra, Geometry, Science I, Science II — all complete 2016→2026), but **29 papers across 5 more subjects sit un-ingested on disk**: Geography 9 · History 9 · Hindi 5 · English 3 · Marathi 3. Every one of them includes a **2026** sitting, so these are the *newest* Class-10 papers we don't have.
+
+**Why:** the four ingested subjects are fully current, so all remaining Class-10 growth is here. Geography/History 2016–2018 additionally **bundle official printed solutions**, so those years would be source-verified from the start rather than AI-derived.
+
+**How to apply:** Geography → History first (same structural shape as the Science papers; each needs a `CATALOG` of chapter→subtopics added to `scripts/mh-ssc-10/config.ts` before the HARD chapter validation will pass — that analysis is the real cost, roughly an hour per subject). Then run the standard pipeline (`render` → `dump-text` → transcribe → `merge` → `commit` → figures → `flip-public`). **Hold the three language papers pending a scope decision** — English/Hindi/Marathi are dominated by unseen-passage comprehension, grammar transformation and letter/essay writing; a comprehension question is meaningless without its passage and an essay prompt has no key, so decide what belongs in a question bank before building anything (closer to the CDS English problem than to a Maths paper).
+</details>
+
+### ~~Add the two missing Geometry `Q5(ii)` construction questions~~ — **DONE 2026-07-27**
+
+Both added PUBLIC via the new `scripts/mh-ssc-10/add-questions.ts` (+ `data/geo-{2016,2018}.additions.json`); Geometry 263 → 265, Class 10 total 1,148. **Finding: it is the SAME question in both years** — the board reprinted `ΔSHR ∼ ΔSVU … construct ΔSVU` verbatim in 2016 and 2018, which is probably why both were dropped at transcription. Each was transcribed faithfully from its own paper (2016 punctuates with `.`, 2018 with `,`), so `norm()` — which only collapses whitespace — keeps the hashes distinct and both rows survive per the keep-duplicates-as-recurrence-signal convention. Answers are the papers' own bundled 8-step constructions, so these two ship **source-verified**, unlike the rest of the corpus. `source_row` was then set to the free slot each paper had left (22 / 24) so they sort in true paper order.
+
+<details><summary>original</summary>
+
+Carry-forward of the ledger item logged above on 2026-07-27 — `geo-2016` and `geo-2018` each omit the `Q5(ii)` similar-triangle construction their source paper asks and their bundled solution answers in full.
+
+**Why:** it is the only known coverage gap in the Class-10 Maths corpus, and uniquely cheap — both the question and its official answer are already in hand, so the two rows would ship source-verified rather than derived.
+
+**How to apply:** transcribe the two questions from the QP pages, author from the bundled solution, and insert via a **scoped** commit (a full paper re-commit would be wasteful, and note that editing an existing stem changes `content_hash` and orphans the old row). Verify afterwards that each paper's refs run `Q5(i) → Q5(ii) → Q5(iii)` with no gap.
+</details>
+
+### ~~Backfill `normalizeNewlines` into the 6 remaining commit pipelines' data prep~~ — **DONE 2026-07-27**
+
+Normalisation now happens in the pure record-builders, immediately before hashing, so stored text is always the hash's preimage: `scripts/stateboard/lib.ts` `buildRecords` (which `ncert` and `mh-sb-9` re-export), `scripts/practice/lib.ts` `buildRecords` (which `foundation` imports), and `scripts/mh-ssc-10/lib.ts` `buildPaperRecords` — three edits covering six pipelines. TDD'd in `tests/stateboard-lib.test.ts` (3 cases: converts the literal, hashes the normalised stem, leaves `\neq`/`\nabla` alone). **Correction to the original entry: `grounding` was a false member of the list** — it writes `solution_json`/`plain_text` and never computes a `content_hash`, so it is correctly out of scope. **Also corrected: the "~60 stateboard JSON files still carry literal `\n`" caveat was an artefact of a naive scan** that counted `\neq`/`\nu` as hits; the authoritative `normalizeNewlines`-based scan reports every source dir clean (the 4 genuinely-dirty files were fixed in the 2026-07-27 repair pass).
+
+<details><summary>original</summary>
+
+`commitStaged` now **rejects** literal `\n` at the write boundary, which protects the DB — but 6 script pipelines still never call `normalizeNewlines` when building their payloads (`foundation`, `grounding`, `mh-sb-9`, `ncert`, `practice`, `stateboard`; `mh-ssc-10` was the seventh and is the one that bit us).
+
+**Why:** with the guard in place, a future ingest whose agent double-escapes newlines will now **fail the commit** rather than corrupt the bank. That is the correct outcome, but it will read as a mysterious pipeline break to whoever hits it. Normalising in each pipeline's data prep (before `content_hash` is computed — the ordering the Excel parser already uses) makes the guard a backstop instead of a tripwire.
+
+**How to apply:** in each `scripts/*/commit.ts`, run `normalizeNewlines` over `text`/`context`/`solution` **before** computing the hash, mirroring `src/lib/upload/parser.ts`. Then run `npm run audit:text` to confirm the bank stays at 0/0. Note `scripts/stateboard/data/` still holds ~60 JSON files with literal `\n` that `apply-solutions.ts` currently normalises on the way in — harmless today, but they would trip the new guard on a re-commit.
+</details>
+
+---
+
+### Screen the remaining 25 JEE Maths chapters for NDA+CET syllabus fit
+
+Matrices + Determinants is screened (251 q → 239 pass · 12 drop); the machinery ([[syllabus-fit-screen]], migration 0062) is built and the `/browse` filter is live. Every other JEE Maths chapter is still unscreened, so the filter shows them unfiltered behind a caveat.
+
+**Why:** the 95% pass rate is partly an artefact of Matrices being a chapter where NDA runs unusually deep. **Conic Sections (346 q)** and **Three Dimensional Geometry (268 q)** are the two biggest chapters and the likeliest to carry long blacklists — chord of contact, pair of tangents, director circle and skew-line machinery are all plausibly outside both syllabi. Doing those two next both delivers the most questions and stress-tests whether the four-tool blacklist shape generalises.
+
+**How to apply:** per chapter — dump every question (stem + a solution snippet), adjudicate against the taught syllabus, write the drops to `scripts/relevance/data/<screen>.json`, `npx tsx scripts/relevance/commit.ts <file> --apply`, then **append the chapter to `REVIEWED_CHAPTERS` in `src/lib/relevance/config.ts`** (both steps, or the state is wrong in one direction or the other). Add any new out-of-syllabus technique to `BLOCKING_TOOLS` first — the commit script rejects unknown tools. Budget roughly one session per large chapter; it cannot be automated (a keyword screen over solution text over-rejects ~3×).
+
+### ~~Confirm whether MHT-CET teaches elementary row/column transformations~~ — **DONE 2026-07-27**
+
+User confirmed MHT-CET **does** teach elementary transformations, so `f0652be7` stays PASS and no exclusion is needed. All 251 Matrices+Determinants verdicts now rest on evidence rather than assumption.
+
+<details><summary>original</summary>
+
+
+`f0652be7` ("Which matrix canNOT be obtained by a single elementary row operation?") is the only one of 251 verdicts resting on an assumption rather than evidence in this repo. It passes because HSC Class 12 Matrices teaches inverse-by-elementary-transformation — but there is no CET matrices notes chapter to check against, and the CET bank's 50 questions never exercise it.
+
+**Why:** it is a single question, but it is the one place the screen is knowingly unverified, and the same assumption will recur every time a JEE chapter touches elementary transformations.
+
+**How to apply:** check the MHT-CET / Balbharati Class 12 Matrices syllabus. If it is out of scope, add one entry to `scripts/relevance/data/jee-maths-matrices-determinants.json` with a new `elementary-row-ops` tool (register it in `BLOCKING_TOOLS` first) and re-run the commit script — it upserts, so no cleanup is needed.
+</details>
+
+### ~~Clean up JEE Maths SUBTOPIC taxonomy drift between ingest waves~~ — **PARTIALLY DONE 2026-07-27**
+
+**8 synonym merges executed; 14 subtopics dropped (127 → 113); 3,687 questions preserved exactly, 0 empty subtopics, 0 chapter/subtopic mismatches.** Merged: Binomial Theorem's 4-way remainder cluster → *Remainder and Divisibility* (9) · AoD *Mean Value Theorem* → *Rolle's and Mean Value Theorems* (7) · PnC *Inclusion-Exclusion Counting* → *Counting with Inclusion-Exclusion* (5) · Probability's 3 *Random Variables* buckets → *…and Distributions* (8) · Quadratic *Modulus Equations* → *Equations with Absolute Value* (24) · Mathematical Reasoning *Logical Connectives*+*Compound Statements* → *Tautology and Logical Connectives* (36) · Straight Lines *Orthocentre*+*Centroid* → *Coordinate Geometry of Triangles* (12) · Conics *Tangents to a Parabola*+*Normals to a Parabola* → *Tangents and Normals* (35).
+
+**Two clusters deliberately NOT merged — the "drift" hypothesis was wrong for both, and sampling the stems is what caught it:**
+
+- **3D Geometry `The Plane` (70) vs `Line and Plane` (47)** — these carve at a REAL joint, not a naming accident: *The Plane* holds plane-only work (three planes, plane through a line of intersection, planes at unit distance, mirror image in a plane) while *Line and Plane* holds line↔plane interaction (distance measured parallel to a line, line meeting a plane, foot of perpendicular on a line). The 70/0 year cliff is a **classification-preference shift** in the 2024+ ingest wave, not synonymy. Merging would have destroyed a genuine distinction and buried 117 questions in one bucket.
+- **Binomial Theorem's coefficient trio** (`Binomial Coefficient Sums` 52 · `Binomial Coefficients and Series` 25 · `Binomial Coefficients` 17) — genuinely overlapping names, but a merge is the wrong remedy: sampling shows *Binomial Coefficients and Series* is a **catch-all holding misfiled number-theory questions** (`3ⁿ+7ⁿ` a multiple of 10; `3ⁿ−3` divisibility) and *Binomial Coefficients* holds a remainder question. These need **per-question reclassification**, not a rename-merge.
+
+**Remaining:** the two clusters above. The 3D one needs a per-question read to decide whether the post-2024 plane-only questions were misfiled into *Lines in Space*; the Binomial trio needs ~94 questions routed by technique.
+
+<details><summary>original</summary>
+
+
+The 2026-07-24 reshape fixed JEE Maths at **chapter** level (24 → 27 chapters) but left subtopics untouched, and the 2021 and 2024+ ingest waves classified into different subtopic names for the same material. Binomial Theorem carries four near-duplicate buckets (*Remainder and Divisibility* · *Remainder Problems* · *Divisibility and Remainders* · *Divisibility*); `3D Geometry / The Plane` holds 70 questions all pre-2024 while the chapter overall is healthy.
+
+**Why:** it is cosmetic on `/browse` today, but it actively **manufactures false signals in probes** — a subtopic-level year-cliff scan flagged 23 "rationalized-out" topics of which only 2 were real, the rest being this drift (see [[spec-narrower-than-artifact]]). Any future per-subtopic analysis of JEE Maths inherits the same noise.
+
+**How to apply:** the standard [[reclassification-sql-pattern]] — merge the duplicate-named subtopics per chapter, reparenting questions and deleting the empties, then verify 0 empty subtopics and no question-count change. JEE Maths has no `/notes`, `/guide`, mocks or concept tags, so the blast radius is the `/browse` filter dropdown only (the same reason the chapter reshape was safe).
+</details>
+
+## 2026-07-25
+
+### Resolve the 6 Foundation answer-correctness flags left by the `audit:keys` bank sweep
+
+The 2026-07-25 practice audit fixed all duplicate-option defects but surfaced **6 questions where the fix would require moving the KEY** (an answer-correctness issue, out of the "fix the duplicates" scope the user asked for) — deliberately left flagged, not silently changed. All are Foundation (derived-answer, no printed key) except the last: (1) **Physics q54** `Sound WS1` — key says vₐ > v_w but sound is faster in water (v_w > vₐ); (2) **Physics q13** `Human Eye WS1` — the "rainbow" question is broadly mis-transcribed and its keyed option isn't even a real worksheet option → needs full re-transcription + key fix; (3) **Chemistry q41** `Is Matter Pure WS1` — match-columns key sits on the wrong option (source gives 1-D,2-A,3-C,4-B = option c, DB has b); (4) **Physics q8** `Magnetic WS2` — domestic-wire colours, key `red,black,blue` vs standard `red,black,green` (fixed the dup, flagged the key); (5) **Biology q29** `Our Environment WS1` — biodegradability-grouping key debatable, no source key to contradict; (6) **LWS Mock 2 Q114** (`LWS_Maths_Mock_2_20-7_6M.pdf`) — the duplicate is ON the correct answer (a fairness bug), but the "6M" mock master isn't on disk (the on-disk "Mock Test Paper 2" is a different variant — its Q114 is a series question).
+
+**Why:** these are genuine wrong/ambiguous answers on PUBLIC practice content (worse than a duplicate distractor). The Foundation ones are Class 9/10 science and mostly determinable from the subject, but Foundation has no printed answer key (answers were LLM-derived), so "correct" needs a source/textbook adjudication, not a guess — exactly why the agents refused to move the key.
+
+**How to apply:** for the 3 clear Foundation science ones (q54, q41, q8), source-verify the intended answer against the worksheet + a textbook, then flip via `apply-source-fixes.ts` (key move + solution + collision-guarded hash) and patch the transcription (per the 2026-07-25 idempotency method). q13 needs re-transcription from the worksheet first. q29 needs a biodegradability source call. Q114 needs the user to supply the LWS Mock 2 (6M) master PDF, then restore the real distractor. This is a small **answer-correctness** pass distinct from the shipped duplicate-cleanup; batch with the broader Foundation/Pariksha answer audit if one is ever run.
+
+### Restore the ~57 legacy-2021 JEE Physics/Chemistry image-option questions (empty option text)
+
+The `scripts/jee/audit-keys.ts` backstop (2026-07-25) confirmed JEE Maths keys are clean but surfaced an extraction-COMPLETENESS gap in the **legacy JEE-2021 Physics (10) + Chemistry (47) PUBLIC MCQs**: they are organic-structure / diagram questions whose four options are **figures that were never transcribed or attached**, so the stored option text is empty (`A: | B: | C: | D:`). The `audit:keys` probe flags them as `DUP_OPT` (all-empty texts collide). The answer key is correct in every case (the solution concludes the right letter) — this is a display defect, not a key error. These sit in the deliberately-skipped (Maths-only strategy) subjects.
+
+**Why:** a student browsing these ~57 questions sees a stem + four blank options — unusable. Low urgency because Physics/Chemistry are not the active ingestion focus, but it's a real content-quality gap on PUBLIC rows.
+
+**How to apply:** for each flagged row (`npx tsx scripts/jee/audit-keys.ts Physics` / `Chemistry` → the `DUP_OPT` list), pull the option figures from the source `JEE_2021_PaperN.docx` media (the pipeline already extracted `media/` at ingest), attach them as `optionFigures` via `scripts/jee/attach-images.ts`, and neutralise the empty option labels — mirroring the 2026-06-26 MHT-CET `optionFigures` fix. Alternatively, if Physics/Chemistry stay deprioritized, set these specific rows PRIVATE so blank-option questions aren't shown. Decide per the Maths-only strategy.
+
+### ~~Source-PDF spot-check of the ~5 JEE-2026 rows whose garbled stems were RECONSTRUCTED-to-match-key~~ — **DONE 2026-07-25**
+
+All 6 flagged stems source-verified against the pandoc'd QP + AK worked solution; **every key was already correct**, and all 6 had a real (minor) stem defect that was fixed via `stemOverrides` + `resync --apply`: jan23-s2 Q52 (`\cos8`→`\cos8θ`), jan23-s2 Q58 (truncated lead-in + `4x`→`4x²`), jan24-s2 Q55 (comma-list→product `α₁α₂α₃α₄`, resolving the "can't reproduce constraint" flag), jan28-s2 Q62 (truncated final question line), apr04-s1 Q60 (`1,103`→`51,103`, resolving the "inconsistent data" flag), apr04-s1 Q74 (`\cosθ_k`→`\cotθ_k`, resolving the "ratio≠3" flag). All 6 re-render clean; solutions were already consistent (agents solved the intended reading).
+
+## 2026-07-24
+
+### Fix the `cleanup-latex` function-name de-glue so it doesn't mangle English words inside `\text{}`
+
+The `scripts/jee/cleanup-latex.ts` de-glue step (which inserts a backslash before a glued trig/`\det`/`\log` function name) fires **inside `\text{}` on ordinary English words** whose prefix is a function name: `singular`→`\sin gular`, `singles`→`\sin gles`, and by extension `cosine`/`determinant`/`logic`/`tangent`/`section`/`limit`/… KaTeX then rejects the zone, so `attach-solutions` skips the whole solution (silent NO-SOLUTION). This bit 2 JEE solutions this session (apr11 Q70, jan31 Q83), worked around by rewording. The MHT-CET `cleanupArtifacts` glued-trig de-glue (CLAUDE.md line 9) shares the risk.
+
+**Why:** a silent NO-SOLUTION on an otherwise-correct row is easy to miss (only `scan-flip`'s NO-SOLUTION flag catches it), and it recurs on any solution that says "singular matrix"/"cosine rule"/"the determinant" in prose. The reword workaround is fragile.
+
+**How to apply:** in the de-glue regex, require the function-name match to NOT be immediately followed by a lowercase letter that continues a word (negative lookahead `(?![a-z])`), OR skip de-gluing entirely inside `\text{…}`/`\operatorname{…}` spans (the function names there are always literal text). Add a regression test with `\text{singular}` / `\text{cosine rule}`. Apply the same fix to the MHT-CET `cleanupArtifacts`.
+
+### ~~JEE Mains Physics + Chemistry ingestion (the only remaining JEE work)~~ — **PHYSICS DONE 2026-08-01; Chemistry still open**
+
+**PHYSICS DONE 2026-08-01** (merges `5042d67` · `71c741a` · `3e61121`): **3,482 q PUBLIC / 7 PRIVATE across 88 papers**, every sitting on disk, now level with Maths. Key discovery — Physics needed **no re-extraction**: extraction is subject-agnostic, so the Maths runs had already produced every Physics row in `out/*.records.json` and only the DB commit filtered by subject (`dump-maths.ts` → `dump-subject.ts --subject=Physics`). Both lanes closed; ~13 wrong source keys caught, the sharpest being 2023-feb01's entire shift-2 key block displaced by +2. `audit:keys` = 0 SOLN-vs-KEY across 2,559 Physics MCQs. **Chemistry remains open** (259 q, legacy-2021 only) — same pipeline with `--subject=Chemistry`, but its structure/reaction figures need the figure-attach path, and the ~47 legacy-2021 blank-option rows below overlap with it.
+
+JEE Mains **Maths** is now complete across every sitting on disk 2021-2025 (3,715 q PUBLIC). Physics + Chemistry were deliberately skipped under the Maths-only strategy — but the same ~40 sittings' source DOCX carry full Physics (Q1-30/…) + Chemistry (Q31-60/…) blocks, and the exact two-lane pipeline (`dump-maths` → SAFE/BLIND agents → `assemble-*` → commit/attach/cleanup/scan-flip) would ingest them with only a subject-flag change. Logged as visible scope, not a bug.
+
+**Why:** it would roughly **triple** the JEE corpus (to ~10-11k q) with proven, fast tooling — the single biggest remaining bank expansion. Whether to do it is a product call (Maths-first positioning vs full-subject coverage).
+
+**How to apply:** decide subject scope first; then reuse the pipeline with `--subject=Physics` / `--subject=Chemistry` (the numbering triage + blind-solve routing is subject-agnostic). Chemistry's structure/reaction figures will need the figure-attach path; Physics is mostly text+math like Maths.
+
+### Spot-verify a sample of the blind-solved JEE answers against official keys, if sourced
+
+The ~1,900 JEE Maths questions on broken/no-key papers carry **fully AI-derived** answers (the source keys were positionally shifted/absent, so they were ignored). Each was solved from scratch with a skip-if-uncertain rule, but there is no independent cross-check against an authoritative key (unlike the safe-key papers). If clean official JEE 2022-2025 answer keys ever become available, a spot-check pass would confirm the blind-solve accuracy rate.
+
+**Why:** blind-solve is high-quality but not audited; a sampled cross-check would quantify the residual error rate and catch any systematic blind-solver blind spot.
+
+**How to apply:** obtain official NTA answer keys (public after each session); diff a random ~5% sample of blind-solved rows (`notes: "…BLIND-derived…"` in `papers/*.json`) against them; if the disagreement rate is material, widen the check. Skip-flagged rows are already PRIVATE/dropped, so scope is the PUBLIC blind rows only.
+
+### ~~Add a render-corruption lint to the JEE/MHT-CET ingest (catch stem corruption at commit, not via user reports)~~ — **DONE 2026-07-24**
+
+**DONE 2026-07-24:** shared pure helper `renderCorruption()` in `scripts/lib/render-lint.ts` (mirrors the `scripts/lib/figures/` shared-helper precedent) — flags the three mechanical classes (lowercase-start stem, `$`/`\(` scramble, plain-text `\_`); 15 TDD cases in `tests/render-lint.test.ts`. Wired report-only into both `scripts/jee/validate-db.ts` and `scripts/mhtcet/validate-db.ts` (new `render-corruption: N` line in each summary). Live JEE run confirmed **0** remaining (this session's ~290 fixes were complete). Class 4 (mid-stem dropped symbol) stays report-driven — no mechanical signature.
+
+A report-triggered audit (2026-07-24 Decisions entry + [[stem-render-corruption-probes]]) found four render-corruption classes in the pandoc/BLIND-ingested bank, three of which have a clean mechanical SQL probe: (1) a stem starting lowercase (dropped lead-in), (2) a field mixing `$` and `\(` (delimiter scramble → KaTeX "can't use \( in math mode"), (3) plain-text `\_` outside math zones (escaped-underscore blank). This session swept the *existing* bank (~290 rows fixed), but the same ingest will re-introduce them on the next Physics/Chemistry run or any new pandoc-ingested exam.
+
+**Why:** these render as visible garbage on PUBLIC pages and only surface when a human reads the question or files a report. A commit-time check turns a report-driven trickle into a zero-escape gate — cheap, since the ingest already runs `validate-db`/`cleanup-latex` per paper.
+
+**How to apply:** extend `scripts/jee/validate-db.ts` (and the MHT-CET equivalent) with three flags per committed stem/solution/option: `btrim(text) ~ '^[a-z]'` (lowercase-start), `text ~ '\$' AND text ~ '\\('` (delimiter mix), and `regexp_replace(text,'\\\(.*?\\\)','','g') ~ '\\_'` (plain-text `\_` — strip math zones first, math-zone `\_` is valid). Report, don't auto-fix (class 3's fix is trailing-only; classes 1–2 need source-verification). The mid-stem-dropped-symbol class (#4) is not detectable — stays report-triaged.
+
+---
+
+## 2026-07-23
+
+### ~~Complete the JEE Maths multi-year program (compilations 13-16 + 2022-2025)~~ — **DONE 2026-07-24**
+
+**DONE 2026-07-24 (merges `54b6f2c`→`fe82a6f`):** JEE Mains Maths ingestion is COMPLETE — every sitting on disk 2021-2025 (~40 sittings) ingested; **JEE 1,271 → 3,715 q PUBLIC (Maths 3,202)**. Compilations 13-16 finished via blind-solve; all of 2022-2025 done via the new two-lane SAFE/BLIND pipeline (see the 2026-07-24 Decisions entry + [[pyq-key-trust-triage]]). New infra: `dump-maths`, `assemble-safe`, `assemble-blind`, `sol-clean`, `scan-flip`, `paper.skip[]`. Only Physics + Chemistry remain (Maths-only strategy).
+
+~~2021 Maths is now complete (all standard + Maths-only papers, MCQ + Section-B NAT; JEE at 1,271 q PUBLIC). The remaining JEE Maths work is a large, well-scoped program now that the full source is on disk (`C:\Vilas\LWS_Pune\JEE_Mains\PYQs\{2021..2025}`, 69 sittings): **compilations 13-16** (2021, `--compilation`, verify every key) + **2022-2025 Maths** (43 date-named sittings).~~
+
+**Why:** ~1,300 more Maths questions across 4 exam years is the single biggest bank expansion available, and the NAT-backfill loop + tooling (`extract --numeric`, `commit/attach --numeric-only`, the taxonomy handout, parallel classify+solve agents) is now proven and fast.
+
+**How to apply:** per the RESUME order — (1) compilations 13-16 first (harder, mixed-subject, every-key-reverified); (2) then 2022-2025, piloting ONE 2022 date-named sitting end-to-end first to settle the `paperId`/`source_file` scheme for date names (e.g. `2022-jun14`), then batch each year. Each 2022-2025 sitting is a standard 90-q shift, so the same Maths-only + NAT loop applies. Note 2024 `31 jan (1)` has no soln doc, and 2023 `31 jan (1)` is a second-shift/dup to disambiguate.
+
+### If a figure source appears, complete p9 NAT Q84 (currently PRIVATE)
+
+JEE 2021 Paper 9 Q81-90's Q84 ("The missing value in the following figure is") was kept PRIVATE because the figure is absent from the extracted source — it's unanswerable as text. If the original figure is ever sourced, attach it (the P3 Q37 / P12 Q54 precedent for figureless incompletes) and flip PUBLIC.
+
+**Why:** it's the one JEE 2021 Maths NAT not live; a real question lost only to a missing diagram.
+
+**How to apply:** source the figure from the original 2021 Paper 9 booklet, attach via the image path, author the solution, flip `question_format='numeric'` PUBLIC for that row.
+
+*(Carry-forward 2026-07-22 — the "verify 2 reconstructed JEE stems" item now covers **~14** reconstructed/overridden stems, not 2: this session OCR-reconstructed ~12 more NAT stems across Papers 2-10,18 and overrode 2 source keys (p8 Q86 15/4→3.75, p9 Q86 (d)→4). All match their verified answers, but if a clean official JEE 2021 source appears, diff these stems/keys too. See the 2026-07-22 entry below.)*
+
+---
+
+## 2026-07-22
+
+### Confirm the `--no-verify` Determinants push went green in CI, and address the recurring `next build` OOM in the pre-push hook
+
+The CBSE Class 12 Determinants ingest (merge `f700208`) was pushed with `git push --no-verify` because the `.githooks/pre-push` hook's `next build` worker aborted **twice** with `exit code: 134` (SIGABRT = JS-heap OOM) — even though a bare `npm run gate` returned `GATE_RESULT: PASS` on the exact same tree. Per [[feedback-env-failure-vs-gate-failure]] that's an env failure, not a code-gate failure, so `--no-verify` is defensible and CI re-runs the full gate on a clean runner. But the CI result was not eyeballed this session, and the Matrices push (`def23d8`) went through the same machine under the same memory pressure.
+
+**Why:** the `--no-verify` escape hatch is only safe if CI actually backstops it — an unwatched CI failure would mean a broken `main` nobody noticed. And the OOM is recurring (it also hit as a Next.js build worker crash here, and as a 100%-full-disk `ENOSPC` on 2026-07-15), so every large push on this machine is now flaky at the hook.
+
+**How to apply:** (1) Open the GitHub Actions run for `f700208` (and `def23d8`) and confirm the gate is green — if red, fix forward immediately. (2) Reduce the local build's memory pressure so the hook stops OOM'ing: raise Node's heap for the hook's build (`NODE_OPTIONS=--max-old-space-size=4096` in the `prepush`/`build` script or `.githooks/pre-push`), and/or clear `.next` + `npm cache clean --force` across projects before big pushes. The durable fix is bumping the heap ceiling for `next build`; the disk-space variant (2026-07-15) is the same class.
+
+### Drive the authed E2E flow for the known-visitor quiz-gate suppression
+
+The public-quiz known-visitor suppression (2026-07-22 Decisions entry — signed-in students skip the lead sheet + auto-grade, anon returners get one-tap sticky consent) **shipped to main** (branch `feat/quiz-gate-known-visitors`): `src/lib/quiz/gate.ts` + `tests/quiz-gate.test.ts`, `QuizTaker.tsx`, `/api/public-quiz/submit/route.ts`. Typecheck/lint/gate-unit-tests/build green and the anon integration test still records a lead — but the two new authed paths have **no headless render**.
+
+**Why:** Definition-of-Done wants the golden path seen, and the skip/one-tap paths are client islands reading the Supabase session + a grade-only route branch — exactly where a session/hydration bug hides.
+
+**How to apply:** in a browser: as a **signed-in student** on a published `/quiz/<slug>`, tap "See my score" → confirm NO sheet, straight to score, and **no new `quiz_leads` row** in `/dashboard/leads` (the deliberate lead-reduction). As an **anon returner** (submit once, reload) → confirm the "Continue as X" one-tap with no consent re-tick. Batch into the same signed-in QA pass as the other open E2E items (four sign-up gates 2026-07-12, member-management 2026-07-15, NEET grace-badge 2026-07-17).
+
+### Verify the 2 reconstructed JEE Maths stems against a clean source if 2021 papers become available
+
+Two PUBLIC JEE Maths stems were reconstructed from OCR-garbled source during the 2026-07-22 solution backfill and shipped: **p17 Q70** (`JEE_2021_Paper17.docx` — source printed `y(c)=3, y(d)` with domain `x>2`; reconstructed as `y(3)=3 → y(4)`, which is self-consistent, respects the domain, and yields the official answer 12) and **p25 Q81** (`JEE_2021_Paper25.docx` — source truncated at "area bounded by y=||x-1|-2| is....."; reconstructed as area between the curve and the line `y=2`, deriving the official 8). Both match their verified keys, but the exact original wording is unconfirmed.
+
+**Why:** the answers are right and the stems are self-consistent, so this is low-risk — but a reconstructed stem *could* differ from the actual JEE 2021 wording (e.g. p25 Q81's bounding line, p70's eval points). Only matters if a student cross-references the original paper.
+
+**How to apply:** if a clean JEE Main 2021 source (official PDF / trusted key) is obtained, diff these two stems and update via `stemOverride` + `resync` if they differ. Also relevant when ingesting the **Physics + Chemistry** halves of the Maths-only papers (17, 19-26) — those subjects are not yet ingested (see the [[jee-mains-ingestion]] RESUME), and the same source docs will be re-read then.
+
+## 2026-07-21
+
+### Manually verify the OMML prettify fallback in a downloaded Word paper
+
+The 2026-07-21 fix (`prettifyMathFallback`, merged `db2184f`) makes OMML-unconvertible math zones degrade to readable Unicode in the docx export instead of raw `\(...\)`. It's proven correct at the *text* level (18 tests + real-data validation on all 20 affected zones → 0 backslash-macros remain), but this repo has **no headless docx render**, so the rendered Word output was never eyeballed.
+
+**Why:** Definition-of-Done wants the golden path seen. The fallback emits characters like `ᶜ` (U+1D9C), `′` (U+2032), and a combining overline (`A̅`) — these need to render legibly in Word's default fonts on a real machine, which no automated test here can confirm.
+
+**How to apply:** As a teacher, download the paper containing the NDA-2018-II Maths Q5 sets question (or any of the 12 flagged rows — run `npm run audit:omml` for the list in `generated-papers/omml-sweep.md`). Confirm the options read as `(A ∪ B)′`, `(A ∩ B)²`, `A̅∩B̅`, etc., with no raw `\cap`/`\cup`/`\(` markup and no tofu boxes. If a glyph renders poorly, adjust the mapping in `prettifyMathFallback` (`src/lib/export/ommlBuilder.ts`).
+
+### Replace or fork the unmaintained `mml2omml` (docx export root fix)
+
+The 2026-07-21 crash (a superscript on a `\cap`/`\cup` group throws inside `mml2omml`) is one instance of a class: `mml2omml` is unmaintained (0.5.0 is latest) and will keep throwing on temml MathML shapes it can't stringify. The prettify fallback + `audit:omml` probe contain the symptom (readable degradation + ingest-time detection), but the math still can't become real OMML for those zones.
+
+**Why:** Every future crash means another set of questions rendering as fallback text instead of typeset math in Word papers. The probe makes recurrence visible but doesn't fix it. Fixing the library is the only way those zones become proper OMML.
+
+**How to apply:** Evaluate options — (a) fork `mml2omml` and patch the nested-superscript stringify crash (needs pinpointing the `stringify` node with undefined `children`); (b) switch to a maintained MathML→OMML path; (c) render OMML-unconvertible zones to an embedded image via temml/MathJax SVG (heavier; adds a dependency + non-editable math). Not urgent — the fallback + probe hold the line. See [[docx-omml-export-pipeline]].
+
+## 2026-07-20
+
+### Propagate the maths-xi teaching-plan rework to the other 5 plans
+
+`maths-xi` was comprehensively reworked (2026-07-20) into a full 9th→12th dependency map — class-tagged `homework: [{class, ref}]`, `N.0` prerequisite rows (cross-grade Class 9/10 + within-XI), forward `Std 12th` NCERT cross-refs, and a de-branded title (`title_prefix:""`). The generator (`build-docx.py`) + JSON schema changes are backward-compatible, so **maths-xii, physics-xi/xii, chemistry-xi/xii still build in the OLD format** — they carry bare `exercise` strings, no prerequisite rows, and bare "GAP" cells where NCERT sequences a topic into Class 12. See [[teaching-plan-generator]].
+
+**Why:** the new format is markedly more useful for teachers (explicit "revise this first" per unit, real 9th–12th exercise homework, GAP that distinguishes "in NCERT later" from "not in NCERT"). Leaving 5 plans in the old format is an inconsistency a user flipping between subjects will notice. Only the per-unit foundation authoring is left — the machinery already exists.
+
+**How to apply:** per plan, (1) run a transform converting `exercise` → `homework:[{class:"11th"|"12th", ref}]`; (2) author `N.0` prerequisite rows from the verified 9th–12th PDFs (SB Class 9/10 at `.../State-Board/{01. 9th,02. 10th}/`, NCERT at `.../NCERT/Books/<grade>/`); (3) add forward `Std 12th` NCERT refs where a topic is Class-12-sequenced, correcting any wrong "Class 12" notes to true GAPs; (4) `python build-docx.py <slug>` + verify the render. Maths-xii is the natural next one (shares the NDA-first framing). Physics/Chemistry differ (board-order, different NCERT split) — re-derive the foundation per subject, don't copy maths.
+
+## 2026-07-17
+
+### Rename 2 mislabeled NEET source PDFs in `C:\tmp\PYQPs\NEET\` (source-folder hygiene only)
+
+The 2026-07-17 exhaustive non-ingested-code cross-check proved every NEET code = its year's ingested set, and in doing so caught **2 files whose filename names the wrong sitting**: `neet 2024 qp code E4.pdf` is actually **NEET UG 2023** (cover "7 May 2023, Booklet Code E4") and `neet 2026 qp code 70.pdf` is actually **NEET (UG)-2026 Re-Examination** (cover "21/06/2026, Code 70", 180 q, 43 pp). Their content is already in the bank under the correct year (2023 via code E3; Re-NEET 2026 via code 50), so **nothing is missing** — this is pure folder hygiene.
+
+**Why:** if NEET 2023/2024 or Re-NEET is ever re-ingested from this folder, the misnamed files invite picking the wrong-year source (E4 would pollute a "2024" run with 2023 questions). Renaming now removes a latent foot-gun.
+
+**How to apply:** rename `neet 2024 qp code E4.pdf` → `neet 2023 qp code E4.pdf` and `neet 2026 qp code 70.pdf` → `reneet 2026 qp code 70.pdf` (the source folder is outside the repo, so no commit). Optional; the ingest is already complete and correct without it.
+
+### Drive the authed E2E flow for NEET mocks — specifically the grace-badge render
+
+The 8 NEET mocks ([[mock-tests]]) shipped with the pure core fully unit-tested (46 mock tests incl. grace grading / edition slug / soft-count), snapshot integrity DB-verified (0 dangling refs, override at position 5), and `/mock` + `/mock/neet-2025` (instructions) smoke-tested anon — but the **auth-gated runner → submit → result flow was never driven end-to-end**. The one piece with no other proof is the **grace rendering**: on the result page, a grace question (2022 Q93/Q128, Re-2026 Q26) must show the amber "Grace — awarded to all" badge, suppress the placeholder-key green highlight, and count as awarded in the tally. The grade math is unit-tested; the badge is presentational and only shows under a real submitted attempt.
+
+**Why:** Definition-of-Done wants the golden path seen in the browser, and grace is a NEET-only UI branch that no anon curl or unit test exercises. A wrong prop or a verdict-mapping slip would only show on a real result page.
+
+**How to apply:** sign in as a student, take **NEET (UG) 2022** (has 2 grace questions), answer Q93/Q128 with anything (or skip), submit, and confirm the result page shows the amber grace badge + disclosure banner on those two, no green "correct" option, and both counted in the Correct tally. Same class as the still-open E2E items — the four sign-up gates (2026-07-12) and the member-management redesign (2026-07-15) — so batch it into one signed-in QA pass. A 200-q attempt is long; the fastest check is to open an attempt, jump to Q93/Q128 via the palette, submit immediately.
+
+## 2026-07-16
+
+### ~~`solution_image` diagrams for State Board Ch.2 Application of Derivatives (19 flagged rows)~~ — **DONE 2026-07-16** (built on the user's call the same day; 19 attached + PUBLIC; renderer extended to physical geometry — see the Decisions log)
+
+### One SHIPPED Linear Programming diagram has a clipped caption (backfill candidate — see the ledger)
+
+While extending the diagram renderer for Ch.2 I added caption **word-wrap** (it was drawn as one unwrapped line that silently clipped at the right edge). Measuring every existing caption against the 1008px budget found **exactly one over**: a `linear-prog-12` diagram at **1183px** — *"Feasible region for x + y <= 12, 5x + 2y <= 50, x + 3y <= 30, …"*. Its **live image is clipped today**; the wrap fix only changes what a *re-render* produces, and I did NOT re-attach it.
+
+**Not acted on** (shipped content → [[learning-propagation-protocol]]: log, 360, ask). **Scope:** 1 diagram of 66 in that chapter; all of pair-lines (21) and app-def-integration (41) are under budget, and Ch.2's 19 max out at 900px. **Blast radius:** cosmetic — the caption's tail is cut; the figure itself (feasible region, constraint lines, corner points) is unaffected and the constraints are also stated in the question. **Cost:** tiny — re-run `python scripts/stateboard/render_solution_diagrams.py linear-prog-12` then `attach-solution-image.ts linear-prog-12 --force` for that one ref. **Risk:** `--force` leaves the old storage object orphaned (sweep with `scripts/sweep-orphan-images.ts`, which already exists). **Recommendation:** low priority — fold into the next time that chapter is touched, or do it standalone in ~5 minutes if the clipped caption bothers you.
+
+### The book's own figures for `2.4.4 SolvedEx.3/4/5` are not attached (optional, cheap)
+
+Ch.2's three second-derivative-test solved examples reference printed figures (Fig. 2.4.5 sheet-with-margins, Fig. 2.4.6 box-from-card, Fig. 2.4.7 triangle). The transcription agent judged all three **"supportive, not load-bearing"** — each solution defines its variables in prose — so they were not attached, and the 19 authored diagrams cover the *exercise* rows, not these. If wanted, they'd be **snapCropped from the source PDF** (`snap-crop.ts` + `attach-images.ts`) rather than authored, which is cheaper and book-faithful. Note Fig. 2.4.7 is the figure the `-bc/a` misprint's stray `a` refers to, so attaching it would make that erratum easier to follow.
+
+### Three raw-unicode-math leaks in shipped `*.solutions.json` files (backfill candidate — see the ledger)
+
+A solution-authoring agent, while validating its own output as ASCII-clean, noticed **3 stray `≠`/`⇒`/`⇐` characters** across the 48 sibling State Board `*.solutions.json` files (i.e. in *already-shipped* chapters, not this one). Project convention is that all math is LaTeX inside `\(…\)`; a raw unicode operator renders as a bare glyph instead of typeset math. Not identified per-file — the agent reported the count in passing, not the locations.
+
+**Not acted on** (shipped work → [[learning-propagation-protocol]]: log, 360, ask). **Scope to establish first:** grep the `data/*.solutions.json` set AND the live `questions.solution` column for `[≠⇒⇐×÷√∴∈∞]` outside `\(…\)` zones — the DB is what students see, and the JSON may have drifted from it. **Blast radius:** cosmetic only (a glyph renders unstyled; no answer is wrong). **Cost:** small if scripted (the `apply-solutions.ts` path is solution-only + hash-safe). **Recommendation:** fold into the next State Board chapter's pass rather than a standalone campaign — or add the check to `notes:latex`-style linting so it's caught at authoring time going forward.
+
+### `\csc` vs `\operatorname{cosec}` inconsistency in Indefinite Integration (cosmetic)
+
+Ch.3's Exercise 3.1 solutions were authored with `\csc` where every other block (and the Indian-textbook convention this project follows) uses `\operatorname{cosec}`. Both render correctly in KaTeX, so it's purely a within-chapter notation inconsistency — left un-normalised at ship.
+
+**Why:** trivial reader-facing inconsistency; not worth the risk of a content UPDATE on its own. **How to apply:** a solution-only, hash-safe `\csc`→`\operatorname{cosec}` string replace over the `indef-integration-12` rows (mirror to `data/indef-integration-12.ex-3-1.solutions.json`). **Best folded into the same future notation-lint pass as the raw-unicode-leak item above** — one State Board "solution notation" cleanup covering both `[≠⇒⇐…]` leaks and `\csc`/`cosec`, ideally as a `notes:latex`-style check run at authoring time.
+
+## 2026-07-15
+
+### Sweep abandoned `in_progress` mock attempts to `expired` (a stale row can block a clean restart)
+
+Found while building the mock-recommendation email (2026-07-15): **all 5 `in_progress` rows in `mock_attempts` are days old and past `expires_at`** — 3–5 days, not live. Nothing sweeps them. `submitAttempt(reason:"expired")` only fires from the runner, so a student who closes the tab leaves the row `in_progress` forever. Two consequences: (1) the partial unique index `mock_attempts_one_active ON (mock_id, user_id) WHERE status='in_progress'` means that student **cannot cleanly restart that same mock** — `startOrResumeAttempt` resumes the dead attempt, whose `remainingSecs` is 0, so it auto-submits instantly; (2) any "is this student mid-exam?" predicate must compare `expires_at > now()` rather than trust `status`, which the email recommender now does (`pickRecipients` skips only a LIVE attempt).
+
+**Why:** it's a real (if quiet) student-facing dead-end on retakes, and it silently mis-types history — `/dashboard/mocks` and `summarizeAttempts` already sidestep it by keying on `score IS NOT NULL`, which is why nobody noticed. Low harm today at 5 rows; it grows with usage.
+
+**How to apply:** either a `pg_cron` sweep (`UPDATE mock_attempts SET status='expired' WHERE status='in_progress' AND expires_at < now()`) — note pg_cron is NOT installed here, and the sibling English AI Tutor's `OPERATIONS.md` records that installing it shifted a function's resolved `search_path` and broke signups, so pin `search_path` if so — or, cheaper and with no new infra, have `startOrResumeAttempt` expire-and-replace a past-`expires_at` attempt instead of resuming it. The second is probably right: it fixes the user-visible dead-end at the point of use and needs no scheduler. Guard with an RLS/integration test that a student with a stale attempt can start a fresh one.
+
+### ~~Decide the 4 non-student accounts on the mailable roster~~ — DONE 2026-07-16, but the STRUCTURAL half is still open
+
+**Done:** all 4 suppressed via `email_opt_out=true` (the real mechanism, not a code skip-list) and the 2 leaked `@test.invalid` billing fixtures **deleted** from `auth.users` after verifying they were inert (0 attempts/activity/entitlements/bookmarks, created 83ms apart). The campaign then sent to 31 real students, 0 failures.
+
+**Still open — the finding that outlives the cleanup:** **deleting an org silently PROMOTES its members onto the student roster.** `deriveStudents` defines a student as *any `auth.users` row with no `org_members` row* — correct when that fed only `/dashboard/students`, but it is now also the **mailing list**, and nothing flags the reclassification. The ex-APJ org account surfaced as a "student" this way after the branch re-tenanting. It recurs on the next org deletion. Consider: exclude `platform_admins` from `deriveStudents`; and make org deletion re-home or tombstone its members rather than dropping them into the student pool. Also worth a `.gitignore`-style guard: roster addresses are third-party PII and this repo is public (a first draft of this very entry named all four and was caught pre-commit).
+
+### Audit the other `student_profiles` writers for the missing `updated_at` stamp
+
+Found via the first real unsubscribe (2026-07-16): `student_profiles` has **no `updated_at` trigger**, and the column's `DEFAULT now()` only fires on INSERT — so any UPDATE that doesn't stamp it explicitly leaves the row's *creation* time. The unsubscribe route had exactly this bug (fixed): a row asserting "this student withdrew consent" carrying a timestamp from 79 minutes *before* the email that prompted it. **The other writers are unaudited** — `saveOwnMobile` (`src/lib/profile/service.ts`), the partial-patch `PATCH /api/profile` (0049 fields), the WhatsApp opt-in (0050), and the `/welcome` onboarding upsert (0048) all UPDATE this table.
+
+**Why:** `updated_at` on a consent/profile table is the audit trail, and a wrong one is worse than a missing column because it reads as authoritative. Consent-bearing fields (`consent`, `whatsapp_opt_in`, `email_opt_out`) are the ones where "when did this change?" is a question you may have to answer under DPDP. Nothing in the gate catches it: the column is NOT NULL with a default, so every write type-checks and every test passes.
+
+**How to apply:** grep for `.from("student_profiles")` with `.update(`/`.upsert(` and check each sets `updated_at`. Then prefer the structural fix over N call-site fixes — a `BEFORE UPDATE` trigger (`NEW.updated_at = now()`) in a new migration makes it impossible to get wrong and retires the whole class. Check the same pattern on other timestamped tables (`papers`, `mock_attempts`, `notes_progress`) before assuming this is unique to `student_profiles`.
+
+### Fix the two source-verified defects in the NDA Regression PYQs (₹ artifact + orphaned set half)
+
+Reviewing the "Statistics" draft paper surfaced two defects in PUBLIC bank rows, **both confirmed page-by-page against the source booklets** (unlike a derivation hunch — see [[classify-findings-by-evidence]]). (1) **`356de9fd` / NDA-1 2020 Q117** stores the stem as `prices (in \(\bar{\text{\phantom{x}}}\))` — a mangled **₹**; the source (`Maths_2020_NDA1.pdf`, booklet p.39-A) plainly prints "prices (in ₹)". It renders as an overbar floating over blank space on `/browse` and in the Word paper. (2) **`1dcaff01` / NDA-2 2021 Q106** is half of a **two-item set**: the source direction reads "Consider the following for the next **two (02)** items that follow" over both Q106 and Q107 (`6698f48f`), but only Q106 is used. Any paper including it prints a direction promising two items and delivers one.
+
+**Why:** the ₹ artifact is a visible render defect on live PUBLIC content, and it likely isn't unique — the same mangling could affect any currency-bearing stem from the same ingest. The orphaned set is a paper-composition trap that will recur every time someone adds a set member without its sibling; note Q107 is also the **only HARD** question available to that Statistics paper, so including it fixes the set *and* the difficulty gap.
+
+**How to apply:** (1) UPDATE the stem to a literal `₹` + recompute `content_hash` via the real helper (collision-guarded), then probe the bank for sibling artifacts: `WHERE text LIKE '%phantom%' OR text LIKE '%\bar{\text{%'`. (2) Either add `6698f48f` to the paper, or teach the builder about sets — a warning in `AddQuestionsPanel` when a candidate has a `set_id` whose siblings aren't in the paper (`set_id` is already on the row; [[notes-set-sibling-co-location]] is the same rule on the /notes side).
+
+### Sweep the bank for more `\phantom`-class symbol manglings from the Excel PYQ ingests
+
+The ₹ above was found by eye, on one question, because someone happened to review that paper. The ingest that produced it (`NDA1_2020_Maths_PYQ.xlsx` and its siblings) may have mangled other non-ASCII symbols the same way — `\bar{\text{\phantom{x}}}` is what a lost glyph degrades into, and currency/degree/prime marks are the likely victims.
+
+**Why:** these render as visible garbage on PUBLIC pages and in exported Word papers, and nothing in the gate catches them — `notes:latex` audits `/notes` editorial modules, not `questions.text`. They're only found when a human reads the question.
+
+**How to apply:** a read-only probe over PUBLIC `questions.text`/`context`/`options.text` for `\phantom`, `\bar{\text{`, empty `\text{}`, and stray `\(\)` pairs; triage hits against the source PDFs (they're scans — render + read per [[gdrive-pdf-fetch]]). If the hit count is non-trivial, consider folding the check into a reusable script alongside `audit:underlines`, which is the closest existing precedent.
+
+### Drive the authed E2E flow for the member-management redesign (slices 1–5)
+
+The 2026-07-14/15 redesign (superadmin/admin/teacher · Org→Branch→Batch · content lockdown · branch-scoped papers · `/superadmin` console) shipped with ~40 RLS/integration tests + build green, and anon routes were smoke-tested — but **no authed browser flow was driven end-to-end**: superadmin onboarding APJ School + creating its admin via `/superadmin`; an admin creating a teacher + assigning branches in `/dashboard/members`; a teacher seeing only their branch's batches/papers + the per-batch "Repeated for this batch" warning; the content-edit denial (admin/teacher get no Edit button, superadmin does). Same class as the still-open sign-up-gate E2E item (2026-07-12) and the paper-editor authed-render item (2026-06-14).
+
+**Why:** RLS + unit tests prove the walls and the data layer; they don't prove the client islands / session gating render correctly for a real logged-in ADMIN/TEACHER/SUPERADMIN. A client-only bug (wrong prop, stale session) only shows under a real login.
+
+**How to apply:** create one test ADMIN + one TEACHER (via `/superadmin` or `/dashboard/members`) and click through: assign the teacher to a branch → sign in as them → confirm they see only that branch's batches; confirm no Edit affordance; sign in as superadmin → confirm the console + the Edit affordance. Consider a Playwright smoke for the three role landings. *(Carry-forward 2026-07-15: also covers the new **paper-builder Branch→Batch filter** — LWS Pune now has two branches (LWS Pune + APJ School), so verify the New-paper dialog + editor cascade filters batches correctly per branch.)*
+
+*(Carry-forward 2026-07-20 — **superadmin-gated dashboard cards/routes** (merge `48d2889`) shipped with the authed render not driven. In the same signed-in pass, confirm: as the **Arjunaa admin** (`careervvmhss@gmail.com`) `/dashboard` shows only the 6 org-scoped cards (Members/Branches/Batches/Papers/Question+Concept reports) and the 6 platform-wide cards are GONE, and a direct hit to `/dashboard/students` (or entitlements/feedback/activity/mocks/quizzes/leads) redirects to `/browse`; as the **superadmin** (`connect.lwspune`) all cards + routes still render. The gate logic is verified against real `is_superadmin` DB data; only the `ƒ`-page render is unproven ([[probe-must-reach-the-code]]).)*
+
+*(Carry-forward 2026-07-15b — **highest priority of this cluster**: the **paper-editor readability rebuild** (merge `25d57c8`) shipped with its authed render never driven. It is a bigger visual change than the rest of this list — every question row now renders through `/browse`'s `QuestionCard` (`hideCart`) with a control bar beneath it, and `AddQuestionsPanel` became a `Sheet`. My first probe was **void**: an anon curl to `/dashboard/papers/[id]` is bounced by the middleware matcher before the page compiles ([[probe-must-reach-the-code]]), so nothing about the render was tested. Walk one draft paper: math + options render; reorder/move-section/remove still work from the new control bar; "Add questions" opens the sheet and defaults the exam filter to the paper's own exam (NOT CBSE Class 12); no "Add to paper" cart toggle on the rows. Revert is clean — `git revert 25d57c8`.)*
+
+### Cross-org web content editing for the superadmin (deferred — scripts cover it today)
+
+The `/superadmin` console does org + admin provisioning but NOT cross-org content editing — the superadmin edits any org's content via the service-role ingestion scripts (the established path), and via the normal `/questions/[id]/edit` UI only for LWS content (they're LWS admin; `applyEdit` is org-scoped and superadmin has no org for other orgs).
+
+**Why:** once APJ School (or a future org) has PRIVATE content that needs a quick web edit, there's no cross-org web path — only scripts. Low urgency while all content work is script-driven, but it's the one piece of "superadmin has edit rights of all orgs" not reachable via the browser.
+
+**How to apply:** a superadmin content surface that reads/writes via the service-role client (bypassing the org-scoped `applyEdit`/read-RLS), resolving each question's own org rather than the caller's. Reuse the edit form; gate with `requireSuperadmin`; write through a service-role `applyEdit` variant keyed on `existing.org_id`.
+
+### ~~Branch-scope the `paper_questions` write policy (minor residual)~~ — **DONE 2026-07-15** (migration 0058, commit `c4df23d`; `paper_questions_write_scoped` mirrors `papers_update_scoped` + 2 new tests in `branch-members-rls`)
+
+Slice 3 branch-scoped papers/batches SELECT+UPDATE but left `paper_questions` write org-scoped (`can_edit_questions()` + paper-in-own-org). A teacher who knows a paper id outside their branch could in principle add/remove its questions (the UI never surfaces such papers, and paper SELECT hides them, so it's a blind-write edge, not a visible one).
+
+**Why:** defense-in-depth — the SELECT scoping is the primary control, but a tightened write policy closes the blind-write gap fully.
+
+**How to apply:** add the same branch EXISTS predicate (paper's batch's branch ∈ `current_user_branch_ids()` OR created_by OR is_admin) to the `paper_questions_write_editor` policy, mirroring `papers_update_scoped`. One migration + extend `tests/branch-members-rls.test.ts`.
+
+## 2026-07-12
+
+### Drive the signed-in E2E flow for the four sign-up gates
+
+This session shipped four progressive sign-up gates (download, notes practice + track, metered answer-reveal, bookmarks) across migrations 0046–0047. Every **anon** path, API gate, and RLS round-trip was verified (curl + isolated RLS tests), and rendering was smoke-tested — but the **authed browser flow was never driven end-to-end**: bookmark toggle → `/saved`, the 4th anon reveal → wall then sign-in → unlimited, the notes bookmark/mark-mastered/checkpoint self-score → "Your notes" strip, and the download student-account path (paper/key succeed, tags 403). Same class as the still-open paper-editor authed-render item (2026-06-14) — a client-island or session bug only shows under a real login.
+
+**Why:** Definition-of-Done requires the golden path verified in the browser; the new surfaces are client islands reading the Supabase session, exactly where an SSR/hydration/session bug hides (the `ƒ`-page + client-island pitfall).
+
+**How to apply:** sign in as a self-serve student in a browser and walk each of the four flows once; confirm the "Your notes" strip + `/saved` populate, the reveal wall appears on the 4th distinct question and clears after sign-in, and a student gets 403 (not 500) on the tagged sheet.
+
+**Carry-forward (2026-07-12):** the soft **mobile-capture prompt** (`MobilePromptProvider`) shipped the same class of gap — its authed golden path (download → bottom-sheet → save → toast → doesn't reappear; 5 reveals → sheet; dismiss → gone for the 14-day cooldown) was **not driven E2E** either. Walk it in the same signed-in browser pass, as a student with NO mobile on file (a fresh account, or clear `student_profiles.mobile`).
+
+### Point the test suite at a dedicated staging Supabase (the durable flake fix)
+
+The 2026-07-12 fork-concurrency cap (`maxForks:2`) stopped the shared-DB contention flake that was blocking pushes, but it's a **mitigation, not elimination** — 71 of 176 test files still write to the ONE prod Supabase, and the cap trades speed (~92s vs ~34-58s) for stability. The real fix is isolating test writes from prod.
+
+**Why:** every future DB test adds load; the cap has headroom now but the class of flake (statement timeouts, fixture races, teardown sweeps racing prod reads) recurs structurally. A staging project also removes the global-teardown "sweep prod test rows" fragility entirely.
+
+**How to apply:** create a second Supabase project, apply all migrations, set the three CI/`.env.local` secrets to point at it for tests only; then `maxForks` can be raised back up (staging has no prod contention). The CI workflow header already anticipates this ("point the secrets at a staging project if write traffic gets noisy"). See [[shared-db-test-flake]].
+
+### A unified student dashboard (`/me`) — the per-user surfaces now exist to fill it
+
+Four per-user surfaces shipped or exist but are scattered: mock attempts (`mock_attempts`), notes progress (`notes_progress`, surfaced only as a strip on `/notes`), saved questions (`question_bookmarks` → `/saved`), and — parked — saved papers. A signed-in student has **no home** (`/dashboard` redirects them to `/browse`). A `/me` dashboard would unify continue-where-you-left-off, mock history, bookmarks, and notes progress into one retention surface.
+
+**Why:** it's the payoff that makes all the sign-up gates *worth it* for retention/personalization (the stated goals), and every data source already exists — it's assembly, not new plumbing. Also relates to the open per-student mock drill-down item (2026-07-10).
+
+**How to apply:** a `/me` (or student-facing `/dashboard`) server page that reads the signed-in user's `mock_attempts` (perf summary), `notes_progress` (`summarizeNotesProgress`), and `question_bookmarks` (`listBookmarkIds` → count), each already having a query helper; render as cards linking into `/mock`, `/notes`, `/saved`.
+
+**Carry-forward (2026-07-12):** the engagement engine's activity spine (`user_activity`, migration 0052) shipped this session — the `/me` cockpit is now the recommended **first cadence-independent mechanic** for the engine (the `/dashboard/activity` verdict reads `insufficient` today, so build value surfaces that don't depend on visit cadence). A `/me` page can add a metacognition trajectory (mock score trend + days-to-exam) reading the spine, on top of the assembly above. See [[project-engagement-engine]].
+
+### Watch Search Console after the notes practice gate; decide gate breadth from data
+
+The notes practice gate + reveal meter are client-side and keep teaching prose indexed, so SEO risk is low *by design* — but it's an untested bet on the live crawl. Nothing is currently measuring it.
+
+**Why:** the whole progressive-vs-aggressive gate strategy hinges on not eroding the SEO funnel; ~2 weeks of Search Console data (impressions/clicks on `/notes` + `/browse`) is the cheap validation before stacking more gates (the roadmap has quiz-results→account + more).
+
+**How to apply:** after ~2 weeks live, compare `/notes` + `/board` impressions/clicks vs the prior fortnight in Google Search Console. If flat/up, expand gates confidently; if down, dial back the reveal meter (raise the free limit) before touching the notes gate.
+
+### Extend the soft mobile prompt — ~~`/board` reveal trigger~~ **(/board DONE 2026-07-12)** + fold in exam/city
+
+The `MobilePromptProvider` shipped mobile-only, triggered on `/browse` (download + 5 reveals). Two parked extensions: (1) ~~the same `notifyReveal()` call in `BoardReader`~~ **DONE 2026-07-12** — `BoardReader.tsx` now calls `mobilePrompt.notifyReveal()` on a successful answer reveal (shares the root provider's counter with `/browse`, so 5 reveals across both surfaces fire once); (2) a later "phase 2" that folds **exam + city** into the same bottom-sheet (the two other under-captured "communication" fields — city is ≈0% covered today, only asked on `/account`) — **still open**.
+
+**Why:** the current triggers miss the `/board`-only reader entirely, and mobile-alone is less useful for outreach than mobile+exam+city together (the original analysis's point). Both are cheap — the provider + sheet already exist; extension is one call site + a couple of fields.
+
+**How to apply:** (1) `import { useMobilePrompt }` in `BoardReader` and call `notifyReveal()` where it reveals an answer (parallel to `QuestionCard`). (2) For exam/city: add optional fields to the sheet + widen the `POST /api/profile/mobile` (or reuse `PATCH /api/profile`) — keep it one-ask, pre-fill exam from the `qb_exam` cookie (infer-then-confirm per [[signup-gate-placement]]). Keep it a nudge (never blocking) and preserve the ask-once cooldown.
+
+### Build the weak-area deliberate-practice drill off `answer_wrong` (the engagement differentiator)
+
+The activity spine (migration 0052) now logs one `answer_wrong` event per missed mock question (refId = questionId, metadata carries sectionKey + mockId). Nothing consumes it yet. The highest-value, least-gimmicky engagement mechanic is a **personalised drill assembled from the student's OWN wrong answers**, grouped by chapter — "you've missed 6 Vectors questions across 3 mocks; clear them" — with mastery at 80% (retire a question once re-answered correctly). This is retrieval practice + spaced repetition + deliberate practice + mastery-before-progression in one feature, and it reuses the existing bank + taxonomy + render path.
+
+**Why:** it's the differentiator that separates PYQ Vault from a generic quiz app, it's genuinely useful (not a dark pattern), and it's cadence-independent so it can ship NOW while `/dashboard/activity` still reads `insufficient` (unlike streaks, which wait on the verdict). Every input already exists.
+
+**How to apply:** a `drill_completed`-emitting flow: read the signed-in user's `answer_wrong` events (join `questions` for chapter/subject), dedup against questions later answered correctly (or re-derive from `attempt_answers`), assemble a per-chapter drill (reuse the `/mock` runner or a lighter reveal flow), grade, and log `drill_completed`. Gate "mastered" at 80%. Emit the retire signal via a new `answer_correct`-in-drill event (the kind already exists in `ACTIVITY_KINDS`). See the engagement gate in CLAUDE.md + [[project-engagement-engine]].
+
+### Complete activity-spine emitter coverage (`answer_revealed`, `quiz_taken`)
+
+The spine defines 8 learning-anchored kinds but only 5 are wired: `mock_submitted`, `answer_wrong`, `chapter_mastered`, `note_checkpoint`, `question_bookmarked`. Not yet emitted: **`quiz_taken`** (the public `/quiz/[slug]` + daily-quiz completion) and — a candidate not currently in the allowlist — **`answer_revealed`** (the metered `/browse` + `/board` reveal). `answer_correct` and `drill_completed` are reserved for the drill flow above.
+
+**Why:** the usage-shape readout + any future weekly-summary/cockpit are only as complete as the events feeding them; `quiz_taken` in particular is a real engagement signal today (the public funnel is live) that the spine is currently blind to. Cheap to add — one best-effort `logActivity` call per write path, the pattern is established.
+
+**How to apply:** add a `logActivity({kind:"quiz_taken", ...})` at the public-quiz grade + daily-quiz completion write paths (signed-in only — the public funnel captures anon leads by mobile, not accounts, so only wire the authed case). If reveal-tracking is wanted, add `answer_revealed` to `ACTIVITY_KINDS` + the DB CHECK (migration) first, then emit from the reveal endpoints — but note reveals are anon-heavy + client-metered today, so weigh the volume before wiring.
+
+---
+
+## 2026-07-11
+
+### DRY the two textbook pipelines (`scripts/stateboard/` + `scripts/ncert/`) once a 3rd textbook exam lands
+
+`scripts/ncert/` (NCERT/CBSE Class 12) was created by copying State Board's thin IO scripts verbatim (render / merge / commit / apply-solutions / flip-public / backfill-sections / errata) — only `config.ts` + `sections.ts` differ, and `lib.ts` already re-exports the pure core. So ~7 near-identical IO scripts are duplicated across the two dirs (each imports its own `./config` + `./lib`). This was the deliberate low-risk choice (don't rework shipped State Board code), and 2 pipelines is fine.
+
+**Why:** at a **3rd** textbook exam (e.g. CBSE Class 11, or an ICSE), the copy-paste tax compounds and a bug fixed in one dir silently rots in the others. Two is tolerable; three is the tipping point.
+
+**How to apply:** extract the IO scripts into a shared `scripts/textbook/` that takes the exam config as a parameter (each exam dir keeps only `config.ts` + `sections.ts` + a tiny entry that passes its config in). This is a rework of shipped State Board code → needs the 360 + explicit-permission gate per [[learning-propagation-protocol]]. Defer until the 3rd exam actually forces it — don't pre-abstract.
+
+### ~~Ch.8 Applications of Integrals will exercise the figure/snapCrop path (natural next chapter)~~ — **DONE 2026-08-17**
+
+Shipped in the final-six batch (`c2b9c5f`), and **both** paths were exercised, not just one: `snap-crop.ts` + `attach-images.ts` ran for the first time on this pipeline (4 crops on Vector Algebra, snapCrop 4/4 ok), and Application of Integrals got **14 authored `solution_image` area diagrams** via a ported `render_solution_diagrams.py` — plus 15 more for Linear Programming. Every montage was eyeballed by the maintainer, not taken from an agent's self-verify.
+
+Two corrections to this entry's premise, worth keeping: the chapter is **not** figure-dense in the way assumed — a scan restricted to text *between an EXERCISE header and the next structural heading* finds **zero** per-question figure refs in Ch.8 (its `Fig` refs are all expository), and the whole remaining book had exactly one load-bearing per-question figure. The area diagrams are authored, not cropped. See [[metric-scope-matches-decision]].
+
+---
+
+## 2026-07-10
+
+### Admin publish/unpublish UI for mock tests (currently CLI-only)
+
+Mock tests ([[mock-tests]]) are created + published ONLY via `scripts/mocks/build.ts --apply --publish`. There is no dashboard control to unpublish a live mock, publish a staged draft, or archive one — an admin must run the tsx script. `/dashboard/mocks` is read-only (performance).
+
+**Why:** once mocks are a routine product, an admin will want to pull a bad mock or stage/release one without a developer running a script. Low urgency now (all 36 are published + verified), but the moment one needs pulling it's a script-only operation.
+
+**How to apply:** add a status toggle (draft ↔ published ↔ archived) to `/dashboard/mocks` — a server action that flips `mock_tests.status` via the service-role client (writes are service-role-only by RLS design). Mirror the `/dashboard/quizzes` "Publish to public" pattern. Keep the row's snapshot immutable — only `status` changes. Small; do it when the first mock needs pulling.
+
+### Extend `/dashboard/mocks` — CSV export + per-student view
+
+The per-mock performance page lists attempts (email · score · %). Two natural asks the user floated: (a) **CSV export** of a mock's attempts for offline analysis; (b) a **per-student view** — one aspirant's scores across ALL mocks over time (LWS tracks individual aspirants).
+
+**Why:** a coaching institute grades cohorts and tracks individuals; the current per-mock table is a good start but neither exportable nor pivoted by student.
+
+**How to apply:** (a) a "Download CSV" button → a route that streams `getMockAttemptsDetail(slug)` rows as CSV. (b) `/dashboard/students/[id]` (or a drill-down from `/dashboard/mocks`) → `getUserAttempts(adminDb, userId)` (already exists — call it with the service-role client for any student, not only the signed-in one) rendered as a per-student attempt list. Both reuse existing reads; no schema change.
+
+### Add mock-test activity signals to the Registered Students roster
+
+`/dashboard/students` is currently the bare roster (email · sign-in · date) per the user's scope choice. The deferred richer version adds per-student signals: **mocks-attempted count** and **premium status**.
+
+**Why:** the roster answers "who signed up" but not "who's actually engaged" — the more useful admin question. Explicitly scoped out this session (user chose "just the roster"), so this is a clean follow-up if they want it.
+
+**How to apply:** in `listStudents()`, after building the student set, one grouped `count` over `mock_attempts` by `user_id` (paged) + one `select` over active `entitlements` → join into the rows. Add two columns to the table. Keep it one extra query each (don't N+1). See [[mock-tests]].
+
+## 2026-07-07
+
+### ~~Ingest NEET 2024 + Re-NEET 2024 (both 200 q) + commit the whole 200-q batch~~ — **DONE 2026-07-07**
+
+All three pre-2025 200-q papers (2023 + 2024 + Re-NEET 2024) ingested → NEET 539 → **1,139 q PUBLIC**. 2024/Re-NEET-2024 pagination was clean (all HIGH-confidence, no page-break-inferred answers — unlike 2023). 53 figures across the two through the verify-gate (montage-reviewed every crop; caught a **mis-paged Q98 anchor** on p43-vs-p44 + several leaks/bleeds). Committed the whole batch (2023+2024+Re-NEET-2024 + the pipeline parameterization) on branch `neet-2024-ingestion` → gate PASS → merged `--no-ff` to main (`d609201`) + pushed. See the 2026-07-07 Decisions entries + [[neet-ingestion]].
+
+**Follow-on (only if more NEET source appears):** the NEET Botany/Zoology **catalog has no "Biomolecules" chapter** — enzyme/protein-structure/biomolecule questions get mapped to the nearest fit (`Cell: The Unit of Life` etc.) and flagged MED at commit. If a future NEET ingest has many such, consider seeding a Biomolecules chapter under Botany in `NEET_CHAPTERS` (config.ts) so they file correctly. Low priority — a handful per paper, transcription is reliable, only the chapter label is approximate.
+
+## 2026-07-06
+
+### Build the `/board` "PYQs by year" section into the reader
+
+The `/board` textbook-solutions reader ([[board-reader]]) renders only textbook `section_*` rows (`question_kind='practice'`). When board previous-year papers are ingested (the `Question_Paper/` DOCX compilation, as `question_kind='pyq'` with `pyq_year`), they will NOT auto-appear — `getBoardChapter` filters on `section_seq IS NOT NULL`, which PYQs won't carry. The reader design always intended a terminal "PYQs" section grouped by year, but it's unbuilt.
+
+**Why:** board PYQs are the natural next State Board phase and a big draw (Maharashtra HSC aspirants want the actual board papers, not just the textbook). Without the reader addition they'd be browsable only via `/browse`, defeating the book-faithful reading experience.
+
+**How to apply:** in `src/lib/board/query.ts`, extend `getBoardChapter` to also fetch the chapter's `question_kind='pyq'` rows and return them as a trailing group keyed by `pyq_year` (desc); render that group in `BoardReader.tsx` below the textbook sections (reuse the block/reveal components). No schema change — `pyq_year` already exists. Keep `board:lint` `practice`-scoped (PYQs legitimately have no `section_*`). Small, self-contained; do it when the first board PYQ batch lands.
+
+### ~~Extend `quiz:lint` / `stemLint` to catch non-standalone stems + correct-option tells~~ — **DONE 2026-07-06**
+
+Shipped: `flagStem` extended with Defect-A checks (orphan opener, dangling "inside it", references-an-object-not-shown-inline gated on no `\begin{…}`) + new pure `flagOptionTell(options, answer)` for Defect B (parenthetical/dash/arrow aside only the correct option carries; semicolon tried + dropped as a FP source); wired both into `quiz:lint` (added `options`+`answer` to its select); 12 new TDD cases (26 total green), lint+typecheck clean. `src/lib/quiz/stemLint.ts` + `scripts/quiz/lint.ts` + `tests/quiz-stem-lint.test.ts`.
+
+<details><summary>original</summary>
+
+Auditing the Matrices & Determinants daily quizzes (2026-07-06) found two atom-quality defect classes the current `stemLint`/`quiz:lint` gate misses entirely: **(A)** stems that name a concrete object never given in the stem (*"the cyclic determinant"*, *"After differentiating…"*, or the ill-posed *"…evaluate the determinant whose rows…"* whose option referenced *"the bank"*), and **(B)** correct-option "tells" — an editorial parenthetical/restatement the distractors lack (`(not 8)`, `(rank 1)`, `— one per differentiated row`, `(reversal)`), guessable by test-wise elimination. `flagStem` only catches back-refs, deictic openers, criterion-less "which is correct?", and the generic-formula template. Full detail: [[quiz-atom-standalone-and-option-tell]].
+
+**Why:** these ship "lint-clean" yet are unfair to a cold quiz-taker — the whole point of the Factory. A durable guard makes the ~120-quiz backfill (ledger above) mechanical instead of a manual read, and prevents recurrence on every future chapter's harvest.
+
+**How to apply:** add two heuristics to `src/lib/quiz/stemLint.ts` (TDD): (A) flag a stem that names `matrix|determinant|system|figure` (or opens with an orphan `After …`/`the …`) but carries **no inline** `\begin{...}`/numeric values; (B) flag a question whose **correct** option's prose-word count (math-stripped) exceeds every distractor's by ≥2, or matches a punct-tell regex (`—|→|\(=|\(not|\(rank|\(reversal|\(a scalar`). Both are triage flags for `quiz:lint` (not hard gates — the "inherently nuanced correct answer" false-positive is real, ~7 of 25 in M&D), surfaced with the offending text so a human de-tells via the verify override. Note B needs the full question (options), so it reads the assembled/snapshot pool, not just the atom stem.
+
+</details>
+
+## 2026-07-04
+
+### ~~Answer-key cross-check the Part-01 State Board chapters (complete the Balbharati errata)~~ — **DONE 2026-07-04**
+
+Cross-checked Logic, Matrices, Pair of Straight Lines against `State_Board_Maths_12th_Part_1.pdf` (4 parallel vision agents, independent re-derivation). Fixed 6 of our authoring errors + flagged 20 book answer-key errors with the `[Textbook …]` brackets. `errata.ts` now spans all 4 chapters (34 items: 7 misprints + 27 answer-key errors). See the 2026-07-04 Decisions entry.
+
+<details><summary>original</summary>
+
+The DE (Part-02) chapter was cross-checked against the book's official ANSWERS section and every defect flagged with the `[Textbook …]` bracket convention, feeding `scripts/stateboard/errata.ts`. The three **Part-01** chapters — **Mathematical Logic, Matrices, Pair of Straight Lines** — were ingested BEFORE this became routine, so their errata is incomplete: their MCQ keys + authored exercise answers have not been diffed against the book's official Part-01 answer key.
+
+**Why:** the errata report to Balbharati should cover ALL shipped chapters, not just DE. A book's answer key carries real errors (~6 found in DE alone), and our authored answers may also have slips (2 found in DE) — both surface only under the cross-check.
+
+**How to apply:** obtain the Part-01 answers PDF (analogous to `State_Board_Maths_12th_Part_2.pdf`), render each chapter's answer pages, fan out vision agents by exercise block to diff each committed answer, independently re-derive (sympy) every disagreement, then flag defects at the top of the solution with `[Textbook misprint: …]` / `[Textbook answer-key error: …]` and re-run `apply-solutions.ts --apply`. `errata.ts` picks them up automatically. This is a permission-gated backfill of shipped work (per the learning-propagation protocol) — confirm before editing the Part-01 solutions.
+
+</details>
+
+### ~~Add a `solution_image` capability (product decision — has data now)~~ — **DONE 2026-07-03**
+
+Shipped: migration 0042 `questions.solution_image_url` (nullable) + wired through `QuestionRow`/both `/browse` selects + rendered in the "Show model answer" reveal (`QuestionCard`) + the docx answer-key SOLUTION block (never the question paper — no leak; TDD in `tests/docx-image.test.ts`) + `fetchImageBytes`. Attach via `scripts/stateboard/attach-solution-image.ts` (PNG manifest). **Phase 2 done too:** all 20 flagged Pair-of-Straight-Lines diagrams authored deterministically via `scripts/stateboard/render_solution_diagrams.py` (Pillow, no new dep) — verified correct + legible, attached. Reusable for future geometry chapters: flag `diagramWouldHelp` during solution authoring → author specs → render → montage-verify → attach.
+
+<details><summary>original</summary>
+
+State Board Ch.4 Pair of Straight Lines carried a `diagramWouldHelp` flag on every authored subjective solution: **20 of 102 (~20%) flagged**, in 4 archetypes — equilateral-triangle constructions (origin-pair + base line), angle-bisector pairs, lines-at-a-stated-angle, intersecting pairs (exactly the shapes `/notes` already renders as static SVGs). So a per-question solution diagram has a real, measured addressable surface on geometry-subjective content.
+
+**Why:** State Board is textbook content taught by LWS teachers; a worked answer for a locus/triangle/angle question reads far better with the sketch. ~20% of one chapter is enough signal that this isn't a one-off. The count will keep growing as figure-heavy chapters (Vectors, Trig, Line & Planes, LP) come in — decide before ingesting those so their solutions can carry the image from the start rather than a backfill.
+
+**How to apply (NOT a heavy build — reuses the figure path):** add a nullable `questions.solution_image_url` (append-only migration); render it in `QuestionCard`'s "model answer" reveal + the docx answer-key (above/below the model-answer text), reusing the existing `uploadImage`/storage/`image_url` render path that figures already use. Author images the same way `/notes` viz SVGs are authored (or crop from the book where the book prints one). The `diagramWouldHelp`/`diagramNote` fields already sitting in `scripts/stateboard/data/pair-lines-12.*.solutions.json` are the ready-made worklist for the first batch.
+
+</details>
+
+### ~~Push the `state-board-ingestion` branch~~ — **DONE 2026-07-03**
+
+Merged `state-board-ingestion` → `main` (`--no-ff` `76de455`, docs `460f85c`, build-verified) and pushed; Vercel deployed. The now-merged branch was deleted (remote copy lingered on a network-timeout, harmless).
+
+<details><summary>original</summary>
+
+The State Board work (schema `question_format` migration 0041 + subjective support + `scripts/stateboard/` + Ch.1 Mathematical Logic ingest) is committed on `state-board-ingestion` (`bec801c`, `27d4fbc`) with `main` merged in (`1a5705b`). The full gate is green (notes-lint 0 errors after the merge; the one test failure was a confirmed `browse-query` shared-DB flake — passes isolated). It is **not pushed**.
+
+**Why:** the branch is local-only; the work (a new live exam + 61 PUBLIC questions already in the DB) has no remote backup or CI run until pushed. Merging `main` already resolved the notes-lint drift, so the branch is pushable.
+
+**How to apply:** free space on **C: (chronically 100% full — `next build` ENOSPC'd this session; the build only passed after deleting `.next` + rendered PNGs)**, then run `npm run prepush` via bash to confirm green, then `git push -u origin state-board-ingestion` (or merge to `main` per [[git-merge-to-main-flow]]). The `scripts/stateboard/out/` PNGs are gitignored and regenerable via `render.ts`.
+
+</details>
+
+### ~~Finish State Board Ch.1 — figures, MCQ review, subjective model answers~~ — **DONE 2026-07-03**
+
+All three shipped. MCQ: 7 keys re-verified (all correct) + solutions added. Subjective: 169 model solutions authored (6-agent fan-out) + applied via `apply-solutions.ts` → all 230 subjective PUBLIC. Figures: 29 switching circuits attached, then **re-cropped via snapCrop** (`scripts/stateboard/snap-crop.ts`) after 7 broken-image reports — the eyeballed bboxes clipped circuits + leaked an answer; snapCrop ink-bounding + a central montage/full-res verify fixed all + caught 3 more the reports missed; 7 reports resolved, orphans swept. **Ch.1 = 266 questions PUBLIC, all answered, figures clean.** See [[state-board-ingestion]] + [[figure-snapcrop-verify]].
+
+<details><summary>original</summary>
+
+Ch.1 Mathematical Logic shipped **61 solved examples PUBLIC**; the rest is staged PRIVATE. Three follow-ons remain before the chapter is complete: (1) **figure-attach** the ~35 switching-circuit figure-only questions deferred from §1.5 + Miscellaneous Q.12–17 (agents transcribed the symbolic ones, skipped pure-diagram ones); (2) **review the 7 derived-answer MCQs** then `flip-public.ts logic-12 --with-mcq --apply`; (3) **author/source model answers** for the 169 subjective exercises, then flip PUBLIC. See [[state-board-ingestion]] + [[textbook-chapter-ingestion]].
+
+</details>
+
+**Why:** the PUBLIC solved examples are the ship-ready subset, but a browsing student sees only ~26% of the chapter's questions until the exercises get answers. The MCQ answers are already derived (cheap review); the subjective answers are the real long pole.
+
+**How to apply:** figures — render the §1.5/Misc pages, crop the circuit diagrams, attach via an `attach-images.ts` step (mirror `scripts/foundation/attach-images.ts`). MCQ — spot-check the 7 derived keys (one has a source typo: Misc I(vi) options A≡C, answer D unaffected), then `--with-mcq`. Subjective — LWS-author or source from a solutions/digest book, backfill `solution` by script (NOT the edit UI — it's MCQ-only), then flip.
+
+### Scale State Board to the remaining chapters (14 more 12th Maths + 11th; CBSE later)
+
+Only Ch.1 (the hardest — truth-table + figure heavy) is ingested. The pipeline is proven; each remaining chapter is render → 6 parallel vision agents (one per section) → `merge.ts` → `commit.ts` → `flip-public.ts`. Source: `C:\tmp\PYQPs\MHT-CET\State_Board\12th\` (+ `11th\`).
+
+**Why:** one course with one chapter is thin; the audience (Maharashtra HSC = MHT-CET aspirants) wants the whole book. Per-chapter cost is now low (clone `config.ts`'s `logic-12` entry, define the canonical subtopics, fan out).
+
+**How to apply:** add a `CHAPTERS` entry per chapter (chapterName + subtopics + pdf path), `render.ts <id>`, dispatch section agents with the [[textbook-chapter-ingestion]] spec, merge/commit/flip. Table-light chapters (Vectors, Line & Plane) are faster than Ch.1. Board PYQs (the `Question_Paper/` DOCX compilation) are a **separate later phase** under the same exam, ingested as `question_kind='pyq'`.
+
+## 2026-07-02
+
+### `/solution-cleanup` a self-contradicting MHT-CET Chemistry solution (flagged during the SBCC notes build)
+
+Question `ad486941-68ca-4460-b958-5d4e9a161f48` (MHT-CET Chemistry → *Some Basic Concepts of Chemistry* → *Real Gases, Dalton's Law and KTG*): *"A container contains 4 g H₂, 4 g He and a certain amount of Ne … what mass of Ne makes its partial pressure equal to that of He?"* The **stored solution contradicts itself** — it correctly derives \(n_{Ne}=n_{He}=1\) mol ⇒ **20 g**, then writes "…however the AK keys 4 g" and stops. Equal partial pressure at the same T,V ⇒ equal moles ⇒ 20 g is the sound answer; the "4 g" appears to be a wrong printed key (4 g Ne = 0.2 mol ≠ 1 mol). **Not fixed in the notes build** (it was only tagged to the partial-pressure concept and deliberately NOT used as a worked example). Needs a source-verified `/solution-cleanup`: confirm the correct option against the printed paper, flip the key if 20 g is an option, and rewrite the solution to remove the contradiction (or preserve as a flawed-question honest-note if 20 g isn't among the options). Surfaced 2026-07-02 during the MHT-CET Chemistry *Some Basic Concepts* /notes build (first MHT-CET Chemistry notes chapter).
+
+### ~~Automate the stem-vs-image label cross-check as a `verify-figures` step~~ — **DONE 2026-07-02**
+
+Added `extractStemLabels(stem)` to `scripts/lib/figures/verify.ts` (pure, deterministic — subscripts `L_1/D_2/V_A`, geometry letter-runs `ABCD`→A,B,C,D, prose "point(s)/at/between/labels: X, Y", `List I/II`, option-count reminders; LaTeX-stripped; stopword-filtered), with **8 TDD cases** in `tests/figures-verify.test.ts` (21 total green). Wired into `verify-figures.ts` so each contact-sheet card now prints a **"✓ confirm present in crop: `P` `Q` …"** checklist per figure — turning the ~9%-blind-spot eyeball pass into a directed textual check. Validated over all 68 NEET stems (q7:[P], q40:[D1,D2,Vin], q36/q126:[A,B,C,D], re-q10:[P,Q]). It's a **review aid, not a gate** (over-includes on chemistry prose; presence-confirmation still needs vision/OCR — none installed). Method + evidence: [[figure-snapcrop-verify]] lesson 6.
+
+### Commit the `teaching-plan/` subsystem to git (currently untracked)
+
+The whole teaching-plan tool — 6 subject-grade plans (maths/physics/chemistry × XI/XII), the shared `build-docx.py` generator, `README.md`, and the 12 JSON source files — is **untracked** in the Question_Bank working tree (`git status` shows `?? teaching-plan/`). It's a substantial, finished deliverable (built + reordered + NCERT-corrected + cross-board-tagged this session) living only on local disk. See [[teaching-plan-generator]].
+
+**Why:** it's real work with no version history or backup; an accidental `git clean` or disk loss wipes it. It's also invisible to any future session that greps the repo.
+
+**How to apply:** decide first whether it belongs in *this* repo (the PYQ Vault web-app repo) or its own — it's a separate concern (LWS teacher lesson-planning, Python, not the Next.js app). If keeping it here: add `teaching-plan/*.docx` to `.gitignore` (regenerable build artifacts, per the project's no-commit-generated-artifacts convention), then commit the JSON sources + `build-docx.py` + `README.md` in one `feat(teaching-plan):` commit. If it becomes a committed part of the repo, give it a short pointer in CLAUDE.md or its own doc.
+
+### Reflect the entrance-test findings in the chemistry plans (re-tag Nuclear + per-exam tags)
+
+The bank-grounded analysis (2026-07-02) found that of all 32 board chem chapters, **Nuclear Chemistry & Radioactivity is tested by none of CET/NDA/JEE**, while **Chemical Equilibrium** (Kc/Kp/Le Chatelier) is **JEE-only** and **Chemistry in Everyday Life** is **NDA-only**. These weren't reflected in the plan flags (the user was shown the analysis but didn't confirm edits). Nuclear currently carries `⚠ CBSE gap`, which over-signals it (it implies "cover for CBSE" when it's the one chapter safe to skip for entrance prep). See [[teaching-plan-generator]].
+
+**Why:** the flags now say "CBSE students need this" for a chapter no entrance exam tests — misleading for prioritisation in a mixed cohort.
+
+**How to apply:** in `chemistry-xi-deep-dive.json`, re-tag Nuclear Chemistry (U13) rows from `cbse_gap` → a new `board_only_no_entrance` flag (add a `FLAG_LABEL`), and add per-exam tags to Chemical Equilibrium (U12, `jee_only`) and Chemistry in Everyday Life (U16, `nda_only`); add matching `FLAG_LABEL` entries + a spine note. Regenerate the docx.
+
+### Extend the cross-board CBSE/State cohort treatment to the Physics + Maths plans
+
+Only the Chemistry plans got the `cbse_gap`/`cbse_xi` cohort flags + notes this session; Physics got only the Work-Energy-Power split (no cohort flags), and Maths got none — yet the same mixed-cohort XI/XII boundary gap exists for all three (Physics is a clean mirror-swap; Maths has the Linear-Inequalities/3-D boundary shifts surfaced earlier). The offered **merged "cross-board XI teaching plan"** (one sequence with each unit tagged `[Both]` / `[CBSE-XI]` / `[State-XI]`) was never built.
+
+**Why:** a teacher of a mixed CBSE/State batch needs the same at-a-glance "who's seen this / when to teach together vs split" signal in Physics and Maths that Chemistry now has; leaving it Chemistry-only is inconsistent.
+
+**How to apply:** for `physics-xi`/`physics-xii`, tag the mirror-swap blocks (`cbse_xi` on the physics-xii units NCERT teaches in XI; `cbse_gap`/board-timing notes on physics-xi's NCERT-Class-12 chapters) reusing the existing flag labels. For Maths, tag the two NCERT-XI-not-in-board-XI items. Optionally build the merged cross-board XI plan as a new slug reusing `build-docx.py`.
+
+## 2026-07-01
+
+### ~~Archive the oldest inline Decisions-log month — CLAUDE.md over the 200KB re-archive trigger~~ — **DONE 2026-07-02**
+
+Moved the 2026-06-12 → 06-16 block (16 entries) from CLAUDE.md's Decisions log into `DECISIONS_HISTORY.md` as **batch 6** (newest-first, above batch 5); updated both boundary pointers + the history preamble. CLAUDE.md **224KB → 165KB**; oldest inline entry is now 2026-06-17. Done via a guarded Python cut (boundary asserts, zero-duplication verified).
+
+### Fold the `verify-figures` gate into the other figure pipelines (foundation / mhtcet / jee / cds) — *shared core adopt-ready; retroactive scope assessed 2026-07-02 → low urgency; wiring deferred to each pipeline's next ingest*
+
+The reusable core was **promoted to a shared `scripts/lib/figures/`** (2026-07-02) — `snapcrop.py` (pipeline-agnostic) + `verify.ts` (pure helpers incl. `extractStemLabels`) + a README port-recipe; `scripts/neet/` now imports from there, 21 tests green. So a future pipeline **imports** it instead of copy-pasting.
+
+**Data-grounded scope (2026-07-02, `image_url` counts + per-pipeline crop-method audit):** NEET (68, DONE) was the **unique** high-risk case — pure-scanned pages with **hand-eyeballed page-band bboxes** (nothing bounds the crop to the figure → the 90% defect rate). The others are structurally safer: **MHT-CET (246) + JEE (118)** upload pandoc-extracted `media/` files verbatim (`readFileSync`→upload, **no crop** → leak-free by construction); **Foundation (283)** crops a bbox but bounded to **unioned raster image-blocks** (`figure-bbox.ts`) → answer text isn't a raster block, so answer-leak is structurally unlikely; **CDS (0 figures)**. So the eyeballed-page-band failure mode that motivated the gate doesn't exist in the embedded-object / block-union pipelines.
+
+**Why (revised):** the gate's real forward value is at the **next SCANNED-BOOKLET ingest** (page-band cropping, like NEET/a future scanned exam) — that's when to wire it in, not retroactively over the leak-free pipelines.
+
+**How to apply (per pipeline, at its next figure-heavy ingest — not speculatively):** import `scripts/lib/figures/verify` + spawn `scripts/lib/figures/snapcrop.py`; add a paper-scoped `figure-verify.json` verdict, a `verify-figures` contact-sheet/montage step (now with the `extractStemLabels` checklist), and a `flip-public` guard blocking PUBLIC until every figure is `ok`. Recipe in `scripts/lib/figures/README.md`. The Foundation retroactive spot-check is a separate, permission-gated backfill (see the Backfill ledger).
+
+### ~~Sweep orphaned `question-images` storage objects (no `image_url` referrer)~~ — **DONE 2026-07-02 (fully — org-folder + 865 historical)**
+
+Built the durable `scripts/sweep-orphan-images.ts` (dry-run + `--apply` + `--purge-all`; referenced set = `questions.image_url` ∪ `options.image_url`; refuses to run if the referenced set looks broken). Removed **123 org-folder orphans** (superseded re-crop uploads) and then, on user confirmation, **865 historical objects** in other top-level UUID folders (a pre-org-folder upload scheme, provably unreferenced since only 2 image columns exist and both are org-folder-scoped) via `--purge-all`. Bucket fully reconciled: **2091 → 1103 objects = 1103 referenced, 0 orphans**. Also banked the "capture old `image_url` BEFORE nulling" discipline (a `RETURNING` after the null returns the post-update NULL).
+
+## 2026-06-28
+
+### ~~Review the 35 notes-lint warnings in mht-cet-maths/line-and-plane (worked-example == featured-PYQ reuse)~~ — **DONE 2026-06-28**
+
+Re-authored all **31** flagged worked-examples/self-checks across the 6 `line-and-plane` `_data` files (line-equation, plane-equation, angles-conditions, distances-3d, foot-image-projection, intersection-coplanarity-skew) as genuinely different problems — same technique, fresh points/vectors/coefficients, fully worked + arithmetic-verified — leaving each featured PYQ untouched. Done via 6 parallel agents (one per file) + a manual fix on the coplanarity self-check (its small-integer coordinates re-tripped the ≥80%-number-overlap heuristic → swapped to distinctive coordinates). `notes:lint` line-and-plane warnings 31 → 0; typecheck + notes:latex clean. The 5 remaining repo-wide warnings are unrelated pre-existing untagged-concept soft-warns in nda-biology/chemistry/physics.
+
+<details><summary>original</summary>
+
+The pre-push gate run during the 2025-April-batch-2 ingest surfaced **35 `notes:lint` warnings**, all in `mht-cet-maths/line-and-plane` — worked examples / self-checks that "re-use the featured PYQ's numbers" (the teaching example is the same problem as the featured PYQ rather than a distinct one). Quality debt on a shipped notes chapter; per [[notes-concept-content-alignment]].
+
+</details>
+
+### Push timing: run `npm run prepush` via bash, then `git push --no-verify`, for large data commits
+
+This session's `git push` hit the 7-min tool timeout while the pre-push hook's `prepush` (typecheck → lint → notes:lint → notes:latex → **test → build**) was still running — the full gate exceeds the default Bash timeout on this repo (~7-8 min). The push process was killed mid-gate, leaving `main` ahead of `origin/main`.
+
+**Why:** avoids a half-killed push and a confusing "did it land?" state; the gate and the network push are better decoupled.
+
+**How to apply:** for a push expected to trigger a long gate, run `npm run prepush` (via the Bash tool, which has `sh`) in the background first, confirm exit 0, then `git push --no-verify` (justified — the identical gate already passed). `npm run gate` from PowerShell fails (`sh` not on PATH) — use bash. See [[gate-exit-code-masked-by-tail]] + [[git-merge-to-main-flow]].
+
+---
+
+## 2026-06-27
+
+### Apply the auth-middleware scoping fix to the sibling nda-tracker app
+
+This session scoped PYQ Vault's middleware matcher to the four authenticated prefixes after finding that the broad catch-all matcher ran `supabase.auth.getUser()` (a Supabase Auth network round-trip, billed as Vercel Active CPU) on every anon public request — ~40% of Active CPU, the whole Edge runtime line (commit `1d58461`). **nda-tracker is also a Next + Supabase app** and almost certainly carries the same broad-matcher pattern, so it likely has the same wasted Edge CPU on its public traffic.
+
+**Why:** same quota/cost leak, different app + different Vercel project. nda-tracker has a large public student surface (quizzes, exam results) hit by anon traffic; if its middleware validates auth on every one, it's paying the same per-request round-trip. Cheap, self-contained fix with the diagnostic + pattern already proven here.
+
+**How to apply:** in nda-tracker, open its `middleware` config + the Supabase-SSR `updateSession` equivalent. Check Vercel's Active-CPU widget (Type tab: middleware share; Runtime tab: edge ≈ middleware?). If the matcher is a broad catch-all and `getUser()` runs on public routes, scope the matcher to only the routes that need auth (list both `"/prefix"` and `"/prefix/:path*"`), confirm each protected page self-guards at the page level first, and lock it with a matcher-scope test. See [[middleware-auth-scope]].
+
+### Confirm the Active-CPU drop after the middleware deploy lands
+
+The matcher fix is on `main` (merge `2f123d3`) and Vercel auto-deploys, but the Active-CPU graph is a rolling history — the projected 4h 2m → ~2h 30m won't be visible until a day or two of post-deploy traffic. Worth a glance to confirm the Edge/middleware slice actually collapsed (and that no *other* Edge function is contributing).
+
+**Why:** closes the loop on the quota emergency; if the Edge slice is still meaningful after the deploy, it means a second Edge consumer exists and needs investigation.
+
+**How to apply:** in ~2 days, open the Vercel Fluid Active CPU widget → Type tab. Expect `middleware` to be near-zero. If it isn't, find what else runs on Edge (the Runtime tab + per-function logs).
+
+### ~~`/solution-cleanup` the 2 flagged Line-and-Plane rows~~ — **DONE 2026-06-27**
+
+Both turned out to be **wrong keys**, not the milder issues first assumed. `92012430` (parallel-line distance): re-derivation gave `(1,2,3)×(2,−2,1)=(8,5,−6)`, `|·|=5√5` → `5√5/3` = option C; flipped A→C + clean solution. `42c20362`: source-verified against `14 May 2024 S1 Q110` — the printed stem `2l²+m²−n²=0` faithfully matches the source (≈40.9°, no option), but the **official AK is (b) 180°** via a different equation `2l²+2m²−n²=0` (the source's own solution; `(l−m)²=0` → coincident lines `(1,1,−2)` → 180°); aligned to the official key — stem→`2l²+2m²−n²=0`, flipped A→B, honest solution noting the coincident-line degeneracy. Both `content_hash`-recomputed, hashes verified. DB-live; not yet committed to a code change (DB-only).
+
+<details><summary>original</summary>
+
+The MHT-CET Maths "Line and Plane" notes build + cleanup left two PUBLIC rows flagged but un-fixed (both surfaced during authoring, neither blocks the notes): **`42c20362`** (Angles — "l+m+n=0, 2l²+m²−n²=0 → angle between the lines") — the bank's OWN printed arithmetic is internally inconsistent (the stated directions give cosθ=2/√7≈40.9°, but it's keyed 60°); needs a source check to decide whether the stem constants or the key is wrong. **`92012430`** (Distances — distance between two parallel lines) — the key is correct but the stored solution text trails off mid-arithmetic ("…resulting in 2√5/3"); a solution-rewrite only, no key change.
+
+**Why:** `42c20362` is a possible wrong-key/flawed-stem on a question the new notes now drill (tagged `cetlp-direction-angle-systems`); `92012430` is a quality-only fix. Both are cheap and were explicitly deferred out of the notes-ship scope.
+
+**How to apply:** `/solution-cleanup` on chapter `f70e1d80-3c76-403a-a7f9-2e7f09d01a81` targeting just these two; for `42c20362` source-verify against the on-disk MHT-CET DOCX (pandoc-extract + prose-anchor grep per [[mhtcet-source-docx-render]]) before any key flip — it may be a flawed printed question to preserve-with-note rather than flip.
+
+</details>
+
+### Consider a broader source-verified key audit of the rest of MHT-CET Maths
+
+The Line-and-Plane cleanup found **8 wrong-keys + ~11 option-extraction errors in ONE chapter** of "non-audited" MHT-CET Maths — and the standard `/solution-cleanup` probe was nearly blind to them (imaged-math MHT-CET solutions lack the NDA-style `matches option`/`REVIEW:` tells), so they only surfaced via full re-derivation. The other ~26 MHT-CET Maths chapters have never had this pass. The new pandoc→LaTeX + prose-anchor-grep source-verification ([[mhtcet-source-docx-render]]) makes it far cheaper than before.
+
+**Why:** if Line and Plane's ~8%-of-questions error rate is representative, the MHT-CET Maths PUBLIC bank carries a meaningful tail of wrong keys that no probe will catch — directly hurting the paper-builder + any future quiz/notes built on it.
+
+**How to apply:** opportunistic, not a blanket campaign — fold a Step-0-style full re-derivation (parallel solution-reader agents per subtopic) into each chapter's notes build (as done here), and run a standalone source-verified pass only on the highest-traffic un-noted chapters (Applications of Derivative 150 q is next in the notes queue anyway). Adversarially re-derive, then pandoc-grep the source to split bank-extraction-error vs printed-paper-defect.
+
+### Browser-verify the cross-paper reuse soft-warn (authed golden path)
+
+The soft-warn feature (2026-06-27, commit `65b2c93` — "Used in X" chips on the editor search rows + the paper's own question list, and the `/browse` cart `AddToPaperDialog` "N of M already used" + "Skip N used") shipped on a green gate with 13 unit + 5 integration tests, but every surface is **org-member-gated**, so the actual chip/dialog rendering was never eyeballed in a browser. Carries the same `ƒ`-page risk as the still-open "Browser-verify the NEW cart→paper flow" item (2026-06-15) — same dialog, now with the warn.
+
+**Why:** Definition-of-Done wants the golden path verified in-browser; a render-time/serialization bug on these authed surfaces wouldn't show in the build or the headless tests.
+
+**How to apply:** sign in as a TEACHER, create two papers, add a question to paper A; in paper B's editor search panel + the `/browse` cart "Add to paper" dialog, confirm the "Used in 'A'" chip + the "N of M already used / Skip N used" summary appear and that **Add still works** (soft, never blocks). Roll it into the 2026-06-15 cart→paper verify pass.
+
+### Confirm the Supabase egress drop after the ISR deploy; deferred egress levers if not enough
+
+The egress fix (2026-06-27, commit `7a7c47c` — `revalidate` 1h→24h on 208 /notes+/guide+/nda+/quiz pages + a calmer /browse sitemap) is deployed, but the Supabase Egress meter is a rolling history — watch the *slope* over a day or two (it refreshes ~hourly; % resets on the billing cycle). Separate meter from the middleware/Active-CPU fix above.
+
+**Why:** egress was at 120% of the 5 GB free cap (throttling risk). If the ISR fix doesn't bring it under, the remaining egress is `/browse` dynamic or Storage images, and the next levers apply.
+
+**How to apply:** in ~2 days, check Supabase → Usage → Egress. If still high: (1) trim `solution` (the biggest column) out of the `/browse` *list* query in `src/lib/questions/query.ts`, fetch on card-expand; (2) front question images through `next/image`/a CDN (today `publicImageUrl` re-downloads from Supabase Storage per view); (3) Supabase Pro ($25/mo → 250 GB) — already flagged as needed before Razorpay go-live. Full playbook in [[supabase-egress-levers]].
+
+> **⚠️ INVALIDATED 2026-07-29 — re-open this with a corrected premise.** The `revalidate` 1h→24h half of that fix was almost certainly a **no-op**: `AppHeader` read `cookies()` on every page, so **no page on this site had ever been ISR-cached** (the build produced zero prerendered HTML files). Whatever egress movement followed 2026-06-27 must be re-attributed — most plausibly to the calmer `/browse` sitemap entry. Caching genuinely began on 2026-07-29 (622 prerendered pages, `x-nextjs-cache: HIT`), so **the ISR lever is only now live and the egress question is worth re-measuring from that date**, not from June. Before trusting any future `revalidate` change, verify with `find .next/server/app -name '*.html' | wc -l`. See the 2026-07-29 Decisions entry + [[shell-component-decaches-site]].
+
+## 2026-06-26
+
+### ~~Make the ingestion figure-OPTION policy "attach, don't describe" + harden the image-option content_hash~~ — **DONE 2026-06-26**
+
+Shipped in `scripts/mhtcet/commit.ts` (`optionImageHashTokens` — `optionFigures` rows now hash on each option image's sha256, not the `(A)(B)(C)(D)` labels) + the policy is documented in `scripts/mhtcet/README.md` ("Figure-as-option questions" section) and [[figure-image-acquisition]]. Applied to all 4 `optionFigures` rows (Q14/Q24 re-hashed + Q66/Q93 newly attached). The jee/foundation pipelines were NOT retrofitted (no active consumer; apply the same pattern when next ingesting an image-option-heavy paper there).
+
+<details><summary>original</summary>
+
+The MHT-CET pipeline handled figure-as-option questions three ways (stem-attach / option-attach via `optionFigures` / option-describe via `optionImages`), and the describe route has two defects: it can **name the answer** (Q93 giveaway) and it commits with **placeholder option text `(A)(B)(C)(D)`** → a weak `content_hash` (`stem + (a)(b)(c)(d) + answer`) that can collide two similar-stem image-option questions and silently drop one. Both `/browse` and the `.docx` export already render `options.image_url`, so attaching is fully supported — describing was a convenience choice, not a forced one.
+
+**Why:** lossy + answer-leaking option text degrades question quality; the weak hash is a latent silent-dedup-drop bug for any future image-option-heavy paper. The render/export infra is already there.
+
+**How to apply:** in `scripts/mhtcet/` (and the shared pattern for jee/foundation): default "which structure/graph is X" to `optionFigures` (attach the 4 figures) rather than `optionImages` (text); reserve text-describe for options that are faithfully + non-givingly textualisable (a graph "line through origin", a circuit → boolean). Then fold each option's **image content-hash** into `contentHash` so image-option rows can't collide on placeholder text. Full rationale in [[figure-image-acquisition]].
+
+</details>
+
+### Evaluate Word Save-as-HTML for Foundation's vector-drawn figures
+
+Foundation's `figure-bbox.ts` acquires figures by **rendering the PDF page and bbox-cropping** (marker-union + 4pt pad), which **leaks adjacent text** and silently fails on figures drawn as native Word **vector shapes** (PyMuPDF `get_images()` finds no raster → "NONE" → hand-author or text-only). For exactly those vector-shape figures, **Word "Save as Web Page (Filtered)" rasterizes the shape group into one clean leak-free PNG**. (Caveat: it also rasterizes every equation → ~615 noise PNGs on a math-heavy doc; filter by dropping sub-~1KB PNGs / mapping by the inline `<img>` position.)
+
+**Why:** Foundation already has known crop-leakage + dropped vector figures (the script header warns to eyeball every crop). An embedded/HTML route is leak-free by construction.
+
+**How to apply:** for the specific worksheets where `figure-bbox.ts` prints "NONE" or leaks, add an optional acquisition path: Word-COM `SaveAs(…, 10)` (filtered HTML) → take the `_files/` PNGs, filter equation-rasters, map to the question by `<img>` order → feed `attach-images.ts`. Born-digital raster figures should keep using direct extraction (no change). See [[figure-image-acquisition]].
+
+---
+
+## 2026-06-23
+
+### Resolve the stray uncommitted `Tags_MHTCET_APJ_11th_Chemistry.xlsx`
+
+The APJ 11th Chemistry tagged Excel shows as modified in the working tree (Bin 38082 → 38075, 0 line changes) — it was regenerated when a later session applied the official LWS answer keys (commit `fc8781f`) but never re-committed. Left untouched by deliberate choice during the 2026-06-23 doc pass.
+
+**Why:** trivial, but a stray modified binary lingers in `git status` and is easy to lose track of. The regenerated sheet reflects the *corrected* keys, so it's the one that should be live if the OMR Excel is ever re-downloaded.
+
+**How to apply:** either `git add generated-papers/Tags_MHTCET_APJ_11th_Chemistry.xlsx && git commit` (one-line chore commit — keeps the official-key version) or `git checkout -- generated-papers/Tags_MHTCET_APJ_11th_Chemistry.xlsx` to discard if the committed version is already correct. Verify against `build-tags.ts apj-11th-chem-test` output if unsure which is current.
+
+### Fix Q4 & Q5 in the LWS GAT Full Mock 3 master answer key (teacher-side)
+
+During the GAT Mock 3 ingest, the official LWS key disagreed with the derived answers on 11 of 150 — and for **Q4 and Q5 (sentence rearrangement) the official key is the one that's wrong**: its option letters map to garbled, non-grammatical part-orders. Q4's coherent order is **ADBC (option B)**, not BDAC (A); Q5's is **BDAC (option C)**, not DCAB (D). Per the user's "use official key" instruction the committed bank rows + the OMR Excel were aligned to the official letters (A and D), so the public bank now matches the master key — but the master key itself should be corrected so students aren't graded against an incoherent sequence.
+
+**Why:** the OMR grades against this key; two items will mark the genuinely-correct answer wrong. Low count (2 q) but a clean, known fix.
+
+**How to apply:** correct Q4→B and Q5→C in the LWS master answer-key document (the teacher's source, not the repo). If you also want the bank/Excel to reflect the corrected answers, flip those two PUBLIC rows the proper way (option `is_correct` move + `content_hash` recompute via the real `contentHash` helper, collision-guarded) and rebuild `build-tags.ts gat-mock-3` — NOT a re-commit. The other 9 disagreements were correctly the official key's (7 my errors, 2 debatable recall items Q84/Q101).
+
+### ~~Promote the dedup-gate bank dump to a reusable `scripts/practice-paper/dump-bank.ts`~~ — **DONE 2026-06-23**
+
+Shipped `scripts/practice-paper/dump-bank.ts` — `--subject <name...> [--exam <name>]` (default NDA) writes one `C:/tmp/bank_<exam>_<subject>.json` per subject; `--chapter <id...>` writes one `C:/tmp/bank_chapter_<name>.json` per chapter. Pulls both `question_kind`s, pages past the 1000-row PostgREST cap, emits `{id, chapter, subtopic, stem, options, answer, solution}`. Verified both modes (NDA Chemistry 294, MHT-CET Chemistry 1548 = paging works, Light & Optics chapter 104). The `/lws-test-ingest` skill's dedup step now points at it. Commit on this date.
+
+<details><summary>original</summary>
+
+The dedup step needs the existing bank's stems/options/answers/solutions per subject (or chapter) dumped to files so a subagent can semantic-match without blowing the orchestrator's context. This is currently a hand-written throwaway tsx one-off each ingest (written + deleted again this session). Multi-subject GAT mocks are now recurring (Mock 5, Mock 3, more coming), so a small committed helper would remove the re-write.
+
+**Why:** minor, but every multi-subject ingest re-derives the same paging+dump logic (with the PostgREST 1000-row-cap gotcha each time); a parameterised helper makes the dedup gate one command.
+
+**How to apply:** add `scripts/practice-paper/dump-bank.ts <subject...|--chapter <id>>` that pages `questions` (PUBLIC+practice, both kinds) for the given subject/chapter into `C:/tmp/bank_<key>.json` with `{id, chapter, subtopic, stem, options, answer, solution}` (the shape the per-subject dedup agents already consume). Keep it out of the committed-artifact path — it's tooling for the manual dedup core, like `render.ts`/`preview.ts`.
+
+</details>
+
+## 2026-06-22
+
+### ~~Finish Foundation Biology — figure-attach + review-pass + flip PUBLIC~~ — **DONE 2026-06-23**
+
+Shipped all three steps: figure-attach (+129 figure-Qs / 95 figures, commits `e59dcac`+`c448d3d`), review-pass (138 flagged → 10 flips / 88 confirmed / 40 flawed, commit `7d747ee`), then flipped **847 PUBLIC + 40 flawed PRIVATE**. **The Foundation Course is now COMPLETE — all 3 subjects PUBLIC** (Chemistry ~1,014 + Physics 991 + Biology 847). reproduce-2's match-lists were recovered as GFM pipe-tables. The 40 flawed (broken match-list/multi-statement option sets) stay PRIVATE pending a source/official key — a future optional salvage pass.
+
+<details><summary>original</summary>
+
+Biology text-phase is DONE (758 q PRIVATE across 7 chapters; subject `7d34c419-…`, 14 docx worksheets, all committed via the zero-code-change pipeline). The same finish arc Physics just completed remains: figures, review, flip.
+
+**Why:** Biology is the **last Foundation subject** — finishing it completes the whole Foundation Course offering. The questions are all safely committed PRIVATE, so this is a clean resumption point, but they stay invisible until reviewed + flipped.
+
+**How to apply (3 steps, mirrors Physics 2026-06-22):** (1) **figure-attach** — ~128 figure-dependent Qs were excluded from the text pass (heaviest: `life-processes-3` 28 — whole first half is diagram-based; `reproduce-2` 28 — figures + match-lists the agent left out of scope; `tissues-2` 17, `cell-2` 10, `environment-1` 8, `reproduce-1` 8). Per worksheet: figure-agent recovers excluded Qs + writes `<id>.figure-{questions,overrides,figures}.json` (the `figure-bbox.ts` resolver now handles glued markers + docx-converted PDFs) → `merge-figures.ts` → `commit.ts` → `attach-images.ts`. (2) **review-pass** — re-derive the many REVIEW-flagged answers (match-the-following + assertion-reason items dominate, several with duplicate/garbled options); sequential re-derivation like Physics, and **read each agent's reason against its answer field — a mismatch is a free flip** ([[practice-pdf-vision-ingestion]]). Log verdicts in `data/_review.json` + `apply-review.ts`. (3) **flip PUBLIC** (single guarded UPDATE: all Biology PUBLIC `WHERE NOT EXISTS` in the flawed set). NOTE: `reproduce-2`'s match-list tables (Q38-41) were excluded as "out of scope" but ARE transcribable as GFM pipe-tables — recover them in the figure/cleanup pass. See [[foundation-course]].
+
+</details>
+
+## 2026-06-21
+
+### Confirm APJ GAT Mock 5 Q45's key against the official LWS key
+
+Q45 ("It is your duty to make tea…" transformation) is now PUBLIC keyed **C** ("You are supposed to"), but it's a genuine transformation-ambiguity — **B** ("You are required to") and **D** (the passive "Tea is to be made by you") are also defensible. The other 6 low-confidence flags from the GAT mock were re-derived and stand, and **Q46 was corrected A→B** this session (PSRQ→QPSR). The 4 flawed (Geo Q79, Chem Q132/137/138) stay PRIVATE.
+
+**Why:** a wrong derived key on a PUBLIC practice question = a wrong public answer + wrong OMR grade. Low stakes (1 q, all three readings defensible), but the official LWS key resolves it definitively.
+
+**How to apply:** if the LWS key surfaces and Q45 differs from C, fix the live row the proper way — flip the option `is_correct` + recompute `content_hash` via the real `contentHash` helper (collision-guarded), keep visibility, then rebuild the Excel (`build-tags.ts apj-gat-mock-5`). NOT a re-commit (orphans the row). Same path used for the Q46 fix.
+
+### ~~MEMORY.md is back at the ~24.4 KiB budget edge~~ — **DONE 2026-06-22**
+
+Trimmed to **23.87 KiB** this run (from 24.37): shortened the Foundation pointer (Physics+Biology status) + the JEE/Practice/notes-self-sufficient/gdrive/cross-app/mobile/Template-D/concept-content one-liners, moving detail into the topic files. 84 pointers, all verified resolving. Headroom restored (~0.5 KiB under the limit). Recurring creep — re-trim when the next memory lands.
+
+## 2026-06-20
+
+### ~~Ingest Foundation Course Physics + Biology subjects~~ — **PHYSICS COMPLETE & PUBLIC 2026-06-22; BIOLOGY text-phase DONE 2026-06-22 (figures+review+flip remain → 2026-06-22 entry)**
+
+**Physics — DONE & PUBLIC:** text-phase 2026-06-21 (894 q) → figure-attach 2026-06-22 (+140 figure-Qs / 103 figures; added `figure-bbox.ts` marker-resolver + `merge-figures.ts`) → review-pass 2026-06-22 (all 127 REVIEW-flagged re-derived sequentially → 11 key-flips, 43 flawed kept PRIVATE) → flipped PUBLIC = **991 q PUBLIC + 43 flawed PRIVATE**. The 3 flagged specifics resolved (forces-1 Q23 confirmed; human-eye/magnetic flawed kept PRIVATE; work-energy-2 buoyancy answer-confirmed, off-topic reclassify left optional). **Biology — text-phase DONE:** subject seeded (`7d34c419-…`), 14 docx worksheets → 758 q PRIVATE / 7 chapters. Remaining Biology work → the 2026-06-22 entry below.
+
+### ~~Recover the deferred Foundation Chemistry figures~~ — **DONE 2026-06-20**
+
+Shipped: **Acids-3's 25 figure questions** (transcribed + answered + all 25 figures attached; the "color/low-yield" worry was overstated — they crop cleanly; commit `179a783`) and the **4 split-across-pages figures** (Structure Q6/Q9 + Carbon Q58/Q62 — "~7" was 4; shipped as self-contained TEXT, no figure, since the stems describe each diagram; commit `337685b`). Still deferred (genuinely flawed, no valid answer → never committed): **Carbon Q53** (correct {B,C,D} not an option) + **Chem-3 Q30** (only 3 printed options). The old "Chem Q51" was a mislabel — Q51 was committed-then-flawed, now PRIVATE in the REVIEW cleanup below.
+
+<details><summary>original</summary>
+
+Left undone in the Chemistry pass: **Acids-3's 25 figure questions** (color/apparatus-heavy — pH strips, test-tube colours), **~7 split-across-pages figures** (Structure of the Atom Q6/Q9/Q60, Carbon Q58/Q62 — 4 option-diagrams span non-contiguous regions), **2 flawed-option figures** (Chem Q51, Carbon Q53), and **Chem-3 Q30** (lost to an agent page-split boundary).
+
+**Why:** these questions exist in the worksheets but aren't in the bank; the split-figure ones especially are common in the figure-heavy chapters and will recur in Physics/Biology.
+
+**How to apply:** for split figures, build a Pillow composite step (crop each region → stitch into one labelled image → attach as one `image_url`) — the JEE multi-figure precedent. For Acids-3, decide first whether color-from-crop is reliable enough to be worth the 25-question effort. The flawed-option ones (Chem Q51, Carbon Q53) should be excluded, not force-keyed.
+
+### ~~Cleanup pass for the REVIEW-flagged Foundation Chemistry answers~~ — **DONE 2026-06-20**
+
+All **71** flagged answers (the real count, > the ~50 estimate) re-verified via 5 parallel sub-agents + human adjudication (commit on `main`, after `337685b`): **41 CONFIRM** (flag cleared), **10 FLIP** (answer corrected by direct DB `is_correct`+`content_hash` update — NOT re-commit, which would orphan figure `image_url`s), **11 FLAWED → set PRIVATE** with a flaw note (no correct option among the four), **9 kept REVIEW** (5 figure-dependent + 4 borderline-but-defensible). Chemistry 1,024 → 1,014 PUBLIC + 11 PRIVATE. Lessons → [[audit-probe-symmetry]] (adjudicate delegated-agent verdicts) + [[practice-pdf-vision-ingestion]] (image-budget delegation).
+
+<details><summary>original</summary>
+
+All Foundation Chemistry answers were DERIVED (no source keys) and ~50 are `REVIEW:`-flagged in their `overrides.json` (genuinely-flawed source options, ambiguous wording, or low-confidence). They're already PUBLIC (user flipped all). **How to apply:** `grep -l REVIEW scripts/foundation/data/*.overrides.json`, spot-check each flagged item against the source, edit `overrides.json` → delete the changed rows → re-commit.
+
+~~Carry-forward — Document `scripts/practice-paper/` + `scripts/foundation/` in ARCHITECTURE.md~~ — **DONE 2026-06-20**: added a `foundation/` entry + updated the stale `practice-paper/` entry (was "paper BUILDER"; now the `/lws-test-ingest` pipeline) in ARCHITECTURE.md's `scripts/` tree. (The notes `_data` one-liner backfill for Sets & Relations · Definite Integration · Differential Equations is a *separate* still-open carry-forward — see the notes-batch entry below.)
+
+## 2026-06-19
+
+### Complete the NDA Maths grounding + blind-rederivation key-audit (365/2,160 done)
+
+The RAG grounding pipeline ([[rag-grounding-layer]], `scripts/grounding/`) is built and running. 365 of 2,160 NDA Maths PYQs are grounded; the blind re-derivation is doubling as a ~90%-precise wrong-key audit (18 of 21 disputes were real bank errors; 17 fixed). The remaining ~1,800 rows are pending.
+
+**Why:** the audit is the high-value part — it's finding an ~8% real error rate in "audit-closed" NDA Maths that the prior probe-based sweeps missed. Every wrong key left in the bank is a question the tutor (and students) get wrong. Cost: ~13M agent tokens + per-wave source verification.
+
+**How to apply:** run the deliberate batched loop per `scripts/grounding/README.md` — export 4×25 → 4 blind agents → `commit` (agreeing auto, disputes hold) → pull held rows' `pyq_year/month/question_number`, group by paper, source-verify with render+rederive agents over `C:\tmp\PYQPs\NDA\NDA_Maths_PYQPs\` → `apply-fix` the confirmed → repeat. Next up: source-verify wave 4's 5 disputes (`12d160c4`, `254cf562`, `278343c8`, `28fb8efa`, `2dfbd7ce`), then waves 5+.
+
+### Build the RETRIEVAL half (embeddings) + the cross-app grounding API
+
+The augmentation half (solution_json) is in progress; the retrieval half is untouched. Needs: (a) full `plain_text` backfill over all 12,603 pyq (deterministic, `backfill-plain-text.ts --apply`); (b) an embedding model decision — Supabase `gte-small` edge fn vs local `bge-small` (both 384-dim; Voyage a later eval-gated upgrade) + a `generate-embeddings.ts`; (c) the Bearer-secret grounding/retrieval API on PYQ Vault (mirror `src/app/api/sync/mock/route.ts`) that nda-tracker calls. `match_chunks` is already built for whichever model.
+
+**Why:** retrieval unlocks free-form "explain any concept" tutoring (vs v1's "explain THIS in-bank PYQ", which needs only grounding). It's also reusable infra for every future AI product.
+
+**How to apply:** decide the keyless model first (gte-small edge fn is zero-local-setup), backfill plain_text, generate embeddings in idempotent batches of 100, then build the API endpoint. Defer until the NDA Maths grounding/audit is far enough along to be worth serving.
+
+### Resolve the `05c32038` / Q100 doubly-corrupt set (2025 NDA1 Q99+Q100)
+
+Deferred during the wave-1 source pass. The set shares an `f(x)=[√x]` context that the source shows is actually `[x²]`, AND Q100's stem `∫√2 to √2` (zero-width) is also mis-extracted. Both questions + the shared context need a single focused source read of `Maths_2025_NDA1.pdf`.
+
+**Why:** it's a known-corrupt set left ungrounded; both questions are currently unusable.
+
+**How to apply:** render the relevant page, read the real shared context + both stems + both option sets, then `apply-fix` both (context + stems + options + keys). Q99's answer with `[x²]` is `2(√3−√2)` (option B); Q100 needs its real bounds first.
+
+### Review derived answers, then flip the two LWS test papers PUBLIC
+
+The NDA Matrices test (40 q, paper `bed3cfbd-…`) and Vector test B (120 q, paper `dc55cf9e-…`) are ingested PRIVATE `question_kind='practice'`. Their `status:"new"` rows (26 matrices, 102 vectors) are PUBLIC-eligible but **not yet flipped** — the Matrices answers were DERIVED (no printed key) so they need a human spot-check before publishing; the Vector key is verified (lower risk). See [[lws-test-paper-ingest]].
+
+**Why:** until flipped, the 128 new practice questions aren't browsable. The Matrices flip especially should wait on a review — a wrong derived key becomes a wrong OMR grade + a wrong public question (prioritise the flawed Q9/Q25 + the 14 D-keyed answers).
+
+**How to apply:** spot-check the derived answers (the `solution` field ends "Matches option X"; flawed items carry a `reviewNote`), then `npx tsx scripts/practice-paper/flip-public.ts matrices-test --apply` and `… vectors-b --apply`. dup + flawed rows stay PRIVATE by design.
+
+### Document `scripts/practice-paper/` in ARCHITECTURE.md
+
+The generalized LWS test-paper pipeline (`config.ts` PAPERS registry + `build-tags.ts`/`commit-paper.ts`/`flip-public.ts`) isn't in the ARCHITECTURE.md file-layout `scripts/` map — only `scripts/practice/` (the practice-book pipeline) is.
+
+**Why:** CLAUDE.md says "append a new file/component/route to ARCHITECTURE.md, not [the header]"; the new scripts are otherwise only discoverable via the Decisions log + the (gitignored) skill.
+
+**How to apply:** add a one-line `scripts/practice-paper/` entry to ARCHITECTURE.md's scripts list, distinguishing it from `scripts/practice/` (teacher-authored printed test → Excel + paper + deduped practice, vs the practice-book ingestion).
+
+## 2026-06-17
+
+### Continue the MHT-CET Maths /notes campaign (24 chapters un-noted; workflow now captured)
+
+**3 of 27** MHT-CET-Maths chapters are noted (Indefinite Integration + Differentiation 2026-06-16; **Vectors 2026-06-23** — 6 pages · 59 concepts · 173 q · Phase-D reshape of the "Magnitude, Components, Projection" catch-all, commit `fab7fe8`). The CET-Maths chapter playbook is codified in CLAUDE.md "Notes editorial workflow → step 0 → MHT-CET Maths defaults" + the [[notes-structure-pedagogy-first]] reconfirm, so the next chapter is turn-key.
+
+**Why:** CET Maths is a large, high-traffic exam for the product; the per-chapter cost is now low (clone `vectors/_data/` or `differentiation/_data/`, expect a Phase-D reshape, build via a 6-agent batch). Highest-yield next picks by bank size: **Applications of Derivative (137 q, 26% HARD — gentler)**, **Line and Plane (137)**, Differential Equations (94), Probability Distribution (86). Below the bank-coverage gate (reuse NDA siblings, don't build): Conic Sections (5 q), Sequences & Series (4 q — see [[mhtcet-sequences-notes-deferred]]), Quadratic Equations (3 q).
+
+**How to apply:** pick a chapter → run step-0 analysis (read HARD+MODERATE solutions) → reshape the catch-all bank subtopics → 6-agent parallel batch off a fixed concept skeleton → tag 100% → Step-4 gate chain → smoke-test routes → commit. Default to Applications of Derivative or Line and Plane.
+
+### Spot-check the MHT-CET Differentiation `a18fbd89` disputed answer key (/solution-cleanup)
+
+During the Differentiation notes build, PYQ `a18fbd89` (`y = sin⁻¹x² + cos⁻¹x²`, asks `(1−x²)y₂ − xy₁`) surfaced an answer-key dispute: the identity gives `sin⁻¹x²+cos⁻¹x² = π/2` (constant) ⇒ `y₁=y₂=0` ⇒ the expression is `0`, but the bank's stored answer key is `−4`. It was taught-but-not-featured in the notes (the identity is correct); the key needs a source verdict.
+
+**Why:** it's a known wrong-key candidate flagged but not resolved; leaving it lets a wrong key sit in a HARD inverse-trig question. Bank-wide content audit is otherwise closed.
+
+**How to apply:** run `/solution-cleanup` (or a targeted re-derivation) on `a18fbd89` — re-read the stem (the `−4` answer likely implies a different intended stem, e.g. `sin⁻¹x + cos⁻¹x` of a non-constant argument, or `(sin⁻¹x)²+(cos⁻¹x)²`); fix the key or the stem per the source. CET source papers are local at `C:\tmp\PYQPs\MHT-CET` ([[mhtcet-source-docx-render]]).
+
+### Harvest the 3 MHT-CET Maths notes chapters for daily quizzes (carry-forward)
+
+All 3 CET-Maths notes chapters (Indefinite Integration + Differentiation + **Vectors 2026-06-23**) were authored quiz-ready per Step 1b (Differentiation: `quiz:coverage` 0 formula gaps, 75 traps) but are **unharvested** — the daily-quiz campaign is NDA-only so far. Carry-forward of the broader quiz frontier (see the 2026-06-09 "Wave 3+" entry) extended to MHT-CET; lower priority than clearing the NDA Chemistry/Physics/Biology frontier first.
+
+### Add an error-type signal to wrong-answer remediation (slip vs concept-gap)
+
+The exam/quiz remediation links (2026-06-17) show on EVERY wrong/skipped question. But not every miss signals a knowledge gap — a careless slip on a topic the student otherwise aces doesn't need drilling, and pushing remediation there reads as punitive. A cheap proxy exists: if the student got the OTHER questions in the same subtopic right, the miss is likely a slip.
+
+**Why:** the whole design thesis (2026-06-17 Decisions log) is "remediate the concept gap, not the slip." Without this signal the feature over-triggers; with it, remediation concentrates where it changes outcomes. It's also the higher-leverage axis than concept-precision (which conceptSlug already gives).
+
+**How to apply:** nda-tracker already has per-student per-subtopic stats (`computeStudentChapterStats`). In `QuestionCard`/`FocusedExamResult`, soften or suppress the buttons when the student's same-subtopic accuracy (this exam, or recency-weighted) is high. Keep it a gentle de-emphasis, not a hard hide — a student may still want to revise.
+
+### Teacher per-student exam/quiz drill-in (StudentQuizHistory → QuizReview with buttons)
+
+The teacher's per-student view (`StudentView` → `StudentQuizHistory`) lists quiz attempts as summary rows (title · X/total · score) but can't expand into the per-question review, so the remediation buttons (and the misses themselves) aren't reachable teacher-side. The data is all present (`quiz_attempts.answers` per student + the quiz's questions/key); same gap on the exam side could surface a per-student review.
+
+**Why:** in a coaching setting the teacher often drives remediation ("go drill this"). Surfacing the same Learn/Practice links in the teacher's per-student view is arguably more useful than the student-only version, and it's a small, self-contained add that reuses `QuizReview`.
+
+**How to apply:** make `StudentQuizHistory` rows expandable → render `QuizReview` (read-only) for the clicked attempt, passing `subject` so the buttons resolve. Verify `getQuizAttemptsForStudent` returns `answers` (add to the select if not). Decide scope with the user first (it's a deliberate teacher-side feature, not silent scope creep).
+
+### Persistent "mistake notebook" + fixed-tracking (Phase 2 of remediation)
+
+Today remediation is per-review-screen only. The intuitive next step (the digital error-notebook reframe from the 2026-06-17 analysis) is a running per-student "Mistakes" list that the student clears by re-practising, with visible "6 mistakes → 1 left" progress for the parent. Gate building it on the one metric: do students actually click the Phase-1 links.
+
+**Why:** the notebook is the culturally-resonant version (every Indian topper keeps an error log) and gives the parent-visible before/after. But it's real new state + UI; building it before Phase-1 engagement is proven would be over-engineering. Deliberately deferred.
+
+**How to apply:** measure Phase-1 link clicks first. If real, promote per-screen remediation into a `mistakes`-style rollup (derive "fixed" implicitly = a later correct answer on the same concept/subtopic, so no manual marking). Spacing (resurface at 1/3/7 days) is a further increment, not v1.
+
+### ~~Trim MEMORY.md back under its size budget~~ — **DONE 2026-06-17**
+
+Trimmed the 13 longest index one-liners (notes-self-sufficient-template, cross-app, practice/JEE/CDS ingestion, content-audit, daily-quiz, quiz-coverage, paper-builder, public-quiz, test-data-leak, mhtcet-docx, notes-structure, etc.) — moved detail into the topic files, kept the hooks. MEMORY.md now **24,549 bytes ≈ 23.97 KiB**, under the 24.4 KiB limit with headroom; all pointers verified resolving.
+
+The memory index is ~25.4 KB against a ~24.4 KB limit (the loader warned it's truncating). New memories can't be added cleanly until it's trimmed.
+
+**Why:** an over-budget index gets partially loaded, so the tail entries silently stop surfacing in recall — the index's whole job. Several entries are long enough to shorten without losing the hook.
+
+**How to apply:** tighten the longest one-liners (the notes-self-sufficient-template, content-audit-progress, practice-ingestion, JEE entries each run 200–400 chars) — move detail into the topic file, leave a ≤150-char hook. Or merge a couple of near-adjacent reference entries. Target ~22 KB to leave headroom.
+
+## 2026-06-15
+
+### A school / Class-10 (non-NDA) chapter list for nda-tracker's tag validation
+
+> **Update 2026-06-15 — the BLOCKING is RESOLVED.** nda-tracker now treats chapter-name mismatches as a non-blocking amber **warning**, not a hard block (commit `597bf0b`; see nda-tracker DECISIONS.md/GUARDRAILS.md 2026-06-15). So school papers upload with `Subject=Maths` once deployed — no `Others` workaround needed. What remains below is now an **optional, low-priority nicety**: a *populated* Class-10 list so school chapters validate cleanly (amber-free) instead of merely warning.
+
+The user runs non-NDA **school Class-10 / SSC** Maths tests through nda-tracker for grading (e.g. the "APJ school" 50-q paper this session). nda-tracker's `validateTags` validates the "Maths" subject against the **NDA** chapter list (`NDA_FREQ_BY_SUBJECT.Maths`, synced to PYQ Vault's 31). A Class-10 paper tagged with Class-10 chapters (Polynomials, Arithmetic Progressions, Real Numbers, Pair of Linear Equations, Areas Related to Circles, …) **HARD-BLOCKS the upload** — confirmed 2026-06-15 ("33 chapter name issues — fix to continue"; `findClosest` returns null so there's "No suggestion found"). Not a soft warning — the wizard won't proceed. **Immediate workaround (no code):** set the tags-file `Subject` column to an empty-list subject (`Others`) → `validateTags` skips validation; grading unaffected.
+
+**Why:** it fully blocks a real, recurring workflow (the user runs school Class-10 tests through nda-tracker). Medium urgency — the `Others` workaround unblocks today, but a clean Class-10 path is worth having.
+
+**How to apply (nda-tracker, `src/lib/ndaFreq.js` + `validateTags.js`):** cleanest is a **subject whose chapter list is empty `[]`** — `validateTags` already *accepts any chapter when the list is empty* (that's how the GAT subjects work). So either (a) add a `"Maths (School)"` / `"SSC Maths"` subject key with `[]` and let the user pick it for school tests, or (b) add a populated Class-10 list (Real Numbers, Polynomials, Pair of Linear Equations, Quadratic Equations, Arithmetic Progressions, Triangles, Coordinate Geometry, Introduction to Trigonometry, Heights and Distances, Circles, Areas Related to Circles, Surface Areas & Volumes, Statistics, Probability) under that key so the freq chart still works. Option (a) is ~2 lines; option (b) gives real validation. Pure nda-tracker code, no DB migration (the freq is a JS constant + a persisted store seed).
+
+### Spot-check CDS English LLM-derived answers before flipping PUBLIC
+
+CDS English booklets carry **no official answer key**, so every answer in the bank is LLM-derived + confidence-flagged (HIGH/MED/LOW). **All 19 papers (2,280 q) now committed PRIVATE**; per-paper review HTMLs at `scripts/cds/out/<id>.preview.html`. **Nothing should go PUBLIC until a human reviews at least the MED items** (they cluster in the genuinely-hard-keyless types: sentence/part-rearrangement grids, S1/S2 relationship, match-list code grids, word-usage). Prioritise the **oldest dense scans (2017-1 worst, 60 MED)** + the P/Q/R/S part-rearrangement grids; the 2025 match-list code grids were flagged as possibly OCR-degraded (e.g. 2025-I Q71/72/75/77) — recheck those against the source crops.
+
+**Why:** a PYQ-first product showing wrong answers as authoritative erodes trust; the confidence flags exist precisely so this review is targeted, not exhaustive.
+
+**How to apply:** open each `out/<id>.preview.html`, focus the amber (non-HIGH) cards, confirm/correct against the rendered source pages, then flip PUBLIC per paper. A future helper could surface only the MED rows for review.
+
+### ~~Finish CDS English ingestion (15 papers + 2024-1 RC) + push the branch~~ — **DONE 2026-06-16**
+
+All **19 CDS English papers (2017-I … 2026-I = 2,280 q)** committed PRIVATE on `main` + pushed; per-exam dedup migration 0038 shipped. Pipeline + per-paper detail in [[cds-english-ingestion]]. **Consistency cleanup — DONE 2026-06-16:** 2026-1 back-ported from the trial `commit-trial.ts`+`final.json` to the standard `data/2026-1.*` shape (verified the round-trip reproduces the committed rows exactly; standard `commit.ts 2026-1 --apply` → `inserted=0 skipped=120`); legacy `final.json` + `commit-trial.ts` removed. All 19 papers now reproducible identically via `commit.ts`.
+
+### ~~Manual authed golden-path for the collaborative paper builder~~ — **DONE 2026-06-15** (user-verified in browser)
+
+The paper builder (migration 0039) shipped + pushed to `main` on a green gate, and the data layer is proven by 9 RLS/integration tests, but the **authed teacher render** of the editor (`/dashboard/papers/[id]` → `PaperEditor` + `AddQuestionsPanel`) was never exercised in a browser (needs a real signed-in session; can't be done headlessly). The `ƒ`-page pitfall (build-green ≠ runtime-ok) makes a manual pass worthwhile.
+
+**Why:** Definition-of-Done requires the golden path verified in the browser; an authed render-time bug (e.g. a serialization or client-island issue) would only show under a real session.
+
+**How to apply:** sign in as a TEACHER (org member), UserMenu → Papers → New paper; add questions via the editor's search panel AND via "Add from Browse" (`/browse?paper=<id>`); have a SECOND teacher add to the same paper (confirm both land, sections auto-file); edit the section template (add/rename/delete a section → its questions fall to "Unassigned"); Finalize → Download (Question Paper / Answer Key / Tagged sheet); Reopen. Watch light + dark.
+
+### ~~Drag-reorder questions within a paper section~~ — **DONE 2026-06-15** (up/down buttons)
+
+Shipped as **up/down move buttons** per question row (user chose this over drag — accessible, touch/tablet-safe, no new dependency). New pure `positionForMove(orderedRows, questionId, "up"|"down")` in `src/lib/papers/sections.ts` (7 TDD cases) computes the fractional target via `positionBetween`; `reorderQuestion`/`reorderQuestionAction` UPDATE `paper_questions.position`; buttons disabled at section edges. (Original spec kept below.)
+
+The editor's move control is a section `<select>` that **appends to the end** of the target section; there's no fine within-section ordering or drag-and-drop. The DB already supports it — `paper_questions.position` is a `double precision` and `positionBetween(before, after)` (pure, in `src/lib/papers/sections.ts`) returns a fractional midpoint for insert-between-neighbours without renumbering.
+
+**Why:** exam papers care about question order within a section; "append only" forces delete+re-add to reorder. The hard part (fractional positions) is already built and tested.
+
+**How to apply:** add a drag handle per question row in `PaperEditor` (a lib like `@dnd-kit` or native HTML5 DnD — prefer native to avoid a dep per the project's dependency rule), compute the new `position` via `positionBetween(prevRow.position, nextRow.position)`, and add a `reorderQuestionAction(paperId, questionId, position)` wrapping a `paper_questions` position UPDATE. Snapshot/export already read position order, so no other change.
+
+### ~~Section-assignee UI + "added by" attribution in the editor~~ — **DONE 2026-06-15**
+
+Shipped: the SectionManager dialog now has per-section assignee toggle chips (org members via the service-role `listMembers(orgId)`, since `org_members` read RLS is admin-only) wired to `setSectionAssignees` → `updateSectionTemplate`; assignees render as chips on each section progress bar; and each question row shows "· added by &lt;name&gt;" (resolves `paper_questions.added_by` via a uid→label map passed from the editor page). (Original spec kept below.)
+
+The schema carries two collaboration signals the UI doesn't surface yet: `section_template[].assignedTo` (the soft "who's working this section" hint — `setSectionAssignees` exists in `template.ts` but no UI sets it) and `paper_questions.added_by` (stored on every add, never displayed).
+
+**Why:** these are what make the "soft assignment" + multi-teacher model legible — a teacher should see which sections are claimed and who added each question, without it being a hard lock. Low effort, high coordination value.
+
+**How to apply:** in the SectionManager dialog, add an assignee multi-select per section (org members from a `listOrgMembersAction`) wired to `setSectionAssignees` → `updateSectionTemplate`; render assignee chips on each section header + the progress bar. In the question list, show a small "added by &lt;name&gt;" on each row (resolve `added_by` → member name; the editor page already has the membership, just needs a uid→name map). Pairs naturally with live presence below.
+
+### Live presence on the paper editor (Supabase Realtime)
+
+The explicitly-deferred Phase 2: show "Teacher B is editing the Physics section right now" via Supabase Realtime presence/broadcast, and live-update the section counts as collaborators add questions (today each client only sees its own adds until `router.refresh()`).
+
+**Why:** real-time awareness is the polish that makes simultaneous multi-teacher editing feel collaborative rather than blind; it also removes the "did my colleague already add this?" guesswork. Deferred from v1 as non-essential (the junction model + per-section progress already make concurrent editing correct, just not live).
+
+**How to apply:** subscribe the `[id]` editor to a Supabase Realtime channel keyed on the paper id; broadcast presence (user + active section) + INSERT/DELETE events on `paper_questions` for that paper; merge incoming changes into the editor's local state instead of (or alongside) `router.refresh()`. Gate it behind the same org-member check. Note Realtime needs the `paper_questions` table added to the realtime publication.
+
+### Browser-verify the NEW cart→paper "Add to paper" flow
+
+The earlier "Manual authed golden-path" (struck DONE above) verified the **old** per-card `/browse?paper=` mode, which was **removed 2026-06-15** and replaced by the cart→paper bridge (commit `c5c27d9`). The new path — cart panel → "Add to paper" → pick/create a draft paper → bulk-commit — passed the gate + integration tests but hasn't been eyeballed authed in a browser.
+
+**Why:** it's a new UI surface (`AddToPaperDialog` in `CartPill`) on the high-traffic `/browse`; the `ƒ`-page pitfall (build-green ≠ runtime-ok) plus the org-member gating make a quick authed pass worthwhile. Also confirms the "Download paper" vs "Add to paper" two-button footer reads cleanly on mobile.
+
+**How to apply:** sign in as a TEACHER, `/browse` → Add a few questions to the cart → open the cart pill → **Add to paper** → confirm the active-paper picker lists drafts (+ "New paper"), bulk-commit, and the toast reports `added`/`already there` + "View paper". Re-commit the same cart → expect "0 added · N already there". Check the cart is NOT cleared. Confirm anon users see only "Download paper" (no "Add to paper"). Watch light + dark + mobile.
+
+## 2026-06-14
+
+### ~~Refresh the nda-geography guide's per-subtopic %HARD numbers (Mountains, States are stale)~~ — **DONE 2026-06-14**
+
+Synced all per-subtopic counts/%HARD across the 5 nda-geography guide `_data` files for every chapter this session's reclassifications changed (Economy: Agriculture 36→20 etc.; Earth's Structure: Interior 18→15, Earthquakes 8→9 etc.; Physical: Mountains 43→14% + dropped the stale "densest-HARD" framing; Climatology + Oceanography after the #2 catch-all moves). Other NDA guide subjects' banks didn't change this session, so their drift (pre-existing) is left for a separate audit.
+
+The Physical "Forests" Phase-D split synced the guide prose for the subtopics it touched (Rivers/Forests/Soils/Climate + the new Location subtopic), but while editing those sentences I noticed two **pre-existing** stale figures the split did NOT cause: the guide quotes "Mountains, Plateaus and Plains (7 q · **43% HARD** — densest HARD pool)" and "Indian States and Islands (4 · **25% HARD**)", whereas `npm run stats`-class live queries show Mountains at **14% HARD** and States at **0% HARD**. These predate this session (the guide was built on older/different data) and are outside the split's blast radius, so I left them.
+
+**Why:** the guide's "densest-HARD subtopic" framing now points at the wrong subtopic (post-split, Forests at 29% is the densest, not Mountains). Low-stakes (editorial prose, no test depends on the numbers), but it's a visible inaccuracy a student could act on.
+
+**How to apply:** run a per-subtopic `COUNT(*) FILTER (WHERE difficulty='HARD')` for all 6 NDA Geography chapters (one query), then update the %HARD figures in `src/app/guide/nda-geography/_data/{nda-geography,playbooks,playbook-details,strategy,trends}.ts`. Consider doing the same one-query audit for the other 6 guide subjects — the guide %HARD numbers have drifted as the bank grew. ~20 min.
+
+### ~~Review other reorder-only catch-all subtopics for a Phase-D split~~ — **DONE 2026-06-14**
+
+Split two more: Climatology "Atmospheric Layers" (4/14 off-topic) — moved the tropical-cyclone-formation + cold-local-wind questions to "Cyclones, Fronts and Local Winds" (relocated the concept + retag; the local-winds concept already taught Mistral), leaving 2 world-vegetation stragglers under an honest `regional-recall` concept. Oceanography "Marine Ecosystems — Coral Reefs" (2/3 off-topic) — moved the Mariana-Trench question to "Ocean Waves and Sea-Floor Topography" and the Agulhas-current question to "Ocean Currents" (both pure retags — the target concepts already taught the facts), removing the `named-ocean-features` concept. Coverage + mistag clean; guide figures synced.
+
+The Geography notes agents kept everything reorder-only, which surfaced (and we fixed) the Physical "Forests" catch-all. Their handoffs flagged at least one more residual mini-catch-all left as-is: Climatology's **"Atmospheric Layers, Composition and Aurora"** DB subtopic houses misfiled recall (world-vegetation/savanna, a cold-local-wind item, a tropical-cyclone-formation item — tagged honestly under `regional-recall`/`tropical-cyclone-conditions` concepts). Other recall chapters across subjects may have similar low-grade catch-alls.
+
+**Why:** a catch-all subtopic makes the /notes page read as a mixed bag and rots `/browse` filtering. The Forests split proved the cleanup is cheap when the facts are already taught in the right concepts ([[notes-self-sufficient-template]]).
+
+**How to apply:** per suspect subtopic, SQL-read the stems; if a meaningful fraction is off-topic, Phase-D-split them into existing subtopics (+ a new subtopic only where nothing fits). Cheap because the relocated facts usually already have a home concept — re-derive the tags, not the teaching. Only worth it for the worst offenders (≥~30% off-topic); a couple of stragglers are fine left as honestly-named concepts.
+
+### ~~Source-verify the remaining agent-flagged Geography UNCERTAIN items (low priority)~~ — **DONE 2026-06-14**
+
+Source-verified the two genuinely-suspect items against the GAT PDFs: `8584266a` (2024 NDA-2, "which states never get perpendicular Sun") — extraction faithful, but key A (Bihar & Chhattisgarh) is geographically wrong; the Tropic crosses Chhattisgarh, so the answer is Bihar & Manipur (B). `9a0a10a4` (2018 NDA-2, NE-places sunrise order) — key C places Imphal last despite it being easternmost; by longitude the answer is B. Both keys PRESERVED (no source key page to confirm the official answer) with honest solutions deriving B + flagging the discrepancy; the featured perpendicular-Sun card was de-featured + a trap added so the notes teach the correct answer. The other flagged items are option-bound recall taught at the correct-principle level — no wrong fact, left as-is.
+
+The 6-agent Geography build flagged a handful of option-bound or report-year-dependent facts the agents handled honestly (taught "among the listed states", taught both forest-cover report years, hedged the Coriolis framing, taught the Bihar/Chhattisgarh perpendicular-rays *principle*). I source-verified only the two clear-cut ones (Assam-China, chert/shale). The rest are taught at the correct-principle level and don't depend on a possibly-wrong key.
+
+**Why:** completeness — but genuinely low priority; none teaches a wrong fact, they're just option-bound answers where the official key could be contested.
+
+**How to apply:** the GAT PYQ PDFs are local at `C:\tmp\PYQPs\NDA\GAT_Edited\` — render the relevant page (PyMuPDF → Read, per [[gdrive-pdf-fetch]]) only if a specific flagged item is challenged. Not worth a batch pass.
+
+### ~~Browser smoke-test `/guide/nda-physics/ncert-map`~~ — **DONE 2026-06-14**
+
+The smoke test caught a **production 500** the green build had missed: a `<NcertChip>` prop named `ref` (React-reserved) crashed the RSC render. Root-caused via dev (full error), renamed `ref`→`item`, curl-verified HTTP 200 + content renders (chapter rows, watch/dormant chips, Drill links). Fix on `main` (`4018a5e`). Lesson banked in CLAUDE.md "Recurring pitfalls" (build-green ≠ runtime-ok for dynamic `ƒ` pages). **Still worth a human light/dark visual pass** for chip contrast — the curl check confirms render, not aesthetics.
+
+### Extend the NCERT↔NDA cross-walk + weak-signal detector to other NDA subjects
+
+`/guide/nda-physics/ncert-map` is the first source-syllabus cross-walk page ([[weak-signal-trend-detection]]). The same shape applies to NDA Chemistry, Biology, Maths → NCERT — each could surface a Class-12 watch-list of its own.
+
+**Why:** the detector's value compounds across subjects (Chemistry especially leans Class-11/12 physical chemistry); and it gives NCERT-oriented students a discovery path into each subject's bank. The pure `signalStatus()` helper + the test pattern are reusable as-is.
+
+**How to apply:** per subject, author a `_data/ncert-map.ts` (NDA-keyed → NCERT refs, class-tagged), run the per-topic recency probe to populate `signal` on the Class-12 watch-list topics, clone `ncert-map/page.tsx` + the test, add a `ROUTES` entry. Consider promoting the shared bits (`NcertRef`/`signalStatus`/the page shell) into a generic component once the 2nd subject lands (don't parameterise before the 2nd, per the project's "don't abstract until forced" norm). The richer Phase-2 (an NCERT-name → NDA-chapter alias feeding `/browse` search) is still deferred — the page covers discovery for now.
+
+### Refresh mechanism for the ncert-map `signal` recency numbers
+
+The Class-12 watch-list recency (`lastSeen` + `recentCount`) in `ncert-map.ts` is an **authored snapshot** (`SIGNAL_SNAPSHOT=2026-06-14`), so the live/watch/dormant flags drift as the bank grows — the exact staleness class in [[project-docs-staleness]].
+
+**Why:** the whole point of the detector is to flip a topic to `live` when it recurs; a stale hand-snapshot defeats that silently. Low urgency now (numbers are fresh), but it compounds.
+
+**How to apply:** either (a) a small probe script (`npm run` target) that re-emits the per-topic `{lastSeen, recentCount}` from the live bank for paste-in, or (b) derive recency live in the page from a keyword-tagged query (heavier — keeps the page a server component but adds a per-request scan; the authored snapshot is cheaper and a refresh script is probably the better ROI). Fold a refresh into the post-upload ritual when NDA Physics gets new PYQs.
+
+---
+
+## 2026-06-12
+
+### ~~Harden `global-teardown`'s leak-assertion against the delete-visibility race~~ — **DONE 2026-06-12**
+
+Extracted the 4-stage sweep into a re-runnable `sweepTestData(admin)` and added a pure, injectable `sweepUntilClean(check, sweep, {attempts, delayMs, sleep})` helper in `tests/global-teardown-helpers.ts` (TDD: 4 new cases — clean-first/race-clears/persists/sleeps-between). `assertNoLeakedTestData` now re-sweeps + re-checks up to 3× (750 ms apart) before throwing, so an already-doomed survivor clears on retry instead of false-throwing; a genuine leak persists through every re-sweep and still fails the run. 12 helper tests green. See [[shared-db-test-flake]].
+
+### ~~Quiz Waves 5-7 — finish NDA Maths~~ — **DONE 2026-06-12**
+
+Waves 5 (binomial-theorem/properties-of-triangle/indefinite-integration/conics), 6 (inverse-trigonometry/trigonometric-equations/circles/logarithms), 7 (applications-of-integration/height-distance/binary-numbers) + the binomial-distribution single-add **completed all 30 noted NDA Maths chapters** (~120 quizzes built). Every predicted verify key matched first run. The bulk of the work was computation top-ups (the "MCQ-clean" count conflates formula pieces with computation → most chapters had near-zero practiceSet) + trap-callout top-ups; honest parks where content was genuinely thin (binary formula 8, conics computation 3). See QUIZ_FACTORY.md + [[daily-quiz-pilot]] + [[quiz-formula-coverage-gap]].
+
+### Harvest the new NDA Chemistry (11) + Physics (9) + Biology (8) notes chapters for quizzes (carry-forward)
+
+The 2026-06-10/11 Chemistry + Physics notes and this session's 8 new NDA Biology chapters are all authored quiz-ready (Step 1b) but **unharvested** — a large fresh frontier beyond NDA Maths. Chemistry/Biology are recall-heavy (rich `fact`/`trap` themes); Physics is formula-heavy.
+
+**Why:** **NDA Maths is now 30/30 complete (2026-06-12), so this is the PRIMARY next-session frontier.** Broadens the daily-quiz beyond Maths into the other NDA subjects; these chapters were built quiz-ready specifically so the harvest needs no rework. (Note the recall-subject difference: Chemistry/Biology lean `fact`+`trap` themes, so expect computation to be thin/parked and `fact` from reference tables to be the bulk — different shape from Maths.)
+
+**How to apply:** same per-chapter cadence; recall subjects lean `fact` (reference-table) + `trap` themes rather than computation. HP (Biology) is already done as the template for a recall-heavy chapter.
+
+### ~~Review + flip the practice pilot PUBLIC (Sequence & Series, 84 q)~~ — **DONE 2026-06-12**
+
+All 3 ingested practice topics flipped PUBLIC after preview review (Sequence & Series 84 + Logarithms 26 + Statistics 81 = 191 q). Live /browse smoke confirmed the PYQ/Practice/All toggle works on production (kind=practice → "84 questions match" for Sequence & Series).
+
+### ~~Scale practice ingestion to more topics/subjects~~ — **DONE 2026-06-13**
+
+Completed in a later session (not /update-docs'd at the time): **ALL 5 source folders ingested → 3,040 practice q across 29 NDA Maths chapters**, all PUBLIC (only Mathematical Induction skipped — no NDA Maths home). See CLAUDE.md Decisions log 2026-06-13 + [[practice-ingestion]]. Original spec kept below.
+
+**Progress 2026-06-12:** ingested Logarithms (26 q) + Statistics (81 q) + Complex Numbers (82 q) + Quadratic Equations (62 q) on top of the Sequence & Series pilot — **5 NDA Maths topics now PUBLIC (335 q)**. STILL OPEN: Algebra's remaining sub-topics (Sets/Relations/Permutation/Combination/Binomial/Matrices/Determinants/Probability — each maps to an existing NDA Maths chapter; next contiguous in the book is Permutation & Combination at Q233+) + the Trig / 2D / 3D / Calculus folders (different source PDFs → new `TOPICS` entries). New per-topic finding banked this run: a 3rd-party book ships **genuinely-flawed MCQs** (correct answer not among the printed options) → **exclude them** (don't transcribe; they show as intentional coverage gaps), never ship a guessed key — see the override/stem-fix/EXCLUDE triage in [[practice-pdf-vision-ingestion]].
+
+**Why:** broadens the practice bank. It is a **workflow, not automation** — budget the per-section vision-transcription + verification pass. The 3 done averaged near-0 wrong keys, but number-dense topics (Statistics) needed half-column crops to read values reliably.
+
+**How to apply:** follow `scripts/practice/README.md`. Per topic: verify the answer-key + solution Q-ranges exist for that section (solution coverage varies by source PDF), confirm the practice section maps to an **existing** NDA Maths chapter (skip ones with no home, e.g. Mathematical Induction / System of Equations — never auto-create), add a `TOPICS` entry, run render→transcribe→commit→preview→flip. For number-dense sections render half-column crops, not just per-column.
+
+---
+
+## 2026-06-11
+
+### ~~Sweep leaked `auth.users` test accounts~~ — **DONE 2026-06-11**
+
+Cleaned 11 orphaned `@test.local` accounts (guarded: test domain, no `org_members`, never the real admin) and added a permanent auth-user sweep to `global-teardown` (`isTestAuthEmail`, via `admin.auth.admin.listUsers`/`deleteUser`) + a guardrail that throws if any test orgs/subjects/auth-users survive. See [[test-data-leak-org-signal]].
+
+### ~~Purge the `pubtest` test quizzes + dummy atoms~~ — **DONE 2026-06-11**
+
+Deleted both quizzes (`nda-maths-resq1781117516622-formula-1` + `pubtest-priv-1781117516622`) via `quiz:delete` (propagated to nda-tracker) and the 3 `pubtest-%` dummy atoms via SQL. `quiz:lint` is now 0-flagged.
+
+### Publish the now-clean formula quizzes (carry-forward)
+
+Carry-forward of the still-open "Publish more public-funnel quizzes" entry below (2026-06-10) — **now unblocked**: the 20 formula quizzes are reworked to publish quality (0 broken stems), so a "Formulas of the day" share link is viable alongside the trap/HP suggestions already noted there. No new spec; see that entry.
+
+### Dashboard `/dashboard/quizzes` server-side filtering + pagination (carry-forward → ROADMAP)
+
+The 60-cap was fixed 2026-06-11 (limit→1000 + true count), good to ~1000 quizzes. The scalable version (push filters into the query, drop per-quiz `questions` from the list payload + lazy-load on expand, paginate) is fully specced in **ROADMAP.md → Admin tooling**. Surface here only as a pointer; act on it when the bank nears ~1000 quizzes.
+
+---
+
+## 2026-06-10
+
+### ~~Structured distractor-candidate generators in the harvester~~ — **DONE 2026-06-10** (numeric atoms)
+
+Shipped `errorTransforms()` in `src/lib/quiz/atoms.ts` (TDD `tests/quiz-error-transforms.test.ts`) — `harvestProblem` seeds `candidate_distractors` for SIMPLE-numeric answers (int/decimal/fraction) with sign-flip/double/off-by-one/fraction-swap variants (e.g. `8`→`[-8,16,9]`), falling back to siblings for non-numeric. A proposal the verify pass accepts/edits. All 11 harvested chapters re-harvested (candidate_distractors only; 0 correct/answer drift). Original spec kept below — **only the numeric case is covered**; expression/formula permutation transforms (the harder, problem-specific part) remain manual.
+
+The distractor-authoring bottleneck is fully manual (parallel agents hand-write 3 wrong options per atom). But many wrong answers follow MECHANICAL error-transforms — sign flip, reciprocal, off-by-a-factor, swapped operands, `1±x` vs `1∓x`, `a+b` vs `√(a²+b²)`. The harvester could PROPOSE candidate distractors by applying these transforms to the correct answer, so the human refines rather than authors from scratch.
+
+**Why:** distractor authoring is the single bottleneck of the whole factory (harvest/sync/assemble take seconds; the agents are the token cost). Even a partial reduction (formula/structured atoms) compounds across the ~17 remaining chapters. Raised in the 2026-06-10 "workflow vs template" discussion as the genuine "better method".
+
+**How to apply:** add an `errorTransforms(correct, theme)` helper emitting candidate wrong-variants per theme (formula → permutation transforms; numeric → ±factor/sign), surfaced as `candidate_distractors` the verify pass can accept/edit — replacing the current cross-category sibling guesses. Keep it a PROPOSAL: the human still approves (distractor quality is the value). Math-aware distractors are problem-specific, so it helps formula/structured atoms more than word problems.
+
+### ~~Bucket 2 — enrich the empty-`formula.latex` concepts flagged by `quiz:coverage` (Wave 2 chapters)~~ — **DONE 2026-06-10** (triage-disciplined)
+
+Triaged all 16 flagged concepts across the 3 Wave-2 chapters → **only 4 had genuine recallable formulas** (the probe over-flags, as warned): `diff-via-limit-definition` (first principles), `diff-inverse-trig-simplify` (5 standard collapses), `ap-clever-identities` (3 AP identities), `gp-product-symmetry` (2). The other 12 are correctly TECHNIQUES (read-symmetric-form, log-diff, substitute-point, AGP shift-subtract, collinearity criteria) → left empty. Enriched 11 formula atoms → Seq +1 formula quiz, Diff's formula quiz to 18 Q; **3D-Geo gained 0** (all 5 flagged are methods). The mechanism stays for future chapters via the cadence. Original spec below.
+
+`quiz:coverage` flags concepts that teach a formula in `definition` prose but leave `formula.latex` EMPTY (3D-Geo 5, Seq-Series 6, Diff 5 at last run). Enriching these would add formula-recall atoms + render the notes' formula blocks fuller. **Deferred deliberately** in Wave 2: all 3 chapters already cleared 12 formula atoms from their non-empty concepts, so a formula quiz didn't need it — this is *completeness*, not blocking.
+
+**Why:** completeness of the formula theme + better student notes. Low priority — no quiz is missing because of it.
+
+**How to apply:** per flagged concept, **triage first** (the probe over-flags prose derivation steps — only genuine recallable formulas count), then **append** the formula to the concept's `formula.latex` (append-only preserves piece indices/fingerprints; safe on EMPTY concepts) → re-harvest → author the new pieces in `-formulas.ts` → delete + re-assemble that chapter's formula quiz. Same mechanism as Matrices Path A. Fold into a chapter's build when convenient, not as a separate campaign.
+
+### ~~Finish NDA Physics notes — the 3 borderline chapters~~ — **DONE 2026-06-11**
+
+Shipped Gravitation (3 sub · 14 concepts · 17 q · 3 SVGs · `grav-`), Units, Measurement & Dimensions (1 sub · 9 concepts · 14 q · 1 SVG · `umd-`), and Oscillations & Waves (2 sub · 6 concepts · 13 q · 3 SVGs · `osc-`) via the 3-agent parallel loop + serial merge. NDA Physics notes now **12 of 14** (only Astronomy 4 q + Energy Sources 2 q remain, below the bank-coverage gate — `/browse`-only). All reorder-only, 44/44 q tagged at 100%, mistag detector clean, full gate green. **One audit flag surfaced:** Gravitation escape-velocity PYQ `95e70f86` (2024 NDA-1) is a **wrong-key candidate** (stored B=15.8; re-derivation gives A=11.2 — v_e ∝ R√ρ so ½·√4=1, unchanged) — **DB key flip B→A applied 2026-06-11 with user approval** (solution rewritten, content_hash recomputed). Original spec below.
+
+NDA Physics notes shipped **9 of 14 chapters** 2026-06-10 (the 7 that cleared the bank-coverage gate cleanly). Three borderline chapters remain buildable: **Gravitation (17 q · 3 sub) · Units & Measurement (14 q · 1 sub) · Oscillations & Waves (13 q · 2 sub)**. Astronomy (4 q) + Energy Sources (2 q) are below the gate — leave `/browse`-only.
+
+**Why:** completes NDA Physics for LWS lesson-plan coverage + grows the Quiz-Factory/public-funnel pool. Deferred only because the user scoped this batch to the 7 gate-clearing chapters.
+
+**How to apply:** same parallel-agent loop as the 7 (or solo — they're thin), bank-coverage-gate read first per [[notes-self-sufficient-template]]; formula-heavy + a few diagrams (Gravitation orbit/escape-velocity; Oscillations SHM/waveform; Units dimensional, diagram-light). Reorder-only — the nda-physics Template-C guide references subtopic names, so grep `src/app/guide/nda-physics` before any rename.
+
+### Publish more public-funnel quizzes (the funnel is proven live)
+
+The public lead-magnet funnel went live 2026-06-10 with ONE quiz (`nda-probability`, HTTP 200). Eight more Probability quizzes (5 computation + formula/property/trap) plus every other complete chapter's quizzes are assembled + pushed but `public_slug=null` (nda-tracker-only).
+
+**Why:** more shareable public quizzes = wider cold-traffic lead capture, now that the mechanism is proven end-to-end. The **trap quiz** ("spot the mistake") is a strong share hook; a formula or Human-Physiology quiz broadens topic coverage.
+
+**How to apply:** pick a quiz, `npm run quiz:lint <route> <chapter>`, set `public_slug` (clean shareable slug, e.g. `nda-probability-traps`) via `setQuizPublicAction` on `/dashboard/quizzes` or SQL, verify HTTP 200. Leads roll up at `/dashboard/leads`; premium CTA stays dormant until Razorpay ([[project-paywall-build]]).
+
+---
+
+## 2026-06-09
+
+### ~~Build /notes for the 6 remaining un-noted NDA Maths chapters~~ — **DONE 2026-06-09** (5 of 6, parallel build)
+
+Shipped Circles · Logarithms · Applications of Integration · Height & Distance · Binary Numbers in parallel (5 concurrent agents → serial merge). NDA Maths notes now **30 of 31**. **Linear Inequalities (5 q) deliberately skipped** — below the bank-coverage gate; fold into a related chapter or leave `/browse`-only. The ARCHITECTURE.md backfill sub-note below was also addressed for these 5 (their `_data` one-liners are in ARCHITECTURE.md), but **Sets & Relations · Definite Integration · Differential Equations are still missing from that list** — carry forward. (Original spec kept below.)
+
+After the 2026-06-09 autonomous 5-chapter batch, NDA Maths notes stand at 25 of 31 chapters. The 6 left (PUBLIC q): **Circles 27 · Logarithms 27 · Applications of Integration 25 · Height & Distance 24 · Binary Numbers 13 · Linear Inequalities 5**.
+
+**Why:** finishing NDA Maths makes the subject's notes complete (lesson-plan coverage for LWS teachers) + grows the Quiz-Factory + public-funnel pool. The first four (24–27 q) are solid standalone chapters; the small two need a bank-coverage gate check first.
+
+**How to apply:** same loop as the 5-chapter batch — per chapter, grep `src/app/guide/nda-maths` for the chapter's subtopic names (reorder-only if referenced), pull HARD+MODERATE solutions, design pedagogy-first concepts with a foundation, author `_data` + diagrams + wrappers + registry, tag, verify (notes:lint/latex/order/coverage), commit. **Logarithms** — check first whether the bank's log questions are a coherent teaching unit or scattered algebra (it's more a cross-chapter tool). **Linear Inequalities (5 q)** is below the bank-coverage gate ([[notes-self-sufficient-template]]) — likely fold into a related chapter or leave `/browse`-only rather than ship a hollow chapter. Sub-note: ARCHITECTURE.md's notes `_data` one-liner list is still missing **Sets & Relations · Definite Integration · Differential Equations** (3 prior-session chapters) — backfill them when next in that file.
+
+### ~~Audit two flagged Definite Integration solutions (/solution-cleanup)~~ — **DONE 2026-06-09**
+
+Resolved earlier this session (and re-confirmed when clearing the backlog): `b7044159` keys **A = ln(8√e)** (matches the f(x)→1/x derivation); `6f4b78e9` keys **B = π preserved with a source-verified defect note** (the true value (π+2)/(π−2) isn't among the printed options — a defective printed question). Original note kept below.
+
+Surfaced during the Quadratic Equations Step-0 read of the *already-shipped* Definite Integration chapter (not re-audited this session). Two HARD "Properties" items in `Definite Integration`: (1) `8∫₁²f(x)dx` (id `b7044159-69e7-4035-85f0-46f6372bc1c9`) — the bank solution computes `ln(8√e)` but defers to key `ln(8e)`, a possible wrong-key; (2) `(I₁+I₂)/(I₁−I₂)` (id `6f4b78e9-27ea-47ec-ae4b-d8b6dca4f904`) — the computed value `(π+2)/(π−2)` isn't among the printed options (official key B = π preserved as a printed-paper defect).
+
+**Why:** #1 is a genuine wrong-key candidate (the JEE/DI audit hasn't been done — DI carries source keys verified only at ingestion). Cheap to resolve; a wrong key on a HARD featured-able question is high-harm.
+
+**How to apply:** re-derive both from scratch (the `8∫₁²f` one: `8∫₁²(3/(8x)−x/8+1/4)dx = 3ln2 − 3/2 + 2 = ln8 + 1/2 = ln(8√e)` → if correct, flip key to `ln(8√e)`; verify against the source PDF via [[gdrive-pdf-fetch]]). #2 is likely a preserve-with-note (printed defect). Part of a future DI content-audit pass (DI + JEE are the un-audited remainder per the header).
+
+### ~~Bypass KaTeX for underline-only words in the web renderer~~ — **DONE 2026-06-09**
+
+Shipped: `src/components/math/underlineBypass.ts` (`matchUnderlineBypass` + `UNDERLINE_BYPASS_RE`, mirrors the docx pattern in `ommlBuilder.ts`) + a pre-check in `KatexRenderer` that emits a native underlined `<span>` in the body font for a standalone `\(\underline{\text{…}}\)` / `\(\underline{\textit{…}}\)` zone (fixes the font mismatch + the line-clamp break) + `tests/underline-bypass.test.ts` (6 cases). Covers /browse cards, WorkedExampleCard, editor preview (all via KatexRenderer/BlockText). RichText (notes definitions) deliberately untouched — no bank-underline content flows through it. Genuine math, `\textbf`, and chained/embedded underlines fall through to KaTeX unchanged. Original spec kept below.
+
+English (vocab/idioms) and Biology (taxonomy) questions store the underlined word as a KaTeX math zone — `\(\underline{\text{absently}}\)` / `\(\underline{\textit{...}}\)`. So `KatexRenderer` typesets that one word in KaTeX's font (KaTeX_Main) instead of the body Source Serif → it looks like a different typeface dropped mid-sentence, AND the `.katex` inline-block breaks `-webkit-line-clamp` (the mid-sentence "tha…" truncation artifact on `/browse` collapsed cards).
+
+**Why:** it's bank-wide (all NDA English + Biology underline questions) and visibly "weird"; KaTeX is the wrong tool just to underline an English word. The `.docx` export already solves this with `UNDERLINE_BYPASS_RE` in `src/lib/export/ommlBuilder.ts` (emits a native underlined run instead of routing through the math pipeline) — so there's a sanctioned pattern to mirror.
+
+**How to apply:** in the web renderer (`KatexRenderer` or a small pre-pass in `parseLatex`), detect the simple `\(\underline{\text{…}}\)` / `\(\underline{\textit{…}}\)` zone and emit a real underlined `<span>` (`underline`, optional `italic`) in the body font instead of `<InlineMath>`. Fixes both the font mismatch and the line-clamp artifact, and removes the inline-block from the flow. Decide scope: shared `KatexRenderer` (notes/guides/editor-preview all benefit) vs just `/browse`. Leave genuine math (`\(x^2\)`, matrices) untouched — only the bare `\underline{\text{…}}`/`\textit` pattern. See [[mobile-render-gotchas]].
+
+### ~~Distractor-verify the remaining harvested quiz chapters before public-publishing~~ — **DONE 2026-06-09**
+
+Completed all three named chapters — **Human Physiology** (87 recall + 23 traps), **Matrices & Determinants** (182 computation + 5 traps), **Vectors** (130 computation + 55 traps) — by hand-authoring every distractor (the harvest's sibling-row candidates were cross-category/unusable). All `verified`, 0 lint flags, assembled + pushed. Quiz Factory now has 5 complete chapters. The same cadence applies to any *future* harvested chapter (see "Harvest + verify the unstarted chapters" below).
+
+### Wave 3+ : harvest + verify the remaining /notes chapters (the Quiz Factory frontier)
+
+**CARRY-FORWARD (2026-06-12): superseded by the 2026-06-12 entries above — Waves 3 + 4 completed the top-18 NDA Maths chapters; ~12 NDA Maths + the new Chem 11/Phys 9/Bio 8 remain. The counts below are the 2026-06-10 snapshot, kept for the cadence detail.**
+
+**10 NDA Maths chapters now complete** across all themes (Stats/Prob/Vectors/Matrices/Functions/Lines/Trig-Id + **Wave 2: 3D-Geometry · Sequence-Series · Differentiation**, 2026-06-10) + HP (Bio). **The harvest frontier GREW sharply 2026-06-10**: the notes corpus jumped from ~31 to **52 chapters** (NDA Chemistry 11 + NDA Physics 7 shipped this day), all authored quiz-ready (Step 1b) but **none harvested**. So **~41 chapters now await harvest** — the new NDA Chemistry 11 + NDA Physics 9 + ~12 autonomous-batch NDA Maths (Binomial, Conics, Circles, etc.) + 1 MHT-CET. The new Chemistry/Physics chapters are the freshest, highest-value targets (recall-heavy `fact`/`trap` themes for Chemistry; formula-heavy for Physics).
+
+**Why:** more chapters = a deeper daily-quiz supply + a wider public-funnel pool.
+
+**How to apply:** run the per-chapter **CADENCE** now codified in QUIZ_FACTORY "Recipe" — harvest → `quiz:coverage` (completeness gate) → computation (re-derivation = correctness check) → formula author → conditional formula-enrichment + trap-callouts (notes edits) → `quiz:assemble … -- --theme=X`. Each chapter ≈ 2–3 parallel agents (computation subtopic-split) + 1 formula + 1 trap agent; the trap agent authors misconception callouts INTO the notes (predict atom keys `<concept>:trap:<existing+pos>`, verify fail-fast catches misses). Chapter-by-chapter, on the user's cue.
+
+### Cross-chapter "traps/properties of the day" assembly for thin themes
+
+Some themes are permanently thin per chapter (e.g. Functions' 6 formula atoms + Trig-Id's 11 reference atoms sit below the 12-atom minimum for a standalone quiz, so stranded; `quiz:coverage` flags <12-trap chapters). A cross-chapter assembler ("Traps of the day" / "Formulas of the day" pulling atoms by theme across all NDA Maths chapters) would use them.
+
+**Why:** otherwise low-count themes never form a quiz and the atoms sit unused. Already noted in QUIZ_FACTORY "Known gaps."
+
+**How to apply:** extend `assembleNextQuiz` (or a sibling) to select ready-unused atoms by `(exam, theme)` across chapters instead of `(route, chapter, theme)`; slug like `nda-maths-traps-N`. Keep the coverage-dedup ledger.
+
+### Phone-link signup attribution (deferred — attribution-only shipped)
+
+The lead→buyer link is **attribution-only** today: `utm_source=quiz:<slug>` rides the lead + signup → `user_metadata.signup_source`, so you can see WHICH quiz drove a signup, but not join an exact mobile lead to an exact paying account (mobile vs email identity gap).
+
+**Why:** if precise per-lead conversion tracking becomes valuable (e.g. proving a specific lead bought), phone-link closes it. Deferred because Google OAuth gives no phone — it needs a pre-filled phone field on email signup PLUS a post-OAuth "complete profile" step for Google, and the number is self-reported/unverified.
+
+**How to apply:** add an optional phone field to `/signup` (pre-filled from the lead's localStorage mobile), pass `options.data.phone` to `signUp`; for Google, stash it and stamp `user_metadata.phone` in `/api/auth/callback` (first-time only). Then the leads dashboard can join `quiz_leads.mobile` ↔ `auth.users.meta->>'phone'`.
+
+---
+
+## 2026-06-08
+
+### ~~Consolidate the per-subject notes pages into a dynamic `[subjectRoute]` route~~ — **DONE 2026-06-08** (commit `b40f025`)
+
+Shipped as a **shared `NotesSubjectLanding` component** + 4 thin (~6-line) registry-derived wrappers (−304 net lines), NOT the fully-dynamic route. Rejected fully-dynamic: a single `[slug]/[chapterSlug]/[subtopicSlug]` wrapper would force the whole notes tree all-static (paywall preview leak) or all-dynamic (free chapters lose SSG/ISR), since the per-chapter force-dynamic paywall hook needs per-chapter files. Thin wrappers got the dedup at zero routing/paywall/SSG risk. (Original spec kept below for the record.)
+
+The cross-exam-hub work (2026-06-08) made `/notes` and the per-exam hubs (`/notes/<examSlug>`) derive from the `NOTES_CHAPTERS` registry — but the per-**subject** index pages (`/notes/nda-maths/page.tsx`, `nda-physics`, `mht-cet-maths`, `nda-biology`) are still hand-written near-identical files. Adding a new subject still requires cloning one (and forgetting it 404s the subject hub — that bit us on NDA Biology this session).
+
+**Why:** the boilerplate is ~130 lines duplicated 4× and growing per subject; a single dynamic `[subjectRoute]/page.tsx` (validate the route against `getNotesChaptersForSubject`, `notFound()` otherwise) would make a new subject *zero-page* — just a registry entry + the chapter wrappers. It mirrors exactly what `[examSlug]` already does one level up. The concrete folders would need to go (or the dynamic route shadowed correctly), so it's a real refactor, not a 5-minute change.
+
+**How to apply:** create `src/app/notes/[subjectRoute]/page.tsx` rendering from `getNotesChaptersForSubject(params.subjectRoute)` + `getNotesTaxonomy`; delete the 4 concrete subject `page.tsx` files; confirm the dynamic `[examSlug]` and `[subjectRoute]` siblings don't collide (exam slugs `nda`/`mht-cet`/`jee-mains` vs subject routes `nda-maths`/… — they differ, but Next.js disallows two *differently-named* dynamic segments at one level, so this needs verifying — may require a single `[slug]` that branches exam-vs-subject). Keep the chapter + `[subtopicSlug]` route files as-is.
+
+### ~~Browser smoke-test the NDA Biology chapter + the new notes hubs~~ — **DONE 2026-06-08** (verified by user)
+
+User confirmed the NDA Biology chapter pages, the 6 Human Physiology diagrams, and the new notes hubs render correctly in the browser. No code changes needed. (Original note kept below for the record.)
+
+The 6 Human Physiology SVG diagrams (heart, eye, nephron, reflex arc, lung volumes, alveolus) and the new `/notes`, `/notes/nda`, `/notes/jee-mains` (coming-soon) pages were shipped on a green `prepush` (build + tests) but never eyeballed in a browser.
+
+**Why:** the diagrams are hand-rolled SVG with absolute coordinates — they compile fine but can render visually off (overlap, clipping, dark-mode contrast). The "verify in a browser before claiming done" rule in [[notes-self-sufficient-template]] hasn't been satisfied for this chapter.
+
+**How to apply:** `npm run dev`, open `/notes/nda/human-physiology/hp-circulation` (heart), `…/hp-nervous` (eye + reflex arc), `…/hp-respiration` (lung volumes + alveolus), `…/hp-excretion-reproduction` (nephron) in light + dark; plus `/notes`, `/notes/nda`, `/notes/jee-mains`. Fix any coordinate/contrast issues.
+
+### ~~Regenerate the ARCHITECTURE.md visualization-batch enumeration from `npm run stats`~~ — **DONE 2026-06-08** (commit `b40f025`)
+
+Trimmed the drifted per-batch enumeration to a pointer ("per-chapter diagram choices live in each chapter's `_data` + the Decisions log; `npm run stats` is the source of truth"); kept the count (95) + the conventions + the add-one steps. (Original spec kept below for the record.)
+
+ARCHITECTURE.md's `visualizations/` line now shows the correct **95** count but its per-batch enumeration only lists batches through Electricity & Magnetism + Binomial Distribution + the new Human Physiology 6 — it skips the Functions/Differentiation/Limits/AoD/Trig/Lines/P&C/Complex diagram batches that landed 2026-06-06/07.
+
+**Why:** the list reads as authoritative but is incomplete; someone counting from it gets the wrong total. Low urgency (the count is right; `npm run stats` is the source of truth), but the prose drift is the kind that compounds.
+
+**How to apply:** either trim the enumeration to "see `npm run stats` / the `_data` dirs for the per-chapter list" (preferred — stop hand-maintaining it), or backfill the missing batches in one pass.
+
+### ~~Relocate the Quiz-Factory core from `scripts/quiz/` into `src/lib/quiz/`~~ — **DONE 2026-06-08**
+
+Moved `atoms.ts`/`daily.ts`/`quizPayload.ts` (via `git mv`, history preserved) to `src/lib/quiz/`; `assemble.ts` now imports them as `./atoms` etc.; the `scripts/quiz/` CLIs import the core via `../../src/lib/quiz/…`; tests repointed. Typecheck + 45 quiz tests + build green. (Original spec below.)
+
+The pure quiz core (`scripts/quiz/atoms.ts`, `daily.ts`, `quizPayload.ts`) lives under `scripts/`, but `src/lib/quiz/assemble.ts` (used by the dashboard server action) now imports it via `../../../scripts/quiz/…`. The app bundling imports *up into scripts/* — a mild architectural smell.
+
+**Why:** `src/` importing from `scripts/` inverts the usual dependency direction and means the Next build bundles files from the scripts tree. It works (typecheck + build green) but reads wrong and will confuse the next person; the quiz *domain* logic is really `src/lib` material that the CLI happens to also use.
+
+**How to apply:** move `atoms.ts`/`daily.ts`/`quizPayload.ts` (+ their tests) to `src/lib/quiz/`, update the `scripts/quiz/*` runners to import from `@/lib/quiz/…` (the tsx scripts already resolve the `@/` alias, per notes-lint precedent), and drop the `../../../scripts` relative imports. Pure move + import-path update; the gate covers it.
+
+### ~~Add exam/chapter/theme inputs to nda-tracker's QuizEditor~~ — **DONE 2026-06-09** (nda-tracker commit `78e9713`)
+
+Shipped: Exam + Theme `<select>`s (vocab synced with PYQ Vault: NDA/MHT-CET; mixed/formula/property/computation/fact/trap) + a Chapter text input in `QuizEditor.jsx`'s Quiz-details card; new quizzes default to NDA / mixed. `buildQuizRow` already persisted the fields. 30 quiz tests + build green. (The one existing uncategorized "Classical Probability" quiz can now be fixed by opening it in the editor and setting the fields.) Original note below for the record.
+
+The Daily Quiz filtering (shipped 2026-06-08) classifies *imported* quizzes (PYQ Vault sends exam/chapter/theme), but **hand-authored** quizzes (nda-tracker's "+ New quiz") have no way to set those fields, so they fall into the "Uncategorized" filter bucket — and that bucket grows as teachers make ad-hoc quizzes.
+
+**Why:** the long-term-correct rule for the filter is "every quiz carries its classification, no exceptions" — otherwise the feature quietly rots. This is the fast-follow that was explicitly deferred when the filter shipped.
+
+**How to apply:** add exam/chapter/theme inputs to `src/pages/Quizzes/QuizEditor.jsx` (the editor already patches `subject`/`batch`); `buildQuizRow` already persists them, so it's just UI inputs wired to `patch({ exam })` etc. Optionally also classify the one hand-authored "Classical Probability" quiz (id `61151aeb…`) that's currently uncategorized.
