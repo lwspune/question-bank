@@ -19,13 +19,40 @@ export function generateStaticParams(): Params[] {
   return notesExamSlugs().map((examSlug) => ({ examSlug }));
 }
 
+/**
+ * The intro for one exam hub.
+ *
+ * Shared by the page and its metadata so the two cannot drift, and written to
+ * answer a DIFFERENT question from the two levels around it: /notes says what
+ * these notes are, this says what is covered for this exam, and the subject
+ * landing says how to use them. Until 2026-09-16 all three rendered the same
+ * sentence with a name swapped, which a reader meets twice in two clicks.
+ *
+ * Counts are pluralised because four live pages sit at 1 (JEE Mains and CDS
+ * have one subject and one chapter each), and "1 subjects" on a real page is
+ * the most machine-written thing a template can do.
+ */
+function examIntro(examName: string, subjects: number, chapters: number): string {
+  const s = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+  return (
+    `${examName} notes cover ${s(subjects, "subject")} and ${s(chapters, "chapter")} ` +
+    "so far. Each chapter breaks into subtopics, and every subtopic ends with a drill " +
+    "of the past-year questions on it, so you can check you have actually learnt it " +
+    "rather than just read it."
+  );
+}
+
+function chapterTotal(group: { subjects: { chapterCount: number }[] }): number {
+  return group.subjects.reduce((n, s) => n + s.chapterCount, 0);
+}
+
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const group = getNotesExamGroup(params.examSlug);
   if (!group) return {};
   const title = `${group.examName} — Teaching Notes`;
   return {
     title: `${title} — Notes for the digital board`,
-    description: `Per-subtopic teaching notes for ${group.examName}, by subject. Concept-by-concept lessons with reference tables, worked examples, featured PYQs, traps, and one-click drills.`,
+    description: examIntro(group.examName, group.subjects.length, chapterTotal(group)),
     alternates: { canonical: `/notes/${group.slug}` },
   };
 }
@@ -43,7 +70,7 @@ export default function NotesExamHub({ params }: { params: Params }) {
   ];
 
   const title = `${group.examName} — Teaching Notes`;
-  const intro = `Per-subtopic teaching notes for ${group.examName}, organised by subject. Each chapter breaks into concept-by-concept units — intuition, a reference table or worked example, a featured PYQ, traps, and a one-click drill of every past-year question on that subtopic.`;
+  const intro = examIntro(group.examName, group.subjects.length, chapterTotal(group));
 
   return (
     <GuideShell

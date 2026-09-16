@@ -22,11 +22,18 @@ function subjectMeta(subjectRoute: string) {
   const first = chapters[0];
   if (!first) return null;
   const title = `${first.subjectDisplay} — Teaching Notes`;
+  // Says how to USE these notes. The /notes hub says what they are and the exam
+  // hub says what is covered, so all three levels answer different questions —
+  // before 2026-09-16 they rendered one sentence with the name swapped.
+  //
+  // Phrased "written to be…" and "No chapter assumes…" rather than "Each chapter
+  // is…" because four subjects have exactly ONE chapter, where "each" reads
+  // wrong. Pluralised for the same reason.
+  const n = chapters.length;
   const intro =
-    `Per-subtopic teaching notes for ${first.subjectDisplay} — built for digital-board ` +
-    "lectures and student self-study side by side. Each chapter breaks into concept-by-concept " +
-    "units with intuition, a reference table or worked example, a featured PYQ, traps, and a " +
-    "one-click drill of every past-year question on that subtopic.";
+    `${n} chapter${n === 1 ? "" : "s"} of ${first.subjectDisplay}, written to be taught ` +
+    "from directly or read alone. No chapter assumes you have read the others, so start " +
+    "wherever you are weakest. The question counts below are live, straight from the bank.";
   return { chapters, first, title, intro };
 }
 
