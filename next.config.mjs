@@ -61,6 +61,38 @@ const nextConfig = {
         destination: "/guide/nda-maths/principles/modulus-absolute-value",
         permanent: true,
       },
+      {
+        // 2026-09-17: MHT-CET Maths trigonometry was reclassified onto the
+        // board's own carve. The bank had filed one Std XII chapter under the
+        // name of a single one of its sections, so solution-of-triangle and
+        // inverse-trig questions leaked back into the two Std XI chapters:
+        // `Inverse Trigonometric Functions` (73 q) became `Trigonometric
+        // Functions` (168 q) and absorbed both. Its playbook URL was live and
+        // indexed, so it redirects to the chapter that now holds its content.
+        source: "/guide/mht-cet-maths/playbooks/inverse-trigonometric-functions",
+        destination: "/guide/mht-cet-maths/playbooks/trigonometric-functions",
+        permanent: true,
+      },
+      {
+        // Same reclassification, other side: Trigonometry - II kept its name
+        // but gave up 73 of its 90 questions, dropping to 17 q / 0.35 per
+        // paper — below the 0.9 line, so it no longer ships a playbook. The
+        // triangle and inverse material its page was mostly ABOUT now lives in
+        // Trigonometric Functions, which is where a reader of the old URL was
+        // trying to get. The CHAPTER still exists and is still browsable; it is
+        // only the playbook page that is gone.
+        source: "/guide/mht-cet-maths/playbooks/trigonometry-ii",
+        destination: "/guide/mht-cet-maths/playbooks/trigonometric-functions",
+        permanent: true,
+      },
+      {
+        // The same rename seen from the indexable per-chapter landing pages,
+        // whose slug is slugifyName(chapter.name). Not prerendered (only the
+        // top 40 are) but live via ISR, hence a real URL that would now 404.
+        source: "/questions/mht-cet/maths/inverse-trigonometric-functions",
+        destination: "/questions/mht-cet/maths/trigonometric-functions",
+        permanent: true,
+      },
     ];
   },
 };
