@@ -9,11 +9,13 @@ import {
   GraduationCap,
   Layers,
   Library,
+  ListTree,
   NotebookPen,
   School,
   Sparkles,
   Stethoscope,
   Target,
+  Timer,
 } from "lucide-react";
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
@@ -115,12 +117,17 @@ type SurfacePreview = {
   Icon: typeof BookOpen;
 };
 
-// These four render side by side in one grid, so a reader takes them in at a
-// glance. They are therefore written in four DELIBERATELY DIFFERENT shapes — a
-// declarative pair, a question, a colon-list, a short pair. The previous set
-// were all "noun phrase — tricolon of features", and four copies of one rhythm
-// in one eyeful is what reads as machine-written. Keep them structurally
-// unlike each other when editing.
+// These six render side by side in one grid, so a reader takes them in at a
+// glance. They are therefore written in six DELIBERATELY DIFFERENT shapes — a
+// declarative pair, a question, a colon-list, a short pair, a contrast, an
+// instruction. The original set were all "noun phrase — tricolon of features",
+// and copies of one rhythm in one eyeful is what reads as machine-written. Keep
+// them structurally unlike each other when editing.
+//
+// /questions and /mock joined on 2026-09-17 for CRAWLING as much as for readers:
+// the homepage linked two internal destinations, and Search Console reported 12
+// of 1,474 pages indexed with discovery running at ~0.41 URLs/day. Guarded by
+// tests/crawl-entry-points.test.ts.
 const SURFACES: SurfacePreview[] = [
   {
     href: "/browse",
@@ -143,6 +150,23 @@ const SURFACES: SurfacePreview[] = [
     blurb:
       `One page per subtopic: the idea in plain language, the formula, a solved past-year question, and the traps that catch people. ${NOTES_CHAPTERS.length} chapters so far.`,
     Icon: NotebookPen,
+  },
+  {
+    href: "/questions",
+    title: "Questions by chapter",
+    // Shape: a contrast, then the case for it. Not a feature list.
+    blurb:
+      "The same bank, addressed by chapter instead of by filter. Useful on the days you already know it is Quadratic Equations you need and nothing else.",
+    Icon: ListTree,
+  },
+  {
+    href: "/mock",
+    title: "Timed mock tests",
+    // Shape: an instruction, then what you are left holding. The only
+    // second-person card in the grid — keep it that way.
+    blurb:
+      "Sit a real past paper against the real clock. When the timer stops you get a score, a section-by-section split, and every question you got wrong.",
+    Icon: Timer,
   },
   {
     href: "/board",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, TrendingUp } from "lucide-react";
+import { Atom, BookOpen, Compass, FlaskConical, Globe, Landmark, Languages, Leaf, Library, ListTree, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, Timer, TrendingUp } from "lucide-react";
 import { CONTACT_EMAIL } from "@/lib/brand";
 
 const REPORT_EMAIL = CONTACT_EMAIL;
@@ -29,6 +29,52 @@ export default function Footer() {
           . Free to browse, forever.
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          {/*
+            CONTENT SURFACES FIRST, and they are here for CRAWLING as much as for
+            readers. The footer renders on every page, so a link here is seen on
+            every HTML fetch Google makes — which mattered because on 2026-09-17
+            Search Console reported 12 of 1,474 pages indexed, 1,424 of them
+            "Discovered - currently not indexed", against a crawl budget of ~4
+            HTML pages and ~0.41 discovery requests per day.
+
+            /questions leads deliberately: its index links all ~631 chapter
+            landings, so this one line moves every one of them from three clicks
+            deep (reachable only via BrowseLanding.tsx, behind a dynamic
+            uncacheable /browse) to two. Those pages exist for discovery and
+            drew 41 impressions in seven weeks; /mock and /board drew one each.
+
+            Guarded by tests/crawl-entry-points.test.ts — re-orphaning a surface
+            fails nothing else in the gate and shows up months later as an
+            absence in a report nobody diffs.
+          */}
+          <Link
+            href="/browse"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Compass className="h-3 w-3" aria-hidden />
+            Question bank
+          </Link>
+          <Link
+            href="/questions"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <ListTree className="h-3 w-3" aria-hidden />
+            Questions by chapter
+          </Link>
+          <Link
+            href="/mock"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Timer className="h-3 w-3" aria-hidden />
+            Mock tests
+          </Link>
+          <Link
+            href="/board"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Library className="h-3 w-3" aria-hidden />
+            Board textbook reader
+          </Link>
           <Link
             href="/guide/nda-maths"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"

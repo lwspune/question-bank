@@ -262,6 +262,103 @@ Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIE
 
 ---
 
+## Organic search + acquisition
+
+### BASELINE — the first Search Console read (2026-09-17): 98% of search clicks are the brand name
+
+Search Console was verified ~2026-07-27, so the export's "Last 3 months" filter **overstates the window** — there are 7 weeks of data (2026-07-27 → 2026-09-14), not 3 months. Raw totals: **751 clicks / 1,804 impressions**, India 750 of 751 (targeting is correct).
+
+**The finding that reframes this whole section: 739 of 751 clicks (98%) land on the homepage, and `pyq vault` + `pyqvault` alone account for 530 of them at position ~1.0.** Those are navigational queries — people who already know the site using Google as an address bar. They are a *lagging indicator of word-of-mouth*, not acquisition. Strip them out and **non-brand organic acquisition is between 12 and 24 clicks in 7 weeks** — a range, not a figure, because `Pages.csv` over-attributes (see the correction below). It reports 763 clicks against the property's 751, spread as `/guide/nda-maths` 12, `/guide/nda-english` 9, `/browse` 2, `/questions/cds/english/reading-comprehension` 1 — while the property total leaves only **12** clicks off the homepage. **Every named non-brand query has zero clicks**: 770 of the 789 query-level impressions are brand, and the remaining 19 converted nothing. So the September signup surge (5 → 14 → 63 → 102 → 160/mo) is not organic search; it is arriving through some other channel, and migration 0106's first-touch attribution is what will name it.
+
+**Coverage collapse — 25 of the 1,473 sitemap URLs (1.7%) got a single impression:**
+
+| Section | URLs in sitemap | Impressions | Clicks |
+|---|---|---|---|
+| `/guide` | 160 | ~1,900 | 21 |
+| `/questions` | 631 | 41 | 1 |
+| `/mock` | 204 | 1 | 0 |
+| `/notes` | 465 | **1** | **0** |
+
+`/notes` is the largest content investment in the project — 84 hand-authored chapters, 559 prerendered pages — and it is **invisible in search**. `/questions` was built specifically for discovery and is not ranking either. `/guide` is the only section with any traction, which is worth noting: it is also the only section written as *prose a human would search for* rather than as a question listing.
+
+**CORRECTED 2026-09-17 — the page-level CTR gap is mostly an ATTRIBUTION ARTEFACT, not a metadata problem.** The first read of this export called the CTR gap “the nearest-term opportunity … fixable in metadata alone”. Reading the export end-to-end contradicts that, and the contradiction is arithmetic: **`Pages.csv` sums to 4,169 impressions against a property total of 1,804 — 2.3×.** `Chart.csv`, `Devices.csv` and `Countries.csv` independently agree on 1,804, so the property figure is the sound one and the page-level one double-counts. A single property impression is therefore being attributed to two or three pages at once, which is what happens when several URLs from one site appear in the same result block.
+
+The page-level evidence fits that and not the metadata story: **nine URLs sit above position 2.0 and draw 879 impressions and 3 clicks between them** — `/browse` 642 impressions at position 1.42, `/guide/mht-cet-maths/playbooks/complex-numbers` 102 at 1.34, `/guide/nda-maths/principles/double-angle` 58 at 1.31, `/questions/neet/zoology/human-reproduction` 39 at 1.23, `/quiz/nda-maths-vectors-computation-1` 33 at 1.88. A genuine position-1.3 ranking returns roughly 30% CTR; **0.3% across 879 impressions is not a title problem** — it is those pages riding along on brand searches rather than ranking on their own, and rewriting their metadata would change nothing. `Search appearance.csv` is empty, so the export cannot name the appearance type: **the arithmetic is the evidence here, not a GSC label**, and that is the honest limit of what this export proves.
+
+**What survives the correction.** `/guide/nda-maths` (960 impressions, position 5.00) and `/guide/nda-english` (765, position 2.61) sit far enough down the page to be plausible long-tail rankings rather than tag-alongs; their impression counts are inflated by the same factor but not invented. Those two are worth a metadata read — **two pages, not a site-wide CTR programme.** See the Step 2.5 entry below for why even that is sequenced late.
+
+**THE GATING QUESTION — ANSWERED 2026-09-17, and the answer is worse than either hypothesis.** The Coverage export (`pyqvault.com-Coverage-2026-09-17.zip`, scope "All known pages") reads: **12 pages indexed, 1,462 not.** The breakdown is `Discovered - currently not indexed` **1,424** · `Crawled - currently not indexed` 32 · `Blocked by robots.txt` 3 · `Page with redirect` 3 · `Duplicate without user-selected canonical` **0** (so the 2026-08-09 `/login` noindex fix is confirmed working).
+
+**"Discovered - currently not indexed" means Google knows the URL from the sitemap and has decided not to spend the crawl on it — it has not fetched the page at all.** So this is not a ranking problem and not a content problem; 97% of the site has never been looked at. The `/notes` tree's single impression in 7 weeks is fully explained: those pages have not been crawled.
+
+**The trend is the actionable part, and it runs the wrong way.** Indexed held at **20** from 2026-08-05 through 2026-09-04, then **fell to 12 on 2026-09-05** and has stayed there. Over the same window not-indexed climbed **961 → 1,462**. The 2026-09-05 step is +249 discovered URLs in one day (the MHT-CET/JEE/CDS mock ships of 2026-09-01→09-07) against −8 indexed. **Every batch of new URLs has so far made indexing worse, not better** — which is the empirical case for a publish freeze on new indexable surfaces, not merely a theoretical one.
+
+**CRAWL STATS — read 2026-09-17, and this is the mechanism.** `pyqvault.com-Crawl-stats-2026-09-17.zip`, 51 days (2026-07-27 → 2026-09-15): **1,173 total crawl requests = 23.0/day.** The composition is the finding — **82.5% of that budget is not HTML**: JavaScript **49.45%** · JSON 12.28% · other 9.55% · CSS 7.84% · failed 3.32% · images 0.09%, leaving **HTML at 17.48% ≈ 4.0 page fetches per day**. By Googlebot type, **66.24% is "Page resource load"** against 28.13% real page crawls (Desktop 14.32 + Smartphone 13.81). By purpose: **Refresh 98.21%, Discovery 1.79% ≈ 0.41 requests/day.**
+
+**The arithmetic explains the 12 indexed pages without appealing to quality at all.** At 4.0 HTML fetches/day, crawling all 1,474 known URLs **once** takes **367 days**. At 0.41 discovery requests/day, working through the 1,424 discovered-not-crawled backlog takes **~3,459 days — 9.5 years.** Google is not judging this content; it has not got to it, and at the current rate it will not.
+
+**Cause 3 (host responsiveness) is CLEARED as a blocker and CONFIRMED as a contributor.** The Hosts table reports **"No problems"** for both `www.pyqvault.com` (1,126 requests) and `pyqvault.com` (47) — Google is not backing off over host errors, so the 57014-era history did not poison the crawl. But average response is **435 ms with 21 of 50 days above 500 ms** (peaks ~1.18 s), and since 82.5% of requests are fast CDN assets the HTML itself must be materially slower than that average. **Measured directly 2026-09-17:** a `/questions` landing page cold is **1.86–2.60 s**; the same URL warm is **0.23–0.27 s** (`X-Vercel-Cache: HIT`). That is a vicious circle worth naming — `generateStaticParams` prerenders only the top 40 of ~631 landings (`src/app/questions/[examSlug]/[subjectSlug]/[chapterSlug]/page.tsx:48`) and `revalidate = 86400` expires a day later, while Googlebot returns to any given URL months apart at 4 pages/day. **So essentially every Googlebot fetch of that section is a cold MISS paying the full ~2.5 s render**, which suppresses crawl rate, which lengthens the gap, which guarantees the next hit is cold too. A stratified 27-URL sample of the live sitemap returned **200 on every URL**, so sitemap rot is not among the causes.
+
+**Cause, in descending confidence (revised).** (1) **Domain age + no external links.** `pyqvault.com` went live 2026-06-04, is ~3.5 months old, and has essentially no backlinks. Crawl budget on a young unlinked domain is minimal, and **this is the only item that raises the 23/day ceiling** — everything else merely redistributes it. (2) **Crawl depth and internal linking**, which is what starves Discovery down to 1.79%: the homepage links to exactly **two** internal destinations (`/browse` and `/guide/nda`); the Footer links the 10 guides, `/formula`, `/blog`, `/about` and two `/notes` hubs but **not `/questions`, `/mock`, `/board` or `/browse`**; `PrimaryNav` carries Bank · Guides · Notes · Mocks · Board · Blog · About but **no `/questions` tab**. The only crawlable path into the 631-page landing surface is `BrowseLanding.tsx:146`, leaving it **3 clicks deep behind a dynamic, uncacheable `/browse`**. (3) **Cold-render cost + crawl waste** — the ISR miss circle above, plus **8.3% of the budget (≈97 requests) spent on 301s (4.94%) and 404s (3.32%)**. No apex-domain URL is referenced anywhere in `src/`, so the 47 apex requests arrive from outside the codebase.
+
+**What this changes.** Adding ~195 paper pages today would put them in a backlog Google is working through at 0.41 URLs/day. Revised order, cheapest first:
+
+1. **Stop the waste (~8.3% of budget).** Find the 404s and the apex 301s. Nothing in `src/` links the apex, so those 47 requests come from outside — worth identifying rather than assuming.
+2. **Make crawling cheap.** Raise the `.slice(0, 40)` prerender cap and lengthen `revalidate` well past 86400 (or revalidate on-demand after an ingest, which is when this content actually changes). Ending the guaranteed cold-MISS on `/questions` is the single most mechanical fix available, and it directly targets the 435 ms average.
+3. **Fix internal linking and crawl depth**, which is what Discovery's 1.79% is measuring: a `/questions` entry in nav or footer, homepage links into the real content hubs, flatter paths to chapter pages.
+4. **Submit a focused sitemap** of the ~100 best URLs. At 4 HTML fetches/day a 1,474-URL sitemap communicates no priority whatsoever.
+5. **Earn external links.** Off-site, slow, and **the only lever that increases the 23/day budget rather than reallocating it.**
+6. **Hand-request indexing** for the 10–20 pages that matter, via URL Inspection — to seed, not to scale.
+7. **Only then add surfaces.**
+
+**Do NOT `Disallow` `/_next/static` or the JS/CSS in `robots.txt`.** It is the intuitive reaction to "49% of crawl is JavaScript" and it is an own-goal: Google needs those resources to render and evaluate the page, and blocking them degrades how the page is understood rather than freeing budget for HTML.
+
+Secondary observations, recorded so they are not re-derived: desktop ranks far worse than mobile (position 11.45 vs 3.75) on 725 impressions; ~150 impressions come from US/UA/VN/BR/DZ with zero clicks and are noise; and three `/browse?examId=…` filter URLs still draw impressions despite the `robots.txt` `Disallow: /browse?*` — correct behaviour, since Disallow prevents *crawling*, not the indexing of URLs Google already knows.
+
+### Step 2.5 — metadata pass on the two pages that genuinely rank (RE-SCOPED 2026-09-17 after the attribution correction)
+
+**Originally scoped as a site-wide CTR repair.** The attribution correction above removes most of it: `/browse` and the four other sub-position-2 pages are not under-converting good rankings, they are appearing beside the homepage on brand searches. There is nothing to fix in their titles.
+
+**What is left is genuinely small** — `/guide/nda-maths` and `/guide/nda-english`, which plausibly rank on long-tail queries at positions 5.00 and 2.61.
+
+**Why it is not actionable from the export.** Deciding whether their titles match intent needs the queries that surface *those specific pages*, and the bulk export cannot supply it: `Queries.csv` is property-wide, and **789 of 1,804 impressions (44%) are named while 56% sit in the anonymised long-tail bucket** that GSC withholds. So this is a Search Console UI task (Performance → filter by page → Queries) before it is a code task; the code change afterwards is two `generateMetadata` strings.
+
+**Sequencing: after Step 2, and possibly not yet at all.** With non-brand acquisition at 12–24 clicks in 7 weeks there is no baseline to improve against — a CTR change on two pages would be indistinguishable from noise. Revisit once the crawl work has produced enough non-brand traffic to measure against.
+
+### REVIEW — the external SEO brief `PYQVault_SEO_Recommendations_Claude_Code.md` (reviewed 2026-09-17): sound guardrails, wrong diagnosis, one dangerous section
+
+Recorded so the reasoning is not re-derived if the document resurfaces. It is a competent generic SEO brief written without repo access or crawl-budget arithmetic; its **Guardrails** section is better than its prescriptions.
+
+**1. The diagnosis inverts the constraint.** It reads the backlog as Google *judging* discovered URLs not worth indexing, and prescribes classifying 1,424 URLs into filter / pagination / duplicate / thin buckets. The crawl stats say Google has not *fetched* them: Discovery purpose is 1.79% of 23 requests/day ≈ **0.41 URLs/day**, so the backlog needs ~9.5 years at the current rate. “Discovered — currently not indexed” means known-and-uncrawled. The audit was run anyway across all 1,473 sitemap URLs: **1,470 × 200, 3 × 404**, zero filter URLs, zero pagination, zero parameters, zero duplicates. All eight of its categories collapse to one.
+
+**2. Section 11 (JavaScript / rendering) is actively dangerous.** It reads the 49.45% JavaScript share as evidence of client-side rendering. That share is Googlebot fetching `/_next/static/*.js` — ordinary resource crawling for a server-rendered app. The remedy it points toward is `Disallow: /_next/static`, which would leave Google unable to render the site at all; the warning against exactly that is already recorded above. Section 3 (“make content available in initial HTML”) rests on the same wrong premise — there are **1,413 prerendered `.html` files on disk**, 630 of them `/questions` pages carrying stem, options and solution in the initial HTML.
+
+**3. Sections 2, 5, 8, 9, 13 and 14 describe work already shipped.** §2 proposes `/nda/maths/probability/`; `/questions/<exam>/<subject>/<chapter>` already exists at 630 pages with per-chapter titles and descriptions — **adopting its scheme would mean 630 redirects and discarding what crawl history exists.** §5’s “topic hubs” are `/questions` + `/notes` (84 chapters) + `/guide` (11) + `/formula` (40) + `/board` + `/mock`. §8: 95 `alternates: { canonical }` declarations with `metadataBase` set. §9: `robots.ts` already blocks `/browse?*` while leaving bare `/browse` crawlable, asserted behaviourally by `tests/robots-rules.test.ts`. §13: JSON-LD across guides and blog.
+
+**4. The omission that matters more than the document.** Seventeen sections, **no mention of domain age or backlinks**. A ~3.5-month-old domain with no external links is what sets the 23 requests/day ceiling; every section in the brief redistributes a fixed budget and none raises it.
+
+**Worth taking:** §7 (sitemap strategy — already Step 2), §15 (search intent drives page creation), §16 (measurement — baseline above), and the Guardrails, especially *“do not assume ‘not indexed’ automatically means ‘technical bug’”*, which cuts against the brief’s own Phase 1. **Verdict: not adopted as a plan.** The existing sequence stands — Step 1 crawl entry points, Step 2 focused sitemap, Step 3 external links.
+
+**One claim of the brief’s that CHECKS OUT:** mobile-first. **478 of 751 clicks (64%) are mobile**, 248 desktop, 25 tablet. Caveat — 98% of clicks are the brand-name homepage search, so this mostly says people type “pyq vault” on a phone.
+
+### Per-paper public route — `/past-papers/<examSlug>/<slug>` (analysis done 2026-09-17; SEQUENCED BEHIND the indexing check above)
+
+**What it is.** The highest-intent query class in this market is the paper, not the chapter — *"NDA 2 2024 maths question paper with solutions"*, *"JEE Mains 2025 Jan 29 shift 1 solutions"*. The bank holds 189 such sittings fully reconstructed, and **not one of them has an indexable page**: `/mock/[slug]` renders only a stat strip and instructions, with every question behind sign-in, and `/questions` is addressed by chapter alone.
+
+**Why it is cheap.** `mock_tests` already *is* a paper — `slug`, `pyq_year`, `paper_code`, `sections` jsonb and `questions` jsonb as an ordered question-ref snapshot, with the three sitting-discovery rules already resolved and frozen. `queryQuestionsByIds` in `src/lib/questions/query.ts` returns the same `QuestionRow` view-model `/browse` and `/questions` render. So the data path is **snapshot ids → `queryQuestionsByIds` → reorder by snapshot order → existing `QuestionList`**, which inherits `QuestionCard`, KaTeX/`BlockText`, the reveal meter, the backlink chips and numeric/subjective handling for free. No new renderer.
+
+**Scope.** `/past-papers` index → `/past-papers/<examSlug>` (papers grouped by year — the ranking target for *"NDA previous year question papers"*) → `/past-papers/<examSlug>/<slug>`. 189 PYQ papers (NDA 38 · MHT-CET 64 · CDS 55 · JEE 24 · NEET 8) + 5 exam hubs + 1 index = **~195 URLs**, taking the sitemap to ~1,668. The 5 `source='practice'` mocks are excluded — they are not past papers, and the `source` column already discriminates. `/papers` is taken by the teacher builder, hence `/past-papers`, which is keyword-bearing anyway.
+
+**Decisions taken.** (1) Answers ship *in the HTML*, gated only by the client reveal meter — `revealMeter.ts` is explicit that it is a soft nudge over PUBLIC content, so the page is fully indexable and still converts at 3 reveals. (2) The ~30 papers HELD from `/mock` for being 1–3 questions short are **out of v1**: a read-only page does not need the completeness a graded test does, but reaching them means querying the bank by sitting rather than reading a snapshot — a different data path, worth a phase 2 (+16% pages). (3) `queryQuestionsByIds` issues a single `.in("id", ids)` and pre-2025 NEET papers are 200 questions, right at the documented URL-overflow threshold — **chunk at 200 before relying on it here**.
+
+**The product call to make before building.** A free, complete, indexable paper with answers competes with the timed mock, currently the most-used measured feature. The argument for shipping anyway: every one of these questions is *already* public on `/browse` and `/questions`, so this only reorganises them by sitting, and you cannot rank a page you do not serve — the mock keeps the timer, scoring and analysis. Not yet decided.
+
+**Build order** (TDD, pure core first): `src/lib/papers/` pure helpers (slug↔route, snapshot→ordered view, section grouping, metadata/JSON-LD builders) → `listPapers`/`getPaper` loaders on the anon client cached like `listChapterLandings` → the three routes (`revalidate = 86400`, `generateStaticParams` prerendering the ~40 most recent, rest ISR, no `searchParams`) → plumbing (sitemap with `lastmod = mock_tests.updated_at`, Footer, nav, cross-link from `/mock/<slug>`) → DB-integration tests (anon reads a published PYQ paper; practice excluded; draft 404s). Roughly a day.
+
+**Why it is not the top of this section.** The site has 1,474 known pages and **12 indexed** (2026-09-17 Coverage read above). Adding 195 more to a site whose existing inventory Google declines to crawl is treating a symptom — they would join the 1,424-URL discovered-not-indexed queue. Sequenced behind the crawl-depth and external-link work; the analysis here is complete and ready to build the moment indexing recovers.
+
+---
+
 ## Tech debt / refactoring
 
 ### BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2: split the 94 mixed identity/equation questions (logged 2026-09-17)
