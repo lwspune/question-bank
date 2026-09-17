@@ -23,7 +23,11 @@ import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { getMockExams } from "@/lib/mocks/mocksNav";
-import { MOCK_TYPES, mockTypeOf, mockTypeHref } from "@/lib/mocks/catalogue";
+import {
+  buildMockSitemapEntries,
+  type MockSitemapRow,
+} from "@/lib/mocks/sitemapEntries";
+import type { MockScope, MockSource } from "@/lib/mocks/query";
 import { FORMULA_CHAPTERS, topicsByWeight } from "@/lib/formula";
 import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
 import {
@@ -80,20 +84,22 @@ async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap
 }
 
 /**
- * The /mock surface: the exam picker, the per-exam catalogues, and every
- * published mock's instructions page.
+ * The /mock surface: the exam picker, the per-exam catalogues and the per-type
+ * listings. NOT the individual mock pages.
  *
- * These were absent from the sitemap entirely — Google only ever found the mock
- * pages (63 of them at the time, 123 since MHT-CET landed) by crawling the flat
- * list /mock used to render. The exam-picker rewrite removed those links,
- * putting every mock two hops from an indexed page, so listing them here is what
- * keeps them discoverable rather than a nice-to-have. The query is unfiltered, so
- * a newly built exam enters the sitemap with no change here.
+ * The 192 leaf URLs came out on 2026-09-17. Measured against production,
+ * /mock/<slug> renders 98 words of body text, and across all 192 the only
+ * things that differ are the paper name and four numbers - the prose and the
+ * whole Instructions block are byte-identical, because the questions sit behind
+ * sign-in. Advertising 192 near-duplicate thin pages spends a measured ~4 HTML
+ * fetches/day on pages that cannot rank. They stay reachable through
+ * /mock/exam/<exam>/<type>; they are simply no longer advertised.
  *
- * lastModified is each mock's own updated_at (a rebuild of that sitting), and
- * a per-exam page carries the newest of its mocks — so re-running the build
- * script for one paper moves exactly the URLs it touched. Guarded like
- * publicQuizEntries so a missing-env build still emits a sitemap.
+ * The rows are still READ, because they are what dates the hubs - see
+ * buildMockSitemapEntries, which is where that rule is pinned by tests. The
+ * query is unfiltered, so a newly built exam enters the sitemap with no change
+ * here. Guarded like publicQuizEntries so a missing-env build still emits a
+ * sitemap.
  */
 async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
   try {
@@ -102,75 +108,25 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
       .from("mock_tests")
       .select("slug, updated_at, source, scope, exam:exams(name)")
       .eq("status", "published")
-      .limit(1000); // 63 today; explicit so this can never silently truncate
+      .limit(1000); // 192 today; explicit so this can never silently truncate
 
-    const rows = data ?? [];
-    /** exam NAME -> the updated_at of every mock it holds, as ISO strings. */
-    const isoByExam = new Map<string, string[]>();
-    /** "<exam NAME>|<type slug>" -> the same, per TYPE. Only a pair that has at
-     *  least one published mock gets a URL: a type page with nothing in it is
-     *  reachable (the picker prerenders all of them) but it is an honest empty
-     *  state, not a page worth indexing. */
-    const isoByExamType = new Map<string, string[]>();
-    const allIso: string[] = [];
-
-    const mockUrls: MetadataRoute.Sitemap = rows.map((m) => {
+    const rows: MockSitemapRow[] = (data ?? []).map((m) => {
       const exam = (Array.isArray(m.exam) ? m.exam[0] : m.exam) as { name: string } | null;
-      const iso = (m.updated_at as string | null) ?? null;
-      if (exam?.name && iso) {
-        isoByExam.set(exam.name, [...(isoByExam.get(exam.name) ?? []), iso]);
-        const type = mockTypeOf({
-          source: (m.source as "pyq" | "practice" | null) ?? "pyq",
-          scope: (m.scope as "full" | "sectional" | null) ?? "full",
-        });
-        const k = `${exam.name}|${type}`;
-        isoByExamType.set(k, [...(isoByExamType.get(k) ?? []), iso]);
-        allIso.push(iso);
-      }
       return {
-        url: `${SITE_URL}/mock/${m.slug}`,
-        // A published mock is an immutable question snapshot (migration 0044),
-        // so it changes only on a deliberate rebuild.
-        lastModified: parseIsoDate(iso, buildDate),
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
+        slug: m.slug as string,
+        updatedAt: (m.updated_at as string | null) ?? null,
+        source: (m.source as MockSource | null) ?? null,
+        scope: (m.scope as MockScope | null) ?? null,
+        examName: exam?.name ?? null,
       };
     });
 
-    const examUrls: MetadataRoute.Sitemap = getMockExams().map((e) => ({
-      url: `${SITE_URL}/mock/exam/${e.slug}`,
-      lastModified: newestOf(isoByExam.get(e.examName) ?? [], buildDate),
-      changeFrequency: "weekly" as const,
-      priority: 0.75,
+    return buildMockSitemapEntries(rows, getMockExams()).map((e) => ({
+      url: `${SITE_URL}${e.path}`,
+      lastModified: parseIsoDate(e.iso, buildDate),
+      changeFrequency: e.changeFrequency,
+      priority: e.priority,
     }));
-
-    // Per-type listings, one per (exam, type) that actually has content.
-    const typeUrls: MetadataRoute.Sitemap = getMockExams().flatMap((e) =>
-      MOCK_TYPES.flatMap((t) => {
-        const iso = isoByExamType.get(`${e.examName}|${t.slug}`);
-        if (!iso || iso.length === 0) return [];
-        return [
-          {
-            url: `${SITE_URL}${mockTypeHref(e.slug, t.slug)}`,
-            lastModified: newestOf(iso, buildDate),
-            changeFrequency: "weekly" as const,
-            priority: 0.75,
-          },
-        ];
-      })
-    );
-
-    return [
-      {
-        url: `${SITE_URL}/mock`,
-        lastModified: newestOf(allIso, buildDate),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      },
-      ...examUrls,
-      ...typeUrls,
-      ...mockUrls,
-    ];
   } catch {
     return [];
   }
