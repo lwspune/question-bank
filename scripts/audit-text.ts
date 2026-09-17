@@ -30,6 +30,16 @@
  *    on 2026-08-01 were this class, and the bank-wide sweep behind it repaired
  *    758 rows. Repairable in place — see scripts/audit-pandoc-artifacts.ts.
  *
+ * 6. MIXED_MATRIX_DELIM — one question drawing its matrices in two different
+ *    brackets: `A = [m n]` and a round `C` in the same line of the stem, or a
+ *    round stem whose solution repeats THE SAME matrix in square brackets.
+ *    Nothing else sees it — the question is correct, renders cleanly in KaTeX
+ *    and exports to Word fine (`wrapMatrixDelimiters` handles both fences), it
+ *    just reads as though two people typed it. WHOLE-QUESTION scope, because
+ *    the disagreement is usually BETWEEN fields. Deliberately silent on a
+ *    question that is uniformly round: see the probe's own note on why
+ *    normalising those would cost more than it buys.
+ *
  * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
  * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
@@ -39,7 +49,12 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../src/lib/text/normalizeNewlines";
 import { parseTableBlocks } from "../src/components/math/parseTableBlocks";
-import { hasDroppedSymbol, leakedOptionValues, isFlattenedTable } from "./lib/textProbes";
+import {
+  hasDroppedSymbol,
+  leakedOptionValues,
+  isFlattenedTable,
+  mixedMatrixDelimiters,
+} from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
 
 const FIELDS = ["text", "context", "solution"] as const;
@@ -62,7 +77,14 @@ type Finding = {
   qnum: string;
   visibility: string;
   field: Field;
-  kind: "LITERAL_NEWLINE" | "TABLE_NO_SEPARATOR" | "DROPPED_SYMBOL" | "OPTION_LEAK" | "PANDOC_ARTIFACT" | "FLATTENED_TABLE";
+  kind:
+    | "LITERAL_NEWLINE"
+    | "TABLE_NO_SEPARATOR"
+    | "DROPPED_SYMBOL"
+    | "OPTION_LEAK"
+    | "PANDOC_ARTIFACT"
+    | "FLATTENED_TABLE"
+    | "MIXED_MATRIX_DELIM";
   sample: string;
 };
 
@@ -144,6 +166,27 @@ function inspect(r: Row): Finding[] {
       out.push({ ...base, kind: "FLATTENED_TABLE", sample: stem.slice(0, 160) });
     }
   }
+
+  // Whole-question probe — the mismatch is usually BETWEEN fields (a round stem
+  // against a square solution), so no single field can be inspected alone.
+  const allFields = [
+    r.text,
+    r.context,
+    r.solution,
+    ...(r.options ?? []).map((o) => o.text),
+  ];
+  if (mixedMatrixDelimiters(allFields)) {
+    const at = (r.text ?? "").search(/\\begin\{[pb]matrix\}|(?<!\\)\[/);
+    out.push({
+      id: r.id,
+      source: r.source_file ?? "(none)",
+      qnum: r.question_number ?? "(none)",
+      visibility: r.visibility,
+      field: "text",
+      kind: "MIXED_MATRIX_DELIM",
+      sample: (r.text ?? "").slice(Math.max(0, at - 30), at + 130).replace(/\n/g, "⏎"),
+    });
+  }
   return out;
 }
 
@@ -192,7 +235,15 @@ async function main() {
     return;
   }
 
-  for (const kind of ["LITERAL_NEWLINE", "TABLE_NO_SEPARATOR", "DROPPED_SYMBOL", "OPTION_LEAK", "PANDOC_ARTIFACT", "FLATTENED_TABLE"] as const) {
+  for (const kind of [
+    "LITERAL_NEWLINE",
+    "TABLE_NO_SEPARATOR",
+    "DROPPED_SYMBOL",
+    "OPTION_LEAK",
+    "PANDOC_ARTIFACT",
+    "FLATTENED_TABLE",
+    "MIXED_MATRIX_DELIM",
+  ] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
     for (const f of hits.slice(0, 40)) {

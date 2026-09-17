@@ -99,3 +99,120 @@ export function isFlattenedTable(text: string): boolean {
   const runs = text.match(LABELLED_RUN) ?? [];
   return runs.length >= 2;
 }
+
+/**
+ * MIXED_MATRIX_DELIM — one question that draws its matrices in two different
+ * brackets. Reported 2026-09-17 on NDA1 2022 Q24, whose stem prints
+ * `A = [m n]` and `B = [-n -m]` in square brackets and `C` in round ones, all
+ * in one line; the commoner shape is a round stem whose solution repeats THE
+ * SAME matrix in square brackets.
+ *
+ * Square bracket is the house style by a wide margin (882 question rows carry
+ * `bmatrix` against 191 with `pmatrix`), but this probe deliberately does NOT
+ * hunt `pmatrix`. It fires only on INTERNAL disagreement, because a uniformly
+ * round question has nothing to mismatch against, and rewriting one changes its
+ * `content_hash` preimage — desynchronising the dedup key from the source file
+ * and from nda-tracker's copy — for a change no reader can see.
+ *
+ * THE FALSE-POSITIVE BOUNDARY, in the order the bank taught it:
+ *
+ *  1. `\begin{pmatrix} n \\ k \end{pmatrix}` in Binomial Theorem is nCk, not a
+ *     matrix. JEE 2021 Paper19 goes further and defines `(n k)` and `[n k]` as
+ *     two DIFFERENT symbols, told apart by their brackets — "normalising" it
+ *     would merge them and destroy the question. So an environment is exempt
+ *     when it is single-column AND the row talks about combinations. BOTH are
+ *     required: the reported row's own `C` is single-column too, and it really
+ *     is a matrix. Measured bank-wide, the pair exempts exactly the 3 rows that
+ *     want exempting.
+ *  2. A determinant is a different axis, so only pmatrix/bmatrix are compared —
+ *     `\left| \begin{matrix} ... \right|` beside a `bmatrix` is correct, and 203
+ *     rows are written that way.
+ *  3. A literal `[ ... ]` counts as a bracket-style matrix only when its entries
+ *     are separated by an explicit spacing macro, and only OUTSIDE a matrix
+ *     environment's own cells. Without that the greatest-integer
+ *     `\lbrack t\rbrack`, the interval `[68,69)` and the dimension `[1\times3]`
+ *     all fire. The `\\` that ends a matrix row is excluded by the same
+ *     lookbehind that excludes the `\[ ... \]` display-math delimiters.
+ *  4. `[a  b  c]` with VECTOR entries is the scalar triple product a·(b×c), not
+ *     a row matrix — it is shaped identically and is the one class the live
+ *     bank added that the fixtures had not predicted (3 rows: two State Board
+ *     Vectors, one MHT-CET). A row matrix's entries are scalars, so a bracket
+ *     containing `\vec` / `\overrightarrow` is never one.
+ *
+ * Triage, not a gate — it says "this question can't decide how to draw a
+ * matrix", and the row itself settles it.
+ */
+const MATRIX_ENV_RE = /\\begin\{([pb])matrix\}([\s\S]*?)\\end\{\1matrix\}/g;
+
+/** The row is demonstrably about combinations, so a single-column `(n k)` is nCk. */
+const COMBINATION_RE = /C_\{|\\binom/;
+
+/**
+ * A bracketed ROW VECTOR — `[m\ \ n]`, `[x\; y\; z]`. The bracket must not be a
+ * `\[` / `\]` display-math delimiter, and the separator must be a single
+ * backslash macro, never the `\\` that ends a matrix row.
+ */
+const LITERAL_ROW_MATRIX_RE =
+  /(?<!\\)\[([^[\]]*?(?<!\\)\\(?: |;|quad|qquad)[^[\]]*?)(?<!\\)\]/g;
+
+/** Vector entries mean the bracket is a scalar triple product, not a row matrix. */
+const VECTOR_ENTRY_RE = /\\vec|\\overrightarrow/;
+
+function hasLiteralRowMatrix(value: string): boolean {
+  LITERAL_ROW_MATRIX_RE.lastIndex = 0;
+  for (const [, entries] of value.matchAll(LITERAL_ROW_MATRIX_RE)) {
+    if (!VECTOR_ENTRY_RE.test(entries)) return true;
+  }
+  return false;
+}
+
+export function mixedMatrixDelimiters(
+  fields: readonly (string | null | undefined)[]
+): boolean {
+  const body = fields.filter((f): f is string => Boolean(f)).join("\n");
+  if (body === "") return false;
+
+  const aboutCombinations = COMBINATION_RE.test(body);
+  const styles = new Set<"paren" | "bracket">();
+
+  MATRIX_ENV_RE.lastIndex = 0;
+  for (const [, kind, cells] of body.matchAll(MATRIX_ENV_RE)) {
+    // Guard 1 — a single-column environment in a combinations question is nCk.
+    if (aboutCombinations && !cells.includes("&")) continue;
+    styles.add(kind === "p" ? "paren" : "bracket");
+  }
+
+  // Guard 3 — hunt a literal row vector only OUTSIDE the matrix cells, so a
+  // bracketed ENTRY inside a matrix can't masquerade as one.
+  const outsideCells = body.replace(MATRIX_ENV_RE, " ");
+  if (hasLiteralRowMatrix(outsideCells)) styles.add("bracket");
+
+  return styles.has("paren") && styles.has("bracket");
+}
+
+/** Does this row talk about combinations? Exposed so the repair can reuse guard 1. */
+export function mentionsCombinations(body: string): boolean {
+  return COMBINATION_RE.test(body);
+}
+
+/**
+ * The repair `mixedMatrixDelimiters` reports on: round matrix -> square, the
+ * house style. Carries the SAME combinations exemption as the probe, so a row
+ * flagged for some other reason can never have its nCk turned into a matrix.
+ *
+ * Cells pass through byte-for-byte — only the fence changes. `\begin{matrix}`
+ * (determinants, systems, piecewise) and a literal `[m  n]` are left alone; the
+ * literal already renders square, which is the whole point of converting to it.
+ *
+ * `aboutCombinations` is computed over the WHOLE question by
+ * {@link mentionsCombinations}, not per field, because the sentence that defines
+ * `(n k)` as nCk is usually in the stem while the usage is anywhere.
+ */
+export function toBracketMatrices(value: string, aboutCombinations: boolean): string {
+  MATRIX_ENV_RE.lastIndex = 0;
+  return value.replace(MATRIX_ENV_RE, (whole, kind: string, cells: string) => {
+    if (kind !== "p") return whole;
+    if (aboutCombinations && !cells.includes("&")) return whole;
+    return `\\begin{bmatrix}${cells}\\end{bmatrix}`;
+  });
+}
