@@ -24,6 +24,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { getMockExams } from "@/lib/mocks/mocksNav";
 import { MOCK_TYPES, mockTypeOf, mockTypeHref } from "@/lib/mocks/catalogue";
+import { FORMULA_CHAPTERS, topicsByWeight } from "@/lib/formula";
 import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
 import {
   contentDateFor,
@@ -476,6 +477,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
    * fixed a typo in a code comment.
    */
   const posts = listPosts();
+  // Formula axis — the index plus one page per identity. Static, prerendered
+  // and text-rich, and the only surface on the site addressed by what a
+  // SOLUTION does rather than by taxonomy, so it has no duplicate elsewhere.
+  const formulaEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/formula`,
+      lastModified: buildDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    ...FORMULA_CHAPTERS.flatMap((chapter) =>
+      topicsByWeight(chapter).map((t) => ({
+        url: `${SITE_URL}/formula/${t.slug}`,
+        lastModified: buildDate,
+        // Membership only moves when a chapter is re-tagged by hand, which is
+        // a deliberate, infrequent act — not something to invite a daily crawl.
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      }))
+    ),
+  ];
+
   const blogEntries: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/blog`,
@@ -516,6 +539,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,
     ...mockUrlEntries,
+    ...formulaEntries,
     ...blogEntries,
     {
       // Teacher-access lead page — a real acquisition surface for coaching staff.

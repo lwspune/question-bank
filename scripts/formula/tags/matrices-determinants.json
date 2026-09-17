@@ -1,0 +1,2908 @@
+{
+ "chapter": "matrices-determinants",
+ "chapterName": "Matrices & Determinants",
+ "scope": {
+  "exams": [
+   "NDA",
+   "MHT-CET",
+   "CBSE Class 12",
+   "Maharashtra HSC Class 12"
+  ],
+  "visibility": "PUBLIC",
+  "format": "mcq"
+ },
+ "classifiedOn": "2026-09-17",
+ "method": "Every question read individually; tagged with the formulas/properties/techniques its SOLUTION uses. A signature classifier scored against these same labels reached 59.2% precision / 45.0% recall, so this could not be automated.",
+ "questions": 768,
+ "tags": {
+  "0022099b-9399-4c08-ab2d-ae8a377a9c5d": [
+   "hermitian-definition",
+   "transpose-of-product"
+  ],
+  "0029cc8d-ae5a-4070-959f-79d560f7b986": [
+   "homogeneous-nontrivial",
+   "row-sum-zero-determinant"
+  ],
+  "00a723cb-de96-4e0f-a0a7-87d4d49cb8e9": [
+   "transpose-of-product",
+   "symmetric-definition"
+  ],
+  "0183f406-a867-48b4-b9a3-696824227026": [
+   "det-scalar",
+   "det-product"
+  ],
+  "018b0cb6-7902-487c-afda-c697c548ae9b": [
+   "involutory-definition"
+  ],
+  "018d6a2d-bf6f-452c-bc9b-201e3629d94c": [
+   "matrix-zero-divisors",
+   "inverse-definition"
+  ],
+  "01a78b41-c855-4102-bd9e-ec81302d3f7a": [
+   "consistency-from-determinant",
+   "cramers-rule"
+  ],
+  "02adb29f-e764-4688-a0fe-2a53f6ed9ba3": [
+   "row-sum-zero-determinant",
+   "row-column-operations"
+  ],
+  "02ba2b15-036c-4ed2-b574-439b30692034": [
+   "symmetric-definition",
+   "diagonal-definition"
+  ],
+  "02fe2e70-15cd-420e-af23-9b080a3cb2bb": [
+   "cofactor-expansion"
+  ],
+  "038eea36-dff7-4d0f-a8a6-6f53f5c101a8": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "04473168-1f59-494a-b8f8-5d42cc633f16": [
+   "consistency-from-determinant"
+  ],
+  "05470044-6fd3-4320-affc-e38d2d90f350": [
+   "det-adj",
+   "singular-iff-det-zero"
+  ],
+  "05630201-75ea-494a-8f24-f693334484f5": [
+   "cofactor-expansion"
+  ],
+  "056507c5-5602-4cae-9051-5c4ea42d3864": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "05684025-3d3d-4e04-8699-ce677d644acc": [
+   "adjoint-identity",
+   "det-adj"
+  ],
+  "05a8305d-127e-4a8e-a493-d9d1fa389c65": [
+   "counting-matrices"
+  ],
+  "05bdd5df-415f-4e88-afaa-932ba70b7b73": [
+   "reversal-law-inverse",
+   "inverse-via-adjoint",
+   "det-inverse"
+  ],
+  "05d81a65-900a-4116-bbd6-a2de6219c13e": [
+   "counting-matrices"
+  ],
+  "07f23f35-1362-4e09-8f37-119677bf123e": [
+   "det-adj",
+   "det-scalar"
+  ],
+  "0874f62f-0bc7-4faa-9823-dc08d4ea67b1": [
+   "area-of-triangle-determinant"
+  ],
+  "088bd848-7814-49e6-a342-60f5737ec4c4": [
+   "determinant-equation-roots",
+   "cofactor-expansion"
+  ],
+  "0895daf2-587a-4e2d-a319-068010f36c1d": [
+   "inverse-definition"
+  ],
+  "08ba7c6a-e8b6-4dae-9c48-e5721973626d": [
+   "skew-symmetric-definition",
+   "transpose-of-product",
+   "trace-skew-odd-zero"
+  ],
+  "096d1cef-b653-4bac-8dc2-211586ff9a2b": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "0972eae8-9e07-4c8e-b7c3-fa4cc69ad5f4": [
+   "det-power"
+  ],
+  "09791b20-0fc2-4276-b5ab-8e345282dde7": [
+   "adj-adj-a",
+   "det-adj"
+  ],
+  "097e9b0f-fea6-439d-ae70-2ab5ee1594a3": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "0a042b55-2078-4329-9bf9-d1a4cdd37f17": [
+   "order-of-product"
+  ],
+  "0a17310c-0e0e-43b5-88ab-cab30c827f98": [
+   "matrix-powers-pattern"
+  ],
+  "0a9467f3-b103-4fbb-878a-f3eec4d78b37": [
+   "homogeneous-nontrivial",
+   "row-column-operations"
+  ],
+  "0b464bdf-ecab-427b-b86d-e23725d05182": [
+   "det-scalar",
+   "det-inverse",
+   "det-product"
+  ],
+  "0b7032b7-cf0c-4c93-9e56-3192f176e262": [
+   "scalar-matrix-definition"
+  ],
+  "0b8acff9-a318-41c7-9f5d-681639722638": [
+   "row-column-operations",
+   "triangular-determinant"
+  ],
+  "0bb0be25-b6c0-49a3-b217-1500a4fb4587": [
+   "skew-symmetric-definition"
+  ],
+  "0bd7e95c-1272-4dbf-9a48-f06685831cba": [
+   "row-scaling-common-factor"
+  ],
+  "0d866fc3-662f-41ff-a8b4-f6a9089544e8": [
+   "row-column-operations"
+  ],
+  "0e739a8f-d821-4a34-8e28-6a011eeb1584": [
+   "skew-odd-order-det-zero"
+  ],
+  "0f47c901-201d-4e30-9b44-c10e03498c28": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "1011c5fe-8ab8-4bd7-bb2c-63bc04d936be": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "1021bcee-0b3c-4dd6-8a78-29ed577e8431": [
+   "cube-roots-unity",
+   "matrix-powers-pattern"
+  ],
+  "10dfc81e-6d68-4291-9cac-f023ad570412": [
+   "determinant-equation-roots",
+   "cofactor-expansion"
+  ],
+  "1106f212-bb78-4ece-a20a-3890f8f8bf1b": [
+   "matrix-equality"
+  ],
+  "11fbfa11-6053-4d09-b69c-2494b99f0692": [
+   "skew-symmetric-definition"
+  ],
+  "12445ecd-4d68-4347-88e9-0fbc530795c8": [
+   "orthogonal-inverse-transpose"
+  ],
+  "12d160c4-21c1-4b90-a2c7-f4a2c3f8a1bb": [
+   "order-of-product"
+  ],
+  "1320aa34-ccf4-412d-bf4e-cb681cc1d498": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "133c801e-e1b3-4b9e-8c36-aa941f7ad9dd": [
+   "skew-odd-order-det-zero"
+  ],
+  "13717c35-3372-413e-8ce6-0ca5e3502c22": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "13739208-9703-4455-9ef9-d543cbdd3ffc": [
+   "row-column-operations",
+   "row-scaling-common-factor"
+  ],
+  "13bda019-067e-4b67-852a-9a6053214e6f": [
+   "det-2x2"
+  ],
+  "13f8088e-d1db-48a4-8069-0c9c22d94539": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "146ba7e8-fb9c-450f-a7dc-8068cedfa0c7": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "14a95b22-3b4e-4c66-be01-a756c695d06c": [
+   "matrix-polynomial-equation"
+  ],
+  "14da83c5-30ee-400b-b464-7c792afe2ea3": [
+   "transpose-of-product",
+   "skew-symmetric-definition"
+  ],
+  "14e1a832-c1ff-448e-9041-7e45635c32f6": [
+   "transpose-of-product",
+   "transpose-rules"
+  ],
+  "150a591e-d34c-49fb-8fc8-db40d91f74be": [
+   "matrix-powers-pattern"
+  ],
+  "152a9ef3-80a4-40a6-8052-db3c6457156b": [
+   "det-adj",
+   "det-scalar"
+  ],
+  "153763af-22b8-41e2-a384-1894e436129c": [
+   "inverse-via-adjoint"
+  ],
+  "15bb92f9-93ba-4b8b-a732-f2f63d3a1e05": [
+   "skew-symmetric-definition",
+   "symmetric-skew-decomposition"
+  ],
+  "15dfed8b-8d87-4c32-82e8-40e59ff10328": [
+   "symmetric-skew-decomposition"
+  ],
+  "16012b5c-a698-4e1a-98aa-1eb7b7823140": [
+   "consistency-from-determinant"
+  ],
+  "1631cc2f-bf74-4f5b-a3de-1a9effc4b1ee": [
+   "order-of-product"
+  ],
+  "17468381-6ce0-4b68-903c-014309eb20b6": [
+   "direct-computation"
+  ],
+  "18597fa5-801d-4185-a7d9-dc6788f29ac4": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "18d47fd4-045d-41cc-af91-178632d63c5f": [
+   "singular-iff-det-zero",
+   "cofactor-expansion"
+  ],
+  "18f89674-848b-4bae-903d-a5a7a870544f": [
+   "determinant-equation-roots"
+  ],
+  "19c9e536-e451-4957-a31a-43748f6561bf": [
+   "scalar-matrix-definition",
+   "diagonal-definition"
+  ],
+  "1a3ad549-c690-435f-b841-e66f03f06394": [
+   "order-of-product"
+  ],
+  "1a487337-6938-4b49-8319-0ba3cb9faa93": [
+   "adjoint-definition",
+   "adjoint-identity"
+  ],
+  "1adc1f11-2201-4729-bf61-ee25eab1c401": [
+   "counting-matrices"
+  ],
+  "1aded270-ac61-4410-9871-5174570ddcf4": [
+   "det-power",
+   "det-2x2"
+  ],
+  "1adf2a40-730c-4d87-b7c6-76388b47e9e5": [
+   "symmetric-inverse",
+   "det-adj",
+   "transpose-of-product"
+  ],
+  "1b4bb2f4-2698-46df-8497-aef9fd49268a": [
+   "symmetric-skew-decomposition"
+  ],
+  "1c675451-1b9c-4625-b14d-91eff6b6debe": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "1c765021-28f3-46f7-835b-3992e3d9e65e": [
+   "cofactor-expansion"
+  ],
+  "1c989182-9012-43ec-92d0-c43e2584c5a0": [
+   "direct-computation"
+  ],
+  "1cb6a8fe-86a5-4133-a440-630b9873cebf": [
+   "differentiating-determinant"
+  ],
+  "1d0fccc7-4c14-4b00-8bb5-ef9f0bd60f95": [
+   "counting-matrices",
+   "symmetric-definition"
+  ],
+  "1d443095-7a8e-4650-9a4c-5df399205fe0": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "1da3625a-ca00-4fc9-9dfd-8530a9347b00": [
+   "consistency-from-determinant",
+   "cofactor-expansion"
+  ],
+  "1dc224d6-9f90-43cf-8a1d-e6373c6bbada": [
+   "hermitian-determinant-real"
+  ],
+  "1e3faf3c-2a35-4238-9b24-0a57f69ac2a3": [
+   "matrix-index-rule"
+  ],
+  "1e76ff0d-9c2a-42c2-8dc6-984703d7544b": [
+   "det-transpose"
+  ],
+  "1ea2ed81-8644-41c4-b85e-b5f85cdd8088": [
+   "skew-symmetric-definition",
+   "matrix-powers-pattern",
+   "transpose-of-product"
+  ],
+  "1ec805b3-4e6c-4dd5-b645-e23d04c92052": [
+   "skew-odd-order-det-zero"
+  ],
+  "1f05cc19-9ab6-43af-abdc-11960674dd4c": [
+   "homogeneous-nontrivial"
+  ],
+  "1f144181-e08f-47aa-9329-27b52b43e2ec": [
+   "adjoint-identity",
+   "cofactor-expansion"
+  ],
+  "1fb9ba34-b766-4f83-9704-cf792021a389": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "1fc17414-09a4-4929-82b0-a5cf7250c040": [
+   "adjoint-definition"
+  ],
+  "1fca8400-d1af-4f6b-a218-08a147a872ad": [
+   "det-power",
+   "triangular-determinant"
+  ],
+  "20683e09-66e2-4cda-814d-601bf3ff66a5": [
+   "inverse-definition"
+  ],
+  "20de85b2-739a-48c8-aaa2-caf3c21fb4e4": [
+   "det-transpose",
+   "det-scalar"
+  ],
+  "21054ccd-9ef0-44c3-b1fd-5f5030722493": [
+   "matrix-zero-divisors",
+   "inverse-definition"
+  ],
+  "21209e31-0e48-4d2a-8703-4d6dd3f5d06a": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "213af383-9fbd-4db2-9407-8277a317d508": [
+   "det-power",
+   "triangular-determinant"
+  ],
+  "2163b80f-c490-42ef-864f-cf0f29b11971": [
+   "det-scalar",
+   "det-product"
+  ],
+  "2200ecbe-16a4-4dab-a8ac-b1cf9887f9ea": [
+   "order-of-product"
+  ],
+  "221e8350-71d7-4600-972a-78a6775d559b": [
+   "det-adj"
+  ],
+  "22271da5-dc63-497c-8544-9dbbc49f0fc1": [
+   "det-2x2",
+   "row-swap-sign"
+  ],
+  "2230d5ae-6919-4d97-869e-7ce89212f592": [
+   "det-adj",
+   "det-scalar"
+  ],
+  "22c54a29-aaa4-4718-aa51-4b32c09c0fc5": [
+   "transpose-of-product",
+   "transpose-rules"
+  ],
+  "22c9aebc-f613-427a-a42a-573b51f8da81": [
+   "row-column-operations",
+   "triangular-determinant"
+  ],
+  "2307e68b-f79e-47b9-ba77-d3fd24c5792a": [
+   "reversal-law-inverse"
+  ],
+  "231cfed1-4aad-4c73-942f-bb93ea385176": [
+   "trig-determinant",
+   "identical-rows-zero"
+  ],
+  "2328de1b-485b-45b3-9e66-84dc46403bbc": [
+   "cube-roots-unity",
+   "row-column-operations"
+  ],
+  "238b2532-710a-40d8-8ebc-2f981fd03c78": [
+   "det-adj",
+   "det-inverse"
+  ],
+  "241ccf2a-25a4-4fa0-9e89-18620af45a6f": [
+   "inverse-definition"
+  ],
+  "2430b686-ba65-4249-a598-81e482a14ac5": [
+   "collinearity-determinant"
+  ],
+  "245314a5-04f2-43e9-9e3f-5dbb3b8922a0": [
+   "det-adj",
+   "adj-adj-a",
+   "det-power"
+  ],
+  "246f7eea-d783-49f0-ba33-d831ca13f712": [
+   "consistency-from-determinant"
+  ],
+  "247c4ccd-ed74-4e3d-8885-4ebbbc449dca": [
+   "matrix-equality"
+  ],
+  "24c7e89c-8687-4a3f-ae2e-dd84d520cff7": [
+   "cofactor-expansion"
+  ],
+  "24f96732-a1e5-4224-b65e-29f4f775e016": [
+   "det-product",
+   "det-inverse",
+   "det-2x2"
+  ],
+  "2568fb39-afd2-42a5-8e71-702b307a86da": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "257051d2-d6e9-444b-9593-3aa6591e8460": [
+   "inverse-definition"
+  ],
+  "25b8d6e9-fab2-4985-84cd-99a1b68404f5": [
+   "homogeneous-nontrivial"
+  ],
+  "25f8b55b-bf63-4623-b2be-e91be077f52f": [
+   "det-product",
+   "det-power",
+   "det-2x2"
+  ],
+  "2600e0f2-b730-43fc-8598-1ad29977e679": [
+   "matrix-equation-system"
+  ],
+  "26163d62-9238-43a8-9301-4ba218f230e3": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "26fa6314-6c3a-431c-8a5a-47de4b32cf82": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "274ca62d-8261-4b47-9894-4711669c2c38": [
+   "inverse-via-adjoint",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "275fe2e9-56d2-4628-a10b-44eb3827514e": [
+   "circulant-determinant"
+  ],
+  "279a0f18-bb7f-449f-a1e7-1341fb19eb17": [
+   "row-column-operations"
+  ],
+  "282e712a-2ed0-411f-b144-822f991bba45": [
+   "skew-symmetric-definition"
+  ],
+  "28aaa508-de01-4602-bf85-8d07c6cf6de9": [
+   "matrix-powers-pattern",
+   "inverse-via-adjoint"
+  ],
+  "291713d9-fc99-490a-a7ff-5f6246b49b8e": [
+   "det-adj",
+   "adj-adj-a"
+  ],
+  "2951795a-b668-4826-951b-b440f18d8390": [
+   "matrix-polynomial-equation"
+  ],
+  "2a1f76ca-7296-4be1-b02a-d4632aa9a43c": [
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "2a48debb-bfa6-4bb8-8223-0e221cdb5a83": [
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "2a680019-6826-4165-a1d4-075f445d5094": [
+   "order-of-product"
+  ],
+  "2a8814e6-8f9b-4c59-92ab-eeea8dacb9d5": [
+   "order-of-product",
+   "matrix-commutativity"
+  ],
+  "2b32171e-9f36-4fc4-9abf-14c2ba2514bd": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "2b84ded4-1abc-401c-bff2-fe62ce39bad6": [
+   "scalar-multiple-inverse"
+  ],
+  "2b9434a7-55af-4848-811b-669695981612": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "2bf432bb-cb8d-47b5-bc36-7964f5f37d3c": [
+   "consistency-from-determinant"
+  ],
+  "2bfa3853-7393-4cf2-94a2-ebd6b5edad71": [
+   "homogeneous-nontrivial"
+  ],
+  "2c43e84f-dd64-4f39-ad8e-ac3e25cab1c3": [
+   "det-adj"
+  ],
+  "2c6323ac-2cb7-4f91-a838-6593b1aebd32": [
+   "adjoint-identity"
+  ],
+  "2c7f07b1-4d1d-4af8-a9c0-40268845f60a": [
+   "adj-of-product",
+   "adjoint-identity"
+  ],
+  "2cf9a766-00fa-4010-9cb6-c32091ed41a8": [
+   "matrix-powers-pattern"
+  ],
+  "2d507f45-0c66-4d7a-9df7-6ec511d9e1f6": [
+   "homogeneous-nontrivial"
+  ],
+  "2dd35730-c88e-453c-82f2-f18e9e3bc414": [
+   "matrix-commutativity",
+   "matrix-addition-scalar"
+  ],
+  "2de0f829-fe84-46f4-ba53-ba8d93a382e9": [
+   "homogeneous-nontrivial"
+  ],
+  "2de66a37-eb0b-4bd1-a720-6522316ac13a": [
+   "symmetric-definition"
+  ],
+  "2e0699c0-0a95-431e-80e1-7eb359668bc0": [
+   "nilpotent-matrix",
+   "matrix-powers-pattern"
+  ],
+  "2e7bfe71-4a73-45ff-884b-94ced4ec18fa": [
+   "consistency-from-determinant"
+  ],
+  "2eb21bda-14f4-42cc-ba0e-406bd68c161f": [
+   "transpose-of-product",
+   "skew-symmetric-definition"
+  ],
+  "2f4e8b94-7242-4746-9f41-250e18371785": [
+   "cofactor-expansion"
+  ],
+  "2f866e4e-be1d-46dc-b55a-765d9dd9ddd6": [
+   "symmetric-definition",
+   "diagonal-definition"
+  ],
+  "2fecfe85-5ac4-4851-a32d-6768ea0084f4": [
+   "row-column-operations"
+  ],
+  "300cdb2c-71a6-4815-9726-2ba829344d78": [
+   "cofactor-expansion"
+  ],
+  "300e04eb-4678-4f21-8e98-b3a37176c957": [
+   "circulant-determinant",
+   "cofactor-expansion"
+  ],
+  "30aa2004-d931-48ba-bb8d-25c841abec3b": [
+   "det-adj",
+   "adj-adj-a"
+  ],
+  "30cec473-83b6-49a4-bd0c-2715c70d68e1": [
+   "transpose-order",
+   "order-of-product"
+  ],
+  "30ec72c3-feeb-40e1-bba2-8f83b589eb96": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "30ee69ff-2476-4611-b25f-6488ed75c083": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "31e3dfa9-5860-41ea-a00e-b4004f66737d": [
+   "skew-odd-order-det-zero",
+   "singular-iff-det-zero"
+  ],
+  "31f076a7-9082-452c-bb63-e41458f44d03": [
+   "det-2x2",
+   "trig-determinant"
+  ],
+  "31fb517b-8e1e-45b7-ba5b-6d478f7cedb6": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "329403c2-3a7a-48f6-a738-b6223003eb0b": [
+   "inverse-via-adjoint",
+   "det-inverse",
+   "det-2x2"
+  ],
+  "330725d3-30be-4b53-bf8f-7f47d109a7cb": [
+   "row-scaling-common-factor",
+   "row-column-operations"
+  ],
+  "33597e5e-e620-4bf4-8a4a-935509105f94": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "matrix-polynomial-equation"
+  ],
+  "33eb6017-e5ed-45ec-a8c6-1f78aa406c14": [
+   "adjoint-definition"
+  ],
+  "3403bb54-7798-4c53-ad93-7d75d35137a4": [
+   "matrix-addition-scalar",
+   "matrix-equality"
+  ],
+  "3412e655-8367-4e90-8859-d3b40577d393": [
+   "homogeneous-nontrivial"
+  ],
+  "34196fc0-4ad9-4059-bb45-e7efd5a15a0a": [
+   "row-column-operations",
+   "row-scaling-common-factor"
+  ],
+  "3433e62b-ba03-42b7-8b38-7ac1a9f3002a": [
+   "scalar-matrix-definition",
+   "counting-matrices"
+  ],
+  "34caecb7-c544-4a0b-a9f5-d52723aae91b": [
+   "adjoint-identity"
+  ],
+  "355a1791-36ac-4181-9bb0-5bbf3b1ac7b1": [
+   "matrix-addition-scalar"
+  ],
+  "359330c1-7236-44fa-91c3-dab11df2c910": [
+   "adjoint-definition"
+  ],
+  "36868e28-214b-4d3f-b304-74ff86a39db8": [
+   "det-adj",
+   "det-scalar"
+  ],
+  "3698e538-fe8b-4457-9106-1d6d61bfcbc9": [
+   "matrix-powers-pattern",
+   "inverse-via-adjoint"
+  ],
+  "36fa79a0-11dc-4ff0-ac39-9a686082ab2e": [
+   "idempotent-matrix"
+  ],
+  "378f4bf3-e68f-444f-8cc2-672b493bfbf3": [
+   "scalar-matrix-definition",
+   "matrix-powers-pattern"
+  ],
+  "3796cf52-a307-4924-84fa-e4c6dab6bbb8": [
+   "order-of-product",
+   "direct-computation"
+  ],
+  "38a10232-c05d-4850-bb67-94d14ead45ea": [
+   "inverse-via-adjoint",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "3901fbca-908f-4b5a-978b-8fb515accd1a": [
+   "singular-iff-det-zero",
+   "cofactor-expansion"
+  ],
+  "393a8844-7096-4337-8188-2bce79a315f7": [
+   "det-transpose",
+   "row-swap-sign"
+  ],
+  "3a7d2b05-1eba-4247-9702-395743de1643": [
+   "det-scalar"
+  ],
+  "3a9929fe-eab5-4323-ab18-0c7d90ca686c": [
+   "cofactor-expansion"
+  ],
+  "3a992c0a-db5b-4c41-a8ae-d95138ec4619": [
+   "det-inverse"
+  ],
+  "3a9fb28d-ef41-486b-bdd5-908fba172d92": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "3abe1591-6744-44ab-86e4-72a8c32f6a75": [
+   "order-of-product"
+  ],
+  "3b9caf60-6d06-4248-b9b8-e266f6015c57": [
+   "inverse-via-adjoint",
+   "matrix-polynomial-equation",
+   "det-2x2"
+  ],
+  "3bcc15b0-00ff-498c-944c-b86746150eb1": [
+   "det-2x2",
+   "series-sum-determinant"
+  ],
+  "3bee1af1-977a-4de9-855b-5ac213a0f101": [
+   "alien-cofactor-zero"
+  ],
+  "3c47ff48-3a28-40c9-9da2-abe71987117a": [
+   "matrix-index-rule",
+   "transpose-rules"
+  ],
+  "3c70dab3-5c40-437b-a84f-cb50a59941c9": [
+   "adjoint-identity"
+  ],
+  "3c8f9763-a4a3-4bfa-82d4-65a197145c79": [
+   "consistency-from-determinant"
+  ],
+  "3cff7891-0880-4a4f-ad6d-f0de6cb66cad": [
+   "det-scalar"
+  ],
+  "3d81f232-832f-4195-bb7b-bc7b464f48b5": [
+   "matrix-commutativity"
+  ],
+  "3def8024-a681-4ec7-9661-4a7af8167083": [
+   "adjoint-identity",
+   "det-2x2"
+  ],
+  "3e149048-fed0-4553-bffd-00e76f9ac6a6": [
+   "adjoint-identity",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "3e4c9c33-5a29-4a94-b271-2cbe38395a20": [
+   "counting-matrices"
+  ],
+  "3fbc5303-6ddc-449d-af81-ca964e3a4263": [
+   "diagonal-definition",
+   "matrix-powers-pattern"
+  ],
+  "3fe68524-47ff-424b-b331-cc85461e8c36": [
+   "matrix-commutativity"
+  ],
+  "400b3dd6-1b74-45aa-b675-b47c1cda1810": [
+   "cofactor-expansion"
+  ],
+  "400bbbde-8c82-4132-907f-e15491349750": [
+   "skew-symmetric-definition",
+   "transpose-of-product"
+  ],
+  "4075ebf4-feda-4f15-a3f3-8a4b5e9eb9ac": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "40837081-0343-4620-a0fd-7a0a7690e3d5": [
+   "transpose-rules"
+  ],
+  "408adcdd-cbad-4f7c-8bc6-76c18fd8b72f": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "40b82759-cde1-47fb-bb12-e0b580d62449": [
+   "cofactor-expansion"
+  ],
+  "40d67bcc-cc24-4b74-bbc5-c6a0caf0dc1d": [
+   "det-similar",
+   "det-product",
+   "det-inverse"
+  ],
+  "4164d8b8-221c-4869-89db-fe5b0729844b": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "416c3da7-1808-4b41-8b57-c8eafe61aa07": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "41e42dc5-4341-464a-85eb-bb288d1dae20": [
+   "homogeneous-nontrivial"
+  ],
+  "4236b293-058c-449b-95b3-a8a7b2bd16ae": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "429f7ace-c0cc-4842-98a6-bb9648dfa76b": [
+   "row-column-operations",
+   "identical-rows-zero",
+   "trig-determinant"
+  ],
+  "42d331a3-4807-4db3-ba66-67255138fbbb": [
+   "det-2x2"
+  ],
+  "43030ffa-08ad-4d1b-9a8a-ea7fd714c6b0": [
+   "matrix-addition-scalar"
+  ],
+  "43f4d75f-88a3-424b-a58b-537efa860b51": [
+   "adjoint-identity",
+   "adjoint-definition"
+  ],
+  "44f8da6e-f989-49b1-97e4-2c8dbf2d0f11": [
+   "det-adj"
+  ],
+  "45030c00-de6f-444d-9e4b-0b128f56f5a0": [
+   "homogeneous-nontrivial"
+  ],
+  "45857025-57b0-491e-8c91-d9c2fdf71841": [
+   "skew-symmetric-definition"
+  ],
+  "45c5bbd9-05d6-47b4-9112-45d8a7d2b2e1": [
+   "matrix-associativity"
+  ],
+  "45ebd955-d2ac-4f46-bacb-47a3340aec40": [
+   "cofactor-expansion"
+  ],
+  "4632ce56-d89b-41de-8029-5794c6471817": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "4649839b-f365-4c27-a6af-821109287ae0": [
+   "diagonal-definition"
+  ],
+  "46969116-dde6-4cde-b768-7235b7ccb850": [
+   "cube-roots-unity",
+   "matrix-equality"
+  ],
+  "46b5047e-0ee5-4557-9c1e-51f1f8b7fe5a": [
+   "det-power",
+   "det-2x2"
+  ],
+  "46d363d3-1068-4014-a896-58e1fab1f56e": [
+   "matrix-cancellation",
+   "inverse-definition"
+  ],
+  "46d73ab2-cc37-4c10-b073-0d5b8e4b29b6": [
+   "matrix-equation-system",
+   "det-2x2"
+  ],
+  "46ef782f-4e73-4f57-9f07-4c8f24c39f66": [
+   "direct-computation"
+  ],
+  "47774cd0-53a7-4688-8043-7fbdee24dcb5": [
+   "det-2x2",
+   "trig-determinant"
+  ],
+  "4779bebe-df5c-44e8-9c05-16209c9da09c": [
+   "symmetric-definition"
+  ],
+  "47beb5ba-8731-458c-b9fb-3a5b054ad811": [
+   "det-inverse",
+   "det-2x2"
+  ],
+  "486a9fce-2497-49e3-a827-32ccec6085ed": [
+   "inverse-via-adjoint",
+   "adjoint-definition"
+  ],
+  "48ab023a-3364-4c97-a596-1227ff22fc0f": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "48d5c0ec-367a-4095-8987-1467db7a6c93": [
+   "matrix-cancellation",
+   "inverse-definition"
+  ],
+  "48e4160c-be94-4d07-bdd1-1912c37d6eda": [
+   "det-2x2",
+   "series-sum-determinant"
+  ],
+  "49298705-e9c0-48f6-ac2c-f301f8135895": [
+   "area-of-triangle-determinant"
+  ],
+  "49c3bfd7-7ce0-446e-8f58-c3b410357a2a": [
+   "det-product",
+   "det-2x2"
+  ],
+  "4a083598-6d5c-4229-96d4-3ff82fc63e37": [
+   "scalar-matrix-definition"
+  ],
+  "4a0db3aa-dbcf-4bd0-89e6-a8f8f097b630": [
+   "det-power",
+   "det-2x2"
+  ],
+  "4a42d479-94fa-429f-a390-a111d1328846": [
+   "det-inverse",
+   "det-product"
+  ],
+  "4a674ede-b5b9-41a9-969e-5c0c532099e2": [
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "4a712f00-49e7-4f17-b3c1-7adc149217fb": [
+   "row-column-operations",
+   "identical-rows-zero",
+   "trig-determinant"
+  ],
+  "4ab49708-f92a-49e1-afd2-e938c155c09d": [
+   "inverse-definition"
+  ],
+  "4ab8c95c-ff87-40b2-81cd-c453d944f62a": [
+   "involutory-definition",
+   "singular-iff-det-zero"
+  ],
+  "4be1d250-8c9a-4fdc-831b-fb79c9c8bea2": [
+   "consistency-from-determinant",
+   "identical-rows-zero"
+  ],
+  "4c324754-32b1-4a93-b0fb-512b21940e6a": [
+   "det-2x2",
+   "trig-determinant"
+  ],
+  "4d9f797d-e538-45b6-81ee-2b0cad919247": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "4e10beb1-7323-4688-bcfe-82b5df998da2": [
+   "matrix-order-definition"
+  ],
+  "4e1a928e-c2ae-4d9b-971c-9d12459428a4": [
+   "adj-adj-a",
+   "det-adj"
+  ],
+  "4ed90870-90f2-4fb1-a2f1-03c511019a06": [
+   "matrix-powers-pattern"
+  ],
+  "4ee04957-fa53-439d-90cc-024f32b1dee1": [
+   "determinant-equation-roots",
+   "cofactor-expansion"
+  ],
+  "4ee6c75a-f4b6-4ec6-8f62-783ed3bcf5a9": [
+   "inverse-via-adjoint",
+   "matrix-powers-pattern"
+  ],
+  "4f064966-309a-4390-993c-df1a529916de": [
+   "adjoint-identity",
+   "det-adj"
+  ],
+  "4fd553bd-4c8d-4944-bd86-267d4fa94ee2": [
+   "consistency-from-determinant"
+  ],
+  "5087a9ea-d043-4a87-a36c-b7dca3ed004a": [
+   "trace-of-matrix"
+  ],
+  "50c06e2b-77d3-4e26-9dce-f36ef0004a08": [
+   "symmetric-skew-decomposition"
+  ],
+  "50f0efab-cd71-4cda-9d12-8ba14c8373a2": [
+   "cofactor-expansion",
+   "series-sum-determinant"
+  ],
+  "51259926-e0f1-4d40-a17e-5f84287100d5": [
+   "idempotent-matrix",
+   "diagonal-definition",
+   "counting-matrices"
+  ],
+  "51893d4a-03e1-4125-8ac5-28b63f815359": [
+   "skew-symmetric-definition",
+   "orthogonal-inverse-transpose"
+  ],
+  "51907651-071c-428f-b7bc-395bf300c809": [
+   "inverse-of-diagonal"
+  ],
+  "51acfce5-c973-4a28-9cd4-d98594806782": [
+   "adjoint-definition",
+   "singular-iff-det-zero"
+  ],
+  "52407c0a-fc7a-44fa-bc74-3630b360364c": [
+   "factor-theorem-determinant",
+   "identical-rows-zero"
+  ],
+  "529f7813-2914-4bba-9e99-4541c5ef0628": [
+   "transpose-of-product"
+  ],
+  "531c0649-73ce-49a7-b543-2c7f3f7d76c9": [
+   "det-product",
+   "det-scalar"
+  ],
+  "53ca8f15-3537-4d69-a67f-3730ea566041": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "53d5a9f9-2b2b-4daf-bb39-9af2c5542c8c": [
+   "determinant-definition"
+  ],
+  "54339ff5-2a90-4bf4-b8ec-f7f44904a947": [
+   "adjoint-identity",
+   "det-scalar",
+   "cofactor-expansion"
+  ],
+  "553d7f25-3a50-49cc-b770-5f0efb01c252": [
+   "matrix-index-rule"
+  ],
+  "555a6c2b-60ed-4c74-a092-03844a1045ca": [
+   "adj-adj-a",
+   "inverse-via-adjoint"
+  ],
+  "55ab0038-2376-4daf-8efc-a5fb9aa2ee76": [
+   "matrix-powers-pattern"
+  ],
+  "55d4cb17-3e78-4c83-a87d-022e56e7be45": [
+   "factor-theorem-determinant",
+   "vandermonde-determinant",
+   "row-column-operations"
+  ],
+  "56d185c4-a78d-4dc3-8d42-60d847440923": [
+   "circulant-determinant"
+  ],
+  "572b4b71-e994-4c5a-9319-89fb6490310e": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "573afa44-bfdc-45a5-b6c8-408155d2f80a": [
+   "circulant-determinant"
+  ],
+  "576347d2-c5cb-4fa7-b3a3-4a68b4d81f5a": [
+   "row-swap-sign",
+   "triangular-determinant"
+  ],
+  "57b4c9c5-27c7-417c-aef1-cef3a987bf04": [
+   "row-column-operations",
+   "trig-determinant"
+  ],
+  "582e228e-a778-42ff-bd88-fe3d339a3f73": [
+   "row-scaling-common-factor"
+  ],
+  "5869aab0-7f5f-425f-9dcf-0d75a726295d": [
+   "matrix-equation-system",
+   "direct-computation"
+  ],
+  "5910c924-a8b1-444e-8d79-29790dc15d8b": [
+   "alien-cofactor-zero"
+  ],
+  "592493a4-aea6-4b5c-8a02-b924d619eb69": [
+   "skew-odd-order-det-zero",
+   "cofactor-expansion"
+  ],
+  "593dbeda-cbfa-4008-8f9b-5589cfb57823": [
+   "matrix-order-definition"
+  ],
+  "5963213c-e10b-45d9-8f6a-15ebfc63b381": [
+   "matrix-powers-pattern",
+   "matrix-equality"
+  ],
+  "59ffd2b1-5d43-42b7-abbc-b3d4fa08b7cc": [
+   "matrix-cancellation",
+   "inverse-definition"
+  ],
+  "5a5ecee7-5c1d-4b1d-bc05-489fbe912e64": [
+   "row-scaling-common-factor",
+   "row-column-operations"
+  ],
+  "5a648674-1d5f-400a-b2ab-6c265b136154": [
+   "adjoint-identity",
+   "adjoint-definition"
+  ],
+  "5b100f0f-2364-44ea-b097-1153ebd7c58d": [
+   "symmetric-inverse"
+  ],
+  "5b261a60-1b2c-4d13-bc18-92c3a5f23658": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "5bc4cb4e-fbd2-445b-9345-94d806f49f09": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "5be1d320-760b-4657-a9a7-c59ae01fd0a5": [
+   "matrix-addition-scalar",
+   "order-of-product"
+  ],
+  "5bea0dd2-f074-49ae-b2ed-766578c2d124": [
+   "skew-odd-order-det-zero",
+   "det-power",
+   "det-scalar"
+  ],
+  "5c12d97b-3297-469b-a255-1d5e9ddc8fa5": [
+   "adjoint-definition",
+   "trig-determinant"
+  ],
+  "5c2ab945-9dfe-4b1a-91af-2c255da47658": [
+   "area-of-triangle-determinant"
+  ],
+  "5c302ebb-c0dc-4cc7-bb15-3a12665ed308": [
+   "inverse-of-diagonal"
+  ],
+  "5c62111a-5b45-4b42-a863-121a30157fe8": [
+   "adj-transpose",
+   "idempotent-matrix",
+   "matrix-cancellation"
+  ],
+  "5c8e1674-41b2-4c89-a9b7-543f0708b20f": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "5cfcaaf8-fb68-4f55-b6c4-97f259d6365b": [
+   "inverse-via-adjoint",
+   "orthogonal-inverse-transpose"
+  ],
+  "5d173df9-bf00-4d3c-9bd1-90f7eeb2a65a": [
+   "row-column-operations",
+   "trig-determinant"
+  ],
+  "5d19ec48-56e4-4b59-9bb3-664301c7d12e": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "5d4f689c-0eb4-4d0a-be5e-cfd1283b0a05": [
+   "involutory-definition",
+   "singular-iff-det-zero"
+  ],
+  "5db91f0b-f334-433d-9aa6-74e3c332e672": [
+   "matrix-powers-pattern",
+   "trig-determinant"
+  ],
+  "5dd4f17e-9e43-428a-84ce-92f685cebbff": [
+   "row-column-operations",
+   "determinant-equation-roots"
+  ],
+  "5e82015f-4901-4b0c-bdac-aa287cd364a6": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "5eea1635-212b-48ac-ae1b-a103657bdf0a": [
+   "matrix-commutativity"
+  ],
+  "5f0e244e-b979-4460-8818-9a0c288b3734": [
+   "matrix-addition-scalar"
+  ],
+  "5f577fd2-e1cd-4c81-89fc-fe1f45766dbc": [
+   "area-of-triangle-determinant"
+  ],
+  "5fccb9ff-3128-4446-a1e9-8042df80587d": [
+   "adjoint-identity",
+   "det-adj"
+  ],
+  "603867b0-49eb-475d-9d0a-e28609d98ac7": [
+   "homogeneous-nontrivial",
+   "consistency-from-determinant"
+  ],
+  "606edc1e-7f7d-4601-8c9c-b25c37ef198e": [
+   "adjoint-identity",
+   "det-inverse"
+  ],
+  "60a8f28a-03f7-4d1d-8c54-2f5e9fc56fae": [
+   "orthogonal-inverse-transpose",
+   "singular-iff-det-zero"
+  ],
+  "61305af8-7f94-436f-bb89-ef6b39415e53": [
+   "adjoint-identity"
+  ],
+  "614bbd8f-2134-4a43-97a8-7d46fcd66aff": [
+   "orthogonal-inverse-transpose"
+  ],
+  "61d7a268-0653-40a9-8bbf-10cd33cc3604": [
+   "row-column-operations",
+   "trig-determinant"
+  ],
+  "6238e554-e98a-4a3e-b735-1496a72da7b7": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "63459e0a-49c4-446c-b6ac-e29001ff8b5d": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "64137a99-74c7-4c31-9b36-f1c4f2cce47b": [
+   "det-scalar",
+   "order-of-product"
+  ],
+  "64652e86-38c8-48d8-b9d7-c37cf79b027c": [
+   "det-transpose",
+   "row-swap-sign"
+  ],
+  "64d38f2d-b3bf-497d-bf2d-921d38bf6f88": [
+   "homogeneous-nontrivial"
+  ],
+  "65467409-2a43-40d3-9a96-b836f4be79ef": [
+   "det-adj",
+   "scalar-matrix-definition"
+  ],
+  "654d7e78-8141-4ab8-8e98-1ff568415cb2": [
+   "adjoint-identity",
+   "adjoint-definition"
+  ],
+  "657ff351-860e-4a05-92a3-b4f1d3cf9f25": [
+   "alien-cofactor-zero"
+  ],
+  "66be5b2d-1d73-4dfe-a01b-724f4ee89f1f": [
+   "matrix-equation-system",
+   "matrix-powers-pattern"
+  ],
+  "672ec794-c6e0-4275-b5f5-d646c24269dc": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "673f35ed-a9ef-4161-8630-05d1a1acf6b3": [
+   "det-similar",
+   "det-product",
+   "det-inverse"
+  ],
+  "67952243-2288-42c2-a454-f559527b7468": [
+   "cofactor-expansion"
+  ],
+  "68358611-3ca0-421b-853b-f57ccd1d90ec": [
+   "identical-rows-zero",
+   "det-transpose",
+   "row-swap-sign"
+  ],
+  "690dbfa4-ab61-4af4-819f-6a6e831be37e": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "6a2fa271-52cd-4fe5-a8df-d47ae9b818f6": [
+   "cramers-rule"
+  ],
+  "6a4cd36d-4988-44fe-bfc9-9a0c494d34e9": [
+   "matrix-polynomial-equation"
+  ],
+  "6a61de96-6507-46d6-8025-8c4817b19368": [
+   "matrix-polynomial-equation",
+   "det-2x2"
+  ],
+  "6ac6d285-b829-41d8-ab80-02850d005a28": [
+   "singular-iff-det-zero",
+   "cofactor-expansion"
+  ],
+  "6acf2c72-3ed7-41b8-b1b6-ced8f1a6b593": [
+   "counting-matrices"
+  ],
+  "6b18e96b-41bb-4c67-8761-aba54223ef8d": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "6b28b013-e38f-42a3-b184-9bf040dd0102": [
+   "consistency-from-determinant",
+   "cofactor-expansion"
+  ],
+  "6b358fc0-e5db-4c69-95df-706707c4dd55": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "6b82597b-73f6-4e1c-b9b4-890ed0c2e141": [
+   "row-column-operations",
+   "trig-determinant",
+   "determinant-equation-roots"
+  ],
+  "6bb18865-2ec9-452c-9ee7-22cd2426daf6": [
+   "reversal-law-inverse"
+  ],
+  "6bb689fe-47b6-44cc-bb8c-9a1e4679d7b6": [
+   "inverse-via-adjoint",
+   "adjoint-definition"
+  ],
+  "6bc8d824-be59-4cef-9403-9561b041812f": [
+   "order-of-product",
+   "matrix-addition-scalar"
+  ],
+  "6c58f709-6e91-430c-a128-b1f7c4a9e146": [
+   "matrix-equality"
+  ],
+  "6d330df9-0e69-41bb-a19a-38a2276e0a5b": [
+   "inverse-definition"
+  ],
+  "6d8c7ec3-fcbe-4a4c-95fd-9a7627149201": [
+   "powers-of-i",
+   "cofactor-expansion"
+  ],
+  "6da1d7d6-f0f6-495e-be58-d71137a7a55d": [
+   "det-scalar"
+  ],
+  "6db650c1-b9bc-4e91-a4c6-7ffae043a9da": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "6e1e7baa-0d38-4d19-b9af-5106c9a6bca2": [
+   "order-of-product",
+   "diagonal-definition"
+  ],
+  "6e25cea1-cc1f-4046-9035-142350c003fb": [
+   "matrix-equation-system",
+   "inverse-via-adjoint",
+   "adjoint-identity"
+  ],
+  "6f2cc125-191c-43ab-85fc-249c5cef82f6": [
+   "triangular-determinant",
+   "singular-iff-det-zero"
+  ],
+  "6f687f65-a067-46cb-87d0-e7b5121288fb": [
+   "determinant-equation-roots",
+   "cofactor-expansion"
+  ],
+  "70dedf7f-91bc-4297-8b2c-80f747c39c28": [
+   "series-sum-determinant",
+   "identical-rows-zero"
+  ],
+  "71a04246-88de-4bbf-a092-b18f16be5163": [
+   "adj-adj-a",
+   "det-power",
+   "det-2x2"
+  ],
+  "725df86d-438c-4bac-8858-0c21d636abe5": [
+   "scalar-matrix-definition"
+  ],
+  "72d19c03-6946-4ab1-9ab0-f9261286df41": [
+   "matrix-equality",
+   "matrix-addition-scalar"
+  ],
+  "72d3f708-1b77-4b88-9780-305e0ac54e85": [
+   "matrix-addition-scalar",
+   "direct-computation"
+  ],
+  "7300f785-06f0-4108-8cc7-0bb030df56bb": [
+   "orthogonal-inverse-transpose"
+  ],
+  "731add79-a238-45f4-86a8-2fb83417a5c3": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "74226b18-6086-4d36-ae8f-3727cce48fc9": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "74584171-05eb-4148-8d36-0422160ef076": [
+   "matrix-commutativity",
+   "matrix-associativity"
+  ],
+  "74adb6ea-5da6-4511-9eb0-7fa3f0f8c570": [
+   "det-product",
+   "det-power",
+   "det-2x2"
+  ],
+  "74af873c-5ef8-432d-821f-137cf3a694dd": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "74d9ea87-34e5-49a8-b058-5804984f8f11": [
+   "det-2x2"
+  ],
+  "753a4f97-8e5c-4673-87ae-e4c76a349050": [
+   "det-adj",
+   "det-power"
+  ],
+  "757726f1-680f-4572-ae1b-ec5c96916d4d": [
+   "singular-iff-det-zero",
+   "row-column-operations"
+  ],
+  "75a1b773-c723-4a80-b943-f9b05761aefc": [
+   "row-column-operations",
+   "det-not-additive",
+   "vandermonde-determinant"
+  ],
+  "75baa3f3-ec59-4005-9926-a77247181dbc": [
+   "matrix-order-definition"
+  ],
+  "75ee6031-a446-4285-9279-ef83a30deab2": [
+   "matrix-powers-pattern"
+  ],
+  "75f736d1-7e31-4803-9e51-866e7f3e16c9": [
+   "inverse-via-adjoint",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "76057aea-b983-40ac-9813-f436e8efb3e8": [
+   "adjoint-definition"
+  ],
+  "762e3e4f-de6e-4ee7-aeee-65fb95ac8cd6": [
+   "homogeneous-nontrivial"
+  ],
+  "7681de9e-7e77-4ff0-9183-1b36fa087d02": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "771d677e-1b0f-4f27-ac56-c30f03b13e41": [
+   "consistency-from-determinant",
+   "cramers-rule"
+  ],
+  "7833beac-ced5-4f81-a160-ccac9633124e": [
+   "inverse-of-diagonal"
+  ],
+  "78746c21-0973-46d7-a68b-bc63603e74f7": [
+   "det-2x2"
+  ],
+  "788fe29e-53a3-4435-bb7d-ca1e7f2ecc8f": [
+   "row-column-operations",
+   "cube-roots-unity"
+  ],
+  "78bb5355-14f3-441c-84fc-a9020f1f9f91": [
+   "matrix-equation-system"
+  ],
+  "79266382-6de1-413c-9f65-03bdf402aaed": [
+   "area-of-triangle-determinant"
+  ],
+  "7948178d-14b2-48d2-8641-a551854ac6c0": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "7955035f-c2f4-4ac1-8b20-c776094ed522": [
+   "row-column-operations",
+   "factor-theorem-determinant",
+   "trig-determinant"
+  ],
+  "798dcb3a-1497-4ccb-8101-ce3c071d1cdf": [
+   "order-of-product",
+   "direct-computation"
+  ],
+  "7a36e4ab-d668-4bcc-865d-2f8e90b1f608": [
+   "inverse-definition"
+  ],
+  "7a57cd27-7c01-4559-859d-9702a2cc32ba": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "matrix-polynomial-equation"
+  ],
+  "7a9e38a3-e9d2-443f-8b31-b037c8bc01a6": [
+   "cofactor-expansion"
+  ],
+  "7bbba5d1-2176-4254-a245-bd2e8f591141": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "7be282cc-0f08-4204-b87b-ae216bc7586d": [
+   "matrix-polynomial-equation"
+  ],
+  "7c8addc0-0eec-4112-af46-898119c2488d": [
+   "idempotent-matrix"
+  ],
+  "7c9a4073-fd20-47c9-8c7b-06caad83ffad": [
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "7d948665-1167-49a8-9470-69b6b2436144": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "7d995648-6471-4e58-8915-2ebc24af4cfe": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "7dcd0ba7-3b9c-4b4f-bb80-0c0122bb38f7": [
+   "det-power",
+   "trig-determinant"
+  ],
+  "7dcd3f9b-0fa1-4525-b895-6e2f246704c4": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "7dd60012-e2ea-4065-8200-556c1f892a03": [
+   "cofactor-expansion",
+   "powers-of-i"
+  ],
+  "7f4780f4-0297-4386-bf3a-f03074951e60": [
+   "matrix-polynomial-equation"
+  ],
+  "7f4f58e0-92f0-486f-8b85-04f648095521": [
+   "collinearity-determinant",
+   "area-of-triangle-determinant"
+  ],
+  "7f617a37-dd60-4a33-971d-5ab3931fc0e4": [
+   "skew-symmetric-definition",
+   "direct-computation"
+  ],
+  "7fd052b9-9416-49d5-9d63-8a19b3edbb6a": [
+   "direct-computation",
+   "matrix-equality"
+  ],
+  "7fd8e8d8-7ee5-4ea3-88f6-d62f36a75684": [
+   "det-power",
+   "matrix-polynomial-equation"
+  ],
+  "802741dc-6a43-4f7e-a912-a2601ab71682": [
+   "order-of-product"
+  ],
+  "80453951-2499-4e8f-94e3-97e75695feca": [
+   "det-adj"
+  ],
+  "80b40318-9cc1-4e85-ae4d-fdea30b1415a": [
+   "cube-roots-unity",
+   "singular-iff-det-zero",
+   "counting-matrices"
+  ],
+  "80bacd9c-8e73-4d6c-887b-583536eb1739": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "81019d6e-c49f-4e90-95ee-fb55aca495cf": [
+   "identical-rows-zero",
+   "cofactor-expansion"
+  ],
+  "8127add6-e2db-4b6c-9a4e-8b11a24b76b9": [
+   "consistency-from-determinant"
+  ],
+  "816d25ba-ce33-44cd-bdf1-c6e8df98b243": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "81700b59-cb5e-44ea-b7e2-f608a39dda4c": [
+   "consistency-from-determinant"
+  ],
+  "81bbff14-de8a-421d-b24a-57bc1e7f8cbe": [
+   "row-column-operations",
+   "triangular-determinant"
+  ],
+  "82db3496-dd60-45b1-8906-07068f7734b8": [
+   "cramers-rule"
+  ],
+  "82db7631-ca25-406b-b0f4-d94d1b22f503": [
+   "matrix-polynomial-equation",
+   "idempotent-matrix"
+  ],
+  "82e2f1b7-11a2-4958-a70a-17a0af466e7e": [
+   "adjoint-definition",
+   "cofactor-expansion"
+  ],
+  "8344a914-2362-4ac0-906a-91289ca5d3bd": [
+   "det-2x2"
+  ],
+  "8396be10-6d62-4528-b488-9971192202e0": [
+   "reversal-law-inverse",
+   "transpose-of-product"
+  ],
+  "83c17b0e-d703-4b9f-8fc9-2cb8f26af264": [
+   "idempotent-matrix",
+   "matrix-powers-pattern"
+  ],
+  "83cb7905-a3c2-48c3-be03-3617725ed296": [
+   "det-2x2",
+   "differentiating-determinant"
+  ],
+  "83e89b46-3f53-4575-97ef-d9ebbf834d71": [
+   "adjoint-identity",
+   "adjoint-definition"
+  ],
+  "841e10bb-3ceb-4e76-8491-a2e73db8a720": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "85320b43-b214-474b-9da5-c8e694cdfa84": [
+   "matrix-powers-pattern"
+  ],
+  "855f14ed-76dc-4fa3-8e6b-2478d86230e2": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "85bcfcc1-3ef4-4131-bec3-94a9e3a149fd": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "order-of-product"
+  ],
+  "85d1de51-7c57-4d30-8f3e-c6d2272e19bc": [
+   "cofactor-expansion",
+   "vandermonde-determinant"
+  ],
+  "86057fa2-b5a8-4ca8-b3d4-95071a9a8f79": [
+   "matrix-commutativity"
+  ],
+  "860b2a77-c024-4c0f-a640-3f8fe649c279": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "8619ad71-1091-4948-8eea-393cf2104566": [
+   "adjoint-definition",
+   "matrix-index-rule"
+  ],
+  "865dc680-7ba7-460a-a789-7c9426811abb": [
+   "det-scalar"
+  ],
+  "86c93d68-1b14-4ae3-8e53-cfcd5f857ac3": [
+   "adj-adj-a"
+  ],
+  "86cab74a-c586-4673-906f-6e223a89e6ce": [
+   "inverse-via-adjoint",
+   "adjoint-definition"
+  ],
+  "87243760-4ae1-49fc-adae-c4b57b867aa6": [
+   "inverse-of-diagonal"
+  ],
+  "8771baff-655e-4b90-a4b7-636ccf90745b": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "878a4293-b535-47a1-a4fc-7e5520e8020f": [
+   "transpose-of-product",
+   "symmetric-definition"
+  ],
+  "87967701-a5bf-43ab-a13a-abf6a51b4f2e": [
+   "consistency-from-determinant",
+   "cofactor-expansion"
+  ],
+  "88752733-e70b-49d8-94b2-90ee68a22fdc": [
+   "matrix-powers-pattern",
+   "matrix-equality"
+  ],
+  "89b6fbf8-9b7c-49c5-8c41-1a8ccddea6d6": [
+   "determinant-definition"
+  ],
+  "89f8826f-5fce-484e-8932-839c8d2ee86b": [
+   "order-of-product"
+  ],
+  "8a417b9e-0e16-4303-968c-1694f8e276eb": [
+   "adjoint-identity",
+   "singular-iff-det-zero"
+  ],
+  "8a45f2ae-d78b-4ea0-9218-33aa97980717": [
+   "collinearity-determinant"
+  ],
+  "8aecb317-e977-4a49-a745-e2f4a85c07db": [
+   "orthogonal-inverse-transpose",
+   "inverse-via-adjoint"
+  ],
+  "8b735631-e591-4b0f-8454-042db02f28ce": [
+   "matrix-commutativity",
+   "diagonal-definition"
+  ],
+  "8cd357ac-c743-48f7-af23-39ac832508aa": [
+   "inverse-definition"
+  ],
+  "8d088d49-b498-488a-8390-2f1a1b08888c": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "8d156bd6-f2ea-41dc-b1b1-16f36319e5be": [
+   "order-of-product"
+  ],
+  "8d42f3f4-25e0-4faf-9c28-7a53d5b02bb7": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "8da57d18-992f-4c5e-a539-8adccd9cf85f": [
+   "matrix-powers-pattern"
+  ],
+  "8dc6092c-8ebf-4e72-9d2f-762e4cf29635": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "8dfc60ea-36d3-4fd9-8cc6-2d69fa5bc8d0": [
+   "matrix-equation-system"
+  ],
+  "8e15d8f8-5f6b-422a-b22d-46c4107c3f95": [
+   "symmetric-definition"
+  ],
+  "8e359ca2-8538-4a98-9680-c0d455babb18": [
+   "transpose-rules",
+   "matrix-polynomial-equation"
+  ],
+  "8e591b11-6dc1-4817-bbe2-c9197e52911c": [
+   "det-product"
+  ],
+  "8ec3edbe-f3ed-48f8-8964-88cde03bc6ad": [
+   "idempotent-matrix",
+   "matrix-powers-pattern"
+  ],
+  "8f2b91e4-118b-4505-a0fd-8f0b79710070": [
+   "matrix-commutativity"
+  ],
+  "90a19226-2b4b-4d33-9d36-343eecbc8730": [
+   "counting-matrices"
+  ],
+  "90d4fd5e-0123-4941-8ef1-f9d01ca2cb46": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "90f4bc8f-0c62-44a8-b275-fa0c88349c7e": [
+   "row-column-operations",
+   "trig-determinant",
+   "identical-rows-zero"
+  ],
+  "91e3223c-8f35-4ba5-8716-0b34fc093b79": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "92aee255-9836-4deb-b0a6-b73142fc48f1": [
+   "det-2x2",
+   "trig-determinant"
+  ],
+  "92b45edb-8a87-4ab7-b039-b11407f4061b": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "92c2be36-1840-4630-800b-8e0d1d395848": [
+   "transpose-of-product",
+   "symmetric-definition"
+  ],
+  "9447b137-b496-4ac9-9773-59debb6c9c1c": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "94d8f616-b77f-440a-9b68-cd461d4ecb70": [
+   "cofactor-expansion"
+  ],
+  "95221baa-9db0-47c1-82b6-07e0da24095e": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "953e02fb-ae57-4158-adf4-1430642023eb": [
+   "transpose-of-product",
+   "skew-symmetric-definition"
+  ],
+  "95b81315-2f33-419a-a3df-370bd728e719": [
+   "matrix-equation-system"
+  ],
+  "95f5a37b-6c03-42f5-ac42-41ef1a99754e": [
+   "circulant-determinant",
+   "cube-roots-unity"
+  ],
+  "9605a2a0-c4a9-4a28-b0c9-2f7f0f6725c7": [
+   "adjoint-definition",
+   "cofactor-expansion"
+  ],
+  "9691f2f9-776e-42b2-b283-c5b584d6791d": [
+   "matrix-equality"
+  ],
+  "975bdcf4-929d-4c4d-b882-58cfce038621": [
+   "adjoint-definition",
+   "matrix-polynomial-equation"
+  ],
+  "97a4a93b-dcaa-4ce7-8266-1f97daa19aac": [
+   "unclassified-no-solution"
+  ],
+  "97fe6472-6060-495c-b706-33fadf3155b5": [
+   "order-of-product"
+  ],
+  "9818d24a-07dc-41aa-a28b-9342d8c22dac": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "983e11f2-5de5-4b87-9369-f602b9deb442": [
+   "consistency-from-determinant"
+  ],
+  "987fb3ce-454e-43e3-9c72-279781aa9b02": [
+   "matrix-commutativity",
+   "matrix-zero-divisors"
+  ],
+  "98cce7f9-27d5-4115-89fd-8cf949faf698": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "99395e22-fca0-40c3-8eb2-5cb8e1bfa937": [
+   "orthogonal-inverse-transpose",
+   "involutory-definition",
+   "symmetric-definition"
+  ],
+  "9944ccb0-a974-4b67-ab43-956b175f70bc": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "9a918edc-4d65-48a8-9a2c-66869ef2c7bc": [
+   "homogeneous-nontrivial"
+  ],
+  "9ad7b42d-d693-4a0b-beb5-f459c12236cf": [
+   "orthogonal-inverse-transpose",
+   "trig-determinant"
+  ],
+  "9ae33a0b-caab-4d87-9f53-9d79df24cc0d": [
+   "det-inverse",
+   "det-2x2"
+  ],
+  "9aee5e94-5ead-4b2b-8b76-fd1f2cffd112": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "9b05fc8e-6e10-4d0c-be54-a33434549335": [
+   "nilpotent-matrix",
+   "matrix-powers-pattern"
+  ],
+  "9ba2794a-d1a6-44e2-8f6f-9e8748dd308f": [
+   "identical-rows-zero",
+   "singular-iff-det-zero",
+   "trig-determinant"
+  ],
+  "9bd8c402-779e-4729-a64e-525c295e405b": [
+   "symmetric-definition",
+   "transpose-rules"
+  ],
+  "9c158a5f-18d2-4b25-b70a-3019be6b5d64": [
+   "inverse-definition"
+  ],
+  "9c5f0641-fdda-4206-91a6-b37fcec83a43": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "9c6ac173-1cd6-4da6-8b74-e5494c0d9ebb": [
+   "transpose-rules",
+   "symmetric-definition"
+  ],
+  "9c821861-17f1-42f5-a2fc-b91f1f5d0d26": [
+   "consistency-from-determinant"
+  ],
+  "9cb25813-95d1-4b1f-8df8-fe394e8ba43e": [
+   "skew-odd-order-det-zero"
+  ],
+  "9d3a9f19-b2ab-4489-8ce6-ee5880a1dca7": [
+   "matrix-equation-system",
+   "determinant-equation-roots"
+  ],
+  "9d859036-4827-4493-bbc8-f3e54c602a2e": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "9e65a7eb-ef5c-489b-a0be-646fceb15586": [
+   "cofactor-expansion",
+   "singular-iff-det-zero"
+  ],
+  "9ed2b3ba-0afb-4dd0-ac7d-fc84597e336e": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "9efbcc95-757b-49af-81b0-67a7e03beb4c": [
+   "cofactor-expansion"
+  ],
+  "9f108e52-3784-404f-8aac-cf4d201a1862": [
+   "circulant-determinant",
+   "factor-theorem-determinant"
+  ],
+  "9f2486cc-e4f2-470f-b5a6-eaf173d4552c": [
+   "row-column-operations"
+  ],
+  "9fe11390-d5a8-4b07-9e78-f088497a3fff": [
+   "row-scaling-common-factor",
+   "identical-rows-zero"
+  ],
+  "a013b015-50fa-4fe2-a105-945a272fc3db": [
+   "det-identity-plus-outer-product"
+  ],
+  "a0ec6383-6bac-4a31-9127-ac35bfac8fd1": [
+   "det-adj",
+   "det-scalar",
+   "det-product"
+  ],
+  "a1191d23-f42b-42b7-b562-2ed9d1b59126": [
+   "triangular-determinant"
+  ],
+  "a1bb987a-5fed-4c4b-a256-3e6d0b4c36e0": [
+   "cofactor-expansion",
+   "differentiating-determinant"
+  ],
+  "a1c29a69-9acb-4d8f-bfab-e8e7f93c0f9a": [
+   "matrix-commutativity"
+  ],
+  "a1e25059-1dce-4626-a2f0-2b6672b39030": [
+   "inverse-via-adjoint",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "a1e89116-13db-4630-a74a-783de6805150": [
+   "homogeneous-nontrivial",
+   "consistency-from-determinant"
+  ],
+  "a1e8d08f-56a0-4fd4-86cf-0bfac61463a2": [
+   "triangular-determinant",
+   "det-power"
+  ],
+  "a1eb6ff3-470d-48b9-bc34-63c4380fdc17": [
+   "matrix-equality"
+  ],
+  "a26d5975-8a32-4bc0-a711-0ae7d487cddc": [
+   "homogeneous-nontrivial"
+  ],
+  "a2981af4-b5b2-400c-aa19-955773d51e37": [
+   "cofactor-expansion"
+  ],
+  "a2d86c15-5175-4067-8715-efe9cf8e3c46": [
+   "adjoint-identity",
+   "inverse-via-adjoint"
+  ],
+  "a2e49164-ed39-4b84-a1b6-97990bd99ec1": [
+   "matrix-powers-pattern",
+   "direct-computation"
+  ],
+  "a2e8530c-6b8c-446e-b288-9653992ada1b": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "a359724c-d267-44a3-8190-7bcee19cef92": [
+   "inverse-via-adjoint",
+   "matrix-polynomial-equation",
+   "det-2x2"
+  ],
+  "a382e482-1e9f-452d-9f55-eeac0535111e": [
+   "orthogonal-inverse-transpose"
+  ],
+  "a3dec237-8717-4937-83d7-d510841cdb4a": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "a3e7165a-dc3a-4eb5-85eb-f38a626c9add": [
+   "det-adj",
+   "adjoint-identity"
+  ],
+  "a41014b7-3018-4c43-a955-ed5e5ee3c32d": [
+   "adjoint-definition",
+   "matrix-powers-pattern"
+  ],
+  "a49dfe15-ec25-4cab-a285-2decc5e6b60a": [
+   "matrix-equality"
+  ],
+  "a4a2a239-f9ca-45ed-b080-819c33cf7c5f": [
+   "det-transpose"
+  ],
+  "a4c4ed76-40c4-4cdb-96cf-93b15a6ccd83": [
+   "homogeneous-nontrivial"
+  ],
+  "a4e14438-c7a4-45b9-a8e6-ec0745ce1f8b": [
+   "inverse-definition"
+  ],
+  "a4e6a7f3-5137-401a-b605-9a4726565ff5": [
+   "inverse-definition"
+  ],
+  "a549e189-ada9-4f45-a93d-25ddd3956948": [
+   "det-inverse",
+   "scalar-multiple-inverse",
+   "inverse-definition"
+  ],
+  "a67f37d4-0884-4ca4-a7f9-b140e508a457": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "a6a4a5ac-e32f-49af-8869-2f141c4c64b6": [
+   "scalar-matrix-definition",
+   "diagonal-definition"
+  ],
+  "a702666e-781f-4e87-bad2-272892c992c9": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "a79ab046-7433-4f42-96d5-821b7a6a763f": [
+   "matrix-addition-scalar",
+   "powers-of-i"
+  ],
+  "a7e4db83-9eeb-4c03-82e3-1e6dbeeb6d32": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "a7fc7795-12ec-4e36-a39f-2d81e5647c0b": [
+   "det-similar",
+   "det-product",
+   "det-inverse"
+  ],
+  "a7ffa360-c174-453f-84f1-78bd1501609d": [
+   "matrix-equality"
+  ],
+  "ab0fd366-960a-4468-8935-8b86d37351d6": [
+   "inverse-definition",
+   "direct-computation"
+  ],
+  "ab307fba-0bcd-4dd3-a984-ad2389d9cb2b": [
+   "order-of-product",
+   "transpose-order"
+  ],
+  "aba56d30-4ac9-4628-9b0a-19b8a119922e": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "abad5788-52a8-4b98-bc6b-63f2fb002425": [
+   "inverse-of-diagonal",
+   "involutory-definition"
+  ],
+  "abb95328-d0e8-4769-a7d1-f2b6846064be": [
+   "transpose-of-product",
+   "skew-symmetric-definition"
+  ],
+  "ac65139a-8094-4d1e-9805-60d9beff22af": [
+   "cofactor-expansion"
+  ],
+  "ac98aa9f-674f-43a6-8fac-97a0c12af061": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "acabc0df-43b0-42c6-a31f-deba83cac29a": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "ad1b3a18-8ffe-492e-9755-54144ec47aef": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "ad2e951a-78fc-4d9b-a317-41756b6f0e0d": [
+   "det-scalar"
+  ],
+  "ad714507-fac6-4bc8-a74a-646b74c98c3b": [
+   "det-scalar",
+   "det-product",
+   "det-inverse"
+  ],
+  "ad8efc2a-d2f4-4803-aee1-b83a91a3e6bf": [
+   "homogeneous-nontrivial"
+  ],
+  "add09dd1-53ef-4010-b13b-8676e7421e7b": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "adf61981-83d8-4bf6-944c-367716727c90": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "ae609de3-891c-4333-92b9-c60441fa6580": [
+   "det-adj"
+  ],
+  "ae62adf6-6407-4984-b3f8-8d6cef7242fe": [
+   "matrix-equation-system",
+   "triangular-determinant"
+  ],
+  "ae65c967-ca79-4ce4-b69a-51db43bf7132": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "ae8e4b50-9e4e-4bf1-8c76-17dbb48e2334": [
+   "matrix-powers-pattern",
+   "trig-determinant"
+  ],
+  "aec7ab59-a716-43d2-9b8b-3b0366895500": [
+   "reversal-law-inverse"
+  ],
+  "aeea74a0-2945-4a7b-be62-a2694fc83ff3": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "af0a13b0-32ee-46af-a83e-96cfc4c2605b": [
+   "homogeneous-nontrivial"
+  ],
+  "af2d4bb9-8760-4686-90ea-3bd81d8ed945": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "afab4976-a361-48e1-8eb8-d7de301cee86": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "afe4d03c-011e-4568-9c6b-8e93bb794c71": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "b030202b-f60b-46d8-b0a4-d6dd23e10ceb": [
+   "row-column-operations",
+   "cube-roots-unity"
+  ],
+  "b04963c7-1268-44f7-afdb-1e4815731064": [
+   "det-adj"
+  ],
+  "b12325f9-8705-40ab-b7e8-0b737d2fd9e5": [
+   "symmetric-definition"
+  ],
+  "b18f5323-9eb4-4f31-897e-9465e7272e54": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "b19da535-a214-4887-9b16-03c8fd9b1605": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "b1b295e4-a542-481d-a571-866d004d6e22": [
+   "diagonal-definition",
+   "triangular-determinant"
+  ],
+  "b22a925b-d5ac-487f-92c2-a625bdd40274": [
+   "det-product",
+   "det-transpose"
+  ],
+  "b26c7c4b-23a2-4aad-8733-02a32fbcbe39": [
+   "transpose-of-product",
+   "symmetric-definition"
+  ],
+  "b27c3e1d-b311-487e-a66b-6bb41c7020e4": [
+   "matrix-commutativity"
+  ],
+  "b3662b94-7148-4abf-adda-ee5484d2b2e0": [
+   "cofactor-expansion"
+  ],
+  "b4611b3c-b3ba-4136-8730-752fcae2066f": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "b4d28c47-c1e4-44f5-9596-e1b90b104faa": [
+   "det-scalar",
+   "det-adj",
+   "det-product"
+  ],
+  "b5263820-d8ab-4df7-b364-58e5fa20f8a6": [
+   "homogeneous-nontrivial"
+  ],
+  "b55294ed-551c-4eba-9271-8586df5692a6": [
+   "orthogonal-inverse-transpose"
+  ],
+  "b58805cb-fbf5-41c6-b647-e4301c6abf05": [
+   "transpose-rules",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "b59313e2-f5ed-4eb8-a835-83a0f237aa0c": [
+   "cofactor-expansion"
+  ],
+  "b5995584-483e-4183-90f6-11e626003b98": [
+   "cofactor-expansion"
+  ],
+  "b626e7a3-7d20-4c67-92ef-43fcee6fd2de": [
+   "matrix-powers-pattern"
+  ],
+  "b6aed125-650e-41fb-b448-027276213eea": [
+   "orthogonal-inverse-transpose",
+   "trig-determinant"
+  ],
+  "b6bd6a4c-7550-4c90-985f-b87178736011": [
+   "singular-iff-det-zero",
+   "matrix-powers-pattern"
+  ],
+  "b7de3180-a9e5-44fc-b6eb-65cc5ea714ed": [
+   "adjoint-identity"
+  ],
+  "b8a5dd31-da57-4b1a-8b04-4dee61331b2e": [
+   "order-of-product"
+  ],
+  "b8a79ec7-25e6-4a54-8cef-cb29dc2a6901": [
+   "order-of-product"
+  ],
+  "b8bb9e13-a259-4131-a30d-86617ba5a268": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "b8c999ae-2be0-47cf-9adc-06c46dd2474a": [
+   "det-adj",
+   "det-scalar"
+  ],
+  "b8ee0b10-1987-40a3-931f-6240acb001fc": [
+   "transpose-rules",
+   "skew-symmetric-definition"
+  ],
+  "b9e8e08d-5a39-491a-bf44-2d36a248107b": [
+   "matrix-index-rule",
+   "transpose-rules"
+  ],
+  "b9fdb0dd-0715-4e44-8918-2f556c3f81a2": [
+   "skew-symmetric-definition",
+   "transpose-of-product",
+   "skew-odd-order-det-zero",
+   "det-power"
+  ],
+  "ba3d33cc-1b3d-4764-98cd-8d882e916feb": [
+   "singular-iff-det-zero",
+   "cofactor-expansion"
+  ],
+  "ba7ca3be-c948-4542-ad62-eb42657d7f06": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "bb744ca4-bc6e-4993-a213-f2ea1c220c1c": [
+   "circulant-determinant"
+  ],
+  "bb75faa3-aef8-405a-9652-d4c5f975eb9d": [
+   "inverse-via-adjoint",
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "bc1fc1e7-b694-4ed7-aabe-36030db393fe": [
+   "homogeneous-nontrivial"
+  ],
+  "bc4576ac-be51-4277-8dee-710a4ee73b02": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "bc5d4d29-c3b1-4425-98f9-47c72cd345d2": [
+   "diagonal-definition"
+  ],
+  "bd659855-eb90-4ab3-b8a8-069367fa7862": [
+   "cofactor-expansion"
+  ],
+  "bdd164e4-9b0d-43c9-90ae-41764bccff26": [
+   "adjoint-identity",
+   "det-adj"
+  ],
+  "be4748f9-884f-465d-b6c5-ebce81b7f529": [
+   "skew-symmetric-definition",
+   "diagonal-definition",
+   "scalar-matrix-definition"
+  ],
+  "be61f625-1e50-4385-9512-76bcc21ab01e": [
+   "cube-roots-unity",
+   "direct-computation"
+  ],
+  "be827e6a-65bc-42bd-a0e6-d4926e17eabb": [
+   "det-adj",
+   "det-transpose"
+  ],
+  "bea2585e-1e22-42c2-924e-9aeeb84b554f": [
+   "adjoint-identity",
+   "det-scalar"
+  ],
+  "bf00d714-7aa9-4dfd-a16a-22ff156a2f1b": [
+   "matrix-equation-system"
+  ],
+  "bfad01bd-683a-4498-9090-ee7a1cecdc63": [
+   "adjoint-identity",
+   "det-scalar"
+  ],
+  "bfcc2f45-0cdf-4c45-b042-fc89d977c5d0": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "trig-determinant"
+  ],
+  "c0157f2c-f58b-47b0-9632-ca962bf1e294": [
+   "consistency-from-determinant",
+   "cramers-rule"
+  ],
+  "c0398a94-8ff3-43ba-8ac2-85f4ac761442": [
+   "adjoint-identity",
+   "cofactor-expansion"
+  ],
+  "c067b396-dad4-4579-b35b-5336eb2e0a42": [
+   "det-adj",
+   "adj-adj-a"
+  ],
+  "c07b583e-53ac-40b6-8bd1-82e351ffade8": [
+   "order-of-product",
+   "direct-computation"
+  ],
+  "c1356a37-3df4-41e5-8f0c-998aca8e81e2": [
+   "matrix-equation-system"
+  ],
+  "c1becd4d-9636-4d9a-8672-3dbef8d999a3": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "c23fc674-677a-4b9c-8b78-63ac562f6aa7": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "c2a8ccbc-7389-4622-b112-a0f86c247603": [
+   "matrix-commutativity",
+   "matrix-polynomial-equation"
+  ],
+  "c315da99-d2e0-4206-b510-ac66935fe0ff": [
+   "det-adj",
+   "adj-adj-a",
+   "det-power"
+  ],
+  "c3329e83-b93c-4d3e-ab00-12515c69b391": [
+   "transpose-of-product",
+   "skew-symmetric-definition"
+  ],
+  "c3496169-a384-434f-9faf-087cd56740d7": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "c3b7248f-a7c4-423c-a162-f158a5758b5a": [
+   "matrix-equality"
+  ],
+  "c43d218a-bdab-4855-9a7b-a43444923349": [
+   "orthogonal-inverse-transpose",
+   "trig-determinant"
+  ],
+  "c4e80bb6-c842-48f0-b753-36b5ddbedaf2": [
+   "cube-roots-unity",
+   "row-column-operations"
+  ],
+  "c4e975fb-f693-4056-8d1b-6f0fc068f30a": [
+   "inverse-via-adjoint",
+   "matrix-polynomial-equation",
+   "det-2x2"
+  ],
+  "c6262dc2-602c-4436-9deb-21abb87999ff": [
+   "order-of-product",
+   "matrix-addition-scalar"
+  ],
+  "c671868d-11b6-4f98-8dce-6933b8f63393": [
+   "adjoint-definition",
+   "adj-transpose",
+   "det-transpose"
+  ],
+  "c68798f6-9ea8-4b2f-93df-645a20eb538d": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "c6c83930-8c8d-45da-9de3-986b9f43c54b": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "c6d86fc2-31ca-4191-a617-84e37e7e681c": [
+   "matrix-similarity"
+  ],
+  "c6da23a6-7b2e-4bc7-85b4-5b507d2112f0": [
+   "adjoint-identity",
+   "cofactor-expansion"
+  ],
+  "c6f905a5-8f58-4464-b034-13dc9d8d7d42": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "c70c1a22-0d77-44a6-92ec-259f418db4f0": [
+   "det-2x2"
+  ],
+  "c70ca9f9-5b4e-47b5-ae0b-bdd53f818932": [
+   "det-adj",
+   "adj-adj-a",
+   "det-inverse"
+  ],
+  "c7168f6e-853b-4319-81bc-72d8ddc0a196": [
+   "cube-roots-unity",
+   "row-column-operations"
+  ],
+  "c754cc88-2587-435e-bd73-d32cfc8c72a0": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "c772e5d3-3c37-4246-a1a8-6bd4c27f84c1": [
+   "det-scalar",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "c776b497-a27c-488b-91ab-75343d8cd972": [
+   "det-inverse",
+   "det-scalar"
+  ],
+  "c811a055-a12e-4cdb-af95-a5270e7e3b5e": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "matrix-addition-scalar"
+  ],
+  "c82cbb95-7819-4815-99ef-e26c2dbb3890": [
+   "adjoint-identity",
+   "alien-cofactor-zero",
+   "cofactor-expansion"
+  ],
+  "c84667aa-bda3-4608-b502-23c0fa7ebe72": [
+   "row-column-operations",
+   "row-scaling-common-factor"
+  ],
+  "c85fda81-de6a-45e6-8e53-472e12567434": [
+   "diagonal-definition"
+  ],
+  "c8bacb5e-d303-43c0-bcea-1c0c12cc44d4": [
+   "matrix-index-rule",
+   "transpose-rules"
+  ],
+  "c8dcbc21-8da5-406f-8608-9ea2134e8609": [
+   "homogeneous-nontrivial"
+  ],
+  "c904c207-d236-4c93-a34c-47d1fdb7351b": [
+   "adj-adj-a"
+  ],
+  "c9408bac-5e26-4958-8ae3-59a83e6a154b": [
+   "matrix-equation-system"
+  ],
+  "c95e663e-92e8-4d93-b4f5-2038615c38b9": [
+   "symmetric-inverse"
+  ],
+  "ca1654af-7c29-41cf-9912-f1f841e812f1": [
+   "pascals-identity-determinant",
+   "row-column-operations"
+  ],
+  "ca203c5c-eec8-4a55-8aca-dbbaa0089807": [
+   "homogeneous-nontrivial"
+  ],
+  "ca2f29b2-089d-4896-8d77-f83aa10b1093": [
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "ca983083-fa6c-4a8e-ada8-a7353e9cd668": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "cace4c0f-4727-4d22-ac41-42fe80defad3": [
+   "singular-iff-det-zero",
+   "cofactor-expansion"
+  ],
+  "cad0ca16-5e11-4465-ab48-4d6f5098982c": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "caf4ce77-047f-48d2-9484-d301d6f48988": [
+   "matrix-equation-system"
+  ],
+  "cb8adf97-ae0e-4871-8a67-7102ac34af7f": [
+   "order-of-product"
+  ],
+  "cb96362c-a449-43bf-8896-bef877b5f6f2": [
+   "det-scalar",
+   "row-scaling-common-factor"
+  ],
+  "cbf36e49-69a3-4ae2-9404-279d94480485": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "cc1b386f-e263-40c0-b423-1130aa8fdfd9": [
+   "counting-matrices"
+  ],
+  "cc684122-3d2a-4f28-b99d-2b0414cc7306": [
+   "circulant-determinant"
+  ],
+  "cde3b7d9-22a3-4136-a59d-8af0bcdee402": [
+   "adjoint-identity"
+  ],
+  "ceef473e-abab-4e12-993e-c8487b152182": [
+   "adjoint-identity",
+   "cofactor-expansion"
+  ],
+  "cf6bde2a-f1a0-4571-821e-b17ac414ac89": [
+   "consistency-from-determinant"
+  ],
+  "cf74789a-441e-4aa4-9773-48381d39005d": [
+   "consistency-from-determinant",
+   "row-column-operations"
+  ],
+  "cfa904c4-25bd-4c2c-96ba-aa3728b910d6": [
+   "cofactor-expansion",
+   "differentiating-determinant"
+  ],
+  "d17b4aa3-e60f-456e-b44f-26ea629bf16c": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "d1a6b205-3652-4aeb-8748-fe580d3fe1bd": [
+   "matrix-powers-pattern",
+   "trig-determinant",
+   "orthogonal-inverse-transpose"
+  ],
+  "d26a370a-1dc8-48b4-a58e-2f3fc45eccb0": [
+   "transpose-of-product",
+   "transpose-rules"
+  ],
+  "d2c705bc-3b8c-418b-9d9f-4f3843bdda4a": [
+   "collinearity-determinant"
+  ],
+  "d3fe2b20-1060-4d5e-90e0-3c32688e7d41": [
+   "matrix-powers-pattern",
+   "involutory-definition",
+   "inverse-definition"
+  ],
+  "d47bffb1-1795-40b9-b4b7-2812dc49de4f": [
+   "cube-roots-unity",
+   "cofactor-expansion"
+  ],
+  "d4a4b8f6-0bfe-4d45-b461-8c8aa9c8d369": [
+   "pascals-identity-determinant",
+   "row-column-operations"
+  ],
+  "d514e89b-0d55-4605-8b41-227708f16bdc": [
+   "consistency-from-determinant",
+   "identical-rows-zero"
+  ],
+  "d51ceb38-874b-4f29-8cfd-5ee9ed08c37c": [
+   "inverse-definition",
+   "singular-iff-det-zero"
+  ],
+  "d5a510b7-d0b5-44a2-9f0e-e627228e4562": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "d5ab3fce-7d48-494d-9a23-3e88c07212d8": [
+   "orthogonal-inverse-transpose",
+   "adjoint-definition",
+   "inverse-via-adjoint"
+  ],
+  "d6034134-f11c-43ec-9306-f65509310da8": [
+   "symmetric-skew-decomposition"
+  ],
+  "d73c5c15-3d30-4a6e-baac-66f678b919e6": [
+   "adj-adj-a",
+   "det-adj",
+   "inverse-via-adjoint"
+  ],
+  "d78fbee3-cc39-493e-9561-e240db114eb5": [
+   "adjoint-identity"
+  ],
+  "d87094b0-6f86-431b-9d92-55bce6db614e": [
+   "triangular-determinant",
+   "consistency-from-determinant"
+  ],
+  "d8ac1a14-cc9a-443c-bd5a-68a789fd5553": [
+   "matrix-polynomial-equation"
+  ],
+  "d942ea14-431b-45c7-a576-2da4971f4d77": [
+   "adjoint-identity",
+   "adjoint-definition"
+  ],
+  "d97d28b2-afde-4761-ac66-33c417594f94": [
+   "matrix-polynomial-equation",
+   "matrix-powers-pattern"
+  ],
+  "d98c1d85-1cb5-457e-975c-ec5f8520da08": [
+   "skew-odd-order-det-zero",
+   "det-scalar",
+   "det-transpose"
+  ],
+  "d99ef6db-5ff6-47b9-aabc-5b3221ec9bac": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "d9ea7b68-3dc0-4703-a270-50a5374c0e54": [
+   "matrix-powers-pattern",
+   "series-sum-determinant"
+  ],
+  "da6e7457-bccb-4e7a-b157-5099915dffbd": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "dac224d8-2419-455c-87c8-af6bd5339b93": [
+   "vandermonde-determinant",
+   "row-scaling-common-factor"
+  ],
+  "dbaa3dad-80fb-46a6-9914-ed651db507fb": [
+   "singular-iff-det-zero",
+   "inverse-definition"
+  ],
+  "dcf03bc3-8729-4fe1-ade9-3ab5e6e18cbc": [
+   "consistency-from-determinant",
+   "identical-rows-zero"
+  ],
+  "dd61090c-50b2-4370-8b03-2f44a9e21e8f": [
+   "alien-cofactor-zero"
+  ],
+  "de0e9002-1c3f-4165-a5a8-575b68daf59f": [
+   "identical-rows-zero",
+   "matrix-index-rule"
+  ],
+  "de8e47a3-dc40-43e6-84b3-613ffb85bc19": [
+   "diagonal-definition",
+   "matrix-powers-pattern",
+   "symmetric-definition",
+   "singular-iff-det-zero"
+  ],
+  "df4653da-4e01-4e2a-9c38-5a700919f400": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "df5b9336-2f7d-4923-80cb-d14d163b40b5": [
+   "cofactor-expansion"
+  ],
+  "df815944-cc45-49a1-8c0e-ad6a98af4f0b": [
+   "inverse-via-adjoint",
+   "det-2x2",
+   "matrix-polynomial-equation"
+  ],
+  "dfcafd93-52b9-44e2-8eb7-9d1419aba01b": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "e089c490-6837-42c4-8fed-81ed94af6e80": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "e0ac90ab-00be-4d18-88b0-f3eca92faa77": [
+   "matrix-addition-scalar",
+   "matrix-equality"
+  ],
+  "e0d71994-4373-414e-b7cb-96017c23bef6": [
+   "area-of-triangle-determinant",
+   "row-scaling-common-factor"
+  ],
+  "e0ecc94b-1354-4afe-bce4-b85c12669ef7": [
+   "symmetric-skew-decomposition"
+  ],
+  "e19a4f38-8398-489f-9516-3137ba955a76": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "e1b180f5-b3a3-487b-8df4-70b333f8ab2f": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "e1c2965d-7715-4d1c-b8ff-5c49552a9233": [
+   "matrix-powers-pattern",
+   "matrix-equality"
+  ],
+  "e1e047df-58ba-42f7-ae03-22daab459a58": [
+   "transpose-rules",
+   "symmetric-definition"
+  ],
+  "e1e5e944-7378-4038-9c71-6f387ad2b2cc": [
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "e245dbe2-1a81-4952-96ff-fc6b2ed743f7": [
+   "det-scalar",
+   "symmetric-definition",
+   "cofactor-expansion"
+  ],
+  "e261e029-83b2-49b0-8342-a1333cbf4d4f": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "e280cfad-a6cc-4ea2-aac3-b3d0b783bc4d": [
+   "det-scalar",
+   "det-inverse"
+  ],
+  "e2b46883-6965-4ac0-a8de-72dd80458091": [
+   "consistency-from-determinant",
+   "det-2x2"
+  ],
+  "e302401c-2360-412d-a26f-0146724f149e": [
+   "inverse-definition",
+   "direct-computation"
+  ],
+  "e30b9ad9-1bde-451a-b6e6-53bccb2eed07": [
+   "row-swap-sign",
+   "counting-matrices"
+  ],
+  "e31dc2d2-f429-4e0e-b2f0-c57536b3043b": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "e34b60eb-8b8e-4922-b2e8-0e6aff8d7d7f": [
+   "scalar-matrix-definition",
+   "matrix-powers-pattern"
+  ],
+  "e367cd22-0425-4fc3-ace9-d252a08a7841": [
+   "idempotent-matrix",
+   "matrix-polynomial-equation"
+  ],
+  "e380250f-7e68-4315-8de4-ff1a8ec3cdc0": [
+   "row-scaling-common-factor",
+   "det-transpose"
+  ],
+  "e39d86cd-d7b1-40c4-a04f-d0350a6a65ea": [
+   "circulant-determinant"
+  ],
+  "e3c5c7a8-ff64-4208-85a2-d257f77731a4": [
+   "cofactor-expansion"
+  ],
+  "e4afd75e-f793-43ad-ac6e-eacf83055f94": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "e4d6a470-0aeb-4765-a85b-ecdf032e9693": [
+   "row-column-operations",
+   "cofactor-expansion"
+  ],
+  "e4e80043-a249-4461-b15f-b6fc869f8645": [
+   "triangular-determinant",
+   "det-power"
+  ],
+  "e61354ee-cbf4-4e47-bc31-25884bb9fded": [
+   "cofactor-expansion",
+   "factor-theorem-determinant"
+  ],
+  "e62b9fac-21f4-4503-8f6a-9089cc105ad7": [
+   "area-of-triangle-determinant"
+  ],
+  "e6d7fb28-e24a-4359-8475-7cda65aae817": [
+   "scalar-matrix-definition",
+   "cube-roots-unity",
+   "matrix-powers-pattern"
+  ],
+  "e6db6b2c-556b-4bbb-8075-50803acf268f": [
+   "det-scalar",
+   "det-inverse"
+  ],
+  "e708654a-7731-44be-b703-903ee3de77b4": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "skew-odd-order-det-zero",
+   "homogeneous-nontrivial"
+  ],
+  "e78df357-7163-487c-9236-20508a0f85fc": [
+   "transpose-of-product",
+   "idempotent-matrix"
+  ],
+  "e7e2fd7b-375b-4cb3-8b06-7b29c1f6d25d": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "e84f6c31-a4cd-4ae2-8d4d-f85e84c8d9e8": [
+   "det-adj"
+  ],
+  "e8d4819b-3d13-4b0e-8535-aa070944b432": [
+   "symmetric-skew-decomposition",
+   "trig-determinant"
+  ],
+  "ead6a70e-2053-40d5-8285-295be5bc4ad6": [
+   "skew-odd-order-det-zero",
+   "det-scalar",
+   "det-transpose"
+  ],
+  "eb110f19-0ea8-47ba-ba45-09125107cf83": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "eb38223e-652d-4015-9e94-ca7d68a5243f": [
+   "adj-adj-a"
+  ],
+  "eb67ea20-d46c-4d6c-b265-e2e6e2e4c75c": [
+   "area-of-triangle-determinant",
+   "det-transpose"
+  ],
+  "ebb31d64-1f55-4f9f-af17-42c0dcd0573d": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "ebec6e13-bf71-4b7e-a8cb-94f6a77cbbf4": [
+   "matrix-powers-pattern",
+   "trig-determinant"
+  ],
+  "ec118be9-6ff7-41bb-bf5b-7a899ed5e7dc": [
+   "matrix-index-rule",
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "ed013684-08f0-4837-8196-f66ec88516e0": [
+   "triangular-determinant"
+  ],
+  "ed107f9d-106f-49d2-abd4-1e587cd1b54f": [
+   "identical-rows-zero",
+   "trig-determinant"
+  ],
+  "ed22764c-666a-4b81-b0a8-c3bc74369ff3": [
+   "order-of-product"
+  ],
+  "ed385ba6-6083-4b98-96ec-654d49aff90e": [
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "ed7fec48-93a6-4e48-ab0e-f6e42020ec48": [
+   "det-2x2"
+  ],
+  "ee06bf5d-bff5-4252-836f-a08098243c3e": [
+   "row-column-operations",
+   "identical-rows-zero"
+  ],
+  "ee82fdf7-8643-47ad-bdec-5a23bdda14c7": [
+   "det-2x2"
+  ],
+  "eea90d52-404f-4aef-9f7a-3ff7333fa1bb": [
+   "orthogonal-inverse-transpose"
+  ],
+  "eed8f020-f110-4b38-906b-ca1765c8e4ed": [
+   "consistency-from-determinant",
+   "cramers-rule"
+  ],
+  "eedd5820-3498-43d1-8247-ce135397a312": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "eee676a7-bc9c-4087-912c-987f3004003e": [
+   "det-scalar",
+   "det-inverse"
+  ],
+  "f0007e2e-8853-4a7d-8e7d-9bb1cc93f371": [
+   "matrix-polynomial-equation",
+   "inverse-definition"
+  ],
+  "f0012419-c971-4423-a6ae-f93ef458843c": [
+   "matrix-commutativity",
+   "matrix-polynomial-equation"
+  ],
+  "f0402f7a-54e6-4a8a-9ed9-104d7e094bfe": [
+   "row-column-operations"
+  ],
+  "f0526af9-ea25-4be6-a246-10436ba3ea94": [
+   "det-scalar",
+   "det-transpose"
+  ],
+  "f0c1d668-98e8-458f-8c15-e2c25995a922": [
+   "order-of-product"
+  ],
+  "f1a43832-071d-4632-a68d-0accdecdd9df": [
+   "circulant-determinant",
+   "cube-roots-unity",
+   "singular-iff-det-zero"
+  ],
+  "f209d0b1-bbd5-442f-b806-93b2cb54a0ab": [
+   "reversal-law-inverse",
+   "inverse-via-adjoint",
+   "det-2x2"
+  ],
+  "f2570024-13a5-45b6-83e3-1d64a032c753": [
+   "matrix-powers-pattern",
+   "matrix-polynomial-equation"
+  ],
+  "f297c1a4-ee74-4467-b71b-7682a09d8770": [
+   "det-scalar"
+  ],
+  "f388fb8f-07f3-445d-9e8d-07fdaed84468": [
+   "det-inverse",
+   "det-adj"
+  ],
+  "f3cc5cbc-4243-4bb1-95f6-814cc10e9b69": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "f42ec7cb-235e-4ee6-b422-57cb5b8f62a1": [
+   "transpose-rules",
+   "trig-determinant"
+  ],
+  "f44c0b3f-645e-4101-b272-dc471f664bff": [
+   "transpose-of-product",
+   "symmetric-definition",
+   "skew-symmetric-definition"
+  ],
+  "f48af553-823a-4da6-9e7d-ade80d521e3f": [
+   "matrix-polynomial-equation"
+  ],
+  "f499fda2-9951-4ce7-9b13-bf304f90ede0": [
+   "direct-computation",
+   "scalar-matrix-definition"
+  ],
+  "f4b151c6-1a58-437a-a334-6bda01c0f2cd": [
+   "cofactor-expansion"
+  ],
+  "f4c300f0-a449-4502-bdc2-ce386791042e": [
+   "adjoint-identity",
+   "det-adj"
+  ],
+  "f4e3fabd-dd91-4fcf-b812-7608f31df520": [
+   "inverse-via-adjoint",
+   "adjoint-definition"
+  ],
+  "f5a246b7-9030-4c90-915a-c17d141538e0": [
+   "det-2x2"
+  ],
+  "f5f29be7-8b63-461e-86a2-9da84a5cbe42": [
+   "matrix-index-rule",
+   "matrix-powers-pattern",
+   "involutory-definition"
+  ],
+  "f5f7f27f-234e-4ca3-a37b-2c89bf5685ab": [
+   "series-sum-determinant",
+   "identical-rows-zero"
+  ],
+  "f6199119-18ec-469e-a8ab-a884a39801f2": [
+   "cramers-rule"
+  ],
+  "f63ea4ab-65f7-4ef0-b9cf-01c16e163046": [
+   "adjoint-identity",
+   "det-2x2"
+  ],
+  "f707dcb0-b740-4eaa-b5c9-7cd52543dbe4": [
+   "scalar-matrix-definition",
+   "symmetric-definition",
+   "transpose-rules"
+  ],
+  "f74598b3-5d83-4eb2-8e5e-2ef5eadc1388": [
+   "cofactor-expansion",
+   "trig-determinant"
+  ],
+  "f84d159f-3e3e-4764-81fc-2a21482b980d": [
+   "inverse-via-adjoint",
+   "matrix-equation-system"
+  ],
+  "f91d8b05-2896-4c3e-bbf8-31657b8e3315": [
+   "matrix-powers-pattern"
+  ],
+  "f9604c22-4439-432a-a947-98e2e5ab3ad4": [
+   "det-product",
+   "det-transpose",
+   "det-2x2"
+  ],
+  "fa08abbb-e3a4-462c-93b8-c3497ec54b86": [
+   "identical-rows-zero",
+   "row-column-operations"
+  ],
+  "fa2d4d01-1b70-471a-a2dc-3d93581b9a89": [
+   "order-of-product",
+   "matrix-commutativity"
+  ],
+  "fb1f8d6b-e20c-4322-bd58-1b06c91c19f2": [
+   "cofactor-expansion",
+   "determinant-equation-roots"
+  ],
+  "fb4f3c1b-8a90-4c7e-9188-1da7a9277af6": [
+   "inverse-via-adjoint",
+   "matrix-polynomial-equation",
+   "det-2x2"
+  ],
+  "fb66097f-4276-4a11-94fd-b48224f2d802": [
+   "cofactor-expansion"
+  ],
+  "fb897792-2ed6-4157-bec6-9fac9d4fecac": [
+   "det-scalar"
+  ],
+  "fba8d200-f2d7-419c-be34-73dd370ee02e": [
+   "transpose-of-product",
+   "skew-symmetric-definition",
+   "symmetric-definition"
+  ],
+  "fc08aac2-312a-48a6-b915-8645c51d0e5b": [
+   "singular-iff-det-zero",
+   "det-2x2"
+  ],
+  "fc1c626a-2328-415d-9a81-08f36adc478f": [
+   "orthogonal-inverse-transpose",
+   "trig-determinant"
+  ],
+  "fc1d12c9-17e8-462c-8ef5-7ad2b1d73cad": [
+   "inverse-via-adjoint",
+   "adjoint-definition",
+   "det-2x2"
+  ],
+  "fc234260-254d-4986-8da8-4ee79135bf13": [
+   "differentiating-determinant",
+   "identical-rows-zero"
+  ],
+  "fc344fec-e727-4158-bf22-9abb2c80085b": [
+   "vandermonde-determinant",
+   "row-column-operations"
+  ],
+  "fc963c75-2e2a-458c-96e3-fcb080c9da48": [
+   "cofactor-expansion",
+   "alien-cofactor-zero"
+  ],
+  "fd6f1d56-6ab9-46e7-a65c-ad6585068783": [
+   "consistency-from-determinant"
+  ],
+  "fd8cbd59-d15f-450e-927c-792b1186a0e7": [
+   "det-adj"
+  ],
+  "fed9b58d-7222-4cdc-a2a4-3f92d7819fa2": [
+   "det-adj",
+   "cofactor-expansion"
+  ],
+  "ff90c302-2337-4aee-a432-6cccae6692ac": [
+   "cofactor-expansion"
+  ],
+  "fffdd6ea-0da1-4d62-ae00-d3a224d75e10": [
+   "circulant-determinant"
+  ]
+ }
+}

@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Compass,
+  Sigma,
   Sparkles,
 } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -17,6 +18,7 @@ import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
 import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
+import { FORMULA_CHAPTERS } from "@/lib/formula";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import NotesHandoutLink from "./NotesHandoutLink";
 import { printHandoutHref } from "@/lib/notes/printDoc";
@@ -47,6 +49,12 @@ type Props = { chapter: NotesChapterRegistration };
 export default async function NotesChapterLanding({ chapter }: Props) {
   const base = routeBase(chapter);
   const guideHref = `/guide/${chapter.subjectRoute}`;
+  // Chapters whose solutions have been classified by identity get a link to the
+  // formula index. Derived from the registry, so a chapter picks this up the
+  // day its tags land — nothing to remember here.
+  const hasFormulaIndex = FORMULA_CHAPTERS.some(
+    (c) => c.chapterSlug === chapter.chapterSlug
+  );
   const examHomeHref = `/${chapter.examName.toLowerCase()}`;
   const meta = chapter.chapter;
 
@@ -196,6 +204,19 @@ export default async function NotesChapterLanding({ chapter }: Props) {
             aria-hidden
           />
         </Link>
+        {hasFormulaIndex && (
+          <Link
+            href="/formula"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          >
+            <Sigma className="h-3.5 w-3.5" aria-hidden />
+            <span>Questions by formula</span>
+            <ArrowUpRight
+              className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
+          </Link>
+        )}
       </div>
 
       {chapter.tier === "paid" && (

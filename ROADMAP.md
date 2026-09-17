@@ -84,6 +84,20 @@ Currently no concurrency check — two admins editing the same question race the
 
 ---
 
+## Formula axis — next chapters, and the three things deferred at launch
+
+`/formula` shipped 2026-09-17 with **one chapter**: Matrices & Determinants, 40 identities over 707 questions, every one of its 768 MCQs read individually. Pipeline + runbook: `scripts/formula/README.md`.
+
+**Scaling it is a data project, and the honest cost is known.** A signature classifier scored against all 768 hand labels reached **59.2% precision / 45.0% recall**, with 1 of 79 identities clearing a 90%/85% bar (`npm run formula:score` re-runs it). So each chapter costs a full read of its solutions. The one thing that would change that is an **LLM tagging pass** — the reading done by the machinery the grounding and key-audit pipelines already run at scale, with a human-verified sample to measure it against these 768 labels as ground truth. Not built; this is the highest-leverage follow-up by a distance.
+
+**Deferred at launch, in priority order:**
+
+1. **Pagination on dense pages.** `/formula/cofactor-expansion` renders 99 question cards in one ~2.3 MB page. The exam and PYQ/Practice filters take the edge off, but the top few identities need paging before this is comfortable on a phone or worth pushing publicly. `lib/paging.ts` + the `Pager` pattern from `/dashboard/students/[id]/performance` is the precedent.
+2. **A primary-nav tab.** Deliberately NOT added: the nav already carries 7 public tabs, and a "Formulas" tab promises site-wide coverage while one chapter of one subject is live — most visitors would dead-end. Entry points today are the footer, the sitemap (41 URLs) and a "Questions by formula" chip on any `/notes` chapter that has an index, derived from `FORMULA_CHAPTERS` so it appears automatically. Revisit once several chapters across more than one subject are done, which is also when a per-chapter or per-subject index page starts to earn its place over the single flat `/formula`.
+3. **Shareable filtered views.** Filters are client-side and not in the URL, so `NDA + Past-year` cannot be linked. That is a deliberate trade (see the note in `src/lib/formula/filters.ts`) against two documented traps — the prerender bail and the same-route prefetch outage of 2026-09-15. If shareable links are wanted, the safe shape is a separate static route per combination, not a query param on this one.
+
+**Also worth a look when a second chapter lands:** whether the flat global slug namespace holds. `det-2x2` is chapter-agnostic but `cofactor-expansion` may mean something slightly different in a Determinants chapter and a Linear Algebra one, and today a slug is global across all chapters.
+
 ## `/guide` expansion
 
 **Nine guides shipped:** NDA Mathematics (Template A — principles-first), NDA English (Template B — playbooks-first), NDA PART B Physics (Template C — chapter-playbooks + skill-strand + formula compendium), NDA Chemistry (Template B variant — Recall/Rule/Calculate), NDA Biology (Template B variant — Recall/Apply/Verify), NDA Geography (Template B + non-flat %HARD variant), NDA History (Template B + tier-style strands variant — Cornerstone/Foundation Recall/Quick-Win), NDA Polity (Template B + tier-style strands variant 2 with INVERTED third-tier — Cornerstone/Foundation Recall/Specialist Wildcard), NDA Economics (single-page landing — deliberately thinner terminal node; bank too small for a multi-route guide). Template choice flow + per-template editorial shape: CLAUDE.md "Guide structure templates" section. Don't propose forcing one template onto a subject whose bank shape rejects it — see [[english-guide-structure-diverges]]. **NDA Current Affairs is explicitly deferred** (content half-life issue — see CLAUDE.md decisions log 2026-05-19).
