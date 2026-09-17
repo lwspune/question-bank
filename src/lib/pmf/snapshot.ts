@@ -112,7 +112,7 @@ export function viewCohorts(rows: readonly CohortRow[]): CohortView[] {
  * once per QUESTION inside a mock, so listing them beside "Timed mocks" would
  * compare a surface to its own internals.
  */
-const TELEMETRY_KINDS: readonly string[] = [
+export const TELEMETRY_KINDS: readonly string[] = [
   "answer_wrong",
   "answer_correct",
   // mock_started is a LIFECYCLE state of the mock feature, not a second feature.
@@ -130,6 +130,22 @@ export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
   question_bookmarked: "Saved questions",
   quiz_taken: "Daily quiz",
   drill_completed: "Weak-area drills",
+};
+
+/**
+ * Feature keys that are a KIND PLUS A SURFACE, not a bare activity kind.
+ *
+ * get_pmf_snapshot splits `question_practiced` by the surface recorded in
+ * metadata (migration 0107), because revealing an answer on /browse and
+ * revealing one inside a /guide worked example are the same act on two
+ * different products — and a merged row cannot answer whether the guides
+ * contribute to retention, which is the only reason to measure them.
+ *
+ * The bare `question_practiced` key keeps its FEATURE_LABELS entry and means
+ * the bank, which is also what every row written before 2026-09-17 was.
+ */
+export const SURFACE_FEATURE_LABELS: Record<string, string> = {
+  "question_practiced:guide": "Guide worked examples",
 };
 
 export type FeatureRow = {
@@ -160,7 +176,8 @@ export type FeatureView = {
 };
 
 export function viewFeature(row: FeatureRow): FeatureView {
-  const label = FEATURE_LABELS[row.kind as ActivityKind] ?? row.kind;
+  const label =
+    FEATURE_LABELS[row.kind as ActivityKind] ?? SURFACE_FEATURE_LABELS[row.kind] ?? row.kind;
   const base: FeatureView = {
     kind: row.kind,
     label,
@@ -417,11 +434,18 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     lost: "First-touch channel is captured for signups from 2026-09-17 onward. The 330 existing accounts have NULL and are not backfillable — the information was never collected, so 'unknown' must stay its own bucket and never be folded into 'direct'.",
   },
   {
-    surface: "Guides (/guide), blog (/blog)",
+    surface: "Guides (/guide)",
+    via: "user_activity via the reveal beacon (surface='guide')",
+    kinds: ["question_practiced"],
+    tracked: "partial",
+    lost: "Answer reveals inside a worked example are recorded (signed-in only); reading the prose — a playbook, a trap page, a strategy page — is not. Until 2026-09-17 this row claimed guides were a read-only surface that emits nothing, which was never true: the worked-example card has always had the same three-stage reveal as /browse, and the beacon had simply not been wired into it.",
+  },
+  {
+    surface: "Blog (/blog)",
     via: "nothing",
     kinds: [],
     tracked: "none",
-    lost: "Read-only content surfaces emit nothing; their contribution to retention is unmeasurable.",
+    lost: "The one genuinely unmeasurable surface: a post contains no discrete act, so the only available event is 'viewed' — which clears no learning bar and would outnumber every real signal above. Aggregate volume is approximated by Vercel Analytics instead.",
   },
 ];
 

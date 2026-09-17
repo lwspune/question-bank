@@ -1,7 +1,7 @@
 /**
  * POST /api/activity/practice — record that a signed-in student revealed the
  * answer to one or more bank questions (migration 0105, kind
- * `question_practiced`).
+ * `question_practiced`), on the SURFACE that revealed them.
  *
  * WHY THIS ROUTE EXISTS: /browse and the 317 /questions landing pages are the
  * core of the product — 70k of ~72k question rows — and recorded NOTHING when a
@@ -17,6 +17,15 @@
  * SIGNED-IN ONLY — see the 0105 header. An anonymous visitor would need a
  * persistent device identifier for this to mean anything over time, and that is
  * behavioural monitoring of an audience that is largely under 18.
+ *
+ * SURFACE, in metadata (2026-09-17): the same question row can be revealed on
+ * /browse, in the /board reader, or inside a /guide worked example, and those
+ * are different products even though they are the same act. Without this the
+ * PMF readout could not answer "do the guides contribute to retention?" — the
+ * question that exposed the gap. `metadata` is jsonb and `question_practiced`
+ * was already an allowed kind, so this needed no migration; get_pmf_snapshot
+ * coalesces a missing surface to 'bank', which is true of every row written
+ * before today.
  *
  * Responses are deliberately terse (204/400/401): this is fire-and-forget from
  * sendBeacon, where nothing reads the body.
@@ -66,6 +75,9 @@ export async function POST(request: NextRequest) {
     kind: "question_practiced",
     refId: questionId,
     refKind: "question",
+    // Written on EVERY row, including the bank's, so a row is self-describing
+    // rather than meaningful only by the absence of a field.
+    metadata: { surface: parsed.surface },
   }));
 
   // Through the user's JWT: user_activity is own-row insert under RLS, and this

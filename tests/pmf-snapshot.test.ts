@@ -11,6 +11,8 @@ import {
   signalFunnel,
   viewDifficulty,
   SURFACE_COVERAGE,
+  FEATURE_LABELS,
+  TELEMETRY_KINDS,
   MIN_LIFT_N,
   MIN_SEGMENT_N,
   MIN_NPS_RESPONSES,
@@ -122,6 +124,33 @@ describe("viewFeature — adoption and retention lift, with a floor", () => {
     expect(keys).not.toContain("answer_wrong");
     expect(keys).not.toContain("answer_correct");
     expect(keys).toContain("mock_submitted");
+  });
+
+  it("labels the surface-split practice key, rather than printing a raw composite", () => {
+    // get_pmf_snapshot splits question_practiced by reveal surface (migration
+    // 0107), so a feature key can be "question_practiced:guide". Without a label
+    // the page would render the composite key at a reader.
+    const v = viewFeature(feature({ kind: "question_practiced:guide" }));
+    expect(v.label).toBe("Guide worked examples");
+    expect(v.label).not.toContain(":");
+  });
+
+  it("keeps a surface-split key OUT of the telemetry drop — it is a feature", () => {
+    const rows = [feature({ kind: "question_practiced:guide" })];
+    expect(viewFeatures(rows).map((f) => f.kind)).toContain("question_practiced:guide");
+  });
+
+  it("STRUCTURAL: every activity kind is either a labelled feature or declared telemetry", () => {
+    // This is the guard for the defect that prompted the whole change. 0103's
+    // kind list carried a comment claiming it mirrored ACTIVITY_KINDS; when 0105
+    // added question_practiced hours later, nothing noticed, and "Bank practice"
+    // had a label that could never render. A kind must be one or the other, and
+    // adding a kind without deciding which now fails here.
+    for (const kind of ACTIVITY_KINDS) {
+      const decided =
+        FEATURE_LABELS[kind] !== undefined || TELEMETRY_KINDS.includes(kind);
+      expect(decided, `${kind} is neither a labelled feature nor declared telemetry`).toBe(true);
+    }
   });
 
   it("sorts by adoption so dead features fall to the bottom", () => {
@@ -264,6 +293,39 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     expect(bank!.tracked).toBe("partial");
     expect(bank!.kinds).toContain("question_practiced");
     expect(bank!.lost).toMatch(/anon/i);
+  });
+
+  it("marks GUIDES as partial — worked-example reveals land, reading the prose does not", () => {
+    // Until 2026-09-17 this row read "Guides (/guide), blog (/blog) · not tracked
+    // · read-only content surfaces emit nothing". Half of that was wrong:
+    // WorkedExampleCard has always had a three-stage reveal over real bank
+    // questions, structurally identical to the act recorded on /browse and
+    // /board. It was not a read-only surface; the beacon was simply never wired
+    // into it. Guides and blog are therefore separate rows with separate reasons.
+    const guides = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Guides"));
+    expect(guides).toBeDefined();
+    expect(guides!.tracked).toBe("partial");
+    expect(guides!.kinds).toContain("question_practiced");
+    expect(guides!.via).not.toBe("nothing");
+    expect(guides!.lost).toMatch(/prose|reading/i);
+  });
+
+  it("keeps BLOG dark, and for the honest reason — there is no discrete act to record", () => {
+    // The one genuinely unmeasurable surface. A post offers only "viewed", which
+    // clears no learning bar and would outnumber every real signal on the page.
+    const blog = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Blog"));
+    expect(blog).toBeDefined();
+    expect(blog!.tracked).toBe("none");
+    expect(blog!.kinds).toEqual([]);
+    expect(blog!.lost).toMatch(/view/i);
+  });
+
+  it("STRUCTURAL: no row bundles two surfaces, so one can never hide the other's status", () => {
+    // The guide/blog row hid an instrumentation GAP behind a correct statement
+    // about the blog for as long as the two shared a line.
+    for (const s of SURFACE_COVERAGE) {
+      expect(s.surface, s.surface).not.toMatch(/\),\s/);
+    }
   });
 
   it("marks notes as STATE-only — it records that you viewed, never when you viewed before", () => {
