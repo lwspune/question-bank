@@ -2622,6 +2622,63 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Irrational Numbers and Proof by Contradiction",
     ],
   },
+
+  // ── Ch.6 Triangles (10th). 26pp, Examples 1-8 + Ex 6.1 (3 items) / 6.2 (10) /
+  //    6.3 (16). The FIGURE chapter of this book and the second Class-10 ingest,
+  //    picked to prove the two hazards Ch.1 deliberately avoided.
+  //
+  //    1. **FIGURES ARE VECTOR HERE, NOT A SCANNED RASTER.** attach-images.ts's
+  //       header describes the Class-12 Maths case — "a full-page BACKGROUND
+  //       RASTER … no extractable image object". Class 10 is the opposite:
+  //       p22 carries 195 real drawing ops and a genuine text layer, and its two
+  //       raster images are the page background (2480x3508 in 8.5 KB — near
+  //       blank) plus the 1894x1894 watermark. The bbox-crop path still applies
+  //       and snapCrop's ink-bounding works either way; what changes is that
+  //       `get_drawings()` gives exact figure bounds, so an anchor can be
+  //       MEASURED rather than eyeballed off a PNG.
+  //
+  //    2. **ONE CROP PER PRINTED FIGURE — never per sub-part.** Fig 6.34 holds
+  //       six labelled triangle pairs (i)-(vi) under ONE caption, and the stem
+  //       reads "State which pairs of triangles in Fig. 6.34 are similar", so
+  //       the student is meant to see all six. Six sub-crops would be a
+  //       decomposition the book does not make. It is also not derivable:
+  //       between y=0.14 and y=0.59 the page has exactly ONE ink-free horizontal
+  //       band (at y≈0.305), because (iv)'s tall △PQR hangs into the row below
+  //       it — the sub-figures interlock. Same for Fig 6.17, captioned once and
+  //       referenced as "Fig. 6.17, (i) and (ii)".
+  //
+  //    3. **THE KEY IS THE WEAKEST IN THE BOOK, AND TWO OF ITS ENTRIES ARE
+  //       HINTS RATHER THAN ANSWERS** — Ex 6.2 Q9 ("Through O, draw a line
+  //       parallel to DC…") and Ex 6.3 Q14 ("Produce AD to a point E…"). A hint
+  //       constrains the METHOD, not the result, so it cannot close the step-6
+  //       gate. Real answer coverage is therefore Ex 6.1 2 of 3 · Ex 6.2 2 of 10
+  //       · Ex 6.3 3 of 16 = **7 of 29 items (24%)**, not the 31% a naive count
+  //       of key entries gives. The other 22 are "prove that…", whose
+  //       correctness rests on the proof being valid — which no answer key can
+  //       adjudicate. Every claim about this chapter must carry that denominator.
+  //
+  //    Section→page map (0-based): §6.1 Introduction p0 · §6.2 Similar Figures
+  //    p1-5 · EXERCISE 6.1 p5 · §6.3 Similarity of Triangles + Theorems 6.1-6.2
+  //    p6-9 · Examples 1-3 p9-10 · EXERCISE 6.2 p11-12 · §6.4 Criteria +
+  //    Theorems 6.3-6.5 p12-17 · Examples 4-8 p18-20 · EXERCISE 6.3 p21-23 ·
+  //    §6.5 Summary p24.
+  c10Triangles: {
+    id: "c10Triangles",
+    chapterName: "Triangles",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Triangles.pdf",
+    pdf: cls10Maths("06. Triangles.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [5], // Ch-6's whole block (Ex 6.1, 6.2, 6.3) shares ak page 5
+    note: "NCERT (CBSE Class 10) — Triangles (Chapter 6, NCERT Mathematics)",
+    subtopics: [
+      "Similar Figures",
+      "Basic Proportionality Theorem",
+      "Criteria for Similarity of Triangles",
+      "Applications of Similarity",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

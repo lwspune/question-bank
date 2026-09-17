@@ -837,6 +837,21 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "1.3 Revisiting Irrational Numbers", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2 Eg"] },
     { group: "1.3 Revisiting Irrational Numbers", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 Q"] },
   ],
+
+  // ── Ch.6 Triangles (10th). THREE taught sections, each ending in its own
+  //    exercise, and no Miscellaneous block (Class 10 has none anywhere).
+  //    §6.2 carries NO worked examples — Examples 1-3 all sit in §6.3 and
+  //    Examples 4-8 in §6.4, so Exercise 6.1 follows its section's prose
+  //    directly. That asymmetry is why the outline is 5 blocks and not 6.
+  //    Examples band to the exercise they precede: 1-3 → "6.2 Eg.N",
+  //    4-8 → "6.3 Eg.N" (the band prefix names the EXERCISE, not the section).
+  c10Triangles: [
+    { group: "6.2 Similar Figures", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 Q"] },
+    { group: "6.3 Similarity of Triangles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 Eg"] },
+    { group: "6.3 Similarity of Triangles", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
+    { group: "6.4 Criteria for Similarity of Triangles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 Eg"] },
+    { group: "6.4 Criteria for Similarity of Triangles", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
