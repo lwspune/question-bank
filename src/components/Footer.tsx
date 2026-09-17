@@ -121,6 +121,13 @@ export default function Footer() {
             MHT-CET Notes
           </Link>
           <Link
+            href="/formula"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Sigma className="h-3 w-3" aria-hidden />
+            Questions by formula
+          </Link>
+          <Link
             href="/blog"
             className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
           >
