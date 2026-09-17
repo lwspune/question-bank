@@ -114,7 +114,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     id: "inverse-trig-substitution-missed",
     title: "Differentiating an inverse-trig expression raw instead of substituting first",
     bucket: "cornerstone",
-    affects: ["differentiation", "inverse-trigonometric-functions"],
+    affects: ["differentiation", "trigonometric-functions"],
     mechanic:
       "Differentiation is 141 q at 47% HARD and its largest subtopic, Inverse Functions & Inverse Trigonometric Differentiation, is 39 q at 49% HARD. Nearly all of that difficulty is one missed move. When an inverse trig function wraps a rational expression in x — forms like (1-x^2)/(1+x^2) or 2x/(1-x^2) — the expression is asking to be rewritten with a trig substitution before anything is differentiated. Differentiate it raw and you get an answer that is correct, unrecognisable, and matches none of the four options, which then costs you a second pass to discover you were right all along.",
     fix:
@@ -153,17 +153,18 @@ export const TRAP_SHAPES: TrapShape[] = [
       "Underline the quantity actually requested — mean, variance, or standard deviation — before computing anything. For a binomial, write n, p and q down first, then mean = np, variance = npq, standard deviation = the square root of npq. Expectation, Variance and Standard Deviation is the largest subtopic in Probability Distribution at 37 q and only 19% HARD, so getting the selection reflex right is worth real marks for very little study.",
   },
 
-  // -------- Long tail — scope and technique traps --------
   {
-    id: "inverse-trig-taxonomy-split",
-    title: "Inverse trigonometry lives in TWO chapters — drill one and you miss a fifth of it",
-    bucket: "longtail",
-    affects: ["inverse-trigonometric-functions", "trigonometry-ii"],
+    id: "trig-xi-xii-misweighting",
+    title: "Prepping trigonometry from the Std XI chapter names and under-preparing the Std XII one",
+    bucket: "cornerstone",
+    affects: ["trigonometric-functions", "trigonometry-i"],
     mechanic:
-      "This bank files inverse trigonometry in two places. It has its own chapter, Inverse Trigonometric Functions, holding 73 q at 37% HARD. A second block of 21 q sits as a subtopic named Inverse Trigonometry — Identities, Equations, and Principal Values INSIDE Trigonometry - II, at 52% HARD. A student who drills the chapter and calls the topic done has covered roughly four fifths of it, and the fifth they missed is the harder fifth — 52% HARD against 37%. Nothing on a syllabus document exposes this; it is a property of how the questions were classified.",
+      "Trigonometry on this paper is 262 questions across three chapters, and they are not weighted the way their names suggest. Trigonometric Functions — the Std XII chapter — is 168 of them. The two chapters a student recognises from Std XI, Trigonometry - I and Trigonometry - II, are 77 and 17. So the familiar names carry 36% of the trigonometry and the unfamiliar one carries 64%, and the gap is widening: Trigonometric Functions is rising from 3.73 to 4.31 q/paper while Trigonometry - I falls from 1.71 to 1.31.",
     fix:
-      "Treat inverse trigonometry as one topic across two drill links and run both. The split matters in the other direction as well: Trigonometry - II is nominally a triangle-properties chapter (Properties of Triangles, 52 q) but a third of it is inverse trig and half-angle identity work, so revising it as trigonometry alone leaves the same hole.",
+      "Plan trigonometry as one Std XII cornerstone first, then one Std XI identity chapter. Trigonometric Functions is drilled whole — its two halves cost almost the same, 40% and 42% HARD — and it outranks every long-tail chapter on the paper. Trigonometry - I is a single 77-question subtopic and takes an afternoon. Trigonometry - II, at 17 questions and 65% HARD, is the most expensive chapter in the bank per question: read its identity list and move on.",
   },
+
+  // -------- Long tail — scope and technique traps --------
   {
     id: "dead-chapter-dispersion",
     title: "Revising Measures of Dispersion because every practice paper has one",

@@ -854,24 +854,11 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
         notes:
           "Three different patterns — the sine one alternates sign with n, the cosine one takes plus-or-minus, the tangent one neither. Squaring during the solve introduces extraneous roots; substitute back and discard.",
       },
-      {
-        id: "properties-of-triangle-i",
-        name: "Properties of a triangle — area and half-angle",
-        formula:
-          "area Δ = ½·ab·sin C = √(s(s−a)(s−b)(s−c)) = abc/(4R)\ns = (a + b + c)/2     r = Δ/s     R = abc/(4Δ)\ntan(A/2) = √[(s−b)(s−c) / (s(s−a))]",
-        legend: [
-          "a, b, c = side lengths, A, B, C = opposite angles",
-          "s = semi-perimeter, Δ = area",
-          "r = inradius, R = circumradius",
-        ],
-        notes:
-          "Heron's form needs no angle at all — reach for it when only the three sides are given. Shared with Trigonometry - II, which carries the sine and cosine rules for the same triangle.",
-      },
     ],
   },
   {
-    chapter: "Trigonometry - II",
-    playbookSlug: "trigonometry-ii",
+    chapter: "Trigonometric Functions",
+    playbookSlug: "trigonometric-functions",
     formulas: [
       {
         id: "sine-rule",
@@ -903,20 +890,18 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "The fastest route for identities that mix sides and cosines, because it is linear in the sides where the cosine rule is quadratic. This chapter's largest subtopic (52 q) is these three rules together.",
       },
       {
-        id: "inverse-trig-overlap",
-        name: "Inverse trigonometry inside this chapter",
+        id: "properties-of-triangle-i",
+        name: "Properties of a triangle — area and half-angle",
         formula:
-          "sin⁻¹x + cos⁻¹x = π/2     tan⁻¹x + cot⁻¹x = π/2     sec⁻¹x + cosec⁻¹x = π/2",
-        legend: ["Valid on each function's principal domain"],
+          "area Δ = ½·ab·sin C = √(s(s−a)(s−b)(s−c)) = abc/(4R)\ns = (a + b + c)/2     r = Δ/s     R = abc/(4Δ)\ntan(A/2) = √[(s−b)(s−c) / (s(s−a))]",
+        legend: [
+          "a, b, c = side lengths, A, B, C = opposite angles",
+          "s = semi-perimeter, Δ = area",
+          "r = inradius, R = circumradius",
+        ],
         notes:
-          "MEASURED TRAP: inverse trigonometry appears BOTH as its own chapter (73 q) and as a 21-question subtopic inside Trigonometry - II. Drill only one and you miss roughly a fifth of the topic. Full identity list is in the Inverse Trigonometric Functions group.",
+          "Heron's form needs no angle at all — reach for it when only the three sides are given, and it is the bridge from a triangle question to an inradius or circumradius question.",
       },
-    ],
-  },
-  {
-    chapter: "Inverse Trigonometric Functions",
-    playbookSlug: "inverse-trigonometric-functions",
-    formulas: [
       {
         id: "principal-values",
         name: "Principal value branches",

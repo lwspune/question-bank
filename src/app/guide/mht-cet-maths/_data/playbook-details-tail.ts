@@ -82,198 +82,67 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     relatedSlugs: ["differentiation", "indefinite-integration", "trigonometry-i"],
   },
 
-  "trigonometry-ii": {
-    slug: "trigonometry-ii",
-    trigger:
-      "A triangle labelled with sides a, b, c and angles A, B, C — or an inverse-trig expression turning up inside a chapter you were not expecting it in.",
-    story: [
-      "90 q, 2.08/paper, 49% HARD. The chapter is dominated by Properties of Triangles — Sine/Cosine Rules and Projection, 52 of the 90 questions at 42% HARD. That block is both the largest and the least punishing part of the chapter, and it is where preparation should go first.",
-      "The other two subtopics are small and expensive: Inverse Trigonometry sits at 52% HARD across 21 q, and Trigonometric Identities and Compound/Half-Angle Formulas at 65% HARD across 17 q — the second-highest HARD rate of any subtopic in the long tail. With the whole chapter running about two questions a paper, that 17-q corner is the honest place to give a question your best guess and move on.",
-      "The measured taxonomy overlap matters here more than anywhere else on the paper. Inverse trigonometry is filed BOTH as the 21-q subtopic in this chapter and as its own 73-q chapter, so the bank holds 94 inverse-trig questions in two places. Drill only the standalone chapter and you skip 21 of them — and they are the harder 21, at 52% against the standalone chapter's 37%.",
-      "The triangle work is closed and reusable: sine rule, cosine rule, projection formula, and the area forms. Recognition is most of the skill — decide from what you are given (three sides, two sides and the included angle, two angles and a side) which rule opens the question.",
-    ],
-    subSkills: [
-      {
-        name: "Sine rule and circumradius",
-        description:
-          "a / sin A = b / sin B = c / sin C = 2R. The 2R is the half most often dropped, and it is what turns a triangle question into a circumradius question.",
-      },
-      {
-        name: "Cosine rule, both directions",
-        description:
-          "Use it forwards to find a side from two sides and the included angle, and backwards, as cos A = (b^2 + c^2 - a^2) / 2bc, to find an angle from three sides.",
-      },
-      {
-        name: "Projection formula",
-        description:
-          "a = b cos C + c cos B and its two cousins. Cheap to memorise and it collapses a family of 'prove or simplify' questions in one line.",
-      },
-      {
-        name: "Area and half-angle forms",
-        description:
-          "Area = (1/2) ab sin C, Heron's form with the semi-perimeter s, and the relations linking area to the inradius r and circumradius R. These are the bridge between a triangle question and a circle question.",
-      },
-      {
-        name: "Inverse-trig block",
-        description:
-          "Principal-value ranges, the complementary identities, and the sum formulas with their side conditions. Shared verbatim with the Inverse Trigonometric Functions playbook — learn it once, it answers 94 questions across the two chapters.",
-      },
-      {
-        name: "Compound and half-angle identities",
-        description:
-          "sin(A plus or minus B), cos(A plus or minus B), tan(A plus or minus B), and the half-angle and multiple-angle forms. This is the chapter's 65% HARD corner and the last thing to reach.",
-      },
-    ],
-    traps: [
-      {
-        name: "The overlap itself",
-        description:
-          "Treating this chapter as triangles-only. A fifth of its questions are inverse trigonometry, and a study plan built on the chapter name alone walks past them.",
-      },
-      {
-        name: "R instead of 2R",
-        description:
-          "a / sin A equals 2R, not R. The distractor is exactly half or exactly double the correct circumradius.",
-      },
-      {
-        name: "The ambiguous case",
-        description:
-          "Two sides and a non-included angle can determine two different triangles. The option offering a single answer where two are valid — or the one quoting the obtuse solution when only the acute is admissible — is the planted one.",
-      },
-      {
-        name: "Degrees where radians are meant",
-        description:
-          "Principal values in the inverse-trig subtopic are stated in radians. An option set mixing pi/6 with 30 is signalling this trap.",
-      },
-    ],
-    exampleQuestionIds: [],
-    relatedSlugs: ["inverse-trigonometric-functions", "trigonometry-i", "vectors"],
-  },
-
-  "inverse-trigonometric-functions": {
-    slug: "inverse-trigonometric-functions",
-    trigger:
-      "An expression built from arcsin, arccos or arctan — a sum to be collapsed, an equation to be solved, or a principal value to be named.",
-    story: [
-      "73 q in a single subtopic, 2.04/paper, 37% HARD. Being one undivided block means there is nothing to cherry-pick, but it also means the chapter has one syllabus rather than three: identities, equations, principal values and sums, all drawn from the same short closed list. At 37% HARD it is materially cheaper than Limits at 56% or Trigonometry - II at 49%.",
-      "It is one of the few chapters moving in the right direction. Its weightage has RISEN from 1.66 lifetime to 2.04 recent — the opposite of Trigonometry - I, which has fallen from 2.20 to 1.85. A student prioritising from lifetime frequency alone under-invests here and over-invests there.",
-      "Add the overlap and the chapter is bigger than its headline. Trigonometry - II carries a further 21 inverse-trig questions at 52% HARD, so the real target is 94 questions. This chapter is the softer 73 of them; treat the Trigonometry - II subtopic as the hard tail of the same topic rather than as separate material.",
-      "The work is almost entirely about staying inside the principal branch. The algebra is short; the marks are lost by producing a technically valid value that lies outside the allowed range.",
-    ],
-    subSkills: [
-      {
-        name: "Principal-value ranges, cold",
-        description:
-          "arcsin lands in [-pi/2, pi/2], arccos in [0, pi], arctan in (-pi/2, pi/2). Nothing else in this chapter is safe until these three are automatic.",
-      },
-      {
-        name: "Complementary identities",
-        description:
-          "arcsin x + arccos x = pi/2, arctan x + arccot x = pi/2, arcsec x + arccosec x = pi/2. These collapse a whole family of sum questions to a single constant.",
-      },
-      {
-        name: "Sum and difference of arctan",
-        description:
-          "arctan x + arctan y = arctan((x + y)/(1 - xy)), valid only while xy is less than 1. Outside that, add or subtract pi to land back in the principal branch — the side condition is the point of the formula, not a footnote.",
-      },
-      {
-        name: "Converting between inverse functions",
-        description:
-          "Rewriting arcsin as arctan, or arccos as arcsin, using a right triangle drawn from the given ratio. This is what makes a mixed-function expression collapse.",
-      },
-      {
-        name: "Solving inverse-trig equations",
-        description:
-          "Take the appropriate trig function of both sides, solve the resulting algebraic equation, then discard every root whose corresponding value falls outside the principal range. The discard step is the marked one.",
-      },
-    ],
-    traps: [
-      {
-        name: "The arctan sum without its condition",
-        description:
-          "The unadjusted arctan((x + y)/(1 - xy)) is always offered. When xy exceeds 1 the true answer differs from it by pi, and the raw value is the distractor.",
-      },
-      {
-        name: "Range violation",
-        description:
-          "An algebraically correct value outside the principal branch. Both it and the corrected value appear in the option set; only one lies in range.",
-      },
-      {
-        name: "arcsin(sin x) assumed to be x",
-        description:
-          "True only for x in [-pi/2, pi/2]. Outside that range the answer is pi - x or x minus a multiple of 2 pi, and the option reading plain x is the trap.",
-      },
-      {
-        name: "Domain of the argument ignored",
-        description:
-          "arcsin and arccos accept only inputs in [-1, 1]. A question engineered so that a careless substitution produces an argument outside that range is testing whether you checked.",
-      },
-    ],
-    exampleQuestionIds: [],
-    relatedSlugs: ["trigonometry-ii", "trigonometry-i", "differentiation"],
-  },
-
   "trigonometry-i": {
     slug: "trigonometry-i",
     trigger:
-      "An identity to simplify or prove, a general solution of a trigonometric equation, or a compound-angle expansion.",
+      "A compound, allied or multiple-angle identity to simplify, or a trigonometric equation to be solved for a general solution.",
     story: [
-      "99 q lifetime — the largest chapter in the long tail by raw count — but only 1.85/paper on recent shifts. That gap is the story: its weightage has FALLEN from 2.20 to 1.85, the largest decline of any live chapter. Preparing from lifetime frequency over-invests here, and the correction is to hold it at the tail's normal budget rather than treating it as a big chapter.",
-      "37% HARD, and 77 of the 99 questions sit in a single subtopic (Trig Identities, Compound Angle, and Equations) at 36% — a large and comparatively soft block by long-tail standards, where Limits runs 56% and Trigonometry - II 49%.",
-      "The bank files triangle work under two chapter headings: Properties of Triangle here at 22 q, and Properties of Triangles — Sine/Cosine Rules and Projection in Trigonometry - II at 52 q. A drill link to one covers only part of the material, so plan both together.",
-      "Beyond its own marks, this chapter is infrastructure. The identities feed trigonometric limits, the substitution and trigonometric-integral work in Indefinite Integration (159 q, 3.35/paper, 51% HARD), and the polar form in Complex Numbers. Weak identities are felt three chapters away, which is why it stays on the plan even as its own weightage falls.",
+      "77 q in a single subtopic, 1.31/paper, 36% HARD. One undivided block means there is nothing to cherry-pick and nothing to skip: you prepare the chapter or you do not.",
+      "It is one of the few live chapters moving DOWN — 1.71 q/paper across the lifetime window against 1.31 across the 26 shifts of 2024-2025 — while its Std XII neighbour Trigonometric Functions moves the other way, 3.73 to 4.31. A student prioritising from lifetime frequency alone over-invests here and under-invests there. Prepare Trigonometric Functions first.",
+      "The subtopic is genuinely MIXED, and knowing that changes how you drill it: Std XI compound, allied and multiple-angle identity work sits alongside Std XII trigonometric equations and general solutions. The two demand different closing moves — an identity question ends in a simplification, an equation question ends in a general-solution form with an integer parameter — so read the ask before choosing a method.",
+      "At 36% HARD it is one of the softer chapters outside the quick-wins, and the identities it drills are reused inside Indefinite Integration and Definite Integration, which is most of the argument for giving it an afternoon.",
     ],
     subSkills: [
       {
-        name: "The identity toolkit",
+        name: "Allied and compound angles",
         description:
-          "Pythagorean, reciprocal and quotient identities, plus the standard values at 0, 30, 45, 60 and 90 degrees. Everything downstream assumes these are instant.",
-      },
-      {
-        name: "Compound angles",
-        description:
-          "sin(A plus or minus B), cos(A plus or minus B), tan(A plus or minus B). Note that cosine flips the sign: cos(A + B) = cos A cos B - sin A sin B.",
+          "sin(A plus or minus B), cos(A plus or minus B), tan(A plus or minus B), and the allied-angle reductions for pi/2 plus or minus x and pi plus or minus x. Everything else in the chapter is built on these.",
       },
       {
         name: "Multiple and half angles",
         description:
-          "The double-angle forms, the three expressions for cos 2A, the half-angle substitutions, and sum-to-product and product-to-sum conversions. Choosing the right one of the three cos 2A forms is usually what makes an expression collapse.",
+          "Double and triple-angle forms, and the half-angle substitutions. The three expressions for cos 2A are the ones to hold — which you pick decides whether the question is one line or five.",
+      },
+      {
+        name: "Factorisation and defactorisation",
+        description:
+          "Sum-to-product and product-to-sum. A sum of sines or cosines that refuses to simplify is almost always asking for this.",
       },
       {
         name: "General solutions",
         description:
-          "sin x = sin a gives x = n pi + (-1)^n a; cos x = cos a gives x = 2 n pi plus or minus a; tan x = tan a gives x = n pi + a. Learn which family each equation belongs to before solving.",
+          "sin x = sin y gives x = n pi + (-1)^n y; cos x = cos y gives x = 2 n pi plus or minus y; tan x = tan y gives x = n pi + y. Std XII material that lives in this chapter, and the most commonly mis-stated trio on the paper.",
       },
       {
-        name: "Triangle relations",
+        name: "Principal versus general solution",
         description:
-          "Sine, cosine and projection rules, shared with Trigonometry - II. Same content, second home.",
+          "A question asking for the principal solution wants the values in a stated interval, not the parameterised family. Reading which was asked is worth more marks here than any identity.",
       },
     ],
     traps: [
       {
-        name: "Principal solution offered for a general one",
+        name: "The wrong general-solution form",
         description:
-          "The question asks for the general solution and the distractor gives the principal value, or the reverse. Read the demand before solving.",
+          "The sine form carries (-1)^n and the cosine form carries plus-or-minus. Option sets routinely offer the cosine form for a sine equation; they differ only in that one symbol.",
       },
       {
-        name: "Roots lost by dividing",
+        name: "Principal solution returned as general",
         description:
-          "Cancelling a common trigonometric factor discards every root that makes that factor zero. Factorise and set each factor to zero instead — the option with fewer roots is the planted one.",
+          "Both appear in the option set. The parameterised answer to a principal-solution question is the planted one, and it looks more complete.",
       },
       {
-        name: "Cosine compound-angle sign",
+        name: "Roots lost to squaring",
         description:
-          "cos(A + B) carries a minus and cos(A - B) a plus, which is the opposite of the sine formulas. The sign-swapped option is standard.",
+          "Squaring to clear a radical introduces extraneous roots and silently drops sign information. The distractor is the count of solutions BEFORE checking each one back in the original equation.",
       },
       {
-        name: "Extraneous roots from squaring",
+        name: "Interval endpoints",
         description:
-          "Squaring both sides to remove a surd or a mixed expression introduces roots that do not satisfy the original equation. Every root must be substituted back.",
+          "Counting solutions in [0, 2 pi] versus (0, 2 pi) differs by the endpoints, and the two counts are both offered.",
       },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["trigonometry-ii", "inverse-trigonometric-functions", "limits"],
+    relatedSlugs: ["trigonometric-functions", "indefinite-integration", "definite-integration"],
   },
 
   "definite-integration": {

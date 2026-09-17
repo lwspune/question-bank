@@ -2,7 +2,7 @@
  * Playbook catalog for /guide/mht-cet-maths/playbooks.
  *
  * A "playbook" here = one chapter, treated end-to-end (the NDA Physics
- * Template C shape). MHT-CET Maths has 27 chapters and 85 subtopics; several
+ * Template C shape). MHT-CET Maths has 27 chapters and 83 subtopics; several
  * chapters are 1-3 subtopics, so the chapter is the right unit.
  *
  * WHY 22 AND NOT 27. Playbooks ship for every chapter at >= 0.9 q/paper on
@@ -88,6 +88,21 @@ export const PLAYBOOKS: Playbook[] = [
     qCount: 228,
     qPerPaper: 4.81,
     pctHard: 55,
+    bucket: "cornerstone",
+  },
+  {
+    slug: "trigonometric-functions",
+    name: "Trigonometric Functions",
+    summary:
+      "168 q - 4.31/paper - 41% HARD. The Std XII trigonometry chapter and the fourth-largest in the bank, holding solution of triangle and inverse trigonometry under one heading. Two subtopics of near-equal cost, so it is drilled whole. RISING (3.73 lifetime to 4.31 recent), the steepest climb of any cornerstone.",
+    chapter: "Trigonometric Functions",
+    subtopics: [
+      "Inverse Trigonometric Functions",
+      "Solution of Triangle — Sine, Cosine and Projection Rules",
+    ],
+    qCount: 168,
+    qPerPaper: 4.31,
+    pctHard: 41,
     bucket: "cornerstone",
   },
   {
@@ -267,48 +282,17 @@ export const PLAYBOOKS: Playbook[] = [
     bucket: "longtail",
   },
   {
-    slug: "trigonometry-ii",
-    name: "Trigonometry - II",
-    summary:
-      "90 q - 2.08/paper - 49% HARD. Dominated by Properties of Triangles (52 q, sine, cosine and projection rules). Note the taxonomy overlap: this chapter carries an Inverse Trigonometry subtopic (21 q) that duplicates the standalone Inverse Trigonometric Functions chapter - drill both or you will miss half the inverse-trig questions.",
-    chapter: "Trigonometry - II",
-    subtopics: [
-      "Properties of Triangles — Sine/Cosine Rules and Projection",
-      "Inverse Trigonometry — Identities, Equations, and Principal Values",
-      "Trigonometric Identities and Compound/Half-Angle Formulas",
-    ],
-    qCount: 90,
-    qPerPaper: 2.08,
-    pctHard: 49,
-    bucket: "longtail",
-  },
-  {
-    slug: "inverse-trigonometric-functions",
-    name: "Inverse Trigonometric Functions",
-    summary:
-      "73 q - 2.04/paper - 37% HARD. A single-subtopic chapter, so there is nothing to cherry-pick: it is one 73-question block of identities, equations, principal values and sums. Its weightage has RISEN (1.66 lifetime to 2.04 recent).",
-    chapter: "Inverse Trigonometric Functions",
-    subtopics: [
-      "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
-    ],
-    qCount: 73,
-    qPerPaper: 2.04,
-    pctHard: 37,
-    bucket: "longtail",
-  },
-  {
     slug: "trigonometry-i",
     name: "Trigonometry - I",
     summary:
-      "99 q - 1.85/paper - 37% HARD. Trig Identities, Compound Angle and Equations is 77 of its 99 questions. Weightage has FALLEN (2.20 lifetime to 1.85 recent), the largest decline of any live chapter.",
+      "77 q - 1.31/paper - 36% HARD. One undivided subtopic that MIXES Std XI compound and multiple angles with Std XII trigonometric equations and general solutions. Weightage has FALLEN (1.71 lifetime to 1.31 recent) while its Std XII neighbour Trigonometric Functions climbs - if trigonometry hours are limited, they belong there first.",
     chapter: "Trigonometry - I",
     subtopics: [
       "Trig Identities, Compound Angle, and Equations",
-      "Properties of Triangle",
     ],
-    qCount: 99,
-    qPerPaper: 1.85,
-    pctHard: 37,
+    qCount: 77,
+    qPerPaper: 1.31,
+    pctHard: 36,
     bucket: "longtail",
   },
   {

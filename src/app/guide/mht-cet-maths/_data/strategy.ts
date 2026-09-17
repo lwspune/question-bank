@@ -130,16 +130,17 @@ export const STRATEGY_HEADLINE = {
 export const CORNERSTONE_STRAND: StrategyStrand = {
   id: "cornerstone",
   label:
-    "Cornerstone — Line and Plane · Vectors · Applications of Derivative · Differential Equations · Indefinite Integration · Differentiation (1,060 q · 48% of bank)",
-  qCount: 1060,
-  pctOfBank: 48,
+    "Cornerstone — Vectors · Line and Plane · Applications of Derivative · Trigonometric Functions · Indefinite Integration · Differential Equations · Differentiation (1,236 q · 55% of bank)",
+  qCount: 1236,
+  pctOfBank: 55,
   pitch:
-    "Six chapters carry 23.43 questions per paper — 47% of a 50-question paper, or 47 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these six, and you cannot reach one on these six alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
+    "Seven chapters carry 27.74 questions per paper — 55% of a 50-question paper, or 55 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these seven, and you cannot reach one on these seven alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
   approach: [
-    "Do these six in prep before anything else, and do them properly — 1.8 minutes per question means a technique you can only half-execute is worth less than one you have never seen, because the half-remembered one is the one you will spend five minutes on.",
-    "All six have shipped teaching notes at /notes/mht-cet-maths — line-and-plane, vectors, applications-of-derivative, differential-equations, indefinite-integration, differentiation. Read the chapter's notes once, then drill subtopic by subtopic; do not read all six end-to-end first.",
+    "Do these seven in prep before anything else, and do them properly — 1.8 minutes per question means a technique you can only half-execute is worth less than one you have never seen, because the half-remembered one is the one you will spend five minutes on.",
+    "Six of the seven have shipped teaching notes at /notes/mht-cet-maths — line-and-plane, vectors, applications-of-derivative, differential-equations, indefinite-integration, differentiation. Trigonometric Functions does NOT, so work that one from its playbook and timed /browse drills. Read a chapter's notes once, then drill subtopic by subtopic; do not read all six end-to-end first.",
     "Two of them do NOT cherry-pick and you should know which before you plan your hours. Line and Plane spreads 42% HARD across all seven of its subtopics, so there is no cheap third to bank. Vectors is the opposite: at 55% HARD overall it looks worse, but Dot Product, Angle, and Perpendicularity is 50 questions at 28% HARD — a genuinely cheap third of the biggest chapter in the bank. Secure that before you touch Scalar Triple Product at 72%.",
     "Applications of Derivative is the best marks-per-hour chapter on the paper and it is a cornerstone: 3.81 q/paper at 23% HARD, seven subtopics and none above 31%. Approximations using Differentials is 11 questions at 0% HARD. Treat it as a bank-first chapter even though its volume puts it here.",
+    "Trigonometric Functions is the chapter most students under-rate, because the name is unfamiliar: it is the Std XII trigonometry chapter, and it holds solution of triangle and inverse trigonometry under one heading. It is the fourth-largest chapter in the bank and it is RISING — 3.73 q/paper across all 45 shifts against 4.31 across 2024-2025. Its two halves cost almost the same (Inverse Trigonometric Functions 94 q at 40% HARD, Solution of Triangle 74 q at 42%), so there is no cheap half to bank first.",
     "On the paper, cornerstone questions are not all attempted at the same time. The bank-first and split-pass cheap halves go on the opening sweep with the quick-wins; the expensive halves wait for the second pass, when you know how much clock you actually have.",
   ],
   chapters: [
@@ -206,6 +207,23 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       studyHours: 12,
       summary:
         "183 q · 23% HARD · the cheapest cornerstone by a distance and the best marks-per-hour chapter on the paper. Seven subtopics, none above 31% HARD, and Approximations using Differentials is 11 q at 0% HARD. Volume puts it in the cornerstone strand; behaviour puts it on your opening sweep.",
+    },
+    {
+      chapter: "Trigonometric Functions",
+      qCount: 168,
+      pctHard: 41,
+      posture: "split-pass",
+      mustDrill: [
+        "Inverse Trigonometric Functions",
+        "Solution of Triangle — Sine, Cosine and Projection Rules",
+      ],
+      targetHard: [
+        "Solution of Triangle — Sine, Cosine and Projection Rules",
+      ],
+      expectedYieldPerPaper: "4.31 q/paper · about 9 marks",
+      studyHours: 12,
+      summary:
+        "168 q · 41% HARD · the fourth-largest chapter in the bank and the fastest-rising cornerstone — 3.73 q/paper lifetime against 4.31 across 2024-2025. Two subtopics of near-equal cost: Inverse Trigonometric Functions (94 q, 40% HARD) and Solution of Triangle — Sine, Cosine and Projection Rules (74 q, 42%). Neither is a cheap half, so this chapter is drilled whole.",
     },
     {
       chapter: "Differential Equations",
@@ -371,15 +389,14 @@ export const QUICKWIN_STRAND: StrategyStrand = {
 export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
-    "Long Tail — Limits · Trigonometry - II · Inverse Trigonometric Functions · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Complex Numbers · Applications of Definite Integral · Pair of Straight Lines · Permutations and Combinations (706 q · 32% of bank)",
-  qCount: 706,
-  pctOfBank: 32,
+    "Long Tail — Limits · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations (521 q · 23% of bank)",
+  qCount: 521,
+  pctOfBank: 23,
   pitch:
-    "Eleven chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 16 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
+    "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
   approach: [
-    "None of these has shipped teaching notes yet — the eight /notes/mht-cet-maths chapters are the six cornerstones plus Probability Distribution and Binomial Distribution. Work these from the playbooks and timed /browse drills instead.",
+    "None of these has shipped teaching notes — the eight /notes/mht-cet-maths chapters are six of the seven cornerstones plus Probability Distribution and Binomial Distribution. Work these from the playbooks and timed /browse drills instead.",
     "Limits is the sharpest example of a chapter that does not cherry-pick: 93 q at 56% HARD across exactly two subtopics, Continuity at a Point — Finding Parameters (47 q, 57%) and Limit Evaluation Techniques (46 q, 54%). There is no cheap half to take. Prepare both or neither, and on the paper give them the second pass, not the first.",
-    "There is a measured taxonomy overlap worth planning around: inverse trigonometry appears BOTH as its own chapter (73 q) AND as a subtopic inside Trigonometry - II (21 q). Drill only one and you miss a fifth of the topic.",
     "Two chapters here reward a technique that skips calculus entirely, and at 1.8 minutes a question that is a time lever rather than an elegance: the greatest and least modulus of a complex number on a disc, and the maximum perpendicular distance from a point on a circle, are the same move — distance to the centre plus or minus the radius.",
     "A vanishing 3x3 determinant is the universal degeneracy test across this strand and the cornerstones both — concurrency of lines, collinearity of points, coplanarity of lines, scalar triple product equal to zero. Learning it once in Determinants and Matrices pays in four other chapters.",
   ],
@@ -403,49 +420,17 @@ export const LONGTAIL_STRAND: StrategyStrand = {
         "93 q · 56% HARD · the highest %HARD of any chapter in this strand, and it does not cherry-pick: both subtopics are above 54%. Two questions a paper at full price. Prepare both halves or accept that you are guessing them — which, on this exam, is a legitimate choice.",
     },
     {
-      chapter: "Trigonometry - II",
-      qCount: 90,
-      pctHard: 49,
-      posture: "last-pass-guess",
-      mustDrill: [
-        "Properties of Triangles — Sine/Cosine Rules and Projection",
-        "Inverse Trigonometry — Identities, Equations, and Principal Values",
-        "Trigonometric Identities and Compound/Half-Angle Formulas",
-      ],
-      targetHard: [
-        "Trigonometric Identities and Compound/Half-Angle Formulas",
-      ],
-      expectedYieldPerPaper: "2.08 q/paper · about 4 marks",
-      studyHours: 6,
-      summary:
-        "90 q · 49% HARD. Properties of Triangles (52 q, 42%) is over half the chapter and the cheapest part of it. Note the overlap: its Inverse Trigonometry subtopic (21 q) is the same material as the separate Inverse Trigonometric Functions chapter (73 q) — drill them together, not twice.",
-    },
-    {
-      chapter: "Inverse Trigonometric Functions",
-      qCount: 73,
-      pctHard: 37,
-      posture: "last-pass-guess",
-      mustDrill: [
-        "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
-      ],
-      expectedYieldPerPaper: "2.04 q/paper · about 4 marks",
-      studyHours: 5,
-      summary:
-        "73 q · 37% HARD in a single subtopic — the whole chapter is one drill. Two questions a paper, and cheaper than most of this strand. Its 21 sibling questions inside Trigonometry - II mean the real footprint is 94 questions, which moves it up the queue.",
-    },
-    {
       chapter: "Trigonometry - I",
-      qCount: 99,
-      pctHard: 37,
+      qCount: 77,
+      pctHard: 36,
       posture: "last-pass-guess",
       mustDrill: [
         "Trig Identities, Compound Angle, and Equations",
-        "Properties of Triangle",
       ],
-      expectedYieldPerPaper: "1.85 q/paper · about 4 marks",
-      studyHours: 6,
+      expectedYieldPerPaper: "1.31 q/paper · about 3 marks",
+      studyHours: 4,
       summary:
-        "99 q · 37% HARD · the largest chapter in this strand by lifetime count. Trig Identities, Compound Angle, and Equations is 77 of those 99 at 36% HARD, so almost all of the return sits in one drill. Properties of Triangle here overlaps the same-named material in Trigonometry - II.",
+        "77 q · 36% HARD in a single MIXED subtopic — compound, allied and multiple angles alongside trigonometric equations and general solutions, which are Std XII material sitting in a Std XI chapter. Softening: 1.71 q/paper lifetime against 1.31 across 2024-2025. Drill it whole; there is nothing to cherry-pick inside one subtopic.",
     },
     {
       chapter: "Definite Integration",
@@ -582,8 +567,8 @@ export type TailChapter = {
 };
 
 /**
- * The five chapters below the 0.9 q/paper line — no playbook, listed here so
- * the 27-chapter bank is accounted for rather than quietly truncated at 22.
+ * The six chapters below the 0.9 q/paper line — no playbook, listed here so
+ * the 27-chapter bank is accounted for rather than quietly truncated at 21.
  *
  * The 2025 syllabus shift is the reason this block matters more than its
  * question counts suggest: a student prepping from 2023-24 papers spends real
@@ -613,6 +598,14 @@ export const TAIL_CHAPTERS: TailChapter[] = [
     pctHard: 9,
     status: "dropped",
     note: "DROPPED after 2024. It ran 1.0 question per paper across 29 shifts in 2023-24 and then scored ZERO across all 14 papers of 2025. At 9% HARD it used to be one of the cheapest chapters on the exam, which is exactly why it is a trap now: it is pleasant to revise and worth nothing. Do not spend hours here.",
+  },
+  {
+    chapter: "Trigonometry - II",
+    qCount: 17,
+    qPerPaper: 0.35,
+    pctHard: 65,
+    status: "live",
+    note: "The most expensive chapter in the bank per question — 65% HARD, higher than Limits at 56% — and it yields about one question every three papers. Half-angle and factorisation identity work. Read the identity list once; do not drill it.",
   },
   {
     chapter: "Sequences and Series",

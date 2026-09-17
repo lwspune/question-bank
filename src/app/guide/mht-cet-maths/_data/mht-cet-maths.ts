@@ -200,6 +200,15 @@ export const CHAPTER_TABLE: ChapterRow[] = [
       "Growth, Decay, and Continuous Models (33 · 27% HARD), Order, Degree, Formation of ODE, and Verification of Solutions (33 · 24%), Variable-Separable Equations (33 · 39%), Linear Differential Equations (Integrating Factor) (24 · 63%), Homogeneous and Reducible Equations (16 · 38%), Newton's Law of Cooling (5 · 60%). The subtopics split by SOLUTION METHOD, which is exactly how the questions are set.",
   },
   {
+    chapter: "Trigonometric Functions",
+    qCount: 168,
+    pctTotal: 7.5,
+    qPerPaper: 4.31,
+    pctHard: 41,
+    focus:
+      "Inverse Trigonometric Functions (94 · 40% HARD), Solution of Triangle — Sine, Cosine and Projection Rules (74 · 42%). The Std XII trigonometry chapter and the fourth-largest in the bank; two halves of near-equal cost, so it is drilled whole. The fastest-rising cornerstone: 3.73 q/paper lifetime against 4.31 recent.",
+  },
+  {
     chapter: "Indefinite Integration",
     qCount: 159,
     pctTotal: 7.1,
@@ -236,31 +245,13 @@ export const CHAPTER_TABLE: ChapterRow[] = [
       "Continuity at a Point — Finding Parameters (47 · 57% HARD), Limit Evaluation Techniques (46 · 54%). The highest %HARD of any chapter in the bank, and it splits almost evenly, so it does not cherry-pick.",
   },
   {
-    chapter: "Trigonometry - II",
-    qCount: 90,
-    pctTotal: 4.0,
-    qPerPaper: 2.08,
-    pctHard: 49,
-    focus:
-      "Properties of Triangles — Sine/Cosine Rules and Projection (52 · 42% HARD), Inverse Trigonometry — Identities, Equations, and Principal Values (21 · 52%), Trigonometric Identities and Compound/Half-Angle Formulas (17 · 65%). Note the overlap: its inverse-trigonometry subtopic sits alongside the separate 73-question Inverse Trigonometric Functions chapter.",
-  },
-  {
-    chapter: "Inverse Trigonometric Functions",
-    qCount: 73,
-    pctTotal: 3.3,
-    qPerPaper: 2.04,
-    pctHard: 37,
-    focus:
-      "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums (73 · 37% HARD) — a single subtopic carrying the whole chapter. A further 21 questions of the same material are filed under Trigonometry - II; drill only one and you miss roughly a fifth of the topic.",
-  },
-  {
     chapter: "Trigonometry - I",
-    qCount: 99,
-    pctTotal: 4.4,
-    qPerPaper: 1.85,
-    pctHard: 37,
+    qCount: 77,
+    pctTotal: 3.4,
+    qPerPaper: 1.31,
+    pctHard: 36,
     focus:
-      "Trig Identities, Compound Angle, and Equations (77 · 36% HARD), Properties of Triangle (22 · 41%). Properties of Triangle also appears in Trigonometry - II at 52 questions — the two chapters are not disjoint.",
+      "Trig Identities, Compound Angle, and Equations (77 · 36% HARD) — one undivided subtopic that MIXES Std XI compound and multiple angles with Std XII trigonometric equations and general solutions. Softening: 1.71 q/paper lifetime against 1.31 recent.",
   },
   {
     chapter: "Definite Integration",

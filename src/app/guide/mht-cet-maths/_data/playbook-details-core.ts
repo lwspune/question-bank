@@ -234,6 +234,84 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     relatedSlugs: ["differentiation", "limits", "straight-line"],
   },
 
+  "trigonometric-functions": {
+    slug: "trigonometric-functions",
+    trigger:
+      "A triangle labelled with sides a, b, c and angles A, B, C — or an expression built from arcsin, arccos or arctan.",
+    story: [
+      "168 q, 4.31/paper, 41% HARD — the fourth-largest chapter in the bank, behind only Vectors, Line and Plane and Applications of Derivative. It is the Std XII trigonometry chapter, and the reason students under-prepare it is that the name is unfamiliar: the chapters they recognise from Std XI, Trigonometry - I and Trigonometry - II, are 77 and 17 questions between them.",
+      "It is the fastest-rising cornerstone, 3.73 q/paper across the lifetime window against 4.31 across the 26 shifts of 2024-2025, and BOTH halves are rising — Solution of Triangle from 1.64 to 2.12, Inverse Trigonometric Functions from 2.09 to 2.19. A student prioritising from lifetime frequency alone under-invests here.",
+      "The two halves cost almost the same: Inverse Trigonometric Functions is 94 q at 40% HARD, Solution of Triangle — Sine, Cosine and Projection Rules is 74 q at 42%. There is no cheap half to bank first, which is why this chapter is drilled whole rather than split-passed by subtopic. Drill inverse first only because it is the larger of the two.",
+      "Both halves are closed lists. The triangle work is four rules and their area forms, and recognition is most of the skill — what you are given (three sides, two sides and the included angle, two angles and a side) decides which rule opens the question. The inverse work is almost entirely about staying inside the principal branch: the algebra is short, and the marks are lost by producing a technically valid value that lies outside the allowed range.",
+    ],
+    subSkills: [
+      {
+        name: "Sine rule and circumradius",
+        description:
+          "a / sin A = b / sin B = c / sin C = 2R. The 2R is the half most often dropped, and it is what turns a triangle question into a circumradius question.",
+      },
+      {
+        name: "Cosine rule, both directions",
+        description:
+          "Use it forwards to find a side from two sides and the included angle, and backwards, as cos A = (b^2 + c^2 - a^2) / 2bc, to find an angle from three sides.",
+      },
+      {
+        name: "Projection formula",
+        description:
+          "a = b cos C + c cos B and its two cousins. Cheap to memorise and it collapses a family of simplify-this questions in one line.",
+      },
+      {
+        name: "Area and half-angle forms",
+        description:
+          "Area = (1/2) ab sin C, Heron's form with the semi-perimeter s, and the relations linking area to the inradius r and circumradius R. These are the bridge between a triangle question and a circle question.",
+      },
+      {
+        name: "Principal-value ranges, cold",
+        description:
+          "arcsin lands in [-pi/2, pi/2], arccos in [0, pi], arctan in (-pi/2, pi/2). Nothing in the inverse half is safe until these three are automatic.",
+      },
+      {
+        name: "Complementary identities and arctan sums",
+        description:
+          "arcsin x + arccos x = pi/2 and its two cousins collapse a whole family of sum questions to a constant. arctan x + arctan y = arctan((x + y)/(1 - xy)) holds only while xy is less than 1 — the side condition is the point of the formula, not a footnote.",
+      },
+      {
+        name: "Solving inverse-trig equations",
+        description:
+          "Take the appropriate trig function of both sides, solve the resulting algebraic equation, then discard every root whose value falls outside the principal range. The discard step is the marked one.",
+      },
+    ],
+    traps: [
+      {
+        name: "R instead of 2R",
+        description:
+          "a / sin A equals 2R, not R. The distractor is exactly half or exactly double the correct circumradius.",
+      },
+      {
+        name: "The ambiguous case",
+        description:
+          "Two sides and a non-included angle can determine two different triangles. The option offering a single answer where two are valid — or the one quoting the obtuse solution when only the acute is admissible — is the planted one.",
+      },
+      {
+        name: "The arctan sum without its condition",
+        description:
+          "The unadjusted arctan((x + y)/(1 - xy)) is always offered. When xy exceeds 1 the true answer differs from it by pi, and the raw value is the distractor.",
+      },
+      {
+        name: "arcsin(sin x) assumed to be x",
+        description:
+          "True only for x in [-pi/2, pi/2]. Outside that range the answer is pi - x or x minus a multiple of 2 pi, and the option reading plain x is the trap.",
+      },
+      {
+        name: "Degrees where radians are meant",
+        description:
+          "Principal values are stated in radians. An option set mixing pi/6 with 30 is signalling this trap.",
+      },
+    ],
+    exampleQuestionIds: [],
+    relatedSlugs: ["trigonometry-i", "vectors", "differentiation"],
+  },
+
   "differential-equations": {
     slug: "differential-equations",
     trigger:
@@ -435,7 +513,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["applications-of-derivative", "limits", "inverse-trigonometric-functions"],
+    relatedSlugs: ["applications-of-derivative", "limits", "trigonometric-functions"],
   },
 
   // QUICK-WIN
