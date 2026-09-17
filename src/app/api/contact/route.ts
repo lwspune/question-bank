@@ -7,7 +7,8 @@
  *
  * The INSERT is the success condition. The notification is fire-and-forget on
  * top, because this form exists precisely so a message survives email being
- * broken (pyqvault.com has no MX record — see migration 0102).
+ * broken — which it was when 0102 shipped (pyqvault.com had no MX at all), and
+ * which any mailbox can be again. The ordering is the feature, not a stopgap.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";

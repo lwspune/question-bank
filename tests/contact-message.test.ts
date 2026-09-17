@@ -5,10 +5,11 @@ import { buildContactNotification } from "@/lib/contact/service";
 /**
  * Pure validation for the public /about contact form.
  *
- * WHY THIS FORM EXISTS: `pyqvault.com` has no MX record, so every `mailto:` on
- * the site depends on an inbox that may or may not accept mail. This form does
- * not depend on email delivery at all — it writes a row. That makes it the one
- * contact channel that cannot silently swallow a message.
+ * WHY THIS FORM EXISTS: every `mailto:` on the site depends on an inbox that may
+ * or may not accept mail — when this shipped, `pyqvault.com` had no MX record at
+ * all (an MX landed 2026-09-17). This form does not depend on email delivery at
+ * all — it writes a row. That makes it the one contact channel that cannot
+ * silently swallow a message, which stays true now that the mailbox works.
  *
  * The rules differ DELIBERATELY from the teacher-access lead form (which shares
  * this shape otherwise): there, MOBILE is required and email optional, because
