@@ -852,6 +852,20 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "6.4 Criteria for Similarity of Triangles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 Eg"] },
     { group: "6.4 Criteria for Similarity of Triangles", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
   ],
+
+  // ── Ch.13 Statistics (10th). THREE taught sections, each with its own worked
+  //    examples then its own exercise — the cleanest shape in the book, because
+  //    the chapter is one measure per section (mean · mode · median).
+  //    Examples band to the exercise they precede: 1-3 → "13.1 Eg.N",
+  //    4-6 → "13.2 Eg.N", 7-8 → "13.3 Eg.N".
+  c10Statistics: [
+    { group: "13.2 Mean of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.1 Eg"] },
+    { group: "13.2 Mean of Grouped Data", label: "Exercise 13.1", kind: "exercise", refPrefixes: ["Ex 13.1 Q"] },
+    { group: "13.3 Mode of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.2 Eg"] },
+    { group: "13.3 Mode of Grouped Data", label: "Exercise 13.2", kind: "exercise", refPrefixes: ["Ex 13.2 Q"] },
+    { group: "13.4 Median of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.3 Eg"] },
+    { group: "13.4 Median of Grouped Data", label: "Exercise 13.3", kind: "exercise", refPrefixes: ["Ex 13.3 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

@@ -2679,6 +2679,50 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Applications of Similarity",
     ],
   },
+
+  // ── Ch.13 Statistics (10th). 31pp, Examples 1-8 + Ex 13.1 (9) / 13.2 (6) /
+  //    13.3 (7). The TABLE chapter, and the third Class-10 hazard: nearly every
+  //    question carries a grouped-frequency distribution, so the stems are GFM
+  //    pipe-tables (header row + the mandatory `|---|` separator). Two shapes
+  //    occur and both map onto the same primitive — a WIDE 2-row table (class
+  //    intervals across the top, frequencies beneath) and a TALL 2-column one.
+  //
+  //    ZERO figures in the whole chapter, so no crop work at all — the exact
+  //    complement of Ch.6.
+  //
+  //    **KEY COVERAGE IS 100%, THE BEST IN THE BOOK** (22 of 22 items), and
+  //    every value is mechanically computable, so step 6 here is a genuine
+  //    third ground truth rather than a read-through: 31 computed values across
+  //    the 22 items, all matching, zero errata
+  //    (`_tmp_c10Statistics_xcheck.py`). Contrast Ch.6, where the gate reaches
+  //    24% of items — same book, same pipeline, opposite ends of the range.
+  //
+  //    ONE TRAP THE KEY SETTLED: Ex 13.1 Q5's classes are printed INCLUSIVE
+  //    (50-52, 53-55, …). Taking them at face value gives a mean of 57.19 only
+  //    after the continuity correction to 49.5-52.5, 52.5-55.5, … — which the
+  //    key's 57.19 confirms. Ex 13.3 Q4 states the same correction explicitly in
+  //    its own hint, so the book is consistent; Q5 just leaves it implied.
+  //
+  //    Section→page map (0-based): §13.1-13.2 Mean p0-9 (Examples 1-3) ·
+  //    EXERCISE 13.1 p10-12 · §13.3 Mode p12-15 (Examples 4-6) ·
+  //    EXERCISE 13.2 p15-16 · §13.4 Median p17-26 (Examples 7-8) ·
+  //    EXERCISE 13.3 p27-29 · §13.5 Summary p29.
+  c10Statistics: {
+    id: "c10Statistics",
+    chapterName: "Statistics",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Statistics.pdf",
+    pdf: cls10Maths("13. Statistics.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [9], // Ch-13's whole block shares ak page 9 with Ch-14's opening
+    note: "NCERT (CBSE Class 10) — Statistics (Chapter 13, NCERT Mathematics)",
+    subtopics: [
+      "Mean of Grouped Data",
+      "Mode of Grouped Data",
+      "Median of Grouped Data",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
