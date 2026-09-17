@@ -169,11 +169,19 @@ async function main() {
   }
 
   console.log("");
-  console.log(
-    apply
-      ? "Submitted. Bing indexes on its own schedule — check Bing Webmaster Tools in a few days."
-      : "DRY RUN complete. Re-run with `-- --apply` to submit."
-  );
+  if (!apply) {
+    console.log("DRY RUN complete. Re-run with `-- --apply` to submit.");
+  } else if (process.exitCode === 1) {
+    // Report the OUTCOME, not the attempt. The first version printed
+    // "Submitted." unconditionally and printed it under a 403 -- the exact
+    // shape that makes someone believe work happened when none did.
+    console.log("NOT SUBMITTED - at least one request failed above.");
+    console.log("If the error is SiteVerificationNotCompleted, the key file is live");
+    console.log("but IndexNow has not fetched it yet. That is expected on a FIRST");
+    console.log("submission. Wait ~15-30 min and re-run; nothing needs changing.");
+  } else {
+    console.log("Submitted. Bing indexes on its own schedule - check Bing Webmaster Tools in a few days.");
+  }
   console.log("NOTE: Google does not participate in IndexNow. This does not affect Google.");
 }
 
