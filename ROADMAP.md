@@ -341,6 +341,26 @@ Recorded so the reasoning is not re-derived if the document resurfaces. It is a 
 
 **One claim of the brief’s that CHECKS OUT:** mobile-first. **478 of 751 clicks (64%) are mobile**, 248 desktop, 25 tablet. Caveat — 98% of clicks are the brand-name homepage search, so this mostly says people type “pyq vault” on a phone.
 
+### RETRACTED 2026-09-17 — "Bing has ~694 pages indexed" was NOISE. A `site:` count is not a measurement.
+
+**This entry replaces a wrong one written an hour earlier.** It claimed Bing had **~694** pages indexed against Google's 12, called that "58x", and concluded the indexing problem was Google-specific. **The 694 was a single sample from a number that does not hold still.**
+
+**The disproof, five consecutive runs of the IDENTICAL query** (`site:pyqvault.com`, no parameters, same minute, same user-agent):
+
+| run | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| "results" | 54,700 | 110,000 | 51 | 32 | 54 |
+
+Paging with `&first=N` is no better: 4,570 → 8,910 → 50 → 1 → 19,800. And the SERP HTML yields **no result URLs to count by enumeration** (JS-rendered), so there is no fallback. **A `site:` count cannot baseline anything, on Bing or Google.** It was already known to be approximate; it is worse than that — it varies by three orders of magnitude between back-to-back identical requests.
+
+**A SECOND trap found on the way, worth its own line:** passing `&count=50` makes Bing answer *"About 50 results"*, which reads exactly like an index count and is really the page-size cap. Two different artefacts, both of which render as a plausible small integer.
+
+**WHAT SURVIVES, because it rests on different evidence.** The claim "Bing serves this site better than Google does" still stands, but on **referral data, not index counts**: Vercel Analytics for the 30 days to 2026-09-17 records **bing.com 204 visitors** — the #3 referrer behind only Google and Reddit — against **~10 non-brand visitors from Google** (751 GSC clicks, 98% of them the brand query `pyq vault` at position 1.02). Those are counted visits, not an engine's estimate of its own index. **The multiple is unknown and must not be quoted.**
+
+**HOW TO ACTUALLY MEASURE BING'S INDEX — there is exactly one way, and it is not scriptable from here.** **Bing Webmaster Tools**: *Site Explorer* gives a folder tree of the site with per-URL crawl/index state (drill into `/questions`, `/notes`, `/guide`); *URL Inspection* gives one page's live status; and the **IndexNow panel** shows the submitted URLs and what Bing did with each — the only direct read on whether the 2026-09-17 submission of 1,280 URLs landed. The property can be imported from Search Console. **Until BWT is set up, the honest answer to "how many pages does Bing have?" is that we do not know.**
+
+**The generalisation, because this is the second time in one session the same mistake landed.** Earlier, `Pages.csv` positions of 1.2–1.3 were read as real rankings when they were a brand over-attribution artefact. Both failures are the same shape: **a number that renders plausibly is not thereby a measurement.** Before a figure is written down here, it needs a stated source and a reason to believe it is stable — and where cheap, a repeat reading. Five curls would have caught this one before it was ever said out loud.
+
 ### SHIPPED 2026-09-17 — the indexing diagnosis, IndexNow, and a ranked manual worklist
 
 **THE NUMBER IS 21.** The crawl-stats export (`pyqvault.com-Crawl-stats-2026-09-17.zip`, 51 days, 2026-07-27 → 09-15, 1,173 requests) breaks down as **JavaScript 49.45% · HTML 17.48% · JSON 12.28% · CSS 7.84% · other 9.55% · failed 3.32%**, and Googlebot's own split is **66.24% "page resource load"** against 28.1% actual page crawls. Purpose is **98.21% Refresh / 1.79% Discovery** — so in 51 days Google made **21 discovery requests**, and the 1,424-URL discovered-not-crawled backlog clears in **~9.5 years**. **79% of a tiny budget is spent on bundles, not pages.**
