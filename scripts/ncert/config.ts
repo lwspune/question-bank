@@ -2723,6 +2723,50 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Median of Grouped Data",
     ],
   },
+
+  // ── Ch.12 Surface Areas and Volumes (10th). 10pp, Examples 1-7 + Ex 12.1 (9)
+  //    / 12.2 (8). The EXERCISE-PREAMBLE chapter, the last of the three
+  //    Class-10 hazards.
+  //
+  //    **BOTH EXERCISES OPEN WITH "Unless stated otherwise, take π = 22/7",
+  //    printed once under the EXERCISE heading and binding every question
+  //    beneath it.** That line is not decoration: the whole chapter is numeric,
+  //    and 22/7 vs 3.14 changes every answer. It therefore rides into each row's
+  //    `context` — a row that carries only its own stem is genuinely ambiguous.
+  //
+  //    THE PREAMBLE IS OVERRIDDEN PER QUESTION, which is why it cannot simply be
+  //    folded into the solutions: Ex 12.2 Q6 and Q8 say "Use π = 3.14" in their
+  //    own text, and several of the worked Examples do the same. So the row needs
+  //    BOTH — the exercise default in `context` and the local override in `stem`.
+  //
+  //    Key coverage 17 of 17 (100%), all mechanically computable, all verified
+  //    (`_tmp_c10SurfaceAreas_xcheck.py`): zero errata. Ex 12.1 Q5's answer is
+  //    SYMBOLIC — \(\frac{l^2}{4}(24+\pi)\), the only non-numeric key in the
+  //    chapter.
+  //
+  //    Figures are illustrative-but-load-bearing for four exercise rows
+  //    (Fig 12.10 capsule, 12.11 scooped cylinder, 12.15 gulab jamun,
+  //    12.16 pen stand); the stems restate every dimension, so unlike Ch.6 the
+  //    crop is a help rather than the only source of data.
+  //
+  //    Section→page map (0-based): §12.1 Introduction p0 · §12.2 Surface Area of
+  //    a Combination p1-5 (Examples 1-4) · EXERCISE 12.1 p5-6 · §12.3 Volume of
+  //    a Combination p6-8 (Examples 5-7) · EXERCISE 12.2 p8-9 · §12.4 Summary p9.
+  c10SurfaceAreas: {
+    id: "c10SurfaceAreas",
+    chapterName: "Surface Areas and Volumes",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__SurfaceAreasAndVolumes.pdf",
+    pdf: cls10Maths("12. Surface Areas and Volumes.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [8],
+    note: "NCERT (CBSE Class 10) — Surface Areas and Volumes (Chapter 12, NCERT Mathematics)",
+    subtopics: [
+      "Surface Area of a Combination of Solids",
+      "Volume of a Combination of Solids",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

@@ -858,6 +858,16 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    the chapter is one measure per section (mean · mode · median).
   //    Examples band to the exercise they precede: 1-3 → "13.1 Eg.N",
   //    4-6 → "13.2 Eg.N", 7-8 → "13.3 Eg.N".
+  // ── Ch.12 Surface Areas and Volumes (10th). TWO taught sections, each with
+  //    its worked examples then its exercise. Examples 1-4 → "12.1 Eg.N",
+  //    5-7 → "12.2 Eg.N" (the prefix names the EXERCISE they precede).
+  c10SurfaceAreas: [
+    { group: "12.2 Surface Area of a Combination of Solids", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg"] },
+    { group: "12.2 Surface Area of a Combination of Solids", label: "Exercise 12.1", kind: "exercise", refPrefixes: ["Ex 12.1 Q"] },
+    { group: "12.3 Volume of a Combination of Solids", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.2 Eg"] },
+    { group: "12.3 Volume of a Combination of Solids", label: "Exercise 12.2", kind: "exercise", refPrefixes: ["Ex 12.2 Q"] },
+  ],
+
   c10Statistics: [
     { group: "13.2 Mean of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.1 Eg"] },
     { group: "13.2 Mean of Grouped Data", label: "Exercise 13.1", kind: "exercise", refPrefixes: ["Ex 13.1 Q"] },
