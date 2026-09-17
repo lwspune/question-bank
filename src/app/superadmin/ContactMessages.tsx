@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Mail, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { setContactMessageStatusAction } from "./actions";
@@ -29,12 +29,25 @@ const STATUS_CLASS: Record<ContactMessageStatus, string> = {
   spam: "bg-muted text-muted-foreground border-input",
 };
 
-export default function ContactMessages({ initial }: { initial: ContactMessage[] }) {
+export default function ContactMessages({
+  initial,
+  onOpenCountChange,
+}: {
+  initial: ContactMessage[];
+  /** Reports the live untriaged count up to the tab badge. Optional so this
+   *  component still stands alone outside the tab strip. */
+  onOpenCountChange?: (n: number) => void;
+}) {
   const [rows, setRows] = useState(initial);
   const [pending, startTransition] = useTransition();
   const [busyId, setBusyId] = useState<string | null>(null);
 
   const openCount = rows.filter((r) => r.status === "new").length;
+
+  // The badge must follow an optimistic triage — and its REVERT on failure.
+  useEffect(() => {
+    onOpenCountChange?.(openCount);
+  }, [openCount, onOpenCountChange]);
 
   function onStatus(id: string, status: ContactMessageStatus) {
     setBusyId(id);

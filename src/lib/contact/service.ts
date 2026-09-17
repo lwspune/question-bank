@@ -9,7 +9,9 @@
  *
  * THE ROW IS THE DELIVERY. The email notification below is best-effort ON TOP
  * of a committed row, never instead of it — that is the whole point of this
- * feature, since pyqvault.com has no MX record and a `mailto:` can bounce.
+ * feature. When it shipped, pyqvault.com had no MX record and a `mailto:`
+ * bounced outright; an MX landed 2026-09-17, which changes the urgency and not
+ * the ordering. A mailbox can always fill, move or filter; the row cannot.
  *
  * NOT marked "server-only": kept importable from a future tsx script the same
  * way src/lib/email/* is, and the secret is read at call time regardless.

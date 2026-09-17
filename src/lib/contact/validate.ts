@@ -4,11 +4,13 @@
  * The POST /api/contact route and the client form both lean on this one
  * validator so the rules — including what counts as spam — cannot drift.
  *
- * WHY A FORM AND NOT A `mailto:`: pyqvault.com has no MX record, so a `mailto:`
- * on a public page rests on an inbox that may not accept mail; measured
- * 2026-09-16, mail to hello@ bounces outright. A row in `contact_messages`
- * (migration 0102) does not depend on email delivery at all, so a correction
- * from someone holding the actual paper cannot be silently lost.
+ * WHY A FORM AND NOT A `mailto:`: a `mailto:` on a public page rests on an
+ * inbox that may not accept mail. That was literal when this shipped —
+ * pyqvault.com had no MX record at all and mail to hello@ bounced outright
+ * (measured 2026-09-16; an MX landed 2026-09-17). The argument does not expire
+ * with the fix: a row in `contact_messages` (migration 0102) does not depend on
+ * email delivery at all, so a correction from someone holding the actual paper
+ * cannot be silently lost to a DNS change, a full mailbox or a spam filter.
  *
  * THE RULES DIFFER FROM `teacherAccess/validate` ON PURPOSE. There, mobile is
  * required and email optional: that audience is coaching teachers, phone is the
