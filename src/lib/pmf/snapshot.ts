@@ -13,7 +13,7 @@
  *     responses, is noise wearing a number's clothes. Below the floor the count
  *     is shown and the RATE is withheld.
  *  3. HONEST LABELS. Step 2 of the funnel is "recorded a signal", NOT
- *     "activated". Even after the 2026-09-16 instrumentation pass, coverage is
+ *     "activated". Even after the 2026-09-17 instrumentation pass, coverage is
  *     partial by design: bank practice is recorded only for SIGNED-IN students,
  *     so an anonymous visitor can read for an hour and register as nothing at
  *     all, and acquisition exists only for accounts created from that date on.
@@ -364,7 +364,7 @@ export type SurfaceCoverage = {
 /**
  * What each product surface records when a student uses it. This is on the page
  * because every rate above has a partly-invisible denominator, and the reader
- * needs to know which parts. Audited 2026-09-16 against the route handlers.
+ * needs to know which parts. Audited 2026-09-17 against the route handlers.
  */
 export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   {
@@ -414,7 +414,7 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     via: "student_profiles.acq_* (migration 0106)",
     kinds: [],
     tracked: "partial",
-    lost: "First-touch channel is captured for signups from 2026-09-16 onward. The 330 existing accounts have NULL and are not backfillable — the information was never collected, so 'unknown' must stay its own bucket and never be folded into 'direct'.",
+    lost: "First-touch channel is captured for signups from 2026-09-17 onward. The 330 existing accounts have NULL and are not backfillable — the information was never collected, so 'unknown' must stay its own bucket and never be folded into 'direct'.",
   },
   {
     surface: "Guides (/guide), blog (/blog)",
