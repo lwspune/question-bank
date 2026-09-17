@@ -2767,6 +2767,53 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Volume of a Combination of Solids",
     ],
   },
+
+  // ── Ch.14 Probability (10th). 16pp, Examples 1-13 + Ex 14.1 (25 items) — the
+  //    LARGEST chapter in the book by question count once sub-parts split.
+  //
+  //    **THIS IS THE CHAPTER THAT MAKES `cbse-10` MIXED-FORMAT.** Ex 14.1 Q4
+  //    ("Which of the following cannot be the probability of an event?" with
+  //    (A) 2/3, (B) −1.5, (C) 15%, (D) 0.7, key B) is a genuine four-option MCQ
+  //    — rival ANSWERS, not a sub-part list. The `mixedFormats: true` flag on
+  //    the registry entry goes in WITH this chapter's PUBLIC flip, never before
+  //    it: tests/format-mix-registry.test.ts fails an exam flagged mixed whose
+  //    bank holds only one format. (Ch.8 and Ch.10 carry the book's other MCQs
+  //    and will simply add to it.)
+  //
+  //    ONE SECTION ONLY — §14.1 runs the whole chapter, so the /board outline is
+  //    two blocks rather than the usual per-section pairs, and the subtopics are
+  //    a PEDAGOGICAL arc rather than the book's (non-existent) sub-headings.
+  //
+  //    TWO EXAMPLES AND ONE EXERCISE ITEM ARE STARRED "Not from the examination
+  //    point of view" (Examples 10 and 11, Ex 14.1 Q20) — the geometric-
+  //    probability material. They are INGESTED anyway, because the book prints
+  //    them and /board is a book-faithful reader; the starred status is recorded
+  //    in the row's own text rather than by dropping it.
+  //
+  //    Key coverage 25 of 25 (100%). Ex 14.1 Q22 asks the student to COMPLETE a
+  //    table, so its stem carries a partially-filled GFM pipe-table and the
+  //    solution carries the filled one.
+  //
+  //    Section→page map (0-based): §14.1 p0-11 (Examples 1-13) ·
+  //    EXERCISE 14.1 p12-15 · §14.2 Summary p15.
+  c10Probability: {
+    id: "c10Probability",
+    chapterName: "Probability",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Probability.pdf",
+    pdf: cls10Maths("14. Probability.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [9, 10], // Ch-14's key straddles two pages
+    note: "NCERT (CBSE Class 10) — Probability (Chapter 14, NCERT Mathematics)",
+    subtopics: [
+      "Theoretical Probability and Elementary Events",
+      "Sure, Impossible and Complementary Events",
+      "Probability with Cards, Dice and Coins",
+      "Probability from a Collection of Objects",
+      "Geometric Probability",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

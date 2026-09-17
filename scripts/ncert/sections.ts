@@ -876,6 +876,14 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "13.4 Median of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.3 Eg"] },
     { group: "13.4 Median of Grouped Data", label: "Exercise 13.3", kind: "exercise", refPrefixes: ["Ex 13.3 Q"] },
   ],
+
+  // ── Ch.14 Probability (10th). ONE taught section for the whole chapter, so
+  //    this outline is two blocks rather than the usual per-section pairs.
+  //    All 13 examples precede the single exercise → "14.1 Eg.N".
+  c10Probability: [
+    { group: "14.1 Probability — A Theoretical Approach", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.1 Eg"] },
+    { group: "14.1 Probability — A Theoretical Approach", label: "Exercise 14.1", kind: "exercise", refPrefixes: ["Ex 14.1 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
