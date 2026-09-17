@@ -89,7 +89,7 @@ export default async function PmfPage() {
             practice is recorded only for signed-in students, so most of the traffic leaves no row
             anywhere and every rate here is a <span className="font-medium">floor</span>, never a
             measurement of total engagement. And{" "}
-            <span className="font-medium">acquisition began on 2026-09-16</span>: the 330 accounts
+            <span className="font-medium">acquisition began on 2026-09-17</span>: the 330 accounts
             that already existed have no channel and never will, so &ldquo;unknown&rdquo; must stay
             its own bucket rather than being read as &ldquo;direct&rdquo;.{" "}
             {dark.length > 0 && `${dark.length} surface(s) still record nothing at all.`} Full map
