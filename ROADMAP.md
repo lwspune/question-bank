@@ -250,6 +250,44 @@ Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIE
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2: split the 94 mixed identity/equation questions (logged 2026-09-17)
+
+Phase 1 shipped 2026-09-17: the Std XII chapter was renamed `Inverse Trigonometric Functions` →
+**`Trigonometric Functions`**, and the two triangle subtopics (22 in Trigonometry - I + 52 in
+Trigonometry - II) plus Trigonometry - II's 21 inverse questions were merged into it. That chapter
+is now **168 q** — the 4th-largest in CET Maths — and the guide was re-tiered from Long Tail to
+Cornerstone to match. Two of the three overlaps are gone.
+
+**What is left: 94 questions in two subtopics that each MIX Std XI and Std XII material.**
+
+| Subtopic | Chapter | q |
+|---|---|---|
+| `Trig Identities, Compound Angle, and Equations` | Trigonometry - I | 77 |
+| `Trigonometric Identities and Compound/Half-Angle Formulas` | Trigonometry - II | 17 |
+
+Both bundle Std XI identity work (allied / compound / multiple / half-angle, factorisation) with
+Std XII **trigonometric equations and general solutions**, which are section 1 of Balbharati XII
+Ch.3 and belong in `Trigonometric Functions`. Unlike Phase 1 this is **NOT a bulk UPDATE** — it
+needs a per-question read of all 94 stems, because the split is within a subtopic, not between
+subtopics.
+
+**Target shape:** a new `Trigonometric Equations and General Solutions` subtopic under
+`Trigonometric Functions` (matching the board's own section name); the residual identity rows
+consolidate into `Trigonometry - II`, which is the Std XI identity chapter; `Trigonometry - I`
+holds none of its own namesake material (unit circle, quadrant signs, domain/range, polar) — the
+CET bank has **zero** questions on any of it — so once emptied that chapter should be DELETED.
+
+**Downstream, all of it name-keyed and already proven to break loudly:** `src/lib/books/registry.ts`
+(`tests/books-registry.test.ts`), the `/guide/mht-cet-maths` editorial across strategy / trends /
+traps / playbooks / playbook-details-core+tail / formulas / mht-cet-maths.ts
+(`tests/guide-mht-cet-maths-playbooks.test.ts`), and the `/questions/mht-cet/maths/<chapter>`
+landing-page URLs. No chapter UUID is pinned anywhere in the repo — checked all three in Phase 1 —
+and there are no CET trig `/notes` chapters, so the rot surface is those two files plus the guide.
+
+**Before starting, confirm the carve against the official MHT-CET syllabus PDF.** Phase 1 inferred
+it from the Balbharati spine in our own DB (`syllabus_concepts`, source `MH State Board`), which is
+strong evidence but is not the syllabus document.
+
 ### BACKFILL LEDGER — 176 questions draw matrices in ROUND brackets (logged 2026-09-17)
 
 Square bracket is the house style: after the 2026-09-17 repair, **884 question rows carry
