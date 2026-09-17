@@ -36,16 +36,46 @@ const SITE_URL = "https://www.pyqvault.com";
 export const revalidate = 86400;
 
 /**
- * Pre-build only the busiest chapters. The rest are rendered on first request
- * and then cached exactly the same way — so every page gets the caching benefit
- * without paying for ~250 database round-trips on every deploy.
+ * A SAFETY CEILING, not a selection: every eligible chapter is pre-built.
+ *
+ * This used to read `.slice(0, 40)` — "pre-build only the busiest chapters, the
+ * rest render on first request and are then cached exactly the same way". That
+ * reasoning priced the build and never priced the MISS, and the miss turned out
+ * to be the expensive half.
+ *
+ * A page that was never built has no stale copy for ISR to serve, so the first
+ * request is a true miss that pays the full render. Measured 2026-09-17 against
+ * production: a cold landing page took 1.86-2.60 s, the same URL warm 0.23-0.27 s
+ * (`X-Vercel-Cache: HIT`). Googlebot fetches ~4 HTML pages/day across this whole
+ * site (Crawl stats: 1,173 requests over 51 days, 17.48% HTML), so it returns to
+ * any given landing page months apart — far beyond `revalidate`. Essentially
+ * every crawl of this route was therefore paying ~2.5 s, which suppresses crawl
+ * rate, which lengthens the gap, which guarantees the next hit is cold too.
+ *
+ * The build cost the old cap was avoiding does not exist at this size. Measured
+ * on the same machine, cold `.next` each time:
+ *
+ *      cap  40 -> 6m22s   (823 HTML on disk)
+ *      cap 150 -> 3m01s   (933)
+ *      cap 800 -> 3m51s   (1,413 — all 630 eligible chapters)
+ *
+ * Build time is dominated by compilation, not by these pages; 590 extra pages
+ * cost nothing measurable and produced zero ECONNRESETs. Note the 40-cap run was
+ * the SLOWEST of the three, so treat these as "the same, within noise" rather
+ * than as a speed-up.
+ *
+ * The 800 is a ceiling against unbounded growth, not a ranking — 630 chapters
+ * qualify today (>= MIN_QUESTIONS_FOR_LANDING). If the taxonomy ever approaches
+ * it, raise it deliberately after re-measuring rather than letting it silently
+ * truncate the tail again. The sort is kept only so the build order is
+ * deterministic.
  */
 export async function generateStaticParams() {
   try {
     const landings = await listChapterLandings();
     return [...landings]
       .sort((a, b) => b.questionCount - a.questionCount)
-      .slice(0, 40)
+      .slice(0, 800)
       .map((l) => ({
         examSlug: l.examSlug,
         subjectSlug: l.subjectSlug,
@@ -53,8 +83,10 @@ export async function generateStaticParams() {
       }));
     // A Supabase blip during a build must not fail the DEPLOY — pre-building is
     // an optimisation, not a correctness requirement. Returning nothing means
-    // every page renders on first request instead, exactly as the other ~277 do.
-    // Mirrors the guard already on the sitemap's DB read.
+    // every page renders on first request instead. That is now a much worse
+    // outcome than it was under the old 40-cap (see above), but it is still
+    // strictly better than a failed deploy. Mirrors the guard on the sitemap's
+    // DB read.
   } catch {
     return [];
   }
