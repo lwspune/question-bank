@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { CheckCircle2, ChevronDown, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSignedIn } from "@/components/auth/useSignedIn";
+import { recordPractice } from "@/components/reveal/practiceBeacon";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
@@ -26,6 +28,22 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
   const [showOptions, setShowOptions] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+
+  // Stage 2 is the retrieval-practice act, and the ONLY choke point worth
+  // recording: stage 1 merely shows the options with no answer yet, and stage 3
+  // is unreachable until `showAnswer` is already true — so one hook here covers
+  // every path to a revealed answer.
+  //
+  // useSignedIn, NOT useRevealMeter. That hook records AND gates — it spends an
+  // anon viewer's FREE_REVEAL_LIMIT budget — and putting a reveal wall on 17
+  // public guide pages would be a product change nobody asked for. Recording is
+  // not gating; these pages stay wide open.
+  const { signedIn } = useSignedIn();
+  const revealAnswer = () => {
+    setShowAnswer(true);
+    // Signed-in only, and a no-op otherwise (see the 0105 migration header).
+    recordPractice(example.id, signedIn, "guide");
+  };
   const correct = example.options.find((o) => o.isCorrect);
 
   return (
@@ -146,7 +164,7 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
             {!showAnswer && (
               <button
                 type="button"
-                onClick={() => setShowAnswer(true)}
+                onClick={revealAnswer}
                 className={cn(
                   "mt-3 inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
                   presentMode ? "text-xl" : "text-xs"
