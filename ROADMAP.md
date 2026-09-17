@@ -250,6 +250,35 @@ Mop-up of the 2026-05-18 registry refactor. The `/nda` exam home's `NOTES_PREVIE
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — 176 questions draw matrices in ROUND brackets (logged 2026-09-17)
+
+Square bracket is the house style: after the 2026-09-17 repair, **884 question rows carry
+`bmatrix` against 176 with `pmatrix`**. The 176 are the rows that are UNIFORMLY round — the 15
+that disagreed with themselves were converted, and `audit:text`'s MIXED_MATRIX_DELIM class
+(`mixedMatrixDelimiters` in `scripts/lib/textProbes.ts`) now reports 0 and will catch the next one
+at ingest. Converting the remaining 176 is `npx tsx scripts/reviews/normalise-matrix-delimiters.ts`
+with its probe-derived scope widened; it is deliberately NOT done.
+
+**Recommendation: DECLINE unless the house style is ever enforced for another reason.** The
+benefit is zero on screen — a uniformly round question has nothing to mismatch against, and both
+fences render correctly in KaTeX and in Word (`wrapMatrixDelimiters` handles `(`, `[`, `|`, `{`,
+`‖` symmetrically). The cost is not zero:
+
+- `content_hash` is `sha256(stem + sorted options + answer)`, so each rewrite changes its preimage.
+  Recomputing (the invariant every write path here maintains) desynchronises the hash from the
+  source `.docx`/`.pdf`/`.xlsx` — which live OUTSIDE the repo, so there is nothing to fix alongside —
+  and from nda-tracker's copy, where `applyMockSync` looks rows up by hash and would insert
+  duplicates on the next sync.
+- ~12 `question_reviews` and ~71 `question_item_stats` rows key on that hash and would flip to
+  stale for content nobody re-verified.
+- 8 `quizzes` rows hold FROZEN `stem` snapshots, so a bank UPDATE would not reach them and the two
+  surfaces would disagree.
+
+**Never convert** `\begin{pmatrix} n \\ k \end{pmatrix}` in Binomial Theorem — it is nCk, and JEE
+2021 Paper19 Q62 defines `(n k)` and `[n k]` as two DIFFERENT symbols told apart by their brackets.
+Both the probe and the repair carry that exemption (single-column AND the row mentions
+combinations); measured bank-wide it exempts exactly the 3 rows that want exempting.
+
 ### ~~BACKFILL LEDGER — 28 files carry a RAW control byte~~ — DONE 2026-09-15
 
 All 28 fixed the day after they were logged: 68 raw control bytes replaced with `\uXXXX` escapes,
