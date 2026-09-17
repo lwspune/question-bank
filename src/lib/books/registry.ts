@@ -268,6 +268,15 @@ export const MHT_CET_MATHS: BookDefinition = {
       ],
     },
     {
+      slug: "trigonometric-functions",
+      name: "Trigonometric Functions",
+      // 168 q across 2 subtopics, in descending question count.
+      groupSubtopics: [
+        { name: "Inverse Trigonometric Functions" }, // 94
+        { name: "Solution of Triangle — Sine, Cosine and Projection Rules" }, // 74
+      ],
+    },
+    {
       slug: "indefinite-integration",
       name: "Indefinite Integration",
       // 159 q across 6 subtopics, in the /notes teaching order (subtopics.order_index).
@@ -318,31 +327,12 @@ export const MHT_CET_MATHS: BookDefinition = {
       ],
     },
     {
-      slug: "trigonometry-i",
-      name: "Trigonometry - I",
-      // 99 q across 2 subtopics, in descending question count.
-      groupSubtopics: [
-        { name: "Trig Identities, Compound Angle, and Equations" }, // 77
-        { name: "Properties of Triangle" }, // 22
-      ],
-    },
-    {
       slug: "limits",
       name: "Limits",
       // 93 q across 2 subtopics, in descending question count.
       groupSubtopics: [
         { name: "Continuity at a Point — Finding Parameters" }, // 47
         { name: "Limit Evaluation Techniques" }, // 46
-      ],
-    },
-    {
-      slug: "trigonometry-ii",
-      name: "Trigonometry - II",
-      // 90 q across 3 subtopics, in descending question count.
-      groupSubtopics: [
-        { name: "Properties of Triangles — Sine/Cosine Rules and Projection" }, // 52
-        { name: "Inverse Trigonometry — Identities, Equations, and Principal Values" }, // 21
-        { name: "Trigonometric Identities and Compound/Half-Angle Formulas" }, // 17
       ],
     },
     {
@@ -356,20 +346,20 @@ export const MHT_CET_MATHS: BookDefinition = {
       ],
     },
     {
+      slug: "trigonometry-i",
+      name: "Trigonometry - I",
+      // 77 q in a single subtopic.
+      groupSubtopics: [
+        { name: "Trig Identities, Compound Angle, and Equations" }, // 77
+      ],
+    },
+    {
       slug: "definite-integration",
       name: "Definite Integration",
       // 73 q across 2 subtopics, in descending question count.
       groupSubtopics: [
         { name: "Symmetry, King's Property, and Absolute Value" }, // 42
         { name: "Substitution and Standard Form" }, // 31
-      ],
-    },
-    {
-      slug: "inverse-trigonometric-functions",
-      name: "Inverse Trigonometric Functions",
-      // 73 q across 1 subtopic, in descending question count.
-      groupSubtopics: [
-        { name: "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums" }, // 73
       ],
     },
     {
@@ -482,6 +472,14 @@ export const MHT_CET_MATHS: BookDefinition = {
       // 19 q across 1 subtopic, in descending question count.
       groupSubtopics: [
         { name: "Conic Properties — Eccentricity, Orthogonality, and Intersection" }, // 19
+      ],
+    },
+    {
+      slug: "trigonometry-ii",
+      name: "Trigonometry - II",
+      // 17 q in a single subtopic.
+      groupSubtopics: [
+        { name: "Trigonometric Identities and Compound/Half-Angle Formulas" }, // 17
       ],
     },
     {

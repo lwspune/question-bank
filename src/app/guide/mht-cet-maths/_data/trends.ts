@@ -105,24 +105,24 @@ export const DRIFT_ROWS: DriftRow[] = [
       "Onto the paper. Three questions in the first 31 shifts of the bank, then 16 in the 14 shifts of 2025. 42% HARD, so it is not a free chapter either.",
   },
   {
-    chapter: "Inverse Trigonometric Functions",
-    lifetimeQCount: 73,
-    pctHard: 37,
-    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 1.66 },
-    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 2.04 },
+    chapter: "Trigonometric Functions",
+    lifetimeQCount: 168,
+    pctHard: 41,
+    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 3.73 },
+    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 4.31 },
     direction: "up",
     note:
-      "Rising, and it is also the chapter this bank splits in two — a further 21 questions sit as a subtopic inside Trigonometry - II. See the callout below.",
+      "The steepest rise among the cornerstones, and the widest gap between lifetime and recent weightage anywhere above the tail. See the callout below.",
   },
   {
     chapter: "Trigonometry - I",
-    lifetimeQCount: 99,
-    pctHard: 37,
-    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 2.2 },
-    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 1.85 },
+    lifetimeQCount: 77,
+    pctHard: 36,
+    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 1.71 },
+    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 1.31 },
     direction: "down",
     note:
-      "Softening. Still a real chapter at 1.85 a paper, but the lifetime count of 99 makes it look like a bigger recent bet than it is.",
+      "Softening, and it moves opposite to Trigonometric Functions. Its one subtopic still mixes Std XI compound-angle identities with Std XII trigonometric equations.",
   },
 ];
 
@@ -199,25 +199,24 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
   },
   {
     icon: "up",
-    title: "Inverse trigonometry is rising AND it is split across two chapters",
+    title: "Trigonometric Functions is the fastest-rising cornerstone — 3.73 q/paper lifetime, 4.31 on recent papers",
     description:
-      "As a chapter, Inverse Trigonometric Functions moved from 1.66 questions per paper across the lifetime window to 2.04 across the 26 shifts of 2024-2025 — and because the lifetime window contains the recent one, that understates the rise. The bigger issue is where the rest of it lives: a further 21 questions sit as a subtopic INSIDE Trigonometry - II, at 52% HARD against the chapter's own 37%. Drill the chapter alone and you miss the harder fifth of the topic.",
+      "Std XII trigonometry moved from 3.73 questions per paper across the lifetime window to 4.31 across the 26 shifts of 2024-2025 — and because the lifetime window contains the recent one, that understates the rise. At 168 questions it is the fourth-largest chapter in the bank, behind only Vectors, Line and Plane and Applications of Derivative. Both halves are rising: Solution of Triangle moved 1.64 to 2.12 and Inverse Trigonometric Functions 2.09 to 2.19.",
     drill: {
-      chapter: "Trigonometry - II",
-      subtopic: "Inverse Trigonometry — Identities, Equations, and Principal Values",
-      qCount: 21,
-      label: "Drill the 21 inverse-trig questions hidden inside Trigonometry - II",
+      chapter: "Trigonometric Functions",
+      qCount: 168,
+      label: "Drill Trigonometric Functions (168 q, 41% HARD)",
     },
   },
   {
     icon: "down",
-    title: "Trigonometry - I is softening — 2.20 q/paper lifetime, 1.85 on recent papers",
+    title: "Trigonometry - I is softening — 1.71 q/paper lifetime, 1.31 on recent papers",
     description:
-      "A 99-question lifetime count makes this look like one of the biggest chapters in the bank, and on recent papers it is not — it has drifted from 2.20 questions per paper to 1.85. Still worth owning at 37% HARD, and its Trig Identities, Compound Angle, and Equations subtopic is the largest single subtopic anywhere in this bank at 77 questions. Just do not rank it above a cornerstone on the strength of the lifetime number.",
+      "The Std XI identity chapter is drifting down while its Std XII neighbour climbs, which is the single most useful thing to know about trigonometry on this paper: if your hours are limited, they belong in Trigonometric Functions. Trigonometry - I is still worth owning at 36% HARD — it is one undivided 77-question subtopic that mixes compound and multiple angles with trigonometric equations and general solutions, so there is nothing to cherry-pick and nothing to skip.",
     drill: {
       chapter: "Trigonometry - I",
-      qCount: 99,
-      label: "Drill Trigonometry - I (99 q, 37% HARD)",
+      qCount: 77,
+      label: "Drill Trigonometry - I (77 q, 36% HARD)",
     },
   },
 ];
