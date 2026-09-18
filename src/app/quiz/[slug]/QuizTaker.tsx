@@ -8,6 +8,8 @@ import KatexRenderer from "@/components/math/KatexRenderer";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { isValidIndianMobile } from "@/lib/quiz/leads";
 import { resolveQuizGate, priorConsentValid, type StoredIdentity } from "@/lib/quiz/gate";
+import { quizResumeKey, serialiseResume, parseResume } from "@/lib/quiz/resume";
+import { buildQuizShareUrl } from "@/lib/quiz/share";
 import { scoreVerdict, type VerdictTone } from "@/lib/quiz/verdict";
 import type { PublicQuiz } from "@/lib/quiz/publicQuiz";
 import type { SubmitResult } from "@/lib/quiz/submit";
@@ -42,12 +44,32 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
     }
   }, []);
 
+  // Restore a quiz the student left to go and sign in. The key is consumed
+  // whether or not it parsed, so a corrupt blob cannot resurrect itself on every
+  // later visit. They land on REVIEW rather than being graded on arrival — the
+  // submit stays an act they choose.
+  useEffect(() => {
+    let raw: string | null = null;
+    try {
+      const key = quizResumeKey(slug);
+      raw = sessionStorage.getItem(key);
+      if (raw !== null) sessionStorage.removeItem(key);
+    } catch {
+      return; // storage blocked (private mode) — nothing to resume
+    }
+    const restored = parseResume(raw);
+    if (restored) {
+      setAnswers(restored);
+      setPhase("review");
+    }
+  }, [slug]);
+
   const mode = resolveQuizGate({ signedIn, stored });
   const total = quiz.questions.length;
   const answeredCount = Object.keys(answers).length;
 
   if (phase === "results" && result) {
-    return <Results slug={slug} quiz={quiz} answers={answers} result={result} />;
+    return <Results slug={slug} quiz={quiz} answers={answers} result={result} signedIn={signedIn} />;
   }
 
   return (
@@ -438,6 +460,22 @@ function Gate({
     }
   }
 
+  /**
+   * Leave for /login and come back to this quiz with the answers intact.
+   *
+   * The save MUST happen before navigating: answers are React state, so without
+   * it a student who signs in loses the quiz they just finished. If storage is
+   * blocked we still go — signing in is what they asked for — and they retake.
+   */
+  function signInAndReturn() {
+    try {
+      sessionStorage.setItem(quizResumeKey(slug), serialiseResume(answers));
+    } catch {
+      /* private mode — proceed without the resume */
+    }
+    window.location.href = `/login?next=${encodeURIComponent(`/quiz/${slug}`)}`;
+  }
+
   const consentField = (
     <label className="flex items-start gap-2.5 text-xs text-muted-foreground">
       <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 accent-[hsl(var(--brand))]" />
@@ -523,6 +561,20 @@ function Gate({
             </>
           )}
         </div>
+
+        {/* 5 of the 13 mobiles in quiz_leads already belong to an account: those
+            students re-typed a number we hold and were filed as anonymous leads,
+            getting no history for it. This is the way out, in BOTH branches — a
+            returner with a stored number may be one of them. */}
+        <div className="mt-4 border-t pt-3 text-center">
+          <button
+            type="button"
+            onClick={signInAndReturn}
+            className="rounded text-xs text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Already have an account? Sign in — your answers are kept
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -595,25 +647,27 @@ function Results({
   quiz,
   answers,
   result,
+  signedIn,
 }: {
   slug: string;
   quiz: PublicQuiz;
   answers: Record<string, string>;
   result: SubmitResult;
+  signedIn: boolean;
 }) {
   const verdict = scoreVerdict(result.score, result.total);
   const [showAll, setShowAll] = useState(false);
-  const url = useMemo(
-    () => (typeof window !== "undefined" ? `${window.location.origin}/quiz/${slug}` : `/quiz/${slug}`),
-    [slug]
-  );
-
+  // Tagged, and built from the CANONICAL host rather than window.location.origin.
+  // Untagged, WhatsApp's stripped referrer made every arrival from this button
+  // look like direct traffic — see lib/quiz/share.ts. The channel is resolved at
+  // tap time because it depends on which path the browser actually takes.
   async function share() {
     const text = `I scored ${result.score}/${result.total} on this ${[quiz.exam, quiz.subject].filter(Boolean).join(" ")} quiz — try it:`;
     try {
-      if (navigator.share) await navigator.share({ title: quiz.title, text, url });
-      else {
-        await navigator.clipboard.writeText(`${text} ${url}`);
+      if (navigator.share) {
+        await navigator.share({ title: quiz.title, text, url: buildQuizShareUrl(slug, "share") });
+      } else {
+        await navigator.clipboard.writeText(`${text} ${buildQuizShareUrl(slug, "copy")}`);
         toast.success("Link copied — share it!");
       }
     } catch {
@@ -639,6 +693,20 @@ function Results({
         >
           <Share2 className="h-4 w-4" /> Share your score
         </button>
+
+        {/* At the trigger surface, not a buried dashboard — the engagement rule
+            the mock result screen follows too. Signed-in only, because that is
+            the only case where the attempt was actually recorded. */}
+        {signedIn && (
+          <div className="mt-3">
+            <Link
+              href="/quiz/attempts"
+              className="text-xs font-medium text-brand-accent hover:underline"
+            >
+              View your past quizzes →
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Review */}
