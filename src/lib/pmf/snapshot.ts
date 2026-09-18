@@ -38,6 +38,43 @@ export const MIN_SEGMENT_N = 10;
 /** Minimum NPS responses before the headline score is reported. */
 export const MIN_NPS_RESPONSES = 10;
 
+/**
+ * Minimum share OPPORTUNITIES — attempts finished since the button existed —
+ * before the share rate is reported. Below it the counts show and the rate is
+ * withheld, like MIN_NPS_RESPONSES.
+ */
+export const MIN_SHARE_OPPORTUNITIES = 25;
+
+/**
+ * When the result-screen share affordance went live (commit 3205f652).
+ *
+ * THIS CONSTANT IS THE PANEL'S CORRECTNESS. `mock_attempts` holds hundreds of
+ * attempts that finished before the button existed, and dividing intents by all
+ * of them reports ~0% forever — a dead-feature reading of a feature nobody has
+ * had the chance to use. Only attempts submitted at or after this instant are
+ * opportunities.
+ *
+ * It is the COMMIT time, because the deploy time is not recoverable from the
+ * repo. That can only over-count opportunities and therefore under-state the
+ * rate, which is the same under-claim-never-over-claim direction as
+ * src/lib/seo/lastmod.ts.
+ */
+export const SHARE_LIVE_SINCE = "2026-09-18T05:52:55Z";
+
+/**
+ * How the panel names the metric, and the caveat it must carry.
+ *
+ * A share_events row records that a student tapped the affordance. It does NOT
+ * record that anything was sent: navigator.share() resolves when the OS sheet is
+ * dismissed and never reports the chosen app, and a wa.me tap can be abandoned
+ * in WhatsApp. The honest name is INTENT TO SHARE. These live here rather than
+ * in the page because a caveat only does its job where the number is read, and
+ * tests/pmf-snapshot.test.ts pins both.
+ */
+export const SHARE_LABEL = "Intent to share";
+export const SHARE_CAVEAT =
+  "A row records INTENT to share — a tap on the affordance, not a delivery: the OS sheet never reports whether anything was sent, and a WhatsApp hand-off can be abandoned. Read it alongside the inbound arrivals, never alone.";
+
 /** Retention horizons, in days since signup. */
 export const HORIZONS = [1, 7, 28] as const;
 
@@ -333,6 +370,68 @@ export function viewNps(input: { scores: readonly number[]; eligible: number }):
   };
 }
 
+// ── Share loop (0109) ───────────────────────────────────────────────────────
+
+export type ShareChannelCounts = {
+  /** wa.me deep link. */
+  whatsapp: number;
+  /** navigator.share() — the OS sheet. Destination app UNKNOWN; not a synonym for whatsapp. */
+  share: number;
+  /** Clipboard copy. */
+  copy: number;
+};
+
+export type ShareCounts = {
+  /** share_events rows. */
+  events: number;
+  /** Rows where the student ticked "include my score". */
+  withScore: number;
+  byChannel: ShareChannelCounts;
+  /** Per mock, most-shared first. */
+  byMock: { slug: string; events: number }[];
+  /**
+   * Attempts SUBMITTED at or after SHARE_LIVE_SINCE. The only admissible
+   * denominator — see that constant.
+   */
+  opportunities: number;
+  /** Accounts created carrying acq_campaign='mock-result' (migration 0106). */
+  inboundSignups: number;
+};
+
+export type ShareView = {
+  counts: ShareCounts;
+  /** Intents per opportunity, or null when below the floor. */
+  sharePct: number | null;
+  /** Share of intents that included the score, or null when there were no intents. */
+  scoreOptInPct: number | null;
+  /** Signups per intent, or null when nothing was shared. */
+  signupsPerShare: number | null;
+  reportable: boolean;
+};
+
+/**
+ * Interpret the share loop.
+ *
+ * `opportunities` is an INPUT, not something derived here from a total: the
+ * distinction between "attempts" and "attempts that could have seen the button"
+ * is the one this panel exists to get right, and a core that recomputed it from
+ * a grand total would be free to get it wrong.
+ *
+ * Note the asymmetry with the floor: a zero rate over a real sample IS reported.
+ * The floor suppresses noise, not bad news — once enough students have seen the
+ * button, "none of them tapped it" is a finding, not an absence of one.
+ */
+export function viewShare(counts: ShareCounts): ShareView {
+  const reportable = counts.opportunities >= MIN_SHARE_OPPORTUNITIES;
+  return {
+    counts,
+    sharePct: reportable ? pct(counts.events, counts.opportunities) : null,
+    scoreOptInPct: counts.events > 0 ? pct(counts.withScore, counts.events) : null,
+    signupsPerShare: counts.events > 0 ? pct(counts.inboundSignups, counts.events) : null,
+    reportable,
+  };
+}
+
 // ── Funnel ──────────────────────────────────────────────────────────────────
 
 export type FunnelCounts = {
@@ -405,6 +504,17 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     kinds: ["mock_started", "mock_submitted", "answer_wrong"],
     tracked: "full",
     lost: "",
+  },
+  {
+    surface: "Share the paper (mock result screen)",
+    via: "share_events (0109) + acq_campaign='mock-result' (0106)",
+    // A distribution act, not a learning one, so it is deliberately NOT a
+    // user_activity kind — see the 0109 header. It still belongs on this map:
+    // it is a product surface a student uses, and the map answers "what do we
+    // know when they do?".
+    kinds: [],
+    tracked: "partial",
+    lost: "Whether anything was actually SENT. navigator.share() resolves when the OS sheet is dismissed and never reports the chosen app, and a WhatsApp hand-off can be abandoned — so the outbound number is intent, not delivery. Delivery is only ever visible as a tagged inbound arrival.",
   },
   {
     surface: "Saved questions (/saved)",

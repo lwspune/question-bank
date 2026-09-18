@@ -4,7 +4,7 @@ import { EyeOff, TriangleAlert } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getSessionSuperadmin } from "@/lib/auth";
-import { getPmfSnapshot } from "@/lib/pmf/adminStats";
+import { getPmfSnapshot, getShareSnapshot } from "@/lib/pmf/adminStats";
 import {
   viewCohorts,
   viewFeatures,
@@ -17,6 +17,10 @@ import {
   MIN_LIFT_N,
   MIN_SEGMENT_N,
   MIN_NPS_RESPONSES,
+  viewShare,
+  MIN_SHARE_OPPORTUNITIES,
+  SHARE_LABEL,
+  SHARE_CAVEAT,
   type RetentionCell,
   type Tracked,
 } from "@/lib/pmf/snapshot";
@@ -56,6 +60,7 @@ export default async function PmfPage() {
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const snap = await getPmfSnapshot(12);
+  const share = viewShare(await getShareSnapshot());
   const funnel = signalFunnel(snap.funnel);
   const cohorts = viewCohorts(snap.cohorts);
   const features = viewFeatures(snap.features);
@@ -291,6 +296,51 @@ export default async function PmfPage() {
             </Link>
             .
           </p>
+        </section>
+
+        {/* ── Share loop (0109) ──────────────────────────────────────────── */}
+        <section className="space-y-4 rounded-lg border p-5">
+          <h2 className="text-sm font-semibold">Share loop</h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <StatCard
+              kind="text"
+              value={share.sharePct === null ? "n/a" : `${share.sharePct}%`}
+              label={
+                share.reportable
+                  ? `${SHARE_LABEL} per finished mock`
+                  : `${SHARE_LABEL} — only ${share.counts.opportunities} opportunities`
+              }
+            />
+            <StatCard
+              kind="text"
+              value={share.scoreOptInPct === null ? "n/a" : `${share.scoreOptInPct}%`}
+              label="Included their score"
+            />
+            <StatCard
+              kind="text"
+              value={share.signupsPerShare === null ? "n/a" : `${share.signupsPerShare}%`}
+              label="Signups per intent"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">
+            {share.counts.events} {SHARE_LABEL.toLowerCase()} events over{" "}
+            {share.counts.opportunities} finished mocks since the share button shipped — attempts
+            from before it existed are excluded, because dividing by them would report ~0% for a
+            feature nobody had the chance to use. A rate needs {MIN_SHARE_OPPORTUNITIES}{" "}
+            opportunities. Channels: {share.counts.byChannel.whatsapp} WhatsApp ·{" "}
+            {share.counts.byChannel.share} OS share sheet (destination app unknown) ·{" "}
+            {share.counts.byChannel.copy} copy link. Inbound: {share.counts.inboundSignups} signups
+            tagged <code>mock-result</code>. {SHARE_CAVEAT}
+          </p>
+          {share.counts.byMock.length > 0 && (
+            <ul className="space-y-1 text-xs text-muted-foreground">
+              {share.counts.byMock.map((m) => (
+                <li key={m.slug}>
+                  <span className="font-medium text-foreground">{m.events}</span> · {m.slug}
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
         {/* ── Instrumentation coverage ───────────────────────────────────── */}
