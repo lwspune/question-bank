@@ -60,6 +60,10 @@ export type ReportQuestion = {
 };
 
 export type ReportSubtopic = {
+  /** The lane's subject. Not rendered by the email — carried because a
+   *  subtopic name is unique only within its chapter and a chapter only within
+   *  its subject, so nothing downstream can build a link without it. */
+  subject: string;
   chapter: string;
   subtopic: string;
   /** Recoverable marks — the projection's own gap, pooled across their papers. */
@@ -89,6 +93,25 @@ export type MockReport = {
    *  skips those rather than mailing a score the result screen already showed. */
   hasFindings: boolean;
 };
+
+/**
+ * Shared presentation vocabulary. These live in the CORE rather than in either
+ * surface because the email and the result card describe the SAME findings: two
+ * copies would let one of them start rounding marks differently, and a student
+ * who reads both would see two numbers for one fact.
+ */
+
+/** "Algebra · Quadratic Equations", collapsing a missing half rather than
+ *  rendering a naked separator. */
+export function formatWhere(q: { chapter: string; subtopic: string }): string {
+  return [q.chapter, q.subtopic].filter(Boolean).join(" · ");
+}
+
+/** Marks are numeric; show a whole number where it is one. */
+export function formatMarks(n: number): string {
+  const r = Math.round(n * 10) / 10;
+  return Number.isInteger(r) ? String(r) : r.toFixed(1);
+}
 
 /** Peer accuracy by question id, 0-100. */
 export type PeerMap = Map<string, number>;
@@ -237,11 +260,12 @@ export function buildMockReport(
   const perf = buildPerformance(payload, now);
   const subtopics: ReportSubtopic[] = perf.lanes
     .filter((l) => l.exam === attempt.examName && subjects.has(l.subject))
-    .flatMap((l) => l.projection?.subtopicRows ?? [])
+    .flatMap((l) => (l.projection?.subtopicRows ?? []).map((r) => ({ ...r, subject: l.subject })))
     .filter((r) => !r.thin && r.tested && r.gap >= minGap && r.gap > 0)
     .sort((a, b) => b.gap - a.gap)
     .slice(0, PICK)
     .map((r) => ({
+      subject: r.subject,
       chapter: r.chapter,
       subtopic: r.subtopic,
       gap: r.gap,

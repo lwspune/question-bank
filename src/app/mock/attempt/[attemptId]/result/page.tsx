@@ -20,6 +20,9 @@ import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
+import Findings from "./Findings";
+import { getOwnPerformance } from "@/lib/performance/service";
+import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -64,6 +67,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // Past the gate → a mobile is on file. Load any existing feedback (to render
   // the widget vs a filled state) and decide whether to offer the WhatsApp opt-in.
   const feedback = await getMockFeedback(db, params.attemptId);
+  const report = await loadFindings(params.attemptId);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const pct = summary.maxScore > 0 ? Math.round((summary.score / summary.maxScore) * 100) : 0;
   const multiSection = mock.sections.length > 1;
@@ -132,6 +136,8 @@ export default async function MockResultPage({ params }: { params: Params }) {
           maxScore={summary.maxScore}
         />
 
+        {report && <Findings report={report} />}
+
         {/* Phase 3 — capture at the high-intent moment */}
         <MockFeedback
           attemptId={params.attemptId}
@@ -146,6 +152,30 @@ export default async function MockResultPage({ params }: { params: Params }) {
       </main>
     </>
   );
+}
+
+/**
+ * The findings card's data, and it is BEST-EFFORT ON PURPOSE.
+ *
+ * `get_own_performance` returns the student's whole answer history, so it is
+ * both the most expensive read on this page and the most likely to fail on a
+ * slow database. The score and the review below are the page's reason to exist
+ * and they are already in hand by this point — losing the diagnosis must not
+ * cost the student their result, so a failure logs at the boundary and renders
+ * nothing. Same discipline as the activity writer, which never blocks the
+ * action it is recording.
+ *
+ * An empty PeerMap: question_item_stats is staff-read by RLS. See Findings.tsx.
+ */
+async function loadFindings(attemptId: string): Promise<MockReport | null> {
+  try {
+    const payload = await getOwnPerformance();
+    if (!payload) return null;
+    return buildMockReport(payload, attemptId, new Map(), new Date());
+  } catch (e) {
+    console.error("mock result findings failed", e);
+    return null;
+  }
 }
 
 function Tally({ icon: Icon, value, label, tone }: { icon: typeof Check; value: number; label: string; tone: string }) {

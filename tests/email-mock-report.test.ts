@@ -154,3 +154,61 @@ describe("buildMockReport — guards", () => {
     expect(r!.hasFindings).toBe(false);
   });
 });
+
+/**
+ * The subtopic picks are the one POOLED section, and the only one a reader can
+ * act on directly — so they have to be linkable. A link needs the SUBJECT: a
+ * subtopic name is unique only within its chapter, a chapter only within its
+ * subject, and an NDA paper's lanes span nine of them.
+ *
+ * The email itself never renders the subject (it prints "chapter · subtopic").
+ * It is carried because the RESULT PAGE builds a /go/practice href from it, and
+ * deriving it a second time there would mean re-running the projection.
+ */
+describe("buildMockReport — subtopic picks carry their lane", () => {
+  const weightage = [
+    { exam: "NDA", subject: "Mathematics", chapter: "Algebra", subtopic: "Quadratics", q: 60 },
+    { exam: "NDA", subject: "Mathematics", chapter: "Trigonometry", subtopic: "Identities", q: 60 },
+  ];
+
+  /** Four judged answers in Quadratics, half of them wrong — past
+   *  MIN_JUDGED_FOR_CLAIM (so not thin) with a real gap left on the table. */
+  const facts = [
+    fact({ p: 1, q: "q1", c: 0, t: 0, r: "B", k: "A" }),
+    fact({ p: 2, q: "q2", c: 0, t: 0, r: "B", k: "A" }),
+    fact({ p: 3, q: "q3", c: 0, t: 0, r: "A", k: "A" }),
+    fact({ p: 4, q: "q4", c: 0, t: 0, r: "A", k: "A" }),
+  ];
+
+  /**
+   * A FOUR-question paper, not the 120-question default. buildPerformance drops
+   * any attempt answering less than ENGAGEMENT_FLOOR (20%) of its paper before
+   * a lane is built, so four facts against a declared 120 yields no projection
+   * and therefore no picks at all — which is also the live behaviour a barely
+   * engaged sitting gets, and why hasFindings can be false on a graded attempt.
+   */
+  const smallPaper = attempt({
+    totalQuestions: 4,
+    totalMarks: 10,
+    maxScore: 10,
+    score: 3.34,
+    sections: [{ key: "mathematics", label: "Mathematics", count: 4 }],
+  });
+
+  function withBank() {
+    const p = payload(facts, [smallPaper]);
+    return { ...p, weightage } as unknown as StudentPerformancePayload;
+  }
+
+  it("names the subject of every pick", () => {
+    const r = buildMockReport(withBank(), ATTEMPT, new Map(), new Date("2026-09-02T00:00:00Z"))!;
+    expect(r.subtopics.length).toBeGreaterThan(0);
+    for (const s of r.subtopics) expect(s.subject).toBe("Mathematics");
+  });
+
+  it("still names the chapter and subtopic the subject qualifies", () => {
+    const r = buildMockReport(withBank(), ATTEMPT, new Map(), new Date("2026-09-02T00:00:00Z"))!;
+    const quadratics = r.subtopics.find((s) => s.subtopic === "Quadratics");
+    expect(quadratics?.chapter).toBe("Algebra");
+  });
+});

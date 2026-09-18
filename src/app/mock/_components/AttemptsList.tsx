@@ -59,6 +59,11 @@ export default function AttemptsList({
           <li key={a.attemptId}>
             <Link
               href={href}
+              /* The finished rows point at the result page, which runs
+                 get_own_performance — one full answer history per link. Ten
+                 sittings on /me would be ten of those RPCs before a click.
+                 See tests/mock-result-no-prefetch.test.ts. */
+              prefetch={false}
               className="group flex items-center gap-4 p-3 transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none sm:p-4"
             >
               <div className="min-w-0 flex-1">

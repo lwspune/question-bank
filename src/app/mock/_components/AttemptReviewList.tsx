@@ -56,7 +56,10 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         ? "border-l-red-500"
         : "border-l-muted-foreground/40";
   return (
-    <li className={cn("rounded-lg border border-l-4 bg-card p-4", border)}>
+    /* The findings card at the top of the result page links to #q<n>, so each
+       card is the anchor for its own question. Position, not question id: it
+       is what the student saw on the paper and what the card names. */
+    <li id={`q${item.position}`} className={cn("scroll-mt-20 rounded-lg border border-l-4 bg-card p-4", border)}>
       <div className="flex items-center justify-between gap-2">
         <span className="font-mono text-xs text-muted-foreground">Q{item.position}</span>
         <PresentButton

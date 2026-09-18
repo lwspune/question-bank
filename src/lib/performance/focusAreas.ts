@@ -22,6 +22,7 @@ import {
   CHAPTER_PREREQS,
 } from "./conceptGraph";
 import { MIN_JUDGED_FOR_CLAIM, WEAK_BELOW, MASTERED_AT, type ChapterRow } from "./compute";
+import { goPracticeHref } from "./links";
 
 /** The one (exam, subject) pair with an authored prerequisite graph. */
 export const GRAPH_EXAM = "NDA";
@@ -48,9 +49,10 @@ function learnHref(chapter: string): string {
   return `/go/learn?chapter=${encodeURIComponent(chapter)}`;
 }
 
+/** Chapter-level Link C. The subtopic-bearing form is the shared helper's job;
+ *  this card is deliberately chapter-grained (a root cause is a chapter). */
 function practiceHref(exam: string, subject: string, chapter: string): string {
-  const p = new URLSearchParams({ exam, subject, chapter });
-  return `/go/practice?${p.toString()}`;
+  return goPracticeHref(exam, subject, chapter);
 }
 
 /**
