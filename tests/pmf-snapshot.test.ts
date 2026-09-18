@@ -400,6 +400,33 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     }
   });
 
+  it("STRUCTURAL: every activity kind is claimed by a surface, or explicitly exempt", () => {
+    // THE REVERSE of the assertion above, and its absence is exactly how the
+    // quiz funnel stayed invisible. `quiz_taken` was in ACTIVITY_KINDS and in
+    // the 0052 DB CHECK from the start, and carried a label in THREE surfaces —
+    // while /quiz appeared in SURFACE_COVERAGE not at all and no code ever
+    // emitted it. Checking only "surface -> kind" could never catch that; the
+    // map was not wrong about anything it mentioned, it simply did not mention
+    // the funnel.
+    //
+    // A kind may be exempt, but exempting it has to be a DELIBERATE act here
+    // rather than an omission somewhere else. Both current entries are reserved
+    // in the allowlist and the DB CHECK with no emitter anywhere in src/ or
+    // scripts/ — verified, not assumed:
+    const UNBUILT: string[] = [
+      "answer_correct", // reserved beside answer_wrong; only the WRONG half is emitted (drill fuel)
+      "drill_completed", // personalised weak-area drills are a future phase
+    ];
+    const claimed = new Set(SURFACE_COVERAGE.flatMap((s) => s.kinds));
+    for (const kind of ACTIVITY_KINDS) {
+      if (UNBUILT.includes(kind)) {
+        expect(claimed.has(kind), `${kind} is exempt as unbuilt but a surface claims it`).toBe(false);
+        continue;
+      }
+      expect(claimed.has(kind), `${kind} is emitted but no SURFACE_COVERAGE row accounts for it`).toBe(true);
+    }
+  });
+
   it("STRUCTURAL: any surface claiming full or partial tracking must say what records it", () => {
     // A surface cannot claim coverage without either an activity kind or an
     // explicit note — that combination is how a map silently stops being true.
