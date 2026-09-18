@@ -35,9 +35,20 @@ export const PRACTICE_BATCH_MAX = 50;
  * silently. Adding one means adding it here and teaching the RPC about it.
  *
  * NOT a surface: /blog and the guide prose itself. Those emit nothing because
- * they contain no discrete act — only "viewed", which is not practice.
+ * they contain no discrete act — only "viewed", which is not practice. Nor are
+ * the /notes Level-1 practice reps: those DO have a reveal, but the reps are
+ * authored editorial prose rather than bank rows, so there is no question id to
+ * record. The act exists and the referent does not — a different problem from
+ * this one, and not one a surface value can fix.
+ *
+ * `board` was added 2026-09-18, a day after `guide` and for the mirror-image
+ * reason. The board reader shares useRevealMeter with /browse, so it had been
+ * emitting since 0105 — with no surface, therefore under the bank default.
+ * Recorded-but-indistinguishable is the harder failure to spot: the events are
+ * all present, so nothing looks missing; they are simply filed under another
+ * product, and the textbook reader cannot be measured for retention at all.
  */
-export const PRACTICE_SURFACES = ["bank", "guide"] as const;
+export const PRACTICE_SURFACES = ["bank", "guide", "board"] as const;
 
 export type PracticeSurface = (typeof PRACTICE_SURFACES)[number];
 

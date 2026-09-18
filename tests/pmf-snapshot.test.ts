@@ -21,6 +21,7 @@ import {
   type SegmentRow,
 } from "@/lib/pmf/snapshot";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
+import { PRACTICE_SURFACES, DEFAULT_PRACTICE_SURFACE } from "@/lib/questions/practiceBatch";
 
 const cohort = (over: Partial<CohortRow> = {}): CohortRow => ({
   week: "2026-07-06",
@@ -132,6 +133,15 @@ describe("viewFeature — adoption and retention lift, with a floor", () => {
     // the page would render the composite key at a reader.
     const v = viewFeature(feature({ kind: "question_practiced:guide" }));
     expect(v.label).toBe("Guide worked examples");
+    expect(v.label).not.toContain(":");
+  });
+
+  it("labels the board reader's split key too", () => {
+    // Added 2026-09-18. /board shared useRevealMeter with /browse, so its
+    // reveals were recorded from 0105 onward — under the bank's surface, which
+    // made the textbook reader unmeasurable while looking instrumented.
+    const v = viewFeature(feature({ kind: "question_practiced:board" }));
+    expect(v.label).toBe("Board reader");
     expect(v.label).not.toContain(":");
   });
 
@@ -338,6 +348,50 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     const acq = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Acquisition"));
     expect(acq!.tracked).toBe("partial");
     expect(acq!.lost).toMatch(/backfill/i);
+  });
+
+  it("marks the BOARD READER as partial and as a surface of its OWN", () => {
+    // It was never dark: BoardReader has called useRevealMeter since 0105, so
+    // every reveal was recorded — with no surface, therefore under the bank's
+    // default. A row that is recorded but indistinguishable is worse than a
+    // dark one, because the coverage table reads as instrumented and the
+    // feature table silently attributes the reader's use to /browse.
+    const board = SURFACE_COVERAGE.find((s) => s.surface.startsWith("Board reader"));
+    expect(board).toBeDefined();
+    expect(board!.tracked).toBe("partial");
+    expect(board!.kinds).toContain("question_practiced");
+    expect(board!.practiceSurface).toBe("board");
+    // The split starts at deploy: earlier reveals carry no surface at all and
+    // COALESCE puts them in the bank's row forever. Unbackfillable, so it has
+    // to be said here rather than left for a reader to infer.
+    expect(board!.lost).toMatch(/2026-09-18|before/i);
+  });
+
+  it("STRUCTURAL: reveal surfaces are a BIJECTION — one coverage row, one value, one label", () => {
+    // THE GUARD FOR THIS WHOLE CLASS. /guide (2026-09-17) and /board
+    // (2026-09-18) were both recording reveals that nothing could tell apart,
+    // and neither was detectable from the outside: the events existed, the
+    // coverage row claimed tracking, and only reading the call site revealed
+    // that the surface argument was missing. A fourth reveal surface now fails
+    // here unless it is declared, given a PracticeSurface of its own, and given
+    // a human label — which is exactly the set of steps that was skipped twice.
+    const rows = SURFACE_COVERAGE.filter((s) => s.kinds.includes("question_practiced"));
+    for (const r of rows) expect(r.practiceSurface, r.surface).toBeDefined();
+
+    const declared = rows.map((r) => r.practiceSurface!);
+    // No two surfaces share a value — that sharing IS the defect.
+    expect(new Set(declared).size).toBe(rows.length);
+    // And no value exists without a row, so the list cannot outgrow the page.
+    expect([...declared].sort()).toEqual([...PRACTICE_SURFACES].sort());
+
+    // Every surface renders as prose in the feature table, never a raw key.
+    for (const surface of PRACTICE_SURFACES) {
+      const key =
+        surface === DEFAULT_PRACTICE_SURFACE ? "question_practiced" : `question_practiced:${surface}`;
+      const label = viewFeature(feature({ kind: key })).label;
+      expect(label, key).not.toBe(key);
+      expect(label, key).not.toContain(":");
+    }
   });
 
   it("every kind named by a surface is a real activity kind, so the map cannot rot", () => {

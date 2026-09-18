@@ -29,6 +29,7 @@
  */
 import { computeNps, type NpsRollup } from "@/lib/feedback/nps";
 import type { ActivityKind } from "@/lib/activity/events";
+import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 
 /** Minimum users in EACH arm before a retention lift is reported. */
 export const MIN_LIFT_N = 10;
@@ -146,6 +147,7 @@ export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
  */
 export const SURFACE_FEATURE_LABELS: Record<string, string> = {
   "question_practiced:guide": "Guide worked examples",
+  "question_practiced:board": "Board reader",
 };
 
 export type FeatureRow = {
@@ -376,6 +378,19 @@ export type SurfaceCoverage = {
   via: string;
   /** What a PMF read cannot see because of this gap. */
   lost: string;
+  /**
+   * For a surface that records answer reveals: the PracticeSurface its rows are
+   * written under, and therefore which feature row it lands in.
+   *
+   * It exists to be ASSERTED, not rendered. Twice now a surface has shared the
+   * bank's value and been measured as the bank — /guide until 2026-09-17,
+   * /board until 2026-09-18 — and in both cases everything visible from outside
+   * looked correct: the events were written, the coverage row claimed tracking,
+   * and only the call site showed the argument was missing. The spec now
+   * requires a bijection between the rows claiming `question_practiced` and
+   * PRACTICE_SURFACES, so a fourth reveal surface cannot repeat it.
+   */
+  practiceSurface?: PracticeSurface;
 };
 
 /**
@@ -407,17 +422,19 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Question bank (/browse, /questions)",
-    via: "user_activity via the reveal beacon (0105)",
+    via: "user_activity via the reveal beacon (surface='bank')",
     kinds: ["question_practiced"],
+    practiceSurface: "bank",
     tracked: "partial",
     lost: "Only a SIGNED-IN student's answer reveals are recorded. Anonymous visitors — most of the traffic, and the whole point of the 317 landing pages — leave nothing, by design: attributing them over time would need a persistent device id, on an audience that is largely under 18.",
   },
   {
     surface: "Board reader (/board)",
-    via: "user_activity via the reveal beacon (0105)",
+    via: "user_activity via the reveal beacon (surface='board', migration 0108)",
     kinds: ["question_practiced"],
+    practiceSurface: "board",
     tracked: "partial",
-    lost: "Answer reveals are recorded (signed-in only); opening or reading a chapter is not.",
+    lost: "Answer reveals are recorded (signed-in only); opening or reading a chapter is not. The reader is reported separately only from 2026-09-18: it shared the bank's reveal hook and wrote no surface of its own, so every earlier reveal is indistinguishable from a /browse one and stays in the bank's row. Not backfillable — the distinction was never recorded.",
   },
   {
     surface: "Notes (/notes)",
@@ -435,8 +452,9 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Guides (/guide)",
-    via: "user_activity via the reveal beacon (surface='guide')",
+    via: "user_activity via the reveal beacon (surface='guide', migration 0107)",
     kinds: ["question_practiced"],
+    practiceSurface: "guide",
     tracked: "partial",
     lost: "Answer reveals inside a worked example are recorded (signed-in only); reading the prose — a playbook, a trap page, a strategy page — is not. Until 2026-09-17 this row claimed guides were a read-only surface that emits nothing, which was never true: the worked-example card has always had the same three-stage reveal as /browse, and the beacon had simply not been wired into it.",
   },

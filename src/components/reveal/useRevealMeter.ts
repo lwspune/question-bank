@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { revealDecision, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
 import { recordPractice } from "./practiceBeacon";
+import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 
 const KEY = "qb_revealed";
 
@@ -31,8 +32,15 @@ function writeIds(ids: string[]): void {
  * get FREE_REVEAL_LIMIT distinct-question reveals (persisted in localStorage);
  * signed-in viewers are unlimited. `attemptReveal(id)` returns whether the
  * reveal is allowed and consumes budget on the first reveal of a new question.
+ *
+ * `surface` is REQUIRED and has no default on purpose. It defaulted to the bank
+ * for as long as this hook has existed, which is why /board spent from 0105 to
+ * 2026-09-18 recording its reveals as /browse reveals: the caller that needed to
+ * say something different was never asked to. A default here is silent
+ * mislabelling with a compile-time fix available, so the next surface to adopt
+ * the hook has to state which product it is.
  */
-export function useRevealMeter() {
+export function useRevealMeter(surface: PracticeSurface) {
   const { signedIn, loading } = useSignedIn();
   const [ids, setIds] = useState<string[]>([]);
 
@@ -50,14 +58,15 @@ export function useRevealMeter() {
         writeIds(decision.nextIds);
         setIds(decision.nextIds);
       }
-      // Persist the reveal as a practice signal (migration 0105). Signed-in only
-      // — recordPractice no-ops for anon. This is the ONLY place the bank tells
-      // the server it was used; everything else about /browse and /questions is
-      // invisible by construction.
-      if (decision.allow) recordPractice(questionId, signedIn);
+      // Persist the reveal as a practice signal (migration 0105), tagged with
+      // the surface that revealed it (0107/0108). Signed-in only — recordPractice
+      // no-ops for anon. This is the ONLY place the bank or the board reader
+      // tells the server it was used; everything else about /browse,
+      // /questions and /board is invisible by construction.
+      if (decision.allow) recordPractice(questionId, signedIn, surface);
       return decision.allow;
     },
-    [signedIn, loading]
+    [signedIn, loading, surface]
   );
 
   const remaining = signedIn ? Infinity : Math.max(0, FREE_REVEAL_LIMIT - ids.length);

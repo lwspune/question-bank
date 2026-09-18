@@ -24,6 +24,26 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 
 ### 2026-09-01 to 2026-09-16 — full narratives (digested 2026-09-14; completed 2026-09-16)
 
+**2026-09-18 (fourth) — the /board reader was being measured as /browse. `question_practiced:board` (migration 0108) splits it out; the hook that hid it now refuses to guess.**
+
+The question that started it was "aren't we tracking the board page for PMF?", asked the day after 0107 split `/guide` out of the bank's feature row. The answer was yes and no, and the "no" half is the interesting one.
+
+**It was never dark.** `BoardReader` has called `useRevealMeter` since 0105 — the same hook `/browse` uses — so every answer reveal in the textbook reader was written to `user_activity` from the day the beacon shipped. What it never carried was a surface: `PRACTICE_SURFACES` was `["bank","guide"]`, `useRevealMeter` passed no third argument, and `recordPractice` defaulted to `bank`. Every board reveal was therefore recorded correctly as an act and filed under the wrong product.
+
+**That is a harder defect to see than an un-instrumented surface**, which is why it survived a pass that was explicitly looking for exactly this. Everything observable from outside was right: the events were in the log, `SURFACE_COVERAGE` carried a "Board reader (/board)" row claiming partial tracking via the beacon, and the sentence in it ("answer reveals are recorded (signed-in only)") was TRUE. Only the call site showed the argument was missing. 0107 fixed a surface that emitted nothing; this fixed one that emitted into someone else's row, and the visible symptom of the second is nil.
+
+**The real fix is the required argument, not the migration.** `useRevealMeter(surface: PracticeSurface)` now has no default, so the next surface to adopt the hook must state which product it is. A default is precisely what let the board reader inherit `bank` in silence, and it is a compile-time problem with a compile-time fix. The WIRE-level default in `parsePracticeBatch` stays `bank` and must not be confused with it: that one exists because a tab opened before a deploy still `sendBeacon`s the old `{questionIds}` body on page-hide, and those reveals genuinely were bank reveals.
+
+**Nothing is backfillable.** All 63 existing `question_practiced` rows (37 of them from self-serve students, the rest staff) carry no surface at all, and `COALESCE(metadata->>'surface','bank')` puts them — including the board's share — in the bank's key permanently. The distinction was never recorded, so there is nothing to recover it from. The coverage row now says the board's row counts from 2026-09-18 rather than leaving a reader to infer a start date from a shape.
+
+**A second overclaim fell out of it.** The features table badges a zero-event row "no events ever". For a surface-split key that is a statement the log cannot make: the key counts only from the day its surface began being written. Changed to "no events recorded" — one word, and it applies to the guide row shipped the day before as well.
+
+**The durable artifact is a bijection test.** `SurfaceCoverage` gained a `practiceSurface` field that exists to be asserted rather than rendered, and `tests/pmf-snapshot.test.ts` now requires that every coverage row claiming `question_practiced` declares a distinct `PracticeSurface`, that the declared set equals `PRACTICE_SURFACES` exactly, and that each one renders a human label rather than a raw composite key. Two reveal surfaces went missing in two days by skipping exactly those steps; a fourth now fails the spec instead.
+
+**One surface was found and deliberately NOT added.** `/notes` `PracticeSet` has a per-rep "Reveal answer" button too, but its reps are authored editorial `PracticeProblem` objects — prompt and answer strings with no bank row behind them. The act exists and the referent does not, so recording it would mean inventing a synthetic id. That is a different problem from this one and a surface value cannot solve it. `/books` was excluded for the plainer reason that it is superadmin-only.
+
+**Verified:** the RPC was diffed before and after against live data — 10 feature rows became 11, the new `question_practiced:board` row reads 0/0, and every pre-existing row is identical (`mock_submitted` 142/611, `answer_wrong` 130/10232, `question_bookmarked` 50/1111, `note_checkpoint` 26/116, `chapter_mastered` 5/56, `question_practiced` 4/37). The beacon firing with `surface: "board"` is NOT proven by any gate here: the hook has no test (no jsdom in this repo), `/board` is dynamic, and the reveal is click-gated — compile and pure logic only, with the browser pass handed over.
+
 **2026-09-18 (third) — NCERT Class 10 Mathematics complete: 14 chapters, 587 questions.**
 
 The full narrative for the digest in CLAUDE.md.

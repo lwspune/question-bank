@@ -232,9 +232,14 @@ export default async function PmfPage() {
                   <tr key={f.kind} className="border-b last:border-0">
                     <td className="py-2">
                       {f.label}
+                      {/* "recorded", not "ever". A surface-split key counts only
+                          from the day its surface began being written — the board
+                          reader's reveals landed under the bank until 2026-09-18 —
+                          so "ever" would be a claim about usage that this log
+                          cannot make. See SURFACE_COVERAGE below for each start. */}
                       {f.verdict === "dead" && (
                         <span className="ml-2 rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-                          no events ever
+                          no events recorded
                         </span>
                       )}
                     </td>

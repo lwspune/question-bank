@@ -66,7 +66,9 @@ export default function BoardReader({
   // Which corpus is on screen. Opens on the textbook — /board is the book
   // reader and the URL names a chapter of it.
   const [showPyqs, setShowPyqs] = useState(false);
-  const meter = useRevealMeter();
+  // "board", not the bank: a reveal here is the textbook reader being used, and
+  // until 2026-09-18 it was recorded as a /browse reveal and measured as one.
+  const meter = useRevealMeter("board");
   const mobilePrompt = useMobilePrompt();
   // Which sections open on load. Decided HERE rather than inside GroupSection
   // because it depends on a group's SIBLINGS: a lone group has no outline to

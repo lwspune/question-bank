@@ -115,6 +115,17 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
     expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "guide" });
   });
 
+  it("carries the board surface through — the reader is its own product", () => {
+    // /board was emitting from day one (it shares useRevealMeter with /browse)
+    // but had no value of its own, so every reveal in the textbook reader took
+    // the bank default and vanished into the bank's row. Recorded-but-
+    // indistinguishable is the failure this list exists to prevent, and it is
+    // harder to notice than a dark surface: the events are there, just filed
+    // under another product.
+    const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "board" });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "board" });
+  });
+
   it("REJECTS an unknown surface rather than falling back to the bank", () => {
     // A silent fallback would file guide reveals as bank reveals — the exact
     // mislabelling this field exists to prevent, and invisible from both ends.
@@ -130,6 +141,6 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
   });
 
   it("keeps the surface list closed — it is written into metadata and queried by name", () => {
-    expect(PRACTICE_SURFACES).toEqual(["bank", "guide"]);
+    expect(PRACTICE_SURFACES).toEqual(["bank", "guide", "board"]);
   });
 });

@@ -101,7 +101,7 @@ export default function QuestionCard({
 
   // Metered answer reveal: anon viewers get a few free reveals, then a sign-in
   // nudge. A question already revealed is free to re-open (no double-charge).
-  const meter = useRevealMeter();
+  const meter = useRevealMeter("bank");
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
   function tryReveal(): boolean {
