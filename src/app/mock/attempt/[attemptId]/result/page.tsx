@@ -18,6 +18,7 @@ import { needsWhatsappPrompt } from "@/lib/profile/whatsapp";
 import AttemptReviewList from "@/app/mock/_components/AttemptReviewList";
 import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
+import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
 
 export const metadata: Metadata = { robots: { index: false } };
@@ -119,6 +120,17 @@ export default async function MockResultPage({ params }: { params: Params }) {
             <Link href="/mock">All mock tests</Link>
           </Button>
         </div>
+
+        {/* The distribution loop: a finished mock is the moment a student has
+            something worth passing on, and the paper they just sat is a thing
+            their study group can open. Offer only — never a gate, never
+            rewarded. See ShareResult + lib/mocks/share.ts. */}
+        <ShareResult
+          slug={mock.slug}
+          title={mock.title}
+          score={summary.score}
+          maxScore={summary.maxScore}
+        />
 
         {/* Phase 3 — capture at the high-intent moment */}
         <MockFeedback
