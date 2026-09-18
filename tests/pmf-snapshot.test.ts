@@ -419,10 +419,13 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     // rather than an omission somewhere else. Both current entries are reserved
     // in the allowlist and the DB CHECK with no emitter anywhere in src/ or
     // scripts/ — verified, not assumed:
-    const UNBUILT: string[] = [
-      "answer_correct", // reserved beside answer_wrong; only the WRONG half is emitted (drill fuel)
-      "drill_completed", // personalised weak-area drills are a future phase
-    ];
+    // EMPTY since 2026-09-19, and that is the point: both former entries were
+    // claimed by /drill the day the weak-area drill shipped. `answer_correct`
+    // now has an emitter (the drill grades server-side and records both
+    // verdicts) and `drill_completed` is the drill's own feature event. An
+    // empty list is not a reason to delete the check — the next kind added to
+    // ACTIVITY_KINDS without a surface must still fail here.
+    const UNBUILT: string[] = [];
     const claimed = new Set(SURFACE_COVERAGE.flatMap((s) => s.kinds));
     for (const kind of ACTIVITY_KINDS) {
       if (UNBUILT.includes(kind)) {
