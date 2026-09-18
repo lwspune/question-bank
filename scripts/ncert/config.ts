@@ -2922,6 +2922,46 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Nature of Roots and the Discriminant",
     ],
   },
+
+  // ── Ch.5 Arithmetic Progressions (10th). 24pp, Examples 1-16 + Ex 5.1 (28
+  //    items) / 5.2 (30) / 5.3 (35) / 5.4 Optional (5). 98 exercise items and 114
+  //    rows — the BIGGEST chapter in the book, more than the last three combined.
+  //    (Counted from the MERGED output, not by hand: hand-counting the exercise
+  //    headings under-reported 5.2 and 5.3 by one each.)
+  //
+  //    1. **EX 5.4 IS MARKED "(Optional)*"** and footnoted "These exercises are
+  //       not from the examination point of view." That is a FOURTH block shape
+  //       this book had not shown before. It is NOT a Miscellaneous — Class 10
+  //       genuinely has none — so it lands as its own section_group with
+  //       kind:"exercise", named exactly as the book prints it.
+  //
+  //    2. **EX 5.2 CARRIES THREE HAZARDS AT ONCE.** Q1 is a fill-in TABLE (five
+  //       rows, each its own sub-item, keyed separately); Q2 (i)-(ii) are genuine
+  //       4-option MCQs — the book's third and fourth, beyond the Ex 8.2 / Ex
+  //       10.2 pair the lane was scoped around; Q3's blanks are drawn as BOXES in
+  //       the graphics layer, so the text layer shows a gap and nothing else.
+  //
+  //    3. Five figure ANCHORS, all in the tail: Fig 5.4 (spiral), 5.5 (log
+  //       stack), 5.6 (potato race) in Ex 5.3 Q18-20, and Fig 5.7 (ladder),
+  //       5.8 (terrace) in Ex 5.4 Q3/Q5 — each introduced by "as shown in" or
+  //       "(see Fig ...)", which is the book pointing AT the figure.
+  c10ArithmeticProgressions: {
+    id: "c10ArithmeticProgressions",
+    chapterName: "Arithmetic Progressions",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__ArithmeticProgressions.pdf",
+    pdf: cls10Maths("05. Arithmetic Progressions.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [3, 4, 5], // Ex 5.1+5.2 on p3, Ex 5.3 on p4, Ex 5.4 heads p5
+    note: "NCERT (CBSE Class 10) — Arithmetic Progressions (Chapter 5, NCERT Mathematics)",
+    subtopics: [
+      "Arithmetic Progressions and Common Difference",
+      "nth Term of an AP",
+      "Sum of First n Terms of an AP",
+      "Harder AP Problems (Optional Exercise)",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

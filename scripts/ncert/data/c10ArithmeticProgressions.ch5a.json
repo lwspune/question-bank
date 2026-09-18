@@ -1,0 +1,454 @@
+[
+  {
+    "ref": "5.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "stem": "For the AP : \\(\\dfrac{3}{2}\\), \\(\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\), \\(-\\dfrac{3}{2}\\), . . ., write the first term \\(a\\) and the common difference \\(d\\).",
+    "solution": "Here, \\(a = \\dfrac{3}{2}\\) and \\(d = \\dfrac{1}{2} - \\dfrac{3}{2} = -1\\).\n\nRemember that we can find \\(d\\) using any two consecutive terms, once we know that the numbers are in AP."
+  },
+  {
+    "ref": "5.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "stem": "Which of the following list of numbers form an AP? If they form an AP, write the next two terms :\n\n(i) 4, 10, 16, 22, . . .\n\n(ii) 1, \\(-1\\), \\(-3\\), \\(-5\\), . . .\n\n(iii) \\(-2\\), 2, \\(-2\\), 2, \\(-2\\), . . .\n\n(iv) 1, 1, 1, 2, 2, 2, 3, 3, 3, . . .",
+    "solution": "**(i)** \\(a_2 - a_1 = 10 - 4 = 6\\), \\(a_3 - a_2 = 16 - 10 = 6\\), \\(a_4 - a_3 = 22 - 16 = 6\\).\n\ni.e., \\(a_{k+1} - a_k\\) is the same every time. So, the given list of numbers forms an AP with the common difference \\(d = 6\\).\n\nThe next two terms are \\(22 + 6 = 28\\) and \\(28 + 6 = 34\\).\n\n**(ii)** \\(a_2 - a_1 = -1 - 1 = -2\\), \\(a_3 - a_2 = -3 - (-1) = -2\\), \\(a_4 - a_3 = -5 - (-3) = -2\\).\n\nSo, the given list of numbers forms an AP with the common difference \\(d = -2\\).\n\nThe next two terms are \\(-5 + (-2) = -7\\) and \\(-7 + (-2) = -9\\).\n\n**(iii)** \\(a_2 - a_1 = 2 - (-2) = 4\\) and \\(a_3 - a_2 = -2 - 2 = -4\\).\n\nAs \\(a_2 - a_1 \\neq a_3 - a_2\\), the given list of numbers does not form an AP.\n\n**(iv)** \\(a_2 - a_1 = 1 - 1 = 0\\), \\(a_3 - a_2 = 1 - 1 = 0\\), \\(a_4 - a_3 = 2 - 1 = 1\\).\n\nHere \\(a_2 - a_1 = a_3 - a_2 \\neq a_4 - a_3\\). So, the given list of numbers does not form an AP."
+  },
+  {
+    "ref": "5.2 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "EASY",
+    "stem": "Find the 10th term of the AP : 2, 7, 12, . . .",
+    "solution": "Here, \\(a = 2\\), \\(d = 7 - 2 = 5\\) and \\(n = 10\\).\n\nWe have \\(a_n = a + (n - 1)d\\).\n\nSo, \\(a_{10} = 2 + (10 - 1) \\times 5 = 2 + 45 = 47\\).\n\nTherefore, the 10th term of the given AP is 47."
+  },
+  {
+    "ref": "5.2 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "MODERATE",
+    "stem": "Which term of the AP : 21, 18, 15, . . . is \\(-81\\)? Also, is any term 0? Give reason for your answer.",
+    "solution": "Here, \\(a = 21\\), \\(d = 18 - 21 = -3\\) and \\(a_n = -81\\), and we have to find \\(n\\).\n\nAs \\(a_n = a + (n - 1)d\\), we have\n\n\\(-81 = 21 + (n - 1)(-3)\\), i.e., \\(-81 = 24 - 3n\\), i.e., \\(-105 = -3n\\).\n\nSo, \\(n = 35\\). Therefore, the 35th term of the given AP is \\(-81\\).\n\nNext, we want to know if there is any \\(n\\) for which \\(a_n = 0\\). If such an \\(n\\) is there, then\n\n\\(21 + (n - 1)(-3) = 0\\), i.e., \\(3(n - 1) = 21\\), i.e., \\(n = 8\\).\n\nSo, the eighth term is 0."
+  },
+  {
+    "ref": "5.2 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "EASY",
+    "stem": "Determine the AP whose 3rd term is 5 and the 7th term is 9.",
+    "solution": "We have \\(a_3 = a + (3 - 1)d = a + 2d = 5\\)  ... (1)\n\nand \\(a_7 = a + (7 - 1)d = a + 6d = 9\\)  ... (2)\n\nSolving the pair of linear equations (1) and (2), we get \\(a = 3\\), \\(d = 1\\).\n\nHence, the required AP is 3, 4, 5, 6, 7, . . ."
+  },
+  {
+    "ref": "5.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "MODERATE",
+    "stem": "Check whether 301 is a term of the list of numbers 5, 11, 17, 23, . . .",
+    "solution": "We have \\(a_2 - a_1 = 11 - 5 = 6\\), \\(a_3 - a_2 = 17 - 11 = 6\\), \\(a_4 - a_3 = 23 - 17 = 6\\).\n\nAs \\(a_{k+1} - a_k\\) is the same for \\(k = 1, 2, 3\\), etc., the given list of numbers is an AP.\n\nNow, \\(a = 5\\) and \\(d = 6\\). Let 301 be a term, say the \\(n\\)th term of this AP.\n\nWe know that \\(a_n = a + (n - 1)d\\), so \\(301 = 5 + (n - 1) \\times 6\\), i.e., \\(301 = 6n - 1\\).\n\nSo, \\(n = \\dfrac{302}{6} = \\dfrac{151}{3}\\).\n\nBut \\(n\\) should be a positive integer. So, 301 is not a term of the given list of numbers."
+  },
+  {
+    "ref": "5.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "EASY",
+    "stem": "How many two-digit numbers are divisible by 3?",
+    "solution": "The list of two-digit numbers divisible by 3 is 12, 15, 18, . . ., 99.\n\nIs this an AP? Yes it is. Here \\(a = 12\\), \\(d = 3\\), \\(a_n = 99\\).\n\nAs \\(a_n = a + (n - 1)d\\), we have \\(99 = 12 + (n - 1) \\times 3\\),\n\ni.e., \\(87 = (n - 1) \\times 3\\), i.e., \\(n - 1 = \\dfrac{87}{3} = 29\\), i.e., \\(n = 30\\).\n\nSo, there are 30 two-digit numbers divisible by 3."
+  },
+  {
+    "ref": "5.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "MODERATE",
+    "stem": "Find the 11th term from the last term (towards the first term) of the AP : 10, 7, 4, . . ., \\(-62\\).",
+    "solution": "Here \\(a = 10\\), \\(d = 7 - 10 = -3\\), \\(l = -62\\), where \\(l = a + (n - 1)d\\).\n\nTo find the 11th term from the last term, we will first find the total number of terms in the AP.\n\n\\(-62 = 10 + (n - 1)(-3)\\), i.e., \\(-72 = (n - 1)(-3)\\), i.e., \\(n - 1 = 24\\), or \\(n = 25\\).\n\nSo, there are 25 terms in the given AP.\n\nThe 11th term from the last term will be the 15th term. (Note that it will not be the 14th term. Why?)\n\nSo, \\(a_{15} = 10 + (15 - 1)(-3) = 10 - 42 = -32\\),\n\ni.e., the 11th term from the last term is \\(-32\\).\n\n**Alternative Solution:** If we write the given AP in the reverse order, then \\(a = -62\\) and \\(d = 3\\). So the question becomes finding the 11th term with these \\(a\\) and \\(d\\):\n\n\\(a_{11} = -62 + (11 - 1) \\times 3 = -62 + 30 = -32\\).\n\nSo, the 11th term, which is now the required term, is \\(-32\\)."
+  },
+  {
+    "ref": "5.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "MODERATE",
+    "stem": "A sum of ₹ 1000 is invested at 8% simple interest per year. Calculate the interest at the end of each year. Do these interests form an AP? If so, find the interest at the end of 30 years making use of this fact.",
+    "solution": "We know that the formula to calculate simple interest is Simple Interest \\(= \\dfrac{P \\times R \\times T}{100}\\).\n\nSo, the interest at the end of the 1st year \\(= ₹\\,\\dfrac{1000 \\times 8 \\times 1}{100} = \\) ₹ 80.\n\nThe interest at the end of the 2nd year \\(= ₹\\,\\dfrac{1000 \\times 8 \\times 2}{100} = \\) ₹ 160.\n\nThe interest at the end of the 3rd year \\(= ₹\\,\\dfrac{1000 \\times 8 \\times 3}{100} = \\) ₹ 240.\n\nSimilarly, we can obtain the interest at the end of the 4th year, 5th year, and so on. So the interest (in ₹) at the end of the 1st, 2nd, 3rd, . . . years respectively is\n\n80, 160, 240, . . .\n\nIt is an AP as the difference between consecutive terms in the list is 80, i.e., \\(d = 80\\). Also, \\(a = 80\\).\n\nSo, to find the interest at the end of 30 years, we find \\(a_{30}\\):\n\n\\(a_{30} = a + (30 - 1)d = 80 + 29 \\times 80 = 2400\\).\n\nSo, the interest at the end of 30 years will be ₹ 2400."
+  },
+  {
+    "ref": "5.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "nth Term of an AP",
+    "difficulty": "EASY",
+    "stem": "In a flower bed, there are 23 rose plants in the first row, 21 in the second, 19 in the third, and so on. There are 5 rose plants in the last row. How many rows are there in the flower bed?",
+    "solution": "The numbers of rose plants in the 1st, 2nd, 3rd, . . . rows are 23, 21, 19, . . ., 5.\n\nIt forms an AP. Let the number of rows in the flower bed be \\(n\\).\n\nThen \\(a = 23\\), \\(d = 21 - 23 = -2\\), \\(a_n = 5\\).\n\nAs \\(a_n = a + (n - 1)d\\), we have \\(5 = 23 + (n - 1)(-2)\\),\n\ni.e., \\(-18 = (n - 1)(-2)\\), i.e., \\(n = 10\\).\n\nSo, there are 10 rows in the flower bed."
+  },
+  {
+    "ref": "5.3 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "EASY",
+    "stem": "Find the sum of the first 22 terms of the AP : 8, 3, \\(-2\\), . . .",
+    "solution": "Here \\(a = 8\\), \\(d = 3 - 8 = -5\\), \\(n = 22\\).\n\nWe know that \\(S = \\dfrac{n}{2}\\left[2a + (n - 1)d\\right]\\).\n\nTherefore, \\(S = \\dfrac{22}{2}\\left[16 + 21(-5)\\right] = 11(16 - 105) = 11(-89) = -979\\).\n\nSo, the sum of the first 22 terms of the AP is \\(-979\\)."
+  },
+  {
+    "ref": "5.3 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "MODERATE",
+    "stem": "If the sum of the first 14 terms of an AP is 1050 and its first term is 10, find the 20th term.",
+    "solution": "Here \\(S_{14} = 1050\\), \\(n = 14\\), \\(a = 10\\).\n\nAs \\(S_n = \\dfrac{n}{2}\\left[2a + (n - 1)d\\right]\\), so\n\n\\(1050 = \\dfrac{14}{2}\\left[20 + 13d\\right] = 140 + 91d\\),\n\ni.e., \\(910 = 91d\\), or \\(d = 10\\).\n\nTherefore, \\(a_{20} = 10 + (20 - 1) \\times 10 = 200\\), i.e., the 20th term is 200."
+  },
+  {
+    "ref": "5.3 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "HARD",
+    "stem": "How many terms of the AP : 24, 21, 18, . . . must be taken so that their sum is 78?",
+    "solution": "Here \\(a = 24\\), \\(d = 21 - 24 = -3\\), \\(S_n = 78\\). We need to find \\(n\\).\n\nWe know that \\(S_n = \\dfrac{n}{2}\\left[2a + (n - 1)d\\right]\\).\n\nSo, \\(78 = \\dfrac{n}{2}\\left[48 + (n - 1)(-3)\\right] = \\dfrac{n}{2}\\left[51 - 3n\\right]\\),\n\nor \\(3n^2 - 51n + 156 = 0\\), or \\(n^2 - 17n + 52 = 0\\), or \\((n - 4)(n - 13) = 0\\),\n\nor \\(n = 4\\) or \\(13\\).\n\nBoth values of \\(n\\) are admissible. So, the number of terms is either 4 or 13.\n\n**Remarks:**\n\n1. In this case, the sum of the first 4 terms \\(=\\) the sum of the first 13 terms \\(= 78\\).\n\n2. Two answers are possible because the sum of the terms from the 5th to the 13th will be zero. This is because \\(a\\) is positive and \\(d\\) is negative, so that some terms will be positive and some others negative, and will cancel out each other."
+  },
+  {
+    "ref": "5.3 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "EASY",
+    "stem": "Find the sum of :\n\n(i) the first 1000 positive integers\n\n(ii) the first \\(n\\) positive integers",
+    "solution": "**(i)** Let \\(S = 1 + 2 + 3 + \\cdots + 1000\\).\n\nUsing the formula \\(S_n = \\dfrac{n(a + l)}{2}\\) for the sum of the first \\(n\\) terms of an AP, we have\n\n\\(S_{1000} = \\dfrac{1000(1 + 1000)}{2} = 500 \\times 1001 = 500500\\).\n\nSo, the sum of the first 1000 positive integers is 500500.\n\n**(ii)** Let \\(S_n = 1 + 2 + 3 + \\cdots + n\\). Here \\(a = 1\\) and the last term \\(l\\) is \\(n\\).\n\nTherefore, \\(S_n = \\dfrac{n(1 + n)}{2}\\), or \\(S_n = \\dfrac{n(n + 1)}{2}\\).\n\nSo, the sum of the first \\(n\\) positive integers is given by \\(S_n = \\dfrac{n(n + 1)}{2}\\)."
+  },
+  {
+    "ref": "5.3 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "MODERATE",
+    "stem": "Find the sum of first 24 terms of the list of numbers whose \\(n\\)th term is given by \\(a_n = 3 + 2n\\).",
+    "solution": "As \\(a_n = 3 + 2n\\), so\n\n\\(a_1 = 3 + 2 = 5\\), \\(a_2 = 3 + 2 \\times 2 = 7\\), \\(a_3 = 3 + 2 \\times 3 = 9\\), . . .\n\nThe list of numbers becomes 5, 7, 9, 11, . . .\n\nHere \\(7 - 5 = 9 - 7 = 11 - 9 = 2\\) and so on. So it forms an AP with common difference \\(d = 2\\).\n\nTo find \\(S_{24}\\), we have \\(n = 24\\), \\(a = 5\\), \\(d = 2\\).\n\nTherefore, \\(S_{24} = \\dfrac{24}{2}\\left[2 \\times 5 + (24 - 1) \\times 2\\right] = 12\\left[10 + 46\\right] = 672\\).\n\nSo, the sum of the first 24 terms of the list of numbers is 672."
+  },
+  {
+    "ref": "5.3 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of First n Terms of an AP",
+    "difficulty": "MODERATE",
+    "stem": "A manufacturer of TV sets produced 600 sets in the third year and 700 sets in the seventh year. Assuming that the production increases uniformly by a fixed number every year, find :\n\n(i) the production in the 1st year\n\n(ii) the production in the 10th year\n\n(iii) the total production in first 7 years",
+    "solution": "**(i)** Since the production increases uniformly by a fixed number every year, the numbers of TV sets manufactured in the 1st, 2nd, 3rd, . . . years form an AP.\n\nLet us denote the number of TV sets manufactured in the \\(n\\)th year by \\(a_n\\). Then \\(a_3 = 600\\) and \\(a_7 = 700\\),\n\nor \\(a + 2d = 600\\) and \\(a + 6d = 700\\).\n\nSolving these equations, we get \\(d = 25\\) and \\(a = 550\\).\n\nTherefore, the production of TV sets in the first year is 550.\n\n**(ii)** Now \\(a_{10} = a + 9d = 550 + 9 \\times 25 = 775\\).\n\nSo, the production of TV sets in the 10th year is 775.\n\n**(iii)** Also, \\(S_7 = \\dfrac{7}{2}\\left[2 \\times 550 + (7 - 1) \\times 25\\right] = \\dfrac{7}{2}\\left[1100 + 150\\right] = 4375\\).\n\nThus, the total production of TV sets in the first 7 years is 4375."
+  },
+  {
+    "ref": "Ex 5.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 5.1 Q1",
+    "context": "In which of the following situations, does the list of numbers involved make an arithmetic progression, and why?",
+    "stem": "The taxi fare after each km when the fare is ₹ 15 for the first km and ₹ 8 for each additional km.",
+    "solution": "The fares (in ₹) after 1 km, 2 km, 3 km, . . . are\n\n\\(15,\\ 15 + 8 = 23,\\ 23 + 8 = 31,\\ 31 + 8 = 39,\\ \\ldots\\)\n\nEach succeeding term is obtained by adding 8 to the preceding term, so the difference is always 8.\n\n**Yes**, this list forms an AP with \\(a = 15\\) and \\(d = 8\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 5.1 Q1",
+    "context": "In which of the following situations, does the list of numbers involved make an arithmetic progression, and why?",
+    "stem": "The amount of air present in a cylinder when a vacuum pump removes \\(\\dfrac{1}{4}\\) of the air remaining in the cylinder at a time.",
+    "solution": "Let the initial amount of air be V. After each stroke, \\(\\dfrac{1}{4}\\) of what remains is removed, so \\(\\dfrac{3}{4}\\) of it is left.\n\nThe amounts are \\(\\text{V},\\ \\dfrac{3}{4}\\text{V},\\ \\left(\\dfrac{3}{4}\\right)^2 \\text{V},\\ \\ldots\\)\n\nThe differences are \\(-\\dfrac{1}{4}\\text{V}\\), \\(-\\dfrac{3}{16}\\text{V}\\), . . ., which are not equal.\n\n**No**, this list does not form an AP — each term is a fixed *multiple* of the previous one, not a fixed amount more."
+  },
+  {
+    "ref": "Ex 5.1 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 5.1 Q1",
+    "context": "In which of the following situations, does the list of numbers involved make an arithmetic progression, and why?",
+    "stem": "The cost of digging a well after every metre of digging, when it costs ₹ 150 for the first metre and rises by ₹ 50 for each subsequent metre.",
+    "solution": "The costs (in ₹) for the 1st, 2nd, 3rd, . . . metres are\n\n\\(150,\\ 200,\\ 250,\\ 300,\\ \\ldots\\)\n\nEach succeeding term is obtained by adding 50 to the preceding term.\n\n**Yes**, this list forms an AP with \\(a = 150\\) and \\(d = 50\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q1 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 5.1 Q1",
+    "context": "In which of the following situations, does the list of numbers involved make an arithmetic progression, and why?",
+    "stem": "The amount of money in the account every year, when ₹ 10000 is deposited at compound interest at 8 % per annum.",
+    "solution": "The amounts (in ₹) after 1, 2, 3, . . . years are\n\n\\(10000\\left(1 + \\dfrac{8}{100}\\right),\\ 10000\\left(1 + \\dfrac{8}{100}\\right)^2,\\ 10000\\left(1 + \\dfrac{8}{100}\\right)^3,\\ \\ldots\\)\n\nEach term is the previous one multiplied by \\(1.08\\), so the differences grow larger every year and are not equal.\n\n**No**, this list does not form an AP."
+  },
+  {
+    "ref": "Ex 5.1 Q2 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q2",
+    "context": "Write first four terms of the AP, when the first term \\(a\\) and the common difference \\(d\\) are given as follows:",
+    "stem": "\\(a = 10\\), \\(d = 10\\)",
+    "solution": "The first four terms are \\(a\\), \\(a + d\\), \\(a + 2d\\), \\(a + 3d\\).\n\nSo the first four terms are 10, 20, 30, 40."
+  },
+  {
+    "ref": "Ex 5.1 Q2 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q2",
+    "context": "Write first four terms of the AP, when the first term \\(a\\) and the common difference \\(d\\) are given as follows:",
+    "stem": "\\(a = -2\\), \\(d = 0\\)",
+    "solution": "The first four terms are \\(a\\), \\(a + d\\), \\(a + 2d\\), \\(a + 3d\\).\n\nSo the first four terms are \\(-2\\), \\(-2\\), \\(-2\\), \\(-2\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q2",
+    "context": "Write first four terms of the AP, when the first term \\(a\\) and the common difference \\(d\\) are given as follows:",
+    "stem": "\\(a = 4\\), \\(d = -3\\)",
+    "solution": "The first four terms are \\(a\\), \\(a + d\\), \\(a + 2d\\), \\(a + 3d\\).\n\nSo the first four terms are 4, 1, \\(-2\\), \\(-5\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q2",
+    "context": "Write first four terms of the AP, when the first term \\(a\\) and the common difference \\(d\\) are given as follows:",
+    "stem": "\\(a = -1\\), \\(d = \\dfrac{1}{2}\\)",
+    "solution": "The first four terms are \\(a\\), \\(a + d\\), \\(a + 2d\\), \\(a + 3d\\).\n\nSo the first four terms are \\(-1\\), \\(-\\dfrac{1}{2}\\), \\(0\\), \\(\\dfrac{1}{2}\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q2",
+    "context": "Write first four terms of the AP, when the first term \\(a\\) and the common difference \\(d\\) are given as follows:",
+    "stem": "\\(a = -1.25\\), \\(d = -0.25\\)",
+    "solution": "The first four terms are \\(a\\), \\(a + d\\), \\(a + 2d\\), \\(a + 3d\\).\n\nSo the first four terms are \\(-1.25\\), \\(-1.50\\), \\(-1.75\\), \\(-2.0\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q3 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q3",
+    "context": "For the following APs, write the first term and the common difference:",
+    "stem": "3, 1, \\(-1\\), \\(-3\\), . . .",
+    "solution": "The first term is the first number in the list, and the common difference is the second term minus the first.\n\n\\(a = 3\\)\n\n\\(d = 1 - 3 = -2\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q3",
+    "context": "For the following APs, write the first term and the common difference:",
+    "stem": "\\(-5\\), \\(-1\\), 3, 7, . . .",
+    "solution": "The first term is the first number in the list, and the common difference is the second term minus the first.\n\n\\(a = -5\\)\n\n\\(d = -1 - (-5) = 4\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q3",
+    "context": "For the following APs, write the first term and the common difference:",
+    "stem": "\\(\\dfrac{1}{3}\\), \\(\\dfrac{5}{3}\\), \\(\\dfrac{9}{3}\\), \\(\\dfrac{13}{3}\\), . . .",
+    "solution": "The first term is the first number in the list, and the common difference is the second term minus the first.\n\n\\(a = \\dfrac{1}{3}\\)\n\n\\(d = \\dfrac{5}{3} - \\dfrac{1}{3} = \\dfrac{4}{3}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q3",
+    "context": "For the following APs, write the first term and the common difference:",
+    "stem": "0.6, 1.7, 2.8, 3.9, . . .",
+    "solution": "The first term is the first number in the list, and the common difference is the second term minus the first.\n\n\\(a = 0.6\\)\n\n\\(d = 1.7 - 0.6 = 1.1\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q4 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "2, 4, 8, 16, . . .",
+    "solution": "\\(4 - 2 = 2\\) but \\(8 - 4 = 4\\).\n\nThe differences are not equal, so **it is not an AP** (each term is double the previous one)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "2, \\(\\dfrac{5}{2}\\), 3, \\(\\dfrac{7}{2}\\), . . .",
+    "solution": "\\(\\dfrac{5}{2} - 2 = \\dfrac{1}{2}\\), \\(3 - \\dfrac{5}{2} = \\dfrac{1}{2}\\), \\(\\dfrac{7}{2} - 3 = \\dfrac{1}{2}\\).\n\n**Yes**, it is an AP with \\(d = \\dfrac{1}{2}\\).\n\nThe next three terms are \\(4\\), \\(\\dfrac{9}{2}\\), \\(5\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(-1.2\\), \\(-3.2\\), \\(-5.2\\), \\(-7.2\\), . . .",
+    "solution": "\\(-3.2 - (-1.2) = -2\\), and the same for each later pair.\n\n**Yes**, it is an AP with \\(d = -2\\).\n\nThe next three terms are \\(-9.2\\), \\(-11.2\\), \\(-13.2\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(-10\\), \\(-6\\), \\(-2\\), 2, . . .",
+    "solution": "\\(-6 - (-10) = 4\\), and the same for each later pair.\n\n**Yes**, it is an AP with \\(d = 4\\).\n\nThe next three terms are \\(6\\), \\(10\\), \\(14\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "3, \\(3 + \\sqrt{2}\\), \\(3 + 2\\sqrt{2}\\), \\(3 + 3\\sqrt{2}\\), . . .",
+    "solution": "Each term exceeds the previous one by \\(\\sqrt{2}\\).\n\n**Yes**, it is an AP with \\(d = \\sqrt{2}\\).\n\nThe next three terms are \\(3 + 4\\sqrt{2}\\), \\(3 + 5\\sqrt{2}\\), \\(3 + 6\\sqrt{2}\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "0.2, 0.22, 0.222, 0.2222, . . .",
+    "solution": "\\(0.22 - 0.2 = 0.02\\) but \\(0.222 - 0.22 = 0.002\\).\n\nThe differences are not equal, so **it is not an AP**."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "0, \\(-4\\), \\(-8\\), \\(-12\\), . . .",
+    "solution": "\\(-4 - 0 = -4\\), and the same for each later pair.\n\n**Yes**, it is an AP with \\(d = -4\\).\n\nThe next three terms are \\(-16\\), \\(-20\\), \\(-24\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(-\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\), . . .",
+    "solution": "Every difference is \\(0\\).\n\n**Yes**, it is an AP with \\(d = 0\\) — a constant list is still an AP.\n\nThe next three terms are \\(-\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\), \\(-\\dfrac{1}{2}\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "1, 3, 9, 27, . . .",
+    "solution": "\\(3 - 1 = 2\\) but \\(9 - 3 = 6\\).\n\nThe differences are not equal, so **it is not an AP**."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(a\\), \\(2a\\), \\(3a\\), \\(4a\\), . . .",
+    "solution": "\\(2a - a = a\\), \\(3a - 2a = a\\), \\(4a - 3a = a\\).\n\n**Yes**, it is an AP with \\(d = a\\).\n\nThe next three terms are \\(5a\\), \\(6a\\), \\(7a\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(a\\), \\(a^2\\), \\(a^3\\), \\(a^4\\), . . .",
+    "solution": "\\(a^2 - a = a(a - 1)\\) but \\(a^3 - a^2 = a^2(a - 1)\\), and these are not equal in general.\n\n**It is not an AP**."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(\\sqrt{2}\\), \\(\\sqrt{8}\\), \\(\\sqrt{18}\\), \\(\\sqrt{32}\\), . . .",
+    "solution": "Write the terms in simplest form: \\(\\sqrt{2}\\), \\(2\\sqrt{2}\\), \\(3\\sqrt{2}\\), \\(4\\sqrt{2}\\).\n\nEach difference is \\(\\sqrt{2}\\).\n\n**Yes**, it is an AP with \\(d = \\sqrt{2}\\).\n\nThe next three terms are \\(5\\sqrt{2} = \\sqrt{50}\\), \\(6\\sqrt{2} = \\sqrt{72}\\), \\(7\\sqrt{2} = \\sqrt{98}\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (xiii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(\\sqrt{3}\\), \\(\\sqrt{6}\\), \\(\\sqrt{9}\\), \\(\\sqrt{12}\\), . . .",
+    "solution": "\\(\\sqrt{6} - \\sqrt{3} \\approx 0.72\\) but \\(\\sqrt{9} - \\sqrt{6} \\approx 0.55\\).\n\nThe differences are not equal, so **it is not an AP**. (Compare (xii), where the terms simplified to multiples of a single surd; here they do not.)"
+  },
+  {
+    "ref": "Ex 5.1 Q4 (xiv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(1^2\\), \\(3^2\\), \\(5^2\\), \\(7^2\\), . . .",
+    "solution": "The terms are \\(1, 9, 25, 49\\).\n\n\\(9 - 1 = 8\\) but \\(25 - 9 = 16\\).\n\nThe differences are not equal, so **it is not an AP**."
+  },
+  {
+    "ref": "Ex 5.1 Q4 (xv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Arithmetic Progressions and Common Difference",
+    "difficulty": "EASY",
+    "setLabel": "Ex 5.1 Q4",
+    "context": "Which of the following are APs ? If they form an AP, find the common difference \\(d\\) and write three more terms.",
+    "stem": "\\(1^2\\), \\(5^2\\), \\(7^2\\), 73, . . .",
+    "solution": "The terms are \\(1, 25, 49, 73\\).\n\n\\(25 - 1 = 24\\), \\(49 - 25 = 24\\), \\(73 - 49 = 24\\).\n\n**Yes**, it is an AP with \\(d = 24\\).\n\nThe next three terms are \\(97\\), \\(121\\), \\(145\\)."
+  }
+]

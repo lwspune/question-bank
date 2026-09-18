@@ -872,6 +872,25 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "4.4 Nature of Roots", label: "Exercise 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 Q"] },
   ],
 
+  // ── Ch.5 Arithmetic Progressions (10th). SEVEN blocks: three taught sections
+  //    each with examples + exercise, then a FOURTH exercise the book labels
+  //    "EXERCISE 5.4 (Optional)*" and footnotes "not from the examination point
+  //    of view". It gets its OWN group rather than being folded into §5.4,
+  //    because it draws on the whole chapter and is not that section's exercise.
+  //    It is deliberately NOT kind:"miscellaneous" — Class 10 has no
+  //    Miscellaneous anywhere, and labelling it so would invent a block the book
+  //    does not print. Examples band to the exercise they precede: 1-2 →
+  //    "5.1 Eg.N", 3-10 → "5.2 Eg.N", 11-16 → "5.3 Eg.N".
+  c10ArithmeticProgressions: [
+    { group: "5.2 Arithmetic Progressions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 Eg"] },
+    { group: "5.2 Arithmetic Progressions", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 Q"] },
+    { group: "5.3 nth Term of an AP", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 Eg"] },
+    { group: "5.3 nth Term of an AP", label: "Exercise 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 Q"] },
+    { group: "5.4 Sum of First n Terms of an AP", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.3 Eg"] },
+    { group: "5.4 Sum of First n Terms of an AP", label: "Exercise 5.3", kind: "exercise", refPrefixes: ["Ex 5.3 Q"] },
+    { group: "Exercise 5.4 (Optional)", label: "Exercise 5.4 (Optional)", kind: "exercise", refPrefixes: ["Ex 5.4 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
