@@ -14,8 +14,8 @@ import {
   type ExamIdMap,
 } from "@/lib/exam/examNav";
 import { type ExamSlug } from "@/lib/exam/examContext";
-import { resolveHomeHref, type HeaderSession } from "@/lib/header-session";
-import { isSupabaseAuthCookieName } from "@/lib/auth-identity";
+import { resolveHomeHref } from "@/lib/header-session";
+import { useViewerSession } from "@/lib/viewer/useViewerSession";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -40,37 +40,17 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
   // after. Null is also the resting state for every anonymous visitor, since
   // only /welcome and /account write the cookie now.
   const [examSlug, setExamSlug] = useState<ExamSlug | null>(null);
-  const [session, setSession] = useState<HeaderSession | null>(null);
-  const [sessionLoading, setSessionLoading] = useState(true);
 
   useEffect(() => {
     setExamSlug(readExamSlugFromCookieString(document.cookie));
   }, []);
 
-  useEffect(() => {
-    // Anon short-circuit, mirroring the server helper: no Supabase cookie means
-    // no session, so don't spend a request finding that out. Most visitors.
-    const hasAuthCookie = document.cookie
-      .split(";")
-      .some((c) => isSupabaseAuthCookieName(c.trim().split("=")[0] ?? ""));
-    if (!hasAuthCookie) {
-      setSessionLoading(false);
-      return;
-    }
-
-    let active = true;
-    fetch("/api/me/header", { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : { session: null }))
-      .catch(() => ({ session: null }))
-      .then((data: { session: HeaderSession | null }) => {
-        if (!active) return;
-        setSession(data.session ?? null);
-        setSessionLoading(false);
-      });
-    return () => {
-      active = false;
-    };
-  }, []);
+  // The identity fetch (anon cookie short-circuit included) moved to
+  // useViewerSession so the header is no longer its only possible caller: the
+  // classroom-projection button needs the same `isStaff` on ISR-cached pages
+  // that hold no server identity. The hook memoises one request per page load,
+  // so adding that caller costs nothing here.
+  const { session, loading: sessionLoading } = useViewerSession();
 
   const nav = resolveExamNav(examSlug, examIds);
 
