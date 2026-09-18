@@ -3081,6 +3081,34 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Number of Tangents from an External Point",
     ],
   },
+
+  // ── Ch.11 Areas Related to Circles (10th). 7pp — the shortest chapter in the
+  //    book — Examples 1-2 + Ex 11.1 (19 items). ONE taught section, like Ch.9.
+  //
+  //    1. **A FIFTH PLACE MCQs HIDE.** Ex 11.1 Q14 reads "Tick the correct answer
+  //       in the following" and carries four options. Counting Ch.5's two, Ch.8's
+  //       eight and Ch.10's four, this book has FIFTEEN MCQs across five
+  //       chapters — the lane was originally scoped for two of them.
+  //
+  //    2. **THE EXERCISE OPENS WITH A STANDING INSTRUCTION**: "Unless stated
+  //       otherwise, use pi = 22/7." Several items then override it in their own
+  //       stem ("Use pi = 3.14"), so the constant is per-question and the
+  //       exercise-level default must ride on every row's context.
+  c10AreasCircles: {
+    id: "c10AreasCircles",
+    chapterName: "Areas Related to Circles",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__AreasRelatedToCircles.pdf",
+    pdf: cls10Maths("11. Areas Related to Circles.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [8],
+    note: "NCERT (CBSE Class 10) — Areas Related to Circles (Chapter 11, NCERT Mathematics)",
+    subtopics: [
+      "Area of a Sector",
+      "Area of a Segment",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

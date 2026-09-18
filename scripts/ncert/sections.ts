@@ -933,6 +933,14 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "10.3 Number of Tangents from a Point on a Circle", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
   ],
 
+  // ── Ch.11 Areas Related to Circles (10th). TWO blocks: one taught section
+  //    with its two examples and its single exercise — the same minimal shape as
+  //    Ch.9. Both examples band to it → "11.1 Eg.N".
+  c10AreasCircles: [
+    { group: "11.1 Areas of Sector and Segment of a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg"] },
+    { group: "11.1 Areas of Sector and Segment of a Circle", label: "Exercise 11.1", kind: "exercise", refPrefixes: ["Ex 11.1 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
