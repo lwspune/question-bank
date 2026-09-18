@@ -17,6 +17,7 @@
  * time cost up front rather than hiding it.
  */
 import { CONTACT_EMAIL } from "@/lib/brand";
+import type { MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
 
 export const SITE_URL = "https://www.pyqvault.com";
@@ -225,4 +226,205 @@ export function buildBatchInviteEmail(input: InviteEmailInput): BuiltEmail {
 </div>`;
 
   return { subject, text, html, replyTo: REPLY_TO, headers: {} };
+}
+
+// ── per-attempt mock report (migration 0110) ─────────────────────────────────
+
+export type MockReportEmailInput = {
+  report: MockReport;
+  /** OAuth display name, or "" — greetingName handles both. */
+  name: string;
+  unsubscribeToken: string;
+};
+
+/** "1 min 20s" — a dwell reading, where the seconds matter. */
+export function formatDwell(secs: number): string {
+  if (secs <= 0) return "";
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return m ? `${m} min ${s}s` : `${s}s`;
+}
+
+/** "Algebra · Quadratic Equations", collapsing a missing half rather than
+ *  rendering a naked separator. */
+function where(q: { chapter: string; subtopic: string }): string {
+  return [q.chapter, q.subtopic].filter(Boolean).join(" · ");
+}
+
+/** The peer line, only when there IS peer evidence. Absent evidence says
+ *  nothing — it must never render as "0% of students got this right". */
+function peerLine(peerPct: number | null): string {
+  return peerPct === null ? "" : ` — ${peerPct}% of students got this right`;
+}
+
+/** Marks are numeric; show a whole number where it is one. */
+function marks(n: number): string {
+  const r = Math.round(n * 10) / 10;
+  return Number.isInteger(r) ? String(r) : r.toFixed(1);
+}
+
+/**
+ * The report a student gets after each graded mock.
+ *
+ * WHY THIS IS GROWTH-FRAMED AND NOT A SCORECARD: the engagement gate in
+ * CLAUDE.md forbids a bare score, and the result screen already showed them one
+ * the moment they submitted. What this email adds is DELIBERATE PRACTICE — the
+ * specific things to fix, named — which is the only reason it is worth an
+ * inbox. The score appears once, as context for the findings, never as the
+ * point.
+ *
+ * WHY EASY-WRONG LEADS: it is the section with the least ambiguity and the most
+ * recoverable marks. A HARD question they lost is a study project; an EASY one
+ * they lost is a habit, and habits move next week's score.
+ *
+ * SECTIONS DISAPPEAR RATHER THAN RENDER EMPTY. A paper where they left nothing
+ * blank should not be told "you left 0 questions blank" — a section with no
+ * content is a section with no business being in the email.
+ */
+export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
+  const { report: r, name, unsubscribeToken } = input;
+  const who = greetingName(name);
+  const resultUrl = `${SITE_URL}/mock/attempt/${r.attemptId}/result`;
+  const perfUrl = `${SITE_URL}/performance`;
+  const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
+  const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
+
+  const scoreLine = `${round(r.score)}/${round(r.maxScore)} (${r.pct}%) — ${r.correct} right, ${r.wrong} wrong, ${r.seenBlank} left blank`;
+
+  const fixes = r.easyWrong.length || r.subtopics.length;
+  const subject = who
+    ? `${who}, ${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — ${fixes} things to fix`
+    : `${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — what to fix`;
+
+  // ── plain text ────────────────────────────────────────────────────────────
+  const t: string[] = [who ? `Hi ${who},` : "Hi,", "", `You finished ${r.mockTitle}.`, scoreLine, ""];
+
+  if (r.easyWrong.length) {
+    t.push(`EASY MARKS YOU DROPPED (${r.easyWrong.length})`);
+    for (const q of r.easyWrong) t.push(`  Q${q.position} · ${where(q)}${peerLine(q.peerPct)}`);
+    t.push("");
+  }
+  if (r.easyLeft.length) {
+    t.push(`EASY ONES YOU LOOKED AT AND LEFT (${r.easyLeft.length})`);
+    for (const q of r.easyLeft) {
+      const dwell = formatDwell(q.secs);
+      t.push(`  Q${q.position} · ${where(q)}${dwell ? ` — you spent ${dwell} on it` : ""}`);
+    }
+    t.push("");
+  }
+  if (r.pacing) {
+    t.push("PACING");
+    t.push(
+      `  You never reached ${r.pacing.neverReached} questions — ${marks(r.pacing.marksLeft)} marks you didn't get a shot at. That's the clock, not the syllabus.`
+    );
+    t.push("");
+  }
+  if (r.subtopics.length) {
+    t.push("WHERE YOUR NEXT MARKS ARE");
+    t.push("  Across every paper you've sat, not just this one:");
+    for (const s of r.subtopics) {
+      const acc = s.accuracy === null ? "" : ` (you're at ${s.accuracy}% over ${s.judged} questions)`;
+      t.push(`  ${s.chapter} · ${s.subtopic} — about ${marks(s.gap)} marks${acc}`);
+    }
+    t.push("");
+  }
+
+  t.push(
+    `Every question, with the solution: ${resultUrl}`,
+    `Your full performance across all papers: ${perfUrl}`,
+    "",
+    "Reply to this email if something looks wrong — it reaches a person.",
+    "",
+    `— ${BRAND}`,
+    "",
+    "---",
+    `Don't want these? Unsubscribe: ${unsubUrl}`
+  );
+
+  // ── html ──────────────────────────────────────────────────────────────────
+  const card = (title: string, body: string) => `
+  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 14px">
+    <p style="margin:0 0 10px;font-weight:600;color:#0f172a;font-size:14px">${escapeHtml(title)}</p>
+    ${body}
+  </div>`;
+
+  const qRow = (q: MockReport["easyWrong"][number], showDwell: boolean) => {
+    const dwell = showDwell ? formatDwell(q.secs) : "";
+    const tail = showDwell
+      ? dwell
+        ? `<span style="color:${MUTED}"> — you spent ${escapeHtml(dwell)} on it</span>`
+        : ""
+      : q.peerPct === null
+        ? ""
+        : `<span style="color:${MUTED}"> — ${q.peerPct}% of students got this right</span>`;
+    return `<p style="margin:0 0 8px;font-size:14px"><strong style="color:#0f172a">Q${q.position}</strong> &middot; ${escapeHtml(where(q))}${tail}</p>`;
+  };
+
+  const sections: string[] = [];
+
+  if (r.easyWrong.length) {
+    sections.push(
+      card(`Easy marks you dropped (${r.easyWrong.length})`, r.easyWrong.map((q) => qRow(q, false)).join(""))
+    );
+  }
+  if (r.easyLeft.length) {
+    sections.push(
+      card(`Easy ones you looked at and left (${r.easyLeft.length})`, r.easyLeft.map((q) => qRow(q, true)).join(""))
+    );
+  }
+  if (r.pacing) {
+    sections.push(
+      card(
+        "Pacing",
+        `<p style="margin:0;font-size:14px">You never reached <strong>${r.pacing.neverReached} questions</strong> — ${escapeHtml(marks(r.pacing.marksLeft))} marks you didn&#39;t get a shot at. That&#39;s the clock, not the syllabus.</p>`
+      )
+    );
+  }
+  if (r.subtopics.length) {
+    sections.push(
+      card(
+        "Where your next marks are",
+        `<p style="margin:0 0 10px;color:${MUTED};font-size:13px">Across every paper you&#39;ve sat, not just this one.</p>` +
+          r.subtopics
+            .map((s) => {
+              const acc =
+                s.accuracy === null
+                  ? ""
+                  : `<span style="color:${MUTED}"> — you&#39;re at ${s.accuracy}% over ${s.judged} questions</span>`;
+              return `<p style="margin:0 0 8px;font-size:14px"><strong style="color:#0f172a">${escapeHtml(marks(s.gap))} marks</strong> &middot; ${escapeHtml(s.chapter)} &middot; ${escapeHtml(s.subtopic)}${acc}</p>`;
+            })
+            .join("")
+      )
+    );
+  }
+
+  const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:${INK};line-height:1.55">
+  <p style="margin:0 0 16px">${who ? `Hi ${escapeHtml(who)},` : "Hi,"}</p>
+  <p style="margin:0 0 4px">You finished <strong>${escapeHtml(r.mockTitle)}</strong>.</p>
+  <p style="margin:0 0 20px;color:${MUTED};font-size:14px">${escapeHtml(scoreLine)}</p>
+  ${sections.join("\n")}
+  <p style="margin:0 0 12px">
+    <a href="${resultUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Every question, with the solution</a>
+  </p>
+  <p style="margin:0 0 24px;font-size:14px">
+    <a href="${perfUrl}" style="color:${ACCENT}">Your full performance across all papers &rarr;</a>
+  </p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px">— ${BRAND}</p>
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
+  <p style="margin:0;color:#94a3b8;font-size:12px">
+    Don&#39;t want these? <a href="${unsubUrl}" style="color:#94a3b8">Unsubscribe</a>.
+  </p>
+</div>`;
+
+  return {
+    subject,
+    text: t.join("\n"),
+    html,
+    replyTo: REPLY_TO,
+    headers: {
+      "List-Unsubscribe": `<${oneClickUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  };
 }
