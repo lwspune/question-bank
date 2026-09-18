@@ -29,6 +29,12 @@ import {
 } from "@/lib/mocks/sitemapEntries";
 import type { MockScope, MockSource } from "@/lib/mocks/query";
 import { FORMULA_CHAPTERS, topicsByWeight } from "@/lib/formula";
+import { BOARD_EXAMS } from "@/lib/exam/examContext";
+import { listBoardChapters } from "@/lib/board/query";
+import {
+  buildBoardSitemapEntries,
+  type BoardSitemapChapter,
+} from "@/lib/board/sitemapEntries";
 import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
 import {
   contentDateFor,
@@ -128,6 +134,77 @@ async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
       priority: e.priority,
     }));
   } catch {
+    return [];
+  }
+}
+
+/**
+ * The /board tree — index, one hub per board exam, and every chapter leaf.
+ *
+ * ADDED 2026-09-18, having never been here: this file did not contain the
+ * string "board" at all, so ~291 live, indexable, internally-linked pages were
+ * never advertised for crawl. See src/lib/board/sitemapEntries.ts for why the
+ * leaves belong in (4,969 words of public content each) where the /mock leaves
+ * were removed the day before (98 words behind sign-in).
+ *
+ * Chapters come from listBoardChapters — the SAME loader the /board exam hub
+ * renders from — so the sitemap cannot advertise a chapter the site does not
+ * link, nor miss one it does. Dates come from get_chapter_last_added (migration
+ * 0073) with p_kind='practice', because board textbook rows are the practice
+ * kind; board PYQs carry no section_* fields and are not part of this surface.
+ *
+ * Guarded like mockEntries so a missing-env build still emits a sitemap, but a
+ * failure is WARNED rather than swallowed — a silent catch here would drop 291
+ * URLs and look exactly like success, which is how the /questions last-added
+ * timeout went unnoticed for weeks (see src/lib/questions/landing.ts).
+ */
+async function boardEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    const db = createSupabaseAdminClient();
+    const chapters: BoardSitemapChapter[] = [];
+
+    for (const exam of BOARD_EXAMS) {
+      const subjects = await listBoardChapters(db, exam.examName);
+
+      for (const s of subjects) {
+        const { data: lastAdded, error } = await db.rpc("get_chapter_last_added", {
+          p_subject_id: s.subjectId,
+          p_kind: "practice",
+        });
+        if (error) {
+          console.warn(
+            `[sitemap/board] last-added lookup failed for ${exam.slug}/${s.subjectName}: ${error.message}`
+          );
+        }
+        const dateOf = new Map(
+          ((lastAdded ?? []) as { chapter_id: string; last_added: string }[]).map((r) => [
+            r.chapter_id,
+            r.last_added,
+          ])
+        );
+
+        for (const c of s.chapters) {
+          chapters.push({
+            examSlug: exam.slug,
+            subjectRoute: c.subjectRoute,
+            chapterSlug: c.chapterSlug,
+            iso: dateOf.get(c.chapterId) ?? null,
+          });
+        }
+      }
+    }
+
+    return buildBoardSitemapEntries(
+      chapters,
+      BOARD_EXAMS.map((e) => e.slug)
+    ).map((e) => ({
+      url: `${SITE_URL}${e.path}`,
+      lastModified: parseIsoDate(e.iso, buildDate),
+      changeFrequency: e.changeFrequency,
+      priority: e.priority,
+    }));
+  } catch (err) {
+    console.warn(`[sitemap/board] board entries omitted: ${(err as Error).message}`);
     return [];
   }
 }
@@ -393,6 +470,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const quizEntries = await publicQuizEntries(buildDate);
   const mockUrlEntries = await mockEntries(buildDate);
+  const boardUrlEntries = await boardEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -495,6 +573,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,
     ...mockUrlEntries,
+    ...boardUrlEntries,
     ...formulaEntries,
     ...blogEntries,
     {
