@@ -2962,6 +2962,33 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Harder AP Problems (Optional Exercise)",
     ],
   },
+
+  // ── Ch.7 Coordinate Geometry (10th). 14pp, Examples 1-10 + Ex 7.1 (12 items)
+  //    / 7.2 (10). TWO taught sections only — Distance Formula and Section
+  //    Formula. The "Area of a Triangle" section that older editions carried is
+  //    GONE from this 2025-26 reprint, so there is no Ex 7.3 and no area
+  //    questions; do not go looking for them.
+  //
+  //    Three figure ANCHORS, all real: Fig 7.8 (Ex 7.1 Q5, the classroom seating
+  //    whose coordinates exist ONLY in the figure) and Fig 7.12 (Ex 7.2 Q3, the
+  //    sports ground), plus Fig 7.6 in Example 3. Ex 7.1 Q5 is the strongest
+  //    crop-only case in the book so far: without the figure the stem names four
+  //    points A, B, C, D and gives not one coordinate.
+  c10CoordinateGeometry: {
+    id: "c10CoordinateGeometry",
+    chapterName: "Coordinate Geometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__CoordinateGeometry.pdf",
+    pdf: cls10Maths("07. Coordinate_Geometry_Xth_NCERT.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [6],
+    note: "NCERT (CBSE Class 10) — Coordinate Geometry (Chapter 7, NCERT Mathematics)",
+    subtopics: [
+      "Distance Formula",
+      "Section Formula and Ratio of Division",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

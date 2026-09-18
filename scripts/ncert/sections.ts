@@ -891,6 +891,17 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercise 5.4 (Optional)", label: "Exercise 5.4 (Optional)", kind: "exercise", refPrefixes: ["Ex 5.4 Q"] },
   ],
 
+  // ── Ch.7 Coordinate Geometry (10th). FOUR blocks over two taught sections.
+  //    The 2025-26 reprint has no "Area of a Triangle" section, so there is no
+  //    third exercise. Examples band to the exercise they precede: 1-5 →
+  //    "7.1 Eg.N", 6-10 → "7.2 Eg.N".
+  c10CoordinateGeometry: [
+    { group: "7.2 Distance Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1 Eg"] },
+    { group: "7.2 Distance Formula", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
+    { group: "7.3 Section Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.2 Eg"] },
+    { group: "7.3 Section Formula", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },

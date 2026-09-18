@@ -1,0 +1,320 @@
+[
+  {
+    "ref": "7.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Do the points \\((3, 2)\\), \\((-2, -3)\\) and \\((2, 3)\\) form a triangle? If so, name the type of triangle formed.",
+    "solution": "Let us apply the distance formula to find the distances PQ, QR and PR, where P\\((3, 2)\\), Q\\((-2, -3)\\) and R\\((2, 3)\\) are the given points. We have\n\n\\(\\text{PQ} = \\sqrt{(3 + 2)^2 + (2 + 3)^2} = \\sqrt{25 + 25} = \\sqrt{50} = 7.07\\) (approx.)\n\n\\(\\text{QR} = \\sqrt{(-2 - 2)^2 + (-3 - 3)^2} = \\sqrt{16 + 36} = \\sqrt{52} = 7.21\\) (approx.)\n\n\\(\\text{PR} = \\sqrt{(3 - 2)^2 + (2 - 3)^2} = \\sqrt{1 + 1} = \\sqrt{2} = 1.41\\) (approx.)\n\nSince the sum of any two of these distances is greater than the third distance, the points P, Q and R form a triangle.\n\nAlso, \\(\\text{PQ}^2 + \\text{PR}^2 = 50 + 2 = 52 = \\text{QR}^2\\), so by the converse of Pythagoras theorem \\(\\angle\\)P \\(= 90^\\circ\\).\n\nTherefore, PQR is a **right triangle**."
+  },
+  {
+    "ref": "7.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Show that the points \\((1, 7)\\), \\((4, 2)\\), \\((-1, -1)\\) and \\((-4, 4)\\) are the vertices of a square.",
+    "solution": "Let A\\((1, 7)\\), B\\((4, 2)\\), C\\((-1, -1)\\) and D\\((-4, 4)\\) be the given points. One way of showing that ABCD is a square is to use the property that all its sides should be equal and both its diagonals should also be equal. Now,\n\n\\(\\text{AB} = \\sqrt{(1 - 4)^2 + (7 - 2)^2} = \\sqrt{9 + 25} = \\sqrt{34}\\)\n\n\\(\\text{BC} = \\sqrt{(4 + 1)^2 + (2 + 1)^2} = \\sqrt{25 + 9} = \\sqrt{34}\\)\n\n\\(\\text{CD} = \\sqrt{(-1 + 4)^2 + (-1 - 4)^2} = \\sqrt{9 + 25} = \\sqrt{34}\\)\n\n\\(\\text{DA} = \\sqrt{(1 + 4)^2 + (7 - 4)^2} = \\sqrt{25 + 9} = \\sqrt{34}\\)\n\n\\(\\text{AC} = \\sqrt{(1 + 1)^2 + (7 + 1)^2} = \\sqrt{4 + 64} = \\sqrt{68}\\)\n\n\\(\\text{BD} = \\sqrt{(4 + 4)^2 + (2 - 4)^2} = \\sqrt{64 + 4} = \\sqrt{68}\\)\n\nSince AB \\(=\\) BC \\(=\\) CD \\(=\\) DA and AC \\(=\\) BD, all four sides of the quadrilateral ABCD are equal and its diagonals AC and BD are also equal. Therefore, ABCD is a square.\n\n**Alternative Solution:** We find the four sides and one diagonal, say AC, as above. Here \\(\\text{AD}^2 + \\text{DC}^2 = 34 + 34 = 68 = \\text{AC}^2\\). Therefore, by the converse of Pythagoras theorem, \\(\\angle\\)D \\(= 90^\\circ\\). A quadrilateral with all four sides equal and one angle \\(90^\\circ\\) is a square. So ABCD is a square."
+  },
+  {
+    "ref": "7.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "stem": "Fig. 7.6 shows the arrangement of desks in a classroom. Ashima, Bharti and Camella are seated at A\\((3, 1)\\), B\\((6, 4)\\) and C\\((8, 6)\\) respectively. Do you think they are seated in a line? Give reasons for your answer.",
+    "solution": "Using the distance formula, we have\n\n\\(\\text{AB} = \\sqrt{(6 - 3)^2 + (4 - 1)^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}\\)\n\n\\(\\text{BC} = \\sqrt{(8 - 6)^2 + (6 - 4)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}\\)\n\n\\(\\text{AC} = \\sqrt{(8 - 3)^2 + (6 - 1)^2} = \\sqrt{25 + 25} = \\sqrt{50} = 5\\sqrt{2}\\)\n\nSince AB \\(+\\) BC \\(= 3\\sqrt{2} + 2\\sqrt{2} = 5\\sqrt{2} = \\) AC, we can say that the points A, B and C are collinear.\n\nTherefore, they are seated in a line."
+  },
+  {
+    "ref": "7.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Find a relation between \\(x\\) and \\(y\\) such that the point \\((x, y)\\) is equidistant from the points \\((7, 1)\\) and \\((3, 5)\\).",
+    "solution": "Let P\\((x, y)\\) be equidistant from the points A\\((7, 1)\\) and B\\((3, 5)\\).\n\nWe are given that AP \\(=\\) BP. So, \\(\\text{AP}^2 = \\text{BP}^2\\),\n\ni.e., \\((x - 7)^2 + (y - 1)^2 = (x - 3)^2 + (y - 5)^2\\)\n\ni.e., \\(x^2 - 14x + 49 + y^2 - 2y + 1 = x^2 - 6x + 9 + y^2 - 10y + 25\\)\n\ni.e., \\(x - y = 2\\), which is the required relation.\n\n**Remark:** The graph of \\(x - y = 2\\) is a line. A point equidistant from A and B lies on the perpendicular bisector of AB, so the graph of \\(x - y = 2\\) is the perpendicular bisector of AB."
+  },
+  {
+    "ref": "7.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "stem": "Find a point on the \\(y\\)-axis which is equidistant from the points A\\((6, 5)\\) and B\\((-4, 3)\\).",
+    "solution": "We know that a point on the \\(y\\)-axis is of the form \\((0, y)\\). So let the point P\\((0, y)\\) be equidistant from A and B. Then\n\n\\((6 - 0)^2 + (5 - y)^2 = (-4 - 0)^2 + (3 - y)^2\\)\n\ni.e., \\(36 + 25 + y^2 - 10y = 16 + 9 + y^2 - 6y\\)\n\ni.e., \\(4y = 36\\), i.e., \\(y = 9\\).\n\nSo, the required point is \\((0, 9)\\).\n\n**Check:** \\(\\text{AP} = \\sqrt{(6 - 0)^2 + (5 - 9)^2} = \\sqrt{36 + 16} = \\sqrt{52}\\) and \\(\\text{BP} = \\sqrt{(-4 - 0)^2 + (3 - 9)^2} = \\sqrt{16 + 36} = \\sqrt{52}\\).\n\n**Note:** \\((0, 9)\\) is the intersection of the \\(y\\)-axis and the perpendicular bisector of AB."
+  },
+  {
+    "ref": "7.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "EASY",
+    "stem": "Find the coordinates of the point which divides the line segment joining the points \\((4, -3)\\) and \\((8, 5)\\) in the ratio \\(3 : 1\\) internally.",
+    "solution": "Let P\\((x, y)\\) be the required point. Using the section formula, we get\n\n\\(x = \\dfrac{3(8) + 1(4)}{3 + 1} = \\dfrac{28}{4} = 7\\),  \\(y = \\dfrac{3(5) + 1(-3)}{3 + 1} = \\dfrac{12}{4} = 3\\)\n\nTherefore, \\((7, 3)\\) is the required point."
+  },
+  {
+    "ref": "7.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "In what ratio does the point \\((-4, 6)\\) divide the line segment joining the points A\\((-6, 10)\\) and B\\((3, -8)\\)?",
+    "solution": "Let \\((-4, 6)\\) divide AB internally in the ratio \\(m_1 : m_2\\). Using the section formula,\n\n\\((-4, 6) = \\left(\\dfrac{3m_1 - 6m_2}{m_1 + m_2},\\ \\dfrac{-8m_1 + 10m_2}{m_1 + m_2}\\right)\\)\n\nSo, \\(-4 = \\dfrac{3m_1 - 6m_2}{m_1 + m_2}\\), which gives\n\n\\(-4m_1 - 4m_2 = 3m_1 - 6m_2\\), i.e., \\(7m_1 = 2m_2\\), i.e., \\(m_1 : m_2 = 2 : 7\\).\n\nYou should verify that this ratio satisfies the \\(y\\)-coordinate also.\n\n**Alternatively:** the ratio \\(m_1 : m_2\\) can be written as \\(k : 1\\). Then\n\n\\(-4 = \\dfrac{3k - 6}{k + 1}\\), i.e., \\(-4k - 4 = 3k - 6\\), i.e., \\(7k = 2\\), i.e., \\(k : 1 = 2 : 7\\).\n\nSo, the point \\((-4, 6)\\) divides AB in the ratio \\(2 : 7\\)."
+  },
+  {
+    "ref": "7.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the coordinates of the points of trisection (i.e., points dividing in three equal parts) of the line segment joining the points A\\((2, -2)\\) and B\\((-7, 4)\\).",
+    "solution": "Let P and Q be the points of trisection of AB, i.e., AP \\(=\\) PQ \\(=\\) QB.\n\nTherefore, P divides AB internally in the ratio \\(1 : 2\\), so the coordinates of P are\n\n\\(\\left(\\dfrac{1(-7) + 2(2)}{1 + 2},\\ \\dfrac{1(4) + 2(-2)}{1 + 2}\\right)\\), i.e., \\((-1, 0)\\).\n\nNow, Q divides AB internally in the ratio \\(2 : 1\\), so the coordinates of Q are\n\n\\(\\left(\\dfrac{2(-7) + 1(2)}{2 + 1},\\ \\dfrac{2(4) + 1(-2)}{2 + 1}\\right)\\), i.e., \\((-4, 2)\\).\n\nTherefore, the points of trisection are \\((-1, 0)\\) and \\((-4, 2)\\).\n\n**Note:** Q could also have been obtained as the mid-point of PB."
+  },
+  {
+    "ref": "7.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the ratio in which the \\(y\\)-axis divides the line segment joining the points \\((5, -6)\\) and \\((-1, -4)\\). Also find the point of intersection.",
+    "solution": "Let the ratio be \\(k : 1\\). Then by the section formula the coordinates of the dividing point are\n\n\\(\\left(\\dfrac{-k + 5}{k + 1},\\ \\dfrac{-4k - 6}{k + 1}\\right)\\)\n\nThis point lies on the \\(y\\)-axis, and on the \\(y\\)-axis the abscissa is 0. Therefore\n\n\\(\\dfrac{-k + 5}{k + 1} = 0\\), so \\(k = 5\\).\n\nThat is, the ratio is \\(5 : 1\\). Putting \\(k = 5\\), the point of intersection is \\(\\left(0, -\\dfrac{13}{3}\\right)\\)."
+  },
+  {
+    "ref": "7.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "If the points A\\((6, 1)\\), B\\((8, 2)\\), C\\((9, 4)\\) and D\\((p, 3)\\) are the vertices of a parallelogram, taken in order, find the value of \\(p\\).",
+    "solution": "We know that the diagonals of a parallelogram bisect each other.\n\nSo the mid-point of AC \\(=\\) the mid-point of BD:\n\n\\(\\left(\\dfrac{6 + 9}{2},\\ \\dfrac{1 + 4}{2}\\right) = \\left(\\dfrac{8 + p}{2},\\ \\dfrac{2 + 3}{2}\\right)\\)\n\ni.e., \\(\\left(\\dfrac{15}{2}, \\dfrac{5}{2}\\right) = \\left(\\dfrac{8 + p}{2}, \\dfrac{5}{2}\\right)\\)\n\nSo \\(\\dfrac{15}{2} = \\dfrac{8 + p}{2}\\), i.e., \\(p = 7\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "setLabel": "Ex 7.1 Q1",
+    "context": "Find the distance between the following pairs of points :",
+    "stem": "\\((2, 3)\\), \\((4, 1)\\)",
+    "solution": "\\(d = \\sqrt{(4 - 2)^2 + (1 - 3)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "setLabel": "Ex 7.1 Q1",
+    "context": "Find the distance between the following pairs of points :",
+    "stem": "\\((-5, 7)\\), \\((-1, 3)\\)",
+    "solution": "\\(d = \\sqrt{(-1 + 5)^2 + (3 - 7)^2} = \\sqrt{16 + 16} = \\sqrt{32} = 4\\sqrt{2}\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "setLabel": "Ex 7.1 Q1",
+    "context": "Find the distance between the following pairs of points :",
+    "stem": "\\((a, b)\\), \\((-a, -b)\\)",
+    "solution": "\\(d = \\sqrt{(-a - a)^2 + (-b - b)^2} = \\sqrt{4a^2 + 4b^2} = 2\\sqrt{a^2 + b^2}\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "stem": "Find the distance between the points \\((0, 0)\\) and \\((36, 15)\\). Can you now find the distance between the two towns A and B discussed in Section 7.2.",
+    "solution": "\\(d = \\sqrt{(36 - 0)^2 + (15 - 0)^2} = \\sqrt{1296 + 225} = \\sqrt{1521} = 39\\)\n\nIn Section 7.2 the towns were placed at A\\((0, 0)\\) and B\\((36, 15)\\) with 1 km as one unit, so the distance between the two towns is **39 km**."
+  },
+  {
+    "ref": "Ex 7.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Determine if the points \\((1, 5)\\), \\((2, 3)\\) and \\((-2, -11)\\) are collinear.",
+    "solution": "Let A\\((1, 5)\\), B\\((2, 3)\\), C\\((-2, -11)\\).\n\n\\(\\text{AB} = \\sqrt{1 + 4} = \\sqrt{5}\\)\n\n\\(\\text{BC} = \\sqrt{16 + 196} = \\sqrt{212} = 2\\sqrt{53}\\)\n\n\\(\\text{AC} = \\sqrt{9 + 256} = \\sqrt{265}\\)\n\nFor the points to be collinear, the sum of two of these distances must equal the third. But \\(\\sqrt{5} + 2\\sqrt{53} \\approx 2.24 + 14.56 = 16.80\\), while \\(\\sqrt{265} \\approx 16.28\\), and no other pairing works either.\n\nSo the points are **not collinear**."
+  },
+  {
+    "ref": "Ex 7.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "stem": "Check whether \\((5, -2)\\), \\((6, 4)\\) and \\((7, -2)\\) are the vertices of an isosceles triangle.",
+    "solution": "Let A\\((5, -2)\\), B\\((6, 4)\\), C\\((7, -2)\\).\n\n\\(\\text{AB} = \\sqrt{(6 - 5)^2 + (4 + 2)^2} = \\sqrt{1 + 36} = \\sqrt{37}\\)\n\n\\(\\text{BC} = \\sqrt{(7 - 6)^2 + (-2 - 4)^2} = \\sqrt{1 + 36} = \\sqrt{37}\\)\n\n\\(\\text{CA} = \\sqrt{(7 - 5)^2 + 0} = 2\\)\n\nSince AB \\(=\\) BC, two sides are equal.\n\n**Yes**, the points are the vertices of an isosceles triangle."
+  },
+  {
+    "ref": "Ex 7.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "In a classroom, 4 friends are seated at the points A, B, C and D as shown in Fig. 7.8. Champa and Chameli walk into the class and after observing for a few minutes Champa asks Chameli, “Don’t you think ABCD is a square?” Chameli disagrees. Using distance formula, find which of them is correct.",
+    "solution": "From Fig. 7.8 the seats are A\\((3, 4)\\), B\\((6, 7)\\), C\\((9, 4)\\) and D\\((6, 1)\\).\n\n\\(\\text{AB} = \\sqrt{9 + 9} = 3\\sqrt{2}\\), \\(\\text{BC} = \\sqrt{9 + 9} = 3\\sqrt{2}\\), \\(\\text{CD} = \\sqrt{9 + 9} = 3\\sqrt{2}\\), \\(\\text{DA} = \\sqrt{9 + 9} = 3\\sqrt{2}\\)\n\n\\(\\text{AC} = \\sqrt{36 + 0} = 6\\), \\(\\text{BD} = \\sqrt{0 + 36} = 6\\)\n\nAll four sides are equal and both diagonals are equal, so ABCD is a square.\n\nSo **Champa is correct**."
+  },
+  {
+    "ref": "Ex 7.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Find the point on the \\(x\\)-axis which is equidistant from \\((2, -5)\\) and \\((-2, 9)\\).",
+    "solution": "A point on the \\(x\\)-axis is of the form \\((x, 0)\\). Equating the squared distances:\n\n\\((x - 2)^2 + 25 = (x + 2)^2 + 81\\)\n\n\\(x^2 - 4x + 4 + 25 = x^2 + 4x + 4 + 81\\)\n\n\\(-8x = 56\\), so \\(x = -7\\).\n\nThe required point is \\((-7, 0)\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "EASY",
+    "stem": "Find the values of \\(y\\) for which the distance between the points P\\((2, -3)\\) and Q\\((10, y)\\) is 10 units.",
+    "solution": "\\(\\text{PQ}^2 = (10 - 2)^2 + (y + 3)^2 = 100\\)\n\n\\(64 + (y + 3)^2 = 100\\), so \\((y + 3)^2 = 36\\), i.e., \\(y + 3 = \\pm 6\\).\n\nSo \\(y = 3\\) or \\(y = -9\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "If Q\\((0, 1)\\) is equidistant from P\\((5, -3)\\) and R\\((x, 6)\\), find the values of \\(x\\). Also find the distances QR and PR.",
+    "solution": "\\(\\text{QP}^2 = (5 - 0)^2 + (-3 - 1)^2 = 25 + 16 = 41\\)\n\n\\(\\text{QR}^2 = (x - 0)^2 + (6 - 1)^2 = x^2 + 25\\)\n\nSetting them equal: \\(x^2 + 25 = 41\\), so \\(x^2 = 16\\) and \\(x = \\pm 4\\).\n\n\\(\\text{QR} = \\sqrt{41}\\) in both cases.\n\nFor \\(x = 4\\), R\\((4, 6)\\): \\(\\text{PR} = \\sqrt{(5 - 4)^2 + (-3 - 6)^2} = \\sqrt{1 + 81} = \\sqrt{82}\\).\n\nFor \\(x = -4\\), R\\((-4, 6)\\): \\(\\text{PR} = \\sqrt{(5 + 4)^2 + (-3 - 6)^2} = \\sqrt{81 + 81} = 9\\sqrt{2}\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "stem": "Find a relation between \\(x\\) and \\(y\\) such that the point \\((x, y)\\) is equidistant from the point \\((3, 6)\\) and \\((-3, 4)\\).",
+    "solution": "Equating the squared distances:\n\n\\((x - 3)^2 + (y - 6)^2 = (x + 3)^2 + (y - 4)^2\\)\n\n\\(x^2 - 6x + 9 + y^2 - 12y + 36 = x^2 + 6x + 9 + y^2 - 8y + 16\\)\n\n\\(-6x - 12y + 36 = 6x - 8y + 16\\)\n\n\\(-12x - 4y + 20 = 0\\), i.e., \\(3x + y - 5 = 0\\), which is the required relation."
+  },
+  {
+    "ref": "Ex 7.1 Q6 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 7.1 Q6",
+    "context": "Name the type of quadrilateral formed, if any, by the following points, and give reasons for your answer:",
+    "stem": "\\((-1, -2)\\), \\((1, 0)\\), \\((-1, 2)\\), \\((-3, 0)\\)",
+    "solution": "Let A\\((-1, -2)\\), B\\((1, 0)\\), C\\((-1, 2)\\), D\\((-3, 0)\\).\n\n\\(\\text{AB} = \\text{BC} = \\text{CD} = \\text{DA} = \\sqrt{4 + 4} = 2\\sqrt{2}\\)\n\n\\(\\text{AC} = \\sqrt{0 + 16} = 4\\), \\(\\text{BD} = \\sqrt{16 + 0} = 4\\)\n\nAll four sides are equal and the diagonals are equal, so ABCD is a **square**."
+  },
+  {
+    "ref": "Ex 7.1 Q6 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 7.1 Q6",
+    "context": "Name the type of quadrilateral formed, if any, by the following points, and give reasons for your answer:",
+    "stem": "\\((-3, 5)\\), \\((3, 1)\\), \\((0, 3)\\), \\((-1, -4)\\)",
+    "solution": "Let A\\((-3, 5)\\), B\\((3, 1)\\), C\\((0, 3)\\), D\\((-1, -4)\\).\n\nCheck whether A, B and C are collinear:\n\n\\(\\text{AC} = \\sqrt{9 + 4} = \\sqrt{13}\\), \\(\\text{CB} = \\sqrt{9 + 4} = \\sqrt{13}\\), \\(\\text{AB} = \\sqrt{36 + 16} = \\sqrt{52} = 2\\sqrt{13}\\)\n\nSince AC \\(+\\) CB \\(= 2\\sqrt{13} = \\) AB, the points A, C and B lie on one line.\n\nThree of the four points are collinear, so **no quadrilateral** is formed."
+  },
+  {
+    "ref": "Ex 7.1 Q6 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Distance Formula",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 7.1 Q6",
+    "context": "Name the type of quadrilateral formed, if any, by the following points, and give reasons for your answer:",
+    "stem": "\\((4, 5)\\), \\((7, 6)\\), \\((4, 3)\\), \\((1, 2)\\)",
+    "solution": "Let A\\((4, 5)\\), B\\((7, 6)\\), C\\((4, 3)\\), D\\((1, 2)\\).\n\n\\(\\text{AB} = \\sqrt{9 + 1} = \\sqrt{10}\\), \\(\\text{BC} = \\sqrt{9 + 9} = 3\\sqrt{2}\\), \\(\\text{CD} = \\sqrt{9 + 1} = \\sqrt{10}\\), \\(\\text{DA} = \\sqrt{9 + 9} = 3\\sqrt{2}\\)\n\n\\(\\text{AC} = \\sqrt{0 + 4} = 2\\), \\(\\text{BD} = \\sqrt{36 + 16} = 2\\sqrt{13}\\)\n\nOpposite sides are equal but the diagonals are not, so ABCD is a **parallelogram**."
+  },
+  {
+    "ref": "Ex 7.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "EASY",
+    "stem": "Find the coordinates of the point which divides the join of \\((-1, 7)\\) and \\((4, -3)\\) in the ratio \\(2 : 3\\).",
+    "solution": "By the section formula with \\(m : n = 2 : 3\\),\n\n\\(x = \\dfrac{2(4) + 3(-1)}{2 + 3} = \\dfrac{5}{5} = 1\\),  \\(y = \\dfrac{2(-3) + 3(7)}{2 + 3} = \\dfrac{15}{5} = 3\\)\n\nSo the point is \\((1, 3)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the coordinates of the points of trisection of the line segment joining \\((4, -1)\\) and \\((-2, -3)\\).",
+    "solution": "Let P divide the segment in the ratio \\(1 : 2\\) and Q in the ratio \\(2 : 1\\).\n\n\\(\\text{P} = \\left(\\dfrac{1(-2) + 2(4)}{3},\\ \\dfrac{1(-3) + 2(-1)}{3}\\right) = \\left(2, -\\dfrac{5}{3}\\right)\\)\n\n\\(\\text{Q} = \\left(\\dfrac{2(-2) + 1(4)}{3},\\ \\dfrac{2(-3) + 1(-1)}{3}\\right) = \\left(0, -\\dfrac{7}{3}\\right)\\)\n\nSo the points of trisection are \\(\\left(2, -\\dfrac{5}{3}\\right)\\) and \\(\\left(0, -\\dfrac{7}{3}\\right)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "To conduct Sports Day activities, in your rectangular shaped school ground ABCD, lines have been drawn with chalk powder at a distance of 1 m each. 100 flower pots have been placed at a distance of 1 m from each other along AD, as shown in Fig. 7.12. Niharika runs \\(\\dfrac{1}{4}\\)th the distance AD on the 2nd line and posts a green flag. Preet runs \\(\\dfrac{1}{5}\\)th the distance AD on the eighth line and posts a red flag. What is the distance between both the flags? If Rashmi has to post a blue flag exactly halfway between the line segment joining the two flags, where should she post her flag?",
+    "solution": "Take A as the origin, AB along the \\(x\\)-axis and AD along the \\(y\\)-axis. AD is 100 m long.\n\nNiharika's green flag is on the 2nd line at \\(\\dfrac{1}{4} \\times 100 = 25\\) m, i.e., at \\((2, 25)\\).\n\nPreet's red flag is on the 8th line at \\(\\dfrac{1}{5} \\times 100 = 20\\) m, i.e., at \\((8, 20)\\).\n\nDistance between the flags \\(= \\sqrt{(8 - 2)^2 + (20 - 25)^2} = \\sqrt{36 + 25} = \\sqrt{61}\\) m.\n\nThe blue flag goes at the mid-point:\n\n\\(\\left(\\dfrac{2 + 8}{2},\\ \\dfrac{25 + 20}{2}\\right) = (5, 22.5)\\)\n\nSo Rashmi should post the blue flag on the **5th line, at a distance of 22.5 m** along it."
+  },
+  {
+    "ref": "Ex 7.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the ratio in which the line segment joining the points \\((-3, 10)\\) and \\((6, -8)\\) is divided by \\((-1, 6)\\).",
+    "solution": "Let the ratio be \\(k : 1\\). By the section formula the \\(x\\)-coordinate is\n\n\\(\\dfrac{6k - 3}{k + 1} = -1\\)\n\n\\(6k - 3 = -k - 1\\), i.e., \\(7k = 2\\), so \\(k = \\dfrac{2}{7}\\).\n\nSo the ratio is \\(2 : 7\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the ratio in which the line segment joining A\\((1, -5)\\) and B\\((-4, 5)\\) is divided by the \\(x\\)-axis. Also find the coordinates of the point of division.",
+    "solution": "On the \\(x\\)-axis the ordinate is 0. Let the ratio be \\(k : 1\\); then\n\n\\(\\dfrac{5k - 5}{k + 1} = 0\\), so \\(5k = 5\\) and \\(k = 1\\).\n\nSo the ratio is \\(1 : 1\\) — the \\(x\\)-axis bisects AB.\n\nThe point of division is \\(\\left(\\dfrac{1(-4) + 1(1)}{2},\\ 0\\right) = \\left(-\\dfrac{3}{2}, 0\\right)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "If \\((1, 2)\\), \\((4, y)\\), \\((x, 6)\\) and \\((3, 5)\\) are the vertices of a parallelogram taken in order, find \\(x\\) and \\(y\\).",
+    "solution": "Let A\\((1, 2)\\), B\\((4, y)\\), C\\((x, 6)\\), D\\((3, 5)\\). The diagonals AC and BD bisect each other, so their mid-points coincide:\n\n\\(\\dfrac{1 + x}{2} = \\dfrac{4 + 3}{2}\\) gives \\(x = 6\\).\n\n\\(\\dfrac{2 + 6}{2} = \\dfrac{y + 5}{2}\\) gives \\(y = 3\\).\n\nSo \\(x = 6\\) and \\(y = 3\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "EASY",
+    "stem": "Find the coordinates of a point A, where AB is the diameter of a circle whose centre is \\((2, -3)\\) and B is \\((1, 4)\\).",
+    "solution": "The centre is the mid-point of the diameter AB. Let A be \\((x, y)\\).\n\n\\(\\dfrac{x + 1}{2} = 2\\) gives \\(x = 3\\).\n\n\\(\\dfrac{y + 4}{2} = -3\\) gives \\(y = -10\\).\n\nSo A is \\((3, -10)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are \\((-2, -2)\\) and \\((2, -4)\\), respectively, find the coordinates of P such that \\(\\text{AP} = \\dfrac{3}{7}\\text{AB}\\) and P lies on the line segment AB.",
+    "solution": "Since \\(\\text{AP} = \\dfrac{3}{7}\\text{AB}\\), we have \\(\\text{PB} = \\dfrac{4}{7}\\text{AB}\\), so P divides AB in the ratio \\(3 : 4\\).\n\n\\(x = \\dfrac{3(2) + 4(-2)}{3 + 4} = \\dfrac{-2}{7}\\)\n\n\\(y = \\dfrac{3(-4) + 4(-2)}{3 + 4} = \\dfrac{-20}{7}\\)\n\nSo P is \\(\\left(-\\dfrac{2}{7}, -\\dfrac{20}{7}\\right)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the coordinates of the points which divide the line segment joining A\\((-2, 2)\\) and B\\((2, 8)\\) into four equal parts.",
+    "solution": "The three points divide AB in the ratios \\(1 : 3\\), \\(2 : 2\\) and \\(3 : 1\\).\n\n\\(\\text{P}_1 = \\left(\\dfrac{1(2) + 3(-2)}{4},\\ \\dfrac{1(8) + 3(2)}{4}\\right) = \\left(-1, \\dfrac{7}{2}\\right)\\)\n\n\\(\\text{P}_2 = \\left(\\dfrac{2 + (-2)}{2},\\ \\dfrac{8 + 2}{2}\\right) = (0, 5)\\)\n\n\\(\\text{P}_3 = \\left(\\dfrac{3(2) + 1(-2)}{4},\\ \\dfrac{3(8) + 1(2)}{4}\\right) = \\left(1, \\dfrac{13}{2}\\right)\\)\n\nSo the points are \\(\\left(-1, \\dfrac{7}{2}\\right)\\), \\((0, 5)\\) and \\(\\left(1, \\dfrac{13}{2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 7.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula and Ratio of Division",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of a rhombus if its vertices are \\((3, 0)\\), \\((4, 5)\\), \\((-1, 4)\\) and \\((-2, -1)\\) taken in order. [Hint : Area of a rhombus \\(= \\dfrac{1}{2}\\) (product of its diagonals)]",
+    "solution": "The diagonals join the opposite vertices: \\((3, 0)\\)–\\((-1, 4)\\) and \\((4, 5)\\)–\\((-2, -1)\\).\n\n\\(d_1 = \\sqrt{(-1 - 3)^2 + (4 - 0)^2} = \\sqrt{16 + 16} = 4\\sqrt{2}\\)\n\n\\(d_2 = \\sqrt{(-2 - 4)^2 + (-1 - 5)^2} = \\sqrt{36 + 36} = 6\\sqrt{2}\\)\n\nArea \\(= \\dfrac{1}{2} d_1 d_2 = \\dfrac{1}{2} \\times 4\\sqrt{2} \\times 6\\sqrt{2} = \\dfrac{1}{2} \\times 48 = 24\\) square units."
+  }
+]
