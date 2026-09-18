@@ -1,8 +1,12 @@
-# Question Bank
+# PYQ Vault
 
-Free, public past-year-question paper builder for Indian entrance exams. Filter by exam, chapter, difficulty and year — download the Question Paper + Answer Key as Word files. Live at **https://question-bank-sage.vercel.app**.
+Free, public past-year-question bank for Indian entrance and board exams. Filter and preview by exam, chapter, subtopic, difficulty and PYQ year; sit timed mock tests reconstructed from real papers; read per-chapter teaching notes, strategy guides and book-faithful textbook solutions. Live at **https://www.pyqvault.com**.
 
-Currently supports MHT-CET. NDA, IPMAT, CUET, NEET and JEE Main are queued.
+Browsing and previewing are fully open to anyone. Downloading a paper + answer key as Word files requires a **teacher account** — a downloadable Word paper is a teacher artifact, so students get the online product and other visitors get a "request teacher access" CTA.
+
+Covers NDA, CDS, JEE Mains, NEET, MHT-CET, CBSE Classes 10/11/12, Maharashtra State Board Classes 9/10/11/12, and two worksheet courses. **Run `npm run stats` for live bank size** — any count written in prose, here or anywhere else in the repo, lags the bank.
+
+> The repo, folder and Vercel project are still named `question-bank`; the product was rebranded to PYQ Vault on 2026-06-04. Lowercase "question bank" in prose means the question corpus, not the brand.
 
 > Looking for the deeper context — architecture, decisions log, project conventions? See [CLAUDE.md](./CLAUDE.md). This README is for getting a local dev environment running.
 
@@ -40,7 +44,7 @@ npm install
 
 ### 4. Apply migrations
 
-Apply each `supabase/migrations/000N_*.sql` in order via the Supabase MCP tool, or paste the contents into the Supabase SQL editor (Dashboard → SQL Editor → New query). Today there are 12 migrations, including the schema, RLS, sync metadata, rate-limiter, and the public-visibility partial index.
+Apply each `supabase/migrations/00NN_*.sql` in order via the Supabase MCP tool, or paste the contents into the Supabase SQL editor (Dashboard → SQL Editor → New query). Migrations are **append-only** — never edit one that has already been applied. `ls supabase/migrations/` is the index, and every migration's rationale lives in its own `.sql` header.
 
 ### 5. Seed taxonomy
 
@@ -48,7 +52,7 @@ Apply each `supabase/migrations/000N_*.sql` in order via the Supabase MCP tool, 
 npm run db:seed
 ```
 
-Inserts the MHT-CET taxonomy (1 exam, 3 subjects, 73 chapters, 152 subtopics) extracted from the reference Excel. Idempotent — safe to re-run.
+Inserts the exam/subject/chapter/subtopic taxonomy from `supabase/seed/taxonomy.json`. Idempotent — safe to re-run. This seeds the *taxonomy* only; the question corpus itself is built by the per-exam ingestion pipelines under `scripts/`.
 
 ### 6. Generate TypeScript types from the live schema (optional)
 
@@ -64,7 +68,7 @@ Requires the Supabase CLI: `npm i -g supabase` or `npx supabase`.
 npm run dev
 ```
 
-Open http://localhost:3000 → redirects to `/browse` (the public landing).
+Open http://localhost:3000. Anonymous visitors get the public landing page; signed-in org members are redirected to `/dashboard`.
 
 ### 8. Onboard your first admin
 
@@ -91,7 +95,7 @@ The login page accepts email + password sign-in. **Custom SMTP for Supabase Auth
 
 ## Where things live
 
-- **Live production:** https://question-bank-sage.vercel.app — auto-deploys from `main`
+- **Live production:** https://www.pyqvault.com — auto-deploys from `main`. The old `question-bank-sage.vercel.app` still resolves and 308-redirects here.
 - **Repo:** https://github.com/lwspune/question-bank
 - **Supabase project:** `wunvtnqlzjrkvolslbnm` (https://wunvtnqlzjrkvolslbnm.supabase.co)
 - **Architecture, decisions log, project conventions:** [CLAUDE.md](./CLAUDE.md)
@@ -103,10 +107,12 @@ npm test            # one-shot
 npm run test:watch  # watch mode
 ```
 
-Pure unit tests run anywhere. DB integration tests (the majority) require `.env.local` to be filled in and skip automatically otherwise. There are 184 tests across 28 files; full suite runs in ~5s.
+Pure unit tests run anywhere. **DB-integration tests run against a DEDICATED TEST Supabase project, never production** — `tests/setup.ts` resolves `.env.test.local` / `TEST_SUPABASE_*` and hard-refuses to run fixture-writing tests against any project ref not on its allow-list. Do not point them at the prod project; see `scripts/testdb/README.md` for the runbook and `npm run testdb:reset` to re-baseline. The read-only prod-contract suites (editorial ↔ live-content checks) are the exception and run via `npm run test:prod-contract`.
 
 ## Public surface vs admin surface
 
-- **Public** (no login): `/`, `/browse`, `/api/export`, `/sitemap.xml`, `/robots.txt`, `/opengraph-image`. RLS scopes the question reads to `visibility = 'PUBLIC'` rows.
-- **Admin** (auth required): `/dashboard`, `/upload`, `/questions/[id]/edit`, plus the corresponding `/api` routes. Visibility per question is editable in the edit form.
+- **Public** (no login): `/`, `/browse`, `/questions/*` (per-chapter landing pages), `/guide/*`, `/notes/*`, `/board/*`, `/mock`, `/formula/*`, `/quiz/*`, `/blog`, `/about`, `/sitemap.xml`, `/robots.txt`. RLS scopes the question reads to `visibility = 'PUBLIC'` rows.
+- **Signed-in student:** question reports, bookmarks (`/saved`), timed mock sittings and their results.
+- **Teacher / admin** (auth required): `/dashboard/*`, `/upload`, `/papers`, and the Word export at `/api/export` — downloading a paper is teacher-gated, server-enforced by `resolveExportAccess`.
+- **Superadmin:** `/superadmin` (cross-org console) and the question editor at `/dashboard/questions/[id]` — content editing is superadmin-only since migration 0056.
 - **Server-to-server** (shared-secret): `/api/sync/mock` — receives finalized mocks from sibling apps (initially MHT_CET_AI). Auth via `Authorization: Bearer $SYNC_SHARED_SECRET`.

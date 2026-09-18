@@ -261,6 +261,13 @@ export type BoardChapterLink = {
   chapterSlug: string;
   subjectRoute: string;
   count: number;
+  /**
+   * Chapter UUID. The hub page does not use it; the sitemap loader does, to key
+   * the get_chapter_last_added() dates onto each chapter (migration 0073). Kept
+   * here rather than in a parallel query so the sitemap and the hub can only
+   * ever advertise the same chapter set — a second query would be free to drift.
+   */
+  chapterId: string;
 };
 
 /** List the backfilled chapters for a board exam (for the exam hub), grouped by
@@ -269,7 +276,9 @@ export type BoardChapterLink = {
 export async function listBoardChapters(
   client: SupabaseClient,
   examName: string
-): Promise<{ subjectName: string; subjectRoute: string; chapters: BoardChapterLink[] }[]> {
+): Promise<
+  { subjectId: string; subjectName: string; subjectRoute: string; chapters: BoardChapterLink[] }[]
+> {
   const { data: exam } = await client.from("exams").select("id").eq("name", examName).maybeSingle();
   if (!exam) return [];
 
@@ -304,7 +313,12 @@ export async function listBoardChapters(
   // Aggregate counts per (subject, chapter) from the fully-paged row set.
   const bySubject = new Map<
     string,
-    { subjectName: string; subjectRoute: string; chapters: Map<string, BoardChapterLink & { order: number }> }
+    {
+      subjectId: string;
+      subjectName: string;
+      subjectRoute: string;
+      chapters: Map<string, BoardChapterLink & { order: number }>;
+    }
   >();
   for (const r of (data ?? []) as { chapter: unknown; subject: unknown }[]) {
     const ch = flat(r.chapter);
@@ -313,7 +327,7 @@ export async function listBoardChapters(
     const subjectRoute = slugify(sub.name);
     let s = bySubject.get(sub.id);
     if (!s) {
-      s = { subjectName: sub.name, subjectRoute, chapters: new Map() };
+      s = { subjectId: sub.id, subjectName: sub.name, subjectRoute, chapters: new Map() };
       bySubject.set(sub.id, s);
     }
     const link = s.chapters.get(ch.id);
@@ -324,11 +338,13 @@ export async function listBoardChapters(
         chapterSlug: slugify(ch.name),
         subjectRoute,
         count: 1,
+        chapterId: ch.id,
         order: ch.order_index ?? 0,
       });
   }
 
   return [...bySubject.values()].map((s) => ({
+    subjectId: s.subjectId,
     subjectName: s.subjectName,
     subjectRoute: s.subjectRoute,
     chapters: [...s.chapters.values()]
