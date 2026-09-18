@@ -3023,6 +3023,32 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Trigonometric Identities",
     ],
   },
+
+  // ── Ch.9 Some Applications of Trigonometry (10th). 11pp, Examples 1-7 +
+  //    Ex 9.1 (15 items). ONE taught section, §9.1 Heights and Distances, and
+  //    therefore ONE exercise — the only single-exercise chapter in the book.
+  //    Key coverage is 15/15: every item is a numeric height/distance, so there
+  //    is no proof residue at all here.
+  //
+  //    Figures are ILLUSTRATIVE, not data-bearing. Three items say "(see Fig
+  //    9.1N)" — Q1, Q11, Q14 — but each stem carries every number it needs, so
+  //    the crop adds the picture and never the premise. That is the opposite of
+  //    Ch.7's Ex 7.1 Q5, where the coordinates existed ONLY in the figure.
+  c10AppTrigonometry: {
+    id: "c10AppTrigonometry",
+    chapterName: "Some Applications of Trigonometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__SomeApplicationsOfTrigonometry.pdf",
+    pdf: cls10Maths("09. Some Applications of Trigonometry.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [7],
+    note: "NCERT (CBSE Class 10) — Some Applications of Trigonometry (Chapter 9, NCERT Mathematics)",
+    subtopics: [
+      "Angle of Elevation Problems",
+      "Angle of Depression Problems",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

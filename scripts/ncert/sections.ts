@@ -915,6 +915,14 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "8.4 Trigonometric Identities", label: "Exercise 8.3", kind: "exercise", refPrefixes: ["Ex 8.3 Q"] },
   ],
 
+  // ── Ch.9 Some Applications of Trigonometry (10th). TWO blocks, the smallest
+  //    outline in the book: one taught section with its examples and its single
+  //    exercise. All seven examples band to it → "9.1 Eg.N".
+  c10AppTrigonometry: [
+    { group: "9.1 Heights and Distances", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1 Eg"] },
+    { group: "9.1 Heights and Distances", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
