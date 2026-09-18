@@ -30,7 +30,19 @@ import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const ROOT = join(process.cwd(), "src", "app", "dashboard", "students");
+/**
+ * THREE roots, not one. The pills that caused the outage moved to
+ * src/components/performance/ on 2026-09-18 when the student-facing
+ * /performance route began sharing them, and a scan pinned to the old folder
+ * would have gone on reporting green over an empty subset of the risk. The rule
+ * follows the expensive READ, not the directory it used to live in.
+ */
+const ROOTS = [
+  join(process.cwd(), "src", "app", "dashboard", "students"),
+  join(process.cwd(), "src", "components", "performance"),
+  join(process.cwd(), "src", "app", "performance"),
+];
+const ROOT = ROOTS[0];
 
 function tsxUnder(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {
@@ -43,15 +55,18 @@ function tsxUnder(dir: string, out: string[] = []): string[] {
 
 const count = (haystack: string, needle: string) => haystack.split(needle).length - 1;
 
-describe("/dashboard/students never prefetches", () => {
-  const files = tsxUnder(ROOT);
+describe("the performance surface never prefetches", () => {
+  const files = ROOTS.flatMap((r) => tsxUnder(r));
 
-  it("found the surface at all", () => {
-    // An empty scan would pass every assertion below.
+  it("found every root — a moved folder must fail loudly, not silently", () => {
+    // An empty scan would pass every assertion below. Each root is asserted
+    // SEPARATELY: a combined count stays above a floor even when one whole
+    // directory has vanished, which is exactly how this test broke.
+    for (const r of ROOTS) expect(tsxUnder(r).length).toBeGreaterThan(0);
     expect(files.length).toBeGreaterThanOrEqual(8);
   });
 
-  it.each(files.map((f) => [relative(ROOT, f), f] as const))(
+  it.each(files.map((f) => [relative(process.cwd(), f), f] as const))(
     "%s opts every Link out of prefetch",
     (_label, path) => {
       const src = readFileSync(path, "utf8");
@@ -67,8 +82,13 @@ describe("/dashboard/students never prefetches", () => {
   it("covers the pills and the roster row in particular", () => {
     // The two that actually caused the outage: the nav pills (13 same-route
     // links on one page) and the roster row (one per student, 315 of them).
-    const perf = readFileSync(join(ROOT, "[id]", "performance", "page.tsx"), "utf8");
-    expect(perf).toContain("prefetch={false}");
+    // The pills now live in the SHARED body, which is what both performance
+    // routes render — so this is the file that has to carry the opt-out.
+    const body = readFileSync(
+      join(process.cwd(), "src", "components", "performance", "PerformanceBody.tsx"),
+      "utf8"
+    );
+    expect(body).toContain("prefetch={false}");
     const roster = readFileSync(join(ROOT, "StudentRosterClient.tsx"), "utf8");
     expect(roster).toContain("prefetch={false}");
   });

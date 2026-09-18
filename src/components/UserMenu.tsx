@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, PenLine, ShieldCheck, User } from "lucide-react";
+import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, PenLine, ShieldCheck, TrendingUp, User } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -134,6 +134,17 @@ export default function UserMenu({
               Dashboard
             </Link>
           )}
+          <Link
+            // prefetch off: /performance is a per-user server render behind a
+            // ~500 ms RPC, and a prefetch would run it for anyone who merely
+            // opened this menu.
+            prefetch={false}
+            href="/performance"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+          >
+            <TrendingUp className="h-4 w-4" aria-hidden />
+            Your performance
+          </Link>
           <Link
             href="/saved"
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
