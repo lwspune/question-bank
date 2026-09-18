@@ -31,7 +31,7 @@ function assert(cond: boolean, msg: string): void {
 
 async function main() {
   const { createClient } = await import("@supabase/supabase-js");
-  const { fetchPmfSnapshot } = await import("@/lib/pmf/query");
+  const { fetchPmfSnapshot, fetchShareSnapshot } = await import("@/lib/pmf/query");
   const {
     viewCohorts,
     viewFeatures,
@@ -40,7 +40,10 @@ async function main() {
     abandonment,
     viewNps,
     signalFunnel,
+    viewShare,
     SURFACE_COVERAGE,
+    MIN_SHARE_OPPORTUNITIES,
+    SHARE_LIVE_SINCE,
   } = await import("@/lib/pmf/snapshot");
 
   const db = createClient(
@@ -153,6 +156,54 @@ async function main() {
   console.log(
     `nps: ${nps.rollup.count} responses from ${nps.eligible} eligible (${nps.responseRate}%) — ${nps.reportable ? `score ${nps.rollup.score}` : "below the reporting floor, score withheld"}`
   );
+
+  // ── Share loop (0109/0111) ────────────────────────────────────────────────
+  // The invariant that matters here is the DENOMINATOR. `opportunities` counts
+  // attempts finished since the share button shipped, so it must never exceed
+  // the all-time submitted count — and when it equals it, the anchor constant is
+  // almost certainly wrong (it would mean no attempt predates the feature).
+  const share = viewShare(await fetchShareSnapshot(db, SHARE_LIVE_SINCE));
+  const sc = share.counts;
+
+  assert(sc.withScore <= sc.events, "more score-opt-ins than share intents");
+  assert(
+    sc.byChannel.whatsapp + sc.byChannel.share + sc.byChannel.copy === sc.events,
+    `channel counts (${sc.byChannel.whatsapp}+${sc.byChannel.share}+${sc.byChannel.copy}) do not sum to ${sc.events} intents`
+  );
+  assert(
+    sc.byMock.reduce((n, m) => n + m.events, 0) <= sc.events,
+    "per-mock intents exceed the total"
+  );
+  assert(
+    sc.opportunities <= a.submitted,
+    `opportunities (${sc.opportunities}) exceed all submitted attempts (${a.submitted}) — the since-anchor is not filtering`
+  );
+  if (sc.events === 0) {
+    assert(
+      share.signupsPerShare === null,
+      "signups-per-intent reported a rate with zero intents in the denominator"
+    );
+  }
+  if (sc.opportunities < MIN_SHARE_OPPORTUNITIES) {
+    assert(
+      share.sharePct === null,
+      `share rate reported on only ${sc.opportunities} opportunities (floor is ${MIN_SHARE_OPPORTUNITIES})`
+    );
+  }
+
+  console.log(
+    `
+share loop: ${sc.events} intents over ${sc.opportunities} opportunities since ${SHARE_LIVE_SINCE}` +
+      ` — ${share.sharePct === null ? "below the floor, rate withheld" : `${share.sharePct}%`}`
+  );
+  console.log(
+    `  channels: ${sc.byChannel.whatsapp} whatsapp / ${sc.byChannel.share} os-sheet / ${sc.byChannel.copy} copy` +
+      ` · score opt-in ${share.scoreOptInPct === null ? "n/a" : `${share.scoreOptInPct}%`}` +
+      ` · inbound ${sc.inboundSignups} signups`
+  );
+  if (sc.opportunities === 0) {
+    console.log("  NOTE: nobody has finished a mock since the button shipped — 0 intents proves nothing yet.");
+  }
 
   // ── Coverage map ──────────────────────────────────────────────────────────
   const dark = SURFACE_COVERAGE.filter((s) => s.tracked === "none");

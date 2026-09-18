@@ -13,12 +13,18 @@ import {
   SURFACE_COVERAGE,
   FEATURE_LABELS,
   TELEMETRY_KINDS,
+  viewShare,
   MIN_LIFT_N,
   MIN_SEGMENT_N,
   MIN_NPS_RESPONSES,
+  MIN_SHARE_OPPORTUNITIES,
+  SHARE_LIVE_SINCE,
+  SHARE_LABEL,
+  SHARE_CAVEAT,
   type CohortRow,
   type FeatureRow,
   type SegmentRow,
+  type ShareCounts,
 } from "@/lib/pmf/snapshot";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
 import { PRACTICE_SURFACES, DEFAULT_PRACTICE_SURFACE } from "@/lib/questions/practiceBatch";
@@ -444,8 +450,129 @@ describe("SURFACE_COVERAGE — the blind spots are ON the page", () => {
     }
   });
 
+  it("the share surface is on the map and admits it cannot see delivery", () => {
+    // The outbound counter exists to disambiguate "nobody shared" from "nobody
+    // clicked through". That only works if the reader knows a row is a tap.
+    const sh = SURFACE_COVERAGE.find((s) => s.surface.toLowerCase().includes("share"));
+    expect(sh).toBeDefined();
+    expect(sh!.tracked).toBe("partial");
+    expect(sh!.lost).toMatch(/sent|delivery/i);
+    // Distribution, not learning: it must never claim a user_activity kind.
+    expect(sh!.kinds).toEqual([]);
+  });
+
   it("still names at least one fully dark surface — coverage is not complete", () => {
     expect(SURFACE_COVERAGE.some((s) => s.tracked === "none")).toBe(true);
     expect(SURFACE_COVERAGE.some((s) => s.tracked === "full")).toBe(true);
+  });
+});
+
+/**
+ * The share loop (migration 0109 share_events, surfaced on /dashboard/pmf).
+ *
+ * THE DENOMINATOR IS THE WHOLE POINT. When this panel was built there were 619
+ * finished mock attempts in the table and AT MOST 2 of them could have seen a
+ * share button — the affordance shipped on 2026-09-18. Dividing intents by all
+ * 619 reports ~0% forever and reads as a dead feature; it is the same defect as
+ * a half-period cell rendering like a full one. So the only admissible
+ * denominator is attempts submitted since SHARE_LIVE_SINCE, and this core takes
+ * `opportunities` as an input rather than computing it from a total it could
+ * get wrong.
+ *
+ * A ROW IS AN INTENT, NOT A DELIVERY. navigator.share() resolves when the OS
+ * sheet is dismissed and never reports the chosen app, so nothing here may be
+ * labelled "shares". The wording lives in the core and is pinned below, because
+ * a caveat that lives only in a migration header does not reach the reader.
+ */
+describe("viewShare — the share loop, and the denominator it must use", () => {
+  const counts = (over: Partial<ShareCounts> = {}): ShareCounts => ({
+    events: 0,
+    withScore: 0,
+    byChannel: { whatsapp: 0, share: 0, copy: 0 },
+    byMock: [],
+    opportunities: 0,
+    inboundSignups: 0,
+    ...over,
+  });
+
+  it("withholds the share RATE below the opportunity floor, and still shows the counts", () => {
+    const v = viewShare(counts({ events: 1, opportunities: 2 }));
+
+    expect(v.reportable).toBe(false);
+    expect(v.sharePct).toBeNull();
+    // The counts are never withheld — only the rate derived from too few of them.
+    expect(v.counts.events).toBe(1);
+    expect(v.counts.opportunities).toBe(2);
+  });
+
+  it("reports the share rate once enough opportunities exist", () => {
+    const v = viewShare(
+      counts({ events: 15, opportunities: MIN_SHARE_OPPORTUNITIES * 2 })
+    );
+
+    expect(v.reportable).toBe(true);
+    expect(v.sharePct).toBe(30);
+  });
+
+  it("ZERO opportunities yields null, never 0% — nobody has been asked yet", () => {
+    const v = viewShare(counts({ events: 0, opportunities: 0 }));
+
+    expect(v.sharePct).toBeNull();
+    expect(v.reportable).toBe(false);
+  });
+
+  it("a zero share rate over a REAL sample is reported as 0, not withheld", () => {
+    // The floor exists to suppress noise, not bad news. Once enough students
+    // have seen the button, "none of them tapped it" is a finding.
+    const v = viewShare(counts({ events: 0, opportunities: 200 }));
+
+    expect(v.reportable).toBe(true);
+    expect(v.sharePct).toBe(0);
+  });
+
+  it("computes score opt-in over INTENTS, and withholds it when there are none", () => {
+    expect(viewShare(counts({ events: 0, withScore: 0 })).scoreOptInPct).toBeNull();
+    expect(viewShare(counts({ events: 8, withScore: 2 })).scoreOptInPct).toBe(25);
+  });
+
+  it("computes signups per intent, and withholds it when nothing was shared", () => {
+    // Inbound alone is ambiguous: zero signups reads identically whether nobody
+    // tapped share or plenty did and nobody clicked. The ratio only exists once
+    // the outbound side is non-zero.
+    expect(viewShare(counts({ events: 0, inboundSignups: 0 })).signupsPerShare).toBeNull();
+    expect(viewShare(counts({ events: 20, inboundSignups: 5 })).signupsPerShare).toBe(25);
+  });
+
+  it("keeps the OS share sheet distinct from WhatsApp", () => {
+    // 'share' is navigator.share() — the destination app is genuinely unknown.
+    // Folding it into whatsapp would invent a fact the browser never gave us.
+    const v = viewShare(
+      counts({ events: 6, byChannel: { whatsapp: 3, share: 2, copy: 1 } })
+    );
+
+    expect(v.counts.byChannel.whatsapp).toBe(3);
+    expect(v.counts.byChannel.share).toBe(2);
+    expect(v.counts.byChannel.copy).toBe(1);
+  });
+
+  it("never reports a rate the counts cannot support, across a sweep", () => {
+    for (let opp = 0; opp < MIN_SHARE_OPPORTUNITIES; opp++) {
+      expect(viewShare(counts({ events: 1, opportunities: opp })).sharePct).toBeNull();
+    }
+  });
+
+  it("SHARE_LIVE_SINCE is a real instant, and not in the future", () => {
+    const t = Date.parse(SHARE_LIVE_SINCE);
+    expect(Number.isNaN(t)).toBe(false);
+    expect(t).toBeLessThanOrEqual(Date.now());
+  });
+
+  it("the rendered wording says INTENT, never bare 'shares'", () => {
+    // A row does not prove anything was sent. This is pinned in the core so the
+    // page cannot quietly relabel it — the migration header's caveat is only
+    // load-bearing if it reaches the person reading the number.
+    expect(SHARE_LABEL.toLowerCase()).toContain("intent");
+    expect(SHARE_CAVEAT.toLowerCase()).toContain("intent");
+    expect(SHARE_CAVEAT.length).toBeGreaterThan(20);
   });
 });

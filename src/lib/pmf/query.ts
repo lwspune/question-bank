@@ -19,7 +19,9 @@ import type {
   AttemptCounts,
   FunnelCounts,
   DifficultyCounts,
+  ShareCounts,
 } from "./snapshot";
+import { SHARE_LIVE_SINCE } from "./snapshot";
 
 /** The mature (signed up 28d+ ago) pool the lift + segment arms are drawn from. */
 export type MaturePool = { students: number; signalled: number; retained: number };
@@ -36,6 +38,55 @@ export type PmfSnapshot = {
   difficulty: DifficultyCounts;
   nps: { scores: number[]; eligible: number };
 };
+
+/**
+ * Zero counts for the share loop — the shape the page renders when the RPC has
+ * not answered. Distinct from "no shares happened": the page reads `reportable`
+ * off the opportunity count, so an all-zero row renders as "not yet
+ * measurable", never as a 0% share rate.
+ */
+export function emptyShareCounts(): ShareCounts {
+  return {
+    events: 0,
+    withScore: 0,
+    byChannel: { whatsapp: 0, share: 0, copy: 0 },
+    byMock: [],
+    opportunities: 0,
+    inboundSignups: 0,
+  };
+}
+
+/**
+ * The share loop (0109), via get_share_snapshot (migration 0111).
+ *
+ * Anchored to SHARE_LIVE_SINCE rather than to the PMF window: the only valid
+ * denominator is attempts that could actually have seen the share button. See
+ * that constant, and the migration header.
+ *
+ * Guarded — a share panel that cannot load must not take the whole PMF page
+ * down with it. The failure is warned and rendered as zeroes, which the page
+ * shows as "not yet measurable" rather than as a rate.
+ */
+export async function fetchShareSnapshot(
+  db: SupabaseClient,
+  since: string = SHARE_LIVE_SINCE
+): Promise<ShareCounts> {
+  const { data, error } = await db.rpc("get_share_snapshot", { p_since: since });
+  if (error) {
+    console.warn(`fetchShareSnapshot: ${error.message}`);
+    return emptyShareCounts();
+  }
+  if (!data || typeof data !== "object") return emptyShareCounts();
+
+  const raw = data as Partial<ShareCounts>;
+  const base = emptyShareCounts();
+  return {
+    ...base,
+    ...raw,
+    byChannel: { ...base.byChannel, ...(raw.byChannel ?? {}) },
+    byMock: raw.byMock ?? [],
+  };
+}
 
 export function emptySnapshot(weeks: number): PmfSnapshot {
   return {

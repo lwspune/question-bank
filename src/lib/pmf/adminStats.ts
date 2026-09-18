@@ -8,10 +8,16 @@
  */
 import "server-only";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { fetchPmfSnapshot, type PmfSnapshot } from "./query";
+import { fetchPmfSnapshot, fetchShareSnapshot, type PmfSnapshot } from "./query";
+import type { ShareCounts } from "./snapshot";
 
 export type { PmfSnapshot, MaturePool } from "./query";
 
 export async function getPmfSnapshot(weeks = 12): Promise<PmfSnapshot> {
   return fetchPmfSnapshot(createSupabaseAdminClient(), weeks);
+}
+
+/** The share loop (0109/0111). Same posture: SECURITY DEFINER, service_role only. */
+export async function getShareSnapshot(): Promise<ShareCounts> {
+  return fetchShareSnapshot(createSupabaseAdminClient());
 }
