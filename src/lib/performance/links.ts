@@ -108,3 +108,35 @@ export function topicHref(
 
   return `/browse?${sp.toString()}`;
 }
+
+/**
+ * The RPC's label for a bank row that carries no subtopic. Minted by
+ * `get_student_performance`'s coalesce, never by the taxonomy — so it is a
+ * name that can never resolve to a row, and every link builder has to drop it
+ * rather than pass it on.
+ */
+export const UNCLASSIFIED = "(unclassified)";
+
+/**
+ * Link C — "practise this topic", resolved by NAME at click time.
+ *
+ * `/go/practice` takes canonical DB names and resolves them against the live
+ * taxonomy when the link is FOLLOWED, so a caller pays nothing at render time.
+ * That is what makes it the right shape for a page that names topics spanning
+ * several (exam, subject) lanes: topicHref would need one taxonomy read per
+ * lane before it could render a single href.
+ *
+ * The route's own fallback chain does the degrading from there — an unresolved
+ * subtopic lands on the chapter, an unresolved chapter on the corpus — so this
+ * never has to guess at whether a name is still live.
+ */
+export function goPracticeHref(
+  exam: string,
+  subject: string,
+  chapter: string,
+  subtopic?: string
+): string {
+  const sp = new URLSearchParams({ exam, subject, chapter });
+  if (subtopic && subtopic !== UNCLASSIFIED) sp.set("subtopic", subtopic);
+  return `/go/practice?${sp.toString()}`;
+}

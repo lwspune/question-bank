@@ -17,7 +17,7 @@
  * time cost up front rather than hiding it.
  */
 import { CONTACT_EMAIL } from "@/lib/brand";
-import type { MockReport } from "./mockReport";
+import { formatMarks, formatWhere, type MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
 
 export const SITE_URL = "https://www.pyqvault.com";
@@ -245,11 +245,8 @@ export function formatDwell(secs: number): string {
   return m ? `${m} min ${s}s` : `${s}s`;
 }
 
-/** "Algebra · Quadratic Equations", collapsing a missing half rather than
- *  rendering a naked separator. */
-function where(q: { chapter: string; subtopic: string }): string {
-  return [q.chapter, q.subtopic].filter(Boolean).join(" · ");
-}
+/** Re-exported shape of the core's formatter — see mockReport.formatWhere. */
+const where = formatWhere;
 
 /** The peer line, only when there IS peer evidence. Absent evidence says
  *  nothing — it must never render as "0% of students got this right". */
@@ -257,11 +254,8 @@ function peerLine(peerPct: number | null): string {
   return peerPct === null ? "" : ` — ${peerPct}% of students got this right`;
 }
 
-/** Marks are numeric; show a whole number where it is one. */
-function marks(n: number): string {
-  const r = Math.round(n * 10) / 10;
-  return Number.isInteger(r) ? String(r) : r.toFixed(1);
-}
+/** Re-exported shape of the core's formatter — see mockReport.formatMarks. */
+const marks = formatMarks;
 
 /**
  * The report a student gets after each graded mock.

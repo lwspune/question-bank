@@ -261,13 +261,21 @@ function MockCard({
             <Stat value={mocks.avgPct == null ? "—" : `${mocks.avgPct}%`} label="Average" />
           </div>
           <AttemptsList attempts={recent} />
-          {attempts.length > recent.length && (
-            <div className="text-right">
+          {/* The diagnosis was reachable only from the profile menu, which is
+              not where a student looks for it. It needs at least one graded
+              sitting to say anything, so it appears with the first one. */}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            {mocks.completed > 0 ? (
+              <CardLink href="/performance">See what to work on</CardLink>
+            ) : (
+              <span />
+            )}
+            {attempts.length > recent.length && (
               <CardLink href="/mock/attempts">
                 View all {attempts.length} attempts
               </CardLink>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
     </CardShell>
