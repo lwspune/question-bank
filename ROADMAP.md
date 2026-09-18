@@ -6,6 +6,29 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Classroom projection — the "Project" button goes icon-only
+
+**Decided 2026-09-18, deferred to a later pass** (the overlay itself shipped the same day).
+
+The trigger currently renders a `Presentation` icon **plus the word "Project"**. The word was
+there for discoverability of an unfamiliar affordance; the decision is that the icon alone
+carries it once teachers know the control, and the label costs horizontal room in a card meta
+row that already holds a bookmark and a cart toggle — worst on `/board`, where it sits beside
+the stem rather than in a dedicated row.
+
+**What changes:** drop the text node in `PresentButton.tsx`. The button already carries
+`aria-label="Project this question on the board"` and a `title`, so the accessible name and the
+hover tooltip survive the change untouched — this is a visual-only edit, not an accessibility
+one. Sizing wants a look at the same time: the control becomes an icon button and should match
+the neighbouring icon controls rather than keep the label-shaped padding.
+
+**Why not now:** it is a deliberate visual change to a control nobody has yet used on a real
+panel, and the one thing that would inform it — whether the word is in fact needed for a
+teacher to find the control — is answered by the browser pass that is still owed. Making it
+icon-only before that pass would be guessing at the answer rather than reading it.
+
+---
+
 ## Item statistics — what remains
 
 **Built and live (2026-09-11/12).** Migrations 0095 + 0096, the pure core, the vault rollup,

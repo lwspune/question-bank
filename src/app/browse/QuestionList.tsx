@@ -4,6 +4,7 @@ import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
 import { getQuestionResources } from "@/lib/links/questionResources";
 import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
+import { PresentRegistry } from "@/components/present/PresentRegistry";
 import QuestionCard from "./QuestionCard";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
@@ -64,55 +65,59 @@ export default function QuestionList({
   questions.forEach((q, i) => idToIndex.set(q.id, pageOffset + i + 1));
 
   return (
-    <ul className="space-y-3">
-      {groups.map((group, gi) => {
-        if (group.kind === "single") {
+    // Wraps the page so the projection overlay can step through the whole
+    // list; see PresentRegistry for why the cards register rather than receive.
+    <PresentRegistry>
+      <ul className="space-y-3">
+        {groups.map((group, gi) => {
+          if (group.kind === "single") {
+            return (
+              <li key={`single-${group.question.id}`}>
+                <QuestionCard
+                  question={group.question}
+                  index={idToIndex.get(group.question.id)!}
+                  canEdit={canEdit}
+                  isLoggedIn={isLoggedIn}
+                  supabaseUrl={supabaseUrl}
+                  includeExam={includeExam}
+                  resources={resourcesFor(
+                    group.question,
+                    resourceTags?.get(group.question.id)
+                  )}
+                  itemStats={itemStats?.get(group.question.id)}
+                />
+              </li>
+            );
+          }
           return (
-            <li key={`single-${group.question.id}`}>
-              <QuestionCard
-                question={group.question}
-                index={idToIndex.get(group.question.id)!}
-                canEdit={canEdit}
-                isLoggedIn={isLoggedIn}
-                supabaseUrl={supabaseUrl}
-                includeExam={includeExam}
-                resources={resourcesFor(
-                  group.question,
-                  resourceTags?.get(group.question.id)
-                )}
-                itemStats={itemStats?.get(group.question.id)}
-              />
+            <li key={`set-${group.setId}-${gi}`}>
+              <SetBanner
+                passage={group.passage}
+                count={group.questions.length}
+              >
+                <ul className="space-y-2">
+                  {group.questions.map((q) => (
+                    <li key={q.id}>
+                      <QuestionCard
+                        question={q}
+                        index={idToIndex.get(q.id)!}
+                        canEdit={canEdit}
+                        isLoggedIn={isLoggedIn}
+                        supabaseUrl={supabaseUrl}
+                        hideContext
+                        includeExam={includeExam}
+                        resources={resourcesFor(q, resourceTags?.get(q.id))}
+                        itemStats={itemStats?.get(q.id)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </SetBanner>
             </li>
           );
-        }
-        return (
-          <li key={`set-${group.setId}-${gi}`}>
-            <SetBanner
-              passage={group.passage}
-              count={group.questions.length}
-            >
-              <ul className="space-y-2">
-                {group.questions.map((q) => (
-                  <li key={q.id}>
-                    <QuestionCard
-                      question={q}
-                      index={idToIndex.get(q.id)!}
-                      canEdit={canEdit}
-                      isLoggedIn={isLoggedIn}
-                      supabaseUrl={supabaseUrl}
-                      hideContext
-                      includeExam={includeExam}
-                      resources={resourcesFor(q, resourceTags?.get(q.id))}
-                      itemStats={itemStats?.get(q.id)}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </SetBanner>
-          </li>
-        );
-      })}
-    </ul>
+        })}
+      </ul>
+    </PresentRegistry>
   );
 }
 

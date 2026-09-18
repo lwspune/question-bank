@@ -4,6 +4,9 @@ import { useState, type ReactNode } from "react";
 import { BookOpen, Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
+import PresentButton from "@/components/present/PresentButton";
+import { PresentRegistry } from "@/components/present/PresentRegistry";
+import { fromBoardQuestion, type PresentableQuestion } from "@/lib/present/viewModel";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -51,12 +54,15 @@ export default function BoardReader({
   groups,
   pyqSittings,
   supabaseUrl,
+  chapterName,
 }: {
   groups: BoardSectionGroup[];
   /** The chapter's board past-year questions, newest sitting first. Empty for a
    *  chapter the board has no published PYQs for — 24 of CBSE's 37 today. */
   pyqSittings: BoardPyqSitting[];
   supabaseUrl: string;
+  /** Names the chapter in the classroom-projection breadcrumb. */
+  chapterName: string;
 }) {
   // Reveal state lives HERE (single source of truth) so per-question toggles
   // stay consistent as sections collapse/expand. Everything starts hidden —
@@ -118,37 +124,48 @@ export default function BoardReader({
       {/* BOTH panels stay mounted; the inactive one is hidden. Conditional
           rendering would drop half the chapter out of the DOM, and a stem is the
           only indexable text on these pages (solutions are reveal-gated). */}
-      <div className="space-y-8" id="board-textbook" hidden={showPyqs}>
-        {groups.map((group, i) => (
-          <GroupSection
-            key={group.group}
-            group={group}
-            defaultOpen={openByDefault[i]}
-            supabaseUrl={supabaseUrl}
-            revealed={revealed}
-            blocked={blocked}
-            onToggleReveal={toggleOne}
-          />
-        ))}
-      </div>
-
-      {pyqTotal > 0 && (
-        <div className="space-y-6" id="board-pyqs" hidden={!showPyqs}>
-          <RecurrenceStrip sittings={pyqSittings} />
-          {pyqSittings.map((sitting, i) => (
-            <PyqSitting
-              key={sitting.key}
-              sitting={sitting}
-              // Only the newest sitting opens. The rest are a table of contents —
-              // a chapter can hold ten years of papers.
-              defaultOpen={i === 0}
+      {/* ONE REGISTRY PER PANEL, not one for the reader. Both panels stay
+          mounted, so a shared registry would let the projection walk straight
+          out of the textbook and into the board PYQs — two different corpora,
+          and half of them behind a hidden tab. */}
+      <PresentRegistry>
+        <div className="space-y-8" id="board-textbook" hidden={showPyqs}>
+          {groups.map((group, i) => (
+            <GroupSection
+              key={group.group}
+              group={group}
+              defaultOpen={openByDefault[i]}
               supabaseUrl={supabaseUrl}
+              chapterName={chapterName}
               revealed={revealed}
               blocked={blocked}
               onToggleReveal={toggleOne}
             />
           ))}
         </div>
+      </PresentRegistry>
+
+      {pyqTotal > 0 && (
+        <PresentRegistry>
+          <div className="space-y-6" id="board-pyqs" hidden={!showPyqs}>
+            <RecurrenceStrip sittings={pyqSittings} />
+            {pyqSittings.map((sitting, i) => (
+              <PyqSitting
+                key={sitting.key}
+                sitting={sitting}
+                // Only the newest sitting opens. The rest are a table of contents —
+                // a chapter can hold ten years of papers.
+                defaultOpen={i === 0}
+                supabaseUrl={supabaseUrl}
+                chapterName={chapterName}
+                sittingIndex={i}
+                revealed={revealed}
+                blocked={blocked}
+                onToggleReveal={toggleOne}
+              />
+            ))}
+          </div>
+        </PresentRegistry>
       )}
     </div>
   );
@@ -261,6 +278,8 @@ function PyqSitting({
   sitting,
   defaultOpen,
   supabaseUrl,
+  chapterName,
+  sittingIndex,
   revealed,
   blocked,
   onToggleReveal,
@@ -268,6 +287,10 @@ function PyqSitting({
   sitting: BoardPyqSitting;
   defaultOpen: boolean;
   supabaseUrl: string;
+  chapterName: string;
+  /** Position of this sitting in the panel, so the walk-through orders questions
+   *  across sittings rather than restarting at 0 in each one. */
+  sittingIndex: number;
   revealed: Set<string>;
   blocked: Set<string>;
   onToggleReveal: (id: string) => void;
@@ -299,6 +322,11 @@ function PyqSitting({
               <BoardQuestionItem
                 q={q}
                 supabaseUrl={supabaseUrl}
+                present={fromBoardQuestion(q, {
+                  chapter: chapterName,
+                  sectionLabel: sitting.label,
+                })}
+                order={sittingIndex * 1000 + i}
                 revealed={revealed.has(q.id)}
                 blocked={blocked.has(q.id)}
                 onToggleReveal={() => onToggleReveal(q.id)}
@@ -326,6 +354,7 @@ function GroupSection({
   group,
   defaultOpen,
   supabaseUrl,
+  chapterName,
   revealed,
   blocked,
   onToggleReveal,
@@ -333,6 +362,7 @@ function GroupSection({
   group: BoardSectionGroup;
   defaultOpen: boolean;
   supabaseUrl: string;
+  chapterName: string;
   revealed: Set<string>;
   blocked: Set<string>;
   onToggleReveal: (id: string) => void;
@@ -356,6 +386,7 @@ function GroupSection({
           block={block}
           groupLabel={group.group}
           supabaseUrl={supabaseUrl}
+          chapterName={chapterName}
           revealed={revealed}
           blocked={blocked}
           onToggleReveal={onToggleReveal}
@@ -369,6 +400,7 @@ function BlockSection({
   block,
   groupLabel,
   supabaseUrl,
+  chapterName,
   revealed,
   blocked,
   onToggleReveal,
@@ -376,6 +408,7 @@ function BlockSection({
   block: BoardBlock;
   groupLabel: string;
   supabaseUrl: string;
+  chapterName: string;
   revealed: Set<string>;
   blocked: Set<string>;
   onToggleReveal: (id: string) => void;
@@ -399,6 +432,11 @@ function BlockSection({
             <BoardQuestionItem
               q={q}
               supabaseUrl={supabaseUrl}
+              present={fromBoardQuestion(q, {
+                chapter: chapterName,
+                sectionLabel: block.label,
+              })}
+              order={block.seq * 1000 + i}
               revealed={revealed.has(q.id)}
               blocked={blocked.has(q.id)}
               onToggleReveal={() => onToggleReveal(q.id)}
@@ -431,6 +469,8 @@ function BlockSection({
 function BoardQuestionItem({
   q,
   supabaseUrl,
+  present,
+  order,
   revealed,
   blocked,
   onToggleReveal,
@@ -438,6 +478,9 @@ function BoardQuestionItem({
 }: {
   q: BoardQuestion;
   supabaseUrl: string;
+  /** Built by the caller, which is what knows the question's book position. */
+  present: PresentableQuestion;
+  order: number;
   revealed: boolean;
   blocked: boolean;
   onToggleReveal: () => void;
@@ -459,6 +502,7 @@ function BoardQuestionItem({
         <div className="min-w-0 flex-1 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
           <BlockText text={q.text} />
         </div>
+        <PresentButton question={present} order={order} className="mt-0.5" />
       </div>
 
       {q.imageUrl && (

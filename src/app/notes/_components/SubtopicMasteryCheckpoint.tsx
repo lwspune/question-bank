@@ -1,5 +1,6 @@
 import { Target } from "lucide-react";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
+import { PresentRegistry } from "@/components/present/PresentRegistry";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import CheckpointSelfScore from "./CheckpointSelfScore";
 
@@ -50,11 +51,15 @@ export default function SubtopicMasteryCheckpoint({
         </div>
       </header>
 
-      <div className="space-y-4">
-        {questions.map((q, i) => (
-          <WorkedExampleCard key={q.id} rank={i + 1} example={q} />
-        ))}
-      </div>
+      {/* Registry so a teacher projecting the checkpoint can step through all
+          five without closing the overlay between them. */}
+      <PresentRegistry>
+        <div className="space-y-4">
+          {questions.map((q, i) => (
+            <WorkedExampleCard key={q.id} rank={i + 1} example={q} />
+          ))}
+        </div>
+      </PresentRegistry>
 
       <CheckpointSelfScore
         total={questions.length}

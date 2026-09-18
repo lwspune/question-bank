@@ -3,6 +3,9 @@ import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import PresentButton from "@/components/present/PresentButton";
+import { PresentRegistry } from "@/components/present/PresentRegistry";
+import { fromReviewItem } from "@/lib/present/viewModel";
 import type { ReviewItem } from "@/lib/mocks/service";
 
 /**
@@ -32,11 +35,15 @@ export default function AttemptReviewList({
   supabaseUrl: string;
 }) {
   return (
-    <ol className="mt-4 space-y-4">
-      {items.map((item) => (
-        <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} />
-      ))}
-    </ol>
+    // Registry so a teacher walking the class through a paper can step from one
+    // question to the next inside the projection overlay.
+    <PresentRegistry>
+      <ol className="mt-4 space-y-4">
+        {items.map((item) => (
+          <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} />
+        ))}
+      </ol>
+    </PresentRegistry>
   );
 }
 
@@ -50,8 +57,14 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         : "border-l-muted-foreground/40";
   return (
     <li className={cn("rounded-lg border border-l-4 bg-card p-4", border)}>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <span className="font-mono text-xs text-muted-foreground">Q{item.position}</span>
+        <PresentButton
+          question={fromReviewItem(item)}
+          order={item.position}
+          supabaseUrl={supabaseUrl}
+          className="ml-auto"
+        />
         {item.grace ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
             <Gift className="h-3.5 w-3.5" aria-hidden />
