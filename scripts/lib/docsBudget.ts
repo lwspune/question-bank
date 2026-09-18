@@ -37,6 +37,8 @@ export type BudgetLimits = {
   decisionsMaxBytes: number;
   /** Per-entry digest target. Warning only. */
   perEntryMaxBytes: number;
+  /** `MEMORY.md` ceiling — the memory INDEX, not the memory directory. Hard failure. */
+  memoryMaxBytes: number;
 };
 
 /**
@@ -50,6 +52,7 @@ export const LIMITS: BudgetLimits = {
   fileMaxBytes: 160_000,
   decisionsMaxBytes: 36_000,
   perEntryMaxBytes: 1_200,
+  memoryMaxBytes: 24_000,
 };
 
 export type DecisionEntry = {
@@ -65,6 +68,11 @@ export type Finding = { rule: string; message: string };
 export type BudgetReport = {
   fileBytes: number;
   decisionsBytes: number;
+  /**
+   * MEMORY.md size, or `null` meaning NOT MEASURED HERE — see the memory note
+   * in the header. Null is a third answer, never a zero and never a pass.
+   */
+  memoryBytes: number | null;
   entries: DecisionEntry[];
   errors: Finding[];
   warnings: Finding[];
@@ -128,10 +136,44 @@ export function parseEntries(section: string): DecisionEntry[] {
   return entries;
 }
 
+/**
+ * Headings in DECISIONS_HISTORY.md, which mixes two shapes: a bulleted
+ * `- **tag — …**` entry and a bare `**tag — …**` paragraph. Matching only the
+ * first reported four real narratives as missing.
+ */
+const ARCHIVE_HEADING_RE = /^(?:- )?\*\*(\d{4}-\d{2}-\d{2}(?: \([a-z]+\))?) /;
+
+/**
+ * Which CLAUDE.md digests have NO long form in the archive — i.e. which entries
+ * an archive sweep would DELETE rather than move.
+ *
+ * The convention is that every entry is written in two places, so eviction is
+ * free. That held until it did not: on 2026-09-18, 7 of 11 live entries had no
+ * narrative behind them. Returns `null` when there is no archive to check, for
+ * the same reason the memory ceiling does — not checked is not the same as
+ * clean. Tags are compared WHOLE: "2026-09-18" is a substring of
+ * "2026-09-18 (third)", and that false positive is what made the first
+ * hand-check of this wrong.
+ */
+export function reconcileArchive(claudeMd: string, historyMd: string | null): string[] | null {
+  if (historyMd === null) return null;
+  const archived = new Set<string>();
+  for (const line of historyMd.split("\n")) {
+    const m = ARCHIVE_HEADING_RE.exec(line);
+    if (m) archived.add(m[1]);
+  }
+  const section = extractDecisionsSection(claudeMd);
+  if (section === null) return [];
+  return parseEntries(section)
+    .map((e) => e.tag)
+    .filter((tag) => !archived.has(tag));
+}
+
 export function auditDocsBudget(
   claudeMd: string,
   today: string,
   limits: BudgetLimits = LIMITS,
+  memoryMd: string | null = null,
 ): BudgetReport {
   const errors: Finding[] = [];
   const warnings: Finding[] = [];
@@ -144,13 +186,23 @@ export function auditDocsBudget(
     });
   }
 
+  // Deliberately `!== null` rather than a truthiness check: an EMPTY MEMORY.md
+  // is a real measurement of zero, and `""` is falsy.
+  const memoryBytes = memoryMd !== null ? bytes(memoryMd) : null;
+  if (memoryBytes !== null && memoryBytes > limits.memoryMaxBytes) {
+    errors.push({
+      rule: "memory-ceiling",
+      message: `MEMORY.md is ${memoryBytes} bytes, over the ${limits.memoryMaxBytes} ceiling by ${memoryBytes - limits.memoryMaxBytes}. Prune or merge index lines — do not raise the ceiling.`,
+    });
+  }
+
   const section = extractDecisionsSection(claudeMd);
   if (section === null) {
     errors.push({
       rule: "section-missing",
       message: "No `## Decisions log` heading found — refusing to report a pass on a file this gate could not read.",
     });
-    return { fileBytes, decisionsBytes: 0, entries: [], errors, warnings, ok: false };
+    return { fileBytes, decisionsBytes: 0, memoryBytes, entries: [], errors, warnings, ok: false };
   }
 
   const decisionsBytes = bytes(section);
@@ -185,5 +237,5 @@ export function auditDocsBudget(
     }
   }
 
-  return { fileBytes, decisionsBytes, entries, errors, warnings, ok: errors.length === 0 };
+  return { fileBytes, decisionsBytes, memoryBytes, entries, errors, warnings, ok: errors.length === 0 };
 }
