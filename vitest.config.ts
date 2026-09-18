@@ -4,7 +4,14 @@ import { PROD_CONTRACT_FILES } from "./tests/prodContractFiles";
 
 export default defineConfig({
   resolve: {
-    alias: { "@": path.resolve(__dirname, "src") },
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      // `server-only` is a Next build alias with no resolvable module behind it.
+      // A test that drives a route handler pulls in whatever that route imports,
+      // so without this any route touching lib/activity/service.ts fails to load.
+      // See tests/stubs/server-only.ts.
+      "server-only": path.resolve(__dirname, "tests/stubs/server-only.ts"),
+    },
   },
   test: {
     setupFiles: ["./tests/setup.ts"],

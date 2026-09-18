@@ -7,7 +7,10 @@
  *     IS the price of the score for an anonymous visitor.
  *   - SIGNED-IN: a known account, so we skip capture entirely — validate only
  *     slug + answers, grade, and return, writing NO lead. (Signed-in students
- *     deliberately never appear in the /dashboard/leads funnel.)
+ *     deliberately never appear in the /dashboard/leads funnel.) Instead the
+ *     attempt is recorded as a `quiz_taken` activity row, which is what
+ *     /quiz/attempts reads back. Until 2026-09-18 this branch recorded NOTHING
+ *     anywhere — see lib/quiz/activity.ts.
  *
  * Either way the answer key is fetched SERVER-SIDE (getGradingBySlug, gated on
  * public_slug) and revealed ONLY in this response — never shipped to the static
@@ -17,6 +20,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivity } from "@/lib/activity/service";
+import { buildQuizTakenEvent } from "@/lib/quiz/activity";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { isBillingConfigured } from "@/lib/billing/razorpay";
@@ -69,12 +75,15 @@ export async function POST(request: NextRequest) {
 
     // getSessionUser reads next/headers cookies; outside a real request scope
     // (unit tests) that throws — treat the throw as anon, mirroring /api/export.
-    let signedIn = false;
+    // Resolved ONCE and held: the signed-in branch needs the id, and calling it
+    // a second time would re-throw outside that guard.
+    let sessionUser: { id: string } | null = null;
     try {
-      signedIn = !!(await getSessionUser());
+      sessionUser = (await getSessionUser()) ?? null;
     } catch {
-      signedIn = false;
+      sessionUser = null;
     }
+    const signedIn = !!sessionUser;
 
     // Signed-in student: grade only, capture nothing.
     if (signedIn) {
@@ -87,6 +96,36 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Quiz not found." }, { status: 404 });
       }
       const result = buildSubmitResult(grading, authed.data.answers, isBillingConfigured());
+
+      // Engagement spine (0052). Through the RLS-BOUND client, not the admin
+      // client this route holds for grading: the own-row INSERT policy is what
+      // validates ownership, per lib/activity/service.ts.
+      //
+      // BEST-EFFORT, and the try/catch is load-bearing: logActivity swallows its
+      // own errors, but createSupabaseServerClient() is called OUTSIDE it and
+      // reads cookies, so an unwrapped throw here would 500 a request whose
+      // grading already succeeded. The student's score outranks the analytics row.
+      if (sessionUser) {
+        try {
+          await logActivity(
+            createSupabaseServerClient(),
+            sessionUser.id,
+            buildQuizTakenEvent({
+              quizId: grading.quizId,
+              slug: authed.data.slug,
+              title: grading.title,
+              score: result.score,
+              total: result.total,
+              correct: result.correct,
+              incorrect: result.incorrect,
+              notAttempted: result.notAttempted,
+            })
+          );
+        } catch (e) {
+          console.error("quiz_taken log failed", e);
+        }
+      }
+
       return NextResponse.json(result, { status: 200 });
     }
 
