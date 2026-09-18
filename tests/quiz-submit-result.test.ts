@@ -27,6 +27,7 @@ describe("notesHrefFor", () => {
 describe("buildSubmitResult", () => {
   const grading: GradingData = {
     quizId: "qz",
+    title: "Sample quiz",
     marking: { correct: 1, wrong: 0 },
     questions: [
       q({ q: 1, answer: "A", conceptSlug: "c1" }),

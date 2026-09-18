@@ -67,6 +67,9 @@ export type GradingQuestion = GradedQuestion & {
 
 export type GradingData = {
   quizId: string;
+  /** Denormalised onto the quiz_taken activity row: `quizzes` is admin-RLS, so a
+   *  student-facing history page cannot join back for it. */
+  title: string;
   marking: Marking;
   questions: GradingQuestion[];
 };
@@ -79,7 +82,7 @@ export async function getGradingBySlug(
 ): Promise<GradingData | null> {
   const { data: quiz } = await db
     .from("quizzes")
-    .select("id, marking, public_slug")
+    .select("id, title, marking, public_slug")
     .eq("public_slug", publicSlug)
     .maybeSingle();
   if (!quiz) return null;
@@ -110,6 +113,7 @@ export async function getGradingBySlug(
 
   return {
     quizId: quiz.id as string,
+    title: (quiz.title as string) ?? "Quiz",
     marking: (quiz.marking as Marking) ?? DEFAULT_MARKING,
     questions,
   };

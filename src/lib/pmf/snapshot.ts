@@ -444,6 +444,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     lost: "notes_progress is a STATE row, not an event log: last_viewed_at is overwritten, so reading history is lost — we know THAT a subtopic was read, never when it was read before.",
   },
   {
+    surface: "Daily quiz (/quiz)",
+    via: "user_activity on submit (signed-in) + quiz_leads by mobile (anon)",
+    kinds: ["quiz_taken"],
+    tracked: "partial",
+    lost: "Two populations that do not reconcile, by construction. A SIGNED-IN student's submit writes a quiz_taken row; an ANONYMOUS one — the majority, and the entire purpose of a cold-traffic funnel — is captured as a quiz_leads row keyed by MOBILE, an identity space with no auth.users to attach activity to. Neither can be converted into the other, so quiz adoption below counts signed-in takers only and is a floor, not a total. Recorded from 2026-09-18: quiz_taken was in the allowlist and the DB CHECK from the start with no emitter anywhere, so every earlier attempt is unrecoverable.",
+  },
+  {
     surface: "Acquisition / signup source",
     via: "student_profiles.acq_* (migration 0106)",
     kinds: [],
