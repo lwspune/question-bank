@@ -2886,6 +2886,42 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Elimination Method",
     ],
   },
+
+  // ── Ch.4 Quadratic Equations (10th). 11pp, Examples 1-9 + Ex 4.1 (12 items)
+  //    / 4.2 (10) / 4.3 (8). 30 exercise items, ZERO figure ANCHORS — the
+  //    chapter's one figure (Fig 4.2) is drawn inside Example 8's SOLUTION
+  //    ("Let us first draw the diagram"), and its stem describes the circular
+  //    park in full, so nothing needs a crop to be answerable.
+  //
+  //    1. **EX 4.2 Q2 IS A CROSS-REFERENCE, NOT A STEM** — it reads in full
+  //       "Solve the problems given in Example 1." Book-faithful means keeping it
+  //       exactly that way; the solution restates Example 1's two situations so
+  //       the row is answerable standing alone, but the STEM is not rewritten.
+  //
+  //    2. The key is 100% again (30/30), and every item is computable, so this
+  //       chapter's cross-check has no graph-read or prove-that residue at all
+  //       — the first Class-10 chapter where the gate can close on EVERY item.
+  //
+  //    3. §4.3 Factorisation and §4.4 Nature of Roots each end in their own
+  //       exercise; §4.2 Quadratic Equations ends in Ex 4.1. Three taught
+  //       sections, three exercises, no Miscellaneous — the cleanest shape since
+  //       Ch.13.
+  c10QuadraticEquations: {
+    id: "c10QuadraticEquations",
+    chapterName: "Quadratic Equations",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__QuadraticEquations.pdf",
+    pdf: cls10Maths("04. Quadratic Equations.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [2, 3], // Ex 4.1 + 4.2 on p2, Ex 4.3 heads p3
+    note: "NCERT (CBSE Class 10) — Quadratic Equations (Chapter 4, NCERT Mathematics)",
+    subtopics: [
+      "Identifying and Forming Quadratic Equations",
+      "Solving a Quadratic Equation by Factorisation",
+      "Nature of Roots and the Discriminant",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

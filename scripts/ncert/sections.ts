@@ -859,6 +859,19 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "3.3.2 Elimination Method", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 Q"] },
   ],
 
+  // ── Ch.4 Quadratic Equations (10th). THREE taught sections, each with its own
+  //    worked examples then its own exercise. Examples band to the exercise they
+  //    precede: 1-2 → "4.1 Eg.N", 3-6 → "4.2 Eg.N", 7-9 → "4.3 Eg.N"
+  //    (the prefix names the EXERCISE, not the section).
+  c10QuadraticEquations: [
+    { group: "4.2 Quadratic Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 Eg"] },
+    { group: "4.2 Quadratic Equations", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 Q"] },
+    { group: "4.3 Solution of a Quadratic Equation by Factorisation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 Eg"] },
+    { group: "4.3 Solution of a Quadratic Equation by Factorisation", label: "Exercise 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 Q"] },
+    { group: "4.4 Nature of Roots", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 Eg"] },
+    { group: "4.4 Nature of Roots", label: "Exercise 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
