@@ -2814,6 +2814,41 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Geometric Probability",
     ],
   },
+
+  // ── Ch.2 Polynomials (10th). 14pp — the SHORTEST chapter in the book.
+  //    Examples 1-5 + Ex 2.1 (1 item) / 2.2 (2 items x 6 sub-parts).
+  //
+  //    1. **THE KEY IS 100% HERE** — all 18 sub-answers of all 3 numbered items
+  //       are in jemh1an p0, the best coverage in the book alongside Ch.13. That
+  //       is the chapter's own denominator (Ch.1 was 5/10, Ch.6 7/29); it is NOT
+  //       a book-wide property, so every chapter still reports its own.
+  //
+  //    2. **EX 2.1 IS ONE QUESTION, NOT SIX**, even though the key lists six
+  //       answers. The book prints a single numbered item ("Find the number of
+  //       zeroes of p(x), in each case") and the (i)-(vi) labels live INSIDE
+  //       Fig. 2.10, not in the stem. Splitting it would be a decomposition the
+  //       book does not make — the same call as Ch.6's Fig. 6.34. Example 1 /
+  //       Fig. 2.9 is the identical shape.
+  //
+  //    3. Only TWO figures in the whole chapter (Fig 2.9, Fig 2.10), both
+  //       graph-grids that ARE the question. Every other figure in §2.2 is
+  //       teaching prose, not a question anchor.
+  c10Polynomials: {
+    id: "c10Polynomials",
+    chapterName: "Polynomials",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Polynomials.pdf",
+    pdf: cls10Maths("02. Polynomials.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [0], // Ex 2.1 + Ex 2.2 both sit in the first key page
+    note: "NCERT (CBSE Class 10) — Polynomials (Chapter 2, NCERT Mathematics)",
+    subtopics: [
+      "Geometrical Meaning of the Zeroes of a Polynomial",
+      "Zeroes and Coefficients of a Quadratic Polynomial",
+      "Forming a Quadratic Polynomial from its Zeroes",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

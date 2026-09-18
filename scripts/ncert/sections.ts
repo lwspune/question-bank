@@ -831,6 +831,17 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    Examples band to the exercise they precede, the Class-11/12 convention:
   //    Examples 1-4 sit under §1.2 and precede Ex 1.1 → "1.1 Eg.N"; Examples 5-7
   //    sit under §1.3 and precede Ex 1.2 → "1.2 Eg.N".
+  // ── Ch.2 Polynomials (10th). TWO taught sections, each with its worked
+  //    example(s) then its exercise. §2.2 carries Example 1 only; §2.3 carries
+  //    Examples 2-5. Examples band to the exercise they precede: 1 → "2.1 Eg.N",
+  //    2-5 → "2.2 Eg.N" (the prefix names the EXERCISE, not the section).
+  c10Polynomials: [
+    { group: "2.2 Geometrical Meaning of the Zeroes of a Polynomial", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 Eg"] },
+    { group: "2.2 Geometrical Meaning of the Zeroes of a Polynomial", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 Q"] },
+    { group: "2.3 Relationship between Zeroes and Coefficients of a Polynomial", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Eg"] },
+    { group: "2.3 Relationship between Zeroes and Coefficients of a Polynomial", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
