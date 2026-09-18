@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   Play,
   Sparkles,
+  Target,
   Timer,
   Trophy,
 } from "lucide-react";
@@ -98,6 +99,7 @@ export default async function MePage() {
               bookmarkedCount={notes.bookmarkedCount}
               masteredCount={notes.masteredCount}
             />
+            <DrillCard />
             <SavedCard count={savedCount} />
           </div>
         </div>
@@ -278,6 +280,32 @@ function MockCard({
           </div>
         </div>
       )}
+    </CardShell>
+  );
+}
+
+/**
+ * Deliberately carries NO COUNT.
+ *
+ * "41 to fix" would be the motivating version, and computing it honestly costs
+ * this page the drill's whole read — every answer event plus a taxonomy lookup
+ * over several hundred ids, to filter out questions that are no longer
+ * servable. The cheap version (count the events, skip the filter) can only ever
+ * OVERSTATE, and a number a student is shown should not be one we know is
+ * approximate. The true count is on /drill itself, one tap away, where it is
+ * already being computed.
+ */
+function DrillCard() {
+  return (
+    <CardShell
+      icon={<Target className="h-4 w-4" aria-hidden />}
+      title="Fix your mistakes"
+      action={<CardLink href="/drill">Start</CardLink>}
+    >
+      <p className="text-sm text-muted-foreground">
+        Five questions you&apos;ve got wrong before, one at a time. Get one right and it rests
+        before coming back once to check it stuck.
+      </p>
     </CardShell>
   );
 }

@@ -127,13 +127,29 @@ export default function Findings({ report }: { report: MockReport }) {
         </Block>
       )}
 
-      <Link
-        href="/performance"
-        className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
-      >
-        Your full performance across all papers
-        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-      </Link>
+      {/* The card names what is broken; this is the only control that DOES
+          something about it. It leads because a diagnosis nobody can act on is
+          where this surface started — /drill serves these same questions back,
+          which is the deliberate-practice half of the engagement gate. It is
+          offered on every result, not only a bad one: the pool is built from
+          every paper they have sat, so there is something to fix after a good
+          sitting too. */}
+      <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <Link
+          href="/drill"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Target className="h-5 w-5" aria-hidden />
+          Fix five of these now
+        </Link>
+        <Link
+          href="/performance"
+          className="inline-flex h-12 items-center justify-center gap-1.5 rounded-xl px-4 text-sm font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:underline"
+        >
+          Your full performance across all papers
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+        </Link>
+      </div>
     </section>
   );
 }

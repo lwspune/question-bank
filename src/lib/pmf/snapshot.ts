@@ -517,6 +517,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     lost: "Whether anything was actually SENT. navigator.share() resolves when the OS sheet is dismissed and never reports the chosen app, and a WhatsApp hand-off can be abandoned — so the outbound number is intent, not delivery. Delivery is only ever visible as a tagged inbound arrival.",
   },
   {
+    surface: "Weak-area drills (/drill)",
+    via: "user_activity — server-graded, one row per answer plus one per drill",
+    kinds: ["drill_completed", "answer_correct", "answer_wrong"],
+    tracked: "full",
+    lost: "",
+  },
+  {
     surface: "Saved questions (/saved)",
     via: "user_activity + question_bookmarks",
     kinds: ["question_bookmarked"],
