@@ -13,6 +13,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 8. **All entries dated 2026-07-06 through 2026-07-29** (65 entries; archived 2026-08-11 during a lean pass — the active log's own rule is ~the last 2 weeks, and this block was 369 of CLAUDE.md's 894 lines) — see the `### 2026-07-06 to 2026-07-29` section at the TOP of the dated sections (newest-first).
 7. **All entries dated 2026-06-17 through 2026-06-30** (archived 2026-07-04 during a lean pass) — see the `### 2026-06-17 to 2026-06-30` section at the TOP of the dated sections (newest-first).
 
+11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
+
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 
 Within-month convention: newest entries closest to top (matches CLAUDE.md ordering).
@@ -21,6 +23,127 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 
 
 ### 2026-09-01 to 2026-09-16 — full narratives (digested 2026-09-14; completed 2026-09-16)
+
+**2026-09-18 (third) — NCERT Class 10 Mathematics complete: 14 chapters, 587 questions.**
+
+The full narrative for the digest in CLAUDE.md.
+
+**Scope.** All 14 chapters of NCERT Class 10 Mathematics, ingested into the `cbse-10`
+exam over two sessions. 587 PUBLIC rows, 46 figure crops, 15 MCQs. The two
+appendices (jemh1a1 Proofs in Mathematics, jemh1a2 Mathematical Modelling) were
+ruled OUT of scope by the user at the start and remain so.
+
+Per chapter, with each chapter's OWN key denominator — the number that matters,
+because it swings from 24% to 100% inside one book:
+
+| Ch | q | key coverage | note |
+|---|---|---|---|
+| 1 Real Numbers | 27 | 5/10 | pilot; Ex 1.2 has no key block at all |
+| 2 Polynomials | 18 | 18/18 | shortest chapter; 2 crops |
+| 3 Pair of Linear Equations | 51 | 41/41 | §3.3 splits 3.3.1/3.3.2 |
+| 4 Quadratic Equations | 39 | 30/30 | every item computable |
+| 5 Arithmetic Progressions | 114 | 98/98 | biggest; Optional Ex 5.4; 2 MCQs; 5 crops |
+| 6 Triangles | 55 | 7/29 (24%) | weakest key in the book; 32 crops |
+| 7 Coordinate Geometry | 34 | 24/24 | 3 crops |
+| 8 Introduction to Trigonometry | 59 | 38/47 | 8 MCQs; 5 crops |
+| 9 Some Applications of Trigonometry | 22 | 15/15 | single exercise; 3 crops |
+| 10 Circles | 23 | 12/20 | 4 MCQs; 4 crops |
+| 11 Areas Related to Circles | 21 | 19/19 | 1 MCQ; 4 crops; ONE textbook key defect |
+| 12 Surface Areas and Volumes | 24 | 17/17 | preamble hazard |
+| 13 Statistics | 30 | 22/22 | 45 GFM tables |
+| 14 Probability | 70 | 25/25 | made `cbse-10` mixed-format |
+
+**Zero errata** against the book key across every chapter that has one, from
+independent sympy derivation off the STEM in every case — never our answer
+compared to the key, which lets a shared error hide.
+
+**What the key's partial coverage actually is.** Not a gap: a genre. The unkeyed
+items are always "prove that", "show that", or a construction, because no answer
+key can adjudicate a proof. Ch.8's 9 unkeyed items are exactly its 9 proofs
+(Ex 8.1 Q6 plus all eight of Ex 8.3 Q4); Ch.10's 8 are its 7 proofs plus one
+"Draw a circle and two lines..."; Ch.6's 22 are all "prove that". This is why
+every chapter has to report its own denominator instead of inheriting a
+book-level number — and why Ch.6's 7/29 is not a defect in Ch.6.
+
+**MCQs: fifteen, not two.** The lane was scoped expecting the Ex 8.2 Q2 four and
+the head of Ex 10.2. Found: Ch.5 Ex 5.2 Q2 (two), Ch.8 Ex 8.2 Q2 and Ex 8.3 Q3
+(eight), Ch.10 Ex 10.1 Q3 and Ex 10.2 Q1-3 (four), Ch.11 Ex 11.1 Q14 (one).
+
+Ch.10 Ex 10.1 Q3 is the one worth remembering. It is unannounced — Ex 10.2's
+three are introduced with "In Q.1 to 3, choose the correct option", but Q3 of
+Ex 10.1 just sits between a fill-in-the-blanks and a construction with four
+options, and in a text dump the only tell is the answer key's bare "3. D".
+
+This matters because `flip-public.ts` flips `question_format='subjective'` ONLY
+and reports success either way. On Ch.14 it flipped 69 of 70 and left the MCQ
+PRIVATE with no error at all. Every chapter carrying an MCQ from Ch.5 onwards ran
+`--with-mcq`, and the counts were checked against the row count each time.
+
+**Two durable tools, each built because the same defect struck twice.**
+
+1. `scripts/ncert/key-items.ts` — reconciles the key's item numbers against the
+   transcription's, BOTH WAYS. Built after two dropped items that a page-scoped
+   read could not see: Ch.3 Ex 3.2 Q3's sixth sub-part sits alone atop the next
+   page, and Ch.7 Ex 7.1's Q9 and Q10 sit above the next section heading on the
+   following page. Both exercises read as finished lists. The KEY is what
+   disagreed, by listing answers for items with no row.
+
+   Proven by fault injection rather than asserted: truncating Ch.7 back to Q8
+   makes it report "KEY HAS, TRANSCRIPTION LACKS: Q9, Q10".
+
+   Three false-positive classes were found and fixed while building it: "(x)" the
+   VARIABLE read as a roman label (the key writes "Age of Nuri (x) = 50"); a
+   sentence-final "18." read as an item number; and a strict +1 run that stopped
+   dead at a key's first skipped item. The gap allowance ended at 6, which is the
+   widest real gap in this book (Ex 10.2 keys 1,2,3,6,7,12).
+
+   It is TRIAGE and always exits 0 — a chapter legitimately has unkeyed items.
+
+2. `scripts/ncert/fig_bounds.py` — measures crop bboxes by caption, carrying the
+   three rules each of which cost a bad crop before it was one: SOLID INK ONLY
+   (prose fraction bars and square-root vincula are hairlines — this is Ch.6's
+   "prose carries vector ink" finding, and it swallowed the whole left text column
+   on Ch.5 Fig 5.7); PAGE FURNITURE IS NOT ART (the running-head rule is 0.84 page
+   widths); TEXT MUST BE CONTAINED, not merely overlapping (a prose line starts at
+   the left margin and overlaps every figure on its row — three Ch.7 crops). It
+   later gained a y-floor (Ch.9 p9 stacks Fig 9.12 above Fig 9.13) and an x-floor
+   (Ch.10 p8 prints Fig 10.12 and Fig 10.13 side by side).
+
+   It also builds the CONTACT SHEET, which is the part that is not automatable.
+   On Ch.5 the geometry reported success and the sheet found 3 of 5 crops wrong;
+   on Ch.6 it found 6 of 22. Geometry proposes; the eye disposes.
+
+**The one real defect in the book's own key**, found in the last chapter:
+Ex 11.1 Q8(ii) prints "58.875 cm²". The value is right; the unit is not — the
+field is a 15 m square and the ropes are 5 m and 10 m, so the increase can only
+be in square metres. Flagged `[Textbook: ...]` in the solution rather than
+silently corrected, per the errata convention.
+
+**Structural findings worth keeping.**
+
+- Class 10 has no Miscellaneous exercises anywhere, but Ch.5 carries an
+  "EXERCISE 5.4 (Optional)*", footnoted "not from the examination point of view".
+  It got its own `section_group` with `kind:"exercise"` — deliberately NOT
+  `miscellaneous`, which would invent a block the book does not print.
+- Two chapters have a taught section with no worked examples (Ch.6 §6.2,
+  Ch.10 §10.2), so their `/board` outlines are odd-numbered.
+- This 2025-26 reprint has no "Trigonometric Ratios of Complementary Angles"
+  section (Ch.8) and no "Area of a Triangle" section (Ch.7); older editions do.
+- Ex 11.1 opens with a standing "Unless stated otherwise, use π = 22/7" that six
+  of its items then override in their own stem — the constant is per-question.
+- Figures split cleanly into DATA-BEARING and ILLUSTRATIVE. Ch.7 Ex 7.1 Q5 names
+  four seats and gives not one coordinate; Ch.9's three all carry every number in
+  the stem. The crop-only strategy is right either way, but the two are not the
+  same risk.
+
+**Not done / still open.**
+
+- Layout of `/board/cbse-10/...` is unverified. The gate proves compile,
+  `board:lint` proves structure, the loaders prove data; none renders a pixel.
+- `tests/guide-nda-current-affairs-themes.test.ts` fails (180 vs 191) and is
+  PRE-EXISTING — verified failing on a clean tree via `git stash` before this
+  lane started. Not mine, not fixed.
+
 
 > **This block is NOT retired from CLAUDE.md.** Unlike batches 1-9, which were archived wholesale,
 > September stays in the active log as a DIGEST — headline plus the load-bearing findings — and the

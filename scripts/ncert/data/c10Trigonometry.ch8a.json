@@ -1,0 +1,294 @@
+[
+  {
+    "ref": "8.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "Given \\(\\tan \\text{A} = \\dfrac{4}{3}\\), find the other trigonometric ratios of the angle A.",
+    "solution": "Let us first draw a right triangle ABC.\n\nWe know that \\(\\tan \\text{A} = \\dfrac{\\text{BC}}{\\text{AB}} = \\dfrac{4}{3}\\).\n\nTherefore, if BC \\(= 4k\\), then AB \\(= 3k\\), where \\(k\\) is a positive number.\n\nBy the Pythagoras Theorem, \\(\\text{AC}^2 = \\text{AB}^2 + \\text{BC}^2 = (4k)^2 + (3k)^2 = 25k^2\\), so AC \\(= 5k\\).\n\nNow we can write all the trigonometric ratios using their definitions:\n\n\\(\\sin \\text{A} = \\dfrac{\\text{BC}}{\\text{AC}} = \\dfrac{4k}{5k} = \\dfrac{4}{5}\\),  \\(\\cos \\text{A} = \\dfrac{\\text{AB}}{\\text{AC}} = \\dfrac{3k}{5k} = \\dfrac{3}{5}\\)\n\nTherefore, \\(\\cot \\text{A} = \\dfrac{1}{\\tan \\text{A}} = \\dfrac{3}{4}\\), \\(\\operatorname{cosec} \\text{A} = \\dfrac{1}{\\sin \\text{A}} = \\dfrac{5}{4}\\) and \\(\\sec \\text{A} = \\dfrac{1}{\\cos \\text{A}} = \\dfrac{5}{3}\\)."
+  },
+  {
+    "ref": "8.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\angle\\)B and \\(\\angle\\)Q are acute angles such that \\(\\sin \\text{B} = \\sin \\text{Q}\\), then prove that \\(\\angle\\)B \\(=\\) \\(\\angle\\)Q.",
+    "solution": "Let us consider two right triangles ABC and PQR where \\(\\sin \\text{B} = \\sin \\text{Q}\\).\n\nWe have \\(\\sin \\text{B} = \\dfrac{\\text{AC}}{\\text{AB}}\\) and \\(\\sin \\text{Q} = \\dfrac{\\text{PR}}{\\text{PQ}}\\).\n\nThen \\(\\dfrac{\\text{AC}}{\\text{AB}} = \\dfrac{\\text{PR}}{\\text{PQ}}\\).\n\nTherefore, \\(\\dfrac{\\text{AC}}{\\text{PR}} = \\dfrac{\\text{AB}}{\\text{PQ}} = k\\), say.  ... (1)\n\nNow, using Pythagoras Theorem,\n\n\\(\\text{BC} = \\sqrt{\\text{AB}^2 - \\text{AC}^2}\\) and \\(\\text{QR} = \\sqrt{\\text{PQ}^2 - \\text{PR}^2}\\).\n\nSo, \\(\\dfrac{\\text{BC}}{\\text{QR}} = \\dfrac{\\sqrt{\\text{AB}^2 - \\text{AC}^2}}{\\sqrt{\\text{PQ}^2 - \\text{PR}^2}} = \\dfrac{\\sqrt{k^2\\text{PQ}^2 - k^2\\text{PR}^2}}{\\sqrt{\\text{PQ}^2 - \\text{PR}^2}} = k\\)  ... (2)\n\nFrom (1) and (2), \\(\\dfrac{\\text{AC}}{\\text{PR}} = \\dfrac{\\text{AB}}{\\text{PQ}} = \\dfrac{\\text{BC}}{\\text{QR}}\\).\n\nThen, by the SSS similarity criterion, \\(\\triangle\\)ACB \\(\\sim\\) \\(\\triangle\\)PRQ, and therefore \\(\\angle\\)B \\(=\\) \\(\\angle\\)Q."
+  },
+  {
+    "ref": "8.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "Consider \\(\\triangle\\)ACB, right-angled at C, in which AB \\(= 29\\) units, BC \\(= 21\\) units and \\(\\angle\\)ABC \\(= \\theta\\) (see Fig. 8.10). Determine the values of\n\n(i) \\(\\cos^2\\theta + \\sin^2\\theta\\),\n\n(ii) \\(\\cos^2\\theta - \\sin^2\\theta\\)",
+    "solution": "In \\(\\triangle\\)ACB, we have\n\n\\(\\text{AC} = \\sqrt{\\text{AB}^2 - \\text{BC}^2} = \\sqrt{(29)^2 - (21)^2} = \\sqrt{(29 - 21)(29 + 21)} = \\sqrt{(8)(50)} = \\sqrt{400} = 20\\) units.\n\nSo, \\(\\sin\\theta = \\dfrac{\\text{AC}}{\\text{AB}} = \\dfrac{20}{29}\\), \\(\\cos\\theta = \\dfrac{\\text{BC}}{\\text{AB}} = \\dfrac{21}{29}\\).\n\n**(i)** \\(\\cos^2\\theta + \\sin^2\\theta = \\dfrac{(21)^2 + (20)^2}{(29)^2} = \\dfrac{441 + 400}{841} = \\dfrac{841}{841} = 1\\)\n\n**(ii)** \\(\\cos^2\\theta - \\sin^2\\theta = \\dfrac{(21)^2 - (20)^2}{(29)^2} = \\dfrac{441 - 400}{841} = \\dfrac{41}{841}\\)"
+  },
+  {
+    "ref": "8.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "In a right triangle ABC, right-angled at B, if \\(\\tan \\text{A} = 1\\), then verify that \\(2 \\sin \\text{A} \\cos \\text{A} = 1\\).",
+    "solution": "In \\(\\triangle\\)ABC, \\(\\tan \\text{A} = \\dfrac{\\text{BC}}{\\text{AB}} = 1\\), i.e., BC \\(=\\) AB.\n\nLet AB \\(=\\) BC \\(= k\\), where \\(k\\) is a positive number.\n\nNow, \\(\\text{AC} = \\sqrt{\\text{AB}^2 + \\text{BC}^2} = \\sqrt{(k)^2 + (k)^2} = k\\sqrt{2}\\).\n\nTherefore, \\(\\sin \\text{A} = \\dfrac{\\text{BC}}{\\text{AC}} = \\dfrac{1}{\\sqrt{2}}\\) and \\(\\cos \\text{A} = \\dfrac{\\text{AB}}{\\text{AC}} = \\dfrac{1}{\\sqrt{2}}\\).\n\nSo, \\(2 \\sin \\text{A} \\cos \\text{A} = 2\\left(\\dfrac{1}{\\sqrt{2}}\\right)\\left(\\dfrac{1}{\\sqrt{2}}\\right) = 1\\), which is the required value."
+  },
+  {
+    "ref": "8.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle\\)OPQ, right-angled at P, OP \\(= 7\\) cm and OQ \\(-\\) PQ \\(= 1\\) cm (see Fig. 8.12). Determine the values of \\(\\sin \\text{Q}\\) and \\(\\cos \\text{Q}\\).",
+    "solution": "In \\(\\triangle\\)OPQ, we have \\(\\text{OQ}^2 = \\text{OP}^2 + \\text{PQ}^2\\),\n\ni.e., \\((1 + \\text{PQ})^2 = \\text{OP}^2 + \\text{PQ}^2\\)  (since OQ \\(=\\) 1 \\(+\\) PQ)\n\ni.e., \\(1 + \\text{PQ}^2 + 2\\text{PQ} = \\text{OP}^2 + \\text{PQ}^2\\)\n\ni.e., \\(1 + 2\\text{PQ} = 7^2\\)  (since OP \\(= 7\\) cm)\n\ni.e., \\(\\text{PQ} = 24\\) cm and \\(\\text{OQ} = 1 + \\text{PQ} = 25\\) cm.\n\nSo, \\(\\sin \\text{Q} = \\dfrac{\\text{OP}}{\\text{OQ}} = \\dfrac{7}{25}\\) and \\(\\cos \\text{Q} = \\dfrac{\\text{PQ}}{\\text{OQ}} = \\dfrac{24}{25}\\)."
+  },
+  {
+    "ref": "8.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of Specific Angles",
+    "difficulty": "EASY",
+    "stem": "In \\(\\triangle\\)ABC, right-angled at B, AB \\(= 5\\) cm and \\(\\angle\\)ACB \\(= 30^\\circ\\) (see Fig. 8.19). Determine the lengths of the sides BC and AC.",
+    "solution": "To find the length of the side BC, we choose the trigonometric ratio involving BC and the given side AB. Since BC is the side adjacent to angle C and AB is the side opposite to angle C,\n\n\\(\\dfrac{\\text{AB}}{\\text{BC}} = \\tan \\text{C}\\)\n\ni.e., \\(\\dfrac{5}{\\text{BC}} = \\tan 30^\\circ = \\dfrac{1}{\\sqrt{3}}\\), which gives \\(\\text{BC} = 5\\sqrt{3}\\) cm.\n\nTo find AC, we consider \\(\\sin 30^\\circ = \\dfrac{\\text{AB}}{\\text{AC}}\\),\n\ni.e., \\(\\dfrac{1}{2} = \\dfrac{5}{\\text{AC}}\\), i.e., \\(\\text{AC} = 10\\) cm.\n\nNote that alternatively we could have used the Pythagoras theorem: \\(\\text{AC} = \\sqrt{\\text{AB}^2 + \\text{BC}^2} = \\sqrt{5^2 + (5\\sqrt{3})^2} = 10\\) cm."
+  },
+  {
+    "ref": "8.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of Specific Angles",
+    "difficulty": "EASY",
+    "stem": "In \\(\\triangle\\)PQR, right-angled at Q (see Fig. 8.20), PQ \\(= 3\\) cm and PR \\(= 6\\) cm. Determine \\(\\angle\\)QPR and \\(\\angle\\)PRQ.",
+    "solution": "Given PQ \\(= 3\\) cm and PR \\(= 6\\) cm.\n\nTherefore, \\(\\dfrac{\\text{PQ}}{\\text{PR}} = \\sin \\text{R}\\),\n\ni.e., \\(\\sin \\text{R} = \\dfrac{3}{6} = \\dfrac{1}{2}\\).\n\nSo, \\(\\angle\\)PRQ \\(= 30^\\circ\\).\n\nAnd therefore, \\(\\angle\\)QPR \\(= 60^\\circ\\)  (since the three angles of a triangle add to \\(180^\\circ\\) and \\(\\angle\\)Q \\(= 90^\\circ\\))."
+  },
+  {
+    "ref": "8.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of Specific Angles",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\sin(\\text{A} - \\text{B}) = \\dfrac{1}{2}\\), \\(\\cos(\\text{A} + \\text{B}) = \\dfrac{1}{2}\\), \\(0^\\circ < \\text{A} + \\text{B} \\le 90^\\circ\\), \\(\\text{A} > \\text{B}\\), find A and B.",
+    "solution": "Since \\(\\sin(\\text{A} - \\text{B}) = \\dfrac{1}{2}\\), therefore \\(\\text{A} - \\text{B} = 30^\\circ\\)  ... (1)\n\nAlso, since \\(\\cos(\\text{A} + \\text{B}) = \\dfrac{1}{2}\\), therefore \\(\\text{A} + \\text{B} = 60^\\circ\\)  ... (2)\n\nSolving (1) and (2), we get \\(\\text{A} = 45^\\circ\\) and \\(\\text{B} = 15^\\circ\\)."
+  },
+  {
+    "ref": "8.3 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Express the ratios \\(\\cos \\text{A}\\), \\(\\tan \\text{A}\\) and \\(\\sec \\text{A}\\) in terms of \\(\\sin \\text{A}\\).",
+    "solution": "Since \\(\\cos^2 \\text{A} + \\sin^2 \\text{A} = 1\\), therefore \\(\\cos^2 \\text{A} = 1 - \\sin^2 \\text{A}\\),\n\ni.e., \\(\\cos \\text{A} = \\pm\\sqrt{1 - \\sin^2 \\text{A}}\\).\n\nThis gives \\(\\cos \\text{A} = \\sqrt{1 - \\sin^2 \\text{A}}\\)  (since \\(\\cos \\text{A}\\) is positive for an acute angle A).\n\nHence, \\(\\tan \\text{A} = \\dfrac{\\sin \\text{A}}{\\cos \\text{A}} = \\dfrac{\\sin \\text{A}}{\\sqrt{1 - \\sin^2 \\text{A}}}\\)\n\nand \\(\\sec \\text{A} = \\dfrac{1}{\\cos \\text{A}} = \\dfrac{1}{\\sqrt{1 - \\sin^2 \\text{A}}}\\)."
+  },
+  {
+    "ref": "8.3 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\sec \\text{A}\\,(1 - \\sin \\text{A})(\\sec \\text{A} + \\tan \\text{A}) = 1\\).",
+    "solution": "LHS \\(= \\sec \\text{A}\\,(1 - \\sin \\text{A})(\\sec \\text{A} + \\tan \\text{A})\\)\n\n\\(= \\dfrac{1}{\\cos \\text{A}}(1 - \\sin \\text{A})\\left(\\dfrac{1}{\\cos \\text{A}} + \\dfrac{\\sin \\text{A}}{\\cos \\text{A}}\\right)\\)\n\n\\(= \\dfrac{(1 - \\sin \\text{A})(1 + \\sin \\text{A})}{\\cos^2 \\text{A}} = \\dfrac{1 - \\sin^2 \\text{A}}{\\cos^2 \\text{A}}\\)\n\n\\(= \\dfrac{\\cos^2 \\text{A}}{\\cos^2 \\text{A}} = 1 = \\) RHS"
+  },
+  {
+    "ref": "8.3 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Identities",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\(\\dfrac{\\cot \\text{A} - \\cos \\text{A}}{\\cot \\text{A} + \\cos \\text{A}} = \\dfrac{\\operatorname{cosec} \\text{A} - 1}{\\operatorname{cosec} \\text{A} + 1}\\).",
+    "solution": "LHS \\(= \\dfrac{\\cot \\text{A} - \\cos \\text{A}}{\\cot \\text{A} + \\cos \\text{A}} = \\dfrac{\\dfrac{\\cos \\text{A}}{\\sin \\text{A}} - \\cos \\text{A}}{\\dfrac{\\cos \\text{A}}{\\sin \\text{A}} + \\cos \\text{A}}\\)\n\n\\(= \\dfrac{\\cos \\text{A}\\left(\\dfrac{1}{\\sin \\text{A}} - 1\\right)}{\\cos \\text{A}\\left(\\dfrac{1}{\\sin \\text{A}} + 1\\right)} = \\dfrac{\\dfrac{1}{\\sin \\text{A}} - 1}{\\dfrac{1}{\\sin \\text{A}} + 1}\\)\n\n\\(= \\dfrac{\\operatorname{cosec} \\text{A} - 1}{\\operatorname{cosec} \\text{A} + 1} = \\) RHS"
+  },
+  {
+    "ref": "8.3 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Trigonometric Identities",
+    "difficulty": "HARD",
+    "stem": "Prove that \\(\\dfrac{\\sin\\theta - \\cos\\theta + 1}{\\sin\\theta + \\cos\\theta - 1} = \\dfrac{1}{\\sec\\theta - \\tan\\theta}\\), using the identity \\(\\sec^2\\theta = 1 + \\tan^2\\theta\\).",
+    "solution": "Since we will apply the identity involving \\(\\sec\\theta\\) and \\(\\tan\\theta\\), let us first convert the LHS into terms of \\(\\sec\\theta\\) and \\(\\tan\\theta\\) by dividing numerator and denominator by \\(\\cos\\theta\\):\n\nLHS \\(= \\dfrac{\\sin\\theta - \\cos\\theta + 1}{\\sin\\theta + \\cos\\theta - 1} = \\dfrac{\\tan\\theta - 1 + \\sec\\theta}{\\tan\\theta + 1 - \\sec\\theta}\\)\n\n\\(= \\dfrac{(\\tan\\theta + \\sec\\theta) - 1}{(\\tan\\theta - \\sec\\theta) + 1} = \\dfrac{\\{(\\tan\\theta + \\sec\\theta) - 1\\}(\\tan\\theta - \\sec\\theta)}{\\{(\\tan\\theta - \\sec\\theta) + 1\\}(\\tan\\theta - \\sec\\theta)}\\)\n\n\\(= \\dfrac{(\\tan^2\\theta - \\sec^2\\theta) - (\\tan\\theta - \\sec\\theta)}{\\{\\tan\\theta - \\sec\\theta + 1\\}(\\tan\\theta - \\sec\\theta)}\\)\n\n\\(= \\dfrac{-1 - \\tan\\theta + \\sec\\theta}{(\\tan\\theta - \\sec\\theta + 1)(\\tan\\theta - \\sec\\theta)}\\)\n\n\\(= \\dfrac{-1}{\\tan\\theta - \\sec\\theta} = \\dfrac{1}{\\sec\\theta - \\tan\\theta} = \\) RHS"
+  },
+  {
+    "ref": "Ex 8.1 Q1 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q1",
+    "context": "In \\(\\triangle\\)ABC, right-angled at B, AB \\(= 24\\) cm, BC \\(= 7\\) cm. Determine :",
+    "stem": "\\(\\sin \\text{A}\\), \\(\\cos \\text{A}\\)",
+    "solution": "By Pythagoras theorem, \\(\\text{AC} = \\sqrt{24^2 + 7^2} = \\sqrt{576 + 49} = \\sqrt{625} = 25\\) cm.\n\nFor angle A, the opposite side is BC \\(= 7\\) and the adjacent side is AB \\(= 24\\).\n\n\\(\\sin \\text{A} = \\dfrac{\\text{BC}}{\\text{AC}} = \\dfrac{7}{25}\\),  \\(\\cos \\text{A} = \\dfrac{\\text{AB}}{\\text{AC}} = \\dfrac{24}{25}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q1 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q1",
+    "context": "In \\(\\triangle\\)ABC, right-angled at B, AB \\(= 24\\) cm, BC \\(= 7\\) cm. Determine :",
+    "stem": "\\(\\sin \\text{C}\\), \\(\\cos \\text{C}\\)",
+    "solution": "By Pythagoras theorem, \\(\\text{AC} = \\sqrt{24^2 + 7^2} = \\sqrt{576 + 49} = \\sqrt{625} = 25\\) cm.\n\nFor angle C, the opposite side is AB \\(= 24\\) and the adjacent side is BC \\(= 7\\).\n\n\\(\\sin \\text{C} = \\dfrac{\\text{AB}}{\\text{AC}} = \\dfrac{24}{25}\\),  \\(\\cos \\text{C} = \\dfrac{\\text{BC}}{\\text{AC}} = \\dfrac{7}{25}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "In Fig. 8.13, find \\(\\tan \\text{P} - \\cot \\text{R}\\).",
+    "solution": "From Fig. 8.13, PQR is right-angled at Q with PQ \\(= 12\\) cm and PR \\(= 13\\) cm.\n\n\\(\\text{QR} = \\sqrt{\\text{PR}^2 - \\text{PQ}^2} = \\sqrt{169 - 144} = \\sqrt{25} = 5\\) cm.\n\n\\(\\tan \\text{P} = \\dfrac{\\text{QR}}{\\text{PQ}} = \\dfrac{5}{12}\\)\n\n\\(\\cot \\text{R} = \\dfrac{\\text{QR}}{\\text{PQ}} = \\dfrac{5}{12}\\)\n\nSo \\(\\tan \\text{P} - \\cot \\text{R} = \\dfrac{5}{12} - \\dfrac{5}{12} = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "If \\(\\sin \\text{A} = \\dfrac{3}{4}\\), calculate \\(\\cos \\text{A}\\) and \\(\\tan \\text{A}\\).",
+    "solution": "\\(\\cos \\text{A} = \\sqrt{1 - \\sin^2 \\text{A}} = \\sqrt{1 - \\dfrac{9}{16}} = \\sqrt{\\dfrac{7}{16}} = \\dfrac{\\sqrt{7}}{4}\\)\n\n\\(\\tan \\text{A} = \\dfrac{\\sin \\text{A}}{\\cos \\text{A}} = \\dfrac{3/4}{\\sqrt{7}/4} = \\dfrac{3}{\\sqrt{7}}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "Given \\(15 \\cot \\text{A} = 8\\), find \\(\\sin \\text{A}\\) and \\(\\sec \\text{A}\\).",
+    "solution": "\\(\\cot \\text{A} = \\dfrac{8}{15}\\), so \\(\\tan \\text{A} = \\dfrac{15}{8}\\).\n\nTake the opposite side \\(= 15k\\) and the adjacent side \\(= 8k\\). Then the hypotenuse is \\(\\sqrt{225k^2 + 64k^2} = 17k\\).\n\n\\(\\sin \\text{A} = \\dfrac{15}{17}\\),  \\(\\sec \\text{A} = \\dfrac{17}{8}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "stem": "Given \\(\\sec\\theta = \\dfrac{13}{12}\\), calculate all other trigonometric ratios.",
+    "solution": "\\(\\cos\\theta = \\dfrac{1}{\\sec\\theta} = \\dfrac{12}{13}\\).\n\nTake the adjacent side \\(= 12k\\) and the hypotenuse \\(= 13k\\). Then the opposite side is \\(\\sqrt{169k^2 - 144k^2} = 5k\\).\n\n\\(\\sin\\theta = \\dfrac{5}{13}\\),  \\(\\cos\\theta = \\dfrac{12}{13}\\),  \\(\\tan\\theta = \\dfrac{5}{12}\\),\n\n\\(\\cot\\theta = \\dfrac{12}{5}\\),  \\(\\operatorname{cosec}\\theta = \\dfrac{13}{5}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\angle\\)A and \\(\\angle\\)B are acute angles such that \\(\\cos \\text{A} = \\cos \\text{B}\\), then show that \\(\\angle\\)A \\(=\\) \\(\\angle\\)B.",
+    "solution": "Let \\(\\triangle\\)ABC be a triangle right-angled at C, so that A and B are its two acute angles.\n\nThen \\(\\cos \\text{A} = \\dfrac{\\text{AC}}{\\text{AB}}\\) and \\(\\cos \\text{B} = \\dfrac{\\text{BC}}{\\text{AB}}\\).\n\nWe are given \\(\\cos \\text{A} = \\cos \\text{B}\\), so\n\n\\(\\dfrac{\\text{AC}}{\\text{AB}} = \\dfrac{\\text{BC}}{\\text{AB}}\\), which gives \\(\\text{AC} = \\text{BC}\\).\n\nSo the two legs of the right triangle are equal, making \\(\\triangle\\)ABC isosceles.\n\nThe angles opposite equal sides are equal. The angle opposite AC is \\(\\angle\\)B and the angle opposite BC is \\(\\angle\\)A.\n\nTherefore \\(\\angle\\)A \\(=\\) \\(\\angle\\)B."
+  },
+  {
+    "ref": "Ex 8.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "If \\(3 \\cot \\text{A} = 4\\), check whether \\(\\dfrac{1 - \\tan^2 \\text{A}}{1 + \\tan^2 \\text{A}} = \\cos^2 \\text{A} - \\sin^2 \\text{A}\\) or not.",
+    "solution": "\\(\\cot \\text{A} = \\dfrac{4}{3}\\), so \\(\\tan \\text{A} = \\dfrac{3}{4}\\).\n\nTaking the opposite side \\(= 3k\\) and the adjacent side \\(= 4k\\), the hypotenuse is \\(5k\\), so \\(\\sin \\text{A} = \\dfrac{3}{5}\\) and \\(\\cos \\text{A} = \\dfrac{4}{5}\\).\n\nLHS \\(= \\dfrac{1 - \\dfrac{9}{16}}{1 + \\dfrac{9}{16}} = \\dfrac{\\dfrac{7}{16}}{\\dfrac{25}{16}} = \\dfrac{7}{25}\\)\n\nRHS \\(= \\dfrac{16}{25} - \\dfrac{9}{25} = \\dfrac{7}{25}\\)\n\n**Yes**, LHS \\(=\\) RHS."
+  },
+  {
+    "ref": "Ex 8.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle\\)PQR, right-angled at Q, PR \\(+\\) QR \\(= 25\\) cm and PQ \\(= 5\\) cm. Determine the values of \\(\\sin \\text{P}\\), \\(\\cos \\text{P}\\) and \\(\\tan \\text{P}\\).",
+    "solution": "Let QR \\(= x\\) cm. Then PR \\(= (25 - x)\\) cm.\n\nBy Pythagoras theorem, \\(\\text{PR}^2 = \\text{PQ}^2 + \\text{QR}^2\\):\n\n\\((25 - x)^2 = 5^2 + x^2\\), i.e., \\(625 - 50x + x^2 = 25 + x^2\\), i.e., \\(50x = 600\\), so \\(x = 12\\).\n\nSo QR \\(= 12\\) cm and PR \\(= 13\\) cm.\n\n\\(\\sin \\text{P} = \\dfrac{\\text{QR}}{\\text{PR}} = \\dfrac{12}{13}\\),  \\(\\cos \\text{P} = \\dfrac{\\text{PQ}}{\\text{PR}} = \\dfrac{5}{13}\\),  \\(\\tan \\text{P} = \\dfrac{\\text{QR}}{\\text{PQ}} = \\dfrac{12}{5}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q7 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q7",
+    "context": "If \\(\\cot\\theta = \\dfrac{7}{8}\\), evaluate :",
+    "stem": "\\(\\dfrac{(1 + \\sin\\theta)(1 - \\sin\\theta)}{(1 + \\cos\\theta)(1 - \\cos\\theta)}\\)",
+    "solution": "With \\(\\cot\\theta = \\dfrac{7}{8}\\), take the adjacent side \\(= 7k\\) and the opposite side \\(= 8k\\); the hypotenuse is \\(\\sqrt{49k^2 + 64k^2} = k\\sqrt{113}\\).\n\nSo \\(\\sin\\theta = \\dfrac{8}{\\sqrt{113}}\\) and \\(\\cos\\theta = \\dfrac{7}{\\sqrt{113}}\\).\n\n\\(\\dfrac{(1 + \\sin\\theta)(1 - \\sin\\theta)}{(1 + \\cos\\theta)(1 - \\cos\\theta)} = \\dfrac{1 - \\sin^2\\theta}{1 - \\cos^2\\theta} = \\dfrac{\\cos^2\\theta}{\\sin^2\\theta} = \\cot^2\\theta\\)\n\n\\(= \\left(\\dfrac{7}{8}\\right)^2 = \\dfrac{49}{64}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q7 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q7",
+    "context": "If \\(\\cot\\theta = \\dfrac{7}{8}\\), evaluate :",
+    "stem": "\\(\\cot^2\\theta\\)",
+    "solution": "\\(\\cot^2\\theta = \\left(\\dfrac{7}{8}\\right)^2 = \\dfrac{49}{64}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q9 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q9",
+    "context": "In triangle ABC, right-angled at B, if \\(\\tan \\text{A} = \\dfrac{1}{\\sqrt{3}}\\), find the value of:",
+    "stem": "\\(\\sin \\text{A} \\cos \\text{C} + \\cos \\text{A} \\sin \\text{C}\\)",
+    "solution": "Since \\(\\tan \\text{A} = \\dfrac{1}{\\sqrt{3}}\\), we have \\(\\angle\\)A \\(= 30^\\circ\\), and since \\(\\angle\\)B \\(= 90^\\circ\\), \\(\\angle\\)C \\(= 60^\\circ\\).\n\nSo \\(\\sin \\text{A} = \\dfrac{1}{2}\\), \\(\\cos \\text{A} = \\dfrac{\\sqrt{3}}{2}\\), \\(\\sin \\text{C} = \\dfrac{\\sqrt{3}}{2}\\), \\(\\cos \\text{C} = \\dfrac{1}{2}\\).\n\n\\(\\sin \\text{A} \\cos \\text{C} + \\cos \\text{A} \\sin \\text{C} = \\dfrac{1}{2} \\times \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2} \\times \\dfrac{\\sqrt{3}}{2} = \\dfrac{1}{4} + \\dfrac{3}{4} = 1\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q9 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q9",
+    "context": "In triangle ABC, right-angled at B, if \\(\\tan \\text{A} = \\dfrac{1}{\\sqrt{3}}\\), find the value of:",
+    "stem": "\\(\\cos \\text{A} \\cos \\text{C} - \\sin \\text{A} \\sin \\text{C}\\)",
+    "solution": "Since \\(\\tan \\text{A} = \\dfrac{1}{\\sqrt{3}}\\), we have \\(\\angle\\)A \\(= 30^\\circ\\), and since \\(\\angle\\)B \\(= 90^\\circ\\), \\(\\angle\\)C \\(= 60^\\circ\\).\n\nSo \\(\\sin \\text{A} = \\dfrac{1}{2}\\), \\(\\cos \\text{A} = \\dfrac{\\sqrt{3}}{2}\\), \\(\\sin \\text{C} = \\dfrac{\\sqrt{3}}{2}\\), \\(\\cos \\text{C} = \\dfrac{1}{2}\\).\n\n\\(\\cos \\text{A} \\cos \\text{C} - \\sin \\text{A} \\sin \\text{C} = \\dfrac{\\sqrt{3}}{2} \\times \\dfrac{1}{2} - \\dfrac{1}{2} \\times \\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{3}}{4} - \\dfrac{\\sqrt{3}}{4} = 0\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q11 (i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q11",
+    "context": "State whether the following are true or false. Justify your answer.",
+    "stem": "The value of \\(\\tan \\text{A}\\) is always less than 1.",
+    "solution": "**False.** \\(\\tan \\text{A}\\) can take any non-negative value for an acute angle.\n\nFor example, \\(\\tan 60^\\circ = \\sqrt{3} \\approx 1.73 > 1\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11 (ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q11",
+    "context": "State whether the following are true or false. Justify your answer.",
+    "stem": "\\(\\sec \\text{A} = \\dfrac{12}{5}\\) for some value of angle A.",
+    "solution": "**True.** For an acute angle, \\(\\sec \\text{A} = \\dfrac{\\text{hypotenuse}}{\\text{adjacent}} \\ge 1\\), and \\(\\dfrac{12}{5} = 2.4 \\ge 1\\).\n\nA right triangle with adjacent side 5 and hypotenuse 12 exists (the third side is \\(\\sqrt{119}\\)), so such an angle A exists."
+  },
+  {
+    "ref": "Ex 8.1 Q11 (iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q11",
+    "context": "State whether the following are true or false. Justify your answer.",
+    "stem": "\\(\\cos \\text{A}\\) is the abbreviation used for the cosecant of angle A.",
+    "solution": "**False.** \\(\\cos \\text{A}\\) is the abbreviation for the **cosine** of angle A.\n\nThe cosecant is written \\(\\operatorname{cosec} \\text{A}\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11 (iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q11",
+    "context": "State whether the following are true or false. Justify your answer.",
+    "stem": "\\(\\cot \\text{A}\\) is the product of \\(\\cot\\) and A.",
+    "solution": "**False.** \\(\\cot \\text{A}\\) is a single symbol denoting the cotangent of the angle A.\n\n\\(\\cot\\) has no meaning on its own, so it cannot be multiplied by A."
+  },
+  {
+    "ref": "Ex 8.1 Q11 (v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Trigonometric Ratios of an Acute Angle",
+    "difficulty": "EASY",
+    "setLabel": "Ex 8.1 Q11",
+    "context": "State whether the following are true or false. Justify your answer.",
+    "stem": "\\(\\sin\\theta = \\dfrac{4}{3}\\) for some angle \\(\\theta\\).",
+    "solution": "**False.** \\(\\sin\\theta = \\dfrac{\\text{opposite}}{\\text{hypotenuse}}\\), and the hypotenuse is the longest side of a right triangle, so \\(\\sin\\theta \\le 1\\).\n\nSince \\(\\dfrac{4}{3} > 1\\), no such angle exists."
+  }
+]

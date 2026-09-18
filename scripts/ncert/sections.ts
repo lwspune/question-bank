@@ -831,6 +831,116 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    Examples band to the exercise they precede, the Class-11/12 convention:
   //    Examples 1-4 sit under §1.2 and precede Ex 1.1 → "1.1 Eg.N"; Examples 5-7
   //    sit under §1.3 and precede Ex 1.2 → "1.2 Eg.N".
+  // ── Ch.2 Polynomials (10th). TWO taught sections, each with its worked
+  //    example(s) then its exercise. §2.2 carries Example 1 only; §2.3 carries
+  //    Examples 2-5. Examples band to the exercise they precede: 1 → "2.1 Eg.N",
+  //    2-5 → "2.2 Eg.N" (the prefix names the EXERCISE, not the section).
+  c10Polynomials: [
+    { group: "2.2 Geometrical Meaning of the Zeroes of a Polynomial", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 Eg"] },
+    { group: "2.2 Geometrical Meaning of the Zeroes of a Polynomial", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 Q"] },
+    { group: "2.3 Relationship between Zeroes and Coefficients of a Polynomial", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Eg"] },
+    { group: "2.3 Relationship between Zeroes and Coefficients of a Polynomial", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
+  ],
+
+  // ── Ch.3 Pair of Linear Equations in Two Variables (10th). SIX blocks over what
+  //    reads as two taught sections, because §3.3 splits into 3.3.1 Substitution
+  //    Method and 3.3.2 Elimination Method — each with its own worked examples and
+  //    its own exercise. Grouping Ex 3.2 and Ex 3.3 under one "3.3" header would
+  //    merge two methods the book teaches apart, and the reader would show a
+  //    12-question and a 9-question exercise as one 21-question block.
+  //    Examples band to the exercise they precede: 1-3 → "3.1 Eg.N",
+  //    4-7 → "3.2 Eg.N", 8-10 → "3.3 Eg.N".
+  c10LinearEquations: [
+    { group: "3.2 Graphical Method of Solution of a Pair of Linear Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 Eg"] },
+    { group: "3.2 Graphical Method of Solution of a Pair of Linear Equations", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 Q"] },
+    { group: "3.3.1 Substitution Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 Eg"] },
+    { group: "3.3.1 Substitution Method", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 Q"] },
+    { group: "3.3.2 Elimination Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 Eg"] },
+    { group: "3.3.2 Elimination Method", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 Q"] },
+  ],
+
+  // ── Ch.4 Quadratic Equations (10th). THREE taught sections, each with its own
+  //    worked examples then its own exercise. Examples band to the exercise they
+  //    precede: 1-2 → "4.1 Eg.N", 3-6 → "4.2 Eg.N", 7-9 → "4.3 Eg.N"
+  //    (the prefix names the EXERCISE, not the section).
+  c10QuadraticEquations: [
+    { group: "4.2 Quadratic Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 Eg"] },
+    { group: "4.2 Quadratic Equations", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 Q"] },
+    { group: "4.3 Solution of a Quadratic Equation by Factorisation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 Eg"] },
+    { group: "4.3 Solution of a Quadratic Equation by Factorisation", label: "Exercise 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 Q"] },
+    { group: "4.4 Nature of Roots", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 Eg"] },
+    { group: "4.4 Nature of Roots", label: "Exercise 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 Q"] },
+  ],
+
+  // ── Ch.5 Arithmetic Progressions (10th). SEVEN blocks: three taught sections
+  //    each with examples + exercise, then a FOURTH exercise the book labels
+  //    "EXERCISE 5.4 (Optional)*" and footnotes "not from the examination point
+  //    of view". It gets its OWN group rather than being folded into §5.4,
+  //    because it draws on the whole chapter and is not that section's exercise.
+  //    It is deliberately NOT kind:"miscellaneous" — Class 10 has no
+  //    Miscellaneous anywhere, and labelling it so would invent a block the book
+  //    does not print. Examples band to the exercise they precede: 1-2 →
+  //    "5.1 Eg.N", 3-10 → "5.2 Eg.N", 11-16 → "5.3 Eg.N".
+  c10ArithmeticProgressions: [
+    { group: "5.2 Arithmetic Progressions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 Eg"] },
+    { group: "5.2 Arithmetic Progressions", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 Q"] },
+    { group: "5.3 nth Term of an AP", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 Eg"] },
+    { group: "5.3 nth Term of an AP", label: "Exercise 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 Q"] },
+    { group: "5.4 Sum of First n Terms of an AP", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.3 Eg"] },
+    { group: "5.4 Sum of First n Terms of an AP", label: "Exercise 5.3", kind: "exercise", refPrefixes: ["Ex 5.3 Q"] },
+    { group: "Exercise 5.4 (Optional)", label: "Exercise 5.4 (Optional)", kind: "exercise", refPrefixes: ["Ex 5.4 Q"] },
+  ],
+
+  // ── Ch.7 Coordinate Geometry (10th). FOUR blocks over two taught sections.
+  //    The 2025-26 reprint has no "Area of a Triangle" section, so there is no
+  //    third exercise. Examples band to the exercise they precede: 1-5 →
+  //    "7.1 Eg.N", 6-10 → "7.2 Eg.N".
+  c10CoordinateGeometry: [
+    { group: "7.2 Distance Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1 Eg"] },
+    { group: "7.2 Distance Formula", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
+    { group: "7.3 Section Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.2 Eg"] },
+    { group: "7.3 Section Formula", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 Q"] },
+  ],
+
+  // ── Ch.8 Introduction to Trigonometry (10th). SIX blocks over three taught
+  //    sections. This reprint has NO complementary-angles section, so §8.4 is
+  //    Identities and there is no fourth exercise. Examples band to the exercise
+  //    they precede: 1-5 → "8.1 Eg.N", 6-8 → "8.2 Eg.N", 9-12 → "8.3 Eg.N".
+  c10Trigonometry: [
+    { group: "8.2 Trigonometric Ratios", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 Eg"] },
+    { group: "8.2 Trigonometric Ratios", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 Q"] },
+    { group: "8.3 Trigonometric Ratios of Some Specific Angles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 Eg"] },
+    { group: "8.3 Trigonometric Ratios of Some Specific Angles", label: "Exercise 8.2", kind: "exercise", refPrefixes: ["Ex 8.2 Q"] },
+    { group: "8.4 Trigonometric Identities", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.3 Eg"] },
+    { group: "8.4 Trigonometric Identities", label: "Exercise 8.3", kind: "exercise", refPrefixes: ["Ex 8.3 Q"] },
+  ],
+
+  // ── Ch.9 Some Applications of Trigonometry (10th). TWO blocks, the smallest
+  //    outline in the book: one taught section with its examples and its single
+  //    exercise. All seven examples band to it → "9.1 Eg.N".
+  c10AppTrigonometry: [
+    { group: "9.1 Heights and Distances", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1 Eg"] },
+    { group: "9.1 Heights and Distances", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
+  ],
+
+  // ── Ch.10 Circles (10th). THREE blocks, not four: §10.2 Tangent to a Circle
+  //    has NO worked examples (all three Examples sit in §10.3), so Exercise 10.1
+  //    follows its section's prose directly — the same asymmetry as Ch.6 §6.2.
+  //    All three examples band to Exercise 10.2 → "10.2 Eg.N".
+  c10Circles: [
+    { group: "10.2 Tangent to a Circle", label: "Exercise 10.1", kind: "exercise", refPrefixes: ["Ex 10.1 Q"] },
+    { group: "10.3 Number of Tangents from a Point on a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.2 Eg"] },
+    { group: "10.3 Number of Tangents from a Point on a Circle", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
+  ],
+
+  // ── Ch.11 Areas Related to Circles (10th). TWO blocks: one taught section
+  //    with its two examples and its single exercise — the same minimal shape as
+  //    Ch.9. Both examples band to it → "11.1 Eg.N".
+  c10AreasCircles: [
+    { group: "11.1 Areas of Sector and Segment of a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg"] },
+    { group: "11.1 Areas of Sector and Segment of a Circle", label: "Exercise 11.1", kind: "exercise", refPrefixes: ["Ex 11.1 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
@@ -851,6 +961,38 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "6.3 Similarity of Triangles", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
     { group: "6.4 Criteria for Similarity of Triangles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 Eg"] },
     { group: "6.4 Criteria for Similarity of Triangles", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+  ],
+
+  // ── Ch.13 Statistics (10th). THREE taught sections, each with its own worked
+  //    examples then its own exercise — the cleanest shape in the book, because
+  //    the chapter is one measure per section (mean · mode · median).
+  //    Examples band to the exercise they precede: 1-3 → "13.1 Eg.N",
+  //    4-6 → "13.2 Eg.N", 7-8 → "13.3 Eg.N".
+  // ── Ch.12 Surface Areas and Volumes (10th). TWO taught sections, each with
+  //    its worked examples then its exercise. Examples 1-4 → "12.1 Eg.N",
+  //    5-7 → "12.2 Eg.N" (the prefix names the EXERCISE they precede).
+  c10SurfaceAreas: [
+    { group: "12.2 Surface Area of a Combination of Solids", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg"] },
+    { group: "12.2 Surface Area of a Combination of Solids", label: "Exercise 12.1", kind: "exercise", refPrefixes: ["Ex 12.1 Q"] },
+    { group: "12.3 Volume of a Combination of Solids", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.2 Eg"] },
+    { group: "12.3 Volume of a Combination of Solids", label: "Exercise 12.2", kind: "exercise", refPrefixes: ["Ex 12.2 Q"] },
+  ],
+
+  c10Statistics: [
+    { group: "13.2 Mean of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.1 Eg"] },
+    { group: "13.2 Mean of Grouped Data", label: "Exercise 13.1", kind: "exercise", refPrefixes: ["Ex 13.1 Q"] },
+    { group: "13.3 Mode of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.2 Eg"] },
+    { group: "13.3 Mode of Grouped Data", label: "Exercise 13.2", kind: "exercise", refPrefixes: ["Ex 13.2 Q"] },
+    { group: "13.4 Median of Grouped Data", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.3 Eg"] },
+    { group: "13.4 Median of Grouped Data", label: "Exercise 13.3", kind: "exercise", refPrefixes: ["Ex 13.3 Q"] },
+  ],
+
+  // ── Ch.14 Probability (10th). ONE taught section for the whole chapter, so
+  //    this outline is two blocks rather than the usual per-section pairs.
+  //    All 13 examples precede the single exercise → "14.1 Eg.N".
+  c10Probability: [
+    { group: "14.1 Probability — A Theoretical Approach", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.1 Eg"] },
+    { group: "14.1 Probability — A Theoretical Approach", label: "Exercise 14.1", kind: "exercise", refPrefixes: ["Ex 14.1 Q"] },
   ],
 };
 

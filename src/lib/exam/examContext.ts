@@ -206,18 +206,21 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     board: "CBSE",
     std: 10,
     //
-    // NO `mixedFormats` — and this is MEASURED, not assumed. The pilot chapter
-    // (Ch.1 Real Numbers) is 27 of 27 subjective, so the corpus holds ONE format
-    // and the flag would fail tests/format-mix-registry.test.ts in the
-    // "flagged but the bank holds only subjective" direction.
+    // `mixedFormats` ADDED 2026-09-18 WITH Ch.14 Probability's PUBLIC flip, and
+    // the sequencing is the point: tests/format-mix-registry.test.ts fails an
+    // exam flagged mixed whose bank holds only one format, so the flag can never
+    // go in ahead of the rows. Through Ch.1, Ch.6, Ch.12 and Ch.13 this corpus
+    // was 100% subjective and the flag was correctly ABSENT.
     //
-    // EXPECT TO ADD IT. NCERT Class 10 Maths does contain genuine four-option
-    // MCQs — Ex 8.2 Q2 (i)-(iv) in Introduction to Trigonometry and the head of
-    // Ex 10.2 in Circles — ~7 in the whole book against ~600 subjective items.
-    // They are rival ANSWERS, not the sub-part either/or lists that made the
-    // Class-11 near-misses (see that entry below), so the flag becomes correct
-    // the day Ch.8 or Ch.10 lands. The prod-contract probe re-measures this in
-    // both directions, so it will say so.
+    // The trigger was Ex 14.1 Q4 — "Which of the following cannot be the
+    // probability of an event?" with (A) 2/3, (B) −1.5, (C) 15%, (D) 0.7 —
+    // a genuine four-option MCQ with rival ANSWERS, not one of the sub-part
+    // either/or lists that produced the Class-11 near-misses (see that entry
+    // below). It was predicted from Ch.8 / Ch.10, which carry the book's other
+    // MCQs; Ch.14 simply got there first. ~7 MCQs exist in the whole book
+    // against ~600 subjective items, so this exam is mixed by a hair — which is
+    // exactly the case the standing probe exists to keep honest.
+    mixedFormats: true,
   },
   {
     slug: "cbse-11",

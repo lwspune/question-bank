@@ -2679,6 +2679,436 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Applications of Similarity",
     ],
   },
+
+  // ── Ch.13 Statistics (10th). 31pp, Examples 1-8 + Ex 13.1 (9) / 13.2 (6) /
+  //    13.3 (7). The TABLE chapter, and the third Class-10 hazard: nearly every
+  //    question carries a grouped-frequency distribution, so the stems are GFM
+  //    pipe-tables (header row + the mandatory `|---|` separator). Two shapes
+  //    occur and both map onto the same primitive — a WIDE 2-row table (class
+  //    intervals across the top, frequencies beneath) and a TALL 2-column one.
+  //
+  //    ZERO figures in the whole chapter, so no crop work at all — the exact
+  //    complement of Ch.6.
+  //
+  //    **KEY COVERAGE IS 100%, THE BEST IN THE BOOK** (22 of 22 items), and
+  //    every value is mechanically computable, so step 6 here is a genuine
+  //    third ground truth rather than a read-through: 31 computed values across
+  //    the 22 items, all matching, zero errata
+  //    (`_tmp_c10Statistics_xcheck.py`). Contrast Ch.6, where the gate reaches
+  //    24% of items — same book, same pipeline, opposite ends of the range.
+  //
+  //    ONE TRAP THE KEY SETTLED: Ex 13.1 Q5's classes are printed INCLUSIVE
+  //    (50-52, 53-55, …). Taking them at face value gives a mean of 57.19 only
+  //    after the continuity correction to 49.5-52.5, 52.5-55.5, … — which the
+  //    key's 57.19 confirms. Ex 13.3 Q4 states the same correction explicitly in
+  //    its own hint, so the book is consistent; Q5 just leaves it implied.
+  //
+  //    Section→page map (0-based): §13.1-13.2 Mean p0-9 (Examples 1-3) ·
+  //    EXERCISE 13.1 p10-12 · §13.3 Mode p12-15 (Examples 4-6) ·
+  //    EXERCISE 13.2 p15-16 · §13.4 Median p17-26 (Examples 7-8) ·
+  //    EXERCISE 13.3 p27-29 · §13.5 Summary p29.
+  c10Statistics: {
+    id: "c10Statistics",
+    chapterName: "Statistics",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Statistics.pdf",
+    pdf: cls10Maths("13. Statistics.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [9], // Ch-13's whole block shares ak page 9 with Ch-14's opening
+    note: "NCERT (CBSE Class 10) — Statistics (Chapter 13, NCERT Mathematics)",
+    subtopics: [
+      "Mean of Grouped Data",
+      "Mode of Grouped Data",
+      "Median of Grouped Data",
+    ],
+  },
+
+  // ── Ch.12 Surface Areas and Volumes (10th). 10pp, Examples 1-7 + Ex 12.1 (9)
+  //    / 12.2 (8). The EXERCISE-PREAMBLE chapter, the last of the three
+  //    Class-10 hazards.
+  //
+  //    **BOTH EXERCISES OPEN WITH "Unless stated otherwise, take π = 22/7",
+  //    printed once under the EXERCISE heading and binding every question
+  //    beneath it.** That line is not decoration: the whole chapter is numeric,
+  //    and 22/7 vs 3.14 changes every answer. It therefore rides into each row's
+  //    `context` — a row that carries only its own stem is genuinely ambiguous.
+  //
+  //    THE PREAMBLE IS OVERRIDDEN PER QUESTION, which is why it cannot simply be
+  //    folded into the solutions: Ex 12.2 Q6 and Q8 say "Use π = 3.14" in their
+  //    own text, and several of the worked Examples do the same. So the row needs
+  //    BOTH — the exercise default in `context` and the local override in `stem`.
+  //
+  //    Key coverage 17 of 17 (100%), all mechanically computable, all verified
+  //    (`_tmp_c10SurfaceAreas_xcheck.py`): zero errata. Ex 12.1 Q5's answer is
+  //    SYMBOLIC — \(\frac{l^2}{4}(24+\pi)\), the only non-numeric key in the
+  //    chapter.
+  //
+  //    Figures are illustrative-but-load-bearing for four exercise rows
+  //    (Fig 12.10 capsule, 12.11 scooped cylinder, 12.15 gulab jamun,
+  //    12.16 pen stand); the stems restate every dimension, so unlike Ch.6 the
+  //    crop is a help rather than the only source of data.
+  //
+  //    Section→page map (0-based): §12.1 Introduction p0 · §12.2 Surface Area of
+  //    a Combination p1-5 (Examples 1-4) · EXERCISE 12.1 p5-6 · §12.3 Volume of
+  //    a Combination p6-8 (Examples 5-7) · EXERCISE 12.2 p8-9 · §12.4 Summary p9.
+  c10SurfaceAreas: {
+    id: "c10SurfaceAreas",
+    chapterName: "Surface Areas and Volumes",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__SurfaceAreasAndVolumes.pdf",
+    pdf: cls10Maths("12. Surface Areas and Volumes.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [8],
+    note: "NCERT (CBSE Class 10) — Surface Areas and Volumes (Chapter 12, NCERT Mathematics)",
+    subtopics: [
+      "Surface Area of a Combination of Solids",
+      "Volume of a Combination of Solids",
+    ],
+  },
+
+  // ── Ch.14 Probability (10th). 16pp, Examples 1-13 + Ex 14.1 (25 items) — the
+  //    LARGEST chapter in the book by question count once sub-parts split.
+  //
+  //    **THIS IS THE CHAPTER THAT MAKES `cbse-10` MIXED-FORMAT.** Ex 14.1 Q4
+  //    ("Which of the following cannot be the probability of an event?" with
+  //    (A) 2/3, (B) −1.5, (C) 15%, (D) 0.7, key B) is a genuine four-option MCQ
+  //    — rival ANSWERS, not a sub-part list. The `mixedFormats: true` flag on
+  //    the registry entry goes in WITH this chapter's PUBLIC flip, never before
+  //    it: tests/format-mix-registry.test.ts fails an exam flagged mixed whose
+  //    bank holds only one format. (Ch.8 and Ch.10 carry the book's other MCQs
+  //    and will simply add to it.)
+  //
+  //    ONE SECTION ONLY — §14.1 runs the whole chapter, so the /board outline is
+  //    two blocks rather than the usual per-section pairs, and the subtopics are
+  //    a PEDAGOGICAL arc rather than the book's (non-existent) sub-headings.
+  //
+  //    TWO EXAMPLES AND ONE EXERCISE ITEM ARE STARRED "Not from the examination
+  //    point of view" (Examples 10 and 11, Ex 14.1 Q20) — the geometric-
+  //    probability material. They are INGESTED anyway, because the book prints
+  //    them and /board is a book-faithful reader; the starred status is recorded
+  //    in the row's own text rather than by dropping it.
+  //
+  //    Key coverage 25 of 25 (100%). Ex 14.1 Q22 asks the student to COMPLETE a
+  //    table, so its stem carries a partially-filled GFM pipe-table and the
+  //    solution carries the filled one.
+  //
+  //    Section→page map (0-based): §14.1 p0-11 (Examples 1-13) ·
+  //    EXERCISE 14.1 p12-15 · §14.2 Summary p15.
+  c10Probability: {
+    id: "c10Probability",
+    chapterName: "Probability",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Probability.pdf",
+    pdf: cls10Maths("14. Probability.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [9, 10], // Ch-14's key straddles two pages
+    note: "NCERT (CBSE Class 10) — Probability (Chapter 14, NCERT Mathematics)",
+    subtopics: [
+      "Theoretical Probability and Elementary Events",
+      "Sure, Impossible and Complementary Events",
+      "Probability with Cards, Dice and Coins",
+      "Probability from a Collection of Objects",
+      "Geometric Probability",
+    ],
+  },
+
+  // ── Ch.2 Polynomials (10th). 14pp — the SHORTEST chapter in the book.
+  //    Examples 1-5 + Ex 2.1 (1 item) / 2.2 (2 items x 6 sub-parts).
+  //
+  //    1. **THE KEY IS 100% HERE** — all 18 sub-answers of all 3 numbered items
+  //       are in jemh1an p0, the best coverage in the book alongside Ch.13. That
+  //       is the chapter's own denominator (Ch.1 was 5/10, Ch.6 7/29); it is NOT
+  //       a book-wide property, so every chapter still reports its own.
+  //
+  //    2. **EX 2.1 IS ONE QUESTION, NOT SIX**, even though the key lists six
+  //       answers. The book prints a single numbered item ("Find the number of
+  //       zeroes of p(x), in each case") and the (i)-(vi) labels live INSIDE
+  //       Fig. 2.10, not in the stem. Splitting it would be a decomposition the
+  //       book does not make — the same call as Ch.6's Fig. 6.34. Example 1 /
+  //       Fig. 2.9 is the identical shape.
+  //
+  //    3. Only TWO figures in the whole chapter (Fig 2.9, Fig 2.10), both
+  //       graph-grids that ARE the question. Every other figure in §2.2 is
+  //       teaching prose, not a question anchor.
+  c10Polynomials: {
+    id: "c10Polynomials",
+    chapterName: "Polynomials",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Polynomials.pdf",
+    pdf: cls10Maths("02. Polynomials.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [0], // Ex 2.1 + Ex 2.2 both sit in the first key page
+    note: "NCERT (CBSE Class 10) — Polynomials (Chapter 2, NCERT Mathematics)",
+    subtopics: [
+      "Geometrical Meaning of the Zeroes of a Polynomial",
+      "Zeroes and Coefficients of a Quadratic Polynomial",
+      "Forming a Quadratic Polynomial from its Zeroes",
+    ],
+  },
+
+  // ── Ch.3 Pair of Linear Equations in Two Variables (10th). 14pp, Examples 1-10
+  //    + Ex 3.1 (19 items) / 3.2 (12) / 3.3 (9). 40 exercise items, the largest
+  //    Class-10 exercise load so far.
+  //
+  //    1. **THE KEY MIXES ANSWERS WITH METHOD INSTRUCTIONS.** Ex 3.1 Q1's entries
+  //       read "To solve graphically draw the graphs ... on graph paper" BEFORE
+  //       giving "Girls = 7, Boys = 3". The instruction half is a HINT and closes
+  //       nothing; only the trailing numbers are adjudicable. Count answers, not
+  //       entries — the same rule Ch.6 forced.
+  //
+  //    2. **§3.3 SPLITS INTO 3.3.1 Substitution and 3.3.2 Elimination**, each with
+  //       its own worked examples then its own exercise. That is why the /board
+  //       outline is 6 blocks over what looks like two taught sections: grouping
+  //       Ex 3.2 and Ex 3.3 under one "3.3" header would merge two methods the
+  //       book deliberately teaches apart.
+  //
+  //    3. Figures are EXPOSITORY here, not question anchors. Ex 3.1 Q1/Q4/Q7 say
+  //       "solve graphically" / "draw the graphs" — the student DRAWS the graph,
+  //       so there is nothing printed to crop. Zero figure crops in this chapter.
+  c10LinearEquations: {
+    id: "c10LinearEquations",
+    chapterName: "Pair of Linear Equations in Two Variables",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__PairOfLinearEquations.pdf",
+    pdf: cls10Maths("03. Pair of Linear Equations in Two Variables.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [0, 1, 2], // Ex 3.1 tail of p0, Ex 3.2 on p1, Ex 3.3 head of p2
+    note: "NCERT (CBSE Class 10) — Pair of Linear Equations in Two Variables (Chapter 3, NCERT Mathematics)",
+    subtopics: [
+      "Graphical Method and Nature of Solutions",
+      "Consistency from the Ratios of Coefficients",
+      "Substitution Method",
+      "Elimination Method",
+    ],
+  },
+
+  // ── Ch.4 Quadratic Equations (10th). 11pp, Examples 1-9 + Ex 4.1 (12 items)
+  //    / 4.2 (10) / 4.3 (8). 30 exercise items, ZERO figure ANCHORS — the
+  //    chapter's one figure (Fig 4.2) is drawn inside Example 8's SOLUTION
+  //    ("Let us first draw the diagram"), and its stem describes the circular
+  //    park in full, so nothing needs a crop to be answerable.
+  //
+  //    1. **EX 4.2 Q2 IS A CROSS-REFERENCE, NOT A STEM** — it reads in full
+  //       "Solve the problems given in Example 1." Book-faithful means keeping it
+  //       exactly that way; the solution restates Example 1's two situations so
+  //       the row is answerable standing alone, but the STEM is not rewritten.
+  //
+  //    2. The key is 100% again (30/30), and every item is computable, so this
+  //       chapter's cross-check has no graph-read or prove-that residue at all
+  //       — the first Class-10 chapter where the gate can close on EVERY item.
+  //
+  //    3. §4.3 Factorisation and §4.4 Nature of Roots each end in their own
+  //       exercise; §4.2 Quadratic Equations ends in Ex 4.1. Three taught
+  //       sections, three exercises, no Miscellaneous — the cleanest shape since
+  //       Ch.13.
+  c10QuadraticEquations: {
+    id: "c10QuadraticEquations",
+    chapterName: "Quadratic Equations",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__QuadraticEquations.pdf",
+    pdf: cls10Maths("04. Quadratic Equations.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [2, 3], // Ex 4.1 + 4.2 on p2, Ex 4.3 heads p3
+    note: "NCERT (CBSE Class 10) — Quadratic Equations (Chapter 4, NCERT Mathematics)",
+    subtopics: [
+      "Identifying and Forming Quadratic Equations",
+      "Solving a Quadratic Equation by Factorisation",
+      "Nature of Roots and the Discriminant",
+    ],
+  },
+
+  // ── Ch.5 Arithmetic Progressions (10th). 24pp, Examples 1-16 + Ex 5.1 (28
+  //    items) / 5.2 (30) / 5.3 (35) / 5.4 Optional (5). 98 exercise items and 114
+  //    rows — the BIGGEST chapter in the book, more than the last three combined.
+  //    (Counted from the MERGED output, not by hand: hand-counting the exercise
+  //    headings under-reported 5.2 and 5.3 by one each.)
+  //
+  //    1. **EX 5.4 IS MARKED "(Optional)*"** and footnoted "These exercises are
+  //       not from the examination point of view." That is a FOURTH block shape
+  //       this book had not shown before. It is NOT a Miscellaneous — Class 10
+  //       genuinely has none — so it lands as its own section_group with
+  //       kind:"exercise", named exactly as the book prints it.
+  //
+  //    2. **EX 5.2 CARRIES THREE HAZARDS AT ONCE.** Q1 is a fill-in TABLE (five
+  //       rows, each its own sub-item, keyed separately); Q2 (i)-(ii) are genuine
+  //       4-option MCQs — the book's third and fourth, beyond the Ex 8.2 / Ex
+  //       10.2 pair the lane was scoped around; Q3's blanks are drawn as BOXES in
+  //       the graphics layer, so the text layer shows a gap and nothing else.
+  //
+  //    3. Five figure ANCHORS, all in the tail: Fig 5.4 (spiral), 5.5 (log
+  //       stack), 5.6 (potato race) in Ex 5.3 Q18-20, and Fig 5.7 (ladder),
+  //       5.8 (terrace) in Ex 5.4 Q3/Q5 — each introduced by "as shown in" or
+  //       "(see Fig ...)", which is the book pointing AT the figure.
+  c10ArithmeticProgressions: {
+    id: "c10ArithmeticProgressions",
+    chapterName: "Arithmetic Progressions",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__ArithmeticProgressions.pdf",
+    pdf: cls10Maths("05. Arithmetic Progressions.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [3, 4, 5], // Ex 5.1+5.2 on p3, Ex 5.3 on p4, Ex 5.4 heads p5
+    note: "NCERT (CBSE Class 10) — Arithmetic Progressions (Chapter 5, NCERT Mathematics)",
+    subtopics: [
+      "Arithmetic Progressions and Common Difference",
+      "nth Term of an AP",
+      "Sum of First n Terms of an AP",
+      "Harder AP Problems (Optional Exercise)",
+    ],
+  },
+
+  // ── Ch.7 Coordinate Geometry (10th). 14pp, Examples 1-10 + Ex 7.1 (12 items)
+  //    / 7.2 (10). TWO taught sections only — Distance Formula and Section
+  //    Formula. The "Area of a Triangle" section that older editions carried is
+  //    GONE from this 2025-26 reprint, so there is no Ex 7.3 and no area
+  //    questions; do not go looking for them.
+  //
+  //    Three figure ANCHORS, all real: Fig 7.8 (Ex 7.1 Q5, the classroom seating
+  //    whose coordinates exist ONLY in the figure) and Fig 7.12 (Ex 7.2 Q3, the
+  //    sports ground), plus Fig 7.6 in Example 3. Ex 7.1 Q5 is the strongest
+  //    crop-only case in the book so far: without the figure the stem names four
+  //    points A, B, C, D and gives not one coordinate.
+  c10CoordinateGeometry: {
+    id: "c10CoordinateGeometry",
+    chapterName: "Coordinate Geometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__CoordinateGeometry.pdf",
+    pdf: cls10Maths("07. Coordinate_Geometry_Xth_NCERT.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [6],
+    note: "NCERT (CBSE Class 10) — Coordinate Geometry (Chapter 7, NCERT Mathematics)",
+    subtopics: [
+      "Distance Formula",
+      "Section Formula and Ratio of Division",
+    ],
+  },
+
+  // ── Ch.8 Introduction to Trigonometry (10th). 20pp, Examples 1-12 + Ex 8.1
+  //    (17 items) / 8.2 (15) / 8.3 (14) = 46 exercise items.
+  //
+  //    1. **EIGHT MCQs — the largest MCQ block in the book.** Ex 8.2 Q2 (i)-(iv)
+  //       AND Ex 8.3 Q3 (i)-(iv). The lane was scoped expecting only the Ex 8.2
+  //       four; the Ex 8.3 four are additional. flip-public MUST run --with-mcq
+  //       or eight rows stay PRIVATE with no error reported.
+  //
+  //    2. **NO "Trigonometric Ratios of Complementary Angles" SECTION.** Older
+  //       editions carry one (and an exercise for it); this 2025-26 reprint has
+  //       §8.2 Ratios → §8.3 Specific Angles → §8.4 Identities → 8.5 Summary.
+  //       Three taught sections, three exercises. Do not go looking for Ex 8.4.
+  //
+  //    3. The key skips the PROOF items by construction — Ex 8.1 Q6 ("show that
+  //       angle A = angle B") and all eight of Ex 8.3 Q4 ("prove the following
+  //       identities") have no key entry, because no answer key can adjudicate a
+  //       proof. That is this chapter's own denominator, not a defect.
+  c10Trigonometry: {
+    id: "c10Trigonometry",
+    chapterName: "Introduction to Trigonometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__IntroductionToTrigonometry.pdf",
+    pdf: cls10Maths("08. Introduction to Trigonometry.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [6, 7], // Ex 8.1 tail of p6, Ex 8.2 + 8.3 on p7
+    note: "NCERT (CBSE Class 10) — Introduction to Trigonometry (Chapter 8, NCERT Mathematics)",
+    subtopics: [
+      "Trigonometric Ratios of an Acute Angle",
+      "Trigonometric Ratios of Specific Angles",
+      "Trigonometric Identities",
+    ],
+  },
+
+  // ── Ch.9 Some Applications of Trigonometry (10th). 11pp, Examples 1-7 +
+  //    Ex 9.1 (15 items). ONE taught section, §9.1 Heights and Distances, and
+  //    therefore ONE exercise — the only single-exercise chapter in the book.
+  //    Key coverage is 15/15: every item is a numeric height/distance, so there
+  //    is no proof residue at all here.
+  //
+  //    Figures are ILLUSTRATIVE, not data-bearing. Three items say "(see Fig
+  //    9.1N)" — Q1, Q11, Q14 — but each stem carries every number it needs, so
+  //    the crop adds the picture and never the premise. That is the opposite of
+  //    Ch.7's Ex 7.1 Q5, where the coordinates existed ONLY in the figure.
+  c10AppTrigonometry: {
+    id: "c10AppTrigonometry",
+    chapterName: "Some Applications of Trigonometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__SomeApplicationsOfTrigonometry.pdf",
+    pdf: cls10Maths("09. Some Applications of Trigonometry.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [7],
+    note: "NCERT (CBSE Class 10) — Some Applications of Trigonometry (Chapter 9, NCERT Mathematics)",
+    subtopics: [
+      "Angle of Elevation Problems",
+      "Angle of Depression Problems",
+    ],
+  },
+
+  // ── Ch.10 Circles (10th). 10pp, Examples 1-3 + Ex 10.1 (7 items) / 10.2 (13).
+  //
+  //    1. **FOUR MCQs, and one of them is NOT where the lane expected.** Ex 10.2
+  //       Q1-Q3 head that exercise under "choose the correct option", which was
+  //       known — but **Ex 10.1 Q3 is also a 4-option MCQ**, sitting unannounced
+  //       between a fill-in-the-blanks and a construction. Only the answer key
+  //       ("3. D") gives it away in a text dump. --with-mcq is mandatory.
+  //
+  //    2. **§10.2 CARRIES NO WORKED EXAMPLES** — all three Examples sit in §10.3,
+  //       so Exercise 10.1 follows its section's prose directly. Same asymmetry
+  //       as Ch.6 §6.2, which is why the outline is 3 blocks and not 4.
+  //
+  //    3. The key is PROOF-LIMITED: 7 of Ex 10.2's 13 items are "Prove that ...",
+  //       and Ex 10.1 Q4 is a construction ("Draw a circle and two lines ..."),
+  //       so 12 of 20 items are keyed (60%). The unkeyed 8 are exactly the
+  //       proofs and the drawing — not a gap, a genre.
+  c10Circles: {
+    id: "c10Circles",
+    chapterName: "Circles",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Circles.pdf",
+    pdf: cls10Maths("10. Circles.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [7],
+    note: "NCERT (CBSE Class 10) — Circles (Chapter 10, NCERT Mathematics)",
+    subtopics: [
+      "Tangent to a Circle",
+      "Number of Tangents from an External Point",
+    ],
+  },
+
+  // ── Ch.11 Areas Related to Circles (10th). 7pp — the shortest chapter in the
+  //    book — Examples 1-2 + Ex 11.1 (19 items). ONE taught section, like Ch.9.
+  //
+  //    1. **A FIFTH PLACE MCQs HIDE.** Ex 11.1 Q14 reads "Tick the correct answer
+  //       in the following" and carries four options. Counting Ch.5's two, Ch.8's
+  //       eight and Ch.10's four, this book has FIFTEEN MCQs across five
+  //       chapters — the lane was originally scoped for two of them.
+  //
+  //    2. **THE EXERCISE OPENS WITH A STANDING INSTRUCTION**: "Unless stated
+  //       otherwise, use pi = 22/7." Several items then override it in their own
+  //       stem ("Use pi = 3.14"), so the constant is per-question and the
+  //       exercise-level default must ride on every row's context.
+  c10AreasCircles: {
+    id: "c10AreasCircles",
+    chapterName: "Areas Related to Circles",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__AreasRelatedToCircles.pdf",
+    pdf: cls10Maths("11. Areas Related to Circles.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [8],
+    note: "NCERT (CBSE Class 10) — Areas Related to Circles (Chapter 11, NCERT Mathematics)",
+    subtopics: [
+      "Area of a Sector",
+      "Area of a Segment",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
