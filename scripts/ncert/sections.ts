@@ -902,6 +902,19 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "7.3 Section Formula", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 Q"] },
   ],
 
+  // ── Ch.8 Introduction to Trigonometry (10th). SIX blocks over three taught
+  //    sections. This reprint has NO complementary-angles section, so §8.4 is
+  //    Identities and there is no fourth exercise. Examples band to the exercise
+  //    they precede: 1-5 → "8.1 Eg.N", 6-8 → "8.2 Eg.N", 9-12 → "8.3 Eg.N".
+  c10Trigonometry: [
+    { group: "8.2 Trigonometric Ratios", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 Eg"] },
+    { group: "8.2 Trigonometric Ratios", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 Q"] },
+    { group: "8.3 Trigonometric Ratios of Some Specific Angles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 Eg"] },
+    { group: "8.3 Trigonometric Ratios of Some Specific Angles", label: "Exercise 8.2", kind: "exercise", refPrefixes: ["Ex 8.2 Q"] },
+    { group: "8.4 Trigonometric Identities", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.3 Eg"] },
+    { group: "8.4 Trigonometric Identities", label: "Exercise 8.3", kind: "exercise", refPrefixes: ["Ex 8.3 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },

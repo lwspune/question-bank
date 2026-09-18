@@ -2989,6 +2989,40 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Section Formula and Ratio of Division",
     ],
   },
+
+  // ── Ch.8 Introduction to Trigonometry (10th). 20pp, Examples 1-12 + Ex 8.1
+  //    (17 items) / 8.2 (15) / 8.3 (14) = 46 exercise items.
+  //
+  //    1. **EIGHT MCQs — the largest MCQ block in the book.** Ex 8.2 Q2 (i)-(iv)
+  //       AND Ex 8.3 Q3 (i)-(iv). The lane was scoped expecting only the Ex 8.2
+  //       four; the Ex 8.3 four are additional. flip-public MUST run --with-mcq
+  //       or eight rows stay PRIVATE with no error reported.
+  //
+  //    2. **NO "Trigonometric Ratios of Complementary Angles" SECTION.** Older
+  //       editions carry one (and an exercise for it); this 2025-26 reprint has
+  //       §8.2 Ratios → §8.3 Specific Angles → §8.4 Identities → 8.5 Summary.
+  //       Three taught sections, three exercises. Do not go looking for Ex 8.4.
+  //
+  //    3. The key skips the PROOF items by construction — Ex 8.1 Q6 ("show that
+  //       ngle A = ngle B") and all eight of Ex 8.3 Q4 ("prove the following
+  //       identities") have no key entry, because no answer key can adjudicate a
+  //       proof. That is this chapter's own denominator, not a defect.
+  c10Trigonometry: {
+    id: "c10Trigonometry",
+    chapterName: "Introduction to Trigonometry",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__IntroductionToTrigonometry.pdf",
+    pdf: cls10Maths("08. Introduction to Trigonometry.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [6, 7], // Ex 8.1 tail of p6, Ex 8.2 + 8.3 on p7
+    note: "NCERT (CBSE Class 10) — Introduction to Trigonometry (Chapter 8, NCERT Mathematics)",
+    subtopics: [
+      "Trigonometric Ratios of an Acute Angle",
+      "Trigonometric Ratios of Specific Angles",
+      "Trigonometric Identities",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
