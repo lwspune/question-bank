@@ -132,6 +132,25 @@ export async function getMockBySlug(db: SupabaseClient, slug: string): Promise<M
   return data ? mapMock(data as Record<string, unknown>) : null;
 }
 
+/**
+ * One published mock by slug WITHOUT the ordered snapshot. For callers that
+ * render facts about a mock rather than deliver it — the link-preview card.
+ *
+ * Deliberately not getMockBySlug: that one carries `questions`, and pulling the
+ * snapshot to print a title and three counts is the same 53x overfetch the
+ * listing query was fixed for on 2026-09-07 (see MOCK_LIST_SELECT above).
+ */
+export async function getMockCardBySlug(db: SupabaseClient, slug: string): Promise<MockListItem | null> {
+  const { data, error } = await db
+    .from("mock_tests")
+    .select(MOCK_LIST_SELECT)
+    .eq("slug", slug)
+    .eq("status", "published")
+    .maybeSingle();
+  if (error) throw new Error(`getMockCardBySlug: ${error.message}`);
+  return data ? mapMockListItem(data as Record<string, unknown>) : null;
+}
+
 /** One published mock by id (for mid-attempt loads). Null when absent. */
 export async function getMockById(db: SupabaseClient, id: string): Promise<MockRow | null> {
   const { data, error } = await db
