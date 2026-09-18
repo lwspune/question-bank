@@ -923,6 +923,16 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "9.1 Heights and Distances", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
   ],
 
+  // ── Ch.10 Circles (10th). THREE blocks, not four: §10.2 Tangent to a Circle
+  //    has NO worked examples (all three Examples sit in §10.3), so Exercise 10.1
+  //    follows its section's prose directly — the same asymmetry as Ch.6 §6.2.
+  //    All three examples band to Exercise 10.2 → "10.2 Eg.N".
+  c10Circles: [
+    { group: "10.2 Tangent to a Circle", label: "Exercise 10.1", kind: "exercise", refPrefixes: ["Ex 10.1 Q"] },
+    { group: "10.3 Number of Tangents from a Point on a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.2 Eg"] },
+    { group: "10.3 Number of Tangents from a Point on a Circle", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Measure figure crop bboxes off a vector NCERT page, by CAPTION.
 
-    python scripts/ncert/fig_bounds.py <pdf> <page>:<caption>:<ref>[:<left_extra>[:<ymin>]] ... [--out F] [--sheet D]
+    python scripts/ncert/fig_bounds.py <pdf> <page>:<caption>:<ref>[:<left_extra>[:<ymin>[:<xmin>]]] ... [--out F] [--sheet D]
 
 Emits the attach-images manifest shape: [{ref, fig, page, bbox}], bbox fractional.
 
@@ -31,7 +31,7 @@ import sys, json, io, os
 import fitz
 
 
-def bounds_for(page, caption, pad=0.012, left_extra=0.0, ymin=0.0):
+def bounds_for(page, caption, pad=0.012, left_extra=0.0, ymin=0.0, xmin=0.0):
     W, H = page.rect.width, page.rect.height
     cap = None
     for b in page.get_text("dict")["blocks"]:
@@ -51,7 +51,10 @@ def bounds_for(page, caption, pad=0.012, left_extra=0.0, ymin=0.0):
     # Fig 9.12 and Fig 9.13, and without a floor the frame-union climbed from the
     # lower one straight through the prose into the upper one.
     floor = max(cy0 - 0.55 * H, ymin * H)
-    near = [r for r in cands if r.y1 <= cy0 + 2 and r.y0 >= floor]
+    # xmin is the same idea for figures printed SIDE BY SIDE: Ch.10 p8 carries
+    # Fig 10.12 and Fig 10.13 on one row, and the frame-union spread left from the
+    # right-hand figure and took in the left-hand one whole.
+    near = [r for r in cands if r.y1 <= cy0 + 2 and r.y0 >= floor and r.x0 >= xmin * W]
     if not near:
         raise SystemExit(f"no ink above caption {caption!r}")
     # the frame is the largest such rect; fall back to the union when there is none
@@ -107,7 +110,8 @@ def main():
         pno, caption, ref = int(parts[0]), parts[1], parts[2]
         left_extra = float(parts[3]) if len(parts) > 3 else 0.0
         ymin = float(parts[4]) if len(parts) > 4 else 0.0
-        bbox = bounds_for(d[pno], caption, left_extra=left_extra, ymin=ymin)
+        xmin = float(parts[5]) if len(parts) > 5 else 0.0
+        bbox = bounds_for(d[pno], caption, left_extra=left_extra, ymin=ymin, xmin=xmin)
         man.append({"ref": ref, "fig": caption, "page": pno, "bbox": bbox})
         print(f"{ref:14} {caption:10} bbox={bbox}")
     if out_path:

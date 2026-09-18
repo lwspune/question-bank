@@ -3049,6 +3049,38 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Angle of Depression Problems",
     ],
   },
+
+  // ── Ch.10 Circles (10th). 10pp, Examples 1-3 + Ex 10.1 (7 items) / 10.2 (13).
+  //
+  //    1. **FOUR MCQs, and one of them is NOT where the lane expected.** Ex 10.2
+  //       Q1-Q3 head that exercise under "choose the correct option", which was
+  //       known — but **Ex 10.1 Q3 is also a 4-option MCQ**, sitting unannounced
+  //       between a fill-in-the-blanks and a construction. Only the answer key
+  //       ("3. D") gives it away in a text dump. --with-mcq is mandatory.
+  //
+  //    2. **§10.2 CARRIES NO WORKED EXAMPLES** — all three Examples sit in §10.3,
+  //       so Exercise 10.1 follows its section's prose directly. Same asymmetry
+  //       as Ch.6 §6.2, which is why the outline is 3 blocks and not 4.
+  //
+  //    3. The key is PROOF-LIMITED: 7 of Ex 10.2's 13 items are "Prove that ...",
+  //       and Ex 10.1 Q4 is a construction ("Draw a circle and two lines ..."),
+  //       so 12 of 20 items are keyed (60%). The unkeyed 8 are exactly the
+  //       proofs and the drawing — not a gap, a genre.
+  c10Circles: {
+    id: "c10Circles",
+    chapterName: "Circles",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__Circles.pdf",
+    pdf: cls10Maths("10. Circles.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [7],
+    note: "NCERT (CBSE Class 10) — Circles (Chapter 10, NCERT Mathematics)",
+    subtopics: [
+      "Tangent to a Circle",
+      "Number of Tangents from an External Point",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

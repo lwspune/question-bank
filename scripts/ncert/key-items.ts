@@ -76,12 +76,14 @@ function parseKey(text: string): Map<string, { items: number[]; subs: Map<number
     const re = /^[ \t]*(\d{1,2})\.(?=[\s\n])/gm;
     let m: RegExpExecArray | null;
     while ((m = re.exec(body))) nums.push({ n: Number(m[1]), at: m.index });
-    // Longest increasing run beginning at 1, allowing SMALL GAPS. A key legitimately
+    // Longest increasing run beginning at 1, allowing GAPS. A key legitimately
     // skips items it cannot adjudicate — Ch.8's Ex 8.1 omits Q6 ("show that
     // angle A = angle B") — and a strict +1 rule stopped dead at Q5 there, hiding
-    // the six items after the gap. The gap is bounded at 3 so an answer's own
-    // digits still cannot run away with the sequence.
-    const MAX_GAP = 3;
+    // the six items after the gap. Ch.10's Ex 10.2 then needed a bigger allowance
+    // still: it keys 1,2,3,6,7,12 and skips SEVEN "Prove that ..." items, so the
+    // run has to step 7 -> 12. Six is the widest real gap in this book; the
+    // line-start anchor, not this bound, is what keeps an answer's own digits out.
+    const MAX_GAP = 6;
     let best: { n: number; at: number }[] = [];
     for (let s = 0; s < nums.length; s++) {
       if (nums[s].n !== 1) continue;
