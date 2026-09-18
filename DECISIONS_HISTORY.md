@@ -22,7 +22,28 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ---
 
 
-### 2026-09-01 to 2026-09-16 — full narratives (digested 2026-09-14; completed 2026-09-16)
+### 2026-09-01 to 2026-09-18 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+
+**2026-09-18 (ninth) — the context budget itself: eight already-archived digests evicted from the Decisions log, MEMORY.md brought under a ceiling, and a reconciliation that says which entries an archive sweep would DELETE rather than move.**
+
+The brief was "how do I minimise context pollution", answered from measurement rather than advice: CLAUDE.md at 127.9 KB and MEMORY.md at 20.5 KB are both loaded before a session does anything, so the fixed cost was ~38k tokens, every session, whatever the task. The Decisions log sat at 99% of its own ceiling.
+
+**THE EVICTION DELETED NOTHING, AND THAT WAS ESTABLISHED PER TAG RATHER THAN ASSUMED.** The rule in CLAUDE.md is that an entry is archived by MOVING it. The cheaper version of that — delete the digest, because the long form is already in DECISIONS_HISTORY.md — is only safe if the long form really is there. It was, for all eight: 2026-09-17 (second) and everything older. Verified twice, once before removing and once after against `git show HEAD:CLAUDE.md`, and the archived versions are strict supersets (the 2026-09-15 (seventh) narrative carries seven sub-bullets against the digest's four). The cut boundary is therefore not a date somebody liked the look of — it IS the archive's coverage line.
+
+**BOTH POINTER HEADERS WERE STALE, IN OPPOSITE DIRECTIONS, AND NEITHER WAS READABLE AS WRONG.** CLAUDE.md's note said the September narratives lived under `### 2026-09-01 to 2026-09-14`. The archive's own header said `to 2026-09-16`. The batch actually held entries through 2026-09-18. Three claims, no two agreeing, and every one of them plausible in isolation — the only way to catch it is to diff the tags a header claims against the tags it contains. The header is now derived from the batch's real span and says so.
+
+**THE FINDING THAT CHANGED THE SHAPE OF THE WORK: the two-places convention has NOT been holding.** Having established the eight were safe, the natural next claim was that the remaining eleven were the newest and therefore unarchived. Written into the note, and wrong — a grep for `- **<tag>` missed that the archive mixes TWO heading shapes, a bulleted entry and a bare `**tag — ...**` paragraph. Four of the eleven had narratives after all; seven did not. So the honest statement is neither "all are archived" nor "none are": it is a per-tag question nobody can answer by eye, and the first two attempts to answer it by eye were both wrong. A routine sweep of those seven would have destroyed them silently — the exact outcome the MOVING rule exists to prevent.
+
+**Hence `reconcileArchive`, which is the durable artifact and the reason this entry is not just a cleanup.** It parses both heading shapes, compares tags WHOLE (substring matching reports "2026-09-18" as present inside "2026-09-18 (third)" — that false positive is what made the first hand-check wrong, and it has its own test), and names the entries with no long form behind them. `npm run docs:budget` now prints those seven by name. Warning-only: it reports a debt in the writing convention, not a defect in the tree, and failing a push over it would block unrelated work. It reproduced the hand reconciliation exactly, which is the only reason to trust either.
+
+**MEMORY.md was 16% of CLAUDE.md's cost and bounded by nothing.** `docs:budget` existed precisely because an always-loaded file is a runtime cost rather than a docs-tidiness question, and then measured only one of the two always-loaded files. Ceiling set at 24,000 bytes against a live 20.1 KB, the same "headroom, but it still binds" posture as the other two.
+
+**ABSENT IS NOT ZERO AND NOT A PASS.** MEMORY.md lives under `~/.claude`, outside the repo, so it is present on this machine and absent in CI. Failing there would block every push over a file the repo does not own; passing there would let a green OK imply a budget nobody checked. It reports NOT MEASURED, prints the path it looked at, and the token line says which files it counted. The pure core takes `string | null` and distinguishes `""` from `null` deliberately — an empty index is a real measurement of zero, and a truthiness check would file it as unmeasured; that distinction has its own test.
+
+**The path derivation is allowed to fail, and did, visibly.** Claude Code slugs a project by its absolute path with the drive colon, both separators and underscores folded to "-". The first attempt missed backslashes (Windows `cwd()` uses them) and the lowercased drive letter, and resolved to `C:\Users\vilas\.claude\projects\C-\Users\...` — which the NOT MEASURED branch printed in full, naming its own bug. That is why the branch prints the path rather than a bare "not found". If the slug scheme ever changes, the gate degrades to NOT MEASURED instead of lying.
+
+**Result: 34,869 tokens per session against ~38,000, with the Decisions log at 67% of its ceiling instead of 99%.** The honest framing is that the eviction bought ~3k tokens and the gate bought none at all — what the gate buys is that the next sweep cannot quietly delete seven entries. Gate green: 349 files, 5,544 tests.
+
 
 **2026-09-18 (sixth) — the daily quiz recorded nothing for a signed-in student, and had not for the 15 months it has been live. `quiz_taken` gets its emitter, `/quiz/attempts` its reader, the reveal gate a sign-in door, and the results share the tags it never had.**
 
