@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CheckCircle2, ChevronDown, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSignedIn } from "@/components/auth/useSignedIn";
@@ -8,6 +8,8 @@ import { recordPractice } from "@/components/reveal/practiceBeacon";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
+import PresentButton from "@/components/present/PresentButton";
+import { fromWorkedExample } from "@/lib/present/viewModel";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
 type Props = {
@@ -45,6 +47,8 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
     recordPractice(example.id, signedIn, "guide");
   };
   const correct = example.options.find((o) => o.isCorrect);
+  // Projection view-model for the classroom overlay.
+  const presentable = useMemo(() => fromWorkedExample(example), [example]);
 
   return (
     <article className="rounded-lg border bg-card shadow-sm">
@@ -68,6 +72,7 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
         >
           {example.difficulty}
         </span>
+        <PresentButton question={presentable} order={rank} />
       </header>
 
       {example.context && (

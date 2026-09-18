@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -31,6 +31,8 @@ import type { QuestionResources } from "@/lib/links/questionResources";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import PresentButton from "@/components/present/PresentButton";
+import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
@@ -101,6 +103,8 @@ export default function QuestionCard({
 
   // Metered answer reveal: anon viewers get a few free reveals, then a sign-in
   // nudge. A question already revealed is free to re-open (no double-charge).
+  // Projection view-model for the classroom overlay.
+  const presentable = useMemo(() => fromQuestionRow(question), [question]);
   const meter = useRevealMeter("bank");
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
@@ -209,6 +213,7 @@ export default function QuestionCard({
               aria-hidden
             />
           </button>
+          <PresentButton question={presentable} order={index} />
           <BookmarkButton questionId={question.id} />
           {!hideCart && (
             <CartToggle

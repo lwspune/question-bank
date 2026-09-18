@@ -103,7 +103,12 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           </p>
         </header>
 
-        <BoardReader groups={chapter.groups} pyqSittings={data.pyqSittings} supabaseUrl={supabaseUrl} />
+        <BoardReader
+          groups={chapter.groups}
+          pyqSittings={data.pyqSittings}
+          supabaseUrl={supabaseUrl}
+          chapterName={chapter.chapterName}
+        />
       </main>
       <Footer />
     </>
