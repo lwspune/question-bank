@@ -2849,6 +2849,43 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Forming a Quadratic Polynomial from its Zeroes",
     ],
   },
+
+  // ── Ch.3 Pair of Linear Equations in Two Variables (10th). 14pp, Examples 1-10
+  //    + Ex 3.1 (19 items) / 3.2 (12) / 3.3 (9). 40 exercise items, the largest
+  //    Class-10 exercise load so far.
+  //
+  //    1. **THE KEY MIXES ANSWERS WITH METHOD INSTRUCTIONS.** Ex 3.1 Q1's entries
+  //       read "To solve graphically draw the graphs ... on graph paper" BEFORE
+  //       giving "Girls = 7, Boys = 3". The instruction half is a HINT and closes
+  //       nothing; only the trailing numbers are adjudicable. Count answers, not
+  //       entries — the same rule Ch.6 forced.
+  //
+  //    2. **§3.3 SPLITS INTO 3.3.1 Substitution and 3.3.2 Elimination**, each with
+  //       its own worked examples then its own exercise. That is why the /board
+  //       outline is 6 blocks over what looks like two taught sections: grouping
+  //       Ex 3.2 and Ex 3.3 under one "3.3" header would merge two methods the
+  //       book deliberately teaches apart.
+  //
+  //    3. Figures are EXPOSITORY here, not question anchors. Ex 3.1 Q1/Q4/Q7 say
+  //       "solve graphically" / "draw the graphs" — the student DRAWS the graph,
+  //       so there is nothing printed to crop. Zero figure crops in this chapter.
+  c10LinearEquations: {
+    id: "c10LinearEquations",
+    chapterName: "Pair of Linear Equations in Two Variables",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_10_Maths__PairOfLinearEquations.pdf",
+    pdf: cls10Maths("03. Pair of Linear Equations in Two Variables.pdf"),
+    answersPdf: cls10Maths("jemh1an.pdf"),
+    answerPages: [0, 1, 2], // Ex 3.1 tail of p0, Ex 3.2 on p1, Ex 3.3 head of p2
+    note: "NCERT (CBSE Class 10) — Pair of Linear Equations in Two Variables (Chapter 3, NCERT Mathematics)",
+    subtopics: [
+      "Graphical Method and Nature of Solutions",
+      "Consistency from the Ratios of Coefficients",
+      "Substitution Method",
+      "Elimination Method",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

@@ -842,6 +842,23 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "2.3 Relationship between Zeroes and Coefficients of a Polynomial", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
   ],
 
+  // ── Ch.3 Pair of Linear Equations in Two Variables (10th). SIX blocks over what
+  //    reads as two taught sections, because §3.3 splits into 3.3.1 Substitution
+  //    Method and 3.3.2 Elimination Method — each with its own worked examples and
+  //    its own exercise. Grouping Ex 3.2 and Ex 3.3 under one "3.3" header would
+  //    merge two methods the book teaches apart, and the reader would show a
+  //    12-question and a 9-question exercise as one 21-question block.
+  //    Examples band to the exercise they precede: 1-3 → "3.1 Eg.N",
+  //    4-7 → "3.2 Eg.N", 8-10 → "3.3 Eg.N".
+  c10LinearEquations: [
+    { group: "3.2 Graphical Method of Solution of a Pair of Linear Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 Eg"] },
+    { group: "3.2 Graphical Method of Solution of a Pair of Linear Equations", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 Q"] },
+    { group: "3.3.1 Substitution Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 Eg"] },
+    { group: "3.3.1 Substitution Method", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 Q"] },
+    { group: "3.3.2 Elimination Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 Eg"] },
+    { group: "3.3.2 Elimination Method", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 Q"] },
+  ],
+
   c10RealNumbers: [
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
     { group: "1.2 The Fundamental Theorem of Arithmetic", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
