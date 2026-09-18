@@ -3004,7 +3004,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   //       Three taught sections, three exercises. Do not go looking for Ex 8.4.
   //
   //    3. The key skips the PROOF items by construction — Ex 8.1 Q6 ("show that
-  //       ngle A = ngle B") and all eight of Ex 8.3 Q4 ("prove the following
+  //       angle A = angle B") and all eight of Ex 8.3 Q4 ("prove the following
   //       identities") have no key entry, because no answer key can adjudicate a
   //       proof. That is this chapter's own denominator, not a defect.
   c10Trigonometry: {
