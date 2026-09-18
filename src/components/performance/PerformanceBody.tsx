@@ -160,6 +160,22 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
         </span>
       </h2>
 
+      {/* FIRST, not last. This is the conclusion the page exists to deliver -
+          the score and the marks still recoverable - and everything below it is
+          the evidence for that one number. It leads the LANE rather than the
+          page because it is scoped to one exam and subject: rendered above the
+          exam/subject pills it would read as a total across every paper sat,
+          which it is not. The `thin` caveat stays adjacent in the heading
+          above, so leading with it cannot strand the warning. */}
+      {lane.projection && (
+        <Section
+          title="Projected score"
+          note={`Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
+        >
+          <ProjectionList projection={lane.projection} links={links} />
+        </Section>
+      )}
+
       {/* Coverage — the readout nda-tracker cannot build, because an OMR sheet
           cannot tell a deliberate skip from a question never reached. Pacing
           used to share this card and now has its own below: completion and the
@@ -266,15 +282,6 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
           note={`Questions ${viewer === "self" ? "you saw" : "they SAW"} and left blank. Questions never reached are excluded — those are a pacing problem, reported above.`}
         >
           <AuditList rows={lane.skipAudit} kind="skipped" />
-        </Section>
-      )}
-
-      {lane.projection && (
-        <Section
-          title="Projected score"
-          note={`Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
-        >
-          <ProjectionList projection={lane.projection} links={links} />
         </Section>
       )}
     </div>
