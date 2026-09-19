@@ -20,7 +20,14 @@ export const ACTIVITY_KINDS = [
   "mock_submitted", // finished + graded a timed mock (metadata: score, maxScore, …)
   "mock_started", // OPENED a timed mock (new attempt only — a resume must not re-fire)
   "answer_wrong", // missed a question in a graded mock (refId = questionId) — drill fuel
-  "answer_correct", // got a question right in a graded mock (refId = questionId)
+  // RECOVERED a question: got it right having previously missed it (refId =
+  // questionId). NOT every correct answer — a mock emits this only where the
+  // student already has an `answer_wrong` row for that question, and /drill
+  // emits it on any drilled question (all of which are missed by definition).
+  // So a COUNT OF THIS IS NOT "questions answered correctly". The symmetric
+  // version was measured and rejected: 20,250 rows to change the drill pool
+  // by 484. See lib/mocks/correctEvents.ts.
+  "answer_correct",
   "chapter_mastered", // marked a /notes subtopic mastered (refId = subtopicSlug)
   "note_checkpoint", // completed a /notes mastery checkpoint (metadata: score, total)
   "question_bookmarked", // saved a question (refId = questionId)
