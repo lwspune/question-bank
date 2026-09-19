@@ -77,6 +77,74 @@ writing anything.
 
 ---
 
+## Engagement engine — what remains
+
+Three mechanics shipped 2026-09-18/19 (result-screen findings card, `/drill`, the
+expiry sweep + recovery emitter). These are the open ones. Every item here must
+still clear the **principles gate** in `CLAUDE.md` — no leaderboards, hearts,
+variable rewards, streak freezes or vanity milestones.
+
+### Goal progress — BLOCKED on a schema + capture decision
+
+The engagement gate's own guidance is to **prefer deadline/goal-progress over
+daily streaks** for an exam cohort (the sibling AI Tutor shipped 6 milestone
+kinds and 3 fired zero times, because students study in bursts). Nothing can be
+built until we decide where "days to exam" comes from, because `student_profiles`
+records **which** exams a student targets and never **when** they sit one.
+
+What exists today (measured 2026-09-19, 342 profiles):
+
+| field | filled | note |
+|---|---|---|
+| `target_exams` | 280 (82%) | NDA 246 · JEE 67 · MHT-CET 55 · CBSE-12 39 · CDS 33 |
+| `stage` | 124 (36%) | a structured pick |
+| `goal` | **4 (1%)** | optional free text |
+| *exam date* | — | **does not exist** |
+
+**Decision 1 — schema.** Three shapes, and they differ in coverage rather than
+effort:
+- *Derive a default, let the student override.* Resolve the next sitting from
+  `target_exams` + a maintained calendar, add a nullable `exam_date` that wins
+  when set. Reaches 280 students on day one; wrong for a Class-11 student aiming
+  at a later sitting, which the override exists to fix.
+- *Student-entered `exam_date` only.* Always accurate, never guesses — but
+  `goal` at 1% and `stage` at 36% are the evidence for what a new optional ask
+  actually collects. A goal-progress mechanic most students never see.
+- *Target SITTING, not a date* (`nda-2027-I`) resolved against a calendar. A
+  postponed exam is then one central edit rather than 246 stale student dates.
+  Still needs an ask, so expect coverage near `stage`'s 36%.
+
+**Decision 2 — who maintains the calendar, and what stops it rotting.** Official
+dates for up to 13 exams have to live somewhere. A committed TS registry beside
+`EXAM_REGISTRY` plus a probe that FAILS once the next sitting is past is this
+repo's usual answer (the gate catches the rot rather than trusting memory); a DB
+table with `/superadmin` editing fixes a postponement without a deploy but is
+gated by nothing, and an empty calendar looks identical to a working one. A
+third option is NDA-only — 246 of 280 students, honest absence for the rest.
+
+**The `1%` figure is the thing to argue with first.** If a new ask is expected to
+reach ~30%, a mechanic that depends on it is a mechanic for a minority, and the
+derive-with-override shape is the only one that shows anything to most students.
+
+### `/drill` transfer half — "3 more like it"
+
+Deferred at `/drill`'s launch, deliberately. Today the drill serves back the
+EXACT questions a student missed; the transfer half would serve *unseen* questions
+from the same weak subtopic, which is what actually demonstrates transfer. Needs
+an unseen + difficulty-matched picker, which is real work. **Worth seeing whether
+students finish the drills they already get before building it** — there is no
+completion data yet, because `/drill` shipped 2026-09-19 and has had no browser
+pass.
+
+### Decisions-log archive gap (docs debt, not a feature)
+
+`npm run docs:budget` reports the active Decisions log at **91% of its 35.2 KB
+hard ceiling**, and that **7 of 16 live entries have NO full narrative in
+`DECISIONS_HISTORY.md`** — so the next routine archive sweep would DELETE them
+rather than move them. Pre-existing; the 2026-09-18/19 entries all have their
+long forms written. Order matters: write the missing narratives BEFORE the
+ceiling forces an eviction, never raise the ceiling.
+
 ## Data model
 
 ### Cross-topic questions — decouple concept tags from the home subtopic (2-phase)
@@ -169,6 +237,75 @@ Pending:
 All NDA cleanup complete. Phase B/C/D template fully stable.
 
 ---
+
+## MHT-CET Mathematical Logic — three provenance defects found 2026-09-19
+
+Found while attaching switching-circuit figures from the Word originals (Phase A of
+the Mathematical Logic `/notes` build). The figures are done; these three are what
+reading the printed papers turned up and did NOT fix.
+
+1. **`1d52a988` has no locatable source.** Row is `pyq_year 2025`, `pyq_month May`,
+   `pyq_note "Shift ||"`, `source_file MHT_CET_2025_PCM.xlsx`, `question_number NULL`
+   — "Which of the following are pairs of equivalent circuits" with options I–V. It is
+   the only Mathematical Logic circuit row still carrying no figure, so it is
+   **unanswerable as rendered**. There is no May-2025 MHT-CET paper on disk. Either
+   source the May 2025 Shift II paper, or set the row PRIVATE. Do NOT reuse the
+   2023 2-May composite — the same-looking question recurs across sittings with
+   different circuits, so copying one would be a guess, not a source.
+
+2. **`MHT_CET_2025_14th_May_Shift_2_QP.pdf` is misnamed.** The PDF's own running head
+   reads "MHT-CET 2025 Question Paper - PCM / 19th April 2025 (Shift – II)". It is a
+   duplicate of a shift already ingested from docx (`2025-apr-19-s2`), not a May paper.
+   It is also image-only (no text layer, ~48 sliced rasters per page). Renaming it is a
+   local-disk fix, outside the repo.
+
+3. **`95815d68` has a wrong `pyq_note`.** It reads "3rd May 2nd Shift", but the
+   switching-circuit question is Q147 of **Shift 1** (Shift 2's Q147 is a line-and-plane
+   problem — verified against both `(ques).docx` files). Its `source_file`
+   (`MHT_CET_3rdMay2023_S1_QB.xlsx`) is correct, so the row is filed right and only the
+   human-readable note is wrong. Low harm; fix in a provenance sweep rather than alone.
+
+**Open question this raises:** the xlsx-seeded 2023/2024 MHT-CET rows carry option text
+that the printed paper does not have. One of the five inspected (`5826a024`) had
+**fabricated options and therefore a wrong key** (see the 2026-09-19 Decisions entry).
+That was a 1-in-5 hit rate on a sample chosen for a different reason, so the class is
+probably wider than Mathematical Logic. A scoped probe — xlsx-sourced rows whose
+options are placeholders ("Circuit (a)", "Option a") or whose stem references a figure
+they do not have — would size it.
+
+## Syllabus-map spine is stale for MHT-CET Maths Mathematical Logic (2026-09-19)
+
+The 2026-09-19 Phase-D reshape took Mathematical Logic from 3 subtopics to 6. The
+`syllabus_concepts` bank spine still carries the OLD three (MHT-167/168/169), and
+`scripts/syllabus/data/maths-cet-rulings.json` still points its coverage rulings at
+them by those names.
+
+**Nothing is broken and nothing is lying.** Spine and rulings agree with each other,
+so `commit-bank-rulings.ts` guard #2 still passes; `audit-directions` does not audit
+MHT-CET at all ("those spines carry no covered_by pointers"); and the coverage claims
+remain SUBSTANTIVELY true — the same State Board sections cover the same material,
+which the reshape only re-partitioned. What drifted is spine-vs-bank, and no probe
+asserts that pair. `audit-spine-freshness` reports it as triage, alongside NDA, which
+has been drifted with 66 stale PYQ counts for some time.
+
+**Do not fix this by re-running `ingest-bank-spine.ts --apply`.** Its own header is
+explicit: `section_no` is positional and numbering runs across JEE Mains, MHT-CET and
+NDA *together*, so adding 3 MHT-CET subtopics renumbers the other two exams. Rows
+whose ref survives are upserted IN PLACE — same row id, new subtopic, ruling still
+attached and now describing something else — and rows whose ref does not survive are
+pruned, taking their rulings with them via ON DELETE CASCADE. That is a silent
+corruption, not a visible failure.
+
+The refresh is the documented 3-step migration (snapshot with `renumber-rulings.ts
+--snapshot`, then ingest `--apply`, then `renumber-rulings.ts --files=... --apply` and
+re-commit each ruling file), preceded by `npm run db:backup`. Worth batching with the
+NDA drift rather than doing for one chapter.
+
+**Also open, and older than this work:** `npm run syllabus:audit` fails
+`audit-directions` on 5 pre-existing Chemistry/JEE contradictions (Solid State 1.2/1.3
+vs "Classification of Solids"; Polymers 15.3/15.5/15.6 vs "Types of Polymers"). Not
+caused by the Logic reshape — that probe does not audit MHT-CET — but it means the
+syllabus gate is currently red and would mask a new failure.
 
 ## Content quality audits (data work)
 
@@ -444,6 +581,26 @@ Paging with `&first=N` is no better: 4,570 → 8,910 → 50 → 1 → 19,800. An
 
 **Why it is not the top of this section.** The site has 1,474 known pages and **12 indexed** (2026-09-17 Coverage read above). Adding 195 more to a site whose existing inventory Google declines to crawl is treating a symptom — they would join the 1,424-URL discovered-not-indexed queue. Sequenced behind the crawl-depth and external-link work; the analysis here is complete and ready to build the moment indexing recovers.
 
+### External links — the verified prospect list (researched 2026-09-18; NOT started)
+
+**Why this sits in this section at all.** The 2026-09-17 diagnosis above is explicit that domain age + no external links is **the only item that raises the 23-requests/day discovery ceiling** — every other item redistributes a fixed budget. IndexNow shipped for the engines that answer; Google does not participate. This is the Google-side lever, and it is the one with no code in it.
+
+**The one channel with evidence behind it is Reddit.** Vercel Analytics for the 30 days to 2026-09-17 records Reddit as the **#2/#3 referrer**, above Bing (204) and far above non-brand Google (~10). That is measured referral, not an estimate — so the prospect list below is ordered by *what already works here*, not by domain authority. **Caveat on verification, and it is stronger than it first read.** reddit.com blocks our fetch agent, so subscriber counts and per-subreddit self-promotion rules here are UNVERIFIED and must be read on the subreddit before posting. More importantly, **a fetch can only establish that a page renders and that a fee is or is not advertised — it cannot establish that anyone is there.** PaGaLGuY below was wrongly certified on exactly that confusion. Treat every "verified" in this entry as scoped to its stated fact (a published policy, a published price) and to 2026-09-18; audience liveness is a human check, every time.
+
+**Tier 1 — audience-first (nofollow; the value is human traffic, which is itself a crawl signal).** Reddit (r/NDA, r/IndianDefence, r/JEENEETards, r/Btechtards, r/CBSE — read each sidebar first; most Indian exam subs ban bare self-promo). Quora, where NDA/JEE/NEET 2026 question threads are demonstrably live. **PaGaLGuY — REJECTED 2026-09-18, and the retraction is the lesson.** It was listed here as "VERIFIED ACTIVE" on the strength of September-2026 post dates returned by a page fetch; a human check found the forum dead. **The fetch measured that pages render, not that a community exists** — and the evidence that should have caught it was already in my own probe output: both "recent" threads were LPU admission promos, i.e. the exact residue a dead forum accumulates. A date stamp is a claim about a template, never about liveness. Any forum proposed for this list must be checked for *human* replies within ~30 days, by a person, before it is written down. Telegram/WhatsApp groups carry no link equity but are how this cohort actually shares material, and the 0109 share loop was built for exactly that.
+
+**Tier 2 — editorially earned, highest value per link.** `.ac.in`/`.edu.in` resource pages (we are a real org — a partner-school "useful links" page is a legitimate ask, not outreach spam); Wikipedia external links on the NDA/JEE/NEET articles (hard, and reverted unless the site reads as a reference archive — a free 70k-question bank with per-paper provenance is closer to qualifying than most); pitches to Careers360 / Shiksha / Jagran Josh offering **the data, not the site** ("what NDA Maths weightage actually shifted to across 22 papers" — we hold `wt` and nobody else does).
+
+**Tier 3 — free guest posts, all VERIFIED unpaid 2026-09-18** (so they are not link schemes under Google's spam policy — re-verify before submitting, policies drift). `edustoke.com/blog/write-for-us` — explicitly **one do-follow link, must point at a blog, no commercial/affiliate targets**, 500–1000 words, so the target is a `/blog` post and never `/pricing`. `examcharcha.in/write-for-us-education` — one backlink, states outright "we do not offer paid write for us". `futuretopper.in/write-for-us` — free, no link policy published. `indiastudychannel.com` — free but the **strictest and therefore the best signal**: it rejects keyword-stuffed anchors and anything "written just for the purpose of building backlinks". `bloggers.feedspot.com/indian_education_blogs` is a usable prospect list, not a target.
+
+**Tier 4 — under our own control, do once and stop.** GitHub README (the repo is public and it is a dofollow from a high-authority domain), Google Business Profile, LinkedIn company page, Product Hunt / Show HN, and Medium/Hashnode/Dev.to cross-posts of `/blog` carrying `rel=canonical` home.
+
+**AVOID, and this is the part that can do damage.** Paid link packages, PBNs, comment spam, article directories, "1000 backlinks" sellers. For a domain this young the payoff is asymmetric — neutralised at best, a disavow project at worst. The distinguishing question for any prospect is **"would this page link to us if we did not ask?"**; that is why the Tier-3 entries above were each checked for a fee before being listed.
+
+**The lever that beats every tier.** Linkable assets we alone hold: per-chapter weightage across 22 NDA papers, 189 reconstructed sittings, the three-book syllabus crosswalk, `/formula`'s identity-level addressing. Coaching blogs and Reddit threads cite *data*. This is also the cheapest to produce — the numbers already exist behind `npm run stats`, `loadAlignmentRows` and the 0100 weightage derivation.
+
+**Not started. No owner, no date.** Sequenced alongside — not behind — the crawl-depth work, because the two fix different halves of the same constraint: internal linking redistributes the budget, external links raise it.
+
 ---
 
 ## Tech debt / refactoring
@@ -472,7 +629,6 @@ the only place it runs.
 **Do not apply without checking the same class elsewhere** — any other generator using
 `readFileSync(...) !== rendered` has it too. `grep -rn "existsSync(OUT_PATH)" scripts/` is the
 starting point.
-
 
 
 ### BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2: split the 94 mixed identity/equation questions (logged 2026-09-17)
