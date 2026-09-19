@@ -38,7 +38,8 @@ glyph image, not a character, so the layer renders
 
 for a question whose entire content is the missing `~p -> q`. The sentence still
 reads as a sentence. Lines where content was dropped are marked `[math xN]`, and
-`` escapes mark glyphs with no Unicode mapping. **Never transcribe
+`\u0001` escapes (written as six characters, not the byte) mark
+glyphs with no Unicode mapping. **Never transcribe
 mathematics from the scaffold.** Anything marked must be read off the PNG.
 
 ## Rules

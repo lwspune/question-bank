@@ -58,8 +58,20 @@ async function main() {
   if (error) throw new Error(error.message);
 
   const problems: string[] = [];
-  if ((rows ?? []).length !== EXPECTED_REFS.length) {
-    problems.push(`${(rows ?? []).length} rows in the bank, the printed paper has ${EXPECTED_REFS.length}`);
+  // A row can legitimately be missing: the exam-scoped content_hash absorbs a
+  // question the bank already held. Those are enumerated in the manifest, so
+  // the expected count adjusts by exactly them and the check still bites on
+  // every other cause of a shortfall.
+  const absorbed = paper.absorbedRefs ?? [];
+  const expected = EXPECTED_REFS.length - absorbed.length;
+  if ((rows ?? []).length !== expected) {
+    problems.push(
+      `${(rows ?? []).length} rows in the bank, expected ${expected}` +
+        (absorbed.length ? ` (the printed ${EXPECTED_REFS.length} less ${absorbed.length} absorbed)` : ``),
+    );
+  }
+  for (const a of absorbed) {
+    console.log(`  absorbed ${a.ref} -> ${a.into}`);
   }
   for (const r of rows ?? []) {
     const ref = String(r.question_number);

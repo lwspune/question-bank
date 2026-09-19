@@ -1,0 +1,595 @@
+[
+  {
+    "ref": "Q. 1. (i)",
+    "format": "mcq",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\cos\\left[\\tan^{-1}\\left(\\frac{1}{3}\\right) + \\tan^{-1}\\left(\\frac{1}{2}\\right)\\right] =\\) _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\frac{1}{\\sqrt{2}}\\)\n\nCombine the two inverse tangents first, using \\(\\tan^{-1} A + \\tan^{-1} B = \\tan^{-1}\\left(\\frac{A + B}{1 - AB}\\right)\\) for \\(AB < 1\\).\n\nHere \\(A = \\frac{1}{3}\\), \\(B = \\frac{1}{2}\\), so \\(AB = \\frac{1}{6} < 1\\) and the rule applies:\n\n\\(\\tan^{-1}\\left(\\frac{\\frac{1}{3} + \\frac{1}{2}}{1 - \\frac{1}{6}}\\right) = \\tan^{-1}\\left(\\frac{\\frac{5}{6}}{\\frac{5}{6}}\\right) = \\tan^{-1}(1) = \\frac{\\pi}{4}\\)\n\n\\(\\therefore \\cos\\left[\\tan^{-1}\\left(\\frac{1}{3}\\right) + \\tan^{-1}\\left(\\frac{1}{2}\\right)\\right] = \\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\)\n\nNumerically the bracket is \\(0.3217 + 0.4636 = 0.7854\\) radians, which is \\(\\frac{\\pi}{4}\\), and its cosine is \\(0.7071\\). The question asks for the cosine of the sum, not the sum itself."
+  },
+  {
+    "ref": "Q. 1. (ii)",
+    "format": "mcq",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\theta\\) is the angle between two vectors \\(\\bar{a}\\) and \\(\\bar{b}\\) and \\(\\left|\\bar{a} \\cdot \\bar{b}\\right| = \\left|\\bar{a} \\times \\bar{b}\\right|\\) then \\(\\theta\\) is equal to _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{4}\\) or \\(\\frac{3\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi\\) or \\(\\frac{\\pi}{6}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\frac{\\pi}{4}\\) or \\(\\frac{3\\pi}{4}\\)\n\nWrite both products in terms of \\(\\theta\\):\n\n\\(\\left|\\bar{a} \\cdot \\bar{b}\\right| = \\left|\\bar{a}\\right|\\left|\\bar{b}\\right|\\left|\\cos\\theta\\right|\\) and \\(\\left|\\bar{a} \\times \\bar{b}\\right| = \\left|\\bar{a}\\right|\\left|\\bar{b}\\right|\\left|\\sin\\theta\\right|\\)\n\nEquating them and cancelling \\(\\left|\\bar{a}\\right|\\left|\\bar{b}\\right|\\), which is non-zero since an angle between the vectors is defined,\n\n\\(\\left|\\cos\\theta\\right| = \\left|\\sin\\theta\\right|\\), so \\(\\left|\\tan\\theta\\right| = 1\\)\n\nThe angle between two vectors lies in \\([0, \\pi]\\), and in that interval \\(\\left|\\tan\\theta\\right| = 1\\) at\n\n\\(\\theta = \\frac{\\pi}{4}\\) and \\(\\theta = \\frac{3\\pi}{4}\\)\n\n\\(\\therefore \\theta = \\frac{\\pi}{4}\\) or \\(\\frac{3\\pi}{4}\\).\n\nBoth must be kept: at \\(\\frac{\\pi}{4}\\) the dot product is positive and at \\(\\frac{3\\pi}{4}\\) it is negative, but the modulus signs make the two cases equally valid. At \\(\\theta = 0\\) the moduli are \\(1\\) and \\(0\\), so it is not a solution."
+  },
+  {
+    "ref": "Q. 1. (iii)",
+    "format": "mcq",
+    "chapter": "Line and Planes",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "MODERATE",
+    "stem": "The angle between the lines \\(\\bar{r} = (\\hat{i} + 2\\hat{j} - 3\\hat{k}) + \\lambda(3\\hat{i} + 2\\hat{j} + 6\\hat{k})\\) and \\(\\bar{r} = (5\\hat{i} - 2\\hat{j} + 7\\hat{k}) + \\mu(\\hat{i} + 2\\hat{j} + 2\\hat{k})\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\cos^{-1}\\left(\\frac{17}{21}\\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cos^{-1}\\left(\\frac{20}{21}\\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\cos^{-1}\\left(\\frac{18}{21}\\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\cos^{-1}\\left(\\frac{19}{21}\\right)\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\(\\cos^{-1}\\left(\\frac{19}{21}\\right)\\)\n\nThe angle between two lines is the angle between their direction vectors,\n\n\\(\\bar{b_{1}} = 3\\hat{i} + 2\\hat{j} + 6\\hat{k}\\) and \\(\\bar{b_{2}} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n\\(\\bar{b_{1}} \\cdot \\bar{b_{2}} = (3)(1) + (2)(2) + (6)(2) = 3 + 4 + 12 = 19\\)\n\n\\(\\left|\\bar{b_{1}}\\right| = \\sqrt{9 + 4 + 36} = \\sqrt{49} = 7\\), \\(\\left|\\bar{b_{2}}\\right| = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3\\)\n\n\\(\\cos\\theta = \\frac{19}{(7)(3)} = \\frac{19}{21}\\)\n\n\\(\\therefore \\theta = \\cos^{-1}\\left(\\frac{19}{21}\\right)\\)\n\nBoth magnitudes come out whole, which is the usual sign that the direction ratios were read correctly, and \\(\\frac{19}{21} = 0.9048\\) lies in \\([-1, 1]\\), so it is a legitimate cosine."
+  },
+  {
+    "ref": "Q. 1. (iv)",
+    "format": "mcq",
+    "chapter": "Line and Planes",
+    "subtopic": "Distance of a Point from a Plane",
+    "difficulty": "EASY",
+    "stem": "The perpendicular distance of the plane \\(\\bar{r} \\cdot (2\\hat{i} + 3\\hat{j} - \\hat{k}) = 5\\) from the origin is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{\\sqrt{14}}\\) units"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{5}{14}\\) units"
+      },
+      {
+        "label": "C",
+        "text": "\\(5\\) units"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{14}}{5}\\) units"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(\\frac{5}{\\sqrt{14}}\\) units\n\nFor a plane in the form \\(\\bar{r} \\cdot \\bar{n} = d\\), the perpendicular distance from the origin is \\(\\frac{|d|}{\\left|\\bar{n}\\right|}\\).\n\nHere \\(\\bar{n} = 2\\hat{i} + 3\\hat{j} - \\hat{k}\\) and \\(d = 5\\).\n\n\\(\\left|\\bar{n}\\right| = \\sqrt{2^{2} + 3^{2} + (-1)^{2}} = \\sqrt{4 + 9 + 1} = \\sqrt{14}\\)\n\n\\(\\therefore\\) the perpendicular distance is \\(\\frac{5}{\\sqrt{14}}\\) units.\n\nAs a check, \\(\\frac{5}{\\sqrt{14}} = 1.336\\), which is smaller than \\(5\\): the distance can equal \\(d\\) only when the normal is a unit vector, and here it is not."
+  },
+  {
+    "ref": "Q. 1. (v)",
+    "format": "mcq",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = e^{\\frac{x}{y}}\\) then \\(\\frac{dy}{dx} =\\) _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 - \\frac{y}{x}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 + \\frac{y}{x}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{x - y}{x \\log x}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{x + y}{x \\log x}\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\frac{x - y}{x \\log x}\\)\n\nTaking logarithms of \\(x = e^{\\frac{x}{y}}\\) removes the exponential:\n\n\\(\\log x = \\frac{x}{y}\\), so \\(y = \\frac{x}{\\log x}\\)\n\nDifferentiating by the quotient rule,\n\n\\(\\frac{dy}{dx} = \\frac{\\left(\\log x\\right)(1) - x\\left(\\frac{1}{x}\\right)}{\\left(\\log x\\right)^{2}} = \\frac{\\log x - 1}{\\left(\\log x\\right)^{2}}\\)\n\nTo put this in the form the options use, substitute \\(\\log x = \\frac{x}{y}\\):\n\n\\(\\frac{dy}{dx} = \\frac{\\frac{x}{y} - 1}{\\left(\\frac{x}{y}\\right)^{2}} = \\frac{\\frac{x - y}{y}}{\\frac{x^{2}}{y^{2}}} = \\frac{y(x - y)}{x^{2}}\\)\n\nand since \\(x \\log x = x \\cdot \\frac{x}{y} = \\frac{x^{2}}{y}\\),\n\n\\(\\frac{x - y}{x \\log x} = \\frac{x - y}{\\frac{x^{2}}{y}} = \\frac{y(x - y)}{x^{2}}\\)\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{x - y}{x \\log x}\\)\n\nThe two expressions agree identically, not merely at a sample point: substituting \\(y = \\frac{x}{\\log x}\\) into \\(\\frac{x - y}{x\\log x}\\) returns \\(\\frac{\\log x - 1}{(\\log x)^{2}}\\) exactly."
+  },
+  {
+    "ref": "Q. 1. (vi)",
+    "format": "mcq",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "\\(y = c^{2} + \\frac{c}{x}\\) is solution of _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x^{4}\\left(\\frac{dy}{dx}\\right)^{2} - x\\frac{dy}{dx} - y = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x^{2}\\left(\\frac{dy}{dx}\\right)^{2} + y = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^{3}\\left(\\frac{d^{2}y}{dx^{2}}\\right) - x\\frac{dy}{dx} + y = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x\\frac{d^{2}y}{dx^{2}} = 4y\\)"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(x^{4}\\left(\\frac{dy}{dx}\\right)^{2} - x\\frac{dy}{dx} - y = 0\\)\n\nThe differential equation is obtained by eliminating the arbitrary constant \\(c\\) from \\(y = c^{2} + \\frac{c}{x}\\).\n\nDifferentiating with respect to \\(x\\), and remembering \\(c\\) is a constant,\n\n\\(\\frac{dy}{dx} = -\\frac{c}{x^{2}}\\)\n\n\\(\\therefore c = -x^{2}\\frac{dy}{dx}\\)\n\nSubstituting this into the original relation,\n\n\\(y = \\left(-x^{2}\\frac{dy}{dx}\\right)^{2} + \\frac{1}{x}\\left(-x^{2}\\frac{dy}{dx}\\right) = x^{4}\\left(\\frac{dy}{dx}\\right)^{2} - x\\frac{dy}{dx}\\)\n\nwhich rearranges to\n\n\\(x^{4}\\left(\\frac{dy}{dx}\\right)^{2} - x\\frac{dy}{dx} - y = 0\\)\n\nSubstituting \\(y = c^{2} + \\frac{c}{x}\\) and \\(\\frac{dy}{dx} = -\\frac{c}{x^{2}}\\) back into the left side gives \\(c^{2} + \\frac{c}{x} - c^{2} - \\frac{c}{x} = 0\\), so the relation is satisfied for every \\(c\\). One arbitrary constant gives a first order equation, and squaring it makes the degree two."
+  },
+  {
+    "ref": "Q. 1. (vii)",
+    "format": "mcq",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean and Variance of a Binomial Distribution",
+    "difficulty": "EASY",
+    "stem": "Given that \\(X \\sim B(n, p)\\). If \\(n = 10\\) and \\(p = 0.4\\) then \\(E(X)\\) and \\(Var(X)\\) respectively are _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4, 0.24\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0.4, 0.24\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4, 2.4\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3, 0.24\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(4, 2.4\\)\n\nFor \\(X \\sim B(n, p)\\), \\(E(X) = np\\) and \\(\\text{Var}(X) = npq\\) where \\(q = 1 - p\\).\n\nWith \\(n = 10\\) and \\(p = 0.4\\), so that \\(q = 0.6\\),\n\n\\(E(X) = 10 \\times 0.4 = 4\\)\n\n\\(\\text{Var}(X) = 10 \\times 0.4 \\times 0.6 = 2.4\\)\n\n\\(\\therefore E(X) = 4\\) and \\(\\text{Var}(X) = 2.4\\).\n\nThe variance of a binomial distribution is always smaller than its mean, since \\(npq < np\\) whenever \\(q < 1\\), and \\(2.4 < 4\\) as expected."
+  },
+  {
+    "ref": "Q. 1. (viii)",
+    "format": "mcq",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Approximations",
+    "difficulty": "MODERATE",
+    "stem": "The approximate value of \\(\\tan(44^{\\circ}30')\\), given that \\(1^{\\circ} = 0.0175^{c}\\), is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.8952\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0.9528\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0.9285\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0.9825\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\(0.9825\\)\n\nWrite the angle as a small change from one whose tangent is known:\n\n\\(44^{\\circ}30' = 45^{\\circ} - 30' = 45^{\\circ} - 0.5^{\\circ}\\)\n\nUsing the conversion given in the question, \\(1^{\\circ} = 0.0175^{c}\\), so\n\n\\(h = -0.5 \\times 0.0175 = -0.00875\\) radians\n\nTake \\(f(x) = \\tan x\\) with \\(a = \\frac{\\pi}{4}\\):\n\n\\(f(a) = \\tan\\frac{\\pi}{4} = 1\\), \\(f'(x) = \\sec^{2}x\\), so \\(f'(a) = \\sec^{2}\\frac{\\pi}{4} = 2\\)\n\nBy the approximation \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\n\\(\\tan\\left(44^{\\circ}30'\\right) \\approx 1 + (-0.00875)(2) = 1 - 0.0175 = 0.9825\\)\n\n\\(\\therefore\\) the approximate value is \\(0.9825\\).\n\nThe true value is \\(0.98270\\), so the linear approximation is in error by about \\(0.0002\\), which is the size expected for a step of under one hundredth of a radian. The angle is slightly less than \\(45^{\\circ}\\), so a tangent slightly less than \\(1\\) is the right direction."
+  },
+  {
+    "ref": "Q. 2. (i)",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation of a Pair of Lines",
+    "difficulty": "EASY",
+    "stem": "Find the combined equation of the pair of lines \\(2x + y = 0\\) and \\(3x - y = 0\\)",
+    "solution": "The separate equations of the lines are \\(2x + y = 0\\) and \\(3x - y = 0\\), so their combined equation is the product of the two left-hand sides equated to zero.\n\n\\(\\therefore (2x + y)(3x - y) = 0\\)\n\n\\(\\therefore 6x^{2} - 2xy + 3xy - y^{2} = 0\\)\n\n\\(\\therefore 6x^{2} + xy - y^{2} = 0\\) is the required combined equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (ii)",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions and Principal Values",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(\\sin^{-1}\\left(\\sin\\frac{5\\pi}{3}\\right)\\)",
+    "solution": "The principal range of \\(\\sin^{-1}\\) is \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\), and \\(\\dfrac{5\\pi}{3}\\) does not lie in it.\n\n\\(\\sin\\dfrac{5\\pi}{3} = \\sin\\left(2\\pi - \\dfrac{\\pi}{3}\\right) = -\\sin\\dfrac{\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}\\)\n\n\\(\\therefore \\sin^{-1}\\left(\\sin\\dfrac{5\\pi}{3}\\right) = \\sin^{-1}\\left(-\\dfrac{\\sqrt{3}}{2}\\right) = -\\dfrac{\\pi}{3}\\), since \\(-\\dfrac{\\pi}{3}\\) lies in \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iii)",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Elementary Integration and Standard Formulae",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\int \\frac{5^{x}}{3^{x}} dx\\)",
+    "solution": "\\(\\dfrac{5^{x}}{3^{x}} = \\left(\\dfrac{5}{3}\\right)^{x}\\), and \\(\\int a^{x}dx = \\dfrac{a^{x}}{\\log a} + c\\).\n\n\\(\\therefore \\int \\dfrac{5^{x}}{3^{x}}dx = \\int \\left(\\dfrac{5}{3}\\right)^{x}dx = \\dfrac{\\left(\\dfrac{5}{3}\\right)^{x}}{\\log\\left(\\dfrac{5}{3}\\right)} + c\\)\n\nCheck: \\(\\dfrac{d}{dx}\\left[\\dfrac{\\left(\\frac{5}{3}\\right)^{x}}{\\log\\left(\\frac{5}{3}\\right)}\\right] = \\dfrac{\\left(\\frac{5}{3}\\right)^{x}\\log\\left(\\frac{5}{3}\\right)}{\\log\\left(\\frac{5}{3}\\right)} = \\left(\\dfrac{5}{3}\\right)^{x}\\), which is the given integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iv)",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "EASY",
+    "stem": "Write the integrating factor (I.F.) of the differential equation \\(\\frac{dy}{dx} + y = e^{-x}\\).",
+    "solution": "The equation \\(\\dfrac{dy}{dx} + y = e^{-x}\\) is linear in \\(y\\), of the form \\(\\dfrac{dy}{dx} + Py = Q\\) with \\(P = 1\\) and \\(Q = e^{-x}\\).\n\n\\(\\therefore\\) I.F. \\(= e^{\\int P\\,dx} = e^{\\int 1\\,dx} = e^{x}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 3",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "stem": "If the statements \\(p\\), \\(q\\) are true statements and \\(r\\), \\(s\\) are false statements, then determine the truth value of the statement pattern :\n\n\\((q \\wedge r) \\vee (\\sim p \\wedge s)\\)",
+    "solution": "Given: \\(p\\) and \\(q\\) are true statements, \\(r\\) and \\(s\\) are false statements, so \\(\\sim p\\) is false.\n\nSubstituting these truth values in the given pattern,\n\n\\((q \\land r) \\vee (\\sim p \\land s)\\)\n\n\\(\\equiv (T \\land F) \\vee (F \\land F)\\)\n\nA conjunction is true only when both its components are true, so \\(T \\land F \\equiv F\\) and \\(F \\land F \\equiv F\\).\n\n\\(\\equiv F \\vee F\\)\n\nA disjunction is false only when both its components are false.\n\n\\(\\therefore (q \\land r) \\vee (\\sim p \\land s) \\equiv F\\)\n\nHence the truth value of the given statement pattern is F (false).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 4",
+    "format": "subjective",
+    "chapter": "Matrices",
+    "subtopic": "Inverse by Elementary Transformation Method",
+    "difficulty": "MODERATE",
+    "stem": "Find the inverse of matrix \\(A\\) by elementary row transformations, where \\(A = \\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}\\)",
+    "solution": "\\(|A| = \\begin{vmatrix} 2 & -3 \\\\ -1 & 2 \\end{vmatrix} = (2)(2) - (-3)(-1) = 4 - 3 = 1 \\neq 0\\), so \\(A^{-1}\\) exists.\n\nWrite \\(A = IA\\):\n\n\\(\\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}A\\)\n\nBy \\(R_{1} \\rightarrow R_{1} + R_{2}\\),\n\n\\(\\begin{bmatrix} 1 & -1 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}A\\)\n\nBy \\(R_{2} \\rightarrow R_{2} + R_{1}\\),\n\n\\(\\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\end{bmatrix}A\\)\n\nBy \\(R_{1} \\rightarrow R_{1} + R_{2}\\),\n\n\\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix}A\\)\n\n\\(\\therefore A^{-1} = \\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix}\\)\n\nCheck: \\(\\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 4 - 3 & 6 - 6 \\\\ -2 + 2 & -3 + 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 5",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "EASY",
+    "stem": "Find the polar co-ordinates of the point whose Cartesian co-ordinates are \\(\\left(1, -\\sqrt{3}\\right)\\).",
+    "solution": "Here \\(x = 1\\) and \\(y = -\\sqrt{3}\\). If \\((r, \\theta)\\) are the polar co-ordinates of the point, then \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\) and \\(r^{2} = x^{2} + y^{2}\\); \\(\\theta\\) is taken in \\([0, 2\\pi)\\) and \\(r > 0\\).\n\n\\(r^{2} = (1)^{2} + \\left(-\\sqrt{3}\\right)^{2} = 1 + 3 = 4\\)\n\n\\(\\therefore r = 2\\)\n\n\\(\\cos\\theta = \\dfrac{x}{r} = \\dfrac{1}{2}\\) and \\(\\sin\\theta = \\dfrac{y}{r} = -\\dfrac{\\sqrt{3}}{2}\\)\n\nSince \\(\\cos\\theta\\) is positive and \\(\\sin\\theta\\) is negative, \\(\\theta\\) lies in the fourth quadrant, and the related acute angle is \\(\\dfrac{\\pi}{3}\\).\n\n\\(\\therefore \\theta = 2\\pi - \\dfrac{\\pi}{3} = \\dfrac{5\\pi}{3}\\)\n\n\\(\\therefore\\) the polar co-ordinates of the point are \\(\\left(2, \\dfrac{5\\pi}{3}\\right)\\), which may equally be written as \\(\\left(2, -\\dfrac{\\pi}{3}\\right)\\).\n\nCheck: \\(r\\cos\\theta = 2\\cos\\dfrac{5\\pi}{3} = 2 \\times \\dfrac{1}{2} = 1\\) and \\(r\\sin\\theta = 2\\sin\\dfrac{5\\pi}{3} = 2 \\times \\left(-\\dfrac{\\sqrt{3}}{2}\\right) = -\\sqrt{3}\\), which are the given Cartesian co-ordinates.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 6",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Angle between a Pair of Lines",
+    "difficulty": "EASY",
+    "stem": "Find the acute angle between the lines represented by \\(xy + y^{2} = 0\\).",
+    "solution": "Comparing \\(xy + y^{2} = 0\\) with \\(ax^{2} + 2hxy + by^{2} = 0\\), we get \\(a = 0\\), \\(2h = 1\\) so \\(h = \\dfrac{1}{2}\\), and \\(b = 1\\).\n\nIf \\(\\theta\\) is the acute angle between the lines represented by the equation, then\n\n\\(\\tan\\theta = \\left|\\dfrac{2\\sqrt{h^{2} - ab}}{a + b}\\right|\\)\n\n\\(\\therefore \\tan\\theta = \\left|\\dfrac{2\\sqrt{\\left(\\dfrac{1}{2}\\right)^{2} - (0)(1)}}{0 + 1}\\right| = \\left|\\dfrac{2 \\times \\dfrac{1}{2}}{1}\\right| = 1\\)\n\n\\(\\therefore \\theta = \\dfrac{\\pi}{4}\\)\n\n\\(\\therefore\\) the acute angle between the lines is \\(\\dfrac{\\pi}{4}\\), that is \\(45^{\\circ}\\).\n\nCheck: \\(xy + y^{2} = y(x + y) = 0\\), so the separate lines are \\(y = 0\\) and \\(x + y = 0\\), whose slopes are \\(0\\) and \\(-1\\). Then \\(\\tan\\theta = \\left|\\dfrac{0 - (-1)}{1 + (0)(-1)}\\right| = 1\\), giving the same angle \\(45^{\\circ}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 7",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "EASY",
+    "stem": "Using the truth table, show that the statement pattern \\(p \\rightarrow (q \\rightarrow p)\\) is a tautology.",
+    "solution": "The truth table of \\(p \\rightarrow (q \\rightarrow p)\\) is constructed below. An implication is false only when its antecedent is true and its consequent is false.\n\n| \\(p\\) | \\(q\\) | \\(q \\rightarrow p\\) | \\(p \\rightarrow (q \\rightarrow p)\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | T | T |\n| F | T | F | T |\n| F | F | T | T |\n\nAll the entries in the last column are T.\n\n\\(\\therefore p \\rightarrow (q \\rightarrow p)\\) is a tautology.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 8",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\tan^{-1}(2x) + \\tan^{-1}(3x) = \\frac{\\pi}{4}\\) then find the value of \\(x\\), where \\(0 < 3x < 1\\)",
+    "solution": "\\(\\tan^{-1}(2x) + \\tan^{-1}(3x) = \\dfrac{\\pi}{4}\\)\n\nSince \\(0 < 3x < 1\\), we have \\(0 < x < \\dfrac{1}{3}\\), so \\((2x)(3x) = 6x^{2} < 1\\) and the formula \\(\\tan^{-1}A + \\tan^{-1}B = \\tan^{-1}\\left(\\dfrac{A + B}{1 - AB}\\right)\\) applies.\n\n\\(\\therefore \\tan^{-1}\\left(\\dfrac{2x + 3x}{1 - (2x)(3x)}\\right) = \\dfrac{\\pi}{4}\\)\n\n\\(\\therefore \\dfrac{5x}{1 - 6x^{2}} = \\tan\\dfrac{\\pi}{4} = 1\\)\n\n\\(\\therefore 5x = 1 - 6x^{2}\\)\n\n\\(\\therefore 6x^{2} + 5x - 1 = 0\\)\n\n\\(\\therefore 6x^{2} + 6x - x - 1 = 0\\)\n\n\\(\\therefore 6x(x + 1) - 1(x + 1) = 0\\)\n\n\\(\\therefore (x + 1)(6x - 1) = 0\\)\n\n\\(\\therefore x = -1\\) or \\(x = \\dfrac{1}{6}\\)\n\nFor \\(x = -1\\) we get \\(3x = -3\\), which does not satisfy \\(0 < 3x < 1\\), so this value is rejected.\n\n\\(\\therefore x = \\dfrac{1}{6}\\)\n\nCheck: with \\(x = \\dfrac{1}{6}\\), \\(3x = \\dfrac{1}{2}\\) lies in \\((0, 1)\\), and \\(\\tan^{-1}\\dfrac{1}{3} + \\tan^{-1}\\dfrac{1}{2} = \\tan^{-1}\\left(\\dfrac{\\dfrac{1}{3} + \\dfrac{1}{2}}{1 - \\dfrac{1}{6}}\\right) = \\tan^{-1}\\left(\\dfrac{\\dfrac{5}{6}}{\\dfrac{5}{6}}\\right) = \\tan^{-1}(1) = \\dfrac{\\pi}{4}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 9",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "MODERATE",
+    "stem": "Find the points on the curve given by \\(y = x^{3} - 6x^{2} + x + 3\\) where the tangents are parallel to the line \\(y = x + 5\\).",
+    "solution": "\\(y = x^{3} - 6x^{2} + x + 3\\)\n\nDifferentiating with respect to \\(x\\), the slope of the tangent at any point on the curve is\n\n\\(\\dfrac{dy}{dx} = 3x^{2} - 12x + 1\\)\n\nThe line \\(y = x + 5\\) has slope \\(1\\), and parallel lines have equal slopes.\n\n\\(\\therefore 3x^{2} - 12x + 1 = 1\\)\n\n\\(\\therefore 3x^{2} - 12x = 0\\)\n\n\\(\\therefore 3x(x - 4) = 0\\)\n\n\\(\\therefore x = 0\\) or \\(x = 4\\)\n\nWhen \\(x = 0\\), \\(y = 0 - 0 + 0 + 3 = 3\\).\n\nWhen \\(x = 4\\), \\(y = (4)^{3} - 6(4)^{2} + 4 + 3 = 64 - 96 + 7 = -25\\).\n\n\\(\\therefore\\) the tangents are parallel to \\(y = x + 5\\) at the points \\((0, 3)\\) and \\((4, -25)\\).\n\nCheck: at \\(x = 0\\), \\(\\dfrac{dy}{dx} = 3(0) - 0 + 1 = 1\\); at \\(x = 4\\), \\(\\dfrac{dy}{dx} = 3(16) - 48 + 1 = 48 - 48 + 1 = 1\\). Both slopes equal the slope of the given line.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 10",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\int \\frac{e^{x}(1 + x) dx}{\\sin^{2}(xe^{x})}\\)",
+    "solution": "Let \\(I = \\int \\dfrac{e^{x}(1 + x)\\,dx}{\\sin^{2}\\left(xe^{x}\\right)}\\).\n\nPut \\(xe^{x} = t\\). Differentiating both sides with respect to \\(x\\),\n\n\\(\\left(x \\cdot e^{x} + e^{x} \\cdot 1\\right)dx = dt\\), that is, \\(e^{x}(1 + x)\\,dx = dt\\).\n\n\\(\\therefore I = \\int \\dfrac{dt}{\\sin^{2}t} = \\int \\text{cosec}^{2}t\\,dt = -\\cot t + c\\)\n\nResubstituting \\(t = xe^{x}\\),\n\n\\(\\therefore I = -\\cot\\left(xe^{x}\\right) + c\\)\n\nCheck: \\(\\dfrac{d}{dx}\\left[-\\cot\\left(xe^{x}\\right) + c\\right] = \\text{cosec}^{2}\\left(xe^{x}\\right) \\times \\dfrac{d}{dx}\\left(xe^{x}\\right) = \\dfrac{e^{x}(1 + x)}{\\sin^{2}\\left(xe^{x}\\right)}\\), which is the given integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 11",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "difficulty": "EASY",
+    "stem": "The displacement of a particle at a time \\(t\\) is given by \\(s = 2t^{3} - 5t^{2} + 4t - 3\\). Find the time when acceleration is \\(14 \\, \\text{ft/sec}^{2}\\).",
+    "solution": "The displacement at time \\(t\\) is \\(s = 2t^{3} - 5t^{2} + 4t - 3\\).\n\nVelocity \\(= \\dfrac{ds}{dt} = 6t^{2} - 10t + 4\\)\n\nAcceleration \\(= \\dfrac{d^{2}s}{dt^{2}} = 12t - 10\\)\n\nThe acceleration is given to be \\(14\\) ft/sec\\(^{2}\\).\n\n\\(\\therefore 12t - 10 = 14\\)\n\n\\(\\therefore 12t = 24\\)\n\n\\(\\therefore t = 2\\)\n\n\\(\\therefore\\) the acceleration is \\(14\\) ft/sec\\(^{2}\\) at \\(t = 2\\) seconds.\n\nCheck: at \\(t = 2\\), \\(\\dfrac{d^{2}s}{dt^{2}} = 12(2) - 10 = 24 - 10 = 14\\) ft/sec\\(^{2}\\), as required.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 12",
+    "format": "subjective",
+    "chapter": "Definite Integration",
+    "subtopic": "Methods of Evaluation of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\int_{0}^{\\pi/4} \\sqrt{1 + \\sin 2x} \\, dx\\)",
+    "solution": "Let \\(I = \\int_{0}^{\\pi/4}\\sqrt{1 + \\sin 2x}\\,dx\\).\n\nNow \\(1 + \\sin 2x = \\sin^{2}x + \\cos^{2}x + 2\\sin x\\cos x = (\\sin x + \\cos x)^{2}\\).\n\n\\(\\therefore \\sqrt{1 + \\sin 2x} = |\\sin x + \\cos x| = \\sin x + \\cos x\\), since \\(\\sin x \\geq 0\\) and \\(\\cos x > 0\\) for every \\(x\\) in \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\).\n\n\\(\\therefore I = \\int_{0}^{\\pi/4}(\\sin x + \\cos x)\\,dx\\)\n\n\\(= \\left[-\\cos x + \\sin x\\right]_{0}^{\\pi/4}\\)\n\n\\(= \\left(-\\cos\\dfrac{\\pi}{4} + \\sin\\dfrac{\\pi}{4}\\right) - \\left(-\\cos 0 + \\sin 0\\right)\\)\n\n\\(= \\left(-\\dfrac{1}{\\sqrt{2}} + \\dfrac{1}{\\sqrt{2}}\\right) - (-1 + 0)\\)\n\n\\(\\therefore I = 0 + 1 = 1\\)\n\nCheck: on \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\) the integrand rises from \\(\\sqrt{1 + \\sin 0} = 1\\) to \\(\\sqrt{1 + \\sin\\dfrac{\\pi}{2}} = \\sqrt{2}\\), so the value of the integral must lie between \\(1 \\times \\dfrac{\\pi}{4} \\approx 0.785\\) and \\(\\sqrt{2} \\times \\dfrac{\\pi}{4} \\approx 1.111\\). The value \\(1\\) is consistent with these bounds.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 13",
+    "format": "subjective",
+    "chapter": "Probability Distributions",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "EASY",
+    "stem": "The probability distribution of \\(X\\) is as follows :\n\n| \\(X = x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P(X = x)\\) | 0.1 | \\(k\\) | \\(2k\\) | \\(2k\\) | \\(k\\) |\n\nFind\n(a) \\(k\\)\n(b) \\(P(X < 2)\\)",
+    "solution": "The probability distribution of \\(X\\) is\n\n| \\(X = x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P(X = x)\\) | 0.1 | \\(k\\) | \\(2k\\) | \\(2k\\) | \\(k\\) |\n\n(a) For a probability mass function, \\(\\sum P(X = x) = 1\\).\n\n\\(\\therefore 0.1 + k + 2k + 2k + k = 1\\)\n\n\\(\\therefore 0.1 + 6k = 1\\)\n\n\\(\\therefore 6k = 0.9\\)\n\n\\(\\therefore k = 0.15\\)\n\n(b) \\(P(X < 2) = P(X = 0) + P(X = 1)\\)\n\n\\(= 0.1 + k\\)\n\n\\(= 0.1 + 0.15\\)\n\n\\(\\therefore P(X < 2) = 0.25\\)\n\nCheck: with \\(k = 0.15\\) the five probabilities are \\(0.1,\\ 0.15,\\ 0.30,\\ 0.30,\\ 0.15\\); each lies between \\(0\\) and \\(1\\), and their sum is \\(1.00\\), so the distribution is valid.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 14",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Find the particular solution of :\n\n\\(r\\frac{dr}{d\\theta} + \\cos\\theta = 5\\) at \\(r = \\sqrt{2}\\) and \\(\\theta = 0\\)",
+    "solution": "\\(r\\dfrac{dr}{d\\theta} + \\cos\\theta = 5\\)\n\n\\(\\therefore r\\dfrac{dr}{d\\theta} = 5 - \\cos\\theta\\)\n\nSeparating the variables,\n\n\\(\\therefore r\\,dr = (5 - \\cos\\theta)\\,d\\theta\\)\n\nIntegrating both sides,\n\n\\(\\int r\\,dr = \\int (5 - \\cos\\theta)\\,d\\theta\\)\n\n\\(\\therefore \\dfrac{r^{2}}{2} = 5\\theta - \\sin\\theta + c\\)\n\nThis is the general solution. To find \\(c\\), put \\(r = \\sqrt{2}\\) when \\(\\theta = 0\\).\n\n\\(\\therefore \\dfrac{\\left(\\sqrt{2}\\right)^{2}}{2} = 5(0) - \\sin 0 + c\\)\n\n\\(\\therefore 1 = 0 - 0 + c\\)\n\n\\(\\therefore c = 1\\)\n\n\\(\\therefore \\dfrac{r^{2}}{2} = 5\\theta - \\sin\\theta + 1\\)\n\n\\(\\therefore r^{2} = 10\\theta - 2\\sin\\theta + 2\\) is the required particular solution.\n\nCheck: differentiating \\(r^{2} = 10\\theta - 2\\sin\\theta + 2\\) with respect to \\(\\theta\\) gives \\(2r\\dfrac{dr}{d\\theta} = 10 - 2\\cos\\theta\\), that is, \\(r\\dfrac{dr}{d\\theta} + \\cos\\theta = 5\\); and at \\(\\theta = 0\\), \\(r^{2} = 2\\), so \\(r = \\sqrt{2}\\). Both the differential equation and the given condition are satisfied.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 15",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), if \\(a \\cos A = b \\cos B\\) then prove that the triangle is either a right angled or an isosceles triangle.",
+    "solution": "In \\(\\Delta ABC\\), by the sine rule, \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R\\), where \\(R\\) is the circumradius.\n\n\\(\\therefore a = 2R\\sin A\\) and \\(b = 2R\\sin B\\).\n\nGiven: \\(a\\cos A = b\\cos B\\)\n\n\\(\\therefore 2R\\sin A\\cos A = 2R\\sin B\\cos B\\)\n\nDividing both sides by \\(R\\), which is non-zero,\n\n\\(\\therefore 2\\sin A\\cos A = 2\\sin B\\cos B\\)\n\n\\(\\therefore \\sin 2A = \\sin 2B\\)\n\n\\(\\therefore \\sin 2A - \\sin 2B = 0\\)\n\nUsing \\(\\sin C - \\sin D = 2\\cos\\left(\\dfrac{C + D}{2}\\right)\\sin\\left(\\dfrac{C - D}{2}\\right)\\),\n\n\\(\\therefore 2\\cos\\left(\\dfrac{2A + 2B}{2}\\right)\\sin\\left(\\dfrac{2A - 2B}{2}\\right) = 0\\)\n\n\\(\\therefore 2\\cos(A + B)\\sin(A - B) = 0\\)\n\n\\(\\therefore \\cos(A + B) = 0\\) or \\(\\sin(A - B) = 0\\)\n\nCase 1: \\(\\cos(A + B) = 0\\).\n\nSince \\(A\\) and \\(B\\) are angles of a triangle, \\(0 < A + B < \\pi\\), so \\(A + B = \\dfrac{\\pi}{2}\\). As \\(A + B + C = \\pi\\), we get \\(C = \\pi - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{2}\\), and the triangle is right angled at \\(C\\).\n\nCase 2: \\(\\sin(A - B) = 0\\).\n\nSince \\(-\\pi < A - B < \\pi\\), this gives \\(A - B = 0\\), that is, \\(A = B\\). Then \\(\\sin A = \\sin B\\), so by the sine rule \\(a = b\\), and the triangle is isosceles.\n\n\\(\\therefore\\) if \\(a\\cos A = b\\cos B\\) in \\(\\Delta ABC\\), the triangle is either a right angled triangle or an isosceles triangle, as was to be proved.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 16",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Are the four points \\(A(1, -1, 1)\\), \\(B(-1, 1, 1)\\), \\(C(1, 1, 1)\\) and \\(D(2, -3, 4)\\) co-planar? Justify your answer.",
+    "solution": "The given points are \\(A(1, -1, 1)\\), \\(B(-1, 1, 1)\\), \\(C(1, 1, 1)\\) and \\(D(2, -3, 4)\\).\n\n\\(\\overline{AB} = (-1 - 1)\\hat{i} + (1 + 1)\\hat{j} + (1 - 1)\\hat{k} = -2\\hat{i} + 2\\hat{j} + 0\\hat{k}\\)\n\n\\(\\overline{AC} = (1 - 1)\\hat{i} + (1 + 1)\\hat{j} + (1 - 1)\\hat{k} = 0\\hat{i} + 2\\hat{j} + 0\\hat{k}\\)\n\n\\(\\overline{AD} = (2 - 1)\\hat{i} + (-3 + 1)\\hat{j} + (4 - 1)\\hat{k} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\)\n\nThe four points are coplanar if and only if the vectors \\(\\overline{AB}\\), \\(\\overline{AC}\\) and \\(\\overline{AD}\\) are coplanar, that is, if and only if their scalar triple product is zero.\n\n\\(\\left[\\overline{AB}\\ \\ \\overline{AC}\\ \\ \\overline{AD}\\right] = \\begin{vmatrix} -2 & 2 & 0 \\\\ 0 & 2 & 0 \\\\ 1 & -2 & 3 \\end{vmatrix}\\)\n\nExpanding along the first row,\n\n\\(= -2\\left[(2)(3) - (0)(-2)\\right] - 2\\left[(0)(3) - (0)(1)\\right] + 0\\left[(0)(-2) - (2)(1)\\right]\\)\n\n\\(= -2(6) - 2(0) + 0\\)\n\n\\(= -12\\)\n\n\\(\\therefore \\left[\\overline{AB}\\ \\ \\overline{AC}\\ \\ \\overline{AD}\\right] = -12 \\neq 0\\)\n\n\\(\\therefore\\) the vectors are not coplanar, and hence the four points \\(A\\), \\(B\\), \\(C\\) and \\(D\\) are not co-planar.\n\nCheck: \\(A\\), \\(B\\) and \\(C\\) all have \\(z = 1\\), so the plane determined by them is \\(z = 1\\). The point \\(D\\) has \\(z = 4\\), so \\(D\\) does not lie on that plane, which confirms that the four points are not co-planar.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 17",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation of a Pair of Lines",
+    "difficulty": "HARD",
+    "stem": "Find the difference between the slopes of the lines given by \\((\\tan^{2}\\theta + \\cos^{2}\\theta)x^{2} - 2xy\\tan\\theta + (\\sin^{2}\\theta)y^{2} = 0\\)",
+    "solution": "The given equation is a homogeneous equation of the second degree in \\(x\\) and \\(y\\), so it represents a pair of lines through the origin. Let their slopes be \\(m_{1}\\) and \\(m_{2}\\), so that the separate lines are \\(y = m_{1}x\\) and \\(y = m_{2}x\\).\n\nComparing \\((\\tan^{2}\\theta + \\cos^{2}\\theta)x^{2} - 2xy\\tan\\theta + (\\sin^{2}\\theta)y^{2} = 0\\) with \\(ax^{2} + 2hxy + by^{2} = 0\\):\n\n\\(a = \\tan^{2}\\theta + \\cos^{2}\\theta\\), \\(2h = -2\\tan\\theta\\) so \\(h = -\\tan\\theta\\), and \\(b = \\sin^{2}\\theta\\)\n\nThe combined equation of the two lines is also \\(b(y - m_{1}x)(y - m_{2}x) = 0\\), that is\n\n\\(bm_{1}m_{2}x^{2} - b(m_{1} + m_{2})xy + by^{2} = 0\\)\n\nComparing this with \\(ax^{2} + 2hxy + by^{2} = 0\\):\n\n\\(m_{1} + m_{2} = -\\dfrac{2h}{b} = \\dfrac{2\\tan\\theta}{\\sin^{2}\\theta}\\) and \\(m_{1}m_{2} = \\dfrac{a}{b} = \\dfrac{\\tan^{2}\\theta + \\cos^{2}\\theta}{\\sin^{2}\\theta}\\)\n\nNow\n\n\\((m_{1} - m_{2})^{2} = (m_{1} + m_{2})^{2} - 4m_{1}m_{2}\\)\n\n\\(= \\dfrac{4\\tan^{2}\\theta}{\\sin^{4}\\theta} - \\dfrac{4(\\tan^{2}\\theta + \\cos^{2}\\theta)}{\\sin^{2}\\theta}\\)\n\n\\(= \\dfrac{4}{\\sin^{4}\\theta}\\left[\\tan^{2}\\theta - \\sin^{2}\\theta(\\tan^{2}\\theta + \\cos^{2}\\theta)\\right]\\)\n\n\\(= \\dfrac{4}{\\sin^{4}\\theta}\\left[\\tan^{2}\\theta(1 - \\sin^{2}\\theta) - \\sin^{2}\\theta\\cos^{2}\\theta\\right]\\)\n\n\\(= \\dfrac{4}{\\sin^{4}\\theta}\\left[\\tan^{2}\\theta\\cos^{2}\\theta - \\sin^{2}\\theta\\cos^{2}\\theta\\right]\\)\n\nSince \\(\\tan^{2}\\theta\\cos^{2}\\theta = \\dfrac{\\sin^{2}\\theta}{\\cos^{2}\\theta} \\times \\cos^{2}\\theta = \\sin^{2}\\theta\\),\n\n\\(= \\dfrac{4}{\\sin^{4}\\theta}\\left[\\sin^{2}\\theta - \\sin^{2}\\theta\\cos^{2}\\theta\\right]\\)\n\n\\(= \\dfrac{4\\sin^{2}\\theta(1 - \\cos^{2}\\theta)}{\\sin^{4}\\theta} = \\dfrac{4\\sin^{2}\\theta \\times \\sin^{2}\\theta}{\\sin^{4}\\theta} = 4\\)\n\n\\(\\therefore |m_{1} - m_{2}| = \\sqrt{4} = 2\\)\n\nThe difference between the slopes of the two lines is \\(2\\), whatever the value of \\(\\theta\\).\n\nCheck with a particular angle: at \\(\\theta = \\dfrac{\\pi}{4}\\) the equation becomes \\(\\left(1 + \\dfrac{1}{2}\\right)x^{2} - 2xy + \\dfrac{1}{2}y^{2} = 0\\), that is \\(3x^{2} - 4xy + y^{2} = 0\\), that is \\((3x - y)(x - y) = 0\\). Its lines \\(y = 3x\\) and \\(y = x\\) have slopes \\(3\\) and \\(1\\), whose difference is \\(2\\), the same value.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 18",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the vector equation of the line passing through the point \\((\\hat{i} + 2\\hat{j} + 3\\hat{k})\\) and perpendicular to the vectors \\(\\hat{i} + \\hat{j} + \\hat{k}\\) and \\(2\\hat{i} - \\hat{j} + \\hat{k}\\).",
+    "solution": "Let \\(\\bar{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) be the position vector of the given point, and let\n\n\\(\\bar{b}_{1} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\bar{b}_{2} = 2\\hat{i} - \\hat{j} + \\hat{k}\\)\n\nThe required line is perpendicular to both \\(\\bar{b}_{1}\\) and \\(\\bar{b}_{2}\\). The cross product of two non-parallel vectors is perpendicular to each of them, so \\(\\bar{b}_{1} \\times \\bar{b}_{2}\\) may be taken as the direction vector \\(\\bar{b}\\) of the line.\n\n\\(\\bar{b} = \\bar{b}_{1} \\times \\bar{b}_{2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ 2 & -1 & 1 \\end{vmatrix}\\)\n\n\\(= \\hat{i}\\left[(1)(1) - (1)(-1)\\right] - \\hat{j}\\left[(1)(1) - (1)(2)\\right] + \\hat{k}\\left[(1)(-1) - (1)(2)\\right]\\)\n\n\\(= \\hat{i}(1 + 1) - \\hat{j}(1 - 2) + \\hat{k}(-1 - 2)\\)\n\n\\(= 2\\hat{i} + \\hat{j} - 3\\hat{k}\\)\n\nThe vector equation of the line passing through the point with position vector \\(\\bar{a}\\) and having direction vector \\(\\bar{b}\\) is\n\n\\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\), where \\(\\lambda\\) is a scalar.\n\n\\(\\therefore \\bar{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(2\\hat{i} + \\hat{j} - 3\\hat{k})\\)\n\nCheck: \\((2\\hat{i} + \\hat{j} - 3\\hat{k}) \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 2 + 1 - 3 = 0\\) and \\((2\\hat{i} + \\hat{j} - 3\\hat{k}) \\cdot (2\\hat{i} - \\hat{j} + \\hat{k}) = 4 - 1 - 3 = 0\\), so the direction vector found is perpendicular to both given vectors. Putting \\(\\lambda = 0\\) gives \\(\\bar{r} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), so the line does pass through the given point.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 19",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(\\bar{a}\\) and \\(\\bar{b}\\) be non-collinear vectors. If vector \\(\\bar{r}\\) is co-planar with \\(\\bar{a}\\) and \\(\\bar{b}\\) then prove that there exists unique scalars \\(t_{1}\\) and \\(t_{2}\\) such that \\(\\bar{r} = t_{1}\\bar{a} + t_{2}\\bar{b}\\). Hence find \\(t_{1}\\) and \\(t_{2}\\) for \\(\\bar{r} = \\hat{i} + \\hat{j}\\), \\(\\bar{a} = 2\\hat{i} - \\hat{j}\\), \\(\\bar{b} = \\hat{i} - 2\\hat{j}\\).",
+    "solution": "Take \\(O\\) as the origin of reference. Since \\(\\bar{r}\\) is coplanar with \\(\\bar{a}\\) and \\(\\bar{b}\\), the three vectors can be drawn from \\(O\\) in one plane: let \\(\\overline{OA} = \\bar{a}\\), \\(\\overline{OB} = \\bar{b}\\) and \\(\\overline{OR} = \\bar{r}\\).\n\n**Existence of \\(t_{1}\\) and \\(t_{2}\\).**\n\n\\(\\bar{a}\\) and \\(\\bar{b}\\) are non-collinear, so both are non-zero and the lines \\(OA\\) and \\(OB\\) are two distinct, non-parallel lines through \\(O\\).\n\nThrough \\(R\\) draw a line parallel to \\(OB\\), meeting the line \\(OA\\) in \\(P\\), and a line parallel to \\(OA\\), meeting the line \\(OB\\) in \\(Q\\). Each of these meetings takes place because \\(OA\\) and \\(OB\\) are not parallel.\n\nThen \\(OPRQ\\) is a parallelogram, so by the parallelogram law of addition\n\n\\(\\overline{OR} = \\overline{OP} + \\overline{OQ}\\)\n\n\\(\\overline{OP}\\) lies along the line \\(OA\\), so \\(\\overline{OP}\\) is collinear with \\(\\bar{a}\\) and \\(\\overline{OP} = t_{1}\\bar{a}\\) for some scalar \\(t_{1}\\). Similarly \\(\\overline{OQ}\\) lies along \\(OB\\), so \\(\\overline{OQ} = t_{2}\\bar{b}\\) for some scalar \\(t_{2}\\).\n\n\\(\\therefore \\bar{r} = t_{1}\\bar{a} + t_{2}\\bar{b}\\)\n\n**Uniqueness of \\(t_{1}\\) and \\(t_{2}\\).**\n\nSuppose \\(\\bar{r}\\) can also be written as \\(\\bar{r} = s_{1}\\bar{a} + s_{2}\\bar{b}\\). Subtracting the two expressions,\n\n\\((t_{1} - s_{1})\\bar{a} + (t_{2} - s_{2})\\bar{b} = \\bar{0}\\)\n\nIf \\(t_{1} \\neq s_{1}\\), then \\(\\bar{a} = -\\left(\\dfrac{t_{2} - s_{2}}{t_{1} - s_{1}}\\right)\\bar{b}\\), which makes \\(\\bar{a}\\) a scalar multiple of \\(\\bar{b}\\), so \\(\\bar{a}\\) and \\(\\bar{b}\\) would be collinear. That contradicts the hypothesis, so \\(t_{1} = s_{1}\\).\n\nThen \\((t_{2} - s_{2})\\bar{b} = \\bar{0}\\), and \\(\\bar{b} \\neq \\bar{0}\\), so \\(t_{2} = s_{2}\\).\n\nHence the scalars \\(t_{1}\\) and \\(t_{2}\\) are unique.\n\n**Finding \\(t_{1}\\) and \\(t_{2}\\) for the given vectors.**\n\nHere \\(\\bar{r} = \\hat{i} + \\hat{j}\\), \\(\\bar{a} = 2\\hat{i} - \\hat{j}\\) and \\(\\bar{b} = \\hat{i} - 2\\hat{j}\\).\n\n\\(\\bar{r} = t_{1}\\bar{a} + t_{2}\\bar{b}\\) gives\n\n\\(\\hat{i} + \\hat{j} = t_{1}(2\\hat{i} - \\hat{j}) + t_{2}(\\hat{i} - 2\\hat{j})\\)\n\n\\(\\hat{i} + \\hat{j} = (2t_{1} + t_{2})\\hat{i} + (-t_{1} - 2t_{2})\\hat{j}\\)\n\n\\(\\hat{i}\\) and \\(\\hat{j}\\) are non-collinear, so their coefficients on the two sides may be equated:\n\n\\(2t_{1} + t_{2} = 1\\) ... (1)\n\n\\(-t_{1} - 2t_{2} = 1\\) ... (2)\n\nFrom (1), \\(t_{2} = 1 - 2t_{1}\\). Substituting in (2):\n\n\\(-t_{1} - 2(1 - 2t_{1}) = 1\\)\n\n\\(-t_{1} - 2 + 4t_{1} = 1\\)\n\n\\(3t_{1} = 3\\), so \\(t_{1} = 1\\)\n\nThen \\(t_{2} = 1 - 2(1) = -1\\).\n\n\\(\\therefore t_{1} = 1\\) and \\(t_{2} = -1\\)\n\nCheck: \\(t_{1}\\bar{a} + t_{2}\\bar{b} = 1(2\\hat{i} - \\hat{j}) + (-1)(\\hat{i} - 2\\hat{j}) = 2\\hat{i} - \\hat{j} - \\hat{i} + 2\\hat{j} = \\hat{i} + \\hat{j}\\), which is \\(\\bar{r}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 20",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Equations of a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of the plane passing through the intersection of the planes \\(x + 2y + 3z + 4 = 0\\) and \\(4x + 3y + 2z + 1 = 0\\) and the origin.",
+    "solution": "The given planes are\n\n\\(U \\equiv x + 2y + 3z + 4 = 0\\) and \\(V \\equiv 4x + 3y + 2z + 1 = 0\\)\n\nAny point on the line of intersection of these planes makes both \\(U\\) and \\(V\\) zero, so it satisfies\n\n\\(U + kV = 0\\), that is \\((x + 2y + 3z + 4) + k(4x + 3y + 2z + 1) = 0\\) ... (1)\n\nfor every value of the constant \\(k\\). Equation (1) is of the first degree in \\(x\\), \\(y\\) and \\(z\\), so it is the equation of a plane through that line of intersection.\n\nThe required plane also passes through the origin, so \\((0, 0, 0)\\) must satisfy (1):\n\n\\((0 + 0 + 0 + 4) + k(0 + 0 + 0 + 1) = 0\\)\n\n\\(4 + k = 0\\)\n\n\\(k = -4\\)\n\nSubstituting \\(k = -4\\) in (1):\n\n\\((x + 2y + 3z + 4) - 4(4x + 3y + 2z + 1) = 0\\)\n\n\\(x + 2y + 3z + 4 - 16x - 12y - 8z - 4 = 0\\)\n\n\\(-15x - 10y - 5z = 0\\)\n\nDividing throughout by \\(-5\\):\n\n\\(\\therefore 3x + 2y + z = 0\\)\n\nCheck: putting \\(x = y = z = 0\\) gives \\(0 = 0\\), so the plane passes through the origin. The point \\((2, -3, 0)\\) lies on both given planes, since \\(2 + 2(-3) + 3(0) + 4 = 0\\) and \\(4(2) + 3(-3) + 2(0) + 1 = 0\\), so it lies on their line of intersection; and \\(3(2) + 2(-3) + 0 = 6 - 6 = 0\\), so the plane found contains that point as well.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 21",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) if \\(y = \\tan^{-1}\\left(\\sqrt{\\frac{3 - x}{3 + x}}\\right)\\)",
+    "solution": "\\(y = \\tan^{-1}\\left(\\sqrt{\\dfrac{3 - x}{3 + x}}\\right)\\)\n\nThe quantity under the square root is non-negative only when \\(-3 < x \\leq 3\\), so \\(x\\) is taken in that interval and the substitution\n\n\\(x = 3\\cos 2t\\), with \\(2t \\in [0, \\pi)\\), that is \\(t \\in \\left[0, \\dfrac{\\pi}{2}\\right)\\)\n\nis used. This range for \\(t\\) is chosen so that \\(\\tan t \\geq 0\\), which the positive square root requires.\n\nThen\n\n\\(\\dfrac{3 - x}{3 + x} = \\dfrac{3 - 3\\cos 2t}{3 + 3\\cos 2t} = \\dfrac{1 - \\cos 2t}{1 + \\cos 2t} = \\dfrac{2\\sin^{2}t}{2\\cos^{2}t} = \\tan^{2}t\\)\n\n\\(\\sqrt{\\dfrac{3 - x}{3 + x}} = \\tan t\\), taking the positive root, since \\(t \\in \\left[0, \\dfrac{\\pi}{2}\\right)\\)\n\nHence\n\n\\(y = \\tan^{-1}(\\tan t) = t\\), because \\(t\\) lies in \\(\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)\\), the principal range of \\(\\tan^{-1}\\).\n\nFrom \\(x = 3\\cos 2t\\), \\(\\cos 2t = \\dfrac{x}{3}\\), so \\(2t = \\cos^{-1}\\left(\\dfrac{x}{3}\\right)\\) and\n\n\\(y = t = \\dfrac{1}{2}\\cos^{-1}\\left(\\dfrac{x}{3}\\right)\\)\n\nDifferentiating both sides with respect to \\(x\\), using \\(\\dfrac{d}{dx}\\left[\\cos^{-1}u\\right] = \\dfrac{-1}{\\sqrt{1 - u^{2}}} \\times \\dfrac{du}{dx}\\) with \\(u = \\dfrac{x}{3}\\):\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2} \\times \\dfrac{-1}{\\sqrt{1 - \\dfrac{x^{2}}{9}}} \\times \\dfrac{1}{3}\\)\n\n\\(= \\dfrac{-1}{6} \\times \\dfrac{1}{\\dfrac{\\sqrt{9 - x^{2}}}{3}}\\)\n\n\\(= \\dfrac{-3}{6\\sqrt{9 - x^{2}}}\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{-1}{2\\sqrt{9 - x^{2}}}\\)\n\nCheck: at \\(x = 0\\) the substitution gives \\(y = \\dfrac{1}{2}\\cos^{-1}(0) = \\dfrac{\\pi}{4}\\), and the original expression gives \\(y = \\tan^{-1}\\left(\\sqrt{\\dfrac{3}{3}}\\right) = \\tan^{-1}(1) = \\dfrac{\\pi}{4}\\), the same value. The derivative there is \\(-\\dfrac{1}{6}\\), and it must be negative, since \\(\\dfrac{3 - x}{3 + x}\\) decreases as \\(x\\) increases while \\(\\tan^{-1}\\) is an increasing function, so \\(y\\) decreases.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 22",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "Find the approximate value of \\(f(x) = x^{3} + 5x^{2} - 2x + 3\\) at \\(x = 1.98\\).",
+    "solution": "Let \\(f(x) = x^{3} + 5x^{2} - 2x + 3\\).\n\nTake \\(a = 2\\) and \\(h = -0.02\\), so that \\(a + h = 1.98\\).\n\nFor a small \\(h\\), the approximation formula is\n\n\\(f(a + h) \\approx f(a) + h\\,f'(a)\\)\n\nNow\n\n\\(f(2) = (2)^{3} + 5(2)^{2} - 2(2) + 3 = 8 + 20 - 4 + 3 = 27\\)\n\n\\(f'(x) = 3x^{2} + 10x - 2\\)\n\n\\(f'(2) = 3(2)^{2} + 10(2) - 2 = 12 + 20 - 2 = 30\\)\n\nSubstituting in the formula:\n\n\\(f(1.98) \\approx f(2) + (-0.02)\\,f'(2)\\)\n\n\\(= 27 + (-0.02)(30)\\)\n\n\\(= 27 - 0.6\\)\n\n\\(\\therefore f(1.98) \\approx 26.4\\)\n\nCheck: \\(f'(2) = 30 > 0\\), so \\(f\\) is increasing near \\(x = 2\\), and since \\(1.98 < 2\\) the value \\(f(1.98)\\) must fall a little below \\(f(2) = 27\\). The answer \\(26.4\\) is consistent with that, and the drop of \\(0.6\\) is exactly the size \\(|h|\\,f'(2) = (0.02)(30)\\) predicts.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 23",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate : \\(\\int \\frac{\\sin(x + a)}{\\cos(x - b)} dx\\)",
+    "solution": "Let \\(I = \\displaystyle\\int \\dfrac{\\sin(x + a)}{\\cos(x - b)}\\,dx\\).\n\nThe angle in the numerator and the angle in the denominator differ by the constant \\(a + b\\), so write\n\n\\(x + a = (x - b) + (a + b)\\)\n\nThen, by \\(\\sin(A + B) = \\sin A\\cos B + \\cos A\\sin B\\) with \\(A = x - b\\) and \\(B = a + b\\),\n\n\\(\\sin(x + a) = \\sin(x - b)\\cos(a + b) + \\cos(x - b)\\sin(a + b)\\)\n\nSubstituting in \\(I\\):\n\n\\(I = \\displaystyle\\int \\dfrac{\\sin(x - b)\\cos(a + b) + \\cos(x - b)\\sin(a + b)}{\\cos(x - b)}\\,dx\\)\n\n\\(= \\cos(a + b)\\displaystyle\\int \\dfrac{\\sin(x - b)}{\\cos(x - b)}\\,dx + \\sin(a + b)\\displaystyle\\int 1\\,dx\\)\n\n\\(= \\cos(a + b)\\displaystyle\\int \\tan(x - b)\\,dx + \\sin(a + b)\\displaystyle\\int 1\\,dx\\)\n\nFor the first integral put \\(u = \\cos(x - b)\\), so that \\(du = -\\sin(x - b)\\,dx\\):\n\n\\(\\displaystyle\\int \\tan(x - b)\\,dx = \\displaystyle\\int \\dfrac{\\sin(x - b)}{\\cos(x - b)}\\,dx = -\\displaystyle\\int \\dfrac{du}{u} = -\\log|u| = -\\log|\\cos(x - b)| = \\log|\\sec(x - b)|\\)\n\nTherefore\n\n\\(I = \\cos(a + b)\\log|\\sec(x - b)| + x\\sin(a + b) + c\\)\n\n\\(\\therefore \\displaystyle\\int \\dfrac{\\sin(x + a)}{\\cos(x - b)}\\,dx = x\\sin(a + b) + \\cos(a + b)\\log|\\sec(x - b)| + c\\)\n\nCheck by differentiating the answer with respect to \\(x\\):\n\n\\(\\dfrac{d}{dx}\\left[x\\sin(a + b) + \\cos(a + b)\\log|\\sec(x - b)|\\right] = \\sin(a + b) + \\cos(a + b)\\tan(x - b)\\)\n\n\\(= \\dfrac{\\sin(a + b)\\cos(x - b) + \\cos(a + b)\\sin(x - b)}{\\cos(x - b)} = \\dfrac{\\sin\\left[(a + b) + (x - b)\\right]}{\\cos(x - b)} = \\dfrac{\\sin(x + a)}{\\cos(x - b)}\\)\n\nwhich is the integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 24",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\(dr + (2r\\cot\\theta + \\sin 2\\theta) d\\theta = 0\\)",
+    "solution": "The equation is\n\n\\(dr + (2r\\cot\\theta + \\sin 2\\theta)\\,d\\theta = 0\\)\n\nDividing throughout by \\(d\\theta\\):\n\n\\(\\dfrac{dr}{d\\theta} + 2r\\cot\\theta + \\sin 2\\theta = 0\\)\n\n\\(\\dfrac{dr}{d\\theta} + (2\\cot\\theta)\\,r = -\\sin 2\\theta\\)\n\nThis is a linear differential equation of the form \\(\\dfrac{dr}{d\\theta} + Pr = Q\\), in which \\(r\\) is the dependent variable and \\(\\theta\\) the independent variable, with\n\n\\(P = 2\\cot\\theta\\) and \\(Q = -\\sin 2\\theta\\)\n\nNow\n\n\\(\\displaystyle\\int P\\,d\\theta = \\displaystyle\\int 2\\cot\\theta\\,d\\theta = 2\\log|\\sin\\theta| = \\log(\\sin^{2}\\theta)\\)\n\n\\(\\text{I.F.} = e^{\\int P\\,d\\theta} = e^{\\log(\\sin^{2}\\theta)} = \\sin^{2}\\theta\\)\n\nThe general solution is \\(r \\times (\\text{I.F.}) = \\displaystyle\\int Q \\times (\\text{I.F.})\\,d\\theta + c\\):\n\n\\(r\\sin^{2}\\theta = \\displaystyle\\int (-\\sin 2\\theta)\\sin^{2}\\theta\\,d\\theta + c\\)\n\n\\(= \\displaystyle\\int (-2\\sin\\theta\\cos\\theta)\\sin^{2}\\theta\\,d\\theta + c\\)\n\n\\(= -2\\displaystyle\\int \\sin^{3}\\theta\\cos\\theta\\,d\\theta + c\\)\n\nPut \\(u = \\sin\\theta\\), so that \\(du = \\cos\\theta\\,d\\theta\\):\n\n\\(-2\\displaystyle\\int u^{3}\\,du = -2 \\times \\dfrac{u^{4}}{4} = -\\dfrac{u^{4}}{2} = -\\dfrac{\\sin^{4}\\theta}{2}\\)\n\nHence\n\n\\(r\\sin^{2}\\theta = -\\dfrac{\\sin^{4}\\theta}{2} + c\\)\n\nMultiplying throughout by \\(2\\) and writing \\(2c\\) as the arbitrary constant \\(c_{1}\\):\n\n\\(\\therefore 2r\\sin^{2}\\theta + \\sin^{4}\\theta = c_{1}\\)\n\nCheck: differentiating \\(2r\\sin^{2}\\theta + \\sin^{4}\\theta = c_{1}\\) with respect to \\(\\theta\\) gives\n\n\\(2\\sin^{2}\\theta\\dfrac{dr}{d\\theta} + 4r\\sin\\theta\\cos\\theta + 4\\sin^{3}\\theta\\cos\\theta = 0\\)\n\nDividing throughout by \\(2\\sin^{2}\\theta\\):\n\n\\(\\dfrac{dr}{d\\theta} + 2r\\dfrac{\\cos\\theta}{\\sin\\theta} + 2\\sin\\theta\\cos\\theta = 0\\), that is \\(\\dfrac{dr}{d\\theta} + 2r\\cot\\theta + \\sin 2\\theta = 0\\),\n\nwhich is the given differential equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 25",
+    "format": "subjective",
+    "chapter": "Binomial Distribution",
+    "subtopic": "The Binomial Distribution",
+    "difficulty": "EASY",
+    "stem": "Let \\(X \\sim B(10, 0.2)\\). Find\n(a) \\(P(X = 1)\\)\n(b) \\(P(X \\geq 1)\\)",
+    "solution": "\\(X \\sim B(10, 0.2)\\), so \\(n = 10\\), \\(p = 0.2\\) and \\(q = 1 - p = 0.8\\).\n\nThe probability mass function of a binomial variate is\n\n\\(P(X = x) = {}^{n}C_{x}\\,p^{x}q^{n - x}\\), for \\(x = 0, 1, 2, \\ldots, n\\)\n\nHere\n\n\\(P(X = x) = {}^{10}C_{x}\\,(0.2)^{x}(0.8)^{10 - x}\\), for \\(x = 0, 1, 2, \\ldots, 10\\)\n\n**(a)** \\(P(X = 1) = {}^{10}C_{1}\\,(0.2)^{1}(0.8)^{9}\\)\n\n\\(= 10 \\times 0.2 \\times (0.8)^{9}\\)\n\n\\(= 2 \\times (0.8)^{9}\\)\n\n\\(= 2 \\times 0.134217728\\)\n\n\\(\\therefore P(X = 1) = 0.268435456 \\approx 0.2684\\)\n\n**(b)** The events \\(X \\geq 1\\) and \\(X = 0\\) are complementary, so\n\n\\(P(X \\geq 1) = 1 - P(X = 0)\\)\n\n\\(= 1 - {}^{10}C_{0}\\,(0.2)^{0}(0.8)^{10}\\)\n\n\\(= 1 - 1 \\times 1 \\times (0.8)^{10}\\)\n\n\\(= 1 - 0.1073741824\\)\n\n\\(\\therefore P(X \\geq 1) = 0.8926258176 \\approx 0.8926\\)\n\nCheck: the event \\(X \\geq 1\\) contains the event \\(X = 1\\) together with \\(X = 2, 3, \\ldots, 10\\), so \\(P(X \\geq 1)\\) must be larger than \\(P(X = 1)\\), and \\(0.8926 > 0.2684\\). Both values lie between \\(0\\) and \\(1\\), as probabilities must, and \\(P(X = 0) + P(X \\geq 1) = 0.1074 + 0.8926 = 1\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 26",
+    "format": "subjective",
+    "chapter": "Probability Distributions",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "EASY",
+    "stem": "Find the expected value, variance and standard deviation of r.v. \\(X\\) whose p.m.f. is given as :\n\n| \\(X = x\\) | 1 | 2 | 3 |\n|---|---|---|---|\n| \\(P(X)\\) | \\(\\frac{1}{5}\\) | \\(\\frac{2}{5}\\) | \\(\\frac{2}{5}\\) |",
+    "solution": "The random variable \\(X\\) takes the values \\(1, 2, 3\\) with probabilities \\(\\dfrac{1}{5}, \\dfrac{2}{5}, \\dfrac{2}{5}\\).\n\nThe given function is a p.m.f., since each probability is non-negative and \\(\\displaystyle\\sum P(X = x) = \\dfrac{1}{5} + \\dfrac{2}{5} + \\dfrac{2}{5} = \\dfrac{5}{5} = 1\\).\n\nThe working is set out in a table.\n\n| \\(x\\) | \\(P(X = x)\\) | \\(x \\cdot P(X = x)\\) | \\(x^{2} \\cdot P(X = x)\\) |\n|---|---|---|---|\n| \\(1\\) | \\(\\frac{1}{5}\\) | \\(\\frac{1}{5}\\) | \\(\\frac{1}{5}\\) |\n| \\(2\\) | \\(\\frac{2}{5}\\) | \\(\\frac{4}{5}\\) | \\(\\frac{8}{5}\\) |\n| \\(3\\) | \\(\\frac{2}{5}\\) | \\(\\frac{6}{5}\\) | \\(\\frac{18}{5}\\) |\n| Total | \\(1\\) | \\(\\frac{11}{5}\\) | \\(\\frac{27}{5}\\) |\n\n**Expected value.**\n\n\\(E(X) = \\displaystyle\\sum x\\,P(X = x) = \\dfrac{11}{5} = 2.2\\)\n\n**Variance.**\n\n\\(E(X^{2}) = \\displaystyle\\sum x^{2}\\,P(X = x) = \\dfrac{27}{5} = 5.4\\)\n\n\\(\\text{Var}(X) = E(X^{2}) - \\left[E(X)\\right]^{2}\\)\n\n\\(= 5.4 - (2.2)^{2}\\)\n\n\\(= 5.4 - 4.84\\)\n\n\\(= 0.56\\)\n\n**Standard deviation.**\n\n\\(\\text{S.D.}(X) = \\sqrt{\\text{Var}(X)} = \\sqrt{0.56} = \\dfrac{\\sqrt{14}}{5}\\)\n\n\\(\\therefore E(X) = 2.2\\), \\(\\text{Var}(X) = 0.56\\) and \\(\\text{S.D.}(X) = \\dfrac{\\sqrt{14}}{5} \\approx 0.7483\\)\n\nCheck by the direct definition of variance:\n\n\\(\\text{Var}(X) = \\displaystyle\\sum (x - 2.2)^{2}P(X = x) = (1 - 2.2)^{2}\\left(\\dfrac{1}{5}\\right) + (2 - 2.2)^{2}\\left(\\dfrac{2}{5}\\right) + (3 - 2.2)^{2}\\left(\\dfrac{2}{5}\\right)\\)\n\n\\(= 1.44(0.2) + 0.04(0.4) + 0.64(0.4) = 0.288 + 0.016 + 0.256 = 0.56\\),\n\nthe same value. Also \\(E(X) = 2.2\\) lies between the smallest value \\(1\\) and the largest value \\(3\\) that \\(X\\) can take, as a mean must.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 27",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "stem": "Give an alternative arrangement for the following circuit, so that new circuit has minimum switches :",
+    "hasFigure": true,
+    "solution": "Let \\(p\\) be the statement \"the switch \\(S_{1}\\) is closed\" and \\(q\\) the statement \"the switch \\(S_{2}\\) is closed\". A switch marked \\(S_{1}'\\) is closed exactly when \\(S_{1}\\) is open, so \\(S_{1}'\\) stands for \\(\\sim p\\); similarly \\(S_{2}'\\) stands for \\(\\sim q\\).\n\nIn the given circuit the three branches are joined in parallel, and each branch carries two switches in series:\n\nbranch 1: \\(S_{1}\\) and \\(S_{2}'\\) in series, giving \\(p \\land \\sim q\\)\n\nbranch 2: \\(S_{1}'\\) and \\(S_{2}\\) in series, giving \\(\\sim p \\land q\\)\n\nbranch 3: \\(S_{1}'\\) and \\(S_{2}'\\) in series, giving \\(\\sim p \\land \\sim q\\)\n\nSwitches in series correspond to \\(\\land\\) and branches in parallel to \\(\\vee\\), so the lamp \\(L\\) glows exactly when the statement pattern\n\n\\(L \\equiv (p \\land \\sim q) \\vee (\\sim p \\land q) \\vee (\\sim p \\land \\sim q)\\)\n\nis true. The given circuit uses \\(6\\) switches.\n\nNow simplify \\(L\\) by the laws of logic:\n\n\\(L \\equiv (p \\land \\sim q) \\vee \\left[(\\sim p \\land q) \\vee (\\sim p \\land \\sim q)\\right]\\)   (Associative law)\n\n\\(\\equiv (p \\land \\sim q) \\vee \\left[\\sim p \\land (q \\vee \\sim q)\\right]\\)   (Distributive law)\n\n\\(\\equiv (p \\land \\sim q) \\vee (\\sim p \\land T)\\)   (Complement law, \\(q \\vee \\sim q \\equiv T\\))\n\n\\(\\equiv (p \\land \\sim q) \\vee \\sim p\\)   (Identity law)\n\n\\(\\equiv \\sim p \\vee (p \\land \\sim q)\\)   (Commutative law)\n\n\\(\\equiv (\\sim p \\vee p) \\land (\\sim p \\vee \\sim q)\\)   (Distributive law)\n\n\\(\\equiv T \\land (\\sim p \\vee \\sim q)\\)   (Complement law)\n\n\\(\\therefore L \\equiv \\sim p \\vee \\sim q\\)\n\nThe simplified pattern \\(\\sim p \\vee \\sim q\\) is a disjunction of two statements, so it is a circuit with two branches in parallel, one branch carrying the single switch \\(S_{1}'\\) and the other the single switch \\(S_{2}'\\). That parallel pair is joined in series with the lamp \\(L\\) and the battery.\n\nThe alternative arrangement therefore needs only \\(2\\) switches, \\(S_{1}'\\) and \\(S_{2}'\\) in parallel, in place of the \\(6\\) switches of the given circuit, and the lamp glows in exactly the same cases: whenever at least one of \\(S_{1}\\), \\(S_{2}\\) is open.\n\nCheck with the truth table of the given pattern against the simplified one:\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\land \\sim q\\) | \\(\\sim p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land \\sim q) \\vee (\\sim p \\land q) \\vee (\\sim p \\land \\sim q)\\) | \\(\\sim p \\vee \\sim q\\) |\n|---|---|---|---|---|---|---|---|---|\n| T | T | F | F | F | F | F | F | F |\n| T | F | F | T | T | F | F | T | T |\n| F | T | T | F | F | T | F | T | T |\n| F | F | T | T | F | F | T | T | T |\n\nThe last two columns are identical in all four rows, so the new circuit does the work of the old one.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 28",
+    "format": "subjective",
+    "chapter": "Matrices",
+    "subtopic": "Inverse by Adjoint Method",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{bmatrix}\\) then find \\(A^{-1}\\) by Adjoint method.",
+    "solution": "\\(A = \\begin{bmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{bmatrix}\\)\n\n**Step 1: the determinant.**\n\n\\(|A| = \\begin{vmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{vmatrix}\\)\n\nExpanding along the first row:\n\n\\(= 2\\begin{vmatrix} 2 & -1 \\\\ -1 & 2 \\end{vmatrix} - (-1)\\begin{vmatrix} -1 & -1 \\\\ 1 & 2 \\end{vmatrix} + 1\\begin{vmatrix} -1 & 2 \\\\ 1 & -1 \\end{vmatrix}\\)\n\n\\(= 2(4 - 1) + 1(-2 + 1) + 1(1 - 2)\\)\n\n\\(= 2(3) + 1(-1) + 1(-1) = 6 - 1 - 1 = 4\\)\n\n\\(|A| = 4 \\neq 0\\), so \\(A^{-1}\\) exists.\n\n**Step 2: the cofactors.** The cofactor of \\(a_{ij}\\) is \\(A_{ij} = (-1)^{i + j}M_{ij}\\), where \\(M_{ij}\\) is the minor of \\(a_{ij}\\).\n\n\\(A_{11} = +\\begin{vmatrix} 2 & -1 \\\\ -1 & 2 \\end{vmatrix} = 4 - 1 = 3\\)\n\n\\(A_{12} = -\\begin{vmatrix} -1 & -1 \\\\ 1 & 2 \\end{vmatrix} = -(-2 + 1) = 1\\)\n\n\\(A_{13} = +\\begin{vmatrix} -1 & 2 \\\\ 1 & -1 \\end{vmatrix} = 1 - 2 = -1\\)\n\n\\(A_{21} = -\\begin{vmatrix} -1 & 1 \\\\ -1 & 2 \\end{vmatrix} = -(-2 + 1) = 1\\)\n\n\\(A_{22} = +\\begin{vmatrix} 2 & 1 \\\\ 1 & 2 \\end{vmatrix} = 4 - 1 = 3\\)\n\n\\(A_{23} = -\\begin{vmatrix} 2 & -1 \\\\ 1 & -1 \\end{vmatrix} = -(-2 + 1) = 1\\)\n\n\\(A_{31} = +\\begin{vmatrix} -1 & 1 \\\\ 2 & -1 \\end{vmatrix} = 1 - 2 = -1\\)\n\n\\(A_{32} = -\\begin{vmatrix} 2 & 1 \\\\ -1 & -1 \\end{vmatrix} = -(-2 + 1) = 1\\)\n\n\\(A_{33} = +\\begin{vmatrix} 2 & -1 \\\\ -1 & 2 \\end{vmatrix} = 4 - 1 = 3\\)\n\n**Step 3: the adjoint**, which is the transpose of the matrix of cofactors.\n\n\\(\\text{adj }A = \\begin{bmatrix} A_{11} & A_{12} & A_{13} \\\\ A_{21} & A_{22} & A_{23} \\\\ A_{31} & A_{32} & A_{33} \\end{bmatrix}^{T} = \\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}^{T} = \\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\)\n\n**Step 4: the inverse.**\n\n\\(A^{-1} = \\dfrac{1}{|A|}\\,\\text{adj }A\\)\n\n\\(\\therefore A^{-1} = \\dfrac{1}{4}\\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix} = \\begin{bmatrix} \\frac{3}{4} & \\frac{1}{4} & -\\frac{1}{4} \\\\ \\frac{1}{4} & \\frac{3}{4} & \\frac{1}{4} \\\\ -\\frac{1}{4} & \\frac{1}{4} & \\frac{3}{4} \\end{bmatrix}\\)\n\nCheck by forming \\(A \\times A^{-1}\\):\n\n\\(A\\,(\\text{adj }A) = \\begin{bmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\)\n\nFirst row: \\(6 - 1 - 1 = 4\\), \\(2 - 3 + 1 = 0\\), \\(-2 - 1 + 3 = 0\\).\n\nSecond row: \\(-3 + 2 + 1 = 0\\), \\(-1 + 6 - 1 = 4\\), \\(1 + 2 - 3 = 0\\).\n\nThird row: \\(3 - 1 - 2 = 0\\), \\(1 - 3 + 2 = 0\\), \\(-1 - 1 + 6 = 4\\).\n\n\\(A\\,(\\text{adj }A) = \\begin{bmatrix} 4 & 0 & 0 \\\\ 0 & 4 & 0 \\\\ 0 & 0 & 4 \\end{bmatrix} = 4I = |A|\\,I\\), so \\(A \\times \\dfrac{1}{4}(\\text{adj }A) = I\\), confirming the inverse found.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 29",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "In \\(\\Delta ABC\\), \\(D\\) and \\(E\\) are points on \\(BC\\) and \\(AC\\) respectively such that \\(BD = 2DC\\) and \\(AE = 3EC\\). Let \\(P\\) be the point of intersection of \\(AD\\) and \\(BE\\). Find ratio \\(\\frac{BP}{PE}\\) using the vector method.",
+    "solution": "Take \\(A\\) as the origin of reference, and let \\(\\bar{b} = \\overline{AB}\\) and \\(\\bar{c} = \\overline{AC}\\). \\(A\\), \\(B\\), \\(C\\) are the vertices of a triangle, so \\(\\bar{b}\\) and \\(\\bar{c}\\) are non-collinear.\n\n**Position vector of \\(D\\).** \\(D\\) is on \\(BC\\) with \\(BD = 2DC\\), so \\(D\\) divides \\(BC\\) internally in the ratio \\(2 : 1\\). By the section formula,\n\n\\(\\bar{d} = \\dfrac{2\\bar{c} + 1 \\cdot \\bar{b}}{2 + 1} = \\dfrac{\\bar{b} + 2\\bar{c}}{3}\\)\n\n**Position vector of \\(E\\).** \\(E\\) is on \\(AC\\) with \\(AE = 3EC\\), so \\(E\\) divides \\(AC\\) internally in the ratio \\(3 : 1\\). With \\(\\bar{a} = \\bar{0}\\),\n\n\\(\\bar{e} = \\dfrac{3\\bar{c} + 1 \\cdot \\bar{0}}{3 + 1} = \\dfrac{3\\bar{c}}{4}\\)\n\n**Position vector of \\(P\\), taken two ways.**\n\n\\(P\\) lies on \\(AD\\), so \\(\\overline{AP}\\) is collinear with \\(\\overline{AD}\\) and\n\n\\(\\bar{p} = t\\,\\bar{d} = \\dfrac{t}{3}\\bar{b} + \\dfrac{2t}{3}\\bar{c}\\) ... (1)\n\nfor some scalar \\(t\\).\n\n\\(P\\) also lies on \\(BE\\). Writing \\(\\bar{p} = \\bar{b} + s(\\bar{e} - \\bar{b})\\) for a scalar \\(s\\),\n\n\\(\\bar{p} = (1 - s)\\bar{b} + s\\bar{e} = (1 - s)\\bar{b} + \\dfrac{3s}{4}\\bar{c}\\) ... (2)\n\nWith this parameter, \\(\\overline{BP} = s\\,\\overline{BE}\\) and \\(\\overline{PE} = (1 - s)\\overline{BE}\\), so \\(\\dfrac{BP}{PE} = \\dfrac{s}{1 - s}\\).\n\n\\(\\bar{b}\\) and \\(\\bar{c}\\) are non-collinear, so the coefficients in (1) and (2) may be equated:\n\n\\(\\dfrac{t}{3} = 1 - s\\) ... (3)\n\n\\(\\dfrac{2t}{3} = \\dfrac{3s}{4}\\) ... (4)\n\nFrom (4), \\(8t = 9s\\), so \\(s = \\dfrac{8t}{9}\\). Substituting in (3):\n\n\\(\\dfrac{t}{3} = 1 - \\dfrac{8t}{9}\\)\n\nMultiplying throughout by \\(9\\):\n\n\\(3t = 9 - 8t\\)\n\n\\(11t = 9\\), so \\(t = \\dfrac{9}{11}\\)\n\nThen \\(s = \\dfrac{8}{9} \\times \\dfrac{9}{11} = \\dfrac{8}{11}\\), and \\(1 - s = \\dfrac{3}{11}\\).\n\n\\(\\dfrac{BP}{PE} = \\dfrac{s}{1 - s} = \\dfrac{\\frac{8}{11}}{\\frac{3}{11}}\\)\n\n\\(\\therefore \\dfrac{BP}{PE} = \\dfrac{8}{3}\\), that is \\(BP : PE = 8 : 3\\)\n\nCheck: from (1), \\(\\bar{p} = \\dfrac{9}{11} \\times \\dfrac{\\bar{b} + 2\\bar{c}}{3} = \\dfrac{3}{11}\\bar{b} + \\dfrac{6}{11}\\bar{c}\\); from (2), \\(\\bar{p} = \\left(1 - \\dfrac{8}{11}\\right)\\bar{b} + \\dfrac{3}{4}\\left(\\dfrac{8}{11}\\right)\\bar{c} = \\dfrac{3}{11}\\bar{b} + \\dfrac{6}{11}\\bar{c}\\). The two routes give the same point. Its coefficients are positive and add to \\(\\dfrac{9}{11} < 1\\), so \\(P\\) lies inside the triangle, as the figure requires.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 30",
+    "format": "subjective",
+    "chapter": "Linear Programming",
+    "subtopic": "Graphical Solution of a Linear Programming Problem",
+    "difficulty": "MODERATE",
+    "stem": "A firm manufactures two products \\(A\\) and \\(B\\) on which profit earned per unit are ₹3 and ₹4 respectively. Each product is processed on two machines \\(M_{1}\\) and \\(M_{2}\\). The product A requires one minute of processing time on \\(M_{1}\\) and two minutes on \\(M_{2}\\), while product \\(B\\) requires one minute on \\(M_{1}\\) and one minute on \\(M_{2}\\).\n\nMachine \\(M_{1}\\) is available for use not more than 450 minutes, while \\(M_{2}\\) is available for 600 minutes during any working day.\n\nFind the number of units of products \\(A\\) and \\(B\\) to be manufactured to get maximum profit.",
+    "solution": "**Formulation.**\n\nLet \\(x\\) units of product \\(A\\) and \\(y\\) units of product \\(B\\) be manufactured in a working day.\n\nThe profit is Rs. \\(3\\) per unit of \\(A\\) and Rs. \\(4\\) per unit of \\(B\\), so the total profit, in rupees, is\n\n\\(Z = 3x + 4y\\), which is to be maximised.\n\nMachine \\(M_{1}\\): each unit of \\(A\\) needs \\(1\\) minute and each unit of \\(B\\) needs \\(1\\) minute, and \\(M_{1}\\) is available for not more than \\(450\\) minutes.\n\n\\(x + y \\leq 450\\)\n\nMachine \\(M_{2}\\): each unit of \\(A\\) needs \\(2\\) minutes and each unit of \\(B\\) needs \\(1\\) minute, and \\(M_{2}\\) is available for \\(600\\) minutes.\n\n\\(2x + y \\leq 600\\)\n\nThe number of units made cannot be negative, so\n\n\\(x \\geq 0\\), \\(y \\geq 0\\)\n\nThe problem is therefore: maximise \\(Z = 3x + 4y\\) subject to \\(x + y \\leq 450\\), \\(2x + y \\leq 600\\), \\(x \\geq 0\\), \\(y \\geq 0\\).\n\n**Graphical solution.**\n\nDraw the line \\(x + y = 450\\). It meets the axes at \\((450, 0)\\) and \\((0, 450)\\). The origin gives \\(0 + 0 = 0 \\leq 450\\), so the region \\(x + y \\leq 450\\) is the origin side of this line.\n\nDraw the line \\(2x + y = 600\\). It meets the axes at \\((300, 0)\\) and \\((0, 600)\\). The origin gives \\(0 \\leq 600\\), so the region \\(2x + y \\leq 600\\) is the origin side of this line too.\n\nWith \\(x \\geq 0\\) and \\(y \\geq 0\\), the feasible region is the part of the first quadrant common to both half-planes.\n\nTo find where the two lines cut each other, subtract \\(x + y = 450\\) from \\(2x + y = 600\\):\n\n\\(x = 150\\), and then \\(y = 450 - 150 = 300\\)\n\nSo the lines meet at \\((150, 300)\\).\n\nOn the \\(x\\)-axis the binding restriction is \\(x \\leq 300\\) (from \\(M_{2}\\)), and on the \\(y\\)-axis it is \\(y \\leq 450\\) (from \\(M_{1}\\)). The corner points of the feasible region are therefore\n\n\\(O(0, 0)\\), \\(P(300, 0)\\), \\(Q(150, 300)\\) and \\(R(0, 450)\\)\n\nThe feasible region is a closed quadrilateral \\(OPQR\\), so it is **bounded**, and the maximum of \\(Z\\) is attained at one of its corner points.\n\n| Corner point \\((x, y)\\) | \\(Z = 3x + 4y\\) |\n|---|---|\n| \\(O(0, 0)\\) | \\(3(0) + 4(0) = 0\\) |\n| \\(P(300, 0)\\) | \\(3(300) + 4(0) = 900\\) |\n| \\(Q(150, 300)\\) | \\(3(150) + 4(300) = 450 + 1200 = 1650\\) |\n| \\(R(0, 450)\\) | \\(3(0) + 4(450) = 1800\\) |\n\nThe largest of these values is \\(1800\\), at \\(R(0, 450)\\).\n\n\\(\\therefore\\) the profit is maximum, Rs. \\(1800\\), when \\(0\\) units of product \\(A\\) and \\(450\\) units of product \\(B\\) are manufactured.\n\nCheck: at \\((0, 450)\\) machine \\(M_{1}\\) is used for \\(0 + 450 = 450\\) minutes, exactly its limit, and \\(M_{2}\\) for \\(2(0) + 450 = 450\\) minutes, within its \\(600\\), so the point is feasible. A unit of \\(B\\) uses the same one minute of \\(M_{1}\\) as a unit of \\(A\\) does, earns Rs. \\(4\\) against Rs. \\(3\\), and uses less of \\(M_{2}\\); so giving the whole of \\(M_{1}\\)'s \\(450\\) minutes to \\(B\\) is consistent with \\(Z = 1800\\) being the maximum.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 31",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "stem": "If \\(y = f(u)\\) is a differentiable function of \\(u\\) and \\(u = g(x)\\) is differentiable function of \\(x\\) such that the composite function \\(y = f[g(x)]\\) is a differentiable function of \\(x\\) then prove that :\n\n\\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\)\n\nHence find \\(\\frac{d}{dx}\\left(\\frac{1}{\\sqrt{\\sin x}}\\right)\\).",
+    "solution": "**Proof of the chain rule.**\n\n\\(y = f(u)\\) is a differentiable function of \\(u\\), and \\(u = g(x)\\) is a differentiable function of \\(x\\), and the composite \\(y = f[g(x)]\\) is a differentiable function of \\(x\\).\n\nLet \\(\\delta x\\) be a small increment in \\(x\\), \\(\\delta u\\) the corresponding increment in \\(u\\), and \\(\\delta y\\) the corresponding increment in \\(y\\).\n\nSince \\(u = g(x)\\) is differentiable, it is continuous, so\n\nas \\(\\delta x \\rightarrow 0\\), \\(\\delta u \\rightarrow 0\\)\n\nTake \\(\\delta x \\neq 0\\) and \\(\\delta u \\neq 0\\). Then, multiplying and dividing by \\(\\delta u\\),\n\n\\(\\dfrac{\\delta y}{\\delta x} = \\dfrac{\\delta y}{\\delta u} \\times \\dfrac{\\delta u}{\\delta x}\\)\n\nTaking the limit as \\(\\delta x \\rightarrow 0\\) on both sides:\n\n\\(\\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta y}{\\delta x} = \\displaystyle\\lim_{\\delta x \\rightarrow 0}\\left(\\dfrac{\\delta y}{\\delta u} \\times \\dfrac{\\delta u}{\\delta x}\\right) = \\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta y}{\\delta u} \\times \\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta u}{\\delta x}\\)\n\nBecause \\(\\delta u \\rightarrow 0\\) as \\(\\delta x \\rightarrow 0\\),\n\n\\(\\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta y}{\\delta u} = \\displaystyle\\lim_{\\delta u \\rightarrow 0}\\dfrac{\\delta y}{\\delta u} = \\dfrac{dy}{du}\\)\n\nand\n\n\\(\\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta u}{\\delta x} = \\dfrac{du}{dx}\\)\n\nBoth limits on the right exist, since \\(y\\) is differentiable in \\(u\\) and \\(u\\) is differentiable in \\(x\\). Hence the limit on the left exists and\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{dy}{du} \\times \\dfrac{du}{dx}\\)\n\n**Applying it to \\(\\dfrac{d}{dx}\\left(\\dfrac{1}{\\sqrt{\\sin x}}\\right)\\).**\n\nLet \\(y = \\dfrac{1}{\\sqrt{\\sin x}} = (\\sin x)^{-\\frac{1}{2}}\\).\n\nPut \\(u = \\sin x\\), so that \\(y = u^{-\\frac{1}{2}}\\).\n\n\\(\\dfrac{dy}{du} = -\\dfrac{1}{2}u^{-\\frac{3}{2}}\\) and \\(\\dfrac{du}{dx} = \\cos x\\)\n\nBy the chain rule just proved,\n\n\\(\\dfrac{dy}{dx} = \\dfrac{dy}{du} \\times \\dfrac{du}{dx} = -\\dfrac{1}{2}u^{-\\frac{3}{2}} \\times \\cos x\\)\n\nReplacing \\(u\\) by \\(\\sin x\\):\n\n\\(\\therefore \\dfrac{d}{dx}\\left(\\dfrac{1}{\\sqrt{\\sin x}}\\right) = \\dfrac{-\\cos x}{2(\\sin x)^{\\frac{3}{2}}}\\)\n\nCheck: for \\(x\\) in \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\), \\(\\cos x > 0\\) and \\(\\sin x > 0\\), so the derivative is negative, and indeed \\(\\dfrac{1}{\\sqrt{\\sin x}}\\) decreases there as \\(\\sin x\\) increases. At \\(x = \\dfrac{\\pi}{2}\\) the derivative is \\(0\\), which agrees with \\(\\dfrac{1}{\\sqrt{\\sin x}}\\) taking its least value \\(1\\) at that point.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 32",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Parts",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\int x^{2} \\sin 3x \\, dx\\).",
+    "solution": "Let \\(I = \\displaystyle\\int x^{2}\\sin 3x\\,dx\\).\n\nIntegrate by parts, using \\(\\displaystyle\\int u\\,v\\,dx = u\\displaystyle\\int v\\,dx - \\displaystyle\\int \\left[\\dfrac{du}{dx}\\displaystyle\\int v\\,dx\\right]dx\\), with \\(u = x^{2}\\) (the algebraic factor) and \\(v = \\sin 3x\\).\n\n\\(\\displaystyle\\int \\sin 3x\\,dx = -\\dfrac{\\cos 3x}{3}\\)\n\n\\(I = x^{2}\\left(-\\dfrac{\\cos 3x}{3}\\right) - \\displaystyle\\int 2x\\left(-\\dfrac{\\cos 3x}{3}\\right)dx\\)\n\n\\(= -\\dfrac{x^{2}\\cos 3x}{3} + \\dfrac{2}{3}\\displaystyle\\int x\\cos 3x\\,dx\\)\n\nIntegrate \\(\\displaystyle\\int x\\cos 3x\\,dx\\) by parts again, with \\(u = x\\) and \\(v = \\cos 3x\\), where \\(\\displaystyle\\int \\cos 3x\\,dx = \\dfrac{\\sin 3x}{3}\\):\n\n\\(\\displaystyle\\int x\\cos 3x\\,dx = x\\left(\\dfrac{\\sin 3x}{3}\\right) - \\displaystyle\\int 1\\left(\\dfrac{\\sin 3x}{3}\\right)dx\\)\n\n\\(= \\dfrac{x\\sin 3x}{3} - \\dfrac{1}{3}\\left(-\\dfrac{\\cos 3x}{3}\\right)\\)\n\n\\(= \\dfrac{x\\sin 3x}{3} + \\dfrac{\\cos 3x}{9}\\)\n\nSubstituting back:\n\n\\(I = -\\dfrac{x^{2}\\cos 3x}{3} + \\dfrac{2}{3}\\left[\\dfrac{x\\sin 3x}{3} + \\dfrac{\\cos 3x}{9}\\right] + c\\)\n\n\\(\\therefore \\displaystyle\\int x^{2}\\sin 3x\\,dx = -\\dfrac{x^{2}\\cos 3x}{3} + \\dfrac{2x\\sin 3x}{9} + \\dfrac{2\\cos 3x}{27} + c\\)\n\nCheck by differentiating the answer with respect to \\(x\\):\n\n\\(\\dfrac{d}{dx}\\left[-\\dfrac{x^{2}\\cos 3x}{3}\\right] = -\\dfrac{1}{3}\\left[2x\\cos 3x - 3x^{2}\\sin 3x\\right] = -\\dfrac{2x\\cos 3x}{3} + x^{2}\\sin 3x\\)\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{2x\\sin 3x}{9}\\right] = \\dfrac{2\\sin 3x}{9} + \\dfrac{6x\\cos 3x}{9} = \\dfrac{2\\sin 3x}{9} + \\dfrac{2x\\cos 3x}{3}\\)\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{2\\cos 3x}{27}\\right] = -\\dfrac{6\\sin 3x}{27} = -\\dfrac{2\\sin 3x}{9}\\)\n\nAdding, the two \\(\\cos 3x\\) terms cancel and the two \\(\\sin 3x\\) terms cancel, leaving \\(x^{2}\\sin 3x\\), the integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 33",
+    "format": "subjective",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Prove that :\n\n\\(\\int_{-a}^{a} f(x) dx = 2\\int_{0}^{a} f(x) \\, dx\\) if \\(f\\) is an even function\n\n\\(= 0\\) , if \\(f\\) is an odd function\n\nHence find the value of \\(\\int_{-1}^{1} \\tan^{-1} x \\, dx\\).",
+    "solution": "**To prove the property.**\n\nLet \\(I = \\displaystyle\\int_{-a}^{a} f(x)\\,dx\\).\n\nSplit the interval at \\(0\\):\n\n\\(I = \\displaystyle\\int_{-a}^{0} f(x)\\,dx + \\displaystyle\\int_{0}^{a} f(x)\\,dx\\) ... (1)\n\nIn the first integral put \\(x = -t\\), so that \\(dx = -dt\\).\n\nWhen \\(x = -a\\), \\(t = a\\); when \\(x = 0\\), \\(t = 0\\).\n\n\\(\\displaystyle\\int_{-a}^{0} f(x)\\,dx = \\displaystyle\\int_{a}^{0} f(-t)(-dt) = \\displaystyle\\int_{0}^{a} f(-t)\\,dt = \\displaystyle\\int_{0}^{a} f(-x)\\,dx\\)\n\n(the variable of integration in a definite integral may be renamed).\n\nSubstituting in (1):\n\n\\(I = \\displaystyle\\int_{0}^{a} f(-x)\\,dx + \\displaystyle\\int_{0}^{a} f(x)\\,dx = \\displaystyle\\int_{0}^{a}\\left[f(-x) + f(x)\\right]dx\\) ... (2)\n\n**Case 1: \\(f\\) is an even function**, so \\(f(-x) = f(x)\\).\n\nFrom (2), \\(I = \\displaystyle\\int_{0}^{a}\\left[f(x) + f(x)\\right]dx = \\displaystyle\\int_{0}^{a} 2f(x)\\,dx\\)\n\n\\(\\therefore \\displaystyle\\int_{-a}^{a} f(x)\\,dx = 2\\displaystyle\\int_{0}^{a} f(x)\\,dx\\)\n\n**Case 2: \\(f\\) is an odd function**, so \\(f(-x) = -f(x)\\).\n\nFrom (2), \\(I = \\displaystyle\\int_{0}^{a}\\left[-f(x) + f(x)\\right]dx = \\displaystyle\\int_{0}^{a} 0\\,dx = 0\\)\n\n\\(\\therefore \\displaystyle\\int_{-a}^{a} f(x)\\,dx = 0\\)\n\n**To find \\(\\displaystyle\\int_{-1}^{1}\\tan^{-1}x\\,dx\\).**\n\nLet \\(f(x) = \\tan^{-1}x\\), with \\(a = 1\\).\n\n\\(f(-x) = \\tan^{-1}(-x) = -\\tan^{-1}x = -f(x)\\)\n\nso \\(f\\) is an odd function on \\([-1, 1]\\). By Case 2,\n\n\\(\\therefore \\displaystyle\\int_{-1}^{1}\\tan^{-1}x\\,dx = 0\\)\n\nCheck by evaluating the integral directly. Integrating by parts with \\(u = \\tan^{-1}x\\) and \\(v = 1\\),\n\n\\(\\displaystyle\\int \\tan^{-1}x\\,dx = x\\tan^{-1}x - \\displaystyle\\int \\dfrac{x}{1 + x^{2}}dx = x\\tan^{-1}x - \\dfrac{1}{2}\\log(1 + x^{2})\\)\n\nAt \\(x = 1\\) this is \\(\\dfrac{\\pi}{4} - \\dfrac{1}{2}\\log 2\\); at \\(x = -1\\) it is \\((-1)\\left(-\\dfrac{\\pi}{4}\\right) - \\dfrac{1}{2}\\log 2 = \\dfrac{\\pi}{4} - \\dfrac{1}{2}\\log 2\\).\n\nThe difference of the two values is \\(0\\), the same answer.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 34",
+    "format": "subjective",
+    "chapter": "Application of Definite Integration",
+    "subtopic": "Area Under a Curve",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of the ellipse :\n\n\\(\\frac{x^{2}}{a^{2}} + \\frac{y^{2}}{b^{2}} = 1\\)\n\nHence write area of \\(\\frac{x^{2}}{25} + \\frac{y^{2}}{16} = 1\\)",
+    "solution": "**Area of the ellipse \\(\\dfrac{x^{2}}{a^{2}} + \\dfrac{y^{2}}{b^{2}} = 1\\).**\n\nReplacing \\(x\\) by \\(-x\\) leaves the equation unchanged, and so does replacing \\(y\\) by \\(-y\\), so the ellipse is symmetric about both co-ordinate axes. Its four quarters have equal areas, hence\n\n\\(\\text{Area of the ellipse} = 4 \\times (\\text{area of the part in the first quadrant})\\)\n\nIn the first quadrant \\(x\\) runs from \\(0\\) to \\(a\\), and from the equation of the ellipse\n\n\\(\\dfrac{y^{2}}{b^{2}} = 1 - \\dfrac{x^{2}}{a^{2}} = \\dfrac{a^{2} - x^{2}}{a^{2}}\\), so \\(y = \\dfrac{b}{a}\\sqrt{a^{2} - x^{2}}\\) (the positive root, as \\(y \\geq 0\\) there).\n\n\\(\\text{Area} = 4\\displaystyle\\int_{0}^{a} y\\,dx = 4\\displaystyle\\int_{0}^{a}\\dfrac{b}{a}\\sqrt{a^{2} - x^{2}}\\,dx\\)\n\n\\(= \\dfrac{4b}{a}\\displaystyle\\int_{0}^{a}\\sqrt{a^{2} - x^{2}}\\,dx\\)\n\nUsing \\(\\displaystyle\\int \\sqrt{a^{2} - x^{2}}\\,dx = \\dfrac{x}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\),\n\n\\(= \\dfrac{4b}{a}\\left[\\dfrac{x}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\right]_{0}^{a}\\)\n\n\\(= \\dfrac{4b}{a}\\left\\{\\left[\\dfrac{a}{2}\\sqrt{a^{2} - a^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}(1)\\right] - \\left[0 + \\dfrac{a^{2}}{2}\\sin^{-1}(0)\\right]\\right\\}\\)\n\n\\(= \\dfrac{4b}{a}\\left[0 + \\dfrac{a^{2}}{2} \\times \\dfrac{\\pi}{2} - 0\\right]\\)\n\n\\(= \\dfrac{4b}{a} \\times \\dfrac{\\pi a^{2}}{4}\\)\n\n\\(\\therefore \\text{Area of the ellipse} = \\pi ab\\) square units\n\n**Area of \\(\\dfrac{x^{2}}{25} + \\dfrac{y^{2}}{16} = 1\\).**\n\nHere \\(a^{2} = 25\\) and \\(b^{2} = 16\\), so \\(a = 5\\) and \\(b = 4\\).\n\nArea \\(= \\pi ab = \\pi(5)(4) = 20\\pi\\) square units \\(\\approx 62.83\\) square units\n\nCheck: this ellipse lies inside the rectangle \\(-5 \\leq x \\leq 5\\), \\(-4 \\leq y \\leq 4\\), whose area is \\(10 \\times 8 = 80\\), and it contains the rhombus with vertices \\((\\pm 5, 0)\\) and \\((0, \\pm 4)\\), whose area is \\(\\dfrac{1}{2} \\times 10 \\times 8 = 40\\). The value \\(20\\pi \\approx 62.83\\) lies between \\(40\\) and \\(80\\), as it must.",
+    "reviewFlag": true
+  }
+]

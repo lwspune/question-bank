@@ -142,14 +142,39 @@ claiming the same ref is an ERROR, not a merge. Every solution goes through
 
 ## What went in
 
-**February 2026 (J-165) — 44/44 PUBLIC, 2026-09-19.** 8 MCQ + 36 free-response
-across all 15 chapters. Both key derivations agreed 8/8 at high confidence, 0
-disagreements. `audit:text` clean, `audit:omml` clean (0 failing math zones).
-Every answer is DERIVED and REVIEW-flagged in the data JSON.
+**Four sittings, 175 questions PUBLIC, 2026-09-19.** 32 MCQ + 143 free-response,
+all 15 Maths chapters on every paper. Maths PYQ 317 -> 492.
 
-Rollback: `delete from questions where source_file='MH_HSC_12_Maths_PYQ__2026_February.pdf';`
+| sitting | rows | of printed | note |
+|---|---|---|---|
+| February 2026 (J-165) | 44 | 44 | |
+| June 2026 (J-276) | 44 | 44 | |
+| July 2024 (J-174) | **43** | 44 | Q.12 absorbed, see below |
+| July 2025 (J-384) | 44 | 44 | |
 
-### The absorption that did not happen, and why it is worth knowing
+**Every key double-derived, 32 of 32 agreed, 0 disagreements**, all at high
+confidence. Both passes are committed per sitting under `data/keys/`.
+`audit:text` and `audit:omml` clean on all four. Every answer is DERIVED and
+REVIEW-flagged in the data JSON.
+
+Rollback, per sitting:
+`delete from questions where source_file='MH_HSC_12_Maths_PYQ__<YEAR>_<Month>.pdf';`
+
+### Absorption: recorded, not tolerated
+
+July-2024 `Q. 12` did not insert. The board had set a **Balbharati textbook
+exercise verbatim** (`Ex 4.2 I (8)`, Definite Integration), so the exam-scoped
+`content_hash` folded the exam question into the practice row already there.
+
+That is ordinary, and it is why `commit.ts` NAMES what absorbed each row instead
+of printing a count: the first run of this reported "an earlier sitting's
+provenance" and was wrong: the twin had no year at all.
+
+The shortfall is carried in the manifest as `absorbedRefs`, so `flip-public.ts`
+expects `44 - absorbed` for that sitting and still refuses every OTHER cause of a
+short count. Fault-injecting a second, fabricated absorption trips it.
+
+### And one that did NOT happen, on one character
 
 Feb-2026 `Q. 6` is the **same question** as March-2024 `Q. 6` — the board reusing
 an item two years apart. It was expected to be absorbed by the exam-scoped
