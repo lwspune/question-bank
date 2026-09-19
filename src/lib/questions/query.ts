@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { AUDIENCE } from "@/lib/relevance/config";
 import type { Filters, Difficulty, QuestionFormat } from "./filters";
+import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
 
 export type OptionRow = {
   label: "A" | "B" | "C" | "D";
@@ -30,7 +31,18 @@ export type QuestionRow = {
   /** PYQ metadata — surfaced as the `[Q# · disambiguator · year]` provenance chip on the question card. */
   pyqYear: number | null;
   pyqMonth: string | null;
+  /**
+   * REDACTED BY DEFAULT. `queryQuestionsByIds` passes the raw column through
+   * `publicPyqNote` unless the caller asks for `includeRawProvenance`, so for
+   * a non-superadmin viewer this is either a short sitting identifier
+   * ("10th May Shift 1") or null — never the source blurb naming a publisher,
+   * the founding tenant, or how we derived the answer. Redacting in the read
+   * layer rather than at render keeps the blurb out of the client payload of
+   * the 317 ISR-cached `/questions` pages too.
+   */
   pyqNote: string | null;
+  /** `pyq` | `practice` (migration 0036). Drives the `pyqNote` redaction above. */
+  questionKind?: PublicQuestionKind;
   exam: { id: string; name: string };
   subject: { id: string; name: string };
   chapter: { id: string; name: string };
@@ -75,7 +87,13 @@ export async function queryQuestions(
   client: SupabaseClient,
   orgId: string | null,
   filters: Filters,
-  pageSize: number = DEFAULT_PAGE_SIZE
+  pageSize: number = DEFAULT_PAGE_SIZE,
+  /**
+   * Hand the caller the UNREDACTED `pyq_note`. Superadmin-only, and only on
+   * routes that resolve identity during server render — see
+   * `queryQuestionsByIds`.
+   */
+  opts?: { includeRawProvenance?: boolean }
 ): Promise<QueryResult> {
   // Principle filter resolves to a question-id list via the tag table BEFORE
   // building the main query, so the result narrows by `id IN (taggedIds)` and
@@ -256,7 +274,7 @@ export async function queryQuestions(
   // in phase A, so fetching exactly those ids cannot reach outside the page.
   // It restores the caller's id order, which is what carries phase A's ORDER BY
   // through to the result — see the ordering tests in tests/browse-query.test.ts.
-  const rows = await queryQuestionsByIds(client, pageIds);
+  const rows = await queryQuestionsByIds(client, pageIds, opts);
 
   return { totalCount, rows };
 }
@@ -268,10 +286,23 @@ export async function queryQuestions(
  * callers decide whether to surface "some questions are no longer available".
  *
  * RLS still applies. Empty input → no DB round-trip.
+ *
+ * PROVENANCE IS REDACTED HERE, not at render. `pyq_note` carries a source
+ * blurb on every practice/worksheet/textbook row (a publisher's name, the
+ * founding tenant's name, or the fact that we derived the answer ourselves),
+ * so it goes through `publicPyqNote` unless the caller passes
+ * `includeRawProvenance`. Doing it in the read layer means the blurb never
+ * reaches the client payload at all — which matters because the 317
+ * ISR-cached `/questions` pages ship one copy of that payload to everyone.
+ *
+ * The flag is DEFAULT-OFF on purpose: a new caller that has not thought about
+ * this gets the safe behaviour, and the cached routes cannot opt in by
+ * accident (they have no identity to resolve during a prerender anyway).
  */
 export async function queryQuestionsByIds(
   client: SupabaseClient,
-  ids: string[]
+  ids: string[],
+  opts?: { includeRawProvenance?: boolean }
 ): Promise<QuestionRow[]> {
   if (ids.length === 0) return [];
 
@@ -280,7 +311,7 @@ export async function queryQuestionsByIds(
     .select(
       `
       id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
-      question_number, pyq_year, pyq_month, pyq_note,
+      question_number, pyq_year, pyq_month, pyq_note, question_kind,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
@@ -314,6 +345,7 @@ export async function queryQuestionsByIds(
     pyq_year: number | null;
     pyq_month: string | null;
     pyq_note: string | null;
+    question_kind: PublicQuestionKind | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
@@ -340,7 +372,10 @@ export async function queryQuestionsByIds(
       questionNumber: r.question_number,
       pyqYear: r.pyq_year,
       pyqMonth: r.pyq_month,
-      pyqNote: r.pyq_note,
+      pyqNote: opts?.includeRawProvenance
+        ? r.pyq_note
+        : publicPyqNote(r.pyq_note, r.question_kind),
+      questionKind: r.question_kind ?? undefined,
       exam: flatten(r.exam)!,
       subject: flatten(r.subject)!,
       chapter: flatten(r.chapter)!,

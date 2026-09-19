@@ -188,7 +188,12 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     supabase.rpc("get_pyq_years"),
     showLanding
       ? Promise.resolve({ totalCount: 0, rows: [] })
-      : queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
+      : // Superadmins read the RAW pyq_note; everyone else gets it redacted in
+        // the read layer, so the source blurb (a publisher, the founding org,
+        // or how we derived the answer) never reaches the payload at all.
+        queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE, {
+          includeRawProvenance: canEditContent,
+        }),
     showLanding ? loadLandingPanel() : Promise.resolve(null),
     // slug → uuid, cached hourly and already paid for by the header. Needed
     // because /browse filters by examId while the registry is keyed by slug.

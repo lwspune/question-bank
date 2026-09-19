@@ -1,6 +1,10 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Difficulty } from "@/lib/questions/filters";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
+import {
+  publicPyqNote,
+  type PublicQuestionKind,
+} from "@/lib/questions/publicPyqNote";
 
 export type WorkedExample = {
   id: string;
@@ -38,7 +42,7 @@ export async function loadWorkedExamples(
     .select(
       `
       id, text, context, difficulty, solution,
-      question_number, pyq_year, pyq_month, pyq_note,
+      question_number, pyq_year, pyq_month, pyq_note, question_kind,
       exam:exams!exam_id(name),
       chapter:chapters!chapter_id(name),
       subtopic:subtopics!subtopic_id(name),
@@ -62,6 +66,7 @@ export async function loadWorkedExamples(
     difficulty: Difficulty;
     solution: string | null;
     question_number: string | null;
+    question_kind: PublicQuestionKind | null;
     pyq_year: number | null;
     pyq_month: string | null;
     pyq_note: string | null;
@@ -89,7 +94,11 @@ export async function loadWorkedExamples(
         questionNumber: r.question_number,
         pyqYear: r.pyq_year,
         pyqMonth: r.pyq_month,
-        pyqNote: r.pyq_note,
+        // These pages are ISR-cached and public, so there is no viewer to
+        // resolve and no raw variant: a worked example's citation is always
+        // the redacted one. See publicPyqNote for why the column cannot be
+        // published as-is.
+        pyqNote: publicPyqNote(r.pyq_note, r.question_kind),
       }),
       options: (r.options ?? [])
         .map((o) => ({
