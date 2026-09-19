@@ -128,7 +128,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "quickwin",
     affects: ["mathematical-logic"],
     mechanic:
-      "Mathematical Logic is 88 q at 1.92 a paper and only 31% HARD, which makes it one of the best marks-per-minute chapters on the paper — and its biggest subtopic, Negation, Equivalence, Tautology, and Switch Circuits, is 47 q at 36% HARD. The recurring error is mechanical rather than conceptual: negating p and q without turning the and into an or, or negating an implication as another implication instead of as a conjunction. These are marks lost to sloppiness in a chapter that is otherwise close to free.",
+      "Mathematical Logic is 88 q at 1.92 a paper and only 31% HARD, which makes it one of the best marks-per-minute chapters on the paper. Negation of Statements and Quantifiers is its CHEAPEST subtopic — 14 q at 14% HARD — and that is exactly why this trap costs so much: the recurring error is mechanical rather than conceptual, negating p and q without turning the and into an or, or negating an implication as another implication instead of as a conjunction. These are marks lost to sloppiness on the easiest block in the chapter.",
     fix:
       "Memorise three lines cold and nothing else in this chapter is hard: the negation of (p and q) is (not p or not q); the negation of (p or q) is (not p and not q); the negation of (p implies q) is (p and not q). For switch circuits, series is AND and parallel is OR. Those four facts plus a truth table cover the bulk of an 88-question chapter.",
   },

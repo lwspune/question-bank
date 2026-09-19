@@ -583,29 +583,39 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     story: [
       "88 q at 1.92 per paper and 31% HARD. This is the one chapter in MHT-CET Maths with its own execution mode: around 70% of its stems ask which of the four statements is true, against roughly 0% everywhere else in the subject. Every other chapter hands you a problem to solve; this one hands you four claims to adjudicate. That difference is worth more than any formula on this page, because it changes what you do when you read the question.",
       "The 31% HARD figure overstates the cost, and it is worth understanding why. The difficulty here is front-loaded into learning ONE technique — build the truth table — which then applies to essentially every question in the chapter. Once that technique is automatic, a HARD logic question and a MODERATE one take about the same amount of time. Compare that with Indefinite Integration, where every new integrand is a fresh recognition problem.",
-      "Switch circuits sit inside the largest subtopic (Negation, Equivalence, Tautology, and Switch Circuits, 47 q at 36% HARD) and intimidate students who have not been told the translation. It is two rules: switches in series are AND, switches in parallel are OR. After that a circuit is a logical expression and the same truth table answers it.",
+      "Switching Circuits is the chapter's smallest subtopic and by a wide margin its hardest — 12 q at 67% HARD, against 14% for Negation — and it intimidates students who have not been told the translation. It is two rules: switches in series are AND, switches in parallel are OR. After that a circuit is a logical expression and the same truth table answers it, which is why a subtopic that looks like the chapter's wall is actually its cheapest block of marks per hour spent.",
       "The tactic follows from the execution mode. With four claims and no negative marking, building the truth table and evaluating all four options is a complete method that always terminates — and a partially built table plus elimination still beats leaving the question blank, because a blank and a wrong answer cost the same nothing.",
     ],
     subSkills: [
       {
-        name: "Truth tables and truth values",
+        name: "Statements, connectives and truth tables",
         description:
-          "Construct the table for any compound statement and read the truth value off it. 27 q at 26% HARD, and the technique that every other skill in this chapter runs on. Learn it first and learn it properly.",
+          "Construct the table for any compound statement and read the truth value off it. 13 q at 38% HARD, and the technique that every other skill in this chapter runs on. Learn it first and learn it properly.",
+      },
+      {
+        name: "Finding truth values of component statements",
+        description:
+          "The chapter's signature move, run backwards: you are told the pattern is FALSE and asked for p, q and r. 16 q at 19% HARD. A conditional is false in exactly one row, which forces the values rather than leaving you to search.",
       },
       {
         name: "Converse, inverse, and contrapositive",
         description:
-          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 14 q at 21% HARD — the cheapest block in the chapter and pure pattern work.",
+          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 17 q at 24% HARD — the chapter's largest block and pure pattern work.",
       },
       {
-        name: "Negation, equivalence, and tautology",
+        name: "Negation of statements and quantifiers",
         description:
-          "Negate compound statements and quantified statements, test two expressions for equivalence, and classify a statement as a tautology or a contradiction from its final column. Part of the 47 q, 36% HARD subtopic.",
+          "Negate compound statements, conditionals, biconditionals and quantified statements. 14 q at 14% HARD — the cheapest block in the chapter, which is precisely why a mechanical slip here is so expensive.",
       },
       {
-        name: "Switch circuits",
+        name: "Logical equivalence and algebra of statements",
         description:
-          "Translate a circuit into a logical expression — series is AND, parallel is OR — then simplify or test it exactly as you would any other statement. Also part of the 47 q block, and much cheaper than it looks.",
+          "Test two expressions for equivalence, simplify with the distributive and absorption laws, and classify a pattern as a tautology, contradiction or contingency from its final column. 16 q at 31% HARD.",
+      },
+      {
+        name: "Switching circuits",
+        description:
+          "Translate a circuit into a logical expression — series is AND, parallel is OR — then simplify or test it exactly as you would any other statement. 12 q at 67% HARD, the densest HARD block here, and much cheaper than it looks once the translation is automatic.",
       },
     ],
     traps: [

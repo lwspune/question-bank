@@ -338,11 +338,14 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "mathematical-logic",
       name: "Mathematical Logic",
-      // 88 q across 3 subtopics, in descending question count.
+      // 88 q across 6 subtopics, in teaching order (order_index 1..6).
       groupSubtopics: [
-        { name: "Negation, Equivalence, Tautology, and Switch Circuits" }, // 47
-        { name: "Truth Tables and Truth Values" }, // 27
-        { name: "Converse, Inverse, and Contrapositive" }, // 14
+        { name: "Statements, Connectives and Truth Tables" }, // 13
+        { name: "Finding Truth Values of Component Statements" }, // 16
+        { name: "Negation of Statements and Quantifiers" }, // 14
+        { name: "Converse, Inverse, and Contrapositive" }, // 17
+        { name: "Logical Equivalence and Algebra of Statements" }, // 16
+        { name: "Switching Circuits" }, // 12
       ],
     },
     {

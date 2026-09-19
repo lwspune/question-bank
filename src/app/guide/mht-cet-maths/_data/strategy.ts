@@ -303,7 +303,7 @@ export const QUICKWIN_STRAND: StrategyStrand = {
     "Attempt every question from these five chapters on the opening sweep, before you look at a triple product or an integrating factor. Roughly 8 questions, roughly 16 marks, and most of them inside the 1.8-minute budget rather than over it.",
     "Probability Distribution and Binomial Distribution both have shipped teaching notes at /notes/mht-cet-maths (probability-distribution, binomial-distribution). Together they are 175 questions at 20% and 22% HARD — the largest block of cheap marks in the bank.",
     "Linear Programming is 46 q at 4% HARD across just two subtopics, and one of them has never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
-    "Mathematical Logic is 88 q at 31% HARD and the HARD sits almost entirely in Negation, Equivalence, Tautology, and Switch Circuits (47 q, 36%). Truth Tables (27 q, 26%) and Converse, Inverse, and Contrapositive (14 q, 21%) are mechanical once you have drilled the forms.",
+    "Mathematical Logic is 88 q at 31% HARD, and the HARD is concentrated in one small subtopic: Switching Circuits, 12 q at 67%. Everything else is well below the chapter average — Negation of Statements and Quantifiers (14 q, 14%), Finding Truth Values of Component Statements (16 q, 19%), Converse, Inverse, and Contrapositive (17 q, 24%) — and all of it is mechanical once you have drilled the forms.",
     "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 41 q at 12% HARD — genuinely cheap marks — but only 0.73 q/paper on recent shifts, which is why it has no playbook. Drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
   ],
   chapters: [
@@ -329,15 +329,17 @@ export const QUICKWIN_STRAND: StrategyStrand = {
       pctHard: 31,
       posture: "bank-first",
       mustDrill: [
+        "Statements, Connectives and Truth Tables",
+        "Negation of Statements and Quantifiers",
         "Converse, Inverse, and Contrapositive",
-        "Truth Tables and Truth Values",
-        "Negation, Equivalence, Tautology, and Switch Circuits",
+        "Finding Truth Values of Component Statements",
+        "Logical Equivalence and Algebra of Statements",
       ],
-      targetHard: ["Negation, Equivalence, Tautology, and Switch Circuits"],
+      targetHard: ["Switching Circuits"],
       expectedYieldPerPaper: "1.92 q/paper · about 4 marks",
       studyHours: 6,
       summary:
-        "88 q · 31% HARD. Almost pure procedure: build the table, apply the equivalence, read the switch circuit. The 31% is concentrated in the switch-circuit and tautology subtopic (47 q, 36%), which rewards drilling the standard circuit forms rather than reasoning each one out fresh.",
+        "88 q · 31% HARD. Almost pure procedure: build the table, apply the equivalence, read the switch circuit. The 31% is not spread evenly — Switching Circuits is 12 q at 67% HARD, the densest block in the chapter, while Negation of Statements and Quantifiers is 14 q at 14%. Drill the standard circuit forms rather than reasoning each one out fresh.",
     },
     {
       chapter: "Binomial Distribution",

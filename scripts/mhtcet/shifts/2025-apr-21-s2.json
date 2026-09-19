@@ -1221,7 +1221,7 @@
     },
     "131": {
       "chapter": "Mathematical Logic",
-      "subtopic": "Truth Tables and Truth Values",
+      "subtopic": "Finding Truth Values of Component Statements",
       "difficulty": "MODERATE",
       "answer": "D",
       "solution": "An implication \\(X\\to Y\\) is false only when consequent \\(Y=\\,\\sim p\\vee q\\) is false, i.e. \\(\\sim p=F\\) and \\(q=F\\Rightarrow p=T,\\ q=F\\). The antecedent must be \\(T\\), which needs \\(r=T\\). So \\((p,q,r)=(T,F,T)\\).",
@@ -1249,7 +1249,7 @@
     },
     "134": {
       "chapter": "Mathematical Logic",
-      "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+      "subtopic": "Switching Circuits",
       "difficulty": "HARD",
       "answer": "B",
       "solution": "Simplify \\([\\{q\\wedge(\\sim q\\vee r)\\}\\wedge\\{\\sim p\\vee(p\\wedge\\sim r)\\}]\\vee(p\\wedge r)\\). Now \\(q\\wedge(\\sim q\\vee r)=q\\wedge r\\) and \\(\\sim p\\vee(p\\wedge\\sim r)=\\sim p\\vee\\sim r\\), so the bracket \\(=(q\\wedge r)\\wedge(\\sim p\\vee\\sim r)=q\\wedge r\\wedge\\sim p\\). The whole \\(=(q\\wedge r\\wedge\\sim p)\\vee(p\\wedge r)=r\\wedge[(q\\wedge\\sim p)\\vee p]=r\\wedge(p\\vee q)\\). With \\(p=S_{1},q=S_{2},r=S_{3}\\): \\((S_{1}\\parallel S_{2})\\) in series with \\(S_{3}\\). Among the four circuits, option B is exactly \\(S_{1},S_{2}\\) in parallel then \\(S_{3}\\) in series; option A is \\((S_{1}\\) series \\(S_{3})\\parallel S_{2}\\), which is \\((S_{1}\\wedge S_{3})\\vee S_{2}\\) and is incorrect.",

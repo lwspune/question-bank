@@ -269,7 +269,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     qPerPaper: 1.92,
     pctHard: 31,
     focus:
-      "Negation, Equivalence, Tautology, and Switch Circuits (47 · 36% HARD), Truth Tables and Truth Values (27 · 26%), Converse, Inverse, and Contrapositive (14 · 21%). Self-contained — it borrows nothing from the rest of the syllabus, which makes it the fastest chapter to bank from a cold start.",
+      "Converse, Inverse, and Contrapositive (17 · 24% HARD), Finding Truth Values of Component Statements (16 · 19%), Logical Equivalence and Algebra of Statements (16 · 31%), Negation of Statements and Quantifiers (14 · 14%), Statements, Connectives and Truth Tables (13 · 38%), Switching Circuits (12 · 67%). Self-contained — it borrows nothing from the rest of the syllabus, which makes it the fastest chapter to bank from a cold start.",
   },
   {
     chapter: "Binomial Distribution",

@@ -220,12 +220,15 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "mathematical-logic",
     name: "Mathematical Logic",
     summary:
-      "88 q - 1.92/paper - 31% HARD. The one chapter in MHT-CET Maths with its own execution mode: 70% of its stems ask which statement is true, against roughly 0% everywhere else. Its 31% HARD overstates the cost, because the difficulty is front-loaded into learning ONE technique (build the truth table) that then applies to every question.",
+      "88 q - 1.92/paper - 31% HARD. The one chapter in MHT-CET Maths with its own execution mode: 70% of its stems ask which statement is true, against roughly 0% everywhere else. Its 31% HARD overstates the cost, because the difficulty is front-loaded into learning ONE technique (build the truth table) that then applies to every question - and it is not spread evenly: Switching Circuits is 12 q at 67% HARD while Negation is 14 q at 14%.",
     chapter: "Mathematical Logic",
     subtopics: [
-      "Negation, Equivalence, Tautology, and Switch Circuits",
-      "Truth Tables and Truth Values",
+      "Statements, Connectives and Truth Tables",
+      "Finding Truth Values of Component Statements",
+      "Negation of Statements and Quantifiers",
       "Converse, Inverse, and Contrapositive",
+      "Logical Equivalence and Algebra of Statements",
+      "Switching Circuits",
     ],
     qCount: 88,
     qPerPaper: 1.92,
