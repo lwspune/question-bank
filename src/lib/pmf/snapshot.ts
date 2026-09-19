@@ -147,8 +147,13 @@ export function viewCohorts(rows: readonly CohortRow[]): CohortView[] {
 
 /**
  * Per-question telemetry, not features. `answer_wrong`/`answer_correct` fire
- * once per QUESTION inside a mock, so listing them beside "Timed mocks" would
- * compare a surface to its own internals.
+ * once per QUESTION rather than once per sitting, so listing them beside
+ * "Timed mocks" would compare a surface to its own internals.
+ *
+ * `answer_correct` is CONDITIONAL and must not be read as "questions answered
+ * correctly": it fires only where the student had already missed that question,
+ * so it measures RECOVERY. Its natural denominator is `answer_wrong`, never the
+ * number of questions sat. See lib/mocks/correctEvents.ts.
  */
 export const TELEMETRY_KINDS: readonly string[] = [
   "answer_wrong",

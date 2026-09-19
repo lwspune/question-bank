@@ -13,7 +13,9 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   mock_submitted: "Mock completed",
   mock_started: "Mock opened",
   answer_wrong: "Mock question missed",
-  answer_correct: "Mock question correct",
+  // "Recovered", not "correct": this fires only for a question the student
+  // had previously missed. See ACTIVITY_KINDS in events.ts.
+  answer_correct: "Question recovered",
   chapter_mastered: "Chapter mastered",
   note_checkpoint: "Notes checkpoint",
   question_bookmarked: "Question saved",

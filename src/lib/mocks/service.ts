@@ -19,6 +19,10 @@ import {
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
 import { verdictFor, type OptionLabel, type SavedResponse } from "./answers";
 import { logActivity, logActivityBatch } from "@/lib/activity/service";
+import {
+  selectAnswerCorrectEvents,
+  answerCorrectDedupeKey,
+} from "./correctEvents";
 import type { ActivityEvent } from "@/lib/activity/events";
 
 export class MockError extends Error {
@@ -170,6 +174,58 @@ export async function saveAnswer(
   return { ok: true };
 }
 
+/**
+ * Re-grade a stored attempt WITHOUT writing anything.
+ *
+ * Exists for the `answer_correct` backfill, and it runs the SAME chain
+ * submitAttempt does — getMockById → loadAnswerKey → loadSavedAnswers →
+ * gradeMock — so a replayed verdict cannot disagree with the one the student
+ * was shown. The cheap alternative, joining attempt_answers to
+ * `options.is_correct` in SQL, is blind to numeric (JEE Section-B) responses and
+ * knows nothing about GRACE, which `verdictFor` scores as correct whether or not
+ * the student answered.
+ *
+ * Returns the per-question grace flags alongside the verdicts because the
+ * caller needs both to decide what to record.
+ */
+export async function regradeAttempt(
+  db: SupabaseClient,
+  userId: string,
+  attemptId: string
+): Promise<{
+  questions: { questionId: string; sectionKey: string; grace?: boolean }[];
+  verdicts: Record<string, 1 | -1 | 0>;
+}> {
+  const attempt = await loadAttemptRow(db, userId, attemptId);
+  const mock = await getMockById(db, attempt.mock_id);
+  if (!mock) throw new MockError(404, "Mock test not found");
+
+  const ids = mock.questions.map((q) => q.questionId);
+  const [key, answers] = await Promise.all([
+    loadAnswerKey(db, ids),
+    loadSavedAnswers(db, attemptId),
+  ]);
+
+  const gradeQuestions: MockGradeQuestion[] = mock.questions.map((q) => ({
+    questionId: q.questionId,
+    sectionKey: q.sectionKey,
+    marks: q.marks,
+    negMarks: q.negMarks,
+    answer: key[q.questionId] ?? null,
+    ...(q.grace ? { grace: true } : {}),
+  }));
+
+  const result = gradeMock(gradeQuestions, answers);
+  return {
+    questions: gradeQuestions.map((q) => ({
+      questionId: q.questionId,
+      sectionKey: q.sectionKey,
+      ...(q.grace ? { grace: true } : {}),
+    })),
+    verdicts: result.verdicts,
+  };
+}
+
 export type AttemptSummary = {
   attemptId: string;
   status: "submitted" | "expired";
@@ -282,6 +338,28 @@ export async function submitAttempt(
       });
     }
   }
+
+  // A correct answer is recorded ONLY where this student had already missed the
+  // question — see lib/mocks/correctEvents.ts for why the symmetric version was
+  // measured and rejected (20,250 rows to move the drill pool by 484). The read
+  // happens before the write below, so rows from THIS attempt cannot count as
+  // "previously".
+  const recovered = selectAnswerCorrectEvents(
+    gradeQuestions,
+    result.verdicts,
+    await loadPreviouslyMissed(db, userId, ids)
+  );
+  for (const r of recovered) {
+    events.push({
+      kind: "answer_correct",
+      refId: r.questionId,
+      refKind: "question",
+      // Keyed so the backfill and this path cannot both write the same row.
+      dedupeKey: answerCorrectDedupeKey(attemptId, r.questionId),
+      metadata: { mockId: attempt.mock_id, sectionKey: r.sectionKey },
+    });
+  }
+
   await logActivityBatch(db, userId, events, at.getTime());
 
   return {
@@ -294,6 +372,45 @@ export async function submitAttempt(
     skipped: result.skipped,
     sectionScores: result.sectionScores,
   };
+}
+
+/**
+ * The subset of `questionIds` this student has an `answer_wrong` row for.
+ *
+ * Reads the engagement spine rather than re-deriving from `attempt_answers`,
+ * because those rows ARE the record the drill ladder folds over — a second
+ * derivation would be free to disagree with the thing it is meant to describe.
+ *
+ * Chunked at 200 because `.in()` puts the list in the URL: a 150-question GAT
+ * paper is already close, and PostgREST answers an overflowed request line with
+ * a bare `Bad Request`. That is a different limit from the 1000-row result cap.
+ */
+async function loadPreviouslyMissed(
+  db: SupabaseClient,
+  userId: string,
+  questionIds: readonly string[]
+): Promise<Set<string>> {
+  const out = new Set<string>();
+  const CHUNK = 200;
+  for (let i = 0; i < questionIds.length; i += CHUNK) {
+    const chunk = questionIds.slice(i, i + CHUNK);
+    if (chunk.length === 0) continue;
+    const { data, error } = await db
+      .from("user_activity")
+      .select("ref_id")
+      .eq("user_id", userId)
+      .eq("kind", "answer_wrong")
+      .in("ref_id", chunk);
+    // Best-effort, like the spine itself: failing to find past mistakes costs
+    // one un-recorded recovery, which leaves the question DUE. Extra practice
+    // is the safe direction; throwing here would cost the student their score.
+    if (error) {
+      console.error("loadPreviouslyMissed failed", error.message);
+      return out;
+    }
+    for (const r of (data ?? []) as { ref_id: string }[]) out.add(r.ref_id);
+  }
+  return out;
 }
 
 async function loadSavedAnswers(
