@@ -5,6 +5,8 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
+import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
+import ChapterRateTable from "@/app/guide/_components/ChapterRateTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
@@ -17,6 +19,14 @@ import {
   type DriftRow,
   type DriftWindow,
 } from "../_data/trends";
+import {
+  CHAPTER_MATRIX,
+  MATRIX_META,
+  PAPER_TOTALS,
+  SHIFT_PAPERS,
+  YEAR_COLUMNS,
+  YEAR_RATES,
+} from "../_data/matrix.generated";
 
 export const revalidate = 86400;
 
@@ -203,12 +213,11 @@ export default async function Trends() {
           Verified chapter drift
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
-          The {DRIFT_ROWS.length} chapters with a verified two-window story.
-          There is no per-chapter-per-year matrix for this bank, so this list
-          is deliberately short rather than padded out with plausible-looking
-          cells — a number printed here reads as measured, and every one of
-          these is. Each window names its own shift count, because that is
-          what makes the two rates comparable.
+          The {DRIFT_ROWS.length} chapters with a story worth spelling out in
+          words. The full grid for every chapter is two sections below, derived
+          from the bank rather than estimated; this list is the narrative, and
+          the grid is its receipt. Each window names its own shift count,
+          because that is what makes the two rates comparable.
         </p>
         <ul className="mt-6 space-y-4">
           {DRIFT_ROWS.map((row) => {
@@ -270,6 +279,72 @@ export default async function Trends() {
           <em>contains</em> the recent window it is compared against, so those
           two rows understate the move — the direction is real, the size is a
           floor.
+        </p>
+      </section>
+
+      {/* Per-paper weight by year — the readable summary */}
+      <section className="mt-14">
+        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          What every chapter is worth, per paper
+        </h2>
+        <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
+          All {MATRIX_META.chapters} chapters across all {MATRIX_META.papers}{" "}
+          shifts, as questions per paper. Every column is divided by its own
+          year&rsquo;s paper count, so the cells compare directly even though
+          the years do not have the same number of shifts. Read a row
+          left-to-right to see a chapter gain or lose weight; read the bottom
+          row to confirm each year still adds up to a whole paper.
+        </p>
+        <div className="mt-6">
+          <ChapterRateTable columns={YEAR_COLUMNS} rows={YEAR_RATES} />
+        </div>
+        <p className="mt-4 font-serif text-sm leading-relaxed text-muted-foreground">
+          The greyed columns are{" "}
+          {SINGLE_PAPER_YEARS.map((y) => y.year).join(" and ")} — one paper
+          each. Their numbers are real, but one paper&rsquo;s chapter mix is
+          that paper, not the exam&rsquo;s shape, so do not read a line through
+          them. A{" "}
+          <span className="font-semibold text-foreground tabular-nums">
+            0.00
+          </span>{" "}
+          is a measured zero: the chapter was on no paper that year.
+        </p>
+      </section>
+
+      {/* Every paper, every chapter — the evidence */}
+      <section className="mt-14">
+        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          Every paper, every chapter
+        </h2>
+        <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
+          The rates above come from this: one column per real sitting,{" "}
+          {MATRIX_META.papers} of them, holding{" "}
+          {MATRIX_META.questions.toLocaleString("en-IN")} questions. Raw counts
+          do not compare across YEARS here, because the shift counts differ —
+          but they compare perfectly across COLUMNS, because every column is a
+          single paper of about {Math.round(
+            PAPER_TOTALS.reduce((a, b) => a + b, 0) / PAPER_TOTALS.length
+          )}{" "}
+          questions. The footer row proves it: each column sums to its
+          paper&rsquo;s own length. Hover a column number for its date and
+          shift.
+        </p>
+        <div className="mt-6">
+          <ExamPaperMatrix papers={SHIFT_PAPERS} rows={CHAPTER_MATRIX} />
+        </div>
+        <p className="mt-4 font-serif text-sm leading-relaxed text-muted-foreground">
+          Columns are numbered within each year and ordered by exam date.{" "}
+          {MATRIX_META.undatedPapers} papers carry no date in our records and
+          sit last in their year rather than at a guessed position; their
+          tooltips say so.{" "}
+          {MATRIX_META.labelConflicts > 0 && (
+            <>
+              One paper&rsquo;s file name and its recorded shift disagree with
+              each other — its column is underlined, and nothing in the source
+              tells us which of the two labels is right, so we have not picked
+              one.
+            </>
+          )}
         </p>
       </section>
 

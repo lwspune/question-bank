@@ -21,15 +21,31 @@
  * raw count is named `...QCount` or `...qInWindow` so it can never be read as
  * a rate by mistake. Do not compare two raw counts from different windows.
  *
- * WHAT IS ACTUALLY IN DRIFT_ROWS, AND WHY IT IS SHORT
- * ---------------------------------------------------
- * There is no verified per-chapter-per-year matrix for this bank, so this file
- * does NOT ship one. Fabricating a 27 x 5 grid of plausible-looking counts
- * would be the single most damaging thing this page could do — every cell
- * would read as measured. DRIFT_ROWS therefore carries only the four chapters
- * with a verified two-window story. Four rows is the correct outcome, not an
- * unfinished one. The year-level shape of the rest of the bank is not known
- * and is not asserted.
+ * THE MATRIX NOW EXISTS, AND IT LIVES IN `matrix.generated.ts` (2026-09-19)
+ * -------------------------------------------------------------------------
+ * This header used to say there was no per-chapter-per-year matrix for this
+ * bank and that this file must not ship one, because "fabricating a 27 x 5
+ * grid of plausible-looking counts would be the single most damaging thing
+ * this page could do — every cell would read as measured". That refusal was
+ * about FABRICATION, not about the grid, and it still stands: nothing here
+ * may be estimated.
+ *
+ * What changed is that the grid is now DERIVED. `scripts/mhtcet/trends-matrix
+ * .ts` reads the live bank and emits `matrix.generated.ts` — a
+ * chapter x SHIFT matrix (27 x 45) plus its questions-per-paper summary. Every
+ * cell is a GROUP BY, re-derivable with `npm run mhtcet:matrix`, and
+ * `-- --check` fails the gate if the committed file drifts from the bank.
+ *
+ * It also answers this file's central warning rather than contradicting it.
+ * Raw counts genuinely do not compare across YEARS (17 shifts in 2023 against
+ * 14 in 2025) — but per SHIFT they compare exactly, because every column is
+ * one ~50-question paper. Per-shift is the grain that makes a raw count honest
+ * here; the year view is published as a RATE for the same reason.
+ *
+ * WHAT IS IN DRIFT_ROWS, AND WHY IT IS STILL SHORT. These four are the
+ * chapters whose movement is worth spelling out in prose. They are the
+ * narrative; the matrix is the evidence. Keep them short and keep them
+ * verified — do not grow this list to cover the grid.
  *
  * THE HEADLINE: MHT-CET MOVED ITS SYLLABUS FOR 2025.
  *   - Measures of Dispersion ran 1.0 q/paper across the 29 shifts of 2023-24,
