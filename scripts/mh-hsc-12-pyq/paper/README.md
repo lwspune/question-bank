@@ -101,21 +101,67 @@ npx tsx scripts/mh-hsc-12-pyq/paper/render.ts --all
 # 2. dump the lossy text layer as a transcription scaffold
 npx tsx scripts/mh-hsc-12-pyq/paper/dump-text.ts --all
 
-# 3. find + crop the figures, then LOOK at out/_contact/<id>.png
+# 3. find + crop the figures, then LOOK at out/_contact/<id>.png and record the
+#    verdict in data/figures/verified.json
 npx tsx scripts/mh-hsc-12-pyq/paper/crop-figures.ts --all
 
-# 4. vision-transcribe, one agent per section block (A-mcq / A-vsa / B / C / D)
-#    -> data/<id>.<block>.json   (PaperQuestion[], chapter HARD-validated)
-# 5. blind MCQ key pass — stem + options only, no sight of step 4's answers
-# 6. author model answers to ../SOLUTION_BRIEF.md (board-answer style)
-# 7. merge -> commit PRIVATE -> audit -> attach figures -> flip PUBLIC
+# 4. transcribe -> data/<id>.questions.json, then check the STRUCTURE
+npx tsx scripts/mh-hsc-12-pyq/paper/verify.ts <id>
+
+# 5. keys: dump blind, derive TWICE independently, reconcile
+npx tsx scripts/mh-hsc-12-pyq/paper/dump-blind.ts <id>     # BEFORE either derivation
+#    pass 1 -> out/<id>/authoring-keys.md
+#    pass 2 -> out/<id>/blind-keys.md   (given only out/<id>/blind-mcq.md)
+npx tsx scripts/mh-hsc-12-pyq/paper/reconcile-keys.ts <id> --apply
+
+# 6. solutions: one file per authoring lane, merged under the style gate
+npx tsx scripts/mh-hsc-12-pyq/paper/apply-solutions.ts <id> --apply
+
+# 7. commit PRIVATE, audit, publish
+npx tsx scripts/mh-hsc-12-pyq/paper/commit.ts <id> --apply
+npm run audit:text -- MH_HSC_12_Maths_PYQ__<YEAR>_<Month>
+npm run audit:omml -- MH_HSC_12_Maths_PYQ__<YEAR>_<Month>
+npx tsx scripts/mh-hsc-12-pyq/paper/flip-public.ts <id> --apply
 ```
 
-Steps 4–7 are not built yet. Step 7's commit must **name** every row the
-exam-scoped `content_hash` absorbs into an existing one: board reuse is real here
-(the chain-rule proof already appears 4× across 2016–2022, the pair-of-lines
-theorem 4× across 2016–2025), and a silent `skipped=1` in a whole-paper ingest is
-indistinguishable from a question that was never on the paper.
+### Step 5 is an ORDERING, not a redaction
+
+`dump-blind.ts` REFUSES to run once any MCQ carries an answer. A second pass that
+can see the first one's answer is a review, and a review agrees far too readily;
+withholding at dump time is the only version that cannot leak. `reconcile-keys.ts`
+never picks a winner — a disagreement is reported with both answers for a human
+to adjudicate against the page, and it refuses to apply while one is outstanding.
+
+### Step 6 is one file per lane
+
+Several passes author at once. Pointing them all at the shared transcription
+makes the last writer win and loses the rest silently, so each writes
+`out/<id>/solutions-<lane>.json` and `apply-solutions.ts` merges them. Two lanes
+claiming the same ref is an ERROR, not a merge. Every solution goes through
+`probeBoardAnswer`; its errors block.
+
+## What went in
+
+**February 2026 (J-165) — 44/44 PUBLIC, 2026-09-19.** 8 MCQ + 36 free-response
+across all 15 chapters. Both key derivations agreed 8/8 at high confidence, 0
+disagreements. `audit:text` clean, `audit:omml` clean (0 failing math zones).
+Every answer is DERIVED and REVIEW-flagged in the data JSON.
+
+Rollback: `delete from questions where source_file='MH_HSC_12_Maths_PYQ__2026_February.pdf';`
+
+### The absorption that did not happen, and why it is worth knowing
+
+Feb-2026 `Q. 6` is the **same question** as March-2024 `Q. 6` — the board reusing
+an item two years apart. It was expected to be absorbed by the exam-scoped
+`content_hash` and was not, because the 2024 row reads `Find \(k,\)` with the
+comma INSIDE the math delimiters and the 2026 transcription reads `Find \(k\),`
+with it in prose. One character of typography, different hash, no absorption.
+
+Both outcomes are defensible — keeping the pair preserves the recurrence signal,
+which is this project's stated policy — but the mechanism is luck, not design. Had
+the older row been transcribed the same way, the 2026 provenance would have
+vanished into a `skipped=1`. That is precisely why `commit.ts` names absorbed
+rows instead of reporting a count.
 
 ## Reconciliation is gated
 
