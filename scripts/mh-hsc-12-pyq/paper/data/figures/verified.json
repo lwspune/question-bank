@@ -1,0 +1,40 @@
+{
+  "_what": "Human review record for the crops in this directory. crop-figures.ts prints REVIEW REQUIRED and never marks a crop verified itself — geometry found these four, and geometry is not what proves a crop is right (6 of 22 NCERT Class-10 crops passed every numeric check and were visibly wrong). A crop with no entry here has not been looked at.",
+  "_checked": [
+    "the circuit is complete — outer loop closed, battery and lamp present",
+    "nothing is clipped at any edge",
+    "no neighbouring question, marks bracket or page furniture bled in",
+    "every switch label is inside the crop and legible"
+  ],
+  "reviewedOn": "2026-09-19",
+  "figures": {
+    "mar-2024.q-15.png": {
+      "ref": "Q. 15",
+      "page": 5,
+      "px": "786x477",
+      "verdict": "clean",
+      "note": "Replaces the bank's image4.png (512x276, a speckled + skewed photocopy). Same circuit: S1 || S2 in parallel, then S1' and S2' in series, battery and L on the return leg."
+    },
+    "feb-2025.q-15.png": {
+      "ref": "Q. 15",
+      "page": 6,
+      "px": "787x410",
+      "verdict": "clean",
+      "note": "Replaces the bank's image5.png (437x210). Same topology as mar-2024 Q.15 but drawn in a lighter weight and with a two-cell battery."
+    },
+    "jul-2024.q-27.png": {
+      "ref": "Q. 27",
+      "page": 7,
+      "px": "412x507",
+      "verdict": "clean",
+      "note": "NOT IN THE BANK — this sitting was never ingested. Three parallel branches (S1-S2' / S1'-S2 / S1'-S2'), the only 3-branch circuit in the corpus. Found by fig_bounds.py; a text grep for 'circuit' misses it because the stem never uses the word."
+    },
+    "jul-2025.q-27.png": {
+      "ref": "Q. 27",
+      "page": 7,
+      "px": "798x378",
+      "verdict": "clean",
+      "note": "NOT IN THE BANK — this sitting was never ingested. S1 in series with (S1' || S2)."
+    }
+  }
+}
