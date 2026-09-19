@@ -1,0 +1,48 @@
+name: Sweep expired mock attempts
+
+# Grade the attempts whose timer ran out while nobody was watching.
+#
+# WHY A SCHEDULE AND NOT A READ-PATH HOOK. Grading lazily, when something next
+# loads the attempt, would never fire for the case that actually produced this
+# backlog: a student closes the laptop mid-paper and nobody — not them, not a
+# teacher — ever opens that attempt again. All 118 stranded attempts found on
+# 2026-09-19 were exactly that shape. Only something that goes looking finds them.
+#
+# Hourly, because the cost of waiting is a student without their result: no
+# score, no findings card, and none of their mistakes reaching /drill. The job
+# is a no-op on an empty sweep, which is the common case.
+#
+# SAFE TO RUN OFTEN. submitAttempt guards on status='in_progress', so a second
+# pass grades nothing twice, and a 30-minute grace keeps the sweep clear of any
+# client still posting its final answers.
+
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22"). On Node 20
+          # @supabase/supabase-js throws from createClient() before any network
+          # call — see the same note in db-health.yml.
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Grade expired attempts
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        # --apply is deliberate here and nowhere else: running `npm run
+        # mock:sweep` by hand stays a dry run, so a human asking "what is
+        # stranded?" can never grade 100 students' papers as a side effect.
+        run: npm run mock:sweep -- --apply
