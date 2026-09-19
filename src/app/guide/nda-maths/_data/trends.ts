@@ -30,6 +30,8 @@
  * because NDA-2 2020 was COVID-cancelled. 2026 is now a full 240.
  */
 
+import type { MatrixPaper } from "@/app/guide/_components/ExamPaperMatrix";
+
 export type DriftRow = {
   principle: string;
   /** Counts indexed by year 2017..2026. */
@@ -114,6 +116,31 @@ export const EXAM_PAPERS: ExamPaper[] = [
   { id: "25A", year: 2025, sitting: "1" }, { id: "25S", year: 2025, sitting: "2" },
   { id: "26A", year: 2026, sitting: "1" }, { id: "26S", year: 2026, sitting: "2" },
 ];
+
+/**
+ * How an NDA sitting is labelled in the matrix, stated HERE rather than in the
+ * renderer.
+ *
+ * `ExamPaperMatrix` used to compute this itself, which was fine while NDA was
+ * its only caller and became a mislabelling as soon as MHT-CET reused it — that
+ * exam runs up to 17 sittings a year, none of them an "NDA-1". The component
+ * now requires each data file to name its own columns, so nothing can inherit
+ * another exam's vocabulary by default.
+ */
+const SITTING_LABELS: Record<
+  ExamPaper["sitting"],
+  { label: string; title: string }
+> = {
+  "1": { label: "1", title: "NDA-1 (April)" },
+  "2": { label: "2", title: "NDA-2 (September)" },
+};
+
+/** EXAM_PAPERS in the shape `ExamPaperMatrix` renders. */
+export const EXAM_MATRIX_PAPERS: MatrixPaper[] = EXAM_PAPERS.map((p) => ({
+  id: p.id,
+  year: p.year,
+  ...SITTING_LABELS[p.sitting],
+}));
 
 export type ExamMatrixRow = {
   chapter: string;

@@ -15,7 +15,7 @@ import {
   DRIFT_CALLOUTS,
   DRIFT_ROWS,
   YEARS,
-  EXAM_PAPERS,
+  EXAM_MATRIX_PAPERS,
   EXAM_MATRIX,
 } from "../_data/trends";
 
@@ -160,7 +160,7 @@ export default async function Trends() {
           (~5) hold steady in both — the metronome regardless of sitting.
         </p>
         <div className="mt-4">
-          <ExamPaperMatrix papers={EXAM_PAPERS} rows={EXAM_MATRIX} />
+          <ExamPaperMatrix papers={EXAM_MATRIX_PAPERS} rows={EXAM_MATRIX} />
         </div>
       </section>
 
