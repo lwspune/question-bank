@@ -67,11 +67,70 @@ export async function readPeerAccuracy(
   return out;
 }
 
+import { ENGAGEMENT_FLOOR } from "@/lib/performance/compute";
+
 export type ReportCandidate = {
   attemptId: string;
   userId: string;
   submittedAt: string;
 };
+
+/**
+ * Drop attempts that were abandoned rather than sat.
+ *
+ * A report on a paper the student walked away from is noise at best: the live
+ * dry run on 2026-09-19 offered to mail "0/300 — 0 things to fix" about an
+ * attempt with nothing answered. It became visible that day because the expiry
+ * sweep graded 118 abandoned attempts, but the gap was always there — this
+ * selection has never applied the ENGAGEMENT_FLOOR that lib/performance has used
+ * since it shipped.
+ *
+ * Counted with the same predicate as `isAnswered`: a row in `attempt_answers`
+ * can record a FLAG alone, so rows are not answers.
+ */
+async function dropAbandoned(
+  db: SupabaseClient,
+  candidates: ReportCandidate[]
+): Promise<ReportCandidate[]> {
+  if (candidates.length === 0) return candidates;
+  const ids = candidates.map((c) => c.attemptId);
+
+  const answered = new Map<string, number>();
+  const CHUNK = 200; // `.in()` rides in the URL — a different limit from the 1000-row cap
+  for (let i = 0; i < ids.length; i += CHUNK) {
+    const { data, error } = await db
+      .from("attempt_answers")
+      .select("attempt_id, selected_label, numeric_response")
+      .in("attempt_id", ids.slice(i, i + CHUNK));
+    if (error) throw new Error(`dropAbandoned answers: ${error.message}`);
+    for (const r of (data ?? []) as Record<string, unknown>[]) {
+      if (r.selected_label == null && r.numeric_response == null) continue;
+      const id = r.attempt_id as string;
+      answered.set(id, (answered.get(id) ?? 0) + 1);
+    }
+  }
+
+  const totals = new Map<string, number>();
+  for (let i = 0; i < ids.length; i += CHUNK) {
+    const { data, error } = await db
+      .from("mock_attempts")
+      .select("id, mock:mock_tests(total_questions)")
+      .in("id", ids.slice(i, i + CHUNK));
+    if (error) throw new Error(`dropAbandoned totals: ${error.message}`);
+    for (const r of (data ?? []) as Record<string, unknown>[]) {
+      const m = (Array.isArray(r.mock) ? r.mock[0] : r.mock) as { total_questions: number } | null;
+      totals.set(r.id as string, m?.total_questions ?? 0);
+    }
+  }
+
+  return candidates.filter((c) => {
+    const total = totals.get(c.attemptId) ?? 0;
+    // Unknown paper length is treated as abandoned — never mail a report whose
+    // own denominator is unknown.
+    if (total <= 0) return false;
+    return (answered.get(c.attemptId) ?? 0) / total >= ENGAGEMENT_FLOOR;
+  });
+}
 
 /**
  * Graded attempts submitted since `since`, oldest first.
@@ -106,5 +165,5 @@ export async function readReportCandidates(
     }
     if (rows.length < PAGE) break;
   }
-  return out;
+  return dropAbandoned(db, out);
 }

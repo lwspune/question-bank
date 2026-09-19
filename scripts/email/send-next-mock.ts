@@ -24,6 +24,23 @@
  */
 import { join } from "node:path";
 import { pickRecipients } from "../../src/lib/email/recommend";
+
+/**
+ * FORWARD-ONLY. Only a sitting (or an account) from this instant onward makes
+ * someone a candidate.
+ *
+ * WHY IT EXISTS. This channel sent 32 emails and then went quiet on 2026-07-16.
+ * It had no recency bound of any kind, so the first run after that silence
+ * proposed **316 emails** — students being nudged about papers they had sat up to
+ * two months earlier, from an address whose DMARC policy is `p=quarantine` and
+ * whose sending reputation is built on 32 messages. The decision (2026-09-19) was
+ * that the channel resumes HENCEFORTH and never as a backfill.
+ *
+ * Mirrors the `SINCE` const in send-mock-report.ts, and is a const rather than a
+ * flag for the same reason: a cutoff that can be passed per-run is a cutoff
+ * somebody eventually passes `0` to at 2am.
+ */
+const ACTIVITY_SINCE = new Date("2026-09-19T00:00:00Z");
 import { buildEmail } from "../../src/lib/email/templates";
 import { sendEmail, sleep, THROTTLE_MS, emailEnv } from "../../src/lib/email/resend";
 import {
@@ -55,7 +72,14 @@ async function main() {
       `${attempts.length} attempts · ${priorSends.length} prior sends`
   );
 
-  let recipients = pickRecipients({ students, mocks, attempts, priorSends, now: Date.now() });
+  let recipients = pickRecipients({
+    students,
+    mocks,
+    attempts,
+    priorSends,
+    now: Date.now(),
+    activitySince: ACTIVITY_SINCE.getTime(),
+  });
   if (only) recipients = recipients.filter((r) => r.email.toLowerCase() === only);
   if (limit !== undefined) recipients = recipients.slice(0, limit);
 

@@ -5,6 +5,7 @@ import {
   MIN_ACCOUNT_AGE_MS,
   COOLDOWN_MS,
   FIRST_MOCK_PAPER,
+  isAbandonedAttempt,
   type StudentLite,
   type MockLite,
   type AttemptLite,
@@ -69,6 +70,9 @@ function attempt(over: Partial<AttemptLite> = {}): AttemptLite {
     expiresAt: iso(NOW - 5 * DAY + 9000 * 1000),
     score: 120,
     maxScore: 300,
+    // A genuine sitting by default. Tests that care about abandonment set this
+    // low explicitly — see the ENGAGEMENT_FLOOR block below.
+    answeredCount: 120,
     ...over,
   };
 }
@@ -77,8 +81,11 @@ const run = (
   students: StudentLite[],
   mocks: MockLite[] = CATALOGUE,
   attempts: AttemptLite[] = [],
-  priorSends: PriorSend[] = []
-) => pickRecipients({ students, mocks, attempts, priorSends, now: NOW });
+  priorSends: PriorSend[] = [],
+  // 0 = no forward-only cutoff, which is what every test written before the
+  // cutoff existed assumed. The cutoff has its own block below.
+  activitySince = 0
+) => pickRecipients({ students, mocks, attempts, priorSends, now: NOW, activitySince });
 
 describe("isUndeliverable", () => {
   // Live leak, 2026-07-07: the billing tests stranded
@@ -351,5 +358,116 @@ describe("pickRecipients — batch behaviour", () => {
 
   it("handles no students", () => {
     expect(run([])).toHaveLength(0);
+  });
+});
+
+
+describe("isAbandonedAttempt — an abandoned tab is not a sitting", () => {
+  it("calls an attempt answering under the floor abandoned", () => {
+    // ENGAGEMENT_FLOOR is 0.2 and is REUSED from lib/performance/compute.ts,
+    // not redefined here — two floors would be free to drift.
+    expect(isAbandonedAttempt(attempt({ answeredCount: 0 }), 120)).toBe(true);
+    expect(isAbandonedAttempt(attempt({ answeredCount: 23 }), 120)).toBe(true);
+  });
+
+  it("calls an attempt AT the floor a genuine sitting", () => {
+    expect(isAbandonedAttempt(attempt({ answeredCount: 24 }), 120)).toBe(false);
+  });
+
+  it("treats a paper of unknown length as abandoned rather than guessing", () => {
+    // Dividing by zero would make every such attempt look fully engaged, which
+    // is the wrong direction: it would put a fabricated score in a subject line.
+    expect(isAbandonedAttempt(attempt({ answeredCount: 0 }), 0)).toBe(true);
+  });
+});
+
+describe("the score hook never quotes an abandoned attempt", () => {
+  // THE LIVE CASE, 2026-09-19: the expiry sweep graded 118 abandoned attempts,
+  // and 70 students' most recent attempt became one of them — 44 scoring zero.
+  // Unguarded, those students receive "0/600 last time — ready for the next
+  // paper?" about a paper they walked away from. The engagement gate forbids a
+  // bare score as feedback, and the score is not even true of their ability.
+  it("skips the abandoned attempt and quotes the last GENUINE sitting", () => {
+    const out = run(
+      [student()],
+      CATALOGUE,
+      [
+        attempt({ mockId: "mm25a", score: 210, maxScore: 300, answeredCount: 118,
+                  startedAt: iso(NOW - 9 * DAY) }),
+        // Swept: expired with nothing answered, and it is the most RECENT.
+        attempt({ mockId: "mm25s", status: "expired", score: 0, maxScore: 300,
+                  answeredCount: 0, startedAt: iso(NOW - 2 * DAY) }),
+      ]
+    );
+    expect(out).toHaveLength(1);
+    expect(out[0].lastScore?.score).toBe(210);
+  });
+
+  it("returns NO score hook when every sitting was abandoned", () => {
+    // Better to send the email with no score than to invent one. It must not
+    // fall back to the abandoned attempt just because nothing else exists.
+    const out = run(
+      [student()],
+      CATALOGUE,
+      [attempt({ status: "expired", score: 0, maxScore: 300, answeredCount: 0 })]
+    );
+    expect(out).toHaveLength(1);
+    expect(out[0].lastScore).toBeNull();
+  });
+});
+
+describe("forward-only cutoff — emails go out henceforth, never as a backfill", () => {
+  // Without this the channel had no recency bound at all: dormant since
+  // 2026-07-16, its first run would have mailed 316 students about activity up
+  // to two months old. mock_report already had a SINCE const; this had none.
+  const CUTOFF = NOW - 3 * DAY;
+
+  it("skips a student whose last sitting predates the cutoff", () => {
+    const out = run(
+      [student()],
+      CATALOGUE,
+      [attempt({ startedAt: iso(NOW - 30 * DAY) })],
+      [],
+      CUTOFF
+    );
+    expect(out).toEqual([]);
+  });
+
+  it("emails a student who sat a paper after the cutoff", () => {
+    const out = run(
+      [student()],
+      CATALOGUE,
+      [attempt({ startedAt: iso(NOW - 1 * DAY) })],
+      [],
+      CUTOFF
+    );
+    expect(out).toHaveLength(1);
+    expect(out[0].kind).toBe("next_mock");
+  });
+
+  it("skips the activation email for an account older than the cutoff", () => {
+    // A student who signed up two months ago and never sat anything is backlog,
+    // not a new arrival — exactly what "henceforth, not backfill" excludes.
+    const out = run([student({ createdAt: iso(NOW - 30 * DAY) })], CATALOGUE, [], [], CUTOFF);
+    expect(out).toEqual([]);
+  });
+
+  it("still sends the activation email to a genuinely new account", () => {
+    const out = run([student({ createdAt: iso(NOW - 2.5 * DAY) })], CATALOGUE, [], [], CUTOFF);
+    expect(out).toHaveLength(1);
+    expect(out[0].kind).toBe("first_mock");
+  });
+
+  it("an ABANDONED attempt after the cutoff does not count as activity", () => {
+    // Otherwise the sweep's own 118 rows would each look like fresh engagement
+    // and re-open the backfill it was meant to close.
+    const out = run(
+      [student()],
+      CATALOGUE,
+      [attempt({ status: "expired", score: 0, answeredCount: 0, startedAt: iso(NOW - 1 * DAY) })],
+      [],
+      CUTOFF
+    );
+    expect(out).toEqual([]);
   });
 });
