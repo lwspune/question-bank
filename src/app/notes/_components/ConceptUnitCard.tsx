@@ -221,6 +221,8 @@ import OcnSpringNeapTides from "./visualizations/OcnSpringNeapTides";
 import OcnCoralReefTypes from "./visualizations/OcnCoralReefTypes";
 import CdsUnitDigitCycleWheel from "./visualizations/CdsUnitDigitCycleWheel";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
+import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
+import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
 export function renderVisualization(slug: VisualizationSlug) {
@@ -639,6 +641,10 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsUnitDigitCycleWheel />;
     case "cds-rational-irrational-line":
       return <CdsRationalIrrationalLine />;
+    case "logic-switch-series-parallel":
+      return <LogicSwitchSeriesParallel />;
+    case "logic-circuit-simplification":
+      return <LogicCircuitSimplification />;
   }
 }
 
