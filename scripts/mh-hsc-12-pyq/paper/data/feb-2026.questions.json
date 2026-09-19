@@ -1,0 +1,594 @@
+[
+  {
+    "ref": "Q. 1. (i)",
+    "format": "mcq",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "difficulty": "MODERATE",
+    "stem": "The converse of contrapositive of \\(\\sim p \\rightarrow q\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(q \\rightarrow p\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sim q \\rightarrow p\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(p \\rightarrow \\sim q\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sim q \\rightarrow \\sim p\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(p \\rightarrow \\sim q\\)\n\nWrite the given statement \\(\\sim p \\rightarrow q\\) in the form \\(A \\rightarrow B\\), with \\(A \\equiv \\sim p\\) and \\(B \\equiv q\\).\n\nThe contrapositive of \\(A \\rightarrow B\\) is \\(\\sim B \\rightarrow \\sim A\\).\n\n\\(\\therefore\\) the contrapositive of \\(\\sim p \\rightarrow q\\) is \\(\\sim q \\rightarrow \\sim(\\sim p)\\), i.e. \\(\\sim q \\rightarrow p\\).\n\nThe converse of \\(X \\rightarrow Y\\) is \\(Y \\rightarrow X\\). Taking \\(X \\equiv \\sim q\\) and \\(Y \\equiv p\\),\n\n\\(\\therefore\\) the converse of \\(\\sim q \\rightarrow p\\) is \\(p \\rightarrow \\sim q\\).\n\nChecking against the original: the converse of the contrapositive of a statement is its inverse, and the inverse of \\(\\sim p \\rightarrow q\\) is \\(\\sim(\\sim p) \\rightarrow \\sim q\\), i.e. \\(p \\rightarrow \\sim q\\) ; the same statement, reached by a different route."
+  },
+  {
+    "ref": "Q. 1. (ii)",
+    "format": "mcq",
+    "chapter": "Matrices",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -4 \\\\ 3 & 1 \\end{bmatrix}\\), then the adjoint of matrix \\(A\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\begin{bmatrix} 1 & 3 \\\\ 4 & -2 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\begin{bmatrix} -1 & 3 \\\\ -4 & 1 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\begin{bmatrix} -1 & -3 \\\\ -4 & 2 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\begin{bmatrix} 1 & 4 \\\\ -3 & 2 \\end{bmatrix}\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\(\\begin{bmatrix} 1 & 4 \\\\ -3 & 2 \\end{bmatrix}\\)\n\nFor a \\(2 \\times 2\\) matrix \\(A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\), the adjoint is the transpose of the cofactor matrix, which works out to \\(\\text{adj}(A) = \\begin{bmatrix} d & -b \\\\ -c & a \\end{bmatrix}\\) : the diagonal entries swap and the off-diagonal entries change sign.\n\nHere \\(a = 2\\), \\(b = -4\\), \\(c = 3\\), \\(d = 1\\).\n\n\\(\\therefore \\text{adj}(A) = \\begin{bmatrix} 1 & 4 \\\\ -3 & 2 \\end{bmatrix}\\)\n\nChecking by the defining property \\(A \\cdot \\text{adj}(A) = |A| \\cdot I\\):\n\n\\(|A| = (2)(1) - (-4)(3) = 2 + 12 = 14\\), and\n\n\\(\\begin{bmatrix} 2 & -4 \\\\ 3 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 4 \\\\ -3 & 2 \\end{bmatrix} = \\begin{bmatrix} 14 & 0 \\\\ 0 & 14 \\end{bmatrix} = 14 I\\), as required."
+  },
+  {
+    "ref": "Q. 1. (iii)",
+    "format": "mcq",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\tan^{-1}(2x) + \\tan^{-1}(3x) = \\frac{\\pi}{4}\\), then \\(x =\\) _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3}{2}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\frac{1}{6}\\)\n\nUsing \\(\\tan^{-1} A + \\tan^{-1} B = \\tan^{-1}\\left(\\frac{A + B}{1 - AB}\\right)\\) with \\(A = 2x\\) and \\(B = 3x\\),\n\n\\(\\tan^{-1}\\left(\\frac{2x + 3x}{1 - 6x^{2}}\\right) = \\frac{\\pi}{4}\\)\n\n\\(\\frac{5x}{1 - 6x^{2}} = \\tan\\frac{\\pi}{4} = 1\\)\n\n\\(5x = 1 - 6x^{2}\\)\n\n\\(6x^{2} + 5x - 1 = 0\\)\n\n\\((6x - 1)(x + 1) = 0\\), so \\(x = \\frac{1}{6}\\) or \\(x = -1\\).\n\nThe addition formula is valid only while \\(AB < 1\\), so both roots must be tested in the original equation.\n\nFor \\(x = -1\\): \\(\\tan^{-1}(-2) + \\tan^{-1}(-3) = -\\frac{3\\pi}{4} \\neq \\frac{\\pi}{4}\\), so \\(x = -1\\) is extraneous.\n\nFor \\(x = \\frac{1}{6}\\): \\(\\tan^{-1}\\left(\\frac{1}{3}\\right) + \\tan^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{4}\\), which satisfies the equation.\n\n\\(\\therefore x = \\frac{1}{6}\\)"
+  },
+  {
+    "ref": "Q. 1. (iv)",
+    "format": "mcq",
+    "chapter": "Line and Planes",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "difficulty": "MODERATE",
+    "stem": "The angle between the line \\(\\bar{r} = (\\hat{i} + 2\\hat{j} + \\hat{k}) + \\lambda(\\hat{i} + \\hat{j} + \\hat{k})\\) and the plane \\(\\bar{r} \\cdot (2\\hat{i} - \\hat{j} + \\hat{k}) = 8\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sin^{-1}\\left(\\frac{\\sqrt{2}}{3}\\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sin^{-1}\\left(\\frac{\\sqrt{3}}{2}\\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin^{-1}\\left(\\frac{1}{2}\\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sin^{-1}\\left(\\frac{1}{\\sqrt{2}}\\right)\\)"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(\\sin^{-1}\\left(\\frac{\\sqrt{2}}{3}\\right)\\)\n\nFor a line with direction vector \\(\\bar{b}\\) and a plane with normal \\(\\bar{n}\\), the angle \\(\\theta\\) between them satisfies\n\n\\(\\sin\\theta = \\frac{|\\bar{b} \\cdot \\bar{n}|}{|\\bar{b}||\\bar{n}|}\\)\n\nHere \\(\\bar{b} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\bar{n} = 2\\hat{i} - \\hat{j} + \\hat{k}\\).\n\n\\(\\bar{b} \\cdot \\bar{n} = (1)(2) + (1)(-1) + (1)(1) = 2\\)\n\n\\(|\\bar{b}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\), \\(|\\bar{n}| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\)\n\n\\(\\sin\\theta = \\frac{2}{\\sqrt{3}\\sqrt{6}} = \\frac{2}{\\sqrt{18}} = \\frac{2}{3\\sqrt{2}} = \\frac{\\sqrt{2}}{3}\\)\n\n\\(\\therefore \\theta = \\sin^{-1}\\left(\\frac{\\sqrt{2}}{3}\\right)\\)\n\nThe value \\(\\frac{\\sqrt{2}}{3} \\approx 0.471\\) lies in \\([0, 1]\\), so it is a legitimate sine and the angle is acute, as it must be for a line meeting a plane. The constant \\(8\\) on the right of the plane's equation fixes the plane's position, not its normal, so it does not enter the angle."
+  },
+  {
+    "ref": "Q. 1. (v)",
+    "format": "mcq",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = \\sec\\left(\\tan^{-1} x\\right)\\), then \\(\\frac{dy}{dx}\\) at \\(x = 1\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sqrt{2}\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\frac{1}{\\sqrt{2}}\\)\n\nPut \\(\\tan^{-1} x = \\theta\\), so \\(\\tan\\theta = x\\) and \\(y = \\sec\\theta\\).\n\nSince \\(\\sec^{2}\\theta = 1 + \\tan^{2}\\theta\\),\n\n\\(y = \\sqrt{1 + x^{2}}\\)\n\n\\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{1 + x^{2}}} \\cdot 2x = \\frac{x}{\\sqrt{1 + x^{2}}}\\)\n\nAt \\(x = 1\\):\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\sqrt{1 + 1}} = \\frac{1}{\\sqrt{2}}\\)\n\n\\(\\therefore \\left.\\frac{dy}{dx}\\right|_{x=1} = \\frac{1}{\\sqrt{2}}\\)\n\nAs a check, \\(\\frac{x}{\\sqrt{1+x^{2}}}\\) is bounded by \\(1\\) for every real \\(x\\), and its value at \\(x=1\\) is \\(0.7071\\), consistent with the derivative of \\(\\sqrt{1+x^2}\\) at that point."
+  },
+  {
+    "ref": "Q. 1. (vi)",
+    "format": "mcq",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Approximations",
+    "difficulty": "EASY",
+    "stem": "The approximate value of the function \\(f(x) = x^{3} - 3x + 5\\) at \\(x = 1.99\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "6.09"
+      },
+      {
+        "label": "B",
+        "text": "6.91"
+      },
+      {
+        "label": "C",
+        "text": "7.09"
+      },
+      {
+        "label": "D",
+        "text": "7.91"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(6.91\\)\n\nTake \\(a = 2\\) and \\(h = -0.01\\), so that \\(a + h = 1.99\\).\n\n\\(f(x) = x^{3} - 3x + 5\\), so \\(f'(x) = 3x^{2} - 3\\).\n\n\\(f(2) = 8 - 6 + 5 = 7\\)\n\n\\(f'(2) = 12 - 3 = 9\\)\n\nBy the approximation \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\n\\(f(1.99) \\approx 7 + (-0.01)(9) = 7 - 0.09 = 6.91\\)\n\n\\(\\therefore\\) the approximate value is \\(6.91\\).\n\nEvaluating exactly, \\(f(1.99) = 6.910599\\), so the linear approximation is in error by about \\(0.0006\\) , which is small, as it should be for \\(|h| = 0.01\\)."
+  },
+  {
+    "ref": "Q. 1. (vii)",
+    "format": "mcq",
+    "chapter": "Definite Integration",
+    "subtopic": "Methods of Evaluation of Definite Integrals",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\int_{1}^{2} \\frac{1}{x^{2}} \\cdot e^{\\frac{1}{x}} dx =\\) _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{e} + 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sqrt{e} - 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{e}(\\sqrt{e} - 1)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{e} - 1}{e}\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\sqrt{e}(\\sqrt{e} - 1)\\)\n\nPut \\(t = \\frac{1}{x}\\). Then \\(dt = -\\frac{1}{x^{2}}dx\\), so \\(\\frac{1}{x^{2}}dx = -dt\\).\n\nWhen \\(x = 1\\), \\(t = 1\\); when \\(x = 2\\), \\(t = \\frac{1}{2}\\).\n\n\\(\\int_{1}^{2}\\frac{1}{x^{2}}e^{\\frac{1}{x}}dx = -\\int_{1}^{\\frac{1}{2}} e^{t}dt = \\int_{\\frac{1}{2}}^{1} e^{t}dt\\)\n\n\\(= \\left[e^{t}\\right]_{\\frac{1}{2}}^{1} = e - e^{\\frac{1}{2}} = e - \\sqrt{e}\\)\n\n\\(\\therefore \\int_{1}^{2}\\frac{1}{x^{2}}e^{\\frac{1}{x}}dx = \\sqrt{e}\\left(\\sqrt{e} - 1\\right)\\)\n\nNumerically \\(e - \\sqrt{e} = 2.71828 - 1.64872 = 1.06956\\), and the integrand is positive throughout \\([1, 2]\\), so a positive value is expected."
+  },
+  {
+    "ref": "Q. 1. (viii)",
+    "format": "mcq",
+    "chapter": "Probability Distributions",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "difficulty": "MODERATE",
+    "stem": "If the p.d.f. of a continuous r.v. \\(X\\) is\n\n\\(f(x) = \\frac{x + 2}{18}\\), for \\(-2 < x < 4\\)\n\n\\(= 0\\), otherwise\n\nthen \\(P(|X| < 1) =\\) _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{9}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{2}{9}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{27}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2}{27}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\frac{2}{9}\\)\n\nFirst confirm the given function is a probability density function on \\((-2, 4)\\):\n\n\\(\\int_{-2}^{4}\\frac{x + 2}{18}dx = \\frac{1}{18}\\left[\\frac{x^{2}}{2} + 2x\\right]_{-2}^{4} = \\frac{1}{18}\\left[(8 + 8) - (2 - 4)\\right] = \\frac{18}{18} = 1\\)\n\nand \\(\\frac{x + 2}{18} \\geq 0\\) for every \\(x\\) in \\((-2, 4)\\), so it is a genuine p.d.f.\n\nThe event \\(|X| < 1\\) is the interval \\(-1 < x < 1\\), which lies inside the support.\n\n\\(P(|X| < 1) = \\int_{-1}^{1}\\frac{x + 2}{18}dx = \\frac{1}{18}\\left[\\frac{x^{2}}{2} + 2x\\right]_{-1}^{1}\\)\n\n\\(= \\frac{1}{18}\\left[\\left(\\frac{1}{2} + 2\\right) - \\left(\\frac{1}{2} - 2\\right)\\right] = \\frac{1}{18}(4) = \\frac{2}{9}\\)\n\n\\(\\therefore P(|X| < 1) = \\frac{2}{9}\\)\n\nThe interval \\((-1, 1)\\) is \\(\\frac{1}{3}\\) of the support but sits in its lower, lighter half, so a probability below \\(\\frac{1}{3}\\) is consistent."
+  },
+  {
+    "ref": "Q. 2. (i)",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "difficulty": "EASY",
+    "stem": "Write the dual of \\((p \\vee q) \\vee r \\equiv p \\vee (q \\vee r)\\)",
+    "solution": "The dual of a statement is obtained by interchanging \\(\\land\\) with \\(\\vee\\), and \\(t\\) (tautology) with \\(c\\) (contradiction), leaving the variables and their negations unchanged.\n\nIn \\((p \\vee q) \\vee r \\equiv p \\vee (q \\vee r)\\) every connective is \\(\\vee\\), and neither \\(t\\) nor \\(c\\) occurs, so each \\(\\vee\\) is replaced by \\(\\land\\).\n\n\\(\\therefore\\) the dual is \\((p \\land q) \\land r \\equiv p \\land (q \\land r)\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (ii)",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Inverse Trigonometric Functions and Principal Values",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\cos^{-1}\\left(\\frac{1}{2}\\right) + 2\\sin^{-1}\\left(\\frac{1}{2}\\right)\\)",
+    "solution": "\\(\\cos^{-1}\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\pi}{3}\\), since \\(\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\) and \\(\\dfrac{\\pi}{3}\\) lies in \\([0, \\pi]\\), the principal range of \\(\\cos^{-1}\\).\n\n\\(\\sin^{-1}\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\pi}{6}\\), since \\(\\sin\\dfrac{\\pi}{6} = \\dfrac{1}{2}\\) and \\(\\dfrac{\\pi}{6}\\) lies in \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\), the principal range of \\(\\sin^{-1}\\).\n\n\\(\\therefore \\cos^{-1}\\left(\\dfrac{1}{2}\\right) + 2\\sin^{-1}\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\pi}{3} + 2\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iii)",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\int \\frac{2x}{1 + x^{2}} dx\\)",
+    "solution": "Put \\(1 + x^{2} = t\\). Differentiating, \\(2x\\,dx = dt\\).\n\n\\(\\therefore \\int \\dfrac{2x}{1 + x^{2}}dx = \\int \\dfrac{dt}{t} = \\log|t| + c = \\log\\left(1 + x^{2}\\right) + c\\), since \\(1 + x^{2} > 0\\) for every real \\(x\\).\n\nCheck: \\(\\dfrac{d}{dx}\\left[\\log\\left(1 + x^{2}\\right) + c\\right] = \\dfrac{1}{1 + x^{2}} \\times 2x = \\dfrac{2x}{1 + x^{2}}\\), which is the given integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iv)",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "difficulty": "EASY",
+    "stem": "Write the degree of the differential equation \\((y''')^{2} + 3(y'')^{3} + 3xy' + 5y = 0\\)",
+    "solution": "In \\(\\left(y'''\\right)^{2} + 3\\left(y''\\right)^{3} + 3xy' + 5y = 0\\) the highest-order derivative present is \\(y''' = \\dfrac{d^{3}y}{dx^{3}}\\).\n\nEvery derivative occurs raised to a positive integer power, with no radical and no derivative inside a transcendental function, so the equation is a polynomial in the derivatives and its degree is defined. The degree is the power to which the HIGHEST-ORDER derivative is raised, and \\(y'''\\) is raised to the power \\(2\\) (the power \\(3\\) belongs to \\(y''\\), which is of lower order).\n\n\\(\\therefore\\) the degree of the differential equation is \\(2\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 3",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "EASY",
+    "stem": "Construct the switching circuit of the statement pattern \\((\\sim p \\wedge q) \\vee (p \\wedge \\sim r)\\).",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(r\\): the switch \\(S_{3}\\) is closed. Then \\(\\sim p\\) and \\(\\sim r\\) stand for the switches \\(S_{1}'\\) and \\(S_{3}'\\), which are closed exactly when \\(S_{1}\\) and \\(S_{3}\\) respectively are open.\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\nSo \\((\\sim p \\land q) \\vee (p \\land \\sim r)\\) is a **parallel combination of two branches**:\n\n- **Branch 1** \\((\\sim p \\land q)\\): the switch \\(S_{1}'\\) in series with the switch \\(S_{2}\\).\n- **Branch 2** \\((p \\land \\sim r)\\): the switch \\(S_{1}\\) in series with the switch \\(S_{3}'\\).\n\n\\(\\therefore\\) the two branches are joined in parallel between the same two junctions, and this parallel block is connected in series with the lamp \\(L\\) and the battery to complete the circuit.\n\n(There is no figure to draw here, so the circuit is described in words; the description above fixes it completely.)",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 4",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), prove that \\(a(b\\cos C - c\\cos B) = b^{2} - c^{2}\\).",
+    "solution": "By the cosine rule,\n\n\\(\\cos C = \\dfrac{a^{2} + b^{2} - c^{2}}{2ab}\\)  and  \\(\\cos B = \\dfrac{a^{2} + c^{2} - b^{2}}{2ac}\\).\n\nL.H.S. \\(= a\\left(b\\cos C - c\\cos B\\right)\\)\n\n\\(= a\\left[b \\times \\dfrac{a^{2} + b^{2} - c^{2}}{2ab} - c \\times \\dfrac{a^{2} + c^{2} - b^{2}}{2ac}\\right]\\)\n\nThe \\(b\\) cancels in the first bracket and the \\(c\\) in the second,\n\n\\(= a\\left[\\dfrac{a^{2} + b^{2} - c^{2}}{2a} - \\dfrac{a^{2} + c^{2} - b^{2}}{2a}\\right]\\)\n\n\\(= \\dfrac{\\left(a^{2} + b^{2} - c^{2}\\right) - \\left(a^{2} + c^{2} - b^{2}\\right)}{2}\\)\n\n\\(= \\dfrac{a^{2} + b^{2} - c^{2} - a^{2} - c^{2} + b^{2}}{2} = \\dfrac{2b^{2} - 2c^{2}}{2}\\)\n\n\\(\\therefore\\) L.H.S. \\(= b^{2} - c^{2} = \\) R.H.S.\n\nHence, in \\(\\Delta ABC\\), \\(a\\left(b\\cos C - c\\cos B\\right) = b^{2} - c^{2}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 5",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of \\(4\\cos^{2}\\theta = 3\\).",
+    "solution": "We have \\(4\\cos^{2}\\theta = 3\\).\n\n\\(\\therefore \\cos^{2}\\theta = \\dfrac{3}{4}\\)\n\n\\(\\therefore \\cos^{2}\\theta = \\left(\\dfrac{\\sqrt{3}}{2}\\right)^{2} = \\cos^{2}\\dfrac{\\pi}{6}\\), since \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\).\n\nThe general solution of \\(\\cos^{2}\\theta = \\cos^{2}\\alpha\\) is \\(\\theta = n\\pi \\pm \\alpha\\), where \\(n \\in Z\\).\n\n\\(\\therefore\\) with \\(\\alpha = \\dfrac{\\pi}{6}\\), the general solution of \\(4\\cos^{2}\\theta = 3\\) is\n\n\\(\\theta = n\\pi \\pm \\dfrac{\\pi}{6}\\), where \\(n \\in Z\\).\n\nCheck: \\(\\theta = \\dfrac{\\pi}{6}\\) gives \\(4\\left(\\dfrac{\\sqrt{3}}{2}\\right)^{2} = 4 \\times \\dfrac{3}{4} = 3\\); \\(\\theta = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}\\) gives \\(4\\left(-\\dfrac{\\sqrt{3}}{2}\\right)^{2} = 3\\). Both satisfy the equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 6",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation of a Pair of Lines",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(k\\), if the sum of the slopes of the lines represented by \\(x^{2} + kxy - 3y^{2} = 0\\) is twice their product.",
+    "solution": "Comparing \\(x^{2} + kxy - 3y^{2} = 0\\) with \\(ax^{2} + 2hxy + by^{2} = 0\\), we get \\(a = 1\\), \\(2h = k\\), \\(b = -3\\).\n\nIf \\(m_{1}\\) and \\(m_{2}\\) are the slopes of the lines represented by this equation, then\n\n\\(m_{1} + m_{2} = -\\dfrac{2h}{b} = -\\dfrac{k}{-3} = \\dfrac{k}{3}\\)\n\n\\(m_{1}m_{2} = \\dfrac{a}{b} = \\dfrac{1}{-3} = -\\dfrac{1}{3}\\)\n\nGiven: the sum of the slopes is twice their product.\n\n\\(\\therefore m_{1} + m_{2} = 2\\,m_{1}m_{2}\\)\n\n\\(\\therefore \\dfrac{k}{3} = 2\\left(-\\dfrac{1}{3}\\right) = -\\dfrac{2}{3}\\)\n\n\\(\\therefore k = -2\\)\n\nCheck: with \\(k = -2\\) the equation is \\(x^{2} - 2xy - 3y^{2} = 0\\), i.e. \\((x - 3y)(x + y) = 0\\), so the separate lines are \\(x - 3y = 0\\) and \\(x + y = 0\\), with slopes \\(\\dfrac{1}{3}\\) and \\(-1\\). Their sum is \\(-\\dfrac{2}{3}\\) and their product is \\(-\\dfrac{1}{3}\\), and \\(-\\dfrac{2}{3} = 2\\left(-\\dfrac{1}{3}\\right)\\), so the sum is indeed twice the product.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 7",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(p\\), for which the vectors \\(\\bar{a} = 3\\hat{i} + 2\\hat{j} + 9\\hat{k}\\) and \\(\\bar{b} = \\hat{i} + p\\hat{j} + 3\\hat{k}\\) are perpendicular to each other.",
+    "solution": "Two non-zero vectors are perpendicular to each other if and only if their dot product is zero.\n\nHere \\(\\bar{a} = 3\\hat{i} + 2\\hat{j} + 9\\hat{k}\\) and \\(\\bar{b} = \\hat{i} + p\\hat{j} + 3\\hat{k}\\).\n\n\\(\\bar{a} \\cdot \\bar{b} = (3)(1) + (2)(p) + (9)(3) = 3 + 2p + 27 = 2p + 30\\)\n\nSince \\(\\bar{a}\\) and \\(\\bar{b}\\) are perpendicular to each other, \\(\\bar{a} \\cdot \\bar{b} = 0\\).\n\n\\(\\therefore 2p + 30 = 0\\)\n\n\\(\\therefore 2p = -30\\)\n\n\\(\\therefore p = -15\\)\n\nCheck: with \\(p = -15\\), \\(\\bar{b} = \\hat{i} - 15\\hat{j} + 3\\hat{k}\\) and \\(\\bar{a} \\cdot \\bar{b} = 3 - 30 + 27 = 0\\), so the two vectors really are perpendicular.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 8",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "difficulty": "EASY",
+    "stem": "Find the vector equation of the line passing through the points \\(A(1, 2, 3)\\) and \\(B(2, 3, 4)\\).",
+    "solution": "The vector equation of the line passing through the points \\(A(\\bar{a})\\) and \\(B(\\bar{b})\\) is\n\n\\(\\bar{r} = \\bar{a} + \\lambda\\left(\\bar{b} - \\bar{a}\\right)\\), where \\(\\lambda \\in R\\).\n\nHere \\(A(1, 2, 3)\\) and \\(B(2, 3, 4)\\), so \\(\\bar{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) and \\(\\bar{b} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\).\n\n\\(\\therefore \\bar{b} - \\bar{a} = (2 - 1)\\hat{i} + (3 - 2)\\hat{j} + (4 - 3)\\hat{k} = \\hat{i} + \\hat{j} + \\hat{k}\\)\n\n\\(\\therefore \\bar{r} = \\left(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\right) + \\lambda\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right)\\), where \\(\\lambda \\in R\\), is the required vector equation of the line.\n\nCheck: \\(\\lambda = 0\\) gives \\(\\bar{r} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), the position vector of \\(A\\), and \\(\\lambda = 1\\) gives \\(\\bar{r} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\), the position vector of \\(B\\). So the line passes through both \\(A\\) and \\(B\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 9",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{a}\\).",
+    "solution": "Given \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{a}\\), i.e. \\(x^{\\frac{1}{2}} + y^{\\frac{1}{2}} = a^{\\frac{1}{2}}\\), where \\(a\\) is a constant.\n\nHere \\(y\\) is an implicit function of \\(x\\), so differentiate both sides w. r. t. \\(x\\) and apply the chain rule to the term in \\(y\\). The right side is a constant, so its derivative is \\(0\\).\n\n\\(\\frac{d}{dx}\\left(x^{\\frac{1}{2}}\\right) + \\frac{d}{dx}\\left(y^{\\frac{1}{2}}\\right) = \\frac{d}{dx}\\left(a^{\\frac{1}{2}}\\right)\\)\n\n\\(\\frac{1}{2}x^{-\\frac{1}{2}} + \\frac{1}{2}y^{-\\frac{1}{2}} \\cdot \\frac{dy}{dx} = 0\\)\n\n\\(\\frac{1}{2\\sqrt{x}} + \\frac{1}{2\\sqrt{y}} \\cdot \\frac{dy}{dx} = 0\\)\n\n\\(\\frac{1}{2\\sqrt{y}} \\cdot \\frac{dy}{dx} = -\\frac{1}{2\\sqrt{x}}\\)\n\nMultiplying both sides by \\(2\\sqrt{y}\\),\n\n\\(\\therefore \\frac{dy}{dx} = -\\frac{\\sqrt{y}}{\\sqrt{x}}\\)\n\nCheck by making \\(y\\) explicit: from the given equation \\(\\sqrt{y} = \\sqrt{a} - \\sqrt{x}\\), so \\(y = \\left(\\sqrt{a} - \\sqrt{x}\\right)^{2}\\) and\n\n\\(\\frac{dy}{dx} = 2\\left(\\sqrt{a} - \\sqrt{x}\\right) \\cdot \\left(-\\frac{1}{2\\sqrt{x}}\\right) = -\\frac{\\sqrt{a} - \\sqrt{x}}{\\sqrt{x}} = -\\frac{\\sqrt{y}}{\\sqrt{x}}\\),\n\nthe same result.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 10",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Higher Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{d^{2}y}{dx^{2}}\\), if \\(y = x^{3} + 7x^{2} - 2x - 9\\).",
+    "solution": "Given \\(y = x^{3} + 7x^{2} - 2x - 9\\).\n\nDifferentiate w. r. t. \\(x\\) term by term, using \\(\\frac{d}{dx}\\left(x^{n}\\right) = nx^{n-1}\\),\n\n\\(\\frac{dy}{dx} = 3x^{2} + 7(2x) - 2(1) - 0\\)\n\n\\(\\frac{dy}{dx} = 3x^{2} + 14x - 2\\)\n\nDifferentiate once more w. r. t. \\(x\\),\n\n\\(\\frac{d^{2}y}{dx^{2}} = \\frac{d}{dx}\\left(3x^{2} + 14x - 2\\right) = 3(2x) + 14(1) - 0\\)\n\n\\(\\therefore \\frac{d^{2}y}{dx^{2}} = 6x + 14 = 2(3x + 7)\\)\n\nCheck by integrating back: \\(\\int (6x + 14)\\,dx = 3x^{2} + 14x + c\\), which is \\(\\frac{dy}{dx}\\) when \\(c = -2\\); and \\(\\int \\left(3x^{2} + 14x - 2\\right)dx = x^{3} + 7x^{2} - 2x + c_{1}\\), which is the given \\(y\\) when \\(c_{1} = -9\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 11",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function \\(f(x) = x^{3} + 6x^{2} + 12x - 7\\) is increasing or decreasing for all \\(x \\in R\\).",
+    "solution": "Given \\(f(x) = x^{3} + 6x^{2} + 12x - 7\\), for all \\(x \\in R\\).\n\nA function is increasing on an interval where \\(f'(x) \\geq 0\\) throughout it, and decreasing where \\(f'(x) \\leq 0\\) throughout it. So find \\(f'(x)\\) and settle its sign.\n\nDifferentiate w. r. t. \\(x\\),\n\n\\(f'(x) = 3x^{2} + 12x + 12\\)\n\nTaking \\(3\\) common,\n\n\\(f'(x) = 3\\left(x^{2} + 4x + 4\\right)\\)\n\nHere \\(x^{2} + 4x + 4 = (x + 2)^{2}\\), a perfect square, so\n\n\\(f'(x) = 3(x + 2)^{2}\\)\n\nThe square of a real number is never negative, so \\((x + 2)^{2} \\geq 0\\) for every \\(x \\in R\\), and therefore\n\n\\(f'(x) = 3(x + 2)^{2} \\geq 0\\) for all \\(x \\in R\\).\n\nFurther, \\(f'(x) = 0\\) only at the single point \\(x = -2\\), and \\(f'(x) > 0\\) at every other real \\(x\\). A derivative vanishing at one isolated point does not stop the function rising through it.\n\n\\(\\therefore f(x) = x^{3} + 6x^{2} + 12x - 7\\) is an increasing function for all \\(x \\in R\\).\n\nCheck with three values straddling \\(x = -2\\): \\(f(-3) = -27 + 54 - 36 - 7 = -16\\), \\(f(-2) = -8 + 24 - 24 - 7 = -15\\) and \\(f(-1) = -1 + 6 - 12 - 7 = -14\\). The values rise as \\(x\\) rises, even across the point where the derivative is \\(0\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 12",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Derivative as a Rate Measure",
+    "difficulty": "MODERATE",
+    "stem": "A stone is dropped into a quiet lake and waves in the form of circles are generated. Radius of the circular wave increases at the rate of 3 cm/sec. How fast the area enclosed is increasing when the radius is 8 cm?",
+    "solution": "Let \\(r\\) cm be the radius and \\(A\\) sq. cm the area enclosed by the circular wave at time \\(t\\) seconds.\n\nGiven: \\(\\frac{dr}{dt} = 3\\) cm/sec.\n\nRequired: \\(\\frac{dA}{dt}\\) when \\(r = 8\\) cm.\n\nThe wave is a circle, so\n\n\\(A = \\pi r^{2}\\)\n\nDifferentiate both sides w. r. t. \\(t\\). Here \\(r\\) is a function of \\(t\\), so by the chain rule\n\n\\(\\frac{dA}{dt} = \\pi \\cdot 2r \\cdot \\frac{dr}{dt} = 2\\pi r \\cdot \\frac{dr}{dt}\\)\n\nSubstituting \\(r = 8\\) and \\(\\frac{dr}{dt} = 3\\),\n\n\\(\\frac{dA}{dt} = 2\\pi (8)(3) = 48\\pi\\)\n\n\\(\\therefore\\) the enclosed area is increasing at the rate of \\(48\\pi\\) sq. cm/sec, i.e. about \\(150.80\\) sq. cm/sec.\n\nCheck over a short interval: in \\(0.01\\) sec the radius grows from \\(8\\) cm to \\(8.03\\) cm, so the area changes from \\(\\pi(8)^{2} = 64\\pi\\) to \\(\\pi(8.03)^{2} = 64.4809\\pi\\), a change of \\(0.4809\\pi\\) sq. cm in \\(0.01\\) sec. That is an average rate of \\(48.09\\pi\\) sq. cm/sec, which agrees with the instantaneous rate \\(48\\pi\\) sq. cm/sec.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 13",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\int \\sqrt{1 + \\sin 2x} \\cdot dx\\)",
+    "solution": "Let \\(I = \\int \\sqrt{1 + \\sin 2x} \\cdot dx\\).\n\nFirst write the expression under the radical as a perfect square, using \\(\\sin^{2}x + \\cos^{2}x = 1\\) and \\(\\sin 2x = 2\\sin x \\cos x\\),\n\n\\(1 + \\sin 2x = \\sin^{2}x + \\cos^{2}x + 2\\sin x \\cos x\\)\n\n\\(= (\\sin x + \\cos x)^{2}\\)\n\nHence \\(\\sqrt{1 + \\sin 2x} = \\left|\\sin x + \\cos x\\right|\\). The convention taken here is the usual one for this integral: the integration is carried out on an interval on which \\(\\sin x + \\cos x \\geq 0\\), so the modulus sign can be dropped.\n\n\\(I = \\int (\\sin x + \\cos x)\\,dx\\)\n\n\\(= \\int \\sin x \\, dx + \\int \\cos x \\, dx\\)\n\n\\(= -\\cos x + \\sin x + c\\)\n\n\\(\\therefore \\int \\sqrt{1 + \\sin 2x} \\cdot dx = \\sin x - \\cos x + c\\)\n\nCheck by differentiating the answer: \\(\\frac{d}{dx}\\left(\\sin x - \\cos x + c\\right) = \\cos x + \\sin x\\), and \\((\\cos x + \\sin x)^{2} = \\cos^{2}x + \\sin^{2}x + 2\\sin x\\cos x = 1 + \\sin 2x\\), so this derivative is \\(\\sqrt{1 + \\sin 2x}\\) on the interval taken.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 14",
+    "format": "subjective",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean and Variance of a Binomial Distribution",
+    "difficulty": "EASY",
+    "stem": "Given that, \\(X \\sim B(n, p)\\), if \\(n = 10\\), \\(E(X) = 8\\) then find \\(\\text{Var}(X)\\).",
+    "solution": "Given \\(X \\sim B(n, p)\\) with \\(n = 10\\) and \\(E(X) = 8\\).\n\nFor a binomial distribution the mean is\n\n\\(E(X) = np\\)\n\nSubstituting the given values,\n\n\\(10p = 8\\)\n\n\\(p = \\frac{8}{10} = \\frac{4}{5} = 0.8\\)\n\n\\(q = 1 - p = 1 - \\frac{4}{5} = \\frac{1}{5} = 0.2\\)\n\nFor a binomial distribution the variance is\n\n\\(\\text{Var}(X) = npq\\)\n\n\\(= 10 \\times \\frac{4}{5} \\times \\frac{1}{5}\\)\n\n\\(= \\frac{40}{25} = \\frac{8}{5}\\)\n\n\\(\\therefore \\text{Var}(X) = 1.6\\)\n\nCheck: \\(npq = (np) \\cdot q = E(X) \\cdot q = 8 \\times 0.2 = 1.6\\), the same value. Also, for \\(n = 10\\) the variance \\(npq = 10p(1 - p)\\) is largest at \\(p = \\frac{1}{2}\\), where it equals \\(2.5\\); since \\(p = 0.8\\) lies away from \\(\\frac{1}{2}\\), a variance of \\(1.6\\) below that maximum is consistent.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 15",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "difficulty": "MODERATE",
+    "stem": "Examine whether the statement pattern \\((p \\wedge q) \\wedge (\\sim p \\vee \\sim q)\\) is a tautology or contradiction or contingency.",
+    "solution": "Prepare the truth table for the statement pattern \\((p \\land q) \\land (\\sim p \\vee \\sim q)\\). With two statements \\(p\\) and \\(q\\) there are \\(2^{2} = 4\\) combinations of truth values, so the table has 4 rows.\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\land q\\) | \\(\\sim p \\vee \\sim q\\) | \\((p \\land q) \\land (\\sim p \\vee \\sim q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | F | F | T | F | F |\n| T | F | F | T | F | T | F |\n| F | T | T | F | F | T | F |\n| F | F | T | T | F | T | F |\n\nEvery entry in the last column is F, so the statement pattern is false for every possible combination of the truth values of \\(p\\) and \\(q\\).\n\n\\(\\therefore\\) the statement pattern \\((p \\land q) \\land (\\sim p \\vee \\sim q)\\) is a contradiction.\n\nCheck with the algebra of statements: by De Morgan's law \\(\\sim p \\vee \\sim q \\equiv \\sim (p \\land q)\\), so the given pattern is \\((p \\land q) \\land \\sim (p \\land q)\\). This has the form \\(s \\land \\sim s\\), which is false for either truth value of \\(s\\), and that matches the all-F last column.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 16",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), if \\(A = 45^{\\circ}\\), \\(B = 60^{\\circ}\\) then find the ratio of its sides.",
+    "solution": "In \\(\\Delta ABC\\), \\(A = 45^{\\circ}\\) and \\(B = 60^{\\circ}\\).\n\nThe angles of a triangle add up to \\(180^{\\circ}\\),\n\n\\(A + B + C = 180^{\\circ}\\)\n\n\\(45^{\\circ} + 60^{\\circ} + C = 180^{\\circ}\\)\n\n\\(\\therefore C = 75^{\\circ}\\)\n\nBy the sine rule, \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = k\\), say, so that \\(a = k\\sin A\\), \\(b = k\\sin B\\), \\(c = k\\sin C\\) and hence\n\n\\(a : b : c = \\sin A : \\sin B : \\sin C = \\sin 45^{\\circ} : \\sin 60^{\\circ} : \\sin 75^{\\circ}\\)\n\nNow \\(\\sin 45^{\\circ} = \\frac{1}{\\sqrt{2}}\\) and \\(\\sin 60^{\\circ} = \\frac{\\sqrt{3}}{2}\\), while \\(75^{\\circ} = 45^{\\circ} + 30^{\\circ}\\) gives\n\n\\(\\sin 75^{\\circ} = \\sin 45^{\\circ}\\cos 30^{\\circ} + \\cos 45^{\\circ}\\sin 30^{\\circ}\\)\n\n\\(= \\frac{1}{\\sqrt{2}} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{1}{\\sqrt{2}} \\cdot \\frac{1}{2} = \\frac{\\sqrt{3} + 1}{2\\sqrt{2}}\\)\n\nTherefore\n\n\\(a : b : c = \\frac{1}{\\sqrt{2}} : \\frac{\\sqrt{3}}{2} : \\frac{\\sqrt{3} + 1}{2\\sqrt{2}}\\)\n\nMultiplying every term by \\(2\\sqrt{2}\\), which is non-zero and so leaves the ratio unchanged,\n\n\\(\\frac{1}{\\sqrt{2}} \\times 2\\sqrt{2} = 2\\), \\(\\quad \\frac{\\sqrt{3}}{2} \\times 2\\sqrt{2} = \\sqrt{6}\\), \\(\\quad \\frac{\\sqrt{3} + 1}{2\\sqrt{2}} \\times 2\\sqrt{2} = \\sqrt{3} + 1\\)\n\n\\(\\therefore a : b : c = 2 : \\sqrt{6} : \\left(\\sqrt{3} + 1\\right)\\)\n\nCheck numerically: \\(2 : \\sqrt{6} : \\left(\\sqrt{3} + 1\\right) = 2 : 2.4495 : 2.7321\\), and dividing through by \\(2\\) gives \\(1 : 1.2247 : 1.3660\\). The three sines are \\(0.7071 : 0.8660 : 0.9659\\), and dividing those by \\(0.7071\\) gives \\(1 : 1.2247 : 1.3660\\) as well. The largest side is the one opposite the largest angle \\(C = 75^{\\circ}\\), and \\(2 + 2.4495 > 2.7321\\), so the triangle inequality holds.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 17",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Section Formula",
+    "difficulty": "EASY",
+    "stem": "If two vertices of a triangle are \\(A(3, 1, 4)\\) and \\(B(-4, 5, -3)\\) and the centroid of the triangle is \\(G(-1, 2, 1)\\), then find the coordinates of the third vertex \\(C\\) of the triangle.",
+    "solution": "Let \\(\\bar{a}\\), \\(\\bar{b}\\), \\(\\bar{c}\\) and \\(\\bar{g}\\) be the position vectors of the vertices \\(A\\), \\(B\\), \\(C\\) and of the centroid \\(G\\) of \\(\\Delta ABC\\), referred to the origin \\(O\\).\n\nGiven \\(A(3, 1, 4)\\), \\(B(-4, 5, -3)\\) and \\(G(-1, 2, 1)\\), so\n\n\\(\\bar{a} = 3\\hat{i} + \\hat{j} + 4\\hat{k}\\), \\(\\quad \\bar{b} = -4\\hat{i} + 5\\hat{j} - 3\\hat{k}\\), \\(\\quad \\bar{g} = -\\hat{i} + 2\\hat{j} + \\hat{k}\\)\n\nThe centroid \\(G\\) lies on the median through \\(A\\) and divides it in the ratio \\(2 : 1\\) from the vertex. Applying the section formula to that median, with \\(\\frac{\\bar{b} + \\bar{c}}{2}\\) as the position vector of the mid-point of \\(BC\\),\n\n\\(\\bar{g} = \\frac{2 \\cdot \\frac{\\bar{b} + \\bar{c}}{2} + 1 \\cdot \\bar{a}}{2 + 1} = \\frac{\\bar{a} + \\bar{b} + \\bar{c}}{3}\\)\n\n\\(\\therefore \\bar{a} + \\bar{b} + \\bar{c} = 3\\bar{g}\\)\n\n\\(\\therefore \\bar{c} = 3\\bar{g} - \\bar{a} - \\bar{b}\\)\n\n\\(= 3\\left(-\\hat{i} + 2\\hat{j} + \\hat{k}\\right) - \\left(3\\hat{i} + \\hat{j} + 4\\hat{k}\\right) - \\left(-4\\hat{i} + 5\\hat{j} - 3\\hat{k}\\right)\\)\n\n\\(= \\left(-3\\hat{i} + 6\\hat{j} + 3\\hat{k}\\right) - 3\\hat{i} - \\hat{j} - 4\\hat{k} + 4\\hat{i} - 5\\hat{j} + 3\\hat{k}\\)\n\nCollecting like terms,\n\n\\(= (-3 - 3 + 4)\\hat{i} + (6 - 1 - 5)\\hat{j} + (3 - 4 + 3)\\hat{k}\\)\n\n\\(= -2\\hat{i} + 0 \\cdot \\hat{j} + 2\\hat{k}\\)\n\n\\(\\therefore\\) the third vertex is \\(C \\equiv (-2, 0, 2)\\).\n\nCheck by recomputing the centroid from all three vertices:\n\n\\(\\left(\\frac{3 + (-4) + (-2)}{3},\\ \\frac{1 + 5 + 0}{3},\\ \\frac{4 + (-3) + 2}{3}\\right) = \\left(\\frac{-3}{3},\\ \\frac{6}{3},\\ \\frac{3}{3}\\right) = (-1, 2, 1)\\),\n\nwhich is the given centroid \\(G\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 18",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "If \\(D\\), \\(E\\), \\(F\\) are the mid-points of the sides \\(BC\\), \\(CA\\), \\(AB\\) respectively of \\(\\Delta ABC\\), then prove that \\(\\overline{AD} + \\overline{BE} + \\overline{CF} = \\bar{0}\\).",
+    "solution": "Let \\(\\bar{a}\\), \\(\\bar{b}\\), \\(\\bar{c}\\) be the position vectors of the vertices \\(A\\), \\(B\\), \\(C\\) respectively, with respect to some origin \\(O\\).\n\n\\(D\\), \\(E\\), \\(F\\) are the mid-points of \\(BC\\), \\(CA\\), \\(AB\\), so by the mid-point formula their position vectors are\n\\(\\bar{d} = \\frac{\\bar{b} + \\bar{c}}{2}\\), \\(\\bar{e} = \\frac{\\bar{c} + \\bar{a}}{2}\\), \\(\\bar{f} = \\frac{\\bar{a} + \\bar{b}}{2}\\)\n\nFor any two points \\(P\\), \\(Q\\) with position vectors \\(\\bar{p}\\), \\(\\bar{q}\\) we have \\(\\overline{PQ} = \\bar{q} - \\bar{p}\\). Hence\n\\(\\overline{AD} = \\bar{d} - \\bar{a} = \\frac{\\bar{b} + \\bar{c}}{2} - \\bar{a} = \\frac{\\bar{b} + \\bar{c} - 2\\bar{a}}{2}\\)\n\\(\\overline{BE} = \\bar{e} - \\bar{b} = \\frac{\\bar{c} + \\bar{a}}{2} - \\bar{b} = \\frac{\\bar{c} + \\bar{a} - 2\\bar{b}}{2}\\)\n\\(\\overline{CF} = \\bar{f} - \\bar{c} = \\frac{\\bar{a} + \\bar{b}}{2} - \\bar{c} = \\frac{\\bar{a} + \\bar{b} - 2\\bar{c}}{2}\\)\n\nAdding the three results,\n\\(\\overline{AD} + \\overline{BE} + \\overline{CF} = \\frac{1}{2}\\left[\\left(\\bar{b} + \\bar{c} - 2\\bar{a}\\right) + \\left(\\bar{c} + \\bar{a} - 2\\bar{b}\\right) + \\left(\\bar{a} + \\bar{b} - 2\\bar{c}\\right)\\right]\\)\n\nCollect the like terms inside the bracket. The coefficient of \\(\\bar{a}\\) is \\(-2 + 1 + 1 = 0\\), the coefficient of \\(\\bar{b}\\) is \\(1 - 2 + 1 = 0\\) and the coefficient of \\(\\bar{c}\\) is \\(1 + 1 - 2 = 0\\).\n\\(= \\frac{1}{2}\\left[0 \\cdot \\bar{a} + 0 \\cdot \\bar{b} + 0 \\cdot \\bar{c}\\right] = \\frac{1}{2}\\,\\bar{0}\\)\n\n\\(\\therefore \\overline{AD} + \\overline{BE} + \\overline{CF} = \\bar{0}\\), as required.\n\nThe origin \\(O\\) never entered the final expression, so the result holds for every choice of origin.\n\nCheck with a particular triangle \\(A(0, 0)\\), \\(B(4, 0)\\), \\(C(0, 6)\\): the mid-points are \\(D(2, 3)\\), \\(E(0, 3)\\), \\(F(2, 0)\\), so \\(\\overline{AD} = 2\\hat{i} + 3\\hat{j}\\), \\(\\overline{BE} = -4\\hat{i} + 3\\hat{j}\\), \\(\\overline{CF} = 2\\hat{i} - 6\\hat{j}\\), and their sum is \\((2 - 4 + 2)\\hat{i} + (3 + 3 - 6)\\hat{j} = \\bar{0}\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 19",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Coplanarity of Two Lines",
+    "difficulty": "HARD",
+    "stem": "Show that the lines \\(\\bar{r} = (\\hat{i} + \\hat{j} - \\hat{k}) + \\lambda(2\\hat{i} - 2\\hat{j} + \\hat{k})\\) and \\(\\bar{r} = (4\\hat{i} - 3\\hat{j} + 2\\hat{k}) + \\mu(\\hat{i} - 2\\hat{j} + 2\\hat{k})\\) intersect each other.",
+    "solution": "The given lines are\n\\(\\bar{r} = \\left(\\hat{i} + \\hat{j} - \\hat{k}\\right) + \\lambda\\left(2\\hat{i} - 2\\hat{j} + \\hat{k}\\right)\\) ... (I)\n\\(\\bar{r} = \\left(4\\hat{i} - 3\\hat{j} + 2\\hat{k}\\right) + \\mu\\left(\\hat{i} - 2\\hat{j} + 2\\hat{k}\\right)\\) ... (II)\n\nTwo lines intersect when some value of \\(\\lambda\\) and some value of \\(\\mu\\) give the SAME position vector, i.e. when the three component equations are consistent.\n\nFrom (I), a general point on the first line is\n\\(\\left(1 + 2\\lambda\\right)\\hat{i} + \\left(1 - 2\\lambda\\right)\\hat{j} + \\left(-1 + \\lambda\\right)\\hat{k}\\)\nFrom (II), a general point on the second line is\n\\(\\left(4 + \\mu\\right)\\hat{i} + \\left(-3 - 2\\mu\\right)\\hat{j} + \\left(2 + 2\\mu\\right)\\hat{k}\\)\n\nEquating the corresponding components,\n\\(1 + 2\\lambda = 4 + \\mu\\) ... (III)\n\\(1 - 2\\lambda = -3 - 2\\mu\\) ... (IV)\n\\(-1 + \\lambda = 2 + 2\\mu\\) ... (V)\n\nSolve (III) and (IV) first. From (III),\n\\(\\mu = 2\\lambda - 3\\)\n\nSubstitute this in (IV),\n\\(1 - 2\\lambda = -3 - 2\\left(2\\lambda - 3\\right)\\)\n\\(1 - 2\\lambda = -3 - 4\\lambda + 6\\)\n\\(1 - 2\\lambda = 3 - 4\\lambda\\)\n\\(\\therefore 2\\lambda = 2\\)\n\\(\\therefore \\lambda = 1\\), and then \\(\\mu = 2(1) - 3 = -1\\)\n\nThese two values were found from the first two equations only, so they must still be tested in the third. If (V) failed, the lines would be skew. Putting \\(\\lambda = 1\\) and \\(\\mu = -1\\) in (V),\nL.H.S. \\(= -1 + \\lambda = -1 + 1 = 0\\)\nR.H.S. \\(= 2 + 2\\mu = 2 + 2(-1) = 0\\)\nL.H.S. \\(=\\) R.H.S., so all three equations are satisfied together.\n\n\\(\\therefore\\) the two given lines intersect each other.\n\nPutting \\(\\lambda = 1\\) in (I), the point of intersection is\n\\(\\bar{r} = \\left(1 + 2\\right)\\hat{i} + \\left(1 - 2\\right)\\hat{j} + \\left(-1 + 1\\right)\\hat{k} = 3\\hat{i} - \\hat{j}\\)\n\nCheck: putting \\(\\mu = -1\\) in (II) gives \\(\\left(4 - 1\\right)\\hat{i} + \\left(-3 + 2\\right)\\hat{j} + \\left(2 - 2\\right)\\hat{k} = 3\\hat{i} - \\hat{j}\\), the same point \\((3, -1, 0)\\). Both lines pass through it.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 20",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Equations of a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the cartesian equation of the plane \\(\\bar{r} = (\\hat{i} - \\hat{j}) + \\lambda(\\hat{i} + \\hat{j} + \\hat{k}) + \\mu(\\hat{i} - 2\\hat{j} + 3\\hat{k})\\).",
+    "solution": "The given plane is\n\\(\\bar{r} = \\left(\\hat{i} - \\hat{j}\\right) + \\lambda\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) + \\mu\\left(\\hat{i} - 2\\hat{j} + 3\\hat{k}\\right)\\)\n\nThis is of the form \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b} + \\mu\\bar{c}\\). So the plane passes through the point \\(A\\) whose position vector is\n\\(\\bar{a} = \\hat{i} - \\hat{j} + 0\\hat{k}\\), i.e. \\(A \\equiv (1, -1, 0)\\)\nand it is parallel to the two vectors\n\\(\\bar{b} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\bar{c} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\)\n\nA normal \\(\\bar{n}\\) to the plane is perpendicular to both \\(\\bar{b}\\) and \\(\\bar{c}\\), so take \\(\\bar{n} = \\bar{b} \\times \\bar{c}\\).\n\n\\(\\bar{b} \\times \\bar{c} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ 1 & -2 & 3 \\end{vmatrix}\\)\n\\(= \\hat{i}\\left[(1)(3) - (1)(-2)\\right] - \\hat{j}\\left[(1)(3) - (1)(1)\\right] + \\hat{k}\\left[(1)(-2) - (1)(1)\\right]\\)\n\\(= \\hat{i}\\left(3 + 2\\right) - \\hat{j}\\left(3 - 1\\right) + \\hat{k}\\left(-2 - 1\\right)\\)\n\\(= 5\\hat{i} - 2\\hat{j} - 3\\hat{k}\\)\n\nThe equation of a plane through \\(\\bar{a}\\) with normal \\(\\bar{n}\\) is \\(\\bar{r} \\cdot \\bar{n} = \\bar{a} \\cdot \\bar{n}\\).\n\\(\\bar{a} \\cdot \\bar{n} = (1)(5) + (-1)(-2) + (0)(-3) = 5 + 2 + 0 = 7\\)\n\\(\\therefore \\bar{r} \\cdot \\left(5\\hat{i} - 2\\hat{j} - 3\\hat{k}\\right) = 7\\)\n\nPut \\(\\bar{r} = x\\hat{i} + y\\hat{j} + z\\hat{k}\\),\n\\(\\left(x\\hat{i} + y\\hat{j} + z\\hat{k}\\right) \\cdot \\left(5\\hat{i} - 2\\hat{j} - 3\\hat{k}\\right) = 7\\)\n\n\\(\\therefore\\) the cartesian equation of the plane is \\(5x - 2y - 3z = 7\\).\n\nCheck by testing three points that the parametric form produces. \\(\\lambda = \\mu = 0\\) gives \\((1, -1, 0)\\) and \\(5(1) - 2(-1) - 3(0) = 7\\); \\(\\lambda = 1, \\mu = 0\\) gives \\((2, 0, 1)\\) and \\(10 - 0 - 3 = 7\\); \\(\\lambda = 0, \\mu = 1\\) gives \\((2, -3, 3)\\) and \\(10 + 6 - 9 = 7\\). All three satisfy the equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 21",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "HARD",
+    "stem": "If \\(y = f(u)\\) is a differentiable function of \\(u\\) and \\(u = g(x)\\) is a differentiable function of \\(x\\) then prove that \\(y\\) is a differentiable function of \\(x\\) and \\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\).",
+    "solution": "To prove: if \\(y = f(u)\\) is a differentiable function of \\(u\\) and \\(u = g(x)\\) is a differentiable function of \\(x\\), then \\(y = f\\left[g(x)\\right]\\) is a differentiable function of \\(x\\) and\n\\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\)\n\nProof:\n\nLet \\(\\delta x\\) be a small increment in \\(x\\), with \\(\\delta x \\neq 0\\). Let \\(\\delta u\\) be the corresponding increment in \\(u = g(x)\\), and \\(\\delta y\\) the corresponding increment in \\(y = f(u)\\).\n\nSince \\(u = g(x)\\) is differentiable at \\(x\\), it is continuous at \\(x\\). Hence a small change in \\(x\\) produces a small change in \\(u\\), that is,\n\\(\\delta u \\rightarrow 0\\) as \\(\\delta x \\rightarrow 0\\) ... (I)\n\nTake \\(\\delta u \\neq 0\\) for all sufficiently small \\(\\delta x \\neq 0\\), so that \\(\\frac{\\delta y}{\\delta u}\\) is defined. Then, multiplying and dividing by \\(\\delta u\\),\n\\(\\frac{\\delta y}{\\delta x} = \\frac{\\delta y}{\\delta u} \\times \\frac{\\delta u}{\\delta x}\\) ... (II)\n\nTake the limit of both sides of (II) as \\(\\delta x \\rightarrow 0\\),\n\\(\\lim_{\\delta x \\rightarrow 0}\\frac{\\delta y}{\\delta x} = \\lim_{\\delta x \\rightarrow 0}\\left(\\frac{\\delta y}{\\delta u} \\times \\frac{\\delta u}{\\delta x}\\right)\\)\n\\(= \\lim_{\\delta x \\rightarrow 0}\\frac{\\delta y}{\\delta u} \\times \\lim_{\\delta x \\rightarrow 0}\\frac{\\delta u}{\\delta x}\\)\n\nBy (I), \\(\\delta u \\rightarrow 0\\) as \\(\\delta x \\rightarrow 0\\), so in the first factor the limiting process \\(\\delta x \\rightarrow 0\\) may be replaced by \\(\\delta u \\rightarrow 0\\),\n\\(= \\lim_{\\delta u \\rightarrow 0}\\frac{\\delta y}{\\delta u} \\times \\lim_{\\delta x \\rightarrow 0}\\frac{\\delta u}{\\delta x}\\)\n\nNow \\(y = f(u)\\) is a differentiable function of \\(u\\), so\n\\(\\lim_{\\delta u \\rightarrow 0}\\frac{\\delta y}{\\delta u} = \\frac{dy}{du}\\) exists and is finite,\nand \\(u = g(x)\\) is a differentiable function of \\(x\\), so\n\\(\\lim_{\\delta x \\rightarrow 0}\\frac{\\delta u}{\\delta x} = \\frac{du}{dx}\\) exists and is finite.\n\nBoth the limits on the right-hand side exist and are finite, so their product exists. Hence the limit on the left-hand side, \\(\\lim_{\\delta x \\rightarrow 0}\\frac{\\delta y}{\\delta x}\\), also exists and is finite, which means \\(y\\) is a differentiable function of \\(x\\) and that limit is \\(\\frac{dy}{dx}\\).\n\n\\(\\therefore \\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\)\n\nHence proved. This result is the chain rule.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 22",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Lagrange's Mean Value Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Verify LMVT for the function \\(f(x) = \\log x\\), on \\([1, e]\\).",
+    "solution": "Given: \\(f(x) = \\log x\\) on \\([1, e]\\). Here \\(a = 1\\) and \\(b = e\\).\n\nBefore a value of \\(c\\) can be found, both hypotheses of Lagrange's Mean Value Theorem must be checked on this interval.\n\n(i) \\(\\log x\\) is defined and continuous for every \\(x > 0\\). The interval \\([1, e]\\) lies entirely in \\((0, \\infty)\\), so \\(f\\) is continuous on the closed interval \\([1, e]\\).\n\n(ii) \\(\\frac{d}{dx}\\left(\\log x\\right) = \\frac{1}{x}\\), which exists for every \\(x > 0\\). In particular \\(f\\) is differentiable at every point of the open interval \\((1, e)\\).\n\nBoth conditions are satisfied, so L.M.V.T. is applicable and there exists at least one \\(c \\in (1, e)\\) such that\n\\(f'(c) = \\frac{f(b) - f(a)}{b - a}\\)\n\nHere\n\\(f(a) = f(1) = \\log 1 = 0\\)\n\\(f(b) = f(e) = \\log e = 1\\)\n\\(f'(x) = \\frac{1}{x}\\), so \\(f'(c) = \\frac{1}{c}\\)\n\nSubstituting these,\n\\(\\frac{1}{c} = \\frac{1 - 0}{e - 1} = \\frac{1}{e - 1}\\)\n\\(\\therefore c = e - 1\\)\n\nTaking \\(e = 2.7183\\) (to 4 decimal places), \\(c = 1.7183\\), and \\(1 < 1.7183 < 2.7183\\), so \\(c\\) does lie in the open interval \\((1, e)\\).\n\n\\(\\therefore\\) L.M.V.T. is verified for \\(f(x) = \\log x\\) on \\([1, e]\\), with \\(c = e - 1\\).\n\nCheck: \\(f'(c) = \\frac{1}{e - 1} = \\frac{1}{1.7183} = 0.5820\\), and the slope of the chord joining \\((1, 0)\\) and \\((e, 1)\\) is \\(\\frac{1 - 0}{2.7183 - 1} = \\frac{1}{1.7183} = 0.5820\\). The tangent at \\(x = c\\) and the chord have the same slope.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 23",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate : \\(\\int \\frac{\\sin x}{\\sin 3x} dx\\)",
+    "solution": "Let \\(I = \\int \\frac{\\sin x}{\\sin 3x}\\,dx\\).\n\nThe denominator is expanded so that the \\(\\sin x\\) in the numerator can be cancelled. Using\n\\(\\sin 3x = 3\\sin x - 4\\sin^{3}x = \\sin x\\left(3 - 4\\sin^{2}x\\right)\\)\n\n\\(\\therefore I = \\int \\frac{\\sin x}{\\sin x\\left(3 - 4\\sin^{2}x\\right)}\\,dx = \\int \\frac{1}{3 - 4\\sin^{2}x}\\,dx\\), where \\(\\sin x \\neq 0\\)\n\nDivide the numerator and the denominator by \\(\\cos^{2}x\\),\n\\(I = \\int \\frac{\\sec^{2}x}{3\\sec^{2}x - 4\\tan^{2}x}\\,dx\\)\n\nNow put \\(\\sec^{2}x = 1 + \\tan^{2}x\\) in the denominator,\n\\(3\\sec^{2}x - 4\\tan^{2}x = 3\\left(1 + \\tan^{2}x\\right) - 4\\tan^{2}x = 3 - \\tan^{2}x\\)\n\\(\\therefore I = \\int \\frac{\\sec^{2}x}{3 - \\tan^{2}x}\\,dx\\)\n\nSubstitute \\(t = \\tan x\\). Differentiating, \\(dt = \\sec^{2}x\\,dx\\),\n\\(I = \\int \\frac{dt}{3 - t^{2}} = \\int \\frac{dt}{\\left(\\sqrt{3}\\right)^{2} - t^{2}}\\)\n\nUsing \\(\\int \\frac{dt}{a^{2} - t^{2}} = \\frac{1}{2a}\\log\\left|\\frac{a + t}{a - t}\\right| + c\\) with \\(a = \\sqrt{3}\\),\n\\(I = \\frac{1}{2\\sqrt{3}}\\log\\left|\\frac{\\sqrt{3} + t}{\\sqrt{3} - t}\\right| + c\\)\n\nResubstitute \\(t = \\tan x\\),\n\n\\(\\therefore I = \\frac{1}{2\\sqrt{3}}\\log\\left|\\frac{\\sqrt{3} + \\tan x}{\\sqrt{3} - \\tan x}\\right| + c\\)\n\nCheck by differentiating this answer. Writing the logarithm of the quotient as a difference,\n\\(\\frac{d}{dx}\\left[\\frac{1}{2\\sqrt{3}}\\left(\\log\\left|\\sqrt{3} + \\tan x\\right| - \\log\\left|\\sqrt{3} - \\tan x\\right|\\right)\\right] = \\frac{1}{2\\sqrt{3}}\\left[\\frac{\\sec^{2}x}{\\sqrt{3} + \\tan x} + \\frac{\\sec^{2}x}{\\sqrt{3} - \\tan x}\\right]\\)\n\\(= \\frac{\\sec^{2}x}{2\\sqrt{3}} \\cdot \\frac{\\left(\\sqrt{3} - \\tan x\\right) + \\left(\\sqrt{3} + \\tan x\\right)}{3 - \\tan^{2}x} = \\frac{\\sec^{2}x}{2\\sqrt{3}} \\cdot \\frac{2\\sqrt{3}}{3 - \\tan^{2}x} = \\frac{\\sec^{2}x}{3 - \\tan^{2}x}\\)\nDividing the numerator and the denominator by \\(\\sec^{2}x\\) reverses the earlier step and gives \\(\\frac{1}{3 - 4\\sin^{2}x} = \\frac{\\sin x}{\\sin 3x}\\), which is the integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 24",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Solve the D.E. \\(3e^{x} \\tan y \\, dx + (1 + e^{x})\\sec^{2} y \\, dy = 0\\).",
+    "solution": "Given differential equation:\n\\(3e^{x}\\tan y\\,dx + \\left(1 + e^{x}\\right)\\sec^{2}y\\,dy = 0\\)\n\nThe \\(x\\) terms and the \\(y\\) terms can be separated. Divide throughout by \\(\\left(1 + e^{x}\\right)\\tan y\\), which is permissible for \\(\\tan y \\neq 0\\),\n\\(\\frac{3e^{x}}{1 + e^{x}}\\,dx + \\frac{\\sec^{2}y}{\\tan y}\\,dy = 0\\)\n\nIntegrating both sides,\n\\(3\\int \\frac{e^{x}}{1 + e^{x}}\\,dx + \\int \\frac{\\sec^{2}y}{\\tan y}\\,dy = \\log c\\)\n\nIn the first integral put \\(u = 1 + e^{x}\\), so that \\(du = e^{x}\\,dx\\).\nIn the second integral put \\(v = \\tan y\\), so that \\(dv = \\sec^{2}y\\,dy\\).\n\\(3\\int \\frac{du}{u} + \\int \\frac{dv}{v} = \\log c\\)\n\\(3\\log\\left|u\\right| + \\log\\left|v\\right| = \\log c\\)\n\\(3\\log\\left|1 + e^{x}\\right| + \\log\\left|\\tan y\\right| = \\log c\\)\n\nSince \\(e^{x} > 0\\) for all \\(x\\), we have \\(1 + e^{x} > 0\\), so the modulus on the first term may be dropped,\n\\(\\log\\left(1 + e^{x}\\right)^{3} + \\log\\left|\\tan y\\right| = \\log c\\)\n\\(\\log\\left[\\left(1 + e^{x}\\right)^{3}\\left|\\tan y\\right|\\right] = \\log c\\)\n\\(\\left(1 + e^{x}\\right)^{3}\\left|\\tan y\\right| = c\\)\n\n\\(\\therefore \\left(1 + e^{x}\\right)^{3}\\tan y = c\\), where \\(c\\) is an arbitrary constant. This is the general solution.\n\nCheck by differentiating the general solution. Treating it as a product and differentiating,\n\\(3\\left(1 + e^{x}\\right)^{2}e^{x}\\tan y\\,dx + \\left(1 + e^{x}\\right)^{3}\\sec^{2}y\\,dy = 0\\)\nDividing throughout by \\(\\left(1 + e^{x}\\right)^{2}\\),\n\\(3e^{x}\\tan y\\,dx + \\left(1 + e^{x}\\right)\\sec^{2}y\\,dy = 0\\), which is the given equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 25",
+    "format": "subjective",
+    "chapter": "Probability Distributions",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(E(X)\\) and \\(V(X)\\), where \\(X\\) is the number obtained on uppermost face, when a fair die is thrown.",
+    "solution": "When a fair die is thrown, the sample space is \\(S = \\{1, 2, 3, 4, 5, 6\\}\\), so \\(n(S) = 6\\). \\(X\\) is the number on the uppermost face, so \\(X\\) takes the values \\(1, 2, 3, 4, 5, 6\\). The die is fair, so all six faces are equally likely and\n\\(P(X = x) = \\frac{1}{6}\\) for \\(x = 1, 2, 3, 4, 5, 6\\)\n\nThe probability distribution of \\(X\\), together with the two columns needed for \\(E(X)\\) and \\(E\\left(X^{2}\\right)\\), is\n\n| \\(x_i\\) | \\(P(x_i)\\) | \\(x_i\\,P(x_i)\\) | \\(x_i^{2}\\,P(x_i)\\) |\n|---|---|---|---|\n| 1 | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) |\n| 2 | \\(\\frac{1}{6}\\) | \\(\\frac{2}{6}\\) | \\(\\frac{4}{6}\\) |\n| 3 | \\(\\frac{1}{6}\\) | \\(\\frac{3}{6}\\) | \\(\\frac{9}{6}\\) |\n| 4 | \\(\\frac{1}{6}\\) | \\(\\frac{4}{6}\\) | \\(\\frac{16}{6}\\) |\n| 5 | \\(\\frac{1}{6}\\) | \\(\\frac{5}{6}\\) | \\(\\frac{25}{6}\\) |\n| 6 | \\(\\frac{1}{6}\\) | \\(\\frac{6}{6}\\) | \\(\\frac{36}{6}\\) |\n| Total | 1 | \\(\\frac{21}{6}\\) | \\(\\frac{91}{6}\\) |\n\nThe column totals are \\(1 + 2 + 3 + 4 + 5 + 6 = 21\\) and \\(1 + 4 + 9 + 16 + 25 + 36 = 91\\), each divided by 6. The \\(P(x_i)\\) column totals 1, so the distribution is a valid one.\n\n\\(E(X) = \\sum x_i\\,P(x_i) = \\frac{21}{6} = \\frac{7}{2} = 3.5\\)\n\n\\(E\\left(X^{2}\\right) = \\sum x_i^{2}\\,P(x_i) = \\frac{91}{6}\\)\n\n\\(V(X) = E\\left(X^{2}\\right) - \\left[E(X)\\right]^{2}\\)\n\\(= \\frac{91}{6} - \\left(\\frac{7}{2}\\right)^{2} = \\frac{91}{6} - \\frac{49}{4}\\)\n\nTaking the L.C.M. of 6 and 4 as 12,\n\\(= \\frac{182}{12} - \\frac{147}{12} = \\frac{35}{12}\\)\n\n\\(\\therefore E(X) = \\frac{7}{2} = 3.5\\) and \\(V(X) = \\frac{35}{12} = 2.9167\\) (to 4 decimal places).\n\nCheck: \\(X\\) lies between 1 and 6 and its distribution is symmetric about the middle of that range, so the mean must be \\(\\frac{1 + 6}{2} = 3.5\\), which matches. The standard deviation is \\(\\sqrt{\\frac{35}{12}} = 1.7078\\), comfortably less than half the range \\(\\frac{6 - 1}{2} = 2.5\\), so the variance is of a sensible size.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 26",
+    "format": "subjective",
+    "chapter": "Binomial Distribution",
+    "subtopic": "The Binomial Distribution",
+    "difficulty": "MODERATE",
+    "stem": "A pair of dice is thrown 4 times. If getting a doublet is considered as success, find the probability of two successes.",
+    "solution": "A pair of dice is thrown 4 times. The throws are independent and the chance of a doublet is the same in each, so these are Bernoulli trials with \\(n = 4\\).\n\nWhen a pair of dice is thrown, the total number of equally likely outcomes is \\(6 \\times 6 = 36\\). A doublet means both dice show the same number, i.e. one of\n\\((1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)\\), which are 6 outcomes.\n\n\\(\\therefore p = P(\\text{success}) = P(\\text{doublet}) = \\frac{6}{36} = \\frac{1}{6}\\)\n\\(q = 1 - p = 1 - \\frac{1}{6} = \\frac{5}{6}\\)\n\nLet \\(X\\) denote the number of successes, i.e. the number of throws that give a doublet. Then \\(X \\sim B\\left(4, \\frac{1}{6}\\right)\\) and its p.m.f. is\n\\(P(X = x) = \\binom{n}{x}p^{x}q^{n - x} = \\binom{4}{x}\\left(\\frac{1}{6}\\right)^{x}\\left(\\frac{5}{6}\\right)^{4 - x}\\), \\(x = 0, 1, 2, 3, 4\\)\n\nTwo successes means \\(x = 2\\),\n\\(P(X = 2) = \\binom{4}{2}\\left(\\frac{1}{6}\\right)^{2}\\left(\\frac{5}{6}\\right)^{2}\\)\n\nHere \\(\\binom{4}{2} = \\frac{4 \\times 3}{2 \\times 1} = 6\\),\n\\(P(X = 2) = 6 \\times \\frac{1}{36} \\times \\frac{25}{36} = \\frac{150}{1296}\\)\n\nDividing the numerator and the denominator by 6,\n\\(\\therefore P(X = 2) = \\frac{25}{216} = 0.1157\\) (to 4 decimal places).\n\nCheck: the mean number of doublets in 4 throws is \\(np = 4 \\times \\frac{1}{6} = 0.67\\), so 2 successes is above the mean and its probability must be well below that of the most likely value \\(x = 0\\), for which \\(P(X = 0) = \\left(\\frac{5}{6}\\right)^{4} = \\frac{625}{1296} = 0.4823\\). The value \\(0.1157\\) sits between 0 and that, as it should.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 27",
+    "format": "subjective",
+    "chapter": "Matrices",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\), prove that \\(A \\cdot (\\text{adj } A) = (\\text{adj } A) \\cdot A = |A| \\cdot I\\)",
+    "solution": "\\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\)\n\n\\(|A| = \\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix} = (1)(4) - (2)(3) = 4 - 6 = -2\\)\n\nThe cofactor of an element \\(a_{ij}\\) is \\(A_{ij} = (-1)^{i+j} M_{ij}\\), where \\(M_{ij}\\) is its minor. For a \\(2 \\times 2\\) matrix the minor of an element is the single remaining element.\n\n\\(A_{11} = (-1)^{1+1}(4) = 4\\), \\(A_{12} = (-1)^{1+2}(3) = -3\\),\n\\(A_{21} = (-1)^{2+1}(2) = -2\\), \\(A_{22} = (-1)^{2+2}(1) = 1\\)\n\nThe adjoint is the TRANSPOSE of the matrix of cofactors:\n\n\\(\\text{adj } A = \\begin{bmatrix} A_{11} & A_{12} \\\\ A_{21} & A_{22} \\end{bmatrix}^{T} = \\begin{bmatrix} 4 & -3 \\\\ -2 & 1 \\end{bmatrix}^{T} = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix}\\)\n\nNow form the two products.\n\n\\(A \\cdot (\\text{adj } A) = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} (1)(4) + (2)(-3) & (1)(-2) + (2)(1) \\\\ (3)(4) + (4)(-3) & (3)(-2) + (4)(1) \\end{bmatrix} = \\begin{bmatrix} 4 - 6 & -2 + 2 \\\\ 12 - 12 & -6 + 4 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)\n\n\\((\\text{adj } A) \\cdot A = \\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix} = \\begin{bmatrix} (4)(1) + (-2)(3) & (4)(2) + (-2)(4) \\\\ (-3)(1) + (1)(3) & (-3)(2) + (1)(4) \\end{bmatrix} = \\begin{bmatrix} 4 - 6 & 8 - 8 \\\\ -3 + 3 & -6 + 4 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)\n\nAlso\n\n\\(|A| \\cdot I = (-2)\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 \\\\ 0 & -2 \\end{bmatrix}\\)\n\nAll three matrices are the same.\n\n\\(\\therefore A \\cdot (\\text{adj } A) = (\\text{adj } A) \\cdot A = |A| \\cdot I\\)\n\nCheck: since \\(|A| = -2 \\neq 0\\), dividing the result just proved by \\(|A|\\) gives \\(A^{-1} = \\dfrac{1}{|A|}(\\text{adj } A) = \\dfrac{1}{-2}\\begin{bmatrix} 4 & -2 \\\\ -3 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{bmatrix}\\), and\n\n\\(A A^{-1} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{bmatrix} = \\begin{bmatrix} -2 + 3 & 1 - 1 \\\\ -6 + 6 & 3 - 2 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\),\n\nwhich is consistent with the result proved.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 28",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation of a Pair of Lines",
+    "difficulty": "HARD",
+    "stem": "Show that every homogeneous equation of degree two in \\(x\\) and \\(y\\) i.e. \\(ax^{2} + 2hxy + by^{2} = 0\\), represents a pair of lines passing through the origin, if \\(h^{2} - ab \\geq 0\\)",
+    "solution": "Consider the homogeneous equation of degree two\n\\(ax^{2} + 2hxy + by^{2} = 0\\) ... (1)\n\n**Case 1: \\(b \\neq 0\\).**\nMultiply (1) by \\(b\\):\n\\(abx^{2} + 2hbxy + b^{2}y^{2} = 0\\)\n\\(\\therefore b^{2}y^{2} + 2(by)(hx) = -abx^{2}\\)\nAdd \\(h^{2}x^{2}\\) to both sides to complete the square in \\(by\\):\n\\((by)^{2} + 2(by)(hx) + h^{2}x^{2} = h^{2}x^{2} - abx^{2}\\)\n\\(\\therefore (by + hx)^{2} = (h^{2} - ab)x^{2}\\)\nSince \\(h^{2} - ab \\geq 0\\), \\(\\sqrt{h^{2} - ab}\\) is a real number, so taking square roots\n\\(by + hx = \\pm \\sqrt{h^{2} - ab}\\; x\\)\n\\(\\therefore \\left( hx + by - \\sqrt{h^{2} - ab}\\, x \\right)\\left( hx + by + \\sqrt{h^{2} - ab}\\, x \\right) = 0\\)\ni.e. \\(\\left( h - \\sqrt{h^{2} - ab} \\right)x + by = 0\\) and \\(\\left( h + \\sqrt{h^{2} - ab} \\right)x + by = 0\\).\nEach of these is a linear equation in \\(x\\) and \\(y\\) with no constant term, so each represents a line, and their product is (1). Hence (1) represents a pair of lines.\n\n**Case 2: \\(b = 0\\).**\nThen (1) becomes \\(ax^{2} + 2hxy = 0\\), i.e. \\(x(ax + 2hy) = 0\\), which is again a pair of lines \\(x = 0\\) and \\(ax + 2hy = 0\\). (Here \\(h^{2} - ab = h^{2} \\geq 0\\) automatically.)\n\n**Both lines pass through the origin:** in every case the equations obtained have no constant term, so \\((0, 0)\\) satisfies each of them. Equivalently, putting \\(x = 0, y = 0\\) in (1) gives \\(0 = 0\\).\n\nHence a homogeneous equation of degree two in \\(x\\) and \\(y\\) represents a pair of lines passing through the origin when \\(h^{2} - ab \\geq 0\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 29",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Section Formula",
+    "difficulty": "HARD",
+    "stem": "If \\(A(\\bar{a})\\) and \\(B(\\bar{b})\\) are any two points in space and \\(R(\\bar{r})\\) be a point on the line segment \\(AB\\) dividing internally in the ratio \\(m : n\\) then prove that \\(\\bar{r} = \\frac{m\\bar{b} + n\\bar{a}}{m + n}\\).",
+    "solution": "Let \\(O\\) be the origin of reference. Then \\(\\overline{OA} = \\bar{a}\\), \\(\\overline{OB} = \\bar{b}\\) and \\(\\overline{OR} = \\bar{r}\\).\n\n\\(R\\) lies on the segment \\(AB\\) and divides it internally in the ratio \\(m : n\\), so \\(R\\) lies BETWEEN \\(A\\) and \\(B\\), and\n\n\\(\\dfrac{AR}{RB} = \\dfrac{m}{n}\\), i.e. \\(n(AR) = m(RB)\\)\n\nBecause \\(R\\) is between \\(A\\) and \\(B\\), the vectors \\(\\overline{AR}\\) and \\(\\overline{RB}\\) point in the SAME direction, so this relation between lengths is also a relation between the vectors themselves:\n\n\\(n\\,\\overline{AR} = m\\,\\overline{RB}\\) ... (1)\n\nBy the triangle law of addition,\n\n\\(\\overline{AR} = \\overline{OR} - \\overline{OA} = \\bar{r} - \\bar{a}\\) and \\(\\overline{RB} = \\overline{OB} - \\overline{OR} = \\bar{b} - \\bar{r}\\)\n\nSubstituting in (1):\n\n\\(n(\\bar{r} - \\bar{a}) = m(\\bar{b} - \\bar{r})\\)\n\\(n\\bar{r} - n\\bar{a} = m\\bar{b} - m\\bar{r}\\)\n\\(m\\bar{r} + n\\bar{r} = m\\bar{b} + n\\bar{a}\\)\n\\((m + n)\\bar{r} = m\\bar{b} + n\\bar{a}\\)\n\nThe division being internal, \\(m > 0\\) and \\(n > 0\\), so \\(m + n \\neq 0\\) and we may divide by it.\n\n\\(\\therefore \\bar{r} = \\dfrac{m\\bar{b} + n\\bar{a}}{m + n}\\)\n\nCheck the result against the cases whose answer is already known: putting \\(m = n\\) gives \\(\\bar{r} = \\dfrac{\\bar{a} + \\bar{b}}{2}\\), the midpoint of \\(AB\\); letting \\(m \\rightarrow 0\\) gives \\(\\bar{r} = \\bar{a}\\), i.e. \\(R\\) moves to \\(A\\); letting \\(n \\rightarrow 0\\) gives \\(\\bar{r} = \\bar{b}\\), i.e. \\(R\\) moves to \\(B\\). All three agree with the geometry.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 30",
+    "format": "subjective",
+    "chapter": "Linear Programming",
+    "subtopic": "Graphical Solution of a Linear Programming Problem",
+    "difficulty": "MODERATE",
+    "stem": "Solve the L.P.P. graphically :\n\nMinimize : \\(z = 5x + 2y\\),\n\nSubject to, \\(5x + y \\geq 10\\), \\(x + y \\geq 6\\),\n\n\\(x \\geq 0\\), \\(y \\geq 0\\)",
+    "solution": "The feasible region should be drawn on graph paper; the corner-point work below is the complete solution and names every vertex the sketch must show.\n\nThe constraints are \\(5x + y \\geq 10\\), \\(x + y \\geq 6\\), \\(x \\geq 0\\), \\(y \\geq 0\\).\n\nBoundary lines: \\(5x + y = 10\\) meets the axes at \\((2, 0)\\) and \\((0, 10)\\); \\(x + y = 6\\) meets them at \\((6, 0)\\) and \\((0, 6)\\).\n\nOrigin test: at \\((0, 0)\\), \\(5x + y = 0 \\geq 10\\) is false and \\(x + y = 0 \\geq 6\\) is false, so for each inequation the feasible side is the side AWAY from the origin, boundaries included. Together with \\(x \\geq 0\\), \\(y \\geq 0\\) the feasible region lies in the first quadrant and is UNBOUNDED (it extends indefinitely upwards and to the right).\n\nCorner points:\n\n\\((0, 10)\\): \\(5x + y = 10\\) meets the Y-axis \\(x = 0\\); it satisfies \\(x + y = 10 \\geq 6\\), so it is feasible.\n\\((1, 5)\\): \\(5x + y = 10\\) meets \\(x + y = 6\\). Subtracting the second from the first, \\(4x = 4\\), so \\(x = 1\\) and \\(y = 6 - 1 = 5\\).\n\\((6, 0)\\): \\(x + y = 6\\) meets the X-axis \\(y = 0\\); it satisfies \\(5x + y = 30 \\geq 10\\), so it is feasible.\n\nThe other two axis intercepts are NOT corners of the region: at \\((0, 6)\\), \\(5x + y = 6 < 10\\); at \\((2, 0)\\), \\(x + y = 2 < 6\\).\n\n| Corner point | \\(z = 5x + 2y\\) |\n|---|---|\n| \\((0, 10)\\) | \\(5(0) + 2(10) = 20\\) |\n| \\((1, 5)\\) | \\(5(1) + 2(5) = 15\\) |\n| \\((6, 0)\\) | \\(5(6) + 2(0) = 30\\) |\n\nThe smallest corner value is \\(15\\), at \\((1, 5)\\).\n\nThe region is unbounded, so a corner value cannot be accepted as the minimum until the open half-plane \\(z < 15\\), i.e. \\(5x + 2y < 15\\), is shown to contain no feasible point. Multiply the two constraints by \\(\\frac{3}{4}\\) and \\(\\frac{5}{4}\\) and add them: for every feasible \\((x, y)\\),\n\n\\(\\frac{3}{4}(5x + y) + \\frac{5}{4}(x + y) \\geq \\frac{3}{4}(10) + \\frac{5}{4}(6)\\)\n\nThe left side is \\(\\frac{15x + 3y + 5x + 5y}{4} = \\frac{20x + 8y}{4} = 5x + 2y\\), and the right side is \\(7.5 + 7.5 = 15\\), so \\(5x + 2y \\geq 15\\) throughout the feasible region. Hence \\(5x + 2y = 15\\) has no point below it in the region, and the minimum IS attained.\n\n\\(\\therefore\\) the minimum value of \\(z\\) is \\(15\\), attained at \\(x = 1\\), \\(y = 5\\).\n\nCheck at \\((1, 5)\\): \\(5x + y = 5 + 5 = 10 \\geq 10\\) and \\(x + y = 1 + 5 = 6 \\geq 6\\), so the point is feasible (both constraints hold with equality, as they must at their intersection), and \\(z = 5(1) + 2(5) = 15\\), the same value.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 31",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "HARD",
+    "stem": "Evaluate : \\(\\int \\frac{3x^{2} + 4x - 5}{(x^{2} - 1)(x + 2)} \\cdot dx\\)",
+    "solution": "Let \\(I = \\displaystyle\\int \\dfrac{3x^{2} + 4x - 5}{(x^{2} - 1)(x + 2)}\\,dx\\)\n\nSince \\(x^{2} - 1 = (x - 1)(x + 1)\\), the denominator is a product of three distinct linear factors:\n\n\\(I = \\displaystyle\\int \\dfrac{3x^{2} + 4x - 5}{(x - 1)(x + 1)(x + 2)}\\,dx\\)\n\nResolve the integrand into partial fractions. Let\n\n\\(\\dfrac{3x^{2} + 4x - 5}{(x - 1)(x + 1)(x + 2)} = \\dfrac{A}{x - 1} + \\dfrac{B}{x + 1} + \\dfrac{C}{x + 2}\\)\n\nMultiplying throughout by \\((x - 1)(x + 1)(x + 2)\\):\n\n\\(3x^{2} + 4x - 5 = A(x + 1)(x + 2) + B(x - 1)(x + 2) + C(x - 1)(x + 1)\\) ... (1)\n\n(1) is an identity, so it holds for every value of \\(x\\).\n\nPut \\(x = 1\\) in (1): \\(3 + 4 - 5 = A(2)(3)\\), i.e. \\(2 = 6A\\), so \\(A = \\dfrac{1}{3}\\).\nPut \\(x = -1\\) in (1): \\(3 - 4 - 5 = B(-2)(1)\\), i.e. \\(-6 = -2B\\), so \\(B = 3\\).\nPut \\(x = -2\\) in (1): \\(12 - 8 - 5 = C(-3)(-1)\\), i.e. \\(-1 = 3C\\), so \\(C = -\\dfrac{1}{3}\\).\n\n\\(\\therefore I = \\dfrac{1}{3}\\displaystyle\\int \\dfrac{dx}{x - 1} + 3\\displaystyle\\int \\dfrac{dx}{x + 1} - \\dfrac{1}{3}\\displaystyle\\int \\dfrac{dx}{x + 2}\\)\n\nUsing \\(\\displaystyle\\int \\dfrac{dx}{x + k} = \\log|x + k| + c\\) for each of the three integrals,\n\n\\(\\therefore I = \\dfrac{1}{3}\\log|x - 1| + 3\\log|x + 1| - \\dfrac{1}{3}\\log|x + 2| + c\\)\n\nCheck by differentiating the answer:\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{1}{3}\\log|x - 1| + 3\\log|x + 1| - \\dfrac{1}{3}\\log|x + 2|\\right] = \\dfrac{1}{3(x - 1)} + \\dfrac{3}{x + 1} - \\dfrac{1}{3(x + 2)}\\)\n\nTaking \\((x - 1)(x + 1)(x + 2)\\) as the common denominator, the numerator is\n\n\\(\\dfrac{1}{3}(x + 1)(x + 2) + 3(x - 1)(x + 2) - \\dfrac{1}{3}(x - 1)(x + 1) = \\dfrac{1}{3}\\left[(x^{2} + 3x + 2) - (x^{2} - 1)\\right] + 3(x^{2} + x - 2)\\)\n\n\\(= \\dfrac{1}{3}(3x + 3) + 3x^{2} + 3x - 6 = (x + 1) + 3x^{2} + 3x - 6 = 3x^{2} + 4x - 5\\)\n\nwhich is the numerator of the original integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 32",
+    "format": "subjective",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Prove that : \\(\\int_{a}^{b} f(x) dx = \\int_{a}^{b} f(a + b - x) \\cdot dx\\)\n\nHence, find \\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\sin^{2} x \\cdot dx\\)",
+    "solution": "**Proof.** In \\(\\displaystyle\\int_{a}^{b} f(a + b - x)\\,dx\\) put \\(t = a + b - x\\).\n\nThen \\(dt = -dx\\), i.e. \\(dx = -dt\\).\n\nChanging the limits: when \\(x = a\\), \\(t = a + b - a = b\\); when \\(x = b\\), \\(t = a + b - b = a\\).\n\n\\(\\displaystyle\\int_{a}^{b} f(a + b - x)\\,dx = \\displaystyle\\int_{b}^{a} f(t)\\,(-dt) = \\displaystyle\\int_{a}^{b} f(t)\\,dt\\)\n\n(the minus sign is absorbed by interchanging the limits of integration). Since the variable of integration is a dummy variable, \\(\\displaystyle\\int_{a}^{b} f(t)\\,dt = \\displaystyle\\int_{a}^{b} f(x)\\,dx\\).\n\n\\(\\therefore \\displaystyle\\int_{a}^{b} f(x)\\,dx = \\displaystyle\\int_{a}^{b} f(a + b - x)\\,dx\\)\n\n**Hence the evaluation.** Let \\(I = \\displaystyle\\int_{\\pi/6}^{\\pi/3} \\sin^{2}x\\,dx\\) ... (I)\n\nHere \\(a = \\dfrac{\\pi}{6}\\) and \\(b = \\dfrac{\\pi}{3}\\), so \\(a + b - x = \\dfrac{\\pi}{6} + \\dfrac{\\pi}{3} - x = \\dfrac{\\pi}{2} - x\\). Applying the property just proved,\n\n\\(I = \\displaystyle\\int_{\\pi/6}^{\\pi/3} \\sin^{2}\\left(\\dfrac{\\pi}{2} - x\\right)dx = \\displaystyle\\int_{\\pi/6}^{\\pi/3} \\cos^{2}x\\,dx\\) ... (II)\n\nAdding (I) and (II):\n\n\\(2I = \\displaystyle\\int_{\\pi/6}^{\\pi/3}\\left(\\sin^{2}x + \\cos^{2}x\\right)dx = \\displaystyle\\int_{\\pi/6}^{\\pi/3} 1\\,dx = \\left[x\\right]_{\\pi/6}^{\\pi/3} = \\dfrac{\\pi}{3} - \\dfrac{\\pi}{6} = \\dfrac{\\pi}{6}\\)\n\n\\(\\therefore I = \\dfrac{\\pi}{12}\\)\n\nCheck by integrating directly: \\(\\sin^{2}x = \\dfrac{1 - \\cos 2x}{2}\\), so\n\n\\(I = \\left[\\dfrac{x}{2} - \\dfrac{\\sin 2x}{4}\\right]_{\\pi/6}^{\\pi/3} = \\left(\\dfrac{\\pi}{6} - \\dfrac{\\sin\\frac{2\\pi}{3}}{4}\\right) - \\left(\\dfrac{\\pi}{12} - \\dfrac{\\sin\\frac{\\pi}{3}}{4}\\right)\\)\n\nSince \\(\\sin\\dfrac{2\\pi}{3} = \\sin\\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}\\), the two surd terms cancel and \\(I = \\dfrac{\\pi}{6} - \\dfrac{\\pi}{12} = \\dfrac{\\pi}{12} \\approx 0.2618\\), the same value.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 33",
+    "format": "subjective",
+    "chapter": "Application of Definite Integration",
+    "subtopic": "Area Between Two Curves",
+    "difficulty": "HARD",
+    "stem": "Find the area enclosed between the circle \\(x^{2} + y^{2} = 1\\) and the line \\(x + y = 1\\) lying in the first quadrant.",
+    "solution": "The circle \\(x^{2} + y^{2} = 1\\) has centre at the origin and radius \\(1\\); the line is \\(x + y = 1\\).\n\nPoints of intersection: putting \\(y = 1 - x\\) in \\(x^{2} + y^{2} = 1\\),\n\n\\(x^{2} + (1 - x)^{2} = 1\\)\n\\(x^{2} + 1 - 2x + x^{2} = 1\\)\n\\(2x^{2} - 2x = 0\\), i.e. \\(2x(x - 1) = 0\\)\n\nso \\(x = 0\\) or \\(x = 1\\), giving the points \\((0, 1)\\) and \\((1, 0)\\). Both curves therefore cut the axes at the same two points, and the required region lies between them, for \\(0 \\leq x \\leq 1\\).\n\nIn the first quadrant the circle gives \\(y = \\sqrt{1 - x^{2}}\\) and the line gives \\(y = 1 - x\\). For \\(0 < x < 1\\) the circle lies above the line: at \\(x = \\dfrac{1}{2}\\), \\(\\sqrt{1 - \\frac{1}{4}} = \\dfrac{\\sqrt{3}}{2} \\approx 0.87\\) while \\(1 - \\dfrac{1}{2} = 0.5\\). So the circle is the upper boundary and the chord the lower boundary, and the region enclosed is the circular segment cut off by that chord.\n\n\\(A = \\displaystyle\\int_{0}^{1}\\left[\\sqrt{1 - x^{2}} - (1 - x)\\right]dx = \\displaystyle\\int_{0}^{1}\\sqrt{1 - x^{2}}\\,dx - \\displaystyle\\int_{0}^{1}(1 - x)\\,dx\\)\n\nUsing \\(\\displaystyle\\int \\sqrt{a^{2} - x^{2}}\\,dx = \\dfrac{x}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 1\\):\n\n\\(\\displaystyle\\int_{0}^{1}\\sqrt{1 - x^{2}}\\,dx = \\left[\\dfrac{x}{2}\\sqrt{1 - x^{2}} + \\dfrac{1}{2}\\sin^{-1}x\\right]_{0}^{1} = \\left(0 + \\dfrac{1}{2}\\cdot\\dfrac{\\pi}{2}\\right) - \\left(0 + 0\\right) = \\dfrac{\\pi}{4}\\)\n\n\\(\\displaystyle\\int_{0}^{1}(1 - x)\\,dx = \\left[x - \\dfrac{x^{2}}{2}\\right]_{0}^{1} = \\left(1 - \\dfrac{1}{2}\\right) - 0 = \\dfrac{1}{2}\\)\n\n\\(\\therefore A = \\dfrac{\\pi}{4} - \\dfrac{1}{2}\\) sq. units.\n\nCheck: \\(\\dfrac{\\pi}{4}\\) is exactly the area of a quadrant of the unit circle, and \\(\\dfrac{1}{2}\\) is the area of the right-angled triangle with vertices \\((0, 0)\\), \\((1, 0)\\), \\((0, 1)\\), whose hypotenuse is the given chord. The segment is the quadrant with that triangle removed, so the answer must be positive and smaller than the quadrant: \\(0.7854 - 0.5 = 0.2854\\), which indeed lies between \\(0\\) and \\(0.7854\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 34",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\(x^{2} \\cdot \\frac{dy}{dx} = x^{2} + xy + y^{2}\\).",
+    "solution": "\\(x^{2}\\cdot\\dfrac{dy}{dx} = x^{2} + xy + y^{2}\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{x^{2} + xy + y^{2}}{x^{2}}\\) ... (1)   (taking \\(x \\neq 0\\))\n\nEvery term in the numerator and the denominator is of degree two in \\(x\\) and \\(y\\), so (1) is a homogeneous differential equation.\n\nPut \\(y = vx\\). Then \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\).\n\nSubstituting in (1):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^{2} + x(vx) + (vx)^{2}}{x^{2}} = \\dfrac{x^{2}\\left(1 + v + v^{2}\\right)}{x^{2}} = 1 + v + v^{2}\\)\n\n\\(\\therefore x\\dfrac{dv}{dx} = 1 + v + v^{2} - v = 1 + v^{2}\\)\n\nThe variables now separate:\n\n\\(\\dfrac{dv}{1 + v^{2}} = \\dfrac{dx}{x}\\)\n\nIntegrating both sides:\n\n\\(\\displaystyle\\int \\dfrac{dv}{1 + v^{2}} = \\displaystyle\\int \\dfrac{dx}{x}\\)\n\n\\(\\tan^{-1}v = \\log|x| + c\\)\n\nReplacing \\(v\\) by \\(\\dfrac{y}{x}\\),\n\n\\(\\therefore \\tan^{-1}\\left(\\dfrac{y}{x}\\right) = \\log|x| + c\\)\n\nis the general solution.\n\nCheck by substituting back. From the solution, \\(\\dfrac{y}{x} = \\tan\\left(\\log|x| + c\\right)\\), i.e. \\(y = x\\tan u\\) where \\(u = \\log|x| + c\\), so \\(\\dfrac{du}{dx} = \\dfrac{1}{x}\\) and\n\n\\(\\dfrac{dy}{dx} = \\tan u + x\\sec^{2}u\\cdot\\dfrac{1}{x} = \\tan u + \\sec^{2}u = \\tan u + 1 + \\tan^{2}u\\)\n\n\\(\\therefore x^{2}\\dfrac{dy}{dx} = x^{2} + x(x\\tan u) + (x\\tan u)^{2} = x^{2} + xy + y^{2}\\)\n\nwhich is the given differential equation.",
+    "reviewFlag": true
+  }
+]
