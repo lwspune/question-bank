@@ -334,7 +334,7 @@
   },
   "138": {
     "chapter": "Mathematical Logic",
-    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
     "difficulty": "HARD",
     "answer": "A",
     "solution": "\\([\\sim(\\sim p\\vee q)\\vee(p\\wedge r)]\\wedge(\\sim q\\wedge r)\\). By De Morgan, \\(\\sim(\\sim p\\vee q)=p\\wedge\\sim q\\), so the bracket is \\((p\\wedge\\sim q)\\vee(p\\wedge r)=p\\wedge(\\sim q\\vee r)\\). Then \\(p\\wedge(\\sim q\\vee r)\\wedge(\\sim q\\wedge r)\\); since \\(\\sim q\\wedge r\\) implies \\(\\sim q\\vee r\\), this reduces to \\(p\\wedge\\sim q\\wedge r=(p\\wedge r)\\wedge\\sim q\\).",
@@ -370,7 +370,7 @@
   },
   "142": {
     "chapter": "Mathematical Logic",
-    "subtopic": "Truth Tables and Truth Values",
+    "subtopic": "Finding Truth Values of Component Statements",
     "difficulty": "EASY",
     "answer": "D",
     "solution": "\\((p\\wedge q)\\to(r\\vee\\sim s)\\) is false only when \\(p\\wedge q=T\\) and \\(r\\vee\\sim s=F\\). Thus \\(p=T,\\ q=T,\\ r=F,\\ \\sim s=F\\Rightarrow s=T\\). So \\((T,T,F,T)\\).",

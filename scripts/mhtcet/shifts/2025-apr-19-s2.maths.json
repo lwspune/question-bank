@@ -1,7 +1,7 @@
 {
   "101": {
     "chapter": "Mathematical Logic",
-    "subtopic": "Truth Tables and Truth Values",
+    "subtopic": "Statements, Connectives and Truth Tables",
     "difficulty": "MODERATE",
     "answer": "C",
     "solution": "Build the truth table for \\(\\lbrack p \\rightarrow (q \\land \\sim p)\\rbrack \\vee \\lbrack (p \\vee \\sim q) \\land p\\rbrack\\).\\n\\nFor rows \\((p,q)\\):\\n- \\((T,T)\\): \\(q \\land \\sim p = T \\land F = F\\); \\(p \\rightarrow F = F\\). \\((p \\vee \\sim q) \\land p = (T \\vee F) \\land T = T\\). Disjunction \\(= F \\vee T = T\\).\\n- \\((T,F)\\): \\(q \\land \\sim p = F\\); \\(p \\rightarrow F = F\\). \\((p \\vee \\sim q) \\land p = (T \\vee T) \\land T = T\\). \\(F \\vee T = T\\).\\n- \\((F,T)\\): \\(q \\land \\sim p = T \\land T = T\\); \\(p \\rightarrow T = T\\). \\((p \\vee \\sim q) \\land p = (F \\vee F) \\land F = F\\). \\(T \\vee F = T\\).\\n- \\((F,F)\\): \\(q \\land \\sim p = F\\); \\(p \\rightarrow F = T\\) (since \\(p\\) is false). \\((p \\vee \\sim q) \\land p = (\\ldots) \\land F = F\\). \\(T \\vee F = T\\).\\n\\nThe last column is \\(T\\,T\\,T\\,T\\).",
@@ -252,7 +252,7 @@
   },
   "128": {
     "chapter": "Mathematical Logic",
-    "subtopic": "Negation, Equivalence, Tautology, and Switch Circuits",
+    "subtopic": "Switching Circuits",
     "difficulty": "HARD",
     "answer": "B",
     "solution": "Reading the circuits: (A) two parallel branches \\(S_1\\)-\\(S_2\\) (series) and \\(S_1\\)-\\(S_3\\) (series) gives \\((p\\land q)\\lor(p\\land r)\\). (B) \\(S_1\\) in parallel with the series \\(S_2\\)-\\(S_3\\) gives \\(p\\lor(q\\land r)\\). (C) \\(S_1\\) in series with parallel \\(S_2\\),\\(S_3\\) gives \\(p\\land(q\\lor r)\\). (D) \\(S_1\\),\\(S_2\\),\\(S_3\\) all in series gives \\(p\\land q\\land r\\). (E) series \\(S_1\\)-\\(S_2\\) in parallel with \\(S_3\\) gives \\((p\\land q)\\lor r\\).\\n\\nBy the distributive law, \\((p\\land q)\\lor(p\\land r) = p\\land(q\\lor r)\\), so circuits (A) and (C) are equivalent.",
