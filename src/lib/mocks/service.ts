@@ -185,12 +185,20 @@ export type AttemptSummary = {
  * Grade + finalize an attempt. Idempotent: a second submit returns the stored
  * result. `reason` marks whether the timer ran out (status 'expired') or the
  * student submitted (status 'submitted') — both are terminal + graded.
+ *
+ * `at` is when the submit is recorded as having HAPPENED, and it defaults to
+ * now so every live caller is unchanged. The expiry sweep passes the attempt's
+ * own `expires_at` instead: grading a July attempt in September must not claim
+ * it was sat in September, because `submitted_at` is what the report email
+ * filters on and the activity rows' `created_at` is what the drill ladder sorts
+ * by. See src/lib/mocks/sweep.ts.
  */
 export async function submitAttempt(
   db: SupabaseClient,
   userId: string,
   attemptId: string,
-  reason: "manual" | "expired" = "manual"
+  reason: "manual" | "expired" = "manual",
+  at: Date = new Date()
 ): Promise<AttemptSummary> {
   const attempt = await loadAttemptRow(db, userId, attemptId);
   if (attempt.status !== "in_progress") {
@@ -224,13 +232,17 @@ export async function submitAttempt(
     .from("mock_attempts")
     .update({
       status,
-      submitted_at: new Date().toISOString(),
+      submitted_at: at.toISOString(),
       score: result.score,
       max_score: result.maxScore,
       correct_count: result.correct,
       wrong_count: result.wrong,
       skipped_count: result.skipped,
       section_scores: result.sectionScores,
+      // NOT `at`. `submitted_at` is a claim about when the student stopped and
+      // is backdated by the sweep; `updated_at` is a row-audit field and the row
+      // is being touched NOW. Backdating it too erases the only trace of when
+      // the sweep ran — which is exactly how a backfill becomes unauditable.
       updated_at: new Date().toISOString(),
     })
     .eq("id", attemptId)
@@ -270,7 +282,7 @@ export async function submitAttempt(
       });
     }
   }
-  await logActivityBatch(db, userId, events);
+  await logActivityBatch(db, userId, events, at.getTime());
 
   return {
     attemptId,
