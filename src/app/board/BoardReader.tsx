@@ -242,6 +242,14 @@ function SourceTabs({
  * Questions per year. Bars are drawn from OBSERVED years only — a year the
  * board held no paper (March 2021, cancelled) has no bar rather than a zero
  * one, which would assert a paper this chapter was absent from.
+ *
+ * Each bar carries its COUNT above it because the bar alone cannot hold the
+ * number at this scale: the median chapter-year is 3 questions and 83% are 4
+ * or fewer, so against a 44px peak one question is a 7-11px step. The count is
+ * what a student converts into a plan ("expect 3 from this chapter"); the bar
+ * only carries the shape. Labels never exceed two characters in practice —
+ * chapters with 9-11 bars peak at 4-6, and the chapters that reach double
+ * digits have only 4-5 bars.
  */
 function RecurrenceStrip({ sittings }: { sittings: BoardPyqSitting[] }) {
   const counts = pyqYearCounts(sittings);
@@ -257,6 +265,7 @@ function RecurrenceStrip({ sittings }: { sittings: BoardPyqSitting[] }) {
       <ol className="mt-3 flex items-end gap-1.5" aria-hidden>
         {counts.map((c) => (
           <li key={c.year} className="flex flex-1 flex-col items-center gap-1">
+            <span className="text-[10px] font-medium tabular-nums text-brand-accent">{c.count}</span>
             <span
               className="w-full rounded-t-sm bg-brand-accent/70"
               style={{ height: `${Math.max(4, Math.round((c.count / peak) * 44))}px` }}
