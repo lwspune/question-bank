@@ -322,7 +322,10 @@ export type VisualizationSlug =
   | "ocn-coral-reef-types"
   // CDS Elementary Mathematics — Number System chapter
   | "cds-unit-digit-cycle-wheel"
-  | "cds-rational-irrational-line";
+  | "cds-rational-irrational-line"
+  // MHT-CET Maths — Mathematical Logic chapter
+  | "logic-switch-series-parallel"
+  | "logic-circuit-simplification";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */
