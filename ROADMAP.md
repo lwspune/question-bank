@@ -448,6 +448,33 @@ Paging with `&first=N` is no better: 4,570 → 8,910 → 50 → 1 → 19,800. An
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — `seo:dates --check` can never pass on a Windows working tree (logged 2026-09-19)
+
+Found while building the MHT-CET matrix generator, which copied that script's `--check` pattern.
+
+`scripts/seo/content-dates.ts` compares the file on disk against freshly-rendered text with a
+**byte** comparison. This repo has `core.autocrlf=true`, so a checked-out file is CRLF in the
+working tree while `render()` emits LF — measured: `contentDates.generated.ts` is 7,172 chars on
+disk and 7,063 after normalising, i.e. 109 CRLF pairs. So `npm run seo:dates -- --check` reports
+**"content dates are stale" on a git-clean tree**, whatever the content actually says. Confirmed by
+running it against an unmodified file.
+
+**Why it has gone unnoticed:** the check is not in `prepush` and not in CI, so nothing runs it
+except by hand, and by hand it is on Windows. On Linux (LF checkout) it would pass.
+
+**Blast radius:** low and one-directional — the check only ever over-reports staleness, so it
+cannot have let a stale sitemap through. The cost is that the probe is useless locally, which is
+the only place it runs.
+
+**Fix (one line, not applied):** compare on normalised line endings, as
+`scripts/mhtcet/trends-matrix.ts` now does (`lf()` helper, with the reasoning in a comment there).
+
+**Do not apply without checking the same class elsewhere** — any other generator using
+`readFileSync(...) !== rendered` has it too. `grep -rn "existsSync(OUT_PATH)" scripts/` is the
+starting point.
+
+
+
 ### BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2: split the 94 mixed identity/equation questions (logged 2026-09-17)
 
 Phase 1 shipped 2026-09-17: the Std XII chapter was renamed `Inverse Trigonometric Functions` →
