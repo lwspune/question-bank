@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   EXAM_PAPERS,
   EXAM_MATRIX,
+  EXAM_MATRIX_PAPERS,
 } from "@/app/guide/nda-maths/_data/trends";
 
 /**
@@ -53,5 +54,58 @@ describe("EXAM_MATRIX — chapter × exam-paper integrity", () => {
       0
     );
     expect(grand).toBe(2280);
+  });
+});
+
+/**
+ * The NDA table's column LABELS, pinned across the 2026-09-19 generalisation
+ * of `ExamPaperMatrix`.
+ *
+ * That component used to compute its own tooltip from `sitting` — correct
+ * while NDA was its only caller, and a mislabelling the moment MHT-CET Maths
+ * reused it (45 sittings, up to 17 in one year, none of them an "NDA-1"). The
+ * labels moved into each data file and the component's `label`/`title` became
+ * REQUIRED, with no default, so no exam can inherit another's vocabulary.
+ *
+ * Moving them is a change to a SHIPPED page, so what the reader sees is pinned
+ * here: the sub-header still reads "1"/"2" and the tooltips still name the
+ * April and September sittings. These assertions are the evidence that the
+ * refactor is invisible on /guide/nda-maths/trends.
+ */
+describe("EXAM_MATRIX_PAPERS — NDA column labels are unchanged", () => {
+  it("renders one column per paper, in the same order", () => {
+    expect(EXAM_MATRIX_PAPERS).toHaveLength(EXAM_PAPERS.length);
+    expect(EXAM_MATRIX_PAPERS.map((p) => p.id)).toEqual(
+      EXAM_PAPERS.map((p) => p.id)
+    );
+    expect(EXAM_MATRIX_PAPERS.map((p) => p.year)).toEqual(
+      EXAM_PAPERS.map((p) => p.year)
+    );
+  });
+
+  it("still shows a bare 1 / 2 in the sub-header", () => {
+    for (const [i, p] of EXAM_MATRIX_PAPERS.entries()) {
+      expect(p.label, p.id).toBe(EXAM_PAPERS[i].sitting);
+    }
+    expect(new Set(EXAM_MATRIX_PAPERS.map((p) => p.label))).toEqual(
+      new Set(["1", "2"])
+    );
+  });
+
+  it("still names the sitting in the tooltip, exactly as before", () => {
+    const titles = new Map(EXAM_MATRIX_PAPERS.map((p) => [p.id, p.title]));
+    expect(titles.get("24A")).toBe("NDA-1 (April)");
+    expect(titles.get("24S")).toBe("NDA-2 (September)");
+    // Every column has one — the component has no fallback to supply it.
+    for (const p of EXAM_MATRIX_PAPERS) {
+      expect(p.title, p.id).toMatch(/^NDA-[12] \((April|September)\)$/);
+    }
+  });
+
+  it("marks no NDA column as disputed", () => {
+    // `disputed` exists for MHT-CET, where one paper's filename and note
+    // disagree. Nothing in the NDA data carries that ambiguity, so no NDA
+    // column should pick up the dotted underline.
+    for (const p of EXAM_MATRIX_PAPERS) expect(p.disputed).toBeFalsy();
   });
 });

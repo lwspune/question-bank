@@ -1,24 +1,56 @@
 import { cn } from "@/lib/utils";
-import type {
-  ExamPaper,
-  ExamMatrixRow,
-} from "../nda-maths/_data/trends";
+
+/**
+ * One column of the matrix: a single sitting.
+ *
+ * `label` and `title` are REQUIRED and carry no default. This component used
+ * to derive the tooltip itself — `sitting === "1" ? "NDA-1 (April)" : "NDA-2
+ * (September)"` — which was correct while NDA was the only caller and silently
+ * wrong the moment a second exam used it: MHT-CET runs up to 17 sittings in a
+ * year, none of them an "NDA-1". A default here would be that same defect in a
+ * nicer shape, so each data file states its own labels.
+ */
+export type MatrixPaper = {
+  /** Stable key for the column. */
+  id: string;
+  year: number;
+  /** Sub-header text. Two characters at most — columns are ~26px wide. */
+  label: string;
+  /** Tooltip: what this sitting actually is. */
+  title: string;
+  /** Marks a column whose own source labels disagree about which sitting it is. */
+  disputed?: boolean;
+};
+
+/** One chapter across every column. `counts` aligns 1:1 to `papers`. */
+export type MatrixRow = {
+  chapter: string;
+  total: number;
+  counts: number[];
+};
 
 type Props = {
-  papers: ExamPaper[];
-  rows: ExamMatrixRow[];
+  papers: MatrixPaper[];
+  rows: MatrixRow[];
+  /** Footer row label. The footer sums each column — the completeness proof. */
+  footerLabel?: string;
 };
 
 /**
- * Chapter × exam-paper matrix. One column per individual sitting (19 papers),
- * grouped under a year header with an Apr/Sep ("1"/"2" = NDA-1/NDA-2) sub-row.
- * Cells are tinted by magnitude *within the row* so the eye reads each
- * chapter's per-paper rhythm without a chart. A footer row shows each column
- * summing to 120 — the visual proof the table is complete.
+ * Chapter × exam-paper matrix. One column per individual sitting, grouped
+ * under a year header with a per-sitting sub-row. Cells are tinted by
+ * magnitude *within the row* so the eye reads each chapter's per-paper rhythm
+ * without a chart. A footer row shows each column's question total — the
+ * visual proof the table is complete.
  *
  * Wide by nature: horizontal scroll on mobile, chapter column sticks left.
+ * NDA Maths runs 19 columns here; MHT-CET Maths runs 45.
  */
-export default function ExamPaperMatrix({ papers, rows }: Props) {
+export default function ExamPaperMatrix({
+  papers,
+  rows,
+  footerLabel = "Paper total",
+}: Props) {
   // Year-group spans so the top header can colspan each year's paper pair.
   const yearGroups: { year: number; span: number }[] = [];
   for (const p of papers) {
@@ -57,13 +89,17 @@ export default function ExamPaperMatrix({ papers, rows }: Props) {
                 return (
                   <th
                     key={p.id}
-                    title={p.sitting === "1" ? "NDA-1 (April)" : "NDA-2 (September)"}
+                    title={p.title}
                     className={cn(
                       "px-2 py-1 text-center text-[11px] font-medium tabular-nums text-muted-foreground/80",
-                      newYear && "border-l"
+                      newYear && "border-l",
+                      // A column whose source labels contradict each other is
+                      // marked, not quietly shown as though the shift number
+                      // were agreed. The tooltip says what the disagreement is.
+                      p.disputed && "underline decoration-dotted underline-offset-2"
                     )}
                   >
-                    {p.sitting}
+                    {p.label}
                   </th>
                 );
               })}
@@ -112,7 +148,7 @@ export default function ExamPaperMatrix({ papers, rows }: Props) {
                 scope="row"
                 className="sticky left-0 z-10 bg-muted/40 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-muted-foreground"
               >
-                Paper total
+                {footerLabel}
               </th>
               {papers.map((p, i) => {
                 const newYear = i === 0 || papers[i - 1].year !== p.year;
