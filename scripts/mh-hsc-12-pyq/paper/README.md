@@ -163,6 +163,24 @@ the older row been transcribed the same way, the 2026 provenance would have
 vanished into a `skipped=1`. That is precisely why `commit.ts` names absorbed
 rows instead of reporting a count.
 
+## Recurrence, and how much of it we can actually see
+
+The board reuses questions, so `commit.ts` **names** every row the exam-scoped
+`content_hash` absorbs rather than printing a count: a silent `skipped=1` in a
+whole-paper ingest is indistinguishable from a question that was never on the
+paper.
+
+`probe-reuse.ts` reports recurrence before commit. **Its output is a floor.** It
+compares text, so it sees through typography and misses rewording — and the board
+re-words constantly. The pair-of-lines bookwork has been set in 2016, 2018, 2020,
+2025 and 2026 under four different opening phrases, and the probe reports none of
+them; across 361 Maths PYQ rows it finds exactly one group.
+
+⚠ Do not measure recurrence with an ILIKE on a phrase. "differentiable function
+of" matches **three different theorems** here (chain rule, inverse-function
+derivative, parametric derivative), and an earlier note in this repo mistook that
+for one proof recurring four times.
+
 ## Reconciliation is gated
 
 `mar-2024` and `feb-2025` overlap 86 rows that are already PUBLIC. Verifying

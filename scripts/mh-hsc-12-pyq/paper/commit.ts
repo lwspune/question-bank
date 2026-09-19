@@ -13,8 +13,15 @@
  * `content_hash` is unique on `(org_id, exam_id, content_hash)` — per EXAM. This
  * corpus files board PYQs into chapters that already hold the Balbharati
  * textbook exercises AND ten years of earlier board papers, and boards reuse
- * questions heavily: the chain-rule proof already appears 4 times across
- * 2016-2022, the pair-of-lines theorem 4 times across 2016-2025.
+ * questions heavily: the "homogeneous equation of degree two represents a pair
+ * of lines" bookwork has now been set in 2016, 2018, 2020, 2025 AND 2026 — five
+ * sittings, five different phrasings of one theorem.
+ *
+ * (An earlier version of this comment also claimed the chain-rule proof recurred
+ * four times. It does not. That count came from an ILIKE on "differentiable
+ * function of", which matches THREE different theorems — the chain rule, the
+ * derivative of an inverse function, and the parametric-form derivative. A
+ * shared phrase is not a shared question.)
  *
  * So an exact-text repeat does not insert. It is ABSORBED into the existing row:
  * no new question, no 2026 provenance, and the only signal is `skipped=N`. In a
