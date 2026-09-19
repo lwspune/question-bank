@@ -32,7 +32,15 @@ export default async function PaperEditorPage({
   // renders the same QuestionCard as /browse, so a teacher can actually read and
   // verify a question before shipping the paper. Bounded by the 200/paper export
   // cap, and this page is force-dynamic + admin-gated, so the payload is fine.
-  const questions = await queryQuestionsByIds(client, membershipIds);
+  // Content editing is superadmin-only (migration 0056) — mirrors /browse, which
+  // gates the per-question Edit affordance the same way. Resolved BEFORE the
+  // question fetch because it also decides whether the provenance line carries
+  // the raw `pyq_note` or the redacted one.
+  const canEditContent = !!(await getSessionSuperadmin());
+
+  const questions = await queryQuestionsByIds(client, membershipIds, {
+    includeRawProvenance: canEditContent,
+  });
 
   // Soft-warn: which of this paper's questions also live in OTHER papers (this
   // paper excluded). Batch-scoped when the paper targets a batch (repeat for the
@@ -70,10 +78,6 @@ export default async function PaperEditorPage({
     membersResult.kind === "ok"
       ? membersResult.members.map((m) => ({ id: m.userId, label: m.name || m.email }))
       : [];
-
-  // Content editing is superadmin-only (migration 0056) — mirrors /browse, which
-  // gates the per-question Edit affordance the same way.
-  const canEditContent = !!(await getSessionSuperadmin());
 
   // Gates the Push-to-tracker button. Presence of a tracker_sync_targets row is
   // the whole gate (migration 0094) — never an allow-list of institute names, so

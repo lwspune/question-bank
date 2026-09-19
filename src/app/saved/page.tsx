@@ -3,7 +3,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Bookmark } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
-import { getSessionUser, getSessionMember } from "@/lib/auth";
+import {
+  getSessionUser,
+  getSessionMember,
+  getSessionSuperadmin,
+} from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { queryQuestionsByIds } from "@/lib/questions/query";
 import { listBookmarkIds } from "@/lib/bookmarks/service";
@@ -19,11 +23,22 @@ export default async function SavedPage() {
   if (!user) redirect("/login?next=/saved");
 
   const db = createSupabaseServerClient();
-  const [ids, member] = await Promise.all([listBookmarkIds(db, user.id), getSessionMember()]);
+  // Superadmin is resolved separately from membership: a platform admin holds
+  // NO org_members row (migration 0056), so `member` is null for them and
+  // `canEdit` alone cannot stand in for "may read raw provenance".
+  const [ids, member, superadmin] = await Promise.all([
+    listBookmarkIds(db, user.id),
+    getSessionMember(),
+    getSessionSuperadmin(),
+  ]);
   const canEdit = Boolean(member); // org staff (ADMIN/TEACHER) can edit; students can't
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 
-  const questions = ids.length ? await queryQuestionsByIds(db, ids) : [];
+  const questions = ids.length
+    ? await queryQuestionsByIds(db, ids, {
+        includeRawProvenance: Boolean(superadmin),
+      })
+    : [];
   // Preserve bookmark order (newest-first); queryQuestionsByIds may reorder.
   const byId = new Map(questions.map((q) => [q.id, q]));
   const ordered = ids
