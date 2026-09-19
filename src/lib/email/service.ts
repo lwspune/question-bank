@@ -64,12 +64,42 @@ export async function readPublishedMocks(db: SupabaseClient): Promise<MockLite[]
 
 /** EVERY user's attempts (service-role — mock_attempts is own-row RLS), with the
  *  parent mock's exam + paper joined on so the recommender can scope. */
+/**
+ * How many questions each attempt actually answered.
+ *
+ * Counted here rather than via an embedded PostgREST `count` because a row in
+ * `attempt_answers` does NOT imply an answer: the runner also writes a row to
+ * record a FLAG on an untouched question. A bare row count would therefore read
+ * a flagged-but-unanswered paper as engaged, which is the exact misclassification
+ * `isAbandonedAttempt` exists to prevent. The predicate mirrors `isAnswered` in
+ * lib/mocks/answers.ts — a selected option OR a typed numeric response.
+ */
+async function readAnsweredCounts(db: SupabaseClient): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("attempt_answers")
+      .select("attempt_id, selected_label, numeric_response")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`readAnsweredCounts: ${error.message}`);
+    const rows = data ?? [];
+    for (const r of rows as Record<string, unknown>[]) {
+      if (r.selected_label == null && r.numeric_response == null) continue;
+      const id = r.attempt_id as string;
+      counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+    if (rows.length < PAGE) break;
+  }
+  return counts;
+}
+
 export async function readAllAttempts(db: SupabaseClient): Promise<AttemptLite[]> {
+  const answered = await readAnsweredCounts(db);
   const out: AttemptLite[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("mock_attempts")
-      .select("user_id, mock_id, status, started_at, expires_at, score, max_score, mock:mock_tests(exam_id, paper_code)")
+      .select("id, user_id, mock_id, status, started_at, expires_at, score, max_score, mock:mock_tests(exam_id, paper_code)")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readAllAttempts: ${error.message}`);
     const rows = data ?? [];
@@ -88,6 +118,7 @@ export async function readAllAttempts(db: SupabaseClient): Promise<AttemptLite[]
         expiresAt: r.expires_at as string,
         score: r.score == null ? null : Number(r.score),
         maxScore: r.max_score == null ? null : Number(r.max_score),
+        answeredCount: answered.get(r.id as string) ?? 0,
       });
     }
     if (rows.length < PAGE) break;

@@ -24,6 +24,8 @@
  *   first_mock:{userId}         — one activation email per person, full stop.
  */
 
+import { ENGAGEMENT_FLOOR } from "@/lib/performance/compute";
+
 export type EmailKind = "next_mock" | "first_mock";
 
 export type StudentLite = {
@@ -57,6 +59,10 @@ export type AttemptLite = {
   expiresAt: string;
   score: number | null;
   maxScore: number | null;
+  /** How many questions carried a response. The abandonment signal — see
+   *  `isAbandonedAttempt`. Required, not optional: an absent count would have to
+   *  default to something, and either default silently misclassifies. */
+  answeredCount: number;
 };
 
 export type PriorSend = {
@@ -85,6 +91,17 @@ export type PickInput = {
   attempts: AttemptLite[];
   priorSends: PriorSend[];
   now: number;
+  /**
+   * Epoch ms. Only activity at or after this instant makes someone a candidate:
+   * a sitting for `next_mock`, an account for `first_mock`. 0 disables it.
+   *
+   * REQUIRED, deliberately. This channel had no recency bound at all, so when it
+   * was woken on 2026-09-19 after lying dormant since 2026-07-16 its first run
+   * proposed 316 emails about activity up to two months old. A field with a
+   * permissive default would restore that silently the first time a caller
+   * forgot it; `mock_report` learned the same lesson as its `SINCE` const.
+   */
+  activitySince: number;
 };
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -101,6 +118,25 @@ export const COOLDOWN_MS = 7 * DAY;
 /** The paper a never-attempted student is introduced with. NDA Mathematics is
  *  LWS's core subject (see CLAUDE.md), so it's the honest first ask. */
 export const FIRST_MOCK_PAPER = "maths";
+
+/**
+ * Was this attempt an abandoned tab rather than a sitting?
+ *
+ * ENGAGEMENT_FLOOR is IMPORTED from lib/performance/compute.ts rather than
+ * redefined, because two copies of the same threshold are two things free to
+ * drift. That module has applied it since the performance page shipped; the
+ * email never did, and on 2026-09-19 that gap became impossible to ignore: the
+ * expiry sweep graded 118 abandoned attempts, making them the most recent
+ * attempt for 70 students, 44 of whom would have been told "0/600 last time —
+ * ready for the next paper?" about a paper they walked away from.
+ *
+ * An unknown paper length counts as abandoned. The alternative — treating 0
+ * questions as fully answered — would put a fabricated score in a subject line.
+ */
+export function isAbandonedAttempt(a: AttemptLite, totalQuestions: number): boolean {
+  if (totalQuestions <= 0) return true;
+  return a.answeredCount / totalQuestions < ENGAGEMENT_FLOOR;
+}
 
 /**
  * Domains that can never receive mail — RFC 2606 / 6761 reserved. The roster is
@@ -152,7 +188,12 @@ export function firstMockKey(userId: string): string {
 }
 
 export function pickRecipients(input: PickInput): Recipient[] {
-  const { students, mocks, attempts, priorSends, now } = input;
+  const { students, mocks, attempts, priorSends, now, activitySince } = input;
+
+  const questionsByMock = new Map<string, number>();
+  for (const m of mocks) questionsByMock.set(m.id, m.totalQuestions);
+  const genuine = (a: AttemptLite) =>
+    !isAbandonedAttempt(a, questionsByMock.get(a.mockId) ?? 0);
 
   const attemptsByUser = new Map<string, AttemptLite[]>();
   for (const a of attempts) {
@@ -182,14 +223,24 @@ export function pickRecipients(input: PickInput): Recipient[] {
 
     const mine = attemptsByUser.get(st.userId) ?? [];
 
-    // Mid-exam right now → say nothing. An abandoned attempt (in_progress but
-    // past expiry) is NOT live: every in_progress row in prod is days-old and
-    // unswept, because auto-submit only fires with the runner open.
+    // Mid-exam right now → say nothing. Checking the EXPIRY rather than the
+    // status is what makes this correct: as of 2026-09-19 an hourly sweep grades
+    // expired attempts, so an in_progress row is normally genuinely live — but
+    // one can still sit unswept for up to an hour, and before the sweep existed
+    // every one of them was days old.
     const live = mine.some((a) => a.status === "in_progress" && Date.parse(a.expiresAt) > now);
     if (live) continue;
 
+    // FORWARD-ONLY. A sitting makes someone a candidate for `next_mock`; an
+    // account does for `first_mock`. An ABANDONED attempt is not activity —
+    // counting it would let the expiry sweep's own 118 rows read as fresh
+    // engagement and re-open the backfill this closes.
+    const active = mine.some((a) => genuine(a) && Date.parse(a.startedAt) >= activitySince);
+    const newAccount = Date.parse(st.createdAt) >= activitySince;
+    if (!active && !newAccount) continue;
+
     const picked = mine.length > 0
-      ? pickNext(st, mine, mocks, sentKeys)
+      ? pickNext(st, mine, mocks, sentKeys, genuine)
       : pickFirst(st, mocks, sentKeys);
 
     // One email per user per run — `picked` is already at most one.
@@ -204,7 +255,8 @@ function pickNext(
   st: StudentLite,
   mine: AttemptLite[],
   mocks: MockLite[],
-  sentKeys: Set<string>
+  sentKeys: Set<string>,
+  genuine: (a: AttemptLite) => boolean
 ): Recipient | null {
   // Any attempt counts as "sat this paper" — submitted, expired, or abandoned.
   const examIds = new Set(mine.map((a) => a.examId));
@@ -230,7 +282,7 @@ function pickNext(
     kind: "next_mock",
     mock: candidate,
     dedupeKey: nextMockKey(st.userId, candidate.id),
-    lastScore: latestGraded(mine, mocks),
+    lastScore: latestGraded(mine.filter(genuine), mocks),
   };
 }
 
