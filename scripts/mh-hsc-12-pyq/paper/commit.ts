@@ -188,10 +188,17 @@ async function main() {
       console.log(`  ${q.ref.padEnd(13)} -> ${where}`);
       console.log(`      ${q.stem.slice(0, 96).replace(/\s+/g, " ")}`);
     }
+    // Do NOT assert WHAT absorbed them. The first run of this on a real paper
+    // reported "an earlier sitting's provenance" and the twin turned out to be a
+    // Balbharati TEXTBOOK exercise (practice, no year) — the board had set a
+    // book question verbatim. Both cases are ordinary; claiming the wrong one is
+    // not, so the per-row line above names the actual twin and this summary
+    // stays silent about it.
     console.log(
-      `\n  These ${absorbed.length} question(s) WERE on the ${paper.month} ${paper.year} paper but carry an\n` +
-        `  earlier sitting's provenance. That is the board reusing questions, not a defect —\n` +
-        `  but the ${paper.year} paper's reconstruction is incomplete by exactly this many.`,
+      `\n  These ${absorbed.length} question(s) WERE on the ${paper.month} ${paper.year} paper but now carry\n` +
+        `  the provenance of whatever absorbed them, named per row above. That is the board\n` +
+        `  reusing a question, not a defect — but this sitting's reconstruction is short by\n` +
+        `  exactly this many, so it holds ${rows.length - absorbed.length} of the printed ${rows.length}.`,
     );
   }
 

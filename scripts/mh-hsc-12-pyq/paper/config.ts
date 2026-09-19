@@ -51,6 +51,18 @@ export type Paper = {
    *  not cropped is a defect; "Construct the switching circuit …" questions
    *  are NOT listed, because there the student draws it. */
   figureRefs: string[];
+  /** Refs the exam-scoped `content_hash` ABSORBED into a row that already
+   *  existed, so this sitting has no row of its own for them.
+   *
+   *  Recorded rather than tolerated. `flip-public.ts` checks the bank's row
+   *  count against the printed 44, and a shortfall is normally a real loss —
+   *  rows that failed to commit, or a transcription that was never 44. Listing
+   *  the absorbed refs here makes the expected count `44 - absorbed`, so the
+   *  check still bites on every OTHER cause. A blanket override would not.
+   *
+   *  Each entry names what absorbed it, because "absorbed" alone does not say
+   *  whether the board repeated an earlier sitting or set a textbook exercise. */
+  absorbedRefs?: { ref: string; into: string }[];
 };
 
 const paper = (
@@ -88,7 +100,14 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
     // circuit) and a hand-enumerated grep for figure phrasings MISSED it: the
     // stem says "the following circuit", and the pattern listed "switching
     // circuit"/"given circuit" but never bare "circuit". fig_bounds.py found it.
-    paper("jul-2024", "Maths July 2024 paper.pdf", 2024, "July", "J-174", "new", ["Q. 27"]),
+    paper("jul-2024", "Maths July 2024 paper.pdf", 2024, "July", "J-174", "new", ["Q. 27"], {
+      // The board set a Balbharati TEXTBOOK exercise verbatim as an exam
+      // question, so the exam-scoped content_hash folded it into the practice
+      // row that was already there. This sitting therefore holds 43 of its 44.
+      absorbedRefs: [
+        { ref: "Q. 12", into: "Definite Integration · practice · Ex 4.2 I (8) (StateBoard_12_Maths__Definite_Integration.pdf)" },
+      ],
+    }),
     paper("jul-2025", "Maths July 2025 paper.pdf", 2025, "July", "J-384", "new", ["Q. 27"]),
 
     // ── Reconciliation sittings ─────────────────────────────────────────────

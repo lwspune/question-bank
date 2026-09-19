@@ -1,0 +1,595 @@
+[
+  {
+    "ref": "Q. 1. (i)",
+    "format": "mcq",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "difficulty": "MODERATE",
+    "stem": "The inverse of statement pattern \\((p \\vee q) \\rightarrow (p \\wedge q)\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((p \\wedge q) \\rightarrow (p \\vee q)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sim (p \\vee q) \\rightarrow (p \\wedge q)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((\\sim p \\wedge \\sim q) \\rightarrow (\\sim p \\vee \\sim q)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((\\sim p \\vee \\sim q) \\rightarrow (\\sim p \\wedge \\sim q)\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\((\\sim p \\wedge \\sim q) \\rightarrow (\\sim p \\vee \\sim q)\\)\n\nThe inverse of \\(A \\rightarrow B\\) is \\(\\sim A \\rightarrow \\sim B\\), obtained by negating both the antecedent and the consequent while keeping their order. It is not the converse \\(B \\rightarrow A\\) and not the contrapositive \\(\\sim B \\rightarrow \\sim A\\).\n\nHere \\(A \\equiv p \\vee q\\) and \\(B \\equiv p \\wedge q\\). Negating each and applying De Morgan's laws,\n\n\\(\\sim A \\equiv \\sim(p \\vee q) \\equiv \\sim p \\wedge \\sim q\\)\n\n\\(\\sim B \\equiv \\sim(p \\wedge q) \\equiv \\sim p \\vee \\sim q\\)\n\n\\(\\therefore\\) the inverse is \\((\\sim p \\wedge \\sim q) \\rightarrow (\\sim p \\vee \\sim q)\\).\n\nThe inverse and the converse of a conditional are always logically equivalent, so \\((p \\wedge q) \\rightarrow (p \\vee q)\\) has exactly the same truth table as the answer above, and both are tautologies. The two are distinguished by their FORM rather than by their truth values, and a statement pattern is what the question asks for, so the definition of the inverse decides it and a truth table cannot."
+  },
+  {
+    "ref": "Q. 1. (ii)",
+    "format": "mcq",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), if \\(a = 2, b = 3\\) and \\(\\sin A = \\frac{2}{3}\\), then \\(\\angle B =\\) _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(\\frac{\\pi}{2}\\)\n\nBy the sine rule, \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B}\\), so\n\n\\(\\sin B = \\frac{b \\sin A}{a}\\)\n\nSubstituting \\(a = 2\\), \\(b = 3\\), \\(\\sin A = \\frac{2}{3}\\),\n\n\\(\\sin B = \\frac{3 \\times \\frac{2}{3}}{2} = \\frac{2}{2} = 1\\)\n\nThe only angle in \\((0, \\pi)\\) whose sine is \\(1\\) is \\(\\frac{\\pi}{2}\\).\n\n\\(\\therefore \\angle B = \\frac{\\pi}{2}\\)\n\nThe value is exactly \\(1\\) rather than close to it, so the conclusion is not an artefact of rounding. The triangle also closes: \\(\\sin A = \\frac{2}{3}\\) gives \\(A = 41^{\\circ}49'\\) and then \\(C = 48^{\\circ}11'\\), with \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = 3\\) throughout."
+  },
+  {
+    "ref": "Q. 1. (iii)",
+    "format": "mcq",
+    "chapter": "Vectors",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "If \\(\\overline{AB} = 2\\hat{i} - 4\\hat{j} + 7\\hat{k}\\) and initial point \\(A \\equiv (1, 5, 0)\\) then terminal point \\(B\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((1, 3, 7)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((7, 3, 1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((1, 7, 3)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((3, 1, 7)\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\((3, 1, 7)\\)\n\nFor points \\(A\\) and \\(B\\) with position vectors \\(\\bar{a}\\) and \\(\\bar{b}\\),\n\n\\(\\overline{AB} = \\bar{b} - \\bar{a}\\), so \\(\\bar{b} = \\bar{a} + \\overline{AB}\\)\n\nWith \\(A \\equiv (1, 5, 0)\\), \\(\\bar{a} = \\hat{i} + 5\\hat{j}\\), and \\(\\overline{AB} = 2\\hat{i} - 4\\hat{j} + 7\\hat{k}\\),\n\n\\(\\bar{b} = \\left(\\hat{i} + 5\\hat{j}\\right) + \\left(2\\hat{i} - 4\\hat{j} + 7\\hat{k}\\right) = 3\\hat{i} + \\hat{j} + 7\\hat{k}\\)\n\n\\(\\therefore\\) the terminal point is \\(B \\equiv (3, 1, 7)\\).\n\nChecking, \\(\\bar{b} - \\bar{a} = (3 - 1)\\hat{i} + (1 - 5)\\hat{j} + (7 - 0)\\hat{k} = 2\\hat{i} - 4\\hat{j} + 7\\hat{k}\\), which is the given vector. The other options carry the same three numbers in a different order, so the coordinates must be computed rather than matched by sight."
+  },
+  {
+    "ref": "Q. 1. (iv)",
+    "format": "mcq",
+    "chapter": "Line and Planes",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "difficulty": "MODERATE",
+    "stem": "The angle between the lines \\(\\bar{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\lambda(2\\hat{i} - 2\\hat{j} + \\hat{k})\\) and \\(\\bar{r} = (\\hat{i} + 2\\hat{j} + 3\\hat{k}) + \\mu(\\hat{i} + 2\\hat{j} + 2\\hat{k})\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\frac{\\pi}{2}\\)\n\nThe angle between two lines depends only on their direction vectors,\n\n\\(\\bar{b_{1}} = 2\\hat{i} - 2\\hat{j} + \\hat{k}\\) and \\(\\bar{b_{2}} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n\\(\\bar{b_{1}} \\cdot \\bar{b_{2}} = (2)(1) + (-2)(2) + (1)(2) = 2 - 4 + 2 = 0\\)\n\nSince \\(\\cos\\theta = \\frac{\\bar{b_{1}} \\cdot \\bar{b_{2}}}{\\left|\\bar{b_{1}}\\right|\\left|\\bar{b_{2}}\\right|}\\) and the numerator is zero while both magnitudes are non-zero,\n\n\\(\\cos\\theta = 0\\)\n\n\\(\\therefore \\theta = \\frac{\\pi}{2}\\)\n\nThe two lines also share the point \\((1, 2, 3)\\), since both position vectors are \\(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\), so they genuinely meet there at right angles rather than merely having perpendicular directions."
+  },
+  {
+    "ref": "Q. 1. (v)",
+    "format": "mcq",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y\\) is a function of \\(x\\) and \\(\\log(x + y) = xy\\) then the value of \\(\\left(\\frac{dy}{dx}\\right)\\) at \\(x = 0\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\(0\\)\n\nFirst find \\(y\\) at \\(x = 0\\) from the relation itself. Putting \\(x = 0\\) in \\(\\log(x + y) = xy\\),\n\n\\(\\log y = 0\\), so \\(y = 1\\)\n\nNow differentiate \\(\\log(x + y) = xy\\) with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\):\n\n\\(\\frac{1}{x + y}\\left(1 + \\frac{dy}{dx}\\right) = y + x\\frac{dy}{dx}\\)\n\nSubstituting \\(x = 0\\), \\(y = 1\\),\n\n\\(\\frac{1}{0 + 1}\\left(1 + \\frac{dy}{dx}\\right) = 1 + 0\\)\n\n\\(1 + \\frac{dy}{dx} = 1\\)\n\n\\(\\therefore \\left(\\frac{dy}{dx}\\right)_{x = 0} = 0\\)\n\nHere \\(\\log\\) is the natural logarithm, as throughout this syllabus. Taking it as base ten instead gives \\(\\log_{e}10 = 1.3026\\) at this point, which matches none of the four options, so the natural-log reading is the one the question intends."
+  },
+  {
+    "ref": "Q. 1. (vi)",
+    "format": "mcq",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "difficulty": "EASY",
+    "stem": "If the displacement of a particle at time \\(t\\) is given by \\(S = 2t^{3} - 5t^{2} + 4t - 3\\), then its acceleration at time \\(t = 1\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(8\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(10\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(14\\)"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(2\\)\n\nAcceleration is the second derivative of displacement with respect to time.\n\n\\(S = 2t^{3} - 5t^{2} + 4t - 3\\)\n\n\\(\\frac{dS}{dt} = 6t^{2} - 10t + 4\\)\n\n\\(\\frac{d^{2}S}{dt^{2}} = 12t - 10\\)\n\nAt \\(t = 1\\),\n\n\\(\\frac{d^{2}S}{dt^{2}} = 12(1) - 10 = 2\\)\n\n\\(\\therefore\\) the acceleration at \\(t = 1\\) is \\(2\\).\n\nThe velocity at that instant is \\(6 - 10 + 4 = 0\\), so the particle is momentarily at rest while still accelerating, which is consistent with a cubic displacement."
+  },
+  {
+    "ref": "Q. 1. (vii)",
+    "format": "mcq",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "The solution of the D.E. \\(\\sec^{2} x \\cdot \\tan y \\, dx + \\sec^{2} y \\cdot \\tan x \\, dy = 0\\) is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\tan x \\cdot \\cot y = c\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cot x - \\cot y = c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\tan x \\cdot \\tan y = c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\cot x - \\tan y = c\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\tan x \\cdot \\tan y = c\\)\n\nThe equation separates. Dividing throughout by \\(\\tan x \\cdot \\tan y\\),\n\n\\(\\frac{\\sec^{2}x}{\\tan x}dx + \\frac{\\sec^{2}y}{\\tan y}dy = 0\\)\n\nEach term is of the form \\(\\frac{f'}{f}\\), since \\(\\frac{d}{dx}(\\tan x) = \\sec^{2}x\\). Integrating,\n\n\\(\\log\\left|\\tan x\\right| + \\log\\left|\\tan y\\right| = \\log\\left|c\\right|\\)\n\n\\(\\log\\left|\\tan x \\cdot \\tan y\\right| = \\log\\left|c\\right|\\)\n\n\\(\\therefore \\tan x \\cdot \\tan y = c\\)\n\nDifferentiating the answer implicitly returns the given equation: from \\(\\tan x \\cdot \\tan y = c\\), \\(\\sec^{2}x \\tan y \\, dx + \\sec^{2}y \\tan x \\, dy = 0\\), which is the differential equation as printed."
+  },
+  {
+    "ref": "Q. 1. (viii)",
+    "format": "mcq",
+    "chapter": "Probability Distributions",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "difficulty": "EASY",
+    "stem": "If \\(X\\) is waiting time in minutes for a bus and its p.d.f. is given by \\(f(x) = \\frac{1}{5}\\), for \\(0 \\leq x \\leq 5\\),\n\n\\(= 0\\), otherwise\n\nthen the probability that waiting time is between 1 and 3 is _____",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{2}{5}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{4}{5}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\frac{2}{5}\\)\n\nThe probability that a continuous random variable lies between two values is the integral of its p.d.f. over that interval.\n\n\\(P(1 < X < 3) = \\int_{1}^{3} f(x)dx = \\int_{1}^{3}\\frac{1}{5}dx\\)\n\n\\(= \\frac{1}{5}\\left[x\\right]_{1}^{3} = \\frac{1}{5}(3 - 1) = \\frac{2}{5}\\)\n\n\\(\\therefore\\) the probability that the waiting time is between \\(1\\) and \\(3\\) minutes is \\(\\frac{2}{5}\\).\n\nThe density is constant over the whole support \\([0, 5]\\), so probability is proportional to length: the interval \\((1, 3)\\) is two of the five units, giving \\(\\frac{2}{5}\\). The total mass checks out as \\(\\frac{1}{5} \\times 5 = 1\\)."
+  },
+  {
+    "ref": "Q. 2. (i)",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of \\(\\tan \\theta = 0\\).",
+    "solution": "\\(\\tan\\theta = 0 = \\tan 0\\), and the general solution of \\(\\tan\\theta = \\tan\\alpha\\) is \\(\\theta = n\\pi + \\alpha\\), where \\(n \\in Z\\).\n\n\\(\\therefore\\) with \\(\\alpha = 0\\), the general solution of \\(\\tan\\theta = 0\\) is \\(\\theta = n\\pi\\), where \\(n \\in Z\\).\n\nCheck: for every integer \\(n\\), \\(\\tan(n\\pi) = 0\\), so each such \\(\\theta\\) does satisfy the equation.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (ii)",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Vectors and Their Types",
+    "difficulty": "EASY",
+    "stem": "Find the magnitude of the vector \\(\\bar{a} = 3\\hat{i} + \\hat{j} + 7\\hat{k}\\)",
+    "solution": "For \\(\\bar{a} = a_{1}\\hat{i} + a_{2}\\hat{j} + a_{3}\\hat{k}\\), \\(\\left|\\bar{a}\\right| = \\sqrt{a_{1}^{2} + a_{2}^{2} + a_{3}^{2}}\\).\n\nHere \\(a_{1} = 3\\), \\(a_{2} = 1\\), \\(a_{3} = 7\\), so \\(\\left|\\bar{a}\\right| = \\sqrt{3^{2} + 1^{2} + 7^{2}} = \\sqrt{9 + 1 + 49}\\).\n\n\\(\\therefore \\left|\\bar{a}\\right| = \\sqrt{59}\\).\n\nCheck: \\(\\sqrt{59} \\approx 7.68\\), which lies between the largest component \\(7\\) and the sum \\(3 + 1 + 7 = 11\\), as a magnitude must.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iii)",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Composite Functions (Chain Rule)",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(y = \\sin(\\log x)\\).",
+    "solution": "\\(y = \\sin(\\log x)\\). Differentiating with respect to \\(x\\) by the chain rule,\n\n\\(\\dfrac{dy}{dx} = \\cos(\\log x) \\times \\dfrac{d}{dx}(\\log x) = \\cos(\\log x) \\times \\dfrac{1}{x}\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{\\cos(\\log x)}{x}\\), for \\(x > 0\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 2. (iv)",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Elementary Integration and Standard Formulae",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\int \\frac{1}{\\sqrt{x}} \\, dx\\).",
+    "solution": "\\(\\int \\dfrac{1}{\\sqrt{x}}\\,dx = \\int x^{-\\frac{1}{2}}\\,dx = \\dfrac{x^{-\\frac{1}{2} + 1}}{-\\frac{1}{2} + 1} + c = \\dfrac{x^{\\frac{1}{2}}}{\\frac{1}{2}} + c\\)\n\n\\(\\therefore \\int \\dfrac{1}{\\sqrt{x}}\\,dx = 2\\sqrt{x} + c\\).\n\nCheck: \\(\\dfrac{d}{dx}\\left(2\\sqrt{x} + c\\right) = 2 \\times \\dfrac{1}{2\\sqrt{x}} = \\dfrac{1}{\\sqrt{x}}\\), which is the given integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 3",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Truth Tables of Compound Statements",
+    "difficulty": "EASY",
+    "stem": "Using truth table, prove that \\(\\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\)",
+    "solution": "Two statement patterns are equivalent when their truth values agree in every row of the truth table. With two statements \\(p\\) and \\(q\\) there are \\(2^{2} = 4\\) combinations of truth values, so the table has 4 rows.\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim p \\wedge q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\wedge \\sim p\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | F |\n| T | F | F | F | T | F |\n| F | T | T | T | T | T |\n| F | F | T | F | F | F |\n\nThe entries of column 4 are F, F, T, F and the entries of column 6 are F, F, T, F, so the two columns are identical in all four rows.\n\n\\(\\therefore \\sim p \\wedge q \\equiv (p \\vee q) \\wedge \\sim p\\).\n\nCheck with the algebra of statements: by the distributive law, \\((p \\vee q) \\wedge \\sim p \\equiv (p \\wedge \\sim p) \\vee (q \\wedge \\sim p)\\). Now \\(p \\wedge \\sim p\\) is a contradiction \\(c\\), and \\(c \\vee s \\equiv s\\), so this reduces to \\(q \\wedge \\sim p \\equiv \\sim p \\wedge q\\), which agrees with the table.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 4",
+    "format": "subjective",
+    "chapter": "Matrices",
+    "subtopic": "Minors, Cofactors and Adjoint",
+    "difficulty": "EASY",
+    "stem": "Find the cofactors of the elements of the matrix \\(\\begin{bmatrix} 2 & -3 \\\\ 3 & 5 \\end{bmatrix}\\)",
+    "solution": "Let \\(A = \\begin{bmatrix} 2 & -3 \\\\ 3 & 5 \\end{bmatrix}\\), so \\(a_{11} = 2\\), \\(a_{12} = -3\\), \\(a_{21} = 3\\), \\(a_{22} = 5\\).\n\nThe cofactor of \\(a_{ij}\\) is \\(A_{ij} = (-1)^{i + j}\\,M_{ij}\\), where the minor \\(M_{ij}\\) is obtained by deleting the \\(i\\)th row and the \\(j\\)th column of \\(A\\).\n\nDeleting row 1 and column 1 leaves \\(5\\), so \\(M_{11} = 5\\) and \\(A_{11} = (-1)^{1 + 1}(5) = 5\\).\n\nDeleting row 1 and column 2 leaves \\(3\\), so \\(M_{12} = 3\\) and \\(A_{12} = (-1)^{1 + 2}(3) = -3\\).\n\nDeleting row 2 and column 1 leaves \\(-3\\), so \\(M_{21} = -3\\) and \\(A_{21} = (-1)^{2 + 1}(-3) = 3\\).\n\nDeleting row 2 and column 2 leaves \\(2\\), so \\(M_{22} = 2\\) and \\(A_{22} = (-1)^{2 + 2}(2) = 2\\).\n\n\\(\\therefore\\) the cofactors of the elements of the given matrix are \\(A_{11} = 5\\), \\(A_{12} = -3\\), \\(A_{21} = 3\\), \\(A_{22} = 2\\).\n\nCheck: \\(|A| = (2)(5) - (-3)(3) = 10 + 9 = 19\\). Expanding along the first row, \\(a_{11}A_{11} + a_{12}A_{12} = 2(5) + (-3)(-3) = 10 + 9 = 19\\); expanding along the second row, \\(a_{21}A_{21} + a_{22}A_{22} = 3(3) + 5(2) = 9 + 10 = 19\\). Both expansions give \\(|A|\\), so the cofactors are consistent.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 5",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Polar Coordinates",
+    "difficulty": "MODERATE",
+    "stem": "Find the polar coordinates of the point whose cartesian coordinates are \\((-\\sqrt{2}, -\\sqrt{2})\\).",
+    "solution": "Let the cartesian coordinates be \\((x, y) = \\left(-\\sqrt{2},\\, -\\sqrt{2}\\right)\\) and the polar coordinates be \\((r, \\theta)\\), where \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\), \\(r > 0\\), and \\(\\theta\\) is taken in \\([0, 2\\pi)\\).\n\n\\(r^{2} = x^{2} + y^{2} = \\left(-\\sqrt{2}\\right)^{2} + \\left(-\\sqrt{2}\\right)^{2} = 2 + 2 = 4\\)\n\n\\(\\therefore r = 2\\), taking the positive square root.\n\n\\(\\tan\\theta = \\dfrac{y}{x} = \\dfrac{-\\sqrt{2}}{-\\sqrt{2}} = 1\\), so the reference angle is \\(\\dfrac{\\pi}{4}\\).\n\nHere \\(x < 0\\) and \\(y < 0\\), so the point lies in the third quadrant. The value of \\(\\theta\\) in \\([0, 2\\pi)\\) that lies in the third quadrant and has reference angle \\(\\dfrac{\\pi}{4}\\) is\n\n\\(\\theta = \\pi + \\dfrac{\\pi}{4} = \\dfrac{5\\pi}{4}\\)\n\n\\(\\therefore\\) the polar coordinates of the given point are \\(\\left(2,\\, \\dfrac{5\\pi}{4}\\right)\\).\n\nCheck: \\(r\\cos\\theta = 2\\cos\\dfrac{5\\pi}{4} = 2\\left(-\\dfrac{1}{\\sqrt{2}}\\right) = -\\sqrt{2}\\) and \\(r\\sin\\theta = 2\\sin\\dfrac{5\\pi}{4} = 2\\left(-\\dfrac{1}{\\sqrt{2}}\\right) = -\\sqrt{2}\\), which are the given cartesian coordinates.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 6",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), if \\(a = 2, b = 3, c = 4\\), then prove that the triangle is obtuse angled.",
+    "solution": "In \\(\\Delta ABC\\), \\(a = 2\\), \\(b = 3\\), \\(c = 4\\). Since \\(2 + 3 > 4\\), \\(3 + 4 > 2\\) and \\(4 + 2 > 3\\), such a triangle exists.\n\nA triangle is obtuse angled when one of its angles is greater than \\(\\dfrac{\\pi}{2}\\), that is, when the cosine of that angle is negative. The greatest angle lies opposite the greatest side, and the greatest side here is \\(c = 4\\), so the angle to test is \\(C\\).\n\nBy the cosine rule,\n\n\\(\\cos C = \\dfrac{a^{2} + b^{2} - c^{2}}{2ab} = \\dfrac{2^{2} + 3^{2} - 4^{2}}{2(2)(3)} = \\dfrac{4 + 9 - 16}{12} = \\dfrac{-3}{12} = -\\dfrac{1}{4}\\)\n\nSo \\(\\cos C = -\\dfrac{1}{4} < 0\\), and for \\(0 < C < \\pi\\) the cosine is negative only when \\(\\dfrac{\\pi}{2} < C < \\pi\\).\n\n\\(\\therefore\\) the angle \\(C\\) is obtuse, and hence \\(\\Delta ABC\\) is an obtuse angled triangle.\n\nCheck: the other two angles come out acute, since \\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc} = \\dfrac{9 + 16 - 4}{24} = \\dfrac{21}{24} = \\dfrac{7}{8} > 0\\) and \\(\\cos B = \\dfrac{a^{2} + c^{2} - b^{2}}{2ac} = \\dfrac{4 + 16 - 9}{16} = \\dfrac{11}{16} > 0\\). Exactly one angle is obtuse, which is what a triangle allows.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 7",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product of Vectors",
+    "difficulty": "EASY",
+    "stem": "If \\(\\bar{a} = 3\\hat{i} - \\hat{j} + 2\\hat{k}, \\bar{b} = 2\\hat{i} + \\hat{j} - \\hat{k},\\) then find \\(\\left|\\bar{a} \\times \\bar{b}\\right|\\)",
+    "solution": "\\(\\bar{a} = 3\\hat{i} - \\hat{j} + 2\\hat{k}\\) and \\(\\bar{b} = 2\\hat{i} + \\hat{j} - \\hat{k}\\).\n\n\\(\\bar{a} \\times \\bar{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -1 & 2 \\\\ 2 & 1 & -1 \\end{vmatrix}\\)\n\nExpanding along the first row,\n\n\\(= \\hat{i}\\left[(-1)(-1) - (2)(1)\\right] - \\hat{j}\\left[(3)(-1) - (2)(2)\\right] + \\hat{k}\\left[(3)(1) - (-1)(2)\\right]\\)\n\n\\(= \\hat{i}\\left(1 - 2\\right) - \\hat{j}\\left(-3 - 4\\right) + \\hat{k}\\left(3 + 2\\right)\\)\n\n\\(= -\\hat{i} + 7\\hat{j} + 5\\hat{k}\\)\n\n\\(\\left|\\bar{a} \\times \\bar{b}\\right| = \\sqrt{(-1)^{2} + 7^{2} + 5^{2}} = \\sqrt{1 + 49 + 25} = \\sqrt{75} = \\sqrt{25 \\times 3}\\)\n\n\\(\\therefore \\left|\\bar{a} \\times \\bar{b}\\right| = 5\\sqrt{3}\\).\n\nCheck: \\(\\bar{a} \\times \\bar{b}\\) must be perpendicular to both of the given vectors. \\(\\bar{a} \\cdot \\left(\\bar{a} \\times \\bar{b}\\right) = 3(-1) + (-1)(7) + 2(5) = -3 - 7 + 10 = 0\\) and \\(\\bar{b} \\cdot \\left(\\bar{a} \\times \\bar{b}\\right) = 2(-1) + 1(7) + (-1)(5) = -2 + 7 - 5 = 0\\), so the cross product is correct.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 8",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Equations of a Plane",
+    "difficulty": "EASY",
+    "stem": "Find the cartesian equation of the plane passing through the point \\(A(-1, 2, 3)\\), the direction ratios of whose normal are 0, 2, 5.",
+    "solution": "The cartesian equation of the plane passing through the point \\(\\left(x_{1}, y_{1}, z_{1}\\right)\\) and having \\(a\\), \\(b\\), \\(c\\) as the direction ratios of its normal is\n\n\\(a\\left(x - x_{1}\\right) + b\\left(y - y_{1}\\right) + c\\left(z - z_{1}\\right) = 0\\)\n\nHere the plane passes through \\(A(-1, 2, 3)\\), so \\(x_{1} = -1\\), \\(y_{1} = 2\\), \\(z_{1} = 3\\), and the direction ratios of the normal are \\(a = 0\\), \\(b = 2\\), \\(c = 5\\).\n\n\\(\\therefore 0\\left(x + 1\\right) + 2\\left(y - 2\\right) + 5\\left(z - 3\\right) = 0\\)\n\n\\(\\therefore 2y - 4 + 5z - 15 = 0\\)\n\n\\(\\therefore\\) the cartesian equation of the required plane is \\(2y + 5z - 19 = 0\\), that is, \\(2y + 5z = 19\\).\n\nCheck: substituting \\(A(-1, 2, 3)\\) gives \\(2(2) + 5(3) = 4 + 15 = 19\\), so \\(A\\) lies on the plane; and the coefficients of \\(x\\), \\(y\\) and \\(z\\) in the equation are \\(0\\), \\(2\\) and \\(5\\), which are the given direction ratios of the normal.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 9",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Implicit Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x\\sqrt{x} + y\\sqrt{y} = a\\sqrt{a}\\).",
+    "solution": "\\(x\\sqrt{x} + y\\sqrt{y} = a\\sqrt{a}\\), that is, \\(x^{\\frac{3}{2}} + y^{\\frac{3}{2}} = a^{\\frac{3}{2}}\\), where \\(a\\) is a constant.\n\nThis relation defines \\(y\\) implicitly as a function of \\(x\\). Differentiating both sides with respect to \\(x\\), and using the chain rule on \\(y^{\\frac{3}{2}}\\),\n\n\\(\\dfrac{3}{2}x^{\\frac{1}{2}} + \\dfrac{3}{2}y^{\\frac{1}{2}}\\,\\dfrac{dy}{dx} = 0\\)\n\nDividing throughout by \\(\\dfrac{3}{2}\\),\n\n\\(\\sqrt{x} + \\sqrt{y}\\,\\dfrac{dy}{dx} = 0\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = -\\dfrac{\\sqrt{x}}{\\sqrt{y}} = -\\sqrt{\\dfrac{x}{y}}\\), for \\(y > 0\\).\n\nCheck: substituting this back into the differentiated equation gives \\(\\dfrac{3}{2}\\sqrt{x} + \\dfrac{3}{2}\\sqrt{y}\\left(-\\dfrac{\\sqrt{x}}{\\sqrt{y}}\\right) = \\dfrac{3}{2}\\sqrt{x} - \\dfrac{3}{2}\\sqrt{x} = 0\\), which is what differentiating the constant \\(a^{\\frac{3}{2}}\\) must give.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 10",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Normals",
+    "difficulty": "EASY",
+    "stem": "Show that the tangent to the curve \\(y = x^{3} - 6x^{2} + x + 3\\) at the point (0, 3) is parallel to the line \\(y = x + 5\\).",
+    "solution": "The curve is \\(y = x^{3} - 6x^{2} + x + 3\\).\n\nThe point \\((0, 3)\\) lies on this curve, since putting \\(x = 0\\) gives \\(y = 0 - 0 + 0 + 3 = 3\\).\n\nThe slope of the tangent at a point of the curve is the value of \\(\\dfrac{dy}{dx}\\) there. Differentiating with respect to \\(x\\),\n\n\\(\\dfrac{dy}{dx} = 3x^{2} - 12x + 1\\)\n\nAt the point \\((0, 3)\\), that is at \\(x = 0\\),\n\n\\(\\left(\\dfrac{dy}{dx}\\right)_{(0,\\,3)} = 3(0)^{2} - 12(0) + 1 = 1\\)\n\nSo the slope of the tangent at \\((0, 3)\\) is \\(m_{1} = 1\\).\n\nThe given line is \\(y = x + 5\\). Comparing with \\(y = mx + c\\), its slope is \\(m_{2} = 1\\).\n\nThe tangent at \\((0, 3)\\) is \\(y - 3 = 1\\left(x - 0\\right)\\), that is, \\(y = x + 3\\), which is not the same line as \\(y = x + 5\\).\n\n\\(m_{1} = m_{2} = 1\\) and the two lines are distinct.\n\n\\(\\therefore\\) the tangent to the curve at \\((0, 3)\\) is parallel to the line \\(y = x + 5\\).\n\nCheck: the two lines never meet, since \\(x + 3 = x + 5\\) would give \\(3 = 5\\), which is impossible. Two distinct lines in a plane that never meet are parallel.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 11",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Rolle's Theorem",
+    "difficulty": "EASY",
+    "stem": "Check whether the conditions of Rolle's theorem are satisfied by the function \\(f(x) = x^{2} - 4x + 3, x \\in [1, 3]\\)",
+    "solution": "\\(f(x) = x^{2} - 4x + 3\\), \\(x \\in [1, 3]\\), so here \\(a = 1\\) and \\(b = 3\\).\n\nRolle's theorem requires three conditions on \\(f\\), and each is tested below.\n\n(1) Continuity on \\([1, 3]\\): \\(f\\) is a polynomial function, and a polynomial function is continuous at every real number, so \\(f\\) is continuous on \\([1, 3]\\).\n\n(2) Differentiability on \\((1, 3)\\): \\(f\\) is a polynomial function, and a polynomial function is differentiable at every real number, with \\(f'(x) = 2x - 4\\), so \\(f\\) is differentiable on \\((1, 3)\\).\n\n(3) Equal values at the end points: \\(f(1) = (1)^{2} - 4(1) + 3 = 1 - 4 + 3 = 0\\) and \\(f(3) = (3)^{2} - 4(3) + 3 = 9 - 12 + 3 = 0\\), so \\(f(1) = f(3) = 0\\).\n\nAll three conditions are satisfied.\n\n\\(\\therefore\\) the conditions of Rolle's theorem are satisfied by \\(f\\) on \\([1, 3]\\), and hence there exists at least one \\(c \\in (1, 3)\\) such that \\(f'(c) = 0\\).\n\nSuch a \\(c\\) is found from \\(f'(c) = 2c - 4 = 0\\), which gives \\(c = 2\\).\n\nCheck: \\(c = 2\\) lies strictly between \\(1\\) and \\(3\\), and \\(f'(2) = 2(2) - 4 = 0\\), so the value promised by the theorem does exist in the open interval.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 12",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\int \\frac{dx}{x + x^{-10}}\\)",
+    "solution": "Let \\(I = \\int \\dfrac{dx}{x + x^{-10}}\\).\n\nThe exponent in the second term of the denominator is \\(-10\\), so\n\n\\(x + x^{-10} = x + \\dfrac{1}{x^{10}} = \\dfrac{x^{11} + 1}{x^{10}}\\)\n\n\\(\\therefore I = \\int \\dfrac{x^{10}}{x^{11} + 1}\\,dx\\)\n\nPut \\(t = x^{11} + 1\\). Differentiating, \\(11x^{10}\\,dx = dt\\), so \\(x^{10}\\,dx = \\dfrac{dt}{11}\\).\n\n\\(\\therefore I = \\int \\dfrac{1}{t} \\times \\dfrac{dt}{11} = \\dfrac{1}{11}\\int \\dfrac{dt}{t} = \\dfrac{1}{11}\\log|t| + c\\)\n\nSubstituting back \\(t = x^{11} + 1\\),\n\n\\(\\therefore I = \\dfrac{1}{11}\\log\\left|x^{11} + 1\\right| + c\\).\n\nCheck: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{11}\\log\\left|x^{11} + 1\\right| + c\\right] = \\dfrac{1}{11} \\times \\dfrac{11x^{10}}{x^{11} + 1} = \\dfrac{x^{10}}{x^{11} + 1} = \\dfrac{1}{x + x^{-10}}\\), which is the given integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 13",
+    "format": "subjective",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem of Integral Calculus",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\int_{0}^{-1} e^{-x} \\, dx\\)",
+    "solution": "Let \\(I = \\int_{0}^{-1} e^{-x}\\,dx\\).\n\nHere the upper limit \\(-1\\) is smaller than the lower limit \\(0\\). That is permitted: the fundamental theorem of integral calculus places no order on the two limits, and it is the reason the value below comes out negative even though the integrand \\(e^{-x}\\) is positive everywhere.\n\nAn antiderivative of \\(e^{-x}\\) is \\(-e^{-x}\\), since \\(\\dfrac{d}{dx}\\left(-e^{-x}\\right) = -e^{-x} \\times (-1) = e^{-x}\\).\n\nBy the fundamental theorem of integral calculus, \\(\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)\\), where \\(F'(x) = f(x)\\). Here \\(a = 0\\) and \\(b = -1\\).\n\n\\(I = \\left[-e^{-x}\\right]_{0}^{-1} = \\left(-e^{-(-1)}\\right) - \\left(-e^{-0}\\right) = -e^{1} + e^{0} = -e + 1\\)\n\n\\(\\therefore I = 1 - e \\approx 1 - 2.7183 = -1.7183\\).\n\nCheck: interchanging the limits must change only the sign. \\(\\int_{-1}^{0} e^{-x}\\,dx = \\left[-e^{-x}\\right]_{-1}^{0} = -e^{0} + e^{1} = e - 1 \\approx 1.7183\\), which is positive, as it must be for a positive integrand over an interval traversed from left to right. Its negative is \\(1 - e\\), the value obtained above.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 14",
+    "format": "subjective",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean and Variance of a Binomial Distribution",
+    "difficulty": "EASY",
+    "stem": "If \\(X \\sim B(n, p)\\) and \\(E(X) = 6, Var(X) = 4.2,\\) then find \\(n\\) and \\(p\\).",
+    "solution": "\\(X \\sim B(n, p)\\), so \\(E(X) = np\\) and \\(Var(X) = npq\\), where \\(q = 1 - p\\).\n\nGiven: \\(E(X) = np = 6\\) and \\(Var(X) = npq = 4.2\\).\n\nDividing the second equation by the first,\n\n\\(\\dfrac{npq}{np} = \\dfrac{4.2}{6}\\)\n\n\\(\\therefore q = 0.7\\)\n\n\\(\\therefore p = 1 - q = 1 - 0.7 = 0.3\\)\n\nSubstituting \\(p = 0.3\\) in \\(np = 6\\),\n\n\\(n(0.3) = 6\\)\n\n\\(\\therefore n = \\dfrac{6}{0.3} = 20\\)\n\n\\(\\therefore n = 20\\) and \\(p = 0.3\\).\n\nCheck: with \\(n = 20\\) and \\(p = 0.3\\), \\(E(X) = np = 20(0.3) = 6\\) and \\(Var(X) = npq = 20(0.3)(0.7) = 4.2\\), which are the given values. Also \\(n = 20\\) is a positive integer and \\(0 < p < 1\\), as a binomial distribution requires.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 15",
+    "format": "subjective",
+    "chapter": "Trigonometric Functions",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\Delta ABC\\), prove that \\(a^{2} = b^{2} + c^{2} - 2bc \\cos A\\)",
+    "solution": "In \\(\\Delta ABC\\) let the sides be \\(BC = a\\), \\(CA = b\\), \\(AB = c\\), and let \\(A\\) denote the angle at the vertex \\(A\\), so that \\(0 < A < \\pi\\).\n\nTake the vertex \\(A\\) at the origin and the side \\(AB\\) along the positive X-axis. Then\n\n\\(A \\equiv (0, 0)\\), and \\(B \\equiv (c, 0)\\), since \\(AB = c\\).\n\nThe ray \\(AC\\) makes an angle \\(A\\) with the positive X-axis and \\(AC = b\\), so the coordinates of \\(C\\) are\n\n\\(C \\equiv \\left(b\\cos A,\\; b\\sin A\\right)\\)\n\nNow \\(a = BC\\), so by the distance formula,\n\n\\(a^{2} = \\left(b\\cos A - c\\right)^{2} + \\left(b\\sin A - 0\\right)^{2}\\)\n\n\\(= b^{2}\\cos^{2}A - 2bc\\cos A + c^{2} + b^{2}\\sin^{2}A\\)\n\n\\(= b^{2}\\left(\\cos^{2}A + \\sin^{2}A\\right) + c^{2} - 2bc\\cos A\\)\n\nUsing \\(\\cos^{2}A + \\sin^{2}A = 1\\),\n\n\\(\\therefore a^{2} = b^{2} + c^{2} - 2bc\\cos A\\)\n\nHence, in \\(\\Delta ABC\\), \\(a^{2} = b^{2} + c^{2} - 2bc\\cos A\\).\n\nCheck: putting \\(A = \\dfrac{\\pi}{2}\\) gives \\(\\cos A = 0\\), and the result becomes \\(a^{2} = b^{2} + c^{2}\\), which is Pythagoras' theorem for a right angle at \\(A\\). For an equilateral triangle, \\(b = c = a\\) and \\(A = \\dfrac{\\pi}{3}\\), and the right hand side is \\(a^{2} + a^{2} - 2a^{2}\\left(\\dfrac{1}{2}\\right) = a^{2}\\), as required.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 16",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Combined Equation of a Pair of Lines",
+    "difficulty": "MODERATE",
+    "stem": "Find the combined equation of pair of lines passing through (2, 3) and perpendicular to the lines \\(3x + 2y - 1 = 0\\) and \\(x - 3y + 2 = 0\\).",
+    "solution": "The required pair of lines passes through the point \\((2, 3)\\); one of them is perpendicular to \\(3x + 2y - 1 = 0\\) and the other is perpendicular to \\(x - 3y + 2 = 0\\).\n\nSlopes of the given lines:\n\n\\(3x + 2y - 1 = 0\\) gives \\(y = -\\dfrac{3}{2}x + \\dfrac{1}{2}\\), so its slope is \\(-\\dfrac{3}{2}\\).\n\n\\(x - 3y + 2 = 0\\) gives \\(y = \\dfrac{1}{3}x + \\dfrac{2}{3}\\), so its slope is \\(\\dfrac{1}{3}\\).\n\nTwo lines with slopes \\(m_{1}\\) and \\(m_{2}\\) are perpendicular when \\(m_{1}m_{2} = -1\\).\n\nThe line perpendicular to the first has slope \\(\\dfrac{-1}{-\\frac{3}{2}} = \\dfrac{2}{3}\\), and it passes through \\((2, 3)\\), so by the slope point form,\n\n\\(y - 3 = \\dfrac{2}{3}\\left(x - 2\\right)\\)\n\n\\(\\therefore 3y - 9 = 2x - 4\\), that is, \\(2x - 3y + 5 = 0\\)\n\nThe line perpendicular to the second has slope \\(\\dfrac{-1}{\\frac{1}{3}} = -3\\), and it also passes through \\((2, 3)\\), so\n\n\\(y - 3 = -3\\left(x - 2\\right)\\)\n\n\\(\\therefore y - 3 = -3x + 6\\), that is, \\(3x + y - 9 = 0\\)\n\nThe combined equation of a pair of lines is the product of their separate equations equated to zero.\n\n\\(\\therefore \\left(2x - 3y + 5\\right)\\left(3x + y - 9\\right) = 0\\)\n\nExpanding,\n\n\\(6x^{2} + 2xy - 18x - 9xy - 3y^{2} + 27y + 15x + 5y - 45 = 0\\)\n\n\\(\\therefore 6x^{2} - 7xy - 3y^{2} - 3x + 32y - 45 = 0\\)\n\nThis is the required combined equation.\n\nCheck: at \\((2, 3)\\) the left hand side is \\(6(4) - 7(6) - 3(9) - 3(2) + 32(3) - 45 = 24 - 42 - 27 - 6 + 96 - 45 = 0\\), so the point lies on the pair. The perpendicularity also holds, since \\(\\dfrac{2}{3} \\times \\left(-\\dfrac{3}{2}\\right) = -1\\) and \\(\\left(-3\\right) \\times \\dfrac{1}{3} = -1\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 17",
+    "format": "subjective",
+    "chapter": "Pair of Straight Lines",
+    "subtopic": "Angle between a Pair of Lines",
+    "difficulty": "MODERATE",
+    "stem": "Show that the acute angle \\(\\theta\\) between the lines represented by \\(ax^{2} + 2hxy + by^{2} = 0\\) is given by,\n\n\\(\\tan \\theta = \\left|\\frac{2\\sqrt{h^{2} - ab}}{a + b}\\right|\\)",
+    "solution": "Let the equation be\n\n\\(ax^{2} + 2hxy + by^{2} = 0\\) ... (1)\n\nIt is a homogeneous equation of degree two, so it represents a pair of lines through the origin. Let those lines be\n\n\\(y = m_{1}x\\) and \\(y = m_{2}x\\), with slopes \\(m_{1}\\) and \\(m_{2}\\).\n\n**Finding the slopes.** A point \\((x, y)\\) with \\(x \\neq 0\\) lies on the pair exactly when, on dividing (1) by \\(x^{2}\\),\n\n\\(a + 2h\\left(\\dfrac{y}{x}\\right) + b\\left(\\dfrac{y}{x}\\right)^{2} = 0\\)\n\nPutting \\(m = \\dfrac{y}{x}\\), the slopes \\(m_{1}\\) and \\(m_{2}\\) are the roots of\n\n\\(bm^{2} + 2hm + a = 0\\)\n\nHence, by the relations between roots and coefficients,\n\n\\(m_{1} + m_{2} = -\\dfrac{2h}{b}\\) and \\(m_{1}m_{2} = \\dfrac{a}{b}\\) ... (2)\n\n**The angle between the lines.** If \\(\\theta\\) is the acute angle between the lines with slopes \\(m_{1}\\) and \\(m_{2}\\), then\n\n\\(\\tan\\theta = \\left|\\dfrac{m_{1} - m_{2}}{1 + m_{1}m_{2}}\\right|\\) ... (3)\n\nNow\n\n\\((m_{1} - m_{2})^{2} = (m_{1} + m_{2})^{2} - 4m_{1}m_{2} = \\dfrac{4h^{2}}{b^{2}} - \\dfrac{4a}{b} = \\dfrac{4h^{2} - 4ab}{b^{2}} = \\dfrac{4(h^{2} - ab)}{b^{2}}\\)\n\nThe two lines are real, so \\(h^{2} - ab \\geq 0\\) and\n\n\\(|m_{1} - m_{2}| = \\dfrac{2\\sqrt{h^{2} - ab}}{|b|}\\)\n\nAlso, from (2),\n\n\\(1 + m_{1}m_{2} = 1 + \\dfrac{a}{b} = \\dfrac{a + b}{b}\\)\n\nSubstituting both in (3):\n\n\\(\\tan\\theta = \\left|\\dfrac{\\dfrac{2\\sqrt{h^{2} - ab}}{|b|}}{\\dfrac{a + b}{b}}\\right| = \\left|\\dfrac{2\\sqrt{h^{2} - ab}}{|b|} \\times \\dfrac{b}{a + b}\\right|\\)\n\nSince \\(\\left|\\dfrac{b}{|b|}\\right| = 1\\),\n\n\\(\\therefore \\tan\\theta = \\left|\\dfrac{2\\sqrt{h^{2} - ab}}{a + b}\\right|\\)\n\nThe modulus is what makes \\(\\theta\\) the ACUTE angle: \\(\\tan\\theta\\) is then non-negative, so \\(\\theta\\) lies in \\(\\left[0, \\dfrac{\\pi}{2}\\right)\\).\n\nCheck on a pair whose angle is known: take \\(xy = 0\\), i.e. \\(a = 0\\), \\(b = 0\\), \\(2h = 1\\) so \\(h = \\dfrac{1}{2}\\). These are the coordinate axes, at right angles. Here \\(a + b = 0\\), so the formula gives \\(\\tan\\theta \\rightarrow \\infty\\), i.e. \\(\\theta = \\dfrac{\\pi}{2}\\), which agrees. Take next \\(x^{2} - y^{2} = 0\\), i.e. \\(y = \\pm x\\), whose acute angle is \\(\\dfrac{\\pi}{2}\\); here \\(a = 1\\), \\(b = -1\\), \\(h = 0\\), again \\(a + b = 0\\) and \\(\\theta = \\dfrac{\\pi}{2}\\), as it should be.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 18",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Using vector method, prove that the medians of a triangle are concurrent.",
+    "solution": "Let \\(ABC\\) be a triangle and let \\(O\\) be the origin of reference. Let the position vectors of the vertices be\n\n\\(\\overline{OA} = \\bar{a}\\), \\(\\overline{OB} = \\bar{b}\\), \\(\\overline{OC} = \\bar{c}\\)\n\nLet \\(D\\), \\(E\\), \\(F\\) be the midpoints of the sides \\(BC\\), \\(CA\\), \\(AB\\) respectively, so that \\(AD\\), \\(BE\\), \\(CF\\) are the medians of the triangle.\n\n**Position vectors of the midpoints.** By the midpoint formula,\n\n\\(\\overline{OD} = \\dfrac{\\bar{b} + \\bar{c}}{2}\\), \\(\\overline{OE} = \\dfrac{\\bar{c} + \\bar{a}}{2}\\), \\(\\overline{OF} = \\dfrac{\\bar{a} + \\bar{b}}{2}\\)\n\n**A point on the median \\(AD\\).** Let \\(G_{1}\\) be the point that divides \\(AD\\) internally in the ratio \\(2 : 1\\). By the section formula for internal division,\n\n\\(\\overline{OG_{1}} = \\dfrac{2\\,\\overline{OD} + 1\\cdot\\overline{OA}}{2 + 1} = \\dfrac{2\\left(\\dfrac{\\bar{b} + \\bar{c}}{2}\\right) + \\bar{a}}{3} = \\dfrac{\\bar{b} + \\bar{c} + \\bar{a}}{3} = \\dfrac{\\bar{a} + \\bar{b} + \\bar{c}}{3}\\)\n\n**A point on the median \\(BE\\).** Let \\(G_{2}\\) divide \\(BE\\) internally in the ratio \\(2 : 1\\). Then\n\n\\(\\overline{OG_{2}} = \\dfrac{2\\,\\overline{OE} + 1\\cdot\\overline{OB}}{2 + 1} = \\dfrac{2\\left(\\dfrac{\\bar{c} + \\bar{a}}{2}\\right) + \\bar{b}}{3} = \\dfrac{\\bar{c} + \\bar{a} + \\bar{b}}{3} = \\dfrac{\\bar{a} + \\bar{b} + \\bar{c}}{3}\\)\n\n**A point on the median \\(CF\\).** Let \\(G_{3}\\) divide \\(CF\\) internally in the ratio \\(2 : 1\\). Then\n\n\\(\\overline{OG_{3}} = \\dfrac{2\\,\\overline{OF} + 1\\cdot\\overline{OC}}{2 + 1} = \\dfrac{2\\left(\\dfrac{\\bar{a} + \\bar{b}}{2}\\right) + \\bar{c}}{3} = \\dfrac{\\bar{a} + \\bar{b} + \\bar{c}}{3}\\)\n\nThe three position vectors are identical, so \\(G_{1}\\), \\(G_{2}\\) and \\(G_{3}\\) are one and the same point. Call it \\(G\\). Then \\(G\\) lies on \\(AD\\), on \\(BE\\) and on \\(CF\\).\n\n\\(\\therefore\\) the three medians of a triangle pass through a common point \\(G\\), i.e. they are concurrent, and the position vector of that point is\n\n\\(\\overline{OG} = \\dfrac{\\bar{a} + \\bar{b} + \\bar{c}}{3}\\)\n\nThis point \\(G\\) is the centroid of the triangle.\n\nCheck with a triangle whose centroid is known: take \\(A \\equiv (0, 0)\\), \\(B \\equiv (6, 0)\\), \\(C \\equiv (0, 6)\\). The formula gives \\(G \\equiv (2, 2)\\). The midpoint of \\(BC\\) is \\(D \\equiv (3, 3)\\), and the point dividing \\(AD\\) in the ratio \\(2 : 1\\) from \\(A\\) is \\(\\left(\\dfrac{2(3) + 0}{3}, \\dfrac{2(3) + 0}{3}\\right) \\equiv (2, 2)\\), the same point; the midpoint of \\(CA\\) is \\(E \\equiv (0, 3)\\), and the point dividing \\(BE\\) in the ratio \\(2 : 1\\) from \\(B\\) is \\(\\left(\\dfrac{0 + 6}{3}, \\dfrac{6 + 0}{3}\\right) \\equiv (2, 2)\\), again the same point.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 19",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Equations of a Plane",
+    "difficulty": "MODERATE",
+    "stem": "Find the vector equation of the plane passing through the point \\(A(-1, 2, -5)\\) and parallel to the vectors \\(4\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\hat{i} + \\hat{j} - \\hat{k}\\).",
+    "solution": "The plane passes through the point \\(A(-1, 2, -5)\\) and is parallel to the vectors\n\n\\(\\bar{b} = 4\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\bar{c} = \\hat{i} + \\hat{j} - \\hat{k}\\)\n\nThe position vector of \\(A\\) is \\(\\bar{a} = -\\hat{i} + 2\\hat{j} - 5\\hat{k}\\).\n\n**Vector equation in parametric form.** A plane through the point with position vector \\(\\bar{a}\\) and parallel to two non-parallel vectors \\(\\bar{b}\\) and \\(\\bar{c}\\) consists of exactly those points whose position vector \\(\\bar{r}\\) satisfies\n\n\\(\\bar{r} = \\bar{a} + \\lambda\\bar{b} + \\mu\\bar{c}\\), where \\(\\lambda, \\mu \\in \\mathbb{R}\\)\n\n\\(\\therefore \\bar{r} = (-\\hat{i} + 2\\hat{j} - 5\\hat{k}) + \\lambda(4\\hat{i} - \\hat{j} + 3\\hat{k}) + \\mu(\\hat{i} + \\hat{j} - \\hat{k})\\)\n\n**Vector equation in non-parametric form.** A vector normal to the plane is perpendicular to both \\(\\bar{b}\\) and \\(\\bar{c}\\), so take \\(\\bar{n} = \\bar{b} \\times \\bar{c}\\).\n\n\\(\\bar{n} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -1 & 3 \\\\ 1 & 1 & -1 \\end{vmatrix} = \\hat{i}\\big[(-1)(-1) - (3)(1)\\big] - \\hat{j}\\big[(4)(-1) - (3)(1)\\big] + \\hat{k}\\big[(4)(1) - (-1)(1)\\big]\\)\n\n\\(= \\hat{i}(1 - 3) - \\hat{j}(-4 - 3) + \\hat{k}(4 + 1) = -2\\hat{i} + 7\\hat{j} + 5\\hat{k}\\)\n\nThe equation of the plane is \\(\\bar{r} \\cdot \\bar{n} = \\bar{a} \\cdot \\bar{n}\\), and\n\n\\(\\bar{a} \\cdot \\bar{n} = (-1)(-2) + (2)(7) + (-5)(5) = 2 + 14 - 25 = -9\\)\n\n\\(\\therefore \\bar{r} \\cdot (-2\\hat{i} + 7\\hat{j} + 5\\hat{k}) = -9\\), i.e. \\(\\bar{r} \\cdot (2\\hat{i} - 7\\hat{j} - 5\\hat{k}) = 9\\)\n\nCheck: the normal must be perpendicular to both given vectors, and the given point must satisfy the equation.\n\n\\(\\bar{b} \\cdot \\bar{n} = (4)(-2) + (-1)(7) + (3)(5) = -8 - 7 + 15 = 0\\)\n\n\\(\\bar{c} \\cdot \\bar{n} = (1)(-2) + (1)(7) + (-1)(5) = -2 + 7 - 5 = 0\\)\n\nPutting \\(\\bar{r} = \\bar{a}\\) in the non-parametric form gives \\(-9\\) on the left, the same as the right side, so \\(A\\) lies on the plane.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 20",
+    "format": "subjective",
+    "chapter": "Line and Planes",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest distance between the lines, \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 2}{3} = \\frac{y - 4}{4} = \\frac{z - 5}{5}\\).",
+    "solution": "Write both lines in the vector form \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\).\n\nFor \\(\\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{4}\\): it passes through \\((1, 2, 3)\\) with direction ratios \\(2, 3, 4\\), so\n\n\\(\\bar{a}_{1} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\bar{b}_{1} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\)\n\nFor \\(\\dfrac{x - 2}{3} = \\dfrac{y - 4}{4} = \\dfrac{z - 5}{5}\\): it passes through \\((2, 4, 5)\\) with direction ratios \\(3, 4, 5\\), so\n\n\\(\\bar{a}_{2} = 2\\hat{i} + 4\\hat{j} + 5\\hat{k}\\), \\(\\bar{b}_{2} = 3\\hat{i} + 4\\hat{j} + 5\\hat{k}\\)\n\nSince \\(\\dfrac{2}{3} \\neq \\dfrac{3}{4}\\), the direction vectors are not proportional, so the lines are not parallel.\n\nThe shortest distance between the lines \\(\\bar{r} = \\bar{a}_{1} + \\lambda\\bar{b}_{1}\\) and \\(\\bar{r} = \\bar{a}_{2} + \\mu\\bar{b}_{2}\\) is\n\n\\(d = \\left|\\dfrac{(\\bar{a}_{2} - \\bar{a}_{1}) \\cdot (\\bar{b}_{1} \\times \\bar{b}_{2})}{|\\bar{b}_{1} \\times \\bar{b}_{2}|}\\right|\\)\n\n**Step 1.** \\(\\bar{a}_{2} - \\bar{a}_{1} = (2 - 1)\\hat{i} + (4 - 2)\\hat{j} + (5 - 3)\\hat{k} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n**Step 2.** \\(\\bar{b}_{1} \\times \\bar{b}_{2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 3 & 4 \\\\ 3 & 4 & 5 \\end{vmatrix} = \\hat{i}(15 - 16) - \\hat{j}(10 - 12) + \\hat{k}(8 - 9) = -\\hat{i} + 2\\hat{j} - \\hat{k}\\)\n\n**Step 3.** \\((\\bar{a}_{2} - \\bar{a}_{1}) \\cdot (\\bar{b}_{1} \\times \\bar{b}_{2}) = (1)(-1) + (2)(2) + (2)(-1) = -1 + 4 - 2 = 1\\)\n\n**Step 4.** \\(|\\bar{b}_{1} \\times \\bar{b}_{2}| = \\sqrt{(-1)^{2} + 2^{2} + (-1)^{2}} = \\sqrt{1 + 4 + 1} = \\sqrt{6}\\)\n\n\\(\\therefore d = \\left|\\dfrac{1}{\\sqrt{6}}\\right| = \\dfrac{1}{\\sqrt{6}} = \\dfrac{\\sqrt{6}}{6}\\) units \\(\\approx 0.41\\) units.\n\nCheck: the numerator is \\(1 \\neq 0\\), so the lines do not intersect, and they were already shown to be non-parallel; the lines are therefore skew and a strictly positive shortest distance is exactly what is expected. The two given points \\((1, 2, 3)\\) and \\((2, 4, 5)\\) are \\(\\sqrt{1 + 4 + 4} = 3\\) units apart, and the shortest distance between the lines cannot exceed the distance between any two of their points; \\(0.41 < 3\\) is consistent.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 21",
+    "format": "subjective",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Derivative as a Rate Measure",
+    "difficulty": "MODERATE",
+    "stem": "Water is being poured at the rate of 27 m\\(^{3}\\)/sec into a cylindrical vessel of base radius 3 m. Find the rate at which the water level is rising.",
+    "solution": "Let \\(V\\) be the volume of water in the vessel at time \\(t\\) seconds, and let \\(h\\) be the depth of the water at that instant.\n\nThe vessel is a cylinder of base radius \\(r = 3\\) m, and the radius does not change as the water rises, so\n\n\\(V = \\pi r^{2} h = \\pi (3)^{2} h = 9\\pi h\\)\n\nWater is poured in at \\(27\\) m\\(^{3}\\)/sec, so \\(\\dfrac{dV}{dt} = 27\\) m\\(^{3}\\)/sec, and the rate at which the water level rises is \\(\\dfrac{dh}{dt}\\).\n\nDifferentiating \\(V = 9\\pi h\\) with respect to \\(t\\):\n\n\\(\\dfrac{dV}{dt} = 9\\pi \\dfrac{dh}{dt}\\)\n\n\\(\\therefore 27 = 9\\pi \\dfrac{dh}{dt}\\)\n\n\\(\\therefore \\dfrac{dh}{dt} = \\dfrac{27}{9\\pi} = \\dfrac{3}{\\pi}\\) m/sec \\(\\approx 0.95\\) m/sec.\n\nCheck: if the level rises \\(\\dfrac{3}{\\pi}\\) m in one second, the volume added in that second is \\(\\pi(3)^{2}\\left(\\dfrac{3}{\\pi}\\right) = 9\\pi \\times \\dfrac{3}{\\pi} = 27\\) m\\(^{3}\\), which is the given rate of pouring.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 22",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integrals of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate : \\(\\int \\frac{\\sin(x + a)}{\\cos(x - b)} \\, dx\\)",
+    "solution": "Let \\(I = \\displaystyle\\int \\dfrac{\\sin(x + a)}{\\cos(x - b)}\\,dx\\)\n\nThe angle in the numerator and the angle in the denominator are different, so write the numerator's angle in terms of the denominator's angle:\n\n\\(x + a = (x - b) + (a + b)\\)\n\n\\(\\therefore \\sin(x + a) = \\sin\\big[(x - b) + (a + b)\\big]\\)\n\nExpanding by the formula \\(\\sin(A + B) = \\sin A\\cos B + \\cos A\\sin B\\), with \\(A = x - b\\) and \\(B = a + b\\):\n\n\\(\\sin(x + a) = \\sin(x - b)\\cos(a + b) + \\cos(x - b)\\sin(a + b)\\)\n\nHere \\(a\\) and \\(b\\) are constants, so \\(\\sin(a + b)\\) and \\(\\cos(a + b)\\) are constants.\n\n\\(\\therefore I = \\displaystyle\\int \\dfrac{\\sin(x - b)\\cos(a + b) + \\cos(x - b)\\sin(a + b)}{\\cos(x - b)}\\,dx\\)\n\n\\(= \\cos(a + b)\\displaystyle\\int \\dfrac{\\sin(x - b)}{\\cos(x - b)}\\,dx + \\sin(a + b)\\displaystyle\\int 1\\,dx\\)\n\n\\(= \\cos(a + b)\\displaystyle\\int \\tan(x - b)\\,dx + \\sin(a + b)\\displaystyle\\int dx\\)\n\nNow \\(\\displaystyle\\int \\tan(x - b)\\,dx = \\log|\\sec(x - b)|\\), since putting \\(u = \\cos(x - b)\\) gives \\(du = -\\sin(x - b)\\,dx\\) and\n\n\\(\\displaystyle\\int \\dfrac{\\sin(x - b)}{\\cos(x - b)}\\,dx = -\\displaystyle\\int \\dfrac{du}{u} = -\\log|u| = -\\log|\\cos(x - b)| = \\log|\\sec(x - b)|\\)\n\n\\(\\therefore I = x\\sin(a + b) + \\cos(a + b)\\,\\log|\\sec(x - b)| + c\\)\n\nCheck by differentiating the answer:\n\n\\(\\dfrac{d}{dx}\\Big[x\\sin(a + b) + \\cos(a + b)\\log|\\sec(x - b)| + c\\Big] = \\sin(a + b) + \\cos(a + b)\\tan(x - b)\\)\n\n\\(= \\dfrac{\\sin(a + b)\\cos(x - b) + \\cos(a + b)\\sin(x - b)}{\\cos(x - b)} = \\dfrac{\\sin\\big[(a + b) + (x - b)\\big]}{\\cos(x - b)} = \\dfrac{\\sin(x + a)}{\\cos(x - b)}\\),\n\nwhich is the original integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 23",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Solution of a Differential Equation",
+    "difficulty": "MODERATE",
+    "stem": "Solve the D.E.\n\n\\(\\frac{dy}{dx} + \\frac{y}{x} = x^{3} - 3\\)",
+    "solution": "The given differential equation is\n\n\\(\\dfrac{dy}{dx} + \\dfrac{y}{x} = x^{3} - 3\\)\n\nThis is of the form \\(\\dfrac{dy}{dx} + Py = Q\\), a linear differential equation, with\n\n\\(P = \\dfrac{1}{x}\\) and \\(Q = x^{3} - 3\\)\n\n**Integrating factor.**\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\int \\frac{1}{x}dx} = e^{\\log|x|} = x\\)\n\n**The solution.** For a linear equation the solution is \\(y \\cdot (\\text{I.F.}) = \\displaystyle\\int Q \\cdot (\\text{I.F.})\\,dx + c\\).\n\n\\(\\therefore y \\cdot x = \\displaystyle\\int (x^{3} - 3)\\, x\\,dx + c\\)\n\n\\(\\therefore xy = \\displaystyle\\int (x^{4} - 3x)\\,dx + c\\)\n\n\\(\\therefore xy = \\dfrac{x^{5}}{5} - \\dfrac{3x^{2}}{2} + c\\)\n\n\\(\\therefore y = \\dfrac{x^{4}}{5} - \\dfrac{3x}{2} + \\dfrac{c}{x}\\), which is the general solution.\n\nCheck by substituting back. From \\(y = \\dfrac{x^{4}}{5} - \\dfrac{3x}{2} + \\dfrac{c}{x}\\),\n\n\\(\\dfrac{dy}{dx} = \\dfrac{4x^{3}}{5} - \\dfrac{3}{2} - \\dfrac{c}{x^{2}}\\) and \\(\\dfrac{y}{x} = \\dfrac{x^{3}}{5} - \\dfrac{3}{2} + \\dfrac{c}{x^{2}}\\)\n\nAdding, \\(\\dfrac{dy}{dx} + \\dfrac{y}{x} = \\dfrac{4x^{3}}{5} + \\dfrac{x^{3}}{5} - \\dfrac{3}{2} - \\dfrac{3}{2} = x^{3} - 3\\), the given right-hand side.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 24",
+    "format": "subjective",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of a Differential Equation",
+    "difficulty": "HARD",
+    "stem": "Obtain the differential equation by eliminating the arbitrary constants from \\(y = c_{1} \\cos(\\log x) + c_{2} \\sin(\\log x)\\).",
+    "solution": "The given relation is\n\n\\(y = c_{1}\\cos(\\log x) + c_{2}\\sin(\\log x)\\) ... (1)\n\nIt contains two arbitrary constants \\(c_{1}\\) and \\(c_{2}\\), so the differential equation obtained by eliminating them is of order two.\n\n**Differentiate (1) with respect to \\(x\\).** Using \\(\\dfrac{d}{dx}\\log x = \\dfrac{1}{x}\\) and the chain rule,\n\n\\(\\dfrac{dy}{dx} = -c_{1}\\sin(\\log x)\\cdot\\dfrac{1}{x} + c_{2}\\cos(\\log x)\\cdot\\dfrac{1}{x}\\)\n\nMultiplying throughout by \\(x\\),\n\n\\(x\\dfrac{dy}{dx} = -c_{1}\\sin(\\log x) + c_{2}\\cos(\\log x)\\) ... (2)\n\n**Differentiate (2) with respect to \\(x\\).** The left side needs the product rule:\n\n\\(x\\dfrac{d^{2}y}{dx^{2}} + \\dfrac{dy}{dx} = -c_{1}\\cos(\\log x)\\cdot\\dfrac{1}{x} - c_{2}\\sin(\\log x)\\cdot\\dfrac{1}{x}\\)\n\n\\(\\therefore x\\dfrac{d^{2}y}{dx^{2}} + \\dfrac{dy}{dx} = -\\dfrac{1}{x}\\Big[c_{1}\\cos(\\log x) + c_{2}\\sin(\\log x)\\Big]\\)\n\nThe bracket on the right is exactly \\(y\\), by (1).\n\n\\(\\therefore x\\dfrac{d^{2}y}{dx^{2}} + \\dfrac{dy}{dx} = -\\dfrac{y}{x}\\)\n\nMultiplying throughout by \\(x\\),\n\n\\(\\therefore x^{2}\\dfrac{d^{2}y}{dx^{2}} + x\\dfrac{dy}{dx} + y = 0\\)\n\nBoth arbitrary constants have been eliminated, so this is the required differential equation.\n\nCheck by substituting one particular member of the family, \\(y = \\cos(\\log x)\\) (i.e. \\(c_{1} = 1\\), \\(c_{2} = 0\\)):\n\n\\(\\dfrac{dy}{dx} = -\\dfrac{\\sin(\\log x)}{x}\\), \\(\\dfrac{d^{2}y}{dx^{2}} = \\dfrac{-\\cos(\\log x) + \\sin(\\log x)}{x^{2}}\\)\n\n\\(x^{2}\\dfrac{d^{2}y}{dx^{2}} + x\\dfrac{dy}{dx} + y = \\big[-\\cos(\\log x) + \\sin(\\log x)\\big] - \\sin(\\log x) + \\cos(\\log x) = 0\\), as required.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 25",
+    "format": "subjective",
+    "chapter": "Probability Distributions",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "The probability distribution of \\(X\\) is as follows :\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P[X=x]\\) | 0.1 | \\(k\\) | \\(2k\\) | \\(2k\\) | \\(k\\) |\n\nFind (i) \\(k\\), (ii) \\(P(X < 2)\\), (iii) \\(P[1 \\leq X < 4]\\)",
+    "solution": "The probability distribution of \\(X\\) is\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P[X = x]\\) | 0.1 | \\(k\\) | \\(2k\\) | \\(2k\\) | \\(k\\) |\n\n**(i) To find \\(k\\).** For a probability mass function the probabilities must add up to 1.\n\n\\(\\displaystyle\\sum P[X = x] = 1\\)\n\n\\(\\therefore 0.1 + k + 2k + 2k + k = 1\\)\n\n\\(\\therefore 0.1 + 6k = 1\\)\n\n\\(\\therefore 6k = 0.9\\)\n\n\\(\\therefore k = 0.15\\)\n\nThe distribution is therefore\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P[X = x]\\) | 0.1 | 0.15 | 0.3 | 0.3 | 0.15 |\n\n**(ii) To find \\(P(X < 2)\\).** The values of \\(X\\) less than 2 are \\(X = 0\\) and \\(X = 1\\).\n\n\\(P(X < 2) = P(X = 0) + P(X = 1) = 0.1 + k = 0.1 + 0.15\\)\n\n\\(\\therefore P(X < 2) = 0.25\\)\n\n**(iii) To find \\(P[1 \\leq X < 4]\\).** The values of \\(X\\) with \\(1 \\leq X < 4\\) are \\(X = 1, 2, 3\\) (\\(X = 4\\) is excluded because the inequality on the right is strict).\n\n\\(P[1 \\leq X < 4] = P(X = 1) + P(X = 2) + P(X = 3) = k + 2k + 2k = 5k = 5(0.15)\\)\n\n\\(\\therefore P[1 \\leq X < 4] = 0.75\\)\n\nCheck: with \\(k = 0.15\\) every probability is non-negative, and \\(0.1 + 0.15 + 0.3 + 0.3 + 0.15 = 1\\), so the distribution is valid. Also \\(P(X < 2) + P[1 \\leq X < 4] = 0.25 + 0.75 = 1\\), which is correct here because between them the two events cover \\(X = 0, 1, 2, 3\\) and count \\(X = 1\\) twice, while \\(P(X = 4) = 0.15 = P(X = 1)\\) makes the double count and the omission cancel.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 26",
+    "format": "subjective",
+    "chapter": "Binomial Distribution",
+    "subtopic": "The Binomial Distribution",
+    "difficulty": "MODERATE",
+    "stem": "In a multiple choice examination with three possible answers for each of the five questions, what is the probability that a candidate would get four correct answers just by guessing?",
+    "solution": "Each question is answered by guessing, and the five questions are answered independently. So the experiment is a sequence of 5 independent trials, and \"the answer is correct\" is a success.\n\nLet \\(X\\) be the number of correct answers among the 5 questions. Then \\(X\\) has a binomial distribution with\n\n\\(n = 5\\), \\(p = P(\\text{a guessed answer is correct}) = \\dfrac{1}{3}\\) (one of the three possible answers is correct),\n\n\\(q = 1 - p = 1 - \\dfrac{1}{3} = \\dfrac{2}{3}\\)\n\nThe probability mass function of a binomial distribution is\n\n\\(P(X = r) = \\binom{n}{r}p^{r}q^{n - r}\\), \\(r = 0, 1, 2, \\ldots, n\\)\n\nThe candidate gets four correct answers when \\(r = 4\\).\n\n\\(P(X = 4) = \\binom{5}{4}\\left(\\dfrac{1}{3}\\right)^{4}\\left(\\dfrac{2}{3}\\right)^{5 - 4}\\)\n\n\\(= 5 \\times \\dfrac{1}{81} \\times \\dfrac{2}{3}\\)\n\n\\(= \\dfrac{10}{243}\\)\n\n\\(\\therefore\\) the probability that the candidate gets exactly four correct answers just by guessing is \\(\\dfrac{10}{243} \\approx 0.0412\\).\n\nCheck: the expected number of correct answers by guessing is \\(np = 5 \\times \\dfrac{1}{3} \\approx 1.67\\), so 4 correct answers is well above average and its probability should be small; \\(0.0412\\) is consistent with that. The full distribution also adds to 1, since \\(\\displaystyle\\sum_{r=0}^{5}\\binom{5}{r}\\left(\\dfrac{1}{3}\\right)^{r}\\left(\\dfrac{2}{3}\\right)^{5-r} = \\left(\\dfrac{1}{3} + \\dfrac{2}{3}\\right)^{5} = 1\\).",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 27",
+    "format": "subjective",
+    "chapter": "Mathematical Logic",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "difficulty": "MODERATE",
+    "hasFigure": true,
+    "stem": "Give an alternative equivalent simple circuit for the following switching circuit :",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed and \\(q\\): the switch \\(S_{2}\\) is closed.\n\nThe switch \\(S_{1}'\\) is closed exactly when \\(S_{1}\\) is open, so \\(S_{1}'\\) corresponds to \\(\\sim p\\).\n\n**Reading the circuit.** The switch \\(S_{1}\\) is in series with a block in which \\(S_{1}'\\) and \\(S_{2}\\) are in parallel. A series connection corresponds to the conjunction \\(\\land\\) and a parallel connection to the disjunction \\(\\vee\\), so the symbolic form of the given circuit is\n\n\\(S_{1} \\land (S_{1}' \\vee S_{2})\\), i.e. \\(p \\land (\\sim p \\vee q)\\)\n\n**Simplifying with the laws of logic.**\n\n\\(p \\land (\\sim p \\vee q)\\)\n\n\\(\\equiv (p \\land \\sim p) \\vee (p \\land q)\\) ... Distributive law\n\n\\(\\equiv F \\vee (p \\land q)\\) ... Complement law, since \\(p \\land \\sim p \\equiv F\\)\n\n\\(\\equiv p \\land q\\) ... Identity law\n\n\\(\\therefore\\) the given circuit is equivalent to the circuit whose symbolic form is \\(p \\land q\\).\n\n**The alternative equivalent simple circuit.** \\(p \\land q\\) is a conjunction, so it is a series connection: the switch \\(S_{1}\\) is joined in series with the switch \\(S_{2}\\), and this pair is joined in series with the lamp \\(L\\) and the battery in the same closed loop. The switch \\(S_{1}'\\) is not needed at all. The lamp glows exactly when both \\(S_{1}\\) and \\(S_{2}\\) are closed.\n\nCheck with the input-output table, taking 1 to mean \"switch closed\" (statement true) and 0 to mean \"switch open\" (statement false), and reading the last two columns as \"lamp glows\":\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim p \\vee q\\) | \\(p \\land (\\sim p \\vee q)\\) | \\(p \\land q\\) |\n|---|---|---|---|---|---|\n| 1 | 1 | 0 | 1 | 1 | 1 |\n| 1 | 0 | 0 | 0 | 0 | 0 |\n| 0 | 1 | 1 | 1 | 0 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 0 |\n\nThe last two columns are identical in all four rows, so the two circuits switch the lamp on and off under exactly the same conditions, and the simplified circuit is a correct alternative to the one given.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 28",
+    "format": "subjective",
+    "chapter": "Matrices",
+    "subtopic": "Solution of Linear Equations using Matrices",
+    "difficulty": "MODERATE",
+    "stem": "The sum of three numbers is 2. If twice of the second number is added to the sum of first and third number we get 0. Adding five times the first number to twice the sum of second and third number we get 7. Find the numbers using matrix method.",
+    "solution": "Let the three numbers be \\(x\\), \\(y\\) and \\(z\\).\n\n**Forming the equations.**\n\nThe sum of the three numbers is 2:\n\n\\(x + y + z = 2\\)\n\nTwice the second number added to the sum of the first and the third gives 0:\n\n\\(x + 2y + z = 0\\)\n\nFive times the first number added to twice the sum of the second and the third gives 7:\n\n\\(5x + 2(y + z) = 7\\), i.e. \\(5x + 2y + 2z = 7\\)\n\n**Matrix form.** The system \\(AX = B\\) is\n\n\\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 5 & 2 & 2 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 0 \\\\ 7 \\end{bmatrix}\\)\n\nHere \\(|A| = 1(4 - 2) - 1(2 - 5) + 1(2 - 10) = 2 + 3 - 8 = -3 \\neq 0\\), so the system has a unique solution.\n\n**Solving by the method of reduction.** Apply row transformations to \\(A\\) and to \\(B\\) together.\n\n\\(R_{2} \\rightarrow R_{2} - R_{1}\\) and \\(R_{3} \\rightarrow R_{3} - 5R_{1}\\):\n\n\\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 0 \\\\ 0 & -3 & -3 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -2 \\\\ -3 \\end{bmatrix}\\)\n\n\\(R_{3} \\rightarrow R_{3} + 3R_{2}\\):\n\n\\(\\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -3 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -2 \\\\ -9 \\end{bmatrix}\\)\n\nBy equality of matrices, the system is now\n\n\\(x + y + z = 2\\), \\(y = -2\\), \\(-3z = -9\\)\n\nFrom the third equation, \\(z = 3\\).\n\nFrom the second equation, \\(y = -2\\).\n\nSubstituting in the first, \\(x + (-2) + 3 = 2\\), so \\(x = 1\\).\n\n\\(\\therefore x = 1\\), \\(y = -2\\), \\(z = 3\\), i.e. the three numbers are \\(1\\), \\(-2\\) and \\(3\\).\n\nCheck in all three original conditions: \\(1 + (-2) + 3 = 2\\); \\(1 + 2(-2) + 3 = 1 - 4 + 3 = 0\\); \\(5(1) + 2(-2 + 3) = 5 + 2 = 7\\). All three hold.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 29",
+    "format": "subjective",
+    "chapter": "Vectors",
+    "subtopic": "Scalar and Vector Triple Product",
+    "difficulty": "MODERATE",
+    "stem": "Using properties of scalar triple product, prove that\n\n\\([\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = 2 [\\bar{a} \\; \\bar{b} \\; \\bar{c}]\\)",
+    "solution": "To prove: \\([\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = 2[\\bar{a} \\; \\bar{b} \\; \\bar{c}]\\)\n\nBy definition of the scalar triple product,\n\n\\([\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = (\\bar{a} + \\bar{b}) \\cdot \\big[(\\bar{b} + \\bar{c}) \\times (\\bar{c} + \\bar{a})\\big]\\)\n\n**Step 1: expand the vector product.** The vector product is distributive over addition, so\n\n\\((\\bar{b} + \\bar{c}) \\times (\\bar{c} + \\bar{a}) = \\bar{b} \\times \\bar{c} + \\bar{b} \\times \\bar{a} + \\bar{c} \\times \\bar{c} + \\bar{c} \\times \\bar{a}\\)\n\nThe vector product of a vector with itself is the zero vector, so \\(\\bar{c} \\times \\bar{c} = \\bar{0}\\).\n\n\\(\\therefore (\\bar{b} + \\bar{c}) \\times (\\bar{c} + \\bar{a}) = \\bar{b} \\times \\bar{c} + \\bar{b} \\times \\bar{a} + \\bar{c} \\times \\bar{a}\\)\n\n**Step 2: take the scalar product with \\(\\bar{a} + \\bar{b}\\).** The scalar product is also distributive, so\n\n\\([\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = \\bar{a} \\cdot (\\bar{b} \\times \\bar{c}) + \\bar{a} \\cdot (\\bar{b} \\times \\bar{a}) + \\bar{a} \\cdot (\\bar{c} \\times \\bar{a}) + \\bar{b} \\cdot (\\bar{b} \\times \\bar{c}) + \\bar{b} \\cdot (\\bar{b} \\times \\bar{a}) + \\bar{b} \\cdot (\\bar{c} \\times \\bar{a})\\)\n\n**Step 3: drop the terms with a repeated vector.** A scalar triple product in which two of the three vectors are equal is zero, because such vectors are coplanar. Hence\n\n\\(\\bar{a} \\cdot (\\bar{b} \\times \\bar{a}) = [\\bar{a} \\; \\bar{b} \\; \\bar{a}] = 0\\), \\(\\bar{a} \\cdot (\\bar{c} \\times \\bar{a}) = [\\bar{a} \\; \\bar{c} \\; \\bar{a}] = 0\\),\n\n\\(\\bar{b} \\cdot (\\bar{b} \\times \\bar{c}) = [\\bar{b} \\; \\bar{b} \\; \\bar{c}] = 0\\), \\(\\bar{b} \\cdot (\\bar{b} \\times \\bar{a}) = [\\bar{b} \\; \\bar{b} \\; \\bar{a}] = 0\\)\n\nOnly two terms survive:\n\n\\([\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = \\bar{a} \\cdot (\\bar{b} \\times \\bar{c}) + \\bar{b} \\cdot (\\bar{c} \\times \\bar{a}) = [\\bar{a} \\; \\bar{b} \\; \\bar{c}] + [\\bar{b} \\; \\bar{c} \\; \\bar{a}]\\)\n\n**Step 4: use the cyclic property.** A scalar triple product is unchanged when its vectors are permuted cyclically, so \\([\\bar{b} \\; \\bar{c} \\; \\bar{a}] = [\\bar{a} \\; \\bar{b} \\; \\bar{c}]\\).\n\n\\(\\therefore [\\bar{a} + \\bar{b} \\quad \\bar{b} + \\bar{c} \\quad \\bar{c} + \\bar{a}] = [\\bar{a} \\; \\bar{b} \\; \\bar{c}] + [\\bar{a} \\; \\bar{b} \\; \\bar{c}] = 2[\\bar{a} \\; \\bar{b} \\; \\bar{c}]\\)\n\nHence proved.\n\nCheck on a particular triple: take \\(\\bar{a} = \\hat{i}\\), \\(\\bar{b} = \\hat{j}\\), \\(\\bar{c} = \\hat{k}\\), for which \\([\\bar{a} \\; \\bar{b} \\; \\bar{c}] = 1\\). Then\n\n\\([\\hat{i} + \\hat{j} \\quad \\hat{j} + \\hat{k} \\quad \\hat{k} + \\hat{i}] = \\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix} = 1(1 - 0) - 1(0 - 1) + 0 = 1 + 1 = 2 = 2[\\bar{a} \\; \\bar{b} \\; \\bar{c}]\\), as proved.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 30",
+    "format": "subjective",
+    "chapter": "Linear Programming",
+    "subtopic": "Graphical Solution of a Linear Programming Problem",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following L.P.P. using graphical method :\n\nMaximize, \\(z = 9x + 13y\\)\n\nSubject to, \\(2x + 3y \\leq 18\\),\n\n\\(2x + y \\leq 10\\)\n\n\\(x \\geq 0, y \\geq 0\\)",
+    "solution": "The feasible region should be drawn on graph paper; the corner-point work below is the complete solution and names every vertex the sketch must show.\n\nMaximize \\(z = 9x + 13y\\) subject to \\(2x + 3y \\leq 18\\), \\(2x + y \\leq 10\\), \\(x \\geq 0\\), \\(y \\geq 0\\).\n\n**The boundary lines.**\n\n\\(2x + 3y = 18\\) meets the axes at \\((9, 0)\\) and \\((0, 6)\\).\n\n\\(2x + y = 10\\) meets the axes at \\((5, 0)\\) and \\((0, 10)\\).\n\n**Which side of each line.** At the origin \\((0, 0)\\): \\(2x + 3y = 0 \\leq 18\\) is true, and \\(2x + y = 0 \\leq 10\\) is true. So for each inequation the feasible side is the side CONTAINING the origin, boundaries included. Together with \\(x \\geq 0\\) and \\(y \\geq 0\\) the feasible region lies in the first quadrant and is BOUNDED (it is a quadrilateral).\n\n**The corner points.**\n\n\\(O(0, 0)\\): the origin.\n\n\\(A(5, 0)\\): \\(2x + y = 10\\) meets the X-axis \\(y = 0\\). It is feasible, since \\(2(5) + 3(0) = 10 \\leq 18\\). The other X-intercept \\((9, 0)\\) is not a corner, because there \\(2x + y = 18 > 10\\).\n\n\\(B(3, 4)\\): the point where \\(2x + 3y = 18\\) meets \\(2x + y = 10\\). Subtracting the second equation from the first, \\(2y = 8\\), so \\(y = 4\\); then \\(2x + 4 = 10\\), so \\(x = 3\\).\n\n\\(C(0, 6)\\): \\(2x + 3y = 18\\) meets the Y-axis \\(x = 0\\). It is feasible, since \\(2(0) + 6 = 6 \\leq 10\\). The other Y-intercept \\((0, 10)\\) is not a corner, because there \\(2x + 3y = 30 > 18\\).\n\n**Value of the objective function at each corner.**\n\n| Corner point | \\(z = 9x + 13y\\) |\n|---|---|\n| \\(O(0, 0)\\) | \\(9(0) + 13(0) = 0\\) |\n| \\(A(5, 0)\\) | \\(9(5) + 13(0) = 45\\) |\n| \\(B(3, 4)\\) | \\(9(3) + 13(4) = 27 + 52 = 79\\) |\n| \\(C(0, 6)\\) | \\(9(0) + 13(6) = 78\\) |\n\nThe feasible region is bounded and \\(z\\) is linear, so \\(z\\) attains its maximum at a corner point. The largest of the four values is \\(79\\).\n\n\\(\\therefore\\) the maximum value of \\(z\\) is \\(79\\), attained at \\(x = 3\\), \\(y = 4\\).\n\nCheck at \\((3, 4)\\): \\(2(3) + 3(4) = 6 + 12 = 18 \\leq 18\\) and \\(2(3) + 4 = 10 \\leq 10\\), so the point is feasible, both constraints holding with equality as they must at their intersection, and \\(z = 9(3) + 13(4) = 79\\), the same value.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 31",
+    "format": "subjective",
+    "chapter": "Differentiation",
+    "subtopic": "Derivatives of Parametric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = f(t)\\) and \\(y = g(t)\\) are differentiable functions of \\(t\\), so that \\(y\\) is a function of \\(x\\) and \\(\\frac{dx}{dt} \\neq 0\\), then prove that\n\n\\(\\frac{dy}{dx} = \\frac{\\left(\\frac{dy}{dt}\\right)}{\\left(\\frac{dx}{dt}\\right)}\\)\n\nHence find \\(\\frac{dy}{dx}\\), if \\(y = at^{2}\\) and \\(x = 2at\\).",
+    "solution": "**To prove:** if \\(x = f(t)\\) and \\(y = g(t)\\) are differentiable functions of \\(t\\), \\(y\\) being a function of \\(x\\), and \\(\\dfrac{dx}{dt} \\neq 0\\), then \\(\\dfrac{dy}{dx} = \\dfrac{\\left(\\dfrac{dy}{dt}\\right)}{\\left(\\dfrac{dx}{dt}\\right)}\\).\n\n**Proof.** Let \\(\\delta t\\) be a small increment in \\(t\\), and let \\(\\delta x\\) and \\(\\delta y\\) be the corresponding increments in \\(x\\) and \\(y\\). Since \\(\\dfrac{dx}{dt} \\neq 0\\), the increment \\(\\delta x \\neq 0\\) for \\(\\delta t\\) small enough and \\(\\delta t \\neq 0\\).\n\nSince \\(\\delta x \\neq 0\\) and \\(\\delta t \\neq 0\\), we may write\n\n\\(\\dfrac{\\delta y}{\\delta x} = \\dfrac{\\dfrac{\\delta y}{\\delta t}}{\\dfrac{\\delta x}{\\delta t}}\\)\n\nBoth \\(x\\) and \\(y\\) are differentiable functions of \\(t\\), so they are continuous functions of \\(t\\); hence as \\(\\delta t \\rightarrow 0\\), \\(\\delta x \\rightarrow 0\\).\n\nTaking limits as \\(\\delta t \\rightarrow 0\\):\n\n\\(\\displaystyle\\lim_{\\delta x \\rightarrow 0}\\dfrac{\\delta y}{\\delta x} = \\lim_{\\delta t \\rightarrow 0}\\dfrac{\\dfrac{\\delta y}{\\delta t}}{\\dfrac{\\delta x}{\\delta t}} = \\dfrac{\\displaystyle\\lim_{\\delta t \\rightarrow 0}\\dfrac{\\delta y}{\\delta t}}{\\displaystyle\\lim_{\\delta t \\rightarrow 0}\\dfrac{\\delta x}{\\delta t}}\\)\n\nThe limit of the quotient may be split in this way because the limit of the denominator is \\(\\dfrac{dx}{dt}\\), which is non-zero.\n\nBoth limits on the right exist, since \\(x\\) and \\(y\\) are differentiable functions of \\(t\\). Hence the limit on the left exists, i.e. \\(y\\) is a differentiable function of \\(x\\), and\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{\\left(\\dfrac{dy}{dt}\\right)}{\\left(\\dfrac{dx}{dt}\\right)}\\), where \\(\\dfrac{dx}{dt} \\neq 0\\)\n\n**Hence the required derivative.** Here \\(y = at^{2}\\) and \\(x = 2at\\), where \\(a\\) is a constant.\n\n\\(\\dfrac{dy}{dt} = \\dfrac{d}{dt}(at^{2}) = 2at\\)\n\n\\(\\dfrac{dx}{dt} = \\dfrac{d}{dt}(2at) = 2a \\neq 0\\) (taking \\(a \\neq 0\\))\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{2at}{2a} = t\\)\n\nCheck by eliminating the parameter: from \\(x = 2at\\) we get \\(t = \\dfrac{x}{2a}\\), so \\(y = a\\left(\\dfrac{x}{2a}\\right)^{2} = \\dfrac{x^{2}}{4a}\\). Differentiating directly, \\(\\dfrac{dy}{dx} = \\dfrac{2x}{4a} = \\dfrac{x}{2a} = t\\), the same result.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 32",
+    "format": "subjective",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "difficulty": "HARD",
+    "stem": "Prove that : \\(\\int \\sqrt{a^{2} - x^{2}} \\cdot dx = \\frac{x}{2} \\cdot \\sqrt{a^{2} - x^{2}} + \\frac{a^{2}}{2} \\cdot \\sin^{-1}\\left(\\frac{x}{a}\\right) + c\\)",
+    "solution": "Let \\(I = \\displaystyle\\int \\sqrt{a^{2} - x^{2}}\\;dx\\)\n\nWrite the integrand as a product, \\(\\sqrt{a^{2} - x^{2}} \\times 1\\), and integrate by parts taking \\(\\sqrt{a^{2} - x^{2}}\\) as the first function and \\(1\\) as the second.\n\nUsing \\(\\displaystyle\\int u\\,v\\,dx = u\\displaystyle\\int v\\,dx - \\displaystyle\\int\\left[\\dfrac{du}{dx}\\displaystyle\\int v\\,dx\\right]dx\\) with \\(u = \\sqrt{a^{2} - x^{2}}\\) and \\(v = 1\\):\n\n\\(\\dfrac{d}{dx}\\sqrt{a^{2} - x^{2}} = \\dfrac{1}{2\\sqrt{a^{2} - x^{2}}}\\times(-2x) = \\dfrac{-x}{\\sqrt{a^{2} - x^{2}}}\\) and \\(\\displaystyle\\int 1\\,dx = x\\)\n\n\\(\\therefore I = x\\sqrt{a^{2} - x^{2}} - \\displaystyle\\int \\dfrac{-x}{\\sqrt{a^{2} - x^{2}}}\\cdot x\\;dx = x\\sqrt{a^{2} - x^{2}} + \\displaystyle\\int \\dfrac{x^{2}}{\\sqrt{a^{2} - x^{2}}}\\;dx\\)\n\nNow write \\(x^{2} = -\\big(a^{2} - x^{2}\\big) + a^{2}\\) in the numerator:\n\n\\(\\displaystyle\\int \\dfrac{x^{2}}{\\sqrt{a^{2} - x^{2}}}\\;dx = \\displaystyle\\int \\dfrac{-(a^{2} - x^{2}) + a^{2}}{\\sqrt{a^{2} - x^{2}}}\\;dx = -\\displaystyle\\int \\sqrt{a^{2} - x^{2}}\\;dx + a^{2}\\displaystyle\\int \\dfrac{dx}{\\sqrt{a^{2} - x^{2}}}\\)\n\nFor the last integral put \\(x = a\\sin\\phi\\), so that \\(dx = a\\cos\\phi\\;d\\phi\\) and \\(\\sqrt{a^{2} - x^{2}} = a\\cos\\phi\\):\n\n\\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{a^{2} - x^{2}}} = \\displaystyle\\int \\dfrac{a\\cos\\phi\\;d\\phi}{a\\cos\\phi} = \\displaystyle\\int d\\phi = \\phi = \\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\)\n\nSubstituting back,\n\n\\(I = x\\sqrt{a^{2} - x^{2}} - I + a^{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\)\n\n\\(\\therefore 2I = x\\sqrt{a^{2} - x^{2}} + a^{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\)\n\n\\(\\therefore I = \\dfrac{x}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right) + c\\)\n\nHence proved.\n\nCheck by differentiating the right-hand side:\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{x}{2}\\sqrt{a^{2} - x^{2}}\\right] = \\dfrac{1}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{x}{2}\\cdot\\dfrac{-x}{\\sqrt{a^{2} - x^{2}}} = \\dfrac{(a^{2} - x^{2}) - x^{2}}{2\\sqrt{a^{2} - x^{2}}} = \\dfrac{a^{2} - 2x^{2}}{2\\sqrt{a^{2} - x^{2}}}\\)\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{a^{2}}{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)\\right] = \\dfrac{a^{2}}{2}\\cdot\\dfrac{1}{\\sqrt{1 - \\dfrac{x^{2}}{a^{2}}}}\\cdot\\dfrac{1}{a} = \\dfrac{a^{2}}{2\\sqrt{a^{2} - x^{2}}}\\)\n\nAdding, \\(\\dfrac{a^{2} - 2x^{2} + a^{2}}{2\\sqrt{a^{2} - x^{2}}} = \\dfrac{2a^{2} - 2x^{2}}{2\\sqrt{a^{2} - x^{2}}} = \\dfrac{a^{2} - x^{2}}{\\sqrt{a^{2} - x^{2}}} = \\sqrt{a^{2} - x^{2}}\\), the original integrand.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 33",
+    "format": "subjective",
+    "chapter": "Definite Integration",
+    "subtopic": "Methods of Evaluation of Definite Integrals",
+    "difficulty": "HARD",
+    "stem": "Evaluate : \\(\\int_{0}^{\\frac{1}{2}} \\frac{dx}{(1 - 2x^{2}) \\cdot \\sqrt{1 - x^{2}}}\\)",
+    "solution": "Let \\(I = \\displaystyle\\int_{0}^{\\frac{1}{2}} \\dfrac{dx}{(1 - 2x^{2})\\sqrt{1 - x^{2}}}\\)\n\nPut \\(x = \\sin\\theta\\). Then \\(dx = \\cos\\theta\\,d\\theta\\).\n\nLimits: when \\(x = 0\\), \\(\\sin\\theta = 0\\), so \\(\\theta = 0\\); when \\(x = \\dfrac{1}{2}\\), \\(\\sin\\theta = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{6}\\).\n\nOver \\(0 \\leq \\theta \\leq \\dfrac{\\pi}{6}\\) we have \\(\\cos\\theta > 0\\), so \\(\\sqrt{1 - x^{2}} = \\sqrt{1 - \\sin^{2}\\theta} = \\sqrt{\\cos^{2}\\theta} = \\cos\\theta\\).\n\nAlso \\(1 - 2x^{2} = 1 - 2\\sin^{2}\\theta = \\cos 2\\theta\\).\n\n\\(\\therefore I = \\displaystyle\\int_{0}^{\\frac{\\pi}{6}} \\dfrac{\\cos\\theta\\,d\\theta}{\\cos 2\\theta \\cdot \\cos\\theta} = \\displaystyle\\int_{0}^{\\frac{\\pi}{6}} \\dfrac{d\\theta}{\\cos 2\\theta} = \\displaystyle\\int_{0}^{\\frac{\\pi}{6}} \\sec 2\\theta\\;d\\theta\\)\n\nNow \\(\\displaystyle\\int \\sec u\\;du = \\log|\\sec u + \\tan u|\\), since multiplying and dividing by \\(\\sec u + \\tan u\\) gives\n\n\\(\\displaystyle\\int \\sec u\\;du = \\displaystyle\\int \\dfrac{\\sec u(\\sec u + \\tan u)}{\\sec u + \\tan u}\\;du = \\displaystyle\\int \\dfrac{\\sec^{2}u + \\sec u\\tan u}{\\sec u + \\tan u}\\;du\\),\n\nwhose numerator is the derivative of its denominator, so the value is \\(\\log|\\sec u + \\tan u|\\).\n\nWith \\(u = 2\\theta\\), \\(du = 2\\,d\\theta\\):\n\n\\(I = \\left[\\dfrac{1}{2}\\log|\\sec 2\\theta + \\tan 2\\theta|\\right]_{0}^{\\frac{\\pi}{6}}\\)\n\nAt \\(\\theta = \\dfrac{\\pi}{6}\\): \\(2\\theta = \\dfrac{\\pi}{3}\\), \\(\\sec\\dfrac{\\pi}{3} = 2\\) and \\(\\tan\\dfrac{\\pi}{3} = \\sqrt{3}\\).\n\nAt \\(\\theta = 0\\): \\(\\sec 0 = 1\\) and \\(\\tan 0 = 0\\), so \\(\\log|1 + 0| = \\log 1 = 0\\).\n\n\\(\\therefore I = \\dfrac{1}{2}\\log\\left(2 + \\sqrt{3}\\right) - \\dfrac{1}{2}\\log 1 = \\dfrac{1}{2}\\log\\left(2 + \\sqrt{3}\\right)\\)\n\nNumerically, \\(2 + \\sqrt{3} \\approx 3.732\\) and \\(\\log 3.732 \\approx 1.317\\), so \\(I \\approx 0.659\\).\n\nCheck by bounding the integrand on \\(\\left[0, \\dfrac{1}{2}\\right]\\), an interval of length \\(0.5\\). The integrand increases on this interval: at \\(x = 0\\) it is \\(\\dfrac{1}{1 \\times 1} = 1\\), and at \\(x = \\dfrac{1}{2}\\) it is \\(\\dfrac{1}{\\left(1 - \\dfrac{1}{2}\\right)\\sqrt{1 - \\dfrac{1}{4}}} = \\dfrac{1}{0.5 \\times 0.866} \\approx 2.31\\). So the value of the integral must lie between \\(0.5 \\times 1 = 0.5\\) and \\(0.5 \\times 2.31 \\approx 1.15\\); the value \\(0.659\\) lies in that range.",
+    "reviewFlag": true
+  },
+  {
+    "ref": "Q. 34",
+    "format": "subjective",
+    "chapter": "Application of Definite Integration",
+    "subtopic": "Area Between Two Curves",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of the region lying between the parabolas \\(y^{2} = 4x\\) and \\(x^{2} = 4y\\).",
+    "solution": "The two curves are the parabolas\n\n\\(y^{2} = 4x\\) ... (1), which opens to the right with vertex at the origin, and\n\n\\(x^{2} = 4y\\) ... (2), which opens upwards with vertex at the origin.\n\n**Points of intersection.** From (2), \\(y = \\dfrac{x^{2}}{4}\\). Substituting in (1):\n\n\\(\\left(\\dfrac{x^{2}}{4}\\right)^{2} = 4x\\)\n\n\\(\\therefore \\dfrac{x^{4}}{16} = 4x\\)\n\n\\(\\therefore x^{4} = 64x\\)\n\n\\(\\therefore x(x^{3} - 64) = 0\\)\n\n\\(\\therefore x = 0\\) or \\(x = 4\\)\n\nWhen \\(x = 0\\), \\(y = 0\\); when \\(x = 4\\), \\(y = \\dfrac{16}{4} = 4\\). So the curves meet at \\(O(0, 0)\\) and \\(P(4, 4)\\).\n\n**Setting up the area.** Between \\(x = 0\\) and \\(x = 4\\) the required region is bounded above by the parabola (1), for which \\(y = 2\\sqrt{x}\\) (the upper branch, since the region lies in the first quadrant), and below by the parabola (2), for which \\(y = \\dfrac{x^{2}}{4}\\).\n\nThat (1) is the upper boundary can be seen at \\(x = 1\\): there \\(2\\sqrt{x} = 2\\) while \\(\\dfrac{x^{2}}{4} = 0.25\\).\n\n\\(\\therefore\\) Required area \\(= \\displaystyle\\int_{0}^{4}\\left(2\\sqrt{x} - \\dfrac{x^{2}}{4}\\right)dx\\)\n\n\\(= \\left[2 \\cdot \\dfrac{x^{\\frac{3}{2}}}{\\dfrac{3}{2}} - \\dfrac{x^{3}}{12}\\right]_{0}^{4} = \\left[\\dfrac{4}{3}x^{\\frac{3}{2}} - \\dfrac{x^{3}}{12}\\right]_{0}^{4}\\)\n\nAt \\(x = 4\\): \\(x^{\\frac{3}{2}} = 8\\), so the bracket is \\(\\dfrac{4}{3}(8) - \\dfrac{64}{12} = \\dfrac{32}{3} - \\dfrac{16}{3} = \\dfrac{16}{3}\\).\n\nAt \\(x = 0\\) the bracket is \\(0\\).\n\n\\(\\therefore\\) Required area \\(= \\dfrac{16}{3}\\) sq. units \\(\\approx 5.33\\) sq. units.\n\nCheck: the region lies inside the square \\(0 \\leq x \\leq 4\\), \\(0 \\leq y \\leq 4\\), whose area is \\(16\\) sq. units, so the answer must be less than 16, and \\(5.33 < 16\\). More sharply, the two parabolas are reflections of each other in the line \\(y = x\\), so the area under \\(y = 2\\sqrt{x}\\) and the area under \\(y = \\dfrac{x^{2}}{4}\\) over \\([0, 4]\\) must add up to the area of that square. Indeed \\(\\displaystyle\\int_{0}^{4}2\\sqrt{x}\\;dx = \\dfrac{32}{3}\\) and \\(\\displaystyle\\int_{0}^{4}\\dfrac{x^{2}}{4}dx = \\dfrac{16}{3}\\), and \\(\\dfrac{32}{3} + \\dfrac{16}{3} = 16\\); their difference is \\(\\dfrac{16}{3}\\), the area found.",
+    "reviewFlag": true
+  }
+]
