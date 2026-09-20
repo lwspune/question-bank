@@ -30,9 +30,35 @@ export type Paper = {
   pdf: string; // absolute path to the booklet PDF
   pyqYear: number;
   pyqNote: string; // e.g. "CDS (I) 2025 — English"
+  /**
+   * Absolute path to an OFFICIAL published answer key, where one exists. For the
+   * first 19 papers there is none — their answers are LLM-derived, which is the
+   * premise the whole pipeline was built on. `2026-2` is the first exception:
+   * UPSC published a provisional key two days after the sitting.
+   *
+   * Read ONLY by parse-key.ts + score.ts, and only AFTER the derivation is
+   * written and committed. Never by render.ts, commit.ts or preview.ts — a key
+   * in scope during transcription or derivation destroys the one measurement
+   * this paper can produce that the other 19 cannot.
+   */
+  answerKey?: string;
+  /**
+   * The booklet's Test Booklet Series, read off its own cover. Load-bearing
+   * because an official key carries ONE PAGE PER SERIES and UPSC shuffles
+   * question order between them, so the wrong page yields a well-formed,
+   * entirely plausible, 100% wrong key. Required whenever answerKey is set.
+   */
+  series?: "A" | "B" | "C" | "D";
 };
 
 export const PAPERS: Record<string, Paper> = {
+  // THE FIRST CDS ENGLISH PAPER WITH A PUBLISHED OFFICIAL KEY. Cover read
+  // directly: "C.D.S. Examination (II), 2026", TEST BOOKLET ENGLISH, Series A,
+  // T.B.C. BFVS-F-GNE, 120 items, 100 marks, two hours, one-third penalty.
+  // The key is UPSC's provisional key of 2026-09-16 — four pages, one per
+  // series. See the Paper type's `answerKey`/`series` docs for why both fields
+  // exist and when they may be read.
+  "2026-2": { id: "2026-2", sourceFile: "Eng_CDS_2026_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2026_2.pdf"), pyqYear: 2026, pyqNote: "CDS (II) 2026 — English", answerKey: join(SOURCE_ROOT, "ProvAnsKey-English-CDSE-II-26-16092026.pdf"), series: "A" },
   "2026-1": { id: "2026-1", sourceFile: "Eng_CDS_2026_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2026_1.pdf"), pyqYear: 2026, pyqNote: "CDS (I) 2026 — English" },
   "2025-1": { id: "2025-1", sourceFile: "Eng_CDS_2025_1.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2025_1.pdf"), pyqYear: 2025, pyqNote: "CDS (I) 2025 — English" },
   "2025-2": { id: "2025-2", sourceFile: "Eng_CDS_2025_2.pdf", pdf: join(SOURCE_ROOT, "Eng_CDS_2025_2.pdf"), pyqYear: 2025, pyqNote: "CDS (II) 2025 — English" },
