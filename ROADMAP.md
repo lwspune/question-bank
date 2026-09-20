@@ -603,6 +603,41 @@ Paging with `&first=N` is no better: 4,570 → 8,910 → 50 → 1 → 19,800. An
 
 ---
 
+## Web performance — Core Web Vitals field failure (diagnosed 2026-09-20, NOT started)
+
+**Diagnosed only. No code changed; the working tree was untouched by this pass.** PageSpeed Insights, mobile, `https://www.pyqvault.com/`.
+
+**The lab score is already 100** (Performance 100 · Accessibility 96 · Best Practices 100 · SEO 100; FCP 0.9 s, LCP 1.5 s, TBT 20 ms, CLS 0.001). What fails is the **field** assessment — CrUX, real Chrome users, 28-day trailing:
+
+| Metric | Field p75 | Threshold | |
+|---|---|---|---|
+| LCP | 3.6 s | 2.5 s | fail |
+| INP | 269 ms | 200 ms | fail |
+| CLS | 0 | 0.1 | pass |
+| FCP | 3.2 s | 1.8 s | poor |
+| TTFB | 1.4 s | 0.8 s | poor |
+
+Field FCP 3.2 s against LCP 3.6 s means the page paints nearly complete the moment it paints at all — **the entire problem is getting to first paint**, not rendering. Lab TTFB was 10 ms against a field 1.4 s; that 140x gap is geography, because Lighthouse runs beside `iad1` and real users do not.
+
+**READ THIS BEFORE PRIORITISING IT: this is not the acquisition bottleneck.** The 2026-09-17 indexing diagnosis above stands — discovery and demand are the constraint (21 discovery requests in 51 days, non-brand positions 9-73). Core Web Vitals is a tiebreaker among near-equal results at the top of page one; it does not move a keyword sitting at position 45. The one honest reason to fix it is that a failing CWV panel in Search Console is a standing false alarm that will keep pulling attention away from the indexing work.
+
+**Three findings, each traced to code:**
+
+1. **The homepage has never been cached.** `export const revalidate = 86400` at `src/app/page.tsx` is dead, because the two session reads below it (`getSessionMember` / `getSessionUser`, both redirecting to `/dashboard`) force dynamic rendering. Measured: `/` and `/browse` serve `private, no-store` + `X-Vercel-Cache: MISS` at 0.31-0.51 s TTFB, while `/notes`, `/guide`, `/questions` and `/mock` all serve `public` + HIT/PRERENDER at 0.10-0.14 s. The 2026-07-29 shell fix worked everywhere except the two routes that read identity in their own body.
+2. **Every function runs in `iad1`.** There is no `vercel.json`, so Vercel's default region applies: the `bom1` edge accepts the request and invokes the function in Washington DC. Measured floor **~350 ms per invocation** from India, steady state (`/api/drill/answer` returning 405 with zero work does not go faster than that); cold starts reach ~1 s.
+3. **~52 KB brotli of `@supabase/supabase-js` + GoTrue ships on every page**, because `src/components/UserMenu.tsx` imports `createSupabaseBrowserClient` at module level for a single `signOut()` call inside a click handler. `HeaderBar` renders `UserMenu` everywhere, so every anonymous visitor downloads an auth SDK to support a button they will never press. Matches the report's `Reduce unused JavaScript - 42 KiB`.
+
+**Sketched but deliberately NOT built (2026-09-20 - judged to need more thought than the session had):**
+
+- **Prerender the homepage.** The naive fix (add `/` to the middleware matcher) walks straight back into the 2026-06-27 narrowing: `updateSession()` runs an `auth.getUser()` network round-trip per matched request and once burned ~40% of Vercel Active CPU on public traffic. The homepage is the busiest public route, so it is the worst possible place to reintroduce that. Design that survives the constraint: branch middleware on pathname, and for `/` do a **cookie-presence check only** - no Supabase client, no network. Second trap: `isSupabaseAuthCookieName` **cannot be reused** for this. It is deliberately permissive and matches `-code-verifier` (set mid-OAuth, before sign-in completes); its own doc says false positives are cheap *because they cost one null lookup*, which stops being true once the decision is a redirect. Needs a stricter pure sibling (`sb-*-auth-token` + its `.0`/`.1` chunks, rejecting `-code-verifier`), TDD'd. De-risked: a false positive is benign, because `src/app/dashboard/page.tsx` sends a memberless, userless visitor to `/browse`, not `/login` - no loop, no dead end. Acceptance is **artifact-based, not reasoning-based** (see `[[shell-component-decaches-site]]`): `find .next/server/app -name '*.html' | wc -l` must rise, and every `.html` AND `.rsc` must be grepped for emails and org names before it ships. The signed-in redirect is auth-gated and cannot be proven headlessly - that browser pass belongs to a human.
+- **`vercel.json` with `"regions": ["bom1"]`. BLOCKED on one unanswered fact: which region the Supabase project is in.** It flips the item from a clear win to actively harmful. `ap-south-1` (Mumbai) → `bom1` collocates functions with the database and kills both the user→function hop and every function→DB hop. `us-east-1` → functions already sit beside the database, and moving them to `bom1` would save ~350 ms once while adding a cross-ocean hop *per query*, making any multi-query page **worse**. Three attempts to determine it from outside all failed: DNS for `db.<ref>.supabase.co` is wildcard-hijacked (returns a Prague parking IP), the privileged metrics endpoint carries no region label, and a latency inference was **wrong** - the probed routes short-circuit on a cookie check when unauthenticated and do no database work, so the 992 ms reading was a cold start, not query time. **Answer it from the dashboard: Settings → General → Region.** Also unconfirmed: Hobby allows a single function region, so the config should be accepted, but only a deploy proves it.
+- **Touch-target spacing** (the one Accessibility deduction, 96 → 100). **The failing nodes are not known.** The PDF has the audit collapsed, and the first guess - the exam-family class pills - is probably **wrong**: at `py-1` + `text-xs` + borders they compute to ~26 px, clearing Lighthouse's 24 px bar, and WCAG 2.5.8 passes a target at ≥24x24 regardless of spacing. The likelier culprits are the footer's inline text links (~20 px line-height). Get the truth first - expand the audit in the PSI report, or run `npx --yes lighthouse` locally (Chrome is installed; `npx` adds no dependency) - then change what it actually names.
+- **INP 269 ms - not actionable yet.** Lab TBT is 20 ms, so it is not gross main-thread cost; it is real devices being slower than the emulated Moto G Power. Diagnosing it needs field RUM this project does not have. **Note that fixing TTFB alone does not flip the assessment**: it should take LCP to roughly 2.3 s and pass, but INP still fails, and CWV requires all three.
+
+**Whenever this is picked up:** CrUX is a 28-day trailing window, so any fix ships invisible and surfaces over a month.
+
+---
+
 ## Tech debt / refactoring
 
 ### BACKFILL LEDGER — `seo:dates --check` can never pass on a Windows working tree (logged 2026-09-19)
