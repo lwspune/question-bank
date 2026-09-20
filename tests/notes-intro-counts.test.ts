@@ -8,36 +8,68 @@
  * This is the /notes half of the same class the guide `_data` tables carry.
  * The guide tables are gated by their own integrity tests; the intros were not.
  *
+ * SCOPE WIDENED 2026-09-20, from NDA-only to EVERY exam. The NDA-only filter
+ * was not a stated decision, just where the 2026-09-14 backfill started — and
+ * the drift it could not see was real: MHT-CET Indefinite Integration had read
+ * "121 PYQs" since 2026-06-30, on a page whose own card, ~300px lower, printed
+ * the live 159. Six chapters across MHT-CET, JEE Mains and CDS were stale.
+ *
+ * WIDENING IS NOT "DELETE THE FILTER" — the live map must then be keyed by
+ * EXAM TOO. `Mathematics / Indefinite Integration` exists under NDA, MH HSC
+ * Class 12 AND Worksheets; `Maths / Matrices` under MHT-CET and JEE Mains. A
+ * subject+chapter key silently merged them and reported every NDA Maths
+ * chapter as holding 2,280 questions — a gate that fails everywhere is as
+ * useless as one that looks nowhere. Same lesson the syllabus-map loaders
+ * carry: scope by BOTH axes, never one.
+ *
  * CONTRACT (deliberately narrow so it cannot be brittle):
- *   1. Every "<N> PYQs/questions" claim in a noted NDA chapter intro OR its
+ *   1. Every "<N> PYQs/questions" claim in a noted chapter intro OR its
  *      optional `cardBlurb` must equal
- *      EITHER that chapter's live PUBLIC pyq count OR one of its subtopics'
- *      live counts. Intros legitimately cite both — Indefinite Integration
- *      quotes its chapter total AND "Integration by Substitution (18 PYQs)" —
- *      so the test must not force every number to the chapter total. That is
- *      exactly the mistake a naive backfill would make.
+ *      that chapter's live PUBLIC pyq count, one of its subtopics' live
+ *      counts, or the SUM OF TWO of them. Intros legitimately cite all three —
+ *      Indefinite Integration quotes its chapter total AND "Integration by
+ *      Substitution (18 PYQs)", and Mathematical Logic says "drill Negation
+ *      and Finding Truth Values first — 30 questions", which is 14 + 16. So
+ *      the test must not force every number to the chapter total; that is
+ *      exactly the mistake a naive backfill would make, and on the pair-sum
+ *      case it would push a CORRECT number to a wrong one.
  *   2. A stated year range must not END BEFORE the chapter's newest live PYQ
  *      year. ("2017–2025" on a chapter that now holds a 2026 question
  *      under-claims the bank.)
  *
+ * NOT EVERY NUMBER IN AN INTRO IS A BANK COUNT. CDS Number System says "100
+ * questions in 120 minutes" — a fact about the PAPER, which no bank count will
+ * ever match. Those are declared in EXEMPT below rather than papered over by a
+ * looser regex, so each one stays a human decision that is visible in review.
+ *
+ * SUBTOPIC `whyItMatters` COUNTS ARE **NOT** GATED HERE. They carry the same
+ * class of claim (130 of them) and 65 are currently stale — too much shipped
+ * editorial copy to rewrite behind a gate flip. `npm run notes:intro` reports
+ * them as triage; the backfill is logged in ROADMAP.md.
+ *
  * KNOWN, ACCEPTED WEAKNESS: rule 1 cannot tell WHICH subtopic a claim refers
  * to, so a subtopic claim that coincidentally equals a different subtopic's
- * count passes. It still catches every drift where the number matches nothing.
+ * count passes, and the pair-sum allowance widens that a little further. It
+ * still catches every drift where the number matches nothing.
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import {
+  extractCountClaims,
+  allowedCounts,
+  isExemptCount,
+} from "@/lib/notes/introAudit";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 /**
- * "165 past-year questions", "40 PYQs", "18 PYQs" — and the HYPHENATED
- * attributive form "a steady 63-PYQ chapter", which a whitespace-only
- * separator misses. That gap was real: Differential Equations sat at a stale
- * 63 through the first pass of this very backfill because of it.
+ * The claim regex and the allowed-counts rule live in src/lib/notes/introAudit
+ * .ts (spec: tests/notes-intro-audit.test.ts), shared with `npm run
+ * notes:intro`. A gate and a probe that disagree about what a claim IS are
+ * worse than either alone.
  */
-const CLAIM = /(\d{2,4})[\s-]+(?:past-year[\s-]+)?(?:PYQs?|questions)/gi;
 /** "2017–2026", "2017-2026" (en dash, em dash or hyphen) */
 const RANGE = /(\d{4})\s*[–—-]\s*(\d{4})/g;
 
@@ -53,11 +85,24 @@ const claimText = (c: any) =>
 
 type Live = {
   chapter: Map<string, number>;
+  /** Every single subtopic count, plus every two-subtopic sum. */
   subtopic: Map<string, Set<number>>;
   maxYear: Map<string, number>;
 };
 
-const key = (subject: string, chapter: string) => `${subject}\t${chapter}`;
+/**
+ * Keyed by EXAM + subject + chapter. All three are load-bearing: chapter names
+ * repeat across exams ("Indefinite Integration" under NDA, MH HSC Class 12 and
+ * Worksheets) and so do subject names ("Maths" under MHT-CET and JEE Mains).
+ *
+ * This is not hypothetical. While widening the test, a two-argument key left in
+ * place against three-argument calls silently dropped the chapter — every NDA
+ * Maths chapter then reported 2,280 questions, and the year rule reported five
+ * chapters as stale whose ranges were in fact correct. A merged key does not
+ * fail loudly; it answers a different question.
+ */
+const key = (exam: string, subject: string, chapter: string) =>
+  `${exam}\t${subject}\t${chapter}`;
 
 async function loadLive(db: SupabaseClient): Promise<Live> {
   const chapter = new Map<string, number>();
@@ -72,12 +117,21 @@ async function loadLive(db: SupabaseClient): Promise<Live> {
       .select("pyq_year, subtopics(name), chapters(name, subjects(name, exams(name)))")
       .eq("visibility", "PUBLIC")
       .eq("question_kind", "pyq")
+      // ORDER BY is NOT optional here. Without a stable sort, PostgREST's
+      // 1000-row windows overlap and drop rows, so the same scan returns
+      // different totals run to run — two consecutive runs of this loader
+      // disagreed by five findings before the order was added. A count that
+      // is not reproducible cannot gate anything.
+      .order("id", { ascending: true })
       .range(from, from + 999);
     if (error) throw new Error(error.message);
     const rows = (data ?? []) as any[];
     for (const r of rows) {
-      if (!/NDA/i.test(r.chapters?.subjects?.exams?.name ?? "")) continue;
-      const k = key(r.chapters?.subjects?.name, r.chapters?.name);
+      const k = key(
+        r.chapters?.subjects?.exams?.name,
+        r.chapters?.subjects?.name,
+        r.chapters?.name,
+      );
       chapter.set(k, (chapter.get(k) ?? 0) + 1);
       if (!perSub.has(k)) perSub.set(k, new Map());
       const sn = r.subtopics?.name ?? "?";
@@ -87,8 +141,11 @@ async function loadLive(db: SupabaseClient): Promise<Live> {
     if (rows.length < 1000) break;
   }
 
+  // Singles AND pair sums, via the shared core.
   const subtopic = new Map<string, Set<number>>();
-  for (const [k, m] of perSub) subtopic.set(k, new Set(m.values()));
+  for (const [k, m] of perSub) {
+    subtopic.set(k, allowedCounts(chapter.get(k) ?? 0, [...m.values()]));
+  }
   return { chapter, subtopic, maxYear };
 }
 
@@ -107,17 +164,16 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
   it("every count claimed in an intro matches the chapter or one of its subtopics", () => {
     const bad: string[] = [];
     for (const c of NOTES_CHAPTERS as any[]) {
-      if (c.examName !== "NDA") continue;
-      const k = key(c.subjectName, c.chapter.chapterName);
+      const route = `${c.subjectRoute}/${c.chapterSlug}`;
+      const k = key(c.examName, c.subjectName, c.chapter.chapterName);
       const total = live.chapter.get(k);
       if (total === undefined) continue; // chapter resolution is another test's job
       const subs = live.subtopic.get(k) ?? new Set<number>();
-      for (const m of claimText(c).matchAll(CLAIM)) {
-        const n = Number(m[1]);
-        if (n === total || subs.has(n)) continue;
+      for (const n of extractCountClaims(claimText(c))) {
+        if (n === total || subs.has(n) || isExemptCount(route, n)) continue;
         bad.push(
-          `${c.subjectRoute}/${c.chapterSlug}: intro/cardBlurb claims ${n}, live chapter ${total}` +
-            ` (subtopic counts: ${[...subs].sort((a, b) => b - a).join(", ")})`,
+          `${route}: intro/cardBlurb claims ${n}, live chapter ${total}` +
+            ` (subtopic counts + pair sums: ${[...subs].sort((a, b) => b - a).join(", ")})`,
         );
       }
     }
@@ -127,8 +183,7 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
   it("no intro year range ends before the chapter's newest live PYQ", () => {
     const bad: string[] = [];
     for (const c of NOTES_CHAPTERS as any[]) {
-      if (c.examName !== "NDA") continue;
-      const k = key(c.subjectName, c.chapter.chapterName);
+      const k = key(c.examName, c.subjectName, c.chapter.chapterName);
       const newest = live.maxYear.get(k);
       if (newest === undefined) continue;
       for (const m of claimText(c).matchAll(RANGE)) {
