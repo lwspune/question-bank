@@ -4,16 +4,23 @@ Scanned CDS "Elementary Mathematics" booklets (image PDFs, **no text layer**, **
 answer key**) → the bank, `question_kind='pyq'`, under the existing **CDS** exam in a
 new **Mathematics** subject.
 
-**Status: COMPLETE — all 20 sittings (2016-II … 2026-I), 1,996 q PUBLIC, 0 PRIVATE, 80
+**Status: COMPLETE — all 21 sittings (2016-II … 2026-II), 2,096 q PUBLIC, 0 PRIVATE, 80
 figures attached.** Every row carries a solution and `derived_model` provenance. Four
 questions are deliberately ABSENT because no printed option is correct (2018-Sep Q39/Q42,
-2021-Apr, 2021-Sep — hence 98/99/99); every other paper is whole at 100. Each paper was
+2021-Apr, 2021-Sep — hence 98/99/99); every other paper is whole at 100. Twenty papers were
 derived by two independent blind passes and **every one crosstabbed at AGREE 100%**, with
-0 DISPUTE and 0 TWIN across the whole corpus.
+0 DISPUTE and 0 TWIN.
 
-Only `2020-1` and `2020-2` ever had an external prep-house key, and it was used to MEASURE
-the method rather than to answer the papers — see the next section, which is the reason to
-trust the other 18.
+**`2026-2` is the exception, and the method changed because the evidence did.** It is the
+first sitting with a PUBLISHED UPSC key, so it was derived by ONE blind pass and cross-checked
+against that key: **99/100 agreement, and the single disagreement was adjudicated as the
+KEY's error**, so the pass was right on all 100. See "The measurement on 2026-II" below.
+
+`2020-1` and `2020-2` have external PREP-HOUSE keys, used to MEASURE the method rather than
+to answer the papers — see the next section, which is the reason to trust the other 18.
+Note the two kinds of key are not interchangeable: the prep-house pair carries roughly 2
+errors per 100, the official key carried 1 per 100 on its one paper, and the adjudication
+prior runs the opposite way between them.
 
 **Owed, and not provable headlessly:** a browser click-through of `/browse`. The answer
 reveal is click-gated and the 80 figures render in it, so nothing in this pipeline proves
@@ -71,12 +78,60 @@ a prep-house key carries roughly **2 errors per 100** on this corpus (4 across 2
 source key here is evidence and not ground truth; and confidence is well calibrated, with
 every adjudicated key-error sitting in HIGH where the derivation was right.
 
-**There is no third keyed sitting.** The remaining 18 papers cannot be scored at all, and
-this bound is the whole of the evidence they will ever rest on.
+**There IS now a third keyed sitting, and it is the best one.** This paragraph used to read
+"there is no third keyed sitting ... this bound is the whole of the evidence they will ever
+rest on". That was true when written and stopped being true on **2026-09-20**, when UPSC
+published a provisional key for `2026-2` two days after the exam. Left standing it would
+have become the most confidently wrong sentence in this file — it forecloses a measurement
+that is now routine for any future sitting, since UPSC publishes a key for every one.
 
-## The corpus is 20 papers, not 19
+## The measurement on 2026-II: an OFFICIAL key, and a single blind pass
 
-`All_PYQPs/` holds 19 PDFs. `2020.pdf` was identified as the **first** 2020 sitting by
+`2026-2` is the first paper here with a **published UPSC key** rather than a prep-house one,
+so its method changed to suit: **ONE blind derivation pass, cross-checked against the key**,
+instead of two passes crosstabbed against each other.
+
+That is not a weakening. Dual-blind's own ceiling, stated above, is that it can observe
+agreement and never correctness — two passes wrong the same way are indistinguishable from
+two passes right. A published key breaks exactly that ambiguity.
+
+| | result |
+|---|---|
+| blind pass vs the official key | **99 / 100** |
+| disagreements | 1 — Q25 |
+| adjudicated as OUR error | **0** |
+| adjudicated as the KEY's error | **1** (Q25) |
+| so the blind pass was correct on | **100 / 100** |
+| confidence split | HIGH 100 · MED 0 · LOW 0 |
+
+**Q25 is an error in the official UPSC provisional key.** Alloy X is gold:silver 1:2, Y is
+2:3, and Z must be 4:7. The key gives B (2:1); exact rational arithmetic gives 16:29, against
+a required 16:28 — near, and not equal. Only 6:5 gives exactly 4:7. All four alternative
+readings of the stem were tested (either source ratio reversed, the target reversed, all
+three reversed): **B matches under none of them**, and the one alternative reading that
+resolves at all still gives D. The bank ships D and records the disagreement.
+
+Three cautions, because this number is easy to over-read:
+
+- **n = 100, one paper.** An upper bound, not a rate, exactly as the 2020 pair is.
+- **CONFIDENCE CALIBRATION IS UNTESTED HERE.** All 100 rows were marked HIGH, so the band has
+  no discriminating power on this paper and the usual "HIGH runs ~98.5%, errors sit in MED"
+  reading cannot be checked. The single error was the key's, not the pass's, so this is not
+  evidence of inflated confidence either — it is simply not a test of it. On 2020-I the same
+  method produced HIGH 96 / MED 4, so the all-HIGH split is worth watching on the next paper.
+- **The key is PROVISIONAL.** UPSC invites representations and issues a final key later.
+  Q25 is precisely the kind of item that gets corrected, and the key's date is recorded in
+  `config.ts` so a final key can be diffed against it.
+
+**What it changes for the 18 unkeyed papers: a little, honestly.** It is one more paper on
+which this corpus's derivation method was measured and not found wanting, and the first
+against ground truth rather than a prep-house key. It does not make the unkeyed papers
+verified. It does mean that from 2026-II onward, **no future sitting needs to be unkeyed** —
+the key is published within days, so the cheap, strong method is available for all of them.
+
+## The corpus is 21 papers, and `All_PYQPs` holds 20 of them
+
+`All_PYQPs/` holds 20 PDFs (`2026 Sep.pdf` was added 2026-09-20). `2020.pdf` was identified as the **first** 2020 sitting by
 pixel-comparing Q1-Q7 against the two booklets in the sibling `CDS_2020_*_PYQP` folders:
 it matches `CDS_2020_1_PYQP.pdf` exactly (booklet `A-PLKI-T-MTK`), and
 `CDS_2020_2_PYQP.pdf` is a different paper (`DZOL-T-LKM`). So **2020-II is a real
@@ -84,18 +139,26 @@ sitting that `All_PYQPs` is missing**, and `config.ts` points at it outside that
 
 ## Four measured facts that govern everything
 
-1. **ZERO text layer, all 20 papers.** Not thin — zero extractable characters across every
+1. **ZERO text layer, all 21 papers.** Not thin — zero extractable characters across every
    page of every file, against ~300 DPI scans. Vision-only, with no text-first fallback.
-2. **No booklet prints an answer key.** Every paper ends at Q100. Answers are DERIVED, by
-   two independent blind passes, and say so in `solution`.
-3. **Two papers have an EXTERNAL key** (`2020-1`, `2020-2`) as clean born-digital .docx.
-   They are **prep-house keys, not published UPSC keys**. See "Why 2020-I is the pilot".
+   The `2026-2` ANSWER KEY is a scan too, and that is why it needs its own read lane.
+2. **No booklet prints an answer key.** Every paper ends at Q100 (then rough-work pages).
+   Answers are DERIVED and say so in `solution`.
+3. **THREE papers have an EXTERNAL key, of two different kinds.** `2020-1` and `2020-2` are
+   clean born-digital .docx **prep-house** keys — evidence, not ground truth, measured at
+   roughly 2 errors per 100. `2026-2` is the **official UPSC provisional key**, a 4-page
+   scan, one page per series. Do not treat them alike: the adjudication prior inverts, and
+   only the official one can break the "both passes wrong the same way" ambiguity.
 4. **Figure load is low but real** — ~4-12 per paper, clustered in the geometry/DI pages
    at the end. Far below what "a maths paper" suggests; measured by montaging whole papers.
+   **`2026-2` has ZERO**, checked on all 17 English pages: its geometry is entirely
+   prose-described and its DI is tables. So "every maths paper has figures" is not safe
+   either — check, do not assume, in both directions.
 
-Exam pattern, read off the 2026-I cover (the only cover in the corpus): **100 items, 100
-marks, two hours, one-third negative** — so `+1 / -0.3333`, which is a marking scheme the
-bank does not yet have.
+Exam pattern, read off the 2026-I and 2026-II covers (the only covers in the corpus):
+**100 items, 100 marks, two hours, one-third negative** — so `+1 / -0.3333`, which is a
+marking scheme the bank does not yet have. The 2026-II key confirms it independently:
+"Total Questions 100 / Questions Dropped 0 / taken for Scoring 100".
 
 ## Why 2020-I is the pilot
 
@@ -221,10 +284,66 @@ and not from the figure. `bottom` must go below the LAST such band.
 
 ## Still to build
 
-- `flip-public.ts`, with a figure gate.
 - A mock blueprint (`+1 / -0.3333`, 100 q, 120 min) if these are ever served at `/mock`.
-- The `2026-1` page-selection pre-pass: it is the raw bilingual booklet, and with no text
-  layer `scripts/upsc/classify-pages.py` has nothing to count, so it must be done from images.
+  CDS Maths currently has 17 published mocks across 20 sittings.
+
+Done since this list was written: `flip-public.ts` (five gates, figure gate included), and
+the `2026-1` page-selection pre-pass (English pages are the even indices 2..42; the answer
+is recorded in `config.ts`). `2026-2` needed the same pre-pass and got it — even indices
+2..34.
+
+## Reading a PUBLISHED key: the `keyread` lane
+
+`2026-2` is the first paper here whose key is an **official UPSC provisional key** rather
+than a prep-house one, and the first whose key is an **image**. The 2020 keys are
+born-digital `.docx` and `parseKeyPairs` reads them deterministically; a scan has zero text
+layer, so reading it is a vision transcription of 100 table cells and carries an error rate
+the `.docx` path does not.
+
+So `parse-key.ts` dispatches on the ARTIFACT, not the paper id:
+
+- `.docx` → pandoc → `parseKeyPairs`, unchanged.
+- `.pdf` → `reconcileKeyReads` over **two or more independent vision reads**, written by
+  agents against `KEY_READ_BRIEF.md` into `data/<paper>.keyread<N>.json`.
+
+`reconcileKeyReads` emits a cell **only where every reader agrees**, and never votes:
+two-against-one is not a majority on a table anyone can go and re-read, and a tie-break rule
+would quietly convert "we are unsure" into "we are sure". It is pure and driven by
+deliberately broken fixtures in `tests/cds-maths-parse-key.test.ts`.
+
+**The trap that brief exists for:** the key PDF carries ONE PAGE PER SERIES (A, B, C, D),
+and UPSC shuffles question order between series. Series A's Q1 is `B` where Series B's Q1 is
+`D`, and they diverge all the way down. Reading the wrong page yields a **100% wrong key
+that looks entirely plausible** — well-formed, covering 1..100, disagreeing with the
+derivation on roughly three quarters of rows, which reads as "the derivation collapsed"
+rather than "the key is the wrong series". Both readers must confirm the Series box **off
+the page** before transcribing a cell.
+
+### Blindness was made STRUCTURAL for this paper, not just instructional
+
+The brief tells a deriver to stop if it ever sees a key. That is the only guarantee the
+2020 papers ever had, and it is weak here because `data/` holds `sourcekey.json` right
+beside `derive.json`, and `out/` would have held the rendered key pages right beside the
+page images.
+
+For `2026-2` the key artifacts were **physically moved out of the repository** for the
+duration of the derivation — both `keyread` files and the rendered key crops — and moved
+back only after every pass was written. The derivation therefore ran with no key present
+anywhere in the tree, which is a stronger claim than "the agent was told not to look".
+Worth repeating on any future keyed sitting.
+
+**But the quarantine was put in the wrong place, and a deriver found it.** It went into the
+shared agent SCRATCHPAD — which the derivation agents also use. One of them listed that
+directory and saw `KEY_QUARANTINE/` plus `*_keyread1.*` files and ~20 key page crops by
+name. It opened none of them, and the listing happened after its output was already written
+and validated, so the measurement stands; it reported the sighting unprompted, which is the
+standing "if you ever see a key, stop and report" instruction working exactly as intended.
+
+The lesson is precise and not "the instruction failed": **moving a secret out of the repo is
+not the same as moving it out of reach.** The scratchpad is shared by every agent in a
+session, so it is part of the deriver's world, not outside it. Next time the quarantine goes
+somewhere no derivation agent has any reason or route to look, and ideally the filenames
+should not announce what they are either — `KEY_QUARANTINE` is a signpost.
 
 ## Does UPSC reuse Maths items between NDA and CDS? No — probed 2026-09-04
 
