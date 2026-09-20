@@ -6,6 +6,39 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Backfill ledger — subtopic ORDER drift between /guide and /notes (8 MHT-CET Maths chapters)
+
+**Found 2026-09-20** while fixing the Mathematical Logic teaching arc. Logged, NOT fixed —
+reordering shipped chapters is an editorial decision per chapter, not a mechanical sweep.
+
+A chapter's subtopic order is stated in three places: the `/notes` chapter's `subtopicOrder`
+(canonical — `npm run notes:order` syncs it into `subtopics.order_index`, so it drives `/browse`
+too), the `/guide` playbook card's `subtopics`, and the `/guide` detail page's `subSkills`.
+Mathematical Logic had all three disagreeing; fixing it exposed that **eight more chapters carry
+order-only drift** between the card and `/notes` (same subtopics, different sequence):
+
+`line-and-plane` · `vectors` · `applications-of-derivative` · `differential-equations` ·
+`indefinite-integration` · `differentiation` · `probability-distribution` · `binomial-distribution`
+
+Two of them (`differential-equations`, `differentiation`) additionally have `subSkills` whose SET
+differs from the card at equal length — a content disagreement, not just order.
+
+**Guarded meanwhile:** `tests/notes-guide-subtopic-order.test.ts` hard-asserts SET equality for
+every chapter (so a subtopic can no longer go missing from one surface) and asserts ORDER only for
+slugs on its `ARC_VERIFIED` allowlist. Today that list holds `mathematical-logic` alone. The eight
+above render as skipped tests naming this ledger.
+
+**To clear one:** decide which order is pedagogically right (the `/notes` arc is usually the
+considered one — the guide card was often written first), sync the other two surfaces to it, run
+`npm run notes:arc -- mht-cet-maths <chapter> --terms` to check the arc holds, then add the slug to
+`ARC_VERIFIED`. Do not sync blindly to whichever surface was edited last.
+
+**Why not now:** eight chapters is eight independent editorial judgements about teaching order,
+each needing the bank read that the Mathematical Logic pass needed. Batching them into a
+"consistency sweep" would pick an order by coin-flip and call it a fix.
+
+---
+
 ## Classroom projection — the "Project" button goes icon-only
 
 **Decided 2026-09-18, deferred to a later pass** (the overlay itself shipped the same day).

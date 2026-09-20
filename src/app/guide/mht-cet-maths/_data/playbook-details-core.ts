@@ -582,7 +582,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       "Statements, connectives and quantifiers — or a switch circuit diagram, which is the same thing drawn differently.",
     story: [
       "88 q at 1.92 per paper and 31% HARD. This is the one chapter in MHT-CET Maths with its own execution mode: around 70% of its stems ask which of the four statements is true, against roughly 0% everywhere else in the subject. Every other chapter hands you a problem to solve; this one hands you four claims to adjudicate. That difference is worth more than any formula on this page, because it changes what you do when you read the question.",
-      "The 31% HARD figure overstates the cost, and it is worth understanding why. The difficulty here is front-loaded into learning ONE technique — build the truth table — which then applies to essentially every question in the chapter. Once that technique is automatic, a HARD logic question and a MODERATE one take about the same amount of time. Compare that with Indefinite Integration, where every new integrand is a fresh recognition problem.",
+      "The 31% HARD figure overstates the cost, and it is worth understanding why. The difficulty here is front-loaded into TWO techniques that answer between them almost every question in the chapter: build the truth table, and simplify with the algebra of statements. The table always terminates but is slow; the algebra is fast but needs the ten laws at your fingertips. Learn the table first and the algebra second — and note that the fast route is the one the harder subtopics assume. Once both are automatic, a HARD logic question and a MODERATE one take about the same amount of time. Compare that with Indefinite Integration, where every new integrand is a fresh recognition problem.",
       "Switching Circuits is the chapter's smallest subtopic and by a wide margin its hardest — 12 q at 67% HARD, against 14% for Negation — and it intimidates students who have not been told the translation. It is two rules: switches in series are AND, switches in parallel are OR. After that a circuit is a logical expression and the same truth table answers it, which is why a subtopic that looks like the chapter's wall is actually its cheapest block of marks per hour spent.",
       "The tactic follows from the execution mode. With four claims and no negative marking, building the truth table and evaluating all four options is a complete method that always terminates — and a partially built table plus elimination still beats leaving the question blank, because a blank and a wrong answer cost the same nothing.",
     ],
@@ -598,14 +598,14 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
           "The chapter's signature move, run backwards: you are told the pattern is FALSE and asked for p, q and r. 16 q at 19% HARD. A conditional is false in exactly one row, which forces the values rather than leaving you to search.",
       },
       {
-        name: "Converse, inverse, and contrapositive",
-        description:
-          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 17 q at 24% HARD — the chapter's largest block and pure pattern work.",
-      },
-      {
         name: "Negation of statements and quantifiers",
         description:
           "Negate compound statements, conditionals, biconditionals and quantified statements. 14 q at 14% HARD — the cheapest block in the chapter, which is precisely why a mechanical slip here is so expensive.",
+      },
+      {
+        name: "Converse, inverse, and contrapositive",
+        description:
+          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 17 q at 24% HARD — the chapter's largest block and pure pattern work.",
       },
       {
         name: "Logical equivalence and algebra of statements",
