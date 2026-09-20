@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { existsSync } from "node:fs";
-import { PAPERS, requirePaper } from "../scripts/mh-hsc-12-pyq/paper/config";
+import { PAPERS, requirePaper, SOURCE_ROOT } from "../scripts/mh-hsc-12-pyq/paper/config";
 import { EXPECTED_REFS, normaliseRef } from "../scripts/mh-hsc-12-pyq/paper/lib";
 
 const ALL = Object.values(PAPERS);
@@ -36,7 +36,22 @@ describe("the six-paper manifest", () => {
     expect(requirePaper("feb-2025").sourceFile).toBe("MH_HSC_12_Maths_PYQ__2025_February.pdf");
   });
 
-  it("points every entry at a file that exists", () => {
+  /**
+   * LOCAL-ONLY, and it has to be — `pdf` is an absolute path into SOURCE_ROOT
+   * on the authoring machine, so on a CI runner this asserts the existence of a
+   * Windows path on Ubuntu and can NEVER pass. It failed the first push that
+   * carried it (2026-09-20).
+   *
+   * Skipped rather than deleted: where the source tree IS present this is the
+   * only check that catches a manifest pointing at a moved or renamed PDF,
+   * which is the defect it was written for. The other assertions in this file
+   * are pure manifest checks and run everywhere.
+   *
+   * Guarded on SOURCE_ROOT, not on `process.env.CI`: the property that matters
+   * is "are the source PDFs reachable from here", and a machine without them is
+   * not always a CI runner.
+   */
+  it.skipIf(!existsSync(SOURCE_ROOT))("points every entry at a file that exists", () => {
     for (const p of ALL) expect(existsSync(p.pdf), `${p.id} -> ${p.pdf}`).toBe(true);
   });
 });
