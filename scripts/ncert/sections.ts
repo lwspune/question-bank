@@ -1060,6 +1060,53 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "11.8 Electric Power", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.7 Q"] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11 Q"] },
   ],
+
+  // ── Ch.8 Heredity (10th Science). The shortest chapter in the book: two taught
+  //    sections, one in-text box each, then a four-item exercise. No worked
+  //    examples (none outside Ch.9, 11, 12).
+  c10SciHeredity: [
+    { group: "8.1 Accumulation of Variation During Reproduction", label: "Questions", kind: "exercise", refPrefixes: ["IT 8.1 Q"] },
+    { group: "8.2 Heredity", label: "Questions", kind: "exercise", refPrefixes: ["IT 8.2 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8 Q"] },
+  ],
+
+  // ── Ch.13 Our Environment (10th Science). Three in-text boxes: one closing
+  //    §13.1, then one each after §13.2.2's two halves (biodegradability, then
+  //    garbage management). §13.2 IS printed — a single-line heading scan misses
+  //    it because the title wraps; see the config header.
+  c10SciOurEnvironment: [
+    { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
+    { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
+    { group: "13.2.2 Managing the Garbage we Produce", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 13 Q"] },
+  ],
+
+  // ── Ch.10 The Human Eye and the Colourful World (10th Science). ONE in-text
+  //    box in the whole chapter — the fewest of any — sitting after §10.2, and
+  //    then the exercise. §10.3 to §10.6 carry no questions of their own.
+  c10SciHumanEye: [
+    { group: "10.2 Defects of Vision and their Correction", label: "Questions", kind: "exercise", refPrefixes: ["IT 10.1 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10 Q"] },
+  ],
+
+  // ── Ch.12 Magnetic Effects of Electric Current (10th Science). Four in-text
+  //    boxes and two worked examples, banded to boxes 1 and 3.
+  //
+  //    **BOX 2 STRADDLES A PAGE BREAK** — its Q3, an MCQ on the field inside a
+  //    solenoid, sits alone at the top of page 202 with the box border carried
+  //    over. The first read of the render stopped at the apparent box edge on the
+  //    previous page and transcribed two items; science-items.ts reported the
+  //    third as missing and was right. This is the same page-overflow class that
+  //    cost the Maths lane Ch.3 Ex 3.2 Q3(vi) and Ch.7 Ex 7.1 Q9-Q10.
+  c10SciMagneticEffects: [
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg."] },
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.1 Q"] },
+    { group: "12.2.4 Magnetic Field due to a Current in a Solenoid", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.2 Q"] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.3 Eg."] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.3 Q"] },
+    { group: "12.4 Domestic Electric Circuits", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.4 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {
