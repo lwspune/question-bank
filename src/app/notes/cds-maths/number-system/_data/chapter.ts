@@ -4,8 +4,8 @@ export const CDS_NUMBER_SYSTEM_CHAPTER: ChapterNote = {
   chapterName: "Number System",
   title: "Number System — CDS Elementary Mathematics",
   intro:
-    "Number System is the single biggest chapter in CDS Elementary Mathematics: 218 past-year " +
-    "questions across all twenty sittings from 2016 (II) to 2026 (I), which is roughly eleven of " +
+    "Number System is the single biggest chapter in CDS Elementary Mathematics: 223 past-year " +
+    "questions across all twenty-one sittings from 2016 (II) to 2026 (II), which is roughly eleven of " +
     "the hundred questions on every paper. Nothing else in the syllabus pays that well. " +
     "The paper gives you 100 questions in 120 minutes at plus one and minus one-third, so the " +
     "job here is not depth but SPEED with certainty — almost every question below is a " +
