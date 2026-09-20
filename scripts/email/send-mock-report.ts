@@ -6,14 +6,19 @@
  *   npx tsx scripts/email/send-mock-report.ts --attempt=<uuid>     # just this one
  *   npx tsx scripts/email/send-mock-report.ts --only=a@b.com --apply
  *   npx tsx scripts/email/send-mock-report.ts --html               # write a preview file
+ *   npx tsx scripts/email/send-mock-report.ts --lookback-hours=48 # the cron's window
  *
  * DRY RUN IS THE DEFAULT and prints exactly who would receive what. Sending is
- * an explicit, irreversible act — it must be typed, not defaulted into.
+ * an explicit, irreversible act — it must be typed, not defaulted into. That
+ * stays true with a schedule attached: `--apply` lives in the workflow file
+ * (.github/workflows/mock-report.yml) and nowhere else, so a human running this
+ * to ask "who is owed a report?" can never mail anybody as a side effect.
  *
  * FORWARD-ONLY. `SINCE` below is the feature's start line: 542 attempts predate
  * it, and mailing a report for a paper somebody sat six weeks ago is noise, not
  * feedback. The cutoff is a constant rather than a flag so a re-run can't
- * accidentally sweep history back in.
+ * accidentally sweep history back in. `--lookback-hours` narrows that window
+ * for the scheduled run and can only ever NARROW it — see resolveCutoff.
  *
  * THE DAILY CAP IS THE POINT, not a nicety. Production has 118 student-days
  * carrying 2+ attempts and one student who sat NINE mocks in a day; one email
@@ -25,7 +30,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createSupabaseAdminClient } from "../../src/lib/supabase/admin";
 import { fetchStudentPerformance } from "../../src/lib/performance/query";
-import { buildMockReport } from "../../src/lib/email/mockReport";
+import { buildMockReport, resolveCutoff } from "../../src/lib/email/mockReport";
 import { buildMockReportEmail } from "../../src/lib/email/templates";
 import { sendEmail, sleep, THROTTLE_MS } from "../../src/lib/email/resend";
 import { ensureUnsubscribeTokens, readStudents } from "../../src/lib/email/service";
@@ -53,6 +58,12 @@ async function main() {
   const wantText = has("text");
   const sampleTo = arg("sample-to");
   const limit = arg("limit") ? Number(arg("limit")) : undefined;
+  // Deliberately NOT a truthiness check: `--lookback-hours=` with no value
+  // becomes 0, which resolveCutoff rejects. Read as absent, it would silently
+  // widen the run to every attempt since SINCE — the opposite of what the flag
+  // was typed for.
+  const rawLookback = arg("lookback-hours");
+  const lookbackHours = rawLookback === undefined ? undefined : Number(rawLookback);
 
   // --sample-to DOES send, so it must not print under a "nothing will be sent"
   // banner. A runner that misreports its own mode is how somebody learns the
@@ -60,7 +71,12 @@ async function main() {
   console.log(
     `\n${sampleTo ? `SAMPLE — one rendered report to ${sampleTo}, no student is mailed` : apply ? "APPLY — REAL SENDS" : "DRY RUN — nothing will be sent"}`
   );
-  console.log(`Cutoff: attempts submitted on or after ${SINCE.toISOString()}`);
+  // Throws on an unusable --lookback-hours, before a single row is read.
+  const cutoff = resolveCutoff(SINCE, new Date(), lookbackHours);
+  console.log(
+    `Cutoff: attempts submitted on or after ${cutoff.toISOString()}` +
+      (lookbackHours === undefined ? "" : ` (--lookback-hours=${lookbackHours})`)
+  );
 
   const db = createSupabaseAdminClient();
 
@@ -73,7 +89,7 @@ async function main() {
 
   let candidates = onlyAttempt
     ? [{ attemptId: onlyAttempt, userId: "", submittedAt: "" }]
-    : await readReportCandidates(db, SINCE);
+    : await readReportCandidates(db, cutoff);
 
   // Resolve the owner for an explicitly named attempt (the --attempt path skips
   // the candidate query, so it has no user_id yet).

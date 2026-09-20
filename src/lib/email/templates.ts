@@ -285,9 +285,14 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
 
   const scoreLine = `${round(r.score)}/${round(r.maxScore)} (${r.pct}%) — ${r.correct} right, ${r.wrong} wrong, ${r.seenBlank} left blank`;
 
+  // A COUNT CLAIM HAS TO SURVIVE ITS OWN EDGE CASES, and this one is the first
+  // thing a student reads. One finding is "1 thing"; and a report carried by
+  // pacing alone has findings worth sending but none of a countable kind, so it
+  // falls back to the count-free subject rather than promising "0 things to fix".
   const fixes = r.easyWrong.length || r.subtopics.length;
+  const tail = fixes > 0 ? `${fixes} thing${fixes === 1 ? "" : "s"} to fix` : "what to fix";
   const subject = who
-    ? `${who}, ${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — ${fixes} things to fix`
+    ? `${who}, ${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — ${tail}`
     : `${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — what to fix`;
 
   // ── plain text ────────────────────────────────────────────────────────────

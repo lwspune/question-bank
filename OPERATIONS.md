@@ -100,6 +100,32 @@ SELECT status, count(*), max(created_at) FROM public.email_sends GROUP BY status
 
 **NOT the same thing as Supabase Auth SMTP** — see the next section. This is our app calling the Resend **API**; auth mail is sent by Supabase itself.
 
+### Outbound email — the per-attempt mock report (DAILY CRON, 2026-09-20)
+
+**This one is scheduled; the campaign above is not.** `.github/workflows/mock-report.yml` runs at **15:30 UTC (21:00 IST)** daily — after a full study day, batching a student's whole day into one evening email rather than interrupting them three times. GitHub queues schedules under load, so treat it as "around 21:00", not on the minute.
+
+**It needs TWO repo secrets the six CI secrets do NOT include** — `RESEND_API_KEY` and `EMAIL_FROM` (Settings -> Secrets and variables -> Actions). Without them the job **fails loudly** rather than quietly mailing nobody. The campaign above reads the same two from `.env.local` because it is hand-run; this one runs on GitHub, so it needs them there as well.
+
+```sh
+npm run email:mock-report                          # DRY RUN — who is owed a report
+npm run email:mock-report -- --lookback-hours=48   # exactly what the cron sees
+npm run email:mock-report -- --sample-to=you@x.com # one rendered sample, writes NO row
+npm run email:mock-report -- --apply               # send by hand (the cron does this for you)
+```
+
+**`--apply` lives in the workflow file and nowhere else**, so running this by hand to ask "who is owed a report?" can never send one as a side effect.
+
+**Two bounds, and only one moves.** `SINCE` in the runner is the immovable forward-only floor (542 attempts predate the feature and none may ever be mailed about). `--lookback-hours=48` is the cron's narrower window so a nightly run does not re-read every attempt ever; `resolveCutoff` **clamps it to `SINCE`** — it can never widen. 48 rather than 24 so one missed run self-heals the next day.
+
+**Re-running is safe and the backlog is bounded.** Every send writes a UNIQUE `dedupe_key` (`mock_report:<attemptId>`), so a second pass mails nobody twice; `--limit=25` caps one run if a multi-day outage lets a backlog build behind the window.
+
+**Most finished attempts get NO email, by design.** `readReportCandidates` drops anything under `ENGAGEMENT_FLOOR` (20% of the paper answered) — on 2026-09-19 that was 6 of 9 attempts. A report on a paper somebody opened and walked away from is noise. Reports with nothing countable to say are skipped too (`hasFindings`).
+
+```sql
+-- what actually went out
+SELECT status, count(*), max(created_at) FROM public.email_sends WHERE kind='mock_report' GROUP BY status;
+```
+
 ### Supabase Auth SMTP (password reset / magic-link / invites)
 
 Wired 2026-07-16. **Supabase → Authentication → Emails → SMTP Settings:** host `smtp.resend.com` · port 465 · username `resend` (literally, not an email) · password = a Resend API key · sender `noreply@pyqvault.com` / "PYQ Vault".

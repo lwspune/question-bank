@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { buildEmail, escapeHtml, formatDuration, SITE_URL, REPLY_TO } from "@/lib/email/templates";
+import { buildMockReportEmail } from "@/lib/email/templates";
+import type { MockReport, ReportQuestion, ReportSubtopic } from "@/lib/email/mockReport";
 import type { Recipient } from "@/lib/email/recommend";
 
 const MOCK = {
@@ -164,5 +166,92 @@ describe("buildEmail — first_mock", () => {
   it("frames it as a first attempt, not a re-engagement", () => {
     const e = build({ kind: "first_mock" });
     expect(e.text.toLowerCase()).toContain("first");
+  });
+});
+
+/**
+ * The mock-report subject line.
+ *
+ * It is the only part of this email most students will read, and it makes a
+ * COUNT CLAIM — so the count has to survive its own edge cases. A report can
+ * legitimately carry exactly one finding, and it can carry none at all (a
+ * pacing-only report still has findings worth sending, just not countable
+ * ones).
+ */
+describe("buildMockReportEmail — the subject counts findings", () => {
+  function q(position: number): ReportQuestion {
+    return {
+      questionId: `q${position}`,
+      position,
+      chapter: "Algebra",
+      subtopic: "Quadratics",
+      secs: 40,
+      peerPct: 70,
+    };
+  }
+
+  function sub(subtopic: string): ReportSubtopic {
+    return {
+      subject: "Mathematics",
+      chapter: "Algebra",
+      subtopic,
+      gap: 6,
+      accuracy: 30,
+      judged: 8,
+    };
+  }
+
+  function report(over: Partial<MockReport> = {}): MockReport {
+    return {
+      attemptId: "att-1",
+      mockSlug: "nda-2025-sep-maths",
+      mockTitle: "NDA 2025 (II) — Mathematics",
+      examName: "NDA",
+      score: 84,
+      maxScore: 300,
+      pct: 28,
+      correct: 40,
+      wrong: 30,
+      seenBlank: 5,
+      easyWrong: [],
+      easyLeft: [],
+      pacing: null,
+      subtopics: [],
+      hasFindings: true,
+      ...over,
+    };
+  }
+
+  const subjectOf = (over: Partial<MockReport> = {}, name = "Divyesh") =>
+    buildMockReportEmail({ report: report(over), name, unsubscribeToken: TOKEN }).subject;
+
+  it("says 'things' for more than one", () => {
+    expect(subjectOf({ easyWrong: [q(1), q(2), q(3)] })).toContain("3 things to fix");
+  });
+
+  it("says 'thing' — not 'things' — for exactly one", () => {
+    // Seen live on 2026-09-20: "Divyesh, 16/100 on MHT-CET 2025 … — 1 things to fix".
+    expect(subjectOf({ easyWrong: [q(1)] })).toContain("1 thing to fix");
+  });
+
+  it("makes NO count claim when there is nothing countable to claim", () => {
+    // hasFindings can be true on pacing alone, which is a real finding but not
+    // one of a countable kind. "0 things to fix" would be worse than the score
+    // line it replaces.
+    const s = subjectOf({ pacing: { neverReached: 20, marksLeft: 50 } });
+    expect(s).toContain("what to fix");
+    expect(s).not.toContain("0 thing");
+  });
+
+  it("counts subtopic picks when the paper produced no easy-wrong questions", () => {
+    expect(subjectOf({ subtopics: [sub("Quadratics"), sub("Circles")] })).toContain(
+      "2 things to fix"
+    );
+  });
+
+  it("still names the student and the score", () => {
+    const s = subjectOf({ easyWrong: [q(1), q(2)] });
+    expect(s).toContain("Divyesh");
+    expect(s).toContain("84/300");
   });
 });
