@@ -8,6 +8,7 @@ import KatexRenderer from "@/components/math/KatexRenderer";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { isValidIndianMobile } from "@/lib/quiz/leads";
 import { resolveQuizGate, priorConsentValid, type StoredIdentity } from "@/lib/quiz/gate";
+import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { quizResumeKey, serialiseResume, parseResume } from "@/lib/quiz/resume";
 import { buildQuizShareUrl } from "@/lib/quiz/share";
 import { scoreVerdict, type VerdictTone } from "@/lib/quiz/verdict";
@@ -68,6 +69,17 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
   const total = quiz.questions.length;
   const answeredCount = Object.keys(answers).length;
 
+  // The lead gate was reached. `quiz_leads` rows count the people who filled it
+  // in; nothing has ever counted the people who saw it and left, so the funnel
+  // has only ever had a numerator. Fires only for the anon population — a
+  // signed-in student takes the "skip" branch and never sees a gate.
+  // NOTE this must sit ABOVE the early return below: a conditional hook is a
+  // React violation, and the results phase returns before this point.
+  useEffect(() => {
+    if (phase !== "gating" || authLoading || mode === "skip") return;
+    trackFunnelOnce("quiz_gate_shown", slug, { quizSlug: slug, mode });
+  }, [phase, authLoading, mode, slug]);
+
   if (phase === "results" && result) {
     return <Results slug={slug} quiz={quiz} answers={answers} result={result} signedIn={signedIn} />;
   }
@@ -114,6 +126,11 @@ export default function QuizTaker({ slug, quiz }: { slug: string; quiz: PublicQu
           stored={stored}
           onCancel={() => setPhase("review")}
           onDone={(r, identity) => {
+            // Paired with quiz_gate_shown above. NOTE the payload carries the
+            // quiz slug and the gate mode ONLY — never `identity`, which holds
+            // the name and mobile this form exists to collect. The validator in
+            // funnelEvents.ts refuses those shapes as a second line of defence.
+            trackFunnelOnce("quiz_gate_submitted", slug, { quizSlug: slug, mode });
             try {
               localStorage.setItem(STORE_KEY, JSON.stringify(identity));
             } catch {

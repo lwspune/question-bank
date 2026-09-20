@@ -55,6 +55,7 @@ export default function BoardReader({
   pyqSittings,
   supabaseUrl,
   chapterName,
+  examName,
 }: {
   groups: BoardSectionGroup[];
   /** The chapter's board past-year questions, newest sitting first. Empty for a
@@ -63,6 +64,9 @@ export default function BoardReader({
   supabaseUrl: string;
   /** Names the chapter in the classroom-projection breadcrumb. */
   chapterName: string;
+  /** The DB `exams.name` — attributes a reveal-wall hit to its exam, in the
+   *  same vocabulary /browse uses, so the two surfaces stay comparable. */
+  examName: string;
 }) {
   // Reveal state lives HERE (single source of truth) so per-question toggles
   // stay consistent as sections collapse/expand. Everything starts hidden —
@@ -74,7 +78,7 @@ export default function BoardReader({
   const [showPyqs, setShowPyqs] = useState(false);
   // "board", not the bank: a reveal here is the textbook reader being used, and
   // until 2026-09-18 it was recorded as a /browse reveal and measured as one.
-  const meter = useRevealMeter("board");
+  const meter = useRevealMeter("board", examName);
   const mobilePrompt = useMobilePrompt();
   // Which sections open on load. Decided HERE rather than inside GroupSection
   // because it depends on a group's SIBLINGS: a lone group has no outline to
@@ -557,7 +561,7 @@ function BoardQuestionItem({
           >
             {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
           </button>
-          {blocked && !revealed && <RevealSignInPrompt />}
+          {blocked && !revealed && <RevealSignInPrompt surface="board" />}
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
               {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
