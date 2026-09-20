@@ -1,24 +1,82 @@
 # CDS General Knowledge ingestion
 
-Scanned CDS "General Knowledge" booklets (image PDFs, **no text layer**, **NO ANSWER KEY**)
-→ the bank, `question_kind='pyq'`, under the existing **CDS** exam across **8 new
-General-Knowledge subjects**.
+Scanned CDS "General Knowledge" booklets (image PDFs, **no text layer**) → the bank,
+`question_kind='pyq'`, under the existing **CDS** exam across **8 General-Knowledge
+subjects**.
 
-**Status: 4 of 19 papers committed PRIVATE — 480 q. A 5th (`2024-2`) is transcribed
-and merged but not yet derived. Nothing is PUBLIC.**
+**Status: COMPLETE — 20 of 20 papers, 2,400 q, all PUBLIC, backing 20 timed mocks.**
 
-| paper | committed | dual-blind agreement | HIGH | MED | LOW |
-|---|---|---|---|---|---|
-| 2018-1 | 120 | 118/120 — 98.3% | 83/83 | 30/30 | 5/7 |
-| 2025-1 | 120 | 117/120 — 97.5% | 94/94 | 20/21 | 3/5 |
-| 2025-2 | 120 | 119/120 — 99.2% | 95/95 | 20/20 | 4/5 |
-| 2024-1 | 120 | 118/120 — 98.3% | 71/71 | 41/42 | 6/7 |
+**Nineteen of the twenty have NO published answer key.** That absence is the premise the
+whole pipeline was built on and it is why every answer in those nineteen is derived by two
+independent blind passes. `2026-2` is the exception, and the first paper here whose answers
+can be checked against something outside themselves.
 
-**Four independent measurements, stable to within 1.7 points, and HIGH is 343/343 across
-all of them** — every single disagreement in every paper sits in MED or LOW. The confidence
-field is a reliable router for review effort. What this still does NOT measure is correlated
-error; see "What the pilot measured" below, which stands unchanged. Publishing is a
-separate, deliberate decision — read that section before taking it.
+## The one measurement that changes how you should read this corpus
+
+CDS (II) 2026 is the first GK sitting UPSC published a key for, so for the first time the
+pipeline's output could be SCORED rather than merely cross-checked against itself.
+
+**A single blind pass scored 109 of 119 — 91.6%.**
+
+Set that against the 98–99% *agreement* the nineteen key-less papers report and the gap is
+the point:
+
+| | what it measures | 2026-2 |
+|---|---|---|
+| dual-blind **agreement** (19 papers) | how often two passes say the same thing | 98.3–100% |
+| **accuracy** vs an official key (1 paper) | how often the answer is right | **91.6%** |
+
+Those are not the same number and never were. The README has always said agreement bounds
+*disagreement* risk and cannot bound *correlated* error — two passes being confidently wrong
+in the same direction. This is the first evidence of how large that gap actually is on a
+fact-recall corpus. **Do not quote the agreement rate as an accuracy estimate.**
+
+**Confidence, though, is well calibrated, and that is the usable result:**
+
+| | agree | rate |
+|---|---|---|
+| HIGH | 75/76 | 98.7% |
+| MED | 29/33 | 87.9% |
+| LOW | 5/10 | 50% |
+
+Nine of the ten misses sit outside HIGH, so the standing advice — re-check non-HIGH rows
+first — would have found nine of them. **Recency is the dominant failure mode:** five of the
+ten turn on a 2025–26 fact (a statute's section number, a trial figure, a contingent's parent
+regiment, an award count, which ministry published a report). Two more turn on the wording of
+the textbook the setter drew from rather than on the underlying fact.
+
+Full breakdown, pinned and reproducible: `data/2026-2.blindscore.json`.
+
+### What the key also bought, which was the actual reason to derive at all
+
+The derivation is not there to adjudicate the key. It is the only detector this corpus has
+for its documented defect class — the transcriber copying the correct option's TEXT into the
+wrong LETTER's slot. A blind pass provably cannot catch that alone; an official key can,
+because its letter is defined against the booklet's PRINTED option order.
+
+**Result: clean.** Every disagreement whose options carry distinct text (Q47, Q52, Q65, Q99,
+Q100) had its printed option order re-read from a high-zoom crop before adjudication, and all
+five match the transcription label for label. So all ten misses are derivation errors and
+none is a mis-slot.
+
+### Blindness here is ORDERING only
+
+One agent transcribed, derived, committed (`a40c813b`), and only then opened the key. That is
+weaker than the dual-agent crosstab the other nineteen papers used, where two passes never
+saw each other. A single agent cannot be two parties, so this number rests on the git history
+and on nothing else. It is recorded that way everywhere it is quoted.
+
+### UPSC dropped a question, and the header is the only place that says so
+
+The key's header box reports **`No. of Questions Dropped: 1`**, 119 taken for scoring, and
+prints **X** in Q84's Key cell. Read the header box — do not just transcribe the grid. Q84's
+chronology has no correct option on the usual dating, and the blind pass had independently
+flagged it as defective *before* the key was opened.
+
+It still ships. A withdrawn question has no right answer, so it rides as a **grace** question
+in the mock — full marks whatever is chosen, the same mechanism NEET uses for NTA-dropped
+items (`CDS_GK_GRACE` in `scripts/mocks/cdsSittings.ts`). Dropping the row would relabel a
+119-question fragment as "CDS (II) 2026", and a mock is the real paper or it is nothing.
 
 ## Why this is not the `scripts/cds` pipeline
 
@@ -33,15 +91,16 @@ and content_hash-collision gates, and the PUBLIC-demotion guard (fixed here — 
 
 ## The corpus
 
-19 sittings on disk, **2016-II … 2026-I** (2016-I and 2017-I are absent from the source
-folder, not skipped). 120 items / 100 marks / 2 hours / one-third negative.
+20 sittings ingested, **2016-II … 2026-II** (2016-I is absent from the source folder; a
+`CDS GK 2017 I.pdf` IS on disk but is not in `config.ts` and has never been ingested — a
+21st paper waiting, not a gap). 120 items / 100 marks / 2 hours / one-third negative.
 
 Two source generations, and the difference matters:
 
 | | Papers | Pages | Layout |
 |---|---|---|---|
 | Prep-house reprints | 18 (2016-II…2025-II) | 18–23 | **English only** — Hindi versos removed, booklet codes and printed page numbers intact, so these are faithful scans |
-| Raw UPSC booklet | `2026-1` | 48 | **Hindi and English alternating** + rough-work pages — needs a page-selection pre-pass (`englishPages` in config) |
+| Raw UPSC booklet | `2026-1`, `2026-2` | 48, 56 | **Hindi and English alternating** + rough-work pages — needs a page-selection pre-pass (`englishPages` in config) |
 
 `CDS GK 2016.pdf` carries no sitting in its filename; its cover is stamped
 "CDS Exam(II):2016", so it is the **second** sitting.
@@ -60,6 +119,14 @@ npx tsx scripts/cds-gs/crosstab.ts <paperId>        # 6. agreement report
 npx tsx scripts/cds-gs/crosstab.ts <paperId> --apply # 7. write data/<id>.answers.json
 npx tsx scripts/cds-gs/commit.ts   <paperId>        # 8. dry-run
 npx tsx scripts/cds-gs/commit.ts   <paperId> --apply # 9. commit PRIVATE
+
+# KEYED PAPERS ONLY (`2026-2`). Steps 5-7 above are replaced by ONE blind pass,
+# then the key. Run these ONLY AFTER the derivation is committed - the ordering is
+# the entire control, and score.ts is the only thing here that opens the key.
+npx tsx scripts/cds-gs/score.ts <paperId>                 # report + adjudication worklist
+npx tsx scripts/cds-gs/score.ts <paperId> --inject 7=A    # canary: prove it detects a miss
+#    write data/<id>.adjudicated.json - answer, value, basis AND rewritten reasoning
+npx tsx scripts/cds-gs/score.ts <paperId> --apply         # write data/<id>.answers.json
 python  scripts/cds-gs/audit_fidelity.py            # 2018-1 only — see below
 npm run audit:text -- "<sourceFile substring>"
 npm run audit:omml -- "<sourceFile substring>"
@@ -120,7 +187,7 @@ correctly replicated the options onto each of the seven. `audit_fidelity.py` det
 by shape — an identical option set on more than one question — and checks them page-wide
 rather than per-span, so the data being RIGHT is not reported as a defect.
 
-## What the pilot measured
+## What the pilot measured (the nineteen key-less papers)
 
 - **Dual-blind agreement: 118/120 = 98.3%** (TWIN 0, MISSING 0).
 - **Agreement by the weaker of the two confidences: HIGH 83/83 · MED 30/30 · LOW 5/7.** All
@@ -169,10 +236,15 @@ and fired on 162 questions; a `graph|diagram|figure|map` word-scan then fired on
 false. Only the bracketed-description marker is reliable, because the transcriber writes it
 deliberately.
 
-## No corroboration channel exists — measured twice, from two directions
+## No corroboration channel exists for the nineteen — measured twice, from two directions
 
-Worth recording so nobody re-hunts for one. There is no external anchor for these answers,
-and two independent probes now say so:
+**Superseded for `2026-2` only, which has an official key.** For the other nineteen this
+still holds, and it is worth recording so nobody re-hunts for an anchor. Note that the 2026-2
+score is now the closest thing to an external calibration the corpus will ever get for the
+rest — one sitting, one pass, not a base rate, but the only real number available.
+
+There is no external anchor for those nineteen papers' answers, and two independent probes
+say so:
 
 1. **UPSC does not appear to reuse GK items between NDA and CDS** — five distinctive stems
    from the pilot, zero matches in our 4,086-question NDA GK bank. (It *does* reuse ENGLISH
@@ -207,6 +279,14 @@ corroboration the pipeline has produced.
 - **Q84** — options (b) and (c) are word-for-word identical except for the order of two ranks,
   which IS the question. Do not "normalise".
 - **Q92** — option order is non-standard ((a) is `1, 2 and 3`, (d) is `1 only`). As printed.
+
+**From `2026-2`,** transcribed as printed and all flagged at merge: **Q44** sets three
+statements but the code offers only {1}, {2}, {1,2}, {2,3}; **Q55** asks which statement is
+NOT correct and two of four are false (field lines are not always parallel, and they never
+cross); **Q84** was WITHDRAWN by UPSC and its chronology matches no printed option; **Q52**
+has no fully correct option (the key says no image forms, which is wrong as stated, while the
+option carrying the right magnitude puts the image on the wrong side); **Q95** closes a
+statement with a question mark and **Q116** omits one entirely.
 - **Q27 / Q35** — the same four Match-List code rows with (a) and (c) transposed between the
   two questions. Copying one block onto the other yields a right-text/wrong-letter key.
 

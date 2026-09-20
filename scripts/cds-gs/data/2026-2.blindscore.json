@@ -1,0 +1,52 @@
+{
+  "paper": "2026-2",
+  "measuredAt": "2026-09-20",
+  "blindCommit": "a40c813b",
+  "note": "PINNED, and still REPRODUCIBLE — `npx tsx scripts/cds-gs/score.ts 2026-2` prints 109/119 today and will keep doing so, because it scores `derived/2026-2.a.p*.json`, which is the blind pass and is never rewritten. What the adjudication changed is `data/2026-2.answers.json`, which carries the key's letters and would read 119/119: scoring THAT would be circular and means nothing. The two files are deliberately separate for exactly this reason.",
+  "blindness": "ORDERING ONLY. One agent transcribed, derived, committed, and only then opened the key. That is weaker than the dual-agent crosstab used for the other nineteen CDS GK papers, where two independent passes never saw each other. A single agent cannot be two parties, so this number rests on the git history and on nothing else.",
+  "key": {
+    "sourceFile": "ProvAnsKey-GK-CDSE-II-26-160926.pdf",
+    "publisher": "UPSC provisional answer key, released 2026-09-16",
+    "series": "A",
+    "pageIndex": 0,
+    "totalQuestions": 120,
+    "questionsDropped": 1,
+    "questionsScored": 119,
+    "droppedQuestions": [84],
+    "reads": 2,
+    "readsAgreedOnAllCells": true
+  },
+  "score": {
+    "scored": 119,
+    "agree": 109,
+    "percent": 91.6,
+    "byConfidence": {
+      "HIGH": { "total": 76, "agree": 75 },
+      "MED": { "total": 33, "agree": 29 },
+      "LOW": { "total": 10, "agree": 5 }
+    },
+    "disagreements": [
+      { "number": 7, "derived": "A", "key": "C", "confidence": "HIGH", "verdict": "OURS", "cause": "textbook-source convention" },
+      { "number": 10, "derived": "B", "key": "C", "confidence": "LOW", "verdict": "OURS", "cause": "over-read the printed wording" },
+      { "number": 23, "derived": "A", "key": "D", "confidence": "MED", "verdict": "OURS", "cause": "recency — 2025 statute detail" },
+      { "number": 47, "derived": "A", "key": "D", "confidence": "LOW", "verdict": "OURS", "cause": "recency — defence trial figure" },
+      { "number": 52, "derived": "D", "key": "C", "confidence": "MED", "verdict": "DEFECTIVE", "cause": "no option is fully correct; see notes" },
+      { "number": 65, "derived": "B", "key": "A", "confidence": "MED", "verdict": "OURS", "cause": "textbook-source convention" },
+      { "number": 82, "derived": "D", "key": "C", "confidence": "MED", "verdict": "OURS", "cause": "statement-count judgement" },
+      { "number": 98, "derived": "C", "key": "B", "confidence": "LOW", "verdict": "OURS", "cause": "recency — contingent composition" },
+      { "number": 99, "derived": "D", "key": "C", "confidence": "LOW", "verdict": "OURS", "cause": "recency — 2026 Padma count" },
+      { "number": 100, "derived": "A", "key": "B", "confidence": "LOW", "verdict": "OURS", "cause": "recency — report attribution" }
+    ]
+  },
+  "optionOrderCheck": {
+    "result": "CLEAN",
+    "detail": "Every disagreement whose options carry distinct TEXT (Q47, Q52, Q65, Q99, Q100) had its printed option order re-read from a 2.4x-2.6x crop of the source page before adjudication. All five match the transcription label for label. The remaining five disagreements are standard code blocks. So the corpus's documented mis-slotted-option defect — the reason a derivation is made at all when an official key exists — did NOT occur on this paper, and all ten misses are derivation errors."
+  },
+  "notes": [
+    "THE HEADLINE IS NOT 91.6% — it is that 91.6% is far below the 98-99% AGREEMENT the nineteen unkeyed CDS GK papers report. Those two numbers measure different things and this paper is the first evidence of the gap. Agreement bounds disagreement risk; it cannot bound correlated error, and on a fact-recall corpus with a heavy current-affairs load two passes can be confidently wrong the same way. Do not quote the dual-blind agreement rate as an accuracy estimate for this corpus.",
+    "CONFIDENCE IS WELL CALIBRATED, and that is the usable result. HIGH 75/76 (98.7%), MED 29/33 (87.9%), LOW 5/10 (50%). Nine of the ten misses sit outside HIGH, so the pipeline's standing advice — re-check non-HIGH rows first — would have caught nine of them. This is the opposite of the sibling CDS English 2026-II result, where every MED row agreed and the single miss was a HIGH.",
+    "RECENCY IS THE DOMINANT FAILURE MODE: five of the ten misses (Q23, Q47, Q98, Q99, Q100) turn on a 2025-2026 fact — a statute's section number, a trial figure, a contingent's parent regiment, an award count, which ministry released a report. Two more (Q7, Q65) turn on the wording of the textbook the setter drew from rather than on the underlying fact.",
+    "Q52 IS DEFECTIVE AND THE KEY IS ACCEPTED ANYWAY. With the liquid matching the lens material the curved surface stops refracting, so the only refraction is at the plane face between air and a medium of index 8/5; that flat surface still forms a VIRTUAL image, 64 cm from the lens on the SAME side as the source. The key's option says no image is formed, which is wrong as stated; the option carrying 64 cm says 'behind the lens', which puts it on the wrong side. No printed option is fully correct. The key is followed because on a mock it defines the answer, and the stored solution justifies it on the ground that is true — the lens loses its converging power entirely — without asserting that no image whatever exists.",
+    "Q84 WAS WITHDRAWN BY UPSC and is excluded from the denominator. Its chronology has no correct option on the usual dating (Indian Museum 1814, Government Museum Madras 1851, Treasure Trove Act 1878, H. H. Cole's curatorship 1880-81 gives 1-3-4-2, which the paper does not offer). The blind pass had independently flagged it as defective at LOW confidence, before the key was opened — the one place on this paper where the derivation and the examiner reached the same verdict about the paper itself."
+  ]
+}

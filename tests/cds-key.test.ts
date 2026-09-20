@@ -81,6 +81,50 @@ describe("reconcileKeyReads", () => {
     if (r.ok) return;
     expect(r.error).toMatch(/series/i);
   });
+
+  // A WITHDRAWN QUESTION is a real property of UPSC's provisional keys, not an
+  // edge case: CDS (II) 2026 General Knowledge reports "No. of Questions
+  // Dropped: 1" in its header box and prints X in that question's Key cell.
+  // Before this, X was rejected as "not a letter", which is the right default —
+  // a key that quietly invents an answer is worse than no key. But refusing
+  // outright would have forced the caller to strip the cell before reconciling,
+  // and a cell stripped BEFORE reconciliation is a cell the two reads never
+  // compare, so a misread of which question was dropped would pass unseen.
+  describe("dropped questions", () => {
+    it("accepts X as DROPPED and reports it separately from the key", () => {
+      const withX = { ...full("ABCD"), "3": "X" };
+      const r = reconcileKeyReads([read("a", withX), read("b", withX)], 4);
+      expect(r.ok).toBe(true);
+      if (!r.ok) return;
+      expect(r.dropped).toEqual([3]);
+      // The dropped question carries NO key entry, so scoreAgainstKey still
+      // throws on it unless the caller excludes it deliberately.
+      expect(r.key).toEqual({ "1": "A", "2": "B", "4": "D" });
+    });
+
+    it("REFUSES when one read sees a letter where the other sees X", () => {
+      const a = { ...full("ABCD"), "3": "X" };
+      const r = reconcileKeyReads([read("a", a), read("b", full("ABCD"))], 4);
+      expect(r.ok).toBe(false);
+      if (r.ok) return;
+      expect(r.conflicts).toEqual([{ number: 3, reads: { a: "X", b: "C" } }]);
+    });
+
+    it("reports an empty dropped list when nothing was withdrawn", () => {
+      const r = reconcileKeyReads([read("a", full("ABCD")), read("b", full("ABCD"))], 4);
+      expect(r.ok).toBe(true);
+      if (!r.ok) return;
+      expect(r.dropped).toEqual([]);
+    });
+
+    it("still REFUSES a letter outside A-D that is not the dropped marker", () => {
+      const bad = { ...full("ABCD"), "2": "E" };
+      const r = reconcileKeyReads([read("a", bad), read("b", bad)], 4);
+      expect(r.ok).toBe(false);
+      if (r.ok) return;
+      expect(r.error).toMatch(/not a letter/i);
+    });
+  });
 });
 
 describe("scoreAgainstKey", () => {

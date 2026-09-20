@@ -116,3 +116,36 @@ describe("deriveCdsSittings against the real scripts/cds/config.ts", () => {
     }
   });
 });
+
+/**
+ * GRACE — a question UPSC withdrew after the exam.
+ *
+ * CDS was uniform across all 19 GK sittings until CDS (II) 2026, whose official
+ * provisional key reports "No. of Questions Dropped: 1" and prints X against
+ * Q84. A withdrawn question has no right answer, so scoring it as if it did
+ * would penalise every candidate who attempted it — which is precisely what the
+ * real sitting did NOT do, having scored the paper out of 119.
+ *
+ * The question still ships. A mock is the real paper or it is nothing, and the
+ * real paper contained Q84; dropping the row would relabel a 119-question
+ * fragment as "CDS (II) 2026". So it rides as grace, the same mechanism NEET
+ * uses for NTA-dropped items, which awards full marks whatever is chosen.
+ */
+describe("CDS grace questions", () => {
+  it("attaches grace numbers to the named sitting only", () => {
+    const s = deriveCdsSittings(fixture("2026-1", "2026-2"), "gk", {}, { "2026-2": [84] });
+    expect(s.find((x) => x.key === "2026-2")?.graceNumbers).toEqual([84]);
+    expect(s.find((x) => x.key === "2026-1")?.graceNumbers).toBeUndefined();
+  });
+
+  it("leaves every sitting graceless when no registry is supplied", () => {
+    const s = deriveCdsSittings(fixture("2026-1", "2026-2"), "gk");
+    expect(s.every((x) => x.graceNumbers === undefined)).toBe(true);
+  });
+
+  it("REFUSES a grace entry naming a paper that is not in the config", () => {
+    expect(() => deriveCdsSittings(fixture("2026-1"), "gk", {}, { "2025-2": [84] })).toThrow(
+      /grace.*2025-2.*not a configured paper/i
+    );
+  });
+});
