@@ -312,7 +312,8 @@ export const FINDING_TRUTH_VALUES_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Statements, connectives and truth tables", href: "/notes/mht-cet-maths/mathematical-logic/statements-connectives-truth-tables" },
+    { label: "Next: Negation of statements and quantifiers", href: "/notes/mht-cet-maths/mathematical-logic/negation-and-quantifiers" },
+    { label: "Previous: Statements, connectives and truth tables", href: "/notes/mht-cet-maths/mathematical-logic/statements-connectives-truth-tables" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
   ],
 };

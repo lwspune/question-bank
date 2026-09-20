@@ -189,11 +189,14 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
         "\\(p \\to q\\) is **false in exactly one row**: \\(p\\) true and \\(q\\) false. In the other three rows it is true.\n" +
         "- When \\(p\\) is **false**, \\(p \\to q\\) is true no matter what \\(q\\) says. This is called **vacuous truth**.\n" +
         "- When \\(q\\) is **true**, \\(p \\to q\\) is true no matter what \\(p\\) says.\n" +
-        "- Equivalently \\(p \\to q \\equiv \\;\\sim p \\vee q\\), which is the form you use to simplify.",
+        "- \\(p \\to q\\) has the same truth value as \\(\\sim p \\vee q\\) in every row, which is the form you will use to simplify. The next-but-one concept gives that relationship its name and its symbol.",
       formula: {
         label: "The conditional and its disjunction form",
+        // Deliberately written WITHOUT \equiv and \iff: neither symbol has been
+        // introduced yet at this point in the arc, and both arrive two concepts
+        // later. See [[notes-teaching-arc-forward-reference]].
         latex:
-          "p \\to q \\equiv\\; \\sim p \\vee q \\qquad p \\to q = F \\iff (p = T \\text{ and } q = F) \\qquad F \\to q \\equiv T",
+          "p \\to q \\;\\text{ agrees with }\\; \\sim p \\vee q \\;\\text{ in every row} \\qquad p \\to q = F \\;\\text{ only when } p = T,\\; q = F \\qquad F \\to q = T",
         symbols: [
           { symbol: "p", meaning: "the antecedent (hypothesis)" },
           { symbol: "q", meaning: "the consequent (conclusion)" },
@@ -361,7 +364,7 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
           "Row \\(F,T\\): \\(p \\vee q = T\\); then \\(T \\to F = F\\).",
           "Row \\(F,F\\): \\(p \\vee q = F\\); then \\(F \\to F = T\\).",
         ],
-        answer: "Last column: \\(T,\\,T,\\,F,\\,T\\) — a contingency, since it is neither all T nor all F.",
+        answer: "Last column: \\(T,\\,T,\\,F,\\,T\\) — true in three rows and false in one. The next concept names that pattern.",
       },
       selfCheckExample: {
         prompt: "Construct the truth table for \\(\\sim p \\vee q\\) and write its last column.",
@@ -414,7 +417,113 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
       ],
     },
 
-    // 6 — the feature that makes this subtopic 38% HARD
+    // 6 — the vocabulary the WHOLE chapter runs on. Added 2026-09-20: `\equiv`
+    // was used 40 times, "tautology" 3 times and "contingency" once before any
+    // of them was defined, because all three lived in Logical Equivalence
+    // (subtopic 5). They are READINGS OF THE LAST COLUMN, which the previous
+    // concept has just taught how to build — so this is where they belong.
+    // Subtopic 5 still teaches equivalence properly; it now deepens a term the
+    // reader already has instead of introducing one they have been using for
+    // three blocks. See [[notes-teaching-arc-forward-reference]].
+    {
+      kind: "reference" as const,
+      slug: "mlog-reading-the-last-column",
+      name: "Reading the Last Column: Equivalence, Tautology, Contradiction, Contingency",
+      intuition:
+        "You now know how to build the table. Everything the rest of this chapter asks you to do is a question about its LAST COLUMN — " +
+        "is it all T, all F, mixed, or the same as some other pattern's last column? Those four readings have names, and they are used constantly from here on.",
+      definition:
+        "Four readings of one column, and one symbol:\n" +
+        "- A **tautology** is true in every row.\n" +
+        "- A **contradiction** is false in every row.\n" +
+        "- A **contingency** is neither — at least one T and at least one F.\n" +
+        "- Two patterns are **logically equivalent**, written \\(A \\equiv B\\), when their last columns match **row for row**.\n" +
+        "The symbol \\(\\equiv\\) is not a connective and never appears inside a statement: \\(\\leftrightarrow\\) is evaluated row by row and produces a column, while \\(\\equiv\\) is a claim ABOUT two finished columns. " +
+        "The two are linked — \\(A \\equiv B\\) exactly when \\(A \\leftrightarrow B\\) is a tautology.",
+      table: {
+        columns: ["Reading", "Last column looks like", "Example"],
+        rows: [
+          {
+            cells: ["Tautology", "All T", "\\(p \\vee \\sim p\\)"],
+          },
+          {
+            cells: ["Contradiction", "All F", "\\(p \\wedge \\sim p\\)"],
+          },
+          {
+            cells: ["Contingency", "Mixed — some T, some F", "\\(p \\vee q\\)"],
+            noteAmber:
+              "The default case. Most statement patterns are contingencies; the exam asks you to spot the ones that are not.",
+          },
+          {
+            cells: [
+              "Logically equivalent \\(A \\equiv B\\)",
+              "Two patterns whose columns match in EVERY row",
+              "\\(p \\to q\\) and \\(\\sim p \\vee q\\)",
+            ],
+            noteAmber:
+              "ONE disagreeing row destroys equivalence; agreeing in one row proves nothing. The asymmetry is the whole test.",
+          },
+        ],
+        caption:
+          "Every 'which of the following is a tautology / is equivalent to' question on this paper is one of these four readings. Subtopic 5 gives you the algebra that reaches them without writing the table out.",
+      },
+      selfCheckExample: {
+        prompt:
+          "Build the last column of \\(p \\vee \\sim p\\) and of \\(p \\wedge \\sim p\\), and classify each.",
+        steps: [
+          "Two rows suffice, since only \\(p\\) appears: \\(p = T\\) and \\(p = F\\).",
+          "\\(p \\vee \\sim p\\): row \\(T\\) gives \\(T \\vee F = T\\); row \\(F\\) gives \\(F \\vee T = T\\). Column is \\(T,\\,T\\).",
+          "\\(p \\wedge \\sim p\\): row \\(T\\) gives \\(T \\wedge F = F\\); row \\(F\\) gives \\(F \\wedge T = F\\). Column is \\(F,\\,F\\).",
+          "All T is a tautology; all F is a contradiction.",
+        ],
+        answer:
+          "\\(p \\vee \\sim p\\) is a **tautology**; \\(p \\wedge \\sim p\\) is a **contradiction**.",
+      },
+      practiceSet: [
+        {
+          prompt: "A pattern whose last column is \\(T,\\,T,\\,T,\\,T\\) is called what?",
+          answer: "A tautology.",
+          method: "True in every row.",
+        },
+        {
+          prompt: "A pattern whose last column is \\(T,\\,F,\\,T,\\,T\\) is called what?",
+          answer: "A contingency.",
+          method: "It mixes T and F, so it is neither a tautology nor a contradiction.",
+        },
+        {
+          prompt: "How many disagreeing rows are needed to show that \\(A\\) and \\(B\\) are NOT equivalent?",
+          answer: "One.",
+          method: "Equivalence is a claim about every row, so a single counterexample breaks it.",
+        },
+        {
+          prompt: "Is \\(\\equiv\\) a connective you can write inside a statement?",
+          answer: "No.",
+          method:
+            "\\(\\leftrightarrow\\) is the connective and produces a column; \\(\\equiv\\) is a claim about two finished columns.",
+        },
+      ],
+      // No featured PYQ and no drill tags, DELIBERATELY — notes-lint's "0 tagged
+      // questions" WARN on this concept is correct-by-design, not a missed
+      // tagging session. This concept teaches VOCABULARY that the bank tests
+      // inside the Logical Equivalence subtopic, where those questions are
+      // filed and already tagged (`mlog-tautology-contradiction-contingency`,
+      // 4 rows). Re-tagging them here would surface Logical-Equivalence
+      // questions as drills on a Statements page and break the subtopic
+      // constraint. The one Statements-subtopic question that mentions a last
+      // column (f30d6805) is already the featured PYQ of the preceding concept.
+      // Same reasoning as the dual concept in subtopic 5.
+      traps: [
+        {
+          title: "Reading \\(\\equiv\\) as another name for \\(\\leftrightarrow\\)",
+          body:
+            "They are different kinds of object. \\(p \\leftrightarrow q\\) is a statement pattern with its own truth table, true in some rows and false in others. " +
+            "\\(A \\equiv B\\) is a verdict on two whole tables, and it is either right or wrong — it has no rows. " +
+            "The bridge between them is that \\(A \\equiv B\\) holds exactly when the pattern \\(A \\leftrightarrow B\\) is a tautology.",
+        },
+      ],
+    },
+
+    // 7 — the feature that makes this subtopic 38% HARD
     {
       kind: "formula" as const,
       slug: "mlog-truth-value-of-a-mathematical-claim",
@@ -490,7 +599,8 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "MHT-CET Maths strategy", href: "/guide/mht-cet-maths/strategy" },
+    { label: "Next: Finding truth values of component statements", href: "/notes/mht-cet-maths/mathematical-logic/finding-truth-values" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
+    { label: "MHT-CET Maths strategy", href: "/guide/mht-cet-maths/strategy" },
   ],
 };

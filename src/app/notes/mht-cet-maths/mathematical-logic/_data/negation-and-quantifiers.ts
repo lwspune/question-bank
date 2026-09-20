@@ -394,7 +394,8 @@ export const NEGATION_QUANTIFIERS_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Converse, inverse and contrapositive", href: "/notes/mht-cet-maths/mathematical-logic/converse-inverse-contrapositive" },
+    { label: "Next: Converse, inverse and contrapositive", href: "/notes/mht-cet-maths/mathematical-logic/converse-inverse-contrapositive" },
+    { label: "Previous: Finding truth values of component statements", href: "/notes/mht-cet-maths/mathematical-logic/finding-truth-values" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
   ],
 };
