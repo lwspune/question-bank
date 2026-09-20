@@ -24,6 +24,15 @@
  *     text. A duplicate makes the answer ambiguous as a LETTER even when it is
  *     unambiguous as fact — the defect class that produced 19 wrong keys on the
  *     sibling CDS English corpus.
+ *
+ *     ONE NARROW EXCEPTION: a duplicate the BOOKLET printed, declared in
+ *     `SOURCE_DUPLICATE_OPTIONS` in config.ts (shared with the commit gate, so
+ *     the two cannot drift). Declaring it is necessary and NOT sufficient — the
+ *     gate additionally COMPUTES that the correct option is not one of the
+ *     duplicates, and refuses regardless if it is. UPSC printed 2026-II Q47 with
+ *     (a) and (c) both reading "2" while the answer is (b); that row is correct,
+ *     answerable, and would otherwise be withheld from students for a defect
+ *     that is not ours and does not affect them.
  *  5. COVERAGE. The paper must be whole. A short paper is a finding.
  *
  * `--revert` exists so publishing is reversible in one command, which is what
@@ -32,7 +41,14 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, QUESTIONS_PER_PAPER, dataPath, requirePaper } from "./config";
+import {
+  EXAM_ID,
+  QUESTIONS_PER_PAPER,
+  dataPath,
+  requirePaper,
+  sourceDuplicateOptionsFor,
+} from "./config";
+
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -132,7 +148,45 @@ async function main() {
     const correct = opts.filter((o) => o.is_correct).length;
     if (correct !== 1) problems.push(`Q${r.question_number}: ${correct} correct options, expected exactly 1`);
     const texts = opts.map((o) => norm(o.text));
-    if (new Set(texts).size !== texts.length) problems.push(`Q${r.question_number}: duplicate option text`);
+    if (new Set(texts).size !== texts.length) {
+      // A duplicate is normally OURS — a transcription slip that copied one
+      // option's text into another letter's slot, which is the defect that
+      // produced 19 wrong keys on the sibling CDS English corpus. But it can
+      // also be the BOOKLET's: UPSC printed 2026-II Q47 with options (a) and
+      // (c) both reading a bare "2", verified twice against the source at 7x
+      // and 10x.
+      //
+      // The allowlist alone is NOT the permission. What makes such a row safe
+      // to publish is that the answer is still unambiguous AS A LETTER, and
+      // that is COMPUTED here rather than asserted: if the correct option is
+      // itself one of the duplicated texts, a student choosing correctly could
+      // still be marked wrong, and no allowlist entry may rescue it.
+      const dupTexts = new Set(texts.filter((t, i) => texts.indexOf(t) !== i));
+      const correctOpt = opts.find((o) => o.is_correct);
+      const correctIsDuplicated = !correctOpt || dupTexts.has(norm(correctOpt.text));
+      // Number(), NOT the raw column: `question_number` is TEXT in the database
+      // while the allowlist is numeric, so `.has("47")` silently misses and the
+      // gate refuses a row it was told to allow. The commit-side gate coerces
+      // too; this is precisely the drift that sharing one map cannot prevent on
+      // its own, because the two callers read different representations.
+      const allowed = sourceDuplicateOptionsFor(paper.id).has(Number(r.question_number));
+
+      if (!allowed) {
+        problems.push(`Q${r.question_number}: duplicate option text`);
+      } else if (correctIsDuplicated) {
+        problems.push(
+          `Q${r.question_number}: duplicate option text AND the correct option is one of the ` +
+            `duplicates — the answer is ambiguous as a letter, so the source-duplicate ` +
+            `allowance does NOT apply. This question cannot be published.`
+        );
+      } else {
+        console.log(
+          `  note: Q${r.question_number} has a SOURCE-PRINTED duplicate option ` +
+            `(${[...dupTexts].map((t) => JSON.stringify(t)).join(", ")}); the correct option is ` +
+            `not among them, so the answer stays unambiguous. Allowed.`
+        );
+      }
+    }
     if (texts.some((t) => !t)) problems.push(`Q${r.question_number}: blank option`);
   }
 
