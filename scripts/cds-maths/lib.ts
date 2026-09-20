@@ -450,6 +450,21 @@ export function validateRows(
    * genuinely missing question can never be waved through by silence.
    */
   intentionallyAbsent: ReadonlySet<number> = new Set(),
+  /**
+   * Questions whose DUPLICATE OPTION TEXT IS THE BOOKLET'S, confirmed against
+   * the printed page, rather than a transcription slip of ours.
+   *
+   * UPSC printed 2026-II Q47 with options (a) and (c) both reading a bare "2".
+   * Refusing that row would withhold a correct, answerable question; accepting
+   * duplicates in general would give up the check that caught 19 wrong keys on
+   * the sibling CDS English corpus.
+   *
+   * So being listed here is NECESSARY AND NOT SUFFICIENT. The condition that
+   * actually makes such a row safe is that the correct option is not one of the
+   * duplicated ones -- otherwise a student choosing an identically-worded option
+   * is marked wrong -- and that is COMPUTED below, not asserted by the caller.
+   */
+  sourceDuplicateOptions: ReadonlySet<number> = new Set(),
 ): string[] {
   const errs: string[] = [];
   const nums = new Set(rows.map((r) => Number(r.questionNumber)));
@@ -470,12 +485,23 @@ export function validateRows(
     // unambiguous as fact — the defect class that produced 19 wrong keys on the
     // sibling CDS English corpus. Never repair by moving the answer.
     const normed = opts.map((o) => norm(o || ""));
+    const declared = sourceDuplicateOptions.has(Number(r.questionNumber));
+    const answerIdx = "ABCD".indexOf((r.answer || "").toUpperCase());
     for (let i = 0; i < normed.length; i++) {
       for (let j = i + 1; j < normed.length; j++) {
         if (normed[i] && normed[i] === normed[j]) {
-          errs.push(
-            `Q${r.questionNumber}: duplicate option text at ${"ABCD"[i]} and ${"ABCD"[j]} — check the page`
-          );
+          if (!declared) {
+            errs.push(
+              `Q${r.questionNumber}: duplicate option text at ${"ABCD"[i]} and ${"ABCD"[j]} — check the page`
+            );
+          } else if (answerIdx === i || answerIdx === j) {
+            errs.push(
+              `Q${r.questionNumber}: duplicate option text at ${"ABCD"[i]} and ${"ABCD"[j]}, and the ` +
+                `correct option is one of the duplicates — the question is unanswerable as a letter, ` +
+                `so declaring it a source duplicate does not make it publishable`
+            );
+          }
+          // else: declared, and the answer is untouched by the duplication.
         }
       }
     }

@@ -1,0 +1,202 @@
+[
+  {
+    "number": 51,
+    "answer": "D",
+    "value": "170 degrees",
+    "confidence": "HIGH",
+    "reasoning": "Cyclic quadrilateral: A + C = 180 and B + D = 180. (4x+3)+(4y-3) = 4x+4y = 180 gives x+y = 45. (3y+9)+(5x-10) = 5x+3y-1 = 180 gives 5x+3y = 181. Solving: x = 23, y = 22. So A = 95, B = 75, C = 85, D = 105; both opposite pairs check out at 180. A + B = 170. Solved in sympy. No runner-up: the linear system is uniquely determined.",
+    "solution": "In a cyclic quadrilateral opposite angles are supplementary, so \\(\\angle A + \\angle C = 180^\\circ\\) gives \\((4x+3)+(4y-3)=180\\), i.e. \\(x+y=45\\), and \\(\\angle B + \\angle D = 180^\\circ\\) gives \\((3y+9)+(5x-10)=180\\), i.e. \\(5x+3y=181\\). Solving the pair gives \\(x=23\\) and \\(y=22\\), so \\(\\angle A = 95^\\circ\\) and \\(\\angle B = 75^\\circ\\). Hence \\(\\angle A + \\angle B = 170^\\circ\\)."
+  },
+  {
+    "number": 52,
+    "answer": "B",
+    "value": "164 cm",
+    "confidence": "HIGH",
+    "reasoning": "Area of a rhombus = (1/2) d1 d2 = 720 gives d1 d2 = 1440, and d1 + d2 = 98. Then d1^2 + d2^2 = 98^2 - 2(1440) = 9604 - 2880 = 6724, so the side = (1/2) sqrt(6724) = 82/2 = 41 and the perimeter is 164. (Explicitly the diagonals are 18 and 80; 9^2 + 40^2 = 1681 = 41^2.) Verified in sympy. No other option is reachable.",
+    "solution": "For a rhombus the area is \\(\\tfrac12 d_1 d_2\\), so \\(d_1 d_2 = 1440\\), while \\(d_1 + d_2 = 98\\). Then \\(d_1^2 + d_2^2 = 98^2 - 2(1440) = 6724\\). The diagonals bisect each other at right angles, so the side is \\(\\tfrac12\\sqrt{d_1^2+d_2^2} = \\tfrac12\\sqrt{6724} = 41\\) cm, and the perimeter is \\(4 \\times 41 = 164\\) cm."
+  },
+  {
+    "number": 53,
+    "answer": "C",
+    "value": "10",
+    "confidence": "HIGH",
+    "reasoning": "The chord subtends 90 degrees at the centre. Minor segment = quarter sector - right triangle = (pi/4)r^2 - (1/2)r^2. With pi = 22/7 this is (11/14 - 7/14)r^2 = 2r^2/7. Major segment = pi r^2 - minor = 22r^2/7 - 2r^2/7 = 20r^2/7. k = (20/7)/(2/7) = 10. Verified in sympy. The supplied pi = 22/7 is what makes k exactly an integer (with exact pi, k = (2+3pi)/(pi-2) = 10.04), so no neighbouring option competes.",
+    "solution": "The chord cuts off a quarter of the circle, so the minor segment is the quarter sector minus the right triangle formed by the two radii: \\(\\frac{\\pi r^2}{4} - \\frac{r^2}{2}\\). With \\(\\pi = \\frac{22}{7}\\) this equals \\(\\frac{2r^2}{7}\\). The major segment is the rest of the disc, \\(\\pi r^2 - \\frac{2r^2}{7} = \\frac{20r^2}{7}\\). Dividing, \\(k = 10\\)."
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "value": "180 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "With a = BC, b = CA, c = AB the three conditions are c+a-b = 10, a+b-c = 8, b+c-a = 72. Adding all three gives a+b+c = 90, so s = 45, and s-b = 5, s-c = 4, s-a = 36. Hence a = 9, b = 40, c = 41 - a right triangle since 9^2 + 40^2 = 41^2. Heron: sqrt(45*36*5*4) = sqrt(32400) = 180; the leg product check (1/2)(9)(40) = 180 agrees. Verified in sympy. The 72 cm figure looks large beside the other two but the triangle it produces is valid and the answer lands exactly on a printed option, so nothing here needs repairing.",
+    "solution": "Write \\(a = BC\\), \\(b = CA\\), \\(c = AB\\). The three conditions are \\(c+a-b=10\\), \\(a+b-c=8\\) and \\(b+c-a=72\\); adding them gives \\(a+b+c=90\\), so the semi-perimeter is \\(s=45\\) and \\(s-a=36\\), \\(s-b=5\\), \\(s-c=4\\). By Heron's formula the area is \\(\\sqrt{45 \\times 36 \\times 5 \\times 4} = 180\\ \\text{cm}^2\\). (The sides are \\(9, 40, 41\\), a right triangle, and \\(\\tfrac12 \\times 9 \\times 40\\) confirms it.)"
+  },
+  {
+    "number": 55,
+    "answer": "A",
+    "value": "4 m",
+    "confidence": "HIGH",
+    "reasoning": "24 kL = 24 m^3, and the drop of 20 cm = 0.2 m is over the full base of the cuboid. So 30 * w * 0.2 = 24, giving 6w = 24 and w = 4 m. Verified in sympy. The only trap is the unit conversion; the depth of the reservoir is irrelevant.",
+    "solution": "Removing \\(24\\) kL means removing \\(24\\ \\text{m}^3\\) of water, and this loss is a slab of the full base area with thickness \\(20\\ \\text{cm} = 0.2\\ \\text{m}\\). So \\(30 \\times w \\times 0.2 = 24\\), which gives \\(w = 4\\) m. The reservoir's depth plays no part."
+  },
+  {
+    "number": 56,
+    "answer": "D",
+    "value": "3 m",
+    "confidence": "HIGH",
+    "reasoning": "Well radius = 3.5/2 = 1.75 m, depth 16 m, so the excavated volume is pi(1.75)^2(16) = 49 pi m^3. Cone of radius 7: (1/3)pi(49)h = 49pi gives h = 3 m. Verified in sympy; pi cancels so the value of pi is irrelevant. No competing option.",
+    "solution": "The well is a cylinder of radius \\(\\frac{3.5}{2} = 1.75\\) m and depth \\(16\\) m, so the soil removed is \\(\\pi (1.75)^2 (16) = 49\\pi\\ \\text{m}^3\\). Heaping it into a cone of radius \\(7\\) m gives \\(\\frac13 \\pi (7)^2 h = 49\\pi\\), so \\(h = 3\\) m. Note that \\(\\pi\\) cancels, so no approximation is needed."
+  },
+  {
+    "number": 57,
+    "answer": "B",
+    "value": "25 cm",
+    "confidence": "HIGH",
+    "reasoning": "Half the chord is 10 cm and the sagitta of the minor segment is 5 cm, so the perpendicular from the centre to the chord is r - 5. Then r^2 = 10^2 + (r-5)^2, giving 10r = 125, r = 12.5 and diameter 25 cm. Verified in sympy. Option A (24) would need the height measured from somewhere other than the chord's midpoint; nothing in the stem supports that.",
+    "solution": "Drop a perpendicular from the centre to the chord; it bisects the chord, giving a half-chord of \\(10\\) cm. The height of the minor segment is \\(5\\) cm, so the perpendicular distance from the centre to the chord is \\(r-5\\). Then \\(r^2 = 10^2 + (r-5)^2\\), which simplifies to \\(10r = 125\\), so \\(r = 12.5\\) cm and the diameter is \\(25\\) cm."
+  },
+  {
+    "number": 58,
+    "answer": "D",
+    "value": "24 cm",
+    "confidence": "HIGH",
+    "reasoning": "The thickness and density are uniform, so weight lost / original weight = removed area / plate area. Each hole has radius 1 cm, so 16 holes remove 16pi cm^2. Setting 16pi = (1/9)piR^2 gives R^2 = 144, R = 12 and diameter 24 cm. Verified in sympy. Option A (12 cm) is the radius misread as the diameter.",
+    "solution": "Since the plate has uniform thickness, the fraction of weight lost equals the fraction of area removed. Each hole has radius \\(1\\) cm, so the sixteen holes remove \\(16\\pi\\ \\text{cm}^2\\). Setting \\(16\\pi = \\tfrac19 \\pi R^2\\) gives \\(R^2 = 144\\), so \\(R = 12\\) cm and the diameter of the plate is \\(24\\) cm."
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "value": "1.64 cm",
+    "confidence": "HIGH",
+    "reasoning": "Let the octagon's side be t. Each cut corner is an isosceles right triangle with hypotenuse t, so its legs are t/sqrt(2). Along one side of the square: t + 2(t/sqrt(2)) = 4, i.e. t(1 + sqrt(2)) = 4, so t = 4(sqrt(2) - 1). With the paper's sqrt(2) = 1.41 this is 4(0.41) = 1.64 exactly. Verified in sympy: the exact value is 1.65685, which is nearer 1.64 than 1.68 (0.0169 vs 0.0231). RUNNER-UP: option C, 1.68 cm, which is what 4(sqrt(2)-1) gives if sqrt(2) is taken as 1.42; the stem fixes sqrt(2) = 1.41, so it does not survive. Even computing 4/(1+1.41) = 1.6598 without rationalising leaves 1.64 marginally nearer.",
+    "solution": "Let the octagon's side be \\(t\\). Each corner cut off is an isosceles right triangle whose hypotenuse is a side of the octagon, so its legs measure \\(\\frac{t}{\\sqrt{2}}\\). Along one side of the square, \\(t + 2 \\cdot \\frac{t}{\\sqrt{2}} = 4\\), so \\(t(1+\\sqrt{2}) = 4\\) and \\(t = 4(\\sqrt{2}-1)\\). Taking \\(\\sqrt{2} = 1.41\\) gives \\(t = 1.64\\) cm."
+  },
+  {
+    "number": 60,
+    "answer": "C",
+    "value": "1.4 cm per minute",
+    "confidence": "HIGH",
+    "reasoning": "Radius 10 m, so the surface area is (22/7)(100) = 2200/7 m^2. Rise per hour = 264 / (2200/7) = 0.84 m; per minute = 0.014 m = 1.4 cm. Verified in sympy (exact fraction 7/500 m). MISPRINT FLAG carried from transcription: option (d) prints '14 cm' with no decimal separator, which has the shape of a dropped decimal point from '1.4'. Solved as printed: 1.4 cm matches option (c) alone, and 14 cm is a factor of ten out, so exactly one printed option is correct and the answer is C either way. If (d) really was meant to read 1.4, the fault is in the option and needs repairing there, not in the answer.",
+    "solution": "The reservoir's cross-section has radius \\(10\\) m, so its area is \\(\\frac{22}{7}\\times 100 = \\frac{2200}{7}\\ \\text{m}^2\\). Pouring \\(264\\ \\text{m}^3\\) per hour raises the level by \\(264 \\div \\frac{2200}{7} = 0.84\\) m in an hour. Dividing by \\(60\\) gives \\(0.014\\) m per minute, that is a rise of \\(1.4\\) cm per minute."
+  },
+  {
+    "number": 61,
+    "answer": "D",
+    "value": "Neither Statement is needed; the sum is 400 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "The diagonals of a rhombus bisect each other at right angles, so (d1/2)^2 + (d2/2)^2 = side^2, giving d1^2 + d2^2 = 4(10^2) = 400 for every rhombus of side 10. The question is therefore answerable from its own data. Both statements are merely consistent particular cases: I gives AC = 12, BD = 16 (144+256 = 400); II gives AC = 6, BD = 2 sqrt(91) (36+364 = 400). Verified in sympy. RULED OUT: option B, which would be right only if the identity failed and each statement pinned the shape - it does not, because the sum is shape-independent.",
+    "solution": "The diagonals of a rhombus bisect each other at right angles, so each side is the hypotenuse of a right triangle with legs \\(\\frac{d_1}{2}\\) and \\(\\frac{d_2}{2}\\). Hence \\(\\left(\\frac{d_1}{2}\\right)^2 + \\left(\\frac{d_2}{2}\\right)^2 = 10^2\\), giving \\(d_1^2 + d_2^2 = 400\\ \\text{cm}^2\\) for every rhombus of side \\(10\\) cm. The side length alone settles it, so the question can be answered even without using both the Statements."
+  },
+  {
+    "number": 62,
+    "answer": "C",
+    "value": "Both Statements together are needed; the perimeter is 16 cm",
+    "confidence": "HIGH",
+    "reasoning": "AB^2 + BC^2 = (5 sqrt 2)^2 = 50 with AB > BC, so AB > 5 and BC < 5. Statement I alone: AB integer gives AB = 6 (BC = sqrt 14) or AB = 7 (BC = 1) - two different perimeters, insufficient. Statement II alone: BC integer gives BC = 1, 2, 3 or 4 with AB = 7, sqrt 46, sqrt 41, sqrt 34 - four perimeters, insufficient. Together: AB and BC both integers with AB^2 + BC^2 = 50 and AB > BC forces (7, 1) uniquely (5, 5 is excluded by AB > BC), perimeter 16 cm. Enumerated exhaustively in python. RULED OUT: option A, which would need one statement alone to work; neither does.",
+    "solution": "The diagonal gives \\(AB^2 + BC^2 = (5\\sqrt{2})^2 = 50\\), and \\(AB > BC\\) forces \\(AB > 5 > BC\\). Knowing only that \\(AB\\) is a whole number leaves \\(AB = 6\\) or \\(AB = 7\\), and knowing only that \\(BC\\) is a whole number leaves \\(BC = 1, 2, 3\\) or \\(4\\), so neither fact alone fixes the perimeter. With both, \\(AB^2 + BC^2 = 50\\) in integers and \\(AB > BC\\) forces \\(AB = 7\\), \\(BC = 1\\) and a perimeter of \\(16\\) cm, so the Question can be answered using both the Statements together but not either alone."
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "value": "Neither Statement is needed; BD x CD = 51.84 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "With the right angle at A and AD perpendicular to the hypotenuse BC, triangles ABD and CAD are similar to ABC and to each other, so AD is the geometric mean of BD and CD: BD x CD = AD^2 = 7.2^2 = 51.84 cm^2. That uses only the data already in the question. The statements are consistent extras: I and II together give the 9-12-15 triangle, whose altitude is 9x12/15 = 7.2, matching. Verified in sympy (1296/25). RULED OUT: option C, which would be right only if AD alone were insufficient - it is not, because the geometric-mean relation needs nothing else.",
+    "solution": "Since \\(\\angle A = 90^\\circ\\) and \\(AD \\perp BC\\), the two smaller triangles are each similar to \\(\\triangle ABC\\), which makes \\(AD\\) the geometric mean of the two pieces of the hypotenuse: \\(AD^2 = BD \\times CD\\). Hence \\(BD \\times CD = (7.2)^2 = 51.84\\ \\text{cm}^2\\) straight from the data in the Question, so it can be answered even without using both the Statements."
+  },
+  {
+    "number": 64,
+    "answer": "D",
+    "value": "Neither Statement is needed; the diameter is 10 cm",
+    "confidence": "HIGH",
+    "reasoning": "A cyclic quadrilateral is rigid once its four sides are given in order, so the circumradius is already determined. Concretely, equating AC^2 from triangles ABC and ACD with angle D = 180 - angle B gives 100 - 96 cos B = 100 + 80 cos B, so cos B = 0 and angle B = 90 degrees; then AC = sqrt(36+64) = 10 is a diameter. Brahmagupta's formula independently gives area = sqrt((1+3sqrt5)(3sqrt5-1)(7-sqrt5)(7+sqrt5)) = sqrt(44 x 44) = 44, and the cyclic circumradius formula gives R = 5. Both verified in sympy. So Statement I (area 44) and Statement II (angle ABC = 90) are consequences of the sides, not new information. RULED OUT: option B - either statement 'works' only because it is already implied, which is precisely the case option (d) describes.",
+    "solution": "Four side lengths given in order fix a cyclic quadrilateral completely, so the circle is already determined. Equating \\(AC^2\\) across the two triangles, with \\(\\angle D = 180^\\circ - \\angle B\\), gives \\(100 - 96\\cos B = 100 + 80\\cos B\\), so \\(\\cos B = 0\\) and \\(\\angle ABC = 90^\\circ\\); then \\(AC = \\sqrt{6^2+8^2} = 10\\) cm and, subtending a right angle, it is a diameter. Brahmagupta's formula likewise forces the area to be \\(44\\ \\text{cm}^2\\). Both Statements are consequences of the given sides, so the Question can be answered even without using both the Statements."
+  },
+  {
+    "number": 65,
+    "answer": "B",
+    "value": "Either Statement alone is sufficient; the value is 200 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "P lies on the semicircle with AC as diameter, so angle APC = 90 and AP^2 + CP^2 = AC^2. The required expression is therefore 2 AC^2, which needs the actual length of AC. Statement I: radius 5 gives AC = 10, so the value is 200. Statement II: B is also on the semicircle so angle ABC = 90, and AB = 6, BC = 8 give AC = 10, so again 200. Each alone suffices. RULED OUT: option D - unlike Q61/Q63/Q64 in this run, the Question supplies no length at all, so without a statement only the form 2 AC^2 is available, not a number.",
+    "solution": "Because \\(AC\\) is a diameter, the angle in the semicircle is a right angle at \\(P\\), so \\(AP^2 + CP^2 = AC^2\\) and the whole expression equals \\(2\\,AC^2\\). A length for \\(AC\\) is still needed. A radius of \\(5\\) cm gives \\(AC = 10\\) cm directly, while \\(AB = 6\\) and \\(BC = 8\\) give \\(AC = \\sqrt{36+64} = 10\\) cm since \\(\\angle ABC\\) is also a right angle. Either fact alone gives \\(2(10)^2 = 200\\ \\text{cm}^2\\), so the Question can be answered by using either Statement alone."
+  },
+  {
+    "number": 66,
+    "answer": "A",
+    "value": "343 Q^2 = 216 P^2",
+    "confidence": "HIGH",
+    "reasoning": "Each piece is 0.96 m^2. Hollow cube: 6a^2 = 0.96 gives a = 0.4 and P = 0.064 = 8/125. Hollow cuboid with edges 4x, 2x, x: surface area 2(8x^2 + 2x^2 + 4x^2) = 28x^2 = 0.96, so x^2 = 6/175 and Q = 8x^3. Then Q^2/P^2 = 64(6/175)^3 / (64/15625) = 216/343 exactly, i.e. 343Q^2 = 216P^2. Numerically both sides are 0.884736. Verified in sympy with exact rationals; the other three relations fail (225P^2 = 0.9216, 64P^2 = 0.2621, 25P^2 = 0.1024 against 49Q^2 = 0.1264).",
+    "solution": "Each half-sheet is \\(0.96\\ \\text{m}^2\\). For the cube, \\(6a^2 = 0.96\\) gives \\(a = 0.4\\) and \\(P = a^3 = 0.064\\). For the cuboid with edges \\(4x, 2x, x\\), the surface area is \\(2(8x^2 + 2x^2 + 4x^2) = 28x^2 = 0.96\\), so \\(x^2 = \\frac{6}{175}\\) and \\(Q = 8x^3\\). Then \\(\\frac{Q^2}{P^2} = \\frac{64\\left(\\frac{6}{175}\\right)^3}{\\frac{64}{15625}} = \\frac{216}{343}\\), which is exactly the relation \\(343Q^2 = 216P^2\\)."
+  },
+  {
+    "number": 67,
+    "answer": "A",
+    "value": "AB : BC",
+    "confidence": "HIGH",
+    "reasoning": "Two routes agree. (i) Triangles ABD and CBD share the same altitude from B to the line AC, so their areas are in the ratio AD : DC, which the angle-bisector theorem makes AB : BC. (ii) Directly, area(ABD) = (1/2) AB x BD sin 60 and area(CBD) = (1/2) BC x BD sin 60, so the ratio is AB : BC. Checked numerically with AB = 5, BC = 9, angle B = 120: the computed ratio is 0.5555556, matching AB/BC = 5/9 and not AB^2/BC^2 = 0.3086. The 120 degrees is decorative - the result holds for any vertex angle. RULED OUT: option D, which would need BD to be a median rather than a bisector.",
+    "solution": "The two triangles \\(ABD\\) and \\(CBD\\) share the vertex \\(B\\) and have bases \\(AD\\) and \\(DC\\) on the same line, so their areas are in the ratio \\(AD : DC\\), which the angle-bisector theorem makes \\(AB : BC\\). The same result follows directly: since \\(BD\\) splits \\(\\angle B\\) into two equal parts, the areas are \\(\\tfrac12 \\cdot AB \\cdot BD \\sin 60^\\circ\\) and \\(\\tfrac12 \\cdot BC \\cdot BD \\sin 60^\\circ\\), whose ratio is \\(AB : BC\\). The size of \\(\\angle ABC\\) does not affect the answer."
+  },
+  {
+    "number": 68,
+    "answer": "C",
+    "value": "Both I and II are correct",
+    "confidence": "HIGH",
+    "reasoning": "If two triangles are similar with ratio k, then every pair of corresponding linear elements - sides, medians, altitudes, angle bisectors, inradii, circumradii - is in the ratio k, while the areas are in the ratio k^2. So the area ratio equals the square of the corresponding medians' ratio (I) and the square of the corresponding heights' ratio (II). Both statements are standard theorems and both hold. No qualification in either statement makes it fail.",
+    "solution": "If two triangles are similar with scale factor \\(k\\), then every pair of corresponding linear measurements is in the ratio \\(k\\) - this covers sides, medians, altitudes and bisectors alike - while areas scale as \\(k^2\\). So the ratio of areas equals \\(k^2\\), which is the square of the ratio of corresponding medians and equally the square of the ratio of corresponding heights. Both statements are therefore correct."
+  },
+  {
+    "number": 69,
+    "answer": "C",
+    "value": "Both I and II are correct",
+    "confidence": "HIGH",
+    "reasoning": "Let k be the similarity ratio of ABC to PQR. Areas scale as k^2, so equal areas force k^2 = 1 and hence k = 1 (k is positive). Then all three pairs of corresponding sides are equal, so the triangles are congruent by SSS (statement I) and their perimeters, being k times one another, are equal (statement II). Both hold. The word 'scalene' rules out no case here - congruence permits a mirror image, so an oppositely oriented copy is still congruent. RULED OUT: option B, which would require congruence to fail while perimeters matched; with k = 1 both follow together.",
+    "solution": "Let \\(k\\) be the ratio of similarity. Areas of similar triangles are in the ratio \\(k^2\\), so equal areas give \\(k^2 = 1\\) and therefore \\(k = 1\\). Every pair of corresponding sides is then equal, which makes the triangles congruent by SSS, and their perimeters - also in the ratio \\(k\\) - are equal as well. Both statements are correct. (A triangle that is a mirror image of another is still congruent to it, so being scalene changes nothing.)"
+  },
+  {
+    "number": 70,
+    "answer": "B",
+    "value": "10.24 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "DE parallel to BC makes triangle ADE similar to triangle ABC, so AD/AB = DE/BC = 1/5. With AB = 8, AD = 1.6 and BD = 8 - 1.6 = 6.4. AD x BD = 1.6 x 6.4 = 10.24 cm^2 (exactly 256/25). Verified in sympy. Option A (10) would be the answer only if AD x BD were mistaken for a quarter of AB^2 or similar; the similarity ratio pins it at 1.6 and 6.4.",
+    "solution": "Since \\(DE \\parallel BC\\), triangle \\(ADE\\) is similar to triangle \\(ABC\\), so \\(\\frac{AD}{AB} = \\frac{DE}{BC} = \\frac{1}{5}\\). With \\(AB = 8\\) cm this gives \\(AD = 1.6\\) cm and \\(BD = 8 - 1.6 = 6.4\\) cm. Hence \\(AD \\times BD = 1.6 \\times 6.4 = 10.24\\ \\text{cm}^2\\)."
+  },
+  {
+    "number": 71,
+    "answer": "B",
+    "value": "about 40 m^2",
+    "confidence": "HIGH",
+    "reasoning": "The tent is a cone of height 3 m. Its height at horizontal distance d from the axis is 3(1 - d/R). The man of height 2 m must fit at d = 1, so 3(1 - 1/R) = 2, giving R = 3 m. Slant height l = sqrt(9+9) = 3 sqrt 2, and the canvas is the curved surface pi R l = 9 sqrt 2 pi = 39.986, i.e. about 40 m^2. Verified in sympy. Including a base would give 68.26 m^2, which matches no option, confirming that only the curved surface is meant.",
+    "solution": "The tent is a cone of height \\(3\\) m, and at a horizontal distance \\(d\\) from the centre its height is \\(3\\left(1 - \\frac{d}{R}\\right)\\). For a \\(2\\) m man to stand upright at \\(d = 1\\) m we need \\(3\\left(1 - \\frac{1}{R}\\right) = 2\\), so \\(R = 3\\) m. The slant height is \\(l = \\sqrt{3^2+3^2} = 3\\sqrt{2}\\) m, and the canvas needed is the curved surface \\(\\pi R l = 9\\sqrt{2}\\,\\pi \\approx 39.99\\), that is about \\(40\\ \\text{m}^2\\)."
+  },
+  {
+    "number": 72,
+    "answer": "A",
+    "value": "24 units",
+    "confidence": "HIGH",
+    "reasoning": "Take the square of side a with P(0,a), Q(a,a), R(a,0), S(0,0). PM : MS = 2 : 1 puts M at (0, a/3); SN : NR = 1 : 2 puts N at (a/3, 0). The shoelace area of M, Q, N is 5a^2/18. Cross-check by subtraction with a = 6: area(PQM) = 12, area(QRN) = 12, area(MSN) = 2, and 36 - 26 = 10, agreeing. Setting 5a^2/18 = 10 gives a = 6 and perimeter 24 units. The mirrored labelling of the square gives the same 5a^2/18, so the orientation does not matter. Verified in sympy.",
+    "solution": "Put the square on coordinates with \\(P(0,a)\\), \\(Q(a,a)\\), \\(R(a,0)\\), \\(S(0,0)\\). Then \\(PM : MS = 2 : 1\\) places \\(M\\) at \\(\\left(0, \\frac{a}{3}\\right)\\) and \\(SN : NR = 1 : 2\\) places \\(N\\) at \\(\\left(\\frac{a}{3}, 0\\right)\\). Subtracting the three corner triangles from the square leaves \\([MQN] = a^2 - \\frac{a^2}{3} - \\frac{a^2}{3} - \\frac{a^2}{18} = \\frac{5a^2}{18}\\). Setting \\(\\frac{5a^2}{18} = 10\\) gives \\(a = 6\\), so the perimeter is \\(24\\) units."
+  },
+  {
+    "number": 73,
+    "answer": "B",
+    "value": "\\(100\\sqrt{2}\\) cm^2",
+    "confidence": "HIGH",
+    "reasoning": "The largest planar cross-section of a cube of edge a is the rectangle spanned by two opposite edges: one side is the edge a and the other is the face diagonal a sqrt 2, area a^2 sqrt 2. For a = 10 that is 100 sqrt 2 = 141.42 cm^2. Competing candidates are smaller: a face gives 100, and the regular hexagonal section through the centre gives (3 sqrt 3 / 4) a^2 = 129.90. Computed in sympy. Option D (200) exceeds the true maximum and corresponds to no plane section.",
+    "solution": "A slice through two opposite edges of the cube is a rectangle whose sides are an edge of the cube and a face diagonal, so its area is \\(10 \\times 10\\sqrt{2} = 100\\sqrt{2} \\approx 141.4\\ \\text{cm}^2\\). This beats the other natural candidates: a full face gives \\(100\\ \\text{cm}^2\\) and the regular hexagonal section through the centre gives \\(\\frac{3\\sqrt{3}}{4}(100) \\approx 129.9\\ \\text{cm}^2\\). The maximum cross-section is therefore \\(100\\sqrt{2}\\ \\text{cm}^2\\)."
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "value": "559",
+    "confidence": "HIGH",
+    "reasoning": "AB : AC = 3 : 4 with AB = 21 gives AC = 28. The internal bisector from A divides BC in the ratio of the adjacent sides, BD : DC = AB : AC = 3 : 4, so with DC = 20 we get BD = 15. Then AC^2 - BD^2 = 784 - 225 = 559. The triangle is consistent: sides 21, 28, 35 (a 3-4-5 scaling), and 15 + 20 = 35 checks. Option D (784) is AC^2 alone; option A (441) is AB^2.",
+    "solution": "From \\(AB : AC = 3 : 4\\) and \\(AB = 21\\) cm we get \\(AC = 28\\) cm. The internal bisector of \\(\\angle A\\) divides the opposite side in the ratio of the adjacent sides, so \\(BD : DC = AB : AC = 3 : 4\\); with \\(DC = 20\\) cm this gives \\(BD = 15\\) cm. Hence \\(AC^2 - BD^2 = 28^2 - 15^2 = 784 - 225 = 559\\)."
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "value": "36 cm^2",
+    "confidence": "HIGH",
+    "reasoning": "The largest square inscribed in a triangle sits with one side on a side of the triangle; for an equilateral triangle all three choices are congruent. With side s and height h = s sqrt 3 / 2, the triangle's width at height x is s(1 - x/h), so a square of side x needs x = s(1 - 2x/(s sqrt 3)), giving x = s sqrt 3 / (2 + sqrt 3) = s(2 sqrt 3 - 3). With s = 6 + 4 sqrt 3 this is (6 + 4 sqrt 3)(2 sqrt 3 - 3) = 12 sqrt 3 - 18 + 24 - 12 sqrt 3 = 6, so the area is 36 cm^2. Verified in sympy (side exactly 6). The unusual side length is chosen precisely to make the square's side an integer, which confirms the intended configuration.",
+    "solution": "The largest square inscribed in an equilateral triangle rests on one of its sides. If the triangle has side \\(s\\) and height \\(h = \\frac{s\\sqrt{3}}{2}\\), the triangle is \\(s\\left(1 - \\frac{x}{h}\\right)\\) wide at height \\(x\\), so the square of side \\(x\\) satisfies \\(x = s\\left(1 - \\frac{2x}{s\\sqrt{3}}\\right)\\), giving \\(x = \\frac{s\\sqrt{3}}{2+\\sqrt{3}} = s(2\\sqrt{3}-3)\\). With \\(s = 6+4\\sqrt{3}\\), \\(x = (6+4\\sqrt{3})(2\\sqrt{3}-3) = 6\\) cm, so the area of the square is \\(36\\ \\text{cm}^2\\)."
+  }
+]

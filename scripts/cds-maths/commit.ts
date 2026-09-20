@@ -35,7 +35,16 @@ import {
   type Derivation,
   type TQ,
 } from "./lib";
-import { CREATED_BY, EXAM_ID, ORG_ID, QUESTIONS_PER_PAPER, catalog, dataPath, requirePaper } from "./config";
+import {
+  CREATED_BY,
+  EXAM_ID,
+  ORG_ID,
+  QUESTIONS_PER_PAPER,
+  catalog,
+  dataPath,
+  requirePaper,
+  sourceDuplicateOptionsFor,
+} from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -100,7 +109,7 @@ DROPPED (no printed option is correct, per both derivations): ` +
         [...noCorrectOption].map((n) => `Q${n}`).join(", "),
     );
   }
-  const errs = [...catErrors, ...setErrors, ...validateRows(built, 1, QUESTIONS_PER_PAPER, noCorrectOption)];
+  const errs = [...catErrors, ...setErrors, ...validateRows(built, 1, QUESTIONS_PER_PAPER, noCorrectOption, sourceDuplicateOptionsFor(paper.id))];
   const parsed = [];
   for (const r of built) {
     const v = validateRow(r);

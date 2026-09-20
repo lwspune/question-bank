@@ -51,6 +51,30 @@ function loadEnv() {
 export const DERIVED_MODEL = "claude-opus-5 (two independent blind passes)";
 
 /**
+ * Per-paper overrides, for sittings not produced by the dual-blind method.
+ *
+ * WHY THIS IS NOT ONE CONSTANT ANY MORE. `DERIVED_MODEL` is a factual claim about
+ * how a row's answer was reached, stamped onto every row and queryable. It said
+ * "two independent blind passes" unconditionally, which was true for 20 of the 21
+ * sittings and became FALSE the moment one was produced differently — and false
+ * in the worst place, since this column is the thing a reader consults to decide
+ * how much the answer is worth.
+ *
+ * 2026-2 is that sitting. It is the first paper in this corpus with a PUBLISHED
+ * UPSC key, so it was derived by ONE blind pass and then cross-checked against
+ * that key rather than against a second pass. Claiming two passes would overstate
+ * the method; claiming a bare key would hide that a blind derivation corroborated
+ * it. The string says exactly what happened.
+ */
+export const DERIVED_MODEL_BY_PAPER: Record<string, string> = {
+  "2026-2":
+    "claude-opus-5 (single blind pass, cross-checked against the official UPSC provisional key, Series A)",
+};
+
+export const derivedModelFor = (paperId: string): string =>
+  DERIVED_MODEL_BY_PAPER[paperId] ?? DERIVED_MODEL;
+
+/**
  * NOTHING is appended to pyq_note any more.
  *
  * That line is the SOURCE line on the /browse card, and across the rest of this
@@ -108,6 +132,7 @@ async function main() {
   if (error) throw new Error(`read failed: ${error.message}`);
   if (!rows?.length) throw new Error(`no rows for ${paper.sourceFile} — commit the paper first`);
 
+  const model = derivedModelFor(paper.id);
   const needStamp = rows.filter((r) => !r.derived_model);
   // Compare against the EXACT note this run would write, not "does it contain
   // the clause". The current clause is a PREFIX of the legacy one, so an
@@ -120,7 +145,7 @@ async function main() {
   console.log(`${paper.id}: ${rows.length} row(s)`);
   console.log(`  need derived_model : ${needStamp.length}`);
   console.log(`  need note clause   : ${needNote.length}`);
-  console.log(`  model              : ${DERIVED_MODEL}`);
+  console.log(`  model              : ${model}`);
 
   if (!needStamp.length && !needNote.length) {
     console.log("\nalready stamped — nothing to do.");
@@ -136,7 +161,7 @@ async function main() {
   for (const r of rows) {
     const patch: Record<string, unknown> = {};
     if (!r.derived_model) {
-      patch.derived_model = DERIVED_MODEL;
+      patch.derived_model = model;
       patch.derived_at = now;
     }
     // One helper for both the guard and the patch, so they cannot disagree.

@@ -243,6 +243,48 @@ describe("validateRows", () => {
     expect(errs.some((e) => /duplicate option text at B and C/.test(e))).toBe(true);
   });
 
+  // A duplicate can be the BOOKLET'S rather than ours. UPSC printed 2026-II Q47
+  // with options (a) and (c) both reading a bare "2", verified twice against the
+  // source. Such a row is still publishable -- but ONLY because the answer stays
+  // unambiguous as a letter, and that is the property these tests pin.
+  describe("source-printed duplicate options", () => {
+    it("still reports a duplicate when the question is NOT declared", () => {
+      const errs = validateRows([row({ optionC: "4" })], 1, 1);
+      expect(errs.some((e) => /duplicate option text at B and C/.test(e))).toBe(true);
+    });
+
+    it("allows a declared duplicate when the correct option is not one of them", () => {
+      // A and C both "2"; the answer is B, which is untouched by the duplication.
+      const errs = validateRows(
+        [row({ optionA: "2", optionB: "3/2", optionC: "2", optionD: "1/2", answer: "B" })],
+        1,
+        1,
+        new Set(),
+        new Set([1])
+      );
+      expect(errs).toEqual([]);
+    });
+
+    it("REFUSES a declared duplicate when the correct option IS one of them", () => {
+      // The allowlist must not be able to wave through an unanswerable question:
+      // if the key is A and C says the same thing, a student choosing C is marked
+      // wrong for an identical answer.
+      const errs = validateRows(
+        [row({ optionA: "2", optionB: "3/2", optionC: "2", optionD: "1/2", answer: "A" })],
+        1,
+        1,
+        new Set(),
+        new Set([1])
+      );
+      expect(errs.some((e) => /correct option is one of the duplicates/.test(e))).toBe(true);
+    });
+
+    it("does not let a declaration leak to a DIFFERENT question", () => {
+      const errs = validateRows([row({ questionNumber: "2", optionC: "4" })], 2, 2, new Set(), new Set([1]));
+      expect(errs.some((e) => /duplicate option text/.test(e))).toBe(true);
+    });
+  });
+
   it("checks LaTeX balance in the CONTEXT field, not just the stem", () => {
     const errs = validateRows([row({ context: "Given \\(x^2 for the next two items." })], 1, 1);
     expect(errs.some((e) => /context: unbalanced/.test(e))).toBe(true);
