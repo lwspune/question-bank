@@ -485,14 +485,26 @@ export type ChapterNote = {
   chapterName: string;
   title: string;
   /**
-   * The chapter-page hero opener. Long by design (mean 171 words across the
-   * shipped chapters) — it is read by someone who has already chosen this
-   * chapter, and it may safely say "below" about the notes beneath it.
+   * The chapter-page hero opener. It is read by someone who has already chosen
+   * this chapter, so it may safely say "below" about the notes beneath it.
    *
    * It is NOT what the subject-landing card, the <meta description> or the
    * JSON-LD description render: those go through `chapterCardBlurb`, which
    * takes `cardBlurb` if set and otherwise the first sentence of this. So a
    * deictic reference here is fine; in `cardBlurb` it would be false.
+   *
+   * DO NOT ENUMERATE THE SUBTOPICS HERE. The landing renders `subtopicOrder`
+   * immediately below this as one card per subtopic, each with its
+   * `oneLineDefinition` and a LIVE PYQ count — so a "(1) … (2) …" list in the
+   * intro is the same information twice in one scroll, and the prose copy is
+   * the one that goes stale. Write only what the cards cannot: density,
+   * the kind of work the chapter demands, whether order matters, where the
+   * difficulty sits. 54 of the 85 shipped chapters still carry an enumeration
+   * (backfill logged in ROADMAP.md); new chapters should not add one.
+   *
+   * Counts stated here are gated against the live bank by
+   * tests/notes-intro-counts.test.ts. `npm run notes:intro` reports stale
+   * counts, enumerations and over-long intros as triage.
    */
   intro: string;
   /**

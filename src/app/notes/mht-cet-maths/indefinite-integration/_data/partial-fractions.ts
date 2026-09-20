@@ -6,7 +6,7 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Break a rational integrand into simple standard pieces — arctan/log quadratic forms, completed squares, and partial fractions.",
   whyItMatters:
-    "16 PYQs. Four recognitions cover them: the standard quadratic forms (arctan, log, arcsin); completing the square to reach an arctan/arcsin/log; the numerator-split (px+q over a quadratic or its root); and partial-fraction decomposition for products of linear/quadratic factors. " +
+    "27 PYQs. Four recognitions cover them: the standard quadratic forms (arctan, log, arcsin); completing the square to reach an arctan/arcsin/log; the numerator-split (px+q over a quadratic or its root); and partial-fraction decomposition for products of linear/quadratic factors. " +
     "MHT-CET also hides quadratic-in-x² shapes (like 1/(x⁴+9x²+16)) that reduce to an arctan after a clever x + k/x substitution.",
   concepts: [
     // 1 — standard quadratic forms

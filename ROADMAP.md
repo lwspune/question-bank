@@ -6,6 +6,36 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Backfill ledger — /notes intro duplication + ungated prose counts (2026-09-20)
+
+**Found while fixing the MHT-CET Indefinite Integration hero.** Logged, NOT swept — rewriting
+shipped editorial copy is a per-chapter decision, and the two classes below have different
+risk profiles. `npm run notes:intro` reproduces both lists at any time.
+
+**Class A — 54 intros enumerate their own subtopics** (53 of them one item per card). The
+chapter landing already renders those subtopics as cards, with one-line definitions and LIVE
+counts, so the prose list is the same information twice and is the copy that rots. Cutting it
+is what took Indefinite Integration from 218 words to 94. **Blast radius:** `intro` also feeds
+the print handout cover and, via `chapterCardBlurb`'s first-sentence fallback, the subject-card
+and `<meta description>` of any chapter without an authored `cardBlurb` — so a rewrite must keep
+the FIRST SENTENCE inside the 8–40 word band that `tests/notes-card-blurb.test.ts` enforces.
+**Does it really apply:** not everywhere. An enumeration earns its place where it says something
+the cards cannot — Mathematical Logic's intro names where the difficulty actually sits
+(Switching Circuits 12 q at 67% HARD vs Negation 14 q at 14%), which no card carries. Read each
+one; do not regex them out. **Cost:** ~10 min per chapter. **Recommendation:** partial — do it
+opportunistically when a chapter is open for another reason, newest-authored first.
+
+**Class B — 56 stale count claims in subtopic `whyItMatters` / `oneLineDefinition`.** Same
+defect class as the intro counts now gated by `tests/notes-intro-counts.test.ts`, but this prose
+is NOT gated: 130 such claims exist across the corpus and 56 match no live chapter count, no
+subtopic count and no two-subtopic sum. **Blast radius:** body text only — no metadata, no
+cards, no JSON-LD. **Cost:** mechanical, but every number needs its own live query (the claims
+are per-subtopic and some are pair sums). **Recommendation:** do it per chapter as part of the
+post-upload ritual's step 5, then flip the `whyItMatters` rule from the probe into the gate.
+The gate flip is the real prize — until then this class can re-stale silently after any ingest.
+
+---
+
 ## Backfill ledger — subtopic ORDER drift between /guide and /notes (8 MHT-CET Maths chapters)
 
 **Found 2026-09-20** while fixing the Mathematical Logic teaching arc. Logged, NOT fixed —
