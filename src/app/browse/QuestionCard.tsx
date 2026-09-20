@@ -105,7 +105,7 @@ export default function QuestionCard({
   // nudge. A question already revealed is free to re-open (no double-charge).
   // Projection view-model for the classroom overlay.
   const presentable = useMemo(() => fromQuestionRow(question), [question]);
-  const meter = useRevealMeter("bank");
+  const meter = useRevealMeter("bank", question.exam.name);
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
   function tryReveal(): boolean {
@@ -377,7 +377,7 @@ export default function QuestionCard({
               </p>
             )}
 
-            {revealBlocked && !revealed && <RevealSignInPrompt />}
+            {revealBlocked && !revealed && <RevealSignInPrompt surface="bank" />}
 
             {isSubjective && !question.solution && (
               <p className="pt-2 text-xs italic text-muted-foreground">

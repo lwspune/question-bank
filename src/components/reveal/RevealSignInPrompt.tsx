@@ -3,13 +3,19 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Lock, LogIn } from "lucide-react";
+import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 
 /**
  * Shown in place of an answer once an anon viewer has spent their free reveals
  * (the /browse + /board meter). Free sign-in unlocks unlimited reveals; `next`
  * returns them to the exact page they were on.
+ *
+ * `surface` is required so the click can be paired with the `reveal_wall_hit`
+ * it answers. A conversion count without the count of people who were asked is
+ * a number with no scale, and the two must agree on which product they mean.
  */
-export default function RevealSignInPrompt() {
+export default function RevealSignInPrompt({ surface }: { surface: PracticeSurface }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const returnUrl = searchParams?.toString()
@@ -26,6 +32,7 @@ export default function RevealSignInPrompt() {
       </span>
       <Link
         href={`/login?next=${next}`}
+        onClick={() => trackFunnelOnce("reveal_wall_signin_click", surface, { surface })}
         className="ml-auto inline-flex items-center gap-1 font-medium text-brand-accent hover:underline"
       >
         <LogIn className="h-3.5 w-3.5" aria-hidden />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Download,
@@ -28,6 +28,7 @@ import type { Filters } from "@/lib/questions/filters";
 import { useCart } from "@/lib/cart/CartProvider";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
+import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -78,6 +79,16 @@ export default function DownloadDialog({
   const cart = useCart();
   const mobilePrompt = useMobilePrompt();
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
+
+  // The teacher gate was seen. This is the denominator /request-access has never
+  // had: superadmin triage counts the people who asked, and nothing counted the
+  // people who were asked. `mode` splits the two populations that matter — a
+  // visitor who assembled a CART and then met the wall wanted a paper; one who
+  // opened it from FILTERS may only have been looking.
+  useEffect(() => {
+    if (!open || canDownload) return;
+    trackFunnelOnce("teacher_gate_shown", mode, { signedIn: isSignedIn, mode });
+  }, [open, canDownload, mode, isSignedIn]);
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
@@ -306,7 +317,12 @@ export default function DownloadDialog({
           </Button>
           {!canDownload ? (
             <Button asChild variant="brand" className="w-full sm:w-auto">
-              <Link href="/request-access">
+              <Link
+                href="/request-access"
+                onClick={() =>
+                  trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
+                }
+              >
                 <GraduationCap className="h-4 w-4" aria-hidden />
                 Request teacher access
               </Link>

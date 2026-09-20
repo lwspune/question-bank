@@ -108,6 +108,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           pyqSittings={data.pyqSittings}
           supabaseUrl={supabaseUrl}
           chapterName={chapter.chapterName}
+          examName={data.examName}
         />
       </main>
       <Footer />

@@ -8,9 +8,31 @@ Day-to-day knobs and where to look when something goes sideways.
 ### Monitoring
 
 - **Vercel function logs:** dashboard → Project → Logs. The `/api/export`, `/api/sync/mock`, and `/api/upload/*` route handlers all `console.error` on the catch path; surface there.
-- **Vercel Analytics:** dashboard → Project → Analytics. Pageviews + visitor counts. Free tier, cookieless. Frontend errors don't surface here yet — if/when noise picks up, consider Sentry.
+- **Vercel Analytics:** dashboard → Project → Analytics. Pageviews + visitor counts, cookieless, plus the six anon **funnel events** below in the **Events** panel. Frontend errors don't surface here yet — if/when noise picks up, consider Sentry.
 - **Supabase logs:** dashboard → Logs → API/Postgres. Useful when an export 500s and you want to see the underlying SQL error.
 - **Supabase advisor:** run `mcp__supabase__get_advisors` periodically (or after a migration). Two acceptable lints today: `rls_enabled_no_policy` on `public.rate_limits` (intentional, service-role-only access) and `auth_leaked_password_protection` (Supabase auth setting, can be enabled in dashboard).
+
+### Anon funnel events (Vercel Web Analytics, 2026-09-20)
+
+Six custom events measure the three moments a stranger is ASKED for something. They exist because every conversion number the product had was a **numerator with no denominator**: `/request-access` triage counts who asked, `quiz_leads` counts who filled the form, and nothing counted who was asked and walked away.
+
+| Event | Properties | Denominator for |
+|---|---|---|
+| `reveal_wall_hit` / `reveal_wall_signin_click` | `surface`, `exam` | sign-ups from the 3-reveal wall |
+| `teacher_gate_shown` / `teacher_gate_cta_click` | `signedIn`, `mode` | `/request-access` submissions |
+| `quiz_gate_shown` / `quiz_gate_submitted` | `quizSlug`, `mode` | `quiz_leads` rows |
+
+**Read every count as a FLOOR, never a census.** These are client-side pings, so ad blockers, JS-off and bots all suppress them. `quiz_gate_shown` minus `quiz_leads` rows is *a floor on* abandonment, not the abandonment rate — never subtract a Vercel count from a Postgres count and call the difference real.
+
+**This is the anon half only.** `user_activity` records LEARNING by a known student; these record FUNNEL by nobody in particular. The two never overlap, so nothing is double-counted — and no personal data is ever sent (the validator in `src/lib/analytics/funnelEvents.ts` refuses email- and mobile-shaped values, which matters because `quiz_gate_submitted` fires on the one form that collects both).
+
+**Turning it off — two layers:**
+1. **Granular, needs a redeploy.** Set `NEXT_PUBLIC_FUNNEL_ANALYTICS=off` (or `0`/`false`/`no`) in Vercel → Settings → Environment Variables, then redeploy. Kills the six events, keeps pageviews. **Unset means ON** — a missing variable must not silently kill the feature.
+2. **Total, instant.** Vercel → Project → Analytics → disable. Kills pageviews too.
+
+**Cost:** $0.03 per 1,000 events against the $20 Pro credit — ~$0.30 for 10,000 gate-and-wall events a month. Note Pro includes **zero** free events (Hobby gave 50,000), so this meter bills from the first unit.
+
+**Adding an event:** append to `FUNNEL_EVENTS` *and* wire a real emitter — `tests/analytics-funnel-emitters.test.ts` asserts both directions and fails on either half alone.
 
 ### Database backups
 
