@@ -8,7 +8,7 @@ export const FOUNDATIONS_NOTE: SubtopicNote = {
   whyItMatters:
     "Before any technique, you need three reflexes: recognise that an indefinite integral is a FAMILY of functions (the +C), recall the standard-formula table cold, " +
     "and pre-process the integrand with algebra (factor, divide, split) before reaching for a method. " +
-    "5 PYQs sit directly here — boundary-value problems where a constant must be solved for, and 'reconstruct the function then integrate' shapes — but these reflexes underpin all 121 questions in the chapter.",
+    "8 PYQs sit directly here — boundary-value problems where a constant must be solved for, and 'reconstruct the function then integrate' shapes — but these reflexes underpin all 159 questions in the chapter.",
   concepts: [
     // 1 — antiderivative + C (foundation, SVG)
     {

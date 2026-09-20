@@ -3,17 +3,19 @@ import type { ChapterNote } from "@/app/notes/_types";
 export const INDEFINITE_INTEGRATION_CHAPTER: ChapterNote = {
   chapterName: "Indefinite Integration",
   title: "Indefinite Integration — MHT-CET Maths",
+  // Deliberately does NOT enumerate the six subtopics. They render as cards
+  // directly below this hero, each with its own one-line definition and a LIVE
+  // PYQ count — so a prose list of them is the same information twice, and the
+  // prose copy is the one that goes stale (this intro read "121 PYQs" from
+  // 2026-06-30 to 2026-09-20 while the card beneath it printed 159). Keep here
+  // only what the cards cannot say: how dense the chapter is, what kind of work
+  // it demands, and that the order matters. See NOTES_WORKFLOW.md step 1.
   intro:
-    "Indefinite Integration is one of the densest MHT-CET Maths chapters — 121 PYQs across 2021–2025, " +
-    "and the HARDEST by difficulty mix (about 60% are HARD). It is pure technique: there is no theory to " +
-    "memorise, only a toolbox of methods and the judgement to pick the right one. The chapter teaches in " +
-    "six movements, each one resting on the tools laid down before it: " +
-    "(1) Foundations — what an antiderivative is, the +C, the standard-formula table, the linear-argument (1/a) rule, and the algebra you do BEFORE integrating; " +
-    "(2) Substitution — the single highest-yield method (44 PYQs), built on the f'(x)/f(x) → log pattern and the reciprocal / take-out-the-power substitutions that dominate the hard end; " +
-    "(3) Trigonometric Integrals I — the standard tan/cot/sec/cosec results, power-reduction, identity simplification, and reducing an inverse-trig argument to a linear function of x; " +
-    "(4) Rational Functions and Partial Fractions — standard quadratic forms, completing the square, the numerator split, and decomposition (the arctan/arcsin/log machinery the next movement leans on); " +
-    "(5) Trigonometric Integrals II — the chapter's hard core: the half-angle (Weierstrass) substitution, the product-of-sines split, the trig-to-partial-fraction bridge, the divide-by-cos-squared move, and the fractional-power tan trick; " +
-    "(6) Integration by Parts — LIATE, the cyclic integrals, and the recurring eˣ[f(x)+f'(x)] family. " +
+    "Indefinite Integration is one of the densest MHT-CET Maths chapters — 159 PYQs across 2021–2025, " +
+    "and among its hardest, with about half of them rated HARD. It is pure technique: there is no theory " +
+    "to memorise, only a toolbox of methods and the judgement to pick the right one. " +
+    "Work the six subtopics below in order — each one rests on the tools laid down before it, and the two " +
+    "trigonometric blocks lean on the partial-fraction machinery that precedes them. " +
     "Every PYQ is tagged — learn the pattern, drill the bank, recover the marks.",
   subtopicOrder: [
     "fundamentals",
