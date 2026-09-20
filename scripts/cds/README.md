@@ -1,13 +1,18 @@
 # CDS English ingestion
 
-Scanned CDS English booklets (image PDFs, **no text layer**, **no answer key**) → the bank,
-`question_kind='pyq'`. Answers are **LLM-derived** + confidence-flagged. New exam **CDS** reuses
-the NDA-English taxonomy.
+Scanned CDS English booklets (image PDFs, **no text layer**) → the bank, `question_kind='pyq'`.
+For 19 of the 20 papers there is **no answer key**, so answers are **LLM-derived** +
+confidence-flagged. New exam **CDS** reuses the NDA-English taxonomy.
 
-**Status: all 2,280 rows are PUBLIC and back 19 timed mocks (2026-08-25).** `commit.ts` still
+**Status: all 2,400 rows are PUBLIC and back 20 timed mocks (2026-09-20).** `commit.ts` still
 writes PRIVATE — publishing is a separate, deliberate step (`flip-public.ts`). The blind
-re-derivation of the LLM-derived keys is still outstanding; see the section at the bottom, and
-read the defect-class note there before editing any transcription.
+re-derivation of the LLM-derived keys is still outstanding for the 19 unkeyed papers; see the
+section at the bottom, and read the defect-class note there before editing any transcription.
+
+**`2026-2` is the exception and the only measurement this corpus has.** UPSC published a
+provisional key for it, so its answers were derived blind and then scored against ground truth:
+**119/120**, single miss adjudicated, final answers key-backed. See "The official key" below.
+Everything said about LLM-derived answers applies to the other 19 papers, NOT to this one.
 
 Each paper is ~120 Q in ~13 **sections**, each opening with a `Directions:` block. **Section
 order/selection varies by year** — so every paper gets a section-map pre-pass, and transcription
@@ -24,6 +29,10 @@ npx tsx scripts/cds/render.ts  <paperId>            # 1. rasterise pages -> out/
 npx tsx scripts/cds/commit.ts  <paperId>            # 5. dry-run: build + validate (no write)
 npx tsx scripts/cds/preview.ts <paperId>            # 6. review HTML (out/<id>.preview.html)
 npx tsx scripts/cds/commit.ts  <paperId> --apply    # 7. commit PRIVATE
+# 7b. ONLY where an official key exists (2026-2 onward). Runs AFTER 3-6 are
+#     committed to git — that ordering is what makes the derivation blind.
+npx tsx scripts/cds/score.ts   <paperId>            #     blind derivation vs the official key
+npx tsx scripts/cds/record-key-reviews.ts <paperId> --apply   # 7c. record the verdicts
 ```
 
 Paper registry + the **section-type catalog** (the durable CDS knowledge: each section type →
@@ -71,8 +80,59 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
   garbled on 2024-2; Q31-40 illegible-with-crops on 2022-2, recovered cleanly full-width). When the
   section-map flags a `sentence-part-rearrangement` section, render its pages full-width and give it its own pass.
 
+## The official key (`2026-2` only)
+
+UPSC published a provisional key two days after the CDS (II) 2026 sitting. That makes `2026-2`
+the first CDS English paper whose derivation can be checked against something outside itself,
+and the method changed to suit.
+
+**Why derive at all when the key exists and, for English, outranks our judgement anyway.** The
+derivation is not there to audit the key. It is the only available detector for the defect class
+documented at the bottom of this file — the transcriber copying the CORRECT option's text into
+the WRONG letter's slot and keying that letter. A blind re-derivation provably cannot catch that
+alone. An official key can, because **its letter is defined against the booklet's PRINTED option
+order**. So a disagreement is evidence about the TRANSCRIPTION first, the derivation second, and
+the key last.
+
+**Ordering is the blindness guarantee.** `score.ts` is the only thing that opens
+`Paper.answerKey`; it is not run until the derivation is written and committed. A single agent
+cannot be two parties, so this is weaker than the dual-reader setup in `scripts/cds-maths/`, and
+that caveat is recorded in `data/2026-2.blindscore.json` rather than left to be forgotten.
+
+**The series is load-bearing.** The key PDF is 4 pages, one per series (A/B/C/D), and UPSC
+shuffles question order between them. The wrong page yields a well-formed, entirely plausible
+key that is mostly wrong and reads as a collapsed derivation. `Paper.series` is read off the
+booklet's own cover and `score.ts` refuses to score if the key reads name a different one.
+
+```sh
+npx tsx scripts/cds/score.ts 2026-2                 # blind derivation vs the official key
+npx tsx scripts/cds/score.ts 2026-2 --inject=7=A    # canary: forces a disagreement, must go red
+```
+
+Pure core `keyLib.ts` (`reconcileKeyReads` / `scoreAgainstKey`), spec `tests/cds-key.test.ts`.
+Both refuse rather than guess: a single read, a short read, a stray question number, a letter
+outside A–D, or two reads naming different series all fail closed, because each would otherwise
+manufacture a well-formed key that is quietly wrong — and a wrong key is worse than no key,
+since it gets used to "correct" answers that were right.
+
+**Result: 119/120.** All 15 MED rows agreed with the key; the single miss was a HIGH, so
+confidence was not a useful triage signal here. The miss (Q96) was **our derivation**, not a
+mis-slot — option order was re-checked against the page first. The section keys "contrasts with"
+only where two *different* subjects are set side by side and "qualifies" where the *same*
+subject gets a tempering detail; Q96 is the same team across two times. The measurement is
+pinned in `data/2026-2.blindscore.json` with the frozen derivation commit, because adjudicating
+a disagreement edits the questions file and a later `score.ts` run therefore reports 120/120 and
+says nothing about how the blind pass did.
+
 ## Status
 
+- `2026-2` — committed + **PUBLIC** (120), backs the 20th mock. The FIRST paper here with a
+  published UPSC key; blind pass 119/120 against it, Q96 adjudicated to the key, so every answer
+  is key-backed. 13 sections, all already in `SECTION_CATALOG` — no new section type. Clean
+  ~300 DPI scan, legible at the standard 2.2x. 105 HIGH / 15 MED / 0 LOW, against 30–60 MED on
+  earlier papers. Note `commit.ts` inserted these as PUBLIC (migration 0022 default) and then
+  refused to set the paper PRIVATE, which is the `--allow-unpublish` guard doing its job on a
+  paper that was going public anyway.
 - `2026-1` — committed PRIVATE (120). The trial that produced this pipeline; **back-ported to the standard `data/2026-1.*` shape 2026-06-16** (re-`commit`s as a 0-insert no-op — `inserted=0 skipped=120`), so all 19 papers are now reproducible identically via `commit.ts`. The legacy `final.json` + `commit-trial.ts` were removed.
 - `2025-1` — committed PRIVATE (120). Validated the generalized pipeline (15 sections, 2 new
   section types `word-usage-count`/`word-usage-select`, cloze + dual match-lists; 0 collisions).
@@ -100,11 +160,11 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - `2017-1` — committed PRIVATE (120). 11 sections, old dense format (20-q grid Q1–20, 26-q spotting-errors with 4-part Q21–27, 22-q sentence-improvement, 6 RC passages). **Lowest-confidence paper — 60 MED** (the packed grid + rearrangements with blank-S fragments); prioritise for source review before PUBLIC.
 - `2017-2` — committed PRIVATE (120). 12 sections (20-q paragraph-rearrange, 20-q part-rearrange grid, 5 RC passages, 25-q spotting-errors, Word-Substitution synonyms). 50 MED.
 
-**INGESTION COMPLETE (2026-06-16):** all **19 CDS English papers** (2017-I … 2026-I) committed PRIVATE — **2280 questions**, every one with Directions-in-context + 4 options + exactly 1 correct; 253 sets.
+**INGESTION COMPLETE (2026-06-16):** all **19 CDS English papers** (2017-I … 2026-I) committed PRIVATE — **2280 questions**, every one with Directions-in-context + 4 options + exactly 1 correct; 253 sets. **Extended to 20 papers / 2,400 q on 2026-09-20** with `2026-2`, the first sitting carrying a published UPSC key (see "The official key" above).
 
-## PUBLIC + 19 mock tests (2026-08-25)
+## PUBLIC + 20 mock tests (2026-09-20)
 
-The whole corpus is **PUBLIC** (`flip-public.ts`) and backs **19 timed mocks** at `/mock` — 120 q / 100 marks / 2 h, penalty 1/3 (`cds-<year>-<i|ii>-english`). The blind re-derivation of the LLM-derived keys was **deliberately deferred** by product decision; see the SUGGESTIONS.md backfill ledger.
+The whole corpus is **PUBLIC** (`flip-public.ts`) and backs **20 timed mocks** at `/mock` — 120 q / 100 marks / 2 h, penalty 1/3 (`cds-<year>-<i|ii>-english`). Sittings are DERIVED from `config.ts` PAPERS, so registering a paper there is what makes its mock buildable — `2026-2` needed no edit to `scripts/mocks/`. The blind re-derivation of the LLM-derived keys was **deliberately deferred** by product decision for the 19 unkeyed papers; see the SUGGESTIONS.md backfill ledger. From 2026-II onward no future sitting needs to be unkeyed, since UPSC now publishes a key within days.
 
 ### The defect class this surfaced — read before touching any CDS transcription
 
@@ -131,6 +191,8 @@ Three consequences, each learned the expensive way:
 | `verify-mocks.ts` | asserts each mock's 120 refs resolve to live PUBLIC gradeable rows (a PRIVATE ref renders BLANK with no error and grades every answer wrong) |
 | `matchlist-verify.ts` | re-asserts all 40 match-list code tables; proven to go red on an injected wrong code and an injected wrong key |
 | `audit-keys.ts` | CDS-scoped structural probe (`npm run audit:keys` is hard-filtered to `question_kind='practice'`) |
+| `keyLib.ts` + `score.ts` | reconcile an OFFICIAL key read off a scan, and score a blind derivation against it. Every branch fails closed; `--inject` is a canary that must turn a green run red |
+| `record-key-reviews.ts` | write the key cross-check into `question_reviews` (migration 0074) as `method='source_key_crosscheck'`. CDS English already had review rows (marker cleanup, the 2026-08-23 blind run, the 08-30 review) — what is new is that **these are the first CDS verdicts grounded in an OFFICIAL key rather than in our own derivation**, which matters precisely because that blind run's 169 `confirmed` rows are the ones this file warns are unreliable. Idempotent; a question with no live row throws rather than shortening the batch |
 
 **Order matters when repairing a live paper:** `commit.ts <paper> --apply --allow-unpublish` → `resync.ts <paper> --apply` → `flip-public.ts <paper> --apply`. `commit.ts` sets the WHOLE paper PRIVATE, not just new rows, so it now refuses to silently un-publish a live paper without that flag.
 

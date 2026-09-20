@@ -58,8 +58,19 @@ async function main() {
   console.log(`\n${paper.id}: ${sections.length} sections, ${questions.length} questions`);
   for (const [k, n] of bySec) console.log(`  ${k.padEnd(34)} ${n}`);
   const med = questions.filter((q) => q.confidence.toUpperCase() !== "HIGH").map((q) => q.number);
-  console.log(`\nLLM-derived answers needing review (confidence != HIGH): ${med.length}`);
-  if (med.length) console.log("  " + med.join(", "));
+  // The confidence flag exists because 19 of these papers have NO published key,
+  // so a low-confidence row is the only handle on which answers to re-check. For
+  // a paper that HAS an official key the flag is spent: every answer has been
+  // compared against ground truth, which is strictly stronger than a spot-check.
+  // Printing "needing review" there would leave a future session a to-do that was
+  // already done — see data/<id>.blindscore.json for what the check found.
+  if (paper.answerKey) {
+    console.log(`\nAnswers verified against the OFFICIAL key (${paper.answerKey.split(/[\\/]/).pop()}), series ${paper.series}.`);
+    console.log(`  ${med.length} row(s) carry confidence != HIGH, but that flag is a pre-key triage signal and does NOT mean unreviewed: ${med.join(", ")}`);
+  } else {
+    console.log(`\nLLM-derived answers needing review (confidence != HIGH): ${med.length}`);
+    if (med.length) console.log("  " + med.join(", "));
+  }
   if (flags.length) { console.log(`\nbuild flags (${flags.length}):`); for (const f of flags) console.log(`  Q${f.number}: ${f.reason}`); }
   if (errs.length) { console.log(`\nVALIDATION ERRORS (${errs.length}):`); for (const e of errs) console.log("  " + e); }
   console.log(`\n${parsed.length}/${questions.length} rows valid.`);

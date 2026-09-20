@@ -82,24 +82,30 @@ describe("deriveCdsSittings", () => {
 });
 
 describe("deriveCdsSittings against the real scripts/cds/config.ts", () => {
+  // The literal 20 beside the derived length is not redundant: the derived one
+  // only says "we produced a sitting per PAPERS entry" and would stay green if a
+  // paper were accidentally dropped from PAPERS. The literal is the corpus-size
+  // tripwire, so ADDING a paper is meant to fail here and be bumped deliberately
+  // — it went 19 -> 20 when CDS (II) 2026 landed on 2026-09-20.
   it("derives one sitting per configured paper, all parsing cleanly", () => {
     const sittings: CdsSitting[] = deriveCdsSittings();
     expect(sittings).toHaveLength(Object.keys(PAPERS).length);
-    expect(sittings).toHaveLength(19);
+    expect(sittings).toHaveLength(20);
   });
 
-  it("emits 19 distinct slugs and 19 distinct source files", () => {
+  it("emits 20 distinct slugs and 20 distinct source files", () => {
     const all = deriveCdsSittings();
-    expect(new Set(all.map((s) => s.slug)).size).toBe(19);
-    expect(new Set(all.map((s) => s.sourceFile)).size).toBe(19);
+    expect(new Set(all.map((s) => s.slug)).size).toBe(20);
+    expect(new Set(all.map((s) => s.sourceFile)).size).toBe(20);
   });
 
-  it("covers both editions of every year that has two, and 2026 (I only)", () => {
+  it("covers both editions of every year", () => {
     const all = deriveCdsSittings();
     const byYear = new Map<number, string[]>();
     for (const s of all) byYear.set(s.year, [...(byYear.get(s.year) ?? []), s.edition]);
-    expect(byYear.get(2026)).toEqual(["I"]);
-    for (const y of [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]) {
+    // 2026 was I-only until CDS (II) 2026 English was ingested; every year in the
+    // corpus now has both sittings.
+    for (const y of [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]) {
       expect(byYear.get(y)).toEqual(["I", "II"]);
     }
   });
