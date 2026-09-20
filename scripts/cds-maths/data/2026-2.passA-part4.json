@@ -1,0 +1,202 @@
+[
+  {
+    "number": 76,
+    "answer": "B",
+    "value": "864 \\(\\text{m}^3\\)",
+    "confidence": "HIGH",
+    "reasoning": "Longest pole in the room = space diagonal, so L^2+B^2+H^2 = 17^2 = 289. Longest pole on the floor = floor diagonal, so L^2+B^2 = 15^2 = 225. Subtracting gives H^2 = 64, H = 8. Exhaustive integer search over L>B>H with L^2+B^2=225 returns exactly one triple, (L,B,H) = (12,9,8), since 225 = 12^2+9^2 is its only representation as a sum of two positive squares. Volume = 12*9*8 = 864. Data is sufficient, so the 'cannot be determined' option is wrong. Verified by brute-force enumeration in Python.",
+    "solution": "The longest pole that fits in the room lies along the space diagonal and the longest pole on the floor lies along the floor diagonal, so \\(L^2+B^2+H^2=17^2=289\\) and \\(L^2+B^2=15^2=225\\). Subtracting gives \\(H^2=64\\), so \\(H=8\\), and the only way to write \\(225\\) as a sum of two positive squares is \\(12^2+9^2\\), which fits \\(L>B>H\\) with \\(L=12\\) and \\(B=9\\). The volume is therefore \\(12\\times 9\\times 8=864\\ \\text{m}^3\\)."
+  },
+  {
+    "number": 77,
+    "answer": "C",
+    "value": "1000",
+    "confidence": "HIGH",
+    "reasoning": "Melting conserves volume: (4/3)piR^3 = n(4/3)pi r^3, so r = R/n^(1/3). A 900% increase means the total surface area of the n small balls is 10 times the original: n*4pi r^2 = 10*4pi R^2, i.e. n*r^2 = 10R^2. Substituting r gives n^(1/3) = 10, n = 1000. Checked numerically: n=1000 gives n*r^2/R^2 = 10.0 exactly; n=729 gives 9.0. The 729 distractor is the reading 'surface area becomes 900% of the original' (a 9x increase), which is not what 'increases by 900%' means, so it is ruled out rather than merely set aside.",
+    "solution": "Melting conserves volume, so if the original radius is \\(R\\) and each small ball has radius \\(r\\), then \\(R^3=n r^3\\). An increase of \\(900\\%\\) means the total surface area becomes \\(10\\) times the original, so \\(n\\cdot 4\\pi r^2=10\\cdot 4\\pi R^2\\), i.e. \\(n r^2=10R^2\\). Substituting \\(r=R/n^{1/3}\\) gives \\(n^{1/3}=10\\), so \\(n=1000\\)."
+  },
+  {
+    "number": 78,
+    "answer": "C",
+    "value": "Both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "Area of a parallelogram with adjacent sides a, b and included angle 150 degrees is ab*sin(150) = ab/2 = 17.5, so ab = 35 with a, b positive integers. The factor pairs are (5,7) and (1,35), giving perimeters 2(a+b) = 24 and 72 respectively. Both printed perimeters are therefore attainable, so both statements hold. No extra constraint (such as a triangle inequality) applies, since any two positive side lengths and any angle determine a genuine parallelogram.",
+    "solution": "With adjacent sides \\(a\\) and \\(b\\) and included angle \\(150^\\circ\\), the area is \\(ab\\sin 150^\\circ=\\dfrac{ab}{2}=17\\cdot 5\\), so \\(ab=35\\). The integer factor pairs are \\(5\\times 7\\) and \\(1\\times 35\\), giving perimeters \\(2(5+7)=24\\ \\text{cm}\\) and \\(2(1+35)=72\\ \\text{cm}\\). Both listed perimeters are achievable, so both statements are correct."
+  },
+  {
+    "number": 79,
+    "answer": "B",
+    "value": "9",
+    "confidence": "HIGH",
+    "reasoning": "N cubes of side 10 in a row form a cuboid 10N x 10 x 10. Total surface area = 2(10N*10 + 10*10 + 10*10N) = 400N + 200. Setting 400N + 200 = 3800 gives N = 9. Cross-check: N=9 gives a 90x10x10 cuboid with TSA = 2(900+100+900) = 3800.",
+    "solution": "Joining \\(N\\) cubes of side \\(10\\ \\text{cm}\\) end to end gives a cuboid of dimensions \\(10N\\times 10\\times 10\\). Its total surface area is \\(2(10N\\cdot 10+10\\cdot 10+10\\cdot 10N)=400N+200\\). Setting \\(400N+200=3800\\) gives \\(N=9\\), and the resulting \\(90\\times 10\\times 10\\) cuboid indeed has surface area \\(3800\\ \\text{cm}^2\\)."
+  },
+  {
+    "number": 80,
+    "answer": "B",
+    "value": "36 square units",
+    "confidence": "HIGH",
+    "reasoning": "The two right angles give two Pythagorean triples sharing r: p^2+q^2 = r^2 and r^2+s^2 = t^2, with p<q<r<s<t<15 all integers. Exhaustive search over p,q,s,t < 15 returns exactly one solution, (p,q,r,s,t) = (3,4,5,12,13). Area = area(ABC) + area(ACD) = (1/2)pq + (1/2)rs = 6 + 30 = 36. Uniqueness makes the 'cannot be determined' option wrong: r=10 would need a triple (10,s,t) with t<15 and r=13 would need 13^2+s^2 a perfect square below 15^2, neither of which exists. Verified by brute-force enumeration.",
+    "solution": "The right angles at \\(B\\) and at \\(C\\) give \\(p^2+q^2=r^2\\) and \\(r^2+s^2=t^2\\), so two Pythagorean triples share the side \\(r\\). Searching all integers with \\(p<q<r<s<t<15\\) leaves only \\(p=3,\\ q=4,\\ r=5,\\ s=12,\\ t=13\\). The diagonal \\(AC\\) splits the quadrilateral into two right triangles, so the area is \\(\\tfrac12(3)(4)+\\tfrac12(5)(12)=6+30=36\\) square units."
+  },
+  {
+    "number": 81,
+    "answer": "B",
+    "value": "Perimeter \\(\\approx 66.46\\) cm, i.e. \\(65 < x < 67\\)",
+    "confidence": "HIGH",
+    "reasoning": "O is 13 cm from all three vertices, so O is the circumcentre and R = 13. The circle of radius 5 touches AB and AC, so the perpendicular distance from O to each of those chords is 5. For a chord of length c at distance d from the centre, d^2 + (c/2)^2 = R^2, so (c/2)^2 = 169-25 = 144 and AB = AC = 24. With R = 13 and two sides 24, sin B = sin C = 24/(2*13) = 12/13 with B, C acute (cos = 5/13), so sin A = sin 2B = 2(12/13)(5/13) = 120/169 and BC = 2*13*120/169 = 3120/169 = 18.4615. Perimeter = 24+24+18.4615 = 66.4615, inside (65,67). Consistency check: distance from O to BC is R cos A = 13*(119/169) = 9.15 > 5, so the circle really does miss BC, and all angles are acute so O is inside. Verified with exact rationals.",
+    "solution": "Since \\(O\\) is \\(13\\ \\text{cm}\\) from every vertex it is the circumcentre, with circumradius \\(13\\ \\text{cm}\\), and the circle of radius \\(5\\ \\text{cm}\\) touching \\(AB\\) and \\(AC\\) means each of those sides is a chord at distance \\(5\\ \\text{cm}\\) from \\(O\\). Hence \\(\\left(\\tfrac{AB}{2}\\right)^2=13^2-5^2=144\\), giving \\(AB=AC=24\\ \\text{cm}\\). Then \\(\\sin B=\\sin C=\\tfrac{12}{13}\\), so \\(\\sin A=2\\cdot\\tfrac{12}{13}\\cdot\\tfrac{5}{13}=\\tfrac{120}{169}\\) and \\(BC=2(13)\\tfrac{120}{169}=\\tfrac{3120}{169}\\approx 18\\cdot 46\\ \\text{cm}\\). The perimeter is about \\(66\\cdot 46\\ \\text{cm}\\), which lies between \\(65\\ \\text{cm}\\) and \\(67\\ \\text{cm}\\)."
+  },
+  {
+    "number": 82,
+    "answer": "B",
+    "value": "Area \\(\\approx 204.50\\ \\text{cm}^2\\), i.e. \\(200 < y < 210\\)",
+    "confidence": "HIGH",
+    "reasoning": "From Q81, AB = AC = 24 and sin A = 120/169. Area = (1/2)*AB*AC*sin A = (1/2)(24)(24)(120/169) = 34560/169 = 204.497, which lies in (200,210). Cross-checked by Heron with sides 24, 24, 3120/169: s = 33.2308 gives the same 204.497. Also equals abc/(4R) = (24*24*18.4615)/52 = 204.497.",
+    "solution": "As in the previous item the circumradius is \\(13\\ \\text{cm}\\) and \\(AB=AC=24\\ \\text{cm}\\), with \\(\\sin A=\\tfrac{120}{169}\\). The area is \\(\\tfrac12\\cdot AB\\cdot AC\\cdot\\sin A=\\tfrac12(24)(24)\\tfrac{120}{169}=\\tfrac{34560}{169}\\approx 204\\cdot 50\\ \\text{cm}^2\\). This lies between \\(200\\ \\text{cm}^2\\) and \\(210\\ \\text{cm}^2\\)."
+  },
+  {
+    "number": 83,
+    "answer": "A",
+    "value": "Statement I only",
+    "confidence": "HIGH",
+    "reasoning": "From the configuration in Q81, cos B = 5/13 so angle ABC = arccos(5/13) = 67.380 degrees, which lies strictly between 60 and 90: statement I is correct. Since OB = OC = 13, O lies on the perpendicular bisector of BC, so the distance from O to the midpoint of BC is the perpendicular distance from O to BC, which is R cos A = 13*(119/169) = 119/13 = 9.1538 cm. Equivalently sqrt(13^2 - (BC/2)^2) = sqrt(169 - 85.207) = 9.154. That is not in (7,8), so statement II is false. (An independent check: 9.154 > 5, which is exactly why the circle misses BC as the premise requires.)",
+    "solution": "Here \\(AB=AC=24\\ \\text{cm}\\) with circumradius \\(13\\ \\text{cm}\\), so \\(\\cos(\\angle ABC)=\\tfrac{5}{13}\\) and \\(\\angle ABC\\approx 67\\cdot 4^\\circ\\), which does lie between \\(60^\\circ\\) and \\(90^\\circ\\). Because \\(OB=OC\\), the distance from \\(O\\) to the midpoint of \\(BC\\) is the perpendicular distance to \\(BC\\), namely \\(\\sqrt{13^2-\\left(\\tfrac{BC}{2}\\right)^2}\\approx 9\\cdot 15\\ \\text{cm}\\); this exceeds \\(8\\ \\text{cm}\\), which is also why the circle of radius \\(5\\ \\text{cm}\\) does not reach \\(BC\\). So only the first statement is correct."
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "value": "3 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Take the side of the equilateral triangle as 2, with B(-1,0), C(1,0), M(0,0), A(0,sqrt3). The circle touches BC at M so OM is perpendicular to BC, putting O on the y-axis at (0,k) with radius k; passing through A forces sqrt3 - k = k, so k = sqrt3/2 and AM is a diameter. The power of B with respect to the circle is BM^2 = 1 (tangent length), and it also equals BD*BA = BD*2, so BD = 1/2 and AD = 2 - 1/2 = 3/2. Hence AD : DB = (3/2) : (1/2) = 3 : 1. Confirmed by solving for the second intersection of line AB with the circle in sympy: D = (-3/4, sqrt3/4), giving the same ratio.",
+    "solution": "Let the side be \\(2\\) units with \\(B(-1,0)\\), \\(C(1,0)\\), \\(M(0,0)\\) and \\(A(0,\\sqrt{3})\\). Since the circle touches \\(BC\\) at \\(M\\), the radius \\(OM\\) is perpendicular to \\(BC\\), so \\(O\\) lies on \\(AM\\); passing through \\(A\\) then forces \\(AM\\) to be a diameter of length \\(\\sqrt{3}\\). The tangent-secant relation at \\(B\\) gives \\(BM^2=BD\\cdot BA\\), i.e. \\(1^2=BD\\times 2\\), so \\(BD=\\tfrac12\\) and \\(AD=2-\\tfrac12=\\tfrac32\\). Therefore \\(AD:DB=3:1\\)."
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "value": "\\(z=\\dfrac{3\\pi^2}{16}\\approx 1.851\\), so \\(1.5 < z < 2\\)",
+    "confidence": "HIGH",
+    "reasoning": "With side 2a the circle has radius a*sqrt3/2 (AM is a diameter of length a*sqrt3), so x = pi*3a^2/4 and y = (sqrt3/4)(2a)^2 = sqrt3*a^2. Then x/y = 3pi/(4sqrt3) = pi*sqrt3/4 = 1.36035, and z = (x/y)^2 = 3pi^2/16 = 1.85055. This is in (1.5,2). Note the ratio is scale-free, so the unspecified side length is irrelevant. Verified symbolically in sympy: z = 3*pi**2/16.",
+    "solution": "Taking the side as \\(2\\) units, \\(AM\\) is a diameter of the circle of length \\(\\sqrt{3}\\), so the radius is \\(\\tfrac{\\sqrt{3}}{2}\\) and \\(x=\\pi\\left(\\tfrac{\\sqrt3}{2}\\right)^2=\\tfrac{3\\pi}{4}\\), while \\(y=\\tfrac{\\sqrt3}{4}(2)^2=\\sqrt3\\). Then \\(\\dfrac{x}{y}=\\dfrac{3\\pi}{4\\sqrt3}=\\dfrac{\\pi\\sqrt3}{4}\\) and \\(z=\\left(\\dfrac{x}{y}\\right)^2=\\dfrac{3\\pi^2}{16}\\approx 1\\cdot 85\\). The ratio does not depend on the side length, and \\(z\\) lies between \\(1\\cdot 5\\) and \\(2\\)."
+  },
+  {
+    "number": 86,
+    "answer": "A",
+    "value": "3 : 5",
+    "confidence": "HIGH",
+    "reasoning": "Same coordinates as Q84 (side 2): A(0,sqrt3), B(-1,0), M(0,0), O(0,sqrt3/2), D(-3/4, sqrt3/4). Shoelace gives area(ADO) = 3sqrt3/16 and area(BDOM) = 5sqrt3/16, so the ratio is 3 : 5. Consistency check: the segment DO divides triangle ABM into exactly these two pieces, and 3sqrt3/16 + 5sqrt3/16 = sqrt3/2 = area(ABM) = (1/2)(BM)(AM) = (1/2)(1)(sqrt3). TRANSCRIPTION NOTE: printed option (c) is the unreduced '3 : 3'; the derived ratio is 3 : 5, so the misprint does not bear on the choice and no repair was needed. Verified in sympy.",
+    "solution": "With the side taken as \\(2\\) units, place \\(A(0,\\sqrt3)\\), \\(B(-1,0)\\), \\(M(0,0)\\); then \\(O\\left(0,\\tfrac{\\sqrt3}{2}\\right)\\) is the midpoint of the diameter \\(AM\\), and \\(D\\left(-\\tfrac34,\\tfrac{\\sqrt3}{4}\\right)\\) since \\(AD:DB=3:1\\). The segment \\(DO\\) cuts triangle \\(ABM\\) into triangle \\(ADO\\) and quadrilateral \\(BDOM\\), whose areas by the shoelace formula are \\(\\tfrac{3\\sqrt3}{16}\\) and \\(\\tfrac{5\\sqrt3}{16}\\). Their sum is \\(\\tfrac{\\sqrt3}{2}\\), the area of triangle \\(ABM\\), and the required ratio is \\(3:5\\)."
+  },
+  {
+    "number": 87,
+    "answer": "B",
+    "value": "16 : 12 : 3",
+    "confidence": "HIGH",
+    "reasoning": "Let the side be 2. BP is the altitude from B to AC, so P is the midpoint of AC and BP = sqrt3, BP^2 = 3; AB^2 = 4. In right triangle ARP, angle A = 60 degrees and AP = 1, so PR = AP*sin 60 = sqrt3/2 and PR^2 = 3/4. Thus AB^2 : BP^2 : PR^2 = 4 : 3 : 3/4 = 16 : 12 : 3. Verified with coordinates in sympy (foot of perpendicular from P to AB).",
+    "solution": "Let the side be \\(2\\) units. Since \\(BP\\perp AC\\) in an equilateral triangle, \\(P\\) is the midpoint of \\(AC\\), so \\(AP=1\\) and \\(BP=\\sqrt3\\), giving \\(AB^2=4\\) and \\(BP^2=3\\). In right triangle \\(ARP\\) the angle at \\(A\\) is \\(60^\\circ\\) and \\(AP=1\\), so \\(PR=\\sin 60^\\circ=\\tfrac{\\sqrt3}{2}\\) and \\(PR^2=\\tfrac34\\). Hence \\(AB^2:BP^2:PR^2=4:3:\\tfrac34=16:12:3\\)."
+  },
+  {
+    "number": 88,
+    "answer": "C",
+    "value": "3 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Side 2, P the midpoint of AC. AR = AP cos 60 = 1/2 so RB = 3/2, and PR = sqrt3/2, giving area(PRB) = (1/2)(3/2)(sqrt3/2) = 3sqrt3/8. On the other side, QC = PC cos 60 = 1/2 and PQ = PC sin 60 = sqrt3/2, giving area(PQC) = (1/2)(1/2)(sqrt3/2) = sqrt3/8. Ratio = 3 : 1. Verified with explicit feet of perpendiculars in sympy: areas 3*sqrt(3)/8 and sqrt(3)/8.",
+    "solution": "Take the side as \\(2\\) units, so \\(P\\) is the midpoint of \\(AC\\) with \\(AP=PC=1\\). In right triangle \\(ARP\\), \\(AR=\\cos 60^\\circ=\\tfrac12\\) and \\(PR=\\sin 60^\\circ=\\tfrac{\\sqrt3}{2}\\), so \\(RB=2-\\tfrac12=\\tfrac32\\) and the area of \\(\\triangle PRB\\) is \\(\\tfrac12\\cdot\\tfrac32\\cdot\\tfrac{\\sqrt3}{2}=\\tfrac{3\\sqrt3}{8}\\). Similarly \\(QC=\\tfrac12\\) and \\(PQ=\\tfrac{\\sqrt3}{2}\\), so the area of \\(\\triangle PQC\\) is \\(\\tfrac{\\sqrt3}{8}\\). The ratio is \\(3:1\\)."
+  },
+  {
+    "number": 89,
+    "answer": "B",
+    "value": "4 : 5",
+    "confidence": "HIGH",
+    "reasoning": "Place P(-9,0), R(9,0), Q(0,12), which gives QP = QR = 15 and PR = 18. T is the foot of the altitude from R onto PQ: PT = projection of PR onto the unit vector along PQ = 18*(9/15) = 54/5, so QT = 15 - 54/5 = 21/5. The orthocentre O lies on the altitude QM (the y-axis); the altitude from P satisfies 9(x+9) - 12y = 0, so at x = 0, y = 27/4 and O = (0,27/4). Hence QO = 12 - 27/4 = 21/4. QT : QO = (21/5) : (21/4) = 4 : 5. Verified in sympy by solving the two altitude equations.",
+    "solution": "Place \\(P(-9,0)\\), \\(R(9,0)\\), \\(Q(0,12)\\), which satisfies \\(QP=QR=15\\ \\text{cm}\\) and \\(PR=18\\ \\text{cm}\\). The foot \\(T\\) of the altitude from \\(R\\) to \\(PQ\\) satisfies \\(PT=\\dfrac{PR\\cdot PM}{PQ}\\); directly, \\(PT=18\\cdot\\tfrac{9}{15}=\\tfrac{54}{5}\\), so \\(QT=15-\\tfrac{54}{5}=\\tfrac{21}{5}\\ \\text{cm}\\). The orthocentre lies on the altitude from \\(Q\\), i.e. the line \\(x=0\\), and the altitude from \\(P\\) meets it at \\(\\left(0,\\tfrac{27}{4}\\right)\\), so \\(QO=12-\\tfrac{27}{4}=\\tfrac{21}{4}\\ \\text{cm}\\). Therefore \\(QT:QO=\\tfrac{21}{5}:\\tfrac{21}{4}=4:5\\)."
+  },
+  {
+    "number": 90,
+    "answer": "D",
+    "value": "7 : 9",
+    "confidence": "HIGH",
+    "reasoning": "With P(-9,0), R(9,0), Q(0,12), M is the foot of the altitude from Q, i.e. the midpoint (0,0) of PR, and QM = 12. The orthocentre is O = (0,27/4). So QO = 12 - 27/4 = 21/4 and OM = 27/4, giving QO : OM = 21 : 27 = 7 : 9. The distractor 25 : 27 would require QO = 25/4, which does not satisfy the altitude equation 9(x+9) = 12y at x = 0. Verified in sympy.",
+    "solution": "Using \\(P(-9,0)\\), \\(R(9,0)\\), \\(Q(0,12)\\), the altitude from \\(Q\\) meets \\(PR\\) at its midpoint \\(M(0,0)\\), so \\(QM=12\\ \\text{cm}\\). The altitude from \\(P\\) is perpendicular to \\(QR\\), giving the equation \\(9(x+9)-12y=0\\); at \\(x=0\\) this yields \\(y=\\tfrac{27}{4}\\), so the orthocentre is \\(O\\left(0,\\tfrac{27}{4}\\right)\\). Hence \\(OM=\\tfrac{27}{4}\\ \\text{cm}\\) and \\(QO=12-\\tfrac{27}{4}=\\tfrac{21}{4}\\ \\text{cm}\\), so \\(QO:OM=21:27=7:9\\)."
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "value": "8.5",
+    "confidence": "HIGH",
+    "reasoning": "Combined mean = (7*10 + 3*5)/(7+3) = (70+15)/10 = 8.5. The 7.5 that a naive average of the two means would give is not printed, and the correct weighted value 8.5 matches exactly.",
+    "solution": "The first set contributes a total of \\(7\\times 10=70\\) and the second a total of \\(3\\times 5=15\\), over \\(7+3=10\\) observations in all. The combined mean is \\(\\dfrac{70+15}{10}=8\\cdot 5\\)."
+  },
+  {
+    "number": 92,
+    "answer": "C",
+    "value": "4 : 1",
+    "confidence": "HIGH",
+    "reasoning": "Let m males and f females. 4200m + 3200f = 4000(m+f) gives 200m = 800f, so m : f = 4 : 1. Alligation confirms it: the distances from the combined mean are 4200-4000 = 200 and 4000-3200 = 800, so the ratio male : female = 800 : 200 = 4 : 1. Solved symbolically in sympy.",
+    "solution": "If there are \\(m\\) male and \\(f\\) female employees, then \\(4200m+3200f=4000(m+f)\\), which simplifies to \\(200m=800f\\), so \\(m:f=4:1\\). By alligation the same result appears as \\((4000-3200):(4200-4000)=800:200=4:1\\)."
+  },
+  {
+    "number": 93,
+    "answer": "B",
+    "value": "65",
+    "confidence": "HIGH",
+    "reasoning": "There are 10 observations, so the median is the mean of the 5th and 6th values in order, and must equal 67, i.e. their sum is 134. The eight known values in order are 30, 33, 49, 52, 74, 78, 85, 98. If both x and x+4 fall between 52 and 74 they occupy the 5th and 6th places, giving 2x+4 = 134 and x = 65 (with x+4 = 69, consistent). A sweep of every integer x from 0 to 119 returns x = 65 as the only solution, so the answer is determined and the 'cannot be determined' option is wrong. Sorted data: 30,33,49,52,65,69,74,78,85,98; median (65+69)/2 = 67.",
+    "solution": "There are ten observations, so the median is the average of the fifth and sixth values when arranged in order, and that average is \\(67\\). The eight known values in order are \\(30,33,49,52,74,78,85,98\\); if \\(x\\) and \\(x+4\\) both lie between \\(52\\) and \\(74\\), they are the fifth and sixth values, so \\(\\dfrac{x+(x+4)}{2}=67\\) and \\(x=65\\). Checking, the ordered data \\(30,33,49,52,65,69,74,78,85,98\\) has median \\(\\dfrac{65+69}{2}=67\\), and no other value of \\(x\\) works."
+  },
+  {
+    "number": 94,
+    "answer": "C",
+    "value": "4 kmph",
+    "confidence": "HIGH",
+    "reasoning": "Equal distances each way, so the average speed is the harmonic mean: 2*3*6/(3+6) = 36/9 = 4 kmph. The arithmetic mean 4.5 is the printed trap; it would be correct only for equal TIMES at each speed, not equal distances.",
+    "solution": "The same distance is covered at each speed, so the average speed is the harmonic mean \\(\\dfrac{2\\times 3\\times 6}{3+6}=\\dfrac{36}{9}=4\\ \\text{kmph}\\). Concretely, a \\(6\\ \\text{km}\\) leg takes \\(2\\) hours out and \\(1\\) hour back, i.e. \\(12\\ \\text{km}\\) in \\(3\\) hours. Averaging the two speeds to \\(4\\cdot 5\\) would be right only if equal times, not equal distances, were spent at each speed."
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "The sum of deviations about the arithmetic mean is always zero: sum(x_i - xbar) = sum(x_i) - n*xbar = 0 by definition of the mean. Checked with exact fractions on the given nine heights (sum 1350, mean 150): the deviation sum is exactly 0.",
+    "solution": "For any data set the deviations about the arithmetic mean sum to zero, because \\(\\sum (x_i-\\bar{x})=\\sum x_i - n\\bar{x}=0\\). Here the nine heights total \\(1350\\ \\text{cm}\\), so \\(\\bar{x}=150\\ \\text{cm}\\), and the deviations \\(0,15,-5,-1,0,-3,2,-6,-2\\) add to \\(0\\)."
+  },
+  {
+    "number": 96,
+    "answer": "A",
+    "value": "25.83",
+    "confidence": "HIGH",
+    "reasoning": "The modal class is 20-30 (highest frequency 15), with l = 20, h = 10, f1 = 15, f0 = 8, f2 = 10. Mode = l + h(f1-f0)/(2f1-f0-f2) = 20 + 10*(7)/(30-18) = 20 + 70/12 = 20 + 5.8333 = 25.8333, which rounds to 25.83.",
+    "solution": "The modal class is \\(20-30\\) since it has the highest frequency, so \\(l=20\\), \\(h=10\\), \\(f_1=15\\), \\(f_0=8\\) and \\(f_2=10\\). Then \\(\\text{Mode}=l+h\\cdot\\dfrac{f_1-f_0}{2f_1-f_0-f_2}=20+10\\cdot\\dfrac{15-8}{30-8-10}=20+\\dfrac{70}{12}\\). This gives \\(25\\cdot 83\\) to two decimal places."
+  },
+  {
+    "number": 97,
+    "answer": "D",
+    "value": "825",
+    "confidence": "HIGH",
+    "reasoning": "Mean 2.5 over 15 observations gives sum(x_i) = 37.5. Then sum of 5(4x_i + 1) = 20*sum(x_i) + 5*15 = 20*37.5 + 75 = 750 + 75 = 825. Computed with exact fractions to avoid the half-integer total being rounded.",
+    "solution": "Since the mean of the \\(15\\) observations is \\(2\\cdot 5\\), their total is \\(\\sum x_i=15\\times 2\\cdot 5=37\\cdot 5\\). Expanding, \\(\\sum_{i=1}^{15}\\left[5(4x_i+1)\\right]=20\\sum x_i+5\\times 15=20(37\\cdot 5)+75\\). That equals \\(750+75=825\\)."
+  },
+  {
+    "number": 98,
+    "answer": "B",
+    "value": "13.39",
+    "confidence": "HIGH",
+    "reasoning": "Sum of f = 6+8+10+9+3 = 36; sum of fx = 12*6 + 14*8 + 10*10 + 16*9 + 18*3 = 72+112+100+144+54 = 482. Mean = 482/36 = 13.38889, which rounds to 13.39. TRANSCRIPTION NOTE: the x column is printed out of order (12, 14, 10, 16, 18) against frequencies (6, 8, 10, 9, 3); the pairing was read as printed and not reordered. Since both sums are order-independent, the mean is unaffected either way, so this printing quirk cannot change the answer. Verified against the page image at full resolution.",
+    "solution": "The total frequency is \\(6+8+10+9+3=36\\), and \\(\\sum fx=12(6)+14(8)+10(10)+16(9)+18(3)=482\\). The arithmetic mean is \\(\\dfrac{\\sum fx}{\\sum f}=\\dfrac{482}{36}\\approx 13\\cdot 39\\). The values of \\(x\\) are not listed in increasing order, but neither sum depends on the order, so the mean is unaffected."
+  },
+  {
+    "number": 99,
+    "answer": "D",
+    "value": "\\(x = 25\\), \\(y = 45\\)",
+    "confidence": "HIGH",
+    "reasoning": "Total frequency: 10 + x + 20 + y = 100, so x + y = 70. Using class midpoints 5, 15, 25, 35, the mean condition gives 50 + 15x + 500 + 35y = 25*100 = 2500, i.e. 3x + 7y = 390. Solving the pair gives y = 45, x = 25. Check: frequencies 10, 25, 20, 45 total 100, and sum(fm) = 50 + 375 + 500 + 1575 = 2500, mean 25. The nearby distractor x=20, y=45 fails the total (it sums to 95), which is the discriminating test. Solved in sympy.",
+    "solution": "The frequencies must total \\(100\\), so \\(10+x+20+y=100\\) and \\(x+y=70\\). Using the class midpoints \\(5,15,25,35\\), a mean of \\(25\\) requires \\(10(5)+15x+20(25)+35y=25\\times 100\\), which reduces to \\(3x+7y=390\\). Solving the two equations gives \\(x=25\\) and \\(y=45\\); the frequencies \\(10,25,20,45\\) then total \\(100\\) with \\(\\sum fm=2500\\), confirming a mean of \\(25\\)."
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "value": "Both statements are correct",
+    "confidence": "HIGH",
+    "reasoning": "Total investment = 7200 + 3000 + 1500 + 3800 + 2500 = 18000 crore. Statement I: 7200/18000 = 0.40 = 40%, correct. Statement II: the pie-diagram angle for Agricultural Services is (2500/18000)*360 = 50 degrees exactly, correct. Both computed with exact fractions. TRANSCRIPTION NOTE: no pie chart is printed; statement II asks what the angle WOULD be for the tabulated data, so the table is all the data required and no figure is missing.",
+    "solution": "The total investment is \\(7200+3000+1500+3800+2500=18000\\) crore. For 'Science, Technology and Environment' the share is \\(\\dfrac{7200}{18000}=40\\%\\), so the first statement holds. For 'Agricultural Services' the sector angle would be \\(\\dfrac{2500}{18000}\\times 360^\\circ=50^\\circ\\), so the second statement holds as well; both statements are correct."
+  }
+]

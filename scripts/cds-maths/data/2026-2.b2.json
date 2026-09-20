@@ -1,0 +1,380 @@
+{
+  "band": "b2",
+  "pages": [10, 12, 14, 16],
+  "bandReport": {
+    "numbersFound": [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Q27-Q54, 28 questions, contiguous with no gaps. Printed page = index + 1 throughout (p10 = 11-A, p12 = 13-A, p14 = 15-A, p16 = 17-A), footer BFVS-T-TME on every page, confirming the config pre-pass.\n\nBOTH SEAMS ARE CLEAN, checked by opening the neighbouring pages without transcribing them. p08 (printed 9-A) is band b1's last page: it carries Q21-Q26 and Q26 completes on it, stem and all four options, so nothing of b1's runs into my pages. p18 (printed 19-A) opens on Q55 at the top of its left column and carries Q55-Q60, so my Q54 is the last question of my range and it completes on p16. firstComplete and lastComplete are both true.\n\nNO DIRECTIONS SETS ANYWHERE IN THIS BAND, and none is open at either seam. Every one of the 28 items is standalone with its own stem; no 'Directions:' block, no 'Consider the following for the next N items', no shared stimulus. The config comment places this paper's four set blocks in Q81-Q90 and its data-sufficiency run at Q61-Q65 — both outside my pages, and consistent with what these four pages show. So no question here carries context or setLabel.\n\nNO FIGURES, and this CONFIRMS the pre-pass claim of zero figures in the paper rather than assuming it. All four pages were read at full resolution and carry no printed artwork at all: no diagram, no graph, no chart, no table. The geometry and trigonometry items are entirely prose-described — Q44's two kilometre-stones, Q45's tower with P and Q, Q51's cyclic quadrilateral ABCD, Q52's rhombus, Q53's chord and Q54's triangle ABC all state their configuration fully in words. hasFigure is set on nothing.\n\nONE MISPRINT FLAGGED — Q47. Options (a) and (c) are both the bare digit 2, an exact duplicate. Cropped at 10x from the source PDF and read again: the two glyphs are identical, and neither carries a fraction bar, degree sign or trailing mark that a 2.6x render might have dropped. Transcribed as printed on both slots; not repaired.\n\nDECIMALS: the booklet sets a raised middle dot throughout this band (0.301, 0.477, 0.845 in Q28; 20.8 and 105.3 in Q29's stem; 1.1 and 1.3 in its options) and every one is transcribed as a full stop per the brief. Q54's '72 cm' was cropped at 9x specifically to rule out a middle dot — it is a plain two-digit 72, not 7.2.\n\nNOTATION CONVENTIONS FOLLOWED FROM THE CORPUS, NOT FROM MY PROMPT. Q42 and Q50 print 'cosec', which is transcribed as \\\\operatorname{cosec} — the form used in every sibling band file in scripts/cds-maths/data (\\\\csc appears in zero of them). Q32's set-builder notation is genuinely blackboard-bold in the booklet (verified at 9x), so it is \\\\mathbb{R} and \\\\mathbb{Z}.\n\nNOTHING WAS ILLEGIBLE. Every digit, sign, exponent and fraction that could change a claim was cropped from the source PDF at 7-10x and read again rather than inferred: Q28's three logarithm values, Q29's stem decimals and options, Q30's 1/3 and 2/3 exponents and its signed options, Q32's set-builder lines, all four of Q34's rational-expression options, Q36 and Q37 in full, Q38's two surd options, Q40's 117/25 against 107/25, Q41, Q42, Q43, Q44, Q45, Q46's four three-digit fractions, Q47 at 10x, Q48, Q49, Q51, Q52, Q53 and Q54. Each option was read off its own printed row against its own printed letter rather than copied from a neighbour.\n\nTWO INVENTED SUBTOPICS, both flagged on the question. (1) Q31 and Q32 — 'Finite, Infinite and Null Sets'. The Sets chapter lists only 'Set Operations and Venn Diagrams' and 'Counting Sets, Subsets and Inclusion Exclusion'; these two items classify described sets as finite/infinite/null, which is neither operations nor counting. (2) Q48 — 'Trigonometric Inequalities in a Triangle'. The Trigonometric Ratios and Identities chapter has no inequality subtopic; its 'Maximum and Minimum' entry is about extremal VALUES of an expression, not about which inequality holds among the angles of a triangle. Both recorded as findings for the catalog extension pass rather than forced into a bad fit.\n\nTWO CLASSIFICATION CALLS WORTH NAMING, neither flagged. Q28 is filed under Simple and Compound Interest / Compound Interest even though it supplies logarithm values — the logarithms are the tool, the compound-interest growth is the question. Q52 and Q54 are filed under Mensuration 2D / Areas of Triangles and Quadrilaterals rather than Quadrilaterals or Triangles, because both ask for a metric quantity (perimeter, area) from given measurements rather than for a property of the figure."
+  },
+  "questions": [
+    {
+      "number": 27,
+      "stem": "The ratio of the cost price of two articles X and Y is 1 : 2. A businessman earns a profit of p% by selling X and a loss of 3p% by selling Y. If he loses 20% in this transaction, then what is the value of p ?",
+      "options": [
+        { "label": "A", "text": "6%" },
+        { "label": "B", "text": "8%" },
+        { "label": "C", "text": "10%" },
+        { "label": "D", "text": "12%" }
+      ],
+      "chapter": "Percentage, Profit and Loss",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 28,
+      "stem": "A sum of money at the rate of 5% per annum compounded annually becomes n times in 100 years. What is the value of n ?\n(Given \\(\\log_{10} 2 = 0.301\\), \\(\\log_{10} 3 = 0.477\\) and \\(\\log_{10} 7 = 0.845\\))",
+      "options": [
+        { "label": "A", "text": "98" },
+        { "label": "B", "text": "99" },
+        { "label": "C", "text": "100" },
+        { "label": "D", "text": "More than 100" }
+      ],
+      "chapter": "Simple and Compound Interest",
+      "subtopic": "Compound Interest",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 29,
+      "stem": "A variable y is directly proportional to a variable quantity \\(x^n\\). Given that when x = 2, y = 20.8 and when x = 3, y = 105.3. Which one of the following is the constant of proportionality if it is greater than 1 ?",
+      "options": [
+        { "label": "A", "text": "1.1" },
+        { "label": "B", "text": "1.3" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Ratio, Proportion and Variation",
+      "subtopic": "Direct and Inverse Variation",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 30,
+      "stem": "If \\(x = 3 - 3^{1/3} - 3^{2/3}\\), then what is \\(x(x - 3)(x - 6)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-12\\)" },
+        { "label": "B", "text": "\\(-9\\)" },
+        { "label": "C", "text": "0" },
+        { "label": "D", "text": "12" }
+      ],
+      "chapter": "Surds, Indices and Simplification",
+      "subtopic": "Simplification of Expressions",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 31,
+      "stem": "Consider the following statements :\nI. The set of all birds living on the Earth is an infinite set.\nII. The set of all real numbers between 0 and 10 is a finite set.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Sets",
+      "subtopic": "Finite, Infinite and Null Sets",
+      "difficulty": "EASY",
+      "flags": ["INVENTED SUBTOPIC: the Sets chapter lists only 'Set Operations and Venn Diagrams' and 'Counting Sets, Subsets and Inclusion Exclusion'. This item tests whether a described set is finite or infinite, which is neither. Recorded for the catalog extension pass."]
+    },
+    {
+      "number": 32,
+      "stem": "Consider the following sets :\nI. The set of even prime numbers\nII. \\(\\{x \\in \\mathbb{R} : x^3 + 1 = 0\\}\\)\nIII. \\(\\{n \\in \\mathbb{Z} : n^2 < 1\\}\\)\nHow many of the above are null sets ?",
+      "options": [
+        { "label": "A", "text": "None" },
+        { "label": "B", "text": "One" },
+        { "label": "C", "text": "Two" },
+        { "label": "D", "text": "All the three" }
+      ],
+      "chapter": "Sets",
+      "subtopic": "Finite, Infinite and Null Sets",
+      "difficulty": "MODERATE",
+      "flags": ["INVENTED SUBTOPIC: see Q31. This item asks how many of three described sets are null sets."]
+    },
+    {
+      "number": 33,
+      "stem": "Consider the following statements :\nI. If A is a subset of U and U is the Universal set, then the complement of the set A is also a subset of U.\nII. The complement of a Universal set is a singleton set.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Sets",
+      "subtopic": "Set Operations and Venn Diagrams",
+      "difficulty": "EASY"
+    },
+    {
+      "number": 34,
+      "stem": "What should be added to \\(\\frac{x^2 - 1}{x^2 + 1}\\) to get \\(\\frac{2x^3 + 3x^2 - 1}{(x + 2)(x^2 + 1)}\\) ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{x^2 - 1}{(x + 2)(x^2 + 1)}\\)" },
+        { "label": "B", "text": "\\(\\frac{x^2 + 2}{(x + 2)(x^2 + 1)}\\)" },
+        { "label": "C", "text": "\\(\\frac{x + 1}{x + 2}\\)" },
+        { "label": "D", "text": "\\(\\frac{x - 1}{x + 2}\\)" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Rational Algebraic Expressions",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 35,
+      "stem": "If \\(x + y + z = 0\\), then what is \\(x(y + z)^2 + y(z + x)^2 + z(x + y)^2\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "xyz" },
+        { "label": "B", "text": "2xyz" },
+        { "label": "C", "text": "3xyz" },
+        { "label": "D", "text": "6xyz" }
+      ],
+      "chapter": "Algebraic Identities and Simplification",
+      "subtopic": "Conditional Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 36,
+      "stem": "If \\(\\tan 6\\theta \\cdot \\tan 3\\theta = 1\\), where \\(0 < \\theta < 30^\\circ\\), then what is \\(\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(5^\\circ\\)" },
+        { "label": "B", "text": "\\(10^\\circ\\)" },
+        { "label": "C", "text": "\\(15^\\circ\\)" },
+        { "label": "D", "text": "No such value exists" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Trigonometric Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 37,
+      "stem": "If \\(\\frac{1 - \\tan x}{1 + \\tan x} = 1 - \\frac{2\\tan x}{1 + \\tan^2 x}\\), \\(0 \\le x < \\frac{\\pi}{2}\\), \\(x \\ne \\frac{\\pi}{4}\\), then what is \\((\\sin x + \\cos x)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{1}{2}\\)" },
+        { "label": "B", "text": "\\(\\frac{3}{4}\\)" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "\\(\\sqrt{2}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Trigonometric Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 38,
+      "stem": "If \\(\\cos^2 x + \\cos^4 x = 1\\), where \\(0 < x < \\frac{\\pi}{2}\\), then what is \\((\\sin^2 x + \\sin^3 x) + (\\sin^3 x + \\sin^4 x)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{21 + 12\\sqrt{3}}{16}\\)" },
+        { "label": "B", "text": "\\(\\frac{3 + 2\\sqrt{2}}{4}\\)" },
+        { "label": "C", "text": "\\(\\frac{9}{8}\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "HARD"
+    },
+    {
+      "number": 39,
+      "stem": "If \\(\\sin^4 x + \\cos^4 x = 1\\), where \\(0 \\le x \\le \\frac{\\pi}{2}\\), then what is \\(\\sin x \\cdot \\cos x\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "\\(\\frac{1}{2}\\)" },
+        { "label": "C", "text": "\\(\\frac{3}{4}\\)" },
+        { "label": "D", "text": "1" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 40,
+      "stem": "If \\(3\\cos\\theta + 4\\sin\\theta = 4\\), where \\(0 \\le \\theta < \\frac{\\pi}{2}\\), then what is \\(4\\cos\\theta + 3\\sin\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{117}{25}\\)" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "\\(\\frac{107}{25}\\)" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 41,
+      "stem": "If \\(\\cot\\theta + \\cos\\theta = m\\), \\(\\cot\\theta - \\cos\\theta = n\\), where \\(0 < \\theta < \\frac{\\pi}{2}\\), then what is \\(\\frac{m^2 - n^2}{\\sqrt{mn}}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "\\(2\\sqrt{2}\\)" },
+        { "label": "D", "text": "4" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 42,
+      "stem": "If \\(\\frac{1}{\\operatorname{cosec}\\theta + \\cot\\theta} - \\frac{1}{\\sin\\theta} = p\\), then what is \\(\\frac{1}{\\sin\\theta} - \\frac{1}{\\operatorname{cosec}\\theta - \\cot\\theta}\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-p\\)" },
+        { "label": "B", "text": "\\(-\\frac{1}{p}\\)" },
+        { "label": "C", "text": "\\(p\\)" },
+        { "label": "D", "text": "\\(\\frac{1}{p}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 43,
+      "stem": "If \\(8\\sin\\theta - \\cos\\theta = 4\\), where \\(\\frac{\\pi}{6} < \\theta < \\frac{\\pi}{3}\\), then what is \\(\\sin\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{3}{5}\\)" },
+        { "label": "B", "text": "\\(\\frac{5}{13}\\)" },
+        { "label": "C", "text": "\\(\\frac{4}{5}\\)" },
+        { "label": "D", "text": "\\(\\frac{12}{13}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Trigonometric Equations",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 44,
+      "stem": "A person walking along a straight road observes that at two consecutive kilometer-stones the angles of elevation of a hill in front of him are \\(30^\\circ\\) and \\(60^\\circ\\) respectively. What is the height of the hill ?",
+      "options": [
+        { "label": "A", "text": "\\(3\\sqrt{3}\\) km" },
+        { "label": "B", "text": "\\(2\\sqrt{3}\\) km" },
+        { "label": "C", "text": "\\(\\sqrt{3}\\) km" },
+        { "label": "D", "text": "\\(\\frac{\\sqrt{3}}{2}\\) km" }
+      ],
+      "chapter": "Heights and Distances",
+      "subtopic": "Angles of Elevation and Depression",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 45,
+      "stem": "A tower subtends an angle \\(\\alpha\\) at a point P on the same level as the foot of the tower. Q is a point vertically above P and PQ = h. If the angle of depression of the foot of the tower measured from Q is \\(\\beta\\), then what is the height of the tower ?",
+      "options": [
+        { "label": "A", "text": "\\(h \\tan\\alpha \\tan\\beta\\)" },
+        { "label": "B", "text": "\\(h \\cot\\alpha \\tan\\beta\\)" },
+        { "label": "C", "text": "\\(h \\tan\\alpha \\cot\\beta\\)" },
+        { "label": "D", "text": "\\(h \\cot\\alpha \\cot\\beta\\)" }
+      ],
+      "chapter": "Heights and Distances",
+      "subtopic": "Angles of Elevation and Depression",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 46,
+      "stem": "If \\(5\\sin\\theta + 12\\cos\\theta = 13\\), where \\(0 < \\theta < \\frac{\\pi}{2}\\), then what is \\(\\tan\\theta + \\cot\\theta\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{194}{65}\\)" },
+        { "label": "B", "text": "\\(\\frac{169}{60}\\)" },
+        { "label": "C", "text": "\\(\\frac{313}{156}\\)" },
+        { "label": "D", "text": "\\(\\frac{371}{120}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 47,
+      "stem": "What is the ratio of the greatest value of \\(\\sin^2 x + 2\\) (where \\(0 \\le x \\le \\frac{\\pi}{2}\\)) to its least value ?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "\\(\\frac{3}{2}\\)" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "\\(\\frac{1}{2}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+      "difficulty": "EASY",
+      "flags": ["MISPRINT AS PRINTED: options (a) and (c) are both the bare single digit 2 — an exact duplicate. Cropped from the source PDF at 10x and read again; the two glyphs are identical and neither carries a fraction bar, a degree sign or any trailing mark. Transcribed as printed, not repaired toward what was probably meant."]
+    },
+    {
+      "number": 48,
+      "stem": "If \\(A + B + C = \\pi\\) (A, B, C > 0) and the angle C is obtuse, then which of the following is/are correct ?\nI. \\(\\sin A \\cdot \\sin B < 1\\)\nII. \\(\\tan A \\cdot \\tan B > 1\\)\nSelect the answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Trigonometric Inequalities in a Triangle",
+      "difficulty": "HARD",
+      "flags": ["INVENTED SUBTOPIC: the chapter's listed subtopics cover identities, specific values, compound angles, max/min, right-triangle ratios, allied angles, measure and equations. This item asks which trigonometric INEQUALITIES hold for the angles of a triangle with an obtuse angle. Recorded for the catalog extension pass."]
+    },
+    {
+      "number": 49,
+      "stem": "If \\((\\cos 35^\\circ + \\cos 55^\\circ) = p\\), then what is \\(\\sin 35^\\circ \\cdot \\cos 35^\\circ\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(\\frac{(1 - p^2)}{2}\\)" },
+        { "label": "B", "text": "\\(\\frac{(p^2 - 1)}{2}\\)" },
+        { "label": "C", "text": "\\(\\frac{(1 + p^2)}{2}\\)" },
+        { "label": "D", "text": "\\(\\frac{(p - 1)}{2}\\)" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Complementary and Allied Angles",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 50,
+      "stem": "If \\(p = \\sec\\theta + \\tan\\theta\\) and \\(q = \\operatorname{cosec}\\theta - \\cot\\theta\\), then what is \\((p - q - pq)\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(-1\\)" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "1" },
+        { "label": "D", "text": "2" }
+      ],
+      "chapter": "Trigonometric Ratios and Identities",
+      "subtopic": "Fundamental Identities",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 51,
+      "stem": "In a cyclic quadrilateral ABCD, \\(\\angle A = (4x + 3)^\\circ\\), \\(\\angle B = (3y + 9)^\\circ\\), \\(\\angle C = (4y - 3)^\\circ\\), \\(\\angle D = (5x - 10)^\\circ\\). What is \\(\\angle A + \\angle B\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "\\(200^\\circ\\)" },
+        { "label": "B", "text": "\\(190^\\circ\\)" },
+        { "label": "C", "text": "\\(180^\\circ\\)" },
+        { "label": "D", "text": "\\(170^\\circ\\)" }
+      ],
+      "chapter": "Quadrilaterals",
+      "subtopic": "Cyclic Quadrilaterals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 52,
+      "stem": "The area of a rhombus is 720 \\(\\text{cm}^2\\) and the sum of its diagonals is 98 cm. What is the perimeter of the rhombus ?",
+      "options": [
+        { "label": "A", "text": "160 cm" },
+        { "label": "B", "text": "164 cm" },
+        { "label": "C", "text": "168 cm" },
+        { "label": "D", "text": "172 cm" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 53,
+      "stem": "A chord of a circle makes an angle of \\(90^\\circ\\) at the centre of the circle. If the area of the major segment is k times the area of the minor segment, then what is the value of k ?\n(Take \\(\\pi = \\frac{22}{7}\\))",
+      "options": [
+        { "label": "A", "text": "8" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "11" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Circle, Sector and Segment",
+      "difficulty": "MODERATE"
+    },
+    {
+      "number": 54,
+      "stem": "ABC is a triangle in which (AB + BC) exceeds CA by 10 cm, (BC + CA) exceeds AB by 8 cm and (CA + AB) exceeds BC by 72 cm. What is the area of the triangle ?",
+      "options": [
+        { "label": "A", "text": "196 \\(\\text{cm}^2\\)" },
+        { "label": "B", "text": "180 \\(\\text{cm}^2\\)" },
+        { "label": "C", "text": "172 \\(\\text{cm}^2\\)" },
+        { "label": "D", "text": "160 \\(\\text{cm}^2\\)" }
+      ],
+      "chapter": "Mensuration 2D",
+      "subtopic": "Areas of Triangles and Quadrilaterals",
+      "difficulty": "MODERATE"
+    }
+  ]
+}

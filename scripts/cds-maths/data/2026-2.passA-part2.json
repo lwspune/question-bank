@@ -1,0 +1,202 @@
+[
+  {
+    "number": 26,
+    "answer": "C",
+    "value": "5",
+    "confidence": "HIGH",
+    "reasoning": "Digits a,b,c of N with b = a + c and a + b + c = 10 give 2b = 10, so b = 5 and a + c = 5 with a >= 1: (a,c) = (1,4),(2,3),(3,2),(4,1),(5,0), i.e. 154, 253, 352, 451, 550. Brute-force enumeration over all 900 three-digit numbers in python returns exactly these five, so the count is 5. No other option is defensible; 4 would arise only from wrongly excluding the trailing-zero case 550.",
+    "solution": "Write \\(N\\) with digits \\(a, b, c\\). The middle-digit condition \\(b = a + c\\) together with \\(a + b + c = 10\\) gives \\(2b = 10\\), so \\(b = 5\\) and \\(a + c = 5\\). Since \\(a \\ge 1\\), the pairs are \\((1,4), (2,3), (3,2), (4,1), (5,0)\\), giving \\(154, 253, 352, 451, 550\\). So five such numbers exist."
+  },
+  {
+    "number": 27,
+    "answer": "D",
+    "value": "12%",
+    "confidence": "HIGH",
+    "reasoning": "Take cost prices 1 and 2, total 3. Net gain = 1*(p/100) - 2*(3p/100) = -5p/100, and a 20% overall loss means this equals -(20/100)*3 = -0.6. Hence 5p/100 = 0.6 and p = 12. sympy solve confirms p = 12 exactly. Option 8% would follow only from misreading the loss on Y as 3% rather than 3p%.",
+    "solution": "Let the cost prices be \\(1\\) and \\(2\\), so the total outlay is \\(3\\). The net gain is \\(1 \\cdot \\frac{p}{100} - 2 \\cdot \\frac{3p}{100} = -\\frac{5p}{100}\\), and an overall loss of \\(20\\%\\) means this equals \\(-\\frac{20}{100} \\times 3 = -0.6\\). Solving, \\(p = 12\\), so the value of \\(p\\) is \\(12\\%\\)."
+  },
+  {
+    "number": 28,
+    "answer": "D",
+    "value": "more than 100 (about 126 on the supplied logarithms; 131.5 exactly)",
+    "confidence": "HIGH",
+    "reasoning": "n = (1.05)^100. log10(1.05) = log10(105) - 2 = (log10 3 + log10 5 + log10 7) - 2, with log10 5 = 1 - log10 2 = 0.699, giving 0.477 + 0.699 + 0.845 - 2 = 0.021. Then log10 n = 2.1 and n = 10^2.1 = 125.89; the exact value (1.05)^100 = 131.50. Both exceed 100, so the only correct option is 'More than 100'. The numeric options 98, 99, 100 are not reachable by any reading of the stem.",
+    "solution": "The sum multiplies by \\(1.05\\) each year, so \\(n = (1.05)^{100}\\). Using \\(\\log_{10} 1.05 = \\log_{10} 105 - 2 = (\\log_{10} 3 + \\log_{10} 5 + \\log_{10} 7) - 2 = 0.477 + 0.699 + 0.845 - 2 = 0.021\\), we get \\(\\log_{10} n = 100 \\times 0.021 = 2.1\\), so \\(n = 10^{2.1} \\approx 126\\). That is more than \\(100\\)."
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "value": "1.3",
+    "confidence": "HIGH",
+    "reasoning": "With y = k x^n, dividing the two data points gives 105.3/20.8 = 81/16 = (3/2)^4, so n = 4 exactly (sympy: the only real root). Then k = 20.8/2^4 = 1.3, and the check k*3^4 = 1.3*81 = 105.3 holds exactly. k = 1.3 > 1 as the stem requires. Option 4 is the exponent n, i.e. the partial-work distractor, not the constant of proportionality; the presence of 1.1 (the same computation done slightly wrong) alongside 1.3 confirms that k is what is being asked. The clause 'if it is greater than 1' is vacuous here since the pair (k, n) is unique.",
+    "solution": "Write \\(y = kx^{n}\\). Dividing the two given values, \\(\\frac{105.3}{20.8} = \\frac{81}{16} = \\left(\\frac{3}{2}\\right)^{4}\\), so \\(n = 4\\). Then \\(k = \\frac{20.8}{2^{4}} = 1.3\\), and this checks against the second reading: \\(1.3 \\times 3^{4} = 105.3\\). The constant of proportionality is \\(1.3\\)."
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "value": "\\(-12\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let a = 3^(1/3) and u = x - 3 = -(a + a^2). Then x(x-3)(x-6) = (u+3)u(u-3) = u^3 - 9u. Using a^3 = 3: (a + a^2)^3 = a^3 + 3a^4 + 3a^5 + a^6 = 3 + 9a + 9a^2 + 9, so u^3 = -(12 + 9a + 9a^2), while -9u = 9a + 9a^2. The sum is -12. sympy simplifies the exact surd expression to -12 and evaluates it as -12.0000000000000.",
+    "solution": "Put \\(a = 3^{1/3}\\), so \\(x = 3 - a - a^{2}\\) and \\(u = x - 3 = -(a + a^{2})\\). Then \\(x(x-3)(x-6) = (u+3)u(u-3) = u^{3} - 9u\\). Since \\(a^{3} = 3\\), we get \\((a+a^{2})^{3} = 12 + 9a + 9a^{2}\\), so \\(u^{3} = -(12 + 9a + 9a^{2})\\) while \\(-9u = 9a + 9a^{2}\\). Adding, the value is \\(-12\\)."
+  },
+  {
+    "number": 31,
+    "answer": "D",
+    "value": "Neither I nor II",
+    "confidence": "HIGH",
+    "reasoning": "Statement I: the birds alive on the Earth at any instant are however many, but finitely many, so that set is finite, not infinite - false. Statement II: the real numbers strictly between 0 and 10 form an uncountably infinite set, not a finite one - false. Hence neither statement is correct.",
+    "solution": "However large the number of birds alive on the Earth, it is still a whole number, so that set is finite and the first statement is wrong. Between \\(0\\) and \\(10\\) there are infinitely many real numbers, so the second statement is wrong too. Neither statement is correct."
+  },
+  {
+    "number": 32,
+    "answer": "A",
+    "value": "None (all three sets are non-empty)",
+    "confidence": "HIGH",
+    "reasoning": "I: the only even prime is 2, so the set is {2}, non-empty. II: over the reals x^3 + 1 = 0 has the single root x = -1 (the other two cube roots of -1 are non-real), so the set is {-1}, non-empty; sympy solveset over Reals returns {-1}. III: an integer with n^2 < 1 must be 0, so the set is {0}, non-empty. Zero of the three are null sets.",
+    "solution": "The only even prime number is \\(2\\), so the first set is \\(\\{2\\}\\). Over the real numbers \\(x^{3} + 1 = 0\\) has the single root \\(x = -1\\), so the second set is \\(\\{-1\\}\\). An integer with \\(n^{2} < 1\\) must be \\(0\\), so the third set is \\(\\{0\\}\\). None of the three is empty."
+  },
+  {
+    "number": 33,
+    "answer": "A",
+    "value": "I only",
+    "confidence": "HIGH",
+    "reasoning": "I: if A is a subset of the universal set U, then the complement A' = U \\ A consists only of elements of U, so A' is a subset of U - true. II: the complement of the universal set is the empty set, which has no elements, whereas a singleton has exactly one - false. So only I is correct.",
+    "solution": "If \\(A\\) is a subset of the universal set \\(U\\), every element of its complement is itself drawn from \\(U\\), so the complement is also a subset of \\(U\\); the first statement holds. The complement of the universal set is the empty set, which contains no element at all, so describing it as a set with exactly one element is wrong. Only the first statement is correct."
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "value": "\\(\\frac{x+1}{x+2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "The required expression is (2x^3+3x^2-1)/((x+2)(x^2+1)) - (x^2-1)/(x^2+1). Over the common denominator the numerator is 2x^3+3x^2-1 - (x^2-1)(x+2) = 2x^3+3x^2-1 - (x^3+2x^2-x-2) = x^3+x^2+x+1 = (x+1)(x^2+1). Cancelling x^2+1 leaves (x+1)/(x+2). sympy cancel returns (x+1)/(x+2).",
+    "solution": "The quantity to be added is \\(\\frac{2x^{3}+3x^{2}-1}{(x+2)(x^{2}+1)} - \\frac{x^{2}-1}{x^{2}+1}\\). Over the common denominator \\((x+2)(x^{2}+1)\\) the numerator is \\(2x^{3}+3x^{2}-1-(x^{2}-1)(x+2) = x^{3}+x^{2}+x+1 = (x+1)(x^{2}+1)\\). Cancelling \\(x^{2}+1\\) gives \\(\\frac{x+1}{x+2}\\)."
+  },
+  {
+    "number": 35,
+    "answer": "C",
+    "value": "\\(3xyz\\)",
+    "confidence": "HIGH",
+    "reasoning": "x + y + z = 0 gives y + z = -x, z + x = -y, x + y = -z, so the expression is x(-x)^2 + y(-y)^2 + z(-z)^2 = x^3 + y^3 + z^3. With a zero sum, x^3 + y^3 + z^3 = 3xyz. sympy: expand(expression with z = -x-y) - 3xyz simplifies to 0 identically.",
+    "solution": "Since \\(x + y + z = 0\\), each bracket collapses: \\(y+z = -x\\), \\(z+x = -y\\) and \\(x+y = -z\\). The expression becomes \\(x(-x)^{2} + y(-y)^{2} + z(-z)^{2} = x^{3}+y^{3}+z^{3}\\). For three numbers with zero sum, \\(x^{3}+y^{3}+z^{3} = 3xyz\\)."
+  },
+  {
+    "number": 36,
+    "answer": "B",
+    "value": "\\(10^\\circ\\)",
+    "confidence": "HIGH",
+    "reasoning": "tan 6θ · tan 3θ = 1 means tan 6θ = cot 3θ = tan(90° - 3θ), so 6θ = 90° - 3θ + 180°k, giving 9θ = 90° + 180°k and θ = 10° + 20°k. Within 0 < θ < 30° only θ = 10° qualifies (θ = 30° is the next value and is excluded by the strict inequality). A numerical sweep at 0.01° steps over (0°, 30°) finds the single root 10.00°. Check: tan 60° · tan 30° = √3 · 1/√3 = 1.",
+    "solution": "The condition \\(\\tan 6\\theta \\cdot \\tan 3\\theta = 1\\) means \\(\\tan 6\\theta = \\cot 3\\theta = \\tan(90^\\circ - 3\\theta)\\), so \\(6\\theta = 90^\\circ - 3\\theta + 180^\\circ k\\) and hence \\(\\theta = 10^\\circ + 20^\\circ k\\). The only such value strictly between \\(0^\\circ\\) and \\(30^\\circ\\) is \\(10^\\circ\\), and it checks: \\(\\tan 60^\\circ \\cdot \\tan 30^\\circ = \\sqrt{3} \\cdot \\frac{1}{\\sqrt{3}} = 1\\)."
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "With t = tan x, the right side is 1 - 2t/(1+t^2) = (1 - 2t + t^2)/(1+t^2) = (1-t)^2/(1+t^2), and the left side is (1-t)/(1+t). Since x ≠ π/4 we have t ≠ 1, so dividing by (1-t) gives 1/(1+t) = (1-t)/(1+t^2), i.e. 1+t^2 = 1-t^2, so t = 0 and x = 0. Then sin x + cos x = 0 + 1 = 1. A sign-change sweep over [0, π/2) excluding π/4 finds no interior root and the residual is exactly 0 at x = 0.",
+    "solution": "Put \\(t = \\tan x\\). The right-hand side is \\(1 - \\frac{2t}{1+t^{2}} = \\frac{(1-t)^{2}}{1+t^{2}}\\) and the left-hand side is \\(\\frac{1-t}{1+t}\\). Because \\(x \\ne \\frac{\\pi}{4}\\) we have \\(t \\ne 1\\) and may cancel \\(1-t\\), leaving \\(1+t^{2} = 1-t^{2}\\), so \\(t = 0\\) and \\(x = 0\\). Therefore \\(\\sin x + \\cos x = 1\\)."
+  },
+  {
+    "number": 38,
+    "answer": "D",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "cos^2 x + cos^4 x = 1 gives cos^4 x = 1 - cos^2 x = sin^2 x, so on (0, π/2) sin x = cos^2 x. Writing s = sin x, s = 1 - s^2, i.e. s^2 + s = 1 (so s = (√5 - 1)/2). The required quantity is sin^2 x + 2 sin^3 x + sin^4 x = [s(1+s)]^2 = (s + s^2)^2 = 1^2 = 1. Exact sympy evaluation of the surd expression gives 1.00000000000000.",
+    "solution": "From \\(\\cos^{2}x + \\cos^{4}x = 1\\) we get \\(\\cos^{4}x = 1 - \\cos^{2}x = \\sin^{2}x\\), so \\(\\sin x = \\cos^{2}x\\) and hence \\(\\sin x = 1 - \\sin^{2}x\\), i.e. \\(\\sin^{2}x + \\sin x = 1\\). The given sum is \\(\\sin^{2}x + 2\\sin^{3}x + \\sin^{4}x = \\big[\\sin x(1+\\sin x)\\big]^{2} = \\big(\\sin x + \\sin^{2}x\\big)^{2}\\). That is \\(1^{2} = 1\\)."
+  },
+  {
+    "number": 39,
+    "answer": "A",
+    "value": "0",
+    "confidence": "HIGH",
+    "reasoning": "sin^4 x + cos^4 x = (sin^2 x + cos^2 x)^2 - 2 sin^2 x cos^2 x = 1 - 2 sin^2 x cos^2 x, so the condition forces sin^2 x cos^2 x = 0 and hence sin x cos x = 0. sympy solveset over [0, π/2] returns {0, π/2}, and at both endpoints the product is 0. Note the contrast with the previous item: here the fourth powers, not the second and fourth, sum to 1.",
+    "solution": "Since \\(\\sin^{4}x + \\cos^{4}x = (\\sin^{2}x + \\cos^{2}x)^{2} - 2\\sin^{2}x\\cos^{2}x = 1 - 2\\sin^{2}x\\cos^{2}x\\), the given condition forces \\(2\\sin^{2}x\\cos^{2}x = 0\\). Hence \\(\\sin x \\cos x = 0\\), which happens at \\(x = 0\\) and \\(x = \\frac{\\pi}{2}\\), the only solutions in the stated range."
+  },
+  {
+    "number": 40,
+    "answer": "A",
+    "value": "\\(\\frac{117}{25}\\)",
+    "confidence": "HIGH",
+    "reasoning": "From 3cosθ + 4sinθ = 4, cosθ = (4 - 4sinθ)/3; substituting into cos^2 + sin^2 = 1 gives 25 sin^2θ - 32 sinθ + 7 = 0, so sinθ = 1 or sinθ = 7/25. sinθ = 1 means θ = π/2, excluded by the printed range 0 ≤ θ < π/2. Hence sinθ = 7/25, cosθ = 24/25 and 4cosθ + 3sinθ = (96 + 21)/25 = 117/25. RUNNER-UP: the option 3 is exactly the value at the discarded root (sinθ = 1, cosθ = 0); it would win only if the interval were closed at π/2, which the stem explicitly is not.",
+    "solution": "From \\(3\\cos\\theta + 4\\sin\\theta = 4\\) we get \\(\\cos\\theta = \\frac{4-4\\sin\\theta}{3}\\), and substituting into \\(\\sin^{2}\\theta + \\cos^{2}\\theta = 1\\) gives \\(25\\sin^{2}\\theta - 32\\sin\\theta + 7 = 0\\), so \\(\\sin\\theta = 1\\) or \\(\\sin\\theta = \\frac{7}{25}\\). The root \\(\\sin\\theta = 1\\) needs \\(\\theta = \\frac{\\pi}{2}\\), which the given range excludes. So \\(\\sin\\theta = \\frac{7}{25}\\), \\(\\cos\\theta = \\frac{24}{25}\\), and \\(4\\cos\\theta + 3\\sin\\theta = \\frac{117}{25}\\)."
+  },
+  {
+    "number": 41,
+    "answer": "D",
+    "value": "4",
+    "confidence": "HIGH",
+    "reasoning": "m + n = 2cotθ and m - n = 2cosθ, so m^2 - n^2 = 4 cotθ cosθ. Also mn = cot^2θ - cos^2θ = cos^2θ(1/sin^2θ - 1) = cos^2θ · cot^2θ, so √(mn) = cotθ cosθ, positive on (0, π/2). The quotient is therefore 4, independent of θ. Numerical check at θ = 0.3, 0.7, 1.1, 1.5 rad: 4.000000 in every case.",
+    "solution": "Adding and subtracting the two relations, \\(m + n = 2\\cot\\theta\\) and \\(m - n = 2\\cos\\theta\\), so \\(m^{2} - n^{2} = 4\\cot\\theta\\cos\\theta\\). Also \\(mn = \\cot^{2}\\theta - \\cos^{2}\\theta = \\cos^{2}\\theta\\left(\\frac{1}{\\sin^{2}\\theta} - 1\\right) = \\cot^{2}\\theta\\cos^{2}\\theta\\), so \\(\\sqrt{mn} = \\cot\\theta\\cos\\theta\\) for \\(0 < \\theta < \\frac{\\pi}{2}\\). Dividing, the value is \\(4\\)."
+  },
+  {
+    "number": 42,
+    "answer": "C",
+    "value": "\\(p\\)",
+    "confidence": "HIGH",
+    "reasoning": "Since (cosecθ + cotθ)(cosecθ - cotθ) = cosec^2θ - cot^2θ = 1, each bracket is the reciprocal of the other. So p = (cosecθ - cotθ) - cosecθ = -cotθ, and the second expression is cosecθ - (cosecθ + cotθ) = -cotθ as well. The two are identically equal, so the answer is p. Numerical check at θ = 0.3, 0.7, 1.1, 2.0 and -0.5 rad: the ratio of the second expression to p is 1.000000 at every point, ruling out -p and ±1/p.",
+    "solution": "Because \\((\\operatorname{cosec}\\theta + \\cot\\theta)(\\operatorname{cosec}\\theta - \\cot\\theta) = \\operatorname{cosec}^{2}\\theta - \\cot^{2}\\theta = 1\\), each bracket is the reciprocal of the other. Hence \\(p = (\\operatorname{cosec}\\theta - \\cot\\theta) - \\operatorname{cosec}\\theta = -\\cot\\theta\\). The second expression is \\(\\operatorname{cosec}\\theta - (\\operatorname{cosec}\\theta + \\cot\\theta) = -\\cot\\theta\\) as well, so it equals \\(p\\) itself."
+  },
+  {
+    "number": 43,
+    "answer": "A",
+    "value": "\\(\\frac{3}{5}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Substituting cosθ = 8sinθ - 4 into sin^2θ + cos^2θ = 1 gives 65 sin^2θ - 64 sinθ + 15 = 0, with roots sinθ = 3/5 and sinθ = 5/13. The range π/6 < θ < π/3 requires 1/2 < sinθ < √3/2 ≈ 0.866; 3/5 = 0.6 qualifies (θ = 36.87°) while 5/13 ≈ 0.385 corresponds to θ = 22.62° and is outside. Check for 3/5: cosθ = 8(0.6) - 4 = 0.8 and 0.36 + 0.64 = 1. RUNNER-UP: 5/13 is the discarded root, winning only if the angle range were widened.",
+    "solution": "Write \\(\\cos\\theta = 8\\sin\\theta - 4\\) and substitute into \\(\\sin^{2}\\theta + \\cos^{2}\\theta = 1\\) to get \\(65\\sin^{2}\\theta - 64\\sin\\theta + 15 = 0\\), whose roots are \\(\\sin\\theta = \\frac{3}{5}\\) and \\(\\sin\\theta = \\frac{5}{13}\\). On \\(\\frac{\\pi}{6} < \\theta < \\frac{\\pi}{3}\\) we need \\(\\frac{1}{2} < \\sin\\theta < \\frac{\\sqrt{3}}{2}\\), and only \\(\\frac{3}{5}\\) lies in that range. So \\(\\sin\\theta = \\frac{3}{5}\\), with \\(\\cos\\theta = \\frac{4}{5}\\)."
+  },
+  {
+    "number": 44,
+    "answer": "D",
+    "value": "\\(\\frac{\\sqrt{3}}{2}\\) km",
+    "confidence": "HIGH",
+    "reasoning": "Consecutive kilometre-stones are 1 km apart. With height h, the horizontal distances from the hill's foot are h·cot 60° and h·cot 30°, and their difference is 1: h(√3 - 1/√3) = h·(2/√3) = 1, so h = √3/2 km. sympy solve on h/tan30° - h/tan60° = 1 returns sqrt(3)/2. The larger options would follow from taking the stone separation as more than 1 km.",
+    "solution": "Two consecutive kilometre-stones are \\(1\\) km apart. If the hill is \\(h\\) km high, the stones are \\(h\\cot 60^\\circ\\) and \\(h\\cot 30^\\circ\\) from its foot, so \\(h\\left(\\sqrt{3} - \\frac{1}{\\sqrt{3}}\\right) = 1\\). That is \\(h \\cdot \\frac{2}{\\sqrt{3}} = 1\\), giving \\(h = \\frac{\\sqrt{3}}{2}\\) km."
+  },
+  {
+    "number": 45,
+    "answer": "C",
+    "value": "\\(h\\tan\\alpha\\cot\\beta\\)",
+    "confidence": "HIGH",
+    "reasoning": "Let d be the horizontal distance from P to the foot of the tower. Q is at height h above P, and the depression of the tower's foot seen from Q gives tanβ = h/d, so d = h cotβ. The tower subtends α at P, which is at the same level as its foot, so its height is d tanα = h tanα cotβ. Swapping the roles of α and β gives the other three options, but the angle at the tower's own base position is α, so tanα multiplies.",
+    "solution": "Let \\(d\\) be the horizontal distance from \\(P\\) to the foot of the tower. Looking down from \\(Q\\), which is \\(h\\) above \\(P\\), the depression of that foot gives \\(\\tan\\beta = \\frac{h}{d}\\), so \\(d = h\\cot\\beta\\). The tower subtends \\(\\alpha\\) at \\(P\\), which lies at the level of its foot, so its height is \\(d\\tan\\alpha = h\\tan\\alpha\\cot\\beta\\)."
+  },
+  {
+    "number": 46,
+    "answer": "B",
+    "value": "\\(\\frac{169}{60}\\)",
+    "confidence": "HIGH",
+    "reasoning": "Since √(5^2 + 12^2) = 13, the expression 5sinθ + 12cosθ has maximum value 13 and the equation says it is attained, which forces sinθ = 5/13 and cosθ = 12/13. Solving the system algebraically in sympy gives exactly that single solution with both sine and cosine positive. Then tanθ + cotθ = 5/12 + 12/5 = (25 + 144)/60 = 169/60. Note tanθ + cotθ = 1/(sinθ cosθ) = 169/60 as a second route.",
+    "solution": "Since \\(\\sqrt{5^{2} + 12^{2}} = 13\\), the largest possible value of \\(5\\sin\\theta + 12\\cos\\theta\\) is \\(13\\), and the equation says that maximum is reached. That happens only when \\(\\sin\\theta = \\frac{5}{13}\\) and \\(\\cos\\theta = \\frac{12}{13}\\). Hence \\(\\tan\\theta + \\cot\\theta = \\frac{5}{12} + \\frac{12}{5} = \\frac{169}{60}\\)."
+  },
+  {
+    "number": 47,
+    "answer": "B",
+    "value": "\\(\\frac{3}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "On 0 ≤ x ≤ π/2, sin^2 x runs over the whole of [0, 1], so sin^2 x + 2 has greatest value 3 (at x = π/2) and least value 2 (at x = 0). The ratio is 3/2. TRANSCRIPTION FLAG, solved as printed: options (a) and (c) are BOTH the bare digit 2, an exact duplicate in the booklet. The duplicate is HARMLESS here - the computed value 3/2 is not the duplicated value, so it matches only one printed option and the item still has a unique correct letter. Had the answer been 2 the item would have been unanswerable as a letter.",
+    "solution": "On \\(0 \\le x \\le \\frac{\\pi}{2}\\) the quantity \\(\\sin^{2}x\\) takes every value from \\(0\\) to \\(1\\), so \\(\\sin^{2}x + 2\\) is greatest at \\(3\\) (when \\(x = \\frac{\\pi}{2}\\)) and least at \\(2\\) (when \\(x = 0\\)). The required ratio is therefore \\(\\frac{3}{2}\\). The paper prints the value \\(2\\) twice among the four choices, which is a misprint, but it does not affect this answer."
+  },
+  {
+    "number": 48,
+    "answer": "A",
+    "value": "I only",
+    "confidence": "HIGH",
+    "reasoning": "C obtuse with A + B + C = π and A, B > 0 forces A + B < π/2, so both A and B are acute. I: 0 < sinA < 1 and 0 < sinB < 1, so the product is strictly less than 1 - correct. II: B < π/2 - A gives tanB < tan(π/2 - A) = cotA = 1/tanA, so tanA·tanB < 1, never greater than 1 - incorrect. A 200,000-sample Monte Carlo over the admissible (A, B) region found 0 counterexamples to I and 0 cases where II held.",
+    "solution": "If \\(C\\) is obtuse then \\(A + B < \\frac{\\pi}{2}\\), so \\(A\\) and \\(B\\) are both positive and acute. Then \\(0 < \\sin A < 1\\) and \\(0 < \\sin B < 1\\), so \\(\\sin A \\cdot \\sin B < 1\\) and the first statement is correct. Also \\(B < \\frac{\\pi}{2} - A\\) gives \\(\\tan B < \\cot A = \\frac{1}{\\tan A}\\), hence \\(\\tan A \\cdot \\tan B < 1\\), so the second statement is wrong."
+  },
+  {
+    "number": 49,
+    "answer": "B",
+    "value": "\\(\\frac{p^{2}-1}{2}\\)",
+    "confidence": "HIGH",
+    "reasoning": "cos 55° = sin 35°, so p = sin 35° + cos 35°. Squaring, p^2 = 1 + 2 sin35° cos35°, hence sin35° cos35° = (p^2 - 1)/2. Numerically p = 1.3927285, (p^2 - 1)/2 = 0.46984631 and sin35° cos35° = 0.46984631, agreeing to eight decimals; the sign-flipped option (1 - p^2)/2 gives -0.46984631, which is negative and so cannot be a product of two positive numbers.",
+    "solution": "Since \\(\\cos 55^\\circ = \\sin 35^\\circ\\), we have \\(p = \\sin 35^\\circ + \\cos 35^\\circ\\). Squaring, \\(p^{2} = \\sin^{2}35^\\circ + \\cos^{2}35^\\circ + 2\\sin 35^\\circ\\cos 35^\\circ = 1 + 2\\sin 35^\\circ\\cos 35^\\circ\\). Therefore \\(\\sin 35^\\circ \\cdot \\cos 35^\\circ = \\frac{p^{2}-1}{2}\\)."
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "value": "1",
+    "confidence": "HIGH",
+    "reasoning": "p = secθ + tanθ = (1 + sinθ)/cosθ and q = cosecθ - cotθ = (1 - cosθ)/sinθ. sympy reduces p - q - pq to tanθ + 1 + cotθ - 2/sin 2θ, and since tanθ + cotθ = 1/(sinθ cosθ) = 2/sin 2θ those terms cancel, leaving 1. Numerical evaluation at θ = 0.2, 0.5, 0.9, 1.3, 2.5 and -0.4 rad (six points, including one outside the first quadrant) returns 1.00000000000000 each time, ruling out -1, 0 and 2.",
+    "solution": "Write \\(p = \\sec\\theta + \\tan\\theta = \\frac{1+\\sin\\theta}{\\cos\\theta}\\) and \\(q = \\operatorname{cosec}\\theta - \\cot\\theta = \\frac{1-\\cos\\theta}{\\sin\\theta}\\). Expanding, \\(p - q - pq\\) reduces to \\(\\tan\\theta + \\cot\\theta + 1 - \\frac{2}{\\sin 2\\theta}\\). Since \\(\\tan\\theta + \\cot\\theta = \\frac{1}{\\sin\\theta\\cos\\theta} = \\frac{2}{\\sin 2\\theta}\\), those two terms cancel and the value is \\(1\\)."
+  }
+]
