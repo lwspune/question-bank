@@ -1,0 +1,37 @@
+{
+  "paper": "2026-2",
+  "what": "The blind derivation's score against the OFFICIAL UPSC key, recorded at the moment it was taken.",
+  "whyThisFileExists": "The measurement is not reproducible from the current tree. Scoring a disagreement means adjudicating it, and adjudicating it means the questions file changes, so re-running scripts/cds/score.ts today reports 120/120 and says nothing about how the blind pass actually did. The number below is the one that carries information, and it is pinned here rather than left to git archaeology or to prose that can drift.",
+  "howToReproduce": "git show 20d2ff9ddd0e80aeb0709aff35d9bd8046606312:scripts/cds/data/2026-2.questions.json > /tmp/frozen.json, then score that file against data/2026-2.keyread1.json. The derivation commit was made BEFORE the key was opened; that ordering is the whole blindness guarantee.",
+  "derivationCommit": "20d2ff9ddd0e80aeb0709aff35d9bd8046606312",
+  "key": {
+    "sourceFile": "ProvAnsKey-English-CDSE-II-26-16092026.pdf",
+    "published": "2026-09-16",
+    "provisional": true,
+    "series": "A",
+    "pageIndex": 0,
+    "questionsDropped": 0
+  },
+  "blindPass": {
+    "total": 120,
+    "agree": 119,
+    "percent": 99.2,
+    "byConfidence": {
+      "HIGH": { "total": 105, "agree": 104 },
+      "MED": { "total": 15, "agree": 15 }
+    }
+  },
+  "calibrationNote": "All 15 MED rows agreed with the key and the single miss was a HIGH, so the confidence flag did not point at the error. On this paper it is not a useful triage signal for which rows to re-check.",
+  "disagreements": [
+    {
+      "number": 96,
+      "derived": "B",
+      "key": "D",
+      "confidence": "HIGH",
+      "adjudication": "OUR DERIVATION WAS WRONG; the key is correct and the answer was flipped to D.",
+      "optionOrderChecked": true,
+      "reasoning": "Checked in the documented order. (1) Option ORDER was re-read from a 4x crop of the printed page and matches the transcription exactly, so this is not the mis-slotted-option defect. (2) The derivation is the fault. The section keys 'contrasts with' only where two DIFFERENT subjects are set side by side (Q93 Mohan vs Sohan, Q98 the city vs its villages) and 'qualifies' where the SAME subject gets a tempering detail (Q91 the students, Q99 the train, Q100 the vaccine). Q96 is the same subject, the Indian team, across two times, so it qualifies. That discriminator had already been applied to Q91, Q99 and Q100 in this same pass and was simply not carried to Q96, where the winning-versus-struggling wording read as oppositional."
+    }
+  ],
+  "limitation": "A single agent cannot be two parties. Blindness here rests on ORDERING — the derivation was written and committed before the key PDF was opened — and on the git history that records it. That is weaker than the two-independent-reader arrangement the CDS Maths pipeline uses, and the same caveat applies to the two key reads, which are two passes with different crop strategies by one reader rather than two readers."
+}
