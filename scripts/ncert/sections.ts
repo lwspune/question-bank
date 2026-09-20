@@ -1029,6 +1029,37 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life?", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.3 Q"] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] },
   ],
+
+  // ── Ch.11 Electricity (10th Science). The first Science chapter with worked
+  //    examples — THIRTEEN of them, the most in the book, and the only shape on
+  //    this lane where a `solved_example` block appears at all.
+  //
+  //    Examples band to the in-text box they PRECEDE, so each taught section
+  //    contributes a Solved-Examples block and then its Questions box, in that
+  //    reading order. The mapping was read off the rendered pages, not inferred:
+  //    Eg 11.1 → box 1 · 11.2 → box 2 · 11.3-11.6 → box 3 · 11.7 → box 4 ·
+  //    11.8-11.9 → box 5 · 11.10-11.11 → box 6 · 11.12-11.13 → box 7.
+  //
+  //    §11.3 Circuit Diagram carries no questions of its own — box 2 closes
+  //    §11.2 and sits on the page where §11.3 opens — so it contributes no
+  //    block, and the outline is 13 blocks rather than 16.
+  c10SciElectricity: [
+    { group: "11.1 Electric Current and Circuit", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg."] },
+    { group: "11.1 Electric Current and Circuit", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.1 Q"] },
+    { group: "11.2 Electric Potential and Potential Difference", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.2 Eg."] },
+    { group: "11.2 Electric Potential and Potential Difference", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.2 Q"] },
+    { group: "11.4-11.5 Ohm's Law and the Factors on which Resistance Depends", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.3 Eg."] },
+    { group: "11.4-11.5 Ohm's Law and the Factors on which Resistance Depends", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.3 Q"] },
+    { group: "11.6.1 Resistors in Series", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.4 Eg."] },
+    { group: "11.6.1 Resistors in Series", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.4 Q"] },
+    { group: "11.6.2 Resistors in Parallel", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.5 Eg."] },
+    { group: "11.6.2 Resistors in Parallel", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.5 Q"] },
+    { group: "11.7 Heating Effect of Electric Current", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.6 Eg."] },
+    { group: "11.7 Heating Effect of Electric Current", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.6 Q"] },
+    { group: "11.8 Electric Power", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.7 Eg."] },
+    { group: "11.8 Electric Power", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.7 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

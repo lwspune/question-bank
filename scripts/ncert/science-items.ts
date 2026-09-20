@@ -60,7 +60,12 @@ sys.stdout.buffer.write("\\n".join(out).encode("utf-8"))
   return r.stdout;
 }
 
-const ITEM_RE = /^[ \t]*(\d{1,2})[ \t]*\./gm;
+// Same rule as the key parser: a label's dot is followed by whitespace, a
+// decimal's is not. Ch.11 Q7 prints a DATA TABLE of I/V pairs, and its values
+// ("10.2", "13.2") sit at the start of their own lines in the block-sorted dump
+// — read as items 10 and 13, they broke the contiguous run at 7 and reported
+// eleven transcribed questions as missing from a book that has them all.
+const ITEM_RE = /^[ \t]*(\d{1,2})\.(?=[ \t]|$)/gm;
 const lineItems = (s: string) => [...s.matchAll(new RegExp(ITEM_RE.source, "gm"))].map((m) => Number(m[1]));
 
 function report(label: string, r: { missing: number[]; extra: number[] }) {
@@ -116,9 +121,22 @@ function main() {
   //    chapter has, and on Ch.1-8 + 13 they are just the leading MCQs.
   if (ch.answersPdf && ch.answerPages?.length) {
     const keyed = parseKeyChapters(pdfText(ch.answersPdf, false)).get(ch.chapterNo) ?? [];
-    const answered = refStructure(rows.filter((r) => r.answer).map((r) => r.ref)).exercise;
+    // Compare the key against EVERY transcribed exercise item, not only the rows
+    // carrying an `answer` field. `answer` means "an MCQ letter", and outside
+    // Ch.1-8's leading MCQs this key answers numericals and short-response
+    // questions whose bank row is SUBJECTIVE with its answer in `solution`.
+    // Filtering on `answer` reported all fourteen of Ch.11's keyed numericals as
+    // untranscribed when every one of them was present.
     console.log("");
-    report(`keyed items vs answered rows`, reconcile(keyed, answered));
+    const k = reconcile(keyed, got.exercise);
+    // `missing` is the real signal: the key answers an item we have no row for.
+    // `extra` is EXPECTED and is not an error — it is simply the items the key
+    // does not cover, which on this book is most of them.
+    console.log(
+      `  ${"keyed items with no row".padEnd(30)} ${k.missing.length ? k.missing.join(", ") : "none"}`
+    );
+    if (k.extra.length) console.log(`  ${"unkeyed items (expected)".padEnd(30)} ${k.extra.join(", ")}`);
+    if (k.missing.length) hits = true;
     const pct = bookEx.length ? Math.round((keyed.length / bookEx.length) * 100) : 0;
     console.log(
       `  KEY COVERAGE: ${keyed.length} of ${bookEx.length} exercise items (${pct}%) — ` +

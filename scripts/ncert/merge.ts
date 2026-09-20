@@ -41,8 +41,14 @@ function main() {
     // cannot simply be renamed out of the way. The SHAPE GUARD below is what
     // actually caught this — the name list had gone stale again, exactly as its
     // own comment predicts it will.
+    // `derivation` joined it on 2026-09-20, from the Class 10 SCIENCE lane: the
+    // Electricity chapter's numericals are derived in sympy into
+    // `<id>.derivation.json`, which is EVIDENCE worth committing (it is the
+    // record of the independent derivation) and so belongs in data/ rather than
+    // out/. The SHAPE GUARD below caught it on the first auto-discovery run, as
+    // its own comment predicts — the name list had gone stale again.
     const SCRATCH =
-      /\.(solutions|tosolve|review|mcq-verify|mcq-blind|crosscheck|errata|solution-images|fig|anchors)\.json$/;
+      /\.(solutions|tosolve|review|mcq-verify|mcq-blind|crosscheck|errata|solution-images|fig|anchors|derivation)\.json$/;
     // `diagram-specs` needs its own test: its part-files are named
     // `<id>.diagram-specs.<group>.json`, so the suffix is in the MIDDLE and the
     // anchored pattern above can never match it.

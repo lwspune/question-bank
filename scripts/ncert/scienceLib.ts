@@ -219,7 +219,12 @@ export function groundingViolations(rows: GroundedRow[], anchors: string[]): Gro
 /** A line that is nothing but "Chapter N" — the key's own block header. */
 const KEY_CHAPTER_RE = /^[ \t]*Chapter[ \t]+(\d{1,2})[ \t]*$/gm;
 /** An item label at the START of a line: "2. (d)", "1.", "13. 9.2 A, 4.6 A". */
-const KEY_ITEM_RE = /^[ \t]*(\d{1,2})[ \t]*\./gm;
+// The dot MUST be followed by whitespace or end-of-line. Without that, a wrapped
+// answer VALUE landing at the start of a line ("0.67 A", "18.3 A") reads as item
+// 0 or item 18 — which gave Ch.11 eighteen keyed items against seven book items,
+// i.e. 257% key coverage. That impossible percentage is how the bug surfaced. A
+// real label has whitespace after its dot; a decimal never does.
+const KEY_ITEM_RE = /^[ \t]*(\d{1,2})\.(?=[ \t]|$)/gm;
 
 /**
  * The item numbers the answer key lists, grouped by chapter.

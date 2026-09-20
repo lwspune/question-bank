@@ -413,3 +413,19 @@ describe("reconcile", () => {
     expect(reconcile([1, 2], [])).toEqual({ missing: [1, 2], extra: [] });
   });
 });
+
+describe("parseKeyChapters — decimals at line start", () => {
+  it("does not read a wrapped answer value as an item label", () => {
+    // Ch.11's key wraps "9.  0.67 A" so that "0.67 A" can land at the START of a
+    // line, where `^(\d{1,2})\.` read it as item 0. The chapter then reported 18
+    // keyed items against 7 book items — 257% coverage, which is how the bug was
+    // spotted. A real label has WHITESPACE after its dot; a decimal does not.
+    const m = parseKeyChapters("Chapter 11\n1. (d)\n0.67 A\n18.3 A\n12. 110 bulbs");
+    expect(m.get(11)).toEqual([1, 12]);
+  });
+
+  it("still accepts a label whose answer wrapped onto the next line", () => {
+    // "5.\nParallel" is the common shape in this key — dot then end-of-line.
+    expect(parseKeyChapters("Chapter 11\n5.\nParallel\n7.\n3.33 ohm").get(11)).toEqual([5, 7]);
+  });
+});
