@@ -4,25 +4,28 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
   subtopicName: "Logical Equivalence and Algebra of Statements",
   title: "Logical Equivalence and Algebra of Statements",
   oneLineDefinition:
-    "Two statement patterns are logically equivalent when their last columns match, and a short list of algebra laws lets you simplify one into the other without building a table.",
+    "A short list of named laws lets you reach the answer to an equivalence question by algebra instead of by building the whole truth table.",
   whyItMatters:
     "16 PYQs sit here at 31% HARD, and this is the subtopic that decides how long the rest of the chapter takes you. " +
-    "Every 'is equivalent to' question can be answered by an eight-row truth table, which is slow and error-prone, or by three lines of algebra, which is neither. " +
+    "You already know what equivalence MEANS — the first block defined it as two matching last columns. What is new here is the shortcut: " +
+    "an eight-row table always works but is slow and error-prone, while three lines of algebra reach the same verdict. " +
+    "The table is the method that always terminates; the algebra is the method that is fast. Build the table when the pattern is small, when the algebra stalls, " +
+    "or when the question hands you the truth values outright — reach for the laws when there are three letters and an arrow to clear. " +
     "The same laws then do the work in Switching Circuits, so the time spent here is paid back twice.",
   concepts: [
     // 1 — what equivalence means
     {
       kind: "formula" as const,
       slug: "mlog-logical-equivalence-defined",
-      name: "What Logical Equivalence Means",
+      name: "Why Equivalence Licenses Substitution",
       intuition:
-        "Two patterns are equivalent if they can never disagree — not merely if they look similar or happen to agree in one row. " +
-        "The definitive test is that their final columns are identical, row for row.",
+        "You met \\(A \\equiv B\\) in the first block as a reading of the last column: two patterns whose columns match row for row. " +
+        "What this block adds is the consequence — because they can never disagree, one may be SWAPPED for the other anywhere, and that permission is what makes every simplification below legal.",
       definition:
-        "\\(A \\equiv B\\) means \\(A\\) and \\(B\\) have the **same truth value in every row** of the truth table.\n" +
-        "- Equivalently, \\(A \\leftrightarrow B\\) is a **tautology**.\n" +
-        "- Equivalent statements may be substituted for each other anywhere, which is what makes simplification legal.\n" +
-        "- To **disprove** equivalence you need only ONE row where they differ — a counterexample, not a full table.",
+        "Recall \\(A \\equiv B\\): \\(A\\) and \\(B\\) have the **same truth value in every row**, equivalently \\(A \\leftrightarrow B\\) is a **tautology**.\n" +
+        "- **The substitution licence.** Equivalent statements may replace each other inside any larger pattern without changing its truth value. Every law in the table below is used this way.\n" +
+        "- **The asymmetry.** To DISPROVE equivalence you need only ONE row where they differ; to ESTABLISH it you need every row, or an algebraic derivation that stands in for every row.\n" +
+        "- This is why the algebra exists at all: each law is a pre-proved equivalence you may apply without re-deriving its table.",
       formula: {
         label: "Equivalence and its test",
         latex:
@@ -97,7 +100,8 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
         "These laws are the ordinary algebra of numbers with AND behaving like multiplication and OR like addition — " +
         "except that distribution works both ways round here, which ordinary arithmetic does not allow.",
       definition:
-        "Simplification uses a short list of named laws. **T** denotes a tautology and **F** a contradiction:\n" +
+        "The full working list, gathered in one place. **T** denotes a tautology and **F** a contradiction:\n" +
+        "- **Three of these you have already met as concepts in their own right** — De Morgan and the negation of a conditional in Negation of Statements, and the conditional law itself back in the first block. They are repeated here because simplification uses them as ALGEBRA, one rewrite among ten, rather than as rules for negating.\n" +
         "- The two that do the most work are **complement** and **distributive**.\n" +
         "- The **conditional law** is what lets you remove an arrow so the others can apply.\n" +
         "- **Absorption** is the one students most often fail to spot, and it collapses a whole bracket in one move.",
@@ -303,16 +307,16 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
     {
       kind: "formula" as const,
       slug: "mlog-tautology-contradiction-contingency",
-      name: "Tautology, Contradiction and Contingency",
+      name: "Classifying a Pattern Without Building Its Table",
       intuition:
-        "Once you have the last column, the classification is just a glance: all T is a tautology, all F is a contradiction, " +
-        "and anything with a mix is a contingency. Most exam patterns simplify to T or F long before the table is finished.",
+        "The three classifications were defined in the first block as readings of the last column. The point here is that you rarely need the column: " +
+        "simplify with the laws and watch what falls out — a bare \\(T\\), a bare \\(F\\), or something still carrying a letter.",
       definition:
-        "Classify a statement pattern by its final column:\n" +
-        "- **Tautology** — true in every row. It simplifies to \\(T\\).\n" +
-        "- **Contradiction** — false in every row. It simplifies to \\(F\\).\n" +
-        "- **Contingency** — at least one T and at least one F. It simplifies to something still containing a letter.\n" +
-        "The fastest route is almost always to simplify with the algebra laws and see whether a bare \\(T\\) or \\(F\\) falls out.",
+        "The classification is unchanged; what changes is how you reach it:\n" +
+        "- A **tautology** simplifies to \\(T\\) — no letters survive.\n" +
+        "- A **contradiction** simplifies to \\(F\\) — likewise.\n" +
+        "- A **contingency** simplifies to something that **still contains a letter**, which is the tell: if a letter survives, the value must depend on it, so the column cannot be constant.\n" +
+        "That last line is the whole shortcut. You do not need to find the rows that differ — you only need to see that a letter is left.",
       formula: {
         label: "Classification by last column",
         latex:
@@ -376,7 +380,93 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
       ],
     },
 
-    // 5 — dual
+    // 5 — the "find r" move, now adjacent to the classification it depends on
+    {
+      kind: "formula" as const,
+      slug: "mlog-finding-r-for-a-tautology",
+      name: "Finding the Statement That Makes a Pattern a Tautology",
+      intuition:
+        "A recurring stem says 'this pattern is a tautology — what must r be?'. Turn it round: a conditional is a tautology exactly when " +
+        "its consequent is true in every row where the antecedent is. So simplify the antecedent first and read off what it forces.",
+      definition:
+        "For \\(X \\to r\\) to be a **tautology**, \\(r\\) must be true in every row where \\(X\\) is true.\n" +
+        "- **Simplify \\(X\\) first** — it usually collapses to something small.\n" +
+        "- Read off the rows where the simplified \\(X\\) holds.\n" +
+        "- The answer is the option that is true in all of those rows; it need not be true everywhere else.\n" +
+        "A useful simplification: \\((p \\to q) \\wedge \\sim q \\equiv \\;\\sim p \\wedge \\sim q\\), the modus tollens pattern.",
+      formula: {
+        label: "Tautology condition and modus tollens",
+        latex:
+          "(X \\to r) \\text{ is a tautology} \\iff X = T \\Rightarrow r = T \\qquad (p \\to q) \\wedge \\sim q \\equiv\\; \\sim p \\wedge \\sim q",
+        symbols: [
+          { symbol: "X", meaning: "the antecedent — simplify this before anything else" },
+          { symbol: "r", meaning: "the statement being solved for" },
+        ],
+      },
+      authoredExample: {
+        prompt:
+          "The statement pattern \\([(p \\to q) \\wedge \\sim q] \\to r\\) is a tautology. What must \\(r\\) be equivalent to?",
+        steps: [
+          "Simplify the antecedent. Clear the arrow: \\((\\sim p \\vee q) \\wedge \\sim q\\).",
+          "Distribute: \\((\\sim p \\wedge \\sim q) \\vee (q \\wedge \\sim q)\\). The second bracket is \\(F\\) by complement.",
+          "So the antecedent is \\(\\sim p \\wedge \\sim q\\) — true only in the single row \\(p = F,\\; q = F\\).",
+          "For the whole conditional to be a tautology, \\(r\\) must be true in that one row. Both \\(\\sim p\\) and \\(\\sim q\\) qualify.",
+          "The options decide between them; \\(\\sim q\\) is the one offered here.",
+        ],
+        answer: "\\(r \\equiv \\;\\sim q\\) (and \\(\\sim p\\) would serve equally on the logic alone).",
+      },
+      selfCheckExample: {
+        prompt:
+          "Given that \\(q\\) is false, show that \\((p \\wedge q) \\to (p \\vee r)\\) is a tautology for every \\(p\\) and \\(r\\).",
+        steps: [
+          "Simplify the antecedent with \\(q = F\\): \\(p \\wedge F \\equiv F\\) by the domination law.",
+          "So the antecedent is false in every remaining row.",
+          "A conditional with a false antecedent is true.",
+          "Hence the pattern is true in every row, whatever \\(p\\) and \\(r\\) are.",
+        ],
+        answer:
+          "It is a tautology, because the antecedent can never be true once \\(q\\) is false.",
+      },
+      practiceSet: [
+        {
+          prompt: "Simplify \\((p \\to q) \\wedge \\sim q\\).",
+          answer: "\\(\\sim p \\wedge \\sim q\\)",
+          method: "Modus tollens pattern.",
+        },
+        {
+          prompt: "When is \\(X \\to r\\) a tautology?",
+          answer: "When \\(r\\) is true in every row where \\(X\\) is true.",
+          method: "The only failing row is \\(T \\to F\\).",
+        },
+        {
+          prompt: "If the antecedent simplifies to \\(F\\), is \\(X \\to r\\) a tautology?",
+          answer: "Yes, for every \\(r\\).",
+          method: "A false antecedent makes the conditional vacuously true.",
+        },
+        {
+          prompt: "If \\(X \\equiv \\;\\sim p \\wedge \\sim q\\), name an \\(r\\) making \\(X \\to r\\) a tautology.",
+          answer: "\\(\\sim q\\) (or \\(\\sim p\\)).",
+          method: "Both are true in the one row where \\(X\\) holds.",
+        },
+      ],
+      pyqExampleId: "d1fd5c79-f273-49ed-b775-5e08d2fd3594",
+      traps: [
+        {
+          title: "Looking for an r that is true everywhere",
+          body:
+            "\\(r\\) only has to hold in the rows where the ANTECEDENT is true — it may be false elsewhere without harming the tautology. " +
+            "Hunting for a universally true \\(r\\) rules out the correct option, which is usually a plain \\(\\sim p\\) or \\(\\sim q\\).",
+        },
+      ],
+    },
+    // 6 — dual. MOVED here from position 5 on 2026-09-20: it used to sit
+    //     BETWEEN the two tautology concepts, which are a coupled pair
+    //     (classify by last column -> solve for the r that forces a tautology).
+    //     Duals are also the chapter's thinnest content: exactly ONE bank
+    //     question touches them (see the pyqExampleId note below), so the
+    //     lowest-value concept was interrupting the only two-concept thread
+    //     in the subtopic. It stays in the chapter because it is Std XII
+    //     syllabus and the dual-vs-negation confusion is worth pre-empting.
     {
       kind: "formula" as const,
       slug: "mlog-dual-of-a-statement",
@@ -461,88 +551,10 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
       ],
     },
 
-    // 6 — the "find r" move
-    {
-      kind: "formula" as const,
-      slug: "mlog-finding-r-for-a-tautology",
-      name: "Finding the Statement That Makes a Pattern a Tautology",
-      intuition:
-        "A recurring stem says 'this pattern is a tautology — what must r be?'. Turn it round: a conditional is a tautology exactly when " +
-        "its consequent is true in every row where the antecedent is. So simplify the antecedent first and read off what it forces.",
-      definition:
-        "For \\(X \\to r\\) to be a **tautology**, \\(r\\) must be true in every row where \\(X\\) is true.\n" +
-        "- **Simplify \\(X\\) first** — it usually collapses to something small.\n" +
-        "- Read off the rows where the simplified \\(X\\) holds.\n" +
-        "- The answer is the option that is true in all of those rows; it need not be true everywhere else.\n" +
-        "A useful simplification: \\((p \\to q) \\wedge \\sim q \\equiv \\;\\sim p \\wedge \\sim q\\), the modus tollens pattern.",
-      formula: {
-        label: "Tautology condition and modus tollens",
-        latex:
-          "(X \\to r) \\text{ is a tautology} \\iff X = T \\Rightarrow r = T \\qquad (p \\to q) \\wedge \\sim q \\equiv\\; \\sim p \\wedge \\sim q",
-        symbols: [
-          { symbol: "X", meaning: "the antecedent — simplify this before anything else" },
-          { symbol: "r", meaning: "the statement being solved for" },
-        ],
-      },
-      authoredExample: {
-        prompt:
-          "The statement pattern \\([(p \\to q) \\wedge \\sim q] \\to r\\) is a tautology. What must \\(r\\) be equivalent to?",
-        steps: [
-          "Simplify the antecedent. Clear the arrow: \\((\\sim p \\vee q) \\wedge \\sim q\\).",
-          "Distribute: \\((\\sim p \\wedge \\sim q) \\vee (q \\wedge \\sim q)\\). The second bracket is \\(F\\) by complement.",
-          "So the antecedent is \\(\\sim p \\wedge \\sim q\\) — true only in the single row \\(p = F,\\; q = F\\).",
-          "For the whole conditional to be a tautology, \\(r\\) must be true in that one row. Both \\(\\sim p\\) and \\(\\sim q\\) qualify.",
-          "The options decide between them; \\(\\sim q\\) is the one offered here.",
-        ],
-        answer: "\\(r \\equiv \\;\\sim q\\) (and \\(\\sim p\\) would serve equally on the logic alone).",
-      },
-      selfCheckExample: {
-        prompt:
-          "Given that \\(q\\) is false, show that \\((p \\wedge q) \\to (p \\vee r)\\) is a tautology for every \\(p\\) and \\(r\\).",
-        steps: [
-          "Simplify the antecedent with \\(q = F\\): \\(p \\wedge F \\equiv F\\) by the domination law.",
-          "So the antecedent is false in every remaining row.",
-          "A conditional with a false antecedent is true.",
-          "Hence the pattern is true in every row, whatever \\(p\\) and \\(r\\) are.",
-        ],
-        answer:
-          "It is a tautology, because the antecedent can never be true once \\(q\\) is false.",
-      },
-      practiceSet: [
-        {
-          prompt: "Simplify \\((p \\to q) \\wedge \\sim q\\).",
-          answer: "\\(\\sim p \\wedge \\sim q\\)",
-          method: "Modus tollens pattern.",
-        },
-        {
-          prompt: "When is \\(X \\to r\\) a tautology?",
-          answer: "When \\(r\\) is true in every row where \\(X\\) is true.",
-          method: "The only failing row is \\(T \\to F\\).",
-        },
-        {
-          prompt: "If the antecedent simplifies to \\(F\\), is \\(X \\to r\\) a tautology?",
-          answer: "Yes, for every \\(r\\).",
-          method: "A false antecedent makes the conditional vacuously true.",
-        },
-        {
-          prompt: "If \\(X \\equiv \\;\\sim p \\wedge \\sim q\\), name an \\(r\\) making \\(X \\to r\\) a tautology.",
-          answer: "\\(\\sim q\\) (or \\(\\sim p\\)).",
-          method: "Both are true in the one row where \\(X\\) holds.",
-        },
-      ],
-      pyqExampleId: "d1fd5c79-f273-49ed-b775-5e08d2fd3594",
-      traps: [
-        {
-          title: "Looking for an r that is true everywhere",
-          body:
-            "\\(r\\) only has to hold in the rows where the ANTECEDENT is true — it may be false elsewhere without harming the tautology. " +
-            "Hunting for a universally true \\(r\\) rules out the correct option, which is usually a plain \\(\\sim p\\) or \\(\\sim q\\).",
-        },
-      ],
-    },
   ],
   related: [
-    { label: "Switching circuits", href: "/notes/mht-cet-maths/mathematical-logic/switching-circuits" },
+    { label: "Next: Switching circuits", href: "/notes/mht-cet-maths/mathematical-logic/switching-circuits" },
+    { label: "Previous: Converse, inverse and contrapositive", href: "/notes/mht-cet-maths/mathematical-logic/converse-inverse-contrapositive" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
   ],
 };

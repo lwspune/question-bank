@@ -312,7 +312,7 @@ export const SWITCHING_CIRCUITS_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Logical equivalence and algebra of statements", href: "/notes/mht-cet-maths/mathematical-logic/logical-equivalence-algebra" },
+    { label: "Previous: Logical equivalence and algebra of statements", href: "/notes/mht-cet-maths/mathematical-logic/logical-equivalence-algebra" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
   ],
 };

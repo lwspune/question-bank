@@ -223,11 +223,11 @@ export const CONVERSE_INVERSE_CONTRAPOSITIVE_NOTE: SubtopicNote = {
         steps: [
           "Read the disjunction in the convenient order: \\(q \\vee \\sim p \\equiv \\;\\sim p \\vee q\\).",
           "That is the \\(\\sim A \\vee B\\) shape with \\(A = p\\), so it equals \\(p \\to q\\).",
-          "But the question is usually posed so the contrapositive reads more naturally: \\(p \\to q \\equiv \\;\\sim q \\to \\sim p\\).",
-          "In words: if X is not an isosceles triangle, then X is not an equilateral triangle.",
+          "Translate back into words, keeping p as the antecedent: if X is an equilateral triangle, then X is an isosceles triangle.",
+          "Check it is true: every equilateral triangle has three equal sides, so it certainly has two — the conditional holds.",
         ],
         answer:
-          "'If X is not an isosceles triangle, then X is not an equilateral triangle.'",
+          "'If X is an equilateral triangle, then X is an isosceles triangle.' Its contrapositive, \\(\\sim q \\to \\sim p\\), says the same thing: if X is not isosceles, it is not equilateral.",
       },
       practiceSet: [
         {
@@ -427,7 +427,8 @@ export const CONVERSE_INVERSE_CONTRAPOSITIVE_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Negation of statements and quantifiers", href: "/notes/mht-cet-maths/mathematical-logic/negation-and-quantifiers" },
+    { label: "Next: Logical equivalence and algebra of statements", href: "/notes/mht-cet-maths/mathematical-logic/logical-equivalence-algebra" },
+    { label: "Previous: Negation of statements and quantifiers", href: "/notes/mht-cet-maths/mathematical-logic/negation-and-quantifiers" },
     { label: "Mathematical Logic playbook", href: "/guide/mht-cet-maths/playbooks/mathematical-logic" },
   ],
 };
