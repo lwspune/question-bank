@@ -1,0 +1,64 @@
+name: Send per-attempt mock reports
+
+# Mail each student the diagnosis of the mocks they finished.
+#
+# WHY A SCHEDULE AND NOT THE SUBMIT PATH. We are on Next 14, which has no
+# after(), and @vercel/functions (waitUntil) is not a dependency — so work left
+# running after the response can be frozen mid-flight. That leaves two honest
+# options: await the send inside submitAttempt, or schedule it. Sending inline
+# puts get_student_performance (the RPC shape that took /performance down on
+# 2026-09-15) plus a Resend round trip on the critical path of grading, for a
+# student who is at that moment already reading the same findings on the result
+# screen. The email's job is the nudge AFTER they close the tab, and that job
+# does not care whether it goes out now or tonight.
+#
+# ONCE A DAY, not hourly. A student sitting three papers in an afternoon gets
+# one batch in the evening rather than three interruptions, and the runner's own
+# 3/student/day cap is keyed on the attempt's day, so a daily grain is the one
+# the cap was written for. 15:30 UTC is 21:00 IST — after a full study day.
+# GitHub's scheduler queues under load, so treat it as "around 21:00".
+#
+# THE WINDOW IS A SECOND BOUND, NOT A REPLACEMENT. SINCE stays the immovable
+# forward-only floor; --lookback-hours=48 keeps a nightly run from re-reading
+# every attempt ever, and 48 rather than 24 so one missed run self-heals the
+# next day. resolveCutoff clamps it to SINCE — it can never widen.
+#
+# SAFE TO RE-RUN. Every send writes a UNIQUE dedupe_key (mock_report:<attemptId>)
+# and the runner reads those first, so a second pass on the same day mails
+# nobody twice. --limit caps the blast radius if a multi-day outage ever lets a
+# backlog build up behind the window.
+
+on:
+  schedule:
+    - cron: "30 15 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22"). On Node 20
+          # @supabase/supabase-js throws from createClient() before any network
+          # call — see the same note in db-health.yml.
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Mail finished-mock reports
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          # Both are REQUIRED and neither is part of the six CI secrets — the
+          # job fails loudly without them rather than silently mailing nobody.
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        # --apply is deliberate here and nowhere else: running `npm run
+        # email:mock-report` by hand stays a dry run, so a human asking "who is
+        # owed a report?" can never send one as a side effect.
+        run: npm run email:mock-report -- --apply --lookback-hours=48 --limit=25

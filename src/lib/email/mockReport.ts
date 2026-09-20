@@ -45,6 +45,36 @@ export const PICK = 3;
  */
 export const PACING_FLOOR = 5;
 
+/**
+ * The cutoff a single run reads attempts from.
+ *
+ * TWO BOUNDS, AND ONLY ONE OF THEM MOVES. `featureStart` is the runner's
+ * `SINCE` constant — the immovable floor, because 542 attempts predate this
+ * feature and mailing a report about one of them weeks later is the failure
+ * the forward-only rule exists to prevent. `lookbackHours` is the SCHEDULED
+ * run's narrower bound: without it, every nightly run re-reads every attempt
+ * since the start line, a set that only grows.
+ *
+ * The window can only ever NARROW. A lookback long enough to reach past the
+ * start line clamps to it rather than sweeping history back in.
+ *
+ * An unusable lookback THROWS rather than falling back to a default. A cron
+ * given a mistyped value should fail loudly and send nothing: a default would
+ * silently pick a window nobody chose, and clamping cannot rescue it anyway —
+ * `Math.max(1, NaN)` is `NaN`, so a bad value propagates instead of being
+ * bounded away.
+ */
+export function resolveCutoff(featureStart: Date, now: Date, lookbackHours?: number): Date {
+  if (lookbackHours === undefined) return featureStart;
+  if (!Number.isFinite(lookbackHours) || lookbackHours <= 0) {
+    throw new Error(
+      `resolveCutoff: lookbackHours must be a finite positive number, got ${lookbackHours}`
+    );
+  }
+  const windowStart = new Date(now.getTime() - lookbackHours * 60 * 60 * 1000);
+  return windowStart > featureStart ? windowStart : featureStart;
+}
+
 export type ReportQuestion = {
   questionId: string;
   /** 1-based position in the paper — what the student will recognise. */

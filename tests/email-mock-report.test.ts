@@ -9,7 +9,7 @@
  *    becomes the pacing line instead.
  */
 import { describe, it, expect } from "vitest";
-import { buildMockReport, PICK, PACING_FLOOR } from "@/lib/email/mockReport";
+import { buildMockReport, resolveCutoff, PICK, PACING_FLOOR } from "@/lib/email/mockReport";
 import type { PerfAttempt, PerfFact, StudentPerformancePayload } from "@/lib/performance/types";
 
 const ATTEMPT = "att-1";
@@ -210,5 +210,44 @@ describe("buildMockReport — subtopic picks carry their lane", () => {
     const r = buildMockReport(withBank(), ATTEMPT, new Map(), new Date("2026-09-02T00:00:00Z"))!;
     const quadratics = r.subtopics.find((s) => s.subtopic === "Quadratics");
     expect(quadratics?.chapter).toBe("Algebra");
+  });
+});
+
+/**
+ * The cutoff the DAILY cron runs on.
+ *
+ * `SINCE` in the runner is the feature's start line and stays a constant, so a
+ * replay picks the same set. A scheduled run needs a second, NARROWER bound —
+ * otherwise every night's run re-reads every attempt since 2026-09-18, a set
+ * that only grows. The window may never widen past the start line: 542 attempts
+ * predate the feature and mailing a report for one of them is the failure this
+ * whole design has been avoiding since it shipped.
+ */
+describe("resolveCutoff — the daily cron's lookback window", () => {
+  const FEATURE_START = new Date("2026-09-18T00:00:00Z");
+  const NOW = new Date("2026-09-25T12:00:00Z");
+
+  it("returns the feature start when no lookback is given", () => {
+    expect(resolveCutoff(FEATURE_START, NOW).toISOString()).toBe(FEATURE_START.toISOString());
+  });
+
+  it("narrows to the window when that lands after the feature start", () => {
+    expect(resolveCutoff(FEATURE_START, NOW, 48).toISOString()).toBe("2026-09-23T12:00:00.000Z");
+  });
+
+  it("CLAMPS to the feature start rather than sweeping history back in", () => {
+    const justAfterLaunch = new Date("2026-09-19T00:00:00Z");
+    expect(resolveCutoff(FEATURE_START, justAfterLaunch, 24 * 30).toISOString()).toBe(
+      FEATURE_START.toISOString()
+    );
+  });
+
+  it("THROWS on a lookback that is not a finite positive number", () => {
+    // A mistyped --lookback-hours must fail the cron loudly. Falling back to a
+    // default would silently pick a window nobody chose, and Math.max(1, NaN)
+    // is NaN — a bad value propagates rather than being clamped away.
+    for (const bad of [0, -1, Number.NaN, Number.POSITIVE_INFINITY]) {
+      expect(() => resolveCutoff(FEATURE_START, NOW, bad)).toThrow();
+    }
   });
 });
