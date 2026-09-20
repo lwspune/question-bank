@@ -32,6 +32,7 @@ npx tsx scripts/cds/commit.ts  <paperId> --apply    # 7. commit PRIVATE
 # 7b. ONLY where an official key exists (2026-2 onward). Runs AFTER 3-6 are
 #     committed to git — that ordering is what makes the derivation blind.
 npx tsx scripts/cds/score.ts   <paperId>            #     blind derivation vs the official key
+npx tsx scripts/cds/record-key-reviews.ts <paperId> --apply   # 7c. record the verdicts
 ```
 
 Paper registry + the **section-type catalog** (the durable CDS knowledge: each section type →
@@ -191,6 +192,7 @@ Three consequences, each learned the expensive way:
 | `matchlist-verify.ts` | re-asserts all 40 match-list code tables; proven to go red on an injected wrong code and an injected wrong key |
 | `audit-keys.ts` | CDS-scoped structural probe (`npm run audit:keys` is hard-filtered to `question_kind='practice'`) |
 | `keyLib.ts` + `score.ts` | reconcile an OFFICIAL key read off a scan, and score a blind derivation against it. Every branch fails closed; `--inject` is a canary that must turn a green run red |
+| `record-key-reviews.ts` | write the key cross-check into `question_reviews` (migration 0074) as `method='source_key_crosscheck'`. CDS English already had review rows (marker cleanup, the 2026-08-23 blind run, the 08-30 review) — what is new is that **these are the first CDS verdicts grounded in an OFFICIAL key rather than in our own derivation**, which matters precisely because that blind run's 169 `confirmed` rows are the ones this file warns are unreliable. Idempotent; a question with no live row throws rather than shortening the batch |
 
 **Order matters when repairing a live paper:** `commit.ts <paper> --apply --allow-unpublish` → `resync.ts <paper> --apply` → `flip-public.ts <paper> --apply`. `commit.ts` sets the WHOLE paper PRIVATE, not just new rows, so it now refuses to silently un-publish a live paper without that flag.
 
