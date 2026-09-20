@@ -512,7 +512,10 @@ function neetSittings(): SourceFileSitting[] {
 // section count, so a short sitting already fails loudly in validatePaperRows —
 // a soft warning first would just be noise ahead of the throw.
 function cdsSittingsFor(
-  derive: () => { key: string; sourceFile: string; year: number; slug: string; title: string; hold?: string }[]
+  derive: () => {
+    key: string; sourceFile: string; year: number; slug: string; title: string;
+    graceNumbers?: number[]; hold?: string;
+  }[]
 ): SourceFileSitting[] {
   return derive().map((s) => ({
     key: s.key,
@@ -520,6 +523,18 @@ function cdsSittingsFor(
     year: s.year,
     slug: s.slug,
     title: s.title,
+    // A question UPSC WITHDREW rides as grace — full marks whatever is chosen —
+    // rather than being dropped from the paper. One GK sitting has one (Q84 of
+    // CDS (II) 2026); everywhere else this hook is absent. Same row surgery NEET
+    // does for NTA-dropped items, through the same `prepare` seam.
+    ...(s.graceNumbers?.length
+      ? {
+          prepare: (rows: PaperQuestionRow[]) => {
+            const grace = new Set(s.graceNumbers);
+            return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+          },
+        }
+      : {}),
     ...(s.hold ? { hold: s.hold } : {}),
   }));
 }

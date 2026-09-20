@@ -38,10 +38,24 @@ export type KeyRead = {
 export type Key = Record<string, string>;
 
 export type Reconciliation =
-  | { ok: true; key: Key }
+  | { ok: true; key: Key; dropped: number[] }
   | { ok: false; error: string; conflicts?: { number: number; reads: Record<string, string> }[] };
 
 const LETTERS = new Set(["A", "B", "C", "D"]);
+
+/**
+ * The marker UPSC prints in a withdrawn question's Key cell.
+ *
+ * A dropped question is a real property of these keys, not an edge case: CDS
+ * (II) 2026 General Knowledge reports "No. of Questions Dropped: 1" in its
+ * header box and prints X against Q84. Rejecting X outright — the behaviour
+ * before this — would have forced the caller to strip the cell BEFORE
+ * reconciling, and a cell stripped before reconciliation is a cell the two
+ * reads never compare, so a misread about WHICH question was withdrawn would
+ * pass unseen. It is therefore reconciled like any other cell and only then
+ * separated out.
+ */
+const DROPPED = "X";
 
 /**
  * Fold several independent reads of the same printed key into one key, or
@@ -88,14 +102,16 @@ export function reconcileKeyReads(reads: KeyRead[], expectedCount: number): Reco
       return { ok: false, error: `read "${r.readerId}" has unexpected question number(s): ${extra.join(", ")}` };
     }
     for (const n of expected) {
-      if (!LETTERS.has(r.answers[n])) {
-        return { ok: false, error: `read "${r.readerId}" Q${n} is not a letter A-D: ${JSON.stringify(r.answers[n])}` };
+      const v = r.answers[n];
+      if (!LETTERS.has(v) && v !== DROPPED) {
+        return { ok: false, error: `read "${r.readerId}" Q${n} is not a letter A-D: ${JSON.stringify(v)}` };
       }
     }
   }
 
   const conflicts: { number: number; reads: Record<string, string> }[] = [];
   const key: Key = {};
+  const dropped: number[] = [];
   for (const n of expected) {
     const values = new Set(reads.map((r) => r.answers[n]));
     if (values.size > 1) {
@@ -105,7 +121,13 @@ export function reconcileKeyReads(reads: KeyRead[], expectedCount: number): Reco
       });
       continue;
     }
-    key[n] = reads[0].answers[n];
+    const agreed = reads[0].answers[n];
+    // A withdrawn question gets NO key entry, deliberately: scoreAgainstKey
+    // throws on a question the key does not cover, so excluding one from the
+    // score has to be an explicit decision by the caller rather than a silent
+    // pass. See the header note on DROPPED.
+    if (agreed === DROPPED) dropped.push(Number(n));
+    else key[n] = agreed;
   }
 
   if (conflicts.length) {
@@ -115,7 +137,7 @@ export function reconcileKeyReads(reads: KeyRead[], expectedCount: number): Reco
       conflicts,
     };
   }
-  return { ok: true, key };
+  return { ok: true, key, dropped };
 }
 
 export type ScoredQuestion = { number: number; answer: string; confidence: string };

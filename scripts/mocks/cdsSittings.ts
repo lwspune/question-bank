@@ -40,6 +40,12 @@ export type CdsSitting = {
   slug: string;
   title: string;
   /**
+   * 1-based question numbers UPSC WITHDREW after the exam, if any. They ride as
+   * grace in the mock — full marks whatever is chosen — exactly as NEET's
+   * NTA-dropped items do. Absent on every sitting but one; see CDS_GK_GRACE.
+   */
+  graceNumbers?: number[];
+  /**
    * Set when this sitting CANNOT reconstruct whole, with the reason. A hold is
    * an ASSERTION, not a mute (the mhtcetSittings rule): the builder still
    * attempts the paper and flags a hold whose paper now reconstructs, so closing
@@ -64,6 +70,29 @@ export const CDS_MATHS_HOLDS: Record<string, string> = {
   "2018-2": "98 of 100 — Q39 and Q42 have no correct printed option (dropped at assembly)",
   "2021-1": "99 of 100 — Q49 has no correct printed option (dropped at assembly)",
   "2021-2": "99 of 100 — Q39 has no correct printed option (dropped at assembly)",
+};
+
+/**
+ * Questions UPSC withdrew from a CDS General Knowledge sitting, by paper id.
+ *
+ * CDS was uniform across all nineteen GK sittings until CDS (II) 2026, whose
+ * official provisional key reports "No. of Questions Dropped: 1" and prints X
+ * rather than a letter against Q84. That question's printed chronology has no
+ * correct option on the usual dating, and the blind derivation had independently
+ * flagged it as defective before the key was opened.
+ *
+ * WHY GRACE AND NOT A DROPPED ROW. A withdrawn question has no right answer, so
+ * scoring it would penalise every candidate who attempted it — which is exactly
+ * what the real sitting did not do, having scored the paper out of 119. But the
+ * question was PRINTED, and a mock is the real paper or it is nothing: removing
+ * the row would relabel a 119-question fragment as "CDS (II) 2026". So it ships,
+ * marked grace.
+ *
+ * This is the same mechanism NEET uses for NTA-dropped items, reached here by
+ * the same route — read off the key's own header box, not inferred.
+ */
+export const CDS_GK_GRACE: Record<string, number[]> = {
+  "2026-2": [84],
 };
 
 /** `"2026-1"` → year 2026, edition I. Throws on any other shape. */
@@ -93,8 +122,20 @@ export function parseCdsPaperId(id: string): {
 export function deriveCdsSittings(
   papers: Record<string, Paper> = PAPERS,
   subject: CdsSubject = "english",
-  holds: Record<string, string> = {}
+  holds: Record<string, string> = {},
+  grace: Record<string, number[]> = {}
 ): CdsSitting[] {
+  // A grace entry for a paper the config does not have is a rotted reference —
+  // most likely a renamed id — and it would silently mark NOTHING, leaving a
+  // withdrawn question scored as if it had an answer. Refuse instead.
+  for (const id of Object.keys(grace)) {
+    if (!papers[id]) {
+      throw new Error(
+        `grace registry names "${id}", which is not a configured paper. ` +
+          `A stale grace entry marks nothing and would leave a withdrawn question scored.`
+      );
+    }
+  }
   const sittings: CdsSitting[] = [];
   for (const [id, p] of Object.entries(papers)) {
     const { year, edition } = parseCdsPaperId(id);
@@ -110,6 +151,7 @@ export function deriveCdsSittings(
       edition,
       slug: cdsMockSlug(year, edition, subject),
       title: cdsMockTitle(year, edition, subject),
+      ...(grace[id]?.length ? { graceNumbers: grace[id] } : {}),
       ...(holds[id] ? { hold: holds[id] } : {}),
     });
   }
@@ -137,9 +179,9 @@ export function cdsEnglishSittings(): CdsSitting[] {
   return deriveCdsSittings(PAPERS, "english");
 }
 
-/** The 19 CDS General Knowledge sittings (2016-II … 2026-I). */
+/** The 20 CDS General Knowledge sittings (2016-II … 2026-II), one with grace. */
 export function cdsGkSittings(): CdsSitting[] {
-  return deriveCdsSittings(GS_PAPERS, "gk");
+  return deriveCdsSittings(GS_PAPERS, "gk", {}, CDS_GK_GRACE);
 }
 
 /**

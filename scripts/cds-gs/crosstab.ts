@@ -20,21 +20,11 @@
  * be confidently wrong in the same direction, and nothing here can see that.
  * Treat the agreement rate as a floor on quality, never as an accuracy estimate.
  */
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DATA, QUESTIONS_PER_PAPER, dataPath, requirePaper } from "./config";
 import { crosstab, type CrosstabRow, type Derivation, type TQ } from "./lib";
-
-const DERIVED = join(__dirname, "derived");
-
-function loadPass(paperId: string, pass: "a" | "b"): Derivation[] {
-  const re = new RegExp(`^${paperId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\.${pass}\\.p\\d+\\.json$`);
-  const files = readdirSync(DERIVED).filter((f) => re.test(f)).sort();
-  if (!files.length) throw new Error(`no pass-${pass.toUpperCase()} files matching ${paperId}.${pass}.p<N>.json in ${DERIVED}`);
-  const out: Derivation[] = [];
-  for (const f of files) out.push(...(JSON.parse(readFileSync(join(DERIVED, f), "utf8")) as Derivation[]));
-  return out;
-}
+import { loadPass } from "./passes";
 
 type Adjudication = { number: number; answer: string; value: string; reasoning: string; basis: string };
 

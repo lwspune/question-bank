@@ -14,12 +14,21 @@
 //     records the answer once someone has done it. Rendering it blind would feed
 //     ~half Devanagari pages to a transcription agent.
 //
-// NO ANSWER KEY EXISTS. Not in the booklets (their tail pages are questions or
-// rough work), not in the source folder, and — unlike the CDS English paper —
-// not recoverable from our own NDA bank either: UPSC reuses English items across
-// NDA and CDS but does not appear to reuse GK items (probed 2026-08-27, five
-// distinctive stems, zero matches). So every answer here is DERIVED, by two
-// independent blind passes, and carries that provenance in `solution`.
+// NO ANSWER KEY EXISTS — FOR NINETEEN OF THE TWENTY PAPERS. Not in those
+// booklets (their tail pages are questions or rough work), not in the source
+// folder, and — unlike the CDS English paper — not recoverable from our own NDA
+// bank either: UPSC reuses English items across NDA and CDS but does not appear
+// to reuse GK items (probed 2026-08-27, five distinctive stems, zero matches).
+// So every answer in those nineteen is DERIVED, by two independent blind passes,
+// and carries that provenance in `solution`.
+//
+// `2026-2` IS THE EXCEPTION, and it changes what this pipeline can prove. UPSC
+// published a provisional key for the 2026-II sitting two days after the exam,
+// so for the first time a GK derivation here can be checked against something
+// outside itself. That key is NOT an input to commit.ts and must never become
+// one: it is read only by parse/score tooling, and only AFTER the blind
+// derivation is written and committed, because the measurement is the point.
+// See `answerKey` below and README.md.
 //
 // NO SECTIONS. Unlike the sibling CDS English pipeline — whose whole shape is
 // driven by `Directions:` blocks, shared passages and underlines — a GK paper is
@@ -54,6 +63,20 @@ export type Paper = {
    * for 2026-1, whose pages alternate Hindi/English — see the header note.
    */
   englishPages?: number[];
+  /**
+   * Absolute path to UPSC's published provisional answer key, where one exists.
+   * Only `2026-2` has one. Read by score.ts ALONE — never by commit.ts, and
+   * never before the blind derivation is committed. The ordering is the control.
+   */
+  answerKey?: string;
+  /**
+   * The booklet's printed test-series letter, read off its OWN cover. REQUIRED
+   * wherever `answerKey` is set: the key carries one page per series and UPSC
+   * shuffles question order between them, so the wrong page yields a key that is
+   * well-formed, ~75% wrong, and reads as a collapsed derivation rather than as
+   * the wrong page.
+   */
+  series?: "A" | "B" | "C" | "D";
 };
 
 const p = (
@@ -76,6 +99,42 @@ const p = (
 // `CDS GK 2016.pdf` carries no sitting in its name; its cover is stamped
 // "CDS Exam(II):2016", so it is the SECOND sitting. Do not "tidy" these.
 export const PAPERS: Record<string, Paper> = {
+  // PRE-PASS DONE 2026-09-20. English question pages are the EVEN indices 2..50.
+  //
+  // The second raw UPSC booklet in the corpus, and it follows 2026-1's structure
+  // exactly: 56 pages, no text layer at all (0 extractable characters), so the
+  // split was read off rendered images rather than detected by counting
+  // Devanagari. HINDI page then ENGLISH page of the SAME questions — p01 carries
+  // Q1/Q3 in Hindi and p02 carries Q1/Q3 in English — so reading consecutive
+  // pages looks like the numbering jumps backwards. That is the trap, and it is
+  // neither a misprint nor a duplicate.
+  //
+  // The range stops at 50 deliberately. Q117/Q119 head p50 and Q120 completes
+  // there; p52 and p54 are SPACE FOR ROUGH WORK and p55 is the back cover, all
+  // even indices, so a naive "every even page" rule would feed three
+  // content-free pages to a transcriber.
+  //
+  // 25 English pages for 120 questions is 4.8 q/page — below the 5.5 floor of
+  // the brief's density table, which only ever described the 18 reprints.
+  //
+  // Cover reads "C.D.S. Examination (II), 2026", T.B.C. BFVS-S-LKG, Series A.
+  // Unlike the reprints, this booklet states its own sitting, so 2026-II is read
+  // rather than inferred from a filename.
+  "2026-2": {
+    ...p("2026-2", "CDS_2026_2.pdf", 2026, "II",
+      [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]),
+    // THE FIRST PUBLISHED KEY IN THIS CORPUS — UPSC's provisional key of
+    // 2026-09-16. FOUR PAGES, ONE PER SERIES (A, B, C, D); confirm which is
+    // which by reading each page's own header box, never by page order.
+    //
+    // It is a SCAN (0 extractable characters), so reading it is a vision
+    // transcription of 120 table cells and carries its own error rate. A misread
+    // cell is uniquely nasty here: it manufactures a FALSE disagreement and a
+    // human then adjudicates a dispute that never existed. Hence two reads,
+    // reconciled by unanimity in scripts/cds/keyLib.ts, never a majority vote.
+    answerKey: join(SOURCE_ROOT, "ProvAnsKey-GK-CDSE-II-26-160926.pdf"),
+    series: "A",
+  },
   // PRE-PASS DONE 2026-08-28. English question pages are the EVEN indices 2..42.
   //
   // The booklet has NO text layer at all — 48 pages, 0 extractable characters —

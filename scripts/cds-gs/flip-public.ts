@@ -1,5 +1,5 @@
 /**
- * Stamp derivation provenance and flip the CDS General Knowledge corpus PUBLIC.
+ * Stamp answer provenance and flip the CDS General Knowledge corpus PUBLIC.
  *
  *   npx tsx scripts/cds-gs/flip-public.ts            # dry-run
  *   npx tsx scripts/cds-gs/flip-public.ts --apply
@@ -10,6 +10,10 @@
  * and `derived_model` was NULL on all 2,280. Published in that state a student sees
  * an answer with no indication it is DERIVED rather than taken from an official
  * key, which is the one thing this corpus must not imply.
+ *
+ * NINETEEN OF THE TWENTY PAPERS HAVE NO ANSWER KEY — and one, `2026-2`, does, so
+ * the clause is chosen per paper by provenance.ts rather than hardcoded here.
+ * The rest of this note describes the nineteen.
  *
  * THIS CORPUS HAS NO ANSWER KEY. Not in the booklets, not on disk, and no external
  * anchor — UPSC reuses ENGLISH items between NDA and CDS but not GK, and a probe of
@@ -30,16 +34,14 @@
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
 import { EXAM_ID, PAPERS } from "./config";
+import { derivedModel, stampNote } from "./provenance";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-const DERIVED_MODEL = "claude-opus-5 (two independent blind passes)";
-const NOTE_CLAUSE =
-  " [No official answer key is published for this paper. The answer and solution here were " +
-  "derived independently by two blind passes and, where those disagreed, adjudicated by hand " +
-  "against the printed page.]";
+/** Every question in a CDS GK paper. */
+const PER_PAPER = 120;
 
 async function main() {
   const apply = process.argv.includes("--apply");
@@ -78,8 +80,14 @@ async function main() {
     return;
   }
 
-  if (total !== 2280) {
-    throw new Error(`expected 2280 rows across the 19 papers, found ${total} — refusing to flip a partial corpus.`);
+  // Derived from the config rather than hardcoded: the corpus grew from 19
+  // papers to 20 when CDS (II) 2026 landed, and a frozen literal here would have
+  // had to be remembered, then would have blocked the flip when it was not.
+  const expected = Object.keys(PAPERS).length * PER_PAPER;
+  if (total !== expected) {
+    throw new Error(
+      `expected ${expected} rows across the ${Object.keys(PAPERS).length} papers, found ${total} — refusing to flip a partial corpus.`
+    );
   }
 
   console.log(`\nwould stamp provenance on ${(total ?? 0) - (stamped ?? 0)} row(s) and flip ${(total ?? 0) - (pub ?? 0)} to PUBLIC`);
@@ -94,17 +102,23 @@ async function main() {
       .from("questions").select("id, pyq_note")
       .eq("exam_id", EXAM_ID).eq("source_file", sf).is("derived_model", null);
     if (rErr) throw new Error(rErr.message);
+    // The answer story is NOT uniform across this corpus any more: nineteen
+    // papers have no published key and one (2026-2) does, so the clause and the
+    // derived_model are both chosen from that paper's own config fact. See
+    // provenance.ts for why stamping the derived clause on a key-backed paper is
+    // the error that matters.
+    const keyed = !!PAPERS[id].answerKey;
     for (const r of rows ?? []) {
-      const note = (r.pyq_note ?? "").includes("No official answer key")
-        ? r.pyq_note
-        : `${r.pyq_note ?? ""}${NOTE_CLAUSE}`;
+      const note = stampNote(r.pyq_note, keyed);
       const { error } = await client
         .from("questions")
-        .update({ derived_model: DERIVED_MODEL, derived_at: now, pyq_note: note })
+        .update({ derived_model: derivedModel(keyed), derived_at: now, pyq_note: note })
         .eq("id", r.id);
       if (error) throw new Error(`${id}: ${error.message}`);
     }
-    if ((rows ?? []).length) console.log(`  stamped ${(rows ?? []).length} row(s) — ${id}`);
+    if ((rows ?? []).length) {
+      console.log(`  stamped ${(rows ?? []).length} row(s) — ${id}${keyed ? " (KEY-BACKED clause)" : ""}`);
+    }
   }
 
   // 2. visibility
