@@ -994,6 +994,41 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "14.1 Probability — A Theoretical Approach", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.1 Eg"] },
     { group: "14.1 Probability — A Theoretical Approach", label: "Exercise 14.1", kind: "exercise", refPrefixes: ["Ex 14.1 Q"] },
   ],
+
+  // ══ CLASS 10 SCIENCE ═══════════════════════════════════════════════════════
+  // Science outlines look different from every Maths one above, because the book
+  // is built differently:
+  //
+  //  - **The mid-chapter QUESTIONS boxes are blocks in their own right.** They
+  //    are numbered question sets printed between the taught sections, so in
+  //    physical reading order they come BEFORE the end-of-chapter exercise. Their
+  //    kind is `exercise` — `section_kind` has no in-text member and does not
+  //    need one, since what the reader groups by is `section_group`.
+  //  - **There is exactly ONE exercise per chapter**, headed a bare EXERCISES, so
+  //    its block is labelled "Exercises" and its group is not a § number.
+  //  - **No `solved_example` blocks outside Ch.9, 11 and 12** — Chemistry,
+  //    Biology and Environment chapters carry no worked examples at all.
+  //
+  // Prefix safety is the same argument as the Maths lane: "IT 1.1 Q" is not a
+  // prefix of "IT 1.10 Q" (space vs "0"), and the two lanes cannot collide
+  // because one starts "IT " and the other "Ex ". Asserted in
+  // tests/ncert-science-lib.test.ts rather than left to inspection.
+
+  // ── Ch.1 Chemical Reactions and Equations (10th Science).
+  //    THREE in-text boxes then the exercise. Box 3's PLACEMENT IS THE ODD ONE
+  //    and it is not an error: it asks about §1.2.3-1.2.5 (displacement, double
+  //    displacement, redox) but the book PRINTS it at the foot of page 13, after
+  //    §1.3.1 Corrosion and §1.3.2 Rancidity. Verified on the render. The /board
+  //    reader is book-faithful, so it is grouped where it is printed, not where
+  //    its content belongs — the conceptual axis is `subtopic`, and those rows
+  //    carry the displacement/redox subtopics exactly as they should. This is the
+  //    two-orthogonal-axes rule in CLAUDE.md doing its job; do not "fix" it.
+  c10SciChemReactions: [
+    { group: "1.1 Chemical Equations", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.1 Q"] },
+    { group: "1.2 Types of Chemical Reactions", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.2 Q"] },
+    { group: "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life?", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

@@ -82,6 +82,17 @@ export type Chapter = {
   answersPdf?: string; // absolute path to the end-of-book answers PDF (step-6 cross-check)
   answerPages?: number[]; // 0-based pages of answersPdf holding THIS chapter's key (render.ts --answers)
   pages?: number[]; // 0-based page indices to render; omit → all pages
+  /**
+   * The chapter's number AS THE BOOK PRINTS IT. Required by the Class 10 Science
+   * lane and unused elsewhere.
+   *
+   * Not derived from the filename or the id: `science-grounding.ts` filters a
+   * chapter's citation anchors to this number, so getting it wrong does not error
+   * — it silently lets an answer ground itself in a different chapter, which is
+   * the exact drift the anchor filter exists to stop. Physics' chapter-number
+   * ≠ file-number trap is the precedent for stating it rather than inferring it.
+   */
+  chapterNo?: number;
   note: string; // questions.pyq_note
   // Canonical subtopics for this chapter — transcription maps each question to one.
   subtopics: string[];
@@ -127,6 +138,68 @@ const cls11Maths = (p: string) => join(SOURCE_ROOT, "11th", "Maths", p);
 // font → Latin, the Std-XII Physics trap). The superscript class is the
 // dangerous one: nothing downstream can tell `25` from a mis-read `2⁵`.
 const cls10Maths = (p: string) => join(SOURCE_ROOT, "10th", "Maths", p);
+
+// ── CLASS 10 SCIENCE path helper (2026-09-20) ──────────────────────────────────
+// 13 pre-split chapter PDFs (217pp, rationalised 2024-25 reprint), answers in
+// jesc1an.pdf. Chapter number = file number, as in Maths. ONE DB subject
+// ("Science") covering all 13 — the CBSE Class 10 board paper is one Science
+// paper and the book is one book, so the Physics/Chemistry/Biology split that
+// cbse-11 and cbse-12 use (separate BOOKS there) would be a division this book
+// does not make.
+//
+// FIVE THINGS DIFFER FROM EVERY OTHER BOOK ON THIS PIPELINE. Each was measured
+// on the PDFs before a row was written:
+//
+// 1. **TWO QUESTION LANES, NOT ONE.** As well as the end-of-chapter EXERCISES
+//    (171 items across 13 chapters), every chapter carries mid-chapter QUESTIONS
+//    boxes — 49 boxes, 170 items. Maths has no equivalent. Refs therefore carry a
+//    lane discriminator: `IT <ch>.<box> Q<n>` for an in-text item, `Ex <ch> Q<n>`
+//    for an exercise item (the chapter, NOT an exercise number — the heading is a
+//    bare EXERCISES and there is exactly one per chapter). See scienceLib.ts.
+//
+// 2. **HEADINGS ARE LETTER-SPACED VERTICALLY.** "EXERCISES" is typeset one glyph
+//    per line, so the text layer reads `E\nX\nE\nR\nC\nI\nS\nE\nS` and a plain
+//    /EXERCISES/ matches ZERO times in all 13 chapter PDFs. `spacedHeadingRe` in
+//    scienceLib.ts is the detector; QUESTIONS is the same, plus a trailing `?`.
+//
+// 3. **WORKED EXAMPLES EXIST IN PHYSICS CHAPTERS ONLY** — Ch.9 ×4, Ch.11 ×14,
+//    Ch.12 ×2, and ZERO in Ch.1-8 and 13. So the `solved` bucket is empty for ten
+//    of thirteen chapters, and the first-pass PUBLIC flip cannot lean on it the
+//    way the Maths lane did. Examples band to the in-text box they PRECEDE
+//    (`<ch>.<box> Eg.<n>`), mirroring Maths where the band names the exercise.
+//
+// 4. **THE KEY IS 2 PAGES FOR THE WHOLE BOOK AND ITS GAP IS BIMODAL BY
+//    DISCIPLINE, NOT BY PROOF-NESS.** ~73 keyed items against 341 questions
+//    (21%). Ch.1-8 + 13 (Chem/Bio/Env) key ONLY their 3-4 leading MCQs — 25 items
+//    across ~115 exercise items; Ch.9-12 (Physics) key 45 of 56. The in-text
+//    boxes are 100% unkeyed, every chapter.
+//
+//    **THIS IS WHERE THE MATHS METHOD STOPS TRANSFERRING.** There, "unkeyed"
+//    always meant "prove that", and independent sympy derivation off the stem was
+//    a genuine THIRD ground truth — which is what made "zero errata" a claim
+//    worth making. Here, "Why is respiration considered an exothermic reaction?"
+//    has no key and no derivation. Its only ground truth is the chapter's own
+//    prose. So the step-6 cross-check is a real gate on the Physics numericals
+//    and INOPERATIVE on roughly three-quarters of this corpus, and reporting a
+//    green gate over 3 MCQs as though it spoke for a chapter's other 25 rows
+//    would be the failure mode. Every chapter reports its OWN denominator.
+//
+// 5. **GROUNDING REPLACES DERIVATION FOR THE UNKEYED MAJORITY** (user decision,
+//    2026-09-20). Every authored answer carries a `groundedIn` citation into the
+//    chapter's own prose (§1.2.1, Activity 1.5, Fig. 1.3, Table 11.2), and
+//    `science-grounding.ts` fails the chapter if a citation is missing or does
+//    not resolve against anchors DERIVED from that chapter's text. `groundedIn`
+//    is an authoring-time field on the fragment JSON only — `buildRecords` builds
+//    its payload from named fields, so the extra key never reaches the bank.
+//
+// Text layer is VISION-ONLY here too, and for the same reason as Maths plus one:
+// superscripts flatten PLAUSIBLY (`1.6 × 10–8 Ω m` loses the exponent and keeps
+// an en-dash; `3.6 × 106 J` for 10⁶; `I2R` for I²R), subscripts flatten
+// (`Fe2O3`, `Ca(NO3)2`), formulae scramble outright, and READING ORDER IS BROKEN
+// by the floating Activity boxes — Ch.1 p3 prints "Step IV" before "Step III".
+// Ω, → and ′ do survive, so the text layer is a usable CHECKLIST and never the
+// transcription.
+const cls10Sci = (p: string) => join(SOURCE_ROOT, "10th", "Science", p);
 
 // ── PHYSICS path helpers (2026-09-07) ───────────────────────────────────────────
 // Physics ships as pre-split per-chapter PDFs under Part_1/Part_2, PLUS the
@@ -3107,6 +3180,105 @@ export const CHAPTERS: Record<string, Chapter> = {
     subtopics: [
       "Area of a Sector",
       "Area of a Segment",
+    ],
+  },
+
+  // ══ CLASS 10 SCIENCE ═══════════════════════════════════════════════════════
+  // See the cls10Sci header above for the five ways this book departs from every
+  // other on this pipeline. Chapter ids carry a `c10Sci` prefix: this flat data/
+  // directory already holds a `c10*` Maths lane, and "Light" / "Electricity" are
+  // chapter names Class 11 and 12 Physics also use.
+
+  // ── Ch.1 Chemical Reactions and Equations (10th Science). 16pp. THE PILOT.
+  //
+  //    Picked to prove the SPINE, not the hard content — the same reasoning that
+  //    made Real Numbers the Maths pilot. It exercises everything new about this
+  //    book (a new DB subject, the two-lane ref scheme, the letter-spaced
+  //    headings, the grounding gate, chemical-formula LaTeX) and NONE of the
+  //    hazards: zero worked examples, zero figure-dependent exercise stems, no
+  //    tables. 3 QUESTIONS boxes (p5, p9, p12 → 3+2+3 items) + 20 exercise items.
+  //
+  //    1. **KEY COVERAGE 3 of 20 — the book's joint-worst, and STRUCTURAL.**
+  //       jesc1an keys this chapter's Q1, Q2, Q3 and nothing else, because Q1-3
+  //       are the MCQs and Q4-20 are "explain" / "write the balanced equation".
+  //       The 8 in-text items are unkeyed like every in-text item in the book. So
+  //       the step-6 cross-check speaks for 3 of this chapter's 28 questions and
+  //       grounding carries the other 25. Say that, and do not let "0 errata
+  //       across 3 keyed" read as a claim about the chapter.
+  //
+  //    2. **Q1 IS A TWO-LEVEL MCQ** — four STATEMENTS (a)-(d) about a reaction,
+  //       then four OPTIONS (i)-(iv) that select combinations of them ("(a) and
+  //       (c)"). The statements belong in the stem, the roman list is the option
+  //       set. Transcribed the other way round it becomes a four-option MCQ whose
+  //       options are unrelated sentences, and nothing downstream would notice.
+  //
+  //    3. **A "Group Activity" BLOCK CLOSES THE EXERCISE**, after Q20, with its
+  //       own bulleted instructions. It is not a question and has no number; a
+  //       numbered-item walk that does not stop at it will splice its bullets
+  //       onto Q20.
+  //
+  //       RECORDED BECAUSE THE TEXT LAYER PUT IT SOMEWHERE ELSE. A block-sorted
+  //       dump places it between Q11 and Q12 — the floating-box reading order
+  //       this book breaks on — and the first draft of this comment said so. The
+  //       RENDER is what corrected it. Anything structural about this book has to
+  //       be read off the page, not off the extracted text.
+  c10SciChemReactions: {
+    id: "c10SciChemReactions",
+    chapterName: "Chemical Reactions and Equations",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Science",
+    sourceFile: "NCERT_10_Science__ChemicalReactionsAndEquations.pdf",
+    pdf: cls10Sci("01. Chemical Reactions and Equations.pdf"),
+    chapterNo: 1,
+    answersPdf: cls10Sci("jesc1an.pdf"),
+    answerPages: [0], // p0 holds Chapters 1-9; p1 holds 10-13
+    note: "NCERT (CBSE Class 10) — Chemical Reactions and Equations (Chapter 1, NCERT Science)",
+    subtopics: [
+      "Writing and Balancing Chemical Equations",
+      "Combination and Decomposition Reactions",
+      "Displacement and Double Displacement Reactions",
+      "Oxidation and Reduction",
+      "Corrosion and Rancidity",
+    ],
+  },
+
+  // ── Ch.11 Electricity (10th Science). 24pp. THE CALIBRATION CHAPTER.
+  //
+  //    Taken second because it is the ONLY place in this book where derivation
+  //    accuracy can be measured against a PUBLISHED key at all. 17 of its 18
+  //    exercise items are keyed (only Q11, "show how you would connect three
+  //    resistors", is not — it is a construction), against 3 of 20 in Ch.1. The
+  //    CDS 2026-II argument applies: derive blind, commit, and only then open the
+  //    key, because adjudicating a disagreement destroys the measurement.
+  //
+  //    It also carries every remaining hazard at once:
+  //    - **14 worked examples**, the most in the book, banded across 7 boxes.
+  //    - **A DATA TABLE in Q7** (I/V pairs) → GFM pipe-table with the mandatory
+  //      `|---|` separator row, or it renders as raw pipes in /browse AND in the
+  //      Word answer key.
+  //    - **Units and superscripts everywhere**, exactly where the text layer
+  //      lies: `1.6 × 10–8 Ω m` arrives with the exponent gone.
+  //    - **Q18 has five sub-parts (a)-(e)**; per the split decision each is its
+  //      own row, sharing a `setLabel`.
+  c10SciElectricity: {
+    id: "c10SciElectricity",
+    chapterName: "Electricity",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Science",
+    sourceFile: "NCERT_10_Science__Electricity.pdf",
+    pdf: cls10Sci("11. Electricity.pdf"),
+    chapterNo: 11,
+    answersPdf: cls10Sci("jesc1an.pdf"),
+    answerPages: [1], // p1 holds Chapters 10-13
+    note: "NCERT (CBSE Class 10) — Electricity (Chapter 11, NCERT Science)",
+    subtopics: [
+      "Electric Current and Circuits",
+      "Potential Difference",
+      "Ohm's Law",
+      "Resistance and Resistivity",
+      "Resistors in Series and Parallel",
+      "Heating Effect of Electric Current",
+      "Electric Power and Energy",
     ],
   },
 };
