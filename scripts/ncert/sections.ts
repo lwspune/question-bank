@@ -1101,6 +1101,26 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] },
   ],
 
+  // ── Ch.3 Metals and Non-metals (10th Science). The cleanest shape on this
+  //    lane: exactly one in-text box per top-level section, then the exercise.
+  //
+  //    Box placement was settled by BLOCK GEOMETRY rather than by reading the
+  //    text stream or squinting at a render. On every page carrying both, the
+  //    box's y sits ABOVE the next section heading's y — p3 489 vs §3.2 at 630,
+  //    p12 363 vs §3.4 at 487, p16 126 vs §3.5 at 249 — so each box CLOSES the
+  //    section before it. That now holds for all eight boxes checked across
+  //    Ch.2 and Ch.3, and it is the reliable way to answer the question: the
+  //    block-sorted dump files two of Ch.2's boxes under the FOLLOWING section
+  //    and would have done the same here.
+  c10SciMetalsNonmetals: [
+    { group: "3.1 Physical Properties", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.1 Q"] },
+    { group: "3.2 Chemical Properties of Metals", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.2 Q"] },
+    { group: "3.3 How do Metals and Non-metals React?", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.3 Q"] },
+    { group: "3.4 Occurrence of Metals", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.4 Q"] },
+    { group: "3.5 Corrosion", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
