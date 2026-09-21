@@ -17,6 +17,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 12. **Three 2026-09-18 digests EVICTED from CLAUDE.md on 2026-09-20** (fourth, fifth, sixth) under the CEILING rule — the CDS (II) 2026 General Knowledge entry took the active Decisions log to 105% of its 36 KB hard limit. **The cut was NOT oldest-first, and deliberately so:** the five oldest live entries (2026-09-17 third/fourth/fifth and 2026-09-18 plain/second) have no long form here, so evicting them would have DELETED them rather than moved them — the exact state `npm run docs:budget`'s reconciliation exists to flag. The three taken were each **verified present in the `### 2026-09-01 to 2026-09-20` section immediately before removal**, freeing 5.3 KB (105% → 90%). **Those seven entries are still without a long form and remain un-evictable until someone writes one.**
 
+13. **The 2026-09-18 (ninth) digest EVICTED from CLAUDE.md on 2026-09-21** under the CEILING rule — the DAU/MAU stickiness entry took the active Decisions log to 36,149 bytes against its 36,000 ceiling, 149 over. **Oldest-first was not available:** the four entries older than it (2026-09-18 plain, second, seventh, eighth) still have no long form here, so evicting any of them would have DELETED it rather than moved it. The one taken was **verified present in the `### 2026-09-01 to 2026-09-21` section immediately before removal**, freeing 1.5 KB (100% → 96%). **Those four, plus 2026-09-20 fifth/sixth/seventh, remain un-evictable until someone writes their long form** — `npm run docs:budget` names them.
+
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 
 Within-month convention: newest entries closest to top (matches CLAUDE.md ordering).
@@ -24,7 +26,50 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ---
 
 
-### 2026-09-01 to 2026-09-20 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+### 2026-09-01 to 2026-09-21 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+
+
+**2026-09-21 — DAU/MAU, WAU/MAU and the L28 shape ship on /dashboard/pmf (migration 0112). The metric was asked for as a headline; what the data supported was a headline plus two refusals and a warning.**
+
+The request was "add DAU/MAU to the PMF page". Computing it was twenty minutes of SQL. The rest of the work was establishing what the number could honestly claim, because three separate properties of this bank make the textbook form of the metric lie, and each was measured rather than assumed.
+
+**THE INSTRUMENT MOVED FIVE DAYS AGO, AND IT DOMINATES THE WINDOW.** The set of acts that can make a student "active" grew last week: `question_practiced` and `mock_started` wrote their first rows on 2026-09-17 (0105/0107), `drill_completed` on 2026-09-19. The size of that is not a footnote. Bucketing each active student-day by whether it rested ONLY on one of those three kinds:
+
+```
+2026-09-15  DAU  5   of which new-instrument-only   0
+2026-09-16  DAU  4                                  0
+2026-09-17  DAU  5                                  2
+2026-09-18  DAU  9                                  4
+2026-09-19  DAU  9                                  4
+2026-09-20  DAU 15                                 13   ← 87%
+2026-09-21  DAU  6                                  3
+```
+
+Under the instrument set that existed on 2026-09-16, 2026-09-20's DAU was **2, not 15**. Any stickiness trend drawn across the current 28-day window therefore measures the instrumentation and would show a "stickiness improvement" that is entirely an artefact — the exact shape of the `feedback_pmf_partial_instrumentation_is_a_floor` learning, arriving again in a new costume. The choice was to FLAG rather than withhold: the number is still the best available floor and the reader needs both halves. `INSTRUMENT_CHANGED_SINCE` in `lib/pmf/snapshot.ts` compares the window start to the date, so the banner **expires by itself** on 2026-10-15 — a warning that outlives its cause trains the reader to ignore warnings, and one that needs a human to remember to delete it will outlive its cause.
+
+**THE TWO DENOMINATORS MOVE AT DIFFERENT SPEEDS, SO THE NUMERATOR CANNOT BE TODAY.** DAU has a one-day memory and MAU a 28-day one. Measured live: 6 actives on 2026-09-21 and 15 on 2026-09-20, against an identical MAU of 183 — the textbook ratio reads 3.3% one day and 8.2% the next, a 2.5x swing driven by nothing but which day someone loaded the page. Worse, the daily series shows a batch mock drive from 2026-09-04 to 09-12 peaking at **42 DAU on 09-09**, then collapsing to 4–9. That burst is still inside the MAU window and long gone from the DAU one, so the ratio is currently FALLING for reasons that are entirely about the calendar. The RPC therefore emits `studentDays` — distinct (student, IST day) pairs across the window — and the view layer divides by `windowDays`. `dauToday` ships for context and is never a numerator; `viewStickiness` is pinned by a test asserting that two fixtures differing only in `dauToday` produce identical rates.
+
+Averaging over the WHOLE window, quiet days included, is also deliberate: a quiet day is a real zero, because the product existed and nobody came. Dividing by active-days-only would produce a number that RISES as usage becomes more concentrated, which is backwards.
+
+**THE WINDOW HAS TO EXIST.** The earliest signal ever recorded is 2026-07-10 — 73 days of history. A 28-day average over a period the product only partly spanned does not produce a low number, it produces a wrong one, and the trailing-30 MAU series climbing 51 → 183 while DAU fell is partly that window still filling. So a window opening before `firstSignalDay` withholds rather than computes. It outranks the sample-size floor deliberately: the thin-sample message says "ask again when more students arrive", which would send the reader away waiting for the wrong thing when the defect is in the denominator and no number of extra students would fix it.
+
+**WHY NOT `get_activity_shape` (0053).** It already computes `active7d` and `active30d`, and `active30d` has never been rendered anywhere — it looked like the metric was half-built already. It is not the same metric. That function counts **all users including staff** (no `org_members` exclusion) and reads **`user_activity` alone**, where every number on /dashboard/pmf is students-only and unions `user_activity` with `mock_attempts.started_at` and `question_bookmarks`. Reusing it would have placed a figure on the PMF page that silently disagreed with every other figure on it, in the direction that flatters (staff are the heaviest users). The stickiness CTEs are drawn from the function's existing `ev` CTE instead, so the population is the page's own by construction. /dashboard/activity now carries a line saying the two are different metrics and not a disagreement to reconcile — cheaper than the hour someone would otherwise spend reconciling two "active students" numbers that were never meant to agree.
+
+**WHAT IT READS, AND WHY WAU/MAU LEADS.** Live on 2026-09-21: MAU 181, WAU 35, avg DAU 17.4 → **DAU/MAU 9.6%, WAU/MAU 19.3%, 2.7 study days per student per 28 days**. The L28 distribution is the finding a ratio cannot carry:
+
+```
+1 day    87     2 days   40     3 days   20     4–7 days  18     8+ days  16
+```
+
+**87 of 181 active students — 48% — came exactly once.** DAU/MAU is a stickiness metric for products one is meant to open daily; this is deadline-driven exam prep whose usage `classifyUsageShape` had already measured as burst/mixed. Against the conventional "20%+ is sticky" benchmark, 9.6% reads as failure and invites precisely the daily-streak mechanic the engagement-engine gate in CLAUDE.md forbids for this cohort — the sibling AI Tutor's exact, expensive mistake. So the week is the headline unit, the third card restates the same number as "2.7 study days per student per 28" in units that carry no wrong benchmark, and the histogram ships beside both.
+
+**28 DAYS, NOT 30** — the same horizon the retention table and the mature pool already use, so "still active at 28d" and "monthly actives" cannot silently mean two different months on one page.
+
+**VERIFICATION.** 76 unit tests (`tests/pmf-snapshot.test.ts`), including a structural one that the L28 buckets partition the active students exactly — one student at every day-count from 1 to 28 — which is the only place a mis-drawn boundary shows up at all. `npm run pmf:smoke` drives the page's own loader against live data and asserts the invariants a fixture cannot: the nested windows nest (DAU ≤ WAU ≤ MAU), `studentDays` sits between `mau` and `mau × windowDays`, and — the cross-aggregate check — the histogram accounts for exactly the MAU, since the two are computed by different CTEs and are free to drift. All held. The RPC's live output independently reproduced the fixture built from hand-written SQL earlier in the session, digit for digit.
+
+`bucketedStudents` is returned rather than assumed equal to `mau` for the same reason: if the two ever disagree the page must be able to SAY so, and a core that rescaled the histogram to the MAU would make a broken one look correct.
+
+**NOT PROVEN:** the page is superadmin-gated and `force-dynamic`, so `next build` never renders it and there is no headless proof of layout in this repo. Compile and logic are proven; the render was handed to the user.
 
 
 **2026-09-20 (fourth) — the per-attempt mock report gets a DAILY cron. It had been shippable since 2026-09-18 and had sent NOTHING.**

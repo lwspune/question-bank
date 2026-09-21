@@ -20,6 +20,7 @@ import type {
   FunnelCounts,
   DifficultyCounts,
   ShareCounts,
+  StickinessCounts,
 } from "./snapshot";
 import { SHARE_LIVE_SINCE } from "./snapshot";
 
@@ -37,6 +38,7 @@ export type PmfSnapshot = {
   attempts: AttemptCounts;
   difficulty: DifficultyCounts;
   nps: { scores: number[]; eligible: number };
+  stickiness: StickinessCounts;
 };
 
 /**
@@ -100,6 +102,19 @@ export function emptySnapshot(weeks: number): PmfSnapshot {
     attempts: { started: 0, submitted: 0, expired: 0, stranded: 0, live: 0 },
     difficulty: { tooEasy: 0, justRight: 0, tooHard: 0, responses: 0 },
     nps: { scores: [], eligible: 0 },
+    // A null firstSignalDay is what an un-upgraded RPC and a genuinely empty
+    // bank have in common, and both must read as "no window to average over"
+    // rather than as a 0% stickiness. viewStickiness withholds on exactly that.
+    stickiness: {
+      windowDays: 28,
+      windowStart: "",
+      mau: 0,
+      wau: 0,
+      dauToday: 0,
+      studentDays: 0,
+      activeDays: [],
+      firstSignalDay: null,
+    },
   };
 }
 
@@ -123,6 +138,7 @@ export async function fetchPmfSnapshot(
     attempts: { ...base.attempts, ...(raw.attempts ?? {}) },
     difficulty: { ...base.difficulty, ...(raw.difficulty ?? {}) },
     nps: { ...base.nps, ...(raw.nps ?? {}) },
+    stickiness: { ...base.stickiness, ...(raw.stickiness ?? {}) },
     cohorts: raw.cohorts ?? [],
     features: raw.features ?? [],
     segments: raw.segments ?? [],
