@@ -1139,6 +1139,25 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] },
   ],
 
+  // ── Ch.5 Life Processes (10th Science). One in-text box per top-level
+  //    section, placement settled by block geometry; box 5 is the one that sits
+  //    BELOW its section heading (§5.5.2 at y=68, box at y=388) rather than
+  //    above the next one, because §5.5 is the last section in the chapter.
+  //
+  //    All four exercise MCQs print their options in TWO COLUMNS, so the text
+  //    layer emits them (a), (c), (b), (d). Every option was slotted from the
+  //    render's printed label — a mis-slotted option is the one defect a blind
+  //    derivation provably cannot catch, since the reasoning would confirm the
+  //    right TEXT under the wrong LETTER.
+  c10SciLifeProcesses: [
+    { group: "5.1 What are Life Processes?", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.1 Q"] },
+    { group: "5.2 Nutrition", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.2 Q"] },
+    { group: "5.3 Respiration", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.3 Q"] },
+    { group: "5.4 Transportation", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.4 Q"] },
+    { group: "5.5 Excretion", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
