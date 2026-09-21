@@ -310,3 +310,78 @@ export function parsePaperFileName(fileName: string): PaperKey | null {
   if (!exam.sections.includes(section)) return null;
   return { exam: exam.slug, year: Number(m[2]), section };
 }
+
+/**
+ * Rows carrying a SOURCE defect that code cannot repair.
+ *
+ * Declared as data, not left to fail the gate forever, so the decision shows up
+ * in a diff and can be revisited. `covers` names the problem kinds the
+ * exclusion accounts for: a NEW, different problem on an already-excluded row
+ * still fails the gate. Without that, an exclusion becomes a blanket amnesty
+ * for a row nobody looks at again.
+ *
+ * NOT the same thing as a `reconstructed` row. Those 15 are flagged by the
+ * source's own disclaimer and filtered by `reconstructed`, not listed here.
+ */
+export type Exclusion = PaperKey & {
+  questionNumber: number;
+  reason: string;
+  /** Substrings of the problem messages this exclusion accounts for. */
+  covers: string[];
+};
+
+export const EXCLUSIONS: readonly Exclusion[] = [
+  {
+    exam: "jipmat",
+    year: 2025,
+    section: "LR",
+    questionNumber: 6,
+    reason:
+      "Matches a list of figures against a list of numbers; the figures live in table cells and ARE the answer set, so removing them leaves a table of empty cells that still reads as a complete question.",
+    covers: ["figure inside a table cell"],
+  },
+  {
+    exam: "jipmat",
+    year: 2025,
+    section: "LR",
+    questionNumber: 13,
+    reason:
+      "Matches groups against Venn diagrams held in table cells; the diagrams ARE the answer set, so the question is unanswerable once they are lifted out.",
+    covers: ["figure inside a table cell"],
+  },
+  {
+    exam: "jipmat",
+    year: 2026,
+    section: "LR",
+    questionNumber: 22,
+    reason:
+      "Matches groups against Venn diagrams held in GFM table cells; the diagrams ARE the answer set, so the question is unanswerable once they are lifted out.",
+    covers: ["figure inside a table cell"],
+  },
+  {
+    exam: "jipmat",
+    year: 2025,
+    section: "VA",
+    questionNumber: 1,
+    reason:
+      "The source keys TWO correct options (correctAnswer \"2,4\") on an indirect-speech question. Our schema requires exactly one correct option, and choosing between them would be inventing an answer the source does not give.",
+    covers: ["MCQ key is not an option index", "options marked correct"],
+  },
+];
+
+export function exclusionFor(key: PaperKey & { questionNumber: number }): Exclusion | null {
+  return (
+    EXCLUSIONS.find(
+      (e) =>
+        e.exam === key.exam &&
+        e.year === key.year &&
+        e.section === key.section &&
+        e.questionNumber === key.questionNumber
+    ) ?? null
+  );
+}
+
+/** True when this exclusion explicitly accounts for the given problem message. */
+export function isCoveredBy(exclusion: Exclusion, problem: string): boolean {
+  return exclusion.covers.some((c) => problem.includes(c));
+}
