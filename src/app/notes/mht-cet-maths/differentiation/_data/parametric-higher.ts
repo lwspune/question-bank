@@ -6,7 +6,7 @@ export const PARAMETRIC_HIGHER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When x and y are each given through a parameter t (or theta), differentiate each with respect to the parameter and divide; for the second derivative, differentiate dy/dx again with respect to the parameter and divide once more.",
   whyItMatters:
-    "This subtopic carries 10 PYQs — 5 HARD, 3 MODERATE, 2 EASY — and is the part of Differentiation MHT-CET likes most. " +
+    "This subtopic carries 18 PYQs — 9 HARD, 7 MODERATE, 2 EASY — and is the part of Differentiation MHT-CET likes most. " +
     "Three shapes recur: parametric forms (x and y through a parameter), second derivatives of those forms, and 'prove this relation' problems where you must show y satisfies an equation like y'' + n squared times y = 0. " +
     "The single most-punished mistake is computing the parametric second derivative as a ratio of second derivatives — it is not — so that trap is drilled hard below.",
   concepts: [

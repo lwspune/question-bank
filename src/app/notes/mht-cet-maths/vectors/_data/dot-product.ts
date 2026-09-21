@@ -7,7 +7,7 @@ export const DOT_PRODUCT_NOTE: SubtopicNote = {
     "The scalar a·b = |a||b|cosθ that measures alignment — the engine behind angle, perpendicularity, projection, and direction-cosine questions.",
   whyItMatters:
     "The dot product collapses two vectors into one number that encodes their angle, so almost every Vectors question in MHT-CET routes through it: find the angle, test perpendicularity, solve for a parameter that makes two vectors perpendicular, or project one vector onto another. " +
-    "This is the single biggest Vectors subtopic — 35 PYQs across 2017–2026 with roughly 23% HARD — and the staples are the perpendicular-parameter setup (find λ so a+λb ⊥ c), the unit-vector constraint angle, and projection of a segment onto a line. " +
+    "This is the third-biggest Vectors subtopic — 50 PYQs across 2021–2025, and the most approachable of the big three at 28% HARD — and the staples are the perpendicular-parameter setup (find λ so a+λb ⊥ c), the unit-vector constraint angle, and projection of a segment onto a line. " +
     "Master the perpendicularity test (a·b = 0), the angle formula, and the expand-the-constraint workflow and you have most of the chapter's marks.",
   concepts: [
     // ── FOUNDATION 1: dot product two forms (no PYQ) ──────────────────────────

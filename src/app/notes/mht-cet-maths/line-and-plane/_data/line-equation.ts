@@ -6,7 +6,7 @@ export const LINE_EQUATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How to describe a straight line in 3-D — through direction ratios and direction cosines (with l² + m² + n² = 1), in symmetric Cartesian form and vector form r = a + λb, and — the MHT-CET workhorse — how to find a line's direction as the cross product of two given directions (perpendicular to two lines, or parallel to / the intersection of two planes).",
   whyItMatters:
-    "This is the densest single subtopic in Line and Plane — about 23 PYQs, leaning MODERATE-to-HARD. " +
+    "About 29 PYQs sit here, and it is the gentlest block in the chapter — 21 of them MODERATE, only 6 HARD. " +
     "ONE idea dominates the hard half: when a line must be perpendicular to two given directions, or parallel to two planes, or is the intersection of two planes, its direction vector is the CROSS PRODUCT of the two direction/normal vectors — the same 3×3 determinant every time. " +
     "The rest is conversion fluency: rewrite a non-standard Cartesian equation like 2x − 2 = 3y + 1 = 6z − 2 into symmetric form, read off a point and direction, and translate to vector form. Master the cross-product reflex plus the normalize-the-Cartesian-form drill and you own the subtopic.",
   concepts: [

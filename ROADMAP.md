@@ -12,7 +12,7 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 shipped editorial copy is a per-chapter decision, and the two classes below have different
 risk profiles. `npm run notes:intro` reproduces both lists at any time.
 
-**Class A — 54 intros enumerate their own subtopics** (53 of them one item per card). The
+**Class A — 48 intros enumerate their own subtopics.** (Was 54; all nine MHT-CET Maths chapters were cleared on 2026-09-21, so what remains is NDA × 6 subjects, MHT-CET Chemistry and CDS.) The
 chapter landing already renders those subtopics as cards, with one-line definitions and LIVE
 counts, so the prose list is the same information twice and is the copy that rots. Cutting it
 is what took Indefinite Integration from 218 words to 94. **Blast radius:** `intro` also feeds
@@ -25,7 +25,7 @@ the cards cannot — Mathematical Logic's intro names where the difficulty actua
 one; do not regex them out. **Cost:** ~10 min per chapter. **Recommendation:** partial — do it
 opportunistically when a chapter is open for another reason, newest-authored first.
 
-**Class B — 56 stale count claims in subtopic `whyItMatters` / `oneLineDefinition`.** Same
+**Class B — 41 stale count claims in subtopic `whyItMatters` / `oneLineDefinition`.** (Was 56; the 15 MHT-CET Maths ones are fixed.) Same
 defect class as the intro counts now gated by `tests/notes-intro-counts.test.ts`, but this prose
 is NOT gated: 130 such claims exist across the corpus and 56 match no live chapter count, no
 subtopic count and no two-subtopic sum. **Blast radius:** body text only — no metadata, no
@@ -33,6 +33,8 @@ cards, no JSON-LD. **Cost:** mechanical, but every number needs its own live que
 are per-subtopic and some are pair sums). **Recommendation:** do it per chapter as part of the
 post-upload ritual's step 5, then flip the `whyItMatters` rule from the probe into the gate.
 The gate flip is the real prize — until then this class can re-stale silently after any ingest.
+
+**What the MHT-CET Maths pass taught, for whoever takes the next subject:** a relative claim ("the densest subtopic", "the hardest") needs its RANKING recomputed, not just its number — 6 of the 15 were superlatives that a number-only backfill would have left standing and false. And cutting a numbered list can break prose ELSEWHERE in the same intro: Mathematical Logic's framing referred to "the algebra in block 5". Grep the intro for "block", "movement" and "(n)" back-references before cutting.
 
 ---
 

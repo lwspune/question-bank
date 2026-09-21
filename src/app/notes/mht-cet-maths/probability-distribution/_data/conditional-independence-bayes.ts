@@ -6,7 +6,7 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Restrict the sample space to compute P(A|B), chain events with the multiplication rule, exploit independence for 'at least one / exactly one' shortcuts, and reverse the conditioning with total probability and Bayes' theorem.",
   whyItMatters:
-    "This is the densest subtopic in the chapter: 23 PYQs sit here (4 HARD, 15 MODERATE, 4 EASY). MHT-CET tests the whole conditional-probability chain — the definition P(A|B) = P(A∩B)/P(B), sequential draws without replacement, the independence identity P(A∩B) = P(A)P(B), the 1 − P(none) shortcut for 'the target is hit / the problem is solved', and Bayes' theorem for bag/box/disease posteriors. " +
+    "26 PYQs sit here (8 HARD, 14 MODERATE, 4 EASY), and at 31% HARD it is the chapter's toughest block. MHT-CET tests the whole conditional-probability chain — the definition P(A|B) = P(A∩B)/P(B), sequential draws without replacement, the independence identity P(A∩B) = P(A)P(B), the 1 − P(none) shortcut for 'the target is hit / the problem is solved', and Bayes' theorem for bag/box/disease posteriors. " +
     "The recurring traps are all here too: confusing 'exactly one' with 'at least one', forgetting P(A'|B) = P(A') only when A and B are independent, and swapping priors with likelihoods in the Bayes ratio.",
   concepts: [
     // 0 — foundation: conditional probability P(A|B) (no PYQ, lint-exempt)

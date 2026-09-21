@@ -6,7 +6,7 @@ export const INVERSE_FUNCTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Differentiating an inverse function by reciprocal-of-the-slope, and taming messy inverse-trig expressions by a single trig substitution that collapses them to a constant times an angle.",
   whyItMatters:
-    "This is the heart of the chapter — 29 PYQs sit here, the biggest subtopic by far, and the hardest (13 HARD, 14 MODERATE, only 2 EASY). " +
+    "This is the heart of the chapter — 39 PYQs sit here, the biggest subtopic by far (19 HARD, 18 MODERATE, only 2 EASY). " +
     "Almost every question is one disguised skill: a fearsome-looking sin-inverse / tan-inverse / cos-inverse argument that, after the RIGHT trig substitution, simplifies to a constant multiple of an angle and differentiates in one line. " +
     "Recognise the standard argument shapes (the substitution table) and these go from 'impossible' to 'instant'.",
   concepts: [
