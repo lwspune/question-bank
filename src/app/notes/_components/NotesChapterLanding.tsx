@@ -161,11 +161,17 @@ export default async function NotesChapterLanding({ chapter }: Props) {
 
       {/* The hero is the ONE surface written for the full intro — it is read by
           someone who has already opened this chapter, and it may say "below"
-          about the notes beneath it. Card + metadata take the short blurb. */}
+          about the notes beneath it. Card + metadata take the short blurb.
+
+          Collapsed behind a "Read more" because that full intro is long: a
+          median 1,035 chars across the 85 shipped chapters, up to 1,673, which
+          is 15-18 phone lines before the reader reaches a single link. CSS
+          only — the whole intro stays in the prerendered HTML. */}
       <GuideHero
         eyebrow={`${chapter.subjectDisplay} · Teaching notes`}
         title={meta.title}
         subtitle={meta.intro}
+        collapsibleSubtitle
       />
 
       {/* Printable handout — the whole chapter as one A4 PDF for teachers to
