@@ -1177,6 +1177,26 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7 Q"] },
   ],
 
+  // ── Ch.9 Light — Reflection and Refraction (10th Science). FOUR worked
+  //    examples, the second-richest example set on this lane after Ch.11, and
+  //    the chapter whose KEY reaches furthest: 16 of 17 exercise items (94%),
+  //    tied with Ch.11. Every numerical was derived independently in sympy
+  //    before the key was consulted — data/c10SciLight.derivation.json.
+  //
+  //    Examples band to the box they PRECEDE, so Eg 9.1-9.2 (p144) carry the
+  //    "9.2 Eg." prefix for box 2 and Eg 9.3-9.4 (p156) carry "9.4 Eg." for
+  //    box 4 — the boxes they respectively lead into, not the sections they
+  //    are printed in.
+  c10SciLight: [
+    { group: "9.2 Spherical Mirrors", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.1 Q"] },
+    { group: "9.2.4 Mirror Formula and Magnification", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.2 Eg."] },
+    { group: "9.2.4 Mirror Formula and Magnification", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.2 Q"] },
+    { group: "9.3 Refraction of Light", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.3 Q"] },
+    { group: "9.3.7-9.3.8 Lens Formula, Magnification and Power of a Lens", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.4 Eg."] },
+    { group: "9.3.7-9.3.8 Lens Formula, Magnification and Power of a Lens", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.4 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
