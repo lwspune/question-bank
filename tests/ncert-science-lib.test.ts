@@ -23,6 +23,7 @@
 import { describe, it, expect } from "vitest";
 import {
   spacedHeadingRe,
+  questionBoxRe,
   contiguousRun,
   egRef,
   intextRef,
@@ -39,6 +40,8 @@ import {
 // The literal shape the text layer produces for Ch.1's end-of-chapter heading.
 const SPACED_EXERCISES = "E\nX\nE\nR\nC\nI\nS\nE\nS";
 const SPACED_QUESTIONS = "Q\nU\nE\nS\nT\nI\nO\nN\nS\n?";
+// Ch.2 p1 and Ch.12 p1: a box holding ONE item is headed QUESTION, singular.
+const SPACED_QUESTION_SINGULAR = "Q\nU\nE\nS\nT\nI\nO\nN\n?";
 
 describe("spacedHeadingRe", () => {
   it("matches the vertically letter-spaced heading the text layer emits", () => {
@@ -75,6 +78,64 @@ describe("spacedHeadingRe", () => {
     // A /g regex reused across .test() calls alternates true/false via lastIndex.
     // That bug would make the probe find half the sections it should.
     const re = spacedHeadingRe("QUESTIONS");
+    expect(re.test(SPACED_QUESTIONS)).toBe(true);
+    expect(re.test(SPACED_QUESTIONS)).toBe(true);
+  });
+});
+
+describe("questionBoxRe", () => {
+  // WHY THIS EXISTS. `spacedHeadingRe("QUESTIONS")` cannot see a box headed
+  // QUESTION, and exactly two boxes in the book are: Ch.2 p1 and Ch.12 p1, each
+  // holding a single item. That is not a cosmetic miss — the probe and the
+  // transcriber were BOTH looking for the plural, so Ch.12 reconciled "4 of 4
+  // boxes OK" while its first box was invisible to both. A shared blind spot
+  // reads exactly like agreement.
+  it("matches the plural heading, spaced and unspaced", () => {
+    expect(questionBoxRe().test(SPACED_QUESTIONS)).toBe(true);
+    expect(questionBoxRe().test("QUESTIONS")).toBe(true);
+  });
+
+  it("matches the SINGULAR heading a one-item box carries", () => {
+    expect(questionBoxRe().test(SPACED_QUESTION_SINGULAR)).toBe(true);
+    expect(questionBoxRe().test("QUESTION")).toBe(true);
+  });
+
+  it("splits a page carrying both forms into two boxes", () => {
+    // The property the reconcile actually depends on: .split() must yield one
+    // segment per box. Counting matches alone would have passed on a regex that
+    // consumed "QUESTIONS" as "QUESTION" and left the S in the segment text.
+    // The newlines around each heading are the book's own shape: the letter
+    // column always starts its own line. Butting prose straight against the Q
+    // would kill the leading \b, which is the guard that keeps "XQUESTIONSY" out.
+    const page = `intro
+${SPACED_QUESTION_SINGULAR}
+1.
+first
+mid
+${SPACED_QUESTIONS}
+1.
+a
+2.
+b`;
+    const parts = page.split(new RegExp(questionBoxRe().source, "g")).slice(1);
+    expect(parts).toHaveLength(2);
+    expect(parts[0]).not.toMatch(/^S/);
+    expect(parts[1]).not.toMatch(/^S/);
+  });
+
+  it("does NOT match the lowercase word in prose", () => {
+    // Every chapter's prose asks the reader questions; a case-insensitive probe
+    // would shatter the chapter into dozens of phantom boxes.
+    expect(questionBoxRe().test("Answer the following question carefully")).toBe(false);
+    expect(questionBoxRe().test("Questions for practice")).toBe(false);
+  });
+
+  it("does not run letters together across a word boundary", () => {
+    expect(questionBoxRe().test("XQUESTIONSY")).toBe(false);
+  });
+
+  it("is global-flag free so .test() is not stateful", () => {
+    const re = questionBoxRe();
     expect(re.test(SPACED_QUESTIONS)).toBe(true);
     expect(re.test(SPACED_QUESTIONS)).toBe(true);
   });

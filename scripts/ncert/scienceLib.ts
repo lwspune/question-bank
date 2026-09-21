@@ -43,6 +43,27 @@ export function spacedHeadingRe(word: string): RegExp {
 }
 
 /**
+ * The heading that opens an in-text question box — QUESTION**S**, or QUESTION.
+ *
+ * Two boxes in the whole book are singular, and both hold exactly one item:
+ * Ch.2 p1 ("how will you identify the contents of each test tube?") and Ch.12 p1
+ * ("Why does a compass needle get deflected…"). `spacedHeadingRe("QUESTIONS")`
+ * cannot see either.
+ *
+ * That miss is worse than it sounds, because the SAME regex fed the reconcile
+ * probe and my own page survey: Ch.12 shipped reporting "in-text boxes: book 4,
+ * transcribed 4" with its first box invisible to both sides of the check. Two
+ * passes sharing one blind spot look exactly like two passes agreeing.
+ *
+ * The optional group is greedy so that a plural heading is consumed WHOLE —
+ * otherwise .split() leaves a stray "S" at the head of the box's text and the
+ * item scan reads it as prose.
+ */
+export function questionBoxRe(): RegExp {
+  return new RegExp("\\b" + "QUESTION".split("").map(esc).join("\\s*") + "(?:\\s*S)?\\b");
+}
+
+/**
  * The leading 1,2,3… run of a list of item numbers.
  *
  * Returns `[]` when the list does not open at 1 — a block whose numbering starts

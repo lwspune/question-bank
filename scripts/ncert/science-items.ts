@@ -33,7 +33,14 @@
 import { readFileSync, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { requireChapter, questionsJsonPath } from "./config";
-import { spacedHeadingRe, contiguousRun, refStructure, reconcile, parseKeyChapters } from "./scienceLib";
+import {
+  spacedHeadingRe,
+  questionBoxRe,
+  contiguousRun,
+  refStructure,
+  reconcile,
+  parseKeyChapters,
+} from "./scienceLib";
 
 /** Block-sorted page text — closer to reading order than a raw dump, not equal to it. */
 function pdfText(pdf: string, sorted: boolean): string {
@@ -107,8 +114,10 @@ function main() {
   let hits = report(`exercise items (1..${bookEx.length || "?"})`, reconcile(bookEx, got.exercise));
 
   // 2. In-text boxes. Each box's items are its own leading 1..n run.
-  const qHead = spacedHeadingRe("QUESTIONS");
-  const parts = pre.split(new RegExp(qHead.source, "g")).slice(1);
+  //    questionBoxRe, NOT spacedHeadingRe("QUESTIONS"): a one-item box is headed
+  //    QUESTION, singular, and this probe used to be blind to exactly the same
+  //    two boxes my page survey was (Ch.2 p1, Ch.12 p1). Ch.12 shipped green.
+  const parts = pre.split(new RegExp(questionBoxRe().source, "g")).slice(1);
   console.log(`  in-text boxes: book ${parts.length}, transcribed ${got.boxes.size}`);
   if (parts.length !== got.boxes.size) hits = true;
   parts.forEach((seg, i) => {
