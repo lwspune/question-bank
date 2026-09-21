@@ -14,17 +14,22 @@ import {
   FEATURE_LABELS,
   TELEMETRY_KINDS,
   viewShare,
+  viewStickiness,
   MIN_LIFT_N,
   MIN_SEGMENT_N,
   MIN_NPS_RESPONSES,
   MIN_SHARE_OPPORTUNITIES,
+  MIN_STICKINESS_MAU,
   SHARE_LIVE_SINCE,
   SHARE_LABEL,
   SHARE_CAVEAT,
+  INSTRUMENT_CHANGED_SINCE,
+  INSTRUMENT_CHANGE_CAVEAT,
   type CohortRow,
   type FeatureRow,
   type SegmentRow,
   type ShareCounts,
+  type StickinessCounts,
 } from "@/lib/pmf/snapshot";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
 import { PRACTICE_SURFACES, DEFAULT_PRACTICE_SURFACE } from "@/lib/questions/practiceBatch";
@@ -577,5 +582,275 @@ describe("viewShare — the share loop, and the denominator it must use", () => 
     expect(SHARE_LABEL.toLowerCase()).toContain("intent");
     expect(SHARE_CAVEAT.toLowerCase()).toContain("intent");
     expect(SHARE_CAVEAT.length).toBeGreaterThan(20);
+  });
+});
+
+/**
+ * Stickiness — DAU/MAU, WAU/MAU and the L28 shape (/dashboard/pmf).
+ *
+ * THREE THINGS MAKE THIS METRIC LIE ON THIS PRODUCT, and each has a refusal.
+ *
+ * 1. THE NUMERATOR. DAU has a one-day memory and MAU a 28-day one, so after a
+ *    batch mock drive the ratio falls for calendar reasons. Measured on the
+ *    live bank: 6 active on 2026-09-21 and 15 on 2026-09-20 against the same
+ *    MAU of 183 — the headline halves overnight on a cohort this size. So the
+ *    numerator is the window's AVERAGE DAU (studentDays / windowDays), and
+ *    `dauToday` is carried for context only, never divided by anything.
+ * 2. THE INSTRUMENT MOVED. question_practiced and mock_started first wrote on
+ *    2026-09-17, drill_completed on 2026-09-19. On 2026-09-20, 13 of 15 active
+ *    students were active ONLY through an instrument that did not exist four
+ *    days earlier — under the old set that day's DAU was 2. Any window
+ *    straddling that date measures the instrumentation, not the students, so it
+ *    is FLAGGED on the number rather than in a footnote.
+ * 3. THE WINDOW HAS TO EXIST. The first signal ever recorded is 2026-07-10.
+ *    Dividing studentDays by 28 when only 10 of those days had a product to use
+ *    understates the average — so a window that starts before the first signal
+ *    withholds instead of computing. Same family as viewCohort's censoring.
+ *
+ * The BUCKETS are never withheld: they are counts, and the L28 distribution is
+ * the honest answer to "are students coming back" that no single ratio gives.
+ */
+describe("viewStickiness — DAU/MAU, and the three things that make it lie here", () => {
+  // The live shape on 2026-09-21, so the fixture is a real measurement rather
+  // than a round number that could hide a rounding defect.
+  const stick = (over: Partial<StickinessCounts> = {}): StickinessCounts => ({
+    windowDays: 28,
+    windowStart: "2026-08-25",
+    mau: 181,
+    wau: 35,
+    dauToday: 6,
+    studentDays: 488,
+    activeDays: [
+      { days: 1, students: 87 },
+      { days: 2, students: 40 },
+      { days: 3, students: 20 },
+      { days: 4, students: 10 },
+      { days: 5, students: 5 },
+      { days: 6, students: 3 },
+      { days: 8, students: 3 },
+      { days: 9, students: 4 },
+      { days: 10, students: 1 },
+      { days: 11, students: 1 },
+      { days: 12, students: 4 },
+      { days: 14, students: 1 },
+      { days: 16, students: 1 },
+      { days: 19, students: 1 },
+    ],
+    firstSignalDay: "2026-07-10",
+    ...over,
+  });
+
+  it("reports all three rates on a window the data can carry", () => {
+    const v = viewStickiness(stick({ windowStart: "2026-10-01" }));
+
+    expect(v.withheld).toBeNull();
+    expect(v.reportable).toBe(true);
+    expect(v.avgDau).toBe(17.4); // 488 / 28
+    expect(v.dauMau).toBe(9.6); // 488 / (181 * 28)
+    expect(v.wauMau).toBe(19.3); // 35 / 181
+    expect(v.studyDaysPerStudent).toBe(2.7); // 488 / 181
+  });
+
+  it("keeps ONE DECIMAL — a whole percent is 10% granularity on a number that sits at 9", () => {
+    // Every other rate on this page is a whole percent because it lives in the
+    // tens. Stickiness lives in single digits, where rounding 9.6 to 10 moves
+    // the number by more than a month of real change would.
+    expect(viewStickiness(stick({ windowStart: "2026-10-01", studentDays: 480 })).dauMau).toBe(9.5);
+    expect(viewStickiness(stick({ windowStart: "2026-10-01", studentDays: 495 })).dauMau).toBe(9.8);
+  });
+
+  it("divides by the WHOLE window, not by the days that happened to be busy", () => {
+    // A quiet day is a real zero: the product existed and nobody came.
+    // Averaging over active days only would report a number that RISES as usage
+    // becomes more concentrated, which is backwards.
+    const v = viewStickiness(
+      stick({ windowStart: "2026-10-01", windowDays: 28, studentDays: 28, mau: 28 })
+    );
+    expect(v.avgDau).toBe(1);
+    expect(v.dauMau).toBe(3.6); // 28 / (28*28), not 100
+  });
+
+  it("NEVER divides by dauToday — it is carried for context only", () => {
+    // The 2.5x overnight swing this avoids: same MAU, DAU 6 vs 15.
+    const a = viewStickiness(stick({ windowStart: "2026-10-01", dauToday: 6 }));
+    const b = viewStickiness(stick({ windowStart: "2026-10-01", dauToday: 15 }));
+    expect(a.dauMau).toBe(b.dauMau);
+    expect(a.counts.dauToday).toBe(6);
+    expect(b.counts.dauToday).toBe(15);
+  });
+
+  it("WITHHOLDS every rate below the MAU floor, and still shows the counts", () => {
+    const v = viewStickiness(
+      stick({ windowStart: "2026-10-01", mau: MIN_STICKINESS_MAU - 1, studentDays: 40, wau: 5 })
+    );
+
+    expect(v.withheld).toBe("thin");
+    expect(v.reportable).toBe(false);
+    expect(v.dauMau).toBeNull();
+    expect(v.wauMau).toBeNull();
+    expect(v.avgDau).toBeNull();
+    expect(v.studyDaysPerStudent).toBeNull();
+    // Counts survive — only the rates derived from too few of them are withheld.
+    expect(v.counts.mau).toBe(MIN_STICKINESS_MAU - 1);
+    expect(v.counts.wau).toBe(5);
+  });
+
+  it("never reports a rate the sample cannot support, across a sweep", () => {
+    for (let mau = 0; mau < MIN_STICKINESS_MAU; mau++) {
+      const v = viewStickiness(stick({ windowStart: "2026-10-01", mau, studentDays: mau * 3 }));
+      expect(v.dauMau, `mau=${mau}`).toBeNull();
+    }
+  });
+
+  it("WITHHOLDS when the window starts before the first signal ever recorded", () => {
+    // The MAU-still-filling trap. A 28-day average over a product that only
+    // existed for 10 of those days is not a low number, it is a wrong one.
+    const v = viewStickiness(stick({ windowStart: "2026-07-01", firstSignalDay: "2026-07-10" }));
+
+    expect(v.withheld).toBe("short-history");
+    expect(v.dauMau).toBeNull();
+    expect(v.wauMau).toBeNull();
+  });
+
+  it("reports at the exact boundary — a window starting ON the first signal is complete", () => {
+    expect(
+      viewStickiness(stick({ windowStart: "2026-07-10", firstSignalDay: "2026-07-10" })).withheld
+    ).toBeNull();
+    expect(
+      viewStickiness(stick({ windowStart: "2026-07-09", firstSignalDay: "2026-07-10" })).withheld
+    ).toBe("short-history");
+  });
+
+  it("short history OUTRANKS a thin sample — the denominator is the deeper defect", () => {
+    // Both are true here. The sample floor says "ask again when more students
+    // arrive"; the history floor says "this window cannot be averaged at all".
+    // Reporting the first would send the reader away waiting for the wrong thing.
+    const v = viewStickiness(
+      stick({ windowStart: "2026-07-01", firstSignalDay: "2026-07-10", mau: 3, studentDays: 4 })
+    );
+    expect(v.withheld).toBe("short-history");
+  });
+
+  it("an empty bank withholds rather than dividing by zero", () => {
+    const v = viewStickiness(
+      stick({ mau: 0, wau: 0, dauToday: 0, studentDays: 0, activeDays: [], firstSignalDay: null })
+    );
+
+    // Nothing has ever been recorded, so there is no window to average over —
+    // which is a statement about the denominator, not about the sample size.
+    expect(v.withheld).toBe("short-history");
+    expect(v.dauMau).toBeNull();
+    expect(v.avgDau).toBeNull();
+    expect(v.buckets.every((b) => b.students === 0)).toBe(true);
+    expect(v.bucketedStudents).toBe(0);
+  });
+
+  it("a ZERO rate over a real sample IS reported — the floor suppresses noise, not bad news", () => {
+    // Same asymmetry viewShare documents. Once enough students exist, "nobody
+    // came back all week" is a finding, not an absence of one.
+    const v = viewStickiness(
+      stick({
+        windowStart: "2026-10-01",
+        mau: 200,
+        wau: 0,
+        studentDays: 200,
+        activeDays: [{ days: 1, students: 200 }],
+      })
+    );
+    expect(v.reportable).toBe(true);
+    expect(v.wauMau).toBe(0);
+  });
+
+  it("buckets the L28 distribution at 1 / 2 / 3 / 4-7 / 8+", () => {
+    const v = viewStickiness(stick());
+    expect(v.buckets.map((b) => [b.label, b.students])).toEqual([
+      ["1 day", 87],
+      ["2 days", 40],
+      ["3 days", 20],
+      ["4–7 days", 18], // 10 + 5 + 3
+      ["8+ days", 16], // 3+4+1+1+4+1+1+1
+    ]);
+  });
+
+  it("STRUCTURAL: the buckets partition the active students exactly", () => {
+    // One student at every possible day-count. A boundary that double-counts or
+    // drops a day shows up here and nowhere else.
+    const activeDays = Array.from({ length: 28 }, (_, i) => ({ days: i + 1, students: 1 }));
+    const v = viewStickiness(stick({ windowStart: "2026-10-01", mau: 28, activeDays }));
+
+    expect(v.buckets.reduce((n, b) => n + b.students, 0)).toBe(28);
+    expect(v.buckets.map((b) => b.students)).toEqual([1, 1, 1, 4, 21]);
+  });
+
+  it("reports what the buckets actually cover rather than assuming they cover the MAU", () => {
+    // The two come from different aggregates. If they ever disagree the page
+    // must be able to SAY so — a core that silently rescaled to the MAU would
+    // make a broken histogram look correct.
+    const v = viewStickiness(
+      stick({ windowStart: "2026-10-01", mau: 200, activeDays: [{ days: 1, students: 150 }] })
+    );
+    expect(v.bucketedStudents).toBe(150);
+    expect(v.counts.mau).toBe(200);
+  });
+
+  it("buckets are shown even when every rate is withheld — they are counts, not rates", () => {
+    const v = viewStickiness(stick({ windowStart: "2026-07-01", firstSignalDay: "2026-07-10" }));
+    expect(v.withheld).toBe("short-history");
+    expect(v.bucketedStudents).toBe(181);
+  });
+
+  it("FLAGS a window that straddles the instrumentation change", () => {
+    expect(viewStickiness(stick({ windowStart: "2026-08-25" })).instrumentChanged).toBe(true);
+  });
+
+  it("turns the flag off by itself once the window clears the change date", () => {
+    // It must expire without anyone remembering to delete it — a warning that
+    // outlives its cause trains the reader to ignore warnings.
+    expect(viewStickiness(stick({ windowStart: "2026-09-16" })).instrumentChanged).toBe(true);
+    expect(viewStickiness(stick({ windowStart: INSTRUMENT_CHANGED_SINCE })).instrumentChanged).toBe(
+      false
+    );
+    expect(viewStickiness(stick({ windowStart: "2026-10-01" })).instrumentChanged).toBe(false);
+  });
+
+  it("an ABSENT window start does not read as an early one", () => {
+    // emptySnapshot() carries "" when the RPC has not answered. A lexical
+    // compare would call that a straddling window and warn about the
+    // instrumentation of a window that does not exist.
+    const v = viewStickiness(
+      stick({ windowStart: "", mau: 0, studentDays: 0, activeDays: [], firstSignalDay: null })
+    );
+    expect(v.instrumentChanged).toBe(false);
+  });
+
+  it("a flagged window is still REPORTED — the warning qualifies the number, it does not withhold it", () => {
+    const v = viewStickiness(stick({ windowStart: "2026-08-25" }));
+    expect(v.instrumentChanged).toBe(true);
+    expect(v.reportable).toBe(true);
+    expect(v.dauMau).not.toBeNull();
+  });
+
+  it("the caveat names the date and the kinds, so the reader can go and check", () => {
+    // Pinned in the core for the same reason SHARE_CAVEAT is: a caveat that
+    // lives only in a migration header never reaches the person reading.
+    expect(INSTRUMENT_CHANGE_CAVEAT).toContain(INSTRUMENT_CHANGED_SINCE);
+    for (const kind of ["question_practiced", "mock_started", "drill_completed"]) {
+      expect(INSTRUMENT_CHANGE_CAVEAT, kind).toContain(kind);
+    }
+  });
+
+  it("INSTRUMENT_CHANGED_SINCE is a real past date", () => {
+    const t = Date.parse(INSTRUMENT_CHANGED_SINCE);
+    expect(Number.isNaN(t)).toBe(false);
+    expect(t).toBeLessThanOrEqual(Date.now());
+  });
+
+  it("STRUCTURAL: every kind the caveat names is a real activity kind", () => {
+    // The same rot-guard SURFACE_COVERAGE gets: a renamed kind must break here
+    // rather than leave the banner naming something that no longer exists.
+    const named = ACTIVITY_KINDS.filter((k) => INSTRUMENT_CHANGE_CAVEAT.includes(k));
+    expect(named).toContain("question_practiced");
+    expect(named).toContain("mock_started");
+    expect(named).toContain("drill_completed");
   });
 });

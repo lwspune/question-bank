@@ -437,6 +437,183 @@ export function viewShare(counts: ShareCounts): ShareView {
   };
 }
 
+// ── Stickiness: DAU/MAU, WAU/MAU and the L28 shape ──────────────────────────
+
+/**
+ * Minimum students in the monthly window before any stickiness RATE is shown.
+ * Below it the counts and the L28 histogram still render — the floor suppresses
+ * a ratio computed over a handful of students, not the students themselves.
+ */
+export const MIN_STICKINESS_MAU = 25;
+
+/**
+ * The day the set of acts that can make a student "active" last GREW.
+ *
+ * `question_practiced` and `mock_started` wrote their first rows on 2026-09-17
+ * and `drill_completed` on 2026-09-19. This is not a footnote: on 2026-09-20,
+ * 13 of the 15 active students were active ONLY through one of those three, so
+ * under the previous instrument set that day's DAU was 2. A window straddling
+ * this date therefore measures the INSTRUMENT and not the students, and a
+ * stickiness trend across it will show an improvement that is pure artefact.
+ *
+ * `viewStickiness` flags such a window rather than withholding it — the number
+ * is still the best available floor, and the reader needs both. The flag
+ * expires by itself once the window clears the date, because a warning that
+ * outlives its cause teaches the reader to ignore warnings.
+ */
+export const INSTRUMENT_CHANGED_SINCE = "2026-09-17";
+
+export const INSTRUMENT_CHANGE_CAVEAT =
+  "This window straddles 2026-09-17, when the set of recorded acts grew: question_practiced and mock_started began writing that day and drill_completed on 2026-09-19. On 2026-09-20, 13 of 15 active students were active ONLY through one of those three — under the earlier instrument set that day's DAU was 2. Read a rise across this window as instrumentation first and behaviour second.";
+
+/** One decimal place. See `pct` for why this one is not a whole percent. */
+function pct1(num: number, den: number): number {
+  if (den <= 0) return 0;
+  return Math.round((num / den) * 1000) / 10;
+}
+
+function round1(n: number): number {
+  return Math.round(n * 10) / 10;
+}
+
+/** Per-student active-day counts inside the window: N students were active on `days` days. */
+export type ActiveDayCount = { days: number; students: number };
+
+export type StickinessCounts = {
+  /** Length of the monthly window, in days. */
+  windowDays: number;
+  /** IST date the window opens (inclusive). */
+  windowStart: string;
+  /** Distinct students with at least one recorded signal inside the window. */
+  mau: number;
+  /** Distinct students with at least one recorded signal in the last 7 days. */
+  wau: number;
+  /**
+   * Distinct students active today (IST). Carried for context and NEVER used as
+   * a numerator — see the module docblock on `viewStickiness`.
+   */
+  dauToday: number;
+  /** Distinct (student, IST day) pairs inside the window — the avg-DAU numerator. */
+  studentDays: number;
+  activeDays: ActiveDayCount[];
+  /** IST date of the earliest signal ever recorded; null when there are none. */
+  firstSignalDay: string | null;
+};
+
+export type StickinessBucket = { label: string; students: number };
+
+/** Why the rates are withheld. `null` means they are reported. */
+export type StickinessWithheld = "thin" | "short-history" | null;
+
+export type StickinessView = {
+  counts: StickinessCounts;
+  /** Average distinct actives per day across the WHOLE window, quiet days included. */
+  avgDau: number | null;
+  /** avgDau as a share of the monthly actives, to one decimal. */
+  dauMau: number | null;
+  /** Weekly actives as a share of monthly actives — the burst-safe reading. */
+  wauMau: number | null;
+  /** Average distinct study days per active student in the window. */
+  studyDaysPerStudent: number | null;
+  /** Always populated: counts, not rates. */
+  buckets: StickinessBucket[];
+  /** How many students the buckets actually account for — see `viewStickiness`. */
+  bucketedStudents: number;
+  withheld: StickinessWithheld;
+  reportable: boolean;
+  instrumentChanged: boolean;
+};
+
+/**
+ * The L28 boundaries. Half-open on the low side, so every day-count lands in
+ * exactly one bucket and the set partitions the active students — asserted in
+ * tests/pmf-snapshot.test.ts, which is the only place a mis-drawn boundary
+ * shows up at all.
+ */
+const BUCKETS: { label: string; min: number; max: number }[] = [
+  { label: "1 day", min: 1, max: 1 },
+  { label: "2 days", min: 2, max: 2 },
+  { label: "3 days", min: 3, max: 3 },
+  { label: "4–7 days", min: 4, max: 7 },
+  { label: "8+ days", min: 8, max: Infinity },
+];
+
+function bucketise(rows: readonly ActiveDayCount[]): StickinessBucket[] {
+  return BUCKETS.map((b) => ({
+    label: b.label,
+    students: rows
+      .filter((r) => r.days >= b.min && r.days <= b.max)
+      .reduce((n, r) => n + r.students, 0),
+  }));
+}
+
+/**
+ * Interpret the stickiness counters.
+ *
+ * THE NUMERATOR IS AN AVERAGE, NOT TODAY. DAU has a one-day memory and MAU a
+ * 28-day one, so a single-day numerator makes the headline swing with the
+ * calendar rather than the product: measured live, 6 actives on 2026-09-21 and
+ * 15 on 2026-09-20 against the same MAU of 183. The window's average DAU is the
+ * only numerator that moves at the denominator's speed.
+ *
+ * TWO REFUSALS, in this order:
+ *  - SHORT HISTORY outranks everything. Dividing studentDays by windowDays when
+ *    the product only existed for part of the window does not produce a low
+ *    number, it produces a wrong one — the same class of error as reading an
+ *    uncensored retention cell. It is checked first because it is a statement
+ *    about the DENOMINATOR: no amount of extra students would fix it, so
+ *    reporting "too few students" instead would send the reader away waiting
+ *    for the wrong thing.
+ *  - THIN SAMPLE below MIN_STICKINESS_MAU, as elsewhere on this page.
+ * A zero rate over a real sample is still REPORTED: the floors suppress noise,
+ * not bad news.
+ *
+ * `bucketedStudents` is returned rather than assumed equal to `mau` because the
+ * two come from different aggregates in the same RPC. If they ever disagree the
+ * page must be able to say so; a core that rescaled the histogram to the MAU
+ * would make a broken one look correct.
+ */
+export function viewStickiness(counts: StickinessCounts): StickinessView {
+  const buckets = bucketise(counts.activeDays);
+  const bucketedStudents = buckets.reduce((n, b) => n + b.students, 0);
+  // An ABSENT window start is not an early one. emptySnapshot() carries "" for
+  // a snapshot that never loaded, and a lexical compare would read that as
+  // straddling the change and warn about a window that does not exist.
+  const instrumentChanged =
+    counts.windowStart !== "" && counts.windowStart < INSTRUMENT_CHANGED_SINCE;
+
+  const shortHistory =
+    counts.firstSignalDay === null || counts.windowStart < counts.firstSignalDay;
+  const withheld: StickinessWithheld = shortHistory
+    ? "short-history"
+    : counts.mau < MIN_STICKINESS_MAU
+      ? "thin"
+      : null;
+
+  const base = {
+    counts,
+    buckets,
+    bucketedStudents,
+    withheld,
+    reportable: withheld === null,
+    instrumentChanged,
+  };
+
+  if (withheld !== null) {
+    return { ...base, avgDau: null, dauMau: null, wauMau: null, studyDaysPerStudent: null };
+  }
+
+  return {
+    ...base,
+    avgDau: round1(counts.studentDays / counts.windowDays),
+    // Computed in one step rather than from the rounded avgDau — rounding twice
+    // would move the headline by more than a quiet week does.
+    dauMau: pct1(counts.studentDays, counts.mau * counts.windowDays),
+    wauMau: pct1(counts.wau, counts.mau),
+    studyDaysPerStudent: round1(counts.studentDays / counts.mau),
+  };
+}
+
 // ── Funnel ──────────────────────────────────────────────────────────────────
 
 export type FunnelCounts = {

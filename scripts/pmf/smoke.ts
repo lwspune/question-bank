@@ -41,9 +41,12 @@ async function main() {
     viewNps,
     signalFunnel,
     viewShare,
+    viewStickiness,
     SURFACE_COVERAGE,
     MIN_SHARE_OPPORTUNITIES,
+    MIN_STICKINESS_MAU,
     SHARE_LIVE_SINCE,
+    INSTRUMENT_CHANGED_SINCE,
   } = await import("@/lib/pmf/snapshot");
 
   const db = createClient(
@@ -203,6 +206,71 @@ share loop: ${sc.events} intents over ${sc.opportunities} opportunities since ${
   );
   if (sc.opportunities === 0) {
     console.log("  NOTE: nobody has finished a mock since the button shipped — 0 intents proves nothing yet.");
+  }
+
+  // ── Stickiness (0112) ─────────────────────────────────────────────────────
+  // The invariants here are all about the DENOMINATORS lining up. Three of the
+  // numbers come from separate aggregates over the same window, so nothing but
+  // a live cross-check can catch one of them drifting: the histogram must
+  // account for exactly the monthly actives, the nested windows must nest, and
+  // studentDays must be consistent with both (at least one day each, at most
+  // windowDays each). A unit test cannot see any of this — its fixtures are
+  // internally consistent by construction.
+  const st = viewStickiness(snap.stickiness);
+  const s0 = st.counts;
+
+  assert(s0.windowDays > 0, "stickiness window has no length");
+  assert(s0.dauToday <= s0.wau, `DAU (${s0.dauToday}) exceeds WAU (${s0.wau}) — windows do not nest`);
+  assert(s0.wau <= s0.mau, `WAU (${s0.wau}) exceeds MAU (${s0.mau}) — windows do not nest`);
+  assert(
+    st.bucketedStudents === s0.mau,
+    `L${s0.windowDays} histogram accounts for ${st.bucketedStudents} students but MAU is ${s0.mau} — two aggregates over one window disagree`
+  );
+  assert(
+    s0.studentDays >= s0.mau,
+    `studentDays (${s0.studentDays}) is below MAU (${s0.mau}) — every monthly active owes at least one active day`
+  );
+  assert(
+    s0.studentDays <= s0.mau * s0.windowDays,
+    `studentDays (${s0.studentDays}) exceeds ${s0.mau} students x ${s0.windowDays} days — a student was counted twice on one day`
+  );
+  assert(
+    s0.activeDays.every((r) => r.days >= 1 && r.days <= s0.windowDays),
+    `a student is recorded active on more than ${s0.windowDays} days, or on none`
+  );
+  // The whole reason the numerator is an average: dauToday must never reach it.
+  if (st.dauMau !== null) {
+    assert(st.avgDau !== null, "reported DAU/MAU without an average DAU to build it from");
+  }
+  if (s0.mau < MIN_STICKINESS_MAU) {
+    assert(
+      st.dauMau === null && st.wauMau === null,
+      `stickiness rates reported on only ${s0.mau} monthly actives (floor is ${MIN_STICKINESS_MAU})`
+    );
+  }
+  if (s0.firstSignalDay !== null && s0.windowStart < s0.firstSignalDay) {
+    assert(
+      st.withheld === "short-history",
+      "averaged over a window that opens before the first signal ever recorded"
+    );
+  }
+
+  console.log(
+    `\nstickiness: ${s0.mau} MAU / ${s0.wau} WAU / ${s0.dauToday} today` +
+      ` over ${s0.windowDays}d from ${s0.windowStart} (first signal ${s0.firstSignalDay ?? "none"})`
+  );
+  console.log(
+    `  DAU/MAU ${st.dauMau === null ? `withheld (${st.withheld})` : `${st.dauMau}%`}` +
+      ` · WAU/MAU ${st.wauMau === null ? "withheld" : `${st.wauMau}%`}` +
+      ` · ${st.studyDaysPerStudent ?? "n/a"} study days per student` +
+      ` · avg DAU ${st.avgDau ?? "n/a"}`
+  );
+  console.log(`  L${s0.windowDays}: ${st.buckets.map((b) => `${b.label} ${b.students}`).join(" · ")}`);
+  if (st.instrumentChanged) {
+    console.log(
+      `  NOTE: the window opens before ${INSTRUMENT_CHANGED_SINCE}, when the recorded-act set grew.` +
+        " A rise across it is instrumentation before it is behaviour."
+    );
   }
 
   // ── Coverage map ──────────────────────────────────────────────────────────

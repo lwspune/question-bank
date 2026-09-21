@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
@@ -76,6 +77,21 @@ export default async function ActivityShapePage() {
           <StatCard kind="numeric" value={shape.sessions.multiDayUsers} label="Returned ≥2 days" />
           <StatCard kind="numeric" value={shape.totalEvents} label="Total events" />
         </div>
+
+        {/* These counts and the stickiness panel on /dashboard/pmf look like the
+            same metric and are not — different population, different sources.
+            Saying so here is cheaper than the hour someone spends reconciling
+            two "active students" numbers that were never meant to agree. */}
+        <p className="text-xs text-muted-foreground">
+          Counted over <span className="font-medium">user_activity alone</span>, across{" "}
+          <span className="font-medium">all users including staff</span>. The stickiness panel on{" "}
+          <Link href="/dashboard/pmf" prefetch={false} className="underline">
+            product/market fit
+          </Link>{" "}
+          measures self-serve students only and also counts mock attempts and bookmarks, so its
+          weekly and monthly actives are deliberately different numbers from these — not a
+          disagreement to reconcile.
+        </p>
 
         {/* Which events actually fire — the AI Tutor's "3 kinds fired zero times" check. */}
         <section className="space-y-2">

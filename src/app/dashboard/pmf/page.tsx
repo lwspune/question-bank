@@ -21,6 +21,9 @@ import {
   MIN_SHARE_OPPORTUNITIES,
   SHARE_LABEL,
   SHARE_CAVEAT,
+  viewStickiness,
+  MIN_STICKINESS_MAU,
+  INSTRUMENT_CHANGE_CAVEAT,
   type RetentionCell,
   type Tracked,
 } from "@/lib/pmf/snapshot";
@@ -68,6 +71,11 @@ export default async function PmfPage() {
   const attempts = abandonment(snap.attempts);
   const difficulty = viewDifficulty({ counts: snap.difficulty, submitted: snap.attempts.submitted });
   const nps = viewNps(snap.nps);
+  const stick = viewStickiness(snap.stickiness);
+  // Scale the histogram to its own tallest bar, not to the MAU: half the active
+  // students sit in the first bucket, so a MAU-scaled chart flattens the tail
+  // into nothing and hides the students who actually came back.
+  const maxBucket = Math.max(1, ...stick.buckets.map((b) => b.students));
   const dark = SURFACE_COVERAGE.filter((s) => s.tracked === "none");
 
   return (
@@ -127,6 +135,98 @@ export default async function PmfPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* ── Stickiness (0112) ──────────────────────────────────────────── */}
+        <section className="space-y-4 rounded-lg border p-5">
+          <h2 className="text-sm font-semibold">Stickiness</h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {/* WAU/MAU leads: a week is the natural unit for a cohort measured
+                as burst-shaped, and it does not move with a single quiet day. */}
+            <StatCard
+              kind="text"
+              value={stick.wauMau === null ? "n/a" : `${stick.wauMau}%`}
+              label="WAU / MAU — weekly of monthly"
+            />
+            <StatCard
+              kind="text"
+              value={stick.dauMau === null ? "n/a" : `${stick.dauMau}%`}
+              label={`DAU / MAU — ${stick.counts.windowDays}d average`}
+            />
+            <StatCard
+              kind="text"
+              value={stick.studyDaysPerStudent === null ? "n/a" : String(stick.studyDaysPerStudent)}
+              label={`Study days per student per ${stick.counts.windowDays}d`}
+            />
+          </div>
+
+          <p className="text-xs text-muted-foreground">
+            {stick.counts.mau} students left a signal in the {stick.counts.windowDays} days from{" "}
+            {stick.counts.windowStart || "n/a"}, {stick.counts.wau} of them in the last 7 days
+            {stick.avgDau !== null && <> · {stick.avgDau} active on an average day</>} (
+            {stick.counts.dauToday} today).{" "}
+            <span className="font-medium">
+              The DAU/MAU numerator is the window&rsquo;s average, not today&rsquo;s count.
+            </span>{" "}
+            A one-day numerator against a {stick.counts.windowDays}-day denominator swings with the
+            calendar rather than the product — the same MAU divided today&rsquo;s figure and
+            yesterday&rsquo;s gives two answers a factor apart. The third card is the same number in
+            units that mean something here: {stick.studyDaysPerStudent === null ? "n/a" : stick.studyDaysPerStudent}{" "}
+            study days per student per {stick.counts.windowDays}. Read it against this
+            audience — deadline-driven exam prep — and not against a daily-use benchmark.
+            {stick.withheld === "thin" &&
+              ` Rates are withheld below ${MIN_STICKINESS_MAU} monthly actives.`}
+            {stick.withheld === "short-history" &&
+              ` Rates are withheld: the window opens before the first signal ever recorded${
+                stick.counts.firstSignalDay ? ` (${stick.counts.firstSignalDay})` : ""
+              }, so an average over it would divide by days the product did not exist for.`}
+          </p>
+
+          {stick.instrumentChanged && (
+            <p className="rounded border border-amber-500/40 bg-amber-500/5 p-3 text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Instrumentation changed mid-window.</span>{" "}
+              {INSTRUMENT_CHANGE_CAVEAT}
+            </p>
+          )}
+
+          {/* The distribution, which no single ratio can carry: half of the
+              active students come exactly once. It renders even when every rate
+              above is withheld, because these are counts. */}
+          <div className="space-y-1">
+            <p className="text-xs font-medium">
+              Distinct study days per student, over the last {stick.counts.windowDays} days
+            </p>
+            {stick.buckets.map((b) => (
+              <div key={b.label} className="flex items-center gap-3">
+                <div className="w-24 shrink-0 text-xs text-muted-foreground">{b.label}</div>
+                <div className="h-4 flex-1 overflow-hidden rounded bg-muted">
+                  <div
+                    className="h-full bg-brand"
+                    style={{
+                      width: `${
+                        b.students === 0
+                          ? 0
+                          : Math.max(2, (b.students / Math.max(1, maxBucket)) * 100)
+                      }%`,
+                    }}
+                  />
+                </div>
+                <div className="w-10 shrink-0 text-right text-xs tabular-nums">{b.students}</div>
+              </div>
+            ))}
+            <p className="text-xs text-muted-foreground">
+              {stick.bucketedStudents} students bucketed
+              {stick.bucketedStudents !== stick.counts.mau && (
+                <span className="text-amber-600 dark:text-amber-400">
+                  {" "}
+                  — which does not match the {stick.counts.mau} monthly actives; the two come from
+                  different aggregates and should agree.
+                </span>
+              )}
+              . A ratio hides this shape, and the shape is the finding: it answers &ldquo;are
+              students coming back&rdquo; without collapsing a distribution into one number.
+            </p>
           </div>
         </section>
 
