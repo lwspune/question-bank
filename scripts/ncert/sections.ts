@@ -1121,6 +1121,24 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] },
   ],
 
+  // ── Ch.4 Carbon and its Compounds (10th Science). One in-text box per
+  //    top-level section, same clean shape as Ch.3, placement settled by block
+  //    geometry (box y above the next heading's y on every page carrying both).
+  //
+  //    **BOX 2 STRADDLES A PAGE BREAK** — items 1-3 close page 68, items 4-5 open
+  //    page 69, and Q5's three compounds are printed as STRUCTURES that the text
+  //    layer drops entirely (it emits "(ii)" and "(iii)" followed by nothing).
+  //    Both the overflow and the three structures were read off the render; the
+  //    text stream alone would have shipped a three-item box.
+  c10SciCarbon: [
+    { group: "4.1 Bonding in Carbon — The Covalent Bond", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.1 Q"] },
+    { group: "4.2 Versatile Nature of Carbon", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.2 Q"] },
+    { group: "4.3 Chemical Properties of Carbon Compounds", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.3 Q"] },
+    { group: "4.4 Some Important Carbon Compounds — Ethanol and Ethanoic Acid", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.4 Q"] },
+    { group: "4.5 Soaps and Detergents", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
