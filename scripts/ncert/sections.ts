@@ -1158,6 +1158,16 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] },
   ],
 
+  // ── Ch.6 Control and Coordination (10th Science). The shortest chapter on
+  //    this lane at 13 pages, with three in-text boxes — one per top-level
+  //    section, placement confirmed by block geometry as usual.
+  c10SciControlCoordination: [
+    { group: "6.1 Animals — Nervous System", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.1 Q"] },
+    { group: "6.2 Coordination in Plants", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.2 Q"] },
+    { group: "6.3 Hormones in Animals", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
