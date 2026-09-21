@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Clock, FileText, Trophy } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { MockGroup } from "@/lib/mocks/catalogue";
+import { OwnAttemptsProvider, MockAttemptBadge } from "./OwnAttempts";
 
 function fmtMins(secs: number) {
   return `${Math.round(secs / 60)} min`;
@@ -43,8 +45,14 @@ export default function MockCatalogueList({
   }
 
   return (
-    <div className="space-y-8">
-      {groups.map((group) => (
+    // This component stays a SERVER component: every title, link and stat a
+    // crawler reads is rendered here and is unchanged by the personalisation
+    // below. The provider is the only client code on the page, it fetches the
+    // student's own attempts once for all groups, and it renders nothing at all
+    // when signed out — so the prerendered HTML is identical for anon.
+    <OwnAttemptsProvider>
+      <div className="space-y-8">
+        {groups.map((group) => (
         <section key={group.key}>
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {group.label}
@@ -57,19 +65,36 @@ export default function MockCatalogueList({
               <Link
                 key={m.slug}
                 href={`/mock/${m.slug}`}
-                className="group rounded-lg border bg-card p-4 shadow-sm transition-all hover:border-brand-accent/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="group relative rounded-lg border bg-card p-4 shadow-sm transition-all hover:border-brand-accent/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-semibold leading-snug group-hover:text-brand-accent">
-                    {m.title}
-                  </h3>
+                {/* The corner stack is ABSOLUTELY POSITIONED and the text below
+                    reserves room for it, because the attempt badge arrives
+                    after hydration: laid out in flow it would shrink the
+                    title's first line, rewrap it, and grow the card — a layout
+                    shift on a page whose whole job is to be indexed. Reserved
+                    space costs one more wrapped line on some titles and is
+                    identical in the server and client renders, so nothing
+                    moves. */}
+                <div className="absolute right-4 top-4 flex flex-col items-end gap-1">
                   {showSourceBadge && (
-                    <span className="mt-0.5 shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                    <span className="rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
                       {m.source === "pyq" ? "Past paper" : "Practice"}
                     </span>
                   )}
+                  <MockAttemptBadge mockId={m.id} />
                 </div>
-                <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                <h3 className="pr-24 font-semibold leading-snug group-hover:text-brand-accent">
+                  {m.title}
+                </h3>
+                <dl
+                  className={cn(
+                    "mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground",
+                    // One badge clears the title's first line and never reaches
+                    // this row. TWO stacked badges can, so the stats reserve
+                    // room only where a source badge is also drawn.
+                    showSourceBadge && "pr-24"
+                  )}
+                >
                   <div className="inline-flex items-center gap-1.5">
                     <FileText className="h-3.5 w-3.5" aria-hidden />
                     {m.totalQuestions} questions
@@ -87,7 +112,8 @@ export default function MockCatalogueList({
             ))}
           </div>
         </section>
-      ))}
-    </div>
+        ))}
+      </div>
+    </OwnAttemptsProvider>
   );
 }
