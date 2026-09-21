@@ -640,6 +640,41 @@ Field FCP 3.2 s against LCP 3.6 s means the page paints nearly complete the mome
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — CBSE Class 10 Science Ch.12 is missing its first in-text box (logged 2026-09-21)
+
+Found while starting Ch.2, whose page 1 carries the same shape. **Needs explicit go-ahead before
+anything shipped is touched.**
+
+A question box holding a single item is headed **QUESTION**, singular. Exactly two exist in the
+book — Ch.2 p1 and Ch.12 p1 — and `spacedHeadingRe("QUESTIONS")` matches neither. That regex fed
+both `science-items.ts` **and** my own page survey, so Ch.12 shipped reporting `in-text boxes:
+book 4, transcribed 4` with its first box invisible to both sides of the check. A shared blind
+spot reads exactly like agreement. Fixed in `questionBoxRe()` (commit `4e303ee5`); re-running the
+corrected probe over all six shipped chapters names **Ch.12 alone**.
+
+**Scope — two defects, not one.**
+1. One question absent from the bank: *"Why does a compass needle get deflected when brought near
+   a bar magnet?"* (Ch.12 p1, closing the §12.1 opening prose). Ch.12 would go 24 q → 25 q.
+2. **All 12 of Ch.12's in-text rows are banded one box too low.** Their refs say `IT 12.1`–`IT 12.4`
+   where the book's boxes are 2–5, so every `section_group` on the `/board` reader names the wrong
+   section. This is the larger half and it is invisible on `/browse`, which never reads `section_*`.
+
+**Blast radius.** 12 PUBLIC rows change `ref`, `section_group`, `section_label` and `section_seq`;
+1 row is added. `ref` is not the content hash (`subjectiveContentHash` is over stem + context), so
+re-banding does not duplicate or orphan a row, and no `/notes` or `/guide` editorial points at
+Ch.12. `board:lint` re-checks `section_seq` contiguity afterwards.
+
+**Does it really apply.** Yes, and it is not a judgement call: the render shows a bordered box with
+one item, and the corrected probe reports `box 1 items in BOOK not transcribed: 1`. No other chapter
+is affected — measured over all six, not assumed.
+
+**Risk + reversibility.** Low and fully reversible — additive insert plus a column update on 12
+rows, data files committed, no migration. **Cost** ~30 min including re-audit.
+
+**Recommendation: DO**, as its own commit, before the remaining chapters land. Leaving it means the
+`/board` reader mislabels every in-text section of a live chapter, and the corrected probe will
+keep reporting Ch.12 red on every future run — which trains the exact dismissal that caused this.
+
 ### BACKFILL LEDGER — `seo:dates --check` can never pass on a Windows working tree (logged 2026-09-19)
 
 Found while building the MHT-CET matrix generator, which copied that script's `--check` pattern.
