@@ -21,6 +21,7 @@ import { randomUUID } from "node:crypto";
 import { createPaper } from "@/lib/papers/admin";
 import { listPaperSittings, recordPaperSitting } from "@/lib/sync/paperSittings";
 import { planPush, trackerExamId } from "@/lib/sync/paperPush";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -75,7 +76,7 @@ describe.skipIf(!HAS_ENV)("paper_pushes — sittings of a pushed paper", () => {
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     teacherA = await signIn(TEACHER_A);

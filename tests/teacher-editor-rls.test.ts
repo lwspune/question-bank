@@ -12,6 +12,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -107,7 +108,7 @@ describe.skipIf(!HAS_ENV)("RLS — content editing is superadmin-only (migration
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     adminUserClient = await signIn(ADMIN_EMAIL);

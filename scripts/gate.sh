@@ -8,6 +8,7 @@
 #
 #   sh scripts/gate.sh           # runs `npm run prepush`
 #   sh scripts/gate.sh test      # runs `npm run test`
+#   sh scripts/gate.sh prepush:nonotes   # build, no notes:lint (the hook picks this itself)
 #   sh scripts/gate.sh | tail    # still shows GATE_RESULT on the last line
 #
 # See the memory "gate-exit-code-masked-by-tail".
@@ -28,7 +29,7 @@ FLOOR_MIN=300      # MB — typecheck/lint/test still write caches and temp file
 
 case "$target" in
   *quick*) floor="$FLOOR_MIN" ;;   # prepush:quick deliberately skips the build
-  prepush|build|"") floor="$FLOOR_BUILD" ;;
+  prepush*|build|"") floor="$FLOOR_BUILD" ;;   # prepush + prepush:nonotes both build
   *) floor="$FLOOR_MIN" ;;
 esac
 

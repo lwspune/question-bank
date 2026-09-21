@@ -19,6 +19,7 @@ import { randomUUID } from "node:crypto";
 import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { setMemberBranches } from "@/lib/members/admin";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -82,7 +83,7 @@ describe.skipIf(!HAS_ENV)("batch roster RLS (migration 0083)", () => {
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     [adminClient, teacherX, teacherY, samClient] = await Promise.all(

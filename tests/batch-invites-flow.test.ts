@@ -23,6 +23,7 @@ import {
   loadRoster,
   revokeInvite,
 } from "@/lib/batches/invitesAdmin";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -72,7 +73,7 @@ describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
     await admin.from("org_members").insert({ user_id: adminId, org_id: orgId, role: "ADMIN" });
 
     adminClient = createClient(url, anon, { auth: { persistSession: false } });
-    await adminClient.auth.signInWithPassword({ email: ADMIN_EMAIL, password: PASSWORD });
+    await mustSignIn(ADMIN_EMAIL, adminClient, { email: ADMIN_EMAIL, password: PASSWORD });
 
     const branchId = await createBranch(adminClient, {
       orgId,
@@ -287,7 +288,7 @@ describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       { auth: { persistSession: false } }
     );
-    await outsider.auth.signInWithPassword({ email: SAM_EMAIL, password: PASSWORD });
+    await mustSignIn(SAM_EMAIL, outsider, { email: SAM_EMAIL, password: PASSWORD });
     const res = await inviteToBatch({
       client: outsider,
       batchId,

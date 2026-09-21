@@ -15,7 +15,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
-import { must, mustDo } from "./helpers/fixture";
+import { must, mustDo, mustSignIn } from "./helpers/fixture";
 import {
   createBatch,
   updateBatch,
@@ -126,7 +126,7 @@ describe.skipIf(!HAS_ENV)("batches RLS + per-batch usage (migration 0054)", () =
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     adminA = await signIn(ADMIN_A);

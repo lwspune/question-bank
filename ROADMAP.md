@@ -210,6 +210,11 @@ rather than move them. Pre-existing; the 2026-09-18/19 entries all have their
 long forms written. Order matters: write the missing narratives BEFORE the
 ceiling forces an eviction, never raise the ceiling.
 
+## Gate — conditional DB-integration suite (parked 2026-09-21)
+
+The third of three gate-cost levers, deliberately NOT built. The first two shipped that day (`maxForks` 2 → 5 and a conditional `notes:lint`) and took a typical no-build push from ~7 min to ~2m45s. This one would take a docs/ingestion-only push to ~25 s by skipping the ~76 fixture-writing test files when the pushed range touches nothing they read — 453 of 672 commits in the prior 30 days qualified (push-level will be lower; the build precedent measured 54%).
+
+**Why it is parked:** it deliberately breaks "green pre-push = green CI" for skipped pushes (CI still runs everything, later); and it needs a DERIVED, guard-tested split of DB vs pure test files — no naming convention exists, a hand-maintained manifest rots in the dangerous direction (a new DB test silently skipped), and the obvious "safe" path list was wrong once already (`src/lib/notes/` is imported by three DB tests). Same shape as `needsNotesLint` + `notes-lint-import-roots`: a rule plus an import-graph guard. Revisit only if two minutes proves insufficient.
 ## Data model
 
 ### Cross-topic questions — decouple concept tags from the home subtopic (2-phase)

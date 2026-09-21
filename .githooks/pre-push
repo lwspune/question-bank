@@ -1,8 +1,9 @@
 #!/bin/sh
 # Local gate before pushing to remote. Runs the SAME chain as CI
-# (.github/workflows/ci.yml) — typecheck, lint, notes:lint, notes:latex, test,
-# and conditionally build — so a green pre-push means a green CI. Single source
-# of truth: the `prepush` / `prepush:quick` scripts in package.json.
+# (.github/workflows/ci.yml) — typecheck, lint, docs:budget, notes:latex,
+# conditionally notes:lint, test, and conditionally build — so a green
+# pre-push means a green CI. Single source of truth: the `prepush*` scripts in
+# package.json; this file only picks WHICH of the four to run.
 #
 # Why the full chain (not just build): pre-push used to run only
 # typecheck+lint+build, so a broken TEST passed pre-push and only failed
@@ -12,23 +13,33 @@
 # `next build` (the 2026-05-13 Pagination revert).
 #
 # CONDITIONAL BUILD (2026-08-05). `next build` prerenders 689 pages, ~317 of
-# which query Postgres — ~25 MB of egress and a couple of minutes, every push,
-# here AND again in CI. Measured over 30 days: 78 of 145 pushes to main changed
-# nothing the compiler reads (ingestion data + docs), so that build could not
-# have failed. It is now skipped for those pushes only; ANY change under src/,
-# or to a build config, or to a path the rule doesn't recognise, still builds.
-# The rule lives in scripts/lib/needsBuild.ts (spec: tests/needs-build.test.ts)
-# and is shared with CI so the two gates cannot drift. It is an allowlist of
+# which query Postgres — ~25 MB of egress and minutes, every push, here AND
+# again in CI. Measured over 30 days: 78 of 145 pushes to main changed nothing
+# the compiler reads (ingestion data + docs), so that build could not have
+# failed. It is now skipped for those pushes only; ANY change under src/, or to
+# a build config, or to a path the rule doesn't recognise, still builds. The
+# rule lives in scripts/lib/needsBuild.ts (spec: tests/needs-build.test.ts) and
+# is shared with CI so the two gates cannot drift. It is an allowlist of
 # SKIPS, so it can only ever be too cautious.
 #
-# Cost: ~3-4 min with a build, ~1-2 min without. Escape hatch for WIP pushes:
+# CONDITIONAL notes:lint (2026-09-21). It validates the /notes editorial
+# modules against the LIVE taxonomy + tags — 91 s, and it grows with the bank.
+# Only a change under the roots it reads (src/app/notes, src/lib/notes, the
+# lint itself, the schema, deps) can move its verdict, so it now runs only
+# then. The OPPOSITE polarity to the build rule — an allowlist of RUNS — which
+# is why it is pinned to the lint's real import graph by
+# tests/notes-lint-import-roots.test.ts. Rule: scripts/lib/needsNotesLint.ts.
+#
+# Cost, MEASURED 2026-09-21 (12 cores): static checks 16 s · notes:lint 91 s ·
+# test ~2.5 min at maxForks 5 (147 s; was 317 s at 2) · build 4-9 min (volatile — it
+# prerenders against production). Escape hatch for WIP pushes:
 # `git push --no-verify` — but know why before you reach for it.
 
 set -e
 
 # git feeds us "<local ref> <local sha> <remote ref> <remote sha>" per ref.
 # Read only a single-ref push; anything else leaves base empty, and an empty
-# base makes needs-build fail safe to "build".
+# base makes both rules fail safe to "run".
 base=""
 head="HEAD"
 refs=0
@@ -50,12 +61,22 @@ case "$head" in
     ;;
 esac
 
-if npx tsx scripts/needs-build.ts "$base" "$head"; then
-  echo "[pre-push] running full gate (npm run prepush) — mirrors CI..."
-  npm run prepush --silent
+build=0
+notes=0
+if npx tsx scripts/needs-build.ts "$base" "$head"; then build=1; fi
+if npx tsx scripts/needs-notes-lint.ts "$base" "$head"; then notes=1; fi
+
+if [ "$build" -eq 1 ] && [ "$notes" -eq 1 ]; then
+  target="prepush"
+elif [ "$build" -eq 1 ]; then
+  target="prepush:nonotes"
+elif [ "$notes" -eq 1 ]; then
+  target="prepush:quick"
 else
-  echo "[pre-push] running gate without build (npm run prepush:quick)..."
-  npm run prepush:quick --silent
+  target="prepush:quick:nonotes"
 fi
+
+echo "[pre-push] running npm run $target (build=$build notes:lint=$notes) — mirrors CI..."
+npm run "$target" --silent
 
 echo "[pre-push] all gates passed"

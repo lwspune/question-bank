@@ -12,6 +12,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TINY_PNG } from "./fixtures/tinyImage";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -85,9 +86,9 @@ describe.skipIf(!HAS_ENV)("storage RLS — editor writes scoped by org", () => {
     adminAClient = createClient(url, anon, { auth: { persistSession: false } });
     adminBClient = createClient(url, anon, { auth: { persistSession: false } });
     teacherAClient = createClient(url, anon, { auth: { persistSession: false } });
-    await adminAClient.auth.signInWithPassword({ email: ADMIN_A_EMAIL, password: PASSWORD });
-    await adminBClient.auth.signInWithPassword({ email: ADMIN_B_EMAIL, password: PASSWORD });
-    await teacherAClient.auth.signInWithPassword({ email: TEACHER_A_EMAIL, password: PASSWORD });
+    await mustSignIn(ADMIN_A_EMAIL, adminAClient, { email: ADMIN_A_EMAIL, password: PASSWORD });
+    await mustSignIn(ADMIN_B_EMAIL, adminBClient, { email: ADMIN_B_EMAIL, password: PASSWORD });
+    await mustSignIn(TEACHER_A_EMAIL, teacherAClient, { email: TEACHER_A_EMAIL, password: PASSWORD });
   });
 
   afterAll(async () => {

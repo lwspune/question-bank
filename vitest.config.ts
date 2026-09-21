@@ -41,16 +41,26 @@ export default defineConfig({
     // do not control. Kept finite (not disabled) so a genuinely hung hook still
     // fails rather than running out the job's wall clock.
     hookTimeout: 90000,
-    // ~71 of the test files hit ONE shared live Supabase project. At full
-    // file-parallelism (≈ CPU cores) that overloads the DB — heavy queries hit
-    // Postgres statement timeouts and fixtures race across files (esp. on
-    // high-core dev machines running the pre-push gate). Capping concurrent
-    // worker processes keeps DB load in the healthy regime without serializing
-    // the whole suite. There is no naming convention separating DB tests from
-    // pure ones, so the cap is global rather than a per-project split. On
-    // low-core CI runners this is a near-no-op (already ~2 forks).
+    // ~76 of the test files write fixtures into the DEDICATED test project
+    // (tests/helpers/testdb.ts) and sign in as those fixtures. The cap keeps
+    // that traffic under TWO walls, both measured 2026-09-21 on a 12-core
+    // machine with the full suite green at 2, 4 and 6 forks (317 s → 194 s →
+    // 120 s) and failing at 8:
+    //  - Supabase Auth limits `/auth/v1/token` (password sign-in) to 150
+    //    requests per 5 minutes PER IP, burst 30. The window is shared by
+    //    every run from this machine — including a re-run of the gate a
+    //    minute after a red one. The 8-fork run was the third inside one
+    //    window, so "8 is the wall" is NOT established; what is established
+    //    is that a rate-limited sign-in used to surface as a fake RLS 42501
+    //    (41 sites discarded the sign-in error — now `mustSignIn`).
+    //  - Postgres contention on the test project: 4 statement timeouts in
+    //    the same 8-fork run.
+    // 5 sits under the measured-green 6 with headroom. The pure files (~300 of
+    // ~400) take ~8 s of assertions in total and do not care; the cap is
+    // global only because no naming convention separates the two kinds.
+    // On low-core CI runners this is a near-no-op.
     pool: "forks",
-    poolOptions: { forks: { maxForks: 2, minForks: 1 } },
+    poolOptions: { forks: { maxForks: 5, minForks: 1 } },
     // One auto-retry still absorbs a rare transient pooler/network blip so the
     // gate self-heals; a genuinely broken test fails both attempts, so real
     // regressions are not masked.

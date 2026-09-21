@@ -19,6 +19,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { createConceptReport } from "@/lib/notes-reports/createConceptReport";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -68,7 +69,7 @@ describe.skipIf(!HAS_ENV)("createConceptReport", () => {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       { auth: { persistSession: false } }
     );
-    await reporterClient.auth.signInWithPassword({
+    await mustSignIn(`concept-reporter-${RUN_ID}@test.local`, reporterClient, {
       email: `concept-reporter-${RUN_ID}@test.local`,
       password: PASSWORD,
     });

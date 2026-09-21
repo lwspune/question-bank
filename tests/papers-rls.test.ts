@@ -29,6 +29,7 @@ import {
 import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { setMemberBranches } from "@/lib/members/admin";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -148,7 +149,7 @@ describe.skipIf(!HAS_ENV)("papers RLS + data layer (migration 0039)", () => {
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     adminA = await signIn(ADMIN_A);

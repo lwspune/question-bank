@@ -14,6 +14,7 @@ import { createBranch } from "@/lib/branches/admin";
 import { createBatch, updateBatch, listBatches } from "@/lib/batches/admin";
 import { createPaper, getPaperDetail } from "@/lib/papers/admin";
 import { setMemberBranches } from "@/lib/members/admin";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -76,7 +77,7 @@ describe.skipIf(!HAS_ENV)("branch-scoped teacher access (migration 0057)", () =>
 
     const signIn = async (email: string) => {
       const c = createClient(url, anon, { auth: { persistSession: false } });
-      await c.auth.signInWithPassword({ email, password: PASSWORD });
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     };
     adminClient = await signIn(ADMIN_EMAIL);
