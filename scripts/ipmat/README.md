@@ -209,6 +209,8 @@ Counted across all three exams, for Phase 1 to repair:
 | `\newline` inside `bmatrix` | 8 | Should be `\\`. |
 | `type` field present on only ~30% of rows | — | **Infer format from whether options exist**, never from `type`. |
 
+| Stem asks for the strong ARGUMENT, options say IMPLICIT | **1** | Rohtak 2019 VA Q24. A transcription defect, not a wrong key — fix the options. |
+
 Two rows worth checking against an original paper: **Indore 2025 SA Q1** carries four options
 inside the typed-answer section, and Indore's parajumble answers are **orderings** (e.g.
 `52134`), so they must never get tolerance-based numeric grading.
@@ -269,3 +271,38 @@ chapter is now `Pattern Recognition`. The test that catches this compares stemme
 and its **first version was vacuous**: stripping `(ies|es|s)` maps `sequence`→`sequence` but
 `sequences`→`sequenc`, so the bags differed and the clash passed. It now stems `ies`→`y`
 then a trailing `s`, and was confirmed to fail against the real clash before the rename.
+
+## Phase 3: the derivation loop, and the first VA measurement
+
+`derive.ts` is the pure core; `dump-derive.ts` emits a blind packet and `score-derive.ts`
+scores it. Two rules protect the measurement:
+
+**A packet must not carry the answer.** `buildPacket` lists its fields explicitly rather
+than spreading the source row, and emits no key, no `isCorrect`, no `numericAnswer` — and
+not the source's `difficulty` either, which is their judgement about the question and a hint
+we did not earn. A test walks every field name in the emitted object and fails on anything
+that reads like an answer, because the leak that matters is the one nobody excluded by name.
+Both a spread and a plausible "harmless" difficulty field were injected and caught.
+
+**Agreement is not accuracy.** The scorer says `AGREEMENT` and nothing else. On CDS General
+Knowledge this project measured 91.6% where dual-blind agreement read 98–99%: agreement
+bounds disagreement risk and is blind to correlated error. `agreementPct` is **null** for an
+empty sample rather than 100%, because 0/0 is not perfect.
+
+### Result: 92.5% VA agreement (37/40)
+
+A stratified 40-row sample of the 582 committable VA rows, across 30 strata, pinned at
+commit `ed843adb`. Full working in `data/derive/va-calibration.adjudication.md`.
+
+**All three disagreements resolved in the source's favour or as ambiguous — zero wrong keys
+found.** Two were my errors (one a plainly refutable option, one a test convention I did not
+apply) and one was an under-determined item where *but* and *though* are both correct. So on
+this sample the source's VA keys are better than 92.5% suggests: agreement was limited by
+the weaker party, which was my pass.
+
+**Confidence was well calibrated** — all three leads were rows flagged uncertain while
+deriving. That is the usable product, and a larger pass should record it per row.
+
+This does not license skipping derivation. n=40 of 582; one sample is not a base rate; and
+agreement cannot see a misconception both passes share. **LR is still entirely unmeasured**
+and is the obvious next sample.
