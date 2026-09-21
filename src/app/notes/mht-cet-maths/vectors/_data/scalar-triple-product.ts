@@ -6,7 +6,7 @@ export const SCALAR_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The single number [a b c] = a·(b×c) — the signed volume of the box on three vectors. It is zero exactly when they are coplanar, its modulus is the parallelepiped volume, and it powers the chapter's hardest pool: volumes, coplanarity, and the vector triple product.",
   whyItMatters:
-    "At 56 PYQs this is the chapter's BIGGEST subtopic and its hardest — about 77% are rated HARD. " +
+    "At 71 PYQs this is the chapter's BIGGEST subtopic and its hardest — about 72% are rated HARD. " +
     "The scalar triple product [a b c] is the workhorse: it is the signed volume of the parallelepiped, the modulus is the actual volume, one-sixth of it is the tetrahedron volume, and it vanishes precisely when the three vectors are coplanar. " +
     "The same determinant drives parameter-finding (coplanarity), min/max volume problems, and the linearity identities like [a+b  b+c  c+a] = 2[a b c]; the vector triple product (BAC-CAB rule) finishes the set with angle and orthogonal-coplanar problems. " +
     "Master the determinant, the cyclic/sign rules, and BAC-CAB and the chapter's HARD tail collapses.",

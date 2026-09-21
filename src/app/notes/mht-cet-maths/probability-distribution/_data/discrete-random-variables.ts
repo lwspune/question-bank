@@ -6,7 +6,7 @@ export const DISCRETE_RV_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A random variable assigns a number to each outcome; its probability mass function lists P(X=x) for every value, obeys 0 ≤ P ≤ 1 and ΣP = 1, and its cumulative distribution function F(x) = P(X ≤ x) accumulates those probabilities.",
   whyItMatters:
-    "This is the technique-richest subtopic of the chapter: 29 PYQs (3 EASY, 22 MODERATE, 4 HARD). The bank tests four separate skills that all begin from ΣP = 1 — solving a linear-k table, a quadratic-in-k table (the 6k²+5k−1 and 10k²+9k−1 factorings recur almost every year), an exponential pmf, and an infinite arithmetico-geometric pmf — plus building a distribution from a coin/card/draw experiment, reading a CDF, and normalising a continuous pdf. " +
+    "This is the technique-richest subtopic of the chapter: 31 PYQs (4 EASY, 21 MODERATE, 6 HARD). The bank tests four separate skills that all begin from ΣP = 1 — solving a linear-k table, a quadratic-in-k table (the 6k²+5k−1 and 10k²+9k−1 factorings recur almost every year), an exponential pmf, and an infinite arithmetico-geometric pmf — plus building a distribution from a coin/card/draw experiment, reading a CDF, and normalising a continuous pdf. " +
     "Expectation and variance are taught separately; here the whole game is finding the constant, reading a range probability, and constructing the table correctly.",
   concepts: [
     // 0 — foundation: discrete RV and its PMF (no PYQ, lint-exempt)

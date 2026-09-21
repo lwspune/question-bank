@@ -6,7 +6,7 @@ export const LOGARITHMIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When a function is a product, a quotient, or has a variable in the exponent, take the natural log of both sides FIRST — logs turn products into sums and pull exponents down front, so the differentiation becomes routine.",
   whyItMatters:
-    "This is the most mechanical high-yield method in the chapter — 19 PYQs sit here, 9 HARD and 10 MODERATE, yet almost every one follows the SAME three steps. " +
+    "This is the most mechanical high-yield method in the chapter — 25 PYQs sit here, 11 HARD and 14 MODERATE, yet almost every one follows the SAME three steps. " +
     "Two shapes dominate the exam: a variable raised to a variable power like (sin x) to the tan x, and a long product (x+1)(2x+1)…(nx+1) whose derivative is asked at x = 0. " +
     "Master the three steps — take log, differentiate (1/y)·y′, multiply back by y — and most of these become one-minute questions.",
   concepts: [

@@ -6,7 +6,7 @@ export const ANGLES_CONDITIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The angle formulas of 3-D geometry — between two lines, two planes, and a line and a plane — plus the direction-ratio conditions for parallel, perpendicular, and line-lies-in-plane, run in the MHT-CET's favourite direction: set the formula equal to a given value and solve for an unknown.",
   whyItMatters:
-    "This is the most HARD-heavy subtopic in the chapter: roughly 21 PYQs, the majority MODERATE-to-HARD. " +
+    "Roughly 29 PYQs sit here, split evenly between MODERATE and HARD (13 each). " +
     "One shape dominates — you are handed an angle (or a perpendicular/parallel/lies-in condition) and asked for a missing constant: solve for m, lambda, p, alpha, or mu. " +
     "Almost every question reduces to ONE of three formulas (line-line cos, plane-plane cos, line-plane sin) or ONE of two conditions (dot product zero for perpendicular, point-on-plane AND direction-dot-normal-zero for lies-in). Learn to recognise which of the five you are in, and the algebra is routine.",
   concepts: [

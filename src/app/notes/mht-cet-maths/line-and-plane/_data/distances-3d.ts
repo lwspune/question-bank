@@ -6,7 +6,7 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every length in 3-D space — a point from the origin or axes, a point from a plane, the gap between two parallel planes, a point from a line, the gap between parallel lines, and the shortest distance between skew lines — comes from the SAME shape: an absolute value on top divided by a square-root magnitude on the bottom.",
   whyItMatters:
-    "Distances is the single most-tested slice of the Line-and-Plane chapter: across the 24 PYQs here, MHT-CET asks for a length almost every year, and HARD items dominate. " +
+    "Distances is one of the most-tested slices of the Line-and-Plane chapter: across the 33 PYQs here, MHT-CET asks for a length almost every year, and HARD and MODERATE items split it evenly. " +
     "One mental model unifies the whole subtopic — a distance is |numerator| / √(denominator). The numerator is a signed plug-in (for planes) or a cross-product magnitude (for lines); the denominator is the magnitude of a normal or a direction vector. " +
     "The HARD twist is rarely the formula — it is BUILDING the plane first (perpendicular to two planes, or containing two lines, via a cross product of normals/directions) or running the formula BACKWARDS to solve for an unknown parameter from a GIVEN distance. Lock the |…|/√… template and every question is the same machine.",
   concepts: [

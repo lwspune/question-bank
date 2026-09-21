@@ -7,7 +7,7 @@ export const LINEAR_COMBINATIONS_COPLANARITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Building one vector out of others as m·a + n·b, and the structural conditions hiding inside that idea — collinear vectors need ONE scalar, coplanar vectors need TWO, and a dependent set is exactly a coplanar one.",
   whyItMatters:
-    "This is the most-tested cluster in MHT-CET Vectors — 13 PYQs sit here, spread evenly across EASY, MODERATE and HARD. " +
+    "15 PYQs sit here, and they skew hard — 8 HARD, 6 MODERATE, 1 EASY. " +
     "Two recurring shapes dominate: the collinearity / coplanarity conditions (one-scalar vs two-scalar, and the 'no two collinear' chain systems), " +
     "and the linear-system shapes — express a vector as m·b + n·c, find components against a transformed basis, or test linear dependence by a determinant. " +
     "Get the counting right (collinear ⇒ 1 scalar, coplanar / dependent ⇒ 2 scalars) and almost every question here reduces to a small system you can solve by equating components.",

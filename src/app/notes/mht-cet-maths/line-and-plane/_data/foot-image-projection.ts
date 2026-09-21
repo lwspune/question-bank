@@ -7,7 +7,7 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
     "One engine drives this whole subtopic: drop a perpendicular from a point to a line or a plane, locate its FOOT, and then either report the foot, double it across to get the mirror image (2F − P), or use a dot product to read off a projection length.",
   whyItMatters:
     "Every MHT-CET PYQ here reduces to the same first move — find the foot of the perpendicular by writing a parametric point and forcing perpendicularity. Once you have the foot, the question is just choosing what to do with it: report it (foot questions), reflect through it as 2F − P (mirror-image questions), or skip it entirely and dot-product (projection questions). " +
-    "Across the 16 PYQs the mix runs MODERATE-to-HARD, and several appear two or three times across different papers (the (5,−1,4)/(4,−1,3)-on-x+y+z=7 projection alone shows up three times) — so the patterns are stable and high-yield. " +
+    "Across the 19 PYQs the mix runs MODERATE-to-HARD, and several appear two or three times across different papers (the (5,−1,4)/(4,−1,3)-on-x+y+z=7 projection alone shows up three times) — so the patterns are stable and high-yield. " +
     "Master the foot-finding routine first; image and projection are one extra line each on top of it.",
   concepts: [
     // ── CONCEPT 1 — FOUNDATION ENGINE: foot on a line ────────────────────────
