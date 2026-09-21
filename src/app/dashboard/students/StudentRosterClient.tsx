@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowUp, ChevronsUpDown, Download } from "lucide-react";
 import StatCard from "@/app/dashboard/StatCard";
+import WhatsappLink from "@/components/contact/WhatsappLink";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import {
   EXAM_UNSPECIFIED,
@@ -214,10 +215,15 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
                       <span className="block truncate font-medium group-hover:text-brand-accent" title={s.name}>
                         {s.name}
                       </span>
-                      <span className="block truncate text-xs text-muted-foreground" title={s.email}>
-                        {formatMobile(s.mobile)} · {s.email}
-                      </span>
                     </Link>
+                    {/* Outside the row link on purpose: an anchor nested in an
+                        anchor is invalid HTML, and this one has to be its own. */}
+                    <span className="block truncate text-xs text-muted-foreground" title={s.email}>
+                      <WhatsappLink mobile={s.mobile} icon={false}>
+                        {formatMobile(s.mobile)}
+                      </WhatsappLink>{" "}
+                      · {s.email}
+                    </span>
                   </td>
                   <td className="px-3 py-2 tabular-nums">
                     {s.mocksSubmitted}

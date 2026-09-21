@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -26,6 +27,7 @@ import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getStudentDetail } from "@/lib/students/detail";
 import { formatMobile } from "@/lib/students/roster";
+import WhatsappLink from "@/components/contact/WhatsappLink";
 import {
   stageLabel,
   mediumLabel,
@@ -89,7 +91,16 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
           }
         >
           <dl className="grid gap-3 sm:grid-cols-2">
-            <Field icon={Phone} label="Mobile" value={formatMobile(capture.mobile)} />
+            <Field
+              icon={Phone}
+              label="Mobile"
+              title={formatMobile(capture.mobile)}
+              value={
+                <WhatsappLink mobile={capture.mobile} icon={false}>
+                  {formatMobile(capture.mobile)}
+                </WhatsappLink>
+              }
+            />
             <div className="flex items-start gap-2">
               <Target className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
               <div className="min-w-0">
@@ -256,11 +267,15 @@ function Field({
   icon: Icon,
   label,
   value,
+  title,
   highlight,
 }: {
   icon: typeof Mail;
   label: string;
-  value: string;
+  /** A node, so a field can render a link (the mobile) rather than bare text. */
+  value: ReactNode;
+  /** Hover text when `value` isn't a plain string to fall back on. */
+  title?: string;
   highlight?: boolean;
 }) {
   return (
@@ -268,7 +283,12 @@ function Field({
       <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", highlight ? "text-brand-accent" : "text-muted-foreground")} aria-hidden />
       <div className="min-w-0">
         <dt className="text-xs text-muted-foreground">{label}</dt>
-        <dd className={cn("truncate text-sm font-medium", highlight && "text-brand-accent")} title={value}>{value}</dd>
+        <dd
+          className={cn("truncate text-sm font-medium", highlight && "text-brand-accent")}
+          title={title ?? (typeof value === "string" ? value : undefined)}
+        >
+          {value}
+        </dd>
       </div>
     </div>
   );

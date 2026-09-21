@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import WhatsappLink from "@/components/contact/WhatsappLink";
 import { toast } from "sonner";
 import { setTeacherRequestStatusAction } from "./actions";
 import type { TeacherRequest, TeacherRequestStatus } from "@/lib/teacherAccess/service";
@@ -98,12 +99,7 @@ export default function TeacherRequests({
                         {r.email}
                       </a>
                     )}
-                    {r.mobile && (
-                      <a href={`tel:${r.mobile}`} className="inline-flex items-center gap-1 hover:text-foreground">
-                        <Phone className="h-3.5 w-3.5" aria-hidden />
-                        {r.mobile}
-                      </a>
-                    )}
+                    {r.mobile && <WhatsappLink mobile={r.mobile} />}
                     {r.city && (
                       <span className="inline-flex items-center gap-1">
                         <MapPin className="h-3.5 w-3.5" aria-hidden />
