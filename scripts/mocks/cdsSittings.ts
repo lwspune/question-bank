@@ -174,7 +174,7 @@ export function deriveCdsSittings(
   );
 }
 
-/** The 19 CDS English sittings (2017-I … 2026-I). */
+/** The 20 CDS English sittings (2017-I … 2026-II). */
 export function cdsEnglishSittings(): CdsSitting[] {
   return deriveCdsSittings(PAPERS, "english");
 }
@@ -185,7 +185,7 @@ export function cdsGkSittings(): CdsSitting[] {
 }
 
 /**
- * The 20 CDS Elementary Mathematics sittings (2016-II … 2026-I), three of them
+ * The 21 CDS Elementary Mathematics sittings (2016-II … 2026-II), three of them
  * HELD — see CDS_MATHS_HOLDS.
  */
 export function cdsMathsSittings(): CdsSitting[] {
