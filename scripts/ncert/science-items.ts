@@ -36,7 +36,7 @@ import { requireChapter, questionsJsonPath } from "./config";
 import {
   spacedHeadingRe,
   questionBoxRe,
-  contiguousRun,
+  itemRun,
   refStructure,
   reconcile,
   parseKeyChapters,
@@ -110,7 +110,7 @@ function main() {
   const exs = text.slice(exHead.index + exHead[0].length);
 
   // 1. Exercise items.
-  const bookEx = contiguousRun(lineItems(exs));
+  const bookEx = itemRun(lineItems(exs));
   let hits = report(`exercise items (1..${bookEx.length || "?"})`, reconcile(bookEx, got.exercise));
 
   // 2. In-text boxes. Each box's items are its own leading 1..n run.
@@ -122,7 +122,7 @@ function main() {
   if (parts.length !== got.boxes.size) hits = true;
   parts.forEach((seg, i) => {
     const box = i + 1;
-    const bookItems = contiguousRun(lineItems(seg.slice(0, 1400)));
+    const bookItems = itemRun(lineItems(seg.slice(0, 1400)));
     if (report(`  box ${box} items`, reconcile(bookItems, got.boxes.get(box) ?? []))) hits = true;
   });
 

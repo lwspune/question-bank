@@ -1074,6 +1074,33 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    §13.1, then one each after §13.2.2's two halves (biodegradability, then
   //    garbage management). §13.2 IS printed — a single-line heading scan misses
   //    it because the title wraps; see the config header.
+  // ── Ch.2 Acids, Bases and Salts (10th Science). FIVE in-text boxes, and the
+  //    first one is the reason questionBoxRe exists: it holds a single item and
+  //    is therefore headed QUESTION, singular, which the old plural-only probe
+  //    could not see (Ch.12 p1 is the only other such box in the book).
+  //
+  //    Box 1 is printed at the TOP of book page 18, BEFORE the §2.1 heading, so
+  //    it belongs to the untitled chapter opening rather than to §2.1 — the same
+  //    print-position rule Ch.1's box 3 follows.
+  //
+  //    THE BLOCK-SORTED TEXT DUMP PUTS TWO OF THESE BOXES IN THE WRONG SECTION,
+  //    and only the render says so. Boxes 3 and 4 each sit at the top of a page
+  //    whose next heading is the FOLLOWING section, so a text read files them
+  //    under §2.3 and §2.4; the rendered pages show both closing the section
+  //    before. §2.4.2 pH of Salts is a real section that never appears in the
+  //    derived anchor list, because its title opens with a lowercase "pH" —
+  //    rows about salt pH cite §2.4 instead. Loosening the heading regex to
+  //    admit it was measured and rejected: across all 13 chapters it buys that
+  //    one heading and admits three phantoms, two of them in-chapter.
+  c10SciAcidsBases: [
+    { group: "Introduction", label: "Question", kind: "exercise", refPrefixes: ["IT 2.1 Q"] },
+    { group: "2.1 Understanding the Chemical Properties of Acids and Bases", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.2 Q"] },
+    { group: "2.2 What do all Acids and all Bases have in Common?", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.3 Q"] },
+    { group: "2.3 How Strong are Acid or Base Solutions?", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.4 Q"] },
+    { group: "2.4 More about Salts", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },

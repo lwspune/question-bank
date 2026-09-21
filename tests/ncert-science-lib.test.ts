@@ -25,6 +25,7 @@ import {
   spacedHeadingRe,
   questionBoxRe,
   contiguousRun,
+  itemRun,
   egRef,
   intextRef,
   exerciseRef,
@@ -162,6 +163,46 @@ describe("contiguousRun", () => {
     // rather than silently renumbering from whatever the first digit was.
     expect(contiguousRun([2, 3, 4])).toEqual([]);
     expect(contiguousRun([])).toEqual([]);
+  });
+});
+
+describe("itemRun", () => {
+  // WHY THIS EXISTS. The probe reads the book through a BLOCK-SORTED dump —
+  // blocks ordered by (round(y/8), x) — and that order is not reading order.
+  // Ch.2's fourth box comes out 1, 4, 2, 3, because item 4's block rounds into
+  // an earlier y-bucket than items 2 and 3. contiguousRun then keeps [1] and
+  // the probe reported three transcribed questions as absent from a book that
+  // prints all four. A box's item labels are a SET; only their VALUES mean
+  // anything, never the order the extractor happened to emit them in.
+  it("recovers a run the block sort scrambled", () => {
+    expect(itemRun([1, 4, 2, 3])).toEqual([1, 2, 3, 4]);
+  });
+
+  it("still stops at a real gap", () => {
+    // The property contiguousRun was built for, and the reason this does not
+    // simply count: a stray "5." from a neighbouring Activity box must not
+    // become a fifth question.
+    expect(itemRun([1, 2, 3, 5])).toEqual([1, 2, 3]);
+    expect(itemRun([3, 1, 5, 2])).toEqual([1, 2, 3]);
+  });
+
+  it("recovers a run whose stray token came FIRST", () => {
+    // contiguousRun returns [] here — it opens at 5, so it judged the whole
+    // block not a question box. Sorting makes that verdict impossible to reach
+    // by accident, which is the failure that costs a whole box.
+    expect(contiguousRun([5, 1, 2, 3])).toEqual([]);
+    expect(itemRun([5, 1, 2, 3])).toEqual([1, 2, 3]);
+  });
+
+  it("collapses a repeated label rather than counting it twice", () => {
+    // A label printed once but emitted twice (a heading block re-read) would
+    // otherwise break contiguity at the duplicate.
+    expect(itemRun([1, 2, 2, 3])).toEqual([1, 2, 3]);
+  });
+
+  it("returns empty when nothing is numbered 1", () => {
+    expect(itemRun([2, 3, 4])).toEqual([]);
+    expect(itemRun([])).toEqual([]);
   });
 });
 

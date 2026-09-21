@@ -79,6 +79,27 @@ export function contiguousRun(nums: number[]): number[] {
   return run;
 }
 
+/**
+ * The item labels a printed block actually carries, read as a SET.
+ *
+ * `contiguousRun` assumes the numbers arrive in reading order. They do not: the
+ * probe reads the book through a BLOCK-SORTED dump, ordered by (round(y/8), x),
+ * and Ch.2's fourth box comes out 1, 4, 2, 3 — item 4's block rounds into an
+ * earlier y-bucket than items 2 and 3 do. Fed to `contiguousRun` that keeps [1]
+ * alone, and the probe reported three questions the book prints as absent from
+ * it. A probe that cries wolf is how a real finding gets waved through, which is
+ * precisely what happened to Ch.12 in the other direction.
+ *
+ * Only the VALUES of the labels carry meaning, never their emitted order, so
+ * dedupe and sort before taking the run. The gap rule that `contiguousRun`
+ * exists for survives intact — a stray "5." from a neighbouring Activity still
+ * leaves a hole at 4 and is still dropped — and one failure mode disappears
+ * entirely: a stray token emitted FIRST no longer makes the whole box vanish.
+ */
+export function itemRun(nums: number[]): number[] {
+  return contiguousRun([...new Set(nums)].sort((a, b) => a - b));
+}
+
 const sub = (s?: string) => (s ? ` (${s})` : "");
 
 /** In-text QUESTIONS box item → "IT 1.2 Q3" / "IT 11.3 Q2 (ii)". */
