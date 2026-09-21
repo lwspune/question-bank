@@ -1168,6 +1168,15 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6 Q"] },
   ],
 
+  // ── Ch.7 How do Organisms Reproduce? (10th Science). Three in-text boxes,
+  //    one per top-level section, placement confirmed by block geometry.
+  c10SciReproduction: [
+    { group: "7.1 Do Organisms Create Exact Copies of Themselves?", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.1 Q"] },
+    { group: "7.2 Modes of Reproduction Used by Single Organisms", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.2 Q"] },
+    { group: "7.3 Sexual Reproduction", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7 Q"] },
+  ],
+
   c10SciOurEnvironment: [
     { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
     { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
