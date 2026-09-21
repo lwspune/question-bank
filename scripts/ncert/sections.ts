@@ -1116,22 +1116,33 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10 Q"] },
   ],
 
-  // ── Ch.12 Magnetic Effects of Electric Current (10th Science). Four in-text
-  //    boxes and two worked examples, banded to boxes 1 and 3.
+  // ── Ch.12 Magnetic Effects of Electric Current (10th Science). FIVE in-text
+  //    boxes and two worked examples, banded to boxes 2 and 4.
   //
-  //    **BOX 2 STRADDLES A PAGE BREAK** — its Q3, an MCQ on the field inside a
-  //    solenoid, sits alone at the top of page 202 with the box border carried
-  //    over. The first read of the render stopped at the apparent box edge on the
-  //    previous page and transcribed two items; science-items.ts reported the
-  //    third as missing and was right. This is the same page-overflow class that
-  //    cost the Maths lane Ch.3 Ex 3.2 Q3(vi) and Ch.7 Ex 7.1 Q9-Q10.
+  //    **THIS CHAPTER SHIPPED WRONG AND WAS REPAIRED 2026-09-21.** Its box 1 —
+  //    one item, "Why does a compass needle get deflected when brought near a bar
+  //    magnet?", closing the §12.1 opening prose — is headed QUESTION, singular,
+  //    which `spacedHeadingRe("QUESTIONS")` cannot match. That regex fed BOTH
+  //    science-items.ts and my own page survey, so the chapter reconciled "in-text
+  //    boxes: book 4, transcribed 4" with its first box invisible to both sides of
+  //    the check, and every in-text row was banded one box too low. A shared blind
+  //    spot reads exactly like agreement. See questionBoxRe() in scienceLib.ts.
+  //
+  //    **BOX 3 STRADDLES A PAGE BREAK** (box 2 under the old numbering) — its Q3,
+  //    an MCQ on the field inside a solenoid, sits alone at the top of page 202
+  //    with the box border carried over. The first read of the render stopped at
+  //    the apparent box edge on the previous page and transcribed two items;
+  //    science-items.ts reported the third as missing and was right. Same
+  //    page-overflow class that cost the Maths lane Ch.3 Ex 3.2 Q3(vi) and
+  //    Ch.7 Ex 7.1 Q9-Q10. Two findings on one chapter, both dismissed once.
   c10SciMagneticEffects: [
-    { group: "12.2.2 Right-Hand Thumb Rule", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg."] },
-    { group: "12.2.2 Right-Hand Thumb Rule", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.1 Q"] },
-    { group: "12.2.4 Magnetic Field due to a Current in a Solenoid", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.2 Q"] },
-    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.3 Eg."] },
-    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.3 Q"] },
-    { group: "12.4 Domestic Electric Circuits", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.4 Q"] },
+    { group: "12.1 Magnetic Field and Field Lines", label: "Question", kind: "exercise", refPrefixes: ["IT 12.1 Q"] },
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.2 Eg."] },
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.2 Q"] },
+    { group: "12.2.4 Magnetic Field due to a Current in a Solenoid", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.3 Q"] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.4 Eg."] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.4 Q"] },
+    { group: "12.4 Domestic Electric Circuits", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.5 Q"] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12 Q"] },
   ],
 };

@@ -640,10 +640,11 @@ Field FCP 3.2 s against LCP 3.6 s means the page paints nearly complete the mome
 
 ## Tech debt / refactoring
 
-### BACKFILL LEDGER — CBSE Class 10 Science Ch.12 is missing its first in-text box (logged 2026-09-21)
+### ~~BACKFILL LEDGER — CBSE Class 10 Science Ch.12 is missing its first in-text box~~ — DONE 2026-09-21
 
-Found while starting Ch.2, whose page 1 carries the same shape. **Needs explicit go-ahead before
-anything shipped is touched.**
+Found while starting Ch.2, whose page 1 carries the same shape. Approved and repaired the same day:
+Ch.12 is now 25 q, all five boxes present and correctly banded, `board:lint` green. The record below
+is kept because the DETECTION story is the reusable part.
 
 A question box holding a single item is headed **QUESTION**, singular. Exactly two exist in the
 book — Ch.2 p1 and Ch.12 p1 — and `spacedHeadingRe("QUESTIONS")` matches neither. That regex fed
@@ -671,9 +672,12 @@ is affected — measured over all six, not assumed.
 **Risk + reversibility.** Low and fully reversible — additive insert plus a column update on 12
 rows, data files committed, no migration. **Cost** ~30 min including re-audit.
 
-**Recommendation: DO**, as its own commit, before the remaining chapters land. Leaving it means the
-`/board` reader mislabels every in-text section of a live chapter, and the corrected probe will
-keep reporting Ch.12 red on every future run — which trains the exact dismissal that caused this.
+**Outcome.** Refs re-banded in one set-based UPDATE (14 rows: 12 in-text + 2 worked examples, whose
+band prefixes name the box they precede and so shift with it), then `commit.ts --apply` reported
+`inserted=1 skipped=24` — which is also the proof that `ref` is outside the content hash. Verified
+after: 25 rows, 25 distinct hashes, one compass-needle row, `section_seq` contiguous 1..8, 0 rows
+not PUBLIC. **Note for the next repair: `commit.ts` sets every row of the chapter back to PRIVATE,
+so the flip has to be re-run even though only one row was new.**
 
 ### BACKFILL LEDGER — `seo:dates --check` can never pass on a Windows working tree (logged 2026-09-19)
 
