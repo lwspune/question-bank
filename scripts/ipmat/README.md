@@ -13,25 +13,33 @@ matching normalised stem + first option across all 1,445 rows.
 
 ## Status
 
-**Phase 0 complete (2026-09-22): data harvested, frozen and gated. Nothing is in the
-database.** Phases 1–5 (normalise → taxonomy → blind derivation → commit PRIVATE → flip
-PUBLIC) are not built.
+**Phases 0 and 1 complete (2026-09-22): harvested, frozen, normalised, gated. Nothing is in
+the database.** Phase 2 onwards (taxonomy → blind derivation → commit PRIVATE → flip PUBLIC)
+is not built.
+
+**1,418 of 1,445 rows are committable.** Held back: 15 reconstructed + 8 cancelled by the
+exam + 4 declared exclusions.
 
 ## Run it
 
 ```sh
-npx tsx scripts/ipmat/fetch.ts      # discover + cache 48 pages -> out/html/ (gitignored)
-npx tsx scripts/ipmat/extract.ts    # cached HTML -> data/raw/*.json (committed), gated
+npx tsx scripts/ipmat/fetch.ts          # discover + cache 48 pages -> out/html/ (gitignored)
+npx tsx scripts/ipmat/extract.ts        # cached HTML  -> data/raw/*.json   (committed), gated
+npx tsx scripts/ipmat/build.ts          # data/raw     -> data/build/*.json (committed), gated
+npx tsx scripts/ipmat/verify-render.ts  # drive the REAL web + Word renderers over the result
+npx tsx scripts/ipmat/survey.ts         # read-only markup census (triage, exits 0)
 ```
 
-Both take `-- --exam=<slug>`. `fetch` takes `--force` to refetch; `extract` takes `--dry`.
+All take `-- --exam=<slug>`. `fetch` takes `--force`; `extract` and `build` take `--dry`.
 
 Files:
 
 - **`flight.ts`** — pure core. Reads the Next.js flight payload. Spec: `tests/ipmat-flight.test.ts`.
-- **`config.ts`** — the three exams, the paper grid, discovery, the grid comparison. Spec: `tests/ipmat-grid.test.ts`.
-- **`fetch.ts`** / **`extract.ts`** — the two CLIs.
-- **`data/raw/`** — 48 frozen paper files, committed. Every later phase reads these, not the live site.
+- **`config.ts`** — the three exams, the paper grid, discovery, exclusions. Spec: `tests/ipmat-grid.test.ts`.
+- **`normalise.ts`** — pure core. Their markup → ours. Spec: `tests/ipmat-normalise.test.ts`.
+- **`fetch.ts`** / **`extract.ts`** / **`build.ts`** / **`verify-render.ts`** — the CLIs.
+- **`data/raw/`** — 48 frozen source files, committed. Never re-read the live site.
+- **`data/build/`** — 48 normalised files, committed. This is what Phase 2 reads.
 
 ## Three exams, not one — and no migration
 
@@ -138,6 +146,51 @@ Re-derive the answers, author our own solutions, and re-author the taxonomy to o
 
 `pyq_note` must carry the sitting identifier only. **afterboards must never appear in a
 published field** — see `npm run audit:provenance`.
+
+## Phase 1: what the normaliser does, and the four faults the gate caught
+
+`normalise.ts` converts their markup to ours. **A `<` in this corpus is far more often a
+less-than sign than a tag** — a naive tag scan reports tags called `<x>`, `<c>`, `<a>`,
+`<b>`, `<d>`, `<q>`, `<l>`, `<v>`, `<s>`, every one a false positive from maths like
+`$$D<C<A<B$`. Stripping "anything in angle brackets" **deletes mathematics**, so there are
+two independent defences: math zones are masked with the *renderer's own* matcher, and tag
+handling uses an allowlist of real tag names.
+
+Dollar delimiters are converted to `\(...\)` by **convention**, not necessity — both the web
+renderer and the Word exporter already accept `$...$` (measured). The `$$...$` shape *is* a
+real defect: it leaves a stray literal `$` in the prose on both surfaces.
+
+**Four faults that passed the unit tests and were caught by the gate on real data** — each
+now has a regression test:
+
+| Fault | Rows | Why the unit tests missed it |
+|---|---|---|
+| Pipe check counted pipes before masking maths | 23 false alarms | `\(2\|x\| + 3\|y\| = 6\)` is four pipes and no table |
+| Stray-`$` check flagged a single `$` | 7 false alarms, 2 real | fired on correctly-escaped `\$250 billion` and on a literal `($)` |
+| Spacer rule ate the gap between two real zones | 1 | in `the $det$ $2AB^{-1}$ is`, a closing-then-opening `$ $` looks exactly like a whitespace-only spacer |
+| `<br>` inside a GFM table row became a newline | 2 | those tables arrive as GFM already, so they never pass the cell handler that flattens `<br>` |
+
+And one the **renderers** caught that no text check could: `\mathmr{~cm}` (30 zones, an OCR
+artefact for a thin space) makes `mathml2omml` split the braced text, so Word prints
+`1 c m` for `1 cm`. The web renderer is unaffected — only driving *both* surfaces found it.
+
+`verify-render.ts` is what proves the output displays: 6,911 fields, 1,800 math zones
+(1,739 → OMML, 61 → the native underline run), 82 tables parsed, 0 failures.
+
+## Exclusions
+
+Four rows carry a source defect code cannot repair, declared as data in `config.ts` so the
+decision shows in a diff:
+
+- **jipmat 2025 LR Q6, Q13 · 2026 LR Q22** — match a list against Venn diagrams held in
+  table cells. The diagrams *are* the answer set, so lifting them out leaves a table of
+  empty cells that still reads as a complete question.
+- **jipmat 2025 VA Q1** — the source keys **two** correct options (`"2,4"`). Our schema
+  requires exactly one, and picking between them would invent an answer.
+
+An exclusion covers **only the problem kinds it names**. A new, different problem on an
+already-excluded row still fails the gate, and an exclusion whose row is now clean is
+reported as STALE and also fails. Both directions were verified by injection.
 
 ## Known defects in the source
 

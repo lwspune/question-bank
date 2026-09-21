@@ -26,6 +26,9 @@ import {
   pageUrl,
   discoverPapers,
   parsePaperFileName,
+  EXCLUSIONS,
+  exclusionFor,
+  isCoveredBy,
   type PaperCount,
 } from "../scripts/ipmat/config";
 
@@ -336,5 +339,55 @@ describe("parsePaperFileName", () => {
     expect(parsePaperFileName("jipmat-2025-QA.json")).toBeNull();
     expect(parsePaperFileName("unknown-exam-2025-QA.html")).toBeNull();
     expect(parsePaperFileName("jipmat-20x5-QA.html")).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// EXCLUSIONS. Four rows carry a defect that is in the SOURCE and cannot be
+// repaired by code: three match a list against Venn diagrams held in table
+// cells (the diagrams are the answer set, so pulling them out leaves a table of
+// empty cells that still reads as a complete question), and one has two correct
+// answers, which our schema forbids.
+//
+// They are declared here as data rather than left to fail the gate forever, so
+// the decision is visible in a diff. The rule that keeps this honest: an
+// exclusion only covers the problem KINDS it names. A NEW, different problem on
+// an already-excluded row still fails the gate — otherwise an exclusion becomes
+// a blanket amnesty for a row nobody looks at again.
+describe("EXCLUSIONS", () => {
+  it("declares a reason and the problem kinds it covers for every entry", () => {
+    expect(EXCLUSIONS.length).toBeGreaterThan(0);
+    for (const e of EXCLUSIONS) {
+      expect(e.reason.length).toBeGreaterThan(20);
+      expect(e.covers.length).toBeGreaterThan(0);
+      expect(PAPER_GRID.some((p) => p.exam === e.exam && p.year === e.year && p.section === e.section)).toBe(true);
+    }
+  });
+
+  it("has no duplicate entries", () => {
+    const keys = EXCLUSIONS.map((e) => `${e.exam}/${e.year}/${e.section}/${e.questionNumber}`);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
+
+  it("finds the exclusion for a declared row", () => {
+    const e = exclusionFor({ exam: "jipmat", year: 2025, section: "VA", questionNumber: 1 });
+    expect(e).not.toBeNull();
+    expect(e!.covers.some((c) => c.includes("key"))).toBe(true);
+  });
+
+  it("returns null for a row that is not excluded", () => {
+    expect(exclusionFor({ exam: "jipmat", year: 2025, section: "VA", questionNumber: 2 })).toBeNull();
+  });
+
+  it("covers a problem whose text it names", () => {
+    const e = exclusionFor({ exam: "jipmat", year: 2026, section: "LR", questionNumber: 22 })!;
+    expect(isCoveredBy(e, "text has a figure inside a table cell — the figure IS the answer set")).toBe(true);
+  });
+
+  it("does NOT cover a different problem on the same row", () => {
+    // The property that stops an exclusion becoming a blanket amnesty.
+    const e = exclusionFor({ exam: "jipmat", year: 2026, section: "LR", questionNumber: 22 })!;
+    expect(isCoveredBy(e, "stem is EMPTY after normalisation")).toBe(false);
+    expect(isCoveredBy(e, "literal backslash-n survives in: text")).toBe(false);
   });
 });
