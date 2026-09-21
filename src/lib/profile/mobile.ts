@@ -65,3 +65,23 @@ export function validateMobileSubmission(input: MobileSubmission): MobileValidat
   }
   return { ok: true, mobile };
 }
+
+/**
+ * A `wa.me` deep link for a stored mobile, or null when the number isn't one
+ * WhatsApp will accept.
+ *
+ * `wa.me` rather than `web.whatsapp.com/send?phone=`: the latter is desktop-only
+ * and dead-ends on a phone, while wa.me redirects to WhatsApp Web on desktop and
+ * opens the app on mobile — same destination, one link. Matches the recipient-less
+ * share link in src/lib/mocks/share.ts.
+ *
+ * Returns null rather than linking a malformed number: wa.me answers one with a
+ * "phone number shared via url is invalid" page, which is worse than plain text.
+ * Every stored number today is already canonical `91XXXXXXXXXX` (201 of 201 across
+ * quiz_leads / student_profiles / teacher_access_requests / contact_messages,
+ * checked 2026-09-21) — this guards the next write path, not the current rows.
+ */
+export function whatsappHref(mobile: string | null | undefined): string | null {
+  const normalized = normalizeMobile(mobile);
+  return normalized ? `https://wa.me/${normalized}` : null;
+}

@@ -4,6 +4,7 @@ import {
   isValidIndianMobile,
   needsMobile,
   validateMobileSubmission,
+  whatsappHref,
 } from "@/lib/profile/mobile";
 
 describe("normalizeMobile (relocated, still canonical)", () => {
@@ -50,5 +51,27 @@ describe("validateMobileSubmission", () => {
   it("checks the mobile before consent (field order)", () => {
     const r = validateMobileSubmission({ mobile: "bad", consent: false });
     expect(r).toMatchObject({ ok: false, field: "mobile" });
+  });
+});
+
+describe("whatsappHref", () => {
+  it("builds a wa.me deep link from a stored canonical mobile", () => {
+    expect(whatsappHref("919876543210")).toBe("https://wa.me/919876543210");
+  });
+
+  it("normalises first, so a raw or prettified number still links", () => {
+    expect(whatsappHref("9876543210")).toBe("https://wa.me/919876543210");
+    expect(whatsappHref("+91 98765-43210")).toBe("https://wa.me/919876543210");
+  });
+
+  // A wa.me link built from a malformed number opens WhatsApp's "phone number
+  // shared via url is invalid" page — worse than rendering the digits as plain
+  // text. Callers render the fallback on null rather than guessing.
+  it("returns null rather than a link WhatsApp will reject", () => {
+    expect(whatsappHref("1234567890")).toBeNull(); // not a 6-9 leading mobile
+    expect(whatsappHref("98765")).toBeNull();
+    expect(whatsappHref("")).toBeNull();
+    expect(whatsappHref(null)).toBeNull();
+    expect(whatsappHref(undefined)).toBeNull();
   });
 });

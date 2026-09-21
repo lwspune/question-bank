@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
+import WhatsappLink from "@/components/contact/WhatsappLink";
 import { toast } from "sonner";
 import { setContactMessageStatusAction } from "./actions";
 import type { ContactMessage, ContactMessageStatus } from "@/lib/contact/service";
@@ -101,15 +102,7 @@ export default function ContactMessages({
                       <Mail className="h-3.5 w-3.5" aria-hidden />
                       {r.email}
                     </a>
-                    {r.phone && (
-                      <a
-                        href={`tel:${r.phone}`}
-                        className="inline-flex items-center gap-1 hover:text-foreground"
-                      >
-                        <Phone className="h-3.5 w-3.5" aria-hidden />
-                        {r.phone}
-                      </a>
-                    )}
+                    {r.phone && <WhatsappLink mobile={r.phone} />}
                   </div>
                   <p className="max-w-prose whitespace-pre-wrap text-sm text-muted-foreground">
                     {r.message}

@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { ChevronDown, MessageCircle, Download } from "lucide-react";
 import type { LeadGroup } from "@/lib/quiz/leads";
 import type { LeadWithQuiz } from "@/lib/quiz/leadsAdmin";
+import WhatsappLink from "@/components/contact/WhatsappLink";
+import { whatsappHref } from "@/lib/profile/mobile";
 
 function fmtDate(iso: string): string {
   // Stable, locale-independent (avoids hydration drift): YYYY-MM-DD HH:MM.
@@ -75,26 +77,35 @@ export default function LeadsBrowser({ people, leads }: { people: LeadGroup[]; l
 
 function PersonRow({ person }: { person: LeadGroup }) {
   const leads = person.leads as LeadWithQuiz[];
+  const wa = whatsappHref(person.mobile);
   return (
     <details className="group rounded-lg border bg-card">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-4">
         <div className="min-w-0">
           <p className="truncate font-medium">{person.name}</p>
           <p className="mt-0.5 text-xs text-muted-foreground">
-            {person.mobile} · {person.quizzes} quiz{person.quizzes === 1 ? "" : "zes"} ·{" "}
+            {/* The click must not reach <summary>, or opening the chat also
+                toggles the row — same reason the button below stops it. */}
+            <span onClick={(e) => e.stopPropagation()}>
+              <WhatsappLink mobile={person.mobile} icon={false} />
+            </span>{" "}
+            · {person.quizzes} quiz{person.quizzes === 1 ? "" : "zes"} ·{" "}
             {person.totalAttempts} attempt{person.totalAttempts === 1 ? "" : "s"} · best {person.bestScore} · last {fmtDate(person.lastSeen)}
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          <a
-            href={`https://wa.me/${person.mobile}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/20 dark:text-emerald-400"
-          >
-            <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
-          </a>
+          {wa && (
+            <a
+              href={wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              aria-label={`Message ${person.name} on WhatsApp`}
+              className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:text-emerald-400"
+            >
+              <MessageCircle className="h-3.5 w-3.5" aria-hidden /> WhatsApp
+            </a>
+          )}
           <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden />
         </div>
       </summary>
