@@ -640,6 +640,40 @@ Field FCP 3.2 s against LCP 3.6 s means the page paints nearly complete the mome
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — a full figure re-crop finds 6 crops the committed manifest does not have (logged 2026-09-21)
+
+Found while attaching the two figures CBSE 2025 Physics 55/4/1 was missing. `out/figures/` is
+gitignored, so the whole corpus had to be re-cropped to satisfy `attach-images.ts`'s whole-run gate.
+That full run is REPRODUCIBLE and reassuring as far as it goes: all 291 committed entries came back
+**byte-identical**, same bytes and same rects, 0 changed and 0 lost. But it produced **299**, not 291.
+
+The six extras, none of them on the paper being worked and so deliberately left alone:
+
+| hash | question | page | bytes |
+|---|---|---|---|
+| `5d18420e` | 2022-55-5-1 Q10 | 10 | 822,189 |
+| `60f507ac` | 2022-55-5-1 Q12i | 12 | 781,677 |
+| `6a17bc92` | 2023-55-5-3 Q3 | 4 | 34,709 |
+| `41180e80` | 2023-56-3-2 Q26 | 12 | 9,537 |
+| `f84d396f` | 2025-56-7-1 Q32b | 22 | 7,548 |
+| `786c7785` | 2026-56-3-1 Q1 | 2 | 8,229 |
+
+**Why this is a lead and not a fix.** Two of them are ~800 KB, which is 10-30x a normal crop on this
+corpus and is what a whole-page or a mis-bounded region looks like; the pipeline's own rule is that a
+wrong figure is worse than no figure, and `image_url` is not part of `content_hash`, so nothing
+downstream can detect a mis-attached one afterwards. At least one is a REAL gap either way:
+`audit-figures` lists 2022-55-5-1 Q10 ("A ray of light passes through a prism ... as shown in the
+figure") under REFERENCES-NO-IMAGE, so that row is unanswerable as it stands.
+
+**Unexplained, and that is the interesting part:** cropping is deterministic from the source PDFs, so
+six groups that fail in the committed manifest and succeed now means something OTHER than the PDFs
+changed — a `figure-groups.ts` regeneration, a `regions.py` change, or a PyMuPDF version bump. Worth
+settling before trusting either count, because whichever way it resolves, one of the two manifests was
+wrong about six questions.
+
+**To do:** look at the six crops, attach the ones that are right, and find out what moved.
+
+
 ### ~~BACKFILL LEDGER — CBSE Class 10 Science Ch.12 is missing its first in-text box~~ — DONE 2026-09-21
 
 Found while starting Ch.2, whose page 1 carries the same shape. Approved and repaired the same day:
