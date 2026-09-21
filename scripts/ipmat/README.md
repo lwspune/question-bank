@@ -13,9 +13,9 @@ matching normalised stem + first option across all 1,445 rows.
 
 ## Status
 
-**Phases 0 and 1 complete (2026-09-22): harvested, frozen, normalised, gated. Nothing is in
-the database.** Phase 2 onwards (taxonomy → blind derivation → commit PRIVATE → flip PUBLIC)
-is not built.
+**Phases 0-2 complete (2026-09-22): harvested, frozen, normalised, taxonomy mapped, gated.
+Nothing is in the database.** Phase 3 onwards (blind derivation → commit PRIVATE → flip
+PUBLIC) is not built. **The taxonomy needs sign-off before Phase 4 writes anything.**
 
 **1,418 of 1,445 rows are committable.** Held back: 15 reconstructed + 8 cancelled by the
 exam + 4 declared exclusions.
@@ -27,6 +27,7 @@ npx tsx scripts/ipmat/fetch.ts          # discover + cache 48 pages -> out/html/
 npx tsx scripts/ipmat/extract.ts        # cached HTML  -> data/raw/*.json   (committed), gated
 npx tsx scripts/ipmat/build.ts          # data/raw     -> data/build/*.json (committed), gated
 npx tsx scripts/ipmat/verify-render.ts  # drive the REAL web + Word renderers over the result
+npx tsx scripts/ipmat/taxonomy-report.ts # the taxonomy the map would create, with live counts
 npx tsx scripts/ipmat/survey.ts         # read-only markup census (triage, exits 0)
 ```
 
@@ -37,6 +38,7 @@ Files:
 - **`flight.ts`** — pure core. Reads the Next.js flight payload. Spec: `tests/ipmat-flight.test.ts`.
 - **`config.ts`** — the three exams, the paper grid, discovery, exclusions. Spec: `tests/ipmat-grid.test.ts`.
 - **`normalise.ts`** — pure core. Their markup → ours. Spec: `tests/ipmat-normalise.test.ts`.
+- **`taxonomy.ts`** — pure core. Their labels → our subject/chapter/subtopic. Spec: `tests/ipmat-taxonomy.test.ts`.
 - **`fetch.ts`** / **`extract.ts`** / **`build.ts`** / **`verify-render.ts`** — the CLIs.
 - **`data/raw/`** — 48 frozen source files, committed. Never re-read the live site.
 - **`data/build/`** — 48 normalised files, committed. This is what Phase 2 reads.
@@ -218,3 +220,52 @@ inside the typed-answer section, and Indore's parajumble answers are **orderings
 - **Rohtak 2021–2026 are not on this source at all** — its corpus caps at 175 questions
   from 2 sittings.
 - Whether to pull original PDFs as a transcription spot-check.
+
+## Phase 2: the taxonomy map
+
+`taxonomy.ts` keeps **two axes separate**. The **subject** comes from the paper's
+**section**; the **chapter and subtopic** come from the source's topic. They are
+independent — a question the source tags `Logical Reasoning > Logical Sequence` can appear
+in the QA section, and it does, three times.
+
+House style follows **CDS**, the closest analogue in the bank: an aptitude exam over the
+same ground, whose 26 Mathematics chapters spell "and" out. Sixteen chapter names are taken
+verbatim from CDS so a cross-exam chapter view lines up. NDA's older `Matrices &
+Determinants` ampersand style is not copied into a new corpus.
+
+The map also **cleans the source's own duplicates**, which would otherwise become permanent
+taxonomy rows: three spellings of Active & Passive, two of Linear Equation(s), two of
+Direct & Indirect, singular and plural Bar Graph(s), and `Tabular Data` filed under two
+different topics. There is **no catch-all chapter** — the source's `Miscellaneous`
+subtopics are folded into the real chapter they belong to.
+
+### Resulting shape
+
+| | sections as subjects (current) | if Indore quant were merged |
+|---|---|---|
+| subject rows | **9** | 8 |
+| chapter rows | **147** | 121 |
+| subtopic rows | **205** | 173 |
+| subtopics under 3 q | **74** | 52 |
+| single-question subtopics | **42** | 30 |
+| median questions/subtopic | **4** | 5 |
+
+The 26-chapter difference is Indore's quant chapters existing under **both** its SA and MCQ
+subjects, because those sections cover the same seven topics at different answer formats.
+That is the accepted cost of sections-as-subjects, and it buys something real: IPMAT Indore
+students drill SA separately precisely because it is typed-answer with no options to work
+backwards from, so it is a meaningful browse axis and not only a structural one.
+
+### Two invariants worth knowing
+
+**Completeness is checked in both directions.** No source pair may be unmapped (an omission
+silently loses questions), and no map entry may match nothing (which is how a map rots after
+a re-fetch). Both were fault-injected.
+
+**No two chapter names may be confusable.** The map first had `Sequence and Series` (maths)
+*and* `Series and Sequences` (reasoning), and **both landed in Rohtak's Quantitative Ability
+subject** — 4 questions and 1, under two names a reader cannot tell apart. The reasoning
+chapter is now `Pattern Recognition`. The test that catches this compares stemmed word bags,
+and its **first version was vacuous**: stripping `(ies|es|s)` maps `sequence`→`sequence` but
+`sequences`→`sequenc`, so the bags differed and the clash passed. It now stems `ies`→`y`
+then a trailing `s`, and was confirmed to fail against the real clash before the rename.
