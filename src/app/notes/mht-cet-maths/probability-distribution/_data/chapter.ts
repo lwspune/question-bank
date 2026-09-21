@@ -4,11 +4,10 @@ export const PROBABILITY_DISTRIBUTION_CHAPTER: ChapterNote = {
   chapterName: "Probability Distribution",
   title: "Probability Distribution — MHT-CET Maths",
   intro:
-    "Probability Distribution is a high-yield MHT-CET Maths chapter (115 PYQs across 2021–2025) that runs from first principles all the way to random variables. It teaches in four movements, each resting on the one before: " +
-    "(1) Classical Probability, Addition Theorem & Odds — the foundation: favourable ÷ total on equally-likely outcomes, counting with permutations and combinations, the addition theorem P(A∪B) = P(A)+P(B)−P(A∩B), the complement and 'at least one' shortcut, and converting odds to probabilities; " +
-    "(2) Conditional Probability, Independence & Bayes' Theorem — restricting the sample space with P(A|B), the multiplication rule for sequential draws, independent-event algebra, the total-probability theorem, and Bayes' theorem for bags, urns and diagnostic tests; " +
-    "(3) Discrete Random Variables, PMF & CDF — defining a distribution, finding the constant k (finite, quadratic, exponential and infinite-series PMFs), reading probabilities of ranges, building a distribution from an experiment, the cumulative distribution function, and the continuous (density) analogue; " +
-    "(4) Expectation, Variance & Standard Deviation — E(X), the variance formula Var(X) = E(X²) − [E(X)]², expected winnings in games, the uniform-distribution formulas E = (n+1)/2 and Var = (n²−1)/12, and back-solving for unknown probabilities from a given mean. " +
+    "Probability Distribution is a high-yield MHT-CET Maths chapter (115 PYQs across 2021–2025) that runs from first principles all the way to random variables. " +
+    "The arc matters more here than in most chapters: the classical-probability block is the vocabulary every later one speaks, and the random-variable blocks are that " +
+    "same vocabulary applied to a variable rather than to a single event. Work the four subtopics below in order — each rests on the one before. " +
+    "Only about one question in five is HARD, and they concentrate in Conditional Probability, Independence and Bayes' Theorem (8 of its 26). " +
     "Every PYQ is tagged — learn the pattern, drill the bank, recover the marks.",
   subtopicOrder: [
     "classical-probability-odds",
