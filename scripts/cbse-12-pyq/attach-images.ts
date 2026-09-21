@@ -44,7 +44,24 @@ async function main() {
   if (!existsSync(manifestPath)) {
     throw new Error("no data/figures.json — run: python scripts/cbse-12-pyq/extract_figures.py --crop");
   }
-  const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as Entry[];
+  const all = JSON.parse(readFileSync(manifestPath, "utf8")) as Entry[];
+
+  // --only=<hashPrefix> NARROWS THE SCOPE, IT DOES NOT LOOSEN THE GATE. The
+  // refusal below is whole-run by design: a manifest is meant to be fully
+  // materialised, and attaching a subset while some crops are unreadable is how
+  // a half-attached corpus happens. But out/figures/ is gitignored, so a session
+  // that re-crops ONE group legitimately has 1 file on disk and ~290 absent, and
+  // the whole-run gate then blocks a change it has no quarrel with. Selecting a
+  // prefix drops the others from the PLAN and from the PROBLEM list together --
+  // so anything wrong INSIDE the selection still refuses the whole run.
+  const onlyArg = process.argv.find((a) => a.startsWith("--only="));
+  const only = onlyArg?.slice("--only=".length).trim().toLowerCase();
+  if (onlyArg && !only) throw new Error("--only= needs a hash prefix, e.g. --only=a3e40b79");
+  const manifest = only ? all.filter((e) => e.hash.toLowerCase().startsWith(only)) : all;
+  if (only && !manifest.length) {
+    throw new Error(`--only=${only} matched none of the ${all.length} manifest entries`);
+  }
+  if (only) console.log(`--only=${only}: ${manifest.length} of ${all.length} entry(s) in scope`);
 
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

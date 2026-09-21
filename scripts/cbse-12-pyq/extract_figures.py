@@ -152,8 +152,13 @@ def page_regions(page):
     return big(merge(raw))
 
 
-def crop(page, rect, dpi=DPI, pad=PAD):
-    clip = fitz.Rect(rect[0] - pad, rect[1] - pad, rect[2] + pad, rect[3] + pad)
+def crop(page, rect, dpi=DPI, pad=PAD, pad_top=None):
+    # pad_top overrides pad on the TOP edge alone. A caption sits one line above
+    # the drawing, so the top is the one edge where "a bit more" is not safe --
+    # 6pt too many pulls in the tail of the stem's last prose line. Callers that
+    # have measured the gap pass it; everyone else passes None and gets pad.
+    top = pad if pad_top is None else pad_top
+    clip = fitz.Rect(rect[0] - pad, rect[1] - top, rect[2] + pad, rect[3] + pad)
     clip = clip & page.rect          # never ask for pixels outside the page
     pix = page.get_pixmap(dpi=dpi, clip=clip)
     return pix.tobytes("png")
@@ -279,7 +284,21 @@ def main():
             if band:
                 h = rect[3] - rect[1]
                 rect = (rect[0], rect[1] + band[0] * h, rect[2], rect[1] + band[1] * h)
-            png, note = shrink(crop(page, rect, pad=0.0 if band else PAD))
+            # A figure's CAPTION is page TEXT and page_regions() only reads image
+            # rects, so a label printed above the drawing lies outside every
+            # region and PAD does not reach it. 2025-55-4-1 p16 Q24 forced this:
+            # the crop came out with "Coil 2" and "Coil 1" sliced through the
+            # middle, and those two labels ARE the question -- all three
+            # sub-parts ask about coil 1 versus coil 2. In POINTS, not a
+            # fraction of the figure, because the gap to the caption is a
+            # typographic distance that does not scale with the drawing. It
+            # replaces PAD on the top edge rather than adding to it, so the
+            # value can be measured off the page and used as measured.
+            top = pick.get("padTop")
+            if top:
+                rect = (rect[0], max(0.0, rect[1] - top), rect[2], rect[3])
+            png, note = shrink(crop(page, rect, pad=0.0 if band else PAD,
+                                    pad_top=0.0 if top else None))
             entry = {"hash": g["hash"], "from": label, "page": pageno,
                      "rect": [round(v, 1) for v in rect], "bytes": len(png),
                      "file": f"{g['hash'][:12]}.png", "members": len(g["members"]),
@@ -376,7 +395,30 @@ def main():
         for h in stale:
             print("  " + h[:16])
     if args.crop:
-        json.dump(manifest, open(os.path.join(DATA, "figures.json"), "w"), indent=1)
+        # --only NARROWS THE WORK, NOT THE FILE. This manifest is a whole-corpus
+        # record that attach-images.ts reads, so writing one run's entries over it
+        # turned 291 entries into 1 the first time a single group was re-cropped --
+        # silently, because the count is printed AFTER the write. A filtered run
+        # therefore MERGES BY HASH: entries this run produced win, every other entry
+        # is kept. An unfiltered run is the whole truth and still replaces the file.
+        path = os.path.join(DATA, "figures.json")
+        out = manifest
+        if args.only and os.path.exists(path):
+            prior = json.load(open(path, encoding="utf-8"))
+            fresh = {e["hash"] for e in manifest}
+            # Replace IN PLACE and append only what is genuinely new. Sorting the
+            # merged list instead rewrote the order of all 291 entries for a
+            # two-entry change, which is 8,800 lines of diff nobody can review.
+            pending = {e["hash"]: e for e in manifest}
+            out = [pending.pop(e["hash"], e) for e in prior]
+            out += [e for e in manifest if e["hash"] in pending]
+            print("")
+            print(f"--only: merged {len(manifest)} entry(s) into {len(prior)} kept -> {len(out)}")
+        # indent=2 matches the file as COMMITTED. The writer said indent=1, so
+        # every run silently reformatted all ~4,400 lines and buried a two-entry
+        # change in an 8,800-line diff. Whichever value is chosen, the writer and
+        # the committed file have to agree or the diff is unreviewable.
+        json.dump(out, open(path, "w"), indent=2)
         print(f"\nwrote {len(manifest)} crops to out/figures/ and data/figures.json")
     else:
         print("\n[plan only] pass --crop to write the images")
