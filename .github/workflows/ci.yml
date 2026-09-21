@@ -1,6 +1,7 @@
 name: CI
 
-# Runs the full local gate (typecheck → lint → notes guards → tests → build)
+# Runs the full local gate (typecheck → lint → docs:budget → notes:latex →
+# conditional notes:lint → tests → conditional build)
 # on every push to main and every PR. Vercel still owns deploys.
 #
 # The prod-contract suite is NOT here (2026-08-31): it moved to a daily
@@ -62,10 +63,32 @@ jobs:
         run: npm run typecheck
       - name: Lint
         run: npm run lint
-      - name: Notes integrity (DB — taxonomy + tag + chapter-name resolution)
-        run: npm run notes:lint
+      # In the prepush chain since 2026-09-16 (539344cb) but never here — restored to keep
+      # the mirror honest (CLAUDE.md byte ceilings; ~1 s).
+      - name: Docs budget (CLAUDE.md size ceilings)
+        run: npm run docs:budget
       - name: Notes LaTeX/Markdown audit (static)
         run: npm run notes:latex
+      # notes:lint validates the /notes editorial modules against the LIVE
+      # taxonomy + tags — 91 s and growing with the bank. Only a change under
+      # the roots it reads can move its verdict, so it runs only then. Same
+      # rule as the pre-push hook — scripts/lib/needsNotesLint.ts, spec'd in
+      # tests/needs-notes-lint.test.ts and pinned to the lint's real import
+      # graph by tests/notes-lint-import-roots.test.ts. Unlike the build rule
+      # this is an allowlist of RUNS; the import-graph test is what stops it
+      # rotting. An unresolvable changeset runs it (fail-safe).
+      - name: Detect notes-lint-relevant changes
+        id: notescheck
+        run: |
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          if npx tsx scripts/needs-notes-lint.ts "$BASE" "${{ github.sha }}"; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Notes integrity (DB — taxonomy + tag + chapter-name resolution)
+        if: steps.notescheck.outputs.needed == 'true'
+        run: npm run notes:lint
       # Fixture-writing tests run against the DEDICATED TEST project only —
       # the TEST_* env vars override the prod names inside tests/setup.ts.
       - name: Tests (fixture-writing — dedicated test project)
