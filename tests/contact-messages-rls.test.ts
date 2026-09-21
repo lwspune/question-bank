@@ -16,6 +16,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -48,7 +49,7 @@ describe.skipIf(!HAS_ENV)("contact_messages RLS", () => {
 
     anonClient = createClient(url, anon, { auth: { persistSession: false } });
     userClient = createClient(url, anon, { auth: { persistSession: false } });
-    await userClient.auth.signInWithPassword({ email: USER_EMAIL, password: PASSWORD });
+    await mustSignIn(USER_EMAIL, userClient, { email: USER_EMAIL, password: PASSWORD });
   });
 
   afterAll(async () => {

@@ -71,3 +71,34 @@ export async function mustDo(
   }
   throw new Error(`fixture "${label}" failed: ${last}`);
 }
+
+/**
+ * Sign a fixture user in, or THROW. `signInWithPassword` returns its error
+ * instead of throwing, and 41 of the suite's 56 sign-ins discarded it (found
+ * 2026-09-21). Supabase Auth limits `/auth/v1/token` to 150 requests per 5
+ * minutes per IP; past that the call "succeeds" with an error nobody read,
+ * the client stays ANONYMOUS, and the test fails later as a 42501 RLS
+ * violation on a write — a fake regression pointing nowhere near the cause.
+ *
+ * Not retried on purpose: a rate limit is not a blip, and retrying only
+ * spends more of the same window. The reason is printed so the next person
+ * sees "Request rate limit reached", not "row-level security policy".
+ */
+type SignInCreds = { email: string; password: string };
+type SignInClient = {
+  auth: {
+    signInWithPassword(
+      creds: SignInCreds,
+    ): PromiseLike<{ data: { session: unknown } | null; error: { message: string } | null }>;
+  };
+};
+
+export async function mustSignIn(
+  label: string,
+  client: SignInClient,
+  creds: SignInCreds,
+): Promise<void> {
+  const { data, error } = await client.auth.signInWithPassword(creds);
+  if (error) throw new Error(`sign in "${label}" failed: ${error.message}`);
+  if (!data?.session) throw new Error(`sign in "${label}" failed: no session returned`);
+}

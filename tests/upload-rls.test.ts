@@ -6,6 +6,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -85,8 +86,8 @@ describe.skipIf(!HAS_ENV)("RLS — only ADMIN can write", () => {
 
     teacherClient = createClient(url, anon, { auth: { persistSession: false } });
     adminClient = createClient(url, anon, { auth: { persistSession: false } });
-    await teacherClient.auth.signInWithPassword({ email: TEACHER_EMAIL, password: PASSWORD });
-    await adminClient.auth.signInWithPassword({ email: ADMIN_EMAIL, password: PASSWORD });
+    await mustSignIn(TEACHER_EMAIL, teacherClient, { email: TEACHER_EMAIL, password: PASSWORD });
+    await mustSignIn(ADMIN_EMAIL, adminClient, { email: ADMIN_EMAIL, password: PASSWORD });
   });
 
   afterAll(async () => {

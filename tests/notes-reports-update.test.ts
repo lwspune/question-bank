@@ -16,6 +16,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { updateConceptReport } from "@/lib/notes-reports/updateConceptReport";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -31,7 +32,7 @@ async function signIn(email: string): Promise<SupabaseClient> {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     { auth: { persistSession: false } }
   );
-  await c.auth.signInWithPassword({ email, password: PASSWORD });
+  await mustSignIn(email, c, { email, password: PASSWORD });
   return c;
 }
 

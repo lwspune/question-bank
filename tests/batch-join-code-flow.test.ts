@@ -19,6 +19,7 @@ import {
   loadRoster,
 } from "@/lib/batches/invitesAdmin";
 import { formatJoinCode } from "@/lib/batches/joinCode";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -66,9 +67,9 @@ describe.skipIf(!HAS_ENV)("join by code (migration 0085)", () => {
     await admin.from("org_members").insert({ user_id: adminId, org_id: orgId, role: "ADMIN" });
 
     adminClient = createClient(url, anon, { auth: { persistSession: false } });
-    await adminClient.auth.signInWithPassword({ email: ADMIN_EMAIL, password: PASSWORD });
+    await mustSignIn(ADMIN_EMAIL, adminClient, { email: ADMIN_EMAIL, password: PASSWORD });
     samClient = createClient(url, anon, { auth: { persistSession: false } });
-    await samClient.auth.signInWithPassword({ email: SAM_EMAIL, password: PASSWORD });
+    await mustSignIn(SAM_EMAIL, samClient, { email: SAM_EMAIL, password: PASSWORD });
 
     const branchId = await createBranch(adminClient, {
       orgId,

@@ -29,6 +29,7 @@ import {
   recordMcqVerifyReviews,
   recordTriageReview,
 } from "@/lib/reviews/emit";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -79,7 +80,7 @@ describe.skipIf(!HAS_ENV)("question_reviews", () => {
     studentId = student.user?.id ?? null;
 
     studentClient = createClient(url, anon, { auth: { persistSession: false } });
-    await studentClient.auth.signInWithPassword({ email: STUDENT_EMAIL, password: PASSWORD });
+    await mustSignIn(STUDENT_EMAIL, studentClient, { email: STUDENT_EMAIL, password: PASSWORD });
   });
 
   afterAll(async () => {
