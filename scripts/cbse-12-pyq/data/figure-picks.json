@@ -330,6 +330,28 @@
         0,
         1
       ]
+    },
+    "f4696d3c0366196a0273192a992ed2788818af9b7d08f372a838b00f5141af68": {
+      "pid": "2025-55-4-3",
+      "page": 14,
+      "mode": "region",
+      "index": 1,
+      "band": [
+        0,
+        1
+      ],
+      "note": "Q23(b) square loop MNPK beside a long straight wire. Page 14 carries TWO regions belonging to DIFFERENT questions, so union would merge them: [1] y247-397 is this loop-and-wire, [2] y524-634 is Q24(b)'s emf plot. Checked against the rendered page. REQUIRED -- the stem names no distance at all, and the figure is what fixes that the near side MN sits a distance l from the wire (so KP sits at 2l) and that I_2 in MN runs the SAME way as I_1; both facts are the whole calculation. NOTE the page choice: this paper prints English and Hindi on ADJACENT pages carrying identical figures -- page 13 is the Hindi copy, page 14 the English one, and 14 is taken for consistency with the rest of the corpus. The text layer cannot tell them apart (the Devanagari glyphs carry no Unicode mapping, so page 13 reports zero Devanagari characters); only the render distinguishes them. band [0,1] sets PAD=0."
+    },
+    "774d54408bd9a7057594d5a4d14606b08fb55fd218ee959b081ab551cd4b3d61": {
+      "pid": "2025-55-4-3",
+      "page": 14,
+      "mode": "region",
+      "index": 2,
+      "band": [
+        0,
+        1
+      ],
+      "note": "Q24(b) plot of |emf| against dI/dt for two coils. Page 14's other region is Q23(b)'s loop-and-wire, so this is a region pick, not a union. REQUIRED -- the question asks WHICH coil has the greater self-inductance, and the only thing that distinguishes coil 1 from coil 2 is which line is steeper, which exists solely in the drawing. Read off the page: line 1 is the steeper, and since |emf| = L.dI/dt the slope IS L. band [0,1] sets PAD=0. Same English-vs-Hindi page note as the Q23 pick above."
     }
   },
   "_why_ms": "The 2024 QUESTION PAPERS store the lower slices of every figure as corrupt data: content repeated 3x horizontally with the remainder black. It is in the source bytes, not the renderer - the extracted PNG is corrupt too - and it is uniform across a series, so no sibling paper rescues it (all three members measure 0.39-0.55 black). The 2024 MARKING SCHEMES reprint the same figures cleanly (0.00 black), so they are the source of record for these."

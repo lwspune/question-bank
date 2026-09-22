@@ -352,14 +352,16 @@ The five to crop and attach:
 |---|---|---|
 | `2023-55-3-3` | Q28 | "The figure shows a rectangular conductor PQRS ..." — **attached 2026-09-23** |
 | `2023-55-3-3` | Q30 | "(a) The figure shows de Broglie wavelength (λ) for two particles ..." — **attached 2026-09-23** |
-| `2023-55-5-2` | Q11 | "Figure shows a plot of stopping potential (V₀) versus 1/λ ..." |
-| `2025-55-4-3` | Q24 | — |
+| `2023-55-5-2` | Q11 | "Figure shows a plot of stopping potential (V₀) versus 1/λ ..." — **attached 2026-09-23** |
+| `2025-55-4-3` | Q24 | "(b) The figure shows the plot of magnitude of induced emf (ε) versus the rate of change of current in two coils ..." — **attached 2026-09-23** |
 | `2026-55-1-1` | Q24 | "Figure shows a narrow beam of electrons entering ... symmetrically" — **attached 2026-09-22** |
 
 Worth a sweep for the same one-letter class elsewhere: the regex is an **enumerated phrasing
 list**, and this is the second time it has under-matched silently.
 
-Live counts as of 2026-09-23, after the figures attached while solving the sibling papers: `REFERENCES-NO-IMAGE` **38**, `IMAGE-NO-REFERENCE` **84**, `DRAWN-OPTIONS-NO-IMAGE` **0**. Three of the five rows above are now attached; the two that remain are `2023-55-5-2` Q11 and `2025-55-4-3` Q24, and both will be cropped when their papers come up in the run rather than as a separate sweep.
+Live counts as of 2026-09-23, after the figures attached while solving the sibling papers: `REFERENCES-NO-IMAGE` **31**, `IMAGE-NO-REFERENCE` **84**, `DRAWN-OPTIONS-NO-IMAGE` **0**. **All five rows above are now attached — this ledger is closed.** Each was cropped when its paper came up in the sibling run rather than as a separate sweep, which is why they landed across 2026-09-22 and 09-23.
+
+The **remaining 31** are not this class and are not tracked here: they are rows whose figure has simply not been cropped yet, and they will be picked up the same way — as their papers come up. The `IMAGE-NO-REFERENCE` **84** is a different thing again and should not be read as 84 mis-keyed attaches: most are rows that DO carry a correct image but whose stem `FIGURE_REF` cannot see, because the regex is an enumerated noun list and CBSE names a drawing by what it depicts. `2024-55-4-3` Q25 — "In the given network, calculate:" — is the worked example: the regex matches `network shown/below/above` but not `given network`. Widening it would move counts on shipped rows, so it is left alone and recorded here instead.
 
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 

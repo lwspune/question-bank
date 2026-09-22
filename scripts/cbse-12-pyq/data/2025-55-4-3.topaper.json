@@ -1,0 +1,280 @@
+{
+  "paper": "55/4/3",
+  "year": 2025,
+  "paperId": "2025-55-4-3",
+  "markingScheme": "out/2025-55-4-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "3ea3073285851cb7ccddd43aeb146181c639029b56939877aa4f2c777cbe7ed8",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "Two point charges Q and – q are held 'r' distance apart in free space. A uniform electric field \\(\\vec{E}\\) is applied in the region perpendicular to the line joining the two charges. Which one of the following angles will the direction of the net force acting on charge – q make with the line joining Q and – q ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\tan^{-1}\\dfrac{4\\pi\\varepsilon_0 E r^2}{Q}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\cot^{-1}\\dfrac{4\\pi\\varepsilon_0 E r^2}{Q}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\tan^{-1}\\dfrac{QE}{4\\pi\\varepsilon_0 r^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\cot^{-1}\\dfrac{QE}{4\\pi\\varepsilon_0 r^2}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\tan^{-1}\\dfrac{4\\pi\\varepsilon_0 Er^{2}}{Q}\\).**\n\n**Two forces act on \\(-q\\), and they are PERPENDICULAR to each other.**\n\n**Along the line joining the charges — the Coulomb force from \\(Q\\):**\n\n\\(F_C = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Qq}{r^{2}}\\)\n\n**Perpendicular to that line — the force from the applied field**, since \\(\\vec{E}\\) is stated to be perpendicular to the join:\n\n\\(F_E = qE\\)\n\n**The angle with the line joining.** With the two forces at right angles, the resultant makes an angle \\(\\theta\\) with the Coulomb direction given by\n\n\\(\\tan\\theta = \\dfrac{\\text{perpendicular component}}{\\text{along-the-line component}} = \\dfrac{F_E}{F_C}\\)\n\n\\(\\tan\\theta = \\dfrac{qE}{\\dfrac{Qq}{4\\pi\\varepsilon_0 r^{2}}} = \\dfrac{qE \\cdot 4\\pi\\varepsilon_0 r^{2}}{Qq}\\)\n\n**The charge \\(q\\) cancels completely:**\n\n\\(\\boxed{\\ \\theta = \\tan^{-1}\\left(\\dfrac{4\\pi\\varepsilon_0 Er^{2}}{Q}\\right)\\ }\\)\n\n**That cancellation is worth pausing on.** Both forces on \\(-q\\) are proportional to \\(q\\), so their **ratio** cannot depend on it — the direction of the net force is the same whatever the size of \\(-q\\). Only the magnitude would change. Spotting this in advance tells you the answer cannot contain \\(q\\), which all four options respect.\n\n**Why it must be a tangent and not a cotangent.** The angle is measured **from the line joining**, which is the Coulomb direction. Tangent is opposite over adjacent, so the numerator must be the force **perpendicular** to that line, \\(qE\\). Options (B) and (D) offer \\(\\cot^{-1}\\), which measures the angle from the other side — the complement of what was asked.\n\n**Why options (C) and (D) fail on dimensions.** The argument of an inverse trigonometric function must be **dimensionless**. In \\(\\dfrac{QE}{4\\pi\\varepsilon_0 r^{2}}\\) the \\(\\varepsilon_0\\) and \\(r^{2}\\) sit in the **denominator** alongside, rather than cancelling against, the \\(Q\\) and \\(E\\) — and the expression carries units. The correct combination \\(4\\pi\\varepsilon_0 Er^{2}/Q\\) is a pure number, as it must be. Two of the four can therefore be discarded without physics.\n\n**Reading the result.** A stronger applied field \\(E\\), or a greater separation \\(r\\), tilts the net force further from the line joining. A larger \\(Q\\) does the opposite, pulling the resultant back towards the line — as it should, since a bigger \\(Q\\) means a stronger Coulomb pull to compete with the applied field."
+    },
+    {
+      "hash": "0e4f5a06f05aa9b77e0cbfba7a6f63388c73520944122e692de875ae0b0ec314",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Three wires A, B and C of the same material have lengths and area of cross-sections as \\(\\left(2l,\\ \\dfrac{A}{2}\\right)\\), \\((l,\\ A)\\) and \\(\\left(\\dfrac{l}{2},\\ 2A\\right)\\), respectively. If the resistances of these wires are \\(R_A\\), \\(R_B\\) and \\(R_C\\) respectively, then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(R_A > R_B > R_C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(R_B > R_C > R_A\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(R_C > R_A > R_B\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(R_A > R_C > R_B\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(R_A > R_B > R_C\\).**\n\n**The resistance of a wire.**\n\n\\(R = \\dfrac{\\rho l}{A}\\)\n\nwith \\(\\rho\\) common to all three, since the material is the same. So only the ratio \\(l/A\\) matters.\n\n**Compute each.**\n\n\\(R_A = \\dfrac{\\rho\\left(2l\\right)}{A/2} = \\dfrac{4\\rho l}{A}\\)\n\n\\(R_B = \\dfrac{\\rho l}{A}\\)\n\n\\(R_C = \\dfrac{\\rho\\left(l/2\\right)}{2A} = \\dfrac{\\rho l}{4A}\\)\n\n**In the ratio \\(R_A : R_B : R_C = 4 : 1 : \\dfrac{1}{4}\\)**, so\n\n\\(\\boxed{\\ R_A > R_B > R_C\\ }\\)\n\n**The two changes REINFORCE each other, which is why the spread is so wide.** Wire \\(A\\) is twice as long (doubling \\(R\\)) **and** half as thick (doubling it again) — a factor of \\(4\\). Wire \\(C\\) is half as long **and** twice as thick — a factor of \\(\\tfrac{1}{4}\\). The extremes therefore differ by **sixteen**, from a set of wires whose dimensions differ by only a factor of two each way.\n\n**A quicker route, since only the ORDER is asked.** Length sits in the numerator and area in the denominator, so \\(R\\) is largest where \\(l\\) is largest **and** \\(A\\) smallest. Wire \\(A\\) has the greatest length and the least area at once, so it must have the greatest resistance; wire \\(C\\) has the least length and the greatest area, so the least. The ordering follows without any algebra, and \\(B\\) sits between by inspection.\n\n**Note what is NOT constant here.** These are three different wires, not one wire being stretched. Under **stretching** the volume would be fixed, so doubling the length would automatically halve the area and give \\(4R\\) — coincidentally the same factor as wire \\(A\\), but for a quite different reason. Here the dimensions are chosen independently, and the volumes happen to be equal \\(\\left(2l \\times A/2 = lA = \\tfrac{l}{2} \\times 2A\\right)\\), which is the question's quiet symmetry.\n\n**Why resistivity does not appear in the answer.** \\(\\rho\\) is a property of the **material**, identical for all three, so it cancels from every ratio. Resistance is a property of the **object**; resistivity of the substance it is made from. Keeping the two apart is what this question is for."
+    },
+    {
+      "hash": "862b680ef5a63ed38998025a5f1c4568b674cac23e77d40a3a1489ef5471c087",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A particle of mass m and charge q moves along y-axis in a region in which a uniform magnetic field \\(\\vec{B}\\) is pointing along x-axis. The Lorentz force acting on the charge will point along :",
+      "options": [
+        {
+          "label": "A",
+          "text": "x-axis"
+        },
+        {
+          "label": "B",
+          "text": "y-axis"
+        },
+        {
+          "label": "C",
+          "text": "z-axis"
+        },
+        {
+          "label": "D",
+          "text": "negative z-axis"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): along the negative \\(z\\)-axis.**\n\n**The Lorentz force.**\n\n\\(\\vec{F} = q\\left(\\vec{v}\\times\\vec{B}\\right)\\)\n\nwith\n\n\\(\\vec{v} = v\\,\\hat{j} \\quad\\text{(along } y) \\qquad\\text{and}\\qquad \\vec{B} = B\\,\\hat{i} \\quad\\text{(along } x)\\)\n\n**Evaluating the cross product.**\n\n\\(\\vec{v}\\times\\vec{B} = vB\\left(\\hat{j}\\times\\hat{i}\\right)\\)\n\n**The order matters, and this is the whole question.** The cyclic order is \\(\\hat{i}\\times\\hat{j} = \\hat{k}\\); reversing the factors reverses the sign:\n\n\\(\\hat{j}\\times\\hat{i} = -\\hat{k}\\)\n\nSo\n\n\\(\\vec{F} = qvB\\left(-\\hat{k}\\right)\\)\n\n\\(\\boxed{\\ \\vec{F} \\text{ points along the NEGATIVE } z\\text{-axis}\\ }\\)\n\n**Option (C) is the trap**, and it is a single sign away. Writing \\(\\hat{j}\\times\\hat{i} = +\\hat{k}\\) — treating the cross product as though it commuted — gives \\(+z\\) and is the commonest error in this topic. The cross product is **anti**-commutative: \\(\\vec{A}\\times\\vec{B} = -\\vec{B}\\times\\vec{A}\\).\n\n**A way to get the sign right without memorising.** Write the cyclic sequence \\(x \\to y \\to z \\to x\\). Going **forward** along it gives a plus: \\(\\hat{i}\\times\\hat{j} = +\\hat{k}\\), \\(\\hat{j}\\times\\hat{k} = +\\hat{i}\\), \\(\\hat{k}\\times\\hat{i} = +\\hat{j}\\). Going **backwards** gives a minus. Here \\(\\hat{j}\\times\\hat{i}\\) runs backwards, so the answer is \\(-\\hat{k}\\).\n\n**Or with the right hand.** Point the fingers along \\(\\vec{v}\\) (\\(+y\\)) and curl them towards \\(\\vec{B}\\) (\\(+x\\)); the thumb points **into** the page if \\(x\\) is right and \\(y\\) is up — that is, along \\(-z\\).\n\n**Why (A) and (B) are impossible on principle.** The magnetic force is **always** perpendicular to **both** \\(\\vec{v}\\) and \\(\\vec{B}\\), so it can have no component along \\(x\\) or \\(y\\) here. Only \\(\\pm z\\) is available, and the two remaining options can be eliminated before any calculation.\n\n**What the particle then does.** \\(\\vec{v}\\) is entirely perpendicular to \\(\\vec{B}\\), so the path is a **circle** in the \\(yz\\) plane, of radius \\(r = mv/qB\\). The force always points towards the centre, turning the velocity without ever changing its magnitude — a magnetic force does no work.\n\n*(The answer assumes \\(q\\) positive; for a negative charge the force would be along \\(+z\\), the magnitude unchanged.)*"
+    },
+    {
+      "hash": "5c57ff808a3fd8008997737855d1e65e2f0596f9720c722c3327f33f3ce7fb73",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which of the following substances has magnetic permeability less than that of free space ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sodium"
+        },
+        {
+          "label": "B",
+          "text": "Iron"
+        },
+        {
+          "label": "C",
+          "text": "Aluminium"
+        },
+        {
+          "label": "D",
+          "text": "Copper"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): copper.**\n\n**What \"permeability less than free space\" means.**\n\n\\(\\mu = \\mu_0\\mu_r \\qquad\\text{with}\\qquad \\mu_r = 1 + \\chi\\)\n\nSo \\(\\mu < \\mu_0\\) requires \\(\\mu_r < 1\\), which requires\n\n\\(\\chi < 0\\)\n\n**A negative susceptibility is the definition of a DIAMAGNETIC substance** — one that magnetises **against** the applied field.\n\n**Classifying the four options.**\n\n**Copper** — \\(\\mathrm{Cu}\\) in the metallic state has a filled \\(3d\\) shell and its conduction electrons contribute a diamagnetic response that dominates; \\(\\chi \\approx -10^{-5}\\). **DIAMAGNETIC.**\n\n**Sodium** — one loosely bound \\(3s\\) electron per atom, unpaired, giving a small positive susceptibility. **Paramagnetic.**\n\n**Aluminium** — likewise carries unpaired electrons and is weakly attracted, \\(\\chi \\approx +2 \\times 10^{-5}\\). **Paramagnetic.**\n\n**Iron** — the archetypal **ferromagnet**, with \\(\\mu_r\\) in the thousands and a susceptibility larger than the other three by seven or eight orders of magnitude.\n\n**So iron is the extreme opposite of what is wanted**, and it is offered first because it is the substance everyone associates with magnetism. Reading the inequality — permeability **less** than free space — before recalling any material is what protects against it.\n\n**The bounds on \\(\\mu_r\\).**\n\n| Class | \\(\\chi\\) | \\(\\mu_r\\) |\n|---|---|---|\n| Diamagnetic | \\(-1 \\le \\chi < 0\\) | \\(0 \\le \\mu_r < 1\\) |\n| Paramagnetic | small positive | slightly \\(> 1\\) |\n| Ferromagnetic | very large positive | \\(\\gg 1\\) |\n\n**\\(\\mu_r = 0\\) is the limiting case**, reached when \\(\\chi = -1\\): the material would exclude the field **completely**. That is precisely what a **superconductor** does — the Meissner effect — making it the perfect diamagnet.\n\n**A way to see it in field lines.** A diamagnetic sample **pushes field lines out** of itself, so the flux density inside is less than it would be in vacuum; a paramagnetic sample draws a few lines in; a ferromagnet crowds them in enormously. The permeability is simply a measure of which of these the substance does.\n\n**Why copper is a good example to remember.** It is an excellent **electrical** conductor and a **diamagnet** — two properties that are unrelated and often confused. Conduction concerns the mobility of charge; diamagnetism concerns the absence of a permanent magnetic moment."
+    },
+    {
+      "hash": "bde0ff4c54c68786d582164dfa75366731b9fe1e5c5fdcc5d9b5bcab1b4f9962",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "The magnetic flux linked with a closed coil (in Wb) varies with time t (in s) as \\(\\phi = 5t^2 + 4t - 2\\). If the resistance of the circuit is 14 \\(\\Omega\\), the magnitude of induced current in the coil at t = 1 s will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}5\\) A"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}0\\) A"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}5\\) A"
+        },
+        {
+          "label": "D",
+          "text": "\\(2{\\cdot}0\\) A"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): 1.0 A.**\n\n**Faraday's law, then Ohm's law.**\n\n\\(\\left|\\varepsilon\\right| = \\left|\\dfrac{d\\phi}{dt}\\right|, \\qquad I = \\dfrac{\\left|\\varepsilon\\right|}{R}\\)\n\n**Differentiate the flux.**\n\n\\(\\phi = 5t^{2} + 4t - 2\\)\n\n\\(\\dfrac{d\\phi}{dt} = 10t + 4\\)\n\n**Evaluate at \\(t = 1\\) s — and only AFTER differentiating:**\n\n\\(\\left.\\dfrac{d\\phi}{dt}\\right|_{t=1} = 10 + 4 = 14\\ \\mathrm{Wb\\,s^{-1}} \\qquad\\Longrightarrow\\qquad \\left|\\varepsilon\\right| = 14\\ \\mathrm{V}\\)\n\n**The current.**\n\n\\(I = \\dfrac{14}{14}\\)\n\n\\(\\boxed{\\ I = 1{\\cdot}0\\ \\mathrm{A}\\ }\\)\n\n**The constant term is a pure decoy, and a well-placed one.** Substituting \\(t = 1\\) into \\(\\phi\\) gives \\(5 + 4 - 2 = 7\\) Wb, and the \\(-2\\) is there only to make that number look worth having. But **differentiation annihilates any constant**, so the \\(-2\\) cannot influence the emf at any instant whatever. An emf depends on how fast the flux is **changing**, never on its value.\n\n**Differentiate first, substitute second.** Putting \\(t = 1\\) into \\(\\phi\\) and then trying to do something with \\(7\\) Wb is the error the question is built to catch — and \\(7/14 = 0{\\cdot}5\\) A is offered as option (A) for exactly that.\n\n**What each term of the flux contributes.** The \\(4t\\) part changes at a constant \\(4\\) Wb/s and on its own would give a **steady** \\(4\\) V. The \\(5t^{2}\\) part changes at \\(10t\\) Wb/s, contributing \\(0\\) V at \\(t = 0\\) and growing without limit. At \\(t = 1\\) s they contribute \\(4\\) V and \\(10\\) V respectively.\n\n**So the emf is NOT constant**, which is why the question has to name an instant:\n\n\\(\\left|\\varepsilon\\right| = 10t + 4\\ \\mathrm{volts}\\)\n\nAt \\(t = 0\\) it would be \\(4\\) V and the current \\(0{\\cdot}29\\) A; at \\(t = 2\\) s, \\(24\\) V and \\(1{\\cdot}7\\) A.\n\n**The minus sign in Faraday's law.** It expresses Lenz's law — the induced current opposes the growth of the flux — and it fixes the **direction** of the current, not its size. The question asks for the magnitude, which is what was computed."
+    },
+    {
+      "hash": "b8b07da2f8b6b12e75b168c8db8b6b2b3439445e4284ddd156f6932cd0e19bb3",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "In an electromagnetic wave travelling in free space, the amplitude of magnetic field is \\(6{\\cdot}0 \\times 10^{-4}\\) T. The amplitude of its electric field is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2 \\times 10^{4}\\ \\mathrm{Vm^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}5 \\times 10^{12}\\ \\mathrm{Vm^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}8 \\times 10^{5}\\ \\mathrm{Vm^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0{\\cdot}3 \\times 10^{4}\\ \\mathrm{Vm^{-1}}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(1{\\cdot}8 \\times 10^{5}\\ \\mathrm{Vm^{-1}}\\).**\n\n**The relation between the field amplitudes.** In an electromagnetic wave in free space,\n\n\\(\\dfrac{E_0}{B_0} = c \\qquad\\Longrightarrow\\qquad E_0 = cB_0\\)\n\n**Substituting.**\n\n\\(E_0 = \\left(3 \\times 10^{8}\\right)\\left(6{\\cdot}0 \\times 10^{-4}\\right)\\)\n\n\\(\\boxed{\\ E_0 = 1{\\cdot}8 \\times 10^{5}\\ \\mathrm{Vm^{-1}}\\ }\\)\n\n**Multiply, do not divide.** Option (A), \\(2 \\times 10^{4}\\), is \\(6{\\cdot}0 \\times 10^{-4}/3 \\times 10^{8}\\) — the ratio taken upside down. Since \\(c\\) is a large number and \\(E_0 = cB_0\\), the electric amplitude must come out **enormously larger** than the magnetic one, and any answer smaller than \\(6 \\times 10^{-4}\\) can be rejected at a glance.\n\n**Where \\(E_0 = cB_0\\) comes from.** Substituting a plane-wave form into Maxwell's equations gives \\(kE_0 = \\omega B_0\\), and since \\(\\omega/k = c\\) the result follows. It is not an empirical relation but a structural one: the two fields of a single wave cannot have independent amplitudes.\n\n**The numbers look lopsided but the two fields are EQUAL PARTNERS.** \\(1{\\cdot}8 \\times 10^{5}\\) V/m against \\(6 \\times 10^{-4}\\) T is a ratio of \\(3 \\times 10^{8}\\) — yet the energy densities of the two fields are exactly **equal**:\n\n\\(u_E = \\dfrac{1}{2}\\varepsilon_0E^{2}, \\qquad u_B = \\dfrac{B^{2}}{2\\mu_0}\\)\n\nand putting \\(E = cB\\) with \\(c^{2} = 1/\\mu_0\\varepsilon_0\\) turns the first into the second. The wave carries half its energy in each field at every instant. **The disparity in the numbers is entirely an artefact of the SI units** — the volt per metre and the tesla are defined on scales that differ by about \\(c\\) — and says nothing physical.\n\n**Orientation on the size.** \\(6 \\times 10^{-4}\\) T is about ten times the Earth's magnetic field, and the accompanying \\(1{\\cdot}8 \\times 10^{5}\\) V/m is a very intense wave — the field in full sunlight is around \\(10^{3}\\) V/m. Its intensity would be\n\n\\(I = \\dfrac{1}{2}\\varepsilon_0cE_0^{2} \\approx 4{\\cdot}3 \\times 10^{7}\\ \\mathrm{W\\,m^{-2}}\\)\n\nsome thirty thousand times the solar constant, which is laser territory.\n\n**And \\(E\\) and \\(B\\) stay in step.** They reach their maxima together and vanish together, with \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of travel mutually perpendicular and right-handed."
+    },
+    {
+      "hash": "0ba6f154d18e139ce28fe94847fc04dd7e7b075fffa8a5b04e24cad23a39cc2d",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In Young's double slit experiment, the screen is moved 30 cm towards the slits. As a consequence, the fringe width of the pattern changes by \\(0{\\cdot}09\\) mm. If the slits separation used is 2 mm, calculate the wavelength of light used in the experiment.",
+      "solution": "**Fringe width depends on the screen distance.**\n\n\\(\\beta = \\dfrac{\\lambda D}{d}\\)\n\nso if \\(D\\) changes by \\(\\Delta D\\) with \\(\\lambda\\) and \\(d\\) fixed,\n\n\\(\\Delta\\beta = \\dfrac{\\lambda\\,\\Delta D}{d}\\)\n\n**The \\(D\\) drops out of the problem entirely** — only its **change** matters, which is why the question never says how far the screen was to begin with. Taking the difference of the two fringe-width expressions is what removes it:\n\n\\(\\beta_1 - \\beta_2 = \\dfrac{\\lambda}{d}\\left(D_1 - D_2\\right)\\)\n\n**Rearranging for the wavelength.**\n\n\\(\\lambda = \\dfrac{\\Delta\\beta \\cdot d}{\\Delta D}\\)\n\n**Substituting**, with every quantity in metres:\n\n\\(\\Delta\\beta = 0{\\cdot}09\\ \\mathrm{mm} = 9 \\times 10^{-5}\\ \\mathrm{m}\\)\n\n\\(d = 2\\ \\mathrm{mm} = 2 \\times 10^{-3}\\ \\mathrm{m}\\)\n\n\\(\\Delta D = 30\\ \\mathrm{cm} = 30 \\times 10^{-2}\\ \\mathrm{m}\\)\n\n\\(\\lambda = \\dfrac{\\left(9 \\times 10^{-5}\\right)\\left(2 \\times 10^{-3}\\right)}{30 \\times 10^{-2}} = \\dfrac{1{\\cdot}8 \\times 10^{-7}}{0{\\cdot}3}\\)\n\n\\(\\boxed{\\ \\lambda = 6 \\times 10^{-7}\\ \\mathrm{m} = 600\\ \\mathrm{nm}\\ }\\)\n\n**Three different units in one question**, and all three must be converted before anything is combined. Mixing millimetres with centimetres here would be wrong by a factor of ten, and it is the only real hazard in the calculation.\n\n**Check the direction of the change.** The screen moves **towards** the slits, so \\(D\\) **decreases**; since \\(\\beta \\propto D\\), the fringe width decreases too. The question says the width \"changes by\" \\(0{\\cdot}09\\) mm without a sign, and treating both changes as magnitudes — as done above — keeps \\(\\lambda\\) positive, as it must be.\n\n**Orientation.** \\(600\\) nm is orange-red light, and its fringe width at, say, \\(D = 1\\) m would be\n\n\\(\\beta = \\dfrac{600 \\times 10^{-9} \\times 1}{2 \\times 10^{-3}} = 0{\\cdot}3\\ \\mathrm{mm}\\)\n\nSo moving the screen \\(30\\) cm alters each fringe by \\(0{\\cdot}09\\) mm — under a third of a fringe width, but readily measurable with a travelling microscope.\n\n**Why measuring a CHANGE is the better experiment.** Determining \\(\\beta\\) and \\(D\\) absolutely requires locating the slits and the screen precisely; measuring how much \\(\\beta\\) shifts when the screen is displaced a known amount needs only a **relative** measurement, and the systematic errors in locating the origin cancel out. This is the standard laboratory method for finding \\(\\lambda\\)."
+    },
+    {
+      "hash": "cf20514f8af0156899e024618177dc14a5b279d5973c957a63456b14071a8544",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The two surfaces of a biconvex lens are of radius of curvature 'R' each. Obtain the condition under which its focal length 'f' be equal to 'R'. If one of the two surfaces of this lens is made plane, what will be the new focal length of the lens ?",
+      "solution": "**Part 1 — the condition for \\(f = R\\).**\n\nThe lens-maker's formula for a **biconvex** lens with both radii equal to \\(R\\):\n\n\\(R_1 = +R, \\qquad R_2 = -R\\)\n\n\\(\\dfrac{1}{f} = \\left(n - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right) = \\left(n - 1\\right)\\left(\\dfrac{1}{R} + \\dfrac{1}{R}\\right) = \\dfrac{2\\left(n - 1\\right)}{R}\\)\n\n**The sign of \\(R_2\\) is the step to get right.** The second surface bulges **away** from the incoming light, so its centre of curvature lies on the incoming side and \\(R_2\\) is negative. That is what turns the subtraction into an addition and produces the factor \\(2\\).\n\n**Now impose \\(f = R\\):**\n\n\\(\\dfrac{1}{R} = \\dfrac{2\\left(n - 1\\right)}{R} \\qquad\\Longrightarrow\\qquad 2\\left(n - 1\\right) = 1\\)\n\n\\(\\boxed{\\ n = \\dfrac{3}{2} = 1{\\cdot}5\\ }\\)\n\n**The \\(R\\) cancels entirely**, so the condition is on the **material alone** — no particular radius is required. A biconvex lens of ordinary crown glass \\(\\left(n \\approx 1{\\cdot}5\\right)\\) has a focal length equal to its radius of curvature whatever that radius is, which is a useful fact to carry.\n\n**Part 2 — one surface made plane.**\n\nThe lens becomes **plano-convex**: \\(R_1 = R\\), \\(R_2 = \\infty\\).\n\n\\(\\dfrac{1}{f'} = \\left(n - 1\\right)\\left(\\dfrac{1}{R} - \\dfrac{1}{\\infty}\\right) = \\dfrac{n - 1}{R} = \\dfrac{0{\\cdot}5}{R}\\)\n\n\\(\\boxed{\\ f' = 2R\\ }\\)\n\n**So the focal length DOUBLES.** Flattening one face removes exactly half the lens's power, because each curved surface was contributing equally:\n\n\\(\\dfrac{1}{f'} = \\dfrac{1}{2}\\cdot\\dfrac{1}{f} \\qquad\\Longrightarrow\\qquad f' = 2f = 2R\\)\n\n**Why a plane face contributes nothing.** With \\(R_2 = \\infty\\) the term \\(1/R_2\\) vanishes: a flat surface has no curvature, so parallel rays striking it are all refracted identically and none is bent towards the axis relative to another. All the focusing of a plano-convex lens is done by its one curved face.\n\n**The general relation this establishes.** A plano-convex lens has **twice** the focal length — half the power — of a biconvex lens of the same material and the same radius. That is worth remembering, since the two are so often compared.\n\n**A note on which way the plano-convex lens faces.** The formula gives \\(f' = 2R\\) whichever face the light meets first, since \\(R_1 = R,\\ R_2 = \\infty\\) and \\(R_1 = \\infty,\\ R_2 = -R\\) both give \\(\\left(n-1\\right)/R\\). The focal length is the same either way, though the **aberrations** are not — which is why a plano-convex lens is conventionally mounted with its curved face towards the parallel beam."
+    },
+    {
+      "hash": "ba17a4a682c590fc96495193a82bcda3f02c8988440d4d0624669920f003271a",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "In Bohr's model of hydrogen atom, find the percentage change in the radius of its orbit when an electron makes a transition from n = 3 state to n = 2 state.",
+      "solution": "**The Bohr radius relation.**\n\n\\(r_n = n^{2}a_0 \\qquad\\text{with}\\qquad a_0 = 0{\\cdot}53\\ \\mathring{\\mathrm{A}}\\)\n\nso\n\n\\(r_3 = 9a_0, \\qquad r_2 = 4a_0\\)\n\n**The percentage change**, measured against the **initial** radius since the electron starts at \\(n = 3\\):\n\n\\(\\text{\\% change} = \\dfrac{r_2 - r_3}{r_3} \\times 100 = \\dfrac{4a_0 - 9a_0}{9a_0} \\times 100\\)\n\n**The Bohr radius cancels**, so its numerical value is never needed — the whole question is \\(4\\) against \\(9\\):\n\n\\(= -\\dfrac{5}{9} \\times 100\\)\n\n\\(\\boxed{\\ \\text{The radius DECREASES by } 55{\\cdot}55\\%\\ }\\)\n\n**The sign is the physics.** Moving from \\(n = 3\\) to \\(n = 2\\) takes the electron **inwards**, so the radius falls — and it falls by more than half. Writing the change as \\(r_{\\text{final}} - r_{\\text{initial}}\\) in a fixed order makes the minus sign appear by itself rather than having to be remembered.\n\n**Which radius goes in the DENOMINATOR matters.** A percentage change is always reckoned against the **starting** value, here \\(r_3 = 9a_0\\), giving \\(5/9 = 55{\\cdot}55\\%\\). Dividing by \\(r_2 = 4a_0\\) instead would give \\(125\\%\\) — the percentage by which the radius would **increase** on the reverse journey \\(2 \\to 3\\). The same physical change gives two different percentages depending on the direction, which is a general feature of percentages and a common source of error.\n\n**The actual sizes**, for orientation:\n\n\\(r_3 = 9 \\times 0{\\cdot}53 = 4{\\cdot}77\\ \\mathring{\\mathrm{A}}, \\qquad r_2 = 4 \\times 0{\\cdot}53 = 2{\\cdot}12\\ \\mathring{\\mathrm{A}}\\)\n\na drop of \\(2{\\cdot}65\\ \\mathring{\\mathrm{A}}\\).\n\n**What happens to the energy at the same time.** Radius goes as \\(n^{2}\\) while energy goes as \\(-1/n^{2}\\), so as the electron falls inwards it also becomes **more tightly bound**: \\(-1{\\cdot}51\\) eV to \\(-3{\\cdot}40\\) eV. The \\(1{\\cdot}89\\) eV released leaves as a single photon of wavelength \\(1240/1{\\cdot}89 \\approx 656\\) nm — the red **H-alpha** line, the brightest visible line of hydrogen and the first member of the Balmer series.\n\n**Why the orbits spread out so fast.** With \\(r \\propto n^{2}\\), the \\(n = 10\\) orbit is a **hundred** times the first. The energies, meanwhile, crowd together towards zero, so large orbits are both enormous and weakly bound — which is why a highly excited atom is so easily ionised."
+    },
+    {
+      "hash": "f4696d3c0366196a0273192a992ed2788818af9b7d08f372a838b00f5141af68",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force Between Parallel Currents",
+      "stem": "(a) In which cases does a charged particle not experience a force in a magnetic field ?\n(b) A square loop MNPK of side '\\(l\\)' carrying a current '\\(I_2\\)' is kept close to a long straight wire in the same plane and the wire carries a steady current \\(I_1\\) as shown in the figure. Obtain the magnitude of magnetic force exerted by the wire on the loop.",
+      "figureNote": "REQUIRED for sub-part (b) — the stem gives the side of the loop but never states how far the loop is from the wire, and the net force depends entirely on that separation. Read off this paper's own page: a horizontal straight wire across the top carrying \\(I_1\\) to the right; below it a square with its corners labelled M (top-left), N (top-right), P (bottom-right) and K (bottom-left), the loop current \\(I_2\\) arrowed M→N→P→K; a vertical double-headed arrow labelled \\(l\\) measuring from the wire down to side MN, and a horizontal arrow labelled \\(l\\) measuring the side KP. Page idx 14.",
+      "imageAttached": false,
+      "solution": "**(a) When does a charged particle feel NO force in a magnetic field?**\n\n\\(\\vec{F} = q\\left(\\vec{v}\\times\\vec{B}\\right) \\qquad\\Longrightarrow\\qquad F = qvB\\sin\\theta\\)\n\nThe force vanishes whenever any factor does, giving **two physically distinct cases**:\n\n**1. The particle is AT REST** \\(\\left(v = 0\\right)\\). A magnetic field acts only on **moving** charge — unlike an electric field, which acts on a charge whether it moves or not. This is the sharpest difference between the two fields.\n\n**2. The particle moves PARALLEL (or antiparallel) to the field**, so \\(\\theta = 0^\\circ\\) or \\(180^\\circ\\) and \\(\\sin\\theta = 0\\). The velocity has no component across the field lines, so there is nothing for the field to act on, and the particle sails straight through undeflected.\n\n*(A third case is trivial: an uncharged particle, \\(q = 0\\).)*\n\n**A related fact worth adding.** Even when the force is **not** zero it does **no work**, because it is always perpendicular to \\(\\vec{v}\\). So a magnetic field can never change a particle's **speed** or kinetic energy — only its direction.\n\n**(b) The force on the square loop.**\n\n**The geometry.** The near side \\(MN\\) lies a distance \\(l\\) from the wire; the loop has side \\(l\\), so the far side \\(KP\\) lies at \\(2l\\).\n\n**Force on \\(MN\\).** From the figure, \\(I_2\\) in \\(MN\\) runs in the **same** direction as \\(I_1\\). Parallel currents **attract**, so this side is pulled **towards** the wire:\n\n\\(F_{MN} = \\dfrac{\\mu_0 I_1I_2}{2\\pi\\left(l\\right)}\\times l = \\dfrac{\\mu_0 I_1I_2}{2\\pi}\\)\n\n**Force on \\(KP\\).** Here \\(I_2\\) runs **opposite** to \\(I_1\\). Antiparallel currents **repel**, so this side is pushed **away** from the wire:\n\n\\(F_{KP} = \\dfrac{\\mu_0 I_1I_2}{2\\pi\\left(2l\\right)}\\times l = \\dfrac{\\mu_0 I_1I_2}{4\\pi}\\)\n\n**The sides \\(NP\\) and \\(KM\\) contribute NOTHING to the net force.** They are perpendicular to the wire, so each lies in a field that varies along its length — but the two carry current in **opposite** senses through identical field distributions, so their forces are equal and opposite and cancel exactly.\n\n**The net force.** \\(F_{MN}\\) and \\(F_{KP}\\) are opposite in direction, so they subtract:\n\n\\(F = F_{MN} - F_{KP} = \\dfrac{\\mu_0 I_1I_2}{2\\pi} - \\dfrac{\\mu_0 I_1I_2}{4\\pi}\\)\n\n\\(\\boxed{\\ F = \\dfrac{\\mu_0 I_1I_2}{4\\pi}, \\ \\text{directed TOWARDS the wire}\\ }\\)\n\n**The near side always wins**, and that is the general result. The attraction on \\(MN\\) and the repulsion on \\(KP\\) have the same form, but \\(MN\\) sits **closer**, where the wire's \\(1/r\\) field is stronger. So a current loop near a straight wire is always drawn towards it when the near side carries current the same way — whatever the loop's size.\n\n**Note what has vanished from the answer: \\(l\\) itself.** With the loop's distance from the wire equal to its own side, the length in the numerator cancels against the distance in the denominator, leaving a force independent of the scale of the arrangement. The general expression\n\n\\(F = \\dfrac{\\mu_0 I_1I_2 l}{2\\pi}\\left[\\dfrac{1}{d} - \\dfrac{1}{d + l}\\right] = \\dfrac{\\mu_0I_1I_2l^{2}}{2\\pi d\\left(d + l\\right)}\\)\n\nreduces to \\(\\mu_0I_1I_2/4\\pi\\) only in this special case \\(d = l\\)."
+    },
+    {
+      "hash": "774d54408bd9a7057594d5a4d14606b08fb55fd218ee959b081ab551cd4b3d61",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "(a) Obtain an expression for the self-inductance of a long solenoid of length '\\(l\\)', cross-sectional area 'A' and having 'N' turns.\n(b) The figure shows the plot of magnitude of induced emf (\\(\\varepsilon\\)) versus the rate of change of current in two coils '1' and '2'. Which coil has greater value of self-inductance and why ?",
+      "figureNote": "REQUIRED for sub-part (b) — the self-inductance is the SLOPE of each plotted line and the stem supplies no values, no equations and no ranking. Read off this paper's own page. Described only as far as the addendum allows: two straight lines through a common origin O, labelled '1' and '2', on axes whose vertical axis is \\(|\\varepsilon|\\) and whose horizontal axis is \\(\\dfrac{dI}{dt}\\); neither axis is ticked or scaled. DELIBERATELY WITHHELD: which of the two lines is the steeper — that comparison IS the answer. Page idx 14.",
+      "imageAttached": false,
+      "solution": "**(a) Self-inductance of a long solenoid.**\n\n**Step 1 — the field inside.** For a long solenoid of \\(N\\) turns over length \\(l\\), carrying current \\(I\\), the field is uniform along the axis:\n\n\\(B = \\mu_0 nI = \\mu_0\\left(\\dfrac{N}{l}\\right)I\\)\n\n**Step 2 — the flux through one turn.** With cross-sectional area \\(A\\) and the field normal to it:\n\n\\(\\phi = BA = \\dfrac{\\mu_0 NIA}{l}\\)\n\n**Step 3 — the total flux LINKAGE.** All \\(N\\) turns link that same flux, so\n\n\\(N\\phi = N\\left(\\dfrac{\\mu_0 NIA}{l}\\right) = \\dfrac{\\mu_0 N^{2}AI}{l}\\)\n\n**Step 4 — the self-inductance**, defined by \\(N\\phi = LI\\):\n\n\\(\\boxed{\\ L = \\dfrac{N\\phi}{I} = \\dfrac{\\mu_0 N^{2}A}{l} = \\mu_0 n^{2}Al\\ }\\)\n\n**The \\(N\\) enters TWICE, which is the point of the derivation.** Once because more turns make a **stronger field**, and again because more turns **link** that field. Hence \\(N^{2}\\), not \\(N\\) — and hence doubling the turns on a fixed length quadruples the inductance.\n\n**Note that \\(L\\) depends only on the geometry** — the turns, the area, the length — and on the medium (through \\(\\mu_0\\), or \\(\\mu_0\\mu_r\\) with a core). The **current cancels**, as it must: self-inductance is a property of the coil, not of what is being passed through it. Inserting an iron core of relative permeability \\(\\mu_r\\) multiplies \\(L\\) by \\(\\mu_r\\), which is why practical inductors are wound on cores.\n\n**(b) Which coil has the greater self-inductance?**\n\n**The relation to read the graph with.**\n\n\\(\\left|\\varepsilon\\right| = L\\left|\\dfrac{dI}{dt}\\right|\\)\n\nThis is \\(y = mx\\) with \\(y = \\left|\\varepsilon\\right|\\), \\(x = \\left|dI/dt\\right|\\) and\n\n\\(\\text{slope} = L\\)\n\n**So the self-inductance IS the slope**, and the two lines through the origin can be compared by steepness alone.\n\n**From the figure, line 1 is the steeper of the two.**\n\n\\(\\boxed{\\ \\text{COIL 1 has the greater self-inductance}\\ }\\)\n\n**The reason, stated plainly:** for the **same** rate of change of current, coil 1 induces a **larger** emf — and that is exactly what a larger \\(L\\) means. Coil 1 opposes changes in its current more strongly.\n\n**Why both lines pass through the origin**, which is a check on the graph's correctness. With no change of current there is no induced emf, so the plot must start at \\((0, 0)\\); an intercept would mean an emf induced by a steady current, which cannot happen.\n\n**And why the lines are straight.** \\(L\\) is a **constant** for a given coil, independent of how fast the current is changing. A curved plot would mean a varying inductance, which happens only with a ferromagnetic core driven towards saturation — outside the scope of a linear \\(L\\)."
+    },
+    {
+      "hash": "83d5cf7e6b5158655c0adbaf1be0420d876122c5cf4ded740f965852d1abbe01",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "(a) Write the conditions under which two light waves originating from two coherent sources can interfere each other (i) constructively, and (ii) destructively, in terms of wavelength. Can these be applied for two lights originating from two sodium lamps ? Give reason.\n(b) Monochromatic light of green colour is used in Young's double slit experiment and an interference pattern is observed on a screen. If the green light is replaced by red monochromatic light of the same intensity, how will the fringe width of interference pattern be affected ? Justify your answer.",
+      "solution": "**(a) Conditions for interference, and whether two sodium lamps will do.**\n\n**(i) CONSTRUCTIVE interference.** The two waves must arrive **in phase**, so the path difference must be a whole number of wavelengths:\n\n\\(\\boxed{\\ \\Delta x = n\\lambda, \\qquad n = 0, 1, 2, \\ldots\\ }\\)\n\nequivalently a phase difference of \\(2n\\pi\\). The amplitudes then add, and the intensity at such a point is \\(I_{\\max} = \\left(a_1 + a_2\\right)^{2}\\) — **four times** that of one wave alone when the amplitudes are equal.\n\n**(ii) DESTRUCTIVE interference.** The waves must arrive **out of phase**, so the path difference must be an **odd** number of half-wavelengths:\n\n\\(\\boxed{\\ \\Delta x = \\left(2n - 1\\right)\\dfrac{\\lambda}{2} = \\left(n + \\dfrac{1}{2}\\right)\\lambda\\ }\\)\n\nequivalently a phase difference of \\(\\left(2n-1\\right)\\pi\\). The amplitudes subtract, giving \\(I_{\\min} = \\left(a_1 - a_2\\right)^{2}\\) — **exactly zero** when the amplitudes are equal.\n\n**Can this be applied to two sodium lamps?**\n\n\\(\\boxed{\\ \\text{NO.}\\ }\\)\n\n**The reason: two independent sources cannot be COHERENT.** Light is emitted by atoms in bursts lasting about \\(10^{-8}\\) s, each starting with an entirely **random phase**. Two separate lamps therefore change their relative phase some \\(10^{8}\\) times a second, at random.\n\n**The conditions above are never violated — they are simply never held to.** At each instant some points do satisfy \\(\\Delta x = n\\lambda\\) and are bright; but a moment later the phase relationship has shifted and those same points are dark. The pattern moves far faster than any eye or detector can follow, and what is observed is the **time average**: uniform illumination, with no fringes at all.\n\n*(That both lamps are sodium, and so emit nearly the same wavelength, does not help. Equal frequency is necessary for a stable pattern but not sufficient; a constant phase relationship is what is missing, and independent sources cannot supply it.)*\n\n**How it IS done.** Both beams are derived from a **single** source, so that whatever the phase does, it does in both together. Young's double slit, Fresnel's biprism and Lloyd's mirror are all devices for splitting one wavefront in two.\n\n**(b) Replacing green light with red.**\n\n\\(\\beta = \\dfrac{\\lambda D}{d}\\)\n\nWith \\(D\\) and \\(d\\) unchanged, the fringe width is **directly proportional to the wavelength**. Since\n\n\\(\\lambda_{\\text{red}} \\approx 700\\ \\mathrm{nm} \\; > \\; \\lambda_{\\text{green}} \\approx 550\\ \\mathrm{nm}\\)\n\n\\(\\boxed{\\ \\text{The fringe width INCREASES}\\ }\\)\n\nby roughly \\(700/550 \\approx 1{\\cdot}3\\) times — the fringes spread apart and the pattern becomes coarser.\n\n**Why the equal INTENSITY is irrelevant, and deliberately mentioned.** Intensity governs how **bright** the fringes are, not where they fall. Fringe **position** is fixed by path difference, which depends only on \\(\\lambda\\), \\(D\\) and \\(d\\). Holding the intensity constant isolates the wavelength as the one thing that changed, which is what makes the comparison clean.\n\n**The physical reason the fringes spread.** A bright fringe occurs where the path difference is a whole wavelength. Longer wavelength means a **larger** path difference is needed to reach the next maximum, so one must move further from the centre to find it — and the fringes lie further apart."
+    },
+    {
+      "hash": "f9d62196a1557bbebe1f91e8a71b94d19e7a540178265828ae1fd74cb24c17b6",
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "(i) Two point charges + q and – q are held at (a, 0) and (– a, 0) in x-y plane. Obtain an expression for the net electric field due to the charges at a point (0, y). Hence, find electric field at a far off point (y >> a).\n(ii) Three point charges of – 2 nC, – 1 nC, and + 5 nC are kept at the vertices A, B and C of an equilateral triangle of side \\(0{\\cdot}2\\) m. Find the total amount of work done in shifting the charges from A to \\(A_1\\), B to \\(B_1\\) and C to \\(C_1\\). Here \\(A_1\\), \\(B_1\\) and \\(C_1\\) are the midpoints of sides AB, BC and CA, respectively.",
+      "solution": "**(i) The field on the perpendicular bisector — the equatorial field of a dipole.**\n\n**Setting up.** Charges \\(+q\\) at \\(\\left(a, 0\\right)\\) and \\(-q\\) at \\(\\left(-a, 0\\right)\\); find \\(\\vec{E}\\) at \\(P\\left(0, y\\right)\\). Both charges are the **same distance** from \\(P\\):\n\n\\(r = \\sqrt{a^{2} + y^{2}}\\)\n\nso the two fields have **equal magnitudes**:\n\n\\(E_{+q} = E_{-q} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q}{a^{2} + y^{2}}\\)\n\n**The directions.** \\(\\vec{E}_{+q}\\) points **away** from \\(+q\\) — up and to the left. \\(\\vec{E}_{-q}\\) points **towards** \\(-q\\) — down and to the left.\n\n**Resolving, and this is where the symmetry pays.** Let \\(\\theta\\) be the angle each field makes with the \\(x\\)-axis, so that\n\n\\(\\cos\\theta = \\dfrac{a}{\\sqrt{a^{2} + y^{2}}}\\)\n\n**The \\(y\\)-components are equal and opposite and CANCEL exactly** — one field points up, the other down, by symmetry.\n\n**The \\(x\\)-components are equal and both point along \\(-\\hat{x}\\), so they ADD:**\n\n\\(E = 2E_{+q}\\cos\\theta = 2\\cdot\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q}{a^{2} + y^{2}}\\cdot\\dfrac{a}{\\sqrt{a^{2} + y^{2}}}\\)\n\n\\(\\boxed{\\ \\vec{E} = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{2qa}{\\left(a^{2} + y^{2}\\right)^{3/2}}\\ \\hat{p}\\ }\\)\n\nwhere \\(\\hat{p}\\) is the unit vector along the dipole moment, which points from \\(-q\\) to \\(+q\\), that is along \\(+\\hat{x}\\).\n\n**The field is ANTIPARALLEL to the dipole moment.** That minus sign is the characteristic feature of the equatorial field, and it contrasts with the **axial** field, which is parallel to \\(\\vec{p}\\) and twice as large at the same distance.\n\n**Writing it with \\(p = q\\left(2a\\right)\\):**\n\n\\(\\vec{E} = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\vec{p}}{\\left(a^{2} + y^{2}\\right)^{3/2}}\\)\n\n**At a far-off point \\(\\left(y \\gg a\\right)\\).** Then \\(a^{2}\\) is negligible beside \\(y^{2}\\) and \\(\\left(a^{2} + y^{2}\\right)^{3/2} \\to y^{3}\\):\n\n\\(\\boxed{\\ \\vec{E} = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{p}{y^{3}}\\,\\hat{p} = -\\dfrac{2qa}{4\\pi\\varepsilon_0 y^{3}}\\hat{p}\\ }\\)\n\n**The \\(1/y^{3}\\) is the signature of a dipole**, and it falls off far faster than a single charge's \\(1/y^{2}\\). The reason is the near-cancellation: at large distances the two charges almost exactly annul each other, and what survives is only the small residue arising from their separation. A dipole is, from far enough away, nearly invisible.\n\n**(ii) Work done in shifting the three charges.**\n\n**The initial configuration.** Charges \\(q_A = -2\\) nC, \\(q_B = -1\\) nC, \\(q_C = +5\\) nC at the vertices of an equilateral triangle of side \\(0{\\cdot}2\\) m. All three separations are \\(0{\\cdot}2\\) m:\n\n\\(U_i = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{1}{0{\\cdot}2}\\left[q_Aq_B + q_Bq_C + q_Cq_A\\right]\\)\n\n**Evaluate the bracket**, in units of \\(\\left(\\mathrm{nC}\\right)^{2} = 10^{-18}\\ \\mathrm{C^{2}}\\):\n\n\\(\\left(-2\\right)\\left(-1\\right) + \\left(-1\\right)\\left(5\\right) + \\left(5\\right)\\left(-2\\right) = 2 - 5 - 10 = -13\\)\n\n\\(U_i = \\dfrac{9 \\times 10^{9}}{0{\\cdot}2}\\left(-13 \\times 10^{-18}\\right) = -5{\\cdot}85 \\times 10^{-7}\\ \\mathrm{J}\\)\n\n**The final configuration.** \\(A_1\\), \\(B_1\\), \\(C_1\\) are the midpoints of the sides, and they form the **medial triangle** — equilateral with side exactly **half** the original:\n\n\\(A_1B_1 = B_1C_1 = C_1A_1 = 0{\\cdot}1\\ \\mathrm{m}\\)\n\n**That halving is the whole geometry of the problem.** Since the charges keep their pairings and only the common separation changes, the same bracket applies with \\(0{\\cdot}2\\) replaced by \\(0{\\cdot}1\\):\n\n\\(U_f = \\dfrac{9 \\times 10^{9}}{0{\\cdot}1}\\left(-13 \\times 10^{-18}\\right) = -11{\\cdot}7 \\times 10^{-7}\\ \\mathrm{J}\\)\n\n**The work done.**\n\n\\(W = U_f - U_i = \\left(-11{\\cdot}7 \\times 10^{-7}\\right) - \\left(-5{\\cdot}85 \\times 10^{-7}\\right)\\)\n\n\\(\\boxed{\\ W = -5{\\cdot}85 \\times 10^{-7}\\ \\mathrm{J}\\ }\\)\n\n**The NEGATIVE sign means no external work is required — the field does the work.** The system's potential energy **falls**, so the charges would move to the new positions of their own accord if released; an external agent would in fact have to restrain them, and could extract \\(0{\\cdot}585\\ \\mu\\)J in the process.\n\n**Why the energy falls despite two of the three pairs being repulsive.** The bracket is **negative** \\(\\left(-13\\right)\\): the large \\(+5\\) nC charge is attracted to **both** negative charges, and those two attractions \\(\\left(-5\\ \\text{and}\\ -10\\right)\\) outweigh the single repulsion between the two negatives \\(\\left(+2\\right)\\). Halving every distance simply doubles an already-negative energy, making it more negative still.\n\n**A check on the structure of the answer.** Since \\(U \\propto 1/r\\) and every distance halves, \\(U_f = 2U_i\\) exactly — so \\(W = U_f - U_i = U_i\\). That the work equals the initial energy is not a coincidence but a consequence of the factor of two, and it is why \\(-5{\\cdot}85 \\times 10^{-7}\\) J appears twice above."
+    },
+    {
+      "hash": "b5f06a744db67c85eb2451eb365f00820a83acb525277b0eceb80f74d658c777",
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "(i) Show that Gauss's theorem is consistent with Coulomb's law. Using it, derive an expression for the electric field due to a uniformly charged thin spherical shell of radius r at a point at a distance y from the centre of the shell such that (I) \\(y > r\\), and (II) \\(y < r\\).\n(ii) A point charge of \\(+2\\) nC is kept at the origin of a three-dimensional coordinate system. Find the type and magnitude of the charge which should be kept at (0, 0, – 6m) so that the potential due to the system becomes zero at (0, 0, 2m).",
+      "solution": "**(i) Gauss's theorem and Coulomb's law.**\n\n**Showing they are consistent.** Take an isolated point charge \\(q\\) and surround it with a **spherical** Gaussian surface of radius \\(r\\) centred on it. By symmetry \\(\\vec{E}\\) is radial and of the same magnitude everywhere on that surface, so\n\n\\(\\oint\\vec{E}\\cdot d\\vec{S} = E\\left(4\\pi r^{2}\\right)\\)\n\nGauss's theorem sets this equal to \\(q/\\varepsilon_0\\):\n\n\\(E\\left(4\\pi r^{2}\\right) = \\dfrac{q}{\\varepsilon_0} \\qquad\\Longrightarrow\\qquad E = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q}{r^{2}}\\)\n\nand the force on a test charge \\(q_0\\) placed there is\n\n\\(F = q_0E = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qq_0}{r^{2}}\\)\n\nwhich is **Coulomb's law**. The two are consistent.\n\n**The deeper connection.** The \\(4\\pi r^{2}\\) in Gauss's theorem is the **area of a sphere**, and it is what produces the \\(r^{2}\\) in the denominator. Gauss's theorem holds *because* the force is inverse-square; had the force gone as \\(1/r^{3}\\), the flux through a sphere would depend on its radius and the theorem would fail. **The inverse-square law and Gauss's theorem are two statements of the same fact.**\n\n**Field due to a uniformly charged thin spherical shell of radius \\(r\\), charge \\(q\\).**\n\n**(I) Outside the shell, \\(y > r\\).**\n\nTake a concentric spherical Gaussian surface of radius \\(y\\). By symmetry \\(\\vec{E}\\) is radial and uniform over it, and it encloses the **whole** charge \\(q = \\sigma\\left(4\\pi r^{2}\\right)\\):\n\n\\(E\\left(4\\pi y^{2}\\right) = \\dfrac{q}{\\varepsilon_0}\\)\n\n\\(\\boxed{\\ \\vec{E} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q}{y^{2}}\\,\\hat{r} \\qquad \\left(y > r\\right)\\ }\\)\n\n**From outside, the shell behaves EXACTLY like a point charge \\(q\\) at its centre.** Nothing about its radius appears in the result.\n\n**(II) Inside the shell, \\(y < r\\).**\n\nTake a concentric Gaussian surface of radius \\(y < r\\). All the charge lies on the shell, **outside** this surface, so it encloses **nothing**:\n\n\\(E\\left(4\\pi y^{2}\\right) = \\dfrac{0}{\\varepsilon_0} = 0\\)\n\n\\(\\boxed{\\ \\vec{E} = 0 \\qquad \\left(y < r\\right)\\ }\\)\n\n**The field vanishes everywhere inside, not merely at the centre.** Symmetry would explain a zero at the centre; Gauss's theorem shows it at **every** interior point — the pull of the nearer part of the shell is exactly cancelled by the greater but more distant remainder, and it is the inverse-square law that makes the cancellation exact.\n\n**The consequence: the interior is an equipotential.** With \\(E = 0\\) throughout, no work is needed to move a charge about inside, so \\(V\\) is **constant** there and equals its surface value \\(q/4\\pi\\varepsilon_0 r\\). This is the basis of electrostatic shielding.\n\n**(ii) The charge needed to make the potential vanish.**\n\n**Setting up.** A charge \\(+2\\) nC sits at the origin \\(O\\). A charge \\(q\\) is to be placed at \\(A\\left(0, 0, -6\\right)\\) so that the potential at \\(B\\left(0, 0, 2\\right)\\) is zero.\n\n**The two distances**, both measured along the \\(z\\)-axis:\n\n\\(OB = \\left|2 - 0\\right| = 2\\ \\mathrm{m}\\)\n\n\\(AB = \\left|2 - \\left(-6\\right)\\right| = 8\\ \\mathrm{m}\\)\n\n**The \\(8\\) m is where care is needed** — \\(A\\) and \\(B\\) lie on **opposite sides** of the origin, so the distances add rather than subtract.\n\n**Potential is a SCALAR, so the two contributions simply add:**\n\n\\(V_B = \\dfrac{1}{4\\pi\\varepsilon_0}\\left[\\dfrac{2 \\times 10^{-9}}{2} + \\dfrac{q}{8}\\right] = 0\\)\n\nThe factor \\(1/4\\pi\\varepsilon_0\\) is non-zero, so the bracket must vanish:\n\n\\(10^{-9} + \\dfrac{q}{8} = 0\\)\n\n\\(q = -8 \\times 10^{-9}\\ \\mathrm{C}\\)\n\n\\(\\boxed{\\ \\text{A NEGATIVE charge of magnitude } 8\\ \\mathrm{nC}\\ }\\)\n\n**Why it must be negative, before any arithmetic.** The \\(+2\\) nC charge makes \\(V_B\\) positive, and only a **negative** charge can bring the total to zero. A positive charge, however placed, could only increase it.\n\n**Why 8 nC and not 2 nC.** The second charge is **four times further** from \\(B\\) \\(\\left(8\\ \\mathrm{m}\\ \\text{against}\\ 2\\ \\mathrm{m}\\right)\\), and potential falls as \\(1/r\\), so it must be **four times larger** to have an equal effect. The ratio of the charges matches the ratio of the distances exactly — a relation that holds only for potential, never for field.\n\n**A warning about the difference.** At this same point the **field** would not vanish: field contributions go as \\(1/r^{2}\\) and are **vectors**, so zero potential and zero field are quite different conditions and generally occur at different places. Here the two fields both point along \\(+z\\) at \\(B\\) — away from the positive charge and towards the negative one — so they add rather than cancel, and \\(\\vec{E}_B \\ne 0\\) even though \\(V_B = 0\\)."
+    }
+  ]
+}
