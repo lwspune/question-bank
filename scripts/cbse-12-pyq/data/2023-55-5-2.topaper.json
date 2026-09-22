@@ -1,0 +1,238 @@
+{
+  "paper": "55/5/2",
+  "year": 2023,
+  "paperId": "2023-55-5-2",
+  "markingScheme": "out/2023-55-5-2/ms/p00.png … p21.png",
+  "rows": [
+    {
+      "hash": "d4bcdb6b9ed2f551a24b907af58f87e320f74654c06afb8f3c5c383e0472ef70",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Flux and Gauss's Law",
+      "stem": "A charge Q is placed at the centre of a cube. The electric flux through one if its face is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{Q}{\\varepsilon_0}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{Q}{6\\varepsilon_0}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{Q}{8\\varepsilon_0}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{Q}{3\\varepsilon_0}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{Q}{6\\varepsilon_0}\\).**\n\n**Gauss's law first.** The total flux through any closed surface enclosing a charge \\(Q\\) is\n\n\\(\\phi_{\\text{total}} = \\dfrac{Q}{\\varepsilon_0}\\)\n\nand it does not matter what shape the surface is — cube, sphere or something irregular. That is the whole content of Gauss's law.\n\n**Then symmetry.** A cube has **six** identical faces, and the charge sits at the exact centre, so no face is distinguishable from any other. The total flux must therefore divide equally among them:\n\n\\(\\phi_{\\text{one face}} = \\dfrac{1}{6} \\times \\dfrac{Q}{\\varepsilon_0} = \\dfrac{Q}{6\\varepsilon_0}\\)\n\n**Why this is a one-line problem and not an integral.** Computing \\(\\int\\vec{E}\\cdot d\\vec{S}\\) over a single square face with a point charge at its centre is genuinely unpleasant — the field is neither constant nor perpendicular across it. The symmetry argument sidesteps the integral entirely, and it is exact rather than approximate.\n\n**The condition that makes it work.** The charge must be at the **centre**. Move it off-centre and the six fluxes become unequal, though they still sum to \\(Q/\\varepsilon_0\\). Move it *outside* the cube and the total flux drops to **zero**, since every line entering also leaves.\n\n**A related result worth recognising.** Put the charge at a **corner** of a cube instead. It is then shared between eight cubes, so only \\(Q/8\\varepsilon_0\\) passes through this one; and of that cube's six faces, the three touching the corner receive nothing (the field is parallel to them), so each of the other three carries \\(Q/24\\varepsilon_0\\). The distractor \\(Q/8\\varepsilon_0\\) in this question is exactly that neighbouring problem, offered to catch a half-remembered result."
+    },
+    {
+      "hash": "ff54ca7e332ce1c9224dde88c34e9c9a38c199d925c8d95ad58b78d7f453d1ae",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Choose the correct option related to wavelengths (\\(\\lambda\\)) of different parts of electromagnetic spectrum.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\lambda_{\\text{x-rays}} < \\lambda_{\\text{micro waves}} < \\lambda_{\\text{radio waves}} < \\lambda_{\\text{visible}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\lambda_{\\text{visible}} > \\lambda_{\\text{x-rays}} > \\lambda_{\\text{radio waves}} > \\lambda_{\\text{micro waves}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\lambda_{\\text{radio wave}} > \\lambda_{\\text{micro waves}} > \\lambda_{\\text{visible}} > \\lambda_{\\text{x-rays}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\lambda_{\\text{visible}} < \\lambda_{\\text{micro waves}} < \\lambda_{\\text{radio waves}} < \\lambda_{\\text{x-rays}}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\lambda_{\\text{radio}} > \\lambda_{\\text{microwave}} > \\lambda_{\\text{visible}} > \\lambda_{\\text{X-ray}}\\).**\n\n**The spectrum in order of increasing wavelength** (and therefore decreasing frequency and photon energy):\n\n| Region | Typical wavelength |\n|---|---|\n| Gamma rays | \\(< 10^{-12}\\) m |\n| **X-rays** | \\(10^{-12}\\) to \\(10^{-8}\\) m |\n| Ultraviolet | \\(10^{-8}\\) to \\(4 \\times 10^{-7}\\) m |\n| **Visible** | \\(4 \\times 10^{-7}\\) to \\(7 \\times 10^{-7}\\) m |\n| Infrared | \\(7 \\times 10^{-7}\\) to \\(10^{-3}\\) m |\n| **Microwaves** | \\(10^{-3}\\) to \\(0{\\cdot}3\\) m |\n| **Radio waves** | \\(> 0{\\cdot}1\\) m, up to kilometres |\n\nSo the four named regions run **radio (longest) → microwave → visible → X-ray (shortest)**, which is option (C).\n\n**A way to check the order without memorising numbers.** Photon energy \\(E = hc/\\lambda\\) runs *opposite* to wavelength, and the escalating effect on matter fixes the sequence: radio waves barely interact; microwaves set molecules **rotating**; infrared sets them **vibrating**, which we feel as heat; visible and ultraviolet excite **electrons**; X-rays and gamma rays **ionise** atoms. Order the four by how violently they act on matter and you have ordered them by energy — and hence, inversely, by wavelength.\n\n**The other three options each invert something.** Two place visible light at the long-wavelength extreme, which would make it longer than radio waves; the remaining one puts X-rays at the long end. A single anchor — *X-rays are the shortest of these four and radio waves the longest* — eliminates all three at once, without checking the middle terms."
+    },
+    {
+      "hash": "ce974787bf6270eeb41d4d22bb33fb742bb5a9c26f02848817773b8777e943dd",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Figure shows a plot of stopping potential (\\(\\mathrm{V}_0\\)) versus \\(\\dfrac{1}{\\lambda}\\), where \\(\\lambda\\) is the wavelength of the radiation causing photoelectric emission from a surface. The slope of the line is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\phi_0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{h}{e}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{hc}{e}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{h^2c}{e^2}\\)"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "ILLUSTRATIVE — the stem itself states everything the answer needs (that the plot is stopping potential against 1/lambda, and that its slope is wanted), so the row is answerable from text alone; the drawing carries no numeric data at all. Described here: axes with the vertical one labelled \\(\\mathrm{V}_0\\) and the horizontal one labelled \\(1/\\lambda\\), both arrowed, with a single straight line rising to the right from a point B on the horizontal axis to a point A near the top; neither axis carries tick values. Classified ILLUSTRATIVE rather than REQUIRED deliberately: nothing about the graph discriminates between the four options, which are algebraic expressions, so there is no directed quantity to withhold. Page idx 6.",
+      "imageAttached": false,
+      "solution": "**The answer is (C): \\(\\dfrac{hc}{e}\\).**\n\n**Derive the equation of the line.** Einstein's photoelectric equation, with the stopping potential standing in for the maximum kinetic energy:\n\n\\(eV_0 = h\\nu - \\phi_0 = \\dfrac{hc}{\\lambda} - \\phi_0\\)\n\nDivide through by \\(e\\) to isolate \\(V_0\\):\n\n\\(V_0 = \\dfrac{hc}{e}\\left(\\dfrac{1}{\\lambda}\\right) - \\dfrac{\\phi_0}{e}\\)\n\n**Compare with \\(y = mx + c\\).** Plotting \\(V_0\\) against \\(\\dfrac{1}{\\lambda}\\), this is a **straight line** with\n\n\\(\\text{slope} = \\dfrac{hc}{e} \\qquad\\text{and}\\qquad \\text{intercept on the } V_0\\text{-axis} = -\\dfrac{\\phi_0}{e}\\)\n\n**Why the graph is drawn against \\(1/\\lambda\\) rather than \\(\\lambda\\).** Against \\(\\lambda\\) the relation is a curve, from which nothing can be read reliably by eye. Against \\(1/\\lambda\\) it is straight, and a straight line gives up two constants at once — which is the point of the experiment.\n\n**What each feature measures.** The slope contains **only fundamental constants** — \\(h\\), \\(c\\) and \\(e\\) — and no property of the metal whatever. So *every* photosensitive surface gives a line of the **same slope**, \\(hc/e \\approx 1{\\cdot}24 \\times 10^{-6}\\ \\mathrm{V\\,m}\\); changing the metal shifts the line up or down but never tilts it. Millikan used exactly this to measure \\(h\\), and it remains one of the cleanest determinations of Planck's constant.\n\nThe **intercepts**, by contrast, are where the metal shows itself. The point B at which the line crosses the horizontal axis is \\(1/\\lambda_0\\), the reciprocal threshold wavelength, and the vertical intercept \\(-\\phi_0/e\\) gives the work function directly.\n\n**The distractors, quickly.** \\(\\phi_0\\) is the *intercept*, not the slope, and is an energy rather than the volts-metres a slope must have. \\(h/e\\) would be the slope of \\(V_0\\) against **frequency** — a different, equally common plot, and the trap this question is built on. \\(h^{2}c/e^{2}\\) has no physical meaning here."
+    },
+    {
+      "hash": "5db8b557e0fa6ec4ab12ee0511fe49f0768ae5e4403833fb4c4951e16c991e64",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "An ideal inductor is connected across an AC source of voltage. The current in the circuit",
+      "options": [
+        {
+          "label": "A",
+          "text": "is ahead of the voltage in phase by \\(\\pi\\)."
+        },
+        {
+          "label": "B",
+          "text": "lags voltage in phase by \\(\\pi\\)."
+        },
+        {
+          "label": "C",
+          "text": "is ahead of voltage in phase by \\(\\pi/2\\)."
+        },
+        {
+          "label": "D",
+          "text": "lags voltage in phase by \\(\\pi/2\\)."
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): the current lags the voltage in phase by \\(\\pi/2\\).**\n\n**Why an inductor delays the current.** The defining relation is\n\n\\(V = L\\dfrac{di}{dt}\\)\n\nso the applied voltage is proportional not to the current but to its **rate of change**. With \\(V = V_0\\sin\\omega t\\), integrating gives\n\n\\(i = \\dfrac{V_0}{\\omega L}\\int\\sin\\omega t\\,dt = -\\dfrac{V_0}{\\omega L}\\cos\\omega t = \\dfrac{V_0}{\\omega L}\\sin\\left(\\omega t - \\dfrac{\\pi}{2}\\right)\\)\n\nThe current carries \\(\\left(\\omega t - \\dfrac{\\pi}{2}\\right)\\) where the voltage carries \\(\\omega t\\), so it reaches each stage of its cycle **a quarter period later**. That is the lag.\n\n**The physical reason, without calculus.** An inductor opposes *changes* in current by generating a back-emf. When the applied voltage is at its peak, the current is still building; the current cannot reach its own peak until the voltage has fallen back to zero and stopped pushing it higher. Effort first, response afterwards — the current is always playing catch-up.\n\n**The contrast that makes it memorable.** A **capacitor** does the opposite: \\(i = C\\,dV/dt\\), so the current **leads** the voltage by \\(\\pi/2\\). The standard mnemonic is **CIVIL** — in a *C*apacitor, *I* comes before *V*; in an inductor (*L*), *V* comes before *I*.\n\n**Why the options with \\(\\pi\\) are impossible.** A phase difference of \\(\\pi\\) would mean current and voltage exactly antiparallel — the element would be *supplying* energy on average rather than storing it. Only \\(0\\) (a resistor), \\(+\\pi/2\\) (a capacitor) and \\(-\\pi/2\\) (an inductor) occur for ideal single elements.\n\n**One consequence worth carrying.** With \\(\\phi = 90^\\circ\\) the average power is \\(V_{rms}I_{rms}\\cos 90^\\circ = \\mathbf{0}\\): an ideal inductor consumes **no** energy, merely storing it in its magnetic field each quarter cycle and returning it the next."
+    },
+    {
+      "hash": "06c95a03743a02da963cc7c5bfc18b1f4e70ccea722529df0d6ff9cb6c0a2421",
+      "ref": "Q16",
+      "questionNumber": "16",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "stem": "**Assertion (A) :** In insulators, the forbidden gap is very large.\n\n**Reason (R) :** The valence electrons in an atom of an insulator are very tightly bound to the nucleus.",
+      "context": "In question number 16 to 18 two statements are given – one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (a), (b), (c) and (d) as given below :\n(A) Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A).\n(B) Both Assertion (A) and Reason (R) are true and (R) is NOT the correct explanation of (A).\n(C) Assertion (A) is true and Reason (R) is false.\n(D) Assertion (A) is false and Reason (R) is also false.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true and (R) is NOT the correct explanation of (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is also false."
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.**\n\n**The Assertion is true.** In an insulator the forbidden energy gap between the top of the valence band and the bottom of the conduction band is large — typically greater than \\(3\\) eV, and about \\(6\\) eV in diamond. Against thermal energy at room temperature, \\(kT \\approx 0{\\cdot}026\\) eV, that gap is unbridgeable: essentially no electrons reach the conduction band, so the material does not conduct.\n\n**The Reason is true.** In an insulator the valence electrons are indeed held very tightly — either by a strong ionic attraction to the lattice or in strong covalent bonds, as in diamond, where each carbon atom is locked into four short, strong bonds.\n\n**And the Reason explains the Assertion**, which is the part the question really tests. The two statements are not independent facts that happen both to be true; one *causes* the other.\n\nThe band gap is precisely the energy needed to tear a valence electron free of its bond and let it roam the crystal. **Tightly bound electrons are, by definition, electrons that need a lot of energy to free — and that energy IS the band gap.** Saying \"the electrons are tightly bound\" and \"the gap is large\" are two descriptions of the same physical situation, one in the language of chemical bonding and the other in the language of band theory.\n\n**The trend across materials confirms the link.** Going down group 14 — carbon, silicon, germanium, tin, lead — the atoms grow larger, the valence electrons sit further from the nucleus and are held **more loosely**, and the gap narrows steadily from about \\(5{\\cdot}5\\) eV to \\(1{\\cdot}1\\) eV to \\(0{\\cdot}7\\) eV until it closes altogether at lead, which is a metal. Binding strength and gap width move together, exactly as the Reason claims.\n\nThe competing option — both true but unrelated — would be right only if the tight binding were incidental to the gap. It is not; it is the mechanism."
+    },
+    {
+      "hash": "88d57c4469f8118898e36390b5a1784d9716eecb58a7d29205e57495368bbcb0",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Identify the electromagnetic radiation and write its wavelength range, which is used to kill germs in water purifier. Name the two sources of these radiations.",
+      "solution": "**The radiation: ultraviolet.**\n\n**Why UV is what kills the germs.** UV photons carry \\(3\\) to \\(100\\) eV, which is enough to be absorbed by **DNA** and to break the bonds within it — specifically, to fuse adjacent thymine bases into dimers that the cell cannot read. A microorganism whose DNA cannot be transcribed cannot reproduce, and is effectively killed.\n\nThe effect peaks near \\(254\\) nm, which is why germicidal lamps are built around exactly that wavelength. Crucially this is a **physical** process, not a chemical one: it leaves no residue and adds nothing to the water, which is its advantage over chlorination.\n\n**Wavelength range.**\n\n\\(4 \\times 10^{-7}\\ \\mathrm{m} \\ \\text{ to } \\ 6 \\times 10^{-10}\\ \\mathrm{m}\\)\n\nthat is, from about \\(400\\) nm at the violet edge of the visible spectrum down to about \\(0{\\cdot}6\\) nm where X-rays begin.\n\n**Two sources.**\n\n1. **The Sun** — by far the largest natural source. Most of it is absorbed by the ozone layer before reaching the ground, which is why that layer matters.\n2. **Mercury-vapour (or arc) lamps** — a low-pressure mercury discharge emits strongly at \\(254\\) nm, and this is the lamp actually used inside a water purifier. (Any device in which inner-shell electrons drop to a lower level will also serve; so will a welding arc, which is why arc welders wear eye protection.)\n\n**Why UV and not something else.** Infrared and microwaves carry far too little energy per photon to break a molecular bond — they only heat. X-rays would certainly work but are hazardous, hard to produce and hard to shield. Ultraviolet sits at exactly the energy where photons are destructive to DNA yet still easy to generate and simple to contain within a metal housing."
+    },
+    {
+      "hash": "877a8fde1bdc957ed378d355408e3a8f1528bb7e82b8dbf1ab8abe4591ae2d5a",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "An electric dipole of dipole moment (\\(\\vec{p}\\))is kept in a uniform electric field \\(\\vec{\\mathrm{E}}\\). Show graphically the variation of torque acting on the dipole (\\(\\tau\\)) with its orientation (\\(\\theta\\)) in the field. Find the orientation in which torque is (i) zero and (ii) maximum.",
+      "solution": "**The torque on a dipole.**\n\n\\(\\vec{\\tau} = \\vec{p} \\times \\vec{E} \\qquad\\Longrightarrow\\qquad \\tau = pE\\sin\\theta\\)\n\nwhere \\(\\theta\\) is the angle between the dipole moment \\(\\vec{p}\\) and the field \\(\\vec{E}\\).\n\n**The graph.** Plot \\(\\tau\\) on the vertical axis against \\(\\theta\\) on the horizontal, from \\(0\\) to \\(2\\pi\\). The result is a **sine curve**:\n\n- starting at **zero** at \\(\\theta = 0\\);\n- rising to a **positive maximum** \\(pE\\) at \\(\\theta = \\pi/2\\);\n- returning to **zero** at \\(\\theta = \\pi\\);\n- falling to a **negative minimum** \\(-pE\\) at \\(\\theta = 3\\pi/2\\);\n- back to **zero** at \\(\\theta = 2\\pi\\).\n\nThe negative half is not a defect of the plot — it records that the torque has **reversed sense**. Beyond \\(\\theta = \\pi\\) the dipole is being turned the other way round.\n\n**(i) Torque is zero** at\n\n\\(\\theta = 0^\\circ \\quad\\text{and}\\quad \\theta = 180^\\circ\\)\n\nthat is, when \\(\\vec{p}\\) is **parallel or antiparallel** to \\(\\vec{E}\\). The cross product of two collinear vectors vanishes.\n\n**(ii) Torque is maximum** at\n\n\\(\\theta = 90^\\circ \\quad\\text{(and } 270^\\circ\\text{)}\\)\n\nwhen \\(\\vec{p}\\) is **perpendicular** to \\(\\vec{E}\\), giving \\(\\tau_{\\max} = pE\\).\n\n**The two zeros are not the same physically**, and this is worth stating because the graph alone does not distinguish them. The potential energy is \\(U = -pE\\cos\\theta\\), so:\n\n- \\(\\theta = 0\\) is the **minimum** of \\(U\\) — **stable** equilibrium. Nudge the dipole and the torque swings it back.\n- \\(\\theta = 180^\\circ\\) is the **maximum** of \\(U\\) — **unstable** equilibrium. Nudge it and the torque drives it further away, all the way round to \\(\\theta = 0\\).\n\n**And note where maximum torque sits relative to energy.** At \\(\\theta = 90^\\circ\\) the torque is greatest while the potential energy is exactly **zero** — neither extreme. Maximum torque and minimum energy are at opposite ends of the swing, which is the usual source of confusion in dipole questions."
+    },
+    {
+      "hash": "a83763e67e604719fbce7ddfd949f4adfba9db6c369f895add32e27b9c7ee713",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A potential difference (V) is applied across a conductor of length 'L' and cross-sectional area 'A'.\n\nHow will the drift velocity of electrons and the current density be affected if another identical conductor of the same material were connected in series with the first conductor ? Justify your answers.",
+      "solution": "**Both the drift velocity and the current density are HALVED.**\n\n**The relations to work from.**\n\n\\(v_d = \\dfrac{eE\\tau}{m} = \\dfrac{eV\\tau}{mL} \\qquad\\text{and}\\qquad j = \\dfrac{I}{A} = nev_d\\)\n\n**What connecting an identical conductor in series changes.** The second conductor has the same material and the same cross-section, so \\(n\\), \\(\\tau\\), \\(m\\) and \\(A\\) are all unchanged. What changes is the **length over which the same potential difference is spread**:\n\n\\(L \\longrightarrow 2L\\)\n\n**The drift velocity.** The field inside is \\(E = V/L\\), and with the same \\(V\\) now across twice the length,\n\n\\(E' = \\dfrac{V}{2L} = \\dfrac{E}{2}\\)\n\nThe drift velocity is proportional to the field, so\n\n\\(v_d' = \\dfrac{v_d}{2}\\)\n\n**The current density.**\n\n\\(j' = nev_d' = \\dfrac{nev_d}{2} = \\dfrac{j}{2}\\)\n\n**A check by the resistance route**, which must agree. The total resistance doubles, \\(R \\to 2R\\), so at the same applied voltage the current halves, \\(I \\to I/2\\). The area is unchanged, so\n\n\\(j' = \\dfrac{I/2}{A} = \\dfrac{j}{2}\\)\n\nThe two routes agree, and computing it both ways is the safest habit in this kind of question.\n\n**What did NOT change, and why it matters.** The number density \\(n\\) of free electrons is a property of the material, not of the wire's shape, so adding more conductor adds more electrons *and* more volume in the same proportion. And the relaxation time \\(\\tau\\) depends on temperature and lattice quality, not on length. Only the field changed — and everything else followed from it.\n\n**The contrast with the parallel case** sharpens the point. Connect the identical conductor in **parallel** instead and the length is unchanged, so \\(E\\), \\(v_d\\) and \\(j\\) are all exactly as before; what doubles is the total **current**, because there is twice the area carrying it. Series changes the current *density*; parallel changes the *current*."
+    },
+    {
+      "hash": "eaa57df5cf47d31db4b3531940cb8c0c98594d7ee053e71d0157f2bb1a2d7220",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "A current of 1A flows through a coil when it is connected across a DC battery of 100 V. If DC battery is replaced by an AC source of 100 V and angular frequency 100 rad s\\(^{-1}\\), the current reduces to 0.5 A. Find\n(i) impedance of the circuit.\n(ii) self-inductance of coil.\n(iii) phase difference between the voltage and the current.",
+      "solution": "**Reading the two experiments.** The coil has both resistance and inductance. A **DC** source cannot see the inductance at all — with a steady current \\(di/dt = 0\\), so the inductor behaves as a plain wire and only \\(R\\) limits the current. An **AC** source sees both. That is why the question supplies two measurements: one isolates \\(R\\), and the two together give \\(L\\).\n\n**The resistance, from the DC measurement.**\n\n\\(R = \\dfrac{V_{DC}}{I_{DC}} = \\dfrac{100}{1} = 100\\ \\Omega\\)\n\n**(i) The impedance, from the AC measurement.**\n\n\\(Z = \\dfrac{V_{rms}}{I_{rms}} = \\dfrac{100}{0{\\cdot}5}\\)\n\n\\(Z = 200\\ \\Omega\\)\n\n**(ii) The self-inductance.**\n\nResistance and reactance combine **in quadrature**, not by simple addition:\n\n\\(Z^{2} = R^{2} + X_L^{2} \\qquad\\Longrightarrow\\qquad X_L^{2} = (200)^{2} - (100)^{2} = 30000\\)\n\n\\(X_L = 100\\sqrt{3} \\approx 173\\ \\Omega\\)\n\nand since \\(X_L = \\omega L\\) with \\(\\omega = 100\\ \\mathrm{rad\\,s^{-1}}\\):\n\n\\(L = \\dfrac{X_L}{\\omega} = \\dfrac{100\\sqrt{3}}{100}\\)\n\n\\(L = \\sqrt{3} \\approx 1{\\cdot}73\\ \\mathrm{H}\\)\n\nSubtracting the reactance arithmetically — \\(200 - 100 = 100\\ \\Omega\\) — is the error this question is set to expose, and it would give \\(L = 1\\) H.\n\n**(iii) The phase difference.**\n\n\\(\\tan\\phi = \\dfrac{X_L}{R} = \\dfrac{100\\sqrt{3}}{100} = \\sqrt{3}\\)\n\n\\(\\phi = 60^\\circ = \\dfrac{\\pi}{3}\\)\n\nwith the **current lagging** the voltage, as it must in an inductive circuit.\n\n**Two checks worth doing.** The impedance triangle has sides \\(100\\), \\(100\\sqrt{3}\\) and \\(200\\) — the familiar \\(1 : \\sqrt{3} : 2\\) of a \\(30^\\circ\\)-\\(60^\\circ\\)-\\(90^\\circ\\) triangle, which confirms \\(\\phi = 60^\\circ\\) without a calculator.\n\nAnd the **power factor** is \\(\\cos 60^\\circ = 0{\\cdot}5\\), so the coil consumes \\(V_{rms}I_{rms}\\cos\\phi = 100 \\times 0{\\cdot}5 \\times 0{\\cdot}5 = 25\\) W. That must equal \\(I_{rms}^{2}R = (0{\\cdot}5)^{2} \\times 100 = 25\\) W — and it does, since only the resistance dissipates anything."
+    },
+    {
+      "hash": "2214fdb45b88d97990d2fc8e8fda003912a34fcc3aef8c67af643b0ff37eea48",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "The primary coil having \\(\\mathrm{N}_p\\) turns of an ideal transformer is supplied with an alternating voltage \\(\\mathrm{V}_p\\). Obtain an expression for the voltage \\(\\mathrm{V}_s\\) induced in its secondary coil having \\(\\mathrm{N}_s\\) turns. Mention two main sources of power loss in real transformers.",
+      "solution": "**The transformer.** Two coils are wound on a common soft-iron core, which is laminated to confine the magnetic flux and force essentially all of it to thread both windings. An alternating voltage \\(V_p\\) is applied to the primary of \\(N_p\\) turns, and a voltage \\(V_s\\) appears across the secondary of \\(N_s\\) turns.\n\n**The derivation.**\n\nThe alternating primary voltage drives an alternating current, which sets up an alternating flux \\(\\phi\\) in the core. For an **ideal** transformer there is no leakage, so **the same flux per turn** links both coils — this is the assumption everything rests on.\n\n*In the primary*, the changing flux induces a back-emf which, in the ideal case of no winding resistance, balances the applied voltage exactly:\n\n\\(\\varepsilon_p = -N_p\\dfrac{d\\phi}{dt} \\qquad\\text{and}\\qquad V_p = -\\varepsilon_p \\;\\Longrightarrow\\; V_p = N_p\\dfrac{d\\phi}{dt}\\)\n\n*In the secondary*, the same \\(d\\phi/dt\\) induces\n\n\\(\\varepsilon_s = -N_s\\dfrac{d\\phi}{dt}\\)\n\nand with the secondary drawing negligible current, \\(V_s = |\\varepsilon_s| = N_s\\dfrac{d\\phi}{dt}\\).\n\n**Dividing one by the other eliminates the flux**, which is the whole trick:\n\n\\(\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p} \\qquad\\Longrightarrow\\qquad \\boxed{\\ V_s = \\dfrac{N_s}{N_p}V_p\\ }\\)\n\nThe ratio \\(N_s/N_p\\) is the **turns ratio**. With \\(N_s > N_p\\) the device steps the voltage **up**; with \\(N_s < N_p\\), **down**.\n\n**Two main sources of power loss in a real transformer.**\n\n1. **Copper loss** — the windings have real resistance, so \\(I^{2}R\\) heating occurs in both coils. This is reduced by using thick low-resistance copper wire.\n\n2. **Eddy-current loss** — the changing flux induces circulating currents in the iron core itself, which dissipate energy as heat. This is reduced by **laminating** the core: thin sheets separated by insulating varnish break the paths available to those currents.\n\n(Two further losses are worth knowing: **hysteresis loss**, the energy spent taking the core round its magnetisation loop each cycle, reduced by using soft iron with a narrow loop; and **flux leakage**, where some flux fails to link both coils, reduced by good core design.)\n\n**Why it works only on AC.** Everything above runs through \\(d\\phi/dt\\). A steady direct current produces a constant flux, so no emf is induced in the secondary at all — and the primary, being a low-resistance coil across the supply, would simply overheat."
+    },
+    {
+      "hash": "c6fa59e4259b0fddba1002313b63756960fc8bdee7332315108646a27f9e2bef",
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "(i) Write the limitations of Rutherford's model of atom.\n(ii) The wavelength of the second line of the Balmer series in the hydrogen spectrum is 4861 Å. Calculate the wavelength of the first line of the same series.",
+      "solution": "**(i) The limitations of Rutherford's model.**\n\nRutherford's scattering experiment established that the atom has a tiny, massive, positively charged nucleus, and that is a permanent result. But the **planetary model** he built on it fails in two connected ways.\n\n**It cannot explain the stability of the atom.** An electron in a circular orbit is **accelerating** — its direction changes continuously — and classical electromagnetism says every accelerating charge **radiates**. Radiating means losing energy, so the orbit must shrink. Working the rate through gives a lifetime of about \\(10^{-8}\\) s: the electron should spiral into the nucleus almost instantly. Matter should not exist, and plainly it does.\n\n**It cannot explain the line spectrum.** As the electron spiralled inward its orbital frequency would rise **continuously**, and since it radiates at its orbital frequency, the emitted light would form a **continuous** spectrum smeared across all frequencies. What is actually observed is a set of sharp, discrete **lines** at fixed wavelengths, the same for every hydrogen atom anywhere.\n\nThe two failures are really one: the model has nothing in it that picks out particular orbits, so nothing can pick out particular frequencies. Bohr's quantization postulate was introduced precisely to supply that missing ingredient.\n\n**(ii) The first line of the Balmer series.**\n\nEvery Balmer line ends on \\(n_f = 2\\), and they are counted outward from the longest wavelength: the **first** line is \\(3 \\to 2\\) and the **second** is \\(4 \\to 2\\). Getting that numbering right is the whole of the setup.\n\n*The given line*, \\(\\lambda_2\\) for \\(4 \\to 2\\):\n\n\\(\\dfrac{1}{\\lambda_2} = R\\left[\\dfrac{1}{2^{2}} - \\dfrac{1}{4^{2}}\\right] = R\\left[\\dfrac{1}{4} - \\dfrac{1}{16}\\right] = \\dfrac{3R}{16}\\)\n\n*The wanted line*, \\(\\lambda_1\\) for \\(3 \\to 2\\):\n\n\\(\\dfrac{1}{\\lambda_1} = R\\left[\\dfrac{1}{2^{2}} - \\dfrac{1}{3^{2}}\\right] = R\\left[\\dfrac{1}{4} - \\dfrac{1}{9}\\right] = \\dfrac{5R}{36}\\)\n\n*Taking the ratio*, so that the Rydberg constant cancels and never has to be substituted:\n\n\\(\\dfrac{\\lambda_1}{\\lambda_2} = \\dfrac{36}{5R} \\times \\dfrac{3R}{16} = \\dfrac{108}{80} = \\dfrac{27}{20} = 1{\\cdot}35\\)\n\n\\(\\lambda_1 = 1{\\cdot}35 \\times 4861 = 6562{\\cdot}35\\ \\mathring{\\mathrm{A}}\\)\n\n**\\(\\lambda_1 \\approx 6563\\ \\mathring{\\mathrm{A}}\\)**\n\n**The answer identifies itself.** \\(6563\\ \\mathring{\\mathrm{A}}\\) is \\(H_\\alpha\\), the deep red line that colours hydrogen discharge tubes and emission nebulae, and \\(4861\\ \\mathring{\\mathrm{A}}\\) is \\(H_\\beta\\), blue-green. The first line must come out **longer** than the second, since it is the smaller energy jump — a check that catches the commonest error, which is to number the lines the other way round."
+    },
+    {
+      "hash": "1c3e09827fd0179c6b376eb5477f869d82f4bf3e58205e57a5b808431a912479",
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "(i) Increase in the intensity of the radiation causing photo-electric emission from a surface, does not affect the maximum K.E. of the photo electrons. Explain.\n(ii) The photon emitted during the de-excitation from the first excited level to the ground state of hydrogen atom is used to irradiate a photo cathode in which stopping potential is 5 V. Calculate the work function of the cathode used.",
+      "solution": "**(i) Why intensity does not affect the maximum kinetic energy.**\n\nEinstein's photoelectric equation contains no intensity term at all:\n\n\\(K_{\\max} = h\\nu - \\phi_0\\)\n\n**The reason is that emission is a one-photon, one-electron event.** A single electron absorbs a single **whole** photon and either escapes or does not; it cannot accumulate energy from two photons and leave on the total. So the energy an escaping electron carries away is fixed by what **one** photon brings, \\(h\\nu\\), less the fixed escape cost \\(\\phi_0\\).\n\nIntensity, at a fixed frequency, means only **how many photons arrive per second**. More photons free more electrons — the photocurrent rises in proportion — but each electron still meets exactly one photon of exactly the same energy, so none of them leaves any faster. The **stopping potential is therefore unchanged**.\n\nThis separation is precisely what classical wave theory could not produce. A wave delivers energy continuously, so a brighter beam should hand each electron energy faster and produce more energetic electrons; and a dim beam should work eventually, after a delay while energy accumulated. Neither is observed. **Intensity controls the number; frequency alone controls the energy.**\n\n**(ii) The work function of the cathode.**\n\n*The energy of the photon.* The transition is from the **first excited level** \\((n = 2)\\) to the **ground state** \\((n = 1)\\) of hydrogen:\n\n\\(E_2 = -\\dfrac{13{\\cdot}6}{2^{2}} = -3{\\cdot}4\\ \\mathrm{eV}, \\qquad E_1 = -13{\\cdot}6\\ \\mathrm{eV}\\)\n\n\\(h\\nu = E_2 - E_1 = -3{\\cdot}4 + 13{\\cdot}6 = 10{\\cdot}2\\ \\mathrm{eV}\\)\n\n*The kinetic energy of the fastest photoelectrons*, from the stopping potential:\n\n\\(K_{\\max} = eV_0 = 5\\ \\mathrm{eV}\\)\n\nWorking in electronvolts makes this a reading rather than a calculation: an electron turned back by \\(5\\) volts had \\(5\\) eV of kinetic energy.\n\n*The work function.*\n\n\\(\\phi_0 = h\\nu - K_{\\max} = 10{\\cdot}2 - 5\\)\n\n\\(\\boxed{\\ \\phi_0 = 5{\\cdot}2\\ \\mathrm{eV}\\ }\\)\n\n**A note on \"first excited level\".** The ground state is \\(n = 1\\), so the *first* excited state is \\(n = 2\\) — not \\(n = 1\\), and not \\(n = 3\\). Reading it as \\(n = 3\\) would give \\(12{\\cdot}09\\) eV and a work function of \\(7{\\cdot}09\\) eV.\n\n**Orientation.** A work function of \\(5{\\cdot}2\\) eV is high — comparable to platinum \\((5{\\cdot}6\\) eV\\()\\) — with a threshold wavelength of about \\(2390\\ \\mathring{\\mathrm{A}}\\), deep in the ultraviolet. Only the \\(10{\\cdot}2\\) eV Lyman-alpha photon, itself far into the ultraviolet, is energetic enough to free electrons from such a surface; no visible light could."
+    }
+  ]
+}
