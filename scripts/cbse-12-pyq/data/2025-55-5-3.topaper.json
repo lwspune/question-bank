@@ -1,0 +1,210 @@
+{
+  "paper": "55/5/3",
+  "year": 2025,
+  "paperId": "2025-55-5-3",
+  "markingScheme": "out/2025-55-5-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "7ecc47e0cd8fb11e3f0b4bbfddf93da1db7e72a98a004b115338e3242c23e815",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "stem": "A beam of light of wavelength 720 nm in air enters water (refractive index = \\(\\dfrac{4}{3}\\)). Its wavelength in water will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "540 nm"
+        },
+        {
+          "label": "B",
+          "text": "480 nm"
+        },
+        {
+          "label": "C",
+          "text": "420 nm"
+        },
+        {
+          "label": "D",
+          "text": "720 nm"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): 540 nm.**\n\n**What changes on entering a medium, and what does not.**\n\n**The FREQUENCY is unchanged.** It is fixed by the source, and the wave crossing the boundary must keep pace with what arrives — one crest in, one crest out, or crests would pile up at the surface.\n\n**The SPEED falls**, to \\(v = c/n\\).\n\nSo with \\(v = \\nu\\lambda\\) and \\(\\nu\\) fixed, the **wavelength must fall in the same proportion as the speed**:\n\n\\(\\lambda_{\\text{medium}} = \\dfrac{\\lambda_{\\text{air}}}{n}\\)\n\n**Substituting.**\n\n\\(\\lambda_w = \\dfrac{720}{4/3} = 720 \\times \\dfrac{3}{4}\\)\n\n\\(\\boxed{\\ \\lambda_w = 540\\ \\mathrm{nm}\\ }\\)\n\n**Divide by \\(n\\), do not multiply.** Multiplying would give \\(960\\) nm — deliberately not offered, so that mistake leads nowhere. The direction can be fixed without arithmetic: the wave is **slower** in water, so in the same time it covers less ground per cycle and its wavelength is **shorter**.\n\n**Option (D), \\(720\\) nm, is the frequency's answer wearing the wavelength's clothes.** It would be correct if the question asked about frequency, which genuinely is unchanged. Keeping straight which quantity the medium alters is the whole point.\n\n**A note on colour.** Wavelength is what changes; **frequency** is what the eye responds to. So the light does **not** change colour on entering water, even though its wavelength there is three-quarters of the value in air. Whenever a colour is quoted by wavelength — \"\\(720\\) nm is red\" — the vacuum value is meant.\n\n**Where the other distractors come from.** \\(480\\) nm is \\(720 \\times 2/3\\) and \\(420\\) is \\(720 \\times 7/12\\); neither corresponds to any sensible manipulation of \\(4/3\\), and they are there simply to populate the list. Computing \\(720 \\times 3/4\\) exactly is enough to pick the answer out.\n\n**A sense of scale.** In water this light has a wavelength of \\(540\\) nm — the same wavelength that green light has **in air**. But it is still red light: it retains the frequency of \\(720\\) nm radiation, and emerging back into air it returns to \\(720\\) nm."
+    },
+    {
+      "hash": "2d85d6ef553e778ab4f6aa40a1c44a5415f7643b46bcf484c395939b389dc82a",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "A capacitor of capacitance C has reactance X in an ac circuit. If the capacitance and the frequency of the applied voltage are doubled, the new reactance will become :",
+      "options": [
+        {
+          "label": "A",
+          "text": "4X"
+        },
+        {
+          "label": "B",
+          "text": "2X"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{X}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{X}{4}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{X}{4}\\).**\n\n**Capacitive reactance.**\n\n\\(X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{2\\pi\\nu C}\\)\n\n**Both \\(\\nu\\) and \\(C\\) sit in the DENOMINATOR**, so doubling either one halves the reactance — and doubling both quarters it.\n\n**Doing it explicitly.**\n\n\\(X' = \\dfrac{1}{2\\pi\\left(2\\nu\\right)\\left(2C\\right)} = \\dfrac{1}{4}\\cdot\\dfrac{1}{2\\pi\\nu C} = \\dfrac{X}{4}\\)\n\n\\(\\boxed{\\ X' = \\dfrac{X}{4}\\ }\\)\n\n**The two factors MULTIPLY rather than cancel**, and that is what the question is testing. A candidate who notices that both quantities doubled may be tempted to think the effects offset — but they do not, because both appear in the same place, in the denominator, and each contributes a factor of \\(\\tfrac{1}{2}\\).\n\n**Options (A) and (B) have the reactance going UP**, which is the wrong direction on both counts. Option (C), \\(X/2\\), is the answer with only one of the two doublings applied.\n\n**Why both live in the denominator, physically.** A capacitor opposes a **slowly** changing voltage strongly and a rapidly changing one weakly, because at high frequency the plates never have time to charge up and oppose the source — so higher \\(\\nu\\) means lower \\(X_C\\). And a **bigger** capacitor accepts more charge for the same voltage, so it also opposes less. The two effects are independent, which is why they multiply.\n\n**The contrast with an inductor**, worth keeping alongside:\n\n\\(X_L = \\omega L = 2\\pi\\nu L\\)\n\nHere the frequency is in the **numerator**, so doubling \\(\\nu\\) and \\(L\\) would give \\(4X_L\\) — the exact opposite behaviour. A capacitor passes high frequencies and blocks low ones; an inductor does the reverse. That complementarity is what makes filters and tuned circuits possible.\n\n**The two limits.** As \\(\\nu \\to 0\\) (direct current), \\(X_C \\to \\infty\\): a capacitor **blocks DC** completely. As \\(\\nu \\to \\infty\\), \\(X_C \\to 0\\): at very high frequency a capacitor behaves like a plain wire."
+    },
+    {
+      "hash": "ae4602936c5bf57ce372e01b6f632867c57ec013e4244a421611fcde2f9dbe57",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "Four point charges Q each, are held at the four corners of a square of side \\(l\\). The amount of work done in bringing a charge Q from infinity to the centre of the square will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{Q^2}{\\pi \\varepsilon_0 l}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\sqrt{2}\\,Q^2}{\\pi \\varepsilon_0 l}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{Q^2}{2\\pi \\varepsilon_0 l}\\)"
+        },
+        {
+          "label": "D",
+          "text": "Zero"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{\\sqrt{2}\\,Q^{2}}{\\pi\\varepsilon_0 l}\\).**\n\n**The work done is the charge times the potential it is brought to.**\n\n\\(W = Q \\times V_{\\text{centre}}\\)\n\nsince the charge starts at infinity, where the potential is zero.\n\n**The distance from each corner to the centre.** The centre of a square of side \\(l\\) lies half a **diagonal** from each corner, and the diagonal is \\(l\\sqrt{2}\\):\n\n\\(r = \\dfrac{l\\sqrt{2}}{2} = \\dfrac{l}{\\sqrt{2}}\\)\n\n**This is the step the question turns on**, and using \\(l/2\\) — the distance to the middle of a *side* — is the error it is built to catch.\n\n**The potential at the centre.** Potential is a **SCALAR**, so the four equal contributions simply add, with no geometry beyond the common distance:\n\n\\(V = 4 \\times \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Q}{l/\\sqrt{2}} = \\dfrac{4\\sqrt{2}\\,Q}{4\\pi\\varepsilon_0 l} = \\dfrac{\\sqrt{2}\\,Q}{\\pi\\varepsilon_0 l}\\)\n\n**The work.**\n\n\\(W = QV\\)\n\n\\(\\boxed{\\ W = \\dfrac{\\sqrt{2}\\,Q^{2}}{\\pi\\varepsilon_0 l}\\ }\\)\n\n**Why option (D), \"zero\", is tempting and wrong.** At the centre the four **fields** do cancel exactly — by symmetry, each pair of opposite corners contributes equal and opposite vectors, so \\(\\vec{E}_{\\text{centre}} = 0\\). But **potential is not a vector and does not cancel**: four positive charges each raise the potential, and four positive contributions can only add.\n\n**\\(E = 0\\) and \\(V \\ne 0\\) at the same point is not a contradiction.** The field is the *gradient* of the potential, and a gradient can vanish at a maximum or minimum without the function itself vanishing. Here the centre is a saddle point of \\(V\\) — a stationary point, hence zero field, at a perfectly ordinary non-zero value of the potential.\n\n**Reading the answer's structure.** The \\(\\sqrt{2}\\) comes from \\(1/r = \\sqrt{2}/l\\); the \\(4\\) from the four charges, which cancels against the \\(4\\) in \\(4\\pi\\varepsilon_0\\) to leave a bare \\(\\pi\\varepsilon_0\\). Option (A) is the same expression without the \\(\\sqrt{2}\\) — that is, computed with \\(r = l/\\sqrt{2}\\) forgotten and \\(r = l\\) used instead.\n\n**A physical reading.** \\(W\\) is positive, so external work must be **done** to bring the fifth positive charge in against the repulsion of the other four. Released at the centre it would sit in unstable equilibrium — zero force, but the slightest nudge sends it away."
+    },
+    {
+      "hash": "9cc921cfbaf485eaed49efc6766a6f7c19517c84e521837d57cc32bc9b6ed3c2",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Combination of Resistors",
+      "stem": "Find the effective resistance of the network of resistors between points A and F as shown in the figure.",
+      "figureNote": "REQUIRED — the stem names no resistor value and no connection; every number the question needs is inside the drawing. Read off page idx 10 of THIS paper: six labelled nodes A, B, C, D, E, F. A horizontal run goes A — 7 Ω — B — 40 Ω — E — 5 Ω — F. Above it, B — 2 Ω — C along the left upright, C — 4 Ω — D along the top, D — 8 Ω — E along the right upright, and a diagonal B — 3 Ω — D across that rectangle. The topology and the values are stated in full because this is a computation: the answer is a single effective resistance the student must still reduce the network to obtain, so reading the picture gives away nothing the question tests. Page idx 10.",
+      "imageAttached": true,
+      "solution": "**Read the network before calculating.** The connections are:\n\n\\(A\\text{-}B: 7\\ \\Omega \\quad\\cdot\\quad B\\text{-}C: 2\\ \\Omega \\quad\\cdot\\quad C\\text{-}D: 4\\ \\Omega \\quad\\cdot\\quad B\\text{-}D: 3\\ \\Omega \\quad\\cdot\\quad D\\text{-}E: 8\\ \\Omega \\quad\\cdot\\quad B\\text{-}E: 40\\ \\Omega \\quad\\cdot\\quad E\\text{-}F: 5\\ \\Omega\\)\n\n**The \\(7\\ \\Omega\\) and the \\(5\\ \\Omega\\) are in plain series at the two ends**, since \\(A\\) and \\(F\\) each connect to the rest of the network through a single resistor. So the work is to reduce everything between \\(B\\) and \\(E\\).\n\n**Step 1 — from \\(B\\) to \\(D\\), there are two routes.**\n\nVia \\(C\\): \\(2 + 4 = 6\\ \\Omega\\) in series.\n\nDirect: \\(3\\ \\Omega\\).\n\nThese are in **parallel**:\n\n\\(R_{BD} = \\dfrac{6 \\times 3}{6 + 3} = \\dfrac{18}{9} = 2\\ \\Omega\\)\n\n**Step 2 — from \\(B\\) to \\(E\\) via \\(D\\).** Add the \\(8\\ \\Omega\\) in series:\n\n\\(R_{BDE} = 2 + 8 = 10\\ \\Omega\\)\n\n**Step 3 — from \\(B\\) to \\(E\\), there are again two routes.** The \\(10\\ \\Omega\\) just found, and the direct \\(40\\ \\Omega\\), in **parallel**:\n\n\\(R_{BE} = \\dfrac{10 \\times 40}{10 + 40} = \\dfrac{400}{50} = 8\\ \\Omega\\)\n\n**Step 4 — add the end resistors.**\n\n\\(R_{AF} = 7 + R_{BE} + 5 = 7 + 8 + 5\\)\n\n\\(\\boxed{\\ R_{AF} = 20\\ \\Omega\\ }\\)\n\n**The order of reduction is the whole skill.** Work from the part of the network **furthest** from the terminals inwards: the \\(B\\)-\\(C\\)-\\(D\\) loop first, then \\(D\\) to \\(E\\), then the \\(40\\ \\Omega\\) shunt, then the ends. Starting anywhere else — for instance trying to combine the \\(40\\ \\Omega\\) before reducing the \\(B\\)-\\(D\\) pair — leaves a network that cannot be simplified by series and parallel rules at all.\n\n**Why no Kirchhoff analysis is needed.** Despite its tangled appearance the network is **purely series-parallel**: every stage collapses two elements into one. A genuine bridge — one with a resistor across the middle of a balanced four-arm loop — would resist this treatment, but the \\(3\\ \\Omega\\) here is simply an alternative path between the same two nodes \\(B\\) and \\(D\\), which is parallel, not bridging.\n\n**A sanity check on the size.** The answer must lie between the smallest single path and the sum of everything. The shortest route \\(A \\to B \\to D \\to E \\to F\\) is \\(7 + 3 + 8 + 5 = 23\\ \\Omega\\), and \\(20 < 23\\) — as it must be, since the extra parallel paths can only **reduce** the resistance below that of any one route."
+    },
+    {
+      "hash": "98a452da19f6cbf37e8696e3c1ee41f2bbbcc71752b1bc8fb94760a6e26eddf6",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A current of 5 A is passing along +X direction through a wire lying along X-axis. Find the magnetic field \\(\\vec{B}\\) at a point \\(\\vec{r} = (3\\hat{i} + 4\\hat{j})\\) m due to 1 cm element of the wire, centered at origin.",
+      "solution": "**The Biot-Savart law for a single current element.**\n\n\\(d\\vec{B} = \\dfrac{\\mu_0}{4\\pi}\\cdot\\dfrac{I\\left(d\\vec{l}\\times\\vec{r}\\right)}{r^{3}}\\)\n\n**The quantities.**\n\n\\(d\\vec{l} = 10^{-2}\\,\\hat{i}\\ \\mathrm{m} \\qquad\\left(1\\ \\mathrm{cm along } +x\\right)\\)\n\n\\(\\vec{r} = 3\\hat{i} + 4\\hat{j}\\ \\mathrm{m} \\qquad\\Longrightarrow\\qquad r = \\sqrt{3^{2} + 4^{2}} = 5\\ \\mathrm{m}\\)\n\n**The 3-4-5 triangle is deliberate** — it makes \\(r = 5\\) exact and \\(r^{3} = 125\\).\n\n**The cross product.**\n\n\\(d\\vec{l}\\times\\vec{r} = 10^{-2}\\,\\hat{i}\\times\\left(3\\hat{i} + 4\\hat{j}\\right) = 10^{-2}\\left[3\\left(\\hat{i}\\times\\hat{i}\\right) + 4\\left(\\hat{i}\\times\\hat{j}\\right)\\right]\\)\n\n**The \\(\\hat{i}\\) component of \\(\\vec{r}\\) contributes NOTHING**, since \\(\\hat{i}\\times\\hat{i} = 0\\). Only the part of \\(\\vec{r}\\) **perpendicular** to the current element matters — which is the geometric content of the \\(\\sin\\theta\\) in \\(dB = \\left(\\mu_0/4\\pi\\right)Idl\\sin\\theta/r^{2}\\).\n\nWith \\(\\hat{i}\\times\\hat{j} = \\hat{k}\\):\n\n\\(d\\vec{l}\\times\\vec{r} = 4 \\times 10^{-2}\\,\\hat{k}\\)\n\n**Substituting.**\n\n\\(d\\vec{B} = \\left(10^{-7}\\right)\\dfrac{\\left(5\\right)\\left(4 \\times 10^{-2}\\right)}{125}\\,\\hat{k} = \\left(10^{-7}\\right)\\dfrac{0{\\cdot}2}{125}\\,\\hat{k}\\)\n\n\\(\\boxed{\\ d\\vec{B} = 1{\\cdot}6 \\times 10^{-10}\\,\\hat{k}\\ \\mathrm{T}\\ }\\)\n\n**Note the \\(r^{3}\\), not \\(r^{2}\\).** The law is written here with the full vector \\(\\vec{r}\\) in the numerator rather than the unit vector \\(\\hat{r}\\), and the extra factor of \\(r\\) that introduces is absorbed by cubing the denominator. Using \\(\\hat{r}\\) with \\(r^{2}\\) gives the identical answer; mixing the two conventions gives a result five times too large or small.\n\n**The direction, read off.** The field is along \\(+\\hat{k}\\) — out of the \\(xy\\) plane. That is the right-hand rule applied to \\(d\\vec{l}\\times\\vec{r}\\): fingers along \\(+x\\), curling towards the point at \\(\\left(3, 4\\right)\\), thumb out of the page.\n\n**Why this is legitimate only for a SHORT element.** A \\(1\\) cm segment viewed from \\(5\\) m away subtends a negligible angle, so treating it as a point-like source of field is an excellent approximation. The Biot-Savart law is strictly about infinitesimal elements; a finite wire requires integrating over all of them, and the field would then be the very different \\(\\mu_0I/2\\pi d\\).\n\n**A sense of the size.** \\(1{\\cdot}6 \\times 10^{-10}\\) T is about a **three-hundred-thousandth** of the Earth's field — utterly unmeasurable in practice. That is why a single element's contribution is a calculational device rather than something one observes; only the sum over a whole circuit is detectable."
+    },
+    {
+      "hash": "cb995e23495565395e689d5986e37daed6e004e6d261ccda4bc91b0e42258cfa",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Define the term, 'distance of closest approach'. A proton of \\(3{\\cdot}95\\) MeV energy approaches a target nucleus Z = 79 in head-on position. Calculate its distance of closest approach.",
+      "solution": "**Definition.**\n\nThe **distance of closest approach** is the minimum distance from the nucleus to which a charged particle, projected directly at it, can get — the point at which it comes momentarily to rest and turns back.\n\nEquivalently: it is the distance at which the particle's **entire initial kinetic energy** has been converted into **electrostatic potential energy** of the particle-nucleus system.\n\n**The derivation.** At that point the speed is zero, so all the kinetic energy has become potential energy:\n\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\left(Ze\\right)\\left(e\\right)}{r_0}\\)\n\n\\(\\boxed{\\ r_0 = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Ze^{2}}{K}\\ }\\)\n\n**The calculation.**\n\n\\(r_0 = \\dfrac{9 \\times 10^{9} \\times 79 \\times \\left(1{\\cdot}6 \\times 10^{-19}\\right)^{2}}{3{\\cdot}95 \\times 10^{6} \\times 1{\\cdot}6 \\times 10^{-19}}\\)\n\n**One factor of \\(1{\\cdot}6 \\times 10^{-19}\\) cancels** top and bottom — the shortcut worth taking, since the energy in joules carries the same \\(e\\) that the charge does:\n\n\\(r_0 = \\dfrac{9 \\times 10^{9} \\times 79 \\times 1{\\cdot}6 \\times 10^{-19}}{3{\\cdot}95 \\times 10^{6}} = \\dfrac{1{\\cdot}1376 \\times 10^{-7}}{3{\\cdot}95 \\times 10^{6}}\\)\n\n\\(\\boxed{\\ r_0 = 2{\\cdot}88 \\times 10^{-14}\\ \\mathrm{m} = 28{\\cdot}8\\ \\mathrm{fm}\\ }\\)\n\n**The cancellation seen more cleanly.** Writing the energy as \\(K = eV\\) with \\(V = 3{\\cdot}95 \\times 10^{6}\\) volts turns the formula into\n\n\\(r_0 = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Ze}{V}\\)\n\nwith a single power of \\(e\\). Expressing an energy in electronvolts and dividing by \\(e\\) is the same device that makes stopping-potential questions one-liners.\n\n**What the number means.** \\(28{\\cdot}8\\) fm is about **four times** the radius of a gold nucleus (roughly \\(7\\) fm). So this proton is turned back well **outside** the nuclear surface, by the Coulomb repulsion alone — the **strong** nuclear force never comes into play.\n\n**That is precisely why Rutherford's analysis worked.** His scattering formula uses nothing but Coulomb's law, and it is valid exactly while the projectile stays outside the nucleus. Fire a proton hard enough to close that gap and the scattering departs from the formula — which is, historically, how nuclear radii were first measured.\n\n**Why \"head-on\" is stated.** It guarantees zero impact parameter, so **all** the kinetic energy is available to be spent against the repulsion. A glancing approach retains some kinetic energy at its turning point and comes no nearer than a larger \\(r_0\\); a head-on collision therefore gives the **minimum** possible approach distance for that energy."
+    },
+    {
+      "hash": "84981eb1ad3dce7aa7e9b8be136acee51b0dc85f250d2be0dc7c9364c5bd60e8",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Energy Stored in a Capacitor",
+      "stem": "(a) \"There is a limit to the amount of charge that can be stored on a given capacitor.\" Explain.\n(b) A capacitor is charged by a battery to a potential difference V. It is disconnected from the battery and connected across another identical uncharged capacitor. Calculate the ratio of total energy stored in the combination to the initial energy stored in the capacitor.",
+      "solution": "**(a) Why there is a limit to the charge a capacitor can hold.**\n\n**Because the electric field between the plates grows with the charge, and every insulator fails at some field.**\n\n\\(E = \\dfrac{\\sigma}{\\varepsilon_0} = \\dfrac{Q}{\\varepsilon_0 A}\\)\n\nso \\(E \\propto Q\\): piling on more charge raises the field in direct proportion.\n\n**Beyond a certain field the medium BREAKS DOWN.** The field becomes strong enough to tear electrons from the atoms of the dielectric (or of the air) between the plates. Those electrons are accelerated, collide, and liberate more — an avalanche — and the insulator abruptly becomes a **conductor**. Charge then leaks across the gap, often as a visible spark, and no further charge can be held.\n\n**The limiting field is a property of the material**, called its **dielectric strength**. For dry air it is about \\(3 \\times 10^{6}\\) V/m; good solid dielectrics manage ten to a hundred times more, which is why practical capacitors are filled rather than left with an air gap.\n\n**The corresponding limit on the voltage.** Since \\(E = V/d\\), the maximum safe potential difference is\n\n\\(V_{\\max} = E_{\\text{break}} \\times d\\)\n\nwhich is why every real capacitor is stamped with a **maximum working voltage** as well as a capacitance, and why exceeding it destroys the component.\n\n**(b) Sharing charge with an identical uncharged capacitor.**\n\n**Initial state.** A capacitor \\(C\\) charged to \\(V\\):\n\n\\(Q = CV, \\qquad U_i = \\dfrac{1}{2}CV^{2}\\)\n\n**After connection.** The two identical capacitors are joined in **parallel**, so they reach a **common potential**. The charge is conserved (the battery is disconnected) and shared equally between two identical capacitors:\n\n\\(V' = \\dfrac{Q}{C + C} = \\dfrac{CV}{2C} = \\dfrac{V}{2}\\)\n\n**Final energy**, of the combination of capacitance \\(2C\\) at potential \\(V/2\\):\n\n\\(U_f = \\dfrac{1}{2}\\left(2C\\right)\\left(\\dfrac{V}{2}\\right)^{2} = \\dfrac{1}{4}CV^{2}\\)\n\n**The ratio.**\n\n\\(\\dfrac{U_f}{U_i} = \\dfrac{\\tfrac{1}{4}CV^{2}}{\\tfrac{1}{2}CV^{2}}\\)\n\n\\(\\boxed{\\ \\dfrac{U_f}{U_i} = \\dfrac{1}{2}\\ }\\)\n\n**HALF THE ENERGY HAS DISAPPEARED**, and that is the striking part of the result. Charge is conserved; energy is not.\n\n**Where it went.** During the instant of connection a large transient current flows from the charged capacitor to the empty one, and it is dissipated as **heat in the resistance of the connecting wires** (and, for very low resistance, radiated as electromagnetic waves). The loss is **exactly half**, and remarkably it does not depend on how small that resistance is — making the wires better conductors merely makes the current larger and briefer, and the total heat identical.\n\n**Why the energy falls though the charge is unchanged.** Energy goes as \\(Q^{2}/2C\\) for fixed charge, so doubling the capacitance at constant total charge halves the energy. The system has moved to a lower-energy configuration, and the difference had to go somewhere."
+    },
+    {
+      "hash": "bafb052d8d3336c0dfc3740754726c93619e0f27624384c1c09dac5de74a08d4",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction",
+      "stem": "(a) \"You cannot see a person standing on the other side of a boundary wall but can hear him.\" Explain with reason.\n(b) Light of wavelength 750 nm is incident normally on a slit of width \\(1{\\cdot}5\\) mm. Diffraction pattern is obtained on a screen \\(1{\\cdot}0\\) m away from the slit. Find the distance of the nearest point from the central maxima at which the intensity is zero.",
+      "solution": "**(a) Why you can hear round a wall but not see round it.**\n\n**Because diffraction is appreciable only when the wavelength is COMPARABLE TO the size of the obstacle.**\n\nThe angular spread produced by an obstacle or aperture of size \\(a\\) is of order\n\n\\(\\theta \\sim \\dfrac{\\lambda}{a}\\)\n\nso everything turns on the ratio \\(\\lambda/a\\).\n\n**For SOUND.** Audible wavelengths run from about \\(1{\\cdot}7\\) cm to \\(17\\) m, with ordinary speech around \\(1\\) m. A boundary wall is a couple of metres high, so \\(\\lambda/a \\sim 1\\): sound bends generously round the edge and reaches you easily.\n\n**For LIGHT.** Visible wavelengths are about \\(5 \\times 10^{-7}\\) m, so against a \\(2\\) m wall \\(\\lambda/a \\sim 10^{-7}\\). The bending is utterly negligible — light travels in effectively straight lines and casts a **sharp shadow**. The person is not visible because essentially no light from them gets round the edge.\n\n**The same physics gives both answers**, which is the point of the question: nothing about sound is special except its wavelength. Light *does* diffract — but to see it one must shrink the obstacle to a comparable scale, which is exactly what a narrow slit does, as part (b) shows.\n\n**(b) The first minimum of the single-slit pattern.**\n\n**The condition for a minimum** in single-slit diffraction:\n\n\\(a\\sin\\theta = n\\lambda, \\qquad n = 1, 2, 3, \\ldots\\)\n\nThe **nearest** point of zero intensity to the central maximum is the **first** minimum, \\(n = 1\\).\n\n**For small angles**, \\(\\sin\\theta \\approx \\tan\\theta = x/D\\), so\n\n\\(\\dfrac{ax}{D} = \\lambda \\qquad\\Longrightarrow\\qquad x = \\dfrac{\\lambda D}{a}\\)\n\n**Substituting.**\n\n\\(x = \\dfrac{750 \\times 10^{-9} \\times 1{\\cdot}0}{1{\\cdot}5 \\times 10^{-3}}\\)\n\n\\(\\boxed{\\ x = 5 \\times 10^{-4}\\ \\mathrm{m} = 0{\\cdot}5\\ \\mathrm{mm}\\ }\\)\n\n**Note that \\(n = 0\\) is NOT a minimum here.** Setting \\(n = 0\\) gives \\(\\theta = 0\\), which is the **central maximum** — the brightest point of the pattern. The single-slit formula \\(a\\sin\\theta = n\\lambda\\) describes minima for \\(n \\ge 1\\) only, and this is the one place where its resemblance to the double-slit *maximum* condition \\(d\\sin\\theta = n\\lambda\\) is genuinely dangerous.\n\n**The width of the central maximum.** It stretches from the first minimum on one side to the first on the other, so it is \\(2x = 1\\) mm across — **twice** the width of every later fringe, which is the defining feature of a diffraction pattern as against an interference one.\n\n**Checking part (a) against these numbers.** Here \\(\\lambda/a = 750 \\times 10^{-9}/1{\\cdot}5 \\times 10^{-3} = 5 \\times 10^{-4}\\) radians, and even that tiny angle gives a visible half-millimetre spread at a metre. Replace the slit with a two-metre wall and the ratio falls by another factor of \\(10^{3}\\) — which is why the shadow's edge is sharp."
+    },
+    {
+      "hash": "880be9522ab9dc69291b27424124c013f4991343e39bf67f29c7cc7719e28aae",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "The Bar Magnet",
+      "stem": "The magnetic moment (5J/T) of a bar magnet points along a uniform magnetic field \\(0{\\cdot}4\\) T.\n(a) Calculate (i) the potential energy of the bar magnet, and (ii) the work done in turning the magnet by \\(180^\\circ\\).\n(b) In which case is the potential energy of the magnet minimum ?",
+      "solution": "**The potential energy of a magnet in a field.**\n\n\\(U = -\\vec{m}\\cdot\\vec{B} = -mB\\cos\\theta\\)\n\nwhere \\(\\theta\\) is the angle between the magnetic moment and the field.\n\n**(a)(i) The potential energy.**\n\nThe moment **points along** the field, so \\(\\theta = 0\\) and \\(\\cos\\theta = 1\\):\n\n\\(U = -\\left(5\\right)\\left(0{\\cdot}4\\right)\\left(1\\right)\\)\n\n\\(\\boxed{\\ U = -2\\ \\mathrm{J}\\ }\\)\n\n**The negative sign is not an error.** It says the magnet is **bound** — aligned with the field it sits \\(2\\) J below the \\(\\theta = 90^\\circ\\) position, which is where \\(U\\) is defined as zero. Energy must be supplied to move it away from alignment.\n\n**(a)(ii) The work done in turning it through \\(180^\\circ\\).**\n\nThe work done by an external agent is the increase in potential energy:\n\n\\(W = U_f - U_i = \\left(-mB\\cos 180^\\circ\\right) - \\left(-mB\\cos 0^\\circ\\right)\\)\n\n\\(W = \\left(+mB\\right) - \\left(-mB\\right) = 2mB = 2\\left(5\\right)\\left(0{\\cdot}4\\right)\\)\n\n\\(\\boxed{\\ W = 4\\ \\mathrm{J}\\ }\\)\n\n**Why the answer is \\(2mB\\) and not \\(mB\\).** The magnet does not start from zero energy — it starts at \\(-2\\) J, already \\(2\\) J **below** the zero. Getting it to \\(+2\\) J therefore costs **twice** that: \\(2\\) J to climb to the \\(\\theta = 90^\\circ\\) position where \\(U = 0\\), and \\(2\\) J more to reach \\(180^\\circ\\). Answering \\(2\\) J is the error this part is built to catch.\n\n**Note that the work is positive**, as it must be: turning a magnet against a field is something one does **to** it, and the energy has to come from outside.\n\n**(b) Where the potential energy is minimum.**\n\n\\(U = -mB\\cos\\theta\\) is most negative when \\(\\cos\\theta\\) is largest, that is when \\(\\theta = 0\\):\n\n\\(\\boxed{\\ \\text{MINIMUM at } \\theta = 0 \\text{ — the moment PARALLEL to the field, as in case (i)}\\ }\\)\n\nwith \\(U_{\\min} = -mB = -2\\) J.\n\n**This is the position of STABLE equilibrium.** Both \\(\\theta = 0\\) and \\(\\theta = 180^\\circ\\) have zero torque \\(\\left(\\tau = mB\\sin\\theta\\right)\\), so both are equilibria — but only the aligned one is stable. Disturb the magnet slightly from \\(\\theta = 0\\) and the torque pushes it back; disturb it from \\(\\theta = 180^\\circ\\) and the torque drives it further away, towards alignment.\n\n**The \\(4\\) J is the barrier between them**, which is why a compass needle settles pointing north and stays there: it would take \\(2mB\\) of work to flip it, and nothing in ordinary circumstances supplies that."
+    },
+    {
+      "hash": "94f4cd14228f51ecfc0b5feb8f9742a452099ec16181d11d50ebc62990225c73",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A right-angled prism ABC (refractive index \\(\\sqrt{2}\\)) is kept on a plane mirror as shown in the figure. A ray of light is incident normally on the face AC.\n(a) Trace the path of the ray as it passes through the prism.\n(b) Find the angle of deviation produced by the prism.",
+      "figureNote": "REQUIRED — the stem defers to the drawing for the prism's orientation and for which face rests on the mirror, and part (a) asks the student to TRACE the path, which is unanswerable without it. Read off page idx 12 of THIS paper: a right-angled triangle with vertex A at the top, B at the lower right and C at the lower left; the angle at A is marked \\(60^\\circ\\) and the angle at B is marked \\(90^\\circ\\) with a right-angle square, so AB is the vertical face and BC the horizontal base; the base CB rests on a plane mirror drawn as a hatched line. An arrow at the upper left strikes the slanted face AC with a small right-angle mark at the point of incidence, showing normal incidence. The subsequent path inside the prism and the deviation are NOT described — they are what the question asks for. Page idx 12.",
+      "imageAttached": true,
+      "solution": "**Setting up.** The prism has \\(\\angle A = 60^\\circ\\), \\(\\angle B = 90^\\circ\\) and therefore \\(\\angle C = 30^\\circ\\). Face \\(BC\\) rests on the plane mirror; \\(AB\\) is the vertical face; \\(AC\\) is the hypotenuse. The refractive index is \\(\\sqrt{2}\\).\n\n**First, the critical angle**, since everything turns on it:\n\n\\(\\sin i_c = \\dfrac{1}{n} = \\dfrac{1}{\\sqrt{2}} \\qquad\\Longrightarrow\\qquad \\boxed{\\ i_c = 45^\\circ\\ }\\)\n\n**(a) Tracing the ray.**\n\n**At \\(AC\\) — enters undeviated.** The ray arrives **normally**, so it passes into the glass without bending. Inside, it travels along the normal to \\(AC\\), which is directed at \\(60^\\circ\\) below the horizontal, towards \\(AB\\).\n\n**At \\(AB\\) — TOTAL INTERNAL REFLECTION.** The face \\(AB\\) is vertical, so its normal is horizontal, and the ray meets it at\n\n\\(i = 60^\\circ\\)\n\nSince \\(60^\\circ > 45^\\circ = i_c\\), **no light escapes**: the ray is totally internally reflected, and turns downward towards the base.\n\n**At \\(BC\\) — reflection from the mirror.** The ray now strikes the base at \\(30^\\circ\\) to the vertical normal. *(Note that \\(30^\\circ < i_c\\), so this face would NOT give total internal reflection — the light would refract out into the air below.)* **This is precisely why the prism is placed on a MIRROR**: the mirror reflects it regardless of angle, and the ray turns back upward.\n\n**At \\(AC\\) — exits normally.** The ray now travels along the outward normal to \\(AC\\) and leaves the glass without bending, emerging parallel to the face it entered through.\n\n*To draw it:* mark the entry point \\(P\\) on \\(AC\\), the TIR point \\(Q\\) on \\(AB\\), the mirror point \\(R\\) on \\(BC\\), and the exit point \\(S\\) on \\(AC\\). Put arrowheads on every segment.\n\n**(b) The angle of deviation.**\n\nCount the deviation at each turn, since refraction at normal incidence contributes nothing:\n\n**At \\(AB\\):** a reflection at \\(i = 60^\\circ\\) deviates the ray by \\(180^\\circ - 2i = 180 - 120 = 60^\\circ\\).\n\n**At \\(BC\\):** a reflection at \\(i = 30^\\circ\\) deviates it by \\(180 - 60 = 120^\\circ\\).\n\nBoth turns are in the **same rotational sense**, so they add:\n\n\\(\\boxed{\\ \\delta = 60^\\circ + 120^\\circ = 180^\\circ\\ }\\)\n\n**The emergent ray is ANTIPARALLEL to the incident ray** — it comes straight back along the direction it came from, laterally displaced.\n\n**A check that needs no angle-counting.** The ray enters along the inward normal to \\(AC\\) and leaves along the **outward** normal to the same face. Those two directions are exactly opposite, so the deviation is \\(180^\\circ\\) whatever happens in between.\n\n**And the result is robust to where the ray enters.** Had it struck the lower part of \\(AC\\), it would have met the **mirror first** and \\(AB\\) second — but the two deviations, \\(120^\\circ\\) and \\(60^\\circ\\), would still sum to \\(180^\\circ\\). The order does not matter.\n\n**Why this arrangement is useful.** A device that returns light exactly along its incoming path, whatever small errors there are in alignment, is a **retroreflector** — the principle of cat's-eye road studs, cycle reflectors, and the corner-cube arrays left on the Moon for laser ranging."
+    },
+    {
+      "hash": "e02ff438cc61026133cb3aabca146e4791564742b91475d0601e8163e436ae26",
+      "ref": "Q29ii",
+      "questionNumber": "29 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "The value of resistance of the ammeter in case (ii) will be :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}20\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}24\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(6{\\cdot}0\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(6{\\cdot}25\\) \\(\\Omega\\)"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**CBSE voided this question.** Its marking scheme records *\"Award 1 mark for this question to all students\"*, so every candidate received the mark whatever was written.\n\n**Why it is unanswerable as printed.** The question asks for \"the resistance of the ammeter **in case (ii)**\" — but **there is no case (ii)** anywhere in this case study. The passage describes a galvanometer in general terms and gives \\(NBAI = k\\phi\\); sub-part (i) offers two alternatives, labelled (a) and (b); and this question is itself sub-part (ii). Nothing in the paper sets up a numbered \"case (ii)\" supplying a galvanometer resistance and a shunt, which is what an ammeter's resistance would have to be computed from.\n\n**The reference is dangling**, so no value can be derived from the paper as it stands.\n\n**What the intended set-up was most probably.** Sub-part (iii) of the same question describes a galvanometer of resistance \\(6\\ \\Omega\\) giving full-scale deflection at \\(0{\\cdot}2\\) A, converted into an ammeter of range \\(0\\) to \\(5\\) A. Working that case through:\n\n**The shunt required.** At full scale the galvanometer takes \\(0{\\cdot}2\\) A and the shunt carries the rest:\n\n\\(I_gG = \\left(I - I_g\\right)S\\)\n\n\\(S = \\dfrac{I_gG}{I - I_g} = \\dfrac{\\left(0{\\cdot}2\\right)\\left(6\\right)}{5 - 0{\\cdot}2} = \\dfrac{1{\\cdot}2}{4{\\cdot}8} = 0{\\cdot}25\\ \\Omega\\)\n\n**The resistance of the finished ammeter**, being \\(G\\) and \\(S\\) in **parallel**:\n\n\\(R_A = \\dfrac{GS}{G + S} = \\dfrac{6 \\times 0{\\cdot}25}{6{\\cdot}25} = \\dfrac{1{\\cdot}5}{6{\\cdot}25}\\)\n\n\\(\\boxed{\\ R_A = 0{\\cdot}24\\ \\Omega\\ }\\)\n\n**But note the sub-part supplying those numbers is labelled (iii), not (ii)**, and it comes **after** this question — so reading \"case (ii)\" as pointing at it requires both renumbering and a forward reference. That reconstruction is offered as the likeliest intent, not as the paper's own meaning.\n\n**What the four printed values correspond to**, which is worth seeing:\n\n\\(6{\\cdot}0\\ \\Omega\\) is the **galvanometer alone**, before any shunt.\n\n\\(0{\\cdot}25\\ \\Omega\\) would be the **shunt** itself — which is sub-part (iii)'s answer, not the ammeter's resistance.\n\n\\(6{\\cdot}25\\ \\Omega\\) is \\(G + S\\), the two added as though in **series**, which they are not.\n\n\\(0{\\cdot}24\\ \\Omega\\) is the genuine parallel combination.\n\n**The physics worth carrying away, whatever the question's defect.** An ammeter's resistance is the **parallel** combination of the galvanometer and its shunt, and since \\(S \\ll G\\) the result is always very close to \\(S\\) itself — here \\(0{\\cdot}24\\) against \\(0{\\cdot}25\\). That is exactly what an ammeter needs: it is connected **in series** with the circuit, so it must add as little resistance as possible or it changes the very current it is measuring."
+    }
+  ]
+}
