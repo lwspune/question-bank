@@ -84,6 +84,66 @@ Two things that script records for anyone doing a similar move:
   orphans under a surviving subject, guarded on BOTH "no questions" and "not in the target set",
   so a chapter the map wants can never be dropped for being momentarily empty.
 
+### 1c. `/mock` will serve REAL IPMAT sittings whole, like the NDA GAT papers (noted 2026-09-22)
+
+**Decided: the IPMAT mocks are actual PYQs, in the `/mock` section** — a mock is one real
+sitting reconstructed from the bank, the same product as the 18 faithful NDA GAT sittings. Not
+the sampled/printed kind: `scripts/bank-paper/NDA_GAT_BLUEPRINT.md` is a *content* blueprint for
+assembling a Word paper OUT of the bank and says a sampled paper "must never be published as a
+`mock_tests` row alongside the 18 faithful GAT sittings". This is the other path —
+`src/lib/mocks/blueprints.ts` + `scripts/mocks/build.ts`.
+
+#### What is available
+
+48 papers are already loaded, one `source_file` each (`ipmat/<exam>-<year>-<section>`):
+Indore 24 (8 sittings x 3 sections), Rohtak 6 (2 x 3), JIPMAT 18 (6 x 3) — **16 sittings**.
+
+Measured, per paper:
+
+| | papers | sittings |
+|---|---|---|
+| complete as loaded | 39 / 48 | — |
+| short **only** because the exam CANCELLED a question | 5 | Indore 2024 · Rohtak 2019 + 2020 · JIPMAT 2021 + 2023 |
+| short because rows are excluded or reconstructed | 4 | JIPMAT 2025 (LR, VA) · JIPMAT 2026 (LR, VA) |
+
+So with grace handling, **14 of 16 sittings can be served complete**, and JIPMAT 2025 + 2026
+are the two to HOLD rather than ship short — the posture MOCKS.md already takes for 30 papers.
+
+#### Three blockers, all real, all measured
+
+1. **THE 8 EXAM-CANCELLED ROWS ARE NOT IN THE BANK, AND THEY NEED TO BE.** Phase 4 excluded
+   every `dropped` row. But `reconstruct.ts` is explicit: *"It appeared on the real paper, so a
+   faithful mock includes it — but it has no valid key, so it's graded as GRACE."* Grace is
+   declared per sitting as `graceNumbers: number[]` in `scripts/mocks/build.ts`, which presumes
+   the question is present. Loading those 8 turns 5 short papers complete. **Open detail:** how
+   a keyless row is stored in `questions`/`options` was NOT established — the preflight's
+   exactly-one-correct rule would currently refuse it. Check an existing grace sitting before
+   designing this (and note that matching on `question_number` across sittings is meaningless,
+   because numbers restart per paper).
+
+2. **NO PER-SECTION TIMER.** `MockPaperBlueprint.durationSecs` is a single number for the whole
+   paper. IPMAT is timed **per section** (the source reports 40 minutes each for Indore — worth
+   confirming against an official source). One combined timer would let a student spend the
+   whole sitting on quant, which is the opposite of what the exam measures. Needs a
+   `durationSecs` on `MockSectionBlueprint` plus runner, timer and palette support.
+
+3. **NO FORMAT CONSTRAINT ON A SECTION, and that is a consequence of step 1b.**
+   `MockSectionBlueprint` carries only `subjects: string[]` and an optional `count`. Since the
+   subject axis became academic, Indore's SA and MCQ sections **both** draw from `Mathematics`
+   and `Logical Reasoning`, so subject alone can no longer separate them. The split is available
+   — `question_format` is `numeric` for exactly the 148 SA rows — but the type has no way to
+   express it. Add a `questionFormat?: "mcq" | "numeric"` to the section, or reconstruct the
+   split from `source_file`, which still encodes the section.
+
+#### Still unknown
+
+- **The marking scheme, per exam and per year.** Not established for any of the three. MOCKS.md
+  is where per-exam schemes live. Do not guess: MHT-CET is the bank's one zero-negative-marking
+  exam precisely because that was checked rather than assumed.
+- **Indore's paper size changed three times** — 100 q (2019), 60 (2020, 2021), 90 (2022-26). That
+  is three delivery shapes for one exam, the same situation as NEET's 180/200 layouts, which is
+  exactly why `count` is optional on a section. Expect three blueprints or a soft count.
+
 ### 2. Finish the CBSE-style grouping — deliberately deferred to here (do AFTER 1b)
 
 The database half is **already done**: three separate exam rows, exactly as CBSE is
@@ -119,7 +179,7 @@ left alone.
 ### 3. Then, and only then
 
 - Flip PUBLIC **per chapter** as each clears derivation, not in one sweep.
-- `/mock` blueprints: per-section timing is the point (IPMAT is timed per section).
+- `/mock`: see step 1c — real sittings served whole, 14 of 16 servable, three blockers.
 - Update the `/browse` Hero "Coming soon" copy — IPMAT is no longer coming.
 - `npm run stats` and `npm run seo:dates`, and commit the generated file.
 - 4 declared exclusions and 15 reconstructed rows stay held back; re-read

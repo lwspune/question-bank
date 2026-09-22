@@ -413,3 +413,30 @@ classifies every `.ts` file in the folder, so a new file cannot escape the rule 
 Its own first version reported a false positive — the import regex used `[\s\S]*?`, which
 crossed newlines and read `import { existsSync } from "node:fs"` all the way to a later
 `from "./build"`.
+
+## `/mock` — real sittings, decided 2026-09-22
+
+The IPMAT mocks are **actual PYQs in the `/mock` section**: a mock is one real sitting
+reconstructed from the bank, the same product as the 18 faithful NDA GAT sittings. Not the
+sampled/printed kind — `scripts/bank-paper/NDA_GAT_BLUEPRINT.md` is a *content* blueprint for
+assembling a Word paper OUT of the bank, and it says a sampled paper "must never be published
+as a `mock_tests` row alongside the 18 faithful GAT sittings".
+
+48 papers are loaded, one `source_file` each, across **16 sittings** (Indore 8, Rohtak 2,
+JIPMAT 6). Measured servability:
+
+| | papers |
+|---|---|
+| complete as loaded | 39 / 48 |
+| short **only** because the exam cancelled a question | 5 |
+| short because rows are excluded or reconstructed | 4 |
+
+With grace handling, **14 of 16 sittings serve complete**. JIPMAT 2025 and 2026 are the two to
+hold rather than ship short.
+
+**Three blockers, and one of them is a Phase-4 decision to revisit:** the 8 exam-cancelled rows
+were excluded from the load, but `reconstruct.ts` says a faithful mock *includes* them as grace
+questions. There is also no per-section timer on `MockPaperBlueprint` (IPMAT is timed per
+section) and no format constraint on `MockSectionBlueprint`, which matters because the academic
+subject axis means Indore's SA and MCQ sections both draw from Mathematics and Logical
+Reasoning. Full detail, with the open unknowns: **[ROADMAP.md](../../ROADMAP.md) step 1c.**
