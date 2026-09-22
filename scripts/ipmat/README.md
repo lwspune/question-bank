@@ -18,10 +18,13 @@ figures attached.** **1,418 questions are in the bank and NOTHING is student-vis
 all PRIVATE, and the three exams are absent from `EXAM_REGISTRY`. Verified: anon reads 0
 questions and 0 options.
 
-Phase 5 (flip PUBLIC per chapter, then registry + `/mock`) is not built and **must not run
-until the keys are derived** — LR is still entirely unmeasured. **The full Phase 5 checklist
-lives in [ROADMAP.md](../../ROADMAP.md)**, at the top; read it before touching this corpus
-again.
+**Phase 3 key measurement is COMPLETE for all three subjects (2026-09-22): 124 rows
+scored blind, 0 wrong keys found, so there will be NO full blind re-derivation.** The
+evidence, the bound it justifies and the verdict live in
+[data/derive/KEY_TRUST.md](data/derive/KEY_TRUST.md) — read that before re-opening the
+question. Phase 5 (flip PUBLIC per chapter, then registry + `/mock`) is now unblocked but
+not built. **The full Phase 5 checklist lives in [ROADMAP.md](../../ROADMAP.md)**, at the
+top; read it before touching this corpus again.
 
 ### The CBSE-style grouping is HALF done, on purpose
 
@@ -155,8 +158,18 @@ self-verifying questions. VA is 507 rows and LR + Critical Reasoning another 247
 the corpus — and neither can be brute-forced. This project has already measured that gap
 once: CDS General Knowledge scored 91.6% where the assumed figure was 98–99%.
 
-So Phase 3 must **blind re-derive quant and LR**, and take a **stratified VA sample** to get
-a real accuracy number before committing to all of it.
+So Phase 3 took a **stratified blind sample of each of the three subjects** to get a real
+number before committing to all of it. **It came back clean: 124 rows scored, 0 wrong keys
+(English 37/40, Logical Reasoning 32/34, Mathematics 50/50).** All five disagreements were
+our own errors or ambiguous items, not their bad keys.
+
+**So the Worksheets comparison above does NOT hold, and a full blind re-derivation is not
+being done.** That corpus had AI-generated keys measured at ~5% wrong; this one is
+human-edited and measured at 0 wrong in 124. What the sample licenses — and the ~2.4%
+upper bound it does *not* beat — is set out in
+[data/derive/KEY_TRUST.md](data/derive/KEY_TRUST.md). The paragraph above is kept because
+its *reasoning* was right: the 15/15 self-verifying quant pass genuinely did not transfer,
+and the number that replaced it had to be measured rather than assumed.
 
 ## What not to ingest
 
@@ -333,6 +346,36 @@ deriving. That is the usable product, and a larger pass should record it per row
 This does not license skipping derivation. n=40 of 582; one sample is not a base rate; and
 agreement cannot see a misconception both passes share. **LR is still entirely unmeasured**
 and is the obvious next sample.
+
+### Result: 94.1% LR agreement (32/34), and 100% Maths (50/50)
+
+Both pinned; working in `data/derive/lr-calibration.adjudication.md` and the summary in
+[data/derive/KEY_TRUST.md](data/derive/KEY_TRUST.md). Three findings worth carrying
+forward:
+
+**The per-row confidence flag works, and is now mandatory on a derivation pass.** Recorded
+*while* deriving (before scoring) in `<name>.confidence.json`, it has separated every
+sample it was used on — high 74/74, med 8/9, low 0/1 — and has predicted **5 of 5**
+disagreements across all three passes. It costs nothing. Its limit: it cannot see a
+confident error, so it ranks rows for re-reading and is not evidence the high rows are
+right.
+
+**A `--section` sample would have measured the wrong thing, so `--subject` was added.**
+Reasoning questions sit *inside* Indore's quant sections — 50 of them — so `--section=LR`
+would have sampled only two of the three exams. The academic subject is the axis the
+taxonomy is built on and the axis a wrong key is correlated along; the source's section
+label is not.
+
+**Mathematics was the subject that mattered and the one both earlier samples missed** — 549
+rows, 38% of the corpus, 191 of the 450 Indore mock questions, and the place computational
+wrong keys concentrate (this project has seen ~22% on derivation-heavy corpora against ~0%
+on fact recall). It scored 50/50 with **16 numeric free-response rows**, where agreement
+cannot come from guessing one of four options. That makes it the strongest of the three
+samples despite arriving last.
+
+**What none of the three can measure:** the packet is text-only, so the 65 figure-bearing
+rows are outside every number above. 6 of the 40 LR rows (15%) were unanswerable for that
+reason — checked individually, and none is an ingestion defect.
 
 ## Phase 4: the PRIVATE load
 
