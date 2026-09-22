@@ -1,0 +1,228 @@
+{
+  "paper": "55/1/2",
+  "year": 2024,
+  "paperId": "2024-55-1-2",
+  "markingScheme": "out/2024-55-1-2/ms/p00.png … p21.png",
+  "rows": [
+    {
+      "hash": "bbcdc56dfa3764e2a81816493904ef2a82562269ecfd22144fae8c1d2ef634fc",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "A charged sphere of radius r has surface charge density \\(\\sigma\\). The electric field on its surface is E. If the radius of the sphere is doubled, keeping charge density the same, the ratio of the electric field on the old sphere to that on the new sphere will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): the ratio is 1 — the field is unchanged.**\n\n**The field at the surface of a charged sphere.** Apply Gauss's law to a surface just outside the sphere, of radius \\(r\\), enclosing the total charge \\(q = \\sigma \\times 4\\pi r^{2}\\):\n\n\\(E(4\\pi r^{2}) = \\dfrac{q}{\\varepsilon_0} = \\dfrac{\\sigma \\cdot 4\\pi r^{2}}{\\varepsilon_0}\\)\n\n**The \\(4\\pi r^{2}\\) cancels on both sides**, and that cancellation is the whole question:\n\n\\(E = \\dfrac{\\sigma}{\\varepsilon_0}\\)\n\nThe surface field depends **only** on the surface charge density, not on the radius at all. Doubling \\(r\\) at constant \\(\\sigma\\) therefore leaves \\(E\\) exactly as it was:\n\n\\(\\dfrac{E_{\\text{old}}}{E_{\\text{new}}} = 1\\)\n\n**Why the distractors are tempting.** The instinct is \\(E \\propto q/r^{2}\\), which would give \\(1/4\\) on doubling \\(r\\). But the charge is **not** held fixed — the question holds \\(\\sigma\\) fixed, and doubling the radius quadruples the area and therefore **quadruples the charge**. The factor of 4 gained from the charge exactly cancels the factor of 4 lost to \\(r^{2}\\).\n\nFollowing that reasoning through is worth doing explicitly:\n\n\\(E = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q}{r^{2}} \\qquad\\text{with}\\qquad q = 4\\pi r^{2}\\sigma \\qquad\\Longrightarrow\\qquad E = \\dfrac{\\sigma}{\\varepsilon_0}\\)\n\n— the same result, reached the long way.\n\n**The physical picture.** Field strength at a surface is set by how densely the field lines emerge, and that is a statement about charge per unit **area**, which is precisely \\(\\sigma\\). A bigger sphere carries more charge but spreads it over proportionally more surface, so the density of lines leaving it is unchanged.\n\nThe same result appears in two other guises worth recognising: the field just outside **any** charged conductor is \\(\\sigma/\\varepsilon_0\\) whatever its shape, and the field of an infinite charged **plane** is \\(\\sigma/2\\varepsilon_0\\) — half as much, because a plane sends its lines out both ways while a closed surface sends them out one way only."
+    },
+    {
+      "hash": "5dbfcf01f3c0f8f7237ae69ef69cc22d8b5f58e9065ab00ac0db02f60552eca7",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A student is asked to connect four cells, each of emf E and internal resistance r, in series. But she/he connects one cell wrongly in series with the other cells. The equivalent emf and the equivalent internal resistance of the combination will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "4E and 2r"
+        },
+        {
+          "label": "B",
+          "text": "4E and 3r"
+        },
+        {
+          "label": "C",
+          "text": "3E and 4r"
+        },
+        {
+          "label": "D",
+          "text": "2E and 4r"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(2E\\) and \\(4r\\).**\n\n**The emfs.** Four cells in series would normally give \\(4E\\). With one connected the wrong way round, its emf drives current the opposite way and so **subtracts**:\n\n\\(E_{eq} = E + E + E - E = 2E\\)\n\n**Not \\(3E\\)**, and this is the trap the question is built on. Reversing a cell does not merely *remove* it from the count — it **flips its sign**, so the change from \\(4E\\) is a loss of \\(2E\\), not of \\(E\\). The wrongly-connected cell is actively fighting the other three.\n\n**The internal resistances.** Resistance has no direction. Whichever way round a cell is wired, its internal resistance still sits in the current's path and still adds:\n\n\\(r_{eq} = r + r + r + r = 4r\\)\n\n**So the reversal halves the driving emf while leaving the opposition completely unchanged.** The current through any external \\(R\\) falls from \\(4E/(R + 4r)\\) to \\(2E/(R + 4r)\\) — exactly half. A single misconnected cell costs the student half the battery.\n\n**The general rule.** For \\(n\\) identical cells in series with \\(m\\) of them reversed:\n\n\\(E_{eq} = (n - 2m)E \\qquad\\text{and}\\qquad r_{eq} = nr\\)\n\nHere \\(n = 4\\), \\(m = 1\\), giving \\(2E\\) and \\(4r\\). Note that with \\(n = 4\\) and \\(m = 2\\) the emf would vanish entirely while the internal resistance stayed at \\(4r\\) — a battery that opposes itself perfectly and does nothing but get warm.\n\n**How to spot it in practice.** The symptom is a battery that delivers far less current than expected while still growing hot, since the \\(4r\\) is undiminished. Checking each cell's terminal markings is the fix."
+    },
+    {
+      "hash": "41e2e945e0022139b1cd4f018e225bf72d55dd965d1ca772b6ac522f86c942ba",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A piece of wire bent in the form of a circular loop A carries a current I. The wire is then bent into a circular loop B of two turns and carries the same current. The ratio of magnetic fields at the centre of loop A to that of loop B will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{16}\\)"
+        },
+        {
+          "label": "B",
+          "text": "16"
+        },
+        {
+          "label": "C",
+          "text": "4"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{4}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{1}{4}\\).**\n\n**The constraint that makes this a real question:** it is the **same piece of wire** both times, so the total length \\(L\\) is fixed. Winding it into more turns therefore makes each turn **smaller**.\n\n**Loop A — one turn.**\n\n\\(2\\pi R_A = L \\qquad\\Longrightarrow\\qquad R_A = \\dfrac{L}{2\\pi}\\)\n\n\\(B_A = \\dfrac{\\mu_0 I}{2R_A} = \\dfrac{\\mu_0 I \\cdot 2\\pi}{2L} = \\dfrac{\\mu_0 \\pi I}{L}\\)\n\n**Loop B — two turns.** The wire now goes round twice, so\n\n\\(2 \\times 2\\pi R_B = L \\qquad\\Longrightarrow\\qquad R_B = \\dfrac{L}{4\\pi} = \\dfrac{R_A}{2}\\)\n\nWith \\(N = 2\\) turns the fields of the turns add:\n\n\\(B_B = \\dfrac{\\mu_0 N I}{2R_B} = \\dfrac{\\mu_0 \\cdot 2 \\cdot I \\cdot 4\\pi}{2L} = \\dfrac{4\\mu_0 \\pi I}{L}\\)\n\n**The ratio.**\n\n\\(\\dfrac{B_A}{B_B} = \\dfrac{\\mu_0\\pi I/L}{4\\mu_0\\pi I/L} = \\dfrac{1}{4}\\)\n\n**Two factors of 2 compound, which is the point.** Going from one turn to two **doubles** the number of contributing turns *and* **halves** the radius, and since \\(B \\propto N/R\\), each change doubles the field. Catching only one of them gives \\(1/2\\); the answer is \\(1/4\\).\n\n**The general result.** For a fixed length of wire wound into \\(N\\) turns, \\(R = L/2\\pi N\\) and\n\n\\(B = \\dfrac{\\mu_0 N I}{2R} = \\dfrac{\\mu_0 \\pi N^{2} I}{L}\\)\n\nso \\(B \\propto N^{2}\\). Three turns would give nine times the single-turn field, four turns sixteen times — which is why the distractor \\(16\\) is offered, as the answer to the \\(N = 4\\) version of this question.\n\n**Worth noticing.** The magnetic **moment** goes the other way: \\(m = NIA = NI\\pi R^{2} \\propto N \\times 1/N^{2} = 1/N\\), so the tighter coil is a *stronger field source* at its centre but a *weaker magnet* seen from far away."
+    },
+    {
+      "hash": "ac448f4cee869dd3d7f904344d88265cc970960949ec8e59f025e71183466028",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A conducting circular loop is placed in a uniform magnetic field B = 50 mT with its plane perpendicular to the magnetic field. The radius of the loop is made to shrink at a constant rate of 1 \\(\\mathrm{mm\\,s^{-1}}\\). At the instant the radius of the loop is 4 cm, the induced emf in the loop is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\pi\\ \\mu\\mathrm{V}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2\\pi\\ \\mu\\mathrm{V}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(4\\pi\\ \\mu\\mathrm{V}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(8\\pi\\ \\mu\\mathrm{V}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(4\\pi\\ \\mu\\mathrm{V}\\).**\n\n**The flux, and what varies.** The loop's plane is perpendicular to \\(\\vec{B}\\), so the flux is simply\n\n\\(\\phi = B\\pi r^{2}\\)\n\nHere \\(B\\) is **constant** and it is the **area** that changes, as the radius shrinks — the reverse of the usual textbook case, and the only thing this question is really testing.\n\n**Differentiating.**\n\n\\(|\\varepsilon| = \\left|\\dfrac{d\\phi}{dt}\\right| = B\\pi \\cdot 2r\\left|\\dfrac{dr}{dt}\\right| = 2\\pi B r\\left|\\dfrac{dr}{dt}\\right|\\)\n\n**Substituting**, with everything in SI units — \\(B = 50\\ \\mathrm{mT} = 50 \\times 10^{-3}\\) T, \\(r = 4\\ \\mathrm{cm} = 4 \\times 10^{-2}\\) m, \\(|dr/dt| = 1\\ \\mathrm{mm\\,s^{-1}} = 10^{-3}\\ \\mathrm{m\\,s^{-1}}\\):\n\n\\(|\\varepsilon| = 2\\pi \\times (50 \\times 10^{-3}) \\times (4 \\times 10^{-2}) \\times 10^{-3}\\)\n\n\\(= 2\\pi \\times 50 \\times 4 \\times 10^{-8} = 400\\pi \\times 10^{-8}\\)\n\n\\(|\\varepsilon| = 4\\pi \\times 10^{-6}\\ \\mathrm{V} = 4\\pi\\ \\mu\\mathrm{V}\\)\n\n**Three unit conversions in one line** — milli, centi and milli again — and getting any one wrong moves the answer by a factor of ten or a thousand. That the answer comes out as a clean multiple of \\(\\pi\\) is a useful confirmation that all three were handled.\n\n**The factor of 2 from the chain rule** is the other place to slip. Differentiating \\(r^{2}\\) gives \\(2r\\,dr/dt\\), not \\(r\\,dr/dt\\); dropping the 2 gives \\(2\\pi\\ \\mu\\mathrm{V}\\), which is duly on offer.\n\n**Why the answer is \"at that instant\".** The emf depends on \\(r\\), which is shrinking, so it is **not constant** — it falls steadily to zero as the loop closes up. The value \\(4\\pi\\ \\mu\\mathrm{V}\\) belongs to the moment when \\(r = 4\\) cm and to no other.\n\n**Direction.** The flux is decreasing, so by Lenz's law the induced current flows so as to **maintain** it — and the resulting force on the loop opposes the shrinking, trying to hold the loop open."
+    },
+    {
+      "hash": "0891ab8db6da861cf7f3f7c2902fdb709b6af092c9e7998135d847c10823d831",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The electric and magnetic fields of electromagnetic waves are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "In the same phase and perpendicular to each other."
+        },
+        {
+          "label": "B",
+          "text": "In the same phase and not perpendicular to each other."
+        },
+        {
+          "label": "C",
+          "text": "Not in the same phase but are perpendicular to each other."
+        },
+        {
+          "label": "D",
+          "text": "Neither in the same phase nor perpendicular to each other."
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): in the same phase and perpendicular to each other.**\n\n**Perpendicular.** An electromagnetic wave is **transverse**, and \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of propagation form a mutually perpendicular right-handed set, with\n\n\\(\\vec{E} \\times \\vec{B} \\ \\parallel \\ \\text{direction of travel}\\)\n\nSo for a wave along \\(x\\), \\(\\vec{E}\\) might lie along \\(y\\) and \\(\\vec{B}\\) along \\(z\\) — at right angles to each other and both at right angles to the motion.\n\n**In phase.** This is the half people get wrong, so it is worth seeing why. Writing the wave as\n\n\\(E = E_0\\sin(kx - \\omega t) \\qquad\\text{and}\\qquad B = B_0\\sin(kx - \\omega t)\\)\n\nthe two carry the **same** argument: they reach their maxima together, cross zero together and reverse together.\n\n**Why they must.** The two fields sustain *each other*. Faraday's law says a changing \\(\\vec{B}\\) generates \\(\\vec{E}\\); the Ampère-Maxwell law says a changing \\(\\vec{E}\\) generates \\(\\vec{B}\\). Substituting one into the other gives the wave equation, whose solution has both fields sharing a single phase — and the same substitution forces \\(E_0 = cB_0\\). A phase lag between them would break the mutual regeneration and the wave would not propagate.\n\n**The contrast that causes the confusion.** In an **LC circuit** the electric and magnetic energies are exactly \\(90^\\circ\\) out of phase — the capacitor is fullest when the inductor is emptiest, and energy sloshes between them. An electromagnetic **wave** is not like that. Its two fields peak together, so the energy density\n\n\\(u = \\varepsilon_0 E^{2}\\)\n\npulses as a whole rather than oscillating between two stores. Nothing sloshes; the energy simply travels.\n\n**A consequence worth carrying.** Because \\(E_0 = cB_0\\) and the fields are in phase, \\(u_E = u_B\\) at every instant and every point: **the electric and magnetic fields of an electromagnetic wave carry exactly equal energy.**"
+    },
+    {
+      "hash": "5e12bc8a08a8b407d800fbe60898cb2e5e6d70f4c1567b7ab9fe6ccdb8601a6e",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "Two batteries of emfs 6 V and 3 V and internal resistances \\(0{\\cdot}8\\ \\Omega\\) and \\(0{\\cdot}2\\ \\Omega\\) respectively are connected in series to an external resistance R, as shown in figure. Find the value of R so that the potential difference across the 6 V battery be zero.",
+      "figureNote": "REQUIRED — the stem says only that the two batteries are connected \"in series\", and the RELATIVE POLARITY of the two cells (which decides whether the emfs add or oppose, and so the whole calculation) appears only in the drawing. Described: a single rectangular loop with both cells drawn on the top branch, labelled 6 V and 3 V, each carrying printed + and − terminal marks, and the external resistance R drawn on the bottom branch. Withheld: which way round the two cells face relative to each other, which is exactly the datum the question turns on. Page idx 10.",
+      "imageAttached": true,
+      "solution": "**Reading the figure.** The two batteries are connected so that their emfs **aid** — both drive current the same way round the loop. The total emf is therefore\n\n\\(E_{\\text{total}} = 6 + 3 = 9\\ \\mathrm{V}\\)\n\nand the total internal resistance is\n\n\\(r_{\\text{total}} = 0{\\cdot}8 + 0{\\cdot}2 = 1{\\cdot}0\\ \\Omega\\)\n\n**The current in the loop.**\n\n\\(I = \\dfrac{9}{R + 1}\\)\n\n**The condition to impose.** The terminal potential difference across the 6 V battery is its emf less the drop inside it:\n\n\\(V_{6} = 6 - I(0{\\cdot}8)\\)\n\nSetting this to zero:\n\n\\(6 - \\left(\\dfrac{9}{R + 1}\\right)(0{\\cdot}8) = 0\\)\n\n**Solving.**\n\n\\(\\dfrac{7{\\cdot}2}{R + 1} = 6 \\qquad\\Longrightarrow\\qquad R + 1 = 1{\\cdot}2\\)\n\n\\(\\boxed{\\ R = 0{\\cdot}2\\ \\Omega\\ }\\)\n\n**A cleaner way to see it.** Zero terminal voltage means the *whole* of the 6 V is being dropped across that battery's own internal resistance, so\n\n\\(I = \\dfrac{6}{0{\\cdot}8} = 7{\\cdot}5\\ \\mathrm{A}\\)\n\nand then \\(R + 1 = 9/7{\\cdot}5 = 1{\\cdot}2\\) gives \\(R = 0{\\cdot}2\\ \\Omega\\) in one step, without solving anything.\n\n**What is physically happening.** The 6 V battery is contributing nothing to the external circuit: everything it generates is consumed heating itself. The 3 V battery is driving the entire external current on its own — and driving it *through* the 6 V battery as well.\n\n**Why the polarity in the figure had to be checked.** Had the batteries **opposed** each other, the total emf would be \\(6 - 3 = 3\\) V, and the same condition would give \\(3/(R+1) = 7{\\cdot}5\\), hence \\(R + 1 = 0{\\cdot}4\\) and \\(R = -0{\\cdot}6\\ \\Omega\\) — a **negative** resistance, which is impossible. So the arrangement had to be the aiding one, and the arithmetic confirms what the drawing shows."
+    },
+    {
+      "hash": "c95ebc9677f6d433aaecb81617d4409f4a57c3e26b81b67248f983e10e86719b",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "How does the conductivity of an intrinsic semiconductor vary with temperature ? Explain. Show the variation in a plot.",
+      "solution": "**The conductivity of an intrinsic semiconductor INCREASES with temperature**, and it does so steeply.\n\n**Why.** In a pure semiconductor at low temperature every valence electron is locked into a covalent bond: the valence band is full, the conduction band empty, and there are **no free carriers at all**. At absolute zero such a crystal is a perfect insulator.\n\nAs the temperature rises, thermal energy begins to break covalent bonds. Each broken bond produces **two** carriers — an electron lifted into the conduction band, and the **hole** it leaves behind in the valence band, which neighbouring electrons can move into. So \\(n_e\\) and \\(n_h\\) both rise, and since\n\n\\(\\sigma = e\\big(n_e\\mu_e + n_h\\mu_h\\big)\\)\n\nthe conductivity rises with them.\n\n**The rise is exponential, not linear**, because the carrier concentration depends on the band gap as\n\n\\(n_i \\propto e^{-E_g/2kT}\\)\n\nAt room temperature \\(kT \\approx 0{\\cdot}026\\) eV against silicon's gap of \\(1{\\cdot}1\\) eV, so only a tiny fraction of bonds are broken — but that fraction climbs very rapidly as \\(T\\) increases. Silicon's intrinsic carrier density roughly **doubles for every \\(10\\) K**.\n\n**Against a competing effect.** The **mobilities** \\(\\mu_e\\) and \\(\\mu_h\\) actually *fall* as the lattice vibrates harder and scatters carriers more often. But that decrease follows a weak power law while the carrier count rises exponentially, so the carrier term wins comfortably and \\(\\sigma\\) increases overall.\n\n**The plot.** Draw conductivity \\(\\sigma\\) on the vertical axis against temperature \\(T\\) on the horizontal. The curve starts at **zero** at \\(T = 0\\), rises **slowly at first**, then climbs steeply, and at high temperature begins to flatten as the falling mobility starts to bite. It is concave upward over most of the useful range.\n\n**The contrast with a metal is the point of the question.** A metal has all the carriers it will ever have — heating adds none — so only the increased scattering matters and its conductivity **falls**. A semiconductor gains carriers faster than it loses mobility, so its conductivity **rises**. The two materials behave oppositely for the same underlying reason, and that opposite sign is what a **negative temperature coefficient of resistance** means. It is also what makes a thermistor a sensitive thermometer."
+    },
+    {
+      "hash": "616f6665895541ef7d8ed4b17b164ec622666a0173adac9d7bbdad7a91296d8d",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "Three point charges \\(\\mathrm{Q_1}\\), \\(\\mathrm{Q_2}\\) and \\(\\mathrm{Q_3}\\) are located in \\(x - y\\) plane at points \\((- d, 0)\\), (0, 0) and (d, 0) respectively. \\(\\mathrm{Q_1}\\) and \\(\\mathrm{Q_3}\\) are identical and \\(\\mathrm{Q_2}\\) is positive. What will be the nature and value of \\(\\mathrm{Q_1}\\) so that the potential energy of the system is zero ?",
+      "solution": "**Setting up.** The three charges sit on the \\(x\\)-axis at \\((-d, 0)\\), \\((0, 0)\\) and \\((d, 0)\\). The separations are therefore\n\n\\(Q_1\\text{–}Q_2 : d, \\qquad Q_2\\text{–}Q_3 : d, \\qquad Q_1\\text{–}Q_3 : 2d\\)\n\nand the outer pair is twice as far apart as either inner pair — the geometric fact the whole answer rests on.\n\n**The potential energy** is the sum over the three distinct pairs, and since \\(Q_1 = Q_3\\) (call it \\(q\\)):\n\n\\(U = \\dfrac{1}{4\\pi\\varepsilon_0}\\left[\\dfrac{qQ_2}{d} + \\dfrac{Q_2q}{d} + \\dfrac{q \\cdot q}{2d}\\right]\\)\n\n\\(U = \\dfrac{1}{4\\pi\\varepsilon_0 d}\\left[2qQ_2 + \\dfrac{q^{2}}{2}\\right]\\)\n\n**Setting \\(U = 0\\).** The constant and the \\(d\\) are non-zero, so only the bracket can vanish:\n\n\\(2qQ_2 + \\dfrac{q^{2}}{2} = 0\\)\n\nDividing through by \\(q\\) (which cannot be zero, or there would be no charges to speak of):\n\n\\(2Q_2 + \\dfrac{q}{2} = 0 \\qquad\\Longrightarrow\\qquad q = -4Q_2\\)\n\n**\\(Q_1\\) is NEGATIVE, with magnitude four times \\(Q_2\\).**\n\n\\(\\boxed{\\ Q_1 = Q_3 = -4Q_2\\ }\\)\n\n**Why negative was inevitable, before any algebra.** \\(Q_2\\) is given positive. If \\(Q_1\\) and \\(Q_3\\) were also positive, all three pair energies would be positive and their sum could never be zero. Some pair must contribute negative energy, so the outer charges must be **opposite in sign** to \\(Q_2\\). The sign is fixed by inspection; only the factor of 4 needs working out.\n\n**Where the 4 comes from.** Two attractive pairs at distance \\(d\\) must exactly cancel one repulsive pair at distance \\(2d\\). The attraction terms carry \\(2 \\times qQ_2/d\\) and the repulsion \\(q^{2}/2d\\) — so the repulsion is weakened by the factor \\(\\tfrac{1}{2}\\) from the doubled distance, and \\(q\\) must be correspondingly **larger** to make up the balance. Two effects of 2 compound into the 4.\n\n**What zero potential energy means.** It does **not** mean the system is in equilibrium or that no forces act — the forces are large. It means that assembling this configuration from infinite separation requires **no net work**: the energy released by the two attractions exactly pays for the energy needed to push the two negatives together. The system sits exactly on the boundary between bound and unbound."
+    },
+    {
+      "hash": "10ca3c0163fdce7c86867ca901f167ba38a68c4a187a6dcb7146174c71728594",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "The Bar Magnet",
+      "stem": "A bar magnet of magnetic moment \\(2{\\cdot}5\\ \\mathrm{JT^{-1}}\\) lies aligned with the direction of a uniform magnetic field of \\(0{\\cdot}32\\) T.\n(a) Find the amount of work done to turn the magnet so as to align its magnetic moment (i) normal to the field direction, and (ii) opposite to the field direction.\n(b) What is the torque on the magnet in above cases (i) and (ii) ?",
+      "solution": "**The two relations.** For a magnetic dipole of moment \\(m\\) at angle \\(\\theta\\) to a field \\(B\\):\n\n\\(U = -mB\\cos\\theta \\qquad\\text{and}\\qquad \\tau = mB\\sin\\theta\\)\n\nand the work done in turning it from \\(\\theta_1\\) to \\(\\theta_2\\) is the change in potential energy:\n\n\\(W = U_2 - U_1 = -mB\\big(\\cos\\theta_2 - \\cos\\theta_1\\big)\\)\n\nHere \\(m = 2{\\cdot}5\\ \\mathrm{J\\,T^{-1}}\\), \\(B = 0{\\cdot}32\\) T, and the magnet starts **aligned**, so \\(\\theta_1 = 0\\). The product that recurs throughout is\n\n\\(mB = 2{\\cdot}5 \\times 0{\\cdot}32 = 0{\\cdot}8\\ \\mathrm{J}\\)\n\n**(a) The work done.**\n\n*(i) Turning to \\(\\theta_2 = 90^\\circ\\), normal to the field:*\n\n\\(W = -mB(\\cos 90^\\circ - \\cos 0^\\circ) = -mB(0 - 1) = mB\\)\n\n\\(\\boxed{\\ W_{(i)} = 0{\\cdot}8\\ \\mathrm{J}\\ }\\)\n\n*(ii) Turning to \\(\\theta_2 = 180^\\circ\\), opposite to the field:*\n\n\\(W = -mB(\\cos 180^\\circ - \\cos 0^\\circ) = -mB(-1 - 1) = 2mB\\)\n\n\\(\\boxed{\\ W_{(ii)} = 1{\\cdot}6\\ \\mathrm{J}\\ }\\)\n\n**(b) The torque in each final position.**\n\n*(i) At \\(\\theta = 90^\\circ\\):*\n\n\\(\\tau = mB\\sin 90^\\circ = 0{\\cdot}8\\ \\mathrm{N\\,m}\\)\n\n*(ii) At \\(\\theta = 180^\\circ\\):*\n\n\\(\\tau = mB\\sin 180^\\circ = \\mathbf{0}\\)\n\n**The result that repays attention: at \\(180^\\circ\\) the work is MAXIMUM while the torque is ZERO.** These are not in conflict, and confusing them is the commonest error in dipole questions.\n\n**Torque** describes the *instantaneous* tendency to rotate, and at \\(180^\\circ\\) the magnet is collinear with the field, so \\(\\sin\\theta = 0\\) and nothing turns it. **Work** is the *accumulated* effort over the whole journey, and getting to \\(180^\\circ\\) meant fighting a torque that was large through the middle of the swing. Zero torque at the destination says nothing about the cost of the trip.\n\n**And the two zeros of torque are not the same.** At \\(\\theta = 0\\), \\(U = -mB\\) is a **minimum**: stable equilibrium, and a displaced magnet swings back. At \\(\\theta = 180^\\circ\\), \\(U = +mB\\) is a **maximum**: unstable, and the least disturbance sends the magnet swinging all the way round to \\(0^\\circ\\), releasing the full \\(1{\\cdot}6\\) J.\n\nNote also that \\(W_{(ii)} = 2W_{(i)}\\) exactly — the second quarter-turn costs the same as the first, because \\(\\cos\\theta\\) is symmetric about \\(90^\\circ\\)."
+    },
+    {
+      "hash": "06de85c402596f0dbee197f15a65ebd2d80f197c689056697b4481a906d0b460",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "Consider the arrangement of two coils P and Q shown in the figure. When current in coil P is switched on or switched off, a current flows in coil Q.\n(a) Explain the phenomenon involved in it.\n(b) Mention two factors on which the current produced in coil Q depends.\n(c) Give the direction of current in coil Q when there is a current in the coil P and (i) R is increased, and (ii) R is decreased.",
+      "figureNote": "REQUIRED — part (c) asks for the DIRECTION of the induced current in coil Q, which is fixed by the sense in which the two coils are wound and by the sense of the battery in coil P's circuit; neither appears anywhere in the stem. Described: two coils labelled P and Q wound on a common vertical core, P's circuit carrying a variable resistance labelled R, a cell and a key labelled K, and Q's circuit closed through a galvanometer labelled G. Withheld: the winding sense of each coil and the battery's polarity, which are exactly what discriminate clockwise from anticlockwise. Page idx 12.",
+      "imageAttached": true,
+      "solution": "**(a) The phenomenon: MUTUAL INDUCTION.**\n\nThe two coils are wound on a common core but are **not electrically connected**. When the current in coil P changes — at switch-on, at switch-off, or whenever \\(R\\) is altered — the magnetic flux it produces changes too. That flux threads coil Q, so by Faraday's law a changing flux through Q induces an emf in it:\n\n\\(\\varepsilon_Q = -M\\dfrac{dI_P}{dt}\\)\n\nwhere \\(M\\) is the **mutual inductance** of the pair. Q's circuit is closed through the galvanometer, so the induced emf drives a current and the needle deflects.\n\n**Why the current appears only at switch-on and switch-off.** \\(\\varepsilon_Q\\) depends on \\(dI_P/dt\\), not on \\(I_P\\). A **steady** current in P, however large, produces a steady flux and therefore **no** emf in Q at all — the galvanometer reads zero. Only while the current is *changing* does anything happen, which is exactly why the deflections are momentary and opposite at make and break.\n\n**(b) Two factors the current in Q depends on.**\n\n1. **The number of turns in the two coils** — more turns in P make more flux, and more turns in Q link more of it, so \\(M\\) rises with both.\n2. **The rate of change of current in P**, \\(dI_P/dt\\) — a faster change gives a larger emf and hence a larger current.\n\n(Equally acceptable: the **resistance of coil Q's circuit**, since the current is \\(\\varepsilon_Q/R_Q\\); the **relative geometry** — separation, orientation and overlap of the coils; and the **presence and permeability of the core**, since an iron core multiplies the flux and so multiplies \\(M\\).)\n\n**(c) The direction of the induced current.**\n\n**(i) When \\(R\\) is increased:** the current in P **decreases**, so the flux through Q **decreases**. By Lenz's law the induced current in Q flows so as to **oppose the decrease** — that is, to *maintain* the flux, in the same sense as P's own current. For the arrangement drawn, this is **clockwise**.\n\n**(ii) When \\(R\\) is decreased:** the current in P **increases**, so the flux through Q **increases**, and the induced current flows so as to **oppose the increase** — in the sense opposing P's current. For the arrangement drawn, **anticlockwise**.\n\n**The principle, stated so it survives a redrawn figure:** the induced current in Q always acts to *keep the flux through Q as it was*. Reduce P's current and Q tries to prop the flux up; raise P's current and Q tries to hold it down. The two answers are necessarily opposite, whatever the winding senses happen to be — it is only the words \"clockwise\" and \"anticlockwise\" that depend on how the coils are drawn."
+    },
+    {
+      "hash": "beb479682988172531cbc9da9fd932f4b3fb75ef357364b9a5d577a8e426e9ed",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Force",
+      "stem": "(a) Write two characteristic properties of nuclear force.\n(b) Draw a plot of potential energy of a pair of nucleons as a function of their separation. Write two important conclusions that can be drawn from the plot.",
+      "solution": "**(a) Two characteristic properties of the nuclear force.**\n\n**1. It is extremely short-ranged.** The nuclear force acts only over separations of a few femtometres — strongly attractive from about \\(0{\\cdot}8\\) fm to \\(2\\) fm, and falling essentially to **zero beyond about \\(3\\) fm**. Unlike gravity or the Coulomb force, it does not fall off gradually; it switches off.\n\nThis is why it is **saturated**: a nucleon binds only to its immediate neighbours, not to every other nucleon in the nucleus. That in turn is why binding energy grows in proportion to \\(A\\) rather than to \\(A^{2}\\), and why nuclear density is the same for every nucleus.\n\n**2. It is charge-independent.** The force between two protons, between two neutrons and between a proton and a neutron is **the same**, once the Coulomb repulsion between protons is set aside. The nuclear force does not care about electric charge at all — it acts between nucleons as such.\n\n(Two further properties worth knowing: it is the **strongest** of the known forces, some 100 times the electromagnetic force at these distances, which is what holds a nucleus together against the mutual repulsion of its protons; and it has a **hard repulsive core**, turning strongly repulsive below about \\(0{\\cdot}8\\) fm.)\n\n**(b) The potential energy plot.**\n\nDraw potential energy \\(U\\) (in MeV) on the vertical axis against the separation \\(r\\) (in fm) on the horizontal.\n\nComing in from large \\(r\\): the curve is essentially **zero beyond about \\(3\\) fm**, dips into negative values as \\(r\\) decreases, reaches a **minimum of about \\(-100\\) MeV** at \\(r_0 \\approx 0{\\cdot}8\\) fm, and then **rises very steeply** through zero into large positive values as \\(r\\) falls below \\(r_0\\).\n\nMark \\(r_0\\) on the axis; it is the only feature the conclusions refer to.\n\n**Two conclusions that follow from the plot.**\n\n**1. The potential energy is a minimum at \\(r = r_0 \\approx 0{\\cdot}8\\) fm**, so this is the **equilibrium separation** — the distance at which two nucleons sit with no net force between them. Because it is a *minimum* rather than a maximum, the equilibrium is **stable**: displace the nucleons either way and the force pushes them back. This is the typical nucleon spacing inside a nucleus.\n\n**2. The force reverses sign at \\(r_0\\): attractive for \\(r > r_0\\), repulsive for \\(r < r_0\\).** This follows rigorously from\n\n\\(F = -\\dfrac{dU}{dr}\\)\n\nFor \\(r > r_0\\) the curve is **rising**, so the slope is positive and \\(F\\) is negative — directed towards smaller \\(r\\), that is, **attractive**. For \\(r < r_0\\) the curve is **falling steeply**, so the slope is negative and \\(F\\) is positive — **repulsive**.\n\n**What that repulsive core explains.** It is why a nucleus cannot be compressed: nucleons resist being pushed closer than about \\(0{\\cdot}8\\) fm however hard they are squeezed. That incompressibility is precisely why nuclear density comes out the same — about \\(2{\\cdot}3 \\times 10^{17}\\ \\mathrm{kg\\,m^{-3}}\\) — for hydrogen and for uranium alike."
+    }
+  ]
+}
