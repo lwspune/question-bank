@@ -1,85 +1,56 @@
 /**
  * Phase 2 of the IPMAT pipeline: the source's labels -> our taxonomy.
  *
- * TWO AXES, DELIBERATELY SEPARATE.
+ * THE SUBJECT AXIS FOLLOWS NDA AND CDS. Both discard the paper structure and
+ * name subjects academically: NDA Paper II GAT covers English plus eight GK
+ * subjects, and there is no "GAT" or "Paper II" subject anywhere -- a Physics
+ * question from Paper II Part B simply sits under `Physics`. CDS does the same
+ * across its three papers.
  *
- *   SUBJECT  comes from the paper's SECTION (`SECTION_SUBJECTS`).
- *   CHAPTER + SUBTOPIC come from the source's topic/subtopic (`TAXONOMY_MAP`).
+ * So a question's subject comes from WHAT IT IS ABOUT -- its chapter -- not from
+ * which section of the paper it appeared in. Three subjects, shared by all three
+ * exams: Mathematics, Logical Reasoning, English. The section is not lost; it
+ * stays on the row via `source_file` (`ipmat/jipmat-2025-QA`) for the mock
+ * blueprints, which is the one place it is load-bearing.
  *
- * They are independent. A question the source tags `Logical Reasoning >
- * Logical Sequence` can appear in the QA section — it does, three times — and
- * the section is where the exam actually put it, so that is what decides the
- * subject.
+ * THIS REPLACED A SECTION-NAMED AXIS on 2026-09-22, and the gain was measured:
+ * 147 chapter rows became 114. It collapsed the 26 Indore quant chapters that
+ * existed TWICE -- once under a "Quantitative Ability (Short Answer)" subject
+ * and once under "Quantitative Ability (MCQ)" -- and it fixed the section leaks:
+ * Rohtak carried a one-question "Linear Equations" chapter under Logical
+ * Reasoning, and "Clocks and Calendars" under Quantitative Ability, because the
+ * exam had filed a few questions in the other section.
  *
- * WHY RE-AUTHOR AT ALL. Their topic names are afterboards' editorial work, not
- * the exam's, so they are not ours to ship. They are also dirty in ways that
- * would become permanent taxonomy rows: three spellings of Active & Passive,
- * two of Linear Equation(s), two of Direct & Indirect, singular and plural Bar
- * Graph(s), and `Tabular Data` filed under two different topics.
+ * WHAT WAS GIVEN UP, stated plainly: SA vs MCQ is no longer a subject. It is not
+ * lost -- `question_format` records those 148 typed-answer rows as `numeric` and
+ * /browse's Format filter (All / MCQ / Written / Numeric) exposes them, which is
+ * the right axis for a format distinction.
  *
- * HOUSE STYLE IS CDS'S. CDS is the closest analogue in the bank — an aptitude
- * exam over the same arithmetic/algebra/geometry ground — and its 26 Mathematics
- * chapters spell "and" out rather than using ampersands. NDA's older
- * "Matrices & Determinants" style is not copied into a new corpus. Several
- * chapter names are taken verbatim from CDS (`Number System`, `Time, Speed and
- * Distance`, `Ratio, Proportion and Variation`, `Percentage, Profit and Loss`,
- * `Simple and Compound Interest`, `Time and Work`, `Mensuration 3D`,
- * `Trigonometric Ratios and Identities`, `Sequence and Series`, `Data
- * Interpretation`, `Reading Comprehension`, `Vocabulary`, `Grammar`,
- * `Sentence Rearrangement`, `Spotting Errors`, `Idioms and Phrases`) so a
- * cross-exam chapter view between CDS and IPMAT actually lines up.
+ * WHY RE-AUTHOR THE LABELS AT ALL. The source's topic names are afterboards'
+ * editorial work, not the exam's, so they are not ours to ship. They are also
+ * dirty in ways that would become permanent taxonomy rows: three spellings of
+ * Active & Passive, two of Linear Equation(s), two of Direct & Indirect,
+ * singular and plural Bar Graph(s), and `Tabular Data` filed under two topics.
+ *
+ * HOUSE STYLE IS CDS'S -- the closest analogue in the bank, an aptitude exam
+ * over the same ground, whose 26 Mathematics chapters spell "and" out rather
+ * than using ampersands. Sixteen chapter names are taken verbatim from CDS, and
+ * with `English` as the subject name `English > Reading Comprehension` is now
+ * one chapter spanning NDA, CDS and all three IPMATs.
  *
  * NO CATCH-ALL CHAPTER. The source's `Miscellaneous` subtopics are folded into
  * the real chapter they belong to; a catch-all CHAPTER collects whatever does
  * not fit and rots, which is a standing lesson here.
  *
- * OPEN DECISION (raised 2026-09-22): switch the SUBJECT axis to the NDA/CDS
- * convention, which discards the paper structure and names subjects
- * academically — NDA Paper II GAT has no "GAT" subject, a Physics question from
- * it just sits under `Physics`. For IPMAT that means Mathematics / Logical
- * Reasoning / English instead of the section names below, which collapses 147
- * chapter rows to 114, removes the 26 duplicated Indore quant chapters, fixes
- * the section leaks (Rohtak has a 1-question "Linear Equations" under Logical
- * Reasoning today), and makes `English > Reading Comprehension` one chapter
- * shared with NDA and CDS. It reverses the "keep sections as subjects" call;
- * `question_format` + the /browse Format filter already carry SA vs MCQ.
- * CHEAPEST NOW, while everything is PRIVATE and nothing points at it — see the
- * Phase 5 checklist at the top of ROADMAP.md, step 1b.
- *
- * Spec: tests/ipmat-taxonomy.test.ts — and the test that matters is
- * completeness in BOTH directions: no source pair unmapped, and no map entry
- * that matches nothing.
+ * Spec: tests/ipmat-taxonomy.test.ts -- completeness is asserted in BOTH
+ * directions in two places: every source pair maps and every map entry matches a
+ * real row; every chapter has a subject and every subject owns a chapter.
  */
-import type { IpmatExamSlug } from "./config";
-
 export type TaxonomyTarget = { chapter: string; subtopic: string };
 
-/**
- * Section -> subject, per exam.
- *
- * Indore's SA and MCQ sections carry the SAME seven quant topics — the split is
- * typed answer vs four options — so both subject names say "Quantitative
- * Ability" and the bracket records which. Without that the duplication reads as
- * a mistake instead of the paper's own structure. The cost is real and was
- * accepted: Indore's Algebra rows sit 48 under MCQ and 26 under SA.
- */
-export const SECTION_SUBJECTS: Record<IpmatExamSlug, Record<string, string>> = {
-  "ipmat-indore": {
-    SA: "Quantitative Ability (Short Answer)",
-    MCQ: "Quantitative Ability (MCQ)",
-    VA: "Verbal Ability",
-  },
-  "ipmat-rohtak": {
-    QA: "Quantitative Ability",
-    LR: "Logical Reasoning",
-    VA: "Verbal Ability",
-  },
-  jipmat: {
-    QA: "Quantitative Ability",
-    LR: "Logical Reasoning",
-    VA: "Verbal Ability",
-  },
-};
+/** The three academic subjects, in the order they are presented. */
+export const IPMAT_SUBJECTS = ["Mathematics", "Logical Reasoning", "English"] as const;
+export type IpmatSubject = (typeof IPMAT_SUBJECTS)[number];
 
 /** The key a source row is looked up by. */
 export function sourceKey(topic: string | null, subtopic: string | null): string {
@@ -230,22 +201,102 @@ export const TAXONOMY_MAP: Record<string, TaxonomyTarget> = {
 };
 
 /**
+ * Which subject owns each chapter.
+ *
+ * ONE ENTRY PER CHAPTER, deliberately, rather than a subject on every
+ * `TAXONOMY_MAP` row: there are 100 source pairs but only ~53 chapters, and a
+ * per-row subject would let two pairs pointing at the same chapter disagree
+ * about which subject it belongs to. Asserted complete in both directions.
+ *
+ * Data Interpretation sits under Logical Reasoning. It is a reasoning skill,
+ * and the source already agrees — JIPMAT files it under its Logical Reasoning
+ * topic, and only Indore gives it a topic of its own.
+ */
+export const CHAPTER_SUBJECT: Record<string, IpmatSubject> = {
+  // ---------------------------------------------------------- Mathematics
+  "Sequence and Series": "Mathematics",
+  Functions: "Mathematics",
+  Polynomials: "Mathematics",
+  "Quadratic Equations": "Mathematics",
+  "Linear Equations": "Mathematics",
+  Inequalities: "Mathematics",
+  Modulus: "Mathematics",
+  "Surds and Indices": "Mathematics",
+  "Algebraic Identities": "Mathematics",
+  "Maxima and Minima": "Mathematics",
+  Logarithms: "Mathematics",
+  "Permutations and Combinations": "Mathematics",
+  Probability: "Mathematics",
+  "Set Theory": "Mathematics",
+  "Matrices and Determinants": "Mathematics",
+  "Binomial Theorem": "Mathematics",
+  "Number System": "Mathematics",
+  "Percentage, Profit and Loss": "Mathematics",
+  "Ratio, Proportion and Variation": "Mathematics",
+  "Simple and Compound Interest": "Mathematics",
+  "Time and Work": "Mathematics",
+  "Time, Speed and Distance": "Mathematics",
+  Averages: "Mathematics",
+  Statistics: "Mathematics",
+  "Mixtures and Alligation": "Mathematics",
+  Triangles: "Mathematics",
+  Circles: "Mathematics",
+  "Quadrilaterals and Polygons": "Mathematics",
+  "Mensuration 3D": "Mathematics",
+  "Trigonometric Ratios and Identities": "Mathematics",
+  "Coordinate Geometry": "Mathematics",
+
+  // ----------------------------------------------------- Logical Reasoning
+  "Data Interpretation": "Logical Reasoning",
+  "Arrangements and Puzzles": "Logical Reasoning",
+  "Coding and Decoding": "Logical Reasoning",
+  "Blood Relations": "Logical Reasoning",
+  "Directions and Distances": "Logical Reasoning",
+  "Pattern Recognition": "Logical Reasoning",
+  "Syllogisms and Venn Diagrams": "Logical Reasoning",
+  "Dice and Cubes": "Logical Reasoning",
+  "Clocks and Calendars": "Logical Reasoning",
+  "Coded Inequalities": "Logical Reasoning",
+  "Input and Output": "Logical Reasoning",
+  "Mathematical Operations": "Logical Reasoning",
+  "Games and Tournaments": "Logical Reasoning",
+  "Critical Reasoning": "Logical Reasoning",
+
+  // ---------------------------------------------------------------- English
+  "Reading Comprehension": "English",
+  "Sentence Completion": "English",
+  "Sentence Rearrangement": "English",
+  "Sentence Correction": "English",
+  "Spotting Errors": "English",
+  Vocabulary: "English",
+  "Idioms and Phrases": "English",
+  Grammar: "English",
+};
+
+/** The subject owning a chapter, or null when the chapter is unknown. */
+export function subjectOf(chapter: string): IpmatSubject | null {
+  return CHAPTER_SUBJECT[chapter] ?? null;
+}
+
+/**
  * Resolve a source row to our (subject, chapter, subtopic).
  *
- * Null when the section is not one this exam has, or the source pair is not
- * mapped — never a guess. A guessed subject would file a question under a
- * section the paper does not have.
+ * Takes no exam and no section: the subject follows the CHAPTER now, so the
+ * same source pair resolves identically everywhere. That is the point of the
+ * NDA/CDS convention — `Logical Reasoning > Logical Sequence` appears in the QA
+ * section three times, and under the old axis those three landed in a different
+ * subject from their 27 siblings.
+ *
+ * Null when the pair is unmapped or its chapter has no subject — never a guess.
  */
 export function resolveTaxonomy(
-  exam: IpmatExamSlug,
-  section: string,
   topic: string | null,
   subtopic: string | null
-): { subject: string; chapter: string; subtopic: string } | null {
-  const subject = SECTION_SUBJECTS[exam]?.[section];
-  if (!subject) return null;
+): { subject: IpmatSubject; chapter: string; subtopic: string } | null {
   const target = TAXONOMY_MAP[sourceKey(topic, subtopic)];
   if (!target) return null;
+  const subject = subjectOf(target.chapter);
+  if (!subject) return null;
   return { subject, chapter: target.chapter, subtopic: target.subtopic };
 }
 

@@ -33,7 +33,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { IPMAT_EXAMS, parsePaperFileName, sourceFileFor, type IpmatExamSlug } from "./config";
-import { resolveTaxonomy, SECTION_SUBJECTS } from "./taxonomy";
+import { resolveTaxonomy, IPMAT_SUBJECTS } from "./taxonomy";
 import { ipmatContentHash } from "./hash";
 import type { BuiltQuestion } from "./build";
 
@@ -76,7 +76,7 @@ function loadPapers(only?: IpmatExamSlug, onlyPaper?: string): Paper[] {
 
 function buildRows(paper: Paper): ParsedRowPayload[] {
   return paper.rows.map((r) => {
-    const tax = resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic);
+    const tax = resolveTaxonomy(r.sourceTopic, r.sourceSubTopic);
     if (!tax) {
       throw new Error(
         `${r.exam} ${r.year} ${r.section} Q${r.questionNumber}: no taxonomy for ${r.sourceTopic} > ${r.sourceSubTopic}`
@@ -171,7 +171,8 @@ async function ensureTaxonomy(
     }
     examIds.set(exam.slug, id);
 
-    for (const subjectName of Object.values(SECTION_SUBJECTS[exam.slug])) {
+    // The same three academic subjects for every exam — the NDA/CDS convention.
+    for (const subjectName of IPMAT_SUBJECTS) {
       const { data: sFound, error: sErr } = await client
         .from("subjects")
         .select("id")

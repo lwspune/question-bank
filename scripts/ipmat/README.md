@@ -262,20 +262,28 @@ subtopics are folded into the real chapter they belong to.
 
 ### Resulting shape
 
-| | sections as subjects (current) | if Indore quant were merged |
+| | first cut (sections as subjects) | now (NDA/CDS convention) |
 |---|---|---|
-| subject rows | **9** | 8 |
-| chapter rows | **147** | 121 |
-| subtopic rows | **205** | 173 |
-| subtopics under 3 q | **74** | 52 |
-| single-question subtopics | **42** | 30 |
-| median questions/subtopic | **4** | 5 |
+| subject rows | 9 | **9** |
+| chapter rows | 147 | **114** |
+| subtopic rows | 205 | **166** |
 
-The 26-chapter difference is Indore's quant chapters existing under **both** its SA and MCQ
-subjects, because those sections cover the same seven topics at different answer formats.
-That is the accepted cost of sections-as-subjects, and it buys something real: IPMAT Indore
-students drill SA separately precisely because it is typed-answer with no options to work
-backwards from, so it is a meaningful browse axis and not only a structural one.
+**The subject axis follows NDA and CDS** (switched 2026-09-22). Both discard the paper
+structure and name subjects academically — NDA Paper II GAT has no "GAT" or "Paper II"
+subject, a Physics question from it just sits under `Physics`. So an IPMAT question's subject
+comes from its CHAPTER, not from which section it appeared in: `Mathematics`,
+`Logical Reasoning`, `English`, the same three for all three exams.
+
+That collapsed the 26 Indore quant chapters which existed twice — once under a
+"Quantitative Ability (Short Answer)" subject and once under "Quantitative Ability (MCQ)" —
+and fixed the **section leaks**: Rohtak carried a one-question "Linear Equations" chapter
+under *Logical Reasoning*, and "Clocks and Calendars" under *Quantitative Ability*, because
+the exam had filed a few questions in the other section.
+
+**What was given up:** SA vs MCQ is no longer a subject. It is not lost — `question_format`
+records those 148 typed-answer rows as `numeric` and /browse's Format filter exposes them,
+which is the right axis for a format distinction. With `English` as a subject name,
+`English > Reading Comprehension` is now one chapter spanning NDA, CDS and all three IPMATs.
 
 ### Two invariants worth knowing
 

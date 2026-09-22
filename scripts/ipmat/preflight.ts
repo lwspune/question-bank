@@ -19,7 +19,7 @@
  * Also checks what the loader cannot recover from later:
  *   - a numeric answer that is not representable as a number, or that would
  *     lose a leading zero (a parajumble answer is an ORDER, not a quantity)
- *   - a subject name the map produces that does not exist in SECTION_SUBJECTS
+ *   - a source pair whose chapter has no subject in CHAPTER_SUBJECT
  *   - an MCQ without exactly one correct option
  *   - text that would trip the write-boundary guard
  */
@@ -131,7 +131,7 @@ function main() {
   // -------------------------------------------------------------- taxonomy join
   console.log("\nTAXONOMY");
   const unresolved = rows.filter(
-    (r) => !resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic)
+    (r) => !resolveTaxonomy(r.sourceTopic, r.sourceSubTopic)
   );
   console.log(`  rows that do not resolve   ${unresolved.length}`);
   if (unresolved.length) {
@@ -142,7 +142,7 @@ function main() {
   }
   const subjects = new Set<string>();
   for (const r of rows) {
-    const t = resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic);
+    const t = resolveTaxonomy(r.sourceTopic, r.sourceSubTopic);
     if (t) subjects.add(`${r.exam} :: ${t.subject}`);
   }
   console.log(`  subject rows to create     ${subjects.size}`);
