@@ -290,6 +290,46 @@ marking scheme, on papers already shipped — so it is a backfill candidate, not
 
 ---
 
+## Backfill ledger — the escaped space `\ ` is DROPPED by the Word export (2026-09-22)
+
+**Measured, not fixed.** The fix is one mapping in the exporter, but it changes every
+downloaded answer key in the bank, so it is a decision rather than a tidy-up.
+
+`\ ` (backslash-space, the usual way to part a number from its unit inside a math zone)
+becomes an **empty run** in OMML. Driven through the shipped helper `latexToOmml`:
+
+| LaTeX | Runs the exporter emits | Word shows |
+|---|---|---|
+| `6328\ \mathrm{nm}` | `"6328"`, `""`, `"nm"` | `6328nm` |
+| `6328\,\mathrm{nm}` | `"6328"`, `" "`, `"nm"` | `6328 nm` |
+
+`\,` survives as a real U+0020; `\ ` does not. The cause is that temml renders `\ ` as
+`<mpadded>` and mathml2omml prints **`Type not supported: mpadded`** and emits nothing for
+it. That line is already on every `audit:omml` run and has always been read as noise.
+
+**`audit:omml` cannot see this and never will as written** — it asks whether a zone
+CONVERTED, and this one converts. It just converts to the wrong thing. The same blind spot
+covers any other element mathml2omml declines: the message goes to stderr, the counter says
+0 failing zones. A gate that counts conversions is not a gate on fidelity.
+
+Scope, measured over all 80,402 rows: **8,881 solutions and 3,412 stems** carry an escaped
+space, **9,979 of the affected rows are PUBLIC**. It is bank-wide, not a CBSE-PYQ habit —
+the heaviest sources are NDA Maths mocks, Cadetprep worksheets, State Board Chemistry and
+Maths, MH-HSC Chemistry and JEE.
+
+**Do NOT fix it by rewriting 11k authored strings.** The content is correct LaTeX and renders
+correctly on `/browse`, which is the surface students actually use; only the teacher's Word
+download is affected. Two candidate fixes, both in code:
+
+1. Map `mpadded` to a single space during the MathML→OMML walk (narrow, and it also fixes
+   `\;`, `\quad` and friends if they land on the same element — unverified).
+2. Normalise `\ ` → `\,` at the export boundary only, leaving stored text untouched.
+
+Either needs a golden test in the shape of `tests/docx-solution-table.test.ts`: assert the
+rendered run carries a space, since the current suite would pass with it missing.
+
+---
+
 ## Backfill ledger — five CBSE Physics rows are unanswerable: figure referenced, no image (2026-09-22)
 
 **Surfaced by widening `audit-figures.ts`, NOT fixed.** Each needs a crop authored and
@@ -314,10 +354,12 @@ The five to crop and attach:
 | `2023-55-3-3` | Q30 | "(a) The figure shows de Broglie wavelength (λ) for two particles ..." |
 | `2023-55-5-2` | Q11 | "Figure shows a plot of stopping potential (V₀) versus 1/λ ..." |
 | `2025-55-4-3` | Q24 | — |
-| `2026-55-1-1` | Q24 | "Figure shows a narrow beam of electrons entering ... symmetrically" |
+| `2026-55-1-1` | Q24 | "Figure shows a narrow beam of electrons entering ... symmetrically" — **attached 2026-09-22** |
 
 Worth a sweep for the same one-letter class elsewhere: the regex is an **enumerated phrasing
 list**, and this is the second time it has under-matched silently.
+
+Live counts as of 2026-09-22, after the figures attached while solving papers 16-22: `REFERENCES-NO-IMAGE` **40**, `IMAGE-NO-REFERENCE` **84**, `DRAWN-OPTIONS-NO-IMAGE` **0**.
 
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 
