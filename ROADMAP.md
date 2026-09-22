@@ -1024,6 +1024,30 @@ Field FCP 3.2 s against LCP 3.6 s means the page paints nearly complete the mome
 
 ## Tech debt / refactoring
 
+### BACKFILL LEDGER — `concludedLetter` reads the ARTICLE "a" as option A (logged 2026-09-22)
+
+Found while solving CBSE 2025 Physics 55/7/1. The sentence *"Note that the answer is a temperature
+RISE"* was flagged `SOLN_A!=KEY_B`: the `answer\s*is\s*\(?([A-Da-d])\)?` pattern in
+`concludedLetter` ([scripts/practice/audit-keys.ts](scripts/practice/audit-keys.ts)) matched the
+indefinite article. The `END` lookahead does not help, because a letter followed by a space is
+exactly what an article looks like.
+
+This is a **fifth** phrasing of the class the cbse-12-pyq memory already records four of (the
+Assertion-Reason `(A)`/`(R)` labels, `option a <text>`, a closing parenthetical dismissing a
+distractor by letter, and `Hence B is …` where B names a matrix). The rule that prevents all five —
+*never leave a bare capital A–D where a probe could read it as an option label* — now has to be read
+as covering lowercase `a` after "answer is" too.
+
+**Worked around, not fixed.** The solution was reworded to *"what is asked for is a temperature
+RISE"* and the probe is green. `auditRow` is SHARED by the practice bank, JEE and cbse-12, so
+tightening it changes results across three corpora and wants its own pass.
+
+**Proposed fix, for that pass:** reject a BARE (unparenthesised) lowercase letter that is followed by
+whitespace and another word — an option conclusion is written `(A)` or ends the clause, while an
+article always introduces a noun. Worth running before/after across all three corpora and diffing the
+flag set, since the point of the probe is that its zero is trustworthy.
+
+
 ### BACKFILL LEDGER — `seo:dates --check` can never pass on a Windows working tree (logged 2026-09-19)
 
 Found while building the MHT-CET matrix generator, which copied that script's `--check` pattern.
