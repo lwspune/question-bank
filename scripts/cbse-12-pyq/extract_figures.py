@@ -246,12 +246,38 @@ def main():
                     problems.append(f"{g['hash'][:8]}: pick names {pick['pid']} p{pick['page']}, which does not exist")
                     continue
                 page, pageno = doc[pick["page"]], pick["page"]
-                rs = page_regions(page)
-                if not rs:
-                    problems.append(f"{g['hash'][:8]}: pick names a page with no figure at all")
-                    continue
                 mode = pick.get("mode")
-                if mode == "region":
+                # A SCANNED paper has no separable figures to index. Its whole
+                # page is one raster -- 2022-55-5-1 is 1654x2338 per page with
+                # ZERO text characters -- so page_regions() returns exactly one
+                # region covering everything, and `region` and `union` both
+                # resolve to the full page. `band` cannot rescue that either: it
+                # trims only vertically, and a figure sitting beside prose needs
+                # a horizontal cut too.
+                #
+                # So `rect` names the crop outright, in PDF POINTS on that page,
+                # and deliberately never consults page_regions -- there is
+                # nothing there to consult. It is the only mode that is not
+                # positional, which also makes it the only one a re-run cannot
+                # silently shift.
+                if mode == "rect":
+                    r = pick.get("rect")
+                    if (not isinstance(r, (list, tuple)) or len(r) != 4
+                            or not all(isinstance(v, (int, float)) for v in r)):
+                        problems.append(f"{g['hash'][:8]}: rect pick needs rect [x0,y0,x1,y1] in points")
+                        continue
+                    if not (r[0] < r[2] and r[1] < r[3]):
+                        problems.append(f"{g['hash'][:8]}: rect {list(r)} is empty or inverted")
+                        continue
+                    pr = page.rect
+                    if r[0] < 0 or r[1] < 0 or r[2] > pr.width or r[3] > pr.height:
+                        problems.append(
+                            f"{g['hash'][:8]}: rect {list(r)} falls outside the page "
+                            f"({pr.width:.0f} x {pr.height:.0f} pt)")
+                        continue
+                    rect = tuple(float(v) for v in r)
+                    label = f"{pick['pid']}:rect"
+                elif mode == "region":
                     # The commonest refusal is "N regions (ambiguous - which one?)",
                     # and until now the picks file had no way to answer it: union
                     # would merge a neighbouring question's figure in. `index` is
@@ -263,6 +289,10 @@ def main():
                     # Hence the bounds check below is an error, never a clamp: a
                     # silently shifted index would attach the wrong figure, which
                     # nothing downstream can detect.
+                    rs = page_regions(page)
+                    if not rs:
+                        problems.append(f"{g['hash'][:8]}: pick names a page with no figure at all")
+                        continue
                     i = pick.get("index")
                     if not isinstance(i, int) or not (1 <= i <= len(rs)):
                         problems.append(
@@ -271,6 +301,10 @@ def main():
                     rect = rs[i - 1]
                     label = f"{pick['pid']}:picked[{i}]"
                 elif mode == "union":
+                    rs = page_regions(page)
+                    if not rs:
+                        problems.append(f"{g['hash'][:8]}: pick names a page with no figure at all")
+                        continue
                     rect = (min(r[0] for r in rs), min(r[1] for r in rs),
                             max(r[2] for r in rs), max(r[3] for r in rs))
                     label = f"{pick['pid']}:picked"
