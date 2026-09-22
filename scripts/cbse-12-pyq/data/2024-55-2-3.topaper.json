@@ -1,0 +1,215 @@
+{
+  "paper": "55/2/3",
+  "year": 2024,
+  "paperId": "2024-55-2-3",
+  "markingScheme": "out/2024-55-2-3/ms/p00.png … p15.png",
+  "rows": [
+    {
+      "hash": "8a765d67605730fac881a91da5e030347a352a3aa82247182ac0d9694d6d8ffe",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "Coulomb force F versus \\(\\left(\\dfrac{1}{r^2}\\right)\\) graphs for two pairs of point charges (\\(q_1\\) and \\(q_2\\)) and (\\(q_2\\) and \\(q_3\\)) are shown in the figure. The ratio of charges \\(\\left(\\dfrac{q_1}{q_3}\\right)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sqrt{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{\\sqrt{3}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{3}\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem names no numerical value at all; both slopes exist only in the drawing. Layout described, the discriminating quantities withheld: a pair of axes with F up the vertical and \\(1/r^2\\) along the horizontal, and two straight lines drawn from the origin, one labelled \\((q_1, q_2)\\) and the other labelled \\((q_2, q_3)\\), each carrying a marked angle at the origin. Which line carries which angle, and on which side of the horizontal axis each lies, is exactly what the ratio is read from and is not described here. Page idx 4.",
+      "imageAttached": true,
+      "solution": "**The answer is (D): \\(\\dfrac{1}{3}\\).**\n\n**Why the graph is a straight line at all.** Coulomb's law is\n\n\\(F = \\dfrac{1}{4\\pi\\varepsilon_0}\\,q_aq_b\\,\\left(\\dfrac{1}{r^{2}}\\right)\\)\n\nPlotted against \\(1/r^{2}\\) rather than against \\(r\\), this is \\(y = mx\\) — a **straight line through the origin** whose gradient carries the product of the charges:\n\n\\(\\text{slope} = \\dfrac{q_aq_b}{4\\pi\\varepsilon_0}\\)\n\nThat is the whole design of the question: the awkward inverse-square dependence has been straightened out so the charges can be read off as slopes.\n\n**Reading the two slopes from the figure.** The line for \\((q_1, q_2)\\) makes \\(30^\\circ\\) with the horizontal axis; the line for \\((q_2, q_3)\\) makes \\(60^\\circ\\) **below** it.\n\n\\(\\text{slope}_1 = \\tan 30^\\circ = \\dfrac{1}{\\sqrt{3}} \\qquad\\text{and}\\qquad |\\text{slope}_2| = \\tan 60^\\circ = \\sqrt{3}\\)\n\n**Taking the ratio.** The constant \\(1/4\\pi\\varepsilon_0\\) and the shared charge \\(q_2\\) both cancel:\n\n\\(\\dfrac{\\text{slope}_1}{|\\text{slope}_2|} = \\dfrac{q_1q_2}{q_2q_3} = \\dfrac{q_1}{q_3}\\)\n\n\\(\\dfrac{q_1}{q_3} = \\dfrac{\\tan 30^\\circ}{\\tan 60^\\circ} = \\dfrac{1/\\sqrt{3}}{\\sqrt{3}} = \\dfrac{1}{3}\\)\n\n**The shared charge \\(q_2\\) is what makes the comparison possible.** Each slope alone gives only a *product* of two charges; because \\(q_2\\) appears in both pairs, dividing one slope by the other isolates the ratio of the other two. Had the two graphs involved four different charges, nothing could be extracted.\n\n**What the second line's negative slope tells us.** The \\((q_2, q_3)\\) line goes **below** the axis, so that force is **negative** — attractive — meaning \\(q_2\\) and \\(q_3\\) have **opposite** signs, while \\(q_1\\) and \\(q_2\\) have the same sign. The question asks only for the ratio's magnitude, and all four options are positive, so this does not change the answer; it does mean \\(q_1\\) and \\(q_3\\) are oppositely signed.\n\n**The trap is inverting the tangents.** Answering 3 comes from \\(\\tan 60^\\circ/\\tan 30^\\circ\\); answering \\(\\sqrt{3}\\) or \\(1/\\sqrt{3}\\) from taking a single tangent and forgetting that a ratio of two slopes is wanted."
+    },
+    {
+      "hash": "62970e0234fc0537fa1cb8d6cf4b87899263aecbfb7abd9d4cea1f04d48527e9",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "AC Generator",
+      "stem": "The emf induced in a coil rotating in a magnetic field does not depend upon the following :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Area of the coil"
+        },
+        {
+          "label": "B",
+          "text": "Resistance of the coil"
+        },
+        {
+          "label": "C",
+          "text": "Number of turns in the coil"
+        },
+        {
+          "label": "D",
+          "text": "Angular speed of rotation of the coil"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): the resistance of the coil.**\n\n**The emf of a rotating coil.** A coil of \\(N\\) turns and area \\(A\\) rotating with angular speed \\(\\omega\\) in a field \\(B\\) links flux \\(\\phi = NBA\\cos\\omega t\\), so\n\n\\(\\varepsilon = -\\dfrac{d\\phi}{dt} = NBA\\omega\\sin\\omega t\\)\n\nwith peak value\n\n\\(\\varepsilon_0 = NBA\\omega\\)\n\n**Read the symbols in that expression.** It contains \\(N\\) (the number of turns), \\(B\\), \\(A\\) (the area) and \\(\\omega\\) (the angular speed) — and **no \\(R\\)**. Three of the four options appear explicitly; resistance does not appear at all.\n\n**Why resistance cannot appear.** An emf is generated by the **changing flux**, and flux depends only on the geometry of the coil and the field. Resistance is a property of the *material and dimensions of the wire*, and it plays no part in how much flux the coil encloses or how fast that flux changes.\n\n**What resistance DOES affect.** The **current**:\n\n\\(I = \\dfrac{\\varepsilon}{R} = \\dfrac{NBA\\omega\\sin\\omega t}{R}\\)\n\nso a higher-resistance coil produces the same emf but a smaller current, and dissipates less power. The distinction between the **cause** (emf, set by flux change) and the **response** (current, limited by resistance) is exactly what the question tests.\n\n**A useful check.** Imagine the coil's ends left **open**, so no current can flow at all and \\(R\\) is effectively infinite. The emf across the open ends is still \\(NBA\\omega\\sin\\omega t\\), completely unchanged — a voltmeter would read it. That thought experiment settles the matter without any algebra: an emf exists whether or not any current is allowed to flow.\n\nThis is why an ac generator's output voltage depends on its speed of rotation and its coil design, while the load determines only how much current it delivers."
+    },
+    {
+      "hash": "cb775335444f83329371cf1eeb9694ae4653b415828960f7e80bab80395c2a45",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Power in AC Circuits and the Power Factor",
+      "stem": "In an ac circuit, the instantaneous values of current (in A) and voltage (in V) are I = 5 sin \\(\\omega t\\) and E = 200 cos \\(\\left(\\omega t + \\dfrac{\\pi}{3}\\right)\\) respectively. The phase difference between voltage and current at any instant is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{5\\pi}{6}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{5\\pi}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{5\\pi}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{3\\pi}{2}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{5\\pi}{6}\\).**\n\n**The obstacle: the two are written in different trigonometric functions.** One cannot compare the phase of a sine with the phase of a cosine by simply subtracting the arguments — the functions must first be expressed in the same form.\n\n**Convert the cosine to a sine**, using \\(\\cos\\theta = \\sin\\left(\\theta + \\dfrac{\\pi}{2}\\right)\\):\n\n\\(E = 200\\cos\\left(\\omega t + \\dfrac{\\pi}{3}\\right) = 200\\sin\\left(\\omega t + \\dfrac{\\pi}{3} + \\dfrac{\\pi}{2}\\right)\\)\n\nAdding the two fractions:\n\n\\(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{2} = \\dfrac{2\\pi + 3\\pi}{6} = \\dfrac{5\\pi}{6}\\)\n\nso\n\n\\(E = 200\\sin\\left(\\omega t + \\dfrac{5\\pi}{6}\\right)\\)\n\n**Now both are sines and the phases can be compared directly.**\n\n\\(I = 5\\sin(\\omega t) \\qquad\\text{phase } \\omega t\\)\n\n\\(E = 200\\sin\\left(\\omega t + \\dfrac{5\\pi}{6}\\right) \\qquad\\text{phase } \\omega t + \\dfrac{5\\pi}{6}\\)\n\n\\(\\boxed{\\ \\Delta\\phi = \\dfrac{5\\pi}{6}\\ }\\)\n\nwith the **voltage leading** the current by that amount.\n\n**The trap is subtracting \\(\\pi/3\\) straight off.** Reading \"the voltage carries \\(\\pi/3\\) and the current carries nothing, so the difference is \\(\\pi/3\\)\" ignores the \\(\\pi/2\\) built into the cosine itself, and \\(\\pi/3\\) is not even among the options — which is a hint that the conversion is the point of the question.\n\n**A sanity check on the size.** A phase difference must lie between \\(0\\) and \\(\\pi\\) for a passive two-terminal circuit; \\(5\\pi/6 = 150^\\circ\\) is within that range, while the other three options — \\(5\\pi/4\\), \\(5\\pi/2\\) and \\(3\\pi/2\\) — all exceed \\(\\pi\\) and are impossible for any combination of \\(R\\), \\(L\\) and \\(C\\). The answer can be identified on that ground alone.\n\n**What such a circuit would be.** With \\(\\phi\\) close to \\(\\pi\\), the voltage and current are nearly antiphase, so the power factor \\(\\cos(150^\\circ) = -0{\\cdot}87\\) is negative — meaning the element is *delivering* power rather than absorbing it. That is a source, not a passive load, which is a reminder that these algebraic exercises are not always physically realisable circuits."
+    },
+    {
+      "hash": "b4a3f734570fb6b5e9397d655faca1fb1fd250b0760acafad66b24105b8047d4",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "In four regions I, II, III and IV, the magnetic field is given by :\nI. \\(B_y = B_0 \\sin kz\\)\nII. \\(B_y = B_0 \\cos kz\\)\nIII. \\(B_y = B_0 \\sin (kz - \\omega t)\\)\nIV. \\(B_y = B_0 \\sin kz + B_0 \\cos kz\\)\nThe electromagnetic wave will exist in the region :",
+      "options": [
+        {
+          "label": "A",
+          "text": "IV"
+        },
+        {
+          "label": "B",
+          "text": "I"
+        },
+        {
+          "label": "C",
+          "text": "III"
+        },
+        {
+          "label": "D",
+          "text": "II"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): region III.**\n\n**What makes something a WAVE.** A wave is a disturbance that **travels**, so its mathematical description must contain **both position and time**, combined so that the pattern moves. The signature form is\n\n\\(f(kz - \\omega t)\\)\n\nin which the whole shape shifts along \\(z\\) at speed \\(v = \\omega/k\\).\n\n**Testing the four regions.**\n\n**I:** \\(B_y = B_0\\sin kz\\) — contains \\(z\\) but **no \\(t\\)**. This is a **static** spatial pattern, frozen in place. Nothing propagates.\n\n**II:** \\(B_y = B_0\\cos kz\\) — the same objection. Static.\n\n**III:** \\(B_y = B_0\\sin(kz - \\omega t)\\) — contains **both**, in the travelling combination. **This is a wave**, moving along \\(+z\\) with speed \\(\\omega/k\\).\n\n**IV:** \\(B_y = B_0\\sin kz + B_0\\cos kz\\) — a sum of two static patterns is still static. It simplifies to \\(B_0\\sqrt{2}\\sin\\left(kz + \\dfrac{\\pi}{4}\\right)\\), which is just another frozen sinusoid in space.\n\n**Only III has any time dependence at all**, so three of the four can be eliminated by looking for a \\(t\\) — no physics needed beyond knowing that a wave must move.\n\n**Why a static magnetic field cannot be an electromagnetic wave.** An electromagnetic wave exists because the two fields regenerate each other: a changing \\(\\vec{B}\\) induces \\(\\vec{E}\\) (Faraday), and a changing \\(\\vec{E}\\) induces \\(\\vec{B}\\) (Ampère-Maxwell). If \\(\\vec{B}\\) does not change with time, \\(\\partial\\vec{B}/\\partial t = 0\\), **no electric field is induced**, the regeneration loop never starts, and there is nothing to propagate. A magnetic field that merely varies from place to place — as in I, II and IV — is the field of some magnetostatic arrangement, not a wave.\n\n**A caution about IV**, which is the most tempting distractor: adding two functions *looks* like superposing two waves, and superposing waves can indeed give a standing wave. But a genuine standing wave requires two waves travelling in **opposite** directions, \\(\\sin(kz - \\omega t) + \\sin(kz + \\omega t)\\), and that has time dependence. Here neither term has any."
+    },
+    {
+      "hash": "e80cc54b5d40f77b06f9aa89be202fc612e2c5dd6fc4f704d02c62294e462e5d",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The momentum (in SI units) associated with a photon of energy \\(1{\\cdot}5\\) eV is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(4 \\times 10^{-27}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(8 \\times 10^{-28}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2 \\times 10^{-30}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(6 \\times 10^{-29}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(8 \\times 10^{-28}\\).**\n\n**The relation for a photon.** A photon has zero rest mass, so the relativistic energy-momentum relation \\(E^{2} = p^{2}c^{2} + m_0^{2}c^{4}\\) reduces to \\(E = pc\\), and\n\n\\(p = \\dfrac{E}{c}\\)\n\n**Convert the energy to joules**, since the answer is wanted in SI units:\n\n\\(E = 1{\\cdot}5\\ \\mathrm{eV} = 1{\\cdot}5 \\times 1{\\cdot}6 \\times 10^{-19} = 2{\\cdot}4 \\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Divide by \\(c\\).**\n\n\\(p = \\dfrac{2{\\cdot}4 \\times 10^{-19}}{3 \\times 10^{8}}\\)\n\n\\(\\boxed{\\ p = 8 \\times 10^{-28}\\ \\mathrm{kg\\,m\\,s^{-1}}\\ }\\)\n\n**Why \\(p = mv\\) does not apply.** That form is the *non-relativistic* expression, and it is simply not valid for anything travelling at \\(c\\). A photon has zero **rest mass** and non-zero momentum, and there is no contradiction between those two statements — they are linked only through the full relativistic relation above. Reaching for \\(p = mv\\) with \\(m = 0\\) gives zero, which is why no option offers it.\n\n**The alternative route**, via de Broglie, must agree and does:\n\n\\(\\lambda = \\dfrac{hc}{E} = \\dfrac{1240}{1{\\cdot}5} \\approx 827\\ \\mathrm{nm} \\qquad\\Longrightarrow\\qquad p = \\dfrac{h}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{8{\\cdot}27 \\times 10^{-7}} \\approx 8 \\times 10^{-28}\\)\n\nthe same number reached without dividing by \\(c\\) — a genuine check, since it uses \\(h\\) rather than \\(c\\) at the final step.\n\n**Orientation.** \\(1{\\cdot}5\\) eV corresponds to \\(827\\) nm, in the **near infrared**, just beyond the red end of the visible range. The momentum is minute, but not negligible in aggregate: it is exactly this quantity, summed over the enormous number of photons in a light beam, that produces **radiation pressure** — pushing a solar sail, and blowing a comet's dust tail away from the Sun."
+    },
+    {
+      "hash": "dc8aa7f6336439a28ae4df2e0a9dba317e5e9c22855d67808e3a01edbef334bd",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "An electric field E is maintained in a wire of length '\\(l\\)' and area of cross-section 'a'. Derive the relation between the current density '\\(\\sigma\\)' in the wire and the electric field E.",
+      "solution": "**A note on the symbol.** The stem denotes the **current density** by \\(\\sigma\\). That is unusual — \\(\\sigma\\) normally means *conductivity* — so the derivation below keeps the paper's notation while naming each quantity in words, to avoid any confusion about which is which.\n\n**Setting up.** A wire of length \\(l\\) and cross-sectional area \\(a\\) carries \\(n\\) free electrons per unit volume, each of charge \\(e\\) and mass \\(m\\), with mean free time \\(\\tau\\) between collisions. A uniform field \\(E\\) is maintained along it.\n\n**Step 1 — the drift velocity.**\n\nEach electron feels a force \\(eE\\) and hence an acceleration \\(eE/m\\). It does not accelerate indefinitely: collisions with the lattice randomise its motion, so over the mean free time it acquires an average drift velocity\n\n\\(v_d = \\dfrac{eE\\tau}{m}\\)\n\nThe collisions are the reason \\(v_d\\) is a *steady* drift rather than a runaway — and the reason a conductor has resistance at all.\n\n**Step 2 — the current, by counting.**\n\nIn a time \\(\\Delta t\\), every electron advances \\(v_d\\Delta t\\), so exactly those electrons within a cylinder of length \\(v_d\\Delta t\\) behind a chosen cross-section will cross it. That cylinder holds \\(n\\,a\\,v_d\\Delta t\\) electrons, carrying charge \\(n e a v_d \\Delta t\\), so\n\n\\(I = \\dfrac{\\Delta q}{\\Delta t} = n e a v_d\\)\n\n**Step 3 — the current density.**\n\nCurrent density is current per unit area:\n\n\\(\\sigma = \\dfrac{I}{a} = n e v_d\\)\n\n**Step 4 — substituting the drift velocity.**\n\n\\(\\sigma = n e \\left(\\dfrac{eE\\tau}{m}\\right)\\)\n\n\\(\\boxed{\\ \\sigma = \\dfrac{ne^{2}\\tau}{m}\\,E\\ }\\)\n\n**Reading the result.** Everything in the bracket — \\(n\\), \\(e\\), \\(\\tau\\), \\(m\\) — is a property of the **material** at a given temperature, and none of it depends on \\(E\\). So the relation is\n\n\\(\\sigma \\propto E\\)\n\na **linear** relation between current density and field, with the constant of proportionality \\(ne^{2}\\tau/m\\) being the **conductivity** of the material. Writing it as \\(E = \\rho\\sigma\\), with \\(\\rho = m/ne^{2}\\tau\\) the resistivity, is the same statement.\n\n**Two things the derivation hands over for free.**\n\nThis *is* Ohm's law in its local, point-by-point form — the macroscopic \\(V = IR\\) follows by putting \\(E = V/l\\) and \\(I = \\sigma a\\), which gives \\(V/I = \\rho l/a = R\\).\n\nAnd the linearity holds **only while \\(\\tau\\) is constant**. Heating the conductor makes the lattice vibrate more, shortening \\(\\tau\\), so the conductivity falls and the relation ceases to be a straight line. Ohm's law is therefore an approximation that holds at constant temperature, not a universal truth — which is precisely why a filament lamp is non-ohmic."
+    },
+    {
+      "hash": "4121ccc68ecb951cc36292b6472c085346c192ec13adb0c0c98493dcf9b70679",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "In Bohr model of hydrogen atom, find the ratio of period of revolution of the electron in the orbit n = 2 to that in the orbit n = 1.",
+      "solution": "**The period of revolution.** For an electron moving at speed \\(v_n\\) in a circular orbit of radius \\(r_n\\), the time for one revolution is\n\n\\(T = \\dfrac{\\text{circumference}}{\\text{speed}} = \\dfrac{2\\pi r_n}{v_n}\\)\n\n**The two Bohr results needed.** From \\(r_n \\propto n^{2}\\) and \\(mv_nr_n = nh/2\\pi\\):\n\n\\(r_n \\propto n^{2} \\qquad\\text{and}\\qquad v_n \\propto \\dfrac{1}{n}\\)\n\n(The second follows directly: \\(v_n = nh/2\\pi m r_n \\propto n/n^{2} = 1/n\\).)\n\n**Combining them.**\n\n\\(T \\propto \\dfrac{r_n}{v_n} \\propto \\dfrac{n^{2}}{1/n} = n^{3}\\)\n\n\\(\\boxed{\\ T \\propto n^{3}\\ }\\)\n\n**The ratio.**\n\n\\(\\dfrac{T_2}{T_1} = \\dfrac{(2)^{3}}{(1)^{3}} = \\dfrac{8}{1}\\)\n\n**The electron in the \\(n = 2\\) orbit takes eight times as long to go round as one in the ground state.**\n\n**Why the effect is so large.** Two factors compound, and both work the same way. The \\(n = 2\\) orbit is **four times larger** in radius, so the circumference is four times longer; and the electron travels round it at **half** the speed. Four times the distance at half the speed takes eight times as long.\n\n**A check with real numbers.** In the ground state \\(r_1 = 0{\\cdot}53\\ \\mathring{\\mathrm{A}}\\) and \\(v_1 \\approx 2{\\cdot}19 \\times 10^{6}\\ \\mathrm{m\\,s^{-1}}\\), giving \\(T_1 \\approx 1{\\cdot}5 \\times 10^{-16}\\) s — about \\(6{\\cdot}6 \\times 10^{15}\\) revolutions per second. For \\(n = 2\\), \\(T_2 \\approx 1{\\cdot}2 \\times 10^{-15}\\) s, exactly eight times longer.\n\n**A connection worth noticing.** The orbital **frequency** is \\(1/T \\propto 1/n^{3}\\) — the same \\(n^{-3}\\) dependence that the *emitted radiation* has for transitions between adjacent high-\\(n\\) levels. That agreement between the classical orbital frequency and the quantum emission frequency at large \\(n\\) is Bohr's **correspondence principle**, and it was one of the strongest early arguments for the model."
+    },
+    {
+      "hash": "0dca9a91cde95acdb6a1ca824fd96b6b605d26514f8a6cd4bccad261a31ff935",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "An ac voltage \\(v_i = 140 \\sin (100\\,\\pi t)\\) V is applied to the primary coil having 200 turns, of an ideal transformer and it supplies a power of 5 kW. If the secondary coil has 1000 turns, find :\n(a) the output voltage,\n(b) the instantaneous voltage across the secondary coil, and\n(c) the current in the secondary coil. (Take \\(\\sqrt{2} = 1{\\cdot}4\\))",
+      "solution": "**Reading the source.** \\(v_i = 140\\sin(100\\pi t)\\) V, so the **peak** primary voltage is \\(140\\) V and \\(\\omega = 100\\pi\\ \\mathrm{rad\\,s^{-1}}\\) \\((f = 50\\) Hz\\()\\).\n\n\\(V_p(\\mathrm{rms}) = \\dfrac{140}{\\sqrt{2}} = \\dfrac{140}{1{\\cdot}4} = 100\\ \\mathrm{V}\\)\n\n**The turns ratio.**\n\n\\(\\dfrac{N_s}{N_p} = \\dfrac{1000}{200} = 5\\)\n\nso this is a **step-up** transformer by a factor of 5.\n\n**(a) The output voltage.**\n\n\\(V_s = \\dfrac{N_s}{N_p}\\,V_p = 5 \\times 100\\)\n\n\\(\\boxed{\\ V_s = 500\\ \\mathrm{V (rms)}\\ }\\)\n\n**(b) The instantaneous voltage across the secondary.**\n\nThe transformer scales the voltage by 5 at **every instant**, and it does **not** change the frequency, so the waveform keeps its shape and its \\(100\\pi t\\):\n\n\\(v_s = 5 \\times 140\\sin(100\\pi t)\\)\n\n\\(\\boxed{\\ v_s = 700\\sin(100\\pi t)\\ \\mathrm{V}\\ }\\)\n\nEquivalently \\(v_s = 500\\sqrt{2}\\sin(100\\pi t)\\), since \\(500\\sqrt{2} = 700\\).\n\n**The distinction between (a) and (b) is the point of asking both.** Part (a) wants the **rms** value, \\(500\\) V — the figure a voltmeter reads and the one used for power. Part (b) wants the **instantaneous** expression, whose amplitude is the **peak** \\(700\\) V. Quoting \\(500\\) in part (b), or \\(700\\) in part (a), confuses the two.\n\n**(c) The secondary current.**\n\nFor an ideal transformer no power is lost:\n\n\\(P_s = P_p = 5\\ \\mathrm{kW} = 5000\\ \\mathrm{W}\\)\n\n\\(I_s = \\dfrac{P_s}{V_s} = \\dfrac{5000}{500}\\)\n\n\\(\\boxed{\\ I_s = 10\\ \\mathrm{A}\\ }\\)\n\n**The trade is visible in the numbers.** The primary carries \\(I_p = 5000/100 = 50\\) A at \\(100\\) V; the secondary carries \\(10\\) A at \\(500\\) V. The voltage has been multiplied by 5 and the current divided by 5, leaving the power untouched at \\(5\\) kW. **A transformer is not a source of energy** — it trades voltage against current, and the product is conserved.\n\nThis is exactly why power is transmitted at high voltage: at \\(500\\) V the line carries a fifth of the current, and since the \\(I^{2}R\\) loss goes as the **square** of the current, the loss falls by a factor of twenty-five."
+    },
+    {
+      "hash": "48ccbb5991bd92b5ba594f2d587623bf60630eebe5dbc7c062ac4e09f3924e5a",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Force",
+      "stem": "(a) Briefly discuss three characteristics of the forces between nucleons.\n(b) Which out of \\(^{8}_{4}\\mathrm{X}\\) and \\(^{5}_{3}\\mathrm{Y}\\) nuclei is more stable and why ?",
+      "solution": "**(a) Three characteristics of the forces between nucleons.**\n\n**1. They are SATURATED, because they are short-ranged.** The nuclear force acts only over a few femtometres — strongly attractive from about \\(0{\\cdot}8\\) fm to \\(2\\) fm, and effectively **zero beyond about 3 fm**. A given nucleon therefore interacts only with its **immediate neighbours**, not with every other nucleon in the nucleus.\n\nThe consequence is measurable: binding energy grows in proportion to \\(A\\) rather than to \\(A^{2}\\), which is why the binding-energy-per-nucleon curve has a plateau at all, and why nuclear density is the same for every nucleus.\n\n**2. They are CHARGE-INDEPENDENT.** Setting aside the Coulomb repulsion between protons, the force is the **same** for a neutron-neutron pair, a proton-proton pair and a neutron-proton pair. The nuclear force does not respond to electric charge; it acts between nucleons as such.\n\n**3. They are attractive beyond \\(r_0 \\approx 0{\\cdot}8\\) fm and strongly REPULSIVE below it.** The potential-energy curve has a minimum at \\(r_0\\), so nucleons sit at an equilibrium spacing: pulled together if farther apart, pushed apart if closer. This **hard repulsive core** is why nuclear matter cannot be compressed.\n\n(A fourth, equally acceptable: the nuclear force is by far the **strongest** of the known interactions at these distances — some \\(10^{38}\\) times gravity and about 100 times the electromagnetic force — which is what holds a nucleus together against the mutual repulsion of its protons.)\n\n**(b) Which of \\(^{8}_{4}\\mathrm{X}\\) and \\(^{5}_{3}\\mathrm{Y}\\) is more stable?**\n\n**\\(^{8}_{4}\\mathrm{X}\\) is the more stable of the two.**\n\n**The reason: its neutron-to-proton ratio.**\n\n\\(^{8}_{4}\\mathrm{X}: \\quad Z = 4,\\ N = 8 - 4 = 4 \\qquad\\Longrightarrow\\qquad \\dfrac{N}{Z} = 1\\)\n\n\\(^{5}_{3}\\mathrm{Y}: \\quad Z = 3,\\ N = 5 - 3 = 2 \\qquad\\Longrightarrow\\qquad \\dfrac{N}{Z} = \\dfrac{2}{3} \\approx 0{\\cdot}67\\)\n\nFor **light** nuclei the stability line sits at \\(N/Z \\approx 1\\). Neutrons contribute nuclear **attraction** without adding to the Coulomb **repulsion**, so a nucleus with too few of them is under-bound: its protons repel one another with too little nuclear force to compensate. \\(^{5}_{3}\\mathrm{Y}\\), with only two neutrons to three protons, is badly **neutron-deficient**, while \\(^{8}_{4}\\mathrm{X}\\) sits right on the \\(N = Z\\) line.\n\n**A caution worth carrying beyond the exam.** The \\(N/Z\\) rule is a genuine trend but only a trend, and these two particular nuclides are a case where it does not tell the whole story: \\(^{8}\\mathrm{Be}\\) and \\(^{5}\\mathrm{Li}\\) are **both** in fact unbound, the first splitting into two alpha particles and the second into a proton and an alpha. The question is asking which is *more* stable on the \\(N/Z\\) criterion, and on that criterion the answer is \\(^{8}_{4}\\mathrm{X}\\) — but \"more stable\" here means less unfavourable, not actually stable."
+    },
+    {
+      "hash": "9fed3a855b39469d9c02443ab9e76e3372184b2c6e758652b43f871e54fc688b",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Draw a schematic arrangement of Geiger-Marsden experiment. Briefly explain the conclusions drawn from the observations about the structure of an atom. Define 'distance of closest approach' in this case.",
+      "solution": "**The schematic arrangement.**\n\nDraw, in order along a line inside an **evacuated** chamber:\n\n1. A **source of alpha particles** — a radioactive sample such as \\(^{214}_{83}\\mathrm{Bi}\\) — enclosed in a **lead block** with a narrow channel, so that a fine collimated beam emerges in one direction only.\n2. A very thin **gold foil**, about \\(10^{-7}\\) m thick, placed across the beam.\n3. A **movable detector**: a zinc sulphide screen viewed through a microscope, mounted so it can be swung round the foil to any scattering angle \\(\\theta\\).\n\nEach alpha particle striking the screen produces a tiny flash (a scintillation), and the number of flashes per unit time is counted at each angle.\n\nThe **vacuum** matters: air would scatter the alpha particles before they reached the foil. The **thinness** of the foil matters too, so that a particle suffers at most one significant deflection.\n\n**The observations and the conclusions drawn.**\n\n| Observation | Conclusion |\n|---|---|\n| **Most** alpha particles passed straight through, undeviated | The atom is **mostly empty space** |\n| A **small fraction** were deflected through appreciable angles | There is a **concentrated positive charge** that repels them |\n| About **1 in 8000** was turned through more than \\(90^\\circ\\), a few almost straight back | That charge is packed into a **tiny, massive nucleus** |\n\n**Why the third observation is the decisive one.** To reverse an alpha particle, the target must do two things: repel it very strongly, and **not recoil** while doing so. A diffuse positive charge spread through the atom — as in Thomson's model — could never produce a field strong enough, and a light target would simply be knocked forward. Rutherford concluded that **the entire positive charge and almost all the mass** occupy a region of order \\(10^{-15}\\) to \\(10^{-14}\\) m, some \\(10^{4}\\) times smaller than the atom itself.\n\nThe rarity of large-angle events is itself the measurement: only a particle aimed almost exactly at the nucleus comes back, so *how rarely* it happens tells you *how small* the nucleus is.\n\n**Distance of closest approach.**\n\n**The least separation \\(r_0\\) that an alpha particle attains from the centre of the nucleus** — reached by a particle fired **head-on**, which decelerates, stops momentarily and reverses.\n\nAt that instant all its initial kinetic energy has been converted into electrostatic potential energy:\n\n\\(\\dfrac{1}{2}mv^{2} = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{(2e)(Ze)}{r_0}\\)\n\n\\(r_0 = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{2Ze^{2}}{\\tfrac{1}{2}mv^{2}}\\)\n\n**Why this is the crucial quantity.** At \\(r_0\\) the alpha particle has come as close as it ever will, and since it is still repelled rather than absorbed, the nucleus must be **smaller than \\(r_0\\)**. So \\(r_0\\) sets an **upper bound on the nuclear size** — the first estimate of it ever made, and it is why this experiment is the origin of the nuclear model of the atom."
+    }
+  ]
+}
