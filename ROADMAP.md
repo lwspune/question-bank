@@ -259,6 +259,37 @@ left alone.
 
 ---
 
+## CBSE keys BOTH readings of "same intensity" in photoelectric questions (2026-09-22)
+
+**Not a defect to fix — a convention to carry into every future photoelectric solution.**
+Found while solving the Physics PYQ papers; three papers already committed disagree with
+one another, and the disagreement is CBSE's, not ours.
+
+`intensity` in a photoelectric stem can mean either **energy per unit area per second**
+(W/m²) or **photons per unit area per second**. The two give opposite answers whenever the
+frequency changes, because at fixed W/m² a lower-frequency beam must carry proportionally
+MORE photons.
+
+| Paper | Keyed answer | Reading it requires |
+|---|---|---|
+| `2022-55-4-1` Q9(b)(II) | red ejects MORE electrons than yellow | energy flux (W/m²) |
+| `2025-55-5-1` Q30(ii) | saturation current REMAINS THE SAME as frequency rises | photon flux |
+| `2022-55-1-1` Q2(b)(i) | three frequencies share ONE saturation plateau | photon flux |
+
+Both readings are defensible; neither is wrong in isolation. What is not available is a
+single rule that satisfies all three keys.
+
+**How the shipped solutions handle it:** each states which reading its own keyed answer
+rests on, and does not present either as the settled meaning. That is the standing
+approach — do NOT "harmonise" them to one convention, because each follows its own paper's
+key and flipping any of them would contradict CBSE.
+
+**What is NOT done:** no sweep of the other photoelectric rows across the corpus to check
+which convention each assumes. Doing that means re-reading every such row against its own
+marking scheme, on papers already shipped — so it is a backfill candidate, not a task.
+
+---
+
 ## Backfill ledger — five CBSE Physics rows are unanswerable: figure referenced, no image (2026-09-22)
 
 **Surfaced by widening `audit-figures.ts`, NOT fixed.** Each needs a crop authored and
