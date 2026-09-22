@@ -60,6 +60,19 @@ const FIGURE_REF = new RegExp(
     // enumerated-noun list is the recurring weakness here: it under-matches in
     // silence, which is why the population to check a widening against is the
     // one the probe calls CLEAN, never the one it already flags.
+    //
+    // PLURALS WERE TRIED AND REVERTED, and the measurement is why. Allowing
+    // a trailing s on every noun was prompted by 2022-55-5-1 Q12(i) -- "which
+    // one of the following figureS" matched nothing, and that row's four
+    // OPTIONS are the drawn diagrams, so it was genuinely unanswerable.
+    // But measured over all 5,022 rows the change moved REFERENCES-NO-IMAGE
+    // 42 -> 47, and all FIVE additions were FALSE: "Which of the following
+    // graphs ..." rows whose options are carried as descriptive TEXT and that
+    // need no image at all. The stem cannot separate those from Q12(i) -- both
+    // read "which of the following <plural noun>" -- so no phrasing rule will,
+    // and polluting the serious list by 12% to catch one row is a bad trade.
+    // The signal that DOES separate them lives in the OPTIONS, not the stem,
+    // and is checked by optionsDeferToFigure() below.
     // "Draw the circuit diagram ..." does NOT match: the noun must be followed
     // by below/above/shown/shows, and there the next word is "diagram".
     String.raw`\b(?:figure|fig\.?|diagram|graph|network|circuit|arrangement|set-?up)\s+(?:below|above|shown|shows)\b`,
@@ -73,9 +86,32 @@ export function referencesFigure(text: string | null, context: string | null): b
   return FIGURE_REF.test(`${text ?? ""}\n${context ?? ""}`);
 }
 
+/**
+ * The OPTIONS are the figure, not the stem.
+ *
+ * A handful of rows ask "which of the following figures ..." where the four
+ * choices are DRAWINGS with nothing to transcribe, so the transcriber stored a
+ * placeholder ("Figure (A) as printed ... see the attached figure") instead of a
+ * description. Such a row is unanswerable without its image even though its stem
+ * may say nothing a figure-reference regex can catch — 2022-55-5-1 Q12(i) is
+ * exactly that, and widening the stem regex to reach it cost five false
+ * positives without catching anything else (see FIGURE_REF above).
+ *
+ * This is the precise test instead, and it is precise because it keys on the
+ * transcription's OWN marker rather than on CBSE's prose: 2 rows of 5,022 match
+ * it, both of them genuine. Contrast the rows that merely *sound* similar —
+ * "Which of the following graphs shows the variation of photoelectric current
+ * ..." — whose options carry real descriptions and need no image at all.
+ */
+export function optionsDeferToFigure(options: { text: string | null }[] | null): boolean {
+  if (!options?.length) return false;
+  return options.some((o) => /see the attached figure|as printed/i.test(o.text ?? ""));
+}
+
 type Row = {
   question_number: string; source_file: string; text: string | null;
   context: string | null; image_url: string | null; solution_image_url: string | null;
+  options: { text: string | null }[] | null;
 };
 
 async function main() {
@@ -89,7 +125,7 @@ async function main() {
   const rows: Row[] = [];
   for (let from = 0; ; from += 500) {
     const { data, error } = await client.from("questions")
-      .select("question_number, source_file, text, context, image_url, solution_image_url")
+      .select("question_number, source_file, text, context, image_url, solution_image_url, options(text)")
       .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
       .order("source_file").order("question_number").range(from, from + 499);
     if (error) throw new Error(error.message);
@@ -101,6 +137,7 @@ async function main() {
 
   const missing: string[] = [];
   const orphan: string[] = [];
+  const drawnOptions: string[] = [];
   let withImage = 0;
   for (const r of rows) {
     const has = !!r.image_url;
@@ -109,6 +146,7 @@ async function main() {
     const ref = `${r.source_file.replace(/^cbse-12-pyq-/, "")} Q${r.question_number}`;
     if (refs && !has) missing.push(`${ref}: ${(r.text ?? "").replace(/\s+/g, " ").slice(0, 110)}`);
     if (!refs && has) orphan.push(ref);
+    if (optionsDeferToFigure(r.options) && !has) drawnOptions.push(ref);
   }
 
   console.log(`scanned ${rows.length} pyq row(s) | ${withImage} carry an image`);
@@ -116,7 +154,9 @@ async function main() {
   for (const m of missing) console.log(`  ${m}`);
   console.log(`\nIMAGE-NO-REFERENCE (check the attach was not mis-keyed): ${orphan.length}`);
   for (const o of orphan) console.log(`  ${o}`);
-  if (!missing.length && !orphan.length) console.log(`\nclean.`);
+  console.log(`\nDRAWN-OPTIONS-NO-IMAGE (the options ARE the figure): ${drawnOptions.length}`);
+  for (const d of drawnOptions) console.log(`  ${d}`);
+  if (!missing.length && !orphan.length && !drawnOptions.length) console.log(`\nclean.`);
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message ?? e); process.exit(1); });
