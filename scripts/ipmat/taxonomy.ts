@@ -33,6 +33,19 @@
  * the real chapter they belong to; a catch-all CHAPTER collects whatever does
  * not fit and rots, which is a standing lesson here.
  *
+ * OPEN DECISION (raised 2026-09-22): switch the SUBJECT axis to the NDA/CDS
+ * convention, which discards the paper structure and names subjects
+ * academically — NDA Paper II GAT has no "GAT" subject, a Physics question from
+ * it just sits under `Physics`. For IPMAT that means Mathematics / Logical
+ * Reasoning / English instead of the section names below, which collapses 147
+ * chapter rows to 114, removes the 26 duplicated Indore quant chapters, fixes
+ * the section leaks (Rohtak has a 1-question "Linear Equations" under Logical
+ * Reasoning today), and makes `English > Reading Comprehension` one chapter
+ * shared with NDA and CDS. It reverses the "keep sections as subjects" call;
+ * `question_format` + the /browse Format filter already carry SA vs MCQ.
+ * CHEAPEST NOW, while everything is PRIVATE and nothing points at it — see the
+ * Phase 5 checklist at the top of ROADMAP.md, step 1b.
+ *
  * Spec: tests/ipmat-taxonomy.test.ts — and the test that matters is
  * completeness in BOTH directions: no source pair unmapped, and no map entry
  * that matches nothing.

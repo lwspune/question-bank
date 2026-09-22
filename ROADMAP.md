@@ -31,7 +31,49 @@ then derive from the packet alone and score with `score-derive.ts --pin`. Record
 flag per row — on the VA pass all three leads were rows flagged uncertain, so the flag is the
 usable product. **Agreement is not accuracy**; it cannot see an error both passes share.
 
-### 2. Finish the CBSE-style grouping — deliberately deferred to here
+### 1b. Adopt the NDA/CDS subject convention — raised 2026-09-22, DO IT BEFORE step 3
+
+NDA and CDS both **discard the paper structure** and name subjects academically. NDA Paper II
+GAT covers English + 8 GK subjects and there is no "GAT" or "Paper II" subject anywhere — a
+Physics question from Paper II Part B simply sits under **Physics**. IPMAT currently names its
+subjects after the paper's SECTIONS instead.
+
+Measured effect of switching (`resolveTaxonomy` remap only, no new data):
+
+| | now | NDA/CDS convention |
+|---|---|---|
+| subject rows | 9 | 9 |
+| **chapter rows** | **147** | **114** (33 fewer) |
+| Indore | QA (MCQ) 229 · QA (Short Answer) 115 · Verbal Ability 325 | Mathematics 294 · Logical Reasoning 50 · English 325 |
+| Rohtak | QA 57 · LR 55 · VA 60 | Mathematics 55 · Logical Reasoning 60 · English 57 |
+| JIPMAT | QA 197 · LR 183 · VA 197 | Mathematics 195 · Logical Reasoning 185 · English 197 |
+
+**Three things it fixes.** The 26 duplicated Indore quant chapters collapse (most of the 33).
+The SECTION LEAKS go away — Rohtak currently has a 1-question "Linear Equations" chapter under
+*Logical Reasoning* and "Clocks and Calendars" under *Quantitative Ability*, because the exam
+filed a few questions in the other section; that is visible in Rohtak's numbers shifting
+above. And **"English" rather than "Verbal Ability"** makes
+`English > Reading Comprehension` one chapter spanning NDA (2,549 PUBLIC), CDS (2,400) and all
+three IPMATs, the same cross-exam argument that put the CHAPTER names in CDS house style.
+
+**The cost, stated plainly: it reverses the earlier "keep sections as subjects" decision.**
+Indore's SA/MCQ split stops being a subject. It does not vanish — `question_format` already
+records those 148 typed-answer rows as `numeric`, and `/browse`'s Format filter (All · MCQ ·
+Written · Numeric) already exposes it, which is arguably the right axis for a format
+distinction. Confirm that trade before remapping.
+
+**WHY THE ORDER MATTERS.** This is a taxonomy rewrite and it is cheapest NOW: all 1,418 rows
+are PRIVATE, no keys are derived, and no `/notes` chapter, `/guide` playbook, `/mock`
+blueprint, principle tag or concept tag points at any of it. Phase 5 creates all of those
+attachments, and each one makes the remap more expensive. **Do this before step 3, not after.**
+
+Mechanics: it is a change to `SECTION_SUBJECTS` + `TAXONOMY_MAP` in `scripts/ipmat/taxonomy.ts`
+and a re-run of `commit.ts`, which upserts on content_hash — but the OLD subject/chapter rows
+would be orphaned, so plan the cleanup (or delete the three exams and reload; everything is
+PRIVATE and `data/build` is frozen and committed). Re-run `taxonomy-report.ts` and
+`verify-load.ts` after.
+
+### 2. Finish the CBSE-style grouping — deliberately deferred to here (do AFTER 1b)
 
 The database half is **already done**: three separate exam rows, exactly as CBSE is
 `cbse-10`/`11`/`12`. The picker half is not. Three things, in order:
