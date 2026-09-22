@@ -34,6 +34,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=cds
  *   npx tsx scripts/mocks/build.ts --paper=mht-cet          # both CET papers
  *   npx tsx scripts/mocks/build.ts --paper=jee              # JEE Mains 2025+
+ *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
@@ -57,6 +58,7 @@ import {
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
+  IPMAT_INDORE_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -80,6 +82,7 @@ import {
 } from "./cdsSittings";
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
+import { ipmatIndoreSittings, isGrace } from "./ipmatSittings";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -324,6 +327,17 @@ type SourceFileSitting = {
    * one per position, preferring `sourceFile`. MHT-CET only (3 of its sittings).
    */
   mergeWith?: string;
+  /**
+   * FURTHER source_files that are part of the SAME sitting but hold DIFFERENT
+   * questions — a fourth sitting rule, for IPMAT.
+   *
+   * Unlike `mergeWith` (two labels for ONE paper, deduped against each other),
+   * these are genuinely distinct sections of one sitting: IPMAT Indore's paper
+   * is published as three files, one per section, and a mock is the whole
+   * sitting. So the rows are simply UNIONED — no normalising, no dedupe, which
+   * is exactly what `mergeWith` must do and this must not.
+   */
+  extraFiles?: string[];
   year: number;
   slug: string;
   title: string;
@@ -363,7 +377,9 @@ async function buildFromSourceFiles(
   console.log(`\n${bp.paperLabel} — ${sittings.length} sitting(s)${only ? ` (filtered: ${only})` : ""}\n`);
 
   for (const s of sittings) {
-    const files = s.mergeWith ? [s.sourceFile, s.mergeWith] : [s.sourceFile];
+    const files = s.mergeWith
+      ? [s.sourceFile, s.mergeWith]
+      : [s.sourceFile, ...(s.extraFiles ?? [])];
     let rows = s.block
       ? await fetchPaperRows(db, chapterToSubject, {
           by: "sourceFileBlock",
@@ -572,6 +588,27 @@ function mhtCetSittings(
  * 75-question shifts back to back — so the sitting is a row RANGE within the
  * file, not the file. 2026 files are already one shift each and carry block 1.
  */
+/**
+ * IPMAT Indore sittings as the shared shape.
+ *
+ * Grace rides in `prepare`, as it does for NEET — but keyed by SECTION as well
+ * as number, because IPMAT restarts numbering in every section and a bare
+ * "Q7" would also grace SA Q7 and VA Q7.
+ */
+function ipmatSittings(): SourceFileSitting[] {
+  return ipmatIndoreSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    extraFiles: s.extraFiles,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+    questionCount: s.questionCount,
+    prepare: (rows) =>
+      rows.map((r) => (isGrace(s.grace, r.sourceFile, r.questionNumber) ? { ...r, grace: true } : r)),
+  }));
+}
+
 function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
   const sittings = deriveJeeSittings();
   const inferred = sittings.filter((s) => s.shiftInferred && !s.hold).length;
@@ -612,8 +649,11 @@ async function main() {
   const runCds = !paperFilter || paperFilter === "cds";
   const runMhtCet = !paperFilter || paperFilter === "mht-cet";
   const runJee = !paperFilter || paperFilter === "jee";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee) {
-    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee)`);
+  const runIpmat = !paperFilter || paperFilter === "ipmat-indore";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat) {
+    throw new Error(
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore)`
+    );
   }
 
   const run: RunState = { apply, publish, only, built: { n: 0 }, held: { n: 0 }, failures: [] };
@@ -655,6 +695,9 @@ async function main() {
   }
   if (runJee) {
     await buildFromSourceFiles(db, JEE_MAINS_PAPER, jeeSittings(JEE_MAINS_PAPER), run, "jeeSittings.ts");
+  }
+  if (runIpmat) {
+    await buildFromSourceFiles(db, IPMAT_INDORE_PAPER, ipmatSittings(), run, "ipmatSittings.ts");
   }
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);

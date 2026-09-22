@@ -6,6 +6,7 @@
  *   npx tsx scripts/ipmat/commit.ts -- --apply
  *   npx tsx scripts/ipmat/commit.ts -- --exam=jipmat --apply
  *   npx tsx scripts/ipmat/commit.ts -- --paper=jipmat-2025-QA --apply
+ *   npx tsx scripts/ipmat/commit.ts -- --exam=ipmat-indore --include-dropped --apply
  *
  * Goes through the existing `commitStaged` pipeline, so taxonomy auto-create,
  * the write-boundary text guard, and dedup-by-content-hash all behave exactly
@@ -57,7 +58,7 @@ type Paper = {
   rows: BuiltQuestion[];
 };
 
-function loadPapers(only?: IpmatExamSlug, onlyPaper?: string): Paper[] {
+function loadPapers(only?: IpmatExamSlug, onlyPaper?: string, includeDropped = false): Paper[] {
   const out: Paper[] = [];
   for (const f of readdirSync(BUILD_DIR).filter((x) => x.endsWith(".json"))) {
     const key = parsePaperFileName(f.replace(/\.json$/, ".html"));
@@ -66,7 +67,9 @@ function loadPapers(only?: IpmatExamSlug, onlyPaper?: string): Paper[] {
     const label = `${key.exam}-${key.year}-${key.section}`;
     if (onlyPaper && label !== onlyPaper) continue;
     const all = JSON.parse(readFileSync(join(BUILD_DIR, f), "utf8")) as BuiltQuestion[];
-    const rows = all.filter((r) => !r.reconstructed && !r.dropped && r.problems.length === 0);
+    const rows = all.filter(
+      (r) => !r.reconstructed && r.problems.length === 0 && (includeDropped || !r.dropped)
+    );
     if (rows.length) out.push({ ...key, rows });
   }
   return out.sort(
@@ -117,7 +120,13 @@ function buildRows(paper: Paper): ParsedRowPayload[] {
       };
     }
 
-    if (!answer) {
+    // A DROPPED row is keyless by definition — the exam cancelled it. It keeps
+    // its four printed options with NONE marked correct, because a faithful
+    // /mock includes the question and grades it as GRACE (full marks to all).
+    // Inventing a key here would be storing a false answer to satisfy a check.
+    // 31 bank questions already have zero correct options, so the shape is legal
+    // and precedented; `commitStaged` does not validate option correctness.
+    if (!answer && !r.dropped) {
       throw new Error(`${r.exam} ${r.year} ${r.section} Q${r.questionNumber}: MCQ with no correct option`);
     }
     return {
@@ -202,9 +211,13 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const only = arg("exam") as IpmatExamSlug | undefined;
   const onlyPaper = arg("paper");
+  // Dropped (exam-cancelled) rows are held back by default: they have no valid
+  // key and would read as broken on /browse. They are loaded only when a mock
+  // needs them for fidelity — see ROADMAP step 1c.
+  const includeDropped = process.argv.includes("--include-dropped");
   loadEnv();
 
-  const papers = loadPapers(only, onlyPaper);
+  const papers = loadPapers(only, onlyPaper, includeDropped);
   if (papers.length === 0) {
     console.error("no papers matched");
     process.exit(1);

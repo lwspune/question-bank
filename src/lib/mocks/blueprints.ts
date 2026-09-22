@@ -29,7 +29,41 @@ export type MockSectionBlueprint = {
    * those, buildMockPaper derives totals from the actual rows (soft-count).
    */
   count?: number;
+  /**
+   * Marking for THIS section, when it differs from the paper's.
+   *
+   * IPMAT Indore is +4 throughout but its Short Answer section carries NO
+   * negative marking, while both MCQ sections are -1. A single paper-level
+   * scheme would penalise every SA mistake and report a wrong score for every
+   * student. Omitted everywhere else, where the paper's scheme governs.
+   */
+  marking?: { correct: number; wrong: number };
+  /**
+   * Suffix of `questions.source_file` that identifies this section.
+   *
+   * Needed only where SUBJECT cannot separate two sections. IPMAT Indore's two
+   * quant sections both draw from Mathematics + Logical Reasoning, so subject is
+   * ambiguous — and FORMAT is too, because its 2025 Short Answer section holds
+   * one MCQ among fourteen numeric rows. `source_file` is authoritative: it
+   * records which section of the paper the exam itself printed the question in.
+   */
+  sourceFileSuffix?: string;
 };
+
+/**
+ * The marking that applies to a section — its own, else the paper's.
+ *
+ * A function rather than a field so every reader resolves the fallback the same
+ * way. Grading reads the per-QUESTION marks that `buildMockPaper` stamps from
+ * this, so a section's scheme reaches the score without the grader knowing
+ * sections exist.
+ */
+export function sectionMarking(
+  bp: MockPaperBlueprint,
+  section: MockSectionBlueprint
+): { correct: number; wrong: number } {
+  return section.marking ?? bp.marking;
+}
 
 export type MockPaperBlueprint = {
   /** Stable code within an exam, used in the slug + lookup: "maths" | "gat". */
@@ -97,6 +131,70 @@ export const NDA_GAT_PAPER: MockPaperBlueprint = {
         "Current Affairs",
       ],
       count: 100,
+    },
+  ],
+};
+
+/**
+ * IPMAT Indore — one paper, three sections, 90 questions, 360 marks.
+ *
+ * Officially 120 minutes with a **40-minute limit per section and no switching
+ * back**. The runner has a single deadline per attempt, so these ship on one
+ * combined 120-minute timer and the sectional lock is deferred — recorded in
+ * ROADMAP step 1c. Scores are unaffected; only time management is easier than
+ * the real thing.
+ *
+ * **Marking differs by section**: +4 everywhere, -1 on both MCQ sections, and
+ * **0 on Short Answer**, which has no negative marking. That is the one fact
+ * here that changes a student's score rather than their experience.
+ *
+ * **Sections are identified by `source_file` suffix, not by subject.** Both
+ * quant sections draw from Mathematics + Logical Reasoning, and format cannot
+ * separate them either — 2025's Short Answer section holds one MCQ among
+ * fourteen numeric rows.
+ *
+ * SCOPE: 2022-2026 only. Indore ran 100 questions in 2019 and 60 in the
+ * shortened 2020 and 2021 sittings; the 90-question pattern began in 2022, so
+ * those three earlier sittings need their own blueprints and are not built.
+ *
+ * SECTION ORDER is MCQ -> SA -> VA, which is how most published pattern
+ * descriptions list it. It is NOT firmly established — sources disagree, and
+ * our source numbers each section from 1 independently, so no global ordering
+ * survives in the corpus to check against. With one combined timer the order is
+ * presentational.
+ */
+export const IPMAT_INDORE_PAPER: MockPaperBlueprint = {
+  // "paper", not "indore": the exam has ONE paper and `examSlug` already says
+  // indore, so `getBlueprint("ipmat-indore", "paper")` reads cleanly.
+  code: "paper",
+  examName: "IPMAT Indore",
+  examSlug: "ipmat-indore",
+  paperLabel: "IPMAT Indore",
+  durationSecs: 120 * 60,
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    {
+      key: "qa-mcq",
+      label: "Quantitative Ability (MCQ)",
+      subjects: ["Mathematics", "Logical Reasoning"],
+      sourceFileSuffix: "MCQ",
+      count: 30,
+    },
+    {
+      key: "qa-sa",
+      label: "Quantitative Ability (Short Answer)",
+      subjects: ["Mathematics", "Logical Reasoning"],
+      sourceFileSuffix: "SA",
+      count: 15,
+      // No negative marking. The whole reason `marking` exists on a section.
+      marking: { correct: 4, wrong: 0 },
+    },
+    {
+      key: "va",
+      label: "Verbal Ability",
+      subjects: ["English"],
+      sourceFileSuffix: "VA",
+      count: 45,
     },
   ],
 };
@@ -390,6 +488,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
+  IPMAT_INDORE_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
