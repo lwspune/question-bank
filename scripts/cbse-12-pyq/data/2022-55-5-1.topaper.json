@@ -1,0 +1,321 @@
+{
+  "paper": "55/5/1",
+  "year": 2022,
+  "paperId": "2022-55-5-1",
+  "markingScheme": "out/2022-55-5-1/ms/p00.png … p10.png",
+  "rows": [
+    {
+      "hash": "7ea23b42c4d807cb62f7efc8eb347edad82b48ca52a4429146d57d0752936591",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "stem": "With the help of a circuit diagram, explain briefly how a p-n junction diode works as a half-wave rectifier.",
+      "solution": "**The circuit.** The secondary of a transformer is connected in series with a p-n junction diode and a load resistance \\(R_L\\). The ac voltage to be rectified appears across the secondary, and the output is taken across \\(R_L\\).\n\n**Working.**\n\nThe diode conducts in one direction only, and that asymmetry is the whole mechanism.\n\n*During the half-cycle that forward-biases the diode*, the p-side is positive with respect to the n-side. The diode's resistance is low, it conducts, and current flows through \\(R_L\\), producing an output voltage across it that follows the input.\n\n*During the next half-cycle*, the polarity of the secondary reverses and the diode is reverse-biased. Its resistance is now very high, essentially no current flows, and the output across \\(R_L\\) is zero.\n\nSince the input alternates, this repeats every cycle: output for one half, nothing for the other.\n\n**Waveforms.** The input is a full sinusoid, alternating above and below the time axis. The output across \\(R_L\\) is a series of **positive half-sinusoids separated by gaps** — the negative halves of the input are simply missing.\n\nThe current through the load is therefore **unidirectional**, which is rectification. But it is only *half*-wave: the negative half of every cycle is discarded rather than used, so the average output is low and the gaps make the ripple hard to smooth. A full-wave rectifier, which inverts the negative half instead of discarding it, delivers twice the average and puts its ripple at twice the frequency, which a given capacitor filters far better."
+    },
+    {
+      "hash": "cd4129f37d7b5d25e727f125420d09fe74cc3cd4b61cb1d3a1c53f086623afc4",
+      "ref": "Q2a",
+      "questionNumber": "2 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "What results do you expect if \\(\\alpha\\)-particle scattering experiment is repeated using a thin sheet of hydrogen in place of a gold foil ? Explain. (Hydrogen is a solid at temperature below 14K)",
+      "solution": "**Expected result: no large-angle scattering at all.** The characteristic result of the gold-foil experiment — a few alpha particles turned through more than \\(90^\\circ\\), some almost straight back — would **not** be observed with hydrogen.\n\n**Why.** A large deflection requires two things of the target: a concentrated positive charge to repel the alpha particle strongly, and enough **mass** to stay put while doing so.\n\nHydrogen fails on both counts.\n\n*Charge.* The hydrogen nucleus has \\(Z = 1\\) against gold's \\(Z = 79\\), so the Coulomb repulsion at any given separation is 79 times weaker.\n\n*Mass — the decisive one.* A hydrogen nucleus is a single proton, about **one-quarter** the mass of the alpha particle (4 u). In a collision the light target simply **recoils**: the massive alpha particle drives it forward and carries on with little change of direction. Elementary mechanics puts a hard ceiling on the deflection — a projectile striking a target four times lighter than itself can be scattered through at most about \\(14^\\circ\\), whatever the impact parameter.\n\nBy contrast a gold nucleus is about 197 u, some fifty times the alpha particle's mass. It barely recoils, so the alpha particle can be turned right back.\n\nSo the pattern would show only small-angle scattering, with the recoiling protons themselves detectable. Rutherford's inference — a tiny, massive, positively charged nucleus — rests on using a **heavy** target, and the experiment would not have revealed it with hydrogen."
+    },
+    {
+      "hash": "300f27e4d8d07cbf1a3bf5b687555e03e8dbfcfceba86b90b2c6fe96a4dd9d2c",
+      "ref": "Q2b",
+      "questionNumber": "2 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Why it is the frequency and not the intensity of light source that determines whether emission of photoelectrons will occur or not ? Explain.",
+      "solution": "Because light delivers its energy in **indivisible quanta**, and it is the size of one quantum — not how many arrive — that decides whether a single electron can be freed.\n\n**The photon picture.** Light of frequency \\(\\nu\\) consists of photons each carrying energy \\(h\\nu\\). A photoelectron is released by the absorption of **one whole photon** by **one** electron; the process is all-or-nothing, and an electron cannot accumulate energy from several photons.\n\nAn electron needs at least the work function \\(\\phi_0\\) to escape the surface. So emission occurs if and only if\n\n\\(h\\nu \\geq \\phi_0 \\qquad\\text{that is}\\qquad \\nu \\geq \\nu_0 = \\dfrac{\\phi_0}{h}\\)\n\nThis condition contains **only the frequency**. Raising the intensity sends more photons per second, but each one still carries the same \\(h\\nu\\); if that is less than \\(\\phi_0\\), a million such photons free no electron at all, because no electron can absorb two of them.\n\nSo **frequency decides whether emission happens; intensity decides only how many electrons come out once it does.**\n\n**Why the wave picture fails here.** On a wave description the energy arrives continuously and spreads over the whole surface, so a bright enough beam of any frequency should eventually deliver enough energy to any electron. That predicts no threshold frequency and a measurable time lag at low intensity. Experiment shows a sharp threshold and emission within about \\(10^{-9}\\) s. The existence of \\(\\nu_0\\) is thus the most direct evidence for the quantum nature of light."
+    },
+    {
+      "hash": "13166778c527f5ee6e5906c39ddcd2e8c62170611c9a36e15d36668facdea7cf",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Special Purpose p-n Junction Diodes",
+      "stem": "Why a photo-diode is operated in reverse bias whereas current in the forward bias is much larger than that in the reverse bias ? Explain.\nMention its two uses.",
+      "solution": "**Why reverse bias, despite the forward current being far larger.**\n\nThe question contains its own apparent paradox: the forward current is perhaps a thousand times the reverse current, so why not use the larger signal? Because a photodiode does not measure current — it measures a **change** in current produced by light, and what matters is how large that change is *relative to the current already flowing*.\n\nIlluminating the junction with \\(h\\nu > E_g\\) creates electron–hole pairs, adding a photocurrent \\(\\Delta I\\).\n\n*In reverse bias* the standing current is only the reverse saturation current, a few microamperes carried by minority carriers. The photo-generated carriers are minority carriers too, and the wide depletion layer's strong field sweeps them out efficiently. So \\(\\Delta I\\) is comparable to — often much larger than — the dark current, and the **fractional change is large and easily measured**.\n\n*In forward bias* the standing current is already milliamperes of majority-carrier current. The same \\(\\Delta I\\) is then a negligible fraction of it, lost in the noise.\n\nSo the large forward current is precisely the problem: it swamps the signal. Reverse bias gives a small, stable baseline against which the light-induced change stands out. The reverse photocurrent is also very nearly **proportional to the light intensity** over a wide range, which is what a detector needs.\n\n**Two uses:**\n\n- **Optical signal detection** — as the receiver in fibre-optic communication, converting light pulses back into electrical ones.\n- **Smoke detectors and light-operated switches**, where an interruption or change in a light beam must be sensed.\n\n(Also in camera light meters, remote-control receivers and medical instruments.)"
+    },
+    {
+      "hash": "74f6af981ec39828f7c1591116529cff758aa7c0637865384b638c3b3052cce1",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Draw a graph showing the variation of number of particles scattered (N) with the scattering angle \\(\\theta\\) in Geiger-Marsden experiment. Why only a small fraction of the particles are scattered at \\(\\theta > 90^\\circ\\) ? Mention two limitations of Rutherford nuclear model of an atom.",
+      "solution": "**The graph.** Plot the number \\(N\\) of scattered alpha particles against the scattering angle \\(\\theta\\). The curve starts extremely high at small \\(\\theta\\) and falls very steeply — over several orders of magnitude, so a logarithmic vertical scale is usual — then flattens into a long tail that stays just above zero out to \\(\\theta = 180^\\circ\\). The form is \\(N \\propto \\cosec^{4}(\\theta/2)\\).\n\n**Why so few are scattered beyond \\(90^\\circ\\).**\n\nA large deflection requires a very close approach to the nucleus, which means a very small **impact parameter**. The number of particles with impact parameter less than \\(b\\) is proportional to the target **area** \\(\\pi b^{2}\\), so demanding a small \\(b\\) shrinks the effective target quadratically.\n\nAnd the nucleus is extraordinarily small: about \\(10^{-15}\\) m across against an atomic radius of \\(10^{-10}\\) m — a linear ratio of \\(10^{-5}\\), hence an area ratio of \\(10^{-10}\\). Almost the entire atom is empty space through which an alpha particle passes essentially undisturbed. Only about \\(0{\\cdot}14\\%\\) are deflected by more than \\(1^\\circ\\), and far fewer beyond \\(90^\\circ\\).\n\nThe rarity is therefore not incidental — it is the **measurement**. It is what tells us how small the nucleus is.\n\n**Two limitations of Rutherford's model.**\n\n**(i) It cannot explain the stability of the atom.** An electron in a circular orbit is continuously accelerating, and classical electromagnetism requires an accelerating charge to radiate. Losing energy, the electron would spiral into the nucleus in about \\(10^{-8}\\) s. Matter would not exist.\n\n**(ii) It cannot explain the line spectra of atoms.** As the electron spiralled inward its orbital frequency would change continuously, so it would radiate a **continuous** spectrum. What is observed instead is a set of sharp, discrete lines at characteristic frequencies.\n\nBoth failures are failures of *classical* physics applied to the atom, and both were addressed by Bohr's quantisation postulates."
+    },
+    {
+      "hash": "eee659e35ed57e496ddc2bbee95f9b34ca5bc79c2d7c5a52e7e00169c5f1448a",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "(i) Draw V-I characteristics of a p-n Junction diode.\n(ii) Differentiate between the threshold voltage and the breakdown voltage for a diode.\n(iii) Write the property of a junction diode which makes it suitable for rectification of ac voltages.",
+      "solution": "**(i) The V–I characteristics.**\n\nBoth branches are drawn on one pair of axes, but with different current scales.\n\n*Forward bias (first quadrant).* The current is negligible until the applied voltage reaches the **threshold voltage** — about \\(0{\\cdot}3\\) V for germanium and \\(0{\\cdot}7\\) V for silicon — and then rises very steeply, almost exponentially. Current is read in **milliamperes**.\n\n*Reverse bias (third quadrant).* A very small, nearly constant reverse saturation current of a few **microamperes** flows, almost independent of voltage, until the **breakdown voltage** is reached, where the reverse current increases abruptly and sharply.\n\nThe change of scale between quadrants is itself part of the message: on a single scale the reverse branch would be indistinguishable from the voltage axis.\n\n**(ii) Threshold voltage against breakdown voltage.**\n\n| | Threshold (cut-in) voltage | Breakdown voltage |\n|---|---|---|\n| Bias | Forward | Reverse |\n| Meaning | The forward voltage above which the diode begins to conduct appreciably | The reverse voltage at which the reverse current suddenly increases sharply |\n| Cause | The applied voltage has overcome the junction's barrier potential | The junction's field becomes strong enough to strip electrons (Zener) or to trigger avalanche ionisation |\n| Magnitude | Small — \\(0{\\cdot}3\\) V (Ge), \\(0{\\cdot}7\\) V (Si) | Large — typically tens of volts |\n| Consequence | Normal operation begins | An ordinary diode may be destroyed; a Zener diode is designed to operate here |\n\n**(iii) The property that makes it a rectifier.**\n\nIts **unidirectional conduction**: the diode offers a low resistance when forward biased and a very high resistance when reverse biased. Fed an alternating voltage, it passes current during the half-cycles that forward-bias it and blocks the others, so the current through a load is unidirectional even though the source alternates."
+    },
+    {
+      "hash": "4b8c8fd25d2d051e291a185d91435d369fcb8698d7226603686d69b4fa2cfe2f",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "In a fission event of \\({}^{238}_{92}\\mathrm{U}\\) by fast moving neutrons, no neutrons are emitted and final products, after the beta decay of the primary fragments, are \\({}^{140}_{58}\\mathrm{Ce}\\) and \\({}^{99}_{44}\\mathrm{Ru}\\). Calculate Q for this process. Neglect the masses of electrons/positrons emitted during the intermediate steps.\nGiven : \\(m\\left({}^{238}_{92}\\mathrm{U}\\right) = 238.05079\\mathrm{u};\\ m\\left({}^{140}_{58}\\mathrm{Ce}\\right) = 139.90543\\mathrm{u}\\)\n\\(m\\left({}^{99}_{44}\\mathrm{Ru}\\right) = 98.90594\\mathrm{u};\\ m\\left({}^{1}_{0}\\mathrm{n}\\right) = 1.008665\\mathrm{u}\\)",
+      "solution": "**The reaction.**\n\n\\({}^{238}_{92}\\mathrm{U} + {}^{1}_{0}n \\longrightarrow {}^{140}_{58}\\mathrm{Ce} + {}^{99}_{44}\\mathrm{Ru}\\)\n\nThe problem states that no neutrons are emitted and that the beta decays are to be ignored, so the bookkeeping is: mass number \\(238 + 1 = 239 = 140 + 99\\) ✓, while the atomic number rises from \\(92\\) to \\(58 + 44 = 102\\) — the extra ten units of charge are carried away by the ten beta particles whose masses the question tells us to neglect.\n\n**Mass defect.**\n\n\\(\\Delta m = \\left[m({}^{238}\\mathrm{U}) + m_n\\right] - \\left[m({}^{140}\\mathrm{Ce}) + m({}^{99}\\mathrm{Ru})\\right]\\)\n\n\\(\\Delta m = (238{\\cdot}05079 + 1{\\cdot}008665) - (139{\\cdot}90543 + 98{\\cdot}90594)\\)\n\n\\(\\Delta m = 239{\\cdot}059455 - 238{\\cdot}81137\\)\n\n\\(\\Delta m = 0{\\cdot}248085\\ \\text{u}\\)\n\n**Q value.**\n\n\\(Q = \\Delta m \\times 931{\\cdot}5\\ \\mathrm{MeV} = 0{\\cdot}248085 \\times 931{\\cdot}5\\)\n\n\\(Q = 231{\\cdot}09\\ \\text{MeV}\\)\n\n**The Q value is positive**, so the reaction releases energy and is energetically possible — as it must be, since uranium lies far above iron on the binding-energy curve and splitting it moves its nucleons towards the peak.\n\nThe instruction to neglect the electron masses is what makes the atomic masses safe to use directly. Ten beta particles at \\(0{\\cdot}00055\\) u each amount to about \\(0{\\cdot}0055\\) u, roughly \\(5\\) MeV — a 2% correction, and small enough not to disturb the conclusion."
+    },
+    {
+      "hash": "fa09d68a15f85f9b3d290e3175c9332f28ad18e6dba44402875b4c940a3ddf56",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction",
+      "stem": "How can you differentiate whether a pattern is produced by a single slit or double slits ? Derive the expression for the angular position of (i) bright and (ii) dark fringes produced in a single slit diffraction.",
+      "solution": "**Telling the two patterns apart.**\n\nTwo differences settle it:\n\n**Intensity.** In a **single-slit** diffraction pattern the central band is overwhelmingly the brightest and the intensity of the successive maxima **falls off rapidly** on either side — the first secondary maximum is only about 4·7% of the central peak. In a **double-slit** interference pattern all the bright fringes have **nearly the same intensity**.\n\n**Width.** In a single-slit pattern the **central maximum is twice as wide** as any of the bands beyond it. In a double-slit pattern **all the fringes have the same width** \\(\\beta = \\lambda D/d\\).\n\nSo a pattern with one dominant, double-width central band that fades quickly outwards is diffraction; a pattern of uniform, equally bright, equally spaced fringes is interference.\n\n**Deriving the angular positions for a single slit.**\n\nLet the slit have width \\(a\\) and consider light diffracted at an angle \\(\\theta\\). The path difference between the wavelets from the two edges of the slit is\n\n\\(\\Delta p = a\\sin\\theta\\)\n\n**(i) Bright fringes (secondary maxima).**\n\nDivide the slit into an odd number of equal strips. Wavelets from pairs of adjacent strips cancel, and one strip is left over to contribute unopposed — which is why a maximum occurs when the total path difference is an **odd multiple of a half-wavelength**:\n\n\\(a\\sin\\theta = (2n + 1)\\dfrac{\\lambda}{2}, \\qquad n = 1, 2, 3, \\ldots\\)\n\n\\(\\sin\\theta = \\dfrac{(2n+1)\\lambda}{2a}\\)\n\n**(ii) Dark fringes (minima).**\n\nDivide the slit into an even number of strips. Every strip is then exactly cancelled by its partner, leaving nothing, so a minimum occurs when the path difference is a **whole number of wavelengths**:\n\n\\(a\\sin\\theta = n\\lambda, \\qquad n = 1, 2, 3, \\ldots\\)\n\n\\(\\sin\\theta = \\dfrac{n\\lambda}{a}\\)\n\nNote that \\(n = 0\\) is excluded from the minima — at \\(\\theta = 0\\) every wavelet arrives in phase, which is the central maximum. That exclusion is exactly why the central band spans from \\(-\\lambda/a\\) to \\(+\\lambda/a\\) and so is **twice** as wide as every band after it."
+    },
+    {
+      "hash": "dbe8835ad8a7feadb79eb80cef675249833b355c85246d7bfaf8bbf116aeb182",
+      "ref": "Q8a",
+      "questionNumber": "8 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "(i) Define SI unit of power of a lens.\n(ii) A plano convex lens is made of glass of refractive index 1.5. The radius of curvature of the convex surface is 25 cm.\n(ii.i) Calculate the focal length of the lens.\n(ii.ii) If an object is placed 50 cm in front of the lens, find the nature and position of the image formed.",
+      "solution": "**(i) SI unit of power of a lens.**\n\nThe SI unit is the **dioptre (D)**. One dioptre is the power of a lens whose focal length is **one metre**:\n\n\\(P = \\dfrac{1}{f\\ (\\text{in metres})}\\)\n\nIt is positive for a converging lens and negative for a diverging one.\n\n**(ii.i) Focal length of the plano-convex lens.**\n\nOne face is plane \\((R \\to \\infty)\\) and the other convex with \\(R = 25\\) cm. By the lens-maker's formula,\n\n\\(\\dfrac{1}{f} = (\\mu - 1)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right) = (1{\\cdot}5 - 1)\\left(\\dfrac{1}{25} - \\dfrac{1}{\\infty}\\right)\\)\n\n\\(\\dfrac{1}{f} = 0{\\cdot}5 \\times \\dfrac{1}{25} = \\dfrac{1}{50}\\)\n\n\\(f = 50\\ \\text{cm}\\)\n\n**(ii.ii) Object 50 cm in front of the lens.**\n\n\\(u = -50\\) cm, \\(f = +50\\) cm:\n\n\\(\\dfrac{1}{v} - \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{50} + \\dfrac{1}{(-50)} = 0\\)\n\n\\(v = \\infty\\)\n\n**The object sits exactly at the focus of the lens, so the emergent rays are parallel and no image is formed at any finite distance — the image is at infinity.**\n\nThis is the one object position for which a converging lens forms no locatable image at all. Rays from a point at F emerge parallel to one another: they neither converge to a real image nor diverge from a virtual one. An eye looking through the lens would see the object as though infinitely far away, which is exactly how the eyepiece of a telescope in normal adjustment is used.\n\n(The marking scheme computes \\(v = \\infty\\) correctly and then states \"the image will be real and inverted\". There is no image to describe as either: a real image is one the light actually converges to, and parallel rays converge nowhere. The two parts of that answer cannot both stand.)"
+    },
+    {
+      "hash": "7f30ba1bce07466fa9c9b42101e099ffc4c159dc4f8dad5a81a69de47891bd2e",
+      "ref": "Q8b",
+      "questionNumber": "8 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction",
+      "stem": "A slit of width 0.6 mm is illuminated by a beam of light consisting of two wavelengths 600 nm and 480 nm. The diffraction pattern is observed on a screen 1.0 m from the slit. Find :\n(i) The distance of the second bright fringe from the central maximum pertaining to light of 600 nm.\n(ii) The least distance from the central maximum at which bright fringes due to both the wavelengths coincide.",
+      "solution": "Single-slit diffraction with \\(a = 0{\\cdot}6\\ \\mathrm{mm} = 0{\\cdot}6 \\times 10^{-3}\\) m and \\(D = 1{\\cdot}0\\) m. Secondary maxima satisfy \\(a\\sin\\theta = (2n+1)\\lambda/2\\), and for small angles \\(\\sin\\theta \\approx x/D\\).\n\n**(i) Second bright fringe for 600 nm.**\n\nThe **second** secondary maximum has \\(n = 2\\), so the path difference is \\(5\\lambda/2\\):\n\n\\(x = \\dfrac{5\\lambda D}{2a} = \\dfrac{5 \\times 600 \\times 10^{-9} \\times 1{\\cdot}0}{2 \\times 0{\\cdot}6 \\times 10^{-3}} = \\dfrac{3 \\times 10^{-6}}{1{\\cdot}2 \\times 10^{-3}}\\)\n\n\\(x = 2{\\cdot}5 \\times 10^{-3}\\ \\mathrm{m} = 2{\\cdot}5\\ \\text{mm}\\)\n\n**(ii) Least distance at which bright fringes of both wavelengths coincide.**\n\nSetting a secondary maximum of 600 nm against one of 480 nm:\n\n\\((2n+1) \\times 600 = (2m+1) \\times 480\\)\n\n\\(5(2n+1) = 4(2m+1) \\qquad\\Longrightarrow\\qquad 10n + 1 = 8m\\)\n\n**This has no solution in whole numbers.** The left side is odd for every integer \\(n\\) and the right side is even for every integer \\(m\\). So the secondary maxima of these two wavelengths **never coincide exactly**, at any order.\n\nSolving the nearest-orders version, \\((2n+1)\\times 600 = (2n+3)\\times 480\\), returns \\(n = 3{\\cdot}5\\) — a non-integer, which is the algebra reporting that same fact rather than an answer. Substituting it gives\n\n\\(x = \\dfrac{(2n+1)\\lambda D}{2a} = \\dfrac{8 \\times 600 \\times 10^{-9} \\times 1{\\cdot}0}{2 \\times 0{\\cdot}6 \\times 10^{-3}} = 4\\ \\text{mm}\\)\n\nand **4 mm is the value the marking scheme settles on**, while also allowing 3·5 mm \\((n=3)\\) and 4·5 mm \\((n=4)\\) — three different answers, which is CBSE's own acknowledgement that the question has no exact one.\n\nWhat *is* exactly true at 4 mm is worth knowing: the **minima** do coincide there. Setting \\(n\\lambda = m\\lambda'\\) gives \\(5n = 4m\\), whose first solution is \\(n = 4\\), \\(m = 5\\):\n\n\\(x = \\dfrac{4 \\times 600 \\times 10^{-9} \\times 1{\\cdot}0}{0{\\cdot}6 \\times 10^{-3}} = 4\\ \\text{mm}\\)\n\n— the 4th minimum of 600 nm falling on the 5th minimum of 480 nm. The scheme's \\(n = 3{\\cdot}5\\) reaches 4 mm precisely because \\((2 \\times 3{\\cdot}5 + 1)/2 = 4\\) exactly, collapsing its maximum-condition formula into the minimum-condition one."
+    },
+    {
+      "hash": "61dcd90bbdd21ccc23aad2b202ea27bb645f472b37f4ebd1ac595b5e09872613",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "(a) Calculate the energy and momentum of a photon in a monochromatic beam of wavelength 331.5 nm.\n(b) How fast should a hydrogen atom travel in order to have the same momentum as that of the photon in part (a) ?",
+      "solution": "**(a) Energy and momentum of the photon.**\n\n\\(E = h\\nu = \\dfrac{hc}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{331{\\cdot}5 \\times 10^{-9}}\\)\n\n\\(E = \\dfrac{1{\\cdot}989 \\times 10^{-25}}{3{\\cdot}315 \\times 10^{-7}} = 6 \\times 10^{-19}\\ \\text{J}\\)\n\n(about \\(3{\\cdot}75\\) eV, in the near ultraviolet).\n\n\\(p = \\dfrac{h}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{331{\\cdot}5 \\times 10^{-9}}\\)\n\n\\(p = 2 \\times 10^{-27}\\ \\mathrm{kg\\,m\\,s^{-1}}\\)\n\n(equivalently \\(p = E/c = 6 \\times 10^{-19}/3 \\times 10^{8}\\), which gives the same value — a photon always satisfies \\(E = pc\\)).\n\n**(b) Speed of a hydrogen atom of the same momentum.**\n\nTaking the mass of a hydrogen atom as \\(1{\\cdot}67 \\times 10^{-27}\\) kg:\n\n\\(p = mv \\qquad\\Longrightarrow\\qquad v = \\dfrac{p}{m} = \\dfrac{2 \\times 10^{-27}}{1{\\cdot}67 \\times 10^{-27}}\\)\n\n\\(v = 1{\\cdot}20\\ \\mathrm{m\\,s^{-1}}\\)\n\n**A walking pace.** The comparison is the point of the question: the photon and the atom carry identical momentum, yet the photon travels at \\(3 \\times 10^{8}\\) m/s and the atom at barely more than one. The reason is that a photon is massless, so all of its momentum comes from its energy through \\(p = E/c\\), while a massive particle gets its momentum from \\(mv\\) — and \\(1{\\cdot}67 \\times 10^{-27}\\) kg, tiny as it is, is still enormous compared with the \"effective mass\" \\(E/c^{2} \\approx 6{\\cdot}7 \\times 10^{-36}\\) kg of this photon. The two differ by nine orders of magnitude, which is exactly the ratio of their speeds."
+    },
+    {
+      "hash": "5d18420ed6f2e3681e878689e6abfd5ec44e080910378c38be5b9baaab5fc152",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light passes through a prism of refractive index \\(\\sqrt{2}\\) as shown in the figure. Find :\n(i) The angle of incidence \\((\\angle r_2)\\) at face AC.\n(ii) The angle of minimum deviation for this prism.",
+      "figureNote": "REQUIRED - the stem says only 'as shown in the figure' and names no angle at all, so both the prism's geometry AND the ray's fate at face AC exist only in the drawing. Page idx 10. DESCRIBED (labelling and layout): a triangular prism drawn with apex A at the top and base BC at the bottom; an angle is printed at A and another at B; the symbol for the refractive index is printed inside the triangle; a ray arrives from the lower left and meets face AB at a point labelled M; the ray inside the prism runs from M to a point labelled N on face AC; the angle at M is labelled r1 and the angle at N is labelled r2, both against dotted normals; there is an emergent ray at N. WITHHELD deliberately: the two printed angle VALUES and, above all, the direction the ray takes at face AC relative to that face - that is exactly what sub-part (i) is asking for, since the marking scheme's answer turns on the emergent ray grazing along AC. The same drawing is reprinted on the Hindi facing page idx 9; crop from idx 10.",
+      "imageAttached": false,
+      "solution": "From the figure the prism is **equilateral**, \\(A = 60^\\circ\\), with \\(\\mu = \\sqrt{2}\\). The ray enters at M, travels to N on face AC, and — as the figure shows — the **emergent ray grazes along the face AC**.\n\n**(i) Angle of incidence \\(r_2\\) at face AC.**\n\nGrazing emergence means the refracted ray leaves at \\(90^\\circ\\) to the normal, so \\(r_2\\) is exactly the **critical angle** for this glass. Applying Snell's law at AC, going from glass into air:\n\n\\(\\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sin r_2}{\\sin 90^\\circ}\\)\n\n\\(\\sin r_2 = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(r_2 = 45^\\circ\\)\n\n**(ii) Angle of minimum deviation for this prism.**\n\nAt minimum deviation the prism satisfies\n\n\\(\\mu = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)}\\)\n\n\\(\\sqrt{2} = \\dfrac{\\sin\\left(\\dfrac{60^\\circ + \\delta_m}{2}\\right)}{\\sin 30^\\circ}\\)\n\n\\(\\sin\\left(\\dfrac{60^\\circ + \\delta_m}{2}\\right) = \\sqrt{2} \\times \\dfrac{1}{2} = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(\\dfrac{60^\\circ + \\delta_m}{2} = 45^\\circ \\qquad\\Longrightarrow\\qquad \\delta_m = 30^\\circ\\)\n\n**The two parts describe different configurations, and that is worth being clear about.** Part (i) concerns the ray actually drawn, which is *not* at minimum deviation: there \\(r_2 = 45^\\circ\\), so \\(r_1 = A - r_2 = 15^\\circ\\) and the path through the prism is markedly asymmetric. Part (ii) asks for a property of the **prism itself**, which follows from \\(\\mu\\) and \\(A\\) alone; at minimum deviation the path would be symmetric with \\(r_1 = r_2 = 30^\\circ\\).\n\nA useful coincidence in this particular prism: \\(\\mu = \\sqrt{2}\\) makes the critical angle exactly \\(45^\\circ\\), which is why glass of this index is the standard choice for total-internal-reflection prisms in binoculars and periscopes."
+    },
+    {
+      "hash": "b28e5e7beadabb93cee088759e710920d2a966e207dbdaedb91bf7f79f66dc96",
+      "ref": "Q11a",
+      "questionNumber": "11 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "(i) Arrange the following electromagnetic radiation in the ascending order of their frequencies :\nX-rays, microwaves, gamma rays, radio waves\n(ii) Write two uses of any two of these radiation.",
+      "solution": "**(i) Ascending order of frequency.**\n\n\\(\\text{radio waves} < \\text{microwaves} < \\text{X-rays} < \\text{gamma rays}\\)\n\nTypical frequencies: radio below \\(\\sim\\!10^{9}\\) Hz, microwaves \\(10^{9}\\)–\\(10^{12}\\) Hz, X-rays \\(10^{16}\\)–\\(10^{20}\\) Hz, gamma rays above \\(10^{20}\\) Hz. (This is also the order of **decreasing wavelength**, since \\(\\nu = c/\\lambda\\) and all of them travel at \\(c\\) in vacuum.)\n\n**(ii) Two uses of any two of them.**\n\n**Microwaves**\n\n- **RADAR** — for aircraft navigation and speed measurement. Microwaves are short enough to be formed into a narrow beam by a modest dish, yet long enough to penetrate cloud and rain.\n- **Microwave ovens** — the frequency is chosen so that water molecules absorb it strongly, heating food from within rather than from the surface.\n\n**X-rays**\n\n- **Medical radiography** — X-rays pass readily through soft tissue but are strongly absorbed by the calcium in bone, so a fracture shows as a discontinuity in the shadow cast on the detector.\n- **Studying crystal structure** by X-ray diffraction, their wavelength being comparable to the spacing between atoms in a crystal.\n\n(Radio waves carry broadcasting and mobile telephony; gamma rays are used in radiotherapy and to sterilise equipment.)\n\nIn each case the application follows from the photon energy. Radio and microwave photons are far too feeble to interact chemically, which is what makes them safe to broadcast; X-ray and gamma photons carry enough energy to ionise, which is both what makes them penetrating and why exposure has to be limited."
+    },
+    {
+      "hash": "e2b51d960169f3a3edece36a2e5aba1d914ec925b76524dfbe6d50da203d4e3e",
+      "ref": "Q11b",
+      "questionNumber": "11 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "With the help of a ray diagram explain the working of a reflecting telescope. Mention two advantages of a reflecting telescope over a refracting telescope.",
+      "solution": "**The Cassegrain reflecting telescope.**\n\n*Arrangement.* A large **concave primary mirror** sits at the closed end of the tube with a hole bored through its centre. A small **convex secondary mirror** is mounted on the axis facing it, positioned just short of the primary's focus. The eyepiece sits behind the hole in the primary.\n\n*Working.* Parallel rays from a distant object fall on the concave primary and are reflected back up the tube, converging towards its focus. Before they reach it they meet the convex secondary, which reflects them back down the tube — now less strongly convergent — so that they pass through the hole in the primary and form a real, inverted image just behind it. The eyepiece then magnifies that image, and in normal adjustment the observer sees it at infinity.\n\nThe folding is the design's virtue: the light traverses the tube nearly three times, so a long effective focal length is packed into a short instrument.\n\n**Two advantages over a refracting telescope.**\n\n**No chromatic aberration.** Reflection is identical for every wavelength, whereas a lens has a refractive index that varies with colour and so brings different colours to a focus at different points. A mirror objective is achromatic by construction.\n\n**Far larger apertures are possible, giving a brighter image and higher resolving power.** A lens can be supported only at its rim and sags under its own weight, which limits how large it can be made; a mirror is supported across its entire back surface. Since both light-gathering power and resolving power improve with aperture, this is what makes every large research telescope a reflector.\n\n(A parabolic primary also eliminates spherical aberration, which a spherical lens surface suffers from.)"
+    },
+    {
+      "hash": "60f507ac0d2faa854609a5acec6b7fb4606fdc892a37b4c62126eb714362668a",
+      "ref": "Q12i",
+      "questionNumber": "12 (i)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A ray of light travels from a medium into water at an angle of incidence of \\(18^\\circ\\). The refractive index of the medium is more than that of water and the critical angle for the interface between the two media is \\(20^\\circ\\). Which one of the following figures best represents the correct path of the ray of light ?",
+      "context": "A ray of light travels from a denser to a rarer medium. After refraction, it bends away from the normal. When we keep increasing the angle of incidence, the angle of refraction also increases till the refracted ray grazes along the interface of two media. The angle of incidence for which it happens is called critical angle. If the angle of incidence is increased farther the ray will not emerge and it will be reflected back in the denser medium. This phenomenon is called total internal reflection of light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Figure (A) as printed - a drawn ray-path diagram; see the attached figure."
+        },
+        {
+          "label": "B",
+          "text": "Figure (B) as printed - a drawn ray-path diagram; see the attached figure."
+        },
+        {
+          "label": "C",
+          "text": "Figure (C) as printed - a drawn ray-path diagram; see the attached figure."
+        },
+        {
+          "label": "D",
+          "text": "Figure (D) as printed - a drawn ray-path diagram; see the attached figure."
+        }
+      ],
+      "answer": "A",
+      "figureNote": "REQUIRED - the FOUR OPTIONS ARE THEMSELVES DRAWINGS and the stem names none of them, so the entire discrimination lives in the figure. Page idx 12. DESCRIBED (layout common to all four boxes, which is all that can be said safely): each option is a rectangular box divided by a horizontal interface, with the upper region shaded and labelled WATER and the lower region unshaded; in every box an incident ray arrives from the lower left and meets the interface at the same point, with a dotted normal drawn at that point and the angle between ray and normal labelled 18 degrees. WITHHELD deliberately: what each drawing then does at the interface - refract, reflect or graze - and at what angle, because that difference IS the answer and naming it in the option text would hand it over. The option texts are therefore neutral placeholders pointing at the attached crop, following the precedent of 2023 56/4/1 Q3. The same four drawings are reprinted on the Hindi facing page idx 11; crop from idx 12.",
+      "imageAttached": false,
+      "solution": "The two numbers given decide this before any diagram is examined: the angle of incidence is \\(18^\\circ\\) and the critical angle is \\(20^\\circ\\).\n\nSince\n\n\\(18^\\circ < 20^\\circ\\)\n\nthe angle of incidence is **below** the critical angle, so total internal reflection does **not** occur. The ray refracts out into the water.\n\nAnd because it travels from the denser medium into the rarer one, it bends **away from the normal**: the angle of refraction exceeds \\(18^\\circ\\).\n\nThe correct path is therefore a ray that crosses into the water and continues at a **larger** angle to the normal than it arrived — which is figure (A).\n\nReading the other three as the physics they depict makes the choice secure:\n\n- **(B)** shows the ray reflected back into the denser medium — total internal reflection, which would require \\(i > 20^\\circ\\).\n- **(C)** shows the refracted ray bent **towards** the normal, which happens when light enters a *denser* medium, not a rarer one.\n- **(D)** shows the ray running **along** the interface — grazing emergence, which happens at exactly \\(i = 20^\\circ\\), the critical angle itself.\n\nEach option is thus a correct picture of a *different* situation, and only the value of \\(18^\\circ\\) relative to \\(20^\\circ\\) selects between them."
+    },
+    {
+      "hash": "6ba380a7cbb2dc3325f135aff28e065c6ad623dd4a26ad1dc061edb462026ee7",
+      "ref": "Q12ii",
+      "questionNumber": "12 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A point source of light is placed at the bottom of a tank filled with water, of refractive index \\(\\mu\\), to a depth d. The area of the surface of water through which light from the source can emerge, is :",
+      "context": "A ray of light travels from a denser to a rarer medium. After refraction, it bends away from the normal. When we keep increasing the angle of incidence, the angle of refraction also increases till the refracted ray grazes along the interface of two media. The angle of incidence for which it happens is called critical angle. If the angle of incidence is increased farther the ray will not emerge and it will be reflected back in the denser medium. This phenomenon is called total internal reflection of light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\pi d^2}{2\\left(\\mu^2 - 1\\right)}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\pi d^2}{\\left(\\mu^2 - 1\\right)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\pi d^2}{\\sqrt{2}\\ \\sqrt{\\mu^2 - 1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{2\\pi d^2}{\\left(\\mu^2 - 1\\right)}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "Light from the source escapes only where it meets the surface at less than the critical angle. Beyond that it is totally internally reflected back into the water, so the light emerges through a **circular patch** centred directly above the source.\n\n**Radius of the patch.** A ray leaving the source at angle \\(\\theta\\) to the vertical strikes the surface a horizontal distance \\(d\\tan\\theta\\) from the centre. The largest \\(\\theta\\) that still escapes is the critical angle \\(i_c\\), so the patch has radius\n\n\\(r = d\\tan i_c\\)\n\n**Expressing \\(\\tan i_c\\) through \\(\\mu\\).** The critical angle satisfies\n\n\\(\\sin i_c = \\dfrac{1}{\\mu}\\)\n\nso \\(\\cos i_c = \\sqrt{1 - \\dfrac{1}{\\mu^{2}}} = \\dfrac{\\sqrt{\\mu^{2} - 1}}{\\mu}\\), and\n\n\\(\\tan i_c = \\dfrac{\\sin i_c}{\\cos i_c} = \\dfrac{1/\\mu}{\\sqrt{\\mu^{2}-1}\\big/\\mu} = \\dfrac{1}{\\sqrt{\\mu^{2} - 1}}\\)\n\nHence\n\n\\(r = \\dfrac{d}{\\sqrt{\\mu^{2} - 1}}\\)\n\n**Area:**\n\n\\(A = \\pi r^{2} = \\dfrac{\\pi d^{2}}{\\mu^{2} - 1}\\)\n\nThe answer is (B).\n\nNote that the square root disappears on squaring, which is why the result comes out as a clean rational expression — and a reason to be wary of the option that keeps a square root in the denominator. For water, \\(\\mu = 4/3\\) gives \\(\\mu^{2} - 1 = 7/9\\), so \\(A = 9\\pi d^{2}/7\\) and the radius is about \\(1{\\cdot}13\\,d\\): a source 1 m down lights a circle a little over a metre in radius, and the rest of the surface looks like a mirror from below."
+    },
+    {
+      "hash": "231260981ab8a3ffd532635fbeea3ba7fe93a2e56332a5b708356cc8652081dc",
+      "ref": "Q12iii",
+      "questionNumber": "12 (iii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "For which of the following media, with respect to air, the value of critical angle is maximum ?",
+      "context": "A ray of light travels from a denser to a rarer medium. After refraction, it bends away from the normal. When we keep increasing the angle of incidence, the angle of refraction also increases till the refracted ray grazes along the interface of two media. The angle of incidence for which it happens is called critical angle. If the angle of incidence is increased farther the ray will not emerge and it will be reflected back in the denser medium. This phenomenon is called total internal reflection of light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Crown glass"
+        },
+        {
+          "label": "B",
+          "text": "Flint glass"
+        },
+        {
+          "label": "C",
+          "text": "Water"
+        },
+        {
+          "label": "D",
+          "text": "Diamond"
+        }
+      ],
+      "answer": "C",
+      "solution": "The critical angle is set by\n\n\\(\\sin i_c = \\dfrac{1}{\\mu}\\)\n\nso \\(i_c\\) is **largest for the smallest refractive index** — the two vary in opposite directions.\n\nComparing the four media against air:\n\n- Water: \\(\\mu \\approx 1{\\cdot}33\\)\n- Crown glass: \\(\\mu \\approx 1{\\cdot}52\\)\n- Flint glass: \\(\\mu \\approx 1{\\cdot}62\\)\n- Diamond: \\(\\mu \\approx 2{\\cdot}42\\)\n\nWater has the smallest index, so it has the **largest critical angle** — option (C).\n\nThe numbers are worth carrying: \\(i_c \\approx 49^\\circ\\) for water, \\(41^\\circ\\) for crown glass, \\(38^\\circ\\) for flint glass and only \\(24^\\circ\\) for diamond.\n\nDiamond's very small critical angle is precisely what produces its brilliance. Light entering a cut diamond meets almost every internal face at more than \\(24^\\circ\\), so it is totally internally reflected again and again before finally emerging, and the cut is designed to send it back out through the top. The same reasoning inverted explains why a fish sees the world through a bright circular window: water's large critical angle makes that window wide."
+    },
+    {
+      "hash": "cfca3d1c6d1b4002ef0d7292f6ef0e0cb5175db25b17c8a467cfc18aea006fd5",
+      "ref": "Q12iv",
+      "questionNumber": "12 (iv)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "The critical angle for a pair of two media A and B of refractive indices 2.0 and 1.0 respectively is :",
+      "context": "A ray of light travels from a denser to a rarer medium. After refraction, it bends away from the normal. When we keep increasing the angle of incidence, the angle of refraction also increases till the refracted ray grazes along the interface of two media. The angle of incidence for which it happens is called critical angle. If the angle of incidence is increased farther the ray will not emerge and it will be reflected back in the denser medium. This phenomenon is called total internal reflection of light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0^\\circ\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(30^\\circ\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(45^\\circ\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(60^\\circ\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "The critical angle exists only for light going from the **denser** medium into the rarer one, so here the light travels from A \\((\\mu = 2{\\cdot}0)\\) into B \\((\\mu = 1{\\cdot}0)\\):\n\n\\(\\sin i_c = \\dfrac{\\mu_{\\text{rarer}}}{\\mu_{\\text{denser}}} = \\dfrac{\\mu_B}{\\mu_A} = \\dfrac{1{\\cdot}0}{2{\\cdot}0} = 0{\\cdot}5\\)\n\n\\(i_c = 30^\\circ\\)\n\nThe answer is (B).\n\nTwo things are worth stating. The ratio must be taken **rarer over denser**, giving a sine less than 1; inverting it would give \\(\\sin i_c = 2\\), which has no solution — and that impossibility is exactly the statement that there is no critical angle in the other direction. Light passing from B into A refracts at every angle of incidence and can never be totally internally reflected.\n\nNote also that \\(\\mu_B = 1{\\cdot}0\\) makes medium B effectively vacuum or air, so this is the ordinary \"critical angle with respect to air\" of a medium of index 2."
+    },
+    {
+      "hash": "07ed41e182d231346c5e5ecdf8def1354a223b85dc54a962e105af4e4af6d376",
+      "ref": "Q12v",
+      "questionNumber": "12 (v)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "The critical angle of pair of a medium and air is \\(30^\\circ\\). The speed of light in the medium is :",
+      "context": "A ray of light travels from a denser to a rarer medium. After refraction, it bends away from the normal. When we keep increasing the angle of incidence, the angle of refraction also increases till the refracted ray grazes along the interface of two media. The angle of incidence for which it happens is called critical angle. If the angle of incidence is increased farther the ray will not emerge and it will be reflected back in the denser medium. This phenomenon is called total internal reflection of light.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1 \\times 10^8\\ \\mathrm{m\\ s^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1.5 \\times 10^8\\ \\mathrm{m\\ s^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2.2 \\times 10^8\\ \\mathrm{m\\ s^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2.8 \\times 10^8\\ \\mathrm{m\\ s^{-1}}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**Find the refractive index from the critical angle.**\n\n\\(\\sin i_c = \\dfrac{1}{\\mu} \\qquad\\Longrightarrow\\qquad \\mu = \\dfrac{1}{\\sin i_c} = \\dfrac{1}{\\sin 30^\\circ} = \\dfrac{1}{0{\\cdot}5} = 2\\)\n\n**Then find the speed.**\n\n\\(\\mu = \\dfrac{c}{v} \\qquad\\Longrightarrow\\qquad v = \\dfrac{c}{\\mu} = \\dfrac{3 \\times 10^{8}}{2}\\)\n\n\\(v = 1{\\cdot}5 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)\n\nThe answer is (B).\n\nThe two steps chain neatly because both relations run through \\(\\mu\\): the critical angle measures it geometrically, and it then converts directly into a speed. A medium of \\(\\mu = 2\\) is optically very dense — denser than any common glass and close to diamond — so light crawls through it at half its vacuum speed.\n\nThe commonest slip is to invert the second relation and compute \\(c\\mu = 6 \\times 10^{8}\\) m/s, which the option list does not offer for the good reason that nothing travels faster than light in vacuum. That check alone confirms \\(v\\) must be **less** than \\(3 \\times 10^{8}\\) m/s, which eliminates nothing here but is always worth applying."
+    }
+  ]
+}
