@@ -3,6 +3,7 @@
  *
  *   npx tsx scripts/ipmat/dump-derive.ts -- --name=va-sample --section=VA --size=60
  *   npx tsx scripts/ipmat/dump-derive.ts -- --name=qa-all --section=QA
+ *   npx tsx scripts/ipmat/dump-derive.ts -- --name=lr --subject="Logical Reasoning" --size=40
  *   npx tsx scripts/ipmat/dump-derive.ts -- --name=s1 --exam=jipmat --size=40 --seed=7
  *
  * Writes `data/derive/<name>.packet.json` — stem, context and option TEXT, and
@@ -16,6 +17,7 @@ import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildPacket, isDerivable, stratifiedSample, strataOf } from "./derive";
+import { resolveTaxonomy } from "./taxonomy";
 import type { BuiltQuestion } from "./build";
 
 const BUILD_DIR = join(__dirname, "data", "build");
@@ -40,6 +42,11 @@ function main() {
     process.exit(1);
   }
   const section = arg("section");
+  // Sampling by SUBJECT matters as much as by section: reasoning questions live
+  // under the Logical Reasoning subject across ALL THREE exams, and 50 of them
+  // sit inside Indore's quant SECTIONS. A `--section=LR` sample would miss those
+  // and measure only two of the three exams.
+  const subject = arg("subject");
   const exam = arg("exam");
   const size = arg("size") ? Number(arg("size")) : undefined;
   const seed = arg("seed") ? Number(arg("seed")) : 1;
@@ -57,6 +64,11 @@ function main() {
   let pool = built.filter(isDerivable);
   if (exam) pool = pool.filter((r) => r.exam === exam);
   if (section) pool = pool.filter((r) => r.section === section);
+  if (subject) {
+    pool = pool.filter(
+      (r) => resolveTaxonomy(r.sourceTopic, r.sourceSubTopic)?.subject === subject
+    );
+  }
   if (pool.length === 0) {
     console.error("no derivable rows matched those filters");
     process.exit(1);
