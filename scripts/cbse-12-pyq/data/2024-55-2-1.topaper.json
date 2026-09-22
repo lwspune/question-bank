@@ -1,0 +1,1034 @@
+{
+ "paper": "55/2/1",
+ "year": 2024,
+ "paperId": "2024-55-2-1",
+ "markingScheme": "out/2024-55-2-1/ms/p00.png … p15.png",
+ "rows": [
+  {
+   "hash": "528835a6a1ad1b9a03163632e75a2c85fb06d1cf0f79e253ce4301fa3308b6d7",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Field and Field Lines",
+   "stem": "Two charged particles P and Q, having the same charge but different masses \\(m_P\\) and \\(m_Q\\), start from rest and travel equal distances in a uniform electric field \\(\\vec{E}\\) in time \\(t_P\\) and \\(t_Q\\) respectively. Neglecting the effect of gravity, the ratio \\(\\left(\\dfrac{t_P}{t_Q}\\right)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{m_P}{m_Q}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{m_Q}{m_P}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{\\dfrac{m_P}{m_Q}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sqrt{\\dfrac{m_Q}{m_P}}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Both particles start from REST and cover the SAME distance, so this is a uniform-acceleration problem in which only the acceleration differs.\nTHE ACCELERATION. Each particle carries the same charge q in the same field E, so the force is the same, but the masses differ:\n\\(qE = ma \\quad\\Longrightarrow\\quad a = \\dfrac{qE}{m}\\)\nTHE TIME. Starting from rest and covering a distance s,\n\\(s = \\dfrac{1}{2}at^{2} \\quad\\Longrightarrow\\quad t = \\sqrt{\\dfrac{2s}{a}} = \\sqrt{\\dfrac{2sm}{qE}}\\)\nEverything but m is common to the two particles, so\n\\(t \\propto \\sqrt{m}\\)\nHence\n\\(\\dfrac{t_{P}}{t_{Q}} = \\sqrt{\\dfrac{m_{P}}{m_{Q}}}\\)\nThe SQUARE ROOT is the whole question. A heavier particle does take longer, so the ratio is the right way up in two of the four options — but the time does not scale with the mass itself. Doubling the mass halves the acceleration and therefore multiplies the time by only \\(\\sqrt{2}\\), not by 2, because the distance depends on the SQUARE of the time."
+  },
+  {
+   "hash": "c14ad8317416640e8dbf01b936f91834c934955cb50f43b0ceb9329b601eca50",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "stem": "Electrons drift with speed \\(v_d\\) in a conductor with potential difference V across its ends. If V is reduced to \\(\\left(\\dfrac{V}{2}\\right)\\), their drift speed will become :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{v_d}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(v_d\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\,v_d\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(4\\,v_d\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The drift velocity is set by the electric field inside the conductor:\n\\(v_{d} = \\dfrac{eE\\tau}{m}\\)\nand for a conductor of length l carrying a potential difference V, that field is\n\\(E = \\dfrac{V}{l}\\)\nso\n\\(v_{d} = \\dfrac{eV\\tau}{ml}\\)\nEverything on the right except V is a property of the conductor and does not change, so\n\\(v_{d} \\propto V\\)\nHalving the potential difference therefore HALVES the drift speed:\n\\(v_{d}' = \\dfrac{v_{d}}{2}\\)\nThe proportionality is LINEAR, which is worth being clear about: the drift velocity is not the speed of a freely accelerating electron but a steady-state average, reached when the acceleration between collisions is balanced by the randomisation at each collision. That balance makes \\(v_{d}\\) proportional to the field rather than growing without limit — and it is exactly why Ohm's law holds, since \\(I = neAv_{d}\\) then makes the current proportional to V as well."
+  },
+  {
+   "hash": "baf0106cc4ac4423a0a642ea9855bf174174f09ac86aec8217f570d3ed8aa020",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+   "stem": "A wire of length \\(4{\\cdot}4\\) m is bent round in the shape of a circular loop and carries a current of \\(1{\\cdot}0\\) A. The magnetic moment of the loop will be :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}7\\) Am\\(^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1{\\cdot}54\\) Am\\(^2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2{\\cdot}10\\) Am\\(^2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(3{\\cdot}5\\) Am\\(^2\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Work from the length of wire to the radius, then to the area, then to the moment.\nTHE RADIUS. The whole wire forms the circumference:\n\\(2\\pi r = 4{\\cdot}4 \\quad\\Longrightarrow\\quad r = \\dfrac{4{\\cdot}4}{2\\pi} = \\dfrac{4{\\cdot}4 \\times 7}{2 \\times 22} = 0{\\cdot}7\\ \\mathrm{m}\\)\nTHE AREA:\n\\(A = \\pi r^{2} = \\dfrac{22}{7} \\times (0{\\cdot}7)^{2} = \\dfrac{22}{7} \\times 0{\\cdot}49 = 1{\\cdot}54\\ \\mathrm{m^{2}}\\)\nTHE MAGNETIC MOMENT of a single-turn loop:\n\\(M = IA = 1{\\cdot}0 \\times 1{\\cdot}54\\)\n\\(M = 1{\\cdot}54\\ \\mathrm{A\\,m^{2}}\\)\nThe number 4.4 is chosen so that \\(\\dfrac{4{\\cdot}4}{2\\pi}\\) comes out exactly 0.7 with \\(\\pi = \\dfrac{22}{7}\\), which is the signal that the arithmetic is meant to be done by hand.\nThe distractor \\(0{\\cdot}7\\) is the RADIUS quoted as if it were the moment — a plausible slip, since 0.7 appears in the working. Note also that bending the same wire into a SQUARE would give a smaller moment, since a circle encloses the greatest area for a given perimeter."
+  },
+  {
+   "hash": "8745b5cdb977f09618f6e2374c43e8a8583c7484ef688386973a6156cb5ce8b5",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Magnetic Flux and Faraday's Law",
+   "stem": "A circular coil of radius 10 cm is placed in a magnetic field \\(\\vec{B} = (1{\\cdot}0\\,\\hat{i} + 0{\\cdot}5\\,\\hat{j})\\) mT such that the outward unit vector normal to the surface of the coil is \\((0{\\cdot}6\\,\\hat{i} + 0{\\cdot}8\\,\\hat{j})\\). The magnetic flux linked with the coil is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}314\\ \\mu\\mathrm{Wb}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(3{\\cdot}14\\ \\mu\\mathrm{Wb}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(31{\\cdot}4\\ \\mu\\mathrm{Wb}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1{\\cdot}256\\ \\mu\\mathrm{Wb}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Flux is a DOT PRODUCT, so only the component of the field along the coil's normal contributes:\n\\(\\phi = \\vec{B} \\cdot \\vec{A} = \\vec{B} \\cdot \\hat{n}\\,A\\)\nTHE DOT PRODUCT of the field with the unit normal:\n\\(\\vec{B} \\cdot \\hat{n} = (1{\\cdot}0)(0{\\cdot}6) + (0{\\cdot}5)(0{\\cdot}8) = 0{\\cdot}6 + 0{\\cdot}4 = 1{\\cdot}0\\ \\mathrm{mT} = 1{\\cdot}0 \\times 10^{-3}\\ \\mathrm{T}\\)\nTHE AREA of the circular coil:\n\\(A = \\pi r^{2} = 3{\\cdot}14 \\times (0{\\cdot}1)^{2} = 3{\\cdot}14 \\times 10^{-2}\\ \\mathrm{m^{2}}\\)\nTHE FLUX:\n\\(\\phi = \\left(1{\\cdot}0 \\times 10^{-3}\\right)\\left(3{\\cdot}14 \\times 10^{-2}\\right) = 3{\\cdot}14 \\times 10^{-5}\\ \\mathrm{Wb}\\)\n\\(\\phi = 31{\\cdot}4\\ \\mu\\mathrm{Wb}\\)\nTwo checks are worth making. The given normal is a genuine UNIT vector — \\(0{\\cdot}6^{2} + 0{\\cdot}8^{2} = 1\\) — so it needs no normalising, which the question has arranged deliberately. And the radius must be converted to metres before squaring: leaving it in centimetres changes the area, and hence the flux, by a factor of \\(10^{4}\\).\nNote that the field's magnitude is \\(\\sqrt{1^{2} + 0{\\cdot}5^{2}} = 1{\\cdot}12\\) mT, larger than the 1.0 mT that crosses the coil, because the field is not quite along the normal."
+  },
+  {
+   "hash": "e3783e0aa8d1336f8c7afdac18a0b1ad9dcebfa74331819970c382d3ebe435b1",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "stem": "Which of the following quantity/quantities remains same in primary and secondary coils of an ideal transformer ?\nCurrent, Voltage, Power, Magnetic flux",
+   "options": [
+    {
+     "label": "A",
+     "text": "Current only"
+    },
+    {
+     "label": "B",
+     "text": "Voltage only"
+    },
+    {
+     "label": "C",
+     "text": "Power only"
+    },
+    {
+     "label": "D",
+     "text": "Magnetic flux and Power both"
+    }
+   ],
+   "answer": "D",
+   "solution": "Take the four candidates in turn for an IDEAL transformer.\nCURRENT. Not the same. The whole purpose of a transformer is to change the voltage, and since the power is conserved the current must change inversely:\n\\(V_{p}I_{p} = V_{s}I_{s}\\)\nVOLTAGE. Not the same either, for the same reason — it is what the turns ratio changes.\nPOWER. THE SAME. \"Ideal\" means no flux leakage, no winding resistance, no eddy currents and no hysteresis, so nothing is dissipated and the output power equals the input power.\nMAGNETIC FLUX. THE SAME. The core is a closed magnetic circuit of high permeability, so it carries essentially all the flux produced by the primary through the secondary as well. Each turn of EITHER coil links the same flux \\(\\phi\\) — which is precisely the assumption from which the turns-ratio rule is derived:\n\\(\\varepsilon_{p} = -N_{p}\\dfrac{d\\phi}{dt} \\qquad \\varepsilon_{s} = -N_{s}\\dfrac{d\\phi}{dt} \\quad\\Longrightarrow\\quad \\dfrac{\\varepsilon_{s}}{\\varepsilon_{p}} = \\dfrac{N_{s}}{N_{p}}\\)\nSo both the magnetic flux and the power remain the same.\nThe two that stay constant are exactly the two the ideal assumptions are ABOUT — a perfect core (shared flux) and no losses (conserved power) — while the two that change are the pair the device exists to trade against each other."
+  },
+  {
+   "hash": "d530550a3044bc9335d8051f8713778e10325db5b2fee97de8e4f71f3b023d82",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Series LCR Circuit and Resonance",
+   "stem": "A resistor and an ideal inductor are connected in series to a \\(100\\sqrt{2}\\) V, 50 Hz ac source. When a voltmeter is connected across the resistor or the inductor, it shows the same reading. The reading of the voltmeter is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(100\\sqrt{2}\\) V"
+    },
+    {
+     "label": "B",
+     "text": "100 V"
+    },
+    {
+     "label": "C",
+     "text": "\\(50\\sqrt{2}\\) V"
+    },
+    {
+     "label": "D",
+     "text": "50 V"
+    }
+   ],
+   "answer": "B",
+   "solution": "In a series R-L circuit the two voltages are NOT in phase: the resistor's voltage is in phase with the current, the inductor's LEADS it by \\(90^{\\circ}\\). They must therefore be combined as perpendicular phasors:\n\\(V = \\sqrt{V_{R}^{2} + V_{L}^{2}}\\)\nThe voltmeter reads the SAME value across either component, so \\(V_{R} = V_{L}\\). Call that common reading v:\n\\(100\\sqrt{2} = \\sqrt{v^{2} + v^{2}} = \\sqrt{2v^{2}} = v\\sqrt{2}\\)\n\\(v = 100\\ \\mathrm{V}\\)\nThe voltmeter reads 100 V.\nNote that the two readings total 200 V arithmetically while the source supplies only \\(100\\sqrt{2} \\approx 141\\) V. Nothing is wrong: the two maxima never occur at the same instant, so the readings cannot simply be added. The option \\(100\\sqrt{2}\\) is the source voltage itself, offered to a reader who forgets that.\nEqual readings also mean \\(R = X_{L}\\), so the phase angle is \\(45^{\\circ}\\) and the power factor is \\(\\dfrac{1}{\\sqrt{2}}\\) — the circuit is exactly half resistive and half inductive in that sense."
+  },
+  {
+   "hash": "a202b4297caf754763485c5f42caaf5470cbf4e8dd9eba93ece71fe97f51e938",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "stem": "Electromagnetic waves with wavelength 10 nm are called :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Infrared waves"
+    },
+    {
+     "label": "B",
+     "text": "Ultraviolet rays"
+    },
+    {
+     "label": "C",
+     "text": "Gamma rays"
+    },
+    {
+     "label": "D",
+     "text": "X-rays"
+    }
+   ],
+   "answer": "B",
+   "solution": "Place 10 nm on the electromagnetic spectrum by comparing it with the standard boundaries.\nVISIBLE light runs from about 400 nm to 700 nm.\nULTRAVIOLET lies just beyond the violet end, from about 400 nm down to about 1 nm.\nX-RAYS run from about 1 nm down to \\(10^{-3}\\) nm.\nGAMMA RAYS are shorter still, below about \\(10^{-3}\\) nm.\nINFRARED is on the other side entirely, from 700 nm up to about 1 mm — LONGER than visible light, not shorter.\nA wavelength of 10 nm sits comfortably inside the 400 nm to 1 nm band, so these are ULTRAVIOLET rays.\nThe neighbouring boundary is the one to be careful with: X-rays begin at about 1 nm, so 10 nm is a factor of ten too long to be an X-ray. And infrared can be ruled out immediately on the direction of the comparison — 10 nm is far SHORTER than visible light, so it must lie beyond the violet end, never beyond the red.\nThe bands do overlap somewhat in practice, since they are named partly by how the radiation is PRODUCED as well as by wavelength; but at 10 nm the conventional assignment is ultraviolet, in the region often called extreme UV."
+  },
+  {
+   "hash": "a4599deba9e46257d3467f0b35ab2f8a269bc2cd0ec4cbc2a55ba0e61788bc2e",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "The work function for a photosensitive surface is \\(3{\\cdot}315\\) eV. The cut-off wavelength for photoemission of electrons from this surface is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "150 nm"
+    },
+    {
+     "label": "B",
+     "text": "200 nm"
+    },
+    {
+     "label": "C",
+     "text": "375 nm"
+    },
+    {
+     "label": "D",
+     "text": "500 nm"
+    }
+   ],
+   "answer": "C",
+   "solution": "The cut-off (threshold) wavelength is the LONGEST wavelength that can still just eject an electron — the one whose photon energy exactly equals the work function:\n\\(\\dfrac{hc}{\\lambda_{0}} = \\phi_{0} \\quad\\Longrightarrow\\quad \\lambda_{0} = \\dfrac{hc}{\\phi_{0}}\\)\nUsing the convenient form \\(hc = 1240\\ \\mathrm{eV\\,nm}\\):\n\\(\\lambda_{0} = \\dfrac{1240}{3{\\cdot}315}\\)\n\\(\\lambda_{0} \\approx 374\\ \\mathrm{nm} \\approx 375\\ \\mathrm{nm}\\)\nThe cut-off wavelength is about 375 nm.\nThe direction of the inequality is what the word \"cut-off\" means and is worth stating plainly: wavelengths SHORTER than 375 nm carry more energy per photon and DO eject electrons; wavelengths longer than 375 nm do not, however intense the beam.\n375 nm sits just beyond the violet end of the visible range, so this surface responds to violet and ultraviolet light but not to blue, green or red. That is typical of the alkali metals used in photocells, and it is why a photocell can be made to respond to ultraviolet while ignoring ordinary room light.\nRemembering \\(hc = 1240\\ \\mathrm{eV\\,nm}\\) turns this into a single division; carrying h and c in SI units gives the same answer through more arithmetic."
+  },
+  {
+   "hash": "064405835fad50a9a436653848b13f838ef43cc1cfde25765037a37475803b34",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Atomic Spectra",
+   "stem": "Energy levels A, B and C of an atom correspond to increasing values of energy i.e. \\(E_A < E_B < E_C\\). Let \\(\\lambda_1\\), \\(\\lambda_2\\) and \\(\\lambda_3\\) be the wavelengths of radiation corresponding to the transitions C to B, B to A and C to A, respectively. The correct relation between \\(\\lambda_1\\), \\(\\lambda_2\\) and \\(\\lambda_3\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\lambda_1^2 + \\lambda_2^2 = \\lambda_3^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{\\lambda_1} + \\dfrac{1}{\\lambda_2} = \\dfrac{1}{\\lambda_3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\lambda_1 + \\lambda_2 + \\lambda_3 = 0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\lambda_1 + \\lambda_2 = \\lambda_3\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The three transitions are not independent: the jump from C to A can be made directly, or in two steps via B, and the ENERGY must be the same either way, since energy is conserved and the levels have fixed values.\n\\(E_{C} - E_{A} = \\left(E_{C} - E_{B}\\right) + \\left(E_{B} - E_{A}\\right)\\)\nEach energy difference appears as a photon of the corresponding wavelength, with\n\\(E = \\dfrac{hc}{\\lambda}\\)\nSubstituting for each of the three:\n\\(\\dfrac{hc}{\\lambda_{3}} = \\dfrac{hc}{\\lambda_{1}} + \\dfrac{hc}{\\lambda_{2}}\\)\nand cancelling the common hc:\n\\(\\dfrac{1}{\\lambda_{1}} + \\dfrac{1}{\\lambda_{2}} = \\dfrac{1}{\\lambda_{3}}\\)\nThe RECIPROCALS add, not the wavelengths, and that is the entire content of the question. The energies add, and wavelength is inversely proportional to energy, so the relation inverts.\nA quick sanity check confirms it: since \\(C \\to A\\) is the BIGGEST energy jump of the three, \\(\\lambda_{3}\\) must be the SHORTEST wavelength. The correct relation gives exactly that, because \\(\\dfrac{1}{\\lambda_{3}}\\) is the sum of two positive terms and so exceeds each of them. The option \\(\\lambda_{1} + \\lambda_{2} = \\lambda_{3}\\) would make \\(\\lambda_{3}\\) the longest, which is the wrong way round."
+  },
+  {
+   "hash": "323417dd78044d3876e1ccc2b88a45af6b9e1273bef0a68847ec0072b3cb72c7",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+   "stem": "An alpha particle approaches a gold nucleus in Geiger-Marsden experiment with kinetic energy K. It momentarily stops at a distance d from the nucleus and reverses its direction. Then d is proportional to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{1}{\\sqrt{K}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sqrt{K}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{K}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(K\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "At the point of closest approach the alpha particle has momentarily STOPPED, so all of its kinetic energy has been converted into electrostatic potential energy:\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{(2e)(Ze)}{d}\\)\nwhere 2e is the alpha particle's charge and Ze the gold nucleus's. Solving for d:\n\\(d = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{2Ze^{2}}{K}\\)\nEverything except K is a constant of the experiment, so\n\\(d \\propto \\dfrac{1}{K}\\)\nThe distance of closest approach is INVERSELY proportional to the kinetic energy.\nThe dependence is on the first power, not a square root, because the potential energy goes as \\(\\dfrac{1}{d}\\) — a single power of the separation. That is what distinguishes this from problems where a square root appears, such as the radius of a magnetic orbit.\nThe physical reading is the one Rutherford used: faster alphas penetrate CLOSER to the nucleus. By raising the beam energy until the simple Coulomb formula began to fail, the size of the nucleus itself could be estimated — the deviation marks the point where the alpha gets close enough for the nuclear force to take over."
+  },
+  {
+   "hash": "5e8e5f2a51dc4d24da04d1151f15ab53a16ba14b94a392202466e4f8a7738512",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "stem": "An n-type semiconducting Si is obtained by doping intrinsic Si with :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Al"
+    },
+    {
+     "label": "B",
+     "text": "B"
+    },
+    {
+     "label": "C",
+     "text": "P"
+    },
+    {
+     "label": "D",
+     "text": "In"
+    }
+   ],
+   "answer": "C",
+   "solution": "Silicon is TETRAVALENT, so to make it n-type — that is, to give it an excess of ELECTRONS — the dopant must be PENTAVALENT. Four of its five valence electrons complete the covalent bonds with neighbouring Si atoms, and the fifth is left over, loosely bound and easily freed into the conduction band.\nChecking the four candidates by their position in the periodic table:\nAluminium (Al), boron (B) and indium (In) are all in GROUP 13 and are TRIVALENT. Each leaves one covalent bond incomplete, creating a hole, so all three give p-TYPE material.\nPhosphorus (P) is in GROUP 15 and is PENTAVALENT, so it is the donor required.\nSo n-type silicon is obtained by doping with phosphorus.\nThree of the four options being acceptors is the shape of the question: the work is recognising each element's group, not recalling the definition. The other common pentavalent dopants are arsenic, antimony and bismuth.\nThe energy involved is small — about \\(0{\\cdot}05\\) eV to free the fifth electron in silicon, against roughly 1.1 eV to break a covalent bond — which is why a trace of phosphorus, one atom in millions, transforms the conductivity."
+  },
+  {
+   "hash": "e5f0987a5f03896c5783b9cc1d0cac52a25d298b84f4a112664d31f26f71ad26",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "stem": "When a p-n junction diode is subjected to reverse biasing :",
+   "options": [
+    {
+     "label": "A",
+     "text": "the barrier height decreases and the depletion region widens."
+    },
+    {
+     "label": "B",
+     "text": "the barrier height increases and the depletion region widens."
+    },
+    {
+     "label": "C",
+     "text": "the barrier height decreases and the depletion region shrinks."
+    },
+    {
+     "label": "D",
+     "text": "the barrier height increases and the depletion region shrinks."
+    }
+   ],
+   "answer": "B",
+   "solution": "In reverse bias the battery's positive terminal is connected to the n-side and its negative terminal to the p-side, so the applied field ADDS to the junction's own built-in field rather than opposing it.\nTHE BARRIER HEIGHT. The applied voltage reinforces the built-in potential \\(V_{0}\\), so the effective barrier rises to\n\\(V_{0} + V\\)\nand the barrier height INCREASES.\nTHE DEPLETION WIDTH. The stronger field pulls majority carriers FURTHER AWAY from the junction on both sides — electrons back into the n-region, holes back into the p-region. That uncovers MORE immobile donor and acceptor ions, and since the depletion layer is precisely the region of uncovered ions, it WIDENS.\nSo under reverse bias the barrier height increases and the depletion region widens.\nThe two always move TOGETHER, which is what disposes of the two options pairing an increase with a decrease: both are measures of the same thing, the amount of fixed charge exposed at the junction, so a larger barrier necessarily means a wider layer.\nThis is why a reverse-biased junction blocks so effectively — and why it makes a good capacitor, since the widened, carrier-free layer is a dielectric whose thickness the voltage controls."
+  },
+  {
+   "hash": "dc15a6a5948e2952f060c35ae28563a0ac817b185fbd8f5e4b1c789ae0338e03",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Photoelectric Effect and its Experimental Study",
+   "stem": "Assertion (A) : Photoelectric current increases with an increase in intensity of incident radiation, for a given frequency of incident radiation and the accelerating potential.\nReason (R) : Increase in the intensity of incident radiation results in an increase in the number of photoelectrons emitted per second and hence an increase in the photocurrent.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "A",
+   "solution": "Both statements are TRUE, and the reason is the correct explanation.\nThe ASSERTION is the standard experimental result: at a fixed frequency and fixed accelerating potential, the photocurrent rises in direct proportion to the intensity of the incident light.\nThe REASON explains exactly why. Intensity measures the ENERGY arriving per second, and at a fixed frequency each photon carries the same energy \\(h\\nu\\), so a greater intensity means simply MORE PHOTONS arriving per second. Since one photon can liberate at most one electron, more photons per second means more photoelectrons emitted per second — and the photocurrent, being the charge collected per second, rises in the same proportion:\n\\(I_{photo} = \\dfrac{ne}{t} \\propto \\text{number of photons per second} \\propto \\text{intensity}\\)\nBoth are true and the reason explains the assertion.\nThe two conditions attached to the assertion are doing real work. FIXED FREQUENCY ensures the photon energy is unchanged, so that a change in intensity is purely a change in photon NUMBER. And a FIXED accelerating potential, large enough for saturation, ensures every emitted electron is collected, so the current measures emission rather than collection efficiency. It is this division of labour — intensity setting how many electrons, frequency setting how energetic each one is — that classical wave theory could not reproduce."
+  },
+  {
+   "hash": "7e15403f1a9299fa375c7b563c2da748a7e607eb43c2d28dd2ac96bb1315cdcf",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Lenz's Law and Conservation of Energy",
+   "stem": "Assertion (A) : Lenz's law is a consequence of the law of conservation of energy.\nReason (R) : There is no power loss in an ideal inductor.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "B",
+   "solution": "Both statements are TRUE, but the reason is NOT the correct explanation.\nThe ASSERTION is true. Lenz's law says the induced effects oppose the change that produced them, and the justification is energetic: if the induced current AIDED the change instead, the change would grow of its own accord and deliver energy from nothing. The work done against the opposing force is exactly the electrical energy that appears, which is conservation of energy in action.\nThe REASON is also true. An ideal inductor is purely reactive — its voltage leads the current by \\(90^{\\circ}\\), so the phase angle is \\(90^{\\circ}\\) and the average power is\n\\(P = V_{rms}I_{rms}\\cos 90^{\\circ} = 0\\)\nEnergy flows into the inductor during one quarter cycle, building the magnetic field, and flows back out during the next; none is dissipated.\nBut the reason does NOT explain the assertion. The two statements are about different things: Lenz's law is a statement about the DIRECTION of an induced emf, and applies to any circuit whatever, resistive or not. The lossless behaviour of an ideal inductor is a separate fact about ac power in a reactive element.\nIndeed the clearest demonstration of Lenz's law — a magnet retarded as it falls through a closed coil — depends on the coil having RESISTANCE, since the work done against the opposing force appears as \\(i^{2}R\\) heat. In a circuit with no dissipation at all, that particular energy accounting does not arise. So both are true and the reason is not the correct explanation."
+  },
+  {
+   "hash": "6f54ec75113b3ae933dee95627773f8da5a4fe96def98b45f449762309c33409",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "stem": "Assertion (A) : An electron and a proton enter with the same momentum \\(\\vec{p}\\) in a magnetic field \\(\\vec{B}\\) such that \\(\\vec{p} \\perp \\vec{B}\\). Then both describe a circular path of the same radius.\nReason (R) : The radius of the circular path described by the charged particle (charge q, mass m) moving in the magnetic field \\(\\vec{B}\\) is given by \\(r = \\dfrac{mv}{qB}\\).",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "A",
+   "solution": "Both statements are TRUE, and the reason is the correct explanation.\nThe REASON gives the radius of the circular path:\n\\(r = \\dfrac{mv}{qB}\\)\nThe ASSERTION follows from it once the numerator is recognised for what it is. The product mv IS the momentum p, so the formula can be written\n\\(r = \\dfrac{p}{qB}\\)\nBoth particles enter with the SAME momentum \\(\\vec{p}\\) and move in the same field B, and the electron and proton carry charges of the same MAGNITUDE e. So every quantity in the expression is the same for both, and the two radii are equal.\nBoth are true and the reason explains the assertion.\nThe result is worth pausing on because it seems surprising: a proton is nearly 2000 times heavier than an electron, yet the two circles have the same size. The resolution is that equal MOMENTUM, not equal speed, is what was specified — the electron must be moving nearly 2000 times faster to carry the same momentum, and the two effects cancel exactly in \\(r = \\dfrac{mv}{qB}\\).\nHad the two entered with the same SPEED instead, the radii would have been in the ratio of their masses, and the proton's circle would have been vastly the larger. And although the radii match, the two particles circulate in OPPOSITE senses, since their charges have opposite signs."
+  },
+  {
+   "hash": "488fe32323da116c1480acebf68edf62373dca27efd5692f9cf12cfbe129c6f6",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "stem": "Assertion (A) : The magnifying power of a compound microscope is negative.\nReason (R) : The final image formed is erect with respect to the object.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "C",
+   "solution": "The ASSERTION is TRUE. The magnifying power of a compound microscope is\n\\(m = m_{o} \\times m_{e}\\)\nand the objective forms a real, INVERTED image of the object. The eyepiece then magnifies that image without inverting it again, so the final image is inverted with respect to the original object — and an inverted image carries a NEGATIVE magnification by the usual sign convention.\nThe REASON is FALSE, and it contradicts the assertion rather than explaining it. The final image formed by a compound microscope is INVERTED with respect to the object, not erect. That is precisely why the magnification is negative.\nSo the assertion is true but the reason is false.\nThe inversion is real and is accepted in practice: biological specimens under a microscope appear upside down, and the user simply learns to move the slide the \"wrong\" way. Correcting it would require an extra erecting lens or prism, which would cost light and add aberrations for no scientific gain.\nNote the contrast with a TERRESTRIAL telescope, where an erect image genuinely matters for looking at distant objects, and an extra erecting element is therefore included. An astronomical telescope, like the microscope, leaves the image inverted — a star field looks the same either way up."
+  },
+  {
+   "hash": "fb1e5e39d6988924d64aa6b323a24e8d27eeccbef43a4924615ab6f4c44828a2",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "stem": "Define resistivity of a conductor. How does the resistivity of a conductor depend upon the following :\n(a) Number density of free electrons in the conductor (n)\n(b) Their relaxation time \\(\\tau\\)",
+   "solution": "DEFINITION. Resistivity is the resistance offered by a conductor of UNIT LENGTH and UNIT CROSS-SECTIONAL AREA. From\n\\(R = \\dfrac{\\rho l}{A} \\quad\\Longrightarrow\\quad \\rho = \\dfrac{RA}{l}\\)\nUnlike resistance, it is a property of the MATERIAL alone and not of the specimen's shape or size. Its SI unit is the ohm metre.\nTHE MICROSCOPIC EXPRESSION. Deriving the drift velocity from the free-electron model and substituting into Ohm's law gives\n\\(\\rho = \\dfrac{m}{ne^{2}\\tau}\\)\nwhere n is the number density of free electrons and \\(\\tau\\) the relaxation time. Both appear in the DENOMINATOR, so the resistivity falls as either one rises.\n(a) DEPENDENCE ON THE NUMBER DENSITY n:\n\\(\\rho \\propto \\dfrac{1}{n}\\)\nMore free electrons per unit volume means more carriers available to share the job of carrying the current, so the same field drives a larger current and the resistivity is lower. This is the main reason metals conduct so much better than semiconductors: their n is larger by many orders of magnitude.\n(b) DEPENDENCE ON THE RELAXATION TIME \\(\\tau\\):\n\\(\\rho \\propto \\dfrac{1}{\\tau}\\)\nThe relaxation time is the average interval between an electron's collisions with the lattice. A longer \\(\\tau\\) means the electron accelerates for longer before being scattered, so it reaches a greater drift velocity and the resistivity is lower.\nThe two dependences explain the temperature behaviour of the two classes of material. In a METAL, n is essentially fixed while heating makes the lattice ions vibrate more vigorously, shortening \\(\\tau\\) — so \\(\\rho\\) RISES with temperature. In a SEMICONDUCTOR, heating breaks many more covalent bonds and n rises steeply, which outweighs the fall in \\(\\tau\\) — so \\(\\rho\\) FALLS with temperature."
+  },
+  {
+   "hash": "149aba3dfbd9c91b03f8ba66510e8ce64ddf9225a9049edc0afb5a259ba0aaca",
+   "ref": "Q18a",
+   "questionNumber": "18 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "stem": "Two waves, each of amplitude 'a' and frequency '\\(\\omega\\)' emanating from two coherent sources of light superpose at a point. If the phase difference between the two waves is \\(\\phi\\), obtain an expression for the resultant intensity at that point.",
+   "solution": "Superpose the two waves, then square the resultant amplitude.\nTHE TWO DISPLACEMENTS at the point, one lagging the other by \\(\\phi\\):\n\\(x_{1} = a\\cos\\omega t\\)\n\\(x_{2} = a\\cos(\\omega t + \\phi)\\)\nTHE RESULTANT, adding them and using the sum-to-product identity \\(\\cos C + \\cos D = 2\\cos\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):\n\\(x = x_{1} + x_{2} = a\\left[\\cos\\omega t + \\cos(\\omega t + \\phi)\\right]\\)\n\\(x = 2a\\cos\\dfrac{\\phi}{2}\\cos\\left(\\omega t + \\dfrac{\\phi}{2}\\right)\\)\nThis is a wave of the SAME frequency \\(\\omega\\), whose amplitude is the constant factor in front:\n\\(A = 2a\\cos\\dfrac{\\phi}{2}\\)\nTHE INTENSITY. Intensity is proportional to the square of the amplitude, \\(I = K(\\text{amplitude})^{2}\\):\n\\(I = K\\left(2a\\cos\\dfrac{\\phi}{2}\\right)^{2} = 4Ka^{2}\\cos^{2}\\dfrac{\\phi}{2}\\)\nWriting \\(I_{0} = Ka^{2}\\) for the intensity each wave would produce alone:\n\\(I = 4I_{0}\\cos^{2}\\dfrac{\\phi}{2}\\)\nCheck the two extremes. At \\(\\phi = 0\\) the waves are in step and \\(I = 4I_{0}\\) — FOUR times one wave's intensity, not twice, because amplitudes add and intensity goes as the square. At \\(\\phi = \\pi\\) they are exactly out of step and \\(I = 0\\).\nEnergy is not created at the bright fringes nor destroyed at the dark ones: averaging \\(\\cos^{2}\\) over all phases gives \\(\\dfrac{1}{2}\\), so the mean intensity is \\(2I_{0}\\), exactly the sum of the two beams. Interference REDISTRIBUTES energy, and that is what the factor of 4 at a maximum is paying for."
+  },
+  {
+   "hash": "35aafe449d67933638cf27c73ef9ca9289d2ef8ca095983f494421012bc388e8",
+   "ref": "Q18b",
+   "questionNumber": "18 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "stem": "What is the effect on the interference pattern in Young's double-slit experiment when (i) the source slit is moved closer to the plane of the slits, and (ii) the separation between the two slits is increased ? Justify your answers.",
+   "solution": "[CBSE graced sub-part (i): the marking scheme directs that full credit be given if a student merely attempts it.]\n(i) MOVING THE SOURCE SLIT CLOSER TO THE PLANE OF THE SLITS.\nThe interference pattern becomes LESS SHARP, and if the source slit is brought close enough the fringes disappear altogether.\nThe reason is that a real source slit has a finite WIDTH s, so it is not a single point but a row of independent point sources side by side. Each one produces its own complete fringe pattern, and those patterns are slightly DISPLACED from one another. Sharp fringes survive only while the displacement is small compared with the fringe width, which is the condition\n\\(\\dfrac{s}{S} < \\dfrac{\\lambda}{d}\\)\nwhere S is the distance from the source slit to the plane of the slits.\nBringing the source closer REDUCES S, so the left-hand side grows. The separate patterns overlap more and more, the dark fringes are progressively filled in by the bright fringes of neighbouring patterns, the contrast falls, and eventually the screen is illuminated almost uniformly with no fringes visible at all.\n(ii) INCREASING THE SEPARATION BETWEEN THE TWO SLITS.\nThe fringes move CLOSER TOGETHER, since the fringe width is\n\\(\\beta = \\dfrac{\\lambda D}{d}\\)\nand d is in the denominator, so \\(\\beta\\) DECREASES.\nPush d far enough and the fringes become too closely spaced to be resolved, so the pattern again ceases to be visible — though for a quite different reason from (i). In (i) the fringes lose CONTRAST while keeping their spacing; here they keep their contrast but lose their SEPARATION.\nBoth effects set practical limits on a Young's experiment, and they pull in opposite directions: a large d is wanted for a narrow, well-defined pattern, but the slits must stay close enough for the fringes to be seen at all."
+  },
+  {
+   "hash": "4661b726f2f7bcfd084eccb60217104222ca7fb678c3b64c8456e0d233f0d72c",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "A convex lens (n = \\(1{\\cdot}52\\)) has a focal length of \\(15{\\cdot}0\\) cm in air. Find its focal length when it is immersed in liquid of refractive index \\(1{\\cdot}65\\). What will be the nature of the lens ?",
+   "solution": "The lens maker's formula contains the refractive index of the lens RELATIVE to its surroundings, and that is what the immersion changes.\nIN AIR:\n\\(\\dfrac{1}{f_{a}} = \\left(\\dfrac{n_{g}}{n_{a}} - 1\\right)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right] = (1{\\cdot}52 - 1)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right]\\)\nIN THE LIQUID:\n\\(\\dfrac{1}{f_{l}} = \\left(\\dfrac{n_{g}}{n_{l}} - 1\\right)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right] = \\left(\\dfrac{1{\\cdot}52}{1{\\cdot}65} - 1\\right)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right]\\)\nThe bracket of radii is the same in both, so dividing one by the other cancels it:\n\\(\\dfrac{f_{l}}{f_{a}} = \\dfrac{1{\\cdot}52 - 1}{\\left(\\dfrac{1{\\cdot}52 - 1{\\cdot}65}{1{\\cdot}65}\\right)} = \\dfrac{0{\\cdot}52}{\\left(\\dfrac{-0{\\cdot}13}{1{\\cdot}65}\\right)} = \\dfrac{0{\\cdot}52}{-0{\\cdot}0788}\\)\n\\(\\dfrac{f_{l}}{f_{a}} = -6{\\cdot}6\\)\n\\(f_{l} = -6{\\cdot}6 \\times 15{\\cdot}0 = -99\\ \\mathrm{cm}\\)\nNATURE OF THE LENS. The focal length has come out NEGATIVE, so the lens now DIVERGES: a convex lens immersed in this liquid behaves like a CONCAVE lens.\nThe sign change is the whole point, and its cause is visible in the bracket. The liquid is OPTICALLY DENSER than the glass \\((1{\\cdot}65 > 1{\\cdot}52)\\), so \\(\\dfrac{n_{g}}{n_{l}} < 1\\) and the factor \\(\\left(\\dfrac{n_{g}}{n_{l}} - 1\\right)\\) turns negative. Light now bends the other way at each surface.\nThe magnitude changes dramatically too, from 15 cm to 99 cm, because the refractive-index CONTRAST has shrunk from 0.52 to 0.079. A lens works by the difference between itself and its surroundings; matching the two would make it disappear optically altogether, which is exactly what happens at \\(n_{l} = 1{\\cdot}52\\), where the focal length becomes infinite."
+  },
+  {
+   "hash": "4fea55e82ca9f8b5f155477e5fdbb2e7f40bf3e73d5dc82f2cdbdf0f456bb223",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Mass-Energy and Nuclear Binding Energy",
+   "stem": "The carbon isotope \\(^{12}_{6}\\mathrm{C}\\) has a nuclear mass of \\(12{\\cdot}000000\\) u. Calculate the binding energy of its nucleus.\nGiven \\(m_p = 1{\\cdot}007825\\) u; \\(m_n = 1{\\cdot}008665\\) u.",
+   "solution": "The binding energy is the energy equivalent of the MASS DEFECT — the amount by which the nucleus is lighter than its separated constituents.\n\\(^{12}_{6}\\mathrm{C}\\) contains \\(Z = 6\\) protons and \\(A - Z = 12 - 6 = 6\\) neutrons.\nMASS OF THE SEPARATED NUCLEONS:\n\\(6m_{p} + 6m_{n} = 6(1{\\cdot}007825) + 6(1{\\cdot}008665)\\)\n\\(= 6{\\cdot}046950 + 6{\\cdot}051990 = 12{\\cdot}098940\\ \\mathrm{u}\\)\nTHE MASS DEFECT:\n\\(\\Delta m = 12{\\cdot}098940 - 12{\\cdot}000000 = 0{\\cdot}098940\\ \\mathrm{u}\\)\nTHE BINDING ENERGY, converting with \\(1\\ \\mathrm{u} = 931{\\cdot}5\\ \\mathrm{MeV}/c^{2}\\):\n\\(E_{b} = 0{\\cdot}098940 \\times 931{\\cdot}5\\)\n\\(E_{b} \\approx 92{\\cdot}16\\ \\mathrm{MeV}\\)\nCarry all six decimal places through the subtraction: the two masses agree to one decimal place, so rounding the input values destroys the answer.\nAs a check, the binding energy PER NUCLEON is \\(\\dfrac{92{\\cdot}16}{12} = 7{\\cdot}68\\) MeV, which sits sensibly on the binding-energy curve — a little below the 8.5 MeV plateau, as befits a nucleus still on the rising part near \\(A = 12\\).\nOne caution about the data. The question supplies \\(m_{p} = 1{\\cdot}007825\\) u, which is in fact the mass of a hydrogen ATOM rather than a bare proton, and quotes the carbon figure as a nuclear mass. Using them together as CBSE intends gives 92.16 MeV; the textbook value obtained with consistently atomic masses is 92.16 MeV as well, because the six electron masses cancel between the two sides."
+  },
+  {
+   "hash": "86908b6e2d6fca917b8bc6ca131cd1d29fc9e322986f6bfbcd2d0f8684206b58",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "stem": "How does the energy gap of an intrinsic semiconductor effectively change when doped with a (a) trivalent impurity, and (b) pentavalent impurity ? Justify your answer in each case.",
+   "solution": "In both cases the EFFECTIVE energy gap DECREASES, but by a different mechanism on each side of the band structure.\n(a) TRIVALENT (ACCEPTOR) IMPURITY.\nA trivalent atom has only three valence electrons, so one covalent bond with its four silicon neighbours is left incomplete. The vacancy this creates gives rise to an ACCEPTOR ENERGY LEVEL \\(E_{A}\\) lying just ABOVE the top of the valence band — typically only about 0.01 to 0.05 eV above it.\nAn electron in the valence band therefore needs only that small energy, rather than the full gap \\(E_{g} \\approx 1{\\cdot}1\\) eV, to be excited into the acceptor level, leaving a hole behind in the valence band. So the energy effectively required to create a mobile carrier is much reduced, and the effective gap DECREASES.\n(b) PENTAVALENT (DONOR) IMPURITY.\nA pentavalent atom has one valence electron left over after forming four covalent bonds. That extra electron is only weakly bound to its parent atom, and it occupies a DONOR ENERGY LEVEL \\(E_{D}\\) lying just BELOW the bottom of the conduction band — about 0.01 eV below in germanium, 0.05 eV in silicon.\nOnly that small energy is needed to lift the electron into the conduction band, so again the effective gap DECREASES.\n(Either answer may equally be given as a band diagram showing the impurity level close to its neighbouring band.)\nThe scale of the reduction is what makes doping work. At room temperature the available thermal energy is about \\(kT \\approx 0{\\cdot}026\\) eV — far too little to lift an electron across 1.1 eV, but comparable to the 0.05 eV needed to ionise an impurity. So essentially EVERY impurity atom contributes a carrier while almost no host bonds break, and a trace of dopant raises the conductivity enormously.\nNote that the TRUE band gap of the silicon is unchanged; what the impurity supplies is a stepping-stone level within it."
+  },
+  {
+   "hash": "65b36780256fd9dd2dd605258e7d31738e3893caf7ea486bd553e3a38b43fb3c",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+   "stem": "The figure shows a circuit with three ideal batteries. Find the magnitude and direction of currents in the branches AG, BF and CD.",
+   "figureNote": "REQUIRED — the stem names only the three branches; the circuit's topology, every resistor value and every battery emf exist ONLY in the drawing, so the question is unanswerable from text. Layout described, values withheld from the stem as printed: a rectangular network with nodes A, B, C along the top and G, F, D along the bottom, a battery in each of the three vertical branches AG, BF and CD, and resistors in the top and bottom rails plus the BF branch. Page idx 12.",
+   "imageAttached": true,
+   "solution": "Label the three branch currents and apply Kirchhoff's rules.\nLet \\(I_{1}\\) flow upward in branch CD, \\(I_{2}\\) upward in branch BF, and \\(I_{3}\\) downward in branch AG.\nJUNCTION RULE AT B. The currents \\(I_{1}\\) (arriving via C and the top wire CB) and \\(I_{2}\\) (arriving from F) both meet at B and leave together along BA:\n\\(I_{1} + I_{2} = I_{3} \\qquad \\ldots(1)\\)\nLOOP AGFBA. Going round, this loop contains the 3 V cell, the \\(2\\ \\Omega\\) in GF and the \\(2\\ \\Omega\\) in BA (both carrying \\(I_{3}\\)), and the 6 V cell and \\(4\\ \\Omega\\) of branch BF:\n\\(3 + 2I_{3} - 6 + 4I_{2} + 2I_{3} = 0\\)\n\\(4I_{3} + 4I_{2} = 3\\)\n\\(I_{2} + I_{3} = \\dfrac{3}{4} \\qquad \\ldots(2)\\)\nLOOP BFDCB. This contains the \\(4\\ \\Omega\\) and 6 V of branch BF, the 6 V and \\(2\\ \\Omega\\) of branch CD, and the \\(2\\ \\Omega\\) in CB (the last two carrying \\(I_{1}\\)):\n\\(-4I_{2} + 6 + 2I_{1} - 6 + 2I_{1} = 0\\)\n\\(4I_{1} = 4I_{2} \\quad\\Longrightarrow\\quad I_{1} = I_{2} \\qquad \\ldots(3)\\)\nSOLVING. Substitute (1) into (2), using \\(I_{3} = I_{1} + I_{2}\\):\n\\(I_{2} + I_{1} + I_{2} = \\dfrac{3}{4} \\quad\\Longrightarrow\\quad I_{1} + 2I_{2} = \\dfrac{3}{4}\\)\nand since \\(I_{1} = I_{2}\\) from (3), this is \\(3I_{1} = \\dfrac{3}{4}\\):\n\\(I_{1} = \\dfrac{1}{4} = 0{\\cdot}25\\ \\mathrm{A} \\qquad I_{2} = \\dfrac{1}{4} = 0{\\cdot}25\\ \\mathrm{A} \\qquad I_{3} = \\dfrac{1}{2} = 0{\\cdot}5\\ \\mathrm{A}\\)\nTHE ANSWERS:\nBRANCH AG carries \\(0{\\cdot}5\\) A, directed from A to G.\nBRANCH BF carries \\(0{\\cdot}25\\) A, directed from F to B.\nBRANCH CD carries \\(0{\\cdot}25\\) A, directed from D to C.\nAll three came out positive, which confirms that the directions assumed at the start were the actual ones — had any been negative, the magnitude would still be right and only the arrow would need reversing. The junction rule provides the final check: \\(0{\\cdot}25 + 0{\\cdot}25 = 0{\\cdot}5\\), so the current arriving at B is exactly the current leaving it."
+  },
+  {
+   "hash": "e200c1c1b0f0ffd43a4685ce1480bcbfe83ce0bdd031655e3cf9ecf98fab7922",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Waves and their Properties",
+   "stem": "(a) On what factors does the speed of an electromagnetic wave in a medium depend ?\n(b) How is an electromagnetic wave produced ?\n(c) Sketch a schematic diagram depicting the electric and magnetic fields for an electromagnetic wave propagating along z-axis.",
+   "solution": "(a) FACTORS AFFECTING THE SPEED IN A MEDIUM.\nThe speed of an electromagnetic wave in a medium is\n\\(v = \\dfrac{1}{\\sqrt{\\mu\\varepsilon}}\\)\nso it depends on just two properties of the medium:\nits PERMITTIVITY \\(\\varepsilon\\), and\nits magnetic PERMEABILITY \\(\\mu\\).\nNothing else enters — not the frequency, not the amplitude, not the source. In free space these take their vacuum values and the expression gives \\(c = \\dfrac{1}{\\sqrt{\\mu_{0}\\varepsilon_{0}}} = 3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\), the agreement of which with the measured speed of light was Maxwell's decisive evidence that light IS an electromagnetic wave.\n(b) HOW AN ELECTROMAGNETIC WAVE IS PRODUCED.\nBy an ACCELERATED (or oscillating) CHARGE.\nA charge at rest produces only a static electric field; a charge in uniform motion produces steady electric and magnetic fields. Only when a charge ACCELERATES do the fields become time-varying, and then the mechanism is self-sustaining: a changing electric field produces a magnetic field (Maxwell's displacement-current term) and a changing magnetic field produces an electric field (Faraday's law). Each regenerates the other, and the disturbance propagates away from the source as a wave. The frequency radiated equals the frequency of oscillation of the charge.\n(c) SKETCH OF THE WAVE.\nDraw the z-axis as the direction of propagation. Along it show the ELECTRIC FIELD \\(\\vec{E}\\) oscillating sinusoidally in the x-direction, and the MAGNETIC FIELD \\(\\vec{B}\\) oscillating sinusoidally in the y-direction, the two curves in the same plane sections but drawn on mutually perpendicular planes.\nThree features must be right: \\(\\vec{E}\\) and \\(\\vec{B}\\) are mutually PERPENDICULAR and both perpendicular to the direction of travel, so the wave is TRANSVERSE; the two are IN PHASE, reaching their maxima and zeros at the same instants; and \\(\\vec{E} \\times \\vec{B}\\) points along the direction of propagation, here \\(+z\\)."
+  },
+  {
+   "hash": "ceed1cb2cadf2a9bddbc300802da5d384cb07aa3a2a2aeb7de10a9258e20b372",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Inductance",
+   "stem": "A 100-turn coil of radius \\(1{\\cdot}6\\) cm and resistance \\(5{\\cdot}0\\ \\Omega\\) is co-axial with a solenoid of 250 turns/cm and radius \\(1{\\cdot}8\\) cm. The solenoid current drops from \\(1{\\cdot}5\\) A to zero in 25 ms. Calculate the current induced in the coil in this duration. (Take \\(\\pi^2 = 10\\))",
+   "solution": "The solenoid's changing current changes the flux through the coil, which induces an emf and hence a current in it.\nTHE CRUCIAL GEOMETRIC POINT. The coil (radius 1.6 cm) is INSIDE the solenoid (radius 1.8 cm). The solenoid's field is confined to its interior, so the flux linked with the coil is the field multiplied by the COIL'S area, not the solenoid's. Using the larger radius would overstate the answer.\nTHE FIELD INSIDE THE SOLENOID, with \\(n = 250\\ \\mathrm{turns/cm} = 250 \\times 10^{2}\\ \\mathrm{turns/m}\\):\n\\(B = \\mu_{0}nI\\)\nTHE INDUCED EMF, for the N-turn coil of radius \\(r_{c}\\):\n\\(\\varepsilon = -N\\dfrac{d\\phi}{dt} = -NA\\dfrac{dB}{dt} = -N\\mu_{0}n\\left(\\pi r_{c}^{2}\\right)\\dfrac{dI}{dt}\\)\nSubstituting \\(N = 100\\), \\(r_{c} = 1{\\cdot}6 \\times 10^{-2}\\) m, \\(\\dfrac{dI}{dt} = \\dfrac{1{\\cdot}5}{25 \\times 10^{-3}} = 60\\ \\mathrm{A\\,s^{-1}}\\), and using \\(\\pi^{2} = 10\\):\n\\(|\\varepsilon| = \\dfrac{100 \\times 4\\pi \\times 10^{-7} \\times 250 \\times 10^{2} \\times \\pi \\times \\left(1{\\cdot}6 \\times 10^{-2}\\right)^{2} \\times 1{\\cdot}5}{25 \\times 10^{-3}}\\)\nGrouping the two factors of \\(\\pi\\) as \\(\\pi^{2} = 10\\):\n\\(|\\varepsilon| = 0{\\cdot}1536\\ \\mathrm{V}\\)\nTHE INDUCED CURRENT:\n\\(I = \\dfrac{|\\varepsilon|}{R} = \\dfrac{0{\\cdot}1536}{5{\\cdot}0}\\)\n\\(I \\approx 0{\\cdot}03\\ \\mathrm{A} = 30\\ \\mathrm{mA}\\)\nThe same answer follows from the mutual inductance, \\(M = \\mu_{0}n N \\pi r_{c}^{2} = 2{\\cdot}56 \\times 10^{-3}\\) H, and \\(\\varepsilon = M\\left|\\dfrac{dI}{dt}\\right| = 2{\\cdot}56 \\times 10^{-3} \\times 60 = 0{\\cdot}1536\\) V — the same calculation packaged differently.\nNote that the current is induced only DURING the 25 ms of change; once the solenoid current has reached zero and stays there, the flux is constant and nothing is induced."
+  },
+  {
+   "hash": "998d7f46606b47ad7f6d2b129497bb2e1e7637ed4f08d23e5dd2ef3ddd56eb70",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Force Between Parallel Currents",
+   "stem": "Two long, straight, parallel conductors carry steady currents in opposite directions. Explain the nature of the force of interaction between them. Obtain an expression for the magnitude of the force between the two conductors. Hence define one ampere.",
+   "solution": "NATURE OF THE FORCE. The currents are in OPPOSITE directions, so the force between the conductors is REPULSIVE — they push each other apart. (Parallel currents attract; antiparallel currents repel.)\nOBTAINING THE EXPRESSION. Let two long straight parallel conductors a and b lie a distance d apart, carrying currents \\(I_{a}\\) and \\(I_{b}\\).\nSTEP 1 — THE FIELD OF ONE AT THE OTHER. Conductor a produces, at the location of b, a magnetic field of magnitude\n\\(B_{a} = \\dfrac{\\mu_{0}I_{a}}{2\\pi d}\\)\ndirected perpendicular to conductor b.\nSTEP 2 — THE FORCE ON THE SECOND. A length L of conductor b, carrying current \\(I_{b}\\) perpendicular to that field, experiences\n\\(F_{ba} = I_{b}LB_{a}\\)\n\\(F_{ba} = \\dfrac{\\mu_{0}I_{a}I_{b}}{2\\pi d}L\\)\nso the force PER UNIT LENGTH is\n\\(\\dfrac{F}{L} = \\dfrac{\\mu_{0}I_{a}I_{b}}{2\\pi d}\\)\nBy Newton's third law conductor b exerts an equal and opposite force on a, so the pair repel each other with this force per unit length.\nDEFINITION OF ONE AMPERE. One ampere is that steady current which, when maintained in each of two very long, straight, parallel conductors of negligible cross-section placed ONE METRE apart in vacuum, produces on each conductor a force of \\(2 \\times 10^{-7}\\) newton per metre of length.\nThat number is not arbitrary: substituting \\(I_{a} = I_{b} = 1\\) A and \\(d = 1\\) m into the expression gives exactly \\(\\dfrac{\\mu_{0}}{2\\pi} = 2 \\times 10^{-7}\\ \\mathrm{N\\,m^{-1}}\\). The definition and the formula are the same statement, which is why the ampere could be defined mechanically — by measuring a force and a length — long before any electrical standard existed."
+  },
+  {
+   "hash": "f597d97b4057bce9fd06cb6983e86d8c9c7a911cef6a6e650cab205b86da6507",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+   "stem": "Obtain an expression for the torque \\(\\vec{\\tau}\\) acting on a current carrying loop in a uniform magnetic field \\(\\vec{B}\\). Draw the necessary diagram.",
+   "solution": "THE DIAGRAM. Draw a rectangular loop PQRS of sides a and b carrying current I, suspended in a uniform field \\(\\vec{B}\\), with \\(\\theta\\) the angle between \\(\\vec{B}\\) and the normal \\(\\hat{n}\\) to the loop's plane. Mark the forces \\(\\vec{F}_{1}\\) and \\(\\vec{F}_{2}\\) on the two sides of length b, one out of the plane of the paper and one into it, and the magnetic moment \\(\\vec{m}\\) along \\(\\hat{n}\\).\nTHE FOUR FORCES. Each side experiences \\(\\vec{F} = I\\left(\\vec{l} \\times \\vec{B}\\right)\\).\nThe two sides of length a lie at an angle to the field. Their forces are equal, opposite AND along the same line of action, so they cancel completely and produce neither force nor torque.\nThe two sides of length b are always PERPENDICULAR to \\(\\vec{B}\\), whatever the loop's orientation, so each carries a force of magnitude\n\\(F_{1} = F_{2} = IbB\\)\none directed out of the plane and the other into it. These two are equal and opposite but do NOT act along the same line, so they constitute a COUPLE.\nTHE TORQUE. The perpendicular distance between their lines of action is \\(a\\sin\\theta\\). Taking moments about the centre, each force acts at \\(\\dfrac{a}{2}\\sin\\theta\\) from it:\n\\(\\tau = F_{1}\\dfrac{a}{2}\\sin\\theta + F_{2}\\dfrac{a}{2}\\sin\\theta = (IbB)(a\\sin\\theta)\\)\n\\(\\tau = I(ab)B\\sin\\theta = IAB\\sin\\theta\\)\nwhere \\(A = ab\\) is the area of the loop. Writing the magnetic moment as \\(\\vec{m} = I\\vec{A}\\), this is\n\\(\\vec{\\tau} = I\\vec{A} \\times \\vec{B} = \\vec{m} \\times \\vec{B}\\)\nTwo features are worth noting. The NET FORCE is zero while the torque is not — that is what \"couple\" means, and it is why the loop rotates without being dragged anywhere. And the torque vanishes at \\(\\theta = 0\\), where \\(\\vec{m}\\) lies along \\(\\vec{B}\\): that is the position of stable equilibrium a compass needle settles into, and the position a motor's commutator exists to prevent the coil from resting in."
+  },
+  {
+   "hash": "695f3d53dd89d0c85d087a96720b97c666fa921c59e9d658f61e3bc62490295b",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "stem": "Using Bohr's postulates, derive the expression for the radius of the \\(n^{th}\\) orbit of an electron in a hydrogen atom. Also find the numerical value of Bohr's radius \\(a_0\\).",
+   "solution": "DERIVING THE RADIUS.\nTwo conditions fix the orbit — one mechanical, one Bohr's quantisation postulate.\nBOHR'S SECOND POSTULATE. The angular momentum is quantised:\n\\(mvr = \\dfrac{nh}{2\\pi} \\qquad \\ldots(1)\\)\nTHE DYNAMICAL CONDITION. The electrostatic attraction supplies the centripetal force, with \\(Z = 1\\) for hydrogen:\n\\(\\dfrac{mv^{2}}{r} = \\dfrac{e^{2}}{4\\pi\\varepsilon_{0}r^{2}}\\)\nSolving this for the speed:\n\\(v^{2} = \\dfrac{e^{2}}{4\\pi\\varepsilon_{0}mr} \\quad\\Longrightarrow\\quad v = \\dfrac{e}{\\sqrt{4\\pi\\varepsilon_{0}mr}} \\qquad \\ldots(2)\\)\nCOMBINING. Substitute (2) into (1):\n\\(m\\left(\\dfrac{e}{\\sqrt{4\\pi\\varepsilon_{0}mr}}\\right)r = \\dfrac{nh}{2\\pi}\\)\nSquaring both sides and simplifying, the single power of r on the left combines with the \\(\\dfrac{1}{r}\\) under the root:\n\\(\\dfrac{m^{2}e^{2}r^{2}}{4\\pi\\varepsilon_{0}mr} = \\dfrac{n^{2}h^{2}}{4\\pi^{2}} \\quad\\Longrightarrow\\quad \\dfrac{me^{2}r}{4\\pi\\varepsilon_{0}} = \\dfrac{n^{2}h^{2}}{4\\pi^{2}}\\)\n\\(r = \\dfrac{n^{2}h^{2}\\varepsilon_{0}}{\\pi me^{2}}\\)\nSo the radius grows as \\(n^{2}\\) — the orbits are not equally spaced but spread rapidly outward.\nTHE NUMERICAL VALUE OF BOHR'S RADIUS. Setting \\(n = 1\\):\n\\(a_{0} = \\dfrac{h^{2}\\varepsilon_{0}}{\\pi me^{2}} = \\dfrac{\\left(6{\\cdot}63 \\times 10^{-34}\\right)^{2} \\times 8{\\cdot}854 \\times 10^{-12}}{3{\\cdot}14 \\times 9{\\cdot}1 \\times 10^{-31} \\times \\left(1{\\cdot}6 \\times 10^{-19}\\right)^{2}}\\)\n\\(a_{0} = 5{\\cdot}29 \\times 10^{-11}\\ \\mathrm{m} = 0{\\cdot}53\\ \\mathring{\\mathrm{A}}\\)\nThat half an ångström is the natural size of the hydrogen atom in its ground state, and it sets the scale of atomic dimensions generally — which is why interatomic spacings in solids come out at a few ångströms and why X-rays, of comparable wavelength, are the right probe for crystal structure."
+  },
+  {
+   "hash": "7837105333f2ddd4cfe5fe5e1af6971c12e8ccf1516c25de1d75119f97e37d9a",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Wave Nature of Matter",
+   "stem": "de Broglie wavelength \\(\\lambda\\) as a function of \\(\\dfrac{1}{\\sqrt{K}}\\), for two particles of masses \\(m_1\\) and \\(m_2\\) are shown in the figure. Here, K is the energy of the moving particles.\n(a) What does the slope of a line represent ?\n(b) Which of the two particles is heavier ?\n(c) Is this graph also valid for a photon ?\nJustify your answer in each case.",
+   "figureNote": "REQUIRED — a line graph with \\(\\lambda\\) on the vertical axis and \\(1/\\sqrt{K}\\) on the horizontal axis, carrying two straight lines through the first quadrant, one labelled \\(m_1\\) and the other \\(m_2\\). The RELATIVE SLOPES are deliberately not described here: part (b) asks which particle is heavier and that is read off exactly that comparison. Page idx 14.",
+   "imageAttached": true,
+   "solution": "Write the de Broglie relation in the form the graph plots.\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mK}} = \\dfrac{h}{\\sqrt{2m}} \\times \\dfrac{1}{\\sqrt{K}}\\)\nComparing with \\(y = mx\\), a plot of \\(\\lambda\\) against \\(\\dfrac{1}{\\sqrt{K}}\\) is a STRAIGHT LINE THROUGH THE ORIGIN.\n(a) WHAT THE SLOPE REPRESENTS.\n\\(\\text{slope} = \\dfrac{h}{\\sqrt{2m}}\\)\nso the slope depends only on Planck's constant and the particle's MASS. Since h is a universal constant, the slope is in effect a measure of the mass — one number read off the graph identifies the particle.\n(b) WHICH PARTICLE IS HEAVIER.\nSince\n\\(\\text{slope} \\propto \\dfrac{1}{\\sqrt{m}}\\)\nthe HEAVIER particle gives the SMALLER slope — a heavier particle of the same energy carries more momentum and so has a shorter wavelength.\nFrom the figure the line for \\(m_{2}\\) is the steeper of the two, so \\(m_{2}\\) has the larger slope and is therefore the LIGHTER. Hence \\(m_{1}\\) IS THE HEAVIER particle.\n(c) IS THE GRAPH VALID FOR A PHOTON?\nNO.\nThe whole derivation rests on \\(p = \\sqrt{2mK}\\), which comes from the non-relativistic relation \\(K = \\dfrac{p^{2}}{2m}\\). A photon has ZERO REST MASS, so that expression is meaningless for it — \\(\\sqrt{2mK}\\) would vanish and the wavelength would be infinite.\nA photon obeys the relativistic relation instead. With \\(m = 0\\) in \\(E^{2} = p^{2}c^{2} + m^{2}c^{4}\\),\n\\(E = pc \\quad\\Longrightarrow\\quad \\lambda = \\dfrac{h}{p} = \\dfrac{hc}{E}\\)\nso for a photon \\(\\lambda \\propto \\dfrac{1}{E}\\), not \\(\\propto \\dfrac{1}{\\sqrt{E}}\\). Plotted on these axes a photon would give a CURVE, not a straight line.\nThe relation \\(\\lambda = \\dfrac{h}{p}\\) itself is perfectly valid for a photon — indeed it was first written for light. What fails is the step from energy to momentum, and that step is where the mass enters."
+  },
+  {
+   "hash": "9495d65ed663f29aff7758d0a95db9cfbcc87355c83148b9848b934797f64ab2",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "With the help of a circuit diagram, explain the working of a p-n junction diode as a full wave rectifier. Draw its input and output waveforms.",
+   "solution": "THE CIRCUIT. Draw a CENTRE-TAP TRANSFORMER whose secondary winding is tapped at its midpoint. Connect the two ends A and B of the secondary to the p-sides of two diodes \\(\\mathrm{D_{1}}\\) and \\(\\mathrm{D_{2}}\\). Join the two diode outputs together and take them through the load resistance \\(R_{L}\\) back to the centre tap. Label the ac input, both diodes, the centre tap, \\(R_{L}\\) and the output terminals X and Y.\nTHE WORKING. The essential property of the centre tap is that the two halves of the secondary are always in OPPOSITE phase with respect to it: when A is positive relative to the tap, B is negative by the same amount.\nFIRST HALF CYCLE. Let A be POSITIVE with respect to the centre tap. Then B is negative, so \\(\\mathrm{D_{1}}\\) is FORWARD biased and conducts while \\(\\mathrm{D_{2}}\\), being reverse biased, does not. Current flows from A through \\(\\mathrm{D_{1}}\\), down through \\(R_{L}\\), and back to the centre tap. An output voltage appears across \\(R_{L}\\).\nSECOND HALF CYCLE. Now A is negative and B positive, so the roles swap: \\(\\mathrm{D_{2}}\\) conducts and \\(\\mathrm{D_{1}}\\) blocks. Current flows from B through \\(\\mathrm{D_{2}}\\), again down through \\(R_{L}\\) and back to the tap.\nIn BOTH halves the current traverses \\(R_{L}\\) in the SAME DIRECTION, because the two diodes feed the load from the same side. An output is therefore obtained throughout the WHOLE of the input cycle, which is what makes the rectification full-wave.\nTHE WAVEFORMS. Draw three graphs one above another against a common time axis:\nTHE WAVEFORM AT A — a full sinusoid, alternating above and below the axis.\nTHE WAVEFORM AT B — the same sinusoid INVERTED, exactly out of phase with A.\nTHE OUTPUT ACROSS \\(R_{L}\\) — a succession of positive humps with no gaps between them, labelled alternately \"due to \\(\\mathrm{D_{1}}\\)\" and \"due to \\(\\mathrm{D_{2}}\\)\". The negative half cycles have been FLIPPED UP rather than discarded.\nNote that the output repeats at TWICE the input frequency. That is the practical advantage over half-wave rectification: no energy is thrown away, and the gaps between humps are half as long, so a smoothing capacitor has less time to discharge and the ripple is smaller."
+  },
+  {
+   "hash": "4fc10a5a024826cd8cbb375a267da3d31ec434f7eda2d99e153cca65f7ada451",
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Choose the incorrect statement :",
+   "context": "When the terminals of a cell are connected to a conductor of resistance R, an electric current flows through the circuit. The electrolyte of the cell also offers some resistance in the path of the current, like the conductor. This resistance offered by the electrolyte is called internal resistance of the cell (r). It depends upon the nature of the electrolyte, the area of the electrodes immersed in the electrolyte and the temperature. Due to internal resistance, a part of the energy supplied by the cell is wasted in the form of heat.\n\nWhen no current is drawn from the cell, the potential difference between the two electrodes in known as emf of the cell \\(\\varepsilon\\). With a current drawn from the cell, the potential difference between the two electrodes is termed as terminal potential difference (V).",
+   "options": [
+    {
+     "label": "A",
+     "text": "The potential difference (V) between the two terminals of a cell in a closed circuit is always less than its emf \\(\\varepsilon\\), during discharge of the cell."
+    },
+    {
+     "label": "B",
+     "text": "The internal resistance of a cell decreases with the decrease in temperature of the electrolyte."
+    },
+    {
+     "label": "C",
+     "text": "When current is drawn from the cell then \\(V = \\varepsilon - Ir\\)."
+    },
+    {
+     "label": "D",
+     "text": "The graph between potential difference between the two terminals of the cell (V) and the current (I) through it is a straight line with a negative slope."
+    }
+   ],
+   "answer": "B",
+   "solution": "Test each statement in turn; the question asks for the INCORRECT one.\n\"THE TERMINAL VOLTAGE IS ALWAYS LESS THAN THE EMF IN A CLOSED CIRCUIT.\" CORRECT. Once current flows, part of the emf is spent driving it through the cell's own internal resistance, so \\(V = \\varepsilon - Ir < \\varepsilon\\).\n\"THE INTERNAL RESISTANCE DECREASES WITH A DECREASE IN TEMPERATURE.\" INCORRECT — this is the answer. The internal resistance of a cell is the resistance of its ELECTROLYTE, and conduction there is by IONS. Cooling the electrolyte makes it more viscous and reduces ionic mobility, so the ions move less freely and the internal resistance RISES. Lowering the temperature INCREASES the internal resistance, not decreases it.\n\"WHEN CURRENT IS DRAWN, \\(V = \\varepsilon - Ir\\).\" CORRECT — this is the defining relation, and the statement above is a consequence of it.\n\"THE V-I GRAPH IS A STRAIGHT LINE OF NEGATIVE SLOPE.\" CORRECT. Rearranged as \\(V = \\varepsilon - Ir\\), the graph of V against I is a straight line of intercept \\(\\varepsilon\\) and slope \\(-r\\).\nSo the incorrect statement is the one about internal resistance and temperature.\nNote the contrast with a METALLIC conductor, whose resistance FALLS as it is cooled because the lattice vibrations that scatter its electrons die down. The electrolyte behaves the opposite way, since its carriers are whole ions moving through a fluid rather than electrons through a lattice. This is the familiar reason a car battery struggles on a cold morning: its internal resistance has risen, so it cannot supply the large starting current."
+  },
+  {
+   "hash": "0527fb04ee48c07e51c85aeeb94bdc7c6528bb40fc57cc822430e13bc0c88856",
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Two cells of emfs \\(2{\\cdot}0\\) V and \\(6{\\cdot}0\\) V and internal resistances \\(0{\\cdot}1\\ \\Omega\\) and \\(0{\\cdot}4\\ \\Omega\\) respectively, are connected in parallel. The equivalent emf of the combination will be :",
+   "context": "When the terminals of a cell are connected to a conductor of resistance R, an electric current flows through the circuit. The electrolyte of the cell also offers some resistance in the path of the current, like the conductor. This resistance offered by the electrolyte is called internal resistance of the cell (r). It depends upon the nature of the electrolyte, the area of the electrodes immersed in the electrolyte and the temperature. Due to internal resistance, a part of the energy supplied by the cell is wasted in the form of heat.\n\nWhen no current is drawn from the cell, the potential difference between the two electrodes in known as emf of the cell \\(\\varepsilon\\). With a current drawn from the cell, the potential difference between the two electrodes is termed as terminal potential difference (V).",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2{\\cdot}0\\) V"
+    },
+    {
+     "label": "B",
+     "text": "\\(2{\\cdot}8\\) V"
+    },
+    {
+     "label": "C",
+     "text": "\\(6{\\cdot}0\\) V"
+    },
+    {
+     "label": "D",
+     "text": "\\(8{\\cdot}0\\) V"
+    }
+   ],
+   "answer": "B",
+   "solution": "For two cells in parallel the equivalent emf is a weighted average in which each emf is weighted by the OTHER cell's internal resistance:\n\\(\\varepsilon_{eq} = \\dfrac{\\varepsilon_{1}r_{2} + \\varepsilon_{2}r_{1}}{r_{1} + r_{2}}\\)\nSubstituting \\(\\varepsilon_{1} = 2{\\cdot}0\\) V with \\(r_{1} = 0{\\cdot}1\\ \\Omega\\), and \\(\\varepsilon_{2} = 6{\\cdot}0\\) V with \\(r_{2} = 0{\\cdot}4\\ \\Omega\\):\n\\(\\varepsilon_{eq} = \\dfrac{(2{\\cdot}0)(0{\\cdot}4) + (6{\\cdot}0)(0{\\cdot}1)}{0{\\cdot}1 + 0{\\cdot}4} = \\dfrac{0{\\cdot}8 + 0{\\cdot}6}{0{\\cdot}5} = \\dfrac{1{\\cdot}4}{0{\\cdot}5}\\)\n\\(\\varepsilon_{eq} = 2{\\cdot}8\\ \\mathrm{V}\\)\nThe result is worth examining. It lies BETWEEN the two emfs, as any weighted average must — which disposes of the option 8.0 V, the plain sum, at once. But it is nowhere near the midpoint of 4 V: it sits much closer to 2.0 V.\nThe reason is the CROSS-WEIGHTING. The 2 V cell has the SMALLER internal resistance, so it is the better-connected of the two and dominates the combination, dragging the equivalent emf down towards its own value. A cell with a low internal resistance has the loudest voice.\nThis is also a practical warning against putting unequal cells in parallel: the 6 V cell will drive current BACKWARDS through the 2 V one, charging it rather than delivering useful current to the load."
+  },
+  {
+   "hash": "cb40536f4e18cc284f266b1e51d415ab49e9e1f352c26d3d3e062070d9661be6",
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Dipped in the solution, the electrode exchanges charges with the electrolyte. The positive electrode develops a potential \\(V_+\\) \\((V_+ > 0)\\), and the negative electrode develops a potential \\(-(V_-)\\) \\((V_- \\geq 0)\\), relative to the electrolyte adjacent to it. When no current is drawn from the cell then :",
+   "context": "When the terminals of a cell are connected to a conductor of resistance R, an electric current flows through the circuit. The electrolyte of the cell also offers some resistance in the path of the current, like the conductor. This resistance offered by the electrolyte is called internal resistance of the cell (r). It depends upon the nature of the electrolyte, the area of the electrodes immersed in the electrolyte and the temperature. Due to internal resistance, a part of the energy supplied by the cell is wasted in the form of heat.\n\nWhen no current is drawn from the cell, the potential difference between the two electrodes in known as emf of the cell \\(\\varepsilon\\). With a current drawn from the cell, the potential difference between the two electrodes is termed as terminal potential difference (V).",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\varepsilon = V_+ + V_- > 0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\varepsilon = V_+ - V_- > 0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\varepsilon = V_+ + V_- < 0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\varepsilon = V_+ + V_- = 0\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Consider what each electrode contributes, and how the two combine round the cell.\nThe POSITIVE electrode sits at a potential \\(V_{+}\\) ABOVE the electrolyte next to it, where \\(V_{+} > 0\\).\nThe NEGATIVE electrode sits at a potential \\(-V_{-}\\) relative to its adjacent electrolyte, that is \\(V_{-}\\) BELOW it, where \\(V_{-} \\geq 0\\).\nThe emf is the potential difference between the two TERMINALS when no current is drawn, so travelling from the negative terminal through the electrolyte to the positive terminal one climbs \\(V_{-}\\) at the first electrode and a further \\(V_{+}\\) at the second. The two steps are in the SAME sense and therefore ADD:\n\\(\\varepsilon = V_{+} + V_{-}\\)\nand since \\(V_{+} > 0\\) and \\(V_{-} \\geq 0\\), the sum is positive:\n\\(\\varepsilon = V_{+} + V_{-} > 0\\)\nThe sign convention in the stem is what makes the two contributions add rather than cancel. The negative electrode's potential is quoted as \\(-(V_{-})\\) with \\(V_{-}\\) itself non-negative, so subtracting that from the positive electrode's \\(V_{+}\\) gives \\(V_{+} - (-V_{-}) = V_{+} + V_{-}\\). Reading \\(V_{-}\\) as already carrying its own minus sign is what produces the difference option.\nThe physical content is that a cell's emf comes from TWO electrode-electrolyte interfaces, each contributing its own potential step, which is why cell voltages are fixed by the pair of materials chosen and why a single electrode has no measurable emf on its own."
+  },
+  {
+   "hash": "590513c25758221056a22fe6fa8d9e171fcf0266a0a710b915b6893dc5b209bd",
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Five identical cells, each of emf 2 V and internal resistance \\(0{\\cdot}1\\ \\Omega\\) are connected in parallel. This combination in turn is connected to an external resistor of \\(9{\\cdot}98\\ \\Omega\\). The current flowing through the resistor is :",
+   "context": "When the terminals of a cell are connected to a conductor of resistance R, an electric current flows through the circuit. The electrolyte of the cell also offers some resistance in the path of the current, like the conductor. This resistance offered by the electrolyte is called internal resistance of the cell (r). It depends upon the nature of the electrolyte, the area of the electrodes immersed in the electrolyte and the temperature. Due to internal resistance, a part of the energy supplied by the cell is wasted in the form of heat.\n\nWhen no current is drawn from the cell, the potential difference between the two electrodes in known as emf of the cell \\(\\varepsilon\\). With a current drawn from the cell, the potential difference between the two electrodes is termed as terminal potential difference (V).",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}05\\) A"
+    },
+    {
+     "label": "B",
+     "text": "\\(0{\\cdot}1\\) A"
+    },
+    {
+     "label": "C",
+     "text": "\\(0{\\cdot}15\\) A"
+    },
+    {
+     "label": "D",
+     "text": "\\(0{\\cdot}2\\) A"
+    }
+   ],
+   "answer": "D",
+   "solution": "Identical cells in PARALLEL keep the same emf but share the internal resistance.\nTHE EQUIVALENT EMF. All five cells have the same emf, so connecting them in parallel does not raise it:\n\\(\\varepsilon_{eq} = 2\\ \\mathrm{V}\\)\nTHE EQUIVALENT INTERNAL RESISTANCE. Five equal resistances in parallel:\n\\(r_{eq} = \\dfrac{r}{n} = \\dfrac{0{\\cdot}1}{5} = 0{\\cdot}02\\ \\Omega\\)\nTHE CURRENT through the external resistor:\n\\(I = \\dfrac{\\varepsilon_{eq}}{R + r_{eq}} = \\dfrac{2}{9{\\cdot}98 + 0{\\cdot}02} = \\dfrac{2}{10}\\)\n\\(I = 0{\\cdot}2\\ \\mathrm{A}\\)\nThe value 9.98 has been chosen so that it combines with \\(r_{eq}\\) to give exactly 10, which is the signal that the internal resistance is meant to be worked out rather than neglected.\nThe point of the parallel arrangement is visible in the numbers: the internal resistance has been cut from \\(0{\\cdot}1\\ \\Omega\\) to \\(0{\\cdot}02\\ \\Omega\\), so the combination can deliver a much larger current before its own resistance starts to matter. A SERIES arrangement would have done the opposite — raising the emf to 10 V but the internal resistance to \\(0{\\cdot}5\\ \\Omega\\) as well. Cells are paralleled for CURRENT and stacked in series for VOLTAGE."
+  },
+  {
+   "hash": "f9ed863dc7914ee79b76301873e25ed2ca6ad9513a51ad6ce28cb8922ff57dd4",
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Potential difference across a cell in the open circuit is 6 V. It becomes 4 V when a current of 2 A is drawn from it. The internal resistance of the cell is :",
+   "context": "When the terminals of a cell are connected to a conductor of resistance R, an electric current flows through the circuit. The electrolyte of the cell also offers some resistance in the path of the current, like the conductor. This resistance offered by the electrolyte is called internal resistance of the cell (r). It depends upon the nature of the electrolyte, the area of the electrodes immersed in the electrolyte and the temperature. Due to internal resistance, a part of the energy supplied by the cell is wasted in the form of heat.\n\nWhen no current is drawn from the cell, the potential difference between the two electrodes in known as emf of the cell \\(\\varepsilon\\). With a current drawn from the cell, the potential difference between the two electrodes is termed as terminal potential difference (V).",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1{\\cdot}0\\ \\Omega\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1{\\cdot}5\\ \\Omega\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2{\\cdot}0\\ \\Omega\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2{\\cdot}5\\ \\Omega\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The OPEN-CIRCUIT reading is the emf itself, since no current flows and nothing is lost inside the cell:\n\\(\\varepsilon = 6\\ \\mathrm{V}\\)\nWhen current is drawn, part of the emf is spent driving it through the internal resistance:\n\\(V = \\varepsilon - Ir \\quad\\Longrightarrow\\quad r = \\dfrac{\\varepsilon - V}{I}\\)\nSubstituting \\(V = 4\\) V at \\(I = 2\\) A:\n\\(r = \\dfrac{6 - 4}{2} = \\dfrac{2}{2}\\)\n\\(r = 1{\\cdot}0\\ \\Omega\\)\nThe internal resistance is \\(1{\\cdot}0\\ \\Omega\\).\nThe 2 V that has vanished from the terminal reading has not been destroyed — it is being dropped ACROSS THE INTERNAL RESISTANCE, inside the cell, where it appears as heat. A cell delivering a large current therefore warms up, and its terminal voltage sags.\nThat sag is what measures r, and it is the basis of the standard graphical method: plotting V against I gives a straight line whose intercept is \\(\\varepsilon\\) and whose slope is \\(-r\\). Here two points on that line — \\((0, 6)\\) and \\((2, 4)\\) — have been supplied, and the calculation is simply the slope between them."
+  },
+  {
+   "hash": "64d891970dd65b250cb3f9ea947ab065adafbb3000a3989715f66db5f8129074",
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "For a ray incident at the critical angle, the angle of reflection is :",
+   "context": "When a ray of light propagates from a denser medium to a rarer medium, it bends away from the normal. When the incident angle is increased, the refracted ray deviates more from the normal. For a particular angle of incidence in the denser medium, the refracted ray just grazes the interface of the two surfaces. This angle of incidence is called the critical angle for the pair of media involved.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0^\\circ\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(< 90^\\circ\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(> 90^\\circ\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(90^\\circ\\)"
+    }
+   ],
+   "noCorrectOption": true,
+   "solution": "[CBSE VOIDED this part: the marking scheme records \"Since no option is correct, award 1 mark to all students\". No letter is printed, and none is asserted here. What follows sets out the two readings the wording allows.]\nTHE SITUATION. A ray travelling in a denser medium strikes the boundary with a rarer one at exactly the CRITICAL ANGLE \\(i_{c}\\), defined by\n\\(\\sin i_{c} = \\dfrac{n_{rarer}}{n_{denser}}\\)\nAt that angle two things happen at once, and the question's wording decides which one it is asking about.\nREADING 1 — THE ANGLE OF REFLECTION, which is what the stem literally says. Part of the light is always reflected at a boundary, and reflection obeys\n\\(\\angle\\text{reflection} = \\angle\\text{incidence} = i_{c}\\)\nSince \\(\\sin i_{c} = \\dfrac{n_{rarer}}{n_{denser}} < 1\\), the critical angle is strictly less than \\(90^{\\circ}\\) for any real pair of media. So on this reading the angle of reflection is LESS THAN \\(90^{\\circ}\\), and the printed option \"\\(< 90^{\\circ}\\)\" looks defensible.\nREADING 2 — THE ANGLE OF REFRACTION, which is almost certainly what was intended, since it is the property that makes the critical angle worth naming. By Snell's law,\n\\(n_{denser}\\sin i_{c} = n_{rarer}\\sin r \\quad\\Longrightarrow\\quad \\sin r = \\dfrac{n_{denser}}{n_{rarer}} \\times \\dfrac{n_{rarer}}{n_{denser}} = 1 \\quad\\Longrightarrow\\quad r = 90^{\\circ}\\)\nThe refracted ray GRAZES along the surface. On this reading the answer is \\(90^{\\circ}\\).\nCBSE ruled that no option is correct and awarded the mark to every candidate.\nThe definition worth carrying away is the second one: the critical angle is the angle of incidence for which the angle of REFRACTION reaches \\(90^{\\circ}\\). Beyond it no refracted ray can exist at all — \\(\\sin r\\) would have to exceed 1 — and the light is totally internally reflected, which is the effect that makes optical fibres and prismatic reflectors work."
+  },
+  {
+   "hash": "753f3675f10374d6e8b168da5b74427156f59de794eac54853a28df6bf80f459",
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "A ray of light of wavelength 600 nm is incident in water \\(\\left(n = \\dfrac{4}{3}\\right)\\) on the water-air interface at an angle less than the critical angle. The wavelength associated with the refracted ray is :",
+   "context": "When a ray of light propagates from a denser medium to a rarer medium, it bends away from the normal. When the incident angle is increased, the refracted ray deviates more from the normal. For a particular angle of incidence in the denser medium, the refracted ray just grazes the interface of the two surfaces. This angle of incidence is called the critical angle for the pair of media involved.",
+   "options": [
+    {
+     "label": "A",
+     "text": "400 nm"
+    },
+    {
+     "label": "B",
+     "text": "450 nm"
+    },
+    {
+     "label": "C",
+     "text": "600 nm"
+    },
+    {
+     "label": "D",
+     "text": "800 nm"
+    }
+   ],
+   "answer": "D",
+   "solution": "When light crosses a boundary its FREQUENCY is unchanged — the frequency is set by the source, and the boundary cannot create or destroy wave cycles. What changes is the speed, and with it the wavelength:\n\\(v = \\nu\\lambda \\quad\\text{with}\\ \\nu\\ \\text{fixed} \\quad\\Longrightarrow\\quad \\lambda \\propto v \\propto \\dfrac{1}{n}\\)\nSo\n\\(\\dfrac{\\lambda_{air}}{\\lambda_{water}} = \\dfrac{n_{water}}{n_{air}} = \\dfrac{4}{3}\\)\n\\(\\lambda_{air} = 600 \\times \\dfrac{4}{3}\\)\n\\(\\lambda_{air} = 800\\ \\mathrm{nm}\\)\nThe wavelength of the refracted ray is 800 nm.\nThe direction of the change is the thing to fix firmly: passing from water into AIR, the light speeds up, so the wavelength gets LONGER, not shorter. The option 450 nm is what comes of dividing by \\(\\dfrac{4}{3}\\) instead of multiplying — correct for the opposite journey, air into water.\nThe phrase \"at an angle less than the critical angle\" is there only to guarantee that a refracted ray exists at all; had the angle exceeded the critical angle the light would have been totally internally reflected and there would be no refracted ray to ask about. It does not affect the wavelength, which depends on the media alone and not on the angle."
+  },
+  {
+   "hash": "15fee08f4d6152317dd5e03ac70280a27d7eb0db1fe8fcb5fc9a644b98f13b72",
+   "ref": "Q30iiia",
+   "questionNumber": "30 (iii) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "The interface AB between the two media A and B is shown in the figure. In the denser medium A, the incident ray PQ makes an angle of \\(30^\\circ\\) with the horizontal. The refracted ray is parallel to the interface. The refractive index of medium B w.r.t. medium A is :",
+   "context": "When a ray of light propagates from a denser medium to a rarer medium, it bends away from the normal. When the incident angle is increased, the refracted ray deviates more from the normal. For a particular angle of incidence in the denser medium, the refracted ray just grazes the interface of the two surfaces. This angle of incidence is called the critical angle for the pair of media involved.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\sqrt{3}}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\sqrt{5}}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{4}{\\sqrt{3}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{2}{\\sqrt{3}}\\)"
+    }
+   ],
+   "answer": "A",
+   "figureNote": "REQUIRED — a horizontal interface line labelled A at its left end and B at its right end, with a short vertical normal drawn at the point Q where the ray meets it; the ray PQ arrives from below-left with the \\(30^\\circ\\) angle marked between it and the horizontal, and the letters B and A label the regions above and below the interface on the right of the normal. Which region carries which label exists ONLY in the drawing. Page idx 20.",
+   "imageAttached": true,
+   "solution": "Two steps, and the first is the one the question is really testing.\nCONVERTING TO THE ANGLE OF INCIDENCE. Angles in Snell's law are measured from the NORMAL, but the stem gives the angle with the HORIZONTAL — that is, with the interface itself. The two are complementary:\n\\(i = 90^{\\circ} - 30^{\\circ} = 60^{\\circ}\\)\nRECOGNISING THE CRITICAL ANGLE. The refracted ray is PARALLEL TO THE INTERFACE, which means it makes \\(90^{\\circ}\\) with the normal. An angle of refraction of \\(90^{\\circ}\\) is exactly the defining condition for the critical angle, so \\(60^{\\circ}\\) IS the critical angle for this pair of media.\nAPPLYING SNELL'S LAW at the boundary, from the denser medium A into B:\n\\(n_{A}\\sin 60^{\\circ} = n_{B}\\sin 90^{\\circ}\\)\n\\(\\dfrac{n_{B}}{n_{A}} = \\sin 60^{\\circ}\\)\n\\(n_{BA} = \\dfrac{\\sqrt{3}}{2}\\)\nThe refractive index of B with respect to A is \\(\\dfrac{\\sqrt{3}}{2}\\).\nTwo checks confirm it. The answer is LESS than 1, as it must be — the stem says A is the denser medium, so B is optically rarer and \\(\\dfrac{n_{B}}{n_{A}} < 1\\). That alone rules out the two options greater than 1. And the reciprocal \\(\\dfrac{2}{\\sqrt{3}}\\) is the index of A with respect to B, offered to a reader who takes the ratio the other way round.\nReading \\(30^{\\circ}\\) straight into Snell's law without converting gives \\(\\sin 30^{\\circ} = \\dfrac{1}{2}\\), which is not among the options — the question is built so that the complementary step cannot be skipped."
+  },
+  {
+   "hash": "23bd08847228b220013e0f0bb109a889f77dc22b05ee8c15363b27c338f78179",
+   "ref": "Q30iiib",
+   "questionNumber": "30 (iii) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "Two media A and B are separated by a plane boundary. The speed of light in medium A and B is \\(2 \\times 10^8\\) ms\\(^{-1}\\) and \\(2{\\cdot}5 \\times 10^8\\) ms\\(^{-1}\\) respectively. The critical angle for a ray of light going from medium A to medium B is :",
+   "context": "When a ray of light propagates from a denser medium to a rarer medium, it bends away from the normal. When the incident angle is increased, the refracted ray deviates more from the normal. For a particular angle of incidence in the denser medium, the refracted ray just grazes the interface of the two surfaces. This angle of incidence is called the critical angle for the pair of media involved.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sin^{-1}\\dfrac{1}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sin^{-1}\\dfrac{4}{5}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sin^{-1}\\dfrac{3}{5}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sin^{-1}\\dfrac{2}{5}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Get the two refractive indices from the two speeds, then the critical angle from their ratio.\n\\(n = \\dfrac{c}{v}\\)\nFor medium A: \\(n_{A} = \\dfrac{3 \\times 10^{8}}{2 \\times 10^{8}} = 1{\\cdot}5\\)\nFor medium B: \\(n_{B} = \\dfrac{3 \\times 10^{8}}{2{\\cdot}5 \\times 10^{8}} = 1{\\cdot}2\\)\nSince \\(n_{A} > n_{B}\\), medium A is the DENSER one, and a critical angle exists for light going from A to B — which is the direction the question asks about.\nTHE CRITICAL ANGLE:\n\\(\\sin C = \\dfrac{n_{B}}{n_{A}} = \\dfrac{1{\\cdot}2}{1{\\cdot}5} = \\dfrac{4}{5}\\)\n\\(C = \\sin^{-1}\\left(\\dfrac{4}{5}\\right)\\)\nThe same result follows directly from the speeds without computing either index, since c cancels:\n\\(\\sin C = \\dfrac{n_{B}}{n_{A}} = \\dfrac{c/v_{B}}{c/v_{A}} = \\dfrac{v_{A}}{v_{B}} = \\dfrac{2 \\times 10^{8}}{2{\\cdot}5 \\times 10^{8}} = \\dfrac{4}{5}\\)\nand that is the quicker route: the critical angle's sine is the ratio of the SPEEDS, taken with the slower medium on top.\nNote the inversion between the two forms. In terms of refractive indices the rarer medium goes on top; in terms of speeds the denser medium's (slower) speed goes on top. Getting that backwards gives \\(\\dfrac{5}{4}\\), whose arcsine does not exist — a useful sign that the ratio has been taken upside down, since \\(\\sin C\\) can never exceed 1."
+  },
+  {
+   "hash": "8c60ffe931bbd4f3111915d6245d2beed8432bdf2e2eeb2d2de566c2b35187bd",
+   "ref": "Q30iv",
+   "questionNumber": "30 (iv)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction Through a Prism",
+   "stem": "The figure shows the path of a light ray through a triangular prism. In this phenomenon, the angle \\(\\theta\\) is given by :",
+   "context": "When a ray of light propagates from a denser medium to a rarer medium, it bends away from the normal. When the incident angle is increased, the refracted ray deviates more from the normal. For a particular angle of incidence in the denser medium, the refracted ray just grazes the interface of the two surfaces. This angle of incidence is called the critical angle for the pair of media involved.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sin^{-1}\\sqrt{n^2 - 1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sin^{-1}(n^2 - 1)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sin^{-1}\\left[\\dfrac{1}{\\sqrt{n^2 - 1}}\\right]\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sin^{-1}\\left[\\dfrac{1}{(n^2 - 1)}\\right]\\)"
+    }
+   ],
+   "answer": "A",
+   "figureNote": "REQUIRED — the stem names nothing but the angle \\(\\theta\\); the entire geometry is in the drawing. A triangle with a horizontal base and an apex marked \\(90^\\circ\\); a ray arrives from the left onto the left face where \\(\\theta\\) is marked between it and the dashed normal, travels inside the prism (that leg labelled n) and leaves downward through the base. The path's behaviour at the second face is exactly what the question tests and is not described here. Page idx 20.",
+   "imageAttached": true,
+   "solution": "The figure shows a ray entering one face of the prism and just undergoing TOTAL INTERNAL REFLECTION at the second face — that is the \"phenomenon\" the stem refers to, and \\(\\theta\\) is the angle of incidence for which it just occurs.\nAT THE SECOND FACE, total internal reflection just begins when the angle of incidence there equals the critical angle C:\n\\(\\sin C = \\dfrac{1}{n}\\)\nINSIDE THE PRISM. The two refraction angles are related to the prism angle by\n\\(r_{1} + r_{2} = A\\)\nand for the right-angled prism of the figure, \\(A = 90^{\\circ}\\). With \\(r_{2} = C\\) at the onset of total internal reflection:\n\\(r_{1} = 90^{\\circ} - C\\)\nAT THE FIRST FACE, Snell's law with \\(i = \\theta\\):\n\\(\\sin\\theta = n\\sin r_{1} = n\\sin\\left(90^{\\circ} - C\\right) = n\\cos C\\)\nNow express \\(\\cos C\\) through \\(\\sin C = \\dfrac{1}{n}\\):\n\\(\\cos C = \\sqrt{1 - \\sin^{2}C} = \\sqrt{1 - \\dfrac{1}{n^{2}}} = \\dfrac{\\sqrt{n^{2} - 1}}{n}\\)\nSubstituting, the n cancels:\n\\(\\sin\\theta = n \\times \\dfrac{\\sqrt{n^{2} - 1}}{n} = \\sqrt{n^{2} - 1}\\)\n\\(\\theta = \\sin^{-1}\\sqrt{n^{2} - 1}\\)\nThe square root is the discriminator among the options, and it enters through the Pythagorean step converting \\(\\sin C\\) into \\(\\cos C\\) — a step the complementary relation \\(r_{1} = 90^{\\circ} - C\\) forces on us.\nThe result also sets a limit on the glass: for \\(\\theta\\) to exist at all, \\(\\sqrt{n^{2} - 1}\\) must not exceed 1, so \\(n \\leq \\sqrt{2}\\). For \\(n > \\sqrt{2}\\) total internal reflection occurs at the second face for EVERY angle of entry, which is exactly why \\(45^{\\circ}\\)-\\(45^{\\circ}\\)-\\(90^{\\circ}\\) prisms of ordinary crown glass \\((n = 1{\\cdot}5)\\) work as reflectors whatever the alignment."
+  },
+  {
+   "hash": "b3576432931c2aa96058b05633fc39cd55df62e9f40ae2e43bef514bf953d115",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+   "stem": "(i) Obtain an expression for the electric potential due to a small dipole of dipole moment \\(\\vec{p}\\), at a point \\(\\vec{r}\\) from its centre, for much larger distances compared to the size of the dipole.\n(ii) Three point charges q, 2q and nq are placed at the vertices of an equilateral triangle. If the potential energy of the system is zero, find the value of n.",
+   "solution": "(i) POTENTIAL DUE TO A SHORT DIPOLE.\nLet the dipole consist of \\(-q\\) at A and \\(+q\\) at B, separated by \\(2a\\), with centre O. Let P be a point at distance r from O, the line OP making an angle \\(\\theta\\) with the dipole axis. Write \\(r_{1}\\) and \\(r_{2}\\) for the distances from \\(+q\\) and \\(-q\\) to P.\nTHE EXACT POTENTIAL is the scalar sum of the two contributions:\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\left(\\dfrac{q}{r_{1}} - \\dfrac{q}{r_{2}}\\right) \\qquad \\ldots(1)\\)\nTHE GEOMETRY. By the cosine rule applied to the two triangles,\n\\(r_{1}^{2} = r^{2} + a^{2} - 2ar\\cos\\theta \\qquad r_{2}^{2} = r^{2} + a^{2} + 2ar\\cos\\theta\\)\nFOR \\(r \\gg a\\), the term \\(a^{2}\\) is negligible beside \\(r^{2}\\), so\n\\(r_{1}^{2} \\approx r^{2}\\left(1 - \\dfrac{2a\\cos\\theta}{r}\\right) \\qquad r_{2}^{2} \\approx r^{2}\\left(1 + \\dfrac{2a\\cos\\theta}{r}\\right)\\)\nTaking the inverse square root of each and expanding binomially, keeping only the first order in \\(\\dfrac{a}{r}\\):\n\\(\\dfrac{1}{r_{1}} \\approx \\dfrac{1}{r}\\left(1 + \\dfrac{a\\cos\\theta}{r}\\right) \\qquad \\dfrac{1}{r_{2}} \\approx \\dfrac{1}{r}\\left(1 - \\dfrac{a\\cos\\theta}{r}\\right)\\)\nSUBSTITUTING into (1), the two 1's cancel and the two \\(\\dfrac{a\\cos\\theta}{r}\\) terms ADD:\n\\(V = \\dfrac{q}{4\\pi\\varepsilon_{0}}\\left(\\dfrac{2a\\cos\\theta}{r^{2}}\\right)\\)\nWriting the dipole moment \\(p = q(2a)\\):\n\\(V = \\dfrac{p\\cos\\theta}{4\\pi\\varepsilon_{0}r^{2}}\\)\nTwo features are characteristic of a dipole. The potential falls as \\(\\dfrac{1}{r^{2}}\\), faster than a point charge's \\(\\dfrac{1}{r}\\), because the two opposite charges very nearly cancel at a distance. And it depends on DIRECTION through \\(\\cos\\theta\\): maximum along the axis, and ZERO everywhere on the equatorial plane, where \\(\\theta = 90^{\\circ}\\) and the two charges are equidistant.\n(ii) FINDING n.\nThe potential energy of three charges is the sum over the three PAIRS, and in an equilateral triangle of side a every pair is the same distance apart:\n\\(U = \\dfrac{k}{a}\\left[q_{1}q_{2} + q_{2}q_{3} + q_{1}q_{3}\\right]\\)\nWith the charges q, 2q and nq:\n\\(U = \\dfrac{k}{a}\\left[(q)(2q) + (2q)(nq) + (q)(nq)\\right] = \\dfrac{kq^{2}}{a}\\left[2 + 2n + n\\right]\\)\nSetting the total energy to zero, and noting that \\(\\dfrac{kq^{2}}{a}\\) cannot itself vanish:\n\\(2 + 3n = 0\\)\n\\(n = -\\dfrac{2}{3}\\)\nThe value is NEGATIVE, as it had to be. The first pair q and 2q are both positive and repel, contributing positive energy; the only way the total can come to zero is for the third charge to be of OPPOSITE sign, so that its two attractions cancel that contribution exactly."
+  },
+  {
+   "hash": "1fbe9d5404cdd67e29c31988b84f8db2c3f8c1d9750c9fd4c678fb2e109ad7e0",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Applications of Gauss's Law",
+   "stem": "(i) State Gauss's Law in electrostatics. Apply this to obtain the electric field \\(\\vec{E}\\) at a point near a uniformly charged infinite plane sheet.\n(ii) Two long straight wires 1 and 2 are kept as shown in the figure. The linear charge density of the two wires are \\(\\lambda_1 = 10\\ \\mu\\mathrm{C/m}\\) and \\(\\lambda_2 = -20\\ \\mu\\mathrm{C/m}\\). Find the net force \\(\\vec{F}\\) experienced by an electron held at point P.",
+   "figureNote": "REQUIRED — part (ii) is unanswerable from its stem: every distance lives only in the drawing. Two horizontal parallel lines, the upper labelled 1 at its left end and \\(\\lambda_1\\) at its right, the lower labelled 2 and \\(\\lambda_2\\); a vertical dimension arrow at the left marks 30 cm between them, and a second arrow marks 10 cm between the upper wire and the point P, which is drawn as a labelled dot between the wires. A separate \\(\\hat{i}\\)/\\(\\hat{j}\\) axis key sits to the right, \\(\\hat{j}\\) upward and \\(\\hat{i}\\) rightward. Page idx 22.",
+   "imageAttached": true,
+   "solution": "(i) GAUSS'S LAW AND THE INFINITE CHARGED SHEET.\nSTATEMENT. The total electric flux through any CLOSED surface is \\(\\dfrac{1}{\\varepsilon_{0}}\\) times the total charge ENCLOSED by that surface:\n\\(\\oint \\vec{E} \\cdot d\\vec{S} = \\dfrac{q_{enclosed}}{\\varepsilon_{0}}\\)\nAPPLYING IT TO THE SHEET. Let the plane sheet carry a uniform surface charge density \\(\\sigma\\). By symmetry the field must be perpendicular to the sheet and of the same magnitude at equal distances on either side.\nChoose as the Gaussian surface a CYLINDER (or rectangular box) pierced symmetrically by the sheet, with its flat end faces of area A parallel to the sheet, one on each side.\nTHE FLUX. The CURVED side contributes nothing, because there \\(\\vec{E}\\) is parallel to the surface and \\(\\vec{E} \\cdot d\\vec{S} = 0\\). Only the two END FACES contribute, and at each the field is along the outward normal, so their contributions ADD:\n\\(\\oint \\vec{E} \\cdot d\\vec{S} = EA + EA = 2EA\\)\nTHE CHARGE ENCLOSED is that on the intercepted patch of sheet:\n\\(q_{enclosed} = \\sigma A\\)\nEquating by Gauss's law:\n\\(2EA = \\dfrac{\\sigma A}{\\varepsilon_{0}}\\)\nThe area A cancels — which is what tells us the field is independent of how far away we are:\n\\(\\vec{E} = \\dfrac{\\sigma}{2\\varepsilon_{0}}\\hat{n}\\)\nwhere \\(\\hat{n}\\) is the unit vector directed normally away from the sheet (towards it if \\(\\sigma\\) is negative). The field is UNIFORM, the same at every distance, which is the striking feature of an infinite sheet.\n(ii) THE NET FORCE ON THE ELECTRON AT P.\nThe field of a long straight charged wire at perpendicular distance r is\n\\(\\vec{E} = \\dfrac{\\lambda}{2\\pi\\varepsilon_{0}r}\\hat{r}\\)\nFIELD DUE TO WIRE 1, with \\(\\lambda_{1} = +10\\ \\mu\\mathrm{C/m}\\) at \\(r_{1} = 10\\) cm. Being POSITIVE, its field points AWAY from the wire, which from the figure is the \\(-\\hat{j}\\) direction:\n\\(\\vec{E}_{1} = \\dfrac{10 \\times 10^{-6}}{2\\pi\\varepsilon_{0}\\left(10 \\times 10^{-2}\\right)}\\left(-\\hat{j}\\right)\\)\nFIELD DUE TO WIRE 2, with \\(\\lambda_{2} = -20\\ \\mu\\mathrm{C/m}\\) at \\(r_{2} = 20\\) cm. Being NEGATIVE, its field points TOWARDS that wire — which from the figure is also \\(-\\hat{j}\\):\n\\(\\vec{E}_{2} = \\dfrac{20 \\times 10^{-6}}{2\\pi\\varepsilon_{0}\\left(20 \\times 10^{-2}\\right)}\\left(-\\hat{j}\\right)\\)\nThe two point the SAME way and therefore add:\n\\(\\vec{E}_{net} = \\dfrac{10 \\times 10^{-6}}{2\\pi\\varepsilon_{0}}\\left(\\dfrac{1}{0{\\cdot}1} + \\dfrac{2}{0{\\cdot}2}\\right)\\left(-\\hat{j}\\right) = \\dfrac{10 \\times 10^{-6}}{2\\pi\\varepsilon_{0}}\\left(20\\right)\\left(-\\hat{j}\\right)\\)\n\\(\\vec{E}_{net} = 3{\\cdot}6 \\times 10^{6}\\left(-\\hat{j}\\right)\\ \\mathrm{N\\,C^{-1}}\\)\nTHE FORCE ON THE ELECTRON, of charge \\(-1{\\cdot}6 \\times 10^{-19}\\) C:\n\\(\\vec{F} = q\\vec{E}_{net} = \\left(-1{\\cdot}6 \\times 10^{-19}\\right)\\left(3{\\cdot}6 \\times 10^{6}\\right)\\left(-\\hat{j}\\right)\\)\n\\(\\vec{F} = 5{\\cdot}76 \\times 10^{-13}\\ \\hat{j}\\ \\mathrm{N}\\)\nThe two minus signs — one from the electron's charge, one from the field's direction — cancel, so the force on the electron is directed along \\(+\\hat{j}\\), OPPOSITE to the field, as it must be for a negative charge."
+  },
+  {
+   "hash": "4763959029682298a43a9038e3b2489c611cd436d1a027bbfbd3e15ef29f2000",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "stem": "(i) A particle of mass m and charge q is moving with a velocity \\(\\vec{v}\\) in a magnetic field \\(\\vec{B}\\) as shown in the figure. Show that it follows a helical path. Hence, obtain its frequency of revolution.\n(ii) In a hydrogen atom, the electron moves in an orbit of radius \\(2\\ \\mathring{\\mathrm{A}}\\) making \\(8 \\times 10^{14}\\) revolutions per second. Find the magnetic moment associated with the orbital motion of the electron.",
+   "figureNote": "REQUIRED — part (i) says 'as shown in the figure' and states no directions at all. A right-handed set of axes x (rightward), y (upward) and z (toward the lower left); an arrow labelled \\(\\vec{B}\\) and an arrow labelled \\(\\vec{v}\\) are both drawn in the upper-right region. The ORIENTATION of \\(\\vec{v}\\) relative to \\(\\vec{B}\\) is withheld here: that the two are oblique rather than parallel or perpendicular is the whole premise of 'show that it follows a helical path'. Page idx 24.",
+   "imageAttached": true,
+   "solution": "(i) THE HELICAL PATH AND THE FREQUENCY.\nRESOLVING THE VELOCITY. Let \\(\\vec{v}\\) make an angle \\(\\theta\\) with \\(\\vec{B}\\), and split it into two components:\n\\(v_{\\perp} = v\\sin\\theta \\quad\\text{perpendicular to}\\ \\vec{B} \\qquad v_{\\parallel} = v\\cos\\theta \\quad\\text{parallel to}\\ \\vec{B}\\)\nWHAT EACH COMPONENT DOES. The magnetic force is \\(q\\vec{v} \\times \\vec{B}\\), so the PARALLEL component contributes nothing — \\(\\vec{v}_{\\parallel} \\times \\vec{B} = 0\\) — and that part of the motion continues unchanged, carrying the particle steadily along the field direction.\nThe PERPENDICULAR component feels the full force and, being always perpendicular to the velocity, drives uniform CIRCULAR motion in the plane normal to \\(\\vec{B}\\).\nA uniform circular motion superposed on a uniform drift along the axis of that circle is a HELIX. Its radius is set by \\(v_{\\perp}\\) and its PITCH — the distance advanced per revolution — by \\(v_{\\parallel}\\).\nTHE FREQUENCY. For the circular part, the magnetic force supplies the centripetal force:\n\\(\\dfrac{mv_{\\perp}^{2}}{r} = qv_{\\perp}B \\quad\\Longrightarrow\\quad v_{\\perp} = \\dfrac{Bqr}{m}\\)\nThe period is the circumference divided by the speed round it:\n\\(T = \\dfrac{2\\pi r}{v_{\\perp}} = \\dfrac{2\\pi r m}{Bqr} = \\dfrac{2\\pi m}{Bq}\\)\n\\(\\nu = \\dfrac{1}{T} = \\dfrac{Bq}{2\\pi m}\\)\nBoth r and \\(v_{\\perp}\\) have cancelled, so the frequency does NOT depend on the speed or on the angle \\(\\theta\\) — a faster particle simply travels a proportionally larger circle in the same time. This is the cyclotron frequency, and its independence of speed is exactly what allows a cyclotron to accelerate particles with a fixed-frequency supply.\n(ii) THE MAGNETIC MOMENT OF THE ORBITING ELECTRON.\nTHE EQUIVALENT CURRENT. An electron making \\(\\nu\\) revolutions per second carries charge e past any point on the orbit \\(\\nu\\) times per second:\n\\(I = \\dfrac{e}{T} = e\\nu = \\left(1{\\cdot}6 \\times 10^{-19}\\right)\\left(8 \\times 10^{14}\\right)\\)\n\\(I = 1{\\cdot}28 \\times 10^{-4}\\ \\mathrm{A}\\)\nTHE AREA of the orbit, with \\(r = 2\\ \\mathring{\\mathrm{A}} = 2 \\times 10^{-10}\\) m:\n\\(A = \\pi r^{2} = 3{\\cdot}14 \\times \\left(2 \\times 10^{-10}\\right)^{2} = 1{\\cdot}256 \\times 10^{-19}\\ \\mathrm{m^{2}}\\)\nTHE MAGNETIC MOMENT:\n\\(M = IA = \\left(1{\\cdot}28 \\times 10^{-4}\\right)\\left(1{\\cdot}256 \\times 10^{-19}\\right)\\)\n\\(M \\approx 1{\\cdot}6 \\times 10^{-23}\\ \\mathrm{A\\,m^{2}}\\)\nThe value is close to the Bohr magneton, \\(9{\\cdot}27 \\times 10^{-24}\\ \\mathrm{A\\,m^{2}}\\), which is the natural unit of atomic magnetism — reassuring, since an electron circling an atom at atomic dimensions is precisely what that unit describes."
+  },
+  {
+   "hash": "ba595b39642a3c8f6a6431ea5633a1af368e5db9642c9aa7c5b061994151efde",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "The Moving Coil Galvanometer",
+   "stem": "(i) What is current sensitivity of a galvanometer ? Show how the current sensitivity of a galvanometer may be increased. \"Increasing the current sensitivity of a galvanometer may not necessarily increase its voltage sensitivity.\" Explain.\n(ii) A moving coil galvanometer has a resistance \\(15\\ \\Omega\\) and takes 20 mA to produce full scale deflection. How can this galvanometer be converted into a voltmeter of range 0 to 100 V ?",
+   "solution": "(i) CURRENT SENSITIVITY.\nDEFINITION. The current sensitivity of a galvanometer is the DEFLECTION PRODUCED PER UNIT CURRENT:\n\\(I_{s} = \\dfrac{\\varphi}{I} = \\dfrac{NBA}{k}\\)\nwhere N is the number of turns, B the radial field, A the coil's area and k the torsional constant of the suspension.\nHOW TO INCREASE IT. Any factor that raises the numerator or lowers the denominator will serve:\nINCREASE THE NUMBER OF TURNS N in the coil;\nINCREASE THE AREA A of the coil (or the field strength B);\nDECREASE THE TORSIONAL CONSTANT k, by using a finer or more flexible suspension.\nWHY VOLTAGE SENSITIVITY NEED NOT FOLLOW. The voltage sensitivity is the deflection per unit VOLTAGE across the galvanometer:\n\\(V_{s} = \\dfrac{\\varphi}{V} = \\dfrac{\\varphi}{IR} = \\dfrac{NBA}{kR}\\)\nwhere R is the galvanometer's own resistance. The two sensitivities differ by that factor of R, and that is the whole point.\nSuppose the current sensitivity is raised by INCREASING N. More turns means more WIRE, and more wire means a larger resistance R. Both N and R therefore increase together, and since N is in the numerator of \\(V_{s}\\) while R is in the denominator, the two changes tend to CANCEL. The voltage sensitivity may rise a little, stay the same, or even fall.\nSo the two are independent measures, and improving one is not automatically improving the other. (Increasing the AREA, by contrast, raises N-independent sensitivity without adding much resistance, and is the better route if voltage sensitivity matters.)\n(ii) CONVERTING THE GALVANOMETER INTO A VOLTMETER.\nTo read up to V volts, a HIGH resistance R must be connected in SERIES, so that the full-scale current \\(I_{G}\\) flows when V is applied across the combination:\n\\(V = I_{G}(R + G) \\quad\\Longrightarrow\\quad R = \\dfrac{V}{I_{G}} - G\\)\nSubstituting \\(V = 100\\) V, \\(I_{G} = 20\\ \\mathrm{mA} = 20 \\times 10^{-3}\\) A and \\(G = 15\\ \\Omega\\):\n\\(R = \\dfrac{100}{20 \\times 10^{-3}} - 15 = 5000 - 15\\)\n\\(R = 4985\\ \\Omega\\)\nSo connecting a resistance of \\(4985\\ \\Omega\\) IN SERIES with the galvanometer converts it into a voltmeter reading 0 to 100 V.\nThe series connection is essential for two reasons: it limits the current to the full-scale value, and it makes the instrument's total resistance very LARGE — 5000 Ω against the galvanometer's 15 Ω — so that connecting it across a circuit element draws almost no current and disturbs the circuit as little as possible. An ammeter needs the opposite treatment, a small shunt in parallel."
+  },
+  {
+   "hash": "cdfd28ed921530caa5a9fbe8589b04c9828a87f1d90bfa09b39b9e7416d1abe8",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "stem": "(i) Give any two differences between the interference pattern obtained in Young's double-slit experiment and a diffraction pattern due to a single slit.\n(ii) Draw an intensity distribution graph in case of a double-slit interference pattern.\n(iii) In Young's double-slit experiment using monochromatic light of wavelength \\(\\lambda\\), the intensity of light at a point on the screen, where path difference is \\(\\lambda\\), is K units. Find the intensity of light at a point on the screen where the path difference is \\(\\dfrac{\\lambda}{6}\\).",
+   "solution": "(i) TWO DIFFERENCES BETWEEN INTERFERENCE AND DIFFRACTION (any two):\nFRINGE SPACING. In an interference pattern the bands are EQUALLY SPACED. In a diffraction pattern they are NOT — the central maximum is twice as wide as the others, and the spacing is irregular thereafter.\nINTENSITY OF THE MAXIMA. In interference all the bright bands have the SAME intensity. In diffraction the intensity of the maxima FALLS OFF rapidly on either side of the central maximum, the first secondary maximum being only about 4% of it.\nPOSITION OF THE FIRST FEATURE. In interference the first MAXIMUM occurs at an angle \\(\\dfrac{\\lambda}{a}\\) (with a the slit separation). In diffraction the first MINIMUM occurs at \\(\\dfrac{\\lambda}{a}\\) (with a the slit width) — a maximum in one case, a minimum in the other.\n(ii) INTENSITY DISTRIBUTION FOR DOUBLE-SLIT INTERFERENCE.\nPlot intensity against path difference. The graph is a succession of identical peaks of EQUAL height \\(I_{max}\\), evenly spaced, with maxima at path differences \\(0, \\pm\\lambda, \\pm 2\\lambda, \\pm 3\\lambda, \\ldots\\) and zeros exactly midway between them. The curve is \\(I = 4I_{0}\\cos^{2}\\dfrac{\\phi}{2}\\), rising and falling smoothly between \\(4I_{0}\\) and 0, with every peak the same height — which is the visual signature that distinguishes it from a diffraction pattern.\n(iii) FINDING THE INTENSITY.\nThe intensity in a two-slit pattern is\n\\(I = 4I_{0}\\cos^{2}\\dfrac{\\phi}{2} \\qquad\\text{with}\\qquad \\phi = \\dfrac{2\\pi}{\\lambda} \\times \\Delta\\)\nFIRST, CALIBRATE K. At a path difference \\(\\Delta = \\lambda\\):\n\\(\\phi = \\dfrac{2\\pi}{\\lambda} \\times \\lambda = 2\\pi\\)\n\\(K = 4I_{0}\\cos^{2}\\pi = 4I_{0}(1) = 4I_{0}\\)\nSo the point given is in fact a bright fringe at FULL intensity, and \\(4I_{0} = K\\).\nNOW THE POINT ASKED FOR, at \\(\\Delta = \\dfrac{\\lambda}{6}\\):\n\\(\\phi = \\dfrac{2\\pi}{\\lambda} \\times \\dfrac{\\lambda}{6} = \\dfrac{\\pi}{3}\\)\n\\(I = 4I_{0}\\cos^{2}\\dfrac{\\pi}{6} = 4I_{0}\\left(\\dfrac{\\sqrt{3}}{2}\\right)^{2} = 4I_{0} \\times \\dfrac{3}{4}\\)\nSubstituting \\(4I_{0} = K\\):\n\\(I = \\dfrac{3}{4}K\\)\nThe calibration step is what the question is built around: the intensity K is not the intensity of one slit but of a MAXIMUM, since a path difference of a whole wavelength puts the waves back in step. A reader who takes K as \\(I_{0}\\) arrives at 3K instead, which exceeds the maximum the pattern can produce."
+  },
+  {
+   "hash": "0552aa356bb9e8ca1aa207631b4b7d5c8655cfb4da757e88a803b1e7cfb35a05",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Optical Instruments",
+   "stem": "(i) Draw a labelled ray diagram of a compound microscope showing image formation at least distance of distinct vision. Derive an expression for its magnifying power.\n(ii) A telescope consists of two lenses of focal length 100 cm and 5 cm. Find the magnifying power when the final image is formed at infinity.",
+   "solution": "(i) THE COMPOUND MICROSCOPE.\nTHE RAY DIAGRAM. Draw two converging lenses on a common axis: the OBJECTIVE of short focal length \\(f_{o}\\) and the EYEPIECE of focal length \\(f_{e}\\). Place the object AB just BEYOND the objective's focus, so the objective forms a real, inverted, magnified image \\(A'B'\\) inside the tube. Position the eyepiece so that \\(A'B'\\) falls just INSIDE its focal length; the eyepiece then acts as a simple magnifier, and the final image \\(A''B''\\) is formed at the LEAST DISTANCE OF DISTINCT VISION D, on the same side as the object, virtual and inverted with respect to the original. Mark \\(f_{o}\\), \\(f_{e}\\), \\(u_{o}\\), \\(v_{o}\\) and D, with arrows on every ray.\nTHE MAGNIFYING POWER. Each lens contributes, and the two MULTIPLY because the eyepiece magnifies what the objective has already produced.\nMAGNIFICATION BY THE OBJECTIVE, a straightforward linear magnification:\n\\(m_{o} = \\dfrac{v_{o}}{-u_{o}}\\)\nMAGNIFICATION BY THE EYEPIECE, used as a simple magnifier with the final image at the near point:\n\\(m_{e} = 1 + \\dfrac{D}{f_{e}}\\)\nTOTAL MAGNIFYING POWER:\n\\(m = m_{o} \\times m_{e}\\)\n\\(m = \\dfrac{v_{o}}{-u_{o}}\\left(1 + \\dfrac{D}{f_{e}}\\right)\\)\nBoth focal lengths need to be SHORT for a large magnification — the objective's to give a large \\(\\dfrac{v_{o}}{u_{o}}\\), the eyepiece's to give a large \\(\\dfrac{D}{f_{e}}\\). That is the opposite of a telescope, whose objective must have a LONG focal length, and it is the structural difference between the two instruments.\n(ii) THE TELESCOPE'S MAGNIFYING POWER.\nFor an astronomical telescope with the final image at INFINITY (normal adjustment),\n\\(m = \\left|\\dfrac{f_{o}}{f_{e}}\\right|\\)\nThe two lenses are of focal lengths 100 cm and 5 cm. The OBJECTIVE must be the one of LONGER focal length — it is what gathers light from the distant object and forms the intermediate image — so \\(f_{o} = 100\\) cm and \\(f_{e} = 5\\) cm:\n\\(m = \\dfrac{100}{5}\\)\n\\(m = 20\\)\nThe magnifying power is 20.\nIdentifying which lens is which is the step that matters: taking them the other way round would give \\(\\dfrac{1}{20}\\), a telescope that made things smaller. For completeness, the tube length in this adjustment is \\(f_{o} + f_{e} = 105\\) cm, which is why a high-power refracting telescope is necessarily a long instrument."
+  }
+ ]
+}
