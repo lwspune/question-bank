@@ -47,8 +47,12 @@ const FIGURE_REF = new RegExp(
     String.raw`\b(?:in|from|given|shown|see|below|above)\s+(?:the\s+)?(?:adjoining\s+|following\s+|given\s+)?(?:figure|fig\.?|diagram)\b`,
     // "the following/adjoining/given figure|graph|diagram"
     String.raw`\bthe\s+(?:adjoining|following|given|above)\s+(?:figure|fig\.?|diagram|graph)\b`,
-    // "figure below", "graph above", "diagram shown"
-    String.raw`\b(?:figure|fig\.?|diagram|graph)\s+(?:below|above|shown)\b`,
+    // "figure below", "graph above", "diagram shown", "The figure shows"
+    // `shows` is not decoration on `shown`: "The figure shows ..." is the most
+    // common opening CBSE gives a figure question, and it missed on that one
+    // letter -- 2025-55-6-1 Q1 was unanswerable with no image and this probe
+    // called it clean, then listed it under IMAGE-NO-REFERENCE once attached.
+    String.raw`\b(?:figure|fig\.?|diagram|graph)\s+(?:below|above|shown|shows)\b`,
     // "as shown below", "as shown above", "as shown here" — no noun at all
     String.raw`\bas\s+shown\s+(?:below|above|here|in)\b`,
   ].join("|"),

@@ -389,11 +389,20 @@ def main():
         print(f"\n{len(problems)} problem(s) — resolve by hand, nothing is guessed:")
         for p in problems:
             print("  " + p)
-    stale = set(picks) - used_picks
-    if stale:
-        print(f"\n{len(stale)} pick(s) in figure-picks.json match NO group - stale, fix or remove:")
-        for h in stale:
-            print("  " + h[:16])
+    # STALENESS IS NOT COMPUTABLE FROM A NARROWED RUN. `used_picks` only fills
+    # for the groups this run processed, so under --only every pick belonging to
+    # any OTHER group looks unmatched -- 20 of 21 on a one-group run. The message
+    # says "fix or remove", so acting on it would delete authored picks that are
+    # perfectly live. Same trap as the manifest write below: --only narrows the
+    # WORK, never the FILE, and a whole-corpus claim needs a whole-corpus run.
+    if args.only:
+        print("\n--only: pick staleness NOT checked (needs a whole-corpus run).")
+    else:
+        stale = set(picks) - used_picks
+        if stale:
+            print(f"\n{len(stale)} pick(s) in figure-picks.json match NO group - stale, fix or remove:")
+            for h in stale:
+                print("  " + h[:16])
     if args.crop:
         # --only NARROWS THE WORK, NOT THE FILE. This manifest is a whole-corpus
         # record that attach-images.ts reads, so writing one run's entries over it
