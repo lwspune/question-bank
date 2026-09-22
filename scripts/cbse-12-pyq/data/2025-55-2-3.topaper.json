@@ -1,0 +1,260 @@
+{
+  "paper": "55/2/3",
+  "year": 2025,
+  "paperId": "2025-55-2-3",
+  "markingScheme": "out/2025-55-2-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "3dc9c0e01a4919887b95afdd4b4d6fe023bf86b1133be99e71ec15be86b11254",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "Consider two identical dipoles \\(D_1\\) and \\(D_2\\). Charges \\(-q\\) and q of dipole \\(D_1\\) are located at (0, 0) and (a, 0) and that of dipole \\(D_2\\) at (0, a) and (0, 2a) in \\(x\\)-\\(y\\) plane, respectively. The net dipole moment of the system is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(qa(\\hat{i} + \\hat{j})\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-qa(\\hat{i} + \\hat{j})\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(qa(\\hat{i} - \\hat{j})\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-qa(\\hat{i} - \\hat{j})\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(qa\\left(\\hat{i} + \\hat{j}\\right)\\).**\n\n**The rule for a dipole moment.** For a pair of charges \\(\\pm q\\),\n\n\\(\\vec{p} = q \\times \\left(\\text{displacement from the NEGATIVE charge to the POSITIVE charge}\\right)\\)\n\n**The direction runs from \\(-q\\) to \\(+q\\)** — the opposite of the field it produces between the charges — and getting that sense right is the entire question, since every option has the correct magnitude.\n\n**Dipole \\(D_1\\):** \\(-q\\) at \\((0, 0)\\) and \\(+q\\) at \\((a, 0)\\).\n\nThe displacement from the negative to the positive charge is \\(a\\hat{i}\\), so\n\n\\(\\vec{p}_1 = qa\\,\\hat{i}\\)\n\n**Dipole \\(D_2\\):** \\(-q\\) at \\((0, a)\\) and \\(+q\\) at \\((0, 2a)\\).\n\nThe displacement is from \\((0,a)\\) to \\((0,2a)\\), which is \\(a\\hat{j}\\), so\n\n\\(\\vec{p}_2 = qa\\,\\hat{j}\\)\n\n**Note that only the SEPARATION matters, not the position.** \\(D_2\\) sits further up the \\(y\\)-axis than \\(D_1\\) sits along the \\(x\\)-axis, but a dipole moment is defined by the vector between its own two charges; where the pair is placed is irrelevant. That is why the offset \\((0,a)\\) contributes nothing.\n\n**The net moment.** Dipole moments are vectors and add vectorially:\n\n\\(\\vec{p} = \\vec{p}_1 + \\vec{p}_2 = qa\\hat{i} + qa\\hat{j}\\)\n\n\\(\\boxed{\\ \\vec{p} = qa\\left(\\hat{i} + \\hat{j}\\right)\\ }\\)\n\n**Reading the answer.** The resultant has magnitude \\(\\sqrt{2}\\,qa\\) and points at \\(45^\\circ\\) to both axes — along the line \\(y = x\\) — because the two component dipoles are equal in size and mutually perpendicular.\n\n**The two minus-sign options** come from taking the displacement the wrong way, from \\(+q\\) to \\(-q\\); option (C) and (D) come from getting one of the two dipoles reversed. Listing the negative charge's coordinates **first** in each case, as the stem does, and subtracting in the order (positive minus negative) keeps the sense straight.\n\n**Why \"identical dipoles\" is worth checking rather than assuming.** Both have the same charge magnitude \\(q\\) and the same separation \\(a\\), so they are indeed identical in strength — only their **orientations** differ, one along \\(x\\) and one along \\(y\\). Had the separations differed, the resultant would not have lain at \\(45^\\circ\\)."
+    },
+    {
+      "hash": "981958747e5a176df458738bcdbf556cbf4526633b18f4ff6201160f16a874a3",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Electric Current and Ohm's Law",
+      "stem": "Which pair of readings of ideal voltmeter and ideal ammeter in the given circuit is possible when a suitable power source of 3 \\(\\Omega\\) internal resistance is connected between P and Q ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "12.0 V, 2.0 A"
+        },
+        {
+          "label": "B",
+          "text": "2.0 V, 0.5 A"
+        },
+        {
+          "label": "C",
+          "text": "6.0 V, 2.0 A"
+        },
+        {
+          "label": "D",
+          "text": "12 V, 0.5 A"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem says only 'in the given circuit' and names no connection; which element each meter reads is exactly what decides the answer. Page idx 4. LAYOUT AND LABELLING: two open terminals are drawn at the left, the upper one labelled P and the lower one labelled Q. A wire runs from P up and to the right through a circled instrument marked A; a second wire runs from Q down and to the right along the bottom of the drawing. Between those two wires sits a closed rectangular block containing a circled instrument marked V in one vertical branch and a zig-zag resistor labelled 24 \\(\\Omega\\) in another vertical branch. WITHHELD: how the V branch and the 24 \\(\\Omega\\) branch are connected to each other and to the A instrument — i.e. the circuit topology, which is the whole discrimination.",
+      "imageAttached": false,
+      "solution": "**The answer is (D): 12 V, 0.5 A.**\n\n**Read the circuit first.** Between the terminals \\(P\\) and \\(Q\\) the external network is: an **ideal ammeter** in series, and then a **\\(24\\ \\Omega\\)** resistor with an **ideal voltmeter** connected in parallel across it.\n\n**What \"ideal\" does to each instrument.**\n\nAn **ideal ammeter** has **zero** resistance, so it adds nothing to the circuit and reads the full current.\n\nAn **ideal voltmeter** has **infinite** resistance, so it draws **no** current. Its presence in parallel with the \\(24\\ \\Omega\\) changes nothing, and it simply reports the potential difference across that resistor.\n\n**So the whole question reduces to Ohm's law on one resistor:**\n\n\\(V = I \\times 24\\)\n\n**Testing the four pairs.**\n\n| Option | \\(V\\) | \\(I\\) | \\(V/I\\) | \\(24\\ \\Omega\\)? |\n|---|---|---|---|---|\n| (A) | \\(12{\\cdot}0\\) V | \\(2{\\cdot}0\\) A | \\(6\\ \\Omega\\) | no |\n| (B) | \\(2{\\cdot}0\\) V | \\(0{\\cdot}5\\) A | \\(4\\ \\Omega\\) | no |\n| (C) | \\(6{\\cdot}0\\) V | \\(2{\\cdot}0\\) A | \\(3\\ \\Omega\\) | no |\n| **(D)** | \\(12\\) V | \\(0{\\cdot}5\\) A | \\(\\mathbf{24\\ \\Omega}\\) | **yes** |\n\n\\(\\boxed{\\ \\text{Only (D) is consistent: } \\dfrac{12}{0{\\cdot}5} = 24\\ \\Omega\\ }\\)\n\n**What the 3 Ω internal resistance is doing in the question.** It does **not** enter the relation above, because the voltmeter sits across the \\(24\\ \\Omega\\) alone, not across the source. Its role is to confirm that a **suitable** source exists: the emf needed is\n\n\\(E = I\\left(24 + 3\\right) = 0{\\cdot}5 \\times 27 = 13{\\cdot}5\\ \\mathrm{V}\\)\n\nwhich is a perfectly ordinary battery. The word \"suitable\" in the stem is the licence to work backwards like this — the emf is not fixed, so any consistent \\((V, I)\\) pair is achievable with the right source.\n\n**Why the other three are impossible however the source is chosen.** Each demands a resistance other than \\(24\\ \\Omega\\) between the voltmeter's leads, and no choice of emf can change the value of a resistor. Option (C), for instance, would need \\(3\\ \\Omega\\) — suspiciously the internal resistance, which is exactly the confusion the number is there to invite.\n\n**The practical point behind the idealisations.** A real ammeter has a small but non-zero resistance and a real voltmeter a large but finite one, so both perturb the circuit slightly — the ammeter by reducing the current, the voltmeter by drawing a little of it. Calling them ideal removes both effects and leaves a clean test of Ohm's law."
+    },
+    {
+      "hash": "4901093e9852813839afe18258f08585abc0bb3619ec6f45cb50667bf177ab83",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "A material is pushed out when placed in a uniform magnetic field. The material is",
+      "options": [
+        {
+          "label": "A",
+          "text": "non-magnetic"
+        },
+        {
+          "label": "B",
+          "text": "diamagnetic"
+        },
+        {
+          "label": "C",
+          "text": "paramagnetic"
+        },
+        {
+          "label": "D",
+          "text": "ferromagnetic"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): diamagnetic.**\n\n**\"Pushed out\" means pushed towards the WEAKER field**, and that is the defining behaviour of a diamagnetic material.\n\n**Why it is pushed out.** A diamagnetic substance has **no permanent magnetic moment** — all its electrons are paired. Placed in a field, the orbital motion of its electrons is perturbed so as to induce a moment **opposing** the applied field, which is Lenz's law acting at the atomic scale.\n\nA dipole whose moment **opposes** the field has its **highest** potential energy where the field is strongest \\(\\left(U = -\\vec{m}\\cdot\\vec{B}\\right)\\), so it is pushed towards the region of **weakest** field — out of the gap between the poles.\n\n**How the other three behave.**\n\n**Paramagnetic** — has a permanent moment, which the field partly **aligns**, so it is drawn **into** the stronger field, weakly.\n\n**Ferromagnetic** — a permanent moment strongly aligned, so it is drawn in **powerfully**; iron filings leaping to a magnet is the familiar case.\n\n**Non-magnetic** is not a standard classification at all. Every substance falls into one of the three magnetic classes; what is loosely called \"non-magnetic\" simply means not ferromagnetic, and such materials are still diamagnetic or paramagnetic.\n\n**A caution about the word \"uniform\" in the stem.** Strictly, a dipole in a genuinely **uniform** field experiences a **torque but NO net force** — the forces on its two ends cancel exactly. A net push requires the field to be **non-uniform**, which it always is near the edges of any real magnet. The stem's \"uniform\" is loose; the behaviour it describes is real, and it is the diamagnetic one.\n\n**How faint the effect is, and how it is seen anyway.** Diamagnetic susceptibilities are of order \\(-10^{-5}\\), so the repulsion is normally undetectable. But in a strong enough field it is unmistakable: bismuth and pyrolytic graphite are visibly pushed away, and water — hence living tissue — is diamagnetic enough that a **frog has been levitated** in a \\(16\\) T field.\n\n**The one-line test.** Are all the electrons paired? If yes, the substance can only be diamagnetic, and it will be pushed out of a field. If no, it has a permanent moment and will be drawn in."
+    },
+    {
+      "hash": "b30564f1e74d50f3c6c58b157bde7aa822250aaf35f178f60c94bd368295f05d",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Lenz's Law and Conservation of Energy",
+      "stem": "A soft iron rod X is allowed to fall on the two poles of a U shaped permanent magnet as shown in figure. A coil is wrapped over one arm of the U shaped magnet.\n\nDuring fall of the rod, the current in the coil will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "clockwise current"
+        },
+        {
+          "label": "B",
+          "text": "anticlockwise current"
+        },
+        {
+          "label": "C",
+          "text": "alternating current"
+        },
+        {
+          "label": "D",
+          "text": "zero"
+        }
+      ],
+      "answer": "B",
+      "figureNote": "REQUIRED — the stem says 'as shown in figure' and the sense of the induced current is fixed by the drawing alone. Page idx 4. LAYOUT AND LABELLING: a U-shaped magnet is drawn with its two arms pointing upwards and its bend at the bottom, the body hatched; the top of the LEFT arm is labelled N and the top of the RIGHT arm is labelled S. A straight rod labelled X is drawn above, tilted down to the right, with a short vertical arrow showing it descending onto the top of the right-hand arm. A coil of several turns is wound around that right-hand arm below its top, and its two ends run to the right into a rectangular external loop whose upper corner is labelled Y and lower corner Z. WITHHELD: the winding SENSE of the coil, which is drawn and is the one directed quantity the four options discriminate between.",
+      "imageAttached": false,
+      "solution": "**The answer is (B): an anticlockwise current.**\n\n**What derives cleanly, and it settles two of the four options.**\n\n**Step 1 — the flux through the coil INCREASES.** The magnet's flux must otherwise cross the air gap between its poles, which offers high magnetic resistance. A **soft iron** rod is an excellent magnetic conductor, so as \\(X\\) falls onto the poles it **completes the magnetic circuit**: the flux rises sharply, and with it the flux threading the coil wound on the S arm.\n\n**Step 2 — so an induced current must flow.** A changing flux means a non-zero \\(d\\phi/dt\\) and hence a non-zero emf, so the current is **not zero** — ruling out option (D).\n\n**Step 3 — and it flows in ONE direction throughout.** The flux increases **monotonically** during the fall; it never rises and falls repeatedly. So the induced current keeps a single sense — it is **not alternating**, ruling out option (C).\n\n**Step 4 — Lenz's law fixes what the current does.** The induced current opposes the **increase** in flux, so it circulates so as to set up a field **opposing** the magnet's own inside the coil. Equivalently, it opposes the cause: it acts to resist the rod's arrival, so a small extra force must be done against it as the rod lands.\n\n**Between clockwise and anticlockwise.** The remaining choice is not a matter of physics but of **reading the winding as drawn** — which way the wire spirals round the S arm, and from which side the figure is viewed. In the figure the coil is wound on the right-hand (S) arm with its upper lead going to \\(Y\\) and its lower lead to \\(Z\\), and read that way the induced current is **anticlockwise**, which is CBSE's answer.\n\n**A caution worth stating plainly.** \"Clockwise\" and \"anticlockwise\" are only meaningful once a **viewing direction** is fixed, and the question does not state one — the same current is clockwise from one side and anticlockwise from the other. What Lenz's law determines unambiguously is the **physical** sense of circulation relative to the field, and that is what is worth learning; the label depends on the drawing.\n\n**The energy account, which is the real content of Lenz's law.** The induced current dissipates energy in the coil's resistance, and that energy comes from the **falling rod** — it lands very slightly more slowly than free fall would give. Were the current to flow the other way it would **help** the flux increase, accelerating the rod, which would in turn induce more current, and energy would appear from nowhere. **Lenz's law is conservation of energy wearing a different hat.**\n\n**What happens after the rod lands.** Once \\(X\\) is resting on the poles the flux is steady, \\(d\\phi/dt = 0\\), and the current stops. The induced current exists only **during** the change — which is why the stem says \"during fall of the rod\"."
+    },
+    {
+      "hash": "a0a7e807a3ee9415bf72a62905b07d978a2c0423185c6ee4616da5fce388ecb0",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "The number of turns between different pairs of output terminals are shown for a step-up transformer.\n\nInput voltage of 20 V is applied between A and B. Between which two terminals will the output be 120 V ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "P and Q"
+        },
+        {
+          "label": "B",
+          "text": "Q and S"
+        },
+        {
+          "label": "C",
+          "text": "P and R"
+        },
+        {
+          "label": "D",
+          "text": "P and S"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem says outright that the turn numbers 'are shown', and they appear nowhere in the text. Page idx 6. LAYOUT AND LABELLING: a dashed rectangle enclosing a set of vertical core laminations captioned 'Core'. On the LEFT of the core a primary winding is drawn between two terminals, the upper labelled A and the lower labelled B, with its own turns count printed beside it. On the RIGHT of the core a single continuous secondary winding is drawn with FOUR tapped terminals, labelled from top to bottom P, Q, R and S, and a turns count printed beside each of the three sections between adjacent taps. WITHHELD: the four printed turn numbers themselves (the primary's and the three secondary sections'), which are the directed quantities the four options discriminate between.",
+      "imageAttached": false,
+      "solution": "**The answer is (D): between P and S.**\n\n**Find the volts per turn from the primary.** In an ideal transformer the induced emf per turn is the same on every winding, since they all link the same core flux:\n\n\\(\\dfrac{V}{N} = \\text{constant}\\)\n\nThe primary \\(AB\\) has \\(20\\) turns across \\(20\\) V, so\n\n\\(\\boxed{\\ \\dfrac{V}{N} = 1\\ \\text{volt per turn}\\ }\\)\n\n**That single number turns the question into counting.** The required \\(120\\) V needs \\(120\\) turns between the chosen terminals.\n\n**Counting the secondary windings**, which are stacked in series down the output side:\n\n| Between | Turns | Output |\n|---|---|---|\n| \\(P\\) and \\(Q\\) | \\(20\\) | \\(20\\) V |\n| \\(P\\) and \\(R\\) | \\(20 + 40 = 60\\) | \\(60\\) V |\n| \\(Q\\) and \\(S\\) | \\(40 + 60 = 100\\) | \\(100\\) V |\n| **\\(P\\) and \\(S\\)** | \\(20 + 40 + 60 = \\mathbf{120}\\) | \\(\\mathbf{120}\\) **V** |\n\n\\(\\boxed{\\ \\text{P and S}\\ }\\)\n\n**Why the windings simply add.** \\(P, Q, R, S\\) are successive tapping points on **one continuous secondary** wound on the same core, so the emfs induced in the sections are in **phase** and in **series**. Choosing a wider pair of terminals includes more turns and so more voltage — which is exactly how a **multi-tapped transformer** provides several output voltages from one core.\n\n**The check that the numbers are consistent.** Working from the top, \\(P\\) is one end and \\(S\\) the other, so \\(P\\)-\\(S\\) necessarily gives the largest output available, \\(120\\) V. And since \\(120 > 20\\), the device is a genuine **step-up** transformer as the stem says — which it would not be for the \\(P\\)-\\(Q\\) pair, at \\(20\\) V, where the output merely equals the input.\n\n**The \"volts per turn\" shortcut is worth keeping.** Most transformer questions are set up so that this ratio is a round number, after which every output is read off by adding turns. Computing each pair through \\(V_s/V_p = N_s/N_p\\) separately works too, but takes four calculations where one suffices.\n\n**What is assumed.** An ideal transformer: no flux leakage, so every turn links the same flux; no winding resistance; no core loss. In a real multi-tap transformer the outputs sag slightly under load, and by different amounts for different taps."
+    },
+    {
+      "hash": "a58d9e92782b9e95e0098b465dd25d246308d47f3d006cb72a2619d67b30e7d3",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The plane face of a planoconvex lens is silvered. The refractive index of material and radius of curvature of the curved surface of the lens are n and R respectively. This lens will behave as a concave mirror of focal length",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{R}{n}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{R}{(n - 1)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "nR"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{R}{2(n - 1)}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{R}{2(n - 1)}\\).**\n\n**What a silvered lens becomes.** Light passes through the lens, reflects from the silvered face, and passes through the lens **again**. The combination therefore behaves as an equivalent mirror whose power is\n\n\\(P_{\\text{eq}} = 2P_{\\text{lens}} + P_{\\text{mirror}}\\)\n\n**The factor of 2 on the lens is the heart of it** — the light traverses the glass twice, once in each direction, so the lens acts twice while the mirror acts once.\n\n**The power of the lens.** For a plano-convex lens with the curved face of radius \\(R\\) and the other face plane \\(\\left(R_2 = \\infty\\right)\\):\n\n\\(P_{\\text{lens}} = \\left(n - 1\\right)\\left(\\dfrac{1}{R} - \\dfrac{1}{\\infty}\\right) = \\dfrac{n - 1}{R}\\)\n\n**The power of the silvered face.** It is **PLANE**, so its radius of curvature is infinite:\n\n\\(P_{\\text{mirror}} = \\dfrac{2}{R_{\\text{mirror}}} = \\dfrac{2}{\\infty} = 0\\)\n\n**A plane mirror has zero power** — it contributes nothing but the reversal of direction. That is why the answer contains no second term and why the arrangement is simpler than it first appears.\n\n**Combining.**\n\n\\(P_{\\text{eq}} = 2\\left(\\dfrac{n - 1}{R}\\right) + 0 = \\dfrac{2(n - 1)}{R}\\)\n\n\\(f_{\\text{eq}} = \\dfrac{1}{P_{\\text{eq}}}\\)\n\n\\(\\boxed{\\ f_{\\text{eq}} = \\dfrac{R}{2\\left(n - 1\\right)}\\ }\\)\n\n**Option (B) is the trap: it is the lens's own focal length, with the factor of 2 missing.** \\(R/(n-1)\\) is what a single pass through the lens would give. Forgetting that the light goes through twice halves the power and doubles the focal length.\n\n**Why it behaves as a CONCAVE mirror**, as the stem states. \\(P_{\\text{eq}}\\) is positive for \\(n > 1\\), meaning the arrangement **converges** light — and a converging mirror is a concave one. The silvering does not curve, but the doubled lens action supplies all the convergence.\n\n**The contrasting case worth knowing.** Silver the **CURVED** face instead, leaving the plane face open. Then \\(P_{\\text{mirror}} = 2/R\\) and\n\n\\(P_{\\text{eq}} = \\dfrac{2(n-1)}{R} + \\dfrac{2}{R} = \\dfrac{2n}{R} \\qquad\\Longrightarrow\\qquad f_{\\text{eq}} = \\dfrac{R}{2n}\\)\n\nwhich is option (A) — offered here precisely because it is the answer to the *other* version of this question. Reading **which** face is silvered is what separates the two.\n\n**A numerical feel.** For crown glass with \\(n = 1{\\cdot}5\\), the plane-silvered version gives \\(f_{\\text{eq}} = R/1 = R\\), while the curved-silvered version gives \\(R/3\\) — a three-fold difference from which surface carries the silver."
+    },
+    {
+      "hash": "662fe0ee1ddbe1bd5b9d8753c85b0f383aecd2491ff24fbbf860b596c456fdc7",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In a double slit experiment, it is observed that the angular width of one fringe formed on the screen is \\(0.2^\\circ\\). The wavelength of light used in the experiment is 500 nm. Calculate the separation of the two slits.",
+      "solution": "**The angular fringe width.**\n\nThe linear fringe width is \\(\\beta = \\dfrac{\\lambda D}{d}\\), and the **angular** width is that divided by the screen distance:\n\n\\(\\theta = \\dfrac{\\beta}{D} = \\dfrac{\\lambda}{d}\\)\n\n**The screen distance \\(D\\) cancels**, which is why the question can be answered without being told it — and why the angular width is the more fundamental quantity of the two.\n\n**Rearranging and converting the angle to radians.**\n\n\\(d = \\dfrac{\\lambda}{\\theta}\\)\n\n\\(\\theta = 0{\\cdot}2^\\circ = 0{\\cdot}2 \\times \\dfrac{\\pi}{180}\\ \\mathrm{rad} = 3{\\cdot}49 \\times 10^{-3}\\ \\mathrm{rad}\\)\n\n**The degrees-to-radians conversion is compulsory here.** Every formula in wave optics assumes radians, and using \\(0{\\cdot}2\\) directly would give an answer wrong by a factor of \\(180/\\pi \\approx 57\\).\n\n**Substituting.**\n\n\\(d = \\dfrac{500 \\times 10^{-9}}{0{\\cdot}2 \\times \\pi/180} = \\dfrac{500 \\times 10^{-9} \\times 180}{0{\\cdot}2\\pi} = \\dfrac{45}{\\pi} \\times 10^{-5}\\ \\mathrm{m}\\)\n\n\\(\\boxed{\\ d = 1{\\cdot}43 \\times 10^{-4}\\ \\mathrm{m} \\approx 0{\\cdot}14\\ \\mathrm{mm}\\ }\\)\n\n**A sense of the numbers.** The slit separation is about \\(0{\\cdot}14\\) mm — roughly a tenth of a millimetre, and about **290 times** the wavelength of the light. That ratio is what makes the fringes wide enough to see: since \\(\\theta = \\lambda/d\\), a smaller \\(d\\) spreads the pattern out, and a separation of a few hundred wavelengths puts the fringes a fraction of a degree apart.\n\n**Where the small-angle approximation sits.** \\(\\theta = \\lambda/d\\) follows from \\(\\sin\\theta \\approx \\theta\\), valid because \\(3{\\cdot}5\\) milliradians is tiny — \\(\\sin\\theta\\) and \\(\\theta\\) agree here to better than one part in \\(10^{5}\\). The approximation is excellent in every ordinary double-slit experiment, and would only fail if \\(d\\) approached \\(\\lambda\\).\n\n**Why angular width is the useful measure.** It is fixed by the apparatus alone \\(\\left(\\lambda\\ \\text{and}\\ d\\right)\\) and does not change when the screen is moved. Push the screen further away and the fringes get **linearly** wider while staying the same **angular** size — which is the practical way of magnifying a pattern that is otherwise too fine to measure."
+    },
+    {
+      "hash": "5798e5ae4e8b75073aaed2493be57d9c92514db58420ac1cbfcb4fdb57071000",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A light beam converges at a point O. In the path of this beam, a concave lens of focal length 15 cm is placed at a distance of 10 cm before point O. The beam now converges at a point O'. Find the magnitude and the direction of shift OO'.",
+      "solution": "**The key idea: this is a VIRTUAL object.**\n\nThe beam is already **converging** towards \\(O\\) when the concave lens intercepts it. The light has not reached \\(O\\), and never will — but it is heading there, so \\(O\\) acts as an object lying on the **outgoing** side of the lens.\n\n**For a virtual object, \\(u\\) is POSITIVE**, in contrast to the usual real object, which sits on the incoming side and gives \\(u < 0\\):\n\n\\(u = +10\\ \\mathrm{cm}, \\qquad f = -15\\ \\mathrm{cm}\\)\n\n(the focal length negative because the lens is concave).\n\n**Apply the lens formula.**\n\n\\(\\dfrac{1}{v} - \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{f} + \\dfrac{1}{u} = -\\dfrac{1}{15} + \\dfrac{1}{10}\\)\n\nOver a common denominator of \\(30\\):\n\n\\(\\dfrac{1}{v} = \\dfrac{-2 + 3}{30} = \\dfrac{1}{30}\\)\n\n\\(v = +30\\ \\mathrm{cm}\\)\n\n**The shift.**\n\nThe beam would have converged \\(10\\) cm beyond the lens; it now converges \\(30\\) cm beyond it. So the convergence point has moved\n\n\\(\\boxed{\\ OO' = 30 - 10 = 20\\ \\mathrm{cm},\\ \\text{AWAY from the lens}\\ }\\)\n\nthat is, in the direction the light is travelling.\n\n**Why the shift is away, not towards.** A concave lens **diverges** — it bends every ray outward, making the converging cone less steep. A less steeply converging beam takes **longer** to come to a point, so the focus is pushed further along. **The direction of the shift could have been written down before any arithmetic**, and it is a useful check on the sign work.\n\n**The sign convention is the whole difficulty.** With \\(u = -10\\) cm — the value a real object would take — the formula gives\n\n\\(\\dfrac{1}{v} = -\\dfrac{1}{15} - \\dfrac{1}{10} = -\\dfrac{5}{30} \\qquad\\Longrightarrow\\qquad v = -6\\ \\mathrm{cm}\\)\n\na virtual image on the **incoming** side, which contradicts the fact that the light is plainly converging to a real point beyond the lens. The physical setup dictates which sign is right: light heading towards a point **past** the lens means a **virtual object**, \\(u > 0\\).\n\n**Note that \\(v\\) comes out positive**, so \\(O'\\) is a **real** point — a screen placed there would show a spot. A concave lens cannot form a real image of a real object, but it can of a **virtual** one, and this is the standard example.\n\n**A limiting case to fix the idea.** If the lens were placed so that the virtual object fell exactly at \\(u = +15\\) cm — its focal length — then \\(1/v = -1/15 + 1/15 = 0\\), and the emerging beam would be **parallel**, converging nowhere. Beyond that distance the emerging beam actually diverges. Here \\(10 < 15\\), so the beam still converges, only more gently."
+    },
+    {
+      "hash": "e0a824f99a3a1b09d922872111e2b792303a72d9eea6bdafe205cc946b97faa4",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The threshold wavelength of a metal is 450 nm. Calculate (i) the work function of the metal in eV and (ii) the maximum energy of the ejected photoelectrons in eV by incident radiation of 250 nm.",
+      "solution": "**(i) The work function.**\n\nThe threshold wavelength is the longest that can just free an electron, so its photon carries exactly the work function:\n\n\\(\\phi_0 = \\dfrac{hc}{\\lambda_0} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{450 \\times 10^{-9}} = \\dfrac{1{\\cdot}989 \\times 10^{-25}}{4{\\cdot}5 \\times 10^{-7}} = 4{\\cdot}42 \\times 10^{-19}\\ \\mathrm{J}\\)\n\nConverting to electronvolts:\n\n\\(\\phi_0 = \\dfrac{4{\\cdot}42 \\times 10^{-19}}{1{\\cdot}6 \\times 10^{-19}}\\)\n\n\\(\\boxed{\\ \\phi_0 = 2{\\cdot}76\\ \\mathrm{eV}\\ }\\)\n\n**(ii) The maximum energy of the photoelectrons at 250 nm.**\n\nThe incident photon's energy:\n\n\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{1{\\cdot}989 \\times 10^{-25}}{250 \\times 10^{-9} \\times 1{\\cdot}6 \\times 10^{-19}} = 4{\\cdot}97\\ \\mathrm{eV}\\)\n\nEinstein's photoelectric equation:\n\n\\(K_{\\max} = E - \\phi_0 = 4{\\cdot}97 - 2{\\cdot}76\\)\n\n\\(\\boxed{\\ K_{\\max} = 2{\\cdot}21\\ \\mathrm{eV}\\ }\\)\n\n**The quicker route**, using \\(hc = 1240\\) eV·nm and avoiding joules entirely:\n\n\\(\\phi_0 = \\dfrac{1240}{450} = 2{\\cdot}76\\ \\mathrm{eV}, \\qquad E = \\dfrac{1240}{250} = 4{\\cdot}96\\ \\mathrm{eV}, \\qquad K_{\\max} = 2{\\cdot}20\\ \\mathrm{eV}\\)\n\nThe difference in the last figure is only the rounding of \\(hc\\) (\\(1240\\) against \\(1242{\\cdot}8\\) eV·nm), and either set is acceptable.\n\n**The two wavelengths are on opposite sides of the threshold, which is why emission occurs.** \\(250\\) nm is **shorter** than the \\(450\\) nm threshold, so its photons are **more** energetic than the work function and electrons are freed. Light of \\(500\\) nm, say, would be longer than the threshold and would produce nothing at all, however intense.\n\n**Reading the numbers as a budget.** Each \\(4{\\cdot}97\\) eV photon spends \\(2{\\cdot}76\\) eV escaping the metal and hands the remaining \\(2{\\cdot}21\\) eV to the electron as kinetic energy — about **44%** of what it brought. The stopping potential would be \\(2{\\cdot}21\\) V.\n\n**Orientation on the spectrum.** \\(450\\) nm is blue, so this metal responds to blue, violet and ultraviolet light but not to green, yellow or red. The \\(250\\) nm radiation used is well into the ultraviolet.\n\n**Why \"maximum\" qualifies the kinetic energy.** Only electrons escaping from the very surface pay nothing beyond \\(\\phi_0\\). Those freed deeper lose energy in collisions on the way out, so the emitted electrons span the whole range from zero up to \\(2{\\cdot}21\\) eV; the equation fixes the **top** of that range."
+    },
+    {
+      "hash": "e05df293418e1557a2b55e9e97c59b130a4c7b5b6ea408176666463bc66bf53c",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "(a) Define Electrical conductivity. Obtain the expression of electrical conductivity of a conductor in terms of number density and relaxation time of free electrons.\n(b) Explain qualitative change in resistivity of a conductor with temperature using expression obtained in (a).",
+      "solution": "**(a) Electrical conductivity, and its expression.**\n\n**Definition.** The **electrical conductivity** \\(\\sigma\\) of a material is the **reciprocal of its resistivity**:\n\n\\(\\sigma = \\dfrac{1}{\\rho}\\)\n\nEquivalently, it is the ratio of the **current density** to the **electric field** producing it:\n\n\\(\\vec{j} = \\sigma\\vec{E}\\)\n\nIts SI unit is \\(\\mathrm{S\\,m^{-1}}\\) (siemens per metre), equivalently \\(\\Omega^{-1}\\mathrm{m^{-1}}\\). Like resistivity, it is a property of the **material**, not of the specimen.\n\n**Deriving the expression.**\n\n**Step 1 — the drift velocity.** Free electrons are accelerated by the field between collisions. If \\(\\tau\\) is the average time between collisions (the **relaxation time**), an electron's velocity gained in that interval is\n\n\\(v_d = \\dfrac{eE\\tau}{m}\\)\n\n**Step 2 — the current density that drift produces.** With \\(n\\) free electrons per unit volume, all drifting at \\(v_d\\), the charge crossing unit area per second is\n\n\\(j = ne\\,v_d\\)\n\n**Step 3 — combine.** Substituting for \\(v_d\\):\n\n\\(j = ne\\left(\\dfrac{eE\\tau}{m}\\right) = \\dfrac{ne^{2}\\tau}{m}\\,E\\)\n\n**Step 4 — compare with \\(j = \\sigma E\\).**\n\n\\(\\boxed{\\ \\sigma = \\dfrac{ne^{2}\\tau}{m} \\qquad\\text{and so}\\qquad \\rho = \\dfrac{m}{ne^{2}\\tau}\\ }\\)\n\n**What the result says.** Conductivity is large when there are **many** carriers \\(\\left(n\\right)\\) and when they travel **far between collisions** \\(\\left(\\tau\\right)\\). It falls when either drops. Note that \\(j \\propto E\\) with a constant of proportionality independent of \\(E\\) — which is Ohm's law, obtained here from a microscopic model rather than assumed.\n\n**(b) The qualitative change of resistivity with temperature.**\n\nRead the result as\n\n\\(\\rho = \\dfrac{m}{ne^{2}\\tau}\\)\n\nand ask what happens to \\(n\\) and \\(\\tau\\) when the material is heated.\n\n**In a METAL.** The number density \\(n\\) of free electrons is essentially **fixed** — each atom contributes its conduction electrons whatever the temperature. But heating makes the lattice ions vibrate more violently, so an electron travels a shorter distance before being scattered: **\\(\\tau\\) DECREASES**.\n\nWith \\(n\\) constant and \\(\\tau\\) falling, \\(\\sigma\\) falls and\n\n\\(\\rho\\ \\text{INCREASES with temperature.}\\)\n\nThis is why metals have a **positive** temperature coefficient of resistance, and why a filament lamp draws a large surge of current at switch-on and settles as it heats.\n\n**In a SEMICONDUCTOR**, the same formula gives the opposite behaviour. Heating also shortens \\(\\tau\\), but it **liberates far more charge carriers** across the energy gap, so \\(n\\) rises steeply — exponentially, in fact. The rise in \\(n\\) overwhelms the fall in \\(\\tau\\):\n\n\\(\\rho\\ \\text{DECREASES with temperature.}\\)\n\nHence semiconductors have a **negative** temperature coefficient, and a thermistor's resistance falls as it warms.\n\n**The value of having derived the formula first.** Both behaviours come from the **same** expression; they differ only in which of the two factors dominates. Without \\(\\rho = m/ne^{2}\\tau\\) in hand, the opposite temperature behaviour of metals and semiconductors looks like two unrelated facts to memorise, rather than one relation read twice."
+    },
+    {
+      "hash": "d264c62769eb6d13064277b90a7d3ce77975bffd3c60cab2ef9e0bb081244c58",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "(a) ac voltage of frequency \\(\\omega\\) is applied across a series LCR circuit. Draw the phasor diagram and obtain the impedance of the circuit.\n(b) Discuss 'resonance' in a series LCR circuit and write the expression for resonant frequency.",
+      "solution": "**(a) The phasor diagram and the impedance.**\n\n**Why the current is the reference.** In a **series** circuit the same current flows through \\(R\\), \\(L\\) and \\(C\\) at every instant, so the current phasor \\(\\vec{I}\\) is the one quantity common to all three. Draw it along a chosen direction and place the voltage phasors relative to it.\n\n**The three voltage phasors.**\n\n\\(\\vec{V}_R\\) — **in phase** with the current, magnitude \\(V_R = i_mR\\), drawn along \\(\\vec{I}\\).\n\n\\(\\vec{V}_L\\) — **leads** the current by \\(90^\\circ\\), magnitude \\(V_L = i_mX_L\\), drawn perpendicular to \\(\\vec{I}\\) on one side.\n\n\\(\\vec{V}_C\\) — **lags** the current by \\(90^\\circ\\), magnitude \\(V_C = i_mX_C\\), drawn perpendicular on the **opposite** side.\n\n**\\(\\vec{V}_L\\) and \\(\\vec{V}_C\\) are therefore \\(180^\\circ\\) apart** and lie along the same line in opposite senses, so they partly cancel to a single phasor of magnitude \\(\\left|V_L - V_C\\right|\\), perpendicular to \\(\\vec{V}_R\\).\n\n**Obtaining the impedance.** The applied voltage is the vector sum, and since \\(\\vec{V}_R\\) is perpendicular to \\(\\left(\\vec{V}_L - \\vec{V}_C\\right)\\), Pythagoras applies:\n\n\\(v_m^{2} = V_R^{2} + \\left(V_L - V_C\\right)^{2} = \\left(i_mR\\right)^{2} + \\left(i_mX_L - i_mX_C\\right)^{2}\\)\n\n\\(v_m^{2} = i_m^{2}\\left[R^{2} + \\left(X_L - X_C\\right)^{2}\\right]\\)\n\n\\(\\boxed{\\ Z = \\dfrac{v_m}{i_m} = \\sqrt{R^{2} + \\left(X_L - X_C\\right)^{2}} = \\sqrt{R^{2} + \\left(\\omega L - \\dfrac{1}{\\omega C}\\right)^{2}}\\ }\\)\n\nand the phase angle follows from the same triangle:\n\n\\(\\tan\\phi = \\dfrac{X_L - X_C}{R}\\)\n\n**Why the impedance is NOT \\(R + X_L + X_C\\).** The three voltages peak at different instants, so their amplitudes cannot be added directly. Only \\(V_R\\) is in step with the current; the reactive voltages sit a quarter-cycle away, which puts them on the perpendicular axis and forces the quadrature sum.\n\n**(b) Resonance.**\n\n**The condition.** The two reactances depend on frequency in **opposite** senses:\n\n\\(X_L = \\omega L \\quad\\text{(grows with } \\omega)\\), \\(\\qquad X_C = \\dfrac{1}{\\omega C} \\quad\\text{(falls with } \\omega)\\)\n\nso there is exactly one frequency at which they are **equal**. That is **resonance**:\n\n\\(X_L = X_C \\qquad\\Longrightarrow\\qquad \\omega_0 L = \\dfrac{1}{\\omega_0 C}\\)\n\n\\(\\boxed{\\ \\omega_0 = \\dfrac{1}{\\sqrt{LC}}, \\qquad \\nu_0 = \\dfrac{1}{2\\pi\\sqrt{LC}}\\ }\\)\n\n**What happens there.**\n\nThe reactive term \\(\\left(X_L - X_C\\right)\\) **vanishes**, so the impedance falls to its **minimum**, \\(Z = R\\) — the circuit behaves as though \\(L\\) and \\(C\\) were not present.\n\nThe current rises to its **maximum**, \\(i_m = v_m/R\\), limited only by the resistance.\n\nThe phase difference \\(\\phi\\) is **zero**: voltage and current are in step, and the power factor \\(\\cos\\phi = 1\\), so the circuit draws maximum power.\n\n**The cancellation is between the VOLTAGES, not the components.** At resonance \\(V_L\\) and \\(V_C\\) are individually non-zero — often far **larger** than the applied voltage — but they are equal and opposite and so sum to nothing. That voltage magnification is real and can be hazardous in a high-\\(Q\\) circuit.\n\n**Why it matters.** A series LCR circuit responds sharply at \\(\\omega_0\\) and weakly elsewhere, which makes it a **tuner**: adjusting \\(C\\) shifts \\(\\omega_0\\) until it matches the wanted station's frequency, and that signal alone drives a large current. **Resonance requires both \\(L\\) and \\(C\\)** — a circuit with only one of them has nothing to cancel against."
+    },
+    {
+      "hash": "8085791adba0743c556850cb1bb655ff4cb4574d661b65cf5317dc303538d16f",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "(a) The amplitude of a light wave becomes n times. This results in intensity of the wave becoming m times. What is the relation between n and m ?\n(b) White light is incident on three identical surfaces – a black surface, a yellow surface and a white surface, one by one. For which surface, the pressure exerted on the surface by the incident light will be (i) maximum (ii) minimum ? Justify your answer.",
+      "solution": "**(a) The relation between \\(n\\) and \\(m\\).**\n\nIntensity is the energy carried per unit area per unit time, and for any wave it is proportional to the **square** of the amplitude:\n\n\\(I \\propto A^{2}\\)\n\nSo if the amplitude becomes \\(n\\) times its original value, the intensity becomes \\(n^{2}\\) times:\n\n\\(\\dfrac{I'}{I} = \\left(\\dfrac{A'}{A}\\right)^{2} = n^{2}\\)\n\nand since the intensity is stated to become \\(m\\) times,\n\n\\(\\boxed{\\ m = n^{2}\\ }\\)\n\n*(The printed scheme writes the proportionality as \"Intensity \\(\\propto\\) amplitude\" before concluding \\(m = n^{2}\\); the relation as written omits its square and would give \\(m = n\\). The conclusion is the correct one.)*\n\n**Why the square, physically.** For an electromagnetic wave the energy density carried by the electric field is \\(u = \\tfrac{1}{2}\\varepsilon_0E^{2}\\), and the intensity is that density times \\(c\\). Energy goes as the **square** of the field, so doubling the amplitude **quadruples** the intensity — a general feature of waves, true of sound and of waves on a string as well.\n\n**(b) Which surface feels the greater radiation pressure.**\n\n**Radiation carries momentum**, and pressure is the rate at which momentum is delivered per unit area. What matters is therefore the **change** in the light's momentum at the surface.\n\n**For a perfectly ABSORBING (black) surface**, the light arrives with momentum \\(p\\) and ends with zero — a change of \\(p\\):\n\n\\(P_{\\text{black}} = \\dfrac{I}{c}\\)\n\n**For a perfectly REFLECTING (white) surface**, the light arrives with momentum \\(p\\) and leaves with \\(p\\) in the **opposite** direction — a change of \\(2p\\):\n\n\\(P_{\\text{white}} = \\dfrac{2I}{c}\\)\n\n\\(\\boxed{\\ \\text{(i) MAXIMUM pressure: the WHITE surface}\\ }\\)\n\n\\(\\boxed{\\ \\text{(ii) MINIMUM pressure: the BLACK surface}\\ }\\)\n\n**The reasoning in one sentence.** A reflecting surface must not only stop the light but send it back, so it supplies **twice** the momentum change and feels **twice** the pressure.\n\n**Where the yellow surface sits.** Illuminated by **white** light, a yellow surface reflects the yellow part and absorbs the rest, so its momentum change lies between the two extremes. Its pressure is therefore intermediate — neither the maximum nor the minimum, which is why the question asks only about the other two.\n\n**The result is counter-intuitive and worth dwelling on.** The **black** surface absorbs the most **energy** and gets hottest, yet feels the **least** force; the white surface absorbs almost no energy yet is pushed hardest. Pressure tracks **momentum transfer**, not energy absorption, and the two point in opposite directions here.\n\n**How small, and where it is used anyway.** With \\(c\\) in the denominator, radiation pressure is tiny — full sunlight exerts about \\(4{\\cdot}5\\ \\mu\\mathrm{Pa}\\) on a perfect reflector, some \\(10^{11}\\) times less than atmospheric pressure. But over large areas and long times it is usable: a **solar sail** is deliberately made highly reflective rather than black, for exactly the factor of two derived above."
+    }
+  ]
+}
