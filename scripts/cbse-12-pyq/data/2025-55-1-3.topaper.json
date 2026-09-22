@@ -1,0 +1,258 @@
+{
+  "paper": "55/1/3",
+  "year": 2025,
+  "paperId": "2025-55-1-3",
+  "markingScheme": "out/2025-55-1-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "88e1766ac7685ce0e294ed5f9cfd6933c52892c1f105791e3431eadf020ecbfd",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "A charge Q is fixed in position. Another charge q is brought near charge Q and released from rest. Which of the following graphs is the correct representation of the acceleration of the charge q as a function of its distance r from charge Q ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "a plot of a (vertical axis) against r (horizontal axis) that starts at a high value close to the a-axis, falls steeply, and then flattens out towards the r-axis without reaching it"
+        },
+        {
+          "label": "B",
+          "text": "a plot of a (vertical axis) against r (horizontal axis) that begins at a high value and stays almost flat for a while, then drops steeply in an S-bend and levels off just above the r-axis"
+        },
+        {
+          "label": "C",
+          "text": "a plot of a (vertical axis) against r (horizontal axis) that is a straight line falling steadily from a high value on the a-axis to a low value at large r"
+        },
+        {
+          "label": "D",
+          "text": "a plot of a (vertical axis) against r (horizontal axis) that starts at zero, rises to a single rounded peak and then falls back close to the r-axis"
+        }
+      ],
+      "answer": "A",
+      "figureNote": "REQUIRED - the four options ARE four drawn graphs and the printed paper gives them no text at all beyond the axis labels a and r. The option texts above are a plain reading of what each graph draws (which axis is which, the starting value, the shape); that reading is lossless, and choosing between them still requires knowing that the Coulomb force and hence the acceleration goes as 1/r^2, so nothing is handed over. Page idx 4.",
+      "imageAttached": false,
+      "solution": "**The answer is (A)** — the curve that starts high, falls steeply and then flattens towards the \\(r\\)-axis without ever touching it.\n\n**Get the functional form first, then match the shape.**\n\nThe force on \\(q\\) is Coulomb's:\n\n\\(F = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Qq}{r^{2}}\\)\n\nand the acceleration follows from Newton's second law:\n\n\\(a = \\dfrac{F}{m} = \\left(\\dfrac{Qq}{4\\pi\\varepsilon_0 m}\\right)\\dfrac{1}{r^{2}}\\)\n\nEverything in the bracket is constant, so\n\n\\(\\boxed{\\ a \\propto \\dfrac{1}{r^{2}}\\ }\\)\n\n**The three features that identify the right curve.**\n\n**It is steep at small \\(r\\).** As \\(r \\to 0\\), \\(a \\to \\infty\\) — the graph rises without limit near the \\(a\\)-axis and never crosses it.\n\n**It falls RAPIDLY, not steadily.** Doubling \\(r\\) cuts \\(a\\) to a **quarter**, not to a half. This rules out the straight line of option (C): a straight line is the signature of \\(a \\propto r\\) or \\(a = a_0 - kr\\), neither of which any inverse-square law produces.\n\n**It approaches zero ASYMPTOTICALLY.** As \\(r \\to \\infty\\), \\(a \\to 0\\) but never reaches it, so the curve flattens along the \\(r\\)-axis without meeting it. A curve that touches the axis would mean the force vanishes at a finite separation, which Coulomb's law never does.\n\n**Why the other shapes are wrong.** The S-bend of option (B) — flat, then a sudden drop, then flat again — describes something with a characteristic distance at which the behaviour changes, like a nuclear force or a screened potential; the Coulomb force has no such scale. The rising-then-falling curve of option (D) would require the acceleration to **vanish at \\(r = 0\\)**, the exact opposite of what happens.\n\n**A note on what the graph is really showing.** The charge is released from rest and then moves, so \\(r\\) is changing with time and the acceleration changes with it. This is **not** uniformly accelerated motion, and the usual kinematic equations do not apply. The graph is a picture of the force law, read through \\(F = ma\\).\n\n**The sign of \\(Q\\) and \\(q\\) does not affect the shape.** Like charges repel and unlike attract, so the **direction** of the acceleration depends on the signs — but the magnitude goes as \\(1/r^{2}\\) either way, and all four options plot magnitude."
+    },
+    {
+      "hash": "4eade151b09605e02c63684a8b98c6d77fba50a9252d4c7447e7f9b4c72e46dd",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Two conductors A and B of the same material have their lengths in the ratio 1:2 and radii in the ratio 2:3. If they are connected in parallel across a battery, the ratio \\(\\frac{v_\\mathrm{A}}{v_\\mathrm{B}}\\) of the drift velocities of electrons in them will be -",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{3}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{8}{9}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): 2.**\n\n**Start from the drift-velocity relation.**\n\n\\(v_d = \\dfrac{eE\\tau}{m} = \\dfrac{e\\tau}{m}\\cdot\\dfrac{V}{l}\\)\n\nThe conductors are of the **same material**, so \\(\\tau\\), \\(e\\) and \\(m\\) are common to both and cancel from any ratio.\n\n**The key is that they are in PARALLEL.** Parallel means the **same potential difference** \\(V\\) appears across each conductor. So the only thing that differs is the length over which that \\(V\\) is spread:\n\n\\(\\dfrac{v_A}{v_B} = \\dfrac{E_A}{E_B} = \\dfrac{V/l_A}{V/l_B} = \\dfrac{l_B}{l_A}\\)\n\n**Substituting \\(l_A : l_B = 1 : 2\\):**\n\n\\(\\boxed{\\ \\dfrac{v_A}{v_B} = \\dfrac{2}{1} = 2\\ }\\)\n\n**The radii are irrelevant, and that is the point of the question.** The ratio \\(2 : 3\\) is given purely to see whether it gets used. It cannot matter, because drift velocity depends on the **field**, and the field in a conductor of given length under a given potential difference does not care how thick it is. The area affects the **current** \\(\\left(I = neAv_d\\right)\\) but not the drift speed.\n\n**Where option (D) comes from.** \\(\\dfrac{8}{9}\\) is \\(\\dfrac{l_B}{l_A}\\times\\left(\\dfrac{r_A}{r_B}\\right)^{2} = 2 \\times \\dfrac{4}{9}\\) — the answer with an area factor wrongly folded in. It is offered precisely to catch the candidate who computes the current ratio and then forgets to divide the area back out.\n\n**Why \"in parallel\" is load-bearing.** In **series** the two would carry the same **current** instead, and then\n\n\\(\\dfrac{v_A}{v_B} = \\dfrac{I/\\left(neA_A\\right)}{I/\\left(neA_B\\right)} = \\dfrac{A_B}{A_A} = \\dfrac{9}{4}\\)\n\n— the lengths would drop out and the radii would decide everything. The same two conductors give completely different answers depending on how they are connected, so reading that word is half the question.\n\n**A sense of scale.** Drift velocities in a metal are of order \\(10^{-4}\\) m/s — a fraction of a millimetre per second — while the random thermal speeds of the same electrons are around \\(10^{5}\\) m/s. The drift is a tiny bias on a violent random motion, and a ratio of \\(2\\) between two such biases is a ratio between two very small numbers."
+    },
+    {
+      "hash": "0cdb8561921dfe54d67793815a29eddfdfdededd92987c37623d7bacaacb6a3f",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "The ratio of the number of turns of the primary to the secondary coils in an ideal transformer is 20 : 1. If 240 V ac is applied from a source to the primary coil of transformer and a 6.0 \\(\\Omega\\) resistor is connected across the output terminals, then current drawn by the transformer from the source will be -",
+      "options": [
+        {
+          "label": "A",
+          "text": "4.0 A"
+        },
+        {
+          "label": "B",
+          "text": "3.8 A"
+        },
+        {
+          "label": "C",
+          "text": "0.97 A"
+        },
+        {
+          "label": "D",
+          "text": "0.10 A"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): 0.10 A.**\n\n**Step 1 — the secondary voltage.** For an ideal transformer,\n\n\\(\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p} = \\dfrac{1}{20}\\)\n\n\\(V_s = \\dfrac{240}{20} = 12\\ \\mathrm{V}\\)\n\nThis is a **step-down** transformer: \\(20 : 1\\) on the turns means the voltage falls by \\(20\\).\n\n**Step 2 — the secondary current**, set by the load:\n\n\\(I_s = \\dfrac{V_s}{R} = \\dfrac{12}{6{\\cdot}0} = 2{\\cdot}0\\ \\mathrm{A}\\)\n\n**Step 3 — the primary current.** An ideal transformer neither stores nor dissipates energy, so the power in equals the power out:\n\n\\(V_pI_p = V_sI_s\\)\n\n\\(240 \\times I_p = 12 \\times 2{\\cdot}0 = 24\\ \\mathrm{W}\\)\n\n\\(\\boxed{\\ I_p = \\dfrac{24}{240} = 0{\\cdot}10\\ \\mathrm{A}\\ }\\)\n\n**The same answer in one line**, using the fact that current steps in the **opposite** sense to voltage:\n\n\\(\\dfrac{I_p}{I_s} = \\dfrac{N_s}{N_p} = \\dfrac{1}{20} \\qquad\\Longrightarrow\\qquad I_p = \\dfrac{2{\\cdot}0}{20} = 0{\\cdot}10\\ \\mathrm{A}\\ \\checkmark\\)\n\n**Voltage down by 20, current UP by 20.** That inversion is the whole content of the question, and it is what makes option (A), \\(4{\\cdot}0\\) A, the trap — that is \\(240/6{\\cdot}0\\), which is what you get by wrongly applying the load resistance to the **primary** side, as though the transformer were not there.\n\n**Why the current must go up when the voltage goes down.** Power is conserved, and power is \\(VI\\). Nothing is being created: the transformer trades voltage for current at constant power. A step-down transformer is a step-**up** transformer for current.\n\n**What the primary \"sees\".** From the source's point of view the whole arrangement behaves like a single resistor of\n\n\\(R_{\\text{eff}} = \\dfrac{V_p}{I_p} = \\dfrac{240}{0{\\cdot}10} = 2400\\ \\Omega = 400 \\times 6\\ \\Omega\\)\n\nThe \\(6\\ \\Omega\\) load appears multiplied by \\(\\left(N_p/N_s\\right)^{2} = 400\\). This **impedance transformation** is why transformers are used to match a loudspeaker to an amplifier, quite apart from changing voltages.\n\n**What \"ideal\" assumes away.** No resistance in the windings, no flux leakage, no eddy-current or hysteresis loss in the core. A real transformer of this size would run at perhaps 95-98% efficiency, so the true primary current would be a few per cent above \\(0{\\cdot}10\\) A."
+    },
+    {
+      "hash": "3b6ee7ef6f04bd7ecc67ede0d40d618922b365f0b661f0619fb4462de13430b2",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "X-rays are more harmful to human beings than ultraviolet radiations because X-rays -",
+      "options": [
+        {
+          "label": "A",
+          "text": "have frequency lower than that of ultraviolet radiations."
+        },
+        {
+          "label": "B",
+          "text": "have wavelength smaller than that of ultraviolet radiations."
+        },
+        {
+          "label": "C",
+          "text": "move faster than ultraviolet radiations in air."
+        },
+        {
+          "label": "D",
+          "text": "are mechanical waves but ultraviolet radiations are electro-magnetic waves."
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): X-rays have a wavelength smaller than that of ultraviolet radiation.**\n\n**The chain that makes shorter wavelength mean more harm.**\n\n\\(E = h\\nu = \\dfrac{hc}{\\lambda}\\)\n\nA **smaller \\(\\lambda\\)** means a **higher \\(\\nu\\)**, and therefore a **larger photon energy**. Harm to tissue is done photon by photon, and what matters is whether a single photon carries enough energy to break a chemical bond or knock an electron out of an atom.\n\n**The numbers.** Ultraviolet photons carry a few electronvolts — enough to break bonds in skin and cornea, which is sunburn and arc eye. X-ray photons carry **thousands** of electronvolts, enough to **ionise** atoms outright, and they penetrate deep into the body rather than stopping at the skin. Ionisation inside a cell can damage DNA, which is why X-ray exposure is controlled so carefully and ultraviolet merely avoided.\n\n**Why the other three options fail, each for a different reason.**\n\n**(A) \"Lower frequency\"** is simply false — X-rays have a *higher* frequency than ultraviolet. It is also self-defeating: lower frequency would mean *less* energetic photons and *less* harm, so the option contradicts the premise of the question.\n\n**(C) \"Move faster in air\"** is false. All electromagnetic waves travel at essentially \\(c\\) in air, whatever their frequency; speed is not what distinguishes them.\n\n**(D) \"X-rays are mechanical waves\"** is false twice over. X-rays are electromagnetic, not mechanical, and a mechanical wave would need a material medium — yet X-rays cross the vacuum of space freely, as every astronomical X-ray observation shows.\n\n**Note that (A) and (B) are not two ways of saying the same thing.** Since \\(\\nu = c/\\lambda\\), \"smaller wavelength\" and \"higher frequency\" are equivalent — so the correct statement could have been phrased either way. Option (A) states the **opposite** of the true frequency relation, which is what makes the pair a genuine test rather than a duplicate.\n\n**The ordering to keep.** Going radio → microwave → infrared → visible → **ultraviolet → X-ray** → gamma, the wavelength falls and the photon energy rises. Biological damage tracks photon energy, so it rises along the same list — which is why the dangerous end of the spectrum is the short-wavelength end."
+    },
+    {
+      "hash": "b2b2a18ea41dce0092ee8c7ee164ceee1131a33ab66431dca6450a2ef08a5c5a",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A point source is placed at the bottom of a tank containing a transparent liquid (refractive index \\(n\\)) to a depth H. The area of the surface of the liquid through which light from the source can emerge out is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\pi \\mathrm{H}^2}{(n - 1)}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\pi \\mathrm{H}^2}{(n^2 - 1)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\pi \\mathrm{H}^2}{\\sqrt{n^2 - 1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{\\pi \\mathrm{H}^2}{(n^2 + 1)}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{\\pi H^{2}}{n^{2} - 1}\\).**\n\n**The physical picture.** Light leaves the source in all directions, but only the rays striking the surface at **less than the critical angle** get out. Everything steeper is totally internally reflected back into the liquid. So the escaping light emerges through a **circle** centred directly above the source — the base of a cone of half-angle \\(C\\).\n\n**Step 1 — the critical angle.** Going from liquid (index \\(n\\)) to air (index \\(1\\)):\n\n\\(\\sin C = \\dfrac{1}{n}\\)\n\n**Step 2 — the radius of the circle.** The cone has apex at the source, height \\(H\\) and half-angle \\(C\\), so its base radius is\n\n\\(R = H\\tan C\\)\n\n**Step 3 — convert the tangent.** This is the step the question turns on. From \\(\\sin C = 1/n\\),\n\n\\(\\cos C = \\sqrt{1 - \\dfrac{1}{n^{2}}} = \\dfrac{\\sqrt{n^{2} - 1}}{n}\\)\n\n\\(\\tan C = \\dfrac{\\sin C}{\\cos C} = \\dfrac{1/n}{\\sqrt{n^{2} - 1}\\big/n} = \\dfrac{1}{\\sqrt{n^{2} - 1}}\\)\n\n**The \\(n\\) cancels**, leaving \\(\\tan C\\) free of it — which is why the final answer carries \\(n^{2} - 1\\) and no lone \\(n\\).\n\n\\(R = \\dfrac{H}{\\sqrt{n^{2} - 1}}\\)\n\n**Step 4 — the area.**\n\n\\(A = \\pi R^{2} = \\pi\\cdot\\dfrac{H^{2}}{n^{2} - 1}\\)\n\n\\(\\boxed{\\ A = \\dfrac{\\pi H^{2}}{n^{2} - 1}\\ }\\)\n\n**Why option (C) is the near-miss to guard against.** \\(\\dfrac{\\pi H^{2}}{\\sqrt{n^{2} - 1}}\\) is the area computed with the square root left unsquared — the **radius** carries the root, the **area** does not, because squaring \\(R\\) removes it. Writing down \\(R\\) first and squaring deliberately is what prevents this.\n\n**A check on the direction.** A **denser** liquid means a larger \\(n\\), a **smaller** critical angle, and so a **smaller** escape window. The formula agrees: a larger \\(n\\) makes the denominator bigger and \\(A\\) smaller. Option (D), with \\(n^{2} + 1\\), behaves the same way and cannot be ruled out on this test alone — but it fails the limit below.\n\n**The limiting case that settles it.** As \\(n \\to 1\\) the liquid becomes optically identical to air, there is no total internal reflection at all, and **all** the light should escape — an infinite area. Option (B) gives \\(A \\to \\infty\\) correctly; option (D) gives the finite \\(\\pi H^{2}/2\\), which is wrong. This is the clean way to separate the two.\n\n**Where it is seen.** This is why a coin at the bottom of a pool is visible only through a limited patch of surface, and why a fish looking up sees the entire world above the water compressed into a circular window of half-angle \\(C\\) — about \\(49^\\circ\\) for water."
+    },
+    {
+      "hash": "e6f66211e6442b8a9230b2d06d0d64e434a7d1898a02cfdece3dacc1b7c676c0",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "In a photoelectric experiment with a material of work function 2.1 eV, the stopping potential is found to be 2.5 V. The maximum kinetic energy of ejected photoelectrons is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.4 eV"
+        },
+        {
+          "label": "B",
+          "text": "2.1 eV"
+        },
+        {
+          "label": "C",
+          "text": "2.5 eV"
+        },
+        {
+          "label": "D",
+          "text": "4.6 eV"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 2.5 eV.**\n\n**The stopping potential is defined by the maximum kinetic energy.**\n\n\\(eV_0 = K_{\\max}\\)\n\nso\n\n\\(K_{\\max} = e \\times 2{\\cdot}5\\ \\mathrm{V} = 2{\\cdot}5\\ \\mathrm{eV}\\)\n\n\\(\\boxed{\\ K_{\\max} = 2{\\cdot}5\\ \\mathrm{eV}\\ }\\)\n\n**That is the whole calculation**, and it is a one-step question dressed up as a two-step one.\n\n**What the stopping potential means.** It is the retarding voltage that just prevents the **fastest** electron from reaching the collector — the point at which the photocurrent falls to zero. An electron of kinetic energy \\(K\\) can climb a potential hill of \\(K/e\\) volts and no further, so the voltage at which even the fastest is turned back measures \\(K_{\\max}\\) directly.\n\n**Why working in electronvolts makes it trivial.** One electronvolt is by definition the energy an electron gains crossing one volt. So an energy in eV and a potential in volts carry **the same number**, and \\(2{\\cdot}5\\) V of stopping potential is \\(2{\\cdot}5\\) eV of kinetic energy with no arithmetic at all. The conversion to joules, \\(2{\\cdot}5 \\times 1{\\cdot}6 \\times 10^{-19} = 4{\\cdot}0 \\times 10^{-19}\\) J, is available but unnecessary.\n\n**The work function is a distractor — a well-placed one.** The stem supplies \\(\\phi_0 = 2{\\cdot}1\\) eV to tempt a subtraction, and option (A), \\(0{\\cdot}4\\) eV, is exactly \\(2{\\cdot}5 - 2{\\cdot}1\\). But \\(K_{\\max}\\) is fixed by the stopping potential **alone**; the work function is already accounted for in producing that value. Option (D), \\(4{\\cdot}6\\) eV, is the corresponding wrong addition, and it is in fact the **incident photon energy**:\n\n\\(E = K_{\\max} + \\phi_0 = 2{\\cdot}5 + 2{\\cdot}1 = 4{\\cdot}6\\ \\mathrm{eV}\\)\n\n**So the three numbers in play are all present**, and the question is testing whether you know which is which. The work function is what the electron **spends** escaping; the stopping potential measures what it has **left**; their sum is what the photon **brought**.\n\n**If the frequency were wanted**, it follows at once: \\(\\nu = E/h = 4{\\cdot}6 \\times 1{\\cdot}6 \\times 10^{-19}/6{\\cdot}63 \\times 10^{-34} \\approx 1{\\cdot}1 \\times 10^{15}\\) Hz, which is ultraviolet — as it must be, since \\(4{\\cdot}6\\) eV exceeds the energy of any visible photon."
+    },
+    {
+      "hash": "b841484f57b22d2be4182dcc9abaa5dd09103f7528627679de428a4b616a206e",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "n identical cells, each of e.m.f. E and internal resistance r, are connected in series. Later on it was found out that two cells 'X' and 'Y' are connected in reverse polarities. Calculate the potential difference across the cell 'X'.",
+      "solution": "**Step 1 — the net emf of the string.**\n\nOf the \\(n\\) cells, \\(n - 2\\) are connected correctly and **two** (\\(X\\) and \\(Y\\)) are reversed. The reversed pair **opposes** the rest:\n\n\\(E_{\\text{net}} = (n - 2)E - 2E = (n - 4)E\\)\n\n**Reversing a cell costs TWICE its emf**, not once — it not only stops contributing \\(+E\\), it actively subtracts \\(E\\). That factor of two is the step the question is built on, and it is why the answer carries \\(n - 4\\) rather than \\(n - 2\\).\n\n**Step 2 — the total internal resistance.**\n\n\\(r_{\\text{total}} = nr\\)\n\n**All \\(n\\) cells still contribute their internal resistance**, reversed or not. Turning a cell round changes the direction of its emf but not the resistance of its electrolyte, so nothing is lost here.\n\n**Step 3 — the current.**\n\n\\(I = \\dfrac{E_{\\text{net}}}{r_{\\text{total}}} = \\dfrac{(n - 4)E}{nr}\\)\n\n(The cells form a closed loop among themselves; no external resistance is mentioned.)\n\n**Step 4 — the potential difference across cell \\(X\\).**\n\nCell \\(X\\) is reversed, so the current driven by the other cells enters it at its **positive** terminal — it is being **charged**, not discharged. For a cell being charged,\n\n\\(V = E + Ir\\)\n\n**The sign is the heart of the question.** A discharging cell has \\(V = E - Ir\\), its terminal voltage *below* its emf; a charging cell has \\(V = E + Ir\\), *above* it. Reversal flips which case applies.\n\nSubstituting:\n\n\\(V_X = E + \\left[\\dfrac{(n - 4)E}{nr}\\right]r = E + \\dfrac{(n - 4)E}{n}\\)\n\n\\(V_X = \\dfrac{nE + (n - 4)E}{n} = \\dfrac{(2n - 4)E}{n}\\)\n\n\\(\\boxed{\\ V_X = \\dfrac{2(n - 2)E}{n}\\ }\\)\n\n**Checking the formula at the edges.**\n\nFor **\\(n = 4\\)**: the net emf is zero, no current flows, and \\(V_X = E\\) — the reversed cell simply sits at its own emf, which the formula gives as \\(2(2)E/4 = E\\ \\checkmark\\).\n\nFor **large \\(n\\)**: \\(V_X \\to 2E\\). The two reversed cells are overwhelmed by the rest, the current approaches \\(E/r\\), and each reversed cell is driven to twice its own emf.\n\nFor **\\(n < 4\\)**: \\(E_{\\text{net}}\\) is negative, the current reverses, and \\(X\\) discharges instead — the formula still returns a sensible value, but the physical description above no longer applies.\n\n**What is happening physically.** The \\(n - 2\\) correctly-connected cells are **recharging** \\(X\\) and \\(Y\\) while driving current round the loop. All the energy is being dissipated in the internal resistances, so the arrangement does nothing useful and heats itself — which is why a reversed cell in a torch makes the batteries warm and the lamp dim."
+    },
+    {
+      "hash": "660502d62ba34755019f85440e13fa23731e59ed0958efb45a8df65865dba001",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A double convex lens of glass has both faces of the same radius of curvature 17 cm. Find its focal length if it is immersed in water. The refractive indices of glass and water are 1.5 and 1.33 respectively.",
+      "solution": "**The lens-maker's formula**, in the form that holds when the lens sits in a surrounding medium:\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{n_g}{n_w} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\n**The ratio \\(n_g/n_w\\) is the RELATIVE refractive index** of glass with respect to water, and using it in place of \\(n_g\\) is the entire adaptation needed for an immersed lens.\n\n**The radii.** For a double convex lens with both faces of radius \\(17\\) cm, the first surface bulges towards the incoming light and the second away from it, so\n\n\\(R_1 = +17\\ \\mathrm{cm}, \\qquad R_2 = -17\\ \\mathrm{cm}\\)\n\n\\(\\dfrac{1}{R_1} - \\dfrac{1}{R_2} = \\dfrac{1}{17} + \\dfrac{1}{17} = \\dfrac{2}{17}\\)\n\n**Substituting.**\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{1{\\cdot}5}{1{\\cdot}33} - 1\\right)\\left(\\dfrac{2}{17}\\right) = \\left(\\dfrac{1{\\cdot}5 - 1{\\cdot}33}{1{\\cdot}33}\\right)\\left(\\dfrac{2}{17}\\right)\\)\n\n\\(\\dfrac{1}{f} = \\dfrac{0{\\cdot}17}{1{\\cdot}33} \\times \\dfrac{2}{17} = 0{\\cdot}1278 \\times 0{\\cdot}1176 = 0{\\cdot}01504\\ \\mathrm{cm^{-1}}\\)\n\n\\(\\boxed{\\ f = 66{\\cdot}5\\ \\mathrm{cm}\\ }\\)\n\n**Compare with the focal length in AIR**, which is what makes the result striking:\n\n\\(\\dfrac{1}{f_{\\text{air}}} = (1{\\cdot}5 - 1)\\left(\\dfrac{2}{17}\\right) \\qquad\\Longrightarrow\\qquad f_{\\text{air}} = 17\\ \\mathrm{cm}\\)\n\n**Immersing the lens in water makes its focal length nearly FOUR TIMES longer** — it becomes a much weaker converging lens. The ratio is\n\n\\(\\dfrac{f_{\\text{water}}}{f_{\\text{air}}} = \\dfrac{1{\\cdot}5 - 1}{\\left(1{\\cdot}5 - 1{\\cdot}33\\right)/1{\\cdot}33} = \\dfrac{0{\\cdot}5 \\times 1{\\cdot}33}{0{\\cdot}17} = 3{\\cdot}91\\)\n\n**Why the lens weakens.** Refraction happens because of the **contrast** between the two media. In air the contrast is \\(1{\\cdot}5\\) against \\(1{\\cdot}0\\); in water it is \\(1{\\cdot}5\\) against \\(1{\\cdot}33\\), much smaller, so each surface bends the light far less. The glass has not changed — only what surrounds it.\n\n**The limiting case worth knowing.** If the surrounding medium had \\(n = 1{\\cdot}5\\), the bracket \\(\\left(n_g/n_m - 1\\right)\\) would vanish, \\(f\\) would become infinite, and **the lens would disappear** — it would neither converge nor diverge and would be optically invisible. And if the medium were **denser** than the glass, the bracket would go negative and a convex lens would **diverge**.\n\n**Which is why swimming underwater blurs vision.** The eye's lens is surrounded by fluids of index close to \\(1{\\cdot}33\\) internally, and it relies on the air-cornea contrast for most of its focusing power. Flood that with water and the power collapses — goggles restore it by putting air back in front of the cornea."
+    },
+    {
+      "hash": "e4358c2843aeafc30e7ea28493f31b7a5a9293ff3cb5de584c4d5c10ae5489e4",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "An electron in Bohr model of hydrogen atom makes a transition from energy level \\(-1.51\\) eV to \\(-3.40\\) eV. Calculate the change in the radius of its orbit. The radius of orbit of electron in its ground state is 0.53 Å.",
+      "solution": "**Step 1 — identify the two orbits from their energies.**\n\n\\(E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}\\)\n\nFor \\(E = -1{\\cdot}51\\) eV:\n\n\\(n^{2} = \\dfrac{13{\\cdot}6}{1{\\cdot}51} = 9 \\qquad\\Longrightarrow\\qquad n_i = 3\\)\n\nFor \\(E = -3{\\cdot}40\\) eV:\n\n\\(n^{2} = \\dfrac{13{\\cdot}6}{3{\\cdot}40} = 4 \\qquad\\Longrightarrow\\qquad n_f = 2\\)\n\nSo the electron falls from the **third** orbit to the **second**.\n\n**Step 2 — the radii.**\n\n\\(r_n = n^{2}a_0 \\qquad\\text{with}\\qquad a_0 = 0{\\cdot}53\\ \\mathring{\\mathrm{A}}\\)\n\n\\(r_3 = 9 \\times 0{\\cdot}53 = 4{\\cdot}77\\ \\mathring{\\mathrm{A}}\\)\n\n\\(r_2 = 4 \\times 0{\\cdot}53 = 2{\\cdot}12\\ \\mathring{\\mathrm{A}}\\)\n\n**Step 3 — the change.**\n\n\\(\\left|\\Delta r\\right| = 0{\\cdot}53\\left(3^{2} - 2^{2}\\right) = 0{\\cdot}53 \\times 5\\)\n\n\\(\\boxed{\\ \\left|\\Delta r\\right| = 2{\\cdot}65\\ \\mathring{\\mathrm{A}} = 2{\\cdot}65 \\times 10^{-10}\\ \\mathrm{m}\\ }\\)\n\n**and the radius DECREASES**, since the electron moves to the inner orbit. It ends up less than half as far out as it began.\n\n**The factoring shortcut.** Writing \\(\\Delta r = a_0\\left(n_i^{2} - n_f^{2}\\right)\\) avoids computing either radius, and \\(3^{2} - 2^{2} = 5\\) does the whole calculation in one line.\n\n**Why the energies must be converted to \\(n\\) first.** Radius depends on \\(n^{2}\\) while energy depends on \\(1/n^{2}\\), so there is no direct route from one to the other — the quantum number is the bridge, and identifying \\(n = 3\\) and \\(n = 2\\) is the real content of the question. The values \\(-1{\\cdot}51\\) and \\(-3{\\cdot}40\\) eV are worth recognising on sight.\n\n**The two quantities move in opposite senses.** Going from \\(n = 3\\) to \\(n = 2\\) the radius **falls** \\(\\left(\\propto n^{2}\\right)\\) while the binding **deepens** \\(\\left(E \\propto -1/n^{2}\\right)\\). The electron ends up closer in and more tightly held, and the energy it sheds,\n\n\\(\\Delta E = 3{\\cdot}40 - 1{\\cdot}51 = 1{\\cdot}89\\ \\mathrm{eV}\\)\n\nleaves as a single photon of wavelength \\(1240/1{\\cdot}89 \\approx 656\\) nm — the **red H-alpha line**, the brightest line in the visible hydrogen spectrum and the first member of the Balmer series.\n\n**A note on \\(a_0\\).** The Bohr radius is not an arbitrary constant: \\(a_0 = h^{2}\\varepsilon_0/\\pi me^{2}\\), built from four constants of nature, and its value \\(0{\\cdot}53\\ \\mathring{\\mathrm{A}}\\) is what sets the size of atoms and so the scale of all chemistry."
+    },
+    {
+      "hash": "9161a9cfb699e8ff59cbf28ee552c9aab35a19ee0dc4f11731076fc155a8b269",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A particle of charge q is moving with a velocity \\(\\vec{v}\\) at a distance 'd' from a long straight wire carrying a current 'I' as shown in figure. At this instant, it is subjected to a uniform electric field \\(\\vec{E}\\) such that the particle keeps moving undeviated. In terms of unit vectors \\(\\hat{i}\\), \\(\\hat{j}\\) and \\(\\hat{k}\\), find -\n(a) the magnetic field \\(\\vec{B}\\),\n(b) the magnetic force \\(\\vec{F}_m\\), and\n(c) the electric field \\(\\vec{E}\\), acting on the charge.",
+      "figureNote": "REQUIRED - the stem says 'as shown in figure' and every one of the three answers is a DIRECTED quantity whose sign comes only from the drawing. Described: a long horizontal straight line labelled 'Wire', dashed at both ends, carrying an arrowhead labelled I; above it, at a perpendicular separation marked by a shaded vertical bar with arrowheads and labelled d, a filled dot representing the charge, with a straight arrow labelled \\(\\vec{v}\\) drawn from it; and, to the right of the whole arrangement, a separate axes triad with y drawn upwards, x drawn to the right and z drawn down-and-left towards the reader, carrying the unit vectors \\(\\hat{j}\\), \\(\\hat{i}\\) and \\(\\hat{k}\\) along those three axes respectively. Deliberately WITHHELD: the SENSE of the current arrowhead along the wire and the SENSE of the velocity arrow - those two directions are exactly what fix the signs of \\(\\vec{B}\\), \\(\\vec{F}_m\\) and \\(\\vec{E}\\), i.e. the whole of what the question asks for. Page idx 12.",
+      "imageAttached": true,
+      "solution": "**Setting up from the figure.** The wire lies along the horizontal with the current **\\(I\\) directed towards the left**, so along \\(-\\hat{i}\\). The particle sits a distance \\(d\\) **above** the wire, at \\(+d\\,\\hat{j}\\) from it, and moves with velocity also **towards the left**, \\(\\vec{v} = -v\\hat{i}\\). The axes are the standard right-handed set with \\(\\hat{k}\\) **out of the page**.\n\n**(a) The magnetic field at the particle.**\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi d}\\)\n\n*Direction.* By the right-hand rule, \\(\\hat{I}\\times\\hat{r}\\) with \\(\\hat{I} = -\\hat{i}\\) and \\(\\hat{r} = +\\hat{j}\\):\n\n\\(\\left(-\\hat{i}\\right)\\times\\hat{j} = -\\left(\\hat{i}\\times\\hat{j}\\right) = -\\hat{k}\\)\n\n\\(\\boxed{\\ \\vec{B} = \\dfrac{\\mu_0 I}{2\\pi d}\\left(-\\hat{k}\\right)\\ }\\)\n\n— that is, **into the page**. Above a leftward current the field points into the page; below it, out.\n\n**(b) The magnetic force on the charge.**\n\n\\(\\vec{F}_m = q\\left(\\vec{v}\\times\\vec{B}\\right) = q\\left[\\left(-v\\hat{i}\\right)\\times\\left(-\\dfrac{\\mu_0 I}{2\\pi d}\\hat{k}\\right)\\right]\\)\n\nThe two minus signs cancel, leaving \\(qv\\dfrac{\\mu_0I}{2\\pi d}\\left(\\hat{i}\\times\\hat{k}\\right)\\), and \\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\):\n\n\\(\\boxed{\\ \\vec{F}_m = \\dfrac{\\mu_0 qvI}{2\\pi d}\\left(-\\hat{j}\\right)\\ }\\)\n\n**The force is TOWARDS the wire**, and that is exactly what it should be. The charge is moving **parallel** to the current, so it behaves like a second current in the same direction — and parallel currents attract. Reading the direction off the physics like this is the quickest check on the two cross products.\n\n**(c) The electric field needed to keep it undeviated.**\n\n\"Undeviated\" means the **net** force is zero, so the electric force must exactly cancel the magnetic one:\n\n\\(\\vec{F}_e = -\\vec{F}_m = \\dfrac{\\mu_0 qvI}{2\\pi d}\\,\\hat{j}\\)\n\nand since \\(\\vec{F}_e = q\\vec{E}\\),\n\n\\(\\boxed{\\ \\vec{E} = \\dfrac{\\mu_0 vI}{2\\pi d}\\,\\hat{j}\\ }\\)\n\ndirected **away from the wire**, along \\(+\\hat{j}\\).\n\n**Two things worth noting about that result.**\n\n**The charge \\(q\\) has cancelled.** The required field depends on \\(v\\), \\(I\\) and \\(d\\) alone — not on how large the charge is, nor even on its **sign**. Reverse the sign of \\(q\\) and both forces reverse together, so the balance still holds. This is the principle of the **velocity selector**: the condition \\(E = vB\\) picks out one speed and lets it through regardless of the particle's charge or mass.\n\n**The balance holds only at this instant.** The stem says \"at this instant\" because \\(B\\) depends on the distance \\(d\\). If the particle strayed from the line at distance \\(d\\), the magnetic force would change while the uniform electric field would not, and the cancellation would fail. Here it does not stray, precisely because the forces cancel — the arrangement is self-consistent while the particle moves parallel to the wire."
+    },
+    {
+      "hash": "fc7c0c8647b67b5398c05f0e771f63144ca43f93a9dd2dd172b052dc5a1a84ec",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "An ac source of voltage \\(v = v_m \\sin \\omega t\\) is connected to a series combination of LCR circuit. Draw the phasor diagram. Using it obtain an expression for the impedance of the circuit and the phase difference between applied voltage and the current.",
+      "solution": "**The phasor diagram.**\n\nIn a **series** circuit the same current flows through \\(R\\), \\(L\\) and \\(C\\), so the current phasor \\(\\vec{I}\\) is the natural reference. Draw it along a chosen direction, and place the three voltage phasors relative to it:\n\n\\(\\vec{V}_R\\) — **in phase** with \\(\\vec{I}\\), of magnitude \\(V_R = i_mR\\), drawn along the current.\n\n\\(\\vec{V}_L\\) — **leading** \\(\\vec{I}\\) by \\(90^\\circ\\), of magnitude \\(V_L = i_mX_L\\), drawn perpendicular to the current on one side.\n\n\\(\\vec{V}_C\\) — **lagging** \\(\\vec{I}\\) by \\(90^\\circ\\), of magnitude \\(V_C = i_mX_C\\), drawn perpendicular on the **opposite** side.\n\n**\\(\\vec{V}_L\\) and \\(\\vec{V}_C\\) are \\(180^\\circ\\) apart**, so they lie along the same line in opposite senses and **partly cancel**. Their resultant is a single phasor of magnitude \\(\\left|V_L - V_C\\right|\\), perpendicular to \\(\\vec{V}_R\\).\n\n**Obtaining the impedance.**\n\nThe applied voltage is the vector sum of the three, and with \\(\\vec{V}_R\\) perpendicular to \\(\\left(\\vec{V}_L - \\vec{V}_C\\right)\\), Pythagoras gives\n\n\\(v_m^{2} = V_R^{2} + \\left(V_L - V_C\\right)^{2}\\)\n\nSubstituting \\(V_R = i_mR\\), \\(V_L = i_mX_L\\), \\(V_C = i_mX_C\\):\n\n\\(v_m^{2} = \\left(i_mR\\right)^{2} + \\left(i_mX_L - i_mX_C\\right)^{2} = i_m^{2}\\left[R^{2} + \\left(X_L - X_C\\right)^{2}\\right]\\)\n\n\\(\\dfrac{v_m}{i_m} = \\sqrt{R^{2} + \\left(X_L - X_C\\right)^{2}}\\)\n\nand this ratio is by definition the impedance:\n\n\\(\\boxed{\\ Z = \\sqrt{R^{2} + \\left(X_L - X_C\\right)^{2}} = \\sqrt{R^{2} + \\left(\\omega L - \\dfrac{1}{\\omega C}\\right)^{2}}\\ }\\)\n\n**The phase difference.**\n\nFrom the same right-angled triangle, the angle \\(\\phi\\) between \\(\\vec{v}_m\\) and \\(\\vec{I}\\) satisfies\n\n\\(\\boxed{\\ \\tan\\phi = \\dfrac{V_L - V_C}{V_R} = \\dfrac{X_L - X_C}{R} = \\dfrac{\\omega L - 1/\\omega C}{R}\\ }\\)\n\nso that the current is\n\n\\(i = i_m\\sin\\left(\\omega t - \\phi\\right), \\qquad i_m = \\dfrac{v_m}{Z}\\)\n\n**Reading the sign of \\(\\phi\\).**\n\nIf \\(X_L > X_C\\), then \\(\\phi > 0\\): the circuit is **inductive** and the current **lags** the voltage.\n\nIf \\(X_C > X_L\\), then \\(\\phi < 0\\): the circuit is **capacitive** and the current **leads**.\n\nIf \\(X_L = X_C\\), then \\(\\phi = 0\\): the circuit is purely **resistive**. This is **resonance**, at\n\n\\(\\omega_0 = \\dfrac{1}{\\sqrt{LC}}\\)\n\nwhere \\(Z\\) falls to its minimum value \\(R\\) and the current reaches its maximum \\(v_m/R\\).\n\n**Why the phasor method works at all.** Every voltage here varies as a sinusoid of the **same** frequency, differing only in amplitude and phase — and such quantities add exactly like vectors. Representing each as a rotating arrow turns the problem of adding three sinusoids into a piece of geometry, which is the whole reason the diagram is drawn before the algebra.\n\n**And why \\(Z\\) is NOT the simple sum \\(R + X_L + X_C\\).** The three voltages peak at different times, so their amplitudes cannot be added directly. Only \\(V_R\\) is in step with the current; the reactive voltages are a quarter-cycle away, which is what puts them on the perpendicular axis and forces the quadrature sum."
+    },
+    {
+      "hash": "0838b6d1ba7e12c823c33053504d522a31cbadd63c39f4c449aace91a9633f37",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "(a) Mention any three features of results of experiment on photoelectric effect which cannot be explained using the wave theory of light.\n(b) In his experiment on photoelectric effect, Robert A. Millikan found the slope of the cut-off voltage versus frequency of incident light plot to be \\(4.12 \\times 10^{-15}\\) Vs. Calculate the value of Planck's constant from it.",
+      "solution": "**(a) Three results the wave theory of light cannot explain.**\n\n**1. The existence of a threshold frequency.** No photoelectrons are emitted below a certain frequency \\(\\nu_0\\), **however intense** the light and however long it shines.\n\n*Why waves cannot account for it.* On the wave picture the energy delivered depends on the **intensity**, not the frequency, so a bright enough beam of any colour should eventually free electrons. Experiment says otherwise: dim blue light works where brilliant red light does nothing at all.\n\n**2. The maximum kinetic energy depends on frequency, not intensity.** Raising the intensity increases the **number** of photoelectrons but leaves \\(K_{\\max}\\) completely unchanged; raising the frequency increases \\(K_{\\max}\\) linearly.\n\n*Why waves cannot account for it.* A more intense wave carries a larger field amplitude and should therefore shake electrons loose with **more** energy. That the stopping potential is entirely indifferent to intensity is inexplicable on any wave model.\n\n**3. The emission is instantaneous.** Photoelectrons appear within about \\(10^{-9}\\) s of the light arriving, even at intensities so low that the wave theory predicts a delay of **minutes or hours** while an electron slowly accumulates enough energy from the spread-out wavefront.\n\n*Why waves cannot account for it.* Wave energy arrives spread continuously over the whole surface, so a single electron collects only a tiny share and must wait. The absence of any measurable time lag is the sharpest of the three.\n\n**What resolves all three at once.** Light is absorbed in **quanta** of energy \\(h\\nu\\), one photon to one electron, all at once. Frequency then fixes the energy available (explaining 1 and 2), intensity fixes only the **number** of photons (explaining 2 again), and the transaction is complete in a single event (explaining 3).\n\n**(b) Planck's constant from Millikan's slope.**\n\nEinstein's equation written for the stopping potential:\n\n\\(eV_0 = h\\nu - \\phi_0 \\qquad\\Longrightarrow\\qquad V_0 = \\left(\\dfrac{h}{e}\\right)\\nu - \\dfrac{\\phi_0}{e}\\)\n\n**So the slope of the \\(V_0\\) against \\(\\nu\\) graph is \\(h/e\\)**, and\n\n\\(h = e \\times \\text{slope} = \\left(1{\\cdot}6 \\times 10^{-19}\\right)\\left(4{\\cdot}12 \\times 10^{-15}\\right)\\)\n\n\\(\\boxed{\\ h = 6{\\cdot}59 \\times 10^{-34}\\ \\mathrm{J\\,s}\\ }\\)\n\n**The slope contains NO property of the metal.** Only \\(h\\) and \\(e\\), both universal constants — so the same line gradient is obtained from every photoemissive material. The metal shows itself solely in the **intercept**, \\(-\\phi_0/e\\).\n\n**Why that mattered historically.** Millikan set out to **disprove** Einstein's photoelectric equation, which he considered unjustified, and spent a decade on the measurement. What he found instead was a straight line whose slope gave Planck's constant — determined from the photoelectric effect — in agreement with the value Planck had obtained from black-body radiation, an entirely unrelated experiment. **Two independent routes to the same constant** is what settled the matter, and both men received Nobel Prizes for the work.\n\n**The modern value** is \\(6{\\cdot}626 \\times 10^{-34}\\) J s, so the figure above is within half a per cent — and \\(h\\) is now *defined* to be exactly \\(6{\\cdot}62607015 \\times 10^{-34}\\) J s, the kilogram being defined from it rather than the other way round."
+    }
+  ]
+}
