@@ -20,6 +20,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { IPMAT_EXAMS, parsePaperFileName, sourceFileFor } from "./config";
 import { resolveTaxonomy } from "./taxonomy";
+import { ipmatIndoreSittings, isGrace } from "../mocks/ipmatSittings";
 import type { BuiltQuestion } from "./build";
 
 const BUILD_DIR = join(__dirname, "data", "build");
@@ -51,14 +52,32 @@ async function main() {
   }
   const client = createClient(url, key, { auth: { persistSession: false } });
 
+  // Rows a mock sitting declares as GRACE — expected in the bank despite being
+  // exam-cancelled, because a faithful mock includes them (reconstruct.ts).
+  const declaredGrace = new Set<string>();
+  for (const sit of ipmatIndoreSittings()) {
+    for (const file of [sit.sourceFile, ...sit.extraFiles]) {
+      for (let n = 1; n <= 200; n++) {
+        if (isGrace(sit.grace, file, String(n))) declaredGrace.add(`${file}#${n}`);
+      }
+    }
+  }
+
   // ---- expected, from the frozen corpus
   const expected = new Map<string, BuiltQuestion>();
   for (const f of readdirSync(BUILD_DIR).filter((x) => x.endsWith(".json"))) {
     const paper = parsePaperFileName(f.replace(/\.json$/, ".html"));
     if (!paper) throw new Error(`unrecognised file in data/build: ${f}`);
+    const sourceFile = sourceFileFor(paper.exam, paper.year, paper.section);
     for (const r of JSON.parse(readFileSync(join(BUILD_DIR, f), "utf8")) as BuiltQuestion[]) {
-      if (r.reconstructed || r.dropped || r.problems.length) continue;
-      expected.set(`${sourceFileFor(paper.exam, paper.year, paper.section)}#${r.questionNumber}`, r);
+      if (r.reconstructed || r.problems.length) continue;
+      // A DROPPED (exam-cancelled) row is expected in the bank exactly when a
+      // mock sitting declares it as GRACE — `commit.ts --include-dropped` loads
+      // those and only those. Excluding all dropped rows unconditionally made
+      // this gate go red the moment Indore 2024 MCQ Q7 was loaded for the mock:
+      // the row was correct and the expectation was stale.
+      if (r.dropped && !declaredGrace.has(`${sourceFile}#${r.questionNumber}`)) continue;
+      expected.set(`${sourceFile}#${r.questionNumber}`, r);
     }
   }
   console.log(`expected (data/build): ${expected.size} rows\n`);
