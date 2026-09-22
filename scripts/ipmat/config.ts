@@ -293,6 +293,19 @@ export function paperFileName(exam: string, year: number, section: string): stri
 }
 
 /**
+ * `questions.source_file` for one paper — the per-paper rollback and dedup key.
+ *
+ * Lives here, not in commit.ts, for the same reason `paperFileName` does: a CLI
+ * module calls `main()` at load, so importing a helper from one RUNS IT. That
+ * happened twice — extract.ts silently ran a whole fetch, and attach-figures.ts
+ * silently re-ran the whole commit. Both were idempotent and harmless; neither
+ * was intended. `tests/ipmat-module-boundaries.test.ts` now forbids the shape.
+ */
+export function sourceFileFor(exam: string, year: number, section: string): string {
+  return `ipmat/${exam}-${year}-${section}`;
+}
+
+/**
  * Recover a paper key from a cached HTML file name.
  *
  * Splits from the RIGHT, because two of the three exam slugs contain hyphens
