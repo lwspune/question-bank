@@ -259,6 +259,35 @@ left alone.
 
 ---
 
+## Backfill ledger — five CBSE Physics rows are unanswerable: figure referenced, no image (2026-09-22)
+
+**Surfaced by widening `audit-figures.ts`, NOT fixed.** Each needs a crop authored and
+attached, which is per-row work on papers already shipped.
+
+The probe's `FIGURE_REF` regex matched `shown` but not `shows`, so **"The figure shows ..."**
+— the commonest opening CBSE gives a figure question — missed on a single letter. That is the
+exact failure its own file header warns about ("a probe validated only against the cases it
+already flags cannot show you what it misses"). `2025-55-6-1` Q1 was unanswerable with no
+image and the probe called it clean.
+
+Measured after widening, both directions:
+- `REFERENCES-NO-IMAGE` **42 → 47** — five genuinely unanswerable rows surfaced, zero lost.
+- `IMAGE-NO-REFERENCE` **119 → 86** — 33 false "mis-keyed attach" flags cleared, rows that
+  carried a figure all along and whose stems the probe simply could not read.
+
+The five to crop and attach:
+
+| Paper | Q | Stem opens |
+|---|---|---|
+| `2023-55-3-3` | Q28 | "The figure shows a rectangular conductor PQRS ..." |
+| `2023-55-3-3` | Q30 | "(a) The figure shows de Broglie wavelength (λ) for two particles ..." |
+| `2023-55-5-2` | Q11 | "Figure shows a plot of stopping potential (V₀) versus 1/λ ..." |
+| `2025-55-4-3` | Q24 | — |
+| `2026-55-1-1` | Q24 | "Figure shows a narrow beam of electrons entering ... symmetrically" |
+
+Worth a sweep for the same one-letter class elsewhere: the regex is an **enumerated phrasing
+list**, and this is the second time it has under-matched silently.
+
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 
 **Found during the IPMAT load.** Logged, NOT swept — the fix touches the dedup key of every
