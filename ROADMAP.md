@@ -350,8 +350,8 @@ The five to crop and attach:
 
 | Paper | Q | Stem opens |
 |---|---|---|
-| `2023-55-3-3` | Q28 | "The figure shows a rectangular conductor PQRS ..." |
-| `2023-55-3-3` | Q30 | "(a) The figure shows de Broglie wavelength (λ) for two particles ..." |
+| `2023-55-3-3` | Q28 | "The figure shows a rectangular conductor PQRS ..." — **attached 2026-09-23** |
+| `2023-55-3-3` | Q30 | "(a) The figure shows de Broglie wavelength (λ) for two particles ..." — **attached 2026-09-23** |
 | `2023-55-5-2` | Q11 | "Figure shows a plot of stopping potential (V₀) versus 1/λ ..." |
 | `2025-55-4-3` | Q24 | — |
 | `2026-55-1-1` | Q24 | "Figure shows a narrow beam of electrons entering ... symmetrically" — **attached 2026-09-22** |
@@ -359,7 +359,7 @@ The five to crop and attach:
 Worth a sweep for the same one-letter class elsewhere: the regex is an **enumerated phrasing
 list**, and this is the second time it has under-matched silently.
 
-Live counts as of 2026-09-22, after the figures attached while solving papers 16-22: `REFERENCES-NO-IMAGE` **40**, `IMAGE-NO-REFERENCE` **84**, `DRAWN-OPTIONS-NO-IMAGE` **0**.
+Live counts as of 2026-09-23, after the figures attached while solving the sibling papers: `REFERENCES-NO-IMAGE` **38**, `IMAGE-NO-REFERENCE` **84**, `DRAWN-OPTIONS-NO-IMAGE` **0**. Three of the five rows above are now attached; the two that remain are `2023-55-5-2` Q11 and `2025-55-4-3` Q24, and both will be cropped when their papers come up in the run rather than as a separate sweep.
 
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 

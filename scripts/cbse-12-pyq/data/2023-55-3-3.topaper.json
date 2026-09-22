@@ -1,0 +1,279 @@
+{
+  "paper": "55/3/3",
+  "year": 2023,
+  "paperId": "2023-55-3-3",
+  "markingScheme": "out/2023-55-3-3/ms/p00.png … p23.png",
+  "rows": [
+    {
+      "hash": "cca996daba1dc1b9871e649b70144c03e72e263a3338343d607afb995d4ea427",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A battery of emf E and internal resistance r is connected to an external circuit. The potential drop within the battery is proportional to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "current in the circuit"
+        },
+        {
+          "label": "B",
+          "text": "total resistance of the circuit"
+        },
+        {
+          "label": "C",
+          "text": "emf of the battery"
+        },
+        {
+          "label": "D",
+          "text": "power dissipated in the circuit"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): the current in the circuit.**\n\n**What \"potential drop within the battery\" means.** A real cell has internal resistance \\(r\\), and the current it drives has to pass through that resistance too. The voltage lost there is\n\n\\(V_{\\text{lost}} = Ir\\)\n\nso the terminal voltage is \\(V = E - Ir\\), less than the emf whenever current flows.\n\n**Since \\(r\\) is a fixed property of the cell**, \\(Ir\\) depends on one variable only:\n\n\\(V_{\\text{lost}} \\propto I\\)\n\n**Why the other three are not proportional to it.**\n\n*Total resistance of the circuit.* As \\(R\\) rises, \\(I = E/(R + r)\\) **falls**, so the internal drop falls too. The relation is inverse, not proportional — and not even a clean inverse, because of the \\(+r\\).\n\n*Emf of the battery.* The emf is a constant of the cell; it does not vary, so nothing can be proportional to it within one circuit. (Across different cells the drop does scale with \\(E\\) at fixed \\(R\\) and \\(r\\), but that is not what the question describes.)\n\n*Power dissipated in the circuit.* Power goes as \\(I^{2}\\), so the internal drop is proportional to the **square root** of it, not to it.\n\n**A check at the two extremes.** On **open circuit** \\(I = 0\\), the internal drop vanishes and the terminal voltage equals the emf — which is why a voltmeter of very high resistance reads the emf. On **short circuit** \\(R = 0\\), the current is at its maximum \\(E/r\\), the whole emf is dropped internally, and the terminal voltage falls to zero. Both are exactly what \\(V_{\\text{lost}} = Ir\\) predicts."
+    },
+    {
+      "hash": "e5dce36e0238b3286a0befd63acc984febfba1800549bdd5ccd13a98bfcb983b",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The momentum of a photon of wavelength \\(\\lambda\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\mathrm{h}\\lambda}{\\mathrm{c}^{2}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mathrm{h}\\lambda}{\\mathrm{c}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mathrm{h}}{\\lambda}\\)"
+        },
+        {
+          "label": "D",
+          "text": "zero"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{h}{\\lambda}\\).**\n\n**Why a photon has momentum at all**, despite having no mass. Relativity gives the general energy-momentum relation\n\n\\(E^{2} = p^{2}c^{2} + m_0^{2}c^{4}\\)\n\nFor a photon \\(m_0 = 0\\), so this reduces to \\(E = pc\\), and\n\n\\(p = \\dfrac{E}{c} = \\dfrac{h\\nu}{c} = \\dfrac{h}{\\lambda}\\)\n\nusing \\(c = \\nu\\lambda\\).\n\n**The same expression as de Broglie's**, and that is the point worth carrying: \\(p = h/\\lambda\\) holds for a photon and for an electron alike. De Broglie's insight was precisely to read this photon relation backwards and apply it to matter.\n\n**Why \"zero\" is wrong, and it is the tempting option.** It comes from \\(p = mv\\) with \\(m = 0\\). But \\(p = mv\\) is the *non-relativistic* form and simply does not apply to something travelling at \\(c\\). A photon has zero **rest mass** and non-zero momentum, and there is no contradiction — the two are linked only through the full relation above.\n\nThat momentum is measurable, not a formality. It is what produces **radiation pressure**: sunlight pushes on a solar sail, and a comet's dust tail points away from the Sun for this reason.\n\n**Dimensional check on the distractors.** \\(h\\lambda/c\\) and \\(h\\lambda/c^{2}\\) have the dimensions of \\(\\mathrm{J\\,s \\times m \\times s\\,m^{-1}} = \\mathrm{J\\,s^{2}}\\) and worse — neither is a momentum. Only \\(h/\\lambda\\) gives \\(\\mathrm{J\\,s\\,m^{-1}} = \\mathrm{kg\\,m\\,s^{-1}}\\), so three of the four options can be eliminated on dimensions alone."
+    },
+    {
+      "hash": "8935d97fb933d1ca44febcde50207e2f544b4dbd7efc53ac0fd7d8eecb33d84e",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force Between Parallel Currents",
+      "stem": "Two thin long parallel wires A and B are separated by a distance r and carry current I each in the same direction. The force per unit length exerted by A on wire B is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}}{2r}\\), attractive"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}^{2}}{2\\pi r}\\), repulsive"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}^{2}}{2\\pi r}\\), attractive"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{\\mu_0 \\mathrm{I}}{2\\pi r}\\), repulsive"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{\\mu_0\\mathrm{I}^{2}}{2\\pi r}\\), attractive.**\n\n**The mechanism, in two steps.** Wire A produces a magnetic field at the location of wire B:\n\n\\(B_A = \\dfrac{\\mu_0 I}{2\\pi r}\\)\n\nWire B, carrying current \\(I\\) in that field, experiences a force \\(F = BIl\\). Per unit length:\n\n\\(\\dfrac{F}{l} = B_A I = \\dfrac{\\mu_0 I \\times I}{2\\pi r} = \\dfrac{\\mu_0 I^{2}}{2\\pi r}\\)\n\n**The \\(I^{2}\\) is the structural giveaway.** Each wire contributes one factor of \\(I\\) — one to make the field, one to feel it — so the force must go as the **square** of the current. The two options linear in \\(I\\) can be rejected without any further thought, and they also fail dimensionally.\n\n**Why attractive, and not repulsive.** Apply the right-hand rule twice. The field of A at B points *into* the page on one side; the force \\(I\\vec{l} \\times \\vec{B}\\) on B then points **towards** A. Doing the same for the force on A gives a force towards B, as Newton's third law requires.\n\nThe short form: **parallel currents attract, antiparallel currents repel** — the opposite of the rule for electric charges, where like repels like. It is worth noticing that this is not an inconsistency but a different kind of interaction; the magnetic force depends on relative *motion* of charge, not on charge itself.\n\n**This equation defines the ampere** — or defined it until 2019. Two infinitely long parallel wires one metre apart carrying one ampere each attract with \\(2 \\times 10^{-7}\\ \\mathrm{N}\\) per metre, which is exactly \\(\\mu_0/2\\pi\\). That is why \\(\\mu_0\\) had the exact value \\(4\\pi \\times 10^{-7}\\) for so long: it was not measured but *assigned*, by this very definition."
+    },
+    {
+      "hash": "8cc24a2645af530f66c54caa25866838942a1e7f997446fccbf9c4668f29cc6d",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Two wires of equal length and radii r and 2r are connected in series. Their resistivities are \\(2\\rho\\) and \\(\\rho\\) respectively. For the same current passing through the combination, the potential drop across their ends will be in the ratio of :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2 : 1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1 : 2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(4 : 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(8 : 1\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(8 : 1\\).**\n\n**The current is the same through both**, since they are in series, so by Ohm's law the potential drops are in the ratio of the **resistances**:\n\n\\(\\dfrac{V_1}{V_2} = \\dfrac{IR_1}{IR_2} = \\dfrac{R_1}{R_2}\\)\n\n**The resistances.** With equal lengths \\(l\\) and \\(R = \\rho l/A = \\rho l/\\pi r^{2}\\):\n\n\\(R_1 = \\dfrac{(2\\rho)\\,l}{\\pi r^{2}} \\qquad\\text{and}\\qquad R_2 = \\dfrac{\\rho\\,l}{\\pi (2r)^{2}} = \\dfrac{\\rho l}{4\\pi r^{2}}\\)\n\n**The ratio**, with \\(l\\) and \\(\\pi\\) cancelling:\n\n\\(\\dfrac{R_1}{R_2} = \\dfrac{2\\rho}{\\rho} \\times \\dfrac{4\\pi r^{2}}{\\pi r^{2}} = 2 \\times 4 = 8\\)\n\n\\(V_1 : V_2 = 8 : 1\\)\n\n**Two factors compound, and that is the whole question.** The first wire has **twice** the resistivity and **one quarter** the cross-section — and both push its resistance the same way. Catching only one of them gives \\(2 : 1\\) or \\(4 : 1\\), and both of those sit in the option list waiting.\n\nThe area factor is the one more often missed: doubling the **radius** quadruples the **area**, because \\(A \\propto r^{2}\\). Reading \"radii \\(r\\) and \\(2r\\)\" as a factor of 2 in area rather than 4 is exactly what option (C) is for.\n\n**A physical reading.** The first wire is the thin, poorly-conducting one, so it takes the lion's share of the applied voltage — eight ninths of it — while the thick, well-conducting one drops only one ninth. In a series chain the largest resistance always does the most of the dropping, which is the principle behind a potential divider."
+    },
+    {
+      "hash": "677169f23a91d360c5cf07595fe1fccc6884c5d852896f5115e8d2d909832c75",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Displacement Current",
+      "stem": "A capacitor is charged by a battery. Between the plates, during process of charging :",
+      "options": [
+        {
+          "label": "A",
+          "text": "only displacement current exists."
+        },
+        {
+          "label": "B",
+          "text": "only conduction current exists."
+        },
+        {
+          "label": "C",
+          "text": "both displacement current and conduction current exist."
+        },
+        {
+          "label": "D",
+          "text": "no current exists."
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): only displacement current exists.**\n\n**What happens where.** During charging, electrons flow along the **wires** leading to the plates — that is a genuine **conduction current**, a movement of charge. But the region *between* the plates is a vacuum or a dielectric, with no free charges to move across the gap. No charge crosses from one plate to the other.\n\n**Yet the circuit is continuous.** An ammeter in the lead reads a current, and Ampère's original law \\(\\oint\\vec{B}\\cdot d\\vec{l} = \\mu_0 I\\) then gives contradictory answers depending on which surface you stretch across the loop — one that the wire pierces, or one that passes between the plates and is pierced by nothing.\n\n**Maxwell's resolution.** As the plates charge, the electric field between them grows, so the electric flux \\(\\phi_E\\) through that surface is changing. Maxwell added a term:\n\n\\(I_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt}\\)\n\nand this **displacement current** is exactly equal to the conduction current in the wires. The total current is then continuous everywhere, and Ampère's law gives the same answer for every surface.\n\nSo in the gap: **conduction current zero, displacement current non-zero** — which is the answer.\n\n**Why the name is a little misleading.** Nothing is being displaced. \\(I_d\\) is not a flow of charge at all but a *changing electric field*, which produces a magnetic field just as a real current would. It is measured in amperes because that is what it is equivalent to, not because anything is moving.\n\n**The larger consequence.** This added term is what makes electromagnetic waves possible: a changing \\(\\vec{E}\\) generates \\(\\vec{B}\\), a changing \\(\\vec{B}\\) generates \\(\\vec{E}\\), and the pair propagates. Without the displacement-current term Maxwell's equations have no wave solutions and light has no explanation."
+    },
+    {
+      "hash": "d2abd73449a93f4dbf367d47bc80a8f16e66d12f3480225ae4bf7b138233f55a",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "For the forward biasing of a p-n junction diode, which of the following statements is **not** correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The potential barrier decreases."
+        },
+        {
+          "label": "B",
+          "text": "Minority carrier injection occurs."
+        },
+        {
+          "label": "C",
+          "text": "Width of depletion layer increases."
+        },
+        {
+          "label": "D",
+          "text": "Forward current is due to the diffusion of both holes and electrons."
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \"Width of depletion layer increases\" — this is the statement that is NOT correct.**\n\nRead the stem carefully: it asks which statement is **false**, so the answer is the odd one out rather than the true one.\n\n**What forward bias actually does to the width.** Connecting the p-side to the positive terminal applies a voltage **opposing** the built-in barrier, so the net barrier falls to \\(V_0 - V\\). Majority carriers are pushed *towards* the junction, where they neutralise some of the uncovered immobile ions. Fewer ions are needed to support the smaller potential difference, so the depletion layer **narrows**.\n\nWidening is what **reverse** bias does, and the option is a straight swap of the two cases.\n\n**Why the other three are correct.**\n\n*The potential barrier decreases.* The same statement as above, seen through the potential rather than the width — the two always move together.\n\n*Minority carrier injection occurs.* Electrons crossing from the n-side arrive in the p-region, where electrons are the *minority* carrier, and holes crossing the other way arrive where holes are the minority. Each carrier is a majority carrier on the side it leaves and a minority carrier on the side it reaches, so forward bias raises the minority concentration near the junction far above equilibrium. This is the mechanism, and it is what an LED exploits — the injected minority carriers recombine and emit photons.\n\n*Forward current is due to diffusion of both holes and electrons.* Both species cross, and both contribute to the current in the **same** direction, since they carry opposite charges and move in opposite directions. Forward current is a **diffusion** current, driven by the concentration gradient once the barrier is lowered; the reverse saturation current, by contrast, is a **drift** current of minority carriers."
+    },
+    {
+      "hash": "452f9f02e136602a072bc4f1bde94a4a989d5b320370f9801533db1dbbbfb7e4",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "Two cells of emf E each and internal resistances r and 2r are connected in parallel as shown in the figure. The equivalent emf of the combination is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "zero"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mathrm{E}}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mathrm{E}}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{E}\\)"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — the stem says only 'as shown in the figure' and the drawing carries the one fact that decides the answer. Described: two nodes drawn as filled dots, one at each end, joined by two branches that meet at both ends to form a lens shape; the upper branch carries a cell symbol and is labelled 'E, r' above it, the lower branch carries a cell symbol and is labelled 'E, 2r' below it. Withheld: the RELATIVE ORIENTATION of the two cell symbols (which side of each symbol carries the long plate) — that alone separates the four printed options, which span zero, E/2, E/3 and E. Page idx 10.",
+      "imageAttached": true,
+      "solution": "**The answer is (C): \\(\\dfrac{\\mathrm{E}}{3}\\).**\n\n**The figure carries the fact that decides this**, and it is the one thing the stem does not state: the two cells are connected in **opposition**. Read the plates — the upper cell \\((E, r)\\) has its **long plate on the left**, so its positive terminal faces left; the lower cell \\((E, 2r)\\) has its **long plate on the right**. The two drive current round the loop in the same rotational sense, which means that between the two terminals their emfs **subtract** rather than add.\n\nThat is why all four printed options are plausible at a glance: connected the other way the answer would be \\(E\\), and identical cells of equal \\(r\\) in opposition would give zero.\n\n**The general result for two cells in parallel**, when both are oriented to *aid*:\n\n\\(E_{eq} = \\dfrac{E_1r_2 + E_2r_1}{r_1 + r_2}\\)\n\nEach emf is weighted by the **other** cell's internal resistance — the cell with the smaller \\(r\\) has the larger say, because it can drive current more freely.\n\n**With one cell reversed**, its contribution changes sign:\n\n\\(E_{eq} = \\dfrac{E_1r_2 - E_2r_1}{r_1 + r_2}\\)\n\n**Substituting** \\(E_1 = E_2 = E\\), \\(r_1 = r\\), \\(r_2 = 2r\\):\n\n\\(E_{eq} = \\dfrac{E(2r) - E(r)}{r + 2r} = \\dfrac{Er}{3r}\\)\n\n\\(E_{eq} = \\dfrac{E}{3}\\)\n\n**Why it is not zero, though the two emfs are equal.** Equal emfs cancel only if they are equally able to drive current. Here the \\(r\\) cell is twice as effective as the \\(2r\\) cell, so it wins the tug of war, and a net \\(E/3\\) survives in its direction. Had the internal resistances also been equal, the two would have cancelled exactly and the answer would have been zero.\n\nThe equivalent internal resistance is unaffected by orientation: \\(r_{eq} = \\dfrac{r \\times 2r}{3r} = \\dfrac{2r}{3}\\)."
+    },
+    {
+      "hash": "1a4ae7d917674fb3b35b7574afc89735edcd910eb3313c4704bcfbdeb60aa6ff",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A wire of length L is bent round in the form of (i) a square, and then (ii) an equilateral triangle. If current I is passed through each of them, find the ratio of magnetic moment of the square loop to that of the triangle.",
+      "solution": "**The quantity to compare.** The magnetic moment of a single-turn loop is\n\n\\(m = IA\\)\n\nBoth loops are made from the **same length of wire** \\(L\\) and carry the **same current** \\(I\\), so the ratio of magnetic moments is simply the ratio of the **areas**.\n\n**The square.** Its perimeter is \\(L\\), so each side is \\(a = \\dfrac{L}{4}\\):\n\n\\(A_s = a^{2} = \\dfrac{L^{2}}{16}\\)\n\n**The equilateral triangle.** Its perimeter is \\(L\\), so each side is \\(a = \\dfrac{L}{3}\\), and the area of an equilateral triangle of side \\(a\\) is \\(\\dfrac{\\sqrt{3}}{4}a^{2}\\):\n\n\\(A_t = \\dfrac{\\sqrt{3}}{4}\\left(\\dfrac{L}{3}\\right)^{2} = \\dfrac{\\sqrt{3}}{4} \\times \\dfrac{L^{2}}{9} = \\dfrac{\\sqrt{3}L^{2}}{36}\\)\n\n**The ratio.**\n\n\\(\\dfrac{m_s}{m_t} = \\dfrac{A_s}{A_t} = \\dfrac{L^{2}}{16} \\times \\dfrac{36}{\\sqrt{3}L^{2}} = \\dfrac{36}{16\\sqrt{3}} = \\dfrac{9}{4\\sqrt{3}}\\)\n\nRationalising the denominator:\n\n\\(\\dfrac{m_s}{m_t} = \\dfrac{9\\sqrt{3}}{12} = \\dfrac{3\\sqrt{3}}{4} \\approx 1{\\cdot}30\\)\n\n**\\(m_s : m_t = 3\\sqrt{3} : 4\\)**\n\n**The square wins, and the reason generalises.** Of all plane figures with a given perimeter, the one enclosing the greatest area is the **circle**; among regular polygons, the more sides the better. A square therefore beats a triangle, and both are beaten by a hexagon, and all by a circle:\n\n\\(A_{\\text{triangle}} = \\dfrac{L^{2}}{20{\\cdot}8} \\quad < \\quad A_{\\text{square}} = \\dfrac{L^{2}}{16} \\quad < \\quad A_{\\text{hexagon}} = \\dfrac{L^{2}}{13{\\cdot}9} \\quad < \\quad A_{\\text{circle}} = \\dfrac{L^{2}}{12{\\cdot}6}\\)\n\nSince the torque on a loop in a uniform field is \\(\\tau = mB\\sin\\theta\\), the same ordering applies to the torque each shape experiences — which is why coils in meters and motors are wound circular wherever the geometry allows."
+    },
+    {
+      "hash": "3a4d4d251b6ded658a73e33578692614b5323e387b62ec510125dd6e4bb41c4f",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "Draw a circuit diagram of a p-n junction diode in (a) forward biasing, and (b) reverse biasing. Draw the V – I characteristics for each case.",
+      "solution": "**(a) Forward biasing.**\n\n*The circuit.* Connect the **p-side to the positive terminal** of a battery and the n-side to the negative, through a **rheostat** (to vary the voltage) and a **milliammeter** in series; a voltmeter goes across the diode. The milliammeter is the right range here because the forward current is large.\n\n*Why it conducts.* The applied voltage opposes the built-in barrier, so the barrier falls to \\(V_0 - V\\), the depletion layer narrows, and majority carriers diffuse across in quantity.\n\n**(b) Reverse biasing.**\n\n*The circuit.* The same arrangement with the **battery reversed** — p-side to the negative terminal — and the milliammeter replaced by a **microammeter**, because the reverse current is smaller by a factor of about a thousand.\n\n*Why it does not conduct.* The applied voltage now adds to the barrier, which rises to \\(V_0 + V\\), the depletion layer widens, and only the tiny reverse saturation current of minority carriers flows.\n\n**The \\(V\\)-\\(I\\) characteristics**, drawn on one pair of axes with the **first quadrant** for forward bias and the **third** for reverse.\n\n*Forward branch.* Almost no current until the **knee** or threshold voltage — about \\(0{\\cdot}3\\) V for germanium, \\(0{\\cdot}7\\) V for silicon — and then the current rises **exponentially**, nearly vertical on the graph. Mark the current axis in **mA**.\n\n*Reverse branch.* A very small, almost constant current — the reverse saturation current, in **μA** — flat over a wide range of reverse voltage, until the **breakdown voltage** \\(V_{br}\\), where the current suddenly grows very large.\n\n**The two most important features of the graph.** The scales on the two halves are **deliberately different**: milliamperes forward against microamperes reverse. Drawing both to the same scale would make the reverse branch invisible, and that asymmetry *is* the diode's usefulness. And the reverse current's **flatness** is what \"saturation\" means — it is limited by how fast minority carriers are thermally generated, not by the applied voltage, so raising the voltage cannot increase it."
+    },
+    {
+      "hash": "6e4642af6cb2e10f522102a3fe2533293530915f3e55e3f1422a805dbcd3e2a0",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Motional Electromotive Force",
+      "stem": "The figure shows a rectangular conductor PQRS in which the arm PQ of length 10 cm and resistance \\(0{\\cdot}4\\ \\Omega\\) is free to move. It is kept in a uniform magnetic field \\(\\mathrm{B} = 0{\\cdot}2\\) T acting perpendicular into the plane of PQRS. If arm PQ is moved with a velocity v of 5 cm/s as shown, find :\n(a) the current induced in the loop, and\n(b) the power required to move the arm.\n(Resistances of arms PS, SR and RQ are negligible.)",
+      "figureNote": "ILLUSTRATIVE — every quantity the two sub-parts need (10 cm, \\(0{\\cdot}4\\ \\Omega\\), \\(0{\\cdot}2\\) T, 5 cm/s) is stated in the stem, and the marking scheme's own working uses only those numbers, so the row is answerable from text alone; the drawing is worth showing because the stem says 'as shown'. Described: a field region filled with a grid of crosses denoting a field into the page, and a rectangle drawn inside it with its corners labelled S (top left), P (top right), R (bottom left) and Q (bottom right), the right-hand side PQ drawn as a separate movable bar carrying a short arrow labelled v. Page idx 16.",
+      "imageAttached": false,
+      "solution": "**Reading the figure.** The bar PQ slides to the right along the rails, inside a field \\(\\vec{B}\\) directed **into** the page. Only PQ has resistance, and the stem gives every number needed:\n\n\\(l = 10\\ \\mathrm{cm} = 0{\\cdot}1\\ \\mathrm{m}, \\quad R = 0{\\cdot}4\\ \\Omega, \\quad B = 0{\\cdot}2\\ \\mathrm{T}, \\quad v = 5\\ \\mathrm{cm\\,s^{-1}} = 0{\\cdot}05\\ \\mathrm{m\\,s^{-1}}\\)\n\n**(a) The induced current.**\n\nThe motional emf across a rod of length \\(l\\) moving at \\(v\\) perpendicular to \\(\\vec{B}\\) is\n\n\\(\\varepsilon = Blv = 0{\\cdot}2 \\times 0{\\cdot}1 \\times 0{\\cdot}05 = 1 \\times 10^{-3}\\ \\mathrm{V}\\)\n\nand since the other three arms have negligible resistance, the whole loop's resistance is the bar's:\n\n\\(I = \\dfrac{\\varepsilon}{R} = \\dfrac{1 \\times 10^{-3}}{0{\\cdot}4}\\)\n\n\\(I = 2{\\cdot}5 \\times 10^{-3}\\ \\mathrm{A} = 2{\\cdot}5\\ \\mathrm{mA}\\)\n\n**(b) The power required to move the arm.**\n\nHere is the step worth being careful about. Once current flows, the bar carrying current \\(I\\) in field \\(B\\) experiences a force \\(F = BIl\\), and by Lenz's law that force **opposes** the motion. To keep the bar moving at constant \\(v\\), an external agent must push against it with an equal force, doing work at the rate\n\n\\(P = Fv = BIlv = 0{\\cdot}2 \\times 2{\\cdot}5 \\times 10^{-3} \\times 0{\\cdot}1 \\times 0{\\cdot}05\\)\n\n\\(P = 2{\\cdot}5 \\times 10^{-6}\\ \\mathrm{W} = 2{\\cdot}5\\ \\mathrm{\\mu W}\\)\n\n**The energy audit, which is the real content of part (b).** Compute instead the power dissipated as heat in the resistance:\n\n\\(P = I^{2}R = (2{\\cdot}5 \\times 10^{-3})^{2} \\times 0{\\cdot}4 = 2{\\cdot}5 \\times 10^{-6}\\ \\mathrm{W}\\)\n\n**The same number**, and necessarily so. The bar moves at constant speed, so its kinetic energy is unchanged; every joule the external agent supplies must therefore appear as heat in the resistance. Nothing is created and nothing stored.\n\nThat equality is the mechanical statement of energy conservation in electromagnetic induction, and it is also **why Lenz's law must take the sign it does**. Were the induced force to *assist* the motion, the bar would accelerate while simultaneously generating heat — energy from nothing. The opposing sign is not an empirical rule bolted on; it is forced.\n\n**Direction of the current.** As PQ moves right the loop's area grows, so the inward flux increases. The induced current opposes that increase, flowing **anticlockwise** as drawn — that is, from Q to P within the bar."
+    },
+    {
+      "hash": "adc731c6322f2ed489cb7ba5eced1b7d425e711b2f75a80661d8db10e1a04781",
+      "ref": "Q29",
+      "questionNumber": "29",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Obtain a relation between the current flowing in a conductor and drift velocity of electrons in it. Hence, obtain Ohm’s law.",
+      "solution": "**The relation between current and drift velocity.**\n\nConsider a conductor of cross-sectional area \\(A\\) carrying \\(n\\) free electrons per unit volume, each of charge \\(e\\), drifting with average speed \\(v_d\\).\n\n**The counting argument.** In a time \\(\\Delta t\\) every electron advances a distance \\(v_d\\Delta t\\), so **all and only** the electrons within a cylinder of length \\(v_d\\Delta t\\) behind a chosen cross-section will cross it in that time. That cylinder has\n\n\\(\\text{volume} = A v_d\\Delta t \\qquad\\Longrightarrow\\qquad \\text{electrons} = nAv_d\\Delta t\\)\n\nand so carries charge\n\n\\(\\Delta q = neAv_d\\Delta t\\)\n\nCurrent is charge per unit time:\n\n\\(I = \\dfrac{\\Delta q}{\\Delta t}\\)\n\n\\(\\boxed{\\ I = neAv_d\\ }\\)\n\n**Deducing Ohm's law.**\n\nApply a potential difference \\(V\\) across a length \\(l\\), setting up a uniform field \\(E = V/l\\) inside. Each electron feels a force \\(eE\\) and hence an acceleration \\(eE/m\\). It does not accelerate indefinitely: collisions with the lattice randomise its motion, and over the **mean free time** \\(\\tau\\) between collisions it picks up an average extra velocity\n\n\\(v_d = \\dfrac{eE\\tau}{m} = \\dfrac{eV\\tau}{ml}\\)\n\nThis is what makes \\(v_d\\) a *steady* drift rather than a runaway — the collisions are the reason a conductor has resistance at all.\n\nSubstituting into \\(I = neAv_d\\):\n\n\\(I = neA\\left(\\dfrac{eV\\tau}{ml}\\right) = \\dfrac{ne^{2}A\\tau}{ml}V\\)\n\nRearranging,\n\n\\(\\dfrac{V}{I} = \\dfrac{m}{ne^{2}\\tau}\\cdot\\dfrac{l}{A} = \\text{constant} = R\\)\n\nEvery quantity on the right — \\(m\\), \\(n\\), \\(e\\), \\(\\tau\\), \\(l\\), \\(A\\) — is fixed for a given conductor **at a given temperature**. Hence\n\n\\(V \\propto I\\)\n\nwhich is **Ohm's law**, and the constant of proportionality is the resistance.\n\n**Two things the derivation hands over for free.** Comparing with \\(R = \\rho l/A\\) identifies the resistivity as\n\n\\(\\rho = \\dfrac{m}{ne^{2}\\tau}\\)\n\na purely material quantity, independent of the sample's shape — which is why resistivity, not resistance, is what tables list.\n\nAnd the phrase \"at a given temperature\" is load-bearing. Heating a metal makes the lattice vibrate more, shortening \\(\\tau\\), so \\(\\rho\\) rises and the \\(V\\)-\\(I\\) graph ceases to be straight. Ohm's law is therefore not a universal law but an approximation that holds while \\(\\tau\\) is constant — which is exactly why a filament lamp is a non-ohmic device."
+    },
+    {
+      "hash": "2e48318a18e9507457f72c352d2ec7316e9861a428f04037bc9da245d9729a54",
+      "ref": "Q30",
+      "questionNumber": "30",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "(a) The figure shows de Broglie wavelength \\((\\lambda)\\) for two particles A and B having same charges but different masses as a function of \\(\\dfrac{1}{\\sqrt{\\mathrm{V}}}\\), where V is the potential through which the particles are accelerated.\n(i) Which of them is heavier and why ?\n(ii) What does the slope of the line represent ?\n(b) Calculate the momentum of an electron having de Broglie wavelength of \\(3{\\cdot}0\\) Å.",
+      "figureNote": "REQUIRED — part (a)(i) asks which particle is heavier, and nothing in the text distinguishes A from B; the answer is read off the drawing alone. Described: a first-quadrant plot with the vertical axis labelled \\(\\lambda\\) and the horizontal axis labelled \\(\\dfrac{1}{\\sqrt{\\mathrm{V}}}\\), carrying two straight lines rising from a common point near the origin, the ends of the two lines labelled A and B, with no numbers or tick marks anywhere. Withheld: which of the two lines is the steeper — that is exactly the comparison the question tests. Page idx 16.",
+      "imageAttached": false,
+      "solution": "**(a) Reading the graph.**\n\nFor a particle of charge \\(q\\) and mass \\(m\\) accelerated through \\(V\\):\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mqV}} = \\left(\\dfrac{h}{\\sqrt{2mq}}\\right)\\dfrac{1}{\\sqrt{V}}\\)\n\nPlotted against \\(\\dfrac{1}{\\sqrt{V}}\\) this is a **straight line through the origin**, which is why the axes were chosen that way — and its gradient is the bracket.\n\n**(i) Which particle is heavier.**\n\n\\(\\text{slope} = \\dfrac{h}{\\sqrt{2mq}} \\qquad\\Longrightarrow\\qquad \\text{slope} \\propto \\dfrac{1}{\\sqrt{m}} \\ \\text{ (the charges are equal)}\\)\n\nA **larger** mass therefore gives a **smaller** slope — the relation is inverse.\n\nFrom the figure, **A is the steeper line**, so A has the smaller mass and\n\n**B is the heavier particle.**\n\nThe reasoning is worth stating in that order, because the instinct runs the other way: a steeper line looks like \"more\", and here it means *less* mass. A heavier particle carries more momentum for the same accelerating voltage, and more momentum means a **shorter** de Broglie wavelength.\n\n**(ii) What the slope represents.**\n\n\\(\\text{slope} = \\dfrac{h}{\\sqrt{2mq}}\\)\n\nIt is a constant fixed by Planck's constant together with the particle's mass and charge — so it is a property of the *particle*, not of the experiment. Measuring the slope of such a line is in fact a way of determining \\(m\\) for a particle of known charge, or of determining \\(h\\) for a particle of known \\(m\\) and \\(q\\).\n\n**(b) The momentum of an electron of wavelength \\(3{\\cdot}0\\ \\mathring{\\mathrm{A}}\\).**\n\n\\(p = \\dfrac{h}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{3{\\cdot}0 \\times 10^{-10}}\\)\n\n\\(p = 2{\\cdot}21 \\times 10^{-24}\\ \\mathrm{kg\\,m\\,s^{-1}}\\)\n\n**Notice what was not needed.** The electron's mass never enters: \\(p = h/\\lambda\\) contains only \\(h\\) and \\(\\lambda\\), so the answer is the same for *any* particle of this wavelength. The mass would matter only if the question had asked for the speed or the kinetic energy.\n\nFor orientation, this momentum corresponds to \\(v = p/m \\approx 2{\\cdot}4 \\times 10^{6}\\ \\mathrm{m\\,s^{-1}}\\) and a kinetic energy of about \\(17\\) eV — and \\(3\\ \\mathring{\\mathrm{A}}\\) is comparable to the spacing of atoms in a crystal, which is precisely why electrons of a few tens of electronvolts diffract from crystal planes."
+    }
+  ]
+}
