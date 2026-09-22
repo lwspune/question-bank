@@ -18,6 +18,7 @@
 import { slugToUuid } from "../quiz/quizPayload";
 import type { MockAnswerKey } from "./answers";
 import {
+  sectionMarking,
   totalQuestions,
   totalMarks,
   type MockPaperBlueprint,
@@ -32,7 +33,7 @@ export type PaperQuestionRow = {
   questionNumber: string | null;
   subjectName: string;
   /**
-   * The `source_file` this row came from. Only needed when a sitting is MERGED
+   * The `source_file` this row came from. Needed when a sitting is MERGED
    * from two labels (see dedupeMergedRows) — every other path ignores it.
    */
   sourceFile?: string;
@@ -160,13 +161,34 @@ export function dedupeMergedRows(
   return [...best.values()];
 }
 
-/** The blueprint section a bank subject belongs to; null when it fits none. */
+/**
+ * The blueprint section a bank row belongs to; null when it fits none.
+ *
+ * Subject alone decides it for every exam but IPMAT Indore, whose two quant
+ * sections BOTH draw from Mathematics + Logical Reasoning. There, the section
+ * declares a `sourceFileSuffix` and the row's `source_file` breaks the tie —
+ * authoritative, because it records which section of the paper the exam printed
+ * the question in. Format could not do it: Indore's 2025 Short Answer section
+ * holds one MCQ among fourteen numeric rows.
+ *
+ * A blueprint with no suffixes behaves exactly as before, so `sourceFile` is
+ * optional and ignored for every other exam.
+ */
 export function assignSection(
   bp: MockPaperBlueprint,
-  subjectName: string
+  subjectName: string,
+  sourceFile?: string | null
 ): string | null {
-  const sec = bp.sections.find((s) => s.subjects.includes(subjectName));
-  return sec ? sec.key : null;
+  const candidates = bp.sections.filter((s) => s.subjects.includes(subjectName));
+  if (candidates.length === 0) return null;
+  // Unambiguous by subject, and the section asks for no suffix: done.
+  if (candidates.length === 1 && !candidates[0].sourceFileSuffix) return candidates[0].key;
+
+  const suffixed = candidates.filter((s) => s.sourceFileSuffix);
+  if (suffixed.length === 0) return candidates[0].key;
+  if (!sourceFile) return null;
+  const hit = suffixed.find((s) => sourceFile.endsWith(`-${s.sourceFileSuffix}`));
+  return hit ? hit.key : null;
 }
 
 /** NDA canonical: April = edition I, September = edition II. */
@@ -335,7 +357,7 @@ export function validatePaperRows(
   // Section membership + per-section counts.
   const perSection = new Map<string, number>();
   for (const r of rows) {
-    const key = assignSection(bp, r.subjectName);
+    const key = assignSection(bp, r.subjectName, r.sourceFile);
     if (!key) {
       issues.push(
         `Question ${r.id} (subject "${r.subjectName}") maps to no section in this paper`
@@ -371,7 +393,7 @@ export function validatePaperRows(
   // Duplicate ordering keys within a section would make the order ambiguous.
   const keys = new Map<string, Set<number>>();
   for (const r of rows) {
-    const sec = assignSection(bp, r.subjectName) ?? "?";
+    const sec = assignSection(bp, r.subjectName, r.sourceFile) ?? "?";
     const set = keys.get(sec) ?? new Set<number>();
     const k = orderKey(r);
     if (set.has(k)) {
@@ -414,16 +436,21 @@ export function buildMockPaper(
   let position = 0;
   for (const section of bp.sections) {
     const sectionRows = orderPaperRows(
-      rows.filter((r) => assignSection(bp, r.subjectName) === section.key)
+      rows.filter((r) => assignSection(bp, r.subjectName, r.sourceFile) === section.key)
     );
+    // Per-SECTION marking, falling back to the paper's. Grading reads these
+    // per-question values, so a section's scheme reaches the score without the
+    // grader knowing sections exist — which is how IPMAT Indore's zero-negative
+    // Short Answer section works.
+    const marking = sectionMarking(bp, section);
     for (const r of sectionRows) {
       position += 1;
       questions.push({
         position,
         questionId: r.id,
         sectionKey: section.key,
-        marks: bp.marking.correct,
-        negMarks: bp.marking.wrong,
+        marks: marking.correct,
+        negMarks: marking.wrong,
         ...(r.grace ? { grace: true } : {}),
       });
     }
@@ -448,7 +475,10 @@ export function buildMockPaper(
     durationSecs: opts.durationSecs ?? bp.durationSecs,
     marking: bp.marking,
     totalQuestions: total,
-    totalMarks: Math.round(total * bp.marking.correct * 100) / 100,
+    // SUMMED from what was actually stamped, not `total * bp.marking.correct`.
+    // Those agree only while every section shares the paper's scheme; once a
+    // section can differ, the multiply is a latent wrong total.
+    totalMarks: Math.round(questions.reduce((n, q) => n + q.marks, 0) * 100) / 100,
     sections: bp.sections
       .map((s) => ({
         key: s.key,

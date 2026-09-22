@@ -84,7 +84,7 @@ Two things that script records for anyone doing a similar move:
   orphans under a surviving subject, guarded on BOTH "no questions" and "not in the target set",
   so a chapter the map wants can never be dropped for being momentarily empty.
 
-### 1c. `/mock` will serve REAL IPMAT sittings whole, like the NDA GAT papers (noted 2026-09-22)
+### 1c. `/mock` — machinery BUILT and proven; the 5 Indore mocks are gated on step 1 (2026-09-22)
 
 **Decided: the IPMAT mocks are actual PYQs, in the `/mock` section** — a mock is one real
 sitting reconstructed from the bank, the same product as the 18 faithful NDA GAT sittings. Not
@@ -109,7 +109,79 @@ Measured, per paper:
 So with grace handling, **14 of 16 sittings can be served complete**, and JIPMAT 2025 + 2026
 are the two to HOLD rather than ship short — the posture MOCKS.md already takes for 30 papers.
 
-#### Three blockers, all real, all measured
+#### Status: built, proven, and blocked on one thing
+
+**`IPMAT_INDORE_PAPER` ships, and all five 2022-2026 sittings reconstruct** — 90 q / 360
+marks each, sections 30/15/45, 2024 carrying its grace question, and Short Answer correctly
+carrying no negative marking. Proven by `npx tsx scripts/ipmat/mock-smoke.ts`, which drives
+the real `buildMockPaper` over the real bank rows and writes nothing.
+
+**They cannot be CREATED yet.** `fetchPaperRows` in scripts/mocks/build.ts filters
+`.eq("visibility", "PUBLIC")` — correctly, because a mock puts questions in front of a
+student — and every IPMAT row is PRIVATE until its keys are derived. So the real builder
+returns 0 rows. **This is step 1's gate doing its job, not a defect.**
+
+Once the Indore chapters flip PUBLIC, the whole remaining job is one command:
+
+```sh
+npx tsx scripts/mocks/build.ts --paper=ipmat-indore --apply --publish
+```
+
+#### The researched pattern (2026-09-22)
+
+| | Indore | Rohtak | JIPMAT |
+|---|---|---|---|
+| Questions | **90** (QA-MCQ 30 · QA-SA 15 · VA 45) | 120 (40 x 3) | 100 (33 QA · 33 DILR · 34 VARC) |
+| Marks | **360** | 480 | 400 |
+| Duration | **120 min, 40 min PER SECTION, locked** | 120 min | **150 min, no sectional limit** |
+| Correct | **+4** | +4 | +4 |
+| Wrong | **-1 MCQ · 0 on SA** | -1 | -1 |
+
+Cross-checked across independent sources; the Indore figures agree everywhere. **The 100 -> 90
+change happened in 2022**, which is why 2022-2026 is one clean pattern and the three earlier
+sittings are out of scope. **Rohtak's sectional timing is CONTRADICTED between sources** (one
+says 40 min per section, another says candidates divide the 120 minutes freely) — unresolved,
+and moot while its loaded data is 2019 (115 q) and 2020 (60 q), neither matching the current
+120-question pattern.
+
+**Section ORDER is not firmly established.** MCQ -> SA -> VA is used, being how most published
+descriptions list it, but sources disagree and our corpus numbers each section from 1
+independently, so no global ordering survives to check against. With one combined timer it is
+presentational.
+
+#### What was built
+
+- **`MockSectionBlueprint.marking`** — per-section marking, because SA has no negative marking
+  and a paper-level scheme would penalise every SA mistake and mis-score every student.
+  `buildMockPaper` stamps it onto each question, and grading already reads per-question marks.
+- **`MockSectionBlueprint.sourceFileSuffix`** — sections identified by `source_file`. Subject
+  cannot separate Indore's two quant sections (both are Mathematics + Logical Reasoning), and
+  **neither can format**: 2025's SA section holds one MCQ among fourteen numeric rows.
+  `source_file` records where the exam itself printed the question.
+- **`SourceFileSitting.extraFiles`** — a fourth sitting rule. An IPMAT sitting is THREE files,
+  one per section, UNIONED. Deliberately not `mergeWith`, which dedupes two labels for one
+  paper — the opposite operation.
+- **`scripts/mocks/ipmatSittings.ts`** — the five sittings, file names DERIVED from
+  `sourceFileFor` so a rename cannot leave them pointing at nothing. Grace is keyed by section
+  AND number, because numbering restarts per section and a bare `[7]` would also grace SA Q7
+  and VA Q7.
+- **`totalMarks` now SUMS the stamped marks** instead of `count x paper.correct`. The two agree
+  only while every section shares the paper's scheme.
+- **The cancelled row is loaded.** `commit.ts --include-dropped` loaded Indore 2024 MCQ Q7 with
+  its four printed options and NONE marked correct, which is legal and precedented (31 bank
+  questions already have zero correct options). Inventing a key to satisfy a check would be
+  storing a false answer.
+
+#### Still open
+
+- **The sectional lock.** An attempt has a single `expires_at`. Per-section deadlines need the
+  runner, the attempt service, the palette and `mock:sweep` — a live surface. Decided
+  2026-09-22 to ship on one 120-minute timer and defer this; scores are exact, only time
+  management is easier than the real exam.
+- Rohtak and JIPMAT mocks. JIPMAT needs its own blueprint (no sectional limit, 150 min) and can
+  serve 4 of 6 sittings; Rohtak's loaded sittings predate its current pattern.
+
+#### Three blockers as first identified — all now resolved or recorded
 
 1. **THE 8 EXAM-CANCELLED ROWS ARE NOT IN THE BANK, AND THEY NEED TO BE.** Phase 4 excluded
    every `dropped` row. But `reconstruct.ts` is explicit: *"It appeared on the real paper, so a

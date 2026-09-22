@@ -39,6 +39,7 @@ const CLI_MODULES = [
   "score-derive.ts",
   "verify-load.ts",
   "remap-taxonomy.ts",
+  "mock-smoke.ts",
 ];
 
 /** Modules that are pure: importable, no top-level effect. */
