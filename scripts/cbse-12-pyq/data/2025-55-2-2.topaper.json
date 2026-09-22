@@ -1,0 +1,286 @@
+{
+  "paper": "55/2/2",
+  "year": 2025,
+  "paperId": "2025-55-2-2",
+  "markingScheme": "out/2025-55-2-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "6e350e5bfaa95a113d869aa9f63c8bea3740d070cbd3a1dcc774680f7624cc93",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "Two identical point charges are placed at the two vertices A and B of an equilateral triangle of side \\(l\\). The magnitude of the electric field at the third vertex P is E. If a hollow conducting sphere of radius \\((l/4)\\) is placed at P, the magnitude of the electric field at point P now becomes",
+      "options": [
+        {
+          "label": "A",
+          "text": ">E"
+        },
+        {
+          "label": "B",
+          "text": "E"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{E}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "zero"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): zero.**\n\n**What the sphere does.** A hollow **conducting** sphere is placed with \\(P\\) at its centre. In electrostatic equilibrium the field **inside the material of a conductor is zero** — and, when the cavity contains no charge, the field inside the **cavity** is zero as well.\n\n\\(\\boxed{\\ E_P = 0\\ }\\)\n\n**Why the cavity is field-free, in one step.** The external field drives charge to redistribute over the sphere's surface until the field it produces exactly cancels the applied field everywhere inside the metal. Take any Gaussian surface within the metal: \\(\\vec{E} = 0\\) on it, so it encloses no net charge, so the cavity wall carries none. With no charge on the wall and none inside, there is nothing to produce a field in the cavity, and it stays at a single uniform potential.\n\n**This is ELECTROSTATIC SHIELDING**, and the striking feature is how complete it is. The two charges at \\(A\\) and \\(B\\) are still there, still producing a field everywhere outside the sphere — but at \\(P\\) their field is cancelled **exactly**, not merely reduced. No thickness of metal is specified because none is needed; even thin foil works.\n\n**The distractors, and what each would require.** Option (B), \\(E\\), would mean the sphere does nothing — true of an **insulating** shell, whose charges are not free to rearrange. Option (C), \\(E/2\\), suggests partial screening, which is what a **dielectric** does but a conductor never does. Option (A), \\(>E\\), has no mechanism at all.\n\n**The numbers in the stem are all decoy.** Neither the side \\(l\\), nor the radius \\(l/4\\), nor the equilateral geometry, nor even the value \\(E\\) enters the answer. They are there to invite a calculation — the field at \\(P\\) from two equal charges at \\(60^\\circ\\), which is \\(E = \\sqrt{3}\\,kq/l^{2}\\) — that the shielding then makes irrelevant. **Recognising that no computation is required is the question.**\n\n**The one thing that would change the answer.** If a charge were placed **inside** the cavity, the field there would no longer be zero: shielding protects the inside from the **outside**, and does nothing about sources within. It works one way only, which is why a Faraday cage protects equipment from external fields but not from its own.\n\n**Where it is used.** Sensitive instruments sit inside metal enclosures; coaxial cable has a braided screen; a car body shields its occupants from lightning. All are this result."
+    },
+    {
+      "hash": "62e27f2528634773fee75064815335dd6091aa49064e1c13ad0c57c1460232e8",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A battery of e.m.f. 12 V and internal resistance 0.5 \\(\\Omega\\) is connected to a 9.5 \\(\\Omega\\) resistor through a key. The ratio of potential difference between the two terminals of the battery, when the key is open to that when the key is closed, is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1.05"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "0.95"
+        },
+        {
+          "label": "D",
+          "text": "1.1"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): 1.05.**\n\n**With the key OPEN.** No current flows, so there is no drop across the internal resistance and the terminals read the full emf:\n\n\\(V_{\\text{open}} = E = 12\\ \\mathrm{V}\\)\n\n**This is the standard way to measure an emf** — on open circuit, a voltmeter reads it directly.\n\n**With the key CLOSED.** The current is set by the total resistance, internal plus external:\n\n\\(I = \\dfrac{E}{R + r} = \\dfrac{12}{9{\\cdot}5 + 0{\\cdot}5} = \\dfrac{12}{10} = 1{\\cdot}2\\ \\mathrm{A}\\)\n\n**The \\(9{\\cdot}5\\) and \\(0{\\cdot}5\\) are chosen to give exactly \\(10\\ \\Omega\\)**, which makes the current a round \\(1{\\cdot}2\\) A.\n\nThe terminal voltage is then the emf less the internal drop:\n\n\\(V_{\\text{closed}} = E - Ir = 12 - (1{\\cdot}2)(0{\\cdot}5) = 12 - 0{\\cdot}6 = 11{\\cdot}4\\ \\mathrm{V}\\)\n\n**The ratio.**\n\n\\(\\dfrac{V_{\\text{open}}}{V_{\\text{closed}}} = \\dfrac{12}{11{\\cdot}4}\\)\n\n\\(\\boxed{\\ = 1{\\cdot}0526 \\approx 1{\\cdot}05\\ }\\)\n\n**The ratio must exceed 1**, and checking that first disposes of two options. A battery's terminal voltage always **falls** when it starts delivering current, because part of the emf is spent driving current through the battery's own resistance. So option (C), \\(0{\\cdot}95\\), has the ratio upside down, and option (B), \\(1\\), would require either zero internal resistance or zero current.\n\n**Reading it as a proportion.** The drop is \\(0{\\cdot}6\\) V out of \\(12\\) V — exactly \\(5\\%\\). Hence the ratio \\(1/0{\\cdot}95 = 1{\\cdot}0526\\), and the answer could be written down from the \\(5\\%\\) alone. Note that \\(1{\\cdot}05\\) is **not** the same as \\(1 + 0{\\cdot}05\\) applied the other way: \\(0{\\cdot}95\\) is the closed-to-open ratio, and its reciprocal is \\(1{\\cdot}053\\), which is why the two are close but distinct.\n\n**Why the drop is small here.** The internal resistance is only \\(1/19\\) of the external. A fresh cell has \\(r\\) of a fraction of an ohm; as it ages \\(r\\) climbs, the terminal voltage sags further under load, and the ratio grows. Measuring exactly this ratio is how a battery tester judges a cell's condition — the open-circuit voltage of a worn cell can look perfectly healthy until it is asked to deliver current."
+    },
+    {
+      "hash": "68c58f3d35c42e06c62dc58dcec0f85be6e8273f26b66e576d62c58430d44e76",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "The alternating current I in an inductor is observed to vary with time t as shown in the graph for a cycle.\n\nWhich one of the following graphs is the correct representation of wave form of voltage V with time t ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "a plot of V against t that rises linearly from zero at t = 0 to a peak at t = T/2 and then falls linearly back to zero at t = T, staying positive throughout"
+        },
+        {
+          "label": "B",
+          "text": "a plot of V against t that rises linearly from zero to a positive peak, falls linearly through zero at t = T/2 to a negative trough of the same size, and returns to zero at t = T"
+        },
+        {
+          "label": "C",
+          "text": "a plot of V against t that holds one constant positive value from t = 0 to t = T/2 and then one constant negative value of the same magnitude from t = T/2 to t = T"
+        },
+        {
+          "label": "D",
+          "text": "a plot of V against t that is a sine curve – one positive half-cycle from t = 0 to t = T/2 and one negative half-cycle from t = T/2 to t = T"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED – the stem's own graph carries the current waveform ('as shown in the graph') and all four options are DRAWN graphs with no text of their own. Page idx 4. Read on this paper's page at 2x. STEM GRAPH: an isosceles triangle – I rises linearly from 0 at t = 0 to a peak at t = T/2, marked by a dashed vertical, and falls linearly back to 0 at t = T; the vertical axis is labelled I with an up-arrow and the horizontal axis t, with ticks 0, T/2 and T. OPTION GRAPHS: all four are labelled V (vertical) against t (horizontal) with ticks 0, T/2 and T; their four shapes are described in the option texts, which is the only way to preserve the discrimination the question tests. The crop is still needed so a reader can check those readings against the page.",
+      "imageAttached": false,
+      "solution": "**The answer is (C)** — a square wave: one constant positive value for the first half-cycle, one constant negative value of the same size for the second.\n\n**The relation between voltage and current for an inductor.**\n\n\\(V = L\\dfrac{dI}{dt}\\)\n\n**So the voltage is proportional to the SLOPE of the current graph, not to the current itself.** That single sentence answers the question; everything else is reading the slope off the given plot.\n\n**Reading the current waveform.** The current is **triangular**: it rises linearly from \\(0\\) at \\(t = 0\\) to its peak at \\(t = T/2\\), then falls linearly back to \\(0\\) at \\(t = T\\).\n\n**First half-cycle**, \\(0 < t < T/2\\): the graph is a straight line of **constant positive slope**, so \\(dI/dt\\) is a positive constant and \\(V\\) holds a steady **positive** value.\n\n**Second half-cycle**, \\(T/2 < t < T\\): a straight line of **constant negative slope** of the same magnitude, so \\(V\\) holds a steady **negative** value of the same size.\n\nA quantity that is constant, then jumps to minus that constant, is a **square wave** — which is option (C).\n\n**The striking feature, and the point of the question.** The current here is **positive throughout** — it never goes below the axis — yet the **voltage reverses sign** halfway through. There is no contradiction: the inductor responds to how the current is *changing*, not to which way it flows. While the current is growing the inductor opposes the growth; once it starts falling, the inductor opposes the fall and its voltage flips.\n\n**Ruling out the others.** Options (A) and (B) both give a **triangular** voltage — that is what you get by copying the shape of the current, which would be right for a **resistor** \\(\\left(V = IR\\right)\\) but not for an inductor. Option (D)'s sine wave would require a **cosine** current; a triangular current cannot produce it.\n\n**What happens at \\(t = T/2\\).** The slope changes discontinuously, so the ideal voltage jumps instantaneously from \\(+V_0\\) to \\(-V_0\\). A real current cannot turn a perfectly sharp corner, and the real voltage spike is large but finite — which is why switching an inductive load produces the voltage surge that damages contacts, and why a flyback diode is fitted across a relay coil.\n\n**A useful pairing to remember.** For an inductor the voltage is the **derivative** of the current; for a capacitor the current is the derivative of the voltage. Triangular in gives square out, in both cases."
+    },
+    {
+      "hash": "63eac3ac54f0824c700a3713824d35cd10d4a454d10c623f9b4453e6c8ec1150",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "A diamagnetic substance is brought, one by one, near the north pole and the south pole of a bar magnet. It is",
+      "options": [
+        {
+          "label": "A",
+          "text": "repelled by north pole and attracted by south pole."
+        },
+        {
+          "label": "B",
+          "text": "attracted by north pole and repelled by south pole."
+        },
+        {
+          "label": "C",
+          "text": "attracted by north pole as well as by south pole."
+        },
+        {
+          "label": "D",
+          "text": "repelled by north pole as well as by south pole."
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): repelled by the north pole as well as by the south pole.**\n\n**Why a diamagnetic substance is always repelled.**\n\nA diamagnetic material has **no permanent magnetic moment** — all its electrons are paired. When it is brought into a field, the orbital motion of its electrons is perturbed so as to induce a moment that **OPPOSES** the applied field. This is Lenz's law operating at the atomic scale.\n\n**The induced moment is ANTIPARALLEL to the field, whatever the field's direction.** Bring up a north pole and the induced moment points one way; bring up a south pole and it points the other — but in **both** cases it is opposite to the local field.\n\n**Then the force follows from the non-uniformity.** A magnetic dipole in a non-uniform field is pushed towards the **stronger** field if its moment is aligned with the field, and towards the **weaker** field if it is opposed. A diamagnet is always opposed, so it is always pushed **away** from the pole, where the field is strongest.\n\n\\(\\boxed{\\ \\text{Repelled by BOTH poles}\\ }\\)\n\n**The contrast that makes the options meaningful.**\n\n| Substance | Induced/permanent moment | Near a north pole | Near a south pole |\n|---|---|---|---|\n| **Diamagnetic** | induced, **opposing** the field | **repelled** | **repelled** |\n| Paramagnetic | permanent, aligns **with** the field | attracted | attracted |\n| Ferromagnetic | permanent, strongly aligned | strongly attracted | strongly attracted |\n\n**Note that none of the four materials behaves differently at the two poles**, which is what rules out options (A) and (B) immediately. A substance that were attracted to one pole and repelled by the other would have to be a **permanent** magnet with a **fixed** orientation — but an induced moment is created by the field and so always takes its cue from it.\n\n**Option (C) is the paramagnetic answer**, offered because \"attracted to both\" is the behaviour of iron filings and of most things people have handled. Diamagnetism is the rarer, weaker and counter-intuitive case.\n\n**How weak, and how it is seen anyway.** Diamagnetic susceptibilities are of order \\(-10^{-5}\\), so the repulsion is normally imperceptible. But with a strong enough field the effect is unmistakable: bismuth and pyrolytic graphite are visibly pushed away by a strong magnet, and a **live frog has been levitated** in a \\(16\\) T field — because water, and therefore living tissue, is diamagnetic.\n\n**A final point worth keeping.** Diamagnetism is present in **every** substance, since the induced opposing moment arises in all of them. It is called out only when there is no permanent moment to swamp it."
+    },
+    {
+      "hash": "119e95bfc5e9ee3b8451ccf01f7ca702b4384d91e5cdaa56a150060b35d78274",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "Two long solenoids of radii \\(r_1\\) and \\(r_2\\) \\((>r_1)\\) and number of turns per unit length \\(n_1\\) and \\(n_2\\) respectively are co-axially wrapped one over the other. The ratio of self-inductance of inner solenoid to their mutual inductance is –",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{n_1}{n_2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{n_2}{n_1}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{n_1 r_1^2}{n_2 r_2^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{n_2 r_1^2}{n_1 r_2^2}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{n_1}{n_2}\\).**\n\n**The self-inductance of the inner solenoid.**\n\nFor a long solenoid of \\(n\\) turns per unit length, length \\(l\\) and cross-sectional area \\(A\\):\n\n\\(L = \\mu_0 n^{2}Al\\)\n\nso for the inner one, of radius \\(r_1\\):\n\n\\(L_1 = \\mu_0 n_1^{2}\\left(\\pi r_1^{2}\\right)l\\)\n\n**The mutual inductance of the pair.**\n\nSend a current \\(I_2\\) through the **outer** solenoid; it produces a uniform field \\(B_2 = \\mu_0 n_2I_2\\) throughout its interior. The inner solenoid, with \\(N_1 = n_1l\\) turns each of area \\(\\pi r_1^{2}\\), links a total flux\n\n\\(N_1\\phi_1 = \\left(n_1l\\right)\\left(\\mu_0 n_2I_2\\right)\\left(\\pi r_1^{2}\\right)\\)\n\n\\(M = \\dfrac{N_1\\phi_1}{I_2} = \\mu_0 n_1n_2\\left(\\pi r_1^{2}\\right)l\\)\n\n**Taking the ratio.**\n\n\\(\\dfrac{L_1}{M} = \\dfrac{\\mu_0 n_1^{2}\\pi r_1^{2}l}{\\mu_0 n_1n_2\\pi r_1^{2}l}\\)\n\n**Everything cancels except one factor of \\(n\\) each:**\n\n\\(\\boxed{\\ \\dfrac{L_1}{M} = \\dfrac{n_1}{n_2}\\ }\\)\n\n**Why \\(r_1^{2}\\) cancels and \\(r_2\\) never appears at all**, which is what the two radius-bearing options are testing. Both quantities involve the **same** area, \\(\\pi r_1^{2}\\) — in \\(L_1\\) because that is the inner solenoid's own cross-section, and in \\(M\\) because the flux linking the inner coil is limited by that same cross-section, the outer field being uniform across it. The outer radius \\(r_2\\) enters neither, so options (C) and (D) can be discarded on inspection.\n\n**The structural reason the answer is so simple.** Self-inductance carries \\(n_1\\) **twice** — once for the field the coil produces and once for the turns that link it. Mutual inductance carries \\(n_1\\) and \\(n_2\\) **once each** — one coil makes the field, the other links it. Dividing leaves exactly one factor of \\(n_1/n_2\\).\n\n**A general relation this illustrates.** For two coupled coils,\n\n\\(M = k\\sqrt{L_1L_2}\\)\n\nwith \\(k \\le 1\\) the coupling coefficient. Here \\(L_2 = \\mu_0 n_2^{2}\\pi r_2^{2}l\\), so\n\n\\(\\sqrt{L_1L_2} = \\mu_0 n_1n_2\\pi r_1r_2l \\qquad\\Longrightarrow\\qquad k = \\dfrac{r_1}{r_2}\\)\n\nThe coupling is the ratio of the radii — perfect only if the two solenoids had the same radius, and falling as the inner coil occupies less of the outer one's cross-section. That is the honest way \\(r_2\\) enters the physics, and it is why a transformer's windings are wound as closely together as possible."
+    },
+    {
+      "hash": "b46c53a65ce3467cd70e4bfab7c5b2a9d9e2f44a1186fe72f57e279da740cf02",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "AC Generator",
+      "stem": "A coil of an ac generator, having 100 turns and area 0.1 \\(\\mathrm{m}^2\\) each, rotates at half a rotation per second in a magnetic field of 0.02 T. The maximum emf generated in the coil is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.31 V"
+        },
+        {
+          "label": "B",
+          "text": "0.20 V"
+        },
+        {
+          "label": "C",
+          "text": "0.63 V"
+        },
+        {
+          "label": "D",
+          "text": "0.10 V"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 0.63 V.**\n\n**The peak emf of a rotating coil.**\n\n\\(\\varepsilon_0 = NBA\\omega\\)\n\n**Convert the rotation rate to ANGULAR frequency**, which is the step the whole question is built on:\n\n\\(f = \\dfrac{1}{2}\\ \\text{rotation per second} \\qquad\\Longrightarrow\\qquad \\omega = 2\\pi f = 2\\pi \\times \\dfrac{1}{2} = \\pi\\ \\mathrm{rad\\,s^{-1}}\\)\n\n**Substituting.**\n\n\\(\\varepsilon_0 = 100 \\times 0{\\cdot}02 \\times 0{\\cdot}1 \\times \\pi = 0{\\cdot}2\\pi\\)\n\n\\(\\boxed{\\ \\varepsilon_0 = 0{\\cdot}63\\ \\mathrm{V}\\ }\\)\n\n**Option (B), \\(0{\\cdot}20\\) V, is the answer with the \\(2\\pi\\) left out** — that is, using the frequency in rotations per second where the formula wants radians per second. It is offered precisely for that slip, and it is the commonest one in this topic. Note that \\(0{\\cdot}2\\pi\\) makes the arithmetic unusually transparent: the whole calculation is \\(\\pi/5\\).\n\n**Where the formula comes from.** With the coil rotating at angular speed \\(\\omega\\), the flux through it is\n\n\\(\\phi = NBA\\cos\\omega t\\)\n\nand Faraday's law gives\n\n\\(\\varepsilon = -\\dfrac{d\\phi}{dt} = NBA\\omega\\sin\\omega t\\)\n\nwhose maximum is \\(NBA\\omega\\). The **\\(\\omega\\) appears only because of the differentiation** — the faster the coil turns, the faster the flux changes, and the emf rises in direct proportion. Doubling the speed doubles the peak emf *and* doubles the frequency of the output.\n\n**When during the rotation the emf peaks.** \\(\\sin\\omega t\\) is largest when \\(\\cos\\omega t\\) is zero — that is, when the **flux is zero**, with the coil's plane **parallel** to the field. And the emf is zero when the flux is maximum, the coil's plane perpendicular to \\(\\vec{B}\\). Emf tracks the *rate of change* of flux, so the two are always a quarter-cycle apart.\n\n**A sense of the design.** Half a rotation per second is very slow, and \\(0{\\cdot}02\\) T is a weak field, so \\(0{\\cdot}63\\) V is a modest output. A practical generator wins on all three factors at once: thousands of turns, a field of order \\(1\\) T from an electromagnet, and \\(50\\) rotations per second — which between them lift the output by five orders of magnitude."
+    },
+    {
+      "hash": "9614daacd3cd2377642b602889acd2b4ae0d730a3a7662f8d88dc6b2a392a7c8",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Reflection by Spherical Mirrors",
+      "stem": "The focal length of a concave mirror in air is f. When the mirror is immersed in a liquid of refractive index \\(\\frac{5}{3}\\), its focal length will become",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{5}{3}\\) f"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{3}{5}\\) f"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{2}{3}\\) f"
+        },
+        {
+          "label": "D",
+          "text": "f"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(f\\) — the focal length is unchanged.**\n\n**The focal length of a mirror is purely GEOMETRIC.**\n\n\\(f = \\dfrac{R}{2}\\)\n\nwhere \\(R\\) is the radius of curvature. **No refractive index appears anywhere in it** — not the mirror's, not the surrounding medium's.\n\n\\(\\boxed{\\ f_{\\text{liquid}} = f\\ }\\)\n\n**Why immersion changes nothing.** A mirror works by **reflection**, and the law of reflection is \\(i = r\\) in **every** medium. The reflected ray's direction depends only on the orientation of the surface it strikes, never on what the light is travelling through. Since the geometry of the mirror is unaltered by dipping it in a liquid, every ray is turned through the same angle as before and the rays converge to the same point.\n\n**The contrast with a LENS is the whole point of the question.** A lens works by **refraction**, which depends on the contrast between two media:\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{n_{\\text{lens}}}{n_{\\text{medium}}} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nImmerse a lens and \\(n_{\\text{medium}}\\) rises, the bracket shrinks, and the focal length **grows** — a converging lens becomes markedly weaker in water. That behaviour is so familiar that the options here are all built from it: \\(\\tfrac{5}{3}f\\), \\(\\tfrac{3}{5}f\\) and \\(\\tfrac{2}{3}f\\) are the sorts of factors a **lens** would give.\n\n**The value \\(5/3\\) is a deliberate decoy.** It is given so that a candidate can produce a plausible-looking number, and it is exactly the information the correct answer must ignore. Recognising that a given quantity is **not needed** is as much a skill as using one.\n\n**A caution about what does NOT follow.** The focal length is unchanged, but the **brightness** of the image is not: the reflectance of a surface depends on the index contrast across it, so a metal-backed mirror reflects a slightly different fraction of the incident light under water. The question asks about focal length, which is geometry, and geometry alone is untouched.\n\n**The practical version of this result.** A shaving mirror works identically in a steamy bathroom or underwater; a car's convex wing mirror has the same field of view in rain; and a reflecting telescope needs no correction for the medium in front of it, which is one reason large telescopes use mirrors rather than lenses."
+    },
+    {
+      "hash": "435d74964d4f24c65543a6a093d9e050fa198d6f0c27af5073f17e0e05c31284",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "stem": "Show the refraction of light wave at a plane interface using Huygens’ principle and prove Snell’s law.",
+      "solution": "**The setup.** A plane wavefront \\(AB\\) in medium 1 (speed \\(v_1\\)) strikes a plane interface \\(XY\\) and passes into medium 2 (speed \\(v_2\\)). Let the incident wavefront make an angle \\(i\\) with the surface, and let the refracted wavefront make an angle \\(r\\).\n\n*The diagram:* draw the interface \\(XY\\) horizontally. Draw the incident wavefront \\(AB\\) meeting it, with \\(A\\) on the surface and \\(B\\) still in medium 1. Mark the normal at \\(A\\), and let \\(BC\\) be the perpendicular from \\(B\\) to the surface at \\(C\\).\n\n**Huygens' principle**: every point on a wavefront acts as a source of secondary spherical wavelets, and the new wavefront is the surface that touches all of them.\n\n**Step 1 — let the wave advance.** The wavefront reaches \\(A\\) first and \\(C\\) last. Let the time for the disturbance to travel from \\(B\\) to \\(C\\), still in medium 1, be \\(t\\):\n\n\\(BC = v_1t\\)\n\n**Step 2 — what happens at \\(A\\) during that same time.** The instant the wavefront reached \\(A\\), a secondary wavelet began spreading from \\(A\\) **into medium 2**, where the speed is \\(v_2\\). In the same time \\(t\\) it has grown to a sphere of radius\n\n\\(AE = v_2t\\)\n\n**The times are equal, and that equality is the whole proof.** Both quantities describe the same interval \\(t\\) — the wavelet in medium 2 and the residual travel in medium 1 happen simultaneously.\n\n**Step 3 — construct the refracted wavefront.** From \\(C\\), draw the tangent \\(CE\\) to the sphere of radius \\(v_2t\\) centred at \\(A\\). This tangent is the **refracted wavefront**, and \\(AE\\) is perpendicular to it.\n\n**Step 4 — the geometry.**\n\nIn the right-angled triangle \\(ABC\\), the angle \\(\\angle BAC\\) equals the angle of incidence \\(i\\) (both are the angle between the wavefront and the surface, equivalently between the ray and the normal):\n\n\\(\\sin i = \\dfrac{BC}{AC} = \\dfrac{v_1t}{AC}\\)\n\nIn the right-angled triangle \\(AEC\\), the angle \\(\\angle ACE\\) equals the angle of refraction \\(r\\):\n\n\\(\\sin r = \\dfrac{AE}{AC} = \\dfrac{v_2t}{AC}\\)\n\n**Step 5 — divide.** The common hypotenuse \\(AC\\) and the common time \\(t\\) both cancel:\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{v_1t/AC}{v_2t/AC} = \\dfrac{v_1}{v_2}\\)\n\n**Step 6 — write it with refractive indices.** With \\(n = c/v\\),\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{v_1}{v_2} = \\dfrac{c/n_1}{c/n_2} = \\dfrac{n_2}{n_1}\\)\n\n\\(\\boxed{\\ n_1\\sin i = n_2\\sin r\\ }\\)\n\nwhich is **Snell's law**.\n\n**What the derivation reveals that the law alone does not.** Refraction is not a force acting on a ray — it is the geometric consequence of one edge of the wavefront entering the slower medium **before** the other and therefore falling behind. The wavefront pivots, exactly as a column of marchers turns when those on one flank take shorter steps.\n\n**The prediction that decided between two theories.** This construction requires \\(v_2 < v_1\\) for light entering a denser medium, since \\(\\sin r < \\sin i\\). Newton's corpuscular theory demanded the **opposite** — that light speeds up in glass. Foucault's measurement in 1850 found light slower in water, and the wave picture was vindicated.\n\n**Two facts the construction also gives free.** The **frequency** is unchanged, since wavelets are generated at the interface at the rate they arrive; so \\(v = \\nu\\lambda\\) forces the **wavelength** to change in the same ratio as the speed, \\(\\lambda_2/\\lambda_1 = v_2/v_1\\). And the incident ray, the refracted ray and the normal all lie in one plane, because the whole construction is planar."
+    },
+    {
+      "hash": "1fcf3e1c8911cab2f11a266bbe2cbb959dc560c011ccae8663944e6cc751d6b5",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "Two convex lenses A and B, each of focal length 10.0 cm, are mounted on an optical bench at 50.0 cm and 70.0 cm respectively. An object is mounted at 20.0 cm. Find the nature and position of the final image formed by the combination.",
+      "solution": "**Setting up on the bench.** Object at \\(20{\\cdot}0\\) cm; lens \\(A\\) at \\(50{\\cdot}0\\) cm; lens \\(B\\) at \\(70{\\cdot}0\\) cm; both of focal length \\(+10{\\cdot}0\\) cm. The two lenses are \\(20\\) cm apart, so they are **not in contact** and must be handled one at a time — the image from \\(A\\) becomes the object for \\(B\\).\n\n**Lens A.**\n\nThe object is \\(50{\\cdot}0 - 20{\\cdot}0 = 30{\\cdot}0\\) cm in front of \\(A\\), so \\(u_1 = -30\\) cm.\n\n\\(\\dfrac{1}{v_1} - \\dfrac{1}{u_1} = \\dfrac{1}{f_1}\\)\n\n\\(\\dfrac{1}{v_1} = \\dfrac{1}{10} + \\dfrac{1}{-30} = \\dfrac{3 - 1}{30} = \\dfrac{1}{15}\\)\n\n\\(v_1 = +15\\ \\mathrm{cm}\\)\n\nSo \\(A\\) alone would form a **real** image \\(15\\) cm beyond it — at the **65 cm mark** on the bench.\n\n**Lens B.**\n\nThat image lies \\(70{\\cdot}0 - 65{\\cdot}0 = 5{\\cdot}0\\) cm **in front of** \\(B\\), so it serves as a real object for the second lens:\n\n\\(u_2 = -5\\ \\mathrm{cm}\\)\n\n\\(\\dfrac{1}{v_2} = \\dfrac{1}{10} + \\dfrac{1}{-5} = \\dfrac{1 - 2}{10} = -\\dfrac{1}{10}\\)\n\n\\(v_2 = -10\\ \\mathrm{cm}\\)\n\n**The final image.**\n\n\\(\\boxed{\\ \\text{VIRTUAL, } 10\\ \\mathrm{cm\\ in\\ front\\ of\\ } B \\text{ — at the } 60{\\cdot}0\\ \\mathrm{cm\\ mark}\\ }\\)\n\n**Why the second lens fails to form a real image.** The intermediate image falls \\(5\\) cm from \\(B\\), **inside** its focal length of \\(10\\) cm. A converging lens with its object inside the focus acts as a **magnifying glass**: the emerging rays still diverge, and the image is virtual, erect relative to its own object, and enlarged. Had the lenses been \\(25\\) cm apart instead of \\(20\\), the intermediate image would have landed \\(10\\) cm from \\(B\\), exactly at its focus, and the final rays would have emerged parallel — no image at all.\n\n**The magnification, which the position alone does not give.**\n\n\\(m_1 = \\dfrac{v_1}{u_1} = \\dfrac{15}{-30} = -0{\\cdot}5, \\qquad m_2 = \\dfrac{v_2}{u_2} = \\dfrac{-10}{-5} = +2\\)\n\n\\(m = m_1m_2 = -1\\)\n\nSo the final image is **inverted** and the **same size** as the original object — the first lens halves it and the second doubles it back.\n\n**A note on the intermediate image.** It is a genuine real image, and a screen placed at the \\(65\\) cm mark would show it. But with \\(B\\) in place the light never stops there; the rays converge towards that point and are intercepted by \\(B\\) before reaching it. Treating it as the object for \\(B\\) is legitimate precisely because the rays behave as though they came from it.\n\n**The trap in the arithmetic.** \\(u_2\\) is measured from **lens \\(B\\)**, not from the origin of the bench. Using \\(-65\\) or \\(+65\\) instead of \\(-5\\) is the error the question invites; converting bench readings to lens-relative distances at each stage is what avoids it."
+    },
+    {
+      "hash": "b4bb7cf2947adb0aae0c9019d3ee48ee7258c1f85ee863b533726dec1fc1c5e1",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Radiations of two frequencies are incident on a metal surface of work function 2.0 eV one by one. The energies of their photons are 2.5 eV and 4.5 eV respectively. Find the ratio of the maximum speed of the electrons emitted in the two cases.",
+      "solution": "**Einstein's photoelectric equation** applied twice:\n\n\\(h\\nu = \\phi_0 + K_{\\max}\\)\n\n**First radiation**, photon energy \\(2{\\cdot}5\\) eV:\n\n\\(2{\\cdot}5 = 2{\\cdot}0 + \\dfrac{1}{2}mv_1^{2} \\qquad\\Longrightarrow\\qquad \\dfrac{1}{2}mv_1^{2} = 0{\\cdot}5\\ \\mathrm{eV}\\)\n\n**Second radiation**, photon energy \\(4{\\cdot}5\\) eV:\n\n\\(4{\\cdot}5 = 2{\\cdot}0 + \\dfrac{1}{2}mv_2^{2} \\qquad\\Longrightarrow\\qquad \\dfrac{1}{2}mv_2^{2} = 2{\\cdot}5\\ \\mathrm{eV}\\)\n\n**Divide.** The factor \\(\\tfrac{1}{2}m\\) is the same for both, so it cancels:\n\n\\(\\dfrac{v_1^{2}}{v_2^{2}} = \\dfrac{0{\\cdot}5}{2{\\cdot}5} = \\dfrac{1}{5}\\)\n\n\\(\\boxed{\\ \\dfrac{v_1}{v_2} = \\dfrac{1}{\\sqrt{5}} \\approx 0{\\cdot}45, \\qquad\\text{that is,}\\qquad v_1 : v_2 = 1 : \\sqrt{5}\\ }\\)\n\n**The work function must be subtracted FIRST.** The tempting shortcut — \\(v \\propto \\sqrt{E}\\), giving \\(\\sqrt{2{\\cdot}5/4{\\cdot}5} = 0{\\cdot}745\\) — is wrong, because the speed is set by the energy the electron **keeps**, not by the energy the photon **brought**. Each photon spends \\(2{\\cdot}0\\) eV escaping, and \\(2{\\cdot}0\\) eV is a large fraction of the first photon's budget.\n\n**That subtraction magnifies the difference enormously.** The two photon energies differ by a factor of \\(1{\\cdot}8\\); after paying the work function, the leftover kinetic energies differ by a factor of **5**, and the speeds by \\(\\sqrt{5} = 2{\\cdot}24\\). Raising the photon energy by \\(80\\%\\) more than doubles the electron speed — because subtracting a fixed amount from both amplifies their ratio.\n\n**Note that \\(v \\propto \\sqrt{K}\\), not \\(K\\).** Kinetic energy goes as the square of the speed, so a five-fold energy ratio is only a \\(\\sqrt{5}\\) speed ratio. Answering \\(1 : 5\\) would be forgetting to take the root.\n\n**The threshold, for orientation.** With \\(\\phi_0 = 2{\\cdot}0\\) eV the threshold wavelength is \\(1240/2{\\cdot}0 = 620\\) nm, in the orange. The \\(2{\\cdot}5\\) eV photon (\\(496\\) nm, blue-green) clears it only just, which is why its electrons emerge so slowly; the \\(4{\\cdot}5\\) eV photon (\\(276\\) nm) is well into the ultraviolet.\n\n**If the actual speeds were wanted:**\n\n\\(v_1 = \\sqrt{\\dfrac{2 \\times 0{\\cdot}5 \\times 1{\\cdot}6 \\times 10^{-19}}{9{\\cdot}1 \\times 10^{-31}}} = 4{\\cdot}2 \\times 10^{5}\\ \\mathrm{m\\,s^{-1}}\\)\n\nand \\(v_2 = \\sqrt{5}\\,v_1 = 9{\\cdot}4 \\times 10^{5}\\) m/s — both comfortably non-relativistic, and both requiring the kinetic energy in **joules**, which is why the ratio method is the safer route when only a ratio is asked."
+    },
+    {
+      "hash": "e6222b2d1630c4eafa0dfdab1b3c918c112c108a5cfdea8e579ac84ac24968b5",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "(a) Define resistivity of a conductor. Discuss its dependence on temperature of the conductor and draw a plot of resistivity of copper as a function of temperature.\n(b) (i) “A low voltage battery from which high current is required must have low internal resistance.” Justify.\n(ii) “A high voltage battery must have a large internal resistance.” Justify.",
+      "solution": "**(a) Resistivity, and its dependence on temperature.**\n\n**Definition.** The **resistivity** \\(\\rho\\) of a material is the resistance of a specimen of that material of **unit length** and **unit cross-sectional area**:\n\n\\(\\rho = \\dfrac{RA}{l}\\)\n\nIts SI unit is the **ohm metre** \\(\\left(\\Omega\\,\\mathrm{m}\\right)\\). It is a property of the **material alone** — independent of the size or shape of the specimen — which is what distinguishes it from resistance.\n\n**Dependence on temperature.** For a **metallic conductor**, resistivity **increases** with temperature, over an ordinary range very nearly linearly:\n\n\\(\\rho_T = \\rho_0\\left[1 + \\alpha\\left(T - T_0\\right)\\right]\\)\n\n*Why it rises.* From the free-electron model,\n\n\\(\\rho = \\dfrac{m}{ne^{2}\\tau}\\)\n\nIn a metal the number density \\(n\\) of free electrons is essentially fixed. Heating the metal makes the lattice ions vibrate more violently, so electrons collide more often and the **relaxation time \\(\\tau\\) falls** — and \\(\\rho\\), being inversely proportional to \\(\\tau\\), rises.\n\n**The plot for copper.** Draw \\(\\rho\\) on the vertical axis against absolute temperature \\(T\\) on the horizontal. The curve rises with \\(T\\) throughout. Two regions are worth showing:\n\nAt **low temperatures** (say below about \\(100\\) K) the curve is visibly **non-linear**, rising steeply out of a nearly flat region near \\(T = 0\\).\n\nAs \\(T \\to 0\\) the curve does **not** reach the origin but flattens to a small **residual resistivity**, caused by impurities and lattice defects — scattering centres that do not freeze out however cold the metal gets.\n\nAt **ordinary temperatures** the curve is straight to a good approximation, which is what makes the linear formula above useful.\n\n**The contrast worth stating.** For **semiconductors** and insulators \\(\\rho\\) **falls** sharply with temperature, because heating liberates far more charge carriers and the rise in \\(n\\) overwhelms the fall in \\(\\tau\\). Their temperature coefficient is therefore **negative**.\n\n**(b)(i) Why a low-voltage battery delivering a high current must have LOW internal resistance.**\n\nThe current a battery can drive is\n\n\\(I = \\dfrac{E}{R + r}\\)\n\nWith \\(E\\) small, a large \\(I\\) demands that \\(R + r\\) be small. The external resistance \\(R\\) can be made as small as we like, but \\(r\\) is fixed by the battery itself and sets a **ceiling** on the current: even with \\(R = 0\\), no more than \\(E/r\\) can flow. So \\(r\\) must be small if a low emf is to deliver a large current.\n\n**The terminal voltage tells the same story.** \\(V = E - Ir\\): at large \\(I\\), a significant \\(r\\) would collapse the terminal voltage, and the power \\(I^{2}r\\) lost inside the battery would simply heat it. A car battery, which must supply hundreds of amps to a starter motor from only \\(12\\) V, has an internal resistance of a few **milliohms** for exactly this reason.\n\n**(b)(ii) Why a high-voltage battery must have a LARGE internal resistance.**\n\nHere the reasoning runs the other way, and it is about **safety**.\n\nWith \\(E\\) large, a small \\(r\\) would mean that an accidental **short circuit** \\(\\left(R \\approx 0\\right)\\) draws\n\n\\(I_{\\max} = \\dfrac{E}{r}\\)\n\nwhich would be enormous — enough to melt conductors, cause a fire, or deliver a lethal shock. A **large internal resistance limits the maximum current** the source can ever supply, whatever is connected across it.\n\n**The trade accepted.** A high internal resistance means the terminal voltage sags as soon as appreciable current is drawn, so such a source is useful only for applications needing high voltage at **low** current — and that is precisely what they are built for. The two parts of this question are two halves of the same relation \\(V = E - Ir\\), read with different priorities: part (i) wants current, part (ii) wants a limit on it."
+    },
+    {
+      "hash": "58f3c92deb67f2dc2d8771f6128a598fce02952c525a40b5718e536a1d0a8f7b",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to a Resistor",
+      "stem": "Differentiate between the peak value and root mean square value of an alternating current. Derive the expression for the root mean square value of alternating current, in terms of its peak value.",
+      "solution": "**The two values distinguished.**\n\n**Peak value \\(\\left(i_0\\right)\\)** — the **maximum instantaneous** value the alternating current reaches during a cycle. It is the amplitude of the sine curve, attained only twice per cycle and only for an instant.\n\n**Root mean square value \\(\\left(I_{rms}\\right)\\)** — the value of the **steady direct current** that would produce the **same heating effect** in a given resistance over the same time. It is the square root of the mean of the squared current, and it is what an AC ammeter reads and what \"\\(220\\) V mains\" refers to.\n\n| | Peak value | rms value |\n|---|---|---|\n| What it is | the instantaneous maximum | the DC-equivalent for heating |\n| When attained | twice a cycle, momentarily | a time-average, always the same |\n| Measured by | an oscilloscope | an ordinary AC ammeter or voltmeter |\n| Relation | \\(i_0\\) | \\(i_0/\\sqrt{2} = 0{\\cdot}707\\,i_0\\) |\n\n**Deriving the rms value.**\n\nLet\n\n\\(i = i_0\\sin\\omega t\\)\n\n**Step 1 — the instantaneous power** dissipated in a resistance \\(R\\). Heating depends on the **square** of the current, so the sign of \\(i\\) is irrelevant and the effect does not average away:\n\n\\(P = i^{2}R = i_0^{2}R\\sin^{2}\\omega t\\)\n\n**Step 2 — average it over a complete cycle.**\n\n\\(\\bar{P} = \\left\\langle i^{2}R\\right\\rangle = i_0^{2}R\\left\\langle\\sin^{2}\\omega t\\right\\rangle\\)\n\nUsing \\(\\sin^{2}\\omega t = \\dfrac{1 - \\cos 2\\omega t}{2}\\), and noting that \\(\\cos 2\\omega t\\) averages to **zero** over a full cycle:\n\n\\(\\left\\langle\\sin^{2}\\omega t\\right\\rangle = \\dfrac{1}{2}\\)\n\nso\n\n\\(\\bar{P} = \\dfrac{1}{2}i_0^{2}R\\)\n\n**Step 3 — define the equivalent DC.** By definition, \\(I_{rms}\\) is the steady current producing the same average power:\n\n\\(I_{rms}^{2}R = \\dfrac{1}{2}i_0^{2}R\\)\n\n\\(I_{rms}^{2} = \\dfrac{i_0^{2}}{2}\\)\n\n\\(\\boxed{\\ I_{rms} = \\dfrac{i_0}{\\sqrt{2}} = 0{\\cdot}707\\,i_0\\ }\\)\n\n**The same result by direct integration**, if the average is to be computed from first principles:\n\n\\(I_{rms}^{2} = \\dfrac{1}{T}\\int_0^{T}i_0^{2}\\sin^{2}\\omega t\\;dt = \\dfrac{i_0^{2}}{T}\\int_0^{T}\\dfrac{1 - \\cos 2\\omega t}{2}\\,dt = \\dfrac{i_0^{2}}{2T}\\left(T - 0\\right) = \\dfrac{i_0^{2}}{2}\\)\n\nthe \\(\\cos 2\\omega t\\) integrating to zero over the full period.\n\n**Why the SIMPLE average will not serve.** The mean of \\(i_0\\sin\\omega t\\) over a full cycle is **zero** — the two halves cancel exactly — so it says nothing useful about an AC supply. Squaring first removes the sign, which is legitimate because heating is genuinely indifferent to the direction of the current. The order of operations is in the name: **square**, then **mean**, then **root**.\n\n**What the factor means in practice.** Indian mains at \\(220\\) V rms has a **peak** of \\(220\\sqrt{2} \\approx 311\\) V, and insulation must withstand that higher figure, not the quoted one. The same \\(\\sqrt{2}\\) applies to voltage and current alike, so \\(P = V_{rms}I_{rms}\\) holds with no extra factor — which is exactly why rms values are the ones quoted."
+    },
+    {
+      "hash": "a9d3ade0f60051809ecd6b8ee77668d09de8c37d0441c240ccc152e486997a46",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "(a) How is an electromagnetic wave produced ?\n(b) An electromagnetic wave is travelling in vertically upward direction. At an instant, its electric field vector points in west direction. In which direction does the magnetic field vector point at that instant ?\n(c) Estimate the ratio of shortest wave length of radio waves to the longest wave length of gamma waves.",
+      "solution": "**(a) How an electromagnetic wave is produced.**\n\nAn electromagnetic wave is produced by an **ACCELERATING electric charge** — in practice, by a charge **oscillating** with some frequency.\n\n**The mechanism, in the order the fields appear.** An oscillating charge constitutes a current that changes with time, and it therefore sets up a **time-varying magnetic field** in the space around it. By Faraday's law a changing magnetic field produces a **changing electric field**; by the Ampere-Maxwell law — through the displacement-current term — that changing electric field in turn produces a changing magnetic field.\n\n**Each field regenerates the other**, so once launched the disturbance sustains itself and propagates outwards, needing no medium and no further help from the source. **The frequency of the emitted wave equals the frequency of oscillation of the charge.**\n\n*A concrete case.* An **LC oscillator** feeding an aerial drives charge up and down the aerial at the circuit's resonant frequency, radiating radio waves of exactly that frequency. A stationary charge radiates nothing; a charge in **uniform** motion radiates nothing either, since a steady current gives a steady magnetic field. **Acceleration is the necessary condition.**\n\n**(b) The direction of the magnetic field.**\n\nFor an electromagnetic wave, \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of propagation form a **right-handed set**, with the wave travelling along \\(\\vec{E}\\times\\vec{B}\\).\n\nTake East \\(= \\hat{i}\\), North \\(= \\hat{j}\\), Up \\(= \\hat{k}\\), a right-handed set since \\(\\hat{i}\\times\\hat{j} = \\hat{k}\\).\n\nThe wave travels **upward**, so \\(\\hat{E}\\times\\hat{B} = \\hat{k}\\); and \\(\\vec{E}\\) points **West**, so \\(\\hat{E} = -\\hat{i}\\).\n\nSeeking \\(\\hat{B}\\):\n\n\\(\\left(-\\hat{i}\\right)\\times\\hat{B} = \\hat{k}\\)\n\nTrying \\(\\hat{B} = -\\hat{j}\\):\n\n\\(\\left(-\\hat{i}\\right)\\times\\left(-\\hat{j}\\right) = \\hat{i}\\times\\hat{j} = \\hat{k}\\ \\checkmark\\)\n\n\\(\\boxed{\\ \\vec{B} \\text{ points towards the SOUTH}\\ }\\)\n\n*A check without algebra:* point the fingers of the right hand West (along \\(\\vec{E}\\)) and curl them South (along \\(\\vec{B}\\)); the thumb points **Up**, which is the direction of travel.\n\n**Note that \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of propagation are mutually perpendicular** — West, South and Up are three mutually perpendicular directions. Electromagnetic waves are **transverse**: neither field has any component along the direction of travel.\n\n**(c) The ratio of the shortest radio wavelength to the longest gamma wavelength.**\n\nFrom the standard boundaries of the spectrum:\n\nshortest radio wavelength \\(\\approx 0{\\cdot}1\\ \\mathrm{m}\\)\n\nlongest gamma-ray wavelength \\(\\approx 10^{-12}\\ \\mathrm{m}\\)\n\n\\(\\dfrac{\\lambda_{\\text{radio, min}}}{\\lambda_{\\text{gamma, max}}} = \\dfrac{0{\\cdot}1}{10^{-12}} = \\dfrac{10^{-1}}{10^{-12}}\\)\n\n\\(\\boxed{\\ \\approx 10^{11}\\ }\\)\n\n**Read the question carefully — it deliberately pairs the two INNERMOST edges.** Radio waves run from \\(0{\\cdot}1\\) m *upwards*, so their **shortest** is \\(0{\\cdot}1\\) m; gamma rays run from \\(10^{-12}\\) m *downwards*, so their **longest** is \\(10^{-12}\\) m. These are the two ends nearest each other, and the ratio is therefore the **smallest** that can be formed between the two bands — and it is still a hundred thousand million.\n\n**What that number conveys.** Taking the spectrum end to end, from kilometre-long radio waves to gamma rays below \\(10^{-14}\\) m, the range exceeds \\(10^{18}\\). Every one of those waves travels at the same speed \\(c\\) in vacuum and obeys the same four Maxwell equations; only the frequency, and so the photon energy \\(E = h\\nu\\), distinguishes them — and that is what makes one harmless and another lethal."
+    }
+  ]
+}
