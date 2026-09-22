@@ -1068,7 +1068,13 @@ distractor by letter, and `Hence B is …` where B names a matrix). The rule tha
 as covering lowercase `a` after "answer is" too.
 
 **Worked around, not fixed.** The solution was reworded to *"what is asked for is a temperature
-RISE"* and the probe is green. `auditRow` is SHARED by the practice bank, JEE and cbse-12, so
+RISE"* and the probe is green.
+**RECURRED 2026-09-22**, on CBSE 2024 Physics 55/2/1 Q4: *"produces the option a factor of ten
+away"* was flagged `SOLN_A!=KEY_C`. That is the `option a <text>` phrasing this entry already lists,
+hit again in a fresh paper — so the class is not a one-off and the wording rule above is not enough
+on its own to prevent it. Reworded again. Each recurrence costs a re-apply and a re-probe cycle,
+which is the running cost the proposed fix would remove.
+ `auditRow` is SHARED by the practice bank, JEE and cbse-12, so
 tightening it changes results across three corpora and wants its own pass.
 
 **Proposed fix, for that pass:** reject a BARE (unparenthesised) lowercase letter that is followed by
