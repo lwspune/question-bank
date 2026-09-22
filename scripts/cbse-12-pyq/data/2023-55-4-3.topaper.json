@@ -1,0 +1,209 @@
+{
+  "paper": "55/4/3",
+  "year": 2023,
+  "paperId": "2023-55-4-3",
+  "markingScheme": "out/2023-55-4-3/ms/p00.png … p17.png",
+  "rows": [
+    {
+      "hash": "780fcf39064fa93e6f0208c921c05fadb3090d4f0adfe8ca0433ff1b3b6f4373",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A light of frequency \\(v\\) is incident on a metal surface whose work function is \\(\\mathrm{W_0}\\). The kinetic energy of emitted electron is K. If the frequency of the incident light is doubled then the kinetic energy of emitted electron will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "2K"
+        },
+        {
+          "label": "B",
+          "text": "more than 2K"
+        },
+        {
+          "label": "C",
+          "text": "between K and 2K"
+        },
+        {
+          "label": "D",
+          "text": "less than K"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): more than 2K.**\n\n**Start from Einstein's equation.** At the original frequency,\n\n\\(K = h\\nu - W_0\\)\n\n**Double the frequency.** The photon energy doubles, but the work function does **not** — it is a property of the metal, not of the light:\n\n\\(K' = h(2\\nu) - W_0 = 2h\\nu - W_0\\)\n\n**Now express \\(h\\nu\\) in terms of \\(K\\).** From the first equation \\(h\\nu = K + W_0\\), so\n\n\\(K' = 2(K + W_0) - W_0 = 2K + W_0\\)\n\nSince \\(W_0 > 0\\),\n\n\\(K' = 2K + W_0 \\;>\\; 2K\\)\n\n**Why the intuitive answer 2K is wrong.** It assumes the whole photon energy becomes kinetic energy, so that doubling one doubles the other. In fact a **fixed toll** \\(W_0\\) is deducted every time, whatever the photon brings. Doubling the payment while the toll stays the same leaves *more* than twice the change.\n\n**A concrete case makes it obvious.** Take \\(h\\nu = 3\\) eV and \\(W_0 = 2\\) eV, so \\(K = 1\\) eV. Doubling the frequency gives \\(h\\nu = 6\\) eV and \\(K' = 4\\) eV — **four** times \\(K\\), not twice. The excess over \\(2K\\) is exactly \\(W_0 = 2\\) eV, as the algebra says.\n\n**The limiting behaviour.** The smaller \\(W_0\\) is compared with \\(K\\), the closer \\(K'\\) gets to \\(2K\\); a hypothetical metal with \\(W_0 = 0\\) would give exactly \\(2K\\). So \\(2K\\) is a floor that is approached but never reached, which is precisely why the option reads \"more than\" rather than \"equal to\"."
+    },
+    {
+      "hash": "336ab6c82e91f0a72eea95a28082c1e916c5468a64a622ef63287bd8d1faf0da",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "A particle of mass m and charge \\(-q\\) is moving with a uniform speed v in a circle of radius r, with another charge q at the centre of the circle. The value of r is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{4\\pi\\,\\varepsilon_0\\,m}\\left(\\dfrac{q}{v}\\right)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{4\\pi\\,\\varepsilon_0\\,m}\\left(\\dfrac{q}{v}\\right)^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{m}{4\\pi\\,\\varepsilon_0}\\left(\\dfrac{q}{v}\\right)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{m}{4\\pi\\,\\varepsilon_0}\\left(\\dfrac{q}{v}\\right)^2\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{1}{4\\pi\\varepsilon_0 m}\\left(\\dfrac{q}{v}\\right)^{2}\\).**\n\n**The dynamics.** The charge \\(-q\\) is attracted to the charge \\(+q\\) at the centre, and that attraction is exactly what supplies the centripetal force for the circular path:\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q \\times q}{r^{2}} = \\dfrac{mv^{2}}{r}\\)\n\n**Solving for \\(r\\).** Multiply both sides by \\(r^{2}\\) and divide by \\(mv^{2}\\):\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q^{2}}{1} = mv^{2}r\\)\n\n\\(r = \\dfrac{q^{2}}{4\\pi\\varepsilon_0 mv^{2}} = \\dfrac{1}{4\\pi\\varepsilon_0 m}\\left(\\dfrac{q}{v}\\right)^{2}\\)\n\n**One power of \\(r\\) cancels**, which is why the answer contains \\(r\\) to the first power rather than a square root — a step worth watching, since it is where the algebra usually goes wrong.\n\n**Checking the options by structure rather than by algebra.** Every option has the form \\(\\text{constant} \\times (q/v)^{n}\\), and two things separate them.\n\n*The exponent.* \\(q\\) enters twice — once for each charge — and \\(v\\) enters squared through the kinetic term. So the bracket must be **squared**, which eliminates the two linear options at once.\n\n*Where \\(m\\) sits.* A **heavier** particle needs more centripetal force for the same radius and speed, so at fixed force it must orbit **closer**: \\(r\\) falls as \\(m\\) rises, and \\(m\\) belongs in the **denominator**. The options with \\(m\\) on top have it exactly backwards.\n\n**A dimensional check** settles it without any physics at all. Only \\(\\dfrac{q^{2}}{4\\pi\\varepsilon_0 mv^{2}}\\) has the dimensions of length: \\(q^{2}/4\\pi\\varepsilon_0\\) is an energy times a length, and dividing by \\(mv^{2}\\) — an energy — leaves a length."
+    },
+    {
+      "hash": "70d1afd5da3582d31b3ea2161aba51ead032955ae0d8ef284f55ec4f53e40338",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which one of the following has relative magnetic permeability between 0 and 1 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aluminium"
+        },
+        {
+          "label": "B",
+          "text": "Alnico"
+        },
+        {
+          "label": "C",
+          "text": "Water"
+        },
+        {
+          "label": "D",
+          "text": "Sodium"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): water.**\n\n**What \\(0 < \\mu_r < 1\\) means.** Relative permeability and susceptibility are linked by\n\n\\(\\mu_r = 1 + \\chi_m\\)\n\nso \\(\\mu_r\\) lying **between 0 and 1** requires \\(\\chi_m\\) to be **negative** (and small in magnitude). A negative susceptibility means the material magnetises *opposite* to the applied field — it is **diamagnetic**.\n\n**Classifying the four.**\n\n| Material | Class | \\(\\mu_r\\) |\n|---|---|---|\n| **Water** | **Diamagnetic** | slightly **less than 1** \\((\\approx 0{\\cdot}999991)\\) |\n| Aluminium | Paramagnetic | slightly more than 1 |\n| Sodium | Paramagnetic | slightly more than 1 |\n| Alnico | Ferromagnetic | very much greater than 1 (thousands) |\n\n**Why only diamagnets qualify.** Paramagnetic and ferromagnetic materials both have permanent atomic moments that align **with** the field, adding to it, so \\(\\chi_m > 0\\) and \\(\\mu_r > 1\\) for both. Only a material with **no net atomic moment** shows a pure diamagnetic response, in which an applied field induces — by Lenz's law at the atomic scale — a small moment opposing it.\n\nWater's molecules have all their electrons paired, so they have no permanent moment, and the induced opposing moment is all there is.\n\n**The visible signature.** A diamagnetic sample is **repelled** by a magnet and moves from a stronger field towards a weaker one — the reverse of every other magnetic material. Water's diamagnetism is strong enough to be demonstrated: a sufficiently powerful field can levitate a drop of water, or a live frog, which is mostly water.\n\nNote also the bound: \\(\\mu_r\\) can be less than 1 but never **negative** for an ordinary material, since that would require \\(\\chi_m < -1\\). Only a perfect superconductor reaches \\(\\chi_m = -1\\), giving \\(\\mu_r = 0\\) exactly — complete expulsion of the field."
+    },
+    {
+      "hash": "9cfaf044f580a4a33ab363425c29e8b371cd27df22c763b1897ae1da2ba3bf7a",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Name the electromagnetic waves also known as 'heat waves'.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Radio waves"
+        },
+        {
+          "label": "B",
+          "text": "Microwaves"
+        },
+        {
+          "label": "C",
+          "text": "X-rays"
+        },
+        {
+          "label": "D",
+          "text": "Infrared waves"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): infrared waves.**\n\n**Why they are called heat waves.** Infrared radiation lies just beyond the red end of the visible spectrum, with wavelengths from about \\(700\\) nm to \\(1\\) mm. Two facts earn it the name.\n\n*Every warm body emits it.* Thermal radiation from an object near room temperature peaks in the infrared, so anything warm is an infrared source — which is what makes thermal imaging and night vision possible.\n\n*It is readily absorbed and warms what absorbs it.* Infrared photons carry energies of a fraction of an electronvolt — comparable to the **vibrational** energy levels of molecules. Absorbing one sets the molecule vibrating rather than ionising it or exciting an electron, and molecular vibration *is* thermal energy. So infrared deposits its energy directly as heat.\n\n**Why the other three do not fit.**\n\n*Radio waves* carry far too little energy per photon to excite even molecular vibration; they pass through most matter without warming it.\n\n*Microwaves* do heat water strongly, by driving molecular **rotation** — a microwave oven exploits exactly that. But they are not the waves a warm body emits, and the historical name \"heat waves\" belongs to the infrared, discovered by Herschel in 1800 precisely by finding that a thermometer placed beyond the red end of a prism's spectrum rose fastest.\n\n*X-rays* sit at the opposite extreme, with photon energies of tens of thousands of electronvolts — enough to **ionise** atoms, which is what makes them penetrating and hazardous rather than merely warming.\n\n**The pattern worth carrying:** as photon energy rises across the spectrum, the effect on matter escalates from rotation (microwave) to vibration (infrared) to electronic excitation (visible and ultraviolet) to ionisation (X-ray and gamma). Infrared occupies the vibrational rung, and that is the rung we experience as heat."
+    },
+    {
+      "hash": "21b6231fc65426bd68c7c667365480e236a9b7a7817a364051b51ca953de89bd",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "Briefly describe the multi-step process involved in the generation of energy in the Sun.",
+      "solution": "**The Sun's energy comes from nuclear fusion**, not from chemical burning — no chemical process could sustain its output for billions of years. The overall effect is that **four hydrogen nuclei become one helium nucleus**, but this cannot happen in a single four-body collision, which would be vanishingly improbable. It proceeds instead through a **multi-step chain**, the proton-proton cycle.\n\n**Step 1 — two protons fuse to form deuterium.**\n\n\\(^{1}_{1}\\mathrm{H} + ^{1}_{1}\\mathrm{H} \\longrightarrow ^{2}_{1}\\mathrm{H} + e^{+} + \\nu + 0{\\cdot}42\\ \\mathrm{MeV}\\)\n\nOne proton converts to a neutron, emitting a **positron** and a **neutrino**. This is the slowest step by far — it requires a weak-interaction conversion, and an average proton in the Sun's core waits billions of years for it. That bottleneck is why the Sun burns slowly enough to have a long life.\n\n**Step 2 — the positron annihilates.**\n\n\\(e^{+} + e^{-} \\longrightarrow \\gamma + \\gamma + 1{\\cdot}02\\ \\mathrm{MeV}\\)\n\n**Step 3 — deuterium captures another proton to make light helium.**\n\n\\(^{2}_{1}\\mathrm{H} + ^{1}_{1}\\mathrm{H} \\longrightarrow ^{3}_{2}\\mathrm{He} + \\gamma + 5{\\cdot}49\\ \\mathrm{MeV}\\)\n\n**Step 4 — two such helium-3 nuclei combine.**\n\n\\(^{3}_{2}\\mathrm{He} + ^{3}_{2}\\mathrm{He} \\longrightarrow ^{4}_{2}\\mathrm{He} + ^{1}_{1}\\mathrm{H} + ^{1}_{1}\\mathrm{H} + 12{\\cdot}86\\ \\mathrm{MeV}\\)\n\nThe two protons returned here go back into the cycle, so the chain is self-sustaining.\n\n**The net result**, adding the whole cycle (steps 1-3 must occur twice to supply step 4):\n\n\\(4\\,^{1}_{1}\\mathrm{H} + 2e^{-} \\longrightarrow ^{4}_{2}\\mathrm{He} + 2\\nu + 6\\gamma + 26{\\cdot}7\\ \\mathrm{MeV}\\)\n\n**Where the energy comes from.** The helium nucleus is **lighter** than the four protons that made it, by about \\(0{\\cdot}7\\%\\) of their mass. That missing mass appears as energy through \\(E = \\Delta m c^{2}\\) — about \\(26{\\cdot}7\\) MeV per helium nucleus formed. In binding-energy terms, the products sit higher on the binding-energy-per-nucleon curve than the reactants, which is the general condition for any fusion reaction to release energy.\n\n**Why it needs the Sun's core.** Two protons repel one another electrostatically and must be brought within about \\(10^{-15}\\) m for the short-ranged nuclear force to take over. That demands temperatures of order \\(1{\\cdot}5 \\times 10^{7}\\) K, which is why fusion happens only in the core and not throughout the star."
+    },
+    {
+      "hash": "0a332e61fe6e906e766657c37edd510b40e9cc8503128603fa6ace381f83bff2",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "Use Gauss's law to obtain the expression for electric field due to a thin infinitely long straight uniformly charged wire.",
+      "solution": "**The field of a thin infinitely long uniformly charged wire.**\n\nLet the wire carry a uniform **linear charge density** \\(\\lambda\\) (charge per unit length), and let P be a point at perpendicular distance \\(r\\) from it.\n\n**What symmetry gives us before any calculation.** The wire is infinite and uniform, so sliding along it changes nothing, and rotating about it changes nothing. The field can therefore only point **radially outward** (for positive \\(\\lambda\\)), perpendicular to the wire, and its magnitude can depend only on \\(r\\).\n\nThat is the entire reason Gauss's law is usable here: without the symmetry, \\(E\\) could not be taken outside the integral.\n\n**Choosing the Gaussian surface.** Take a **coaxial cylinder** of radius \\(r\\) and length \\(l\\), with the wire along its axis and P on its curved surface.\n\n**Evaluating the flux, face by face.**\n\n*The two flat end-caps.* Here \\(\\vec{E}\\) is **parallel** to the surface (radial, while the cap's normal points along the wire), so \\(\\vec{E}\\cdot d\\vec{S} = 0\\) and they contribute **nothing**. This is why a cylinder is the right choice.\n\n*The curved surface.* Here \\(\\vec{E}\\) is everywhere **parallel to the outward normal** and constant in magnitude, so\n\n\\(\\phi = E \\times (\\text{curved area}) = E(2\\pi r l)\\)\n\n**Applying Gauss's law.** The charge enclosed is that on the length \\(l\\) of wire inside, \\(q = \\lambda l\\):\n\n\\(\\phi = \\dfrac{q}{\\varepsilon_0} \\qquad\\Longrightarrow\\qquad E(2\\pi r l) = \\dfrac{\\lambda l}{\\varepsilon_0}\\)\n\nThe length \\(l\\) cancels — as it must, since the answer cannot depend on how long a cylinder we chose:\n\n\\(\\boxed{\\ E = \\dfrac{\\lambda}{2\\pi\\varepsilon_0 r}\\ }\\)\n\ndirected radially **outward** if \\(\\lambda\\) is positive, inward if negative.\n\n**The \\(1/r\\) is the result worth carrying.** A *point* charge gives \\(1/r^{2}\\); an infinite *line* gives \\(1/r\\); an infinite *plane* gives a field independent of distance. The exponent falls by one each time the source gains a dimension, because the field lines spread over a surface of one fewer dimension — spherical, then cylindrical, then not at all.\n\n**A practical caution.** No real wire is infinite, so this holds only close to a long wire — close compared with its length, and far from its ends."
+    },
+    {
+      "hash": "9ea7c25648c38ea567924ab66ccf7654616173500befc5cf6669da3c093469e7",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A cell of emf E and internal resistance r is connected to a variable resistance R. Draw plots showing the variation of (a) terminal voltage V with R, and (b) V with current I, in the circuit.",
+      "solution": "**The two relations to plot.** For a cell of emf \\(E\\) and internal resistance \\(r\\) driving a variable load \\(R\\):\n\n\\(I = \\dfrac{E}{R + r} \\qquad\\text{and}\\qquad V = E - Ir = \\dfrac{ER}{R + r}\\)\n\nThe two plots look completely different, and the reason is that one is a **hyperbola-like saturation curve** and the other a **straight line** — which is the point of asking for both.\n\n**(a) \\(V\\) against \\(R\\).**\n\n\\(V = \\dfrac{ER}{R + r} = \\dfrac{E}{1 + r/R}\\)\n\nDraw a curve starting at the **origin**, rising steeply at first, then bending over and approaching the horizontal line \\(V = E\\) **asymptotically** — never quite reaching it.\n\nThree points fix the shape:\n\n- \\(R = 0\\) (short circuit): \\(V = 0\\). The whole emf is dropped inside the cell.\n- \\(R = r\\): \\(V = E/2\\), exactly half the emf. A useful landmark.\n- \\(R \\to \\infty\\) (open circuit): \\(V \\to E\\). This is why a high-resistance voltmeter reads essentially the emf.\n\nThe curve **never touches** \\(V = E\\), because some current always flows and some voltage is always lost internally.\n\n**(b) \\(V\\) against \\(I\\).**\n\n\\(V = E - Ir\\)\n\nThis is a **straight line of negative slope**, and its three features each carry meaning:\n\n- **Intercept on the \\(V\\)-axis** \\(= E\\), at \\(I = 0\\) — the open-circuit emf.\n- **Slope** \\(= -r\\), so the steeper the line, the larger the internal resistance. Measuring this slope is the standard laboratory method for finding \\(r\\).\n- **Intercept on the \\(I\\)-axis** \\(= E/r\\), the short-circuit current, the largest the cell can deliver.\n\n**Why one is curved and the other straight.** \\(V\\) depends on \\(R\\) through a *ratio*, which saturates; it depends on \\(I\\) through a *subtraction*, which is linear. The same physics, plotted against two different variables, produces two quite different-looking graphs — and only the straight one lets you read off both \\(E\\) and \\(r\\) directly."
+    },
+    {
+      "hash": "d7e13cf2c9fa9e1195daab1cac4b88e3617908eefc53855168dab4e5acabea02",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A particle of charge q and mass m starts moving with uniform velocity \\(v_0\\,\\hat{i}\\). Specify the direction of magnetic field which should be set up in the region so that the particle moves (a) straight undeviated, and (b) in a circle. Justify your answers.",
+      "solution": "**The governing equation.** The magnetic force on a moving charge is\n\n\\(\\vec{F} = q(\\vec{v} \\times \\vec{B})\\)\n\nso its magnitude is \\(qvB\\sin\\theta\\), where \\(\\theta\\) is the angle between \\(\\vec{v}\\) and \\(\\vec{B}\\). Everything in this question follows from that single \\(\\sin\\theta\\).\n\n**(a) For the particle to move straight and undeviated.**\n\nSet the force to zero. Since \\(q\\), \\(v\\) and \\(B\\) are all non-zero, that requires \\(\\sin\\theta = 0\\):\n\n\\(\\theta = 0^\\circ \\quad\\text{or}\\quad \\theta = 180^\\circ\\)\n\nSo the field must be **parallel or antiparallel to the velocity** — along \\(\\pm\\hat{i}\\), since the particle moves with \\(v_0\\hat{i}\\).\n\n*Justification.* A cross product vanishes when its two factors are collinear. With no force the particle obeys Newton's first law and continues in a straight line at constant speed, exactly as if no field were present.\n\nThis is worth stating carefully: the field is *there*, and the particle is *in* it, yet nothing happens. A charge moving along a field line is completely unaffected by it.\n\n**(b) For the particle to move in a circle.**\n\nNow the force must be as large as possible *and always perpendicular to the velocity*, which requires\n\n\\(\\theta = 90^\\circ\\)\n\nso the field must be **perpendicular to the velocity** — anywhere in the \\(y\\)-\\(z\\) plane, that is along \\(\\pm\\hat{j}\\), \\(\\pm\\hat{k}\\), or any direction between them.\n\n*Justification.* Because \\(\\vec{F} = q\\vec{v} \\times \\vec{B}\\) is perpendicular to \\(\\vec{v}\\), the force can change the **direction** of the velocity but never its **magnitude** — the magnetic force does no work. A force of constant magnitude always at right angles to the motion is precisely the definition of uniform circular motion, and it supplies the centripetal force:\n\n\\(qvB = \\dfrac{mv^{2}}{R} \\qquad\\Longrightarrow\\qquad R = \\dfrac{mv}{qB}\\)\n\n**What happens at intermediate angles.** For any \\(\\theta\\) strictly between \\(0^\\circ\\) and \\(90^\\circ\\) the velocity splits into a component along \\(\\vec{B}\\), which is unaffected, and a component perpendicular to it, which circles. The result is a **helix** — circular motion drifting steadily along the field direction. The two cases above are simply the two limits of that picture: a helix of zero radius (a straight line) and a helix of zero pitch (a circle)."
+    },
+    {
+      "hash": "f0913b99a61053c9b0c7dfcb88fac6ed03b0139697be2917b490e4b64cb089ea",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Force",
+      "stem": "Draw a plot showing the variation of potential energy of two nucleons as a function of distance between them. Identify the regions in which the force between the nucleons is (i) attractive, and (ii) repulsive. Justify your answers.",
+      "solution": "**The plot.** Draw potential energy \\(U\\) on the vertical axis against the separation \\(r\\) of two nucleons on the horizontal.\n\nStarting at very small \\(r\\), the curve comes down from **large positive** values, crosses zero at about \\(r = 0{\\cdot}8\\ \\mathrm{fm}\\), dips to a **minimum of about \\(-100\\) MeV** at \\(r_0 \\approx 0{\\cdot}8\\) to \\(1\\ \\mathrm{fm}\\), then rises again and flattens rapidly towards **zero** beyond a few femtometres.\n\nMark \\(r_0\\), the separation at the minimum, on the axis.\n\n**(i) The force is attractive for \\(r > r_0\\).**\n\n**(ii) The force is repulsive for \\(r < r_0\\).**\n\n**Justification — from the slope, which is the only rigorous route.** Force and potential energy are related by\n\n\\(F = -\\dfrac{dU}{dr}\\)\n\nso the sign of the force is the **opposite** of the sign of the slope.\n\n*For \\(r > r_0\\):* the curve is **rising**, so \\(dU/dr > 0\\), so \\(F < 0\\). A negative \\(F\\) points towards **decreasing** \\(r\\) — the nucleons are pulled **together**. **Attractive.**\n\n*For \\(r < r_0\\):* the curve is **falling steeply**, so \\(dU/dr < 0\\), so \\(F > 0\\). A positive \\(F\\) points towards **increasing** \\(r\\) — the nucleons are pushed **apart**. **Repulsive.**\n\n*At \\(r = r_0\\):* the slope is zero, so the force is zero. This is the **equilibrium separation**, and because it is a *minimum* rather than a maximum, the equilibrium is **stable** — displace the nucleons either way and the force pushes them back.\n\n**A shortcut that agrees.** A system always tends towards lower potential energy, so the force at any point acts *downhill* on the curve. To the right of the minimum, downhill means moving left (together); to the left of it, downhill means moving right (apart). Reading the curve that way gives the same answer without differentiating.\n\n**What the shape tells us about nuclear matter.** The **hard repulsive core** at small \\(r\\) is why a nucleus cannot be squeezed: nucleons resist being pushed closer than about \\(0{\\cdot}8\\) fm, which is exactly why nuclear density comes out the same for every nucleus. And the rapid flattening beyond a few femtometres is the **short range** of the nuclear force — a nucleon binds only to its immediate neighbours, which is what makes binding energy proportional to \\(A\\) and gives the binding-energy curve its plateau."
+    },
+    {
+      "hash": "8b32c2c93ea9d71140658706ad60cf9c31b7b35902a9b02ecb92b66a15d02354",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A current carrying circular loop and a straight wire bent partly in the form of a semicircle are placed as shown in the figure. Find the magnitude and direction of net magnetic field at point O.",
+      "figureNote": "REQUIRED — every number the answer needs is in the drawing and the stem states none of them. Described: a small circle centred on a point labelled O carrying a current labelled 1 A, with a radius labelled 4 cm; concentric with it a larger semicircular bend of a long straight wire carrying a current labelled 2 A, with a radius labelled 12 cm, its two straight ends running away to the left and right along a dashed horizontal line through O. Withheld: the direction of each of the two current arrows and of the arrowheads on the straight ends, which is exactly what fixes whether the two contributions add or subtract and what the net direction is. Page idx 14.",
+      "imageAttached": true,
+      "solution": "**Reading the figure.** Three conductors meet at O, and it pays to take them in order of difficulty.\n\n- A **full circle** of radius \\(r_1 = 4\\ \\mathrm{cm} = 4 \\times 10^{-2}\\) m carrying \\(I_1 = 1\\) A, centred on O. Its arrow runs **clockwise**.\n- A **semicircle** of radius \\(r_2 = 12\\ \\mathrm{cm} = 12 \\times 10^{-2}\\) m carrying \\(I_2 = 2\\) A, also centred on O. Its arrow runs **anticlockwise**.\n- Two **straight segments** continuing from the ends of the semicircle, running away along the line through O.\n\n**The straight parts contribute nothing, and that is the first thing to notice.** Both lie along the *same straight line as O itself*. For any element of such a wire, \\(d\\vec{l}\\) and the vector \\(\\vec{r}\\) to O are collinear, so \\(d\\vec{l} \\times \\vec{r} = 0\\) and the Biot-Savart contribution vanishes element by element. Their currents are given only to see whether you will try to use them.\n\n**Field of the inner circle.**\n\n\\(B_1 = \\dfrac{\\mu_0 I_1}{2r_1} = \\dfrac{4\\pi \\times 10^{-7} \\times 1}{2 \\times 4 \\times 10^{-2}} = \\dfrac{\\pi}{2} \\times 10^{-5}\\ \\mathrm{T}\\)\n\nThe current is clockwise, so by the right-hand rule this field points **into the page**.\n\n**Field of the semicircle.** A semicircle gives exactly **half** what a full loop of the same radius and current would:\n\n\\(B_2 = \\dfrac{1}{2} \\times \\dfrac{\\mu_0 I_2}{2r_2} = \\dfrac{\\mu_0 I_2}{4r_2} = \\dfrac{4\\pi \\times 10^{-7} \\times 2}{4 \\times 12 \\times 10^{-2}} = \\dfrac{\\pi}{6} \\times 10^{-5}\\ \\mathrm{T}\\)\n\nIts current is anticlockwise, so this field points **out of the page**.\n\n**The net field.** The two are antiparallel, so they **subtract**:\n\n\\(B_{\\text{net}} = B_1 - B_2 = \\left(\\dfrac{\\pi}{2} - \\dfrac{\\pi}{6}\\right) \\times 10^{-5} = \\dfrac{\\pi}{3} \\times 10^{-5}\\)\n\n\\(B_{\\text{net}} \\approx 1{\\cdot}05 \\times 10^{-5}\\ \\mathrm{T}\\), directed **into the page**, since \\(B_1 > B_2\\).\n\n**Why the smaller loop wins despite carrying the smaller current.** \\(B\\) goes as \\(I/r\\), and the inner loop has one third the radius against half the current — and it is a *whole* circle against a *half*. Those three factors multiply to \\(3 \\times \\tfrac{1}{2} \\times 2 = 3\\), which is exactly the ratio \\(B_1/B_2\\). Proximity beats current here, as it usually does in magnetostatics."
+    },
+    {
+      "hash": "910cf2d07660c4f9f3e3086449b312b6434f14500c2b29961e29dbde7ac0d215",
+      "ref": "Q30",
+      "questionNumber": "30",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Motional Electromotive Force",
+      "stem": "A rectangular conductor MNPQ with a movable arm MN (resistance r) is kept in a uniform magnetic field as shown in the figure. Resistance of arms MQ, QP and PN are negligible. Obtain the expression for the :\n(a) current induced in the loop specifying its direction, and\n(b) power required to move the arm.",
+      "figureNote": "REQUIRED — the stem says 'as shown in the figure', names no field direction and no direction of motion, yet asks for the direction of the induced current. Described: a rectangular loop whose corners are labelled Q at the top left, P at the bottom left, M at the top right and N at the bottom right, the vertical arm MN drawn heavier as the movable arm, an arrow beside it labelled \\(\\vec{v}\\), the whole drawing set in a uniform field region rendered as a regular grid of identical symbols. Withheld: the sense of the field those symbols denote and the direction the velocity arrow points, which together decide the direction of the induced current. Page idx 18.",
+      "imageAttached": true,
+      "solution": "**Reading the figure.** The field is directed **into the page** (shown by crosses). The loop MNPQ has Q at the top left, P at the bottom left, M at the top right and N at the bottom right; the movable arm **MN** is the right-hand vertical arm, of length \\(l\\) and resistance \\(r\\), and it moves to the **right** with velocity \\(v\\). The other three arms have negligible resistance, so \\(r\\) is the whole circuit's resistance.\n\n**(a) The induced current and its direction.**\n\n*The flux.* With the arm a distance \\(x\\) from QP, the loop's area is \\(lx\\) and the flux is\n\n\\(\\phi_B = Blx\\)\n\n*The emf.* Only \\(x\\) changes with time, so\n\n\\(\\varepsilon = -\\dfrac{d\\phi_B}{dt} = -Bl\\dfrac{dx}{dt} \\qquad\\Longrightarrow\\qquad |\\varepsilon| = Blv\\)\n\n*The current.*\n\n\\(\\boxed{\\ I = \\dfrac{|\\varepsilon|}{r} = \\dfrac{Blv}{r}\\ }\\)\n\n*The direction.* As MN moves right the enclosed area **grows**, so the inward flux **increases**. By Lenz's law the induced current opposes that increase, and therefore flows so as to produce flux **out of** the page inside the loop — that is, **anticlockwise**, along **N → M → Q → P**.\n\n**A second route to the same direction, which is worth having as a check.** Consider a positive carrier inside the moving rod. It shares the rod's velocity \\(\\vec{v}\\) (to the right) and sits in \\(\\vec{B}\\) (into the page), so it feels\n\n\\(\\vec{F} = q\\vec{v} \\times \\vec{B}\\)\n\nTaking \\(\\vec{v} = v\\hat{i}\\) and \\(\\vec{B} = -B\\hat{k}\\), the cross product gives \\(+qvB\\hat{j}\\) — an **upward** force. Positive charge therefore accumulates at **M**, the top of the rod, so inside the rod the conventional current runs **N to M**, and the external circuit carries it M → Q → P → N. The same anticlockwise loop, obtained without mentioning flux.\n\n**(b) The power required to move the arm.**\n\nOnce current \\(I\\) flows, the rod carrying it in the field experiences a force \\(F = BIl\\), and by Lenz's law that force **opposes** the motion. To keep the arm moving at constant \\(v\\), an external agent must push with an equal force, doing work at the rate\n\n\\(P = Fv = BIlv = B\\left(\\dfrac{Blv}{r}\\right)lv\\)\n\n\\(\\boxed{\\ P = \\dfrac{B^{2}l^{2}v^{2}}{r}\\ }\\)\n\n**The energy audit, which is the real content of this part.** The power dissipated as heat in the resistance is\n\n\\(P = I^{2}r = \\left(\\dfrac{Blv}{r}\\right)^{2}r = \\dfrac{B^{2}l^{2}v^{2}}{r}\\)\n\n**The same expression**, and necessarily so: the arm moves at constant speed, so its kinetic energy never changes, and every joule the agent supplies must end up as heat. Nothing is stored and nothing created.\n\nThat equality is also **why Lenz's law must take the sign it does**. Were the induced force to *assist* the motion, the arm would accelerate while simultaneously generating heat — energy from nowhere. The opposing sign is not an empirical rule added afterwards; it is forced by conservation of energy.\n\n**Note the \\(v^{2}\\).** Doubling the speed doubles the emf, doubles the current, doubles the opposing force — and therefore **quadruples** the power needed. Moving such an arm quickly is disproportionately expensive, which is the principle behind eddy-current braking."
+    }
+  ]
+}
