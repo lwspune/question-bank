@@ -1,0 +1,254 @@
+{
+  "paper": "55/4/2",
+  "year": 2025,
+  "paperId": "2025-55-4-2",
+  "markingScheme": "out/2025-55-4-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "d86fe98280f49b00f59eaa71d2ee12acede3bdc10fc9a43a0edc58ae6e531422",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "An electric dipole of dipole moment \\(1{\\cdot}0 \\times 10^{-12}\\) Cm lies along x-axis. An electric field of magnitude \\(2{\\cdot}0 \\times 10^{4}\\ \\mathrm{NC^{-1}}\\) is switched on at an instant in the region. The unit vector along the electric field is \\(\\dfrac{\\sqrt{3}}{2}\\hat{i} + \\dfrac{1}{2}\\hat{j}\\). The magnitude of the torque acting on the dipole at that instant is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}5 \\times 10^{-6}\\) Nm"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}0 \\times 10^{-8}\\) Nm"
+        },
+        {
+          "label": "C",
+          "text": "\\(2{\\cdot}0 \\times 10^{-8}\\) Nm"
+        },
+        {
+          "label": "D",
+          "text": "\\(4{\\cdot}0 \\times 10^{-8}\\) Nm"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(1{\\cdot}0 \\times 10^{-8}\\) Nm.**\n\n**The torque on a dipole in a uniform field.**\n\n\\(\\vec{\\tau} = \\vec{p}\\times\\vec{E} \\qquad\\Longrightarrow\\qquad \\tau = pE\\sin\\theta\\)\n\nwhere \\(\\theta\\) is the angle between \\(\\vec{p}\\) and \\(\\vec{E}\\). So the only real work is **finding that angle**.\n\n**Reading the angle off the unit vector.**\n\n\\(\\hat{E} = \\dfrac{\\sqrt{3}}{2}\\hat{i} + \\dfrac{1}{2}\\hat{j}\\)\n\n*(A check that it is genuinely a unit vector: \\(\\left(\\sqrt{3}/2\\right)^{2} + \\left(1/2\\right)^{2} = \\tfrac{3}{4} + \\tfrac{1}{4} = 1\\ \\checkmark\\))*\n\nIts components are \\(\\left(\\cos\\theta, \\sin\\theta\\right)\\) with\n\n\\(\\cos\\theta = \\dfrac{\\sqrt{3}}{2}, \\qquad \\sin\\theta = \\dfrac{1}{2} \\qquad\\Longrightarrow\\qquad \\theta = 30^\\circ\\)\n\nand since the dipole lies along the \\(x\\)-axis, \\(30^\\circ\\) is exactly the angle between \\(\\vec{p}\\) and \\(\\vec{E}\\).\n\n**Substituting.**\n\n\\(\\tau = \\left(1{\\cdot}0 \\times 10^{-12}\\right)\\left(2{\\cdot}0 \\times 10^{4}\\right)\\sin 30^\\circ = \\left(2{\\cdot}0 \\times 10^{-8}\\right) \\times \\dfrac{1}{2}\\)\n\n\\(\\boxed{\\ \\tau = 1{\\cdot}0 \\times 10^{-8}\\ \\mathrm{Nm}\\ }\\)\n\n**Option (C) is the answer with \\(\\sin\\theta\\) left out** — that is, \\(pE\\) alone, which would be the torque only if the dipole were perpendicular to the field. Option (D) doubles it, which is what \\(\\sin\\theta = 2\\) would give and is impossible. The whole question is whether the \\(30^\\circ\\) is spotted and its sine used.\n\n**Note which component supplies the torque.** It is the **\\(\\hat{j}\\)** component of \\(\\vec{E}\\), the one **perpendicular** to the dipole, that does the turning; the \\(\\hat{i}\\) component is parallel to \\(\\vec{p}\\) and exerts no torque at all. That is why the answer contains the \\(\\tfrac{1}{2}\\) and not the \\(\\sqrt{3}/2\\) — a useful cross-check on which trigonometric function belongs.\n\n**Why the word \"at that instant\" appears.** A free dipole would immediately begin to rotate towards alignment, and as \\(\\theta\\) shrinks so does the torque, reaching zero at \\(\\theta = 0\\). The value computed is the torque at the moment the field is switched on, when the dipole is still along \\(x\\).\n\n**And why there is no net FORCE.** The field is uniform, so the forces \\(+q\\vec{E}\\) and \\(-q\\vec{E}\\) on the two ends are equal and opposite — they form a pure **couple**. The dipole turns on the spot without being dragged anywhere, which is what makes a dipole in a uniform field the cleanest case in electrostatics."
+    },
+    {
+      "hash": "9a166e7ed3d1f8aae3e26bd90c162ee39df8f7d1c2a0266be9f433ed0378d9aa",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "When the switch of the circuit is turned on, the filament of the bulb glows instantaneously because :",
+      "options": [
+        {
+          "label": "A",
+          "text": "the electrons coming from the power source move fast through the initially empty filament."
+        },
+        {
+          "label": "B",
+          "text": "the filament may be old having low resistance."
+        },
+        {
+          "label": "C",
+          "text": "electric field is established instantaneously across the filament which pushes the electrons."
+        },
+        {
+          "label": "D",
+          "text": "free electrons in the filament travel with the speed of light."
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): an electric field is established almost instantaneously across the filament, which pushes the electrons.**\n\n**The apparent puzzle.** Electrons in a metal drift extraordinarily slowly — at around \\(10^{-4}\\) m/s, a fraction of a millimetre per second. At that rate an electron leaving the switch would take **hours** to reach the bulb. Yet the bulb lights the instant the switch closes.\n\n**The resolution: nothing has to travel from the switch to the bulb.**\n\nWhen the circuit is completed, the **electric field** propagates along the conductor at a speed close to that of light — of order \\(10^{8}\\) m/s. Within nanoseconds a field is established throughout the whole circuit, including the filament.\n\n**That field acts on the electrons ALREADY IN the filament**, which have been sitting there all along. They all begin drifting at once, everywhere in the circuit simultaneously, and a current flows through the filament immediately. The filament heats, and it glows.\n\n**The analogy that makes it concrete.** A long pipe already full of water: open the tap and water flows from the far end at once, not after the new water has travelled the length of the pipe. The **pressure** travels fast; the water itself moves slowly. Here the field is the pressure and the electrons are the water.\n\n**Why the other three fail.**\n\n**(A)** claims electrons come from the power source through an \"initially empty\" filament. The filament is a **metal**, crammed with some \\(10^{28}\\) free electrons per cubic metre; it is never empty, and no electron needs to arrive from anywhere.\n\n**(B)** blames a low resistance from age. A **lower** resistance would make it glow *brighter*, not sooner — and in fact a filament's resistance **rises** as it ages and thins. This confuses brightness with delay.\n\n**(D)** says the electrons travel at the speed of light. They emphatically do not: their **drift** speed is \\(\\sim 10^{-4}\\) m/s and even their random thermal speed is only \\(\\sim 10^{5}\\) m/s. What moves near \\(c\\) is the **field**, not the charge.\n\n**The distinction worth carrying away.** Three quite different speeds live in the same wire — the **drift** speed \\(\\left(10^{-4}\\ \\mathrm{m/s}\\right)\\), the random **thermal** speed \\(\\left(10^{5}\\ \\mathrm{m/s}\\right)\\) and the speed at which the **signal**, meaning the field, propagates \\(\\left(\\sim 10^{8}\\ \\mathrm{m/s}\\right)\\). Almost every puzzle about \"how fast is electricity\" dissolves once these are kept apart."
+    },
+    {
+      "hash": "e25a1d33c9960b0dafcd9cb92546de5b63f92fe713bd74f86a8f7a75ac26448b",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A particle with charge q moving with velocity \\(\\vec{v} = v_0\\hat{i}\\) enters a region with magnetic field \\(\\vec{B} = B_1\\hat{j} + B_2\\hat{k}\\). The magnitude of force experienced by the particle is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(qv_0\\,(B_1 + B_2)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(q\\sqrt{v_0\\,(B_1 + B_2)}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(q\\,v_0\\sqrt{(B_1^2 + B_2^2)}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(q\\sqrt{v_0\\,(B_1^2 + B_2^2)}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(qv_0\\sqrt{B_1^{2} + B_2^{2}}\\).**\n\n**The quickest route: notice that \\(\\vec{B}\\) has NO component along \\(\\vec{v}\\).**\n\nThe velocity is along \\(\\hat{i}\\), and\n\n\\(\\vec{B} = B_1\\hat{j} + B_2\\hat{k}\\)\n\ncontains no \\(\\hat{i}\\) term at all. So \\(\\vec{B}\\) is **entirely perpendicular** to \\(\\vec{v}\\), the angle between them is \\(90^\\circ\\), and\n\n\\(F = qvB\\sin 90^\\circ = qv_0\\left|\\vec{B}\\right| = qv_0\\sqrt{B_1^{2} + B_2^{2}}\\)\n\n\\(\\boxed{\\ F = qv_0\\sqrt{B_1^{2} + B_2^{2}}\\ }\\)\n\n**The same result by working the cross product out**, which also gives the direction:\n\n\\(\\vec{F} = q\\left(\\vec{v}\\times\\vec{B}\\right) = q\\left[v_0\\hat{i}\\times\\left(B_1\\hat{j} + B_2\\hat{k}\\right)\\right]\\)\n\nUsing \\(\\hat{i}\\times\\hat{j} = \\hat{k}\\) and \\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\):\n\n\\(\\vec{F} = qv_0\\left(B_1\\hat{k} - B_2\\hat{j}\\right)\\)\n\n\\(\\left|\\vec{F}\\right| = qv_0\\sqrt{B_1^{2} + B_2^{2}}\\ \\checkmark\\)\n\n**Why the components add in QUADRATURE, not directly.** \\(B_1\\) and \\(B_2\\) are components of one vector along **perpendicular** axes, so the field's magnitude is \\(\\sqrt{B_1^{2} + B_2^{2}}\\), never \\(B_1 + B_2\\). Option (A) makes exactly that error, and it is the one the question is built to catch.\n\n**Options (B) and (D) fail on DIMENSIONS**, without any physics. Both place \\(v_0\\) **inside** a square root together with the field, giving \\(\\sqrt{\\text{velocity} \\times \\text{field}}\\) — a quantity with no meaningful units, and certainly not newtons. Two of the four options can therefore be discarded by inspection.\n\n**A useful check on the direction.** The force \\(qv_0\\left(B_1\\hat{k} - B_2\\hat{j}\\right)\\) has no \\(\\hat{i}\\) component, so it is perpendicular to \\(\\vec{v}\\) — as a magnetic force always must be. It is also perpendicular to \\(\\vec{B}\\): their dot product is \\(qv_0\\left(B_1B_2 - B_2B_1\\right) = 0\\). Both checks are free and catch most cross-product slips.\n\n**What the particle will actually do.** With \\(\\vec{v}\\) entirely perpendicular to \\(\\vec{B}\\), the path is a **circle** in the plane perpendicular to \\(\\vec{B}\\), of radius \\(r = mv_0\\big/q\\sqrt{B_1^{2} + B_2^{2}}\\). Had \\(\\vec{B}\\) carried an \\(\\hat{i}\\) component, that part of the velocity would have been unaffected and the path would have been a helix instead."
+    },
+    {
+      "hash": "3b96f34c7aef977acfdb7ac9b19c01ab2d0d4f8ca8c44a0c4efe41e8e414a98f",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "The materials having negative magnetic susceptibility are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "diamagnetic"
+        },
+        {
+          "label": "B",
+          "text": "paramagnetic"
+        },
+        {
+          "label": "C",
+          "text": "ferromagnetic"
+        },
+        {
+          "label": "D",
+          "text": "non-magnetic"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): diamagnetic.**\n\n**What susceptibility measures.** The magnetic susceptibility \\(\\chi\\) relates the magnetisation a material acquires to the field applied:\n\n\\(\\vec{M} = \\chi\\vec{H}\\)\n\nA **negative** \\(\\chi\\) means the magnetisation points **opposite** to the applied field — the material magnetises *against* the field.\n\n**That is the defining property of a diamagnetic substance.** It has no permanent magnetic moment (all electrons paired), so when a field is applied the orbital motion of its electrons is perturbed to induce a moment **opposing** the field — Lenz's law acting at the atomic scale.\n\n**The three classes by susceptibility.**\n\n| Class | \\(\\chi\\) | Typical size | \\(\\mu_r = 1 + \\chi\\) |\n|---|---|---|---|\n| **Diamagnetic** | **NEGATIVE** | \\(-10^{-5}\\) | slightly **less** than 1 |\n| Paramagnetic | positive, small | \\(+10^{-5}\\) | slightly more than 1 |\n| Ferromagnetic | positive, **large** | \\(10^{3}\\) to \\(10^{5}\\) | very much greater than 1 |\n\n**The range is bounded below by \\(-1\\).** Since \\(\\mu_r = 1 + \\chi\\) cannot be negative, \\(\\chi \\ge -1\\); and \\(\\chi = -1\\) exactly would mean the material excludes the field **completely**, which is what a **superconductor** does. A superconductor is thus the perfect diamagnet, and the Meissner effect is diamagnetism taken to its limit.\n\n**Why option (D) is not a real answer.** \"Non-magnetic\" is not one of the three classes. **Every** substance responds to a magnetic field in one of the three ways above; what is loosely called non-magnetic simply means not ferromagnetic, and such a material is still either diamagnetic or paramagnetic.\n\n**The consequence of a negative \\(\\chi\\).** A diamagnetic sample is **repelled** by a magnet — pushed towards the weaker field — whereas paramagnetic and ferromagnetic materials are drawn in. Bismuth, copper, water, glass and most organic matter are diamagnetic; the effect is faint, but in a strong field it is unmistakable, and water's diamagnetism is enough to levitate a frog in \\(16\\) T.\n\n**And note that diamagnetism is universal.** The induced opposing moment arises in every substance. A material is *called* diamagnetic only when there is no permanent moment to swamp it — which is exactly the case when all the electrons are paired."
+    },
+    {
+      "hash": "0780b9df611534361318e0ba7866b8df800b410eed4b0dcf648d9a42eacb8753",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "When current in a coil changes at a steady rate from 8 A to 6 A in 4 ms, an emf of \\(1{\\cdot}5\\) V is induced in it. The value of self-inductance of the coil is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 mH"
+        },
+        {
+          "label": "B",
+          "text": "12 mH"
+        },
+        {
+          "label": "C",
+          "text": "3 mH"
+        },
+        {
+          "label": "D",
+          "text": "9 mH"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 3 mH.**\n\n**Self-induction.**\n\n\\(\\left|\\varepsilon\\right| = L\\left|\\dfrac{dI}{dt}\\right| \\qquad\\Longrightarrow\\qquad L = \\dfrac{\\left|\\varepsilon\\right|}{\\left|dI/dt\\right|}\\)\n\n**Compute the rate of change**, converting the milliseconds:\n\n\\(\\left|\\dfrac{dI}{dt}\\right| = \\dfrac{8 - 6}{4 \\times 10^{-3}} = \\dfrac{2}{4 \\times 10^{-3}} = 500\\ \\mathrm{A\\,s^{-1}}\\)\n\n**The \"ms\" is the whole arithmetic.** Reading \\(4\\) ms as \\(4\\) s would give \\(0{\\cdot}5\\) A/s and an inductance of \\(3\\) H — a thousand times too large, and a value no small coil could have.\n\n**Substituting.**\n\n\\(L = \\dfrac{1{\\cdot}5}{500} = 3 \\times 10^{-3}\\ \\mathrm{H}\\)\n\n\\(\\boxed{\\ L = 3\\ \\mathrm{mH}\\ }\\)\n\n**The word \"steadily\" matters.** It guarantees \\(dI/dt\\) is **constant** over the interval, so a single number describes the whole \\(4\\) ms and the induced emf is steady at \\(1{\\cdot}5\\) V throughout. Without it, \\(dI/dt\\) would be an instantaneous quantity and the question would have no unique answer.\n\n**The current DECREASES, but the answer does not care.** The change \\(8 \\to 6\\) A is a fall, so strictly \\(dI/dt = -500\\) A/s and the induced emf opposes the decrease — it acts to keep the current flowing. But inductance is a positive property of the coil, and the magnitudes are what is asked for. (That the emf opposes the *change*, not the current, is Lenz's law: here it tries to sustain the current, not to kill it.)\n\n**What self-inductance is, physically.** \\(L\\) measures how much flux the coil links **with its own** current, \\(N\\phi = LI\\). A coil with large \\(L\\) resists changes in its current strongly, which is why an inductor is called a **choke** — and why breaking a circuit containing one produces a sharp voltage spike and often a visible spark.\n\n**A sense of the value.** \\(3\\) mH is a very ordinary small inductor — a few hundred turns on a small core. Note how modest an emf it takes: \\(1{\\cdot}5\\) V, about a cell's worth, from a current change of just \\(2\\) A. But compress that same change into a **microsecond** instead of \\(4\\) ms and the emf would be \\(6000\\) V, which is exactly how an ignition coil works."
+    },
+    {
+      "hash": "a07abbd1ea5717010fe2362e53ebf3142cf100fde47dc765e15d45b2e7729c3d",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Displacement Current",
+      "stem": "The electric field in space between the plates of a parallel plate capacitor (each of area \\(2{\\cdot}5 \\times 10^{-3}\\ \\mathrm{m^2}\\)) is changing at the rate of \\(4 \\times 10^{6}\\ \\mathrm{Vm^{-1}s^{-1}}\\). The displacement current between the plates of the capacitor is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1{\\cdot}8 \\times 10^{-5}\\) A"
+        },
+        {
+          "label": "B",
+          "text": "\\(3{\\cdot}47 \\times 10^{-6}\\) A"
+        },
+        {
+          "label": "C",
+          "text": "\\(8{\\cdot}85 \\times 10^{-8}\\) A"
+        },
+        {
+          "label": "D",
+          "text": "\\(6{\\cdot}32 \\times 10^{-4}\\) A"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(8{\\cdot}85 \\times 10^{-8}\\) A.**\n\n**Maxwell's displacement current.**\n\n\\(i_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt}\\)\n\nWith a uniform field \\(E\\) over a plate area \\(A\\), the electric flux is \\(\\phi_E = EA\\), and since the area is fixed:\n\n\\(i_d = \\varepsilon_0 A\\dfrac{dE}{dt}\\)\n\n**Substituting**, with \\(\\varepsilon_0 = 8{\\cdot}85 \\times 10^{-12}\\ \\mathrm{C^{2}N^{-1}m^{-2}}\\):\n\n\\(i_d = \\left(8{\\cdot}85 \\times 10^{-12}\\right)\\left(2{\\cdot}5 \\times 10^{-3}\\right)\\left(4 \\times 10^{6}\\right)\\)\n\n**Take the two given numbers first**, since they multiply to a clean power of ten:\n\n\\(\\left(2{\\cdot}5 \\times 10^{-3}\\right)\\left(4 \\times 10^{6}\\right) = 1{\\cdot}0 \\times 10^{4}\\)\n\n\\(i_d = 8{\\cdot}85 \\times 10^{-12} \\times 1{\\cdot}0 \\times 10^{4}\\)\n\n\\(\\boxed{\\ i_d = 8{\\cdot}85 \\times 10^{-8}\\ \\mathrm{A}\\ }\\)\n\n**The mantissa is \\(\\varepsilon_0\\)'s own**, which is the signature of the right answer and a quick way to recognise it among the options — the rest of the calculation contributes only the exponent.\n\n**Why a \"current\" flows where no charge does.** Nothing crosses the gap between the plates: it is a vacuum or a dielectric, with no free carriers. What flows is the **consequence** of a changing electric field, which Maxwell showed produces a magnetic field exactly as a real current does. It is a current in its magnetic effect, not in its mechanism.\n\n**Where the term came from.** Ampere's law applied to a charging capacitor gives two different answers for the same loop, depending on whether the chosen surface cuts the **wire** (enclosing the conduction current) or passes **between the plates** (enclosing none). Adding \\(i_d\\) removes the contradiction, because between the plates\n\n\\(E = \\dfrac{q}{\\varepsilon_0 A} \\qquad\\Longrightarrow\\qquad i_d = \\varepsilon_0 A\\dfrac{dE}{dt} = \\dfrac{dq}{dt} = i_c\\)\n\n**The displacement current exactly equals the conduction current in the wires** — the \\(\\varepsilon_0\\) and the \\(A\\) cancel completely — so the total current is continuous all the way round the circuit.\n\n**And what it led to.** Because a changing electric field makes a magnetic field, and a changing magnetic field makes an electric one, the two can sustain each other with no charges present at all. That is the electromagnetic wave — and hence light — which is why this one extra term is arguably the most consequential addition in classical physics."
+    },
+    {
+      "hash": "0e79e370ec16c1efa79baa8a39fd45b9a758a8aeba064a6aa1f7e6ae69a9b008",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In a double slit experiment, the two slits are \\(1{\\cdot}5\\) mm apart. The slits are illuminated by a mixture of lights of wavelengths of 600 nm and 400 nm and the interference pattern is observed on a screen \\(1{\\cdot}5\\) m away from the slits. Find the minimum distance of the point from the central maximum at which bright fringes of the interference patterns of the two wavelengths coincide.",
+      "solution": "**When do fringes of two wavelengths coincide?**\n\nBright fringes lie at\n\n\\(y_n = \\dfrac{n\\lambda D}{d}\\)\n\nso the \\(n_1\\)th fringe of \\(\\lambda_1\\) falls on the \\(n_2\\)th fringe of \\(\\lambda_2\\) when the **positions** match — and since \\(D\\) and \\(d\\) are common,\n\n\\(n_1\\lambda_1 = n_2\\lambda_2\\)\n\n**Find the smallest whole numbers that satisfy it.**\n\n\\(n_1\\left(600\\right) = n_2\\left(400\\right) \\qquad\\Longrightarrow\\qquad \\dfrac{n_1}{n_2} = \\dfrac{400}{600} = \\dfrac{2}{3}\\)\n\n**The smallest integer pair is \\(n_1 = 2\\), \\(n_2 = 3\\).** Both orders must be whole numbers — a fringe of order \\(1{\\cdot}5\\) does not exist — which is what forces the ratio into lowest terms.\n\n*(Excluding the trivial \\(n_1 = n_2 = 0\\), which is the central maximum itself: there **all** wavelengths coincide, since the path difference is zero for every colour. The question asks for the first coincidence **away** from it.)*\n\n**The position.**\n\n\\(y = \\dfrac{n_1\\lambda_1 D}{d} = \\dfrac{2 \\times 600 \\times 10^{-9} \\times 1{\\cdot}5}{1{\\cdot}5 \\times 10^{-3}}\\)\n\n\\(\\boxed{\\ y = 1{\\cdot}2 \\times 10^{-3}\\ \\mathrm{m} = 1{\\cdot}2\\ \\mathrm{mm}\\ }\\)\n\n**Check it with the other wavelength**, which must give the same place:\n\n\\(y = \\dfrac{3 \\times 400 \\times 10^{-9} \\times 1{\\cdot}5}{1{\\cdot}5 \\times 10^{-3}} = 1{\\cdot}2 \\times 10^{-3}\\ \\mathrm{m}\\ \\checkmark\\)\n\n**This check is worth doing every time**, because it tests both the orders and the arithmetic at once, and it uses the half of the data the first calculation ignored.\n\n**What is actually seen on the screen.** The two wavelengths produce two interleaved fringe patterns of different spacings — \\(\\beta_1 = 0{\\cdot}6\\) mm for the \\(600\\) nm light and \\(\\beta_2 = 0{\\cdot}4\\) mm for the \\(400\\) nm. Between the centre and \\(1{\\cdot}2\\) mm they fall out of step, and the screen shows a confusion of red and blue maxima. At \\(1{\\cdot}2\\) mm they line up again and a bright fringe of **both** colours appears, then the cycle repeats every \\(1{\\cdot}2\\) mm.\n\n**The general rule.** Coincidences recur at multiples of the **lowest common multiple** of the two fringe widths: \\(\\mathrm{LCM}\\left(0{\\cdot}6, 0{\\cdot}4\\right) = 1{\\cdot}2\\) mm. Reading the answer that way makes it a single line, and makes clear why \\(1{\\cdot}2\\) mm is a *spacing* and not just a position."
+    },
+    {
+      "hash": "0bdb19344663bb3590698b1bc4dc07a5efebcbcdac634f9a6b6cef9359d521c4",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "Find the focal length of plano-convex lens of refractive index \\(1{\\cdot}5\\) and radius of curvature 10 cm when it is immersed in a liquid of refractive index \\(1{\\cdot}25\\).",
+      "solution": "**The lens-maker's formula for a lens in a surrounding medium.**\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{n_{\\text{lens}}}{n_{\\text{medium}}} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\n**The ratio \\(n_{\\text{lens}}/n_{\\text{medium}}\\) is the RELATIVE refractive index**, and using it in place of \\(n\\) is the whole adaptation needed for an immersed lens.\n\n**The radii of a plano-convex lens.** One face is curved with radius \\(R = 10\\) cm; the other is **plane**, which is a sphere of infinite radius:\n\n\\(R_1 = 10\\ \\mathrm{cm}, \\qquad R_2 = \\infty\\)\n\n\\(\\dfrac{1}{R_1} - \\dfrac{1}{R_2} = \\dfrac{1}{10} - 0 = \\dfrac{1}{10}\\)\n\n**Substituting.**\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{1{\\cdot}5}{1{\\cdot}25} - 1\\right)\\left(\\dfrac{1}{10}\\right) = \\left(1{\\cdot}2 - 1\\right)\\left(\\dfrac{1}{10}\\right) = \\dfrac{0{\\cdot}2}{10} = \\dfrac{1}{50}\\)\n\n\\(\\boxed{\\ f = 50\\ \\mathrm{cm}\\ }\\)\n\n**The numbers are chosen so that \\(1{\\cdot}5/1{\\cdot}25 = 1{\\cdot}2\\) exactly**, which keeps the whole calculation to one line.\n\n**Compare with the focal length in AIR.**\n\n\\(\\dfrac{1}{f_{\\text{air}}} = \\left(1{\\cdot}5 - 1\\right)\\left(\\dfrac{1}{10}\\right) = \\dfrac{1}{20} \\qquad\\Longrightarrow\\qquad f_{\\text{air}} = 20\\ \\mathrm{cm}\\)\n\n**So immersion makes this lens two and a half times weaker** — \\(20\\) cm becomes \\(50\\) cm. The glass has not changed at all; only what surrounds it has.\n\n**Why the lens weakens.** Refraction depends on the **contrast** between the two media at each surface. In air the contrast is \\(1{\\cdot}5\\) against \\(1{\\cdot}0\\); in the liquid it is \\(1{\\cdot}5\\) against \\(1{\\cdot}25\\), a much smaller step, so each surface bends the light far less.\n\n**The two limits worth knowing.** If the liquid had \\(n = 1{\\cdot}5\\), the bracket would **vanish**, \\(f\\) would be infinite, and the lens would be optically **invisible** — neither converging nor diverging. And if the liquid were **denser** than the glass, the bracket would go negative and this convex lens would **diverge**.\n\n**Why the plane face contributes nothing.** With \\(R_2 = \\infty\\), the term \\(1/R_2\\) is zero: a flat surface has no curvature and so no focusing power. All the convergence of a plano-convex lens comes from its one curved face, which is why its focal length is twice that of an equiconvex lens of the same radius and material."
+    },
+    {
+      "hash": "806f05ca0a20e90b5663f9278a385842fcfe53eb1e986c0481b335d7c0905f63",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "Find the ratio of minimum to maximum wavelength of radiations emitted when electron jumps from higher energy state into ground state of hydrogen atom.",
+      "solution": "**Which series is this?** Transitions ending on the **ground state** \\(\\left(n_f = 1\\right)\\) form the **Lyman series**. So both the shortest and the longest wavelength must be found within that series.\n\n**The Rydberg formula.**\n\n\\(\\dfrac{1}{\\lambda} = R\\left[\\dfrac{1}{n_f^{2}} - \\dfrac{1}{n_i^{2}}\\right] \\qquad\\text{with}\\ n_f = 1\\)\n\n**The MINIMUM wavelength** corresponds to the **largest** energy jump, which comes from \\(n_i = \\infty\\) — the series limit:\n\n\\(\\dfrac{1}{\\lambda_{\\min}} = R\\left[\\dfrac{1}{1} - \\dfrac{1}{\\infty}\\right] = R \\qquad\\Longrightarrow\\qquad \\lambda_{\\min} = \\dfrac{1}{R}\\)\n\n**The MAXIMUM wavelength** corresponds to the **smallest** jump that still lands on \\(n = 1\\), which is from \\(n_i = 2\\):\n\n\\(\\dfrac{1}{\\lambda_{\\max}} = R\\left[\\dfrac{1}{1} - \\dfrac{1}{4}\\right] = \\dfrac{3R}{4} \\qquad\\Longrightarrow\\qquad \\lambda_{\\max} = \\dfrac{4}{3R}\\)\n\n**The ratio**, in which the Rydberg constant cancels:\n\n\\(\\dfrac{\\lambda_{\\min}}{\\lambda_{\\max}} = \\dfrac{1/R}{4/3R} = \\dfrac{3}{4}\\)\n\n\\(\\boxed{\\ \\lambda_{\\min} : \\lambda_{\\max} = 3 : 4\\ }\\)\n\n**The inversion is the thing to keep straight.** The **largest** energy gap gives the **shortest** wavelength, since \\(\\lambda = hc/\\Delta E\\). So \\(\\lambda_{\\min}\\) belongs to \\(\\infty \\to 1\\) and \\(\\lambda_{\\max}\\) to \\(2 \\to 1\\) — the opposite pairing to the one the words might suggest.\n\n**The same result through energies**, which needs no Rydberg constant at all:\n\n\\(\\Delta E_{\\max} = 0 - \\left(-13{\\cdot}6\\right) = 13{\\cdot}6\\ \\mathrm{eV} \\quad\\text{for}\\ \\infty \\to 1\\)\n\n\\(\\Delta E_{\\min} = -3{\\cdot}4 - \\left(-13{\\cdot}6\\right) = 10{\\cdot}2\\ \\mathrm{eV} \\quad\\text{for}\\ 2 \\to 1\\)\n\n\\(\\dfrac{\\lambda_{\\min}}{\\lambda_{\\max}} = \\dfrac{\\Delta E_{\\min}}{\\Delta E_{\\max}} = \\dfrac{10{\\cdot}2}{13{\\cdot}6} = \\dfrac{3}{4}\\ \\checkmark\\)\n\n**The actual wavelengths**, for orientation. With \\(R = 1{\\cdot}097 \\times 10^{7}\\ \\mathrm{m^{-1}}\\):\n\n\\(\\lambda_{\\min} = 91\\ \\mathrm{nm}, \\qquad \\lambda_{\\max} = 122\\ \\mathrm{nm}\\)\n\n**Both are deep in the ultraviolet**, and necessarily so: any transition to \\(n = 1\\) must supply at least \\(10{\\cdot}2\\) eV, far above the \\(1{\\cdot}8\\) to \\(3{\\cdot}1\\) eV the eye can see. That is why the Lyman series is invisible, and why the **Balmer** series — ending on \\(n = 2\\) — is the one that gives hydrogen its familiar visible lines.\n\n**How narrow the whole series is.** The entire Lyman series is squeezed between \\(91\\) and \\(122\\) nm, a ratio of only \\(3:4\\), because the levels above \\(n = 1\\) crowd together so tightly compared with the vast gap below them."
+    },
+    {
+      "hash": "534a42afa7586e6e66852c20454c8a3cd76e2272c6c0fba6c3e5effe02a729f1",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "(a) A charged particle q moving with a velocity \\(\\vec{v}\\) is subjected to a uniform magnetic field \\(\\vec{B}\\) acting perpendicular to \\(\\vec{v}\\). If a uniform electric field \\(\\vec{E}\\) is also set up in the region along the direction of \\(\\vec{B}\\), describe the path followed by the particle and draw its shape.\n(b) How will the magnetic field inside a long solenoid be affected when :\n(i) the radius of the turns of the solenoid is increased,\n(ii) the length of solenoid as well as the total number of its turns are doubled ?",
+      "solution": "**(a) The path of the particle.**\n\n**Set it up by splitting the motion.** Take \\(\\vec{B}\\) along the \\(z\\)-axis; the electric field is stated to be along \\(\\vec{B}\\), so \\(\\vec{E}\\) is along \\(z\\) too, and \\(\\vec{v}\\) is initially perpendicular to both, say along \\(x\\).\n\n**The MAGNETIC force acts only in the perpendicular plane.** \\(\\vec{F}_B = q\\vec{v}\\times\\vec{B}\\) is perpendicular to \\(\\vec{v}\\) and to \\(\\vec{B}\\), so it lies in the \\(xy\\) plane and produces **uniform circular motion** there, of radius\n\n\\(r = \\dfrac{mv_\\perp}{qB}\\)\n\n**The ELECTRIC force acts only along the axis.** \\(\\vec{F}_E = q\\vec{E}\\) is along \\(z\\), parallel to \\(\\vec{B}\\), so it produces a **uniform acceleration** along the axis:\n\n\\(a = \\dfrac{qE}{m}\\)\n\n**The two are completely independent**, since each acts along a direction the other does not touch. Superposing them:\n\n\\(\\boxed{\\ \\text{A HELIX with constant radius but CONTINUOUSLY INCREASING pitch}\\ }\\)\n\n*The shape to draw:* a coil wound about the direction of \\(\\vec{B}\\), its loops all the **same width** but spaced further and further apart as the particle advances — a spring being stretched along its axis.\n\n**Why the radius stays constant while the pitch grows.** The electric force adds speed only along \\(z\\), and the radius \\(r = mv_\\perp/qB\\) depends on the **perpendicular** component alone, which the electric field never touches and the magnetic force cannot change (it does no work). But the axial speed climbs steadily, so in each successive revolution — and the period \\(T = 2\\pi m/qB\\) is the **same** every time — the particle advances further:\n\n\\(\\text{pitch} = v_z T \\quad\\text{with } v_z \\text{ increasing}\\)\n\n**Contrast with the two simpler cases.** With no electric field, \\(v_z\\) would be constant and the helix would have **uniform** pitch. With \\(\\vec{v}\\) entirely perpendicular and no \\(\\vec{E}\\), the path would close into a **circle**. The stretching helix is what the added axial force produces.\n\n**(b) The field inside a long solenoid.**\n\n\\(B = \\mu_0 nI = \\mu_0\\left(\\dfrac{N}{l}\\right)I\\)\n\n**(i) The radius of the turns is increased.**\n\n\\(\\boxed{\\ \\text{NO CHANGE}\\ }\\)\n\n**The radius does not appear in the formula at all.** The field inside a long solenoid depends only on the turns **per unit length** and the current — not on how wide the coil is. Widening it spreads the same field over a larger cross-section, so the **flux** \\(\\left(\\phi = B\\pi r^{2}\\right)\\) rises, but the field itself does not.\n\n**(ii) The length and the total number of turns are both doubled.**\n\n\\(n' = \\dfrac{2N}{2l} = \\dfrac{N}{l} = n\\)\n\n\\(\\boxed{\\ \\text{NO CHANGE}\\ }\\)\n\n**It is the RATIO that matters, not either quantity alone.** Doubling both leaves the turns per unit length untouched — the winding is just as tightly packed as before, over twice the length — so the field is identical.\n\n**What the two parts together are testing.** \\(B = \\mu_0 nI\\) contains **no** geometric quantity except \\(n\\). Neither the radius, nor the length, nor the total turn count can change the field on its own; only \\(N/l\\) and \\(I\\) can. Both changes here are deliberately chosen to leave \\(n\\) alone."
+    },
+    {
+      "hash": "5d02126d274f3c36dc85e59ee7a01084f6f87debca19b104e3bf256abbe6cfd8",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "(a) Differentiate between magnetic flux through an area and magnetic field at a point.\n(b) A bar magnet is held with its length along the axis of a closed coil. Initially the south pole of the magnet faces the coil. If the magnet is moved towards the coil, explain how a current is induced in the coil and in what direction.",
+      "solution": "**(a) Magnetic flux through an area, against magnetic field at a point.**\n\n| | **Magnetic field \\(\\vec{B}\\)** | **Magnetic flux \\(\\phi\\)** |\n|---|---|---|\n| What it describes | a **POINT** in space | an **AREA** or surface |\n| Nature | a **vector** | a **scalar** |\n| Definition | force per unit charge per unit velocity, from \\(\\vec{F} = q\\vec{v}\\times\\vec{B}\\) | \\(\\phi = \\int\\vec{B}\\cdot d\\vec{A} = BA\\cos\\theta\\) for a uniform field |\n| SI unit | **tesla** (T), or \\(\\mathrm{Wb\\,m^{-2}}\\) | **weber** (Wb) |\n| Picture | how densely the field lines are packed **there** | the total **number** of field lines crossing the surface |\n\n**The relation between them.** Flux is the field **integrated over a surface**, so it depends not only on how strong the field is but on how big the area is and how it is **tilted**. The same field gives maximum flux through an area held perpendicular to it \\(\\left(\\theta = 0\\right)\\) and **zero** flux through the same area turned edge-on \\(\\left(\\theta = 90^\\circ\\right)\\), even though the field has not changed at all.\n\n**Why the distinction is worth insisting on.** Faraday's law involves \\(d\\phi/dt\\), not \\(dB/dt\\) — so an emf can be induced with the field held perfectly **constant**, simply by rotating or resizing the coil. That is precisely how an AC generator works, and it is unintelligible if flux and field are conflated.\n\n**(b) The bar magnet approaching the coil, south pole first.**\n\n**Step 1 — the flux through the coil increases.** As the south pole comes nearer, the magnet's field at the coil grows stronger, so more field lines thread it. *(Field lines run **into** a south pole, so the flux through the coil is directed **towards** the magnet — but what matters is only that its magnitude is increasing.)*\n\n**Step 2 — so an emf, and a current, are induced.** By Faraday's law,\n\n\\(\\varepsilon = -\\dfrac{d\\phi}{dt}\\)\n\nand since the coil is **closed**, that emf drives a current round it.\n\n**Step 3 — Lenz's law fixes the direction.** The induced current opposes the **change** that produced it, so it must oppose the magnet's **approach** — which means the coil must **repel** the incoming south pole.\n\n**To repel a south pole, the near face of the coil must itself become a SOUTH pole**, since like poles repel.\n\n**Step 4 — from pole to current sense.** Using the clock rule: viewed from outside, a face behaves as a **south** pole when the current in it runs **clockwise**.\n\n\\(\\boxed{\\ \\text{The induced current is CLOCKWISE, seen from the magnet's side}\\ }\\)\n\n**The energy account, which is the real content of Lenz's law.** The coil pushes back on the magnet, so whoever is moving it must do **work** against that repulsion — and that work is what appears as electrical energy dissipated in the coil's resistance. Were the current to flow the other way, the coil would **attract** the magnet, pulling it in faster, inducing more current, and energy would be created from nothing.\n\n**And what happens if the magnet is pulled AWAY instead.** The flux now **decreases**, the induced current reverses, the near face becomes a **north** pole, and the coil **attracts** the retreating magnet — again opposing the change, and again requiring work to be done."
+    },
+    {
+      "hash": "7ab39892996dae7e205ea42a06c564c48e41250ebf05268673a879850db9e03d",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "stem": "(a) Define 'wavefront' of a light wave. A plane wavefront is refracted from a convex lens. Draw the shape of the refracted wavefront.\n(b) A plane wave travelling in a medium is incident on a plane surface separating this medium from a rarer medium. Draw a diagram to show refraction of the wave. Hence, verify Snell's law.",
+      "solution": "**(a) Wavefront, and the shape after a convex lens.**\n\n**Definition.** A **wavefront** is the locus of all points of a wave that are vibrating **in the same phase** — a surface of constant phase. Its shape depends on the source: a point source gives **spherical** wavefronts, and at a great distance from the source a small portion of such a sphere is effectively **plane**.\n\n**A plane wavefront refracted by a convex lens.**\n\n\\(\\boxed{\\ \\text{It emerges as a CONVERGING SPHERICAL wavefront}\\ }\\)\n\n*To draw it:* a series of vertical straight lines (the plane wavefront) arriving at the lens from the left, and to the right of the lens a series of **arcs curving towards a point** — the focus — with their concave sides facing forward and shrinking as they approach \\(F\\).\n\n**Why it becomes spherical.** The lens is **thickest at its centre**, so light passing through the middle is slowed the most, while light through the thin edges is delayed least. The central part of the wavefront therefore falls **behind** the edges, and a flat surface is bent into one curving forward towards a point. After the focus the wavefronts expand again as diverging spheres.\n\n**(b) Refraction of a plane wave from a denser into a rarer medium, and Snell's law.**\n\n**The construction.** Let a plane wavefront \\(AB\\) in the denser medium (speed \\(v_1\\)) strike the plane interface \\(XY\\), reaching \\(A\\) first and \\(C\\) last. Draw the normal at \\(A\\) and let the angle of incidence be \\(i\\), the angle of refraction \\(r\\).\n\n*Diagram:* interface \\(XY\\) horizontal; the incident wavefront \\(AB\\) meeting it at \\(A\\), with \\(BC\\) perpendicular from \\(B\\) to the surface at \\(C\\); a wavelet of radius \\(AE\\) drawn in the rarer medium below, and the tangent \\(CE\\) from \\(C\\) to it as the refracted wavefront. Because the medium below is **rarer**, \\(v_2 > v_1\\) and the wavelet is **larger** than \\(BC\\) — so the refracted wavefront tilts the other way and the ray bends **away** from the normal.\n\n**Huygens' principle**: every point on a wavefront is a source of secondary wavelets, and the new wavefront is the surface touching them all.\n\n**Step 1.** Let \\(t\\) be the time for the disturbance to travel from \\(B\\) to \\(C\\), still in the first medium:\n\n\\(BC = v_1t\\)\n\n**Step 2.** In that **same** time \\(t\\), the wavelet that started from \\(A\\) the instant the wavefront arrived has spread into the second medium to a radius\n\n\\(AE = v_2t\\)\n\n**The equality of the two times is the whole proof** — both describe the one interval \\(t\\).\n\n**Step 3.** Draw the tangent \\(CE\\) from \\(C\\) to that wavelet: it is the refracted wavefront.\n\n**Step 4 — the geometry.** In the right-angled triangles \\(ABC\\) and \\(AEC\\), which share the hypotenuse \\(AC\\):\n\n\\(\\sin i = \\dfrac{BC}{AC} = \\dfrac{v_1t}{AC}, \\qquad \\sin r = \\dfrac{AE}{AC} = \\dfrac{v_2t}{AC}\\)\n\n**Step 5 — divide.** Both \\(AC\\) and \\(t\\) cancel:\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{v_1}{v_2}\\)\n\nand with \\(n = c/v\\),\n\n\\(\\boxed{\\ \\dfrac{\\sin i}{\\sin r} = \\dfrac{n_2}{n_1}, \\qquad\\text{that is,}\\qquad n_1\\sin i = n_2\\sin r\\ }\\)\n\nwhich is **Snell's law**.\n\n**Reading the denser-to-rarer case.** Here \\(n_1 > n_2\\), so \\(\\sin r > \\sin i\\) and \\(r > i\\): the ray bends **away** from the normal, as the larger wavelet in the diagram shows. Push \\(i\\) up far enough and \\(\\sin r\\) would exceed \\(1\\) — impossible — and at that point no refracted wavefront can be constructed at all. That is the **critical angle**, and beyond it the light is **totally internally reflected**; the Huygens construction shows exactly why it happens only in this direction.\n\n**What the construction explains that the formula alone does not.** Refraction is not a force acting on a ray but the geometric consequence of one edge of the wavefront entering the new medium before the other and changing speed there. The wavefront pivots — like a column of marchers turning when those on one flank lengthen their stride."
+    }
+  ]
+}
