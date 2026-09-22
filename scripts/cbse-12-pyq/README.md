@@ -220,10 +220,29 @@ Then the solution lane:
 ```
 npx tsx scripts/cbse-12-pyq/dump-solutions.ts  2025-65-5-2
 [solution agent, against SOLUTION_BRIEF.md]     → fills data/2025-65-5-2.topaper.json
+npx tsx scripts/cbse-12-pyq/prescreen-letters.ts 2025-65-5-2   # BEFORE writing
 npx tsx scripts/cbse-12-pyq/apply-solutions.ts 2025-65-5-2 --apply
 npx tsx scripts/cbse-12-pyq/audit-keys.ts      2025        # structural, zero-LLM
 npx tsx scripts/cbse-12-pyq/audit-omml.ts                  # Word-export gate
 ```
+
+**`prescreen-letters.ts` runs BEFORE `apply-solutions`, and the ordering is the
+whole point.** It asks exactly what `audit-keys` asks — does an MCQ solution
+conclude a letter other than the one the bank keys — but of the authored
+`.topaper.json` rather than of rows already committed, so a disagreement is
+fixed in the draft instead of patched in the bank. Both call the SAME
+`concludedLetter` from `scripts/practice/audit-keys.ts`, so the early screen
+cannot pass something the late gate fails.
+
+The defect class is prose, never physics: a solution that names an option letter
+*after* concluding. It has appeared four times — a trailing bare letter, a late
+"the trap is option (B)", an article read as an option ("the answer is a clean
+..."), and, worst, naming the numerically-matching letter on a **CBSE-voided**
+row, where there is no key to contradict it. A voided row expects `null`, and
+any letter concluded there is reported.
+
+Triage, exits 0. A disagreement is usually the prose but can be the key —
+`2026-55-4-1` Q1 was a case where the solution was right and CBSE was not.
 
 **RE-DUMPING A PAPER DROPS ITS ALREADY-APPLIED ROWS, and that is deliberate** —
 78 papers print 3,519 questions across only 1,766 distinct rows, so omitting a
