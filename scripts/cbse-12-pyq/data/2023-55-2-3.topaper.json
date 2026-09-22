@@ -1,0 +1,303 @@
+{
+  "paper": "55/2/3",
+  "year": 2023,
+  "paperId": "2023-55-2-3",
+  "markingScheme": "out/2023-55-2-3/ms/p00.png … p14.png",
+  "rows": [
+    {
+      "hash": "eaf36be69a36cf550bbca6b16053b90f14e5bb91a6ed3114ea0e0664da52e23e",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The energy of a photon of wavelength 663 nm is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(6.64 \\times 10^{-20}\\) J"
+        },
+        {
+          "label": "B",
+          "text": "\\(5.18 \\times 10^{-19}\\) J"
+        },
+        {
+          "label": "C",
+          "text": "\\(3.0 \\times 10^{-19}\\) J"
+        },
+        {
+          "label": "D",
+          "text": "\\(2.0 \\times 10^{-20}\\) J"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(3{\\cdot}0 \\times 10^{-19}\\) J.**\n\n\\(E = h\\nu = \\dfrac{hc}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{663 \\times 10^{-9}}\\)\n\nThe numerator is \\(1{\\cdot}989 \\times 10^{-25}\\) and the denominator \\(6{\\cdot}63 \\times 10^{-7}\\), so\n\n\\(E = 3{\\cdot}0 \\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Spotting the design.** The wavelength 663 nm is chosen so that it divides \\(6{\\cdot}63\\) exactly — the mantissas cancel and only the exponents need handling. Questions built on \\(h = 6{\\cdot}63 \\times 10^{-34}\\) very often do this, and noticing it turns the arithmetic into a subtraction of powers.\n\n**A cross-check in electronvolts.** A useful constant to carry is \\(hc \\approx 1240\\ \\mathrm{eV\\,nm}\\), so\n\n\\(E \\approx \\dfrac{1240}{663} \\approx 1{\\cdot}87\\ \\mathrm{eV}\\)\n\nand \\(1{\\cdot}87 \\times 1{\\cdot}6 \\times 10^{-19} = 3{\\cdot}0 \\times 10^{-19}\\) J, agreeing without going near \\(h\\) or \\(c\\).\n\n**Orientation.** 663 nm is **red** light, at the low-energy end of the visible range, and a photon of it carries under two electronvolts. That is why red light frees electrons from caesium \\((\\phi_0 = 2{\\cdot}1\\ \\mathrm{eV})\\) only barely, and from zinc \\((4{\\cdot}3\\ \\mathrm{eV})\\) not at all."
+    },
+    {
+      "hash": "2abd3da98048eaed58fcbe9d8a7637906b7101de04834187aac84a806e8cd251",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "An electromagnetic wave is produced by a charge",
+      "options": [
+        {
+          "label": "A",
+          "text": "moving with a constant velocity"
+        },
+        {
+          "label": "B",
+          "text": "moving with a constant speed parallel to a magnetic field"
+        },
+        {
+          "label": "C",
+          "text": "moving with an acceleration"
+        },
+        {
+          "label": "D",
+          "text": "at rest"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): a charge moving with an acceleration.**\n\n**The rule.** A charge radiates electromagnetic waves **if and only if it accelerates**. Uniform motion is not enough, and rest is certainly not.\n\n**Why the other three fail.**\n\n*A charge at rest* produces a static Coulomb field. Nothing changes with time, so no magnetic field appears and nothing propagates.\n\n*A charge in uniform motion* produces a steady current and hence a **constant** magnetic field alongside its electric field. Both fields are unchanging in the charge's own frame, so again nothing detaches and travels away. It is worth noticing that \"moving\" cannot by itself be the criterion — motion is relative, and a charge at rest in one frame moves uniformly in another. Any physical criterion must be frame-independent, and **acceleration** is.\n\n*A charge moving parallel to a magnetic field* feels no magnetic force, since \\(\\vec{F} = q\\vec{v} \\times \\vec{B}\\) vanishes when \\(\\vec{v}\\) is parallel to \\(\\vec{B}\\). With no force there is no acceleration, so this option is the \"uniform velocity\" case in disguise.\n\n**The mechanism.** An accelerating charge produces a time-varying electric field; a changing electric field generates a magnetic field (Ampère-Maxwell); a changing magnetic field regenerates an electric one (Faraday). Once started, the two sustain each other and the disturbance propagates away at \\(c = 1/\\sqrt{\\mu_0\\varepsilon_0}\\), carrying energy with it — energy the charge must supply, which is why an accelerating charge loses energy by radiating.\n\nThis is why an **oscillating** charge is the standard source: an antenna drives charges back and forth so that they accelerate continuously, radiating at the frequency of the oscillation."
+    },
+    {
+      "hash": "570049fee3b65279de4aaa380121ebd6f0cb02e3694ccd750e47a10c13c0c86c",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "A semiconductor device is connected in series with a battery, an ammeter and a resisitor. A current flows in the circuit. If the polarity of the battery is reversed, the current in the circuit almost becomes zero. The device is a/an",
+      "options": [
+        {
+          "label": "A",
+          "text": "intrinsic semiconductor"
+        },
+        {
+          "label": "B",
+          "text": "p-type semiconductor"
+        },
+        {
+          "label": "C",
+          "text": "n-type semiconductor"
+        },
+        {
+          "label": "D",
+          "text": "p-n junction diode"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): a p-n junction diode.**\n\n**What the observation says.** The device passes current one way and blocks it when the battery is reversed. That is **unidirectional conduction**, and only a *junction* between two differently doped regions can do it.\n\n**Why the other three cannot.** An intrinsic semiconductor, a p-type sample and an n-type sample are all **homogeneous pieces of material**, and a homogeneous conductor has no way to tell one direction from the other. Reverse the battery and the carriers simply drift the other way; the magnitude of the current is unchanged. Doping raises the conductivity but does nothing to make it asymmetric — an n-type block obeys Ohm's law in both directions just as an intrinsic one does.\n\n**What the junction adds.** Joining p-type to n-type creates a **depletion layer** with a built-in barrier potential across it. An external voltage then acts asymmetrically:\n\n*Forward bias* (p to the positive terminal) opposes the barrier, narrows the depletion layer and lets majority carriers flood across — a large current.\n\n*Reverse bias* adds to the barrier, widens the layer and leaves only the tiny reverse saturation current carried by minority carriers — effectively zero on an ordinary ammeter.\n\n**The word \"almost\" in the stem is precise.** A reverse-biased diode does not carry *exactly* zero current; it carries a leakage current of the order of microamperes, set by thermally generated minority carriers. The stem says \"almost becomes zero\" rather than \"becomes zero\", and that is a correct description rather than a loose one."
+    },
+    {
+      "hash": "8848fc4d5c99d7d065a2d2b2bb5c125354645b55c8dbcfc3c5f30588e5e1a0ff",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Size of the Nucleus",
+      "stem": "The radius of \\(^{27}_{13}\\mathrm{X}\\) nucleus is R. The radius of \\(^{125}_{53}\\mathrm{Y}\\) nucleus will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{5}{3}\\mathrm{R}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\left(\\dfrac{13}{53}\\right)^{1/3}\\mathrm{R}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\left(\\dfrac{5}{3}\\mathrm{R}\\right)^{1/3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\left(\\dfrac{13}{53}\\mathrm{R}\\right)^{1/3}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{5}{3}R\\).**\n\n**The relation.** Nuclear radius depends on the **mass number** alone:\n\n\\(R = R_0A^{1/3}\\)\n\nNote what does *not* appear: the atomic number. The 13 and the 53 in the two symbols are there purely as distractors — they identify the elements but have no bearing on size.\n\n**Taking the ratio**, so that \\(R_0\\) cancels:\n\n\\(\\dfrac{R_Y}{R_X} = \\left(\\dfrac{A_Y}{A_X}\\right)^{1/3} = \\left(\\dfrac{125}{27}\\right)^{1/3}\\)\n\nBoth numbers are perfect cubes — \\(125 = 5^{3}\\) and \\(27 = 3^{3}\\) — which is why these particular nuclides were chosen:\n\n\\(\\dfrac{R_Y}{R_X} = \\dfrac{5}{3}\\)\n\n\\(R_Y = \\dfrac{5}{3}R\\)\n\n**The distractors are built on the two available mistakes.** Using \\(Z\\) instead of \\(A\\) gives \\((13/53)^{1/3}\\); failing to take the cube root, or taking it of the wrong thing, gives the options with \\(R\\) trapped inside the bracket — which are dimensionally wrong besides, since a length raised to the one-third is not a length.\n\n**A quick sanity check.** \\(Y\\) has about \\(4{\\cdot}6\\) times the mass of \\(X\\) but is only \\(1{\\cdot}67\\) times as wide, and \\((5/3)^{3} = 125/27 = 4{\\cdot}63\\). The volume has grown in exact step with the nucleon count — which is the same statement as nuclear density being the same for every nucleus."
+    },
+    {
+      "hash": "67cb7bb43842c58cb68f24528d10f55dcb78a3c643b042bd4b98066b89725794",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "An electric dipole of dipole moment \\(2 \\times 10^{-8}\\) C-m in a uniform electric field experiences a maximum torque of \\(6 \\times 10^{-4}\\) N-m. The magnitude of electric field is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2.2 \\times 10^{3}\\) Vm\\(^{-1}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1.2 \\times 10^{4}\\) Vm\\(^{-1}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3.0 \\times 10^{4}\\) Vm\\(^{-1}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(4.2 \\times 10^{3}\\) Vm\\(^{-1}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(3{\\cdot}0 \\times 10^{4}\\ \\mathrm{V\\,m^{-1}}\\).**\n\n**The torque on a dipole.**\n\n\\(\\vec{\\tau} = \\vec{p} \\times \\vec{E} \\qquad\\Longrightarrow\\qquad \\tau = pE\\sin\\theta\\)\n\nwhere \\(\\theta\\) is the angle between the dipole moment and the field.\n\n**Why \"maximum\" is the word that makes this solvable.** The torque depends on the orientation, so a single value of \\(\\tau\\) would not determine \\(E\\) — you would also need \\(\\theta\\). The stem gives the **maximum** torque, which occurs at \\(\\sin\\theta = 1\\), that is \\(\\theta = 90^\\circ\\), when the dipole sits **perpendicular** to the field:\n\n\\(\\tau_{\\max} = pE\\)\n\n**Substituting.**\n\n\\(E = \\dfrac{\\tau_{\\max}}{p} = \\dfrac{6 \\times 10^{-4}}{2 \\times 10^{-8}}\\)\n\n\\(E = 3 \\times 10^{4}\\ \\mathrm{V\\,m^{-1}}\\)\n\n**The two orientations worth contrasting.** At \\(\\theta = 90^\\circ\\) the torque is greatest and the potential energy \\(U = -pE\\cos\\theta\\) is **zero**. At \\(\\theta = 0\\) the torque vanishes and the energy is at its **minimum** \\(-pE\\) — the stable equilibrium the dipole turns towards. Maximum torque and minimum energy are therefore at opposite ends of the swing, and confusing the two is the usual source of error in dipole questions.\n\n**A note on the units.** \\(\\mathrm{N\\,m}\\) divided by \\(\\mathrm{C\\,m}\\) gives \\(\\mathrm{N\\,C^{-1}}\\), which is the same as \\(\\mathrm{V\\,m^{-1}}\\) — the form all four options use."
+    },
+    {
+      "hash": "9479eb8771912f2adce3f98b6ab41b43a4d6fd679158ed353140eefaef993b4a",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "A point charge \\(\\mathrm{q}_0\\) is moving along a circular path of radius a, with a point charge \\(-\\mathrm{Q}\\) at the centre of the circle. The kinetic energy of \\(\\mathrm{q}_0\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\mathrm{q}_0\\mathrm{Q}}{4\\pi\\varepsilon_0 a}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mathrm{q}_0\\mathrm{Q}}{8\\pi\\varepsilon_0 a}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mathrm{q}_0\\mathrm{Q}}{4\\pi\\varepsilon_0 a^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{\\mathrm{q}_0\\mathrm{Q}}{8\\pi\\varepsilon_0 a^2}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{q_0Q}{8\\pi\\varepsilon_0 a}\\).**\n\n**Setting up.** A charge \\(q_0\\) moves on a circle of radius \\(a\\) about a charge \\(-Q\\) at the centre. The attraction between them supplies the **centripetal force** needed to keep \\(q_0\\) on that circle:\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_0Q}{a^{2}} = \\dfrac{mv^{2}}{a}\\)\n\n**Solving for \\(mv^{2}\\)** — and note that one power of \\(a\\) cancels between the two sides:\n\n\\(mv^{2} = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_0Q}{a}\\)\n\n**The kinetic energy** is half of that:\n\n\\(K = \\dfrac{1}{2}mv^{2} = \\dfrac{q_0Q}{8\\pi\\varepsilon_0 a}\\)\n\n**The two errors the distractors catch.** Forgetting the factor of \\(\\tfrac{1}{2}\\) gives \\(q_0Q/4\\pi\\varepsilon_0 a\\), which is \\(mv^{2}\\) and not the kinetic energy. And keeping \\(a^{2}\\) in the denominator confuses an **energy** with a **force** — the options with \\(a^{2}\\) have the dimensions of force times length squared over charge squared, not of energy, so they can be rejected on dimensions alone.\n\n**What the result means.** Compare it with the potential energy of the pair:\n\n\\(U = -\\dfrac{q_0Q}{4\\pi\\varepsilon_0 a} = -2K\\)\n\nso the total energy is \\(E = K + U = -K\\), negative — the charge is **bound**, exactly as an electron is bound in the Bohr atom. That is no coincidence: this is the Bohr problem with \\(Q = e\\) and \\(q_0 = e\\), and \\(U = -2K\\) is the virial theorem for any inverse-square attraction."
+    },
+    {
+      "hash": "cced57a3955b3fa95aced04df6370247a31ebccef7a33e722ad30e0588e83f08",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Electric Current and Ohm's Law",
+      "stem": "The current in a device varies with time t as \\(\\mathrm{I} = 6t\\), where I is in mA and t is in s. The amount of charge that passes through the device during t = 0s to t = 3s is",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 mC"
+        },
+        {
+          "label": "B",
+          "text": "18 mC"
+        },
+        {
+          "label": "C",
+          "text": "27 mC"
+        },
+        {
+          "label": "D",
+          "text": "54 mC"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 27 mC.**\n\n**Why this cannot be done with \\(q = It\\).** That formula holds only for a **steady** current. Here \\(I = 6t\\) grows with time, so the charge must be accumulated by integration:\n\n\\(I = \\dfrac{dq}{dt} \\qquad\\Longrightarrow\\qquad q = \\int_{0}^{3} I\\,dt = \\int_{0}^{3} 6t\\,dt\\)\n\n\\(q = \\left[3t^{2}\\right]_{0}^{3} = 3 \\times 9 - 0\\)\n\n\\(q = 27\\ \\mathrm{mC}\\)\n\n**Without calculus.** Charge is the **area under the \\(I\\)-\\(t\\) graph**, and here that graph is a straight line from the origin to \\(I = 18\\) mA at \\(t = 3\\) s — a triangle:\n\n\\(q = \\dfrac{1}{2} \\times \\text{base} \\times \\text{height} = \\dfrac{1}{2} \\times 3 \\times 18 = 27\\ \\mathrm{mC}\\)\n\nThe two routes agree, and the graphical one makes the answer visible at a glance.\n\n**Where the distractors come from.** 54 mC is \\(18 \\times 3\\), the area of the whole **rectangle** — that is, treating the final current as though it had flowed steadily throughout. 18 mC is the current at \\(t = 3\\) s read as a charge. Both are the same mistake in different dress: ignoring that the current spent the interval *growing* from zero.\n\n**The average current tells the same story.** For a current rising linearly from 0 to 18 mA, the mean value is 9 mA, and \\(9\\ \\mathrm{mA} \\times 3\\ \\mathrm{s} = 27\\) mC — half the rectangle, as the triangle must be."
+    },
+    {
+      "hash": "6dff73ecce1188b8938fbd73bef323f527279d627125bfa8a23ae58cc42251fc",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A ray of light travels a distance of 12.0 m in a transparent sheet in 60 ns. The refractive index of the sheet is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1.33"
+        },
+        {
+          "label": "B",
+          "text": "1.50"
+        },
+        {
+          "label": "C",
+          "text": "1.65"
+        },
+        {
+          "label": "D",
+          "text": "1.75"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(1{\\cdot}50\\).**\n\n**Find the speed in the sheet.**\n\n\\(v = \\dfrac{\\text{distance}}{\\text{time}} = \\dfrac{12{\\cdot}0}{60 \\times 10^{-9}}\\)\n\n\\(v = 2 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)\n\n**Then the refractive index**, which is defined as the ratio of the speed in vacuum to the speed in the medium:\n\n\\(\\mu = \\dfrac{c}{v} = \\dfrac{3 \\times 10^{8}}{2 \\times 10^{8}}\\)\n\n\\(\\mu = 1{\\cdot}50\\)\n\n**The check that catches the commonest slip.** Light must travel **slower** in any material medium than in vacuum, so \\(v < c\\) and \\(\\mu > 1\\) always. Inverting the ratio would give \\(0{\\cdot}667\\), which is not offered — and could not be, since a refractive index below 1 would mean light outrunning its vacuum speed.\n\n**Reading the nanoseconds.** \\(60\\ \\mathrm{ns} = 60 \\times 10^{-9}\\ \\mathrm{s} = 6 \\times 10^{-8}\\ \\mathrm{s}\\). Dropping the \"nano\" gives \\(v = 0{\\cdot}2\\ \\mathrm{m\\,s^{-1}}\\) and a refractive index of \\(1{\\cdot}5 \\times 10^{9}\\), which is absurd enough to notice — a useful property of this question, since the error announces itself.\n\n**Orientation.** \\(\\mu = 1{\\cdot}5\\) is ordinary crown glass. For comparison the same 12 m would take 40 ns in vacuum, so the sheet has delayed the light by 20 ns — half as long again as the free journey."
+    },
+    {
+      "hash": "4ecc072096280926bcb68925a03667bdd3c1c9c2fa36cde386cf65bab86e9e57",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "stem": "With the help of a circuit diagram, explain how a full wave rectifier gives output rectified voltage corresponding to both halves of the input ac voltage.",
+      "solution": "**The circuit.** A **centre-tapped transformer** feeds two diodes. The secondary's two ends A and B go to the anodes of \\(\\mathrm{D_1}\\) and \\(\\mathrm{D_2}\\); their cathodes are joined and form one output terminal X; the **centre tap** is the other output terminal Y. The load \\(R_L\\) sits across XY.\n\nThe centre tap is what makes the arrangement work: it divides the secondary into two halves that are always **equal in magnitude and opposite in polarity** with respect to it. At every instant one end is positive and the other negative.\n\n**First half-cycle.** Suppose A is positive with respect to the centre tap. Then B is negative by the same amount.\n\n- \\(\\mathrm{D_1}\\) is **forward biased** and conducts.\n- \\(\\mathrm{D_2}\\) is **reverse biased** and blocks.\n\nCurrent flows from A, through \\(\\mathrm{D_1}\\), down through \\(R_L\\) from X to Y, and back to the centre tap.\n\n**Second half-cycle.** The input reverses, so B is now positive and A negative.\n\n- \\(\\mathrm{D_2}\\) conducts; \\(\\mathrm{D_1}\\) blocks.\n\nCurrent flows from B, through \\(\\mathrm{D_2}\\), and down through \\(R_L\\) **from X to Y again**, returning to the centre tap.\n\n**That last point is the whole mechanism.** The two diodes feed the load from opposite ends of the secondary, but their cathodes are tied together, so both push current through \\(R_L\\) in the **same direction**. The load never sees a reversal, even though the input reverses every half-cycle.\n\n**The output.** Each half-cycle delivers a positive half-sinusoid across \\(R_L\\), with no gaps between them:\n\n- the **negative** half-cycles are **inverted** rather than discarded, so the average output is \\(2V_m/\\pi\\), twice a half-wave rectifier's;\n- the output **ripple frequency is twice the input frequency** — 100 Hz from a 50 Hz supply.\n\nThe doubled frequency matters as much as the doubled average. A smoothing capacitor across \\(R_L\\) must hold the voltage up between pulses, and at twice the frequency that gap is half as long, so the same capacitor gives far steadier dc.\n\n**A bridge rectifier**, using four diodes and no centre tap, produces the identical output and is the more common arrangement in practice."
+    },
+    {
+      "hash": "aa4cc83ac03274c353ed6b1ae6756d8c7a2735fe42ff0252e0cfbdb8561a15e6",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The power of a thin lens is +5 D. When it is immersed in a liquid, it behaves like a concave lens of focal length 100 cm. Calculate the refractive index of the liquid. Given refractive index of glass = 1.5.",
+      "solution": "**In air.** A power of \\(+5\\) D means\n\n\\(f_a = \\dfrac{1}{P} = \\dfrac{1}{5} = 0{\\cdot}2\\ \\mathrm{m} = 20\\ \\mathrm{cm}\\)\n\n**The two lens-maker equations.** The *shape* of the lens is fixed; only its surroundings change. Write the shape factor once:\n\nIn air: \\(\\dfrac{1}{f_a} = (\\mu_g - 1)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nIn the liquid: \\(\\dfrac{1}{f_l} = \\left(\\dfrac{\\mu_g}{\\mu_l} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nThe bracket \\(\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\) is the same in both, so **dividing one by the other eliminates it** — which is what makes the question answerable without knowing either radius:\n\n\\(\\dfrac{f_a}{f_l} = \\dfrac{\\dfrac{\\mu_g}{\\mu_l} - 1}{\\mu_g - 1}\\)\n\n**Substituting**, with \\(f_a = 20\\) cm, \\(f_l = -100\\) cm (negative because the lens now behaves as a **concave**, diverging lens) and \\(\\mu_g = 1{\\cdot}5\\):\n\n\\(\\dfrac{20}{-100} = \\dfrac{\\dfrac{1{\\cdot}5}{\\mu_l} - 1}{0{\\cdot}5}\\)\n\n\\(-0{\\cdot}2 \\times 0{\\cdot}5 = \\dfrac{1{\\cdot}5}{\\mu_l} - 1\\)\n\n\\(\\dfrac{1{\\cdot}5}{\\mu_l} = 1 - 0{\\cdot}1 = 0{\\cdot}9\\)\n\n\\(\\mu_l = \\dfrac{1{\\cdot}5}{0{\\cdot}9} = \\dfrac{5}{3} \\approx 1{\\cdot}67\\)\n\n**Why the lens had to reverse its character.** The sign of \\(f\\) follows the sign of \\(\\left(\\dfrac{\\mu_g}{\\mu_l} - 1\\right)\\), so:\n\n- \\(\\mu_l < \\mu_g\\) — the lens stays **converging**, though weaker;\n- \\(\\mu_l = \\mu_g\\) — the focal length is **infinite**; the lens vanishes optically and light passes straight through;\n- \\(\\mu_l > \\mu_g\\) — the bracket turns negative and the lens becomes **diverging**.\n\nThe question says it became concave, so we knew before any arithmetic that \\(\\mu_l > 1{\\cdot}5\\) — and \\(5/3\\) duly is. That inequality is the sanity check worth applying: a convex lens only reverses its behaviour in a medium **denser** than itself."
+    },
+    {
+      "hash": "e8f73dce869b2fabd1c8ea83bfed8a55a859a6c26ed484bec88bfbc395243e0c",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is refracted by a glass prism. Obtain an expression for the refractive index of the glass in terms of the angle of prism A and the angle of minimum deviation \\(\\delta\\mathrm{m}\\).",
+      "solution": "**The general prism relations.** For a ray entering face AB at incidence \\(i\\), refracting to \\(r_1\\), crossing to face AC at \\(r_2\\) and emerging at \\(e\\):\n\n\\(A = r_1 + r_2 \\qquad\\text{and}\\qquad \\delta = (i + e) - A\\)\n\nThe first comes from the geometry of the two normals; the second from adding the deviations at the two faces, \\((i - r_1)\\) and \\((e - r_2)\\).\n\n**The condition for minimum deviation.** As \\(i\\) is increased from small values, \\(\\delta\\) first falls, reaches a minimum, and then rises again. At that minimum the path through the prism is **symmetric**:\n\n\\(i = e \\qquad\\text{and}\\qquad r_1 = r_2 = r\\)\n\nThe symmetry is not an assumption but a consequence: \\(\\delta\\) is a function of \\(i\\) alone for a given prism, and the ray path is reversible, so \\(i\\) and \\(e\\) are interchangeable. A single stationary point in a curve symmetric under \\(i \\leftrightarrow e\\) must sit where \\(i = e\\). (Experimentally it shows as the ray emerging parallel to the base.)\n\n**Applying the two relations at that point.**\n\nFrom \\(A = r_1 + r_2\\):\n\n\\(A = 2r \\qquad\\Longrightarrow\\qquad r = \\dfrac{A}{2}\\)\n\nFrom \\(\\delta_m = (i + e) - A\\) with \\(i = e\\):\n\n\\(\\delta_m = 2i - A \\qquad\\Longrightarrow\\qquad i = \\dfrac{A + \\delta_m}{2}\\)\n\n**Snell's law at the first face**, where the ray enters from air:\n\n\\(\\mu = \\dfrac{\\sin i}{\\sin r}\\)\n\nSubstituting both results:\n\n\\(\\boxed{\\ \\mu = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)}\\ }\\)\n\n**Why this is the formula laboratories use.** Both \\(A\\) and \\(\\delta_m\\) are angles that can be measured directly on a spectrometer, to a fraction of a degree, with no need to know the ray's path inside the glass or where exactly it entered. Measuring \\(\\delta_m\\) is also self-checking: the minimum is where the image stops moving and reverses direction as the prism is rotated, so the eye finds it without reading a scale.\n\n**A limiting case as a check.** For a thin prism \\((A\\) small\\()\\) both sines may be replaced by their arguments, giving \\(\\mu \\approx \\dfrac{A + \\delta_m}{A}\\), that is \\(\\delta_m \\approx (\\mu - 1)A\\) — the standard thin-prism result, recovered correctly."
+    },
+    {
+      "hash": "7b7920041d3ff90d6099b6aed650adeedc89864be97a0e035d14a3ddbad16a5d",
+      "ref": "Q29",
+      "questionNumber": "29",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A potential difference V is applied across a conductor of length \\(l\\) and cross-sectional area A. Briefly explain how the current density j in the conductor will be affected if\n(a) the potential difference V is doubled,\n(b) the conductor were gradually stretched to reduce its cross-sectional area to \\(\\dfrac{\\mathrm{A}}{2}\\) and then the same potential difference V is applied across it.",
+      "solution": "**The relation to work from.** Current density is current per unit area, and for a conductor obeying Ohm's law\n\n\\(j = \\dfrac{I}{A} = \\sigma E = \\sigma\\dfrac{V}{l} = \\dfrac{ne^{2}\\tau}{m}\\cdot\\dfrac{V}{l}\\)\n\nThe useful form for this question is\n\n\\(j \\propto \\dfrac{V}{l}\\)\n\nNotice what is **absent**: the cross-sectional area. Current \\(I\\) depends on \\(A\\), but current *density* does not — a thicker wire carries more current through proportionally more area, leaving \\(j\\) unchanged. That is what makes part (b) less obvious than it looks.\n\n**(a) The potential difference is doubled.**\n\nThe length is unchanged, so the field inside doubles, the drift velocity doubles, and\n\n\\(j' = 2j\\)\n\n**The current density doubles.** Physically: doubling \\(V\\) doubles \\(E = V/l\\), which doubles the drift velocity \\(v_d = eE\\tau/m\\), and \\(j = nev_d\\) follows.\n\n**(b) The conductor is stretched to half its cross-sectional area, then the same \\(V\\) is applied.**\n\nThe key is that **stretching conserves volume** — no material is added or removed:\n\n\\(A l = A'l' \\qquad\\Longrightarrow\\qquad \\dfrac{A}{2} \\times l' = A \\times l \\qquad\\Longrightarrow\\qquad l' = 2l\\)\n\nHalving the area **doubles the length**. So with the same \\(V\\) across twice the length, the field is halved:\n\n\\(j' = \\dfrac{\\sigma V}{l'} = \\dfrac{\\sigma V}{2l} = \\dfrac{j}{2}\\)\n\n**The current density is halved.**\n\n**Why the area does not enter directly.** It is tempting to argue that halving the area doubles the current density, since \\(j = I/A\\). But \\(I\\) is not fixed — it falls too. The resistance rises as \\(R = \\rho l/A \\to \\rho(2l)/(A/2) = 4R\\), so at the same \\(V\\) the current drops to \\(I/4\\), and\n\n\\(j' = \\dfrac{I/4}{A/2} = \\dfrac{j}{2}\\)\n\nwhich agrees. The two routes must agree, and computing it both ways is the safest check on a stretching problem.\n\n**The rule to carry:** stretching a wire to \\(1/n\\) of its area multiplies its length by \\(n\\), its resistance by \\(n^{2}\\), and — at fixed applied voltage — divides its current density by \\(n\\)."
+    },
+    {
+      "hash": "f7143f7e454f0068c78dc7aeba9950501cedb349fc3db78afb764642322a69c3",
+      "ref": "Q30",
+      "questionNumber": "30",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "A resistor of 50 \\(\\Omega\\), a capacitor of \\(\\left(\\dfrac{25}{\\pi}\\right)\\) \\(\\mu\\)F and an inductor of \\(\\left(\\dfrac{4}{\\pi}\\right)\\) H are connected in series across an ac source whose voltage (in volt) is given by V= 70 sin (100 \\(\\pi\\) t). Calculate :\n(a) the net reactance of the circuit,\n(b) the impedence of the circuit\n(c) the effective value of current in the circuit.",
+      "solution": "**Reading the source.** \\(V = 70\\sin(100\\pi t)\\), so \\(V_0 = 70\\) V and \\(\\omega = 100\\pi\\ \\mathrm{rad\\,s^{-1}}\\) \\((f = 50\\) Hz\\()\\).\n\n**(a) The net reactance.**\n\n\\(X_L = \\omega L = 100\\pi \\times \\dfrac{4}{\\pi} = 400\\ \\Omega\\)\n\n\\(X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\pi \\times \\dfrac{25}{\\pi} \\times 10^{-6}} = \\dfrac{1}{2500 \\times 10^{-6}} = 400\\ \\Omega\\)\n\nThe \\(\\pi\\) in each component value is there precisely so that it cancels against the \\(\\pi\\) in \\(\\omega\\), leaving round numbers.\n\n\\(X = X_L - X_C = 400 - 400\\)\n\n\\(X = 0\\)\n\n**The circuit is at resonance.** That is the whole point of the numbers chosen: \\(\\omega = 100\\pi\\) is exactly \\(1/\\sqrt{LC}\\) for this \\(L\\) and \\(C\\), so the inductive and capacitive reactances cancel completely.\n\n**(b) The impedance.**\n\n\\(Z = \\sqrt{R^{2} + (X_L - X_C)^{2}} = \\sqrt{(50)^{2} + 0^{2}}\\)\n\n\\(Z = 50\\ \\Omega\\)\n\nAt resonance the impedance falls to its **minimum possible value**, the resistance alone. The circuit behaves as though the inductor and capacitor were not there.\n\n**(c) The effective (rms) current.**\n\n\\(V_{rms} = \\dfrac{V_0}{\\sqrt{2}} = \\dfrac{70}{\\sqrt{2}} = 49{\\cdot}5\\ \\mathrm{V}\\)\n\n\\(I_{rms} = \\dfrac{V_{rms}}{Z} = \\dfrac{49{\\cdot}5}{50}\\)\n\n\\(I_{rms} \\approx 1\\ \\mathrm{A}\\)\n\n**Three consequences of resonance worth naming.** The current is at its **maximum** for this source, since \\(Z\\) is least. The current is **in phase** with the voltage, because \\(\\tan\\phi = (X_L - X_C)/R = 0\\), so the power factor is 1 and the circuit consumes the full \\(V_{rms}I_{rms} \\approx 49{\\cdot}5\\) W.\n\nAnd although the *net* reactance is zero, the individual voltages are not small at all: across the inductor \\(V_L = I_{rms}X_L = 1 \\times 400 = 400\\) V, and across the capacitor the same 400 V — each **eight times the source voltage**. They are exactly out of phase with each other and cancel, which is why a series resonant circuit is also called a **voltage magnifier**. A capacitor in such a circuit must be rated for far more than the supply voltage."
+    }
+  ]
+}
