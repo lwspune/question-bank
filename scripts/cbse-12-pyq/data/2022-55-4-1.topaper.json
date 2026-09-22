@@ -1,0 +1,323 @@
+{
+  "paper": "55/4/1",
+  "year": 2022,
+  "paperId": "2022-55-4-1",
+  "markingScheme": "out/2022-55-4-1/ms/p00.png … p11.png",
+  "rows": [
+    {
+      "hash": "1a466ed26c11452dfbf6507dffd7bcd487a07f1af9c4fbea49cba2e56d51ea80",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "stem": "What is meant by energy band gap in a solid ? Draw the energy band diagrams for a conductor, an insulator and a semiconductor.",
+      "solution": "**Energy band gap.**\n\nIn a solid the discrete energy levels of isolated atoms broaden into continuous **bands** of allowed energy. Between the highest band that is normally filled — the **valence band**, top edge \\(E_V\\) — and the lowest band that is normally empty — the **conduction band**, bottom edge \\(E_C\\) — there may lie a range of energies that no electron in the solid can possess. That forbidden range is the **energy band gap**:\n\n\\(E_g = E_C - E_V\\)\n\nIts size decides how easily an electron can be promoted from the valence band, where it is locked into a bond, to the conduction band, where it is free to carry current. Since the number of carriers depends **exponentially** on \\(E_g/k_BT\\), a change of a few electron-volts spans more than twenty orders of magnitude in conductivity.\n\n**The three band diagrams.**\n\n*Conductor.* There is effectively **no gap**. Either the conduction and valence bands **overlap** (\\(E_g \\approx 0\\)), or the highest occupied band is only partly filled. Empty states sit immediately above occupied ones, so electrons respond to the smallest applied field and the material conducts freely at any temperature.\n\n*Semiconductor.* The valence band is full and the conduction band empty, separated by a **small gap**, \\(E_g < 3\\) eV — \\(1{\\cdot}1\\) eV for silicon, \\(0{\\cdot}72\\) eV for germanium. Thermal energy at room temperature (\\(k_BT \\approx 0{\\cdot}026\\) eV) promotes a small but appreciable number of electrons across, each leaving a hole behind, so the material conducts weakly. Raising the temperature liberates more carriers, so its conductivity **increases with temperature** — the opposite of a metal.\n\n*Insulator.* The same arrangement but with a **large gap**, \\(E_g > 3\\) eV (about \\(5{\\cdot}5\\) eV for diamond). Thermal energy cannot bridge it, essentially no electrons reach the conduction band, and there are no free carriers to conduct with.\n\nThe picture is the same in kind for all three; only the gap changes."
+    },
+    {
+      "hash": "f591513e1ff6de52429593b504646a29336ef334a50bc06f6e9995de8b3c9e3a",
+      "ref": "Q2a",
+      "questionNumber": "2 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "Name the spectral series for a hydrogen atom which lies in the visible region. Find the ratio of the maximum to the minimum wavelengths of this series.",
+      "solution": "**The visible series is the Balmer series** — transitions ending on \\(n_f = 2\\). Four of its lines (656 nm red, 486 nm blue-green, 434 nm and 410 nm violet) fall in the visible range, which is why it was the first hydrogen series ever measured.\n\n**Ratio of the extreme wavelengths.**\n\nThe Rydberg formula for this series is\n\n\\(\\dfrac{1}{\\lambda} = R\\left(\\dfrac{1}{2^{2}} - \\dfrac{1}{n_i^{2}}\\right), \\qquad n_i = 3, 4, 5, \\ldots\\)\n\n*The maximum wavelength* comes from the **smallest** energy jump, \\(n_i = 3\\):\n\n\\(\\dfrac{1}{\\lambda_{\\max}} = R\\left(\\dfrac{1}{4} - \\dfrac{1}{9}\\right) = R\\left(\\dfrac{9 - 4}{36}\\right) = \\dfrac{5R}{36}\\)\n\n\\(\\lambda_{\\max} = \\dfrac{36}{5R}\\)\n\n*The minimum wavelength* comes from the **largest** jump, \\(n_i = \\infty\\) — the series limit:\n\n\\(\\dfrac{1}{\\lambda_{\\min}} = R\\left(\\dfrac{1}{4} - 0\\right) = \\dfrac{R}{4}\\)\n\n\\(\\lambda_{\\min} = \\dfrac{4}{R}\\)\n\n*The ratio:*\n\n\\(\\dfrac{\\lambda_{\\max}}{\\lambda_{\\min}} = \\dfrac{36/5R}{4/R} = \\dfrac{36}{20} = \\dfrac{9}{5}\\)\n\nThe Rydberg constant cancels entirely, so the ratio is a pure number fixed by the two quantum numbers alone. Numerically \\(9/5 = 1{\\cdot}8\\), and the measured extremes bear it out: \\(656\\ \\mathrm{nm} / 365\\ \\mathrm{nm} = 1{\\cdot}80\\)."
+    },
+    {
+      "hash": "7e821ee12c17a555612026d2b1c05945f5d87d0066208e08afd1e8a3d1210d77",
+      "ref": "Q2b",
+      "questionNumber": "2 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "What are matter waves ? A proton and an alpha particle are accelerated through the same potential difference. Find the ratio of the de Broglie wavelength associated with the proton to that with the alpha particle.",
+      "solution": "**Matter waves.** De Broglie proposed that every moving material particle has a wave associated with it, of wavelength\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{mv}\\)\n\nThese are called **matter waves** or de Broglie waves. They are not electromagnetic; their amplitude at a point measures the probability of finding the particle there. The hypothesis was confirmed by the Davisson–Germer experiment, in which a beam of electrons diffracted from a nickel crystal exactly as a wave of this wavelength should.\n\n**Ratio for a proton and an alpha particle at the same potential.**\n\nA charge \\(q\\) accelerated from rest through \\(V\\) acquires kinetic energy \\(qV\\), so its momentum is \\(p = \\sqrt{2mqV}\\) and\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mqV}}\\)\n\nTaking the ratio, \\(h\\) and \\(V\\) cancel:\n\n\\(\\dfrac{\\lambda_p}{\\lambda_\\alpha} = \\sqrt{\\dfrac{m_\\alpha q_\\alpha}{m_p q_p}}\\)\n\nThe alpha particle has four times the proton's mass and twice its charge:\n\n\\(\\dfrac{\\lambda_p}{\\lambda_\\alpha} = \\sqrt{\\dfrac{(4m)(2e)}{(m)(e)}} = \\sqrt{8} = 2\\sqrt{2}\\)\n\n**The proton's wavelength is \\(2\\sqrt{2} \\approx 2{\\cdot}83\\) times the alpha particle's.**\n\nBoth factors push the same way — the alpha particle is heavier *and* gains more energy at the same voltage, so it has the greater momentum and therefore the shorter wavelength. Note that this ratio is specific to equal *potentials*: at equal kinetic energy the ratio would be \\(2\\), and at equal *speed* it would be \\(4\\)."
+    },
+    {
+      "hash": "86ef588e21e636613aa393e0f64a3aaf7ef26250adb4949765bafd66b9b3a149",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Special Purpose p-n Junction Diodes",
+      "stem": "Name the device which converts electrical energy into light energy. Write three advantages of the device.",
+      "solution": "The device is a **light emitting diode (LED)** — a heavily doped p-n junction which, when **forward biased**, emits light.\n\n**How it works, briefly.** Forward bias drives electrons into the p-region and holes into the n-region. Near the junction these injected minority carriers **recombine** with the majority carriers, and the energy released — close to the band gap \\(E_g\\) — is emitted as a photon, \\(h\\nu \\approx E_g\\). The colour is therefore fixed by the band gap of the semiconductor, which is why LEDs are made from compound semiconductors such as GaAs, GaAsP and GaN rather than silicon.\n\n**Three advantages:**\n\n- **Low operating voltage and low power consumption** — an LED runs on a volt or two and a few milliamperes, so it converts a far larger fraction of the supplied energy into light than a filament lamp, which wastes most of it as heat.\n\n- **Fast switching, with no warm-up time** — an LED reaches full brightness in nanoseconds. This is what makes it usable as an optical transmitter for data, and why it is preferred for indicator and signalling applications.\n\n- **Long life and ruggedness** — with no filament to burn out and no fragile glass envelope, an LED lasts tens of thousands of hours and withstands shock and vibration.\n\n(A fourth: the emitted light is nearly monochromatic, spanning only 100 Å to 500 Å, so no colour filter is needed.)"
+    },
+    {
+      "hash": "d6ed56aae702668254da160128a4094f20bb0838da548a3b9be2940933ff2fbf",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "(a) Differentiate between nuclear fission and nuclear fusion.\n(b) Deuterium undergoes fusion as per the reaction :\n\\({}^{2}_{1}\\mathrm{H} + {}^{2}_{1}\\mathrm{H} \\longrightarrow {}^{3}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + 3{\\cdot}27\\ \\mathrm{MeV}\\)\nFind the duration for which an electric bulb of 500 W can be kept glowing by the fusion of 100 g of deuterium.",
+      "solution": "**(a) Fission and fusion contrasted.**\n\n**Nuclear fission** is the breaking of a very heavy nucleus into two lighter nuclei of intermediate mass (\\(30 < A < 170\\)), with energy released. It can be triggered by a slow neutron, and each event releases about 200 MeV.\n\n**Nuclear fusion** is the joining of two very light nuclei (\\(A \\lesssim 10\\)) into a heavier one, again with energy released. It requires enormous temperatures to overcome the Coulomb barrier between the two positive nuclei.\n\nBoth release energy for the same reason: binding energy per nucleon peaks near \\(A \\approx 56\\), and any process moving nucleons **towards** that peak releases energy — heavy nuclei by splitting, light nuclei by joining. Fusion releases far more energy *per nucleon*, since the curve rises much more steeply on the light side.\n\n**(b) How long 100 g of deuterium keeps a 500 W bulb lit.**\n\n*Number of deuterium atoms.* With atomic mass 2 g/mol:\n\n\\(N = \\dfrac{6{\\cdot}023 \\times 10^{23}}{2} \\times 100 = 3{\\cdot}0115 \\times 10^{25}\\)\n\n*Energy per atom.* The reaction consumes **two** deuterium nuclei and releases \\(3{\\cdot}27\\) MeV, so the yield per atom is\n\n\\(\\dfrac{3{\\cdot}27}{2} = 1{\\cdot}635\\ \\text{MeV}\\)\n\n*Total energy released.*\n\n\\(E = 3{\\cdot}0115 \\times 10^{25} \\times 1{\\cdot}635\\ \\mathrm{MeV} = 3{\\cdot}0115 \\times 1{\\cdot}635 \\times 10^{25} \\times 1{\\cdot}6 \\times 10^{-13}\\ \\text{J}\\)\n\n\\(E = 7{\\cdot}878 \\times 10^{12}\\ \\text{J}\\)\n\n*Duration.*\n\n\\(t = \\dfrac{E}{P} = \\dfrac{7{\\cdot}878 \\times 10^{12}}{500} = 1{\\cdot}5756 \\times 10^{10}\\ \\text{s}\\)\n\n\\(t = \\dfrac{1{\\cdot}5756 \\times 10^{10}}{3{\\cdot}15 \\times 10^{7}} \\approx 500\\ \\text{years}\\)\n\nThe factor of two is the step to watch: counting one reaction per atom would double the answer. And the result is worth pausing on — a hundred grams of deuterium, obtainable from a few tonnes of seawater, would run the bulb for five centuries."
+    },
+    {
+      "hash": "6ecbd007ded21938abe0dc296fc427cef1ddc5c3dadf12098b87198348775771",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "Answer the following, giving reason :\n(a) The resistance of a p-n junction is low when it is forward biased and is high when it is reversed biased.\n(b) Doping of intrinsic semiconductors is a necessity for making electronic devices.\n(c) Photodiodes are operated in reverse bias.",
+      "solution": "**(a) Why the resistance is low in forward bias and high in reverse bias.**\n\nUnder **forward bias** the applied voltage opposes the junction's barrier potential. The depletion layer **narrows** and the barrier falls, so majority carriers cross in large numbers once the applied voltage exceeds the threshold. A large current for a small voltage means a **low resistance**.\n\nUnder **reverse bias** the applied voltage adds to the barrier potential. The depletion layer **widens** and the barrier rises, so majority carriers cannot cross at all. The only current is the tiny reverse saturation current carried by **minority** carriers, which is of the order of microamperes and limited by how many are thermally generated rather than by the voltage. A minute current for a large voltage means a **high resistance**.\n\n**(b) Why doping is a necessity.**\n\nAn intrinsic semiconductor at room temperature has very few carriers — about \\(10^{16}\\ \\mathrm{m^{-3}}\\), since crossing the full band gap is rare — so its conductivity is far too low to be useful, and it cannot be controlled.\n\nDoping fixes both problems. It introduces impurity levels lying only \\(\\sim\\!0{\\cdot}01\\)–\\(0{\\cdot}05\\) eV from the nearest band, which thermal energy covers easily, so **essentially every dopant contributes a carrier**. One part per million raises the conductivity by orders of magnitude.\n\nMore importantly, doping makes the carrier **type** controllable: pentavalent donors give n-type material, trivalent acceptors give p-type. Every semiconductor device — diode, transistor, solar cell — is built from a **junction between differently doped regions**, so without doping there would be no junction and no device.\n\n**(c) Why photodiodes are operated in reverse bias.**\n\nA photodiode measures light by the carriers that light creates. The point of reverse bias is that it makes that measurement **sensitive**.\n\nIn reverse bias the dark current is already very small — just the reverse saturation current. When light of \\(h\\nu > E_g\\) falls on the junction it generates extra electron–hole pairs, and the wide depletion layer's strong field sweeps them apart and out to the contacts. The photocurrent therefore adds to a very small background, so the **fractional change is large and easily measured**.\n\nUnder forward bias the current is already large, so the same light-generated contribution would be a negligible fraction of it and impossible to detect. The reverse-biased photocurrent is also **proportional to the light intensity** over a wide range, which is exactly what a detector needs."
+    },
+    {
+      "hash": "2ebd405e10bec09177aa27ccab0af50d424cfb206c4446c50d038c3fffd62a99",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "(a) In Geiger-Marsden experiment, calculate the distance of closest approach for an alpha particle with energy \\(2{\\cdot}56 \\times 10^{-12}\\) J. Consider that the particle approaches gold nucleus \\((\\mathrm{Z} = 79)\\) in head-on position.\n(b) If the above experiment is repeated with a proton of the same energy, then what will be the value of the distance of closest approach ?",
+      "solution": "At the distance of closest approach in a head-on encounter, the particle has stopped and all its kinetic energy has become electrostatic potential energy.\n\n**(a) For the alpha particle.**\n\nAn alpha particle carries charge \\(2e\\) and the gold nucleus \\(Ze\\) with \\(Z = 79\\):\n\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{(2e)(Ze)}{r_\\alpha} \\qquad\\Longrightarrow\\qquad r_\\alpha = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{2Ze^{2}}{K}\\)\n\n\\(r_\\alpha = \\dfrac{9 \\times 10^{9} \\times 2 \\times 79 \\times (1{\\cdot}6 \\times 10^{-19})^{2}}{2{\\cdot}56 \\times 10^{-12}}\\)\n\n\\(r_\\alpha = \\dfrac{9 \\times 10^{9} \\times 158 \\times 2{\\cdot}56 \\times 10^{-38}}{2{\\cdot}56 \\times 10^{-12}}\\)\n\nThe two factors of \\(2{\\cdot}56\\) cancel, leaving\n\n\\(r_\\alpha = 9 \\times 10^{9} \\times 158 \\times 10^{-26} = 1{\\cdot}422 \\times 10^{-14}\\ \\mathrm{m} = 14{\\cdot}22\\ \\text{fm}\\)\n\n**(b) For a proton of the same energy.**\n\nThe only change is the projectile's charge, which falls from \\(2e\\) to \\(e\\). Since \\(r \\propto q_{\\text{projectile}}\\) at fixed \\(K\\):\n\n\\(r_p = \\dfrac{r_\\alpha}{2} = 7{\\cdot}11 \\times 10^{-15}\\ \\mathrm{m} = 7{\\cdot}11\\ \\text{fm}\\)\n\nNo recalculation is needed — halving the charge halves the potential energy at any given separation, so the particle must get twice as close before its kinetic energy is exhausted.\n\nThe numbers are physically telling. The radius of a gold nucleus is about \\(7\\) fm, so the **proton at \\(7{\\cdot}11\\) fm is just grazing the nuclear surface**, while the alpha particle at \\(14{\\cdot}22\\) fm stays well clear. This is precisely the regime Rutherford exploited: as long as the projectile stays outside, the Coulomb scattering formula holds exactly, and the energy at which it begins to fail marks the nuclear radius."
+    },
+    {
+      "hash": "7a5d1327be3e79cb97cf63766555e964e746278004779f48c13df5ceda119def",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "Briefly explain how bright and dark fringes are formed on the screen in Young's double slit experiment. Hence, derive the expression for the fringe width.",
+      "solution": "**How the fringes are formed.**\n\nLight from a single source falls on two narrow slits \\(S_1\\) and \\(S_2\\), which therefore act as **coherent** sources — any phase fluctuation at the source reaches both together, so the phase difference between them never changes.\n\nThe two waves travel different distances to reach a point P on the screen, arriving with a **path difference** \\(\\Delta x = S_2P - S_1P\\). What happens there depends on that difference:\n\n- **Bright fringe** — when the path difference is a whole number of wavelengths, \\(\\Delta x = n\\lambda\\), the two waves arrive **in phase** (\\(\\Delta\\phi = 2n\\pi\\)) and reinforce.\n- **Dark fringe** — when the path difference is an odd number of half-wavelengths, \\(\\Delta x = (2n-1)\\dfrac{\\lambda}{2}\\), they arrive **out of phase** (\\(\\Delta\\phi\\) an odd multiple of \\(\\pi\\)) and cancel.\n\nSince the path difference varies smoothly across the screen, these conditions are met alternately, producing the familiar pattern of evenly spaced bright and dark bands.\n\n**Deriving the fringe width.**\n\nLet the slit separation be \\(d\\) and the screen distance \\(D \\gg d\\). For a point P a distance \\(x\\) from the central point O, the path difference for small angles is\n\n\\(\\Delta x = \\dfrac{xd}{D}\\)\n\n*Bright fringes.* Setting \\(\\Delta x = n\\lambda\\):\n\n\\(x_n = \\dfrac{n\\lambda D}{d}, \\qquad n = 0, 1, 2, \\ldots\\)\n\n*Fringe width.* The spacing between consecutive bright fringes is\n\n\\(\\beta = x_{n+1} - x_n = \\dfrac{(n+1)\\lambda D}{d} - \\dfrac{n\\lambda D}{d}\\)\n\n\\(\\beta = \\dfrac{\\lambda D}{d}\\)\n\nThe same subtraction on the dark-fringe positions \\(x_n = \\left(n - \\frac{1}{2}\\right)\\dfrac{\\lambda D}{d}\\) gives the identical spacing — which is why bright and dark bands alternate at equal intervals, the dark ones sitting exactly midway between the bright.\n\nNotice that \\(n\\) has cancelled: **every** fringe has the same width, however far from the centre. This uniformity is the sharpest way to tell an interference pattern from a diffraction pattern, where the central band is twice as wide as the rest."
+    },
+    {
+      "hash": "5915076b76b2d5616a701866f831b0c149192a46c857ab9639217fc02fa6f315",
+      "ref": "Q8a",
+      "questionNumber": "8 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(i) Draw a labelled ray diagram showing the formation of the image at infinity by an astronomical telescope.\n(ii) A telescope consists of an objective of focal length 150 cm and an eyepiece of focal length \\(6{\\cdot}0\\) cm. If the final image is formed at infinity, then calculate :\n(I) the length of the tube in this adjustment, and\n(II) the magnification produced.",
+      "solution": "**(i) The ray diagram.**\n\nAn objective of long focal length \\(f_o\\) and an eyepiece of short focal length \\(f_e\\) are mounted coaxially. Parallel rays from a distant object, arriving at a small angle \\(\\alpha\\) to the axis, are focused by the objective to form a **real, inverted, diminished image** \\(A'B'\\) in its focal plane.\n\nIn **normal adjustment** the eyepiece is positioned so that this image lies at *its* focal point too — the two focal planes coincide. The eyepiece therefore sends out parallel light and the **final image is at infinity**, which a relaxed eye views without accommodation. The rays reaching the eye make an angle \\(\\beta\\) with the axis, and the tube length is \\(f_o + f_e\\).\n\n**(ii) The numbers.** \\(f_o = 150\\) cm, \\(f_e = 6{\\cdot}0\\) cm, final image at infinity.\n\n**(I) Length of the tube.**\n\n\\(L = f_o + f_e = 150 + 6 = 156\\ \\text{cm}\\)\n\n**(II) Magnification.**\n\n\\(m = \\dfrac{f_o}{f_e} = \\dfrac{150}{6} = 25\\)\n\nBoth relations depend on normal adjustment. The design logic is visible in the figures: a telescope wants the **longest possible objective focal length** and the shortest eyepiece, since \\(m = f_o/f_e\\) — and the tube is then almost exactly \\(f_o\\) long, which is why high-magnification refractors are such unwieldy instruments. (A compound microscope is built the opposite way, with both focal lengths short.)"
+    },
+    {
+      "hash": "e7be7f249e5ac53c4c70efe073f871c352d59c1de3da1cbc0e4b01e6ff2df807",
+      "ref": "Q8b",
+      "questionNumber": "8 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(i) Draw a labelled ray diagram showing the formation of the image at least distance of distinct vision by a compound microscope.\n(ii) A small object is placed at a distance of \\(3{\\cdot}0\\) cm from a magnifier of focal length \\(4{\\cdot}0\\) cm. Find :\n(I) the position of the image formed, and\n(II) the linear magnification produced.",
+      "solution": "**(i) The ray diagram — image at the near point.**\n\nThe object AB is placed just **beyond the focus** of the short-focus objective, which forms a **real, inverted, magnified** image \\(A'B'\\) inside the tube.\n\nThat image acts as the object for the eyepiece and is positioned just **inside the eyepiece's focal length**, so the eyepiece works as a simple magnifier. It forms a **virtual, magnified** image \\(A''B''\\) on the same side as \\(A'B'\\), and in this adjustment the eyepiece is set so that the final image falls at the **near point**, a distance \\(D = 25\\) cm from the eye.\n\nThe final image is virtual, inverted relative to the original object, and greatly magnified, with\n\n\\(m = m_o \\times m_e = \\left(\\dfrac{v_o}{u_o}\\right)\\left(1 + \\dfrac{D}{f_e}\\right)\\)\n\n**(ii) The magnifier.** \\(f = +4{\\cdot}0\\) cm, object at \\(u = -3{\\cdot}0\\) cm.\n\n**(I) Position of the image.**\n\n\\(\\dfrac{1}{v} - \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{f} + \\dfrac{1}{u} = \\dfrac{1}{4{\\cdot}0} + \\dfrac{1}{-3{\\cdot}0} = \\dfrac{3 - 4}{12} = -\\dfrac{1}{12}\\)\n\n\\(v = -12\\ \\text{cm}\\)\n\nThe negative sign places the image on the **same side as the object**, so it is **virtual and erect**, 12 cm from the lens.\n\n**(II) Linear magnification.**\n\n\\(m = \\dfrac{v}{u} = \\dfrac{-12}{-3} = +4\\)\n\nThe image is four times the size of the object, erect (the positive sign) and virtual — exactly the behaviour a magnifying glass must have, and the reason the object has to sit **inside** the focal length. Placed beyond \\(f = 4\\) cm it would give a real, inverted image instead, which the eye could not use."
+    },
+    {
+      "hash": "5d1497559699c802f0f5b51f1ba9e84e28e4f29a9e6d6d2d5db43acb3fb1b9a1",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "(a) Use Einstein's photoelectric equation to depict the variation of the maximum kinetic energy \\((\\mathrm{E_k})\\) of electrons emitted, with the frequency \\((\\nu)\\) of the incident radiation.\n(b) A photosensitive surface is illuminated with a beam of (i) yellow light, and (ii) red light, both of the same intensity.\nIn which case will\n(I) photoelectrons have more \\(\\mathrm{E_k}\\) ?\n(II) more numbers of electrons be emitted ?\nJustify your answer in each case.",
+      "solution": "**(a) The graph.**\n\nEinstein's photoelectric equation is\n\n\\(E_k = h\\nu - \\phi_0\\)\n\nPlotted against \\(\\nu\\) this is a **straight line** of slope \\(h\\) — the same slope for every metal, since \\(h\\) is universal — with intercept \\(-\\phi_0\\) on the energy axis. The physical graph begins at the **threshold frequency** \\(\\nu_0 = \\phi_0/h\\), where it crosses the \\(\\nu\\)-axis, and rises from there; below \\(\\nu_0\\) no emission occurs, so the dashed extension to the negative intercept is a construction rather than a measurement.\n\nMeasuring the slope gives Planck's constant; the intercept identifies the metal.\n\n**(b) Yellow light against red light, at the same intensity.**\n\n**(I) Which gives photoelectrons of greater kinetic energy — yellow.**\n\n\\(E_k = h\\nu - \\phi_0\\), and on the same surface \\(\\phi_0\\) is fixed. Yellow light has the higher frequency of the two (\\(\\nu_Y > \\nu_R\\), since \\(\\lambda_Y \\approx 580\\) nm against \\(\\lambda_R \\approx 700\\) nm), so\n\n\\((E_k)_Y > (E_k)_R\\)\n\nIntensity does not enter this comparison at all.\n\n**(II) Which emits more electrons — red.**\n\nHere intensity is measured as **energy delivered per unit area per second**. Each red photon carries *less* energy than each yellow one, so the same power must be delivered by **more photons per second**:\n\n\\(N \\propto \\dfrac{1}{\\nu}, \\qquad\\text{so}\\qquad N_R > N_Y\\)\n\nEach photon frees at most one electron, so more photons means more photoelectrons. **Red light ejects the greater number.**\n\nThe two parts pull in opposite directions, and that is the point of the question: **frequency governs how energetic each electron is, while photon number governs how many there are** — and at fixed energy-intensity those two cannot both be increased.\n\n(A note on the convention, since CBSE does not apply it uniformly. The answer to (II) rests on reading \"same intensity\" as *same power per unit area*. Elsewhere — for instance the standard photoelectric graph, where curves for different frequencies at \"the same intensity\" are drawn sharing one saturation plateau — intensity is taken to mean *same number of photons per unit area per second*, and on that reading the number emitted would be equal. Which reading is intended has to be taken from the question.)"
+    },
+    {
+      "hash": "ed43f9bb58452f7bf4f7f1933ce46c4236818b0e5b72e96e6fa8b51c629ab9a8",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident on a prism at an angle of \\(45^\\circ\\) and passes symmetrically as shown in the figure. Calculate :\n(a) the angle of minimum deviation,\n(b) the refractive index of the material of the prism, and\n(c) the angle of refraction at the point P.",
+      "figureNote": "REQUIRED — the stem gives only the 45° angle of incidence and 'passes symmetrically'; the prism's APEX ANGLE is printed only in the drawing, and without it none of (a), (b), (c) can be computed. Drawing: triangular prism ABC, apex A at the top, B lower-left, C lower-right, with the angle at A marked 60° and the angle at B marked 60°; an incident ray strikes face AB at P, its dashed normal drawn, the 45° marked between ray and normal; the refracted ray runs PQ parallel to BC to point Q on face AC and emerges. Described in full — nothing here states an answer, since the apex angle is a GIVEN and the question asks for three derived quantities. Page idx 8.",
+      "imageAttached": true,
+      "solution": "From the figure, the prism is **equilateral**, so \\(A = 60^\\circ\\), and the ray passes **symmetrically** — parallel to the base BC — at an angle of incidence \\(i = 45^\\circ\\).\n\n**(a) Angle of minimum deviation.**\n\nSymmetric passage is precisely the condition of minimum deviation, with \\(i = e\\). Substituting into \\(\\delta = i + e - A\\):\n\n\\(\\delta_m = 2i - A = 2(45^\\circ) - 60^\\circ\\)\n\n\\(\\delta_m = 30^\\circ\\)\n\n**(b) Refractive index.**\n\nAt minimum deviation,\n\n\\(\\mu = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)} = \\dfrac{\\sin\\left(\\dfrac{60^\\circ + 30^\\circ}{2}\\right)}{\\sin 30^\\circ} = \\dfrac{\\sin 45^\\circ}{\\sin 30^\\circ}\\)\n\n\\(\\mu = \\dfrac{1/\\sqrt{2}}{1/2} = \\sqrt{2} \\approx 1{\\cdot}414\\)\n\n**(c) Angle of refraction at P.**\n\nAt minimum deviation \\(r_1 = r_2\\), and since \\(r_1 + r_2 = A\\):\n\n\\(r_1 = \\dfrac{A}{2} = 30^\\circ\\)\n\n*Checking with Snell's law at P:*\n\n\\(1 \\times \\sin 45^\\circ = \\mu \\sin r_1 \\qquad\\Longrightarrow\\qquad \\dfrac{1}{\\sqrt{2}} = \\sqrt{2}\\sin r_1 \\qquad\\Longrightarrow\\qquad \\sin r_1 = \\dfrac{1}{2}\\)\n\nso \\(r_1 = 30^\\circ\\), in agreement.\n\nThe figure carries the whole of part (a): \"passes symmetrically\" is what identifies this as the minimum-deviation configuration, and once that is recognised all three answers follow from the single angle \\(45^\\circ\\) and the prism's \\(60^\\circ\\). A refractive index of \\(\\sqrt{2}\\) also makes the critical angle exactly \\(45^\\circ\\), which is why prisms of this glass are the standard choice for total-internal-reflection devices."
+    },
+    {
+      "hash": "0c3298d7fe0faa452c8389affaf0cf45261c298ff10eb9b4d5c635038e152a95",
+      "ref": "Q11a",
+      "questionNumber": "11 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Identify electromagnetic waves which :\n(i) are used in radar system.\n(ii) affect a photographic plate.\n(iii) are used in surgery.\nWrite their frequency range.",
+      "solution": "**(i) Used in radar systems — MICROWAVES.**\n\nFrequency range: about \\(10^{10}\\ \\mathrm{Hz}\\) to \\(10^{12}\\ \\mathrm{Hz}\\).\n\nMicrowaves are short enough to be formed into a narrow beam by a dish of modest size, yet long enough to pass through cloud and rain — both essential for radar.\n\n**(ii) Affect a photographic plate — X-RAYS.**\n\nFrequency range: about \\(10^{16}\\ \\mathrm{Hz}\\) to \\(10^{20}\\ \\mathrm{Hz}\\).\n\nX-rays pass readily through soft tissue but are strongly absorbed by bone, so the plate records a shadow. (Gamma rays, \\(10^{20}\\) to \\(10^{24}\\) Hz, also affect a plate and are accepted.)\n\n**(iii) Used in surgery — GAMMA RAYS.**\n\nFrequency range: about \\(10^{20}\\ \\mathrm{Hz}\\) to \\(10^{24}\\ \\mathrm{Hz}\\).\n\nIn the gamma knife, many weak beams are aimed to converge on a tumour, delivering a destructive dose there while each individual path through healthy tissue stays harmless. (Infrared, \\(10^{12}\\) to \\(10^{14}\\) Hz, is also accepted, being used for cauterising and in laser surgery.)\n\nThe frequencies span fourteen orders of magnitude, and in each case the application follows from the photon energy. Microwave photons are far too feeble to interact chemically, which is what makes them safe to broadcast; X-ray photons are energetic enough to penetrate tissue without being absorbed by it; gamma photons carry enough to destroy cells outright, which is both the hazard and the therapeutic use."
+    },
+    {
+      "hash": "b679f03a5270cd647de415f9ffe897c748a0ed950fe217a2b91d7f57c42dd548",
+      "ref": "Q11b",
+      "questionNumber": "11 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "stem": "A plane wavefront is propagating from a rarer into a denser medium. Use Huygens principle to show the refracted wavefront and verify Snell's law.",
+      "solution": "**Setting up.** A plane wavefront AB travelling in medium 1 at speed \\(v_1\\) meets the boundary PP′ with a denser medium 2, in which the speed is \\(v_2 < v_1\\). Let the wavefront reach A first, while B has still to travel the distance BC to reach the surface at C.\n\n**Applying Huygens' principle.** Every point on a wavefront is a source of secondary wavelets spreading at the speed of the medium.\n\nLet \\(\\tau\\) be the time B takes to reach C:\n\n\\(BC = v_1\\tau\\)\n\nDuring that same \\(\\tau\\), the wavelet from A has been spreading **in medium 2**, at the slower speed, so it has grown to a hemisphere of radius\n\n\\(AE = v_2\\tau\\)\n\nThe refracted wavefront is the common tangent from C to this sphere — the line **CE**.\n\n**Verifying Snell's law.** Consider the two right-angled triangles sharing the hypotenuse AC:\n\nIn \\(\\triangle ABC\\): \\(\\qquad \\sin i = \\dfrac{BC}{AC} = \\dfrac{v_1\\tau}{AC}\\)\n\nIn \\(\\triangle AEC\\): \\(\\qquad \\sin r = \\dfrac{AE}{AC} = \\dfrac{v_2\\tau}{AC}\\)\n\nDividing, both \\(AC\\) and \\(\\tau\\) cancel:\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{v_1}{v_2}\\)\n\nNow using \\(n = \\dfrac{c}{v}\\), so that \\(v_1 = \\dfrac{c}{n_1}\\) and \\(v_2 = \\dfrac{c}{n_2}\\):\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{c/n_1}{c/n_2} = \\dfrac{n_2}{n_1}\\)\n\nwhich is **Snell's law**, \\(n_1\\sin i = n_2\\sin r\\).\n\nSince \\(v_2 < v_1\\) the ratio exceeds 1, so \\(i > r\\): the ray **bends towards the normal** on entering the denser medium, as it must.\n\nThe mechanism is worth stating plainly — the wavefront tilts because one end of it enters the slow medium before the other and falls behind. (The marking scheme's intermediate line prints \\(\\sin i/\\sin r = v_2/v_1\\); its own two preceding lines give \\(v_1/v_2\\), and only that form leads to the \\(n_2/n_1\\) it then concludes with.)"
+    },
+    {
+      "hash": "89746cd632015b5b2c2cf1fe0094ee93dc523d1862723bf93b7c37271bf206f0",
+      "ref": "Q12a",
+      "questionNumber": "12 (a)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "An object is placed at the point B as shown in the figure. The object distance (u) and the image distance (v) are related as",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{v} - \\frac{1}{u} = \\left(\\frac{n_2 - n_1}{n_1}\\right)\\frac{1}{R}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{v} - \\frac{1}{u} = \\left(\\frac{n_1 - n_2}{n_2}\\right)\\frac{1}{R}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{n_2}{v} - \\frac{n_1}{u} = \\frac{(n_2 - n_1)}{R}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{n_1}{v} - \\frac{n_2}{u} = \\frac{(n_1 - n_2)}{R}\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — and the figure IS the discriminator, so it is described only in part. The point B named by the stem exists ONLY in the drawing, and which of the two media the object sits in is exactly what selects between the four options. Drawn: a curved refracting surface across the page with the region on one side labelled \\(n_1\\) and the other \\(n_2\\), the annotation \\((n_2 > n_1)\\) beside it, a horizontal principal axis carrying two marked points C and B, and two dimension arrows labelled R and u. WITHHELD: which side of the surface C and B lie on, and therefore the direction of propagation. Page idx 10.",
+      "imageAttached": true,
+      "solution": "The formula for refraction at a spherical surface is not memorised with fixed subscripts — which index goes over \\(v\\) and which over \\(u\\) depends on **where the object is and which way the light travels**.\n\nFrom the figure, the object B lies in medium \\(n_2\\), to the **right** of the surface, and the centre of curvature C lies in medium \\(n_1\\) to the left. So the light starts in \\(n_2\\) and refracts into \\(n_1\\).\n\nThe general relation is\n\n\\(\\dfrac{n_{\\text{refracted side}}}{v} - \\dfrac{n_{\\text{object side}}}{u} = \\dfrac{n_{\\text{refracted side}} - n_{\\text{object side}}}{R}\\)\n\nHere the object side is \\(n_2\\) and the refracted side \\(n_1\\), giving\n\n\\(\\dfrac{n_1}{v} - \\dfrac{n_2}{u} = \\dfrac{n_1 - n_2}{R}\\)\n\nThe answer is (D).\n\nOption (C) is the same relation with the media the other way round — correct when light goes **from \\(n_1\\) into \\(n_2\\)**, which is the version usually written down and the reason it is offered here. The figure is what decides between them, and the label \\((n_2 > n_1)\\) in the corner is the clue that this is light leaving the denser medium.\n\nOptions (A) and (B) can be rejected without reference to the figure at all: they place a bare \\(1/v\\) and \\(1/u\\) on the left, which is the *thin lens* form. A single refracting surface always carries the two refractive indices as separate weights on \\(v\\) and \\(u\\); they only merge into the lens equation after the two surfaces of a lens are combined."
+    },
+    {
+      "hash": "469445ad7c276496034f4b1485b22b3896ec4b1a9e3c21bec3906ee49ff4b8ff",
+      "ref": "Q12b",
+      "questionNumber": "12 (b)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A point object is placed in air at a distance 'R' in front of a convex spherical refracting surface of radius of curvature R. If the medium on the other side of the surface is glass, then the image is :",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "options": [
+        {
+          "label": "A",
+          "text": "real and formed in glass."
+        },
+        {
+          "label": "B",
+          "text": "real and formed in air."
+        },
+        {
+          "label": "C",
+          "text": "virtual and formed in glass."
+        },
+        {
+          "label": "D",
+          "text": "virtual and formed in air."
+        }
+      ],
+      "answer": "D",
+      "solution": "Apply the refraction formula at the single convex surface, with light going from air into glass.\n\nTaking the pole as origin and the direction of the incident light as positive: \\(u = -R\\) (the object is real, a distance \\(R\\) in front), the surface is convex towards the incoming light so \\(R_{\\text{surface}} = +R\\), and \\(n_1 = 1\\), \\(n_2 = n\\) for the glass.\n\n\\(\\dfrac{n}{v} - \\dfrac{1}{u} = \\dfrac{n - 1}{R}\\)\n\n\\(\\dfrac{n}{v} + \\dfrac{1}{R} = \\dfrac{n - 1}{R}\\)\n\n\\(\\dfrac{n}{v} = \\dfrac{n - 1 - 1}{R} = \\dfrac{n - 2}{R}\\)\n\n\\(v = \\dfrac{nR}{n - 2}\\)\n\nFor any ordinary glass, \\(n < 2\\), so the denominator is **negative** and so is \\(v\\). A negative image distance places the image on the **same side as the object** — that is, back in the **air**, where the light came from — so the image is **virtual**.\n\nThe answer is (D), virtual and formed in air.\n\nTaking \\(n = 1{\\cdot}5\\) gives \\(v = \\dfrac{1{\\cdot}5R}{-0{\\cdot}5} = -3R\\): the image lies \\(3R\\) in front of the surface, three times as far out as the object.\n\nThe result is worth reading as a general statement. A convex refracting surface converges light, but placing the object only \\(R\\) away is too close for it to converge them to a real focus — the rays still diverge on emerging, merely less steeply, and the eye traces them back to a virtual image. The boundary is at \\(n = 2\\); a medium denser than that would form a real image from this object position."
+    },
+    {
+      "hash": "36a0fc29b4ba84b1ac5233b646c872d3b56e9ceb408f1481c10dcbb98895aee9",
+      "ref": "Q12c",
+      "questionNumber": "12 (c)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "An object is kept at 2F in front of an equiconvex lens. The image formed is :",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "options": [
+        {
+          "label": "A",
+          "text": "real and of the size of the object."
+        },
+        {
+          "label": "B",
+          "text": "virtual and of the size of the object."
+        },
+        {
+          "label": "C",
+          "text": "real and enlarged."
+        },
+        {
+          "label": "D",
+          "text": "virtual and diminished."
+        }
+      ],
+      "answer": "A",
+      "solution": "For a converging lens, an object at \\(2F\\) is the one position that returns the image at \\(2F\\) on the other side, the same size as the object.\n\nWith \\(u = -2f\\):\n\n\\(\\dfrac{1}{v} - \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{f} + \\dfrac{1}{-2f} = \\dfrac{2 - 1}{2f} = \\dfrac{1}{2f}\\)\n\n\\(v = +2f\\)\n\nThe magnification is then\n\n\\(m = \\dfrac{v}{u} = \\dfrac{2f}{-2f} = -1\\)\n\nA positive \\(v\\) means the image is on the far side of the lens, where the light actually goes, so it is **real**. The magnitude \\(\\left|m\\right| = 1\\) means it is **the same size as the object**, and the minus sign means it is inverted.\n\nSo the image is real and of the size of the object — option (A).\n\nThis position is the symmetric point of the lens: object and image distances are equal, and it is the configuration of minimum separation between a real object and its real image, \\(4f\\). It is also the standard method for measuring a lens's focal length — find the arrangement where object and image are the same size, and \\(f\\) is a quarter of their separation."
+    },
+    {
+      "hash": "bec165d2345682a7c3d0481121877b76194ff7abca37a1a3d0783c930166205b",
+      "ref": "Q12d",
+      "questionNumber": "12 (d)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A thin converging lens of focal length 10 cm and a thin diverging lens of focal length 20 cm are placed coaxially in contact. The power of the combination is :",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-5\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(+5\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(+15\\ \\mathrm{D}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-15\\ \\mathrm{D}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "For thin lenses in contact the powers add. Converting the focal lengths to metres and attaching the correct signs:\n\n*Converging lens:* \\(f_1 = +10\\ \\mathrm{cm} = +0{\\cdot}10\\) m, so\n\n\\(P_1 = \\dfrac{1}{0{\\cdot}10} = +10\\ \\mathrm{D}\\)\n\n*Diverging lens:* \\(f_2 = -20\\ \\mathrm{cm} = -0{\\cdot}20\\) m, so\n\n\\(P_2 = \\dfrac{1}{-0{\\cdot}20} = -5\\ \\mathrm{D}\\)\n\n*Combination:*\n\n\\(P = P_1 + P_2 = 10 - 5 = +5\\ \\mathrm{D}\\)\n\nThe answer is (B).\n\nTwo details decide it. The diverging lens must carry a **negative** focal length, and both must be in **metres** before inverting — leaving them in centimetres would give powers a hundred times too large, which is the \\(\\pm 15\\) D pair of distractors. The result is positive, so the combination converges: the shorter-focus converging lens dominates, and the pair behaves as a single converging lens of focal length \\(+0{\\cdot}20\\) m."
+    },
+    {
+      "hash": "4043ba5b5355735d4ee5b6be8cd6a6ad70ddac6383876fe728731d5cd100e145",
+      "ref": "Q12e",
+      "questionNumber": "12 (e)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "An equiconcave lens of focal length 'f' is cut into two identical parts along the dotted line as shown in the figure. The focal length of each part will be :",
+      "context": "Two transparent media of refractive indices \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) are separated by a spherical transparent surface. The rays of light incident on the surface get refracted into the medium on the other side. The laws of refraction are valid at each point of the spherical surface. A lens is a transparent optical medium bounded by two surfaces, at least one of which should be spherical. The focal length of a lens is determined by the radii of curvature \\((\\mathrm{R_1}\\) and \\(\\mathrm{R_2})\\) of its two surfaces and the refractive index (n) of the medium of the lens with respect to the surrounding medium. Depending on \\(\\mathrm{R_1}\\) and \\(\\mathrm{R_2}\\), a lens behaves as a diverging or a converging lens. The ability of a lens to diverge or converge a beam of light incident on it defines its power.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{f}{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{f}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(f\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2f\\)"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — and the figure IS the discriminator, so it is described only in part. 'Along the dotted line as shown in the figure' is the whole question: the ORIENTATION of the cut relative to the principal axis is what selects between f, f/2 and 2f, and the stem states it nowhere. Drawn: a biconcave lens in cross-section, each of its two concave faces labelled R, with a straight dashed line drawn across it. WITHHELD: the orientation of that dashed line. Page idx 14.",
+      "imageAttached": true,
+      "solution": "The dotted line in the figure runs **horizontally through the middle of the lens — along its principal axis**. So the cut divides the lens into an upper and a lower half, each a full-width slice of the original.\n\nThe focal length is fixed by the lens-maker's formula:\n\n\\(\\dfrac{1}{f} = (\\mu - 1)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nwhich contains only the **refractive index** and the **two radii of curvature**. Cutting along the axis changes **neither**: each half retains both original curved surfaces, with the same radius \\(R\\) on each face, and the glass is unchanged.\n\nSo the focal length of each part is unchanged, still \\(f\\) — option (C).\n\nWhat *does* change is the **aperture**. Each half has half the area, so it gathers half the light and the image is **dimmer** — but formed at exactly the same place and at the same size.\n\nThe contrast with the other cut is the point of the question. Slicing **perpendicular** to the axis would turn one equiconcave lens into two plano-concave ones, each losing one of its curved surfaces. Then the bracket \\(\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\) is halved, the power is halved, and the focal length of each part becomes \\(2f\\) — which is the distractor offered."
+    }
+  ]
+}
