@@ -6,6 +6,67 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
+
+**Found during the IPMAT load.** Logged, NOT swept — the fix touches the dedup key of every
+row in the bank, so it is a decision, not a tidy-up.
+
+`contentHash(question, options, answer)` in `src/lib/upload/hash.ts` deliberately excludes
+`context`. `subjectiveContentHash` and `numericContentHash` both include it; only the MCQ
+one does not. For a corpus where the stem carries the question that is harmless. For a
+**match-list** question it is not: the stem is a bare directive and the real question sits
+in the context.
+
+The IPMAT pre-flight caught a live instance — JIPMAT 2024 VA Q29 and Q33 share the stem
+"Choose the correct answer from the options given below :", the same four
+`(A) - (I), (B) - (II)…` permutation options, and the same key D, differing only in their
+context (parts of speech vs idioms). Because `commitStaged` dedups by **UPSERT**, a
+collision does not error: one row silently replaces the other and the inserted count comes
+back short with no explanation.
+
+IPMAT works around it locally with an `IPMAT`-namespaced context-aware digest
+(`scripts/ipmat/hash.ts`). **The open question is whether any already-loaded corpus lost
+rows to this.** CDS and NDA both carry match-list questions; CLAUDE.md already records "37
+same-stem/diff-option groups" as an open content-audit item, which is the adjacent shape.
+
+**360 before touching anything:**
+
+- **Scope** — MCQ rows with a non-null `context` whose (normalised stem + sorted options +
+  answer) matches another row in the same exam. Measurable read-only with one SQL query; do
+  that first, because the answer may be zero.
+- **Blast radius** — `content_hash` is the dedup key for every ingestion script and for the
+  `/uploads` re-upload path. Redefining the shared helper changes the digest of all ~72k
+  rows, so **the next re-ingest of every corpus would duplicate rather than dedup**. That is
+  the reason this was not fixed in passing.
+- **Does it really apply** — only where a stem is non-distinctive AND options repeat. A
+  normal MCQ whose stem carries the question cannot collide this way.
+- **Risk + reversibility** — a lost row cannot be recovered from the DB; it has to be
+  re-ingested from source. Reversible only where the source is still on disk.
+- **Cost** — the measuring query is minutes. A per-corpus re-ingest is not.
+- **Recommendation** — **MEASURED 2026-09-22: zero rows lost. No action needed.**
+
+### The measurement
+
+One read-only query over the whole bank looked for MCQ groups sharing (normalised stem +
+sorted option texts + answer) within an exam while differing in context. It found **two
+groups, four rows, and every one of them is present**:
+
+| Exam | Rows | Verdict |
+|---|---|---|
+| JIPMAT | 2024 VA Q29 + Q33 | The known pair. Both present — `ipmatContentHash` separated them. |
+| NDA | Q22 of `LWS_11th__QP_ENG_Parts_of_Speech.pdf` + Q49 of `Oswaal_NDA_GAT_Mock_Test_10.pdf` | Both present, different stored `content_hash`. A genuine cross-source duplicate of one question, which this project deliberately **keeps** as a recurrence signal. |
+
+So the latent collision never fired on loaded data: the only near-instance is one question
+legitimately reused across two source files, and its stored hashes already differ.
+
+**What this closes.** No re-ingest, no change to `src/lib/upload/hash.ts`, and no per-corpus
+hash beyond the one IPMAT already has. **What it leaves open**, cheaply: the query above is
+worth keeping as a standing probe, because the exposure grows with every match-list corpus
+and the failure mode is silent by construction — a lost row shows up as a count that is
+short, never as an error.
+
+---
+
 ## Backfill ledger — /notes intro duplication + ungated prose counts (2026-09-20)
 
 **Found while fixing the MHT-CET Indefinite Integration hero.** Logged, NOT swept — rewriting
