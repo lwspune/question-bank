@@ -1,0 +1,175 @@
+{
+  "paper": "55/6/2",
+  "year": 2025,
+  "paperId": "2025-55-6-2",
+  "markingScheme": "out/2025-55-6-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "bcae81d902353935d91c53ed3170e7a6c68acafcf9e1721021df4c90a69a2bf5",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Electrical Energy and Power",
+      "stem": "A wire of resistance R, connected to an ideal battery consumes a power P. If the wire is gradually stretched to double its initial length, and connected across the same battery, the power consumed will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{P}{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{P}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "P"
+        },
+        {
+          "label": "D",
+          "text": "2P"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{P}{4}\\).**\n\n**Step 1 — what stretching does to the resistance.** Drawing a wire out rearranges the metal without adding or removing any, so the **volume is conserved**:\n\n\\(A_1l_1 = A_2l_2 \\qquad\\Longrightarrow\\qquad A\\,l = A_2\\left(2l\\right) \\qquad\\Longrightarrow\\qquad A_2 = \\dfrac{A}{2}\\)\n\n**Doubling the length HALVES the area**, and the two effects multiply:\n\n\\(R' = \\dfrac{\\rho\\left(2l\\right)}{A/2} = 4\\dfrac{\\rho l}{A} = 4R\\)\n\n**Step 2 — the power at constant VOLTAGE.** The battery is **ideal**, so it holds the potential difference fixed whatever is connected. The right formula is therefore\n\n\\(P = \\dfrac{V^{2}}{R}\\)\n\n\\(P' = \\dfrac{V^{2}}{4R} = \\dfrac{P}{4}\\)\n\n\\(\\boxed{\\ P' = \\dfrac{P}{4}\\ }\\)\n\n**Which power formula to use is the whole question.** With \\(V\\) fixed, power and resistance are **inversely** related. Reaching instead for \\(P = I^{2}R\\) and reasoning \"more resistance, more power\" gives \\(4P\\) — and that is wrong because \\(I\\) is **not** constant here; the current falls to a quarter along with the power.\n\n**The word \"ideal\" is doing real work.** A real battery has internal resistance, and as the external resistance rises the terminal voltage would climb slightly towards the emf. \"Ideal\" removes that complication and makes \\(V\\) genuinely constant.\n\n**Contrast with the other question this resembles.** Had the wire been **replaced** by a different one of twice the length and the same area, the resistance would be \\(2R\\) and the power \\(P/2\\). It is the word **stretched** that imposes the volume constraint and turns \\(2\\) into \\(4\\).\n\n**The general rule worth carrying.** Stretching a wire to \\(n\\) times its length gives\n\n\\(R' = n^{2}R \\qquad\\text{and, at constant voltage,}\\qquad P' = \\dfrac{P}{n^{2}}\\)\n\n**What happens physically.** The wire is now longer and thinner, so it opposes the current four times as strongly; the battery drives only a quarter of the original current, and with the same voltage across it the wire dissipates a quarter of the power. It glows more dimly and runs cooler."
+    },
+    {
+      "hash": "62e07c3b4038efc24d7066a40c193f3630d567696abafbfa1c7683090defb951",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A straight conductor is carrying a current of 2 A in +x direction along it. A uniform magnetic field \\(\\vec{B} = (0{\\cdot}6\\,\\hat{j} + 0{\\cdot}8\\,\\hat{k})\\) T is switched on, in the region. The force acting on 10 cm length of the conductor is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((0{\\cdot}12\\,\\hat{j} - 0{\\cdot}16\\,\\hat{k})\\) N"
+        },
+        {
+          "label": "B",
+          "text": "\\((-\\,0{\\cdot}16\\,\\hat{j} + 0{\\cdot}12\\,\\hat{k})\\) N"
+        },
+        {
+          "label": "C",
+          "text": "\\((-\\,0{\\cdot}12\\,\\hat{j} + 0{\\cdot}16\\,\\hat{k})\\) N"
+        },
+        {
+          "label": "D",
+          "text": "\\((0{\\cdot}16\\,\\hat{j} - 0{\\cdot}12\\,\\hat{k})\\) N"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\left(-0{\\cdot}16\\,\\hat{j} + 0{\\cdot}12\\,\\hat{k}\\right)\\) N.**\n\n**The force on a current-carrying conductor.**\n\n\\(\\vec{F} = I\\left(\\vec{L}\\times\\vec{B}\\right)\\)\n\n**The quantities.**\n\n\\(I = 2\\ \\mathrm{A}, \\qquad \\vec{L} = 0{\\cdot}1\\,\\hat{i}\\ \\mathrm{m}, \\qquad \\vec{B} = 0{\\cdot}6\\,\\hat{j} + 0{\\cdot}8\\,\\hat{k}\\ \\mathrm{T}\\)\n\n**Convert the length first** — \\(10\\) cm is \\(0{\\cdot}1\\) m, and leaving it as \\(10\\) would give an answer a hundred times too large.\n\n**The cross product**, term by term:\n\n\\(\\vec{L}\\times\\vec{B} = 0{\\cdot}1\\,\\hat{i}\\times\\left(0{\\cdot}6\\,\\hat{j} + 0{\\cdot}8\\,\\hat{k}\\right) = 0{\\cdot}1\\left[0{\\cdot}6\\left(\\hat{i}\\times\\hat{j}\\right) + 0{\\cdot}8\\left(\\hat{i}\\times\\hat{k}\\right)\\right]\\)\n\n**The two unit-vector products, and the second is where the sign lives:**\n\n\\(\\hat{i}\\times\\hat{j} = +\\hat{k} \\qquad\\text{(forward along } x \\to y \\to z)\\)\n\n\\(\\hat{i}\\times\\hat{k} = -\\hat{j} \\qquad\\text{(BACKWARD along the cycle)}\\)\n\n\\(\\vec{L}\\times\\vec{B} = 0{\\cdot}1\\left[0{\\cdot}6\\,\\hat{k} - 0{\\cdot}8\\,\\hat{j}\\right] = -0{\\cdot}08\\,\\hat{j} + 0{\\cdot}06\\,\\hat{k}\\)\n\n**Multiply by the current.**\n\n\\(\\vec{F} = 2\\left(-0{\\cdot}08\\,\\hat{j} + 0{\\cdot}06\\,\\hat{k}\\right)\\)\n\n\\(\\boxed{\\ \\vec{F} = -0{\\cdot}16\\,\\hat{j} + 0{\\cdot}12\\,\\hat{k}\\ \\mathrm{N}\\ }\\)\n\n**Every distractor is a sign or a swap.** Option (C) reverses both signs (taking \\(\\hat{i}\\times\\hat{k} = +\\hat{j}\\) and \\(\\hat{i}\\times\\hat{j} = -\\hat{k}\\)); options (A) and (D) attach the numbers to the wrong unit vectors — \\(0{\\cdot}12\\) belongs with \\(\\hat{k}\\), since it came from the \\(\\hat{j}\\) component of \\(\\vec{B}\\), and \\(0{\\cdot}16\\) with \\(\\hat{j}\\).\n\n**The cross-swap is the point.** The \\(0{\\cdot}6\\,\\hat{j}\\) part of the field produces a force along \\(\\hat{k}\\), and the \\(0{\\cdot}8\\,\\hat{k}\\) part produces one along \\(\\hat{j}\\). A cross product always sends each component of \\(\\vec{B}\\) into the **other** transverse direction, never its own.\n\n**Two free checks on the answer.**\n\n*Perpendicular to \\(\\vec{L}\\):* the force has no \\(\\hat{i}\\) component at all — correct, since \\(\\vec{F}\\) must be perpendicular to the current.\n\n*Perpendicular to \\(\\vec{B}\\):* \\(\\vec{F}\\cdot\\vec{B} = \\left(-0{\\cdot}16\\right)\\left(0{\\cdot}6\\right) + \\left(0{\\cdot}12\\right)\\left(0{\\cdot}8\\right) = -0{\\cdot}096 + 0{\\cdot}096 = 0\\ \\checkmark\\)\n\nBoth cost nothing and catch most cross-product slips.\n\n**The magnitude**, as a further check: \\(\\left|\\vec{B}\\right| = \\sqrt{0{\\cdot}6^{2} + 0{\\cdot}8^{2}} = 1\\) T, and \\(\\vec{B}\\) has no component along the current, so \\(F = ILB = 2 \\times 0{\\cdot}1 \\times 1 = 0{\\cdot}2\\) N. And indeed \\(\\sqrt{0{\\cdot}16^{2} + 0{\\cdot}12^{2}} = 0{\\cdot}2\\) N \\(\\checkmark\\) — the 3-4-5 triangle again."
+    },
+    {
+      "hash": "c062cacc868efb6e0425b05d4b9bc06ae92421c65f60e1a91ef843511ee4c8c2",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "The de Broglie wavelength associated with an electron moving with energy 5 eV is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}75\\) nm"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}2\\) nm"
+        },
+        {
+          "label": "C",
+          "text": "\\(2{\\cdot}4\\) nm"
+        },
+        {
+          "label": "D",
+          "text": "\\(0{\\cdot}55\\) nm"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(0{\\cdot}55\\) nm.**\n\n**The de Broglie wavelength through the kinetic energy.**\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mE}}\\)\n\n**Substituting**, with \\(E = 5\\ \\mathrm{eV} = 5 \\times 1{\\cdot}6 \\times 10^{-19} = 8 \\times 10^{-19}\\) J:\n\n\\(2mE = 2\\left(9{\\cdot}1 \\times 10^{-31}\\right)\\left(8 \\times 10^{-19}\\right) = 1{\\cdot}456 \\times 10^{-48}\\)\n\n\\(\\sqrt{2mE} = 1{\\cdot}207 \\times 10^{-24}\\ \\mathrm{kg\\,m\\,s^{-1}}\\)\n\n\\(\\lambda = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{1{\\cdot}207 \\times 10^{-24}} = 5{\\cdot}49 \\times 10^{-10}\\ \\mathrm{m}\\)\n\n\\(\\boxed{\\ \\lambda \\approx 0{\\cdot}55\\ \\mathrm{nm}\\ }\\)\n\n**The one-line route, which is much quicker.** For an electron accelerated through \\(V\\) volts — equivalently carrying \\(V\\) electronvolts of energy —\n\n\\(\\lambda = \\dfrac{12{\\cdot}27}{\\sqrt{V}}\\ \\mathring{\\mathrm{A}}\\)\n\n\\(\\lambda = \\dfrac{12{\\cdot}27}{\\sqrt{5}} = \\dfrac{12{\\cdot}27}{2{\\cdot}236} = 5{\\cdot}49\\ \\mathring{\\mathrm{A}} = 0{\\cdot}549\\ \\mathrm{nm}\\ \\checkmark\\)\n\n**This formula is worth memorising** for exactly this sort of one-mark question; it collapses the whole calculation into one division, and it makes the \\(1/\\sqrt{E}\\) dependence visible at a glance.\n\n**Checking the other options against that dependence.** Since \\(\\lambda \\propto 1/\\sqrt{E}\\), option (B)'s \\(1{\\cdot}2\\) nm would correspond to about \\(1\\) eV and option (C)'s \\(2{\\cdot}4\\) nm to about \\(0{\\cdot}25\\) eV — both far below the stated \\(5\\) eV. Option (A), \\(0{\\cdot}75\\) nm, is closest but corresponds to roughly \\(2{\\cdot}7\\) eV.\n\n**The conversion to JOULES is compulsory** in the long route. Substituting \\(5\\) directly into \\(\\sqrt{2mE}\\) without converting from electronvolts gives an answer wrong by \\(\\sqrt{1{\\cdot}6 \\times 10^{-19}}\\) — a factor of about \\(4 \\times 10^{-10}\\), which is nonsense. The \\(12{\\cdot}27/\\sqrt{V}\\) shortcut exists precisely to bypass that hazard.\n\n**What \\(0{\\cdot}55\\) nm means.** It is about five times the spacing of atoms in a crystal — too long to diffract cleanly from a lattice, which is why electron microscopes and diffraction experiments use electrons of tens of **kilo**volts rather than a few volts. At \\(100\\) eV the wavelength would be \\(1{\\cdot}2\\ \\mathring{\\mathrm{A}}\\), comparable to atomic spacing, which is the Davisson-Germer regime."
+    },
+    {
+      "hash": "3666f2cd5d1478f5a235426ba8207e8589f52978969778dce17c20300e1e6465",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A cell of emf E and internal resistance r is connected to an external variable resistance R. Plot a graph showing the variation of terminal voltage V of the cell as a function of current I, supplied by the cell. Explain how the emf of the cell and its internal resistance can be found from it.",
+      "solution": "**The relation to plot.**\n\n\\(V = E - Ir\\)\n\nThis is \\(y = c + mx\\) with \\(V\\) on the vertical axis and \\(I\\) on the horizontal, so the graph is a **STRAIGHT LINE of negative slope**.\n\n*To draw it:* axes with \\(V\\) up and \\(I\\) to the right; a straight line starting at a positive value on the \\(V\\)-axis and falling steadily, meeting the \\(I\\)-axis at a positive current.\n\n**Reading the emf off the graph.**\n\nSet \\(I = 0\\):\n\n\\(V = E\\)\n\n\\(\\boxed{\\ E \\text{ is the INTERCEPT on the } V\\text{-axis}\\ }\\)\n\n**Why that works physically.** \\(I = 0\\) is the **open-circuit** condition — the external resistance \\(R\\) made infinite, so no current flows and nothing is lost across the internal resistance. The terminals then read the full emf. This is why a voltmeter across a disconnected battery reads its emf directly.\n\n**Reading the internal resistance off the graph.**\n\nThe gradient of the line is\n\n\\(\\dfrac{dV}{dI} = -r\\)\n\n\\(\\boxed{\\ r = \\left|\\text{slope of the graph}\\right|\\ }\\)\n\n**A steeper line means a larger internal resistance** — the terminal voltage sagging faster as current is drawn.\n\n**What the other intercept means.** Setting \\(V = 0\\) gives\n\n\\(I = \\dfrac{E}{r}\\)\n\nthe **short-circuit current** — the largest current the cell can ever deliver, reached when \\(R = 0\\). So the two intercepts between them give both quantities, and the line is completely determined by the cell alone.\n\n**How the graph is obtained experimentally.** Vary the external resistance \\(R\\), and for each setting read the ammeter (\\(I\\)) and the voltmeter (\\(V\\)). Large \\(R\\) gives small \\(I\\) and \\(V\\) near \\(E\\); small \\(R\\) gives large \\(I\\) and a sagging \\(V\\). Plotting the pairs gives the line above.\n\n**Why a graph rather than a single measurement.** Two readings would suffice in principle to fix \\(E\\) and \\(r\\), but a whole line **averages out** random error and — more importantly — **tests the model**. If the points do not fall on a straight line, the assumption that \\(r\\) is constant has failed, which happens as a cell warms or nears exhaustion. A straight-line fit is evidence as well as a measurement.\n\n**What the line says about a cell's condition.** A fresh cell gives a nearly **horizontal** line (small \\(r\\)); as the cell ages \\(r\\) climbs and the line tilts. Measuring exactly this slope is how a battery tester judges a cell that looks healthy on open circuit but collapses under load."
+    },
+    {
+      "hash": "caf93b9384c4b9dd40e0be2deeaae5c6554ed38401fcb548dd4f0ca943a4846a",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A laser beam of wavelength 500 nm and power 5 mW strikes normally on a perfectly reflecting surface of area \\(1\\ \\mathrm{mm}^2\\) of a body. It rebounds back from the surface. Find the force exerted by the laser beam on the body.",
+      "solution": "**The force comes from the MOMENTUM the light carries.**\n\nLight of power \\(P\\) delivers energy \\(P\\) per second, and the momentum associated with energy \\(E\\) in a beam is \\(E/c\\). So the beam brings momentum at the rate\n\n\\(\\dfrac{P}{c} \\qquad\\text{per second}\\)\n\n**For a PERFECTLY REFLECTING surface the momentum change is DOUBLED.** The light arrives with momentum \\(p\\) towards the surface and leaves with momentum \\(p\\) away from it, so the total change is \\(2p\\), not \\(p\\).\n\n\\(F = \\dfrac{2P}{c}\\)\n\n**Substituting.**\n\n\\(F = \\dfrac{2 \\times 5 \\times 10^{-3}}{3 \\times 10^{8}}\\)\n\n\\(\\boxed{\\ F = 3{\\cdot}33 \\times 10^{-11}\\ \\mathrm{N}\\ }\\)\n\n**The same result photon by photon**, which shows why the wavelength cancels. Each photon carries energy \\(hc/\\lambda\\) and momentum \\(h/\\lambda\\), so the number arriving per second is \\(P\\lambda/hc\\), and\n\n\\(F = \\left(\\dfrac{P\\lambda}{hc}\\right) \\times 2\\left(\\dfrac{h}{\\lambda}\\right) = \\dfrac{2P}{c}\\)\n\n**The \\(\\lambda\\) cancels completely.** Red light and blue light of the same power push equally hard — fewer, more energetic photons each carrying more momentum, or more, feebler ones. **So the \\(500\\) nm in the stem is not needed at all.**\n\n**Nor is the area.** The \\(1\\ \\mathrm{mm}^{2}\\) would be required for the **pressure**,\n\n\\(p = \\dfrac{F}{A} = \\dfrac{3{\\cdot}33 \\times 10^{-11}}{10^{-6}} = 3{\\cdot}33 \\times 10^{-5}\\ \\mathrm{Pa}\\)\n\nbut the question asks for the **force**, which depends on the total power intercepted and not on how it is spread. Two of the four given quantities are decoys, and recognising that is most of the question.\n\n**Had the surface been perfectly ABSORBING**, the momentum would have gone to zero rather than reversed, and the force would be \\(P/c\\) — exactly **half**. The counter-intuitive consequence is that a shiny surface feels **twice** the push of a black one, though it absorbs almost no energy: pressure tracks momentum transfer, not energy absorption.\n\n**A sense of the size.** \\(3 \\times 10^{-11}\\) N is the weight of about three **nanograms** — utterly negligible here. But over the large area and long times available in space it is usable, which is the principle of the **solar sail**, and it is deliberately made reflective rather than black for exactly the factor of two derived above."
+    },
+    {
+      "hash": "bcf282f416a17d023b5c9642b44057faf2750c3befd9ae033c71578d28e241cb",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident on face AB of a prism ABC with angle of prism A and emerges out from face AC. The prism is set in the position of minimum deviation with angle of deviation \\(\\delta\\). Find (i) the angle of incidence and (ii) the angle of refraction on face AB.",
+      "solution": "**The two prism relations.**\n\n\\(A + \\delta = i + e \\qquad\\text{and}\\qquad A = r_1 + r_2\\)\n\nThe first says the deviation is the total bending at the two faces less the prism angle; the second that the two internal refraction angles must add to \\(A\\).\n\n**What minimum deviation means.** As the angle of incidence is varied the deviation passes through a minimum, and at that point the ray passes **symmetrically** through the prism:\n\n\\(i = e \\qquad\\text{and}\\qquad r_1 = r_2 = r\\)\n\n**Why the symmetry holds.** By the principle of reversibility, a ray retracing its path must deviate by the same amount — so for any deviation other than the minimum there are **two** angles of incidence giving it, one the mirror image of the other. At the minimum those two coincide, which forces \\(i = e\\). The symmetric passage is not an assumption but a consequence.\n\n**(i) The angle of incidence.**\n\nPutting \\(e = i\\) into the first relation:\n\n\\(A + \\delta = 2i\\)\n\n\\(\\boxed{\\ i = \\dfrac{A + \\delta}{2}\\ }\\)\n\n**(ii) The angle of refraction at face AB.**\n\nPutting \\(r_2 = r_1 = r\\) into the second:\n\n\\(A = 2r\\)\n\n\\(\\boxed{\\ r = \\dfrac{A}{2}\\ }\\)\n\n**What these two give together.** Substituting both into Snell's law at the first face, \\(n = \\sin i/\\sin r\\), yields the standard prism formula:\n\n\\(n = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)}\\)\n\nwhich is the basis of every laboratory measurement of refractive index by a spectrometer: set the prism to minimum deviation, read \\(\\delta_m\\), and \\(n\\) follows.\n\n**How minimum deviation is recognised in practice.** Rotating the prism slowly, the refracted image drifts one way, halts, and then **reverses** — it is that turning point, not any calculation, that marks \\(\\delta_m\\). The reversal is the experimental signature of the symmetry above.\n\n**A physical reading of the symmetric passage.** At minimum deviation the ray inside the prism runs **parallel to the base**, bending equally at entry and exit. Any asymmetry makes the total bending greater, which is why this configuration is the minimum rather than a maximum."
+    },
+    {
+      "hash": "f1948c0332b2be55b87cebfe3517810f461528f504c85cc378ffdb4ec4d2a92e",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "(a) Define the term 'drift velocity' of conduction electrons in a conductor.\n(b) A conductor of length \\(l\\) and area of cross-section A is connected across an ideal battery of emf V. Derive the formula for the current density in terms of relaxation time \\(\\tau\\).",
+      "solution": "**(a) Drift velocity.**\n\nThe **drift velocity** of conduction electrons is the **average velocity** they acquire in the direction opposite to an applied electric field.\n\n**What it is superimposed on.** Even with no field the electrons move at enormous random thermal speeds — around \\(10^{5}\\) m/s — but in **all directions equally**, so their average velocity is **zero** and no current flows. Applying a field biases that random motion very slightly, and the small systematic average that results is the drift velocity, of order \\(10^{-4}\\) m/s.\n\n**Why it stays constant rather than growing.** The field accelerates each electron, but every collision with the lattice randomises its velocity again, so it never builds up speed. The average time between collisions is the **relaxation time** \\(\\tau\\), and\n\n\\(v_d = \\dfrac{eE\\tau}{m}\\)\n\n*(It is directed **opposite** to \\(\\vec{E}\\), since the electron's charge is negative.)*\n\n**(b) The current density in terms of \\(\\tau\\).**\n\n**Step 1 — the field in the conductor.** The battery is ideal, so the full emf \\(V\\) appears across the length \\(l\\), and the field is uniform:\n\n\\(E = \\dfrac{V}{l}\\)\n\n**Step 2 — the drift velocity it produces.**\n\n\\(v_d = \\dfrac{eE\\tau}{m} = \\dfrac{eV\\tau}{ml}\\)\n\n**Step 3 — the current this drift carries.** In one second, every electron within a distance \\(v_d\\) of the far end crosses it, so the charge crossing area \\(A\\) per second is\n\n\\(I = neAv_d\\)\n\n**Step 4 — the current density.**\n\n\\(j = \\dfrac{I}{A} = nev_d\\)\n\nSubstituting for \\(v_d\\):\n\n\\(\\boxed{\\ j = \\dfrac{ne^{2}\\tau}{m}\\,E = \\dfrac{ne^{2}\\tau}{m}\\cdot\\dfrac{V}{l}\\ }\\)\n\n**Note that the AREA has cancelled.** Current density depends on the material (\\(n\\), \\(\\tau\\)), the electron's own properties (\\(e\\), \\(m\\)) and the **field** — but not on how thick the conductor is. A fat wire carries more **current** at the same current **density**, which is exactly the distinction the two quantities exist to draw.\n\n**What the result gives free.** Comparing with \\(j = \\sigma E\\) identifies the conductivity as\n\n\\(\\sigma = \\dfrac{ne^{2}\\tau}{m} \\qquad\\text{and}\\qquad \\rho = \\dfrac{m}{ne^{2}\\tau}\\)\n\nand comparing with \\(V = IR\\) reproduces \\(R = \\rho l/A\\). **So Ohm's law is not assumed here but derived**, from a model of electrons accelerated between collisions — and the reason \\(j \\propto E\\) is that \\(\\tau\\) does not itself depend on the field.\n\n**Where that model breaks down.** Heating a metal shortens \\(\\tau\\), so \\(\\rho\\) rises with temperature; in a semiconductor heating raises \\(n\\) far faster, so \\(\\rho\\) falls. Both behaviours come out of the same formula, read for whichever factor dominates."
+    },
+    {
+      "hash": "82b7dce82cccf8b22904c95f21e57a2447c4941c6072149fc2447233453e8204",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A ray of light is incident at an angle i on a parallel sided glass slab of thickness 'd' and gets refracted into the slab at angle r. Draw a ray diagram to show its path as its emerges out of the slab. Hence, obtain an expression for the lateral shift of the ray. Under what condition will the shift be minimum ?",
+      "solution": "**The ray diagram.**\n\nDraw a parallel-sided slab of thickness \\(d\\). A ray \\(AB\\) strikes the first face at \\(B\\) with angle of incidence \\(i\\) and refracts into the glass at angle \\(r\\), bending **towards** the normal. It travels to \\(C\\) on the far face, where it emerges into air — bending **away** from the normal by the same amounts, so it leaves at angle \\(i\\) again.\n\n**The emergent ray is PARALLEL to the incident ray but displaced sideways.** That perpendicular displacement is the **lateral shift**. Mark \\(CD\\) as the perpendicular from \\(C\\) to the original ray's direction produced, and \\(BE\\) as the normal path straight through.\n\n**Why the emergent ray is parallel.** Snell's law at the first face gives \\(\\sin i = n\\sin r\\); at the second, \\(n\\sin r = \\sin e\\). So \\(\\sin e = \\sin i\\) and \\(e = i\\) — the two refractions are equal and opposite, and the slab **displaces** the ray without deviating it. This is true only because the faces are **parallel**; a prism, whose faces are not, deviates as well.\n\n**Deriving the shift.**\n\n**In triangle \\(BCD\\)**, where \\(CD\\) is the lateral shift and the angle at \\(B\\) is \\(\\left(i - r\\right)\\):\n\n\\(\\sin\\left(i - r\\right) = \\dfrac{CD}{BC} \\qquad \\cdots (1)\\)\n\n**In triangle \\(BCE\\)**, where \\(BE = d\\) is the slab's thickness measured along the normal:\n\n\\(\\cos r = \\dfrac{BE}{BC} = \\dfrac{d}{BC} \\qquad\\Longrightarrow\\qquad BC = \\dfrac{d}{\\cos r}\\)\n\n**\\(BC\\) is the path length INSIDE the glass**, and it exceeds \\(d\\) because the ray crosses obliquely. Substituting into (1):\n\n\\(\\boxed{\\ \\text{lateral shift} = CD = \\dfrac{d\\sin\\left(i - r\\right)}{\\cos r}\\ }\\)\n\n**Reading the formula.** The shift grows with the thickness \\(d\\) — directly proportional — and with the difference \\(\\left(i - r\\right)\\), which measures how much the ray was bent at entry. A denser glass bends more, so \\(r\\) is smaller, \\(\\left(i-r\\right)\\) larger, and the shift greater.\n\n**The condition for minimum shift.**\n\n\\(\\boxed{\\ \\text{The shift is MINIMUM — in fact ZERO — at NORMAL incidence, } i = 0\\ }\\)\n\nbecause then \\(r = 0\\) too, and \\(\\sin\\left(i - r\\right) = 0\\).\n\n**Physically:** a ray striking the slab head-on is not bent at either face, so it passes straight through with no displacement at all. More generally the shift **increases steadily with \\(i\\)**, so the smaller the angle of incidence the smaller the shift.\n\n**The other extreme.** As \\(i \\to 90^\\circ\\) (grazing incidence), \\(r\\) approaches the critical angle and the shift approaches its largest value \\(d\\cos r_c \\cdot \\tan\\), climbing steeply. This is why looking obliquely through a thick window displaces the view noticeably while looking straight through does not.\n\n**A familiar consequence.** A thick glass tabletop appears to shift objects seen through it at an angle, and a slab placed in a converging beam moves the focus along the axis. Both are this same shift."
+    },
+    {
+      "hash": "cdd03192d1a55ed98524da1a61ec10efa1bb74bc2a1b0844a9d9f92adb6732ca",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Describe briefly Geiger-Marsden scattering experiment. Depict the graph showing the variation of number of scattered particles detected with the scattering angle. How did this graph lead to the discovery of the nucleus ?",
+      "solution": "**The Geiger-Marsden experiment.**\n\n**The apparatus.** Alpha particles from a radioactive source (\\(^{214}\\)Bi, about \\(5{\\cdot}5\\) MeV) are collimated by lead bricks into a narrow beam and directed at a **thin gold foil**, some \\(10^{-7}\\) m thick — only a few hundred atoms deep. The scattered particles strike a **zinc sulphide screen**, which gives a tiny flash at each impact, and the flashes are counted through a microscope. The whole arrangement is **rotatable** about the foil so that the count can be measured at any scattering angle \\(\\theta\\), and it is enclosed in a **vacuum** so the alphas are not scattered by air.\n\n**The observations, and all three matter.**\n\n**Most alpha particles pass through nearly undeviated**, with only a degree or two of deflection.\n\n**A small fraction are deflected through large angles.**\n\n**About 1 in 8000 is turned through more than \\(90^\\circ\\)** — some almost straight back the way it came.\n\n**The graph.**\n\nPlot the **number of scattered particles detected** against the **scattering angle \\(\\theta\\)**, with the count on a **logarithmic** vertical scale, since it spans several orders of magnitude.\n\n*The shape:* the curve starts enormously high at small \\(\\theta\\) and **falls extremely steeply**, dropping by four or five powers of ten between \\(0^\\circ\\) and about \\(60^\\circ\\), then flattening into a long, very low tail that continues all the way to \\(180^\\circ\\) without ever reaching zero. Rutherford's analysis gives\n\n\\(N\\left(\\theta\\right) \\propto \\dfrac{1}{\\sin^{4}\\left(\\theta/2\\right)}\\)\n\n**How the graph led to the nucleus.**\n\n**The huge count at small angles says the atom is mostly EMPTY.** If positive charge were spread uniformly through the atom, as Thomson's model had it, an alpha would feel only weak forces everywhere and **every** particle would emerge slightly deflected — a narrow spread about zero, with essentially nothing at large angles. That the vast majority pass almost straight through means they met nothing substantial at all.\n\n**The long tail at large angles says the charge is CONCENTRATED.** Turning a \\(5\\) MeV alpha through \\(180^\\circ\\) requires an enormous repulsive force, and that demands the whole positive charge packed into a very small volume, approached very closely. Rutherford's remark is the clearest statement of it: *\"It was almost as incredible as if you fired a \\(15\\)-inch shell at a piece of tissue paper and it came back and hit you.\"*\n\n**And the rarity fixes the SIZE.** Only about one alpha in \\(8000\\) comes close enough to be turned right round, so that tiny core occupies a correspondingly tiny fraction of the atom's cross-section — of order \\(10^{-15}\\) m against the atom's \\(10^{-10}\\) m, a **hundred-thousandth** of the radius.\n\n**The conclusion.** All the positive charge and virtually all the mass of an atom sit in a minute central core — the **nucleus** — with the electrons occupying the vast remaining volume. It is the *shape* of this curve, not any single observation, that forced the model: a uniform-charge atom simply cannot produce a tail at \\(180^\\circ\\)."
+    },
+    {
+      "hash": "b29c41748ae442140a0ef0c1f759b17df9b9f912be394a918b5aa0e52b1225d5",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "Find the Q value of the following nuclear reaction :\n\\({}^{12}_{6}\\mathrm{C} + {}^{12}_{6}\\mathrm{C} \\longrightarrow {}^{20}_{10}\\mathrm{Ne} + {}^{4}_{2}\\mathrm{He}\\)\nIs this reaction exothermic or endothermic ?\nGiven :\n\\(m\\left({}^{12}_{6}\\mathrm{C}\\right) = 12{\\cdot}000000\\) u\n\\(m\\left({}^{20}_{10}\\mathrm{Ne}\\right) = 19{\\cdot}992439\\) u\n\\(m\\left({}^{4}_{2}\\mathrm{He}\\right) = 4{\\cdot}002603\\) u\n\\(1\\ \\mathrm{u} = 931\\ \\mathrm{MeV}/c^2\\)",
+      "solution": "**The reaction.**\n\n\\({}^{12}_{6}\\mathrm{C} + {}^{12}_{6}\\mathrm{C} \\longrightarrow {}^{20}_{10}\\mathrm{Ne} + {}^{4}_{2}\\mathrm{He}\\)\n\n*(Check the bookkeeping first: mass numbers \\(12 + 12 = 20 + 4\\ \\checkmark\\); atomic numbers \\(6 + 6 = 10 + 2\\ \\checkmark\\). A reaction that fails either is mis-transcribed.)*\n\n**Step 1 — total mass of the reactants.** Two carbon-12 nuclei:\n\n\\(m_R = 2 \\times 12{\\cdot}000000 = 24{\\cdot}000000\\ \\mathrm{u}\\)\n\n*(Carbon-12 is exactly \\(12\\) u **by definition** — it is the standard against which the unified atomic mass unit is fixed, which is why the figure carries no uncertainty.)*\n\n**Step 2 — total mass of the products.**\n\n\\(m_P = 19{\\cdot}992439 + 4{\\cdot}002603 = 23{\\cdot}995042\\ \\mathrm{u}\\)\n\n**Step 3 — the mass defect.**\n\n\\(\\Delta m = m_R - m_P = 24{\\cdot}000000 - 23{\\cdot}995042 = 0{\\cdot}004958\\ \\mathrm{u}\\)\n\n**Step 4 — convert to energy.**\n\n\\(Q = \\Delta m \\times 931\\ \\mathrm{MeV} = 0{\\cdot}004958 \\times 931\\)\n\n\\(\\boxed{\\ Q = 4{\\cdot}62\\ \\mathrm{MeV}\\ }\\)\n\n**The nature of the reaction.**\n\n\\(\\Delta m\\) is **positive** — the products are **lighter** than the reactants — so mass has been converted into energy and\n\n\\(\\boxed{\\ \\text{the reaction is EXOTHERMIC (energy is released)}\\ }\\)\n\n**The sign is the answer to the second half**, and the safe way to get it is to subtract in a fixed order, reactants minus products, and read the sign rather than take a modulus. A **negative** \\(Q\\) would mean energy must be supplied — endothermic.\n\n**A note on precision.** \\(\\Delta m\\) is a difference between two numbers agreeing to **four significant figures**, so the six-decimal masses are not decoration: rounding them even to four places would destroy the answer entirely. This is the normal situation in nuclear physics and the reason atomic masses are tabulated so finely.\n\n**What the energy release means.** The products are more **tightly bound** than the reactants — \\({}^{20}\\)Ne and \\({}^{4}\\)He together hold their nucleons better than two \\({}^{12}\\)C nuclei do. This is fusion of light nuclei moving towards the peak of the binding-energy curve near iron, which is why it releases energy.\n\n**Where this reaction actually occurs.** Carbon burning is a real stage in the life of a massive star, running at around \\(10^{9}\\) K — the temperature needed for two carbon nuclei to overcome their mutual Coulomb repulsion (each carries charge \\(6e\\), so the barrier is far higher than for hydrogen fusion). It is one of the steps by which stars build the heavier elements.\n\n**A sense of the scale.** \\(4{\\cdot}62\\) MeV from a mass loss of \\(0{\\cdot}005\\) u is a fractional mass change of about \\(0{\\cdot}02\\%\\) — tiny as a proportion, yet a million times the energy of any chemical reaction between the same number of atoms."
+    }
+  ]
+}
