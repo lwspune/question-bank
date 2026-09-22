@@ -13,9 +13,13 @@ matching normalised stem + first option across all 1,445 rows.
 
 ## Status
 
-**Phases 0-2 complete (2026-09-22): harvested, frozen, normalised, taxonomy mapped, gated.
-Nothing is in the database.** Phase 3 onwards (blind derivation → commit PRIVATE → flip
-PUBLIC) is not built. **The taxonomy needs sign-off before Phase 4 writes anything.**
+**Phases 0-4 complete (2026-09-22): harvested, normalised, mapped, LOADED PRIVATE with
+figures attached.** **1,418 questions are in the bank and NOTHING is student-visible** —
+all PRIVATE, and the three exams are absent from `EXAM_REGISTRY`. Verified: anon reads 0
+questions and 0 options.
+
+Phase 5 (flip PUBLIC per chapter, then registry + `/mock`) is not built and **must not run
+until the keys are derived** — LR is still entirely unmeasured.
 
 **1,418 of 1,445 rows are committable.** Held back: 15 reconstructed + 8 cancelled by the
 exam + 4 declared exclusions.
@@ -306,3 +310,83 @@ deriving. That is the usable product, and a larger pass should record it per row
 This does not license skipping derivation. n=40 of 582; one sample is not a base rate; and
 agreement cannot see a misconception both passes share. **LR is still entirely unmeasured**
 and is the obvious next sample.
+
+## Phase 4: the PRIVATE load
+
+```sh
+npm run db:backup                              # project rule: before ANY bulk write
+npx tsx scripts/ipmat/preflight.ts             # read-only; refuses to pass on a fault
+npx tsx scripts/ipmat/commit.ts -- --apply     # 1,418 rows -> PRIVATE
+python scripts/ipmat/fetch_figures.py          # download + convert 69 figures to PNG
+npx tsx scripts/ipmat/attach-figures.ts -- --apply
+npx tsx scripts/ipmat/verify-load.ts           # reconcile the DB against data/build
+```
+
+**Result: 1,418 inserted, 0 skipped, 0 failed, 1,418 PRIVATE.** 9 subjects, 147 chapters,
+205 subtopics — exactly what the taxonomy report predicted. 58 question figures and 28
+option images attached; 0 picture-options left blank.
+
+### The collision the pre-flight caught
+
+`commitStaged` dedups by **UPSERT** on `(org_id, exam_id, content_hash)`, so two rows that
+hash the same do not error — one silently replaces the other and the count comes back short
+with no explanation. And the shared `contentHash(question, options, answer)` **excludes
+context**.
+
+JIPMAT 2024 VA Q29 and Q33 hit exactly that. Both have the stem *"Choose the correct answer
+from the options given below :"*, both offer the same four `(A) - (I), (B) - (II)…`
+permutations, and both key D. One asks about the word "all" as a part of speech; the other
+about four idioms. **The real question is in the context**, which the hash ignores.
+
+Fixed by `hash.ts` — an `IPMAT`-namespaced, context-aware digest. Deliberately **not** a
+change to the shared helper: redefining `contentHash` would change the digest of all ~72k
+existing rows, so the next re-ingest of any corpus would duplicate instead of dedup. Whether
+other corpora carry the same latent collision is logged as a backfill candidate, not fixed
+in passing.
+
+### What is deliberately not shipped
+
+- **Their difficulty labels.** Every row is `MODERATE`. Easy/Medium/Hard is their editorial
+  judgement about the question, not ours.
+- **`pyq_note` is empty.** IPMAT runs one sitting a year, so `pyq_year` identifies it, and
+  anything else risks publishing a source blurb (`npm run audit:provenance`).
+- **Their explanations**, as throughout.
+
+### Figures
+
+No original question papers are available for these three exams, so the source's own
+renderings are the only copies that exist for us. They are downloaded once, converted, and
+served from **our** storage — a hotlink would break silently when the source reorganises and
+would leak our users' requests to them.
+
+**65 of 81 are WebP, which our storage layer refuses on purpose**: `src/lib/storage/images.ts`
+notes the docx library's `ImageRun` cannot embed it, so a WebP figure would upload fine and
+then be missing from every downloaded Word paper. Pillow converts them to PNG, flattening
+alpha onto white (a transparent WebP becomes a black rectangle in Word otherwise). The three
+multi-figure stems are composed by the existing `scripts/jee/compose_figures.py`, because a
+question row carries one `image_url` and attaching the first of three dice views ships a
+question that cannot be answered.
+
+### One visible side effect, pre-existing in kind
+
+`/browse`'s exam **dropdown** is built from `listExams()`, which is unfiltered, so the three
+new exams now appear there and can show nothing. The landing **pills** are safe — they
+iterate `EXAM_REGISTRY`. This is not new behaviour: **UPSC CSE (Prelims) has 1,789 rows and
+0 PUBLIC**, and has been in that dropdown already. Filtering `listExams()` to exams with at
+least one PUBLIC question would fix all four at once, and touches shipped `/browse` code, so
+it is a decision rather than something to do in passing.
+
+### Two bugs of mine, and the guard that now prevents the class
+
+`attach-figures.ts` imported `sourceFileFor` from `commit.ts`, and a CLI module calls
+`main()` at load — so running the figure pass **silently re-ran the entire PRIVATE load**.
+It was idempotent, so nothing broke and nothing announced itself; the only tell was
+`commit.ts`'s output under a command nobody asked to commit with. The same shape had already
+bitten `extract.ts`, which silently ran a whole 48-page fetch.
+
+`tests/ipmat-module-boundaries.test.ts` now forbids it: shared helpers live in a
+side-effect-free module, a CLI may import those, and **nothing may import a CLI**. The test
+classifies every `.ts` file in the folder, so a new file cannot escape the rule by being new.
+Its own first version reported a false positive — the import regex used `[\s\S]*?`, which
+crossed newlines and read `import { existsSync } from "node:fs"` all the way to a later
+`from "./build"`.
