@@ -52,7 +52,17 @@ const FIGURE_REF = new RegExp(
     // common opening CBSE gives a figure question, and it missed on that one
     // letter -- 2025-55-6-1 Q1 was unanswerable with no image and this probe
     // called it clean, then listed it under IMAGE-NO-REFERENCE once attached.
-    String.raw`\b(?:figure|fig\.?|diagram|graph)\s+(?:below|above|shown|shows)\b`,
+    // `network|circuit|arrangement|set-up` are not decoration on the four above.
+    // CBSE routinely refers to a printed drawing by WHAT IT DEPICTS rather than
+    // by the word "figure" -- 2024-55-4-1 Q25 is "Find the current in branch BM
+    // in the network shown :", and the stem names not one resistance or emf, so
+    // the row is unanswerable with no image and this probe called it clean. The
+    // enumerated-noun list is the recurring weakness here: it under-matches in
+    // silence, which is why the population to check a widening against is the
+    // one the probe calls CLEAN, never the one it already flags.
+    // "Draw the circuit diagram ..." does NOT match: the noun must be followed
+    // by below/above/shown/shows, and there the next word is "diagram".
+    String.raw`\b(?:figure|fig\.?|diagram|graph|network|circuit|arrangement|set-?up)\s+(?:below|above|shown|shows)\b`,
     // "as shown below", "as shown above", "as shown here" — no noun at all
     String.raw`\bas\s+shown\s+(?:below|above|here|in)\b`,
   ].join("|"),
