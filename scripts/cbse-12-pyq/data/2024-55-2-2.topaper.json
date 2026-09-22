@@ -1,0 +1,217 @@
+{
+  "paper": "55/2/2",
+  "year": 2024,
+  "paperId": "2024-55-2-2",
+  "markingScheme": "out/2024-55-2-2/ms/p00.png … p15.png",
+  "rows": [
+    {
+      "hash": "7dce6d1548be3417f76e05e93e22a2e102a7827b1cb751fc54b4e63ef966f47d",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "stem": "The capacitance of a parallel plate capacitor having a medium of dielectric constant K = 4 in between the plates is C. If this medium is removed, then the capacitance of the capacitor becomes :",
+      "options": [
+        {
+          "label": "A",
+          "text": "4C"
+        },
+        {
+          "label": "B",
+          "text": "C"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{C}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "2C"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{C}{4}\\).**\n\n**What the dielectric does.** Filling the gap with a medium of dielectric constant \\(K\\) multiplies the capacitance by \\(K\\):\n\n\\(C_{\\text{with}} = K\\,C_{\\text{air}}\\)\n\n**Reading the question in the right direction.** The stem says the capacitance **with** the dielectric already in place is \\(C\\). So\n\n\\(C = 4\\,C_{\\text{air}} \\qquad\\Longrightarrow\\qquad C_{\\text{air}} = \\dfrac{C}{4}\\)\n\nRemoving the medium therefore **reduces** the capacitance to a quarter of its stated value.\n\n**The trap is reading the question backwards.** If \\(C\\) had been the *air* value, inserting the dielectric would give \\(4C\\) — and that option is offered first. Everything turns on which state the letter \\(C\\) names, and the stem is explicit: it is the capacitance **having a medium of dielectric constant K = 4 in between the plates**.\n\n**Why a dielectric raises the capacitance.** The molecules of the medium polarise in the applied field, producing bound surface charges that partly **oppose** the field of the plates. The net field between the plates therefore falls to \\(E_0/K\\), and so does the potential difference \\(V = Ed\\). With the same charge held at a smaller voltage,\n\n\\(C = \\dfrac{Q}{V}\\)\n\nmust rise by the same factor \\(K\\).\n\n**A check from the formula.**\n\n\\(C = \\dfrac{K\\varepsilon_0 A}{d}\\)\n\nSetting \\(K = 1\\) for air divides the capacitance by 4, exactly as found. Nothing else in the expression changes — the plates are not moved and their area is unaltered."
+    },
+    {
+      "hash": "7f8fed44e033694674ab755cf2581112d1d8753d1f512761c5cd3ac73d95c510",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A conducting loop is placed in a magnetic field, normal to its plane. The magnitude of the magnetic field varies with time as shown in the figure. If \\(\\varepsilon_1\\), \\(\\varepsilon_2\\) and \\(\\varepsilon_3\\) are magnitudes of induced emfs during periods \\(0 \\leq t \\leq T\\), \\(T \\leq t \\leq 2T\\) and \\(2T \\leq t \\leq 3T\\), then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\varepsilon_1 > \\varepsilon_2 > \\varepsilon_3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\varepsilon_2 > \\varepsilon_3 > \\varepsilon_1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\varepsilon_3 > \\varepsilon_1 > \\varepsilon_2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\varepsilon_1 > \\varepsilon_3 > \\varepsilon_2\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem names no values at all; the whole B-t behaviour exists only in the drawing. A graph with B on the vertical axis and t on the horizontal, the horizontal axis carrying ticks 0, T, 2T and 3T with dashed verticals dropped at T, 2T and 3T. The trace is piecewise-linear in three straight segments over the three intervals named in the stem. The RELATIVE STEEPNESS of those segments is deliberately NOT described: every option ranks exactly that comparison. Page idx 4.",
+      "imageAttached": true,
+      "solution": "**The answer is (D): \\(\\varepsilon_1 > \\varepsilon_3 > \\varepsilon_2\\).**\n\n**What the emf depends on.** With the loop's area fixed and the field normal to its plane, \\(\\phi = BA\\), so\n\n\\(|\\varepsilon| = \\left|\\dfrac{d\\phi}{dt}\\right| = A\\left|\\dfrac{dB}{dt}\\right|\\)\n\nThe induced emf is therefore proportional to the **magnitude of the slope** of the \\(B\\)-\\(t\\) graph. Not to \\(B\\) itself — a large steady field induces nothing at all.\n\n**Reading the three segments off the figure.**\n\n| Interval | What the graph does | Slope | emf |\n|---|---|---|---|\n| \\(0 \\to T\\) | rises steeply from its starting value to the maximum | **steepest** | \\(\\varepsilon_1\\), the **largest** |\n| \\(T \\to 2T\\) | **flat** plateau at the maximum | **zero** | \\(\\varepsilon_2 = 0\\), the **smallest** |\n| \\(2T \\to 3T\\) | falls, but over a smaller drop than the rise | intermediate | \\(\\varepsilon_3\\), in between |\n\nComparing the two sloping segments: the rise climbs further in the same time \\(T\\) than the fall descends, so the rising segment is the steeper of the two.\n\n\\(\\varepsilon_1 > \\varepsilon_3 > \\varepsilon_2\\)\n\n**The middle interval is the decisive one.** During \\(T \\to 2T\\) the field is large but **constant**, so the flux is constant and **no emf is induced whatever**. Any option that does not place \\(\\varepsilon_2\\) last can be discarded immediately — which removes two of the four before the slopes need comparing at all.\n\n**That the third emf is non-zero despite \\(B\\) decreasing** is the other half. Faraday's law responds to *change*, and a decrease is a change: the emf has the same magnitude it would have for an equal rate of increase, differing only in **sign**. The induced current in the third interval flows the opposite way round the loop from the first, opposing the fall in flux rather than the rise.\n\n**In summary:** the emf tracks the **steepness** of the graph, and its sign tracks the **direction** of the slope. Flat means nothing happens, however high the plateau."
+    },
+    {
+      "hash": "42b00a0466c8500a48436644020a46a3ec7458d5ca6a2b9b882d913555afe1ed",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "A series LCR circuit (L = 2 mH, C = \\(0{\\cdot}2\\ \\mu\\mathrm{F}\\) and R = \\(30\\ \\Omega\\)) is connected to an ac source of variable frequency. The impedance of this circuit will be minimum at a frequency of :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{10^5}{4\\pi}\\) Hz"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{10^5}{2\\pi}\\) Hz"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{10^4}{4\\pi}\\) Hz"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{10^4}{2\\pi}\\) Hz"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{10^{5}}{4\\pi}\\) Hz.**\n\n**When is the impedance minimum?** For a series LCR circuit\n\n\\(Z = \\sqrt{R^{2} + (X_L - X_C)^{2}}\\)\n\nThe \\(R^{2}\\) is fixed, so \\(Z\\) is least when the bracket vanishes — that is, at **resonance**, where the inductive and capacitive reactances cancel:\n\n\\(X_L = X_C \\qquad\\Longrightarrow\\qquad \\omega L = \\dfrac{1}{\\omega C} \\qquad\\Longrightarrow\\qquad \\omega = \\dfrac{1}{\\sqrt{LC}}\\)\n\nand then \\(Z_{\\min} = R\\).\n\n**In terms of frequency.**\n\n\\(f = \\dfrac{1}{2\\pi\\sqrt{LC}}\\)\n\n**Substituting.** With \\(L = 2\\ \\mathrm{mH} = 2 \\times 10^{-3}\\) H and \\(C = 0{\\cdot}2\\ \\mu\\mathrm{F} = 2 \\times 10^{-7}\\) F:\n\n\\(LC = (2 \\times 10^{-3})(2 \\times 10^{-7}) = 4 \\times 10^{-10}\\)\n\n\\(\\sqrt{LC} = 2 \\times 10^{-5}\\ \\mathrm{s}\\)\n\n\\(f = \\dfrac{1}{2\\pi \\times 2 \\times 10^{-5}} = \\dfrac{10^{5}}{4\\pi}\\ \\mathrm{Hz}\\)\n\n**Numerically that is about \\(7960\\) Hz** — an ordinary audio frequency.\n\n**Two things to be careful with.** The **micro** in \\(0{\\cdot}2\\ \\mu\\mathrm{F}\\) and the **milli** in \\(2\\) mH must both be converted, and the product \\(4 \\times 10^{-10}\\) has a clean square root only if they are. And the answer is wanted as a **frequency**, not an angular frequency: \\(\\omega = 1/\\sqrt{LC} = 5 \\times 10^{4}\\ \\mathrm{rad\\,s^{-1}}\\), and forgetting the \\(2\\pi\\) gives \\(10^{5}/2\\pi\\), which is duly on offer.\n\n**\\(R\\) is not needed at all**, and that is worth noticing. The resonant frequency depends only on \\(L\\) and \\(C\\); the resistance sets how *deep* and how *sharp* the minimum is — \\(Z_{\\min} = R\\), and the sharpness is the quality factor \\(Q = \\dfrac{1}{R}\\sqrt{L/C}\\) — but not *where* it occurs. The \\(30\\ \\Omega\\) is there to be left unused."
+    },
+    {
+      "hash": "e2746d292a607b8a47a0cb5238cbf3106923fc75a91bdfa4de5da078b0faa1c3",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Welders wear special glass goggles or face masks with glass windows to protect their eyes from radiations produced by welding arcs. These radiations are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "X-rays"
+        },
+        {
+          "label": "B",
+          "text": "Ultraviolet rays"
+        },
+        {
+          "label": "C",
+          "text": "Infrared waves"
+        },
+        {
+          "label": "D",
+          "text": "Gamma rays"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): ultraviolet rays.**\n\n**What a welding arc emits.** The arc reaches several thousand kelvin, and at that temperature it radiates strongly across the spectrum — visible light and infrared certainly, but also a large flux of **ultraviolet**, which is the part that does the damage.\n\n**Why UV specifically is the hazard.** UV photons carry \\(3\\) to \\(100\\) eV, enough to **break chemical bonds** and damage the proteins of living tissue. Two injuries follow, and both are familiar in the trade:\n\n- **Photokeratitis** — \"arc eye\" or \"welder's flash\" — an inflammation of the cornea, equivalent to sunburn of the eye surface. It is painful, comes on hours after exposure, and the delay is itself a hazard, since nothing warns the welder at the time.\n- Cumulative exposure also raises the risk of **cataract**.\n\nInfrared, by contrast, is felt immediately as heat and prompts the welder to move away; visible light merely dazzles. UV is the one that is neither felt nor seen while it does its work.\n\n**Why the glass goggles work.** Ordinary glass is **opaque to ultraviolet** below about \\(320\\) nm — the UV is absorbed within the first millimetre. That is the same reason one cannot get sunburnt through a closed window, and it is why a glass filter is sufficient protection here; the darkened shade simply cuts the visible glare as well.\n\n**Why the other three are wrong.** **X-rays** and **gamma rays** are emitted by nuclear or inner-shell electronic transitions, at energies of thousands to millions of electronvolts — nothing in a welding arc produces them, and ordinary glass would not stop them if it did. **Infrared** is emitted in quantity, but it is the least energetic of the three thermal outputs and cannot break bonds; it is a burn risk to the skin, not the eye hazard the goggles are for."
+    },
+    {
+      "hash": "260dc6ec052e670cdd0128e56dd7e0407441bcf20dd45d5c584d0bb423608eb5",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A photosensitive surface has a work function of \\(2{\\cdot}00\\) eV. The maximum kinetic energy of electrons ejected from this surface by radiation of wavelength 300 nm is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}54\\) eV"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}07\\) eV"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}61\\) eV"
+        },
+        {
+          "label": "D",
+          "text": "\\(2{\\cdot}14\\) eV"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(2{\\cdot}14\\) eV.**\n\n**The photon energy.**\n\n\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{300 \\times 10^{-9}} = 6{\\cdot}63 \\times 10^{-19}\\ \\mathrm{J}\\)\n\nIn electronvolts:\n\n\\(E = \\dfrac{6{\\cdot}63 \\times 10^{-19}}{1{\\cdot}6 \\times 10^{-19}} = 4{\\cdot}14\\ \\mathrm{eV}\\)\n\n**Einstein's photoelectric equation.**\n\n\\(K_{\\max} = E - \\phi_0 = 4{\\cdot}14 - 2{\\cdot}00\\)\n\n\\(K_{\\max} = 2{\\cdot}14\\ \\mathrm{eV}\\)\n\n**The shortcut worth having.** Carrying the single constant\n\n\\(hc \\approx 1240\\ \\mathrm{eV\\,nm}\\)\n\nturns the first step into one division:\n\n\\(E \\approx \\dfrac{1240}{300} = 4{\\cdot}13\\ \\mathrm{eV}\\)\n\nNo conversion to joules and back is needed, and the agreement with the long route confirms both.\n\n**Working in electronvolts throughout is the real lesson here.** The work function is given in eV and the options are in eV; converting the photon energy to joules only to convert it back is two chances to slip a factor of \\(1{\\cdot}6 \\times 10^{-19}\\).\n\n**Orientation.** \\(300\\) nm is ultraviolet, just beyond the violet edge of the visible range. A work function of \\(2{\\cdot}00\\) eV puts this metal's threshold wavelength at\n\n\\(\\lambda_0 = \\dfrac{1240}{2{\\cdot}00} = 620\\ \\mathrm{nm}\\)\n\nin the orange. So this surface responds to most of the visible spectrum, and the incident UV is comfortably above threshold — which is why the ejected electrons carry more than an electronvolt to spare."
+    },
+    {
+      "hash": "1c3718ceb9ad62e198e7ceab9f27e1ad6e70a511a112e8ed23f9f7695af20c8d",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "(a) \"The electron drift speed is only a few mm/s for currents in the range of a few amperes for a given conductor.\" How then is current established almost the instant a circuit is closed ? Explain.\n(b) 'V = IR is a statement of Ohm's Law' is not true. Explain.",
+      "solution": "**(a) Why the current starts almost instantly, though the electrons crawl.**\n\nThe two speeds involved are utterly different, and conflating them is what makes the question look paradoxical.\n\n**What travels fast is the ELECTRIC FIELD, not the electrons.** When the switch closes, the battery establishes an electric field along the whole length of the conductor, and that field propagates at very nearly the **speed of light** — a \\(3\\) m circuit is set up in about \\(10^{-8}\\) s.\n\n**Every electron in the wire starts drifting at once.** The field exists at *every point* of the conductor essentially simultaneously, so electrons near the far end begin moving at the same instant as those next to the battery. Current is charge crossing a section per second, so a current appears everywhere immediately.\n\n**Nothing has to travel the length of the wire.** The electrons that arrive at the bulb were already sitting in its filament; they did not set out from the battery. A useful picture is a **pipe already full of water**: open the tap and water leaves the far end at once, though the particular molecules at the tap take a long time to get there.\n\nSo the drift speed of a few mm/s sets how *fast an individual electron* moves, while the signal speed — how fast the *instruction to move* propagates — is \\(\\sim c\\). These are different questions with answers eleven orders of magnitude apart.\n\n**(b) Why \"\\(V = IR\\) is a statement of Ohm's law\" is not true.**\n\n**\\(V = IR\\) is a DEFINITION of resistance**, not a law. For any conducting device whatever — a diode, a thermistor, a gas discharge tube, a filament lamp — one may measure the voltage across it and the current through it and *define*\n\n\\(R = \\dfrac{V}{I}\\)\n\nThat ratio always exists. Writing it down asserts nothing about nature.\n\n**Ohm's law is the much stronger claim that this ratio is CONSTANT** — that \\(R\\) is independent of \\(V\\) and \\(I\\), so the \\(V\\)-\\(I\\) graph is a **straight line through the origin**:\n\n\\(V \\propto I \\qquad \\text{at constant temperature}\\)\n\nThat *is* a law, because it can be false, and for many materials it is.\n\n**The distinction is testable, which is what makes it a law at all.** A **filament lamp** has \\(R\\) rising with current as the filament heats; a **semiconductor diode** has \\(R\\) falling steeply once forward-biased past the knee, and enormous in reverse; a **thermistor** has \\(R\\) falling as it warms. All three obey \\(V = IR\\) at every instant — because that is only a definition — and none of them obeys Ohm's law.\n\n**The short form:** \\(V = IR\\) tells you what \\(R\\) *is*; Ohm's law tells you that \\(R\\) *stays the same*. Only the second can be tested, and only the second is a law."
+    },
+    {
+      "hash": "b60d3170d52aaa4b049cb9b752b5eeec94f47ec3294598aa2be1c4f5662c3fe2",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "stem": "Calculate the energy released/absorbed in the following nuclear reaction :\n\\(^{12}_{6}\\mathrm{C} + ^{12}_{6}\\mathrm{C} \\longrightarrow ^{20}_{10}\\mathrm{Ne} + ^{4}_{2}\\mathrm{He}\\)\nGiven : \\(m\\left(^{12}_{6}\\mathrm{C}\\right) = 12{\\cdot}000000\\) u\n\\(m\\left(^{20}_{10}\\mathrm{Ne}\\right) = 19{\\cdot}992439\\) u\n\\(m\\left(^{4}_{2}\\mathrm{He}\\right) = 4{\\cdot}002603\\) u\n\\(1\\ \\mathrm{u} = 931\\ \\mathrm{MeV}/c^2\\)",
+      "solution": "**The reaction.**\n\n\\(^{12}_{6}\\mathrm{C} + ^{12}_{6}\\mathrm{C} \\longrightarrow ^{20}_{10}\\mathrm{Ne} + ^{4}_{2}\\mathrm{He}\\)\n\n**Check the bookkeeping first.** Mass numbers: \\(12 + 12 = 24\\) and \\(20 + 4 = 24\\) ✓. Atomic numbers: \\(6 + 6 = 12\\) and \\(10 + 2 = 12\\) ✓. The reaction is balanced, so the masses are comparing like with like.\n\n**The mass defect.**\n\n\\(\\Delta m = \\Big[2\\,m\\!\\left(^{12}_{6}\\mathrm{C}\\right)\\Big] - \\Big[m\\!\\left(^{20}_{10}\\mathrm{Ne}\\right) + m\\!\\left(^{4}_{2}\\mathrm{He}\\right)\\Big]\\)\n\n\\(= \\big[2 \\times 12{\\cdot}000000\\big] - \\big[19{\\cdot}992439 + 4{\\cdot}002603\\big]\\)\n\n\\(= 24{\\cdot}000000 - 23{\\cdot}995042\\)\n\n\\(\\Delta m = 0{\\cdot}004958\\ \\mathrm{u}\\)\n\n**The energy.**\n\n\\(Q = \\Delta m \\times 931\\ \\mathrm{MeV} = 0{\\cdot}004958 \\times 931\\)\n\n\\(\\boxed{\\ Q \\approx 4{\\cdot}62\\ \\mathrm{MeV},\\ \\text{RELEASED}\\ }\\)\n\n**Why released rather than absorbed.** \\(\\Delta m\\) came out **positive** — the products are **lighter** than the reactants. That missing mass appears as energy, by \\(E = \\Delta m\\,c^{2}\\). Had \\(\\Delta m\\) been negative, the products would have been heavier, energy would have had to be supplied, and the reaction would be endothermic.\n\n**Where the precision has to live.** The reactant and product masses differ in the **fifth decimal place** — \\(24{\\cdot}000000\\) against \\(23{\\cdot}995042\\). Rounding either to three or four figures would destroy the answer entirely, which is why nuclear masses are quoted to six. Carry every digit until the subtraction is done, and only then round.\n\n**Why carbon fuses at all.** Both \\(^{12}\\mathrm{C}\\) and the products lie on the **rising** part of the binding-energy curve, below the iron peak, so combining light nuclei moves the material *up* the curve and releases energy. Carbon burning of exactly this kind is a real stage in the life of a massive star, following hydrogen and helium burning and requiring core temperatures near \\(10^{9}\\) K to overcome the mutual repulsion of two \\(Z = 6\\) nuclei."
+    },
+    {
+      "hash": "2458484329fad07ef8ab392c0aac2a421f7a0f5a504691088babc753db77d216",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A rectangular loop of sides 10 cm \\(\\times\\) 20 cm is kept outside a region of uniform magnetic field \\(\\left|\\vec{B}\\right|\\) = 5 mT as shown in the figure. The loop is moved with the velocity of 5 cm/s till it goes completely out of the magnetic field.\n(a) Plot a graph showing variation of the magnetic flux \\(\\phi\\) with x \\((0 \\leq x \\leq 100\\) cm).\n(b) Find the maximum value of magnetic flux linked with the loop.\n(c) Will an external work be required to be done to move the loop through the magnetic field ?",
+      "figureNote": "REQUIRED — the stem says 'as shown in the figure' and states neither where the loop sits nor where the field region begins and ends, so part (a) cannot be attempted from text. A rectangle labelled M (top-left), N (top-right), O (bottom-right) and P (bottom-left), its top side marked 20 cm and its left side 10 cm, with an arrow labelled v pointing rightward from the side NO; to the right of it a rectangular region of \\(\\times\\) symbols labelled \\(\\vec{B}\\); below, a horizontal x-axis carrying ticks 0, 20 cm and 80 cm with dashed verticals dropped from O and from the two vertical edges of the field region. The SHAPE of the flux-vs-x graph is what part (a) asks for and is not described. Page idx 14.",
+      "imageAttached": true,
+      "solution": "**Reading the figure.** The loop MNOP is \\(20\\) cm wide and \\(10\\) cm tall, with its leading edge NO at \\(x = 0\\). The field region \\(B = 5\\) mT runs from \\(x = 20\\) cm to \\(x = 80\\) cm — **60 cm wide**, comfortably more than the loop. The loop moves right at \\(5\\ \\mathrm{cm\\,s^{-1}}\\), and \\(x\\) measures how far the leading edge has gone.\n\n**(a) The graph of \\(\\phi\\) against \\(x\\).**\n\nFlux is \\(\\phi = B \\times (\\text{area of loop inside the field})\\), so the shape follows the overlap:\n\n| Range of \\(x\\) | What is happening | \\(\\phi\\) |\n|---|---|---|\n| \\(0\\) to \\(20\\) cm | loop still entirely left of the field | **zero** |\n| \\(20\\) to \\(40\\) cm | **entering** — overlap grows from 0 to the full 20 cm width | rises **linearly** |\n| \\(40\\) to \\(80\\) cm | **fully inside** — overlap fixed at the whole loop | **constant** at the maximum |\n| \\(80\\) to \\(100\\) cm | **leaving** — overlap shrinks back to zero | falls **linearly** |\n\nThe plot is therefore a **trapezoid**: flat at zero to \\(x = 20\\), a straight climb to the plateau at \\(x = 40\\), a flat top to \\(x = 80\\), a straight descent reaching zero at \\(x = 100\\).\n\nThe two sloping sides have **equal and opposite gradients**, since the loop enters and leaves at the same speed through the same edge length.\n\n**(b) The maximum flux.**\n\n\\(\\phi_{\\max} = BA = (5 \\times 10^{-3}) \\times (20 \\times 10^{-2}) \\times (10 \\times 10^{-2})\\)\n\n\\(\\boxed{\\ \\phi_{\\max} = 1 \\times 10^{-4}\\ \\mathrm{Wb}\\ }\\)\n\n**(c) Is external work required? YES — but only while the loop is crossing a boundary.**\n\n*While entering \\((20 \\to 40)\\) and while leaving \\((80 \\to 100)\\):* the flux is changing, so an emf is induced, a current flows, and by Lenz's law the force on the current-carrying edge **opposes** the motion. An external agent must push against that force, and the work done appears as **heat** in the loop's resistance.\n\n*While fully inside \\((40 \\to 80)\\):* the flux is **constant** — the plateau of the graph — so there is no emf, no current, no opposing force, and **no work is needed**. The loop coasts.\n\n**This is exactly the graph read as physics.** The **sloping** parts of the trapezoid are where an emf exists and work must be done; the **flat** parts are where nothing happens. The emf at any point is the gradient of this graph times the speed, so the trapezoid's shape *is* the answer to part (c).\n\n**A number for the effort.** On the slopes, \\(\\varepsilon = Blv = (5 \\times 10^{-3})(0{\\cdot}10)(0{\\cdot}05) = 2{\\cdot}5 \\times 10^{-5}\\) V — tiny, as one would expect for a 5 mT field and a leisurely 5 cm/s."
+    },
+    {
+      "hash": "712c7d9c9234d98b3ccb93cc15bf7f0dcf2dcf375ea2a378251a1a61ed6ace20",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "(a) Briefly explain de Broglie hypothesis for wave nature of matter.\n(b) Find the ratio of de Broglie wavelength associated with a proton and an alpha particle when both are\n(i) accelerated from rest through the same potential difference, and\n(ii) moving with the same kinetic energy.",
+      "solution": "**(a) The de Broglie hypothesis.**\n\nIn 1924 de Broglie proposed that **wave-particle duality is not confined to light**. Since radiation — long treated as a wave — had been shown by the photoelectric effect to behave as particles, he argued that nature should be symmetric and that **matter, long treated as particles, should also show wave behaviour**.\n\nA particle of momentum \\(p\\) has an associated wavelength\n\n\\(\\boxed{\\ \\lambda = \\dfrac{h}{p} = \\dfrac{h}{mv}\\ }\\)\n\n**Where the relation comes from.** For a photon, \\(E = h\\nu\\) and \\(E = pc\\), so \\(p = h\\nu/c = h/\\lambda\\). De Broglie simply read this **backwards** and applied it to matter: if a wave can have momentum \\(h/\\lambda\\), a particle of momentum \\(p\\) can have wavelength \\(h/p\\).\n\n**Why the effect is invisible in daily life.** Planck's constant is minute, so \\(\\lambda\\) is unobservably small for anything macroscopic — a \\(1\\) kg ball at \\(1\\ \\mathrm{m\\,s^{-1}}\\) has \\(\\lambda \\approx 6{\\cdot}6 \\times 10^{-34}\\) m, far smaller than any aperture it could diffract through. Only for very light particles is \\(\\lambda\\) comparable to atomic spacings: an electron through \\(100\\) V has \\(\\lambda \\approx 1{\\cdot}2\\ \\mathring{\\mathrm{A}}\\), the size of an atom.\n\n**The confirmation.** Davisson and Germer scattered electrons from a nickel crystal and found a **diffraction pattern** at exactly the angles de Broglie's formula predicts. The electron microscope is the same idea put to work.\n\n**(b) The ratio \\(\\lambda_p/\\lambda_\\alpha\\).**\n\nThe two particles differ in both mass and charge: \\(m_\\alpha = 4m_p\\) and \\(q_\\alpha = 2q_p\\).\n\n**(i) Accelerated from rest through the same potential difference \\(V\\).**\n\nThe particle gains kinetic energy \\(qV\\), so \\(p = \\sqrt{2mqV}\\) and\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mqV}}\\)\n\nBoth mass **and charge** enter. Taking the ratio, with \\(h\\) and \\(V\\) cancelling:\n\n\\(\\dfrac{\\lambda_p}{\\lambda_\\alpha} = \\sqrt{\\dfrac{m_\\alpha q_\\alpha}{m_p q_p}} = \\sqrt{\\dfrac{4m_p \\times 2q_p}{m_p q_p}} = \\sqrt{8}\\)\n\n\\(\\boxed{\\ \\dfrac{\\lambda_p}{\\lambda_\\alpha} = 2\\sqrt{2} \\approx 2{\\cdot}83\\ }\\)\n\n**(ii) Moving with the same kinetic energy \\(K\\).**\n\nNow \\(p = \\sqrt{2mK}\\) with \\(K\\) given directly, so the **charge does not enter at all**:\n\n\\(\\dfrac{\\lambda_p}{\\lambda_\\alpha} = \\sqrt{\\dfrac{m_\\alpha}{m_p}} = \\sqrt{4}\\)\n\n\\(\\boxed{\\ \\dfrac{\\lambda_p}{\\lambda_\\alpha} = 2\\ }\\)\n\n**Why the two answers differ, and it is the whole point of asking both.** At the same **voltage**, the alpha particle's double charge wins it twice as much energy as the proton, *on top of* being four times heavier — so two factors compound and the ratio is \\(\\sqrt{4 \\times 2} = 2\\sqrt{2}\\). At the same **kinetic energy**, that advantage is removed by hand: only the mass ratio survives, giving \\(\\sqrt{4} = 2\\).\n\nSame two particles, same formula — and the answer depends entirely on **which quantity the question holds equal**."
+    },
+    {
+      "hash": "d3e8552bad89f663a1ed6197c83845519c5fd96cbcd375170ce16d619fc06d9a",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Force",
+      "stem": "(a) Plot a graph depicting potential energy of a pair of nucleons in a nucleus as a function of their separation.\n(b) Identify the regions where the nuclear force is (i) attractive, and (ii) repulsive. Justify your answer.",
+      "solution": "**(a) The plot.**\n\nDraw potential energy \\(U\\) (in MeV) on the vertical axis against the separation \\(r\\) of the two nucleons (in fm) on the horizontal.\n\nComing in from large \\(r\\), the curve is essentially **zero beyond about 3 fm**, dips into negative values as \\(r\\) decreases, reaches a **minimum of about \\(-100\\) MeV** at \\(r_0 \\approx 0{\\cdot}8\\ \\mathrm{fm}\\), then **rises extremely steeply** through zero into large positive values as \\(r\\) falls below \\(r_0\\).\n\nMark \\(r_0\\) on the horizontal axis — it is the only feature part (b) refers to.\n\n**(b) The two regions.**\n\n**(i) For \\(r > r_0\\), the nuclear force is ATTRACTIVE.**\n\n**(ii) For \\(r < r_0\\), the nuclear force is REPULSIVE.**\n\n**Justification — from the slope, which is the only rigorous route.** Force and potential energy are related by\n\n\\(F = -\\dfrac{dU}{dr}\\)\n\nso the **sign of the force is the opposite of the sign of the slope**.\n\n*For \\(r > r_0\\):* the curve is **rising** as \\(r\\) increases, so \\(\\dfrac{dU}{dr} > 0\\), giving \\(F < 0\\). A negative \\(F\\) points towards **decreasing** \\(r\\) — the nucleons are pulled **together**. **Attractive.**\n\n*For \\(r < r_0\\):* the curve is **falling steeply** as \\(r\\) increases, so \\(\\dfrac{dU}{dr} < 0\\), giving \\(F > 0\\). A positive \\(F\\) points towards **increasing** \\(r\\) — the nucleons are pushed **apart**. **Repulsive.**\n\n*At \\(r = r_0\\):* the slope is zero, so the force is zero. This is the **equilibrium separation**, and because it is a *minimum* of \\(U\\) rather than a maximum, the equilibrium is **stable** — displace the nucleons either way and the force restores them.\n\n**A check without calculus.** A system always tends towards **lower** potential energy, so the force at any point acts *downhill* on the curve. To the right of the minimum, downhill means moving left — together. To the left of it, downhill means moving right — apart. Reading the shape that way gives the same two answers and is harder to get backwards than a sign convention.\n\n**What each feature explains.**\n\nThe **hard repulsive core** below \\(0{\\cdot}8\\) fm is why a nucleus **cannot be compressed**: nucleons resist being forced closer however hard they are squeezed. That incompressibility is precisely why nuclear density comes out the same — about \\(2{\\cdot}3 \\times 10^{17}\\ \\mathrm{kg\\,m^{-3}}\\) — for every nucleus from hydrogen to uranium.\n\nThe **rapid flattening beyond a few femtometres** is the **short range** of the nuclear force. A nucleon binds only to its immediate neighbours, not to every other nucleon, which is why total binding energy grows in proportion to \\(A\\) rather than \\(A^{2}\\) and why the binding-energy-per-nucleon curve has a plateau at all."
+    }
+  ]
+}
