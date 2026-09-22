@@ -1,0 +1,1036 @@
+{
+  "paper": "55/5/1",
+  "year": 2025,
+  "paperId": "2025-55-5-1",
+  "markingScheme": "out/2025-55-5-1/ms/p00.png … p15.png",
+  "rows": [
+    {
+      "hash": "adcf0c73d99cca1b2d2f4eccb8106519d8e174e48fd989eaa3700db74967b96b",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "A metal sheet is inserted between the plates of a parallel plate capacitor of capacitance C. If the sheet partly occupies the space between the plates, the capacitance :",
+      "options": [
+        {
+          "label": "A",
+          "text": "remains C"
+        },
+        {
+          "label": "B",
+          "text": "becomes greater than C"
+        },
+        {
+          "label": "C",
+          "text": "becomes less than C"
+        },
+        {
+          "label": "D",
+          "text": "becomes zero"
+        }
+      ],
+      "answer": "B",
+      "solution": "A metal sheet is a conductor, so the field inside it is zero. Whatever thickness \\(t\\) it occupies contributes nothing to the potential difference between the plates — only the remaining air gap \\((d - t)\\) does.\n\nThe capacitor therefore behaves as one whose effective plate separation has shrunk:\n\n\\(C' = \\dfrac{\\varepsilon_0 A}{d - t} \\; > \\; \\dfrac{\\varepsilon_0 A}{d} = C\\)\n\nSo the capacitance **becomes greater than C**, option (B).\n\nThe word \"partly\" is what keeps the answer finite. A sheet filling the whole gap would make \\(t = d\\), shorting the plates and sending \\(C' \\to \\infty\\). And note the position of the sheet never enters — sliding it about between the plates changes nothing, since only its thickness is subtracted."
+    },
+    {
+      "hash": "1f8329b37d719aa59ad1adb2ee88316354d857b640f262288967501ba5ead842",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "stem": "The electric field at a point in a region is given by \\(\\vec{E} = \\alpha \\dfrac{\\vec{r}}{|\\vec{r}|^3}\\), where \\(\\alpha\\) is a constant and r is the distance of the point from the origin. The magnitude of potential of the point is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\alpha}{r}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\alpha r^2}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\alpha}{2r^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\dfrac{\\alpha}{r}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "Written out, the field is\n\n\\(\\vec{E} = \\alpha\\dfrac{\\vec{r}}{\\left|\\vec{r}\\right|^{3}} = \\dfrac{\\alpha}{r^{2}}\\,\\hat{r}\\)\n\nThis is exactly the field of a point charge at the origin, with \\(\\alpha\\) playing the role of \\(\\dfrac{1}{4\\pi\\varepsilon_0}q\\). The potential of such a field is obtained by integrating in from infinity:\n\n\\(V = -\\int_{\\infty}^{r}\\vec{E}\\cdot d\\vec{r} = -\\int_{\\infty}^{r}\\dfrac{\\alpha}{r'^{2}}\\,dr' = \\left[\\dfrac{\\alpha}{r'}\\right]_{\\infty}^{r} = \\dfrac{\\alpha}{r}\\)\n\nThe magnitude of the potential is \\(\\dfrac{\\alpha}{r}\\), option (A).\n\nA quick way to see it without integrating: \\(E = -\\dfrac{dV}{dr}\\), so \\(V\\) must be the function whose derivative gives \\(\\alpha/r^{2}\\), and that is \\(\\alpha/r\\). The two \\(r^{2}\\) options can also be discarded on dimensional grounds alone — potential must carry one fewer power of distance than field, not one more."
+    },
+    {
+      "hash": "617d8ac75ce936be726d6dff25be5ef430616fb64a9f5c9be8d4c5ff93302486",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Combination of Resistors",
+      "stem": "Four resistors, each of resistance R and a key K are connected as shown in the figure. The equivalent resistance between points A and B when key K is open, will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "4R"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\infty\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{R}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{4R}{3}\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem says only 'as shown in the figure' and every option is an equivalent resistance, so the NETWORK TOPOLOGY is the entire question. Described here: a circle carries four resistors each labelled R — two on a horizontal chord and two on a vertical chord — together with a key K, and the terminals are the point A on the horizontal chord and the point B on the circle. The way the four resistors and the key are wired to A and B is DELIBERATELY WITHHELD, because it is exactly what the question tests. Page idx 4.",
+      "imageAttached": true,
+      "solution": "The circular wire in the figure carries no resistance, so **every point on the ring is one and the same node**. That single observation does most of the work.\n\nCall the ring node P and the central junction O. The four resistors run between them and the ring:\n\n- one R from O to the ring on the left,\n- one R from O to the ring at the top,\n- one R from O to the ring at the bottom,\n- one R from O out to the point A, which then reaches B through the key K.\n\nWith **K open**, the A–B link is broken, so the only route from A to B is backwards through the network. Going from A:\n\n\\(A \\xrightarrow{\\;R\\;} O \\xrightarrow{\\;\\text{three } R \\text{ in parallel}\\;} \\text{ring} = B\\)\n\nThe three remaining resistors all join O to the same node, so they are in parallel:\n\n\\(R_{\\text{parallel}} = \\dfrac{R}{3}\\)\n\nand these are in series with the R from A to O:\n\n\\(R_{AB} = R + \\dfrac{R}{3} = \\dfrac{4R}{3}\\)\n\nThe answer is (D).\n\nClosing K would short A directly to B and drop the resistance to zero — which is why the question specifies the key is open. The tempting answer \\(\\infty\\) assumes that breaking the key isolates A from B, but the ring provides the return path."
+    },
+    {
+      "hash": "59ea4d690487afb9c270f63d1fcca756b8588d7b24bc4f49712bd9b4f27d2215",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A charged particle gains a speed of \\(10^6\\ \\mathrm{ms^{-1}}\\), when accelerated from rest through a potential difference 10 kV. It enters a region of magnetic field of \\(0{\\cdot}4\\) T such that \\(\\vec{v} \\perp \\vec{B}\\). The radius of circular path described by it is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2{\\cdot}5\\) cm"
+        },
+        {
+          "label": "B",
+          "text": "5 cm"
+        },
+        {
+          "label": "C",
+          "text": "8 cm"
+        },
+        {
+          "label": "D",
+          "text": "10 cm"
+        }
+      ],
+      "answer": "B",
+      "solution": "The two stages share the charge-to-mass ratio, and that is the quantity to extract first. The particle is never named, so \\(q\\) and \\(m\\) cannot be found separately — but they never need to be.\n\n**From the acceleration:**\n\n\\(qV = \\dfrac{1}{2}mv^{2} \\qquad\\Longrightarrow\\qquad \\dfrac{q}{m} = \\dfrac{v^{2}}{2V} = \\dfrac{(10^{6})^{2}}{2 \\times 10^{4}} = \\dfrac{10^{12}}{2 \\times 10^{4}} = 5 \\times 10^{7}\\ \\mathrm{C\\,kg^{-1}}\\)\n\n**In the magnetic field**, with \\(\\vec{v} \\perp \\vec{B}\\) the magnetic force supplies the centripetal force:\n\n\\(r = \\dfrac{mv}{qB} = \\dfrac{v}{\\left(\\dfrac{q}{m}\\right)B} = \\dfrac{10^{6}}{5 \\times 10^{7} \\times 0{\\cdot}4} = \\dfrac{10^{6}}{2 \\times 10^{7}} = 0{\\cdot}05\\ \\text{m}\\)\n\nThat is **5 cm**, option (B).\n\nWriting \\(r = v \\big/ \\left[(q/m)B\\right]\\) rather than \\(mv/qB\\) is what makes the unknown particle harmless: everything the question withholds cancels between the two stages."
+    },
+    {
+      "hash": "d2a5896c6e8b1666d22aa511db500356545d992ecf8b8308fb7074f4af524a67",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A current of \\(\\left(\\dfrac{10}{\\pi}\\right)\\) A is maintained in a circular loop of radius 14 cm. The value of dipole moment associated with the loop is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}019\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}14\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0{\\cdot}196\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0{\\cdot}615\\ \\mathrm{Am^2}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "The magnetic dipole moment of a single current loop is\n\n\\(m = IA = I\\,\\pi r^{2}\\)\n\nWith \\(I = \\dfrac{10}{\\pi}\\) A and \\(r = 14\\ \\mathrm{cm} = 0{\\cdot}14\\) m:\n\n\\(m = \\dfrac{10}{\\pi} \\times \\pi (0{\\cdot}14)^{2} = 10 \\times 0{\\cdot}0196 = 0{\\cdot}196\\ \\mathrm{A\\,m^{2}}\\)\n\nThe answer is (C).\n\nThe awkward \\(10/\\pi\\) is deliberate: it cancels the \\(\\pi\\) in the area and leaves an exact decimal, so no value of \\(\\pi\\) is ever needed. Seeing that cancellation coming is the whole shortcut — \\(m = 10r^{2}\\), and \\(0{\\cdot}14^{2} = 0{\\cdot}0196\\)."
+    },
+    {
+      "hash": "0734c4454a477445567301cd4ac4592febedcab4a7e386784c6d5bff27418986",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "The magnetic flux linked with a coil changes with time t as \\(\\phi = (8t^2 + 5t + 7)\\), where t is in seconds and \\(\\phi\\) is in Wb. The value of emf induced in the coil at \\(t = 4\\) s is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "32 V"
+        },
+        {
+          "label": "B",
+          "text": "37 V"
+        },
+        {
+          "label": "C",
+          "text": "64 V"
+        },
+        {
+          "label": "D",
+          "text": "69 V"
+        }
+      ],
+      "answer": "D",
+      "solution": "Faraday's law gives the induced emf as the rate of change of flux:\n\n\\(\\left|\\varepsilon\\right| = \\left|\\dfrac{d\\phi}{dt}\\right|\\)\n\nDifferentiating \\(\\phi = 8t^{2} + 5t + 7\\):\n\n\\(\\dfrac{d\\phi}{dt} = 16t + 5\\)\n\nAt \\(t = 4\\) s:\n\n\\(\\left|\\varepsilon\\right| = 16(4) + 5 = 64 + 5 = 69\\ \\text{V}\\)\n\nThe answer is (D).\n\nThe constant term 7 Wb disappears on differentiation, as it must — a steady flux induces nothing. Dropping the \\(5t\\) term gives 64 V, and differentiating \\(8t^{2}\\) as \\(8t\\) gives 32 V — both of which are offered."
+    },
+    {
+      "hash": "654f7287c92872e156c0cbf9b9505501445108efd280f9b4fae30be150da0c26",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Which of the following rays coming from the Sun plays an important role in maintaining the Earth's warmth ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Infrared rays"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\gamma\\) rays"
+        },
+        {
+          "label": "C",
+          "text": "UV rays"
+        },
+        {
+          "label": "D",
+          "text": "Visible light rays"
+        }
+      ],
+      "answer": "A",
+      "solution": "**Infrared rays**, option (A).\n\nInfrared radiation carries the bulk of the Sun's radiant energy reaching the ground, and — more importantly — it is what the warmed Earth re-radiates. Water vapour and carbon dioxide in the atmosphere are largely transparent to incoming visible light but absorb that outgoing infrared strongly, trapping the energy near the surface. This is the greenhouse effect, and without it the Earth's mean temperature would be some 30 °C lower.\n\nThe others do not maintain warmth. Gamma rays and most UV are absorbed high in the atmosphere, by the ozone layer and above, and in any case carry a tiny fraction of the solar output. Visible light delivers plenty of energy but passes through greenhouse gases rather than being absorbed by them — it warms the surface, but it is the infrared re-emission that the atmosphere retains."
+    },
+    {
+      "hash": "1b1e2426c2a398298a7368453918bdf8119b898b51f6e5def0500d6a8ef07fd9",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The dimensions of \\((\\mu\\varepsilon)^{-1}\\), where \\(\\varepsilon\\) is permittivity and \\(\\mu\\) is permeability of a medium, are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\([\\mathrm{M^0 L^1 T^{-1}}]\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\([\\mathrm{M^0 L^2 T^{-2}}]\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\([\\mathrm{M^1 L^2 T^{-2}}]\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\([\\mathrm{M^1 L^{-1} T^1}]\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "The speed of an electromagnetic wave in a medium is\n\n\\(v = \\dfrac{1}{\\sqrt{\\mu\\varepsilon}} \\qquad\\Longrightarrow\\qquad \\dfrac{1}{\\mu\\varepsilon} = v^{2}\\)\n\nSo \\((\\mu\\varepsilon)^{-1}\\) has the dimensions of a **speed squared**:\n\n\\([v^{2}] = [\\mathrm{L\\,T^{-1}}]^{2} = [\\mathrm{M^{0}L^{2}T^{-2}}]\\)\n\nThe answer is (B).\n\nIn vacuum this is the celebrated result \\(c = 1/\\sqrt{\\mu_0\\varepsilon_0}\\) — Maxwell computed it from two purely electrical and magnetic measurements, found it matched the measured speed of light, and concluded that light is an electromagnetic wave. Recognising \\((\\mu\\varepsilon)^{-1}\\) as \\(v^{2}\\) makes the dimensional analysis a single line; grinding through the separate dimensions of \\(\\mu\\) and \\(\\varepsilon\\) reaches the same place far more slowly."
+    },
+    {
+      "hash": "30d7e39d3cfb86bed2c21d86c04297ec1f279d4554d9f09c9b796c2e1d241e2f",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Which of the following electromagnetic waves has photons of largest momentum ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "X-rays"
+        },
+        {
+          "label": "B",
+          "text": "AM radio waves"
+        },
+        {
+          "label": "C",
+          "text": "Microwaves"
+        },
+        {
+          "label": "D",
+          "text": "TV waves"
+        }
+      ],
+      "answer": "A",
+      "solution": "A photon's momentum is\n\n\\(p = \\dfrac{h}{\\lambda} = \\dfrac{h\\nu}{c}\\)\n\nso the largest momentum belongs to the **shortest wavelength**, equivalently the highest frequency.\n\nOf the four, X-rays have by far the shortest wavelength — around \\(10^{-10}\\) m, against roughly \\(10^{-2}\\) m for microwaves, \\(10^{-1}\\) m for TV waves and hundreds of metres for AM radio. The answer is (A).\n\nThe spread is enormous: an X-ray photon carries something like \\(10^{12}\\) times the momentum of an AM radio photon. That is also why X-rays ionise and radio waves do not — momentum and energy scale together for a photon, both as \\(1/\\lambda\\)."
+    },
+    {
+      "hash": "8470f2afd6da3f2cd3fdb18476d9ec640604a8d6c6ceea9509a61c46089ac9b9",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "A compound microscope has an objective and an eyepiece of focal lengths \\(f_o\\) and \\(f_e\\), respectively. To obtain a large magnification of a small object, the microscope should have :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(f_o\\) and \\(f_e\\) small, and \\(f_e > f_o\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(f_o\\) and \\(f_e\\) small, and \\(f_o > f_e\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(f_o\\) and \\(f_e\\) large, and \\(f_e > f_o\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(f_o\\) and \\(f_e\\) large, and \\(f_o > f_e\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "The magnifying power of a compound microscope in normal use is approximately\n\n\\(m = m_o \\times m_e \\approx \\dfrac{L}{f_o} \\times \\dfrac{D}{f_e}\\)\n\nwhere \\(L\\) is the tube length and \\(D\\) the near-point distance. Both focal lengths sit in denominators, so a large magnification needs **both \\(f_o\\) and \\(f_e\\) small**.\n\nThat narrows the choice to the two \"small\" options, and the relative size decides between them. The objective must form a real, magnified image of an object placed just outside its focus, which requires a very short \\(f_o\\); the eyepiece then works as a simple magnifier on that image and can afford a longer focal length. So \\(f_e > f_o\\).\n\nThe answer is (A).\n\nThis is the opposite arrangement from a telescope, where \\(m = f_o/f_e\\) and the objective wants the *longest* focal length available. The two instruments look similar and are built on inverted principles, which is exactly what this question tests."
+    },
+    {
+      "hash": "0021ab8d913b723f6099df0d00f22891cb8c052e1cc24336fb5145bb7258c425",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "Two coherent light waves, each having amplitude 'a', superpose to produce an interference pattern on a screen. The intensity of light as seen on the screen varies between :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 and \\(2a^2\\)"
+        },
+        {
+          "label": "B",
+          "text": "0 and \\(4a^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(a^2\\) and \\(2a^2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2a^2\\) and \\(4a^2\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "Two coherent waves of equal amplitude \\(a\\) superpose with a phase difference \\(\\phi\\), giving a resultant amplitude\n\n\\(A = 2a\\cos\\dfrac{\\phi}{2}\\)\n\nAs \\(\\phi\\) runs over all values, \\(\\cos(\\phi/2)\\) runs between \\(-1\\) and \\(+1\\), so \\(A\\) runs between \\(0\\) and \\(2a\\).\n\nIntensity goes as the square of the amplitude, \\(I \\propto A^{2}\\):\n\n- **Maximum**, at \\(\\phi = 0\\): \\(A = 2a\\), so \\(I_{\\max} \\propto 4a^{2}\\)\n- **Minimum**, at \\(\\phi = \\pi\\): \\(A = 0\\), so \\(I_{\\min} = 0\\)\n\nThe intensity varies between **0 and \\(4a^{2}\\)**, option (B).\n\nNote that \\(4a^{2}\\) is *twice* the \\(2a^{2}\\) the two sources would deliver if they simply added their intensities without interfering. Energy is still conserved: averaged over the pattern, \\(\\overline{4a^{2}\\cos^{2}(\\phi/2)} = 2a^{2}\\). Interference redistributes the light, taking from the dark fringes to pay for the bright ones."
+    },
+    {
+      "hash": "ddb08995452840c5b667d28d7ae8ee57483c218fabf8194f4d2114ee8dd21aca",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "The kinetic energy of an alpha particle is four times the kinetic energy of a proton. The ratio \\(\\left(\\dfrac{\\lambda_\\alpha}{\\lambda_p}\\right)\\) of de Broglie wavelengths associated with them will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{16}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{8}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "For a particle of kinetic energy \\(K\\),\n\n\\(p = \\sqrt{2mK} \\qquad\\Longrightarrow\\qquad \\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mK}}\\)\n\nTaking the ratio, everything but the masses and energies cancels:\n\n\\(\\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\sqrt{\\dfrac{m_p K_p}{m_\\alpha K_\\alpha}}\\)\n\nThe alpha particle has four times the proton's mass and, as given, four times its kinetic energy:\n\n\\(\\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\sqrt{\\dfrac{m_p K_p}{(4m_p)(4K_p)}} = \\sqrt{\\dfrac{1}{16}} = \\dfrac{1}{4}\\)\n\nThe answer is (C).\n\nBoth factors of 4 push the same way — more massive *and* more energetic both mean more momentum — so they multiply to 16 inside the square root and the square root turns that into 4. Taking only one of the two into account gives \\(1/2\\), which is why that option is offered."
+    },
+    {
+      "hash": "e758d53409a25dc3f86383df1756c2467f717ad08727ed0658420c8464778be6",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "Assertion (A) : The impurities in p-type Si are not pentavalent atoms.\nReason (R) : The hole density in valance band in p-type semiconductor is almost equal to the acceptor density.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "B",
+      "solution": "Both statements are true, but they are about different things.\n\n**Assertion — true.** A p-type semiconductor is made by doping with **trivalent** atoms (boron, aluminium, indium), each of which leaves one bond unfilled and so contributes an acceptor level. Pentavalent atoms would donate electrons and give n-type material instead. So the impurities in p-type Si are indeed not pentavalent.\n\n**Reason — true.** Acceptor levels sit only about \\(0{\\cdot}05\\) eV above the valence band, so at room temperature essentially every acceptor has captured an electron from the valence band and left a hole behind. The hole density is therefore very nearly equal to the acceptor density, \\(n_h \\approx N_A\\).\n\n**But the reason does not explain the assertion.** The assertion is about *which kind of atom* is used as the dopant — a statement about valency. The reason is a quantitative statement about *how many carriers result* once a p-type material already exists. The reason presupposes the assertion rather than accounting for it: you have to already know the dopant is an acceptor before \"acceptor density\" means anything.\n\nSo the answer is (B).\n\nA genuine explanation of the assertion would read: trivalent atoms are used *because* a missing bond creates a hole, and holes are what make the material p-type."
+    },
+    {
+      "hash": "0c5aa94947ad8e3d5f7637dacd1ddfa193f5e8f784e68f69629fff054ccef382",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "stem": "Assertion (A) : During formation of a nucleus, the mass defect produced is the source of the binding energy of the nucleus.\nReason (R) : For all nuclei, the value of binding energy per nucleon increases with mass number.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "C",
+      "solution": "**Assertion — true.** When nucleons bind into a nucleus, the mass of the nucleus is less than the sum of the free nucleon masses. That missing mass \\(\\Delta m\\) appears as the energy released in forming the nucleus, \\(E_b = \\Delta m\\,c^{2}\\), and is exactly the energy that must be resupplied to pull the nucleus apart.\n\n**Reason — false**, and the words \"for all nuclei\" are what make it so. The binding energy per nucleon does *not* increase steadily with mass number. The curve rises steeply for light nuclei, peaks near \\(A \\approx 56\\) at about \\(8{\\cdot}8\\) MeV per nucleon, and then **declines** slowly for heavier nuclei, falling to about \\(7{\\cdot}6\\) MeV per nucleon at uranium.\n\nA true assertion with a false reason gives option (C).\n\nThat decline is not a detail — it is what makes nuclear fission release energy at all. Splitting a heavy nucleus moves its nucleons back towards the peak of the curve, where they are more tightly bound, and the difference is released. Were the reason true, fission would be impossible."
+    },
+    {
+      "hash": "8a0d9f3fa163650f3855fb6084745a1c8dfb7ca691e6dc29f1ff78724fbb37fc",
+      "ref": "Q15",
+      "questionNumber": "15",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "Assertion (A) : The Balmer series in hydrogen atom spectrum is formed when the electron jumps from higher energy state to the ground state.\nReason (R) : In Bohr's model of hydrogen atom, the electron can jump between successive orbits only.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "D",
+      "solution": "Both statements are false.\n\n**Assertion — false.** The Balmer series is formed by transitions ending on \\(n = 2\\), the **first excited state**, not the ground state. Transitions ending on \\(n = 1\\) form the Lyman series, which lies in the ultraviolet. It is precisely because Balmer lines end on \\(n = 2\\) that four of them fall in the visible range and were the first hydrogen lines ever measured.\n\n**Reason — false.** Bohr's model places no such restriction. An electron may jump between *any* two allowed orbits, and the frequency emitted follows from the energy difference, \\(h\\nu = E_i - E_f\\), for any pair. Were jumps limited to successive orbits, hydrogen would show only one line per series rather than the observed converging sequence.\n\nBoth false gives option (D).\n\nThe two errors are not independent: the reason, if true, would forbid the \\(n = 3 \\to 1\\) and \\(n = 4 \\to 1\\) transitions that the Lyman series consists of, and would leave each series with a single line."
+    },
+    {
+      "hash": "f074dff91fd42c369143df8bbfe319769c68114620ba2c20f12f92c9aa8d8783",
+      "ref": "Q16",
+      "questionNumber": "16",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Assertion (A) : In Rutherford's alpha particle scattering experiment, the presence of only few alpha particles at angle of scattering \\(\\pi\\) led him to the discovery of nucleus.\nReason (R) : The size of nucleus is approximately \\(10^{-5}\\) times the size of an atom and therefore only few alpha particles are rebounded.",
+      "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "A",
+      "solution": "Both statements are true, and the reason is the correct explanation.\n\n**Assertion — true.** The overwhelming majority of alpha particles passed through the gold foil nearly undeviated; only about one in 8,000 was turned through more than \\(90^\\circ\\), and a very few were scattered through nearly \\(\\pi\\) — straight back. Rutherford's insight was that this rarity is the measurement. A large deflection needs a close encounter with a concentrated, massive positive charge, and if such encounters are extremely rare, the target must be extremely small.\n\n**Reason — true.** The nucleus has a radius of order \\(10^{-15}\\) m against an atomic radius of order \\(10^{-10}\\) m, a ratio of about \\(10^{-5}\\). Since the chance of a near-head-on approach scales with the target's cross-sectional area, that tiny linear ratio makes backscattering correspondingly rare.\n\nThe reason explains the assertion, so the answer is (A).\n\nRutherford's own description captures the force of it: \"It was almost as incredible as if you fired a 15-inch shell at a piece of tissue paper and it came back and hit you.\" The Thomson model, with positive charge spread through the whole atom, could produce no such deflection at all — which is why a handful of rare events overturned it."
+    },
+    {
+      "hash": "057533bc3474e70d26d2d525551ed36187dacc67685e4526e880d89c010272bc",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The threshold frequency for a given metal is \\(3{\\cdot}6 \\times 10^{14}\\) Hz. If monochromatic radiations of frequency \\(6{\\cdot}8 \\times 10^{14}\\) Hz are incident on this metal, find the cut-off potential for the photoelectrons.",
+      "solution": "The cut-off (stopping) potential \\(V_0\\) is the retarding voltage that just stops the most energetic photoelectrons, so \\(eV_0\\) equals their maximum kinetic energy. Einstein's equation, written with the threshold frequency, gives\n\n\\(eV_0 = h(\\nu - \\nu_0)\\)\n\nSubstituting \\(\\nu = 6{\\cdot}8 \\times 10^{14}\\) Hz, \\(\\nu_0 = 3{\\cdot}6 \\times 10^{14}\\) Hz, \\(h = 6{\\cdot}63 \\times 10^{-34}\\) Js and \\(e = 1{\\cdot}6 \\times 10^{-19}\\) C:\n\n\\(V_0 = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times (6{\\cdot}8 - 3{\\cdot}6) \\times 10^{14}}{1{\\cdot}6 \\times 10^{-19}}\\)\n\n\\(V_0 = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3{\\cdot}2 \\times 10^{14}}{1{\\cdot}6 \\times 10^{-19}} = \\dfrac{2{\\cdot}12 \\times 10^{-19}}{1{\\cdot}6 \\times 10^{-19}}\\)\n\n\\(V_0 = 1{\\cdot}33\\ \\text{V}\\)\n\nWriting the work function as \\(h\\nu_0\\) is what keeps this to one line — the threshold frequency *is* the work function in disguise, and subtracting frequencies before multiplying by \\(h\\) avoids computing two large numbers and taking their difference."
+    },
+    {
+      "hash": "5d1763dc67f0de939e3207637b20eb22201a6674d48d7e8beabe8ce8f36fea70",
+      "ref": "Q18a",
+      "questionNumber": "18 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A point object is placed in air at a distance R/3 in front of a convex surface of radius of curvature R, separating air from a medium of refractive index n (< 4). Find the nature and position of the image formed.",
+      "solution": "Refraction at a single spherical surface, with light passing from air into the denser medium.\n\n**Setting up.** Take the direction of the incident light as positive and the pole of the convex surface as origin. The object is real and in front, so \\(u = -R/3\\); the centre of curvature lies on the far side of a convex surface as the light meets it, so the radius is \\(+R\\). With \\(n_1 = 1\\) in air and \\(n_2 = n\\) in the medium:\n\n\\(\\dfrac{n_2}{v} - \\dfrac{n_1}{u} = \\dfrac{n_2 - n_1}{R}\\)\n\n\\(\\dfrac{n}{v} - \\dfrac{1}{-R/3} = \\dfrac{n - 1}{R}\\)\n\n\\(\\dfrac{n}{v} + \\dfrac{3}{R} = \\dfrac{n - 1}{R}\\)\n\n\\(\\dfrac{n}{v} = \\dfrac{n - 1 - 3}{R} = \\dfrac{n - 4}{R}\\)\n\n\\(v = \\dfrac{nR}{n - 4}\\)\n\n**Nature and position.** Since \\(n < 4\\), the denominator is negative and so is \\(v\\). A negative image distance places the image on the same side as the object — in front of the convex surface, in the air. The image is therefore **virtual** (and erect), at a distance\n\n\\(\\left|v\\right| = \\dfrac{nR}{4 - n}\\)\n\nfrom the surface.\n\nTwo checks are worth making. As \\(n \\to 1\\) the surface stops refracting and \\(\\left|v\\right| \\to R/3\\), returning the image to the object, as it must. And \\(\\left|v\\right| > R/3\\) for every \\(n > 1\\), so the image always lies farther from the surface than the object does — the surface makes the object appear more distant. (The marking scheme adds that \\(\\left|v\\right|\\) is \"greater than R\"; that holds only once \\(n > 2\\). For \\(n = 1{\\cdot}5\\), for instance, \\(\\left|v\\right| = 0{\\cdot}6R\\). The virtual-image conclusion, which is what the question asks for, is unaffected.)"
+    },
+    {
+      "hash": "c3a1634b4804e377f1870399a90581d0b1083d59087f977248b6ad015064d678",
+      "ref": "Q18b",
+      "questionNumber": "18 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In Young's double slit experimental set-up, the intensity of the central maximum is \\(I_0\\). Calculate the intensity at a point where the path difference between two interfering waves is \\(\\lambda/3\\).",
+      "solution": "Convert the path difference to a phase difference, then use the two-source intensity formula.\n\n**Phase difference:**\n\n\\(\\phi = \\dfrac{2\\pi}{\\lambda} \\times \\Delta x = \\dfrac{2\\pi}{\\lambda} \\times \\dfrac{\\lambda}{3} = \\dfrac{2\\pi}{3}\\)\n\n**Intensity.** For two equal sources each of intensity \\(I\\),\n\n\\(I' = 4I\\cos^{2}\\dfrac{\\phi}{2}\\)\n\nThe central maximum is the point of zero path difference, where \\(\\phi = 0\\) and the intensity takes its largest value \\(4I\\). Since that value is given as \\(I_0\\):\n\n\\(4I = I_0\\)\n\nSo\n\n\\(I' = I_0\\cos^{2}\\dfrac{\\phi}{2} = I_0\\cos^{2}\\dfrac{\\pi}{3} = I_0\\left(\\dfrac{1}{2}\\right)^{2} = \\dfrac{I_0}{4}\\)\n\n**The intensity is \\(\\dfrac{I_0}{4}\\)** — a quarter of the central maximum.\n\nThe step that matters is recognising \\(I_0\\) as \\(4I\\) rather than as \\(I\\). Writing the result as \\(I' = I_0\\cos^{2}(\\phi/2)\\) makes the whole pattern readable at a glance: a third of a wavelength of path difference costs three-quarters of the brightness, and half a wavelength would extinguish it entirely."
+    },
+    {
+      "hash": "e215715c8f9073b91c50543fd1faa8f2f59ba9f3e5cdadb6761618084931ba2a",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A voltmeter of resistance 1000 \\(\\Omega\\) can measure up to 25 V. How will you convert it so that it can read up to 250 V ?",
+      "solution": "A voltmeter is extended in range by adding resistance **in series**, and the quantity that stays fixed is the current needed for full-scale deflection.\n\n**Full-scale current.** The existing voltmeter reads 25 V across its own 1000 Ω:\n\n\\(I_g = \\dfrac{V}{R} = \\dfrac{25}{1000} = 25 \\times 10^{-3}\\ \\text{A} = 25\\ \\text{mA}\\)\n\n**Total resistance needed for 250 V.** The same \\(I_g\\) must now correspond to 250 V:\n\n\\(R_{\\text{total}} = \\dfrac{V'}{I_g} = \\dfrac{250}{25 \\times 10^{-3}} = 10\\,000\\ \\Omega\\)\n\n**Resistance to be added:**\n\n\\(R' = R_{\\text{total}} - R = 10\\,000 - 1000 = 9000\\ \\Omega\\)\n\n**Connect a resistance of 9000 Ω in series with the voltmeter.**\n\nThe multiplying factor is 10, and the total resistance rises by exactly that factor — but the *added* resistance is \\(9R\\), not \\(10R\\), because the meter's own 1000 Ω already forms part of the new total. Note also the direction of the change: a voltmeter is meant to draw as little current as possible, so raising its resistance improves it as an instrument as well as extending its range."
+    },
+    {
+      "hash": "1cf63dd1c5a487f86dfff1167f192a79e196cfb5f5738135a8552353893f4610",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "When a neutron collides with \\({}^{235}_{92}\\mathrm{U}\\), the nucleus gives \\({}^{140}_{54}\\mathrm{Xe}\\) and \\({}^{94}_{38}\\mathrm{Sr}\\) as fission products and two neutrons are ejected. Calculate the mass defect and the energy released (in MeV) in the process. Given :\n\\(m\\left({}^{235}_{92}\\mathrm{U}\\right) = 235{\\cdot}04393\\) u, \\(m\\left({}^{140}_{54}\\mathrm{Xe}\\right) = 139{\\cdot}92164\\) u\n\\(m\\left({}^{94}_{38}\\mathrm{Sr}\\right) = 93{\\cdot}91536\\) u, \\({}^{1}_{0}\\mathrm{n} = 1{\\cdot}00866\\) u\n\\(1\\) u \\(= 931\\) MeV/\\(c^2\\)",
+      "solution": "**The reaction.**\n\n\\({}^{235}_{92}\\mathrm{U} + {}^{1}_{0}n \\longrightarrow {}^{140}_{54}\\mathrm{Xe} + {}^{94}_{38}\\mathrm{Sr} + 2\\,{}^{1}_{0}n\\)\n\nBoth bookkeeping checks pass: mass number \\(235 + 1 = 140 + 94 + 2\\), and atomic number \\(92 + 0 = 54 + 38 + 0\\).\n\n**Mass defect.**\n\n\\(\\Delta m = \\left[m({}^{235}\\mathrm{U}) + m(n)\\right] - \\left[m({}^{140}\\mathrm{Xe}) + m({}^{94}\\mathrm{Sr}) + 2m(n)\\right]\\)\n\nOne neutron appears on each side, so it cancels and the expression collapses to\n\n\\(\\Delta m = m({}^{235}\\mathrm{U}) - m({}^{140}\\mathrm{Xe}) - m({}^{94}\\mathrm{Sr}) - m(n)\\)\n\n\\(\\Delta m = 235{\\cdot}04393 - 139{\\cdot}92164 - 93{\\cdot}91536 - 1{\\cdot}00866\\)\n\n\\(\\Delta m = 0{\\cdot}19827\\ \\text{u}\\)\n\n**Energy released.**\n\n\\(E = \\Delta m \\times 931\\ \\mathrm{MeV} = 0{\\cdot}19827 \\times 931\\)\n\n\\(E = 184{\\cdot}6\\ \\text{MeV}\\)\n\nCancelling the spectator neutron before substituting removes one large number from the arithmetic and, with it, the commonest slip in this calculation. The answer is close to the familiar 200 MeV per fission, and the shortfall is real rather than an error: some of the energy is carried off by beta particles, neutrinos and delayed gamma rays from the fragments, which these ground-state masses do not account for."
+    },
+    {
+      "hash": "ab1db2e74d114874e448299cc4e6d7c03702bc187229dd80f65feeef6df4f319",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "The resistance of a wire at \\(25^\\circ\\)C is \\(10{\\cdot}0\\) \\(\\Omega\\). When heated to \\(125^\\circ\\)C, its resistance becomes \\(10{\\cdot}5\\) \\(\\Omega\\). Find (i) the temperature coefficient of resistance of the wire, and (ii) the resistance of the wire at \\(425^\\circ\\)C.",
+      "solution": "**(i) Temperature coefficient.**\n\nThe linear model for a metal is\n\n\\(R_2 = R_1\\left[1 + \\alpha(t_2 - t_1)\\right]\\)\n\nTaking \\(R_1 = 10{\\cdot}0\\ \\Omega\\) at \\(25^\\circ\\)C and \\(R_2 = 10{\\cdot}5\\ \\Omega\\) at \\(125^\\circ\\)C, so \\(t_2 - t_1 = 100^\\circ\\)C:\n\n\\(10{\\cdot}5 = 10{\\cdot}0\\left[1 + \\alpha(100)\\right]\\)\n\n\\(1{\\cdot}05 = 1 + 100\\alpha\\)\n\n\\(\\alpha = \\dfrac{0{\\cdot}05}{100} = 5 \\times 10^{-4}\\ ^\\circ\\mathrm{C^{-1}}\\)\n\n**(ii) Resistance at 425 °C.**\n\nMeasuring from the same reference point, \\(25^\\circ\\)C, the interval is \\(425 - 25 = 400^\\circ\\)C:\n\n\\(R_{425} = R_{25}\\left[1 + \\alpha(400)\\right] = 10{\\cdot}0\\left[1 + 5 \\times 10^{-4} \\times 400\\right]\\)\n\n\\(R_{425} = 10{\\cdot}0\\,(1 + 0{\\cdot}2) = 12\\ \\Omega\\)\n\nThe reference temperature must be the same in both parts — \\(\\alpha\\) was defined against the \\(25^\\circ\\)C value, so the second calculation has to start there too. Using \\(125^\\circ\\)C with a \\(300^\\circ\\)C interval and \\(R_1 = 10{\\cdot}5\\) would give \\(12{\\cdot}075\\ \\Omega\\); the small discrepancy is a reminder that the linear law is an approximation, exact only over modest temperature ranges."
+    },
+    {
+      "hash": "69e5afed0c52636bcd29caed23630f5b2cf82c84335c4b9b361651f1a8683139",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "stem": "(a) Draw the energy-band diagrams for conductors, semiconductors and insulators at \\(T = 0\\) K. How is an electron-hole pair formed in a semiconductor at room temperature ?\n(b) Carbon and silicon both, are members of IV group of periodic table and have the same lattice structure. Carbon is an insulator whereas silicon is a semiconductor. Explain.",
+      "solution": "**(a) Band diagrams at T = 0 K, and how an electron–hole pair forms.**\n\nAt absolute zero every electron occupies the lowest state available to it, which sharpens the distinction between the three classes.\n\n*Conductor.* Either the conduction band overlaps the valence band (\\(E_g \\approx 0\\)) or the highest occupied band is only partly filled. Either way there are empty states immediately adjacent to occupied ones, so electrons can be accelerated by a field even at \\(T = 0\\).\n\n*Semiconductor.* The valence band is completely full and the conduction band completely empty, separated by a **small** gap, \\(E_g < 3\\) eV (1·1 eV for Si, 0·72 eV for Ge).\n\n*Insulator.* The same arrangement, but with a **large** gap, \\(E_g > 3\\) eV.\n\nThe point of specifying \\(T = 0\\) K is that a semiconductor and an insulator look alike there — both have an empty conduction band and neither conducts. The difference is a difference of degree in \\(E_g\\), and it only shows itself once there is thermal energy to exploit it.\n\n*Formation of an electron–hole pair.* At room temperature the thermal energy available is enough to lift a small number of electrons across the narrow gap of a semiconductor. Each electron that reaches the conduction band leaves behind a vacancy in the valence band — a **hole**, which behaves as a mobile positive carrier. The two are created together, always in pairs, and both contribute to conduction.\n\n**(b) Why carbon insulates and silicon semiconducts.**\n\nBoth are group IV elements with the same tetrahedral diamond lattice, so the difference cannot lie in the bonding pattern. It lies in the **size of the atom**.\n\nThe valence electrons of carbon are in the second shell, those of silicon in the third. Silicon's valence electrons are therefore farther from the nucleus and better screened by the inner shells, so they are held less tightly. Less binding means a smaller energy gap: about \\(5{\\cdot}5\\) eV for diamond against \\(1{\\cdot}1\\) eV for silicon.\n\nAt room temperature \\(k_BT \\approx 0{\\cdot}026\\) eV. That is enough to excite an appreciable number of electrons across 1·1 eV but effectively none across 5·5 eV, since the carrier number depends *exponentially* on \\(E_g/k_BT\\). A gap five times larger therefore makes a conductivity difference of many orders of magnitude, and carbon in the diamond form is an insulator while silicon is a semiconductor."
+    },
+    {
+      "hash": "cc2e4c8a076e440c73532f3fdf38ae686d77c936ef2a797883cb6e778bc2f65a",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "stem": "A parallel plate capacitor has plate area A and plate separation d. Half of the space between the plates is filled with a material of dielectric constant K in two ways as shown in the figure.\nFind the values of the capacitance of the capacitors in the two cases.",
+      "figureNote": "REQUIRED — the stem says only 'in two ways as shown in the figure', so the two geometries ARE the question and nothing in the text distinguishes them. Layout described (the answer is a pair of capacitance expressions, so describing the geometry does not state it): case (a) is drawn as a plate of area A with the hatched dielectric occupying a layer of thickness \\(d/2\\) measured across the separation; case (b) is drawn with the hatched dielectric occupying the full separation d over a plate area labelled \\(A/2\\). Both panels are labelled '(a)' and '(b)' beneath them. Page idx 12.",
+      "imageAttached": true,
+      "solution": "The same volume of dielectric is inserted two different ways, and the two cases combine as series and as parallel respectively.\n\n**Case 1 — the dielectric fills half the separation** (thickness \\(d/2\\), full plate area \\(A\\)).\n\nEvery field line crosses first the dielectric and then the air gap, so the arrangement is two capacitors **in series**, each with plate separation \\(d/2\\):\n\n\\(C_1 = \\dfrac{K\\varepsilon_0 A}{d/2} = \\dfrac{2K\\varepsilon_0 A}{d}, \\qquad C_2 = \\dfrac{\\varepsilon_0 A}{d/2} = \\dfrac{2\\varepsilon_0 A}{d}\\)\n\n\\(\\dfrac{1}{C} = \\dfrac{1}{C_1} + \\dfrac{1}{C_2} = \\dfrac{d}{2K\\varepsilon_0 A} + \\dfrac{d}{2\\varepsilon_0 A} = \\left(\\dfrac{1}{K} + 1\\right)\\dfrac{d}{2\\varepsilon_0 A}\\)\n\n\\(C = \\left(\\dfrac{2K}{K + 1}\\right)\\dfrac{\\varepsilon_0 A}{d}\\)\n\n**Case 2 — the dielectric fills half the area** (area \\(A/2\\), full separation \\(d\\)).\n\nNow the two halves sit side by side between the same pair of plates, sharing the same potential difference, so they are **in parallel**:\n\n\\(C = \\dfrac{K\\varepsilon_0 (A/2)}{d} + \\dfrac{\\varepsilon_0 (A/2)}{d} = \\left(\\dfrac{K + 1}{2}\\right)\\dfrac{\\varepsilon_0 A}{d}\\)\n\n**Comparing the two.** Writing \\(C_0 = \\varepsilon_0 A/d\\), case 1 gives the harmonic mean of \\(1\\) and \\(K\\) (times \\(C_0\\)) while case 2 gives their arithmetic mean. The arithmetic mean is always the larger, so **the parallel arrangement gives the greater capacitance** for the same slab. With \\(K = 3\\), for instance, case 1 yields \\(1{\\cdot}5\\,C_0\\) and case 2 yields \\(2\\,C_0\\).\n\nThe reason is worth seeing: in series the *weaker* element limits the result, as the low-capacitance air layer does here, while in parallel the two contributions simply add."
+    },
+    {
+      "hash": "38ec384671fe2744552266a4528b23dcefef83450f8d9091a883c48ddc9591d4",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In Young's double slit experiment, the separation between the two slits is \\(1{\\cdot}0\\) mm and the screen is \\(1{\\cdot}0\\) m away from the slits. A beam of light consisting of two wavelengths 500 nm and 600 nm is used to obtain interference fringes. Calculate :\n(a) the distance between the first maxima for the two wavelengths.\n(b) the least distance from the central maximum, where the bright fringes due to both the wavelengths coincide.",
+      "solution": "Fringe positions are set by \\(x_n = \\dfrac{n\\lambda D}{d}\\), with \\(D = 1{\\cdot}0\\) m and \\(d = 1{\\cdot}0\\ \\mathrm{mm} = 1{\\cdot}0 \\times 10^{-3}\\) m throughout.\n\n**(a) Separation of the first maxima.**\n\nBoth first maxima have \\(n = 1\\), so their separation is\n\n\\(\\Delta x = \\dfrac{D}{d}(\\lambda_2 - \\lambda_1) = \\dfrac{1{\\cdot}0}{1{\\cdot}0 \\times 10^{-3}} \\times (600 - 500) \\times 10^{-9}\\)\n\n\\(\\Delta x = 10^{3} \\times 100 \\times 10^{-9} = 1 \\times 10^{-4}\\ \\text{m} = 0{\\cdot}1\\ \\text{mm}\\)\n\n**(b) Least distance at which the two sets of bright fringes coincide.**\n\nA coincidence requires some maximum of the 600 nm pattern to fall on some maximum of the 500 nm pattern:\n\n\\(n_1\\lambda_1 = n_2\\lambda_2 \\qquad\\Longrightarrow\\qquad \\dfrac{n_1}{n_2} = \\dfrac{\\lambda_2}{\\lambda_1} = \\dfrac{500}{600} = \\dfrac{5}{6}\\)\n\nThe smallest whole numbers satisfying this are \\(n_1 = 5\\) and \\(n_2 = 6\\): the **5th** maximum of 600 nm coincides with the **6th** of 500 nm. (The central maximum at \\(x = 0\\) is common to both, but it is the trivial coincidence the question excludes by asking for a distance *from* it.)\n\n\\(x = \\dfrac{5 \\times 600 \\times 10^{-9} \\times 1{\\cdot}0}{1{\\cdot}0 \\times 10^{-3}} = 3 \\times 10^{-3}\\ \\text{m} = 3\\ \\text{mm}\\)\n\nChecking from the other wavelength: \\(\\dfrac{6 \\times 500 \\times 10^{-9} \\times 1{\\cdot}0}{1{\\cdot}0 \\times 10^{-3}} = 3\\ \\text{mm}\\) — the same point, as it must be.\n\nThe higher-order coincidences then repeat every 3 mm, at \\(n_1 = 10, 15, \\ldots\\)"
+    },
+    {
+      "hash": "dcad231b47feae780a778ce152b691736e267aee578218bc879f58277fbb6e3d",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "stem": "Differentiate between half-wave and full-wave rectification. With the help of a circuit diagram, explain the working of a full-wave rectifier.",
+      "solution": "**Half-wave against full-wave rectification.**\n\nIn **half-wave** rectification a single diode conducts during only one half of each input cycle and blocks the other, so output appears for one half-cycle and nothing at all for the next. In **full-wave** rectification both halves of the input cycle produce output in the same direction through the load, so there is output throughout the cycle.\n\nThe consequences follow from that. Full-wave rectification delivers twice the average output for the same input, and its output ripple is at **twice** the input frequency, which a given smoothing capacitor filters far more effectively. Half-wave rectification wastes half the input entirely.\n\n**Working of a full-wave rectifier.**\n\n*The circuit.* A **centre-tap transformer** has its secondary tapped at the middle. The two ends of the secondary, A and B, go to the two diodes \\(D_1\\) and \\(D_2\\) respectively; the cathodes of both diodes are joined together and connected through the load resistance \\(R_L\\) back to the centre tap.\n\nThe key property of the centre tap is that the voltages at A and B are always **equal in magnitude and opposite in sign** relative to it. At any instant one end is positive and the other negative.\n\n*The positive half-cycle.* Suppose A is positive with respect to the centre tap. Then B is negative. \\(D_1\\) is forward biased and conducts; \\(D_2\\) is reverse biased and does not. Current flows from A through \\(D_1\\), down through \\(R_L\\), and back to the centre tap.\n\n*The negative half-cycle.* Now A is negative and B positive. \\(D_1\\) stops conducting and \\(D_2\\) takes over. Current flows from B through \\(D_2\\) — and then **through \\(R_L\\) in the same direction as before**, and back to the centre tap.\n\nThat last point is the whole mechanism. The two diodes are fed from opposite ends of the secondary but both feed the load from the same side, so a reversal at the source does not reverse the current in the load. The output across \\(R_L\\) is a succession of unidirectional pulses, one for each half of every input cycle."
+    },
+    {
+      "hash": "3fadf1f50fffb615f79ced25e1d05e235c97cb229bd15ea8e58445b8a9b73db7",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "An electron of mass m and charge \\(-e\\) is revolving anticlockwise around the nucleus of an atom.\n(a) Obtain the expression for the magnetic dipole moment \\((\\mu)\\) of the atom.\n(b) If \\(\\vec{L}\\) is the angular momentum of electron, show that \\(\\vec{\\mu} = -\\left(\\dfrac{e}{2m}\\right)\\vec{L}\\).",
+      "solution": "**(a) Magnetic dipole moment of the orbiting electron.**\n\nAn electron going round its orbit constitutes a current: the whole charge \\(e\\) passes any point on the orbit once per revolution. With orbital radius \\(r\\) and speed \\(v\\), the period is \\(T = \\dfrac{2\\pi r}{v}\\), so the equivalent current is\n\n\\(I = \\dfrac{e}{T} = \\dfrac{e}{\\dfrac{2\\pi r}{v}} = \\dfrac{ev}{2\\pi r}\\)\n\nA plane current loop of area \\(A\\) has magnetic moment \\(\\mu = IA\\), and here \\(A = \\pi r^{2}\\):\n\n\\(\\mu = \\dfrac{ev}{2\\pi r} \\times \\pi r^{2}\\)\n\n\\(\\mu = \\dfrac{1}{2}evr\\)\n\n**(b) Relating it to the angular momentum.**\n\nThe orbital angular momentum of the electron is\n\n\\(L = mvr \\qquad\\Longrightarrow\\qquad vr = \\dfrac{L}{m}\\)\n\nSubstituting into the expression above:\n\n\\(\\mu = \\dfrac{1}{2}e\\left(\\dfrac{L}{m}\\right) = \\left(\\dfrac{e}{2m}\\right)L\\)\n\n**Now the directions.** The electron revolves anticlockwise, so its angular momentum \\(\\vec{L}\\) points out of the plane of the orbit. But the electron's charge is **negative**, so the conventional current runs *clockwise* — opposite to the electron's motion — and by the right-hand rule the magnetic moment \\(\\vec{\\mu}\\) points into the plane.\n\nThe two vectors are therefore antiparallel, and\n\n\\(\\vec{\\mu} = -\\left(\\dfrac{e}{2m}\\right)\\vec{L}\\)\n\nThe minus sign is entirely the electron's negative charge; for a positive orbiting charge the two would be parallel. The constant \\(e/2m\\) is the gyromagnetic ratio, fixed by two fundamental constants and independent of the orbit's size or speed — which is what makes magnetic moment and angular momentum two views of the same thing."
+    },
+    {
+      "hash": "ce572b086808955a34a88fb597c6378cee2d8bda835cf1e3709a186773cda4df",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A rectangular glass slab ABCD (refractive index \\(1{\\cdot}5\\)) is surrounded by a transparent liquid (refractive index \\(1{\\cdot}25\\)) as shown in the figure. A ray of light is incident on face AB at an angle i such that it is refracted out grazing the face AD. Find the value of angle i.",
+      "figureNote": "REQUIRED — the stem names the two media and the two faces but not the slab's orientation, and the answer is a numeric angle, so describing the layout does not state it. Layout: a rectangle labelled A (top-left), B (top-right), C (bottom-right), D (bottom-left), the interior marked 'glass'; the region ABOVE the top face AB is marked 'air'; the hatched regions to the LEFT of AD and to the RIGHT of BC are each marked 'liquid'. A ray strikes the top face AB near A at angle i to the normal (the normal is drawn as a dashed vertical line), and an arrow runs down the face AD. Page idx 14.",
+      "imageAttached": true,
+      "solution": "The geometry has to be read off the figure before any algebra, because the two faces sit in **different media**: the ray enters from the **air** above face AB, while the liquid lies against the side faces AD and BC.\n\n**At AD — the grazing condition.** \"Refracted out grazing the face AD\" means the ray leaves along that face, at \\(90^\\circ\\) to its normal. The angle inside the glass at AD is therefore exactly the critical angle for the glass–liquid pair:\n\n\\(\\sin i_c = \\dfrac{n_{\\text{liquid}}}{n_{\\text{glass}}} = \\dfrac{1{\\cdot}25}{1{\\cdot}5} = \\dfrac{5}{6}\\)\n\n**Linking the two faces.** AB is the top face and AD the left face, so they are perpendicular. If \\(r\\) is the refraction angle at AB, measured from the normal to AB, then the angle at AD is \\(90^\\circ - r\\). Hence\n\n\\(i_c + r = 90^\\circ \\qquad\\Longrightarrow\\qquad \\cos r = \\sin i_c = \\dfrac{5}{6}\\)\n\n\\(\\sin r = \\sqrt{1 - \\cos^{2} r} = \\sqrt{1 - \\dfrac{25}{36}} = \\dfrac{\\sqrt{11}}{6}\\)\n\n**At AB — Snell's law from air into glass.**\n\n\\(\\dfrac{\\sin i}{\\sin r} = \\dfrac{n_{\\text{glass}}}{n_{\\text{air}}} = 1{\\cdot}5\\)\n\n\\(\\sin i = 1{\\cdot}5 \\times \\dfrac{\\sqrt{11}}{6} = \\dfrac{\\sqrt{11}}{4}\\)\n\n\\(i = \\sin^{-1}\\!\\left(\\dfrac{\\sqrt{11}}{4}\\right) \\approx 56^\\circ\\)\n\nBoth interfaces check out at this value: \\(\\sin i = 0{\\cdot}8292\\) gives \\(\\sin r = 0{\\cdot}5528\\), and the angle at AD is then \\(56{\\cdot}44^\\circ\\), whose sine is \\(0{\\cdot}8333 = 5/6\\) — the critical angle exactly.\n\nThe trap is the incident medium. Reading the liquid as surrounding the slab on *all* sides would put \\(1{\\cdot}25\\) rather than \\(1\\) on the left of Snell's law at AB, and give \\(\\sin i = \\sqrt{11}/5\\) instead. The figure is explicit that the space above AB is air, and only the side faces meet the liquid."
+    },
+    {
+      "hash": "393a44ba3493f4cec8078097b21bdc29cb56470c213e5166ef261d18fdf9cb2c",
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "Two small solid metal balls A and B of radii R and 2R having charge densities \\(2\\sigma\\) and \\(3\\sigma\\) respectively are kept far apart. Find the charge densities on A and B after they are connected by a conducting wire.",
+      "solution": "Connecting two conductors forces them to a **common potential**, not a common charge — and that is what redistributes the charge.\n\n**Initial charges.** Surface charge density times surface area:\n\n\\(q_1 = 2\\sigma \\times 4\\pi R^{2} = 8\\pi R^{2}\\sigma\\)\n\n\\(q_2 = 3\\sigma \\times 4\\pi (2R)^{2} = 3\\sigma \\times 16\\pi R^{2} = 48\\pi R^{2}\\sigma\\)\n\n\\(Q = q_1 + q_2 = 56\\pi R^{2}\\sigma\\)\n\n**After connecting.** Let A carry \\(q\\) and B carry \\(Q - q\\). The balls are far apart, so each is at the potential of an isolated sphere, and equating them:\n\n\\(\\dfrac{kq}{R} = \\dfrac{k(Q - q)}{2R}\\)\n\n\\(2q = Q - q \\qquad\\Longrightarrow\\qquad q = \\dfrac{Q}{3} = \\dfrac{56\\pi R^{2}\\sigma}{3}\\)\n\nand B carries \\(Q - q = \\dfrac{2Q}{3} = \\dfrac{112\\pi R^{2}\\sigma}{3}\\).\n\n**New charge densities.**\n\n\\(\\sigma_A = \\dfrac{56\\pi R^{2}\\sigma/3}{4\\pi R^{2}} = \\dfrac{56\\sigma}{12} = \\dfrac{14}{3}\\sigma\\)\n\n\\(\\sigma_B = \\dfrac{112\\pi R^{2}\\sigma/3}{4\\pi (2R)^{2}} = \\dfrac{112\\sigma}{48} = \\dfrac{7}{3}\\sigma\\)\n\n**A check that also states the general rule.** Their ratio is\n\n\\(\\dfrac{\\sigma_A}{\\sigma_B} = \\dfrac{14/3}{7/3} = 2 = \\dfrac{R_B}{R_A}\\)\n\nFor connected spheres, \\(\\sigma \\propto 1/R\\) — the *smaller* sphere ends up with the higher surface charge density, even though it holds the smaller charge. This is why charge concentrates at points and sharp edges on a conductor, and it is the principle behind the lightning conductor.\n\nNote also that the charge flowed from B to A here (B fell from \\(48\\) to \\(\\tfrac{112}{3} \\approx 37{\\cdot}3\\) units), because B started at the higher potential despite both densities being positive."
+    },
+    {
+      "hash": "ec6486f72d8028a6f692f4f16bec98d487b6227d68a48aab3b905025d53a45cf",
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "Two infinitely long straight wires '1' and '2' are placed d distance apart, parallel to each other, as shown in the figure. They are uniformly charged having charge densities \\(\\lambda\\) and \\(-\\dfrac{\\lambda}{2}\\) respectively. Locate the position of the point from wire '1' at which the net electric field is zero and identify the region in which it lies.",
+      "figureNote": "REQUIRED — the question asks the student to 'identify the region', and the three regions exist only as labels in the drawing. Layout described (the answer — which region, and at what distance — is NOT stated): two parallel vertical lines, the left one labelled '1' and carrying \\(\\lambda\\), the right one labelled '2' and carrying \\(-\\dfrac{\\lambda}{2}\\), separated by a dimensioned gap marked d. The space to the LEFT of wire 1 is captioned 'Region A', the space BETWEEN the wires 'Region B', and the space to the RIGHT of wire 2 'Region C'. Page idx 16.",
+      "imageAttached": true,
+      "solution": "**Where the null can be.** The two line charges have opposite signs and unequal magnitudes, and that settles the region before any algebra.\n\n- **Region B, between the wires:** wire 1 is positive so its field points to the right; wire 2 is negative so its field also points to the right, towards it. The two add everywhere and can never cancel.\n- **Region A, left of wire 1:** the fields do oppose. But wire 1 is both the stronger charge and the nearer one, so its field dominates at every point and no cancellation is possible.\n- **Region C, right of wire 2:** the fields oppose, and here the weaker charge is the nearer one — so there is a point far enough out for the two to balance.\n\nThe null must lie in **region C**, beyond the wire carrying \\(-\\lambda/2\\).\n\n**Locating it.** Let the point be a distance \\(x\\) from wire 1, so its distance from wire 2 is \\((x - d)\\). Using \\(E = \\dfrac{\\lambda}{2\\pi\\varepsilon_0 r}\\) for an infinite line charge and equating magnitudes:\n\n\\(\\dfrac{\\lambda}{2\\pi\\varepsilon_0 x} = \\dfrac{\\lambda/2}{2\\pi\\varepsilon_0 (x - d)}\\)\n\n\\(\\dfrac{1}{x} = \\dfrac{1}{2(x - d)}\\)\n\n\\(2(x - d) = x\\)\n\n\\(2x - 2d = x \\qquad\\Longrightarrow\\qquad x = 2d\\)\n\n**The net field is zero at a distance \\(2d\\) from wire 1** — that is, a distance \\(d\\) beyond wire 2, in region C.\n\nThe result has a tidy form: the null sits where the ratio of distances equals the ratio of charge magnitudes, \\(\\dfrac{x}{x - d} = \\dfrac{2d}{d} = 2 = \\dfrac{\\lambda}{\\lambda/2}\\). Because the field of a line charge falls as \\(1/r\\) rather than \\(1/r^{2}\\), that ratio is the plain ratio of the charges, not its square root as it would be for two point charges."
+    },
+    {
+      "hash": "bcd6a992220bea0b329b47f999501048f89b79408d4c2a5fd666818e44ed4de6",
+      "ref": "Q29i",
+      "questionNumber": "29 (i)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "The value of the current sensitivity of a galvanometer is given by :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{k}{\\mathrm{NBA}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mathrm{NBA}}{k}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{k\\mathrm{BA}}{\\mathrm{N}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{k\\mathrm{NB}}{\\mathrm{A}}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "In a moving-coil galvanometer the deflecting torque on the coil, \\(NIAB\\), is balanced at equilibrium by the restoring torque of the suspension, \\(k\\phi\\):\n\n\\(NIAB = k\\phi \\qquad\\Longrightarrow\\qquad \\phi = \\left(\\dfrac{NBA}{k}\\right)I\\)\n\nCurrent sensitivity is the deflection produced per unit current:\n\n\\(\\text{Current sensitivity} = \\dfrac{\\phi}{I} = \\dfrac{NBA}{k}\\)\n\nThe answer is (B).\n\nThe placement of \\(k\\) settles the choice. A **stiffer** suspension — a larger torsional constant — resists twisting and gives a *smaller* deflection for the same current, so \\(k\\) must sit in the denominator. Everything that strengthens the deflecting torque (more turns, a stronger field, a larger coil) sits on top. Sensitivity is raised by increasing \\(N\\), \\(B\\) or \\(A\\), or by using a finer suspension fibre."
+    },
+    {
+      "hash": "cc54fd57e47cf550edbfe2d4fb9e00da6a2050d76d158b4f8031bafb084c92ae",
+      "ref": "Q29ii",
+      "questionNumber": "29 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A galvanometer of resistance 6 \\(\\Omega\\) shows full scale deflection for a current of \\(0{\\cdot}2\\) A. The value of shunt to be used with this galvanometer to convert it into an ammeter of range \\((0 - 5\\) A\\()\\) is :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}25\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}30\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0{\\cdot}50\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(6{\\cdot}0\\) \\(\\Omega\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "A galvanometer becomes an ammeter by connecting a low resistance — the **shunt** — in parallel, so that most of the current bypasses the coil.\n\nThe shunt and the galvanometer have the same potential difference across them:\n\n\\(I_g G = (I - I_g)\\,S\\)\n\nWith \\(G = 6\\ \\Omega\\), \\(I_g = 0{\\cdot}2\\) A and \\(I = 5\\) A:\n\n\\(0{\\cdot}2 \\times 6 = (5 - 0{\\cdot}2)\\,S\\)\n\n\\(1{\\cdot}2 = 4{\\cdot}8\\,S\\)\n\n\\(S = 0{\\cdot}25\\ \\Omega\\)\n\nThe answer is (A).\n\nThe current to divert is \\(I - I_g = 4{\\cdot}8\\) A, not the full 5 A — the coil keeps its \\(0{\\cdot}2\\) A. Using 5 A there would give \\(S = 0{\\cdot}24\\ \\Omega\\), which is offered in the *next* part as the ammeter's total resistance, so the two values are easy to confuse."
+    },
+    {
+      "hash": "6aa749e2026b5a1dd45b648417d625891f1a95d2381f99c2b1bb411778f099c8",
+      "ref": "Q29iii",
+      "questionNumber": "29 (iii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "The value of resistance of the ammeter in case (ii) will be :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}20\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}24\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(6{\\cdot}0\\) \\(\\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(6{\\cdot}25\\) \\(\\Omega\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "The completed ammeter is the galvanometer and its shunt **in parallel**, so its resistance is their parallel combination:\n\n\\(R_A = \\dfrac{GS}{G + S} = \\dfrac{6 \\times 0{\\cdot}25}{6 + 0{\\cdot}25} = \\dfrac{1{\\cdot}5}{6{\\cdot}25} = 0{\\cdot}24\\ \\Omega\\)\n\nThe answer is (B).\n\nThere is a check worth carrying: a parallel combination is always smaller than either branch, so \\(R_A\\) had to come out below \\(0{\\cdot}25\\ \\Omega\\). That alone rules out the two larger options.\n\nBeing small is the whole point. An ammeter is wired **in series** with the circuit it measures, so any resistance it adds changes the very current it is meant to read. Here the galvanometer's own 6 Ω has been reduced to 0·24 Ω — a factor of 25 — and the ideal ammeter is one of zero resistance."
+    },
+    {
+      "hash": "a76b835156c7eede7b48c26b709db3f9073be0a38944e00f58c1290c06686475",
+      "ref": "Q29iva",
+      "questionNumber": "29 (iv) (a)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A galvanometer is converted into a voltmeter of range \\((0 - V)\\) by connecting with it, a resistance \\(R_1\\). If \\(R_1\\) is replaced by \\(R_2\\), the range becomes \\((0 - 2V)\\). The resistance of the galvanometer is :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((R_2 - 2R_1)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((R_2 - R_1)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((R_1 + R_2)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((R_1 - 2R_2)\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "A galvanometer becomes a voltmeter by adding resistance in series, and the quantity that stays fixed across both conversions is \\(I_g\\), the current for full-scale deflection.\n\nFor the range \\((0 - V)\\) with series resistance \\(R_1\\):\n\n\\(V = I_g(R_1 + G) \\qquad \\text{...(1)}\\)\n\nFor the range \\((0 - 2V)\\) with series resistance \\(R_2\\):\n\n\\(2V = I_g(R_2 + G) \\qquad \\text{...(2)}\\)\n\nDividing (2) by (1) eliminates both \\(V\\) and \\(I_g\\):\n\n\\(2 = \\dfrac{R_2 + G}{R_1 + G}\\)\n\n\\(2R_1 + 2G = R_2 + G\\)\n\n\\(G = R_2 - 2R_1\\)\n\nThe answer is (A).\n\nThe trap is to expect \\(R_2 = 2R_1\\). What doubles is the *total* resistance \\((R_G + G)\\), and the galvanometer's own \\(G\\) is part of that total both times — so the added resistance more than doubles. Rearranging gives \\(R_2 = 2R_1 + G\\), which shows the excess explicitly."
+    },
+    {
+      "hash": "abd680c548c2a6b9543f7a184a63956754a6c5832afd59d746d4251ae24a2a18",
+      "ref": "Q29ivb",
+      "questionNumber": "29 (iv) (b)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A current of 5 mA flows through a galvanometer. Its coil has 100 turns, each of area of cross-section \\(18\\ \\mathrm{cm^2}\\) and is suspended in a magnetic field \\(0{\\cdot}20\\) T. The deflecting torque acting on the coil will be :",
+      "context": "A galvanometer is an instrument used to show the direction and strength of the current passing through it. In a galvanometer, a coil placed in a magnetic field experiences a torque and hence gets deflected when a current passes through it. The name is derived from the surname of Italian scientist L. Galvani, who in 1791 discovered that electric current makes a dead frog's leg jerk. A spring attached with the coil provides a counter torque.\nIn equilibrium, the deflecting torque is balanced by the restoring torque of the spring and we have :\n\\(\\mathrm{NBAI} = k\\phi\\)\nwhere N is the total number of turns in the coil\nA is the area of cross-section of each turn\nB is the radial magnetic field\nk is the torsional constant of the spring\n\\(\\phi\\) is the angular deflection of the coil\nAs the current \\((I_g)\\) which produces full scale deflection in the galvanometer is very small, the galvanometer cannot as such be used to measure current in electric circuits. A small resistance, called shunt, of a suitable value is connected with the galvanometer to convert it into an ammeter of desired range. By using a higher resistance, a galvanometer can also be converted into a voltmeter.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3{\\cdot}6 \\times 10^{-3}\\) Nm"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}8 \\times 10^{-4}\\) Nm"
+        },
+        {
+          "label": "C",
+          "text": "\\(2{\\cdot}4 \\times 10^{-3}\\) Nm"
+        },
+        {
+          "label": "D",
+          "text": "\\(1{\\cdot}2 \\times 10^{-4}\\) Nm"
+        }
+      ],
+      "answer": "B",
+      "solution": "The deflecting torque on a coil of \\(N\\) turns carrying current \\(I\\), each turn of area \\(A\\), in a radial field \\(B\\) is\n\n\\(\\tau = NIAB\\)\n\nConverting to SI: \\(I = 5\\ \\mathrm{mA} = 5 \\times 10^{-3}\\) A and \\(A = 18\\ \\mathrm{cm^{2}} = 18 \\times 10^{-4}\\ \\mathrm{m^{2}}\\).\n\n\\(\\tau = 100 \\times (5 \\times 10^{-3}) \\times (18 \\times 10^{-4}) \\times 0{\\cdot}20\\)\n\n\\(\\tau = 100 \\times 5 \\times 18 \\times 0{\\cdot}20 \\times 10^{-7} = 1800 \\times 10^{-7}\\)\n\n\\(\\tau = 1{\\cdot}8 \\times 10^{-4}\\ \\text{N m}\\)\n\nThe answer is (B).\n\nThe area conversion is the likely slip: \\(1\\ \\mathrm{cm^{2}} = 10^{-4}\\ \\mathrm{m^{2}}\\), not \\(10^{-2}\\). Treating \\(18\\ \\mathrm{cm^{2}}\\) as \\(18 \\times 10^{-2}\\ \\mathrm{m^{2}}\\) would give \\(1{\\cdot}8 \\times 10^{-2}\\) N m — a hundred times too large.\n\nThere is no \\(\\sin\\theta\\) here because a galvanometer's pole pieces are cylindrically curved, making the field **radial**: the coil's plane always contains the field direction, so \\(\\theta = 90^\\circ\\) at every deflection. That is exactly what makes the scale linear."
+    },
+    {
+      "hash": "772983fb95485152f053f1509e59cc036155c22da67c53275195232eae2cb23f",
+      "ref": "Q30i",
+      "questionNumber": "30 (i)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "Which of the following graphs shows the variation of photoelectric current I with the intensity of light ?",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a straight line starting on the I-axis and falling steadily to meet the Intensity-axis."
+        },
+        {
+          "label": "B",
+          "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a horizontal straight line, parallel to the Intensity-axis and above it."
+        },
+        {
+          "label": "C",
+          "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a straight line from the origin O rising with a constant positive slope."
+        },
+        {
+          "label": "D",
+          "text": "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed) : a curve rising steeply from the origin O and then flattening to a horizontal asymptote."
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — all four options are DRAWN GRAPHS and the stem names none of them. Each option's axes, labels and curve shape are described in its option text; that is a lossless reading rather than an approximation, and it does not state the answer, because the discrimination the question tests is the physics (how photocurrent depends on intensity), not the reading of the picture. Page idx 20.",
+      "imageAttached": false,
+      "solution": "Raising the intensity of light at a fixed frequency means delivering **more photons per second**, and each photon can free at most one electron. So the number of photoelectrons emitted per second — and hence the saturation photocurrent — is directly proportional to the intensity:\n\n\\(I \\propto \\text{Intensity}\\)\n\nThe graph is therefore a **straight line through the origin**, option (C).\n\nThe origin matters as much as the slope: zero intensity means no photons, hence no current, so the line cannot start above the axis. That disposes of the horizontal line, which would make the current independent of intensity, and of the falling line, which would have brighter light producing less current.\n\nNote what intensity does *not* affect: the maximum kinetic energy of the photoelectrons, and hence the stopping potential, both depend on frequency alone. Intensity controls how *many* electrons come out; frequency controls how *energetic* they are."
+    },
+    {
+      "hash": "8ac9383b1a6bb56d130a923dda1875b8af5e00639a923c0026da74a09d1e8f51",
+      "ref": "Q30ii",
+      "questionNumber": "30 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "When the frequency of the incident light is increased without changing its intensity, the saturation current :",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "increases linearly"
+        },
+        {
+          "label": "B",
+          "text": "decreases"
+        },
+        {
+          "label": "C",
+          "text": "increases non-linearly"
+        },
+        {
+          "label": "D",
+          "text": "remains the same"
+        }
+      ],
+      "answer": "D",
+      "solution": "The saturation current counts how many photoelectrons are collected per second, and that is fixed by how many photons arrive per second — not by the energy each one carries.\n\nIncreasing the frequency gives every photon more energy, so the emitted electrons are more energetic and the stopping potential rises. But the *number* of electrons freed per second is unchanged, so the saturation current **remains the same**, option (D).\n\nThis is exactly what the standard experimental graph shows: plotting photocurrent against collector potential for several frequencies at the same intensity gives curves with **different stopping potentials but a common saturation plateau**. The two halves of the photoelectric effect separate cleanly — intensity governs the plateau height, frequency governs where the curve meets the voltage axis.\n\nA word on what \"same intensity\" means here, since it is doing real work. The result above holds when intensity is taken as the **number of photons** arriving per unit area per second, which is the convention this standard graph is drawn under. Measured strictly as energy per unit area per second, the same power at a higher frequency would deliver proportionally *fewer* photons and the saturation current would fall."
+    },
+    {
+      "hash": "f9e8061355002d48818b501ff7f56ffd1c94b0de3e2439653396a209fe8e7f86",
+      "ref": "Q30iii",
+      "questionNumber": "30 (iii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Which of the following graphs can be used to obtain the value of Planck's constant ?",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Photocurrent versus Intensity of incident light"
+        },
+        {
+          "label": "B",
+          "text": "Photocurrent versus Frequency of incident light"
+        },
+        {
+          "label": "C",
+          "text": "Cut-off potential versus Frequency of incident light"
+        },
+        {
+          "label": "D",
+          "text": "Cut-off potential versus Intensity of incident light"
+        }
+      ],
+      "answer": "C",
+      "solution": "Einstein's photoelectric equation, written in terms of the stopping potential, is\n\n\\(eV_0 = h\\nu - \\phi_0 \\qquad\\Longrightarrow\\qquad V_0 = \\left(\\dfrac{h}{e}\\right)\\nu - \\dfrac{\\phi_0}{e}\\)\n\nThis is a straight line in \\(V_0\\) against \\(\\nu\\), and its **slope is \\(h/e\\)**. Measuring the slope and multiplying by the known electronic charge gives Planck's constant directly:\n\n\\(h = e \\times \\text{slope}\\)\n\nSo the required graph is **cut-off potential versus frequency of incident light**, option (C).\n\nTwo features make this the right plot. The slope \\(h/e\\) is a universal constant — the same for every photosensitive metal, so the lines for different metals are parallel — while the intercept \\(-\\phi_0/e\\) is what identifies the particular metal. And nothing about intensity enters, which is why the two intensity-based graphs cannot serve: intensity changes how many electrons are emitted, not the energy of the fastest ones.\n\nThis is precisely how Millikan measured \\(h\\) in 1916, obtaining a value within about 0·5% of the modern one — and doing so while trying to disprove Einstein's equation."
+    },
+    {
+      "hash": "0f9d3eb885c7c17d7421f2be28f30071903d40b9d015b524d12aa0179d4ae903",
+      "ref": "Q30iva",
+      "questionNumber": "30 (iv) (a)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Red light, yellow light and blue light of the same intensity are incident on a metal surface successively. \\(K_R\\), \\(K_Y\\) and \\(K_B\\) represent the maximum kinetic energy of photoelectrons respectively, then :",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(K_R > K_Y > K_B\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(K_Y > K_B > K_R\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(K_B > K_Y > K_R\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(K_R > K_B > K_Y\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "The maximum kinetic energy of photoelectrons is set by frequency alone:\n\n\\(K_{\\max} = h\\nu - \\phi_0\\)\n\nEqual intensities are therefore irrelevant to this comparison — intensity fixes how many electrons emerge, not how energetic the fastest ones are.\n\nAmong the three colours, wavelength decreases from red through yellow to blue, so frequency increases in that order:\n\n\\(\\nu_B > \\nu_Y > \\nu_R\\)\n\nSince \\(\\phi_0\\) is the same metal throughout, \\(K_{\\max}\\) follows frequency directly:\n\n\\(K_B > K_Y > K_R\\)\n\nThe answer is (C).\n\nNote the ordering would survive even if the intensities differed, which is the point of the question: it is testing whether \"same intensity\" is recognised as a distractor. Note also that the *differences* are exactly the photon-energy differences, since \\(\\phi_0\\) cancels: \\(K_B - K_R = h(\\nu_B - \\nu_R)\\), independent of which metal is used."
+    },
+    {
+      "hash": "ff4f4e0e7bacb2569532cf6d89e9daf8d2d8c3890fc99b524da3f02757049fae",
+      "ref": "Q30ivb",
+      "questionNumber": "30 (iv) (b)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Electron Emission",
+      "stem": "Which of the following metals exhibits photoelectric effect with visible light ?",
+      "context": "Einstein explained photoelectric effect on the basis of Planck's quantum theory, where light travels in the form of small bundles of energy called photons. The energy of each photon is \\(h\\nu\\), where \\(\\nu\\) is the frequency of incident light and h is Planck's constant. The number of photons in a beam of light determines the intensity of the incident light. A photon incident on a metal surface transfers its total energy \\(h\\nu\\) to a free electron in the metal. A part of this energy is used in ejecting the electron from the metal and is called its work function. The rest of the energy is carried by the ejected electron as its kinetic energy.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Caesium"
+        },
+        {
+          "label": "B",
+          "text": "Zinc"
+        },
+        {
+          "label": "C",
+          "text": "Cadmium"
+        },
+        {
+          "label": "D",
+          "text": "Magnesium"
+        }
+      ],
+      "answer": "A",
+      "solution": "Emission requires the photon energy to exceed the metal's work function. Visible light spans roughly 400–700 nm, so its photons carry between about \\(1{\\cdot}8\\) eV (red) and \\(3{\\cdot}1\\) eV (violet).\n\n**Caesium** has a work function of about \\(2{\\cdot}1\\) eV — low enough that visible light will eject electrons from it. The answer is (A).\n\nThe others all have thresholds in the ultraviolet: zinc about \\(4{\\cdot}3\\) eV, cadmium about \\(4{\\cdot}1\\) eV, magnesium about \\(3{\\cdot}7\\) eV. Visible light of any intensity leaves them untouched.\n\nCaesium's low work function is not an accident of chemistry. It is the largest stable alkali atom, with a single loosely held valence electron far from a well-screened nucleus — the same property that makes caesium the most reactive of the common metals also makes it the easiest to strip an electron from with light. That is why caesium and its compounds are the standard coating for photocathodes."
+    },
+    {
+      "hash": "cd60282030d5336cc04b51138ab516effb3b3efcd1b70269954c8603f8658116",
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "(i) Three batteries \\(E_1\\), \\(E_2\\) and \\(E_3\\) of emfs and internal resistances \\((4\\) V, \\(2\\ \\Omega)\\), \\((2\\) V, \\(4\\ \\Omega)\\) and \\((6\\) V, \\(2\\ \\Omega)\\) respectively are connected as shown in the figure. Find the values of the currents passing through batteries \\(E_1\\), \\(E_2\\) and \\(E_3\\).\n(ii) The ends of six wires, each of resistance R \\((= 10\\ \\Omega)\\) are joined as shown in the figure. The points A and B of the arrangement are connected in a circuit. Find the value of the effective resistance offered by it to the circuit.",
+      "figureNote": "REQUIRED — TWO figures back this one row and both stems defer entirely to them ('as shown in the figure'). Sub-part (i): a rectangular circuit whose left and right sides are joined by three horizontal branches, one above the other, each carrying a battery cell symbol labelled \\(E_1\\), \\(E_2\\) and \\(E_3\\) from top to bottom. Sub-part (ii): six resistors each labelled R drawn as a triangle with a centre node — the three outer sides carry one R each (the bottom side runs between the marked terminals A and B) and three more R's run from the centre node to each vertex. The CELL POLARITIES in (i) and the exact vertex-to-node pairing in (ii) are DELIBERATELY WITHHELD, since the current directions and the bridge balance are what the question tests. Page idx 22.",
+      "imageAttached": true,
+      "solution": "**(i) Currents through the three batteries.**\n\nThe three branches all connect the same pair of rails — call the left rail L (points A, D, E) and the right rail R (points B, C, F). Let \\(I_2\\) be the current through \\(E_1\\), \\(I_1\\) through \\(E_3\\), and, by the junction rule, \\(I_1 + I_2\\) through \\(E_2\\).\n\nApplying Kirchhoff's loop rule to two independent loops:\n\n**Loop ABCD** (through \\(E_1\\) and \\(E_2\\)):\n\n\\(4I_1 + 6I_2 = 6 \\qquad \\text{...(1)}\\)\n\n**Loop CDFE** (through \\(E_2\\) and \\(E_3\\)):\n\n\\(6I_1 + 4I_2 = 8 \\qquad \\text{...(2)}\\)\n\nDividing (1) by 2 and (2) by 2:\n\n\\(2I_1 + 3I_2 = 3, \\qquad 3I_1 + 2I_2 = 4\\)\n\nMultiplying the first by 3 and the second by 2 and subtracting:\n\n\\(5I_2 = 1 \\qquad\\Longrightarrow\\qquad I_2 = \\dfrac{1}{5} = 0{\\cdot}2\\ \\text{A}\\)\n\n\\(2I_1 + \\dfrac{3}{5} = 3 \\qquad\\Longrightarrow\\qquad I_1 = \\dfrac{6}{5} = 1{\\cdot}2\\ \\text{A}\\)\n\n**The currents are:**\n\n- through \\(E_1\\): \\(I_2 = \\dfrac{1}{5} = 0{\\cdot}2\\ \\text{A}\\)\n- through \\(E_3\\): \\(I_1 = \\dfrac{6}{5} = 1{\\cdot}2\\ \\text{A}\\)\n- through \\(E_2\\): \\(I_1 + I_2 = \\dfrac{7}{5} = 1{\\cdot}4\\ \\text{A}\\)\n\n**A check worth doing.** All three branches span the same two rails, so each must give the same potential difference across them:\n\n\\(4 - 2(0{\\cdot}2) = 3{\\cdot}6\\ \\text{V}, \\qquad 6 - 2(1{\\cdot}2) = 3{\\cdot}6\\ \\text{V}, \\qquad 4(1{\\cdot}4) - 2 = 3{\\cdot}6\\ \\text{V}\\)\n\nAll three agree, which confirms the solution without redoing the algebra.\n\n**(ii) Effective resistance between A and B.**\n\nSix wires of \\(R = 10\\ \\Omega\\) each join the vertices of a triangle ABC to one another and to a central point D: the three sides AB, BC, CA, and the three spokes DA, DB, DC.\n\nRedraw it as a bridge across A and B. The four arms AC, CB, AD, DB carry equal resistance \\(R\\), and CD is the bridge arm:\n\n\\(\\dfrac{R_{AC}}{R_{CB}} = \\dfrac{R}{R} = 1 = \\dfrac{R}{R} = \\dfrac{R_{AD}}{R_{DB}}\\)\n\nThe bridge is **balanced**, so C and D sit at the same potential and **no current flows through CD**. That arm can be ignored entirely.\n\nWhat remains between A and B is three parallel paths:\n\n- A–C–B: \\(R + R = 2R\\)\n- A–D–B: \\(R + R = 2R\\)\n- A–B directly: \\(R\\)\n\n\\(2R \\parallel 2R = R\\), and that in parallel with the direct \\(R\\):\n\n\\(R_{AB} = \\dfrac{R}{2} = \\dfrac{10}{2} = 5\\ \\Omega\\)\n\nSpotting the balanced bridge is what removes the sixth resistor from the problem; attacking the network without it means solving simultaneous equations for six branch currents."
+    },
+    {
+      "hash": "ba6a999ab6d55aa93372f5e0c1468a456631f35223598933703c6e9de5836af6",
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "(i) Current I \\((= 1\\) A\\()\\) is passing through a copper rod \\((n = 8{\\cdot}5 \\times 10^{28}\\ \\mathrm{m^{-3}})\\) of varying cross-sections as shown in the figure. The areas of cross-section at points A and B along its length are \\(1{\\cdot}0 \\times 10^{-7}\\ \\mathrm{m^2}\\) and \\(2{\\cdot}0 \\times 10^{-7}\\ \\mathrm{m^2}\\) respectively. Calculate :\n(I) the ratio of electric fields at points A and B.\n(II) the drift velocity of free electrons at point B.\n(ii) Two point charges \\(q_1\\) \\((= 16\\ \\mu\\mathrm{C})\\) and \\(q_2\\) \\((= 1\\ \\mu\\mathrm{C})\\) are placed at points \\(\\vec{r_1} = (3\\) m\\()\\hat{i}\\) and \\(\\vec{r_2} = (4\\) m\\()\\hat{j}\\). Find the net electric field \\(\\vec{E}\\) at point \\(\\vec{r} = (3\\) m\\()\\hat{i} + (4\\) m\\()\\hat{j}\\).",
+      "figureNote": "ILLUSTRATIVE — a tapering copper rod drawn in perspective, narrow at the left where the current I enters (arrow) and wider at the right where it leaves (arrow), with two hatched cross-sections marked A (nearer the narrow end) and B (nearer the wide end). Attached because it shows the geometry, but the row is answerable from the stem alone: BOTH cross-sectional areas are stated in words, so the drawing carries no quantity the text omits. Page idx 24.",
+      "imageAttached": true,
+      "solution": "**(i)(I) Ratio of the electric fields at A and B.**\n\nThe rod carries the same current \\(I\\) throughout, but its cross-section differs at the two points. Current density and field are linked by \\(\\vec{j} = \\sigma\\vec{E}\\), with the conductivity \\(\\sigma\\) the same everywhere in one copper rod, so\n\n\\(\\dfrac{E_A}{E_B} = \\dfrac{j_A}{j_B} = \\dfrac{I/A_A}{I/A_B} = \\dfrac{A_B}{A_A}\\)\n\n\\(\\dfrac{E_A}{E_B} = \\dfrac{2{\\cdot}0 \\times 10^{-7}}{1{\\cdot}0 \\times 10^{-7}} = \\dfrac{2}{1}\\)\n\nThe field is **twice as large at A**, the narrower point. That is the expected direction: the same current squeezed through half the area needs twice the current density, and so twice the field to drive it.\n\n**(i)(II) Drift velocity at B.**\n\n\\(v_d = \\dfrac{I}{neA_B}\\)\n\n\\(v_d = \\dfrac{1}{(8{\\cdot}5 \\times 10^{28})(1{\\cdot}6 \\times 10^{-19})(2{\\cdot}0 \\times 10^{-7})}\\)\n\nThe denominator is \\(8{\\cdot}5 \\times 1{\\cdot}6 \\times 2{\\cdot}0 \\times 10^{28-19-7} = 27{\\cdot}2 \\times 10^{2} = 2720\\), so\n\n\\(v_d = \\dfrac{1}{2720} = 3{\\cdot}7 \\times 10^{-4}\\ \\mathrm{m\\,s^{-1}}\\)\n\nAbout \\(0{\\cdot}37\\) mm per second — so slow that an electron would take nearly an hour to drift a single metre. What travels quickly along a wire is the electric field, not the electrons.\n\n**(ii) Net electric field at the given point.**\n\nThe point \\(\\vec{r} = 3\\hat{i} + 4\\hat{j}\\) is positioned conveniently with respect to both charges.\n\n*From \\(q_1 = 16\\ \\mu\\)C at \\(\\vec{r_1} = 3\\hat{i}\\):* the separation is \\(\\vec{r} - \\vec{r_1} = 4\\hat{j}\\), so the distance is 4 m and the direction \\(\\hat{j}\\).\n\n\\(\\vec{E_1} = \\dfrac{9 \\times 10^{9} \\times 16 \\times 10^{-6}}{4^{2}}\\,\\hat{j} = \\dfrac{1{\\cdot}44 \\times 10^{5}}{16}\\,\\hat{j} = 9 \\times 10^{3}\\,\\hat{j}\\ \\mathrm{N\\,C^{-1}}\\)\n\n*From \\(q_2 = 1\\ \\mu\\)C at \\(\\vec{r_2} = 4\\hat{j}\\):* the separation is \\(\\vec{r} - \\vec{r_2} = 3\\hat{i}\\), so the distance is 3 m and the direction \\(\\hat{i}\\).\n\n\\(\\vec{E_2} = \\dfrac{9 \\times 10^{9} \\times 1 \\times 10^{-6}}{3^{2}}\\,\\hat{i} = \\dfrac{9 \\times 10^{3}}{9}\\,\\hat{i} = 1 \\times 10^{3}\\,\\hat{i}\\ \\mathrm{N\\,C^{-1}}\\)\n\n*Net field:*\n\n\\(\\vec{E} = \\left(\\hat{i} + 9\\,\\hat{j}\\right) \\times 10^{3}\\ \\mathrm{N\\,C^{-1}}\\)\n\nwith magnitude \\(\\left|\\vec{E}\\right| = 10^{3}\\sqrt{1 + 81} = 10^{3}\\sqrt{82} \\approx 9{\\cdot}1 \\times 10^{3}\\ \\mathrm{N\\,C^{-1}}\\).\n\nThe coordinates are chosen so that each charge lies along one axis from the field point, which is what makes the two contributions perpendicular and lets them be added without resolving components."
+    },
+    {
+      "hash": "33b48e2e139612eec1313daf41f55fc7e64ee117240309855f4c4c9439c770c3",
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "(i) Define self-inductance of a coil. Derive the expression for the energy required to build up a current I in a coil of self-inductance L.\n(ii) The currents passing through two inductors of self-inductances 10 mH and 20 mH increase with time at the same rate.\nDraw graphs showing the variation of :\n(I) the magnitude of emf induced with the rate of change of current in each inductor.\n(II) the energy stored in each inductor with the current flowing through it.",
+      "solution": "**(i) Self-inductance, and the energy stored in a coil.**\n\n*Definition.* The self-inductance of a coil is the magnetic flux linked with it when unit current flows through it:\n\n\\(L = \\dfrac{N\\phi}{I}\\)\n\nEquivalently, it is the magnitude of the emf induced in the coil when the current through it changes at unit rate, since \\(\\varepsilon = -L\\,\\dfrac{dI}{dt}\\). Its SI unit is the henry.\n\n*Energy required to build up the current.* While the current is growing, the induced emf opposes the growth, so the source must do work against it. At the instant when the current is \\(I\\) and rising at \\(dI/dt\\), the power delivered against the back-emf is\n\n\\(P = \\left|\\varepsilon\\right| I = \\left(L\\dfrac{dI}{dt}\\right)I\\)\n\nSince \\(P = \\dfrac{dW}{dt}\\),\n\n\\(\\dfrac{dW}{dt} = LI\\dfrac{dI}{dt} \\qquad\\Longrightarrow\\qquad dW = L\\,I\\,dI\\)\n\nIntegrating from zero current up to the final value \\(I\\):\n\n\\(W = \\int_{0}^{I} L\\,I'\\,dI' = \\dfrac{1}{2}LI^{2}\\)\n\nSo the energy stored in the magnetic field of the coil is\n\n\\(U = \\dfrac{1}{2}LI^{2}\\)\n\nNone of this work is dissipated — it is recoverable, and reappears as a surge of current if the circuit is broken, which is why opening an inductive circuit produces a spark.\n\n**(ii) The two graphs, for \\(L_1 = 10\\) mH and \\(L_2 = 20\\) mH.**\n\n*(I) Magnitude of induced emf against rate of change of current.*\n\n\\(\\left|\\varepsilon\\right| = L\\,\\dfrac{dI}{dt}\\)\n\nThis is linear in \\(dI/dt\\), so each inductor gives a **straight line through the origin whose slope is its inductance**. The 20 mH coil's line is the steeper of the two, at twice the slope of the 10 mH coil's. Both pass through the origin: no change in current, no induced emf.\n\n*(II) Energy stored against current.*\n\n\\(U = \\dfrac{1}{2}LI^{2}\\)\n\nThis is quadratic in \\(I\\), so each inductor gives a **parabola through the origin**, opening upwards. The 20 mH coil's parabola rises twice as fast as the 10 mH coil's at every value of the current — it is the narrower of the two.\n\nThe contrast between the two plots is the substance of the part: emf depends on how fast the current is *changing* and is linear in that rate, while stored energy depends on how large the current *is* and grows as its square."
+    },
+    {
+      "hash": "6c7413150fbb7e435c72c99f29ecb88bfb8c1e47ced18e2333a8d71c0594ed47",
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "(i) Define the term mutual inductance. Deduce the expression for the mutual inductance of two long coaxial solenoids of the same length having different radii and different number of turns.\n(ii) The current through an inductor is uniformly increased from zero to 2 A in 40 s. An emf of 5 mV is induced during this period. Find the flux linked with the inductor at \\(t = 10\\) s.",
+      "solution": "**(i) Mutual inductance, and its value for two coaxial solenoids.**\n\n*Definition.* The mutual inductance of a pair of coils is the magnetic flux linked with one coil when unit current flows in the other:\n\n\\(M_{12} = \\dfrac{N_1\\phi_1}{I_2}\\)\n\nEquivalently, the magnitude of the emf induced in one coil when the current in the other changes at unit rate. Its SI unit is the henry.\n\n*The two solenoids.* Let the inner solenoid \\(S_1\\) have radius \\(r_1\\), \\(N_1\\) turns and turn density \\(n_1 = N_1/l\\); let the outer one \\(S_2\\) have radius \\(r_2\\), \\(N_2\\) turns and turn density \\(n_2 = N_2/l\\). Both have the same length \\(l\\).\n\nSend a current \\(I_2\\) through the **outer** solenoid. Inside a long solenoid the field is uniform and axial:\n\n\\(B_2 = \\mu_0 n_2 I_2\\)\n\nThis field fills the whole interior, so it threads the inner solenoid over its full cross-section \\(\\pi r_1^{2}\\), and links all \\(N_1 = n_1 l\\) of its turns:\n\n\\(N_1\\phi_1 = (n_1 l) \\times (\\pi r_1^{2}) \\times (\\mu_0 n_2 I_2)\\)\n\n\\(N_1\\phi_1 = \\mu_0 n_1 n_2 \\pi r_1^{2}\\,l\\,I_2\\)\n\nComparing with \\(N_1\\phi_1 = M_{12}I_2\\):\n\n\\(M_{12} = \\mu_0 n_1 n_2 \\pi r_1^{2}\\,l = \\dfrac{\\mu_0 N_1 N_2 \\pi r_1^{2}}{l}\\)\n\nIt is the **inner** radius that appears, since flux outside the smaller solenoid links nothing. Energising the outer coil is the tractable direction, because its field is uniform exactly where it is needed; the reverse calculation is harder but gives the same answer, as it must, since \\(M_{12} = M_{21}\\).\n\n**(ii) Flux linked at t = 10 s.**\n\nThe current rises uniformly, so its rate of change is constant:\n\n\\(\\dfrac{dI}{dt} = \\dfrac{2 - 0}{40} = 0{\\cdot}05\\ \\mathrm{A\\,s^{-1}}\\)\n\nFrom \\(\\left|\\varepsilon\\right| = L\\,\\dfrac{dI}{dt}\\), with \\(\\left|\\varepsilon\\right| = 5 \\times 10^{-3}\\) V:\n\n\\(L = \\dfrac{5 \\times 10^{-3}}{0{\\cdot}05} = 0{\\cdot}1\\ \\text{H}\\)\n\nAt \\(t = 10\\) s the current has reached\n\n\\(I = 0{\\cdot}05 \\times 10 = 0{\\cdot}5\\ \\text{A}\\)\n\nso the flux linkage is\n\n\\(\\phi = LI = 0{\\cdot}1 \\times 0{\\cdot}5 = 0{\\cdot}05\\ \\text{Wb}\\)\n\nThe uniform rise is what makes this a two-step problem rather than a calculus one: it fixes \\(dI/dt\\) as a single number, which yields \\(L\\), and \\(L\\) then converts current into flux at any instant."
+    },
+    {
+      "hash": "6fd7bb6bc1f81936175490991301714bab89a676f6d892961ec2ba1e61504397",
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(i) Draw a ray diagram of a reflecting telescope (Cassegrain) and explain the formation of image. State two important advantages that a reflecting telescope has over a refracting telescope.\n(ii) In a refracting telescope, the focal length of the objective is 50 times the focal length of the eyepiece. When the final image is formed at infinity, the length of the tube is 102 cm. Find the focal lengths of the two lenses.",
+      "solution": "**(i) The Cassegrain reflecting telescope.**\n\n*Arrangement.* A large **concave primary mirror** sits at the back of the tube with a hole through its centre. A small **convex secondary mirror** is mounted on the axis, facing it, just short of the primary's focus. The eyepiece sits behind the hole.\n\n*Formation of the image.* Parallel rays from a distant object fall on the concave primary and are reflected towards its focus. Before they converge there, they meet the convex secondary, which reflects them back down the tube — now less strongly convergent — so that they pass through the hole in the primary and form a real, inverted image just behind it. The eyepiece magnifies this image, and the observer sees it at infinity in normal adjustment.\n\nThe folding is the design's virtue: a long effective focal length is packed into a short tube, because the light traverses the tube nearly three times.\n\n*Two advantages over a refracting telescope.*\n\n**No chromatic aberration.** Reflection is the same for every wavelength, whereas a lens has a refractive index that varies with colour and so focuses different colours at different points. A mirror objective is achromatic by construction.\n\n**Mechanical support and size.** A lens can only be held at its rim and sags under its own weight, which limits how large it can be made; a mirror is supported across its whole back surface, so far larger apertures are possible. Greater aperture means both a brighter image and higher resolving power. (A parabolic mirror also eliminates spherical aberration, which a spherical lens surface suffers from.)\n\n**(ii) Focal lengths of the two lenses.**\n\nIn normal adjustment the final image is at infinity, so the tube length is the sum of the two focal lengths:\n\n\\(f_o + f_e = 102\\ \\text{cm}\\)\n\nand the question gives\n\n\\(f_o = 50 f_e\\)\n\nSubstituting:\n\n\\(50f_e + f_e = 102\\)\n\n\\(51 f_e = 102 \\qquad\\Longrightarrow\\qquad f_e = 2\\ \\text{cm}\\)\n\n\\(f_o = 50 \\times 2 = 100\\ \\text{cm}\\)\n\n**Objective: 100 cm. Eyepiece: 2 cm.**\n\nThe magnifying power is then \\(f_o/f_e = 50\\), matching the ratio given — the design logic of every refracting telescope, where a long-focus objective is paired with a short-focus eyepiece and the tube ends up almost as long as the objective's focal length."
+    },
+    {
+      "hash": "63beca3914179316c028956d5cd2f2b2ff2f4765c52e1cfa8a79a47d84f85a9a",
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(i) Write any two advantages of a compound microscope over a simple microscope. Draw a ray diagram for the image formation at the near point by a compound microscope and explain it.\n(ii) A thin planoconcave lens with its curved face of radius of curvature R is made of glass of refractive index \\(n_1\\). It is placed coaxially in contact with a thin equiconvex lens of same radius of curvature of refractive index \\(n_2\\). Obtain the power of the combination lens.",
+      "solution": "**(i) Compound microscope over simple microscope.**\n\n*Two advantages.*\n\n**Much larger magnification.** A simple microscope offers \\(m = 1 + D/f\\), which is limited in practice to about 10 by the difficulty of making very short-focus lenses free from aberration. A compound microscope multiplies two stages, \\(m = m_o \\times m_e\\), and reaches several hundred.\n\n**Brighter image and higher resolving power.** The objective of a compound microscope has a large aperture close to the object, gathering a wide cone of light. This gives both a brighter image and finer resolution of detail.\n\n*Ray diagram and explanation — image at the near point.*\n\nThe object AB is placed just **beyond the focus** of the short-focus objective. The objective forms a real, inverted and magnified image \\(A'B'\\) inside the tube.\n\nThat image now acts as the object for the eyepiece, and it is positioned just **inside the eyepiece's focal length**. The eyepiece therefore works exactly as a simple magnifier: it forms a **virtual, magnified image** \\(A''B''\\) on the same side as \\(A'B'\\), which for this adjustment is placed at the near point, a distance \\(D = 25\\) cm from the eye.\n\nThe final image is virtual, inverted with respect to the original object (the objective inverts, the eyepiece does not), and greatly magnified. The total magnification is the product of the two stages:\n\n\\(m = m_o \\times m_e = \\left(\\dfrac{v_o}{u_o}\\right)\\left(1 + \\dfrac{D}{f_e}\\right)\\)\n\n**(ii) Power of the lens combination.**\n\n*Plano-concave lens, index \\(n_1\\).* One face is plane \\((R \\to \\infty)\\) and the curved face has radius \\(R\\). Being concave to the incoming light, the lens-maker's formula gives\n\n\\(P_1 = (n_1 - 1)\\left(\\dfrac{1}{\\infty} - \\dfrac{1}{R}\\right) = -\\dfrac{(n_1 - 1)}{R}\\)\n\n*Equiconvex lens, index \\(n_2\\).* Both faces have radius \\(R\\), so \\(R_1 = +R\\) and \\(R_2 = -R\\):\n\n\\(P_2 = (n_2 - 1)\\left(\\dfrac{1}{R} + \\dfrac{1}{R}\\right) = \\dfrac{2(n_2 - 1)}{R}\\)\n\n*In contact, the powers add:*\n\n\\(P = P_1 + P_2 = \\dfrac{-(n_1 - 1) + 2(n_2 - 1)}{R}\\)\n\n\\(P = \\dfrac{-n_1 + 1 + 2n_2 - 2}{R}\\)\n\n\\(P = \\dfrac{2n_2 - n_1 - 1}{R}\\)\n\nAdding powers rather than focal lengths is what keeps this short — for thin lenses in contact, \\(P = P_1 + P_2\\) always, whereas the focal lengths combine reciprocally.\n\nThe sign of the result is not fixed by the algebra but by the glasses chosen. The combination converges when \\(2n_2 > n_1 + 1\\); if the plano-concave lens is made of sufficiently denser glass, the pair diverges instead. With both lenses of the same glass, \\(n_1 = n_2 = n\\), it reduces to \\(P = (n-1)/R\\) — exactly the power of the equiconvex lens alone, halved, since the plano-concave lens has cancelled one of its two surfaces."
+    }
+  ]
+}
