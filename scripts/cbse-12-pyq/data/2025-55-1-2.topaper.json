@@ -1,0 +1,256 @@
+{
+  "paper": "55/1/2",
+  "year": 2025,
+  "paperId": "2025-55-1-2",
+  "markingScheme": "out/2025-55-1-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "cedd2c24b5f84c3b79ec4daa1336ae98bd3e647bad2fe527f1ac273567c5f459",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Equipotential Surfaces",
+      "stem": "In the figure curved lines represent equipotential surfaces. A charge Q is moved along different paths A, B, C and D. The work done on the charge will be maximum along the path",
+      "options": [
+        {
+          "label": "A",
+          "text": "A"
+        },
+        {
+          "label": "B",
+          "text": "B"
+        },
+        {
+          "label": "C",
+          "text": "C"
+        },
+        {
+          "label": "D",
+          "text": "D"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED - the four options are the bare letters A, B, C and D, so the question is entirely unanswerable from its text; the paths exist only in the drawing. Described: four nested curved equipotential lines labelled, from the innermost outwards, 10 V, 15 V, 20 V and 25 V, with the charge Q drawn as a filled dot low on the figure and four straight arrows labelled A, B, C and D radiating from Q into the field. Deliberately WITHHELD: which equipotential line each arrow terminates on, and how far each reaches - the work done is Q times the potential difference between the endpoints, so naming the end equipotential of each path states the answer outright. Page idx 4.",
+      "imageAttached": true,
+      "solution": "**The answer is (C): path C.**\n\n**The one fact that decides it.** The work done by the electric force in moving a charge between two points is\n\n\\(W = Q\\left(V_i - V_f\\right)\\)\n\nand it depends **ONLY on the endpoints** — never on the route taken. The electrostatic field is conservative, so the length of a path, its curvature and how many surfaces it wanders across are all irrelevant. Only where it **starts** and where it **ends** matter.\n\n**Reading the figure.** The four curves are equipotentials at \\(25\\), \\(20\\), \\(15\\) and \\(10\\) V, nested with \\(25\\) V outermost. The charge starts at \\(Q\\), which lies on the **innermost, \\(10\\) V** surface. Every one of the four paths begins there, so the comparison reduces to a single question: **which path ENDS on the highest equipotential?**\n\n| Path | Ends on | Potential difference |\n|---|---|---|\n| **A** | back on the **10 V** surface | \\(0\\) |\n| **B** | 15 V | \\(5\\) V |\n| **D** | 20 V | \\(10\\) V |\n| **C** | **25 V** | \\(\\boxed{15\\ \\mathrm{V}}\\) — the largest |\n\nSo the work done on the charge is greatest along **C**, and equals \\(15Q\\) joules for a charge of \\(Q\\) coulombs.\n\n**Path A is the instructive one.** It is a straight chord from \\(Q\\) that curves back to meet the **same** \\(10\\) V equipotential. Since the start and end potentials are equal, **the work done along A is exactly zero** — even though the charge has moved a considerable distance, and even though a force acted on it the whole way. This is the defining property of an equipotential surface: no work is needed to move a charge anywhere on one.\n\n**Why lengths mislead here.** C is also the longest arrow, which might tempt the right answer for the wrong reason. But D is shorter than B and yet does *more* work, because it heads towards the closely-spaced surfaces on the left where the potential climbs faster. Length is not the criterion; endpoints are.\n\n**What the spacing tells you.** The equipotentials are drawn closer together on the left, and closer spacing means a steeper potential gradient — that is, a **stronger field**, since \\(E = -dV/dr\\). The field is everywhere **perpendicular** to these surfaces and points from high to low potential, so it points inward here, from the \\(25\\) V side towards the \\(10\\) V side."
+    },
+    {
+      "hash": "c2ac3f7d063e0f03f7c6bead877562eea34a1b0068a48c9222dc89b3b977f732",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "The resistance of a wire of length L and radius r is R. Which one of the following would provide a wire of the same material of resistance \\(\\frac{\\mathrm{R}}{2}\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Using a wire of same radius and twice the length"
+        },
+        {
+          "label": "B",
+          "text": "Using a wire of same radius and half length"
+        },
+        {
+          "label": "C",
+          "text": "Using a wire of same length and twice the radius"
+        },
+        {
+          "label": "D",
+          "text": "Using a wire of same length and half the radius"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): a wire of the same radius and half the length.**\n\n**The resistance of a wire.**\n\n\\(R = \\dfrac{\\rho l}{A} = \\dfrac{\\rho l}{\\pi r^{2}}\\)\n\nThe material is the same throughout, so \\(\\rho\\) is fixed and only the **geometry** can change \\(R\\):\n\n\\(R \\propto \\dfrac{l}{r^{2}}\\)\n\n**The two dependences are not alike, and that is the whole question.** Resistance is proportional to the **first** power of length but to the **inverse square** of the radius. Doubling the radius therefore has four times the effect that doubling the length has.\n\n**Testing each option.**\n\n**(A) Same radius, twice the length:** \\(R' = 2R\\). Wrong direction.\n\n**(B) Same radius, half the length:** \\(R' = \\dfrac{R}{2}\\ \\checkmark\\)\n\n**(C) Same length, twice the radius:** the area quadruples, so \\(R' = \\dfrac{R}{4}\\). The right direction but too far.\n\n**(D) Same length, half the radius:** the area falls to a quarter, so \\(R' = 4R\\). Wrong direction and too far.\n\nOnly (B) lands on \\(R/2\\).\n\n**Option (C) is the trap.** \"Twice the radius\" *feels* like the mirror image of \"half the length\", and a candidate working from \\(R \\propto l/A\\) without pausing on \\(A = \\pi r^{2}\\) will read it as halving the resistance. The squaring is the step being tested, and it is why the question offers both a length change and a radius change.\n\n**A caution about a related question.** If the wire were **stretched** to twice its length rather than replaced, the volume would be conserved, the area would halve, and the resistance would become \\(4R\\), not \\(2R\\). Here the stem says \"using a wire\", meaning a different wire is selected — so length and radius are independent and no volume constraint applies. Confusing the two situations is the commonest error in this topic.\n\n**Why resistivity does not enter.** \\(\\rho\\) is a property of the **material**, independent of the specimen's size or shape, and the question fixes the material. That is exactly the distinction between resistivity and resistance: one describes the substance, the other the object made from it."
+    },
+    {
+      "hash": "ef7e68d0730aae26627779c29a6e623dc57872b18ab24f25fdff164c205d990f",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A circular coil of diameter 15 mm having 300 turns is placed in a magnetic field of 30 mT such that the plane of the coil is perpendicular to the direction of magnetic field. The magnetic field is reduced uniformly to zero in 20 ms and again increased uniformly to 30 mT in 40 ms. If the emfs induced in the two time intervals are \\(\\mathrm{e_1}\\) and \\(\\mathrm{e_2}\\) respectively, then the value of \\(\\mathrm{e_1/e_2}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 2.**\n\n**Faraday's law for the coil.**\n\n\\(|e| = N\\left|\\dfrac{d\\phi}{dt}\\right| = NA\\left|\\dfrac{dB}{dt}\\right|\\)\n\nsince the number of turns \\(N\\) and the area \\(A\\) are the same throughout, and the plane of the coil stays perpendicular to \\(\\vec{B}\\) so no \\(\\cos\\theta\\) enters.\n\n**With \\(NA\\) common to both intervals, the ratio depends ONLY on the rates of change of \\(B\\):**\n\n\\(\\dfrac{e_1}{e_2} = \\dfrac{\\left|dB/dt\\right|_1}{\\left|dB/dt\\right|_2}\\)\n\n**The two rates.** Both intervals cover the **same** change in field, \\(30\\) mT, but in different times:\n\n\\(\\left|\\dfrac{dB}{dt}\\right|_1 = \\dfrac{30\\ \\mathrm{mT}}{20\\ \\mathrm{ms}} = 1{\\cdot}5\\ \\mathrm{T\\,s^{-1}}\\)\n\n\\(\\left|\\dfrac{dB}{dt}\\right|_2 = \\dfrac{30\\ \\mathrm{mT}}{40\\ \\mathrm{ms}} = 0{\\cdot}75\\ \\mathrm{T\\,s^{-1}}\\)\n\n\\(\\boxed{\\ \\dfrac{e_1}{e_2} = \\dfrac{1{\\cdot}5}{0{\\cdot}75} = 2\\ }\\)\n\n**The whole question is one ratio: \\(40/20\\).** The same flux change made in **half** the time induces **twice** the emf. Nothing else in the problem does any work — the \\(15\\) mm diameter and the \\(300\\) turns are given only to see whether you realise they cancel.\n\n**Why the SIGNS do not matter.** The first interval is a decrease, the second an increase, so the two emfs are opposite in polarity. But the question asks for \\(e_1/e_2\\) among four positive options, so magnitudes are intended. (Read as signed quantities the ratio would be \\(-2\\), which is not offered.)\n\n**A note on \"uniformly\".** That word is what makes \\(dB/dt\\) a constant over each interval, so a single number describes each and the induced emf is steady rather than varying. Without it, \\(dB/dt\\) would be an instantaneous quantity and the question would have no unique answer.\n\n**If a value were wanted**, the arithmetic is short: \\(A = \\pi r^{2} = \\pi\\left(7{\\cdot}5 \\times 10^{-3}\\right)^{2} = 1{\\cdot}77 \\times 10^{-4}\\) m\\(^{2}\\), so \\(e_1 = 300 \\times 1{\\cdot}77 \\times 10^{-4} \\times 1{\\cdot}5 \\approx 0{\\cdot}080\\) V and \\(e_2 \\approx 0{\\cdot}040\\) V. Note the **diameter** is \\(15\\) mm, so the radius is \\(7{\\cdot}5\\) mm — a halving that is easy to skip."
+    },
+    {
+      "hash": "e8a5910f16a47a323759e77a3a7630a8a215cc52619f1d49ee2eed1e4d531ddf",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Which one of the following correctly represents the change in wave characteristics (all in vacuum) from microwaves to X-rays in electromagnetic spectrum ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Speed : Remains same; Wavelength : Decreases; Frequency : Remains same"
+        },
+        {
+          "label": "B",
+          "text": "Speed : Remains same; Wavelength : Decreases; Frequency : Increases"
+        },
+        {
+          "label": "C",
+          "text": "Speed : Increases; Wavelength : Increases; Frequency : Decreases"
+        },
+        {
+          "label": "D",
+          "text": "Speed : Remains same; Wavelength : Increases; Frequency : Remains same"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): speed remains the same, wavelength decreases, frequency increases.**\n\n**Take the three characteristics one at a time.**\n\n**Speed — UNCHANGED.** Every electromagnetic wave travels in vacuum at\n\n\\(c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}} = 3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)\n\nand this expression contains **only** the electric and magnetic constants of free space — no frequency, no wavelength, nothing about the wave at all. Radio waves and gamma rays cross a vacuum at exactly the same speed. This single fact eliminates option (C) immediately.\n\n**Wavelength — DECREASES.** Microwaves have wavelengths of order millimetres to centimetres; X-rays, of order \\(10^{-10}\\) m. Moving from microwaves to X-rays is a fall of some eight orders of magnitude.\n\n**Frequency — INCREASES.** With \\(c = \\nu\\lambda\\) fixed, frequency and wavelength are **inversely** related:\n\n\\(\\nu = \\dfrac{c}{\\lambda}\\)\n\nso a shorter wavelength means a higher frequency, necessarily. Microwaves run at around \\(10^{10}\\) Hz, X-rays at around \\(10^{18}\\) Hz.\n\n**Why (A) and (D) are self-contradictory.** Both claim the frequency \"remains same\" while the speed also stays fixed. If \\(c\\) and \\(\\nu\\) are both unchanged then \\(\\lambda = c/\\nu\\) cannot change either — yet both options assert that it does. Neither is merely wrong about the spectrum; each contradicts \\(c = \\nu\\lambda\\) on its own terms, and can be rejected without knowing any wavelengths at all.\n\n**The ordering of the spectrum**, by increasing frequency:\n\n**radio → microwave → infrared → visible → ultraviolet → X-ray → gamma**\n\nWavelength runs the other way down this list, and so does the photon energy \\(E = h\\nu\\) — which runs the **same** way as frequency. Two quantities increase along the list (frequency, photon energy) and one decreases (wavelength), while the fourth (speed in vacuum) never moves.\n\n**Why the \"in vacuum\" in the stem is load-bearing.** In a **medium** the speed does depend on frequency — that is dispersion, and it is why a prism separates colours. The constancy of \\(c\\) is a property of free space alone."
+    },
+    {
+      "hash": "6e8a31d9fef5909a8f25d270b67a07718ed47712e0f397df1fbd9228855ea799",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "The speed of light in two media '1' and '2' are \\(v_1\\) and \\(v_2\\) \\((> v_1)\\) respectively. For a ray of light to undergo total internal reflection at the interface of these two media, it must be incident from",
+      "options": [
+        {
+          "label": "A",
+          "text": "medium '1' and at an angle greater than \\(\\sin^{-1}\\left(\\frac{v_1}{v_2}\\right)\\)"
+        },
+        {
+          "label": "B",
+          "text": "medium '1' and at an angle greater than \\(\\cos^{-1}\\left(\\frac{v_1}{v_2}\\right)\\)"
+        },
+        {
+          "label": "C",
+          "text": "medium '2' and at an angle greater than \\(\\sin^{-1}\\left(\\frac{v_1}{v_2}\\right)\\)"
+        },
+        {
+          "label": "D",
+          "text": "medium '2' and at an angle greater than \\(\\cos^{-1}\\left(\\frac{v_1}{v_2}\\right)\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): from medium '1', at an angle greater than \\(\\sin^{-1}\\left(\\dfrac{v_1}{v_2}\\right)\\).**\n\n**First, which medium is denser?** Refractive index and speed are inversely related:\n\n\\(n = \\dfrac{c}{v}\\)\n\nSince \\(v_2 > v_1\\), light travels **slower** in medium 1, so\n\n\\(n_1 > n_2\\)\n\nand medium **1** is the optically **denser** of the two.\n\n**Total internal reflection requires DENSER to RARER.** The ray must start in the medium of higher refractive index, so it must be incident **from medium 1**. That alone eliminates options (C) and (D), before any formula.\n\n*Why the direction is forced.* Going from denser to rarer, the refracted ray bends **away** from the normal. Increase the angle of incidence and the refracted ray swings further out until, at the critical angle, it grazes the surface at \\(90^\\circ\\). Beyond that there is no refracted ray at all and the light is wholly reflected. Going the other way — rarer to denser — the refracted ray bends **towards** the normal and can never reach \\(90^\\circ\\), so no critical angle exists.\n\n**Then the critical angle.** At \\(i = C\\), the angle of refraction is \\(90^\\circ\\), so Snell's law gives\n\n\\(n_1\\sin C = n_2\\sin 90^\\circ = n_2\\)\n\n\\(\\sin C = \\dfrac{n_2}{n_1} = \\dfrac{c/v_2}{c/v_1} = \\dfrac{v_1}{v_2}\\)\n\n\\(\\boxed{\\ C = \\sin^{-1}\\left(\\dfrac{v_1}{v_2}\\right)\\ }\\)\n\nand total internal reflection occurs for **\\(i > C\\)**.\n\n**Note the inversion when converting.** \\(n_2/n_1\\) becomes \\(v_1/v_2\\), not \\(v_2/v_1\\) — the \\(c\\)'s cancel and the subscripts swap. Getting this backwards would give \\(\\sin C = v_2/v_1 > 1\\), which is impossible and is a useful self-check: the sine of the critical angle must be **less than 1**, which the correct ratio guarantees since \\(v_1 < v_2\\).\n\n**Why a cosine could never be right.** Options (B) and (D) offer \\(\\cos^{-1}\\). Snell's law relates **sines** of the angles to the surface normal, and the substitution \\(\\sin 90^\\circ = 1\\) at the critical angle is what produces the formula. No cosine enters anywhere.\n\n**Where this is used.** Total internal reflection is what keeps light inside an **optical fibre**, its core being the denser medium and the cladding the rarer, and it is why a diamond — with a critical angle of only about \\(24^\\circ\\) — traps and returns so much of the light entering it."
+    },
+    {
+      "hash": "03f96d3777751355bbc0a002fdf804c905d5dfdee49e8e1c7d248e2a604f0dbe",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A source produces monochromatic light of frequency \\(5.0 \\times 10^{14}\\) Hz and the power emitted is 3.31 mW. The number of photons emitted per second by the source, on an average is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(10^{16}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(10^{24}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(10^{10}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(10^{20}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(10^{16}\\).**\n\n**Step 1 — the energy of one photon.**\n\n\\(E = h\\nu = 6{\\cdot}63 \\times 10^{-34} \\times 5{\\cdot}0 \\times 10^{14} = 3{\\cdot}315 \\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Step 2 — the energy emitted each second.** Power is energy per second, so in one second the source emits\n\n\\(P = 3{\\cdot}31\\ \\mathrm{mW} = 3{\\cdot}31 \\times 10^{-3}\\ \\mathrm{J}\\)\n\n**Step 3 — divide.**\n\n\\(n = \\dfrac{P}{E} = \\dfrac{3{\\cdot}31 \\times 10^{-3}}{3{\\cdot}315 \\times 10^{-19}}\\)\n\n\\(\\boxed{\\ n \\approx 1 \\times 10^{16}\\ \\text{photons per second}\\ }\\)\n\n**The numbers are chosen so the mantissas cancel.** \\(3{\\cdot}31\\) and \\(3{\\cdot}315\\) agree to three figures, so the whole calculation collapses to \\(10^{-3}/10^{-19} = 10^{16}\\) and the options — all bare powers of ten — confirm that only the exponent is being tested. Subtracting the exponents is the entire arithmetic.\n\n**Checking against the options by size.** \\(10^{24}\\) would be about a million times Avogadro's number of photons a second from a milliwatt source, which is absurd. \\(10^{10}\\) would mean each photon carried \\(10^{-13}\\) J — about a million electronvolts, a gamma ray, not visible light. Only \\(10^{16}\\) is consistent with a millwatt of optical radiation.\n\n**What the number means, and it is the point of the question.** Ten thousand million million photons leave this source every second. **The graininess of light is completely invisible at ordinary intensities** — the arrival of photons is so rapid and so dense that the beam appears perfectly smooth and continuous, which is why the wave picture served so well for so long.\n\n**The frequency identifies the light.** \\(5{\\cdot}0 \\times 10^{14}\\) Hz corresponds to\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}}{5 \\times 10^{14}} = 6 \\times 10^{-7}\\ \\mathrm{m} = 600\\ \\mathrm{nm}\\)\n\nwhich is orange light, and each of its photons carries about \\(2{\\cdot}1\\) eV."
+    },
+    {
+      "hash": "0c2167ec275fcc0f385b9a64ede2793e5533c18f49b4dd68a36aa1cd084687e0",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Electric Current and Ohm's Law",
+      "stem": "Show that \\(\\vec{E} = \\rho\\,\\vec{j}\\) leads to Ohm's law. Write a condition in which the Ohm's law is not valid for a material.",
+      "solution": "**To show that \\(\\vec{E} = \\rho\\,\\vec{j}\\) leads to Ohm's law.**\n\n**Set up a conductor of a definite shape.** Take a uniform conductor of length \\(l\\) and cross-sectional area \\(A\\), carrying a steady current \\(I\\) under a potential difference \\(V\\) between its ends.\n\n**Express each side of \\(\\vec{E} = \\rho\\vec{j}\\) in measurable terms.**\n\n*The field*, uniform along the conductor, is the potential difference per unit length:\n\n\\(E = \\dfrac{V}{l}\\)\n\n*The current density* is the current per unit area:\n\n\\(j = \\dfrac{I}{A}\\)\n\n**Substitute both into \\(E = \\rho j\\):**\n\n\\(\\dfrac{V}{l} = \\rho\\dfrac{I}{A}\\)\n\n**Rearrange to separate \\(V\\) and \\(I\\):**\n\n\\(V = I\\left(\\dfrac{\\rho l}{A}\\right)\\)\n\n**The bracket contains nothing that changes with current.** \\(\\rho\\) is a property of the material, \\(l\\) and \\(A\\) of the specimen — so, at a fixed temperature, the whole bracket is a **constant**. Call it \\(R\\):\n\n\\(\\boxed{\\ \\dfrac{V}{I} = \\dfrac{\\rho l}{A} = R = \\text{constant}, \\qquad\\text{that is}\\qquad V = IR\\ }\\)\n\nwhich is Ohm's law.\n\n**What the derivation actually shows.** \\(\\vec{E} = \\rho\\vec{j}\\) is the **microscopic** statement — a relation between two field quantities at every point inside the material. Ohm's law is its **macroscopic** counterpart, a relation between two measurable terminal quantities for a whole object. The step from one to the other is simply integrating the field along the length and the current density across the area.\n\n**A condition under which Ohm's law is NOT valid.**\n\n**At high temperature**, and for **semiconductors** generally.\n\n*Why.* The constancy of \\(R\\) rested on \\(\\rho\\) being fixed, and \\(\\rho\\) depends on temperature. A large current heats the conductor, \\(\\rho\\) rises, and \\(V\\) climbs faster than in proportion to \\(I\\) — the \\(V\\)-\\(I\\) graph bends instead of staying straight. In a **semiconductor** the departure is more dramatic still: \\(\\rho\\) **falls** with temperature, so the material is non-ohmic over any appreciable range.\n\n**Other non-ohmic behaviour worth knowing.** In a junction diode, \\(V\\) is not proportional to \\(I\\) at all and the relation depends on the **sign** of \\(V\\) — it conducts one way and not the other. In some materials, such as gallium arsenide, the same current corresponds to **more than one** voltage, so the \\(V\\)-\\(I\\) relation is not even single-valued.\n\n**The status of Ohm's law.** It is not a fundamental law of nature but an **empirical relation** that many materials happen to obey over a limited range. Calling something \"ohmic\" is a statement about a material in given conditions, not about electricity in general."
+    },
+    {
+      "hash": "fa383e86d36fd18c9ea11889eef29795213ddfd357b81686a51d0634ea7a8982",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A spherical convex surface of radius of curvature R separates glass (refractive index 1.5) from air. Light from a point source placed in air at distance R/2 from the surface falls on it. Find the position and nature of the image formed.",
+      "solution": "**The formula for refraction at a single spherical surface.**\n\n\\(\\dfrac{n_2}{v} - \\dfrac{n_1}{u} = \\dfrac{n_2 - n_1}{R}\\)\n\n**The data, with signs.** Light travels from air into glass, so \\(n_1 = 1\\) and \\(n_2 = 1{\\cdot}5\\). The source is in air at \\(R/2\\) in front, so\n\n\\(u = -\\dfrac{R}{2}\\)\n\nand the surface is **convex towards the source**, so its centre of curvature lies on the outgoing side and the radius is \\(+R\\).\n\n**Substituting.**\n\n\\(\\dfrac{1{\\cdot}5}{v} - \\dfrac{1}{-R/2} = \\dfrac{1{\\cdot}5 - 1}{R}\\)\n\n\\(\\dfrac{1{\\cdot}5}{v} + \\dfrac{2}{R} = \\dfrac{0{\\cdot}5}{R}\\)\n\n\\(\\dfrac{1{\\cdot}5}{v} = \\dfrac{0{\\cdot}5}{R} - \\dfrac{2}{R} = -\\dfrac{1{\\cdot}5}{R}\\)\n\n**The \\(1{\\cdot}5\\) cancels on both sides**, which is the tidy step the numbers were arranged to give:\n\n\\(\\boxed{\\ v = -R\\ }\\)\n\n**Position and nature.** The negative sign puts the image on the **same side as the object**, in the air, at a distance \\(R\\) from the surface. It is therefore **VIRTUAL** — and, being on the object's own side, it is erect.\n\n**Why a converging surface fails to converge here.** The first focal length of this surface is\n\n\\(f_1 = \\dfrac{n_1R}{n_2 - n_1} = \\dfrac{R}{0{\\cdot}5} = 2R\\)\n\nand the object sits at only \\(R/2\\), far **inside** that focus. Rays from so close a source are still diverging after refraction, so they only appear to come from a point behind the object — exactly as with a converging lens used as a magnifying glass. Move the source beyond \\(2R\\) and the image becomes real.\n\n**Where the image sits relative to the object.** The object is at \\(R/2\\) and the image at \\(R\\), both in air on the same side — so the image is **further from the surface** than the object, twice as far. The virtual image has been pushed back, which is what makes it appear magnified to an observer in the glass.\n\n**Two sign conventions doing separate jobs.** \\(u\\) is negative because the object lies against the direction of travel; \\(R\\) is positive because the centre of curvature lies along it. These are independent, and mixing them up — taking \\(R\\) negative for a convex surface — would give \\(v = +R/7\\), a real image, which is the commonest error here."
+    },
+    {
+      "hash": "20b1cb240d8534f6bb25624b4ff55f7e70185b2305fc6b742307c4ae0f190031",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "The energy of an electron in an orbit of Bohr hydrogen atom is \\(-3.4\\) eV. Find its angular momentum.",
+      "solution": "**Step 1 — find which orbit this is.**\n\nThe energy of the \\(n\\)th Bohr orbit in hydrogen:\n\n\\(E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}\\)\n\nSetting \\(E_n = -3{\\cdot}4\\) eV:\n\n\\(n^{2} = \\dfrac{-13{\\cdot}6}{-3{\\cdot}4} = 4 \\qquad\\Longrightarrow\\qquad n = 2\\)\n\n**The energy identifies the orbit uniquely**, which is the point of the first step. \\(-3{\\cdot}4\\) eV is the first excited state, and it is worth recognising on sight — the sequence \\(-13{\\cdot}6,\\ -3{\\cdot}4,\\ -1{\\cdot}51,\\ -0{\\cdot}85\\) eV comes up constantly.\n\n**Step 2 — apply Bohr's quantisation condition.**\n\n\\(L = \\dfrac{nh}{2\\pi}\\)\n\n\\(L = \\dfrac{2 \\times 6{\\cdot}63 \\times 10^{-34}}{2\\pi} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{\\pi} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{3{\\cdot}14}\\)\n\n\\(\\boxed{\\ L = 2{\\cdot}11 \\times 10^{-34}\\ \\mathrm{J\\,s}\\ }\\)\n\n**The 2 and the 2 cancel**, leaving simply \\(h/\\pi\\) — worth noticing, because it removes a step.\n\n**Why the minus sign never reaches the answer.** The energy is negative because the electron is **bound**: it would take \\(+3{\\cdot}4\\) eV to remove it to infinity, where the energy is defined as zero. Angular momentum carries no such convention — it is a positive multiple of \\(h/2\\pi\\) for every orbit, and the minus sign is used only to identify \\(n\\).\n\n**What the quantisation says.** Angular momentum comes in whole multiples of\n\n\\(\\hbar = \\dfrac{h}{2\\pi} = 1{\\cdot}055 \\times 10^{-34}\\ \\mathrm{J\\,s}\\)\n\nand this orbit carries exactly \\(2\\hbar\\). No orbit with \\(1{\\cdot}5\\hbar\\) exists; that is the postulate, and it is what makes the hydrogen spectrum discrete.\n\n**De Broglie's reason for it**, which turns a postulate into a consequence. If the electron is a wave, a stable orbit must contain a whole number of wavelengths:\n\n\\(2\\pi r = n\\lambda = \\dfrac{nh}{mv}\\)\n\nRearranging gives \\(mvr = nh/2\\pi\\) — precisely Bohr's condition. The quantisation is a **standing-wave** condition, and any other orbit would have the wave interfere destructively with itself."
+    },
+    {
+      "hash": "d33ba10c4759cfad6318617ecd13d0cab847c64e646be5ce5ba915c3a2aceb50",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "(a) Define magnetic moment of a current-carrying coil. Write its SI unit.\n(b) A coil of 60 turns and area \\(1.5 \\times 10^{-3}\\ \\mathrm{m^3}\\) carrying 2A current lies in a vertical plane. It experiences a torque of 0.12 Nm when placed in a uniform horizontal magnetic field. The torque acting on the coil changes to 0.05 Nm after the coil is rotated about its diameter by \\(90^\\circ\\), in the magnetic field. Find the magnitude of the magnetic field.",
+      "solution": "**(a) The magnetic moment of a current-carrying coil.**\n\nThe **magnetic moment** of a coil is the product of the number of turns, the current it carries and the area it encloses:\n\n\\(\\vec{m} = NI\\vec{A}\\)\n\nIt is a **vector**, directed along the **normal** to the plane of the coil, with the sense fixed by the right-hand rule from the direction of the current.\n\n**SI unit: \\(\\mathrm{A\\,m^{2}}\\)** (ampere square metre), equivalently \\(\\mathrm{J\\,T^{-1}}\\).\n\n**(b) Finding the magnetic field.**\n\n*(The stem prints the area as \\(1{\\cdot}5 \\times 10^{-3}\\ \\mathrm{m^{3}}\\); an area is in \\(\\mathrm{m^{2}}\\), and the scheme's own arithmetic treats it as such.)*\n\n**The torque on the coil.**\n\n\\(\\tau = NIAB\\sin\\theta\\)\n\nwhere \\(\\theta\\) is the angle between the coil's **normal** and \\(\\vec{B}\\).\n\n**In the first position:**\n\n\\(0{\\cdot}12 = 60 \\times 2 \\times \\left(1{\\cdot}5 \\times 10^{-3}\\right) \\times B\\sin\\theta = 0{\\cdot}18\\,B\\sin\\theta\\)\n\n\\(B\\sin\\theta = \\dfrac{0{\\cdot}12}{0{\\cdot}18} = \\dfrac{2}{3}\\)\n\n**After rotating by \\(90^\\circ\\) about a diameter**, the normal turns through \\(90^\\circ\\) too, so the angle becomes \\(\\theta + 90^\\circ\\) and \\(\\sin\\left(\\theta + 90^\\circ\\right) = \\cos\\theta\\):\n\n\\(0{\\cdot}05 = 0{\\cdot}18\\,B\\cos\\theta \\qquad\\Longrightarrow\\qquad B\\cos\\theta = \\dfrac{0{\\cdot}05}{0{\\cdot}18} = \\dfrac{5}{18}\\)\n\n**Eliminate the unknown angle** by squaring and adding — the step the question is built around, since \\(\\theta\\) is never given and never needed:\n\n\\(B = \\sqrt{\\left(B\\sin\\theta\\right)^{2} + \\left(B\\cos\\theta\\right)^{2}} = \\sqrt{\\left(\\dfrac{2}{3}\\right)^{2} + \\left(\\dfrac{5}{18}\\right)^{2}}\\)\n\n\\(B = \\sqrt{\\dfrac{144}{324} + \\dfrac{25}{324}} = \\sqrt{\\dfrac{169}{324}} = \\dfrac{13}{18}\\)\n\n\\(\\boxed{\\ B = 0{\\cdot}72\\ \\mathrm{T}\\ }\\)\n\n**The numbers were chosen to make a 5-12-13 triple.** \\(0{\\cdot}12\\) and \\(0{\\cdot}05\\) give \\(\\sqrt{0{\\cdot}0144 + 0{\\cdot}0025} = \\sqrt{0{\\cdot}0169} = 0{\\cdot}13\\) exactly, so \\(B = 0{\\cdot}13/0{\\cdot}18 = 13/18\\). Spotting the triple turns the square root into arithmetic.\n\n**Why the rotation must be by exactly \\(90^\\circ\\).** It is what converts the sine into a cosine, and so supplies a **second, independent** equation in the same two unknowns \\(B\\) and \\(\\theta\\). Any other angle would leave a messier pair. The trigonometric identity \\(\\sin^{2} + \\cos^{2} = 1\\) then removes \\(\\theta\\) without ever determining it — and indeed \\(\\tan\\theta = (2/3)/(5/18) = 12/5\\), so \\(\\theta \\approx 67^\\circ\\), which the question never needed.\n\n**A word on \"vertical plane\" and \"horizontal field\".** These fix that the coil's normal is **horizontal**, so it and \\(\\vec{B}\\) lie in the same horizontal plane and a definite angle \\(\\theta\\) exists between them. Without that, the geometry would be under-determined."
+    },
+    {
+      "hash": "2aea497eeb1b669fc86d9109e9561083dc5a2b623c13a4c798bc90b2d995a952",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "Consider two long co-axial solenoids \\(\\mathrm{S_1}\\) and \\(\\mathrm{S_2}\\), each of length \\(l\\) \\((\\gg r_2)\\) and of radius \\(r_1\\) and \\(r_2\\) \\((r_2 > r_1)\\). The number of turns per unit length are \\(\\mathrm{n_1}\\) and \\(\\mathrm{n_2}\\) respectively. Derive an expression for mutual inductance \\(\\mathrm{M_{12}}\\) of solenoid \\(\\mathrm{S_1}\\) with respect to solenoid \\(\\mathrm{S_2}\\). Show that \\(\\mathrm{M_{21}} = \\mathrm{M_{12}}\\).",
+      "solution": "**The arrangement.** Two long coaxial solenoids of the same length \\(l\\): the inner \\(S_1\\) of radius \\(r_1\\) with \\(n_1\\) turns per unit length, and the outer \\(S_2\\) of radius \\(r_2\\) \\((> r_1)\\) with \\(n_2\\) turns per unit length. Their total turns are \\(N_1 = n_1l\\) and \\(N_2 = n_2l\\).\n\n**Deriving \\(M_{12}\\) — the flux linked with \\(S_1\\) per unit current in \\(S_2\\).**\n\nPass a current \\(I_2\\) through the **outer** solenoid. Being long, it produces a uniform field throughout its interior:\n\n\\(B_2 = \\mu_0 n_2 I_2\\)\n\nThe inner solenoid sits entirely inside that region, so **each of its turns** links a flux\n\n\\(\\phi_1 = B_2 \\times \\pi r_1^{2} = \\mu_0 n_2 I_2\\,\\pi r_1^{2}\\)\n\n**Note it is \\(r_1\\), not \\(r_2\\)** — the area that matters is the area of the coil doing the *linking*, and \\(S_1\\) is only \\(\\pi r_1^{2}\\) across.\n\nTotal flux linkage with \\(S_1\\):\n\n\\(N_1\\phi_1 = \\left(n_1l\\right)\\left(\\mu_0 n_2 I_2\\pi r_1^{2}\\right) = \\mu_0 n_1n_2\\pi r_1^{2}l\\,I_2\\)\n\nBy definition \\(N_1\\phi_1 = M_{12}I_2\\), so\n\n\\(\\boxed{\\ M_{12} = \\mu_0 n_1n_2\\pi r_1^{2}\\,l\\ }\\)\n\n**Showing \\(M_{21} = M_{12}\\).**\n\nNow pass a current \\(I_1\\) through the **inner** solenoid instead. Its field\n\n\\(B_1 = \\mu_0 n_1I_1\\)\n\nexists **only inside \\(S_1\\)**; outside a long solenoid the field is essentially zero.\n\n**This is the step that makes the two calculations look different and come out the same.** The outer solenoid has area \\(\\pi r_2^{2}\\), but the field fills only the inner \\(\\pi r_1^{2}\\) of it — so the flux through **each turn of \\(S_2\\)** is\n\n\\(\\phi_2 = B_1 \\times \\pi r_1^{2} = \\mu_0 n_1I_1\\pi r_1^{2}\\)\n\nagain with \\(r_1\\), for a quite different reason. Total linkage:\n\n\\(N_2\\phi_2 = \\left(n_2l\\right)\\left(\\mu_0 n_1I_1\\pi r_1^{2}\\right) = \\mu_0 n_1n_2\\pi r_1^{2}l\\,I_1\\)\n\n\\(M_{21} = \\mu_0 n_1n_2\\pi r_1^{2}\\,l\\)\n\n**Comparing the two boxed results:**\n\n\\(\\boxed{\\ M_{21} = M_{12}\\ }\\)\n\n**Why \\(r_1^{2}\\) appears in both, by two different arguments.** In the first case it is the **receiving** coil's area, with the field uniform across it. In the second it is the **field's** extent, with the receiving coil larger than it. The two routes meet at the same expression, and that coincidence is the reciprocity being demonstrated.\n\n**What reciprocity means.** Mutual inductance is a property of the **pair** of coils, not of one acting on the other. It cannot matter which coil is called the source — a result that holds for any two circuits whatever, a consequence of the symmetry of the magnetic interaction, and the reason a transformer works identically in either direction.\n\n**The role of \\(l \\gg r_2\\).** It justifies treating both solenoids as infinitely long, so that the field inside is uniform and the field outside is zero. End effects would spoil both, and with them the clean equality."
+    },
+    {
+      "hash": "5d1754477e18522242ef8510165045a47c23181ea9b3109da5ceb2ad60a57a47",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "(a) Draw a plot of frequency \\(\\nu\\) of incident radiations as a function of stopping potential \\(V_0\\) for a given photo emissive material. What information can be obtained from the value of the intercept on the stopping potential axis ?\n(b) Calculate : (i) the momentum and (ii) de Broglie wavelength, of an electron with kinetic energy of 80 eV.",
+      "solution": "**(a) The plot and what its intercept gives.**\n\nEinstein's photoelectric equation, with \\(eV_0 = K_{\\max}\\):\n\n\\(eV_0 = h\\nu - \\phi_0\\)\n\nRearranged to give frequency in terms of stopping potential:\n\n\\(\\nu = \\left(\\dfrac{e}{h}\\right)V_0 + \\dfrac{\\phi_0}{h}\\)\n\n**The graph is a STRAIGHT LINE** of slope \\(e/h\\), the same for every material, with a \\(\\nu\\)-axis intercept at \\(\\nu_0 = \\phi_0/h\\), the threshold frequency.\n\n*To draw it:* a straight line rising to the right, cutting the \\(\\nu\\)-axis at the positive value \\(\\nu_0\\) and the \\(V_0\\)-axis at a **negative** value.\n\n**What the intercept on the stopping-potential axis tells us.**\n\nSetting \\(\\nu = 0\\):\n\n\\(0 = \\left(\\dfrac{e}{h}\\right)V_0 + \\dfrac{\\phi_0}{h} \\qquad\\Longrightarrow\\qquad V_0 = -\\dfrac{\\phi_0}{e}\\)\n\n\\(\\boxed{\\ \\text{The intercept gives the WORK FUNCTION: } \\phi_0 = e\\left|V_0\\text{-intercept}\\right|\\ }\\)\n\n**This answer survives the axes being swapped**, which is worth knowing since the conventional plot puts \\(V_0\\) vertically against \\(\\nu\\) horizontally. That line is \\(V_0 = (h/e)\\nu - \\phi_0/e\\), and **its** intercept on the stopping-potential axis is also \\(-\\phi_0/e\\). Either way round, the intercept on the \\(V_0\\) axis is \\(-\\phi_0/e\\) and yields the work function.\n\n**The intercept is negative**, and that is not an oddity: it is an extrapolation to \\(\\nu = 0\\), a region where no emission occurs at all. The straight line is only physical for \\(\\nu \\ge \\nu_0\\); the part below is dashed in, and reading \\(\\phi_0\\) off it is a piece of graphical extraction rather than a measurement.\n\n**(b) Momentum and wavelength of an 80 eV electron.**\n\n**(i) The momentum.**\n\n\\(p = \\sqrt{2mK}\\)\n\nwith \\(K = 80\\ \\mathrm{eV} = 80 \\times 1{\\cdot}6 \\times 10^{-19} = 1{\\cdot}28 \\times 10^{-17}\\ \\mathrm{J}\\):\n\n\\(p = \\sqrt{2 \\times 9{\\cdot}1 \\times 10^{-31} \\times 1{\\cdot}28 \\times 10^{-17}} = \\sqrt{2{\\cdot}33 \\times 10^{-47}}\\)\n\n\\(\\boxed{\\ p = 4{\\cdot}83 \\times 10^{-24}\\ \\mathrm{kg\\,m\\,s^{-1}}\\ }\\)\n\n**(ii) The de Broglie wavelength.**\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{4{\\cdot}83 \\times 10^{-24}}\\)\n\n\\(\\boxed{\\ \\lambda = 1{\\cdot}37 \\times 10^{-10}\\ \\mathrm{m} \\approx 1{\\cdot}4\\ \\mathring{\\mathrm{A}}\\ }\\)\n\n*(The printed scheme substitutes \\(4{\\cdot}8 \\times 10^{-25}\\) at this step, though its own previous line gives \\(p = 4{\\cdot}8 \\times 10^{-24}\\), and so states \\(1{\\cdot}38 \\times 10^{-9}\\) m — a factor of ten too large.)*\n\n**Two independent checks that \\(10^{-10}\\) is right.** The standard shortcut for an electron accelerated through \\(V\\) volts,\n\n\\(\\lambda = \\dfrac{12{\\cdot}27}{\\sqrt{V}}\\ \\mathring{\\mathrm{A}} = \\dfrac{12{\\cdot}27}{\\sqrt{80}} = 1{\\cdot}37\\ \\mathring{\\mathrm{A}}\\)\n\nagrees exactly. And physically, \\(1{\\cdot}4\\ \\mathring{\\mathrm{A}}\\) is about the spacing of atoms in a crystal — which is precisely why electrons of this energy **diffract** from crystals, as Davisson and Germer found. A wavelength of \\(13{\\cdot}8\\ \\mathring{\\mathrm{A}}\\) would be ten times the lattice spacing and would diffract from nothing.\n\n**Why this energy range matters.** An electron microscope works because a modest accelerating voltage gives a wavelength thousands of times shorter than visible light, and resolution is limited by wavelength. At \\(80\\) eV the wavelength is already \\(4000\\) times smaller than green light."
+    }
+  ]
+}
