@@ -1,0 +1,1034 @@
+{
+  "paper": "55/4/1",
+  "year": 2024,
+  "paperId": "2024-55-4-1",
+  "markingScheme": "out/2024-55-4-1/ms/p00.png … p14.png",
+  "rows": [
+    {
+      "hash": "632e2e97947e593bb59bc8e10e5153fa89458ecb367eb9fe323e838cd1313339",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "Two charges \\(+q\\) each are kept '2a' distance apart. A third charge \\(-2q\\) is placed midway between them. The potential energy of the system is -",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{q^2}{8\\pi\\varepsilon_0 a}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{6q^2}{8\\pi\\varepsilon_0 a}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{-7q^2}{8\\pi\\varepsilon_0 a}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{9q^2}{8\\pi\\varepsilon_0 a}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Three pairs contribute, and the two unlike pairs are the ones that dominate.\n\nLet the two \\(+q\\) charges sit at the ends of a segment of length \\(2a\\), with \\(-2q\\) at its midpoint. Then each \\(+q\\) is a distance \\(a\\) from the central charge, and the two \\(+q\\) charges are \\(2a\\) apart.\n\n**The like pair** \\((+q, +q)\\), separation \\(2a\\):\n\n\\(U_1 = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q \\times q}{2a} = \\dfrac{q^{2}}{8\\pi\\varepsilon_0 a}\\)\n\n**The two unlike pairs** \\((+q, -2q)\\), separation \\(a\\) each:\n\n\\(U_2 = 2 \\times \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q \\times (-2q)}{a} = -\\dfrac{4q^{2}}{4\\pi\\varepsilon_0 a} = -\\dfrac{8q^{2}}{8\\pi\\varepsilon_0 a}\\)\n\nAdding:\n\n\\(U = \\dfrac{q^{2}}{8\\pi\\varepsilon_0 a} - \\dfrac{8q^{2}}{8\\pi\\varepsilon_0 a} = \\dfrac{-7q^{2}}{8\\pi\\varepsilon_0 a}\\)\n\nThe answer is (C).\n\nWriting everything over the common denominator \\(8\\pi\\varepsilon_0 a\\) is what makes the arithmetic trivial — the like pair contributes \\(+1\\) unit and the two unlike pairs \\(-8\\) between them. The total being negative says the assembly is bound: work must be done on it to pull the three charges apart."
+    },
+    {
+      "hash": "9b742428aab585e4b722df8bcaf52faac681f0f04d6ea69b7a970d0965939251",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Charge and its Basic Properties",
+      "stem": "Two identical small conducting balls \\(B_1\\) and \\(B_2\\) are given \\(-7\\) pC and \\(+4\\) pC charges respectively. They are brought in contact with a third identical ball \\(B_3\\) and then separated. If the final charge on each ball is \\(-2\\) pC, the initial charge on \\(B_3\\) was",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-2\\) pC"
+        },
+        {
+          "label": "B",
+          "text": "\\(-3\\) pC"
+        },
+        {
+          "label": "C",
+          "text": "\\(-5\\) pC"
+        },
+        {
+          "label": "D",
+          "text": "\\(-15\\) pC"
+        }
+      ],
+      "answer": "B",
+      "solution": "Charge is conserved, and three *identical* conductors in contact share the total equally.\n\nLet the initial charge on \\(B_3\\) be \\(q\\). The total charge of the system is\n\n\\(-7 + 4 + q = (q - 3)\\ \\text{pC}\\)\n\nBringing all three identical balls into contact lets the charge redistribute; being identical, each ends with one-third of the total. The final charge on each is given as \\(-2\\) pC, so\n\n\\(\\dfrac{q - 3}{3} = -2\\)\n\n\\(q - 3 = -6\\)\n\n\\(q = -3\\ \\text{pC}\\)\n\nThe answer is (B).\n\nThe equal-sharing step rests entirely on the balls being identical — the same size and shape. Conductors of different radii in contact reach a common *potential*, not a common charge, and the split would then follow their capacitances."
+    },
+    {
+      "hash": "c327cdb3f4e1875e38bc02c9e143f94afc2bb519e24fb764bb01011dc4bd7d31",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The quantum nature of light explains the observations on photoelectric effect as -",
+      "options": [
+        {
+          "label": "A",
+          "text": "there is a minimum frequency of incident radiation below which no electrons are emitted."
+        },
+        {
+          "label": "B",
+          "text": "the maximum kinetic energy of photoelectrons depends only on the frequency of incident radiation."
+        },
+        {
+          "label": "C",
+          "text": "when the metal surface is illuminated, electrons are ejected from the surface after sometime."
+        },
+        {
+          "label": "D",
+          "text": "the photoelectric current is independent of the intensity of incident radiation."
+        }
+      ],
+      "answer": "A",
+      "solution": "The photon picture is needed precisely where the wave picture fails, and the threshold frequency is the sharpest of those failures.\n\n**Why (A) is the quantum observation.** On a wave picture, energy arrives continuously, so light of *any* frequency should eventually free an electron if you shine it long enough or brightly enough. What is observed instead is that below a certain frequency \\(\\nu_0\\) no electron is emitted at all, however intense the light or however long you wait. That follows at once if light arrives as quanta of energy \\(h\\nu\\), each absorbed whole by a single electron: unless \\(h\\nu\\) exceeds the work function, no single quantum can do the job, and a million of them cannot pool their energy.\n\nThe answer is (A).\n\n**Why the others fail.** Option (B) is true but incomplete as stated — it omits that \\(K_{\\max}\\) also depends on the metal's work function, which the quantum explanation supplies. Option (C) states the *wave* prediction: a measurable time lag while energy accumulates. Experiment shows emission within about \\(10^{-9}\\) s, with no lag. Option (D) is simply false — the photoelectric current is directly proportional to intensity, since intensity fixes the number of photons arriving per second and each ejects at most one electron."
+    },
+    {
+      "hash": "6b85b7469cbb50b043d0746ed964f9ae1bfcd17ba9ff6af9dc8e967170d2c39c",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "The radius \\((r_n)\\) of \\(n^{th}\\) orbit in Bohr model of hydrogen atom varies with n as",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(r_n \\propto n\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(r_n \\propto \\dfrac{1}{n}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(r_n \\propto n^2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(r_n \\propto \\dfrac{1}{n^2}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Combining Bohr's two postulates gives\n\n\\(r_n = \\dfrac{n^{2}h^{2}\\varepsilon_0}{\\pi m e^{2}}\\)\n\nso the radius grows as the square of the principal quantum number:\n\n\\(r_n \\propto n^{2}\\)\n\nThe answer is (C).\n\nThe quadratic dependence comes from the two conditions pulling in opposite directions. Coulomb attraction as the centripetal force gives \\(v^{2} \\propto 1/r\\), while the quantisation of angular momentum gives \\(vr \\propto n\\); eliminating \\(v\\) between them leaves \\(r \\propto n^{2}\\). Numerically \\(r_1 = 0{\\cdot}53\\) Å, so the \\(n = 2\\) orbit is already four times as wide."
+    },
+    {
+      "hash": "873469bf2edc924c1fb55b5969fcacb6c65afb3bbb1a70822caac1115142e686",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A straight wire is kept horizontally along east-west direction. If a steady current flows in wire from east to west, the magnetic field at a point above the wire will point towards",
+      "options": [
+        {
+          "label": "A",
+          "text": "East"
+        },
+        {
+          "label": "B",
+          "text": "West"
+        },
+        {
+          "label": "C",
+          "text": "North"
+        },
+        {
+          "label": "D",
+          "text": "South"
+        }
+      ],
+      "answer": "C",
+      "solution": "Set up axes: let \\(\\hat{x}\\) point east, \\(\\hat{y}\\) north and \\(\\hat{z}\\) vertically up.\n\nThe current flows from east to west, so its direction is \\(-\\hat{x}\\). The field point lies directly above the wire, so the unit vector from the wire to it is \\(\\hat{r} = +\\hat{z}\\).\n\nThe field of a long straight wire circles it, with direction set by \\(\\hat{I} \\times \\hat{r}\\):\n\n\\(\\hat{I} \\times \\hat{r} = (-\\hat{x}) \\times \\hat{z} = -(\\hat{x} \\times \\hat{z}) = -(-\\hat{y}) = +\\hat{y}\\)\n\nwhich is north. The answer is (C).\n\nThe right-hand grip rule gives the same result without algebra: point the right thumb west along the current and the fingers curl over the top of the wire towards the north. Note that the answer must be horizontal and perpendicular to the wire — the field of a straight wire is always tangential to a circle centred on it — which already rules out east and west."
+    },
+    {
+      "hash": "732822dba1eb02e92ec6661430fef77ab0e64d5d233ec3c3cf76586ed154ba69",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "The magnetic susceptibility for a diamagnetic material is",
+      "options": [
+        {
+          "label": "A",
+          "text": "small and negative"
+        },
+        {
+          "label": "B",
+          "text": "small and positive"
+        },
+        {
+          "label": "C",
+          "text": "large and negative"
+        },
+        {
+          "label": "D",
+          "text": "large and positive"
+        }
+      ],
+      "answer": "A",
+      "solution": "A diamagnetic material has no permanent atomic magnetic moment. An applied field induces a weak moment in each atom, and by Lenz's law that induced moment *opposes* the applied field.\n\nSo the magnetisation is antiparallel to \\(\\vec{H}\\), making the susceptibility \\(\\chi = M/H\\) **negative**, and the effect is feeble — typically \\(\\chi \\sim -10^{-5}\\).\n\nThe answer is (A), small and negative.\n\nThis is the only one of the three magnetic classes with a negative susceptibility. Paramagnetics have small positive \\(\\chi\\); ferromagnetics have large positive \\(\\chi\\), often in the thousands. A material with large negative \\(\\chi\\) would be a perfect diamagnet — a superconductor, with \\(\\chi = -1\\), and not an ordinary solid."
+    },
+    {
+      "hash": "46e30b31b42057ce51f600b55dc4ad40183d48aede80b2ad2b383e797410a468",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A galvanometer of resistance 100 \\(\\Omega\\) is converted into an ammeter of range \\((0 - 1\\ \\mathrm{A})\\) using a resistance of 0.1 \\(\\Omega\\). The ammeter will show full scale deflection for a current of about",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.1 mA"
+        },
+        {
+          "label": "B",
+          "text": "1 mA"
+        },
+        {
+          "label": "C",
+          "text": "10 mA"
+        },
+        {
+          "label": "D",
+          "text": "0.1 A"
+        }
+      ],
+      "answer": "B",
+      "solution": "A galvanometer is converted to an ammeter by a shunt in parallel, and the question is asking for its full-scale current \\(I_g\\).\n\nThe shunt and the galvanometer carry the same potential difference:\n\n\\(I_g G = (I - I_g) S\\)\n\nWith \\(G = 100\\ \\Omega\\), \\(S = 0{\\cdot}1\\ \\Omega\\) and \\(I = 1\\) A:\n\n\\(100\\,I_g = (1 - I_g)(0{\\cdot}1)\\)\n\n\\(100\\,I_g + 0{\\cdot}1\\,I_g = 0{\\cdot}1\\)\n\n\\(I_g = \\dfrac{0{\\cdot}1}{100{\\cdot}1} = 9{\\cdot}99 \\times 10^{-4}\\ \\text{A} \\approx 1\\ \\text{mA}\\)\n\nThe answer is (B).\n\nThe \\(0{\\cdot}1\\,I_g\\) term barely matters, which is the point of the design: because \\(S \\ll G\\), almost the whole 1 A bypasses the meter through the shunt and only about a thousandth of it passes through the coil. A useful shortcut is \\(I_g \\approx IS/G = 1 \\times 0{\\cdot}1/100 = 1\\) mA, which is accurate to one part in a thousand here."
+    },
+    {
+      "hash": "d4aa3003beedf3702623edec7bad05691e2b038d5d49e6ada9d1c5fa32c39303",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A circular loop A of radius R carries a current I. Another circular loop B of radius \\(r\\left(= \\dfrac{R}{20}\\right)\\) is placed concentrically in the plane of A. The magnetic flux linked with loop B is proportional to",
+      "options": [
+        {
+          "label": "A",
+          "text": "R"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sqrt{R}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(R^{\\frac{3}{2}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(R^2\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "Loop B is twenty times smaller than loop A, and that is what licenses the whole calculation: the field of A can be treated as uniform across B and equal to its value at the common centre.\n\nField at the centre of loop A:\n\n\\(B = \\dfrac{\\mu_0 I}{2R}\\)\n\nFlux through loop B, of area \\(\\pi r^{2}\\) with \\(r = R/20\\):\n\n\\(\\phi = B \\times \\pi r^{2} = \\dfrac{\\mu_0 I}{2R} \\times \\pi\\left(\\dfrac{R}{20}\\right)^{2} = \\dfrac{\\mu_0 I \\pi R^{2}}{2R \\times 400} = \\dfrac{\\mu_0 I \\pi R}{800}\\)\n\nSo \\(\\phi \\propto R\\), which is option (A).\n\nThe single power of \\(R\\) is the interesting part, and it comes from a cancellation: the area of B grows as \\(R^{2}\\) while the field at the centre falls as \\(1/R\\). Increasing the radius of the whole arrangement therefore *increases* the flux, but only in proportion to \\(R\\), not to \\(R^{2}\\) as it would if the field at the centre were held fixed."
+    },
+    {
+      "hash": "36d78b08ce00d1816f0116833501f3bb31ca6d01848daf30e4d8f06ea5402880",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "Figure shows the variation of inductive reactance \\(X_L\\) of two ideal inductors of inductance \\(L_1\\) and \\(L_2\\), with angular frequency \\(\\omega\\). The value of \\(\\dfrac{L_1}{L_2}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sqrt{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{\\sqrt{3}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{3}\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem gives no slope, no angle and no numbers; the whole question is the two lines drawn on the plot. Deliberately NOT described fully in words: the two marked angles ARE the data, and naming which line makes which angle states the ratio the question asks for. What is drawn: a first-quadrant plot with the vertical axis labelled \\(X_L\\), the horizontal axis labelled \\(\\omega\\), the origin marked 0, and two straight lines rising from the origin, labelled \\(L_1\\) and \\(L_2\\), each with the angle it makes with the \\(\\omega\\)-axis marked by an arc. Page idx 6.",
+      "imageAttached": true,
+      "solution": "For an ideal inductor the reactance is\n\n\\(X_L = \\omega L\\)\n\nso a plot of \\(X_L\\) against \\(\\omega\\) is a straight line through the origin whose **slope is the inductance itself**. Reading the inductances off the graph therefore means reading two slopes.\n\nFrom the figure, the line labelled \\(L_1\\) makes \\(30^\\circ\\) with the \\(\\omega\\)-axis and the line labelled \\(L_2\\) makes \\(60^\\circ\\):\n\n\\(L_1 = \\tan 30^\\circ = \\dfrac{1}{\\sqrt{3}}, \\qquad L_2 = \\tan 60^\\circ = \\sqrt{3}\\)\n\nHence\n\n\\(\\dfrac{L_1}{L_2} = \\dfrac{1/\\sqrt{3}}{\\sqrt{3}} = \\dfrac{1}{3}\\)\n\nThe answer is (D).\n\nReading the ratio as \\(\\tan 30^\\circ / \\tan 60^\\circ\\) rather than as an angle ratio is the whole of the question. The steeper line is the larger inductance, so \\(L_1 < L_2\\) and the ratio must be less than 1 — which already eliminates the two options greater than one. Choosing \\(1/\\sqrt{3}\\) instead would mean comparing the angles rather than their tangents."
+    },
+    {
+      "hash": "27fd1f0dcef8292551c5264d1e552aa3d5ce4e1104c3ab74fd67db443188f716",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The phase difference between electric field \\(\\vec{E}\\) and magnetic field \\(\\vec{B}\\) in an electromagnetic wave propagating along z-axis is -",
+      "options": [
+        {
+          "label": "A",
+          "text": "zero"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\pi\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\pi}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{\\pi}{4}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "In a plane electromagnetic wave travelling through vacuum, \\(\\vec{E}\\) and \\(\\vec{B}\\) oscillate **in phase**: they reach their maxima at the same instant and pass through zero together. The phase difference between them is zero.\n\nThe answer is (A).\n\nFor a wave along the \\(z\\)-axis this reads\n\n\\(\\vec{E} = E_0 \\sin(kz - \\omega t)\\,\\hat{i}, \\qquad \\vec{B} = B_0 \\sin(kz - \\omega t)\\,\\hat{j}\\)\n\n— the same argument in both, with \\(B_0 = E_0/c\\).\n\nNote what is *not* zero: the two fields are mutually **perpendicular in space**, and both are perpendicular to the direction of propagation, with \\(\\vec{E} \\times \\vec{B}\\) pointing along it. A spatial angle of \\(90^\\circ\\) and a temporal phase difference of \\(0\\) are different statements, and confusing the two is what makes a quarter-cycle answer tempting."
+    },
+    {
+      "hash": "4d3820e5becf7410bf42a8c57d06f92071b6fcb7c15ce2e745f084d94cf3c051",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A coil of N turns is placed in a magnetic field \\(\\vec{B}\\) such that \\(\\vec{B}\\) is perpendicular to the plane of the coil. \\(\\vec{B}\\) changes with time as \\(B = B_0 \\cos\\left(\\dfrac{2\\pi}{T}t\\right)\\) where T is time period. The magnitude of emf induced in the coil will be maximum at\nHere, n = 1, 2, 3, 4, ...",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(t = \\dfrac{nT}{8}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(t = \\dfrac{nT}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(t = \\dfrac{nT}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(t = nT\\)"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**CBSE declared this question void: the marking scheme records \"No option is correct, award 1 mark.\"** The reason is worth setting out, because the intended answer is close to one of the options without being it.\n\nWith \\(\\vec{B}\\) perpendicular to the plane of the coil, the flux linkage is\n\n\\(\\phi = N B A = N A B_0 \\cos\\left(\\dfrac{2\\pi}{T}t\\right)\\)\n\nand the induced emf is\n\n\\(\\varepsilon = -\\dfrac{d\\phi}{dt} = N A B_0 \\left(\\dfrac{2\\pi}{T}\\right)\\sin\\left(\\dfrac{2\\pi}{T}t\\right)\\)\n\nIts magnitude is greatest when \\(\\left|\\sin(2\\pi t/T)\\right| = 1\\), that is when\n\n\\(\\dfrac{2\\pi t}{T} = \\dfrac{\\pi}{2},\\ \\dfrac{3\\pi}{2},\\ \\dfrac{5\\pi}{2},\\ \\ldots \\qquad\\Longrightarrow\\qquad t = \\dfrac{T}{4},\\ \\dfrac{3T}{4},\\ \\dfrac{5T}{4},\\ \\ldots\\)\n\nSo the emf peaks at the **odd** multiples of \\(T/4\\):\n\n\\(t = \\dfrac{(2n-1)T}{4}, \\qquad n = 1, 2, 3, \\ldots\\)\n\nNo option says this. Option (B), \\(t = nT/4\\), is the near miss: it contains every correct instant, but it also contains \\(t = T/2,\\ T,\\ 3T/2, \\ldots\\), and at each of those \\(\\sin(2\\pi t/T) = 0\\), so the emf is not maximum there but **zero**. Options (C) and (D) list only those zeros, and option (A) adds instants such as \\(t = T/8\\) where the emf is \\(1/\\sqrt{2}\\) of its peak.\n\nThe physics behind the timing: the flux is largest at \\(t = 0,\\ T/2,\\ T, \\ldots\\), and a quantity is changing *slowest* where it is largest. The emf, which tracks the rate of change, therefore peaks exactly where the flux passes through zero — a quarter period away from each flux maximum."
+    },
+    {
+      "hash": "263087a852860f571c7627c559a415a9949c744b62c4ca854c16548a680489e1",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "In Balmer series of hydrogen atom, as the wavelength of spectral lines decreases, they appear",
+      "options": [
+        {
+          "label": "A",
+          "text": "equally spaced and equally intense."
+        },
+        {
+          "label": "B",
+          "text": "further apart and stronger in intensity."
+        },
+        {
+          "label": "C",
+          "text": "closer together and stronger in intensity."
+        },
+        {
+          "label": "D",
+          "text": "closer together and weaker in intensity."
+        }
+      ],
+      "answer": "D",
+      "solution": "The Balmer lines all end on \\(n = 2\\), with wavenumbers\n\n\\(\\dfrac{1}{\\lambda} = R\\left(\\dfrac{1}{2^{2}} - \\dfrac{1}{n^{2}}\\right), \\qquad n = 3, 4, 5, \\ldots\\)\n\n**Spacing.** As \\(n\\) grows, \\(1/n^{2}\\) shrinks rapidly and successive lines differ by less and less, converging on the series limit \\(1/\\lambda = R/4\\). So moving towards shorter wavelengths the lines **crowd together**, piling up at the limit.\n\n**Intensity.** Transitions from high \\(n\\) come from states that are increasingly sparsely populated and increasingly weakly coupled to \\(n = 2\\), so the lines become progressively **fainter**.\n\nCloser together and weaker in intensity — option (D).\n\nThe two effects reinforce each other, which is why the short-wavelength end of any hydrogen series fades into an unresolved continuum rather than ending on a sharp final line."
+    },
+    {
+      "hash": "6bc110665d85bbf75a0009dd22f858dd33d2a180b02730e7149ec6033338fba5",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Assertion (A) : Electrons are ejected from the surface of zinc when it is irradiated by yellow light.\nReason (R) : Energy associated with a photon of yellow light is more than the work function of zinc.",
+      "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "If Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "If both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "D",
+      "solution": "Both statements fail, and they fail for the same reason: zinc's work function is far too large for yellow light.\n\n**The numbers.** Yellow light has \\(\\lambda \\approx 580\\) nm, so\n\n\\(E = \\dfrac{hc}{\\lambda} \\approx \\dfrac{1240\\ \\mathrm{eV\\,nm}}{580\\ \\mathrm{nm}} \\approx 2{\\cdot}1\\ \\text{eV}\\)\n\nThe work function of zinc is about \\(4{\\cdot}3\\) eV — roughly twice as large.\n\n**Reason — false.** The photon energy is *less* than the work function, not more.\n\n**Assertion — false.** Since \\(h\\nu < \\phi_0\\), no electron can be emitted, however bright the yellow light. Zinc's threshold lies in the ultraviolet.\n\nThe answer is (D).\n\nThis is the classic demonstration with a zinc plate on an electroscope: visible light of any intensity does nothing, while a weak ultraviolet lamp discharges it at once. The order of the reasoning matters here — the reason is not merely unrelated to the assertion, it is the very fact that makes the assertion false."
+    },
+    {
+      "hash": "216f0277f5ad3fd0f5fcf0ac512b69db970c7e71f2428224e26d990451d24337",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "Assertion (A) : The temperature coefficient of resistance is positive for metals and negative for p-type semiconductors.\nReason (R) : The charge carriers in metals are negatively charged, whereas the majority charge carriers in p-type semiconductors are positively charged.",
+      "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "If Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "If both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "B",
+      "solution": "Both statements are true, but the reason does not explain the assertion.\n\n**Assertion — true.** Heating a metal makes the lattice vibrate more, electrons collide more often, the relaxation time \\(\\tau\\) falls and the resistance rises: \\(\\alpha > 0\\). In a p-type semiconductor, heating liberates far more carriers than it costs in mobility, so the resistivity *falls* and \\(\\alpha < 0\\).\n\n**Reason — true.** Conduction in a metal is by electrons, which are negative; the majority carriers in a p-type semiconductor are holes, which behave as positive.\n\n**But the reason is not the explanation.** The sign of the temperature coefficient has nothing to do with the *sign of the carrier's charge*. It is settled by which of two competing quantities wins as temperature rises: the **number** of carriers or their **mobility**. In a metal the carrier number is essentially fixed, so falling mobility decides the outcome and \\(R\\) rises. In a semiconductor the carrier number climbs exponentially and overwhelms the mobility loss, so \\(R\\) falls.\n\nTwo true statements with no explanatory link between them is option (B).\n\nThe decisive test is that n-type semiconductors also have a negative temperature coefficient, and their majority carriers are *negative*. The reason's correlation between carrier sign and coefficient sign breaks immediately on that single counter-example, so it cannot be the explanation of anything."
+    },
+    {
+      "hash": "e3c8d17984ea78c01f254a9b9dd6abbf2973215f666e750a64350c58a173c28d",
+      "ref": "Q15",
+      "questionNumber": "15",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Assertion (A) : When electrons drift in a conductor, it does not mean that all free electrons in the conductor are moving in the same direction.\nReason (R) : The drift velocity is superposed over large random velocities of electrons.",
+      "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "If Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "If both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "A",
+      "solution": "Both statements are true, and the reason is exactly why the assertion holds.\n\n**Reason — true.** Free electrons in a conductor move with large random thermal velocities, of the order of \\(10^{5}\\) m/s, in every direction. An applied field superposes on this chaos a tiny systematic drift — typically \\(10^{-4}\\) m/s, nine orders of magnitude smaller.\n\n**Assertion — true, and it follows.** Because the drift is so small compared with the random motion, the velocity of any individual electron at any instant is still dominated by its random component. Most electrons are not moving along the field at all; at any moment plenty are heading the other way. What \"drift\" describes is a property of the *average* over the whole population, not of any one electron's path.\n\nThe reason is the correct explanation, so the answer is (A).\n\nThe scale of the mismatch is what makes the point vivid: a drift of \\(10^{-4}\\) m/s means an electron takes about three hours to travel one metre along a wire, yet a lamp lights instantly when the switch closes — because the electric field, not the electrons, propagates the signal."
+    },
+    {
+      "hash": "8c22dd940c2d849b85f07b10bb5f6c400b71c3116921c60f559d8e506d1aa6da",
+      "ref": "Q16",
+      "questionNumber": "16",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "Assertion (A) : In interference and diffraction of light, light energy reduces in one region producing a dark fringe. It increases in another region and produces a bright fringe.\nReason (R) : This happens because energy is not conserved in the phenomena of interference and diffraction.",
+      "context": "Note : For questions number 13 to 16, two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "If Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "If both Assertion (A) and Reason (R) are false."
+        }
+      ],
+      "answer": "C",
+      "solution": "The assertion describes what is observed; the reason draws exactly the wrong conclusion from it.\n\n**Assertion — true.** In interference and diffraction the light energy *is* redistributed: less arrives at a dark fringe than would without superposition, and correspondingly more arrives at a bright one.\n\n**Reason — false.** Energy is rigorously conserved. Interference moves energy about on the screen; it neither creates nor destroys it. For two equal sources the intensity is \\(I = 4I_0\\cos^{2}(\\phi/2)\\), which varies from \\(0\\) to \\(4I_0\\) but **averages to \\(2I_0\\)** over all phases — precisely the \\(I_0 + I_0\\) the two sources supply independently. Integrated over the whole pattern, the energy balances exactly.\n\nA true assertion with a false reason gives option (C).\n\nThe redistribution is the signature of a wave phenomenon, not a violation of conservation. If energy really were destroyed at the dark fringes, there would be nowhere for the extra light at the bright fringes to come from."
+    },
+    {
+      "hash": "31b405b317dbd1f9c31be27309bccae09826c58725e234e703b24976c9e205b9",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "Draw the circuit diagram of a p-n junction diode in (i) forward biasing and (ii) reverse biasing. Also draw its I-V characteristics in the two cases.",
+      "solution": "**The circuit diagrams.**\n\n*(i) Forward bias.* The p-side of the diode is connected to the positive terminal of a variable dc supply and the n-side to the negative terminal. A voltmeter goes across the diode and a **milliammeter** in series with it, the forward current running to milliamperes.\n\n*(ii) Reverse bias.* The supply connections are reversed — p-side to negative, n-side to positive. The voltmeter still sits across the diode, but the series meter is now a **microammeter**, since the reverse current is about a thousand times smaller.\n\n**The I–V characteristics.**\n\nBoth branches are drawn on a single pair of axes, with voltage horizontal and current vertical, but the two halves use different current scales: milliamperes upward for the forward branch, microamperes downward for the reverse one.\n\n*Forward branch (first quadrant).* The current is negligible until the applied voltage reaches the threshold or cut-in voltage — about \\(0{\\cdot}3\\) V for germanium, \\(0{\\cdot}7\\) V for silicon — and then rises very steeply, almost exponentially.\n\n*Reverse branch (third quadrant).* A very small, nearly constant reverse saturation current of a few microamperes flows, essentially independent of voltage, until the breakdown voltage is reached, where the current increases abruptly.\n\nThe change of scale between the two quadrants is itself part of the message: without it, the reverse branch would be indistinguishable from the voltage axis."
+    },
+    {
+      "hash": "3184bd858422f6309a030cb714baa85be9d16eb3db46735f813c62ba47d067e4",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "A proton and \\(\\alpha\\)-particle are accelerated through different potentials \\(V_1\\) and \\(V_2\\) respectively so that they have the same de Broglie wavelengths. Find \\(\\dfrac{V_1}{V_2}\\).",
+      "solution": "For a charged particle accelerated from rest through a potential difference \\(V\\), the kinetic energy gained is \\(qV\\), so\n\n\\(p = \\sqrt{2mqV} \\qquad\\text{and}\\qquad \\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mqV}}\\)\n\n**Proton:** mass \\(m\\), charge \\(e\\), accelerated through \\(V_1\\):\n\n\\(\\lambda_p = \\dfrac{h}{\\sqrt{2\\,m\\,e\\,V_1}}\\)\n\n**Alpha particle:** mass \\(4m\\), charge \\(2e\\), accelerated through \\(V_2\\):\n\n\\(\\lambda_\\alpha = \\dfrac{h}{\\sqrt{2\\,(4m)(2e)\\,V_2}} = \\dfrac{h}{\\sqrt{16\\,m\\,e\\,V_2}}\\)\n\nSetting \\(\\lambda_p = \\lambda_\\alpha\\) means the two denominators are equal:\n\n\\(2\\,m\\,e\\,V_1 = 16\\,m\\,e\\,V_2\\)\n\n\\(\\dfrac{V_1}{V_2} = 8\\)\n\nThe proton must be accelerated through **eight times** the potential difference.\n\nThe factor 8 is \\(m_\\alpha q_\\alpha / m_p q_p = 4 \\times 2\\) — the alpha particle is both four times heavier and twice as charged, and the product of those two advantages is what the proton has to make up for with extra voltage."
+    },
+    {
+      "hash": "e0d2b3fb1848a132cccc5589d9975178b2f01eb6f2b03bf9092abb9d2e94cac1",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident normally on one face of an equilateral glass prism of refractive index \\(\\mu\\). When the prism is completely immersed in a transparent medium, it is observed that the emergent ray just grazes the adjacent face. Find the refractive index of the medium.",
+      "solution": "The ray enters normally, which fixes the geometry completely.\n\n**At the first face.** Incidence is normal, so the ray passes in undeviated and \\(r_1 = 0\\).\n\n**At the second face.** For a prism, \\(r_1 + r_2 = A\\). With \\(r_1 = 0\\) and \\(A = 60^\\circ\\) for an equilateral prism,\n\n\\(r_2 = 60^\\circ\\)\n\n**The grazing condition.** The emergent ray \"just grazes\" the adjacent face, meaning it leaves along the surface at \\(90^\\circ\\) to the normal. Applying Snell's law at that face, going from the glass into the surrounding medium:\n\n\\(\\mu \\sin 60^\\circ = \\mu_m \\sin 90^\\circ\\)\n\n\\(\\mu_m = \\mu \\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}\\,\\mu\\)\n\nThe refractive index of the medium is \\(\\dfrac{\\sqrt{3}}{2}\\mu \\approx 0{\\cdot}87\\,\\mu\\).\n\nGrazing emergence is the statement that \\(60^\\circ\\) is exactly the critical angle for the glass–medium pair, so the result can equally be read off \\(\\sin C = \\mu_m/\\mu\\) with \\(C = 60^\\circ\\). Note the medium must be *optically rarer* than the glass for a critical angle to exist at all, and indeed \\(\\mu_m < \\mu\\) here."
+    },
+    {
+      "hash": "ef0cde277d4e6264035773686627997ea023a5427574e93741fdead439722c51",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Electrical Energy and Power",
+      "stem": "Two electric heaters have power ratings \\(P_1\\) and \\(P_2\\), at voltage V. They are connected in series to a dc source of voltage V. Find the power consumed by the combination. Will they consume the same power if connected in parallel across the same source ?",
+      "solution": "**Power in series.** A rating \"\\(P\\) at voltage \\(V\\)\" fixes each heater's resistance:\n\n\\(R_1 = \\dfrac{V^{2}}{P_1}, \\qquad R_2 = \\dfrac{V^{2}}{P_2}\\)\n\nIn series the resistances add:\n\n\\(R_{\\text{eq}} = R_1 + R_2 = V^{2}\\left(\\dfrac{1}{P_1} + \\dfrac{1}{P_2}\\right)\\)\n\nAcross the same supply \\(V\\), the power consumed is\n\n\\(P_{\\text{series}} = \\dfrac{V^{2}}{R_{\\text{eq}}} = \\dfrac{V^{2}}{V^{2}\\left(\\dfrac{1}{P_1} + \\dfrac{1}{P_2}\\right)}\\)\n\n\\(\\dfrac{1}{P_{\\text{series}}} = \\dfrac{1}{P_1} + \\dfrac{1}{P_2} \\qquad\\text{so}\\qquad P_{\\text{series}} = \\dfrac{P_1 P_2}{P_1 + P_2}\\)\n\n**In parallel?** No. In parallel each heater has the full \\(V\\) across it and therefore runs at its own rated power, so\n\n\\(P_{\\text{parallel}} = P_1 + P_2\\)\n\nThe two are quite different — and in opposite directions. In series the combination draws *less* than either heater alone, because the powers combine like resistances in parallel; in parallel it draws their sum. For two 1000 W heaters, series gives 500 W and parallel gives 2000 W: a factor of four between the two arrangements."
+    },
+    {
+      "hash": "206fc52fc7e8224626d023d94e551de89750d079691ae99bbe0a646f983269b0",
+      "ref": "Q21a",
+      "questionNumber": "21 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "An air bubble is trapped at point B (CB = 20 cm) in a glass sphere of radius 40 cm and refractive index 1.5 as shown in figure. Find the nature and position of the image of the bubble as seen by an observer at point P.",
+      "figureNote": "REQUIRED — the stem defers the geometry to 'as shown in figure', and which side of the centre the bubble lies on relative to the observer is what fixes the sign convention and therefore the answer. Described here without stating the result: a circle labelled \\(\\mu = 1.5\\) with its centre marked C, a point B inside the circle on a horizontal dashed line through C, and a point P outside the circle on that same dashed line; an arrow leaves C obliquely to indicate the sphere's radius. Page idx 12.",
+      "imageAttached": true,
+      "solution": "This is a single refraction at one spherical surface — light leaves the bubble, crosses the glass, and refracts once at the near surface on its way to the observer at P.\n\n**Setting up.** The sphere has radius 40 cm and centre C, and the bubble B lies on the line CP with \\(CB = 20\\) cm. So B is \\(40 - 20 = 20\\) cm from the near surface, through which the light escapes. Taking the direction in which the light travels (from B towards P) as positive, and the pole of that surface as origin:\n\n\\(u = -20\\ \\text{cm}, \\qquad R = -40\\ \\text{cm}, \\qquad n_1 = 1\\ (\\text{air, refracted side}), \\qquad n_2 = 1{\\cdot}5\\ (\\text{glass, object side})\\)\n\n\\(R\\) is negative because the centre of curvature C lies on the side the light came *from*.\n\n**Applying the refraction formula.**\n\n\\(\\dfrac{n_1}{v} - \\dfrac{n_2}{u} = \\dfrac{n_1 - n_2}{R}\\)\n\n\\(\\dfrac{1}{v} - \\dfrac{1{\\cdot}5}{(-20)} = \\dfrac{1 - 1{\\cdot}5}{(-40)}\\)\n\n\\(\\dfrac{1}{v} + 0{\\cdot}075 = 0{\\cdot}0125\\)\n\n\\(\\dfrac{1}{v} = -0{\\cdot}0625 \\qquad\\Longrightarrow\\qquad v = -16\\ \\text{cm}\\)\n\n**The result.** The negative sign places the image on the same side of the surface as the bubble, so the image is **virtual**, lying **16 cm from the refracting surface** inside the glass — that is, 24 cm from the centre C, on P's side.\n\nThe bubble itself is 20 cm from that surface, so the observer sees it nearer than it is. That is the expected direction: looking from the rarer medium into the denser one always makes a submerged object appear closer, the same effect that makes a pond look shallower than it is."
+    },
+    {
+      "hash": "08818208f3d50a310d3c2d870a92e94bd8f7b4d45a3f0e7433ec17ec2b79a63d",
+      "ref": "Q21b",
+      "questionNumber": "21 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "In normal adjustment, for a refracting telescope, the distance between objective and eye piece lens is 1.00 m. If the magnifying power of the telescope is 19, find the focal length of the objective and the eyepiece lens.",
+      "solution": "In normal adjustment the final image is at infinity, so the intermediate image sits at the common focus of the two lenses. Two relations follow:\n\n\\(f_o + f_e = 100\\ \\text{cm} \\qquad\\text{and}\\qquad \\dfrac{f_o}{f_e} = 19\\)\n\nSubstituting \\(f_o = 19f_e\\) into the first:\n\n\\(19f_e + f_e = 100\\)\n\n\\(20f_e = 100 \\qquad\\Longrightarrow\\qquad f_e = 5\\ \\text{cm} = 0{\\cdot}05\\ \\text{m}\\)\n\n\\(f_o = 100 - 5 = 95\\ \\text{cm} = 0{\\cdot}95\\ \\text{m}\\)\n\nThe objective has focal length **95 cm** and the eyepiece **5 cm**.\n\nBoth relations depend on normal adjustment, and the design logic is visible in the numbers: a telescope wants a long-focus objective and a short-focus eyepiece, since \\(m = f_o/f_e\\). The tube length is then almost entirely the objective's focal length — which is why high-magnification refractors are physically long instruments."
+    },
+    {
+      "hash": "2d2b548d93854bebb231abb57e6f9e0c4d35c2fb073f646151699690d6b795ce",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "(a) Differentiate between nuclear fission and fusion.\n(b) The fission properties of \\(_{94}\\mathrm{Pu}^{239}\\) are very similar to those of \\(_{92}\\mathrm{U}^{235}\\). How much energy (in MeV), is released if all the atoms in 1 g of pure \\(_{94}\\mathrm{Pu}^{239}\\) undergo fission ? The average energy released per fission is 180 MeV.",
+      "solution": "**(a) Fission and fusion contrasted.**\n\nIn **nuclear fission** a heavy nucleus — uranium or plutonium — splits into two or more lighter nuclei, releasing energy along with neutrons. In **nuclear fusion** two light nuclei combine to form a heavier one, again releasing energy.\n\nThey are opposite processes, yet both release energy, and the binding-energy curve explains why. Binding energy per nucleon peaks near \\(A \\approx 56\\) (iron). Any process moving nuclei *towards* that peak releases energy — heavy nuclei by splitting, light nuclei by joining. Fusion releases far more energy per nucleon, since the curve rises much more steeply on the light side, but it demands enormous temperatures to overcome the Coulomb barrier, whereas fission can be triggered by a slow neutron.\n\n**(b) Energy from 1 g of plutonium-239.**\n\nNumber of atoms in 1 g:\n\n\\(N = \\dfrac{6{\\cdot}023 \\times 10^{23}}{239} = 2{\\cdot}52 \\times 10^{21}\\)\n\n(one mole of \\(^{239}\\mathrm{Pu}\\) has mass 239 g).\n\nTotal energy released if every atom undergoes fission at 180 MeV each:\n\n\\(E = N \\times 180\\ \\text{MeV} = 2{\\cdot}52 \\times 10^{21} \\times 180\\)\n\n\\(E = 4{\\cdot}5 \\times 10^{23}\\ \\text{MeV}\\)\n\nTo see what that means, convert: \\(4{\\cdot}5 \\times 10^{23}\\ \\mathrm{MeV} \\approx 7{\\cdot}2 \\times 10^{10}\\) J, roughly \\(2 \\times 10^{4}\\) kWh — about the energy from twenty tonnes of coal, from a single gram of fuel."
+    },
+    {
+      "hash": "1ec29d08233aa5cd13c7213835e084cb5985131132a1f014d031dd7acf882111",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "stem": "The electric field in a region is given by\n\\(\\vec{E} = (10x + 4)\\hat{i}\\)\nwhere \\(x\\) is in m and E is in N/C. Calculate the amount of work done in taking a unit charge from\n(i) (5 m, 0) to (10 m, 0)\n(ii) (5 m, 0) to (5 m, 10 m)",
+      "solution": "The field \\(\\vec{E} = (10x + 4)\\hat{i}\\) points along \\(x\\) alone and varies only with \\(x\\). Both parts follow from\n\n\\(\\Delta V = -\\int_{x_1}^{x_2} E\\,dx\\)\n\n**(i) From (5 m, 0) to (10 m, 0).**\n\nThe displacement is along \\(x\\), exactly along the field, so the integral is the full one:\n\n\\(\\Delta V = -\\int_{5}^{10}(10x + 4)\\,dx = -\\left[5x^{2} + 4x\\right]_{5}^{10}\\)\n\n\\(\\Delta V = -\\big[(500 + 40) - (125 + 20)\\big] = -(540 - 145) = -395\\ \\text{V}\\)\n\nFor a unit charge \\(q = 1\\) C, the work done by an external agent in carrying it across is the change in its potential energy:\n\n\\(W = q\\,\\Delta V = 1 \\times (-395) = -395\\ \\text{J}\\)\n\nThe negative sign says the external agent does not have to push at all — the field does \\(+395\\) J of work on the charge, and the agent must hold it back to keep the transfer quasi-static.\n\n**(ii) From (5 m, 0) to (5 m, 10 m).**\n\nHere \\(x\\) does not change: the displacement is entirely along \\(y\\), and the field has no \\(y\\)-component. So \\(\\vec{E}\\cdot d\\vec{l} = 0\\) at every point of the path, and\n\n\\(\\Delta V = -\\int_{5}^{5}(10x + 4)\\,dx = 0 \\qquad\\Longrightarrow\\qquad W = q\\,\\Delta V = 0\\)\n\n**No work is done.**\n\nThe second part needs no integration once the geometry is seen: the displacement is perpendicular to the field throughout, so the path lies entirely within one equipotential surface. For this field the equipotentials are the planes of constant \\(x\\)."
+    },
+    {
+      "hash": "09e42534d8b07df4acaa1f88408fc392b052d8e5d3cd0598abdc3153e43d0fbe",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "Draw the graph showing variation of scattered particles detected (N) with the scattering angle \\((\\theta)\\) in Geiger-Marsden experiment. Write two conclusions that you can draw from this graph. Obtain the expression for the distance of closest approach in this experiment.",
+      "solution": "**The graph.** The number of scattered alpha particles \\(N\\) is plotted against the scattering angle \\(\\theta\\). The curve starts very high at small \\(\\theta\\) and falls extremely steeply — over several orders of magnitude — flattening into a long, almost horizontal tail that remains just above zero all the way out to \\(\\theta = 180^\\circ\\). Rutherford's analysis gives \\(N \\propto \\cosec^{4}(\\theta/2)\\), which is the shape drawn.\n\n**Two conclusions.**\n\n*(i) Most of an atom is empty space.* The overwhelming majority of alpha particles pass through the foil with almost no deflection, so they meet nothing substantial on the way.\n\n*(ii) Almost the entire mass and the whole positive charge are concentrated in a tiny central region — the nucleus.* A very small number of particles are turned through large angles, a few by more than \\(90^\\circ\\). Reversing a fast, massive alpha particle requires a concentrated charge that is also heavy enough not to recoil away, and the rarity of such events shows how small the target is: roughly \\(10^{-15}\\) m against an atomic \\(10^{-10}\\) m.\n\n**Distance of closest approach.**\n\nConsider the head-on collision, the case of \\(180^\\circ\\) scattering. The alpha particle decelerates as it climbs the Coulomb hill and halts momentarily at a distance \\(d\\) from the nucleus. At that instant all its kinetic energy has become electrostatic potential energy:\n\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{(Ze)(2e)}{d}\\)\n\ntaking charge \\(2e\\) for the alpha particle and \\(Ze\\) for a nucleus of atomic number \\(Z\\). Rearranging,\n\n\\(d = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{2Ze^{2}}{K}\\)\n\nThis distance sets an upper bound on the nuclear size: the nucleus must be smaller than \\(d\\), or the alpha particle would have struck it instead of turning back."
+    },
+    {
+      "hash": "6df9fa2b921b04460c6f524ccd0c6457531d546dc70b4260a87ea974a3a64e3c",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "Find the current in branch BM in the network shown :",
+      "figureNote": "REQUIRED — the stem names no component and no value; the entire question is the printed network. The layout and labelling are described because the answer is a current value that no description states, but the CELL POLARITIES are visible only in the drawing and are not stated here. What is drawn: a ladder network with nodes A, B, C, D, E along the top rail and N, M, H, G, F along the bottom rail; top-rail resistors 3 R (A-B), 2 R (C-D) and R (D-E), with B-C a plain wire; a bottom-rail resistor R (G-F); vertical branches 4 R (B-M), 4 R (C-H), 4 R (D-G) and 2 R (E-F); a cell marked 10 E in the left vertical branch A-N, and a second cell marked 6 E in series with the 4 R of branch B-M. Page idx 14.",
+      "imageAttached": false,
+      "solution": "The network looks formidable, but everything to the right of the B–C rail collapses to a single resistance, and after that only two loops remain.\n\n**Reducing the right-hand ladder.** B and C are joined by a plain wire, so they are the same node; likewise N, M, H and G all lie on the uninterrupted bottom rail and are one node. Working inwards from the far end:\n\n- From D to the bottom rail there are two routes: the 4R of branch D–G, and the path D–E–F–G, which is \\(R + 2R + R = 4R\\). In parallel: \\(4R \\parallel 4R = 2R\\).\n- From C to the bottom rail, one route is the 2R of C–D followed by that \\(2R\\), giving \\(4R\\); the other is the 4R of branch C–H. In parallel again: \\(4R \\parallel 4R = 2R\\).\n\nSo the whole right-hand ladder is equivalent to a single \\(R_{CH} = 2R\\) between the B–C node and the bottom rail.\n\n**The reduced circuit.** A 10E cell drives current \\(I\\) through the 3R of A–B. At B the current divides: \\(I_1\\) down the branch containing 4R in series with the 6E cell, and \\(I - I_1\\) through the equivalent 2R.\n\n**Loop A–B–M–N–A:**\n\n\\(-3IR - 4I_1R + 16E = 0 \\qquad \\text{...(1)}\\)\n\n(the two cells aid each other round this loop, giving \\(10E + 6E\\)).\n\n**Loop B–C–H–M–B:**\n\n\\(-2R(I - I_1) - 6E + 4I_1R = 0 \\qquad \\text{...(2)}\\)\n\n**Solving.** Divide through by \\(R\\) and write \\(x = E/R\\). Equation (2) gives\n\n\\(-2I + 6I_1 = 6x \\qquad\\Longrightarrow\\qquad I = 3I_1 - 3x\\)\n\nSubstituting into (1), \\(3I + 4I_1 = 16x\\):\n\n\\(3(3I_1 - 3x) + 4I_1 = 16x\\)\n\n\\(13I_1 = 25x\\)\n\n\\(I_1 = \\dfrac{25E}{13R}\\)\n\n**The current in branch BM is \\(\\dfrac{25E}{13R} \\approx 1{\\cdot}92\\,\\dfrac{E}{R}\\).**\n\nA check by node potentials confirms it without using either loop. Take the bottom rail as zero, so \\(V_A = 10E\\) and the B–C node sits at some \\(V\\). The three currents meeting at B give\n\n\\(\\dfrac{10E - V}{3R} = \\dfrac{V + 6E}{4R} + \\dfrac{V}{2R}\\)\n\nwhich reduces to \\(22E = 13V\\), so \\(V = 22E/13\\), and then\n\n\\(I_1 = \\dfrac{V + 6E}{4R} = \\dfrac{22E/13 + 78E/13}{4R} = \\dfrac{25E}{13R}\\)\n\nas before."
+    },
+    {
+      "hash": "cac6f957bb506aaac923716d45a6dcc9d2e95a5db2c3acbd5d1dda458f2ff26c",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A circular loop of radius 10 cm carrying current of 1.0 A lies in \\(x\\)-\\(y\\) plane. A long straight wire lies in the same plane parallel to \\(x\\)-axis at a distance of 20 cm as shown in figure.\nFind the direction and value of current that has to be maintained in the wire so that the net magnetic field at O is zero.",
+      "figureNote": "REQUIRED — the question asks for a DIRECTION, and the sense of the loop's own current plus the side of the loop the wire lies on are drawn and never stated. Deliberately NOT described: the arrowhead giving the loop's current sense, since that alone fixes the answer's direction. What is drawn: a circle with its centre marked O, its radius marked 10 cm by a dashed segment from O, an arrow on the circumference labelled 1.0 A, a straight horizontal line drawn clear of the circle with the 20 cm separation from O marked by a vertical double-headed arrow, and a right-handed axis triad labelled x (right), y (up) and z (toward the lower-left). Page idx 14.",
+      "imageAttached": false,
+      "solution": "Two fields meet at O and must cancel, so their magnitudes are equated and their directions checked separately.\n\n**Field of the loop at its centre.**\n\n\\(B_1 = \\dfrac{\\mu_0 I_1}{2r} = \\dfrac{\\mu_0 \\times 1{\\cdot}0}{2 \\times 0{\\cdot}10} = 5\\mu_0\\ \\text{T}\\)\n\nIts direction is perpendicular to the plane of the loop. The loop lies in the \\(x\\)-\\(y\\) plane with its current running clockwise as drawn, so by the right-hand rule \\(B_1\\) points **into the page**, along \\(-\\hat{z}\\).\n\n**Field of the straight wire at O.**\n\nO lies a perpendicular distance \\(d = 0{\\cdot}20\\) m from the wire, so\n\n\\(B_2 = \\dfrac{\\mu_0 I_2}{2\\pi d} = \\dfrac{\\mu_0 I_2}{2\\pi \\times 0{\\cdot}20} = \\dfrac{\\mu_0 I_2}{0{\\cdot}4\\pi}\\)\n\n**Magnitude.** For the net field at O to vanish, the two must be equal and opposite:\n\n\\(5\\mu_0 = \\dfrac{\\mu_0 I_2}{0{\\cdot}4\\pi}\\)\n\n\\(I_2 = 5 \\times 0{\\cdot}4\\pi = 2\\pi \\approx 6{\\cdot}28\\ \\text{A}\\)\n\n**Direction.** The wire's field must point **out of the page** at O, along \\(+\\hat{z}\\), to cancel the loop's. O lies directly above the wire, so the unit vector from wire to O is \\(+\\hat{y}\\), and the wire's field direction goes as \\(\\hat{I} \\times \\hat{r}\\). Since \\(\\hat{x} \\times \\hat{y} = \\hat{z}\\), the current must flow along \\(+\\hat{x}\\).\n\n**A current of \\(2\\pi \\approx 6{\\cdot}28\\) A must be maintained along the \\(+x\\) direction.**\n\nNote that \\(\\mu_0\\) cancels completely, so the answer is a pure number fixed by the two geometries. The factor of \\(\\pi\\) is the signature of the difference between them: a full loop concentrates its field at the centre (\\(\\mu_0 I/2r\\)), while an infinite straight wire spreads its field around a circle (\\(\\mu_0 I/2\\pi d\\)). That \\(\\pi\\) is why the wire — despite being only twice as far away — needs over six times the current."
+    },
+    {
+      "hash": "a0c4f21ee4e708cd559072dedf502651deba7ee121763a5a1ae2b25f347cd8ad",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Name the electromagnetic waves with their wavelength range which are used for\n(i) FM radio broadcast\n(ii) detection of fracture in bones\n(iii) treatment of muscular strain",
+      "solution": "**(i) FM radio broadcast — radio waves.**\n\nWavelength range: greater than about \\(0{\\cdot}1\\) m. (FM broadcasting sits near 100 MHz, so \\(\\lambda \\approx 3\\) m.)\n\n**(ii) Detection of fracture in bones — X-rays.**\n\nWavelength range: about \\(1\\ \\mathrm{nm}\\) down to \\(10^{-3}\\ \\mathrm{nm}\\). X-rays pass readily through soft tissue but are strongly absorbed by the calcium in bone, so bone casts a shadow on the detector and a break shows as a discontinuity in it.\n\n**(iii) Treatment of muscular strain — infrared waves.**\n\nWavelength range: about \\(1\\ \\mathrm{mm}\\) down to \\(700\\ \\mathrm{nm}\\). Infrared is absorbed by water in the tissue and converted to heat, which is why it is used for deep heat therapy.\n\nThe three span the spectrum in reverse order of wavelength, and the application in each case follows from the photon energy. Radio photons are far too feeble to interact with matter chemically, which is what makes them safe to broadcast; infrared photons carry roughly the energy of molecular vibrations, so they heat; X-ray photons carry enough to ionise, which is both what makes them penetrating and why exposure is limited."
+    },
+    {
+      "hash": "21cca6062bd3b9303c9cbf63f5495516a2a06bbca1cadfe8f51de1113fdd154e",
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "(i) Define mutual inductance. Write its SI unit.\n(ii) Derive an expression for the mutual inductance of a system of two long coaxial solenoids of same length \\(l\\), having turns \\(N_1\\) and \\(N_2\\) and of radii \\(r_1\\) and \\(r_2\\ (> r_1)\\).",
+      "solution": "**(i) Mutual inductance.**\n\nThe mutual inductance of a pair of coils is the magnetic flux linked with one coil when unit current flows in the other:\n\n\\(M_{12} = \\dfrac{N_1\\phi_1}{I_2}\\)\n\nEquivalently, it is the magnitude of the emf induced in one coil when the current in the other changes at unit rate, since \\(\\varepsilon_1 = -M_{12}\\,dI_2/dt\\).\n\nIts SI unit is the **henry (H)**.\n\n**(ii) Two long coaxial solenoids.**\n\nLet the inner solenoid have \\(N_1\\) turns and radius \\(r_1\\), the outer one \\(N_2\\) turns and radius \\(r_2 > r_1\\), both of the same length \\(l\\).\n\nPass a current \\(I_2\\) through the **outer** solenoid. Inside a long solenoid the field is uniform and axial:\n\n\\(B_2 = \\dfrac{\\mu_0 N_2 I_2}{l}\\)\n\nThis field fills the whole interior, so it threads the inner solenoid over its full cross-sectional area \\(A_1 = \\pi r_1^{2}\\). The flux linkage with the inner coil, over all \\(N_1\\) of its turns, is\n\n\\(N_1\\phi_1 = N_1 B_2 A_1 = N_1\\left(\\dfrac{\\mu_0 N_2 I_2}{l}\\right)\\pi r_1^{2}\\)\n\n\\(N_1\\phi_1 = \\dfrac{\\mu_0 N_1 N_2 \\pi r_1^{2}\\,I_2}{l} \\qquad \\text{...(1)}\\)\n\nBy definition,\n\n\\(N_1\\phi_1 = M_{12}I_2 \\qquad \\text{...(2)}\\)\n\nComparing (1) and (2):\n\n\\(M_{12} = \\dfrac{\\mu_0 N_1 N_2 \\pi r_1^{2}}{l}\\)\n\nNotice that it is \\(r_1\\), the **inner** radius, that appears — the coupling is limited by the smaller coil, since flux outside it links nothing. Energising the outer solenoid is the easier direction to compute because its field is uniform where it matters; the reverse calculation is harder, because the inner solenoid's field is confined to \\(r < r_1\\) and does not fill the outer one. Both give the same answer, since \\(M_{12} = M_{21}\\)."
+    },
+    {
+      "hash": "7f9eb3a59336367dc1a625c5ccc7bd4e4e6f0fbfe136d02080b19f04e56e47a2",
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "What are ferromagnetic materials ? Explain ferromagnetism with the help of suitable diagrams, using the concept of magnetic domain.",
+      "solution": "**Ferromagnetic materials** are substances that become strongly magnetised when placed in an external magnetic field, and retain much of that magnetisation when the field is removed. They have large positive susceptibility, typically in the thousands. Iron, cobalt, nickel and gadolinium are the common examples.\n\n**Ferromagnetism through domains.**\n\nThe atoms of a ferromagnet each carry a permanent magnetic dipole moment, as in a paramagnet. What makes a ferromagnet different is a strong exchange interaction between neighbouring atoms, which forces their moments to align *with one another* over regions containing something like \\(10^{11}\\) atoms. Each such region — a **domain** — is spontaneously magnetised almost to saturation, even with no field applied.\n\n*Without an external field.* The domains exist, but their magnetisation directions are randomly oriented from one domain to the next, so their moments cancel across the specimen. The net magnetisation is essentially zero and the material appears unmagnetised, which is why an ordinary iron nail is not a magnet.\n\n*With an external field applied.* Two things happen. Domains already aligned favourably with the field **grow** at the expense of their neighbours, as the walls between them shift; and whole domains **rotate** towards the field direction. Both processes drive the moments into alignment, and the specimen develops a large magnetisation in the direction of the field.\n\nIf the field is strong enough, every domain ends up aligned and the magnetisation **saturates** — no further increase in field can raise it. On removing the field, the domain walls do not return exactly to where they started, so some alignment persists: this retained magnetisation is what makes a permanent magnet possible, and is the origin of hysteresis.\n\nHeating destroys the effect. Above the Curie temperature the thermal agitation overwhelms the exchange interaction, the domains break up, and the material becomes an ordinary paramagnet."
+    },
+    {
+      "hash": "d88028b11183ed866b4df62c4eb4a9417fad5c9f08919d7ef7df62ed35e20ada",
+      "ref": "Q29i",
+      "questionNumber": "29 (i)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "When Ge is doped with pentavalent impurity, the energy required to free the weakly bound electron from the dopant is about",
+      "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.001 eV"
+        },
+        {
+          "label": "B",
+          "text": "0.01 eV"
+        },
+        {
+          "label": "C",
+          "text": "0.72 eV"
+        },
+        {
+          "label": "D",
+          "text": "1.1 eV"
+        }
+      ],
+      "answer": "B",
+      "solution": "A pentavalent dopant in germanium uses four of its five valence electrons for covalent bonds; the fifth is bound only weakly to the donor site. Its binding energy is far smaller than the band gap, because the electron orbits in a medium of high permittivity and with a reduced effective mass.\n\nFor germanium this donor ionisation energy is about \\(0{\\cdot}01\\) eV, which is option (B).\n\nThe numbers in the list are chosen to be recognisable: \\(0{\\cdot}72\\) eV is the band gap of Ge and \\(1{\\cdot}1\\) eV that of Si, both some seventy to a hundred times larger. That contrast is the whole point of doping — at room temperature \\(k_BT \\approx 0{\\cdot}026\\) eV, comfortably above \\(0{\\cdot}01\\) eV, so essentially every donor is already ionised while intrinsic excitation across the full gap remains rare. (The corresponding figure for silicon is about \\(0{\\cdot}05\\) eV, larger because silicon has the lower permittivity of the two.)"
+    },
+    {
+      "hash": "176a721d7f0b7f4980c14522de622382740165006ec9f9bbd357e32dadc7b538",
+      "ref": "Q29ii",
+      "questionNumber": "29 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "At a given temperature, the number of intrinsic charge carriers in a semiconductor is \\(2.0 \\times 10^{10}\\ \\mathrm{cm^{-3}}\\). It is doped with pentavalent impurity atoms. As a result, the number of holes in it becomes \\(8 \\times 10^{3}\\ \\mathrm{cm^{-3}}\\). The number of electrons in the semiconductor is",
+      "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2 \\times 10^{24}\\ \\mathrm{m^{-3}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(4 \\times 10^{23}\\ \\mathrm{m^{-3}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1 \\times 10^{22}\\ \\mathrm{m^{-3}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(5 \\times 10^{22}\\ \\mathrm{m^{-3}}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "The mass-action law holds at equilibrium in any non-degenerate semiconductor, doped or not:\n\n\\(n_e n_h = n_i^{2}\\)\n\nWith \\(n_i = 2{\\cdot}0 \\times 10^{10}\\ \\mathrm{cm^{-3}}\\) and \\(n_h = 8 \\times 10^{3}\\ \\mathrm{cm^{-3}}\\):\n\n\\(n_e = \\dfrac{n_i^{2}}{n_h} = \\dfrac{(2{\\cdot}0 \\times 10^{10})^{2}}{8 \\times 10^{3}} = \\dfrac{4 \\times 10^{20}}{8 \\times 10^{3}} = 5 \\times 10^{16}\\ \\mathrm{cm^{-3}}\\)\n\nThe options are in \\(\\mathrm{m^{-3}}\\), and \\(1\\ \\mathrm{cm^{-3}} = 10^{6}\\ \\mathrm{m^{-3}}\\):\n\n\\(n_e = 5 \\times 10^{16} \\times 10^{6} = 5 \\times 10^{22}\\ \\mathrm{m^{-3}}\\)\n\nThe answer is (D).\n\nThe unit conversion is doing as much work here as the physics, and the cube is easy to lose: a centimetre is \\(10^{-2}\\) m, so a cubic centimetre is \\(10^{-6}\\) m³ and the number density multiplies by \\(10^{6}\\), not \\(10^{2}\\).\n\nThe numbers also tell the story of doping. A pentavalent impurity has pushed the electron concentration from \\(2 \\times 10^{10}\\) up to \\(5 \\times 10^{16}\\) per cm³ — a factor of \\(2{\\cdot}5\\) million — and by the same law driven the hole concentration down by exactly that factor, from \\(2 \\times 10^{10}\\) to \\(8 \\times 10^{3}\\). The product never moves."
+    },
+    {
+      "hash": "9f51229dbdc0391521b137f0e9fd3ecb709f898ac823cbaa09acbdbfccc40e97",
+      "ref": "Q29iiia",
+      "questionNumber": "29 (iii) (a)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "During the formation of a p-n junction -",
+      "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "electrons diffuse from p-region into n-region and holes diffuse from n-region into p-region."
+        },
+        {
+          "label": "B",
+          "text": "both electrons and holes diffuse from n-region into p-region."
+        },
+        {
+          "label": "C",
+          "text": "electrons diffuse from n-region into p-region and holes diffuse from p-region into n-region."
+        },
+        {
+          "label": "D",
+          "text": "both electrons and holes diffuse from p-region into n-region."
+        }
+      ],
+      "answer": "C",
+      "solution": "Each carrier diffuses down its own concentration gradient, away from where it is abundant.\n\nThe p-region is rich in **holes** and the n-region is rich in **electrons**. So when the junction forms:\n\n- electrons diffuse from the **n-region into the p-region**,\n- holes diffuse from the **p-region into the n-region**.\n\nThe answer is (C).\n\nThe consequence is the depletion layer. An electron leaving the n-side strands an immobile positive donor ion behind it; a hole leaving the p-side strands a negative acceptor ion. The region either side of the junction is left depleted of mobile carriers and populated by these fixed charges, which set up an internal field pointing from n to p. That field opposes further diffusion, and equilibrium is reached when it exactly balances the diffusion tendency — the barrier potential.\n\nThe trap is to think of the carriers as being attracted across. They are not: diffusion is driven purely by the concentration gradient, and the electric field that results actually *resists* it."
+    },
+    {
+      "hash": "2d0896643ec7554d749065c7fc15a59c37fb41b6dc2b321d8bcf0cf4ebf6b2be",
+      "ref": "Q29iiib",
+      "questionNumber": "29 (iii) (b)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "Initially during the formation of a p-n junction -",
+      "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "diffusion current is large and drift current is small."
+        },
+        {
+          "label": "B",
+          "text": "diffusion current is small and drift current is large."
+        },
+        {
+          "label": "C",
+          "text": "both the diffusion and the drift currents are large."
+        },
+        {
+          "label": "D",
+          "text": "both the diffusion and the drift currents are small."
+        }
+      ],
+      "answer": "A",
+      "solution": "Two currents flow across a junction, and they are driven by quite different things.\n\n**Diffusion current** is driven by the concentration gradient — majority carriers crossing into the region where they are scarce.\n\n**Drift current** is driven by the junction's internal electric field acting on **minority** carriers.\n\nAt the very start of junction formation, the concentration gradient is at its steepest: the n-side is full of electrons and the p-side full of holes, with nothing yet opposing their movement. So the diffusion current is **large**. Meanwhile the depletion layer has barely formed, so the internal field is still weak and the drift current is **small**.\n\nThe answer is (A).\n\nWhat happens next is the interesting part. Every diffusing carrier leaves an immobile ion behind, widening the depletion layer and strengthening the internal field. The diffusion current therefore falls while the drift current rises, and equilibrium arrives when the two become exactly equal and opposite. At that point the net current is zero — not because nothing is flowing, but because two substantial flows cancel."
+    },
+    {
+      "hash": "5284a26ba78021306c6ca95cf6d9b8619806f54243d1387677bb3de625189c98",
+      "ref": "Q29iv",
+      "questionNumber": "29 (iv)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Application of Junction Diode as a Rectifier",
+      "stem": "An ac voltage \\(V = 0.5 \\sin(100\\pi t)\\) volt is applied, in turn, across a half-wave rectifier and a full-wave rectifier. The frequency of the output voltage across them respectively will be",
+      "context": "A pure semiconductor like Ge or Si, when doped with a small amount of suitable impurity, becomes an extrinsic semiconductor. In thermal equilibrium, the electron and hole concentration in it are related to the concentration of intrinsic charge carriers. A p-type or n-type semiconductor can be converted into a p-n junction by doping it with suitable impurity. Two processes, diffusion and drift take place during formation of a p-n junction. A semiconductor diode is basically a p-n junction with metallic contacts provided at the ends for the application of an external voltage. A p-n junction diode allows currents to pass only in one direction when it is forward biased. Due to this property, a diode is widely used to rectify alternating voltages, in half-wave or full wave configuration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "25 Hz, 50 Hz"
+        },
+        {
+          "label": "B",
+          "text": "25 Hz, 100 Hz"
+        },
+        {
+          "label": "C",
+          "text": "50 Hz, 50 Hz"
+        },
+        {
+          "label": "D",
+          "text": "50 Hz, 100 Hz"
+        }
+      ],
+      "answer": "D",
+      "solution": "First the input frequency:\n\n\\(V = 0{\\cdot}5\\sin(100\\pi t) \\qquad\\Longrightarrow\\qquad \\omega = 100\\pi\\ \\mathrm{rad/s}\\)\n\n\\(f = \\dfrac{\\omega}{2\\pi} = \\dfrac{100\\pi}{2\\pi} = 50\\ \\text{Hz}\\)\n\n**Half-wave rectifier.** A single diode conducts on one half of each input cycle and blocks the other. One pulse of output appears per input cycle, so the output repeats at the input frequency:\n\n\\(f_{\\text{half}} = 50\\ \\text{Hz}\\)\n\n**Full-wave rectifier.** Both halves of the input cycle are made to drive current through the load in the same direction, so *two* pulses appear per input cycle and the output repeats twice as often:\n\n\\(f_{\\text{full}} = 100\\ \\text{Hz}\\)\n\nSo 50 Hz and 100 Hz respectively, option (D).\n\nThe doubling is why full-wave rectification is preferred in practice: the output not only carries twice the average power but has its ripple at twice the frequency, which a given smoothing capacitor filters far more effectively. The amplitude \\(0{\\cdot}5\\) V is not used at all — the question asks only about frequency."
+    },
+    {
+      "hash": "31363f6d311f26a1af6320726e43abe8922cfb7ef99e25c7d57391aed2e077aa",
+      "ref": "Q30i",
+      "questionNumber": "30 (i)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A thin converging lens of focal length 20 cm and a thin diverging lens of focal length 15 cm are placed coaxially in contact. The power of the combination is",
+      "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{-5}{6}\\mathrm{D}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{-5}{3}\\mathrm{D}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{4}{3}\\mathrm{D}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{3}{2}\\mathrm{D}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "For thin lenses in contact the powers add. With focal lengths in metres:\n\nConverging lens: \\(f_1 = +20\\ \\text{cm} = +0{\\cdot}20\\ \\text{m}\\), so \\(P_1 = \\dfrac{1}{0{\\cdot}20} = +5\\ \\mathrm{D}\\)\n\nDiverging lens: \\(f_2 = -15\\ \\text{cm} = -0{\\cdot}15\\ \\text{m}\\), so \\(P_2 = \\dfrac{1}{-0{\\cdot}15} = -\\dfrac{20}{3}\\ \\mathrm{D}\\)\n\n\\(P = P_1 + P_2 = 5 - \\dfrac{20}{3} = \\dfrac{15 - 20}{3} = -\\dfrac{5}{3}\\ \\mathrm{D}\\)\n\nThe answer is (B).\n\nTwo details decide it. The diverging lens must carry a **negative** focal length, and the focal lengths must be in **metres** before inverting — leaving them in centimetres would give a power a hundred times too large. The result being negative means the shorter-focus diverging lens wins: the combination behaves as a diverging lens of focal length \\(-0{\\cdot}6\\) m."
+    },
+    {
+      "hash": "4abb0804b40a03c45a021ea93f8ac5b90f96d68ae656ed5c8f91923e1d510244",
+      "ref": "Q30ii",
+      "questionNumber": "30 (ii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The radii of curvature of two surfaces of a convex lens are R and 2R. If the focal length of this lens is \\(\\left(\\dfrac{4}{3}\\right)\\mathrm{R}\\), the refractive index of the material of the lens is :",
+      "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{5}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{4}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{3}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{7}{5}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Apply the lens-maker's formula to a convex lens whose two surfaces have radii \\(R\\) and \\(2R\\). For a biconvex lens the first surface is convex towards the incoming light and the second concave towards it, so in the Cartesian convention \\(R_1 = +R\\) and \\(R_2 = -2R\\):\n\n\\(\\dfrac{1}{f} = (n - 1)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right) = (n - 1)\\left(\\dfrac{1}{R} + \\dfrac{1}{2R}\\right) = (n - 1)\\dfrac{3}{2R}\\)\n\nGiven \\(f = \\dfrac{4R}{3}\\):\n\n\\(\\dfrac{3}{4R} = (n - 1)\\dfrac{3}{2R}\\)\n\n\\(n - 1 = \\dfrac{3}{4R} \\times \\dfrac{2R}{3} = \\dfrac{1}{2}\\)\n\n\\(n = \\dfrac{3}{2}\\)\n\nThe answer is (C).\n\nThe sign convention on \\(R_2\\) is what the question is testing. Taking both radii as positive would give \\(\\frac{1}{f} = (n-1)\\frac{1}{2R}\\) and hence \\(n = 1 + \\frac{3}{2} = 2{\\cdot}5\\), which is not offered — and would be an implausibly high index for lens glass. The answer \\(1{\\cdot}5\\) is exactly the value of ordinary crown glass, a useful check that the convention was applied correctly."
+    },
+    {
+      "hash": "c41c4ad06b5552432c0a3bca00c885c992d74e02b4bc39bf6ac0d3113c6d25ee",
+      "ref": "Q30iii",
+      "questionNumber": "30 (iii)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The focal length of an equiconvex lens",
+      "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "increases when the lens is dipped in water."
+        },
+        {
+          "label": "B",
+          "text": "increases when the wavelength of incident light decreases."
+        },
+        {
+          "label": "C",
+          "text": "increases with decrease in radius of curvature of its surface."
+        },
+        {
+          "label": "D",
+          "text": "decreases when the lens is cut into two identical parts along its principal axis."
+        }
+      ],
+      "answer": "A",
+      "solution": "The lens-maker's formula written for a lens in a medium makes the dependence explicit:\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{n_{\\text{lens}}}{n_{\\text{medium}}} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nDipping the lens in water raises \\(n_{\\text{medium}}\\) from 1 to about \\(1{\\cdot}33\\), so the bracket \\(\\left(\\frac{n_{\\text{lens}}}{n_{\\text{medium}}} - 1\\right)\\) shrinks. With everything else unchanged, \\(1/f\\) falls and **\\(f\\) increases**.\n\nThe answer is (A).\n\nFor glass of \\(n = 1{\\cdot}5\\) the bracket drops from \\(0{\\cdot}5\\) to \\(\\frac{1{\\cdot}5}{1{\\cdot}33} - 1 \\approx 0{\\cdot}13\\), so the focal length grows nearly fourfold — the lens becomes much weaker, because refraction depends on the *contrast* in refractive index and water has reduced it.\n\nThe others fail on inspection. **(B)**: shorter wavelength means higher \\(n\\), hence shorter \\(f\\) — this is dispersion, and it is why violet focuses nearer than red. **(C)**: \\(f\\) is proportional to \\(R\\), so a smaller radius of curvature means a *shorter* focal length. **(D)**: cutting a lens along its principal axis halves the aperture but leaves both surface curvatures untouched, so \\(f\\) does not change at all — only the brightness of the image does."
+    },
+    {
+      "hash": "d017e1eccc892c9d7b46e5fa6d301294acf55ea66607e53e1ce43761788f361c",
+      "ref": "Q30iva",
+      "questionNumber": "30 (iv) (a)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A thin convex lens L of focal length 10 cm and a concave mirror M of focal length 15 cm are placed coaxially 40 cm apart as shown in figure. A beam of light coming parallel to the principal axis is incident on the lens. The final image will be formed at a distance of",
+      "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 cm, left of lens"
+        },
+        {
+          "label": "B",
+          "text": "10 cm, right of lens"
+        },
+        {
+          "label": "C",
+          "text": "20 cm, left of lens"
+        },
+        {
+          "label": "D",
+          "text": "20 cm, right of lens"
+        }
+      ],
+      "answer": "B",
+      "figureNote": "REQUIRED — every option is expressed as 'left of lens' or 'right of lens', and which way is left is fixed only by the drawn direction of the incoming beam. Described here without stating the result: a horizontal dashed principal axis; a biconvex lens labelled L drawn on the left with four horizontal ray arrows approaching it; a concave mirror labelled M drawn on the right with its reflecting side facing the lens; and the lens-to-mirror separation marked 40 cm by a double-headed arrow. Page idx 20.",
+      "imageAttached": true,
+      "solution": "Follow the light one element at a time.\n\n**Through the lens.** The incident beam is parallel to the principal axis, so the lens brings it to a focus at its own focal point, 10 cm to its right.\n\n**On to the mirror.** That focus is not where the mirror is — the mirror stands 40 cm from the lens — so the light converges at 10 cm, crosses over, and diverges onwards, reaching the mirror as if from a real object \\(40 - 10 = 30\\) cm in front of it.\n\n**At the mirror.** For the concave mirror, \\(u = -30\\) cm and \\(f = -15\\) cm:\n\n\\(\\dfrac{1}{v} + \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{-15} - \\dfrac{1}{-30} = \\dfrac{-2 + 1}{30} = -\\dfrac{1}{30}\\)\n\n\\(v = -30\\ \\text{cm}\\)\n\nThe image forms 30 cm in front of the mirror, on the same side as the object — which places it \\(40 - 30 = 10\\) cm from the lens, on the lens's right.\n\n**10 cm to the right of the lens**, which is option (B).\n\nThe object sat at \\(2f\\) of the mirror, so its image returns to \\(2f\\) as well — real, inverted and the same size. That is the one object distance for a concave mirror at which object and image coincide in position.\n\nOne further remark, since the light does not simply stop there: those converging rays pass through the image point and then travel on to the lens, arriving 10 cm away — exactly the lens's focal length. Light diverging from a focal point emerges parallel, so the beam finally leaves the system collimated, with no further image at any finite distance. The keyed 10 cm is the image formed by the mirror, which is the last one anywhere in the system."
+    },
+    {
+      "hash": "a9c4e4679fa476cde3dcfabda73ceae6561004533a5279c69a032c1d308635ca",
+      "ref": "Q30ivb",
+      "questionNumber": "30 (iv) (b)",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A beam of light coming parallel to the principal axis of a convex lens \\(L_1\\) of focal length 16 cm is incident on it. Another convex lens \\(L_2\\) of focal length 12 cm is placed coaxially at a distance 40 cm from \\(L_1\\). The nature and distance of the final image from \\(L_2\\) will be",
+      "context": "A lens is a transparent optical medium bounded by two surfaces; at least one of which should be spherical. Applying the formula of image formation by a single spherical surface successively at the two surfaces of a thin lens, a formula known as lens maker's formula and hence the basic lens formula can be obtained. The focal length (or power) of a lens depends on the radii of its surfaces and the refractive index of its material with respect to the surrounding medium. The refractive index of a material depends on the wavelength of light used. Combination of lenses helps us to obtain diverging or converging lenses of desired power and magnification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "real, 24 cm"
+        },
+        {
+          "label": "B",
+          "text": "virtual, 12 cm"
+        },
+        {
+          "label": "C",
+          "text": "real, 32 cm"
+        },
+        {
+          "label": "D",
+          "text": "virtual, 18 cm"
+        }
+      ],
+      "answer": "A",
+      "solution": "Two lenses in succession, with the first one's image acting as the second one's object.\n\n**At \\(L_1\\).** The incoming beam is parallel to the axis, so \\(L_1\\) focuses it at its focal point, \\(16\\) cm to its right.\n\n**At \\(L_2\\).** The lenses are 40 cm apart, so that point lies\n\n\\(40 - 16 = 24\\ \\text{cm}\\)\n\nto the left of \\(L_2\\) — a real object for it. With \\(u = -24\\) cm and \\(f = +12\\) cm:\n\n\\(\\dfrac{1}{v} - \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{v} = \\dfrac{1}{12} + \\dfrac{1}{-24} = \\dfrac{2 - 1}{24} = \\dfrac{1}{24}\\)\n\n\\(v = +24\\ \\text{cm}\\)\n\nA positive \\(v\\) means the image lies on the far side of \\(L_2\\), where the light actually goes — so it is **real, 24 cm from \\(L_2\\)**, option (A).\n\nThe object happened to sit at \\(2f\\) of \\(L_2\\) (\\(24 = 2 \\times 12\\)), which is why the image comes back at \\(2f\\) as well, inverted and the same size as the intermediate image. Had the two lenses been 28 cm apart instead, the intermediate image would have landed exactly at the focus of \\(L_2\\) and the final beam would have emerged parallel — the telescope configuration."
+    },
+    {
+      "hash": "39aa75321d0816550d8b0b733b162c8660d00bdb17f784009374f2180fdff056",
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(i) Draw a ray diagram for the formation of the image of an object by a convex mirror. Hence, obtain the mirror equation.\n(ii) Why are multi-component lenses used for both the objective and the eyepiece in optical instruments ?\n(iii) The magnification of a small object produced by a compound microscope is 200. The focal length of the eyepiece is 2 cm and the final image is formed at infinity. Find the magnification produced by the objective.",
+      "solution": "**(i) Ray diagram and the mirror equation for a convex mirror.**\n\n*The diagram.* Place an object AB upright on the principal axis in front of a convex mirror of pole P, focus F and centre of curvature C, both F and C lying **behind** the mirror. Two rays fix the image:\n\n- a ray from A parallel to the axis, which strikes the mirror at M and is reflected so that it appears to come from F;\n- a ray from A directed towards C, which strikes the mirror normally and is reflected straight back along its own path.\n\nThe two reflected rays diverge, so they do not meet in front of the mirror; their backward extensions meet behind it at \\(A'\\). Dropping a perpendicular to the axis gives the image \\(A'B'\\) — **virtual, erect and diminished**, and lying between P and F whatever the object distance.\n\n*Deriving the equation.* For paraxial rays, MP may be treated as a straight line perpendicular to the axis, so \\(PM = AB\\).\n\nRight-angled triangles \\(A'B'F\\) and MPF are similar:\n\n\\(\\dfrac{B'A'}{PM} = \\dfrac{B'F}{FP} \\qquad\\text{that is}\\qquad \\dfrac{B'A'}{BA} = \\dfrac{B'F}{FP} \\qquad \\text{...(1)}\\)\n\nSince \\(\\angle APB = \\angle A'PB'\\) (the laws of reflection at the pole), triangles \\(A'PB'\\) and APB are also similar:\n\n\\(\\dfrac{B'A'}{BA} = \\dfrac{B'P}{BP} \\qquad \\text{...(2)}\\)\n\nComparing (1) and (2):\n\n\\(\\dfrac{B'F}{FP} = \\dfrac{B'P}{BP} \\qquad\\text{and}\\qquad B'F = PF - PB'\\)\n\nso\n\n\\(\\dfrac{PF - PB'}{FP} = \\dfrac{B'P}{BP}\\)\n\nApplying the sign convention — \\(PF = f\\), \\(PB' = +v\\), \\(PB = -u\\) — and simplifying gives\n\n\\(\\dfrac{1}{v} + \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\nthe mirror equation, which holds for concave and convex mirrors alike once signs are respected.\n\n**(ii) Why multi-component lenses are used.**\n\nA single lens suffers from several **aberrations**: chromatic aberration, because the refractive index varies with wavelength so different colours focus at different points; and monochromatic aberrations such as spherical aberration, coma, astigmatism and distortion. Combining several lenses of different glasses and curvatures lets these defects be made to cancel — an achromatic doublet, for instance, pairs a crown converging lens with a flint diverging one so their chromatic errors oppose. The result is a sharper, brighter, colour-faithful image than any single lens can give.\n\n**(iii) Magnification produced by the objective.**\n\nFor a compound microscope the total magnification is the product of the two stages:\n\n\\(m = m_o \\times m_e\\)\n\nWith the final image at infinity, the eyepiece works as a simple magnifier in normal adjustment:\n\n\\(m_e = \\dfrac{D}{f_e} = \\dfrac{25}{2} = 12{\\cdot}5\\)\n\nHence\n\n\\(m_o = \\dfrac{m}{m_e} = \\dfrac{200}{12{\\cdot}5} = 16\\)\n\n**The objective produces a magnification of 16.**"
+    },
+    {
+      "hash": "46239c77c13a9690a77f38f897fb99e159047ed42c852411a5af296fc81991f3",
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Huygens Principle",
+      "stem": "(i) Differentiate between a wavefront and a ray.\n(ii) State Huygen's principle and verify laws of reflection using suitable diagram.\n(iii) In Young's double slit experiment, the slits \\(S_1\\) and \\(S_2\\) are 3 mm apart and the screen is placed 1.0 m away from the slits. It is observed that the fourth bright fringe is at a distance of 5 mm from the second dark fringe. Find the wavelength of light used.",
+      "solution": "**(i) Wavefront and ray.**\n\nA **wavefront** is a surface on which every point oscillates in the same phase — the locus of points the disturbance has reached at the same instant. A **ray** is the straight line along which the light energy travels; it is everywhere **normal** to the wavefront.\n\nThe distinction is one of dimension and of what each describes: a wavefront is a surface and carries information about phase, while a ray is a line and carries information about direction. A point source emits spherical wavefronts with radially outward rays; far from the source those wavefronts flatten into planes and the rays become parallel.\n\n**(ii) Huygens' principle and the law of reflection.**\n\n*The principle.* Every point on a wavefront acts as a source of secondary disturbance, and the secondary wavelets spread out in all directions with the speed of the wave. The new position of the wavefront after a time \\(t\\) is the common tangent — the envelope — to all these secondary wavelets.\n\n*Verifying the law of reflection.* Let a plane wavefront AB travel towards a reflecting surface MN, meeting it first at A while B has still to travel the distance BC to reach the surface at C. Let \\(v\\) be the speed of the wave and \\(t\\) the time BC takes, so\n\n\\(BC = vt\\)\n\nWhile B covers BC, the secondary wavelet from A has expanded into a hemisphere of the same radius:\n\n\\(AE = vt\\)\n\nThe reflected wavefront is the tangent from C to this sphere, namely EC.\n\nNow compare triangles EAC and BAC:\n\n- \\(AE = BC = vt\\),\n- \\(\\angle AEC = \\angle ABC = 90^\\circ\\) (a wavefront is perpendicular to its ray),\n- AC is common.\n\nThe two right-angled triangles are therefore **congruent**, so\n\n\\(\\angle BAC = \\angle ECA\\)\n\nThese are precisely the angle of incidence \\(i\\) and the angle of reflection \\(r\\), measured between the wavefronts and the surface — equivalently between the rays and the normal. Hence\n\n\\(\\angle i = \\angle r\\)\n\nand the incident ray, the reflected ray and the normal all lie in one plane, which is the plane of the diagram.\n\n**(iii) Wavelength from the fringe positions.**\n\nThe \\(n^{\\text{th}}\\) bright fringe sits at \\(x_n = \\dfrac{n D \\lambda}{d}\\), and the \\(n^{\\text{th}}\\) dark fringe at \\(x_n = \\left(n - \\dfrac{1}{2}\\right)\\dfrac{D\\lambda}{d}\\).\n\nSo\n\n\\(x_{4\\,\\text{bright}} = \\dfrac{4D\\lambda}{d}, \\qquad x_{2\\,\\text{dark}} = \\dfrac{3}{2}\\dfrac{D\\lambda}{d}\\)\n\nTheir separation is given as 5 mm:\n\n\\(\\dfrac{4D\\lambda}{d} - \\dfrac{3}{2}\\dfrac{D\\lambda}{d} = 5 \\times 10^{-3}\\)\n\n\\(\\dfrac{5}{2}\\dfrac{D\\lambda}{d} = 5 \\times 10^{-3}\\)\n\nWith \\(D = 1{\\cdot}0\\) m and \\(d = 3\\ \\mathrm{mm} = 3 \\times 10^{-3}\\) m:\n\n\\(\\lambda = \\dfrac{5 \\times 10^{-3} \\times 3 \\times 10^{-3} \\times 2}{5 \\times 1{\\cdot}0} = 6 \\times 10^{-6}\\ \\text{m}\\)\n\n**\\(\\lambda = 6 \\times 10^{-6}\\) m**, which is \\(6\\ \\mu\\)m.\n\nWorth noticing what that number is: \\(6\\ \\mu\\)m lies well into the infrared, not the visible range of \\(400\\)–\\(700\\) nm. The arithmetic follows the data faithfully, but the data as printed do not describe visible light — with slits 3 mm apart and a screen 1 m away, a visible wavelength would put the two fringes about \\(0{\\cdot}5\\) mm apart rather than 5 mm."
+    },
+    {
+      "hash": "3437403f5f852f45687ccc26c73c48fe475cf21ed661771892e4afe39c67f0ad",
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "stem": "(i) A dielectric slab of dielectric constant 'K' and thickness 't' is inserted between plates of a parallel plate capacitor of plate separation d and plate area A. Obtain an expression for its capacitance.\n(ii) Two capacitors of different capacitances are connected first (1) in series and then (2) in parallel across a dc source of 100 V. If the total energy stored in the combination in the two cases are 40 mJ and 250 mJ respectively, find the capacitance of the capacitors.",
+      "solution": "**(i) Capacitance with a partially filling dielectric slab.**\n\nThe slab of thickness \\(t\\) does not fill the gap \\(d\\), so the field between the plates has two different values along the path from one plate to the other.\n\nIn the air gaps, of total thickness \\((d - t)\\):\n\n\\(E_0 = \\dfrac{\\sigma}{\\varepsilon_0}\\)\n\nInside the dielectric, the polarisation reduces the field by the factor \\(K\\):\n\n\\(E = \\dfrac{\\sigma}{\\varepsilon_0 K}\\)\n\nThe potential difference is the sum of the drops across the two regions:\n\n\\(V = E_0(d - t) + E\\,t = \\dfrac{\\sigma}{\\varepsilon_0}(d - t) + \\dfrac{\\sigma}{\\varepsilon_0 K}\\,t\\)\n\n\\(V = \\dfrac{\\sigma}{\\varepsilon_0}\\left[d - t + \\dfrac{t}{K}\\right] = \\dfrac{q}{A\\varepsilon_0}\\left[d - t + \\dfrac{t}{K}\\right]\\)\n\nHence\n\n\\(C = \\dfrac{q}{V} = \\dfrac{A\\varepsilon_0}{d - t + \\dfrac{t}{K}} = \\dfrac{A\\varepsilon_0}{d - t\\left(1 - \\dfrac{1}{K}\\right)}\\)\n\nThe formula passes both limits: with \\(t = 0\\) it gives \\(A\\varepsilon_0/d\\), and with \\(t = d\\) it gives \\(KA\\varepsilon_0/d\\). Note also that the slab's *position* in the gap never enters — only its thickness — so sliding it about changes nothing.\n\n**(ii) Finding the two capacitances.**\n\nWith \\(V = 100\\) V, so \\(V^{2} = 10^{4}\\ \\mathrm{V^{2}}\\):\n\n*Series:* the equivalent capacitance is \\(\\dfrac{C_1C_2}{C_1 + C_2}\\), and\n\n\\(\\dfrac{1}{2}\\left(\\dfrac{C_1C_2}{C_1 + C_2}\\right)(10^{4}) = 40 \\times 10^{-3}\\)\n\n\\(\\dfrac{C_1C_2}{C_1 + C_2} = 8 \\times 10^{-6}\\ \\mathrm{F} = 8\\ \\mu\\mathrm{F}\\)\n\n*Parallel:*\n\n\\(\\dfrac{1}{2}(C_1 + C_2)(10^{4}) = 250 \\times 10^{-3}\\)\n\n\\(C_1 + C_2 = 5 \\times 10^{-5}\\ \\mathrm{F} = 50\\ \\mu\\mathrm{F}\\)\n\nCombining the two results gives the product:\n\n\\(C_1C_2 = 8 \\times 10^{-6} \\times 5 \\times 10^{-5} = 4 \\times 10^{-10}\\)\n\nSo \\(C_1\\) and \\(C_2\\) are the roots of\n\n\\(x^{2} - (5 \\times 10^{-5})x + 4 \\times 10^{-10} = 0\\)\n\n\\(x = \\dfrac{5 \\times 10^{-5} \\pm \\sqrt{25 \\times 10^{-10} - 16 \\times 10^{-10}}}{2} = \\dfrac{(5 \\pm 3) \\times 10^{-5}}{2}\\)\n\n\\(C_1 = 4 \\times 10^{-5}\\ \\mathrm{F} = 40\\ \\mu\\mathrm{F}, \\qquad C_2 = 1 \\times 10^{-5}\\ \\mathrm{F} = 10\\ \\mu\\mathrm{F}\\)\n\nThe two energies differ by a factor of \\(6{\\cdot}25\\), and that ratio is what pins the capacitances: parallel always stores more, since the same voltage sits across a larger total capacitance."
+    },
+    {
+      "hash": "813ac2dd1e117349fc05fc54a4acf91fe572eb26f546aa0060becc66f9346cd4",
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "(i) Using Gauss's law, show that the electric field \\(\\vec{E}\\) at a point due to a uniformly charged infinite plane sheet is given by \\(\\vec{E} = \\dfrac{\\sigma}{2\\varepsilon_0}\\hat{n}\\) where symbols have their usual meanings.\n(ii) Electric field \\(\\vec{E}\\) in a region is given by\n\\(\\vec{E} = (5x^2 + 2)\\hat{i}\\)\nwhere E is in N/C and \\(x\\) is in meters.\nA cube of side 10 cm is placed in the region as shown in figure.\nCalculate (1) the electric flux through the cube, and (2) the net charge enclosed by the cube.",
+      "figureNote": "REQUIRED for sub-part (ii) — the flux depends on WHERE along the x-axis the cube sits and how its faces are oriented, and the stem says only 'as shown in figure'. What is drawn: a right-handed axis triad with y up, x to the right and z toward the lower-left; a cube drawn in oblique projection with one vertex at the marked origin 0 and its edges parallel to the three axes; and, to the right of the cube, an arrow labelled \\(\\vec{E}\\) with a second arrow labelled \\(\\hat{i}\\) beneath it, both pointing along \\(+x\\). Page idx 22.",
+      "imageAttached": true,
+      "solution": "**(i) Field of a uniformly charged infinite plane sheet.**\n\nLet the sheet carry surface charge density \\(\\sigma\\). By symmetry the field must be perpendicular to the sheet, directed away from it on both sides (for positive \\(\\sigma\\)), and its magnitude can depend only on the distance from the sheet.\n\nChoose as the Gaussian surface a cylinder — a \"pillbox\" — of cross-sectional area \\(A\\), placed with its axis normal to the sheet and its two flat faces equidistant on either side.\n\n*Flux.* Over the curved side \\(\\vec{E}\\) is parallel to the surface, so \\(\\vec{E}\\cdot d\\vec{S} = 0\\) there and it contributes nothing. Over each flat face \\(\\vec{E}\\) is parallel to the outward normal and uniform, so each contributes \\(EA\\):\n\n\\(\\oint \\vec{E}\\cdot d\\vec{S} = \\int_1 \\vec{E}\\cdot d\\vec{S} + \\int_2 \\vec{E}\\cdot d\\vec{S} = EA + EA = 2EA\\)\n\n*Charge enclosed.* The pillbox cuts out an area \\(A\\) of the sheet, so \\(q = \\sigma A\\).\n\n*Gauss's law.*\n\n\\(2EA = \\dfrac{\\sigma A}{\\varepsilon_0} \\qquad\\Longrightarrow\\qquad E = \\dfrac{\\sigma}{2\\varepsilon_0}\\)\n\nVectorially, with \\(\\hat{n}\\) the unit normal pointing away from the sheet:\n\n\\(\\vec{E} = \\dfrac{\\sigma}{2\\varepsilon_0}\\hat{n}\\)\n\nThe factor of 2 in the denominator is the flux being shared between two faces, and the striking feature is that \\(E\\) is **independent of distance** — an infinite sheet produces a uniform field, because moving further away gains you a proportionately larger area of contributing charge.\n\n**(ii) Flux through the cube, and the charge inside.**\n\nThe field \\(\\vec{E} = (5x^{2} + 2)\\hat{i}\\) points along \\(x\\) everywhere, so only the two faces perpendicular to \\(x\\) carry any flux — on the other four, \\(\\vec{E}\\) lies in the plane of the face. From the figure the cube has one corner at the origin with edges along the axes, so those two faces sit at \\(x = 0\\) and \\(x = 0{\\cdot}10\\) m, each of area\n\n\\(A = (0{\\cdot}10)^{2} = 1 \\times 10^{-2}\\ \\mathrm{m^{2}}\\)\n\n*Left face, \\(x = 0\\).* Here \\(E = 5(0)^{2} + 2 = 2\\) N/C, and the outward normal points along \\(-\\hat{i}\\), so the flux is negative:\n\n\\(\\phi_L = -2 \\times 10^{-2}\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\n\n*Right face, \\(x = 0{\\cdot}10\\) m.* Here \\(E = 5(0{\\cdot}10)^{2} + 2 = 0{\\cdot}05 + 2 = 2{\\cdot}05\\) N/C, with the outward normal along \\(+\\hat{i}\\):\n\n\\(\\phi_R = +2{\\cdot}05 \\times 10^{-2}\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\n\n**(1) Net flux:**\n\n\\(\\phi = \\phi_L + \\phi_R = (2{\\cdot}05 - 2) \\times 10^{-2} = 5 \\times 10^{-4}\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\n\n**(2) Charge enclosed,** from Gauss's law:\n\n\\(q = \\varepsilon_0\\,\\phi = 8{\\cdot}85 \\times 10^{-12} \\times 5 \\times 10^{-4} = 4{\\cdot}43 \\times 10^{-15}\\ \\mathrm{C}\\)\n\nThe whole answer rests on a small difference between two much larger numbers, and that is the physics rather than an accident: a *uniform* field would give exactly equal and opposite contributions and enclose no charge. It is the fact that \\(E\\) varies with \\(x\\) — that the field is stronger where it leaves than where it enters — that requires charge inside."
+    },
+    {
+      "hash": "95f2fd03a663e8e41c7b8bbbb103bcd7b74a8b6600c63d69c1a29fbaf38e838e",
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "(i) Mention the factors on which the resonant frequency of a series LCR circuit depends. Plot a graph showing variation of impedance of a series LCR circuit with the frequency of the applied a.c. source.\n(ii) With the help of a suitable diagram, explain the working of a step-up transformer.\n(iii) Write two causes of energy loss in a real transformer.",
+      "solution": "**(i) Resonant frequency and the impedance curve.**\n\nAt resonance in a series LCR circuit the inductive and capacitive reactances cancel, \\(X_L = X_C\\), giving\n\n\\(\\omega_0 L = \\dfrac{1}{\\omega_0 C} \\qquad\\Longrightarrow\\qquad \\nu_0 = \\dfrac{1}{2\\pi\\sqrt{LC}}\\)\n\nSo the resonant frequency depends on the **inductance L** and the **capacitance C** alone. It does **not** depend on the resistance — R governs how sharp the resonance is, never where it sits.\n\n*The graph.* Plotting impedance \\(Z = \\sqrt{R^{2} + (X_L - X_C)^{2}}\\) against frequency gives a U-shaped curve. At low frequency \\(X_C\\) is huge and \\(Z\\) is large; as the frequency rises \\(Z\\) falls, reaching a **minimum of exactly \\(R\\)** at \\(\\nu = \\nu_0\\); beyond resonance \\(X_L\\) dominates and \\(Z\\) climbs again. The curve never touches the frequency axis, since \\(Z\\) cannot fall below \\(R\\).\n\n**(ii) Working of a step-up transformer.**\n\n*Construction.* Two coils — a primary of \\(N_p\\) turns and a secondary of \\(N_s\\) turns — are wound on a common laminated soft-iron core. In a step-up transformer \\(N_s > N_p\\).\n\n*Working.* An alternating voltage applied across the primary drives an alternating current, which sets up an alternating magnetic flux in the core. The soft iron confines that flux and carries it almost entirely to the secondary, so the same flux \\(\\phi\\) links every turn of both coils. By Faraday's law each turn has the same emf \\(-d\\phi/dt\\) induced in it, so the total emf in each coil is proportional to its number of turns:\n\n\\(\\varepsilon_p = -N_p\\dfrac{d\\phi}{dt}, \\qquad \\varepsilon_s = -N_s\\dfrac{d\\phi}{dt} \\qquad\\Longrightarrow\\qquad \\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p}\\)\n\nSince \\(N_s > N_p\\), the secondary voltage exceeds the primary voltage — the voltage is stepped up.\n\nEnergy is not created. For an ideal transformer \\(V_pI_p = V_sI_s\\), so the current is stepped **down** in exactly the same ratio. A transformer works only on alternating current: a steady current produces a constant flux, and a constant flux induces nothing.\n\n**(iii) Two causes of energy loss in a real transformer.**\n\n*Eddy currents.* The changing flux induces circulating currents in the iron core itself, which dissipate energy as heat. Laminating the core reduces but does not eliminate them.\n\n*Hysteresis.* Taking the core around its magnetisation loop each cycle costs energy proportional to the loop's area, again lost as heat. Using soft iron, with a narrow loop, keeps this small.\n\n(Copper loss in the winding resistances, and flux leakage where not all the primary's flux reaches the secondary, are the other two standard causes.)"
+    },
+    {
+      "hash": "d886f072aacfbcd1861bef01a8b3543ab89699cbda7205ddce5faa3143b43dc1",
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "AC Generator",
+      "stem": "(i) With the help of a diagram, briefly explain the construction and working of ac generator.\n(ii) An electron is revolving around a proton in an orbit of radius r with a speed v. Obtain expression for magnetic moment associated with the electron.",
+      "solution": "**(i) The ac generator.**\n\n*Construction.* An ac generator consists of a rectangular coil — the armature, of many turns — mounted on a rotor shaft and free to rotate in a uniform magnetic field supplied by permanent magnets or an electromagnet. The two ends of the coil are connected to two separate **slip rings**, against which carbon brushes press to carry the output to the external circuit.\n\nThe slip rings are the defining component: because each end of the coil stays permanently connected to its own ring, the output reverses along with the emf, and the current delivered is alternating. (A split-ring commutator in the same position would reverse the connections every half turn and give direct current instead.)\n\n*Working.* The coil is rotated in the field by some external agency. As it turns, the angle between its plane and the field changes continuously, so the flux linked with it changes, and by Faraday's law an emf is induced.\n\nTaking \\(\\theta = \\omega t\\) as the angle between the coil's normal and the field, the flux linkage is\n\n\\(\\phi = NBA\\cos\\omega t\\)\n\nand the induced emf is\n\n\\(\\varepsilon = -\\dfrac{d\\phi}{dt} = NBA\\,\\omega\\sin\\omega t = \\varepsilon_0\\sin\\omega t\\)\n\nThe emf is therefore sinusoidal, reversing twice per revolution. It is greatest when the coil's plane is **parallel** to the field — where the flux is momentarily zero but changing fastest — and zero when the plane is perpendicular to it.\n\n**(ii) Magnetic moment of the revolving electron.**\n\nAn electron going round its orbit is a current: the whole charge \\(e\\) passes any point of the orbit once per revolution. With orbital circumference \\(2\\pi r\\) and speed \\(v\\), the period is \\(T = 2\\pi r / v\\), so the equivalent current is\n\n\\(I = \\dfrac{q}{T} = \\dfrac{e}{\\dfrac{2\\pi r}{v}} = \\dfrac{ev}{2\\pi r}\\)\n\nA current loop of area \\(A\\) has magnetic moment \\(m = IA\\), and here \\(A = \\pi r^{2}\\):\n\n\\(m = \\dfrac{ev}{2\\pi r} \\times \\pi r^{2}\\)\n\n\\(m = \\dfrac{1}{2}evr\\)\n\nThe result is worth pairing with the electron's orbital angular momentum \\(L = m_e v r\\). Dividing one by the other gives\n\n\\(\\dfrac{m}{L} = \\dfrac{e}{2m_e}\\)\n\na ratio fixed by two fundamental constants and independent of the orbit — the gyromagnetic ratio. It is what makes magnetic moment and angular momentum two views of the same thing for an orbiting charge, and combining it with Bohr's quantisation \\(L = nh/2\\pi\\) gives the Bohr magneton."
+    }
+  ]
+}
