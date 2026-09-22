@@ -1,0 +1,226 @@
+{
+  "paper": "55/1/3",
+  "year": 2024,
+  "paperId": "2024-55-1-3",
+  "markingScheme": "out/2024-55-1-3/ms/p00.png … p24.png",
+  "rows": [
+    {
+      "hash": "7a06c6dfdacf737804f2ff19452ff2f015ef50e57eebc755fa24c41e26b2c05b",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "Three small charged spheres X, Y and Z carrying charges \\(+ q\\), \\(- q\\) and \\(+ q\\) respectively are placed equidistant from each other, as shown in the figure. The spheres Y and Z are held in place. Initially X is also held in place, but is otherwise free to move. When X is released, the path followed by it will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "A"
+        },
+        {
+          "label": "B",
+          "text": "B"
+        },
+        {
+          "label": "C",
+          "text": "C"
+        },
+        {
+          "label": "D",
+          "text": "D"
+        }
+      ],
+      "answer": "B",
+      "figureNote": "REQUIRED — the four options are bare labels A, B, C and D that name paths drawn ONLY in the figure, so the question is meaningless without it. Described: a filled dot labelled X sits above two filled dots labelled Y and Z; four dashed paths, each carrying an arrowhead at its far end, leave X and are labelled A, B, C and D — two of them straight and two of them curved. Withheld: the direction each of the four paths takes, which is the entire discrimination the question tests. Page idx 4.",
+      "imageAttached": true,
+      "solution": "**The answer is (B) — the curved path bending down and to the left.**\n\n**Reading the figure.** X sits at the apex of an equilateral triangle, with Y \\((-q)\\) below-left and Z \\((+q)\\) below-right. Four paths leave X: **A** straight left, **C** straight right, **B** curving down-left, **D** curving down-right.\n\n**Step 1 — the force at the instant of release.**\n\nX is **attracted** to Y (opposite charges), a pull directed **down-left**. X is **repelled** by Z (like charges), a push directed **up-left**. Both have the same magnitude \\(kq^{2}/a^{2}\\), since the triangle is equilateral.\n\nResolving: each force makes \\(60^\\circ\\) with the horizontal, so their **vertical components are equal and opposite and cancel exactly**, while their horizontal components both point left and add:\n\n\\(\\vec{F}_{\\text{net}} = \\dfrac{kq^{2}}{a^{2}}\\ \\text{horizontally to the LEFT}\\)\n\n**Step 2 — and here is the trap.** That initial force points along path **A**, so a reader who stops here answers A. But the question asks for the **path**, not the initial direction, and the path is only straight if the force *stays* straight.\n\n**Step 3 — what happens as X moves.**\n\nMove X a little to the left. It is now **closer to Y** and **farther from Z**. Both forces still have a leftward component, but the vertical components no longer cancel: the attraction to Y (downward component) has grown while the repulsion from Z (upward component) has weakened.\n\n**A net downward force appears immediately**, and grows as X continues:\n\n| Displacement of X | Horizontal force | Vertical force |\n|---|---|---|\n| \\(0\\) | left | **zero** |\n| \\(-0{\\cdot}05a\\) | left | downward |\n| \\(-0{\\cdot}2a\\) | left | strongly downward |\n| \\(-0{\\cdot}4a\\) | left | downward, now comparable to the horizontal |\n\nSo X sets off leftward and is **bent downward** as it goes — a curve down and to the left, which is path **B**.\n\n**Why the other three fail.** **C** is the wrong way entirely: the net force is leftward, not rightward. **D** curves down-*right*, which would need a rightward component the forces never have. **A** is right for the first instant only and wrong thereafter, which is exactly what the question is testing.\n\n**The general lesson.** A straight path requires the net force to remain along one line. Here the symmetry that cancelled the vertical components holds at **one point only**; the moment X leaves it, the symmetry is broken and the trajectory curves."
+    },
+    {
+      "hash": "aa3bc3be9e250528303007397e401176d29f1a4a73661b0801ad8d5d503e517c",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "In a uniform straight wire, conduction electrons move along \\(+ x\\) direction. Let \\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) be the electric field and current density in the wire, respectively. Then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) both are along \\(+ x\\) direction."
+        },
+        {
+          "label": "B",
+          "text": "\\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) both are along \\(- x\\) direction."
+        },
+        {
+          "label": "C",
+          "text": "\\(\\vec{\\mathrm{E}}\\) is along \\(+ x\\) direction, but \\(\\vec{j}\\) is along \\(- x\\) direction."
+        },
+        {
+          "label": "D",
+          "text": "\\(\\vec{\\mathrm{E}}\\) is along \\(- x\\) direction, but \\(\\vec{j}\\) is along \\(+ x\\) direction."
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): both \\(\\vec{\\mathrm{E}}\\) and \\(\\vec{j}\\) are along the \\(-x\\) direction.**\n\n**Start from the electrons.** They are stated to drift along \\(+x\\). Electrons carry **negative** charge, so the conventional current — defined as the direction positive charge would move — runs **opposite** to them, along \\(-x\\).\n\n**The current density.** \\(\\vec{j}\\) is defined to point along the **conventional current**, so\n\n\\(\\vec{j}\\) is along \\(-x\\)\n\nFormally, \\(\\vec{j} = nq\\vec{v}_d\\) with \\(q = -e\\), so \\(\\vec{j}\\) is antiparallel to \\(\\vec{v}_d\\) — the minus sign in the charge flips the direction.\n\n**The electric field.** Inside an ohmic conductor \\(\\vec{j}\\) and \\(\\vec{E}\\) are **parallel**:\n\n\\(\\vec{j} = \\sigma\\vec{E}\\)\n\nwith \\(\\sigma\\) a positive scalar. So \\(\\vec{E}\\) is along \\(-x\\) as well.\n\nPhysically: the field pushes positive charge along itself and negative charge against it. For the electrons to drift along \\(+x\\), the force \\(-e\\vec{E}\\) must point along \\(+x\\), so \\(\\vec{E}\\) must point along \\(-x\\).\n\n**Both are along \\(-x\\); the electrons alone go the other way.**\n\n**Why this catches people.** It is natural to reason \"the electrons move that way, so the current goes that way\", giving option (A). The single sign change lives entirely in the electron's **charge**, not in its motion. And the two options that split \\(\\vec{E}\\) and \\(\\vec{j}\\) are impossible for any ohmic material: those two vectors are **always** parallel, since \\(\\sigma\\) is positive. They can be eliminated without reading the stem at all.\n\n**A cleaner way to remember it.** Everything conventional — \\(\\vec{E}\\), \\(\\vec{j}\\), \\(\\vec{I}\\), the direction from the battery's \\(+\\) terminal through the external circuit — points the **same** way. The electrons are the only thing in the list that runs backwards."
+    },
+    {
+      "hash": "584059ce4a3b228d7399134c31a9aa8564e346f2eb043f896fc495e7ee89a8b5",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "Two charged particles, P and Q, each having charge q but of masses \\(\\mathrm{m}_1\\) and \\(\\mathrm{m}_2\\), are accelerated through the same potential difference V. They enter a region of magnetic field \\(\\vec{\\mathrm{B}}\\ (\\perp \\vec{v})\\) and describe the circular paths of radii a and b respectively. Then \\(\\left(\\dfrac{\\mathrm{m}_1}{\\mathrm{m}_2}\\right)\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{a}{b}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{b}{a}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\left(\\dfrac{a}{b}\\right)^2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\left(\\dfrac{b}{a}\\right)^2\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\left(\\dfrac{a}{b}\\right)^{2}\\).**\n\n**Step 1 — the momentum after acceleration.** Accelerating a charge \\(q\\) through \\(V\\) gives it kinetic energy \\(qV\\):\n\n\\(\\dfrac{1}{2}mv^{2} = qV \\qquad\\Longrightarrow\\qquad v = \\sqrt{\\dfrac{2qV}{m}}\\)\n\nso the momentum is\n\n\\(p = mv = \\sqrt{2mqV}\\)\n\n**Note that \\(p\\) grows with \\(\\sqrt{m}\\), not with \\(1/\\sqrt{m}\\).** The heavier particle moves **slower** but carries **more** momentum, because \\(p = \\sqrt{2mqV}\\) — this is the step that decides the answer, and reasoning from speed alone inverts it.\n\n**Step 2 — the radius in the magnetic field.** With \\(\\vec{v} \\perp \\vec{B}\\), the magnetic force supplies the centripetal force:\n\n\\(qvB = \\dfrac{mv^{2}}{r} \\qquad\\Longrightarrow\\qquad r = \\dfrac{mv}{qB} = \\dfrac{p}{qB}\\)\n\n**Step 3 — combining.**\n\n\\(r = \\dfrac{\\sqrt{2mqV}}{qB} = \\dfrac{1}{B}\\sqrt{\\dfrac{2mV}{q}} \\qquad\\Longrightarrow\\qquad r \\propto \\sqrt{m}\\)\n\nsince \\(q\\), \\(V\\) and \\(B\\) are common to both particles.\n\n**Step 4 — the ratio.**\n\n\\(\\dfrac{a}{b} = \\sqrt{\\dfrac{m_1}{m_2}} \\qquad\\Longrightarrow\\qquad \\boxed{\\ \\dfrac{m_1}{m_2} = \\left(\\dfrac{a}{b}\\right)^{2}\\ }\\)\n\n**Two errors the options are built around.** Answering \\(a/b\\) forgets to square — it treats \\(r \\propto m\\), which is true only at **fixed speed**, not at fixed accelerating voltage. Answering \\((b/a)^{2}\\) inverts the relation, which comes from reasoning \"heavier means slower means smaller circle\": true for the speed, false for the radius, because the extra mass more than compensates.\n\n**A check on the physics.** A heavier particle through the same voltage ends up slower but harder to deflect, and the second effect wins — so it traces the **larger** circle. This is exactly the principle of a **mass spectrometer**: accelerate ions through a fixed voltage, send them into a fixed field, and the radius sorts them by mass as \\(\\sqrt{m}\\)."
+    },
+    {
+      "hash": "32e3bec33a2529df18169e6d3447cf12c5e43df0e2b62f898d6f7da508e18336",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "The primary and secondary coils of a transformer have 500 turns and 5000 turns respectively. The primary coil is connected to an ac source of 220 V – 50 Hz. The output across the secondary coil is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "220 V – 50 Hz"
+        },
+        {
+          "label": "B",
+          "text": "1100 V – 50 Hz"
+        },
+        {
+          "label": "C",
+          "text": "2200 V – 5 Hz"
+        },
+        {
+          "label": "D",
+          "text": "2200 V – 50 Hz"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(2200\\) V, \\(50\\) Hz.**\n\n**The voltage.** For an ideal transformer the voltages are in the ratio of the turns:\n\n\\(\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p} = \\dfrac{5000}{500} = 10\\)\n\n\\(V_s = 10 \\times 220 = 2200\\ \\mathrm{V}\\)\n\nMore turns on the secondary than the primary, so this is a **step-up** transformer.\n\n**The frequency — unchanged at 50 Hz, and this is the half the question is really testing.**\n\nA transformer works through \\(\\varepsilon = -N\\,d\\phi/dt\\). The flux in the core alternates at exactly the frequency of the primary current, which is the frequency of the supply; the secondary emf is induced by that same flux and therefore alternates at that same frequency.\n\n**A transformer changes the amplitude of an alternating voltage. It cannot change its frequency.** Nothing in its construction could: there is no active element, no oscillator, nothing to set a new timescale — only a passive coupling that follows whatever the primary does.\n\nThat disposes of the \\(2200\\) V, \\(5\\) Hz option, which is right on the voltage and wrong on the physics.\n\n**Two consequences worth naming.**\n\nThe **current** steps down by the same factor the voltage steps up. Ideally \\(V_pI_p = V_sI_s\\), so \\(I_s = I_p/10\\). A transformer trades voltage against current at constant power; it is not a source of energy.\n\nAnd this only works on **ac**. A steady dc produces a constant flux, so \\(d\\phi/dt = 0\\), no emf is induced in the secondary at all, and the primary — a low-resistance coil straight across the supply — would simply overheat."
+    },
+    {
+      "hash": "9d82274f66801955efb2901d330d8d88ea252d01e3db63d80eba9768f31fcc2a",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The first scientist who produced and observed electromagnetic waves of wavelengths in the range 25 mm – 5 mm was :",
+      "options": [
+        {
+          "label": "A",
+          "text": "J.C. Maxwell"
+        },
+        {
+          "label": "B",
+          "text": "H.R. Hertz"
+        },
+        {
+          "label": "C",
+          "text": "J.C. Bose"
+        },
+        {
+          "label": "D",
+          "text": "G. Marconi"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): J. C. Bose.**\n\n**What the wavelength range tells you.** \\(25\\) mm to \\(5\\) mm is the **millimetre-wave** band, at the short-wavelength end of the microwave region. That figure is the whole discriminator in this question.\n\n**The four claims, and where each belongs.**\n\n**Maxwell (1865)** *predicted* electromagnetic waves theoretically, showing his equations admit wave solutions travelling at \\(1/\\sqrt{\\mu_0\\varepsilon_0}\\) — a speed equal to the measured speed of light. He never produced them, and died before anyone did.\n\n**Hertz (1887)** *first produced and detected* them, using a spark gap as transmitter and a small loop as receiver. His waves were **a few metres** long, and he demonstrated that they reflect, refract, interfere and polarise exactly as light does.\n\n**J. C. Bose (1895)** pushed the technique to **far shorter wavelengths** — about \\(25\\) mm down to \\(5\\) mm — building the first millimetre-wave apparatus, with a spark-gap source, horn antennas and a semiconductor detector. He also showed the waves passing through walls. **This is the range the question names**, so Bose is the answer.\n\n**Marconi (1895 onwards)** *applied* the discovery, developing wireless telegraphy over ever greater distances and eventually across the Atlantic. He engineered the technology rather than discovering the waves.\n\n**The question's precision is the point.** \"First produced and observed\" rules out Maxwell and Marconi; \"**25 mm to 5 mm**\" rules out Hertz, whose waves were roughly a hundred times longer. Change that one figure to \"a few metres\" and the answer becomes Hertz — which is exactly the variant that appears on other papers in this same series.\n\nBose's semiconductor crystal detector, incidentally, anticipated the point-contact diode by half a century, which is why his name also appears in the semiconductor chapter."
+    },
+    {
+      "hash": "c8c126a75657b4fcf1f880cf515e2eb3f509f76fbc31b23e33ebb5c7d4e4fc97",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Electric Current and Ohm's Law",
+      "stem": "A uniform wire of length L and area of cross-section A has resistance R. The wire is uniformly stretched so that its length increases by 25%. Calculate the percentage increase in the resistance of the wire.",
+      "solution": "**The constraint that does the work: stretching conserves VOLUME.** No material is added or removed, so\n\n\\(A'L' = AL\\)\n\n**The new dimensions.** The length increases by \\(25\\%\\):\n\n\\(L' = 1{\\cdot}25L = \\dfrac{5}{4}L\\)\n\nand therefore\n\n\\(A' = \\dfrac{AL}{L'} = \\dfrac{A}{1{\\cdot}25} = \\dfrac{4}{5}A\\)\n\nThe wire gets **longer and thinner together**, and both changes push the resistance the same way.\n\n**The new resistance.**\n\n\\(R' = \\dfrac{\\rho L'}{A'} = \\dfrac{\\rho\\,(5/4)L}{(4/5)A} = \\dfrac{25}{16}\\cdot\\dfrac{\\rho L}{A} = \\dfrac{25}{16}R\\)\n\n\\(R' = 1{\\cdot}5625\\,R\\)\n\n**The percentage increase.**\n\n\\(\\dfrac{R' - R}{R} \\times 100 = (1{\\cdot}5625 - 1) \\times 100\\)\n\n\\(\\boxed{\\ 56{\\cdot}25\\%\\ }\\)\n\n**Why it is not 25%.** Answering \\(25\\%\\) uses \\(R \\propto L\\), which holds only at **fixed area**. Here the area is not fixed — it falls as the length rises. Each factor of \\(1{\\cdot}25\\) contributes once, so the resistance goes as the **square**:\n\n\\(R \\propto \\dfrac{L}{A} = \\dfrac{L}{V/L} = \\dfrac{L^{2}}{V} \\qquad\\Longrightarrow\\qquad R \\propto L^{2}\\)\n\nat constant volume. Hence \\(R'/R = (1{\\cdot}25)^{2} = 1{\\cdot}5625\\), and the one-line route is simply to square the length factor.\n\n**The general rule worth carrying.** Stretch a wire to \\(n\\) times its length at constant volume and\n\n\\(L \\to nL, \\qquad A \\to \\dfrac{A}{n}, \\qquad R \\to n^{2}R\\)\n\nSo stretching to double the length **quadruples** the resistance; to \\(1{\\cdot}25\\) times gives \\(1{\\cdot}5625\\) times. The same law read backwards says that compressing a wire to half its length quarters its resistance."
+    },
+    {
+      "hash": "dc4dbb0e307a09f14fc0a05b1a821f9c8a7ef1a072d6c7c86c1438d7b61d289e",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "Differentiate between ‘diffusion current’ and ‘drift current’. Explain their role in the formation of p-n junction.",
+      "solution": "**The two currents.**\n\n| | **Diffusion current** | **Drift current** |\n|---|---|---|\n| Cause | A **concentration gradient** of carriers | An **electric field** across the junction |\n| Which carriers | **Majority** carriers — holes from p to n, electrons from n to p | **Minority** carriers — electrons from p to n, holes from n to p |\n| Direction of conventional current | From the **p-side to the n-side** | From the **n-side to the p-side** |\n| What controls its size | How steep the concentration gradient is | How many minority carriers are thermally generated — so it depends strongly on **temperature**, and hardly at all on the field |\n\n**Their role in forming the junction — the two are a feedback loop, and that is the whole story.**\n\n**Step 1 — diffusion starts it.** The instant p-type and n-type material are joined, there is an enormous concentration gradient across the boundary: holes are plentiful on the p-side and scarce on the n-side, electrons the reverse. So holes **diffuse** p → n and electrons n → p. This diffusion current flows from p to n.\n\n**Step 2 — diffusion creates the field that opposes it.** Every carrier that crosses recombines and vanishes as mobile charge, leaving behind an **immobile ion**: a negative acceptor ion on the p-side, a positive donor ion on the n-side. These ion sheets form the **depletion region** and set up an electric field pointing from the n-side to the p-side, with a **barrier potential** \\(V_0\\) across it.\n\n**Step 3 — that field drives the drift current.** Any minority carrier wandering near the junction is swept across by this field — electrons from p to n, holes from n to p — giving a drift current from n to p, **opposite** to the diffusion current.\n\n**Step 4 — the loop closes.** As more carriers diffuse, the ion sheets grow, the field strengthens, and diffusion becomes harder while drift becomes easier. The process is **self-limiting**, and equilibrium is reached when\n\n\\(I_{\\text{diffusion}} = I_{\\text{drift}} \\qquad\\Longrightarrow\\qquad I_{\\text{net}} = 0\\)\n\nAt that point the depletion width and the barrier potential settle at their final values, and **no current flows through an unbiased junction** — not because nothing is happening, but because two opposing currents cancel exactly.\n\n**Why this matters for the diode's behaviour.** Forward bias lowers the barrier, so the **diffusion** current grows enormously and dominates — large forward current. Reverse bias raises the barrier, killing diffusion and leaving only the **drift** current, which is why the reverse saturation current is small, nearly independent of voltage, and strongly temperature-dependent: it is limited by how fast minority carriers are generated, not by how hard they are pulled."
+    },
+    {
+      "hash": "46f03fbd4ca634a61c20983f0d9924ffdc7ea81b6df1f9317b0f7ae01a78b05d",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Energy Stored in a Capacitor",
+      "stem": "An air-filled parallel plate capacitor with plate separation 1 mm has a capacitance of 20 pF. It is charged to \\(4{\\cdot}0\\ \\mu\\mathrm{C}\\). Calculate the amount of work done to pull its plates to a separation of 5 mm. Assume the charge on the plates remains the same.",
+      "solution": "**What is held fixed, and what changes.** The plates are pulled apart **after** the capacitor is disconnected from its source, so the **charge stays constant** at \\(Q = 4{\\cdot}0\\ \\mu\\mathrm{C}\\) while the capacitance falls.\n\n**The new capacitance.** For a parallel-plate capacitor \\(C = \\varepsilon_0 A/d\\), so at fixed area\n\n\\(C \\propto \\dfrac{1}{d} \\qquad\\Longrightarrow\\qquad \\dfrac{C'}{C} = \\dfrac{d}{d'} = \\dfrac{1}{5}\\)\n\n\\(C' = \\dfrac{20}{5} = 4\\ \\mathrm{pF}\\)\n\n**The stored energies.** With \\(Q\\) fixed, the convenient form is \\(U = Q^{2}/2C\\):\n\n\\(U_1 = \\dfrac{Q^{2}}{2C} = \\dfrac{(4 \\times 10^{-6})^{2}}{2 \\times 20 \\times 10^{-12}} = \\dfrac{16 \\times 10^{-12}}{4 \\times 10^{-11}} = 0{\\cdot}4\\ \\mathrm{J}\\)\n\n\\(U_2 = \\dfrac{Q^{2}}{2C'} = \\dfrac{16 \\times 10^{-12}}{8 \\times 10^{-12}} = 2{\\cdot}0\\ \\mathrm{J}\\)\n\n**The work done.** With no source connected, the only thing that can change the stored energy is the external agent doing the pulling:\n\n\\(W = U_2 - U_1 = 2{\\cdot}0 - 0{\\cdot}4\\)\n\n\\(\\boxed{\\ W = 1{\\cdot}6\\ \\mathrm{J}\\ }\\)\n\n**Why the energy INCREASES, though nothing was added electrically.** The two plates carry opposite charges and therefore **attract**. Pulling them apart means working **against** that attraction, and that work is stored in the field.\n\nChoosing the right form of the energy formula is the whole skill here. With \\(Q\\) fixed, \\(U = Q^{2}/2C\\) **rises** as \\(C\\) falls. Using \\(U = \\tfrac{1}{2}CV^{2}\\) with the *original* \\(V\\) would suggest the energy falls — the error comes from holding \\(V\\) fixed when the question holds \\(Q\\) fixed.\n\n**A consistency check through the field.** With \\(Q\\) fixed the field between the plates, \\(E = \\sigma/\\varepsilon_0 = Q/\\varepsilon_0 A\\), is **unchanged** — it does not depend on the separation at all. The energy density \\(\\tfrac{1}{2}\\varepsilon_0E^{2}\\) is therefore also unchanged, and the total energy rises simply because the field now fills **five times the volume**. Hence \\(U_2 = 5U_1\\), which is exactly \\(2{\\cdot}0 = 5 \\times 0{\\cdot}4\\).\n\n**The contrast to keep straight.** Had the battery stayed connected, \\(V\\) would have been fixed instead, \\(U = \\tfrac{1}{2}CV^{2}\\) would have **fallen** to one fifth, and the battery would have absorbed charge. Same physical pull, opposite sign of energy change — decided entirely by which quantity the circuit holds constant."
+    },
+    {
+      "hash": "09dca304fc25330470746af32a36c713b4c874a808342b4cf727ee139ec5110c",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A circular coil with cross-sectional area \\(0{\\cdot}2\\ \\mathrm{cm^2}\\) carries a current of 4 A. It is kept in a uniform magnetic field of magnitude \\(0{\\cdot}5\\) T normal to the plane of the coil. Calculate :\n(a) the net force on the coil.\n(b) the torque on the coil.\n(c) the average force on each electron in the coil due to the magnetic field. The free electron density in the material of the coil is \\(10^{28}\\ \\mathrm{m^{-3}}\\).",
+      "solution": "**The data.** \\(A = 0{\\cdot}2\\ \\mathrm{cm^{2}} = 0{\\cdot}2 \\times 10^{-4}\\ \\mathrm{m^{2}}\\), \\(I = 4\\) A, \\(B = 0{\\cdot}5\\) T **normal to the plane of the coil**, and \\(n = 10^{28}\\ \\mathrm{m^{-3}}\\).\n\n**(a) The net force on the coil.**\n\n\\(\\boxed{\\ \\vec{F}_{\\text{net}} = 0\\ }\\)\n\n**Why.** The force on a current element is \\(d\\vec{F} = I\\,d\\vec{l} \\times \\vec{B}\\). For every element of a closed loop there is a **diametrically opposite** element whose \\(d\\vec{l}\\) is reversed, so its force is equal and opposite. Summing round the loop:\n\n\\(\\vec{F} = I\\left(\\oint d\\vec{l}\\right) \\times \\vec{B} = 0\\)\n\nbecause \\(\\oint d\\vec{l} = 0\\) for any closed path. **This holds for a closed loop of any shape in any uniform field** — the loop is squeezed or stretched, but not pushed anywhere.\n\n**(b) The torque on the coil.**\n\n\\(\\vec{\\tau} = \\vec{m} \\times \\vec{B}, \\qquad \\tau = mB\\sin\\theta\\)\n\nThe magnetic moment \\(\\vec{m}\\) points along the **normal to the plane of the coil** — and the field is stated to be along that same normal. So \\(\\vec{m}\\) and \\(\\vec{B}\\) are **parallel**, \\(\\theta = 0\\), and\n\n\\(\\boxed{\\ \\tau = mB\\sin 0^\\circ = 0\\ }\\)\n\nThe coil is already in its equilibrium orientation, so there is nothing to turn it. Had the field lain **in** the plane of the coil instead, \\(\\theta\\) would be \\(90^\\circ\\) and the torque would be maximum — this is why the word \"normal\" in the stem is doing real work.\n\n**(c) The average force on each electron.**\n\nAn electron drifts with speed \\(v_d\\) perpendicular to \\(\\vec{B}\\), so\n\n\\(f = ev_dB\\)\n\nThe drift velocity comes from the current:\n\n\\(I = neAv_d \\qquad\\Longrightarrow\\qquad v_d = \\dfrac{I}{neA} = \\dfrac{4}{10^{28} \\times 1{\\cdot}6 \\times 10^{-19} \\times 0{\\cdot}2 \\times 10^{-4}} = 1{\\cdot}25 \\times 10^{-4}\\ \\mathrm{m\\,s^{-1}}\\)\n\nSubstituting — and note that the **electronic charge cancels**, which is why the result comes out as a clean power of ten:\n\n\\(f = e \\times \\dfrac{I}{neA} \\times B = \\dfrac{IB}{nA} = \\dfrac{4 \\times 0{\\cdot}5}{10^{28} \\times 0{\\cdot}2 \\times 10^{-4}}\\)\n\n\\(\\boxed{\\ f = 10^{-23}\\ \\mathrm{N}\\ }\\)\n\n**The apparent paradox, which is the point of asking (a) and (c) together.** Every one of the roughly \\(10^{28}\\) electrons per cubic metre feels a force — yet the net force on the coil is exactly zero. There is no contradiction: the individual forces all point **outward** (or all inward), so they stretch the loop rather than translate it, and they cancel in pairs across the coil. **A zero resultant is not the same as no force**, and the \\(10^{-23}\\) N on each electron is what physically transmits the magnetic force to the wire.\n\nNote also how small the drift speed is — \\(0{\\cdot}125\\) mm per second. A 4 A current is large not because the carriers are fast but because there are so many of them."
+    },
+    {
+      "hash": "8f70f9a7cbddfa63b26f2fc72a82874e379bdf62f44e2edc559af56dab1c42d0",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "(a) Draw the graphs showing the variation of the following with the frequency of ac source in a circuit :\n(i) Resistance\n(ii) Capacitive reactance\n(iii) Inductive reactance\n(b) Can the voltage drop across the inductor or the capacitor in a series LCR circuit be greater than the applied voltage of the ac source ? Justify your answer.",
+      "solution": "**(a) The three graphs, all against frequency \\(\\nu\\) on the horizontal axis.**\n\n**(i) Resistance.**\n\n\\(R = \\dfrac{\\rho l}{A}\\)\n\nwhich contains no frequency at all. Draw a **horizontal straight line** — \\(R\\) is constant, unaffected by \\(\\nu\\).\n\n**(ii) Capacitive reactance.**\n\n\\(X_C = \\dfrac{1}{2\\pi\\nu C} \\qquad\\Longrightarrow\\qquad X_C \\propto \\dfrac{1}{\\nu}\\)\n\nDraw a **rectangular hyperbola**: very large at low frequency, falling steeply, then flattening towards the \\(\\nu\\)-axis asymptotically without touching it. At \\(\\nu \\to 0\\) (dc) it becomes **infinite** — which is the statement that a capacitor **blocks dc**.\n\n**(iii) Inductive reactance.**\n\n\\(X_L = 2\\pi\\nu L \\qquad\\Longrightarrow\\qquad X_L \\propto \\nu\\)\n\nDraw a **straight line through the origin** of slope \\(2\\pi L\\). At \\(\\nu = 0\\) it is **zero** — an inductor is a plain wire to dc — and it rises without limit, so an inductor **blocks high frequencies**.\n\n**The three together are the whole behaviour of an LCR circuit**: the capacitor and the inductor do exactly opposite things as frequency rises, and they cross at the resonant frequency, where \\(X_L = X_C\\) and only \\(R\\) is left.\n\n**(b) Can \\(V_L\\) or \\(V_C\\) exceed the applied voltage? YES.**\n\n**The justification.** In a series LCR circuit the three voltage drops are **not in phase**: \\(V_R\\) is in phase with the current, \\(V_L\\) leads it by \\(90^\\circ\\), and \\(V_C\\) lags it by \\(90^\\circ\\). They therefore cannot be added arithmetically. The source voltage is their **phasor** sum:\n\n\\(V = \\sqrt{V_R^{2} + (V_L - V_C)^{2}}\\)\n\nBecause \\(V_L\\) and \\(V_C\\) are **exactly antiphase**, they subtract in this expression. Each can be large while their difference is small — so both can individually exceed \\(V\\) while the equation is still satisfied.\n\n**At resonance this is most striking.** There \\(X_L = X_C\\), so \\(V_L = V_C\\) exactly and they cancel completely, leaving \\(V = V_R\\). Yet each of them equals \\(I_{rms}X_L\\), which can be many times the supply voltage. The **quality factor**\n\n\\(Q = \\dfrac{X_L}{R} = \\dfrac{V_L}{V}\\)\n\nmeasures the multiplication directly: a circuit with \\(X_L = 400\\ \\Omega\\) and \\(R = 50\\ \\Omega\\) puts **eight times** the supply voltage across its inductor and across its capacitor.\n\n**This is why a series resonant circuit is called a voltage magnifier**, and it is a practical warning as much as a curiosity: the capacitor in such a circuit must be rated for far more than the supply voltage, or it will fail.\n\n**No conservation law is violated.** Energy is conserved instant by instant; it is only the *peak* values that are misleading, because the two peaks never occur at the same moment."
+    },
+    {
+      "hash": "8939bbd9c877c594e915fe5ac6ed8dc38d270fec6b2941f3a39f964f58560ca1",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "State the three postulates of Bohr's theory of hydrogen atom.\nA hydrogen atom de-excites from level n to level (n – 1). Show that, according to Bohr's theory, the frequency of radiation emitted \\(\\nu \\cong \\dfrac{\\alpha}{\\mathrm{n}^3}\\), for large values of n, where \\(\\alpha\\) is a constant. This result exactly agrees with that obtained from classical physics – one of the successes of Bohr's theory.",
+      "solution": "**Bohr's three postulates.**\n\n**1. Stationary orbits.** An electron in an atom revolves around the nucleus only in certain **stable orbits**, in which it does **not** radiate energy, despite being accelerated. Classical electromagnetism forbids this, and the postulate simply asserts it as an experimental fact about atoms.\n\n**2. Quantization of angular momentum.** Those permitted orbits are the ones for which the angular momentum is an integral multiple of \\(h/2\\pi\\):\n\n\\(mvr = \\dfrac{nh}{2\\pi}, \\qquad n = 1, 2, 3, \\ldots\\)\n\nThis is what picks out discrete orbits from the classical continuum, and it fixes the radii as \\(r_n \\propto n^{2}\\) and the energies as \\(E_n \\propto -1/n^{2}\\).\n\n**3. The frequency condition.** An electron may jump from an orbit of energy \\(E_i\\) to one of lower energy \\(E_f\\), and it then emits a **single photon** carrying exactly the difference:\n\n\\(h\\nu = E_i - E_f\\)\n\nThe frequency of the light is set by this energy difference, *not* by the electron's orbital frequency — a decisive break with classical radiation theory.\n\n**Deriving \\(\\nu \\cong \\alpha/n^{3}\\) for large \\(n\\).**\n\nWrite the level energies as\n\n\\(E_n = -\\dfrac{k}{n^{2}}\\)\n\nwhere \\(k = 13{\\cdot}6\\ \\mathrm{eV}\\) collects all the constants. For de-excitation from \\(n\\) to \\((n-1)\\), the third postulate gives\n\n\\(h\\nu = E_n - E_{n-1} = -\\dfrac{k}{n^{2}} + \\dfrac{k}{(n-1)^{2}} = k\\left[\\dfrac{1}{(n-1)^{2}} - \\dfrac{1}{n^{2}}\\right]\\)\n\n**Put the bracket over a common denominator.**\n\n\\(h\\nu = k\\,\\dfrac{n^{2} - (n-1)^{2}}{n^{2}(n-1)^{2}} = k\\,\\dfrac{2n - 1}{n^{2}(n-1)^{2}}\\)\n\n**Now take \\(n\\) large.** Two approximations, and both are the same idea — keep only the highest power of \\(n\\):\n\n\\(2n - 1 \\cong 2n \\qquad\\text{and}\\qquad n^{2}(n-1)^{2} \\cong n^{2} \\cdot n^{2} = n^{4}\\)\n\nHence\n\n\\(h\\nu \\cong \\dfrac{2kn}{n^{4}} = \\dfrac{2k}{n^{3}}\\)\n\n\\(\\boxed{\\ \\nu \\cong \\dfrac{\\alpha}{n^{3}}\\ , \\qquad \\alpha = \\dfrac{2k}{h}\\ }\\)\n\nwith \\(\\alpha\\) a constant built only from \\(m\\), \\(e\\), \\(\\varepsilon_0\\) and \\(h\\).\n\n**Why this agreement with classical physics matters.** Classically, an orbiting electron radiates at its own **orbital frequency**. For Bohr orbits, \\(r_n \\propto n^{2}\\) and \\(v_n \\propto 1/n\\), so the orbital frequency \\(v_n/2\\pi r_n \\propto 1/n^{3}\\) — **the same \\(n^{-3}\\) dependence** just derived from the quantum jump.\n\nSo for large \\(n\\), where the orbits are huge and the levels crowd close together, the quantum prediction **merges into** the classical one. This is Bohr's **correspondence principle**, and it is a genuine test of a new theory: any successor to classical physics must reproduce classical results in the regime where classical physics was known to work. That Bohr's model does so, without being built to, was one of the strongest early arguments in its favour."
+    }
+  ]
+}
