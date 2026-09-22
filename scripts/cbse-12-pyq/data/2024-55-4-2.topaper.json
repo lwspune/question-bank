@@ -1,0 +1,202 @@
+{
+  "paper": "55/4/2",
+  "year": 2024,
+  "paperId": "2024-55-4-2",
+  "markingScheme": "out/2024-55-4-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "8d57676cfe07c49433f52113a024df5be6fa231af126fdfca9e40709f70faad5",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "stem": "Three point charges, each of charge q are placed on vertices of a triangle ABC, with AB = AC = 5L, BC = 6L. The electrostatic potential at midpoint of side BC will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{11}{48}\\dfrac{q}{\\pi\\varepsilon_0 L}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{8q}{36\\pi\\varepsilon_0 L}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{5q}{24\\pi\\varepsilon_0 L}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{16}\\dfrac{q}{\\pi\\varepsilon_0 L}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{11}{48}\\dfrac{q}{\\pi\\varepsilon_0 L}\\).**\n\n**The geometry first — and it is the only real work here.**\n\nLet \\(M\\) be the midpoint of \\(BC\\). Since \\(BC = 6L\\),\n\n\\(BM = MC = 3L\\)\n\nThe triangle is isosceles with \\(AB = AC = 5L\\), so \\(AM\\) is perpendicular to \\(BC\\), and by Pythagoras in triangle \\(ABM\\):\n\n\\(AM = \\sqrt{(5L)^{2} - (3L)^{2}} = \\sqrt{25L^{2} - 9L^{2}} = 4L\\)\n\n**The 3-4-5 triangle is the whole design of the question** — the sides \\(5L\\), \\(3L\\) and the height \\(4L\\) are chosen so that the distance from \\(A\\) to \\(M\\) comes out exactly.\n\n**Potential is a SCALAR, so the three contributions simply add** — no components, no angles, no vector diagram. This is what makes the question quick once the geometry is done.\n\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_0}\\left[\\dfrac{q}{AM} + \\dfrac{q}{BM} + \\dfrac{q}{CM}\\right]\\)\n\n\\(V = \\dfrac{q}{4\\pi\\varepsilon_0}\\left[\\dfrac{1}{4L} + \\dfrac{1}{3L} + \\dfrac{1}{3L}\\right]\\)\n\n**Adding the fractions.**\n\n\\(\\dfrac{1}{4} + \\dfrac{2}{3} = \\dfrac{3}{12} + \\dfrac{8}{12} = \\dfrac{11}{12}\\)\n\n\\(V = \\dfrac{q}{4\\pi\\varepsilon_0 L}\\cdot\\dfrac{11}{12} = \\dfrac{11q}{48\\pi\\varepsilon_0 L}\\)\n\n\\(\\boxed{\\ V = \\dfrac{11}{48}\\dfrac{q}{\\pi\\varepsilon_0 L}\\ }\\)\n\n**Why the answer is written the way it is.** \\(\\dfrac{11}{12} \\times \\dfrac{1}{4} = \\dfrac{11}{48}\\), the \\(4\\) coming from the \\(4\\pi\\varepsilon_0\\). Option (A) presents it as \\(\\dfrac{11}{48}\\dfrac{q}{\\pi\\varepsilon_0 L}\\), which is the same number with the \\(4\\) absorbed into the \\(48\\) — worth checking rather than assuming, since option (B), \\(\\dfrac{8q}{36\\pi\\varepsilon_0 L}\\), is deliberately written in the same style.\n\n**Contrast with the field.** Had the question asked for the electric **field** at \\(M\\), the contributions from \\(B\\) and \\(C\\) would cancel (equal magnitudes, opposite directions) and only \\(A\\)'s would survive. That the question asks for potential is what brings all three charges in — and it is why the \\(BM\\) and \\(CM\\) terms add to \\(2/3\\) rather than cancelling."
+    },
+    {
+      "hash": "672ae8d867f2a2f39350e2dd1e3c4b68ea51bfd33c0cd7fd5ea6d4aafbf4eb0a",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Coulomb's Law and Forces Between Multiple Charges",
+      "stem": "The Coulomb force (F) versus \\((1/r^2)\\) graphs for two pairs of point charges \\((q_1\\) and \\(q_2)\\) and \\((q_2\\) and \\(q_3)\\) are shown in figure. The charge \\(q_2\\) is positive and has least magnitude. Then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(q_1 > q_2 > q_3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(q_1 > q_3 > q_2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(q_3 > q_2 > q_1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(q_3 > q_1 > q_2\\)"
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED — the stem gives no slope and no numbers; the entire question is the two lines drawn on the plot, whose SIGNS give the signs of the charge products and whose relative STEEPNESS gives the ratio of the magnitudes. Deliberately NOT stated here: which line is steeper and which quadrant each occupies, since between them those two facts are the answer. What is drawn: a pair of axes with the vertical axis labelled F and marked + above the origin and - below it, the horizontal axis labelled \\(\\dfrac{1}{r^2}\\), the origin marked 0, and two straight lines leaving the origin, one labelled \\((q_1, q_2)\\) and the other \\((q_2, q_3)\\). Page idx 4.",
+      "imageAttached": true,
+      "solution": "**The answer is (D): \\(q_3 > q_1 > q_2\\) in magnitude.**\n\n**Reading the graph.** Coulomb's law is\n\n\\(F = \\dfrac{1}{4\\pi\\varepsilon_0}\\,q_aq_b\\left(\\dfrac{1}{r^{2}}\\right)\\)\n\nso a plot of \\(F\\) against \\(1/r^{2}\\) is a **straight line through the origin** whose **slope** is \\(\\dfrac{q_aq_b}{4\\pi\\varepsilon_0}\\). Both lines in the figure do pass through the origin, which is the graph's way of confirming the inverse-square law.\n\n**Step 1 — what the slopes say.**\n\nFrom the figure the \\((q_2, q_3)\\) line is the **steeper** of the two, so\n\n\\(|q_2q_3| > |q_1q_2| \\qquad\\Longrightarrow\\qquad |q_3| > |q_1|\\)\n\nThe common factor \\(|q_2|\\) cancels, which is why the comparison can be made at all.\n\n**Step 2 — bring in the given.** The stem says \\(q_2\\) has the **least** magnitude. Combining:\n\n\\(\\boxed{\\ |q_3| > |q_1| > |q_2|\\ }\\)\n\n**Step 3 — what the SIGNS say**, which the graph gives free and which is worth extracting even though the options do not ask for it.\n\nThe \\((q_1, q_2)\\) line lies **above** the axis: \\(F\\) is positive, so the force is **repulsive** and \\(q_1\\) has the **same** sign as \\(q_2\\). Since \\(q_2\\) is positive, \\(q_1\\) is positive.\n\nThe \\((q_2, q_3)\\) line lies **below** the axis: \\(F\\) is negative, so the force is **attractive** and \\(q_3\\) has the **opposite** sign to \\(q_2\\). So \\(q_3\\) is **negative**.\n\n**A caution about how the options must be read.** Taken as signed values the conclusion would be \\(q_3 < 0 < q_2 < q_1\\), and then none of the four options would be correct. The inequalities are to be read as comparing **magnitudes**, which is the only reading under which any option works. The graph's sign information is real but sits outside what the options can express.\n\n**Why the answer does not name \\(q_2\\)'s size except through the given.** Nothing in the graph fixes \\(|q_2|\\) on its own — every slope is a **product** of two charges, so a graph of this kind can only ever give ratios. That is exactly why the stem has to supply \"\\(q_2\\) has least magnitude\" separately."
+    },
+    {
+      "hash": "feb1cca4d1021ab499afda5b955e437d8cfb850e5f4f61aa8e27fdb0214b53c8",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A particle of mass m and charge q is moving with velocity \\(\\vec{v} = v_x\\hat{i} + v_y\\hat{j}\\). If it is subjected to a magnetic field \\(\\vec{B} = B_0\\hat{i}\\), it will move in a -",
+      "options": [
+        {
+          "label": "A",
+          "text": "straight line path"
+        },
+        {
+          "label": "B",
+          "text": "circular path"
+        },
+        {
+          "label": "C",
+          "text": "helical path"
+        },
+        {
+          "label": "D",
+          "text": "parabolic path"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): a helical path.**\n\n**Split the velocity relative to \\(\\vec{B}\\).** The field is \\(\\vec{B} = B_0\\hat{i}\\), and the velocity has two components:\n\n\\(\\vec{v}_\\parallel = v_x\\hat{i} \\quad\\text{(along } \\vec{B})\\), \\(\\qquad \\vec{v}_\\perp = v_y\\hat{j} \\quad\\text{(perpendicular to } \\vec{B})\\)\n\n**The magnetic force treats them completely differently**, and that is the whole question:\n\n\\(\\vec{F} = q\\vec{v}\\times\\vec{B} = q\\left(v_x\\hat{i} + v_y\\hat{j}\\right)\\times B_0\\hat{i}\\)\n\n\\(\\hat{i}\\times\\hat{i} = 0\\) and \\(\\hat{j}\\times\\hat{i} = -\\hat{k}\\), so\n\n\\(\\vec{F} = -qv_yB_0\\,\\hat{k}\\)\n\n**The parallel component contributes NOTHING to the force.** There is no force along \\(x\\), so \\(v_x\\) never changes: the particle drifts along the field at constant speed, exactly as if the field were not there.\n\n**The perpendicular component gives circular motion.** The force \\(-qv_yB_0\\hat{k}\\) is perpendicular to \\(\\vec{v}_\\perp\\) and constant in magnitude, which is the condition for uniform circular motion in the \\(yz\\) plane, of radius\n\n\\(r = \\dfrac{mv_\\perp}{qB_0} = \\dfrac{mv_y}{qB_0}\\)\n\n**Superposing the two** — a circle in the \\(yz\\) plane plus a uniform drift along \\(x\\) — gives a **helix** whose axis lies along \\(\\vec{B}\\).\n\n**The pitch**, which is the distance advanced in one revolution:\n\n\\(p = v_x T = v_x\\cdot\\dfrac{2\\pi m}{qB_0}\\)\n\nNote that the period \\(T = 2\\pi m/qB_0\\) contains **no speed at all**, so a faster particle makes a bigger circle in the same time. That is the principle of the cyclotron.\n\n**Ruling out the other three.**\n\n*Straight line* would need \\(v_y = 0\\) — true if the velocity were entirely along \\(\\vec{B}\\), which it is not.\n\n*Circle* would need \\(v_x = 0\\) — true if the velocity were entirely perpendicular, which it also is not. The helix is what lies between these two special cases, and the general case is the helix.\n\n*Parabola* is the signature of a **constant** force, as in projectile motion or a charge in a uniform **electric** field. A magnetic force is never constant on a moving charge: it turns with the velocity, and it does **no work**, so the speed stays fixed throughout."
+    },
+    {
+      "hash": "6b92571e0d8f4dfdeed5eaf1ddcd18306df51a655ba68f31c2929d4d57f5993a",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "An ac source \\(V = 282 \\sin(100\\ t)\\) volt is connected across a 1 \\(\\mu\\mathrm{F}\\) capacitor. The rms value of current in the circuit will be (take \\(\\sqrt{2} = 1.41\\))",
+      "options": [
+        {
+          "label": "A",
+          "text": "10 mA"
+        },
+        {
+          "label": "B",
+          "text": "20 mA"
+        },
+        {
+          "label": "C",
+          "text": "40 mA"
+        },
+        {
+          "label": "D",
+          "text": "80 mA"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): 20 mA.**\n\n**Read the source.** Comparing \\(V = 282\\sin(100\\,t)\\) with \\(V = V_0\\sin\\omega t\\):\n\n\\(V_0 = 282\\ \\mathrm{V}, \\qquad \\omega = 100\\ \\mathrm{rad\\,s^{-1}}\\)\n\n**The capacitive reactance.**\n\n\\(X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100 \\times 1 \\times 10^{-6}} = 1 \\times 10^{4}\\ \\Omega\\)\n\n**Then the rms current.** Working with rms values throughout is the cleaner of the two routes:\n\n\\(V_{rms} = \\dfrac{V_0}{\\sqrt{2}} = \\dfrac{282}{1{\\cdot}41} = 200\\ \\mathrm{V}\\)\n\n\\(I_{rms} = \\dfrac{V_{rms}}{X_C} = \\dfrac{200}{10^{4}} = 0{\\cdot}02\\ \\mathrm{A}\\)\n\n\\(\\boxed{\\ I_{rms} = 20\\ \\mathrm{mA}\\ }\\)\n\n**The same answer the other way round**, as a check: \\(I_0 = V_0/X_C = 282/10^{4} = 0{\\cdot}0282\\) A, then \\(I_{rms} = I_0/\\sqrt{2} = 0{\\cdot}0282/1{\\cdot}41 = 0{\\cdot}02\\) A. The \\(\\sqrt{2}\\) can be divided out at the start or at the end; it must be done **once**.\n\n**The trap the options are built around** is doing it twice or not at all. Dividing by \\(\\sqrt{2}\\) a second time gives about \\(14\\) mA; forgetting it altogether gives \\(28{\\cdot}2\\) mA. Neither is offered, but \\(40\\) mA and \\(10\\) mA sit on either side to catch a factor-of-two slip.\n\n**Why \\(282\\) was chosen.** \\(282 = 200\\sqrt{2}\\), so the rms voltage is exactly \\(200\\) V — the whole question is arranged to come out in round numbers, and spotting that \\(282\\) is \\(200\\sqrt{2}\\) does the first step by inspection.\n\n**A word on \\(\\omega = 100\\), which is not the mains.** Indian mains runs at \\(50\\) Hz, which is \\(\\omega = 2\\pi \\times 50 \\approx 314\\) rad/s. Here \\(\\omega = 100\\) rad/s corresponds to \\(\\nu = 100/2\\pi \\approx 16\\) Hz. The distinction matters because \\(X_C = 1/\\omega C\\) needs the **angular** frequency, and substituting \\(100\\) for a frequency in hertz would be wrong by a factor of \\(2\\pi\\).\n\n**What the reactance is doing.** At \\(10\\) k\\(\\Omega\\), this capacitor passes very little current — as it should, since a capacitor blocks DC entirely and its opposition falls only as the frequency rises. Raise \\(\\omega\\) to mains value and \\(X_C\\) drops to about \\(3{\\cdot}2\\) k\\(\\Omega\\), tripling the current."
+    },
+    {
+      "hash": "ad78877d8e9cad434aeb616e40d488cdff3a4d4abed8ee4f063da4f458266b4c",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "What are matter waves ? A proton, an electron and an \\(\\alpha\\)-particle have the same kinetic energy. Write the de Broglie wavelengths associated with them in increasing order.",
+      "solution": "**What matter waves are.**\n\n**Matter waves** (or de Broglie waves) are the waves associated with **every moving material particle**. De Broglie's proposal was that the wave-particle duality already accepted for light must be symmetric: if radiation can behave as particles, then particles must be able to behave as waves.\n\nThe wavelength associated with a particle of momentum \\(p\\) is\n\n\\(\\boxed{\\ \\lambda = \\dfrac{h}{p} = \\dfrac{h}{mv}\\ }\\)\n\nThey are not electromagnetic waves, and they are not waves of any material medium — they are waves of **probability**, whose intensity at a point gives the likelihood of finding the particle there. Their reality was established by the Davisson-Germer experiment, in which electrons were **diffracted** by a nickel crystal exactly as X-rays of the same wavelength would be.\n\n**Arranging the three in increasing order.**\n\n**Express \\(\\lambda\\) through the kinetic energy**, since that is what the three particles share:\n\n\\(K = \\dfrac{p^{2}}{2m} \\quad\\Longrightarrow\\quad p = \\sqrt{2mK} \\quad\\Longrightarrow\\quad \\lambda = \\dfrac{h}{\\sqrt{2mK}}\\)\n\n**With \\(K\\) the same for all three**, everything but the mass is a constant:\n\n\\(\\lambda \\propto \\dfrac{1}{\\sqrt{m}}\\)\n\n**So the heaviest particle has the SHORTEST wavelength.** Ordering by mass:\n\n\\(m_\\alpha \\;(\\approx 4m_p) \\;>\\; m_p \\;(\\approx 1836\\,m_e) \\;>\\; m_e\\)\n\nand therefore\n\n\\(\\boxed{\\ \\lambda_\\alpha < \\lambda_p < \\lambda_e\\ }\\)\n\n**A sense of the sizes.** The square root softens the differences considerably. The proton is about \\(1836\\) times the electron's mass, yet its wavelength is only \\(\\sqrt{1836} \\approx 43\\) times shorter. The alpha particle is \\(4\\) times the proton's mass, so its wavelength is just \\(2\\) times shorter than the proton's.\n\n**The caution that matters.** \\(\\lambda \\propto 1/\\sqrt{m}\\) holds **only because the kinetic energies are equal**. Had the question given equal **momenta**, then \\(\\lambda = h/p\\) would make all three wavelengths **identical**, regardless of mass; had it given equal **speeds**, \\(\\lambda = h/mv\\) would give \\(\\lambda \\propto 1/m\\) and the electron's would be \\(1836\\) times the proton's rather than \\(43\\). Always check which quantity is being held fixed before reaching for a proportionality."
+    },
+    {
+      "hash": "582c4f43b7b9ee4d0501809ad11fec07aa408577958925e9c28175d4e8b45173",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Two wires A and B of different metals have their lengths in ratio 1 : 2 and their radii in ratio 2 : 1 respectively. I-V graphs for them is shown in the figure. Find the ratio of their\n(i) Resistances \\((R_A/R_B)\\) and\n(ii) Resistivities \\((\\sigma_A/\\sigma_B)\\)",
+      "figureNote": "REQUIRED — the stem gives no slope and no angle; the two marked angles ARE the data, and the whole question is the ratio they fix. Deliberately NOT stated here: WHICH of the two lines makes which angle, since that pairing alone gives the ratio of the resistances and hence both answers. What is drawn: a first-quadrant plot with the vertical axis labelled I, the horizontal axis labelled V, the origin marked 0, and two straight lines rising from the origin, one labelled A and the other labelled B, with two angles measured from the V-axis and marked by arcs, one reading \\(45^\\circ\\) and the other \\(30^\\circ\\). Page idx 10.",
+      "imageAttached": false,
+      "solution": "**Reading the graph.** For an ohmic conductor \\(V = IR\\), so on an \\(I\\)-\\(V\\) plot\n\n\\(\\text{slope} = \\dfrac{\\Delta I}{\\Delta V} = \\dfrac{1}{R}\\)\n\n**The slope is the RECIPROCAL of the resistance**, so the **steeper** line is the **smaller** resistance. That inversion is the one thing to keep straight in this question.\n\n**(i) The ratio of resistances.**\n\nFrom the figure, both angles are measured from the \\(V\\)-axis: line \\(B\\) at \\(45^\\circ\\) and line \\(A\\) at \\(30^\\circ\\).\n\n\\(\\dfrac{1}{R_A} = \\tan 30^\\circ, \\qquad \\dfrac{1}{R_B} = \\tan 45^\\circ\\)\n\nso\n\n\\(\\dfrac{R_A}{R_B} = \\dfrac{\\text{slope of }B}{\\text{slope of }A} = \\dfrac{\\tan 45^\\circ}{\\tan 30^\\circ} = \\dfrac{1}{1/\\sqrt{3}}\\)\n\n\\(\\boxed{\\ \\dfrac{R_A}{R_B} = \\sqrt{3} \\approx 1{\\cdot}73\\ }\\)\n\n**Note the ratio inverts** when going from slopes to resistances — \\(B\\) is the steeper line, so \\(B\\) is the **lower** resistance and \\(R_A/R_B\\) is greater than \\(1\\).\n\n**(ii) The ratio of resistivities.**\n\n\\(R = \\dfrac{\\rho\\,l}{A} \\qquad\\Longrightarrow\\qquad \\rho = \\dfrac{RA}{l}\\)\n\nso\n\n\\(\\dfrac{\\rho_A}{\\rho_B} = \\dfrac{R_A}{R_B}\\cdot\\dfrac{A_A}{A_B}\\cdot\\dfrac{l_B}{l_A}\\)\n\n**The areas go as the SQUARE of the radii**, which is where the question hides its second step. With \\(r_A : r_B = 2 : 1\\),\n\n\\(\\dfrac{A_A}{A_B} = \\dfrac{\\pi r_A^{2}}{\\pi r_B^{2}} = \\left(\\dfrac{2}{1}\\right)^{2} = \\dfrac{4}{1}\\)\n\nand with \\(l_A : l_B = 1 : 2\\), the length factor \\(l_B/l_A = 2/1\\). Substituting:\n\n\\(\\dfrac{\\rho_A}{\\rho_B} = \\sqrt{3} \\times \\dfrac{4}{1} \\times \\dfrac{2}{1}\\)\n\n\\(\\boxed{\\ \\dfrac{\\rho_A}{\\rho_B} = 8\\sqrt{3} \\approx 13{\\cdot}86\\ }\\)\n\n**Why the two ratios are so different.** Wire \\(A\\) is only about \\(1{\\cdot}7\\) times the resistance of \\(B\\), yet it is made of a material some \\(14\\) times more resistive. Its geometry is working hard against that: \\(A\\) is **half** as long and **four times** as thick, a factor of eight in its favour. Resistance is a property of the **object**; resistivity is a property of the **material**. Separating them is exactly what this question is testing, and it is why a thick short wire of a poor conductor can out-perform a thin long wire of a good one.\n\n**A note on the symbol.** The question writes the resistivities as \\(\\sigma_A/\\sigma_B\\), though \\(\\sigma\\) more usually denotes **conductivity**, the reciprocal quantity. Here it means resistivity, as the word in the stem says; reading it as conductivity would invert the answer to \\(1/8\\sqrt{3}\\)."
+    },
+    {
+      "hash": "bd4c74a9e6f08dd2e5b76e193d4432597856be07c98bb2bdb6e995412491ab42",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "A thin spherical conducting shell of radius R has a charge q. A point charge Q is placed at the centre of the shell. Find (i) The charge density on the outer surface of the shell and (ii) the potential at a distance of (R/2) from the centre of the shell.",
+      "solution": "**Setting up.** A thin conducting shell of radius \\(R\\) carries charge \\(q\\); a point charge \\(Q\\) sits at its centre.\n\n**(i) The charge density on the outer surface.**\n\n**Step 1 — the induced charge on the inner surface.** Take a Gaussian surface inside the metal of the shell. Since \\(\\vec{E} = 0\\) inside a conductor in equilibrium, the flux through it is zero and so is the charge it encloses:\n\n\\(Q + q_{\\text{inner}} = 0 \\qquad\\Longrightarrow\\qquad q_{\\text{inner}} = -Q\\)\n\n**Step 2 — what is left for the outer surface.** The shell's own charge is \\(q\\), and it is shared between the two surfaces:\n\n\\(q_{\\text{outer}} = q - q_{\\text{inner}} = q - (-Q) = q + Q\\)\n\n**Step 3 — the density.**\n\n\\(\\boxed{\\ \\sigma = \\dfrac{q + Q}{4\\pi R^{2}}\\ }\\)\n\n**The sign to be careful about.** The outer surface carries \\(q + Q\\), **not** \\(q - Q\\): the shell had to place \\(-Q\\) on the inside, so the matching \\(+Q\\) is pushed outward and *adds* to \\(q\\).\n\n**(ii) The potential at \\(r = R/2\\).**\n\nThis point is **inside the cavity**, so both the point charge and the shell contribute, and potentials being scalars they simply add.\n\n**The shell's contribution.** For any point **inside** a charged spherical shell, the potential is **constant** and equal to its surface value. The shell's total charge is \\(q\\), so\n\n\\(V_1 = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q}{R}\\)\n\n— note the \\(R\\), **not** \\(R/2\\). This is the step most often got wrong, and it is what the question is really testing.\n\n**The point charge's contribution**, which does depend on distance:\n\n\\(V_2 = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{Q}{R/2} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{2Q}{R}\\)\n\n**Adding.**\n\n\\(\\boxed{\\ V = \\dfrac{1}{4\\pi\\varepsilon_0 R}\\left(q + 2Q\\right)\\ }\\)\n\n**Why the shell's term is constant but the total is not.** The field inside a uniformly charged shell is zero, so moving about inside costs no work against the shell's charge and its potential cannot change. But the point charge at the centre produces a real field in the cavity, so the **total** potential does vary from point to point — as \\(1/r\\), offset by the constant \\(kq/R\\).\n\n**A check at the surface.** Putting \\(r = R\\) instead of \\(R/2\\) gives \\(V = (q + Q)/4\\pi\\varepsilon_0 R\\), which is exactly what a total charge \\(q + Q\\) would produce at radius \\(R\\) — consistent with the outer surface found in part (i), since from outside the shell only the total charge shows."
+    },
+    {
+      "hash": "d0d157c92d6c6f1e458bfed619417d9abd11ca6d5e09fb68560eaed93d128a4a",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "Two long insulated straight wires carrying currents of 3 A and 5 A are arranged in XY plane as shown in figure. Find the magnitude and direction of the net magnetic fields at points \\(P_1\\)(2m, 2m) and \\(P_2\\)(-1m, 1m).",
+      "figureNote": "REQUIRED — the question asks for a DIRECTION, and which wire lies along which axis and which way each current flows are drawn and never stated. Deliberately NOT stated here: the sense of either current arrow, since those two senses fix both answers' directions. What is drawn: a pair of axes crossing at a point marked 0, with one long wire lying along each axis and labelled with its current (5 A on one, 3 A on the other) and carrying an arrowhead giving its sense; a dot labelled \\(P_1\\) in the quadrant where both coordinates are positive and a dot labelled \\(P_2\\) in the quadrant to its left; and, drawn clear of the wires, a right-handed axis triad labelled x (right), y (up) and z (toward the lower-left). Page idx 12.",
+      "imageAttached": true,
+      "solution": "**Setting up.** One wire lies along the \\(x\\)-axis carrying \\(3\\) A in the \\(+x\\) direction; the other lies along the \\(y\\)-axis carrying \\(5\\) A in the \\(+y\\) direction. For a long straight wire,\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi r}, \\qquad \\dfrac{\\mu_0}{2\\pi} = 2 \\times 10^{-7}\\ \\mathrm{T\\,m\\,A^{-1}}\\)\n\nso \\(B = 2 \\times 10^{-7}\\dfrac{I}{r}\\), which is the form to work in throughout.\n\n**The perpendicular distance from a point to an axis is the point's OTHER coordinate** — the distance to the \\(x\\)-axis is \\(|y|\\), and to the \\(y\\)-axis is \\(|x|\\). Getting these the wrong way round is the commonest slip here.\n\n**At \\(P_1(2\\ \\mathrm{m},\\, 2\\ \\mathrm{m})\\).**\n\n*From the \\(x\\)-axis wire* (\\(3\\) A, distance \\(2\\) m): \\(B_1 = 2 \\times 10^{-7}\\times\\dfrac{3}{2} = 3 \\times 10^{-7}\\ \\mathrm{T}\\).\n\nDirection: \\(\\hat{I}\\times\\hat{r} = \\hat{i}\\times\\hat{j} = \\hat{k}\\) — **out of the page**, along \\(+z\\).\n\n*From the \\(y\\)-axis wire* (\\(5\\) A, distance \\(2\\) m): \\(B_2 = 2 \\times 10^{-7}\\times\\dfrac{5}{2} = 5 \\times 10^{-7}\\ \\mathrm{T}\\).\n\nDirection: \\(\\hat{j}\\times\\hat{i} = -\\hat{k}\\) — **into the page**, along \\(-z\\).\n\n**They OPPOSE**, so the magnitudes subtract:\n\n\\(B_{P_1} = 5 \\times 10^{-7} - 3 \\times 10^{-7}\\)\n\n\\(\\boxed{\\ B_{P_1} = 2 \\times 10^{-7}\\ \\mathrm{T},\\ \\text{along } -z\\ \\text{(into the page)}\\ }\\)\n\n**At \\(P_2(-1\\ \\mathrm{m},\\, 1\\ \\mathrm{m})\\).**\n\n*From the \\(x\\)-axis wire* (\\(3\\) A, distance \\(1\\) m): \\(B_1 = 2 \\times 10^{-7}\\times\\dfrac{3}{1} = 6 \\times 10^{-7}\\ \\mathrm{T}\\).\n\n\\(P_2\\) is still **above** the \\(x\\)-axis, so the direction is the same as before: \\(+z\\), out of the page.\n\n*From the \\(y\\)-axis wire* (\\(5\\) A, distance \\(1\\) m): \\(B_2 = 2 \\times 10^{-7}\\times\\dfrac{5}{1} = 10 \\times 10^{-7}\\ \\mathrm{T}\\).\n\nBut \\(P_2\\) is now on the **other side** of this wire, at negative \\(x\\). So the direction **reverses**: \\(\\hat{j}\\times(-\\hat{i}) = +\\hat{k}\\), out of the page.\n\n**They now REINFORCE**, so the magnitudes add:\n\n\\(B_{P_2} = 6 \\times 10^{-7} + 10 \\times 10^{-7}\\)\n\n\\(\\boxed{\\ B_{P_2} = 16 \\times 10^{-7}\\ \\mathrm{T} = 1{\\cdot}6 \\times 10^{-6}\\ \\mathrm{T},\\ \\text{along } +z\\ \\text{(out of the page)}\\ }\\)\n\n**The design of the question.** The two points are chosen so that the fields **subtract** at one and **add** at the other — the only thing that changed is which side of the \\(y\\)-axis the point sits on. The \\(3\\) A wire's contribution keeps the same sense at both points because both are above it; the \\(5\\) A wire's flips. Note that the second field is eight times the first in size, which comes as much from the halved distance as from the larger current.\n\n**How to check a direction without the cross product.** Point the right thumb along the current and let the fingers curl: the fingers give the field's sense. For a current in \\(+x\\), the field is out of the page for points above the wire and into the page for points below."
+    },
+    {
+      "hash": "0ff707125b5d02cd05859dfd0e36465bc6666b6116faa9f269509ad6a5f93432",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Displacement Current",
+      "stem": "What is meant by displacement current ? How is this current different from the conduction current ? A capacitor is being charged by a source of emf. Justify the continuity of current in the circuit.",
+      "solution": "**What displacement current is.**\n\n**Displacement current** is the current attributed to a **time-varying electric field**. Maxwell introduced it as\n\n\\(\\boxed{\\ i_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt}\\ }\\)\n\nwhere \\(\\phi_E\\) is the electric flux through the surface considered. It is a *current* in the sense that it produces a magnetic field exactly as a conduction current does — but no charge flows.\n\n**How it differs from conduction current.**\n\n| | **Conduction current** \\(i_c\\) | **Displacement current** \\(i_d\\) |\n|---|---|---|\n| Cause | Actual **motion of charge** (drift of free electrons) | A **changing electric field**, \\(d\\phi_E/dt\\) |\n| Requires a medium? | Yes — needs free charge carriers, so a conductor | No — exists in **vacuum** and in a dielectric |\n| Expression | \\(i_c = \\dfrac{dq}{dt}\\) | \\(i_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt}\\) |\n| Heat produced | Yes, \\(i^{2}R\\) | None — there is nothing to collide with |\n\nBoth produce a magnetic field, and both appear in the Ampere-Maxwell law:\n\n\\(\\oint\\vec{B}\\cdot d\\vec{l} = \\mu_0\\left(i_c + i_d\\right)\\)\n\n**Justifying the continuity of current in a charging capacitor.**\n\n**The problem Maxwell was solving.** Apply Ampere's circuital law to a loop encircling the wire leading to a capacitor, and then choose two different surfaces bounded by that same loop. A flat surface cutting the **wire** encloses the conduction current \\(i_c\\). A bulging surface passing **between the plates** cuts no wire at all and encloses **zero** conduction current. The law then gives two different answers for the same \\(\\oint\\vec{B}\\cdot d\\vec{l}\\) — a contradiction, and it is what showed Ampere's law to be incomplete.\n\n**The resolution.** Between the plates, with charge \\(q\\) on a plate of area \\(A\\):\n\n\\(E = \\dfrac{q}{\\varepsilon_0 A} \\qquad\\Longrightarrow\\qquad \\phi_E = EA = \\dfrac{q}{\\varepsilon_0}\\)\n\nSo the displacement current there is\n\n\\(i_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt} = \\varepsilon_0\\cdot\\dfrac{1}{\\varepsilon_0}\\cdot\\dfrac{dq}{dt} = \\dfrac{dq}{dt} = i_c\\)\n\n\\(\\boxed{\\ i_d = i_c\\ }\\)\n\n**The \\(\\varepsilon_0\\) cancels exactly**, which is the point: the displacement current between the plates is **precisely equal** to the conduction current in the wires, not merely similar to it. Both surfaces now enclose the same total current, the contradiction disappears, and the current is **continuous** all the way round the circuit — carried by moving charge in the wires and by a changing electric field in the gap.\n\n**What came of it.** This term is what makes a changing electric field a source of magnetic field, the counterpart of Faraday's changing magnetic field producing an electric one. The symmetry allows the two to sustain each other with no charges present at all — which is the electromagnetic wave, and hence light."
+    },
+    {
+      "hash": "66eca0c08126ed0b4cbff5557e99e61126300539b892f75a7588a0ca97105150",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "Find the currents flowing through the branches AB and BC in the network shown.",
+      "figureNote": "REQUIRED — the stem names no component and no value; the entire question is the printed network. The layout and labelling are described because the answer is a pair of current values that no description states, but the CELL POLARITIES are visible only in the drawing and are NOT stated here. What is drawn: a two-loop network with nodes A, B, C along the top rail and N, M, D along the bottom rail; top-rail resistors of 5 \\(\\Omega\\) between A and B and 5 \\(\\Omega\\) between B and C; a vertical resistor \\(R_1\\) of 10 \\(\\Omega\\) from B down to M and a vertical resistor \\(R_2\\) of 20 \\(\\Omega\\) from C down to D; plain wires closing A to N and the top of \\(R_2\\) to C; and two cells on the bottom rail, one marked 5 V between N and M and one marked 10 V between M and D. Page idx 14.",
+      "imageAttached": true,
+      "solution": "**Setting up the currents.** Let \\(I_1\\) flow from \\(A\\) to \\(B\\) through the left \\(5\\ \\Omega\\), and \\(I\\) flow from \\(B\\) to \\(C\\) through the right \\(5\\ \\Omega\\). By the junction rule at \\(B\\), the current arriving from \\(M\\) through the \\(10\\ \\Omega\\) must be \\(I - I_1\\).\n\nBoth cells have their **positive terminal at \\(M\\)**, which is what fixes the signs below.\n\n**Loop \\(ABMNA\\)** (through the left \\(5\\ \\Omega\\), then the \\(10\\ \\Omega\\), then the \\(5\\) V cell):\n\n\\(-5I_1 + 10(I - I_1) - 5 = 0\\)\n\n\\(10I - 15I_1 = 5 \\qquad\\Longrightarrow\\qquad 2I - 3I_1 = 1 \\qquad \\cdots(1)\\)\n\n**Loop \\(ABCDMNA\\)** (the outer loop, through both \\(5\\ \\Omega\\), the \\(20\\ \\Omega\\), then both cells):\n\n\\(-5I_1 - 5I - 20I + 10 - 5 = 0\\)\n\n\\(-25I - 5I_1 + 5 = 0 \\qquad\\Longrightarrow\\qquad 5I + I_1 = 1 \\qquad \\cdots(2)\\)\n\n**Solving.** From (2), \\(I_1 = 1 - 5I\\). Substituting into (1):\n\n\\(2I - 3(1 - 5I) = 1\\)\n\n\\(2I - 3 + 15I = 1 \\qquad\\Longrightarrow\\qquad 17I = 4\\)\n\n\\(I = \\dfrac{4}{17}\\ \\mathrm{A}, \\qquad I_1 = 1 - \\dfrac{20}{17} = -\\dfrac{3}{17}\\ \\mathrm{A}\\)\n\n**The answers.**\n\n\\(\\boxed{\\ \\text{Current in } AB = \\dfrac{3}{17}\\ \\mathrm{A} \\approx 0{\\cdot}18\\ \\mathrm{A}\\ }\\)\n\n\\(\\boxed{\\ \\text{Current in } BC = \\dfrac{4}{17}\\ \\mathrm{A} \\approx 0{\\cdot}24\\ \\mathrm{A}\\ }\\)\n\n**What the minus sign on \\(I_1\\) means.** It does **not** mean a mistake. It means the current in \\(AB\\) actually flows from \\(B\\) to \\(A\\), opposite to the direction assumed at the start. The magnitude is unaffected. Assuming a direction and letting the algebra correct it is the normal way to use Kirchhoff's rules — there is no need to guess right in advance.\n\n**A check through the junction rule at \\(B\\).** The current up through the \\(10\\ \\Omega\\) is\n\n\\(I - I_1 = \\dfrac{4}{17} - \\left(-\\dfrac{3}{17}\\right) = \\dfrac{7}{17}\\ \\mathrm{A}\\)\n\nand at \\(B\\) this splits into \\(\\dfrac{3}{17}\\) going to \\(A\\) and \\(\\dfrac{4}{17}\\) going to \\(C\\). Since \\(\\dfrac{3}{17} + \\dfrac{4}{17} = \\dfrac{7}{17}\\), the junction rule is satisfied — a check worth making, because it tests both answers at once and uses an equation that was not used to find them.\n\n**Why the currents come out as seventeenths.** Nothing has gone wrong: an unbalanced two-loop network with unequal emfs has no reason to give round numbers. Expect awkward fractions here and resist the urge to round them away — \\(\\dfrac{4}{17}\\) is exact, \\(0{\\cdot}235\\) is not.\n\n**Reading the result physically.** The \\(10\\) V cell dominates: it drives current up through the \\(10\\ \\Omega\\) into \\(B\\), where it divides. Part goes the \"expected\" way to \\(C\\) and round through the \\(20\\ \\Omega\\); the rest is pushed **backwards** through the left branch, against the \\(5\\) V cell, which is therefore being charged rather than discharged."
+    }
+  ]
+}
