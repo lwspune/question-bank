@@ -1,0 +1,273 @@
+{
+  "paper": "55/3/2",
+  "year": 2023,
+  "paperId": "2023-55-3-2",
+  "markingScheme": "out/2023-55-3-2/ms/p00.png … p22.png",
+  "rows": [
+    {
+      "hash": "faeab248736bee2c61c63d7b241eecc0684292baae7f88b99533b3f2a9ea947b",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "An infinitely long uniformly charged wire produces an electric field of \\(18 \\times 10^{4}\\ \\mathrm{NC^{-1}}\\) at a distance of \\(1{\\cdot}0\\) cm. The linear charge density on the wire is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1{\\cdot}12 \\times 10^{-14}\\ \\mathrm{Cm^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3{\\cdot}08 \\times 10^{-15}\\ \\mathrm{Cm^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}0 \\times 10^{-9}\\ \\mathrm{Cm^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(1{\\cdot}0 \\times 10^{-7}\\ \\mathrm{Cm^{-1}}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(1{\\cdot}0 \\times 10^{-7}\\ \\mathrm{C\\,m^{-1}}\\).**\n\n**The field of an infinite line charge.** Gauss's law applied to a coaxial cylinder gives\n\n\\(E = \\dfrac{\\lambda}{2\\pi\\varepsilon_0 r} = \\dfrac{2k\\lambda}{r}, \\qquad k = \\dfrac{1}{4\\pi\\varepsilon_0} = 9 \\times 10^{9}\\)\n\nNote the \\(1/r\\), not \\(1/r^{2}\\) — a line of charge falls off more slowly than a point charge, because the symmetry is cylindrical rather than spherical.\n\n**Rearranging and substituting**, with \\(r = 1{\\cdot}0\\ \\mathrm{cm} = 10^{-2}\\) m:\n\n\\(\\lambda = \\dfrac{Er}{2k} = \\dfrac{18 \\times 10^{4} \\times 10^{-2}}{2 \\times 9 \\times 10^{9}} = \\dfrac{1800}{1{\\cdot}8 \\times 10^{10}}\\)\n\n\\(\\lambda = 1{\\cdot}0 \\times 10^{-7}\\ \\mathrm{C\\,m^{-1}}\\)\n\n**The numbers are designed to cancel:** \\(18/(2 \\times 9) = 1\\) exactly, so the result comes out as a clean power of ten and no long division is needed.\n\n**Where the wrong answers come from.** Forgetting to convert the centimetre gives \\(10^{-5}\\); using \\(r^{2}\\) instead of \\(r\\) gives \\(10^{-9}\\), which is one of the offered options and the trap this question is built around. The remaining two distractors are not products of any single slip — they are simply implausible magnitudes, and \\(10^{-14}\\ \\mathrm{C\\,m^{-1}}\\) would be under a tenth of one electron's charge per metre of wire.\n\n**A sanity check.** \\(10^{-7}\\) C/m is about \\(6 \\times 10^{11}\\) electron charges per metre, which sounds enormous but is an entirely ordinary laboratory charge density — and it produces a field of \\(1{\\cdot}8 \\times 10^{5}\\ \\mathrm{N\\,C^{-1}}\\) only a centimetre away, still well below the \\(3 \\times 10^{6}\\ \\mathrm{N\\,C^{-1}}\\) at which air breaks down."
+    },
+    {
+      "hash": "eaa4f34d8fda3d5d3fcfad7525a321989f913f779a46047e837850af3b1ddf90",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "At 0 K, the resistivity of an intrinsic semiconductor is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "same as that at 0°C"
+        },
+        {
+          "label": "B",
+          "text": "same as that at 300 K"
+        },
+        {
+          "label": "C",
+          "text": "zero"
+        },
+        {
+          "label": "D",
+          "text": "infinite"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): infinite.**\n\n**What an intrinsic semiconductor has at \\(0\\) K.** Its only source of charge carriers is the **thermal breaking of covalent bonds**. There is no dopant to supply electrons or holes, so every carrier must be created by heat.\n\nAt absolute zero there is no thermal energy to do that. Every valence electron stays in its bond, the **valence band is completely full** and the **conduction band completely empty**.\n\n\\(n_e = n_h = 0 \\qquad\\Longrightarrow\\qquad \\sigma = e(n_e\\mu_e + n_h\\mu_h) = 0\\)\n\nand since resistivity is the reciprocal of conductivity,\n\n\\(\\rho = \\dfrac{1}{\\sigma} \\to \\infty\\)\n\n**A pure semiconductor at absolute zero is a perfect insulator** — indistinguishable in behaviour from diamond, and for the same reason: a completely filled band cannot carry current, because there is no vacant state of slightly higher energy for an electron to move into.\n\n**Why the other options fail.** \"Zero\" is the exact opposite and describes a superconductor, which a semiconductor is not. \"Same as at \\(0^\\circ\\mathrm{C}\\)\" and \"same as at 300 K\" both claim the resistivity is temperature-independent, when in fact it is *steeply* temperature-dependent — and \\(0^\\circ\\mathrm{C}\\) is 273 K, not 0 K, a confusion the option is designed to catch.\n\n**The contrast with a metal is the point.** Cooling a **metal** towards absolute zero *reduces* its resistivity, because lattice vibrations die away and the carrier count is fixed. Cooling a **semiconductor** *raises* its resistivity without limit, because the carriers themselves disappear. The two materials behave oppositely for the same reason they behave oppositely at high temperature."
+    },
+    {
+      "hash": "8117d2d2206cb6a84f58e766005b4fc4de3d790e9749318870e15feb5f570b50",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "In an experiment on photoelectric effect, the intensity of incident radiation is increased, keeping the frequency \\(\\nu\\) the same. The number of photoelectrons emitted will :",
+      "options": [
+        {
+          "label": "A",
+          "text": "increase"
+        },
+        {
+          "label": "B",
+          "text": "decrease"
+        },
+        {
+          "label": "C",
+          "text": "remain same"
+        },
+        {
+          "label": "D",
+          "text": "depend on frequency"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): the number of photoelectrons will increase.**\n\n**What intensity means in the photon picture.** For light of a fixed frequency \\(\\nu\\), each photon carries the same energy \\(h\\nu\\). Intensity is energy delivered per unit area per second, so\n\n\\(\\text{intensity} = (\\text{photons per second per unit area}) \\times h\\nu\\)\n\nAt fixed \\(\\nu\\), raising the intensity can only mean **more photons arriving per second**.\n\n**Why more photons means more electrons.** Photoemission is a **one-photon, one-electron** event: a single electron absorbs a single whole photon and either escapes or does not. The process cannot pool energy from several photons. So the number of electrons freed per second is proportional to the number of photons arriving per second — that is, to the intensity.\n\n\\(\\text{photocurrent} \\propto \\text{intensity}\\)\n\n**What does NOT change, and this is the heart of the photoelectric effect.** The **maximum kinetic energy** of the emitted electrons is\n\n\\(K_{\\max} = h\\nu - \\phi_0\\)\n\nwhich contains no intensity term at all. Brighter light of the same colour frees *more* electrons but not *faster* ones, so the **stopping potential is unchanged**.\n\nThat separation is exactly what classical wave theory could not explain. A wave picture predicts that a more intense beam delivers energy faster and should therefore produce more energetic electrons — and that a dim beam should work eventually, after a delay while energy accumulated. Neither happens. Intensity controls the **number**; frequency alone controls the **energy**.\n\nThe option \"depend on frequency\" is a distractor built on that very confusion: the *energy* depends on frequency, but the question asks about the *number*, and the frequency here is being held fixed anyway."
+    },
+    {
+      "hash": "8700ec0dc1457fc5dad1ad93bdbb656ff5de19cbf7637bc4f222a9b1ee26861e",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "The SI unit of mobility of charge carriers is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\Omega\\ \\mathrm{s^{-1}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{m^{2}\\,V^{-1}\\,s^{-1}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{m\\,s^{-1}\\,V^{-1}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\Omega\\ \\mathrm{m}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\mathrm{m^{2}\\,V^{-1}\\,s^{-1}}\\).**\n\n**The definition.** Mobility is the drift speed a carrier acquires per unit applied electric field:\n\n\\(\\mu = \\dfrac{v_d}{E}\\)\n\n**Deriving the unit from that definition** — which is safer than recalling it:\n\n\\(\\left[\\mu\\right] = \\dfrac{\\mathrm{m\\,s^{-1}}}{\\mathrm{V\\,m^{-1}}} = \\mathrm{m\\,s^{-1}} \\times \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\mathrm{m^{2}\\,V^{-1}\\,s^{-1}}\\)\n\nThe two metres multiply because the field carries a \\(\\mathrm{m^{-1}}\\) in its denominator, and that is precisely the step the distractor \\(\\mathrm{m\\,s^{-1}\\,V^{-1}}\\) gets wrong — it treats the field as though it were measured in volts rather than volts per metre.\n\n**The other two options are not even the right kind of quantity.** \\(\\Omega\\,\\mathrm{m}\\) is the unit of **resistivity** and \\(\\Omega\\,\\mathrm{s^{-1}}\\) is not a standard unit of anything. Both can be dismissed without reaching for a formula.\n\n**Why mobility is worth defining at all.** It separates what the *material* does from what the *circuit* does. Conductivity depends on both how many carriers there are and how freely each moves:\n\n\\(\\sigma = e(n_e\\mu_e + n_h\\mu_h)\\)\n\nDoping changes \\(n\\); temperature and lattice quality change \\(\\mu\\). Keeping them apart is what lets one say that heating a semiconductor raises \\(\\sigma\\) despite *lowering* \\(\\mu\\) — the carrier count rises exponentially and wins.\n\nFor orientation, electron mobility in silicon is about \\(0{\\cdot}14\\ \\mathrm{m^{2}\\,V^{-1}\\,s^{-1}}\\), and in copper some thousand times smaller — copper conducts well because of \\(n\\), not \\(\\mu\\)."
+    },
+    {
+      "hash": "1a8faca6f2a65ad82c79254ce4253d03146b2030c44eaee1cd604000b2535007",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "In a moving coil galvanometer, the deflecting torque \\(\\tau\\) acting on the coil is related to the current I flowing through it as :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\tau \\propto \\mathrm{I}^{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\tau \\propto \\mathrm{I}^{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\tau \\propto \\mathrm{I}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\tau \\propto \\sqrt{\\mathrm{I}}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\tau \\propto \\mathrm{I}\\).**\n\n**The torque on the coil.** A rectangular coil of \\(N\\) turns and area \\(A\\) carrying current \\(I\\) in a magnetic field \\(B\\) experiences\n\n\\(\\tau = NIAB\\sin\\theta\\)\n\nwhere \\(\\theta\\) is the angle between the field and the plane's normal.\n\n**Why the \\(\\sin\\theta\\) does not spoil the proportionality.** In a moving-coil galvanometer the pole pieces are made **concave** and a soft-iron cylinder is placed inside the coil. Together they produce a **radial field**, so that whatever the coil's deflection, the field is always **parallel to the plane of the coil**. That fixes \\(\\theta = 90^\\circ\\) permanently, and\n\n\\(\\tau = NIAB\\)\n\nWith \\(N\\), \\(A\\) and \\(B\\) all constant for a given instrument, the deflecting torque is **directly proportional to the current**.\n\n**Why this matters more than it looks.** At equilibrium the deflecting torque is balanced by the restoring torque of the suspension, \\(k\\phi\\):\n\n\\(NIAB = k\\phi \\qquad\\Longrightarrow\\qquad \\phi = \\left(\\dfrac{NAB}{k}\\right)I\\)\n\nso the **deflection is proportional to the current** and the scale is **linear** — equal current steps give equal angular steps, and the instrument can be marked with a uniform scale.\n\nWithout the radial field the torque would go as \\(\\sin\\theta\\), the deflection would be a non-linear function of current, and the scale would have to be crowded at one end. **The radial field is what makes the galvanometer a usable measuring instrument rather than merely a current detector.**"
+    },
+    {
+      "hash": "d6ab9fd1c4fbf60aebaa4fe5527c17a9cbe22308c77f52a95992f840bfff6f01",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "Electromagnetic waves of wavelength of the order of a few meters were first produced and detected in the laboratory by :",
+      "options": [
+        {
+          "label": "A",
+          "text": "J.C. Maxwell"
+        },
+        {
+          "label": "B",
+          "text": "J.C. Bose"
+        },
+        {
+          "label": "C",
+          "text": "H.R. Hertz"
+        },
+        {
+          "label": "D",
+          "text": "G. Marconi"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): H. R. Hertz.**\n\n**What each of the four did.**\n\n**Maxwell (1865)** *predicted* electromagnetic waves. He showed that his equations admit wave solutions travelling at \\(1/\\sqrt{\\mu_0\\varepsilon_0}\\), which came out equal to the measured speed of light — but he never produced them in a laboratory, and died before anyone did.\n\n**Hertz (1887)** *produced and detected* them. Using a spark gap across an induction coil as transmitter and a small loop with its own gap as receiver, he generated waves of a few metres' wavelength and showed they reflect, refract, interfere and are polarised exactly as light does. That experiment turned Maxwell's prediction into an observed fact, and the SI unit of frequency carries his name.\n\n**J. C. Bose (1895)** pushed the technique to much **shorter** wavelengths — millimetre waves, around 5 mm to 25 mm — and demonstrated transmission through walls. Pioneering work, but after Hertz and at a different scale from the \"few metres\" the question specifies.\n\n**Marconi (1895 onwards)** *applied* the discovery, developing wireless telegraphy over increasing distances and eventually across the Atlantic. He was an engineer of the technology rather than the discoverer of the waves.\n\n**The question's wording is doing careful work.** \"First **produced and detected** in the **laboratory**\" separates Hertz from Maxwell (who predicted but did not produce) and from Marconi (who transmitted but did not discover); \"**of the order of a few metres**\" separates him from Bose, whose waves were a hundred times shorter."
+    },
+    {
+      "hash": "18714db4f6525af7cfae49e7e0a228a6d1f202a097b84dbe957ad653fe1db169",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "The emf and internal resistance of a cell are E and r respectively. It is connected across an external resistance R = 2r. The potential drop across the terminals of the cell will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\mathrm{E}}{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\mathrm{E}}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{2}{3}\\mathrm{E}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{\\mathrm{E}}{3}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{2}{3}\\mathrm{E}\\).**\n\n**The circuit.** A real cell of emf \\(E\\) and internal resistance \\(r\\) drives current through an external \\(R = 2r\\). The internal resistance is in series with the external one, so\n\n\\(I = \\dfrac{E}{R + r} = \\dfrac{E}{2r + r} = \\dfrac{E}{3r}\\)\n\n**The terminal potential difference** is what appears across the external resistor — the emf less the drop wasted inside the cell:\n\n\\(V = E - Ir = E - \\dfrac{E}{3r} \\times r = E - \\dfrac{E}{3}\\)\n\n\\(V = \\dfrac{2}{3}E\\)\n\nOr equivalently, straight across the external resistance:\n\n\\(V = IR = \\dfrac{E}{3r} \\times 2r = \\dfrac{2E}{3}\\)\n\nThe two routes agree, and computing it both ways is the quickest guard against dropping a factor.\n\n**The general form worth remembering:**\n\n\\(V = E\\left(\\dfrac{R}{R + r}\\right)\\)\n\nwhich makes the behaviour obvious at a glance. The terminal voltage is always **less than the emf** whenever current flows, and the fraction lost is set by how \\(r\\) compares with \\(R\\):\n\n- \\(R \\gg r\\) — \\(V \\to E\\); a cell on open circuit or a light load reads its full emf.\n- \\(R = r\\) — \\(V = E/2\\); half the energy is burned inside the cell. This is the maximum-power-transfer condition, and it is deliberately *avoided* in practice because the efficiency is only 50%.\n- \\(R \\to 0\\) — \\(V \\to 0\\); a short circuit drops the whole emf internally and the cell heats up.\n\n**The distractor \\(E/3\\)** is what you get by computing \\(Ir\\) — the voltage lost *inside* the cell — and mistaking it for the terminal voltage. The two are complements, and the question is really asking which of the pair you have found."
+    },
+    {
+      "hash": "9030c3905712874502803bceaa169e43d94b913aafd455c77cbf8c4719bd825c",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "How is the width of depletion layer of a p-n junction diode affected when it is (i) forward biased, and (ii) reverse biased ? Justify your answers.",
+      "solution": "**The depletion layer at equilibrium.** With no bias applied, diffusion across the junction leaves a layer of immobile ions — negative on the p-side, positive on the n-side — which sets up a built-in **barrier potential** \\(V_0\\) opposing further diffusion. The layer's width is whatever makes the drift current exactly cancel the diffusion current.\n\n**(i) Forward bias — the width DECREASES.**\n\n*Justification.* Forward bias connects the p-side to the positive terminal, so the applied voltage \\(V\\) points **opposite** to the built-in field. The net barrier falls to \\(V_0 - V\\).\n\nTwo ways of seeing the consequence, and they are the same thing:\n\n*In terms of carriers*, the supply pushes holes from the p-side and electrons from the n-side **towards** the junction, where they neutralise some of the uncovered ions. Fewer ions are needed, so the layer narrows.\n\n*In terms of charge*, a smaller potential difference across the junction requires a smaller separated charge to support it — and the only charge available is the fixed ionic charge, so the width must shrink.\n\nAs the layer narrows the barrier falls, and once \\(V\\) approaches \\(V_0\\) majority carriers cross freely and the diode conducts.\n\n**(ii) Reverse bias — the width INCREASES.**\n\n*Justification.* Reverse bias connects the p-side to the negative terminal, so the applied voltage points the **same** way as the built-in field and the two add: the barrier rises to \\(V_0 + V\\).\n\nThe supply now pulls majority carriers **away** from the junction — holes towards the negative terminal, electrons towards the positive — uncovering a further layer of immobile ions on each side. That newly uncovered layer is new depletion region.\n\nWith the barrier raised, almost no majority carriers can cross, and only the tiny reverse saturation current due to minority carriers flows.\n\n**The width of the depletion layer is therefore a voltage-controlled quantity, not a fixed property of the diode** — which is exactly what a **varactor** diode exploits, since the layer acts as the dielectric gap of a capacitor and \\(C \\propto 1/W\\). Reverse-biasing such a diode tunes its capacitance, and that is how a radio tunes electronically rather than with a moving-plate capacitor."
+    },
+    {
+      "hash": "c1faff414e0e1c31a151ddf6898c9d6c04764bcc1ee93c559d4eb310e3d5c3b6",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "Two wires of equal lengths are shaped in the form of a square loop and a circular loop. Both loops are suspended in a uniform magnetic field. Prove that for the same current, the circular loop will experience larger torque.",
+      "solution": "**The quantity to compare.** A current-carrying loop in a uniform field experiences\n\n\\(\\tau = NIAB\\sin\\theta\\)\n\nBoth loops are made from **the same length of wire**, carry **the same current**, sit in the **same field** and have a single turn. Every factor is therefore identical except the **area** \\(A\\). So the loop with the greater area wins, and the whole proof reduces to comparing two areas enclosed by the same perimeter.\n\n**Let the wire have length \\(l\\).**\n\n*The square.* Its perimeter is \\(l\\), so each side is \\(a = \\dfrac{l}{4}\\), and\n\n\\(A_s = a^{2} = \\dfrac{l^{2}}{16}\\)\n\n*The circle.* Its circumference is \\(l\\), so \\(2\\pi r = l\\) and \\(r = \\dfrac{l}{2\\pi}\\), giving\n\n\\(A_c = \\pi r^{2} = \\pi\\left(\\dfrac{l}{2\\pi}\\right)^{2} = \\dfrac{l^{2}}{4\\pi}\\)\n\n**The comparison.**\n\n\\(\\dfrac{A_c}{A_s} = \\dfrac{l^{2}/4\\pi}{l^{2}/16} = \\dfrac{16}{4\\pi} = \\dfrac{4}{\\pi} \\approx 1{\\cdot}27\\)\n\nSince \\(\\pi < 4\\), the ratio exceeds 1:\n\n\\(A_c > A_s \\qquad\\Longrightarrow\\qquad \\tau_c > \\tau_s\\)\n\n**The circular loop experiences the larger torque, by a factor of \\(4/\\pi\\)** — about 27% more.\n\n**Why this is not a coincidence.** Of all plane figures with a given perimeter, **the circle encloses the greatest area** — the classical isoperimetric property. The square is merely the best of the regular quadrilaterals; a regular hexagon of the same perimeter does better still \\((A = l^{2}/8\\sqrt{3} \\approx l^{2}/13{\\cdot}86)\\), and as the number of sides grows the polygon's area climbs steadily towards the circle's \\(l^{2}/4\\pi\\).\n\nSo the result generalises: for a fixed length of wire and a fixed current, **the circular loop has the largest magnetic moment** \\(m = IA\\) of any shape, and therefore the largest torque in any uniform field. That is one reason coils in galvanometers and motors are wound circular or near-circular wherever the geometry allows."
+    },
+    {
+      "hash": "b0497d1f97d42b73c15128294f7b5fe285c9514662636f4b94697f9da404a694",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "(a) A particle of mass m and charge q is accelerated through a potential difference V. Plot a graph of de Broglie wavelength \\(\\lambda\\) associated with it as a function of V.\n(b) Calculate the energy acquired by and de Broglie wavelength associated with, an electron accelerated through a potential difference of 400 V.",
+      "solution": "**(a) The graph of \\(\\lambda\\) against \\(V\\).**\n\nA particle of charge \\(q\\) accelerated from rest through \\(V\\) gains kinetic energy \\(qV\\), so its momentum is \\(p = \\sqrt{2mqV}\\) and\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mqV}}\\)\n\nFor a given particle everything except \\(V\\) is constant, so\n\n\\(\\lambda \\propto \\dfrac{1}{\\sqrt{V}}\\)\n\n**The shape.** Plot \\(\\lambda\\) on the vertical axis against \\(V\\) on the horizontal. The curve starts very high near \\(V = 0\\), **falls steeply**, then flattens out and approaches the \\(V\\)-axis **asymptotically** without ever meeting it — an inverse-square-root decay, gentler than a hyperbola.\n\nTwo features should be visible in the sketch: it never touches either axis, since \\(\\lambda \\to \\infty\\) as \\(V \\to 0\\) and \\(\\lambda \\to 0\\) only as \\(V \\to \\infty\\); and the fall is steepest at small \\(V\\), because that is where a given increase in voltage makes the largest fractional change in momentum.\n\n**A useful alternative.** Plotting \\(\\lambda\\) against \\(\\dfrac{1}{\\sqrt{V}}\\) gives a **straight line through the origin** of slope \\(h/\\sqrt{2mq}\\), which is how such a relation is verified experimentally — a curve is hard to test by eye, a straight line is not.\n\n**(b) An electron accelerated through 400 V.**\n\n*The energy acquired.*\n\n\\(K = qV = 1{\\cdot}6 \\times 10^{-19} \\times 400\\)\n\n\\(K = 6{\\cdot}4 \\times 10^{-17}\\ \\mathrm{J} = 400\\ \\mathrm{eV}\\)\n\nThe electronvolt makes this immediate: an electron through \\(400\\) V gains exactly \\(400\\) eV, by definition of the unit.\n\n*The wavelength.*\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mK}} = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{\\sqrt{2 \\times 9{\\cdot}1 \\times 10^{-31} \\times 6{\\cdot}4 \\times 10^{-17}}}\\)\n\nThe radicand is \\(1{\\cdot}165 \\times 10^{-46}\\), whose square root is \\(1{\\cdot}079 \\times 10^{-23}\\), so\n\n\\(\\lambda = 6{\\cdot}14 \\times 10^{-11}\\ \\mathrm{m} = 0{\\cdot}614\\ \\mathring{\\mathrm{A}}\\)\n\n**A shortcut worth carrying.** For an electron the whole expression collapses to\n\n\\(\\lambda \\approx \\dfrac{12{\\cdot}27}{\\sqrt{V}}\\ \\mathring{\\mathrm{A}}\\)\n\ngiving \\(12{\\cdot}27/20 = 0{\\cdot}614\\ \\mathring{\\mathrm{A}}\\) in one step — and it is a genuine check, since it never passes through the joule conversion.\n\n**Why this wavelength matters.** At \\(0{\\cdot}6\\ \\mathring{\\mathrm{A}}\\) the electron's wave is shorter than the spacing of atoms in a crystal \\((\\sim 2\\ \\mathring{\\mathrm{A}})\\), so such electrons **diffract** off crystal planes. That is the principle behind the Davisson-Germer experiment and behind the electron microscope, whose resolution beats an optical one precisely because this wavelength is thousands of times shorter than visible light's."
+    },
+    {
+      "hash": "c420d21c1d5ac0c0ee99479f90f622c78142976d70fbb3048a154d7246b0f552",
+      "ref": "Q29",
+      "questionNumber": "29",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A rectangular loop of sides 25 cm and 20 cm is lying in x-y plane. It is subjected to a magnetic field \\(\\vec{\\mathrm{B}} = (5t^{2} + 2t + 10)\\hat{k}\\), where B is in Tesla and t is in seconds. If the resistance of the loop is \\(4\\ \\Omega\\), find the emf induced and the induced current in the loop at t = 5 s.",
+      "solution": "**The flux through the loop.** The loop lies in the \\(x\\)-\\(y\\) plane, so its area vector points along \\(\\hat{k}\\) — the same direction as \\(\\vec{B}\\). The angle between them is zero and the dot product is simply the product of magnitudes:\n\n\\(A = 0{\\cdot}25 \\times 0{\\cdot}20 = 0{\\cdot}05\\ \\mathrm{m^{2}} = 5 \\times 10^{-2}\\ \\mathrm{m^{2}}\\)\n\n\\(\\phi_B = \\vec{B}\\cdot\\vec{A} = (5t^{2} + 2t + 10) \\times 5 \\times 10^{-2}\\)\n\nThe area is **constant**; only \\(B\\) varies with time, so this is the case where Faraday's law reduces to \\(A\\,dB/dt\\).\n\n**The induced emf.**\n\n\\(|\\varepsilon| = \\left|-\\dfrac{d\\phi_B}{dt}\\right| = A\\dfrac{dB}{dt} = 5 \\times 10^{-2} \\times \\dfrac{d}{dt}(5t^{2} + 2t + 10)\\)\n\n\\(|\\varepsilon| = 5 \\times 10^{-2}(10t + 2)\\)\n\n**At \\(t = 5\\) s:**\n\n\\(|\\varepsilon| = 5 \\times 10^{-2} \\times (50 + 2) = 5 \\times 10^{-2} \\times 52\\)\n\n\\(|\\varepsilon| = 2{\\cdot}6\\ \\mathrm{V}\\)\n\n**The induced current.**\n\n\\(I = \\dfrac{|\\varepsilon|}{R} = \\dfrac{2{\\cdot}6}{4}\\)\n\n\\(I = 0{\\cdot}65\\ \\mathrm{A}\\)\n\n**Two points about the differentiation.** The constant term \\(10\\) in \\(B\\) contributes **nothing** to the emf — a steady field, however large, induces no emf, and only the *rate of change* matters. And the emf is **not constant**: it grows linearly with time, so the value 2.6 V belongs to the instant \\(t = 5\\) s alone. Evaluating \\(B\\) at \\(t = 5\\) first and then dividing by 5 is the error this question is set to expose; it would give \\(B = 145\\) T and a meaningless answer.\n\n**Direction.** \\(dB/dt > 0\\), so the flux along \\(+\\hat{k}\\) is increasing, and by Lenz's law the induced current flows **clockwise seen from the \\(+z\\) direction** — that is, so as to produce flux along \\(-\\hat{k}\\) inside the loop and oppose the increase."
+    },
+    {
+      "hash": "587901f5f4dcabed74b000e007b4bf404410044adec3d48c059b9ddd2753f4d4",
+      "ref": "Q30",
+      "questionNumber": "30",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Electrical Energy and Power",
+      "stem": "A potential difference ‘V’ is applied across a load resistor of resistance R. V and R can be varied. If the current that flows in the circuit is I, draw a plot showing the variation of power consumed by the resistor as a function of :\n(a) R, keeping V constant\n(b) I, keeping R constant\n(c) V, keeping R constant",
+      "solution": "Three plots, and the shape of each follows from choosing the form of the power formula that contains only the variable being plotted.\n\n\\(P = VI = I^{2}R = \\dfrac{V^{2}}{R}\\)\n\nThese are equivalent only while Ohm's law links \\(V\\), \\(I\\) and \\(R\\); which one to use depends on what is being held fixed.\n\n**(a) \\(P\\) against \\(R\\), with \\(V\\) constant.**\n\nUse the form free of \\(I\\):\n\n\\(P = \\dfrac{V^{2}}{R} \\qquad\\Longrightarrow\\qquad P \\propto \\dfrac{1}{R}\\)\n\n**A rectangular hyperbola.** The curve is very high for small \\(R\\), falls steeply, then flattens and approaches the \\(R\\)-axis asymptotically without meeting it. It never touches either axis.\n\n*The physics:* at fixed voltage a smaller resistance draws a larger current, and the power rises. A short circuit \\((R \\to 0)\\) dissipates unboundedly — which is why a short across a supply is dangerous.\n\n**(b) \\(P\\) against \\(I\\), with \\(R\\) constant.**\n\nUse the form free of \\(V\\):\n\n\\(P = I^{2}R \\qquad\\Longrightarrow\\qquad P \\propto I^{2}\\)\n\n**A parabola through the origin**, opening upwards, rising ever more steeply. At \\(I = 0\\) the power is zero.\n\n*The physics:* doubling the current **quadruples** the heating. This is why transmission lines are run at high voltage and therefore low current — the \\(I^{2}R\\) loss falls as the square.\n\n**(c) \\(P\\) against \\(V\\), with \\(R\\) constant.**\n\nThe same form as (a), but now \\(R\\) is the constant and \\(V\\) the variable:\n\n\\(P = \\dfrac{V^{2}}{R} \\qquad\\Longrightarrow\\qquad P \\propto V^{2}\\)\n\n**Again a parabola through the origin**, identical in shape to (b) but with \\(1/R\\) in place of \\(R\\) as the coefficient.\n\n**The point of setting the three side by side.** \\(P = V^{2}/R\\) appears in both (a) and (c), yet gives a **falling hyperbola** in one and a **rising parabola** in the other. The formula alone does not determine the graph — what determines it is **which symbol is the variable and which is held fixed**. Reading (a) as a parabola because it shares a formula with (c) is exactly the confusion this question is built to test."
+    }
+  ]
+}
