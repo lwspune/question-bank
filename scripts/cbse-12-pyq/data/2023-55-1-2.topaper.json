@@ -1,0 +1,256 @@
+{
+  "paper": "55/1/2",
+  "year": 2023,
+  "paperId": "2023-55-1-2",
+  "markingScheme": "out/2023-55-1-2/ms/p00.png … p21.png",
+  "rows": [
+    {
+      "hash": "97c3d092e41dbb01f909c4e74785a8cdb73f819ca97c4807ad20e0f5b4e88db4",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Lenz's Law and Conservation of Energy",
+      "stem": "Two identical circular coaxial coils A and B, arranged in vertical planes parallel to each other, carry currents in the same direction. If the distance between the coils is decreased at a constant rate, the current :",
+      "options": [
+        {
+          "label": "A",
+          "text": "increases in A and decreases in B."
+        },
+        {
+          "label": "B",
+          "text": "decreases in both A and B."
+        },
+        {
+          "label": "C",
+          "text": "increases in both A and B."
+        },
+        {
+          "label": "D",
+          "text": "remains same in both A and B."
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): the current decreases in both A and B.**\n\n**Setting it up.** The coils are coaxial and carry currents in the **same** direction, so the field each one produces threads the other in the *same* sense as that coil's own field. Bringing them closer therefore **increases** the flux linked with each coil.\n\n**Applying Lenz's law.** An induced emf always opposes the change that produces it. Here the change is an *increase* of flux, so each coil develops an induced current that tries to **reduce** the flux — that is, one flowing **opposite** to the current already there.\n\nThat induced current subtracts from the original in both coils, so the reading falls in each.\n\n**Both coils, by symmetry.** The mutual inductance \\(M\\) is a single number shared by the pair: the flux A links because of B is the same as the flux B links because of A. Neither coil is privileged, so whatever happens to one happens equally to the other. That alone rules out the option that has the current rising in one and falling in the other.\n\n**Two related checks.** The coils also **attract** each other, since parallel currents attract — consistent with the system resisting being pushed together, because the work done against that attraction is what feeds the induced effects.\n\nAnd had the currents been in **opposite** directions, every sign would flip: the mutual flux would oppose each coil's own, closing the gap would reduce the net flux, and the induced current would *add* to the original, so the current would increase in both."
+    },
+    {
+      "hash": "f2bc249b9e4125bc527338429487f853b9440d40d618639907ffa89f8f9b9f7e",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "The minimum distance between an object and its real image formed by a convex lens of focal length f is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "f"
+        },
+        {
+          "label": "B",
+          "text": "2f"
+        },
+        {
+          "label": "C",
+          "text": "3f"
+        },
+        {
+          "label": "D",
+          "text": "4f"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(4f\\).**\n\n**Why a minimum exists at all.** Let the object be at distance \\(u\\) from the lens and the image at \\(v\\), with both measured as positive distances on opposite sides for a real image. The separation is \\(D = u + v\\), and the lens equation ties them:\n\n\\(\\dfrac{1}{u} + \\dfrac{1}{v} = \\dfrac{1}{f}\\)\n\nBring the object very close to the focus and the image runs away to infinity; push the object far away and the image creeps towards the focal plane while the object distance grows without limit. Either extreme sends \\(D\\) to infinity, so somewhere between them \\(D\\) is least.\n\n**Finding it.** Put \\(v = D - u\\) into the lens equation:\n\n\\(\\dfrac{1}{u} + \\dfrac{1}{D - u} = \\dfrac{1}{f}\\)\n\n\\(f(D - u) + fu = u(D - u)\\)\n\n\\(u^{2} - Du + fD = 0\\)\n\nThis is a quadratic in \\(u\\), and it has real roots — that is, a real image exists at all — only when the discriminant is not negative:\n\n\\(D^{2} - 4fD \\geq 0 \\qquad\\Longrightarrow\\qquad D \\geq 4f\\)\n\n**\\(D_{\\min} = 4f\\).**\n\nAt that minimum the two roots coincide at \\(u = D/2 = 2f\\), so \\(v = 2f\\) as well. The object and image both sit at twice the focal length, the image is the **same size** as the object \\((m = -1)\\) and inverted.\n\n**The practical consequence.** If a screen and an object are fixed less than \\(4f\\) apart, **no** position of the lens will throw a sharp real image on the screen — no amount of adjustment helps. Beyond \\(4f\\) the quadratic has two roots, so there are **two** lens positions that work, one giving a magnified image and one a diminished image. That pair is the basis of the displacement method for measuring focal length."
+    },
+    {
+      "hash": "4a79d68ee3f5afe602705fa236925a424042224ec5702fcdbb3702ad7be8a010",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A photon of energy 7 eV is incident on a metal surface having the work function of \\(3{\\cdot}75\\) eV. The stopping potential is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1{\\cdot}75\\) eV"
+        },
+        {
+          "label": "B",
+          "text": "\\(2{\\cdot}45\\) eV"
+        },
+        {
+          "label": "C",
+          "text": "\\(3{\\cdot}25\\) eV"
+        },
+        {
+          "label": "D",
+          "text": "\\(3{\\cdot}75\\) eV"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**This question was voided by CBSE.** The marking scheme prints no letter for it and directs that the mark be awarded to every candidate, whether or not the question was attempted. The reason is a **unit error on the printed page**, and it is worth seeing exactly where.\n\n**The physics is routine.** Einstein's equation gives the maximum kinetic energy of the ejected electrons:\n\n\\(K_{\\max} = E - \\phi_0 = 7 - 3{\\cdot}75 = 3{\\cdot}25\\ \\mathrm{eV}\\)\n\nThe stopping potential is the retarding voltage that just turns back the fastest of those electrons, so \\(eV_0 = K_{\\max}\\) and\n\n\\(V_0 = 3{\\cdot}25\\ \\mathrm{V}\\)\n\n**Where it breaks down.** All four printed options carry the unit **eV**, which is a unit of *energy*. A stopping potential is a *potential difference* and is measured in **volts**. No option therefore states a stopping potential at all, whatever its numerical value — which is why the scheme declares none correct rather than accepting the one whose number happens to match.\n\n**The value \\(3{\\cdot}25\\) does appear among the printed choices** — but labelled \\(3{\\cdot}25\\) eV, not \\(3{\\cdot}25\\) V. A candidate who reached that number had the physics entirely right; the fault is in the printing, not in the answer.\n\n**The distractors are still instructive.** \\(3{\\cdot}75\\) is the work function copied straight out of the stem — the commonest slip, and it mistakes the energy the electron must *give up* for the energy it *keeps*. \\(1{\\cdot}75\\) is \\(7/4\\), and \\(2{\\cdot}45\\) corresponds to no step in the calculation at all.\n\nNote also that the answer does not depend on the intensity of the light, nor on how many electrons are emitted: the stopping potential is fixed by the energy of a single photon and the work function alone."
+    },
+    {
+      "hash": "1512291926f002cba5a54f2808aa57ed4066debe33399c6839b3f49c533d156b",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "stem": "The atomic number of an atom represents :",
+      "options": [
+        {
+          "label": "A",
+          "text": "number of neutrons in nucleus."
+        },
+        {
+          "label": "B",
+          "text": "total number of protons and electrons in the atom."
+        },
+        {
+          "label": "C",
+          "text": "number of protons in nucleus."
+        },
+        {
+          "label": "D",
+          "text": "total number of protons and neutrons in nucleus."
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): the number of protons in the nucleus.**\n\n**The definitions.** For a nucleus written \\(^{A}_{Z}\\mathrm{X}\\):\n\n| Symbol | Name | Counts |\n|---|---|---|\n| \\(Z\\) | **Atomic number** | protons in the nucleus |\n| \\(N\\) | Neutron number | neutrons in the nucleus |\n| \\(A\\) | **Mass number** | protons **and** neutrons together, \\(A = Z + N\\) |\n\n**Why the other options are the other quantities.** \"Number of neutrons\" is \\(N\\). \"Total number of protons and neutrons in the nucleus\" is the **mass number** \\(A\\), not \\(Z\\) — this is the trap the question is built around, since the two are easily swapped.\n\nThe remaining option, \"total number of protons and electrons in the atom\", is wrong for a subtler reason. In a **neutral** atom the electron count does equal \\(Z\\), so the total would be \\(2Z\\) — still not \\(Z\\). And the atomic number is a property of the **nucleus alone**: ionise the atom, strip electrons from it, and \\(Z\\) does not change. An \\(\\mathrm{Na^{+}}\\) ion has 10 electrons and is still sodium, because it still has 11 protons.\n\n**Why \\(Z\\) is the identifying number.** It fixes which **element** the atom is, because it fixes the nuclear charge and hence the number of electrons a neutral atom holds — and chemistry is decided by those electrons. Change \\(N\\) and you get a different **isotope** of the same element; change \\(Z\\) and you get a different element altogether."
+    },
+    {
+      "hash": "e75048c4a977b9f5f5daa0c9268619fb5926f129108a9af941434cdc3e6ef23b",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Electric Current and Ohm's Law",
+      "stem": "The masses of two cylindrical wires of copper are in the ratio of 1 : 3 and their lengths are in the ratio of 5 : 3. The ratio of their resistances will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 : 3"
+        },
+        {
+          "label": "B",
+          "text": "2 : 5"
+        },
+        {
+          "label": "C",
+          "text": "2 : 3"
+        },
+        {
+          "label": "D",
+          "text": "3 : 5"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**This question was voided by CBSE.** The marking scheme prints no letter and directs that the mark be given to every candidate. The reason is that the correct ratio is **not among the four printed options**, as the working below shows.\n\n**Setting up.** Both wires are copper, so they share the same resistivity \\(\\rho\\) and the same density \\(d\\). For a cylinder of length \\(l\\) and cross-sectional area \\(A\\):\n\n\\(R = \\dfrac{\\rho l}{A} \\qquad\\text{and}\\qquad m = d\\,A\\,l\\)\n\nThe area is not given, so eliminate it. From the mass relation \\(A = \\dfrac{m}{dl}\\), and substituting:\n\n\\(R = \\dfrac{\\rho l}{m/(dl)} = \\dfrac{\\rho d\\, l^{2}}{m}\\)\n\nSo for wires of one material,\n\n\\(R \\propto \\dfrac{l^{2}}{m}\\)\n\n**The ratio.** With \\(m_1 : m_2 = 1 : 3\\) and \\(l_1 : l_2 = 5 : 3\\):\n\n\\(\\dfrac{R_1}{R_2} = \\dfrac{l_1^{2}}{l_2^{2}} \\times \\dfrac{m_2}{m_1} = \\left(\\dfrac{5}{3}\\right)^{2} \\times \\dfrac{3}{1} = \\dfrac{25}{9} \\times 3\\)\n\n\\(\\dfrac{R_1}{R_2} = \\dfrac{25}{3}\\)\n\n**\\(R_1 : R_2 = 25 : 3\\)**, which is none of 1 : 3, 2 : 5, 2 : 3 or 3 : 5.\n\n**The point the question was testing is still worth having.** The instinct is to reach for \\(R \\propto l\\), which would give 5 : 3 — but that holds only at *fixed area*, and here the areas differ. Fixing the **mass** instead of the area makes the length dependence **quadratic**, because stretching a fixed amount of copper into a longer wire also makes it thinner, and both changes push the resistance up.\n\nThat squared dependence is the standard result behind drawing-out problems: draw a wire to \\(n\\) times its length at constant mass and its resistance rises by \\(n^{2}\\), not \\(n\\)."
+    },
+    {
+      "hash": "0f78e646ee6f8b842a97da535553e50f5b21fb7484b013f0a19313ee03eb2463",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "Which one of the following is the correct representation of variation of conductivity of a conductor with temperature ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A straight line of positive slope, starting at the origin and rising."
+        },
+        {
+          "label": "B",
+          "text": "A straight line of negative slope, falling from a high value on the \\(\\sigma\\)-axis to meet the T-axis."
+        },
+        {
+          "label": "C",
+          "text": "A curve starting high on the \\(\\sigma\\)-axis, falling steeply at first and then flattening towards the T-axis without meeting it."
+        },
+        {
+          "label": "D",
+          "text": "A curve starting at a positive value of \\(\\sigma\\), running almost flat at first and then bending down steeply to meet the T-axis."
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — the four options ARE the drawings: four \\(\\sigma\\)-versus-T plots in a row, each with the vertical axis labelled \\(\\sigma\\) and the horizontal axis labelled T, and no numbers on either. Transcribed above as a neutral reading of the line each panel draws (straight vs curved, slope sign, and whether it meets an axis); the drawn originals should be attached. Page idx 10.",
+      "imageAttached": true,
+      "solution": "**The answer is (C): the curve that starts high on the \\(\\sigma\\)-axis, falls steeply at first and then flattens towards the \\(T\\)-axis without ever meeting it.**\n\n**The physics.** For a **conductor** — a metal — resistivity rises almost linearly with temperature over the ordinary range:\n\n\\(\\rho = \\rho_0\\left[1 + \\alpha(T - T_0)\\right]\\)\n\nConductivity is its reciprocal, so\n\n\\(\\sigma = \\dfrac{1}{\\rho} = \\dfrac{\\sigma_0}{1 + \\alpha(T - T_0)}\\)\n\nThat is a **decreasing** function, and specifically a reciprocal one: steep at low \\(T\\), flattening as \\(T\\) grows, and tending to zero **asymptotically** without reaching it.\n\n**Why a metal behaves this way.** The number of free electrons in a metal is fixed — every atom has already given up its conduction electrons, and heating produces no more. What heating does is make the lattice ions vibrate harder, so electrons are scattered more often, their mean free time \\(\\tau\\) falls, and with it\n\n\\(\\sigma = \\dfrac{ne^{2}\\tau}{m}\\)\n\nOnly \\(\\tau\\) changes, and it changes downwards.\n\n**Eliminating the others.** A **rising straight line from the origin** would say a metal conducts better when hotter and not at all at \\(T = 0\\) — both false, and in fact the exact opposite of the truth. A **falling straight line meeting the axis** would have conductivity reach **zero** at some finite temperature, which no metal does. The remaining curve, flat at first and then plunging to meet the axis, has the same fatal defect of touching zero, and gets the shape backwards besides.\n\n**The contrast worth carrying.** A **semiconductor** does the opposite: heating breaks covalent bonds and multiplies the carriers exponentially, so \\(\\sigma\\) *rises* steeply with \\(T\\). The word \"conductor\" in the stem is therefore doing real work — swap it for \"semiconductor\" and a different curve would be right."
+    },
+    {
+      "hash": "6e47b6293a99da5b53a1370206e36e6e63d2760bd0f534969d3206cabb418588",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "A plane electromagnetic wave propagates in vacuum along x-axis.\n(a) Give the direction of electric field and magnetic field vectors.\n(b) \\(\\mathrm{E_0}\\) and \\(\\mathrm{B_0}\\) are the magnitudes of electric and magnetic fields respectively in a plane electromagnetic wave. Find the ratio of energy densities of electric field and magnetic field.",
+      "solution": "**(a) The directions of the field vectors.**\n\nAn electromagnetic wave is **transverse**, and \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of propagation form a right-handed set in that order:\n\n\\(\\vec{E} \\times \\vec{B} \\ \\parallel \\ \\text{direction of propagation}\\)\n\nThe wave travels along the **x-axis**, so both fields lie in the **y-z plane**, perpendicular to \\(x\\) and to each other.\n\nTaking \\(\\vec{E}\\) along the **y-axis**, \\(\\vec{B}\\) must lie along the **z-axis**, since \\(\\hat{j} \\times \\hat{k} = \\hat{i}\\). The pair could equally be the other way round \\(\\left(\\vec{E}\\ \\text{along}\\ z,\\ \\vec{B}\\ \\text{along}\\ -y\\right)\\); what is fixed is that they are mutually perpendicular, both perpendicular to \\(x\\), and ordered so that \\(\\vec{E} \\times \\vec{B}\\) points along the direction of travel.\n\nThe two fields are also **in phase**: they reach their maxima and their zeros at the same instants, unlike the energy exchange in an LC circuit.\n\n**(b) The ratio of the energy densities.**\n\nThe two contributions are\n\n\\(u_E = \\dfrac{1}{2}\\varepsilon_0 E_0^{2} \\qquad\\text{and}\\qquad u_B = \\dfrac{1}{2}\\dfrac{B_0^{2}}{\\mu_0}\\)\n\nso\n\n\\(\\dfrac{u_E}{u_B} = \\mu_0\\varepsilon_0\\dfrac{E_0^{2}}{B_0^{2}}\\)\n\nFor a plane wave in vacuum the two amplitudes are locked together by\n\n\\(\\dfrac{E_0}{B_0} = c \\qquad\\text{and}\\qquad c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}}\\)\n\nSubstituting,\n\n\\(\\dfrac{u_E}{u_B} = \\mu_0\\varepsilon_0 c^{2} = \\mu_0\\varepsilon_0 \\times \\dfrac{1}{\\mu_0\\varepsilon_0} = 1\\)\n\n\\(u_E : u_B = 1 : 1\\)\n\n**The electric and magnetic fields of an electromagnetic wave carry exactly equal energy**, at every instant and at every point. This is not a coincidence but a consequence of \\(E_0 = cB_0\\), which is itself forced by Maxwell's equations — so the total energy density is \\(u = \\varepsilon_0 E^{2}\\), twice either part.\n\nIt also settles a common misreading of the numbers. In SI units \\(B_0\\) is smaller than \\(E_0\\) by the factor \\(c \\approx 3 \\times 10^{8}\\), which makes the magnetic field *look* negligible. It is not: the \\(1/\\mu_0\\) in its energy density restores the balance exactly."
+    },
+    {
+      "hash": "956ce407f4a410a9d91952fc565ebcd6bc0a02fd335c0a7de48874f2f575f12f",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A double-convex lens of power 4 D is manufactured from a glass of refractive index \\(1{\\cdot}5\\). What is the radius of curvature of each face of this lens if both faces have the same radius of curvature ?",
+      "solution": "**Find the focal length from the power.**\n\n\\(P = \\dfrac{1}{f} \\qquad\\Longrightarrow\\qquad f = \\dfrac{1}{P} = \\dfrac{1}{4} = 0{\\cdot}25\\ \\mathrm{m} = 25\\ \\mathrm{cm}\\)\n\n**Apply the lens maker's formula.**\n\n\\(\\dfrac{1}{f} = (n - 1)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\nFor a **double-convex** lens the first surface bulges towards the incoming light and the second away from it, so with the usual sign convention\n\n\\(R_1 = +R \\qquad\\text{and}\\qquad R_2 = -R\\)\n\nGetting that minus sign right is the whole of the question; dropping it doubles the answer.\n\n\\(\\dfrac{1}{f} = (n - 1)\\left(\\dfrac{1}{R} - \\dfrac{1}{-R}\\right) = (n - 1)\\dfrac{2}{R}\\)\n\n**Substitute.**\n\n\\(4 = (1{\\cdot}5 - 1) \\times \\dfrac{2}{R} = \\dfrac{0{\\cdot}5 \\times 2}{R} = \\dfrac{1}{R}\\)\n\n\\(R = \\dfrac{1}{4} = 0{\\cdot}25\\ \\mathrm{m} = 25\\ \\mathrm{cm}\\)\n\n**Each face has a radius of curvature of 25 cm.**\n\n**Worth noticing.** For this particular combination the radius comes out *equal to the focal length*, and that is not an accident of the numbers chosen: putting \\(n = 1{\\cdot}5\\) into \\(1/f = (n-1)(2/R)\\) gives \\(1/f = 1/R\\) exactly. So for any equiconvex lens made of ordinary crown glass, **\\(R = f\\)** — a useful thing to recognise, since \\(n \\approx 1{\\cdot}5\\) covers most common glass.\n\nA sanity check on the sign: \\(R\\) came out positive and \\(f\\) positive, so the lens is converging, as a double-convex lens of a medium denser than its surroundings must be."
+    },
+    {
+      "hash": "49d9a1c67b29929f3ebd0974118c86466ae87ce8b98f61ebc393ec49208fde76",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "Calculate the wavelength of the second line of Lyman series in a spectrum of hydrogen atom. (Take Rydberg constant, R = \\(1{\\cdot}1 \\times 10^{7}\\ \\mathrm{m^{-1}}\\))",
+      "solution": "**Which transition is the \"second line\"?**\n\nThe Lyman series is every transition ending on \\(n_1 = 1\\). Its lines are counted outward from the longest wavelength, so:\n\n- **first** line: \\(n_2 = 2 \\to n_1 = 1\\)\n- **second** line: \\(n_2 = 3 \\to n_1 = 1\\)\n\nThe commonest error here is to read \"second line\" as \\(n_2 = 2\\). The series is named for where the electron *lands*, and the lines are numbered by how far it *falls*.\n\n**Apply the Rydberg formula.**\n\n\\(\\dfrac{1}{\\lambda} = R\\left[\\dfrac{1}{n_1^{2}} - \\dfrac{1}{n_2^{2}}\\right] = 1{\\cdot}1 \\times 10^{7}\\left[\\dfrac{1}{1^{2}} - \\dfrac{1}{3^{2}}\\right]\\)\n\n\\(\\dfrac{1}{\\lambda} = 1{\\cdot}1 \\times 10^{7}\\left[1 - \\dfrac{1}{9}\\right] = 1{\\cdot}1 \\times 10^{7} \\times \\dfrac{8}{9} = \\dfrac{8{\\cdot}8}{9} \\times 10^{7}\\ \\mathrm{m^{-1}}\\)\n\n\\(\\lambda = \\dfrac{9}{8{\\cdot}8} \\times 10^{-7}\\ \\mathrm{m}\\)\n\n\\(\\lambda = 1{\\cdot}023 \\times 10^{-7}\\ \\mathrm{m} = 1023\\ \\mathring{\\mathrm{A}} \\approx 102{\\cdot}3\\ \\mathrm{nm}\\)\n\n**A check on the answer.** The first Lyman line is at \\(1216\\ \\mathring{\\mathrm{A}}\\) and the series limit at \\(912\\ \\mathring{\\mathrm{A}}\\); \\(1023\\ \\mathring{\\mathrm{A}}\\) sits properly between them, closer to the first line than to the limit, as it must since the lines crowd together towards the limit.\n\nThe photon energy is \\(\\Delta E = 13{\\cdot}6\\left(1 - \\tfrac{1}{9}\\right) = 12{\\cdot}09\\) eV — deep ultraviolet, invisible to the eye, which is true of the whole Lyman series."
+    },
+    {
+      "hash": "3aecba17c0459ec20846a7d1e3ada61c701d5157fe236f2f3617e21375f171b8",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The threshold wavelength for a metal is 3315 Å. What should be the wavelength of light incident on the metal surface so that the maximum kinetic energy of the emitted photoelectrons be \\(1{\\cdot}25\\) eV ?",
+      "solution": "**What the threshold wavelength tells us.**\n\nThe threshold wavelength is the longest wavelength that can just free an electron, so a photon of that wavelength carries exactly the work function:\n\n\\(\\phi_0 = \\dfrac{hc}{\\lambda_0} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{3315 \\times 10^{-10}}\\)\n\n\\(\\phi_0 = 6{\\cdot}0 \\times 10^{-19}\\ \\mathrm{J} = 3{\\cdot}75\\ \\mathrm{eV}\\)\n\n**Convert the required kinetic energy to the same units.**\n\n\\(K_{\\max} = 1{\\cdot}25\\ \\mathrm{eV} = 1{\\cdot}25 \\times 1{\\cdot}6 \\times 10^{-19} = 2{\\cdot}0 \\times 10^{-19}\\ \\mathrm{J}\\)\n\nThis conversion is the step to be careful about: the work function has come out in joules and the kinetic energy is given in electronvolts, and the two cannot be added until they agree.\n\n**Apply Einstein's photoelectric equation.**\n\n\\(\\dfrac{hc}{\\lambda} = \\phi_0 + K_{\\max} = (6{\\cdot}0 + 2{\\cdot}0) \\times 10^{-19} = 8{\\cdot}0 \\times 10^{-19}\\ \\mathrm{J}\\)\n\n\\(\\lambda = \\dfrac{hc}{8{\\cdot}0 \\times 10^{-19}} = \\dfrac{6{\\cdot}63 \\times 10^{-34} \\times 3 \\times 10^{8}}{8{\\cdot}0 \\times 10^{-19}}\\)\n\n\\(\\lambda = 2{\\cdot}486 \\times 10^{-7}\\ \\mathrm{m} = 2486\\ \\mathring{\\mathrm{A}} \\approx 248{\\cdot}6\\ \\mathrm{nm}\\)\n\n**A shortcut that avoids joules altogether.** Since both \\(\\phi_0\\) and \\(K_{\\max}\\) are wanted only as a sum, and \\(\\lambda \\propto 1/E\\),\n\n\\(\\dfrac{\\lambda}{\\lambda_0} = \\dfrac{\\phi_0}{\\phi_0 + K_{\\max}} = \\dfrac{3{\\cdot}75}{3{\\cdot}75 + 1{\\cdot}25} = \\dfrac{3{\\cdot}75}{5{\\cdot}00} = \\dfrac{3}{4}\\)\n\n\\(\\lambda = \\dfrac{3}{4} \\times 3315 = 2486\\ \\mathring{\\mathrm{A}}\\)\n\nThe same answer in one line, and it is a genuine independent check because it never touches \\(h\\) or \\(c\\).\n\n**Sanity.** The required wavelength is *shorter* than the threshold, as it must be — a more energetic photon is needed to give the electron kinetic energy on top of the escape cost. Both wavelengths lie in the ultraviolet."
+    },
+    {
+      "hash": "f130abe9ead2127c7df502ec45c370414c114f0c0e6496f9124b3febf39b4ca4",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Transformers",
+      "stem": "The primary and the secondary coils of an ideal step-down transformer consist of 650 and 25 turns respectively. When the primary coil of this transformer is connected to 240 V mains, the current in the primary coil is \\(1{\\cdot}5\\) A. Calculate :\n(a) the voltage across the secondary coil\n(b) the current in the secondary coil\n(c) the average power delivered to the output circuit",
+      "solution": "**The data.** \\(N_p = 650\\), \\(N_s = 25\\), \\(V_p = 240\\) V, \\(I_p = 1{\\cdot}5\\) A, and the transformer is **ideal** — no flux leakage, no winding resistance, no core losses.\n\n**(a) The secondary voltage.**\n\nBoth coils link the same flux per turn, so the voltages are in the ratio of the turns:\n\n\\(\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p} \\qquad\\Longrightarrow\\qquad V_s = V_p \\times \\dfrac{N_s}{N_p} = 240 \\times \\dfrac{25}{650} = \\dfrac{120}{13}\\)\n\n\\(V_s = 9{\\cdot}23\\ \\mathrm{V}\\)\n\n**(b) The secondary current.**\n\nAn ideal transformer delivers all the power it takes in, \\(V_pI_p = V_sI_s\\), so the currents are in the **inverse** ratio of the turns:\n\n\\(\\dfrac{I_s}{I_p} = \\dfrac{N_p}{N_s} \\qquad\\Longrightarrow\\qquad I_s = 1{\\cdot}5 \\times \\dfrac{650}{25}\\)\n\n\\(I_s = 39\\ \\mathrm{A}\\)\n\n**(c) The average power delivered to the output.**\n\n\\(P = V_sI_s = \\dfrac{120}{13} \\times 39\\)\n\n\\(P = 360\\ \\mathrm{W}\\)\n\n**The check that makes part (c) almost free.** The input power is \\(V_pI_p = 240 \\times 1{\\cdot}5 = 360\\) W, and for an ideal transformer the output must equal it. Computing (c) from the secondary values and finding the same 360 W confirms (a) and (b) together — if either were wrong, the two would disagree.\n\n**What a transformer does and does not do.** It has stepped the voltage **down** by a factor of 26 and stepped the current **up** by the same 26, leaving the power untouched. A transformer is not a source of energy; it trades voltage against current at constant power. This is why it works only on **alternating** current: a steady dc produces no changing flux, hence no induced emf in the secondary, and the primary would simply burn out as a low-resistance coil across the mains.\n\nReal transformers fall a little short of 360 W through copper losses, eddy currents, hysteresis and flux leakage — the four effects the word \"ideal\" in the stem removes."
+    },
+    {
+      "hash": "6af81ebd458bbd7134d5dfa08a9318bba97ba80639131bcf31d041688582aeec",
+      "ref": "Q30",
+      "questionNumber": "30",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Energy Stored in a Capacitor",
+      "stem": "A 100 \\(\\mu\\mathrm{F}\\) capacitor is charged by a 12 V battery.\n(a) How much electrostatic energy is stored by the capacitor ?\n(b) The capacitor is disconnected from the battery and connected in parallel to another uncharged 100 \\(\\mu\\mathrm{F}\\) capacitor. What is the electrostatic energy stored by the system ?",
+      "solution": "**(a) The energy stored initially.**\n\n\\(U_1 = \\dfrac{1}{2}CV^{2} = \\dfrac{1}{2} \\times 100 \\times 10^{-6} \\times (12)^{2}\\)\n\n\\(U_1 = \\dfrac{1}{2} \\times 10^{-4} \\times 144 = 72 \\times 10^{-4}\\ \\mathrm{J}\\)\n\n\\(U_1 = 7{\\cdot}2\\ \\mathrm{mJ}\\)\n\n**(b) After sharing with an identical uncharged capacitor.**\n\n**The battery is disconnected first**, and that single word fixes the whole of part (b). With no source attached, the **charge is trapped** — it can move between the two capacitors but cannot leave the system. It is \\(Q\\), not \\(V\\), that is conserved.\n\n\\(Q = CV = 100 \\times 10^{-6} \\times 12 = 12 \\times 10^{-4}\\ \\mathrm{C}\\)\n\nIn parallel the capacitances add:\n\n\\(C_{eq} = 100 + 100 = 200\\ \\mu\\mathrm{F}\\)\n\nThe common potential is therefore\n\n\\(V' = \\dfrac{Q}{C_{eq}} = \\dfrac{12 \\times 10^{-4}}{200 \\times 10^{-6}} = 6\\ \\mathrm{V}\\)\n\nand the stored energy is\n\n\\(U_2 = \\dfrac{Q^{2}}{2C_{eq}} = \\dfrac{(12 \\times 10^{-4})^{2}}{2 \\times 200 \\times 10^{-6}} = \\dfrac{144}{4} \\times 10^{-4}\\)\n\n\\(U_2 = 36 \\times 10^{-4}\\ \\mathrm{J} = 3{\\cdot}6\\ \\mathrm{mJ}\\)\n\n**Exactly half the energy has disappeared.** That is not an arithmetic slip, and it is the point of the question. With \\(Q\\) fixed and the capacitance doubled, \\(U = Q^{2}/2C\\) must halve, whatever the numbers.\n\n**Where the missing \\(3{\\cdot}6\\) mJ goes.** Connecting the two capacitors sets up a transient current while the charge redistributes, and that current flows through the resistance of the connecting wires, dissipating energy as **heat**. Even with wires of vanishing resistance the loss is the same: the circuit then radiates the energy away electromagnetically instead. The result is famously independent of how the connection is made.\n\nIn general, joining a charged capacitor \\(C_1\\) at \\(V_1\\) to an uncharged \\(C_2\\) loses\n\n\\(\\Delta U = \\dfrac{1}{2}\\dfrac{C_1C_2}{C_1 + C_2}V_1^{2}\\)\n\nwhich for \\(C_1 = C_2\\) is exactly half the original store — the case here."
+    }
+  ]
+}
