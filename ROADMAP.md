@@ -31,7 +31,7 @@ then derive from the packet alone and score with `score-derive.ts --pin`. Record
 flag per row — on the VA pass all three leads were rows flagged uncertain, so the flag is the
 usable product. **Agreement is not accuracy**; it cannot see an error both passes share.
 
-### 1b. Adopt the NDA/CDS subject convention — raised 2026-09-22, DO IT BEFORE step 3
+### 1b. ~~Adopt the NDA/CDS subject convention~~ — DONE 2026-09-22
 
 NDA and CDS both **discard the paper structure** and name subjects academically. NDA Paper II
 GAT covers English + 8 GK subjects and there is no "GAT" or "Paper II" subject anywhere — a
@@ -62,16 +62,27 @@ records those 148 typed-answer rows as `numeric`, and `/browse`'s Format filter 
 Written · Numeric) already exposes it, which is arguably the right axis for a format
 distinction. Confirm that trade before remapping.
 
-**WHY THE ORDER MATTERS.** This is a taxonomy rewrite and it is cheapest NOW: all 1,418 rows
-are PRIVATE, no keys are derived, and no `/notes` chapter, `/guide` playbook, `/mock`
-blueprint, principle tag or concept tag points at any of it. Phase 5 creates all of those
-attachments, and each one makes the remap more expensive. **Do this before step 3, not after.**
+**SHIPPED.** Measured result matches the prediction exactly: **147 chapter rows -> 114**, and
+subtopics **205 -> 166**. Subjects are now `Mathematics` / `Logical Reasoning` / `English` for
+all three exams. Verified: 0 empty chapters, 0 empty subtopics, 0 questions without a subtopic,
+1,418 still PRIVATE, and the 58 question images + 28 option images preserved.
 
-Mechanics: it is a change to `SECTION_SUBJECTS` + `TAXONOMY_MAP` in `scripts/ipmat/taxonomy.ts`
-and a re-run of `commit.ts`, which upserts on content_hash — but the OLD subject/chapter rows
-would be orphaned, so plan the cleanup (or delete the three exams and reload; everything is
-PRIVATE and `data/build` is frozen and committed). Re-run `taxonomy-report.ts` and
-`verify-load.ts` after.
+Done by `scripts/ipmat/remap-taxonomy.ts` rather than a reload, which would have discarded
+`image_url` and forced 86 re-uploads. **Re-running `commit.ts` would NOT have worked**:
+`commitStaged` upserts with `ignoreDuplicates: true` (ON CONFLICT DO NOTHING) and taxonomy is
+not part of `content_hash`, so every row already existed by hash and a re-run skipped all 1,418.
+
+Two things that script records for anyone doing a similar move:
+
+- **The FK order is the whole trick.** `questions.subject_id` and `chapter_id` are RESTRICT,
+  but `subtopic_id` is **SET NULL** — so deleting a subtopic before its questions move would
+  silently null them, with no error. Create every target first, move the questions, delete last.
+- **Deleting old SUBJECTS is not enough.** Two of the nine target subject names already existed
+  (`Logical Reasoning`, for Rohtak and JIPMAT), so those rows were kept — and an unwanted
+  chapter under them survived with no questions in it. Rohtak's one-question "Linear Equations"
+  chapter under Logical Reasoning, a section leak, became an empty husk. A `step 3b` now deletes
+  orphans under a surviving subject, guarded on BOTH "no questions" and "not in the target set",
+  so a chapter the map wants can never be dropped for being momentarily empty.
 
 ### 2. Finish the CBSE-style grouping — deliberately deferred to here (do AFTER 1b)
 

@@ -158,7 +158,7 @@ async function main() {
   // ---- the taxonomy the map predicted
   const wantSubjects = new Set<string>();
   for (const r of expected.values()) {
-    const t = resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic);
+    const t = resolveTaxonomy(r.sourceTopic, r.sourceSubTopic);
     if (t) wantSubjects.add(`${r.exam}|${t.subject}`);
   }
   const { count: subjectCount } = await client

@@ -12,7 +12,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { IPMAT_EXAMS, type IpmatExamSlug } from "./config";
-import { SECTION_SUBJECTS, resolveTaxonomy, sourceKey, TAXONOMY_MAP } from "./taxonomy";
+import { resolveTaxonomy, TAXONOMY_MAP } from "./taxonomy";
 import type { BuiltQuestion } from "./build";
 
 const BUILD_DIR = join(__dirname, "data", "build");
@@ -41,7 +41,7 @@ function main() {
 
   for (const r of live) {
     if (only && r.exam !== only) continue;
-    const res = resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic);
+    const res = resolveTaxonomy(r.sourceTopic, r.sourceSubTopic);
     if (!res) {
       unresolved++;
       continue;
@@ -104,23 +104,6 @@ function main() {
   console.log(`  rows placed                   ${live.filter((r) => !only || r.exam === only).length - unresolved}`);
   if (unresolved) console.log(`  UNRESOLVED ROWS               ${unresolved}  <-- must be 0`);
 
-  // Indore's cost, stated rather than hidden.
-  const ind = tree.get("ipmat-indore");
-  if (ind) {
-    const sa = ind.get(SECTION_SUBJECTS["ipmat-indore"].SA);
-    const mcq = ind.get(SECTION_SUBJECTS["ipmat-indore"].MCQ);
-    if (sa && mcq) {
-      const shared = [...sa.keys()].filter((c) => mcq.has(c)).sort();
-      console.log("");
-      console.log(`  INDORE: ${shared.length} chapters exist under BOTH quant subjects, because the`);
-      console.log("  paper's SA and MCQ sections cover the same topics at different answer formats:");
-      for (const c of shared) {
-        const a = [...sa.get(c)!.values()].reduce((x, y) => x + y, 0);
-        const b = [...mcq.get(c)!.values()].reduce((x, y) => x + y, 0);
-        console.log(`    ${c.padEnd(34)} SA ${String(a).padStart(3)} | MCQ ${String(b).padStart(3)}`);
-      }
-    }
-  }
 
   if (thin.length && !thinOnly) {
     console.log(`\n  SUBTOPICS UNDER ${THIN} QUESTIONS (${thin.length}) — fine for a PYQ corpus, listed for review:`);

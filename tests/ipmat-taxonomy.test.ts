@@ -1,34 +1,52 @@
 // Spec for the IPMAT taxonomy mapping (scripts/ipmat/taxonomy.ts).
 //
-// The source ships its own topic/subtopic labels. They are afterboards'
-// editorial work, and they are also DIRTY: three spellings of Active & Passive,
-// two of Linear Equation(s), two of Direct & Indirect, singular and plural Bar
-// Graph(s), and `Tabular Data` living under two different topics. So the map
-// re-authors every pair to our own names, in the house style the CDS corpus
-// already uses (spell "and" out, no ampersands) because CDS is the closest
-// analogue in the bank — an aptitude exam over the same ground.
+// THE SUBJECT AXIS FOLLOWS NDA AND CDS. Both discard the paper structure and
+// name subjects academically: NDA Paper II GAT covers English plus eight GK
+// subjects, and there is no "GAT" or "Paper II" subject anywhere — a Physics
+// question from Paper II Part B simply sits under `Physics`. CDS does the same
+// across its three papers.
 //
-// TWO AXES, KEPT SEPARATE. The SUBJECT comes from the paper's SECTION, and the
-// CHAPTER/SUBTOPIC from the source topic. They are independent: a question
-// tagged `Logical Reasoning > Logical Sequence` can sit in the QA section (it
-// does, three times), and the section is where the exam actually put it.
+// So an IPMAT question's subject comes from WHAT IT IS ABOUT, not from which
+// section of the paper it appeared in. Three subjects, shared by all three
+// exams: Mathematics, Logical Reasoning, English.
 //
-// THE TEST THAT MATTERS IS COMPLETENESS IN BOTH DIRECTIONS. A forward-only
-// check cannot catch an omission — an unmapped source pair would silently lose
-// its questions — and a reverse-only check cannot catch a mapping entry that
-// matches nothing, which is how a map rots after the source is re-fetched.
+// THIS REPLACED A SECTION-NAMED AXIS, and the gain was measured: 147 chapter
+// rows became 114. It collapsed the 26 Indore quant chapters that existed twice
+// (once under a "Short Answer" subject, once under an "MCQ" one), and it fixed
+// the section leaks — Rohtak used to carry a one-question "Linear Equations"
+// chapter under Logical Reasoning, and "Clocks and Calendars" under
+// Quantitative Ability, because the exam filed a few questions in the other
+// section. Naming by subject rather than by section makes those disappear.
+//
+// What was given up: SA vs MCQ is no longer a subject. It is not lost —
+// `question_format` records those 148 typed-answer rows as `numeric` and
+// /browse's Format filter exposes them, which is the right axis for a format
+// distinction.
+//
+// The chapter names stay in CDS house style (spell "and" out, no ampersands)
+// and sixteen are taken verbatim from CDS. With `English` as a subject name,
+// `English > Reading Comprehension` is now one chapter spanning NDA, CDS and
+// all three IPMATs.
+//
+// COMPLETENESS IS CHECKED IN BOTH DIRECTIONS, IN TWO PLACES: every source pair
+// must map and every map entry must match a real row; and every chapter must
+// have a subject while every declared subject must own a chapter. A forward-only
+// check cannot catch an omission, and a reverse-only one cannot catch an entry
+// that has rotted.
 import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
-  SECTION_SUBJECTS,
+  IPMAT_SUBJECTS,
+  CHAPTER_SUBJECT,
   TAXONOMY_MAP,
   sourceKey,
   resolveTaxonomy,
   mappedChapters,
   mappedSubtopics,
+  subjectOf,
 } from "../scripts/ipmat/taxonomy";
-import { IPMAT_EXAMS, type IpmatExamSlug } from "../scripts/ipmat/config";
+import type { IpmatExamSlug } from "../scripts/ipmat/config";
 
 type Built = {
   exam: IpmatExamSlug;
@@ -47,38 +65,71 @@ function builtRows(): Built[] {
   return out;
 }
 
-describe("SECTION_SUBJECTS", () => {
-  it("names a subject for every section of every exam", () => {
-    for (const exam of IPMAT_EXAMS) {
-      for (const section of exam.sections) {
-        expect(SECTION_SUBJECTS[exam.slug][section], `${exam.slug}/${section}`).toBeTruthy();
-      }
+describe("IPMAT_SUBJECTS", () => {
+  it("is the NDA/CDS-style academic triple, not the paper's section names", () => {
+    expect([...IPMAT_SUBJECTS]).toEqual(["Mathematics", "Logical Reasoning", "English"]);
+  });
+
+  it("names English the way NDA and CDS do, not 'Verbal Ability'", () => {
+    // This is what makes `English > Reading Comprehension` one chapter across
+    // NDA (2,549 PUBLIC), CDS (2,400) and all three IPMATs.
+    expect(IPMAT_SUBJECTS).toContain("English");
+    expect(IPMAT_SUBJECTS).not.toContain("Verbal Ability");
+  });
+
+  it("carries no section name and no answer format", () => {
+    for (const s of IPMAT_SUBJECTS) {
+      expect(s, s).not.toMatch(/\b(SA|MCQ|VA|QA|LR|Short Answer|Paper)\b/);
+    }
+  });
+});
+
+describe("CHAPTER_SUBJECT completeness — both directions", () => {
+  it("gives every mapped chapter exactly one subject", () => {
+    expect(mappedChapters().filter((c) => !CHAPTER_SUBJECT[c])).toEqual([]);
+  });
+
+  it("has NO subject assignment for a chapter the map never produces", () => {
+    // Catches an entry left behind after a chapter was renamed.
+    const produced = new Set(mappedChapters());
+    expect(Object.keys(CHAPTER_SUBJECT).filter((c) => !produced.has(c)).sort()).toEqual([]);
+  });
+
+  it("assigns only the three declared subjects", () => {
+    const bad = Object.entries(CHAPTER_SUBJECT).filter(
+      ([, s]) => !(IPMAT_SUBJECTS as readonly string[]).includes(s)
+    );
+    expect(bad).toEqual([]);
+  });
+
+  it("gives every declared subject at least one chapter", () => {
+    for (const s of IPMAT_SUBJECTS) {
+      expect(Object.values(CHAPTER_SUBJECT), s).toContain(s);
     }
   });
 
-  it("declares no section an exam does not have", () => {
-    for (const exam of IPMAT_EXAMS) {
-      for (const section of Object.keys(SECTION_SUBJECTS[exam.slug])) {
-        expect(exam.sections, `${exam.slug}/${section}`).toContain(section);
-      }
+  it("files the quant chapters under Mathematics", () => {
+    for (const c of ["Sequence and Series", "Number System", "Triangles", "Logarithms", "Mensuration 3D"]) {
+      expect(subjectOf(c), c).toBe("Mathematics");
     }
   });
 
-  it("splits Indore's quant by answer format, which is what its sections mean", () => {
-    // SA and MCQ carry the same seven quant topics; the split is typed answer vs
-    // four options. The subject NAMES have to say so, or the duplication looks
-    // like an error rather than the paper's own structure.
-    expect(SECTION_SUBJECTS["ipmat-indore"].SA).toMatch(/Quantitative/);
-    expect(SECTION_SUBJECTS["ipmat-indore"].MCQ).toMatch(/Quantitative/);
-    expect(SECTION_SUBJECTS["ipmat-indore"].SA).not.toBe(SECTION_SUBJECTS["ipmat-indore"].MCQ);
+  it("files reasoning AND data interpretation under Logical Reasoning", () => {
+    // Data Interpretation is a reasoning skill, and the source already files it
+    // under Logical Reasoning for JIPMAT and under its own topic for Indore.
+    for (const c of ["Arrangements and Puzzles", "Data Interpretation", "Critical Reasoning", "Pattern Recognition"]) {
+      expect(subjectOf(c), c).toBe("Logical Reasoning");
+    }
   });
 
-  it("gives the other two exams a plain subject per section", () => {
-    for (const slug of ["ipmat-rohtak", "jipmat"] as const) {
-      expect(SECTION_SUBJECTS[slug].QA).toBe("Quantitative Ability");
-      expect(SECTION_SUBJECTS[slug].LR).toBe("Logical Reasoning");
-      expect(SECTION_SUBJECTS[slug].VA).toBe("Verbal Ability");
+  it("files the verbal chapters under English", () => {
+    for (const c of ["Reading Comprehension", "Grammar", "Vocabulary", "Sentence Rearrangement", "Spotting Errors"]) {
+      expect(subjectOf(c), c).toBe("English");
     }
+  });
+
+  it("returns null from subjectOf for an unknown chapter rather than a default", () => {
+    expect(subjectOf("Astrophysics")).toBeNull();
   });
 });
 
@@ -95,9 +146,9 @@ describe("TAXONOMY_MAP completeness — forward", () => {
   it("resolves every built row to a subject, chapter and subtopic", () => {
     const bad: string[] = [];
     for (const r of builtRows()) {
-      const t = resolveTaxonomy(r.exam, r.section, r.sourceTopic, r.sourceSubTopic);
+      const t = resolveTaxonomy(r.sourceTopic, r.sourceSubTopic);
       if (!t || !t.subject || !t.chapter || !t.subtopic) {
-        bad.push(`${r.exam}/${r.section}/${sourceKey(r.sourceTopic, r.sourceSubTopic)}`);
+        bad.push(sourceKey(r.sourceTopic, r.sourceSubTopic));
       }
     }
     expect(bad).toEqual([]);
@@ -106,11 +157,33 @@ describe("TAXONOMY_MAP completeness — forward", () => {
 
 describe("TAXONOMY_MAP completeness — reverse", () => {
   it("has NO entry that matches nothing in the corpus", () => {
-    // Catches a map that has rotted against a re-fetched source. A forward-only
-    // check is blind to this.
     const present = new Set(builtRows().map((r) => sourceKey(r.sourceTopic, r.sourceSubTopic)));
-    const dead = Object.keys(TAXONOMY_MAP).filter((k) => !present.has(k));
-    expect(dead.sort()).toEqual([]);
+    expect(Object.keys(TAXONOMY_MAP).filter((k) => !present.has(k)).sort()).toEqual([]);
+  });
+});
+
+describe("the subject no longer depends on the section", () => {
+  it("gives one source pair the same subject whichever section it appeared in", () => {
+    // `Logical Reasoning > Logical Sequence` sits in the QA section three times
+    // and in LR the rest. Under the old section-named axis those landed in two
+    // different subjects; now the question's own topic decides.
+    expect(resolveTaxonomy("Logical Reasoning", "Logical Sequence")!.subject).toBe("Logical Reasoning");
+  });
+
+  it("puts Algebra under Mathematics with no SA/MCQ split", () => {
+    expect(resolveTaxonomy("Algebra", "Modulus")).toEqual({
+      subject: "Mathematics",
+      chapter: "Modulus",
+      subtopic: "Absolute Value Equations and Inequalities",
+    });
+  });
+
+  it("returns null for an unmapped source pair rather than guessing", () => {
+    expect(resolveTaxonomy("Astrology", "Star Signs")).toBeNull();
+  });
+
+  it("returns null when the topic is missing", () => {
+    expect(resolveTaxonomy(null, null)).toBeNull();
   });
 });
 
@@ -145,8 +218,6 @@ describe("the map cleans the source's own duplicates", () => {
   });
 
   it("sends Tabular Data to one chapter however the source topics it", () => {
-    // JIPMAT files it under Logical Reasoning, Indore under Data
-    // Interpretation. It is the same skill and belongs in one place.
     expect(target("Logical Reasoning", "Tabular Data").chapter).toBe(
       target("Data Interpretation", "Tabular Data").chapter
     );
@@ -163,8 +234,6 @@ describe("house naming style", () => {
   const names = mappedChapters();
 
   it("uses no ampersands in a chapter or subtopic name", () => {
-    // CDS spells "and" out; NDA's "Matrices & Determinants" is the older style
-    // and is not being copied into a new corpus.
     const offenders: string[] = [];
     for (const t of Object.values(TAXONOMY_MAP)) {
       if (t.chapter.includes("&")) offenders.push(`chapter: ${t.chapter}`);
@@ -174,9 +243,6 @@ describe("house naming style", () => {
   });
 
   it("has no chapter named Miscellaneous", () => {
-    // A catch-all chapter collects everything that does not fit and rots the
-    // bank's usefulness — a standing lesson in this project. A catch-all
-    // SUBTOPIC inside a real chapter is tolerated; a chapter is not.
     expect(names.filter((n) => /miscellaneous/i.test(n))).toEqual([]);
   });
 
@@ -190,40 +256,17 @@ describe("house naming style", () => {
   });
 
   it("keeps chapter count in a reviewable range", () => {
-    // CDS Mathematics runs 26 chapters over a comparable syllabus. Far more
-    // than that means the map is echoing the source's subtopics as chapters.
     expect(names.length).toBeGreaterThan(20);
     expect(names.length).toBeLessThan(60);
   });
 });
 
-describe("resolveTaxonomy", () => {
-  it("takes the subject from the SECTION, not from the topic", () => {
-    // The same source topic lands in a different subject depending on which
-    // section of the paper it appeared in.
-    const asQa = resolveTaxonomy("jipmat", "QA", "Logical Reasoning", "Logical Sequence");
-    const asLr = resolveTaxonomy("jipmat", "LR", "Logical Reasoning", "Logical Sequence");
-    expect(asQa!.subject).toBe("Quantitative Ability");
-    expect(asLr!.subject).toBe("Logical Reasoning");
-    expect(asQa!.chapter).toBe(asLr!.chapter);
-  });
-
-  it("returns null for an unknown section rather than guessing a subject", () => {
-    expect(resolveTaxonomy("jipmat", "SA", "Algebra", "Indices")).toBeNull();
-  });
-
-  it("returns null for an unmapped source pair", () => {
-    expect(resolveTaxonomy("jipmat", "QA", "Astrology", "Star Signs")).toBeNull();
-  });
-});
-
 describe("no two chapters are confusable", () => {
-  // Caught by the taxonomy report, not by any check above: the map had
-  // "Sequence and Series" (the maths chapter) AND "Series and Sequences" (the
-  // reasoning chapter), and BOTH landed in Rohtak's Quantitative Ability
-  // subject — 4 questions and 1 question, under two names a reader cannot
-  // tell apart. Two chapter names that differ only in word order or plurals
-  // are a naming bug, not two chapters.
+  // The map once had "Sequence and Series" (maths) AND "Series and Sequences"
+  // (reasoning), and both landed in the same subject — 4 questions and 1, under
+  // two names a reader cannot tell apart. The reasoning chapter is now "Pattern
+  // Recognition". Two chapter names differing only in word order or plurals are
+  // a naming bug, not two chapters.
   const bag = (name: string) =>
     name
       .toLowerCase()
@@ -232,7 +275,7 @@ describe("no two chapters are confusable", () => {
       .filter((w) => w && w !== "and" && w !== "the" && w !== "of")
       // Stemming must make "sequence"/"sequences" and "series"/"series" agree.
       // The first version stripped (ies|es|s), which turns "sequence" into
-      // "sequence" but "sequences" into "sequenc" -- so the bags differed and
+      // "sequence" but "sequences" into "sequenc" — so the bags differed and
       // the test passed WITHOUT catching the clash it was written for.
       .map((w) => w.replace(/ies$/, "y").replace(/s$/, ""))
       .sort()
@@ -244,8 +287,7 @@ describe("no two chapters are confusable", () => {
       const k = bag(name);
       (seen.get(k) ?? seen.set(k, []).get(k)!).push(name);
     }
-    const clashes = [...seen.values()].filter((v) => v.length > 1);
-    expect(clashes).toEqual([]);
+    expect([...seen.values()].filter((v) => v.length > 1)).toEqual([]);
   });
 
   it("has no two subtopics with the same word bag inside one chapter", () => {
@@ -254,7 +296,6 @@ describe("no two chapters are confusable", () => {
       const k = `${chapter}||${bag(subtopic)}`;
       (seen.get(k) ?? seen.set(k, []).get(k)!).push(`${chapter} / ${subtopic}`);
     }
-    const clashes = [...seen.values()].filter((v) => v.length > 1);
-    expect(clashes).toEqual([]);
+    expect([...seen.values()].filter((v) => v.length > 1)).toEqual([]);
   });
 });
