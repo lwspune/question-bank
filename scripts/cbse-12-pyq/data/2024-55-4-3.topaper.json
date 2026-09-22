@@ -1,0 +1,198 @@
+{
+  "paper": "55/4/3",
+  "year": 2024,
+  "paperId": "2024-55-4-3",
+  "markingScheme": "out/2024-55-4-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "fdf80120fb23a291ab4fdd4a8ca41c82c48e2ee3b647b5597320e17d23b8c8ea",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "An electric dipole of dipole moment \\(\\vec{p}\\) is kept in a uniform electric field \\(\\vec{E}\\). The amount of work done to rotate it from the position of stable equilibrium to that of unstable equilibrium will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2pE\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-2pE\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(pE\\)"
+        },
+        {
+          "label": "D",
+          "text": "zero"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(2pE\\).**\n\n**The potential energy of a dipole in a uniform field.**\n\n\\(U(\\theta) = -pE\\cos\\theta\\)\n\nwhere \\(\\theta\\) is the angle between \\(\\vec{p}\\) and \\(\\vec{E}\\).\n\n**Identify the two positions.**\n\n*Stable equilibrium* is \\(\\theta = 0\\) — the dipole aligned **with** the field, where \\(U\\) is at its **minimum**:\n\n\\(U_i = -pE\\cos 0^\\circ = -pE\\)\n\n*Unstable equilibrium* is \\(\\theta = 180^\\circ\\) — the dipole **against** the field, where \\(U\\) is at its **maximum**:\n\n\\(U_f = -pE\\cos 180^\\circ = +pE\\)\n\n**The work done** by an external agent in rotating it slowly is the increase in potential energy:\n\n\\(W = U_f - U_i = pE - (-pE)\\)\n\n\\(\\boxed{\\ W = 2pE\\ }\\)\n\n**Why the factor is 2 and not 1.** The dipole does not start from zero energy — it starts at \\(-pE\\), already \\(pE\\) **below** the zero. Getting it to \\(+pE\\) therefore costs **twice** \\(pE\\): once to climb back to the \\(\\theta = 90^\\circ\\) position where \\(U = 0\\), and again to go on to \\(180^\\circ\\). Option (C), \\(pE\\), is exactly the work for the **half** journey from \\(0^\\circ\\) to \\(90^\\circ\\), which is the trap.\n\n**Why the answer is positive, not negative.** Option (B), \\(-2pE\\), is the **change in the field's** energy, or equivalently the work done **by** the electric forces. The question asks for the work done **to rotate it**, which means work done against those forces — energy put in, so positive. Going from stable to unstable equilibrium always costs energy; it could not be otherwise.\n\n**Both positions are equilibria**, since the torque \\(\\tau = pE\\sin\\theta\\) vanishes at \\(0^\\circ\\) and at \\(180^\\circ\\) alike. What distinguishes them is what happens on a small disturbance: at \\(0^\\circ\\) the torque pushes the dipole back, at \\(180^\\circ\\) it pushes it further away. The energy difference \\(2pE\\) is the barrier between them, and it is why a dipole flipped end-for-end in a strong field snaps back."
+    },
+    {
+      "hash": "b05862a3512558c14055e47a6cf479741e8ee9b9b0f6b160587ddec98d18ba0c",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Applications of Gauss's Law",
+      "stem": "An infinite long straight wire having a charge density \\(\\lambda\\) is kept along \\(y'y\\) axis in \\(x\\)-y plane. The Coulomb force on a point charge q at a point P \\((x, 0)\\) will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "attractive and \\(\\dfrac{q\\lambda}{2\\pi\\varepsilon_0 x}\\)"
+        },
+        {
+          "label": "B",
+          "text": "repulsive and \\(\\dfrac{q\\lambda}{2\\pi\\varepsilon_0 x}\\)"
+        },
+        {
+          "label": "C",
+          "text": "attractive and \\(\\dfrac{q\\lambda}{\\pi\\varepsilon_0 x}\\)"
+        },
+        {
+          "label": "D",
+          "text": "repulsive and \\(\\dfrac{q\\lambda}{\\pi\\varepsilon_0 x}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): repulsive, and \\(\\dfrac{q\\lambda}{2\\pi\\varepsilon_0 x}\\).**\n\n**The field of an infinite line charge, from Gauss's law.**\n\nTake a coaxial cylinder of radius \\(x\\) and length \\(l\\) around the wire. By symmetry \\(\\vec{E}\\) is radial and constant over the curved surface, and the flat ends contribute nothing:\n\n\\(E(2\\pi x l) = \\dfrac{\\lambda l}{\\varepsilon_0} \\qquad\\Longrightarrow\\qquad E = \\dfrac{\\lambda}{2\\pi\\varepsilon_0 x}\\)\n\n**The force on the point charge.**\n\n\\(F = qE = \\dfrac{q\\lambda}{2\\pi\\varepsilon_0 x}\\)\n\n\\(\\boxed{\\ F = \\dfrac{q\\lambda}{2\\pi\\varepsilon_0 x},\\ \\text{repulsive}\\ }\\)\n\n**The \\(2\\pi\\) is the whole arithmetic of the question**, and it is where the two wrong magnitudes come from. Options (C) and (D) carry \\(\\pi\\varepsilon_0\\) instead — a factor of \\(2\\) out, which is what comes of using the Gaussian surface of a **sphere** (as for a point charge) rather than a cylinder. The cylinder is forced by the symmetry: a line has no centre, only an axis.\n\n**The distance dependence is \\(1/x\\), not \\(1/x^{2}\\).** The field of a line charge falls off **more slowly** than that of a point charge, because the charge is spread along an infinite length — moving further away brings more of the wire into view, partly compensating for the greater distance. Worth noting that no option offers \\(1/x^{2}\\): CBSE tests the \\(2\\pi\\) here, not the power.\n\n**Why repulsive.** With \\(\\lambda\\) and \\(q\\) both taken positive, the field points radially **outward** from the wire and the force on \\(q\\) is outward too — away from the wire, along \\(+x\\). The option set assumes both are positive, which is the only reading under which any option is right; had either been negative the force would be attractive and the magnitude unchanged.\n\n**A note on the geometry.** The wire lies along the \\(y\\)-axis and \\(P\\) is at \\((x, 0)\\), so the perpendicular distance from the wire to \\(P\\) is simply \\(x\\). That is why \\(x\\) appears in the answer — it is a distance here, not a coordinate to be signed."
+    },
+    {
+      "hash": "83e193bf1de33cb00e80122b952abf2774ee526170240442c9c0ee881f799bb9",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force Between Parallel Currents",
+      "stem": "Two long straight parallel conductors A and B, kept at a distance r, carry current I in opposite directions. A third identical conductor C, kept at a distance \\(\\left(\\dfrac{r}{3}\\right)\\) from A carry current \\(I_1\\) in the same direction as in A. The net magnetic force on unit length of C is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{3\\mu_0 I\\,I_1}{2\\pi r}\\), towards A"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{3\\mu_0 I\\,I_1}{2\\pi r}\\), towards B"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{3\\mu_0 I\\,I_1}{4\\pi r}\\), towards A"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{3\\mu_0 I\\,I_1}{4\\pi r}\\), towards B"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**CBSE voided this question.** Its marking scheme records *\"No option is correct, award 1 mark\"*, so every candidate received the mark regardless of what was written. The correct value is derived below, and it is not among the four offered.\n\n**The arrangement.** \\(A\\) and \\(B\\) are a distance \\(r\\) apart carrying current \\(I\\) in **opposite** directions. \\(C\\) lies a distance \\(r/3\\) from \\(A\\) — so, on the natural reading, between \\(A\\) and \\(B\\), and therefore \\(2r/3\\) from \\(B\\). It carries \\(I_1\\) in the **same** direction as \\(A\\).\n\n**The two rules needed.** Parallel currents in the **same** direction attract; in **opposite** directions they repel. The force per unit length between two parallel wires a distance \\(d\\) apart is\n\n\\(\\dfrac{F}{l} = \\dfrac{\\mu_0 I_a I_b}{2\\pi d}\\)\n\n**Force on \\(C\\) due to \\(A\\).** Same direction, so they **attract**. \\(C\\) is pulled **towards \\(A\\)**:\n\n\\(\\dfrac{F_A}{l} = \\dfrac{\\mu_0 I I_1}{2\\pi(r/3)} = \\dfrac{3\\mu_0 I I_1}{2\\pi r}\\)\n\n**Force on \\(C\\) due to \\(B\\).** \\(B\\) carries current opposite to \\(A\\), hence opposite to \\(C\\) as well, so they **repel**. \\(C\\) is pushed **away from \\(B\\)** — and since \\(C\\) sits between them, away from \\(B\\) is also **towards \\(A\\)**:\n\n\\(\\dfrac{F_B}{l} = \\dfrac{\\mu_0 I I_1}{2\\pi(2r/3)} = \\dfrac{3\\mu_0 I I_1}{4\\pi r}\\)\n\n**The two forces point the SAME way, so they ADD.** This is the step the question turns on: both the attraction to \\(A\\) and the repulsion from \\(B\\) drive \\(C\\) towards \\(A\\).\n\n\\(\\dfrac{F}{l} = \\dfrac{3\\mu_0 I I_1}{2\\pi r} + \\dfrac{3\\mu_0 I I_1}{4\\pi r} = \\dfrac{6\\mu_0 I I_1 + 3\\mu_0 I I_1}{4\\pi r}\\)\n\n\\(\\boxed{\\ \\dfrac{F}{l} = \\dfrac{9\\mu_0 I I_1}{4\\pi r},\\ \\text{towards } A\\ }\\)\n\n**What the four options actually are.** \\(\\dfrac{3\\mu_0 I I_1}{2\\pi r}\\) is the contribution of \\(A\\) **alone**; \\(\\dfrac{3\\mu_0 I I_1}{4\\pi r}\\) is the contribution of \\(B\\) **alone**. Each is a partial answer — one of the two forces, with the other dropped. The **sum** is what the question asks for, and it appears nowhere.\n\n**The other placement does not rescue any option either.** Suppose \\(C\\) lay on the far side of \\(A\\), so that \\(A\\) is between \\(C\\) and \\(B\\) and the distance \\(CB\\) is \\(4r/3\\). Then the attraction to \\(A\\) and the repulsion from \\(B\\) point in **opposite** directions, and\n\n\\(\\dfrac{F}{l} = \\dfrac{3\\mu_0 I I_1}{2\\pi r} - \\dfrac{3\\mu_0 I I_1}{8\\pi r} = \\dfrac{9\\mu_0 I I_1}{8\\pi r}, \\ \\text{towards } A\\)\n\nwhich is also not offered. So the question fails under either geometry, and CBSE's decision to void it stands whichever way the arrangement is read.\n\n**The transferable lesson.** With three parallel wires, always resolve **both** forces and check whether they add or oppose before combining. The sign is decided by two things at once — the relative **current directions** and the **position** of the middle wire — and getting either wrong changes the answer."
+    },
+    {
+      "hash": "8a4824066c15543eb74b530bda0bd1fcf981f999e688e7cbc7bbfb0ecd9cdddf",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to a Resistor",
+      "stem": "The r.m.s. value of a current given by \\(i = (i_1 \\cos \\omega t + i_2 \\sin \\omega t)\\) is -",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}(i_1 + i_2)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}(i_1 - i_2)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}\\sqrt{(i_1^2 + i_2^2)}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}(i_1^2 + i_2^2)\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{1}{\\sqrt{2}}\\sqrt{i_1^{2} + i_2^{2}}\\).**\n\n**Work from the definition**, which is the only safe route when a current is a *sum* of terms:\n\n\\(i_{rms} = \\sqrt{\\langle i^{2}\\rangle}\\)\n\n**Square the current.**\n\n\\(i^{2} = \\left(i_1\\cos\\omega t + i_2\\sin\\omega t\\right)^{2}\\)\n\n\\(i^{2} = i_1^{2}\\cos^{2}\\omega t + i_2^{2}\\sin^{2}\\omega t + 2i_1i_2\\sin\\omega t\\cos\\omega t\\)\n\n**Average each term over a full cycle.** Three standard results do all the work:\n\n\\(\\langle\\cos^{2}\\omega t\\rangle = \\dfrac{1}{2}, \\qquad \\langle\\sin^{2}\\omega t\\rangle = \\dfrac{1}{2}, \\qquad \\langle\\sin\\omega t\\cos\\omega t\\rangle = 0\\)\n\n**The cross term vanishes**, and that is the heart of the question. Since \\(2\\sin\\omega t\\cos\\omega t = \\sin 2\\omega t\\), it is a sine of twice the frequency and averages to zero over a complete cycle. So\n\n\\(\\langle i^{2}\\rangle = \\dfrac{i_1^{2}}{2} + \\dfrac{i_2^{2}}{2} = \\dfrac{i_1^{2} + i_2^{2}}{2}\\)\n\n**Take the square root.**\n\n\\(\\boxed{\\ i_{rms} = \\sqrt{\\dfrac{i_1^{2} + i_2^{2}}{2}} = \\dfrac{1}{\\sqrt{2}}\\sqrt{i_1^{2} + i_2^{2}}\\ }\\)\n\n**Why the answer adds in quadrature rather than directly.** Options (A) and (B) treat the peaks as though they simply added or subtracted. They do not, because \\(\\cos\\omega t\\) and \\(\\sin\\omega t\\) are **a quarter cycle out of phase** — when one is at its maximum the other is zero. Two such components combine like perpendicular vectors, hence \\(\\sqrt{i_1^{2} + i_2^{2}}\\).\n\n**The same result seen geometrically.** The sum can be rewritten as a single sinusoid:\n\n\\(i = i_0\\sin(\\omega t + \\phi), \\qquad i_0 = \\sqrt{i_1^{2} + i_2^{2}}, \\qquad \\tan\\phi = \\dfrac{i_1}{i_2}\\)\n\nOnce in that form the current is an ordinary sinusoid of peak \\(i_0\\), and \\(i_{rms} = i_0/\\sqrt{2}\\) applies directly. This is the quicker route if the identity is remembered, and it makes the quadrature obvious.\n\n**A check on option (D).** \\(\\dfrac{1}{\\sqrt{2}}(i_1^{2} + i_2^{2})\\) has the dimensions of current **squared**, so it can be rejected on dimensions alone without any calculation."
+    },
+    {
+      "hash": "1a6bd31182f1dd42cda36dc111653e7050d47b41fc13ac7cfdeb9977cbc9fbfe",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "The ratio of de Broglie wavelengths of a proton and a deuteron accelerated by potential \\(V_p\\) and \\(V_d\\) respectively, \\(\\left(\\dfrac{\\lambda_p}{\\lambda_d}\\right)\\) is \\(\\dfrac{1}{2}\\). Find \\(\\dfrac{V_p}{V_d}\\).",
+      "solution": "**The wavelength of an accelerated charged particle.**\n\nA particle of charge \\(q\\) accelerated from rest through a potential difference \\(V\\) gains kinetic energy \\(qV\\), so\n\n\\(K = qV \\qquad\\Longrightarrow\\qquad p = \\sqrt{2mK} = \\sqrt{2mqV}\\)\n\nand therefore\n\n\\(\\boxed{\\ \\lambda = \\dfrac{h}{\\sqrt{2mqV}}\\ }\\)\n\n**The two particles.** A proton has mass \\(m\\) and charge \\(e\\). A **deuteron** is a proton bound to a neutron, so it has mass \\(2m\\) and — this is the part to be careful about — **the same charge \\(e\\)**. Adding a neutron doubles the mass and changes the charge not at all.\n\n\\(\\lambda_p = \\dfrac{h}{\\sqrt{2meV_p}}, \\qquad \\lambda_d = \\dfrac{h}{\\sqrt{2(2m)eV_d}}\\)\n\n**Take the ratio**, and everything common cancels:\n\n\\(\\dfrac{\\lambda_p}{\\lambda_d} = \\dfrac{\\sqrt{2(2m)eV_d}}{\\sqrt{2meV_p}} = \\sqrt{\\dfrac{2V_d}{V_p}}\\)\n\n**Substitute the given value.**\n\n\\(\\dfrac{1}{2} = \\sqrt{\\dfrac{2V_d}{V_p}}\\)\n\n**Square both sides** — the step where the factor of \\(4\\) enters:\n\n\\(\\dfrac{1}{4} = \\dfrac{2V_d}{V_p}\\)\n\n\\(\\dfrac{V_p}{V_d} = 4 \\times 2\\)\n\n\\(\\boxed{\\ \\dfrac{V_p}{V_d} = 8\\ }\\)\n\n**A sanity check on the direction.** The proton is asked to have the **shorter** wavelength (half the deuteron's), so it needs the **larger** momentum. It is the lighter particle, so it must be worked harder — a larger accelerating voltage. \\(V_p/V_d = 8 > 1\\) agrees.\n\n**Where the 8 comes from, term by term.** A factor of \\(4\\) comes from squaring the wavelength ratio, and a factor of \\(2\\) from the deuteron's doubled mass. Forgetting to square gives \\(4\\); assuming the deuteron's charge is also doubled gives \\(16\\). Both are easy slips, and both are avoided by writing \\(\\lambda = h/\\sqrt{2mqV}\\) out in full before substituting anything."
+    },
+    {
+      "hash": "dd325b158593387017be0676d198c8574719a607b6b9f56d5c2e79130d41dd6b",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "Find the temperature at which the resistance of a conductor increases by 25% of its value at 27 \\(^{\\circ}\\mathrm{C}\\). The temperature coefficient of resistance of the conductor is \\(2.0 \\times 10^{-4}\\ ^{\\circ}\\mathrm{C}^{-1}\\).",
+      "solution": "**The relation to use.**\n\n\\(R_2 = R_1\\left[1 + \\alpha(T_2 - T_1)\\right]\\)\n\nwhere \\(R_1\\) is the resistance at the reference temperature \\(T_1\\).\n\n**Translate the condition.** \"The resistance increases by 25% of its value at \\(27\\ ^\\circ\\)C\" means\n\n\\(R_2 = R_1 + 0{\\cdot}25R_1 = 1{\\cdot}25R_1\\)\n\nwith \\(T_1 = 27\\ ^\\circ\\)C. **Note that the 25% is measured against the value at \\(27\\ ^\\circ\\)C**, which is also the reference temperature in the formula — so the two match and no conversion is needed. Had the increase been quoted against the value at \\(0\\ ^\\circ\\)C, the arithmetic would be different.\n\n**Substituting.**\n\n\\(1{\\cdot}25R_1 = R_1\\left[1 + \\alpha(T_2 - 27)\\right]\\)\n\nThe \\(R_1\\) cancels throughout — **its value is never needed**, which is why the question does not give it:\n\n\\(1{\\cdot}25 = 1 + \\left(2{\\cdot}0 \\times 10^{-4}\\right)(T_2 - 27)\\)\n\n\\(0{\\cdot}25 = \\left(2{\\cdot}0 \\times 10^{-4}\\right)(T_2 - 27)\\)\n\n\\(T_2 - 27 = \\dfrac{0{\\cdot}25}{2{\\cdot}0 \\times 10^{-4}} = 1250\\)\n\n\\(\\boxed{\\ T_2 = 1277\\ ^\\circ\\mathrm{C}\\ }\\)\n\n**Why the temperature has to be so high.** \\(\\alpha = 2{\\cdot}0 \\times 10^{-4}\\ ^\\circ\\mathrm{C}^{-1}\\) is small — the resistance rises by only \\(0{\\cdot}02\\%\\) per degree — so raising it by a quarter takes a rise of more than a thousand degrees. The reciprocal \\(1/\\alpha = 5000\\ ^\\circ\\)C is a useful benchmark: it is the temperature rise that would **double** the resistance on this linear model.\n\n**Where the linear model stops being true.** \\(1277\\ ^\\circ\\)C is above the melting point of copper (\\(1085\\ ^\\circ\\)C) and aluminium, so for most common conductors this is a calculation about a wire that no longer exists. The formula is a **linear approximation**, valid over a modest range about the reference temperature; real metals depart from it well before a thousand degrees. The number is the right answer to the question as set, but it is worth knowing that it lies outside the model's honest range.\n\n**A note on the units.** \\(\\alpha\\) is per degree **Celsius**, and \\(\\Delta T\\) is a **difference** of temperatures. Since a Celsius degree and a kelvin are the same size, \\(\\Delta T\\) is identical in either scale — so there is no need to convert to kelvin here, provided the answer is reported in the same scale the reference temperature was given in."
+    },
+    {
+      "hash": "09c63e9cb51383e55158a5e0adeb06f7a8e233072282f8dc34e7210e9b707d5e",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "Two conducting spherical shells A and B of radii R and 2R are kept far apart and charged to the same charge density \\(\\sigma\\). They are connected by a wire. Obtain an expression for final potential of shell A.",
+      "solution": "**Step 1 — the initial charges.** Both shells are charged to the same surface density \\(\\sigma\\), so each carries \\(\\sigma\\) times its own surface area:\n\n\\(q_A = \\sigma\\left(4\\pi R^{2}\\right) = 4\\pi R^{2}\\sigma\\)\n\n\\(q_B = \\sigma\\left[4\\pi (2R)^{2}\\right] = 16\\pi R^{2}\\sigma\\)\n\n**The larger shell carries four times the charge**, not twice — area goes as the square of the radius. That factor of \\(4\\) is the first thing the question tests.\n\n**Step 2 — what the wire does.** Connecting the shells makes them one conductor, so charge flows until their **potentials are equal**. Let the final charges be \\(q_A'\\) and \\(q_B'\\):\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_A'}{R} = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_B'}{2R} \\qquad\\Longrightarrow\\qquad q_B' = 2q_A'\\)\n\n**Step 3 — conservation of charge.** The wire moves charge about but creates none:\n\n\\(q_A' + q_B' = q_A + q_B\\)\n\n\\(q_A' + 2q_A' = 4\\pi R^{2}\\sigma + 16\\pi R^{2}\\sigma = 20\\pi R^{2}\\sigma\\)\n\n\\(3q_A' = 20\\pi R^{2}\\sigma \\qquad\\Longrightarrow\\qquad q_A' = \\dfrac{20\\pi R^{2}\\sigma}{3}\\)\n\n**Step 4 — the final potential.**\n\n\\(V_A = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q_A'}{R} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{20\\pi R^{2}\\sigma}{3R}\\)\n\n\\(\\boxed{\\ V_A = \\dfrac{5\\sigma R}{3\\varepsilon_0}\\ }\\)\n\n**A second route, through capacitance**, which reaches the same place in one line. An isolated sphere of radius \\(a\\) has \\(C = 4\\pi\\varepsilon_0 a\\), and joining two conductors puts their capacitances in **parallel**:\n\n\\(V = \\dfrac{q_A + q_B}{C_A + C_B} = \\dfrac{4\\pi R^{2}\\sigma + 16\\pi R^{2}\\sigma}{4\\pi\\varepsilon_0 R + 4\\pi\\varepsilon_0 (2R)} = \\dfrac{20\\pi R^{2}\\sigma}{12\\pi\\varepsilon_0 R} = \\dfrac{5\\sigma R}{3\\varepsilon_0}\\ \\checkmark\\)\n\n**Which way did the charge flow?** Initially \\(q_A = 4\\pi R^{2}\\sigma\\); finally \\(q_A' = \\tfrac{20}{3}\\pi R^{2}\\sigma\\), which is larger. So charge moved **from the big shell onto the small one**. That is worth pausing over: before connection the small shell was at the **lower** potential \\(\\left(V \\propto q/R \\propto \\sigma R\\right)\\), so charge flows from high potential to low, which here means from \\(B\\) to \\(A\\).\n\n**The lesson the question is built on.** Equal surface **density** does not mean equal **potential** — for a sphere, \\(V = \\sigma R/\\varepsilon_0\\), so potential grows with radius even at fixed density. After connection the densities are no longer equal: the small shell ends up with the **higher** density, which is why charge accumulates at sharp points and why lightning conductors are pointed.\n\n**The \"far apart\" clause matters.** It is what allows each shell's potential to be written as though the other were absent. Brought close together, they would influence each other's charge distribution and none of this simple treatment would hold."
+    },
+    {
+      "hash": "42f464f92b4f9884de9590e3dd783289a0d169d0dcef958ca5bd1d08cf5d2df6",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Combination of Resistors",
+      "stem": "In the given network, calculate :\n(i) effective resistance between points A and M, and\n(ii) power supplied by the battery.",
+      "figureNote": "REQUIRED — the stem names no component and no value; the whole question is the printed network. The layout, labelling and values are described because the answer is a derived resistance and a derived power that no description states. What is drawn: a diamond standing on node A with node C at its top, node B on its left and node D on its right; round the diamond, 10 \\(\\Omega\\) from A to B, 10 \\(\\Omega\\) from B to C, 10 \\(\\Omega\\) from C to D and 20 \\(\\Omega\\) on the slanted branch from D back to A; a further 20 \\(\\Omega\\) runs vertically from C straight down to A. A horizontal bottom rail carries 30 \\(\\Omega\\) from A to node M and then 10 \\(\\Omega\\) from M to the right-hand corner, and a 10 \\(\\Omega\\) vertical branch joins D down to M. The return path along the bottom of the figure carries an 8 \\(\\Omega\\) resistor and a 6 V battery. Page idx 12.",
+      "imageAttached": true,
+      "solution": "**(i) The effective resistance between \\(A\\) and \\(M\\).**\n\n**Work inwards from the far corner of the network**, collapsing one parallel pair at a time.\n\n**The path \\(A \\to B \\to C\\)** is two \\(10\\ \\Omega\\) in series:\n\n\\(R_{ABC} = 10 + 10 = 20\\ \\Omega\\)\n\nThis is in **parallel** with the direct \\(20\\ \\Omega\\) from \\(A\\) to \\(C\\):\n\n\\(R_{AC} = \\dfrac{20 \\times 20}{20 + 20} = 10\\ \\Omega\\)\n\n**Add the \\(10\\ \\Omega\\) from \\(C\\) to \\(D\\)**, which is in series with what we just found:\n\n\\(R_{ACD} = 10 + 10 = 20\\ \\Omega\\)\n\nThis is in **parallel** with the direct \\(20\\ \\Omega\\) from \\(A\\) to \\(D\\):\n\n\\(R_{AD} = \\dfrac{20 \\times 20}{20 + 20} = 10\\ \\Omega\\)\n\n**Add the \\(10\\ \\Omega\\) from \\(D\\) to \\(M\\):**\n\n\\(R_{ADM} = 10 + 10 = 20\\ \\Omega\\)\n\nThis is in **parallel** with the direct \\(30\\ \\Omega\\) from \\(A\\) to \\(M\\):\n\n\\(R_{AM} = \\dfrac{20 \\times 30}{20 + 30} = \\dfrac{600}{50}\\)\n\n\\(\\boxed{\\ R_{AM} = 12\\ \\Omega\\ }\\)\n\n**The structure worth noticing.** Twice in a row a \\(20\\ \\Omega\\) branch met a \\(20\\ \\Omega\\) branch and collapsed to \\(10\\ \\Omega\\). The network is built as a **ladder**, each rung reducing the whole of what lies beyond it to a single resistor — which is why no Kirchhoff equations are needed here despite the diamond's appearance. Work from the end furthest from the terminals and it unravels step by step.\n\n**(ii) The power supplied by the battery.**\n\nThe battery drives current through \\(R_{AM}\\) together with the \\(10\\ \\Omega\\) and the \\(8\\ \\Omega\\) in its own branch, all in series:\n\n\\(R_{net} = 12 + 10 + 8 = 30\\ \\Omega\\)\n\n\\(I = \\dfrac{\\varepsilon}{R_{net}} = \\dfrac{6}{30} = 0{\\cdot}2\\ \\mathrm{A}\\)\n\n\\(P = \\varepsilon I = 6 \\times 0{\\cdot}2\\)\n\n\\(\\boxed{\\ P = 1{\\cdot}2\\ \\mathrm{W}\\ }\\)\n\n**Or in one step**, since the emf is known and the current is not needed for its own sake:\n\n\\(P = \\dfrac{\\varepsilon^{2}}{R_{net}} = \\dfrac{36}{30} = 1{\\cdot}2\\ \\mathrm{W}\\ \\checkmark\\)\n\n**What \"power supplied by the battery\" means here.** The battery is ideal — no internal resistance is given — so every watt it delivers goes into the external circuit. Of the \\(1{\\cdot}2\\) W, the \\(8\\ \\Omega\\) and \\(10\\ \\Omega\\) in the supply branch dissipate \\(I^{2}(18) = 0{\\cdot}72\\) W between them, and only \\(I^{2}(12) = 0{\\cdot}48\\) W reaches the network under test. Adding those gives \\(1{\\cdot}2\\) W, which is a worthwhile final check: the parts must account for the whole."
+    },
+    {
+      "hash": "bc36ae07ccdd21857bead36443cb9716291b46fe54d90e5ee62f5a105f79028b",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "An infinite straight conductor is kept along \\(\\mathrm{X'X}\\) axis and carries a current I. A charge q at point P(0, r) starts moving with velocity \\(\\vec{v} = v_0\\hat{j}\\) as shown in figure. Find the direction and magnitude of force initially experienced by the charge.",
+      "figureNote": "REQUIRED — the question asks for a DIRECTION, and the sense in which the current runs along the axis is drawn and nowhere stated in words. Described here without that sense: a pair of axes with Y drawn upward and X to the right, the origin marked 0, the horizontal axis labelled X' at its left end and X at its right end and drawn as a solid line carrying an arrowhead and the label I, the vertical axis drawn as a dashed line, a dot on it labelled P (0, r), and an arrow above that dot labelled \\(\\vec{v}\\). Which way the current arrowhead points is deliberately withheld. Page idx 14.",
+      "imageAttached": true,
+      "solution": "**Step 1 — the magnetic field at \\(P\\).**\n\nThe conductor lies along the \\(x\\)-axis carrying current \\(I\\) in the \\(+x\\) direction. \\(P\\) is at \\((0, r)\\), so its perpendicular distance from the wire is \\(r\\), and\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi r}\\)\n\n**Direction.** By the right-hand rule, \\(\\hat{I}\\times\\hat{r} = \\hat{i}\\times\\hat{j} = \\hat{k}\\), so the field at \\(P\\) points along \\(+z\\) — **out of the page**:\n\n\\(\\vec{B} = \\dfrac{\\mu_0 I}{2\\pi r}\\hat{k}\\)\n\n**Step 2 — the force on the moving charge.**\n\n\\(\\vec{F} = q\\left(\\vec{v}\\times\\vec{B}\\right) = q\\left[\\left(v_0\\hat{j}\\right)\\times\\left(\\dfrac{\\mu_0 I}{2\\pi r}\\hat{k}\\right)\\right]\\)\n\nSince \\(\\hat{j}\\times\\hat{k} = \\hat{i}\\):\n\n\\(\\boxed{\\ \\vec{F} = \\dfrac{\\mu_0 q v_0 I}{2\\pi r}\\,\\hat{i}\\ }\\)\n\n**Magnitude:** \\(F = \\dfrac{\\mu_0 q v_0 I}{2\\pi r}\\).\n\n**Direction:** along the \\(+x\\) axis — that is, **parallel to the current**, along the conductor.\n\n**Why that direction is worth a second look.** The charge is moving **away** from the wire, yet the force on it is **along** the wire — perpendicular both to its velocity and to the wire's direction of nearest approach. The magnetic force is always perpendicular to the velocity, so it can never speed the charge up or slow it down; it can only bend the path. The charge will curve towards \\(+x\\) while continuing to move outwards.\n\n**The word \"initially\" is doing real work in the stem.** The moment the charge starts to curve, its velocity is no longer purely \\(\\hat{j}\\) and its distance from the wire is no longer exactly \\(r\\) — so both \\(\\vec{v}\\) and \\(\\vec{B}\\) change, and with them the force. The expression above is the force at the **first instant** only. The subsequent path is not a simple curve and is well beyond what the question asks.\n\n**A caution on the sign of \\(q\\).** The answer above is for a **positive** charge. For a negative one the force reverses to \\(-\\hat{i}\\), against the current. Nothing else changes — the magnitude is the same, since only \\(|q|\\) enters it.\n\n**A check by symmetry.** Had the charge been moving parallel to the wire instead of away from it, \\(\\vec{v}\\times\\vec{B}\\) would have been \\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\), a force directly **towards** the wire — which is the familiar result that a charge drifting alongside a current is attracted to it, and the microscopic origin of the attraction between parallel currents."
+    },
+    {
+      "hash": "ab6db1d00838744394a506fa824393e16e7345999359b6e880f42bcfcaacd421",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Explain the following giving reasons :\n(i) 'Electromagnetic waves differ considerably in their mode of interaction with matter'.\n(ii) 'Food items to be heated in microwave oven must contain water'.\n(iii) 'Welders wear face mask with glasses during welding'.",
+      "solution": "**(i) Why electromagnetic waves differ so much in how they interact with matter.**\n\nBecause their **photon energies** differ by many orders of magnitude, and matter absorbs a photon only when that energy **matches an available internal transition**.\n\n\\(E = h\\nu = \\dfrac{hc}{\\lambda}\\)\n\nAcross the spectrum this runs from about \\(10^{-10}\\) eV for long radio waves to millions of electronvolts for gamma rays — a range of some twenty powers of ten. Matter offers a **ladder of energy spacings**, and each region of the spectrum meets a different rung:\n\n| Region | Photon energy | What it couples to |\n|---|---|---|\n| Radio | \\(\\sim 10^{-10}\\) to \\(10^{-6}\\) eV | Bulk **currents** in a conductor (an aerial) |\n| Microwave | \\(\\sim 10^{-5}\\) to \\(10^{-3}\\) eV | Molecular **rotation** |\n| Infrared | \\(\\sim 0{\\cdot}01\\) to \\(1\\) eV | Molecular **vibration** |\n| Visible / UV | \\(\\sim 1\\) to \\(100\\) eV | **Outer-electron** transitions |\n| X-ray | \\(\\sim 10^{2}\\) to \\(10^{5}\\) eV | **Inner-shell** electrons; ionisation |\n| Gamma | \\(> 10^{5}\\) eV | **Nuclear** transitions |\n\nSo the *same* substance is transparent to one band, absorbent in another and ionised by a third — glass passes visible light, absorbs ultraviolet and is transparent again to X-rays. It is the photon energy, not the wave's intensity, that decides which.\n\n**(ii) Why food heated in a microwave oven must contain water.**\n\nA microwave oven works by **resonance with water molecules**, not by general heating.\n\nWater is a strongly **polar** molecule — a permanent electric dipole. The oven's field, oscillating at about \\(2{\\cdot}45\\) GHz, exerts a torque on each such dipole and tries to flip it back and forth. That frequency is close to the natural **rotational** frequency of water molecules in the liquid, so the molecules absorb energy efficiently and begin to rotate vigorously.\n\nThe rotating molecules then **collide** with their neighbours and share that energy as random motion — which is heat. So the water heats first, and the rest of the food heats by conduction from it.\n\n**A dry, non-polar item has nothing for the field to grip.** It contains no permanent dipoles to torque, so the microwaves pass through largely unabsorbed and the item stays cool. This is exactly why a ceramic or glass dish stays cool while the food in it steams, and why the oven's own walls are metal.\n\n**(iii) Why welders wear a face mask with glass.**\n\nA welding arc runs at several thousand degrees and radiates strongly across the whole spectrum — but the danger is the **ultraviolet**.\n\nUV photons carry a few electronvolts each, enough to **break chemical bonds** and damage living tissue. On the eye they inflame the cornea, a painful condition known as *arc eye* or photokeratitis, which typically appears hours after exposure; prolonged exposure can damage the retina and hasten cataract. On the skin they cause burns like severe sunburn.\n\nThe mask's **dark glass absorbs ultraviolet** while passing just enough visible light for the welder to see the work. It also cuts the intense visible glare, which would otherwise dazzle, and the infrared, which would burn the face with heat.\n\n**The point common to all three parts.** Each is decided by **photon energy**, not by how bright the source is. Microwaves match a rotational spacing; ultraviolet matches a bond energy; radio matches nothing in the body at all, which is why it passes through harmlessly at intensities that would be dangerous in the ultraviolet."
+    }
+  ]
+}
