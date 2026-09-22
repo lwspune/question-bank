@@ -1,0 +1,326 @@
+{
+  "paper": "55/5/3",
+  "year": 2023,
+  "paperId": "2023-55-5-3",
+  "markingScheme": "out/2023-55-5-3/ms/p00.png … p22.png",
+  "rows": [
+    {
+      "hash": "274f3083e8546d3ac4f6984a8a80b9f9f3871214cbf0118843db4660b08a9494",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force Between Parallel Currents",
+      "stem": "Two horizontal thin long parallel wires, separated by a distance r carry current I each in the opposite directions. The net magnetic field at a point midway between them, will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "zero"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\left(\\dfrac{\\mu_0 \\mathrm{I}}{2\\pi r}\\right)\\) vertically downward"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\left(\\dfrac{2\\mu_0 \\mathrm{I}}{r}\\right)\\) vertically upward"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\left(\\dfrac{\\mu_0 \\mathrm{I}}{\\pi r}\\right)\\) vertically downward"
+        }
+      ],
+      "noCorrectOption": true,
+      "solution": "**This question was voided by CBSE.** The marking scheme prints no letter and directs \"No option is correct. Award one mark to each student.\" The correct value is **not among the four printed choices**, as the working below shows.\n\n**The field of one long straight wire** at perpendicular distance \\(d\\):\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi d}\\)\n\nThe point is **midway** between wires separated by \\(r\\), so \\(d = \\dfrac{r}{2}\\) for each, and each wire contributes\n\n\\(B_1 = B_2 = \\dfrac{\\mu_0 I}{2\\pi(r/2)} = \\dfrac{\\mu_0 I}{\\pi r}\\)\n\n**The directions ADD, and this is the step the question is really about.** The currents are **antiparallel**, so in the region *between* the wires the two circulating fields point the **same way** — each wire's field circles it, and between them those circulations run in the same sense. (Had the currents been parallel, the two would have cancelled exactly at the midpoint and the answer would have been zero.)\n\n\\(B_{\\text{net}} = B_1 + B_2 = \\dfrac{2\\mu_0 I}{\\pi r}\\)\n\n**None of the four options is this.** The closest, \\(\\dfrac{\\mu_0 I}{\\pi r}\\), is the contribution of **one** wire only — right in form, short by a factor of two. The option \\(\\dfrac{\\mu_0 I}{2\\pi r}\\) uses \\(r\\) instead of \\(r/2\\) as the distance, missing the factor of two a second way. And \"zero\" is the answer to the *parallel*-current version of the question.\n\nA candidate who wrote \\(2\\mu_0 I/\\pi r\\) had the physics entirely right and found nothing to tick.\n\n**The rule to carry away**, since it is the part worth more than the arithmetic: for two long parallel wires, **antiparallel currents give fields that ADD between them and partly cancel outside; parallel currents do the reverse.** Reading \"opposite currents\" as \"opposite fields\" inverts it, and is the commonest error in this whole topic."
+    },
+    {
+      "hash": "6a17bc92cd667b801754c33384865bf7a4df29ac4edee2c8e22e59633124c0cc",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which of the following cannot modify an external magnetic field as shown in the figure ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nickel"
+        },
+        {
+          "label": "B",
+          "text": "Silicon"
+        },
+        {
+          "label": "C",
+          "text": "Sodium Chloride"
+        },
+        {
+          "label": "D",
+          "text": "Copper"
+        }
+      ],
+      "answer": "A",
+      "figureNote": "REQUIRED — the stem names no property at all; it says only 'as shown in the figure', so the drawing carries the entire physical content the four material names have to be tested against. Described here: four magnetic field lines run across the page from left to right, each drawn with an arrowhead, and a shaded rectangular slab of material sits centred in the field region; the lines are curved in the neighbourhood of the slab rather than straight. DELIBERATELY WITHHELD: the SENSE in which the lines bend near the slab — whether they are drawn crowding into the material or pushed out around it — since that alone decides which class of magnetic material the picture depicts and therefore which listed material could not produce it. Page idx 4.",
+      "imageAttached": false,
+      "solution": "**The answer is (A): nickel.**\n\n**Read the figure first, because the stem names no property at all.** The horizontal field lines approach the slab and are **pushed out and around it**, bending away rather than crowding into it. Inside the slab the field is weaker than outside.\n\nThat is the signature of a **diamagnetic** material. A diamagnet magnetises *opposite* to the applied field, so it partially expels the flux and the lines detour around it.\n\n**Now test the four materials.**\n\n| Material | Class | Would it produce this picture? |\n|---|---|---|\n| **Nickel** | **Ferromagnetic** | **No** — it would draw the lines strongly INTO itself |\n| Silicon | Diamagnetic | Yes |\n| Sodium chloride | Diamagnetic | Yes |\n| Copper | Diamagnetic | Yes |\n\nNickel is the odd one out: it is one of only a handful of ferromagnetic elements (with iron and cobalt), with a relative permeability in the hundreds. Place it in a field and the lines **converge** into it, crowding through the material — the exact opposite of what the figure shows.\n\nNote the stem says \"**cannot**\", so the answer is the material that fails to fit, not the one that fits.\n\n**The three-way contrast worth holding on to.**\n\n- **Diamagnetic** \\((\\mu_r \\text{ slightly} < 1)\\): lines are pushed **out**; the sample is **repelled** by a magnet. Copper, silicon, sodium chloride, water, bismuth.\n- **Paramagnetic** \\((\\mu_r \\text{ slightly} > 1)\\): lines crowd in **weakly**; the sample is feebly attracted. Aluminium, sodium.\n- **Ferromagnetic** \\((\\mu_r \\gg 1)\\): lines crowd in **strongly**; the sample is powerfully attracted and may stay magnetised. Iron, cobalt, nickel.\n\nThe figure distinguishes all three at a glance — which is precisely why the stem could afford to say nothing at all about the physics."
+    },
+    {
+      "hash": "d4751766b61c3bb7f3541781a3eed9d7f187f87292e54a6aa68690b200a83c94",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "E, c and \\(\\nu\\) represent the energy, velocity and frequency of a photon. Which of the following represents its wavelength ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{h\\nu}{c^2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(h\\nu\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{hc}{\\mathrm{E}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{h\\nu}{c}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{hc}{\\mathrm{E}}\\).**\n\n**Two relations, combined.** A photon's energy and its wavelength are linked through the frequency:\n\n\\(E = h\\nu \\qquad\\text{and}\\qquad c = \\nu\\lambda\\)\n\nEliminating \\(\\nu\\):\n\n\\(\\nu = \\dfrac{E}{h} = \\dfrac{c}{\\lambda} \\qquad\\Longrightarrow\\qquad \\lambda = \\dfrac{hc}{E}\\)\n\n**Checking by dimensions, which disposes of the rest at once.** \\(hc\\) has units \\(\\mathrm{J\\,s} \\times \\mathrm{m\\,s^{-1}} = \\mathrm{J\\,m}\\); dividing by an energy in J leaves **metres**, as a wavelength must.\n\n- \\(h\\nu\\) is an **energy**, not a length — it is \\(E\\) itself.\n- \\(\\dfrac{h\\nu}{c} = \\dfrac{E}{c}\\) has units of \\(\\mathrm{J\\,s\\,m^{-1}} = \\mathrm{kg\\,m\\,s^{-1}}\\): that is the photon's **momentum**, not its wavelength.\n- \\(\\dfrac{h\\nu}{c^{2}} = \\dfrac{E}{c^{2}}\\) has units of **mass** — the photon's relativistic mass equivalent.\n\nSo all three distractors are real and meaningful photon quantities; the question is whether you can tell which is which. Dimensional analysis alone separates them without recalling a single formula.\n\n**A useful number.** \\(hc \\approx 1240\\ \\mathrm{eV\\,nm}\\), so a photon of energy \\(E\\) in electronvolts has\n\n\\(\\lambda \\approx \\dfrac{1240}{E}\\ \\mathrm{nm}\\)\n\nA 2 eV photon is red at 620 nm, a 3 eV photon violet at 413 nm, and a 1240 eV photon is a soft X-ray at 1 nm. Carrying that one constant converts between energy and wavelength in a single division."
+    },
+    {
+      "hash": "3e8306153ab973804b51a2b2ebf7aa0e3ac4689d5c7bfa0b8843d68287756fa3",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Classification of Metals, Conductors and Semiconductors",
+      "stem": "The energy required by an electron to jump the forbidden band in silicon at room temperature is about",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.01 eV"
+        },
+        {
+          "label": "B",
+          "text": "0.05 eV"
+        },
+        {
+          "label": "C",
+          "text": "0.7 eV"
+        },
+        {
+          "label": "D",
+          "text": "1.1 eV"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): about \\(1{\\cdot}1\\) eV.**\n\n**What the forbidden band is.** It is the energy gap \\(E_g\\) between the top of the valence band and the bottom of the conduction band — the energy an electron must acquire to stop being bound in a covalent bond and become free to conduct.\n\nFor **silicon** at room temperature,\n\n\\(E_g \\approx 1{\\cdot}1\\ \\mathrm{eV}\\)\n\n**The two numbers to keep straight**, since three of the four options are other quantities from the same chapter.\n\n- \\(0{\\cdot}7\\) eV is the band gap of **germanium**, not silicon. The two are constantly paired in this chapter, and swapping them is the intended trap.\n- \\(0{\\cdot}01\\) to \\(0{\\cdot}05\\) eV is the energy separating a **dopant level** from the nearest band edge — the tiny step a donor electron takes into the conduction band. It is a *doped*-semiconductor quantity, not the intrinsic gap.\n\n**Why the gap's size matters more than its value.** Thermal energy at room temperature is only \\(kT \\approx 0{\\cdot}026\\) eV, so \\(1{\\cdot}1\\) eV looks impossible to bridge — yet the carrier concentration depends on the gap **exponentially**, as \\(n_i \\propto e^{-E_g/2kT}\\), so a small but non-negligible population does make it across. That is exactly what makes silicon a *semi*conductor: too few carriers to be a metal, too many to be an insulator.\n\nSet that against diamond's \\(5{\\cdot}5\\) eV, where the exponential kills the population entirely, and against a metal's zero gap. The difference between a conductor, a semiconductor and an insulator is nothing but the size of this one number.\n\n**A consequence worth knowing.** A gap of \\(1{\\cdot}1\\) eV corresponds to \\(\\lambda = 1240/1{\\cdot}1 \\approx 1130\\) nm, in the near infrared. Silicon therefore absorbs all visible light (every visible photon carries more than \\(1{\\cdot}1\\) eV) but is **transparent** to longer infrared — which is why silicon is used for infrared lenses and why a silicon solar cell cannot use the infrared half of sunlight."
+    },
+    {
+      "hash": "f0c7f33666c75186cf668de51130386faae7655ae5e47b91c34ee95ca354a84d",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+      "stem": "What is the ratio of inductive and capacitive reactance in an ac circuit ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\omega^2 \\mathrm{LC}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{LC}^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\mathrm{LC}}{\\omega^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\omega^2 \\mathrm{L}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\omega^{2}\\mathrm{LC}\\).**\n\n**The two reactances.**\n\n\\(X_L = \\omega L \\qquad\\text{and}\\qquad X_C = \\dfrac{1}{\\omega C}\\)\n\n**The ratio**, where dividing by a reciprocal turns into a multiplication:\n\n\\(\\dfrac{X_L}{X_C} = \\dfrac{\\omega L}{1/\\omega C} = \\omega L \\times \\omega C\\)\n\n\\(\\boxed{\\ \\dfrac{X_L}{X_C} = \\omega^{2}LC\\ }\\)\n\n**A dimensional check settles it without the algebra.** Both reactances are in ohms, so the ratio must be **dimensionless**. Now \\(\\sqrt{LC}\\) has the dimensions of time — it is \\(1/\\omega_0\\), the reciprocal resonant frequency — so \\(\\omega^{2}LC\\) is (frequency)² × (time)², which is indeed a pure number. The other three options all carry dimensions and can be rejected on sight.\n\n**What the ratio means physically.** Writing it in terms of the resonant frequency \\(\\omega_0 = 1/\\sqrt{LC}\\):\n\n\\(\\dfrac{X_L}{X_C} = \\dfrac{\\omega^{2}}{\\omega_0^{2}}\\)\n\nso the ratio is 1 **exactly at resonance**, less than 1 **below** it and greater than 1 **above**. That single statement is the whole behaviour of a series LCR circuit:\n\n- \\(\\omega < \\omega_0\\): \\(X_C\\) dominates, the circuit is **capacitive**, and the current **leads**.\n- \\(\\omega = \\omega_0\\): the two cancel, \\(Z = R\\) is at its **minimum**, and the current is in phase and maximal.\n- \\(\\omega > \\omega_0\\): \\(X_L\\) dominates, the circuit is **inductive**, and the current **lags**.\n\nThe ratio also runs from 0 to infinity across the frequency range, since \\(X_L\\) rises with \\(\\omega\\) while \\(X_C\\) falls — which is why an inductor blocks high frequencies and passes dc, and a capacitor does exactly the reverse."
+    },
+    {
+      "hash": "aeeaedb0d455ef989587f8166d09374df3cf20f00a69d6a7f5353d375d09fc2f",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In an interference experiment, third bright fringe is obtained at a point on the screen with a light of 700 nm. What should be the wavelength of the light source in order to obtain the fifth bright fringe at the same point ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "420 nm"
+        },
+        {
+          "label": "B",
+          "text": "750 nm"
+        },
+        {
+          "label": "C",
+          "text": "630 nm"
+        },
+        {
+          "label": "D",
+          "text": "500 nm"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): 420 nm.**\n\n**What is held fixed.** The question specifies *the same point on the screen*, and in a given apparatus a point is fixed by its **path difference** \\(\\Delta x\\) — the geometry \\(d\\), \\(D\\) and the position \\(y\\) do not change when the lamp is swapped.\n\n**The bright-fringe condition.**\n\n\\(\\Delta x = n\\lambda\\)\n\nso the same \\(\\Delta x\\) can be reached with different pairs \\((n, \\lambda)\\):\n\n\\(n_1\\lambda_1 = n_2\\lambda_2\\)\n\n**Substituting.** The third bright fringe with \\(700\\) nm must become the fifth bright fringe with \\(\\lambda_2\\):\n\n\\(3 \\times 700 = 5 \\times \\lambda_2\\)\n\n\\(\\lambda_2 = \\dfrac{2100}{5} = 420\\ \\mathrm{nm}\\)\n\n**The direction of the change is the check.** A *higher* order at the *same* place means the same path difference now holds **more** wavelengths, so each wavelength must be **shorter**. Getting a longer wavelength — the \\(750\\) nm distractor, or \\(700 \\times 5/3 = 1167\\) nm — means the ratio was inverted.\n\n**A second route, through fringe width.** \\(y = n\\beta = n\\lambda D/d\\), so at fixed \\(y\\), \\(n\\lambda\\) is constant — the same relation, arrived at from the pattern rather than from the path difference. Both routes rest on the fact that \\(D\\) and \\(d\\) are properties of the *apparatus*, not of the light.\n\n**Worth noticing about the numbers.** \\(700\\) nm is deep red and \\(420\\) nm is violet — very nearly the two ends of the visible spectrum. The ratio \\(3:5\\) is about as large as a real two-colour experiment can manage, since beyond it one of the two wavelengths leaves the visible range altogether."
+    },
+    {
+      "hash": "d2fd26da1106c04f555059dc07b3ad8bb37dbbff71741e03ba613900b812b29f",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "**Assertion (A) :** The given figure does not show a balanced Wheatstone bridge.\n\n**Reason (R) :** For a balanced bridge small current should flow through the galvanometer.",
+      "context": "In question number 16 to 18 two statements are given – one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer to these questions from the codes (a), (b), (c) and (d) as given below :\n(A) Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A).\n(B) Both Assertion (A) and Reason (R) are true and (R) is NOT the correct explanation of (A).\n(C) Assertion (A) is true and Reason (R) is false.\n(D) Assertion (A) is false and Reason (R) is also false.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true and (R) is NOT the correct explanation of (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is also false."
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — the Assertion says only 'the given figure', and whether the bridge is balanced is decided entirely by four resistance values that are printed in the drawing and nowhere in the text. Described here: a Wheatstone-bridge network drawn between a left terminal and a right terminal, a current labelled I entering at the left and leaving at the right; the upper arm carries two resistors labelled P and Q in series and the lower arm two resistors labelled R and S in series, and a galvanometer drawn as a small circle marked G bridges the midpoint of the upper arm to the midpoint of the lower arm. DELIBERATELY WITHHELD: the four resistance values printed beside P, Q, R and S — their ratios are exactly what decides whether the bridge is balanced and therefore whether the Assertion is true. Page idx 10.",
+      "imageAttached": true,
+      "solution": "**The answer is (C): the Assertion is true, but the Reason is false.**\n\n**Testing the Assertion against the figure.** The four arms carry \\(P = 2\\ \\Omega\\), \\(Q = 3\\ \\Omega\\), \\(R = 3\\ \\Omega\\) and \\(S = 2\\ \\Omega\\). A Wheatstone bridge is balanced when\n\n\\(\\dfrac{P}{Q} = \\dfrac{R}{S}\\)\n\nHere\n\n\\(\\dfrac{P}{Q} = \\dfrac{2}{3} \\qquad\\text{while}\\qquad \\dfrac{R}{S} = \\dfrac{3}{2}\\)\n\nand \\(\\dfrac{2}{3} \\neq \\dfrac{3}{2}\\). The bridge is **not** balanced, so the **Assertion is TRUE**.\n\nThe values are chosen to look symmetric at a glance — the same two numbers, 2 and 3, appear in both arms — which is exactly what makes the question worth reading carefully. Balance needs the ratios equal, not the *set* of values equal. Had the arms read \\(P = 2\\), \\(Q = 3\\), \\(R = 2\\), \\(S = 3\\), the bridge would have balanced.\n\n**Testing the Reason.** It says that for a balanced bridge a **small** current should flow through the galvanometer. That is **FALSE**. At balance the galvanometer's two terminals are at **exactly the same potential**, so the current through it is **precisely zero** — not small, not negligible, but zero.\n\nThe distinction matters practically as well as verbally. A bridge is used because a **null** reading can be detected with far greater precision than any finite deflection: a null depends on nothing but the ratio of resistances, while a small deflection would depend on the galvanometer's sensitivity, its resistance and the supply voltage. **The whole point of a null method is that it is zero.**\n\n**So the Assertion is true and the Reason is false**, whatever the figure had shown — the Reason is a statement about bridges in general and is wrong on its own terms."
+    },
+    {
+      "hash": "a49d913e989652367de55c9c5607930001ba0638ccd28929f232a0ec890bb804",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "Plot a graph showing the variation of photo electric current, as a function of anode potential for two light beams having the same frequency but different intensities \\(\\mathrm{I}_1\\) and \\(\\mathrm{I}_2\\) \\((\\mathrm{I}_1 > \\mathrm{I}_2)\\). Mention its important features.",
+      "solution": "**The graph.** Plot **photocurrent** on the vertical axis against **anode (collector-plate) potential** on the horizontal, with **positive** potentials to the right of the origin and **negative** (retarding) potentials to the left.\n\nDraw **two** curves for the two beams. Each curve:\n\n- rises steeply through the origin region as the anode potential is made positive;\n- **flattens** to a horizontal **saturation** value at large positive potential, where every emitted electron is being collected;\n- falls to **zero** at some negative potential on the left, the **stopping potential** \\(-V_0\\).\n\nThe curve for the **more intense** beam \\(\\mathrm{I}_1\\) lies **above** the other throughout, saturating at a higher current. (The scheme's stock diagram happens to label its upper curve \\(\\mathrm{I}_2\\) with \\(\\mathrm{I}_2 > \\mathrm{I}_1\\); this stem defines \\(\\mathrm{I}_1 > \\mathrm{I}_2\\), so here it is \\(\\mathrm{I}_1\\) that sits on top.)\n\n**The two important features, which are the point of the question.**\n\n**1. The saturation current is proportional to the intensity.** The more intense beam delivers more photons per second, each capable of freeing one electron, so more electrons are emitted per second and the plateau sits higher. \\(\\mathrm{I}_1 > \\mathrm{I}_2\\) gives a higher saturation current.\n\n**2. The stopping potential is the SAME for both.** Both curves meet the horizontal axis at exactly the same negative potential. This is the striking feature, and it follows directly from\n\n\\(eV_0 = h\\nu - \\phi_0\\)\n\nwhich contains **no intensity term**. The two beams have the same frequency, so their fastest electrons have the same maximum kinetic energy, and the same retarding voltage turns both back.\n\n**Why this graph is the evidence for the photon.** A wave picture predicts that a brighter beam delivers energy faster and should therefore produce **more energetic** electrons — the two curves would cut the axis at different points. They do not. The particle picture explains it exactly: emission is a **one-photon, one-electron** event, so intensity sets **how many** electrons leave and frequency alone sets **how fast**. The two features of this graph separate those two variables completely."
+    },
+    {
+      "hash": "8ca231348ce5d7bdb136f26dd3ce4224c4149101a38ba124a60322faf25e4ac3",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "How are electromagnetic waves produced ? Write their two characteristics.",
+      "solution": "**How electromagnetic waves are produced.**\n\n**By an accelerating charge** — and *only* by an accelerating charge.\n\nA charge at rest produces a static electric field and nothing else. A charge in uniform motion produces steady electric and magnetic fields, both unchanging in its own frame, so again nothing detaches and travels away. It is worth noticing that \"moving\" cannot by itself be the criterion, since motion is relative: a charge at rest in one frame moves uniformly in another. **Acceleration is frame-independent, and it is the real condition.**\n\nThe standard practical source is an **oscillating charge**, because it accelerates continuously and radiates at a definite frequency. A charge oscillating at frequency \\(\\nu\\) radiates an electromagnetic wave of that same frequency \\(\\nu\\) — which is how an antenna works: an **LC oscillator** drives charges back and forth in a conductor, and the oscillation frequency sets the broadcast frequency.\n\n**The mechanism**, once started: the accelerating charge produces a time-varying electric field; a changing electric field generates a magnetic field (Ampère-Maxwell); a changing magnetic field regenerates an electric one (Faraday). The pair sustains itself and propagates away at \\(c = 1/\\sqrt{\\mu_0\\varepsilon_0}\\), carrying energy the charge must supply — which is why a radiating charge loses energy.\n\n**Two characteristics.**\n\n1. **They are transverse, with \\(\\vec{E}\\) and \\(\\vec{B}\\) perpendicular to each other and to the direction of propagation**, and oscillating **in phase**. The three form a right-handed set with \\(\\vec{E} \\times \\vec{B}\\) along the direction of travel.\n\n2. **They need no material medium** and travel through vacuum at \\(c = 3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\) — unlike sound, which cannot cross empty space. This is why we see the Sun.\n\n(Equally acceptable: they carry **energy and momentum**, so they exert radiation pressure; they can be **polarised**, which is itself a consequence of being transverse; and the two fields carry **equal energy**, since \\(E_0 = cB_0\\) forces \\(u_E = u_B\\).)"
+    },
+    {
+      "hash": "ebf15c9908637cc6293109f29e93d783d9d4c2b3579ba60cff065a4667823505",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "Three point charges Q, q and \\(-q\\) are kept at the vertices of an equilateral triangle of side L as shown in figure. What is\n(i) the electrostatic potential energy of the arrangement ? and\n(ii) the potential at point D ?",
+      "figureNote": "REQUIRED — the stem names three charges and a side length but says only 'as shown in figure', and the point D that part (ii) asks about is defined NOWHERE in the text. Described here: an equilateral triangle drawn with its apex at the top labelled A and its base horizontal, the left base vertex labelled B and the right base vertex labelled C; the left side is labelled L; a vertical line is drawn from the apex down to a point on the base labelled D, and a dimension line from D to C is labelled L/2. A charge symbol is printed beside each of the three vertices. DELIBERATELY WITHHELD: WHICH of Q, q and \\(-q\\) is printed at which vertex — the potential at D depends on that assignment (the electrostatic potential energy happens not to, being symmetric under permuting the three charges), so stating it would hand over part (ii). Page idx 12.",
+      "imageAttached": false,
+      "solution": "**Reading the figure.** The apex **A** carries \\(Q\\); the left base vertex **B** carries \\(-q\\); the right base vertex **C** carries \\(q\\). The side is \\(L\\), and **D** is the foot of the perpendicular from A — the **midpoint of BC**, with \\(DC = L/2\\).\n\n**(i) The electrostatic potential energy of the arrangement.**\n\nPotential energy is a **scalar**, summed over every distinct **pair**. Three charges give exactly three pairs, and every pair is separated by the same distance \\(L\\):\n\n\\(U = \\dfrac{1}{4\\pi\\varepsilon_0 L}\\Big[(Q)(-q) + (Q)(q) + (-q)(q)\\Big]\\)\n\n**The first two terms cancel**, and that is the whole elegance of the arrangement:\n\n\\(U = \\dfrac{1}{4\\pi\\varepsilon_0 L}\\Big[-Qq + Qq - q^{2}\\Big] = -\\dfrac{q^{2}}{4\\pi\\varepsilon_0 L}\\)\n\n\\(\\boxed{\\ U = -\\dfrac{kq^{2}}{L}\\ }\\)\n\n**\\(Q\\) drops out entirely.** It sits equidistant from a \\(+q\\) and a \\(-q\\), so the work done bringing it in against one is exactly returned by the other. The energy is that of the \\(+q\\) and \\(-q\\) pair alone, and it is **negative** — the arrangement is bound, and \\(kq^{2}/L\\) of work would be needed to disperse it to infinity.\n\n**(ii) The potential at D.**\n\nPotential is also a scalar, so the three contributions simply add, each as \\(kQ_i/r_i\\). The distances from D:\n\n\\(DB = DC = \\dfrac{L}{2}, \\qquad DA = \\text{height of the triangle} = \\dfrac{\\sqrt{3}}{2}L\\)\n\n\\(V_D = \\dfrac{kQ}{\\dfrac{\\sqrt{3}}{2}L} + \\dfrac{k(-q)}{\\dfrac{L}{2}} + \\dfrac{k(q)}{\\dfrac{L}{2}}\\)\n\n**Now the two \\(q\\) terms cancel**, since D is equidistant from them and their charges are equal and opposite:\n\n\\(V_D = \\dfrac{2kQ}{\\sqrt{3}L}\\)\n\n\\(\\boxed{\\ V_D = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{2Q}{\\sqrt{3}L}\\ }\\)\n\n**The two cancellations are opposite, and that is what the question is testing.** In part (i) the \\(Q\\) terms cancelled and \\(q\\) survived; in part (ii) the \\(q\\) terms cancel and \\(Q\\) survives. Both follow from the same geometric fact — that D lies on the perpendicular bisector of BC while A is equidistant from B and C — read once for pair energies and once for potentials.\n\nNote also that the **electric field** at D does *not* vanish even though the \\(q\\) contributions to the *potential* do: field is a vector, and the two horizontal contributions from \\(+q\\) and \\(-q\\) point the **same** way and add."
+    },
+    {
+      "hash": "ed4b23cf2aba5de555f7fdbb2efdf472a115d05eb85a859b440a2052dce18515",
+      "ref": "Q23a",
+      "questionNumber": "23 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "Two identical circular loops P and Q, each of radius R carrying current I are kept in perpendicular planes such that they have a common centre O as shown in the figure.\nFind the magnitude and direction of the net magnetic field at point O.",
+      "figureNote": "REQUIRED — the stem asks for the DIRECTION of the net field, and the only thing that fixes it is the sense in which each loop's current is drawn. Described here: two identical loops drawn as ellipses crossing at right angles about a common centre marked with a dot and labelled O; the broad horizontal loop is labelled P at its right-hand edge and the narrow vertical loop is labelled Q at its top; each loop carries arrowheads on its circumference and a label I. DELIBERATELY WITHHELD: the current sense on each loop. Page idx 12.",
+      "imageAttached": false,
+      "solution": "**The two fields.** Each loop is a full circle of radius \\(R\\) carrying current \\(I\\), and the point O is the **centre of both**. The field at the centre of a circular loop is\n\n\\(B = \\dfrac{\\mu_0 I}{2R}\\)\n\nso each loop contributes the same magnitude:\n\n\\(B_P = B_Q = \\dfrac{\\mu_0 I}{2R}\\)\n\n**Why they add in quadrature.** The field at the centre of a loop is **perpendicular to the plane of that loop**. The two loops lie in **perpendicular planes**, so their two field vectors are also mutually **perpendicular** — and perpendicular vectors combine by Pythagoras, not by addition:\n\n\\(B_{\\text{net}} = \\sqrt{B_P^{2} + B_Q^{2}} = \\sqrt{2\\left(\\dfrac{\\mu_0 I}{2R}\\right)^{2}}\\)\n\n\\(\\boxed{\\ B_{\\text{net}} = \\dfrac{\\sqrt{2}\\,\\mu_0 I}{2R} = \\dfrac{\\mu_0 I}{\\sqrt{2}\\,R}\\ }\\)\n\nAdding them arithmetically to \\(\\mu_0 I/R\\) is the error the perpendicular geometry is there to expose.\n\n**The direction — and here the printed figure defeats the question.**\n\nSince the two contributions are **equal in magnitude** and mutually perpendicular, their resultant must lie at **\\(45^\\circ\\) to each**, in the plane containing the two loops' axes. That much is fixed by symmetry alone.\n\nWhich \\(45^\\circ\\) direction — that depends on the **sense of the current in each loop**, and the printed drawing does not settle it. At high magnification, **both arrowheads at the top of the vertical loop point downward**, which no single planar loop can do: on a closed loop the two sides at the same height must carry current in opposite senses.\n\n**CBSE records the defect explicitly.** The marking scheme notes: *\"Since direction of current is shown clockwise as well as anti-clockwise in the vertical loop. So no marks is assigned for direction of magnetic field.\"* The direction is therefore **unanswerable as printed**, and the Board assesses only the magnitude.\n\n**What the answer would be if the senses were legible.** With both currents drawn consistently, \\(\\vec{B}_P\\) points along the axis of loop P and \\(\\vec{B}_Q\\) along the axis of loop Q, each fixed by the right-hand rule; the resultant bisects them, at \\(45^\\circ\\) to each loop's plane-normal, with magnitude \\(\\sqrt{2}\\mu_0 I/2R\\). Reversing the current in either loop swings the resultant to the other diagonal — which is exactly why the arrow senses are not a detail."
+    },
+    {
+      "hash": "0310a3345a8a377d6df28791ead9ffecb47bfefd40c53d818e5a866254ad2ada",
+      "ref": "Q23b",
+      "questionNumber": "23 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "A long straight conductor kept along X' X axis, carries a steady current I along \\(+x\\) direction. At an instant t, a particle of mass m and charge q at point \\((x,\\ y)\\) moves with a velocity \\(\\vec{v}\\) along \\(+y\\) direction. Find the magnitude and direction of the force on the particle due to the conductor.",
+      "solution": "**Setting up the geometry.** The conductor lies along the \\(x\\)-axis carrying current \\(I\\) in the \\(+x\\) direction. The particle sits at \\((x, y)\\), so its perpendicular distance from the wire is \\(y\\), and it moves with velocity \\(\\vec{v} = v\\hat{j}\\).\n\n**Step 1 — the field the wire produces at the particle.**\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi y}\\)\n\nIts direction follows from the right-hand rule, \\(\\vec{B} \\propto \\hat{I} \\times \\hat{r}\\). With the current along \\(\\hat{i}\\) and the particle displaced along \\(\\hat{j}\\):\n\n\\(\\hat{i} \\times \\hat{j} = \\hat{k}\\)\n\nso \\(\\vec{B}\\) points along \\(+\\hat{k}\\) — **out of the plane** containing the wire and the particle.\n\n**Step 2 — the force on the moving charge.**\n\n\\(\\vec{F} = q(\\vec{v} \\times \\vec{B})\\)\n\nThe velocity is along \\(\\hat{j}\\) and the field along \\(\\hat{k}\\), so they are **perpendicular** and \\(\\sin\\theta = 1\\) — the force is at its maximum for this speed and field.\n\n\\(\\vec{F} = q(v\\hat{j}) \\times \\left(\\dfrac{\\mu_0 I}{2\\pi y}\\hat{k}\\right) = \\dfrac{\\mu_0 qvI}{2\\pi y}(\\hat{j} \\times \\hat{k})\\)\n\nand \\(\\hat{j} \\times \\hat{k} = \\hat{i}\\), so\n\n\\(\\boxed{\\ \\vec{F} = \\dfrac{\\mu_0 qvI}{2\\pi y}\\,\\hat{i}\\ }\\)\n\n**Magnitude** \\(\\dfrac{\\mu_0 qvI}{2\\pi y}\\), **direction along \\(+x\\)** — that is, **parallel to the current** in the wire.\n\n**Three things worth noticing.**\n\nThe force is **parallel to the wire**, not towards or away from it. A moving charge near a current-carrying wire is pushed *along* the wire, not attracted to it — quite unlike two parallel currents, which attract.\n\nThe force depends on \\(y\\) as \\(1/y\\), inheriting the wire's field profile, and **vanishes on the wire's own axis extended**, where the geometry breaks down.\n\nAnd since \\(\\vec{F} \\perp \\vec{v}\\), the force does **no work**: it curves the particle's path without changing its speed. The particle will not travel in a simple circle, though, because the field is not uniform — it weakens as the particle moves away, so the trajectory is a curve of continuously changing radius.\n\n**If the charge were negative**, every sign flips and the force points along \\(-x\\); the magnitude is unchanged."
+    },
+    {
+      "hash": "7a2382c1bfee17aea7da1fec987b0ce0f109379cd5bffa0f51baebe0c94617da",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Two conductors, made of the same material have equal lengths but different cross-sectional areas \\(\\mathrm{A}_1\\) and \\(\\mathrm{A}_2\\) \\((\\mathrm{A}_1 > \\mathrm{A}_2)\\). They are connected in parallel across a cell. Show that the drift velocities of electrons in two conductors are equal.",
+      "solution": "**What \"in parallel\" fixes.** Two conductors connected in parallel across the same cell have the **same potential difference** \\(V\\) across them. They also have **equal lengths** \\(l\\), so the electric field set up inside each is\n\n\\(E = \\dfrac{V}{l}\\)\n\n— **the same in both**, since \\(V\\) and \\(l\\) are the same. The areas \\(A_1\\) and \\(A_2\\) do not enter.\n\n**The drift velocity.** An electron in the field \\(E\\) is accelerated between collisions and reaches an average drift speed\n\n\\(v_d = \\dfrac{eE\\tau}{m} = \\dfrac{eV\\tau}{ml}\\)\n\nEverything on the right is common to the two conductors: \\(e\\) and \\(m\\) are properties of the electron, \\(\\tau\\) is the relaxation time (a property of the *material* and its temperature, both identical here), and \\(V\\) and \\(l\\) are equal by construction.\n\n\\(\\boxed{\\ v_{d1} = v_{d2}\\ }\\)\n\n**A second route, via the current, which shows the same thing from the other end.** With \\(R = \\rho l/A\\) and \\(I = neAv_d\\):\n\n\\(v_d = \\dfrac{I}{neA} = \\dfrac{V/R}{neA} = \\dfrac{V}{ne A}\\cdot\\dfrac{A}{\\rho l} = \\dfrac{V}{ne\\rho l}\\)\n\nThe area **cancels**, leaving \\(v_d\\) dependent only on \\(V\\), \\(l\\) and the material. The thicker conductor carries a proportionally **larger current** — \\(I \\propto A\\) — but through proportionally **more** cross-section, so each electron drifts at exactly the same speed.\n\n**The physical picture.** Drift velocity is set by how hard each electron is pushed, and that is the **field**, not the current. Widening a conductor adds more electrons and more current but does not push any individual electron harder. Two wires of the same material and length across the same battery have the same field inside them however different their thicknesses — a thin wire and a thick one side by side have their electrons ambling along at the same pace.\n\n**The contrast with SERIES sharpens it.** Connect the two in series instead and the *current* is forced equal while the *field* differs: \\(v_d = I/neA\\), so the thinner conductor, carrying the same current through less area, has the **larger** drift velocity. Parallel equalises the field; series equalises the current — and the two produce opposite conclusions about \\(v_d\\)."
+    },
+    {
+      "hash": "3bfc4694accb558a8e79546c3a604f6b8fc3b7b54e37fc996d9a058e72299144",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Power in AC Circuits and the Power Factor",
+      "stem": "An alternating current \\(\\mathrm{I} = 14 \\sin (100\\ \\pi t)\\) A passes through a series combination of a resistor of 30 \\(\\Omega\\) and an inductor of \\(\\left(\\dfrac{2}{5\\pi}\\right)\\) H. Taking \\(\\sqrt{2} = 1.4\\), calculate the\n(i) rms value of the voltage drops across the resistor and the inductor, and\n(ii) power factor of the circuit.",
+      "solution": "**Reading the source.** \\(I = 14\\sin(100\\pi t)\\) A, so \\(I_0 = 14\\) A and \\(\\omega = 100\\pi\\ \\mathrm{rad\\,s^{-1}}\\).\n\n\\(I_{rms} = \\dfrac{I_0}{\\sqrt{2}} = \\dfrac{14}{1{\\cdot}4} = 10\\ \\mathrm{A}\\)\n\nThe stem supplies \\(\\sqrt{2} = 1{\\cdot}4\\) precisely so this comes out whole.\n\n**(i) The two voltage drops.**\n\n*Across the resistor*, where voltage and current are in phase:\n\n\\(V_R = I_{rms}R = 10 \\times 30 = 300\\ \\mathrm{V}\\)\n\n*The inductive reactance*, in which the \\(\\pi\\) cancels by design:\n\n\\(X_L = \\omega L = 100\\pi \\times \\dfrac{2}{5\\pi} = \\dfrac{200}{5} = 40\\ \\Omega\\)\n\n*Across the inductor:*\n\n\\(V_L = I_{rms}X_L = 10 \\times 40 = 400\\ \\mathrm{V}\\)\n\n**(ii) The power factor.**\n\n\\(Z = \\sqrt{R^{2} + X_L^{2}} = \\sqrt{(30)^{2} + (40)^{2}} = \\sqrt{2500} = 50\\ \\Omega\\)\n\n\\(\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{30}{50}\\)\n\n\\(\\boxed{\\ \\cos\\phi = 0{\\cdot}6\\ }\\)\n\nwith the current **lagging** the voltage by \\(\\phi = 53^\\circ\\).\n\n**The 3-4-5 triangle** is doing the work here: \\(30\\), \\(40\\) and \\(50\\) ohms, and correspondingly \\(300\\) V, \\(400\\) V and \\(500\\) V. Recognising it removes the arithmetic entirely.\n\n**The check that makes the phase relation vivid.** The two drops sum arithmetically to \\(300 + 400 = 700\\) V, yet the source supplies only\n\n\\(V_{rms} = I_{rms}Z = 10 \\times 50 = 500\\ \\mathrm{V}\\)\n\nThere is no contradiction. \\(V_R\\) and \\(V_L\\) are \\(90^\\circ\\) out of phase and must be added as **vectors**:\n\n\\(\\sqrt{V_R^{2} + V_L^{2}} = \\sqrt{300^{2} + 400^{2}} = 500\\ \\mathrm{V}\\)\n\nwhich is exactly the supply. **In an ac circuit the individual voltage drops can each exceed the supply voltage; only their phasor sum is constrained.**\n\n**What the power factor means.** The circuit consumes \\(V_{rms}I_{rms}\\cos\\phi = 500 \\times 10 \\times 0{\\cdot}6 = 3000\\) W, which must equal \\(I_{rms}^{2}R = 100 \\times 30 = 3000\\) W — and does, since only the resistance dissipates anything. The inductor stores and returns its energy each quarter cycle, contributing nothing to the average."
+    },
+    {
+      "hash": "85f39ed40f040fbd77bdd0c4b9c532214cf8358e1e18410da8b6e4db7d0297e0",
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "stem": "Calculate the binding energy of an alpha particle in MeV. Given\nmass of a proton = 1.007825 u\nmass of a neutron = 1.008665 u\nmass of He nucleus = 4.002800 u\n1u = 931 MeV/c\\(^2\\)",
+      "solution": "**What binding energy is.** An alpha particle is a helium nucleus: **2 protons and 2 neutrons**. Its mass is **less** than the sum of its constituents' masses, and that missing mass — the **mass defect** — is the energy released when the nucleus formed, and equally the energy needed to pull it apart.\n\n**Step 1 — the mass defect.**\n\n\\(\\Delta m = \\Big[2m_p + 2m_n\\Big] - m_{\\mathrm{He}}\\)\n\n\\(2m_p = 2 \\times 1{\\cdot}007825 = 2{\\cdot}015650\\ \\mathrm{u}\\)\n\n\\(2m_n = 2 \\times 1{\\cdot}008665 = 2{\\cdot}017330\\ \\mathrm{u}\\)\n\n\\(\\text{sum} = 4{\\cdot}032980\\ \\mathrm{u}\\)\n\n\\(\\Delta m = 4{\\cdot}032980 - 4{\\cdot}002800 = 0{\\cdot}030180\\ \\mathrm{u}\\)\n\n**Step 2 — convert to energy**, using the conversion supplied:\n\n\\(E_b = \\Delta m \\times 931\\ \\mathrm{MeV} = 0{\\cdot}030180 \\times 931\\)\n\n\\(\\boxed{\\ E_b \\approx 28{\\cdot}1\\ \\mathrm{MeV}\\ }\\)\n\n**Where the precision has to live.** The mass defect is the **difference of two nearly equal numbers** — \\(4{\\cdot}0330\\) against \\(4{\\cdot}0028\\), differing by less than one per cent. Rounding either to four decimal places would change the answer by several per cent, which is why nuclear masses are quoted to six figures. Carry all the digits until the subtraction is done.\n\n**Why the answer matters.** Dividing by the four nucleons gives a binding energy per nucleon of about **\\(7{\\cdot}0\\) MeV** — remarkably high for so light a nucleus, and a local peak on the binding-energy curve. That exceptional stability is why the alpha particle exists as a distinct entity at all: it is why heavy nuclei emit *alpha* particles rather than individual nucleons in radioactive decay, and why helium-4 is so overwhelmingly abundant in the universe.\n\nFor comparison, the deuteron manages only \\(1{\\cdot}1\\) MeV per nucleon and the curve does not reach \\(7\\) MeV again until carbon."
+    },
+    {
+      "hash": "9331119dfd3f75e520bf9bcccbb574676ffad549e433800fe6b4f7ea64d810de",
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "A heavy nucleus P of mass number 240 and binding energy 7.6 MeV per nucleon splits into two nuclei Q and R of mass number 110 and 130 and binding energy per nucleon 8.5 MeV and 8.4 MeV respectively. Calculate the energy released in the fission.",
+      "solution": "**The principle.** In any nuclear reaction the energy released is the **increase in total binding energy** — the products are more tightly bound than the reactant, and the difference is liberated. Since binding energy per nucleon is what is given, multiply each by its mass number.\n\n**The binding energies.**\n\n*The parent P:*\n\n\\(E_P = 240 \\times 7{\\cdot}6 = 1824\\ \\mathrm{MeV}\\)\n\n*The fragments:*\n\n\\(E_Q = 110 \\times 8{\\cdot}5 = 935\\ \\mathrm{MeV}\\)\n\n\\(E_R = 130 \\times 8{\\cdot}4 = 1092\\ \\mathrm{MeV}\\)\n\n\\(E_Q + E_R = 2027\\ \\mathrm{MeV}\\)\n\n**The energy released.**\n\n\\(\\Delta E = (E_Q + E_R) - E_P = 2027 - 1824\\)\n\n\\(\\boxed{\\ \\Delta E = 203\\ \\mathrm{MeV}\\ }\\)\n\n**A check on the bookkeeping.** The mass numbers balance: \\(110 + 130 = 240\\). Had they not, the comparison would be meaningless, since we would be weighing different amounts of nuclear matter against each other.\n\n**The sign, and why it must come out positive.** The fragments have **higher** binding energy per nucleon \\((8{\\cdot}5\\) and \\(8{\\cdot}4)\\) than the parent \\((7{\\cdot}6)\\), so they sit **lower** in energy — more tightly bound means more negative total energy — and the surplus is released. Subtracting the other way round gives \\(-203\\) MeV and describes a reaction that would *absorb* energy, which fission does not.\n\n**Why heavy nuclei fission at all.** The binding-energy curve peaks near \\(A = 56\\) at about \\(8{\\cdot}8\\) MeV per nucleon and falls away on both sides. A nucleus at \\(A = 240\\) sits well down the right-hand slope, so **splitting it moves both fragments up towards the peak** and releases energy. A light nucleus sits on the left-hand slope, where **fusing** moves the product up towards the peak instead. Both processes run downhill in the same sense — towards iron — which is why fission works for uranium and fusion for hydrogen, and neither works for iron.\n\n**Scale.** \\(203\\) MeV per fission is enormous by chemical standards — a chemical reaction yields a few eV per atom, so fission releases some \\(10^{8}\\) times more per event. That single ratio is the whole reason nuclear power is worth the difficulty."
+    }
+  ]
+}
