@@ -6,6 +6,74 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## IPMAT Phase 5 — the checklist before anything goes PUBLIC (2026-09-22)
+
+**1,418 IPMAT / JIPMAT questions are loaded and PRIVATE.** Pipeline, gates and full narrative:
+`scripts/ipmat/README.md`. Nothing is student-visible: the three exams are absent from
+`EXAM_REGISTRY` and anon reads 0 questions and 0 options.
+
+**Every item below must hold before the first PUBLIC flip.** They are listed here rather than
+left to memory because the load is finished and the next session will not re-derive them.
+
+### 1. Derive the keys — the blocking item
+
+IIM Indore publishes no answer key and afterboards claims none, so **all 1,418 keys are the
+source's own derivation** (BLIND lane). Measured so far:
+
+| Section | Rows | Measurement |
+|---|---|---|
+| Indore SA quant | — | **15/15** independently verified (brute-forced where possible) |
+| Verbal Ability | 582 | **92.5% agreement** on a stratified 40-row blind pass; all 3 disagreements went the source's way or were ambiguous, **zero wrong keys found** |
+| **Logical Reasoning + Critical Reasoning** | **247** | **NONE. Entirely unmeasured.** |
+
+Next: `npx tsx scripts/ipmat/dump-derive.ts -- --name=lr-calibration --section=LR --size=40`,
+then derive from the packet alone and score with `score-derive.ts --pin`. Record a confidence
+flag per row — on the VA pass all three leads were rows flagged uncertain, so the flag is the
+usable product. **Agreement is not accuracy**; it cannot see an error both passes share.
+
+### 2. Finish the CBSE-style grouping — deliberately deferred to here
+
+The database half is **already done**: three separate exam rows, exactly as CBSE is
+`cbse-10`/`11`/`12`. The picker half is not. Three things, in order:
+
+1. **Generalise the family axis.** `groupExamFamilies` groups on `board` + `std`, and IPMAT is
+   neither a board nor a class, so it needs a second generic grouping key. `BOARDS`,
+   `stdsForBoard` and `getExamForBoardStd` have **no consumers** in `src/` or `scripts/` (a
+   forward-looking written-paper API, tested only), so `Board`/`Std` can stay untouched.
+   `ExamFamilyNode` is typed `{ kind: "family"; board: Board; ... }` and 5 call sites read
+   `node.board` / `classes[].std`, so widen the type rather than overloading `board`.
+2. **Add the three exams to `EXAM_REGISTRY`** under family "IPMAT". Set `mixedFormats: true`
+   (Indore carries 148 numeric rows); leave `hasMocks` false until blueprints land.
+3. **Guard the student exam chips FIRST.** `src/lib/profile/examChoices.ts` maps
+   `EXAM_REGISTRY` straight to chips with **no content check**, so step 2 without this lets a
+   student pick "IPMAT Indore" as their target exam and find nothing anywhere — worse than the
+   current dead dropdown entry. Add a zero-PUBLIC-content guard **plus a test asserting an
+   empty exam never reaches the chips**, or the guard rots silently.
+
+`/browse`'s landing tiles need no guard — `buildExamStarters` already drops an exam with
+nothing in the default view.
+
+### Interim state, accepted on purpose
+
+Until step 2 lands, `/browse`'s exam **dropdown** lists the three exams as separate flat
+entries (it is built from an unfiltered `listExams()`), and selecting one shows
+"0 questions match" with advice to clear filters that cannot help. **This is pre-existing in
+kind** — `UPSC CSE (Prelims)` has 1,789 rows, 0 PUBLIC, and has been in that dropdown all
+along. Filtering `listExams()` would fix all four at once but removes the deliberate
+fail-open behaviour that stops a newly-ingested exam vanishing from every picker, so it was
+left alone.
+
+### 3. Then, and only then
+
+- Flip PUBLIC **per chapter** as each clears derivation, not in one sweep.
+- `/mock` blueprints: per-section timing is the point (IPMAT is timed per section).
+- Update the `/browse` Hero "Coming soon" copy — IPMAT is no longer coming.
+- `npm run stats` and `npm run seo:dates`, and commit the generated file.
+- 4 declared exclusions and 15 reconstructed rows stay held back; re-read
+  `scripts/ipmat/README.md` before assuming any of them became shippable.
+
+---
+
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 
 **Found during the IPMAT load.** Logged, NOT swept — the fix touches the dedup key of every
@@ -334,7 +402,7 @@ Reuse the shared infra (`_components/`, `resolveTaxonomy`, JSON-LD, OG image, si
 
 ### Future-exam guides
 
-IPMAT, CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon." Each needs taxonomy seed + question bank + strategy guide.
+CUET, NEET, JEE Main — already shown in `/browse` Hero as "Coming soon." Each needs taxonomy seed + question bank + strategy guide. **IPMAT's bank is DONE** — 1,418 questions loaded PRIVATE on 2026-09-22; see the Phase 5 checklist below.
 
 ---
 

@@ -19,7 +19,22 @@ all PRIVATE, and the three exams are absent from `EXAM_REGISTRY`. Verified: anon
 questions and 0 options.
 
 Phase 5 (flip PUBLIC per chapter, then registry + `/mock`) is not built and **must not run
-until the keys are derived** — LR is still entirely unmeasured.
+until the keys are derived** — LR is still entirely unmeasured. **The full Phase 5 checklist
+lives in [ROADMAP.md](../../ROADMAP.md)**, at the top; read it before touching this corpus
+again.
+
+### The CBSE-style grouping is HALF done, on purpose
+
+The database half is complete: three separate exam rows, exactly as CBSE is
+`cbse-10`/`11`/`12`. The picker half — one "IPMAT" entry with three types under it — is
+**deliberately deferred to Phase 5** (decided 2026-09-22).
+
+Why: the grouping only applies to exams in `EXAM_REGISTRY`, and
+`src/lib/profile/examChoices.ts` maps that registry straight to the `/welcome` and `/account`
+target-exam chips **with no content check**. Registering these exams today would let a student
+choose "IPMAT Indore" as their target and find nothing anywhere — worse than the dead
+dropdown entry it would fix. The grouping exists to organise exams a student can use, so it
+lands when they become usable. Steps and ordering: the ROADMAP checklist.
 
 **1,418 of 1,445 rows are committable.** Held back: 15 reconstructed + 8 cancelled by the
 exam + 4 declared exclusions.
