@@ -1,0 +1,1032 @@
+{
+ "paper": "55/1/1",
+ "year": 2024,
+ "paperId": "2024-55-1-1",
+ "markingScheme": "out/2024-55-1-1/ms/p00.png … p23.png",
+ "rows": [
+  {
+   "hash": "33bd6ff9131a916a176cc75b8ec1bb81ab9db8a0e78289da78c69b0c2b79d008",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Field and Field Lines",
+   "stem": "A thin plastic rod is bent into a circular ring of radius R. It is uniformly charged with charge density \\(\\lambda\\). The magnitude of the electric field at its centre is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\lambda}{2\\varepsilon_0 \\mathrm{R}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "Zero"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\lambda}{4\\pi\\varepsilon_0 \\mathrm{R}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\lambda}{4\\varepsilon_0 \\mathrm{R}}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The ring is charged UNIFORMLY, and that symmetry settles the question before any integration.\nTake any small element of the ring. It sets up a field at the centre directed along the line joining it to the centre. Now take the element diametrically OPPOSITE it: it carries exactly the same charge, sits at exactly the same distance R, and its field at the centre points in exactly the OPPOSITE direction.\nThe two cancel. Every element of the ring can be paired off this way, so the contributions cancel in pairs and\n\\(E_{centre} = 0\\)\nThe magnitude of the electric field at the centre is ZERO.\nNote that the POTENTIAL there is not zero: potential is a scalar and the contributions add rather than cancel, giving \\(V = \\dfrac{\\lambda 2\\pi R}{4\\pi\\varepsilon_{0}R}\\). A vanishing field alongside a non-vanishing potential is exactly what symmetry produces here."
+  },
+  {
+   "hash": "8a6f0fa1fbcf382f5149b6e499d6d2601a0f7b2386af6618f3550ca666470aab",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Energy Stored in a Capacitor",
+   "stem": "Ten capacitors, each of capacitance 1 \\(\\mu\\mathrm{F}\\), are connected in parallel to a source of 100 V. The total energy stored in the system is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(10^{-2}\\) J"
+    },
+    {
+     "label": "B",
+     "text": "\\(10^{-3}\\) J"
+    },
+    {
+     "label": "C",
+     "text": "\\(0{\\cdot}5 \\times 10^{-3}\\) J"
+    },
+    {
+     "label": "D",
+     "text": "\\(5{\\cdot}0 \\times 10^{-2}\\) J"
+    }
+   ],
+   "answer": "D",
+   "solution": "Capacitors in PARALLEL add directly, so ten capacitors of \\(1\\ \\mu\\mathrm{F}\\) give\n\\(C = 10 \\times 1\\ \\mu\\mathrm{F} = 10\\ \\mu\\mathrm{F} = 10^{-5}\\ \\mathrm{F}\\)\nIn parallel every capacitor carries the full source voltage, so the energy stored is\n\\(U = \\dfrac{1}{2}CV^{2} = \\dfrac{1}{2} \\times 10^{-5} \\times (100)^{2}\\)\n\\(U = \\dfrac{1}{2} \\times 10^{-5} \\times 10^{4} = 5{\\cdot}0 \\times 10^{-2}\\ \\mathrm{J}\\)\nThe total energy stored is \\(5{\\cdot}0 \\times 10^{-2}\\) J.\nThe same ten capacitors in SERIES would give only \\(0{\\cdot}1\\ \\mu\\mathrm{F}\\) and store a hundredth as much at the same voltage, which is the trade the parallel connection avoids."
+  },
+  {
+   "hash": "dd1d53d3edf2b8f0764be9167f54e213a4faf1302c1a9d1f67be3e848e874d30",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "Consider the circuit shown in the figure. The potential difference between points A and B is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "6 V"
+    },
+    {
+     "label": "B",
+     "text": "8 V"
+    },
+    {
+     "label": "C",
+     "text": "9 V"
+    },
+    {
+     "label": "D",
+     "text": "12 V"
+    }
+   ],
+   "answer": "B",
+   "figureNote": "REQUIRED — two parallel branches drawn between nodes A and B, each branch a cell in series with a resistor. EVERY numeric value (both emfs and both resistances) and the cells' relative polarity appear only in the drawing; the stem names none of them, so the question is unanswerable from text. Described: that there are two parallel branches between labelled nodes A and B, each carrying one cell and one resistor. Withheld: the four values and the polarity sense, which are exactly what the question tests. Page idx 4.",
+   "imageAttached": true,
+   "solution": "The two cells are connected in PARALLEL between the same pair of points A and B, each with its own internal resistance. Nothing is drawn from the terminals, so the potential difference across them is simply the EQUIVALENT EMF of the combination:\n\\(\\varepsilon_{eq} = \\dfrac{\\dfrac{\\varepsilon_{1}}{r_{1}} + \\dfrac{\\varepsilon_{2}}{r_{2}}}{\\dfrac{1}{r_{1}} + \\dfrac{1}{r_{2}}}\\)\nSubstituting \\(\\varepsilon_{1} = 12\\) V with \\(r_{1} = 1\\ \\Omega\\), and \\(\\varepsilon_{2} = 6\\) V with \\(r_{2} = 0{\\cdot}5\\ \\Omega\\):\n\\(\\varepsilon_{eq} = \\dfrac{\\dfrac{12}{1} + \\dfrac{6}{0{\\cdot}5}}{\\dfrac{1}{1} + \\dfrac{1}{0{\\cdot}5}} = \\dfrac{12 + 12}{1 + 2} = \\dfrac{24}{3} = 8\\ \\mathrm{V}\\)\nThe potential difference between A and B is 8 V.\nIt is NOT the average of 12 and 6, which would be 9, because the cells are weighted by their CONDUCTANCES: the 6 V cell has half the internal resistance and therefore twice the say. A circulating current of 4 A flows round the loop between the two cells, discharging the 12 V one and charging the 6 V one, and it is that current which drags the common terminal voltage down to 8 V."
+  },
+  {
+   "hash": "486204592fe02e65ce75ca9cca64c3c2ba7a73f02ff4d7e170b08affe795d615",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+   "stem": "A loop carrying a current I clockwise is placed in \\(x - y\\) plane, in a uniform magnetic field directed along z-axis. The tendency of the loop will be to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "move along x-axis"
+    },
+    {
+     "label": "B",
+     "text": "move along y-axis"
+    },
+    {
+     "label": "C",
+     "text": "shrink"
+    },
+    {
+     "label": "D",
+     "text": "expand"
+    }
+   ],
+   "answer": "C",
+   "solution": "The field is directed along the z-axis and the loop lies in the x-y plane, so the field is PERPENDICULAR to the plane of the loop, that is parallel to its axis. This is the one orientation in which no turning effect arises: the magnetic moment is already aligned with the field, so \\(\\vec{\\tau} = \\vec{m} \\times \\vec{B} = 0\\).\nWhat remains is the force on each element, \\(d\\vec{F} = I\\,d\\vec{l} \\times \\vec{B}\\). Since \\(d\\vec{l}\\) lies in the plane and \\(\\vec{B}\\) is perpendicular to it, each force is perpendicular to both, and so lies IN the plane of the loop, directed along the radius.\nEvery element is pushed radially, and all in the SAME sense, because the current and field directions are the same all the way round. So the loop is squeezed uniformly inwards and its tendency is to SHRINK.\nNor can it translate: the radial forces are symmetric about the centre and sum to zero, so there is no net force and the options describing motion along an axis are ruled out. A loop in a UNIFORM field can be deformed or turned, never displaced."
+  },
+  {
+   "hash": "9f5c5cdc9f1df88d43add09e40dca2da94f7fbfbb7f0c073bfa6f9d408d9b04b",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "stem": "A 10 cm long wire lies along y-axis. It carries a current of \\(1{\\cdot}0\\) A in positive y-direction. A magnetic field \\(\\vec{\\mathrm{B}} = (5\\ \\mathrm{mT})\\hat{j} - (8\\ \\mathrm{mT})\\hat{k}\\) exists in the region. The force on the wire is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\ (0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((80\\ \\mathrm{mN})\\hat{i}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\ (80\\ \\mathrm{mN})\\hat{i}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Use \\(\\vec{F} = I(\\vec{L} \\times \\vec{B})\\), with the length vector along the current:\n\\(\\vec{L} = (0{\\cdot}10\\ \\mathrm{m})\\hat{j}, \\qquad \\vec{B} = (5\\ \\mathrm{mT})\\hat{j} - (8\\ \\mathrm{mT})\\hat{k}\\)\n\\(\\vec{F} = 1{\\cdot}0 \\times \\left[(0{\\cdot}10\\hat{j}) \\times (5 \\times 10^{-3}\\hat{j} - 8 \\times 10^{-3}\\hat{k})\\right]\\)\nTake the two terms separately. The first vanishes, since \\(\\hat{j} \\times \\hat{j} = 0\\): the component of the field ALONG the wire exerts no force at all. The second uses \\(\\hat{j} \\times \\hat{k} = \\hat{i}\\):\n\\(\\vec{F} = 1{\\cdot}0 \\times 0{\\cdot}10 \\times (-8 \\times 10^{-3})\\,\\hat{i} = -8 \\times 10^{-4}\\,\\hat{i}\\ \\mathrm{N}\\)\n\\(\\vec{F} = -(0{\\cdot}8\\ \\mathrm{mN})\\hat{i}\\)\nThe force is \\(0{\\cdot}8\\) mN directed along the negative x-axis. Forgetting to convert 10 cm into metres inflates this by ten and produces the 80 mN distractors."
+  },
+  {
+   "hash": "aa713d9028bdc5c765146309ec3e5258a9a7ab0b1b68ab504c819770f806dd2e",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "The Moving Coil Galvanometer",
+   "stem": "A galvanometer of resistance G \\(\\Omega\\) is converted into an ammeter of range 0 to I A. If the current through the galvanometer is \\(0{\\cdot}1\\%\\) of I A, the resistance of the ammeter is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\mathrm{G}}{999}\\ \\Omega\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\mathrm{G}}{1000}\\ \\Omega\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\mathrm{G}}{1001}\\ \\Omega\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mathrm{G}}{100{\\cdot}1}\\ \\Omega\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A galvanometer becomes an ammeter when a small SHUNT S is placed in parallel, so that most of the current bypasses the coil. At full scale the two branches share the same potential difference:\n\\(I_{g}G = (I - I_{g})S\\)\nHere \\(I_{g} = 0{\\cdot}1\\%\\ \\text{of}\\ I = \\dfrac{I}{1000}\\), so \\(I - I_{g} = \\dfrac{999I}{1000}\\):\n\\(\\dfrac{I}{1000}G = \\dfrac{999I}{1000}S \\quad\\Longrightarrow\\quad S = \\dfrac{G}{999}\\)\nThe RESISTANCE OF THE AMMETER is that of the two in parallel, not the shunt alone, and that is the step the question is really testing:\n\\(R_{A} = \\dfrac{GS}{G + S} = \\dfrac{G \\cdot \\dfrac{G}{999}}{G + \\dfrac{G}{999}} = \\dfrac{\\dfrac{G}{999}}{\\dfrac{1000}{999}} = \\dfrac{G}{1000}\\)\nThe resistance of the ammetre is \\(\\dfrac{G}{1000}\\ \\Omega\\). Stopping at the shunt gives \\(\\dfrac{G}{999}\\), which is the distractor on offer; a good ammeter must have a very LOW resistance so that inserting it in series barely disturbs the circuit."
+  },
+  {
+   "hash": "787d5ef930c3c7877fefe8b511b873fdf0105d7ce10d29187ea01e1ec5cd5d74",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+   "stem": "The reactance of a capacitor of capacitance C connected to an ac source of frequency \\(\\omega\\) is ‘X’. If the capacitance of the capacitor is doubled and the frequency of the source is tripled, the reactance will become :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\mathrm{X}}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "6X"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{2}{3}\\mathrm{X}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{3}{2}\\mathrm{X}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The reactance of a capacitor is\n\\(X_{C} = \\dfrac{1}{\\omega C}\\)\nso it is inversely proportional to BOTH the capacitance and the frequency. Doubling C and tripling \\(\\omega\\) therefore divides the reactance by \\(2 \\times 3 = 6\\):\n\\(X' = \\dfrac{1}{(3\\omega)(2C)} = \\dfrac{1}{6}\\cdot\\dfrac{1}{\\omega C} = \\dfrac{X}{6}\\)\nThe new reactance is \\(\\dfrac{X}{6}\\).\nThe physical content is that a capacitor opposes SLOW changes and passes rapid ones: at high frequency the plates never have time to charge up enough to push back, so the reactance falls, and a larger capacitance takes more charge for the same voltage, which lowers it further."
+  },
+  {
+   "hash": "03eb0d4c8457001d8cc12ca990dd952c8165e6b4dd10abd467f4a7f466c8ffa6",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Displacement Current",
+   "stem": "In the four regions, I, II, III and IV, the electric fields are described as :\nRegion I : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\sin (kz - \\omega t)\\)\nRegion II : \\(\\mathrm{E}_x = \\mathrm{E}_0\\)\nRegion III : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\sin kz\\)\nRegion IV : \\(\\mathrm{E}_x = \\mathrm{E}_0 \\cos kz\\)\nThe displacement current will exist in the region :",
+   "options": [
+    {
+     "label": "A",
+     "text": "I"
+    },
+    {
+     "label": "B",
+     "text": "IV"
+    },
+    {
+     "label": "C",
+     "text": "II"
+    },
+    {
+     "label": "D",
+     "text": "III"
+    }
+   ],
+   "answer": "A",
+   "solution": "Displacement current exists wherever the ELECTRIC FLUX is CHANGING WITH TIME:\n\\(i_{d} = \\varepsilon_{0}\\dfrac{d\\phi_{E}}{dt}\\)\nso the test to apply to each region is simply whether its field expression contains t.\nREGION I has \\(E_{x} = E_{0}\\sin(kz - \\omega t)\\), which depends on t. The flux through any area changes as the wave passes, so a displacement current exists here.\nREGION II has a CONSTANT field, so \\(\\dfrac{dE}{dt} = 0\\).\nREGIONS III and IV have fields varying with position z but NOT with time; they are static patterns, frozen in place.\nSo the displacement current exists only in the region whose field is a travelling wave, region I. What matters is variation in TIME, not in space, and the three static options are there to catch a reader who sees a formula with a variable in it and stops looking."
+  },
+  {
+   "hash": "d1eb520b5059277dca5427ef84b34468d3eb95fb45b91fd1dbeccbb05547fbae",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Line Spectra of the Hydrogen Atom",
+   "stem": "The transition of electron that gives rise to the formation of the second spectral line of the Balmer series in the spectrum of hydrogen atom corresponds to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 3\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\mathrm{n}_f = 3\\) and \\(\\mathrm{n}_i = 4\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = 4\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\mathrm{n}_f = 2\\) and \\(\\mathrm{n}_i = \\infty\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The Balmer series consists of all transitions that END on \\(n_{f} = 2\\), which is what puts it in the visible region.\nIts lines are counted outwards from the longest wavelength:\nFIRST line (\\(H_{\\alpha}\\)): \\(n_{i} = 3 \\to n_{f} = 2\\)\nSECOND line (\\(H_{\\beta}\\)): \\(n_{i} = 4 \\to n_{f} = 2\\)\nTHIRD line (\\(H_{\\gamma}\\)): \\(n_{i} = 5 \\to n_{f} = 2\\)\nSo the second spectral line of the Balmer series corresponds to \\(n_{f} = 2\\) and \\(n_{i} = 4\\).\nThe option with \\(n_{f} = 3\\) belongs to the Paschen series, and \\(n_{i} = \\infty \\to n_{f} = 2\\) is the SERIES LIMIT, the shortest wavelength of the Balmer series rather than its second line."
+  },
+  {
+   "hash": "34907327c05cbff55f0144f26a85082a8e1877975595a5c97709688e3f1900cd",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Intrinsic and Extrinsic Semiconductors",
+   "stem": "Ge is doped with As. Due to doping,",
+   "options": [
+    {
+     "label": "A",
+     "text": "the structure of Ge lattice is distorted."
+    },
+    {
+     "label": "B",
+     "text": "the number of conduction electrons increases."
+    },
+    {
+     "label": "C",
+     "text": "the number of holes increases."
+    },
+    {
+     "label": "D",
+     "text": "the number of conduction electrons decreases."
+    }
+   ],
+   "answer": "B",
+   "solution": "Arsenic is PENTAVALENT, carrying five valence electrons where germanium has four. Four of them form the covalent bonds with the neighbouring germanium atoms; the fifth is left over.\nThat fifth electron is bound only loosely, needing about \\(0{\\cdot}01\\) eV to be freed, which thermal energy at room temperature supplies easily. It is therefore released into the crystal as a CONDUCTION ELECTRON, and the arsenic atom becomes a fixed positive donor ion.\nSo doping with arsenic INCREASES THE NUMBER OF CONDUCTION ELECTRONS, making the crystal n-type.\nThe number of holes does not increase; it FALLS, because the mass-action law \\(n_{e}n_{h} = n_{i}^{2}\\) holds at a given temperature, and the extra electrons raise the recombination rate. Nor is the lattice distorted: arsenic substitutes for germanium at a lattice site, which is why doping works at all."
+  },
+  {
+   "hash": "e66b21fd56dc751768e41f7764096a6a9b1a50062096bc2acd84a82b93c2515b",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "Two beams, A and B whose photon energies are \\(3{\\cdot}3\\) eV and \\(11{\\cdot}3\\) eV respectively, illuminate a metallic surface (work function \\(2{\\cdot}3\\) eV) successively. The ratio of maximum speed of electrons emitted due to beam A to that due to beam B is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "3"
+    },
+    {
+     "label": "B",
+     "text": "9"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{9}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Einstein's equation gives the maximum kinetic energy in each case, and the speeds follow from it.\nBEAM A: \\(K_{A} = 3{\\cdot}3 - 2{\\cdot}3 = 1{\\cdot}0\\ \\mathrm{eV}\\)\nBEAM B: \\(K_{B} = 11{\\cdot}3 - 2{\\cdot}3 = 9{\\cdot}0\\ \\mathrm{eV}\\)\nSince \\(K = \\dfrac{1}{2}mv^{2}\\) with the same electron mass in both cases, the speed goes as the SQUARE ROOT of the kinetic energy:\n\\(\\dfrac{v_{A}}{v_{B}} = \\sqrt{\\dfrac{K_{A}}{K_{B}}} = \\sqrt{\\dfrac{1{\\cdot}0}{9{\\cdot}0}} = \\dfrac{1}{3}\\)\nThe ratio of the maximum speeds is \\(\\dfrac{1}{3}\\).\nThe trap is to compare the kinetic energies directly and answer \\(\\dfrac{1}{9}\\). Note too that the work function must be SUBTRACTED first: the ratio of the photon energies, \\(\\dfrac{3{\\cdot}3}{11{\\cdot}3}\\), plays no part."
+  },
+  {
+   "hash": "536295fc10213741cc28b58be1b029181fa4c4ec82aa1ed8b802c27a11ebe233",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Wave Nature of Matter",
+   "stem": "The waves associated with a moving electron and a moving proton have the same wavelength \\(\\lambda\\). It implies that they have the same :",
+   "options": [
+    {
+     "label": "A",
+     "text": "momentum"
+    },
+    {
+     "label": "B",
+     "text": "angular momentum"
+    },
+    {
+     "label": "C",
+     "text": "speed"
+    },
+    {
+     "label": "D",
+     "text": "energy"
+    }
+   ],
+   "answer": "A",
+   "solution": "The de Broglie wavelength depends on one quantity only:\n\\(\\lambda = \\dfrac{h}{p}\\)\nso two particles sharing the same wavelength necessarily share the same MOMENTUM, whatever else differs between them.\nNothing else follows. Their SPEEDS cannot be equal, since \\(p = mv\\) and an electron is about 1836 times lighter than a proton, so at equal momentum the electron moves that many times faster. Their ENERGIES cannot be equal either, since \\(K = \\dfrac{p^{2}}{2m}\\) makes the lighter particle by far the more energetic. ANGULAR momentum does not enter at all: it depends on the path, and none is specified.\nSo equal wavelength implies equal momentum, and that is the whole of what it implies."
+  },
+  {
+   "hash": "4960f6d4c1f0747b5531a1167b89daf1e3408d9eb1820e02787540b257944cd1",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Photoelectric Effect and its Experimental Study",
+   "stem": "Assertion (A) : In photoelectric effect, the kinetic energy of the emitted photoelectrons increases with increase in the intensity of the incident light.\nReason (R) : Photoelectric current depends on the wavelength of the incident light.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "D",
+   "solution": "Both statements are FALSE.\nThe ASSERTION is false because it attaches the kinetic energy to the wrong variable. Einstein's equation, \\(K_{max} = h\\nu - \\phi_{0}\\), contains the FREQUENCY and the work function, and no term for intensity. Raising the intensity sends MORE photons per second, so more electrons are emitted and the photocurrent rises, but each photon still delivers the same energy \\(h\\nu\\), so the kinetic energy of the emitted electrons is unchanged. This independence of intensity was one of the classical wave theory's decisive failures.\nThe REASON is false as stated. The photoelectric CURRENT is proportional to the number of photons arriving per second, that is to the INTENSITY of the light, and for a given intensity above threshold it is essentially independent of wavelength. Wavelength governs the ENERGY of the electrons, not how many of them there are.\nSo the two statements between them swap the roles of intensity and frequency, which is exactly the confusion the photoelectric effect exists to clear up."
+  },
+  {
+   "hash": "db26ecbf5867b7de7cf3e92452065543362bed540a0a9d54f958148213fde185",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Inductance",
+   "stem": "Assertion (A) : The mutual inductance between two coils is maximum when the coils are wound on each other.\nReason (R) : The flux linkage between two coils is maximum when they are wound on each other.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "A",
+   "solution": "The ASSERTION is TRUE. Mutual inductance measures how effectively a changing current in one coil induces an emf in the other, and it is greatest when the two are wound one on top of the other on a common core.\nThe REASON is also TRUE and is precisely why. Mutual inductance is defined through the flux linkage:\n\\(M = \\dfrac{N_{2}\\phi_{2}}{I_{1}}\\)\nso M is large exactly when a large fraction of the flux produced by the first coil threads the second. Winding the coils on each other leaves almost no path for flux to escape between them, so the linkage is as complete as it can be and M approaches its maximum value \\(k\\sqrt{L_{1}L_{2}}\\) with the coupling coefficient k near 1.\nSeparate the coils, or turn one through a right angle, and much of the flux misses the second coil entirely; the linkage falls and M falls with it.\nBoth statements are true and the reason is the correct explanation. This is why a transformer's windings are placed on the same core rather than side by side."
+  },
+  {
+   "hash": "68e09ef50336c21ea817dd9b62f379227ce7f5f8da9de334ea936bff6be20f21",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Force Between Parallel Currents",
+   "stem": "Assertion (A) : Two long parallel wires, freely suspended and connected in series to a battery, move apart.\nReason (R) : Two wires carrying current in opposite directions repel each other.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "A",
+   "solution": "The ASSERTION is TRUE. Two freely suspended parallel wires connected in SERIES to a battery do move apart.\nThe REASON is also TRUE: two wires carrying currents in OPPOSITE directions repel one another, the force per unit length being\n\\(\\dfrac{F}{l} = \\dfrac{\\mu_{0}I_{1}I_{2}}{2\\pi d}\\)\nand it is the correct explanation, provided one sees why the currents ARE opposite. A series connection means the same current traverses both wires in turn: it goes out along one and returns along the other. So although a single current is flowing, its direction in the two wires is antiparallel, and antiparallel currents repel.\nBoth statements are true and the reason explains the assertion. Had the wires been connected in PARALLEL instead, the current would run the same way in both, they would attract, and the wires would move together. The connection, not the battery, decides which way they swing."
+  },
+  {
+   "hash": "31d2ddfdc895255031cde41981f6eb6fb683207317dce3ae5660035dccfb3014",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Reflection by Spherical Mirrors",
+   "stem": "Assertion (A) : Plane and convex mirrors cannot produce real images under any circumstance.\nReason (R) : A virtual image cannot serve as an object to produce a real image.",
+   "context": "Questions number 13 to 16 are Assertion (A) and Reason (R) type questions. Two statements are given — one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is also false."
+    }
+   ],
+   "answer": "D",
+   "solution": "Both statements are FALSE, and the same oversight defeats them both: they forget that an object can be VIRTUAL.\nThe ASSERTION claims that plane and convex mirrors can never produce a real image. They can. If a CONVERGING beam falls on such a mirror, the incident rays are already headed towards a point behind it; that point is a virtual OBJECT, and the mirror reflects the beam to a real convergence point in front of itself. What is true is the weaker statement that for a REAL object these mirrors always give a virtual image, and the assertion has overstated it into a claim about all circumstances.\nThe REASON claims that a virtual image cannot serve as an object to produce a real image. It can, and routinely does in every multi-element instrument: the virtual image formed by one lens or mirror acts as the object for the next, and the final image may perfectly well be real.\nBoth the assertion and the reason are false."
+  },
+  {
+   "hash": "66250fac1f815335ab6c5d51f98b2111d51d72fb77a1047af272c4dd93db45c2",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Temperature Dependence of Resistivity",
+   "stem": "Find the temperature at which the resistance of a wire made of silver will be twice its resistance at 20°C. Take 20°C as the reference temperature and temperature coefficient of resistance of silver at 20°C = \\(4{\\cdot}0 \\times 10^{-3}\\ \\mathrm{K^{-1}}\\).",
+   "solution": "The resistance of a metal varies with temperature as\n\\(R = R_{0}\\left[1 + \\alpha(T - T_{0})\\right]\\)\nwhere \\(R_{0}\\) is the resistance at the reference temperature \\(T_{0} = 20\\,^{\\circ}\\mathrm{C}\\).\nThe wire's resistance is to be DOUBLED, so \\(R = 2R_{0}\\):\n\\(2R_{0} = R_{0}\\left[1 + \\alpha(T - T_{0})\\right]\\)\nCancelling \\(R_{0}\\), which is why its value is never needed:\n\\(2 = 1 + \\alpha(T - T_{0}) \\quad\\Longrightarrow\\quad \\alpha(T - T_{0}) = 1\\)\n\\(T - T_{0} = \\dfrac{1}{\\alpha} = \\dfrac{1}{4{\\cdot}0 \\times 10^{-3}} = 250\\)\n\\(T = 20 + 250 = 270\\,^{\\circ}\\mathrm{C} \\qquad (543\\ \\mathrm{K})\\)\nThe resistance of the silver wire doubles at \\(270\\,^{\\circ}\\mathrm{C}\\).\nNote that the temperature coefficient is quoted per KELVIN while the reference is in degrees Celsius, and that is harmless here: a RISE of 250 K is the same as a rise of \\(250\\,^{\\circ}\\mathrm{C}\\), since only the interval enters."
+  },
+  {
+   "hash": "76b666efb568850e9a209a736bc76678593124fcc0e72b2af67ac277a36243e6",
+   "ref": "Q18a",
+   "questionNumber": "18 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Refraction and Reflection of Plane Waves",
+   "stem": "Monochromatic light of frequency \\(5{\\cdot}0 \\times 10^{14}\\) Hz passes from air into a medium of refractive index \\(1{\\cdot}5\\). Find the wavelength of the light (i) reflected, and (ii) refracted at the interface of the two media.",
+   "solution": "(i) REFLECTED LIGHT. Reflection keeps the light in the SAME medium, so neither its speed nor its frequency changes, and therefore neither does its wavelength. The wavelength is simply that of the incident light in air:\n\\(c = \\nu\\lambda \\quad\\Longrightarrow\\quad \\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}}{5{\\cdot}0 \\times 10^{14}}\\)\n\\(\\lambda = 6 \\times 10^{-7}\\ \\mathrm{m} = 600\\ \\mathrm{nm}\\)\n(ii) REFRACTED LIGHT. On entering the medium the FREQUENCY is unchanged, because the boundary can neither create nor destroy wave cycles; what changes is the speed, \\(v = \\dfrac{c}{\\mu}\\). The wavelength shortens in the same proportion:\n\\(\\lambda_{medium} = \\dfrac{\\lambda_{air}}{\\mu} = \\dfrac{600}{1{\\cdot}5} = 400\\ \\mathrm{nm}\\)\nSo the reflected light has a wavelength of 600 nm and the refracted light 400 nm.\nThe contrast is the point of the question: reflection changes nothing about the wave, while refraction changes the speed and the wavelength together but leaves the frequency, and hence the colour, alone."
+  },
+  {
+   "hash": "f2e0ba9bbaf583bfde53d2ee883396bfe92af87f6c5452cfb911ee5264af0089",
+   "ref": "Q18b",
+   "questionNumber": "18 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "A plano-convex lens of focal length 16 cm is made of a material of refractive index \\(1{\\cdot}4\\). Calculate the radius of the curved surface of the lens.",
+   "solution": "Apply the lens maker's formula to a PLANO-convex lens, remembering that the flat face has an infinite radius and therefore contributes nothing:\n\\(\\dfrac{1}{f} = (\\mu - 1)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right]\\)\nWith one curved surface of radius R and one flat surface:\n\\(\\dfrac{1}{16} = (1{\\cdot}4 - 1)\\left[\\dfrac{1}{R} - \\dfrac{1}{\\infty}\\right] = \\dfrac{0{\\cdot}4}{R}\\)\n\\(R = 16 \\times 0{\\cdot}4 = 6{\\cdot}4\\ \\mathrm{cm}\\)\nThe radius of the curved surface is \\(6{\\cdot}4\\) cm.\nThe radius comes out much SMALLER than the focal length here because the glass is of low refractive index: with \\((\\mu - 1) = 0{\\cdot}4\\) the surface has to be strongly curved to bend the light enough. The same lens made of \\(\\mu = 1{\\cdot}5\\) glass would need a radius of 8 cm for the same focal length."
+  },
+  {
+   "hash": "cfe7a0439ca49c09da04153bc9034a89bdfce620c91e93c584694434301f95ec",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Reflection by Spherical Mirrors",
+   "stem": "An object is placed 30 cm in front of a concave mirror of radius of curvature 40 cm. Find the (i) position of the image formed and (ii) magnification of the image.",
+   "solution": "For a concave mirror the focal length is half the radius of curvature, and both are NEGATIVE under the Cartesian convention since they lie in front of the mirror:\n\\(f = \\dfrac{R}{2} = \\dfrac{-40}{2} = -20\\ \\mathrm{cm}, \\qquad u = -30\\ \\mathrm{cm}\\)\n(i) POSITION. From the mirror equation:\n\\(\\dfrac{1}{v} + \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\\(\\dfrac{1}{v} + \\dfrac{1}{-30} = \\dfrac{1}{-20} \\quad\\Longrightarrow\\quad \\dfrac{1}{v} = -\\dfrac{1}{20} + \\dfrac{1}{30} = \\dfrac{-3 + 2}{60} = -\\dfrac{1}{60}\\)\n\\(v = -60\\ \\mathrm{cm}\\)\nThe image forms 60 cm in FRONT of the mirror, on the same side as the object, and since v is negative it is REAL.\n(ii) MAGNIFICATION.\n\\(m = -\\dfrac{v}{u} = -\\dfrac{-60}{-30} = -2\\)\nThe magnification is \\(-2\\): the image is inverted, as the minus sign says, and twice the size of the object.\nThe result is the expected one for an object lying between the focus and the centre of curvature, 20 cm and 40 cm here: the image is real, inverted, magnified, and beyond the centre of curvature."
+  },
+  {
+   "hash": "2832a8423969df95e898aefe6de13601c56624bb90610d9c80a873f96a1929ff",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Wave Nature of Matter",
+   "stem": "Consider a neutron (mass m) of kinetic energy E and a photon of the same energy. Let \\(\\lambda_n\\) and \\(\\lambda_p\\) be the de Broglie wavelength of neutron and the wavelength of photon respectively. Obtain an expression for \\(\\dfrac{\\lambda_n}{\\lambda_p}\\).",
+   "solution": "Treat the two separately, because a photon and a neutron relate energy to momentum by different rules, and that difference IS the answer.\nTHE PHOTON has no rest mass, so its energy and momentum are related by \\(E = pc\\):\n\\(E = \\dfrac{hc}{\\lambda_{p}} \\quad\\Longrightarrow\\quad \\lambda_{p} = \\dfrac{hc}{E}\\)\nTHE NEUTRON is non-relativistic, so \\(E = \\dfrac{p^{2}}{2m}\\), giving \\(p = \\sqrt{2mE}\\), and its de Broglie wavelength is\n\\(\\lambda_{n} = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mE}}\\)\nDividing one by the other, h cancels:\n\\(\\dfrac{\\lambda_{n}}{\\lambda_{p}} = \\dfrac{h}{\\sqrt{2mE}} \\times \\dfrac{E}{hc} = \\dfrac{E}{c\\sqrt{2mE}} = \\dfrac{1}{c}\\sqrt{\\dfrac{E}{2m}}\\)\nwhich is more neatly written as\n\\(\\dfrac{\\lambda_{n}}{\\lambda_{p}} = \\sqrt{\\dfrac{E}{2mc^{2}}}\\)\nThe ratio depends on the energy through a square root, so the two wavelengths are NOT simply proportional. Since \\(mc^{2}\\) for a neutron is about 940 MeV, the ratio is tiny for ordinary energies: a neutron of a few electronvolts has a wavelength far shorter than a photon of the same energy."
+  },
+  {
+   "hash": "300716cfa6c9e70bb7b1507034801fd03d7bd316e31581490cdba30a37adbac7",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Electric Current and Ohm's Law",
+   "stem": "Plot a graph showing the variation of current with voltage for the material GaAs. On the graph, mark the region where :\n(a) resistance is negative, and\n(b) Ohm's law is obeyed.",
+   "solution": "GRAPH. Plot current I in milliamperes against voltage V. The curve for GaAs is not a straight line: it rises from the origin, at first in proportion to V, then bends over to a maximum, then FALLS as the voltage is increased further, passes through a minimum, and finally rises again.\n(a) REGION WHERE RESISTANCE IS NEGATIVE. This is the stretch between the maximum and the minimum, where the curve slopes DOWNWARDS: the current DECREASES as the voltage increases. Since the dynamic resistance is \\(\\dfrac{\\Delta V}{\\Delta I}\\), a negative slope means a NEGATIVE resistance. Mark this falling portion.\n(b) REGION WHERE OHM'S LAW IS OBEYED. This is the initial stretch nearest the origin, where the graph is a STRAIGHT LINE through the origin, so that \\(V \\propto I\\) and the resistance is constant. Mark this rising straight portion.\nThe material is worth the attention the question gives it: the negative-resistance region is what allows a GaAs device to sustain oscillations and generate microwave power, which no ohmic material can do."
+  },
+  {
+   "hash": "faf496fff6aea1a2afb4779db612aee61dc5d35e42445eb433b03150b6b81610",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Flux and Gauss's Law",
+   "stem": "A cube of side \\(0{\\cdot}1\\) m is placed, as shown in the figure, in a region where electric field \\(\\vec{\\mathrm{E}} = 500\\,x\\,\\hat{i}\\) exists. Here x is in meters and E in \\(\\mathrm{NC^{-1}}\\). Calculate :\n(a) the flux passing through the cube, and\n(b) the charge within the cube.",
+   "figureNote": "REQUIRED — a cube drawn on x, y, z axes with origin O marked and a dimension arrow labelled 0·1 m. The cube's POSITION along the x-axis relative to the origin is shown only in the drawing, and since the field is x-dependent the flux cannot be found without it. Described: that there are labelled x, y, z axes, an origin O and a cube with one 0·1 m dimension marked. Withheld: where the cube's faces sit relative to the origin. Page idx 12.",
+   "imageAttached": true,
+   "solution": "The field \\(\\vec{E} = 500x\\,\\hat{i}\\) points along x and grows with x, so flux crosses only the two faces PERPENDICULAR to the x-axis. The other four faces have their area vectors perpendicular to the field, so \\(\\vec{E} \\cdot \\vec{A} = 0\\) for each of them and they contribute nothing.\nFrom the figure the left face is at \\(x = 0{\\cdot}1\\) m and the right face at \\(x = 0{\\cdot}2\\) m, and each has area \\((0{\\cdot}1)^{2} = 0{\\cdot}01\\ \\mathrm{m^{2}}\\).\n(a) FLUX. For a closed surface the area vector points OUTWARDS, so the left face's points along \\(-\\hat{i}\\) and the right face's along \\(+\\hat{i}\\):\n\\(\\phi_{L} = -\\left[500 \\times 0{\\cdot}1\\right] \\times 0{\\cdot}01 = -0{\\cdot}5\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\n\\(\\phi_{R} = +\\left[500 \\times 0{\\cdot}2\\right] \\times 0{\\cdot}01 = +1{\\cdot}0\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\n\\(\\phi = \\phi_{L} + \\phi_{R} = 0{\\cdot}5\\ \\mathrm{N\\,m^{2}\\,C^{-1}}\\)\nThe net flux is positive because the field is STRONGER where it leaves than where it enters, and it is that imbalance, not the field itself, that signals enclosed charge.\n(b) CHARGE. By Gauss's theorem:\n\\(q = \\phi\\,\\varepsilon_{0} = 0{\\cdot}5 \\times 8{\\cdot}85 \\times 10^{-12}\\)\n\\(q = 4{\\cdot}4 \\times 10^{-12}\\ \\mathrm{C}\\)\nHad the field been uniform, the two fluxes would have cancelled exactly and the enclosed charge would have been zero."
+  },
+  {
+   "hash": "641907d96dc9f28dbbaa389f0cfeefda9f1d081a46c5d85fd887b38173d04d16",
+   "ref": "Q23a",
+   "questionNumber": "23 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Drift of Electrons and Resistivity",
+   "stem": "Define ‘current density’. Is it a scalar or a vector ? An electric field \\(\\vec{\\mathrm{E}}\\) is maintained in a metallic conductor. If n be the number of electrons (mass m, charge \\(- e\\)) per unit volume in the conductor and \\(\\tau\\) its relaxation time, show that the current density \\(\\vec{j} = \\alpha \\vec{\\mathrm{E}}\\), where \\(\\alpha = \\left(\\dfrac{ne^2}{m}\\right)\\tau\\).",
+   "solution": "DEFINITION. Current density is the current flowing per unit area of cross-section taken NORMAL to the direction of flow:\n\\(j = \\dfrac{I}{A}\\)\nSCALAR OR VECTOR? It is a VECTOR, its direction being that in which the positive charge carriers drift. Current itself, by contrast, is a scalar despite having a sense along the wire, because it does not obey vector addition; current density does, which is what lets it describe flow at a POINT inside a conductor of any shape.\nDERIVATION. Consider a conductor of cross-sectional area A carrying n free electrons per unit volume, each of charge \\(-e\\) and mass m, in a field \\(\\vec{E}\\).\nEach electron experiences a force \\(-e\\vec{E}\\), hence an acceleration \\(-\\dfrac{e\\vec{E}}{m}\\). Collisions interrupt this repeatedly, and if \\(\\tau\\) is the average time between collisions the electrons acquire a steady DRIFT velocity\n\\(\\vec{v}_{d} = -\\dfrac{e\\vec{E}\\tau}{m}\\)\nIn a time \\(\\Delta t\\) every electron moves a distance \\(v_{d}\\Delta t\\), so all the electrons within a cylinder of that length and cross-section A cross the far face. The charge transported is\n\\(I\\Delta t = ne\\,A\\,|\\vec{v}_{d}|\\,\\Delta t = \\dfrac{ne^{2}A\\tau}{m}|\\vec{E}|\\,\\Delta t\\)\nDividing by \\(\\Delta t\\) and by the area, and writing \\(I = |j|A\\):\n\\(|j| = \\dfrac{ne^{2}\\tau}{m}|\\vec{E}|\\)\nSince the drift velocity of the negative electrons is opposite to \\(\\vec{E}\\) while the conventional current is along it, the two vectors are parallel and\n\\(\\vec{j} = \\alpha\\vec{E}, \\qquad \\alpha = \\dfrac{ne^{2}\\tau}{m}\\)\nThis \\(\\alpha\\) is the CONDUCTIVITY, and the relation is the microscopic form of Ohm's law. Notice that it contains only properties of the material, which is why Ohm's law holds independently of the conductor's shape."
+  },
+  {
+   "hash": "75a235ddf1f55529ffdeb9fe44562e2fb20e92c1838a83137c877a2b3ab8987b",
+   "ref": "Q23b",
+   "questionNumber": "23 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+   "stem": "What is a Wheatstone bridge ? Obtain the necessary conditions under which the Wheatstone bridge is balanced.",
+   "solution": "WHAT IT IS. A Wheatstone bridge is an arrangement of FOUR resistances \\(R_{1}\\), \\(R_{2}\\), \\(R_{3}\\) and \\(R_{4}\\) forming the four arms of a quadrilateral ABCD, with a cell connected across one diagonal and a galvanometer across the other. It is used to measure an unknown resistance by comparison with known ones, without needing to measure any current or voltage accurately.\nCONDITION FOR BALANCE. Let the currents be as marked, with \\(I_{g}\\) through the galvanometer of resistance G. Apply Kirchhoff's loop rule to the two loops:\nFor loop ADBA: \\(-I_{1}R_{1} + I_{2}R_{2} + I_{g}G = 0 \\qquad\\text{...(1)}\\)\nFor loop CBDC: \\(I_{4}R_{4} - I_{3}R_{3} - I_{g}G = 0 \\qquad\\text{...(2)}\\)\nThe bridge is said to be BALANCED when no current flows through the galvanometer, that is\n\\(I_{g} = 0\\)\nTwo consequences follow at once. First, the junction rule at D and at B now gives\n\\(I_{1} = I_{3} \\qquad\\text{and}\\qquad I_{2} = I_{4}\\)\nsince no current is diverted along the galvanometer branch. Second, equations (1) and (2) reduce to\n\\(I_{1}R_{1} = I_{2}R_{2} \\qquad\\text{and}\\qquad I_{4}R_{4} = I_{3}R_{3}\\)\nDividing one by the other and using \\(I_{1} = I_{3}\\), \\(I_{2} = I_{4}\\):\n\\(\\dfrac{R_{2}}{R_{1}} = \\dfrac{R_{4}}{R_{3}}\\)\nThis is the balance condition. Its value is that it involves only RATIOS of resistances: the emf of the cell, its internal resistance and the galvanometer's resistance all drop out, so none of them needs to be known, and the measurement is as accurate as the known resistances are."
+  },
+  {
+   "hash": "9723ea2777135fbf97d8a3c3db3084288be75fd936614e5666331f420d401a64",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "stem": "A proton with kinetic energy \\(1{\\cdot}3384 \\times 10^{-14}\\) J moving horizontally from north to south, enters a uniform magnetic field B of \\(2{\\cdot}0\\) mT directed eastward. Calculate :\n(a) the speed of the proton\n(b) the magnitude of acceleration of the proton\n(c) the radius of the path traced by the proton\n[Take (q/m) for proton = \\(1{\\cdot}0 \\times 10^{8}\\) C/kg]",
+   "solution": "The proton enters at right angles to the field, so it moves in a circle, and all three parts follow from that.\n(a) SPEED. From \\(K.E. = \\dfrac{1}{2}mv^{2}\\):\n\\(v = \\sqrt{\\dfrac{2 \\times K.E.}{m}}\\)\nThe mass is not given directly but follows from the charge-to-mass ratio: \\(m = \\dfrac{e}{(q/m)} = \\dfrac{1{\\cdot}6 \\times 10^{-19}}{1{\\cdot}0 \\times 10^{8}} = 1{\\cdot}6 \\times 10^{-27}\\ \\mathrm{kg}\\).\n\\(v = \\sqrt{\\dfrac{2 \\times 1{\\cdot}3384 \\times 10^{-14}}{1{\\cdot}6 \\times 10^{-27}}} = 4 \\times 10^{6}\\ \\mathrm{m\\,s^{-1}}\\)\n(b) ACCELERATION. The magnetic force supplies the whole of it, and with \\(\\vec{v}\\) perpendicular to \\(\\vec{B}\\):\n\\(a = \\dfrac{qvB}{m} = \\left(\\dfrac{q}{m}\\right)vB = 1{\\cdot}0 \\times 10^{8} \\times 4 \\times 10^{6} \\times 2{\\cdot}0 \\times 10^{-3}\\)\n\\(a = 8 \\times 10^{11}\\ \\mathrm{m\\,s^{-2}}\\)\nWriting it as \\(\\left(\\dfrac{q}{m}\\right)vB\\) is what lets the given ratio be used directly.\n(c) RADIUS.\n\\(r = \\dfrac{mv}{qB} = \\dfrac{v}{\\left(\\dfrac{q}{m}\\right)B} = \\dfrac{4 \\times 10^{6}}{1{\\cdot}0 \\times 10^{8} \\times 2{\\cdot}0 \\times 10^{-3}} = 20\\ \\mathrm{m}\\)\nThe proton travels a circle of radius 20 m. The size is worth noticing: a field of a few millitesla barely curves a proton of this energy, which is why accelerator magnets are measured in tesla rather than millitesla."
+  },
+  {
+   "hash": "c997736035dd88b200e2fdc0269346e08535cae4561b203c731b742dcd5f0e23",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Power in AC Circuits and the Power Factor",
+   "stem": "An inductor, a capacitor and a resistor are connected in series with an ac source \\(v = v_m \\sin \\omega t\\). Derive an expression for the average power dissipated in the circuit. Also obtain the expression for the resonant frequency of the circuit.",
+   "solution": "AVERAGE POWER. With the applied voltage \\(v = v_{m}\\sin\\omega t\\), the current in a series LCR circuit is\n\\(i = i_{m}\\sin(\\omega t + \\phi)\\)\nwhere \\(\\phi\\) is the phase angle between them. The INSTANTANEOUS power is the product:\n\\(P = vi = v_{m}i_{m}\\sin\\omega t\\,\\sin(\\omega t + \\phi)\\)\nUsing \\(2\\sin A\\sin B = \\cos(A - B) - \\cos(A + B)\\):\n\\(P = \\dfrac{v_{m}i_{m}}{2}\\left[\\cos\\phi - \\cos(2\\omega t + \\phi)\\right] \\qquad\\text{...(1)}\\)\nNow average over a full cycle. Of the two terms on the right, the first is a CONSTANT, and the second is a cosine of \\(2\\omega t\\) whose average over a complete cycle is ZERO. Hence\n\\(P_{av} = \\dfrac{v_{m}i_{m}}{2}\\cos\\phi\\)\nwhich in terms of rms values is the familiar\n\\(P_{av} = V_{rms}I_{rms}\\cos\\phi\\)\nThe factor \\(\\cos\\phi\\) is the POWER FACTOR. A purely reactive circuit has \\(\\phi = \\dfrac{\\pi}{2}\\) and consumes no average power at all: energy merely shuttles in and out of the inductor and capacitor. All the dissipation happens in R.\nRESONANT FREQUENCY. Resonance is the condition in which the two reactances cancel:\n\\(X_{C} = X_{L} \\quad\\Longrightarrow\\quad \\dfrac{1}{\\omega C} = \\omega L \\quad\\Longrightarrow\\quad \\omega^{2} = \\dfrac{1}{LC}\\)\n\\(\\omega = \\dfrac{1}{\\sqrt{LC}} \\quad\\Longrightarrow\\quad \\nu = \\dfrac{1}{2\\pi\\sqrt{LC}}\\)\nAt this frequency the impedance falls to R, the current is a maximum, and \\(\\phi = 0\\), so the power factor is 1 and the circuit draws the greatest possible power."
+  },
+  {
+   "hash": "09ec6fbf0340d9591f4c2119454e82651e981baa130e79e55fef01b7e7512246",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "stem": "(a) “The wavelength of the electromagnetic wave is often correlated with the characteristic size of the system that radiates.” Give two examples to justify this statement.\n(b) (i) Long distance radio broadcasts use short-wave bands. Why ?\n(ii) Optical and radio telescopes are built on the ground, but X-ray astronomy is possible only from satellites orbiting the Earth. Why ?",
+   "solution": "(a) The statement is justified by the fact that a radiating system emits most efficiently at a wavelength comparable to its own size. TWO EXAMPLES:\nGAMMA RADIATION, of wavelength \\(10^{-14}\\) m to \\(10^{-15}\\) m, originates in the ATOMIC NUCLEUS, whose diameter is of just that order, a few femtometres.\nRADIO WAVES are produced by electrons accelerating in a circuit, and a transmitting ANTENNA radiates most efficiently when its length is about the wavelength it is broadcasting, which is why broadcast towers are metres to hundreds of metres tall.\nA third example, if one is wanted: X-rays, of wavelength around \\(10^{-10}\\) m, are emitted by heavy ATOMS, whose size is of that order.\n(b) (i) WHY SHORT-WAVE BANDS FOR LONG DISTANCE RADIO. The Earth is curved, so a ground wave cannot reach far, and a straight line from transmitter to receiver soon leaves the surface. Short waves, roughly a few MHz to 30 MHz, are REFLECTED by the IONOSPHERE, the layer of charged particles in the upper atmosphere. Bouncing between the ionosphere and the ground, they can be received thousands of kilometres away. Higher frequencies pass straight through the ionosphere into space and are lost.\n(ii) WHY X-RAY ASTRONOMY NEEDS SATELLITES. The atmosphere is transparent in two main windows, the visible and the radio, which is precisely why optical and radio telescopes work from the ground. X-rays, however, are strongly ABSORBED by the atmosphere, chiefly by the oxygen and nitrogen above us. Almost none reaches sea level, so an X-ray telescope must be carried above the absorbing layers, on a satellite in orbit."
+  },
+  {
+   "hash": "9ed6c6bfa6abe78f2d7fbe5159f4174837498c4b5c9f98902edc3d2d1ae49aee",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "stem": "Write the drawbacks of Rutherford's atomic model. How did Bohr remove them ? Show that different orbits in Bohr's atom are not equally spaced.",
+   "solution": "DRAWBACKS OF RUTHERFORD'S MODEL. Two of them, and both are fatal.\n(i) INSTABILITY OF THE ATOM. The model has the electron in continuous circular motion, which is ACCELERATED motion. Classical electromagnetic theory requires an accelerating charge to radiate electromagnetic waves, so the electron would lose energy continuously, spiral inwards and fall into the nucleus in about \\(10^{-8}\\) s. Matter would not be stable, and plainly it is.\n(ii) FAILURE TO EXPLAIN LINE SPECTRA. As the electron spiralled in, its frequency of revolution would change continuously, so the emitted radiation would form a CONTINUOUS spectrum. What atoms actually emit is a set of sharp, discrete LINES at characteristic frequencies.\nHOW BOHR REMOVED THEM. Bohr kept the nuclear picture but added two quantum postulates. First, that the electron may occupy only certain STATIONARY orbits, in which, contrary to classical theory, it does NOT radiate; these are the orbits for which the angular momentum is quantised, \\(mvr = \\dfrac{nh}{2\\pi}\\). This removes the first drawback by decree: there is a lowest orbit, and the electron cannot spiral below it. Second, that radiation is emitted only when the electron JUMPS between two such orbits, carrying away the energy difference as a single photon, \\(h\\nu = E_{f} - E_{i}\\). Since the energies are discrete, so are the frequencies, and a line spectrum results.\nORBITS ARE NOT EQUALLY SPACED. Combining the force balance with the quantisation condition gives\n\\(r_{n} = n^{2}\\left(\\dfrac{h}{2\\pi}\\right)^{2}\\dfrac{4\\pi\\varepsilon_{0}}{me^{2}} \\quad\\Longrightarrow\\quad r_{n} \\propto n^{2}\\)\nSo the radii go as \\(1 : 4 : 9 : 16 \\ldots\\), and the GAPS between successive orbits are\n\\(r_{2} - r_{1} = 3r_{1}, \\qquad r_{3} - r_{2} = 5r_{1}, \\qquad r_{4} - r_{3} = 7r_{1}\\)\nThe spacing grows with n, in the ratio \\(3 : 5 : 7 \\ldots\\), so the orbits are certainly not equally spaced but crowd near the nucleus and spread out rapidly beyond it."
+  },
+  {
+   "hash": "48306897cdbfe445e3c18f144f1554fb4008ae04e42431e0eb8a4c9ee551ded0",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Size of the Nucleus",
+   "stem": "(a) State any two properties of a nucleus.\n(b) Why is the density of a nucleus much more than that of an atom ?\n(c) Show that the density of the nuclear matter is the same for all nuclei.",
+   "solution": "(a) TWO PROPERTIES OF A NUCLEUS:\nIts RADIUS follows \\(R = R_{0}A^{1/3}\\), with \\(R_{0} = 1{\\cdot}2 \\times 10^{-15}\\) m, so nuclear volume is proportional to the mass number.\nIts DENSITY is enormous, of the order of \\(10^{17}\\ \\mathrm{kg\\,m^{-3}}\\), and is the same for every nucleus, as part (c) shows.\n(A third, if wanted: the nucleus carries the whole positive charge of the atom, \\(+Ze\\), and nearly all its mass, while occupying about \\(10^{-15}\\) of its volume.)\n(b) WHY THE NUCLEUS IS SO MUCH DENSER THAN THE ATOM. Practically the entire mass of the atom, that of its protons and neutrons, is concentrated in the nucleus, since the electrons contribute less than a two-thousandth of it. But the nucleus occupies a radius of a few femtometres against the atom's \\(10^{-10}\\) m, a factor of about \\(10^{5}\\) in radius and therefore about \\(10^{15}\\) in VOLUME. Nearly all the mass packed into \\(10^{-15}\\) of the volume makes the nuclear density larger by roughly that same factor: the atom is overwhelmingly empty space.\n(c) NUCLEAR DENSITY IS THE SAME FOR ALL NUCLEI. Let m be the average mass of a nucleon, so a nucleus of mass number A has mass \\(mA\\), and let its radius be \\(R = R_{0}A^{1/3}\\). Then\n\\(\\rho = \\dfrac{\\text{mass}}{\\text{volume}} = \\dfrac{mA}{\\dfrac{4}{3}\\pi R^{3}} = \\dfrac{mA}{\\dfrac{4}{3}\\pi R_{0}^{3}A}\\)\nThe mass number CANCELS, leaving\n\\(\\rho = \\dfrac{3m}{4\\pi R_{0}^{3}}\\)\nwhich contains only constants. The density is therefore independent of A, the same for hydrogen as for uranium. The physical reason is that the nuclear force is SHORT-RANGED and saturates: each nucleon interacts only with its immediate neighbours, so adding nucleons enlarges the nucleus rather than compressing it."
+  },
+  {
+   "hash": "b7f611fcb7825c5a1113116f024429d66d72c7f6957b0a20257fa7012e175016",
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "A double-convex lens, with each face having same radius of curvature R, is made of glass of refractive index n. Its power is :",
+   "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{2\\,(n - 1)}{\\mathrm{R}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{(2n - 1)}{\\mathrm{R}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{(n - 1)}{2\\,\\mathrm{R}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{(2n - 1)}{2\\,\\mathrm{R}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Power is the reciprocal of the focal length in metres, so start from the lens maker's formula:\n\\(\\dfrac{1}{f} = (n - 1)\\left[\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}}\\right]\\)\nFor a DOUBLE-CONVEX lens whose two faces have the same radius of curvature, the sign convention gives \\(R_{1} = R\\) and \\(R_{2} = -R\\), because the second surface curves the opposite way:\n\\(\\dfrac{1}{R_{1}} - \\dfrac{1}{R_{2}} = \\dfrac{1}{R} + \\dfrac{1}{R} = \\dfrac{2}{R}\\)\nHence\n\\(P = \\dfrac{1}{f} = \\dfrac{2(n - 1)}{R}\\)\nThe power of the lens is \\(\\dfrac{2(n-1)}{R}\\).\nThe commonest slip is to treat both radii as positive, which turns the sum into a difference and makes the power vanish; the factor of 2 exists precisely because BOTH surfaces bend the light the same way."
+  },
+  {
+   "hash": "2bbbba822ab8f1cb5c8585a716345de6defdd9db5e199c20792378816b580df1",
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "A double-convex lens of power P, with each face having same radius of curvature, is cut into two equal parts perpendicular to its principal axis. The power of one part of the lens will be :",
+   "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "2P"
+    },
+    {
+     "label": "B",
+     "text": "P"
+    },
+    {
+     "label": "C",
+     "text": "4P"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mathrm{P}}{2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Cutting the lens PERPENDICULAR to its principal axis slices it into two plano-convex halves: each keeps one of the original curved faces, and the fresh cut leaves a FLAT face.\nApply the lens maker's formula to one such half, with one surface of radius R and one flat:\n\\(\\dfrac{1}{f'} = (n - 1)\\left[\\dfrac{1}{R} - \\dfrac{1}{\\infty}\\right] = \\dfrac{(n - 1)}{R}\\)\nComparing with the whole lens, whose power was \\(P = \\dfrac{2(n-1)}{R}\\):\n\\(P' = \\dfrac{(n - 1)}{R} = \\dfrac{P}{2}\\)\nThe power of one part is \\(\\dfrac{P}{2}\\).\nEach half has lost one of the two refracting surfaces, so it bends light half as strongly and its focal length doubles. This is the one way of cutting a lens that DOES change its power, which is what makes the contrast with the next parts worth drawing."
+  },
+  {
+   "hash": "9a6687222eaae15272226b5b9ed04376bf1c7871c72ba3eed796f98d11de6dfd",
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "The above two parts are kept in contact with each other as shown in the figure. The power of the combination will be :",
+   "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\mathrm{P}}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "P"
+    },
+    {
+     "label": "C",
+     "text": "2P"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mathrm{P}}{4}\\)"
+    }
+   ],
+   "answer": "B",
+   "figureNote": "REQUIRED — the stem says only “as shown in the figure”, so the arrangement of the two cut halves IS the question. Described: a horizontal principal axis with two curved lens elements drawn on it. Withheld: how the two halves are oriented and abutted, which is exactly what discriminates the four options. Page idx 16.",
+   "imageAttached": false,
+   "solution": "Each half is a plano-convex lens of power \\(\\dfrac{P}{2}\\), from the previous part. The figure shows them brought back together on a common axis with their FLAT faces in contact, so that the two curved surfaces again face outwards.\nThin lenses in contact simply add their powers:\n\\(P_{comb} = \\dfrac{P}{2} + \\dfrac{P}{2} = P\\)\nThe power of the combination is P.\nThe result should be no surprise: putting the two halves back together reconstitutes the original double-convex lens, apart from the invisible join, so it must behave exactly as the original did. What the question is really testing is whether the additive rule for powers reproduces that obvious physical fact, and it does."
+  },
+  {
+   "hash": "e85d7a7f01e587c7f815767451709cc9a7646828892163a58a0f1a5d40a05dcc",
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "A double-convex lens of power P, with each face having same radius of curvature, is cut along its principal axis. The two parts are arranged as shown in the figure. The power of the combination will be :",
+   "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Zero"
+    },
+    {
+     "label": "B",
+     "text": "P"
+    },
+    {
+     "label": "C",
+     "text": "2P"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mathrm{P}}{2}\\)"
+    }
+   ],
+   "answer": "C",
+   "figureNote": "REQUIRED — the stem says only “as shown in the figure”, so the arrangement of the two axially-cut halves IS the question. Described: a horizontal line with two curved elements drawn above it, side by side. Withheld: their relative orientation and whether they lie on a common axis, which is what the options discriminate. Page idx 16.",
+   "imageAttached": false,
+   "solution": "Cutting the lens ALONG its principal axis is quite different from cutting across it. Each half keeps BOTH of the original curved surfaces, with their full radii of curvature; all that is lost is half the aperture.\nThe lens maker's formula contains only the refractive index and the two radii, and nothing about the width of the lens, so each half has the SAME focal length as the original and therefore the same power P. A half-lens simply gathers less light; it does not bend it less.\nThe figure then places the two halves one AFTER the other along the common axis, so light travelling along the axis passes through BOTH in succession. For elements in series the powers add:\n\\(P_{comb} = P + P = 2P\\)\nThe power of the combination is 2P.\nThe whole question turns on the arrangement drawn, which is why the figure matters: laid SIDE BY SIDE across the beam, so that any given ray passed through only one of them, the same two halves would give a combination of power P."
+  },
+  {
+   "hash": "20c9b4a91c96f0601624f97694b2a72d2fe24f51beb38faf43b2baa94972a566",
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "Two convex lenses of focal lengths 60 cm and 20 cm are held coaxially in contact with each other. The power of the combination is :",
+   "context": "A lens is a transparent medium bounded by two surfaces, with one or both surfaces being spherical. The focal length of a lens is determined by the radii of curvature of its two surfaces and the refractive index of its medium with respect to that of the surrounding medium. The power of a lens is reciprocal of its focal length. If a number of lenses are kept in contact, the power of the combination is the algebraic sum of the powers of the individual lenses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(6{\\cdot}6\\) D"
+    },
+    {
+     "label": "B",
+     "text": "15 D"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{15}\\) D"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{80}\\) D"
+    }
+   ],
+   "answer": "A",
+   "solution": "The power of a lens in dioptres is the reciprocal of its focal length IN METRES, so convert first:\n\\(f_{1} = 60\\ \\mathrm{cm} = 0{\\cdot}6\\ \\mathrm{m}, \\qquad f_{2} = 20\\ \\mathrm{cm} = 0{\\cdot}2\\ \\mathrm{m}\\)\n\\(P_{1} = \\dfrac{1}{0{\\cdot}6} = 1{\\cdot}67\\ \\mathrm{D}, \\qquad P_{2} = \\dfrac{1}{0{\\cdot}2} = 5\\ \\mathrm{D}\\)\nFor thin lenses in CONTACT the powers add:\n\\(P = P_{1} + P_{2} = 1{\\cdot}67 + 5 = 6{\\cdot}67 \\approx 6{\\cdot}6\\ \\mathrm{D}\\)\nThe power of the combination is about \\(6{\\cdot}6\\) D.\nBoth lenses are convex, so both powers are positive and the combination is stronger than either alone. Working in centimetres and forgetting to convert would give \\(\\dfrac{1}{15}\\), which is the focal length of the combination in metres rather than its power, and that is precisely the distractor offered."
+  },
+  {
+   "hash": "c334c71d0a89f684a9974e121018990c91e0ebf01c4b662c833cad6d8a2cbad8",
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "The root mean square value of an alternating voltage applied to a full-wave rectifier is \\(\\dfrac{\\mathrm{V}_0}{\\sqrt{2}}\\). Then the root mean square value of the rectified output voltage is :",
+   "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\mathrm{V}_0}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\mathrm{V}_0^2}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{2\\mathrm{V}_0}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\mathrm{V}_0}{2\\sqrt{2}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "A full-wave rectifier passes BOTH halves of the input cycle, inverting the negative half rather than discarding it. So the output waveform has the same magnitude at every instant as the input; only the SIGN of the negative half has been flipped.\nThe rms value is defined through the mean of the SQUARE of the waveform, and squaring is blind to sign:\n\\(V_{rms} = \\sqrt{\\overline{V^{2}}}\\)\nSince \\(V^{2}\\) is identical for the input and the rectified output at every instant, their rms values must be equal. Hence the rms value of the rectified output is the same as that of the input:\n\\(V_{rms} = \\dfrac{V_{0}}{\\sqrt{2}}\\)\nThis is a property of the FULL-wave rectifier specifically. A HALF-wave rectifier throws the negative half away, so half the squared waveform is replaced by zero, the mean square is halved and the rms output drops to \\(\\dfrac{V_{0}}{2}\\)."
+  },
+  {
+   "hash": "588840df5d77efd1e57208a0a3e132af157208bb50735ae030cf35185beac3a6",
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "In a full-wave rectifier, the current in each of the diodes flows for :",
+   "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Complete cycle of the input signal"
+    },
+    {
+     "label": "B",
+     "text": "Half cycle of the input signal"
+    },
+    {
+     "label": "C",
+     "text": "Less than half cycle of the input signal"
+    },
+    {
+     "label": "D",
+     "text": "Only for the positive half cycle of the input signal"
+    }
+   ],
+   "answer": "B",
+   "solution": "A full-wave rectifier built around a centre-tap transformer uses TWO diodes, and the two halves of the secondary are always in opposite phase with respect to the centre tap.\nDuring one half cycle the end connected to the first diode is positive with respect to the tap, so THAT diode is forward biased and conducts, while the other, being at a negative potential, is reverse biased and does not.\nDuring the next half cycle the polarities reverse, so the roles swap: the second diode conducts and the first does not.\nEach diode therefore carries current for HALF a cycle of the input signal, and they take alternate halves. Between them they deliver current to the load during the whole cycle, which is what makes the rectification full-wave even though neither diode conducts for more than half the time.\nAnswering \"complete cycle\" confuses what the CIRCUIT does with what each DIODE does; answering \"only the positive half\" would describe a half-wave rectifier, where the single diode is idle for the rest of the cycle."
+  },
+  {
+   "hash": "82fe6d95f39f963001106ede9243982498093a1c0f134f53f7c3f3ac73e3b85b",
+   "ref": "Q30iii",
+   "questionNumber": "30 (iii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "In a full-wave rectifier :",
+   "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both diodes are forward biased at the same time."
+    },
+    {
+     "label": "B",
+     "text": "Both diodes are reverse biased at the same time."
+    },
+    {
+     "label": "C",
+     "text": "One is forward biased and the other is reverse biased at the same time."
+    },
+    {
+     "label": "D",
+     "text": "Both are forward biased in the first half of the cycle and reverse biased in the second half of the cycle."
+    }
+   ],
+   "answer": "C",
+   "solution": "The two diodes are connected to opposite ends of the centre-tapped secondary, and those two ends are always in ANTIPHASE with respect to the tap. Whenever one end is positive, the other is necessarily negative.\nSo at any instant one diode finds its p-side at the higher potential and is FORWARD biased, while the other finds its p-side at the lower potential and is REVERSE biased. Half a cycle later the two exchange roles.\nThe two can never be forward biased together, nor reverse biased together, because that would require both ends of the secondary to be on the same side of the tap's potential at once, which the winding forbids. So one is forward biased and the other reverse biased at the same time.\nThis alternation is exactly the mechanism of full-wave rectification: the conducting diode always feeds the load from the same side, so the current through the load keeps one direction while the source reverses."
+  },
+  {
+   "hash": "fb04e70a71b951471e030913a9d5d4c6f4034529bb4d0a2157fe2c290e5ff069",
+   "ref": "Q30iva",
+   "questionNumber": "30 (iv) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "An alternating voltage of frequency of 50 Hz is applied to a half-wave rectifier. Then the ripple frequency of the output will be :",
+   "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
+   "options": [
+    {
+     "label": "A",
+     "text": "100 Hz"
+    },
+    {
+     "label": "B",
+     "text": "50 Hz"
+    },
+    {
+     "label": "C",
+     "text": "25 Hz"
+    },
+    {
+     "label": "D",
+     "text": "150 Hz"
+    }
+   ],
+   "answer": "B",
+   "solution": "The RIPPLE frequency is the frequency at which the rectified output rises and falls, that is the number of output pulses per second.\nA HALF-WAVE rectifier conducts during only one half of each input cycle and is idle during the other. So for every complete cycle of the input there is exactly ONE pulse of output. The output therefore repeats at the same rate as the input:\n\\(\\nu_{ripple} = \\nu_{input} = 50\\ \\mathrm{Hz}\\)\nThe ripple frequency is 50 Hz.\nA FULL-WAVE rectifier would give two pulses per input cycle, hence 100 Hz, and that is the distractor here. The higher ripple frequency is one of the practical advantages of full-wave rectification: faster ripple is easier to smooth, since a filter capacitor of given size has less time to discharge between pulses."
+  },
+  {
+   "hash": "3bd58249d9a32c7576beac3eea77b98cc01dd757c04fe92fb74f153dce1a3a6e",
+   "ref": "Q30ivb",
+   "questionNumber": "30 (iv) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "Application of Junction Diode as a Rectifier",
+   "stem": "A signal, as shown in the figure, is applied to a p-n junction diode. Identify the output across resistance \\(\\mathrm{R_L}\\) :",
+   "context": "Junction Diode as a Rectifier :\nThe process of conversion of an ac voltage into a dc voltage is called rectification and the device which performs this conversion is called a rectifier. The characteristics of a p-n junction diode reveal that when a p-n junction diode is forward biased, it offers a low resistance and when it is reverse biased, it offers a high resistance. Hence, a p-n junction diode conducts only when it is forward biased. This property of a p-n junction diode makes it suitable for its use as a rectifier.\nThus, when an ac voltage is applied across a p-n junction, it conducts only during those alternate half cycles for which it is forward biased. A rectifier which rectifies only half cycle of an ac voltage is called a half-wave rectifier and one that rectifies both the half cycles is known as a full-wave rectifier.",
+   "options": [
+    {
+     "label": "A",
+     "text": "10 V"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\) 10 V"
+    },
+    {
+     "label": "C",
+     "text": "\\(-\\) 5 V"
+    },
+    {
+     "label": "D",
+     "text": "\\(+\\) 5 V"
+    }
+   ],
+   "answer": "D",
+   "figureNote": "REQUIRED — and doubly so: the INPUT signal and the CIRCUIT are both drawn (a square wave annotated + 5 V and − 5 V, beside a diode in series with a resistor labelled R_L across the output terminals), and all FOUR OPTIONS are themselves drawn waveforms. The option text transcribed above is the only text printed beside each option — its voltage-level annotation; the pulse shape and polarity are drawing-only. Described: that the input is a square wave swinging between the two annotated levels and that the circuit is a single diode in series with R_L. Withheld: the diode's orientation relative to the output terminals, which is what decides which option is the output. Page idx 20.",
+   "imageAttached": true,
+   "solution": "A junction diode conducts only when FORWARD biased, and blocks when reverse biased. So the output across the load resistance reproduces whichever part of the input signal drives the diode into conduction, and is zero for the rest.\nFrom the figure the input signal swings between \\(+5\\) V and \\(-10\\) V. Of these, the portion that forward biases the diode is the POSITIVE part, which appears across \\(R_{L}\\); during the negative part the diode is reverse biased, no appreciable current flows, and the output falls to zero.\nSo the output across \\(R_{L}\\) is a series of \\(+5\\) V pulses.\nThe diode has acted as a half-wave rectifier for this waveform: it has clipped the \\(-10\\) V excursion away entirely and passed only the \\(+5\\) V one, which is why the larger of the two amplitudes is the one that does NOT appear in the output."
+  },
+  {
+   "hash": "028045f65f60355a4c007b1b685a4e473fa400238378c00080cb14bc81d62cbd",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Potential Energy of a System of Charges",
+   "stem": "(i) Derive an expression for potential energy of an electric dipole \\(\\vec{p}\\) in an external uniform electric field \\(\\vec{\\mathrm{E}}\\). When is the potential energy of the dipole (1) maximum, and (2) minimum ?\n(ii) An electric dipole consists of point charges \\(- 1{\\cdot}0\\) pC and \\(+ 1{\\cdot}0\\) pC located at (0, 0) and (3 mm, 4 mm) respectively in \\(x - y\\) plane. An electric field \\(\\vec{\\mathrm{E}} = \\left(\\dfrac{1000\\ \\mathrm{V}}{\\mathrm{m}}\\right)\\hat{i}\\) is switched on in the region. Find the torque \\(\\vec{\\tau}\\) acting on the dipole.",
+   "solution": "(i) POTENTIAL ENERGY OF A DIPOLE IN A UNIFORM FIELD.\nA dipole \\(\\vec{p}\\) at an angle \\(\\theta\\) to a uniform field \\(\\vec{E}\\) experiences a torque of magnitude \\(pE\\sin\\theta\\), which tries to align it with the field. To turn it further, an external agent must apply an equal and opposite torque and do work against the field.\nThe work done in rotating the dipole from \\(\\theta_{0}\\) to \\(\\theta_{1}\\) is therefore\n\\(W = \\int_{\\theta_{0}}^{\\theta_{1}} \\tau_{ext}\\,d\\theta = \\int_{\\theta_{0}}^{\\theta_{1}} pE\\sin\\theta\\,d\\theta\\)\n\\(W = pE\\left[\\cos\\theta_{0} - \\cos\\theta_{1}\\right]\\)\nThis work is stored as potential energy. Choosing the zero of energy at \\(\\theta_{0} = \\dfrac{\\pi}{2}\\), where the dipole is perpendicular to the field, and writing \\(\\theta_{1} = \\theta\\):\n\\(U(\\theta) = pE\\left[\\cos\\dfrac{\\pi}{2} - \\cos\\theta\\right] = -pE\\cos\\theta\\)\n\\(U = -\\vec{p} \\cdot \\vec{E}\\)\n(1) MAXIMUM potential energy occurs when \\(\\cos\\theta = -1\\), that is \\(\\theta = 180^{\\circ}\\): the dipole is ANTIPARALLEL to the field, and \\(U = +pE\\). This is the unstable orientation, from which the least disturbance sends it swinging round.\n(2) MINIMUM potential energy occurs when \\(\\cos\\theta = +1\\), that is \\(\\theta = 0^{\\circ}\\): the dipole is ALONG the field, and \\(U = -pE\\). This is the stable orientation, which is why dipoles align with an applied field.\n(ii) Locate the dipole first. The charges sit at \\((0, 0)\\) and \\((3\\ \\mathrm{mm}, 4\\ \\mathrm{mm})\\), so the separation is the hypotenuse of a 3-4-5 triangle:\n\\(2a = \\sqrt{3^{2} + 4^{2}} = 5\\ \\mathrm{mm} = 5 \\times 10^{-3}\\ \\mathrm{m}\\)\n\\(p = q(2a) = 1{\\cdot}0 \\times 10^{-12} \\times 5 \\times 10^{-3} = 5 \\times 10^{-15}\\ \\mathrm{C\\,m}\\)\nThe dipole moment points from the negative charge to the positive one, that is along \\((3\\hat{i} + 4\\hat{j})\\), while the field is along \\(\\hat{i}\\). The angle \\(\\theta\\) between them therefore has\n\\(\\sin\\theta = \\dfrac{4}{5}\\)\nHence\n\\(\\tau = pE\\sin\\theta = \\left(5 \\times 10^{-15}\\right)\\left(10^{3}\\right)\\left(\\dfrac{4}{5}\\right)\\)\n\\(\\tau = 4 \\times 10^{-12}\\ \\mathrm{N\\,m}\\)\nDIRECTION. The torque is \\(\\vec{p} \\times \\vec{E}\\), and \\((3\\hat{i} + 4\\hat{j}) \\times \\hat{i} = 4(\\hat{j} \\times \\hat{i}) = -4\\hat{k}\\), so the torque is along the NEGATIVE z-direction, perpendicular to the plane containing the dipole and the field."
+  },
+  {
+   "hash": "a3d71347351350d064de56a79a1d2b7c7336a23e428358e397ccf5714d6bd042",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+   "stem": "(i) An electric dipole (dipole moment \\(\\vec{p} = p\\,\\hat{i}\\)), consisting of charges \\(- q\\) and q, separated by distance 2a, is placed along the x-axis, with its centre at the origin. Show that the potential V, due to this dipole, at a point x, (x >> a) is equal to \\(\\dfrac{1}{4\\pi\\varepsilon_0} \\cdot \\dfrac{\\vec{p} \\cdot \\hat{i}}{x^2}\\).\n(ii) Two isolated metallic spheres \\(\\mathrm{S_1}\\) and \\(\\mathrm{S_2}\\) of radii 1 cm and 3 cm respectively are charged such that both have the same charge density \\(\\left(\\dfrac{2}{\\pi} \\times 10^{-9}\\right) \\mathrm{C/m^2}\\). They are placed far away from each other and connected by a thin wire. Calculate the new charge on sphere \\(\\mathrm{S_1}\\).",
+   "solution": "(i) Place the dipole along the x-axis with its centre at the origin, so that \\(-q\\) sits at \\(x = -a\\) and \\(+q\\) at \\(x = +a\\). Take the point P on the axis at a distance x from the centre, beyond the positive charge.\nIts distances from the two charges are \\((x - a)\\) and \\((x + a)\\). Potential is a SCALAR, so the two contributions simply add, with their signs:\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\left[\\dfrac{q}{(x - a)} - \\dfrac{q}{(x + a)}\\right]\\)\n\\(V = \\dfrac{q}{4\\pi\\varepsilon_{0}}\\left[\\dfrac{(x + a) - (x - a)}{x^{2} - a^{2}}\\right] = \\dfrac{q}{4\\pi\\varepsilon_{0}}\\cdot\\dfrac{2a}{x^{2} - a^{2}}\\)\nSince \\(p = q(2a)\\),\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\cdot\\dfrac{p}{x^{2} - a^{2}}\\)\nNow apply the condition \\(x \\gg a\\), so that \\(a^{2}\\) is negligible beside \\(x^{2}\\):\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\cdot\\dfrac{p}{x^{2}}\\)\nand since \\(\\vec{p} = p\\hat{i}\\) lies along the axis, \\(p = \\vec{p} \\cdot \\hat{i}\\), giving the required form\n\\(V = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\cdot\\dfrac{\\vec{p} \\cdot \\hat{i}}{x^{2}}\\)\nThe potential falls off as \\(\\dfrac{1}{x^{2}}\\), one power faster than that of a single charge, because the two charges nearly cancel at a distance.\n(ii) CHARGE ON EACH SPHERE, from \\(Q = \\sigma \\times 4\\pi r^{2}\\) with \\(\\sigma = \\dfrac{2}{\\pi} \\times 10^{-9}\\ \\mathrm{C\\,m^{-2}}\\):\n\\(Q_{1} = \\dfrac{2}{\\pi} \\times 10^{-9} \\times 4\\pi\\left(1 \\times 10^{-2}\\right)^{2} = 8 \\times 10^{-13}\\ \\mathrm{C}\\)\n\\(Q_{2} = \\dfrac{2}{\\pi} \\times 10^{-9} \\times 4\\pi\\left(3 \\times 10^{-2}\\right)^{2} = 72 \\times 10^{-13}\\ \\mathrm{C}\\)\nCONNECTING THEM. Joined by a thin wire they form one conductor, so charge flows until both reach a COMMON POTENTIAL V, while the total charge is conserved. The capacitance of an isolated sphere is \\(C = 4\\pi\\varepsilon_{0}r\\):\n\\(C_{1} = \\dfrac{1 \\times 10^{-2}}{9 \\times 10^{9}} = \\dfrac{1}{9} \\times 10^{-11}\\ \\mathrm{F}, \\qquad C_{2} = \\dfrac{3 \\times 10^{-2}}{9 \\times 10^{9}} = \\dfrac{1}{3} \\times 10^{-11}\\ \\mathrm{F}\\)\n\\(V = \\dfrac{Q_{1} + Q_{2}}{C_{1} + C_{2}} = \\dfrac{80 \\times 10^{-13}}{\\left(\\dfrac{1}{9} + \\dfrac{1}{3}\\right) \\times 10^{-11}} = 1{\\cdot}8\\ \\mathrm{V}\\)\nNEW CHARGE ON \\(S_{1}\\):\n\\(Q_{1}' = C_{1}V = \\dfrac{1}{9} \\times 10^{-11} \\times 1{\\cdot}8 = 2 \\times 10^{-12}\\ \\mathrm{C}\\)\nThe smaller sphere ends up with \\(2 \\times 10^{-12}\\) C, having GAINED charge, since it started with only \\(0{\\cdot}8 \\times 10^{-12}\\) C. Charge flows from the larger sphere to the smaller one because the larger began at the higher potential, \\(V = \\dfrac{Q}{4\\pi\\varepsilon_{0}r}\\) being larger for it despite both sharing a surface density."
+  },
+  {
+   "hash": "0cdc1eb74895b49aa7e2eae5267b3250b47bd54ada0f7a0a1390039469b5d2a1",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Series LCR Circuit and Resonance",
+   "stem": "(i) A resistor and a capacitor are connected in series to an ac source \\(v = v_m \\sin \\omega t\\). Derive an expression for the impedance of the circuit.\n(ii) When does an inductor act as a conductor in a circuit ? Give reason for it.\n(iii) An electric lamp is designed to operate at 110 V dc and 11 A current. If the lamp is operated on 220 V, 50 Hz ac source with a coil in series, then find the inductance of the coil.",
+   "solution": "(i) IMPEDANCE OF A SERIES RC CIRCUIT. The same current \\(i = i_{m}\\sin(\\omega t + \\phi)\\) flows through both elements, so take it as the reference phasor.\nThe voltage across the RESISTOR is in phase with the current, of amplitude \\(v_{Rm} = i_{m}R\\). The voltage across the CAPACITOR lags the current by a quarter cycle, of amplitude \\(v_{Cm} = i_{m}X_{C}\\). The two phasors are therefore at RIGHT ANGLES, and the applied voltage is their vector sum, not their arithmetic sum:\n\\(v_{m}^{2} = v_{Rm}^{2} + v_{Cm}^{2}\\)\n\\(v_{m}^{2} = (i_{m}R)^{2} + (i_{m}X_{C})^{2} = i_{m}^{2}\\left[R^{2} + X_{C}^{2}\\right]\\)\n\\(i_{m} = \\dfrac{v_{m}}{\\sqrt{R^{2} + X_{C}^{2}}}\\)\nso that the impedance, the ratio of voltage amplitude to current amplitude, is\n\\(Z = \\sqrt{R^{2} + X_{C}^{2}}, \\qquad X_{C} = \\dfrac{1}{\\omega C}\\)\n(ii) WHEN AN INDUCTOR ACTS AS A CONDUCTOR. For DIRECT CURRENT. The inductive reactance is\n\\(X_{L} = \\omega L = 2\\pi\\nu L\\)\nand for dc the frequency is zero, so \\(X_{L} = 0\\) and the inductor offers only the small resistance of its own winding.\nThe reason, put physically: an inductor opposes only CHANGE. The induced emf is \\(\\varepsilon = -L\\dfrac{dI}{dt}\\), and once a direct current has become steady, \\(\\dfrac{dI}{dt} = 0\\), so no back emf is generated and nothing obstructs the current.\n(iii) The lamp's own resistance follows from its dc rating:\n\\(R = \\dfrac{110}{11} = 10\\ \\Omega\\)\nOn the ac supply the lamp must still carry 11 A to operate normally, so the whole impedance must satisfy\n\\(i_{rms} = \\dfrac{v_{rms}}{\\sqrt{R^{2} + X_{L}^{2}}} \\quad\\Longrightarrow\\quad 11 = \\dfrac{220}{\\sqrt{100 + X_{L}^{2}}}\\)\n\\(\\sqrt{100 + X_{L}^{2}} = \\dfrac{220}{11} = 20 \\quad\\Longrightarrow\\quad 100 + X_{L}^{2} = 400\\)\n\\(X_{L}^{2} = 300 \\quad\\Longrightarrow\\quad X_{L} = 10\\sqrt{3}\\ \\Omega\\)\nFinally, from \\(X_{L} = 2\\pi\\nu L\\) with \\(\\nu = 50\\) Hz:\n\\(10\\sqrt{3} = 2\\pi \\times 50 \\times L \\quad\\Longrightarrow\\quad L = \\dfrac{\\sqrt{3}}{10\\pi}\\ \\mathrm{H} \\approx 0{\\cdot}055\\ \\mathrm{H}\\)\nA coil is used rather than a resistor because a pure inductance dissipates NO average power: it drops the excess voltage without wasting it as heat."
+  },
+  {
+   "hash": "10f79d359a75ff153a3de7ad5014630831326b4e51c402e87432bb67c4289a9a",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "stem": "(i) Draw a labelled diagram of a step-up transformer and describe its working principle. Explain any three causes for energy losses in a real transformer.\n(ii) A step-up transformer converts a low voltage into high voltage. Does it violate the principle of conservation of energy ? Explain.\n(iii) A step-up transformer has 200 and 3000 turns in its primary and secondary coils respectively. The input voltage given to the primary coil is 90 V. Calculate :\n(1) The output voltage across the secondary coil\n(2) The current in the primary coil if the current in the secondary coil is \\(2{\\cdot}0\\) A.",
+   "solution": "(i) CONSTRUCTION. A step-up transformer has two coils wound on a common LAMINATED SOFT-IRON core: the PRIMARY of \\(N_{P}\\) turns, to which the input is applied, and the SECONDARY of \\(N_{S}\\) turns, from which the output is taken, with \\(N_{S} > N_{P}\\). The coils are insulated from each other and may be wound one over the other or on separate limbs. Label the input terminals, the two windings and the core.\nWORKING PRINCIPLE: MUTUAL INDUCTION. An alternating voltage across the primary drives an alternating current, which sets up an alternating magnetic flux in the core. The core carries virtually all of that flux through the secondary, where the changing flux induces an emf. Nothing but flux passes between the coils. A transformer therefore works ONLY on ac; a steady current would give a constant flux and induce nothing.\nIf \\(\\phi\\) is the flux linked with each turn,\n\\(V_{P} = -N_{P}\\dfrac{d\\phi}{dt}, \\qquad V_{S} = -N_{S}\\dfrac{d\\phi}{dt} \\quad\\Longrightarrow\\quad \\dfrac{V_{S}}{V_{P}} = \\dfrac{N_{S}}{N_{P}}\\)\nTHREE CAUSES OF ENERGY LOSS:\nFLUX LEAKAGE, since not all the flux produced by the primary reaches the secondary. Reduced by winding one coil over the other on a well-designed core.\nCOPPER LOSS, the \\(I^{2}R\\) heating in the resistance of the windings. Reduced by using thick wire of low resistance.\nEDDY CURRENTS, circulating currents induced in the body of the core itself, which heat it. Reduced by LAMINATING the core so the currents are confined to thin insulated sheets.\n(A fourth, HYSTERESIS: the core is carried round a magnetisation loop every cycle, and the energy lost per cycle is the loop's area. Reduced by using a soft magnetic material with a narrow loop.)\n(ii) NO, IT DOES NOT VIOLATE CONSERVATION OF ENERGY. A transformer raises the voltage, but it does so at the cost of the CURRENT, which falls in the same proportion. For an ideal transformer\n\\(V_{P}I_{P} = V_{S}I_{S}\\)\nso the output POWER equals the input power and nothing has been created. A transformer is a device for redistributing voltage and current, not for generating energy; in a real transformer the output power is in fact slightly LESS than the input because of the losses listed above.\n(iii) (1) OUTPUT VOLTAGE:\n\\(V_{S} = \\dfrac{N_{S}}{N_{P}} \\times V_{P} = \\dfrac{3000}{200} \\times 90 = 1350\\ \\mathrm{V}\\)\n(2) PRIMARY CURRENT. Since \\(V_{P}I_{P} = V_{S}I_{S}\\), the current ratio is the INVERSE of the turns ratio:\n\\(I_{P} = \\dfrac{N_{S}}{N_{P}} \\times I_{S} = \\dfrac{3000}{200} \\times 2{\\cdot}0 = 30\\ \\mathrm{A}\\)\nThe voltage has been stepped UP fifteen times and the current stepped DOWN fifteen times, and the power is \\(90 \\times 30 = 1350 \\times 2 = 2700\\) W on both sides, exactly as part (ii) requires."
+  },
+  {
+   "hash": "68d6b9c7092bc71dfccf905be5e65d41bd9d302baf83b21a49f41fedb0c7caae",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction Through a Prism",
+   "stem": "(i) A ray of light passes through a triangular prism. Show graphically, how the angle of deviation varies with the angle of incidence ? Hence define the angle of minimum deviation.\n(ii) A ray of light is incident normally on a refracting face of a prism of prism angle A and suffers a deviation of angle \\(\\delta\\). Prove that the refractive index n of the material of the prism is given by \\(n = \\dfrac{\\sin\\,(\\mathrm{A} + \\delta)}{\\sin \\mathrm{A}}\\).\n(iii) The refractive index of the material of a prism is \\(\\sqrt{2}\\). If the refracting angle of the prism is 60°, find the\n(1) Angle of minimum deviation, and\n(2) Angle of incidence.",
+   "solution": "(i) GRAPH. Plot the angle of deviation \\(\\delta\\) against the angle of incidence i. The curve falls steeply from a high value at grazing incidence, passes through a MINIMUM, and then rises again. It is not symmetric in shape but it has one lowest point, and for every deviation above that minimum there are TWO angles of incidence that produce it, i and e interchanged.\nDEFINITION. The ANGLE OF MINIMUM DEVIATION \\(\\delta_{m}\\) is the smallest angle through which a ray can be deviated by the prism. It occurs at the single angle of incidence for which the ray passes SYMMETRICALLY through the prism, so that the angle of incidence equals the angle of emergence, \\(i = e\\), and the refracted ray inside runs parallel to the base.\n(ii) PROOF FOR NORMAL INCIDENCE. Let the ray strike face XY normally. It enters undeviated and travels to the second face XZ, meeting it at N with an angle of incidence i inside the glass.\nIn the triangle formed by the prism's apex X and the two points where the ray meets the faces, the angles are A at the apex, \\(90^{\\circ}\\) where the ray crossed the first face normally, and \\((90^{\\circ} - i)\\) at N:\n\\(A + (90^{\\circ} - i) + 90^{\\circ} = 180^{\\circ} \\quad\\Longrightarrow\\quad A = i \\qquad\\text{...(1)}\\)\nAt the face XZ the ray emerges into air at an angle r, and from the geometry of the deviation\n\\(r = i + \\delta \\qquad\\text{...(2)}\\)\nSnell's law at that face, going from glass into air, reads\n\\(n\\sin i = 1 \\times \\sin r \\qquad\\text{...(3)}\\)\nSubstituting (1) and (2) into (3):\n\\(n\\sin A = \\sin(A + \\delta)\\)\n\\(n = \\dfrac{\\sin(A + \\delta)}{\\sin A}\\)\n(iii) With \\(n = \\sqrt{2}\\) and \\(A = 60^{\\circ}\\), use the general minimum-deviation formula:\n\\(n = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_{m}}{2}\\right)}{\\sin\\dfrac{A}{2}}\\)\n\\(\\sqrt{2} = \\dfrac{\\sin\\left(\\dfrac{60^{\\circ} + \\delta_{m}}{2}\\right)}{\\sin 30^{\\circ}} \\quad\\Longrightarrow\\quad \\sin\\left(\\dfrac{60^{\\circ} + \\delta_{m}}{2}\\right) = \\dfrac{\\sqrt{2}}{2} = \\dfrac{1}{\\sqrt{2}} = \\sin 45^{\\circ}\\)\n(1) ANGLE OF MINIMUM DEVIATION:\n\\(\\dfrac{60^{\\circ} + \\delta_{m}}{2} = 45^{\\circ} \\quad\\Longrightarrow\\quad \\delta_{m} = 30^{\\circ}\\)\n(2) ANGLE OF INCIDENCE. At minimum deviation the path is symmetric, so \\(i = e\\) and \\(i + e = A + \\delta_{m}\\):\n\\(i = \\dfrac{A + \\delta_{m}}{2} = \\dfrac{60^{\\circ} + 30^{\\circ}}{2} = 45^{\\circ}\\)"
+  },
+  {
+   "hash": "99ee404feaa878d66005a00b6c0e4fae0ab196eaacc7e105a6c3ea6964bb8133",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Huygens Principle",
+   "stem": "(i) State Huygens' principle. A plane wave is incident at an angle i on a reflecting surface. Construct the corresponding reflected wavefront. Using this diagram, prove that the angle of reflection is equal to the angle of incidence.\n(ii) What are the coherent sources of light ? Can two independent sodium lamps act like coherent sources ? Explain.\n(iii) A beam of light consisting of a known wavelength 520 nm and an unknown wavelength \\(\\lambda\\), used in Young's double slit experiment produces two interference patterns such that the fourth bright fringe of unknown wavelength coincides with the fifth bright fringe of known wavelength. Find the value of \\(\\lambda\\).",
+   "solution": "(i) HUYGENS' PRINCIPLE states that every point on a wavefront acts as a source of secondary wavelets which spread out in all directions with the speed of the wave, and that the new wavefront at any later instant is the common TANGENT, or envelope, to all these secondary wavelets.\nCONSTRUCTION AND PROOF. Let a plane wavefront AB travel in a medium and strike a reflecting surface at an angle i, meeting it first at A. Let the far end B take a time \\(\\tau\\) to reach the surface at C, so that\n\\(BC = v\\tau\\)\nDuring that same time \\(\\tau\\), the wavelet that started at A has spread back into the SAME medium, so it travels the same distance:\n\\(AE = v\\tau\\)\nDraw a sphere of radius \\(v\\tau\\) about A and the tangent to it from C. That tangent, CE, is the reflected wavefront, and the reflected rays are perpendicular to it, making an angle r with the normal.\nNow compare the two right-angled triangles ABC and AEC. They share the hypotenuse AC, and\n\\(BC = AE = v\\tau\\)\nso the triangles are CONGRUENT. Hence the angles opposite these equal sides are equal:\n\\(\\angle BAC = \\angle ECA \\quad\\Longrightarrow\\quad i = r\\)\nThe angle of reflection equals the angle of incidence, which is the law of reflection.\n(ii) COHERENT SOURCES are two sources emitting waves of the SAME frequency with a CONSTANT phase difference between them that does not change with time.\nCAN TWO SODIUM LAMPS BE COHERENT? NO. Although two sodium lamps emit light of the same wavelength, the light comes from countless independent atoms, each radiating a wave train lasting only about \\(10^{-8}\\) s before it stops and another begins with an unrelated phase. The phase difference between two separate lamps therefore changes randomly millions of times a second. Any fringe pattern shifts with it far faster than the eye or a detector can follow, so what is observed is the AVERAGE, a uniform illumination. This is why Young's arrangement derives both beams from a SINGLE source: the two then share the same phase fluctuations and their difference stays constant.\n(iii) The two patterns are formed with the same slit separation and the same screen distance, so in\n\\(x_{n} = \\dfrac{n\\lambda D}{d}\\)\nonly n and \\(\\lambda\\) differ. The fringes coincide when they sit at the same distance from the centre:\n\\(4\\lambda = 5 \\times 520\\ \\mathrm{nm}\\)\n\\(\\lambda = \\dfrac{5 \\times 520}{4} = 650\\ \\mathrm{nm}\\)\nThe unknown wavelength is 650 nm. It comes out LONGER than the known one, as it must: a smaller fringe order reaching the same point means the fringes are more widely spaced, and fringe width is proportional to wavelength."
+  }
+ ]
+}
