@@ -1,0 +1,228 @@
+{
+  "paper": "55/3/2",
+  "year": 2024,
+  "paperId": "2024-55-3-2",
+  "markingScheme": "out/2024-55-3-2/ms/p00.png … p14.png",
+  "rows": [
+    {
+      "hash": "8aaed9622ef979c6882bbdb7c1a935bae96fe22270706fd245c4b888b9b8dcc2",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatics of Conductors and Dielectrics",
+      "stem": "An isolated conductor, with a cavity, has a net charge +Q. A point charge +q is inside the cavity. The charges on the cavity wall and the outer surface are respectively :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0 and Q"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\,q\\) and Q \\(-\\) q"
+        },
+        {
+          "label": "C",
+          "text": "\\(-\\,q\\) and Q + q"
+        },
+        {
+          "label": "D",
+          "text": "0 and Q \\(-\\) q"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(-q\\) on the cavity wall and \\(Q + q\\) on the outer surface.**\n\n**The one principle that decides everything:** the electric field **inside the body of a conductor is zero** in electrostatic equilibrium. Everything else follows from applying Gauss's law with that fact.\n\n**Step 1 — the cavity wall.**\n\nDraw a Gaussian surface **entirely within the metal**, enclosing the cavity. Since \\(\\vec{E} = 0\\) everywhere on it, the flux is zero, and Gauss's law gives\n\n\\(q_{\\text{enclosed}} = 0\\)\n\nThe surface encloses the point charge \\(+q\\) **and** the cavity wall, so\n\n\\(+q + q_{\\text{wall}} = 0 \\qquad\\Longrightarrow\\qquad q_{\\text{wall}} = -q\\)\n\n**Step 2 — the outer surface.**\n\nThe conductor's **total** charge is \\(+Q\\), and all of it resides on its surfaces:\n\n\\(q_{\\text{wall}} + q_{\\text{outer}} = Q\\)\n\n\\(-q + q_{\\text{outer}} = Q \\qquad\\Longrightarrow\\qquad q_{\\text{outer}} = Q + q\\)\n\n**Note the sign carefully** — this is where the distractors live. The outer surface carries \\(Q + q\\), **not** \\(Q - q\\): the conductor had to put \\(-q\\) on the inner wall, so the compensating \\(+q\\) is pushed *out*, and the outer surface ends up with more than the conductor's net charge.\n\n**A cleaner way to see it.** The induced charges must sum to zero overall, since none was added: \\(-q\\) appears on the cavity wall and \\(+q\\) on the outer surface. The conductor's own \\(Q\\) then simply adds to the outer surface, which is the only place left for it.\n\n**What this means physically — electrostatic shielding.** Outside the conductor, the field is that of a total charge \\(Q + q\\) distributed on the outer surface, and it is **completely insensitive to where inside the cavity the charge \\(q\\) sits**. Move \\(q\\) about inside and the outer field does not flicker. The conductor screens the outside world from the *details* of the interior — though not from the *total* charge, which always shows.\n\nThis is the principle of a Faraday cage, and the reason a sensitive instrument is placed inside a metal enclosure."
+    },
+    {
+      "hash": "dce77210a7b9d89b054a48843621bb88a5fcffbd3877c9ae08760ca3aaac513c",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Force Between Parallel Currents",
+      "stem": "Two thin long parallel wires separated by a distance 'a' carry current 'I' in opposite directions. The wires will :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Repel each other with a force \\(\\dfrac{\\mu_0 I^2}{2\\pi a^2}\\), per unit length."
+        },
+        {
+          "label": "B",
+          "text": "Attract each other with a force \\(\\dfrac{\\mu_0 I^2}{2\\pi a^2}\\), per unit length."
+        },
+        {
+          "label": "C",
+          "text": "Attract each other with a force \\(\\dfrac{\\mu_0 I^2}{2\\pi a}\\), per unit length."
+        },
+        {
+          "label": "D",
+          "text": "Repel each other with a force \\(\\dfrac{\\mu_0 I^2}{2\\pi a}\\), per unit length."
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): they repel, with a force \\(\\dfrac{\\mu_0 I^{2}}{2\\pi a}\\) per unit length.**\n\n**The two things to get right are the formula and the sign.**\n\n**The magnitude.** The first wire produces a field at the second:\n\n\\(B = \\dfrac{\\mu_0 I}{2\\pi a}\\)\n\nand the second wire, carrying current \\(I\\) in that field, feels \\(F = BIl\\). Per unit length:\n\n\\(\\dfrac{F}{l} = \\dfrac{\\mu_0 I^{2}}{2\\pi a}\\)\n\n**The \\(a\\) is to the FIRST power.** The field of a long straight wire falls as \\(1/a\\), not \\(1/a^{2}\\) — a line source, not a point source — so the two options with \\(a^{2}\\) are wrong on structure and can be eliminated at a glance. They also fail dimensionally.\n\n**The direction: REPULSION.** Parallel currents attract; **antiparallel currents repel**. The stem specifies opposite directions, so the wires push apart.\n\n*The right-hand rule twice.* The field of the first wire at the location of the second points one way; because the second wire's current runs the **opposite** way, the force \\(I\\vec{l} \\times \\vec{B}\\) comes out directed **away** from the first wire. Doing the same for the force on the first gives a force away from the second, as Newton's third law requires.\n\n**A memory hook that survives:** *like currents attract, unlike currents repel* — the exact opposite of the rule for electric charges. It is not an inconsistency but a different kind of interaction: the magnetic force depends on the relative **motion** of charge, not on charge itself.\n\n**Why this equation matters historically.** It defined the **ampere** until 2019: two infinitely long parallel wires one metre apart, each carrying one ampere, attract with exactly \\(2 \\times 10^{-7}\\ \\mathrm{N}\\) per metre — which is \\(\\mu_0/2\\pi\\). That is why \\(\\mu_0\\) had the exact value \\(4\\pi \\times 10^{-7}\\) for so long: it was not measured but **assigned**, by this very definition."
+    },
+    {
+      "hash": "fff9d8aa2bb13530428dbf082787457c542cd938f04468e2956fa3495dbfc8b3",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "The mutual inductance of two coils \\(C_1\\) and \\(C_2\\) is 20 mH. In coil \\(C_1\\), the current changes from 4 A to zero in \\(0{\\cdot}2\\) s. If the resistance of coil \\(C_2\\) is 4 \\(\\Omega\\), then the charge that flows through it per second will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(4{\\cdot}0\\) C"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}5\\) C"
+        },
+        {
+          "label": "C",
+          "text": "\\(0{\\cdot}05\\) C"
+        },
+        {
+          "label": "D",
+          "text": "\\(0{\\cdot}1\\) C"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(0{\\cdot}1\\) C.**\n\n**Step 1 — the induced emf.** A changing current in \\(C_1\\) induces an emf in \\(C_2\\) through their mutual inductance:\n\n\\(\\varepsilon = M\\left|\\dfrac{dI_1}{dt}\\right|\\)\n\nThe current falls from \\(4\\) A to zero in \\(0{\\cdot}2\\) s, so\n\n\\(\\left|\\dfrac{dI_1}{dt}\\right| = \\dfrac{4}{0{\\cdot}2} = 20\\ \\mathrm{A\\,s^{-1}}\\)\n\n\\(\\varepsilon = (20 \\times 10^{-3}) \\times 20 = 0{\\cdot}4\\ \\mathrm{V}\\)\n\n**Step 2 — the current in \\(C_2\\).**\n\n\\(I_2 = \\dfrac{\\varepsilon}{R} = \\dfrac{0{\\cdot}4}{4} = 0{\\cdot}1\\ \\mathrm{A}\\)\n\n**Step 3 — reading the question.** It asks for \"the charge that flows **per second**\", and charge per second **is** current:\n\n\\(\\boxed{\\ 0{\\cdot}1\\ \\mathrm{C\\ per\\ second}\\ }\\)\n\n**The phrasing is the whole difficulty.** \"Charge per second\" sounds like a new quantity but is simply the current in disguise, measured in coulombs per second rather than amperes — the two units being identical by definition.\n\n**The competing reading, and why it is not the one offered.** One might instead compute the **total** charge that flows during the \\(0{\\cdot}2\\) s:\n\n\\(q = \\int I_2\\,dt = \\dfrac{M\\,\\Delta I_1}{R} = \\dfrac{(20 \\times 10^{-3})(4)}{4} = 0{\\cdot}02\\ \\mathrm{C}\\)\n\na neat result in which the *time* cancels — the total charge depends only on the total **change** in current, not on how fast it happened. But \\(0{\\cdot}02\\) C is not among the options, which confirms that the \"per second\" is meant literally.\n\n**The result worth carrying from the alternative.** \\(q = M\\Delta I/R\\) is independent of the duration, which is why a **ballistic galvanometer** — which responds to total charge rather than to current — measures flux changes reliably however quickly or slowly they are made."
+    },
+    {
+      "hash": "8f1ebf28d01e8090ab66418c9a0ec0be76ac28bb0bc0b68bb634a7a647ea70e5",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Electromagnetic waves with frequency \\(1{\\cdot}0 \\times 10^{18}\\) Hz are known as :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Infrared rays"
+        },
+        {
+          "label": "B",
+          "text": "Ultraviolet rays"
+        },
+        {
+          "label": "C",
+          "text": "X-rays"
+        },
+        {
+          "label": "D",
+          "text": "Gamma rays"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): X-rays.**\n\n**Convert frequency to wavelength**, which is the form the spectrum is usually remembered in:\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}}{1{\\cdot}0 \\times 10^{18}} = 3 \\times 10^{-10}\\ \\mathrm{m} = 0{\\cdot}3\\ \\mathrm{nm} = 3\\ \\mathring{\\mathrm{A}}\\)\n\n**Placing it.**\n\n| Region | Wavelength |\n|---|---|\n| Ultraviolet | \\(4 \\times 10^{-7}\\) to \\(10^{-8}\\) m |\n| **X-rays** | \\(10^{-8}\\) to \\(10^{-12}\\) m |\n| Gamma rays | below \\(10^{-12}\\) m |\n\n\\(3 \\times 10^{-10}\\) m sits comfortably inside the X-ray band — about the size of an atom, and about two orders of magnitude below the shortest ultraviolet.\n\n**A check by photon energy.**\n\n\\(E = h\\nu = 6{\\cdot}63 \\times 10^{-34} \\times 10^{18} = 6{\\cdot}63 \\times 10^{-16}\\ \\mathrm{J} \\approx 4100\\ \\mathrm{eV} = 4{\\cdot}1\\ \\mathrm{keV}\\)\n\nA few keV is the classic X-ray energy — enough to **ionise** atoms and to penetrate soft tissue, which is what medical radiography relies on. Ultraviolet photons carry only a few eV, a thousand times less; gamma rays carry MeV, a thousand times more.\n\n**The X-ray / gamma-ray boundary is worth a word**, since their ranges overlap. The distinction is conventionally one of **origin**, not wavelength: radiation from **electronic** transitions or from electrons decelerating in a target is called X-rays, while radiation from **nuclear** transitions is called gamma rays. At \\(4\\) keV the origin could only be electronic, so X-rays is right on both counts.\n\n**Orientation.** \\(3\\ \\mathring{\\mathrm{A}}\\) is comparable to the spacing of atoms in a crystal, which is exactly why X-rays of this wavelength **diffract** from crystal lattices — the basis of X-ray crystallography and of how the structure of DNA was determined."
+    },
+    {
+      "hash": "a8cc1c294813eda47ac18659e235d65dfa51508223735319d54c06b2f64f5408",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The figure shows the variation of stopping potential \\(V_0\\) with frequency \\(\\nu\\) of incident radiation, for three materials \\(M_1\\), \\(M_2\\) and \\(M_3\\) with work functions \\(\\phi_1\\), \\(\\phi_2\\) and \\(\\phi_3\\) respectively. Then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\phi_1 > \\phi_2 > \\phi_3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\phi_2 > \\phi_3 > \\phi_1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\phi_3 > \\phi_2 > \\phi_1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\phi_2 > \\phi_1 > \\phi_3\\)"
+        }
+      ],
+      "answer": "C",
+      "figureNote": "REQUIRED — a single plot with the vertical axis labelled \\(V_0\\), the horizontal axis labelled \\(\\nu\\), the origin marked 0 and NO numerical scale on either axis. Three parallel straight lines of equal positive slope are drawn, each beginning on the \\(\\nu\\)-axis at a positive frequency, and each labelled at its upper end \\(M_1\\), \\(M_2\\) and \\(M_3\\). The stem names the three materials but says nothing about where their lines meet the \\(\\nu\\)-axis, and that ordering of intercepts IS what the options test, so the left-to-right arrangement of the three lines is deliberately withheld here. Page idx 8.",
+      "imageAttached": true,
+      "solution": "**The answer is (C): \\(\\phi_3 > \\phi_2 > \\phi_1\\).**\n\n**The equation of each line.** Einstein's photoelectric equation, divided by \\(e\\):\n\n\\(V_0 = \\left(\\dfrac{h}{e}\\right)\\nu - \\dfrac{\\phi}{e}\\)\n\nThis is \\(y = mx + c\\), so each material gives a **straight line** with\n\n\\(\\text{slope} = \\dfrac{h}{e} \\qquad\\text{and}\\qquad \\nu\\text{-intercept} = \\nu_0 = \\dfrac{\\phi}{h}\\)\n\n**The slope is the same for all three**, which the figure duly shows as three **parallel** lines — it contains only \\(h\\) and \\(e\\), no property of the metal whatever. Nothing can be read from the slopes, so all the information is in **where each line meets the \\(\\nu\\)-axis**.\n\n**Reading the intercepts.** From the figure, the lines cut the axis in the order \\(M_1\\), then \\(M_2\\), then \\(M_3\\) moving to the **right**:\n\n\\(\\nu_{01} < \\nu_{02} < \\nu_{03}\\)\n\n**Converting to work functions.** Since \\(\\phi = h\\nu_0\\) and \\(h\\) is a positive constant, the order carries straight across:\n\n\\(\\phi_1 < \\phi_2 < \\phi_3 \\qquad\\text{that is}\\qquad \\boxed{\\ \\phi_3 > \\phi_2 > \\phi_1\\ }\\)\n\n**The physical sense of it.** A larger work function means electrons are held more tightly, so a **higher** frequency is needed before any are released at all — the line starts further to the right. \\(M_3\\) is the most reluctant emitter of the three; \\(M_1\\) the most willing.\n\n**What the graph is really demonstrating.** That the three lines are **parallel** is the striking feature, and it is the experimental signature of the photon picture: the slope \\(h/e\\) is universal, so measuring it on *any* metal gives Planck's constant. Millikan did exactly this. The metal shows itself only in the **intercept**, never in the gradient.\n\n**The trap** is to read the lines as though the leftmost were \"highest\" and therefore the largest \\(\\phi\\). The correct reading is the opposite: leftmost means it starts emitting soonest, hence the **smallest** work function."
+    },
+    {
+      "hash": "a16923ad1dda78908e5db7851281bdf6eadf32cfda6f712763f9a1308d374fcc",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Diffraction",
+      "stem": "Write two points of difference between interference and diffraction of light.",
+      "solution": "**Two points of difference between interference and diffraction.**\n\n| | **Interference** | **Diffraction** |\n|---|---|---|\n| **1. Source of the superposing waves** | Waves from **two (or more) separate coherent sources** — the two slits of a Young's arrangement | Waves from **different parts of the SAME wavefront**, the secondary wavelets across a single aperture |\n| **2. Width of the fringes** | All bright fringes are of **equal width**, evenly spaced | The **central maximum is twice as wide** as the others, and the fringes are of unequal width |\n| **3. Intensity of the maxima** | All bright fringes have **the same intensity** | Intensity **falls off rapidly** — the first secondary maximum is about \\(1/22\\) of the central peak |\n| **4. Darkness of the minima** | The dark fringes are **perfectly dark** (with equal amplitudes) | The minima are dark but the pattern is dominated by one broad bright band |\n\nAny two of these answer the question; the first two are the ones that matter most.\n\n**Why the fringe widths differ, since that is the least obvious of the four.** In interference, the condition for a bright fringe is \\(d\\sin\\theta = n\\lambda\\), and successive integers \\(n\\) are **equally spaced**, so the fringes are too. In single-slit diffraction the *central* maximum stretches from the first minimum on one side to the first on the other, \\(-\\lambda/a\\) to \\(+\\lambda/a\\), while every later fringe occupies only \\(\\lambda/a\\) — hence exactly **double** the width for the central band.\n\n**Why the intensities differ.** In interference every bright fringe is built from the **whole** of both beams, so all are equally bright. In diffraction the \\(n\\)th secondary maximum is built from only \\(1/(2n+1)\\) of the slit — the rest cancels in pairs — so the intensity falls roughly as \\(1/(2n+1)^{2}\\).\n\n**The deeper point.** The two are not really different phenomena — both are **superposition**. The distinction is one of bookkeeping: interference sums a **finite number** of discrete sources, diffraction integrates over a **continuous** distribution of them. That is why a real two-slit pattern is in fact interference fringes *modulated* by a single-slit diffraction envelope: both are happening at once."
+    },
+    {
+      "hash": "13d8e67cbde813c4c35193ea2049b331fb111205a350e9be50134e7be43e7553",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Light of wavelength 500 nm is incident on caesium metal (work function \\(2{\\cdot}14\\) eV) and photoemission of electrons occurs. Calculate the (i) kinetic energy (in eV) of the fastest electrons and (ii) stopping potential for this situation. (Take hc = 1240 eV.nm)",
+      "solution": "**The photon energy.** The question supplies \\(hc = 1240\\ \\mathrm{eV\\,nm}\\) precisely so the calculation can be done entirely in electronvolts:\n\n\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{1240}{500} = 2{\\cdot}48\\ \\mathrm{eV}\\)\n\n**(i) The kinetic energy of the fastest electrons.**\n\nEinstein's photoelectric equation:\n\n\\(K_{\\max} = E - \\phi_0 = 2{\\cdot}48 - 2{\\cdot}14\\)\n\n\\(\\boxed{\\ K_{\\max} = 0{\\cdot}34\\ \\mathrm{eV}\\ }\\)\n\n**(ii) The stopping potential.**\n\nThe stopping potential is the retarding voltage that just turns back the fastest electron, so \\(eV_0 = K_{\\max}\\):\n\n\\(V_0 = \\dfrac{K_{\\max}}{e} = \\dfrac{0{\\cdot}34\\ \\mathrm{eV}}{e}\\)\n\n\\(\\boxed{\\ V_0 = 0{\\cdot}34\\ \\mathrm{V}\\ }\\)\n\n**Why part (ii) looks like no work at all.** Dividing an energy expressed in **electronvolts** by \\(e\\) gives a potential in **volts** with the same number — that is the definition of the electronvolt, not a coincidence. Working the whole question in eV therefore makes the second part free, which is exactly why the constant was given as \\(1240\\) eV·nm rather than in joule-metres.\n\n**The word \"fastest\" is precise, not loose.** \\(K_{\\max}\\) belongs only to electrons emitted from **right at the surface**, which give up nothing but the work function on the way out. Electrons freed deeper lose energy in collisions before escaping, so the emitted electrons occupy a whole range of kinetic energies from zero up to \\(0{\\cdot}34\\) eV. The stopping potential is set by the fastest of them.\n\n**Orientation.** \\(500\\) nm is green light, and caesium's work function of \\(2{\\cdot}14\\) eV puts its threshold at\n\n\\(\\lambda_0 = \\dfrac{1240}{2{\\cdot}14} \\approx 580\\ \\mathrm{nm}\\)\n\nin the **yellow**. So this green light is only just above threshold — hence the small \\(0{\\cdot}34\\) eV to spare. Caesium is chosen for photocells precisely because its threshold lies inside the visible range at all; most metals need ultraviolet."
+    },
+    {
+      "hash": "a6fbe0a2d5a079cc57856f5f8f2df07d94c34e0e569b167b17b92b1308da7558",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Cells, EMF and Internal Resistance",
+      "stem": "A battery of unknown emf E and internal resistance r is connected in a circuit as shown in the figure. When the key (K) is open, the voltmeter reads \\(10{\\cdot}0\\) V and ammeter reads 0 A. In the closed circuit, the voltmeter reads \\(6{\\cdot}0\\) V and ammeter reads \\(2{\\cdot}0\\) A. Calculate :\n(a) emf of the battery,\n(b) internal resistance of the battery (r), and\n(c) external resistance (R).",
+      "figureNote": "REQUIRED — the stem says only 'connected in a circuit as shown in the figure'; the whole circuit exists in the drawing. A dashed rectangle encloses a cell labelled E in series with a resistor labelled r; a meter labelled V and a meter labelled A are drawn in the circuit, and the remaining branch carries a resistor labelled R and a key labelled K. Arrows marked i show the assumed current sense. Which element each meter is connected across is what fixes the readings the question works from, so the connection points are not described here. Page idx 14.",
+      "imageAttached": true,
+      "solution": "**Reading the two measurements.** The voltmeter reads the **terminal potential difference** across the battery, and the ammeter reads the current drawn.\n\n**(a) The emf.**\n\nWith the key **open**, the ammeter reads \\(0\\) A — no current flows, so there is **no drop across the internal resistance**:\n\n\\(V = E - Ir = E - 0 = E\\)\n\n\\(\\boxed{\\ E = 10{\\cdot}0\\ \\mathrm{V}\\ }\\)\n\n**This is the whole purpose of the open-key reading**, and it is why the question gives it: on open circuit a voltmeter reads the emf directly. There is no other way to measure an emf without knowing \\(r\\) first.\n\n**(b) The internal resistance.**\n\nWith the key **closed**, \\(I = 2{\\cdot}0\\) A and the terminal voltage has dropped to \\(6{\\cdot}0\\) V. The missing \\(4\\) V is being lost inside the battery:\n\n\\(V = E - Ir\\)\n\n\\(6{\\cdot}0 = 10{\\cdot}0 - (2{\\cdot}0)r\\)\n\n\\(2r = 4 \\qquad\\Longrightarrow\\qquad \\boxed{\\ r = 2\\ \\Omega\\ }\\)\n\n**(c) The external resistance.**\n\nThe \\(6{\\cdot}0\\) V terminal voltage appears across \\(R\\), which carries the \\(2{\\cdot}0\\) A:\n\n\\(R = \\dfrac{V}{I} = \\dfrac{6{\\cdot}0}{2{\\cdot}0}\\)\n\n\\(\\boxed{\\ R = 3\\ \\Omega\\ }\\)\n\n**A check through the whole loop**, which uses both answers at once:\n\n\\(E = I(R + r) \\qquad\\Longrightarrow\\qquad 10 = 2(3 + 2) = 10\\ \\checkmark\\)\n\n**What the numbers say about this battery.** Losing \\(4\\) V of \\(10\\) inside itself means **40% of the energy is wasted as heat in the battery** and only 60% reaches the load. An internal resistance of \\(2\\ \\Omega\\) against a \\(3\\ \\Omega\\) load is very high — a fresh dry cell manages a fraction of an ohm. A battery behaving like this is near the end of its life, which is exactly how internal resistance is used diagnostically: it rises as a cell ages, and measuring the terminal voltage under load is the standard test."
+    },
+    {
+      "hash": "05208c87f14edad1c0d0e8f87d070a6d8b05a65068fa13ac659b2e01c18b3feb",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A rectangular loop of area \\(\\vec{A}\\), carrying current I, is placed in a uniform magnetic field \\(\\vec{B}\\). With the help of a suitable diagram, derive an expression, in vector form, for the torque acting on the loop.",
+      "solution": "**The arrangement.** Take a rectangular loop PQRS of sides \\(a\\) and \\(b\\), carrying current \\(I\\), placed in a uniform field \\(\\vec{B}\\). Let the **normal** to the loop make an angle \\(\\theta\\) with \\(\\vec{B}\\).\n\nDraw the loop with \\(\\vec{B}\\) in the plane of the page, the two sides of length \\(a\\) perpendicular to \\(\\vec{B}\\), and mark \\(\\theta\\) between \\(\\vec{B}\\) and the normal \\(\\hat{n}\\).\n\n**Step 1 — the forces on the four sides.**\n\n*The two sides of length \\(b\\)*, which lie along (or at angle to) \\(\\vec{B}\\) in the plane containing it: their forces are equal, opposite and **collinear**, so they cancel completely and exert no torque.\n\n*The two sides of length \\(a\\)*, which are perpendicular to \\(\\vec{B}\\) throughout: each experiences\n\n\\(F = BIa\\)\n\nand the two forces are **equal and opposite but NOT collinear** — they are separated, so they form a **couple**.\n\n**Step 2 — the moment of that couple.**\n\nThe two forces are separated by a perpendicular distance \\(b\\sin\\theta\\) (the projection of the side \\(b\\) onto the direction perpendicular to the forces). So\n\n\\(\\tau = F \\times (\\text{perpendicular separation}) = (BIa)(b\\sin\\theta)\\)\n\n\\(\\tau = I(ab)B\\sin\\theta = IAB\\sin\\theta\\)\n\nwriting \\(A = ab\\) for the area.\n\n**Step 3 — into vector form.**\n\nDefine the **magnetic moment** of the loop as\n\n\\(\\vec{m} = I\\vec{A}\\)\n\nwhere \\(\\vec{A}\\) has magnitude \\(A\\) and direction along the normal \\(\\hat{n}\\), fixed by the right-hand rule from the current's sense. Then \\(\\tau = mB\\sin\\theta\\) with \\(\\theta\\) the angle between \\(\\vec{m}\\) and \\(\\vec{B}\\), which is precisely the magnitude of a cross product:\n\n\\(\\boxed{\\ \\vec{\\tau} = \\vec{m} \\times \\vec{B} = I\\left(\\vec{A} \\times \\vec{B}\\right)\\ }\\)\n\n**The net FORCE is zero**, and this is worth stating alongside: all four forces cancel in pairs, so the loop is **twisted but not translated**. That holds for a closed loop of any shape in a **uniform** field, since \\(\\oint d\\vec{l} = 0\\).\n\n**Reading the result.**\n\n\\(\\theta = 90^\\circ\\) — \\(\\vec{m}\\) perpendicular to \\(\\vec{B}\\), the loop's plane containing \\(\\vec{B}\\): torque is **maximum**, \\(\\tau = mB\\).\n\n\\(\\theta = 0\\) — \\(\\vec{m}\\) along \\(\\vec{B}\\): torque is **zero**, and this is the **stable** equilibrium the loop turns towards.\n\n\\(\\theta = 180^\\circ\\) — torque again zero, but **unstable**.\n\n**And note what the result does not contain: the shape.** Only the **area** enters, so the same expression holds for a circular loop, a triangular one or any plane loop whatever — which is why it can be written for \\(\\vec{A}\\) rather than for \\(a\\) and \\(b\\). This is the equation behind the moving-coil galvanometer and the electric motor."
+    },
+    {
+      "hash": "9491880b56b38471a627e27240840a55f7199c2c55ed8c98e63443c8c294c849",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Alternating Current",
+      "subtopic": "Power in AC Circuits and the Power Factor",
+      "stem": "Distinguish between reactance and impedance of an ac circuit. Show that an ideal inductor in an ac circuit does not dissipate any power.",
+      "solution": "**Reactance against impedance.**\n\n| | **Reactance** \\((X)\\) | **Impedance** \\((Z)\\) |\n|---|---|---|\n| What it measures | The opposition offered by an inductor or a capacitor **alone** | The **total** opposition of the whole circuit |\n| What contributes | Only \\(L\\) and \\(C\\) | \\(R\\) **together with** \\(L\\) and \\(C\\) |\n| Expression | \\(X_L = \\omega L\\), \\(X_C = \\dfrac{1}{\\omega C}\\) | \\(Z = \\sqrt{R^{2} + (X_L - X_C)^{2}}\\) |\n| Phase | Introduces a \\(90^\\circ\\) shift between voltage and current | Introduces a shift \\(\\phi\\) with \\(\\tan\\phi = \\dfrac{X_L - X_C}{R}\\), anywhere from \\(-90^\\circ\\) to \\(+90^\\circ\\) |\n| Power dissipated | **None** — reactance stores and returns energy | Some — the resistive part dissipates it |\n\nBoth are measured in **ohms**, and both are the ratio of voltage to current; the difference is what they include and whether energy is lost.\n\n**Showing that an ideal inductor dissipates no power.**\n\n**The current lags the voltage by exactly \\(\\pi/2\\).** With \\(v = v_0\\sin\\omega t\\) applied to a pure inductance, \\(v = L\\,di/dt\\) integrates to\n\n\\(i = \\dfrac{v_0}{\\omega L}\\sin\\left(\\omega t - \\dfrac{\\pi}{2}\\right) = -i_0\\cos\\omega t\\)\n\n**The instantaneous power.**\n\n\\(P = vi = \\big(v_0\\sin\\omega t\\big)\\big(-i_0\\cos\\omega t\\big) = -v_0i_0\\sin\\omega t\\cos\\omega t\\)\n\nUsing \\(2\\sin A\\cos A = \\sin 2A\\):\n\n\\(P = -\\dfrac{v_0i_0}{2}\\sin 2\\omega t\\)\n\n**The average over a full cycle.** The mean value of \\(\\sin 2\\omega t\\) over one complete period is **zero**, since it spends exactly as long positive as negative:\n\n\\(\\langle P \\rangle = -\\dfrac{v_0i_0}{2}\\,\\langle\\sin 2\\omega t\\rangle = \\boxed{\\ 0\\ }\\)\n\n**The same result from the power factor.** \\(\\langle P \\rangle = V_{rms}I_{rms}\\cos\\phi\\), and for a pure inductor \\(\\phi = 90^\\circ\\), so \\(\\cos\\phi = 0\\) and the average power vanishes.\n\n**What is physically happening, which the algebra can obscure.** The power is **not** zero at every instant — it oscillates at **twice** the supply frequency. During one quarter-cycle the inductor draws energy from the source and stores it in its **magnetic field** \\(\\left(U = \\tfrac{1}{2}Li^{2}\\right)\\); during the next quarter it returns exactly that energy to the source. Over a full cycle the two cancel.\n\nSo energy **flows back and forth** but is never **consumed**. That is why the current in a purely reactive branch is called a **wattless current**: it is real, it can be large, and it heats nothing. Only resistance converts electrical energy irreversibly into heat."
+    },
+    {
+      "hash": "fee242d87a55766d8b5cee5a7c18266544aeb7830ddeaf535f850d1d3955f0cd",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "Explain the origin of the spectral lines of hydrogen atom using Bohr's theory. Draw the energy level diagram of hydrogen atom showing its various spectral series.",
+      "solution": "**The origin of hydrogen's spectral lines.**\n\n**Bohr's three postulates set it up.** (1) The electron revolves only in certain **stationary orbits** without radiating. (2) Those orbits are the ones whose angular momentum is \\(mvr = nh/2\\pi\\), which fixes the radii as \\(r_n \\propto n^{2}\\) and the energies as\n\n\\(E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}\\)\n\n(3) An electron may **jump** from a higher orbit \\(n_i\\) to a lower one \\(n_f\\), and when it does, a **single photon** is emitted carrying exactly the energy difference.\n\n**That third postulate is the origin of the lines.**\n\n\\(h\\nu = E_{n_i} - E_{n_f} = 13{\\cdot}6\\left[\\dfrac{1}{n_f^{2}} - \\dfrac{1}{n_i^{2}}\\right]\\ \\mathrm{eV}\\)\n\nor in terms of wavelength,\n\n\\(\\dfrac{1}{\\lambda} = R\\left[\\dfrac{1}{n_f^{2}} - \\dfrac{1}{n_i^{2}}\\right], \\qquad R = 1{\\cdot}097 \\times 10^{7}\\ \\mathrm{m^{-1}}\\)\n\n**Why the spectrum is a set of SHARP LINES rather than a continuous band** is the whole point. Because the energies are **discrete**, the differences between them are discrete too, so only certain photon energies can ever be emitted. A continuous range of orbits — as classical physics would allow — would give a continuous spectrum, which is precisely what is not observed. **The discreteness of the spectrum is direct evidence for the discreteness of the energy levels.**\n\n**Why a single atom gives many lines.** A sample contains vast numbers of excited atoms, each taking its own route down. One may drop \\(4 \\to 2\\), another \\(4 \\to 3 \\to 2\\), another \\(3 \\to 1\\). Every distinct pair of levels contributes its own line, so \\(n\\) available levels give \\(n(n-1)/2\\) lines.\n\n**The energy level diagram.**\n\nDraw horizontal lines on a vertical energy axis, \\(E = 0\\) at the top and energies measured downwards:\n\n| Level | Energy |\n|---|---|\n| \\(n = \\infty\\) | \\(0\\) eV (ionised) |\n| \\(n = 5\\) | \\(-0{\\cdot}54\\) eV |\n| \\(n = 4\\) | \\(-0{\\cdot}85\\) eV |\n| \\(n = 3\\) | \\(-1{\\cdot}51\\) eV |\n| \\(n = 2\\) | \\(-3{\\cdot}40\\) eV |\n| \\(n = 1\\) | \\(-13{\\cdot}60\\) eV |\n\nThe levels **crowd together** as \\(n\\) rises, converging on zero, because \\(E_n \\propto 1/n^{2}\\).\n\n**The series**, each drawn as a bundle of downward arrows ending on a common level and **named for where the electron LANDS**, not where it starts:\n\n| Series | Lands on | Region |\n|---|---|---|\n| **Lyman** | \\(n = 1\\) | ultraviolet |\n| **Balmer** | \\(n = 2\\) | **visible** |\n| **Paschen** | \\(n = 3\\) | infrared |\n| **Brackett** | \\(n = 4\\) | far infrared |\n| **Pfund** | \\(n = 5\\) | far infrared |\n\n**Why only the Balmer series is visible.** Transitions ending on \\(n = 1\\) must supply at least the \\(10{\\cdot}2\\) eV gap to \\(n = 2\\), which puts every Lyman photon in the ultraviolet. Transitions ending on \\(n = 3\\) or lower involve at most \\(1{\\cdot}51\\) eV, which is infrared. Only the jumps down to \\(n = 2\\), spanning \\(1{\\cdot}89\\) to \\(3{\\cdot}40\\) eV, fall in the \\(1{\\cdot}8\\) to \\(3{\\cdot}1\\) eV window the eye can see — which is why the Balmer series was discovered first, decades before the others."
+    }
+  ]
+}
