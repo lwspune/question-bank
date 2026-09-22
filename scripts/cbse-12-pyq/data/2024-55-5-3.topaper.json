@@ -1,0 +1,254 @@
+{
+  "paper": "55/5/3",
+  "year": 2024,
+  "paperId": "2024-55-5-3",
+  "markingScheme": "out/2024-55-5-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "add58cdf0365c3c5a970960108631348c50876a39366061414c8707b7539fe33",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Electrical Energy and Power",
+      "stem": "A heater coil rated as (P, V) is cut into two equal parts. One of the parts is then connected to a battery of V volt. The power consumed by it will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "P"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{P}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{P}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "2P"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(2P\\).**\n\n**Step 1 — what the rating means.** A coil rated \\((P, V)\\) draws power \\(P\\) when \\(V\\) is applied across it, so its resistance is\n\n\\(R = \\dfrac{V^{2}}{P}\\)\n\n**Step 2 — cutting it in half.** Resistance is proportional to length (\\(R = \\rho l/A\\)), and neither the material nor the cross-section changes, so each half has\n\n\\(R' = \\dfrac{R}{2}\\)\n\n**Step 3 — the same voltage across half the resistance.**\n\n\\(P' = \\dfrac{V^{2}}{R'} = \\dfrac{V^{2}}{R/2} = \\dfrac{2V^{2}}{R} = 2P\\)\n\n\\(\\boxed{\\ P' = 2P\\ }\\)\n\n**The power goes UP, which is the thing to see.** Halving the resistance at fixed voltage **doubles** the current, and since \\(P = VI\\) with \\(V\\) fixed, the power doubles too. Cutting a heater coil in half makes it hotter, not cooler.\n\n**Which formula to use is the whole question.** With \\(V\\) held constant, work from\n\n\\(P = \\dfrac{V^{2}}{R} \\qquad\\text{(power and resistance INVERSELY related)}\\)\n\nReaching instead for \\(P = I^{2}R\\) and reasoning \"less resistance, less power\" gives \\(P/2\\) — option (B) — and it is wrong because \\(I\\) is **not** constant here; it is \\(V\\) that is fixed by the battery. Option (C), \\(P/4\\), comes of applying the halving twice.\n\n**A check on the whole coil.** If **both** halves were reconnected across \\(V\\) in parallel, each would dissipate \\(2P\\), giving \\(4P\\) in total — the standard result that \\(n\\) equal pieces rejoined in parallel give \\(n^{2}\\) times the original power. With one half alone, \\(n = 2\\) applies to a single piece and gives \\(2P\\).\n\n**Why this is a real hazard.** A heater element that breaks and is twisted back together is shorter, so it draws more current and runs hotter — which is how a partially repaired element burns out again, and why the fault repeats."
+    },
+    {
+      "hash": "8a0d96bcc41576be02cf31a7e991032a8e2d76231c134f37cda03d0622aec759",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "Two insulated concentric coils, each of radius R, placed at right angles to each other, carry currents I and \\(\\sqrt{3}\\) I respectively. The magnitude of the net magnetic field at their common centre will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\mu_0 I}{R}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\mu_0 I}{2R}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\mu_0 I}{4R}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{2\\mu_0 I}{R}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{\\mu_0 I}{R}\\).**\n\n**The field at the centre of a circular coil.**\n\n\\(B = \\dfrac{\\mu_0 I}{2R}\\)\n\ndirected along the coil's **axis**, perpendicular to its plane.\n\n**The two coils.**\n\n\\(B_1 = \\dfrac{\\mu_0 I}{2R}, \\qquad B_2 = \\dfrac{\\mu_0\\left(\\sqrt{3}I\\right)}{2R} = \\dfrac{\\sqrt{3}\\,\\mu_0 I}{2R}\\)\n\n**Their directions.** The coils are placed at **right angles** to each other, so their axes are perpendicular — and therefore so are the two fields at the common centre.\n\n**Perpendicular vectors add in quadrature**, not directly:\n\n\\(B = \\sqrt{B_1^{2} + B_2^{2}} = \\dfrac{\\mu_0 I}{2R}\\sqrt{1^{2} + \\left(\\sqrt{3}\\right)^{2}} = \\dfrac{\\mu_0 I}{2R}\\sqrt{4}\\)\n\n\\(\\boxed{\\ B = \\dfrac{\\mu_0 I}{R}\\ }\\)\n\n**The \\(\\sqrt{3}\\) is chosen to make the arithmetic exact.** \\(\\sqrt{1 + 3} = 2\\), so the \\(2\\) in the denominator cancels and the answer is clean. Seeing that in advance tells you the currents were picked for this reason — a \\(1 : \\sqrt{3}\\) ratio with a factor \\(2\\) waiting to cancel is a strong hint that quadrature addition is intended.\n\n**Why the fields are perpendicular, stated carefully.** Each coil's field at its own centre points along its own axis; the axis is normal to the coil's plane; and \"placed at right angles to each other\" means the planes are perpendicular, hence so are the normals. Getting this chain right is the difference between adding in quadrature and adding directly.\n\n**What the wrong answers correspond to.** Option (D), \\(2\\mu_0 I/R\\), is roughly what direct addition of the magnitudes would give if the coils were coplanar and aided; option (B), \\(\\mu_0 I/2R\\), is one coil's field taken alone. Option (C) is that halved again.\n\n**The angle of the resultant**, though not asked, follows from \\(\\tan\\theta = B_2/B_1 = \\sqrt{3}\\), so the net field lies at \\(60^\\circ\\) to the first coil's axis — nearer the stronger coil, as it should be."
+    },
+    {
+      "hash": "5af5bfd8123761ad932f25a6caa8f36041af21dc1088afe7f0fc56cf156e2076",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which of the following material has its magnetic susceptibility \\(x\\) in the range \\(0 < x < \\varepsilon\\), where \\(\\varepsilon\\) is positive and small ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aluminium"
+        },
+        {
+          "label": "B",
+          "text": "Water"
+        },
+        {
+          "label": "C",
+          "text": "Gadolinium"
+        },
+        {
+          "label": "D",
+          "text": "Bismuth"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): aluminium.**\n\n**Reading the condition.** The question asks for a material whose magnetic susceptibility satisfies\n\n\\(0 < \\chi < \\varepsilon\\)\n\nwith \\(\\varepsilon\\) positive and small — that is, a susceptibility that is **positive but small**. *(The stem writes the susceptibility as \\(x\\).)*\n\n**That is the definition of a PARAMAGNETIC material.**\n\n**The three classes, by susceptibility:**\n\n| Class | Susceptibility \\(\\chi\\) | Behaviour |\n|---|---|---|\n| **Diamagnetic** | small and **NEGATIVE** \\((-1 \\le \\chi < 0)\\) | weakly **repelled** |\n| **Paramagnetic** | small and **POSITIVE** \\((0 < \\chi < \\varepsilon)\\) | weakly attracted |\n| **Ferromagnetic** | **LARGE** and positive \\((\\chi \\gg 1)\\) | strongly attracted |\n\n**Checking the four options.**\n\n**Aluminium** — each atom has an unpaired electron, giving a permanent moment, but the moments are independent and thermal motion keeps them nearly random. Weak positive \\(\\chi\\), of order \\(10^{-5}\\). **Paramagnetic.**\n\n**Water** — the molecule has all its electrons paired, so there is no permanent moment and only the induced, opposing one survives. \\(\\chi \\approx -9 \\times 10^{-6}\\), **negative**. Diamagnetic.\n\n**Gadolinium** — a rare earth with seven unpaired \\(4f\\) electrons and strong coupling between neighbours, giving spontaneous alignment. \\(\\chi\\) in the thousands. **Ferromagnetic**, and its Curie point sits near room temperature.\n\n**Bismuth** — the **strongest** common diamagnet, \\(\\chi \\approx -1{\\cdot}7 \\times 10^{-4}\\). Negative, and famously so: a bismuth block is visibly repelled by a strong magnet.\n\n**Why bismuth is the trap.** Its susceptibility is the largest in magnitude of the four non-ferromagnetic options, so a candidate remembering \"bismuth is the notable one\" may pick it. But the condition in the stem is about the **sign** first — \\(0 < \\chi\\) — and bismuth's is negative. Read the inequality before recalling any material.\n\n**The single question that sorts all of these.** Does the substance have **unpaired** electrons? If not, it can only be diamagnetic. If yes, it is paramagnetic — unless the moments also **couple** to one another, in which case it is ferromagnetic."
+    },
+    {
+      "hash": "db32b7876ce2fa55a704bd15f7ebaab7583cea26e1d946b745a38aa508bf3cae",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A galvanometer of resistance \\(100\\ \\Omega\\) gives full scale deflection for a current of 1.0 mA. It is converted into an ammeter of range \\((0 - 1\\mathrm{A})\\). The resistance of the ammeter will be close to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0.1\\ \\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0.8\\ \\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1.0\\ \\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(10\\ \\Omega\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(0{\\cdot}1\\ \\Omega\\).**\n\n**Step 1 — the shunt needed.** To make an ammeter of range \\(0\\) to \\(I\\), a shunt \\(S\\) in parallel carries all the current the galvanometer does not:\n\n\\(I_gG = \\left(I - I_g\\right)S \\qquad\\Longrightarrow\\qquad S = \\dfrac{I_gG}{I - I_g}\\)\n\n\\(S = \\dfrac{\\left(1{\\cdot}0 \\times 10^{-3}\\right)(100)}{1 - 1{\\cdot}0 \\times 10^{-3}} = \\dfrac{0{\\cdot}1}{0{\\cdot}999} = 0{\\cdot}1001\\ \\Omega\\)\n\n**Step 2 — the resistance OF THE AMMETER.** The question asks for this, not for the shunt. The finished instrument is \\(G\\) and \\(S\\) **in parallel**:\n\n\\(R_A = \\dfrac{GS}{G + S} = \\dfrac{100 \\times 0{\\cdot}1001}{100{\\cdot}1001} = \\dfrac{10{\\cdot}01}{100{\\cdot}1}\\)\n\n\\(\\boxed{\\ R_A \\approx 0{\\cdot}1\\ \\Omega\\ }\\)\n\n**Why the answer is essentially the shunt's value.** With \\(S\\) about a thousand times smaller than \\(G\\), the parallel combination is dominated by the smaller branch: \\(GS/(G+S) \\approx S\\) whenever \\(S \\ll G\\). So the two quantities agree to three figures here, and the word \"close to\" in the stem is an invitation to make exactly this approximation rather than grind the arithmetic.\n\n**A shortcut that skips both steps.** At full scale the ammeter passes \\(1\\) A while \\(1\\) mA of it goes through the galvanometer, dropping \\(I_gG = 10^{-3} \\times 100 = 0{\\cdot}1\\) V across the pair. The ammeter's resistance is that voltage divided by the total current:\n\n\\(R_A = \\dfrac{0{\\cdot}1\\ \\mathrm{V}}{1\\ \\mathrm{A}} = 0{\\cdot}1\\ \\Omega\\ \\checkmark\\)\n\nThis is the cleanest route and needs no shunt value at all.\n\n**Why an ammeter MUST have a low resistance.** It is connected **in series**, so it carries the very current it is measuring; any resistance it adds reduces that current and corrupts the reading. Here \\(0{\\cdot}1\\ \\Omega\\) is negligible beside any ordinary circuit resistance. Option (D), \\(10\\ \\Omega\\), would be a poor ammeter for exactly this reason — and note that \\(10\\ \\Omega\\) is also \\(G/10\\), which is what comes of a misplaced factor rather than a parallel combination.\n\n**The contrast with a voltmeter.** A voltmeter is connected in parallel and so must have a **high** resistance, achieved by a large series resistor rather than a shunt. Low-in-series, high-in-parallel is the pairing to remember."
+    },
+    {
+      "hash": "1b034fd32c0e75b66d075f5551730cc062fca73944d8d09fffb2cedabcee2c73",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "The mutual inductance of two coils, in a given orientation is 50 mH. If the current in one of the coils changes as \\(\\mathrm{i} = 1.0\\ \\sin\\left(100\\ \\pi\\mathrm{t} + \\frac{\\pi}{3}\\right)\\) A, the peak value of emf (in volt) induced in the other coil will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\pi}{5}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(5\\pi\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0.5\\pi\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0.05\\pi\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(5\\pi\\) volt.**\n\n**The emf induced by mutual inductance.**\n\n\\(\\varepsilon = -M\\dfrac{di}{dt}\\)\n\n**Differentiate the current.**\n\n\\(i = 1{\\cdot}0\\sin\\left(100\\pi t + \\dfrac{\\pi}{3}\\right)\\)\n\n\\(\\dfrac{di}{dt} = 1{\\cdot}0 \\times 100\\pi\\cos\\left(100\\pi t + \\dfrac{\\pi}{3}\\right)\\)\n\n**The peak value** of a cosine is \\(1\\), so\n\n\\(\\left(\\dfrac{di}{dt}\\right)_{\\max} = 100\\pi\\ \\mathrm{A\\,s^{-1}}\\)\n\n**Substituting**, with \\(M = 50\\ \\mathrm{mH} = 0{\\cdot}05\\) H:\n\n\\(\\varepsilon_0 = M\\left(\\dfrac{di}{dt}\\right)_{\\max} = 0{\\cdot}05 \\times 100\\pi\\)\n\n\\(\\boxed{\\ \\varepsilon_0 = 5\\pi\\ \\mathrm{V} \\approx 15{\\cdot}7\\ \\mathrm{V}\\ }\\)\n\n**The chain of factors, since every distractor is one of them mishandled.** The \\(\\pi\\) comes from \\(\\omega = 100\\pi\\); the \\(100\\) from the same place; the \\(0{\\cdot}05\\) from converting **milli**henry to henry. Option (D), \\(0{\\cdot}05\\pi\\), is \\(M\\omega\\) with the \\(100\\) dropped; option (A), \\(\\pi/5\\), inverts the \\(0{\\cdot}05\\); option (C) halves the answer.\n\n**The phase constant \\(\\pi/3\\) is irrelevant**, and deliberately so. Differentiating a sine gives a cosine with the **same** phase constant, and the peak of a cosine is \\(1\\) whatever its phase. A phase angle shifts *when* the maximum occurs, never *how large* it is. Any question asking for a **peak** value can ignore the phase entirely.\n\n**Reading \\(\\omega = 100\\pi\\).** That is \\(\\nu = \\omega/2\\pi = 50\\) Hz — mains frequency. So this is an ordinary \\(50\\) Hz supply, and the answer \\(5\\pi \\approx 15{\\cdot}7\\) V is the peak of the induced emf, its rms value being \\(5\\pi/\\sqrt{2} \\approx 11{\\cdot}1\\) V.\n\n**What mutual inductance is doing here.** \\(M = 50\\) mH is a property of the **pair** of coils — their sizes, turns and, crucially, their relative **orientation**, which is why the stem says \"in a given orientation\". Rotate one coil and \\(M\\) changes, though neither coil has changed at all. This is the principle of the transformer, and of the variometer used to tune early radios."
+    },
+    {
+      "hash": "d657c6ee15d6f83a7ce40841a1446d4be89dda080c0a0e048ea4a4bc84162460",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A point object is kept 60 cm in front of a spherical convex surface (n = 1.5, radius of curvature 40 cm). The image formed is",
+      "options": [
+        {
+          "label": "A",
+          "text": "real, at a distance 1.8 m from the surface."
+        },
+        {
+          "label": "B",
+          "text": "virtual, at a distance 1.8 m from the surface."
+        },
+        {
+          "label": "C",
+          "text": "real, at a distance 3.6 m from the surface."
+        },
+        {
+          "label": "D",
+          "text": "virtual, at a distance 3.6 m from the surface."
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): virtual, at a distance 3.6 m from the surface.**\n\n**The refraction formula for a single spherical surface.**\n\n\\(\\dfrac{n_2}{v} - \\dfrac{n_1}{u} = \\dfrac{n_2 - n_1}{R}\\)\n\n**The data, with signs.** Light travels from air into the glass, so \\(n_1 = 1\\) and \\(n_2 = 1{\\cdot}5\\). The object is \\(60\\) cm in front, so \\(u = -60\\) cm. The surface is **convex towards the object**, so its centre of curvature lies on the outgoing side and \\(R = +40\\) cm.\n\n**Substituting.**\n\n\\(\\dfrac{1{\\cdot}5}{v} - \\dfrac{1}{-60} = \\dfrac{1{\\cdot}5 - 1}{40}\\)\n\n\\(\\dfrac{1{\\cdot}5}{v} + \\dfrac{1}{60} = \\dfrac{0{\\cdot}5}{40} = \\dfrac{1}{80}\\)\n\n\\(\\dfrac{1{\\cdot}5}{v} = \\dfrac{1}{80} - \\dfrac{1}{60}\\)\n\n**Over a common denominator of 240:**\n\n\\(\\dfrac{1{\\cdot}5}{v} = \\dfrac{3 - 4}{240} = -\\dfrac{1}{240}\\)\n\n\\(v = -1{\\cdot}5 \\times 240 = -360\\ \\mathrm{cm}\\)\n\n\\(\\boxed{\\ v = -3{\\cdot}6\\ \\mathrm{m},\\ \\text{so the image is VIRTUAL, } 3{\\cdot}6\\ \\mathrm{m}\\ \\text{from the surface}\\ }\\)\n\n**The negative sign is the answer to the \"real or virtual\" half.** A negative \\(v\\) puts the image on the **same side as the object**, which is where rays only appear to come from — a virtual image. A real image would need light actually to converge there, and it would give \\(v\\) positive.\n\n**Why the surface fails to converge despite being convex.** A convex surface bends rays towards the axis, but here the object at \\(60\\) cm is **inside** the first focus. The first focal length of this surface is\n\n\\(f_1 = \\dfrac{n_1R}{n_2 - n_1} = \\dfrac{1 \\times 40}{0{\\cdot}5} = 80\\ \\mathrm{cm}\\)\n\nand \\(60\\ \\mathrm{cm} < 80\\ \\mathrm{cm}\\), so the rays are still diverging when they leave. Move the object beyond \\(80\\) cm and the image becomes real — the same behaviour as a converging lens with the object inside its focus.\n\n**The \\(1{\\cdot}5\\) in the last line is easy to lose.** Solving \\(1{\\cdot}5/v = -1/240\\) gives \\(v = -360\\), not \\(-240\\): the refractive index of the medium the image forms **in** multiplies through. Options (A) and (B) offer \\(1{\\cdot}8\\) m, which is \\(-360/2\\) — the answer halved — and options (A) and (C) offer \"real\", the sign read the wrong way. Only (D) has both right."
+    },
+    {
+      "hash": "a088cf50867699781ccbe13a36a6e3b6467b7fffb27c1cdc421d16926101d193",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A thin converging lens of focal length 10 cm is placed coaxially in contact with a thin diverging lens of focal length 15 cm. How will the combination behave ? Justify your answer.",
+      "solution": "**How the combination behaves: like a CONVERGING lens of focal length 30 cm.**\n\n**The rule for thin lenses in contact.**\n\n\\(\\dfrac{1}{F} = \\dfrac{1}{f_1} + \\dfrac{1}{f_2}\\)\n\nwith \\(f_1 = +10\\) cm for the converging lens and \\(f_2 = -15\\) cm for the diverging one — the signs are the whole calculation.\n\n**Substituting.**\n\n\\(\\dfrac{1}{F} = \\dfrac{1}{10} + \\dfrac{1}{-15} = \\dfrac{1}{10} - \\dfrac{1}{15}\\)\n\n\\(\\dfrac{1}{F} = \\dfrac{3 - 2}{30} = \\dfrac{1}{30}\\)\n\n\\(\\boxed{\\ F = +30\\ \\mathrm{cm}\\ }\\)\n\n**\\(F\\) is POSITIVE, so the combination converges.**\n\n**The justification, in terms of power.** Powers simply add:\n\n\\(P = P_1 + P_2 = \\dfrac{100}{10} + \\dfrac{100}{-15} = +10 - 6{\\cdot}67 = +3{\\cdot}33\\ \\mathrm{D} = \\dfrac{10}{3}\\ \\mathrm{D}\\)\n\nThe converging lens has the **shorter** focal length and therefore the **greater** power. Since power is \\(1/f\\), a shorter focal length always wins — so the converging lens dominates and the combination converges.\n\n**The general rule this illustrates.** For two lenses in contact, the one with the **smaller \\(|f|\\)** decides the character of the combination, whatever the other one is. Had the diverging lens been \\(-5\\) cm instead of \\(-15\\) cm, the sum would have been \\(+10 - 20 = -10\\) D and the pair would have diverged.\n\n**Why the combination is WEAKER than either lens alone.** \\(F = 30\\) cm is longer than both \\(10\\) cm and \\(15\\) cm, and \\(3{\\cdot}33\\) D is less than either \\(10\\) D or \\(6{\\cdot}67\\) D in magnitude. The diverging lens is partly cancelling the converging one, so the pair bends light less than the converging lens would on its own. Combining lenses does not simply strengthen them.\n\n**Why this matters in practice.** Pairing lenses of opposite sign and different materials is exactly how an **achromatic doublet** is made: the powers are chosen so that the net power is positive at the design wavelength while the **variation** of power with colour cancels, removing chromatic aberration. That the residual power here is modest is not a defect but the point."
+    },
+    {
+      "hash": "c3bc557bf04fd6572e7cd6f7d2a3a6f8f49711b305d1f5351ddafa3af4e246e7",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "Deuterium undergoes the following fusion reaction :\n\n\\({}^{2}_{1}\\mathrm{H} + {}^{2}_{1}\\mathrm{H} \\longrightarrow {}^{3}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + 3.27\\ \\mathrm{MeV}\\)\n\nHow long an electric bulb of 200 W will glow by using the energy released in 2 g of deuterium ?",
+      "solution": "**Step 1 — how many deuterium atoms are in 2 g.**\n\nDeuterium has a mass number of \\(2\\), so \\(2\\) g is **one mole**:\n\n\\(N = 6{\\cdot}023 \\times 10^{23}\\ \\text{atoms}\\)\n\n**Step 2 — how much energy each atom yields.** This is the step the question is built around. The reaction consumes **TWO** deuterons and releases \\(3{\\cdot}27\\) MeV, so per atom:\n\n\\(E_{\\text{atom}} = \\dfrac{3{\\cdot}27}{2} = 1{\\cdot}635\\ \\mathrm{MeV}\\)\n\n**Dividing by 2 is essential.** Multiplying \\(6{\\cdot}023 \\times 10^{23}\\) by the full \\(3{\\cdot}27\\) MeV would count every deuteron as though it fused on its own, and would double the answer. Equivalently, there are only \\(N/2 = 3{\\cdot}01 \\times 10^{23}\\) **reactions**, each giving \\(3{\\cdot}27\\) MeV — the same product, arrived at the other way round.\n\n**Step 3 — the total energy.**\n\n\\(E = 6{\\cdot}023 \\times 10^{23} \\times 1{\\cdot}635\\ \\mathrm{MeV} = 9{\\cdot}85 \\times 10^{23}\\ \\mathrm{MeV}\\)\n\nIn joules, using \\(1\\ \\mathrm{MeV} = 1{\\cdot}6 \\times 10^{-13}\\) J:\n\n\\(E = 9{\\cdot}85 \\times 10^{23} \\times 1{\\cdot}6 \\times 10^{-13} = 1{\\cdot}576 \\times 10^{11}\\ \\mathrm{J}\\)\n\n**Step 4 — how long it runs a 200 W bulb.**\n\n\\(t = \\dfrac{E}{P} = \\dfrac{1{\\cdot}576 \\times 10^{11}}{200}\\)\n\n\\(\\boxed{\\ t = 7{\\cdot}88 \\times 10^{8}\\ \\mathrm{s}\\ }\\)\n\n**Put that in human units**, because the bare figure conveys nothing:\n\n\\(t = \\dfrac{7{\\cdot}88 \\times 10^{8}}{3{\\cdot}15 \\times 10^{7}\\ \\mathrm{s\\,yr^{-1}}} \\approx 25\\ \\text{years}\\)\n\n**Two grams of deuterium would light a 200 W bulb for a quarter of a century.** That single comparison is the point of the question, and it is why fusion is pursued at all: the deuterium in a bathtub of ordinary water carries this much energy, and the oceans hold it in effectively unlimited supply.\n\n**The contrast with chemistry.** Burning \\(2\\) g of any fuel releases a few tens of kilojoules — enough for that bulb for a couple of minutes. The factor of roughly \\(10^{6}\\) between chemical and nuclear energy is the difference between an electronvolt and a megaelectronvolt, which is exactly the gap between electronic binding and nuclear binding."
+    },
+    {
+      "hash": "3e13f16ebb655e97b43d7be14b9894492888d418ca9df7835e672416b7134d66",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "The electron in hydrogen atom is revolving with the speed of \\(2.2 \\times 10^{6}\\) m/s in an orbit of radius 0.53 Å. Calculate the initial frequency of light emitted by the electron using classical physics.",
+      "solution": "**What \"using classical physics\" means here.** On the classical picture an accelerating charge radiates continuously, at the **frequency of its own motion**. An electron going round a circle radiates at its **orbital frequency** — so that is the number to compute.\n\n**The orbital frequency.**\n\n\\(\\nu = \\dfrac{v}{2\\pi r}\\)\n\n**Substituting**, with \\(r = 0{\\cdot}53\\ \\mathring{\\mathrm{A}} = 0{\\cdot}53 \\times 10^{-10}\\) m:\n\n\\(\\nu = \\dfrac{2{\\cdot}2 \\times 10^{6}}{2\\pi \\times 0{\\cdot}53 \\times 10^{-10}} = \\dfrac{2{\\cdot}2 \\times 10^{6}}{3{\\cdot}33 \\times 10^{-10}}\\)\n\n\\(\\boxed{\\ \\nu = 6{\\cdot}6 \\times 10^{15}\\ \\mathrm{Hz}\\ }\\)\n\n**The Angstrom is the conversion to watch:** \\(1\\ \\mathring{\\mathrm{A}} = 10^{-10}\\) m. Everything else is a single division.\n\n**Why the word \"initial\" is in the question.** On the classical account this is only the *starting* frequency. A radiating electron **loses energy**, so it spirals inwards; as \\(r\\) shrinks the orbital frequency rises, and the radiated frequency rises with it. Classical physics therefore predicts a **continuous** spectrum sweeping upward in frequency, not the sharp lines actually observed.\n\n**And it predicts something worse.** Integrating the radiated power shows the electron would reach the nucleus in about \\(10^{-11}\\) s. **Classically, no atom could survive a hundredth of a nanosecond.** That the hydrogen atom is stable is the plainest possible refutation of the classical picture, and it is what Bohr's stationary-state postulate was invented to fix.\n\n**What is worth noticing about the number itself.** \\(6{\\cdot}6 \\times 10^{15}\\) Hz corresponds to a wavelength of\n\n\\(\\lambda = \\dfrac{c}{\\nu} = \\dfrac{3 \\times 10^{8}}{6{\\cdot}6 \\times 10^{15}} \\approx 45\\ \\mathrm{nm}\\)\n\ndeep in the ultraviolet — far from the visible lines hydrogen actually emits. So the classical calculation is wrong not only in predicting a continuum, but in the region it puts the radiation in.\n\n**The one thing the classical frequency is good for.** At very large quantum numbers the orbital frequency and the frequency of the \\(n \\to n-1\\) transition converge, which is Bohr's **correspondence principle** — the bridge that must exist between quantum results and classical ones in the limit of large orbits."
+    },
+    {
+      "hash": "a136449e30903eca35621739510c7f9e7a490f9ca195adc2aedac6854977ff98",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The threshold frequency for a metal is \\(3.0 \\times 10^{14}\\) Hz. A beam of frequency \\(9.0 \\times 10^{14}\\) Hz is incident on the metal. Calculate (i) the work function (in eV) of the metal and (ii) the maximum speed of photoelectrons.",
+      "solution": "**(i) The work function.**\n\nThe threshold frequency is by definition the frequency whose photon carries exactly the work function:\n\n\\(\\phi_0 = h\\nu_0 = 6{\\cdot}63 \\times 10^{-34} \\times 3{\\cdot}0 \\times 10^{14} = 1{\\cdot}989 \\times 10^{-19}\\ \\mathrm{J}\\)\n\nConverting to electronvolts:\n\n\\(\\phi_0 = \\dfrac{1{\\cdot}989 \\times 10^{-19}}{1{\\cdot}6 \\times 10^{-19}}\\)\n\n\\(\\boxed{\\ \\phi_0 = 1{\\cdot}24\\ \\mathrm{eV}\\ }\\)\n\n**(ii) The maximum speed of the photoelectrons.**\n\nEinstein's photoelectric equation, written with frequencies:\n\n\\(K_{\\max} = h\\nu - h\\nu_0 = h\\left(\\nu - \\nu_0\\right)\\)\n\n**Subtract the frequencies FIRST.** The difference is exact and keeps the arithmetic to one multiplication:\n\n\\(\\nu - \\nu_0 = \\left(9{\\cdot}0 - 3{\\cdot}0\\right) \\times 10^{14} = 6{\\cdot}0 \\times 10^{14}\\ \\mathrm{Hz}\\)\n\n\\(K_{\\max} = 6{\\cdot}63 \\times 10^{-34} \\times 6{\\cdot}0 \\times 10^{14} = 3{\\cdot}978 \\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Then the speed**, from \\(K_{\\max} = \\tfrac{1}{2}mv_{\\max}^{2}\\):\n\n\\(v_{\\max} = \\sqrt{\\dfrac{2K_{\\max}}{m}} = \\sqrt{\\dfrac{2 \\times 3{\\cdot}978 \\times 10^{-19}}{9{\\cdot}1 \\times 10^{-31}}} = \\sqrt{8{\\cdot}74 \\times 10^{11}}\\)\n\n\\(\\boxed{\\ v_{\\max} = 9{\\cdot}35 \\times 10^{5}\\ \\mathrm{m\\,s^{-1}}\\ }\\)\n\n**Keep the kinetic energy in JOULES for this step.** Substituting \\(2{\\cdot}49\\) eV into \\(v = \\sqrt{2K/m}\\) without converting gives a nonsense answer by a factor of \\(\\sqrt{1{\\cdot}6 \\times 10^{-19}}\\). Electronvolts are convenient for part (i) and useless for part (ii).\n\n**A check on the size.** \\(9{\\cdot}35 \\times 10^{5}\\) m/s is about \\(0{\\cdot}3\\%\\) of the speed of light, so treating the electron non-relativistically is amply justified — the relativistic correction here is of order \\(10^{-5}\\). Photoelectrons only need relativistic treatment for X-ray illumination.\n\n**Reading the physics.** The incident beam is at **three times** the threshold frequency, so of the \\(3{\\cdot}73\\) eV each photon carries, \\(1{\\cdot}24\\) eV is spent escaping and \\(2{\\cdot}49\\) eV — two-thirds — is left as kinetic energy. Raising the **intensity** would liberate more electrons at this same maximum speed; only raising the **frequency** makes them faster. That separation is the whole content of the photoelectric effect."
+    },
+    {
+      "hash": "7c7efd6861765daa3f0b8fe725d5432214b1bea6219c3f9824aa19c0db0ebfa3",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+      "stem": "An electron is moving with a velocity \\(\\vec{v} = \\left(3 \\times 10^{6}\\ \\frac{\\mathrm{m}}{\\mathrm{s}}\\right)\\hat{i}\\). It enters a region of magnetic field \\(\\vec{\\mathrm{B}} = (91\\ \\mathrm{mT})\\hat{k}\\).\n\n(a) Calculate the magnetic force \\(\\vec{\\mathrm{F}}_{\\mathrm{B}}\\) acting on electron and the radius of its path.\n\n(b) Trace the path described by it.",
+      "solution": "**(a) The magnetic force and the radius.**\n\n**The force.**\n\n\\(\\vec{F}_B = q\\left(\\vec{v}\\times\\vec{B}\\right)\\)\n\nFor an **electron**, \\(q = -e = -1{\\cdot}6 \\times 10^{-19}\\) C — the minus sign is the part of this question that has to be carried through.\n\n\\(\\vec{v}\\times\\vec{B} = \\left(3 \\times 10^{6}\\,\\hat{i}\\right)\\times\\left(91 \\times 10^{-3}\\,\\hat{k}\\right) = \\left(3 \\times 10^{6}\\right)\\left(91 \\times 10^{-3}\\right)\\left(\\hat{i}\\times\\hat{k}\\right)\\)\n\nSince \\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\):\n\n\\(\\vec{v}\\times\\vec{B} = -2{\\cdot}73 \\times 10^{5}\\,\\hat{j}\\)\n\nMultiplying by the negative charge flips it back:\n\n\\(\\vec{F}_B = \\left(-1{\\cdot}6 \\times 10^{-19}\\right)\\left(-2{\\cdot}73 \\times 10^{5}\\,\\hat{j}\\right)\\)\n\n\\(\\boxed{\\ \\vec{F}_B = 4{\\cdot}368 \\times 10^{-14}\\,\\hat{j}\\ \\mathrm{N}\\ }\\)\n\n**TWO sign reversals occur and they cancel** — \\(\\hat{i}\\times\\hat{k} = -\\hat{j}\\) (not \\(+\\hat{j}\\); this is the one cross product that runs against the cyclic order) and the electron's negative charge. Miss either and the force comes out along \\(-\\hat{j}\\), which would send the electron round the other way.\n\n**The radius.** The force is perpendicular to the velocity, so it supplies the centripetal force:\n\n\\(\\dfrac{mv^{2}}{r} = evB \\qquad\\Longrightarrow\\qquad r = \\dfrac{mv}{eB}\\)\n\n\\(r = \\dfrac{9{\\cdot}1 \\times 10^{-31} \\times 3 \\times 10^{6}}{1{\\cdot}6 \\times 10^{-19} \\times 91 \\times 10^{-3}} = \\dfrac{2{\\cdot}73 \\times 10^{-24}}{1{\\cdot}456 \\times 10^{-20}}\\)\n\n\\(\\boxed{\\ r = 1{\\cdot}875 \\times 10^{-4}\\ \\mathrm{m} = 0{\\cdot}19\\ \\mathrm{mm}\\ }\\)\n\n**(b) The path.**\n\n\\(\\vec{v}\\) lies along \\(x\\) and \\(\\vec{B}\\) along \\(z\\), so the velocity is **entirely perpendicular** to the field — there is no component along \\(\\vec{B}\\) to carry the electron out of the plane. The path is therefore a **complete circle**, not a helix, lying in the **\\(xy\\) plane** and of radius \\(0{\\cdot}19\\) mm.\n\n**Its sense is ANTICLOCKWISE** as seen from the \\(+z\\) side. Trace it: the electron starts moving along \\(+x\\) and is pushed along \\(+y\\), so it turns from \\(+x\\) towards \\(+y\\) — which is the anticlockwise direction in the standard orientation of the axes.\n\n*To draw it:* mark the electron at the origin with its velocity arrow along \\(+x\\), the force arrow along \\(+y\\), and the centre of the circle at \\(\\left(0,\\ r\\right)\\) — the centre always lies in the direction of the centripetal force.\n\n**The speed never changes.** The magnetic force stays perpendicular to the velocity at every instant, so it does **no work**: it bends the path without altering the speed or the radius. That is why the orbit closes on itself exactly.\n\n**The period, which the question does not ask but which is the striking result:**\n\n\\(T = \\dfrac{2\\pi m}{eB} = \\dfrac{2\\pi \\times 9{\\cdot}1 \\times 10^{-31}}{1{\\cdot}6 \\times 10^{-19} \\times 0{\\cdot}091} \\approx 3{\\cdot}9 \\times 10^{-10}\\ \\mathrm{s}\\)\n\ncontaining **no speed at all** — a faster electron simply traces a proportionally bigger circle in the same time. This is the fact the cyclotron is built on."
+    },
+    {
+      "hash": "c4eab57b92335dd4e8516550e003d0591fa3533024a05c32cda6431855deffc4",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A potential difference of 1.0 V is applied across a conductor of length 5.0 m and area of cross-section \\(1.0\\ \\mathrm{mm}^{2}\\). When current of 4.25 A is passed through the conductor, calculate\n\n(i) the drift speed and (ii) relaxation time, of electrons. (Given number density of electrons in the conductor, \\(\\mathrm{n} = 8.5 \\times 10^{28}\\ \\mathrm{m}^{-3}\\)).",
+      "solution": "**(i) The drift speed.**\n\nThe current carried by drifting electrons is\n\n\\(I = neAv_d \\qquad\\Longrightarrow\\qquad v_d = \\dfrac{I}{neA}\\)\n\n**Convert the area first**, since \\(\\mathrm{mm}^{2}\\) is the one trap in the data:\n\n\\(A = 1{\\cdot}0\\ \\mathrm{mm}^{2} = 1{\\cdot}0 \\times 10^{-6}\\ \\mathrm{m}^{2}\\)\n\n(a millimetre is \\(10^{-3}\\) m, so a square millimetre is \\(10^{-6}\\) m\\(^{2}\\) — the exponent doubles).\n\n\\(v_d = \\dfrac{4{\\cdot}25}{\\left(8{\\cdot}5 \\times 10^{28}\\right)\\left(1{\\cdot}6 \\times 10^{-19}\\right)\\left(1{\\cdot}0 \\times 10^{-6}\\right)} = \\dfrac{4{\\cdot}25}{1{\\cdot}36 \\times 10^{4}}\\)\n\n\\(\\boxed{\\ v_d = 3{\\cdot}125 \\times 10^{-4}\\ \\mathrm{m\\,s^{-1}}\\ }\\)\n\n**(ii) The relaxation time.**\n\nThe electric field along the conductor:\n\n\\(E = \\dfrac{V}{l} = \\dfrac{1{\\cdot}0}{5{\\cdot}0} = 0{\\cdot}2\\ \\mathrm{V\\,m^{-1}}\\)\n\nand the drift velocity acquired between collisions is\n\n\\(v_d = \\dfrac{eE\\tau}{m} \\qquad\\Longrightarrow\\qquad \\tau = \\dfrac{mv_d}{eE}\\)\n\n\\(\\tau = \\dfrac{\\left(9{\\cdot}1 \\times 10^{-31}\\right)\\left(3{\\cdot}125 \\times 10^{-4}\\right)}{\\left(1{\\cdot}6 \\times 10^{-19}\\right)\\left(0{\\cdot}2\\right)} = \\dfrac{2{\\cdot}844 \\times 10^{-34}}{3{\\cdot}2 \\times 10^{-20}}\\)\n\n\\(\\boxed{\\ \\tau = 8{\\cdot}89 \\times 10^{-15}\\ \\mathrm{s}\\ }\\)\n\n*(Carrying \\(v_d\\) unrounded gives \\(8{\\cdot}89\\); rounding it to \\(3{\\cdot}12 \\times 10^{-4}\\) first gives \\(8{\\cdot}87\\). The difference is rounding, not physics, and either is acceptable to three figures.)*\n\n**What the two numbers say, and they are worth dwelling on.**\n\nA drift speed of \\(0{\\cdot}3\\) mm per second means an individual electron takes over **four hours** to travel the \\(5\\) m of this conductor. Yet a lamp at the far end lights the instant the switch closes — because the **electric field** establishes itself along the wire at nearly the speed of light, setting *every* electron in the wire drifting at once. Nothing has to travel from one end to the other.\n\nA relaxation time of about \\(9\\) femtoseconds means each electron suffers some \\(10^{14}\\) collisions per second. In between it is accelerated by the field, but it never gets far before the next collision randomises its motion — which is precisely why the drift **speed** is constant rather than growing, and why a metal obeys Ohm's law at all.\n\n**The two thermal speeds not to confuse with \\(v_d\\).** The electrons' random thermal speed is about \\(10^{5}\\) m/s, some \\(10^{8}\\) times the drift speed. The drift is a tiny systematic bias superimposed on that violent random motion — which is the whole reason \\(\\tau\\) comes out so short while the current is perfectly steady."
+    }
+  ]
+}
