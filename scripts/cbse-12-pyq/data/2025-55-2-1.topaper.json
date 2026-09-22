@@ -1,0 +1,1044 @@
+{
+ "paper": "55/2/1",
+ "year": 2025,
+ "paperId": "2025-55-2-1",
+ "markingScheme": "out/2025-55-2-1/ms/p00.png … p18.png",
+ "rows": [
+  {
+   "hash": "1ab7bed89216aa95ea4581996607fc92a8d7754db6f56c332b248a85cecbb10e",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Field and Field Lines",
+   "stem": "Two charges \\(-q\\) each are placed at the vertices A and B of an equilateral triangle ABC. If M is the mid-point of AB, the net electric field at C will point along",
+   "options": [
+    {
+     "label": "A",
+     "text": "CA"
+    },
+    {
+     "label": "B",
+     "text": "CB"
+    },
+    {
+     "label": "C",
+     "text": "MC"
+    },
+    {
+     "label": "D",
+     "text": "CM"
+    }
+   ],
+   "answer": "D",
+   "solution": "Both charges are NEGATIVE and equal, so each one ATTRACTS a positive test charge placed at C — the field each produces at C points FROM C TOWARDS that charge.\nSo the field due to the charge at A points along CA, and the field due to the charge at B points along CB. Each has the same magnitude, since the charges are equal and the triangle is equilateral, so both are at the same distance from C:\n\\(E_{A} = E_{B} = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{q}{a^{2}}\\)\nNow add the two vectors. Two equal vectors add along the BISECTOR of the angle between them, and here that angle is the \\(60^{\\circ}\\) angle ACB. The bisector of angle ACB in an equilateral triangle runs from C to the midpoint of AB — which is exactly the point M.\nSo the resultant points from C towards M, that is along CM.\nThe distinction between CM and MC is the whole question, and it is a question about SIGN. Had the two charges been positive they would have repelled, each field would have pointed AWAY from its charge, and the resultant would have pointed along MC — the same line, the opposite sense. Negative charges pull the field back towards themselves, hence CM."
+  },
+  {
+   "hash": "803954f9e75d04445fcee0b112412877a4545c25188ef1d156f3f11d57769eb0",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Current Electricity",
+   "subtopic": "Combination of Resistors",
+   "stem": "A student has three resistors, each of resistance R. To obtain a resistance of \\(\\frac{2}{3}\\)R, she should connect",
+   "options": [
+    {
+     "label": "A",
+     "text": "all the three resistors in series."
+    },
+    {
+     "label": "B",
+     "text": "all the three resistors in parallel."
+    },
+    {
+     "label": "C",
+     "text": "two resistors in series and then this combination in parallel with the third resistor."
+    },
+    {
+     "label": "D",
+     "text": "two resistors in parallel and then this combination in series with the third resistor."
+    }
+   ],
+   "answer": "C",
+   "solution": "Work out what each of the four arrangements gives, and compare with the target \\(\\dfrac{2}{3}R\\).\nALL THREE IN SERIES:\n\\(R_{eq} = 3R\\)\nALL THREE IN PARALLEL:\n\\(R_{eq} = \\dfrac{R}{3}\\)\nTWO IN SERIES, THAT COMBINATION IN PARALLEL WITH THE THIRD. The series pair gives 2R, and putting that in parallel with R:\n\\(R_{eq} = \\dfrac{(2R)(R)}{2R + R} = \\dfrac{2R^{2}}{3R} = \\dfrac{2}{3}R\\)\nwhich is the required value.\nTWO IN PARALLEL, THAT COMBINATION IN SERIES WITH THE THIRD:\n\\(R_{eq} = \\dfrac{R}{2} + R = \\dfrac{3}{2}R\\)\nSo she should connect two resistors in series and then put that combination in parallel with the third.\nA useful check before computing anything: the answer \\(\\dfrac{2}{3}R\\) is LESS than R, and any arrangement whose final step is a SERIES connection must exceed the largest single resistance. That disposes of the all-series and the parallel-then-series options immediately, leaving only two to test."
+  },
+  {
+   "hash": "59020893f8e24a517843e20291d0a710150bb031a83cd1a6fa0cbd5767549df7",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+   "stem": "A 1 cm straight segment of a conductor carrying 1 A current in \\(x\\) direction lies symmetrically at origin of Cartesian coordinate system. The magnetic field due to this segment at point (1m, 1m, 0) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1.0 \\times 10^{-9}\\,\\hat{k}\\) T"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1.0 \\times 10^{-9}\\,\\hat{k}\\) T"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{5.0}{\\sqrt{2}} \\times 10^{-10}\\,\\hat{k}\\) T"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\frac{5.0}{\\sqrt{2}} \\times 10^{-10}\\,\\hat{k}\\) T"
+    }
+   ],
+   "answer": "C",
+   "solution": "Apply the Biot-Savart law to the single short segment:\n\\(d\\vec{B} = \\dfrac{\\mu_{0}}{4\\pi}\\dfrac{I\\,d\\vec{l} \\times \\hat{r}}{r^{2}}\\)\nGEOMETRY. The segment sits at the origin along x, so \\(d\\vec{l} = 10^{-2}\\,\\hat{i}\\ \\mathrm{m}\\). The field point is \\((1, 1, 0)\\), so\n\\(\\vec{r} = \\hat{i} + \\hat{j}, \\qquad r = \\sqrt{2}\\ \\mathrm{m}, \\qquad \\hat{r} = \\dfrac{\\hat{i} + \\hat{j}}{\\sqrt{2}}\\)\nTHE CROSS PRODUCT. Only the \\(\\hat{j}\\) part of \\(\\hat{r}\\) survives, since \\(\\hat{i} \\times \\hat{i} = 0\\):\n\\(d\\vec{l} \\times \\hat{r} = 10^{-2}\\,\\hat{i} \\times \\dfrac{\\hat{i} + \\hat{j}}{\\sqrt{2}} = \\dfrac{10^{-2}}{\\sqrt{2}}\\left(\\hat{i} \\times \\hat{j}\\right) = \\dfrac{10^{-2}}{\\sqrt{2}}\\,\\hat{k}\\)\nSUBSTITUTING, with \\(\\dfrac{\\mu_{0}}{4\\pi} = 10^{-7}\\), \\(I = 1\\) A and \\(r^{2} = 2\\):\n\\(d\\vec{B} = 10^{-7} \\times \\dfrac{1 \\times \\dfrac{10^{-2}}{\\sqrt{2}}}{2}\\,\\hat{k} = \\dfrac{10^{-9}}{2\\sqrt{2}}\\,\\hat{k}\\)\nRationalising to match the printed form, \\(\\dfrac{1}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{4} \\approx 0{\\cdot}354\\), so\n\\(d\\vec{B} = \\dfrac{5{\\cdot}0}{\\sqrt{2}} \\times 10^{-10}\\,\\hat{k}\\ \\mathrm{T}\\)\nTwo things decide the answer. The DIRECTION is \\(+\\hat{k}\\), out of the xy-plane, because \\(\\hat{i} \\times \\hat{j} = +\\hat{k}\\). And the factor \\(\\sqrt{2}\\) enters TWICE — once through \\(r^{2} = 2\\) and once through the unit vector — which is what separates this from the \\(1{\\cdot}0 \\times 10^{-9}\\) options, where only one of the two has been taken."
+  },
+  {
+   "hash": "de8bea49efda99b3b6e09ff02cb787e253ed04a8ba435581c104e754296b5d07",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Magnetism and Matter",
+   "subtopic": "The Bar Magnet",
+   "stem": "The magnetic field due to a small magnetic dipole of dipole moment 'M' at a distance 'r' from the centre along the axis of the dipole is given by",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{\\mu_0}{4\\pi} \\times \\frac{2M}{r^3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{\\mu_0}{4\\pi} \\times \\frac{M}{r^3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{\\mu_0}{4\\pi} \\times \\frac{M}{2r^3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{\\mu_0}{4\\pi} \\times \\frac{2M}{r^2}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "A small magnetic dipole has two standard field expressions, and the question asks for the AXIAL one — the field at a point on the line through the dipole, often called the end-on position:\n\\(B_{axial} = \\dfrac{\\mu_{0}}{4\\pi} \\times \\dfrac{2M}{r^{3}}\\)\nThe companion result, for a point on the perpendicular bisector (the broadside-on or equatorial position), is\n\\(B_{equatorial} = \\dfrac{\\mu_{0}}{4\\pi} \\times \\dfrac{M}{r^{3}}\\)\nso the axial field is TWICE the equatorial field at the same distance, and the two point in opposite senses relative to \\(\\vec{M}\\).\nThe \\(\\dfrac{1}{r^{3}}\\) is the signature of a dipole and is worth checking before anything else: it disposes of the option carrying \\(r^{2}\\), which is the dependence of a single magnetic POLE — and isolated magnetic poles do not exist, which is precisely why the dipole is the simplest magnetic source there is.\nThese expressions are the exact magnetic analogues of the electric dipole's \\(\\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{2p}{r^{3}}\\) and \\(\\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{p}{r^{3}}\\), with \\(\\mu_{0}\\) replacing \\(\\dfrac{1}{\\varepsilon_{0}}\\)."
+  },
+  {
+   "hash": "a37600ea288b199d4cfe39a606c1d84655db9bd643b293319a639e60695cbb5d",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "Lenz's Law and Conservation of Energy",
+   "stem": "In the figure X is a coil wound over a hollow wooden pipe.\n\nA permanent magnet is pushed at a constant speed \\(v\\) from the right into the pipe and it comes out at the left end of the pipe. During the entry and the exit of the magnet, the current in the wire YZ will be from",
+   "options": [
+    {
+     "label": "A",
+     "text": "Y to Z and then Y to Z"
+    },
+    {
+     "label": "B",
+     "text": "Z to Y and then Y to Z"
+    },
+    {
+     "label": "C",
+     "text": "Y to Z and then Z to Y"
+    },
+    {
+     "label": "D",
+     "text": "Z to Y and then Z to Y"
+    }
+   ],
+   "answer": "B",
+   "figureNote": "REQUIRED — the stem says only 'In the figure X is a coil wound over a hollow wooden pipe' and every option is a direction of current in a wire the stem never locates. Page idx 4. LAYOUT AND LABELLING, with the discriminator withheld: a horizontal cylindrical pipe drawn in perspective with a helical winding over it, labelled X above its left end; the two ends of the winding drop vertically from the left and right of the pipe to two lower corners labelled Y (left) and Z (right); a box labelled A sits in the wire between Y and Z and the current in it is marked I; to the right of the pipe a bar magnet is drawn end-on to the pipe with its near (left) end labelled N, and an arrow labelled v points leftward, into the pipe. WITHHELD: the SENSE of the winding, which is drawn and is exactly what the question turns on.",
+   "imageAttached": true,
+   "solution": "The magnet passes right through, so there are TWO separate events, and Lenz's law gives them OPPOSITE senses.\nDURING ENTRY. As the magnet approaches and enters the coil, the flux linked with the coil INCREASES. The induced current must oppose that increase, so it flows in the sense whose own magnetic field OPPOSES the magnet's — presenting a LIKE pole to the approaching magnet and repelling it, resisting the entry.\nDURING EXIT. As the magnet leaves at the far end, the flux through the coil DECREASES. The induced current must now oppose the decrease, so it flows in the sense that tries to MAINTAIN the flux — presenting an UNLIKE pole to the receding magnet and attracting it, resisting the exit.\nOpposing an increase and opposing a decrease are opposite requirements, so the current REVERSES between the two events. Reading the sense off the figure's labelling, it flows from Z to Y during entry and then from Y to Z during exit.\nThe point is that Lenz's law opposes the CHANGE, not the magnet. The coil resists the magnet both coming and going, which is why it takes work to push a magnet through a coil in either direction — and the two options that keep the current in the same direction throughout would mean the coil helped the magnet on one of the two passes, creating energy from nothing."
+  },
+  {
+   "hash": "5e1ad91ae1564e4c936870176bbe4e08af62da487c2d916bc055a7d76e538ee0",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "AC Voltage Applied to an Inductor and a Capacitor",
+   "stem": "The alternating current I in an inductor is observed to vary with time t as shown in the graph for a cycle.\n\nWhich one of the following graphs is the correct representation of wave form of voltage V with time t ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "a plot of V against t that rises linearly from zero at t = 0 to a peak at t = T/2 and then falls linearly back to zero at t = T, staying positive throughout"
+    },
+    {
+     "label": "B",
+     "text": "a plot of V against t that rises linearly from zero to a positive peak, falls linearly through zero at t = T/2 to a negative trough of the same size, and returns to zero at t = T"
+    },
+    {
+     "label": "C",
+     "text": "a plot of V against t that holds one constant positive value from t = 0 to t = T/2 and then one constant negative value of the same magnitude from t = T/2 to t = T"
+    },
+    {
+     "label": "D",
+     "text": "a plot of V against t that is a sine curve — one positive half-cycle from t = 0 to t = T/2 and one negative half-cycle from t = T/2 to t = T"
+    }
+   ],
+   "answer": "C",
+   "figureNote": "REQUIRED — the stem's own graph carries the current waveform ('as shown in the graph') and all four options are DRAWN graphs with no text. Page idx 6. The stem graph is an isosceles triangle: I rises linearly from 0 at t = 0 to a peak at t = T/2 (marked by a dashed vertical) and falls linearly back to 0 at t = T; axes are labelled I (vertical) and t (horizontal) with ticks 0, T/2 and T. The four option shapes are described in the option texts, which is the only way to preserve the discrimination the question tests; the crop is still needed because the reader must be able to check that reading.",
+   "imageAttached": false,
+   "solution": "For an inductor the voltage is proportional to the RATE OF CHANGE of the current, not to the current itself:\n\\(V = L\\dfrac{dI}{dt}\\)\nSo the question is really: what is the slope of the given I-t graph at each instant?\nFROM \\(t = 0\\) TO \\(t = \\dfrac{T}{2}\\). The current rises LINEARLY from zero to its peak. A straight line has a CONSTANT slope, so \\(\\dfrac{dI}{dt}\\) is constant and positive, and V holds one constant POSITIVE value throughout this half.\nFROM \\(t = \\dfrac{T}{2}\\) TO \\(t = T\\). The current falls linearly back to zero. The slope is again constant but now NEGATIVE, and of the same magnitude since the two straight portions are equally steep. So V holds one constant NEGATIVE value of the same size.\nThe voltage waveform is therefore a SQUARE wave: one constant positive value for the first half cycle and one constant negative value for the second.\nThe trap is answering with the shape of the current itself. A triangular current does NOT give a triangular voltage — differentiating a triangle gives a square wave, just as differentiating a square wave would give spikes. The option showing a sine curve makes the same mistake in another costume: only a sinusoidal current gives a sinusoidal voltage, because the sine is the one waveform whose derivative has its own shape."
+  },
+  {
+   "hash": "fcdd3a6bd62a0b85ddc9aff662cf88e25538a360ecfab738120d0da6d45fe859",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "stem": "A transformer is connected to a 200 V ac source. The transformer supplies 3000 V to a device. If the number of turns in the primary coil is 450, then the number of turns in its secondary coil is –",
+   "options": [
+    {
+     "label": "A",
+     "text": "30"
+    },
+    {
+     "label": "B",
+     "text": "450"
+    },
+    {
+     "label": "C",
+     "text": "4500"
+    },
+    {
+     "label": "D",
+     "text": "6750"
+    }
+   ],
+   "answer": "D",
+   "solution": "For an ideal transformer the voltage ratio equals the turns ratio:\n\\(\\dfrac{V_{s}}{V_{p}} = \\dfrac{N_{s}}{N_{p}}\\)\nSubstituting \\(V_{p} = 200\\) V, \\(V_{s} = 3000\\) V and \\(N_{p} = 450\\):\n\\(\\dfrac{3000}{200} = \\dfrac{N_{s}}{450}\\)\n\\(15 = \\dfrac{N_{s}}{450}\\)\n\\(N_{s} = 15 \\times 450\\)\n\\(N_{s} = 6750\\)\nThe secondary has 6750 turns.\nThe sanity check is the direction: the transformer RAISES the voltage from 200 V to 3000 V, so it is a STEP-UP transformer and the secondary must have MORE turns than the primary, not fewer. That rules out 30 at once — it is what comes of taking the ratio upside down — and 450 would mean no transformation at all.\nThe current is stepped down by the same factor of 15, so whatever current the primary draws, the device receives a fifteenth of it."
+  },
+  {
+   "hash": "a5efb884ab1accb0cb2766c99bf147b5f0495c3f04b8bc867105fa48cf664648",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Field and Field Lines",
+   "stem": "Which one of the following statements is correct ?\nElectric field due to static charges is",
+   "options": [
+    {
+     "label": "A",
+     "text": "conservative and field lines do not form closed loops."
+    },
+    {
+     "label": "B",
+     "text": "conservative and field lines form closed loops."
+    },
+    {
+     "label": "C",
+     "text": "non-conservative and field lines do not form closed loops."
+    },
+    {
+     "label": "D",
+     "text": "non-conservative and field lines form closed loops."
+    }
+   ],
+   "answer": "A",
+   "solution": "Both halves of the correct statement are aspects of one fact: the electrostatic field of static charges is CONSERVATIVE.\nCONSERVATIVE means the work done in moving a charge between two points does not depend on the path taken, and equivalently that the work round any CLOSED path is zero:\n\\(\\oint \\vec{E} \\cdot d\\vec{l} = 0\\)\nThis is what allows a potential V to be defined at all: a unique number can be attached to each point only if the work to reach it is path-independent.\nFIELD LINES DO NOT FORM CLOSED LOOPS, and this follows from the same equation. If a field line closed on itself, one could carry a charge once round it always moving WITH the field, doing positive work at every step, and return to the start with energy gained from nothing. So the loop integral could not vanish. Electrostatic field lines therefore always BEGIN on positive charges and END on negative ones (or run off to infinity); they never close.\nSo the electric field due to static charges is conservative and its field lines do not form closed loops.\nThe qualifier \"static\" is load-bearing. An INDUCED electric field, produced by a changing magnetic field, has \\(\\oint \\vec{E} \\cdot d\\vec{l} = -\\dfrac{d\\phi_{B}}{dt} \\neq 0\\): it is non-conservative, its lines DO form closed loops, and no potential can be defined for it. That is the situation the other options describe."
+  },
+  {
+   "hash": "bc86742a69bd59b64dfb489f4f136a8d53134f904e8b7a90531758a99e1140d0",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "A tub is filled with a transparent liquid to a height of 30.0 cm. The apparent depth of a coin lying at the bottom of the tub is found to be 16.0 cm. The speed of light in the liquid will be",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1.6 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2.0 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3.0 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2.5 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Two steps: get the refractive index from the depths, then the speed from the index.\nREFRACTIVE INDEX. For near-normal viewing,\n\\(\\mu = \\dfrac{\\text{real depth}}{\\text{apparent depth}} = \\dfrac{30{\\cdot}0}{16{\\cdot}0} = 1{\\cdot}875\\)\nSPEED OF LIGHT IN THE LIQUID. By definition \\(\\mu = \\dfrac{c}{v}\\), so\n\\(v = \\dfrac{c}{\\mu} = \\dfrac{3 \\times 10^{8}}{1{\\cdot}875}\\)\n\\(v = 1{\\cdot}6 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\)\nThe speed of light in the liquid is \\(1{\\cdot}6 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\).\nTwo checks. The apparent depth is LESS than the real depth, which is what must happen for any \\(\\mu > 1\\) — the bottom always looks closer than it is. And the speed in the medium must be LESS than c, so the option \\(3{\\cdot}0 \\times 10^{8}\\) can be dismissed without any arithmetic; it would require \\(\\mu = 1\\), that is no refraction at all and no apparent shift.\nA refractive index of 1.875 is high for a liquid — higher than water's 1.33 — which is why the shift here is so pronounced."
+  },
+  {
+   "hash": "40ff1f4bca8c2b79cc8bd232895be293b27d15b380e4f474438012bd826fca84",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "Atomic spectral emission lines of hydrogen atom are incident on a zinc surface. The lines which can emit photoelectrons from the surface are members of",
+   "options": [
+    {
+     "label": "A",
+     "text": "Balmer series"
+    },
+    {
+     "label": "B",
+     "text": "Paschen series"
+    },
+    {
+     "label": "C",
+     "text": "Lyman series"
+    },
+    {
+     "label": "D",
+     "text": "Neither Balmer, nor Paschen nor Lyman series"
+    }
+   ],
+   "answer": "C",
+   "solution": "Zinc has a work function of about \\(4{\\cdot}3\\) eV, so only photons carrying MORE than that can eject an electron. The question is which hydrogen series clears the bar.\nEach series is named by the level the electron falls TO, and the energy released is\n\\(E = 13{\\cdot}6\\left(\\dfrac{1}{n_{f}^{2}} - \\dfrac{1}{n_{i}^{2}}\\right)\\ \\mathrm{eV}\\)\nLYMAN SERIES, \\(n_{f} = 1\\). The smallest member is \\(2 \\to 1\\), giving\n\\(13{\\cdot}6\\left(1 - \\dfrac{1}{4}\\right) = 10{\\cdot}2\\ \\mathrm{eV}\\)\nand every other member is larger still, up to the 13.6 eV series limit. All comfortably exceed 4.3 eV.\nBALMER SERIES, \\(n_{f} = 2\\). Its LARGEST member is the series limit, \\(\\infty \\to 2\\), giving\n\\(\\dfrac{13{\\cdot}6}{4} = 3{\\cdot}4\\ \\mathrm{eV}\\)\nwhich is below the work function. No Balmer line can eject an electron from zinc.\nPASCHEN SERIES, \\(n_{f} = 3\\). Its largest member is \\(\\dfrac{13{\\cdot}6}{9} = 1{\\cdot}51\\) eV, smaller still.\nSo the lines that can emit photoelectrons belong to the Lyman series.\nNotice that the comparison to make is with each series' MAXIMUM energy, not a typical member: a series is ruled out only if even its series limit falls short. For Balmer that limit is 3.4 eV against 4.3 eV — not far short, but short, and it is the whole series that fails."
+  },
+  {
+   "hash": "79a47ed8756e3f4c764e009a1a612e3de6e003c2dc72b1a8aac6fbeb1e15182d",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "stem": "The energy of an electron in a hydrogen atom in ground state is \\(-13.6\\) eV. Its energy in an orbit corresponding to quantum number n is \\(-0.544\\) eV. The value of n is",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "4"
+    },
+    {
+     "label": "D",
+     "text": "5"
+    }
+   ],
+   "answer": "D",
+   "solution": "In the Bohr model the energy of the \\(n^{th}\\) level is\n\\(E_{n} = \\dfrac{E_{1}}{n^{2}} = \\dfrac{-13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}\\)\nSetting this equal to the given energy:\n\\(\\dfrac{-13{\\cdot}6}{n^{2}} = -0{\\cdot}544\\)\n\\(n^{2} = \\dfrac{13{\\cdot}6}{0{\\cdot}544} = 25\\)\n\\(n = 5\\)\nThe quantum number is 5.\nThe arithmetic is clean because 0.544 is exactly a twenty-fifth of 13.6, and that is the check worth making: n must come out a whole number, and a value like \\(n^{2} = 24\\) would mean a mistake somewhere, since the model permits only integers.\nNote how crowded the upper levels become — \\(E_{5} = -0{\\cdot}544\\) eV against \\(E_{4} = -0{\\cdot}85\\) eV — because of the \\(\\dfrac{1}{n^{2}}\\). The levels converge on zero, which is the ionisation limit, and that convergence is why the spectral series pile up towards their series limits."
+  },
+  {
+   "hash": "57254fd39db2ed60d8f905aa1b56caf0c09a2e73bab1c04f41816da2e3c7bc65",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "stem": "When the resistance measured between p and n ends of a p-n junction diode is high, it can act as a/an –",
+   "options": [
+    {
+     "label": "A",
+     "text": "resistor"
+    },
+    {
+     "label": "B",
+     "text": "inductor"
+    },
+    {
+     "label": "C",
+     "text": "capacitor"
+    },
+    {
+     "label": "D",
+     "text": "switch"
+    }
+   ],
+   "answer": "C",
+   "solution": "[CBSE accepted TWO answers here. The marking scheme prints \"(A) resistor / (C) capacitor\" verbatim, so a candidate choosing either received the mark and nobody was disadvantaged. The row is shipped as (C), for the reason the second paragraph gives.]\nA high resistance measured from the p end to the n end means the junction is REVERSE BIASED. Under reverse bias the depletion region WIDENS, and it is swept clear of mobile carriers, so it is essentially an insulator.\nThat leaves the structure of a CAPACITOR: two conducting regions — the neutral p-side and the neutral n-side, both well supplied with carriers — separated by the insulating depletion layer acting as the dielectric. A reverse-biased junction therefore stores charge and has a definite capacitance, called the junction or transition capacitance:\n\\(C_{j} \\propto \\dfrac{1}{\\text{depletion width}}\\)\nBecause the width grows with reverse voltage, this capacitance is VOLTAGE-CONTROLLED, which is the whole basis of the varactor diode used to tune radio receivers.\n\"Resistor\" is defensible in the plain sense that anything with a resistance opposes current, but it simply restates the stem rather than naming what the structure becomes. It is also a poor description of the device, since a reverse-biased junction is markedly NON-ohmic — its reverse current barely changes as the voltage rises, so the ratio \\(\\dfrac{V}{I}\\) is not a constant at all."
+  },
+  {
+   "hash": "100c2a1ef88c938e55b447533519bd07b7320dd341ebb831c260038b1d57e29a",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "stem": "Assertion (A) : In a semiconductor diode the thickness of depletion layer is not fixed.\nReason (R) : Thickness of depletion layer in a semiconductor device depends upon many factors such as biasing of the semiconductor.",
+   "context": "For Questions 13 to 16, two statements are given – one labelled Assertion (A) and other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true but Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "A",
+   "solution": "Both statements are TRUE, and the reason is the correct explanation.\nThe ASSERTION is true: the depletion layer's thickness is not a fixed property of the diode. It is set by the balance between diffusion and drift at the junction, and anything that disturbs that balance changes the width.\nThe REASON names the principal factor and is also true. BIASING changes the width directly and substantially:\nFORWARD BIAS opposes the built-in field, letting majority carriers move back into the junction region and neutralise some of the uncovered ions, so the layer NARROWS.\nREVERSE BIAS adds to the built-in field, pulling majority carriers further away and uncovering more ions, so the layer WIDENS.\nThe reason's phrase \"many factors\" is fair: besides the bias, the DOPING concentration matters — heavier doping gives a narrower layer, because fewer atomic layers must be stripped to expose the same charge — and so does TEMPERATURE, through the carrier concentrations.\nBoth are true and the reason explains the assertion. The variability is not a defect but the basis of several devices: it is what makes the varactor's capacitance tunable, and the widening under reverse bias is why a reverse-biased junction blocks so effectively."
+  },
+  {
+   "hash": "f0b7d0fc38cf4890908e71015713656a672892bbeb83610281e9ff0d9978205e",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Atoms",
+   "subtopic": "Bohr Model of the Hydrogen Atom",
+   "stem": "Assertion (A) : In Bohr model of hydrogen atom, the angular momentum of an electron in \\(n^{th}\\) orbit is proportional to the square root of its orbit radius \\(r_n\\).\nReason (R) : According to Bohr model, electron can jump to its nearest orbits only.",
+   "context": "For Questions 13 to 16, two statements are given – one labelled Assertion (A) and other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true but Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C",
+   "solution": "The ASSERTION is TRUE. Bohr's quantisation condition fixes the angular momentum as\n\\(L = \\dfrac{nh}{2\\pi} \\quad\\Longrightarrow\\quad L \\propto n\\)\nand the orbit radius in the same model is\n\\(r_{n} \\propto n^{2} \\quad\\Longrightarrow\\quad n \\propto \\sqrt{r_{n}}\\)\nCombining the two, \\(L \\propto \\sqrt{r_{n}}\\). So the angular momentum is indeed proportional to the square root of the orbit radius.\nThe REASON is FALSE. There is no rule in Bohr's model restricting an electron to its NEAREST orbits. An electron may jump between ANY two stationary orbits, and the photon emitted or absorbed carries the whole energy difference:\n\\(h\\nu = E_{i} - E_{f}\\)\nIndeed the spectral series depend on exactly this freedom: the Lyman series consists of transitions to \\(n = 1\\) from \\(n = 2, 3, 4, \\ldots\\) and beyond, and the Balmer lines visible in the hydrogen spectrum come from levels well above the second.\nSo the assertion is true but the reason is false. Even had the reason been true it would have had nothing to do with the assertion, which concerns the angular momentum of a single stationary orbit and says nothing about transitions at all."
+  },
+  {
+   "hash": "9cc095da9fb93f1286bb721979db8e1ebadb8bb102fa9d5c6dac86d9c32f5c6c",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "stem": "Assertion (A) : Out of Infrared and radio waves, the radio waves show more diffraction effect.\nReason (R) : Radio waves have greater frequency than infrared waves.",
+   "context": "For Questions 13 to 16, two statements are given – one labelled Assertion (A) and other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true but Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "C",
+   "solution": "The ASSERTION is TRUE. Diffraction becomes pronounced when the wavelength is comparable to the size of the obstacle or aperture. Radio waves have wavelengths from centimetres up to kilometres — comparable to hills, buildings and other everyday obstacles — whereas infrared wavelengths are of the order of micrometres, far smaller than anything they meet. So radio waves bend round obstacles noticeably and infrared does not.\nThe REASON is FALSE, and it has the spectrum backwards. On the electromagnetic spectrum, radio waves have the LONGEST wavelengths and therefore the LOWEST frequencies. Infrared lies between radio and visible light, so its frequency is HIGHER than that of radio waves, not lower:\n\\(\\nu = \\dfrac{c}{\\lambda} \\quad\\Longrightarrow\\quad \\lambda_{radio} \\gg \\lambda_{IR} \\ \\text{means} \\ \\nu_{radio} \\ll \\nu_{IR}\\)\nSo the assertion is true but the reason is false.\nIt is worth noticing that the reason states the opposite of what would even support the assertion. Greater diffraction needs a LONGER wavelength, hence a LOWER frequency — so had the reason said \"radio waves have lower frequency than infrared\", it would have been both true and the correct explanation. As printed it is not merely irrelevant; it points the wrong way."
+  },
+  {
+   "hash": "5a064f2113a0dd55ea3a6f461d68f22a14aa69c3f183dc7ef2bd03f13f16bf94",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Alternating Current",
+   "subtopic": "Transformers",
+   "stem": "Assertion (A) : In an ideal step-down transformer, the electrical energy is not lost.\nReason (R) : In a step-down transformer, voltage decreases but the current increases.",
+   "context": "For Questions 13 to 16, two statements are given – one labelled Assertion (A) and other labelled Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below :",
+   "options": [
+    {
+     "label": "A",
+     "text": "If both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "If both Assertion (A) and Reason (R) are true but Reason (R) is not the correct explanation of Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "If Assertion (A) is true but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "If both Assertion (A) and Reason (R) are false."
+    }
+   ],
+   "answer": "B",
+   "solution": "Both statements are TRUE, but the reason is NOT the correct explanation.\nThe ASSERTION is true by the definition of \"ideal\". An ideal transformer is one with no flux leakage, no winding resistance, no eddy currents and no hysteresis, so nothing dissipates energy and the output power equals the input power:\n\\(V_{p}I_{p} = V_{s}I_{s}\\)\nThe REASON is also true. In a step-down transformer the secondary has fewer turns, so the voltage falls; and since the power is conserved, the current must rise in the same proportion:\n\\(\\dfrac{V_{s}}{V_{p}} = \\dfrac{N_{s}}{N_{p}} < 1 \\qquad\\text{and}\\qquad \\dfrac{I_{s}}{I_{p}} = \\dfrac{V_{p}}{V_{s}} > 1\\)\nBut it does not EXPLAIN the assertion, and the direction of the argument is the reason why. Voltage falling while current rises is a CONSEQUENCE of energy being conserved, not its cause. The energy is conserved because the transformer is ideal — because there are no loss mechanisms — and from that fact the reciprocal behaviour of V and I follows. Offering the consequence as the explanation of the premise reverses the logic.\nSo both are true and the reason is not the correct explanation. A real transformer shows the same voltage-down, current-up behaviour and still loses a few per cent of its energy as heat, which shows directly that the reason cannot account for the assertion."
+  },
+  {
+   "hash": "5e8cd2090239f2890ad171caa159afb22dc3f7ae86c1b5ce61be00e60c58a2b9",
+   "ref": "Q17a",
+   "questionNumber": "17 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Electric Current and Ohm's Law",
+   "stem": "Two wires of the same material and the same radius have their lengths in the ratio 2 : 3. They are connected in parallel to a battery which supplies a current of 15 A. Find the current through the wires.",
+   "solution": "The wires are of the SAME material and the SAME radius, so \\(\\rho\\) and A are common to both and the resistance depends on length alone:\n\\(R = \\dfrac{\\rho l}{A} \\quad\\Longrightarrow\\quad R \\propto l\\)\nHence the resistances are in the same ratio as the lengths:\n\\(\\dfrac{R_{1}}{R_{2}} = \\dfrac{l_{1}}{l_{2}} = \\dfrac{2}{3}\\)\nNow use the PARALLEL connection. Both wires have the same potential difference across them, so by Ohm's law the current in each is inversely proportional to its resistance:\n\\(I \\propto \\dfrac{1}{R} \\quad\\Longrightarrow\\quad \\dfrac{I_{1}}{I_{2}} = \\dfrac{R_{2}}{R_{1}} = \\dfrac{3}{2}\\)\nThe currents therefore split in the ratio 3 : 2, so out of 5 equal shares the first wire takes 3 and the second 2:\n\\(I_{1} = \\dfrac{3}{5} \\times 15 = 9\\ \\mathrm{A}\\)\n\\(I_{2} = \\dfrac{2}{5} \\times 15 = 6\\ \\mathrm{A}\\)\nThe currents are 9 A and 6 A, and they correctly total the 15 A supplied.\nThe INVERSION is the step to watch. The lengths are 2 : 3, so the resistances are 2 : 3, but the currents are 3 : 2 — the SHORTER wire, having less resistance, carries the LARGER current."
+  },
+  {
+   "hash": "cad9b2f3a0ee800b60f101e3b3bf44ba3446e689ab46f6033bed64173f4430fa",
+   "ref": "Q17b",
+   "questionNumber": "17 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+   "stem": "In the circuit three ideal cells of e.m.f. V, V and 2V are connected to a resistor of resistance R, a capacitor of capacitance C and another resistor of resistance 2R as shown in figure. In the steady state find (i) the potential difference between P and Q and (ii) potential difference across capacitor C.",
+   "figureNote": "REQUIRED — the stem names the six components but not how they are wired ('as shown in figure'), and both answers depend entirely on the topology. Page idx 10. LAYOUT AND LABELLING: three horizontal branches drawn between a left rail and a right rail, joined at both ends. Top branch: a cell labelled V in series with a resistor labelled R. Middle branch: a cell labelled V in series with a capacitor labelled C; its left end is a node marked P and its right end a node marked Q. Bottom branch: a cell labelled 2V in series with a resistor labelled 2R. WITHHELD: the polarity (which side of each battery symbol is the long plate), which is drawn and is what fixes the signs of both requested potential differences.",
+   "imageAttached": true,
+   "solution": "In the STEADY STATE no current flows through the capacitor branch, because a fully charged capacitor passes nothing. So the current circulates only in the loop containing the cells and the two resistors, and the capacitor branch is a dead end whose voltage we read off at the end.\nTHE CURRENT. Going round the conducting loop, the 2V cell drives against the V cell, and the two resistors R and 2R are in series:\n\\(2V - V = i(2R + R)\\)\n\\(V = 3iR \\quad\\Longrightarrow\\quad i = \\dfrac{V}{3R}\\)\n(i) POTENTIAL DIFFERENCE BETWEEN P AND Q. Travelling from P to Q along the branch containing the cell V and the resistor R, and adding up the changes:\n\\(V_{P} - V_{Q} = -V - iR = -V - \\left(\\dfrac{V}{3R}\\right)R = -V - \\dfrac{V}{3}\\)\n\\(V_{P} - V_{Q} = -\\dfrac{4V}{3}\\)\n(ii) POTENTIAL DIFFERENCE ACROSS THE CAPACITOR. Now travel from P to Q along the OTHER branch, the one containing the cell V and the capacitor C. Since P and Q are the same two points, the total must agree with what we just found:\n\\(V_{P} - V_{Q} = -V + V_{C}\\)\n\\(-\\dfrac{4V}{3} = -V + V_{C}\\)\n\\(V_{C} = -V + \\dfrac{V}{3}\\ \\ \\text{taken to the other side} \\ = -\\dfrac{4V}{3} + V\\)\n\\(V_{C} = -\\dfrac{V}{3}\\)\nThe potential difference across the capacitor is \\(\\dfrac{V}{3}\\) in magnitude, the sign showing which plate is at the higher potential.\nThe method is the one to remember for any steady-state RC network: find the current in the purely conducting loop first, ignoring the capacitor entirely, then get the capacitor's voltage by equating two routes between the SAME pair of nodes. No current flows through C, so no IR drop occurs in its branch and the whole of the branch's voltage sits across the capacitor."
+  },
+  {
+   "hash": "be2888760d23c86feb03013432fc13b81c72f07d667e53f3b36156296c7f839b",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Interference and Young's Experiment",
+   "stem": "In a double-slit experiment, \\(6^{th}\\) dark fringe is observed at a certain point of the screen. A transparent sheet of thickness t and refractive index n is now introduced in the path of one of the two interfering waves to increase its phase by \\(2\\pi (n - 1) t/\\lambda\\). The pattern is shifted and \\(8^{th}\\) bright fringe is observed at the same point. Find the relation for thickness t in terms of n and \\(\\lambda\\).",
+   "solution": "Work in PHASE throughout, since the stem hands us the extra phase directly.\nPHASE AT THE POINT BEFORE THE SHEET IS INTRODUCED. A dark fringe occurs at an ODD multiple of \\(\\pi\\), and the \\(6^{th}\\) dark fringe is the sixth such:\n\\(\\phi_{6} = (2 \\times 6 - 1)\\pi = 11\\pi\\)\nPHASE AFTER THE SHEET IS INTRODUCED. A bright fringe occurs at an EVEN multiple of \\(\\pi\\), and the \\(8^{th}\\) bright fringe is\n\\(\\phi_{8} = 2 \\times 8\\pi = 16\\pi\\)\nTHE EXTRA PHASE supplied by the sheet is given in the stem as\n\\(\\Delta\\phi = \\dfrac{2\\pi(n - 1)t}{\\lambda}\\)\nSince the point on the screen is the SAME point, the sheet must have raised the phase there from \\(11\\pi\\) to \\(16\\pi\\):\n\\(\\Delta\\phi + \\phi_{6} = \\phi_{8}\\)\n\\(\\dfrac{2\\pi(n - 1)t}{\\lambda} + 11\\pi = 16\\pi\\)\n\\(\\dfrac{2\\pi(n - 1)t}{\\lambda} = 5\\pi\\)\n\\(t = \\dfrac{5\\lambda}{2(n - 1)}\\)\nThe same result follows in path difference: the \\(6^{th}\\) dark fringe is at \\(\\dfrac{11\\lambda}{2}\\) and the \\(8^{th}\\) bright at \\(8\\lambda\\), and the sheet adds \\((n-1)t\\), so \\((n-1)t = 8\\lambda - \\dfrac{11\\lambda}{2} = \\dfrac{5\\lambda}{2}\\).\nThe counting convention is where this question is won or lost: the \\(m^{th}\\) DARK fringe carries \\((2m - 1)\\pi\\), not \\(2m\\pi\\), so the sixth dark fringe is at \\(11\\pi\\) and not \\(12\\pi\\). Getting that wrong shifts the answer by a whole half-wavelength of thickness."
+  },
+  {
+   "hash": "805bbfeceb32900728b420e651b1bb40a5a69e7bf6b0e59f87e8ad371891f7c8",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+   "stem": "Two concave lenses A and B, each of focal length 8.0 cm are arranged coaxially 16 cm apart as shown in figure. An object P is placed at a distance of 4.0 cm from A. Find the position and nature of the final image formed.",
+   "figureNote": "ILLUSTRATIVE — every quantity needed is already in the stem in words (both focal lengths, the 16 cm separation, the 4.0 cm object distance) and the drawing adds only the arrangement, so the row is answerable from text alone. Page idx 10. The figure shows a point marked P with a dot on the left, then two biconcave lens symbols side by side labelled A (left) and B (right) beneath them.",
+   "imageAttached": false,
+   "solution": "Two lenses in succession: solve the first, then treat its image as the object for the second.\nFIRST LENS A. It is CONCAVE, so \\(f_{1} = -8{\\cdot}0\\) cm, and the object is real at \\(u_{1} = -4{\\cdot}0\\) cm:\n\\(\\dfrac{1}{v_{1}} - \\dfrac{1}{u_{1}} = \\dfrac{1}{f_{1}}\\)\n\\(\\dfrac{1}{v_{1}} - \\dfrac{1}{(-4)} = \\dfrac{1}{-8}\\)\n\\(\\dfrac{1}{v_{1}} = -\\dfrac{1}{8} - \\dfrac{1}{4} = -\\dfrac{1}{8} - \\dfrac{2}{8} = -\\dfrac{3}{8}\\)\n\\(v_{1} = -\\dfrac{8}{3}\\ \\mathrm{cm} \\approx -2{\\cdot}67\\ \\mathrm{cm}\\)\nThe negative sign places this image on the SAME side as the object — a virtual image, as a concave lens always gives for a real object.\nSECOND LENS B, 16 cm further along. The first image lies \\(\\dfrac{8}{3}\\) cm to the LEFT of A, hence\n\\(16 + \\dfrac{8}{3} = \\dfrac{56}{3}\\ \\mathrm{cm}\\)\nto the left of B, so it is a real object for B at \\(u_{2} = -\\dfrac{56}{3}\\) cm, with \\(f_{2} = -8{\\cdot}0\\) cm:\n\\(\\dfrac{1}{v_{2}} - \\dfrac{1}{\\left(-\\dfrac{56}{3}\\right)} = \\dfrac{1}{-8}\\)\n\\(\\dfrac{1}{v_{2}} = -\\dfrac{1}{8} - \\dfrac{3}{56} = -\\dfrac{7}{56} - \\dfrac{3}{56} = -\\dfrac{10}{56} = -\\dfrac{5}{28}\\)\n\\(v_{2} = -\\dfrac{28}{5} = -5{\\cdot}6\\ \\mathrm{cm}\\)\nThe final image is formed 5.6 cm from lens B, on the SAME side as the incoming light, and it is VIRTUAL (and erect and diminished).\nThe result could have been predicted in kind if not in number: a concave lens can never form a real image of a real object, and feeding one concave lens's virtual image into a second concave lens only diverges the light further. Two diverging elements in series cannot converge anything."
+  },
+  {
+   "hash": "697be7ac47317cef6fafe4bd7f4f6e42a787933cd5d4f5602620c253ffe239fc",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "A light of wavelength 400 nm is incident on metal surface whose work function is \\(3.0 \\times 10^{-19}\\) J. Calculate the speed of the fastest photoelectrons emitted.",
+   "solution": "The FASTEST photoelectrons are those that emerge with the maximum kinetic energy, which Einstein's equation gives as the photon energy less the work function:\n\\(\\dfrac{hc}{\\lambda} = \\phi_{0} + \\dfrac{1}{2}mv_{max}^{2}\\)\nPHOTON ENERGY, with \\(\\lambda = 400\\ \\mathrm{nm} = 4 \\times 10^{-7}\\) m:\n\\(\\dfrac{hc}{\\lambda} = \\dfrac{\\left(6{\\cdot}63 \\times 10^{-34}\\right)\\left(3 \\times 10^{8}\\right)}{4 \\times 10^{-7}} = \\dfrac{19{\\cdot}89 \\times 10^{-26}}{4 \\times 10^{-7}}\\)\n\\(\\dfrac{hc}{\\lambda} = 4{\\cdot}97 \\times 10^{-19}\\ \\mathrm{J}\\)\nMAXIMUM KINETIC ENERGY:\n\\(\\dfrac{1}{2}mv_{max}^{2} = 4{\\cdot}97 \\times 10^{-19} - 3{\\cdot}0 \\times 10^{-19} \\approx 2{\\cdot}0 \\times 10^{-19}\\ \\mathrm{J}\\)\nSPEED, with \\(m = 9{\\cdot}1 \\times 10^{-31}\\) kg:\n\\(v_{max}^{2} = \\dfrac{2 \\times 2{\\cdot}0 \\times 10^{-19}}{9 \\times 10^{-31}} = \\dfrac{4 \\times 10^{-19}}{9 \\times 10^{-31}} \\approx 4{\\cdot}4 \\times 10^{11}\\)\n\\(v_{max} \\approx \\dfrac{2}{3} \\times 10^{6} \\approx 6{\\cdot}7 \\times 10^{5}\\ \\mathrm{m\\,s^{-1}}\\)\nThe fastest photoelectrons leave at about \\(6{\\cdot}7 \\times 10^{5}\\ \\mathrm{m\\,s^{-1}}\\).\nThat is roughly 0.2% of the speed of light, which retrospectively justifies using the non-relativistic \\(\\dfrac{1}{2}mv^{2}\\) — a check worth making whenever an electron speed comes out of a photoelectric calculation, since a photon of a few times this energy would push it into the range where the classical formula starts to mislead."
+  },
+  {
+   "hash": "8fbc25a5dcada6a253d89a813c220b6a5d754a13b4c44868562221823056fb27",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "stem": "The threshold voltage of a silicon diode is 0.7 V. It is operated at this point by connecting the diode in series with a battery of V volt and a resistor of 1000 \\(\\Omega\\). Find the value of V when the current drawn is 15 mA.",
+   "solution": "The diode is OPERATED AT its threshold voltage, so the potential difference across the diode itself is fixed at \\(0{\\cdot}7\\) V. The battery must supply that, plus whatever is dropped across the series resistor.\nApplying Kirchhoff's loop rule to the single loop:\n\\(V = V_{0} + IR\\)\n\\(V - V_{0} = IR\\)\nSubstituting \\(V_{0} = 0{\\cdot}7\\) V, \\(I = 15\\ \\mathrm{mA} = 15 \\times 10^{-3}\\) A and \\(R = 1000\\ \\Omega\\):\n\\(V - 0{\\cdot}7 = \\left(15 \\times 10^{-3}\\right)(1000) = 15\\)\n\\(V = 15 + 0{\\cdot}7\\)\n\\(V = 15{\\cdot}7\\ \\mathrm{V}\\)\nThe battery must supply 15.7 V.\nAlmost all of that — 15 V of it — is dropped across the resistor, and only 0.7 V across the diode. This is the normal state of affairs in a diode circuit and the reason the series resistor is there at all: once the diode is past its knee voltage, its own drop stays pinned near 0.7 V however hard it is driven, so the resistor is what actually sets the current. Without it the current would be limited only by the diode's tiny forward resistance, and the diode would be destroyed."
+  },
+  {
+   "hash": "6fe1f4b3d6d5b0c3fd154d84c4de765f530045f0b22a3dbd8a6b97d468211adc",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Current Electricity",
+   "subtopic": "Cells, EMF and Internal Resistance",
+   "stem": "(a) A cell of e.m.f. E and internal resistance r is connected with a variable external resistance R and a voltmeter showing potential drop \\(V\\) across R. Obtain the relationship between \\(V\\), E, R and r.\n(b) Draw the shape of the graph showing the variation of terminal voltage V of the cell as a function of current I drawn from it. How one can determine the e.m.f. of the cell and its internal resistance from this graph ?",
+   "solution": "(a) THE RELATIONSHIP BETWEEN V, E, R AND r.\nThe cell drives current round a loop containing its own internal resistance r and the external R in series, so\n\\(I = \\dfrac{E}{R + r}\\)\nThe voltmeter reads the potential drop across R alone, which by Ohm's law is\n\\(V = IR\\)\nSubstituting for I:\n\\(V = \\dfrac{ER}{R + r}\\)\nEquivalently, \\(V = E - Ir\\): the terminal voltage is the emf less the drop across the internal resistance.\n(b) THE GRAPH AND WHAT IT YIELDS.\nPlot V (volt) on the vertical axis against I (ampere) on the horizontal. From \\(V = E - Ir\\) this is a STRAIGHT LINE with a NEGATIVE slope, starting at a positive intercept on the V-axis and falling as the current increases, meeting the I-axis at some \\(I_{0}\\).\nDETERMINING THE EMF. Comparing \\(V = E - Ir\\) with \\(y = mx + c\\), the INTERCEPT on the V-axis is c = E. Physically that intercept is the terminal voltage at \\(I = 0\\), which is the open-circuit condition — and the terminal voltage on open circuit IS the emf.\nDETERMINING THE INTERNAL RESISTANCE. The slope is \\(-r\\), so the internal resistance is the MAGNITUDE of the slope:\n\\(r = \\left|\\dfrac{\\Delta V}{\\Delta I}\\right|\\)\nNote what the two extremes of the line mean. Where it meets the I-axis, \\(V = 0\\) and \\(I_{0} = \\dfrac{E}{r}\\): that is the short-circuit current, the largest the cell can deliver, set by the internal resistance alone. A good cell has a small r, which shows on the graph as a line that is nearly FLAT — its terminal voltage barely sags however much current is drawn."
+  },
+  {
+   "hash": "f4e827c95b5dbd797be5f9215ab3c28bcb4d5f8e0152baebf43318f447ad55e7",
+   "ref": "Q23a",
+   "questionNumber": "23 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Magnetic Force and Motion in a Magnetic Field",
+   "stem": "In a region of a uniform electric field \\(\\vec{E}\\), a negatively charged particle is moving with a constant velocity \\(\\vec{v} = -v_0\\hat{i}\\) near a long straight conductor coinciding with \\(\\mathrm{XX}'\\) axis and carrying current I towards \\(-\\)X axis. The particle remains at a distance d from the conductor.\n(i) Draw diagram showing direction of electric and magnetic fields.\n(ii) What are the various forces acting on the charged particle ?\n(iii) Find the value of \\(v_0\\) in terms of E, d and I.",
+   "solution": "The particle moves with CONSTANT velocity, which is the key to the whole question: constant velocity means zero acceleration, hence zero NET force, so the two forces acting on it must cancel exactly.\n(i) DIRECTIONS OF THE FIELDS.\nDraw the conductor along the x-axis with its current I pointing towards \\(-X\\), and the particle at a height d above it, moving towards \\(-X\\) as well since \\(\\vec{v} = -v_{0}\\hat{i}\\).\nTHE MAGNETIC FIELD at the particle's position is that of the long straight wire. For a current in \\(-\\hat{i}\\), the right-hand rule gives, at a point ABOVE the wire, a field directed INTO the plane of the paper, that is along \\(-\\hat{k}\\). Mark it with crosses.\nTHE ELECTRIC FIELD must point UPWARDS, along \\(+\\hat{j}\\). The reason is given in part (ii): the electric force on the NEGATIVE particle is opposite to \\(\\vec{E}\\), and it has to point downwards to balance the magnetic force.\n(ii) THE FORCES ACTING.\nTwo forces act, and they are equal and opposite:\nTHE MAGNETIC FORCE, \\(\\vec{F}_{B} = q\\left(\\vec{v} \\times \\vec{B}\\right)\\). With \\(q = -e\\), \\(\\vec{v} = -v_{0}\\hat{i}\\) and \\(\\vec{B} = -B\\hat{k}\\), the two minus signs on the charge and velocity cancel and \\(\\hat{i} \\times \\hat{k} = -\\hat{j}\\) supplies a third, leaving a force along \\(+\\hat{j}\\) — UPWARDS, of magnitude \\(ev_{0}B\\).\nTHE ELECTRIC FORCE, \\(\\vec{F}_{E} = q\\vec{E} = -e\\vec{E}\\), which for \\(\\vec{E}\\) along \\(+\\hat{j}\\) points DOWNWARDS, of magnitude eE.\n(Gravity is present too but is utterly negligible beside these.)\n(iii) THE VALUE OF \\(v_{0}\\).\nSetting the two magnitudes equal:\n\\(ev_{0}B = eE \\quad\\Longrightarrow\\quad v_{0} = \\dfrac{E}{B}\\)\nand the field of the long straight wire at distance d is \\(B = \\dfrac{\\mu_{0}I}{2\\pi d}\\), so\n\\(v_{0} \\times \\dfrac{\\mu_{0}I}{2\\pi d} = E\\)\n\\(v_{0} = \\dfrac{2\\pi dE}{\\mu_{0}I}\\)\nThe charge e has cancelled, which is worth noticing: the balancing speed is the same for ANY charge, positive or negative, large or small. That is exactly the principle of the VELOCITY SELECTOR — crossed electric and magnetic fields transmit only particles of one particular speed \\(\\dfrac{E}{B}\\), whatever their charge or mass."
+  },
+  {
+   "hash": "98eeaf6d09822f84ea9fd5d5b782d3b7582fd34b7d5f897a7377958684ed21c8",
+   "ref": "Q23b",
+   "questionNumber": "23 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Ampere's Circuital Law and the Solenoid",
+   "stem": "Two infinitely long conductors kept along \\(\\mathrm{XX}'\\) and \\(\\mathrm{YY}'\\) axes are carrying current \\(I_1\\) and \\(I_2\\) along \\(-\\)X axis and \\(-\\)Y axis respectively. Find the magnitude and direction of the net magnetic field produced at point P(X, Y).",
+   "solution": "Each conductor produces its own field at P, and the two must be added as VECTORS. The useful fact is that both turn out to lie along the same axis.\nFIELD DUE TO THE CONDUCTOR ALONG \\(\\mathrm{XX}'\\), carrying \\(I_{1}\\) towards \\(-X\\). The point P(X, Y) is at a perpendicular distance Y from this conductor, so the magnitude is \\(\\dfrac{\\mu_{0}I_{1}}{2\\pi Y}\\). For a current along \\(-\\hat{i}\\) and a field point ABOVE the wire, the right-hand rule gives a field INTO the page:\n\\(\\vec{B}_{1} = \\dfrac{\\mu_{0}I_{1}}{2\\pi Y}\\left(-\\hat{k}\\right)\\)\nFIELD DUE TO THE CONDUCTOR ALONG \\(\\mathrm{YY}'\\), carrying \\(I_{2}\\) towards \\(-Y\\). The perpendicular distance from this conductor to P is X, so the magnitude is \\(\\dfrac{\\mu_{0}I_{2}}{2\\pi X}\\). For a current along \\(-\\hat{j}\\) and a field point to its RIGHT, the right-hand rule gives a field OUT of the page:\n\\(\\vec{B}_{2} = \\dfrac{\\mu_{0}I_{2}}{2\\pi X}\\left(+\\hat{k}\\right)\\)\nADDING THEM. Both lie along the z-axis and point in OPPOSITE senses, so they subtract:\n\\(\\vec{B}_{P} = \\vec{B}_{1} + \\vec{B}_{2}\\)\n\\(\\vec{B}_{P} = \\dfrac{\\mu_{0}}{2\\pi}\\left[\\dfrac{I_{2}}{X} - \\dfrac{I_{1}}{Y}\\right]\\hat{k}\\)\nThe direction is along the Z-AXIS — out of the plane if \\(\\dfrac{I_{2}}{X}\\) exceeds \\(\\dfrac{I_{1}}{Y}\\), into it if not.\nThat the two fields are antiparallel is forced by the geometry: both conductors carry current in a NEGATIVE coordinate direction, and P lies on the positive side of each, so the two circulations oppose at that point. Note also that the field vanishes wherever \\(\\dfrac{I_{1}}{Y} = \\dfrac{I_{2}}{X}\\), which is a straight line through the origin — a null line rather than a null point."
+  },
+  {
+   "hash": "3a581e280dfc9070a4032e145797d2d1f7083dd38072e8cba1d47c15e7b6fbfb",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Induction",
+   "subtopic": "AC Generator",
+   "stem": "(a) State Lenz's law.\n(b) In the given figure :\n(i) Identify the machine.\n(ii) Name the parts P and Q and R of the machine.\n(iii) Give the polarities of the magnetic poles.\n(iv) Write the two ways of increasing the output voltage.",
+   "figureNote": "REQUIRED — part (b) says only 'In the given figure' and then asks the reader to identify the machine and name three of its parts, so without the drawing four of the five sub-parts are unanswerable. Page idx 12. LAYOUT AND LABELLING ONLY, and the identification is deliberately WITHHELD: a hollow rectangular yoke drawn in perspective, open at the front, with a block-shaped piece projecting inward from each of its two inner faces; between those two pieces sits a flat rectangular loop, labelled R by a short leader line. A shaft runs from the loop out to the lower right along a dashed axis; mounted on that shaft are two rings, labelled P. Two contact pieces, labelled Q, press against the rings from the left; a coiled lead runs from each contact leftwards to a pair of terminals, and a circle marked V is drawn between the two leads. NOT SAID: what the machine is, what P, Q and R are called, or which end of the yoke is which pole — those are sub-parts (i), (ii) and (iii).",
+   "imageAttached": true,
+   "solution": "(a) LENZ'S LAW. The polarity of the induced emf is such that it tends to produce a current which OPPOSES the change in magnetic flux that produced it.\nIt is a statement of energy conservation: an induced effect that AIDED the change would make the change grow of its own accord and deliver energy from nothing.\n(b) READING THE MACHINE.\n(i) THE MACHINE is an AC GENERATOR (an alternating-current dynamo).\n(ii) THE PARTS:\nP — the SLIP RINGS. Two separate continuous rings, one joined to each end of the coil, rotating with it.\nQ — the CARBON BRUSHES. Fixed contacts pressing against the slip rings, carrying the output to the external circuit.\nR — the ARMATURE COIL, the rotating winding in which the emf is induced.\n(iii) THE POLARITIES: the pole piece on the LEFT is the NORTH pole and the one on the RIGHT the SOUTH pole (or the reverse — either assignment is consistent, since reversing both merely reverses the sign of the output).\n(iv) TWO WAYS OF INCREASING THE OUTPUT VOLTAGE. The peak emf is\n\\(\\varepsilon_{0} = NBA\\omega\\)\nso any factor on the right will serve. Two convenient ones:\nINCREASE THE NUMBER OF TURNS N in the armature coil.\nINCREASE THE SPEED OF ROTATION \\(\\omega\\).\n(Increasing the field strength B, by using stronger magnets or an iron core, works equally well.)\nIt is worth being clear why the SLIP RINGS matter. Being continuous rings, each keeps its own coil end permanently connected to its own brush, so the natural reversal of the emf every half revolution is passed out to the circuit unchanged — which is what makes the output alternating. Replacing them with a SPLIT-RING commutator, which swaps the connections at each half turn, would reverse every second half cycle and turn the same machine into a DC generator."
+  },
+  {
+   "hash": "1eda91c6ea3efc65434ae71b81162849e4cfc7ae5b8226eeb83062dd78a005f7",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Electromagnetic Waves",
+   "subtopic": "Electromagnetic Spectrum",
+   "stem": "(a) The electric field \\(\\vec{E}\\) of an electromagnetic wave propagating in north direction is oscillating in up and down direction. Describe the direction of magnetic field \\(\\vec{B}\\) of the wave.\n(b) Are the wave length of radio waves and microwaves longer or shorter than those detectable by human eyes ?\n(c) Write main use of each of the following in human life :\n(i) Infrared waves (ii) Gamma rays",
+   "solution": "(a) DIRECTION OF THE MAGNETIC FIELD.\nIn an electromagnetic wave, \\(\\vec{E}\\), \\(\\vec{B}\\) and the direction of propagation are mutually PERPENDICULAR, and they form a right-handed set in the order \\(\\vec{E} \\times \\vec{B}\\) pointing along the direction of travel.\nHere the wave travels NORTH and \\(\\vec{E}\\) oscillates UP and DOWN (vertically). The magnetic field must then be perpendicular to both, so it oscillates along the EAST-WEST direction, horizontally.\n(b) WAVELENGTHS OF RADIO WAVES AND MICROWAVES.\nBoth are LONGER than those the human eye can detect. Visible light spans roughly 400 nm to 700 nm; microwaves run from about 1 mm to 0.1 m, and radio waves from there up to kilometres — longer by factors of thousands to billions.\n(c) MAIN USES.\n(i) INFRARED WAVES: used in PHYSIOTHERAPY, where infrared lamps warm tissue to ease muscular pain and improve circulation. (Equally acceptable: television and appliance remote controls; satellite imaging of crops and for military purposes; and the maintenance of the Earth's average temperature through the greenhouse effect.)\n(ii) GAMMA RAYS: used in the TREATMENT OF CANCER, where their high energy destroys malignant tissue in radiotherapy. (Equally acceptable: sterilising surgical instruments, and diagnostic imaging.)\nThe two uses sit at opposite ends of the photon-energy scale, and that is what decides them. Infrared photons carry a fraction of an electron-volt, enough to set molecules vibrating and so to WARM tissue; gamma photons carry millions of electron-volts, enough to ionise and break molecules and so to DESTROY it."
+  },
+  {
+   "hash": "d276eddfddd2b43626802637f70894f7ef1d5039a8cdd5e6b0d3d2cdd6cb548c",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Refraction and Total Internal Reflection",
+   "stem": "(a) When a parallel beam of light enters water surface obliquely at some angle, what is the effect on the width of the beam ?\n(b) With the help of a ray diagram, show that a straw appears bent when it is partly dipped in water and explain it.\n(c) Explain the transmission of optical signal through an optical fibre by a diagram.",
+   "solution": "(a) EFFECT ON THE WIDTH OF THE BEAM.\nThe width INCREASES.\nGoing from air into water the light bends TOWARDS the normal, so the angle inside is smaller than the angle outside. For a beam of finite width striking the surface, the two edges meet the surface at points a fixed distance apart, and the beam's width is measured perpendicular to its own direction:\n\\(\\dfrac{w_{water}}{w_{air}} = \\dfrac{\\cos r}{\\cos i}\\)\nSince \\(r < i\\), \\(\\cos r > \\cos i\\) and the ratio exceeds 1. The refracted beam is WIDER than the incident one.\n(b) WHY A STRAW APPEARS BENT.\nDraw the straw dipped obliquely into a beaker of water. Take a point on the submerged part and draw two rays from it to the surface. Each is refracted AWAY from the normal on leaving the water, since it passes from denser to rarer. Produce the two emergent rays BACKWARDS as dotted lines; they meet at a point ABOVE the true one.\nSo every submerged point appears RAISED, by the factor of the apparent-depth relation. The part of the straw above water is seen in its true position, while the part below is seen lifted, and the straw appears to BEND sharply at the water surface.\n(c) TRANSMISSION THROUGH AN OPTICAL FIBRE.\nDraw a long fibre with an inner CORE of high refractive index surrounded by a CLADDING of lower refractive index. A ray entering at one end strikes the core-cladding boundary at an angle GREATER than the critical angle for that pair, so it is TOTALLY INTERNALLY REFLECTED — no light escapes. It strikes the opposite wall at the same angle and is reflected again, and so on, zig-zagging along the fibre and emerging at the far end.\nTotal internal reflection is the reason the signal survives: unlike a mirror, which absorbs a few per cent at every bounce, total internal reflection returns ESSENTIALLY ALL the light, so a signal can travel kilometres through thousands of reflections — and round bends, since the ray simply follows the fibre."
+  },
+  {
+   "hash": "0fe6f3b716286beb6f68b6ec59ac92bb0d0ec4c0833343f380fd40b6d9deb449",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Nuclei",
+   "subtopic": "Mass-Energy and Nuclear Binding Energy",
+   "stem": "(a) Show the variation of binding energy per nucleon with mass number. Write the significance of the binding energy curve.\n(b) Two nuclei with lower binding energy per nucleon form a nuclei with more binding energy per nucleon.\n(i) What type of nuclear reaction is it ?\n(ii) Whether the total mass of nuclei increases, decreases or remains unchanged ?\n(iii) Does the process require energy or produce energy ?",
+   "solution": "(a) THE BINDING-ENERGY CURVE AND ITS SIGNIFICANCE.\nPlot binding energy per nucleon (MeV) against mass number A. The curve rises STEEPLY for small A, reaches a broad maximum of about 8.5 MeV per nucleon near \\(A \\approx 56\\) (the iron region), and then declines SLOWLY for heavy nuclei, reaching about 7.6 MeV at uranium. Mark \\(^{2}\\mathrm{H}\\) low at the left, \\(^{56}\\mathrm{Fe}\\) at the peak and \\(^{235}\\mathrm{U}\\) on the falling tail.\nSIGNIFICANCE. The curve explains WHY light nuclei undergo FUSION and heavy nuclei undergo FISSION — both processes move nucleons towards the peak, where they are more tightly bound, and the surplus binding energy is released. It also shows, through the flatness of the plateau, that nuclear forces are SHORT-RANGED and SATURATED: a nucleon deep inside a nucleus binds only to its immediate neighbours, so its share of the binding stops growing once the nucleus is large enough.\n(b) TWO NUCLEI COMBINING INTO A MORE TIGHTLY BOUND ONE.\n(i) TYPE OF REACTION: NUCLEAR FUSION. Two lighter nuclei are combining into a heavier one, and the products lie nearer the peak of the curve.\n(ii) THE TOTAL MASS DECREASES. Greater binding energy per nucleon means a greater mass defect, so the product is lighter than the sum of its parts.\n(iii) THE PROCESS PRODUCES ENERGY. The lost mass appears as energy, \\(E = \\Delta m\\,c^{2}\\).\nThe three answers are one statement told three ways, and that is the point worth carrying away: \"more tightly bound\", \"lighter\" and \"releases energy\" are the same fact in the languages of binding energy, mass and energy. Whenever the binding energy per nucleon increases, mass must be lost and energy must come out — which is as true of fission as of fusion."
+  },
+  {
+   "hash": "faad527cb52687313da7e8ee10f75208b54aca71d59848d967080d94abc5adf0",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+   "subtopic": "p-n Junction and the Semiconductor Diode",
+   "stem": "(a) What are majority and minority charge carriers in an extrinsic semiconductor ?\n(b) A p-n junction is forward biased. Describe the movement of the charge carriers which produce current in it.\n(c) The graph shows the variation of current with voltage for a p-n junction diode.\n\nEstimate the dynamic resistance of diode at V = \\(-0.6\\) volt.",
+   "figureNote": "REQUIRED for sub-part (c) — the stem says only 'The graph shows the variation of current with voltage' and the value asked for is read off it. Page idx 14. AXES AND LABELLING, with the curve's reverse branch withheld: the vertical axis is labelled I (mA) with ticks at 10, 20 and 30 above the origin; the horizontal axis is labelled V (volts) with ticks at -1.2, -1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8 and a broken-axis mark to the left of -1.2 leading to a single tick at -12.0. The region left of the origin is captioned 'Reverse bias' and the region right of it 'Forward bias'. WITHHELD: the shape of the plotted curve on the reverse side, which is exactly what fixes the answer at V = -0.6 V.",
+   "imageAttached": true,
+   "solution": "(a) MAJORITY AND MINORITY CHARGE CARRIERS.\nIn an extrinsic semiconductor, the charge carriers whose number density is LARGE are the MAJORITY carriers, and those whose number density is SMALL are the MINORITY carriers.\nWhich is which is decided by the dopant. In n-type material a pentavalent dopant floods the crystal with electrons, so electrons are the majority carriers and holes the minority. In p-type material a trivalent dopant creates an excess of holes, so holes are the majority and electrons the minority. The two densities are tied together at a given temperature by \\(n_{e}n_{h} = n_{i}^{2}\\), so raising one necessarily suppresses the other.\n(b) MOVEMENT OF CARRIERS UNDER FORWARD BIAS.\nThe applied voltage opposes the built-in field, lowering the barrier and narrowing the depletion region. Majority carriers on each side can then cross:\nELECTRONS from the n-side cross the depletion region and enter the p-side.\nHOLES from the p-side cross the junction and enter the n-side.\nThe two motions are in opposite directions, but because the carriers have opposite charges the two CONVENTIONAL currents are in the SAME direction and ADD. Near the junction the injected carriers recombine with the majority carriers they meet, and the resulting current is supplied continuously by the battery.\n(c) DYNAMIC RESISTANCE AT \\(V = -0{\\cdot}6\\) V.\nDynamic resistance is the slope of the characteristic read the other way up:\n\\(r_{d} = \\dfrac{\\Delta V}{\\Delta I}\\)\nAt \\(V = -0{\\cdot}6\\) V the diode is REVERSE biased, and on this graph the current there is essentially ZERO and FLAT — the curve runs horizontally, so a change in voltage produces no measurable change in current:\n\\(\\Delta I = 0 \\quad\\Longrightarrow\\quad r_{d} = \\dfrac{\\Delta V}{0} \\rightarrow \\infty\\)\nThe dynamic resistance is INFINITE (very large).\nThis is the behaviour that makes a diode useful: effectively an open circuit in reverse and a near short circuit in forward, which is what allows it to rectify. Note that the dynamic resistance is quite different from the static ratio \\(\\dfrac{V}{I}\\) — for a non-ohmic device the two disagree at every point, and it is the dynamic one that matters for signals."
+  },
+  {
+   "hash": "133ca7859e00ec76eaebe4e29fd8a934ad6a14e556a89c78f9ca5028b9d10d9c",
+   "ref": "Q29i",
+   "questionNumber": "29 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "stem": "The electric field between the plates of a parallel plate capacitor is E. Now the separation between the plates is doubled and simultaneously the applied potential difference between the plates is reduced to half of its initial value. The new value of the electric field between the plates will be :",
+   "context": "A parallel plate capacitor has two parallel plates which are separated by an insulating medium like air, mica, etc. When the plates are connected to the terminals of a battery, they get equal and opposite charges and an electric field is set up in between them. This electric field between the two plates depends upon the potential difference applied, the separation of the plates and nature of the medium between the plates.",
+   "options": [
+    {
+     "label": "A",
+     "text": "E"
+    },
+    {
+     "label": "B",
+     "text": "2E"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{E}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{E}{2}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The field between the plates of a parallel plate capacitor is set by the voltage and the separation:\n\\(E = \\dfrac{V}{d}\\)\nBoth quantities change, and both changes push the field DOWN.\nThe separation is DOUBLED, \\(d \\to 2d\\).\nThe applied potential difference is HALVED, \\(V \\to \\dfrac{V}{2}\\).\nSo the new field is\n\\(E' = \\dfrac{\\left(\\dfrac{V}{2}\\right)}{2d} = \\dfrac{1}{4}\\left(\\dfrac{V}{d}\\right)\\)\n\\(E' = \\dfrac{E}{4}\\)\nThe two factors of 2 multiply rather than cancel, which is the whole question — a reader who notices only one of the two changes lands on \\(\\dfrac{E}{2}\\), which is offered.\nNote that the capacitor is connected to a SOURCE here, so V is whatever the source imposes and the charge adjusts to suit. Had the capacitor instead been CHARGED AND ISOLATED, the reasoning would be different: Q would be fixed, the field \\(E = \\dfrac{Q}{A\\varepsilon_{0}}\\) would not depend on d at all, and separating the plates would leave E unchanged while raising V. Which quantity is held fixed decides the answer."
+  },
+  {
+   "hash": "2d9045dd78c0bfaa8e7c77af206eb8fcfaaabada43b1dec0d824a374aeb118e9",
+   "ref": "Q29ii",
+   "questionNumber": "29 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "stem": "A constant electric field is to be maintained between the two plates of a capacitor whose separation d changes with time. Which of the graphs correctly depict the potential difference (\\(V\\)) to be applied between the plates as a function of separation between the plates (d) to maintain the constant electric field ?",
+   "context": "A parallel plate capacitor has two parallel plates which are separated by an insulating medium like air, mica, etc. When the plates are connected to the terminals of a battery, they get equal and opposite charges and an electric field is set up in between them. This electric field between the two plates depends upon the potential difference applied, the separation of the plates and nature of the medium between the plates.",
+   "options": [
+    {
+     "label": "A",
+     "text": "a curve of V against d that rises steeply from the origin and then flattens towards a horizontal level (concave downwards)"
+    },
+    {
+     "label": "B",
+     "text": "a straight line of V against d that starts at a positive value on the V-axis and falls with a constant negative slope, reaching the d-axis"
+    },
+    {
+     "label": "C",
+     "text": "a curve of V against d that rises slowly at first and then more and more steeply (concave upwards)"
+    },
+    {
+     "label": "D",
+     "text": "a straight line of V against d that passes through the origin and rises with a constant positive slope"
+    }
+   ],
+   "answer": "D",
+   "figureNote": "REQUIRED — all four options are DRAWN graphs with no text of their own; only the axis labels V and d are printed. Page idx 16. The four shapes are described in the option texts (the only way to preserve the discrimination), and the crop is needed so a reader can check those readings against the page.",
+   "imageAttached": false,
+   "solution": "The field between the plates is\n\\(E = \\dfrac{V}{d} \\quad\\Longrightarrow\\quad V = Ed\\)\nThe requirement is that E be held CONSTANT while d changes. Treating E as a fixed constant and d as the variable, this is\n\\(V = (\\text{constant}) \\times d\\)\nwhich is the equation of a STRAIGHT LINE through the ORIGIN with a constant positive slope, the slope being the field E itself.\nSo the correct graph is the straight line through the origin rising at a constant rate.\nTwo features must both be right, and each disposes of some options.\nIT MUST BE STRAIGHT. Any curve — flattening off, or bending upward — would mean the ratio \\(\\dfrac{V}{d}\\) changes with d, and that ratio IS the field, which is precisely what has to stay constant.\nIT MUST PASS THROUGH THE ORIGIN. At \\(d = 0\\) the plates touch and no voltage is needed to maintain any field across zero thickness. A line starting at a positive intercept would require a finite voltage at zero separation, giving an infinite field.\nThe remaining option, a line falling with negative slope, has the dependence backwards: pulling the plates further apart requires MORE voltage to maintain the same field between them, not less."
+  },
+  {
+   "hash": "0236ee55cc357ae67ed597eed7001427b1524546c88fd626bfec125ee9f534de",
+   "ref": "Q29iii",
+   "questionNumber": "29 (iii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "stem": "In the above figure P, Q are the two parallel plates of a capacitor. Plate Q is at positive potential with respect to plate P. MN is an imaginary line drawn perpendicular to the plates. Which of the graphs shows correctly the variations of the magnitude of electric field strength E along the line MN ?",
+   "context": "A parallel plate capacitor has two parallel plates which are separated by an insulating medium like air, mica, etc. When the plates are connected to the terminals of a battery, they get equal and opposite charges and an electric field is set up in between them. This electric field between the two plates depends upon the potential difference applied, the separation of the plates and nature of the medium between the plates.",
+   "options": [
+    {
+     "label": "A",
+     "text": "a plot of E along MN that is zero at M, rises to a single maximum midway and falls back to zero at N — a smooth arch"
+    },
+    {
+     "label": "B",
+     "text": "a plot of E along MN that rises steeply from M, holds one constant value over the middle stretch and falls steeply to N — a trapezium"
+    },
+    {
+     "label": "C",
+     "text": "a plot of E along MN that is a horizontal line at one and the same value all the way from M to N"
+    },
+    {
+     "label": "D",
+     "text": "a plot of E along MN that starts high near M, drops to a constant low value over the middle stretch and climbs again towards N"
+    }
+   ],
+   "answer": "C",
+   "figureNote": "REQUIRED twice over — the stem opens 'In the above figure' and refers to a drawing that carries P, Q and MN, and all four options are DRAWN graphs with no text beyond the axis labels. Page idx 16. STEM FIGURE, layout and labelling: an upper horizontal DASHED line labelled P at its left end, a lower horizontal SOLID line labelled Q at its left end with a row of '+' signs printed along it, and a single vertical line joining the two — its upper end labelled N on the upper plate, its lower end labelled M on the lower plate. The four option shapes are in the option texts.",
+   "imageAttached": false,
+   "solution": "MN runs from one plate to the other, perpendicular to both, so the question is how the field strength varies as one crosses the gap.\nFor a parallel plate capacitor the field between the plates is\n\\(E = \\dfrac{\\sigma}{\\varepsilon_{0}}\\)\nwhich contains no reference to POSITION at all. Each plate carries a uniform surface charge density, and the field of an infinite charged sheet is the same at every distance from it. Adding the two sheets' contributions gives a field that is UNIFORM throughout the gap — the same magnitude at M, at N and everywhere between.\nSo the correct graph is a HORIZONTAL LINE at one and the same value all the way from M to N.\nThis uniformity is exactly what the picture of parallel, equally spaced field lines represents, and it is why the simple relation \\(V = Ed\\) works for this geometry and not for others.\nThe other three graphs each describe a field that varies with position. One peaks in the middle, one sags in the middle, one rises from zero at the plate — all of which would mean the field lines bunch together somewhere in the gap, which happens only near the EDGES of a real capacitor. That edge effect, called fringing, is genuine but is neglected in the ideal treatment and does not occur along a line drawn well inside the plates."
+  },
+  {
+   "hash": "e5748b7ab887e13549faefc1d53557532b3115becdf2eaa2c2b94497155c224b",
+   "ref": "Q29iva",
+   "questionNumber": "29 (iv) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Capacitors, Capacitance and their Combinations",
+   "stem": "Three parallel plates are placed above each other with equal displacement \\(\\vec{d}\\) between neighbouring plates. The electric field between the first pair of the plates is \\(\\vec{E}_1\\) and the electric field between the second pair of the plates is \\(\\vec{E}_2\\). The potential difference between the third and the first plate is –",
+   "context": "A parallel plate capacitor has two parallel plates which are separated by an insulating medium like air, mica, etc. When the plates are connected to the terminals of a battery, they get equal and opposite charges and an electric field is set up in between them. This electric field between the two plates depends upon the potential difference applied, the separation of the plates and nature of the medium between the plates.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((\\vec{E}_1 + \\vec{E}_2) \\cdot \\vec{d}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((\\vec{E}_1 - \\vec{E}_2) \\cdot \\vec{d}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((\\vec{E}_2 - \\vec{E}_1) \\cdot \\vec{d}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{d(E_1 + E_2)}{2}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Take the three plates in order — first, second, third — with a uniform field in each gap and the same separation d between neighbours.\nThe potential difference across a uniform field over a displacement \\(\\vec{d}\\) is\n\\(\\Delta V = \\vec{E} \\cdot \\vec{d}\\)\nACROSS THE FIRST GAP, between the first and second plates, the field is \\(\\vec{E}_{1}\\):\n\\(V_{1} - V_{2} = \\vec{E}_{1} \\cdot \\vec{d}\\)\nACROSS THE SECOND GAP, between the second and third plates, the field is \\(\\vec{E}_{2}\\):\n\\(V_{2} - V_{3} = \\vec{E}_{2} \\cdot \\vec{d}\\)\nThe potential difference between the THIRD and FIRST plates is obtained by adding the two steps, since the second plate's potential appears once with each sign and cancels:\n\\(V_{1} - V_{3} = \\left(V_{1} - V_{2}\\right) + \\left(V_{2} - V_{3}\\right)\\)\n\\(V_{1} - V_{3} = \\left(\\vec{E}_{1} + \\vec{E}_{2}\\right) \\cdot \\vec{d}\\)\nSo the answer is \\(\\left(\\vec{E}_{1} + \\vec{E}_{2}\\right) \\cdot \\vec{d}\\).\nThe two gaps are traversed in the SAME direction, so their contributions ADD — which is what rules out the two difference options. Those would be right for a path that crossed the first gap one way and the second gap back again, which is not a path from the first plate to the third.\nKeeping the expression as a DOT PRODUCT matters: it lets the two fields point in different directions, and automatically gives the right sign for each. The remaining option \\(\\dfrac{d(E_{1} + E_{2})}{2}\\) is an average of the two fields over one gap-width, which would be the answer if the total separation were d rather than 2d."
+  },
+  {
+   "hash": "ea002a62baa82b7199cf0e902936c41476b773ad94a4506b8481fd4357f37612",
+   "ref": "Q29ivb",
+   "questionNumber": "29 (iv) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatics of Conductors and Dielectrics",
+   "stem": "A material of dielectric constant K is filled in a parallel plate capacitor of capacitance C. The new value of its capacitance becomes",
+   "context": "A parallel plate capacitor has two parallel plates which are separated by an insulating medium like air, mica, etc. When the plates are connected to the terminals of a battery, they get equal and opposite charges and an electric field is set up in between them. This electric field between the two plates depends upon the potential difference applied, the separation of the plates and nature of the medium between the plates.",
+   "options": [
+    {
+     "label": "A",
+     "text": "C"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{C}{K}\\)"
+    },
+    {
+     "label": "C",
+     "text": "CK"
+    },
+    {
+     "label": "D",
+     "text": "\\(C\\left(1 + \\frac{1}{K}\\right)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Filling the space between the plates with a dielectric of constant K multiplies the capacitance by K:\n\\(C' = KC\\)\nThe mechanism is the reduction of the field. The dielectric polarises, bound charges appear on its faces opposing the plate charges, and the net field inside falls to \\(\\dfrac{E_{0}}{K}\\). With the same charge on the plates, the potential difference \\(V = Ed\\) falls by the same factor, so\n\\(C' = \\dfrac{Q}{V'} = \\dfrac{Q}{\\left(\\dfrac{V}{K}\\right)} = K\\dfrac{Q}{V} = KC\\)\nSince K is greater than 1 for every dielectric, the capacitance always INCREASES — which is the whole reason for putting a dielectric in a capacitor, alongside the mechanical spacing it provides and the higher voltage it withstands.\nThat disposes of \\(\\dfrac{C}{K}\\), which would be a decrease, and of C, which would mean the dielectric did nothing. The option \\(C\\left(1 + \\dfrac{1}{K}\\right)\\) is the kind of expression that arises when a slab fills only PART of the gap; here the material fills it completely, and the result is the clean factor K."
+  },
+  {
+   "hash": "70206d612234f636017187c892b112cb9d6880ee30f29618adcd19950ed1baba",
+   "ref": "Q30i",
+   "questionNumber": "30 (i)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "The straight line graphs obtained for two metals",
+   "context": "When a photon of suitable frequency is incident on a metal surface, photoelectron is emitted from it. If the frequency is below a threshold frequency \\((\\nu_0)\\) for the surface, no photoelectron is emitted. For a photon of frequency \\(\\nu(\\nu > \\nu_0)\\), the kinetic energy of the emitted photoelectrons is \\(h(\\nu - \\nu_0)\\). The photocurrent can be stopped by applying a potential \\(V_0\\) called 'stopping potential' on the anode. Thus maximum kinetic energy of photoelectrons \\(K_m = eV_0 = h(\\nu - \\nu_0)\\). The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure. This is a straight line of slope m.",
+   "options": [
+    {
+     "label": "A",
+     "text": "coincide each other."
+    },
+    {
+     "label": "B",
+     "text": "are parallel to each other."
+    },
+    {
+     "label": "C",
+     "text": "are not parallel to each other and cross at a point on \\(\\nu\\)-axis."
+    },
+    {
+     "label": "D",
+     "text": "are not parallel to each other and do not cross at a point on \\(\\nu\\)-axis."
+    }
+   ],
+   "answer": "B",
+   "figureNote": "REQUIRED — the passage says only 'The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure', and the sub-part asks about the geometry of that line. Page idx 18. AXES AND LABELLING: the vertical axis is labelled \\(V_0\\) with an upward arrow and the origin marked O; the horizontal axis is labelled \\(\\nu\\) with an arrow to the right; a straight line crosses the horizontal axis at a marked point labelled \\(\\nu_0\\), is drawn solid above the axis and continues as a DASHED extension below and to the left of that point, reaching the vertical axis below O. Shared by every sub-part of this case study that needs it, per SCIENCE_ADDENDUM section 4.",
+   "imageAttached": true,
+   "solution": "Einstein's photoelectric equation, arranged as a straight line in \\(V_{0}\\) against \\(\\nu\\), is\n\\(eV_{0} = h\\nu - \\phi_{0} \\quad\\Longrightarrow\\quad V_{0} = \\left(\\dfrac{h}{e}\\right)\\nu - \\dfrac{\\phi_{0}}{e}\\)\nCompare this with \\(y = mx + c\\).\nTHE SLOPE is \\(\\dfrac{h}{e}\\). Both h and e are UNIVERSAL CONSTANTS — nothing in the slope refers to the metal at all. So every metal gives a line of exactly the same slope, and lines of equal slope are PARALLEL.\nTHE INTERCEPT is \\(-\\dfrac{\\phi_{0}}{e}\\), and THIS is where the metal enters. Different metals have different work functions, so the lines are shifted vertically relative to one another and meet the \\(\\nu\\)-axis at different threshold frequencies \\(\\nu_{0} = \\dfrac{\\phi_{0}}{h}\\).\nSo the graphs for two metals are PARALLEL to each other — same slope, different intercepts, never crossing.\nThe universality of the slope is the most striking prediction Einstein's equation makes, and it is what Millikan's careful measurements confirmed. Because \\(\\dfrac{h}{e}\\) can be read off ANY metal's graph, the photoelectric effect became a way of measuring Planck's constant — which is exactly what the next sub-part asks."
+  },
+  {
+   "hash": "f5d62f009fbbceb73bc18c16c72db3978dcff5fa649da49536f4ae7faea9ab20",
+   "ref": "Q30ii",
+   "questionNumber": "30 (ii)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "The value of Planck's constant for this metal is",
+   "context": "When a photon of suitable frequency is incident on a metal surface, photoelectron is emitted from it. If the frequency is below a threshold frequency \\((\\nu_0)\\) for the surface, no photoelectron is emitted. For a photon of frequency \\(\\nu(\\nu > \\nu_0)\\), the kinetic energy of the emitted photoelectrons is \\(h(\\nu - \\nu_0)\\). The photocurrent can be stopped by applying a potential \\(V_0\\) called 'stopping potential' on the anode. Thus maximum kinetic energy of photoelectrons \\(K_m = eV_0 = h(\\nu - \\nu_0)\\). The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure. This is a straight line of slope m.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{e}{m}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{me}\\)"
+    },
+    {
+     "label": "C",
+     "text": "me"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{m}{e}\\)"
+    }
+   ],
+   "answer": "C",
+   "figureNote": "REQUIRED — the quantity m is defined only as 'the slope' of the drawn line, so the axes it is a slope BETWEEN are carried by the figure alone. Page idx 18. Same drawing as Q30i; see that row's note for the axes and labelling.",
+   "imageAttached": true,
+   "solution": "From the previous part, the graph of \\(V_{0}\\) against \\(\\nu\\) has slope\n\\(m = \\dfrac{h}{e}\\)\nSolving for Planck's constant:\n\\(h = me\\)\nSo the value of Planck's constant for this metal is me.\nThe word \"for this metal\" in the stem is a small trap of its own: h is not a property of the metal and takes the same value whichever metal is used. The metal fixes only the intercept, never the slope, so the same experiment on zinc, sodium or caesium yields the same h — which is precisely what makes the measurement trustworthy.\nA dimensional check settles the choice among the options without any recall. The slope m is a potential divided by a frequency, so it carries units of \\(\\mathrm{V\\,s}\\), that is \\(\\mathrm{J\\,s\\,C^{-1}}\\). Multiplying by the charge e in coulombs gives \\(\\mathrm{J\\,s}\\), which is exactly the unit of Planck's constant. The options \\(\\dfrac{m}{e}\\) and \\(\\dfrac{e}{m}\\) fail that test, and \\(\\dfrac{1}{me}\\) inverts it."
+  },
+  {
+   "hash": "f9f0130fb0376972a067394ecd1d4ca277de77c36a919a0093c9773afb5a28a6",
+   "ref": "Q30iiia",
+   "questionNumber": "30 (iii) (a)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "The intercepts on \\(\\nu\\)-axis and \\(V_0\\)-axis of the graph are respectively :",
+   "context": "When a photon of suitable frequency is incident on a metal surface, photoelectron is emitted from it. If the frequency is below a threshold frequency \\((\\nu_0)\\) for the surface, no photoelectron is emitted. For a photon of frequency \\(\\nu(\\nu > \\nu_0)\\), the kinetic energy of the emitted photoelectrons is \\(h(\\nu - \\nu_0)\\). The photocurrent can be stopped by applying a potential \\(V_0\\) called 'stopping potential' on the anode. Thus maximum kinetic energy of photoelectrons \\(K_m = eV_0 = h(\\nu - \\nu_0)\\). The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure. This is a straight line of slope m.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\nu_0,\\ \\frac{h\\nu_0}{e}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\nu_0,\\ h\\nu_0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{h\\nu_0}{e},\\ \\nu_0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(h\\nu_0,\\ \\nu_0\\)"
+    }
+   ],
+   "noCorrectOption": true,
+   "figureNote": "REQUIRED — the sub-part asks for the intercepts OF THE DRAWN LINE and the passage locates neither. Page idx 18. Same drawing as Q30i; see that row's note for the axes and labelling.",
+   "imageAttached": true,
+   "solution": "[CBSE VOIDED this part. The marking scheme prints NO letter for it — the cell contains only the instruction that a full mark be awarded to every candidate who attempted it. The reason is visible in the printed options, and it is worked out below: one of the two required intercepts carries the WRONG SIGN in every option offered, so no choice is correct.]\nWrite the equation in the form of a straight line:\n\\(eV_{0} = h\\nu - \\phi_{0} \\quad\\Longrightarrow\\quad V_{0} = \\dfrac{h}{e}\\nu - \\dfrac{\\phi_{0}}{e}\\)\nand let \\(\\nu_{0} = \\dfrac{\\phi_{0}}{h}\\) be the threshold frequency, so that\n\\(V_{0} = \\dfrac{h}{e}\\left(\\nu - \\nu_{0}\\right)\\)\nINTERCEPT ON THE \\(\\nu\\)-AXIS. Set \\(V_{0} = 0\\):\n\\(\\nu = \\nu_{0}\\)\nso the \\(\\nu\\)-intercept is \\(\\nu_{0}\\), the threshold frequency. This half is straightforward, and every option that names it agrees.\nINTERCEPT ON THE \\(V_{0}\\)-AXIS. Set \\(\\nu = 0\\):\n\\(V_{0} = \\dfrac{h}{e}\\left(0 - \\nu_{0}\\right) = -\\dfrac{h\\nu_{0}}{e}\\)\nThe intercept is \\(-\\dfrac{h\\nu_{0}}{e}\\), and the MINUS SIGN is not optional. The line crosses the \\(V_{0}\\)-axis BELOW the origin, because it is rising and it already passes through the positive \\(\\nu\\)-axis at \\(\\nu_{0}\\). Extrapolated back to zero frequency it must be negative.\nNo printed option carries that sign — the nearest offers \\(+\\dfrac{h\\nu_{0}}{e}\\) — so the question as set has no correct answer, which is why the mark was awarded to everyone.\nThe negative intercept is not a curiosity: its magnitude is \\(\\dfrac{\\phi_{0}}{e}\\), so reading it off the graph gives the WORK FUNCTION directly, just as the slope gives \\(\\dfrac{h}{e}\\). It has no physical meaning as a stopping potential, since no photoemission occurs below \\(\\nu_{0}\\) at all; the line has physical content only to the right of \\(\\nu_{0}\\), and the intercept is an extrapolation."
+  },
+  {
+   "hash": "0724657eb08951153085454b65c4d6cc38a44f8ca86e921b4a82fd5a608d34c1",
+   "ref": "Q30iiib",
+   "questionNumber": "30 (iii) (b)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "When the wavelength of a photon is doubled, how many times its wave number and frequency become, respectively ?",
+   "context": "When a photon of suitable frequency is incident on a metal surface, photoelectron is emitted from it. If the frequency is below a threshold frequency \\((\\nu_0)\\) for the surface, no photoelectron is emitted. For a photon of frequency \\(\\nu(\\nu > \\nu_0)\\), the kinetic energy of the emitted photoelectrons is \\(h(\\nu - \\nu_0)\\). The photocurrent can be stopped by applying a potential \\(V_0\\) called 'stopping potential' on the anode. Thus maximum kinetic energy of photoelectrons \\(K_m = eV_0 = h(\\nu - \\nu_0)\\). The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure. This is a straight line of slope m.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2,\\ \\frac{1}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{2},\\ \\frac{1}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{2},\\ 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "2, 2"
+    }
+   ],
+   "answer": "B",
+   "solution": "Take the two quantities in turn, writing each in terms of the wavelength.\nWAVE NUMBER is defined as the reciprocal of the wavelength — the number of waves per unit length:\n\\(\\bar{\\nu} = \\dfrac{1}{\\lambda}\\)\nDoubling \\(\\lambda\\) therefore HALVES the wave number:\n\\(\\bar{\\nu}' = \\dfrac{1}{2\\lambda} = \\dfrac{\\bar{\\nu}}{2}\\)\nFREQUENCY is related to wavelength through the speed of light, which is fixed:\n\\(\\nu = \\dfrac{c}{\\lambda}\\)\nDoubling \\(\\lambda\\) therefore also HALVES the frequency:\n\\(\\nu' = \\dfrac{c}{2\\lambda} = \\dfrac{\\nu}{2}\\)\nSo both become \\(\\dfrac{1}{2}\\) times their original values.\nBoth quantities are simple reciprocals of \\(\\lambda\\), differing only by the constant factor c, so they must scale together — there is no way for one to halve while the other doubles. That single observation rules out three of the four options at a stroke, since each of them has the two changing in opposite directions or in the same direction as \\(\\lambda\\).\nThe physical content is that a longer wave is a LESS energetic one: \\(E = h\\nu = hc\\bar{\\nu}\\), so doubling the wavelength halves the photon's energy as well."
+  },
+  {
+   "hash": "975decf25f4b502bbd76fbe81c9ba739083c04c95ea69e59240a3004b2f1fa25",
+   "ref": "Q30iv",
+   "questionNumber": "30 (iv)",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Dual Nature of Radiation and Matter",
+   "subtopic": "Einstein's Photoelectric Equation and the Photon",
+   "stem": "The momentum of a photon is \\(5.0 \\times 10^{-29}\\) kg. m/s. Ignoring relativistic effects (if any), the wavelength of the photon is",
+   "context": "When a photon of suitable frequency is incident on a metal surface, photoelectron is emitted from it. If the frequency is below a threshold frequency \\((\\nu_0)\\) for the surface, no photoelectron is emitted. For a photon of frequency \\(\\nu(\\nu > \\nu_0)\\), the kinetic energy of the emitted photoelectrons is \\(h(\\nu - \\nu_0)\\). The photocurrent can be stopped by applying a potential \\(V_0\\) called 'stopping potential' on the anode. Thus maximum kinetic energy of photoelectrons \\(K_m = eV_0 = h(\\nu - \\nu_0)\\). The experimental graph between \\(V_0\\) and \\(\\nu\\) for a metal is shown in figure. This is a straight line of slope m.",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1.33\\ \\mu\\mathrm{m}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(3.3\\ \\mu\\mathrm{m}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(16.6\\ \\mu\\mathrm{m}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(13.3\\ \\mu\\mathrm{m}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "A photon's momentum and wavelength are related by the de Broglie relation, which for a photon follows directly from \\(E = pc\\) and \\(E = \\dfrac{hc}{\\lambda}\\):\n\\(p = \\dfrac{h}{\\lambda} \\quad\\Longrightarrow\\quad \\lambda = \\dfrac{h}{p}\\)\nSubstituting \\(h = 6{\\cdot}63 \\times 10^{-34}\\ \\mathrm{J\\,s}\\) and \\(p = 5{\\cdot}0 \\times 10^{-29}\\ \\mathrm{kg\\,m\\,s^{-1}}\\):\n\\(\\lambda = \\dfrac{6{\\cdot}63 \\times 10^{-34}}{5{\\cdot}0 \\times 10^{-29}}\\)\n\\(\\lambda = 1{\\cdot}326 \\times 10^{-5}\\ \\mathrm{m}\\)\nConverting to micrometres, with \\(1\\ \\mu\\mathrm{m} = 10^{-6}\\) m:\n\\(\\lambda \\approx 13{\\cdot}3\\ \\mu\\mathrm{m}\\)\nThe wavelength is about \\(13{\\cdot}3\\ \\mu\\mathrm{m}\\), which places this photon in the infrared.\nThe distractor \\(1{\\cdot}33\\ \\mu\\mathrm{m}\\) differs by exactly a factor of ten, which is what an error in the power of ten produces; \\(3{\\cdot}3\\) and \\(16{\\cdot}6\\) come from mishandling the leading digits. Since the arithmetic is a single division, the safeguard is to carry the exponents separately: \\(10^{-34}\\) divided by \\(10^{-29}\\) is \\(10^{-5}\\), and \\(\\dfrac{6{\\cdot}63}{5{\\cdot}0} = 1{\\cdot}326\\).\nThe instruction to ignore relativistic effects is a courtesy rather than a necessity here: \\(p = \\dfrac{h}{\\lambda}\\) is exact for a photon, which is always relativistic and always massless."
+  },
+  {
+   "hash": "04b109d0a67b49ba230b22c73646288394323e86ade36bef1b3ddf531e03033d",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electrostatic Potential and Capacitance",
+   "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+   "stem": "(i) A small conducting sphere A of radius r charged to a potential V, is enclosed by a spherical conducting shell B of radius R. If A and B are connected by a thin wire, calculate the final potential on sphere A and shell B.\n(ii) Write two characteristics of equipotential surfaces. A uniform electric field of 50 NC\\(^{-1}\\) is set up in a region along \\(+x\\) axis. If the potential at the origin (0, 0) is 220 V, find the potential at a point (4m, 3m).",
+   "solution": "(i) THE SPHERE AND SHELL CONNECTED BY A WIRE.\nSphere A of radius r is charged to potential V, so its charge is\n\\(V = \\dfrac{Q}{4\\pi\\varepsilon_{0}r} \\quad\\Longrightarrow\\quad Q = 4\\pi\\varepsilon_{0}rV\\)\nWhen A and B are joined by a wire, they become ONE conductor, and charge flows until the whole conductor is at a single potential. The essential point is where the charge goes: on a conductor, charge resides entirely on the OUTER surface, so ALL of A's charge flows out to the shell B. Sphere A is left with none.\nPOTENTIAL ON SHELL B, now carrying the whole charge Q on its radius R:\n\\(V_{B} = \\dfrac{1}{4\\pi\\varepsilon_{0}}\\dfrac{Q}{R} = \\dfrac{1}{4\\pi\\varepsilon_{0}} \\times \\dfrac{4\\pi\\varepsilon_{0}rV}{R}\\)\n\\(V_{B} = \\dfrac{rV}{R}\\)\nPOTENTIAL ON SPHERE A. Sphere A is inside the shell and connected to it, so it sits at the SAME potential:\n\\(V_{A} = V_{B} = \\dfrac{rV}{R}\\)\nBoth end at \\(\\dfrac{rV}{R}\\). Since \\(R > r\\), this is LESS than the original V — spreading the same charge over a larger surface lowers the potential.\nNote that the charge transfers COMPLETELY, however small the potential difference driving it, and regardless of which conductor was charged first. That is the principle of the Van de Graaff generator: charge sprayed onto an inner electrode is carried entirely to the outer sphere, so charge can be added indefinitely without ever fighting the accumulated potential of the inner one.\n(ii) EQUIPOTENTIAL SURFACES, AND A POTENTIAL IN A UNIFORM FIELD.\nTWO CHARACTERISTICS (any two):\nThe potential is the SAME at every point on the surface, so NO WORK is done in moving a charge anywhere on it.\nAn equipotential surface is always PERPENDICULAR to the electric field lines. (If it were not, the field would have a component along the surface and moving a charge along it would require work.)\nTwo equipotential surfaces can never INTERSECT, since a point of intersection would have two different potentials.\nFINDING THE POTENTIAL AT (4m, 3m). The field is uniform, of magnitude \\(50\\ \\mathrm{N\\,C^{-1}}\\), directed along \\(+x\\). So the potential falls as x increases, and depends on x ALONE — the y-coordinate is irrelevant, because moving along y is moving along an equipotential.\n\\(V_{origin} - V = E\\,\\Delta x = 50 \\times 4 = 200\\ \\mathrm{V}\\)\n\\(V = 220 - 200\\)\n\\(V = 20\\ \\mathrm{V}\\)\nThe potential at (4m, 3m) is 20 V. The 3 m of displacement along y contributes nothing at all, which is exactly what the second characteristic above asserts."
+  },
+  {
+   "hash": "15d98ca29757344e5a110ea37affd802114ab54ea401406787abb70968590f09",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Electric Charges and Fields",
+   "subtopic": "Electric Flux and Gauss's Law",
+   "stem": "(i) What is difference between an open surface and a closed surface ? Draw elementary surface vector \\(d\\vec{S}\\) for a spherical surface S.\n(ii) Define electric flux through a surface. Give the significance of a Gaussian surface. A charge outside a Gaussian surface does not contribute to total electric flux through the surface. Why ?\n(iii) A small spherical shell \\(S_1\\) has point charges \\(q_1 = -3\\ \\mu\\mathrm{C}\\), \\(q_2 = -2\\ \\mu\\mathrm{C}\\) and \\(q_3 = 9\\ \\mu\\mathrm{C}\\) inside it. This shell is enclosed by another big spherical shell \\(S_2\\). A point charge Q is placed in between the two surfaces \\(S_1\\) and \\(S_2\\). If the electric flux through the surface \\(S_2\\) is four times the flux through surface \\(S_1\\), find charge Q.",
+   "solution": "(i) OPEN AND CLOSED SURFACES.\nAn OPEN surface is one that does NOT enclose a volume — a sheet of paper, a hemisphere, a disc. It has a boundary edge, and it divides no region of space into an inside and an outside.\nA CLOSED surface DOES enclose a volume — a complete sphere, a cube, a closed cylinder. It has no boundary edge, and it separates space into an interior and an exterior.\nThe distinction matters because Gauss's law applies only to CLOSED surfaces: only for those is \"the charge enclosed\" a meaningful quantity.\nTHE ELEMENTARY SURFACE VECTOR. Draw a sphere S and mark a small patch on it. Draw \\(d\\vec{S}\\) as an arrow at that patch, PERPENDICULAR to the surface and pointing OUTWARDS, its length representing the patch's area. For a closed surface the outward normal is the agreed convention, which is what makes an outward flux positive.\n(ii) ELECTRIC FLUX, THE GAUSSIAN SURFACE, AND OUTSIDE CHARGES.\nDEFINITION. Electric flux through a surface is the surface integral of the field over it,\n\\(\\phi_{E} = \\oint \\vec{E} \\cdot d\\vec{S} = \\oint E\\,dS\\cos\\theta\\)\nthat is, a measure of the number of field lines crossing the surface normally.\nSIGNIFICANCE OF A GAUSSIAN SURFACE. It is an imaginary closed surface chosen to exploit the SYMMETRY of a charge distribution. Chosen well, E is constant in magnitude over it and everywhere parallel to \\(d\\vec{S}\\), so the integral collapses to \\(E \\times (\\text{area})\\) and the field can be found in one line — for a sphere, a line charge or a sheet — where direct integration would be laborious.\nWHY AN OUTSIDE CHARGE CONTRIBUTES NOTHING. Every field line from a charge OUTSIDE the surface that enters it must also LEAVE it, since the line can only terminate on a charge, and there is no such charge inside. Each line therefore contributes a negative flux where it enters and an equal positive flux where it exits, and the two cancel exactly. The NET flux from any external charge is zero.\nNote carefully what this does and does not say. The external charge contributes nothing to the FLUX, but it certainly contributes to the FIELD at each point of the surface. Gauss's law constrains the integral, not the integrand.\n(iii) FINDING THE CHARGE Q.\nCharge enclosed by the inner shell \\(S_{1}\\):\n\\(q_{1} + q_{2} + q_{3} = (-3) + (-2) + 9 = 4\\ \\mu\\mathrm{C}\\)\nCharge enclosed by the outer shell \\(S_{2}\\) — everything inside \\(S_{1}\\), plus Q:\n\\(Q + 4\\ \\mu\\mathrm{C}\\)\nGiven that the flux through \\(S_{2}\\) is four times that through \\(S_{1}\\), and that flux is proportional to enclosed charge:\n\\(\\dfrac{Q + 4\\ \\mu\\mathrm{C}}{\\varepsilon_{0}} = 4\\left(\\dfrac{4\\ \\mu\\mathrm{C}}{\\varepsilon_{0}}\\right)\\)\n\\(Q + 4 = 16\\)\n\\(Q = 12\\ \\mu\\mathrm{C}\\)"
+  },
+  {
+   "hash": "2066e6e08a35bc09567c979385449016b7c350e22b06c652739b1b1c22a09f6a",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Force Between Parallel Currents",
+   "stem": "(i) What is the source of force acting on a current-carrying conductor placed in a magnetic field ? Obtain the expression for force acting between two long straight parallel conductors carrying steady currents and hence define 'ampere'.\n(ii) A point charge q is moving with velocity \\(\\vec{v}\\) in a uniform magnetic field \\(\\vec{B}\\). Find the work done by the magnetic force on the charge.\n(iii) Explain the necessary conditions in which the trajectory of a charged particle is helical in a uniform magnetic field.",
+   "solution": "(i) THE SOURCE OF THE FORCE, THE EXPRESSION, AND THE AMPERE.\nTHE SOURCE. A current-carrying conductor produces a magnetic field of its own. The force arises from the INTERACTION between that field and the external field in which the conductor is placed — equivalently, from the magnetic force \\(q\\vec{v} \\times \\vec{B}\\) on each of the moving charges making up the current, summed over the conductor.\nFORCE BETWEEN TWO PARALLEL CONDUCTORS. Let two long straight conductors a and b lie parallel, a distance d apart, carrying currents \\(I_{a}\\) and \\(I_{b}\\).\nConductor a produces at the position of b a field\n\\(B_{a} = \\dfrac{\\mu_{0}I_{a}}{2\\pi d}\\)\ndirected perpendicular to b. A length L of conductor b, carrying \\(I_{b}\\) in that field, experiences\n\\(F_{ba} = I_{b}LB_{a} = \\dfrac{\\mu_{0}I_{a}I_{b}}{2\\pi d}L\\)\nso the force PER UNIT LENGTH is\n\\(\\dfrac{F}{L} = \\dfrac{\\mu_{0}I_{a}I_{b}}{2\\pi d}\\)\nIt is ATTRACTIVE when the currents are parallel and REPULSIVE when they are antiparallel. By Newton's third law conductor b exerts an equal and opposite force on a.\nDEFINITION OF THE AMPERE. The ampere is that steady current which, maintained in each of two very long straight parallel conductors of negligible cross-section placed ONE METRE apart in vacuum, produces on each a force of \\(2 \\times 10^{-7}\\) newton per metre of length.\n(Substituting \\(I_{a} = I_{b} = 1\\) A and \\(d = 1\\) m into the formula gives exactly \\(\\dfrac{\\mu_{0}}{2\\pi} = 2 \\times 10^{-7}\\ \\mathrm{N\\,m^{-1}}\\), which is where the number comes from.)\n(ii) WORK DONE BY THE MAGNETIC FORCE.\nThe work done is ZERO.\nThe magnetic force is \\(\\vec{F} = q\\left(\\vec{v} \\times \\vec{B}\\right)\\), and a cross product is perpendicular to both its factors — in particular to \\(\\vec{v}\\). The work done in a displacement \\(d\\vec{l} = \\vec{v}\\,dt\\) is\n\\(dW = \\vec{F} \\cdot d\\vec{l} = \\vec{F} \\cdot \\vec{v}\\,dt = 0\\)\nsince \\(\\vec{F} \\perp \\vec{v}\\) always.\nSo a magnetic field can change the DIRECTION of a charged particle's motion but never its SPEED, and hence never its kinetic energy. That is why a charged particle in a uniform magnetic field moves on a circle at constant speed, and why the cyclotron needs an ELECTRIC field to do the accelerating.\n(iii) CONDITIONS FOR A HELICAL TRAJECTORY.\nThe path is helical when the velocity is at an ARBITRARY angle \\(\\theta\\) to the field, with \\(\\theta\\) neither \\(0^{\\circ}\\) nor \\(90^{\\circ}\\).\nResolve \\(\\vec{v}\\) into two components. The component PERPENDICULAR to \\(\\vec{B}\\), \\(v\\sin\\theta\\), feels the magnetic force and drives circular motion of radius \\(r = \\dfrac{mv\\sin\\theta}{qB}\\). The component PARALLEL to \\(\\vec{B}\\), \\(v\\cos\\theta\\), feels NO force, since \\(\\vec{v}_{\\parallel} \\times \\vec{B} = 0\\), and so continues unchanged.\nA uniform circular motion superposed on a uniform straight-line drift along the axis is a HELIX. Its pitch — the distance advanced in one revolution — is\n\\(p = v\\cos\\theta \\times T = \\dfrac{2\\pi m v\\cos\\theta}{qB}\\)\nThe two special cases are the limits of this: at \\(\\theta = 90^{\\circ}\\) the parallel component vanishes and the helix closes into a CIRCLE; at \\(\\theta = 0^{\\circ}\\) the perpendicular component vanishes, no force acts at all, and the path is a STRAIGHT LINE."
+  },
+  {
+   "hash": "a341edc49bdad8e0e0e1b127b5dd75e57684957d915ad4c6392a9c56cedeff3e",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Moving Charges and Magnetism",
+   "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+   "stem": "(i) A current carrying loop can be considered as a magnetic dipole placed along its axis. Explain.\n(ii) Obtain the relation for magnetic dipole moment \\(\\vec{M}\\) of current carrying coil. Give the direction of \\(\\vec{M}\\).\n(iii) A current carrying coil is placed in an external uniform magnetic field. The coil is free to turn in the magnetic field. What is the net force acting on the coil ? Obtain the orientation of the coil in stable equilibrium. Show that in this orientation the flux of the total field (field produced by the loop + external field) through the coil is maximum.",
+   "solution": "(i) WHY A CURRENT LOOP IS A MAGNETIC DIPOLE.\nThe field of a current loop, seen from a distance large compared with its size, is identical in form to that of a short bar magnet: on the axis it falls as \\(\\dfrac{1}{r^{3}}\\) and has the value \\(\\dfrac{\\mu_{0}}{4\\pi}\\dfrac{2M}{r^{3}}\\), exactly the axial field of a dipole of moment M.\nThe two FACES of the loop behave like the two poles. Field lines emerge from one face and enter the other, so that face acts as a NORTH pole and the other as a SOUTH pole — which face is which is given by the right-hand rule, or equivalently by whether the current appears anticlockwise or clockwise when viewed from that side.\nSince the poles lie on the two faces, the axis joining them is the axis of the loop, and the dipole is therefore placed ALONG the loop's axis.\n(ii) THE MAGNETIC DIPOLE MOMENT.\nExperiment and the field expressions both show the strength of the equivalent dipole to be proportional to the current and to the area enclosed:\n\\(M \\propto I \\qquad M \\propto A\\)\nso for a single turn\n\\(\\vec{M} = I\\vec{A}\\)\nand for a coil of N turns, \\(\\vec{M} = NI\\vec{A}\\). Its SI unit is \\(\\mathrm{A\\,m^{2}}\\).\nDIRECTION. \\(\\vec{M}\\) is along the AREA VECTOR, that is PERPENDICULAR to the plane of the loop, its sense given by the right-hand rule: curl the fingers along the current and the thumb points along \\(\\vec{M}\\).\n(iii) THE COIL IN A UNIFORM EXTERNAL FIELD.\nNET FORCE. The net force is ZERO. In a UNIFORM field the forces on opposite arms of the loop are equal in magnitude and opposite in direction, so they cancel; what remains is a COUPLE, which turns the coil without translating it. (A net force appears only in a non-uniform field.)\nORIENTATION OF STABLE EQUILIBRIUM. The potential energy of the coil is\n\\(U = -\\vec{M} \\cdot \\vec{B} = -MB\\cos\\theta\\)\nwhich is least when \\(\\cos\\theta = 1\\), that is \\(\\theta = 0^{\\circ}\\). So stable equilibrium is the orientation in which \\(\\vec{M}\\) is PARALLEL to \\(\\vec{B}\\) — the plane of the coil perpendicular to the field. The torque \\(\\tau = MB\\sin\\theta\\) is zero there, and any small displacement produces a torque restoring it.\nWHY THE FLUX IS THEN MAXIMUM. In this orientation the area vector \\(\\vec{A}\\) lies along \\(\\vec{B}\\). The coil's OWN field, inside the coil, is along \\(\\vec{M}\\) and hence also along \\(\\vec{B}\\), so the two fields ADD rather than partly cancel. The flux of the total field through the coil is therefore\n\\(\\phi = \\left(B_{coil} + B_{ext}\\right)A\\)\nwith both terms positive and \\(\\cos\\theta = 1\\), which is its greatest possible value.\nThe three answers form one picture: the coil feels no net pull, only a twist, and it twists until it has as much flux through it as it can get. That is the same rule a compass needle obeys, and it is the basis of the electric motor — which prevents the coil from resting there by reversing the current each half turn."
+  },
+  {
+   "hash": "68468b4fb7cb43985f3ce78f6f14dc45141adf4491a87e3a771c0212ac984cc0",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Ray Optics and Optical Instruments",
+   "subtopic": "Reflection by Spherical Mirrors",
+   "stem": "(i) A thin pencil of length (f/4) is placed coinciding with the principal axis of a mirror of focal length f. The image of the pencil is real and enlarged, just touches the pencil. Calculate the magnification produced by the mirror.\n(ii) A ray of light is incident on a refracting face AB of a prism ABC at an angle of \\(45^\\circ\\). The ray emerges from face AC and the angle of deviation is \\(15^\\circ\\). The angle of prism is \\(30^\\circ\\). Show that the emergent ray is normal to the face AC from which it emerges out. Find the refraction index of the material of the prism.",
+   "solution": "(i) MAGNIFICATION PRODUCED BY THE MIRROR.\nThe clue is \"the image just TOUCHES the pencil\". For a concave mirror the one point that images onto ITSELF is the centre of curvature C, at a distance 2f. So the pencil must have one end AT C, and since the image is real and enlarged the pencil lies between F and C — the region that gives a real, inverted, magnified image.\nPOSITIONS OF THE TWO ENDS. One end is at 2f. The pencil has length \\(\\dfrac{f}{4}\\) and extends towards the mirror, so the other end is at\n\\(u = -\\left(2f - \\dfrac{f}{4}\\right) = -\\dfrac{7f}{4}\\)\nIMAGE OF THAT END. With \\(f\\) negative for a concave mirror, so \\(f \\to -f\\):\n\\(\\dfrac{1}{v} + \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\\(\\dfrac{1}{v} - \\dfrac{4}{7f} = -\\dfrac{1}{f}\\)\n\\(\\dfrac{1}{v} = -\\dfrac{1}{f} + \\dfrac{4}{7f} = \\dfrac{-7 + 4}{7f} = -\\dfrac{3}{7f}\\)\n\\(v = -\\dfrac{7f}{3}\\)\nMAGNIFICATION:\n\\(m = -\\dfrac{v}{u} = -\\dfrac{\\left(-\\dfrac{7f}{3}\\right)}{\\left(-\\dfrac{7f}{4}\\right)} = -\\dfrac{4}{3}\\)\nThe magnification is \\(-\\dfrac{4}{3}\\), the negative sign recording that the image is INVERTED, as every real image in a mirror is.\nAs a check on the geometry: the near end images at \\(\\dfrac{7f}{3} \\approx 2{\\cdot}33f\\) and the far end at \\(2f\\), so the image runs from \\(2f\\) to \\(2{\\cdot}33f\\) and has length \\(\\dfrac{f}{3}\\). Against an object length of \\(\\dfrac{f}{4}\\), that is a ratio of \\(\\dfrac{4}{3}\\) — enlarged, and just touching the object at C, exactly as the stem describes.\n(ii) THE PRISM.\nUse the prism relation connecting the four angles:\n\\(i + e = A + \\delta\\)\nSubstituting \\(i = 45^{\\circ}\\), \\(A = 30^{\\circ}\\) and \\(\\delta = 15^{\\circ}\\):\n\\(45^{\\circ} + e = 30^{\\circ} + 15^{\\circ} = 45^{\\circ}\\)\n\\(e = 0^{\\circ}\\)\nAn angle of emergence of zero means the emergent ray makes no angle with the NORMAL to face AC — that is, the emergent ray is PERPENDICULAR to the face AC, which is what was to be shown.\nThe internal geometry confirms it. Since \\(r_{1} + r_{2} = A\\) and \\(e = 0\\) forces \\(r_{2} = 0\\),\n\\(r_{1} = A = 30^{\\circ}\\)\nand Snell's law at the first face then gives the refractive index:\n\\(n = \\dfrac{\\sin i}{\\sin r_{1}} = \\dfrac{\\sin 45^{\\circ}}{\\sin 30^{\\circ}} = \\dfrac{\\left(\\dfrac{1}{\\sqrt{2}}\\right)}{\\left(\\dfrac{1}{2}\\right)}\\)\n\\(n = \\sqrt{2}\\)\nA ray leaving normally is not a coincidence of the numbers but a recognisable situation: it means the ray inside the prism struck AC along its normal, so it passed out without bending, and the entire \\(15^{\\circ}\\) of deviation was produced at the FIRST face alone."
+  },
+  {
+   "hash": "9009c541350b3436cfe1c5d7c3ea8cf18bae92d4dfe5fa4affd870ecb9ab85a2",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Wave Optics",
+   "subtopic": "Diffraction",
+   "stem": "(i) Light consisting of two wavelengths 600 nm and 480 nm is used to obtain interference fringes in a double slit experiment. The screen is placed 1.0 m away from slits which are 1.0 nm apart.\n(1) Calculate the distance of the third bright fringe on the screen from the central maximum for wavelength 600 nm.\n(2) Find the least distance from the central maximum where the bright fringes due to both the wavelengths coincide.\n(ii) (1) Draw the variation of intensity with angle of diffraction in single slit diffraction pattern. Write the expression for value of angle corresponding to zero intensity locations.\n(2) In what way diffraction of light waves differs from diffraction of sound waves ?",
+   "solution": "[PAPER DEFECT, worked as printed. The stem states the slit separation as \"1.0 nm\". That cannot be what was intended — a separation of 1 nm is far SMALLER than the 600 nm wavelength, and since \\(\\sin\\theta = \\dfrac{n\\lambda}{d}\\) would then need to be 600 for even the first maximum, no interference pattern exists at all under the printed geometry. The intended figure is plainly 1.0 mm. CBSE'S OWN MARKING SCHEME FOLLOWED THE MISPRINT THROUGH, reaching 1800 m and 2400 m, so those are the answers the derivation below gives, with the intended values noted alongside.]\n(i) (1) THE THIRD BRIGHT FRINGE.\nThe distance of the \\(n^{th}\\) bright fringe from the central maximum is\n\\(x_{n} = \\dfrac{n\\lambda D}{d}\\)\nWith \\(n = 3\\), \\(\\lambda = 600\\ \\mathrm{nm} = 600 \\times 10^{-9}\\) m, \\(D = 1{\\cdot}0\\) m and \\(d = 1{\\cdot}0\\ \\mathrm{nm} = 1 \\times 10^{-9}\\) m as printed:\n\\(x_{3} = \\dfrac{3 \\times 600 \\times 10^{-9} \\times 1}{1 \\times 10^{-9}}\\)\n\\(x_{3} = 1800\\ \\mathrm{m}\\)\n(With the intended \\(d = 1{\\cdot}0\\ \\mathrm{mm}\\) this becomes \\(1{\\cdot}8\\ \\mathrm{mm}\\), which is the physically sensible fringe spacing.)\n(2) THE LEAST DISTANCE AT WHICH THE TWO PATTERNS COINCIDE.\nTwo bright fringes coincide when they lie at the same distance from the centre:\n\\(\\dfrac{n_{1}\\lambda_{1}D}{d} = \\dfrac{n_{2}\\lambda_{2}D}{d} \\quad\\Longrightarrow\\quad n_{1}\\lambda_{1} = n_{2}\\lambda_{2}\\)\n\\(n_{1} \\times 600 = n_{2} \\times 480\\)\n\\(\\dfrac{n_{1}}{n_{2}} = \\dfrac{480}{600} = \\dfrac{4}{5}\\)\nThe SMALLEST whole numbers satisfying this are \\(n_{1} = 4\\) and \\(n_{2} = 5\\): the \\(4^{th}\\) bright fringe of 600 nm falls on the \\(5^{th}\\) bright fringe of 480 nm.\n\\(x = \\dfrac{4 \\times 600 \\times 10^{-9} \\times 1}{1 \\times 10^{-9}} = 2400\\ \\mathrm{m}\\)\nand as a check via the other wavelength, \\(\\dfrac{5 \\times 480 \\times 10^{-9} \\times 1}{1 \\times 10^{-9}} = 2400\\) m, the same point.\n(With the intended \\(d = 1{\\cdot}0\\ \\mathrm{mm}\\) this is \\(2{\\cdot}4\\ \\mathrm{mm}\\).)\n(ii) (1) THE SINGLE-SLIT DIFFRACTION PATTERN.\nPlot intensity against the angle of diffraction. The curve has a tall, broad CENTRAL MAXIMUM at \\(\\theta = 0\\), falling to zero on either side, flanked by much fainter SECONDARY MAXIMA between successive zeros. Two features must be right: the central maximum is TWICE as wide as any secondary one, and the first secondary maximum is only about 4% as intense as the central one.\nANGLE FOR ZERO INTENSITY. The minima occur where\n\\(\\theta = \\dfrac{n\\lambda}{a} \\qquad n = 1, 2, 3, \\ldots\\)\nwith a the slit width. (The value \\(n = 0\\) is excluded — it is the central MAXIMUM, not a zero.)\n(2) DIFFRACTION OF LIGHT COMPARED WITH SOUND.\nDiffraction is appreciable only when the wavelength is comparable to the size of the obstacle or aperture.\nLIGHT has wavelengths of a few hundred nanometres, vastly smaller than doors, windows or anything else it meets in ordinary life, so its diffraction goes unnoticed and light appears to travel in straight lines.\nSOUND has wavelengths from centimetres to metres, comparable to everyday obstacles, so it diffracts strongly — which is why one can hear round a corner but not see round it."
+  }
+ ]
+}
