@@ -1,5 +1,28 @@
 # MHT-CET PYQ ingestion pipeline
 
+> ## The source is the `.docx` paper, never the `.xlsx` question bank
+>
+> **Canonical papers: `C:\Vilas\LWS_Pune\MHT-CET\PYQPs\{2021..2025}\`** (`C:\tmp\PYQPs\MHT-CET\`
+> is an older mirror). This holds for FIGURES exactly as much as for stems, options and keys.
+>
+> The `*_QuestionBank.xlsx` files named in `questions.source_file` for the 2023–24 rows are
+> **not an independent source — they ARE what the bank was ingested from**, same garbled
+> options and same key, so they can only ever reproduce a gap, never close one.
+>
+> **Figures are EMBEDDED RASTERS**, so take them with
+> `pandoc "<paper>.docx" -t markdown --extract-media=<dir>` — the exact picture the author
+> inserted, native resolution, leak-free by construction. Do not render the page and crop it;
+> that is the fallback for ink-only books (`scripts/lib/figures/derive.py`) and it is strictly
+> worse here.
+>
+> **Resolve a row to its paper by `pyq_year` + `pyq_note`, NEVER by `source_file`.**
+> `MHT_CET_3rdMay2023_S1_QB.xlsx` contains a row whose note reads "3rd May **2nd** Shift": the
+> note records the sitting, the filename records which spreadsheet it was typed out of. Getting
+> this wrong attaches a figure from the wrong shift, which is worse than leaving it missing.
+>
+> Runner for the figure gap: `scripts/figures/backfill-mhtcet.ts`. See
+> `[[mhtcet-source-docx-render]]`.
+
 Ingests LWS-typed reproductions of MHT-CET PCM shifts (born-digital OMML `.docx`,
 one file = all three subjects continuously numbered Physics 1-50 / Chemistry
 51-100 / Maths 101-150, plus a **separate `<paper>_AK.docx`** holding the answer

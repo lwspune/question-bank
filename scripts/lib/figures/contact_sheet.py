@@ -1,7 +1,7 @@
 """
 Contact sheet for a chapter's derived figure boxes — the mandatory review step.
 
-  python scripts/mh-ssc-10-text/contact-sheet.py <pdf> <chapterId> [per_sheet]
+  python scripts/lib/figures/contact_sheet.py <pdf> <chapterId> [per_sheet] [--dir=<pipeline dir>]
 
 Reads every data/<chapterId>.*fig.json manifest and writes
 out/<chapterId>-sheet-N.png: each figure rendered WITH ITS SURROUNDINGS and the
@@ -37,9 +37,16 @@ COLS = 3
 
 def main():
     pdf_path, chapter = sys.argv[1], sys.argv[2]
-    per_sheet = int(sys.argv[3]) if len(sys.argv) > 3 else 12
+    rest = [a for a in sys.argv[3:] if not a.startswith("--")]
+    per_sheet = int(rest[0]) if rest else 12
+    # Default to the MH SSC 10 textbook pipeline (its first caller); any other
+    # pipeline passes --dir=scripts/<name>.
     here = os.path.dirname(os.path.abspath(__file__))
-    data, out = os.path.join(here, "data"), os.path.join(here, "out")
+    root = os.path.join(here, "..", "..", "mh-ssc-10-text")
+    for a in sys.argv[1:]:
+        if a.startswith("--dir="):
+            root = a.split("=", 1)[1]
+    data, out = os.path.join(root, "data"), os.path.join(root, "out")
 
     # Review the CANDIDATES, not the signed-off manifest. Rendering the manifest
     # would only ever show boxes that had already been accepted, which is not a

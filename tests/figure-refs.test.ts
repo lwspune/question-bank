@@ -77,6 +77,10 @@ const NO_REFERENCE: Array<[string, string]> = [
   // "figure" as a VERB. Found while measuring a widening that flagged it; the
   // widening was rejected, but the shape is worth pinning so the next one is too.
   ["figure as a verb", "Which one among the following does NOT figure among the Five Principles of Panchsheel?"],
+  // "fig" is an ordinary English noun. Branch 1 accepted a BARE `fig`, so it read
+  // a botany question as a figure reference. Requiring the period there costs
+  // nothing: "In fig 3.27, ..." is still caught by the numbered branch.
+  ["fig the fruit", "The fig wasp completes its life cycle in fig fruit. Which of the statements is correct?"],
   // Rejected widening A: `the following|given + <2 words> + structure|curve|graph`
   // scored 50 additions of which ~6 were real. Each line below is one of its
   // false positives, kept so the same widening cannot be re-proposed silently.
@@ -147,6 +151,13 @@ describe("describesFigureInText", () => {
   // state-board one, and the original regex only knew the state-board form. Four
   // NCERT Physics rows sat in the serious list for that reason alone — they were
   // handled correctly and looked like defects.
+  it("recognises the CDS bracket form too", () => {
+    // A third convention, found the same day: CDS writes "[Diagram: ...]". Both
+    // of that exam's flagged rows were correctly-handled transcriptions sitting
+    // in the serious list because of one missing word in an alternation.
+    expect(describesFigureInText("[Diagram: a plant cell drawn as a rectangle with a nucleus]", null)).toBe(true);
+  });
+
   it("recognises the NCERT bracket forms too", () => {
     expect(describesFigureInText("[Read from Fig. 2.8: the slope of the tangent at t = 4 s]", null)).toBe(true);
     expect(describesFigureInText("[Fig. 2.29 shows the network as follows: R1 and R2 in series]", null)).toBe(true);

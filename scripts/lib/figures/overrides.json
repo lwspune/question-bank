@@ -1,0 +1,10 @@
+{
+  "_readme": "Hand-anchored figure boxes, applied by scripts/figures/backfill.ts AFTER derive.py and winning over it. Fractional [x0,y0,x1,y1], page 0-based. Use for (a) a figure the derivation refuses because no clean rectangle exists on that layout, and (b) a derived box that is right but catches a stray line. Every entry carries a `why` — a coordinate with no reason behind it cannot be re-checked.",
+  "NCERT_12_Maths__VectorAlgebra.pdf": {
+    "10.5": {
+      "page": 4,
+      "bbox": [0.6478, 0.3080, 0.9094, 0.4632],
+      "why": "derived top edge sat at 0.2897 and caught the line '(iii) Coinitial' (measured y 0.2897-0.3067). Three set-member rows share this figure, so for (i) Collinear and (ii) Equal that line is the WRONG sub-question's label printed above their diagram. Top moved just below it; nothing else changed."
+    }
+  }
+}

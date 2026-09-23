@@ -1,8 +1,16 @@
 """
-Derive a figure catalogue for a Balbharati Maths chapter from the PDF itself.
+Derive a figure catalogue for a born-digital textbook chapter from the PDF itself.
 
-  python scripts/mh-ssc-10-text/derive-figs.py <pdf> <page0> <page1> <out.json>
-      (pages are 0-based, inclusive-exclusive, matching config.ts `pages`)
+  python scripts/lib/figures/derive.py <pdf> <page0> <page1> <out.json>
+      (pages are 0-based, inclusive-exclusive, matching each pipeline's `pages`)
+
+PIPELINE-AGNOSTIC BY CONSTRUCTION — it takes a PDF and a page range and nothing
+else. Written for Balbharati Class 10 Maths, then applied unchanged to NCERT
+Class 10/11/12 and the Balbharati Class 11/12 books, all of which carry their
+`Fig. N.M` captions in the text layer. It lives in scripts/lib/figures/ rather
+than inside one pipeline for the reason recorded in
+[[probe-scoped-to-whoever-looked]]: a tool kept inside the folder of whoever
+wrote it only ever gets pointed at that corpus.
 
 WHY THIS EXISTS RATHER THAN EYEBALLED BBOXES. The four figure-bearing Maths
 chapters of this book carry ~125 figures between them. The pipeline's other
@@ -58,14 +66,29 @@ import re
 
 import fitz
 
-CAPTION = re.compile(r"^Fig\.?$", re.I)
+CAPTION = re.compile(r"^Fig(?:ure)?\.?$", re.I)
 NUMBER = re.compile(r"^(\d+\.\d+)$")
 
 # Page furniture, all measured on this book:
 FULL_WIDTH = 0.75   # a path spanning most of the width is a rule or border
 HEADER_Y = 0.055    # running head
 FOOTER_Y = 0.895    # the decorative box-strip along the bottom of every page
-MIN_AREA = 6.0
+# A LINE HAS NO AREA. Filtering ink by `get_area()` discards every purely
+# horizontal or vertical stroke — a dashed baseline, an arrow shaft, an axis —
+# because its rect is zero-height or zero-width. Balbharati's diagrams survived
+# that because they are built from arcs and closed shapes; NCERT's are built
+# from thin lines and arrowheads, and a whole page of vector diagram collapsed
+# to ONE cluster with the figure invisible. Filter on EXTENT instead: ink is ink
+# whatever its bounding box encloses.
+MIN_EXTENT = 3.0
+# ...BUT A LONG THIN LINE IS PAGE FURNITURE, NOT A STROKE. Once lines stopped
+# being filtered by area, the panel borders and rules NCERT draws around every
+# worked example started passing, and because they run the height and width of
+# the block they BRIDGE every separate diagram into one cluster spanning the
+# page. The discriminator is aspect plus length: a figure's strokes are short
+# relative to the page, a rule is long and has no thickness at all.
+RULE_LEN = 0.35   # fraction of the page dimension
+RULE_THICK = 2.5  # points
 
 # Two paths belong to the same figure if their rects are within this of each
 # other. Wide enough to join a triangle to its right-angle tick, tight enough to
@@ -101,6 +124,28 @@ def captions(page):
             continue
         deduped.append((fignum, r))
     return deduped
+
+
+def pick_captions(caps, clusters):
+    """One caption per figure number per page — the candidate that actually sits
+    ON a figure.
+
+    BOOKS DISAGREE ABOUT WHICH FORM IS THE CAPTION, in opposite directions.
+    Balbharati prints "Fig. 3.37" under the diagram and writes "In figure 3.37"
+    in the prose. NCERT prints "FIGURE 1.10" under the diagram and writes
+    "(Fig. 1.10)" in the prose. So the word itself cannot say which occurrence is
+    the caption, and keying on either spelling gets one book exactly backwards —
+    matching only `Fig`/`Fig.` found 2 captions in an NCERT chapter that has 45.
+
+    Accept every spelling, then let the PAGE decide: a caption sits against its
+    figure, a prose mention does not. Where the same number appears more than
+    once on a page, the nearest-to-a-cluster occurrence wins."""
+    best = {}
+    for fignum, cap in caps:
+        d = min((gap(cap, c) for c in clusters), default=float("inf"))
+        if fignum not in best or d < best[fignum][0]:
+            best[fignum] = (d, cap)
+    return [(f, cap) for f, (_, cap) in best.items()]
 
 
 def short_lines(page):
@@ -149,21 +194,41 @@ def column_edges(page):
     return {x for x, n in counts.items() if n >= 4}
 
 
+def is_rule(r, W, H):
+    """A borderline or a horizontal rule — long in one axis, no thickness in the
+    other. See RULE_LEN / RULE_THICK."""
+    w, h = r.x1 - r.x0, r.y1 - r.y0
+    return (w > RULE_LEN * W and h < RULE_THICK) or (h > RULE_LEN * H and w < RULE_THICK)
+
+
 def cluster(rects):
-    """Greedy proximity clustering — no directional assumption."""
-    clusters = []
-    for r in sorted(rects, key=lambda r: (r.y0, r.x0)):
+    """Greedy proximity clustering — no directional assumption.
+
+    SWEPT, NOT QUADRATIC. The first version compared every rect against every
+    open cluster, which is fine for a Balbharati page (tens of paths) and not at
+    all fine for an NCERT one (thousands) — a single chapter took minutes and 22
+    of them would have taken over an hour. Rects are processed in y order, so
+    once a cluster ends more than JOIN above the current rect it can never merge
+    again and is retired. Same output, near-linear."""
+    rects = sorted(rects, key=lambda r: (r.y0, r.x0))
+    open_, closed = [], []
+    for r in rects:
+        cutoff = r.y0 - JOIN
+        still = []
+        for c in open_:
+            (closed if c.y1 < cutoff else still).append(c)
+        open_ = still
         grown = fitz.Rect(r.x0 - JOIN, r.y0 - JOIN, r.x1 + JOIN, r.y1 + JOIN)
-        hit = [c for c in clusters if c.intersects(grown)]
-        if not hit:
-            clusters.append(fitz.Rect(r))
-            continue
         merged = fitz.Rect(r)
-        for c in hit:
-            merged |= c
-            clusters.remove(c)
-        clusters.append(merged)
-    return clusters
+        keep = []
+        for c in open_:
+            if c.intersects(grown):
+                merged |= c
+            else:
+                keep.append(c)
+        keep.append(merged)
+        open_ = keep
+    return closed + open_
 
 
 def gap(a, b):
@@ -176,6 +241,11 @@ def gap(a, b):
 def main():
     pdf, p0, p1, out = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
     doc = fitz.open(pdf)
+    # -1 means "to the last page" — most chapters in these pipelines are their
+    # own PDF and declare no page range at all.
+    if p1 < 0:
+        p1 = len(doc)
+    p1 = min(p1, len(doc))
     cat, problems = [], []
     for p in range(p0, p1):
         page = doc[p]
@@ -197,9 +267,15 @@ def main():
             r
             for r in ink
             if (r.x1 - r.x0) < FULL_WIDTH * W
-            and r.get_area() > MIN_AREA
-            and r.y1 > HEADER_Y * H
-            and r.y0 < FOOTER_Y * H
+            and max(r.x1 - r.x0, r.y1 - r.y0) >= MIN_EXTENT
+            and not is_rule(r, W, H)
+            # CONTAINED in the content box, not merely overlapping it. NCERT
+            # runs a tall coloured sidebar ("EXAMPLE 1.6") down the page and a
+            # banded header across it; both start above y=0 and both are far too
+            # thick to read as rules, so an overlap test let them through and a
+            # single cluster then spanned the entire page.
+            and r.y0 >= HEADER_Y * H
+            and r.y1 <= FOOTER_Y * H
         ]
         clusters = cluster(rects)
         labels = short_lines(page)
@@ -221,10 +297,10 @@ def main():
             for block in page.get_text("dict")["blocks"]
             for line in block.get("lines", [])
             if "".join(sp["text"] for sp in line["spans"]).strip()
-            and any(abs(line["bbox"][0] - c) <= 2 for c in column_edges(page))
+            and any(abs(line["bbox"][0] - c) <= 2 for c in columns)
         ]
         clusters = [c for c in clusters if not any(c.intersects(pr) and abs((c & pr).get_area() - pr.get_area()) < 1 for pr in prose)]
-        caps = captions(page)
+        caps = pick_captions(captions(page), clusters)
 
         claimed = {}
         for fignum, cap in caps:
