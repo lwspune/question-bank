@@ -15,14 +15,30 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       intuition:
         "A line is fixed by a point and a direction (its slope). The slope is the tangent of the angle it makes with the x-axis. Pick the form that matches what you're given — a point and slope, two points, or intercepts.",
       definition:
-        "**Slope** \\(m=\\tan\\theta=\\dfrac{y_2-y_1}{x_2-x_1}\\). Forms:\n" +
-        "- **Slope-intercept:** \\(y=mx+c\\). **Point-slope:** \\(y-y_1=m(x-x_1)\\).\n" +
-        "- **Two-point:** \\(\\dfrac{y-y_1}{x-x_1}=\\dfrac{y_2-y_1}{x_2-x_1}\\).\n" +
-        "- **General:** \\(ax+by+c=0\\) has slope \\(-a/b\\). **Normal form:** \\(x\\cos\\theta+y\\sin\\theta=p\\) (\\(p\\) = distance from origin).",
+        "**Slope** \\(m=\\tan\\theta\\), where \\(\\theta\\) is the angle the line makes with the " +
+        "**positive x-axis**, measured anticlockwise, \\(0^\\circ\\le\\theta<180^\\circ\\). So a line " +
+        "leaning to the left has \\(\\theta\\) obtuse and \\(m\\) **negative**. Computed from **any two " +
+        "points on the line**, \\(m=\\dfrac{y_2-y_1}{x_2-x_1}\\) — which pair you pick makes no " +
+        "difference, and that is what makes slope a property of the line rather than of the points. " +
+        "Forms:\n" +
+        "- **Slope-intercept:** \\(y=mx+c\\) — use when you know the slope and the y-intercept \\(c\\).\n" +
+        "- **Point-slope:** \\(y-y_1=m(x-x_1)\\) — use when you know one point and the slope.\n" +
+        "- **Two-point:** \\(\\dfrac{y-y_1}{x-x_1}=\\dfrac{y_2-y_1}{x_2-x_1}\\) — use when you know two points.\n" +
+        "- **General:** \\(ax+by+c=0\\), slope \\(-a/b\\). Careful: this \\(c\\) is the **constant term**, not the y-intercept it meant one line above.\n" +
+        "- **Normal (perpendicular) form:** \\(x\\cos\\alpha+y\\sin\\alpha=p\\), where \\(p\\) is the distance from the origin to the line and \\(\\alpha\\) is the angle **that perpendicular** makes with the x-axis — a different angle from \\(\\theta\\).",
       formula: {
         label: "Slope and forms of a line",
         latex:
           "m=\\dfrac{y_2-y_1}{x_2-x_1}\\qquad m_{ax+by+c=0}=-\\dfrac{a}{b}\\qquad y-y_1=m(x-x_1)\\qquad y=mx+c",
+        // This chapter reuses a, b, c and theta for different things within a
+        // few lines, so the legend is load-bearing here, not decoration.
+        symbols: [
+          { symbol: "\\(m\\)", meaning: "slope of the line" },
+          { symbol: "\\(\\theta\\)", meaning: "angle the LINE makes with the positive x-axis" },
+          { symbol: "\\(\\alpha\\)", meaning: "angle the PERPENDICULAR from the origin makes — normal form only" },
+          { symbol: "\\(c\\)", meaning: "y-intercept in \\(y=mx+c\\); the constant term in \\(ax+by+c=0\\)" },
+          { symbol: "\\(p\\)", meaning: "distance from the origin to the line" },
+        ],
       },
       traps: [
         {
@@ -49,10 +65,11 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Slope of \\(ax+by+c=0\\)?", answer: "\\(-a/b\\)" },
-        { prompt: "Slope in terms of the angle \\(\\theta\\) with x-axis?", answer: "\\(\\tan\\theta\\)" },
+        { prompt: "Slope of a line inclined at \\(\\theta\\) to the positive x-axis?", answer: "\\(\\tan\\theta\\)" },
         { prompt: "Point-slope form?", answer: "\\(y-y_1=m(x-x_1)\\)" },
-        { prompt: "Normal form of a line?", answer: "\\(x\\cos\\theta+y\\sin\\theta=p\\)" },
+        { prompt: "Normal form of a line?", answer: "\\(x\\cos\\alpha+y\\sin\\alpha=p\\)" },
       ],
+      pyqExampleId: "e163beed-4c11-4b17-854f-b9e02157d673", // normal ("perpendicular") form of √3x+2y=7
     },
 
     {
@@ -62,11 +79,20 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       intuition:
         "When a line's x- and y-intercepts matter, the intercept form \\(\\tfrac{x}{a}+\\tfrac{y}{b}=1\\) reads them off directly. Many questions give a relation between the intercepts (their sum, or a midpoint) and ask for the line.",
       definition:
-        "**Intercept form:** \\(\\dfrac{x}{a}+\\dfrac{y}{b}=1\\), where \\(a\\) is the x-intercept and \\(b\\) the y-intercept. From \\(ax+by+c=0\\): x-intercept \\(=-c/a\\), y-intercept \\(=-c/b\\). If \\((h,k)\\) is the midpoint of the intercept segment, then \\(a=2h\\), \\(b=2k\\).",
+        "An **intercept is a number, not a point**: the x-intercept is the value of \\(x\\) at which the " +
+        "line crosses the x-axis. That is why a question can ask for their **sum**.\n" +
+        "- **Intercept form:** \\(\\dfrac{x}{a}+\\dfrac{y}{b}=1\\), where \\(a\\) is the x-intercept and \\(b\\) the y-intercept — readable off the equation **only when the right-hand side is exactly \\(1\\)**.\n" +
+        "- **From a general line** \\(px+qy+r=0\\): x-intercept \\(=-r/p\\), y-intercept \\(=-r/q\\). The letters are \\(p,q,r\\) here on purpose — in the line above, \\(a\\) and \\(b\\) are **intercepts**, while in a general equation \\(a\\) and \\(b\\) are **coefficients**. They are not the same thing, and confusing them is this concept's classic error.\n" +
+        "- **From a midpoint:** if \\((h,k)\\) is the midpoint of the segment the line cuts between the axes, then \\(a=2h\\) and \\(b=2k\\).",
       formula: {
         label: "Intercept form and intercepts",
         latex:
-          "\\dfrac{x}{a}+\\dfrac{y}{b}=1\\qquad x\\text{-intercept}=-\\dfrac{c}{a}\\qquad y\\text{-intercept}=-\\dfrac{c}{b}",
+          "\\dfrac{x}{a}+\\dfrac{y}{b}=1\\qquad\\text{from }px+qy+r=0:\\quad x\\text{-int}=-\\dfrac{r}{p},\\quad y\\text{-int}=-\\dfrac{r}{q}",
+        symbols: [
+          { symbol: "\\(a,b\\)", meaning: "the x- and y-INTERCEPTS (numbers), in intercept form only" },
+          { symbol: "\\(p,q,r\\)", meaning: "the COEFFICIENTS of a general line \\(px+qy+r=0\\)" },
+          { symbol: "\\((h,k)\\)", meaning: "midpoint of the segment cut between the axes" },
+        ],
       },
       traps: [
         {
@@ -93,7 +119,7 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Intercept form of a line?", answer: "\\(\\tfrac{x}{a}+\\tfrac{y}{b}=1\\)" },
-        { prompt: "x-intercept of \\(ax+by+c=0\\)?", answer: "\\(-c/a\\)" },
+        { prompt: "x-intercept of \\(px+qy+r=0\\)?", answer: "\\(-r/p\\)" },
         { prompt: "Midpoint of intercepts is \\((h,k)\\): intercepts?", answer: "\\(2h,\\ 2k\\)" },
         { prompt: "Sum of intercepts of \\(\\tfrac{x}{4}+\\tfrac{y}{2}=1\\)?", answer: "\\(6\\)" },
       ],
@@ -107,7 +133,10 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       intuition:
         "Any line through the intersection of \\(L_1=0\\) and \\(L_2=0\\) can be written \\(L_1+\\lambda L_2=0\\) — without ever finding the intersection point. Choose \\(\\lambda\\) from one extra condition. Three lines are concurrent when their intersection is shared.",
       definition:
-        "**Family (pencil):** through \\(L_1\\cap L_2\\), every line is \\(L_1+\\lambda L_2=0\\); fix \\(\\lambda\\) from a point or a slope condition. **Parallel/perpendicular through a point:** keep the same (or negative-reciprocal) slope. **Concurrency:** three lines are concurrent iff \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). If coefficients \\(A,B,C\\) are in AP, \\(Ax+2By+C=0\\) passes through the fixed point \\((1,-1)\\) (since \\(C=2B-A\\) gives \\(A(x-1)+2B(y+1)=0\\)).",
+        "- **Family (pencil):** every line through the intersection of \\(L_1=0\\) and \\(L_2=0\\) can be written \\(L_1+\\lambda L_2=0\\), so you never have to find the intersection point. Fix \\(\\lambda\\) from one extra condition. (The single line it misses is \\(L_2=0\\) itself.)\n" +
+        "- **Through a point, parallel or perpendicular to a given line:** keep the same slope, or the negative-reciprocal one. Both tests are proved in the next block, Angle Between Lines — for now, **parallel means equal slopes** and **perpendicular means the slopes multiply to \\(-1\\)**.\n" +
+        "- **Concurrent** means all three lines pass through **one common point**. If three lines are concurrent, then \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). The converse is **not** automatic: the determinant also vanishes when two of the lines are parallel, so a zero determinant is evidence, not proof. Expanding a \\(3\\times3\\) determinant is in the Matrices & Determinants notes, linked below.\n" +
+        "- **A fixed point forced by a coefficient condition:** if \\(A,B,C\\) are in AP then \\(C-B=B-A\\), so \\(C=2B-A\\). Put that into \\(Ax+2By+C=0\\): \\(Ax+2By+2B-A=0\\), which regroups as \\(A(x-1)+2B(y+1)=0\\). That holds for **every** \\(A\\) and \\(B\\) only when \\(x-1=0\\) and \\(y+1=0\\) — so every such line passes through \\((1,-1)\\).",
       formula: {
         label: "Family of lines and concurrency",
         latex:
@@ -130,17 +159,22 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         answer: "\\(x=1\\).",
       },
       selfCheckExample: {
-        prompt: "For what \\(k\\) is \\((k-3)x-y+2=0\\) parallel to \\(x+y=1\\)?",
+        // Tests the pencil itself, which is what this concept is for. The old
+        // self-check asked for a value of k making two lines parallel — a test
+        // taught in the NEXT block, and not this concept's technique at all.
+        prompt:
+          "Find the line through the intersection of \\(2x+3y-5=0\\) and \\(x-y-1=0\\) that passes through the origin.",
         steps: [
-          "Parallel ⇒ equal slopes. Slope of the second is \\(-1\\); slope of the first is \\((k-3)\\).",
-          "\\(k-3=-1\\Rightarrow k=2\\).",
+          "Family: \\((2x+3y-5)+\\lambda(x-y-1)=0\\).",
+          "It passes through \\((0,0)\\): \\(-5+\\lambda(-1)=0\\Rightarrow\\lambda=-5\\).",
+          "Substitute: \\((2x+3y-5)-5(x-y-1)=-3x+8y=0\\).",
         ],
-        answer: "\\(k=2\\).",
+        answer: "\\(3x-8y=0\\).",
       },
       practiceSet: [
         { prompt: "Family of lines through \\(L_1\\cap L_2\\)?", answer: "\\(L_1+\\lambda L_2=0\\)" },
-        { prompt: "Concurrency condition for 3 lines?", answer: "Determinant of coefficients \\(=0\\)" },
-        { prompt: "Parallel lines have slopes that are?", answer: "Equal" },
+        { prompt: "Three lines concurrent ⇒ their coefficient determinant?", answer: "\\(=0\\) (the converse needs checking)" },
+        { prompt: "\"Concurrent\" means?", answer: "All three pass through one common point" },
         { prompt: "\\(Ax+2By+C=0\\) with \\(A,B,C\\) in AP passes through?", answer: "\\((1,-1)\\)" },
       ],
       pyqExampleId: "ccb085f6-15cd-4bb9-acf5-22cb8485814a", // 3 lines concurrent
@@ -153,7 +187,23 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
       intuition:
         "The image of a point in a line is its mirror reflection: the line is the perpendicular bisector of the segment joining the point and its image. Use 'midpoint lies on the line' plus 'segment ⟂ line' to find the image, or recover the mirror from a point–image pair.",
       definition:
-        "If \\(P'\\) is the image of \\(P\\) in line \\(L\\): the midpoint of \\(PP'\\) lies on \\(L\\), and \\(PP'\\perp L\\). These two conditions pin down \\(P'\\) (or the mirror line). Foot of perpendicular from \\(P\\) to \\(L\\) is the midpoint of \\(PP'\\).",
+        "If \\(P'\\) is the image of \\(P\\) in the line \\(L\\), two facts pin it down: the **midpoint of " +
+        "\\(PP'\\) lies on \\(L\\)**, and **\\(PP'\\) is perpendicular to \\(L\\)**. Write \\(P'=(h,k)\\), " +
+        "turn each fact into an equation, and solve the pair.\n" +
+        "- Two things borrowed from later blocks, stated here so this method is usable now: the midpoint of \\((x_1,y_1)\\) and \\((x_2,y_2)\\) is \\(\\left(\\tfrac{x_1+x_2}{2},\\tfrac{y_1+y_2}{2}\\right)\\), and **perpendicular** means the two slopes multiply to \\(-1\\).\n" +
+        "- The **foot of the perpendicular** \\(F\\) from \\(P\\) to \\(L\\) is the *midpoint* of \\(PP'\\), so \\(P'=2F-P\\).\n" +
+        "- **Shortcuts worth memorising:** reflecting in \\(y=x\\) swaps coordinates, \\((a,b)\\to(b,a)\\); in the x-axis, \\((a,b)\\to(a,-b)\\); in the y-axis, \\((a,b)\\to(-a,b)\\).\n" +
+        "- **Backwards:** given \\(P\\) and its image \\(P'\\), the mirror is the perpendicular bisector of \\(PP'\\).",
+      formula: {
+        label: "Image of a point in a line",
+        latex:
+          "\\text{midpoint}(PP')\\in L\\qquad PP'\\perp L\\qquad P'=2F-P",
+        symbols: [
+          { symbol: "\\(P\\)", meaning: "the original point" },
+          { symbol: "\\(P'\\)", meaning: "its image (mirror reflection) in the line" },
+          { symbol: "\\(F\\)", meaning: "foot of the perpendicular from \\(P\\) to the line — the MIDPOINT of \\(PP'\\)" },
+        ],
+      },
       traps: [
         {
           title: "The **foot** of the perpendicular is the *midpoint* of \\(PP'\\), not the image itself",
@@ -162,20 +212,26 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         },
       ],
       authoredExample: {
-        prompt: "Find the image of \\((1,2)\\) in the line \\(y=x\\).",
+        // Works the GENERAL method, not the y=x swap. The shortcut is in the
+        // definition; a worked example that only swaps coordinates leaves the
+        // taught two-condition method demonstrated zero times.
+        prompt: "Find the image of \\((1,2)\\) in the line \\(x+y=5\\).",
         steps: [
-          "Reflection in \\(y=x\\) swaps coordinates.",
-          "Image \\(=(2,1)\\).",
+          "Let the image be \\(P'=(h,k)\\).",
+          "Midpoint on the line: \\(\\dfrac{1+h}{2}+\\dfrac{2+k}{2}=5\\Rightarrow h+k=7\\).",
+          "Perpendicular: the line has slope \\(-1\\), so \\(PP'\\) has slope \\(1\\): \\(\\dfrac{k-2}{h-1}=1\\Rightarrow k=h+1\\).",
+          "Solve: \\(h+(h+1)=7\\Rightarrow h=3,\\ k=4\\).",
         ],
-        answer: "\\((2,1)\\).",
+        answer: "\\((3,4)\\).",
       },
       selfCheckExample: {
-        prompt: "The image of \\((-4,2)\\) in a line is \\((4,-2)\\). What line is the mirror?",
+        prompt: "Find the image of \\((4,1)\\) in the line \\(x-y=1\\).",
         steps: [
-          "Mirror = perpendicular bisector of \\((-4,2)\\),\\((4,-2)\\). Midpoint \\((0,0)\\); segment slope \\(\\tfrac{-2-2}{4+4}=-\\tfrac12\\).",
-          "Mirror slope \\(=2\\), through origin: \\(y=2x\\).",
+          "Let \\(P'=(h,k)\\). Midpoint on the line: \\(\\dfrac{4+h}{2}-\\dfrac{1+k}{2}=1\\Rightarrow h-k=-1\\).",
+          "The line has slope \\(1\\), so \\(PP'\\) has slope \\(-1\\): \\(\\dfrac{k-1}{h-4}=-1\\Rightarrow k=5-h\\).",
+          "Solve: \\(h-(5-h)=-1\\Rightarrow h=2,\\ k=3\\).",
         ],
-        answer: "\\(y=2x\\).",
+        answer: "\\((2,3)\\).",
       },
       practiceSet: [
         { prompt: "A line is the ___ of a point and its image.", answer: "Perpendicular bisector" },
@@ -187,7 +243,8 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Distance, Section & Locus", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
+    { label: "Next: Angle, Parallel & Perpendicular", href: "/notes/nda-maths/lines/lines-angle-parallel-perp" },
+    { label: "Matrices & Determinants notes (expanding a 3×3 determinant)", href: "/notes/nda-maths/matrices-determinants" },
     { label: "NDA Maths strategy guide", href: "/guide/nda-maths" },
   ],
 };
