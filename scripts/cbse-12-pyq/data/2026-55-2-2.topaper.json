@@ -1,0 +1,305 @@
+{
+  "paper": "55/2/2",
+  "year": 2026,
+  "paperId": "2026-55-2-2",
+  "markingScheme": "out/2026-55-2-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "dab930e0317dc0b4b1953241b81139b1b55af1ba34ceaaac6008216d3a52e9c7",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "Three point charges +q, \\(-2q\\) and +q are placed along \\(x\\)-axis at points \\(x = -1\\) m, \\(x = 0\\) m and \\(x = 2\\) m respectively. The potential energy of the system is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-\\frac{q^2}{\\pi\\varepsilon_0}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\frac{2q^2}{3\\pi\\varepsilon_0}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{q^2}{4\\pi\\varepsilon_0}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{-5q^2}{4\\pi\\varepsilon_0}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(-\\dfrac{2q^{2}}{3\\pi\\varepsilon_0}\\).**\n\n**Potential energy of a system is the sum over every PAIR**, counted once:\n\n\\(U = \\dfrac{1}{4\\pi\\varepsilon_0}\\sum_{\\text{pairs}}\\dfrac{q_iq_j}{r_{ij}}\\)\n\n**Three charges give three pairs.** The positions are \\(+q\\) at \\(x = -1\\), \\(-2q\\) at \\(x = 0\\) and \\(+q\\) at \\(x = +2\\), so the separations are **1 m, 2 m and 3 m** — read them off carefully, since the charges are not evenly spaced.\n\n**Pair 1 —** \\(+q\\) and \\(-2q\\), separation \\(1\\) m:\n\n\\(U_{12} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\left(q\\right)\\left(-2q\\right)}{1} = -\\dfrac{2q^{2}}{4\\pi\\varepsilon_0}\\)\n\n**Pair 2 —** \\(-2q\\) and \\(+q\\), separation \\(2\\) m:\n\n\\(U_{23} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\left(-2q\\right)\\left(q\\right)}{2} = -\\dfrac{q^{2}}{4\\pi\\varepsilon_0}\\)\n\n**Pair 3 —** \\(+q\\) and \\(+q\\), separation \\(3\\) m:\n\n\\(U_{13} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\left(q\\right)\\left(q\\right)}{3} = +\\dfrac{q^{2}}{3\\cdot 4\\pi\\varepsilon_0}\\)\n\n**Adding:**\n\n\\(U = \\dfrac{q^{2}}{4\\pi\\varepsilon_0}\\left(-2 - 1 + \\dfrac{1}{3}\\right) = \\dfrac{q^{2}}{4\\pi\\varepsilon_0}\\times\\left(-\\dfrac{8}{3}\\right)\\)\n\n\\(U = -\\dfrac{8q^{2}}{12\\pi\\varepsilon_0}\\)\n\n\\(\\boxed{\\ U = -\\dfrac{2q^{2}}{3\\pi\\varepsilon_0}\\ }\\)\n\n**Note the \\(4\\) in \\(4\\pi\\varepsilon_0\\) has been absorbed**, which is why the answer looks unfamiliar: \\(8/\\left(3\\times 4\\right) = 2/3\\). Failing to simplify leaves \\(-8q^{2}/12\\pi\\varepsilon_0\\), which is the same number wearing different clothes — check the options in their own form before deciding an answer is absent.\n\n**The sum is NEGATIVE, and it should be.** Two of the three pairs are attractive and they are the **close** ones; the single repulsive pair is the most widely separated, so it contributes least. **The system is bound** — external work must be done to dismantle it, \\(+8q^{2}/12\\pi\\varepsilon_0\\) worth.\n\n**Two traps in the geometry.** The middle charge is at \\(x = 0\\), not midway between the outer two, so the separations are \\(1\\) and \\(2\\), not equal. And the outer pair is \\(3\\) m apart — from \\(-1\\) to \\(+2\\) — not \\(2\\) m.\n\n**Why pairs are counted ONCE.** The energy of the \\(\\left(1,2\\right)\\) pair and the \\(\\left(2,1\\right)\\) pair are the same single quantity — the work to bring those two charges together from infinity. Summing over all ordered pairs would double it, which is why the general formula carries a factor \\(\\tfrac{1}{2}\\) when written as an unrestricted double sum.\n\n**A check on the sign convention.** \\(U\\) is measured against all three charges being infinitely far apart. Negative means energy was released in assembling the system, and that is what an overall attraction implies."
+    },
+    {
+      "hash": "352edb78e58a033dbcd1986c6e298efa6ac0df1936c1d172cb47459658725cbc",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "A photosensitive surface is illuminated by radiations of wavelength \\(\\lambda_1\\), \\(\\lambda_2\\) \\((>\\lambda_1)\\) and \\(\\lambda_3\\) one by one and photoemission is observed in each case. \\(\\lambda_1\\), \\(\\lambda_2\\) lies in UV range and \\(\\lambda_3\\) in visible range. If \\(\\mathrm{V_1}\\), \\(\\mathrm{V_2}\\) and \\(\\mathrm{V_3}\\) are stopping potential in these cases respectively, then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\mathrm{V_1 = V_2 = V_3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{V_2 > V_1 > V_3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{V_1 > V_2 > V_3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{V_3 > V_1 > V_2}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(V_1 > V_2 > V_3\\).**\n\n**Einstein's photoelectric equation**, written for the stopping potential:\n\n\\(eV_0 = h\\nu - \\phi_0 = \\dfrac{hc}{\\lambda} - \\phi_0\\)\n\n\\(V_0 = \\dfrac{hc}{e\\lambda} - \\dfrac{\\phi_0}{e}\\)\n\n**The surface is the same throughout, so \\(\\phi_0\\) is fixed.** The only thing that changes is \\(\\lambda\\), and it enters as \\(1/\\lambda\\):\n\n\\(\\boxed{\\ \\text{shorter wavelength}\\ \\Longrightarrow\\ \\text{larger stopping potential}\\ }\\)\n\n**Now ORDER the three wavelengths.** The question gives \\(\\lambda_2 > \\lambda_1\\) directly, and both lie in the **ultraviolet**. \\(\\lambda_3\\) is in the **visible**, and visible light has longer wavelengths than ultraviolet — the UV band runs up to about \\(400\\) nm, where the visible band begins.\n\n\\(\\lambda_1 < \\lambda_2 < \\lambda_3\\)\n\n**Reversing the order gives the stopping potentials:**\n\n\\(V_1 > V_2 > V_3\\)\n\n**Option (D) is the trap for anyone who forgets where the visible band sits.** Placing \\(\\lambda_3\\) as the shortest would put \\(V_3\\) first. Visible light is **less** energetic than ultraviolet, not more — that is precisely why UV causes sunburn and visible light does not.\n\n**A caution on the inverse relation.** \\(V_0\\) is not proportional to \\(1/\\lambda\\); it is **linear in \\(1/\\lambda\\) with a negative intercept**. So the ordering is preserved, but the ratios are not — halving the wavelength does not double the stopping potential, because the work function is subtracted first.\n\n**Why \"photoemission is observed in each case\" matters.** It tells us all three wavelengths are **above threshold**, including the visible \\(\\lambda_3\\) — so \\(\\phi_0 < hc/\\lambda_3\\), and the surface is one with a low work function such as caesium. Without that clause \\(V_3\\) might not exist at all, and the question could not be answered.\n\n**What a graph would show.** Plotting \\(V_0\\) against \\(1/\\lambda\\) gives a straight line of slope \\(hc/e\\), crossing the axis at \\(1/\\lambda_0 = \\phi_0/hc\\). The three points sit on that one line, in the order the answer states, and the line's slope contains no property of the metal.\n\n**A reminder of what does NOT enter.** The intensity of each beam is never mentioned, and could not matter: intensity fixes how **many** photoelectrons are emitted, never their maximum energy."
+    },
+    {
+      "hash": "34a09f2c0f1a9ff70892fda164d387cbf5890c69a048abd6c2007a1b757d86c9",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "In Bohr model of hydrogen atom, the value of potential energy of an electron in \\(\\mathrm{n^{th}}\\) orbit varies with 'n' as",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{n^2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{n}\\)"
+        },
+        {
+          "label": "C",
+          "text": "n"
+        },
+        {
+          "label": "D",
+          "text": "\\(n^2\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{1}{n^{2}}\\).**\n\n**In the Bohr model** the electron's potential energy in the \\(n^{th}\\) orbit is\n\n\\(U_n = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{r_n}\\)\n\n**so \\(U_n \\propto 1/r_n\\)**, and everything turns on how the radius depends on \\(n\\).\n\n**The Bohr radii grow as \\(n^{2}\\):**\n\n\\(r_n = n^{2}a_0, \\qquad a_0 = 0{\\cdot}529\\ \\text{angstrom}\\)\n\n**Substituting:**\n\n\\(U_n = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{n^{2}a_0} \\qquad\\Longrightarrow\\qquad \\boxed{\\ U_n \\propto \\dfrac{1}{n^{2}}\\ }\\)\n\n**In numbers**, since \\(U = 2E\\) and \\(E_n = -13{\\cdot}6/n^{2}\\) eV:\n\n\\(U_n = -\\dfrac{27{\\cdot}2}{n^{2}}\\ \\mathrm{eV}\\)\n\nSo \\(U_1 = -27{\\cdot}2\\) eV, \\(U_2 = -6{\\cdot}8\\) eV, \\(U_3 = -3{\\cdot}02\\) eV — falling in magnitude as \\(1, \\tfrac{1}{4}, \\tfrac{1}{9}\\).\n\n**Option (D), \\(n^{2}\\), is the RADIUS's dependence**, not the energy's, and it is the natural slip: \\(r_n \\propto n^{2}\\) is the more frequently quoted result, and the potential energy varies as its reciprocal.\n\n**All three energies share the same \\(1/n^{2}\\).** Kinetic, potential and total:\n\n\\(K_n = +\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}, \\qquad U_n = -\\dfrac{27{\\cdot}2}{n^{2}}\\ \\mathrm{eV}, \\qquad E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV}\\)\n\nThey differ only in sign and in the constant in front — which is exactly why \\(U/K = -2\\) holds for every \\(n\\).\n\n**The other Bohr dependences, for contrast:**\n\n\\(r_n \\propto n^{2}, \\qquad v_n \\propto \\dfrac{1}{n}, \\qquad T_n \\propto n^{3}, \\qquad L_n \\propto n\\)\n\nOptions (B) and (C) are the speed's dependence and the angular momentum's, so every distractor here is a genuine Bohr result attached to the wrong quantity.\n\n**Why the levels crowd together.** Because \\(1/n^{2}\\) falls so steeply, the gap between consecutive levels shrinks rapidly — \\(10{\\cdot}2\\) eV from \\(n=1\\) to \\(2\\), but only \\(1{\\cdot}89\\) eV from \\(2\\) to \\(3\\). The whole infinite ladder above \\(n=1\\) is contained within \\(13{\\cdot}6\\) eV, which is why the spectral series converge to a limit."
+    },
+    {
+      "hash": "0ff60c7a76b4baa9ed22d5c026a7c79c053ab2e8e37ffbee4bc870fe227bf4ca",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Line Spectra of the Hydrogen Atom",
+      "stem": "In Bohr model of hydrogen atom, an electron makes a transition from n = 4 state to n = 1 state and a photon of frequency \\(\\nu\\) is emitted. The frequency of photon emitted when an electron makes a transition from n = 4 state to n = 2 state in the same model is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\nu}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\nu}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\nu}{5}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{\\nu}{6}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\dfrac{\\nu}{5}\\).**\n\n**The photon frequency for a transition** between levels in hydrogen:\n\n\\(h\\nu = E_{n_i} - E_{n_f} = 13{\\cdot}6\\left(\\dfrac{1}{n_f^{2}} - \\dfrac{1}{n_i^{2}}\\right)\\ \\mathrm{eV}\\)\n\nso \\(\\nu \\propto \\left(\\dfrac{1}{n_f^{2}} - \\dfrac{1}{n_i^{2}}\\right)\\), and the constants cancel in a ratio.\n\n**Transition \\(4 \\to 1\\):**\n\n\\(\\nu \\propto \\dfrac{1}{1^{2}} - \\dfrac{1}{4^{2}} = 1 - \\dfrac{1}{16} = \\dfrac{15}{16}\\)\n\n**Transition \\(4 \\to 2\\):**\n\n\\(\\nu' \\propto \\dfrac{1}{2^{2}} - \\dfrac{1}{4^{2}} = \\dfrac{1}{4} - \\dfrac{1}{16} = \\dfrac{4 - 1}{16} = \\dfrac{3}{16}\\)\n\n**The ratio:**\n\n\\(\\dfrac{\\nu'}{\\nu} = \\dfrac{3/16}{15/16} = \\dfrac{3}{15} = \\dfrac{1}{5}\\)\n\n\\(\\boxed{\\ \\nu' = \\dfrac{\\nu}{5}\\ }\\)\n\n**The sixteenths cancel**, which is what makes this a five-line problem. Keeping both differences over the common denominator \\(16\\) reduces the whole thing to \\(3 : 15\\).\n\n**Why the second photon is so much less energetic.** Both transitions start at \\(n = 4\\), but the first falls all the way to the ground state while the second stops at \\(n = 2\\) — and because the levels are spaced as \\(1/n^{2}\\), nearly all of the energy in a drop to \\(n = 1\\) is gained in that last step. **The \\(2 \\to 1\\) step alone carries \\(10{\\cdot}2\\) eV of the \\(12{\\cdot}75\\) eV total**, which is exactly the factor of five.\n\n*Check in electronvolts:* \\(4\\to 1\\) gives \\(13{\\cdot}6\\left(15/16\\right) = 12{\\cdot}75\\) eV; \\(4\\to 2\\) gives \\(13{\\cdot}6\\left(3/16\\right) = 2{\\cdot}55\\) eV. And \\(12{\\cdot}75/2{\\cdot}55 = 5\\) \\(\\checkmark\\).\n\n**The two photons belong to different SERIES**, and that is the physical content of the ratio. A transition ending at \\(n = 1\\) is a **Lyman** line, in the far ultraviolet \\(\\left(97{\\cdot}3\\ \\mathrm{nm}\\right)\\); one ending at \\(n = 2\\) is a **Balmer** line, here at \\(486\\) nm — blue-green, and visible. The same starting level produces one invisible photon and one you can see, depending only on where it stops.\n\n**A consistency check worth doing.** The \\(4\\to 1\\) photon should equal the sum of \\(4\\to 2\\) and \\(2\\to 1\\): \\(2{\\cdot}55 + 10{\\cdot}2 = 12{\\cdot}75\\) eV \\(\\checkmark\\). Photon **energies** add along a cascade; wavelengths do not."
+    },
+    {
+      "hash": "bd1da75273a471b064cf5184d174a6763888cdcdccd03c0e5aa17f4e5ed64937",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Lenz's Law and Conservation of Energy",
+      "stem": "Figure shows a magnet dropped through a small loop with a small cut. Which of the following statements is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The speed of the falling magnet increases as it approaches the loop and starts decreasing as it crosses the loop."
+        },
+        {
+          "label": "B",
+          "text": "Acceleration of magnet increases as it approaches the loop and starts decreasing as it crosses the loop."
+        },
+        {
+          "label": "C",
+          "text": "Speed of magnet remains uniform as it moves through the loop."
+        },
+        {
+          "label": "D",
+          "text": "Acceleration of the magnet remains uniform as it moves through the loop."
+        }
+      ],
+      "answer": "D",
+      "figureNote": "REQUIRED - the stem opens 'Figure shows ...' and names no geometry, so the row reads as incomplete without the drawing. Described: a bar magnet drawn as an upright rectangle with its upper end labelled S and its lower end labelled N, a downward arrow below it running along a vertical dashed line, and below that a horizontal loop drawn in perspective with two dots on its near edge labelled X and Y marking the small cut. NOTHING WITHHELD: the one fact that decides the answer - that the loop is cut, so no induced current and no retarding force - is stated in the stem itself, and no directed quantity in the drawing bears on any option. Page idx 6.",
+      "imageAttached": true,
+      "solution": "**The answer is (D): Acceleration of the magnet remains uniform as it moves through the loop.**\n\n**Read the figure first — the loop HAS A CUT.** Its two ends, \\(X\\) and \\(Y\\), are separated by a small gap, so the loop is **not a closed circuit**. That single detail decides the whole question.\n\n**What Faraday's law does and does not say.** As the magnet falls, the flux through the loop changes, so an emf **is** induced:\n\n\\(\\varepsilon = -\\dfrac{d\\Phi}{dt}\\)\n\n**But an emf is not a current.** A current needs a complete conducting path, and the cut breaks it:\n\n\\(I = \\dfrac{\\varepsilon}{R} = 0 \\qquad\\text{since the circuit is OPEN}\\)\n\n**No current means no induced magnetic moment, and no force on the magnet.** Lenz's law has nothing to act with. The emf simply appears as a potential difference across the gap \\(XY\\), doing no work.\n\n**So the only force on the magnet is gravity throughout:**\n\n\\(\\boxed{\\ a = g,\\ \\text{constant, before, during and after}\\ }\\)\n\n**Options (A) and (B) describe what WOULD happen with a closed loop**, and describe it correctly — which is what makes them attractive. In a continuous ring, the induced current opposes the change in flux: the loop repels the approaching magnet and attracts the receding one, so the magnet is retarded both going in and coming out, and falls with \\(a < g\\) throughout. Option (A) even has the retardation only on one side, which is wrong for a closed loop too.\n\n**Option (C), uniform speed, would require zero net force**, which cannot happen for a magnet in free fall unless the retarding force exactly balanced gravity — a coincidence, not a general result. In a closed loop the magnet still accelerates, merely less than \\(g\\).\n\n**Why the closed-loop case is a conservation-of-energy argument.** Any current dissipates energy as heat in the ring, and that energy has to come from somewhere — the magnet's kinetic energy. **The retarding force is the mechanical price of the heat.** With the loop cut there is no dissipation, so there is nothing for the magnet to pay, and its energy is conserved as ordinary free fall.\n\n**The classic demonstration of the closed case** is a magnet dropped down a thick copper tube, which descends slowly and steadily; slit the tube lengthwise and the magnet falls straight through. The cut here does the same job.\n\n**A caution.** The gap must be a genuine break. A loop closed through even a very large resistance still carries some current and still retards the magnet slightly — the result here is exact only for a true open circuit."
+    },
+    {
+      "hash": "1f2f80ac891dfb88bf1f1ee39bf06db6429eb91097490f7cbf05a3dd8e4ba8da",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The expression of magnetic fields associated with four electromagnetic waves are given below :\nI. \\(\\mathrm{B_1} = (4 \\times 10^{-6}\\ \\mathrm{T})\\ \\sin\\,[0.7 \\times 10^3 x + 1.4 \\times 10^{11}\\ \\mathrm{t}]\\)\nII. \\(\\mathrm{B_2} = (2 \\times 10^{-7}\\ \\mathrm{T})\\ \\sin\\,[0.6 \\times 10^3 x + 1.5 \\times 10^{11}\\ \\mathrm{t}]\\)\nIII. \\(\\mathrm{B_3} = (3 \\times 10^{-5}\\ \\mathrm{T})\\ \\sin\\,[0.5 \\times 10^3 x + 1.5 \\times 10^{11}\\ \\mathrm{t}]\\)\nIV. \\(\\mathrm{B_4} = (5 \\times 10^{-4}\\ \\mathrm{T})\\ \\sin\\,[0.2 \\times 10^4 x + 4.8 \\times 10^{11}\\ \\mathrm{t}]\\)\nWhich wave is travelling in free space ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I"
+        },
+        {
+          "label": "B",
+          "text": "II"
+        },
+        {
+          "label": "C",
+          "text": "III"
+        },
+        {
+          "label": "D",
+          "text": "IV"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): wave III.**\n\n**A wave travels in free space if and only if its speed is \\(c\\).** For a wave written as \\(\\sin\\left(kx \\pm \\omega t\\right)\\),\n\n\\(v = \\dfrac{\\omega}{k}\\)\n\nso the test is to divide the coefficient of \\(t\\) by the coefficient of \\(x\\) and look for \\(3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\).\n\n**Wave I.**\n\n\\(v = \\dfrac{1{\\cdot}4\\times 10^{11}}{0{\\cdot}7\\times 10^{3}} = 2 \\times 10^{8}\\ \\mathrm{m/s}\\)\n\n**Wave II.**\n\n\\(v = \\dfrac{1{\\cdot}5\\times 10^{11}}{0{\\cdot}6\\times 10^{3}} = 2{\\cdot}5 \\times 10^{8}\\ \\mathrm{m/s}\\)\n\n**Wave III.**\n\n\\(v = \\dfrac{1{\\cdot}5\\times 10^{11}}{0{\\cdot}5\\times 10^{3}} = 3 \\times 10^{8}\\ \\mathrm{m/s}\\ \\checkmark\\)\n\n**Wave IV.** Note the coefficient is written as \\(0{\\cdot}2\\times 10^{4} = 2\\times 10^{3}\\):\n\n\\(v = \\dfrac{4{\\cdot}8\\times 10^{11}}{2\\times 10^{3}} = 2{\\cdot}4 \\times 10^{8}\\ \\mathrm{m/s}\\)\n\n**Only III gives \\(c\\).**\n\n\\(\\boxed{\\ \\text{Wave III travels in free space}\\ }\\)\n\n**The AMPLITUDES are decoys, and deliberately so.** They run from \\(2\\times 10^{-7}\\) T to \\(5\\times 10^{-4}\\) T, tempting a choice based on size. **Amplitude has nothing to do with speed** — a faint radio wave and an intense one travel at the identical \\(c\\). Only the ratio \\(\\omega/k\\) is relevant, and it uses neither.\n\n**Wave IV's mixed notation is the arithmetic trap.** Three waves give their \\(x\\)-coefficient as a multiple of \\(10^{3}\\) and the fourth as \\(0{\\cdot}2\\times 10^{4}\\). Reading that as \\(0{\\cdot}2\\times 10^{3}\\) would give \\(v = 2{\\cdot}4\\times 10^{9}\\) — eight times \\(c\\), impossible, and the kind of answer worth pausing over rather than accepting.\n\n**What the other three describe.** A speed below \\(c\\) means a **medium**, with refractive index\n\n\\(n = \\dfrac{c}{v}\\)\n\ngiving \\(n = 1{\\cdot}5\\) for I (glass), \\(1{\\cdot}2\\) for II and \\(1{\\cdot}25\\) for IV. All four are physically possible waves; only one is in vacuum.\n\n**What the sign in the bracket tells us, in passing.** All four are written \\(\\sin\\left(kx + \\omega t\\right)\\), with a **plus**, so all four travel in the \\(-x\\) direction. That does not affect the speed, which is why it does not affect the answer — but \\(\\left(kx - \\omega t\\right)\\) would have meant \\(+x\\).\n\n**A useful check on III.** Its wavelength is \\(\\lambda = 2\\pi/k = 2\\pi/500 = 1{\\cdot}26\\) cm and its frequency \\(\\nu = \\omega/2\\pi = 2{\\cdot}4\\times 10^{10}\\) Hz — a microwave, and \\(\\lambda\\nu = 3\\times 10^{8}\\) \\(\\checkmark\\)."
+    },
+    {
+      "hash": "2655b0bf81840b7368c61967dc89aac6c47f092519668b3df616093527865efa",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which of the following substance has relative magnetic permeability \\(\\mu_r \\gg 1\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aluminium"
+        },
+        {
+          "label": "B",
+          "text": "Copper"
+        },
+        {
+          "label": "C",
+          "text": "Lead"
+        },
+        {
+          "label": "D",
+          "text": "Nickel"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): Nickel.**\n\n**Relative permeability \\(\\mu_r\\) sorts magnetic materials into three classes**, and the condition \\(\\mu_r \\gg 1\\) — very much greater than one — identifies exactly one of them.\n\n| Class | \\(\\mu_r\\) | Susceptibility \\(\\chi\\) | Examples |\n|---|---|---|---|\n| Diamagnetic | slightly **less** than 1 | small, **negative** | copper, lead, bismuth, water |\n| Paramagnetic | slightly **more** than 1 | small, positive | aluminium, sodium, oxygen |\n| Ferromagnetic | **thousands** | large, positive | **iron, cobalt, nickel** |\n\n**Nickel is FERROMAGNETIC**, with \\(\\mu_r\\) of order \\(10^{2}\\) to \\(10^{3}\\) — the only one of the four that satisfies \\(\\mu_r \\gg 1\\).\n\n**Aluminium is paramagnetic**, but only just: \\(\\mu_r \\approx 1{\\cdot}00002\\). That is greater than one, so option (A) is not wrong about the direction — it is wrong about the **magnitude**. The double inequality \\(\\gg\\) is doing real work in this question, and reading it as a single \\(>\\) admits aluminium.\n\n**Copper and lead are diamagnetic**, with \\(\\mu_r\\) just **below** one \\(\\left(\\approx 0{\\cdot}99999\\right)\\). They are feebly **repelled** by a magnetic field rather than attracted.\n\n**Why ferromagnetism is so much stronger.** Paramagnetism and diamagnetism are responses of individual atoms, and thermal agitation almost completely randomises them. In a ferromagnet, a quantum **exchange interaction** aligns neighbouring atomic moments into **domains** — regions of \\(10^{17}\\) or so atoms already fully aligned. An applied field then only has to grow the favourably oriented domains, not fight entropy atom by atom. That is why the response is larger by a factor of a million.\n\n**Two consequences that follow from the same mechanism.** Ferromagnets show **hysteresis** and retain magnetisation after the field is removed — the domain structure does not simply relax back. And above a critical temperature, the **Curie point**, which for nickel is \\(358\\ ^\\circ\\mathrm{C}\\), thermal energy destroys the domain alignment and the material becomes an ordinary paramagnet.\n\n**The relations worth carrying:**\n\n\\(\\mu_r = 1 + \\chi, \\qquad \\vec{B} = \\mu_0\\mu_r\\vec{H}\\)\n\nDiamagnetic \\(\\chi\\) is negative, paramagnetic \\(\\chi\\) is small and positive, and ferromagnetic \\(\\chi\\) runs into the thousands — and is not even a constant, since \\(B\\) is not proportional to \\(H\\)."
+    },
+    {
+      "hash": "dcc95835c04f66f2d733ba8e54c8b71943e4da75129457905890ef7dbe81cca8",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A straight conductor lies along \\(x\\)-axis and carries a current of 2 A along \\(+x\\) direction. The magnetic field at a point (0, 40 cm, 0) due to 1 cm length of conductor centered at the origin points along.",
+      "options": [
+        {
+          "label": "A",
+          "text": "y-axis"
+        },
+        {
+          "label": "B",
+          "text": "\\(-y\\)-axis"
+        },
+        {
+          "label": "C",
+          "text": "z-axis"
+        },
+        {
+          "label": "D",
+          "text": "\\(-z\\)-axis"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): the \\(z\\)-axis.**\n\n**Only the DIRECTION is asked for**, so no arithmetic is needed — the cross product in the Biot-Savart law settles it on its own.\n\n\\(d\\vec{B} = \\dfrac{\\mu_0}{4\\pi}\\cdot\\dfrac{I\\,d\\vec{l}\\times\\hat{r}}{r^{2}}\\)\n\n**Set up the two vectors.** The conductor lies along the \\(x\\)-axis with the current along \\(+x\\), so the current element is\n\n\\(d\\vec{l} = dl\\,\\hat{i}\\)\n\nThe field point \\(\\left(0,\\ 40\\ \\mathrm{cm},\\ 0\\right)\\) lies on the \\(+y\\) axis, so the unit vector from the element to it is\n\n\\(\\hat{r} = \\hat{j}\\)\n\n**The cross product:**\n\n\\(\\hat{i}\\times\\hat{j} = \\hat{k}\\)\n\n\\(\\boxed{\\ \\vec{B}\\ \\text{points along the}\\ +z\\ \\text{axis}\\ }\\)\n\n*A right-hand check:* point the thumb along \\(+x\\) with the current; the fingers curl out of the page on the \\(+y\\) side \\(\\checkmark\\).\n\n**Neither the 2 A nor the 40 cm can affect the direction.** They set the **magnitude** — halving the current halves \\(B\\), quadrupling the distance cuts it sixteen-fold — but no positive scalar can turn a vector. Options (A) and (B), along \\(\\pm\\hat{j}\\), are ruled out by the structure of the cross product alone: \\(\\vec{B}\\) is perpendicular to \\(\\hat{r}\\) by construction, so it can never point **along** the line joining the element to the field point.\n\n**The magnitude, for completeness.**\n\n\\(dB = \\left(10^{-7}\\right)\\dfrac{\\left(2\\right)\\left(10^{-2}\\right)}{\\left(0{\\cdot}4\\right)^{2}} = \\dfrac{2\\times 10^{-9}}{0{\\cdot}16} = 1{\\cdot}25\\times 10^{-8}\\ \\mathrm{T}\\)\n\n— about \\(12{\\cdot}5\\) nT, and nothing in that number bears on the answer.\n\n**Why this is a SEGMENT problem, not a wire problem.** The element is \\(1\\) cm and the field point \\(40\\) cm away, so \\(dl \\ll r\\) and the Biot-Savart element formula applies directly. The infinite-wire result \\(\\mu_0I/2\\pi r\\) would be wrong here by a large factor — though it happens to give the same **direction**, since every element of a wire along \\(+x\\) contributes along \\(+\\hat{k}\\) at this point.\n\n**The general picture.** The field of a straight current circles the wire: out of the page above it, into the page below, in closed loops of constant \\(\\left|B\\right|\\) at constant distance. The field point sits above, so the field emerges — the \\(+z\\) direction, as the cross product said."
+    },
+    {
+      "hash": "cd8c6fe5927fb584b07f97fee9774f7f558338ea00b6106dc6bf66646246f851",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "Calculate the temperature at which the resistance of a conductor becomes 20% more than its resistance at 27 \\(^\\circ\\)C. The value of the temperature coefficient of resistance of the material of conductor is \\(2.0 \\times 10^{-4}\\) \\(^\\circ\\)C\\(^{-1}\\).",
+      "solution": "**Resistance varies with temperature through the temperature coefficient \\(\\alpha\\):**\n\n\\(R_T = R_0\\left[1 + \\alpha\\left(T - T_0\\right)\\right]\\)\n\nwhere \\(R_0\\) is the resistance at the reference temperature \\(T_0\\).\n\n**Here \\(T_0 = 27\\ ^\\circ\\mathrm{C}\\), and the resistance is to rise by \\(20\\%\\)**, so \\(R_T = 1{\\cdot}20\\,R_0\\):\n\n\\(1{\\cdot}20\\,R_0 = R_0\\left[1 + 2{\\cdot}0\\times 10^{-4}\\left(T - 27\\right)\\right]\\)\n\n**The \\(R_0\\) cancels** — which is why its value is never given and never needed:\n\n\\(1{\\cdot}20 = 1 + 2{\\cdot}0\\times 10^{-4}\\left(T - 27\\right)\\)\n\n\\(0{\\cdot}20 = 2{\\cdot}0\\times 10^{-4}\\left(T - 27\\right)\\)\n\n\\(T - 27 = \\dfrac{0{\\cdot}20}{2{\\cdot}0\\times 10^{-4}} = 1000\\)\n\n\\(\\boxed{\\ T = 1027\\ ^\\circ\\mathrm{C}\\ }\\)\n\n**Use \\(0{\\cdot}20\\), not \\(1{\\cdot}20\\), on the left of the third line.** The bracket is \\(1 + \\alpha\\Delta T\\), so the \\(1\\) must be subtracted before dividing by \\(\\alpha\\). Dividing \\(1{\\cdot}20\\) by \\(\\alpha\\) gives \\(6000\\) and a temperature of \\(6027\\ ^\\circ\\)C — the commonest slip here, and one worth catching by asking whether the answer is physically plausible.\n\n**The rise is \\(1000\\ ^\\circ\\)C for a \\(20\\%\\) change**, and that is the point of the question: \\(\\alpha = 2\\times 10^{-4}\\ ^\\circ\\mathrm{C}^{-1}\\) is a **small** coefficient, so an enormous temperature change is needed to move the resistance appreciably. Each degree adds only \\(0{\\cdot}02\\%\\).\n\n**How that compares.** Pure copper has \\(\\alpha \\approx 4\\times 10^{-3}\\ ^\\circ\\mathrm{C}^{-1}\\), twenty times larger, and would reach a \\(20\\%\\) rise after only \\(50\\ ^\\circ\\)C. A coefficient as small as the one given here belongs to an **alloy** — manganin and constantan are made deliberately with \\(\\alpha\\) near zero, precisely so that standard resistors keep their value as they warm.\n\n**\\(T_0\\) need NOT be \\(0\\ ^\\circ\\)C.** The formula works from any reference temperature provided \\(\\alpha\\) is quoted for that reference, and here both are \\(27\\ ^\\circ\\)C. Measuring \\(\\Delta T\\) from \\(0\\ ^\\circ\\)C by mistake would give \\(T = 1000\\ ^\\circ\\)C — close enough to the right answer to pass unnoticed, which is what makes it worth stating.\n\n**A note on the model's range.** The linear relation is an approximation valid over a modest range, and \\(1000\\ ^\\circ\\)C is not modest — at that temperature most conductors depart from linearity, and many would melt. The answer is what the given model yields; whether the conductor survives to reach it is another question."
+    },
+    {
+      "hash": "0912e31663307c1b501c8ff36544206195c3356d5162845e240e8350efa9ee3e",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident on the face of a triangular prism of refracting angle 60\\(^\\circ\\) and it just suffers total internal reflection at the other face. Find the angle of incidence for the ray if the refractive index of the material of the prism is \\(\\sqrt{2}\\).",
+      "solution": "**\"Just suffers total internal reflection\" means the angle at the second face EQUALS the critical angle exactly** — the threshold case, neither short of it nor beyond. That is what makes the problem solvable, and it is the phrase to read carefully.\n\n**Step 1 — the critical angle.**\n\n\\(\\sin i_c = \\dfrac{1}{n} = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(i_c = 45^\\circ\\)\n\n**Step 2 — the prism relation.** For any prism, the two internal refraction angles sum to the refracting angle:\n\n\\(r_1 + r_2 = A\\)\n\n**At the second face** the ray meets the surface at the critical angle, so \\(r_2 = i_c = 45^\\circ\\):\n\n\\(r_1 = A - r_2 = 60^\\circ - 45^\\circ = 15^\\circ\\)\n\n**Step 3 — Snell's law at the first face.**\n\n\\(\\dfrac{\\sin i}{\\sin r_1} = n \\qquad\\Longrightarrow\\qquad \\sin i = n\\sin r_1 = \\sqrt{2}\\,\\sin 15^\\circ\\)\n\n**Evaluating.** \\(\\sin 15^\\circ = 0{\\cdot}2588\\), so\n\n\\(\\sin i = 1{\\cdot}4142 \\times 0{\\cdot}2588 = 0{\\cdot}366\\)\n\n\\(\\boxed{\\ i = \\sin^{-1}\\left(0{\\cdot}366\\right) \\approx 21{\\cdot}5^\\circ\\ }\\)\n\n**In exact form**, since \\(\\sin 15^\\circ = \\left(\\sqrt{6}-\\sqrt{2}\\right)/4\\):\n\n\\(\\sin i = \\sqrt{2}\\cdot\\dfrac{\\sqrt{6}-\\sqrt{2}}{4} = \\dfrac{2\\sqrt{3}-2}{4} = \\dfrac{\\sqrt{3}-1}{2}\\)\n\n**The relation \\(r_1 + r_2 = A\\) is the hinge of the whole solution**, and it is a property of the geometry alone — the normals at the two faces meet at \\(180^\\circ - A\\), and the quadrilateral closes. It holds for every prism and every ray, whatever the refractive index.\n\n**A check that the ray behaves as described.** At the first face the ray enters from air into glass, so refraction is always possible — there is no critical angle going from rarer to denser. And \\(r_1 = 15^\\circ\\) is comfortably less than \\(45^\\circ\\), so nothing goes wrong inside. The ray is trapped only at the **second** face, where it tries to leave glass for air.\n\n**What happens either side of this angle.** Reduce \\(i\\) below \\(21{\\cdot}5^\\circ\\) and \\(r_1\\) falls, so \\(r_2\\) **rises** past \\(45^\\circ\\) and the ray is **totally** reflected — it does not emerge. Increase \\(i\\) and \\(r_2\\) drops below the critical angle, and the ray emerges from the second face. So **\\(21{\\cdot}5^\\circ\\) is the minimum angle of incidence for which light gets through this prism at all.**\n\n**That inverse relation is worth noting explicitly.** Because \\(r_1 + r_2\\) is fixed at \\(A\\), whatever \\(r_1\\) gains \\(r_2\\) loses. A ray incident more steeply on the first face strikes the second face **less** steeply — which is why a smaller angle of incidence, not a larger one, is the condition for trapping the light."
+    },
+    {
+      "hash": "7a96fac4ced0156fad0966271baf41b0cfd4116f31683a949a4911633f82b9db",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "Calculate the de Broglie wavelength associated with an electron revolving in the second excited state of hydrogen atom. The ground state energy of the hydrogen atom is – 13.6 eV. Take \\(\\mathrm{m_e} = 9 \\times 10^{-31}\\) kg, h = \\(6.6 \\times 10^{-34}\\) J.s.",
+      "solution": "**\"Second excited state\" means \\(n = 3\\)** — the ground state is \\(n = 1\\), the first excited state \\(n = 2\\). Getting this wrong makes everything else wrong, and it is the only place in this question where a mark is really at risk.\n\n**Step 1 — the energy of that state.**\n\n\\(E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV} \\qquad\\Longrightarrow\\qquad E_3 = -\\dfrac{13{\\cdot}6}{9} = -1{\\cdot}51\\ \\mathrm{eV}\\)\n\n**Step 2 — the KINETIC energy.** For a bound state in a Coulomb field, the kinetic energy is the magnitude of the total energy:\n\n\\(K = -E = +1{\\cdot}51\\ \\mathrm{eV}\\)\n\n**This step is the physics of the question.** The de Broglie wavelength needs **momentum**, so the **total** energy — which is negative and includes the potential term — cannot be used directly. The virial result \\(K = -E\\) is what converts one into the other.\n\n**In joules:**\n\n\\(K = 1{\\cdot}51 \\times 1{\\cdot}6\\times 10^{-19} = 2{\\cdot}42\\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Step 3 — the de Broglie wavelength.**\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2mK}}\\)\n\n\\(2mK = 2\\left(9\\times 10^{-31}\\right)\\left(2{\\cdot}42\\times 10^{-19}\\right) = 4{\\cdot}35\\times 10^{-49}\\)\n\n\\(\\sqrt{2mK} = 6{\\cdot}60\\times 10^{-25}\\ \\mathrm{kg\\,m\\,s^{-1}}\\)\n\n\\(\\lambda = \\dfrac{6{\\cdot}6\\times 10^{-34}}{6{\\cdot}60\\times 10^{-25}}\\)\n\n\\(\\boxed{\\ \\lambda \\approx 1 \\times 10^{-9}\\ \\mathrm{m} = 1\\ \\mathrm{nm}\\ }\\)\n\n**An independent check from Bohr's own postulate**, which is worth doing because it uses none of the same numbers. The quantisation condition \\(mvr = nh/2\\pi\\) can be rewritten\n\n\\(2\\pi r_n = n\\lambda\\)\n\n— the orbit's circumference is a whole number of de Broglie wavelengths. With \\(r_3 = 9a_0 = 9\\times 0{\\cdot}529\\times 10^{-10} = 4{\\cdot}76\\times 10^{-10}\\) m:\n\n\\(\\lambda = \\dfrac{2\\pi\\left(4{\\cdot}76\\times 10^{-10}\\right)}{3} = 9{\\cdot}97\\times 10^{-10}\\ \\mathrm{m}\\ \\checkmark\\)\n\n**The two routes agree to better than half a percent**, and the second is the more illuminating: it shows that **the electron in the \\(n^{th}\\) orbit fits exactly \\(n\\) of its own wavelengths around the circumference.** Three, here.\n\n**That is what Bohr's quantisation MEANS.** His condition on angular momentum looked arbitrary in 1913; de Broglie's 1924 insight recast it as a **standing wave** — the orbits that survive are those where the electron's wave closes on itself in phase, and any other radius would have the wave interfere with itself destructively and vanish.\n\n**A note on the arithmetic.** With the rounded constants supplied, the answer lands on \\(1{\\cdot}00\\) nm almost exactly. That tidiness is a property of the numbers chosen, not a physical coincidence worth reading into."
+    },
+    {
+      "hash": "c439a477d298aa063c0293acd02c927621dc2a5aff71468f3b61bfb3c265279c",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Name the electromagnetic waves which are used\n(i) as a diagnostic tool in medicine\n(ii) in remote switches for TV sets\n(iii) in water purifiers\nAlso write their wavelength range.",
+      "solution": "**(i) As a diagnostic tool in medicine.**\n\n\\(\\boxed{\\ \\text{X-RAYS}\\ }\\)\n\n**Wavelength range:** about \\(1\\ \\mathrm{nm}\\) down to \\(10^{-3}\\ \\mathrm{nm}\\) \\(\\left(10^{-9}\\ \\text{to}\\ 10^{-12}\\ \\mathrm{m}\\right)\\).\n\n*Why they work.* X-ray photons carry thousands of electronvolts, enough to pass through soft tissue while being strongly absorbed by the calcium in bone — absorption rises steeply with atomic number, so bone and tissue cast very different shadows. Their wavelength is also comparable to atomic spacing, which is what makes X-ray crystallography possible.\n\n**(ii) In remote switches for TV sets.**\n\n\\(\\boxed{\\ \\text{INFRARED WAVES}\\ }\\)\n\n**Wavelength range:** about \\(1\\ \\mathrm{mm}\\) down to \\(700\\ \\mathrm{nm}\\).\n\n*Why this band.* Infrared LEDs are cheap and efficient, the radiation is invisible so it does not distract, it will not pass through walls to trigger a neighbour's set, and it reflects well enough off room surfaces that the remote need not be aimed precisely. Photodiodes detect it easily.\n\n**(iii) In water purifiers.**\n\n\\(\\boxed{\\ \\text{ULTRAVIOLET WAVES}\\ }\\)\n\n**Wavelength range:** about \\(400\\ \\mathrm{nm}\\) down to \\(1\\ \\mathrm{nm}\\).\n\n*Why this band.* UV-C photons near \\(254\\) nm carry about \\(4{\\cdot}9\\) eV — enough to be absorbed by the DNA of bacteria and viruses and prevent them replicating. The water is sterilised with no chemical added, no residue and no change in taste.\n\n**The ranges ABUT, which is how to remember them.** The spectrum has no gaps, so each band ends where the next begins:\n\n| Band | Range |\n|---|---|\n| Infrared | \\(1\\ \\mathrm{mm}\\) to \\(700\\ \\mathrm{nm}\\) |\n| **Visible** | \\(700\\ \\mathrm{nm}\\) to \\(400\\ \\mathrm{nm}\\) |\n| Ultraviolet | \\(400\\ \\mathrm{nm}\\) to \\(1\\ \\mathrm{nm}\\) |\n| X-rays | \\(1\\ \\mathrm{nm}\\) to \\(10^{-3}\\ \\mathrm{nm}\\) |\n\n**The visible band is the anchor** — pin \\(400\\) and \\(700\\) nm, and infrared and ultraviolet follow immediately as the neighbours on either side, with X-rays beyond the ultraviolet at \\(1\\) nm.\n\n**The single principle behind all three uses.** Photon energy \\(E = h\\nu\\) decides what a band can interact with: infrared matches **molecular vibration**, ultraviolet matches **chemical bonds**, and X-rays match **inner-shell electrons** and ionisation. Each application is the band whose photon energy suits the job — and the boundaries are conventional, not sharp, since the underlying quantity varies continuously."
+    },
+    {
+      "hash": "acc3d5c8bd9b384dd69c5d479e4bb59cb39e63991395f7dd8c9785efd02c7131",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Equipotential Surfaces",
+      "stem": "(i) Draw electric field lines and equipotential surfaces for a system of two equal and opposite point charges separated by some distance.\n(ii) Why electric field \\(\\vec{\\mathrm{E}}\\) at a point on an equipotential surface must be perpendicular to the surface at that point ?",
+      "solution": "**(i) Field lines and equipotential surfaces for a dipole.**\n\n*To draw it:* two point charges \\(+q\\) and \\(-q\\) a short distance apart.\n\n**The electric field lines.** Continuous curves running **from \\(+q\\) to \\(-q\\)**, with arrowheads showing that direction. A straight line joins the charges directly; the others bow outward on both sides, and the further ones swing far out before returning. Draw them **densest near the charges**, where the field is strongest, and never crossing one another.\n\n**The equipotential surfaces.** Curves **everywhere perpendicular** to the field lines. Close to either charge they are almost **circles** centred on it, since one charge dominates there; further out they distort, and the **perpendicular bisector** of the line joining the charges is a **straight line** at \\(V = 0\\) — the two contributions cancel exactly on it. Label a few with their values, positive near \\(+q\\) and negative near \\(-q\\).\n\n**The two families form an orthogonal grid.** That is the single feature the drawing has to show, and part (ii) explains why it is not a coincidence.\n\n**(ii) Why \\(\\vec{E}\\) must be perpendicular to an equipotential surface.**\n\n**Suppose it were not.** Then \\(\\vec{E}\\) would have a non-zero component **along** the surface, and moving a test charge \\(q_0\\) a small distance \\(d\\vec{l}\\) across it would involve work:\n\n\\(dW = q_0\\,\\vec{E}\\cdot d\\vec{l} = q_0E\\,dl\\cos\\theta \\ne 0 \\qquad\\text{if}\\ \\theta \\ne 90^\\circ\\)\n\n**But work done equals the charge times the potential difference:**\n\n\\(dW = -q_0\\,dV\\)\n\n**and \\(dV = 0\\) everywhere on an equipotential surface** — that is what the word means. So \\(dW\\) must vanish for every displacement lying in the surface.\n\n**With \\(E \\ne 0\\) and \\(dl \\ne 0\\), the only way out is \\(\\cos\\theta = 0\\):**\n\n\\(\\boxed{\\ \\theta = 90^\\circ\\ }\\)\n\n**So the field is normal to the surface at every point.** The argument runs the other way too: a field can do no work along a path of constant potential, so it can have no component along one.\n\n**The same conclusion from the gradient.** \\(\\vec{E} = -\\nabla V\\), and a gradient always points along the direction of **steepest change** of \\(V\\), which is necessarily perpendicular to the direction of **no** change.\n\n\\(E = -\\dfrac{dV}{dr}\\)\n\n**A consequence worth carrying: where equipotentials CROWD TOGETHER, the field is strong.** The same potential step spread over a smaller distance means a larger \\(dV/dr\\) — which is why the surfaces bunch up near each charge, exactly where the field lines are densest.\n\n**And a corollary for conductors.** The surface of a charged conductor in equilibrium is an equipotential, so the field just outside it is always perpendicular to the surface. Any tangential component would drive a surface current, and the charges would rearrange until it vanished."
+    }
+  ]
+}
