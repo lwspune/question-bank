@@ -160,12 +160,21 @@ async function main() {
   // because the catalogue is rebuilt on every run: a fix written there survives
   // exactly until the next invocation, which is the kind of repair that looks
   // done and silently isn't.
+  // TWO KINDS OF ANCHOR, and the second is why this grew a schema.
+  //   byFig — replace the DERIVED box for a printed figure number.
+  //   byRef — attach a box straight to a `question_number`. The Balbharati
+  //           Physics stems read "as shown in the figure" and print NO number,
+  //           so there is nothing for any catalogue to join on however well the
+  //           box is derived: on that page a question and its picture are
+  //           related only by sitting next to each other.
+  type Anchor = { page: number; bbox: [number, number, number, number]; why?: string };
   const overridePath = join(ROOT, "overrides.json");
-  const overrides: Record<string, Record<string, { page: number; bbox: [number, number, number, number]; why?: string }>> =
+  const overrides: Record<string, { byFig?: Record<string, Anchor>; byRef?: Record<string, Anchor> }> =
     existsSync(overridePath) ? JSON.parse(readFileSync(overridePath, "utf8")) : {};
   const mine = overrides[sourceFile] ?? {};
-  let applied = 0;
-  for (const [fig, o] of Object.entries(mine)) {
+  const byRef: Record<string, Anchor> = mine.byRef ?? {};
+  let applied = Object.keys(byRef).length;
+  for (const [fig, o] of Object.entries(mine.byFig ?? {})) {
     const hit = cat.find((e) => e.fig === fig);
     if (hit) { hit.page = o.page; hit.bbox = o.bbox; } else cat.push({ fig, page: o.page, bbox: o.bbox });
     applied++;
@@ -188,6 +197,12 @@ async function main() {
     const body = `${r.text ?? ""}\n${r.context ?? ""}`;
     const nums = [...new Set([...body.matchAll(STEM_FIG)].map((m) => m[1]))];
     const ref = r.question_number ?? r.id;
+    // A hand-anchored box bypasses the number-join entirely — see `byRef` above.
+    const hand = byRef[ref];
+    if (hand) {
+      mapped.push({ ref, id: r.id, fig: "hand", page: hand.page, bbox: hand.bbox });
+      continue;
+    }
     if (nums.length !== 1) {
       unresolved.push(`${ref} — ${nums.length === 0 ? "names a figure but prints no number" : `reads ${nums.length} figures (${nums.join(", ")})`}`);
       continue;
