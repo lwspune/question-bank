@@ -1,0 +1,303 @@
+{
+  "paper": "55/1/2",
+  "year": 2026,
+  "paperId": "2026-55-1-2",
+  "markingScheme": "out/2026-55-1-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "9b37f6bad999f35e792688d20aba9ad79f6985f5fb179eb8f90f44a161ae5a7c",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Electrostatic Potential due to Charges and Dipoles",
+      "stem": "In a region electric field is given by \\(\\vec{E} = 4 x \\hat{i}\\) N/C. The potential difference between points A (\\(x = 1\\) m) and B (\\(x = 3\\) m), \\((V_A - V_B)\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "-16 V"
+        },
+        {
+          "label": "B",
+          "text": "16 V"
+        },
+        {
+          "label": "C",
+          "text": "- 8 V"
+        },
+        {
+          "label": "D",
+          "text": "8 V"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): 16 V.**\n\n**The field is NOT uniform** — \\(\\vec{E} = 4x\\,\\hat{i}\\) grows with \\(x\\) — so the potential difference must be integrated, not multiplied.\n\n**The relation between field and potential.**\n\n\\(V_A - V_B = \\int_{A}^{B}\\vec{E}\\cdot d\\vec{l}\\)\n\n**Along the \\(x\\)-axis** \\(d\\vec{l} = dx\\,\\hat{i}\\), so \\(\\vec{E}\\cdot d\\vec{l} = 4x\\,dx\\):\n\n\\(V_A - V_B = \\int_{1}^{3} 4x\\,dx = \\left[2x^{2}\\right]_{1}^{3}\\)\n\n\\(V_A - V_B = 2\\left(9\\right) - 2\\left(1\\right) = 18 - 2\\)\n\n\\(\\boxed{\\ V_A - V_B = 16\\ \\mathrm{V}\\ }\\)\n\n**Why the answer is POSITIVE.** The field points along \\(+\\hat{i}\\), and moving from \\(A\\) to \\(B\\) is moving **along** it. Potential always **falls** in the direction of \\(\\vec{E}\\), so \\(A\\) is at the higher potential and the difference comes out positive. Option (A), \\(-16\\) V, is what appears if the limits are swapped — it is \\(V_B - V_A\\), the right magnitude attached to the wrong pair.\n\n**Options (C) and (D) come from treating \\(E\\) as CONSTANT.** Taking \\(E = 4\\) N/C and multiplying by the \\(2\\) m separation gives \\(8\\) V. But \\(E\\) runs from \\(4\\) N/C at \\(A\\) to \\(12\\) N/C at \\(B\\), so a single value cannot represent it.\n\n*A check on that:* because \\(E\\) is **linear** in \\(x\\), its average over the interval is the mean of the endpoints, \\(\\left(4 + 12\\right)/2 = 8\\) N/C, and \\(8 \\times 2 = 16\\) V \\(\\checkmark\\). The shortcut works **only** because the field is linear; for any other \\(x\\)-dependence the integral is unavoidable.\n\n**Reading the potential function.** Integrating gives \\(V\\left(x\\right) = -2x^{2} + \\text{constant}\\), a downward parabola — the potential falls faster and faster as \\(x\\) grows, because the field it is fighting keeps getting stronger.\n\n**A dimensional note.** \\(4x\\) has units of N/C only when the \\(4\\) carries units of \\(\\mathrm{N\\,C^{-1}\\,m^{-1}}\\). That is why \\(2x^{2}\\) emerges in volts rather than in some hybrid unit."
+    },
+    {
+      "hash": "711609b54a1b1ecb0196588020027cca1189169d553699ac8d6782b1e7657234",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A copper wire is stretched to increase its length by 1%. Then the change in its resistance is close to",
+      "options": [
+        {
+          "label": "A",
+          "text": "1%"
+        },
+        {
+          "label": "B",
+          "text": "4%"
+        },
+        {
+          "label": "C",
+          "text": "-4%"
+        },
+        {
+          "label": "D",
+          "text": "2%"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): 2%.**\n\n**The wire is STRETCHED, so its volume stays constant** — that is the whole question. Stretching does not add copper; it makes the wire longer **and** thinner at the same time.\n\n**Step 1 — eliminate the area.** With volume \\(V = AL\\) fixed, \\(A = V/L\\), so\n\n\\(R = \\dfrac{\\rho L}{A} = \\dfrac{\\rho L}{V/L} = \\dfrac{\\rho L^{2}}{V}\\)\n\n\\(\\boxed{\\ R \\propto L^{2}\\ }\\)\n\n**Step 2 — turn the proportionality into a percentage.** Taking logarithms and differentiating,\n\n\\(\\dfrac{\\Delta R}{R} = 2\\,\\dfrac{\\Delta L}{L} = 2 \\times 1\\% = 2\\%\\)\n\n**The resistance rises by about 2%.**\n\n**Option (A), 1%, is the answer for anyone who uses \\(R = \\rho L/A\\) with \\(A\\) held fixed** — a natural slip, and the one the question is built to catch. The wire cannot keep its cross-section while growing longer out of the same material.\n\n**Both effects push the SAME way**, which is why they add rather than cancel: the extra length raises \\(R\\) by \\(1\\%\\), and the reduced area raises it by another \\(1\\%\\). Since \\(A \\propto 1/L\\), a \\(1\\%\\) longer wire is \\(1\\%\\) thinner in cross-section.\n\n**Why the answer is only \"close to\" 2%.** The exact calculation gives\n\n\\(\\dfrac{R_2}{R_1} = \\left(1{\\cdot}01\\right)^{2} = 1{\\cdot}0201\\)\n\na rise of \\(2{\\cdot}01\\%\\). The linear rule \\(\\Delta R/R = 2\\Delta L/L\\) drops the \\(\\left(\\Delta L/L\\right)^{2}\\) term, which is negligible for a \\(1\\%\\) strain but would not be for a large one. For a wire stretched to **twice** its length the resistance goes up **four-fold**, not by \\(200\\%\\) on the linear estimate.\n\n**The general rule worth carrying.** For \\(R \\propto L^{n}\\), a small fractional change in \\(L\\) produces \\(n\\) times that fractional change in \\(R\\). Stretching at constant volume gives \\(n = 2\\); if instead the **radius** were the thing changed, \\(R \\propto 1/r^{4}\\) at constant volume, and a \\(1\\%\\) change in \\(r\\) would move \\(R\\) by \\(4\\%\\).\n\n**Note that the resistivity \\(\\rho\\) does not change.** It is a property of the material, not of the specimen's shape, so stretching leaves it alone. Only \\(L\\) and \\(A\\) respond."
+    },
+    {
+      "hash": "2d007fb229046ad3c6897b8d024917c51e83ae59efb8382cdb0036eed70b0c35",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A concave lens of focal length 40 cm is coaxially in contact with two convex lenses, each of focal length 20 cm, on each side. The focal length of the combination is",
+      "options": [
+        {
+          "label": "A",
+          "text": "zero"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{20}{3}\\) cm"
+        },
+        {
+          "label": "C",
+          "text": "\\(-\\frac{20}{3}\\) cm"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{40}{3}\\) cm"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{40}{3}\\) cm.**\n\n**Thin lenses in contact add their POWERS.** Three lenses, so\n\n\\(\\dfrac{1}{F} = \\dfrac{1}{f_1} + \\dfrac{1}{f_2} + \\dfrac{1}{f_3}\\)\n\n**Sign convention:** a convex lens is converging \\(\\left(f > 0\\right)\\), a concave lens diverging \\(\\left(f < 0\\right)\\). The arrangement is convex \\(\\left(+20\\right)\\), concave \\(\\left(-40\\right)\\), convex \\(\\left(+20\\right)\\).\n\n\\(\\dfrac{1}{F} = \\dfrac{1}{20} + \\dfrac{1}{-40} + \\dfrac{1}{20}\\)\n\n**Over a common denominator of 40:**\n\n\\(\\dfrac{1}{F} = \\dfrac{2 - 1 + 2}{40} = \\dfrac{3}{40}\\)\n\n\\(\\boxed{\\ F = \\dfrac{40}{3}\\ \\mathrm{cm} \\approx 13{\\cdot}3\\ \\mathrm{cm},\\ \\text{converging}\\ }\\)\n\n**The combination is CONVERGING**, and positive, so option (C) — the same magnitude with a minus sign — is ruled out. The two convex lenses together supply \\(+0{\\cdot}10\\ \\mathrm{cm^{-1}}\\) of power against the concave lens's \\(-0{\\cdot}025\\ \\mathrm{cm^{-1}}\\); the converging power wins comfortably.\n\n**Option (A), zero, is the trap for an incomplete count.** A single \\(+20\\) with the \\(-40\\) does not cancel either \\(\\left(1/20 - 1/40 = 1/40\\right)\\); cancellation would need the concave lens to be \\(-20\\) against one \\(+20\\). Here there are **two** convex lenses and one concave, and the arithmetic never reaches zero.\n\n**In terms of power**, which is the cleaner way to see it:\n\n\\(P = P_1 + P_2 + P_3 = 5 + \\left(-2{\\cdot}5\\right) + 5 = 7{\\cdot}5\\ \\mathrm{D}\\)\n\n\\(F = \\dfrac{1}{7{\\cdot}5}\\ \\mathrm{m} = 0{\\cdot}133\\ \\mathrm{m} = \\dfrac{40}{3}\\ \\mathrm{cm}\\ \\checkmark\\)\n\n*(Powers in dioptres need focal lengths in metres: \\(20\\) cm gives \\(P = 1/0{\\cdot}20 = 5\\) D.)*\n\n**Why \"coaxially in contact\" matters.** The addition rule holds only when the lenses share an axis and the separation between them is negligible. With a gap \\(d\\) the combination obeys\n\n\\(\\dfrac{1}{F} = \\dfrac{1}{f_1} + \\dfrac{1}{f_2} - \\dfrac{d}{f_1f_2}\\)\n\nand the third term destroys the simple sum. The phrase in the stem is what licenses the one-line formula.\n\n**Note also that ORDER is irrelevant.** Addition commutes, so convex–concave–convex and concave–convex–convex give the same \\(F\\). Only the aberrations differ, and those are outside the thin-lens model."
+    },
+    {
+      "hash": "67440b5b87dc14ac699108de24f010cf8841187878c22bcef2e241a44314e5a8",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "The distance-of-closest-approach for an alpha particle is 'd' when it moves head-on with speed v towards a target nucleus. If the alpha particle is replaced by a proton moving with the same speed, the new distance-of-closest-approach will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "2d"
+        },
+        {
+          "label": "B",
+          "text": "d"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{d}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{d}{\\sqrt{2}}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): 2d.**\n\n**The distance of closest approach** comes from an energy balance: the whole initial kinetic energy is spent against the Coulomb repulsion.\n\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qQ}{d} \\qquad\\Longrightarrow\\qquad d = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qQ}{K}\\)\n\n**Two things change when the alpha is replaced by a proton at the SAME SPEED** — the charge **and** the kinetic energy — and they pull in opposite directions.\n\n**The charge.** Alpha carries \\(2e\\), proton carries \\(e\\): the charge **halves**, which alone would **halve** \\(d\\).\n\n**The kinetic energy.** An alpha is about **four times** as massive as a proton, and \\(K = \\tfrac{1}{2}mv^{2}\\) at the same \\(v\\), so the proton's kinetic energy is **one quarter** of the alpha's. Less energy means it is stopped sooner in its approach — which alone would make \\(d\\) **four times** larger.\n\n**Combining.**\n\n\\(\\dfrac{d_p}{d_\\alpha} = \\dfrac{q_p}{q_\\alpha}\\times\\dfrac{K_\\alpha}{K_p} = \\dfrac{1}{2}\\times\\dfrac{4}{1} = 2\\)\n\n\\(\\boxed{\\ d_p = 2d\\ }\\)\n\n**The energy factor beats the charge factor**, which is the point of the question — halving the charge is outweighed by quartering the kinetic energy, and the proton ends up turning back **further out** than the alpha did.\n\n**The same result in one line.** Writing both factors explicitly,\n\n\\(d = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{\\left(ze\\right)\\left(Ze\\right)}{\\tfrac{1}{2}mv^{2}} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{2zZe^{2}}{mv^{2}} \\qquad\\Longrightarrow\\qquad d \\propto \\dfrac{z}{m}\\)\n\nat fixed speed. For the alpha \\(z/m = 2/4 = 1/2\\); for the proton \\(z/m = 1/1 = 1\\). The ratio is \\(2\\) \\(\\checkmark\\).\n\n**The charge-to-mass ratio is what governs it**, not the charge alone and not the mass alone. That compact form is worth remembering, because it answers the whole family of \"replace the projectile\" questions at once.\n\n**A caution about the phrasing \"same speed\".** Had the question said **same kinetic energy** instead, only the charge would change and the answer would be \\(d/2\\) — option (C), which is there for exactly that misreading. Which quantity is held fixed decides the answer completely.\n\n**Note that the target nucleus never enters the ratio.** \\(Z\\) appears in both cases and cancels, so the factor of \\(2\\) holds for gold, for aluminium, for any target."
+    },
+    {
+      "hash": "159df514ec0bffefe33dc46ac02ac9ac34c836292d4cab7bad3be9d8657a4593",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Electromagnetic waves used for purification of water are",
+      "options": [
+        {
+          "label": "A",
+          "text": "X-rays"
+        },
+        {
+          "label": "B",
+          "text": "Ultraviolet rays"
+        },
+        {
+          "label": "C",
+          "text": "Infrared rays"
+        },
+        {
+          "label": "D",
+          "text": "Ultrasonic rays"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): Ultraviolet rays.**\n\n**UV light kills micro-organisms**, which is what water purification requires. UV-C photons, around \\(254\\) nm, carry roughly \\(4{\\cdot}9\\) eV — enough to be absorbed by the DNA of bacteria and viruses, forming thymine dimers that prevent the organism replicating. The water is sterilised without any chemical being added.\n\n**That is why UV is the standard choice**: it leaves no residue, changes neither taste nor smell, and acts in seconds.\n\n**Option (D), Ultrasonic rays, is NOT electromagnetic at all.** Ultrasound is a mechanical **sound** wave — it needs a material medium, travels at the speed of sound, and is longitudinal. The question asks for an electromagnetic wave, so this option fails on the first test, before any question of what it is used for. The near-miss spelling against \"ultraviolet\" is the whole reason it is offered.\n\n**Option (C), Infrared, carries too little energy per photon** — about \\(0{\\cdot}01\\) to \\(1\\) eV, matching molecular vibration. It heats water rather than sterilising it. Boiling would of course kill the organisms, but by temperature, not by the radiation's own action.\n\n**Option (A), X-rays, WOULD sterilise** — they are far more energetic than UV — but they are unusable for this purpose. They penetrate everything, including the plant and its operators, demand heavy shielding, and are hazardous out of all proportion to the task. UV is absorbed within the water itself, which makes it both effective and containable.\n\n**The single principle behind the choice.** Photon energy \\(E = h\\nu\\) decides what a band can do. Too little and nothing chemical happens; far too much and the radiation becomes indiscriminately destructive and hard to confine. UV sits at the useful threshold — energetic enough to damage DNA, weak enough to stop at the vessel wall.\n\n**A practical detail.** UV purification is a **disinfection** step only. It inactivates living organisms but removes no dissolved salts, metals or sediment, and it is ineffective in turbid water because suspended particles shadow the organisms behind them. That is why UV units follow a filtration stage rather than replacing one."
+    },
+    {
+      "hash": "f8ee723ca198042b62c506b5c8ebdf75add15a3263a7030822618262737b0f18",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A straight conductor lies along \\(x\\)-axis. It carries a current of 10 A along \\(+x\\) direction. The magnetic field \\(\\vec{B}\\) due to 1 cm segment of this conductor, centred at the origin, at a point (0, 1 m, 0) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((1\\ \\mathrm{nT})\\ \\hat{j}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((10\\ \\mathrm{nT})\\ \\hat{k}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-(10\\ \\mathrm{nT})\\ \\hat{k}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-(1\\ \\mathrm{nT})\\ \\hat{j}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**This is a SHORT SEGMENT, so Biot-Savart applies directly** — not the infinite-wire formula \\(\\mu_0I/2\\pi r\\), which assumes a conductor long compared with the distance. Here the segment is \\(1\\) cm and the field point is \\(1\\) m away, so the segment counts as a current **element**.\n\n**The answer is (B): \\(\\left(10\\ \\mathrm{nT}\\right)\\hat{k}\\).**\n\n**The Biot-Savart law.**\n\n\\(d\\vec{B} = \\dfrac{\\mu_0}{4\\pi}\\cdot\\dfrac{I\\,d\\vec{l}\\times\\hat{r}}{r^{2}}\\)\n\n**Step 1 — the direction.** The element lies along the \\(x\\)-axis with the current along \\(+x\\), so \\(d\\vec{l} = dl\\,\\hat{i}\\). The field point \\(\\left(0, 1, 0\\right)\\) lies along \\(+y\\) from the origin, so \\(\\hat{r} = \\hat{j}\\).\n\n\\(\\hat{i}\\times\\hat{j} = \\hat{k}\\)\n\n**The field points along \\(+\\hat{k}\\)** — out of the \\(xy\\)-plane. *(A right-hand check: thumb along \\(+x\\) with the current, fingers curl through \\(+y\\) towards \\(+z\\) \\(\\checkmark\\).)* Options (A) and (D) put the field along \\(\\hat{j}\\), parallel to \\(\\vec{r}\\), which a cross product can never produce.\n\n**Step 2 — the magnitude.** Since \\(d\\vec{l}\\perp\\hat{r}\\), the angle is \\(90^\\circ\\) and \\(\\sin\\theta = 1\\):\n\n\\(dB = \\dfrac{\\mu_0}{4\\pi}\\cdot\\dfrac{I\\,dl}{r^{2}} = \\left(10^{-7}\\right)\\dfrac{\\left(10\\right)\\left(1 \\times 10^{-2}\\right)}{\\left(1\\right)^{2}}\\)\n\n\\(dB = 10^{-7}\\times 10^{-1} = 10^{-8}\\ \\mathrm{T}\\)\n\n\\(\\boxed{\\ \\vec{B} = \\left(10\\ \\mathrm{nT}\\right)\\hat{k}\\ }\\)\n\n**Using \\(\\mu_0/4\\pi = 10^{-7}\\ \\mathrm{T\\,m\\,A^{-1}}\\) exactly** keeps the arithmetic clean; there is no need to carry \\(4\\pi\\times 10^{-7}\\) through the working.\n\n**Where option (A), \\(1\\) nT, comes from.** Dropping the centimetre-to-metre conversion, or mis-placing one power of ten in \\(10^{-7}\\times 10\\times 10^{-2}\\), gives a tenth of the right answer. Unit conversion is the only real arithmetic hazard here.\n\n**Why \"centred at the origin\" is in the stem.** The Biot-Savart element formula assumes \\(dl \\ll r\\), so that every part of the segment is effectively the same distance from the field point and sends its contribution in the same direction. With \\(dl/r = 0{\\cdot}01\\) that holds to better than a part in \\(10^{4}\\), and the segment's position — not its extent — is what fixes \\(\\vec{r}\\).\n\n**A contrast worth noting.** Had this been an infinite wire carrying the same \\(10\\) A at \\(1\\) m, the field would be \\(\\mu_0I/2\\pi r = 2 \\times 10^{-6}\\) T — two hundred times larger, because every other element of the wire would be contributing too. The \\(1\\) cm piece supplies only its own small share."
+    },
+    {
+      "hash": "b957869a952ed1964b8014862d47912d8d9b2b4f4b240b1116fe410786e0f3e3",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "The angular width of interference fringes in Young's double-slit experiment depends on",
+      "options": [
+        {
+          "label": "A",
+          "text": "distance between the slits and the screen only"
+        },
+        {
+          "label": "B",
+          "text": "wavelength of light used only"
+        },
+        {
+          "label": "C",
+          "text": "both wavelength of light used and the slits separation"
+        },
+        {
+          "label": "D",
+          "text": "slits separation only"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): both wavelength of light used and the slits separation.**\n\n**The angular width of a fringe** is the angle a fringe subtends at the slits:\n\n\\(\\theta = \\dfrac{\\lambda}{d}\\)\n\n**Only two quantities appear** — the wavelength \\(\\lambda\\) and the slit separation \\(d\\). That settles the question, and it rules out (B) and (D), each of which names just one of the pair.\n\n**Where the formula comes from.** Bright fringes lie where the path difference is a whole number of wavelengths:\n\n\\(d\\sin\\theta_n = n\\lambda \\qquad\\Longrightarrow\\qquad \\sin\\theta_n \\approx \\theta_n = \\dfrac{n\\lambda}{d}\\)\n\n**Consecutive fringes are therefore separated in angle by**\n\n\\(\\Delta\\theta = \\theta_{n+1} - \\theta_n = \\dfrac{\\lambda}{d}\\)\n\n— the same for every \\(n\\), which is why the pattern is evenly spaced.\n\n**Option (A), the slit-to-screen distance \\(D\\), is the significant distractor**, and the reason is that \\(D\\) genuinely **does** control the fringe width one measures with a ruler:\n\n\\(\\beta = \\dfrac{\\lambda D}{d}\\)\n\n**But that is the LINEAR width, not the ANGULAR one.** Moving the screen further back spreads the pattern out on the screen without changing the angle any fringe subtends at the slits — the light is travelling in exactly the same directions as before. The two widths are related by \\(\\beta = \\theta D\\), and \\(D\\) is precisely the factor that converts between them.\n\n**The distinction, stated plainly.** \\(\\theta = \\lambda/d\\) is a property of the **interference** — of the light and the slits. \\(\\beta = \\lambda D/d\\) is a property of the **observation** — of where the screen happens to be. A question asking for angular width is asking about the first.\n\n**Two consequences worth carrying.** Bringing the slits closer together (smaller \\(d\\)) **widens** the fringes, because a smaller separation demands a larger angle to build up the same path difference. And red light gives wider fringes than blue, since \\(\\lambda\\) is larger — which is why a white-light pattern spreads into colour away from the central fringe, with blue innermost.\n\n**A check at the limits.** As \\(d\\to\\lambda\\) the angular width approaches a radian and only a fringe or two fit on the screen; as \\(d\\gg\\lambda\\) the fringes crowd together and become unresolvable. Both follow from \\(\\theta = \\lambda/d\\) alone."
+    },
+    {
+      "hash": "1324b7c3eaedcbf9586d1e1cf8a55631a5bf1e32bdd4eddbce51e59752ea6d4a",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Series LCR Circuit and Resonance",
+      "stem": "A resistor and an inductor of negligible resistance are connected in series to a 20 V ac source. If the voltage across the resistor is 12 V, the voltage across the inductor will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "6 V"
+        },
+        {
+          "label": "B",
+          "text": "8 V"
+        },
+        {
+          "label": "C",
+          "text": "10 V"
+        },
+        {
+          "label": "D",
+          "text": "16 V"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): 16 V.**\n\n**Voltages in an ac series circuit do NOT add arithmetically** — they add as **phasors**, because they peak at different times. That is the entire question.\n\n**The phase relationships.** Across a resistor, voltage and current are **in phase**; across a pure inductor, the voltage **leads** the current by \\(90^\\circ\\). The current is common to both (they are in series), so \\(V_R\\) and \\(V_L\\) are at right angles to each other.\n\n**They combine by Pythagoras:**\n\n\\(V^{2} = V_R^{2} + V_L^{2}\\)\n\n\\(V_L = \\sqrt{V^{2} - V_R^{2}} = \\sqrt{20^{2} - 12^{2}} = \\sqrt{400 - 144} = \\sqrt{256}\\)\n\n\\(\\boxed{\\ V_L = 16\\ \\mathrm{V}\\ }\\)\n\n**Option (B), 8 V, is the trap** — it is \\(20 - 12\\), the arithmetic difference. If the voltages simply added and subtracted, the reading across the inductor would be \\(8\\) V; because they are \\(90^\\circ\\) apart, it is \\(16\\) V. **The individual voltages can each exceed nothing here, but note that their SUM \\(\\left(12 + 16 = 28\\ \\mathrm{V}\\right)\\) exceeds the source's \\(20\\) V** — a result that looks impossible until the phase difference is taken into account, and a genuine, measurable one.\n\n**The 3-4-5 triangle** is doing the work: \\(12\\) and \\(16\\) are \\(3\\) and \\(4\\) scaled by four, with \\(20\\) as the hypotenuse. Spotting it saves the arithmetic.\n\n**Two further quantities fall out at once.** The phase angle of the circuit:\n\n\\(\\tan\\phi = \\dfrac{V_L}{V_R} = \\dfrac{16}{12} = \\dfrac{4}{3} \\qquad\\Longrightarrow\\qquad \\phi = 53^\\circ\\)\n\nand the power factor \\(\\cos\\phi = V_R/V = 12/20 = 0{\\cdot}6\\). The current lags the source voltage by \\(53^\\circ\\).\n\n**Only the resistor dissipates power.** The inductor's voltage and current are a quarter cycle apart, so its average power is zero — it stores energy in its magnetic field and returns it every cycle. All \\(16\\) V across it is **wattless**.\n\n**Why \"of negligible resistance\" is in the stem.** A real inductor has some winding resistance, which would sit in phase with \\(V_R\\) and spoil the clean right angle. The idealisation is what makes Pythagoras exact rather than approximate."
+    },
+    {
+      "hash": "b619080578a6e6fb87a1b8e1aad6bb8c2a90d27d1de48473ea3da80193d305b4",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "Find the ratio \\(\\left(\\frac{\\lambda_a}{\\lambda_p}\\right)\\) of de Broglie wavelength \\(\\lambda_a\\) associated with an alpha particle to de Broglie wavelength \\(\\lambda_p\\) associated with a proton if both are moving with the (a) same velocity (b) same kinetic energy.",
+      "solution": "**The de Broglie relation.**\n\n\\(\\lambda = \\dfrac{h}{p}\\)\n\n**Everything turns on how \\(p\\) is written**, and it is written differently in the two cases. That is why one question with two parts gives two different answers.\n\n**The masses.** An alpha particle is a helium nucleus — two protons and two neutrons — so\n\n\\(m_\\alpha = 4m_p\\)\n\n**(a) Same velocity.**\n\nWith \\(p = mv\\) and \\(v\\) common to both,\n\n\\(\\lambda = \\dfrac{h}{mv} \\qquad\\Longrightarrow\\qquad \\lambda \\propto \\dfrac{1}{m}\\)\n\n\\(\\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\dfrac{m_p}{m_\\alpha} = \\dfrac{m_p}{4m_p}\\)\n\n\\(\\boxed{\\ \\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\dfrac{1}{4}\\ }\\)\n\n**(b) Same kinetic energy.**\n\nHere the velocities differ, so \\(p\\) must be expressed through \\(K\\):\n\n\\(K = \\dfrac{p^{2}}{2m} \\qquad\\Longrightarrow\\qquad p = \\sqrt{2mK}\\)\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mK}} \\qquad\\Longrightarrow\\qquad \\lambda \\propto \\dfrac{1}{\\sqrt{m}}\\)\n\n\\(\\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\sqrt{\\dfrac{m_p}{m_\\alpha}} = \\sqrt{\\dfrac{1}{4}}\\)\n\n\\(\\boxed{\\ \\dfrac{\\lambda_\\alpha}{\\lambda_p} = \\dfrac{1}{2}\\ }\\)\n\n**The contrast is the lesson.** At equal **speed** the mass enters to the first power; at equal **kinetic energy** it enters under a square root, and the ratio is softened from \\(1/4\\) to \\(1/2\\). Reaching for \\(\\lambda = h/mv\\) in part (b) — and getting \\(1/4\\) again — is the standard error, because at equal \\(K\\) the heavier particle is also the **slower** one, and that partly offsets its greater mass.\n\n**Worth seeing explicitly.** At equal \\(K\\), \\(v \\propto 1/\\sqrt{m}\\), so the alpha moves at half the proton's speed. Its momentum is then \\(4m_p \\times v_p/2 = 2m_pv_p\\) — twice the proton's, not four times. Hence the factor \\(1/2\\).\n\n**In both cases the alpha's wavelength is the SHORTER one**, and it must be: the alpha is heavier, so it carries more momentum in either scenario, and \\(\\lambda = h/p\\) makes more momentum mean less wavelength.\n\n**Note what never enters.** The alpha's **charge** plays no part at all. The de Broglie relation contains momentum and nothing else — charge would matter only if the particles had been accelerated through the same potential difference, which is a third case again, and gives \\(\\lambda \\propto 1/\\sqrt{mq}\\)."
+    },
+    {
+      "hash": "d30d9c3850540ee35bd7a2242f50c6a727c46a964e99aca4824baa2b15332e31",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Mass-Energy and Nuclear Binding Energy",
+      "stem": "Draw a graph showing variation of binding energy per nucleon as a function of mass number A. The binding energy per nucleon for heavy nuclei (A > 170) decreases with increase in mass number. Explain its significance.",
+      "solution": "**The graph.**\n\n*To draw it:* binding energy per nucleon \\(\\left(\\mathrm{MeV}\\right)\\) on the vertical axis against mass number \\(A\\) on the horizontal, from \\(A = 0\\) to about \\(240\\).\n\n**The shape, which is what the marks are for:**\n\n- **A steep rise** from very small \\(A\\), with sharp points at \\({}^{4}\\mathrm{He}\\), \\({}^{12}\\mathrm{C}\\) and \\({}^{16}\\mathrm{O}\\) standing noticeably above their neighbours.\n- **A broad flat maximum** of about \\(8{\\cdot}8\\) MeV per nucleon near \\(A \\approx 56\\) \\(\\left({}^{56}\\mathrm{Fe}\\right)\\).\n- **A slow, steady decline** beyond that, reaching roughly \\(7{\\cdot}6\\) MeV per nucleon at \\({}^{238}\\mathrm{U}\\).\n- Mark \\({}^{2}\\mathrm{H}\\) low down near \\(1{\\cdot}1\\) MeV, and label the axes.\n\n**The curve is remarkably flat across the middle**, holding between about \\(8\\) and \\(8{\\cdot}8\\) MeV per nucleon over the whole range \\(30 < A < 170\\).\n\n**The significance of the decline for \\(A > 170\\).**\n\n**A falling \\(\\left(\\mathrm{BE}/A\\right)\\) means the nucleons are LESS TIGHTLY bound**, so a heavy nucleus is a less stable arrangement than a middle-mass one.\n\n**Therefore splitting a heavy nucleus RELEASES energy.** If a nucleus of \\(A \\approx 240\\) at about \\(7{\\cdot}6\\) MeV per nucleon divides into two fragments of \\(A \\approx 120\\) at about \\(8{\\cdot}5\\) MeV per nucleon, every nucleon becomes more tightly bound by roughly \\(0{\\cdot}9\\) MeV:\n\n\\(\\Delta E \\approx 240 \\times 0{\\cdot}9 \\approx 200\\ \\mathrm{MeV}\\)\n\n**That is nuclear FISSION**, and this stretch of the curve is why it is energetically possible at all. The figure of \\(200\\) MeV per fission — enormous beside the few eV of a chemical reaction — is read straight off the graph.\n\n**Why binding energy per nucleon falls at large \\(A\\).** The nuclear force is **short-ranged**, so a nucleon is attracted only by its immediate neighbours and the attraction saturates once the nucleus is a few fermis across. The Coulomb repulsion between protons is **long-ranged**, so every proton repels every other one and that energy grows as \\(Z^{2}\\). Beyond \\(A \\approx 60\\) the repulsion has outgrown the saturated attraction, and \\(\\left(\\mathrm{BE}/A\\right)\\) begins its descent.\n\n**The other end of the curve tells the mirror story.** The steep RISE at small \\(A\\) means two light nuclei can also become more tightly bound by **joining** — which is nuclear **fusion**, and why both processes release energy while moving towards the same iron peak from opposite sides.\n\n**\\({}^{56}\\mathrm{Fe}\\) sits at the maximum**, which is why iron is the endpoint of energy release by nuclear means and accumulates in the cores of massive stars."
+    },
+    {
+      "hash": "69facda05532952cf23a8049e8dc5d6020c08b91cbe61f3287e7ac65579af4a8",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "stem": "A 12.0 \\(\\mu\\mathrm{F}\\) capacitor is charged to a potential difference of 150 V. The terminals of the charged capacitor are then connected to those of an uncharged 6.0 \\(\\mu\\mathrm{F}\\) capacitor. Calculate final potential difference across and charge on, each capacitor.",
+      "solution": "**When the two capacitors are joined they form a PARALLEL combination**, so they must end at a **common potential difference**. Charge flows from the charged capacitor into the uncharged one until the two voltages agree.\n\n**Step 1 — the charge that exists at the start.**\n\n\\(Q_i = C_1V_i = \\left(12{\\cdot}0\\ \\mu\\mathrm{F}\\right)\\left(150\\ \\mathrm{V}\\right) = 1800\\ \\mu\\mathrm{C}\\)\n\n**Charge is CONSERVED.** No charge leaves the pair; it only redistributes. The \\(6{\\cdot}0\\ \\mu\\)F contributes nothing, being uncharged.\n\n**Step 2 — the common potential difference.**\n\n\\(V_f = \\dfrac{\\text{total charge}}{\\text{total capacitance}} = \\dfrac{Q_i}{C_1 + C_2} = \\dfrac{1800\\ \\mu\\mathrm{C}}{\\left(12 + 6\\right)\\mu\\mathrm{F}}\\)\n\n\\(\\boxed{\\ V_f = 100\\ \\mathrm{V}\\ \\text{across BOTH capacitors}\\ }\\)\n\n**Step 3 — the charge on each.**\n\n\\(Q_1 = C_1V_f = 12 \\times 100 \\qquad \\boxed{\\ Q_1 = 1200\\ \\mu\\mathrm{C}\\ }\\)\n\n\\(Q_2 = C_2V_f = 6 \\times 100 \\qquad \\boxed{\\ Q_2 = 600\\ \\mu\\mathrm{C}\\ }\\)\n\n**A check:** \\(1200 + 600 = 1800\\ \\mu\\)C, the charge we started with \\(\\checkmark\\). And the split is \\(2 : 1\\), matching \\(C_1 : C_2\\) exactly — at a common voltage, \\(q = CV\\) makes charge proportional to capacitance.\n\n**ENERGY, unlike charge, is NOT conserved here**, and it is worth computing:\n\n\\(U_i = \\dfrac{1}{2}C_1V_i^{2} = \\dfrac{1}{2}\\left(12 \\times 10^{-6}\\right)\\left(150\\right)^{2} = 0{\\cdot}135\\ \\mathrm{J}\\)\n\n\\(U_f = \\dfrac{1}{2}\\left(C_1 + C_2\\right)V_f^{2} = \\dfrac{1}{2}\\left(18 \\times 10^{-6}\\right)\\left(100\\right)^{2} = 0{\\cdot}090\\ \\mathrm{J}\\)\n\n\\(\\Delta U = 0{\\cdot}045\\ \\mathrm{J}\\ \\text{LOST} \\qquad\\text{— one third of the original energy.}\\)\n\n**Where does it go?** Into heat in the connecting wires and, for a rapid transfer, into electromagnetic radiation. The loss is **independent of the wire's resistance**: a thinner wire dissipates the same total energy, merely taking longer over it. Even with ideal zero-resistance wires the energy is still lost, then as radiation — which is why this is a genuine result and not an artefact of imperfect components.\n\n**The general expression for that loss** is worth carrying:\n\n\\(\\Delta U = \\dfrac{1}{2}\\cdot\\dfrac{C_1C_2}{C_1 + C_2}\\left(V_1 - V_2\\right)^{2}\\)\n\nHere \\(\\tfrac{1}{2}\\times\\left(72/18\\right)\\times 10^{-6}\\times 150^{2} = 0{\\cdot}045\\) J \\(\\checkmark\\). It vanishes only when the two capacitors are already at the same voltage — that is, when no charge needs to move."
+    },
+    {
+      "hash": "0559018d273fc2639f645ab58e50c8358fcb9d5cb3f072d5aa7a58c37e0c45d0",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "A semiconductor has equal electron and hole concentration of \\(3 \\times 10^8\\) \\(\\mathrm{m^{-3}}\\). On doping with a certain impurity, the hole concentration increases to \\(6 \\times 10^{10}\\) \\(\\mathrm{m^{-3}}\\).\n(a) What type of semiconductor is obtained on doping ?\n(b) Calculate the new electron concentration of the semiconductor.\n(c) How does the energy gap of semiconductor change with doping ? Draw the energy band diagram for it.",
+      "solution": "**(a) The type of semiconductor.**\n\n**Doping raised the HOLE concentration**, from \\(3 \\times 10^{8}\\) to \\(6 \\times 10^{10}\\ \\mathrm{m^{-3}}\\) — a rise of two hundred-fold. Holes are the majority carriers.\n\n\\(\\boxed{\\ \\text{p-type}\\ }\\)\n\nThe impurity is **trivalent** (an acceptor — boron, aluminium, indium), with one valence electron fewer than the silicon it replaces, leaving a vacancy that behaves as a mobile positive charge.\n\n**(b) The new electron concentration.**\n\n**The law of mass action** holds at a given temperature, doped or not:\n\n\\(n_e n_h = n_i^{2}\\)\n\n**The starting figures give \\(n_i\\).** Before doping the material was intrinsic, with \\(n_e = n_h = 3 \\times 10^{8}\\ \\mathrm{m^{-3}}\\), so \\(n_i = 3 \\times 10^{8}\\ \\mathrm{m^{-3}}\\).\n\n\\(n_e = \\dfrac{n_i^{2}}{n_h} = \\dfrac{\\left(3 \\times 10^{8}\\right)^{2}}{6 \\times 10^{10}} = \\dfrac{9 \\times 10^{16}}{6 \\times 10^{10}}\\)\n\n\\(\\boxed{\\ n_e = 1{\\cdot}5 \\times 10^{6}\\ \\mathrm{m^{-3}}\\ }\\)\n\n**The electron concentration FELL** — from \\(3 \\times 10^{8}\\) to \\(1{\\cdot}5 \\times 10^{6}\\), by a factor of \\(200\\), exactly the factor by which the holes rose. Doping does not simply add carriers of one kind; the extra holes give the remaining electrons far more opportunity to recombine, so the minority population is **suppressed** in proportion. The product stays pinned at \\(n_i^{2}\\).\n\n**(c) The energy gap, and the band diagram.**\n\n**The intrinsic gap \\(E_g\\) between the valence and conduction bands is a property of the HOST crystal and is essentially unchanged** by a trace of impurity. What doping does is introduce a new **acceptor level** \\(E_A\\) just above the top of the valence band.\n\n**The EFFECTIVE gap therefore decreases**, and decreases sharply. An electron no longer needs the full \\(E_g \\approx 1{\\cdot}1\\) eV of silicon to become useful; it need only climb\n\n\\(E_A - E_V \\approx 0{\\cdot}01\\ \\text{to}\\ 0{\\cdot}05\\ \\mathrm{eV}\\)\n\ninto the acceptor level, leaving a hole behind in the valence band. **That is a fiftieth of the intrinsic gap**, and thermal energy at room temperature \\(\\left(kT \\approx 0{\\cdot}026\\ \\mathrm{eV}\\right)\\) supplies it readily — which is why nearly every acceptor is ionised at ordinary temperatures, and why the hole count jumps by orders of magnitude for a doping level of a few parts per million.\n\n*To draw the band diagram:* two shaded bands, the **valence band** below with its upper edge marked \\(E_V\\) and the **conduction band** above marked \\(E_C\\), separated by the gap \\(E_g\\). Draw a **dashed acceptor level \\(E_A\\) just above \\(E_V\\)**, labelled \\(\\approx 0{\\cdot}01\\) to \\(0{\\cdot}05\\) eV. Show electrons rising from the valence band into that level and holes (open circles) left behind in the valence band, for \\(T > 0\\) K.\n\n**The mirror case, for contrast.** An n-type crystal has a **donor** level \\(E_D\\) just **below** \\(E_C\\), by a similarly small amount, and the electrons rather than the holes are the majority carriers. The geometry is the same picture turned upside down."
+    },
+    {
+      "hash": "a5a8e6c292e718e4ad2995b6dccb37043b925a703ab4ccecec1c2f23695513fc",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "Draw a labelled ray diagram showing the formation of image by a compound microscope when final image is formed at least distance of distinct vision. Derive an expression for its magnifying power for this case.",
+      "solution": "**The ray diagram.**\n\n*To draw it:* two converging lenses on a common axis — the **objective** \\(\\left(f_o\\right)\\) on the left, small and of short focal length, and the **eyepiece** \\(\\left(f_e\\right)\\) on the right.\n\n**Trace the light in three stages:**\n\n1. The object \\(AB\\) is placed **just beyond \\(f_o\\)**, a little outside the objective's focus. Two rays from the tip of the object — one parallel to the axis, refracting through \\(F_o'\\), and one through the optical centre, undeviated — cross to form a **real, inverted and magnified** image \\(A'B'\\) between the two lenses.\n2. That image serves as the **object for the eyepiece**, and it falls **inside** the eyepiece's focal length, so the eyepiece acts as a simple magnifier.\n3. Rays from \\(A'B'\\) diverge after the eyepiece. Produced **backwards** (dotted lines), they locate the **final image** \\(A''B''\\) — **virtual, inverted** relative to the original object, and **magnified** — at the near point, a distance \\(D = 25\\) cm from the eye.\n\n**Label:** \\(f_o\\), \\(f_e\\), the tube length \\(L\\) (the separation \\(B'\\) to the eyepiece), \\(D\\) measured from the eyepiece to the final image, and the eye at the eyepiece.\n\n**Deriving the magnifying power.**\n\n**Total magnification is the product of the two stages**, because the eyepiece magnifies what the objective has already produced:\n\n\\(m = m_o \\times m_e\\)\n\n**The objective.** With \\(h\\) the object height and \\(h'\\) the height of the intermediate image, the same angle \\(\\beta\\) subtended at the objective gives\n\n\\(\\tan\\beta = \\dfrac{h}{f_o} = \\dfrac{h'}{L} \\qquad\\Longrightarrow\\qquad m_o = \\dfrac{h'}{h} = \\dfrac{L}{f_o}\\)\n\nwhere \\(L\\) is the tube length.\n\n**The eyepiece, with the final image at the near point.** For a simple microscope forming its image at \\(D\\),\n\n\\(m_e = 1 + \\dfrac{D}{f_e}\\)\n\n**Multiplying:**\n\n\\(\\boxed{\\ m = \\dfrac{L}{f_o}\\left(1 + \\dfrac{D}{f_e}\\right)\\ }\\)\n\n**The \"\\(1 +\\)\" is what distinguishes this case**, and it is the whole reason the question specifies the least distance of distinct vision. With the final image at **infinity** instead — relaxed-eye viewing — the eyepiece contributes only \\(D/f_e\\) and the magnification is \\(m = \\left(L/f_o\\right)\\left(D/f_e\\right)\\), slightly **less**. Near-point viewing gives the larger magnification; infinity viewing gives the more comfortable image, free of eye strain.\n\n**How to make \\(m\\) large.** Both focal lengths appear in denominators, so **both lenses must be of short focal length**, and the objective's the shorter of the two. Its focal length is the harder limit: making \\(f_o\\) very small brings the objective physically close to the specimen and worsens aberration, which is why practical gains come from a short tube with a well-corrected objective rather than from ever-stronger lenses.\n\n**A note on \\(m_o = L/f_o\\).** This is an approximation, exact in the limit where the image distance \\(v_o\\) is much greater than \\(f_o\\) — true for a real microscope, where the object sits barely outside the focus. The exact statement is \\(m_o = v_o/u_o\\), and it reduces to \\(L/f_o\\) under that condition.\n\n**Why the final image is INVERTED.** The objective inverts; the eyepiece, acting as a magnifier on a virtual image, does not invert again. One inversion survives, which is why a compound microscope shows the specimen upside down — harmless for viewing, and the reason a microscope stage is moved in the direction opposite to the one intended."
+    }
+  ]
+}
