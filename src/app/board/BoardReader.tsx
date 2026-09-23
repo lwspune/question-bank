@@ -14,10 +14,11 @@ import { cn } from "@/lib/utils";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import { boardPyqPaperStats } from "@/lib/board/papers";
 import {
   defaultOpenGroups,
-  pyqYearCounts,
   type BoardBlock,
+  type BoardPaperCount,
   type BoardPyqSitting,
   type BoardQuestion,
   type BoardSectionGroup,
@@ -53,6 +54,7 @@ function questionHasAnswer(q: BoardQuestion): boolean {
 export default function BoardReader({
   groups,
   pyqSittings,
+  paperCounts,
   supabaseUrl,
   chapterName,
   examName,
@@ -62,6 +64,8 @@ export default function BoardReader({
    *  for a board with no PYQ corpus at all (the `practiceOnly` boards); all 37
    *  CBSE 12, 47 MH HSC 12 and 56 MH SSC 10 chapters carry some. */
   pyqSittings: BoardPyqSitting[];
+  /** Whole papers the subject sat per year — the strip divides by these. */
+  paperCounts: BoardPaperCount[];
   supabaseUrl: string;
   /** Names the chapter in the classroom-projection breadcrumb. */
   chapterName: string;
@@ -153,7 +157,11 @@ export default function BoardReader({
       {pyqTotal > 0 && (
         <PresentRegistry>
           <div className="space-y-6" id="board-pyqs" hidden={!showPyqs}>
-            <RecurrenceStrip sittings={pyqSittings} />
+            <RecurrenceStrip
+              sittings={pyqSittings}
+              examName={examName}
+              paperCounts={paperCounts}
+            />
             {pyqSittings.map((sitting, i) => (
               <PyqSitting
                 key={sitting.key}
@@ -244,45 +252,81 @@ function SourceTabs({
 }
 
 /**
- * Questions per year. Bars are drawn from OBSERVED years only — a year the
- * board held no paper (March 2021, cancelled) has no bar rather than a zero
- * one, which would assert a paper this chapter was absent from.
+ * Questions per PAPER, per year. Bars are drawn from OBSERVED years only — a
+ * year the board held no paper (March 2021, cancelled) has no bar rather than a
+ * zero one, which would assert a paper this chapter was absent from.
  *
- * Each bar carries its COUNT above it because the bar alone cannot hold the
- * number at this scale: the median chapter-year is 3 questions and 83% are 4
- * or fewer, so against a 44px peak one question is a 7-11px step. The count is
- * what a student converts into a plan ("expect 3 from this chapter"); the bar
- * only carries the shape. Labels never exceed two characters in practice —
- * chapters with 9-11 bars peak at 4-6, and the chapters that reach double
- * digits have only 4-5 bars.
+ * PER PAPER, NOT PER YEAR. A year is not a paper on two of the three boards:
+ * CBSE Class 12 sets 5-6 papers a year and MH HSC 12 Mathematics has sat two
+ * since 2024, so a per-year bar read ~6x and ~2x what one paper asks. Measured
+ * on CBSE Physics, Current Electricity ran 42 · 37 · 50 · 36 per year but a
+ * steady 4.2 · 4.2 · 4.8 · 5.2 per paper — and it is the second series a
+ * student can plan against. The divisor comes from `source_file`, not from the
+ * sitting: see src/lib/board/papers.ts for why the month cannot supply it.
+ *
+ * Each bar carries its NUMBER above it because the bar alone cannot hold it at
+ * this scale — the numbers are small and close together, so against a 44px peak
+ * one question is a few pixels. The bar carries the shape; the label carries the
+ * plan ("expect about 5 from this chapter").
  */
-function RecurrenceStrip({ sittings }: { sittings: BoardPyqSitting[] }) {
-  const counts = pyqYearCounts(sittings);
-  if (counts.length < 2) return null;
-  const peak = Math.max(...counts.map((c) => c.count));
+function RecurrenceStrip({
+  sittings,
+  examName,
+  paperCounts,
+}: {
+  sittings: BoardPyqSitting[];
+  examName: string;
+  paperCounts: BoardPaperCount[];
+}) {
+  const stats = boardPyqPaperStats(
+    sittings,
+    examName,
+    new Map(paperCounts.map((c) => [c.year, c.papers]))
+  );
+  // A year we cannot express per-paper draws no bar. Its questions still list
+  // below — this drops a BAR, never a question.
+  const bars = stats.years.filter(
+    (y): y is (typeof stats.years)[number] & { perPaper: number } => y.perPaper !== null
+  );
+  if (bars.length < 2) return null;
+  const peak = Math.max(...bars.map((b) => b.perPaper));
 
   return (
     <section className="rounded-lg border border-brand-accent/30 bg-brand-accent/5 p-4">
       <h2 className="text-sm font-semibold text-brand-accent">What the board has asked from this chapter</h2>
       <p className="mt-0.5 text-xs text-muted-foreground">
-        {counts.length} papers · {counts[0].year} to {counts[counts.length - 1].year}
+        Questions per paper · {stats.totalPapers} papers · {bars[0].year} to{" "}
+        {bars[bars.length - 1].year}
       </p>
       <ol className="mt-3 flex items-end gap-1.5" aria-hidden>
-        {counts.map((c) => (
-          <li key={c.year} className="flex flex-1 flex-col items-center gap-1">
-            <span className="text-[10px] font-medium tabular-nums text-brand-accent">{c.count}</span>
+        {bars.map((b) => (
+          <li key={b.year} className="flex flex-1 flex-col items-center gap-1">
+            <span className="text-[10px] font-medium tabular-nums text-brand-accent">
+              {b.perPaper}
+            </span>
             <span
               className="w-full rounded-t-sm bg-brand-accent/70"
-              style={{ height: `${Math.max(4, Math.round((c.count / peak) * 44))}px` }}
+              style={{ height: `${Math.max(4, Math.round((b.perPaper / peak) * 44))}px` }}
             />
             <span className="text-[10px] tabular-nums text-muted-foreground">
-              {String(c.year).slice(-2)}
+              {String(b.year).slice(-2)}
             </span>
           </li>
         ))}
       </ol>
+      {stats.excludedQuestions > 0 && (
+        // CBSE prints 3 variants of each paper and we store only what the 2nd
+        // and 3rd CHANGE, so those rows belong to no single paper and cannot be
+        // averaged. Say so rather than quietly dropping them from a page whose
+        // other numbers count everything.
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          Bars average the full papers of each year. {stats.excludedQuestions} further{" "}
+          {stats.excludedQuestions === 1 ? "question comes" : "questions come"} from set variants
+          and {stats.excludedQuestions === 1 ? "is" : "are"} listed below.
+        </p>
+      )}
       <p className="sr-only">
-        {counts.map((c) => `${c.year}: ${c.count} questions`).join(". ")}
+        {bars.map((b) => `${b.year}: ${b.perPaper} questions per paper`).join(". ")}
       </p>
     </section>
   );
