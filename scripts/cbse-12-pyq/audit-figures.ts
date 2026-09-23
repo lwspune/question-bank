@@ -26,87 +26,20 @@ import { createClient } from "@supabase/supabase-js";
 import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
 
 /**
- * Phrases that point at a PRINTED figure on the page rather than describing a
- * curve in words. Deliberately narrow on ONE axis: "the graph of y = sin x" is a
- * function, not a figure, and matching it would bury the real hits.
+ * THE RULE NOW LIVES IN scripts/lib/figureRefs.ts, shared with the bank-wide
+ * `npm run audit:figures`. It was duplicated here and in scripts/mh-hsc-12-pyq/
+ * audit-figure-refs.ts, and the two copies had learned different lessons: this
+ * one knew `shows`, `network` and the plurals revert; that one knew the bare
+ * `Fig. N` form and that a determiner needs a gap before its noun ("the
+ * following SWITCHING circuit"). Neither knew what the other knew, and neither
+ * ran outside its own pipeline.
  *
- * But narrow is not the same as short, and the first version was BOTH. It was
- * written from the referencing rows and so learned only their phrasing; running
- * it against rows that DO carry a figure exposed three forms it could not see —
- * "as shown below", "The following graph is a combination of", "The following
- * graph represents". Any of those on a row with no image is exactly the
- * unanswerable case this probe exists to find, and it would have reported clean.
- *
- * The lesson is the one this pipeline keeps re-learning: a probe validated only
- * against the cases it already flags cannot show you what it misses. Check it
- * against the population it calls CLEAN.
+ * Every measurement and every reverted widening that shaped this regex is
+ * recorded in that file's comments, pinned by tests/figure-refs.test.ts. This
+ * script stays as the CBSE-scoped view; the rule is no longer its own.
  */
-const FIGURE_REF = new RegExp(
-  [
-    // "in the given figure", "from the adjoining diagram", "see the figure below"
-    String.raw`\b(?:in|from|given|shown|see|below|above)\s+(?:the\s+)?(?:adjoining\s+|following\s+|given\s+)?(?:figure|fig\.?|diagram)\b`,
-    // "the following/adjoining/given figure|graph|diagram"
-    String.raw`\bthe\s+(?:adjoining|following|given|above)\s+(?:figure|fig\.?|diagram|graph)\b`,
-    // "figure below", "graph above", "diagram shown", "The figure shows"
-    // `shows` is not decoration on `shown`: "The figure shows ..." is the most
-    // common opening CBSE gives a figure question, and it missed on that one
-    // letter -- 2025-55-6-1 Q1 was unanswerable with no image and this probe
-    // called it clean, then listed it under IMAGE-NO-REFERENCE once attached.
-    // `network|circuit|arrangement|set-up` are not decoration on the four above.
-    // CBSE routinely refers to a printed drawing by WHAT IT DEPICTS rather than
-    // by the word "figure" -- 2024-55-4-1 Q25 is "Find the current in branch BM
-    // in the network shown :", and the stem names not one resistance or emf, so
-    // the row is unanswerable with no image and this probe called it clean. The
-    // enumerated-noun list is the recurring weakness here: it under-matches in
-    // silence, which is why the population to check a widening against is the
-    // one the probe calls CLEAN, never the one it already flags.
-    //
-    // PLURALS WERE TRIED AND REVERTED, and the measurement is why. Allowing
-    // a trailing s on every noun was prompted by 2022-55-5-1 Q12(i) -- "which
-    // one of the following figureS" matched nothing, and that row's four
-    // OPTIONS are the drawn diagrams, so it was genuinely unanswerable.
-    // But measured over all 5,022 rows the change moved REFERENCES-NO-IMAGE
-    // 42 -> 47, and all FIVE additions were FALSE: "Which of the following
-    // graphs ..." rows whose options are carried as descriptive TEXT and that
-    // need no image at all. The stem cannot separate those from Q12(i) -- both
-    // read "which of the following <plural noun>" -- so no phrasing rule will,
-    // and polluting the serious list by 12% to catch one row is a bad trade.
-    // The signal that DOES separate them lives in the OPTIONS, not the stem,
-    // and is checked by optionsDeferToFigure() below.
-    // "Draw the circuit diagram ..." does NOT match: the noun must be followed
-    // by below/above/shown/shows, and there the next word is "diagram".
-    String.raw`\b(?:figure|fig\.?|diagram|graph|network|circuit|arrangement|set-?up)\s+(?:below|above|shown|shows)\b`,
-    // "as shown below", "as shown above", "as shown here" — no noun at all
-    String.raw`\bas\s+shown\s+(?:below|above|here|in)\b`,
-  ].join("|"),
-  "i",
-);
-
-export function referencesFigure(text: string | null, context: string | null): boolean {
-  return FIGURE_REF.test(`${text ?? ""}\n${context ?? ""}`);
-}
-
-/**
- * The OPTIONS are the figure, not the stem.
- *
- * A handful of rows ask "which of the following figures ..." where the four
- * choices are DRAWINGS with nothing to transcribe, so the transcriber stored a
- * placeholder ("Figure (A) as printed ... see the attached figure") instead of a
- * description. Such a row is unanswerable without its image even though its stem
- * may say nothing a figure-reference regex can catch — 2022-55-5-1 Q12(i) is
- * exactly that, and widening the stem regex to reach it cost five false
- * positives without catching anything else (see FIGURE_REF above).
- *
- * This is the precise test instead, and it is precise because it keys on the
- * transcription's OWN marker rather than on CBSE's prose: 2 rows of 5,022 match
- * it, both of them genuine. Contrast the rows that merely *sound* similar —
- * "Which of the following graphs shows the variation of photoelectric current
- * ..." — whose options carry real descriptions and need no image at all.
- */
-export function optionsDeferToFigure(options: { text: string | null }[] | null): boolean {
-  if (!options?.length) return false;
-  return options.some((o) => /see the attached figure|as printed/i.test(o.text ?? ""));
-}
+export { referencesFigure, optionsDeferToFigure } from "../lib/figureRefs";
+import { referencesFigure, optionsDeferToFigure } from "../lib/figureRefs";
 
 type Row = {
   question_number: string; source_file: string; text: string | null;

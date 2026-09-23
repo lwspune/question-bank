@@ -24,22 +24,19 @@ import { EXAM_ID } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-const NOUN = "circuit|figure|fig\\.?|diagram|graph|structure|network|arrangement|set-?up|table";
-const DET = "following|given|adjoining|above|below|shown|this";
+/**
+ * THE RULE NOW LIVES IN scripts/lib/figureRefs.ts, shared with the bank-wide
+ * `npm run audit:figures`. The lesson this file earned — a determiner needs a
+ * GAP before its noun, because the real stems read "the following SWITCHING
+ * circuit" and an immediate-adjacency rule found 1 of the 5 known cases — is
+ * carried over and pinned by tests/figure-refs.test.ts, alongside the lessons
+ * the CBSE copy had learned separately. Two copies of one rule was two
+ * calibrations drifting apart; the `--selftest` below still applies it to the
+ * rows this corpus knows carry a figure.
+ */
+import { referencesFigure, studentDraws } from "../lib/figureRefs";
 
-/** A determiner and a figure-noun with up to three words between them. */
-export const REFERS: RegExp[] = [
-  new RegExp(`\\b(?:${DET})\\s+(?:\\w+\\s+){0,3}(?:${NOUN})\\b`, "i"),
-  new RegExp(`\\b(?:${NOUN})\\s+(?:shown|given|below|above)\\b`, "i"),
-  new RegExp(`\\bshown\\s+in\\s+(?:the\\s+)?(?:${NOUN})`, "i"),
-  new RegExp(`\\bfrom\\s+the\\s+(?:${NOUN})\\b`, "i"),
-  new RegExp(`\\b(?:figure|fig\\.)\\s*[\\d(]`, "i"),
-  /\bas\s+shown\b/i,
-];
-/** Asks the STUDENT to produce the drawing — not a dependency on one. */
-const STUDENT_DRAWS = /\b(?:draw|sketch|plot|construct)\b/i;
-
-export const refersToFigure = (t: string) => REFERS.some((re) => re.test(t));
+export const refersToFigure = (t: string) => referencesFigure(t, null);
 
 async function main() {
   const filter = process.argv.find((a) => !a.startsWith("-") && !a.endsWith(".ts") && !a.includes("node"));
@@ -80,7 +77,7 @@ async function main() {
   console.log(`REFERS TO A FIGURE BUT CARRIES NONE: ${flagged.length}\n`);
   for (const r of flagged) {
     const subj = r.source_file.includes("Physics") ? "PHY" : r.source_file.includes("Chem") ? "CHM" : "MTH";
-    console.log(`  ${subj} ${r.question_number}${STUDENT_DRAWS.test(r.text) ? "  [student draws]" : ""}`);
+    console.log(`  ${subj} ${r.question_number}${studentDraws(r.text) ? "  [student draws]" : ""}`);
     console.log(`     ${r.text.replace(/\s+/g, " ").slice(0, 145)}`);
   }
   if (flagged.length) console.log("\nTRIAGE — 'draw a labelled diagram' is not a dependency. Read each.");

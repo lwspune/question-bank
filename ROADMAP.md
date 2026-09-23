@@ -363,6 +363,177 @@ Live counts as of 2026-09-23, after the figures attached while solving the sibli
 
 The **remaining 31** are not this class and are not tracked here: they are rows whose figure has simply not been cropped yet, and they will be picked up the same way — as their papers come up. The `IMAGE-NO-REFERENCE` **84** is a different thing again and should not be read as 84 mis-keyed attaches: most are rows that DO carry a correct image but whose stem `FIGURE_REF` cannot see, because the regex is an enumerated noun list and CBSE names a drawing by what it depicts. `2024-55-4-3` Q25 — "In the given network, calculate:" — is the worked example: the regex matches `network shown/below/above` but not `given network`. Widening it would move counts on shipped rows, so it is left alone and recorded here instead.
 
+### Superseded 2026-09-23 — the rule went bank-wide, and the `given network` widening above was taken
+
+`npm run audit:figures` (pure core `scripts/lib/figureRefs.ts`, spec `tests/figure-refs.test.ts`)
+now runs the rule across **every exam**. It replaces two pipeline-scoped copies —
+`scripts/cbse-12-pyq/audit-figures.ts` and `scripts/mh-hsc-12-pyq/audit-figure-refs.ts`, both of
+which now import the shared core rather than carrying their own. The two copies had learned
+DIFFERENT lessons and neither knew the other's: this one knew `shows`, `network` and the plurals
+revert; that one knew the bare `Fig. N` form and that a determiner needs a gap before its noun.
+
+The `given network` widening the paragraph above deliberately declined was measured and taken,
+anchored on a PREPOSITION (`in|from|for|across|of|through` + determiner + up to two words +
+`circuit|network`). Measured bank-wide: **+147 on the recall check for 7 additions**, 5 of them
+genuine. The preposition is what keeps it honest — without it the rule also swallows the verb, and
+"You are given three circuit elements X, Y and Z" is a text-only CBSE question with no figure.
+Its effect on this corpus: `REFERENCES-NO-IMAGE` 31 → **36**, `IMAGE-NO-REFERENCE` 84 → **76**.
+
+A widening that was measured and REJECTED, recorded so it is not re-proposed: extending the same
+determiner rule to `structure|curve|graph` scored **50 additions of which ~6 were real** — it
+matched "Which of the following is correct structure of tyrosine?" (the options are the figure,
+not the stem) and even "does NOT figure among the Five Principles of Panchsheel", where *figure*
+is a verb. Each of its false positives is pinned as a negative fixture in the spec.
+
+**Bank-wide baseline, 2026-09-23: `REFERENCES-NO-IMAGE` 385, of which 378 are PUBLIC.**
+
+READ THE `RECALL` COLUMN BEFORE THE COUNT. It is the share of an exam's rows that DO carry a
+figure which the rule can name, and it is reported per exam because the achievable ceiling differs
+by corpus — a Balbharati geometry stem always names its figure, a Geography map question never
+does, and a chemistry stem names the molecule rather than a picture. Where recall is low the count
+is a **floor**, not a measurement, and a small number there is not good news. A single bank-wide
+figure averages those into something that means nothing about either, which is why it is not the
+headline.
+
+| Exam | recall | refs | no image | rate |
+|---|---|---|---|---|
+| Maharashtra State Board Class 10 | 44% ⚠ | 255 | **140** | 55% |
+| CBSE Class 12 | 78% | 337 | 70 | 21% |
+| Foundation Course | 74% | 244 | 34 | 14% |
+| CBSE Class 10 | 97% | 81 | 23 | 28% |
+| CBSE Class 11 | 93% | 59 | 21 | 36% |
+| JEE Mains | 40% ⚠ | 549 | 19 | 3% |
+| Maharashtra HSC Class 12 | 54% | 61 | 18 | 30% |
+| MHT-CET | 53% | 153 | 17 | 11% |
+| Maharashtra State Board Class 11 | 25% ⚠ | 27 | 13 | 48% |
+| NDA | 48% ⚠ | 26 | 11 | 42% |
+| NEET | 50% | 211 | 8 | 4% |
+| Maharashtra State Board Class 9 | 79% | 120 | 4 | 3% |
+
+**The defect arrives per CHAPTER, not per row, which is why the report groups by source file.**
+Each pipeline's figure step is driven by a per-chapter manifest (`data/<chapterId>.*fig.json`), so
+a file with ZERO images was never figure-processed at all, while a file with some images lost
+individual rows. Those are different repairs. `scripts/mh-ssc-10-text/data/` holds 16 manifests —
+Geography, History, Science — and for Maths exactly one, `pythagoras-10`. The DB agrees precisely:
+Pythagoras Theorem has 23 images and **0** missing, while Circle, Similarity, Mensuration and
+Statistics have **0 images and 125 missing between them**. `scripts/mh-sb-9/data/` has manifests
+for every geometry chapter, and Class 9 sits at 3%. Same team, same book family, same pipeline.
+
+### Done 2026-09-23 — 94 figures attached to the four MH SSC 10 Maths chapters; bank-wide 385 → 291
+
+`REFERENCES-NO-IMAGE` for the whole MH SSC 10 textbook corpus went **135 → 41**, its rate 86% → 26%,
+and it is no longer the worst exam in the bank (CBSE Class 12 is). Attached: Circle 40 ·
+Similarity 23 · Mensuration 18 · Statistics 13.
+
+**The method, and why it is not the hand-anchoring the other chapters used.** This book is
+born-digital: every figure is vector-drawn or an embedded raster, and every figure carries a
+printed `Fig. N.M` caption as REAL TEXT that the question stems name ("In figure 3.37, …").
+So the extent is measured and the question→figure mapping is READ off the page, never inferred
+from reading order. `derive-figs.py` → `map-figs.ts` → `contact-sheet.py` → `attach-images.ts`.
+
+**Five defects, each found only by LOOKING at the crops, each with a green pipeline before it:**
+1. Captions sit BESIDE figures as often as below — the first version assumed below and silently
+   lost three figures on one page.
+2. Label absorption ITERATED, so boxes climbed the page; one ended up containing the "Practice
+   set 3.5" header and the whole of the next question. Now single-pass and clamped.
+3. A crop was the pink "ICT Tools or Links" panel with one corner of Fig. 3.103. Clusters
+   containing prose are now rejected.
+4. Mensuration's solids are EMBEDDED RASTERS, not vector paths — 22 of its 48 captions resolved
+   to nothing until image placements were clustered too. The chapter that most needs pictures was
+   the one the first method was blindest to.
+5. A box widened to hold its CAPTION shaves the right-hand ends off a paragraph wrapped beside the
+   figure. Length cannot see it (wrapped lines are short) and distance cannot either; what
+   separates body text from a callout is that body text sits on a COLUMN EDGE shared by four or
+   more lines, measured from the page rather than assumed.
+
+**Where it ends: the script REFUSES rather than guesses.** A bbox is a rectangle and a page is
+not, so some layouts admit no clean box. One that still contains body text is reported
+underivable and goes to the backlog below. Measured against the 40 Circle boxes a human had
+already passed, that refusal costs **2 of 40 (5%)** — false refusals in the safe direction.
+
+**The review is a committed gate, not a habit.** `data/<id>.figs-review.json` lists every ref a
+person has seen on a contact sheet; `map-figs.ts` emits only those and HOLDS the rest. Verified by
+fault injection. Three boxes were rejected at review and are in the backlog. `map-figs.ts` also
+refuses to overwrite a shipped manifest with an empty one.
+
+**Hand-anchor backlog — 30 rows the derivation will not guess at.** Not defects in the script;
+each is a case where the page does not carry the information the join needs.
+
+| chapter | n | why |
+|---|---|---|
+| Circle | 8 | 4 stems say "the adjoining figure" and print NO number; 3 numbers (3.28/3.38/3.39) are printed twice on one page; 1 cluster merged two figures |
+| Similarity | 8 | 4 boxes refused as unclean; 2 numberless; 1 stem reads three figures at once; Fig. 1.9 is outside the page range |
+| Mensuration | 8+2 | 5 numberless (the Ex 7.3 Q.13 set); 1 reads two figures; Fig. 7.47 out of range; 1 refused; plus Ex 7.1 Q.8 and PS7 Q.11 rejected at review |
+| Statistics | 6 | Fig. 6.6 and 6.4 are wide frequency-polygon/histogram plots that no clean rectangle bounds |
+
+A numberless "adjoining figure" row could be resolved by reading order, and deliberately is not —
+picking a figure by position is exactly the inference this design exists to avoid.
+
+### Done 2026-09-23 — the CBSE/NCERT/MH tail was READ: 151 rows, and the probe's real precision is 26%, not 70%
+
+Three parallel lanes, contract in `scripts/lib/figures/TRIAGE_BRIEF.md`, per-row verdicts committed
+under `scripts/lib/figures/triage/`. Every row read individually; none sampled.
+
+| lane | rows | MISS | DRAWS | CONCEPT | SELFCONTAINED | DESCRIBED | miss rate |
+|---|---|---|---|---|---|---|---|
+| `cbse-12` | 70 | 18 | 3 | 2 | 43 | 4 | 26% |
+| `cbse-10-11` | 44 | 10 | 0 | 0 | 34 | 0 | 23% |
+| `mh-11-12` | 37 | 11 | 0 | 0 | 20 | 6 | 30% |
+| **total** | **151** | **39** | 3 | 2 | 97 | 10 | **26%** |
+
+**CORRECTION TO THE 2026-09-23 ESTIMATE ABOVE.** The "~70% precision" figure came from reading 16
+rows spread across all exams. On the CBSE/NCERT/MH corpora the true rate is **26%**, and the
+over-reporting is NOT the `DRAWS` class the rule was built to avoid — DRAWS is 3 of 151, and one
+whole lane returned zero. It is **`SELFCONTAINED`, 97 of 151**: the NCERT and Balbharati
+transcriptions inlined the figure's numbers into the stem while keeping its citation, so
+"see Fig. 12.9" survived and the dependence did not. **A figure CITATION is not a figure
+DEPENDENCE, and no stem rule can separate them** — the discriminating signal is whether the stem
+states a connection or arrangement (series, parallel, "which of the vectors are collinear") rather
+than a named shape with its dimensions.
+
+**Two causes were fixable in the shared core and are now fixed** (spec'd in
+`tests/figure-refs.test.ts`, measured bank-wide 291 → **272**):
+- A GFM pipe-table satisfies "shown below in the table". Guarded both ways — the table only
+  excuses a match when the text names no figure at all, so a row that prints a table AND reads a
+  figure is still flagged.
+- `describesFigureInText` knew only the state-board `[Figure: …]` bracket; NCERT writes
+  `[Read from Fig. 2.8: …]` and `[Fig. 2.29 shows …]`. Four correctly-handled rows had been sitting
+  in the serious list looking like defects. CBSE Class 12: 70 → 59, DESCRIBED 0 → 6.
+
+**The most important finding is a NEGATIVE one, and it corrects the framing above.** The lane on
+the two lowest-recall exams (MH HSC 12 at 54%, MH State Board 11 at 25%) went looking for the
+hidden population that a low recall implies, five different ways — including harvesting phrasings
+from the 61 with-image rows the rule cannot name, which is the check `figureRefs.ts` prescribes.
+**It found zero unanswerable rows.** Those exams' with-image corpora are chemistry structure
+drawings and Mathematical-Logic switching circuits, which the ingestion DID attach; the
+corresponding image-less rows inline their data as LaTeX and need nothing. So for these two exams
+the count is close to a real measurement, not the floor the recall column warns about. The warning
+stays — it is the right default, and it is why the check was run — but it has now been tested
+twice and come back clean, and that is worth more than the warning itself.
+
+**A widening that was measured and REJECTED, so it is not re-proposed:** adding
+`structure|molecule|compound|reaction|pair` to the noun list (the dominant reason MH SB 11 reads
+25% recall) pulls in **~280 rows**, overwhelmingly false — "Show that the following pairs of lines
+are perpendicular", "Determine which of the following pairs of angles are co-terminal". Precision
+would collapse and the MISS list would stop being read.
+
+**Known blind spots, logged not fixed:**
+- `drawn below` matches no branch, so that row never enters the report at all. **`DESCRIBED` is a
+  floor for the same reason `MISS` is** — nothing reaches `describesFigureInText` unless
+  `referencesFigure` fired first.
+- **The probe reads STEMS only.** 78 lane rows cite a figure in their *solution* while the stem is
+  silent, and `StateBoard_11_Chemistry__Adsorption_and_Colloids.pdf Ex Q.10(b)-(d)` are model
+  answers opening "The labelled diagram (see the figure) shows…" against no figure. Invisible here
+  and to `audit:text`.
+- **The case-study multiplier distorts any per-exam count.** 24 of CBSE 12's 36 pyq hits are set
+  members of five word problems whose SHARED context carries one ornamental clause ("a tank, as
+  shown in the figure below"); one phrase becomes 4-5 hits. Two sets also carry the image on some
+  members and not others, which confirms from data that a set's figure must be duplicated onto
+  every member row — there is no `context_image_url`.
+
+**The 39 genuine MISSes are not repaired here.** They need a crop authored per row against papers
+already shipped; the per-row list with reasons is in the three triage JSONs.
+
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 
 **Found during the IPMAT load.** Logged, NOT swept — the fix touches the dedup key of every
