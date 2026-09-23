@@ -1,0 +1,303 @@
+{
+  "paper": "55/2/3",
+  "year": 2026,
+  "paperId": "2026-55-2-3",
+  "markingScheme": "out/2026-55-2-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "2e0b863c52dc3a7c79e6f31626a9c89cdc0f62ab0e70136ea058dde68d5e5d59",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A person is standing facing geographic north and a vertical wire in front of him is carrying a current in downward direction. The direction of magnetic field at a point on the right side of wire is",
+      "options": [
+        {
+          "label": "A",
+          "text": "South"
+        },
+        {
+          "label": "B",
+          "text": "East"
+        },
+        {
+          "label": "C",
+          "text": "West"
+        },
+        {
+          "label": "D",
+          "text": "North"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): South.**\n\n**Fix the directions first**, which is where this question is won or lost. The person **faces geographic north**, so:\n\n- **north** is the direction they look — straight ahead\n- **east** is to their **right**\n- **west** is to their left\n- the wire runs **vertically**, with the current flowing **downward**\n\n**Set up axes.** Let \\(\\hat{i}\\) be east, \\(\\hat{j}\\) be north and \\(\\hat{k}\\) be vertically up — a right-handed set.\n\n\\(\\text{current direction} = -\\hat{k}\\ \\left(\\text{downward}\\right)\\)\n\n**The field point is on the RIGHT of the wire, which is EAST of it**, so the unit vector from the wire to that point is \\(+\\hat{i}\\).\n\n**Apply the Biot-Savart direction rule:**\n\n\\(\\vec{B} \\propto \\hat{I}\\times\\hat{r} = \\left(-\\hat{k}\\right)\\times\\left(\\hat{i}\\right) = -\\left(\\hat{k}\\times\\hat{i}\\right) = -\\hat{j}\\)\n\n**\\(-\\hat{j}\\) is SOUTH.**\n\n\\(\\boxed{\\ \\vec{B}\\ \\text{points due SOUTH}\\ }\\)\n\n**The right-hand grip rule gives the same answer without algebra.** Grip the wire with the right thumb pointing **down**, along the current. The fingers then curl **clockwise when seen from above**. Standing on the north side looking down at the wire, a clockwise circulation runs east on the far side and **south on the east side** — which is exactly where the observation point is.\n\n**A common way to go wrong.** Taking the thumb **up** — as though the current were conventional-upward — reverses the answer to north, option (D). The current is stated as downward, and the grip rule uses the **current's own** direction, not the wire's orientation.\n\n**A second way.** Confusing the observer's right with a map's right. The person **faces north**, so their right hand points east; if they faced south, their right would point west, and the field on that side would be north. The observer's orientation is load-bearing, which is why the question supplies it.\n\n**The field circles the wire.** At the point **west** of the wire it would point north; directly north of the wire, east; directly south of it, west. The magnitude is the same all the way round at a given distance — only the direction turns.\n\n**A physical check.** A compass needle held to the east of a downward current would swing to point south, away from its usual north. That is Oersted's 1820 experiment, with the geometry made explicit."
+    },
+    {
+      "hash": "415df2c9491865f4d125a75f750a4298b6eb8d9287b8ee366922ffad42ba5bc2",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Magnetism and Matter",
+      "subtopic": "Magnetic Properties of Materials",
+      "stem": "Which one of the following materials has magnetic susceptibility \\(\\chi\\) in the range \\(-1 \\le \\chi < 0\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Aluminium"
+        },
+        {
+          "label": "B",
+          "text": "Copper chloride"
+        },
+        {
+          "label": "C",
+          "text": "Copper"
+        },
+        {
+          "label": "D",
+          "text": "Nickel"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): Copper.**\n\n**The range \\(-1 \\le \\chi < 0\\) defines DIAMAGNETIC materials**, and the negative sign is the whole classification.\n\n| Class | Susceptibility \\(\\chi\\) | Behaviour in a field |\n|---|---|---|\n| **Diamagnetic** | \\(-1 \\le \\chi < 0\\) | weakly **repelled** |\n| Paramagnetic | \\(0 < \\chi < \\varepsilon\\), small | weakly attracted |\n| Ferromagnetic | \\(\\chi \\gg 1\\), thousands | strongly attracted |\n\n**Copper is diamagnetic**, with \\(\\chi \\approx -9{\\cdot}6\\times 10^{-6}\\) — small, and negative.\n\n**Why \\(\\chi\\) is negative for a diamagnet.** The applied field induces, by Lenz's law at the atomic scale, orbital currents whose own magnetic moment **opposes** it. The induced magnetisation therefore points **against** \\(\\vec{H}\\), and\n\n\\(\\vec{M} = \\chi\\vec{H}\\)\n\ncan only be satisfied with \\(\\chi < 0\\). **Diamagnetism is present in every material**, but it is so feeble that it shows only when nothing stronger masks it — that is, in substances whose atoms have no net magnetic moment of their own.\n\n**The other three fail the test in different directions.** Aluminium is **paramagnetic** \\(\\left(\\chi \\approx +2\\times 10^{-5}\\right)\\); copper chloride is **paramagnetic** too, because the \\(\\mathrm{Cu^{2+}}\\) ion has an unpaired electron and hence a permanent moment; nickel is **ferromagnetic**, with \\(\\chi\\) in the hundreds. All three have positive \\(\\chi\\).\n\n**Copper and copper chloride sitting side by side is the point of the question.** The same element is diamagnetic as a metal and paramagnetic as a salt, because what matters is not the element's name but whether its **electrons are paired**. In metallic copper they are; in the \\(\\mathrm{Cu^{2+}}\\) ion one is not.\n\n**Why the lower bound is exactly \\(-1\\).** From \\(\\mu_r = 1 + \\chi\\), a susceptibility of \\(-1\\) would give \\(\\mu_r = 0\\) and zero field inside — **perfect diamagnetism**, which expels the field completely. That is realised only by a **superconductor**, in the Meissner effect. Ordinary diamagnets sit within a few parts per million of zero, nowhere near the limit, so the bound marks a physical extreme rather than a common case.\n\n**Two further properties of diamagnets**, both following from the induced-moment mechanism: they are **independent of temperature**, since there are no permanent moments for heat to disorder; and they move towards the **weaker** part of a non-uniform field, the reverse of a paramagnet."
+    },
+    {
+      "hash": "e90f032466165f37535097b368d46c691ba2925c77ff48c58068515a7c241c58",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Waves and their Properties",
+      "stem": "The electric field and the magnetic field components of an electromagnetic wave travelling in vacuum are represented as\n\\(\\mathrm{E} = \\mathrm{m}\\,\\sin(\\alpha\\mathrm{z} - \\beta\\mathrm{t})\\)\n\\(\\mathrm{B} = \\mathrm{n}\\,\\sin(\\alpha\\mathrm{z} - \\beta\\mathrm{t})\\)\nwhere m, n, \\(\\alpha\\) and \\(\\beta\\) are constants characterising the wave. Then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\mathrm{m}}{\\mathrm{n}} = c,\\ \\frac{\\beta}{\\alpha} \\neq c\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\mathrm{n}}{\\mathrm{m}} = \\frac{\\alpha}{\\beta} = c\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\beta}{\\alpha} = c,\\ \\frac{\\mathrm{m}}{\\mathrm{n}} \\neq c\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{\\mathrm{m}}{\\mathrm{n}} = \\frac{\\beta}{\\alpha} = c\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{m}{n} = \\dfrac{\\beta}{\\alpha} = c\\).**\n\n**Two separate facts about an electromagnetic wave in vacuum are being tested at once**, and the options pair them in every combination, so both must be settled.\n\n**Fact 1 — the wave SPEED.** For a wave written as \\(\\sin\\left(\\alpha z - \\beta t\\right)\\), the coefficient of \\(z\\) is the wave number and the coefficient of \\(t\\) is the angular frequency:\n\n\\(k = \\alpha, \\qquad \\omega = \\beta\\)\n\n\\(v = \\dfrac{\\omega}{k} = \\dfrac{\\beta}{\\alpha}\\)\n\n**In vacuum the speed is \\(c\\):**\n\n\\(\\boxed{\\ \\dfrac{\\beta}{\\alpha} = c\\ }\\)\n\n**Fact 2 — the RATIO OF AMPLITUDES.** The field amplitudes are \\(m\\) for \\(\\vec{E}\\) and \\(n\\) for \\(\\vec{B}\\), and Maxwell's equations tie them:\n\n\\(E_0 = cB_0 \\qquad\\Longrightarrow\\qquad \\boxed{\\ \\dfrac{m}{n} = c\\ }\\)\n\n**Both conditions hold, so only (D) survives.** Options (A) and (C) each assert one and deny the other; option (B) inverts both ratios, which is a dimensional impossibility — \\(n/m\\) has units of \\(\\mathrm{s\\,m^{-1}}\\), the reciprocal of a speed.\n\n**A dimensional check is the fastest route through this question.** \\(\\beta/\\alpha\\) is \\(\\mathrm{s^{-1}}\\) divided by \\(\\mathrm{m^{-1}}\\), giving \\(\\mathrm{m\\,s^{-1}}\\) \\(\\checkmark\\). And \\(m/n\\) is volts per metre divided by tesla, which reduces to \\(\\mathrm{m\\,s^{-1}}\\) as well \\(\\checkmark\\). Both of the quantities that (D) sets equal to \\(c\\) already have \\(c\\)'s dimensions; the two in (B) have its reciprocal's. That alone eliminates half the options before any physics.\n\n**Why \\(E_0 = cB_0\\) matters numerically.** With \\(c = 3\\times 10^{8}\\), the magnetic amplitude is smaller than the electric one by a factor of three hundred million in SI units. That makes \\(\\vec{B}\\) look negligible, and it is not — the force it exerts on a charge moving at speed \\(v\\) is smaller than the electric force by \\(v/c\\), so the two become comparable only for relativistic charges. **The two fields carry equal ENERGY**, which is the better way to see their parity:\n\n\\(u_E = \\dfrac{1}{2}\\varepsilon_0E^{2} = u_B = \\dfrac{B^{2}}{2\\mu_0}\\)\n\n*(Substituting \\(E = cB\\) and \\(c^{2} = 1/\\mu_0\\varepsilon_0\\) turns one into the other exactly.)*\n\n**Both fields share the same phase**, as the identical brackets show — \\(\\vec{E}\\) and \\(\\vec{B}\\) peak together and vanish together, and they are mutually perpendicular and both perpendicular to \\(\\hat{z}\\), the direction of travel given by \\(\\vec{E}\\times\\vec{B}\\).\n\n**The minus sign in the bracket** means the wave moves along \\(+z\\). It plays no part in the answer, since speed is a magnitude."
+    },
+    {
+      "hash": "62b3a98fdb3cfb1815583f96a51909a954fb701715b1973ec2cada6b5df5b95f",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Lenz's Law and Conservation of Energy",
+      "stem": "Two identical circular loops A and B of metal wire are arranged on a table close to each other. Loop A is connected to a battery and the current in it increases with time. In response, the loop B",
+      "options": [
+        {
+          "label": "A",
+          "text": "remains stationary"
+        },
+        {
+          "label": "B",
+          "text": "is attracted by loop A"
+        },
+        {
+          "label": "C",
+          "text": "is repelled by loop A"
+        },
+        {
+          "label": "D",
+          "text": "rotates about its centre of mass which is fixed"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): is repelled by loop A.**\n\n**Lenz's law settles this in one step**, but it pays to take the step in the right order: first the flux, then the induced current, then the force.\n\n**Step 1 — the flux through B is INCREASING.** Loop A's current is growing, so the magnetic field it produces grows, and the flux it sends through the nearby loop B grows with it.\n\n**Step 2 — B's induced current OPPOSES that increase.** By Lenz's law, the current induced in loop B flows in the sense that creates a flux **opposing** the growth — that is, in the direction **opposite** to the current in A.\n\n\\(\\varepsilon = -\\dfrac{d\\Phi}{dt}\\)\n\n**Step 3 — antiparallel currents REPEL.** Two loops carrying current in opposite senses present like magnetic poles to each other and push apart.\n\n\\(\\boxed{\\ \\text{Loop B is repelled by loop A}\\ }\\)\n\n**The rule to carry: parallel currents attract, antiparallel currents repel** — the opposite of the electrostatic intuition, and the standard place to slip. Two wires carrying current the same way are drawn together.\n\n**A second route, using poles.** Treat each loop as a small magnet. If A's face towards B is a north pole, then B's induced current makes its facing side a **north** pole too, since that is what opposes the incoming flux. North against north repels.\n\n**Why it MUST be repulsion, without any rule.** Suppose it were attraction. Then B would accelerate towards A, increasing the flux faster, inducing a larger current, producing a stronger attraction — a runaway that creates energy from nothing. **Lenz's law is conservation of energy in disguise**, and the sign that prevents such a runaway is the same sign that gives repulsion here.\n\n**Option (B), attraction, is what happens when the current DECREASES.** Then the flux falls, B's induced current flows the **same** way as A's to prop it up, and the loops attract. So the answer depends entirely on whether the current is rising or falling — which is why the stem says \"increases with time\".\n\n**Option (A), stationary, would be right only for a STEADY current in A.** A constant current gives constant flux, \\(d\\Phi/dt = 0\\), no emf, no current and no force. It is the change that matters, never the current itself.\n\n**Option (D), rotation, would require a torque**, which arises when a loop's plane is **tilted** with respect to the field. Here the loops are identical, coplanar on a table and coaxially arranged, so the force is a straight push along the line joining them.\n\n**Note the force is mutual.** A is repelled by B just as strongly, by Newton's third law — though A is usually held by its battery leads while B is free to move."
+    },
+    {
+      "hash": "85ba2ebfe97ccf79b0247cfee0ba56c71475d1ee73dbb9d31b246a08539fac5b",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "In Bohr model of hydrogen atom, an electron is moving in an orbit, with total energy \\(-3.4\\) eV. Its angular momentum will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1.05 \\times 10^{-34}\\) J s"
+        },
+        {
+          "label": "B",
+          "text": "\\(6.63 \\times 10^{-34}\\) J s"
+        },
+        {
+          "label": "C",
+          "text": "\\(3.31 \\times 10^{-34}\\) J s"
+        },
+        {
+          "label": "D",
+          "text": "\\(2.1 \\times 10^{-34}\\) J s"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(2{\\cdot}1\\times 10^{-34}\\) J s.**\n\n**The energy identifies the orbit, and the orbit gives the angular momentum.** Those are the two steps.\n\n**Step 1 — find \\(n\\).**\n\n\\(E_n = -\\dfrac{13{\\cdot}6}{n^{2}}\\ \\mathrm{eV} = -3{\\cdot}4\\ \\mathrm{eV}\\)\n\n\\(n^{2} = \\dfrac{13{\\cdot}6}{3{\\cdot}4} = 4 \\qquad\\Longrightarrow\\qquad n = 2\\)\n\n**\\(-3{\\cdot}4\\) eV is the first excited state**, a value worth recognising on sight — it is one quarter of \\(13{\\cdot}6\\), and it appears constantly in hydrogen problems.\n\n**Step 2 — apply Bohr's quantisation condition.**\n\n\\(L = \\dfrac{nh}{2\\pi} = n\\hbar\\)\n\n\\(L = \\dfrac{2\\times 6{\\cdot}63\\times 10^{-34}}{2\\pi} = \\dfrac{1{\\cdot}326\\times 10^{-33}}{6{\\cdot}283}\\)\n\n\\(\\boxed{\\ L = 2{\\cdot}11\\times 10^{-34}\\ \\mathrm{J\\,s}\\ }\\)\n\n**Equivalently \\(L = 2\\hbar\\)**, since \\(\\hbar = h/2\\pi = 1{\\cdot}055\\times 10^{-34}\\) J s. Recognising that makes the arithmetic a doubling.\n\n**Every distractor is a real constant in the wrong place.** Option (A), \\(1{\\cdot}05\\times 10^{-34}\\), is \\(\\hbar\\) itself — the answer for \\(n = 1\\), which is what you get by forgetting to find \\(n\\) and assuming the ground state. Option (B) is Planck's constant \\(h\\) undivided, from dropping the \\(2\\pi\\). Option (C), \\(3{\\cdot}31\\times 10^{-34}\\), is \\(h/2\\) — the result of writing the condition as \\(nh/2\\) instead of \\(nh/2\\pi\\).\n\n**So three of the four options test whether the formula is remembered exactly**, and only the fourth also requires the energy step. Both halves have to be right.\n\n**Angular momentum is quantised in units of \\(\\hbar\\)**, which is the postulate the whole Bohr model rests on. It takes only the values \\(\\hbar, 2\\hbar, 3\\hbar, \\dots\\) and nothing between — the origin of the discrete energy levels, since fixing \\(L\\) fixes the radius and the radius fixes the energy.\n\n**The de Broglie reading of the same condition.** Rearranged, \\(L = nh/2\\pi\\) becomes \\(2\\pi r = n\\lambda\\): the orbit's circumference holds exactly \\(n\\) of the electron's own wavelengths. For \\(n = 2\\), two. That is what makes an allowed orbit allowed.\n\n**A consistency check.** \\(L = mvr\\), and for \\(n = 2\\), \\(r = 4a_0 = 2{\\cdot}12\\times 10^{-10}\\) m with \\(v = c/\\left(2\\times 137\\right) = 1{\\cdot}09\\times 10^{6}\\ \\mathrm{m/s}\\). Then \\(L = \\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(1{\\cdot}09\\times 10^{6}\\right)\\left(2{\\cdot}12\\times 10^{-10}\\right) = 2{\\cdot}1\\times 10^{-34}\\) J s \\(\\checkmark\\)."
+    },
+    {
+      "hash": "484f4962a09d0e479965088b67a4b10e18fafc41f3fb5f7c0d5857b261ddf1db",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "According to Bohr model of hydrogen atom, the time period of an electron in its \\(\\mathrm{n^{th}}\\) orbit is proportional to",
+      "options": [
+        {
+          "label": "A",
+          "text": "n"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\mathrm{n^2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathrm{n^3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{n^4}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(n^{3}\\).**\n\n**The time period is the circumference divided by the speed**, so it inherits the \\(n\\)-dependence of both:\n\n\\(T = \\dfrac{2\\pi r_n}{v_n}\\)\n\n**The two Bohr results needed:**\n\n\\(r_n \\propto n^{2} \\qquad\\text{and}\\qquad v_n \\propto \\dfrac{1}{n}\\)\n\n**Combining:**\n\n\\(T \\propto \\dfrac{n^{2}}{1/n} = n^{2}\\times n\\)\n\n\\(\\boxed{\\ T \\propto n^{3}\\ }\\)\n\n**Both factors push the SAME way, which is why the exponent is as large as three.** In a higher orbit the electron has further to travel **and** travels more slowly, so the period grows much faster than the size does. Expecting \\(T \\propto n^{2}\\) — the radius alone — is the natural slip, and it is option (B).\n\n**Where the two ingredients come from.** \\(v_n \\propto 1/n\\) follows directly from the quantisation condition \\(mv_nr_n = nh/2\\pi\\): substituting \\(r_n \\propto n^{2}\\) leaves \\(v_n \\propto n/n^{2}\\). So the \\(1/n\\) is not an independent postulate but a consequence of the same rule that gives the radii.\n\n**In numbers.** For hydrogen's ground state \\(T_1 = 1{\\cdot}5\\times 10^{-16}\\) s — about \\(6{\\cdot}6\\times 10^{15}\\) revolutions a second. By \\(n = 10\\) the period is a thousand times longer, and the orbital frequency has fallen by the same factor.\n\n**Why the \\(n^{3}\\) dependence is physically important.** The orbital frequency \\(\\nu_{\\text{orbit}} = 1/T \\propto 1/n^{3}\\), and the **frequency of the photon emitted in a transition between adjacent high levels** also tends to \\(1/n^{3}\\):\n\n\\(\\nu_{\\text{photon}} \\propto \\dfrac{1}{n^{2}} - \\dfrac{1}{\\left(n+1\\right)^{2}} \\approx \\dfrac{2}{n^{3}}\\ \\text{for large}\\ n\\)\n\n**The two converge**, so at large quantum numbers the radiated frequency matches the classical orbital frequency — which is precisely what a classical accelerating charge would emit. That agreement is **Bohr's correspondence principle**, and it was a major argument for the model: a quantum theory must reproduce classical physics in the limit where the quantisation becomes fine-grained.\n\n**The full set of Bohr dependences**, worth holding together:\n\n\\(r_n \\propto n^{2}, \\qquad v_n \\propto \\dfrac{1}{n}, \\qquad T_n \\propto n^{3}, \\qquad L_n \\propto n, \\qquad E_n \\propto -\\dfrac{1}{n^{2}}\\)\n\nOptions (A), (B) and (D) are the angular momentum's, the radius's, and nothing at all — so two of the three distractors are genuine Bohr results attached to the wrong quantity.\n\n**A check from Kepler's third law.** For any inverse-square attraction \\(T^{2} \\propto r^{3}\\), so \\(T \\propto r^{3/2} \\propto \\left(n^{2}\\right)^{3/2} = n^{3}\\) \\(\\checkmark\\) — the same answer from celestial mechanics."
+    },
+    {
+      "hash": "0bcb6cc4f9cc26bd7ce82c7d8e249556b4df390a74f736a4de1785a7e5a0d2cd",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "The equivalent mass of a photon of wavelength 100 nm is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2.21 \\times 10^{-35}\\) kg"
+        },
+        {
+          "label": "B",
+          "text": "\\(6.63 \\times 10^{-33}\\) kg"
+        },
+        {
+          "label": "C",
+          "text": "\\(1.11 \\times 10^{-35}\\) kg"
+        },
+        {
+          "label": "D",
+          "text": "\\(3.31 \\times 10^{-33}\\) kg"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(2{\\cdot}21\\times 10^{-35}\\) kg.**\n\n**A photon has no rest mass**, but it carries energy, and any energy has an equivalent mass through \\(E = mc^{2}\\). That equivalent mass is what the question asks for.\n\n**Combining the two expressions for a photon's energy:**\n\n\\(E = \\dfrac{hc}{\\lambda} = mc^{2}\\)\n\n\\(m = \\dfrac{h}{\\lambda c}\\)\n\n**Substituting**, with \\(\\lambda = 100\\ \\mathrm{nm} = 1\\times 10^{-7}\\ \\mathrm{m}\\):\n\n\\(m = \\dfrac{6{\\cdot}63\\times 10^{-34}}{\\left(1\\times 10^{-7}\\right)\\left(3\\times 10^{8}\\right)}\\)\n\n**The denominator is \\(3\\times 10^{1} = 30\\)**, which is what makes the arithmetic clean:\n\n\\(m = \\dfrac{6{\\cdot}63\\times 10^{-34}}{30} = 2{\\cdot}21\\times 10^{-35}\\ \\mathrm{kg}\\)\n\n\\(\\boxed{\\ m = 2{\\cdot}21\\times 10^{-35}\\ \\mathrm{kg}\\ }\\)\n\n**Note \\(m = p/c\\)**, since \\(p = h/\\lambda\\) is the photon's momentum. The equivalent mass is just the momentum measured in units of \\(c\\) — which is the cleanest way to think about it, because the momentum is the physically real quantity and it is what a photon transfers when it strikes something.\n\n**Option (B), \\(6{\\cdot}63\\times 10^{-33}\\), drops the factor of \\(c\\)** — it is \\(h/\\lambda\\) with a misplaced power of ten, not a mass at all. Option (D) is that value halved. Option (C) is the correct answer halved, from using \\(\\lambda = 200\\) nm or \\(E = \\tfrac{1}{2}mc^{2}\\), a formula that belongs to non-relativistic kinetic energy and never to a photon.\n\n**How small is it?** An electron's rest mass is \\(9{\\cdot}1\\times 10^{-31}\\) kg — about **forty thousand times** larger. The photon's energy is \\(12{\\cdot}4\\) eV against the electron's rest energy of \\(511\\,000\\) eV, and the mass ratio is simply the energy ratio.\n\n**What \"equivalent mass\" does and does not mean.** A photon can never be brought to rest, so it has no rest mass; the quantity here is the mass equivalent of its energy, and it is real in the sense that it gravitates and that it carries momentum \\(mc\\). **It is not a mass the photon could be weighed with** — light bends in a gravitational field and exerts radiation pressure, both consequences of this equivalence, but there is no rest frame in which the photon sits still with mass \\(2{\\cdot}21\\times 10^{-35}\\) kg.\n\n**The general relation for a photon**, worth writing once:\n\n\\(E = pc, \\qquad p = \\dfrac{h}{\\lambda}, \\qquad m_{\\text{equiv}} = \\dfrac{E}{c^{2}} = \\dfrac{h}{\\lambda c}\\)\n\nA shorter wavelength means a heavier equivalent mass, in exact proportion to the energy."
+    },
+    {
+      "hash": "fb66b635a6af809f570e5747183ec171fc769ec2cd5a5766fe634ef20b94e325",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Potential Energy of a System of Charges",
+      "stem": "A point charge of 5 \\(\\mu\\mathrm{C}\\) is located at (1 cm, 1 cm) in \\(x\\)-y plane. A second charge of 6 \\(\\mu\\mathrm{C}\\) is brought from infinity to point \\((-3\\) cm, 4 cm). The work done in the process is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.54 J"
+        },
+        {
+          "label": "B",
+          "text": "5.4 J"
+        },
+        {
+          "label": "C",
+          "text": "\\(-0.54\\) J"
+        },
+        {
+          "label": "D",
+          "text": "10.8 J"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): 5\\(\\cdot\\)4 J.**\n\n**The work done in bringing a charge from infinity equals the potential energy of the final configuration**, since both charges are at rest before and after:\n\n\\(W = U = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q_1q_2}{r}\\)\n\n**Step 1 — the separation.** From \\(\\left(1,\\ 1\\right)\\) cm to \\(\\left(-3,\\ 4\\right)\\) cm:\n\n\\(\\Delta x = -3 - 1 = -4\\ \\mathrm{cm}, \\qquad \\Delta y = 4 - 1 = 3\\ \\mathrm{cm}\\)\n\n\\(r = \\sqrt{\\left(-4\\right)^{2} + 3^{2}} = \\sqrt{16 + 9} = 5\\ \\mathrm{cm} = 0{\\cdot}05\\ \\mathrm{m}\\)\n\n**A 3-4-5 triangle**, which is what the coordinates were chosen to give. **Convert to metres here**, before substituting — leaving \\(r\\) in centimetres is the single most likely way to lose this question.\n\n**Step 2 — the energy.**\n\n\\(W = \\dfrac{\\left(9\\times 10^{9}\\right)\\left(5\\times 10^{-6}\\right)\\left(6\\times 10^{-6}\\right)}{0{\\cdot}05}\\)\n\n**Numerator:** \\(9\\times 10^{9}\\times 30\\times 10^{-12} = 0{\\cdot}27\\).\n\n\\(W = \\dfrac{0{\\cdot}27}{0{\\cdot}05}\\)\n\n\\(\\boxed{\\ W = 5{\\cdot}4\\ \\mathrm{J}\\ }\\)\n\n**The work is POSITIVE, and it must be.** Both charges are positive, so they repel; bringing the second one in from infinity means pushing it against that repulsion, and an external agent has to supply the energy. Option (C), \\(-0{\\cdot}54\\) J, has the sign of an **attractive** pair, which would require charges of opposite sign.\n\n**Option (A), \\(0{\\cdot}54\\) J, is exactly one tenth**, and that is the unit slip: using \\(r = 0{\\cdot}5\\) m — which is \\(50\\) cm, not \\(5\\) — divides the answer by ten. The two options differ by precisely the factor a centimetre-metre confusion introduces, so they are not independent guesses.\n\n**Where the energy goes.** It is stored in the electric field of the pair. Release the \\(6\\ \\mu\\)C charge and it flies away, the stored \\(5{\\cdot}4\\) J reappearing as kinetic energy — all of it, by the time the charge is far away again.\n\n**Note the ORDER of assembly is irrelevant.** Bringing the \\(5\\ \\mu\\)C charge in first and then the \\(6\\ \\mu\\)C, or the reverse, costs the same total work, because the expression \\(q_1q_2/4\\pi\\varepsilon_0 r\\) is symmetric. Potential energy is a property of the configuration, not of the route taken to build it.\n\n**A remark on the magnitude.** \\(5{\\cdot}4\\) J from two microcoulombs five centimetres apart is a substantial amount of energy — enough to lift half a kilogram by a metre. Electrostatic forces are enormously strong on the laboratory scale, which is why a microcoulomb is already a large free charge and why everyday matter is so precisely neutral."
+    },
+    {
+      "hash": "44adf13226edecd3e4aad7d74ef6d990d89b7d620e6bf12a888977055ab1fe7f",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "(a) Why manganin is used in wire-wound standard resistors ? Calculate the temperature at which the resistance of a wire increases by 25% of its resistance at room temperature 27.5 \\(^\\circ\\mathrm{C}\\) ? The temperature coefficient of resistance of the material of the wire is 0.004 \\(^\\circ\\mathrm{C^{-1}}\\).\n(b) How does the resistivity of a semiconductor depend on temperature ? Show it on a plot.",
+      "solution": "**(a) Why manganin is used, and the temperature calculation.**\n\n**Manganin is used because its resistance barely changes with temperature.** It is an alloy — copper with manganese and nickel — with an extremely small temperature coefficient of resistance, of order \\(10^{-5}\\ ^\\circ\\mathrm{C}^{-1}\\).\n\n**That is precisely what a standard resistor needs.** A resistor of known value is useless if the value drifts as the resistor warms, and a wire-wound resistor **does** warm, since it carries current and dissipates \\(I^{2}R\\). With manganin the marked value holds across a wide temperature range. *(Its high resistivity helps too: a usefully large resistance fits into a short length of wire.)*\n\n**The calculation.**\n\n\\(R_T = R_0\\left[1 + \\alpha\\left(T - T_0\\right)\\right]\\)\n\n**A \\(25\\%\\) increase means \\(R_T = 1{\\cdot}25\\,R_0\\):**\n\n\\(1{\\cdot}25\\,R_0 = R_0\\left[1 + 0{\\cdot}004\\left(T - 27{\\cdot}5\\right)\\right]\\)\n\n**The \\(R_0\\) cancels**, which is why its value is never given:\n\n\\(0{\\cdot}25 = 0{\\cdot}004\\left(T - 27{\\cdot}5\\right)\\)\n\n\\(T - 27{\\cdot}5 = \\dfrac{0{\\cdot}25}{0{\\cdot}004} = 62{\\cdot}5\\)\n\n\\(\\boxed{\\ T = 90\\ ^\\circ\\mathrm{C}\\ }\\)\n\n**Subtract the \\(1\\) before dividing.** Using \\(1{\\cdot}25/0{\\cdot}004\\) gives \\(312{\\cdot}5\\) and a temperature of \\(340\\ ^\\circ\\)C — the standard slip here.\n\n**Note the wire in the calculation is NOT manganin**, and the contrast is the point of pairing the two halves. Its \\(\\alpha = 0{\\cdot}004\\ ^\\circ\\mathrm{C}^{-1}\\) is a typical **metal** value, some two hundred times manganin's, and it reaches a \\(25\\%\\) drift after only \\(62{\\cdot}5\\) degrees of warming. A manganin wire would need tens of thousands of degrees for the same change — which is another way of saying it never drifts at all.\n\n**(b) Resistivity of a semiconductor.**\n\n**It DECREASES as the temperature rises** — the opposite of a metal, and steeply so.\n\n\\(\\rho = \\rho_0\\,e^{E_g/2kT}\\)\n\n*To draw it:* resistivity \\(\\rho\\) on the vertical axis against temperature \\(T\\) on the horizontal. The curve starts very high at low temperature and **falls steeply, flattening towards the axis** — a decaying exponential, never reaching zero.\n\n**Why they differ from metals.** In a semiconductor, the number density \\(n\\) of charge carriers is tiny at low temperature and **rises exponentially** as heat lifts electrons across the energy gap into the conduction band. That flood of new carriers overwhelms the increased scattering, so \\(\\rho\\) falls.\n\nIn a metal, \\(n\\) is fixed — the conduction electrons are all there at any temperature — and heating only makes the lattice vibrate more, scattering the electrons more often. **So \\(\\rho\\) rises for a metal and falls for a semiconductor, because in one the carrier number is constant and in the other it is not.**\n\n**A semiconductor therefore has a NEGATIVE temperature coefficient**, which is what a thermistor exploits for temperature measurement — and what makes thermal runaway a real hazard in semiconductor devices, since heating lowers the resistance, which raises the current, which heats it further."
+    },
+    {
+      "hash": "7f4e5e9986f732deea44df1955bed484e0329781d30ebf9df2849264e67d9c20",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident at an angle 2A on one of the faces of a glass prism of refracting angle A. After refraction from this face, the ray strikes the opposite face which is silvered. The reflected ray from this face retraces on its path.\nTrace the ray diagram and find the relation between the refractive index of material of prism and the angle of prism.",
+      "solution": "**\"The reflected ray retraces its path\" is the whole key**, and unpacking it takes one step: a ray retraces itself only if it strikes the mirror **normally**.\n\n*To trace the ray:* a triangular prism with apex angle \\(A\\), the left face plain and the right face **silvered**. A ray strikes the left face at \\(2A\\) to the normal, refracts and bends towards the normal, then travels inside the prism and hits the silvered face **perpendicularly**. It reflects straight back along itself, retraces through the prism, and emerges from the left face along its original path, reversed.\n\n**Step 1 — the angle at the silvered face.** Normal incidence means\n\n\\(r_2 = 0\\)\n\n**Step 2 — the prism relation.**\n\n\\(r_1 + r_2 = A \\qquad\\Longrightarrow\\qquad r_1 = A\\)\n\n**So the angle of refraction at the FIRST face equals the prism's own refracting angle.**\n\n**Step 3 — Snell's law at the first face**, with the angle of incidence given as \\(2A\\):\n\n\\(\\dfrac{\\sin 2A}{\\sin r_1} = n \\qquad\\Longrightarrow\\qquad \\sin 2A = n\\sin A\\)\n\n**Step 4 — expand the double angle.**\n\n\\(2\\sin A\\cos A = n\\sin A\\)\n\n**Cancelling \\(\\sin A\\)** (non-zero, since \\(A \\ne 0\\) for a real prism):\n\n\\(\\boxed{\\ n = 2\\cos A\\ }\\)\n\n**The double-angle identity is what makes the relation come out clean.** Without \\(\\sin 2A = 2\\sin A\\cos A\\) the expression stays as \\(n = \\sin 2A/\\sin A\\), correct but unrevealing.\n\n**Reading the result.** Since \\(\\cos A < 1\\), the relation forces \\(n < 2\\) — no prism obeying this geometry can have a refractive index of \\(2\\) or more. And \\(n > 1\\) requires \\(\\cos A > \\tfrac{1}{2}\\), so\n\n\\(A < 60^\\circ\\)\n\n**For ordinary glass with \\(n = 1{\\cdot}5\\)**, \\(\\cos A = 0{\\cdot}75\\) and \\(A = 41{\\cdot}4^\\circ\\) — a perfectly ordinary prism, so the arrangement is realisable rather than a contrivance.\n\n**Why retracing is a useful experimental condition.** It is detected simply: the returning ray coincides with the incident one, which is easy to see and easy to set up by rotating the prism until they overlap. That makes \\(n = 2\\cos A\\) a practical method of measuring refractive index — one measured angle, no prism table, no minimum-deviation search.\n\n**A caution on the geometry.** The silvered face reflects; it does not refract. Snell's law is applied **once**, at the entry face, and the reflection is governed by the mirror law alone. Treating the silvered surface as a refracting one, or applying Snell's law twice, produces a relation that will not reduce.\n\n**The ray's full path, for the diagram.** In at \\(2A\\), refracted to \\(A\\) inside, normal to the silvered face, reflected back on itself, refracted again at the entry face to \\(2A\\), and out along the incoming line reversed. The deviation is exactly \\(180^\\circ\\)."
+    },
+    {
+      "hash": "dfccf176027c31bc5f08269c7f1c86e25de24299f12d594ea95d2e349d069a20",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Equipotential Surfaces",
+      "stem": "(a) Draw electric field lines and equipotential surfaces for a system of two equal positive charges separated by some distance.\n(b) Using the drawing in (a) above, explain that electric field need not be a constant over each point of an equipotential surface.",
+      "solution": "**(a) Field lines and equipotential surfaces for two equal POSITIVE charges.**\n\n*To draw it:* two like charges \\(+q\\) and \\(+q\\), separated by some distance.\n\n**The electric field lines.** Lines emerge **radially outward from both** charges, since both are sources. Near either charge the pattern is almost spherically symmetric. Between them the lines from one **curve away** from the lines of the other and bend outwards — they never meet, because like charges repel.\n\n**Mark the NEUTRAL POINT at the midpoint of the line joining them.** There the two contributions are equal and opposite, so\n\n\\(\\vec{E} = 0\\)\n\nand no field line passes through it. That null is the visual signature of two like charges, and the one feature that distinguishes this sketch from the dipole's.\n\n**The equipotential surfaces.** Curves everywhere **perpendicular** to the field lines. Close to each charge they are nearly **circles** centred on it, since one charge dominates there. Further out they distort, merge into a **figure-of-eight** shape that pinches at the neutral point, and beyond that become **single closed curves enclosing both** charges — approaching circles at great distance, where the pair looks like a single charge \\(2q\\).\n\n**Every potential here is POSITIVE**, decreasing outwards towards zero at infinity. There is no \\(V = 0\\) surface at finite distance, unlike the dipole case where the perpendicular bisector is at zero.\n\n**(b) Why \\(\\vec{E}\\) need not be constant over an equipotential surface.**\n\n**Being at the same POTENTIAL does not mean being at the same FIELD**, and the drawing shows why.\n\n**The argument from the drawing.** Take one of the outer equipotential surfaces, the ones that enclose both charges. **Different points on it lie at different distances from the charges** — a point out along the axis, beyond one of the charges, is close to that charge, while a point on the perpendicular bisector is further from both. The field magnitude depends on those distances, so it differs from point to point on the one surface.\n\n**The argument from the spacing.** The field is the potential gradient:\n\n\\(E = -\\dfrac{dV}{dr}\\)\n\n**so \\(E\\) is fixed not by \\(V\\) but by how RAPIDLY \\(V\\) changes.** Between two adjacent equipotentials the potential difference is the same all the way round, but the **perpendicular separation between them is not** — the surfaces crowd together in some places and spread apart in others. Where they crowd, \\(dr\\) is small for the same \\(dV\\), and \\(E\\) is large; where they spread, \\(E\\) is small.\n\n**Reading it off the figure:** the equipotentials bunch near each charge, so the field is strong there, and they open out near the neutral point, where the field falls to zero. **The field is zero at the midpoint while the potential there is decidedly non-zero** — the sharpest possible demonstration that the two quantities are independent.\n\n**What IS constant on an equipotential surface.** The potential, by definition; and the field's **direction** relative to the surface, always normal to it. The **magnitude** is free to vary, and does, except in the special symmetric cases — a single point charge, or a uniformly charged sphere — where every point of a given surface is equivalent."
+    },
+    {
+      "hash": "a0aaeea0eab4dd65bfac81b1e0ec5951ccbaf112b95e2ec00233bd736e460ca7",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Name the electromagnetic waves which are (i) also known as 'heat waves', (ii) used in LASIK eye surgery, (iii) used to destroy cancer cells. Also write their wavelength range.",
+      "solution": "**(i) Also known as \"heat waves\".**\n\n\\(\\boxed{\\ \\text{INFRARED WAVES}\\ }\\)\n\n**Wavelength range:** about \\(1\\ \\mathrm{mm}\\) down to \\(700\\ \\mathrm{nm}\\).\n\n*Why the name.* Infrared photons carry roughly \\(0{\\cdot}01\\) to \\(1\\) eV, matching the **vibrational** energies of molecules — so infrared is readily absorbed by matter and raises its temperature directly. Every warm body radiates in this band, with a \\(300\\) K object peaking near \\(10\\ \\mu\\)m, which is why infrared is both what a hot object emits and what is felt as radiant heat.\n\n**(ii) Used in LASIK eye surgery.**\n\n\\(\\boxed{\\ \\text{ULTRAVIOLET RAYS}\\ }\\)\n\n**Wavelength range:** about \\(400\\ \\mathrm{nm}\\) down to \\(1\\ \\mathrm{nm}\\).\n\n*Why this band.* The excimer laser used in LASIK works at \\(193\\) nm, deep in the ultraviolet. Photons of that energy — about \\(6{\\cdot}4\\) eV — break the molecular bonds of corneal tissue **directly**, removing material a fraction of a micrometre at a time with almost no heat reaching the surrounding tissue. **The precision is a consequence of the photon energy**: a longer wavelength would heat and scar rather than cut.\n\n**(iii) Used to destroy cancer cells.**\n\n\\(\\boxed{\\ \\text{GAMMA RAYS}\\ }\\)\n\n**Wavelength range:** below \\(10^{-3}\\ \\mathrm{nm}\\) \\(\\left(10^{-12}\\ \\mathrm{m}\\right)\\).\n\n*Why this band.* Gamma photons carry from tens of keV to several MeV — enough to **ionise** atoms along their path, damaging the DNA of cells and preventing them dividing. Rapidly dividing cancer cells are the most vulnerable, which is the basis of radiotherapy. And gamma rays **penetrate deeply**, so a tumour inside the body can be reached from outside; beams from several directions are crossed so that only the target receives the full dose.\n\n**The three uses run up the spectrum in order of photon energy**, and each is matched to what its photons can do:\n\n| Band | Photon energy | What it does |\n|---|---|---|\n| Infrared | \\(0{\\cdot}01\\) to \\(1\\) eV | sets molecules **vibrating** — heat |\n| Ultraviolet | \\(3\\) to \\(12\\) eV | breaks **chemical bonds** — precise cutting |\n| Gamma | \\(10^{4}\\) to \\(10^{6}\\) eV | **ionises** atoms — cell destruction |\n\n**That ordering is the whole logic of the electromagnetic spectrum's applications.** \\(E = h\\nu\\) decides what a band can interact with, and the use follows from the energy, not from anything else about the wave. All three travel at \\(c\\) in vacuum and obey the same Maxwell equations.\n\n**A note on gamma rays versus X-rays.** They overlap in wavelength and are distinguished by **origin** — gamma rays come from the nucleus, X-rays from electron transitions or bremsstrahlung. Either can be used in radiotherapy, and a linear accelerator in fact delivers high-energy X-rays; gamma rays from cobalt-60 are the classical answer."
+    },
+    {
+      "hash": "25a7e4fd83c7ac943c5aa6378a97dd4337149c40ba7c711d19c3b7e067307660",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "(a) A particle of charge q and mass m is accelerated through a potential difference V. Deduce an expression for the de Broglie wavelength associated with the particle.\n(b) Plot a graph for a particle of charge q and mass m showing variation of de Broglie wavelength \\(\\lambda\\) with \\(\\frac{1}{\\sqrt{\\mathrm{V}}}\\), where V is the potential difference through which the particle is accelerated.",
+      "solution": "**(a) Deriving the wavelength.**\n\n**A charge \\(q\\) accelerated through a potential difference \\(V\\) gains kinetic energy \\(qV\\)** — the work done on it by the field:\n\n\\(\\dfrac{1}{2}mv^{2} = qV\\)\n\n**Solving for the speed:**\n\n\\(v = \\sqrt{\\dfrac{2qV}{m}}\\)\n\n**The momentum:**\n\n\\(p = mv = m\\sqrt{\\dfrac{2qV}{m}} = \\sqrt{2mqV}\\)\n\n*Or, more directly, from \\(K = p^{2}/2m\\):* \\(p = \\sqrt{2mK} = \\sqrt{2mqV}\\).\n\n**The de Broglie wavelength:**\n\n\\(\\lambda = \\dfrac{h}{p}\\)\n\n\\(\\boxed{\\ \\lambda = \\dfrac{h}{\\sqrt{2mqV}}\\ }\\)\n\n**Note the masses do not cancel to leave \\(\\sqrt{m}\\) in the numerator.** Writing \\(\\lambda = h/mv\\) and substituting \\(v\\) gives \\(m\\sqrt{2qV/m} = \\sqrt{2mqV}\\) — the \\(m\\) outside the root partly cancels the \\(m\\) inside it. Getting that step wrong puts the mass dependence upside down.\n\n**(b) The graph of \\(\\lambda\\) against \\(1/\\sqrt{V}\\).**\n\n**Rearrange to isolate the plotted variables:**\n\n\\(\\lambda = \\left(\\dfrac{h}{\\sqrt{2mq}}\\right)\\dfrac{1}{\\sqrt{V}}\\)\n\n**This is \\(y = mx\\)** — a **STRAIGHT LINE THROUGH THE ORIGIN**.\n\n*To draw it:* \\(\\lambda\\) on the vertical axis, \\(1/\\sqrt{V}\\) on the horizontal, a straight line rising from the origin with\n\n\\(\\text{slope} = \\dfrac{h}{\\sqrt{2mq}}\\)\n\n**Two features to mark.** It **passes through the origin**: as \\(1/\\sqrt{V}\\to 0\\) — that is, as \\(V\\to\\infty\\) — the wavelength goes to zero, since an infinitely energetic particle has infinite momentum. And it is **straight**, which is why the axis was chosen as \\(1/\\sqrt{V}\\) rather than \\(V\\): plotted against \\(V\\) itself the same relation is a curve, and a curve cannot be used to extract a slope by eye.\n\n**The slope depends on the PARTICLE, not on the apparatus.** Different particles give lines of different gradients through the same origin — a proton's is \\(1/\\sqrt{1836}\\) of an electron's, so its line lies far lower. **Measuring that slope determines \\(h/\\sqrt{2mq}\\)**, and with \\(m\\) and \\(q\\) known it measures Planck's constant.\n\n**A numerical anchor for electrons.** Substituting \\(h\\), \\(m_e\\) and \\(e\\),\n\n\\(\\lambda \\approx \\dfrac{1{\\cdot}227}{\\sqrt{V}}\\ \\mathrm{nm}\\ \\left(V\\ \\text{in volts}\\right)\\)\n\nso \\(100\\) V gives \\(0{\\cdot}123\\) nm — comparable to atomic spacing, which is why electrons of a few hundred volts diffract from crystals. That was the Davisson-Germer experiment, and the direct confirmation that the relation derived above describes something real.\n\n**A caveat on the derivation.** \\(\\tfrac{1}{2}mv^{2} = qV\\) is non-relativistic, so the result holds while \\(qV \\ll mc^{2}\\). For electrons that means well below \\(511\\) kV; beyond it the relativistic momentum must be used and the line bends away."
+    }
+  ]
+}
