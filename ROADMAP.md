@@ -531,8 +531,80 @@ would collapse and the MISS list would stop being read.
   members and not others, which confirms from data that a set's figure must be duplicated onto
   every member row — there is no `context_image_url`.
 
-**The 39 genuine MISSes are not repaired here.** They need a crop authored per row against papers
-already shipped; the per-row list with reasons is in the three triage JSONs.
+**The full population is now read: 302 rows across SIX lanes, 65 genuine — 22% precision.** The
+three later lanes (`mh-ssc-10` 48 rows/2 MISS, `foundation-neet-cds` 40/8, `jee-cet-nda-misc` 63/16)
+confirm the pattern the first three found and sharpen it:
+
+- **MH SSC 10 came back at 4%**, the lowest in the bank — the 94 attaches genuinely closed that
+  corpus rather than moving a number. Its residue is systematically self-contained: the state-board
+  vision pipeline appends the figure's data as a parenthetical or an explicit "Figure :" paragraph.
+- **NDA: 11 of 11 flagged rows are false alarms of an instructive kind.** That ingest TRANSCRIBES
+  figures into prose rather than dropping them, so its 3-images-in-9,715-rows figure is a design
+  choice, not a gap.
+- **The single biggest repair was one repeat defect, not eight** — 8 MHT-CET Linear Programming
+  rows, one per sitting across 8 `.xlsx` files, each "the shaded area in the given figure is a
+  solution set" with no region attached.
+- **Four more probe defects, each spec'd and fixed:** a pipe-table satisfies "shown below in the
+  table"; `[Diagram:` and the NCERT `[Read from Fig.` / `[Fig. N shows` brackets now register as
+  described-in-text; and branch 1 read **"the fig wasp completes its life cycle in fig fruit"** as a
+  figure reference (bare `fig` now requires its period).
+- **Two blind spots logged, not chased:** `drawn below` matches nothing, so DESCRIBED is a floor for
+  the same reason MISS is; and the probe reads STEMS ONLY — 78 rows cite a figure in their SOLUTION
+  against no image, invisible here and to `audit:text`.
+- **A widening measured and REJECTED:** adding `structure|molecule|compound|reaction|pair` pulls in
+  ~280 rows, overwhelmingly false ("Show that the following pairs of lines are perpendicular").
+
+### Done 2026-09-23 — 22 of the 65 genuine misses repaired; the rest need per-book work
+
+`npm run audit:figures` bank-wide: **385 → 248**. Attached: **11 MHT-CET** + **11 NCERT/State Board**
+(on top of the 94 MH SSC 10 Maths earlier). MHT-CET 17 → 6 (rate 11% → 4%); CDS reached **zero**.
+
+**MHT-CET went through the `.docx` papers, not the `.xlsx`, and that is the durable lesson**
+(user instruction; recorded in `scripts/mhtcet/README.md`, CLAUDE.md's exam table and
+[[mhtcet-source-docx-render]]). The `*_QuestionBank.xlsx` named in `source_file` IS the bank's
+ingestion input, so it can only ever reproduce a gap. The papers' figures are **embedded rasters**,
+so `pandoc --extract-media` returns the exact picture the author inserted — native resolution,
+leak-free BY CONSTRUCTION. Every crop-and-trim heuristic in `derive.py` exists to approximate, on
+ink-only books, what this gets for free. **Where a source offers the embedded object, take it.**
+
+**A rule recorded BACKWARDS and corrected within the hour.** On finding `MHT_CET_3rdMay2023_S1_QB
+.xlsx` holding a row noted "3rd May 2nd Shift", the note was assumed authoritative. It is not: the
+question is printed in **shift 1**, so the filename was right and **the note is a data defect**
+(that row will mis-file in any shift-based view). The rule now implemented and written down: the
+sitting is a HINT, both shifts are searched, and the **stem-and-options match is the authority**.
+
+**Four bugs in the shared derivation, all found by looking rather than by a gate:**
+1. **A LINE HAS NO AREA.** Ink was filtered by `get_area() > 6`, which discards every purely
+   horizontal or vertical stroke. NCERT diagrams are thin lines and arrowheads, so a whole page of
+   vector diagram collapsed to ONE cluster with the figure invisible. Balbharati survived it only
+   because its figures use arcs and closed shapes. Regression-checked against the 40 shipped boxes:
+   33 identical, 2 already-refused, none newly lost.
+2. Fixing (1) let page furniture in — NCERT's tall coloured sidebars bridged everything into one
+   page-spanning cluster. Ink must now be CONTAINED in the content box, not merely overlap it.
+3. **Clustering was quadratic** — fine on tens of paths, hopeless on thousands. Rewritten as a
+   y-ordered sweep retiring clusters that can no longer merge: byte-identical output, minutes → 13s.
+4. **`column_edges(page)` was being called once per TEXT LINE**, each call re-parsing the page. One
+   chapter exceeded 240s; hoisting it gave 17s.
+
+**New: `scripts/lib/figures/overrides.json`** — committed hand-anchored boxes that win over the
+derivation, for a figure whose layout admits no clean rectangle and for a derived box that is right
+but untidy. It is a file rather than an edit to the generated catalogue because the catalogue is
+rebuilt every run: a fix written there survives exactly until the next invocation. Every entry
+carries a `why`, because a coordinate with no reason behind it cannot be re-checked.
+
+**The remaining 43, and why each group is stuck — none is a defect in the tooling:**
+
+| group | n | blocked on |
+|---|---|---|
+| Balbharati Class 11/12 Physics | ~10 | stems say "as shown in the figure" with NO number, so the number-join cannot fire; needs REF-keyed overrides (the current override file is fig-number-keyed) |
+| NCERT Physics/Maths residue | 7 | derivation refuses the box (no clean rectangle on that layout) |
+| NCERT Class-10 Science | 4 | a third book layout — 13 captions yielded 1 box |
+| CBSE board papers | 7 | not in the source resolver; different ingest shape |
+| Foundation · Pariksha · JEE · UPSC · MH SSC 10 | ~15 | mostly no resolver; Pariksha `PARIKSHA_VV_13136.pdf` is 5 rows of one file that dropped figures wholesale and wants a re-ingest, not per-row repair |
+
+**`scripts/ncert/` has no Class-10 SCIENCE config** — 421 questions are in the bank and the books
+are on disk, but whatever ingested them was never committed. `sources.ts` states that mapping
+explicitly and says why; the missing pipeline is worth restoring separately.
 
 ## Backfill ledger — `contentHash` is context-blind, and match-list questions collide (2026-09-22)
 

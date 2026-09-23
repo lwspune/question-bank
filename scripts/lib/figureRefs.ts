@@ -38,7 +38,12 @@
 const FIGURE_REF = new RegExp(
   [
     // "in the given figure", "from the adjoining diagram", "see the figure below"
-    String.raw`\b(?:in|from|given|shown|see|below|above)\s+(?:the\s+)?(?:adjoining\s+|following\s+|given\s+)?(?:figure|fig\.?|diagram)\b`,
+    // `fig\.` REQUIRES ITS PERIOD HERE. A bare `fig` made this branch read "the
+    // fig wasp completes its life cycle in fig fruit" as a figure reference —
+    // fig is an ordinary English noun. Requiring the period costs nothing,
+    // because the period-less form only ever appears numbered ("In fig 3.27")
+    // and the numbered branch below already catches that.
+    String.raw`\b(?:in|from|given|shown|see|below|above)\s+(?:the\s+)?(?:adjoining\s+|following\s+|given\s+)?(?:figure|fig\.|diagram)\b`,
 
     // "the following/adjoining/given figure|graph|diagram"
     String.raw`\bthe\s+(?:adjoining|following|given|above)\s+(?:figure|fig\.?|diagram|graph)\b`,
@@ -141,13 +146,23 @@ export function referencesFigure(text: string | null, context: string | null): b
  * be separable, or 29 correctly-handled rows sit in the serious list forever and
  * the list stops being read.
  */
-// TWO PIPELINES, TWO BRACKET CONVENTIONS. The state-board and UPSC ingests write
+// FOUR PIPELINES, FOUR CONVENTIONS — three of them handled here. The state-board and UPSC ingests write
 // "[Figure: a velocity-time graph ...]"; the NCERT ingest writes "[Read from Fig.
 // 2.8: ...]" and "[Fig. 2.29 shows the network as follows ...]". The original
 // regex knew only the first, so four NCERT Physics rows that had been handled
 // correctly sat in the serious list looking like defects. Anchored on the
 // opening bracket so an ordinary aside ("[Note: take g = 9.8]") cannot match.
-const DESCRIBED_IN_TEXT = /\[\s*(?:read\s+from\s+)?fig(?:ure)?\b/i;
+// CDS writes a third form, "[Diagram: a plant cell drawn as ...]" — both of that
+// exam's flagged rows were correctly-handled transcriptions sitting in the
+// serious list because of one missing word in this alternation.
+//
+// THE FOURTH IS NOT HANDLED AND SHOULD NOT BE CHASED HERE. The Foundation vision
+// pipeline writes a bare parenthetical paragraph with no bracket at all — "(Four
+// diagrams labelled A-D. A is a rounded cell with a small bud at the top ...)".
+// Nineteen correctly-handled rows sit in the serious list for that reason. No
+// regex separates that from ordinary parenthetical prose; the fix belongs in the
+// pipeline, which should emit the bracket form.
+const DESCRIBED_IN_TEXT = /\[\s*(?:read\s+from\s+)?(?:fig(?:ure)?|diagram)\b/i;
 
 export function describesFigureInText(text: string | null, context: string | null): boolean {
   return DESCRIBED_IN_TEXT.test(`${text ?? ""}\n${context ?? ""}`);
