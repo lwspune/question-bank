@@ -504,16 +504,23 @@ type RawPyqRow = {
 
 /**
  * Load one chapter's board PYQs, grouped into sittings. Returns [] when the
- * chapter has none — which is the normal state for 24 of CBSE's 37 chapters,
- * whose Physics and Chemistry PYQ corpora are ingested but still PRIVATE while
- * their solutions are authored.
+ * chapter has none, which today means one thing only: the chapter belongs to a
+ * board exam with no PYQ corpus at all (CBSE 10/11, MH SB 9/11 — `practiceOnly`
+ * in EXAM_REGISTRY, so their textbook rows are all /board has). Measured
+ * 2026-09-23: on the three boards that DO carry PYQs, every single board
+ * chapter has some — CBSE Class 12 37/37, MH HSC 12 47/47, MH SSC 10 56/56.
+ * An earlier version of this comment said 24 of CBSE's 37 chapters were empty
+ * because their Physics and Chemistry corpora were ingested but still PRIVATE;
+ * both corpora are PUBLIC and fully solved now.
  *
  * Two filters carry weight:
  *  • anon client + RLS ⇒ PUBLIC only, so a staged corpus cannot leak here.
  *  • `solution` must be present. Every PUBLIC board PYQ is solved today
- *    (1,459 / 1,050 / 1,766 across the three exams), so this changes nothing
- *    now; it exists so a future partial flip hides unsolved rows from a
- *    SOLUTIONS reader rather than shipping questions with blank answers.
+ *    (5,012 CBSE 12 / 1,459 MH SSC 10 / 1,225 MH HSC 12), so this changes
+ *    nothing now; it exists so a future partial flip hides unsolved rows from a
+ *    SOLUTIONS reader rather than shipping questions with blank answers. It is
+ *    also what made the Physics + Chemistry tabs appear CHAPTER BY CHAPTER as
+ *    their solutions landed, rather than all at once on the visibility flip.
  *
  * Deliberately unpaged, matching getBoardChapter: PostgREST caps a raw select
  * at 1000 and the largest chapter in the bank holds 242 board PYQs (CBSE

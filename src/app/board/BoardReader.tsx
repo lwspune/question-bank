@@ -58,8 +58,9 @@ export default function BoardReader({
   examName,
 }: {
   groups: BoardSectionGroup[];
-  /** The chapter's board past-year questions, newest sitting first. Empty for a
-   *  chapter the board has no published PYQs for — 24 of CBSE's 37 today. */
+  /** The chapter's board past-year questions, newest sitting first. Empty only
+   *  for a board with no PYQ corpus at all (the `practiceOnly` boards); all 37
+   *  CBSE 12, 47 MH HSC 12 and 56 MH SSC 10 chapters carry some. */
   pyqSittings: BoardPyqSitting[];
   supabaseUrl: string;
   /** Names the chapter in the classroom-projection breadcrumb. */
