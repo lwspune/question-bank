@@ -20,6 +20,7 @@ const q = (over: Partial<BoardPyqQuestion> = {}): BoardPyqQuestion => ({
   pyqYear: 2026,
   pyqMonth: "March",
   sourceRow: 1,
+  sourceFile: "MH_SSC_10_Algebra_2026.pdf",
   subtopicName: "Solving by Factorisation",
   ...over,
 });
@@ -135,6 +136,13 @@ describe("groupBoardPyqSittings", () => {
   });
 });
 
+/**
+ * RAW questions per year. This no longer drives the recurrence strip — that
+ * reads boardPyqPaperStats, because a year is not a paper on CBSE 12 or on MH
+ * HSC 12 Mathematics (see tests/board-papers.test.ts). It survives as the
+ * unnormalised total, which board:smoke-pyqs checks the per-paper split
+ * against.
+ */
 describe("pyqYearCounts", () => {
   it("counts per year, oldest first, so it reads left to right as a timeline", () => {
     const counts = pyqYearCounts(
@@ -150,7 +158,7 @@ describe("pyqYearCounts", () => {
     ]);
   });
 
-  it("folds both sittings of a year into one bar", () => {
+  it("folds both sittings of a year into one year total", () => {
     const counts = pyqYearCounts(
       groupBoardPyqSittings([
         q({ pyqYear: 2020, pyqMonth: "March" }),

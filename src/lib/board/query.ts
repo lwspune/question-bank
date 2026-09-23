@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { paperKeyFor } from "./papers";
 
 /**
  * Data layer for the `/board` reader — the book-faithful, exercise-by-exercise
@@ -368,6 +369,10 @@ export type BoardPyqQuestion = BoardQuestion & {
   pyqYear: number;
   pyqMonth: string | null;
   sourceRow: number | null;
+  /** Which source document this row came from — the PAPER key. `pyq_month` is
+   *  absent or unreliable on two of the three boards, so per-paper counting
+   *  rides this instead; see src/lib/board/papers.ts. */
+  sourceFile: string | null;
   /** The conceptual axis, and the one honest bridge back to the textbook half:
    *  a PYQ has exactly ONE subtopic, whereas a book section spans several — so
    *  the link reads PYQ → subtopic, never section → PYQs (measured: that
@@ -498,22 +503,88 @@ type RawPyqRow = {
   pyq_year: number;
   pyq_month: string | null;
   source_row: number | null;
+  source_file: string | null;
   subtopic: { name: string } | { name: string }[] | null;
   options: RawOption[] | null;
 };
 
+/** One year of a subject's board papers, for the /board recurrence strip. A
+ *  PLAIN ARRAY, not a Map: this crosses the server→client boundary into
+ *  BoardReader, and a Map is not serialisable in the RSC payload. */
+export type BoardPaperCount = { year: number; papers: number };
+
+/**
+ * How many whole papers a SUBJECT sat in each year.
+ *
+ * The divisor for the recurrence strip, and it is loaded per SUBJECT rather
+ * than derived from the chapter because a chapter's own rows can only see the
+ * papers that asked about it — see boardPyqPaperStats for what that would do to
+ * a sparse chapter.
+ *
+ * Paged for the usual reason: PostgREST truncates a raw select at 1000 and the
+ * biggest subject here holds 1,766 PYQ rows, so an unpaged read would silently
+ * lose whole papers and inflate every bar in the subject.
+ *
+ * Filters mirror getBoardChapterPyqs exactly (PUBLIC via RLS, solved, dated) so
+ * the divisor counts the same corpus the numerator comes from. If a paper's
+ * questions were all unsolved it would drop out of BOTH — which is right: the
+ * reader would not be showing it either.
+ */
+export async function getSubjectPaperCounts(
+  client: SupabaseClient,
+  opts: { examId: string; subjectId: string; examName: string }
+): Promise<BoardPaperCount[]> {
+  const PAGE = 1000;
+  const byYear = new Map<number, Set<string>>();
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await client
+      .from("questions")
+      .select("pyq_year, source_file")
+      .eq("exam_id", opts.examId)
+      .eq("subject_id", opts.subjectId)
+      .eq("question_kind", "pyq")
+      .not("pyq_year", "is", null)
+      .not("solution", "is", null)
+      .neq("solution", "")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`board paper counts: ${error.message}`);
+    const rows = (data ?? []) as { pyq_year: number; source_file: string | null }[];
+    for (const r of rows) {
+      const key = paperKeyFor(opts.examName, r.source_file, r.pyq_year);
+      if (key === null) continue;
+      let papers = byYear.get(r.pyq_year);
+      if (!papers) {
+        papers = new Set();
+        byYear.set(r.pyq_year, papers);
+      }
+      papers.add(key);
+    }
+    if (rows.length < PAGE) break;
+  }
+  return [...byYear.entries()]
+    .map(([year, papers]) => ({ year, papers: papers.size }))
+    .sort((a, b) => a.year - b.year);
+}
+
 /**
  * Load one chapter's board PYQs, grouped into sittings. Returns [] when the
- * chapter has none — which is the normal state for 24 of CBSE's 37 chapters,
- * whose Physics and Chemistry PYQ corpora are ingested but still PRIVATE while
- * their solutions are authored.
+ * chapter has none, which today means one thing only: the chapter belongs to a
+ * board exam with no PYQ corpus at all (CBSE 10/11, MH SB 9/11 — `practiceOnly`
+ * in EXAM_REGISTRY, so their textbook rows are all /board has). Measured
+ * 2026-09-23: on the three boards that DO carry PYQs, every single board
+ * chapter has some — CBSE Class 12 37/37, MH HSC 12 47/47, MH SSC 10 56/56.
+ * An earlier version of this comment said 24 of CBSE's 37 chapters were empty
+ * because their Physics and Chemistry corpora were ingested but still PRIVATE;
+ * both corpora are PUBLIC and fully solved now.
  *
  * Two filters carry weight:
  *  • anon client + RLS ⇒ PUBLIC only, so a staged corpus cannot leak here.
  *  • `solution` must be present. Every PUBLIC board PYQ is solved today
- *    (1,459 / 1,050 / 1,766 across the three exams), so this changes nothing
- *    now; it exists so a future partial flip hides unsolved rows from a
- *    SOLUTIONS reader rather than shipping questions with blank answers.
+ *    (5,012 CBSE 12 / 1,459 MH SSC 10 / 1,225 MH HSC 12), so this changes
+ *    nothing now; it exists so a future partial flip hides unsolved rows from a
+ *    SOLUTIONS reader rather than shipping questions with blank answers. It is
+ *    also what made the Physics + Chemistry tabs appear CHAPTER BY CHAPTER as
+ *    their solutions landed, rather than all at once on the visibility flip.
  *
  * Deliberately unpaged, matching getBoardChapter: PostgREST caps a raw select
  * at 1000 and the largest chapter in the bank holds 242 board PYQs (CBSE
@@ -527,7 +598,7 @@ export async function getBoardChapterPyqs(
     .from("questions")
     .select(
       `id, question_number, text, context, solution, image_url, solution_image_url,
-       question_format, set_id, pyq_year, pyq_month, source_row,
+       question_format, set_id, pyq_year, pyq_month, source_row, source_file,
        subtopic:subtopics!subtopic_id(name),
        options(label, text, is_correct, image_url)`
     )
@@ -559,6 +630,7 @@ export async function getBoardChapterPyqs(
         pyqYear: r.pyq_year,
         pyqMonth: r.pyq_month,
         sourceRow: r.source_row,
+        sourceFile: r.source_file,
         subtopicName: sub?.name ?? null,
       };
     })

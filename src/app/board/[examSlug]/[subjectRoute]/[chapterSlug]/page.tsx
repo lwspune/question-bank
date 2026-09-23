@@ -10,7 +10,9 @@ import {
   resolveBoardChapter,
   getBoardChapter,
   getBoardChapterPyqs,
+  getSubjectPaperCounts,
   type BoardChapter,
+  type BoardPaperCount,
   type BoardPyqSitting,
 } from "@/lib/board/query";
 import BoardReader from "@/app/board/BoardReader";
@@ -22,6 +24,9 @@ type Loaded = {
   displayName: string;
   chapter: BoardChapter;
   pyqSittings: BoardPyqSitting[];
+  /** Papers the SUBJECT sat per year — the recurrence strip's divisor. Loaded
+   *  here because it is a per-subject fact the chapter's own rows cannot see. */
+  paperCounts: BoardPaperCount[];
 };
 
 async function load(params: Params): Promise<Loaded | null> {
@@ -31,7 +36,7 @@ async function load(params: Params): Promise<Loaded | null> {
   const resolved = await resolveBoardChapter(client, exam.examName, params.subjectRoute, params.chapterSlug);
   if (!resolved) return null;
 
-  const [chapter, pyqSittings] = await Promise.all([
+  const [chapter, pyqSittings, paperCounts] = await Promise.all([
     getBoardChapter(client, {
       examId: resolved.examId,
       chapterId: resolved.chapterId,
@@ -40,6 +45,11 @@ async function load(params: Params): Promise<Loaded | null> {
       chapterName: resolved.chapterName,
     }),
     getBoardChapterPyqs(client, { examId: resolved.examId, chapterId: resolved.chapterId }),
+    getSubjectPaperCounts(client, {
+      examId: resolved.examId,
+      subjectId: resolved.subjectId,
+      examName: exam.examName,
+    }),
   ]);
 
   // TEXTBOOK presence still decides whether this page exists — /board is the
@@ -48,7 +58,13 @@ async function load(params: Params): Promise<Loaded | null> {
   // 10 chapters (Metallurgy, Surds, Carbon Compounds …) off /board without a
   // hand-maintained exclusion list. They stay reachable on /browse.
   if (!chapter) return null;
-  return { examName: exam.examName, displayName: exam.displayName, chapter, pyqSittings };
+  return {
+    examName: exam.examName,
+    displayName: exam.displayName,
+    chapter,
+    pyqSittings,
+    paperCounts,
+  };
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -106,6 +122,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
         <BoardReader
           groups={chapter.groups}
           pyqSittings={data.pyqSittings}
+          paperCounts={data.paperCounts}
           supabaseUrl={supabaseUrl}
           chapterName={chapter.chapterName}
           examName={data.examName}
