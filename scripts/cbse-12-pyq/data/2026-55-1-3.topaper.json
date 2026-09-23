@@ -1,0 +1,305 @@
+{
+  "paper": "55/1/3",
+  "year": 2026,
+  "paperId": "2026-55-1-3",
+  "markingScheme": "out/2026-55-1-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "c74e96cdd4b79d27df6de9e3c9991b74e073472259ba914c54beee6360abbb0e",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Equipotential Surfaces",
+      "stem": "The electric potential for various points in \\(x\\)-y plane is given by \\(V = 1.0\\, x^2 - 2.0\\, y^2\\), where V is in volts and \\(x\\), y are in metres. The angle that the electric field at point (2.0 m, 1.0 m) makes with the positive \\(x\\)-axis is –",
+      "options": [
+        {
+          "label": "A",
+          "text": "45°"
+        },
+        {
+          "label": "B",
+          "text": "90°"
+        },
+        {
+          "label": "C",
+          "text": "135°"
+        },
+        {
+          "label": "D",
+          "text": "315°"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(135^\\circ\\).**\n\n**The field is the negative GRADIENT of the potential**, so each component comes from a partial derivative:\n\n\\(E_x = -\\dfrac{\\partial V}{\\partial x}, \\qquad E_y = -\\dfrac{\\partial V}{\\partial y}\\)\n\n**With \\(V = 1{\\cdot}0\\,x^{2} - 2{\\cdot}0\\,y^{2}\\):**\n\n\\(E_x = -\\dfrac{\\partial}{\\partial x}\\left(x^{2} - 2y^{2}\\right) = -2{\\cdot}0\\,x\\)\n\n\\(E_y = -\\dfrac{\\partial}{\\partial y}\\left(x^{2} - 2y^{2}\\right) = +4{\\cdot}0\\,y\\)\n\n**At the point \\(\\left(2{\\cdot}0,\\ 1{\\cdot}0\\right)\\):**\n\n\\(E_x = -2{\\cdot}0\\times 2{\\cdot}0 = -4{\\cdot}0\\ \\mathrm{V/m}, \\qquad E_y = +4{\\cdot}0\\times 1{\\cdot}0 = +4{\\cdot}0\\ \\mathrm{V/m}\\)\n\n**The SIGNS decide the answer, not the ratio.** \\(E_x\\) is negative and \\(E_y\\) positive, so the vector points up and to the left — into the **second quadrant**.\n\n\\(\\tan\\theta = \\dfrac{E_y}{E_x} = \\dfrac{4}{-4} = -1\\)\n\n\\(\\boxed{\\ \\theta = 135^\\circ\\ \\text{from the}\\ +x\\ \\text{axis}\\ }\\)\n\n**Option (D), \\(315^\\circ\\), is the trap, and it is a good one.** Both \\(135^\\circ\\) and \\(315^\\circ\\) satisfy \\(\\tan\\theta = -1\\) — they lie on the same straight line, pointing in **opposite directions**. An inverse tangent alone cannot separate them; only the individual signs of \\(E_x\\) and \\(E_y\\) can. \\(315^\\circ\\) would require \\(E_x > 0\\) and \\(E_y < 0\\), the exact reverse of what we have.\n\n**A useful habit:** work out the quadrant from the signs **first**, then use the magnitude of the ratio to place the angle within it. Here \\(\\left|E_y/E_x\\right| = 1\\) puts it exactly \\(45^\\circ\\) into the second quadrant, hence \\(90 + 45 = 135^\\circ\\).\n\n**Note the minus signs did not cancel.** The two terms of \\(V\\) carry opposite signs **and** differentiate to different coefficients, so \\(E_x\\) and \\(E_y\\) end up with opposite signs even though \\(x\\) and \\(y\\) are both positive. That is the whole reason the answer is not \\(45^\\circ\\).\n\n**The magnitude, if wanted:** \\(\\left|\\vec{E}\\right| = \\sqrt{16 + 16} = 4\\sqrt{2} \\approx 5{\\cdot}66\\ \\mathrm{V/m}\\)."
+    },
+    {
+      "hash": "857c42072b5e0e9b909d5d94dbfcd4387046245b5278f4ce1594925a1c04f3f1",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A current of 1.5 A is maintained in a copper wire of length 1 m with area of cross-section \\(1.7 \\times 10^{-7}\\) \\(\\mathrm{m^2}\\). The magnitude of electric field in the wire is [\\(\\rho_{Cu} = 1.7 \\times 10^{-8}\\) \\(\\Omega\\) m)",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0.15\\, \\frac{\\mathrm{V}}{\\mathrm{m}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0.30\\, \\frac{\\mathrm{V}}{\\mathrm{m}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1.5\\, \\frac{\\mathrm{V}}{\\mathrm{m}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3.0\\, \\frac{\\mathrm{V}}{\\mathrm{m}}\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(0{\\cdot}15\\ \\mathrm{V/m}\\).**\n\n**The microscopic form of Ohm's law** relates the field inside a conductor to the current density:\n\n\\(\\vec{E} = \\rho\\,\\vec{J}, \\qquad J = \\dfrac{I}{A}\\)\n\n**Combining:**\n\n\\(E = \\dfrac{\\rho I}{A}\\)\n\n**Substituting:**\n\n\\(E = \\dfrac{\\left(1{\\cdot}7 \\times 10^{-8}\\right)\\left(1{\\cdot}5\\right)}{1{\\cdot}7 \\times 10^{-7}}\\)\n\n**The two \\(1{\\cdot}7\\)s cancel**, leaving\n\n\\(E = \\dfrac{1{\\cdot}5 \\times 10^{-8}}{10^{-7}} = 1{\\cdot}5 \\times 10^{-1}\\)\n\n\\(\\boxed{\\ E = 0{\\cdot}15\\ \\mathrm{V\\,m^{-1}}\\ }\\)\n\n**The LENGTH of the wire plays no part.** The field inside a uniform conductor depends on the resistivity and the current density alone — that is, on the material and on how hard the current is being pushed through a given cross-section. Doubling the length would double the resistance **and** the voltage needed, leaving \\(E\\) exactly where it was.\n\n*What the length is good for* is a cross-check by the other route:\n\n\\(R = \\dfrac{\\rho L}{A} = \\dfrac{\\left(1{\\cdot}7\\times 10^{-8}\\right)\\left(1\\right)}{1{\\cdot}7\\times 10^{-7}} = 0{\\cdot}1\\ \\Omega\\)\n\n\\(V = IR = 1{\\cdot}5 \\times 0{\\cdot}1 = 0{\\cdot}15\\ \\mathrm{V} \\qquad\\Longrightarrow\\qquad E = \\dfrac{V}{L} = \\dfrac{0{\\cdot}15}{1} = 0{\\cdot}15\\ \\mathrm{V/m}\\ \\checkmark\\)\n\n**The two routes agree**, and they agree numerically here only because \\(L = 1\\) m makes \\(V\\) and \\(E\\) share a number. Do not mistake that coincidence for a general rule.\n\n**Why the field is so small.** A tenth of a volt across a whole metre is a feeble field by electrostatic standards, and that is the point: copper's resistivity is tiny, so a very gentle push sustains a substantial current. The corresponding drift velocity is of the order of a **fraction of a millimetre per second**, while the signal that sets the current going travels at nearly the speed of light. The field, not the electrons, is what propagates.\n\n**The macroscopic and microscopic statements are the same law.** \\(V = IR\\) describes a specimen; \\(E = \\rho J\\) describes the material at a point, free of any reference to the specimen's shape. The second is the more fundamental, and this question asks for it directly."
+    },
+    {
+      "hash": "9869112dfefd900cfb169806a2465cc8e65070462e423b993f422341cd3ab11f",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "Light from a small object in air falls on a spherical glass surface (n = 1.5) of radius of curvature R. A real image of the object will be formed if the object distance u is related to R as :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(u < \\frac{R}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{R}{2} < u < R\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(R < u < 2R\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(u > 2R\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(u > 2R\\).**\n\n**Refraction at a SINGLE spherical surface** — not a lens, so the thin-lens formula does not apply:\n\n\\(\\dfrac{n_2}{v} - \\dfrac{n_1}{u} = \\dfrac{n_2 - n_1}{R}\\)\n\nwith \\(n_1 = 1\\) (air), \\(n_2 = 1{\\cdot}5\\) (glass).\n\n**Sign convention.** Light travels left to right; the object sits on the left, so its coordinate is negative. Writing \\(u\\) for the positive object **distance**, the signed value is \\(-u\\), and \\(R\\) is positive for a surface convex towards the incoming light.\n\n\\(\\dfrac{1{\\cdot}5}{v} + \\dfrac{1}{u} = \\dfrac{0{\\cdot}5}{R}\\)\n\n\\(\\dfrac{1{\\cdot}5}{v} = \\dfrac{0{\\cdot}5}{R} - \\dfrac{1}{u} = \\dfrac{0{\\cdot}5u - R}{Ru}\\)\n\n\\(v = \\dfrac{1{\\cdot}5\\,Ru}{0{\\cdot}5u - R} = \\dfrac{3Ru}{u - 2R}\\)\n\n**A REAL image requires \\(v > 0\\)** — the image must form on the far side, inside the glass, where the refracted light actually goes. Since \\(R\\) and \\(u\\) are both positive, the sign of \\(v\\) is the sign of \\(\\left(u - 2R\\right)\\):\n\n\\(u - 2R > 0\\)\n\n\\(\\boxed{\\ u > 2R\\ }\\)\n\n**The quantity \\(2R\\) is not arbitrary — it is this surface's FIRST focal length.** Setting \\(v \\to \\infty\\) (parallel refracted rays) gives\n\n\\(f_1 = \\dfrac{n_1 R}{n_2 - n_1} = \\dfrac{R}{0{\\cdot}5} = 2R\\)\n\n**So the condition reads exactly as it does for a lens: the object must lie OUTSIDE the first focal point.** Closer than that, the refracted rays still diverge and the image is virtual. That is the whole content of the question, and seeing it this way makes the algebra a confirmation rather than a discovery.\n\n**What happens in the other ranges.** For \\(u < 2R\\) the denominator turns negative, \\(v < 0\\), and the image is **virtual** — on the same side as the object, where the eye must look back through the surface to see it. Options (A), (B) and (C) all sit inside \\(2R\\) and therefore all give virtual images.\n\n**A numerical check.** Take \\(R = 10\\) cm and \\(u = 30\\) cm \\(\\left(> 2R\\right)\\):\n\n\\(v = \\dfrac{3\\left(10\\right)\\left(30\\right)}{30 - 20} = \\dfrac{900}{10} = +90\\ \\mathrm{cm}\\)\n\nreal, \\(90\\) cm inside the glass \\(\\checkmark\\). Now \\(u = 15\\) cm \\(\\left(< 2R\\right)\\): \\(v = 450/\\left(-5\\right) = -90\\) cm, virtual \\(\\checkmark\\).\n\n**Why the second focal length differs.** For this surface \\(f_2 = n_2R/\\left(n_2 - n_1\\right) = 3R\\), not \\(2R\\). Unlike a thin lens in one medium, a refracting surface with different media on its two sides has **two unequal focal lengths**, in the ratio \\(n_1 : n_2\\). The condition for a real image is governed by the object-side one."
+    },
+    {
+      "hash": "7312c87c4084eda11353080925d24351c7fbfdd2a2c405e3a79d4728c8c494d2",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "The ratio of the potential energy to the kinetic energy of an electron in \\(n^{th}\\) orbit of Bohr model of hydrogen atom is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-\\frac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "\\(-2\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(-2\\).**\n\n**In the Bohr model the electron is held in a circular orbit by the Coulomb attraction**, and that single fact fixes the ratio.\n\n**Step 1 — the force balance.** The Coulomb attraction supplies the centripetal force:\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{r^{2}} = \\dfrac{mv^{2}}{r}\\)\n\n\\(mv^{2} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{r}\\)\n\n**Step 2 — the two energies.**\n\n\\(K = \\dfrac{1}{2}mv^{2} = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{2r}\\)\n\n\\(U = -\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{r}\\)\n\n**The potential energy is NEGATIVE** because the charges attract and the zero is taken at infinite separation — bringing the electron in from infinity releases energy.\n\n**Step 3 — the ratio.**\n\n\\(\\dfrac{U}{K} = \\dfrac{-e^{2}/4\\pi\\varepsilon_0 r}{e^{2}/8\\pi\\varepsilon_0 r} = -2\\)\n\n\\(\\boxed{\\ \\dfrac{U}{K} = -2\\ }\\)\n\n**The orbit number \\(n\\) has vanished entirely**, which the question hints at by asking about the \\(n^{th}\\) orbit and offering no \\(n\\)-dependent option. Both energies scale as \\(1/r\\), and \\(r\\) cancels — so the ratio is \\(-2\\) for the ground state and for the hundredth excited state alike. Quantisation fixes *which* radii are allowed; it does not touch this ratio.\n\n**This is the VIRIAL THEOREM** for an inverse-square attraction, and it holds far beyond the atom: \\(U = -2K\\) governs a planet in a circular orbit just as it governs the electron. Any force law \\(F \\propto r^{-2}\\) gives the same result.\n\n**Two consequences worth carrying.**\n\n\\(E = K + U = K - 2K = -K \\qquad\\text{and}\\qquad E = \\dfrac{U}{2}\\)\n\nSo the **total energy is the negative of the kinetic energy**, and half the potential energy. For hydrogen's ground state, \\(E_1 = -13{\\cdot}6\\) eV means \\(K = +13{\\cdot}6\\) eV and \\(U = -27{\\cdot}2\\) eV — a check that \\(U/K = -2\\) \\(\\checkmark\\).\n\n**The sign is what the question is really testing**, and options (B) and (C) drop it. A positive ratio would mean the two energies share a sign, which cannot happen for a bound state: kinetic energy is always positive, and an attractive potential measured from infinity is always negative.\n\n**A counter-intuitive consequence of \\(E = -K\\).** As the electron falls to a lower orbit it **loses** total energy but **gains** kinetic energy — it speeds up. The potential energy drops by twice as much as the kinetic energy rises, and the surplus leaves as a photon."
+    },
+    {
+      "hash": "f489780e0728aeaba8b662be76f019bfa5f3c9356a006145413995c2c04a1972",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "Welders wear special glass goggles or face masks with glass windows to protect their eyes from",
+      "options": [
+        {
+          "label": "A",
+          "text": "Infrared rays"
+        },
+        {
+          "label": "B",
+          "text": "Ultraviolet rays"
+        },
+        {
+          "label": "C",
+          "text": "X-rays"
+        },
+        {
+          "label": "D",
+          "text": "Microwaves"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): Ultraviolet rays.**\n\n**An electric welding arc runs at several thousand kelvin and radiates strongly in the ultraviolet.** UV photons carry \\(3\\) to \\(12\\) eV — enough to damage the cornea and the conjunctiva directly, by breaking chemical bonds in the surface tissue.\n\n**The injury has a name: photokeratitis, or \"arc eye\".** Its signature is a **delayed** onset — the eye feels normal at the time and the pain arrives some six to twelve hours later, because the damage is chemical rather than thermal and the inflammation takes time to develop. A welder who felt nothing at the time has no warning to look away, which is exactly why the protection must be worn from the first spark rather than adopted when discomfort begins.\n\n**Ordinary glass already absorbs most UV**, which is why a glass window suffices where a plastic shield might not. Welding filters are darkened further to cut the visible glare as well.\n\n**Option (A), Infrared, is a genuine hazard too — but not the one this question asks about.** An arc does emit intense IR, and prolonged exposure contributes to cataract. Its mechanism is **heating**, though, and it is felt immediately; welding filters attenuate it as a secondary function. The UV is the dominant and characteristic risk, and the one the goggles exist for.\n\n**Option (C), X-rays, are not produced by a welding arc.** Generating X-rays takes electrons accelerated through tens of kilovolts striking a heavy target. A welding arc operates at tens of **volts**, four orders of magnitude short of the threshold.\n\n**Option (D), Microwaves, carry about \\(10^{-5}\\) eV per photon** — far too little to affect tissue chemically, and not produced in any quantity by an arc.\n\n**The principle behind the ordering.** What makes radiation dangerous to the eye is **photon energy**, \\(E = h\\nu\\). Below roughly \\(3\\) eV a photon cannot break a biological bond, however many of them arrive; above it, each one can, and intensity then decides only how fast the damage accumulates. UV sits just above that threshold, and an arc produces it in abundance.\n\n**A related everyday case.** Snow blindness is the same injury from reflected solar UV at altitude, and sunglasses that block UV while passing visible light work on the identical principle as a welder's filter."
+    },
+    {
+      "hash": "1ccabd757c24eed0c7d1bbfff660e2da24b995da3b557d8764da631d9e8076fd",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Biot-Savart Law and Field of a Circular Loop",
+      "stem": "A circular loop has radius R and carries current I as shown in figure. In order that the net magnetic field at the centre of the loop is zero, the current in wire AB should have magnitude",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2\\pi I\\), along +X – axis"
+        },
+        {
+          "label": "B",
+          "text": "\\(2\\pi I\\) along –X – axis"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pi I\\) along +X – axis"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pi I\\) along –X – axis"
+        }
+      ],
+      "answer": "A",
+      "figureNote": "REQUIRED — the stem says 'as shown in figure' and every quantity but R and I lives only in the drawing. DESCRIBED: a circle labelled R by a radius drawn from its marked centre, with the current label I and an arrow riding the top of the circumference; a long straight horizontal wire below it, labelled A at its left end and B at its right; a horizontal dashed line running right from the loop's centre to a vertical arrowed segment labelled 2R that drops from that dashed line down to the wire, so 2R is the perpendicular distance from the loop's centre to AB; and, drawn separately to the right, an axes triad with X pointing right, Y pointing up and Z pointing down-left. DELIBERATELY WITHHELD: the SENSE of the current arrow around the loop (and hence of the required current in AB) — direction is exactly what separates the four options, two of which share each magnitude. Page idx 8.",
+      "imageAttached": true,
+      "solution": "**The answer is (A): \\(2\\pi I\\), along the \\(+X\\) axis.**\n\n**Read the figure first.** The loop of radius \\(R\\) lies in the \\(XY\\) plane carrying current \\(I\\) **clockwise** (the arrow at the top of the loop points towards \\(+X\\)). The straight wire \\(AB\\) runs **parallel to the \\(X\\) axis at a perpendicular distance \\(2R\\)** below the loop's centre. The axes are drawn with \\(X\\) to the right, \\(Y\\) up and \\(Z\\) out of the page.\n\n**The two fields must be equal and opposite at the centre.** That gives one equation for the magnitude and one condition on the direction.\n\n**Field of the loop at its own centre.**\n\n\\(B_{\\text{loop}} = \\dfrac{\\mu_0 I}{2R}\\)\n\n**Its direction:** a clockwise current, by the right-hand rule, produces a field **into the page** at the centre — along \\(-\\hat{k}\\).\n\n**Field of the straight wire at the centre.** The wire is long, and the centre lies a perpendicular distance \\(2R\\) from it:\n\n\\(B_{\\text{wire}} = \\dfrac{\\mu_0 I'}{2\\pi\\left(2R\\right)} = \\dfrac{\\mu_0 I'}{4\\pi R}\\)\n\n**Note the distance is \\(2R\\), NOT \\(R\\)** — read from the figure, and it is the single number that decides the answer. Using \\(R\\) would give \\(I' = \\pi I\\), which is offered as option (C).\n\n**Equating magnitudes:**\n\n\\(\\dfrac{\\mu_0 I'}{4\\pi R} = \\dfrac{\\mu_0 I}{2R}\\)\n\n\\(I' = \\dfrac{4\\pi R}{2R}\\,I\\)\n\n\\(\\boxed{\\ I' = 2\\pi I\\ }\\)\n\n**Now the direction.** The wire's field at the centre must point **out of the page** \\(\\left(+\\hat{k}\\right)\\) to cancel the loop's. The centre lies on the \\(+Y\\) side of the wire, so with the current along \\(+\\hat{i}\\):\n\n\\(\\hat{i}\\times\\hat{j} = \\hat{k}\\)\n\n— out of the page, exactly what is needed.\n\n\\(\\boxed{\\ \\text{Current in } AB = 2\\pi I \\text{ along the } +X \\text{ axis}\\ }\\)\n\n*A right-hand check:* point the thumb along \\(+X\\) with the current; the fingers curl out of the page at points above the wire and into the page below it \\(\\checkmark\\).\n\n**The factor \\(\\pi\\) is the signature of the geometry.** A loop's field carries no \\(\\pi\\) \\(\\left(\\mu_0I/2R\\right)\\) while a straight wire's does \\(\\left(\\mu_0I/2\\pi d\\right)\\), so any balance between the two leaves a bare \\(\\pi\\) in the answer. Every option here is \\(\\pi I\\) or \\(2\\pi I\\); only the distance \\(2R\\) selects between them.\n\n**Why the answer is so large.** A straight wire is a far less efficient way of producing field at a point than a loop wrapped around it — in a loop every element contributes at the same close distance and in the same direction, while most of a straight wire is far away and at an unfavourable angle. It takes about \\(6{\\cdot}3\\) times the current to match the loop from \\(2R\\) away."
+    },
+    {
+      "hash": "d1dcdc69a7896429bb1bee497801f97060bb9e6c1aca7b52332b2665952e60c7",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "The phenomenon of interference is shown by",
+      "options": [
+        {
+          "label": "A",
+          "text": "longitudinal mechanical wave only"
+        },
+        {
+          "label": "B",
+          "text": "transverse mechanical wave only"
+        },
+        {
+          "label": "C",
+          "text": "electromagnetic waves only"
+        },
+        {
+          "label": "D",
+          "text": "all these waves"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): all these waves.**\n\n**Interference requires only one thing — the PRINCIPLE OF SUPERPOSITION.** Where two waves overlap, the resultant displacement at each point is the sum of the individual displacements. Every wave described by a linear wave equation obeys it, and that includes all three kinds listed.\n\n\\(y = y_1 + y_2\\)\n\n**The conditions for a sustained pattern** are about the **sources**, not about the wave type: the sources must be coherent (a constant phase relationship) and of comparable amplitude, and the waves must have the same frequency. Nothing in that list refers to whether the wave is longitudinal, transverse, mechanical or electromagnetic.\n\n**Longitudinal mechanical waves interfere.** Two loudspeakers driven by one oscillator produce alternating loud and quiet positions across a room — the acoustic analogue of bright and dark fringes. **Beats**, from two slightly different frequencies, are interference in time rather than space.\n\n**Transverse mechanical waves interfere.** Ripples from two dippers on a water surface give the classic pattern, and a standing wave on a stretched string is the interference of the incident and reflected waves.\n\n**Electromagnetic waves interfere.** Young's double slit, thin-film colours in soap bubbles and oil, Newton's rings, anti-reflection coatings — and, at radio wavelengths, the fading of a signal where a direct and a reflected ray arrive out of step.\n\n**The property that WOULD have separated them is polarisation.** Only **transverse** waves can be polarised, because only they have a direction of vibration perpendicular to the direction of travel to select from. Sound cannot be polarised. That is the standard companion question, and the one whose answer is genuinely restrictive — which is why \"all these waves\" feels unsafe here when it is in fact correct.\n\n**Why this distinction matters historically.** That light **interferes** established that it is a wave; that it can be **polarised** established that it is a **transverse** wave. The first observation alone was compatible with light being longitudinal, as Huygens had supposed, and it took the second to settle the matter.\n\n**The one genuine restriction on interference** is linearity. At very large amplitudes a medium responds non-linearly, waves no longer simply add, and the plain superposition picture fails — but that is a limit of the medium, not of any class of wave."
+    },
+    {
+      "hash": "1990e63a4a762df60787b5087984bdbb4e6a43fc860f5af1682fd7b4a131f8b3",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Alternating Current",
+      "subtopic": "Power in AC Circuits and the Power Factor",
+      "stem": "A series LCR circuit with R = 3 \\(\\Omega\\), \\(X_C\\) = 4 \\(\\Omega\\), \\(X_L\\) = 8 \\(\\Omega\\) is connected to a 220 V, 50 Hz ac source. The power factor for the circuit is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.30"
+        },
+        {
+          "label": "B",
+          "text": "0.45"
+        },
+        {
+          "label": "C",
+          "text": "0.50"
+        },
+        {
+          "label": "D",
+          "text": "0.60"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(0{\\cdot}60\\).**\n\n**The power factor is \\(\\cos\\phi = R/Z\\)**, so the impedance is the only quantity to find.\n\n**Step 1 — the NET reactance.** The inductive and capacitive reactances act in **opposition**: the inductor's voltage leads the current by \\(90^\\circ\\), the capacitor's lags by \\(90^\\circ\\), so they are \\(180^\\circ\\) apart and subtract.\n\n\\(X = X_L - X_C = 8 - 4 = 4\\ \\Omega\\)\n\n**Subtracting rather than adding is the whole trap.** Taking \\(X_L + X_C = 12\\ \\Omega\\) would give \\(Z = \\sqrt{9 + 144} = 12{\\cdot}4\\ \\Omega\\) and a power factor near \\(0{\\cdot}24\\) — which is why the options run low.\n\n**Step 2 — the impedance.**\n\n\\(Z = \\sqrt{R^{2} + \\left(X_L - X_C\\right)^{2}} = \\sqrt{3^{2} + 4^{2}} = \\sqrt{25} = 5\\ \\Omega\\)\n\n**A 3-4-5 triangle**, which is what the numbers were chosen to give.\n\n**Step 3 — the power factor.**\n\n\\(\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{3}{5}\\)\n\n\\(\\boxed{\\ \\cos\\phi = 0{\\cdot}60\\ }\\)\n\n**The circuit is INDUCTIVE**, since \\(X_L > X_C\\): the current **lags** the source voltage by\n\n\\(\\phi = \\tan^{-1}\\dfrac{4}{3} = 53^\\circ\\)\n\n**Neither \\(220\\) V nor \\(50\\) Hz was needed.** The power factor depends only on the three impedances, which are already given in ohms. Those figures are there for the parts of the question that ask for current or power:\n\n\\(I_{rms} = \\dfrac{V}{Z} = \\dfrac{220}{5} = 44\\ \\mathrm{A}, \\qquad P = VI\\cos\\phi = 220 \\times 44 \\times 0{\\cdot}6 = 5808\\ \\mathrm{W}\\)\n\n*A check:* \\(P = I^{2}R = 44^{2}\\times 3 = 5808\\) W \\(\\checkmark\\). **All the power is dissipated in the resistor** — the inductor and capacitor merely shuttle energy back and forth with the source, and between each other.\n\n**What a power factor of \\(0{\\cdot}6\\) means practically.** The circuit draws \\(220 \\times 44 = 9680\\) VA of apparent power to deliver \\(5808\\) W of real power. The extra current carries no energy on average but still heats the supply cables, which is why industrial installations are penalised for a low power factor and correct it with capacitors.\n\n**At resonance** \\(X_L = X_C\\), the reactances cancel completely, \\(Z = R\\) and \\(\\cos\\phi = 1\\). Here the capacitor's reactance would have to rise from \\(4\\) to \\(8\\ \\Omega\\) — halving \\(C\\) — to reach it."
+    },
+    {
+      "hash": "c7a39145cbdb05a72081224a81110537e6ce3db99f477f6bbd17b3227ee1dfa4",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Wave Nature of Matter",
+      "stem": "In an electron microscope, accelerated electrons have wavelength of 0.011 nm. Calculate the voltage through which electrons were accelerated to attain this wavelength.\n(Take e = \\(1.6 \\times 10^{-19}\\) C, \\(\\mathrm{m_e} = 9 \\times 10^{-31}\\) kg, h = \\(6.6 \\times 10^{-34}\\) J.s)",
+      "solution": "**Electrons accelerated through a potential difference \\(V\\) gain kinetic energy \\(eV\\)**, and that fixes their momentum and hence their de Broglie wavelength.\n\n**Setting up.**\n\n\\(eV = \\dfrac{p^{2}}{2m} \\qquad\\Longrightarrow\\qquad p = \\sqrt{2meV}\\)\n\n\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{2meV}}\\)\n\n**Rearranging for \\(V\\):**\n\n\\(V = \\dfrac{h^{2}}{2me\\lambda^{2}}\\)\n\n**Substituting**, with \\(\\lambda = 0{\\cdot}011\\ \\mathrm{nm} = 1{\\cdot}1\\times 10^{-11}\\ \\mathrm{m}\\):\n\n\\(V = \\dfrac{\\left(6{\\cdot}6\\times 10^{-34}\\right)^{2}}{2\\left(9\\times 10^{-31}\\right)\\left(1{\\cdot}6\\times 10^{-19}\\right)\\left(1{\\cdot}1\\times 10^{-11}\\right)^{2}}\\)\n\n**Numerator:** \\(\\left(6{\\cdot}6\\right)^{2} = 43{\\cdot}56\\), so \\(4{\\cdot}356\\times 10^{-67}\\).\n\n**Denominator:** \\(2 \\times 9 \\times 1{\\cdot}6 = 28{\\cdot}8\\), giving \\(2{\\cdot}88\\times 10^{-49}\\); and \\(\\left(1{\\cdot}1\\right)^{2} = 1{\\cdot}21\\), giving \\(1{\\cdot}21\\times 10^{-22}\\). The product is \\(3{\\cdot}4848\\times 10^{-71}\\).\n\n\\(V = \\dfrac{4{\\cdot}356\\times 10^{-67}}{3{\\cdot}4848\\times 10^{-71}} = 1{\\cdot}25\\times 10^{4}\\)\n\n\\(\\boxed{\\ V = 12\\,500\\ \\mathrm{V} = 12{\\cdot}5\\ \\mathrm{kV}\\ }\\)\n\n**A quick check with the standard shortcut.** For non-relativistic electrons,\n\n\\(\\lambda \\approx \\dfrac{1{\\cdot}227}{\\sqrt{V}}\\ \\mathrm{nm}\\ \\left(V\\ \\text{in volts}\\right) \\qquad\\Longrightarrow\\qquad \\sqrt{V} = \\dfrac{1{\\cdot}227}{0{\\cdot}011} = 111{\\cdot}5 \\qquad V \\approx 12\\,400\\ \\mathrm{V}\\ \\checkmark\\)\n\nThe small difference comes from the rounded constants the question supplies.\n\n**Why an electron microscope needs this.** Resolution is limited by wavelength, so the whole point of accelerating electrons is to get far below the \\(400\\) to \\(700\\) nm of visible light. At \\(12{\\cdot}5\\) kV the wavelength is \\(0{\\cdot}011\\) nm — about **fifty thousand times shorter** than green light, and smaller than an atom. That is why an electron microscope can resolve structures an optical microscope cannot approach.\n\n**\\(V\\) goes as \\(1/\\lambda^{2}\\)**, so halving the wavelength costs **four times** the accelerating voltage. Research instruments running at \\(200\\) to \\(300\\) kV get wavelengths near \\(0{\\cdot}002\\) nm by exactly this route.\n\n**A caveat on the formula used.** \\(\\lambda = h/\\sqrt{2meV}\\) is non-relativistic, and at \\(12{\\cdot}5\\) kV the electron's kinetic energy is about \\(2{\\cdot}4\\%\\) of its rest energy \\(\\left(511\\ \\mathrm{keV}\\right)\\) — so the error is around \\(1\\%\\), acceptable here. At \\(200\\) kV it is no longer, and the relativistic form is required."
+    },
+    {
+      "hash": "6369f4025bb1fba25bfd14b5949001a8c54f109ae41c440dc2bd860c2eb209f4",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "Suppose a nucleus with mass number A = 240 and \\(\\frac{\\mathrm{B.E.}}{\\mathrm{A}} = 7.6\\) MeV, breaks into two nuclei, each of mass number A = 120 with \\(\\frac{\\mathrm{B.E.}}{\\mathrm{A}} = 8.5\\) MeV. Calculate the energy released in the process.",
+      "solution": "**Binding energy is what holds a nucleus together**, and the energy released in a break-up is simply the **increase** in total binding energy.\n\n**Total binding energy of the parent.**\n\n\\(\\mathrm{BE}_{\\text{parent}} = A\\times\\left(\\dfrac{\\mathrm{BE}}{A}\\right) = 240 \\times 7{\\cdot}6 = 1824\\ \\mathrm{MeV}\\)\n\n**Total binding energy of the two fragments.**\n\n\\(\\mathrm{BE}_{\\text{fragments}} = 2 \\times \\left(120 \\times 8{\\cdot}5\\right) = 2 \\times 1020 = 2040\\ \\mathrm{MeV}\\)\n\n**The energy released.**\n\n\\(Q = \\mathrm{BE}_{\\text{fragments}} - \\mathrm{BE}_{\\text{parent}} = 2040 - 1824\\)\n\n\\(\\boxed{\\ Q = 216\\ \\mathrm{MeV}\\ }\\)\n\n**The shorter route**, since the nucleon count is unchanged at \\(240\\):\n\n\\(Q = A\\left[\\left(\\dfrac{\\mathrm{BE}}{A}\\right)_{\\text{final}} - \\left(\\dfrac{\\mathrm{BE}}{A}\\right)_{\\text{initial}}\\right] = 240\\left(8{\\cdot}5 - 7{\\cdot}6\\right) = 240 \\times 0{\\cdot}9 = 216\\ \\mathrm{MeV}\\ \\checkmark\\)\n\n**The order of subtraction is where marks are lost.** Energy is released when the products are **more** tightly bound than the parent, so the final binding energy must be the larger term. Reversing it gives \\(-216\\) MeV, which would describe a reaction that has to be **driven** rather than one that releases.\n\n**Why more binding energy means energy given OUT.** A more tightly bound nucleus has **less** mass — the binding energy is missing mass, by \\(E = mc^{2}\\). The two fragments together weigh less than the parent did, and that mass difference emerges as the kinetic energy of the fragments and the neutrons.\n\n**This is nuclear FISSION, and \\(200\\) MeV is the number to remember.** A real \\({}^{235}\\mathrm{U}\\) fission releases about \\(200\\) MeV, close to the \\(216\\) MeV here, because \\(A = 240\\) breaking into two \\(A = 120\\) pieces is a fair idealisation of it.\n\n**The comparison that makes the figure meaningful.** Burning one carbon atom releases about \\(4\\) eV. A single fission releases some **fifty million times** more energy than a single chemical reaction — which is why a kilogram of uranium can substitute for a few thousand tonnes of coal.\n\n**Where the energy goes.** Most of it — around \\(165\\) MeV — appears as kinetic energy of the two fragments, which fly apart under their mutual Coulomb repulsion. The rest is carried by prompt neutrons, gamma rays, and the beta and gamma radiation of the fragments as they decay towards stability.\n\n**The assumption made here.** Both fragments were taken to have \\(\\mathrm{BE}/A = 8{\\cdot}5\\) MeV, and no neutrons were emitted. A real fission is asymmetric and releases two or three neutrons, which is what makes a chain reaction possible — but the energy accounting is unchanged to the accuracy of these figures."
+    },
+    {
+      "hash": "6a084a457e0e1f6330024defa41308e457a04f8d3b7b3e8b1a57a8b25f737145",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electrostatic Potential and Capacitance",
+      "subtopic": "Capacitors, Capacitance and their Combinations",
+      "stem": "A parallel plate capacitor of capacitance C is charged to V volt by a battery. After sometime the battery is disconnected and the distance between the plates is doubled. A slab of dielectric constant k = 1.8 is then introduced to completely fill the space between the plates. How will the following be affected ?\n(a) The capacitance of the capacitor.\n(b) The electric field between the plates of the capacitor.\n(c) The energy stored in the capacitor.\nJustify your answer in each case.",
+      "solution": "**The decisive fact is that the BATTERY IS DISCONNECTED** before anything is altered. The charge \\(Q\\) on the plates has nowhere to go, so **\\(Q\\) is the constant** throughout — not \\(V\\). Every part of the answer follows from that.\n\n\\(Q = CV \\quad\\text{and stays fixed.}\\)\n\n**(a) The capacitance.**\n\nTwo changes act on it. Doubling the separation halves the capacitance; filling with a dielectric of constant \\(k\\) multiplies it by \\(k\\):\n\n\\(C' = \\dfrac{k\\varepsilon_0 A}{2d} = \\dfrac{k}{2}\\,C = \\dfrac{1{\\cdot}8}{2}\\,C\\)\n\n\\(\\boxed{\\ C' = 0{\\cdot}9\\,C \\qquad\\text{— it DECREASES, to }90\\%\\ }\\)\n\n**The two effects nearly cancel**, and the separation wins narrowly: \\(k = 1{\\cdot}8\\) is not quite enough to make up for doubling \\(d\\). Had the dielectric been \\(k = 2\\), the capacitance would have returned exactly to \\(C\\).\n\n**(b) The electric field between the plates.**\n\n\\(E = \\dfrac{\\sigma}{k\\varepsilon_0} = \\dfrac{Q}{k\\varepsilon_0 A}\\)\n\n**The separation does NOT appear.** At fixed charge, the field between parallel plates depends on the charge per unit area and the medium alone — pulling the plates apart leaves \\(E\\) untouched, and merely stretches the same field over a longer gap. Only the dielectric changes it:\n\n\\(\\boxed{\\ E' = \\dfrac{E}{1{\\cdot}8} \\approx 0{\\cdot}56\\,E \\qquad\\text{— it DECREASES}\\ }\\)\n\n**Why the dielectric weakens the field.** The slab polarises, and the induced surface charges oppose the plates' own charges, cutting the net field by the factor \\(k\\).\n\n**(c) The energy stored.**\n\nWith \\(Q\\) fixed the right form is\n\n\\(U = \\dfrac{Q^{2}}{2C} \\qquad\\Longrightarrow\\qquad U' = \\dfrac{Q^{2}}{2\\left(0{\\cdot}9C\\right)} = \\dfrac{U}{0{\\cdot}9}\\)\n\n\\(\\boxed{\\ U' = 1{\\cdot}11\\,U \\qquad\\text{— it INCREASES, by about }11\\%\\ }\\)\n\n**Use \\(U = Q^{2}/2C\\), never \\(U = \\tfrac{1}{2}CV^{2}\\), when the battery is disconnected.** The two are equivalent only when both \\(Q\\) and \\(V\\) are known; here \\(V\\) has changed and \\(Q\\) has not, so the form written in terms of the constant quantity is the one that can be used directly. With \\(C\\) falling and \\(Q\\) fixed, \\(U\\) must rise.\n\n**Where the extra energy comes from — and goes.** Separating the plates means pulling them apart **against their mutual attraction**, and that work enters the field: it alone would double the energy, to \\(2U\\). Then the dielectric slab is **drawn in** by the fringing field, so the capacitor does work on it and gives energy up, dividing by \\(1{\\cdot}8\\):\n\n\\(U' = \\dfrac{2U}{1{\\cdot}8} = 1{\\cdot}11\\,U\\ \\checkmark\\)\n\n**The two operations therefore pull opposite ways**, and the net \\(11\\%\\) rise is what is left of a doubling after the dielectric has taken most of it back.\n\n**The summary in one line:** \\(C\\) down \\(10\\%\\), \\(E\\) down \\(44\\%\\), \\(U\\) up \\(11\\%\\) — and the new potential difference is \\(V' = Q/0{\\cdot}9C = 1{\\cdot}11\\,V\\)."
+    },
+    {
+      "hash": "04a03dd4906734a3c08a16035db383aec529519f1acf76e085a1d66943c97262",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "(a) Draw the V-I characteristics of silicon diode.\n(b) Explain the following terms :\n(i) minority carrier injection in forward bias\n(ii) breakdown voltage in reverse bias",
+      "solution": "**(a) The V-I characteristic of a silicon diode.**\n\n*To draw it:* one pair of axes, voltage \\(V\\) horizontal and current \\(I\\) vertical, with the origin at the centre so both biases are visible. **The two halves use different current scales** — label the upper axis in **mA** and the lower in \\(\\mu\\)A, or the reverse branch will be invisible beside the forward one.\n\n**Forward bias (first quadrant).** The current stays almost zero until the applied voltage reaches the **knee** or cut-in voltage, then rises very steeply, almost vertically.\n\n\\(V_{\\text{knee}} \\approx 0{\\cdot}7\\ \\mathrm{V}\\ \\text{for silicon} \\qquad\\left(\\approx 0{\\cdot}3\\ \\mathrm{V}\\ \\text{for germanium}\\right)\\)\n\n**Reverse bias (third quadrant).** A tiny, nearly **constant** reverse saturation current of a few microamperes, flat across tens of volts, until the **breakdown voltage** \\(V_{br}\\) is reached, where the curve turns sharply downward and the current grows without further increase in voltage.\n\n**The curve is strongly non-linear and not symmetric** — that asymmetry is the diode's entire usefulness, and it is why a diode rectifies.\n\n**(b)(i) Minority carrier injection in forward bias.**\n\n**In equilibrium a junction has a potential barrier** that holds back the majority carriers on each side. **A forward bias opposes and lowers that barrier**, so carriers can now cross in quantity:\n\n- **electrons** from the n-side cross into the **p-side**\n- **holes** from the p-side cross into the **n-side**\n\n**On arriving, each becomes a MINORITY carrier**, because electrons are the minority species in p-type material and holes are the minority species in n-type. Their concentration just beyond the junction rises far above its equilibrium value.\n\n**That rise is what \"injection\" names** — a carrier that was abundant on its own side is delivered into a region where its kind is scarce. The injected carriers then diffuse away from the junction and recombine, and the current needed to sustain that recombination is the diode's forward current.\n\n**(ii) Breakdown voltage in reverse bias.**\n\n**Under reverse bias the barrier is RAISED**, majority carriers cannot cross, and the only current is the small **reverse saturation current** carried by thermally generated minority carriers. It is essentially **independent of voltage** — raising the reverse bias does not produce more thermal pairs.\n\n**The breakdown voltage \\(V_{br}\\) is the critical reverse voltage at which that current suddenly rises very sharply**, the diode losing its blocking ability.\n\n**Two distinct mechanisms produce it:**\n\n- **Avalanche breakdown**, in a **lightly doped** junction with a wide depletion region. The field accelerates a minority carrier enough to ionise an atom by collision; the new carriers are accelerated in turn, and the multiplication runs away.\n- **Zener breakdown**, in a **heavily doped** junction with a very narrow depletion region. The field itself — of order \\(10^{8}\\ \\mathrm{V/m}\\) — pulls electrons straight out of covalent bonds, with no collision needed.\n\n**Breakdown is not damage in itself.** Provided the current is limited externally, the diode recovers when the voltage is reduced — which is exactly how a Zener diode is used as a voltage regulator, held deliberately in breakdown where its voltage is almost independent of current. Destruction follows only if the power dissipated overheats the junction."
+    },
+    {
+      "hash": "b29aa2fe606038640b4d46621259bc9aa82dcaa7e3d8dda44e53aafa31fde503",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Optical Instruments",
+      "stem": "(a) Why does one prefer to view the image formed at infinity than that formed at near point in microscope/telescope ?\n(b) Consider lenses \\(L_1\\), \\(L_2\\) and \\(L_3\\) as specified in the following table. Which of them will you select as objective and eyepiece for constructing best possible (i) telescope (ii) compound microscope ? Give reason for your answer.\n\n| Lens | \\(L_1\\) | \\(L_2\\) | \\(L_3\\) |\n|---|---|---|---|\n| Power | 6 D | 3 D | 10 D |\n| Aperture | 1 cm | 8 cm | 1 cm |",
+      "solution": "**(a) Why the image at infinity is preferred.**\n\n**Because the eye is RELAXED when it receives parallel light.**\n\nThe eye focuses by changing the curvature of its lens — **accommodation**, performed by the ciliary muscle. Light arriving **parallel** is brought to focus on the retina with the muscle completely at rest; light from a near object requires the lens to be made more convex, and the muscle to be held under continuous tension.\n\n**With the final image at infinity — \"normal adjustment\" — the ciliary muscle is unstrained**, so an observer can look through the instrument for long periods without fatigue. With the image at the near point the muscle is at maximum effort throughout, and the eye tires quickly.\n\n**The trade-off is real but small.** Near-point viewing gives slightly **greater** magnification — \\(\\left(1 + D/f_e\\right)\\) against \\(D/f_e\\) for the eyepiece. For astronomical observing or laboratory work lasting hours, comfort is worth that difference; the image is also steadier, since an accommodating eye drifts.\n\n**(b) Choosing the lenses.**\n\n**Convert the powers to focal lengths first** \\(\\left(f = 1/P\\right)\\):\n\n| Lens | Power | Focal length | Aperture |\n|---|---|---|---|\n| \\(L_1\\) | 6 D | 16\\(\\cdot\\)7 cm | 1 cm |\n| \\(L_2\\) | 3 D | 33\\(\\cdot\\)3 cm | 8 cm |\n| \\(L_3\\) | 10 D | 10 cm | 1 cm |\n\n**(i) Telescope — objective \\(L_2\\), eyepiece \\(L_3\\).**\n\n**The objective needs a LARGE focal length and a LARGE aperture**, and \\(L_2\\) is the only lens with either. Magnification is \\(m = f_o/f_e\\), so a long objective focal length raises it directly; and a wide aperture gathers more light from a faint, distant source and improves resolution, which goes as \\(\\lambda/D\\). \\(L_2\\)'s \\(8\\) cm aperture is eight times the others'.\n\n**The eyepiece needs a SHORT focal length**, since \\(f_e\\) sits in the denominator. \\(L_3\\), at \\(10\\) cm, is the shortest available.\n\n\\(m = \\dfrac{f_o}{f_e} = \\dfrac{33{\\cdot}3}{10} \\approx 3{\\cdot}3\\)\n\n**(ii) Compound microscope — objective \\(L_3\\), eyepiece \\(L_1\\).**\n\n**Here the objective needs the SHORTEST focal length**, the opposite of the telescope: magnification is \\(m = \\left(L/f_o\\right)\\left(1 + D/f_e\\right)\\) or \\(\\left(L/f_o\\right)\\left(D/f_e\\right)\\), and \\(f_o\\) is in the denominator. \\(L_3\\) at \\(10\\) cm — the highest power, \\(10\\) D — takes that role.\n\n**Both lenses should have SMALL apertures.** The object is close and brightly illuminated, so light-gathering is not the constraint; a large aperture would only worsen the aberrations. \\(L_2\\)'s \\(8\\) cm aperture makes it unsuitable for a microscope at either position, quite apart from its long focal length.\n\n**The eyepiece is then \\(L_1\\)** \\(\\left(16{\\cdot}7\\ \\mathrm{cm},\\ 1\\ \\mathrm{cm}\\right)\\) — short enough to magnify usefully, and longer than the objective, as a compound microscope requires.\n\n**The contrast is the point of the question.** A telescope wants a **long** objective and a **short** eyepiece; a microscope wants **both** short, with the objective shorter still. \\(L_2\\) is the natural telescope objective and useless in a microscope; \\(L_3\\) serves as eyepiece in one instrument and objective in the other."
+    }
+  ]
+}
