@@ -23,8 +23,20 @@
  *     that says "the adjoining figure" with no number is left UNRESOLVED.
  *   • A box that still contains body text is refused by `derive.py`, not shipped.
  *   • NOTHING IS ATTACHED until a human has seen it on a contact sheet and
- *     recorded the ref in `data/figures-review/<source_file>.json`. `--apply`
+ *     recorded the ref in `figures-review/<source_file>.json`. `--apply`
  *     silently skips anything not signed off.
+ *
+ * WHEN THE DERIVATION REFUSES A BOX, USE THE PICKER — do not eyeball coordinates.
+ *   python scripts/lib/figures/pick.py <pdf> <page> out.png
+ * renders the page with every candidate region OUTLINED AND NUMBERED and writes
+ * an index beside it; `pick.union_of(index, [5, 8, 11])` turns the chosen numbers
+ * into a bbox for `byRef`. The split is the right way round — the machine
+ * measures edges, the person answers the only question needing judgement (WHICH
+ * of these is the figure). Reading four fractions off a coordinate grid instead
+ * needed a second pass on six of the first eleven anchors and, on a
+ * half-resolution composite, once cropped the NEIGHBOURING figure. With the
+ * picker that same page resolved first time: its candidate 10 is visibly a
+ * different example's figure, which is precisely what the eyeballed pass missed.
  * Geometry finding a box is not the box being right: on one chapter the
  * derivation was confident about all 40 boxes and one was the wrong picture.
  */
@@ -68,7 +80,49 @@ function triagedMisses(): Set<string> {
   return ids;
 }
 
-type CatEntry = { fig: string; page: number; bbox: [number, number, number, number] | null };
+type CatEntry = { fig: string; page: number; bbox: [number, number, number, number] | null; cap?: number[] };
+
+/**
+ * Propose a rough region around a caption whose figure the geometry refused.
+ *
+ * When `derive.py` cannot bound a figure it has still LOCATED ITS CAPTION, and a
+ * caption is a strong prior for where the figure is — in these books it sits
+ * directly under the drawing, occasionally beside it. Turning that into a
+ * generous region and letting `tighten.py` bound the ink inside it converts a
+ * row that would otherwise need a human to read the whole page into one that
+ * needs a human only to LOOK AT THE CROP, which they must do anyway.
+ *
+ * Deliberately generous and deliberately NOT clever: it reaches further up than
+ * down because that is where these books put the figure, and it is wide enough
+ * to hold a full column. Precision is `tighten.py`'s job; this only has to
+ * contain the figure. It is a PROPOSAL — every crop is still reviewed, and the
+ * failure it can produce (a region spanning two stacked figures) is exactly what
+ * the contact sheet shows.
+ *
+ * MEASURED HIT RATE: 2 CLEAN OUT OF 8 on the NCERT Physics/Science rows it was
+ * built for. That is why it is `--from-caption` and not the default. Of the six
+ * it got wrong, four leaked a column of text from a coloured side-box (whose
+ * lines are short AND not column-aligned, so neither prose test sees them) and
+ * two came back essentially empty, because the caption sat below a tall
+ * multi-part drawing the prior did not reach up to.
+ *
+ * The honest conclusion, recorded so the next person does not re-derive it: on
+ * these layouts a caption is a weak prior, and the reliable route is still a
+ * full-resolution page read and a coarse `byRef` region. Batching four pages
+ * into one composite to save reads was tried too and measured 1 clean of 4 —
+ * halving the resolution costs exactly the coordinate precision the region
+ * needs, and one crop came back showing the NEIGHBOURING figure.
+ */
+function regionFromCaption(cap: number[]): [number, number, number, number] {
+  const [x0, y0, x1, y1] = cap;
+  const cx = (x0 + x1) / 2;
+  return [
+    Math.max(0, cx - 0.26),
+    Math.max(0, y0 - 0.26),
+    Math.min(1, cx + 0.26),
+    Math.min(1, y1 + 0.02),
+  ];
+}
 type Row = { id: string; question_number: string | null; text: string | null; context: string | null };
 
 function client(): SupabaseClient {
@@ -129,6 +183,8 @@ async function main() {
   if (!sourceFile) throw new Error("usage: backfill.ts <source_file> [--apply] | --all-missing");
   const apply = args.includes("--apply");
   const onlyMiss = args.includes("--only-miss");
+  // Opt-in: propose a region from the caption when the geometry refused the box.
+  const fromCaption = args.includes("--from-caption");
   const misses = onlyMiss ? triagedMisses() : null;
 
   const src = resolveSource(sourceFile);
@@ -234,7 +290,24 @@ async function main() {
     const hits = byFig.get(nums[0]);
     if (!hits?.length) { unresolved.push(`${ref} — Fig. ${nums[0]} not in the catalogue`); continue; }
     if (hits.length > 1) { unresolved.push(`${ref} — Fig. ${nums[0]} printed on pages ${hits.map((h) => h.page).join(", ")}`); continue; }
-    if (!hits[0].bbox) { unresolved.push(`${ref} — Fig. ${nums[0]} has no derivable box`); continue; }
+    if (!hits[0].bbox) {
+      // Refused by the geometry — but if its CAPTION was located, that is enough
+      // to propose a region and tighten onto the ink inside it. Opt-in, because
+      // it is a weaker signal than a derived box and the operator should know
+      // which rows came this way when reading the sheet.
+      if (fromCaption && hits[0].cap) {
+        const region = regionFromCaption(hits[0].cap);
+        const t = spawnSync("python", [join(ROOT, "tighten.py"), src.pdf, String(hits[0].page), ...region.map(String)], { encoding: "utf8" });
+        if (t.status === 0) {
+          const res = JSON.parse(t.stdout) as { bbox: number[]; note: string };
+          mapped.push({ ref, id: r.id, fig: `${nums[0]} (from caption)`, page: hits[0].page, bbox: res.bbox });
+          console.log(`  ${ref}: proposed from the Fig. ${nums[0]} caption (${res.note}) — REVIEW CLOSELY`);
+          continue;
+        }
+      }
+      unresolved.push(`${ref} — Fig. ${nums[0]} has no derivable box`);
+      continue;
+    }
     mapped.push({ ref, id: r.id, fig: nums[0], page: hits[0].page, bbox: hits[0].bbox });
   }
   console.log(`\n${rows.length} flagged row(s) | MAPPED ${mapped.length} | UNRESOLVED ${unresolved.length}`);

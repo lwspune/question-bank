@@ -231,6 +231,17 @@ def cluster(rects):
     return closed + open_
 
 
+def capfrac(cap, W, H):
+    """The caption's own rectangle, in page fractions.
+
+    Recorded even on a REFUSED entry, and that is the point: when the geometry
+    cannot bound a figure it has still located the caption, and a caption is a
+    strong prior for where the figure is. Downstream that turns an unresolvable
+    row into a rough region to tighten rather than a page for a human to read.
+    """
+    return [round(cap.x0 / W, 4), round(cap.y0 / H, 4), round(cap.x1 / W, 4), round(cap.y1 / H, 4)]
+
+
 def gap(a, b):
     """Rect-to-rect distance (0 when they touch or overlap)."""
     dx = max(a.x0 - b.x1, b.x0 - a.x1, 0)
@@ -306,7 +317,7 @@ def main():
         for fignum, cap in caps:
             near = sorted(((gap(cap, c), i) for i, c in enumerate(clusters)))
             if not near or near[0][0] > CAPTION_REACH:
-                cat.append({"fig": fignum, "page": p, "bbox": None})
+                cat.append({"fig": fignum, "page": p, "bbox": None, "cap": capfrac(cap, W, H)})
                 problems.append(f"  NO CLUSTER   Fig. {fignum} p{p}")
                 continue
             idx = near[0][1]
@@ -381,7 +392,7 @@ def main():
             # a crop containing someone else's question is a defect nobody sees.
             leaked = [pr for pr in prose if box.intersects(pr) and (box & pr).get_area() > 0.2 * pr.get_area()]
             if leaked:
-                cat.append({"fig": fignum, "page": p, "bbox": None})
+                cat.append({"fig": fignum, "page": p, "bbox": None, "cap": capfrac(cap, W, H)})
                 problems.append(f"  LEAKS TEXT   Fig. {fignum} p{p} — no clean rectangle; hand-anchor")
                 continue
             cat.append(
