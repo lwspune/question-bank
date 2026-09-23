@@ -1,10 +1,155 @@
 {
-  "_readme": "Hand-anchored figure boxes, applied by scripts/figures/backfill.ts AFTER derive.py and winning over it. Fractional [x0,y0,x1,y1], page 0-based. Use for (a) a figure the derivation refuses because no clean rectangle exists on that layout, and (b) a derived box that is right but catches a stray line. Every entry carries a `why` — a coordinate with no reason behind it cannot be re-checked.",
+  "_readme": "Hand-anchored figure boxes, applied by scripts/figures/backfill.ts AFTER derive.py and winning over it. Fractional [x0,y0,x1,y1]; page 0-based. TWO keys per source file: `byFig` overrides a derived box for a printed figure number; `byRef` attaches a box straight to a question_number, for stems that say 'as shown in the figure' and print NO number at all \u2014 those cannot be joined by number however good the derivation is. Every entry carries a `why`: a coordinate with no reason behind it cannot be re-checked by anyone, including its author.",
   "NCERT_12_Maths__VectorAlgebra.pdf": {
-    "10.5": {
-      "page": 4,
-      "bbox": [0.6478, 0.3080, 0.9094, 0.4632],
-      "why": "derived top edge sat at 0.2897 and caught the line '(iii) Coinitial' (measured y 0.2897-0.3067). Three set-member rows share this figure, so for (i) Collinear and (ii) Equal that line is the WRONG sub-question's label printed above their diagram. Top moved just below it; nothing else changed."
+    "byFig": {
+      "10.5": {
+        "page": 4,
+        "bbox": [
+          0.6478,
+          0.308,
+          0.9094,
+          0.4632
+        ],
+        "why": "derived top edge sat at 0.2897 and caught the line '(iii) Coinitial' (measured y 0.2897-0.3067). Three set-member rows share this figure, so for (i) Collinear and (ii) Equal that line is the WRONG sub-question's label printed above their diagram. Top moved just below it; nothing else changed."
+      }
+    }
+  },
+  "StateBoard_12_Physics__Magnetic_Fields_Current.pdf": {
+    "byRef": {
+      "Solved Ex.10.1": {
+        "page": 2,
+        "bbox": [
+          0.135,
+          0.534,
+          0.495,
+          0.715
+        ],
+        "why": "Fig (a)/(b)/(c) \u2014 three axis diagrams the stem reads as one set ('in three different situations'); all three must be in the crop. Stem text ends 0.510, 'Fig. (c)' caption ends 0.705. Top nudged after the first crop review to drop a clipped half-line of prose. Box adjusted after crop review."
+      },
+      "Solved Ex.10.2": {
+        "page": 5,
+        "bbox": [
+          0.545,
+          0.66,
+          0.805,
+          0.825
+        ],
+        "why": "particle trajectory in the right column. Stem ends 0.635 ('coming out of the plane of the paper'), 'Solution:' begins 0.845, so the box sits between them. Top nudged after the first crop review to drop a clipped half-line of prose. Box adjusted after crop review."
+      },
+      "Solved Ex.10.5": {
+        "page": 13,
+        "bbox": [
+          0.17,
+          0.35,
+          0.47,
+          0.438
+        ],
+        "why": "THE FIGURE IS ON THE PAGE AFTER THE STEM. Example 10.5 starts on page 12 and its box there is text only; the two straight sections + arc are printed on page 13 inside the continuation box. Top nudged after the first crop review to drop a clipped half-line of prose. Box adjusted after crop review."
+      }
+    }
+  },
+  "StateBoard_12_Physics__Electrostatics.pdf": {
+    "byRef": {
+      "Solved Ex.8.11": {
+        "page": 11,
+        "bbox": [
+          0.362,
+          0.548,
+          0.516,
+          0.636
+        ],
+        "why": "square-of-four-charges diagram, set to the RIGHT of the stem inside the Example 8.11 box (not below it). Box adjusted after crop review."
+      },
+      "Solved Ex.8.16": {
+        "page": 20,
+        "bbox": [
+          0.155,
+          0.072,
+          0.485,
+          0.2
+        ],
+        "why": "FIGURE IS ON THE PAGE AFTER THE STEM. Example 8.16 begins bottom-right of page 19; the C1-C5 capacitor network is printed at the top of page 20. Box adjusted after crop review."
+      }
+    }
+  },
+  "StateBoard_11_Physics__Electrostatics.pdf": {
+    "byRef": {
+      "Solved Ex.10.4": {
+        "page": 6,
+        "bbox": [
+          0.5,
+          0.04,
+          0.835,
+          0.19
+        ],
+        "why": "'Fig. a: Position of charges' sits TOP-RIGHT while its stem (Example 10.4) is bottom-LEFT of the same page \u2014 position gives no clue which belongs to which, which is why this is hand-anchored rather than derived. Box adjusted after crop review."
+      },
+      "Solved Ex.10.6": {
+        "page": 9,
+        "bbox": [
+          0.13,
+          0.486,
+          0.45,
+          0.652
+        ],
+        "why": "'Fig (a): Position of charges' only. Fig (b) below it is part of the SOLUTION (the field vectors at P), not of the question \u2014 the stem says 'as shown in the Fig. a'. Box adjusted after crop review."
+      }
+    }
+  },
+  "StateBoard_12_Physics__Rotational_Dynamics.pdf": {
+    "byRef": {
+      "Solved Ex.1.4": {
+        "page": 8,
+        "bbox": [
+          0.185,
+          0.262,
+          0.475,
+          0.39
+        ],
+        "why": "merry-go-round vertical section. The rod lengths H=2.1 m and V=1.5 m that build r=3.0 m are printed ONLY on this drawing \u2014 the stem gives just theta=37 degrees, which is why the row is unanswerable without it."
+      }
+    }
+  },
+  "StateBoard_12_Physics__Thermodynamics.pdf": {
+    "byRef": {
+      "Solved Ex.4.9": {
+        "page": 21,
+        "bbox": [
+          0.14,
+          0.29,
+          0.3,
+          0.415
+        ],
+        "why": "Fig (a), the V-T diagram, ONLY. Fig (b) below it is the p-V curve that the question asks the student to produce \u2014 including it would print the answer. Right edge pulled in from 0.335 after review: it was catching the clipped right-hand text column that wraps beside the figure."
+      }
+    }
+  },
+  "StateBoard_11_Maths__Functions.pdf": {
+    "byRef": {
+      "6.1 SolvedEx.2": {
+        "page": 3,
+        "bbox": [
+          0.13,
+          0.652,
+          0.475,
+          0.872
+        ],
+        "why": "Fig. 6.14, the grid graph of y=g(x) with (-4,0), (-1,4) and (-6,-4) marked. The whole question is reading values off it; the stem supplies no coordinates at all. Bottom extended to take in the 'Fig. 6.14' caption."
+      }
+    }
+  },
+  "StateBoard_10_Geography__Population.pdf": {
+    "byRef": {
+      "Ex Q6": {
+        "page": 48,
+        "bbox": [
+          0.502,
+          0.213,
+          0.908,
+          0.585
+        ],
+        "why": "Figure 6.1 (b), the India Population Density choropleth \u2014 the RIGHT-hand map of the pair on this page. The derivation refused it because 'Fig. 6.1' resolves to two entries (the (a) and (b) maps are both captioned 6.1), and the stem asks specifically for (b). Its two siblings Ex Q5(A)/(B) already carry images, so this was a missed attach rather than a chapter without figures."
+      }
     }
   }
 }
