@@ -200,7 +200,31 @@ async function main() {
     // A hand-anchored box bypasses the number-join entirely — see `byRef` above.
     const hand = byRef[ref];
     if (hand) {
-      mapped.push({ ref, id: r.id, fig: "hand", page: hand.page, bbox: hand.bbox });
+      // TIGHTEN IT: the hand input is a ROUGH REGION, not a final answer.
+      // Authoring exact edges by eye needed a second pass on SIX of the first
+      // eleven anchors, every time for the same two reasons — an edge just
+      // inside the drawing (a clipped charge label) or just outside it (a shaved
+      // line of the text column wrapping alongside). `tighten.py` bounds the ink
+      // within the region and applies the same body-text trim the derived path
+      // uses. It never looks outside the region, so it cannot wander onto a
+      // neighbouring figure: the human still says WHICH figure, geometry says
+      // where its edges are. Validated against those eleven reviewed boxes —
+      // agrees within 1-3% on seven and proposes a tighter box on four.
+      const t = spawnSync(
+        "python",
+        [join(ROOT, "tighten.py"), src.pdf, String(hand.page), ...hand.bbox.map(String)],
+        { encoding: "utf8" },
+      );
+      let bbox = hand.bbox as number[];
+      if (t.status === 0) {
+        const res = JSON.parse(t.stdout) as { bbox: number[]; moved: number[]; note: string };
+        const moved = Math.max(...res.moved.map(Math.abs));
+        bbox = res.bbox;
+        console.log(`  ${ref}: tightened by ${moved.toFixed(4)} (${res.note})`);
+      } else {
+        console.log(`  ${ref}: tighten failed, using the hand box as given`);
+      }
+      mapped.push({ ref, id: r.id, fig: "hand", page: hand.page, bbox });
       continue;
     }
     if (nums.length !== 1) {
