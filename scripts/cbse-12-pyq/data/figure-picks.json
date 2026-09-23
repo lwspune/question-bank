@@ -363,6 +363,28 @@
         1
       ],
       "note": "Q7 p-n junction potential-barrier plot: three curves rising from a common foot to three plateaus labelled 1 (highest), 2 (middle) and 3 (lowest), with the unbiased barrier V_0 marked by a vertical double-headed arrow. Page 6 carries TWO regions belonging to DIFFERENT questions, so the one-region rule refused and a union would merge them: [1] y259-340 is Q6's lens-pair sectional drawing, [2] y447-568 is this barrier plot. Checked against the rendered page. REQUIRED -- every option asserts which curve lies ABOVE and which BELOW the unbiased level, and that ordering exists nowhere but the drawing; the transcription deliberately WITHHELD it for that reason. Page choice: this paper prints Hindi and English on adjacent pages carrying identical figures -- render p05 is the Hindi copy, p06 the English one, and the pipeline's 0-indexed page 6 is the English page, consistent with the rest of the corpus. band [0,1] sets PAD=0."
+    },
+    "a7ba263babadd0585358f3f84bf74bb4573186cc7dc81c6c2d42fef2b2fc6949": {
+      "pid": "2026-55-4-2",
+      "page": 16,
+      "mode": "region",
+      "index": 1,
+      "band": [
+        0,
+        1
+      ],
+      "note": "Q27 plot of induced current I against time t: a straight line falling from I = 0.3 A at t = 0 to zero at t = 0.6 s, so the area under it is a triangle. REQUIRED -- the stem gives no current value and no duration at all, and the charge that flowed IS that area, which every later part depends on. Page 16 carries TWO regions belonging to DIFFERENT questions, so the one-region rule refused and a union would merge them: [1] y287-368 is Q27's current-time graph, [2] y545-653 is Q28's circuit. Checked against the rendered page (English, printed page 17). band [0,1] sets PAD=0."
+    },
+    "f00de7d3224be3f4cc6703c2b55fed23aa8b4369ace7bb5a7941e4b3626e4163": {
+      "pid": "2026-55-4-2",
+      "page": 16,
+      "mode": "region",
+      "index": 2,
+      "band": [
+        0,
+        1
+      ],
+      "note": "Q28(b) circuit: a 6 V cell and a 2 ohm resistor along the top between the left rail and node P, a 9 V cell down the right side, two 3 ohm resistors along the bottom either side of node Q, and the 1 ohm resistor bridging P to Q. REQUIRED -- the question asks for the current in the 1 ohm resistor and its DIRECTION, and neither the topology nor either cell's polarity appears anywhere in the text. Page 16 carries TWO regions belonging to DIFFERENT questions, so the one-region rule refused and a union would merge them: [1] y287-368 is Q27's current-time graph, [2] y545-653 is Q28's circuit. Checked against the rendered page (English, printed page 17). band [0,1] sets PAD=0."
     }
   },
   "_why_ms": "The 2024 QUESTION PAPERS store the lower slices of every figure as corrupt data: content repeated 3x horizontally with the remainder black. It is in the source bytes, not the renderer - the extracted PNG is corrupt too - and it is uniform across a series, so no sibling paper rescues it (all three members measure 0.39-0.55 black). The 2024 MARKING SCHEMES reprint the same figures cleanly (0.00 black), so they are the source of record for these."

@@ -1,0 +1,228 @@
+{
+  "paper": "55/4/2",
+  "year": 2026,
+  "paperId": "2026-55-4-2",
+  "markingScheme": "out/2026-55-4-2/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "63c3be117f4121fb014870a24f0cb0ebe0c4f71f57417af1430577077966aa8b",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "A wire is gradually stretched to make it 100% longer. Its resistance will increase by :",
+      "options": [
+        {
+          "label": "A",
+          "text": "100%"
+        },
+        {
+          "label": "B",
+          "text": "200%"
+        },
+        {
+          "label": "C",
+          "text": "300%"
+        },
+        {
+          "label": "D",
+          "text": "400%"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): 300%.**\n\n**Stretching keeps the VOLUME constant** — no copper is added, so the wire grows longer and thinner together. That is the whole question.\n\n\\(V = AL = \\text{constant} \\qquad\\Longrightarrow\\qquad A = \\dfrac{V}{L}\\)\n\n\\(R = \\dfrac{\\rho L}{A} = \\dfrac{\\rho L^{2}}{V} \\qquad\\Longrightarrow\\qquad \\boxed{\\ R \\propto L^{2}\\ }\\)\n\n**\"100% longer\" means the length DOUBLES:**\n\n\\(L' = 2L \\qquad\\Longrightarrow\\qquad R' = \\left(2\\right)^{2}R = 4R\\)\n\n**Now read the question carefully.** It asks by how much the resistance **INCREASES**, not what it becomes:\n\n\\(\\Delta R = R' - R = 4R - R = 3R\\)\n\n\\(\\dfrac{\\Delta R}{R} = 3 = \\boxed{\\ 300\\%\\ }\\)\n\n**Option (D), 400%, is the trap, and it is the one this question exists for.** \\(4R\\) is what the resistance **becomes** — an increase **TO** \\(400\\%\\) of its old value, which is an increase **BY** \\(300\\%\\). The two phrasings differ by exactly one whole \\(R\\), and the options are placed to catch the confusion.\n\n**Both effects push the same way**, which is why the exponent is \\(2\\): the doubled length raises \\(R\\) by a factor of \\(2\\), and since \\(A \\propto 1/L\\) the halved cross-section raises it by another factor of \\(2\\).\n\n**Option (A), 100%, is the answer with the area held fixed** — the slip of using \\(R = \\rho L/A\\) and changing only \\(L\\). A stretched wire cannot keep its cross-section.\n\n**Option (B), 200%, would be the answer if \\(R\\) simply tripled**, which corresponds to no clean relation here.\n\n**The general rule worth carrying.** For a wire stretched at constant volume to \\(n\\) times its length:\n\n\\(R' = n^{2}R, \\qquad \\dfrac{\\Delta R}{R} = n^{2} - 1\\)\n\nSo \\(n = 2\\) gives \\(300\\%\\), \\(n = 3\\) gives \\(800\\%\\), and a mere \\(1\\%\\) extension gives about \\(2\\%\\) — the linear approximation \\(\\Delta R/R \\approx 2\\Delta L/L\\), valid only for small strains.\n\n**Note the resistivity is unchanged.** \\(\\rho\\) is a property of the material, not of the specimen's shape, so stretching leaves it alone. Only the geometry responds."
+    },
+    {
+      "hash": "3ae9a2865ca2f73cb5e8a73b6579a865f498b3b8be5961fb2c7e90795e17ec37",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "A closely wound long solenoid of self-inductance L is cut into two identical solenoids. The value of self-inductance of each small solenoid will be :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{L}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "2L"
+        },
+        {
+          "label": "C",
+          "text": "3L"
+        },
+        {
+          "label": "D",
+          "text": "4L"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): \\(\\dfrac{L}{2}\\).**\n\n**The self-inductance of a long solenoid:**\n\n\\(L = \\dfrac{\\mu_0N^{2}A}{l}\\)\n\n**Cutting it into two identical solenoids halves BOTH the number of turns and the length.** Each piece has \\(N/2\\) turns in a length \\(l/2\\), with the cross-sectional area \\(A\\) unchanged.\n\n\\(L' = \\dfrac{\\mu_0\\left(N/2\\right)^{2}A}{l/2} = \\dfrac{\\mu_0 N^{2}A/4}{l/2} = \\dfrac{\\mu_0N^{2}A}{2l}\\)\n\n\\(\\boxed{\\ L' = \\dfrac{L}{2}\\ }\\)\n\n**The turns fall by a factor of 4 and the length by a factor of 2**, and the net effect is a halving. Treating \\(N\\) as fixed — as if the cut left both halves with the full winding — would give \\(2L\\), which is option (B).\n\n**The cleaner way to see it** is to write the inductance in terms of the turns per unit length, \\(n = N/l\\):\n\n\\(L = \\mu_0n^{2}Al\\)\n\n**Cutting the solenoid does NOT change \\(n\\)** — the winding is just as dense on each half — nor does it change \\(A\\). Only the length \\(l\\) halves, and \\(L \\propto l\\):\n\n\\(L' = \\mu_0n^{2}A\\left(\\dfrac{l}{2}\\right) = \\dfrac{L}{2}\\ \\checkmark\\)\n\n**In this form the answer needs no algebra at all.** Inductance per unit length is a property of the winding, so half the solenoid has half the inductance — the same way half a resistor wire has half the resistance.\n\n**\"Closely wound\" and \"long\" are both load-bearing.** The formula \\(L = \\mu_0n^{2}Al\\) assumes the field inside is uniform and the end effects negligible, which requires \\(l \\gg\\) the diameter. **Cutting a long solenoid in two gives two solenoids that are still long**, so the formula survives the cut — it would not if the pieces became short and stubby.\n\n**A check by recombination.** Placing the two halves end to end, far enough apart that they do not couple, gives \\(L/2 + L/2 = L\\) \\(\\checkmark\\). Brought back into contact they **do** couple, and mutual inductance restores the original \\(L\\) rather than giving \\(L/2 + L/2\\) — which is a reminder that inductances add simply only when their fields do not overlap.\n\n**Where the energy goes.** With the same current \\(I\\), each half stores \\(\\tfrac{1}{2}\\left(L/2\\right)I^{2}\\), and the two together store the original \\(\\tfrac{1}{2}LI^{2}\\). Cutting the solenoid has not destroyed any energy, only divided the space the field occupies."
+    },
+    {
+      "hash": "b1eaaba3e15a8f2ef743c93668ab401c7dd3b3864c7a8c66254f5a1fcdf175c9",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Which of the following characteristics of electrons determines the current in the conductor ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Drift velocity only"
+        },
+        {
+          "label": "B",
+          "text": "Thermal velocity only"
+        },
+        {
+          "label": "C",
+          "text": "Both drift velocity and thermal velocity"
+        },
+        {
+          "label": "D",
+          "text": "Neither drift nor thermal velocity"
+        }
+      ],
+      "answer": "A",
+      "solution": "**The answer is (A): drift velocity only.**\n\n**The current in a conductor:**\n\n\\(I = neAv_d\\)\n\n**and the only velocity in it is \\(v_d\\), the DRIFT velocity** — the small average velocity the electrons acquire along the wire under the applied field.\n\n**Why thermal velocity contributes NOTHING.** Free electrons in a metal move constantly at enormous speeds — of order \\(10^{5}\\) to \\(10^{6}\\) m/s at room temperature — but those motions are **random in direction**. Averaged over the whole electron population,\n\n\\(\\left\\langle\\vec{v}_{\\text{thermal}}\\right\\rangle = 0\\)\n\nso for every electron crossing a given cross-section one way there is, on average, another crossing it the other way. **Random motion transports no net charge**, and a wire with no battery connected carries no current despite all that frantic activity.\n\n**The field superimposes a tiny DRIFT on that randomness.** Between collisions each electron is accelerated slightly along the field, and after each collision the acquired velocity is lost:\n\n\\(v_d = \\dfrac{eE\\tau}{m}\\)\n\nwhere \\(\\tau\\) is the mean free time. **It is this small systematic bias — not the speed of the electrons — that constitutes the current.**\n\n**The size difference is striking.** For a typical copper wire the drift velocity is a fraction of a **millimetre per second**, while the thermal speed is around \\(10^{6}\\) m/s — a ratio of about \\(10^{10}\\). The drift is a whisper on top of a roar, and yet it is the whole of the current.\n\n**A question this raises, and its answer.** If electrons drift so slowly, why does a lamp light the instant the switch closes? **Because it is the electric field that propagates, at nearly the speed of light**, not the electrons. The field is established all along the wire almost at once, and every electron in the circuit — including those already in the filament — begins drifting together.\n\n**Option (C), both, is the plausible-sounding distractor.** Thermal motion is real and important, but it affects the current only **indirectly**, through \\(\\tau\\): a hotter lattice vibrates more, scatters electrons more often, shortens the mean free time and so lowers \\(v_d\\). **That is how temperature raises resistance** — by reducing the drift, not by adding a thermal contribution to the current.\n\n**Option (D) would make current impossible**, and option (B) reverses the physics entirely: thermal velocity is precisely the part that cancels."
+    },
+    {
+      "hash": "3ec0b5fde8e4de5f442f22614b1d8c515e2102a8f8b47d06938d880197ed4621",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "Torque on a Current Loop and Magnetic Dipole",
+      "stem": "A coil having 100 closely wound turns and area of cross-section \\(300\\ \\mathrm{mm^2}\\) carries a current of 5 mA. The magnitude of the magnetic moment associated with the coil is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(6 \\times 10^{-4}\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3 \\times 10^{-5}\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}5 \\times 10^{-4}\\ \\mathrm{Am^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(5 \\times 10^{-5}\\ \\mathrm{Am^2}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(1{\\cdot}5\\times 10^{-4}\\ \\mathrm{A\\,m^{2}}\\).**\n\n**The magnetic moment of a current loop of \\(N\\) turns:**\n\n\\(m = NIA\\)\n\n**The whole risk here is in the UNITS**, so convert first.\n\n\\(A = 300\\ \\mathrm{mm^{2}} = 300\\times 10^{-6}\\ \\mathrm{m^{2}} = 3\\times 10^{-4}\\ \\mathrm{m^{2}}\\)\n\n\\(I = 5\\ \\mathrm{mA} = 5\\times 10^{-3}\\ \\mathrm{A}\\)\n\n**Note the AREA conversion is \\(10^{-6}\\), not \\(10^{-3}\\).** A square millimetre is a millimetre **each way**, so \\(1\\ \\mathrm{mm^{2}} = \\left(10^{-3}\\right)^{2} = 10^{-6}\\ \\mathrm{m^{2}}\\). Using \\(10^{-3}\\) inflates the answer a thousand-fold, and it is the single commonest error in this calculation.\n\n**Substituting:**\n\n\\(m = 100 \\times \\left(5\\times 10^{-3}\\right) \\times \\left(3\\times 10^{-4}\\right)\\)\n\n\\(m = 100 \\times 15\\times 10^{-7} = 1500\\times 10^{-7}\\)\n\n\\(\\boxed{\\ m = 1{\\cdot}5\\times 10^{-4}\\ \\mathrm{A\\,m^{2}}\\ }\\)\n\n**Why \\(N\\) multiplies rather than complicates.** Each turn is a separate current loop of the same area carrying the same current, and their moments all point the same way, so they simply add. A hundred closely wound turns behave as one loop of a hundred times the moment.\n\n**The direction**, which the question does not ask for but is half the quantity: \\(\\vec{m}\\) is **perpendicular to the plane of the coil**, in the sense given by the right-hand rule — curl the fingers with the current and the thumb points along \\(\\vec{m}\\).\n\n**What the magnetic moment is for.** It is the single quantity that determines how a coil behaves in an external field:\n\n\\(\\vec{\\tau} = \\vec{m}\\times\\vec{B}, \\qquad U = -\\vec{m}\\cdot\\vec{B}\\)\n\n**Two coils of the same \\(m\\) are indistinguishable from outside**, whatever their turns, current and area separately are. That is why a coil of a thousand tiny turns at a microamp can substitute for a single large loop carrying a milliamp.\n\n**A sense of scale.** \\(1{\\cdot}5\\times 10^{-4}\\ \\mathrm{A\\,m^{2}}\\) is small: in the Earth's field of about \\(5\\times 10^{-5}\\) T it would feel a maximum torque of only \\(7{\\cdot}5\\times 10^{-9}\\) N m. A compass needle's moment is of order \\(10^{-2}\\ \\mathrm{A\\,m^{2}}\\), some hundred times larger — which is why a galvanometer needs a strong permanent magnet rather than the Earth's field."
+    },
+    {
+      "hash": "8598df298ce11aa4d23f0d1d196679d0c3fc3a63ee9b81e153b0e2a8fc931a68",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Photoelectric Effect and its Experimental Study",
+      "stem": "In an experiment on photoelectric emission, the intensity of incident radiation is halved keeping its frequency constant. As a result :",
+      "options": [
+        {
+          "label": "A",
+          "text": "cut-off potential will increase."
+        },
+        {
+          "label": "B",
+          "text": "maximum kinetic energy of photoelectrons will remain the same."
+        },
+        {
+          "label": "C",
+          "text": "photocurrent will increase."
+        },
+        {
+          "label": "D",
+          "text": "cut-off potential will decrease."
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): the maximum kinetic energy of photoelectrons will remain the same.**\n\n**Einstein's photoelectric equation contains no reference to intensity:**\n\n\\(K_{\\max} = h\\nu - \\phi_0\\)\n\n**Only the frequency \\(\\nu\\) and the work function \\(\\phi_0\\) appear**, and the question holds the frequency constant while changing nothing about the surface. So \\(K_{\\max}\\) cannot change.\n\n**Why intensity is irrelevant to the energy.** Intensity fixes the **number of photons** arriving each second, not the energy of any one of them. **A photon is absorbed whole by a single electron** — all or nothing, and it cannot be topped up by its neighbours — so each electron receives exactly \\(h\\nu\\) whether the beam is bright or faint.\n\n\\(\\text{intensity halved}\\ \\Longrightarrow\\ \\text{half as MANY photons}, \\text{ each of the SAME energy}\\)\n\n**Options (A) and (D) both fail for the same reason.** The cut-off (stopping) potential is defined by\n\n\\(eV_0 = K_{\\max} = h\\nu - \\phi_0\\)\n\nso it too depends only on frequency and work function. **It neither increases nor decreases** — it stays exactly where it was, which is why the question offers both directions and neither is right.\n\n**Option (C) has the right quantity but the WRONG DIRECTION.** The photocurrent **does** respond to intensity — it is the one thing that does — but halving the intensity **halves** the current, it does not increase it:\n\n\\(\\text{photocurrent} \\propto \\text{intensity}\\)\n\nHalf as many photons per second liberate half as many photoelectrons per second, and current is charge per second.\n\n**So the experiment changes exactly one thing**: the saturation photocurrent falls to half. The stopping potential, the maximum kinetic energy and the threshold frequency are all untouched.\n\n**Why this is the decisive experiment for the photon picture.** The wave theory predicts the opposite: a more intense wave has a larger field amplitude and should shake electrons loose with **more** energy, and a faint beam should need time to accumulate enough energy to emit anything. Neither happens. **Emission is instantaneous even at very low intensity, and the energy per electron is fixed by colour alone** — which is what Einstein's quantised photon explains and the wave picture cannot.\n\n**A useful way to hold the pair.** Frequency controls how **energetic** each photoelectron is; intensity controls how **many** there are. Change one and the other is unaffected."
+    },
+    {
+      "hash": "26e0b2c756293fb8b5c8eff1b53c1db380530c5c7f3899925ce7b51327d05d76",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Reflection by Spherical Mirrors",
+      "stem": "A concave mirror of radius of curvature 16 cm produces two-times enlarged real image of an object kept in front of it. Find the position of the object.",
+      "solution": "**A concave mirror producing a REAL enlarged image**, so the magnification is negative — real images in a mirror are inverted:\n\n\\(m = -2\\)\n\n**The focal length.** For a mirror \\(f = R/2\\), and with the concave-mirror sign convention \\(R = -16\\) cm:\n\n\\(f = \\dfrac{R}{2} = -8\\ \\mathrm{cm}\\)\n\n**From the magnification:**\n\n\\(m = -\\dfrac{v}{u} = -2 \\qquad\\Longrightarrow\\qquad v = 2u\\)\n\n**Substituting into the mirror formula:**\n\n\\(\\dfrac{1}{v} + \\dfrac{1}{u} = \\dfrac{1}{f}\\)\n\n\\(\\dfrac{1}{2u} + \\dfrac{1}{u} = \\dfrac{1}{-8}\\)\n\n\\(\\dfrac{1 + 2}{2u} = -\\dfrac{1}{8} \\qquad\\Longrightarrow\\qquad \\dfrac{3}{2u} = -\\dfrac{1}{8}\\)\n\n\\(2u = -24 \\qquad\\Longrightarrow\\qquad \\boxed{\\ u = -12\\ \\mathrm{cm}\\ }\\)\n\n**The object is 12 cm in front of the mirror.**\n\n*Checking:* \\(v = 2u = -24\\) cm — a real image \\(24\\) cm in front, on the same side as the object. And \\(m = -v/u = -\\left(-24\\right)/\\left(-12\\right) = -2\\) \\(\\checkmark\\): inverted and twice the size.\n\n**The sign of \\(m\\) is what the word REAL supplies.** Had the image been **virtual** and enlarged, \\(m = +2\\) would give \\(v = -2u\\) and lead to \\(u = -4\\) cm — an object inside the focal length. **Both are legitimate two-times-enlarged images of the same mirror**, and only the word \"real\" picks between them. Reading past it is the way to lose this question.\n\n**A geometric check.** The object sits at \\(12\\) cm, which lies **between \\(f = 8\\) cm and \\(2f = 16\\) cm** — exactly the region where a concave mirror forms a real, inverted, **magnified** image beyond \\(2f\\). The image at \\(24\\) cm is indeed beyond \\(2f\\) \\(\\checkmark\\). Had the object been outside \\(2f\\) the image would have been **diminished**; at \\(2f\\) exactly, the same size.\n\n**Why the two distances are \\(12\\) and \\(24\\).** They must satisfy \\(v = 2u\\) and sum reciprocally to \\(1/f\\); the \\(1{:}2\\) ratio forces \\(u = 3f/2\\) and \\(v = 3f\\) for any concave mirror, so \\(f = 8\\) gives \\(12\\) and \\(24\\) immediately. For a magnification of \\(m\\), the general result is \\(u = f\\left(1 + 1/m\\right)\\) in magnitudes.\n\n**A note on the radius.** \\(R = 16\\) cm was given, not \\(f\\), so the halving is a required step — using \\(f = 16\\) would give \\(u = 24\\) cm, a self-consistent but wrong answer that no later check would catch."
+    },
+    {
+      "hash": "be61211c9edccc6ad5e49f0d44bdf35a4522f85be9ea154c229b8cf5c2304424",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Size of the Nucleus",
+      "stem": "Prove that the density of nuclear matter is same for all nuclei.",
+      "solution": "**To prove: the density of nuclear matter is the same for ALL nuclei.**\n\n**Step 1 — the nuclear radius.** Experiment (Rutherford scattering and its successors) gives\n\n\\(R = R_0A^{1/3}\\)\n\nwhere \\(A\\) is the mass number and \\(R_0 = 1{\\cdot}2\\times 10^{-15}\\ \\mathrm{m}\\) is the same constant for every nucleus.\n\n**Step 2 — the volume.** Treating the nucleus as a sphere,\n\n\\(V = \\dfrac{4}{3}\\pi R^{3} = \\dfrac{4}{3}\\pi\\left(R_0A^{1/3}\\right)^{3} = \\dfrac{4}{3}\\pi R_0^{3}A\\)\n\n**The cube undoes the cube root, so the volume is PROPORTIONAL TO \\(A\\)** — that is the pivot of the whole proof.\n\n\\(V \\propto A\\)\n\n**Step 3 — the mass.** A nucleus of mass number \\(A\\) contains \\(A\\) nucleons, each of mass close to \\(m = 1{\\cdot}67\\times 10^{-27}\\) kg:\n\n\\(M = Am\\)\n\n\\(M \\propto A\\)\n\n**Step 4 — the density.**\n\n\\(\\rho = \\dfrac{M}{V} = \\dfrac{Am}{\\tfrac{4}{3}\\pi R_0^{3}A}\\)\n\n**The \\(A\\) cancels:**\n\n\\(\\boxed{\\ \\rho = \\dfrac{3m}{4\\pi R_0^{3}} \\quad\\text{— independent of } A\\ }\\)\n\n**Since \\(m\\) and \\(R_0\\) are both universal constants, so is \\(\\rho\\).** Hydrogen and uranium have the same nuclear density. **Proved.**\n\n**The numerical value:**\n\n\\(\\rho = \\dfrac{3\\left(1{\\cdot}67\\times 10^{-27}\\right)}{4\\pi\\left(1{\\cdot}2\\times 10^{-15}\\right)^{3}} = \\dfrac{5{\\cdot}01\\times 10^{-27}}{2{\\cdot}17\\times 10^{-44}} \\approx 2{\\cdot}3\\times 10^{17}\\ \\mathrm{kg\\,m^{-3}}\\)\n\n**That is about \\(10^{14}\\) times the density of water** — a teaspoonful would weigh some hundred million tonnes. It is also, to within a factor of a few, the density of a **neutron star**, which is nuclear matter held together by gravity instead of by the strong force.\n\n**What the result MEANS physically.** Constant density means each nucleon occupies its own fixed volume and does not compress its neighbours — **nuclear matter is essentially incompressible**, like a drop of liquid. That is the basis of the **liquid-drop model** of the nucleus, and it is why \\(R \\propto A^{1/3}\\) in the first place: packing \\(A\\) incompressible spheres gives a volume proportional to \\(A\\) and hence a radius proportional to \\(A^{1/3}\\).\n\n**The underlying cause is the short-ranged nuclear force with its repulsive core.** Each nucleon attracts only its immediate neighbours (saturation) and refuses to be pushed closer than about \\(0{\\cdot}8\\) fm, so adding nucleons enlarges the nucleus rather than densifying it.\n\n**A caution on the argument's direction.** \\(R = R_0A^{1/3}\\) is an **experimental** result, not a derivation, so this proof shows that constant density **follows from** the measured radii. The two statements are equivalent, and the empirical input is the radius law."
+    },
+    {
+      "hash": "d8454df5f3ca6ee72a49fb8d97e70c0a8994067cf48ee4199c5a9c6c00b4a128",
+      "ref": "Q24",
+      "questionNumber": "24",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Bohr Model of the Hydrogen Atom",
+      "stem": "In Bohr model of hydrogen atom, calculate :\n\n(a) the radius of the innermost electron orbit, and\n\n(b) the speed of electron in this orbit.",
+      "solution": "**(a) The radius of the innermost orbit.**\n\n**Two conditions define a Bohr orbit.** The Coulomb attraction supplies the centripetal force,\n\n\\(\\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{e^{2}}{r^{2}} = \\dfrac{mv^{2}}{r} \\qquad\\Longrightarrow\\qquad mv^{2} = \\dfrac{e^{2}}{4\\pi\\varepsilon_0 r}\\)\n\nand the angular momentum is quantised,\n\n\\(mvr = \\dfrac{nh}{2\\pi}\\)\n\n**Eliminating \\(v\\)** between them gives\n\n\\(r_n = \\dfrac{n^{2}h^{2}\\varepsilon_0}{\\pi me^{2}}\\)\n\n**For the innermost orbit, \\(n = 1\\):**\n\n\\(r_1 = \\dfrac{\\left(6{\\cdot}63\\times 10^{-34}\\right)^{2}\\left(8{\\cdot}85\\times 10^{-12}\\right)}{\\pi\\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(1{\\cdot}6\\times 10^{-19}\\right)^{2}}\\)\n\n**Numerator:** \\(\\left(4{\\cdot}40\\times 10^{-67}\\right)\\left(8{\\cdot}85\\times 10^{-12}\\right) = 3{\\cdot}89\\times 10^{-78}\\)\n\n**Denominator:** \\(\\pi\\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(2{\\cdot}56\\times 10^{-38}\\right) = 7{\\cdot}32\\times 10^{-68}\\)\n\n\\(\\boxed{\\ r_1 = 5{\\cdot}3\\times 10^{-11}\\ \\mathrm{m} = 0{\\cdot}53\\ \\text{angstrom}\\ }\\)\n\n**This is the BOHR RADIUS \\(a_0\\)**, and it sets the scale of every atom — which is why atomic sizes cluster around one angstrom.\n\n**(b) The speed in that orbit.**\n\n**From the quantisation condition**, with \\(r_1\\) now known:\n\n\\(v_1 = \\dfrac{h}{2\\pi m r_1} = \\dfrac{6{\\cdot}63\\times 10^{-34}}{2\\pi\\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(5{\\cdot}3\\times 10^{-11}\\right)}\\)\n\n**Denominator:** \\(2\\pi\\times 9{\\cdot}1\\times 5{\\cdot}3\\times 10^{-42} = 3{\\cdot}03\\times 10^{-40}\\)\n\n\\(\\boxed{\\ v_1 = 2{\\cdot}2\\times 10^{6}\\ \\mathrm{m\\,s^{-1}}\\ }\\)\n\n*Equivalently, from the force balance:* \\(v_1 = e/\\sqrt{4\\pi\\varepsilon_0 m r_1}\\), which gives the same figure.\n\n**The tidiest check is the fine-structure constant.**\n\n\\(v_n = \\dfrac{c}{137\\,n} \\qquad\\Longrightarrow\\qquad v_1 = \\dfrac{3\\times 10^{8}}{137} = 2{\\cdot}19\\times 10^{6}\\ \\mathrm{m\\,s^{-1}}\\ \\checkmark\\)\n\n**So the ground-state electron moves at about \\(0{\\cdot}73\\%\\) of the speed of light** — fast, but slow enough that the non-relativistic Bohr treatment is accurate to within about one part in \\(10^{4}\\). **That is a fact about hydrogen specifically**: for a heavy atom's innermost electron \\(v \\approx Zc/137\\), and by \\(Z \\approx 80\\) the electron is genuinely relativistic, which is why gold is yellow and mercury is liquid.\n\n**Two consequences worth noting.** The orbital period is \\(T = 2\\pi r_1/v_1 = 1{\\cdot}5\\times 10^{-16}\\) s, so the electron circles some \\(6{\\cdot}6\\times 10^{15}\\) times a second. And the kinetic energy \\(\\tfrac{1}{2}mv_1^{2} = 2{\\cdot}2\\times 10^{-18}\\) J \\(= 13{\\cdot}6\\) eV — equal in magnitude to the total energy, as the virial theorem requires."
+    },
+    {
+      "hash": "ad61cbbed08b3f120eed384c9e4dc2ed911a32df483a75cdfb6a54cd9fb71f41",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "What are microwaves ? How are they produced ? Give any two uses of microwaves.",
+      "solution": "**What microwaves are.**\n\n**Microwaves are electromagnetic waves of SHORT wavelength at the high-frequency end of the radio band**, with\n\n\\(\\text{frequency} \\approx 10^{9}\\ \\text{to}\\ 3\\times 10^{11}\\ \\mathrm{Hz}\\ \\left(\\text{gigahertz range}\\right)\\)\n\n\\(\\text{wavelength} \\approx 0{\\cdot}3\\ \\mathrm{m}\\ \\text{down to}\\ 1\\ \\mathrm{mm}\\)\n\nThey sit **between radio waves and infrared** in the electromagnetic spectrum, travel at \\(c\\) in vacuum, and like every other band obey Maxwell's equations. Their photon energy is of order \\(10^{-5}\\) to \\(10^{-3}\\) eV.\n\n**How they are produced.**\n\n**By special vacuum tubes in which electrons oscillate at microwave frequencies** — the oscillating charges radiate at the frequency of their motion. The standard devices are:\n\n- the **klystron**, which velocity-modulates an electron beam and bunches it in a drift tube\n- the **magnetron**, in which electrons spiral in a magnetic field past resonant cavities *(this is the source in a domestic microwave oven)*\n- the **Gunn diode**, a solid-state oscillator using a negative-resistance effect in gallium arsenide\n\n**An ordinary LC circuit cannot reach these frequencies.** At gigahertz rates the inductance and capacitance required become impractically small, and the circuit radiates away its own energy. That is why microwave generation needs purpose-built resonant structures rather than lumped components.\n\n**Two uses.**\n\n**1. RADAR and aircraft navigation.** Their short wavelength means microwaves travel in **essentially straight lines** and reflect cleanly from objects comparable in size to the wavelength — aircraft, ships, raindrops. A pulse is sent out and the echo timed, giving range directly; the Doppler shift of the echo gives speed, which is the principle of the speed gun used on vehicles and on fast bowling.\n\n**2. MICROWAVE OVENS.** At \\(2{\\cdot}45\\) GHz the radiation is absorbed efficiently by **water molecules**, which are electric dipoles and are set rotating by the oscillating field. That rotational energy spreads through the food as heat. **The food is heated throughout its depth rather than from the surface inwards**, which is why cooking is so much faster than in a conventional oven.\n\n*(A third, equally valid: satellite and mobile telephone communication, where the short wavelength permits narrow directional beams from modest dish antennas and carries the wide bandwidth that data demands.)*\n\n**The common thread.** What makes a band useful is decided by its wavelength and photon energy. Microwaves are **short enough** to be beamed and reflected like light, yet **long enough** to pass through cloud and rain and to be generated at high power — which is precisely the combination radar and satellite links need."
+    },
+    {
+      "hash": "a7ba263babadd0585358f3f84bf74bb4573186cc7dc81c6c2d42fef2b2fc6949",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A conducting rectangular loop of area \\(5\\ \\mathrm{cm^2}\\) and resistance \\(4\\ \\Omega\\) is removed from a region of uniform magnetic field, acting normal to the plane of the loop. The value of induced current I in the loop varies with time t, as shown in the figure.\n\nFind :\n\n(a) total charge that passed through the loop\n\n(b) change in magnetic flux through the loop\n\n(c) magnitude of magnetic field in the region",
+      "figureNote": "REQUIRED — an I–t graph: the vertical axis is labelled I with the unit (A) beneath it and carries a single marked value 0{\\cdot}3 at the intercept; the horizontal axis is labelled t(s) and carries a single marked value 0{\\cdot}6; a straight line falls from the intercept to that point on the t-axis. Described: the axes, their units, both tick values and the shape, all of which are GIVEN data — the stem states neither number, so the loop's charge, flux change and field cannot be found without them. Page idx 16.",
+      "imageAttached": false,
+      "solution": "**Read the graph first.** The induced current starts at \\(I = 0{\\cdot}3\\) A at \\(t = 0\\) and falls **linearly** to zero at \\(t = 0{\\cdot}6\\) s. The area beneath it is therefore a triangle, and that area is the whole question.\n\n**(a) The total charge that passed through the loop.**\n\n**Charge is the integral of current**, which is the area under an \\(I\\)-\\(t\\) graph:\n\n\\(q = \\int I\\,dt = \\text{area} = \\dfrac{1}{2}\\times\\text{base}\\times\\text{height}\\)\n\n\\(q = \\dfrac{1}{2}\\times 0{\\cdot}6 \\times 0{\\cdot}3\\)\n\n\\(\\boxed{\\ q = 0{\\cdot}09\\ \\mathrm{C}\\ }\\)\n\n**Using the peak current times the duration would give \\(0{\\cdot}18\\) C** — double the right answer. The current is not constant; the factor of \\(\\tfrac{1}{2}\\) is the triangle.\n\n**(b) The change in magnetic flux.**\n\n**Combining Faraday's and Ohm's laws:**\n\n\\(I = \\dfrac{\\varepsilon}{R} = \\dfrac{1}{R}\\left|\\dfrac{d\\Phi}{dt}\\right| \\qquad\\Longrightarrow\\qquad q = \\int I\\,dt = \\dfrac{\\Delta\\Phi}{R}\\)\n\n\\(\\Delta\\Phi = qR = 0{\\cdot}09 \\times 4\\)\n\n\\(\\boxed{\\ \\Delta\\Phi = 0{\\cdot}36\\ \\mathrm{Wb}\\ }\\)\n\n**The relation \\(q = \\Delta\\Phi/R\\) is worth committing to memory**, and its content is striking: **the charge that flows depends only on the TOTAL flux change and the resistance — never on how fast the change happened.** Withdraw the loop quickly and a large current flows briefly; withdraw it slowly and a small current flows for longer. The area under the curve, and therefore the charge, is identical.\n\n**(c) The magnitude of the magnetic field.**\n\nThe loop is **removed entirely** from the field region, so the flux goes from \\(BA\\) to zero:\n\n\\(\\Delta\\Phi = BA \\qquad\\Longrightarrow\\qquad B = \\dfrac{\\Delta\\Phi}{A}\\)\n\n**With \\(A = 5\\ \\mathrm{cm^{2}} = 5\\times 10^{-4}\\ \\mathrm{m^{2}}\\):**\n\n\\(B = \\dfrac{0{\\cdot}36}{5\\times 10^{-4}}\\)\n\n\\(\\boxed{\\ B = 720\\ \\mathrm{T}\\ }\\)\n\n**The \\(\\mathrm{cm^{2}} \\to \\mathrm{m^{2}}\\) conversion is \\(10^{-4}\\), not \\(10^{-2}\\)** — a centimetre each way. That single factor is where this part is usually lost.\n\n**A remark on the answer.** \\(720\\) T is far beyond any laboratory field — the strongest sustained fields achieved are around \\(45\\) T, and even pulsed magnets reach only a few hundred. The stem's figures are chosen for clean arithmetic rather than for physical realism, and the value follows correctly from them.\n\n**Why \"acting normal to the plane of the loop\" matters.** It makes \\(\\Phi = BA\\) exactly, with no \\(\\cos\\theta\\). At any other angle the flux would be \\(BA\\cos\\theta\\) and \\(B\\) could not be extracted without knowing \\(\\theta\\)."
+    },
+    {
+      "hash": "f00de7d3224be3f4cc6703c2b55fed23aa8b4369ace7bb5a7941e4b3626e4163",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "(a) The two Kirchhoff's rules are based on law of conservation of two physical quantities. Name the quantities.\n\n(b) Find magnitude and direction of current in \\(1\\ \\Omega\\) resistor in the given circuit.",
+      "figureNote": "REQUIRED — a two-loop circuit. Along the top branch a cell marked 6 V and a resistor marked \\(2\\ \\Omega\\), with a node labelled P between them; a resistor marked \\(1\\ \\Omega\\) in the central vertical branch between P and a lower node labelled Q; a cell marked 9 V in the right-hand vertical branch; and two resistors each marked \\(3\\ \\Omega\\) along the bottom branch, one either side of Q. Described: the components, their values, the topology and the node labels. WITHHELD: the polarity of each cell — the question asks for a DIRECTION and the polarities decide it. Page idx 16.",
+      "imageAttached": false,
+      "solution": "**(a) The conservation laws behind Kirchhoff's rules.**\n\n**The JUNCTION rule** — that the currents entering a junction equal those leaving it —\n\n\\(\\sum I = 0\\ \\text{at a node}\\)\n\n**is based on the conservation of ELECTRIC CHARGE.** Charge cannot accumulate at a junction, so whatever flows in must flow out.\n\n**The LOOP rule** — that the algebraic sum of potential differences around any closed loop is zero —\n\n\\(\\sum \\Delta V = 0\\ \\text{around a loop}\\)\n\n**is based on the conservation of ENERGY.** A unit charge carried once around a loop returns to its starting potential, so the energy it gains from the sources exactly equals what it loses in the resistances.\n\n**(b) The current in the 1 ohm resistor.**\n\n**Read the circuit.** The \\(6\\) V cell has its positive plate on the **left**; the \\(9\\) V cell has its positive plate at the **top**. Label the junctions \\(P\\) (top middle) and \\(Q\\) (bottom middle), with the \\(1\\ \\Omega\\) bridging them, and take \\(V_Q = 0\\).\n\n**Let \\(V_P = x\\).** Three branches meet at \\(P\\), and each carries a current determined by \\(x\\).\n\n**Branch 1 — through the \\(1\\ \\Omega\\):**\n\n\\(I_{PQ} = \\dfrac{x}{1} = x\\)\n\n**Branch 2 — left, through the 6 V cell and the 3 ohm.** The cell's positive plate faces the left rail, so that rail sits \\(6\\) V above \\(P\\):\n\n\\(V_{\\text{left}} = x + 6 \\qquad\\Longrightarrow\\qquad I_{\\text{left}} = \\dfrac{x+6}{3}\\)\n\n**Branch 3 — right, through 2 ohm, the 9 V cell and 3 ohm.** Going \\(P \\to\\) top-right \\(\\to\\) bottom-right \\(\\to Q\\) with current \\(I\\):\n\n\\(x - 2I - 9 - 3I = 0 \\qquad\\Longrightarrow\\qquad I_{\\text{right}} = \\dfrac{x-9}{5}\\)\n\n**Applying the junction rule at \\(P\\)** — the three currents leaving it sum to zero:\n\n\\(\\dfrac{x+6}{3} + \\dfrac{x-9}{5} + x = 0\\)\n\n**Multiplying through by 15:**\n\n\\(5\\left(x+6\\right) + 3\\left(x-9\\right) + 15x = 0\\)\n\n\\(5x + 30 + 3x - 27 + 15x = 0 \\qquad\\Longrightarrow\\qquad 23x = -3\\)\n\n\\(x = -\\dfrac{3}{23}\\ \\mathrm{V}\\)\n\n**The current in the \\(1\\ \\Omega\\):**\n\n\\(I_{PQ} = x = -\\dfrac{3}{23}\\ \\mathrm{A}\\)\n\n\\(\\boxed{\\ \\left|I\\right| = \\dfrac{3}{23} \\approx 0{\\cdot}13\\ \\mathrm{A},\\ \\text{directed from } Q \\text{ to } P\\ }\\)\n\n**The NEGATIVE sign is the answer to \"direction\".** It was assumed at the start that current flows \\(P \\to Q\\); the minus sign says the assumption was wrong and the true flow is \\(Q \\to P\\). **An assumed direction never has to be guessed correctly** — the algebra corrects it, which is the practical value of the sign convention.\n\n**The denominator \\(23\\) is not an accident.** The three branches present \\(1\\), \\(5\\) and \\(3\\) ohms to node \\(P\\), and\n\n\\(\\dfrac{1}{1} + \\dfrac{1}{5} + \\dfrac{1}{3} = \\dfrac{15+3+5}{15} = \\dfrac{23}{15}\\)\n\nso \\(23\\) appears in every version of this circuit's answer. The awkward fraction is a property of the resistances, not a slip.\n\n**The two cells OPPOSE each other**, which is why the answer is so small. The \\(6\\) V and the \\(9\\) V drive current in conflicting senses through the \\(1\\ \\Omega\\), and \\(0{\\cdot}13\\) A is what survives the near-cancellation — far less than either cell would drive alone."
+    }
+  ]
+}
