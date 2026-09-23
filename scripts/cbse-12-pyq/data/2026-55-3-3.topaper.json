@@ -1,0 +1,256 @@
+{
+  "paper": "55/3/3",
+  "year": 2026,
+  "paperId": "2026-55-3-3",
+  "markingScheme": "out/2026-55-3-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "60384adf1fbda86b8ec2aec6fd46a12e47014553f9c3a502ebf887bed0c3b9a7",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Wave Optics",
+      "subtopic": "Refraction and Reflection of Plane Waves",
+      "stem": "A ray of monochromatic light travelling in air is incident on a glass slab and is partly reflected and partly refracted. Both the reflected and refracted lights will have :",
+      "options": [
+        {
+          "label": "A",
+          "text": "same wavelength"
+        },
+        {
+          "label": "B",
+          "text": "same frequency"
+        },
+        {
+          "label": "C",
+          "text": "same intensity"
+        },
+        {
+          "label": "D",
+          "text": "same speed"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): same frequency.**\n\n**FREQUENCY IS SET BY THE SOURCE and never changes at a boundary.** That single fact settles the question, and it is worth knowing why it must be true.\n\n**Why frequency is conserved.** The electromagnetic field must be continuous across the interface at every instant — the oscillating field on the glass side is **driven** by the field on the air side. If the two oscillated at different rates they would fall out of step, and the boundary conditions could not hold for all time. **The boundary is not a source; it cannot create or destroy oscillations**, so it passes them on at the rate it receives them.\n\n**Both the reflected and the refracted beam therefore carry the incident frequency**, and so does light that has passed through any number of media.\n\n**Option (D), same speed, is false for the REFRACTED ray.** Light slows in glass:\n\n\\(v = \\dfrac{c}{n}\\)\n\nThe **reflected** ray stays in air at \\(c\\); the refracted ray travels at \\(c/n\\), about \\(2 \\times 10^{8}\\) m/s for \\(n = 1{\\cdot}5\\). Different media, different speeds.\n\n**Option (A), same wavelength, is false for the same reason.** Since \\(\\nu\\) is fixed and \\(v\\) changes,\n\n\\(\\lambda = \\dfrac{v}{\\nu} = \\dfrac{c}{n\\nu} = \\dfrac{\\lambda_{\\text{air}}}{n}\\)\n\n**The wavelength SHRINKS by the factor \\(n\\) inside the glass** — to about two-thirds of its value in air. This is the key point the question tests: of the three wave quantities, frequency is the invariant one and the other two change together.\n\n\\(v = \\nu\\lambda: \\qquad \\nu\\ \\text{fixed}, \\quad v\\ \\text{down by}\\ n, \\quad \\lambda\\ \\text{down by}\\ n\\)\n\n**Option (C), same intensity, is false in general.** At normal incidence on glass only about \\(4\\%\\) of the energy is reflected and \\(96\\%\\) transmitted, and the split depends on the angle of incidence and on the polarisation. **The two beams are equal in intensity at no ordinary angle**, and the question offers no reason they should be.\n\n**A corollary worth carrying: COLOUR does not change on entering glass.** What the eye perceives as colour is determined by frequency, not wavelength, and the frequency is what survives the boundary. Red light stays red underwater even though its wavelength there is a quarter shorter.\n\n**And a note on the reflected ray.** It stays in air throughout, so its speed **and** its wavelength are unchanged as well. The question asks what BOTH beams share, and only frequency qualifies for both."
+    },
+    {
+      "hash": "10f3d85367ea50ba063d1bd46ed7a90aace8b116b22e8d0e87f96feee1653a4b",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "A square loop of side L lies in the x-y plane in a magnetic field \\(\\vec{B} = B_0(2\\hat{i} + 3\\hat{j} + 4\\hat{k})\\), where \\(B_0\\) is a constant. The magnetic flux through the loop is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sqrt{29}\\ B_0 L^2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(4 B_0 L^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3 B_0 L^2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2 B_0 L^2\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(4B_0L^{2}\\).**\n\n**Magnetic flux is a SCALAR — the dot product of the field with the area vector:**\n\n\\(\\Phi = \\vec{B}\\cdot\\vec{A} = BA\\cos\\theta\\)\n\n**The area vector is NORMAL to the plane of the loop.** The loop lies in the \\(xy\\)-plane, so its normal is along \\(z\\):\n\n\\(\\vec{A} = L^{2}\\,\\hat{k}\\)\n\n**Taking the dot product:**\n\n\\(\\Phi = B_0\\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right)\\cdot\\left(L^{2}\\hat{k}\\right)\\)\n\n**Only the \\(\\hat{k}\\) term survives**, since \\(\\hat{i}\\cdot\\hat{k} = \\hat{j}\\cdot\\hat{k} = 0\\):\n\n\\(\\boxed{\\ \\Phi = 4B_0L^{2}\\ }\\)\n\n**The \\(2\\hat{i}\\) and \\(3\\hat{j}\\) components contribute NOTHING.** They lie **in** the plane of the loop, so their field lines run parallel to the surface and never pass through it — no flux, however strong they are.\n\n**Option (A), \\(\\sqrt{29}\\,B_0L^{2}\\), is the trap**, and a well-built one: \\(\\sqrt{2^{2}+3^{2}+4^{2}} = \\sqrt{29}\\) is the **magnitude** of \\(\\vec{B}\\). Multiplying that by the area treats flux as though it were \\(\\left|\\vec{B}\\right|A\\) — which is the value only when the field is **perpendicular** to the loop. Here it is not, and the dot product is what accounts for the tilt.\n\n**Options (C) and (D) pick the wrong component** — \\(3\\) for a loop in the \\(xz\\)-plane, \\(2\\) for one in the \\(yz\\)-plane. So three of the four options are correct answers to a differently oriented loop, and the orientation is the whole question.\n\n**Reading the geometry.** The field makes an angle \\(\\theta\\) with the normal where\n\n\\(\\cos\\theta = \\dfrac{4}{\\sqrt{29}} = 0{\\cdot}743, \\qquad \\theta = 42^\\circ\\)\n\nand indeed \\(\\Phi = \\sqrt{29}\\,B_0 \\times L^{2}\\times 0{\\cdot}743 = 4B_0L^{2}\\) \\(\\checkmark\\). The two routes agree, as they must.\n\n**Why flux and not field.** Faraday's law responds to the rate of change of \\(\\Phi\\), not of \\(\\vec{B}\\), so a field component parallel to a loop can be switched on and off without inducing anything. That is why the dot product, rather than the magnitude, is the quantity electromagnetic induction is built on.\n\n**A note on the sign.** The normal could equally have been taken as \\(-\\hat{k}\\), giving \\(\\Phi = -4B_0L^{2}\\). The choice is a convention fixed by the sense in which the loop's perimeter is traversed; only the magnitude is asked for here."
+    },
+    {
+      "hash": "6c125ed0b89af06a1d12b613e722a60e4a67f8d1cea2fb703c6cf9d2e446f33e",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electric Charges and Fields",
+      "subtopic": "Electric Dipole and Dipole in a Uniform Field",
+      "stem": "An electric dipole with dipole moment\n\\(\\vec{P} = (2{\\cdot}54 \\times 10^{-28}\\ \\mathrm{C.m})\\,(2{\\cdot}00\\hat{i} + 3{\\cdot}00\\hat{j})\\) is placed in an electric field \\(\\vec{E} = \\left(1000\\dfrac{\\mathrm{N}}{\\mathrm{C}}\\right)\\hat{i}\\). An external agent turns the dipole until its electric dipole moment is \\(\\vec{P} = (2{\\cdot}54 \\times 10^{-28}\\ \\mathrm{C.m})\\,(-3{\\cdot}00\\hat{i} + 2{\\cdot}00\\hat{j})\\). The work done by the agent is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2{\\cdot}54 \\times 10^{-25}\\) J"
+        },
+        {
+          "label": "B",
+          "text": "\\(1{\\cdot}27 \\times 10^{-24}\\) J"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}02 \\times 10^{-23}\\) J"
+        },
+        {
+          "label": "D",
+          "text": "\\(2{\\cdot}29 \\times 10^{-26}\\) J"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(1{\\cdot}27\\times 10^{-24}\\) J.**\n\n**A dipole in a uniform field has potential energy**\n\n\\(U = -\\vec{p}\\cdot\\vec{E}\\)\n\n**and the work done by an external agent in turning it is the CHANGE in that energy**, since the dipole starts and ends at rest:\n\n\\(W = U_f - U_i\\)\n\n**Writing \\(P = 2{\\cdot}54\\times 10^{-28}\\ \\mathrm{C\\,m}\\)** for the common factor and \\(E = 1000\\,\\hat{i}\\):\n\n**Initial.** \\(\\vec{p}_i = P\\left(2{\\cdot}00\\,\\hat{i} + 3{\\cdot}00\\,\\hat{j}\\right)\\), so only the \\(\\hat{i}\\) component survives the dot product:\n\n\\(\\vec{p}_i\\cdot\\vec{E} = P\\left(2{\\cdot}00\\right)\\left(1000\\right) = 2000P\\)\n\n\\(U_i = -2000P\\)\n\n**Final.** \\(\\vec{p}_f = P\\left(-3{\\cdot}00\\,\\hat{i} + 2{\\cdot}00\\,\\hat{j}\\right)\\):\n\n\\(\\vec{p}_f\\cdot\\vec{E} = P\\left(-3{\\cdot}00\\right)\\left(1000\\right) = -3000P\\)\n\n\\(U_f = +3000P\\)\n\n**The work:**\n\n\\(W = 3000P - \\left(-2000P\\right) = 5000P\\)\n\n\\(W = 5000 \\times 2{\\cdot}54\\times 10^{-28}\\)\n\n\\(\\boxed{\\ W = 1{\\cdot}27\\times 10^{-24}\\ \\mathrm{J}\\ }\\)\n\n**The \\(\\hat{j}\\) components never enter.** \\(\\vec{E}\\) points purely along \\(\\hat{i}\\), so the dot product picks out the \\(\\hat{i}\\) component of \\(\\vec{p}\\) and discards the rest. The \\(3{\\cdot}00\\,\\hat{j}\\) and \\(2{\\cdot}00\\,\\hat{j}\\) are there to be ignored — and to make the two orientations look more different than the calculation needs them to be.\n\n**The SIGN CHANGE of the \\(\\hat{i}\\) component is what makes the work large.** The dipole starts with a component **along** the field \\(\\left(+2\\right)\\) and ends with one **against** it \\(\\left(-3\\right)\\). Turning it through the field costs energy twice over: first to rotate it out of alignment, then to push it past perpendicular into opposition.\n\n**Note the two moments have the SAME MAGNITUDE:** \\(\\sqrt{2^{2}+3^{2}} = \\sqrt{13}\\) both times. So the agent has genuinely only **rotated** the dipole, not stretched it — the vectors are perpendicular to each other, a \\(90^\\circ\\) turn.\n\n**A check on the sign of \\(W\\).** It comes out **positive**, and it must: the dipole ends in a less favourable orientation than it began, so the external agent had to supply energy. Releasing it would let it swing back and give the energy up.\n\n**Where the energy sits.** \\(U = -pE\\cos\\theta\\) is minimum \\(\\left(-pE\\right)\\) when the dipole is aligned with the field, zero when perpendicular, and maximum \\(\\left(+pE\\right)\\) when antiparallel. This dipole moved from \\(\\theta = 56^\\circ\\) to \\(\\theta = 146^\\circ\\), crossing the perpendicular, which is why \\(U\\) changed sign."
+    },
+    {
+      "hash": "d849b332857b45d6b90b030963422154e1c1cb504d39049259625b99f47c3551",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "p-n Junction and the Semiconductor Diode",
+      "stem": "If the given figure, \\(V_0\\) is the potential barrier across a p-n junction in an unbiased condition. Which of the following statements is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Curves 1 and 3 both correspond to forward biasing of p-n junction."
+        },
+        {
+          "label": "B",
+          "text": "Curve 3 corresponds to forward biasing and Curve 1 corresponds to reverse biasing."
+        },
+        {
+          "label": "C",
+          "text": "Curve 1 corresponds to forward biasing and Curve 3 corresponds to reverse biasing."
+        },
+        {
+          "label": "D",
+          "text": "Curves 1 and 3 both correspond to reverse biasing."
+        }
+      ],
+      "answer": "B",
+      "figureNote": "REQUIRED - the figure IS the question. A plot of the junction potential against distance, with the unbiased barrier height \\(V_0\\) marked by a vertical double-headed arrow on the vertical axis, and three curves rising from a common foot to three different plateau levels, each plateau labelled at its right-hand end 1, 2 and 3. WITHHELD deliberately: which curve settles ABOVE and which BELOW the unbiased level - that ordering is exactly what every option asserts. Page idx 6.",
+      "imageAttached": false,
+      "solution": "**The answer is (B): Curve 3 corresponds to forward biasing and Curve 1 corresponds to reverse biasing.**\n\n**Read the figure first.** Three curves rise from a common foot to three different plateaus, labelled **1 (highest), 2 (middle) and 3 (lowest)**. The double-headed arrow marks \\(V_0\\), the barrier height of the **unbiased** junction, and its head reaches **curve 2's plateau** — so curve 2 is the junction with no battery connected.\n\n**The whole question is then which way each bias moves the barrier.**\n\n**FORWARD bias LOWERS the barrier.** The p-side is connected to the positive terminal, so the applied field **opposes** the junction's own built-in field. The net potential step falls:\n\n\\(V_{\\text{barrier}} = V_0 - V \\qquad\\Longrightarrow\\qquad \\text{below curve 2}\\)\n\nThe depletion region **narrows**, and majority carriers can now diffuse across in quantity — which is why a forward-biased diode conducts.\n\n**REVERSE bias RAISES the barrier.** The p-side goes to the negative terminal, so the applied field **reinforces** the built-in one:\n\n\\(V_{\\text{barrier}} = V_0 + V \\qquad\\Longrightarrow\\qquad \\text{above curve 2}\\)\n\nThe depletion region **widens**, majority carriers are held back still more firmly, and only the tiny reverse saturation current flows.\n\n**Matching to the curves:**\n\n| Curve | Plateau | Barrier | Bias |\n|---|---|---|---|\n| 1 | highest | \\(V_0 + V\\) | **reverse** |\n| 2 | middle | \\(V_0\\) | unbiased |\n| 3 | lowest | \\(V_0 - V\\) | **forward** |\n\n\\(\\boxed{\\ \\text{Curve 3 = forward, Curve 1 = reverse}\\ }\\)\n\n**Option (C) is the exact reversal**, and it is the answer for anyone who reasons that forward bias \"drives more current\" and therefore must correspond to the **larger** quantity on the graph. The graph plots **potential**, not current — and forward bias is precisely the case where the potential barrier is **smallest**.\n\n**Options (A) and (D) fail on a structural point:** curves 1 and 3 lie on **opposite sides** of the unbiased level, so they cannot possibly represent the same kind of bias. Whatever curve 2 means, one of the other two is above it and one below.\n\n**Why lowering the barrier lets current flow.** The fraction of carriers with enough thermal energy to climb a barrier of height \\(V\\) goes as \\(e^{-eV/kT}\\) — an **exponential**. Dropping the barrier by even a few tenths of a volt multiplies that fraction enormously, which is why the diode's forward characteristic turns up so sharply past the knee rather than gradually.\n\n**A note on the printed stem.** The paper reads \"If the given figure, \\(V_0\\) is the potential barrier…\", where \"In\" is plainly intended. The row reproduces the paper as printed."
+    },
+    {
+      "hash": "67f2c0f8507912ed4242a25e0b793fb71e92cb6119564a5d9b26ccf5264a041f",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction and Total Internal Reflection",
+      "stem": "A ray of yellow light undergoes total internal reflection when it is incident at the interface of two media. This ray is successively replaced by the ray of blue, green and red lights. Which of the following statements is true if the angle of incidence is same in all cases ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Total internal reflection occurs for blue light only."
+        },
+        {
+          "label": "B",
+          "text": "Total internal reflection occurs for red light only."
+        },
+        {
+          "label": "C",
+          "text": "Total internal reflection occurs for both green and blue lights."
+        },
+        {
+          "label": "D",
+          "text": "None of them will undergo total internal reflection."
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): total internal reflection occurs for both green and blue lights.**\n\n**Total internal reflection needs the angle of incidence to exceed the critical angle:**\n\n\\(i > i_c, \\qquad \\sin i_c = \\dfrac{1}{\\mu}\\)\n\n**The angle of incidence is the SAME in every case** — the question says so — **so everything turns on how \\(i_c\\) shifts with colour**, and that is a question about dispersion.\n\n**The key relation:**\n\n\\(\\mu\\ \\text{LARGER} \\qquad\\Longrightarrow\\qquad i_c\\ \\text{SMALLER} \\qquad\\Longrightarrow\\qquad \\text{TIR is EASIER}\\)\n\n**Dispersion orders the refractive indices.** \\(\\mu\\) rises as wavelength falls, so for the four colours here:\n\n\\(\\mu_{\\text{blue}} > \\mu_{\\text{green}} > \\mu_{\\text{yellow}} > \\mu_{\\text{red}}\\)\n\n*(wavelengths roughly: blue \\(470\\), green \\(530\\), yellow \\(580\\), red \\(650\\) nm)*\n\n**Given that YELLOW undergoes TIR**, we know\n\n\\(i > i_c\\left(\\text{yellow}\\right)\\)\n\n**Blue and green have LARGER \\(\\mu\\)**, hence **smaller** critical angles than yellow:\n\n\\(i_c\\left(\\text{blue}\\right) < i_c\\left(\\text{green}\\right) < i_c\\left(\\text{yellow}\\right) < i\\)\n\n**So both of them also satisfy \\(i > i_c\\) and are totally internally reflected.**\n\n**RED has a SMALLER \\(\\mu\\)** and therefore a **larger** critical angle:\n\n\\(i_c\\left(\\text{red}\\right) > i_c\\left(\\text{yellow}\\right)\\)\n\nand \\(i\\) may or may not exceed it. **Since it is not guaranteed, red cannot be included** — and the safe statement is that TIR certainly occurs for blue and green.\n\n\\(\\boxed{\\ \\text{Blue and green: TIR certain. Red: not guaranteed.}\\ }\\)\n\n**Option (A) is too narrow.** It is true of blue, but green satisfies the condition just as securely.\n\n**Option (B) has the dispersion backwards** — red is the one colour whose TIR is in doubt, not the one assured of it.\n\n**The logic in one line: anything BLUER than the colour known to be reflected is also reflected; anything REDDER may escape.** Yellow marks the boundary drawn by the question, and blue and green lie on the safe side of it.\n\n**A physical consequence.** If \\(i\\) is set just above \\(i_c\\left(\\text{yellow}\\right)\\) and white light is sent in, the blue-to-yellow part of the spectrum is reflected while the orange-and-red part refracts out. **The reflected beam is enriched in blue and the transmitted one in red** — total internal reflection acting as a colour filter, and the same mechanism that produces the coloured flashes at the edges of a diamond's facets.\n\n**Why \\(\\mu\\) rises towards the blue.** Visible frequencies lie below the electronic resonances of the glass, and the closer a frequency comes to a resonance the more strongly the medium responds. Blue light is nearer those ultraviolet resonances, so it is slowed more — which is **normal dispersion**, and it is what separates white light in a prism."
+    },
+    {
+      "hash": "2a1fb3057883a9dfb0e0a9d2b0fa93f9903273ed4d67b246acfbde90e16f4990",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Atoms",
+      "subtopic": "de Broglie's Explanation of Bohr's Postulate",
+      "stem": "The ratio of the de Broglie wavelengths associated with the electron revolving in the first and third orbits in hydrogen atom is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{3}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): \\(\\dfrac{1}{3}\\).**\n\n**The de Broglie wavelength of an orbiting electron** follows from Bohr's own quantisation condition, read in de Broglie's way:\n\n\\(2\\pi r_n = n\\lambda_n \\qquad\\Longrightarrow\\qquad \\lambda_n = \\dfrac{2\\pi r_n}{n}\\)\n\n**— the orbit's circumference holds exactly \\(n\\) whole wavelengths.**\n\n**Substituting the Bohr radii** \\(r_n = n^{2}a_0\\):\n\n\\(\\lambda_n = \\dfrac{2\\pi n^{2}a_0}{n} = 2\\pi n\\,a_0\\)\n\n\\(\\boxed{\\ \\lambda_n \\propto n\\ }\\)\n\n**The ratio for the first and third orbits:**\n\n\\(\\dfrac{\\lambda_1}{\\lambda_3} = \\dfrac{1}{3}\\)\n\n**One power of \\(n\\) cancels, and that is the whole calculation.** The radius grows as \\(n^{2}\\) but the number of wavelengths fitted around it grows as \\(n\\), so the wavelength itself grows only as \\(n\\). Option (C), \\(3\\), is the same result inverted — \\(\\lambda_3/\\lambda_1\\) rather than \\(\\lambda_1/\\lambda_3\\), so the order the question asks for is worth re-reading.\n\n**The same answer from momentum**, which uses none of the geometry:\n\n\\(\\lambda = \\dfrac{h}{mv}, \\qquad v_n \\propto \\dfrac{1}{n} \\qquad\\Longrightarrow\\qquad \\lambda_n \\propto n\\ \\checkmark\\)\n\nThe electron in a higher orbit moves **more slowly**, carries less momentum, and therefore has a longer wave.\n\n**Why the standing-wave picture matters.** De Broglie's insight recast Bohr's arbitrary-looking postulate \\(L = nh/2\\pi\\) as a condition of **self-consistency**: the electron's wave must close on itself in phase after one circuit, or it would interfere destructively with itself and vanish. **The allowed orbits are exactly the ones that fit a whole number of wavelengths**, and \\(n\\) is that number.\n\n**In figures.** For \\(n = 1\\), \\(\\lambda_1 = 2\\pi a_0 = 3{\\cdot}3\\) angstrom; for \\(n = 3\\), \\(\\lambda_3 = 9{\\cdot}97\\) angstrom — three times as long, around an orbit nine times as large, accommodating three waves instead of one.\n\n**A note on what the question is NOT asking.** This is the wavelength of the **electron**, not of a photon emitted in a transition. Those go as \\(1/\\left(1/n_f^{2} - 1/n_i^{2}\\right)\\) and follow a quite different pattern — a distinction the Bohr chapter tests repeatedly."
+    },
+    {
+      "hash": "51bbea59ea7ce6587c88edbc7e6d9bb53b322a5541cbfd09807e70d112c6e0df",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+      "subtopic": "Intrinsic and Extrinsic Semiconductors",
+      "stem": "Write any two points of difference between intrinsic and extrinsic semiconductors.",
+      "solution": "**Two differences between intrinsic and extrinsic semiconductors.**\n\n**1. PURITY — and it is the defining difference.**\n\nAn **intrinsic** semiconductor is a **pure** crystal — silicon or germanium with no impurity deliberately added. An **extrinsic** semiconductor is one that has been **doped**: a controlled trace of a trivalent or pentavalent impurity has been introduced, typically a few parts per million.\n\n**Everything else follows from this one distinction**, which is why it is the first to state.\n\n**2. CARRIER CONCENTRATIONS.**\n\nIn an **intrinsic** semiconductor the carriers are created in pairs by thermal breaking of covalent bonds, so\n\n\\(n_e = n_h = n_i\\)\n\nIn an **extrinsic** semiconductor the dopant supplies carriers of one kind only, so the two populations are **unequal**:\n\n\\(n_e \\gg n_h\\ \\left(\\text{n-type}\\right) \\qquad\\text{or}\\qquad n_h \\gg n_e\\ \\left(\\text{p-type}\\right)\\)\n\n*(Either of the two above is a complete answer. Two more, for context:)*\n\n**3. CONDUCTIVITY.** Intrinsic material has **low** conductivity — at room temperature silicon has only about \\(10^{16}\\) carriers per cubic metre against a metal's \\(10^{29}\\). Doping raises the carrier count by several orders of magnitude, so an extrinsic semiconductor is a far **better** conductor.\n\n**4. WHAT CONTROLS THE CONDUCTIVITY.** For intrinsic material, **temperature alone** — there is no other handle. For extrinsic material, **temperature and the doping concentration**, and the doping is the dominant one at ordinary temperatures. That controllability is the entire reason doped semiconductors are useful: the conductivity becomes a design parameter rather than a fixed property.\n\n**A point worth holding on to: the product is CONSERVED.**\n\n\\(n_e n_h = n_i^{2}\\)\n\n**even after doping.** So raising one population by a factor of \\(200\\) drops the other by the same factor — doping does not simply add carriers, it redistributes which kind dominates. That is why an extrinsic semiconductor still has both types present, with one reduced to a **minority** rather than eliminated.\n\n**And a caution on terminology.** \"Extrinsic\" is not a synonym for \"impure\" in the everyday sense. An uncontrolled impurity degrades a semiconductor; a **deliberate, measured** dopant is what makes it a device. The distinction is intent and precision, not the presence of foreign atoms."
+    },
+    {
+      "hash": "67d00d36ab4cab0b60106d4989a26b25e97fbb7db8568385131a308e85b56b15",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Light of frequency \\(5{\\cdot}0 \\times 10^{14}\\) Hz is incident on a metal surface. If the maximum speed of photoelectrons emitted is \\(6{\\cdot}63 \\times 10^{5}\\ \\mathrm{ms^{-1}}\\), calculate the threshold frequency for the surface.",
+      "solution": "**Einstein's photoelectric equation**, with the work function written through the threshold frequency \\(\\left(\\phi_0 = h\\nu_0\\right)\\):\n\n\\(h\\nu = h\\nu_0 + \\dfrac{1}{2}mv_{\\max}^{2}\\)\n\n\\(\\nu_0 = \\dfrac{h\\nu - \\tfrac{1}{2}mv_{\\max}^{2}}{h}\\)\n\n**Step 1 — the energy the photon brings.**\n\n\\(h\\nu = \\left(6{\\cdot}63\\times 10^{-34}\\right)\\left(5{\\cdot}0\\times 10^{14}\\right) = 3{\\cdot}315\\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Step 2 — the kinetic energy carried away.**\n\n\\(\\dfrac{1}{2}mv^{2} = \\dfrac{1}{2}\\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(6{\\cdot}63\\times 10^{5}\\right)^{2}\\)\n\n\\(\\left(6{\\cdot}63\\times 10^{5}\\right)^{2} = 4{\\cdot}396\\times 10^{11}\\)\n\n\\(\\dfrac{1}{2}mv^{2} = \\dfrac{1}{2}\\left(9{\\cdot}1\\times 10^{-31}\\right)\\left(4{\\cdot}396\\times 10^{11}\\right) = 2{\\cdot}00\\times 10^{-19}\\ \\mathrm{J}\\)\n\n**Step 3 — the work function, then the threshold frequency.**\n\n\\(h\\nu_0 = 3{\\cdot}315\\times 10^{-19} - 2{\\cdot}00\\times 10^{-19} = 1{\\cdot}315\\times 10^{-19}\\ \\mathrm{J}\\)\n\n\\(\\nu_0 = \\dfrac{1{\\cdot}315\\times 10^{-19}}{6{\\cdot}63\\times 10^{-34}}\\)\n\n\\(\\boxed{\\ \\nu_0 = 1{\\cdot}98\\times 10^{14}\\ \\mathrm{Hz} \\approx 2{\\cdot}0\\times 10^{14}\\ \\mathrm{Hz}\\ }\\)\n\n**Squaring the velocity before multiplying is where the arithmetic goes wrong.** \\(\\left(6{\\cdot}63\\times 10^{5}\\right)^{2}\\) is \\(4{\\cdot}40\\times 10^{11}\\), not \\(6{\\cdot}63^{2}\\times 10^{5}\\) — the exponent doubles too.\n\n**The threshold is well BELOW the incident frequency**, as it must be for emission to occur at all:\n\n\\(\\nu_0 = 1{\\cdot}98\\times 10^{14}\\ \\mathrm{Hz} < \\nu = 5{\\cdot}0\\times 10^{14}\\ \\mathrm{Hz}\\ \\checkmark\\)\n\n**About \\(40\\%\\) of each photon's energy is spent freeing the electron** and the remaining \\(60\\%\\) appears as kinetic energy — a check that the numbers hang together.\n\n**The work function in electronvolts**, which is the more familiar unit:\n\n\\(\\phi_0 = \\dfrac{1{\\cdot}315\\times 10^{-19}}{1{\\cdot}6\\times 10^{-19}} = 0{\\cdot}82\\ \\mathrm{eV}\\)\n\n**That is a very low work function.** Most metals sit between \\(2\\) and \\(5\\) eV; caesium, the lowest of the common ones, is about \\(2{\\cdot}1\\) eV. A surface with \\(\\phi_0 = 0{\\cdot}82\\) eV would respond to infrared — and indeed its threshold **wavelength** is\n\n\\(\\lambda_0 = \\dfrac{c}{\\nu_0} = \\dfrac{3\\times 10^{8}}{1{\\cdot}98\\times 10^{14}} = 1{\\cdot}5\\ \\mu\\mathrm{m}\\)\n\nwell into the infrared. The figures are chosen for the arithmetic rather than to describe a real metal.\n\n**Note what the incident light is.** At \\(5{\\cdot}0\\times 10^{14}\\) Hz its wavelength is \\(600\\) nm — orange-red visible light, comfortably above threshold for this surface."
+    },
+    {
+      "hash": "9125598b0bb54bf701a782f7cae603fcf067f4976467e07efaaadad9c9c1f21c",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Wave Optics",
+      "subtopic": "Interference and Young's Experiment",
+      "stem": "In Young's double slit experiment, the central maximum is bright in the interference pattern obtained on a screen. What will happen when :\n(a) light waves emitted out of slits \\(S_1\\) and \\(S_2\\) have an initial phase difference of \\(\\pi\\) radian ?\n(b) one of the slits is closed ?\nJustify your answers.",
+      "solution": "**(a) An initial phase difference of \\(\\pi\\) between the slits.**\n\n**The centre becomes DARK.**\n\n**Why.** At the central point the two paths are equal, so the **path** difference is zero and contributes no phase. But the waves now leave the slits already \\(\\pi\\) out of step, and that initial phase difference is carried all the way to the screen:\n\n\\(\\Delta\\phi_{\\text{total}} = \\Delta\\phi_{\\text{initial}} + \\dfrac{2\\pi}{\\lambda}\\Delta x = \\pi + 0 = \\pi\\)\n\n**A phase difference of \\(\\pi\\) is the condition for DESTRUCTIVE interference**, so the two waves cancel where they previously reinforced.\n\n**Equivalently, in path terms:** an initial phase of \\(\\pi\\) is worth an extra path difference of \\(\\lambda/2\\), and the condition for a bright fringe,\n\n\\(\\Delta x = n\\lambda\\)\n\nbecomes the condition for a dark one.\n\n**The whole pattern shifts by HALF A FRINGE WIDTH.** Every maximum moves to where a minimum was and every minimum to where a maximum was — bright and dark simply interchange. **The fringe width \\(\\beta = \\lambda D/d\\) is unchanged**, because it depends on the geometry and the wavelength, neither of which has been touched. Nor has the total light on the screen changed; it has only been redistributed.\n\n**(b) One of the slits is closed.**\n\n**The interference pattern DISAPPEARS.**\n\n**Why.** Interference requires **two coherent sources** whose waves can superpose. With one slit blocked there is only a single source, nothing for its light to interfere **with**, and the alternating bright and dark fringes vanish.\n\n**What is seen instead** is the **single-slit diffraction** pattern of the remaining slit — a broad central bright band with much fainter subsidiary maxima on either side, rather than the evenly spaced fringes of before. Over the small region where the double-slit fringes used to be, this reads as a patch of **nearly uniform illumination**.\n\n**The intensity does not simply halve.** At the old maxima it falls by a factor of **four**, not two. With two slits the **amplitudes** add at a maximum, giving \\(\\left(a+a\\right)^{2} = 4a^{2}\\); with one slit only \\(a^{2}\\) remains. Meanwhile the old **minima**, which were dark, now receive \\(a^{2}\\) and become lit. Averaged across the screen the illumination is \\(2a^{2}\\) with both slits and \\(a^{2}\\) with one — genuinely halved overall, exactly as energy conservation demands.\n\n**The two parts contrast neatly.** In (a) the pattern **survives** and merely slides by half a fringe, because there are still two coherent sources. In (b) it is **destroyed**, because there are not."
+    },
+    {
+      "hash": "0ebcfc6b57349d6cca4cf801dc07151c10d300823ff9ec12e176b07c37e7254e",
+      "ref": "Q23",
+      "questionNumber": "23",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction Through a Prism",
+      "stem": "A ray of light is incident at angle of \\(45^\\circ\\) on one face of a prism with an equilateral triangular base. If it passes symmetrically through the prism, find the :\n(a) angle of minimum deviation for the prism, and\n(b) refractive index of the material of the prism.",
+      "solution": "**\"Passes symmetrically through the prism\" is the phrase that does all the work.** A symmetric passage means the ray inside runs parallel to the base, with\n\n\\(r_1 = r_2 \\qquad\\text{and}\\qquad i = e\\)\n\n**and that is precisely the condition for MINIMUM DEVIATION.** The given \\(45^\\circ\\) is therefore \\(i\\) at minimum deviation, not an arbitrary angle.\n\n**(a) The angle of minimum deviation.**\n\nThe general deviation relation for a prism is\n\n\\(\\delta = i + e - A\\)\n\n**At minimum deviation \\(e = i\\)**, so\n\n\\(\\delta_m = 2i - A = 2\\left(45^\\circ\\right) - 60^\\circ\\)\n\n\\(\\boxed{\\ \\delta_m = 30^\\circ\\ }\\)\n\n*(The base is an equilateral triangle, so the refracting angle is \\(A = 60^\\circ\\).)*\n\n**(b) The refractive index.**\n\n**The prism formula:**\n\n\\(\\mu = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)}\\)\n\n\\(\\mu = \\dfrac{\\sin\\left(\\dfrac{60^\\circ + 30^\\circ}{2}\\right)}{\\sin 30^\\circ} = \\dfrac{\\sin 45^\\circ}{\\sin 30^\\circ} = \\dfrac{0{\\cdot}7071}{0{\\cdot}5}\\)\n\n\\(\\boxed{\\ \\mu = \\sqrt{2} \\approx 1{\\cdot}414\\ }\\)\n\n**A shorter route, using Snell's law directly.** Since \\(r_1 = r_2\\) and \\(r_1 + r_2 = A\\),\n\n\\(r_1 = \\dfrac{A}{2} = 30^\\circ\\)\n\nand Snell's law at the first face gives\n\n\\(1\\times\\sin 45^\\circ = \\mu\\sin 30^\\circ \\qquad\\Longrightarrow\\qquad \\mu = \\dfrac{0{\\cdot}7071}{0{\\cdot}5} = \\sqrt{2}\\ \\checkmark\\)\n\n**This is the derivation the prism formula compresses**, and it is worth doing once: the formula is nothing more than Snell's law applied at the entry face in the symmetric configuration.\n\n**Why the symmetric passage is the MINIMUM.** Deviation \\(\\delta\\) plotted against \\(i\\) is a curve with a single minimum, and it is symmetric under the exchange \\(i \\leftrightarrow e\\) — a consequence of the reversibility of light paths. **A smooth function symmetric about a point has its turning point there**, so the minimum must be the symmetric case. Any other angle of incidence gives a **larger** deviation, and gives it at two different values of \\(i\\).\n\n**Reading the numbers.** \\(\\mu = \\sqrt{2}\\) makes the critical angle \\(45^\\circ\\), which for an equilateral prism is exactly the value at which a ray entering normally would be trapped. And \\(\\delta_m = 30^\\circ\\) is a modest deviation, as it must be for a \\(60^\\circ\\) prism of ordinary glass.\n\n**A note on \\(r_1 = r_2\\).** It does **not** mean the ray is undeviated — it bends at both faces, equally and in the same sense. What runs parallel to the base is the ray **inside** the glass, and that is what makes the configuration symmetric."
+    },
+    {
+      "hash": "7f060a2b1c7ab40bb63f709fe6abc7c4c51a6fbd277fb310a7b5910a3312f545",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Magnetic Flux and Faraday's Law",
+      "stem": "State Faraday's law of electromagnetic induction. Briefly describe two methods for producing induced emf.",
+      "solution": "**Faraday's law of electromagnetic induction.**\n\n**The magnitude of the emf induced in a circuit is equal to the time rate of change of magnetic flux through that circuit.**\n\n\\(\\varepsilon = -\\dfrac{d\\Phi}{dt}\\)\n\n**and for a coil of \\(N\\) turns**, each linking the same flux,\n\n\\(\\varepsilon = -N\\dfrac{d\\Phi}{dt}\\)\n\n**The magnetic flux is** \\(\\Phi = \\vec{B}\\cdot\\vec{A} = BA\\cos\\theta\\), where \\(\\theta\\) is the angle between the field and the normal to the coil's plane.\n\n**The minus sign is Lenz's law**, and it is not decoration: it records that the induced emf drives a current whose own magnetic effect **opposes** the change producing it. Without that sign the law would permit a runaway, and energy would not be conserved.\n\n**What the law says, in one sentence: it is the CHANGE of flux that induces an emf, never the flux itself.** A coil sitting in the strongest steady field produces nothing.\n\n**Two methods of producing an induced emf.**\n\n**The expression \\(\\Phi = BA\\cos\\theta\\) has three variables, so there are three handles** — and any two of them answer the question.\n\n**Method 1 — change the magnetic field \\(B\\).**\n\nMove a bar magnet towards or away from a stationary coil, or switch the current in a neighbouring coil on and off. The field through the coil changes, so the flux changes and an emf appears.\n\n\\(\\varepsilon = -NA\\cos\\theta\\,\\dfrac{dB}{dt}\\)\n\n*The faster the magnet moves, the larger the emf; hold it still and the emf vanishes, however close it is.* This is the principle of the **transformer** and of mutual induction generally.\n\n**Method 2 — change the area \\(A\\) of the circuit.**\n\nSlide a conducting rod along a pair of parallel rails closed at one end, in a steady perpendicular field. The area enclosed grows or shrinks, and the flux changes with it.\n\n\\(\\varepsilon = -B\\cos\\theta\\,\\dfrac{dA}{dt} = -Blv\\)\n\n*for a rod of length \\(l\\) moving at speed \\(v\\)* — the **motional emf**, and the same effect as a rotating rod in a field.\n\n**Method 3, for completeness — change the ORIENTATION \\(\\theta\\).**\n\nRotate the coil in a steady field at angular speed \\(\\omega\\), so \\(\\theta = \\omega t\\):\n\n\\(\\Phi = BA\\cos\\omega t \\qquad\\Longrightarrow\\qquad \\varepsilon = NBA\\omega\\sin\\omega t\\)\n\n**This is the AC generator**, and it is the most important of the three in practice: essentially all the world's electricity is produced this way, by turning coils in a magnetic field.\n\n**The three methods are one law.** Each varies a different factor of \\(BA\\cos\\theta\\), and the induced emf responds to the product changing, whatever the cause."
+    },
+    {
+      "hash": "e81e58cb4135a07e0188b21f283797375146a74b775524aa87f4ebcb4ea23189",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Atoms",
+      "subtopic": "Alpha-Particle Scattering and Rutherford's Model",
+      "stem": "A deuterium nucleus and an alpha particle approach a target nucleus separately in head-on position. Find the ratio of their distance of closest approach to the nucleus, when both have :\n(a) the same velocity, and\n(b) the same momentum.",
+      "solution": "**The distance of closest approach comes from an energy balance** — at the turning point the projectile's whole kinetic energy has become electrostatic potential energy:\n\n\\(K = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qQ}{d} \\qquad\\Longrightarrow\\qquad d = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qQ}{K}\\)\n\n**The two projectiles.** A deuterium nucleus (one proton, one neutron) carries charge \\(e\\) and mass \\(2m\\); an alpha particle carries charge \\(2e\\) and mass \\(4m\\), where \\(m\\) is the nucleon mass. The target charge \\(Q = Ze\\) is **the same for both** and cancels in every ratio.\n\n**(a) Same velocity.**\n\nWith \\(K = \\tfrac{1}{2}mv^{2}\\) and \\(v\\) common,\n\n\\(d = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{q\\,Q}{\\tfrac{1}{2}mv^{2}} \\qquad\\Longrightarrow\\qquad d \\propto \\dfrac{q}{m}\\)\n\n**The charge-to-mass ratio is what governs it**, and that makes the comparison immediate:\n\n\\(\\dfrac{d_{\\text{deuteron}}}{d_\\alpha} = \\dfrac{q_d}{q_\\alpha}\\times\\dfrac{m_\\alpha}{m_d} = \\dfrac{e}{2e}\\times\\dfrac{4m}{2m} = \\dfrac{1}{2}\\times 2\\)\n\n\\(\\boxed{\\ d_{\\text{deuteron}} : d_\\alpha = 1 : 1\\ }\\)\n\n**The two factors cancel exactly.** The deuteron has half the alpha's charge, which alone would halve its distance; but it also has half the mass and hence half the kinetic energy at the same speed, which alone would double it. **Equal ratios, equal distances** — and the coincidence is a property of these two particular nuclei, both of which have \\(q/m = e/2m\\).\n\n**(b) Same momentum.**\n\nNow \\(K = p^{2}/2m\\), so\n\n\\(d = \\dfrac{1}{4\\pi\\varepsilon_0}\\cdot\\dfrac{qQ}{p^{2}/2m} \\qquad\\Longrightarrow\\qquad d \\propto qm\\)\n\n**— the PRODUCT this time, not the ratio**, because the mass has moved from the numerator of \\(K\\) to its denominator.\n\n\\(\\dfrac{d_{\\text{deuteron}}}{d_\\alpha} = \\dfrac{q_d m_d}{q_\\alpha m_\\alpha} = \\dfrac{e \\times 2m}{2e \\times 4m} = \\dfrac{2}{8}\\)\n\n\\(\\boxed{\\ d_{\\text{deuteron}} : d_\\alpha = 1 : 4\\ }\\)\n\n**Here the two factors REINFORCE rather than cancel.** The deuteron has half the charge and half the mass, and at fixed momentum both work to bring it closer — half from the weaker repulsion, half again from the greater kinetic energy \\(\\left(K \\propto 1/m\\right)\\). Hence a quarter.\n\n**The contrast is the point of the question.** The same two particles give \\(1:1\\) under one constraint and \\(1:4\\) under another, because **what is held fixed decides which power of the mass enters**. At equal speed \\(d \\propto q/m\\); at equal momentum \\(d \\propto qm\\); at equal kinetic energy it would be \\(d \\propto q\\), giving \\(1:2\\).\n\n**Why the target nucleus never appears.** \\(Z\\) multiplies both distances identically and cancels, so all three ratios hold for gold, aluminium or any other target. The choice of target changes the distances but never their ratio.\n\n**A caution on the deuteron's mass.** Taking \\(m_d = 2m\\) and \\(m_\\alpha = 4m\\) ignores the mass defect — the alpha is in fact slightly lighter than four nucleons. The correction is well under \\(1\\%\\) and immaterial to a ratio quoted in whole numbers."
+    }
+  ]
+}
