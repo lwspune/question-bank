@@ -1,0 +1,224 @@
+{
+  "paper": "55/4/3",
+  "year": 2026,
+  "paperId": "2026-55-4-3",
+  "markingScheme": "out/2026-55-4-3/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "101fb598c4f1a754fa9045aa991e4c7e6d04c743ab6e4a07897a018dd2eea9f8",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Temperature Dependence of Resistivity",
+      "stem": "The resistivity \\(\\rho\\) of a metal increases with rise in temperature because :",
+      "options": [
+        {
+          "label": "A",
+          "text": "only relaxation time '\\(\\tau\\)' of electrons decreases with temperature."
+        },
+        {
+          "label": "B",
+          "text": "only number of electrons per unit volume 'n' increases appreciably."
+        },
+        {
+          "label": "C",
+          "text": "'\\(\\tau\\)' decreases with temperature but 'n' does not change appreciably."
+        },
+        {
+          "label": "D",
+          "text": "'\\(\\tau\\)' decreases with temperature and 'n' increases."
+        }
+      ],
+      "answer": "C",
+      "solution": "**The answer is (C): \\(\\tau\\) decreases with temperature but \\(n\\) does not change appreciably.**\n\n**The microscopic expression for resistivity:**\n\n\\(\\rho = \\dfrac{m}{ne^{2}\\tau}\\)\n\n**Only two quantities in it can respond to temperature** — the carrier density \\(n\\) and the relaxation time \\(\\tau\\) — and the question is which of them actually does.\n\n**\\(\\tau\\) FALLS as temperature rises.** The relaxation time is the average interval between an electron's collisions. Heating makes the lattice ions vibrate with greater amplitude, so an electron travelling through the metal meets a more disordered scattering environment and collides **more often**. A shorter \\(\\tau\\) means a larger \\(\\rho\\), since \\(\\tau\\) sits in the denominator.\n\n**\\(n\\) is essentially FIXED in a metal.** The conduction electrons are the valence electrons of the atoms, already free at any temperature — there is no energy gap to be crossed, and no reservoir of extra carriers to release. A metal at \\(300\\) K and at \\(600\\) K has the same \\(\\sim 10^{29}\\) electrons per cubic metre.\n\n**So the whole temperature dependence of a metal's resistivity comes from \\(\\tau\\)**, and \\(\\rho\\) rises.\n\n**Option (B) describes a SEMICONDUCTOR, not a metal**, and it is the significant distractor. In a semiconductor \\(n\\) **does** rise sharply with temperature — exponentially, as electrons are thermally lifted across the energy gap — and that flood of new carriers overwhelms the shortened \\(\\tau\\). **That is why a semiconductor's resistivity FALLS with heating while a metal's rises**: the same two competing effects, with opposite winners.\n\n**Option (A) is incomplete rather than wrong.** \\(\\tau\\) does decrease; the word \"only\" is the problem, because the statement leaves unsaid what \\(n\\) is doing, and the full explanation needs both halves — the effect that acts and the effect that does not.\n\n**Option (D) is the semiconductor answer with a metal's \\(\\tau\\).** If \\(n\\) rose appreciably as well, the two effects would compete, and \\(\\rho\\) might rise or fall depending on which won. Metals show no such ambiguity.\n\n**A quantitative note.** For copper, \\(\\rho\\) rises by about \\(0{\\cdot}4\\%\\) per degree near room temperature, and \\(\\tau\\) is around \\(10^{-14}\\) s — so an electron collides some \\(10^{14}\\) times a second. Heating from \\(0\\) to \\(100\\ ^\\circ\\)C shortens that by roughly \\(40\\%\\), which is exactly the resistivity increase observed.\n\n**The corresponding statement for MOBILITY** follows at once: \\(\\mu = e\\tau/m\\), so mobility falls with temperature for the same reason, and \\(\\rho = 1/ne\\mu\\) ties the two together."
+    },
+    {
+      "hash": "e4b5d138cdad932760754bfd373dced90fdb7c70a4961fc04b38d9c6fc0d8306",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "Two coils are placed closed to each other. The mutual inductance of the pair of coils depends upon the :",
+      "options": [
+        {
+          "label": "A",
+          "text": "rate at which currents change in the two coils."
+        },
+        {
+          "label": "B",
+          "text": "relative position and orientation of the coils."
+        },
+        {
+          "label": "C",
+          "text": "currents in the two coils."
+        },
+        {
+          "label": "D",
+          "text": "value of voltage induced in one coil due to change in value of current in the other coil."
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): the relative position and orientation of the coils.**\n\n**Mutual inductance is defined by**\n\n\\(\\Phi_2 = MI_1 \\qquad\\text{or}\\qquad \\varepsilon_2 = -M\\dfrac{dI_1}{dt}\\)\n\n**and \\(M\\) is the CONSTANT OF PROPORTIONALITY, not either of the quantities it relates.** That distinction settles the question.\n\n**\\(M\\) is a purely GEOMETRIC quantity.** It depends on:\n\n- the **relative position** of the coils — how close they are\n- their **relative orientation** — whether their axes are aligned or at an angle\n- the **size and shape** of each coil, and the **number of turns** on each\n- the **medium** between them (a soft-iron core raises \\(M\\) enormously)\n\n**and on nothing else.**\n\n**Option (C), the currents, is ruled out by the definition itself.** \\(M\\) is the ratio \\(\\Phi_2/I_1\\), and for a linear medium that ratio is **independent of \\(I_1\\)** — double the current and the flux doubles, leaving \\(M\\) exactly as it was. A quantity cannot depend on what it is defined as being independent of.\n\n**Option (A), the rate at which the currents change, confuses \\(M\\) with the EMF.** The emf certainly depends on \\(dI/dt\\); \\(M\\) is the factor by which that rate is multiplied, and it has already been fixed before any current flows at all. **Switch the currents off entirely and \\(M\\) is unchanged** — it is a property of the arrangement, not of its operation.\n\n**Option (D) is circular.** The induced voltage is \\(\\varepsilon_2 = -M\\,dI_1/dt\\), so \\(M\\) is used to **calculate** that voltage rather than being determined by it. One could of course measure \\(M\\) from \\(\\varepsilon_2\\) and \\(dI_1/dt\\), but that is an experimental route to a quantity that was already settled by the geometry.\n\n**A concrete case**, which makes the geometric dependence tangible. For a small coil of \\(N_1\\) turns and radius \\(r_1\\) at the centre of a large coaxial coil of \\(N_2\\) turns and radius \\(r_2\\):\n\n\\(M = \\dfrac{\\mu_0N_1N_2\\pi r_1^{2}}{2r_2}\\)\n\n**Turns, radii and \\(\\mu_0\\) — no current, no time.** Rotating the small coil through \\(90^\\circ\\) so its plane contains the axis would drop \\(M\\) to zero, which is orientation dependence in its starkest form.\n\n**The reciprocity theorem.** \\(M_{12} = M_{21}\\) always: the flux the first coil sends through the second, per unit current, equals the flux the second sends through the first. **That equality is itself evidence that \\(M\\) belongs to the PAIR rather than to either coil**, and it is often the only practical way to compute a difficult case — by calculating the easy direction instead."
+    },
+    {
+      "hash": "c1b2fb07cc1f09eba0f1158cf5435c52f46dfca68cc523262ba5f13282db7acf",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Current Electricity",
+      "subtopic": "Drift of Electrons and Resistivity",
+      "stem": "Which of the following statements is true about mobility of charge carriers in a metal ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Mobility increases with increase in applied electric field."
+        },
+        {
+          "label": "B",
+          "text": "Mobility decreases with increase in temperature."
+        },
+        {
+          "label": "C",
+          "text": "Mobility is independent of the mass of the charge carrier."
+        },
+        {
+          "label": "D",
+          "text": "Mobility increases with increase in temperature"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): mobility decreases with increase in temperature.**\n\n**Mobility is the drift velocity per unit field:**\n\n\\(\\mu = \\dfrac{v_d}{E}\\)\n\n**and substituting \\(v_d = eE\\tau/m\\) gives the expression that answers every option:**\n\n\\(\\boxed{\\ \\mu = \\dfrac{e\\tau}{m}\\ }\\)\n\n**Only three things appear — \\(e\\), \\(\\tau\\) and \\(m\\) — and the field is not among them.**\n\n**Why mobility falls with temperature.** The relaxation time \\(\\tau\\) is the average interval between collisions. Heating makes the lattice ions vibrate more violently, so electrons are scattered **more frequently**, \\(\\tau\\) shortens, and \\(\\mu\\) falls with it. **The electrons are not slower in the thermal sense — they are faster — but the systematic drift the field builds up is repeatedly destroyed, and it is the drift that mobility measures.**\n\n**Option (A) is false, and instructively so.** \\(\\mu\\) contains no \\(E\\). A stronger field does make the electrons drift faster, but in **exact proportion** — double \\(E\\) and \\(v_d\\) doubles, so the ratio is unchanged. **That proportionality is Ohm's law**, and mobility's independence of \\(E\\) is another way of stating it. (In a semiconductor at very high fields the proportionality does break down and \\(\\mu\\) becomes field-dependent, but that is outside the ohmic regime this question assumes.)\n\n**Option (C) is contradicted by the formula**, where \\(m\\) sits in the denominator. **Mobility is inversely proportional to the carrier's mass** — a heavier carrier is harder to accelerate between collisions, so it drifts more sluggishly in the same field. This is why holes, with a larger effective mass than electrons, have lower mobility in silicon (about \\(0{\\cdot}05\\) against \\(0{\\cdot}14\\ \\mathrm{m^{2}V^{-1}s^{-1}}\\)), and why electron devices are generally faster than hole devices.\n\n**Option (D) reverses the temperature dependence.** It would be correct for the **carrier concentration** in a semiconductor, which rises steeply with heating — but \\(n\\) and \\(\\mu\\) are different quantities, and it is \\(\\mu\\) that is asked for.\n\n**How this connects to resistivity.**\n\n\\(\\rho = \\dfrac{1}{ne\\mu} = \\dfrac{m}{ne^{2}\\tau}\\)\n\n**In a metal \\(n\\) is fixed, so falling mobility is precisely why \\(\\rho\\) rises with temperature.** In a semiconductor \\(\\mu\\) also falls, but \\(n\\) rises exponentially and wins comfortably, so \\(\\rho\\) falls instead. **The mobility behaves the same way in both materials; what differs is the carrier density.**\n\n**A sense of scale.** Copper's mobility is about \\(4{\\cdot}4\\times 10^{-3}\\ \\mathrm{m^{2}V^{-1}s^{-1}}\\), so a field of \\(1\\) V/m produces a drift of only a few millimetres per second — consistent with the very slow drift velocities in ordinary wires."
+    },
+    {
+      "hash": "61dabb8dfb1044b502972696f36051d0f2c849e3c43bd2bae3173575548aaffd",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Moving Charges and Magnetism",
+      "subtopic": "The Moving Coil Galvanometer",
+      "stem": "A galvanometer of resistance G is converted into a voltmeter of range (0 – V) by connecting a resistor of 250 \\(\\Omega\\) with it. If resistor of 250 \\(\\Omega\\) is replaced by another resistor of 900 \\(\\Omega\\), its range becomes (0 – 3 V). The resistance G of the galvanometer is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "150 \\(\\Omega\\)"
+        },
+        {
+          "label": "B",
+          "text": "125 \\(\\Omega\\)"
+        },
+        {
+          "label": "C",
+          "text": "100 \\(\\Omega\\)"
+        },
+        {
+          "label": "D",
+          "text": "75 \\(\\Omega\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "**The answer is (D): 75 \\(\\Omega\\).**\n\n**A galvanometer becomes a voltmeter by adding a large resistance in SERIES.** The full-scale reading corresponds to the galvanometer's own full-scale current \\(I_g\\) flowing through the whole chain:\n\n\\(V = I_g\\left(G + R\\right)\\)\n\n**\\(I_g\\) is a property of the galvanometer and is the SAME in both cases** — that is what makes the two equations solvable without knowing it.\n\n**Case 1** — range \\(\\left(0 - V\\right)\\) with \\(R = 250\\ \\Omega\\):\n\n\\(V = I_g\\left(G + 250\\right)\\)\n\n**Case 2** — range \\(\\left(0 - 3V\\right)\\) with \\(R = 900\\ \\Omega\\):\n\n\\(3V = I_g\\left(G + 900\\right)\\)\n\n**Dividing the second by the first** eliminates both \\(I_g\\) and \\(V\\):\n\n\\(3 = \\dfrac{G + 900}{G + 250}\\)\n\n\\(3G + 750 = G + 900\\)\n\n\\(2G = 150\\)\n\n\\(\\boxed{\\ G = 75\\ \\Omega\\ }\\)\n\n**Dividing rather than solving is what makes this quick.** Two unknowns, \\(I_g\\) and \\(V\\), never need to be found because they appear as a product in both equations and cancel in the ratio.\n\n**A check on the answer.** With \\(G = 75\\): case 1 gives a total of \\(325\\ \\Omega\\), case 2 a total of \\(975\\ \\Omega\\), and \\(975/325 = 3\\) exactly \\(\\checkmark\\) — the range has tripled, as stated.\n\n**The intuition to carry.** Tripling the range requires **tripling the total circuit resistance**, not tripling the added resistor. Here the resistor went from \\(250\\) to \\(900\\), a factor of \\(3{\\cdot}6\\), and the difference is made up by \\(G\\), which stays put while everything else scales. **The larger the galvanometer's own resistance, the further the added resistor's change falls short of the range ratio** — which is exactly the lever this question uses.\n\n**A useful general result.** For ranges \\(V_1\\) with \\(R_1\\) and \\(V_2\\) with \\(R_2\\):\n\n\\(G = \\dfrac{V_1R_2 - V_2R_1}{V_2 - V_1}\\)\n\nSubstituting \\(V_2 = 3V_1\\): \\(G = \\left(900 - 750\\right)/2 = 75\\ \\Omega\\) \\(\\checkmark\\).\n\n**Why the series resistance must be large.** An ideal voltmeter draws no current, so that connecting it does not disturb the circuit it measures. Here the voltmeter's total resistance of \\(325\\ \\Omega\\) is modest, but the principle holds: the larger \\(R\\), the less the instrument loads the circuit — at the cost of needing a more sensitive galvanometer.\n\n**The contrast with an ammeter.** There the galvanometer is shunted by a **small** resistance in parallel, so that most of the current bypasses it and the meter presents almost no resistance to the circuit. Series-and-large for voltage, parallel-and-small for current."
+    },
+    {
+      "hash": "3fd7fd651486b9ac6b61df4b7c1d6a6f9782fcc274516a4a6f89de6b37a32472",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "subtopic": "Einstein's Photoelectric Equation and the Photon",
+      "stem": "Photons of frequency \\(\\nu\\) are incident on the surfaces of two metals A and B of threshold frequencies \\(\\frac{\\nu}{2}\\) and \\(\\frac{\\nu}{3}\\). The ratio of maximum kinetic energy of electrons emitted from metal A to that from metal B is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{3}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{2}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{3}{2}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "**The answer is (B): \\(\\dfrac{3}{4}\\).**\n\n**Einstein's photoelectric equation, written through the threshold frequency:**\n\n\\(K_{\\max} = h\\nu - h\\nu_0 = h\\left(\\nu - \\nu_0\\right)\\)\n\n**The same photons \\(\\left(\\nu\\right)\\) fall on both metals**, so the only difference is each metal's own threshold.\n\n**Metal A**, with \\(\\nu_0 = \\dfrac{\\nu}{2}\\):\n\n\\(K_A = h\\left(\\nu - \\dfrac{\\nu}{2}\\right) = \\dfrac{h\\nu}{2}\\)\n\n**Metal B**, with \\(\\nu_0 = \\dfrac{\\nu}{3}\\):\n\n\\(K_B = h\\left(\\nu - \\dfrac{\\nu}{3}\\right) = \\dfrac{2h\\nu}{3}\\)\n\n**The ratio:**\n\n\\(\\dfrac{K_A}{K_B} = \\dfrac{h\\nu/2}{2h\\nu/3} = \\dfrac{1}{2}\\times\\dfrac{3}{2}\\)\n\n\\(\\boxed{\\ \\dfrac{K_A}{K_B} = \\dfrac{3}{4}\\ }\\)\n\n**\\(h\\) and \\(\\nu\\) both cancel**, which is why no numerical values are needed and the result is a pure number.\n\n**Metal A gives the SMALLER kinetic energy**, and it should: its threshold is the **higher** of the two \\(\\left(\\nu/2 > \\nu/3\\right)\\), so more of each photon's energy is spent merely freeing the electron and less survives as motion.\n\n**Option (D), \\(3/2\\), is the ratio of the two WORK FUNCTIONS**, \\(\\left(\\nu/2\\right)/\\left(\\nu/3\\right)\\) — and is also the answer upside down. Since a larger work function must give a smaller kinetic energy, the two ratios are necessarily reciprocals of each other only in the sense that **the ordering reverses**, and checking which way round the answer should be is worth a moment here.\n\n**Option (C), \\(2/3\\), is what the subtraction gives if performed carelessly** — taking \\(K_B\\) as \\(h\\nu/3\\) rather than \\(2h\\nu/3\\), that is, quoting the work function in place of the kinetic energy.\n\n**Why the ratio is not simply the ratio of the thresholds.** \\(K_{\\max}\\) is a **difference**, \\(h\\nu - h\\nu_0\\), not a quotient, so the thresholds do not carry through proportionally. The closer \\(\\nu_0\\) creeps towards \\(\\nu\\), the more sharply \\(K_{\\max}\\) collapses — and at \\(\\nu_0 = \\nu\\) it vanishes altogether, however large \\(\\nu\\) is.\n\n**Both metals do emit**, since \\(\\nu\\) exceeds both thresholds. Had metal A's threshold been \\(2\\nu\\) instead of \\(\\nu/2\\), it would have emitted nothing and the ratio would not exist — the sort of check worth making before dividing.\n\n**A note on what is NOT asked.** The **number** of photoelectrons from each metal is not determined by this information; that depends on the intensity and on each surface's quantum efficiency. Only the maximum **energy** per electron follows from frequency and work function."
+    },
+    {
+      "hash": "1c7a084bcff93d0ddbe6348ec4f0f3ea8ff8e47c9953cc9ba691a24521ccd297",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Ray Optics and Optical Instruments",
+      "subtopic": "Refraction at Spherical Surfaces and by Lenses",
+      "stem": "A convex lens of refractive index \\(1{\\cdot}5\\) has a focal length of 20 cm in air. Find its nature and focal length when it is immersed in a transparent liquid of refractive index \\(1{\\cdot}25\\).",
+      "solution": "**A lens's focal length depends on the CONTRAST between its own refractive index and that of its surroundings** — not on the glass alone. That is the whole of this question.\n\n**The lensmaker's formula in a medium:**\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{n_{\\text{lens}}}{n_{\\text{medium}}} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\)\n\n**The bracket containing the radii is fixed by the grinding and never changes**, so taking the ratio of the two cases eliminates it entirely.\n\n**In air** \\(\\left(n_{\\text{medium}} = 1\\right)\\):\n\n\\(\\dfrac{1}{f} = \\left(1{\\cdot}5 - 1\\right)S = 0{\\cdot}5\\,S \\qquad\\text{where } S = \\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\)\n\n**In the liquid** \\(\\left(n_{\\text{medium}} = 1{\\cdot}25\\right)\\):\n\n\\(\\dfrac{1}{f'} = \\left(\\dfrac{1{\\cdot}5}{1{\\cdot}25} - 1\\right)S = \\left(1{\\cdot}2 - 1\\right)S = 0{\\cdot}2\\,S\\)\n\n**Dividing:**\n\n\\(\\dfrac{f'}{f} = \\dfrac{0{\\cdot}5}{0{\\cdot}2} = 2{\\cdot}5\\)\n\n\\(\\boxed{\\ f' = 2{\\cdot}5 \\times 20 = 50\\ \\mathrm{cm}\\ }\\)\n\n**The nature: still CONVERGING.** The factor \\(\\left(n_{\\text{lens}}/n_{\\text{medium}} - 1\\right)\\) remains **positive**, because the glass is still denser than its surroundings \\(\\left(1{\\cdot}5 > 1{\\cdot}25\\right)\\). A convex lens in a rarer medium converges, and the liquid — though it weakens the lens considerably — has not changed that.\n\n**The lens is WEAKER by a factor of \\(2{\\cdot}5\\)**, and the reason is physical rather than algebraic: refraction at each surface depends on the index **step** the light crosses. In air the step is \\(1{\\cdot}5\\) against \\(1\\); in the liquid it is \\(1{\\cdot}5\\) against \\(1{\\cdot}25\\), a much gentler change of medium, so the rays are bent much less.\n\n**Three regimes worth holding together**, since the liquid's index is the variable:\n\n| Condition | Factor \\(\\left(n_l/n_m - 1\\right)\\) | Behaviour |\n|---|---|---|\n| \\(n_m < n_{\\text{lens}}\\) | positive | converging, as here |\n| \\(n_m = n_{\\text{lens}}\\) | **zero** | \\(f \\to \\infty\\) — the lens **disappears** |\n| \\(n_m > n_{\\text{lens}}\\) | negative | a convex lens **DIVERGES** |\n\n**The middle case is the striking one.** Immersed in a liquid of exactly \\(n = 1{\\cdot}5\\), this lens would become optically invisible: no refraction at either surface, no bending, no image. The glass would still be there, but light would pass through it as though through more liquid.\n\n**And the third case genuinely reverses the lens.** In carbon disulphide \\(\\left(n = 1{\\cdot}63\\right)\\) this convex lens would diverge, with \\(f' = 20\\times 0{\\cdot}5/\\left(1{\\cdot}5/1{\\cdot}63 - 1\\right) \\approx -125\\) cm. **A lens's convergence is not a property of its shape alone.**"
+    },
+    {
+      "hash": "269de76d27a9db192fdeb5c71ddc29e115a78e6f544e2c1f15d80417b635b0f1",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Nuclear Energy",
+      "stem": "Differentiate between nuclear fission and nuclear fusion, giving one example for each.",
+      "solution": "**Nuclear FISSION and nuclear FUSION are opposite routes to the same destination** — both move nucleons towards the iron peak of the binding-energy curve, and both release energy by doing so.\n\n| | **Nuclear fission** | **Nuclear fusion** |\n|---|---|---|\n| Process | A **heavy** nucleus **splits** into two lighter nuclei | Two **light** nuclei **combine** into a heavier one |\n| Mass numbers | \\(A > 230\\) splitting to \\(A \\approx 100\\)-\\(140\\) | \\(A < 20\\) joining |\n| Trigger | Absorption of a **slow neutron**; no barrier to overcome | Enormous **temperature and pressure**, to overcome the Coulomb repulsion |\n| Conditions | Works at ordinary temperature | Needs \\(\\sim 10^{7}\\) K or more |\n| Energy per event | \\(\\approx 200\\) MeV | \\(\\approx 17\\) MeV for D-T |\n| Energy per nucleon | \\(\\approx 0{\\cdot}9\\) MeV | \\(\\approx 3{\\cdot}5\\) MeV — **greater** |\n| Products | Radioactive fragments, a lasting waste problem | Mostly stable; far less radioactive waste |\n| Where it occurs | Nuclear reactors, atomic bombs | Stars, including the Sun; hydrogen bombs |\n\n**An example of FISSION:**\n\n\\({}^{1}_{0}\\mathrm{n} + {}^{235}_{92}\\mathrm{U} \\longrightarrow {}^{236}_{92}\\mathrm{U} \\longrightarrow {}^{144}_{56}\\mathrm{Ba} + {}^{89}_{36}\\mathrm{Kr} + 3\\,{}^{1}_{0}\\mathrm{n} + Q\\)\n\n*The three emitted neutrons are what make a **chain reaction** possible: each can induce a further fission.*\n\n**An example of FUSION:**\n\n\\({}^{1}_{1}\\mathrm{H} + {}^{1}_{1}\\mathrm{H} \\longrightarrow {}^{2}_{1}\\mathrm{H} + e^{+} + \\nu + 0{\\cdot}42\\ \\mathrm{MeV}\\)\n\n*This is the first step of the proton-proton chain, the reaction powering the Sun. The deuterium-tritium reaction \\({}^{2}_{1}\\mathrm{H} + {}^{3}_{1}\\mathrm{H} \\to {}^{4}_{2}\\mathrm{He} + {}^{1}_{0}\\mathrm{n} + 17{\\cdot}6\\ \\mathrm{MeV}\\) is the one pursued on Earth.*\n\n**Why BOTH release energy — the single idea behind the pair.** The binding-energy-per-nucleon curve rises steeply to a maximum near \\({}^{56}\\mathrm{Fe}\\) and then declines slowly. **Heavy nuclei move towards that peak by splitting; light nuclei move towards it by joining.** In both cases the products are more tightly bound than the reactants, and the surplus binding energy emerges as kinetic energy and radiation.\n\n**Fusion releases more energy PER NUCLEON despite the smaller \\(Q\\) per event**, because so few nucleons are involved — which is why it is the more attractive power source in principle, and why the Sun has burned for five billion years.\n\n**Why fusion is so much harder to achieve.** Fission needs only a neutron, which is **uncharged** and drifts into a nucleus unopposed. Fusion requires two **positively charged** nuclei to be forced within the range of the strong force against their mutual Coulomb repulsion — hence the stellar temperatures, and hence the fact that controlled fusion power remains unrealised while fission reactors have run since 1942."
+    },
+    {
+      "hash": "8ed85c5605f3e233d1a8768082b3459c69113861d62fc8518f37c98a46600188",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Waves",
+      "subtopic": "Electromagnetic Spectrum",
+      "stem": "What are X-rays ? How are they produced ? Give two uses of X-rays.",
+      "solution": "**What X-rays are.**\n\n**X-rays are electromagnetic waves of very short wavelength**, lying between ultraviolet and gamma rays in the spectrum:\n\n\\(\\text{wavelength} \\approx 1\\ \\mathrm{nm}\\ \\text{down to}\\ 10^{-3}\\ \\mathrm{nm}\\ \\left(10^{-9}\\ \\text{to}\\ 10^{-12}\\ \\mathrm{m}\\right)\\)\n\n\\(\\text{frequency} \\approx 10^{16}\\ \\text{to}\\ 10^{20}\\ \\mathrm{Hz}\\)\n\nTheir photon energy runs from about \\(100\\) eV to \\(100\\) keV — enough to **ionise** atoms, which is the source of both their usefulness and their hazard. They travel at \\(c\\), are undeflected by electric and magnetic fields (being uncharged), and **penetrate matter** that is opaque to visible light.\n\n**How they are produced.**\n\n**By bombarding a metal target with high-energy electrons in an evacuated tube** — the Coolidge tube. Electrons are boiled off a heated filament, accelerated through a potential difference of tens of kilovolts, and strike a target of **high atomic number** such as tungsten or molybdenum.\n\n**Two distinct mechanisms operate at the target**, and together they give the observed spectrum:\n\n**1. Bremsstrahlung — the CONTINUOUS spectrum.** An electron is suddenly decelerated by the target nuclei, and an accelerating charge radiates. The energy lost in one such encounter can be anything up to the electron's whole kinetic energy, which sets a sharp **short-wavelength cut-off**:\n\n\\(\\lambda_{\\min} = \\dfrac{hc}{eV}\\)\n\n*a purely quantum result, and one that depends on the accelerating voltage alone, never on the target material.*\n\n**2. Characteristic lines — the DISCRETE spectrum.** An incident electron knocks out an **inner-shell** electron of a target atom; an outer electron falls into the vacancy and the energy difference is emitted as a photon of sharply defined wavelength. **These lines depend on the target element**, which is why they are called characteristic.\n\n**Only about \\(1\\%\\) of the electrons' energy becomes X-rays**; the rest heats the target, which is why the anode is massive and often water-cooled or rotated.\n\n**Two uses.**\n\n**1. MEDICAL DIAGNOSIS — radiography.** X-rays pass readily through soft tissue but are strongly absorbed by bone, because absorption rises steeply with atomic number and bone is rich in calcium. The shadow cast on film or a detector reveals fractures, and with a contrast medium, the gut and blood vessels. CT scanning builds a three-dimensional image from many such projections.\n\n**2. RADIOTHERAPY — treating cancer.** High-energy X-rays ionise atoms along their path and damage cellular DNA, preventing division. Rapidly dividing tumour cells are the most vulnerable, and beams from several directions are crossed so that only the tumour receives the full dose.\n\n*(Two more, equally valid: **X-ray crystallography**, since the wavelength matches atomic spacing and crystals diffract them — this is how DNA's structure was found; and **security screening** of luggage, together with industrial inspection for cracks in castings and welds.)*\n\n**Why they are dangerous.** The same ionising power that treats a tumour damages healthy tissue, so exposure is minimised and operators shielded with lead. It is a matter of dose, not of kind."
+    },
+    {
+      "hash": "308d6b34811a8094d2e86aa9b90c005fdb9a9e69faae1e3b0202ad5e78101f3a",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Nuclei",
+      "subtopic": "Atomic Masses and Composition of the Nucleus",
+      "stem": "(a) Distinguish between isotopes and isobars, giving one example for each.\n\n(b) Derive the relation between atomic mass unit (u) and electron volt (eV).",
+      "solution": "**(a) Isotopes and isobars.**\n\n| | **ISOTOPES** | **ISOBARS** |\n|---|---|---|\n| Atomic number \\(Z\\) | **same** | **different** |\n| Mass number \\(A\\) | **different** | **same** |\n| Neutron number | different | different |\n| Element | the **same** element | **different** elements |\n| Chemical behaviour | identical | different |\n\n**Isotopes** are atoms of the **same element** — same number of protons, so the same chemistry — differing only in neutron count.\n\n\\(\\boxed{\\ {}^{2}_{1}\\mathrm{H}\\ \\text{and}\\ {}^{3}_{1}\\mathrm{H}\\ \\left(\\text{deuterium and tritium}\\right)\\ }\\)\n\n*Both are hydrogen: \\(Z = 1\\) for each, with \\(A = 2\\) and \\(3\\). Others: \\({}^{12}_{6}\\mathrm{C}\\) and \\({}^{14}_{6}\\mathrm{C}\\).*\n\n**Isobars** are nuclides of **different elements** that happen to share a mass number.\n\n\\(\\boxed{\\ {}^{3}_{1}\\mathrm{H}\\ \\text{and}\\ {}^{3}_{2}\\mathrm{He}\\ }\\)\n\n*Both have \\(A = 3\\), but \\(Z = 1\\) and \\(2\\) — hydrogen and helium, chemically unrelated. Others: \\({}^{40}_{18}\\mathrm{Ar}\\), \\({}^{40}_{19}\\mathrm{K}\\) and \\({}^{40}_{20}\\mathrm{Ca}\\).*\n\n**The distinction in one line: isotopes share the CHEMISTRY, isobars share only the WEIGHT.** Chemical means cannot separate isotopes — that is why enrichment needs centrifuges — while isobars are separated by any ordinary chemical reaction.\n\n**(b) The relation between the atomic mass unit and the electronvolt.**\n\n**These are units of different quantities — mass and energy — so the bridge is Einstein's relation:**\n\n\\(E = mc^{2}\\)\n\n**Step 1 — write \\(1\\) u in kilograms.** The atomic mass unit is one-twelfth the mass of a \\({}^{12}\\mathrm{C}\\) atom:\n\n\\(1\\ \\mathrm{u} = 1{\\cdot}6605\\times 10^{-27}\\ \\mathrm{kg}\\)\n\n**Step 2 — find its energy equivalent in joules.**\n\n\\(E = \\left(1{\\cdot}6605\\times 10^{-27}\\right)\\left(2{\\cdot}9979\\times 10^{8}\\right)^{2}\\)\n\n\\(E = \\left(1{\\cdot}6605\\times 10^{-27}\\right)\\left(8{\\cdot}9875\\times 10^{16}\\right) = 1{\\cdot}4924\\times 10^{-10}\\ \\mathrm{J}\\)\n\n**Step 3 — convert to electronvolts**, dividing by the charge on the electron:\n\n\\(E = \\dfrac{1{\\cdot}4924\\times 10^{-10}}{1{\\cdot}602\\times 10^{-19}}\\ \\mathrm{eV} = 9{\\cdot}315\\times 10^{8}\\ \\mathrm{eV}\\)\n\n\\(\\boxed{\\ 1\\ \\mathrm{u} \\equiv 931{\\cdot}5\\ \\mathrm{MeV}\\ }\\)\n\n**The statement is an EQUIVALENCE, not an equality.** A unit of mass is not a unit of energy; \\(931{\\cdot}5\\) MeV is the energy that would appear if \\(1\\) u of mass were entirely converted, and the arrow runs through \\(c^{2}\\).\n\n**Why this number is used constantly in nuclear physics.** Nuclear masses are tabulated in u, and binding energies are wanted in MeV. The conversion turns a mass defect straight into an energy:\n\n\\(\\mathrm{BE} = \\Delta m\\ \\left(\\text{in u}\\right)\\times 931{\\cdot}5\\ \\mathrm{MeV}\\)\n\n**A worked instance.** The deuteron's mass defect is \\(0{\\cdot}00239\\) u, so its binding energy is \\(0{\\cdot}00239\\times 931{\\cdot}5 = 2{\\cdot}22\\) MeV — the measured value.\n\n*(Using rounded constants — \\(1{\\cdot}66\\times 10^{-27}\\) kg, \\(3\\times 10^{8}\\) m/s and \\(1{\\cdot}6\\times 10^{-19}\\) C — gives \\(934\\) MeV. The accepted \\(931{\\cdot}5\\) requires the precise values used above.)*"
+    },
+    {
+      "hash": "3409a8f64c6f6e88397da5b9a411ff9942072419459e26394f74f4674abc25e3",
+      "ref": "Q27",
+      "questionNumber": "27",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Current Electricity",
+      "subtopic": "Kirchhoff's Rules and Wheatstone Bridge",
+      "stem": "(a) 'Current is a scalar quantity, although we represent current with an arrow.' Explain.\n\n(b) Derive the balance condition of a Wheatstone Bridge.",
+      "solution": "**(a) Why current is a SCALAR despite the arrow.**\n\n**A quantity is a vector only if it obeys the LAW OF VECTOR ADDITION** — the parallelogram rule. Having a magnitude and an associated direction is not enough; the addition rule is the test.\n\n**Currents do not obey it.** Where two wires meet at a junction, their currents combine **algebraically**:\n\n\\(I_3 = I_1 + I_2\\)\n\n**whatever the angle between the wires.** Two currents of \\(3\\) A and \\(4\\) A meeting at right angles give \\(7\\) A, not \\(5\\) A. If current were a vector the resultant would depend on that angle, and Kirchhoff's junction rule — which contains no angles at all — could not be written.\n\n**What the arrow actually means.** It marks the **sense of flow along the conductor** — which way the conventional current runs through that particular wire — not a direction in space. The wire's own geometry supplies the path; the arrow only says which way along it. **Bend the wire into a curve and the \"direction\" changes continuously while the current does not.**\n\n**The formal definition confirms it.** Current is\n\n\\(I = \\dfrac{dq}{dt}\\)\n\n**a ratio of two scalars**, and therefore a scalar. More precisely, current is the **flux** of the current density through a surface:\n\n\\(I = \\vec{j}\\cdot\\Delta\\vec{S}\\)\n\n**\\(\\vec{j}\\) — the current density — IS a genuine vector**, and \\(I\\) is the scalar product of it with the area vector. A scalar product of two vectors is a scalar.\n\n**So the vector in the problem is \\(\\vec{j}\\), not \\(I\\).** Current is to current density as flux is to field.\n\n**(b) The balance condition of a Wheatstone bridge.**\n\n*The arrangement:* four resistances \\(R_1, R_2, R_3, R_4\\) forming a quadrilateral \\(ABCD\\), a cell across the diagonal \\(AC\\), and a galvanometer across the other diagonal \\(BD\\).\n\n**Balance means NO current through the galvanometer:**\n\n\\(I_g = 0\\)\n\n**Two consequences follow immediately.** First, \\(B\\) and \\(D\\) must be at the **same potential**. Second, the current entering at \\(A\\) divides into two branches that each keep their current all the way through:\n\n\\(I_1\\ \\text{through}\\ R_1\\ \\text{and}\\ R_3; \\qquad I_2\\ \\text{through}\\ R_2\\ \\text{and}\\ R_4\\)\n\n**Loop \\(ABDA\\)** — Kirchhoff's loop rule, with no contribution from the galvanometer since \\(I_g = 0\\):\n\n\\(-I_1R_1 + 0 + I_2R_2 = 0 \\qquad\\Longrightarrow\\qquad \\dfrac{I_1}{I_2} = \\dfrac{R_2}{R_1} \\qquad \\dots\\left(1\\right)\\)\n\n**Loop \\(CBDC\\)**, using \\(I_3 = I_1\\) and \\(I_4 = I_2\\):\n\n\\(I_2R_4 + 0 - I_1R_3 = 0 \\qquad\\Longrightarrow\\qquad \\dfrac{I_1}{I_2} = \\dfrac{R_4}{R_3} \\qquad \\dots\\left(2\\right)\\)\n\n**Equating (1) and (2):**\n\n\\(\\boxed{\\ \\dfrac{R_2}{R_1} = \\dfrac{R_4}{R_3} \\qquad\\text{equivalently}\\qquad \\dfrac{R_1}{R_2} = \\dfrac{R_3}{R_4}\\ }\\)\n\n**This is the balance condition.**\n\n**Note what it does NOT contain: the emf, the cell's internal resistance, and the galvanometer's resistance.** That independence is exactly why the bridge is such a good instrument — a **null** method. The measurement asks only whether a needle moves, not by how much, so the sensitivity of the detector and the steadiness of the supply drop out of the answer entirely. An unknown resistance is found from three known ones and nothing else."
+    },
+    {
+      "hash": "8e1ff2734631cec89da1626a019c5c2817a927fcea0a81693cbf2e98534280ce",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Electromagnetic Induction",
+      "subtopic": "Inductance",
+      "stem": "Two coils, one of radius \\(0{\\cdot}5\\) cm having 10 turns and the other of radius 5 cm having 50 turns are placed coaxially in air such that their centres are coincident. Calculate :\n\n(a) the magnetic flux through the smaller coil if the larger coil carries a current of 3 A, and\n\n(b) the mutual inductance of the two coils.",
+      "solution": "**The two coils are coaxial with coincident centres, and their radii differ by a factor of ten** — \\(r_1 = 0{\\cdot}5\\) cm against \\(r_2 = 5\\) cm. That disparity is what makes the problem tractable.\n\n**Which direction to calculate is the whole method.** The current is given in the **larger** coil, and its field at the common centre is easy to write down; because \\(r_1 \\ll r_2\\), that field can be treated as **uniform across the whole of the small coil**. Attempting it the other way round — the small coil's field, which varies sharply over the large coil's area — has no elementary solution.\n\n**(a) The flux through the smaller coil.**\n\n**Field at the centre due to the larger coil**, \\(N_2 = 50\\) turns of radius \\(r_2 = 5\\times 10^{-2}\\) m carrying \\(I_2 = 3\\) A:\n\n\\(B_2 = \\dfrac{\\mu_0N_2I_2}{2r_2} = \\dfrac{\\left(4\\pi\\times 10^{-7}\\right)\\left(50\\right)\\left(3\\right)}{2\\left(5\\times 10^{-2}\\right)}\\)\n\n\\(B_2 = \\dfrac{1{\\cdot}885\\times 10^{-4}}{0{\\cdot}1} = 1{\\cdot}885\\times 10^{-3}\\ \\mathrm{T}\\)\n\n**Area of the smaller coil**, \\(r_1 = 0{\\cdot}5\\ \\mathrm{cm} = 5\\times 10^{-3}\\) m:\n\n\\(A_1 = \\pi r_1^{2} = \\pi\\left(5\\times 10^{-3}\\right)^{2} = 7{\\cdot}854\\times 10^{-5}\\ \\mathrm{m^{2}}\\)\n\n**Total flux linkage**, remembering the small coil's \\(N_1 = 10\\) turns:\n\n\\(\\Phi_1 = N_1B_2A_1 = 10 \\times \\left(1{\\cdot}885\\times 10^{-3}\\right)\\times\\left(7{\\cdot}854\\times 10^{-5}\\right)\\)\n\n\\(\\boxed{\\ \\Phi_1 = 1{\\cdot}48\\times 10^{-6}\\ \\mathrm{Wb}\\ }\\)\n\n**Both \\(N\\)s are needed, and in different places.** \\(N_2\\) multiplies the **field** produced by the large coil; \\(N_1\\) multiplies the **flux linkage** of the small one. Dropping either gives an answer out by a factor of ten or fifty.\n\n**(b) The mutual inductance.**\n\n\\(M = \\dfrac{\\Phi_1}{I_2} = \\dfrac{1{\\cdot}48\\times 10^{-6}}{3}\\)\n\n\\(\\boxed{\\ M = 4{\\cdot}92\\times 10^{-7}\\ \\mathrm{H} \\approx 0{\\cdot}49\\ \\mu\\mathrm{H}\\ }\\)\n\n**In symbols**, which shows what \\(M\\) actually depends on:\n\n\\(M = \\dfrac{\\mu_0N_1N_2\\pi r_1^{2}}{2r_2}\\)\n\n**Turns, radii and \\(\\mu_0\\) — no current anywhere.** The \\(3\\) A cancelled, as it had to: mutual inductance is a property of the **geometry**, and the same pair of coils would give the same \\(M\\) at any current.\n\n**RECIPROCITY is what makes the easy direction sufficient.** The mutual inductance obeys\n\n\\(M_{12} = M_{21}\\)\n\nso this same \\(0{\\cdot}49\\ \\mu\\)H also gives the flux through the **large** coil per unit current in the **small** one — a calculation that is intractable directly, because the small coil's field is wildly non-uniform over the large coil's area. **The theorem lets an unanswerable question be answered by turning it round.**\n\n**A sense of scale.** Half a microhenry is small: at \\(50\\) Hz, a current changing at \\(100\\) A/s would induce only \\(5\\times 10^{-5}\\) V. Mutual inductances become useful when the coils are wound on a common iron core, which raises \\(M\\) by a factor of thousands — the principle of the transformer."
+    }
+  ]
+}
