@@ -99,14 +99,33 @@ def main():
         if (tight & pr).get_area() < 0.2 * pr.get_area():
             continue
         # Push the nearest edge off it, never cutting more than the overlap.
+        # EACH EDGE ONLY EVER SHRINKS. The first version ASSIGNED the edge, so a
+        # second prose line further from the figure moved it back out again and
+        # the first line reappeared in the crop — visible as a column of shaved
+        # half-words down the side of four caption-proposed crops.
         if pr.y1 <= tight.y0 + (tight.height / 2):
-            tight.y0 = min(tight.y1 - 1, pr.y1 + 2); notes.append("top trimmed off prose")
+            tight.y0 = max(tight.y0, min(tight.y1 - 1, pr.y1 + 2)); notes.append("top trimmed off prose")
         elif pr.y0 >= tight.y0 + (tight.height / 2):
-            tight.y1 = max(tight.y0 + 1, pr.y0 - 2); notes.append("bottom trimmed off prose")
+            tight.y1 = min(tight.y1, max(tight.y0 + 1, pr.y0 - 2)); notes.append("bottom trimmed off prose")
         elif pr.x1 <= tight.x0 + (tight.width / 2):
-            tight.x0 = min(tight.x1 - 1, pr.x1 + 2); notes.append("left trimmed off prose")
+            tight.x0 = max(tight.x0, min(tight.x1 - 1, pr.x1 + 2)); notes.append("left trimmed off prose")
         else:
-            tight.x1 = max(tight.x0 + 1, pr.x0 - 2); notes.append("right trimmed off prose")
+            tight.x1 = min(tight.x1, max(tight.x0 + 1, pr.x0 - 2)); notes.append("right trimmed off prose")
+
+    # Re-bound the ink after trimming: pulling an edge off prose can leave a
+    # wide empty band on that side.
+    pix2 = page.get_pixmap(matrix=fitz.Matrix(RENDER, RENDER), clip=tight, colorspace=fitz.csGRAY)
+    a2 = np.frombuffer(pix2.samples, dtype=np.uint8).reshape(pix2.height, pix2.width) < INK
+    r2 = np.where(a2.mean(axis=1) > ROW_MIN)[0]
+    c2 = np.where(a2.mean(axis=0) > ROW_MIN)[0]
+    if len(r2) and len(c2):
+        mx2, my2 = MARGIN * tight.width, MARGIN * tight.height
+        tight = fitz.Rect(
+            max(tight.x0, tight.x0 + c2[0] / RENDER - mx2),
+            max(tight.y0, tight.y0 + r2[0] / RENDER - my2),
+            min(tight.x1, tight.x0 + (c2[-1] + 1) / RENDER + mx2),
+            min(tight.y1, tight.y0 + (r2[-1] + 1) / RENDER + my2),
+        )
 
     out = [round(tight.x0 / W, 4), round(tight.y0 / H, 4), round(tight.x1 / W, 4), round(tight.y1 / H, 4)]
     moved = [round(a - b, 4) for a, b in zip(out, [x0, y0, x1, y1])]
