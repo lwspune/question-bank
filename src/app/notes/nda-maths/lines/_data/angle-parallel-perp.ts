@@ -37,12 +37,16 @@ export const ANGLE_PARALLEL_PERP_NOTE: SubtopicNote = {
         answer: "\\(\\tan^{-1}\\tfrac12\\).",
       },
       selfCheckExample: {
-        prompt: "Find the obtuse angle between lines with slopes \\(2-\\sqrt3\\) and \\(2+\\sqrt3\\).",
+        // Different numbers from the featured PYQ on purpose. The old
+        // self-check was that PYQ verbatim, so the "meet it on a real exam
+        // question" rung was a re-read of the rung above it.
+        prompt: "Find the obtuse angle between the lines with slopes \\(3\\) and \\(\\tfrac12\\).",
         steps: [
-          "\\(m_1m_2=(2)^2-(\\sqrt3)^2=1\\), so \\(1+m_1m_2=2\\); \\(m_1-m_2=-2\\sqrt3\\).",
-          "\\(\\tan\\theta=\\left|\\tfrac{-2\\sqrt3}{2}\\right|=\\sqrt3\\Rightarrow\\theta=60°\\) (acute); obtuse \\(=120°\\).",
+          "\\(m_1m_2=\\tfrac32\\), so \\(1+m_1m_2=\\tfrac52\\); and \\(m_1-m_2=3-\\tfrac12=\\tfrac52\\).",
+          "\\(\\tan\\theta=\\left|\\tfrac{5/2}{5/2}\\right|=1\\Rightarrow\\theta=45°\\) — that is the acute one.",
+          "The obtuse angle is its supplement: \\(180°-45°\\).",
         ],
-        answer: "\\(120°\\).",
+        answer: "\\(135°\\).",
       },
       practiceSet: [
         { prompt: "Angle formula between slopes \\(m_1,m_2\\)?", answer: "\\(\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1m_2}\\right|\\)" },
@@ -60,7 +64,9 @@ export const ANGLE_PARALLEL_PERP_NOTE: SubtopicNote = {
       intuition:
         "Two lines are parallel when their slopes match, and perpendicular when the slopes multiply to \\(-1\\). In coefficient form these become clean conditions on \\(a,b\\).",
       definition:
-        "**Parallel:** \\(m_1=m_2\\); for \\(a_1x+b_1y+c_1=0\\) and \\(a_2x+b_2y+c_2=0\\), parallel iff \\(a_1b_2=a_2b_1\\) (i.e. \\(\\tfrac{a_1}{a_2}=\\tfrac{b_1}{b_2}\\)). **Perpendicular:** \\(m_1 m_2=-1\\), i.e. \\(a_1a_2+b_1b_2=0\\).",
+        "- **Parallel:** \\(m_1=m_2\\). In coefficients, for \\(a_1x+b_1y+c_1=0\\) and \\(a_2x+b_2y+c_2=0\\), that is \\(a_1b_2=a_2b_1\\), i.e. \\(\\tfrac{a_1}{a_2}=\\tfrac{b_1}{b_2}\\).\n" +
+        "- **That test also passes for the same line written twice.** It says the two lines have the same *direction*; it does not say they are *different* lines. They are **coincident** when the constants agree as well, \\(\\tfrac{a_1}{a_2}=\\tfrac{b_1}{b_2}=\\tfrac{c_1}{c_2}\\), and **strictly parallel** when the first two ratios agree and the third does **not**. A question that says \"parallel\" almost always wants the strict kind — so check the constant before you answer, or you will pick a value that makes the two lines identical.\n" +
+        "- **Perpendicular:** \\(m_1 m_2=-1\\), i.e. \\(a_1a_2+b_1b_2=0\\).",
       formula: {
         label: "Parallel and perpendicular conditions",
         latex:
@@ -82,24 +88,30 @@ export const ANGLE_PARALLEL_PERP_NOTE: SubtopicNote = {
         answer: "Yes — perpendicular.",
       },
       selfCheckExample: {
-        prompt: "Under what condition are \\(ax+by+c=0\\) and \\(a'x+b'y+c'=0\\) parallel?",
+        // Exercises the strict-parallel-vs-coincident distinction, which is
+        // what the featured PYQ turns on. The old self-check asked the reader
+        // to re-derive a line the definition prints two blocks above.
+        prompt:
+          "For what \\(k\\) are \\(2x+ky=5\\) and \\(6x-9y=4\\) parallel — and are they then distinct lines?",
         steps: [
-          "Equal slopes: \\(-\\tfrac{a}{b}=-\\tfrac{a'}{b'}\\).",
-          "Cross-multiply: \\(ab'=a'b\\).",
+          "Slopes are \\(-a/b\\): the first is \\(-\\tfrac{2}{k}\\), the second is \\(-\\tfrac{6}{-9}=\\tfrac23\\).",
+          "Set them equal: \\(-\\tfrac{2}{k}=\\tfrac23\\Rightarrow -6=2k\\Rightarrow k=-3\\).",
+          "Now check they are not the same line: \\(\\tfrac26=\\tfrac{-3}{-9}=\\tfrac13\\), but \\(\\tfrac54\\ne\\tfrac13\\).",
+          "The constants disagree, so the lines are distinct.",
         ],
-        answer: "\\(ab'=a'b\\) (\\(a/a'=b/b'\\)).",
+        answer: "\\(k=-3\\), and the lines are distinct — strictly parallel.",
       },
       practiceSet: [
         { prompt: "Parallel condition on slopes?", answer: "\\(m_1=m_2\\)" },
         { prompt: "Perpendicular condition on slopes?", answer: "\\(m_1m_2=-1\\)" },
         { prompt: "Perpendicular in coefficients?", answer: "\\(a_1a_2+b_1b_2=0\\)" },
-        { prompt: "Are \\(2x+3y=5\\), \\(3x-2y=7\\) perpendicular?", answer: "Yes" },
+        { prompt: "All three ratios \\(\\tfrac{a_1}{a_2}=\\tfrac{b_1}{b_2}=\\tfrac{c_1}{c_2}\\) equal means?", answer: "Coincident — one line, not two parallel ones" },
       ],
       pyqExampleId: "67b873bd-cc3f-4c6a-9a66-d37a9fccc284", // parallel condition
     },
   ],
   related: [
-    { label: "Distance, Section & Locus", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
-    { label: "Triangles, Quadrilaterals & Polygons", href: "/notes/nda-maths/lines/lines-triangles-polygons" },
+    { label: "Back: Equations & Slope", href: "/notes/nda-maths/lines/lines-equation-slope" },
+    { label: "Next: Distance, Section & Locus", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
   ],
 };

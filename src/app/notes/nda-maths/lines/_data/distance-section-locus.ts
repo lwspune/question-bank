@@ -39,11 +39,19 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
         answer: "\\(\\tfrac15\\).",
       },
       selfCheckExample: {
-        prompt: "Find the distance between \\(3x+4y=9\\) and \\(3x+4y=4\\).",
+        // The MATCHING-coefficient case was the old self-check, and it read the
+        // constants straight off the right-hand side — exactly what this
+        // concept's own trap forbids, surviving only because the modulus hid
+        // the sign error. It also left the featured PYQ's real difficulty (the
+        // rescale) undemonstrated. This is the scaled case, with that step
+        // written out.
+        prompt: "Find the distance between \\(3x+4y+5=0\\) and \\(6x+8y-4=0\\).",
         steps: [
-          "Same \\(a,b\\): \\(\\dfrac{|9-4|}{\\sqrt{3^2+4^2}}=\\dfrac{5}{5}\\).",
+          "The coefficients do not match, so rescale first: divide the second by \\(2\\) to get \\(3x+4y-2=0\\).",
+          "Now both are \\(3x+4y+c=0\\), with \\(c_1=5\\) and \\(c_2=-2\\).",
+          "\\(\\dfrac{|5-(-2)|}{\\sqrt{3^2+4^2}}=\\dfrac{7}{5}\\).",
         ],
-        answer: "\\(1\\).",
+        answer: "\\(\\tfrac75\\).",
       },
       practiceSet: [
         { prompt: "Distance from \\((x_0,y_0)\\) to \\(ax+by+c=0\\)?", answer: "\\(\\dfrac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}\\)" },
@@ -61,7 +69,8 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
       intuition:
         "The point dividing a segment in a given ratio is a weighted average of the endpoints. Run it backwards to find the ratio in which a point (or a line) divides a segment, or forwards to find midpoints and divisions.",
       definition:
-        "Point dividing \\(P(x_1,y_1)\\),\\(Q(x_2,y_2)\\) internally in ratio \\(m:n\\): \\(\\left(\\dfrac{mx_2+nx_1}{m+n},\\dfrac{my_2+ny_1}{m+n}\\right)\\). External division uses \\(m:-n\\). Midpoint is the \\(1:1\\) case. Collinearity of \\((x_1,y_1),(x_2,y_2),(x_3,y_3)\\): area \\(=0\\) (equivalently equal slopes).",
+        "- **Forward:** the point dividing \\(P(x_1,y_1)\\) and \\(Q(x_2,y_2)\\) internally in ratio \\(m:n\\) is \\(\\left(\\dfrac{mx_2+nx_1}{m+n},\\dfrac{my_2+ny_1}{m+n}\\right)\\). The **midpoint** is the \\(1:1\\) case. External division uses \\(m:-n\\).\n" +
+        "- **Backwards — the \\(k:1\\) trick.** When the ratio is what you are *looking for*, write it as \\(k:1\\) rather than \\(m:n\\). You may always do this, because \\(m:n\\) is the same ratio as \\(\\tfrac{m}{n}:1\\) — a ratio has only one unknown in it, not two. The dividing point becomes \\(\\left(\\dfrac{kx_2+x_1}{k+1},\\dfrac{ky_2+y_1}{k+1}\\right)\\); impose whatever the question says about that point and solve the single equation for \\(k\\). This is the move behind almost every \"in what ratio does … divide …\" question.",
       formula: {
         label: "Section formula and midpoint",
         latex:
@@ -93,7 +102,9 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
         { prompt: "Internal division \\(m:n\\) x-coordinate?", answer: "\\(\\dfrac{mx_2+nx_1}{m+n}\\)" },
         { prompt: "Midpoint is which ratio?", answer: "\\(1:1\\)" },
         { prompt: "External division uses ratio?", answer: "\\(m:-n\\)" },
-        { prompt: "Three points collinear ⇒ area?", answer: "\\(0\\)" },
+        // Replaces a rep on "collinear ⇒ area = 0", which asked the reader to
+        // recall a formula taught four concepts later, in subtopic 4.
+        { prompt: "Looking for an unknown ratio — how should you write it?", answer: "As \\(k:1\\), then solve for \\(k\\)" },
       ],
       pyqExampleId: "86e9b380-545e-4e94-8b32-585ec6f4f630", // ratio in which C divides
     },
@@ -105,7 +116,9 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
       intuition:
         "A locus is the set of points satisfying a rule. Let the moving point be \\((x,y)\\), write the geometric condition algebraically, and simplify — the equation that survives is the locus. 'Equidistant from two points' always gives the perpendicular bisector.",
       definition:
-        "Set \\(P=(x,y)\\), translate the condition (equidistant, fixed ratio, sum/difference of distances), and reduce. **Equidistant from \\(A,B\\):** \\(PA^2=PB^2\\) ⇒ the perpendicular bisector of \\(AB\\) (a line). Equidistant from two lines ⇒ the angle bisectors.",
+        "- **The standard move:** set \\(P=(x,y)\\), translate the stated condition into algebra, and reduce. The equation left standing is the locus.\n" +
+        "- **Equidistant from two points \\(A,B\\):** \\(PA^2=PB^2\\) ⇒ the perpendicular bisector of \\(AB\\), a straight line. Equidistant from two **lines** ⇒ the pair of angle bisectors between them.\n" +
+        "- **From a varying parameter — the other common species, and the one students miss.** Sometimes the moving point is not defined by a distance at all: something in the figure varies, and the point rides along with it. Write **both** \\(x\\) and \\(y\\) in terms of that parameter, then **eliminate the parameter** between the two equations. The relation between \\(x\\) and \\(y\\) that survives is the locus — and the parameter must not appear in your answer.",
       traps: [
         {
           title: "Equidistant from two **points** gives a line (perp. bisector); equidistant from two **lines** gives the angle bisectors",
@@ -122,24 +135,29 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
         answer: "\\(x+y=5\\) (the perpendicular bisector).",
       },
       selfCheckExample: {
-        prompt: "Locus of points equidistant from \\((2a,0)\\) and \\((0,3a)\\)?",
+        // A PARAMETER-elimination locus, not a third equidistant one. The
+        // featured PYQ is of this species and the concept previously taught
+        // only the equidistant species, in all five of its slots.
+        prompt:
+          "A variable line cuts the axes at \\(A(t,0)\\) and \\(B(0,2t)\\). Find the locus of the midpoint of \\(AB\\) as \\(t\\) varies.",
         steps: [
-          "\\((x-2a)^2+y^2=x^2+(y-3a)^2\\).",
-          "\\(-4ax+4a^2=-6ay+9a^2\\Rightarrow 4x-6y+5a=0\\).",
+          "Let the midpoint be \\(P=(x,y)\\): \\(x=\\dfrac{t+0}{2}=\\dfrac t2\\) and \\(y=\\dfrac{0+2t}{2}=t\\).",
+          "Eliminate \\(t\\): the first gives \\(t=2x\\); substitute into the second.",
+          "\\(y=2x\\) — and \\(t\\) is gone, as it must be.",
         ],
-        answer: "\\(4x-6y+5a=0\\).",
+        answer: "\\(y=2x\\).",
       },
       practiceSet: [
         { prompt: "Locus equidistant from two points is?", answer: "Their perpendicular bisector" },
         { prompt: "First step in a locus problem?", answer: "Let the point be \\((x,y)\\), write the condition" },
         { prompt: "Locus equidistant from two lines?", answer: "The angle bisectors" },
-        { prompt: "Condition for \\(P\\) equidistant from \\(A,B\\)?", answer: "\\(PA^2=PB^2\\)" },
+        { prompt: "The point's coordinates both depend on a parameter — what do you do?", answer: "Eliminate the parameter between them" },
       ],
       pyqExampleId: "17378311-370b-4e0b-b994-460377094bf8", // locus of midpoint
     },
   ],
   related: [
-    { label: "Equations & Slope", href: "/notes/nda-maths/lines/lines-equation-slope" },
-    { label: "Angle, Parallel & Perpendicular", href: "/notes/nda-maths/lines/lines-angle-parallel-perp" },
+    { label: "Back: Angle, Parallel & Perpendicular", href: "/notes/nda-maths/lines/lines-angle-parallel-perp" },
+    { label: "Next: Triangles, Quadrilaterals & Polygons", href: "/notes/nda-maths/lines/lines-triangles-polygons" },
   ],
 };

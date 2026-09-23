@@ -6,12 +6,12 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 95
+ * Entries: 96
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
 export const CONTENT_DATES: ContentDateMap = {
-  "/guide/mht-cet-maths": "2026-09-19T21:18:06+05:30",
+  "/guide/mht-cet-maths": "2026-09-20T22:22:09+05:30",
   "/guide/nda-biology": "2026-09-14T14:45:43+05:30",
   "/guide/nda-chemistry": "2026-09-14T14:45:43+05:30",
   "/guide/nda-current-affairs": "2026-09-14T14:45:43+05:30",
@@ -22,21 +22,22 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/nda-maths": "2026-09-19T14:48:07+05:30",
   "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
   "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
-  "/notes/cds-maths/number-system": "2026-09-16T07:39:33+05:30",
-  "/notes/jee-mains-maths/matrices": "2026-07-24T20:48:03+05:30",
+  "/notes/cds-maths/number-system": "2026-09-20T23:17:35+05:30",
+  "/notes/jee-mains-maths/matrices": "2026-09-20T23:17:35+05:30",
   "/notes/mht-cet-chemistry/chemical-bonding": "2026-07-24T20:48:03+05:30",
   "/notes/mht-cet-chemistry/ionic-equilibria": "2026-09-16T10:56:34+05:30",
   "/notes/mht-cet-chemistry/some-basic-concepts": "2026-07-24T20:48:03+05:30",
   "/notes/mht-cet-chemistry/states-of-matter": "2026-07-24T20:48:03+05:30",
   "/notes/mht-cet-chemistry/structure-of-atom": "2026-07-24T20:48:03+05:30",
-  "/notes/mht-cet-maths/applications-of-derivative": "2026-09-16T10:56:34+05:30",
-  "/notes/mht-cet-maths/binomial-distribution": "2026-07-02T09:06:07+05:30",
-  "/notes/mht-cet-maths/differential-equations": "2026-07-24T20:48:03+05:30",
-  "/notes/mht-cet-maths/differentiation": "2026-07-24T20:48:03+05:30",
-  "/notes/mht-cet-maths/indefinite-integration": "2026-07-24T20:48:03+05:30",
-  "/notes/mht-cet-maths/line-and-plane": "2026-06-28T08:36:02+05:30",
-  "/notes/mht-cet-maths/probability-distribution": "2026-07-24T20:48:03+05:30",
-  "/notes/mht-cet-maths/vectors": "2026-06-22T23:40:47+05:30",
+  "/notes/mht-cet-maths/applications-of-derivative": "2026-09-21T16:28:13+05:30",
+  "/notes/mht-cet-maths/binomial-distribution": "2026-09-21T16:28:13+05:30",
+  "/notes/mht-cet-maths/differential-equations": "2026-09-21T16:28:26+05:30",
+  "/notes/mht-cet-maths/differentiation": "2026-09-21T16:28:40+05:30",
+  "/notes/mht-cet-maths/indefinite-integration": "2026-09-20T23:17:24+05:30",
+  "/notes/mht-cet-maths/line-and-plane": "2026-09-21T16:28:40+05:30",
+  "/notes/mht-cet-maths/mathematical-logic": "2026-09-21T16:28:13+05:30",
+  "/notes/mht-cet-maths/probability-distribution": "2026-09-21T16:28:40+05:30",
+  "/notes/mht-cet-maths/vectors": "2026-09-21T16:28:40+05:30",
   "/notes/nda-biology/biochemistry": "2026-06-12T08:03:46+05:30",
   "/notes/nda-biology/biodiversity-and-classification": "2026-09-14T16:31:56+05:30",
   "/notes/nda-biology/cell-biology": "2026-09-14T16:31:56+05:30",
