@@ -60,10 +60,10 @@ is why the share loop already keeps the score opt-in).
 | 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | Tranche B — specified below, no decision needed |
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | Tranche B — specified below, depends on the unseen picker |
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
-| 7 | Teacher-assigned paper with a deadline for a batch | Tranche C — needs a product decision (§5) |
-| 8 | Content-led nudges at 12:30 IST | Tranche C — needs a channel decision (§5) |
-| 9 | Exam date and days-to-exam | Tranche C — needs the calendar decision already in ROADMAP.md |
-| — | Per-question peer rates on the findings card | Tranche C — your call (§5) |
+| 7 | Teacher-assigned paper with a deadline for a batch | Tranche C — DECIDED 2026-09-24: new `mock_assignments` table (§5) |
+| 8 | Content-led nudges at 12:30 IST | Tranche C — DECIDED 2026-09-24: email only, WhatsApp later (§5) |
+| 9 | Exam date and days-to-exam | Tranche C — DECIDED 2026-09-24: derive from a calendar, student override (§5) |
+| — | Per-question peer rates on the findings card | Tranche C — DECIDED 2026-09-24: yes, question level only (§5) |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
 
 ## 4. Tranche A — the build
@@ -182,6 +182,8 @@ withhold the rate; read the 4-week cohort rather than the weekly one.
 
 ## 5. Tranches B and C — specified, not built
 
+**Build order agreed 2026-09-24:** push Tranche A first (the PMF read is on post-ship cohorts) → C2 nudge + B1 mastery map → C1 teacher deadline → C3 exam date → C4 peer rates → B2 daily set → B3 wider fuel.
+
 ### B1. Mastery map (item 5)
 
 Per target exam and subject, a grid of chapter tiles. Each tile carries one
@@ -212,7 +214,7 @@ emitter carries `metadata.surface` so PMF can tell them apart.
 
 ### C1. Teacher-assigned paper with a deadline (item 7)
 
-Needs a decision: does an assignment live on `papers` (a paper targets a batch
+**Decided 2026-09-24: the new `mock_assignments` table, as recommended.** The question was: does an assignment live on `papers` (a paper targets a batch
 already) or on `mock_tests` (a timed sitting)? Recommended: a new
 `mock_assignments` table (batch_id, mock_id, due_at, assigned_by) so a teacher
 picks a published mock for a batch with a date; students in that batch see
@@ -221,19 +223,19 @@ Deadline pull only, no ranking.
 
 ### C2. Content-led nudges (item 8)
 
-Needs a channel decision: email only (Resend, exists) or WhatsApp too (no
+**Decided 2026-09-24: email only; WhatsApp later on the same selection logic.** The question was: email only (Resend, exists) or WhatsApp too (no
 provider yet). Rule either way: send only when something is due, name the
 content, one per day at most, 12:30 IST, and never "we miss you".
 
 ### C3. Exam date (item 9)
 
-The two decisions in ROADMAP.md stand. Recommended: derive-with-override, a TS
+**Decided 2026-09-24: derive-with-override, as recommended.** The roadmap's two questions are answered by it: derive-with-override, a TS
 calendar beside `EXAM_REGISTRY` with a probe that fails once a sitting is past,
 NDA first. Then `/me` and the header can say "NDA 2027-I in 112 days".
 
 ### C4. Per-question peer rates
 
-The findings card deliberately shows no "62% of students got this right".
+**Decided 2026-09-24: yes, question level only, never person level.** The findings card deliberately showed no "62% of students got this right".
 Recommendation: allow it at question level only, never person level. It is
 metacognitive and it is not a ranking. Needs a service-role read on a student
 page, which is why it is a decision and not a default.
