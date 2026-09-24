@@ -504,6 +504,11 @@ import {
   MHTCET_SOLID_STATE_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/solid-state/_data";
 import {
+  MHTCET_ELECTROCHEMISTRY_CHAPTER,
+  MHTCET_ELECTROCHEMISTRY_NOTES,
+  MHTCET_ELECTROCHEMISTRY_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/electrochemistry/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1235,6 +1240,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SOLID_STATE_CHAPTER,
     notes: MHTCET_SOLID_STATE_NOTES,
     slugs: MHTCET_SOLID_STATE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: MHTCET_ELECTROCHEMISTRY_CHAPTER,
+    notes: MHTCET_ELECTROCHEMISTRY_NOTES,
+    slugs: MHTCET_ELECTROCHEMISTRY_SLUGS,
   },
   {
     examName: "NDA",
