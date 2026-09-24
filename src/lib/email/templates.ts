@@ -21,6 +21,7 @@ import { formatMarks, formatWhere, type MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
 import type { DueSummary } from "./dueNudge";
 import type { Loop } from "@/lib/education/howItWorks";
+import { INVITE_LINES } from "@/lib/education/classroomScript";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
@@ -209,6 +210,11 @@ export function buildBatchInviteEmail(input: InviteEmailInput): BuiltEmail {
     "If you accept, their teachers will be able to see your mock test results.",
     "You can leave the batch at any time, which stops that.",
     "",
+    // The loop, in three lines (STUDENT_EDUCATION_SPEC.md slice 2). Generic by
+    // design — see the THIN note above; these disclose nothing about the reader.
+    "Once you are in:",
+    ...INVITE_LINES.map((l, i) => `${i + 1}. ${l}`),
+    "",
     `Accept or decline: ${actionUrl}`,
     "",
     `Don't recognise ${orgName}? Ignore this email — nothing happens unless you accept.`,
@@ -219,7 +225,11 @@ export function buildBatchInviteEmail(input: InviteEmailInput): BuiltEmail {
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
   <p style="margin:0 0 16px">Hi,</p>
   <p style="margin:0 0 16px"><strong>${escapeHtml(orgName)}</strong> has invited you to join their batch &ldquo;${escapeHtml(batchName)}&rdquo; on ${BRAND}.</p>
-  <p style="margin:0 0 20px">If you accept, their teachers will be able to see your mock test results. You can leave the batch at any time, which stops that.</p>
+  <p style="margin:0 0 12px">If you accept, their teachers will be able to see your mock test results. You can leave the batch at any time, which stops that.</p>
+  <p style="margin:0 0 4px;color:${MUTED};font-size:14px">Once you are in:</p>
+  <ol style="margin:0 0 20px;padding-left:20px;color:${MUTED};font-size:14px">
+${INVITE_LINES.map((l) => `    <li>${escapeHtml(l)}</li>`).join("\n")}
+  </ol>
   <p style="margin:0 0 24px">
     <a href="${actionUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Accept or decline</a>
   </p>

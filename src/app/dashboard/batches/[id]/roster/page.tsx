@@ -11,6 +11,7 @@ import { assignmentState, completionFor, dueLabel } from "@/lib/assignments/core
 import { getPublishedMocks } from "@/lib/mocks/query";
 import RosterClient from "./RosterClient";
 import AssignmentsCard, { type AssignmentRow, type MockChoice } from "./AssignmentsCard";
+import ClassroomScriptCard from "./ClassroomScriptCard";
 
 export const dynamic = "force-dynamic";
 
@@ -104,6 +105,10 @@ export default async function RosterPage({ params }: { params: { id: string } })
         </div>
 
         <AssignmentsCard batchId={batch.id} assignments={assignmentRows} mocks={mocks} />
+
+        {/* Directly under the assignment control: assign the paper, then read
+            this. Collapsed, so it costs nothing until a teacher wants it. */}
+        <ClassroomScriptCard />
 
         <RosterClient
           batchId={batch.id}
