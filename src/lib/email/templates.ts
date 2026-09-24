@@ -19,6 +19,7 @@
 import { CONTACT_EMAIL } from "@/lib/brand";
 import { formatMarks, formatWhere, type MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
+import type { DueSummary } from "./dueNudge";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
@@ -419,6 +420,95 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
   return {
     subject,
     text: t.join("\n"),
+    html,
+    replyTo: REPLY_TO,
+    headers: {
+      "List-Unsubscribe": `<${oneClickUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  };
+}
+
+// ── the due-queue nudge (ENGAGEMENT_SPEC.md C2) ──────────────────────────────
+
+export type DueNudgeEmailInput = {
+  /** OAuth display name, or "" — greetingName handles both. */
+  name: string;
+  summary: DueSummary;
+  unsubscribeToken: string;
+};
+
+/** "Trigonometry (2), Vectors (1)" — at most three named, the rest counted. */
+function chapterList(summary: DueSummary): string {
+  const named = summary.chapters.slice(0, 3).map((c) => `${c.chapter} (${c.count})`);
+  const rest = summary.chapters.length - 3;
+  return rest > 0 ? `${named.join(", ")} and ${rest} more chapter${rest === 1 ? "" : "s"}` : named.join(", ");
+}
+
+/**
+ * The nudge a student gets when mistakes are waiting in the drill.
+ *
+ * CONTENT-LED, NEVER ABSENCE-LED. The subject is the top chapter and its
+ * count; the body lists the chapters and says what a drill costs (five
+ * questions, about a minute each). Nothing in it refers to the days they have
+ * been away, because the sibling English AI Tutor measured that framing as a
+ * guilt trip, and because a student who has been away has not done anything
+ * wrong. The selector guarantees there is always something to name.
+ */
+export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
+  const { name, summary, unsubscribeToken } = input;
+  const who = greetingName(name);
+  const top = summary.chapters[0] ?? { chapter: "your mock", count: summary.total };
+  const drillUrl = `${SITE_URL}/drill`;
+  const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
+  const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
+
+  const topLine = `${top.count} ${top.chapter} question${top.count === 1 ? "" : "s"} ${top.count === 1 ? "is" : "are"} waiting`;
+  const subject = summary.total > top.count ? `${topLine} — ${summary.total} in all` : topLine;
+
+  const total = summary.total;
+  const lead = `${total} question${total === 1 ? "" : "s"} you got wrong in a timed test ${total === 1 ? "is" : "are"} waiting to be fixed:`;
+  const list = chapterList(summary);
+  const how = "Five at a time, about a minute each. A question you get right goes quiet; one you get wrong comes back round.";
+
+  const text = [
+    who ? `Hi ${who},` : "Hi,",
+    "",
+    lead,
+    `  ${list}`,
+    "",
+    how,
+    `Fix them: ${drillUrl}`,
+    "",
+    "Reply to this email if something looks wrong — it reaches a person.",
+    "",
+    `— ${BRAND}`,
+    "",
+    "---",
+    `Don't want these? Unsubscribe: ${unsubUrl}`,
+  ].join("\n");
+
+  const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
+  <p style="margin:0 0 16px">${who ? `Hi ${escapeHtml(who)},` : "Hi,"}</p>
+  <p style="margin:0 0 8px">${escapeHtml(lead)}</p>
+  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 20px">
+    <p style="margin:0;font-weight:600;color:#0f172a">${escapeHtml(list)}</p>
+  </div>
+  <p style="margin:0 0 20px;color:${MUTED};font-size:14px">${escapeHtml(how)}</p>
+  <p style="margin:0 0 24px">
+    <a href="${drillUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Fix them</a>
+  </p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px">— ${BRAND}</p>
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
+  <p style="margin:0;color:#94a3b8;font-size:12px">
+    Don&#39;t want these? <a href="${unsubUrl}" style="color:#94a3b8">Unsubscribe</a>.
+  </p>
+</div>`;
+
+  return {
+    subject,
+    text,
     html,
     replyTo: REPLY_TO,
     headers: {

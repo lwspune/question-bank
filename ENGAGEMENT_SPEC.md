@@ -61,7 +61,7 @@ is why the share loop already keeps the score opt-in).
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | Tranche B — specified below, depends on the unseen picker |
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
 | 7 | Teacher-assigned paper with a deadline for a batch | Tranche C — DECIDED 2026-09-24: new `mock_assignments` table (§5) |
-| 8 | Content-led nudges at 12:30 IST | Tranche C — DECIDED 2026-09-24: email only, WhatsApp later (§5) |
+| 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
 | 9 | Exam date and days-to-exam | Tranche C — DECIDED 2026-09-24: derive from a calendar, student override (§5) |
 | — | Per-question peer rates on the findings card | Tranche C — DECIDED 2026-09-24: yes, question level only (§5) |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
@@ -223,7 +223,7 @@ Deadline pull only, no ranking.
 
 ### C2. Content-led nudges (item 8)
 
-**Decided 2026-09-24: email only; WhatsApp later on the same selection logic.** The question was: email only (Resend, exists) or WhatsApp too (no
+**SHIPPED 2026-09-24, email only.** Who: students with a due drill pool, not opted out, no drill activity in the last 24 hours, no nudge in the last 3 days, and no more after three unanswered nudges until they drill again; one a day at most (the dedupe key carries the IST day, enforced by the UNIQUE index). What: subject leads with the top chapter and its count ("3 Trigonometry questions are waiting"), body lists the chapters and the cost of a drill, one "Fix them" link to `/drill`, never "we miss you". When: 07:00 UTC = 12:30 IST, `--apply --limit=200` in the workflow only. Measure: `npm run email:due-nudge -- --report` prints recipients who drilled within 24 hours of a send. **Needs the same two repo secrets as the mock report (`RESEND_API_KEY`, `EMAIL_FROM`).** Pure core `src/lib/email/dueNudge.ts` (TDD), reads `dueNudgeService.ts` (one pass over `user_activity`, the drill's own fold), template `buildDueNudgeEmail`. The decision was: email only (Resend, exists) or WhatsApp too (no
 provider yet). Rule either way: send only when something is due, name the
 content, one per day at most, 12:30 IST, and never "we miss you".
 
