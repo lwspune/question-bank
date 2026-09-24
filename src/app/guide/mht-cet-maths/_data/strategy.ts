@@ -294,8 +294,8 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
 export const QUICKWIN_STRAND: StrategyStrand = {
   id: "quickwin",
   label:
-    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (354 q · 16% of bank)",
-  qCount: 354,
+    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (352 q · 16% of bank)",
+  qCount: 352,
   pctOfBank: 16,
   pitch:
     "Bank these first. Five chapters worth 7.8 questions a paper at an average well below the bank's 38.4% HARD, and the point of doing them first is not that they are worth more — every question on this paper is worth exactly 2 marks — but that they are worth the same for a third of the time. Linear Programming is the cleanest example on the whole exam: 45 questions at 4% HARD, and its corner-point page has produced 16 questions and NEVER a single HARD one. Marks secured in the first twenty minutes are marks the clock cannot take back later.",
@@ -373,17 +373,17 @@ export const QUICKWIN_STRAND: StrategyStrand = {
     },
     {
       chapter: "Straight Line",
-      qCount: 46,
-      pctHard: 22,
+      qCount: 44,
+      pctHard: 20,
       posture: "bank-first",
       mustDrill: [
-        "Section Formula, Concurrency, Foot of Perpendicular, and Distance",
-        "Equation of Line — Rotation, Angle, and Bisector",
+        "Distance — From a Point, Between Parallels, Along a Direction and the Foot of the Perpendicular",
+        "Forms of a Line, Intersections and Concurrency",
       ],
-      expectedYieldPerPaper: "0.96 q/paper · about 2 marks",
+      expectedYieldPerPaper: "0.92 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "46 q · 22% HARD across two subtopics. Worth more than its q/paper suggests because the techniques repeat elsewhere: the foot-of-perpendicular and distance work here is the 2-D dialect of Line and Plane, and the perpendicularity condition m1*m2 = -1 is the same idea as the vector dot product being zero.",
+        "44 q · 20% HARD across four notes pages, with every HARD question on the slope-and-angle page. Worth more than its q/paper suggests because the techniques repeat elsewhere: the foot-of-perpendicular and distance work here is the 2-D dialect of Line and Plane, and the perpendicularity condition m1*m2 = -1 is the same idea as the vector dot product being zero.",
     },
   ],
 };
@@ -392,7 +392,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
     "Long Tail — Limits · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations (521 q · 23% of bank)",
-  qCount: 506,
+  qCount: 504,
   pctOfBank: 23,
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
@@ -471,21 +471,21 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Circle",
-      qCount: 47,
-      pctHard: 38,
+      qCount: 46,
+      pctHard: 37,
       posture: "last-pass-guess",
       mustDrill: [
-        "Equation of Circle from Diameter, Centre, and Concentric Conditions",
-        "Tangent, Locus, and Equation Construction",
-        "Two Circles — Tangency, Common Tangents, and Relative Position",
+        "Equation of a Circle — Centre-Radius, General, Diameter and Parametric Forms",
+        "Concentric Circles and Circles Touching a Line or an Axis",
+        "Distance From a Point to a Circle — Greatest, Least, a Line Cutting the Circle and the Segment Area",
       ],
       skipSubtopics: [
-        "Two Circles — Tangency, Common Tangents, and Relative Position",
+        "Two Circles — Touching, Common Tangents and Relative Position",
       ],
-      expectedYieldPerPaper: "1.04 q/paper · about 2 marks",
+      expectedYieldPerPaper: "1.02 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "47 q · 38% HARD. Equation construction from diameter or centre (11 q, 27%) is the cheap entry; Two Circles — Tangency (9 q, 56%) is 9 questions in five years at the highest price in the chapter and goes last in the queue. The maximum-distance-from-a-point trick here is the same move as the complex-modulus-on-a-disc one.",
+        "46 q · 37% HARD. The equation page (12 q, 33%) and the concentric-and-touching page (6 q, 17%) are the cheap entry; Tangents (14 q, 50%) and Two Circles (8 q, 50%) are the expensive corners and go last in the queue. The greatest-and-least-distance move here is the same as the complex-modulus-on-a-disc one.",
     },
     {
       chapter: "Complex Numbers",
@@ -518,17 +518,18 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Pair of Straight Lines",
-      qCount: 45,
-      pctHard: 40,
+      qCount: 44,
+      pctHard: 41,
       posture: "last-pass-guess",
       mustDrill: [
-        "Combined Equation and Condition for Pair of Lines",
-        "Angle, Distance, and Geometry of Pair",
+        "Joint Equation of Two Lines — Product of Linear Factors and the Triangle They Form",
+        "Slopes of a Homogeneous Pair — Sum, Product and Ratio Conditions",
       ],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      targetHard: ["Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors"],
+      expectedYieldPerPaper: "0.98 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "45 q · 40% HARD across two evenly-priced subtopics (39% and 41%), so there is no cheap half. It is formula-driven rather than insight-driven, which makes it a good late addition: the perpendicularity condition here is a + b = 0, the pair-of-lines dialect of the same idea that is m1*m2 = -1 for lines and a zero dot product for vectors.",
+        "44 q · 41% HARD, with the cost concentrated on the angle page (12 q, 58%) while the joint-equation page runs 17%. It is formula-driven rather than insight-driven, which makes it a good late addition: the perpendicularity condition here is a + b = 0, the pair-of-lines dialect of the same idea that is m1*m2 = -1 for lines and a zero dot product for vectors.",
     },
     {
       chapter: "Permutations and Combinations",

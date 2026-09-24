@@ -408,11 +408,13 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "circle",
       name: "Circle",
-      // 47 q across 3 subtopics, in descending question count.
+      // 46 q across 5 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Tangent, Locus, and Equation Construction" }, // 27
-        { name: "Equation of Circle from Diameter, Centre, and Concentric Conditions" }, // 11
-        { name: "Two Circles — Tangency, Common Tangents, and Relative Position" }, // 9
+        { name: "Tangents — At a Point, With a Given Slope, From an External Point and Their Loci" }, // 14
+        { name: "Equation of a Circle — Centre-Radius, General, Diameter and Parametric Forms" }, // 12
+        { name: "Two Circles — Touching, Common Tangents and Relative Position" }, // 8
+        { name: "Concentric Circles and Circles Touching a Line or an Axis" }, // 6
+        { name: "Distance From a Point to a Circle — Greatest, Least, a Line Cutting the Circle and the Segment Area" }, // 6
       ],
     },
     {
@@ -439,19 +441,23 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "straight-line",
       name: "Straight Line",
-      // 46 q across 2 subtopics, in descending question count.
+      // 44 q across 4 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Section Formula, Concurrency, Foot of Perpendicular, and Distance" }, // 27
-        { name: "Equation of Line — Rotation, Angle, and Bisector" }, // 19
+        { name: "Slope, Angle Between Lines and Rotation" }, // 15
+        { name: "Forms of a Line, Intersections and Concurrency" }, // 14
+        { name: "Distance — From a Point, Between Parallels, Along a Direction and the Foot of the Perpendicular" }, // 9
+        { name: "Section Formula, Midpoints and Rectangles" }, // 6
       ],
     },
     {
       slug: "pair-of-straight-lines",
       name: "Pair of Straight Lines",
-      // 45 q across 2 subtopics, in descending question count.
+      // 44 q across 4 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Combined Equation and Condition for Pair of Lines" }, // 28
-        { name: "Angle, Distance, and Geometry of Pair" }, // 17
+        { name: "Joint Equation of Two Lines — Product of Linear Factors and the Triangle They Form" }, // 12
+        { name: "Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors" }, // 12
+        { name: "Slopes of a Homogeneous Pair — Sum, Product and Ratio Conditions" }, // 10
+        { name: "General Second-Degree Equation — Condition for a Pair, Parallel Lines and Distances" }, // 10
       ],
     },
     {

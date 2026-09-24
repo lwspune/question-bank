@@ -144,6 +144,21 @@ import {
   MHTCET_DISPERSION_SLUGS,
 } from "@/app/notes/mht-cet-maths/measures-of-dispersion/_data";
 import {
+  MHTCET_STRAIGHT_LINE_CHAPTER,
+  MHTCET_STRAIGHT_LINE_NOTES,
+  MHTCET_STRAIGHT_LINE_SLUGS,
+} from "@/app/notes/mht-cet-maths/straight-line/_data";
+import {
+  MHTCET_PAIR_OF_LINES_CHAPTER,
+  MHTCET_PAIR_OF_LINES_NOTES,
+  MHTCET_PAIR_OF_LINES_SLUGS,
+} from "@/app/notes/mht-cet-maths/pair-of-straight-lines/_data";
+import {
+  MHTCET_CIRCLE_CHAPTER,
+  MHTCET_CIRCLE_NOTES,
+  MHTCET_CIRCLE_SLUGS,
+} from "@/app/notes/mht-cet-maths/circle/_data";
+import {
   JEE_MATRICES_CHAPTER,
   JEE_MATRICES_NOTES,
   JEE_MATRICES_SLUGS,
@@ -1073,6 +1088,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_DISPERSION_CHAPTER,
     notes: MHTCET_DISPERSION_NOTES,
     slugs: MHTCET_DISPERSION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "straight-line",
+    chipLabel: "Straight Line notes",
+    chapter: MHTCET_STRAIGHT_LINE_CHAPTER,
+    notes: MHTCET_STRAIGHT_LINE_NOTES,
+    slugs: MHTCET_STRAIGHT_LINE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "pair-of-straight-lines",
+    chipLabel: "Pair of Straight Lines notes",
+    chapter: MHTCET_PAIR_OF_LINES_CHAPTER,
+    notes: MHTCET_PAIR_OF_LINES_NOTES,
+    slugs: MHTCET_PAIR_OF_LINES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "circle",
+    chipLabel: "Circle notes",
+    chapter: MHTCET_CIRCLE_CHAPTER,
+    notes: MHTCET_CIRCLE_NOTES,
+    slugs: MHTCET_CIRCLE_SLUGS,
   },
   {
     examName: "JEE Mains",
