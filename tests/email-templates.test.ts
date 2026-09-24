@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { buildEmail, escapeHtml, formatDuration, SITE_URL, REPLY_TO } from "@/lib/email/templates";
-import { buildMockReportEmail } from "@/lib/email/templates";
+import { buildMockReportEmail, buildBatchInviteEmail } from "@/lib/email/templates";
+import { INVITE_LINES } from "@/lib/education/classroomScript";
 import type { MockReport, ReportQuestion, ReportSubtopic } from "@/lib/email/mockReport";
 import type { Recipient } from "@/lib/email/recommend";
 
@@ -253,5 +254,36 @@ describe("buildMockReportEmail — the subject counts findings", () => {
     const s = subjectOf({ easyWrong: [q(1), q(2)] });
     expect(s).toContain("Divyesh");
     expect(s).toContain("84/300");
+  });
+});
+
+describe("buildBatchInviteEmail — the three loop lines (STUDENT_EDUCATION_SPEC.md slice 2)", () => {
+  const input = {
+    orgName: "Sunrise Academy <script>",
+    batchName: "NDA 2027 Morning",
+    actionUrl: "https://www.pyqvault.com/me?invite=abc",
+  };
+
+  it("carries every invite line in BOTH bodies, after the consent paragraph", () => {
+    const m = buildBatchInviteEmail(input);
+    for (const line of INVITE_LINES) {
+      expect(m.text).toContain(line);
+      expect(m.html).toContain(escapeHtml(line));
+      expect(m.text.indexOf(line)).toBeGreaterThan(m.text.indexOf("their teachers will be able to see"));
+    }
+  });
+
+  it("stays thin: no recipient name, the ignore path survives, and there is still no unsubscribe", () => {
+    const m = buildBatchInviteEmail(input);
+    expect(m.text.startsWith("Hi,")).toBe(true);
+    expect(m.text).toContain("Ignore this email");
+    expect(m.text).not.toContain("nsubscribe");
+    expect(m.headers).toEqual({});
+  });
+
+  it("still escapes the org name in HTML", () => {
+    const m = buildBatchInviteEmail(input);
+    expect(m.html).not.toContain("<script>");
+    expect(m.html).toContain("&lt;script&gt;");
   });
 });
