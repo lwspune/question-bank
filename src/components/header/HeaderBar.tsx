@@ -16,6 +16,7 @@ import {
 import { type ExamSlug } from "@/lib/exam/examContext";
 import { resolveHomeHref } from "@/lib/header-session";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
+import { usePulse } from "@/lib/viewer/usePulse";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -51,6 +52,14 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
   // that hold no server identity. The hook memoises one request per page load,
   // so adding that caller costs nothing here.
   const { session, loading: sessionLoading } = useViewerSession();
+
+  // The due-drill count + weekly sittings, for the avatar badge. Fetched only
+  // once a session exists (anon pays nothing) and cached for ten minutes —
+  // see usePulse. It goes on the AVATAR rather than a new nav tab because the
+  // audience is on phones, where the tab bar is a fixed five and the header
+  // is brand + theme + avatar; a badge there is the one place a count fits at
+  // every width without adding chrome.
+  const pulse = usePulse(!!session);
 
   const nav = resolveExamNav(examSlug, examIds);
 
@@ -103,6 +112,7 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
                   role={session.role}
                   isStaff={session.isStaff}
                   isSuperadmin={session.isSuperadmin}
+                  pulse={pulse}
                 />
               </>
             ) : (

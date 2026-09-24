@@ -9,9 +9,11 @@
 import "server-only";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity } from "@/lib/activity/service";
+import { regradeAttempt, MockError } from "@/lib/mocks/service";
 import {
   attachRefs,
   dueQuestions,
+  scopeToAttempt,
   selectDrill,
   DRILL_SIZE,
   type DueQuestion,
@@ -39,7 +41,33 @@ export type OwnDrill = {
   /** Everything currently due, not just the five served — what the entry
    *  screen counts so the student can see the pool shrink. */
   dueTotal: number;
+  /** Set when the drill was scoped to one attempt ("Fix these mistakes" from a
+   *  result page): the paper's name for the header, and its due count. */
+  scope: { attemptId: string; mockTitle: string; mockSlug: string } | null;
 };
+
+/**
+ * This student's whole drillable pool — every due question that still resolves
+ * to a PUBLIC MCQ — in the pool's own order.
+ *
+ * Shared by the drill itself and by `/api/me/pulse`, which is what the header
+ * badge reads. That sharing is the point: the count a student sees is the
+ * count the drill will serve from, because it is the same read, not a cheaper
+ * approximation of it.
+ */
+export async function getOwnDuePool(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  now: Date = new Date()
+): Promise<DueQuestion[]> {
+  const events = await loadDrillEvents(db, userId);
+  const due = dueQuestions(events, now);
+  if (due.length === 0) return [];
+  // Taxonomy for the whole pool: it is what the interleaver groups on, AND the
+  // eligibility filter (a question that no longer resolves is dropped).
+  const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
+  return attachRefs(due, refs);
+}
 
 /**
  * Build this student's next drill, or an empty one when nothing is due.
@@ -49,26 +77,45 @@ export type OwnDrill = {
  * then fetch the wide rows for the five that survive. The pool runs to several
  * hundred questions for an active student and only five are ever rendered.
  */
-export async function getOwnDrill(now: Date = new Date()): Promise<OwnDrill | null> {
+export async function getOwnDrill(
+  opts: { attemptId?: string | null; now?: Date } = {}
+): Promise<OwnDrill | null> {
+  const now = opts.now ?? new Date();
   const db = createSupabaseServerClient();
   const {
     data: { user },
   } = await db.auth.getUser();
   if (!user) return null;
 
-  const events = await loadDrillEvents(db, user.id);
-  const due = dueQuestions(events, now);
-  if (due.length === 0) return { questions: [], dueTotal: 0 };
+  let drillable = await getOwnDuePool(db, user.id, now);
+  let scope: OwnDrill["scope"] = null;
 
-  // Taxonomy for the whole pool: it is what the interleaver groups on, AND the
-  // eligibility filter (a question that no longer resolves is dropped).
-  const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
-  const drillable: DueQuestion[] = attachRefs(due, refs);
+  // "Fix these mistakes" from a result page: NARROW the pool to that attempt's
+  // wrong answers. Narrow only — a question fixed since stays out (see
+  // scopeToAttempt). An attempt that is not this student's, or does not exist,
+  // degrades to the general drill rather than 404ing a page whose only job is
+  // to serve practice.
+  if (opts.attemptId) {
+    try {
+      const graded = await regradeAttempt(db, user.id, opts.attemptId);
+      const wrong = new Set(
+        Object.entries(graded.verdicts)
+          .filter(([, v]) => v === -1)
+          .map(([id]) => id)
+      );
+      drillable = scopeToAttempt(drillable, wrong);
+      scope = { attemptId: opts.attemptId, mockTitle: graded.mock.title, mockSlug: graded.mock.slug };
+    } catch (e) {
+      if (!(e instanceof MockError)) throw e;
+    }
+  }
+
+  if (drillable.length === 0) return { questions: [], dueTotal: 0, scope };
 
   const picked = selectDrill(drillable, DRILL_SIZE);
   const questions = await loadDrillQuestions(db, picked.map((p) => p.questionId));
 
-  return { questions, dueTotal: drillable.length };
+  return { questions, dueTotal: drillable.length, scope };
 }
 
 export type AnswerOutcome = DrillVerdict & { recorded: boolean };
