@@ -23,17 +23,23 @@
  * else in the gate fails, no page 404s, and the damage shows up months later as
  * an absence in a report nobody diffs.
  *
- * Substring assertions on the href rather than a JSX parse: attributes wrap
- * across lines and arrow functions contain `>`, so anything that tries to find
- * a tag's end is a probe that can quietly stop matching. See the same reasoning
+ * The footer side reads `footerLinks()`, the pure model the component renders
+ * from (since 2026-09-24 — before that this grepped Footer.tsx for literal
+ * hrefs, which stopped being possible once the Guides/Notes columns were
+ * derived from the registries). The homepage side is still a substring
+ * assertion on the source rather than a JSX parse: attributes wrap across
+ * lines and arrow functions contain `>`, so anything that tries to find a
+ * tag's end is a probe that can quietly stop matching. See the same reasoning
  * in dashboard-students-no-prefetch.test.ts.
  */
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { footerLinks } from "@/lib/nav/footerLinks";
 
 const FOOTER = join(process.cwd(), "src", "components", "Footer.tsx");
 const HOME = join(process.cwd(), "src", "app", "page.tsx");
+const footerHrefs = footerLinks().flatMap((g) => g.links.map((l) => l.href));
 
 /**
  * The surfaces that carry indexable content and are NOT already reachable from
@@ -53,8 +59,14 @@ describe("crawl entry points", () => {
     expect(home.length).toBeGreaterThan(500);
   });
 
+  it("the component actually renders from the model this test reads", () => {
+    // Otherwise the model could carry every link while the footer shows none.
+    expect(footer).toContain("footerLinks()");
+    expect(footerHrefs.length).toBeGreaterThan(10);
+  });
+
   it.each(MUST_LINK)("the footer links %s", (href) => {
-    expect(footer).toContain(`href="${href}"`);
+    expect(footerHrefs).toContain(href);
   });
 
   it("the homepage surface grid offers the two crawl-starved surfaces", () => {
@@ -66,7 +78,7 @@ describe("crawl entry points", () => {
   it("the footer still links the surfaces it already carried", () => {
     // Guards against a rewrite that adds the new links by replacing old ones.
     for (const href of ["/formula", "/blog", "/about", "/notes/nda"]) {
-      expect(footer).toContain(`href="${href}"`);
+      expect(footerHrefs).toContain(href);
     }
   });
 });
