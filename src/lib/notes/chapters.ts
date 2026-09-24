@@ -514,6 +514,11 @@ import {
   MHTCET_THERMODYNAMICS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/chemical-thermodynamics/_data";
 import {
+  MHTCET_BASIC_ORGANIC_CHAPTER,
+  MHTCET_BASIC_ORGANIC_NOTES,
+  MHTCET_BASIC_ORGANIC_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/basic-principles-of-organic-chemistry/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1267,6 +1272,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_THERMODYNAMICS_CHAPTER,
     notes: MHTCET_THERMODYNAMICS_NOTES,
     slugs: MHTCET_THERMODYNAMICS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "basic-principles-of-organic-chemistry",
+    chipLabel: "Basic Principles of Organic Chemistry notes",
+    chapter: MHTCET_BASIC_ORGANIC_CHAPTER,
+    notes: MHTCET_BASIC_ORGANIC_NOTES,
+    slugs: MHTCET_BASIC_ORGANIC_SLUGS,
   },
   {
     examName: "NDA",

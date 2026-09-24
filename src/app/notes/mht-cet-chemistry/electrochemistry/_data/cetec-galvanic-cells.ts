@@ -6,7 +6,7 @@ export const GALVANIC_CELLS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A galvanic cell turns a spontaneous redox reaction into a voltage: E°cell = E°cathode − E°anode from the electrochemical series, corrected for concentration by the Nernst equation, and tied to ΔG° = −nFE° and to K.",
   whyItMatters:
-    "49 PYQs, 12 HARD — every HARD row in the chapter is here, and all twelve are Nernst: the electrode potential of M → Mⁿ⁺ at 0.1 or 0.01 M, or how much the emf moves when one ion's concentration drops tenfold. " +
+    "49 PYQs, 12 HARD — every HARD row in the chapter is here, and all twelve are Nernst: the electrode potential of M → M(n+) at 0.1 or 0.01 M, or how much the emf moves when one ion's concentration drops tenfold. " +
     "The rest are E°cell subtractions, ΔG° = −nFE° in kJ, E° from K, and recall of which electrode is positive and which species is the strongest reducing or oxidising agent.",
   concepts: [
     // 1 — cell notation and electrodes
@@ -207,7 +207,7 @@ export const GALVANIC_CELLS_NOTE: SubtopicNote = {
       slug: "cetec-electrode-potential-at-concentration",
       name: "Potential of One Electrode at a Given Concentration",
       intuition:
-        "For the OXIDATION M → Mⁿ⁺(c) + ne⁻, the standard oxidation potential is the negative of the tabulated reduction value, and the Nernst term is −(0.0592/n) log c. Since c < 1 makes the log negative, the oxidation potential comes out MORE positive than E°ox by (0.0592/n) per decade. Doubling the equation changes nothing — potential is intensive.",
+        "For the OXIDATION M → M(n+)(c) + ne⁻, the standard oxidation potential is the negative of the tabulated reduction value, and the Nernst term is −(0.0592/n) log c. Since c < 1 makes the log negative, the oxidation potential comes out MORE positive than E°ox by (0.0592/n) per decade. Doubling the equation changes nothing — potential is intensive.",
       definition:
         "- \\(E_{\\text{ox}} = E^\\circ_{\\text{ox}} - \\dfrac{0.0592}{n}\\log[\\text{M}^{n+}]\\), with \\(E^\\circ_{\\text{ox}} = -E^\\circ_{\\text{red}}\\).\n" +
         "- Mg → Mg²⁺(0.01 M): \\(+2.37 + 0.0592 = +2.4292\\) V. At 0.1 M: \\(+2.37 + 0.0296 = +2.3996\\) V.\n" +
