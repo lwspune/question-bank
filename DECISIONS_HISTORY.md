@@ -31,6 +31,14 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ### 2026-09-01 to 2026-09-24 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
 
+**2026-09-24 (seventh) — the mastery map (ENGAGEMENT_SPEC.md B1) at `/me/map`.**
+
+Second item of the agreed build order, and the one that needed no decision: read-only over `getOwnPerformance`, no schema. The chapter accordion on `/performance` already held every number; what students lacked was a shape they could scan on a phone and watch change. `buildMasteryMap` turns one (exam, subject) lane into chapter tiles with a dot per subtopic; `bandOf` reads the accordion's own constants (`WEAK_BELOW` 0.5, `MASTERED_AT` 0.7, `MIN_JUDGED_FOR_CLAIM` 3) rather than redefining them, and "unknown" is a band that renders grey and counts in the totals, because "not tested yet" is a true thing to say and a missing dot would read as "nothing here". Tiles sort worst-first (any weak → any mid → all mastered → untested), each carrying a plain-words label ("1 to fix", "all mastered", "not tested yet") and `goPracticeHref` links per dot and per chapter.
+
+The page is a server component over one RPC read, with native `<details>` for the tap so there is no client JS and keyboard/screen-reader behaviour comes free. Exam/subject selection reuses `buildLaneNav` and the same `?exam=&subject=` params as `/performance`, so the two pages agree; every pill is `prefetch={false}`. Entry points: `/me` (beside "See what to work on") and the drill's end screen, whose secondary link now says "See your map" — the drill retiring a question is what moves a dot, so that is where the change is visible.
+
+**Verified:** 12 unit tests + typecheck + lint; anon curl of `/me/map` compiles and redirects to login; `npm run map:smoke` drives the chain over the heaviest students and asserts every tile has a dot and the band totals reconcile. **Not verified:** the render and the tap-to-expand (auth-gated `ƒ`, no browser harness).
+
 **2026-09-24 (sixth) — the due-queue nudge (ENGAGEMENT_SPEC.md C2), email only.**
 
 The first Tranche C item, built the same day the four C decisions were taken (email only; `mock_assignments` for the teacher deadline; derive-with-override for the exam date; question-level peer rates). Why it went first: it is the cheapest return trigger — the Resend transport, the unsubscribe machinery, the mobile capture and the due-pool read all existed — and the review had found that the drill's whole problem was reach (8 completions by 2 students against 10,788 recorded mistakes).

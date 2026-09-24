@@ -328,10 +328,11 @@ function Summary({
           </Link>
         )}
         <Link
-          href="/performance"
+          href="/me/map"
+          prefetch={false}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border px-6 text-base font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          See what to work on
+          See your map
         </Link>
       </div>
 
