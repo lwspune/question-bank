@@ -93,8 +93,13 @@ describe("buildPacket — the answer must not leak", () => {
   });
 
   it("carries NO numericAnswer", () => {
-    expect(JSON.stringify(packet)).not.toContain("numericAnswer");
-    expect(JSON.stringify(packet)).not.toContain("42");
+    // Assert on the ROWS, not the whole packet: `builtAt` is a live timestamp
+    // and a two-digit answer can appear inside one by chance (it did, on
+    // 2026-09-24 at 13:40:26.425Z, and failed a green gate). The leak this
+    // guards against can only ever be in a row.
+    const rows = JSON.stringify(packet.rows);
+    expect(rows).not.toContain("numericAnswer");
+    expect(rows).not.toContain("42");
   });
 
   it("carries no field named like an answer at all", () => {
